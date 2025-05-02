@@ -1,132 +1,117 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp767738njj;
-        Fri, 2 May 2025 04:14:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVfPW/ozeqNBzNB5CVS00Ymx+GnqHg2Rvely/R4gW6s2Szz17ccUZCmQuYJHw/F02kFnlZGfJgTDJNVBg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFVOUchcXFY6fEnkOSxCpNtYoeFoTQ0RBzSy9CDJ866Sv7soKAJ7WG/uRIrYdOfCcV3vQvg
-X-Received: by 2002:a05:6102:3ca0:b0:4bb:c490:7d6c with SMTP id ada2fe7eead31-4dafb50aea0mr1455398137.9.1746184497785;
-        Fri, 02 May 2025 04:14:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746184497; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp809955njj;
+        Fri, 2 May 2025 05:31:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXJXJh6sdEXJKdCNsqpdDESynd3jfmXwgj9XkOXtPdQ81prokJ7+W42rWMFRcLOurNc6ZdnorrcYdsLig==@linaro.org
+X-Google-Smtp-Source: AGHT+IFgHPjDqaYDcLdSuIB7xHVlbiHRj2RjQabdOJnrkJOI9O5xMTStgFFZdlc6HFYE9PIszE4L
+X-Received: by 2002:a05:620a:1915:b0:7c5:5d4b:e62f with SMTP id af79cd13be357-7cad5ba3edfmr375100685a.43.1746189111192;
+        Fri, 02 May 2025 05:31:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746189111; cv=none;
         d=google.com; s=arc-20240605;
-        b=EP/cpQCKxADoZyjn0DRMqNUjt13X5jna3T9MPtUgN9Xk1GraEh7nl/DP7TKoQexfeo
-         EJ+OV0aimOspqT5qrvrBX2rXo8OQMzNuXO/XxafnfXCqjAaKksjBUnDYSRGRu2XcVyhD
-         NHEMOnlP8rbaUFcYWS7grSd7IR+WS98t+GzWdlpjuDr2m8B8w44z4HoW78Mz4WqqrOfr
-         Yp62evPxjujU10dAhf772mWS7RTxiX0ODZ3Xthmbkv8k2RiILk8CfspwmNZST4Xg/uHJ
-         LjOgwu2HTvXeJnzsWw0m3zk4tU3fHo5tL5Z1SGB06ILN79d/OvoxsHXUd53uwzHyyS8t
-         Pncw==
+        b=QERujTUX7x1QK31X7Fyairj51L+dEmpNs34+4pBBcgRse8QATQ+bJxhvZrjxHXpDAn
+         4H9oAaSOemWLOTxoKBH/RLDdL2BW4mdTkn5m5nE0svMuRUTHJZcwJ58yq+CCujd/PERL
+         roACWGy1LdeLF0GB8JRo4YJYLTH6aMrQ1hLUeivsCMDAHzrs1HGPHp0rK8zvv12BAaMX
+         JZ+GFgP7HwSBMTKZ+Zp3yAsgFKtGjp4JdkSMriFq7g3kFafiuLqK54IjH0r78IIPeIT6
+         V4/y3GsUSTLInwP09hjUx1C4owoALuEybcV3PDFTsQ+A17IZyC22hcVKh1Iveo70bgQ3
+         Irxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=5ZvrH4HA7CgqdNaRotfNUDSYKmUZtqUys3VW+mvrWvQ=;
-        fh=QgHpGH3rLCa5kb4qYI2Dd+mOQf4l1wrbOWCqRsxrzSc=;
-        b=hTD8OcSK/B0546/Qi6dc2P6O+lIbwbwhb3nUk3GehF7buQGXQ50ErdF9mzo5qJYrRL
-         A0KIYN/ds6M0xOQk8e6buMZw26aPk79qf+N2JzErkHABlZmSiJU/ArS/nocjVphjcv9B
-         PA+tfqro3gJ96rTLh9Qo4Q6f6NEUlFMnz2MiYR43wCcTX83xLmZduFRzhiUbVFo/PYH4
-         Ne3a5IAjzyhhnQNycLhjvn5LmiWVN80XOtDltwT1z913/Z5bP/tqTj+yywFFscRrvG+z
-         7cbqFaDXXNG7D8RZxehdNKLIR+8PZtADwtQkaeZg2R5xIcMDGoJHzyfZ5G6mS0EkBLbN
-         0rtQ==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=UniOiXHVdMdpdxGGj01tC38CGn7tbFhoDRs6dSjrA7Y=;
+        fh=RSX5RkXq4RG8KON+qVJyw6zu06Q6aV+StctqNe1ZuAk=;
+        b=E7PS8di+qYIf4Fsk/u/4Ybmuk7v+hLLNxsowBSNb7tMuhLfruPjfBMBorb/uznzm85
+         crzNlF3eMtxSWabUHE6eO7qhH4BgQ9bC1Upcip+RvdRUsankGABezstquwvXZksygBSe
+         LCwWy24zQ2WanMVp45wPHcecxwh4pECyHz7Lxw/oLpJcJ+Flbjfz2td9wuuqfBIZpnW2
+         grpQzlPEl8w2MP+TZ+D2MAj9QB9MmaiUyWawI66l5htQGqZvnzjUzt5C9Z2MkVvtFAPm
+         411X7SXXzSdsBJ70hwpqEf2F7L8l3V5P1/zv5tjBtNtLD0c1aAP0q40omN8p3DtFVof/
+         DPqQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=R0iepS9U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4daf24ff7besi658145137.340.2025.05.02.04.14.57
+        by mx.google.com with ESMTPS id af79cd13be357-7cad23ba9a5si283172385a.5.2025.05.02.05.31.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 May 2025 04:14:57 -0700 (PDT)
+        Fri, 02 May 2025 05:31:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=R0iepS9U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uAoLf-0003mL-Ke; Fri, 02 May 2025 07:14:32 -0400
+	id 1uApYI-0000ye-Ol; Fri, 02 May 2025 08:31:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=zHgX=XS=kaod.org=clg@ozlabs.org>)
- id 1uAoLR-0003gX-61; Fri, 02 May 2025 07:14:24 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=zHgX=XS=kaod.org=clg@ozlabs.org>)
- id 1uAoLO-0005Zk-4r; Fri, 02 May 2025 07:14:16 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZppGC4xM9z4xQv;
- Fri,  2 May 2025 21:14:11 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZppG811b8z4x8S;
- Fri,  2 May 2025 21:14:07 +1000 (AEST)
-Message-ID: <679b3e9b-7e59-406f-b118-16265ceaf631@kaod.org>
-Date: Fri, 2 May 2025 13:14:05 +0200
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uApXr-0000sw-Lj
+ for qemu-arm@nongnu.org; Fri, 02 May 2025 08:31:19 -0400
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uApXm-0002GP-Ho
+ for qemu-arm@nongnu.org; Fri, 02 May 2025 08:31:10 -0400
+Received: by mail-yw1-x112d.google.com with SMTP id
+ 00721157ae682-708d90aa8f9so2181607b3.3
+ for <qemu-arm@nongnu.org>; Fri, 02 May 2025 05:31:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1746189065; x=1746793865; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=UniOiXHVdMdpdxGGj01tC38CGn7tbFhoDRs6dSjrA7Y=;
+ b=R0iepS9UKQdXw8tyr7y19JWmwaKt808OFtxlFbWdIRFYPlon829oZUtg8093/rTlvK
+ e+i+PxulfU0n8Qs3ZsxZjQDyhZjwu2MUZmd57W6ltE5/lXXjbIwrQOAxa5Q+RsHgVLCf
+ 2dGsVwepc3akysh1Vmll4SHlbW+vtIefgGMdYZh2+vGfDEWwpRRMYczSdrcRv9BZlUkM
+ 6J9C3BMrpEMJK2/F4UEu5RQCvES6MfKYEgI9fed00eIV6MJoZQuQGbJFCOaBsmsK6jft
+ bqQoPx4GMgq0CSib6/QUi1pQf/3aztmNL9zPRbzar2pfFrtumjy+mqbXB4N8GUfqCels
+ UARw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1746189065; x=1746793865;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=UniOiXHVdMdpdxGGj01tC38CGn7tbFhoDRs6dSjrA7Y=;
+ b=FodtD5EkCXTLvlpKDoC4HebRa2US2/AsHFWpU6foa0qIna9Kf+Qukv//8M+0kQ3MHe
+ hpSRZFoxN9n0kbbK+qo6yhmcOtt+C1YIp0+ebUofDPNcRMZ2Po3oohLfWscK1PW9oI3z
+ 5wGCw9jLcPcx0w6IC1wp42yqeI4BurU0k67Z7o889MA4WIMT/hMMJEyVMEg0zY+A0IC6
+ Vk/6Jb7jLE0ZCZVgsz9bnuNE5snxr2+2yIADSbu+GLkkGDndiI2c6V6+vu5Y9tsp0xl7
+ a8gAZyq8HN+U2rNAzeUDGqaVLy/w9csNWhoHPNdotG8fJU4GevqONIz89+f+O7yQrcCE
+ q9ZQ==
+X-Gm-Message-State: AOJu0Yy9iQgK9nw6G7571g9Sm9FOzj0D17QhCE1mR5b9LNHyts7E1juM
+ j33gT1J+/qWGp11c4GZSDwRc3RXxJRLyssEwInf4GmbRFHg11XqILIe2krR/vDyoSbl54GjLJ7k
+ I7UVaoScqQtxvxfOu0M6Jx7RH+MXmdIGvxQBruFh4+uOvrYy0
+X-Gm-Gg: ASbGncuV9GEtWlIvEZQrPyMGkPEU3DYsCSpJ/x+OfPgFz8PZ1mAVOxrnXcJbVH3s2b3
+ nkrEhqbTQJfY34FOGA2NF58nUex/tyiM1onsMuW1RpqKGB464fBXTuDYfFTFk6hcyX5HfqlQ+hz
+ fKu/RjUuee/r9wCI2A1WNpCgA=
+X-Received: by 2002:a05:690c:6f05:b0:706:aee5:162a with SMTP id
+ 00721157ae682-708cee25a85mr41459507b3.36.1746189064941; Fri, 02 May 2025
+ 05:31:04 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 9/9] docs: Add support for ast2700fc machine
-To: Steven Lee <steven_lee@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, longzl2@lenovo.com, yunlin.tang@aspeedtech.com
-References: <20250502103449.3091642-1-steven_lee@aspeedtech.com>
- <20250502103449.3091642-10-steven_lee@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
- 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
- yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
- 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
- ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
- RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
- gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
- 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
- Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
- tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
- IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
- BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
- M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
- 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
- jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
- TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
- neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
- VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
- QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
- ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
- WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
- wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
- SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
- cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
- S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
- 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
- hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
- tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
- t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
- OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
- KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
- o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
- ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
- IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
- d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
- +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
- HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
- l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
- 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
- ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
- KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250502103449.3091642-10-steven_lee@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=zHgX=XS=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20250318114222.1018200-1-peter.maydell@linaro.org>
+In-Reply-To: <20250318114222.1018200-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 2 May 2025 13:30:52 +0100
+X-Gm-Features: ATxdqUGxtCzORlO3ip9FS5Eiv9af1_H6IwXBDmRTgut-LxcnH5FW_tMIugNEm_Y
+Message-ID: <CAFEAcA9Dd8YRV7jL7UhjPCO003167XgbXCfRRqOdvt0kh9WU8w@mail.gmail.com>
+Subject: Re: [PATCH for-10.1] target/arm/kvm: Drop support for kernels without
+ KVM_ARM_PREFERRED_TARGET
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -141,125 +126,166 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /seoz42sUUC0
+X-TUID: UBmDfYmuCUao
 
-On 5/2/25 12:34, Steven Lee wrote:
-> - Updated Aspeed family boards list to include `ast2700fc`.
-> - Added boot instructions for the `ast2700fc` machine.
-> - Detailed the configuration and loading of firmware for the
->    Cortex-A35 and Cortex-M4 processors.
-> 
-> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-> Change-Id: Id41312e9c7cf79bc55c6f24a87a7ad9993dc7261
+Ping for code review, please?
 
+thanks
+-- PMM
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
-
-
+On Tue, 18 Mar 2025 at 11:42, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> Our KVM code includes backwards compatibility support for ancient
+> kernels which don't support the KVM_ARM_PREFERRED_TARGET ioctl.  This
+> ioctl was introduced in kernel commit 42c4e0c77ac91 in September
+> 2013 and is in v3.12, so it's reasonable to assume it's present.
+>
+> (We already dropped support for kernels without KVM_CAP_DEVICE_CTRL,
+> a feature added to the kernel in April 2013, in our commit
+> 84f298ea3e; so there are only about six months' worth of kernels,
+> from v3.9 to v3.11, that we don't already fail to run on and that
+> this commit is dropping handling for.)
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   docs/system/arm/aspeed.rst | 69 ++++++++++++++++++++++++++++++++++++--
->   1 file changed, 66 insertions(+), 3 deletions(-)
-> 
-> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-> index 014545f444..58a8020eec 100644
-> --- a/docs/system/arm/aspeed.rst
-> +++ b/docs/system/arm/aspeed.rst
-> @@ -1,5 +1,5 @@
-> -Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
-> -==================================================================================================================================================================================================================================================================================================================================================================================================================
-> +Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``ast2700fc``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
-> +=================================================================================================================================================================================================================================================================================================================================================================================================================================
->   
->   The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
->   Aspeed evaluation boards. They are based on different releases of the
-> @@ -255,6 +255,7 @@ etc.
->   AST2700 SoC based machines :
->   
->   - ``ast2700-evb``          Aspeed AST2700 Evaluation board (Cortex-A35)
-> +- ``ast2700fc``            Aspeed AST2700 Evaluation board (Cortex-A35 + Cortex-M4)
->   
->   Supported devices
->   -----------------
-> @@ -285,7 +286,6 @@ Supported devices
->   
->   Missing devices
->   ---------------
-> - * Coprocessor support
->    * PWM and Fan Controller
->    * Slave GPIO Controller
->    * Super I/O Controller
-> @@ -353,6 +353,69 @@ specified path in the ${HOME} directory.
->   
->     -bios ${HOME}/ast27x0_bootrom.bin
->   
-> +Booting the ast2700fc machine
-> +^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> +
-> +AST2700 features four Cortex-A35 primary processors and two Cortex-M4 coprocessors.
-> +**ast2700-evb** machine focuses on emulating the four Cortex-A35 primary processors,
-> +**ast2700fc** machine extends **ast2700-evb** by adding support for the two Cortex-M4 coprocessors.
-> +
-> +Steps to boot the AST2700fc machine:
-> +
-> +1. Ensure you have the following AST2700A1 binaries available in a directory
-> +
-> + * u-boot-nodtb.bin
-> + * u-boot.dtb
-> + * bl31.bin
-> + * optee/tee-raw.bin
-> + * image-bmc
-> + * zephyr-aspeed-ssp.elf (for SSP firmware, CPU 5)
-> + * zephyr-aspeed-tsp.elf (for TSP firmware, CPU 6)
-> +
-> +2. Execute the following command to start ``ast2700fc`` machine:
-> +
-> +.. code-block:: bash
-> +
-> +  IMGDIR=ast2700-default
-> +  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
-> +
-> +  $ qemu-system-aarch64 -M ast2700fc \
-> +       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
-> +       -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
-> +       -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
-> +       -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin \
-> +       -device loader,cpu-num=0,addr=0x430000000 \
-> +       -device loader,cpu-num=1,addr=0x430000000 \
-> +       -device loader,cpu-num=2,addr=0x430000000 \
-> +       -device loader,cpu-num=3,addr=0x430000000 \
-> +       -drive file=${IMGDIR}/image-bmc,if=mtd,format=raw \
-> +       -device loader,file=${IMGDIR}/zephyr-aspeed-ssp.elf,cpu-num=4 \
-> +       -device loader,file=${IMGDIR}/zephyr-aspeed-tsp.elf,cpu-num=5 \
-> +       -serial pty -serial pty -serial pty \
-> +       -snapshot \
-> +       -S -nographic
-> +
-> +After launching QEMU, serial devices will be automatically redirected.
-> +Example output:
-> +
-> +.. code-block:: bash
-> +
-> +   char device redirected to /dev/pts/55 (label serial0)
-> +   char device redirected to /dev/pts/56 (label serial1)
-> +   char device redirected to /dev/pts/57 (label serial2)
-> +
-> +- serial0: Console for the four Cortex-A35 primary processors.
-> +- serial1 and serial2: Consoles for the two Cortex-M4 coprocessors.
-> +
-> +Use ``tio`` or another terminal emulator to connect to the consoles:
-> +
-> +.. code-block:: bash
-> +
-> +   $ tio /dev/pts/55
-> +   $ tio /dev/pts/56
-> +   $ tio /dev/pts/57
-> +
-> +
->   Aspeed minibmc family boards (``ast1030-evb``)
->   ==================================================================
->   
-
+>  target/arm/kvm_arm.h      |  7 +----
+>  target/arm/arm-qmp-cmds.c |  2 +-
+>  target/arm/kvm.c          | 55 ++++++---------------------------------
+>  3 files changed, 10 insertions(+), 54 deletions(-)
+>
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index 05c3de8cd46..5f17fc2f3d5 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -97,10 +97,6 @@ void kvm_arm_reset_vcpu(ARMCPU *cpu);
+>  #ifdef CONFIG_KVM
+>  /**
+>   * kvm_arm_create_scratch_host_vcpu:
+> - * @cpus_to_try: array of QEMU_KVM_ARM_TARGET_* values (terminated with
+> - * QEMU_KVM_ARM_TARGET_NONE) to try as fallback if the kernel does not
+> - * know the PREFERRED_TARGET ioctl. Passing NULL is the same as passing
+> - * an empty array.
+>   * @fdarray: filled in with kvmfd, vmfd, cpufd file descriptors in that order
+>   * @init: filled in with the necessary values for creating a host
+>   * vcpu. If NULL is provided, will not init the vCPU (though the cpufd
+> @@ -113,8 +109,7 @@ void kvm_arm_reset_vcpu(ARMCPU *cpu);
+>   * Returns: true on success (and fdarray and init are filled in),
+>   * false on failure (and fdarray and init are not valid).
+>   */
+> -bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
+> -                                      int *fdarray,
+> +bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
+>                                        struct kvm_vcpu_init *init);
+>
+>  /**
+> diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+> index 883c0a0e8cc..a1a944adb43 100644
+> --- a/target/arm/arm-qmp-cmds.c
+> +++ b/target/arm/arm-qmp-cmds.c
+> @@ -46,7 +46,7 @@ static inline void gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3)
+>  #ifdef CONFIG_KVM
+>      int fdarray[3];
+>
+> -    if (!kvm_arm_create_scratch_host_vcpu(NULL, fdarray, NULL)) {
+> +    if (!kvm_arm_create_scratch_host_vcpu(fdarray, NULL)) {
+>          return;
+>      }
+>
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index da30bdbb234..568561c6d54 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -100,8 +100,7 @@ static int kvm_arm_vcpu_finalize(ARMCPU *cpu, int feature)
+>      return kvm_vcpu_ioctl(CPU(cpu), KVM_ARM_VCPU_FINALIZE, &feature);
+>  }
+>
+> -bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
+> -                                      int *fdarray,
+> +bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
+>                                        struct kvm_vcpu_init *init)
+>  {
+>      int ret = 0, kvmfd = -1, vmfd = -1, cpufd = -1;
+> @@ -150,40 +149,13 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
+>          struct kvm_vcpu_init preferred;
+>
+>          ret = ioctl(vmfd, KVM_ARM_PREFERRED_TARGET, &preferred);
+> -        if (!ret) {
+> -            init->target = preferred.target;
+> +        if (ret < 0) {
+> +            goto err;
+>          }
+> +        init->target = preferred.target;
+>      }
+> -    if (ret >= 0) {
+> -        ret = ioctl(cpufd, KVM_ARM_VCPU_INIT, init);
+> -        if (ret < 0) {
+> -            goto err;
+> -        }
+> -    } else if (cpus_to_try) {
+> -        /* Old kernel which doesn't know about the
+> -         * PREFERRED_TARGET ioctl: we know it will only support
+> -         * creating one kind of guest CPU which is its preferred
+> -         * CPU type.
+> -         */
+> -        struct kvm_vcpu_init try;
+> -
+> -        while (*cpus_to_try != QEMU_KVM_ARM_TARGET_NONE) {
+> -            try.target = *cpus_to_try++;
+> -            memcpy(try.features, init->features, sizeof(init->features));
+> -            ret = ioctl(cpufd, KVM_ARM_VCPU_INIT, &try);
+> -            if (ret >= 0) {
+> -                break;
+> -            }
+> -        }
+> -        if (ret < 0) {
+> -            goto err;
+> -        }
+> -        init->target = try.target;
+> -    } else {
+> -        /* Treat a NULL cpus_to_try argument the same as an empty
+> -         * list, which means we will fail the call since this must
+> -         * be an old kernel which doesn't support PREFERRED_TARGET.
+> -         */
+> +    ret = ioctl(cpufd, KVM_ARM_VCPU_INIT, init);
+> +    if (ret < 0) {
+>          goto err;
+>      }
+>
+> @@ -259,17 +231,6 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>      uint64_t features = 0;
+>      int err;
+>
+> -    /* Old kernels may not know about the PREFERRED_TARGET ioctl: however
+> -     * we know these will only support creating one kind of guest CPU,
+> -     * which is its preferred CPU type. Fortunately these old kernels
+> -     * support only a very limited number of CPUs.
+> -     */
+> -    static const uint32_t cpus_to_try[] = {
+> -        KVM_ARM_TARGET_AEM_V8,
+> -        KVM_ARM_TARGET_FOUNDATION_V8,
+> -        KVM_ARM_TARGET_CORTEX_A57,
+> -        QEMU_KVM_ARM_TARGET_NONE
+> -    };
+>      /*
+>       * target = -1 informs kvm_arm_create_scratch_host_vcpu()
+>       * to use the preferred target
+> @@ -300,7 +261,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>          features |= 1ULL << ARM_FEATURE_PMU;
+>      }
+>
+> -    if (!kvm_arm_create_scratch_host_vcpu(cpus_to_try, fdarray, &init)) {
+> +    if (!kvm_arm_create_scratch_host_vcpu(fdarray, &init)) {
+>          return false;
+>      }
+>
+> @@ -1835,7 +1796,7 @@ uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
+>
+>          probed = true;
+>
+> -        if (!kvm_arm_create_scratch_host_vcpu(NULL, fdarray, &init)) {
+> +        if (!kvm_arm_create_scratch_host_vcpu(fdarray, &init)) {
+>              error_report("failed to create scratch VCPU with SVE enabled");
+>              abort();
+>          }
+> --
+> 2.43.0

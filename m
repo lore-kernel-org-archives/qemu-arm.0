@@ -1,344 +1,247 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp976803njj;
-        Fri, 2 May 2025 09:39:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWx82BWJBVhfzkutFsrcFEG/Sh1fE3vHxmNyBXUGdjho3vT6Wn7ueORC1XEnyEBYRU0ohyt6AShECV/aQ==@linaro.org
-X-Received: by 2002:a05:6a00:4518:b0:73f:ff25:90b3 with SMTP id d2e1a72fcca58-74058b287b4mr5737241b3a.24.1746203980203;
-        Fri, 02 May 2025 09:39:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746203980; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp999436njj;
+        Fri, 2 May 2025 10:14:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVRXeCnuVU5XJC3EMpOYQrBarkTAvbBRfk92oYMvG/xiPlsIXXboKfbREmLWEVX4840z2sXaJzc5Qec+A==@linaro.org
+X-Google-Smtp-Source: AGHT+IG08OO+IqIf5xJtTWA5zGYNk5KiGpED4sBF57LksFQhh3vCi3k0PlaTMR5iu4gEJxpLO3+t
+X-Received: by 2002:a05:6102:5e83:b0:4c1:9159:859c with SMTP id ada2fe7eead31-4dafb57daebmr2740272137.15.1746206076029;
+        Fri, 02 May 2025 10:14:36 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1746206076; cv=pass;
         d=google.com; s=arc-20240605;
-        b=bDLMPHGH6zVUAQm9+KksnLATRMsua8bCBa/MSrDzNuJ1LbgTr/q6QGs3/uwncIE8rk
-         PVw5v6n+m81p4xPdkl4+U5IEroG1gA+VMJ5gjcibjqdpDlAQJ/kCdR5ySD+x2wfX9ugE
-         1DBXlzxRG4kipz56LNSC+kq4E/bgZZPqk1oBcZaMEUKS20OlQwfRzJDv0q3Mx4cBj8nH
-         p8J+TNIeNox4a6/KjIb6SWAsX13kEDnH4CrCeoWLyoJxm0/wYCteR1obTSs3h5tYAFUh
-         M4bWbXRDXrafik/6dUFDN/zhoq2HPVfSNjqsXkfGaZl9zqQZgtEFPKCBXWUZJKYFWR5H
-         scKQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        b=J4es9r/uQo0wicrXPgk3JjaQACIyFW/68qZbmp8/N/jMa1vv2y+D/pWyCwuvWbUTyU
+         sz1YmSioSUA/g5XfFYgGo5pswhNXFv2P2SNs09ZlB+OVVeSLjlFRxIrsZbSQlzTh+ir4
+         ramV0uUqgfJ/NQ9tccXFG79MWcp6amVdPunvHkXMGElA66M8mKbx51wxJZ2fW/PqhKll
+         I+wQUx+0qMH5yIkcKbG/3+NiceATLlxudsdF1UxD2kpwpJkMVICoiaLM+/tXIiddDgvV
+         5W9qUGBPwU9BPpbe9/JUmHnAvbQt6fHJ5p7gP2Uai9zsQIfJ9Mp6UtN82U5BEnF5M7hy
+         hFTQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=ov2+fSeigHznskBWAHFz17Xla4OiPqdPbenXGIwMlQQ=;
-        fh=GrazwJfnIdiUVwtf+iPiqb5ESMG1LTKjRbUzylxWq90=;
-        b=B3IpOVQ/d+BmsQou+mNWCBOXabPB3+0Nsj3ubvsjkKUaBvyZ0Q6lrc1MJXFUEIIxxO
-         Rx9CCoVdEi6YKojOzTpaJ2c89Ge6fVNuEvq/deP74hA/YkA3dXQhA1ofo7USLOJFUAxw
-         jKfKCMM1xkXp1LMIo5RoPJMfM3DzFp+Fb96oESpvZwIf2CDQ6eglngZlz3SGQygPQSg8
-         J7Hu0UkoJryQ+fQroDA6NsIgcjYnHr+iJGRpIeKBUQAKi3k5abxzky/U8iNh7kSY2LN2
-         pK5LTLOs9I/REB650hUkUQ/MK2exJwuQOmNcCcFooevPn23my0A97tcop1gVF2So+6Vq
-         TAng==;
+        bh=2QtpQBq571OnFxS+0BIclI67KL8U4z6kfdkHzfarB/c=;
+        fh=QfLtm739FJDwnQIBN1Vfdx7A0lOP9u5+VoNIhuGgE/E=;
+        b=cKFNFFEbjMVVNLFrSE/bDRTYYDa7/ExsFwN5hEmRrDNwx5i/IRj88QCZgkhoxCmF34
+         yo+vdirImKsEE8+Qzfw3op4iEvyXoDie2HoSdSMP/TqxwqeHQ6Ov9/JPasiBdrJ5MkJN
+         qFs8pVVjfTc1fsvewblUIJU/eUmcdS5sxyIVC53fmMIZtIaNePtR6cx4li3+jPyzDu62
+         AMuB/B94hIhzMwoGnOxPvDuYtO60ZzH+rnSyFYgjHevVz7fjNeN98j8jI54b0B2I21Cj
+         j+C0J1gF/vlKkpCd8PvTYLe25jC0Y0NAdVgqwaio2d79xlsIO499KKn45spUYHlp11k6
+         WO8Q==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=o5AIH8zc;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-7404e5abf7esor1697244b3a.0.2025.05.02.09.39.40
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=YfTRW7dO;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4dafcd4dd70si454389137.96.2025.05.02.10.14.35
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 02 May 2025 09:39:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 02 May 2025 10:14:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=o5AIH8zc;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1746203980; x=1746808780; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ov2+fSeigHznskBWAHFz17Xla4OiPqdPbenXGIwMlQQ=;
-        b=o5AIH8zcKCpxM6+RYPgxvN2/gaJg+2pwve72yC2vIEVtWWFdZoNrRL8ge8Wrc6fKIf
-         EtbV19m1jM9LH0Otua4Ub/va+rqo2rKOSlm4j1HgDcsmSDcqdMzY88z+uCTrdbXAFU6E
-         KZqqt47lgXm7MLWLwmFXUiQ4fRVahj8IcMi91wCe3zpz94BgU+JGbeGjs/MBvzH0B9Da
-         va4TaInTf0c9A2upc+MGlq5Ig6CtqW/bNm6/uQ0Zx0CPKx8JNR8ZKF9No/MVoU0ojQHs
-         qby/CHDRm35sZ2YJQknZWgQc8ss8l+Xn+RbgqXFdinaOCFg2P3MV9SfBMSnpGEEcfaPX
-         IgwQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746203980; x=1746808780;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ov2+fSeigHznskBWAHFz17Xla4OiPqdPbenXGIwMlQQ=;
-        b=es9WOh2pnEu9I/o1fQ9p2ND9zPifJN7i1xbiyPB1qnLlp0rHSEQKfG1dmW+NxMg2O6
-         RJ4OyFFFiBlSbbfTx5WzHua0nXQ3o5xE1g+EYVqNmhNEbYSiV3FQ6fTzk6iWGJbENGDc
-         4gVI5aQPoN4IcooAhCon9oRdSi39QpdD7IpRiC+BGxqa2+hRGCWuajg5iipD9onLKrNy
-         V92oPWvlb0RymezT+Ws7FUG4YwqcjuAXI8Kbny5YGRZJIihs6gFnj735CM+r/VhEWbAd
-         jM9+rFc4B59kUV83jKVtlYJ/cfgYZZkebErEZy40FKdj/MOZ2UVg6NMwEUBscFpUdJo2
-         S9AA==
-X-Forwarded-Encrypted: i=1; AJvYcCWL3OAaSTWWTW7EYUbi4axf9X8y4hKvibKdLjaSMIzrC51g6iQ43bWc3snUWQ32oioUO/y1jj7KMuNXhQ==@linaro.org
-X-Gm-Message-State: AOJu0Yw2zTi2kBEX7/nSgGzSKbDyTNNjW+OwYfVX55lg5+U5fKbTQf6u
-	ys/UvI3PXe9IvhxIkGZBSSKqWdrRUWsDbFG+4QjqpgxR1WylmV247Z8rNDgm6kwjiQ==
-X-Gm-Gg: ASbGncunDbp9JiEJdmsNkc8SMuj0BtPiPOzmHhqaYgl7LUVt75RPlrvcniMNWI0kTXD
-	FkYHBAP+mw3mpJD7KBTGzly36eOP0aXi7PvQscc8zEImkLYdrLgYTp89gHXjvKwnHoaYKyEH4kv
-	5TzXpf1FKKg443WXvIhMgwdAFrgAH/DYz/UH4oBl1ekmXfOYMWLcCXgwQCm0qZAhz9fwzzfwp0j
-	9vCs96IG7woSIaBWZTzq86MaRRjUW3igjIaSTwWHCeQcI3Phrh5OqOJ2pv8QSXU8n59u7JY4t+T
-	ewcFu4Z1PiXPfXv7hXM70EF/j9BebXst+voU2ZhHQ94x1byogIyN7w==
-X-Google-Smtp-Source: AGHT+IHmVuFWCI2rlgJozk+6E57xaLTpIykHP1/vDuaDAViicHmCpsOUPQZ2ztzUWD8nXUVxU0xBOA==
-X-Received: by 2002:a05:6a00:4ace:b0:739:50c0:b3fe with SMTP id d2e1a72fcca58-74058a1a76amr5976300b3a.8.1746203979630;
-        Fri, 02 May 2025 09:39:39 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from [192.168.1.87] ([38.41.223.211])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b1fb3c6d5aasm977527a12.74.2025.05.02.09.39.38
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 02 May 2025 09:39:39 -0700 (PDT)
-Message-ID: <ff403231-a36a-46a8-9168-2ac32a44328a@linaro.org>
-Date: Fri, 2 May 2025 09:39:37 -0700
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=YfTRW7dO;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uAtxu-0007h0-Rx; Fri, 02 May 2025 13:14:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1uAtxr-0007fs-Qf; Fri, 02 May 2025 13:14:19 -0400
+Received: from mail-bn8nam11on20607.outbound.protection.outlook.com
+ ([2a01:111:f403:2414::607]
+ helo=NAM11-BN8-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1uAtxp-000102-CO; Fri, 02 May 2025 13:14:19 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=RuM5onQpf0Bx9UbEoHT3n/Oh3bkY43MuHVuxWLREDUqeIFtALe0+mPEzzlEeWVBvhA72dONY6Ns6PYwEJ85SzLDUR3qX5yujzceRrSS8fM35S5jCXpCqSqBGHpqugk0AknOcARVhj+gVQHDNcIU1z+STTS1UcL3vZdWDAqoetdzQHBc2vDKfUu29c4Gwq0RYUewganitqWqjYSpRvULWP0jaIhk2tzxfkvg4nKcP8lA/A7oivs2v4p618Vcfewsz9Wx6V2mAms0ys/gDDj+qomh2qXZYqSRV2ykeJ8dt26WU5LUkJDyiTo1jSortQXLi52NMPOFC2/t7SHGtM8FNSw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=2QtpQBq571OnFxS+0BIclI67KL8U4z6kfdkHzfarB/c=;
+ b=GhAxztS3hSJdnAEzmtlt3Cr2kMikZZK0VwLfc07NmJR4u1k77KZ+cf7N3FlBVcIdY1k5zW5F3L96yea2sJbBxk+zEu+bbKeA15erAn7EJ1fRvNo4b5wWrGvZ5CoRuT1RDZaXYR3MZIJdkb4CHVZNxkVRgSf0/CIuSSzq1TrmwgzovXyLfnnPKJun4+h79cJm+MfQiOUkSrqvyO5aGwDXaHGAcLn0+zi7h9q/eGGibtTvXzydP6Ez2+DyIRhA/HSbM+w8lgYU3bBvDtP5J6aw42FLxtKjrb+fREfrzcg6wOwYGb0csFGo3GMpNBVSfAPViaDK+l9a0BBR92rQ4MF8jA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=2QtpQBq571OnFxS+0BIclI67KL8U4z6kfdkHzfarB/c=;
+ b=YfTRW7dOS63Vw/lyORINm4kEmrOoAyueFo6vBK8RaCFfpC47k5jio9h8RHSj5Wm6QyDU4CIXVWBRkCmA2iMXOZOaeqhVmSyE4uegc3R9y5mwHLl4q5gpvnqEqzrJgWN9q40w9JKkuKWgQVV/hhjOyxo3LSfPkrAd99EweM8oYrLI97YgfDgr5j9TD4p3EmEtXXnY1xjXimf55QulWVxmYZG3dJjBtQIRTpwG7wMT8+K3a6R31cTLX0OhMr6Unkv2zl8coXKeLD7Ci3gCeQoqZDlg8dRQF/YN7ocGlpdjRQzvNhsOtqYNxrIsQP6WTPjCpCOMo+9ZuNim4ap2IeHKSw==
+Received: from BL1PR13CA0353.namprd13.prod.outlook.com (2603:10b6:208:2c6::28)
+ by CH1PPFC596BECF8.namprd12.prod.outlook.com
+ (2603:10b6:61f:fc00::621) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8655.40; Fri, 2 May
+ 2025 17:14:08 +0000
+Received: from BN1PEPF00004686.namprd03.prod.outlook.com
+ (2603:10b6:208:2c6:cafe::da) by BL1PR13CA0353.outlook.office365.com
+ (2603:10b6:208:2c6::28) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8699.18 via Frontend Transport; Fri,
+ 2 May 2025 17:14:07 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ BN1PEPF00004686.mail.protection.outlook.com (10.167.243.91) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8699.20 via Frontend Transport; Fri, 2 May 2025 17:14:06 +0000
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Fri, 2 May 2025
+ 10:13:51 -0700
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail205.nvidia.com
+ (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 2 May
+ 2025 10:13:50 -0700
+Received: from Asurada-Nvidia (10.127.8.14) by mail.nvidia.com (10.129.68.9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
+ Transport; Fri, 2 May 2025 10:13:49 -0700
+Date: Fri, 2 May 2025 10:13:47 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>, <jgg@nvidia.com>, <ddutile@redhat.com>,
+ <berrange@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <smostafa@google.com>, <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>,
+ <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
+ <zhangfei.gao@linaro.org>
+Subject: Re: [PATCH v2 2/6] hw/arm/virt-acpi-build: Update IORT for multiple
+ smmuv3 devices
+Message-ID: <aBT9S25tQTVGKkii@Asurada-Nvidia>
+References: <20250502102707.110516-1-shameerali.kolothum.thodi@huawei.com>
+ <20250502102707.110516-3-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH] hw/virtio: Introduce CONFIG_VIRTIO_LEGACY to disable
- legacy support
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Daniel Henrique Barboza <danielhb413@gmail.com>,
- Stefano Garzarella <sgarzare@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- David Hildenbrand <david@redhat.com>, =?UTF-8?Q?Eugenio_P=C3=A9rez?=
- <eperezma@redhat.com>, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Jonah Palmer <jonah.palmer@oracle.com>,
- Raphael Norwitz <raphael.norwitz@nutanix.com>,
- Jason Wang <jasowang@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-ppc@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Akihiko Odaki <akihiko.odaki@daynix.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Anton Johansson <anjo@rev.ng>, qemu-arm@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20250502132441.64723-1-philmd@linaro.org>
-Content-Language: en-US
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20250502132441.64723-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: JNAGG5cAMCoL
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20250502102707.110516-3-shameerali.kolothum.thodi@huawei.com>
+X-NV-OnPremToCloud: AnonymousSubmission
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN1PEPF00004686:EE_|CH1PPFC596BECF8:EE_
+X-MS-Office365-Filtering-Correlation-Id: 906ab8b8-cf8f-4178-5cc5-08dd899cbed9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|7416014|376014|82310400026|36860700013|1800799024; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?yTcMoXQLcddQwv9vcA2acre0+Lyp+n6najIWU9oNLQVHbSWu2nM+tzGWVX4R?=
+ =?us-ascii?Q?/j+Z61QyVRFtz594C+RFpSkVD0eT3xtIkFHwvpSu74IoVGAvolnQHrrvuK00?=
+ =?us-ascii?Q?qUt/lnghiWypVoLTYUFXxCvbWvjF3hRlhqC4/fMj2y4ZHfrj+R57msgPIHFQ?=
+ =?us-ascii?Q?hWcWm/PtlHW+2mjM+Y61WYY/dcp36v4tb4HirCTqhJx+l9f6slM7b+yeI+m3?=
+ =?us-ascii?Q?D4RHQ0gVJ9KGBkGbSUwMGvn3ep3IkrjE4eD/BfHwfWfTcG4xwYBImRGvptEx?=
+ =?us-ascii?Q?9k1SvVq6EVpbDZdSP6MTca4Roe7QH+TZFQVz2p+fiuhXBzLNF+mgTZ8E9w7+?=
+ =?us-ascii?Q?dgw07Ile24393iiiUoPmYAHCZwiuW3QvcjpTwzzHC4Ha0MkcBshAwbg4pjWz?=
+ =?us-ascii?Q?D4mP+8h/SeSQMrUy7/H/jP1hbnGSft4QXPqq27sXf0ABOnJGMbMKkvFWeoJU?=
+ =?us-ascii?Q?IrIaQkcsuOhUTcjMPMOrt1WvhchMlrpdCr73hn5SX15d3JzlvxHCgfKF01vR?=
+ =?us-ascii?Q?vjqxQYtuGf2wTefCJJSfLKNqloDHqa1OJUayxgfFpp6PwzNRw43+I80sf/QY?=
+ =?us-ascii?Q?FSB9YyKJ+Tp0MLHyijdhSgjO4QUkxCjcmhdWhf60/2UzZeBaHo75uZQ2sAB2?=
+ =?us-ascii?Q?P54QH0f/dxpS7hfyBa/S0GNVW9njkdwFyMw++VaH2ncGU1yo6LNwENOT0FCV?=
+ =?us-ascii?Q?czbF37W/LhilBB7hb9HFMvkRDj9ki7+TtYqGqq4T4bNSHcayovl1RM/6/fYw?=
+ =?us-ascii?Q?+b3hK86idE9+Gs4I4wsLq5kvILRQAd4fMu7xIU1zoqXIoYlNt8XTfEgEHPoD?=
+ =?us-ascii?Q?WTPa6vTIYdT8PnPD3mIMRsZo2h8rWpRAoABvVmd9TIn8uKndnWuBvvGoEMoI?=
+ =?us-ascii?Q?3928bn3JGHrInAC2ABHGVBVt3VsqrXskdNWszcXSbOGvTFwDKaj67/SM0RpZ?=
+ =?us-ascii?Q?0jSck4CGqZPkfYsQ8b1SGOZqk1wPm8VQrvCihjd/FgJgzkpzBUCYQVMFObnD?=
+ =?us-ascii?Q?YiziujiAUZPFLMnqbMQzYTmALao6Aomn+kJaw+wBLkwNbKAHLYl71DQiHriE?=
+ =?us-ascii?Q?Bp9FpLSL1jNGDLwXraxQxt+1qRN7JYxB60gMbQp+x/j1rNOG13SyPWH/TxPD?=
+ =?us-ascii?Q?fGRg/YqP9yDCyrKkVmSatTs/ulOnn3HBzqsbeEoPeB3bYGt3SZskTh0N3/3j?=
+ =?us-ascii?Q?1R2e/B1YkEfpGRKYOOaGUtcd5V/iRGdH2bmdgFSHs1w3nFTmp/jNFbvygtrO?=
+ =?us-ascii?Q?VffGOnpcErvx5aiqb3qPdiTNCDuUbLzyXzYy2jCi5ddCHb12I9y5MaZKyXh9?=
+ =?us-ascii?Q?Q+rMFrzcXitGbcoN5W8FnVs9Gsf+4mcfwNb01p1yiJrCHVEDQvCO1qc5/rje?=
+ =?us-ascii?Q?zZUWJ+mA+hzzvrgJLi0XtUsrlI7tQ2w8467QnsCOqPxbSPXvWLeBwPn8kWb0?=
+ =?us-ascii?Q?EGvep63ue1gxV6rQl8fuSke9FLsTYWHQMKwYRA5UOBB//xJC46aLiKXitq69?=
+ =?us-ascii?Q?cyInG4RNYNBzozzZPzUwU4C1/GIl3PO7fs1o?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(7416014)(376014)(82310400026)(36860700013)(1800799024); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 May 2025 17:14:06.4218 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 906ab8b8-cf8f-4178-5cc5-08dd899cbed9
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BN1PEPF00004686.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH1PPFC596BECF8
+Received-SPF: permerror client-ip=2a01:111:f403:2414::607;
+ envelope-from=nicolinc@nvidia.com;
+ helo=NAM11-BN8-obe.outbound.protection.outlook.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.644,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2GPYAIUIwpE7
 
-On 5/2/25 6:24 AM, Philippe Mathieu-Daudé wrote:
-> Legacy VirtIO devices don't have their endianness clearly defined.
-> QEMU infers it taking the endianness of the (target) binary, or,
-> when a target support switching endianness at runtime, taking the
-> endianness of the vCPU accessing the device.
->
+On Fri, May 02, 2025 at 11:27:03AM +0100, Shameer Kolothum wrote:
+> @@ -43,6 +43,7 @@
+>  #include "hw/acpi/generic_event_device.h"
+>  #include "hw/acpi/tpm.h"
+>  #include "hw/acpi/hmat.h"
+> +#include "hw/arm/smmuv3.h"
+>  #include "hw/pci/pcie_host.h"
+>  #include "hw/pci/pci.h"
+>  #include "hw/pci/pci_bus.h"
+> @@ -266,6 +267,75 @@ static int iort_idmap_compare(gconstpointer a, gconstpointer b)
+>      return idmap_a->input_base - idmap_b->input_base;
+>  }
+>  
+> +struct SMMUv3Device {
+> +    int irq;
+> +    hwaddr base;
+> +    GArray *smmu_idmaps;
+> +    size_t offset;
+> +};
+> +typedef struct SMMUv3Device SMMUv3Device;
 
-Probably it's what you meant, but it is clearly defined by the standard 
-[1]. It's just not fixed.
+"SMMUv3Device" sounds too general, like coming from smmuv3.h :-/
 
-2.4.3 Legacy Interfaces: A Note on Virtqueue Endianness
-Note that when using the legacy interface, transitional devices and 
-drivers MUST use the native endian of the guest as the endian of fields 
-and in the virtqueue. This is opposed to little-endian for non-legacy 
-interface as specified by this standard. It is assumed that the host is 
-already aware of the guest endian.
+Given this describes SMMUv3's IORT node, I still think we should
+name it something like "IortSMMUv3Node" or so.
 
-[1] 
-https://docs.oasis-open.org/virtio/virtio/v1.0/cs04/virtio-v1.0-cs04.html#x1-250003
-
-> Devices modelling shouldn't really change depending on a property
-> of a CPU accessing it.
-> 
-
-Devices concerning various targets are aware of the cpu and its properties.
-
-> For heterogeneous systems, it is simpler to break such dev <-> cpu
-> dependency, only allowing generic device models, with no knowledge
-> of CPU (or DMA controller) accesses.
->
-
-At this point, we speculated it could be a problem, without really 
-proving it. In case all accesses are done within a given vcpu thread, 
-there is no ambiguity on the current endianness.
-How about we wait to expose a crash in an heterogeneous system to take a 
-decision?
-
-> Therefore we introduce the VIRTIO_LEGACY Kconfig key. We keep the
-> current default (enabled).
-> New binaries can set CONFIG_VIRTIO_LEGACY=n to restrict models to
-> the VirtIO version 1 spec.
->
-
-I think it's a good change, regarding the legacy support.
-
-However, if the only goal is to support a custom configuration for 
-heterogeneous emulation, I think it's the wrong direction.
-
-In essence, we are working hard right now to remove compile time 
-configuration for various QEMU targets.
-So seeing a new compile time configuration to solve something looks like 
-the opposite of what we are trying to achive.
-A possible alternative would be to enable virtio legacy support at 
-runtime, based on a specific criteria. From what I remember, legacy vs 
-modern is a property set by disable-modern=bool,disable-legacy=bool, and 
-"modern" is the default.
-Thus, we can simply restrict the disable-legacy=on in case we detect 
-it's an heterogeneous emulation scenario.
-
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   include/hw/virtio/virtio-access.h | 5 ++++-
->   hw/virtio/virtio.c                | 8 ++++++++
->   target/arm/cpu.c                  | 5 +++++
->   target/ppc/cpu_init.c             | 5 +++++
->   hw/virtio/Kconfig                 | 5 +++++
->   5 files changed, 27 insertions(+), 1 deletion(-)
-> 
-> diff --git a/include/hw/virtio/virtio-access.h b/include/hw/virtio/virtio-access.h
-> index 07aae69042a..b5b471711a6 100644
-> --- a/include/hw/virtio/virtio-access.h
-> +++ b/include/hw/virtio/virtio-access.h
-> @@ -20,7 +20,10 @@
->   #include "hw/virtio/virtio.h"
->   #include "hw/virtio/virtio-bus.h"
->   
-> -#if defined(TARGET_PPC64) || defined(TARGET_ARM)
-> +#include CONFIG_DEVICES
+> +static int smmuv3_dev_idmap_compare(gconstpointer a, gconstpointer b)
+> +{
+> +    SMMUv3Device *sdev_a = (SMMUv3Device *)a;
+> +    SMMUv3Device *sdev_b = (SMMUv3Device *)b;
+> +    AcpiIortIdMapping *map_a = &g_array_index(sdev_a->smmu_idmaps,
+> +                                              AcpiIortIdMapping, 0);
+> +    AcpiIortIdMapping *map_b = &g_array_index(sdev_b->smmu_idmaps,
+> +                                              AcpiIortIdMapping, 0);
+> +    return map_a->input_base - map_b->input_base;
+> +}
 > +
-> +#if defined(CONFIG_VIRTIO_LEGACY) && \
-> +    (defined(TARGET_PPC64) || defined(TARGET_ARM))
->   #define LEGACY_VIRTIO_IS_BIENDIAN 1
->   #endif
->   
-> diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
-> index 480c2e50365..659ab3cb969 100644
-> --- a/hw/virtio/virtio.c
-> +++ b/hw/virtio/virtio.c
-> @@ -47,6 +47,8 @@
->   #include "standard-headers/linux/virtio_mem.h"
->   #include "standard-headers/linux/virtio_vsock.h"
->   
-> +#include CONFIG_DEVICES
-> +
->   /*
->    * Maximum size of virtio device config space
->    */
-> @@ -3502,6 +3504,7 @@ void virtio_init(VirtIODevice *vdev, uint16_t device_id, size_t config_size)
->   bool virtio_legacy_allowed(VirtIODevice *vdev)
->   {
->       switch (vdev->device_id) {
-> +#ifdef CONFIG_VIRTIO_LEGACY
->       case VIRTIO_ID_NET:
->       case VIRTIO_ID_BLOCK:
->       case VIRTIO_ID_CONSOLE:
-> @@ -3513,6 +3516,7 @@ bool virtio_legacy_allowed(VirtIODevice *vdev)
->       case VIRTIO_ID_RPROC_SERIAL:
->       case VIRTIO_ID_CAIF:
->           return true;
-> +#endif
->       default:
->           return false;
->       }
-> @@ -4014,8 +4018,10 @@ static const Property virtio_properties[] = {
->       DEFINE_VIRTIO_COMMON_FEATURES(VirtIODevice, host_features),
->       DEFINE_PROP_BOOL("use-started", VirtIODevice, use_started, true),
->       DEFINE_PROP_BOOL("use-disabled-flag", VirtIODevice, use_disabled_flag, true),
-> +#ifdef CONFIG_VIRTIO_LEGACY
->       DEFINE_PROP_BOOL("x-disable-legacy-check", VirtIODevice,
->                        disable_legacy_check, false),
-> +#endif
->   };
->   
->   static int virtio_device_start_ioeventfd_impl(VirtIODevice *vdev)
-> @@ -4151,7 +4157,9 @@ static void virtio_device_class_init(ObjectClass *klass, const void *data)
->       vdc->start_ioeventfd = virtio_device_start_ioeventfd_impl;
->       vdc->stop_ioeventfd = virtio_device_stop_ioeventfd_impl;
->   
-> +#ifdef CONFIG_VIRTIO_LEGACY
->       vdc->legacy_features |= VIRTIO_LEGACY_FEATURES;
-> +#endif
->   }
->   
->   bool virtio_device_ioeventfd_enabled(VirtIODevice *vdev)
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 5e951675c60..d01fcb9fd1a 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -39,6 +39,7 @@
->   #if !defined(CONFIG_USER_ONLY)
->   #include "hw/loader.h"
->   #include "hw/boards.h"
-> +#include CONFIG_DEVICES
->   #ifdef CONFIG_TCG
->   #include "hw/intc/armv7m_nvic.h"
->   #endif /* CONFIG_TCG */
-> @@ -1130,6 +1131,7 @@ static void arm_cpu_kvm_set_irq(void *opaque, int irq, int level)
->   #endif
->   }
->   
-> +#ifdef CONFIG_VIRTIO_LEGACY
->   static bool arm_cpu_virtio_is_big_endian(CPUState *cs)
->   {
->       ARMCPU *cpu = ARM_CPU(cs);
-> @@ -1138,6 +1140,7 @@ static bool arm_cpu_virtio_is_big_endian(CPUState *cs)
->       cpu_synchronize_state(cs);
->       return arm_cpu_data_is_big_endian(env);
->   }
-> +#endif
->   
->   #ifdef CONFIG_TCG
->   bool arm_cpu_exec_halt(CPUState *cs)
-> @@ -2681,7 +2684,9 @@ static const struct SysemuCPUOps arm_sysemu_ops = {
->       .asidx_from_attrs = arm_asidx_from_attrs,
->       .write_elf32_note = arm_cpu_write_elf32_note,
->       .write_elf64_note = arm_cpu_write_elf64_note,
-> +#ifdef CONFIG_VIRTIO_LEGACY
->       .virtio_is_big_endian = arm_cpu_virtio_is_big_endian,
-> +#endif
->       .legacy_vmsd = &vmstate_arm_cpu,
->   };
->   #endif
-> diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-> index b0973b6df95..4b6c347bda8 100644
-> --- a/target/ppc/cpu_init.c
-> +++ b/target/ppc/cpu_init.c
-> @@ -50,6 +50,7 @@
->   #include "hw/boards.h"
->   #include "hw/intc/intc.h"
->   #include "kvm_ppc.h"
-> +#include CONFIG_DEVICES
->   #endif
->   
->   #include "cpu_init.h"
-> @@ -7352,12 +7353,14 @@ static void ppc_cpu_reset_hold(Object *obj, ResetType type)
->   
->   #ifndef CONFIG_USER_ONLY
->   
-> +#ifdef CONFIG_VIRTIO_LEGACY
->   static bool ppc_cpu_is_big_endian(CPUState *cs)
->   {
->       cpu_synchronize_state(cs);
->   
->       return !FIELD_EX64(cpu_env(cs)->msr, MSR, LE);
->   }
-> +#endif
->   
->   static bool ppc_get_irq_stats(InterruptStatsProvider *obj,
->                                 uint64_t **irq_counts, unsigned int *nb_irqs)
-> @@ -7470,7 +7473,9 @@ static const struct SysemuCPUOps ppc_sysemu_ops = {
->       .get_phys_page_debug = ppc_cpu_get_phys_page_debug,
->       .write_elf32_note = ppc32_cpu_write_elf32_note,
->       .write_elf64_note = ppc64_cpu_write_elf64_note,
-> +#ifdef CONFIG_VIRTIO_LEGACY
->       .virtio_is_big_endian = ppc_cpu_is_big_endian,
-> +#endif
->       .legacy_vmsd = &vmstate_ppc_cpu,
->   };
->   #endif
-> diff --git a/hw/virtio/Kconfig b/hw/virtio/Kconfig
-> index 7648a2d68da..314185f0016 100644
-> --- a/hw/virtio/Kconfig
-> +++ b/hw/virtio/Kconfig
-> @@ -1,6 +1,11 @@
->   config VIRTIO
->       bool
->   
-> +config VIRTIO_LEGACY
-> +    bool
-> +    default y
-> +    depends on VIRTIO
-> +
->   config VIRTIO_RNG
->       bool
->       default y
+> +static void
+> +get_smmuv3_legacy_dev(VirtMachineState *vms, GArray * smmuv3_devices)
 
-If the goal is to condition virtio_legacy, to maybe deprecate it one 
-day, then:
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+GArray *smmuv3_devices
+
+Or maybe align with the non-legacy path, i.e. "sdev_blob"? Or the
+other way around.
+
+Otherwise, lgtm
+Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>

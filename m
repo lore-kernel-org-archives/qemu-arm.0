@@ -1,122 +1,281 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2650231njj;
-        Mon, 5 May 2025 11:49:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWyvw4vP8mSG/h8T05dACLEKBQ04RUqNKWwIhibQDnOqCMoRWVzJXF6J/BVhmqmkfCG5F5e6l4XRMDYkg==@linaro.org
-X-Received: by 2002:a17:903:1b6b:b0:221:7e36:b13e with SMTP id d9443c01a7336-22e1e8e702dmr144889545ad.12.1746470999099;
-        Mon, 05 May 2025 11:49:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746470999; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2778117njj;
+        Mon, 5 May 2025 16:20:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXH1+L6nLEI3hnspYiRsG94uJnhC1zYVwJnFaSANTy2SbiiYTkbKFRLCyBuEMFA1/QePhCUVmHQl+h4lA==@linaro.org
+X-Received: by 2002:a17:90b:5684:b0:30a:2173:9f0b with SMTP id 98e67ed59e1d1-30a7c0c8bfcmr1737083a91.28.1746487221207;
+        Mon, 05 May 2025 16:20:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746487221; cv=none;
         d=google.com; s=arc-20240605;
-        b=DHaezCTyTsYeMDINW0zSVBye8yFpHHOmQt46BEYbqZv6ERwPnQ5woEW/z/tcB/h+jT
-         ONQjjKwpVqP1DF6eC++XsROdJUqwahTc1FYjRW3vhNL2WFFFq5uXfmPx4w2tNXSjMEtp
-         FCVi95zPeVE3QxomVS0W1Or7qf6piUkrYMJlYVXA8dnLXMHVpLGzMS8iOjQSNqQF/D8R
-         ZDkZX2O3gjfWgu0tp37+JysyYFwkeZ5sGIRnQ/cqXEGmles6XLGLnjWzzx+JXMXQBu+B
-         /BNPn37F6jxmUB+rhxCNMwZdjmFkKst1pBMRbvQTizu6844RKKRAr3RetgXnsKr0o9X5
-         fc1Q==
+        b=Onbnvgb2884lR4t6rUWZMRX+y5y6eTHVJduX2yjEMI4RfIf1a0us/+9KQieIbrFNfZ
+         a+Q4QgbqZjEhE2uK92TEv8mkrL1zeSY6/pRaINUf3jZB7NPzSLOPm1FC4RyX5Q3V9ZXb
+         p8NxaN7tIbOgp/VjAG+9XzdhQ4J0PYfdVhJiDKm7u1lpl8GhVMD4Tw+oxuECdcSiRcNt
+         5HEq0ytxVp1dMAWsjeDg1/y2AD/3a/LAshoWibpV8pIu10vTOXhuBR46sJP9ZA+xDzLA
+         L8BZ5jQAheZiHRkWhXVsiAHGE+dd0h0Ko52QQuc9hMb/HhD9RmhfSR0Kd1g2CUdN8rx3
+         sAAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Ta9jvo3AKEZuDVgunvRvdzr3ATvRL4CLel6LqcL2wrI=;
-        fh=TP292HMZMrrPiOQUDjKYG8SnlDFy+fkOFejMh+lgRmw=;
-        b=EQ5SkynSlmThultaTZHm9aAZ+29Ls76d1OVVtGEuCDObTu01JO03SHxJ1z4xcuF+08
-         VudnAhtZFybYJP3+pf1bBoPy3X6XOErOnDD/HR/n7SmEkckJj1QZgGUA1fl8SgVMyNNv
-         WixLCwvU4NJfJcFr1XpCDeoRWm/GaCU3nbWXcJQCBfmz/HaQP5maULza6Qwmu/bq23NK
-         dgWfpO6IBk1zqV+qIgKDmqX2M3OoHNg1C5QggLBEGmMJaz6FpMYKj9o+iP7F6gs6tG2z
-         MJWimVvPx4oD+2etAM+0cJtgN+7Nsibc3I8a8BLkW1KnysOhLPeGWI0ixrtPeFuTOBWv
-         si9w==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=04Ix3M4tuJXhEIQ9AeSHf28aqJlTNZ3AOq6Hx3kur6A=;
+        fh=T9SE+GW6633cIi7Y8C3ruqn26o45SRPQdwRZzXuEDdc=;
+        b=OOKm1mZ7h0W0TPcNsKMX8skCAD4gUWZIO+mhJnDpNq1WCU+iWSNWRem+KK8huEjdDM
+         a9HtUcnnc6HpRjobSL5u6pTlVb0phQBOD79H2Hy2qJafV/J27XuTSE+CM6HeGJ9ACTnN
+         non22GxiXnU/TenDTlWBJCNWxFXOSTWpIqTAUZeb48NVeMahn8mNrOsxfqLOjP5Z8AyZ
+         6GCzHz3dwQsfdzpWaO8GxnlHEiv/LFZlhFEMzTvgzyIIeOgDPiZPoyQEdf7nKE+ZEGs8
+         4uZ5HqRx4iylJP9pDZjCnjJ+Mf+QW0MJL0JwfRPNitT4CvvZIem3J3zxOoUGpwvDuEeI
+         flzg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="xe/m8B2X";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Na/G4UJx";
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <richard.henderson@linaro.org>
+Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-22e0bb0bc86sor55258415ad.4.2025.05.05.11.49.58
+        by mx.google.com with SMTPS id d9443c01a7336-22e0bb28f90sor83591355ad.6.2025.05.05.16.20.21
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 05 May 2025 11:49:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 05 May 2025 16:20:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="xe/m8B2X";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Na/G4UJx";
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1746470998; x=1747075798; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Ta9jvo3AKEZuDVgunvRvdzr3ATvRL4CLel6LqcL2wrI=;
-        b=xe/m8B2XfzTgO2kuO4YolG7Q42P1MJloCboJvyIlAm8mhh9/jGQXvtgp3jyYcBcM4/
-         AJjZgyivV2qAy+453AAciPsZrHi8gEle/XwhYodAaSAmJpTg1UdCj7sIgNBReBrUepC9
-         bt8a2fzTl89RZiBIqPLwcS60JAB5MdQZs/KsAyaYFHUTjTw11hbVavtZiLNk8DsbyfAg
-         WAVMpAJUjr3XMJOaz4hTJ59Cynoc0Is6vI0rEFJpwKKKZ9MnDNPd4DNz8N0VLlsYcOtS
-         I5M7GaWN5aoCzZYtj8qXwsGfslS74+H00YPxy7yiPJ8djiv05jdOkTowr5j7X1L3C1gw
-         4MfQ==
+        d=linaro.org; s=google; t=1746487221; x=1747092021; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=04Ix3M4tuJXhEIQ9AeSHf28aqJlTNZ3AOq6Hx3kur6A=;
+        b=Na/G4UJx17Gf12yFtWl2hyC/lMWENZqn5HiQonbBbVAVrhqOGiRFpieUF6mp268ZxM
+         wuNqV4+rRGvNd7romoZLzFIdH3ihdAmAiNEbVq//iMOJmlHtdDLpwbs0ClZ3VtaGPs7d
+         Q9/Fo0VZN80wkjyYiMMzMV7pDzzxAcYcsjGlWfcfB9KpxYKF4b6mGDsKCsowDPKMguql
+         lzEsSfjLuHIVB4py9ZI//sl+fT3q8WxvRr9dmUkr8hPVGNXy7sgSJ4S/ytS9eew6NNwt
+         R/pK0WzzQ0nX+7w0E3Fnf16EGk2+ewSpHXqv+rISv0TAn9t/zxK+n6z+ePvsXqO1h6UX
+         C7zw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746470998; x=1747075798;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Ta9jvo3AKEZuDVgunvRvdzr3ATvRL4CLel6LqcL2wrI=;
-        b=imKaYC2H+12lUYTrzCRO+rHe5k2FIhDBL/GzprMQ/e5K+wzOqUV0d59sD63BadmVLG
-         pwyoFPB1HXjZ9EhA+c5veTLuIRN4GiAddjrLXuix7fWNyjaqI+JGHb0deCzD1ztbasn8
-         O9KqBZo+Y/bjmExYX9dwsd0Tjcp7IR6IyJsS72dQaAvGKUxqZXuN1SP31XhFvcerFLd+
-         UGd54hYOvCz27tC7zgaUKtHpUNBjNtBp5Ftl6ycZorsv6sQ0chpFtDOrboGq4mcWdc6j
-         MLs3E9UGYgX4Ykug2LU+w9/6ahKHW3x6eV7aNoESMN0nX6gv5K+RXXjca7gkPR3EaNuV
-         qLyQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUtiq3iji8OBsh36yKxsVAtXS3Jp4y6AJ/4vYAbhctcOw6kWVlu6djQzZlj5g43E9rU+gRkHYw4IZS9vA==@linaro.org
-X-Gm-Message-State: AOJu0YzMW+JeSlAjvr16tvvwYf/Q5cgHf70hmh/syITN0TC/bIRm0vhN
-	WZbPwdsjfn3Qa6n9a5Lal42xeeUx21WMK5dHBBuoWMOh/tPm4iZ1QjV5mq+ZnpB8Cg==
-X-Gm-Gg: ASbGnctCBcK4BBiIrLii8PW2RWOGc+Jb1rV1QRdCA83TEYgh4fW7k1KaFvsysXWZek8
-	7WHMC+5djXBBdkeNdbT0yWIF9uPi1ptOFmunMPVHvEmYm1bQuH+eD5FRMprDpLOYgHlgyc41VGS
-	OXd9QtWLVLOI3Zt/wVHmj7AJvHqHwvsIwBHDdMwlYFlJCMs5Zr6x36rpW+ogvkOvkDeFh/S/eZ0
-	NJOun3CpxOvD15YnFCZsmVPfn6SXrtxg5BuDg4Hnvgt0Sa/7KO3a3OV6nhIPTZREpQgwp3ylXKG
-	lF84pXwk0jnkckCGXEOfSfpmL3gcRKyU2HkO+Q2LEJ/jnt8e8Qd6rReWidydopd2wlzZCXRvjzr
-	S05IoDW8=
-X-Google-Smtp-Source: AGHT+IGwaWwoaIh0UAcV4KiVMS3oBhW2UNucgbSD7FkDN5CheSLqg7kcicpiYhK/ibBbWx3Qh9MTeA==
-X-Received: by 2002:a17:902:f543:b0:224:2a6d:55ae with SMTP id d9443c01a7336-22e1eac1872mr152998795ad.48.1746470998678;
-        Mon, 05 May 2025 11:49:58 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.0.4] (71-212-47-143.tukw.qwest.net. [71.212.47.143])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22e15228bbesm58347355ad.164.2025.05.05.11.49.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 May 2025 11:49:58 -0700 (PDT)
-Message-ID: <b381f802-9eb9-40ee-a7de-f3b5c49abfff@linaro.org>
-Date: Mon, 5 May 2025 11:49:56 -0700
+        d=1e100.net; s=20230601; t=1746487221; x=1747092021;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=04Ix3M4tuJXhEIQ9AeSHf28aqJlTNZ3AOq6Hx3kur6A=;
+        b=fWKnCkOvWnZSsTl7vtMs3pneS8MMgC8g7wtiyn8VRHDrX0/YZb0EELJ/nvICfLoGJx
+         WaSGufzoIX0qc8fB/hG8+f4hZc/sVblw5i+IkK8+Gv3Fv69mVDb0rJFl8lo79yCxlHLL
+         U7hj5I46GIarmReI38ZVApvBhcJHB5sQzUd6equNCT5e6qA3etHP46HIhQaPaOWW7b+W
+         TBMQqNY5Z+QVLw0X5KetdvM471ncJhTKBVvhpd+dM3uH40FNJoiMZddoxX2eaJm/UJKf
+         POVPgXz1uwT4Eifcv8MFDkcxtN2C9lcKRFQKZUoCXdLqn9EszUZ9QVs6Uw38gFj0Aic4
+         ONDQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVn9Ji/cF+coiLtHKRFNDt1DBiePpUC7DUSlibr5TPa0T1UQFVvlS0mk+DNREF1vZe+YmaJXS7JOQUgWA==@linaro.org
+X-Gm-Message-State: AOJu0YyAZ65WMLjcNretEa07NjN9hqz6x7e6oXMClBt97ZgxVpdVmNva
+	Vzy0crR+wiSdnsPF8oCvfpvintfcTEJed+z4HPrjxzYKzczcIl0cdQuu1hYri8VjdYa9JkzSU+4
+	AUP3y+A==
+X-Gm-Gg: ASbGncvSMT1Fjhw/000lryDMUdlpsfzqklxMHuQbkI2tXVLbpbHjj2kFxdPzh0z7WCi
+	SbWWOu3MPfJkp9SXjTozl7Z20yVNXWYsPPbYyHIwp//WexN3B1FjrRSx/puJY9CxKpFoH3vzpsz
+	LuZIYtGCcBHoXlaJyBTmb5w336N0J5chfDkOBYClmurNDhYu/GtE6taHMwQiBgIstxXQ5QJ//mP
+	v+MuGeOv2J3Xj1Dzq1P7wM4DG6F4vc/ThC0JEGc0tDvIqg2QsgcbYP9crMWxD0KUxHbyV9E+9eq
+	7XkQW3pZf4H+VjKSYdUo6Cu0KK90R936crUDrXxQ
+X-Google-Smtp-Source: AGHT+IHfCgAA4+D90CVu2oz49y29SXm3HfgqMa52LdxN54WvvmDw5NiqsMm2gDuMWZrsbaNGyWXGVA==
+X-Received: by 2002:a17:903:41cb:b0:220:e1e6:4472 with SMTP id d9443c01a7336-22e328cf92emr16217105ad.13.1746487220678;
+        Mon, 05 May 2025 16:20:20 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from pc.. ([38.41.223.211])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22e1522917asm60981715ad.201.2025.05.05.16.20.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 05 May 2025 16:20:20 -0700 (PDT)
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: richard.henderson@linaro.org,
+	anjo@rev.ng,
+	Peter Maydell <peter.maydell@linaro.org>,
+	alex.bennee@linaro.org,
+	kvm@vger.kernel.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	qemu-arm@nongnu.org,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v6 00/50] single-binary: compile target/arm twice
+Date: Mon,  5 May 2025 16:19:25 -0700
+Message-ID: <20250505232015.130990-1-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 46/48] target/arm/tcg/tlb-insns: compile file twice
- (system, user)
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- alex.bennee@linaro.org, kvm@vger.kernel.org,
- Peter Maydell <peter.maydell@linaro.org>, anjo@rev.ng,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-References: <20250505015223.3895275-1-pierrick.bouvier@linaro.org>
- <20250505015223.3895275-47-pierrick.bouvier@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250505015223.3895275-47-pierrick.bouvier@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: mzbTw8o7CZcH
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: /yS6tQ1MJRWV
 
-On 5/4/25 18:52, Pierrick Bouvier wrote:
-> aarch64 specific code is guarded by cpu_isar_feature(aa64*), so it's
-> safe to expose it.
-> 
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> ---
->   target/arm/tcg/tlb-insns.c | 7 -------
->   target/arm/tcg/meson.build | 3 ++-
->   2 files changed, 2 insertions(+), 8 deletions(-)
+More work toward single-binary.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Some files have external dependencies for the single-binary:
+- target/arm/gdbstub.c: gdbhelpers
+- target/arm/arm-qmp-cmds.c: qapi
+- target/arm/tcg/translate*: need deep cleanup in include/tcg
+- target/arm/tcg/cpu*: need TargetInfo implemented for arm/aarch64
+- target/arm/tcg/*-helper*: need deeper split between aarch64 and arm code
+They will not be ported in this series.
 
-In an ideal world, this would only be included within the system build, since all tlb 
-flushing insns are privileged.  However, it would appear helper.c needs more cleanup 
-before that could happen.
+Built on {linux, windows, macos} x {x86_64, aarch64}
+Fully tested on linux-x86_64
 
+v6
+--
 
-r~
+CI: https://github.com/pbo-linaro/qemu/actions/runs/14844742069/job/41675865456
+- Replace target_ulong -> vaddr for HWBreakpoint (Philippe)
+- build target/arm/tcg/crypto_helper.c once (Richard)
+- build target/arm/tcg/tlb-insns for system only (Richard)
+- build target/arm/tcg/arith_helper once (Richard)
+
+v5
+--
+
+CI: https://github.com/pbo-linaro/qemu/actions/runs/14825451208/job/41617949501
+- Do not define a separate vaddr type in tcg, simply alias to i32/i64 (Richard)
+- target/arm/tcg/crypto_helper.c
+- target/arm/tcg/hflags.c
+- target/arm/tcg/iwmmxt_helper.c
+- target/arm/tcg/neon_helper.c
+- target/arm/tcg/tlb_helper.c
+- target/arm/tcg/tlb-insns.c
+- target/arm/tcg/arith_helper.c
+- target/arm/tcg/vfp_helper.c
+
+v4
+--
+
+CI: https://github.com/pbo-linaro/qemu/actions/runs/14816460393/job/41597560792
+- add patch to apply target config for picking files in libsystem/libuser
+  Useful for Philippe series for semihosting:
+  https://lore.kernel.org/qemu-devel/20250502220524.81548-1-philmd@linaro.org/T/#me750bbaeeba4d16791121fe98b44202afaec4068
+- update some patches description (Philippe & Richard)
+- tcg: introduce vaddr type (Richard)
+- modify concerned helpers to use vaddr instead of i64 (Richard)
+- use int64_t instead of uint64_t for top_bits in ptw.c (Philippe)
+- arm_casq_ptw: use CONFIG_ATOMIC64 instead of TARGET_AARCH64 and comment why
+  (Richard)
+- target/arm/machine.c
+
+v3
+--
+
+CI: https://github.com/pbo-linaro/qemu/actions/runs/14765763846/job/41456754153
+- Add missing license for new files (Richard)
+- target/arm/debug_helper.c
+- target/arm/helper.c
+- target/arm/vfp_fpscr.c
+- target/arm/arch_dump.c
+- target/arm/arm-powerctl.c
+- target/arm/cortex-regs.c
+- target/arm/ptw.c
+- target/arm/kvm-stub.c
+
+v2
+--
+
+- Remove duplication of kvm struct and constant (Alex)
+- Use target_big_endian() (Anton)
+
+v1
+--
+
+- target/arm/cpu.c
+
+Philippe Mathieu-Daudé (1):
+  target/arm: Replace target_ulong -> vaddr for HWBreakpoint
+
+Pierrick Bouvier (49):
+  include/system/hvf: missing vaddr include
+  meson: add common libs for target and target_system
+  meson: apply target config for picking files from libsystem and
+    libuser
+  target/arm: move kvm stubs and remove CONFIG_KVM from kvm_arm.h
+  target/arm/kvm-stub: add kvm_arm_reset_vcpu stub
+  target/arm/cpu: move arm_cpu_kvm_set_irq to kvm.c
+  accel/hvf: add hvf_enabled() for common code
+  target/arm/cpu: remove TARGET_BIG_ENDIAN dependency
+  target/arm/cpu: remove TARGET_AARCH64 around aarch64_cpu_dump_state
+    common
+  target/arm/cpu: remove TARGET_AARCH64 in arm_cpu_finalize_features
+  target/arm/cpu: compile file twice (user, system) only
+  target/arm/cpu32-stubs.c: compile file twice (user, system)
+  tcg: add vaddr type for helpers
+  target/arm/helper: use vaddr instead of target_ulong for
+    exception_pc_alignment
+  target/arm/helper: use vaddr instead of target_ulong for probe_access
+  target/arm/helper: extract common helpers
+  target/arm/debug_helper: only include common helpers
+  target/arm/debug_helper: remove target_ulong
+  target/arm/debug_helper: compile file twice (user, system)
+  target/arm/helper: restrict include to common helpers
+  target/arm/helper: replace target_ulong by vaddr
+  target/arm/helper: expose aarch64 cpu registration
+  target/arm/helper: remove remaining TARGET_AARCH64
+  target/arm/helper: compile file twice (user, system)
+  target/arm/vfp_fpscr: compile file twice (user, system)
+  target/arm/arch_dump: remove TARGET_AARCH64 conditionals
+  target/arm/arch_dump: compile file once (system)
+  target/arm/arm-powerctl: compile file once (system)
+  target/arm/cortex-regs: compile file once (system)
+  target/arm/ptw: replace target_ulong with int64_t
+  target/arm/ptw: replace TARGET_AARCH64 by CONFIG_ATOMIC64 from
+    arm_casq_ptw
+  target/arm/ptw: compile file once (system)
+  target/arm/meson: accelerator files are not needed in user mode
+  target/arm/kvm-stub: compile file once (system)
+  target/arm/machine: reduce migration include to avoid target specific
+    definitions
+  target/arm/machine: remove TARGET_AARCH64 from migration state
+  target/arm/machine: move cpu_post_load kvm bits to
+    kvm_arm_cpu_post_load function
+  target/arm/kvm-stub: add missing stubs
+  target/arm/machine: compile file once (system)
+  target/arm/tcg/vec_internal: use forward declaration for CPUARMState
+  target/arm/tcg/crypto_helper: compile file once
+  target/arm/tcg/hflags: compile file twice (system, user)
+  target/arm/tcg/iwmmxt_helper: compile file twice (system, user)
+  target/arm/tcg/neon_helper: compile file twice (system, user)
+  target/arm/tcg/tlb_helper: compile file twice (system, user)
+  target/arm/helper: restrict define_tlb_insn_regs to system target
+  target/arm/tcg/tlb-insns: compile file once (system)
+  target/arm/tcg/arith_helper: compile file once
+  target/arm/tcg/vfp_helper: compile file twice (system, user)
+
+ meson.build                    |  104 ++-
+ include/system/hvf.h           |   15 +-
+ include/tcg/tcg-op-common.h    |    1 +
+ include/tcg/tcg.h              |   14 +
+ target/arm/helper.h            | 1152 +------------------------------
+ target/arm/internals.h         |    6 +-
+ target/arm/kvm_arm.h           |   87 +--
+ target/arm/tcg/helper.h        | 1153 ++++++++++++++++++++++++++++++++
+ target/arm/tcg/vec_internal.h  |    2 +
+ include/exec/helper-head.h.inc |   11 +
+ accel/hvf/hvf-stub.c           |    5 +
+ target/arm/arch_dump.c         |    6 -
+ target/arm/cpu.c               |   47 +-
+ target/arm/cpu32-stubs.c       |   26 +
+ target/arm/debug_helper.c      |    6 +-
+ target/arm/helper.c            |   23 +-
+ target/arm/hyp_gdbstub.c       |    6 +-
+ target/arm/kvm-stub.c          |   97 +++
+ target/arm/kvm.c               |   42 +-
+ target/arm/machine.c           |   15 +-
+ target/arm/ptw.c               |    6 +-
+ target/arm/tcg/arith_helper.c  |    5 +-
+ target/arm/tcg/crypto_helper.c |    6 +-
+ target/arm/tcg/hflags.c        |    4 +-
+ target/arm/tcg/iwmmxt_helper.c |    4 +-
+ target/arm/tcg/neon_helper.c   |    4 +-
+ target/arm/tcg/op_helper.c     |    2 +-
+ target/arm/tcg/tlb-insns.c     |    7 -
+ target/arm/tcg/tlb_helper.c    |    5 +-
+ target/arm/tcg/translate-a64.c |    2 +-
+ target/arm/tcg/translate.c     |    2 +-
+ target/arm/tcg/vfp_helper.c    |    4 +-
+ tcg/tcg.c                      |    5 +
+ accel/hvf/meson.build          |    1 +
+ target/arm/meson.build         |   41 +-
+ target/arm/tcg/meson.build     |   29 +-
+ 36 files changed, 1547 insertions(+), 1398 deletions(-)
+ create mode 100644 target/arm/tcg/helper.h
+ create mode 100644 accel/hvf/hvf-stub.c
+ create mode 100644 target/arm/cpu32-stubs.c
+
+-- 
+2.47.2

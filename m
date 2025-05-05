@@ -1,93 +1,94 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2307153njj;
-        Mon, 5 May 2025 02:12:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXiSKrRd0E9TyKeW7s29eLd+t9N7cbEIywHPt1NfCmQfV3dX+Cvhh9BcGsm88Nlzs/kkPF6VF8mow2hYA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFouUQzgFngV2UUYAGGldCdRHiuq9Xf9joPAOoOsGcnQNQBmW56Fqc83jgiFJJM7QO97Xbc
-X-Received: by 2002:a05:6000:310d:b0:3a0:7fbb:65fe with SMTP id ffacd0b85a97d-3a09ceb8761mr5483579f8f.26.1746436378048;
-        Mon, 05 May 2025 02:12:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746436378; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2307271njj;
+        Mon, 5 May 2025 02:13:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUlF6PJ52lSr04wifT672mxothy5xCe4NWOer91n//uNEHsNxbIY9JtST2wGpWtHDsIOJGVNLAnScCQ0w==@linaro.org
+X-Google-Smtp-Source: AGHT+IHo5zB9XK+E621381x8yHeMjEj7EDgXGB56ckBzCZVrGcbJsuB2jfLifVemi4CTV6SyjXKi
+X-Received: by 2002:a05:600c:b8c:b0:441:b19c:96fc with SMTP id 5b1f17b1804b1-441c48b676cmr44188105e9.11.1746436394901;
+        Mon, 05 May 2025 02:13:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746436394; cv=none;
         d=google.com; s=arc-20240605;
-        b=GnMOqG0B+M8rwCC3jta4XiG6VBZ7qOSCRngRjHTCQ8xu1tc1zFYqKS+Ld1ODgSL/p7
-         eZpnj/7K+BjxnypbX+1Ozlb/sUdZjNaAVGPlscgWy+MjyYEG3AqY6rlH878hzOsEe6FY
-         QBrpI8c5uQic/j+TnzBZSjApIWY8qLeLouEOS2pM/5VpolkJK4njPjySPLfZupZj1Y2P
-         8EwJ2t/z2yWLeBioRxiGx/oduHhCUIvLwLzWk0/OfaoDHbKp4lZLbh0ULQFSyTYXX6Yc
-         cVFWzAGC5l+5sm53I7jnZxvBwgjJdQ2EMCQQWX8wtqDS6S5OrGIHv3MO579nxLeCDLpY
-         x4Jw==
+        b=HKhz3AtdcKT2Z13tw+VDVreFxDMO9S3wjz11ix5vWVc0hrBryQ03YZ7e6y6D9MWK1n
+         c4LsYkC/ghuCqfmKhzPaX2hsk7LNdchjIdB8YkwHjWS940c9U2DedvIlPk5aillC4F+7
+         nPfQ9gjczVkkGhSy0Nz649XP7QhQngOEjNN8mjyWII6DH1h79HGfOHTGJ5WSs9eGgHeb
+         yNShrqmNOwmToyARyQPZUR5Q1GX7OciOhj0yVixkkW65Wl2PxtRCY3rMv+GANDeAyWRQ
+         HDqXoMqphrsm9+yQv91qFe5eoeDsp8UF8GSL6ootu3JfEufu+ayWMuAuA5grIMniHGLk
+         EibQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=h1/HMKZKPdedsTTheTmVJq//CFPLp8wuzx1oWhneYEw=;
-        fh=O3GBR2OOT5hhNkvxv+rlHs7YTTnYAArA4Xdium3ocZU=;
-        b=D96/sb/oR73ID7fq1Nu9lK9zlh0QQIGZiZ2Psxp1+OgjDKbvOghcIBfLNqim/SvxYh
-         WcWYdZt1R/YELzK7QvYr1F9m5jY3fDuofhqvn0UN1PooBc5cfMymUr1HRMCMO8Ssq9Q9
-         58Sy9gRER2onewYEANoSddPGTfWBBaCwryNkQk9/cQDFuvTIu88Z09w7OuJJNbYHr7+D
-         l1D68mS1cW1TKeQ7QhIUzXvYF4auKRSLpfoDFOKZxIGskazBO2FI2hWZi7nHnWp5GRF4
-         ZIiRWI0hprDd3y7qX9zvpmZ7cG8MSPbu/0mxGm9jD8hw2kWAt/Q3O5mihtoE7JfULYnZ
-         BXUg==;
+        bh=Cmp+xw+e+WHTiw05Jl9oTQCn6JA0x2PKHqMvKNwHRMw=;
+        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
+        b=kEXSBXb0TE0SFj1rEdNPcCxMuHLekGQtite++4kAeZ4Ei/S7jatYOUyqUHhoG6S1xa
+         xaaLuMAvccxS1gr+wY4KZPlD/yzo0MpAGcrdM2EKn2WlUtYDsAhPMVgoC7SlGhYAPG4C
+         8zYma5IKGujFvxZhrITH/Wo3VYx1Y8UiZ0maERlalQuq2pcw7hnWe3EDufs2o2FgcMcU
+         zZoBEdaIhK0KHOyhPE1naBtQmlTJ+cFXcao4QC/kjWsg8Tuq2UXIEahOsX+QeO+L/IVW
+         3ABaFenQSAE14qo5lIUDge8rR8x2NX9P02z+eh7vxD1DtiPtmra9rHzCjajQKieUv0uL
+         SiMA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AyZkACj5;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IBE47dbm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a099b00a28si4891108f8f.535.2025.05.05.02.12.57
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-441b2aecd87si88318985e9.63.2025.05.05.02.13.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 May 2025 02:12:58 -0700 (PDT)
+        Mon, 05 May 2025 02:13:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AyZkACj5;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IBE47dbm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uBrqy-0004Bq-8E; Mon, 05 May 2025 05:11:12 -0400
+	id 1uBrqq-0003jL-TQ; Mon, 05 May 2025 05:11:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrnk-0000NU-Sj
- for qemu-arm@nongnu.org; Mon, 05 May 2025 05:07:54 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrnH-0007VE-38
+ for qemu-arm@nongnu.org; Mon, 05 May 2025 05:07:24 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrnd-0006Re-AH
- for qemu-arm@nongnu.org; Mon, 05 May 2025 05:07:47 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrnE-0006KZ-K5
+ for qemu-arm@nongnu.org; Mon, 05 May 2025 05:07:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1746436063;
+ s=mimecast20190719; t=1746436039;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=h1/HMKZKPdedsTTheTmVJq//CFPLp8wuzx1oWhneYEw=;
- b=AyZkACj5W6VXDpuZf2uLdrooTTshllfbu9HQIFziOZcmhL+92LE5Zbe4kZB5Mpkr+Wt/Tk
- 0h9hRH0wN0jNIsRxDvf8AIjBnzDPgfo6DOVelJEixnF4ND77ukkMVgv6iaEY8OJfd25bDE
- Gr6ja8bTDMcuTFerxLjKHLY9i15K0Cg=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=Cmp+xw+e+WHTiw05Jl9oTQCn6JA0x2PKHqMvKNwHRMw=;
+ b=IBE47dbmosfcvonEcdsrdYPnU2cFtEDFArES1jdhbZlcjwGu5COUWLuljQoiTzaWHYMkpt
+ 04lBgbEMTOstB2cAbRZE/f0Dh8vG29Us7Ox5v4hkFTTT1xEAJQqAHgPAPnvO6wG58oWogz
+ Ni8ZNUcAZFKlhe+SvHveV0EikpoLoBs=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-336-jsnrJXnTMf2bUC89IdftWA-1; Mon,
- 05 May 2025 05:07:40 -0400
-X-MC-Unique: jsnrJXnTMf2bUC89IdftWA-1
-X-Mimecast-MFC-AGG-ID: jsnrJXnTMf2bUC89IdftWA_1746436059
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-362-v1lJkeEjNxaUL19rdOE0Qg-1; Mon,
+ 05 May 2025 05:07:18 -0400
+X-MC-Unique: v1lJkeEjNxaUL19rdOE0Qg-1
+X-Mimecast-MFC-AGG-ID: v1lJkeEjNxaUL19rdOE0Qg_1746436037
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 828041955DCD; Mon,  5 May 2025 09:07:39 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8A47F180087A; Mon,  5 May 2025 09:07:17 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.38])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id DFA6F30001A2; Mon,  5 May 2025 09:07:37 +0000 (UTC)
+ id E355930002C5; Mon,  5 May 2025 09:07:15 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Steven Lee <steven_lee@aspeedtech.com>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 23/23] docs: Add support for ast2700fc machine
-Date: Mon,  5 May 2025 11:06:35 +0200
-Message-ID: <20250505090635.778785-24-clg@redhat.com>
+Subject: [PULL 13/23] docs/system/arm/aspeed: move AST2700 content to new
+ section
+Date: Mon,  5 May 2025 11:06:25 +0200
+Message-ID: <20250505090635.778785-14-clg@redhat.com>
 In-Reply-To: <20250505090635.778785-1-clg@redhat.com>
 References: <20250505090635.778785-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -103,7 +104,7 @@ X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.411,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,121 +119,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AcbMQFBJZ+ww
+X-TUID: L2TnYj/cSsUq
 
-From: Steven Lee <steven_lee@aspeedtech.com>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-- Updated Aspeed family boards list to include `ast2700fc`.
-- Added boot instructions for the `ast2700fc` machine.
-- Detailed the configuration and loading of firmware for the
-  Cortex-A35 and Cortex-M4 processors.
+Moved AST2700-related content from the general Aspeed board list into a
+dedicated section for Aspeed 2700 family boards. Improves clarity and
+readability.
 
-Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-Change-Id: Id41312e9c7cf79bc55c6f24a87a7ad9993dc7261
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250502103449.3091642-10-steven_lee@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20250424075135.3715128-6-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- docs/system/arm/aspeed.rst | 69 ++++++++++++++++++++++++++++++++++++--
- 1 file changed, 66 insertions(+), 3 deletions(-)
+ docs/system/arm/aspeed.rst | 70 ++++++++++++++++++++++++++++++++++----
+ 1 file changed, 63 insertions(+), 7 deletions(-)
 
 diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 014545f4440f..58a8020eec23 100644
+index 97fd6a0e7fbd..08a33b7008b7 100644
 --- a/docs/system/arm/aspeed.rst
 +++ b/docs/system/arm/aspeed.rst
-@@ -1,5 +1,5 @@
--Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
--==================================================================================================================================================================================================================================================================================================================================================================================================================
-+Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``ast2700fc``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
-+=================================================================================================================================================================================================================================================================================================================================================================================================================================
+@@ -1,12 +1,11 @@
+-Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
++Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
+ ==================================================================================================================================================================================================================================================================================================================================================================================================================
  
  The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
  Aspeed evaluation boards. They are based on different releases of the
-@@ -255,6 +255,7 @@ etc.
- AST2700 SoC based machines :
+ Aspeed SoC : the AST2400 integrating an ARM926EJ-S CPU (400MHz), the
+ AST2500 with an ARM1176JZS CPU (800MHz), the AST2600
+-with dual cores ARM Cortex-A7 CPUs (1.2GHz) and more recently the AST2700
+-with quad cores ARM Cortex-A35 64 bits CPUs (1.6GHz)
++with dual cores ARM Cortex-A7 CPUs (1.2GHz).
  
- - ``ast2700-evb``          Aspeed AST2700 Evaluation board (Cortex-A35)
-+- ``ast2700fc``            Aspeed AST2700 Evaluation board (Cortex-A35 + Cortex-M4)
+ The SoC comes with RAM, Gigabit ethernet, USB, SD/MMC, USB, SPI, I2C,
+ etc.
+@@ -39,10 +38,6 @@ AST2600 SoC based machines :
+ - ``qcom-dc-scm-v1-bmc``   Qualcomm DC-SCM V1 BMC
+ - ``qcom-firework-bmc``    Qualcomm Firework BMC
  
+-AST2700 SoC based machines :
+-
+-- ``ast2700-evb``          Aspeed AST2700 Evaluation board (Cortex-A35)
+-
  Supported devices
  -----------------
-@@ -285,7 +286,6 @@ Supported devices
  
- Missing devices
- ---------------
-- * Coprocessor support
-  * PWM and Fan Controller
-  * Slave GPIO Controller
-  * Super I/O Controller
-@@ -353,6 +353,69 @@ specified path in the ${HOME} directory.
+@@ -247,6 +242,67 @@ under Linux), use :
  
-   -bios ${HOME}/ast27x0_bootrom.bin
+   -M ast2500-evb,bmc-console=uart3
  
-+Booting the ast2700fc machine
-+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++Aspeed 2700 family boards (``ast2700-evb``)
++==================================================================
 +
-+AST2700 features four Cortex-A35 primary processors and two Cortex-M4 coprocessors.
-+**ast2700-evb** machine focuses on emulating the four Cortex-A35 primary processors,
-+**ast2700fc** machine extends **ast2700-evb** by adding support for the two Cortex-M4 coprocessors.
++The QEMU Aspeed machines model BMCs of Aspeed evaluation boards.
++They are based on different releases of the Aspeed SoC :
++the AST2700 with quad cores ARM Cortex-A35 64 bits CPUs (1.6GHz).
 +
-+Steps to boot the AST2700fc machine:
++The SoC comes with RAM, Gigabit ethernet, USB, SD/MMC, USB, SPI, I2C,
++etc.
 +
-+1. Ensure you have the following AST2700A1 binaries available in a directory
++AST2700 SoC based machines :
 +
-+ * u-boot-nodtb.bin
-+ * u-boot.dtb
-+ * bl31.bin
-+ * optee/tee-raw.bin
-+ * image-bmc
-+ * zephyr-aspeed-ssp.elf (for SSP firmware, CPU 5)
-+ * zephyr-aspeed-tsp.elf (for TSP firmware, CPU 6)
++- ``ast2700-evb``          Aspeed AST2700 Evaluation board (Cortex-A35)
 +
-+2. Execute the following command to start ``ast2700fc`` machine:
++Supported devices
++-----------------
++ * Interrupt Controller
++ * Timer Controller
++ * RTC Controller
++ * I2C Controller
++ * System Control Unit (SCU)
++ * SRAM mapping
++ * X-DMA Controller (basic interface)
++ * Static Memory Controller (SMC or FMC) - Only SPI Flash support
++ * SPI Memory Controller
++ * USB 2.0 Controller
++ * SD/MMC storage controllers
++ * SDRAM controller (dummy interface for basic settings and training)
++ * Watchdog Controller
++ * GPIO Controller (Master only)
++ * UART
++ * Ethernet controllers
++ * Front LEDs (PCA9552 on I2C bus)
++ * LPC Peripheral Controller (a subset of subdevices are supported)
++ * Hash/Crypto Engine (HACE) - Hash support only. TODO: Crypto
++ * ADC
++ * eMMC Boot Controller (dummy)
++ * PECI Controller (minimal)
++ * I3C Controller
++ * Internal Bridge Controller (SLI dummy)
 +
-+.. code-block:: bash
++Missing devices
++---------------
++ * Coprocessor support
++ * PWM and Fan Controller
++ * Slave GPIO Controller
++ * Super I/O Controller
++ * PCI-Express 1 Controller
++ * Graphic Display Controller
++ * MCTP Controller
++ * Mailbox Controller
++ * Virtual UART
++ * eSPI Controller
 +
-+  IMGDIR=ast2700-default
-+  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
++Boot options
++------------
 +
-+  $ qemu-system-aarch64 -M ast2700fc \
-+       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
-+       -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
-+       -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
-+       -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin \
-+       -device loader,cpu-num=0,addr=0x430000000 \
-+       -device loader,cpu-num=1,addr=0x430000000 \
-+       -device loader,cpu-num=2,addr=0x430000000 \
-+       -device loader,cpu-num=3,addr=0x430000000 \
-+       -drive file=${IMGDIR}/image-bmc,if=mtd,format=raw \
-+       -device loader,file=${IMGDIR}/zephyr-aspeed-ssp.elf,cpu-num=4 \
-+       -device loader,file=${IMGDIR}/zephyr-aspeed-tsp.elf,cpu-num=5 \
-+       -serial pty -serial pty -serial pty \
-+       -snapshot \
-+       -S -nographic
++Images can be downloaded from the ASPEED Forked OpenBMC GitHub release repository :
 +
-+After launching QEMU, serial devices will be automatically redirected.
-+Example output:
++   https://github.com/AspeedTech-BMC/openbmc/releases
 +
-+.. code-block:: bash
-+
-+   char device redirected to /dev/pts/55 (label serial0)
-+   char device redirected to /dev/pts/56 (label serial1)
-+   char device redirected to /dev/pts/57 (label serial2)
-+
-+- serial0: Console for the four Cortex-A35 primary processors.
-+- serial1 and serial2: Consoles for the two Cortex-M4 coprocessors.
-+
-+Use ``tio`` or another terminal emulator to connect to the consoles:
-+
-+.. code-block:: bash
-+
-+   $ tio /dev/pts/55
-+   $ tio /dev/pts/56
-+   $ tio /dev/pts/57
-+
-+
- Aspeed minibmc family boards (``ast1030-evb``)
- ==================================================================
+ Booting the ast2700-evb machine
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  
 -- 
 2.49.0

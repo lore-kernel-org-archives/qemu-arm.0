@@ -1,85 +1,85 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2178799njj;
-        Sun, 4 May 2025 18:52:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVj8hUbykNvuQ+z5zTQzO70KhuCRSYLQhyVfYX4NfMaXs2lbArbAhfGzt9fH7e8q6VmlMHKN8du3Xjwpw==@linaro.org
-X-Received: by 2002:a05:6a21:670f:b0:1f5:70d8:6a98 with SMTP id adf61e73a8af0-20e035fae69mr12334745637.0.1746409965711;
-        Sun, 04 May 2025 18:52:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746409965; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2178792njj;
+        Sun, 4 May 2025 18:52:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVonv4Swphz7g3GegU8Ok6mTuY4ceRbLOfDkckGL08QOvL/uyzFl/3KkdES2fWkOIZwS1Q4bRX597lgCw==@linaro.org
+X-Received: by 2002:a05:6a00:8087:b0:73d:ff02:8d83 with SMTP id d2e1a72fcca58-7406729efa7mr11425558b3a.3.1746409964647;
+        Sun, 04 May 2025 18:52:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746409964; cv=none;
         d=google.com; s=arc-20240605;
-        b=S/syVYmhukDX2XWPzFnVvPKJxFfkefooacuk1Ne6+JOWFTcYZ+fvkCJnrkVH5WbAZt
-         TTNlWAPRAQqqafhhjgu3oCeTScmHKN+o3wrzs/1kpypflCpZkRqRLGYfSKT3PlTST4Pm
-         V2DFdzqJlxBNZrjAQfGS0X1A2CjOPygkKs7u1iBii4fYR2a4z2yB9zdJuOAWVOKgwcPS
-         1C1NcHWW3PwyLXoOmdemFaUqM3xA8vPSvNP0N5KEOU8eV3f7EpkNKytUZP0HsnAVdaEU
-         HfmsJ72LmWR3nJj7wf1VYuL8sns84n6CMXaQZv+eh7INQx0eU5UZKSsq5td1RWBX1i7A
-         2uSw==
+        b=OcEoTeVHrJhV+HljfxtsBS8OWe7IA+kN/iNGmPjNUC3e3Mq5A9PWRAttwqm0H6PycV
+         la1U/nRK1Wuxz9sLMXBQU8VCWh2a3zxCliZD6MXYs6E7IDaXYZJJnYmjOpAM4+mJ0E+/
+         n5HFuNmVr+GfaNU2J7O6AjlM4ucAhFbdNkYgF2RTeYuil2R3hodVHHJMb8XitcVjWe0m
+         LktsjZEjN6imgC4spM/vjtpGRPBsm4CRbbRKe0XjfiUV5P9p+SpFgjyRujaNtUGsK2xW
+         XtZtXiPMILjhWFIiebW2dOoYWGMN/MxJUftVw8ZXapWGE0ij4YxQotlsfr7W8vSNnBhM
+         MR5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=fgL5ekQCPVNJfHfcPabdFrIvM+ux1exN882JD3eB0JI=;
-        fh=/OhwPxbVBkPkbeQVTuOEBMdDotqMgVOr5l+Q2f+vZ4A=;
-        b=c9CZuwZe9h8UYglgaYpV/aJv7/2/i02fEQZ3KvsEq0h0AxaurClZXnLQUoaloMGRoM
-         y3osTdwHWp2eyFc5QSOgbtmu0tVZp2lzP+esb1ZnIUFsR5GZ+MZk7nsgqY2eSwnFezAg
-         cKpU2zceOgfNXXIdAU8EnzwyzsTs/qIkspyfWJkLkhjwpEhZ3EE2w+j91PREgoD1srnO
-         wvGtPURG3QrrYu/Zw8k44S6vX9tWQ6TVF3lIl+oE3/XXydBVgDELixrQgrNLsooJg18O
-         d02W9gDb6hAtFxAgtk+dyjfeF+vt+zqr5EPSyoNZ6F5DeCcPPfCguISTrJPb1tLwvmFY
-         RLFA==;
+        bh=nzilGC3Ww+3tHeYhWd2a8BPvsBHyGj7gvflRTW3oolU=;
+        fh=gt27rdTmpYPwILhCzJbcMMuAjRZ2F+FQ/IV5rHuBPFc=;
+        b=cS9llVLd6HDjgWWa+5s1gkxmBxRDNQITQ4VK/l4nPvqGWGEl5IlZTDS8FJ2GhR1R6I
+         I+T0twXTfwRMeZh9q1Zznk/ArLnAl4tx/uIlpn4cwHHGufVK2f34lnHx9sqUkMNL5lrb
+         0QYK/TQbFw4SjY6Tk1h5xoLdnFQ9dJrovLutV5l7cIC6PAaoKfkTPeyLldohgmmDThMr
+         Rks2gcZzDCeobT3VCxeq53X9a0ZesoyeNibt+yj0Z3FkWlKdn/Mdop3tZgFhnB7YWEoU
+         aazL433Wg8dVQb12wlwUCuEjLZtVQF3XBoOt56JkG74k6zHlzvtr5PSMdPkI2FYB/zvV
+         wKpA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ezR1YiTC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jl08oVju;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-7404f9b325bsor6690445b3a.5.2025.05.04.18.52.45
+        by mx.google.com with SMTPS id d2e1a72fcca58-7404eeb4fcesor3143510b3a.1.2025.05.04.18.52.44
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 04 May 2025 18:52:45 -0700 (PDT)
+        Sun, 04 May 2025 18:52:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ezR1YiTC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jl08oVju;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1746409965; x=1747014765; darn=linaro.org;
+        d=linaro.org; s=google; t=1746409964; x=1747014764; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=fgL5ekQCPVNJfHfcPabdFrIvM+ux1exN882JD3eB0JI=;
-        b=ezR1YiTCywXtmaDnvhSYLZPcMy8yr12A93C4ciOKjEUV44ucu65cqkr98jEjvY26u6
-         8MAep9CPglQ+STFv2BAnNi8up1AdNqFTgp+bmcFacjMKRp7j5qJU3WPsezuuZTO82us2
-         IspBkTM/hiFe2kTjOXXeVqSOWGUseZUlKTPc8/c0/2GLRiZqDJobgMbzU4n0lXTLKih/
-         24wKBPp8CUPnwVpsdW7Ied/Eb9j/QVZg8R4349k/u2uTW1JP7PIaworTljFvowbny4fk
-         zrtxfBZ7plDmc50v5c3cFjnFXCinn3dmW5hMg+A8hY4+ucLfK9HWaCKzOGWIYo2qKXTZ
-         M/zg==
+        bh=nzilGC3Ww+3tHeYhWd2a8BPvsBHyGj7gvflRTW3oolU=;
+        b=jl08oVju1rj6vCAbXGC2n6mSZ+f216v4OM29lEXfhRPBbTRFD+KxuMk9wUDRiUdAVt
+         m0S1FlFzxJFFLOnQQfrZQ2tRSzNPEe3Uq8fsdONQsg+DuLb1TBtt4cfQc93sVn09oisd
+         QduvCSdUCICDQQ7vKV72yo3WFwxXj0oe7naeAp8L/GRlnkc8NhgfoXkQNe+/gw5zmCne
+         SGgB/q5QKaIynmUYAr+qKpg+/9Ly/tFS5Q6Qa4tt9BCcxUH6bmvuMLDx9cEglUJchc9P
+         rtLpFXl6Yogu7srXkAwm+s1NHZCgz/di4ZcpBpYMzEmeHdaxAdZAclm6NkwVnLJDam25
+         7cAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746409965; x=1747014765;
+        d=1e100.net; s=20230601; t=1746409964; x=1747014764;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=fgL5ekQCPVNJfHfcPabdFrIvM+ux1exN882JD3eB0JI=;
-        b=ZSe3PH7aUwj/6mKfS6ssbh6pgxsNFSNzVXXwp+0LaJiZI0h7CFS/E9D/9kWSHpAGOT
-         q7HzmVDeLTAlTnUgj9/2tKxsFmh9EB21xZMbwk3IC9ixcxcO3mAbVbERydyU5dVR23Gn
-         7kMf1inf43YXZPaZP9+qZRonu0Sx46fkcmQO8L+tNRfzTfGZhclg3pLU+j6SU1BYrOsC
-         WX065fZXzRpHPULSmxhIM82aZvgWhI4pKlBr9S5wXikbsBFdQV4L254xmGJYZgycpfZo
-         ajXYOq8+A5gTrl5D9cFCDjo2KzuNKszgdiq298gxTUMcd5/MgkjGeNn3g/+IVyHdaYyE
-         vD3w==
-X-Forwarded-Encrypted: i=1; AJvYcCWd7cXvg6A7NKXN7RY+FdnzkcGCI31bXkHEl/h97zLbHr9uB+y29RTIxQrzE3ZaPpl8+7wxqQoE2FAb4g==@linaro.org
-X-Gm-Message-State: AOJu0Yyvsgiq4yA2we8PTmJ8t9I9DMfQRQgrhbi2LfsSkciNtEhcpEUn
-	7Sf8SvSZuAl6mt4cxKaDl7g9opLxlUJsZ42dDV0E0MfKkybApJqni/FaUZk6XO2AeA==
-X-Gm-Gg: ASbGncvJA4SNAUeKIvVCPUcQsFDdGTEKJlm1uD0JN3ZMbCkSrHLMPCXyNMRF6D2SU70
-	Gwblwr4JBQCN32HH4TXHrLrhv+1TcsNIJP30Y8eYC0kzZnExx7yRapYWiRoly6YOpX1s5/6fO8B
-	yv9/GTPVh4rLrPHhZpXtDKn2xLe8RTSIMcD9HTvPeW9F2jpe6K2HfmTVUYaQGRPnqCx24YKvBj9
-	lL7kh1nr/S6zkYlgsuuzdgVeL8cHKoYJ0Qauo8dMjdIaTLvpzRcTRTxtHmUE7+W4Le2lbRPsKn2
-	fmBvTFkEYCunvGDR7YlBq+TK+pGQsbD+stE70g1t
-X-Google-Smtp-Source: AGHT+IEdEQhyDtvpOmBsbLxVZ35ACEJ8Qp3GYlqIZlG1XakJNo2D3KbXjIylsJzSXoYN2mahc1rK+Q==
-X-Received: by 2002:a05:6a21:31c7:b0:1f5:889c:3cbd with SMTP id adf61e73a8af0-20e078fc982mr11730268637.35.1746409965255;
-        Sun, 04 May 2025 18:52:45 -0700 (PDT)
+        bh=nzilGC3Ww+3tHeYhWd2a8BPvsBHyGj7gvflRTW3oolU=;
+        b=BkoBGh1QIcb0Fe3cdh+MofoQnc1b3lssFlPJ+uRlpGR8O/ud8dMhF13rNmU/rG01Je
+         CEEuSCwwtPvdWlSehDGkNUa8XjKQBEcMaxXVr26dwNXz7PgOO0hGJnzwJ0y2alU30OHe
+         m/9gJrGbw1Y87uK6P0DRowXgW1G8ZO9PGzODAbpid2LvCwk5cCSVBaJjjd6ZqtK/NieD
+         yZpxDeogLbJoFkHZxaNV8JhGI2wGo8/ax0hQ03Ft4eRn/Df5e4pPwXeTiSXt0Wd1kxrL
+         X5OxfIoXMcOrtV0QN9En1GmkQqghbgQVpCeNSAamphSQWMR1AFEpF8KK6eYscNnB/yiw
+         /Jvw==
+X-Forwarded-Encrypted: i=1; AJvYcCUG+JCVRVFzR9HlVFGlmcPbnMcM5+XCTYVtllM8x0NzcUDHK5BRtuUhLiTJQyq/nPYWAMYfcomVu4L68w==@linaro.org
+X-Gm-Message-State: AOJu0Yw1kBMtrXNlLRmsItaWLzXn8V8sIMv7SrbWe3WSrtpearGwFh9f
+	AzFnRFBNd+PgTneDM3uKBrKCVth672QDaTzeYPQQ5Q5MKRt1k1XISeXqI/oy5/0RkQ==
+X-Gm-Gg: ASbGnctyGKubBmd5WEOowoS8P2FPjVlfEA9Ku8DxB4hMu8yx6Epk+9Utxc0I+0NZyww
+	KdHkuwN4by1Ek5gRp42ERz+fn6ZHB++MIxVUeNpWwtBmdO49DCvzfcV7GG8Joch+laBAUnU9DG+
+	qiPOKipiVWMXn/TMV8d5VDAj0ROh1onampGQscB9T1dAF0d3bl2Nll26fVzYpFNFBB/uJC4HPw3
+	xvRnqJXKa5o49RNiq0ZwYgxRYGZce5/W03amVFaE/h0ZA5OndXpbujGB/bocnKaOtTrgqeXU9mh
+	SwXyIyzHrj/BOaXJqu1aMb4gI/E+oV7lXQXPghGg
+X-Google-Smtp-Source: AGHT+IExorcIEnokU+mAZj1743vj3JlhQMWW4S1nM5LVP6ZH21DFzG2ZGyYf2iF5yrl4rSLBTiT8hg==
+X-Received: by 2002:a05:6a21:6d88:b0:1f5:80a3:afe8 with SMTP id adf61e73a8af0-20e07c0c648mr9991010637.39.1746409963585;
+        Sun, 04 May 2025 18:52:43 -0700 (PDT)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from pc.. ([38.41.223.211])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b1fb3920074sm4462101a12.11.2025.05.04.18.52.44
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b1fb3920074sm4462101a12.11.2025.05.04.18.52.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 04 May 2025 18:52:44 -0700 (PDT)
+        Sun, 04 May 2025 18:52:43 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -91,36 +91,2347 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	anjo@rev.ng,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v5 19/48] target/arm/debug_helper: remove target_ulong
-Date: Sun,  4 May 2025 18:51:54 -0700
-Message-ID: <20250505015223.3895275-20-pierrick.bouvier@linaro.org>
+Subject: [PATCH v5 17/48] target/arm/helper: extract common helpers
+Date: Sun,  4 May 2025 18:51:52 -0700
+Message-ID: <20250505015223.3895275-18-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250505015223.3895275-1-pierrick.bouvier@linaro.org>
 References: <20250505015223.3895275-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 2M5Cz+0ODnH+
+X-TUID: lHt/FJ/5gSdK
+
+Allow later commits to include only the "new" tcg/helper.h, thus
+preventing to pull aarch64 helpers (+ target/arm/helper.h contains a
+ifdef TARGET_AARCH64).
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/debug_helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/arm/helper.h     | 1152 +-------------------------------------
+ target/arm/tcg/helper.h | 1153 +++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 1155 insertions(+), 1150 deletions(-)
+ create mode 100644 target/arm/tcg/helper.h
 
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index 357bc2141ae..50ef5618f51 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -381,7 +381,7 @@ bool arm_debug_check_breakpoint(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
--    target_ulong pc;
-+    vaddr pc;
-     int n;
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index 0a4fc90fa8b..f340a49a28a 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -1,1154 +1,6 @@
+-DEF_HELPER_FLAGS_1(sxtb16, TCG_CALL_NO_RWG_SE, i32, i32)
+-DEF_HELPER_FLAGS_1(uxtb16, TCG_CALL_NO_RWG_SE, i32, i32)
++/* SPDX-License-Identifier: GPL-2.0-or-later */
  
-     /*
+-DEF_HELPER_3(add_setq, i32, env, i32, i32)
+-DEF_HELPER_3(add_saturate, i32, env, i32, i32)
+-DEF_HELPER_3(sub_saturate, i32, env, i32, i32)
+-DEF_HELPER_3(add_usaturate, i32, env, i32, i32)
+-DEF_HELPER_3(sub_usaturate, i32, env, i32, i32)
+-DEF_HELPER_FLAGS_3(sdiv, TCG_CALL_NO_RWG, s32, env, s32, s32)
+-DEF_HELPER_FLAGS_3(udiv, TCG_CALL_NO_RWG, i32, env, i32, i32)
+-DEF_HELPER_FLAGS_1(rbit, TCG_CALL_NO_RWG_SE, i32, i32)
+-
+-#define PAS_OP(pfx)  \
+-    DEF_HELPER_3(pfx ## add8, i32, i32, i32, ptr) \
+-    DEF_HELPER_3(pfx ## sub8, i32, i32, i32, ptr) \
+-    DEF_HELPER_3(pfx ## sub16, i32, i32, i32, ptr) \
+-    DEF_HELPER_3(pfx ## add16, i32, i32, i32, ptr) \
+-    DEF_HELPER_3(pfx ## addsubx, i32, i32, i32, ptr) \
+-    DEF_HELPER_3(pfx ## subaddx, i32, i32, i32, ptr)
+-
+-PAS_OP(s)
+-PAS_OP(u)
+-#undef PAS_OP
+-
+-#define PAS_OP(pfx)  \
+-    DEF_HELPER_2(pfx ## add8, i32, i32, i32) \
+-    DEF_HELPER_2(pfx ## sub8, i32, i32, i32) \
+-    DEF_HELPER_2(pfx ## sub16, i32, i32, i32) \
+-    DEF_HELPER_2(pfx ## add16, i32, i32, i32) \
+-    DEF_HELPER_2(pfx ## addsubx, i32, i32, i32) \
+-    DEF_HELPER_2(pfx ## subaddx, i32, i32, i32)
+-PAS_OP(q)
+-PAS_OP(sh)
+-PAS_OP(uq)
+-PAS_OP(uh)
+-#undef PAS_OP
+-
+-DEF_HELPER_3(ssat, i32, env, i32, i32)
+-DEF_HELPER_3(usat, i32, env, i32, i32)
+-DEF_HELPER_3(ssat16, i32, env, i32, i32)
+-DEF_HELPER_3(usat16, i32, env, i32, i32)
+-
+-DEF_HELPER_FLAGS_2(usad8, TCG_CALL_NO_RWG_SE, i32, i32, i32)
+-
+-DEF_HELPER_FLAGS_3(sel_flags, TCG_CALL_NO_RWG_SE,
+-                   i32, i32, i32, i32)
+-DEF_HELPER_2(exception_internal, noreturn, env, i32)
+-DEF_HELPER_3(exception_with_syndrome, noreturn, env, i32, i32)
+-DEF_HELPER_4(exception_with_syndrome_el, noreturn, env, i32, i32, i32)
+-DEF_HELPER_2(exception_bkpt_insn, noreturn, env, i32)
+-DEF_HELPER_2(exception_swstep, noreturn, env, i32)
+-DEF_HELPER_2(exception_pc_alignment, noreturn, env, vaddr)
+-DEF_HELPER_1(setend, void, env)
+-DEF_HELPER_2(wfi, void, env, i32)
+-DEF_HELPER_1(wfe, void, env)
+-DEF_HELPER_2(wfit, void, env, i64)
+-DEF_HELPER_1(yield, void, env)
+-DEF_HELPER_1(pre_hvc, void, env)
+-DEF_HELPER_2(pre_smc, void, env, i32)
+-DEF_HELPER_1(vesb, void, env)
+-
+-DEF_HELPER_3(cpsr_write, void, env, i32, i32)
+-DEF_HELPER_2(cpsr_write_eret, void, env, i32)
+-DEF_HELPER_1(cpsr_read, i32, env)
+-
+-DEF_HELPER_3(v7m_msr, void, env, i32, i32)
+-DEF_HELPER_2(v7m_mrs, i32, env, i32)
+-
+-DEF_HELPER_2(v7m_bxns, void, env, i32)
+-DEF_HELPER_2(v7m_blxns, void, env, i32)
+-
+-DEF_HELPER_3(v7m_tt, i32, env, i32, i32)
+-
+-DEF_HELPER_1(v7m_preserve_fp_state, void, env)
+-
+-DEF_HELPER_2(v7m_vlstm, void, env, i32)
+-DEF_HELPER_2(v7m_vlldm, void, env, i32)
+-
+-DEF_HELPER_2(v8m_stackcheck, void, env, i32)
+-
+-DEF_HELPER_FLAGS_2(check_bxj_trap, TCG_CALL_NO_WG, void, env, i32)
+-
+-DEF_HELPER_4(access_check_cp_reg, cptr, env, i32, i32, i32)
+-DEF_HELPER_FLAGS_2(lookup_cp_reg, TCG_CALL_NO_RWG_SE, cptr, env, i32)
+-DEF_HELPER_FLAGS_2(tidcp_el0, TCG_CALL_NO_WG, void, env, i32)
+-DEF_HELPER_FLAGS_2(tidcp_el1, TCG_CALL_NO_WG, void, env, i32)
+-DEF_HELPER_3(set_cp_reg, void, env, cptr, i32)
+-DEF_HELPER_2(get_cp_reg, i32, env, cptr)
+-DEF_HELPER_3(set_cp_reg64, void, env, cptr, i64)
+-DEF_HELPER_2(get_cp_reg64, i64, env, cptr)
+-
+-DEF_HELPER_2(get_r13_banked, i32, env, i32)
+-DEF_HELPER_3(set_r13_banked, void, env, i32, i32)
+-
+-DEF_HELPER_3(mrs_banked, i32, env, i32, i32)
+-DEF_HELPER_4(msr_banked, void, env, i32, i32, i32)
+-
+-DEF_HELPER_2(get_user_reg, i32, env, i32)
+-DEF_HELPER_3(set_user_reg, void, env, i32, i32)
+-
+-DEF_HELPER_FLAGS_1(rebuild_hflags_m32_newel, TCG_CALL_NO_RWG, void, env)
+-DEF_HELPER_FLAGS_2(rebuild_hflags_m32, TCG_CALL_NO_RWG, void, env, int)
+-DEF_HELPER_FLAGS_1(rebuild_hflags_a32_newel, TCG_CALL_NO_RWG, void, env)
+-DEF_HELPER_FLAGS_2(rebuild_hflags_a32, TCG_CALL_NO_RWG, void, env, int)
+-DEF_HELPER_FLAGS_2(rebuild_hflags_a64, TCG_CALL_NO_RWG, void, env, int)
+-
+-DEF_HELPER_FLAGS_5(probe_access, TCG_CALL_NO_WG, void, env, vaddr, i32, i32, i32)
+-
+-DEF_HELPER_1(vfp_get_fpscr, i32, env)
+-DEF_HELPER_2(vfp_set_fpscr, void, env, i32)
+-
+-DEF_HELPER_3(vfp_addh, f16, f16, f16, fpst)
+-DEF_HELPER_3(vfp_adds, f32, f32, f32, fpst)
+-DEF_HELPER_3(vfp_addd, f64, f64, f64, fpst)
+-DEF_HELPER_3(vfp_subh, f16, f16, f16, fpst)
+-DEF_HELPER_3(vfp_subs, f32, f32, f32, fpst)
+-DEF_HELPER_3(vfp_subd, f64, f64, f64, fpst)
+-DEF_HELPER_3(vfp_mulh, f16, f16, f16, fpst)
+-DEF_HELPER_3(vfp_muls, f32, f32, f32, fpst)
+-DEF_HELPER_3(vfp_muld, f64, f64, f64, fpst)
+-DEF_HELPER_3(vfp_divh, f16, f16, f16, fpst)
+-DEF_HELPER_3(vfp_divs, f32, f32, f32, fpst)
+-DEF_HELPER_3(vfp_divd, f64, f64, f64, fpst)
+-DEF_HELPER_3(vfp_maxh, f16, f16, f16, fpst)
+-DEF_HELPER_3(vfp_maxs, f32, f32, f32, fpst)
+-DEF_HELPER_3(vfp_maxd, f64, f64, f64, fpst)
+-DEF_HELPER_3(vfp_minh, f16, f16, f16, fpst)
+-DEF_HELPER_3(vfp_mins, f32, f32, f32, fpst)
+-DEF_HELPER_3(vfp_mind, f64, f64, f64, fpst)
+-DEF_HELPER_3(vfp_maxnumh, f16, f16, f16, fpst)
+-DEF_HELPER_3(vfp_maxnums, f32, f32, f32, fpst)
+-DEF_HELPER_3(vfp_maxnumd, f64, f64, f64, fpst)
+-DEF_HELPER_3(vfp_minnumh, f16, f16, f16, fpst)
+-DEF_HELPER_3(vfp_minnums, f32, f32, f32, fpst)
+-DEF_HELPER_3(vfp_minnumd, f64, f64, f64, fpst)
+-DEF_HELPER_2(vfp_sqrth, f16, f16, fpst)
+-DEF_HELPER_2(vfp_sqrts, f32, f32, fpst)
+-DEF_HELPER_2(vfp_sqrtd, f64, f64, fpst)
+-DEF_HELPER_3(vfp_cmph, void, f16, f16, env)
+-DEF_HELPER_3(vfp_cmps, void, f32, f32, env)
+-DEF_HELPER_3(vfp_cmpd, void, f64, f64, env)
+-DEF_HELPER_3(vfp_cmpeh, void, f16, f16, env)
+-DEF_HELPER_3(vfp_cmpes, void, f32, f32, env)
+-DEF_HELPER_3(vfp_cmped, void, f64, f64, env)
+-
+-DEF_HELPER_2(vfp_fcvtds, f64, f32, fpst)
+-DEF_HELPER_2(vfp_fcvtsd, f32, f64, fpst)
+-DEF_HELPER_FLAGS_2(bfcvt, TCG_CALL_NO_RWG, i32, f32, fpst)
+-DEF_HELPER_FLAGS_2(bfcvt_pair, TCG_CALL_NO_RWG, i32, i64, fpst)
+-
+-DEF_HELPER_2(vfp_uitoh, f16, i32, fpst)
+-DEF_HELPER_2(vfp_uitos, f32, i32, fpst)
+-DEF_HELPER_2(vfp_uitod, f64, i32, fpst)
+-DEF_HELPER_2(vfp_sitoh, f16, i32, fpst)
+-DEF_HELPER_2(vfp_sitos, f32, i32, fpst)
+-DEF_HELPER_2(vfp_sitod, f64, i32, fpst)
+-
+-DEF_HELPER_2(vfp_touih, i32, f16, fpst)
+-DEF_HELPER_2(vfp_touis, i32, f32, fpst)
+-DEF_HELPER_2(vfp_touid, i32, f64, fpst)
+-DEF_HELPER_2(vfp_touizh, i32, f16, fpst)
+-DEF_HELPER_2(vfp_touizs, i32, f32, fpst)
+-DEF_HELPER_2(vfp_touizd, i32, f64, fpst)
+-DEF_HELPER_2(vfp_tosih, s32, f16, fpst)
+-DEF_HELPER_2(vfp_tosis, s32, f32, fpst)
+-DEF_HELPER_2(vfp_tosid, s32, f64, fpst)
+-DEF_HELPER_2(vfp_tosizh, s32, f16, fpst)
+-DEF_HELPER_2(vfp_tosizs, s32, f32, fpst)
+-DEF_HELPER_2(vfp_tosizd, s32, f64, fpst)
+-
+-DEF_HELPER_3(vfp_toshh_round_to_zero, i32, f16, i32, fpst)
+-DEF_HELPER_3(vfp_toslh_round_to_zero, i32, f16, i32, fpst)
+-DEF_HELPER_3(vfp_touhh_round_to_zero, i32, f16, i32, fpst)
+-DEF_HELPER_3(vfp_toulh_round_to_zero, i32, f16, i32, fpst)
+-DEF_HELPER_3(vfp_toshs_round_to_zero, i32, f32, i32, fpst)
+-DEF_HELPER_3(vfp_tosls_round_to_zero, i32, f32, i32, fpst)
+-DEF_HELPER_3(vfp_touhs_round_to_zero, i32, f32, i32, fpst)
+-DEF_HELPER_3(vfp_touls_round_to_zero, i32, f32, i32, fpst)
+-DEF_HELPER_3(vfp_toshd_round_to_zero, i64, f64, i32, fpst)
+-DEF_HELPER_3(vfp_tosld_round_to_zero, i64, f64, i32, fpst)
+-DEF_HELPER_3(vfp_tosqd_round_to_zero, i64, f64, i32, fpst)
+-DEF_HELPER_3(vfp_touhd_round_to_zero, i64, f64, i32, fpst)
+-DEF_HELPER_3(vfp_tould_round_to_zero, i64, f64, i32, fpst)
+-DEF_HELPER_3(vfp_touqd_round_to_zero, i64, f64, i32, fpst)
+-DEF_HELPER_3(vfp_touhh, i32, f16, i32, fpst)
+-DEF_HELPER_3(vfp_toshh, i32, f16, i32, fpst)
+-DEF_HELPER_3(vfp_toulh, i32, f16, i32, fpst)
+-DEF_HELPER_3(vfp_toslh, i32, f16, i32, fpst)
+-DEF_HELPER_3(vfp_touqh, i64, f16, i32, fpst)
+-DEF_HELPER_3(vfp_tosqh, i64, f16, i32, fpst)
+-DEF_HELPER_3(vfp_toshs, i32, f32, i32, fpst)
+-DEF_HELPER_3(vfp_tosls, i32, f32, i32, fpst)
+-DEF_HELPER_3(vfp_tosqs, i64, f32, i32, fpst)
+-DEF_HELPER_3(vfp_touhs, i32, f32, i32, fpst)
+-DEF_HELPER_3(vfp_touls, i32, f32, i32, fpst)
+-DEF_HELPER_3(vfp_touqs, i64, f32, i32, fpst)
+-DEF_HELPER_3(vfp_toshd, i64, f64, i32, fpst)
+-DEF_HELPER_3(vfp_tosld, i64, f64, i32, fpst)
+-DEF_HELPER_3(vfp_tosqd, i64, f64, i32, fpst)
+-DEF_HELPER_3(vfp_touhd, i64, f64, i32, fpst)
+-DEF_HELPER_3(vfp_tould, i64, f64, i32, fpst)
+-DEF_HELPER_3(vfp_touqd, i64, f64, i32, fpst)
+-DEF_HELPER_3(vfp_shtos, f32, i32, i32, fpst)
+-DEF_HELPER_3(vfp_sltos, f32, i32, i32, fpst)
+-DEF_HELPER_3(vfp_sqtos, f32, i64, i32, fpst)
+-DEF_HELPER_3(vfp_uhtos, f32, i32, i32, fpst)
+-DEF_HELPER_3(vfp_ultos, f32, i32, i32, fpst)
+-DEF_HELPER_3(vfp_uqtos, f32, i64, i32, fpst)
+-DEF_HELPER_3(vfp_shtod, f64, i64, i32, fpst)
+-DEF_HELPER_3(vfp_sltod, f64, i64, i32, fpst)
+-DEF_HELPER_3(vfp_sqtod, f64, i64, i32, fpst)
+-DEF_HELPER_3(vfp_uhtod, f64, i64, i32, fpst)
+-DEF_HELPER_3(vfp_ultod, f64, i64, i32, fpst)
+-DEF_HELPER_3(vfp_uqtod, f64, i64, i32, fpst)
+-DEF_HELPER_3(vfp_shtoh, f16, i32, i32, fpst)
+-DEF_HELPER_3(vfp_uhtoh, f16, i32, i32, fpst)
+-DEF_HELPER_3(vfp_sltoh, f16, i32, i32, fpst)
+-DEF_HELPER_3(vfp_ultoh, f16, i32, i32, fpst)
+-DEF_HELPER_3(vfp_sqtoh, f16, i64, i32, fpst)
+-DEF_HELPER_3(vfp_uqtoh, f16, i64, i32, fpst)
+-
+-DEF_HELPER_3(vfp_shtos_round_to_nearest, f32, i32, i32, fpst)
+-DEF_HELPER_3(vfp_sltos_round_to_nearest, f32, i32, i32, fpst)
+-DEF_HELPER_3(vfp_uhtos_round_to_nearest, f32, i32, i32, fpst)
+-DEF_HELPER_3(vfp_ultos_round_to_nearest, f32, i32, i32, fpst)
+-DEF_HELPER_3(vfp_shtod_round_to_nearest, f64, i64, i32, fpst)
+-DEF_HELPER_3(vfp_sltod_round_to_nearest, f64, i64, i32, fpst)
+-DEF_HELPER_3(vfp_uhtod_round_to_nearest, f64, i64, i32, fpst)
+-DEF_HELPER_3(vfp_ultod_round_to_nearest, f64, i64, i32, fpst)
+-DEF_HELPER_3(vfp_shtoh_round_to_nearest, f16, i32, i32, fpst)
+-DEF_HELPER_3(vfp_uhtoh_round_to_nearest, f16, i32, i32, fpst)
+-DEF_HELPER_3(vfp_sltoh_round_to_nearest, f16, i32, i32, fpst)
+-DEF_HELPER_3(vfp_ultoh_round_to_nearest, f16, i32, i32, fpst)
+-
+-DEF_HELPER_FLAGS_2(set_rmode, TCG_CALL_NO_RWG, i32, i32, fpst)
+-
+-DEF_HELPER_FLAGS_3(vfp_fcvt_f16_to_f32, TCG_CALL_NO_RWG, f32, f16, fpst, i32)
+-DEF_HELPER_FLAGS_3(vfp_fcvt_f32_to_f16, TCG_CALL_NO_RWG, f16, f32, fpst, i32)
+-DEF_HELPER_FLAGS_3(vfp_fcvt_f16_to_f64, TCG_CALL_NO_RWG, f64, f16, fpst, i32)
+-DEF_HELPER_FLAGS_3(vfp_fcvt_f64_to_f16, TCG_CALL_NO_RWG, f16, f64, fpst, i32)
+-
+-DEF_HELPER_4(vfp_muladdd, f64, f64, f64, f64, fpst)
+-DEF_HELPER_4(vfp_muladds, f32, f32, f32, f32, fpst)
+-DEF_HELPER_4(vfp_muladdh, f16, f16, f16, f16, fpst)
+-
+-DEF_HELPER_FLAGS_2(recpe_f16, TCG_CALL_NO_RWG, f16, f16, fpst)
+-DEF_HELPER_FLAGS_2(recpe_f32, TCG_CALL_NO_RWG, f32, f32, fpst)
+-DEF_HELPER_FLAGS_2(recpe_rpres_f32, TCG_CALL_NO_RWG, f32, f32, fpst)
+-DEF_HELPER_FLAGS_2(recpe_f64, TCG_CALL_NO_RWG, f64, f64, fpst)
+-DEF_HELPER_FLAGS_2(rsqrte_f16, TCG_CALL_NO_RWG, f16, f16, fpst)
+-DEF_HELPER_FLAGS_2(rsqrte_f32, TCG_CALL_NO_RWG, f32, f32, fpst)
+-DEF_HELPER_FLAGS_2(rsqrte_rpres_f32, TCG_CALL_NO_RWG, f32, f32, fpst)
+-DEF_HELPER_FLAGS_2(rsqrte_f64, TCG_CALL_NO_RWG, f64, f64, fpst)
+-DEF_HELPER_FLAGS_1(recpe_u32, TCG_CALL_NO_RWG, i32, i32)
+-DEF_HELPER_FLAGS_1(rsqrte_u32, TCG_CALL_NO_RWG, i32, i32)
+-DEF_HELPER_FLAGS_4(neon_tbl, TCG_CALL_NO_RWG, i64, env, i32, i64, i64)
+-
+-DEF_HELPER_3(shl_cc, i32, env, i32, i32)
+-DEF_HELPER_3(shr_cc, i32, env, i32, i32)
+-DEF_HELPER_3(sar_cc, i32, env, i32, i32)
+-DEF_HELPER_3(ror_cc, i32, env, i32, i32)
+-
+-DEF_HELPER_FLAGS_2(rinth_exact, TCG_CALL_NO_RWG, f16, f16, fpst)
+-DEF_HELPER_FLAGS_2(rints_exact, TCG_CALL_NO_RWG, f32, f32, fpst)
+-DEF_HELPER_FLAGS_2(rintd_exact, TCG_CALL_NO_RWG, f64, f64, fpst)
+-DEF_HELPER_FLAGS_2(rinth, TCG_CALL_NO_RWG, f16, f16, fpst)
+-DEF_HELPER_FLAGS_2(rints, TCG_CALL_NO_RWG, f32, f32, fpst)
+-DEF_HELPER_FLAGS_2(rintd, TCG_CALL_NO_RWG, f64, f64, fpst)
+-
+-DEF_HELPER_FLAGS_2(vjcvt, TCG_CALL_NO_RWG, i32, f64, env)
+-DEF_HELPER_FLAGS_2(fjcvtzs, TCG_CALL_NO_RWG, i64, f64, fpst)
+-
+-DEF_HELPER_FLAGS_3(check_hcr_el2_trap, TCG_CALL_NO_WG, void, env, i32, i32)
+-
+-/* neon_helper.c */
+-DEF_HELPER_2(neon_pmin_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_pmin_s8, i32, i32, i32)
+-DEF_HELPER_2(neon_pmin_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_pmin_s16, i32, i32, i32)
+-DEF_HELPER_2(neon_pmax_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_pmax_s8, i32, i32, i32)
+-DEF_HELPER_2(neon_pmax_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_pmax_s16, i32, i32, i32)
+-
+-DEF_HELPER_2(neon_shl_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_shl_s16, i32, i32, i32)
+-DEF_HELPER_2(neon_rshl_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_rshl_s8, i32, i32, i32)
+-DEF_HELPER_2(neon_rshl_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_rshl_s16, i32, i32, i32)
+-DEF_HELPER_2(neon_rshl_u32, i32, i32, i32)
+-DEF_HELPER_2(neon_rshl_s32, i32, i32, i32)
+-DEF_HELPER_2(neon_rshl_u64, i64, i64, i64)
+-DEF_HELPER_2(neon_rshl_s64, i64, i64, i64)
+-DEF_HELPER_3(neon_qshl_u8, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshl_s8, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshl_u16, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshl_s16, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshl_u32, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshl_s32, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshl_u64, i64, env, i64, i64)
+-DEF_HELPER_3(neon_qshl_s64, i64, env, i64, i64)
+-DEF_HELPER_3(neon_qshlu_s8, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshlu_s16, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshlu_s32, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshlu_s64, i64, env, i64, i64)
+-DEF_HELPER_3(neon_qrshl_u8, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrshl_s8, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrshl_u16, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrshl_s16, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrshl_u32, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrshl_s32, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrshl_u64, i64, env, i64, i64)
+-DEF_HELPER_3(neon_qrshl_s64, i64, env, i64, i64)
+-DEF_HELPER_FLAGS_5(neon_sqshl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(neon_sqshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(neon_sqshl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(neon_sqshl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(neon_uqshl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(neon_uqshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(neon_uqshl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(neon_uqshl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(neon_sqrshl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(neon_sqrshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(neon_sqrshl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(neon_sqrshl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(neon_uqrshl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(neon_uqrshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(neon_uqrshl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(neon_uqrshl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_4(neon_sqshli_b, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_4(neon_sqshli_h, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_4(neon_sqshli_s, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_4(neon_sqshli_d, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_4(neon_uqshli_b, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_4(neon_uqshli_h, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_4(neon_uqshli_s, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_4(neon_uqshli_d, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_4(neon_sqshlui_b, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_4(neon_sqshlui_h, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_4(neon_sqshlui_s, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_4(neon_sqshlui_d, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_srshl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_srshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_srshl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_srshl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_urshl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_urshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_urshl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_urshl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_2(neon_add_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_add_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_sub_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_sub_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_mul_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_mul_u16, i32, i32, i32)
+-
+-DEF_HELPER_2(neon_tst_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_tst_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_tst_u32, i32, i32, i32)
+-
+-DEF_HELPER_1(neon_clz_u8, i32, i32)
+-DEF_HELPER_1(neon_clz_u16, i32, i32)
+-DEF_HELPER_1(neon_cls_s8, i32, i32)
+-DEF_HELPER_1(neon_cls_s16, i32, i32)
+-DEF_HELPER_1(neon_cls_s32, i32, i32)
+-DEF_HELPER_FLAGS_3(gvec_cnt_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_rbit_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-
+-DEF_HELPER_3(neon_qdmulh_s16, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrdmulh_s16, i32, env, i32, i32)
+-DEF_HELPER_4(neon_qrdmlah_s16, i32, env, i32, i32, i32)
+-DEF_HELPER_4(neon_qrdmlsh_s16, i32, env, i32, i32, i32)
+-DEF_HELPER_3(neon_qdmulh_s32, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrdmulh_s32, i32, env, i32, i32)
+-DEF_HELPER_4(neon_qrdmlah_s32, i32, env, s32, s32, s32)
+-DEF_HELPER_4(neon_qrdmlsh_s32, i32, env, s32, s32, s32)
+-
+-DEF_HELPER_1(neon_narrow_u8, i64, i64)
+-DEF_HELPER_1(neon_narrow_u16, i64, i64)
+-DEF_HELPER_2(neon_unarrow_sat8, i64, env, i64)
+-DEF_HELPER_2(neon_narrow_sat_u8, i64, env, i64)
+-DEF_HELPER_2(neon_narrow_sat_s8, i64, env, i64)
+-DEF_HELPER_2(neon_unarrow_sat16, i64, env, i64)
+-DEF_HELPER_2(neon_narrow_sat_u16, i64, env, i64)
+-DEF_HELPER_2(neon_narrow_sat_s16, i64, env, i64)
+-DEF_HELPER_2(neon_unarrow_sat32, i64, env, i64)
+-DEF_HELPER_2(neon_narrow_sat_u32, i64, env, i64)
+-DEF_HELPER_2(neon_narrow_sat_s32, i64, env, i64)
+-DEF_HELPER_1(neon_narrow_high_u8, i32, i64)
+-DEF_HELPER_1(neon_narrow_high_u16, i32, i64)
+-DEF_HELPER_1(neon_narrow_round_high_u8, i32, i64)
+-DEF_HELPER_1(neon_narrow_round_high_u16, i32, i64)
+-DEF_HELPER_1(neon_widen_u8, i64, i32)
+-DEF_HELPER_1(neon_widen_s8, i64, i32)
+-DEF_HELPER_1(neon_widen_u16, i64, i32)
+-DEF_HELPER_1(neon_widen_s16, i64, i32)
+-
+-DEF_HELPER_FLAGS_1(neon_addlp_s8, TCG_CALL_NO_RWG_SE, i64, i64)
+-DEF_HELPER_FLAGS_1(neon_addlp_s16, TCG_CALL_NO_RWG_SE, i64, i64)
+-DEF_HELPER_3(neon_addl_saturate_s32, i64, env, i64, i64)
+-DEF_HELPER_3(neon_addl_saturate_s64, i64, env, i64, i64)
+-DEF_HELPER_2(neon_abdl_u16, i64, i32, i32)
+-DEF_HELPER_2(neon_abdl_s16, i64, i32, i32)
+-DEF_HELPER_2(neon_abdl_u32, i64, i32, i32)
+-DEF_HELPER_2(neon_abdl_s32, i64, i32, i32)
+-DEF_HELPER_2(neon_abdl_u64, i64, i32, i32)
+-DEF_HELPER_2(neon_abdl_s64, i64, i32, i32)
+-DEF_HELPER_2(neon_mull_u8, i64, i32, i32)
+-DEF_HELPER_2(neon_mull_s8, i64, i32, i32)
+-DEF_HELPER_2(neon_mull_u16, i64, i32, i32)
+-DEF_HELPER_2(neon_mull_s16, i64, i32, i32)
+-
+-DEF_HELPER_1(neon_negl_u16, i64, i64)
+-DEF_HELPER_1(neon_negl_u32, i64, i64)
+-
+-DEF_HELPER_FLAGS_2(neon_qabs_s8, TCG_CALL_NO_RWG, i32, env, i32)
+-DEF_HELPER_FLAGS_2(neon_qabs_s16, TCG_CALL_NO_RWG, i32, env, i32)
+-DEF_HELPER_FLAGS_2(neon_qabs_s32, TCG_CALL_NO_RWG, i32, env, i32)
+-DEF_HELPER_FLAGS_2(neon_qabs_s64, TCG_CALL_NO_RWG, i64, env, i64)
+-DEF_HELPER_FLAGS_2(neon_qneg_s8, TCG_CALL_NO_RWG, i32, env, i32)
+-DEF_HELPER_FLAGS_2(neon_qneg_s16, TCG_CALL_NO_RWG, i32, env, i32)
+-DEF_HELPER_FLAGS_2(neon_qneg_s32, TCG_CALL_NO_RWG, i32, env, i32)
+-DEF_HELPER_FLAGS_2(neon_qneg_s64, TCG_CALL_NO_RWG, i64, env, i64)
+-
+-DEF_HELPER_3(neon_ceq_f32, i32, i32, i32, fpst)
+-DEF_HELPER_3(neon_cge_f32, i32, i32, i32, fpst)
+-DEF_HELPER_3(neon_cgt_f32, i32, i32, i32, fpst)
+-DEF_HELPER_3(neon_acge_f32, i32, i32, i32, fpst)
+-DEF_HELPER_3(neon_acgt_f32, i32, i32, i32, fpst)
+-DEF_HELPER_3(neon_acge_f64, i64, i64, i64, fpst)
+-DEF_HELPER_3(neon_acgt_f64, i64, i64, i64, fpst)
+-
+-/* iwmmxt_helper.c */
+-DEF_HELPER_2(iwmmxt_maddsq, i64, i64, i64)
+-DEF_HELPER_2(iwmmxt_madduq, i64, i64, i64)
+-DEF_HELPER_2(iwmmxt_sadb, i64, i64, i64)
+-DEF_HELPER_2(iwmmxt_sadw, i64, i64, i64)
+-DEF_HELPER_2(iwmmxt_mulslw, i64, i64, i64)
+-DEF_HELPER_2(iwmmxt_mulshw, i64, i64, i64)
+-DEF_HELPER_2(iwmmxt_mululw, i64, i64, i64)
+-DEF_HELPER_2(iwmmxt_muluhw, i64, i64, i64)
+-DEF_HELPER_2(iwmmxt_macsw, i64, i64, i64)
+-DEF_HELPER_2(iwmmxt_macuw, i64, i64, i64)
+-DEF_HELPER_1(iwmmxt_setpsr_nz, i32, i64)
+-
+-#define DEF_IWMMXT_HELPER_SIZE_ENV(name) \
+-DEF_HELPER_3(iwmmxt_##name##b, i64, env, i64, i64) \
+-DEF_HELPER_3(iwmmxt_##name##w, i64, env, i64, i64) \
+-DEF_HELPER_3(iwmmxt_##name##l, i64, env, i64, i64) \
+-
+-DEF_IWMMXT_HELPER_SIZE_ENV(unpackl)
+-DEF_IWMMXT_HELPER_SIZE_ENV(unpackh)
+-
+-DEF_HELPER_2(iwmmxt_unpacklub, i64, env, i64)
+-DEF_HELPER_2(iwmmxt_unpackluw, i64, env, i64)
+-DEF_HELPER_2(iwmmxt_unpacklul, i64, env, i64)
+-DEF_HELPER_2(iwmmxt_unpackhub, i64, env, i64)
+-DEF_HELPER_2(iwmmxt_unpackhuw, i64, env, i64)
+-DEF_HELPER_2(iwmmxt_unpackhul, i64, env, i64)
+-DEF_HELPER_2(iwmmxt_unpacklsb, i64, env, i64)
+-DEF_HELPER_2(iwmmxt_unpacklsw, i64, env, i64)
+-DEF_HELPER_2(iwmmxt_unpacklsl, i64, env, i64)
+-DEF_HELPER_2(iwmmxt_unpackhsb, i64, env, i64)
+-DEF_HELPER_2(iwmmxt_unpackhsw, i64, env, i64)
+-DEF_HELPER_2(iwmmxt_unpackhsl, i64, env, i64)
+-
+-DEF_IWMMXT_HELPER_SIZE_ENV(cmpeq)
+-DEF_IWMMXT_HELPER_SIZE_ENV(cmpgtu)
+-DEF_IWMMXT_HELPER_SIZE_ENV(cmpgts)
+-
+-DEF_IWMMXT_HELPER_SIZE_ENV(mins)
+-DEF_IWMMXT_HELPER_SIZE_ENV(minu)
+-DEF_IWMMXT_HELPER_SIZE_ENV(maxs)
+-DEF_IWMMXT_HELPER_SIZE_ENV(maxu)
+-
+-DEF_IWMMXT_HELPER_SIZE_ENV(subn)
+-DEF_IWMMXT_HELPER_SIZE_ENV(addn)
+-DEF_IWMMXT_HELPER_SIZE_ENV(subu)
+-DEF_IWMMXT_HELPER_SIZE_ENV(addu)
+-DEF_IWMMXT_HELPER_SIZE_ENV(subs)
+-DEF_IWMMXT_HELPER_SIZE_ENV(adds)
+-
+-DEF_HELPER_3(iwmmxt_avgb0, i64, env, i64, i64)
+-DEF_HELPER_3(iwmmxt_avgb1, i64, env, i64, i64)
+-DEF_HELPER_3(iwmmxt_avgw0, i64, env, i64, i64)
+-DEF_HELPER_3(iwmmxt_avgw1, i64, env, i64, i64)
+-
+-DEF_HELPER_3(iwmmxt_align, i64, i64, i64, i32)
+-DEF_HELPER_4(iwmmxt_insr, i64, i64, i32, i32, i32)
+-
+-DEF_HELPER_1(iwmmxt_bcstb, i64, i32)
+-DEF_HELPER_1(iwmmxt_bcstw, i64, i32)
+-DEF_HELPER_1(iwmmxt_bcstl, i64, i32)
+-
+-DEF_HELPER_1(iwmmxt_addcb, i64, i64)
+-DEF_HELPER_1(iwmmxt_addcw, i64, i64)
+-DEF_HELPER_1(iwmmxt_addcl, i64, i64)
+-
+-DEF_HELPER_1(iwmmxt_msbb, i32, i64)
+-DEF_HELPER_1(iwmmxt_msbw, i32, i64)
+-DEF_HELPER_1(iwmmxt_msbl, i32, i64)
+-
+-DEF_HELPER_3(iwmmxt_srlw, i64, env, i64, i32)
+-DEF_HELPER_3(iwmmxt_srll, i64, env, i64, i32)
+-DEF_HELPER_3(iwmmxt_srlq, i64, env, i64, i32)
+-DEF_HELPER_3(iwmmxt_sllw, i64, env, i64, i32)
+-DEF_HELPER_3(iwmmxt_slll, i64, env, i64, i32)
+-DEF_HELPER_3(iwmmxt_sllq, i64, env, i64, i32)
+-DEF_HELPER_3(iwmmxt_sraw, i64, env, i64, i32)
+-DEF_HELPER_3(iwmmxt_sral, i64, env, i64, i32)
+-DEF_HELPER_3(iwmmxt_sraq, i64, env, i64, i32)
+-DEF_HELPER_3(iwmmxt_rorw, i64, env, i64, i32)
+-DEF_HELPER_3(iwmmxt_rorl, i64, env, i64, i32)
+-DEF_HELPER_3(iwmmxt_rorq, i64, env, i64, i32)
+-DEF_HELPER_3(iwmmxt_shufh, i64, env, i64, i32)
+-
+-DEF_HELPER_3(iwmmxt_packuw, i64, env, i64, i64)
+-DEF_HELPER_3(iwmmxt_packul, i64, env, i64, i64)
+-DEF_HELPER_3(iwmmxt_packuq, i64, env, i64, i64)
+-DEF_HELPER_3(iwmmxt_packsw, i64, env, i64, i64)
+-DEF_HELPER_3(iwmmxt_packsl, i64, env, i64, i64)
+-DEF_HELPER_3(iwmmxt_packsq, i64, env, i64, i64)
+-
+-DEF_HELPER_3(iwmmxt_muladdsl, i64, i64, i32, i32)
+-DEF_HELPER_3(iwmmxt_muladdsw, i64, i64, i32, i32)
+-DEF_HELPER_3(iwmmxt_muladdswl, i64, i64, i32, i32)
+-
+-DEF_HELPER_FLAGS_2(neon_unzip8, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_unzip16, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_qunzip8, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_qunzip16, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_qunzip32, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_zip8, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_zip16, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_qzip8, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_qzip16, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_qzip32, TCG_CALL_NO_RWG, void, ptr, ptr)
+-
+-DEF_HELPER_FLAGS_4(crypto_aese, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(crypto_aesd, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(crypto_aesmc, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(crypto_aesimc, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(crypto_sha1su0, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(crypto_sha1c, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(crypto_sha1p, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(crypto_sha1m, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(crypto_sha1h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(crypto_sha1su1, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(crypto_sha256h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(crypto_sha256h2, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(crypto_sha256su0, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(crypto_sha256su1, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(crypto_sha512h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(crypto_sha512h2, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(crypto_sha512su0, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(crypto_sha512su1, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(crypto_sm3tt1a, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(crypto_sm3tt1b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(crypto_sm3tt2a, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(crypto_sm3tt2b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(crypto_sm3partw1, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(crypto_sm3partw2, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(crypto_sm4e, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(crypto_sm4ekey, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(crypto_rax1, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_3(crc32, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
+-DEF_HELPER_FLAGS_3(crc32c, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_qrdmlah_s16, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_qrdmlsh_s16, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_qrdmlah_s32, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_qrdmlsh_s32, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(sve2_sqrdmlah_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(sve2_sqrdmlsh_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(sve2_sqrdmlah_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(sve2_sqrdmlsh_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(sve2_sqrdmlah_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(sve2_sqrdmlsh_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(sve2_sqrdmlah_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(sve2_sqrdmlsh_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_sdot_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_udot_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_sdot_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_udot_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_usdot_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_sdot_idx_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_udot_idx_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_sdot_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_udot_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_sudot_idx_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_usdot_idx_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fcaddh, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fcadds, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fcaddd, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_6(gvec_fcmlah, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_6(gvec_fcmlah_idx, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_6(gvec_fcmlas, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_6(gvec_fcmlas_idx, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_6(gvec_fcmlad, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_sstoh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_sitos, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_ustoh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_uitos, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_tosszh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_tosizs, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_touszh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_touizs, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_vcvt_sf, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vcvt_uf, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vcvt_rz_fs, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vcvt_rz_fu, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_vcvt_sh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vcvt_uh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vcvt_rz_hs, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vcvt_rz_hu, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_vcvt_sd, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vcvt_ud, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vcvt_rz_ds, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vcvt_rz_du, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_vcvt_rm_sd, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vcvt_rm_ud, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vcvt_rm_ss, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vcvt_rm_us, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vcvt_rm_sh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vcvt_rm_uh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_vrint_rm_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vrint_rm_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_vrintx_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_vrintx_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_frecpe_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_frecpe_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_frecpe_rpres_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_frecpe_d, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_frsqrte_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_frsqrte_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_frsqrte_rpres_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_frsqrte_d, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_fcgt0_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_fcgt0_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_fcgt0_d, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_fcge0_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_fcge0_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_fcge0_d, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_fceq0_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_fceq0_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_fceq0_d, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_fcle0_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_fcle0_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_fcle0_d, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_fclt0_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_fclt0_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_4(gvec_fclt0_d, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fadd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fadd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fadd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fsub_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fsub_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fsub_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fmul_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmul_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmul_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fabd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fabd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fabd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_ah_fabd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_ah_fabd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_ah_fabd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fceq_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fceq_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fceq_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fcge_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fcge_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fcge_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fcgt_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fcgt_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fcgt_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_facge_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_facge_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_facge_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_facgt_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_facgt_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_facgt_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fmax_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmax_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmax_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fmin_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmin_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmin_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fmaxnum_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmaxnum_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmaxnum_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fminnum_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fminnum_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fminnum_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_recps_nf_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_recps_nf_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_rsqrts_nf_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_rsqrts_nf_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fmla_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmla_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fmls_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmls_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_vfma_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_vfma_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_vfma_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_vfms_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_vfms_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_vfms_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_ah_vfms_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_ah_vfms_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_ah_vfms_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_ftsmul_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_ftsmul_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_ftsmul_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fmul_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmul_idx_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmul_idx_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fmla_nf_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmla_nf_idx_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fmls_nf_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmls_nf_idx_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_6(gvec_fmla_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_6(gvec_fmla_idx_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_6(gvec_fmla_idx_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_6(gvec_fmls_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_6(gvec_fmls_idx_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_6(gvec_fmls_idx_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_6(gvec_ah_fmls_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_6(gvec_ah_fmls_idx_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_6(gvec_ah_fmls_idx_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_uqadd_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_uqadd_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_uqadd_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_uqadd_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_sqadd_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_sqadd_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_sqadd_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_sqadd_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_uqsub_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_uqsub_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_uqsub_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_uqsub_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_sqsub_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_sqsub_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_sqsub_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_sqsub_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_usqadd_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_usqadd_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_usqadd_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_usqadd_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_suqadd_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_suqadd_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_suqadd_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_suqadd_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fmlal_a32, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmlal_a64, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmlal_idx_a32, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmlal_idx_a64, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, env, i32)
+-
+-DEF_HELPER_FLAGS_2(frint32_s, TCG_CALL_NO_RWG, f32, f32, fpst)
+-DEF_HELPER_FLAGS_2(frint64_s, TCG_CALL_NO_RWG, f32, f32, fpst)
+-DEF_HELPER_FLAGS_2(frint32_d, TCG_CALL_NO_RWG, f64, f64, fpst)
+-DEF_HELPER_FLAGS_2(frint64_d, TCG_CALL_NO_RWG, f64, f64, fpst)
+-
+-DEF_HELPER_FLAGS_3(gvec_ceq0_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_ceq0_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_clt0_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_clt0_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_cle0_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_cle0_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_cgt0_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_cgt0_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_cge0_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_cge0_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_smulh_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_smulh_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_smulh_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_smulh_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_umulh_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_umulh_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_umulh_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_umulh_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_sshl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_sshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_ushl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_ushl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_pmul_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_pmull_q, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(neon_pmull_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_3(gvec_ssra_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_ssra_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_ssra_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_ssra_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_3(gvec_usra_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_usra_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_usra_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_usra_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_3(gvec_srshr_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_srshr_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_srshr_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_srshr_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_3(gvec_urshr_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_urshr_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_urshr_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_urshr_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_3(gvec_srsra_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_srsra_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_srsra_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_srsra_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_3(gvec_ursra_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_ursra_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_ursra_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_ursra_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_3(gvec_sri_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_sri_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_sri_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_sri_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_3(gvec_sli_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_sli_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_sli_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_sli_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_sabd_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_sabd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_sabd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_sabd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_uabd_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_uabd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_uabd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_uabd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_saba_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_saba_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_saba_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_saba_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_uaba_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_uaba_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_uaba_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_uaba_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_mul_idx_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_mul_idx_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_mul_idx_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_mla_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_mla_idx_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_mla_idx_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_mls_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_mls_idx_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_mls_idx_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(neon_sqdmulh_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(neon_sqdmulh_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(neon_sqrdmulh_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(neon_sqrdmulh_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(neon_sqdmulh_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(neon_sqdmulh_idx_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(neon_sqrdmulh_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(neon_sqrdmulh_idx_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(neon_sqrdmlah_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(neon_sqrdmlah_idx_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(neon_sqrdmlsh_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(neon_sqrdmlsh_idx_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(sve2_sqdmulh_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(sve2_sqdmulh_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(sve2_sqdmulh_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(sve2_sqdmulh_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(sve2_sqrdmulh_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(sve2_sqrdmulh_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(sve2_sqrdmulh_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(sve2_sqrdmulh_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(sve2_sqdmulh_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(sve2_sqdmulh_idx_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(sve2_sqdmulh_idx_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(sve2_sqrdmulh_idx_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(sve2_sqrdmulh_idx_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(sve2_sqrdmulh_idx_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_6(sve2_fmlal_zzzw_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_6(sve2_fmlal_zzxw_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, env, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_xar_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_smmla_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_ummla_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_usmmla_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_6(gvec_bfdot, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, env, i32)
+-DEF_HELPER_FLAGS_6(gvec_bfdot_idx, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, env, i32)
+-
+-DEF_HELPER_FLAGS_6(gvec_bfmmla, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, env, i32)
+-
+-DEF_HELPER_FLAGS_6(gvec_bfmlal, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_6(gvec_bfmlal_idx, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_sclamp_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_sclamp_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_sclamp_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_sclamp_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_uclamp_b, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_uclamp_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_uclamp_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(gvec_uclamp_d, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_faddp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_faddp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_faddp_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fmaxp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmaxp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmaxp_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fminp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fminp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fminp_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fmaxnump_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmaxnump_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fmaxnump_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_5(gvec_fminnump_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fminnump_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-DEF_HELPER_FLAGS_5(gvec_fminnump_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_addp_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_addp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_addp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_addp_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_smaxp_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_smaxp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_smaxp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_sminp_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_sminp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_sminp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_umaxp_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_umaxp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_umaxp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_4(gvec_uminp_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_uminp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_4(gvec_uminp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_3(gvec_urecpe_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_3(gvec_ursqrte_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++#include "tcg/helper.h"
+ 
+ #ifdef TARGET_AARCH64
+ #include "tcg/helper-a64.h"
+diff --git a/target/arm/tcg/helper.h b/target/arm/tcg/helper.h
+new file mode 100644
+index 00000000000..80db7c2c37a
+--- /dev/null
++++ b/target/arm/tcg/helper.h
+@@ -0,0 +1,1153 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++
++DEF_HELPER_FLAGS_1(sxtb16, TCG_CALL_NO_RWG_SE, i32, i32)
++DEF_HELPER_FLAGS_1(uxtb16, TCG_CALL_NO_RWG_SE, i32, i32)
++
++DEF_HELPER_3(add_setq, i32, env, i32, i32)
++DEF_HELPER_3(add_saturate, i32, env, i32, i32)
++DEF_HELPER_3(sub_saturate, i32, env, i32, i32)
++DEF_HELPER_3(add_usaturate, i32, env, i32, i32)
++DEF_HELPER_3(sub_usaturate, i32, env, i32, i32)
++DEF_HELPER_FLAGS_3(sdiv, TCG_CALL_NO_RWG, s32, env, s32, s32)
++DEF_HELPER_FLAGS_3(udiv, TCG_CALL_NO_RWG, i32, env, i32, i32)
++DEF_HELPER_FLAGS_1(rbit, TCG_CALL_NO_RWG_SE, i32, i32)
++
++#define PAS_OP(pfx)  \
++    DEF_HELPER_3(pfx ## add8, i32, i32, i32, ptr) \
++    DEF_HELPER_3(pfx ## sub8, i32, i32, i32, ptr) \
++    DEF_HELPER_3(pfx ## sub16, i32, i32, i32, ptr) \
++    DEF_HELPER_3(pfx ## add16, i32, i32, i32, ptr) \
++    DEF_HELPER_3(pfx ## addsubx, i32, i32, i32, ptr) \
++    DEF_HELPER_3(pfx ## subaddx, i32, i32, i32, ptr)
++
++PAS_OP(s)
++PAS_OP(u)
++#undef PAS_OP
++
++#define PAS_OP(pfx)  \
++    DEF_HELPER_2(pfx ## add8, i32, i32, i32) \
++    DEF_HELPER_2(pfx ## sub8, i32, i32, i32) \
++    DEF_HELPER_2(pfx ## sub16, i32, i32, i32) \
++    DEF_HELPER_2(pfx ## add16, i32, i32, i32) \
++    DEF_HELPER_2(pfx ## addsubx, i32, i32, i32) \
++    DEF_HELPER_2(pfx ## subaddx, i32, i32, i32)
++PAS_OP(q)
++PAS_OP(sh)
++PAS_OP(uq)
++PAS_OP(uh)
++#undef PAS_OP
++
++DEF_HELPER_3(ssat, i32, env, i32, i32)
++DEF_HELPER_3(usat, i32, env, i32, i32)
++DEF_HELPER_3(ssat16, i32, env, i32, i32)
++DEF_HELPER_3(usat16, i32, env, i32, i32)
++
++DEF_HELPER_FLAGS_2(usad8, TCG_CALL_NO_RWG_SE, i32, i32, i32)
++
++DEF_HELPER_FLAGS_3(sel_flags, TCG_CALL_NO_RWG_SE,
++                   i32, i32, i32, i32)
++DEF_HELPER_2(exception_internal, noreturn, env, i32)
++DEF_HELPER_3(exception_with_syndrome, noreturn, env, i32, i32)
++DEF_HELPER_4(exception_with_syndrome_el, noreturn, env, i32, i32, i32)
++DEF_HELPER_2(exception_bkpt_insn, noreturn, env, i32)
++DEF_HELPER_2(exception_swstep, noreturn, env, i32)
++DEF_HELPER_2(exception_pc_alignment, noreturn, env, vaddr)
++DEF_HELPER_1(setend, void, env)
++DEF_HELPER_2(wfi, void, env, i32)
++DEF_HELPER_1(wfe, void, env)
++DEF_HELPER_2(wfit, void, env, i64)
++DEF_HELPER_1(yield, void, env)
++DEF_HELPER_1(pre_hvc, void, env)
++DEF_HELPER_2(pre_smc, void, env, i32)
++DEF_HELPER_1(vesb, void, env)
++
++DEF_HELPER_3(cpsr_write, void, env, i32, i32)
++DEF_HELPER_2(cpsr_write_eret, void, env, i32)
++DEF_HELPER_1(cpsr_read, i32, env)
++
++DEF_HELPER_3(v7m_msr, void, env, i32, i32)
++DEF_HELPER_2(v7m_mrs, i32, env, i32)
++
++DEF_HELPER_2(v7m_bxns, void, env, i32)
++DEF_HELPER_2(v7m_blxns, void, env, i32)
++
++DEF_HELPER_3(v7m_tt, i32, env, i32, i32)
++
++DEF_HELPER_1(v7m_preserve_fp_state, void, env)
++
++DEF_HELPER_2(v7m_vlstm, void, env, i32)
++DEF_HELPER_2(v7m_vlldm, void, env, i32)
++
++DEF_HELPER_2(v8m_stackcheck, void, env, i32)
++
++DEF_HELPER_FLAGS_2(check_bxj_trap, TCG_CALL_NO_WG, void, env, i32)
++
++DEF_HELPER_4(access_check_cp_reg, cptr, env, i32, i32, i32)
++DEF_HELPER_FLAGS_2(lookup_cp_reg, TCG_CALL_NO_RWG_SE, cptr, env, i32)
++DEF_HELPER_FLAGS_2(tidcp_el0, TCG_CALL_NO_WG, void, env, i32)
++DEF_HELPER_FLAGS_2(tidcp_el1, TCG_CALL_NO_WG, void, env, i32)
++DEF_HELPER_3(set_cp_reg, void, env, cptr, i32)
++DEF_HELPER_2(get_cp_reg, i32, env, cptr)
++DEF_HELPER_3(set_cp_reg64, void, env, cptr, i64)
++DEF_HELPER_2(get_cp_reg64, i64, env, cptr)
++
++DEF_HELPER_2(get_r13_banked, i32, env, i32)
++DEF_HELPER_3(set_r13_banked, void, env, i32, i32)
++
++DEF_HELPER_3(mrs_banked, i32, env, i32, i32)
++DEF_HELPER_4(msr_banked, void, env, i32, i32, i32)
++
++DEF_HELPER_2(get_user_reg, i32, env, i32)
++DEF_HELPER_3(set_user_reg, void, env, i32, i32)
++
++DEF_HELPER_FLAGS_1(rebuild_hflags_m32_newel, TCG_CALL_NO_RWG, void, env)
++DEF_HELPER_FLAGS_2(rebuild_hflags_m32, TCG_CALL_NO_RWG, void, env, int)
++DEF_HELPER_FLAGS_1(rebuild_hflags_a32_newel, TCG_CALL_NO_RWG, void, env)
++DEF_HELPER_FLAGS_2(rebuild_hflags_a32, TCG_CALL_NO_RWG, void, env, int)
++DEF_HELPER_FLAGS_2(rebuild_hflags_a64, TCG_CALL_NO_RWG, void, env, int)
++
++DEF_HELPER_FLAGS_5(probe_access, TCG_CALL_NO_WG, void, env, vaddr, i32, i32, i32)
++
++DEF_HELPER_1(vfp_get_fpscr, i32, env)
++DEF_HELPER_2(vfp_set_fpscr, void, env, i32)
++
++DEF_HELPER_3(vfp_addh, f16, f16, f16, fpst)
++DEF_HELPER_3(vfp_adds, f32, f32, f32, fpst)
++DEF_HELPER_3(vfp_addd, f64, f64, f64, fpst)
++DEF_HELPER_3(vfp_subh, f16, f16, f16, fpst)
++DEF_HELPER_3(vfp_subs, f32, f32, f32, fpst)
++DEF_HELPER_3(vfp_subd, f64, f64, f64, fpst)
++DEF_HELPER_3(vfp_mulh, f16, f16, f16, fpst)
++DEF_HELPER_3(vfp_muls, f32, f32, f32, fpst)
++DEF_HELPER_3(vfp_muld, f64, f64, f64, fpst)
++DEF_HELPER_3(vfp_divh, f16, f16, f16, fpst)
++DEF_HELPER_3(vfp_divs, f32, f32, f32, fpst)
++DEF_HELPER_3(vfp_divd, f64, f64, f64, fpst)
++DEF_HELPER_3(vfp_maxh, f16, f16, f16, fpst)
++DEF_HELPER_3(vfp_maxs, f32, f32, f32, fpst)
++DEF_HELPER_3(vfp_maxd, f64, f64, f64, fpst)
++DEF_HELPER_3(vfp_minh, f16, f16, f16, fpst)
++DEF_HELPER_3(vfp_mins, f32, f32, f32, fpst)
++DEF_HELPER_3(vfp_mind, f64, f64, f64, fpst)
++DEF_HELPER_3(vfp_maxnumh, f16, f16, f16, fpst)
++DEF_HELPER_3(vfp_maxnums, f32, f32, f32, fpst)
++DEF_HELPER_3(vfp_maxnumd, f64, f64, f64, fpst)
++DEF_HELPER_3(vfp_minnumh, f16, f16, f16, fpst)
++DEF_HELPER_3(vfp_minnums, f32, f32, f32, fpst)
++DEF_HELPER_3(vfp_minnumd, f64, f64, f64, fpst)
++DEF_HELPER_2(vfp_sqrth, f16, f16, fpst)
++DEF_HELPER_2(vfp_sqrts, f32, f32, fpst)
++DEF_HELPER_2(vfp_sqrtd, f64, f64, fpst)
++DEF_HELPER_3(vfp_cmph, void, f16, f16, env)
++DEF_HELPER_3(vfp_cmps, void, f32, f32, env)
++DEF_HELPER_3(vfp_cmpd, void, f64, f64, env)
++DEF_HELPER_3(vfp_cmpeh, void, f16, f16, env)
++DEF_HELPER_3(vfp_cmpes, void, f32, f32, env)
++DEF_HELPER_3(vfp_cmped, void, f64, f64, env)
++
++DEF_HELPER_2(vfp_fcvtds, f64, f32, fpst)
++DEF_HELPER_2(vfp_fcvtsd, f32, f64, fpst)
++DEF_HELPER_FLAGS_2(bfcvt, TCG_CALL_NO_RWG, i32, f32, fpst)
++DEF_HELPER_FLAGS_2(bfcvt_pair, TCG_CALL_NO_RWG, i32, i64, fpst)
++
++DEF_HELPER_2(vfp_uitoh, f16, i32, fpst)
++DEF_HELPER_2(vfp_uitos, f32, i32, fpst)
++DEF_HELPER_2(vfp_uitod, f64, i32, fpst)
++DEF_HELPER_2(vfp_sitoh, f16, i32, fpst)
++DEF_HELPER_2(vfp_sitos, f32, i32, fpst)
++DEF_HELPER_2(vfp_sitod, f64, i32, fpst)
++
++DEF_HELPER_2(vfp_touih, i32, f16, fpst)
++DEF_HELPER_2(vfp_touis, i32, f32, fpst)
++DEF_HELPER_2(vfp_touid, i32, f64, fpst)
++DEF_HELPER_2(vfp_touizh, i32, f16, fpst)
++DEF_HELPER_2(vfp_touizs, i32, f32, fpst)
++DEF_HELPER_2(vfp_touizd, i32, f64, fpst)
++DEF_HELPER_2(vfp_tosih, s32, f16, fpst)
++DEF_HELPER_2(vfp_tosis, s32, f32, fpst)
++DEF_HELPER_2(vfp_tosid, s32, f64, fpst)
++DEF_HELPER_2(vfp_tosizh, s32, f16, fpst)
++DEF_HELPER_2(vfp_tosizs, s32, f32, fpst)
++DEF_HELPER_2(vfp_tosizd, s32, f64, fpst)
++
++DEF_HELPER_3(vfp_toshh_round_to_zero, i32, f16, i32, fpst)
++DEF_HELPER_3(vfp_toslh_round_to_zero, i32, f16, i32, fpst)
++DEF_HELPER_3(vfp_touhh_round_to_zero, i32, f16, i32, fpst)
++DEF_HELPER_3(vfp_toulh_round_to_zero, i32, f16, i32, fpst)
++DEF_HELPER_3(vfp_toshs_round_to_zero, i32, f32, i32, fpst)
++DEF_HELPER_3(vfp_tosls_round_to_zero, i32, f32, i32, fpst)
++DEF_HELPER_3(vfp_touhs_round_to_zero, i32, f32, i32, fpst)
++DEF_HELPER_3(vfp_touls_round_to_zero, i32, f32, i32, fpst)
++DEF_HELPER_3(vfp_toshd_round_to_zero, i64, f64, i32, fpst)
++DEF_HELPER_3(vfp_tosld_round_to_zero, i64, f64, i32, fpst)
++DEF_HELPER_3(vfp_tosqd_round_to_zero, i64, f64, i32, fpst)
++DEF_HELPER_3(vfp_touhd_round_to_zero, i64, f64, i32, fpst)
++DEF_HELPER_3(vfp_tould_round_to_zero, i64, f64, i32, fpst)
++DEF_HELPER_3(vfp_touqd_round_to_zero, i64, f64, i32, fpst)
++DEF_HELPER_3(vfp_touhh, i32, f16, i32, fpst)
++DEF_HELPER_3(vfp_toshh, i32, f16, i32, fpst)
++DEF_HELPER_3(vfp_toulh, i32, f16, i32, fpst)
++DEF_HELPER_3(vfp_toslh, i32, f16, i32, fpst)
++DEF_HELPER_3(vfp_touqh, i64, f16, i32, fpst)
++DEF_HELPER_3(vfp_tosqh, i64, f16, i32, fpst)
++DEF_HELPER_3(vfp_toshs, i32, f32, i32, fpst)
++DEF_HELPER_3(vfp_tosls, i32, f32, i32, fpst)
++DEF_HELPER_3(vfp_tosqs, i64, f32, i32, fpst)
++DEF_HELPER_3(vfp_touhs, i32, f32, i32, fpst)
++DEF_HELPER_3(vfp_touls, i32, f32, i32, fpst)
++DEF_HELPER_3(vfp_touqs, i64, f32, i32, fpst)
++DEF_HELPER_3(vfp_toshd, i64, f64, i32, fpst)
++DEF_HELPER_3(vfp_tosld, i64, f64, i32, fpst)
++DEF_HELPER_3(vfp_tosqd, i64, f64, i32, fpst)
++DEF_HELPER_3(vfp_touhd, i64, f64, i32, fpst)
++DEF_HELPER_3(vfp_tould, i64, f64, i32, fpst)
++DEF_HELPER_3(vfp_touqd, i64, f64, i32, fpst)
++DEF_HELPER_3(vfp_shtos, f32, i32, i32, fpst)
++DEF_HELPER_3(vfp_sltos, f32, i32, i32, fpst)
++DEF_HELPER_3(vfp_sqtos, f32, i64, i32, fpst)
++DEF_HELPER_3(vfp_uhtos, f32, i32, i32, fpst)
++DEF_HELPER_3(vfp_ultos, f32, i32, i32, fpst)
++DEF_HELPER_3(vfp_uqtos, f32, i64, i32, fpst)
++DEF_HELPER_3(vfp_shtod, f64, i64, i32, fpst)
++DEF_HELPER_3(vfp_sltod, f64, i64, i32, fpst)
++DEF_HELPER_3(vfp_sqtod, f64, i64, i32, fpst)
++DEF_HELPER_3(vfp_uhtod, f64, i64, i32, fpst)
++DEF_HELPER_3(vfp_ultod, f64, i64, i32, fpst)
++DEF_HELPER_3(vfp_uqtod, f64, i64, i32, fpst)
++DEF_HELPER_3(vfp_shtoh, f16, i32, i32, fpst)
++DEF_HELPER_3(vfp_uhtoh, f16, i32, i32, fpst)
++DEF_HELPER_3(vfp_sltoh, f16, i32, i32, fpst)
++DEF_HELPER_3(vfp_ultoh, f16, i32, i32, fpst)
++DEF_HELPER_3(vfp_sqtoh, f16, i64, i32, fpst)
++DEF_HELPER_3(vfp_uqtoh, f16, i64, i32, fpst)
++
++DEF_HELPER_3(vfp_shtos_round_to_nearest, f32, i32, i32, fpst)
++DEF_HELPER_3(vfp_sltos_round_to_nearest, f32, i32, i32, fpst)
++DEF_HELPER_3(vfp_uhtos_round_to_nearest, f32, i32, i32, fpst)
++DEF_HELPER_3(vfp_ultos_round_to_nearest, f32, i32, i32, fpst)
++DEF_HELPER_3(vfp_shtod_round_to_nearest, f64, i64, i32, fpst)
++DEF_HELPER_3(vfp_sltod_round_to_nearest, f64, i64, i32, fpst)
++DEF_HELPER_3(vfp_uhtod_round_to_nearest, f64, i64, i32, fpst)
++DEF_HELPER_3(vfp_ultod_round_to_nearest, f64, i64, i32, fpst)
++DEF_HELPER_3(vfp_shtoh_round_to_nearest, f16, i32, i32, fpst)
++DEF_HELPER_3(vfp_uhtoh_round_to_nearest, f16, i32, i32, fpst)
++DEF_HELPER_3(vfp_sltoh_round_to_nearest, f16, i32, i32, fpst)
++DEF_HELPER_3(vfp_ultoh_round_to_nearest, f16, i32, i32, fpst)
++
++DEF_HELPER_FLAGS_2(set_rmode, TCG_CALL_NO_RWG, i32, i32, fpst)
++
++DEF_HELPER_FLAGS_3(vfp_fcvt_f16_to_f32, TCG_CALL_NO_RWG, f32, f16, fpst, i32)
++DEF_HELPER_FLAGS_3(vfp_fcvt_f32_to_f16, TCG_CALL_NO_RWG, f16, f32, fpst, i32)
++DEF_HELPER_FLAGS_3(vfp_fcvt_f16_to_f64, TCG_CALL_NO_RWG, f64, f16, fpst, i32)
++DEF_HELPER_FLAGS_3(vfp_fcvt_f64_to_f16, TCG_CALL_NO_RWG, f16, f64, fpst, i32)
++
++DEF_HELPER_4(vfp_muladdd, f64, f64, f64, f64, fpst)
++DEF_HELPER_4(vfp_muladds, f32, f32, f32, f32, fpst)
++DEF_HELPER_4(vfp_muladdh, f16, f16, f16, f16, fpst)
++
++DEF_HELPER_FLAGS_2(recpe_f16, TCG_CALL_NO_RWG, f16, f16, fpst)
++DEF_HELPER_FLAGS_2(recpe_f32, TCG_CALL_NO_RWG, f32, f32, fpst)
++DEF_HELPER_FLAGS_2(recpe_rpres_f32, TCG_CALL_NO_RWG, f32, f32, fpst)
++DEF_HELPER_FLAGS_2(recpe_f64, TCG_CALL_NO_RWG, f64, f64, fpst)
++DEF_HELPER_FLAGS_2(rsqrte_f16, TCG_CALL_NO_RWG, f16, f16, fpst)
++DEF_HELPER_FLAGS_2(rsqrte_f32, TCG_CALL_NO_RWG, f32, f32, fpst)
++DEF_HELPER_FLAGS_2(rsqrte_rpres_f32, TCG_CALL_NO_RWG, f32, f32, fpst)
++DEF_HELPER_FLAGS_2(rsqrte_f64, TCG_CALL_NO_RWG, f64, f64, fpst)
++DEF_HELPER_FLAGS_1(recpe_u32, TCG_CALL_NO_RWG, i32, i32)
++DEF_HELPER_FLAGS_1(rsqrte_u32, TCG_CALL_NO_RWG, i32, i32)
++DEF_HELPER_FLAGS_4(neon_tbl, TCG_CALL_NO_RWG, i64, env, i32, i64, i64)
++
++DEF_HELPER_3(shl_cc, i32, env, i32, i32)
++DEF_HELPER_3(shr_cc, i32, env, i32, i32)
++DEF_HELPER_3(sar_cc, i32, env, i32, i32)
++DEF_HELPER_3(ror_cc, i32, env, i32, i32)
++
++DEF_HELPER_FLAGS_2(rinth_exact, TCG_CALL_NO_RWG, f16, f16, fpst)
++DEF_HELPER_FLAGS_2(rints_exact, TCG_CALL_NO_RWG, f32, f32, fpst)
++DEF_HELPER_FLAGS_2(rintd_exact, TCG_CALL_NO_RWG, f64, f64, fpst)
++DEF_HELPER_FLAGS_2(rinth, TCG_CALL_NO_RWG, f16, f16, fpst)
++DEF_HELPER_FLAGS_2(rints, TCG_CALL_NO_RWG, f32, f32, fpst)
++DEF_HELPER_FLAGS_2(rintd, TCG_CALL_NO_RWG, f64, f64, fpst)
++
++DEF_HELPER_FLAGS_2(vjcvt, TCG_CALL_NO_RWG, i32, f64, env)
++DEF_HELPER_FLAGS_2(fjcvtzs, TCG_CALL_NO_RWG, i64, f64, fpst)
++
++DEF_HELPER_FLAGS_3(check_hcr_el2_trap, TCG_CALL_NO_WG, void, env, i32, i32)
++
++/* neon_helper.c */
++DEF_HELPER_2(neon_pmin_u8, i32, i32, i32)
++DEF_HELPER_2(neon_pmin_s8, i32, i32, i32)
++DEF_HELPER_2(neon_pmin_u16, i32, i32, i32)
++DEF_HELPER_2(neon_pmin_s16, i32, i32, i32)
++DEF_HELPER_2(neon_pmax_u8, i32, i32, i32)
++DEF_HELPER_2(neon_pmax_s8, i32, i32, i32)
++DEF_HELPER_2(neon_pmax_u16, i32, i32, i32)
++DEF_HELPER_2(neon_pmax_s16, i32, i32, i32)
++
++DEF_HELPER_2(neon_shl_u16, i32, i32, i32)
++DEF_HELPER_2(neon_shl_s16, i32, i32, i32)
++DEF_HELPER_2(neon_rshl_u8, i32, i32, i32)
++DEF_HELPER_2(neon_rshl_s8, i32, i32, i32)
++DEF_HELPER_2(neon_rshl_u16, i32, i32, i32)
++DEF_HELPER_2(neon_rshl_s16, i32, i32, i32)
++DEF_HELPER_2(neon_rshl_u32, i32, i32, i32)
++DEF_HELPER_2(neon_rshl_s32, i32, i32, i32)
++DEF_HELPER_2(neon_rshl_u64, i64, i64, i64)
++DEF_HELPER_2(neon_rshl_s64, i64, i64, i64)
++DEF_HELPER_3(neon_qshl_u8, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshl_s8, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshl_u16, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshl_s16, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshl_u32, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshl_s32, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshl_u64, i64, env, i64, i64)
++DEF_HELPER_3(neon_qshl_s64, i64, env, i64, i64)
++DEF_HELPER_3(neon_qshlu_s8, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshlu_s16, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshlu_s32, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshlu_s64, i64, env, i64, i64)
++DEF_HELPER_3(neon_qrshl_u8, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrshl_s8, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrshl_u16, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrshl_s16, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrshl_u32, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrshl_s32, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrshl_u64, i64, env, i64, i64)
++DEF_HELPER_3(neon_qrshl_s64, i64, env, i64, i64)
++DEF_HELPER_FLAGS_5(neon_sqshl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(neon_sqshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(neon_sqshl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(neon_sqshl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(neon_uqshl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(neon_uqshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(neon_uqshl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(neon_uqshl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(neon_sqrshl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(neon_sqrshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(neon_sqrshl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(neon_sqrshl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(neon_uqrshl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(neon_uqrshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(neon_uqrshl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(neon_uqrshl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(neon_sqshli_b, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(neon_sqshli_h, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(neon_sqshli_s, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(neon_sqshli_d, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(neon_uqshli_b, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(neon_uqshli_h, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(neon_uqshli_s, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(neon_uqshli_d, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(neon_sqshlui_b, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(neon_sqshlui_h, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(neon_sqshlui_s, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(neon_sqshlui_d, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++
++DEF_HELPER_FLAGS_4(gvec_srshl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_srshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_srshl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_srshl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(gvec_urshl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_urshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_urshl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_urshl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_2(neon_add_u8, i32, i32, i32)
++DEF_HELPER_2(neon_add_u16, i32, i32, i32)
++DEF_HELPER_2(neon_sub_u8, i32, i32, i32)
++DEF_HELPER_2(neon_sub_u16, i32, i32, i32)
++DEF_HELPER_2(neon_mul_u8, i32, i32, i32)
++DEF_HELPER_2(neon_mul_u16, i32, i32, i32)
++
++DEF_HELPER_2(neon_tst_u8, i32, i32, i32)
++DEF_HELPER_2(neon_tst_u16, i32, i32, i32)
++DEF_HELPER_2(neon_tst_u32, i32, i32, i32)
++
++DEF_HELPER_1(neon_clz_u8, i32, i32)
++DEF_HELPER_1(neon_clz_u16, i32, i32)
++DEF_HELPER_1(neon_cls_s8, i32, i32)
++DEF_HELPER_1(neon_cls_s16, i32, i32)
++DEF_HELPER_1(neon_cls_s32, i32, i32)
++DEF_HELPER_FLAGS_3(gvec_cnt_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_rbit_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++
++DEF_HELPER_3(neon_qdmulh_s16, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrdmulh_s16, i32, env, i32, i32)
++DEF_HELPER_4(neon_qrdmlah_s16, i32, env, i32, i32, i32)
++DEF_HELPER_4(neon_qrdmlsh_s16, i32, env, i32, i32, i32)
++DEF_HELPER_3(neon_qdmulh_s32, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrdmulh_s32, i32, env, i32, i32)
++DEF_HELPER_4(neon_qrdmlah_s32, i32, env, s32, s32, s32)
++DEF_HELPER_4(neon_qrdmlsh_s32, i32, env, s32, s32, s32)
++
++DEF_HELPER_1(neon_narrow_u8, i64, i64)
++DEF_HELPER_1(neon_narrow_u16, i64, i64)
++DEF_HELPER_2(neon_unarrow_sat8, i64, env, i64)
++DEF_HELPER_2(neon_narrow_sat_u8, i64, env, i64)
++DEF_HELPER_2(neon_narrow_sat_s8, i64, env, i64)
++DEF_HELPER_2(neon_unarrow_sat16, i64, env, i64)
++DEF_HELPER_2(neon_narrow_sat_u16, i64, env, i64)
++DEF_HELPER_2(neon_narrow_sat_s16, i64, env, i64)
++DEF_HELPER_2(neon_unarrow_sat32, i64, env, i64)
++DEF_HELPER_2(neon_narrow_sat_u32, i64, env, i64)
++DEF_HELPER_2(neon_narrow_sat_s32, i64, env, i64)
++DEF_HELPER_1(neon_narrow_high_u8, i32, i64)
++DEF_HELPER_1(neon_narrow_high_u16, i32, i64)
++DEF_HELPER_1(neon_narrow_round_high_u8, i32, i64)
++DEF_HELPER_1(neon_narrow_round_high_u16, i32, i64)
++DEF_HELPER_1(neon_widen_u8, i64, i32)
++DEF_HELPER_1(neon_widen_s8, i64, i32)
++DEF_HELPER_1(neon_widen_u16, i64, i32)
++DEF_HELPER_1(neon_widen_s16, i64, i32)
++
++DEF_HELPER_FLAGS_1(neon_addlp_s8, TCG_CALL_NO_RWG_SE, i64, i64)
++DEF_HELPER_FLAGS_1(neon_addlp_s16, TCG_CALL_NO_RWG_SE, i64, i64)
++DEF_HELPER_3(neon_addl_saturate_s32, i64, env, i64, i64)
++DEF_HELPER_3(neon_addl_saturate_s64, i64, env, i64, i64)
++DEF_HELPER_2(neon_abdl_u16, i64, i32, i32)
++DEF_HELPER_2(neon_abdl_s16, i64, i32, i32)
++DEF_HELPER_2(neon_abdl_u32, i64, i32, i32)
++DEF_HELPER_2(neon_abdl_s32, i64, i32, i32)
++DEF_HELPER_2(neon_abdl_u64, i64, i32, i32)
++DEF_HELPER_2(neon_abdl_s64, i64, i32, i32)
++DEF_HELPER_2(neon_mull_u8, i64, i32, i32)
++DEF_HELPER_2(neon_mull_s8, i64, i32, i32)
++DEF_HELPER_2(neon_mull_u16, i64, i32, i32)
++DEF_HELPER_2(neon_mull_s16, i64, i32, i32)
++
++DEF_HELPER_1(neon_negl_u16, i64, i64)
++DEF_HELPER_1(neon_negl_u32, i64, i64)
++
++DEF_HELPER_FLAGS_2(neon_qabs_s8, TCG_CALL_NO_RWG, i32, env, i32)
++DEF_HELPER_FLAGS_2(neon_qabs_s16, TCG_CALL_NO_RWG, i32, env, i32)
++DEF_HELPER_FLAGS_2(neon_qabs_s32, TCG_CALL_NO_RWG, i32, env, i32)
++DEF_HELPER_FLAGS_2(neon_qabs_s64, TCG_CALL_NO_RWG, i64, env, i64)
++DEF_HELPER_FLAGS_2(neon_qneg_s8, TCG_CALL_NO_RWG, i32, env, i32)
++DEF_HELPER_FLAGS_2(neon_qneg_s16, TCG_CALL_NO_RWG, i32, env, i32)
++DEF_HELPER_FLAGS_2(neon_qneg_s32, TCG_CALL_NO_RWG, i32, env, i32)
++DEF_HELPER_FLAGS_2(neon_qneg_s64, TCG_CALL_NO_RWG, i64, env, i64)
++
++DEF_HELPER_3(neon_ceq_f32, i32, i32, i32, fpst)
++DEF_HELPER_3(neon_cge_f32, i32, i32, i32, fpst)
++DEF_HELPER_3(neon_cgt_f32, i32, i32, i32, fpst)
++DEF_HELPER_3(neon_acge_f32, i32, i32, i32, fpst)
++DEF_HELPER_3(neon_acgt_f32, i32, i32, i32, fpst)
++DEF_HELPER_3(neon_acge_f64, i64, i64, i64, fpst)
++DEF_HELPER_3(neon_acgt_f64, i64, i64, i64, fpst)
++
++/* iwmmxt_helper.c */
++DEF_HELPER_2(iwmmxt_maddsq, i64, i64, i64)
++DEF_HELPER_2(iwmmxt_madduq, i64, i64, i64)
++DEF_HELPER_2(iwmmxt_sadb, i64, i64, i64)
++DEF_HELPER_2(iwmmxt_sadw, i64, i64, i64)
++DEF_HELPER_2(iwmmxt_mulslw, i64, i64, i64)
++DEF_HELPER_2(iwmmxt_mulshw, i64, i64, i64)
++DEF_HELPER_2(iwmmxt_mululw, i64, i64, i64)
++DEF_HELPER_2(iwmmxt_muluhw, i64, i64, i64)
++DEF_HELPER_2(iwmmxt_macsw, i64, i64, i64)
++DEF_HELPER_2(iwmmxt_macuw, i64, i64, i64)
++DEF_HELPER_1(iwmmxt_setpsr_nz, i32, i64)
++
++#define DEF_IWMMXT_HELPER_SIZE_ENV(name) \
++DEF_HELPER_3(iwmmxt_##name##b, i64, env, i64, i64) \
++DEF_HELPER_3(iwmmxt_##name##w, i64, env, i64, i64) \
++DEF_HELPER_3(iwmmxt_##name##l, i64, env, i64, i64) \
++
++DEF_IWMMXT_HELPER_SIZE_ENV(unpackl)
++DEF_IWMMXT_HELPER_SIZE_ENV(unpackh)
++
++DEF_HELPER_2(iwmmxt_unpacklub, i64, env, i64)
++DEF_HELPER_2(iwmmxt_unpackluw, i64, env, i64)
++DEF_HELPER_2(iwmmxt_unpacklul, i64, env, i64)
++DEF_HELPER_2(iwmmxt_unpackhub, i64, env, i64)
++DEF_HELPER_2(iwmmxt_unpackhuw, i64, env, i64)
++DEF_HELPER_2(iwmmxt_unpackhul, i64, env, i64)
++DEF_HELPER_2(iwmmxt_unpacklsb, i64, env, i64)
++DEF_HELPER_2(iwmmxt_unpacklsw, i64, env, i64)
++DEF_HELPER_2(iwmmxt_unpacklsl, i64, env, i64)
++DEF_HELPER_2(iwmmxt_unpackhsb, i64, env, i64)
++DEF_HELPER_2(iwmmxt_unpackhsw, i64, env, i64)
++DEF_HELPER_2(iwmmxt_unpackhsl, i64, env, i64)
++
++DEF_IWMMXT_HELPER_SIZE_ENV(cmpeq)
++DEF_IWMMXT_HELPER_SIZE_ENV(cmpgtu)
++DEF_IWMMXT_HELPER_SIZE_ENV(cmpgts)
++
++DEF_IWMMXT_HELPER_SIZE_ENV(mins)
++DEF_IWMMXT_HELPER_SIZE_ENV(minu)
++DEF_IWMMXT_HELPER_SIZE_ENV(maxs)
++DEF_IWMMXT_HELPER_SIZE_ENV(maxu)
++
++DEF_IWMMXT_HELPER_SIZE_ENV(subn)
++DEF_IWMMXT_HELPER_SIZE_ENV(addn)
++DEF_IWMMXT_HELPER_SIZE_ENV(subu)
++DEF_IWMMXT_HELPER_SIZE_ENV(addu)
++DEF_IWMMXT_HELPER_SIZE_ENV(subs)
++DEF_IWMMXT_HELPER_SIZE_ENV(adds)
++
++DEF_HELPER_3(iwmmxt_avgb0, i64, env, i64, i64)
++DEF_HELPER_3(iwmmxt_avgb1, i64, env, i64, i64)
++DEF_HELPER_3(iwmmxt_avgw0, i64, env, i64, i64)
++DEF_HELPER_3(iwmmxt_avgw1, i64, env, i64, i64)
++
++DEF_HELPER_3(iwmmxt_align, i64, i64, i64, i32)
++DEF_HELPER_4(iwmmxt_insr, i64, i64, i32, i32, i32)
++
++DEF_HELPER_1(iwmmxt_bcstb, i64, i32)
++DEF_HELPER_1(iwmmxt_bcstw, i64, i32)
++DEF_HELPER_1(iwmmxt_bcstl, i64, i32)
++
++DEF_HELPER_1(iwmmxt_addcb, i64, i64)
++DEF_HELPER_1(iwmmxt_addcw, i64, i64)
++DEF_HELPER_1(iwmmxt_addcl, i64, i64)
++
++DEF_HELPER_1(iwmmxt_msbb, i32, i64)
++DEF_HELPER_1(iwmmxt_msbw, i32, i64)
++DEF_HELPER_1(iwmmxt_msbl, i32, i64)
++
++DEF_HELPER_3(iwmmxt_srlw, i64, env, i64, i32)
++DEF_HELPER_3(iwmmxt_srll, i64, env, i64, i32)
++DEF_HELPER_3(iwmmxt_srlq, i64, env, i64, i32)
++DEF_HELPER_3(iwmmxt_sllw, i64, env, i64, i32)
++DEF_HELPER_3(iwmmxt_slll, i64, env, i64, i32)
++DEF_HELPER_3(iwmmxt_sllq, i64, env, i64, i32)
++DEF_HELPER_3(iwmmxt_sraw, i64, env, i64, i32)
++DEF_HELPER_3(iwmmxt_sral, i64, env, i64, i32)
++DEF_HELPER_3(iwmmxt_sraq, i64, env, i64, i32)
++DEF_HELPER_3(iwmmxt_rorw, i64, env, i64, i32)
++DEF_HELPER_3(iwmmxt_rorl, i64, env, i64, i32)
++DEF_HELPER_3(iwmmxt_rorq, i64, env, i64, i32)
++DEF_HELPER_3(iwmmxt_shufh, i64, env, i64, i32)
++
++DEF_HELPER_3(iwmmxt_packuw, i64, env, i64, i64)
++DEF_HELPER_3(iwmmxt_packul, i64, env, i64, i64)
++DEF_HELPER_3(iwmmxt_packuq, i64, env, i64, i64)
++DEF_HELPER_3(iwmmxt_packsw, i64, env, i64, i64)
++DEF_HELPER_3(iwmmxt_packsl, i64, env, i64, i64)
++DEF_HELPER_3(iwmmxt_packsq, i64, env, i64, i64)
++
++DEF_HELPER_3(iwmmxt_muladdsl, i64, i64, i32, i32)
++DEF_HELPER_3(iwmmxt_muladdsw, i64, i64, i32, i32)
++DEF_HELPER_3(iwmmxt_muladdswl, i64, i64, i32, i32)
++
++DEF_HELPER_FLAGS_2(neon_unzip8, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_unzip16, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_qunzip8, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_qunzip16, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_qunzip32, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_zip8, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_zip16, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_qzip8, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_qzip16, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_qzip32, TCG_CALL_NO_RWG, void, ptr, ptr)
++
++DEF_HELPER_FLAGS_4(crypto_aese, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_aesd, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(crypto_aesmc, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(crypto_aesimc, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(crypto_sha1su0, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_sha1c, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_sha1p, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_sha1m, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(crypto_sha1h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(crypto_sha1su1, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(crypto_sha256h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_sha256h2, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(crypto_sha256su0, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_sha256su1, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(crypto_sha512h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_sha512h2, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(crypto_sha512su0, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_sha512su1, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(crypto_sm3tt1a, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_sm3tt1b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_sm3tt2a, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_sm3tt2b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_sm3partw1, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_sm3partw2, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(crypto_sm4e, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_sm4ekey, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(crypto_rax1, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_3(crc32, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
++DEF_HELPER_FLAGS_3(crc32c, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
++
++DEF_HELPER_FLAGS_5(gvec_qrdmlah_s16, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_qrdmlsh_s16, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_qrdmlah_s32, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_qrdmlsh_s32, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(sve2_sqrdmlah_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve2_sqrdmlsh_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve2_sqrdmlah_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve2_sqrdmlsh_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve2_sqrdmlah_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve2_sqrdmlsh_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve2_sqrdmlah_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve2_sqrdmlsh_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(gvec_sdot_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_udot_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_sdot_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_udot_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_usdot_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(gvec_sdot_idx_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_udot_idx_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_sdot_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_udot_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_sudot_idx_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_usdot_idx_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fcaddh, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fcadds, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fcaddd, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_6(gvec_fcmlah, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_6(gvec_fcmlah_idx, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_6(gvec_fcmlas, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_6(gvec_fcmlas_idx, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_6(gvec_fcmlad, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_4(gvec_sstoh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_sitos, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_ustoh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_uitos, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_tosszh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_tosizs, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_touszh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_touizs, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_4(gvec_vcvt_sf, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vcvt_uf, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vcvt_rz_fs, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vcvt_rz_fu, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_4(gvec_vcvt_sh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vcvt_uh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vcvt_rz_hs, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vcvt_rz_hu, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_4(gvec_vcvt_sd, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vcvt_ud, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vcvt_rz_ds, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vcvt_rz_du, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_4(gvec_vcvt_rm_sd, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vcvt_rm_ud, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vcvt_rm_ss, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vcvt_rm_us, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vcvt_rm_sh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vcvt_rm_uh, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_4(gvec_vrint_rm_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vrint_rm_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_4(gvec_vrintx_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_vrintx_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_4(gvec_frecpe_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_frecpe_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_frecpe_rpres_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_frecpe_d, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_4(gvec_frsqrte_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_frsqrte_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_frsqrte_rpres_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_frsqrte_d, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_4(gvec_fcgt0_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_fcgt0_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_fcgt0_d, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_4(gvec_fcge0_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_fcge0_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_fcge0_d, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_4(gvec_fceq0_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_fceq0_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_fceq0_d, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_4(gvec_fcle0_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_fcle0_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_fcle0_d, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_4(gvec_fclt0_h, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_fclt0_s, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_4(gvec_fclt0_d, TCG_CALL_NO_RWG, void, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fadd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fadd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fadd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fsub_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fsub_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fsub_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fmul_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmul_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmul_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fabd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fabd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fabd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_ah_fabd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_ah_fabd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_ah_fabd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fceq_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fceq_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fceq_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fcge_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fcge_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fcge_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fcgt_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fcgt_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fcgt_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_facge_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_facge_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_facge_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_facgt_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_facgt_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_facgt_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fmax_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmax_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmax_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fmin_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmin_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmin_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fmaxnum_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmaxnum_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmaxnum_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fminnum_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fminnum_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fminnum_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_recps_nf_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_recps_nf_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_rsqrts_nf_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_rsqrts_nf_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fmla_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmla_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fmls_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmls_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_vfma_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_vfma_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_vfma_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_vfms_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_vfms_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_vfms_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_ah_vfms_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_ah_vfms_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_ah_vfms_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_ftsmul_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_ftsmul_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_ftsmul_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fmul_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmul_idx_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmul_idx_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fmla_nf_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmla_nf_idx_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fmls_nf_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmls_nf_idx_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_6(gvec_fmla_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_6(gvec_fmla_idx_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_6(gvec_fmla_idx_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_6(gvec_fmls_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_6(gvec_fmls_idx_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_6(gvec_fmls_idx_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_6(gvec_ah_fmls_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_6(gvec_ah_fmls_idx_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_6(gvec_ah_fmls_idx_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_uqadd_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_uqadd_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_uqadd_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_uqadd_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_sqadd_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_sqadd_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_sqadd_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_sqadd_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_uqsub_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_uqsub_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_uqsub_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_uqsub_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_sqsub_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_sqsub_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_sqsub_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_sqsub_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_usqadd_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_usqadd_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_usqadd_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_usqadd_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_suqadd_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_suqadd_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_suqadd_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_suqadd_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fmlal_a32, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(gvec_fmlal_a64, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(gvec_fmlal_idx_a32, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(gvec_fmlal_idx_a64, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, env, i32)
++
++DEF_HELPER_FLAGS_2(frint32_s, TCG_CALL_NO_RWG, f32, f32, fpst)
++DEF_HELPER_FLAGS_2(frint64_s, TCG_CALL_NO_RWG, f32, f32, fpst)
++DEF_HELPER_FLAGS_2(frint32_d, TCG_CALL_NO_RWG, f64, f64, fpst)
++DEF_HELPER_FLAGS_2(frint64_d, TCG_CALL_NO_RWG, f64, f64, fpst)
++
++DEF_HELPER_FLAGS_3(gvec_ceq0_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_ceq0_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_clt0_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_clt0_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_cle0_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_cle0_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_cgt0_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_cgt0_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_cge0_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_cge0_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(gvec_smulh_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_smulh_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_smulh_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_smulh_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(gvec_umulh_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_umulh_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_umulh_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_umulh_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(gvec_sshl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_sshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_ushl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_ushl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(gvec_pmul_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_pmull_q, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(neon_pmull_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_3(gvec_ssra_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_ssra_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_ssra_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_ssra_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_3(gvec_usra_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_usra_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_usra_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_usra_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_3(gvec_srshr_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_srshr_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_srshr_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_srshr_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_3(gvec_urshr_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_urshr_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_urshr_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_urshr_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_3(gvec_srsra_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_srsra_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_srsra_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_srsra_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_3(gvec_ursra_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_ursra_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_ursra_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_ursra_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_3(gvec_sri_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_sri_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_sri_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_sri_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_3(gvec_sli_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_sli_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_sli_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_sli_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(gvec_sabd_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_sabd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_sabd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_sabd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(gvec_uabd_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_uabd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_uabd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_uabd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(gvec_saba_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_saba_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_saba_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_saba_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(gvec_uaba_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_uaba_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_uaba_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_uaba_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(gvec_mul_idx_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_mul_idx_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_mul_idx_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(gvec_mla_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_mla_idx_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_mla_idx_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(gvec_mls_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_mls_idx_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_mls_idx_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(neon_sqdmulh_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(neon_sqdmulh_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(neon_sqrdmulh_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(neon_sqrdmulh_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(neon_sqdmulh_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(neon_sqdmulh_idx_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(neon_sqrdmulh_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(neon_sqrdmulh_idx_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(neon_sqrdmlah_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(neon_sqrdmlah_idx_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(neon_sqrdmlsh_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(neon_sqrdmlsh_idx_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(sve2_sqdmulh_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqdmulh_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqdmulh_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqdmulh_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(sve2_sqrdmulh_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqrdmulh_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqrdmulh_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqrdmulh_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(sve2_sqdmulh_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqdmulh_idx_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqdmulh_idx_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(sve2_sqrdmulh_idx_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqrdmulh_idx_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqrdmulh_idx_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_6(sve2_fmlal_zzzw_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_6(sve2_fmlal_zzxw_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, env, i32)
++
++DEF_HELPER_FLAGS_4(gvec_xar_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(gvec_smmla_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_ummla_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_usmmla_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_6(gvec_bfdot, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_6(gvec_bfdot_idx, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, env, i32)
++
++DEF_HELPER_FLAGS_6(gvec_bfmmla, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, env, i32)
++
++DEF_HELPER_FLAGS_6(gvec_bfmlal, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_6(gvec_bfmlal_idx, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_sclamp_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_sclamp_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_sclamp_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_sclamp_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(gvec_uclamp_b, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_uclamp_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_uclamp_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_uclamp_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(gvec_faddp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_faddp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_faddp_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fmaxp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmaxp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmaxp_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fminp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fminp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fminp_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fmaxnump_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmaxnump_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fmaxnump_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fminnump_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fminnump_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_fminnump_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
++DEF_HELPER_FLAGS_4(gvec_addp_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_addp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_addp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_addp_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(gvec_smaxp_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_smaxp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_smaxp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(gvec_sminp_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_sminp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_sminp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(gvec_umaxp_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_umaxp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_umaxp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(gvec_uminp_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_uminp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_uminp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_3(gvec_urecpe_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(gvec_ursqrte_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
 -- 
 2.47.2

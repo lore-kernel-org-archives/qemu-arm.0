@@ -1,122 +1,121 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2301998njj;
-        Mon, 5 May 2025 02:02:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXZwHUn2yzj0eigIyV2aKsLxYJN7wXK2zCoOAUcVYKVH4oe6T6hCev13pnWE/MxrT/X+8vVt5PsC8DXQQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGV1VeaWYg2u/2DMs5dto7smlhi4NBAJEBDJJJCEgaWBtjjfLgz1jIDBjZTyOexoK2/4M6i
-X-Received: by 2002:a05:620a:2b91:b0:7c7:a356:105d with SMTP id af79cd13be357-7cadfd6ea80mr1040828285a.4.1746435739630;
-        Mon, 05 May 2025 02:02:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746435739; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2302717njj;
+        Mon, 5 May 2025 02:03:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUAJcTxaY1SEdE0ykAh35ThM/pZglFsyORXqSJu9b7wgEl9iz2/l5dlQupBUVFxpe8n1QWQu5xISZUJTg==@linaro.org
+X-Google-Smtp-Source: AGHT+IH2+M4mVwMXJM7/iXIrAixA+Iis0SB2XbEqA/k/pX5S4skvVGcjQA9sASvoGz8CBqgmajPR
+X-Received: by 2002:a05:620a:2886:b0:7c5:6ef2:2767 with SMTP id af79cd13be357-7cae3a86736mr712836185a.2.1746435808943;
+        Mon, 05 May 2025 02:03:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746435808; cv=none;
         d=google.com; s=arc-20240605;
-        b=LBKpH6FWUS4qwEvxcazuPeQFvrKvh0hQc3lx0f05kAGuvJcDETnF9cbYYvXGHgMsQX
-         Pak3daZmphGqd5igmpuMrnh9RpVxcyPTLlDI2ztaOGEJevxr+1mdeHoKf5xNbXCsQkL2
-         s1+0sEW2MnLXAMXpwiip4rZoVbesONf0ZAI5Zymu4cv7Fic6yaCFS0KAENQsN3dvOJwX
-         dAYeR9rv3VI1T502IHvBuyQiJaB3SL43sWQryB1Z5lQicpNCoAeA8wMUIyubpzfwdfTZ
-         XMjaIsJjB6BmG7EEwn/Hizy5SeO7tqB6CeBLUGgtv7DGBrRXp6lw0LKa66zw7GF8g8Sj
-         /Oog==
+        b=Ohxm5AfhumyEx8/SmadigJwejHQIWY2vU0hb++vsv+HiUAKCOouEXzcWp2JLNd4b4U
+         fi2E2Iu3KU7n7e0fpnBnoQ7L5GOzcPnpPNePRmQEtRD7Lx4BiD676DFWVmuV3jljw3/F
+         vu6Tx6ArVV1vU9mgnLAxcJI8Shod1sGd6Iit34rKed9AGVpPqClXNJTD5GtV3rBvZ+7/
+         cGMMHISJ51PxHBRV48ihgzKIaui34B0bCCKMWGZl8JADO1JpOUGctEmdUuX0vZ5yDsi8
+         N0F5m+Z58sMrcTroOkOftaLwurFjP8/rJ9Ar8TEey68MELCStucF4zQ5VgEXrD/2bq7R
+         4hIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=yR6kVtS71Z7PVlx0saAzGxN64k/CZfIettgANMqxvOI=;
-        fh=lFFSCMMOj4uEN7USiaiJegTbHBRad3EmMIRzBFg8XmQ=;
-        b=D7H0+I28foVcHHQOhApCmGW1MCDSM+FTBx6pzDMuZWaq7BcJ8Ul91wQegdZ6HSl/K6
-         xma4zN4szb7tFZ1vMYGZTik4fPYV9d6AZ7y2msjJlwhURNlfZf7q9USJontIzlPNlwyH
-         Z88i6s2mgiav6iGXU+YAOPPwmY0Sp2FlpY0VkaTnc7mQ8b5lKgnVztXO41qd3GJ+iLV/
-         eF3Amiv2rXxA7HAzxGJZXmjw9iCPInuMc75aymVZRFSMKDbNGMftdrF+2ukcukEKI0lh
-         wpxbhfCZtMvpb2d4O6bUk7TT4nYujgzDTLGc8dUd1xweeciKwnuLh4H17Swjhz9PxCIi
-         tGWw==;
+        bh=TyY9ZWKBqb1FwPN0cigyPe53nVYEDy+HkebDiEQLDGY=;
+        fh=ZD74BQT8BtSqe0r+UZo2ZoMoIJDnj3nYfTAJOp+/zss=;
+        b=J1z/KP6ighft/rBlp0t4eDrLbQREY80bAb0rg3OmIk7XUMb4jhCb+g8uKP46flJWXX
+         0BVJe2P8lB3ulaIWArl/6/r+VlcHYNwX2jCeh37XFT+ELZELCj7xayrUrLrucxcVtyTp
+         H0O8/ORJOM5yP/VqbxBZ2C8Lda3T//6frxKdYTjVefi/dU84JuQ0WCRXnDrL613SqXHi
+         ghJxASXTIoEA3oZuy+G1kpGnuwghvztskpBVdJANoE8i/VUFcCpjCgW9nX4KBd55Ajy/
+         2XJh0O8qY36GDFAIVYiusfc38AvucJJ9vr0mn+o7b4VefX5wOY3aIHLTjXJJVt4XKWv/
+         9oXg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X5fd+YPd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PpXxwDVS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cad23bb395si895701385a.93.2025.05.05.02.02.19
+        by mx.google.com with ESMTPS id af79cd13be357-7cad241d386si859248785a.304.2025.05.05.02.03.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 May 2025 02:02:19 -0700 (PDT)
+        Mon, 05 May 2025 02:03:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X5fd+YPd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PpXxwDVS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uBriA-0001Nd-Iy; Mon, 05 May 2025 05:02:06 -0400
+	id 1uBrjD-0002EU-RY; Mon, 05 May 2025 05:03:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uBri9-0001NK-2e
- for qemu-devel@nongnu.org; Mon, 05 May 2025 05:02:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1uBrjA-0002Dm-Ns
+ for qemu-devel@nongnu.org; Mon, 05 May 2025 05:03:08 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uBri7-0005Fi-Bo
- for qemu-devel@nongnu.org; Mon, 05 May 2025 05:02:04 -0400
+ id 1uBrj9-0005MY-4P
+ for qemu-devel@nongnu.org; Mon, 05 May 2025 05:03:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1746435721;
+ s=mimecast20190719; t=1746435785;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=yR6kVtS71Z7PVlx0saAzGxN64k/CZfIettgANMqxvOI=;
- b=X5fd+YPdc6LgQW6348bVuIviARkW9yR5ufyutmzyOJYaZWTBiE9kbo1ZNf8weahbBshSLx
- qGEufdBa1Nq7yPoZM5yqsNX8Etr7+GJWZRSQAyTIzDkMiMcWE+8WsX+rjdj+NhH8X9Zug0
- BEUnZRYq8DOz8+JoyzJ1cHBWVQVtPyM=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=TyY9ZWKBqb1FwPN0cigyPe53nVYEDy+HkebDiEQLDGY=;
+ b=PpXxwDVSw/KWtRsks05rxUOAODOKt0crWghFGsQ5Ex0+rVt2icCCLRrze1MYBEeoW6aBsp
+ y/rcSY9qGxaNBLT5AFU54uVlAiS7O3cFLoWZrwfbEkEZEWyFzVJqr9ifEJMjdkqVmw6Bem
+ f9uIOcdaMZz9jHmk96YMeHQDFL+pmds=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-156-mF74B_IXOXm8kbF-BTtyfw-1; Mon, 05 May 2025 05:01:58 -0400
-X-MC-Unique: mF74B_IXOXm8kbF-BTtyfw-1
-X-Mimecast-MFC-AGG-ID: mF74B_IXOXm8kbF-BTtyfw_1746435717
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-43eea5a5d80so22028415e9.1
- for <qemu-devel@nongnu.org>; Mon, 05 May 2025 02:01:58 -0700 (PDT)
+ us-mta-307-clItQ7ivO_Kfb-PC8LUrqw-1; Mon, 05 May 2025 05:03:04 -0400
+X-MC-Unique: clItQ7ivO_Kfb-PC8LUrqw-1
+X-Mimecast-MFC-AGG-ID: clItQ7ivO_Kfb-PC8LUrqw_1746435783
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-39d917b105bso2069216f8f.2
+ for <qemu-devel@nongnu.org>; Mon, 05 May 2025 02:03:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746435717; x=1747040517;
+ d=1e100.net; s=20230601; t=1746435783; x=1747040583;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=yR6kVtS71Z7PVlx0saAzGxN64k/CZfIettgANMqxvOI=;
- b=HE0/Qt6ClUkletkqNV4mg18vv6RZ/wLRRZh2aOePnmv+OcudqTklt5334zedbckCxu
- +8ZwlI2XVhGfEBLu+96tAZ/d8XI+Co3fNW5snu5VE0ogNe8oDpCFHiDx4wCcobcOOpfV
- NWwpACEg+hA4nEdY4+bADjgiRPHEv0lZQW5CYl2n1E6d182/QGftn8r24XLNiNZBvbD/
- NBtK8gpwfXZ4n7+ZYVJqF8up8LYt+lCX0FVxUmSevv1scWg4rnJ1PvTxN+lXvdqj79FY
- lyQNSYTygVwxpikhhJ4c0e6hzbSgggPuf99dufWvWlrJgfw9u7gTvBvXMEhlAxSH1/L5
- wW/w==
+ bh=TyY9ZWKBqb1FwPN0cigyPe53nVYEDy+HkebDiEQLDGY=;
+ b=ta+cAQre5bCSjgY3di/uwt5omTWd7qOa/iO6mW8IsN45ZsPW89ZgxIP9OOAO8KUTko
+ 2engARKZzDqwj6HzPovhY9DUtXyOlR+IWfsYJTTbbEnR0fCRIcxdLGlWfl47VUnxX90c
+ a2h9uEJSUKVbgcG9zvw0cVgsIqxCWu6GNswYR4Zy1jKwBN0mTA5RhLd73bkbS3vk5JRZ
+ fiZKrR5/guzgBMPRFju09VtC/5cP0d871LW/R3LrEkn2yZfWiW9PfFmYPaAfQIRlugHq
+ n/IQn/+5QUlmcqNM/wjcW3UEuKNg4yzbMvfy0O6uj0haUTX5wZtvJRutmrG8pxILNeF0
+ CQfA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV47F08LD/OKMA7VYqkTXUNpSgaQJ6SB5FLOkAxcCzbIKmweBa7T9vKIuqT2MaOd4wkcfJfKzSikoF4@nongnu.org
-X-Gm-Message-State: AOJu0YxzPXW5sk1xgJXQ5b0Eh+lHQZWZRvRUT2bm7E6JaffO3UpnXMAW
- DZ4j1O+JiyVvESFimEuIAVYWv0Z5XcFzSMs7vBi0YGc0bHoygy0+JrbA0BNwVuLYSzQyq8UzECH
- R6M5Tg14Afz/xVWjauiijH5DCC9vf16SKvLng3CizkKSeyladST5f
-X-Gm-Gg: ASbGncuTSyRqR1r2naErb4Uu1aL9j3cqk9dzh5yCbTbYGRgBhKmCOhOUr5o27gsanEf
- zMj2ZArg05qDdR5KnieYiJ8IYGDJj5ptU8oWb9umhcquOHky1aUnppsJsF4i4jTzBAbEe5gRvHB
- i0ftqo2vZrjnBaCycTo5sg4Hqf1IFViif5moDF2Ojik0TrQHx7RLXsyh806UwItsfl5hx0wpi9z
- 0jQDLh1FE9fASa8pr0pd2/1ImHY7AWoW+MXb/bDKo2ECA0WE7DVWQsuufbqZ9ggL4Xf2GliMwcL
- 8NjPSD9gHjW3XiWZKfrILuei98NiwfJhQgNsqEpeogVQzafM6wF5W+KEElY=
-X-Received: by 2002:a05:6000:290a:b0:391:2f15:c1f4 with SMTP id
- ffacd0b85a97d-3a09fde6142mr5030961f8f.55.1746435716923; 
- Mon, 05 May 2025 02:01:56 -0700 (PDT)
-X-Received: by 2002:a05:6000:290a:b0:391:2f15:c1f4 with SMTP id
- ffacd0b85a97d-3a09fde6142mr5030924f8f.55.1746435716452; 
- Mon, 05 May 2025 02:01:56 -0700 (PDT)
+ AJvYcCUtDDLc4/TjBFfmzcKA3kXFMAb6AVD4GwNz/qoV1CfQ3LC3HiHw00Cuhwcsx9sptYRGP1I9YXmTJq+b@nongnu.org
+X-Gm-Message-State: AOJu0YwbJ0vfS42ut+UoG4hDXjwoGeKSTCcgAuqNpp73IzU0A/fdjNdg
+ HzCCmcJfFs9ptlyaOxYFPXWKXdlgGF0Kc9PHwFfADjJR9E2QEXh6DbB1EdlZYrW2UAaD54PShmR
+ 1Hq0VLtty30rKVCHKeDmlDjcZsbG4qvUh+VRNLDjXEtvF6D1L6x+v
+X-Gm-Gg: ASbGncsalR6YCF94JujFKzUL4swTKTDmYT0OyMnfzmmZiJs0J2wZoVvPVLiWlyJ0Jdq
+ R0pAA2sFV/F0QaxxtHc9IcC+/1akk9NJfDESMg7ZqPJNUMTaEn1j+Otu/EpRlgNy3yQMiesKKEY
+ kV+UHv4Pjesq2jWUNFuBRJhzUbzEw1mY7Am9HlzPfShsEaZfC6/CHic5QWEnP4kOAC4ytetxxaq
+ j4aFDeIO31UovZOpthjZerYHClNgR8stlFSYIl9NLj5I5QpNsmdpdLL57Q93KZTrmDqw+JBqHpN
+ 6LKwFOSy/ijvqfwzZex4EpG/ngwF25HZKeTF12xLeN8yc0zgD0fyD1CLd4s=
+X-Received: by 2002:a5d:588b:0:b0:39e:cbef:95a7 with SMTP id
+ ffacd0b85a97d-3a09fd76a77mr4635382f8f.18.1746435783144; 
+ Mon, 05 May 2025 02:03:03 -0700 (PDT)
+X-Received: by 2002:a5d:588b:0:b0:39e:cbef:95a7 with SMTP id
+ ffacd0b85a97d-3a09fd76a77mr4635356f8f.18.1746435782783; 
+ Mon, 05 May 2025 02:03:02 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a099ae7b45sm9586575f8f.46.2025.05.05.02.01.54
+ ffacd0b85a97d-3a099b0ffbfsm9563717f8f.80.2025.05.05.02.03.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 May 2025 02:01:55 -0700 (PDT)
-Message-ID: <fd53570b-7e2c-47db-9d31-93a9d2327f2f@redhat.com>
-Date: Mon, 5 May 2025 11:01:54 +0200
+ Mon, 05 May 2025 02:03:02 -0700 (PDT)
+Message-ID: <ddb17a71-f5b3-478c-a61e-8bf75715a1f0@redhat.com>
+Date: Mon, 5 May 2025 11:03:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/6] hw/arm/virt: Factor out common SMMUV3 dt bindings
- code
+Subject: Re: [PATCH v2 4/6] hw/arm/virt: Add an SMMU_IO_LEN macro
 Content-Language: en-US
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
@@ -126,12 +125,12 @@ Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
  wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
  jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
 References: <20250502102707.110516-1-shameerali.kolothum.thodi@huawei.com>
- <20250502102707.110516-4-shameerali.kolothum.thodi@huawei.com>
+ <20250502102707.110516-5-shameerali.kolothum.thodi@huawei.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250502102707.110516-4-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <20250502102707.110516-5-shameerali.kolothum.thodi@huawei.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -44
 X-Spam_score: -4.5
@@ -140,7 +139,7 @@ X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.411,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -156,110 +155,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Reply-To: eric.auger@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lvJpJl21zHyS
+X-TUID: 1MBaU37ppowb
 
-Hi Shameer,
+
 
 On 5/2/25 12:27 PM, Shameer Kolothum wrote:
-> No functional changes intended. This will be useful when we
-> add support for user-creatable smmuv3 device.
+> From: Nicolin Chen <nicolinc@nvidia.com>
 >
+> This is useful as the subsequent support for new SMMUv3 dev will also
+> use the same.
+>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Eric
 > ---
->  hw/arm/virt.c | 54 +++++++++++++++++++++++++++------------------------
->  1 file changed, 29 insertions(+), 25 deletions(-)
+>  hw/arm/virt.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
 >
 > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index dd355f4454..464e84ae67 100644
+> index 464e84ae67..e178282d71 100644
 > --- a/hw/arm/virt.c
 > +++ b/hw/arm/virt.c
-> @@ -1418,19 +1418,43 @@ static void create_pcie_irq_map(const MachineState *ms,
->                             0x7           /* PCI irq */);
->  }
+> @@ -147,6 +147,9 @@ static void arm_virt_compat_set(MachineClass *mc)
+>  #define LEGACY_RAMLIMIT_GB 255
+>  #define LEGACY_RAMLIMIT_BYTES (LEGACY_RAMLIMIT_GB * GiB)
 >  
-> +static void create_smmuv3_dt_bindings(const VirtMachineState *vms, hwaddr base,
-> +                                      hwaddr size, int irq)
-> +{
-> +    char *node;
-> +    const char compat[] = "arm,smmu-v3";
-> +    const char irq_names[] = "eventq\0priq\0cmdq-sync\0gerror";
-> +    MachineState *ms = MACHINE(vms);
+> +/* MMIO region size for SMMUv3 */
+> +#define SMMU_IO_LEN 0x20000
 > +
-> +    node = g_strdup_printf("/smmuv3@%" PRIx64, base);
-> +    qemu_fdt_add_subnode(ms->fdt, node);
-> +    qemu_fdt_setprop(ms->fdt, node, "compatible", compat, sizeof(compat));
-> +    qemu_fdt_setprop_sized_cells(ms->fdt, node, "reg", 2, base, 2, size);
-> +
-> +    qemu_fdt_setprop_cells(ms->fdt, node, "interrupts",
-> +            GIC_FDT_IRQ_TYPE_SPI, irq    , GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-> +            GIC_FDT_IRQ_TYPE_SPI, irq + 1, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-> +            GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-> +            GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
-> +
-> +    qemu_fdt_setprop(ms->fdt, node, "interrupt-names", irq_names,
-> +                     sizeof(irq_names));
-> +
-> +    qemu_fdt_setprop(ms->fdt, node, "dma-coherent", NULL, 0);
-> +    qemu_fdt_setprop_cell(ms->fdt, node, "#iommu-cells", 1);
-> +    qemu_fdt_setprop_cell(ms->fdt, node, "phandle", vms->iommu_phandle);
-> +    g_free(node);
-> +}
-> +
->  static void create_smmu(const VirtMachineState *vms,
->                          PCIBus *bus)
->  {
->      VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-> -    char *node;
-> -    const char compat[] = "arm,smmu-v3";
+>  /* Addresses and sizes of our components.
+>   * 0..128MB is space for a flash device so we can run bootrom code such as UEFI.
+>   * 128MB..256MB is used for miscellaneous device I/O.
+> @@ -178,7 +181,7 @@ static const MemMapEntry base_memmap[] = {
+>      [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
+>      [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+>      [VIRT_UART1] =              { 0x09040000, 0x00001000 },
+> -    [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
+> +    [VIRT_SMMU] =               { 0x09050000, SMMU_IO_LEN },
+>      [VIRT_PCDIMM_ACPI] =        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
+>      [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
+>      [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
+> @@ -1453,7 +1456,6 @@ static void create_smmu(const VirtMachineState *vms,
 >      int irq =  vms->irqmap[VIRT_SMMU];
 >      int i;
 >      hwaddr base = vms->memmap[VIRT_SMMU].base;
->      hwaddr size = vms->memmap[VIRT_SMMU].size;
-> -    const char irq_names[] = "eventq\0priq\0cmdq-sync\0gerror";
+> -    hwaddr size = vms->memmap[VIRT_SMMU].size;
 >      DeviceState *dev;
-> -    MachineState *ms = MACHINE(vms);
 >  
 >      if (vms->iommu != VIRT_IOMMU_SMMUV3 || !vms->iommu_phandle) {
->          return;
-> @@ -1449,27 +1473,7 @@ static void create_smmu(const VirtMachineState *vms,
+> @@ -1473,7 +1475,7 @@ static void create_smmu(const VirtMachineState *vms,
 >          sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
 >                             qdev_get_gpio_in(vms->gic, irq + i));
 >      }
-> -
-> -    node = g_strdup_printf("/smmuv3@%" PRIx64, base);
-> -    qemu_fdt_add_subnode(ms->fdt, node);
-> -    qemu_fdt_setprop(ms->fdt, node, "compatible", compat, sizeof(compat));
-> -    qemu_fdt_setprop_sized_cells(ms->fdt, node, "reg", 2, base, 2, size);
-> -
-> -    qemu_fdt_setprop_cells(ms->fdt, node, "interrupts",
-> -            GIC_FDT_IRQ_TYPE_SPI, irq    , GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-> -            GIC_FDT_IRQ_TYPE_SPI, irq + 1, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-> -            GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-> -            GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
-> -
-> -    qemu_fdt_setprop(ms->fdt, node, "interrupt-names", irq_names,
-> -                     sizeof(irq_names));
-> -
-> -    qemu_fdt_setprop(ms->fdt, node, "dma-coherent", NULL, 0);
-> -
-> -    qemu_fdt_setprop_cell(ms->fdt, node, "#iommu-cells", 1);
-> -
-> -    qemu_fdt_setprop_cell(ms->fdt, node, "phandle", vms->iommu_phandle);
-> -    g_free(node);
-> +    create_smmuv3_dt_bindings(vms, base, size, irq);
+> -    create_smmuv3_dt_bindings(vms, base, size, irq);
+> +    create_smmuv3_dt_bindings(vms, base, SMMU_IO_LEN, irq);
 >  }
 >  
 >  static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-nothing to do with that patch but I just noticed we omitted to support the
-
-bypass_iommu=true along with DT mode. I don't see the iommu-map property set accordingly.
-
-Something to further consolidate?
-
-Eric
-
-
-Eric
 

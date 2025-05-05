@@ -1,95 +1,93 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2304869njj;
-        Mon, 5 May 2025 02:07:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU4nIyal1ri2ur/F6VyExkjxlKSiH9B6u4lmOr4nRroZPvSw/dA2p6ckGZfsJ2ofdS2wuvT1n0NoB2SOA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGzk22uVlTBr4oarff+EpVoOZza2VW6OWCOP8oUU6Rpdlk2GFZunETB4vX4PQgLUkOwadYs
-X-Received: by 2002:a05:6000:420f:b0:3a0:6f3b:79f0 with SMTP id ffacd0b85a97d-3a094058525mr12819158f8f.21.1746436051616;
-        Mon, 05 May 2025 02:07:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746436051; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2304961njj;
+        Mon, 5 May 2025 02:07:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXdPC2Gbt5XeIX9IHW4sOG2E9wJPSBOtn0gM3E1xKN9uGjST+E3BbLR3pKDmje6qfFNzzR/pFtWgS5uuQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEVo5c3n/YZP1Q32mkDxzKa61YGk9NzOe2ntDdEk3dqjdp821vfAR4hVSmPs5qrbggOZz+n
+X-Received: by 2002:a05:6000:2a3:b0:3a0:85ad:5ed9 with SMTP id ffacd0b85a97d-3a09fd7a183mr4289293f8f.4.1746436067565;
+        Mon, 05 May 2025 02:07:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746436067; cv=none;
         d=google.com; s=arc-20240605;
-        b=cInhrP7gNp530rZAsWfqFkmynccRN+J11cllmfIn/9WghHx3O3MU+/CFG4Y29NKmpm
-         zoaGe9S2AUpXUoRS4kI1JoVK6UkVRe5QixYika4MEB62qky/rB9I4mRvE74ItB35qCGN
-         ITtaOeN52ZO1fd+r1LnJDBg6sXWwVDmWmS38mw7OAzUfziSVP0+oAgJuuYD5pyFbBqTe
-         jpamimizR/DTtg9V+pUw6FIgAot6Umg+KvQcBTcCadrSCzdtF6NjMeF6gp9VyQtVoXmU
-         vzklM9FLYqY1Cth2rsQD3yDTZogwM1MWDAYe3hJG5v2Frz/SxtBzSSQEdCSRT8vtZcr3
-         jPIA==
+        b=BejBW0wjV7UWpZBqw+MbnmiyItWvA1QG4eq+7sr4jdt6I/x/t/0HNyA4HNcg5kLMce
+         BWf2Ju8DbO19ceyw/N33c3hiFdQrJDXRQyiJy0yEbwn7P81M9uNXfHDRwDmK9PKj2Cs2
+         fH7ktNzqEX54Xz8D9vSie9ZZPohawL2aBqGEBGMaix+gC/C+jsxYNqG2Th4xzqgcVspB
+         56PDNrbAk1n8u3YntTvtEIud3FwCKjq9MRap9nAuUh8R0arOFNHK6iLYt+9pIq0k1/Ko
+         cYomqUS12XPqIuE1AyHIaBoY/7vB8Afc5ECg2l8s+jFEEST+eo8ZgVxjpf7liboT8G46
+         ZlKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=VttgU5Ogb+E15+62yOSNxVyme/J52fkZq7Xe4br9KnY=;
-        fh=T0srg4NBQRu22oFjMK4XHQySpCI66Qi9dZIWpS9x1iM=;
-        b=GQfzfDMsfzgohJybKsB/mWLfJklwchULSHnsYmwXPKbNH2MltLN9XtGaxz+Q5iqHPZ
-         8SF9Tq541sqbahjwnMQ1/fZrFXo9JwBXp+Q48cbNhoLAIK0h0SNdGK/rctLFuqPSN8qV
-         eAUnC93O59Z8MweQXTbhTBY8VD/6iuw28Iqy5C940owQtJzM5j6s1+Ua1QX3cyPLQ5g/
-         FsNBFSMaZ2dXI53dIxHvdcnatCOoxB7d7UkrV3Ec0I8GTUL08yG/fGt1EObOYyz7g6TM
-         EHoOlVWJ8cLMnlP06uxonOsfylAt+i8X0Q5zRzkvj5lNVG8hxZP+mckQd8UlOW4LfnDM
-         Wwug==;
+        bh=ONaVGKzjyDarlZujU0p5/GKQo8T9c+JALh1YeadlChU=;
+        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
+        b=J2O05Ip6XVrGC4oKaV4aF+Bz29T53FnBMzI0rzHgjDBZZpSLluFC0sDt0LY3ctw0b7
+         1dq0nVmbDwXxQ77TG3isQwqZxf654k1Gk/6jec8j/0iMeCMEbeu+4OXPXDKgOhhBf7Aq
+         4ZrZjdQCskOe3fkTiCF6sct4NuOPloLeB3sz+jW5FwkXDqscKwoCdoC/Dfd8q0Hg4ZBK
+         q3u2svWVgmTaNQ33BRxcIawDJ6xQhlQAyk7acjM4lyKOBcTrZJUHZQuIo8g0jv+jibhg
+         o6QjymTyqO6VcD7NdYC5T4wC5p9MRuFPJFZB+3Uu98xcrdMpi5t8BebMFBDWpCg0LC68
+         hCmw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Kpyqrr/5";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="UH4V/P7K";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a099b1001esi4994243f8f.689.2025.05.05.02.07.31
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a099b00413si4877268f8f.465.2025.05.05.02.07.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 May 2025 02:07:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 05 May 2025 02:07:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Kpyqrr/5";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="UH4V/P7K";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uBrn7-00071f-OC; Mon, 05 May 2025 05:07:14 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uBrnL-0007dY-Lv; Mon, 05 May 2025 05:07:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrmy-0006Nd-HT
- for qemu-arm@nongnu.org; Mon, 05 May 2025 05:07:04 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrn5-0006sd-3j
+ for qemu-devel@nongnu.org; Mon, 05 May 2025 05:07:12 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrmw-0006FD-Dd
- for qemu-arm@nongnu.org; Mon, 05 May 2025 05:07:04 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrn3-0006H6-3p
+ for qemu-devel@nongnu.org; Mon, 05 May 2025 05:07:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1746436020;
+ s=mimecast20190719; t=1746436028;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=VttgU5Ogb+E15+62yOSNxVyme/J52fkZq7Xe4br9KnY=;
- b=Kpyqrr/5loBt70X6jQRsD6InysxEfM2V8loqAQRLrNxSyY52rCjoXGP26w8sd0YtZj9qEz
- nmdZH2j9ZjQLzfdt9fruDJEqr8h87/4vxzfuDbZ96uHv351IUFb3l0+JxeDcse9Hj01STw
- 28mhtOnFlUanxnA6y4g0oVbRhlaC48E=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=ONaVGKzjyDarlZujU0p5/GKQo8T9c+JALh1YeadlChU=;
+ b=UH4V/P7KEudqCMtkgwX1wo2dNmxl2L/coNw2XPH8Pa7pL4Sd2RF3QdtzJ3ACErQ+H6DiQp
+ Md4xeO5dfL/WQt7d21/wek82i5pent/o8yZmzXg0c/DQbX1qqtcwSpPYQlfO8K6o7snauj
+ 2nRje1ZO5b/mvskNIUPloEli/qalWRI=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-176-ZoF_uuQNMpys82QATcg-tg-1; Mon,
- 05 May 2025 05:06:58 -0400
-X-MC-Unique: ZoF_uuQNMpys82QATcg-tg-1
-X-Mimecast-MFC-AGG-ID: ZoF_uuQNMpys82QATcg-tg_1746436017
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-52-oBk2iE5lMRCsRPjYQuIdWg-1; Mon,
+ 05 May 2025 05:07:07 -0400
+X-MC-Unique: oBk2iE5lMRCsRPjYQuIdWg-1
+X-Mimecast-MFC-AGG-ID: oBk2iE5lMRCsRPjYQuIdWg_1746436026
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BEECF18001D5; Mon,  5 May 2025 09:06:57 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1D5191800ECA; Mon,  5 May 2025 09:07:06 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.38])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BA49930001A2; Mon,  5 May 2025 09:06:55 +0000 (UTC)
+ id 4881D30002CA; Mon,  5 May 2025 09:06:58 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- Nabih Estefan <nabihestefan@google.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 07/23] tests/functional/aspeed: Move I2C test into shared
- helper for AST2700 reuse
-Date: Mon,  5 May 2025 11:06:19 +0200
-Message-ID: <20250505090635.778785-8-clg@redhat.com>
+Subject: [PULL 08/23] tests/functional/aspeed: Update test ASPEED SDK v09.06
+Date: Mon,  5 May 2025 11:06:20 +0200
+Message-ID: <20250505090635.778785-9-clg@redhat.com>
 In-Reply-To: <20250505090635.778785-1-clg@redhat.com>
 References: <20250505090635.778785-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -107,107 +105,77 @@ X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.411,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /ItFPAm0poGj
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9OGMummuyMoJ
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Move the I2C test case into a common helper function (do_ast2700_i2c_test) so it
-can be reused across multiple AST2700-based test cases. This reduces duplication
-and improves maintainability.
-
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Nabih Estefan <nabihestefan@google.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250423072350.541742-8-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20250423072350.541742-9-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/functional/test_aarch64_aspeed.py | 28 +++++++++++++------------
- 1 file changed, 15 insertions(+), 13 deletions(-)
+ tests/functional/test_aarch64_aspeed.py | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/tests/functional/test_aarch64_aspeed.py b/tests/functional/test_aarch64_aspeed.py
-index c7f3b3b319fd..4b6851db2add 100755
+index 4b6851db2add..b6e2be1f8292 100755
 --- a/tests/functional/test_aarch64_aspeed.py
 +++ b/tests/functional/test_aarch64_aspeed.py
-@@ -18,6 +18,8 @@ class AST2x00MachineSDK(QemuSystemTest):
-     def do_test_aarch64_aspeed_sdk_start(self, image):
-         self.require_netdev('user')
-         self.vm.set_console()
-+        self.vm.add_args('-device',
-+                         'tmp105,bus=aspeed.i2c.bus.1,address=0x4d,id=tmp-test')
-         self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
-                          '-net', 'nic', '-net', 'user', '-snapshot')
+@@ -29,13 +29,13 @@ def do_test_aarch64_aspeed_sdk_start(self, image):
+         wait_for_console_pattern(self, '## Loading kernel from FIT Image')
+         wait_for_console_pattern(self, 'Starting kernel ...')
  
-@@ -35,6 +37,17 @@ def do_test_aarch64_aspeed_sdk_start(self, image):
-             'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-default-obmc.tar.gz',
-             'c1f4496aec06743c812a6e9a1a18d032f34d62f3ddb6956e924fef62aa2046a5')
+-    ASSET_SDK_V905_AST2700 = Asset(
+-            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-a0-default-obmc.tar.gz',
+-            'cfbbd1cce72f2a3b73b9080c41eecdadebb7077fba4f7806d72ac99f3e84b74a')
++    ASSET_SDK_V906_AST2700 = Asset(
++            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.06/ast2700-a0-default-obmc.tar.gz',
++            '7247b6f19dbfb700686f8d9f723ac23f3eb229226c0589cb9b06b80d1b61f3cb')
  
-+    def do_ast2700_i2c_test(self):
-+        exec_command_and_wait_for_pattern(self,
-+            'echo lm75 0x4d > /sys/class/i2c-dev/i2c-1/device/new_device ',
-+            'i2c i2c-1: new_device: Instantiated device lm75 at 0x4d')
-+        exec_command_and_wait_for_pattern(self,
-+            'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '0')
-+        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
-+                    property='temperature', value=18000)
-+        exec_command_and_wait_for_pattern(self,
-+            'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '18000')
-+
-     def start_ast2700_test(self, name):
-         num_cpu = 4
-         uboot_size = os.path.getsize(self.scratch_file(name,
-@@ -73,8 +86,6 @@ def start_ast2700_test(self, name):
-                              f'loader,addr=0x430000000,cpu-num={i}')
+-    ASSET_SDK_V905_AST2700A1 = Asset(
+-            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-default-obmc.tar.gz',
+-            'c1f4496aec06743c812a6e9a1a18d032f34d62f3ddb6956e924fef62aa2046a5')
++    ASSET_SDK_V906_AST2700A1 = Asset(
++            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.06/ast2700-default-obmc.tar.gz',
++            'f1d53e0be8a404ecce3e105f72bc50fa4e090ad13160ffa91b10a6e0233a9dc6')
  
-         self.vm.add_args('-smp', str(num_cpu))
--        self.vm.add_args('-device',
--                         'tmp105,bus=aspeed.i2c.bus.1,address=0x4d,id=tmp-test')
-         self.do_test_aarch64_aspeed_sdk_start(
-             self.scratch_file(name, 'image-bmc'))
- 
-@@ -83,28 +94,19 @@ def start_ast2700_test(self, name):
+     def do_ast2700_i2c_test(self):
+         exec_command_and_wait_for_pattern(self,
+@@ -94,17 +94,17 @@ def start_ast2700_test(self, name):
          exec_command_and_wait_for_pattern(self, 'root', 'Password:')
          exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
  
--        exec_command_and_wait_for_pattern(self,
--            'echo lm75 0x4d > /sys/class/i2c-dev/i2c-1/device/new_device ',
--            'i2c i2c-1: new_device: Instantiated device lm75 at 0x4d')
--        exec_command_and_wait_for_pattern(self,
--            'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '0')
--        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
--                    property='temperature', value=18000)
--        exec_command_and_wait_for_pattern(self,
--            'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '18000')
--
-     def test_aarch64_ast2700_evb_sdk_v09_05(self):
+-    def test_aarch64_ast2700_evb_sdk_v09_05(self):
++    def test_aarch64_ast2700_evb_sdk_v09_06(self):
          self.set_machine('ast2700-evb')
  
-         self.archive_extract(self.ASSET_SDK_V905_AST2700)
+-        self.archive_extract(self.ASSET_SDK_V905_AST2700)
++        self.archive_extract(self.ASSET_SDK_V906_AST2700)
          self.start_ast2700_test('ast2700-a0-default')
-+        self.do_ast2700_i2c_test()
+         self.do_ast2700_i2c_test()
  
-     def test_aarch64_ast2700a1_evb_sdk_v09_05(self):
+-    def test_aarch64_ast2700a1_evb_sdk_v09_05(self):
++    def test_aarch64_ast2700a1_evb_sdk_v09_06(self):
          self.set_machine('ast2700a1-evb')
  
-         self.archive_extract(self.ASSET_SDK_V905_AST2700A1)
+-        self.archive_extract(self.ASSET_SDK_V905_AST2700A1)
++        self.archive_extract(self.ASSET_SDK_V906_AST2700A1)
          self.start_ast2700_test('ast2700-default')
--
-+        self.do_ast2700_i2c_test()
+         self.do_ast2700_i2c_test()
  
- if __name__ == '__main__':
-     QemuSystemTest.main()
 -- 
 2.49.0
 

@@ -1,85 +1,85 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2178768njj;
-        Sun, 4 May 2025 18:52:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV1dflR6rz0QR+8hBjKggKttLQsWkfFyIbfrBQ+iahotu8cmIPVcYD57pipsfQR92lCoT/0hUAogAyQcQ==@linaro.org
-X-Received: by 2002:a05:6a00:438f:b0:736:450c:fa56 with SMTP id d2e1a72fcca58-7406f08d238mr7205153b3a.5.1746409960354;
-        Sun, 04 May 2025 18:52:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746409960; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2178770njj;
+        Sun, 4 May 2025 18:52:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUR5WxHrkT5LFYzJo+JgEPJmyuzXtIdyYts6ADQF6+sUqJm0pmE2Bkdj1VHTc+dBWFOH/eEV4ZOKP2xKQ==@linaro.org
+X-Received: by 2002:aa7:8b4a:0:b0:736:62a8:e52d with SMTP id d2e1a72fcca58-7406f0df3f2mr6686905b3a.12.1746409961224;
+        Sun, 04 May 2025 18:52:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746409961; cv=none;
         d=google.com; s=arc-20240605;
-        b=LdZxISMy777QurGl0AfKHc7sjBG5ue+kZBFVsPfFPAL0rm4WDOD0s8Ted28hvYqcJD
-         oD/cV+a/SbuGPLvQKVCglNYPXwyPyKFrtsukCDhINhjN/xQVXplh/BIInd3KtP7lotla
-         3xKBNp95YaDHY0jGSE+daN8BFn0g75T7xAvXRFfkg66AmVCdmnyKcoXjuos+vv7WutdO
-         vqXMKeg5JyaM7JgonQ5jto6zaeLgC2/dhipTFgDySDU7dY6jb2hGfy+YASTtL6hfXKu2
-         +X+gBW5H+e0EyyeLdX/S8KZbViHO10yWkSzmKHxKDJEK69Nx/F+boCNZdfmVB0zlkFnt
-         Cg6Q==
+        b=JY9/4GI7S82mbqJF6/VCnoM6+Er6jATY4wQgr/jqnNCYw+w2yt93SngYgN0BK7ifCK
+         Ndlc0agypjPCNRenA5WUQ2F9pvtulzffAmvLcr+mu7/YNIRlt6xzNAVs99WCotlrPv6t
+         xNDA29sFWnOfN7EEhXvQw4f+z+B7lA3YZA2EVph1pmlBRDazvQcxNuY6Tnw7NWrNiwJi
+         bseFF0ZzPGLqi2EaE0sI+57Di2Gq8uRbS04N/B6VeTZucdbjemDMuhbg+Kt8fgMxDO1i
+         3zmhS/jP3EP6/kPTtgDceJShc3YbV/BF88Pq3EbUWFYJEQf6RBz95sQLnZzxW7URaUga
+         AS2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Emf7r2NlJCGBegzvSaP4+YNHnVcvC5KK1KGZi+oKRes=;
-        fh=qxJBAz79HR4aP82Ub1ncz0rOD1XWmCwBr5jdaqgIcrI=;
-        b=blRYZIJbrUNlhfE3QFtmhVhd4WuKYD5RProqXAxTjwPpEhUIKC424JbDaEbhokrI3L
-         TxvyGeYstoJbga4moNzkXfd4ZUkHBm4ZXejyG9NlGMZnDyai4S66d4eAlq3plyK5wy8h
-         vkaSyEfIj2YFwnbe1Ukg7dbvVp/1lXmy6w597XasE/zeju9fxfymQ1Xhe6OpP2Vnomev
-         DGWLe/3bbvDaIZhb5BuCC2ZEfrWvodiAwW4ZxOK20W5/O5DejFfgqyJUxmVIjmn8acml
-         WPd2MRlDNKUiPWW2RTI3064ojGDnypH+uidmnaDWAkc8C/e8h+01rgDSZ3YZJLxVej1r
-         s/SQ==;
+        bh=u3pVmvmULoy6BBYUkUdwM0L9kebw+2O/lrIQahS04Iw=;
+        fh=hgYb+DQ/Y/EhmwvDKtysMlLom874Y1A3va6LrUNyoG4=;
+        b=ljAvJscX8bVE6WyJDI9fd0AE8MHh+RgjnQUeGksIMBaY7fM0EWRwdyfRU46GUV7Mw3
+         6/xX5fJEMXP6ymBzk8xoj8rOZvp9h/woFs2P7sjRcH8DEaijsuZwqPCfUUP3EINuQWcM
+         9l2ZRBkWDmMQbVItM4Ag6EXAWadaWZyEr57+Ufht8sHrby+4dmrJp/XvLDuaA7jP1pZ8
+         ynTtyE+EbZoeKkD/1Noa58FLNif/1FKcgqOcgFuShMYLCuuekUKYr/gunZNa4f/qSaP8
+         hIDloLGc3Xz0h6T3rN3vWyj4ntHKCIq3mJidGfpPTeNj+i9QUrNp8rOJPT7J5FS7/MH5
+         s92Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=F2D0UhZu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Fq+CP6o4;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-7404ef18c34sor3482978b3a.4.2025.05.04.18.52.40
+        by mx.google.com with SMTPS id d2e1a72fcca58-7404f9ac4dasor3670142b3a.6.2025.05.04.18.52.41
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 04 May 2025 18:52:40 -0700 (PDT)
+        Sun, 04 May 2025 18:52:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=F2D0UhZu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Fq+CP6o4;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1746409960; x=1747014760; darn=linaro.org;
+        d=linaro.org; s=google; t=1746409961; x=1747014761; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Emf7r2NlJCGBegzvSaP4+YNHnVcvC5KK1KGZi+oKRes=;
-        b=F2D0UhZuzDvMFGt8OVL/E4yjwhkAQRQTheKyCH7lyHSMoznotgR4A8EPx2f8Ymjoed
-         OUsiZKjtT5elXbrtUEytlBYKH8mrZ9R9hjyf+uNBpi7nhXYJwHH+2aoMGSjUFvSmIwtz
-         4Yl6uUQDns7ym8XtLWZ3TCQLohBzuGLD/ACVPpuXH9MZKg8aVdtU5gnKUXYDbM/rhoJo
-         SVTYRzqz2wDnSj7MXXk9U/AVQyQWC7D1z5TI6xDi2h5ng+IoMPSrmMc5NlvOcPXe81ZC
-         zcz5dYrU0m271d3Fkf9yav6fx4kzqtVNuX3zAGvxZeaNxWrFGcFqZIPN0ZUwAnq34HsR
-         jAcQ==
+        bh=u3pVmvmULoy6BBYUkUdwM0L9kebw+2O/lrIQahS04Iw=;
+        b=Fq+CP6o4L2QH0jAlCMOkWZ7L3ptUe37YZ1woNrCZ/9E3KhaiRjIXYw9NDQOzAqauux
+         KB7POsotPtfp6abiZAiUSZakNYaF8Klo1rVQD4zo1CQ2fViGJr3VJS7RaK31fjuzaA9z
+         Pynzakw+IhsZJEDFmRd7N9nbLP9HAQxmRoM9g8OCM/bXcUgfvlLtvCUWmN42wQDohcPm
+         PQvkE77J6w90VB/G3LIHpsPDLZ7+lUywwyi28GOcXULjghNxTt5FcCW0Rzt2aMLUrI7i
+         QFCpqMuYdQJaBms759ltLSKCvl5yf/rfUMkftYOIwWHTB/4KdFkhTwc4hv0qAOQcC32q
+         /YEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746409960; x=1747014760;
+        d=1e100.net; s=20230601; t=1746409961; x=1747014761;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Emf7r2NlJCGBegzvSaP4+YNHnVcvC5KK1KGZi+oKRes=;
-        b=mXGJqEE2GO8DMCBMHhbDRbFcmzfLXbBaFanQn9zKRmJKl+UhZIum94BI/8g8KaA8iv
-         5m5qpgP6l/2lxsq1iwESyu4D/PBHGISJ2Hlxq/LV3aVMUKibA5gXFJ41WC7Z1QFT4bhQ
-         Fp5Y2mz3rHZgmSSoBPSQGYVJ0d9PtQgbqdMmjr2c0z9QFst92BYMofIdDNibWbCXUuGN
-         PIlG6HMPH979qsAL6rHfBSErol/RkTU6FGSoLLDSxxZodoDVL99jzvoePPCX3x7FXH6U
-         F3XU/5EMCmC84nATvx6f1ThAlK4u1HcTDn6FyhYlm+Rzt7Af2bbGFREUYQ/O3V1Un6zN
-         lsCg==
-X-Forwarded-Encrypted: i=1; AJvYcCU0vNKZlrlznUHcDGfvAvmFsJpUE21weAFKumglFE5WROIYE0fYSU0ObVeCl2O/xD5YKF1z4lg+dX4wzQ==@linaro.org
-X-Gm-Message-State: AOJu0YwbbfN15pDZZ6iuqYiMydJ8wtDBS5p4uW0C3o5aXWIXGfDvvrSK
-	Qz5Cz0yxbv3lEIOqYnzCph/lNA03wdp1RlWliS4UrtVBpQBPDcTp/L+mibQ24zZTiw==
-X-Gm-Gg: ASbGncucjzjn6elGfDmrRV8D7jhcBBW9ZztNAlnpoKXqRAd5FqQJ2kwTnGy/HhiaLHD
-	JPlR0tEoUvbXZhwQ5hL+EfCxA4cSM4r+tWqkn5pRz/KZdQMxtwAxCK5WhBesXCGFqkb3huw5X1T
-	2Hkprn6hJRiyAhGlzF02SOeAGWneebeX2sAyD5PXBXdM1bjDQXXYjhGHdU4HxcUMOSjNaaoNQTo
-	P2VGykL8RCKVWCO270oddc8buXFixJyRIOHPH5Q0he9feC7iub0SRmSBC3DPMC1OmEcbn0MA3rg
-	0zXL8yre9m4y9YDCagkKOkdY/0L3re0WJfbpVz4L
-X-Google-Smtp-Source: AGHT+IFk2nTZ/2szMRArYw4zKgFF+u89wGma1goBz8QRVaaG2xYMWCbEQLMiDHJTA0UwqgVt1ZSd+Q==
-X-Received: by 2002:a05:6a20:3950:b0:1f5:86c6:5747 with SMTP id adf61e73a8af0-20e97ac1a8bmr9116493637.32.1746409959886;
-        Sun, 04 May 2025 18:52:39 -0700 (PDT)
+        bh=u3pVmvmULoy6BBYUkUdwM0L9kebw+2O/lrIQahS04Iw=;
+        b=i+wIRmU5Kuo8iIdmVxIYhwCGzu29eM5w19EmVGxnHHUYeWPyoeOVwAyZmtPpnviHGg
+         pINu+SrmfIVKwZycrgYBKhLFE8JYN31eUKKNIWswdRs3EVG1WbU4ZN7QFO28WVdSZSuk
+         4FAjYhKExROp6irFW4u9Q7TFf5YljHIHbMhm/XLQuncEVf7pdbfojX+XhVVrTC2J2aPN
+         rDwRQicVr1NAfeTxRB8hnCg4J8RK3GmukQ3WfutQDFyB3VHFSaHipqHVj3jJGe+8HAYT
+         yGtrE6xNUAZcJxb4v6atD9ZSPh8CU1ZnGKH1LDksMoF/FRfN+cwn4kfhQtoUL4CpLmQS
+         /33Q==
+X-Forwarded-Encrypted: i=1; AJvYcCU9PpxUAx+OXxUZ0/RxjqraYqECm7iRZx4e0GbMUTf4UTAM/GKyor1FHa/kItO8IaG0jj97Oag5JNFeqg==@linaro.org
+X-Gm-Message-State: AOJu0Yypq1+M79VAQhglucDtu5YQ0n9+xGDgiGQA6bfcIGawzYfkFrkJ
+	OVIPH78e4XknLIr2hU2b1uqznSt5LVgz9u5qotSVnLcqzdO5EQavS32w47QqW+KmWQ==
+X-Gm-Gg: ASbGncueBZZcCFo1z6S+QXfmaQpdqysrmUWWb9fOM2YX4214SUG1VQRFr+NVbxSeVKf
+	TI6GP9c9IfyFPpVY/N7C2GrWm6EPGbpfZwrm/SbGBpdkKhiTTJLBgl4XF1DOIZkojpmwlacK8X0
+	ehVNljKL637bN6mPx8YwpVPTNY1gNc+QZ/M1ypWS9qtwq91ZkIN9BGXn4q83/rvz+we7vnS09HR
+	v5ptkEvTzx2Ml1d4LoQPBDK4nXTnYWIeUuY7eTaqd2wkfrYLArUnaM1YRJ1lI+SiowhExEcZdwu
+	EFKJmNooA9nPJlvVFbHp6LpCf9ZCCvVVP1iaBTu8
+X-Google-Smtp-Source: AGHT+IHMzdomMMzlq4KGCLymz5PTggicrRz+TP8w/tfk7qhqTrOD0GKRynUQbqlHnDL/LsXEtE08DA==
+X-Received: by 2002:a05:6a21:9991:b0:1f5:79c4:5da2 with SMTP id adf61e73a8af0-20e979c9149mr8579279637.31.1746409960824;
+        Sun, 04 May 2025 18:52:40 -0700 (PDT)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from pc.. ([38.41.223.211])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b1fb3920074sm4462101a12.11.2025.05.04.18.52.39
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b1fb3920074sm4462101a12.11.2025.05.04.18.52.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 04 May 2025 18:52:39 -0700 (PDT)
+        Sun, 04 May 2025 18:52:40 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -91,58 +91,114 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	anjo@rev.ng,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v5 13/48] target/arm/cpu32-stubs.c: compile file twice (user, system)
-Date: Sun,  4 May 2025 18:51:48 -0700
-Message-ID: <20250505015223.3895275-14-pierrick.bouvier@linaro.org>
+Subject: [PATCH v5 14/48] tcg: add vaddr type for helpers
+Date: Sun,  4 May 2025 18:51:49 -0700
+Message-ID: <20250505015223.3895275-15-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250505015223.3895275-1-pierrick.bouvier@linaro.org>
 References: <20250505015223.3895275-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 5PJKWc99UqK4
+X-TUID: dmuhNsxAsvz0
 
-It could be squashed with commit introducing it, but I would prefer to
-introduce target/arm/cpu.c first.
+Defined as an alias of i32/i64 depending on host pointer size.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/meson.build | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ include/tcg/tcg-op-common.h    |  1 +
+ include/tcg/tcg.h              | 14 ++++++++++++++
+ include/exec/helper-head.h.inc | 11 +++++++++++
+ tcg/tcg.c                      |  5 +++++
+ 4 files changed, 31 insertions(+)
 
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 89e305eb56a..de214fe5d56 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -11,13 +11,9 @@ arm_ss.add(zlib)
- arm_ss.add(when: 'CONFIG_KVM', if_true: files('hyp_gdbstub.c', 'kvm.c'), if_false: files('kvm-stub.c'))
- arm_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
+diff --git a/include/tcg/tcg-op-common.h b/include/tcg/tcg-op-common.h
+index b439bdb385a..e1071adebf2 100644
+--- a/include/tcg/tcg-op-common.h
++++ b/include/tcg/tcg-op-common.h
+@@ -14,6 +14,7 @@
  
--arm_ss.add(when: 'TARGET_AARCH64',
--  if_true: files(
--    'cpu64.c',
--    'gdbstub64.c'),
--  if_false: files(
--    'cpu32-stubs.c'),
--)
-+arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-+  'cpu64.c',
-+  'gdbstub64.c'))
+ TCGv_i32 tcg_constant_i32(int32_t val);
+ TCGv_i64 tcg_constant_i64(int64_t val);
++TCGv_vaddr tcg_constant_vaddr(uintptr_t val);
+ TCGv_vec tcg_constant_vec(TCGType type, unsigned vece, int64_t val);
+ TCGv_vec tcg_constant_vec_matching(TCGv_vec match, unsigned vece, int64_t val);
  
- arm_system_ss = ss.source_set()
- arm_common_system_ss = ss.source_set()
-@@ -32,8 +28,12 @@ arm_system_ss.add(files(
+diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
+index aa300a2f8ba..72bfd3485aa 100644
+--- a/include/tcg/tcg.h
++++ b/include/tcg/tcg.h
+@@ -188,6 +188,7 @@ typedef tcg_target_ulong TCGArg;
+     * TCGv_i64  : 64 bit integer type
+     * TCGv_i128 : 128 bit integer type
+     * TCGv_ptr  : a host pointer type
++    * TCGv_vaddr: an integer type wide enough to hold a target pointer type
+     * TCGv_vec  : a host vector type; the exact size is not exposed
+                   to the CPU front-end code.
+     * TCGv      : an integer type the same size as target_ulong
+@@ -216,6 +217,14 @@ typedef struct TCGv_ptr_d *TCGv_ptr;
+ typedef struct TCGv_vec_d *TCGv_vec;
+ typedef TCGv_ptr TCGv_env;
  
- arm_user_ss = ss.source_set()
- arm_user_ss.add(files('cpu.c'))
-+arm_user_ss.add(when: 'TARGET_AARCH64', if_false: files(
-+  'cpu32-stubs.c'))
++#if __SIZEOF_POINTER__ == 4
++typedef TCGv_i32 TCGv_vaddr;
++#elif __SIZEOF_POINTER__ == 8
++typedef TCGv_i64 TCGv_vaddr;
++#else
++# error "sizeof pointer is different from {4,8}"
++#endif /* __SIZEOF_POINTER__ */
++
+ /* call flags */
+ /* Helper does not read globals (either directly or through an exception). It
+    implies TCG_CALL_NO_WRITE_GLOBALS. */
+@@ -577,6 +586,11 @@ static inline TCGv_ptr temp_tcgv_ptr(TCGTemp *t)
+     return (TCGv_ptr)temp_tcgv_i32(t);
+ }
  
- arm_common_system_ss.add(files('cpu.c'), capstone)
-+arm_common_system_ss.add(when: 'TARGET_AARCH64', if_false: files(
-+  'cpu32-stubs.c'))
++static inline TCGv_vaddr temp_tcgv_vaddr(TCGTemp *t)
++{
++    return (TCGv_vaddr)temp_tcgv_i32(t);
++}
++
+ static inline TCGv_vec temp_tcgv_vec(TCGTemp *t)
+ {
+     return (TCGv_vec)temp_tcgv_i32(t);
+diff --git a/include/exec/helper-head.h.inc b/include/exec/helper-head.h.inc
+index bce5db06ef3..5b248fd7138 100644
+--- a/include/exec/helper-head.h.inc
++++ b/include/exec/helper-head.h.inc
+@@ -58,6 +58,17 @@
+ # define dh_ctype_tl target_ulong
+ #endif /* COMPILING_PER_TARGET */
  
- subdir('hvf')
++#if __SIZEOF_POINTER__ == 4
++# define dh_alias_vaddr i32
++# define dh_typecode_vaddr dh_typecode_i32
++#elif __SIZEOF_POINTER__ == 8
++# define dh_alias_vaddr i64
++# define dh_typecode_vaddr dh_typecode_i64
++#else
++# error "sizeof pointer is different from {4,8}"
++#endif /* __SIZEOF_POINTER__ */
++# define dh_ctype_vaddr uintptr_t
++
+ /* We can't use glue() here because it falls foul of C preprocessor
+    recursive expansion rules.  */
+ #define dh_retvar_decl0_void void
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index c4e866e9c34..51ec8e04bdc 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -2368,6 +2368,11 @@ TCGv_i64 tcg_constant_i64(int64_t val)
+     return temp_tcgv_i64(tcg_constant_internal(TCG_TYPE_I64, val));
+ }
  
++TCGv_vaddr tcg_constant_vaddr(uintptr_t val)
++{
++    return temp_tcgv_vaddr(tcg_constant_internal(TCG_TYPE_PTR, val));
++}
++
+ TCGv_ptr tcg_constant_ptr_int(intptr_t val)
+ {
+     return temp_tcgv_ptr(tcg_constant_internal(TCG_TYPE_PTR, val));
 -- 
 2.47.2

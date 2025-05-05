@@ -1,93 +1,94 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2306513njj;
-        Mon, 5 May 2025 02:11:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVrWw5RtgIr4p4PmF1j2bNefQSGUsbQOL7ROvPO9kAe1Am7CpI8Xuur9JrIStKWa/bk6lFcVayRdi0GrQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFJWMTivu6/3Z9UjkE9J/9kdRUw0N6QydAcFyUc6hL6Xnqqemlt0nO1125Q2dryvZkCR8Ip
-X-Received: by 2002:a05:6000:2586:b0:39f:b62:8cb2 with SMTP id ffacd0b85a97d-3a09fdd4affmr5032613f8f.38.1746436282574;
-        Mon, 05 May 2025 02:11:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746436282; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2306671njj;
+        Mon, 5 May 2025 02:11:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXE4Mvh8uLOVhVyVz4mMxKxG/gAWpxg9Qhom0EQI9YhgfZUZgifVy45ypGHuq6CMI/T5zgRtHMEX4tFRA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFp8YZBR4I1k1qdigLzxSm8ic3EWeJHFxgvx/57Mj0QkOTuJ/Qr3cVPolRU+ctuemFKd7tw
+X-Received: by 2002:a05:600c:500b:b0:43c:f050:fed3 with SMTP id 5b1f17b1804b1-441c48bdfb7mr47463525e9.11.1746436310743;
+        Mon, 05 May 2025 02:11:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746436310; cv=none;
         d=google.com; s=arc-20240605;
-        b=VBNbIv6vsjj2inEdi8csQ2INi0IAmlObluQa8eyna6N2rDY9Rm2aWaedXd9KBmMeuQ
-         XgLp8njQfjI4/KzvoS/mh1ztIbboeAOmoQCd+fH2yWeL6ffKeWdCNQfVMZxaZ1DtwxdV
-         SRcWgW3J0sxUg694yH3ulWvCwuPXwtXng1hlYLfnfpcXguN8HFxHoFS09rXfGvqFBsuQ
-         WrJoYkQbrzmjmf/bZZkTb2/DCxZ08q/d4mIbO+So0/LBOQwomrmG53An+oP02Hs4uUy+
-         3vE8erMG974H7B8c15dtBvM6w6QDG9m5qWeh3ovlrbnanvM21ICsL9Af/V5GJ6V0Ys/T
-         bHvg==
+        b=aQN0gGi3XBu/3YhF1g+aUsY01ureZ8b3EX1ZV1Mrbe1lhxYK66e8sJwE8m4H7B9qaN
+         DDHGgSMN/vgwwIqYvTUaBGV/WVgxjNBmoEaqKEtT9e5yFmxKVLa/BTbpRKBQlp68+q6k
+         ZMx0AMF2XHJAayj3wtsy9uzNDLtYAwOEk/z100vtMuOuzPFCWb2W5l8S60axlqxrpTdL
+         KPRsu4iD7OZ+SL8bdh8lLzgh3Dzq/tP6904wGAXBGFgh10PUAVjDIAHwz8c/MdrTscF/
+         y5M3fkpMFbfjKtGKcuNB+yebCJbP7991XTOKttvCq7PtYybJcc/gY9iwIshI7LsfejTf
+         4vAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=kdLNymG8uyXlDAwxX3uM5KeT9ZkO+s6PnSjmrP3V7Bs=;
-        fh=O3GBR2OOT5hhNkvxv+rlHs7YTTnYAArA4Xdium3ocZU=;
-        b=BZs6q3WEqcDDUhlWr+/UnMgaEwsHsU7CJP8wYMx6qkSJUrWKUmrhs/RG4/MtTWzJDj
-         eIot3YUC072WHveWR6jQlfXNbTCPEv4PSeN3/6mxcpGw1n2kvN2FRkS/s7vRN4q2R8LJ
-         cFjAgrw7JngtV3zCgG2navRPm6Cu4iCHlnBWPO+EUIHuvVG5ujfWQCNQbQyz8lITwa6c
-         ATCg4Wbi4d0cZgIZlnEAkauPKQ0iwWbPKbRUugf1N6XGh10HpfIuLgNGJzYz+q1HW2RO
-         8FWMWDfMtaUyp5tXowQA+tM3JcVt+COCanVWyJJE21hfDS0qT+bGv2ESf1akVC24eyZs
-         kwQA==;
+        bh=Z7ptATJRs5NNiqZ+tIY7JZlmTfT6bQj3fJoJPsG87Ck=;
+        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
+        b=cCpZzeRbGcGvUTJexN6y1E43HYdsTMPYusaGOyPaMv7Lfc9bZWUfxKnuxSshA2oViN
+         vMuqmByVe37I6obwoW4B53faQGtjCAXmK9YJ9Ayt5BHRtcTkarMITWMqOmcLAAOlp7V3
+         zOYmmEd6M86l2VScDmLaj7mAINy9Q8mq2X5YMXfwa258cfx204JQ4zkpC4qBzSdo7ioa
+         OazcgParixCm1HOObHwlPZ1gdtqDWAFgqiVAUe7N1oEh4b3kz/Mk82mLClGACjlMpsi9
+         QRLdmRbS/dqUmPIe7VpcqASN+EVt7mvOtxTyjf82MCbsouA5M1vwuivbS7QmelznLzrx
+         dgKA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VtgGwgAn;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gr1myGxm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a099afc3a4si5019670f8f.316.2025.05.05.02.11.22
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-441b89e13eesi64937225e9.79.2025.05.05.02.11.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 May 2025 02:11:22 -0700 (PDT)
+        Mon, 05 May 2025 02:11:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VtgGwgAn;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gr1myGxm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uBrou-0001Qa-4l; Mon, 05 May 2025 05:09:10 -0400
+	id 1uBrpj-0001ha-3F; Mon, 05 May 2025 05:10:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrnY-0008OI-Ow
- for qemu-arm@nongnu.org; Mon, 05 May 2025 05:07:41 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrms-0006Et-OV
+ for qemu-arm@nongnu.org; Mon, 05 May 2025 05:07:02 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrnW-0006PM-FL
- for qemu-arm@nongnu.org; Mon, 05 May 2025 05:07:40 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrmo-0006Cv-LS
+ for qemu-arm@nongnu.org; Mon, 05 May 2025 05:06:57 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1746436054;
+ s=mimecast20190719; t=1746436012;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kdLNymG8uyXlDAwxX3uM5KeT9ZkO+s6PnSjmrP3V7Bs=;
- b=VtgGwgAni0JWsRRMqm64WHeOl/bQJjg0gcgGRSleBrisMhCLTCCw9iWOqlpHQ3rNim1Z1f
- 6kPHlovFEHogATQ3xuMmGs/PGbG2hfUM90rvtA+TKAYhCSocCrNxe3rv1AYB0dLDsQGfM8
- 37ExSR+Gze9hMg6gvlx6c6zU2seVVOA=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=Z7ptATJRs5NNiqZ+tIY7JZlmTfT6bQj3fJoJPsG87Ck=;
+ b=Gr1myGxmZaKJzrlJV3NvRu7/nqafT/s5V7AowDqyyFEOfGAWJXPZfAidLulpaprE3UdrTV
+ Nh4c7oD1y9Xhl43KVw0gxEBev11k6AY3q8FIY1uijM5NaLOj2B/GqNgL3mJogtW+mEJIiE
+ kizKEI43xBT3eMFFrxOK+S4r6pVmdZw=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-172-oaf6-GhhP_mEgflQgNVcmQ-1; Mon,
- 05 May 2025 05:07:29 -0400
-X-MC-Unique: oaf6-GhhP_mEgflQgNVcmQ-1
-X-Mimecast-MFC-AGG-ID: oaf6-GhhP_mEgflQgNVcmQ_1746436048
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-532-iNSmkLLCMVmDOuB_Ho90Ww-1; Mon,
+ 05 May 2025 05:06:51 -0400
+X-MC-Unique: iNSmkLLCMVmDOuB_Ho90Ww-1
+X-Mimecast-MFC-AGG-ID: iNSmkLLCMVmDOuB_Ho90Ww_1746436010
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A59A9180048E; Mon,  5 May 2025 09:07:28 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6B5DE1955DC6; Mon,  5 May 2025 09:06:50 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.38])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0643530002C7; Mon,  5 May 2025 09:07:26 +0000 (UTC)
+ id 9CAB330001A2; Mon,  5 May 2025 09:06:48 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Steven Lee <steven_lee@aspeedtech.com>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 18/23] hw/intc/aspeed: Add support for AST2700 TSP INTC
-Date: Mon,  5 May 2025 11:06:30 +0200
-Message-ID: <20250505090635.778785-19-clg@redhat.com>
+Subject: [PULL 04/23] tests/functional/aspeed: Update test ASPEED SDK v09.06
+ for AST2600
+Date: Mon,  5 May 2025 11:06:16 +0200
+Message-ID: <20250505090635.778785-5-clg@redhat.com>
 In-Reply-To: <20250505090635.778785-1-clg@redhat.com>
 References: <20250505090635.778785-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -103,7 +104,7 @@ X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.411,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,316 +119,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zx+6HyJiUWAn
+X-TUID: eXp3c/zEKEB+
 
-From: Steven Lee <steven_lee@aspeedtech.com>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-- Define new types for ast2700tsp INTC and INTCIO
-- Add register definitions for TSP INTC and INTCIO
-- Implement write handlers for TSP INTC and INTCIO
-- Register new types in aspeed_intc_register_types
+Update test for AST2600 production revision A3.
 
-The design of the TSP INTC and INTCIO controllers is similar to
-AST2700, with the following differences:
-
-- AST2700
-  Support GICINT128 to GICINT136 in INTC
-  The INTCIO GIC_192_201 has 10 output pins, mapped as follows:
-    Bit 0 -> GIC 192
-    Bit 1 -> GIC 193
-    Bit 2 -> GIC 194
-    Bit 3 -> GIC 195
-    Bit 4 -> GIC 196
-
-- AST2700-tsp
-  Support TSPINT128 to TSPINT136 in INTC
-  The INTCIO TSPINT_160_169 has 10 output pins, mapped as follows:
-    Bit 0 -> TSPINT 160
-    Bit 1 -> TSPINT 161
-    Bit 2 -> TSPINT 162
-    Bit 3 -> TSPINT 163
-    Bit 4 -> TSPINT 164
-
-Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-Change-Id: I3f3aca4b90129640369cf4a92deb4b9a12df5b70
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250502103449.3091642-5-steven_lee@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20250423014008.147542-3-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/intc/aspeed_intc.h |   2 +
- hw/intc/aspeed_intc.c         | 209 +++++++++++++++++++++++++++++++++-
- 2 files changed, 209 insertions(+), 2 deletions(-)
+ tests/functional/test_arm_aspeed_ast2600.py | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
 
-diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
-index 746f159bf335..51288384a569 100644
---- a/include/hw/intc/aspeed_intc.h
-+++ b/include/hw/intc/aspeed_intc.h
-@@ -17,6 +17,8 @@
- #define TYPE_ASPEED_2700_INTCIO TYPE_ASPEED_INTC "io-ast2700"
- #define TYPE_ASPEED_2700SSP_INTC TYPE_ASPEED_INTC "-ast2700ssp"
- #define TYPE_ASPEED_2700SSP_INTCIO TYPE_ASPEED_INTC "io-ast2700ssp"
-+#define TYPE_ASPEED_2700TSP_INTC TYPE_ASPEED_INTC "-ast2700tsp"
-+#define TYPE_ASPEED_2700TSP_INTCIO TYPE_ASPEED_INTC "io-ast2700tsp"
+diff --git a/tests/functional/test_arm_aspeed_ast2600.py b/tests/functional/test_arm_aspeed_ast2600.py
+index 5ef52f06595d..fdae4c939d8c 100755
+--- a/tests/functional/test_arm_aspeed_ast2600.py
++++ b/tests/functional/test_arm_aspeed_ast2600.py
+@@ -97,26 +97,27 @@ def test_arm_ast2600_evb_buildroot_tpm(self):
  
- OBJECT_DECLARE_TYPE(AspeedINTCState, AspeedINTCClass, ASPEED_INTC)
+         self.do_test_arm_aspeed_buildroot_poweroff()
  
-diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-index e889246951f7..33fcbe729c85 100644
---- a/hw/intc/aspeed_intc.c
-+++ b/hw/intc/aspeed_intc.c
-@@ -106,6 +106,51 @@ REG32(SSPINT164_STATUS,     0x1C4)
- REG32(SSPINT165_EN,         0x1D0)
- REG32(SSPINT165_STATUS,     0x1D4)
+-    ASSET_SDK_V806_AST2600_A2 = Asset(
+-        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v08.06/ast2600-a2-obmc.tar.gz',
+-        '9083506135f622d5e7351fcf7d4e1c7125cee5ba16141220c0ba88931f3681a4')
++    ASSET_SDK_V906_AST2600 = Asset(
++        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.06/ast2600-default-obmc.tar.gz',
++        '768d76e247896ad78c154b9cff4f766da2ce65f217d620b286a4a03a8a4f68f5')
  
-+/*
-+ * TSP INTC Registers
-+ */
-+REG32(TSPINT128_EN,             0x3000)
-+REG32(TSPINT128_STATUS,         0x3004)
-+REG32(TSPINT129_EN,             0x3100)
-+REG32(TSPINT129_STATUS,         0x3104)
-+REG32(TSPINT130_EN,             0x3200)
-+REG32(TSPINT130_STATUS,         0x3204)
-+REG32(TSPINT131_EN,             0x3300)
-+REG32(TSPINT131_STATUS,         0x3304)
-+REG32(TSPINT132_EN,             0x3400)
-+REG32(TSPINT132_STATUS,         0x3404)
-+REG32(TSPINT133_EN,             0x3500)
-+REG32(TSPINT133_STATUS,         0x3504)
-+REG32(TSPINT134_EN,             0x3600)
-+REG32(TSPINT134_STATUS,         0x3604)
-+REG32(TSPINT135_EN,             0x3700)
-+REG32(TSPINT135_STATUS,         0x3704)
-+REG32(TSPINT136_EN,             0x3800)
-+REG32(TSPINT136_STATUS,         0x3804)
-+REG32(TSPINT137_EN,             0x3900)
-+REG32(TSPINT137_STATUS,         0x3904)
-+REG32(TSPINT138_EN,             0x3A00)
-+REG32(TSPINT138_STATUS,         0x3A04)
-+REG32(TSPINT160_169_EN,         0x3B00)
-+REG32(TSPINT160_169_STATUS,     0x3B04)
-+
-+/*
-+ * TSP INTCIO Registers
-+ */
-+
-+REG32(TSPINT160_EN,         0x200)
-+REG32(TSPINT160_STATUS,     0x204)
-+REG32(TSPINT161_EN,         0x210)
-+REG32(TSPINT161_STATUS,     0x214)
-+REG32(TSPINT162_EN,         0x220)
-+REG32(TSPINT162_STATUS,     0x224)
-+REG32(TSPINT163_EN,         0x230)
-+REG32(TSPINT163_STATUS,     0x234)
-+REG32(TSPINT164_EN,         0x240)
-+REG32(TSPINT164_STATUS,     0x244)
-+REG32(TSPINT165_EN,         0x250)
-+REG32(TSPINT165_STATUS,     0x254)
-+
- static const AspeedINTCIRQ *aspeed_intc_get_irq(AspeedINTCClass *aic,
-                                                 uint32_t reg)
- {
-@@ -534,8 +579,48 @@ static void aspeed_ssp_intc_write(void *opaque, hwaddr offset, uint64_t data,
-         s->regs[reg] = data;
-         break;
-     }
-+}
-+
-+static void aspeed_tsp_intc_write(void *opaque, hwaddr offset, uint64_t data,
-+                                        unsigned size)
-+{
-+    AspeedINTCState *s = ASPEED_INTC(opaque);
-+    const char *name = object_get_typename(OBJECT(s));
-+    uint32_t reg = offset >> 2;
-+
-+    trace_aspeed_intc_write(name, offset, size, data);
+     def test_arm_ast2600_evb_sdk(self):
+         self.set_machine('ast2600-evb')
  
--    return;
-+    switch (reg) {
-+    case R_TSPINT128_EN:
-+    case R_TSPINT129_EN:
-+    case R_TSPINT130_EN:
-+    case R_TSPINT131_EN:
-+    case R_TSPINT132_EN:
-+    case R_TSPINT133_EN:
-+    case R_TSPINT134_EN:
-+    case R_TSPINT135_EN:
-+    case R_TSPINT136_EN:
-+    case R_TSPINT160_169_EN:
-+        aspeed_intc_enable_handler(s, offset, data);
-+        break;
-+    case R_TSPINT128_STATUS:
-+    case R_TSPINT129_STATUS:
-+    case R_TSPINT130_STATUS:
-+    case R_TSPINT131_STATUS:
-+    case R_TSPINT132_STATUS:
-+    case R_TSPINT133_STATUS:
-+    case R_TSPINT134_STATUS:
-+    case R_TSPINT135_STATUS:
-+    case R_TSPINT136_STATUS:
-+        aspeed_intc_status_handler(s, offset, data);
-+        break;
-+    case R_TSPINT160_169_STATUS:
-+        aspeed_intc_status_handler_multi_outpins(s, offset, data);
-+        break;
-+    default:
-+        s->regs[reg] = data;
-+        break;
-+    }
- }
+-        self.archive_extract(self.ASSET_SDK_V806_AST2600_A2)
++        self.archive_extract(self.ASSET_SDK_V906_AST2600)
  
- static uint64_t aspeed_intcio_read(void *opaque, hwaddr offset,
-@@ -614,8 +699,38 @@ static void aspeed_ssp_intcio_write(void *opaque, hwaddr offset, uint64_t data,
-         s->regs[reg] = data;
-         break;
-     }
-+}
-+
-+static void aspeed_tsp_intcio_write(void *opaque, hwaddr offset, uint64_t data,
-+                                unsigned size)
-+{
-+    AspeedINTCState *s = ASPEED_INTC(opaque);
-+    const char *name = object_get_typename(OBJECT(s));
-+    uint32_t reg = offset >> 2;
-+
-+    trace_aspeed_intc_write(name, offset, size, data);
+         self.vm.add_args('-device',
+             'tmp105,bus=aspeed.i2c.bus.5,address=0x4d,id=tmp-test')
+         self.vm.add_args('-device',
+             'ds1338,bus=aspeed.i2c.bus.5,address=0x32')
+         self.do_test_arm_aspeed_sdk_start(
+-            self.scratch_file("ast2600-a2", "image-bmc"))
++            self.scratch_file("ast2600-default", "image-bmc"))
  
--    return;
-+    switch (reg) {
-+    case R_TSPINT160_EN:
-+    case R_TSPINT161_EN:
-+    case R_TSPINT162_EN:
-+    case R_TSPINT163_EN:
-+    case R_TSPINT164_EN:
-+    case R_TSPINT165_EN:
-+        aspeed_intc_enable_handler(s, offset, data);
-+        break;
-+    case R_TSPINT160_STATUS:
-+    case R_TSPINT161_STATUS:
-+    case R_TSPINT162_STATUS:
-+    case R_TSPINT163_STATUS:
-+    case R_TSPINT164_STATUS:
-+    case R_TSPINT165_STATUS:
-+        aspeed_intc_status_handler(s, offset, data);
-+        break;
-+    default:
-+        s->regs[reg] = data;
-+        break;
-+    }
- }
+-        self.wait_for_console_pattern('ast2600-a2 login:')
++        self.wait_for_console_pattern('ast2600-default login:')
  
- static const MemoryRegionOps aspeed_intc_ops = {
-@@ -658,6 +773,26 @@ static const MemoryRegionOps aspeed_ssp_intcio_ops = {
-     }
- };
+         exec_command_and_wait_for_pattern(self, 'root', 'Password:')
+-        exec_command_and_wait_for_pattern(self, '0penBmc', 'root@ast2600-a2:~#')
++        exec_command_and_wait_for_pattern(self, '0penBmc',
++                                          'root@ast2600-default:~#')
  
-+static const MemoryRegionOps aspeed_tsp_intc_ops = {
-+    .read = aspeed_intc_read,
-+    .write = aspeed_tsp_intc_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    }
-+};
-+
-+static const MemoryRegionOps aspeed_tsp_intcio_ops = {
-+    .read = aspeed_intcio_read,
-+    .write = aspeed_tsp_intcio_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    }
-+};
-+
- static void aspeed_intc_instance_init(Object *obj)
- {
-     AspeedINTCState *s = ASPEED_INTC(obj);
-@@ -883,6 +1018,74 @@ static const TypeInfo aspeed_2700ssp_intcio_info = {
-     .class_init = aspeed_2700ssp_intcio_class_init,
- };
- 
-+static AspeedINTCIRQ aspeed_2700tsp_intc_irqs[ASPEED_INTC_MAX_INPINS] = {
-+    {0, 0, 10, R_TSPINT160_169_EN, R_TSPINT160_169_STATUS},
-+    {1, 10, 1, R_TSPINT128_EN, R_TSPINT128_STATUS},
-+    {2, 11, 1, R_TSPINT129_EN, R_TSPINT129_STATUS},
-+    {3, 12, 1, R_TSPINT130_EN, R_TSPINT130_STATUS},
-+    {4, 13, 1, R_TSPINT131_EN, R_TSPINT131_STATUS},
-+    {5, 14, 1, R_TSPINT132_EN, R_TSPINT132_STATUS},
-+    {6, 15, 1, R_TSPINT133_EN, R_TSPINT133_STATUS},
-+    {7, 16, 1, R_TSPINT134_EN, R_TSPINT134_STATUS},
-+    {8, 17, 1, R_TSPINT135_EN, R_TSPINT135_STATUS},
-+    {9, 18, 1, R_TSPINT136_EN, R_TSPINT136_STATUS},
-+};
-+
-+static void aspeed_2700tsp_intc_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
-+
-+    dc->desc = "ASPEED 2700 TSP INTC Controller";
-+    aic->num_lines = 32;
-+    aic->num_inpins = 10;
-+    aic->num_outpins = 19;
-+    aic->mem_size = 0x4000;
-+    aic->nr_regs = 0x3B08 >> 2;
-+    aic->reg_offset = 0;
-+    aic->reg_ops = &aspeed_tsp_intc_ops;
-+    aic->irq_table = aspeed_2700tsp_intc_irqs;
-+    aic->irq_table_count = ARRAY_SIZE(aspeed_2700tsp_intc_irqs);
-+}
-+
-+static const TypeInfo aspeed_2700tsp_intc_info = {
-+    .name = TYPE_ASPEED_2700TSP_INTC,
-+    .parent = TYPE_ASPEED_INTC,
-+    .class_init = aspeed_2700tsp_intc_class_init,
-+};
-+
-+static AspeedINTCIRQ aspeed_2700tsp_intcio_irqs[ASPEED_INTC_MAX_INPINS] = {
-+    {0, 0, 1, R_TSPINT160_EN, R_TSPINT160_STATUS},
-+    {1, 1, 1, R_TSPINT161_EN, R_TSPINT161_STATUS},
-+    {2, 2, 1, R_TSPINT162_EN, R_TSPINT162_STATUS},
-+    {3, 3, 1, R_TSPINT163_EN, R_TSPINT163_STATUS},
-+    {4, 4, 1, R_TSPINT164_EN, R_TSPINT164_STATUS},
-+    {5, 5, 1, R_TSPINT165_EN, R_TSPINT165_STATUS},
-+};
-+
-+static void aspeed_2700tsp_intcio_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
-+
-+    dc->desc = "ASPEED 2700 TSP INTC IO Controller";
-+    aic->num_lines = 32;
-+    aic->num_inpins = 6;
-+    aic->num_outpins = 6;
-+    aic->mem_size = 0x400;
-+    aic->nr_regs = 0x258 >> 2;
-+    aic->reg_offset = 0x0;
-+    aic->reg_ops = &aspeed_tsp_intcio_ops;
-+    aic->irq_table = aspeed_2700tsp_intcio_irqs;
-+    aic->irq_table_count = ARRAY_SIZE(aspeed_2700tsp_intcio_irqs);
-+}
-+
-+static const TypeInfo aspeed_2700tsp_intcio_info = {
-+    .name = TYPE_ASPEED_2700TSP_INTCIO,
-+    .parent = TYPE_ASPEED_INTC,
-+    .class_init = aspeed_2700tsp_intcio_class_init,
-+};
-+
- static void aspeed_intc_register_types(void)
- {
-     type_register_static(&aspeed_intc_info);
-@@ -890,6 +1093,8 @@ static void aspeed_intc_register_types(void)
-     type_register_static(&aspeed_2700_intcio_info);
-     type_register_static(&aspeed_2700ssp_intc_info);
-     type_register_static(&aspeed_2700ssp_intcio_info);
-+    type_register_static(&aspeed_2700tsp_intc_info);
-+    type_register_static(&aspeed_2700tsp_intcio_info);
- }
- 
- type_init(aspeed_intc_register_types);
+         exec_command_and_wait_for_pattern(self,
+             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-5/device/new_device',
 -- 
 2.49.0
 

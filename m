@@ -1,100 +1,101 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2306859njj;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2306863njj;
         Mon, 5 May 2025 02:12:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUVQDsbWqLQ4fC8uB9WWt537GmvnNx5e41M7JVKBOl+02N9wXwIhp8w2ZFSt2saDlx4aUxLSWPyqSigkA==@linaro.org
-X-Google-Smtp-Source: AGHT+IH9aNSEGWhy8clhPmafOpcswXusM7gQKQ4h+CeOzbKCvlbOQy6AwYMScqhxh7wjxsczJAbd
-X-Received: by 2002:a05:600c:4f54:b0:441:b076:fcdf with SMTP id 5b1f17b1804b1-441c48b3c97mr36652835e9.8.1746436337819;
-        Mon, 05 May 2025 02:12:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746436337; cv=none;
+X-Forwarded-Encrypted: i=2; AJvYcCWgMnOK9sssR6732vV+IaRTr4rEeZ+nlUCNV4IF0o/d8zx120kJbod6T7gP6/ml6TCt87Iz2OrHh/AykA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGOB6avMxog4AEsqhbajb92UziKb1Q9uOLnXqWVekH/R+ez1Pxvm9y7n27OWdfhVrnQXGC9
+X-Received: by 2002:a05:6000:290c:b0:3a0:8a42:e9dc with SMTP id ffacd0b85a97d-3a09fd7c681mr4537832f8f.26.1746436338785;
+        Mon, 05 May 2025 02:12:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746436338; cv=none;
         d=google.com; s=arc-20240605;
-        b=FrA/IjpjB/B8QUHU4N3T1oVSojbEVgD7c29McmTKitxykVyGi4rpN/jTAL8CQ6RLxh
-         ASmX85LjsqLKckCWr9EPwHpitC3hOa+1HLak4Y3VrVf0kKSJ/6CqSIMAj5A8Vhd5UO6a
-         UuNomA9a9pOD0oW86e/LEbii1pxLuvMVS2vIhQZKmgdoKgJf+KCw7zOK1BqiaVWODdb/
-         1Bx1BOAL+GuocuxThqe6TYXoG/w+CvgPDc1oFVNs4IsTWdOvTsLue/qxNDEbKxtifpxn
-         Typy1T89pGaN0i95iaE0ihncQDM6bn6OcSgVlIB8eHVmdOv9Umlnva4DpE3huDv1zLD4
-         9dCA==
+        b=YA/OFNfg85Dtv/5GVPK6grItu8XnxyeasaLxXxmRo66MwEK+Hmzm6z0HqF34Dip3Jm
+         ApAEm8ggq/DhDE/FbEVZn1X+P3tHnz7jBwsJa8imSCCD5pO6j9OgUFxxoFN0UXLrxdUt
+         egRJSqnu85m6bQa/lBkET6NI34PnAe3wavpAbu/aESXBDNvhcDNa3zJxI5VKRT6BUdWZ
+         R3v+ogn1EncZT79BpXAX/lEeqtQeLxl5k5nhq/hrnRqyTtCfkiyaUmYLPY4EAYaKUjt1
+         4l8QnJOVve2f+GDcz9RPgVoGN9bxbPOCBpMYU5ZV2lQgxRmiz1Eova6swSOl02CGyZRz
+         EcFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=oswtdtgKHArstMdjH9TboSKo8ZZZq+gR8hY+A+3zQYU=;
-        fh=2tF814yhlR9lAjKjhYIOYjzqUlsSQssx481Cid5Ym60=;
-        b=M+WPRbKpVQWG8+IYodZ7noeqPgJlQjYOlALar04YURrwMXTuV5dZLDTYBXB21prRyi
-         XDfGO2wrVh8jr9ILg17f8IWgKy2BFa0BCZPi1LADz4qFXUjytmXFzI61hNNovHuewRxk
-         YyZ+8cyhGKhcBnB3nfBgButa6kbl/pBHF833Ekkobg1URjJKDbRMpf6VV+FQGPzd6pvV
-         Fu0eqOUWKEJQjgKAlTqXPYYSGJQCabKnwOaAsScFHjl9ae8zEnJY0arK//4QjGXBwyB8
-         qG8KM2uP84xK2JeiPBITzCOTFVR15eYW0pKVlCOQBsANY2oFq5jVw7n8tjpDazdoqgl5
-         S5+g==;
+        bh=ZsiOM7q8g3d4IdE4tuHhf5VrIKTQ9VH185clY0vz75s=;
+        fh=T0srg4NBQRu22oFjMK4XHQySpCI66Qi9dZIWpS9x1iM=;
+        b=JTLpo7ZiDbBBQ7KKj93HNFLgTa8z1wpCl8pR5DeBC+x9VSDR1EcDFEXavokkx7M0ox
+         OIFmQ9PQ1TlZ289a0Z5RSel6sgv5fXpPKdLIesE/vq1rXrIesz6N8cyvMOQLqpqlQNwX
+         N843p0fe2o/cIn55sySsWlLiLRbe3qMUGfLGqbsUH2sAO3CdNU0Uxn4KbheCub2Hb7Tz
+         TA2VRZorATIBFuLEeP1Jgavmdw27wjOm5qu/ESOt6Ywb2127deK5Mg5gmsZ5ndITGGjB
+         CzhT7JM6ClMQqsLjmLmIPlYo+ZU+MZNK6GUlym+gHzFeV7UCUb43JjEm7ym6lZMk6Vzn
+         FvsA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YVCE1SmT;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Nt70SF8+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a099b10a3dsi4873554f8f.737.2025.05.05.02.12.17
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-441b2ad7c4csi89593835e9.28.2025.05.05.02.12.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 May 2025 02:12:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 05 May 2025 02:12:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YVCE1SmT;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Nt70SF8+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uBrn2-0006dn-SP; Mon, 05 May 2025 05:07:08 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uBrqW-0002rs-Fn; Mon, 05 May 2025 05:10:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrmn-00060C-3B
- for qemu-devel@nongnu.org; Mon, 05 May 2025 05:06:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrnL-0007oV-Nd
+ for qemu-arm@nongnu.org; Mon, 05 May 2025 05:07:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrmj-0006Bz-4x
- for qemu-devel@nongnu.org; Mon, 05 May 2025 05:06:51 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrnJ-0006MX-1j
+ for qemu-arm@nongnu.org; Mon, 05 May 2025 05:07:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1746436007;
+ s=mimecast20190719; t=1746436044;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=oswtdtgKHArstMdjH9TboSKo8ZZZq+gR8hY+A+3zQYU=;
- b=YVCE1SmTB6e0uvdeZfrM4J/SzJ+l2woR5lyRtgaUJga7q6i56kGNcI2OUk85EPMWEQmA98
- THXdSfLyaGKukXDl59wL3iLjLpqOHfZ5jmQZ4sWibdJnDqoayNutD4VN0qItdd51ntKxGN
- hbl0a3IB9W5RsbTUsEAXPwRkHgq7vs8=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=ZsiOM7q8g3d4IdE4tuHhf5VrIKTQ9VH185clY0vz75s=;
+ b=Nt70SF8+GoJZlhsdynA6HYQtUgR3IJdwl1e9x2T3SZKDA8v0Z1EcwySrEyXgysAyEN0vSZ
+ JsrrJDEtTuQNAPnC7fdA4GxBkaKA7W+WrGl3gWlBIhUObH7cxjl4Bzvs6sZlS+nzx13n/1
+ Ig7+FAG2kQ11r3pijkR4htaptr6lDlI=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-99-UysjpmMCP9ePSPPkoWg8-g-1; Mon,
- 05 May 2025 05:06:43 -0400
-X-MC-Unique: UysjpmMCP9ePSPPkoWg8-g-1
-X-Mimecast-MFC-AGG-ID: UysjpmMCP9ePSPPkoWg8-g_1746436003
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-612-7vaVNXmjNNCpRVfL7dmQEw-1; Mon,
+ 05 May 2025 05:07:21 -0400
+X-MC-Unique: 7vaVNXmjNNCpRVfL7dmQEw-1
+X-Mimecast-MFC-AGG-ID: 7vaVNXmjNNCpRVfL7dmQEw_1746436040
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 97447180087C; Mon,  5 May 2025 09:06:42 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 09F931956096; Mon,  5 May 2025 09:07:20 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.38])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B65F030001A2; Mon,  5 May 2025 09:06:40 +0000 (UTC)
+ id 1677330001A2; Mon,  5 May 2025 09:07:17 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Nabih Estefan <nabihestefan@google.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 01/23] hw/arm: ast27x0: Wire up EHCI controllers
-Date: Mon,  5 May 2025 11:06:13 +0200
-Message-ID: <20250505090635.778785-2-clg@redhat.com>
+Subject: [PULL 14/23] docs/system/arm/aspeed: Support vbootrom for AST2700
+Date: Mon,  5 May 2025 11:06:26 +0200
+Message-ID: <20250505090635.778785-15-clg@redhat.com>
 In-Reply-To: <20250505090635.778785-1-clg@redhat.com>
 References: <20250505090635.778785-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -44
 X-Spam_score: -4.5
@@ -103,179 +104,85 @@ X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.411,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2Jiq+YGjlxrC
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: bMGR+BjBPh/6
 
-From: Troy Lee <troy_lee@aspeedtech.com>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-AST27x0 has 4 EHCI controllers, where each CPU and I/O die has 2
-instances. This patch use existing TYPE_PLATFORM_EHCI. After wiring up
-the EHCI controller, the ast2700a1-evb can find up to 4 USB EHCI
-interfaces.
+Using the vbootrom image support and the boot ROM binary is
+now passed via the -bios option, using the image located in
+pc-bios/ast27x0_bootrom.bin.
 
-ehci-platform 12061000.usb: EHCI Host Controller
-ehci-platform 12061000.usb: new USB bus registered, assigned bus number 2
-ehci-platform 12063000.usb: EHCI Host Controller
-ehci-platform 12063000.usb: new USB bus registered, assigned bus number 3
-ehci-platform 12061000.usb: irq 88, io mem 0x12061000
-ehci-platform 12063000.usb: irq 90, io mem 0x12063000
-ehci-platform 14121000.usb: EHCI Host Controller
-ehci-platform 14123000.usb: EHCI Host Controller
-ehci-platform 12061000.usb: USB 2.0 started, EHCI 1.00
-ehci-platform 14121000.usb: new USB bus registered, assigned bus number 5
-ehci-platform 14123000.usb: new USB bus registered, assigned bus number 6
-ehci-platform 14121000.usb: irq 91, io mem 0x14121000
-ehci-platform 14123000.usb: irq 92, io mem 0x14123000
-ehci-platform 12063000.usb: USB 2.0 started, EHCI 1.00
-usb usb2: Manufacturer: Linux 6.6.78-dirty-bafd2830c17c-gbafd2830c17c-dirty ehci_hcd
-usb usb3: Manufacturer: Linux 6.6.78-dirty-bafd2830c17c-gbafd2830c17c-dirty ehci_hcd
-ehci-platform 14121000.usb: USB 2.0 started, EHCI 1.00
-usb usb5: Manufacturer: Linux 6.6.78-dirty-bafd2830c17c-gbafd2830c17c-dirty ehci_hcd
-ehci-platform 14123000.usb: USB 2.0 started, EHCI 1.00
-usb usb6: Manufacturer: Linux 6.6.78-dirty-bafd2830c17c-gbafd2830c17c-dirty ehci_hcd
-
-Note that, AST27x0A0 only has 2 EHCI controllers due to hw issue.
-
-Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Nabih Estefan <nabihestefan@google.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250317065938.1902272-2-troy_lee@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20250424075135.3715128-7-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/arm/aspeed_soc.h |  4 +++-
- hw/arm/aspeed_ast27x0.c     | 28 ++++++++++++++++++++++++++++
- 2 files changed, 31 insertions(+), 1 deletion(-)
+ docs/system/arm/aspeed.rst | 29 ++++++++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index f069d17d1629..c1e80c8908b3 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -43,7 +43,7 @@
- #include "hw/intc/arm_gicv3.h"
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index 08a33b7008b7..014545f4440f 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -306,7 +306,14 @@ Images can be downloaded from the ASPEED Forked OpenBMC GitHub release repositor
+ Booting the ast2700-evb machine
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  
- #define ASPEED_SPIS_NUM  3
--#define ASPEED_EHCIS_NUM 2
-+#define ASPEED_EHCIS_NUM 4
- #define ASPEED_WDTS_NUM  8
- #define ASPEED_CPUS_NUM  4
- #define ASPEED_MACS_NUM  4
-@@ -192,6 +192,8 @@ enum {
-     ASPEED_DEV_SPI2,
-     ASPEED_DEV_EHCI1,
-     ASPEED_DEV_EHCI2,
-+    ASPEED_DEV_EHCI3,
-+    ASPEED_DEV_EHCI4,
-     ASPEED_DEV_VIC,
-     ASPEED_DEV_INTC,
-     ASPEED_DEV_INTCIO,
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 63a366f7e837..ea4a611b9068 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -25,6 +25,8 @@
- 
- static const hwaddr aspeed_soc_ast2700_memmap[] = {
-     [ASPEED_DEV_SRAM]      =  0x10000000,
-+    [ASPEED_DEV_EHCI1]     =  0x12061000,
-+    [ASPEED_DEV_EHCI2]     =  0x12063000,
-     [ASPEED_DEV_HACE]      =  0x12070000,
-     [ASPEED_DEV_EMMC]      =  0x12090000,
-     [ASPEED_DEV_INTC]      =  0x12100000,
-@@ -47,6 +49,8 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
-     [ASPEED_DEV_ETH2]      =  0x14060000,
-     [ASPEED_DEV_ETH3]      =  0x14070000,
-     [ASPEED_DEV_SDHCI]     =  0x14080000,
-+    [ASPEED_DEV_EHCI3]     =  0x14121000,
-+    [ASPEED_DEV_EHCI4]     =  0x14123000,
-     [ASPEED_DEV_ADC]       =  0x14C00000,
-     [ASPEED_DEV_SCUIO]     =  0x14C02000,
-     [ASPEED_DEV_GPIO]      =  0x14C0B000,
-@@ -91,6 +95,8 @@ static const int aspeed_soc_ast2700a0_irqmap[] = {
-     [ASPEED_DEV_TIMER7]    = 22,
-     [ASPEED_DEV_TIMER8]    = 23,
-     [ASPEED_DEV_DP]        = 28,
-+    [ASPEED_DEV_EHCI1]     = 33,
-+    [ASPEED_DEV_EHCI2]     = 37,
-     [ASPEED_DEV_LPC]       = 128,
-     [ASPEED_DEV_IBT]       = 128,
-     [ASPEED_DEV_KCS]       = 128,
-@@ -137,6 +143,8 @@ static const int aspeed_soc_ast2700a1_irqmap[] = {
-     [ASPEED_DEV_TIMER7]    = 22,
-     [ASPEED_DEV_TIMER8]    = 23,
-     [ASPEED_DEV_DP]        = 28,
-+    [ASPEED_DEV_EHCI1]     = 33,
-+    [ASPEED_DEV_EHCI2]     = 37,
-     [ASPEED_DEV_LPC]       = 192,
-     [ASPEED_DEV_IBT]       = 192,
-     [ASPEED_DEV_KCS]       = 192,
-@@ -212,6 +220,8 @@ static const int ast2700_gic132_gic196_intcmap[] = {
-     [ASPEED_DEV_UART10]    = 16,
-     [ASPEED_DEV_UART11]    = 17,
-     [ASPEED_DEV_UART12]    = 18,
-+    [ASPEED_DEV_EHCI3]     = 28,
-+    [ASPEED_DEV_EHCI4]     = 29,
- };
- 
- /* GICINT 133 */
-@@ -434,6 +444,11 @@ static void aspeed_soc_ast2700_init(Object *obj)
-         object_initialize_child(obj, "spi[*]", &s->spi[i], typename);
-     }
- 
-+    for (i = 0; i < sc->ehcis_num; i++) {
-+        object_initialize_child(obj, "ehci[*]", &s->ehci[i],
-+                                TYPE_PLATFORM_EHCI);
-+    }
+-Boot the AST2700 machine from the flash image, use an MTD drive :
++Boot the AST2700 machine from the flash image.
 +
-     snprintf(typename, sizeof(typename), "aspeed.sdmc-%s", socname);
-     object_initialize_child(obj, "sdmc", &s->sdmc, typename);
-     object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
-@@ -709,6 +724,17 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-                         ASPEED_SMC_GET_CLASS(&s->spi[i])->flash_window_base);
-     }
- 
-+    /* EHCI */
-+    for (i = 0; i < sc->ehcis_num; i++) {
-+        if (!sysbus_realize(SYS_BUS_DEVICE(&s->ehci[i]), errp)) {
-+            return;
-+        }
-+        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->ehci[i]), 0,
-+                        sc->memmap[ASPEED_DEV_EHCI1 + i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-+                           aspeed_soc_get_irq(s, ASPEED_DEV_EHCI1 + i));
-+    }
++There are two supported methods for booting the AST2700 machine with a flash image:
 +
-     /*
-      * SDMC - SDRAM Memory Controller
-      * The SDMC controller is unlocked at SPL stage.
-@@ -900,6 +926,7 @@ static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, const void *data)
-     sc->silicon_rev  = AST2700_A0_SILICON_REV;
-     sc->sram_size    = 0x20000;
-     sc->spis_num     = 3;
-+    sc->ehcis_num    = 2;
-     sc->wdts_num     = 8;
-     sc->macs_num     = 1;
-     sc->uarts_num    = 13;
-@@ -927,6 +954,7 @@ static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, const void *data)
-     sc->silicon_rev  = AST2700_A1_SILICON_REV;
-     sc->sram_size    = 0x20000;
-     sc->spis_num     = 3;
-+    sc->ehcis_num    = 4;
-     sc->wdts_num     = 8;
-     sc->macs_num     = 3;
-     sc->uarts_num    = 13;
++Manual boot using ``-device loader``:
++
++It causes all 4 CPU cores to start execution from address ``0x430000000``, which
++corresponds to the BL31 image load address.
+ 
+ .. code-block:: bash
+ 
+@@ -326,6 +333,26 @@ Boot the AST2700 machine from the flash image, use an MTD drive :
+        -drive file=${IMGDIR}/image-bmc,format=raw,if=mtd \
+        -nographic
+ 
++Boot using a virtual boot ROM (``-bios``):
++
++If users do not specify the ``-bios option``, QEMU will attempt to load the
++default vbootrom image ``ast27x0_bootrom.bin`` from either the current working
++directory or the ``pc-bios`` directory within the QEMU source tree.
++
++.. code-block:: bash
++
++  $ qemu-system-aarch64 -M ast2700-evb \
++      -drive file=image-bmc,format=raw,if=mtd \
++      -nographic
++
++The ``-bios`` option allows users to specify a custom path for the vbootrom
++image to be loaded during boot. This will load the vbootrom image from the
++specified path in the ${HOME} directory.
++
++.. code-block:: bash
++
++  -bios ${HOME}/ast27x0_bootrom.bin
++
+ Aspeed minibmc family boards (``ast1030-evb``)
+ ==================================================================
+ 
 -- 
 2.49.0
 

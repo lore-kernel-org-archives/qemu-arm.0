@@ -1,100 +1,100 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2306879njj;
-        Mon, 5 May 2025 02:12:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXBTIro4/8S4nKMVP5z5hxSDmIWW+rs0QJk6of/5J8NQOp0QjR8lWexNPBFhXpL3hOM2YO2CS7pyXot3A==@linaro.org
-X-Google-Smtp-Source: AGHT+IEJdN4cIcCpXTwox7kZKIK5BGrLIULACAjMclK9txRoZxwfQkSHvuf8/tXmyDYdZZwvNTZR
-X-Received: by 2002:a05:6000:1acd:b0:3a0:8c4d:6c9c with SMTP id ffacd0b85a97d-3a09cf3dfc1mr6259804f8f.57.1746436340853;
-        Mon, 05 May 2025 02:12:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746436340; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2307004njj;
+        Mon, 5 May 2025 02:12:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWFjKHNk0htdufkFrOJKGmYY6lVt7g3Iz60fBN7CaC/SDYn5Rhw7l2EWq76VEuSF6ccFh94hhSZvw3g5Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IE2+wE5BiALSHZIh2PF9xbK7TeEIF+Q7ZKJ/rWgi+sefoRg49/nEmRHan9qT8Cf51tYOxeP
+X-Received: by 2002:a05:6000:186c:b0:39f:9f:a177 with SMTP id ffacd0b85a97d-3a09fd88c00mr4523196f8f.17.1746436358010;
+        Mon, 05 May 2025 02:12:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746436357; cv=none;
         d=google.com; s=arc-20240605;
-        b=IjZR4erBox+MVUZXtOHXGikcXv1UvdaHplio2wPq2yzMHWHoMI+AT0/zCwZ+8twz3t
-         BKpY1F/lScPUF7w351k14W0aNOZfxhu7DD2TdOwXiMHiiXcrQhpzI5dfPZ9qoYYEpaXE
-         fCFOh3w1dQzL5HUjGXT2l44tvMKtwkAK/OardgW/OGLr6S29/mDn15WQgX86AJTX9B2i
-         F2V8y9G01m54zXEfIbBT1jCfZq00BlaLNRC2LyRmL1P94Wvis4ala44ymaZbraQ6sHFX
-         uXxZ8Jps+UTwvhv/rHGRJhKN+WVigLJ1PmIfKkCJtIl3eeVm5pZkUu196/jbG0G0nPwU
-         4ZpA==
+        b=Mb1QMwb5r8A0Ps0cks/p+/2VjgjFp+s8SJ6g7ezUUNMlQ5m3XuaskVaLbD70ologN5
+         Q0AxyRiXRbUZKdArzXK+A/DeczzNCxbU0RvfIPSos6Yg/H4RpJzeZov1cpi+Ib7WoU30
+         V85IXhdh+aU9OHwvsLVThS7CNFyIpiKLRKyGmUyztxUfULxSgjui+g0xpYqvDjehUS9U
+         90oRSALeErm0NZ4tSieDh14XJn6OqGPwDf4GC+myNM9O5IG7MAXLmIli2XgdmLSh53nV
+         50b65SayxhnT8ruqh7GJD9OCsClDNz72xDfpJrtTGebRhsvMxCCKg+/WcRmAM+Y0TYWz
+         9w0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=QWjhcp0cmbm4masVveL+QrvQsIN1xYgv7pOG3qZD7sA=;
+        bh=hyN8mO5eHNpryPzAY8OWo3baYhXDZOPGGteVl7+2vfg=;
         fh=O3GBR2OOT5hhNkvxv+rlHs7YTTnYAArA4Xdium3ocZU=;
-        b=Q4CyaKsglcaXrUycSEag21mDSCNoQz++m0lE77vYEmYOJ8Hh5sAQRjEBcoeuRRNXkg
-         ajr1pHJRTbEwGX1CLkExjqj9KXaaYybbHlSodRtn8GCBXhivvVis/ddJCSYsuRfzvmgw
-         66Cut10O8iXTI3eRgizk3GpP3TNZ+vwrmxxRCXKwrpGbItknQGHXxibhBtKVdLZB6SPD
-         AsDhN5tWfNo6f48Auhq4SwdYE7LsLcArizxx/84ue7IiAvVRLvckcxS+7DnmY51YrqNV
-         V46KSWcYFlztJUHSxVmKp/ICKXVP79zt9NNptvbfHatG+vDHbdLu6JM0Qf7+Spa3sdYS
-         rtLw==;
+        b=RCj66KbuZVE8/Kz57G0X65JYGGG1amdABd+lwfGVelG+la6bKAwTyJS8yXgJ9Fc6Yx
+         iRKbJ/fLMalyLEKfSU0neDYB64gLG2+6BeOEa9AtPoGws6j3Ur7xks+EirvsxTwhKCqP
+         ceZT1lb1kQKsGIvO/ZlYTvE4ktEELLEpLJur3huhHEBUVC0t2mkCWKS1vu3eup4ms8u/
+         ok+m78WHMElJPR4FV2GLv7zU6itjVuk3rl0B9YfcRzSX1T3NTYdxciKY5b+45JUif3GE
+         IWBpXMeU1BioKtg2o3JZlApB7+TcFsuku6E0wh0XM7sBseH8dXTHC/tWPSDxsghorrns
+         YKZg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NpDvhhV3;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BJdiBTTa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a099b0edd5si4929660f8f.621.2025.05.05.02.12.20
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a099adf947si5056786f8f.76.2025.05.05.02.12.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 May 2025 02:12:20 -0700 (PDT)
+        Mon, 05 May 2025 02:12:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NpDvhhV3;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BJdiBTTa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uBrrW-0005M6-AU; Mon, 05 May 2025 05:11:48 -0400
+	id 1uBrrc-0005Yw-Ej; Mon, 05 May 2025 05:11:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrnW-0008Kv-RN
- for qemu-devel@nongnu.org; Mon, 05 May 2025 05:07:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrnP-00087u-PZ
+ for qemu-devel@nongnu.org; Mon, 05 May 2025 05:07:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrnS-0006P3-72
- for qemu-devel@nongnu.org; Mon, 05 May 2025 05:07:36 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBrnN-0006Nc-E4
+ for qemu-devel@nongnu.org; Mon, 05 May 2025 05:07:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1746436053;
+ s=mimecast20190719; t=1746436048;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=QWjhcp0cmbm4masVveL+QrvQsIN1xYgv7pOG3qZD7sA=;
- b=NpDvhhV3DzYW6zJ3FpFvFW2Fs2tf2wnowLE12C8Qpe0wWK4w8YjbOtdocJx7pPwdqmz+UI
- 8jyhPXYJ90SGVRQr4UsM7FnN18sFhfAhqGBU1GeOU0VATttZ1BpysYPlEV6Y0m0NVAzAsg
- pGBy7UrtTe837brBzDNB4vMlIDn1mRU=
+ bh=hyN8mO5eHNpryPzAY8OWo3baYhXDZOPGGteVl7+2vfg=;
+ b=BJdiBTTaRU7HKGbqjDgU3iHD5Nc/FVFVxNKzdm/4dzgsv14sQW2m5Zq6Q58FY2rP+Dmlv6
+ +Nz9Je+wq04Pu4M8Npd9oCqJ57k/0+Usf+FmP+ZZvJvjQoGaLiBEHQQj1iFzHFJa4EZCGa
+ ftkNkFpRH+s22Q8ezITopJg17pIHc3s=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-553-K17ZjNheOG-hY6sY0wZKQw-1; Mon,
- 05 May 2025 05:07:31 -0400
-X-MC-Unique: K17ZjNheOG-hY6sY0wZKQw-1
-X-Mimecast-MFC-AGG-ID: K17ZjNheOG-hY6sY0wZKQw_1746436051
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-594-lbhY_TUuM2CP0nyvZp3iFQ-1; Mon,
+ 05 May 2025 05:07:27 -0400
+X-MC-Unique: lbhY_TUuM2CP0nyvZp3iFQ-1
+X-Mimecast-MFC-AGG-ID: lbhY_TUuM2CP0nyvZp3iFQ_1746436046
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EDE01180034E; Mon,  5 May 2025 09:07:30 +0000 (UTC)
+ id 74AF51800360; Mon,  5 May 2025 09:07:26 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.38])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 343F830001A2; Mon,  5 May 2025 09:07:28 +0000 (UTC)
+ id D086F30001A2; Mon,  5 May 2025 09:07:24 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Steven Lee <steven_lee@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 19/23] hw/arm/aspeed_ast27x0-ssp: Introduce AST27x0 A1 SSP SoC
-Date: Mon,  5 May 2025 11:06:31 +0200
-Message-ID: <20250505090635.778785-20-clg@redhat.com>
+Subject: [PULL 17/23] hw/intc/aspeed: Add support for AST2700 SSP INTC
+Date: Mon,  5 May 2025 11:06:29 +0200
+Message-ID: <20250505090635.778785-18-clg@redhat.com>
 In-Reply-To: <20250505090635.778785-1-clg@redhat.com>
 References: <20250505090635.778785-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -44
 X-Spam_score: -4.5
@@ -118,399 +118,315 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uAGG6Nr3Ajha
+X-TUID: Bqc1vpvBcBDO
 
 From: Steven Lee <steven_lee@aspeedtech.com>
 
-The AST2700 SSP (Secondary Service Processor) is a Cortex-M4 coprocessor.
-This patch adds support for A1 SSP with the following updates:
+- Define new types for ast2700ssp INTC and INTCIO
+- Add register definitions for SSP INTC and INTCIO
+- Implement write handlers for SSP INTC and INTCIO
+- Register new types in aspeed_intc_register_types
 
-- Introduce Aspeed27x0SSPSoCState structure in aspeed_soc.h
-- Define memory map and IRQ map for AST27x0 A1 SSP SoC
-- Implement initialization and realization functions
-- Add support for UART, INTC, and SCU devices
-- Map unimplemented devices for IPC and SCUIO
+The design of the SSP INTC and INTCIO controllers is similar to
+AST2700, with the following differences:
 
-The IRQ mapping is similar to AST2700 CA35 SoC, featuring a two-level
-interrupt controller.
+- AST2700
+  Support GICINT128 to GICINT136 in INTC
+  The INTCIO GIC_192_201 has 10 output pins, mapped as follows:
+    Bit 0 -> GIC 192
+    Bit 1 -> GIC 193
+    Bit 2 -> GIC 194
+    Bit 3 -> GIC 195
+    Bit 4 -> GIC 196
 
-Difference from AST2700:
-
-    - AST2700
-      - Support GICINT128 to GICINT136 in INTC
-      - The INTCIO GIC_192_201 has 10 output pins, mapped as follows:
-          Bit 0 -> GIC 192
-          Bit 1 -> GIC 193
-          Bit 2 -> GIC 194
-          Bit 3 -> GIC 195
-          Bit 4 -> GIC 196
-
-    - AST2700-ssp
-      - Support SSPINT128 to SSPINT136 in INTC
-      - The INTCIO SSPINT_160_169 has 10 output pins, mapped as follows:
-          Bit 0 -> SSPINT 160
-          Bit 1 -> SSPINT 161
-          Bit 2 -> SSPINT 162
-          Bit 3 -> SSPINT 163
-          Bit 4 -> SSPINT 164
+- AST2700-ssp
+  Support SSPINT128 to SSPINT136 in INTC
+  The INTCIO SSPINT_160_169 has 10 output pins, mapped as follows:
+    Bit 0 -> SSPINT 160
+    Bit 1 -> SSPINT 161
+    Bit 2 -> SSPINT 162
+    Bit 3 -> SSPINT 163
+    Bit 4 -> SSPINT 164
 
 Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-Change-Id: I924bf1a657f1e83f9e16d6673713f4a06ecdb496
+Change-Id: Ib8cb0e264505cef48e17f173e057f3b2d1ea35c4
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250502103449.3091642-6-steven_lee@aspeedtech.com
-[ clg: removed local 'Error* err' in aspeed_soc_ast27x0ssp_realize() ]
+Link: https://lore.kernel.org/qemu-devel/20250502103449.3091642-4-steven_lee@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/arm/aspeed_soc.h |  14 ++
- hw/arm/aspeed_ast27x0-ssp.c | 294 ++++++++++++++++++++++++++++++++++++
- hw/arm/meson.build          |   1 +
- 3 files changed, 309 insertions(+)
- create mode 100644 hw/arm/aspeed_ast27x0-ssp.c
+ include/hw/intc/aspeed_intc.h |   3 +
+ hw/intc/aspeed_intc.c         | 211 ++++++++++++++++++++++++++++++++++
+ 2 files changed, 214 insertions(+)
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 5fcfd2fe2e62..32be90bc3536 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -146,6 +146,18 @@ struct Aspeed10x0SoCState {
-     ARMv7MState armv7m;
- };
- 
-+struct Aspeed27x0SSPSoCState {
-+    AspeedSoCState parent;
-+    AspeedINTCState intc[2];
-+    UnimplementedDeviceState ipc[2];
-+    UnimplementedDeviceState scuio;
+diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
+index 3727ba24be72..746f159bf335 100644
+--- a/include/hw/intc/aspeed_intc.h
++++ b/include/hw/intc/aspeed_intc.h
+@@ -15,6 +15,9 @@
+ #define TYPE_ASPEED_INTC "aspeed.intc"
+ #define TYPE_ASPEED_2700_INTC TYPE_ASPEED_INTC "-ast2700"
+ #define TYPE_ASPEED_2700_INTCIO TYPE_ASPEED_INTC "io-ast2700"
++#define TYPE_ASPEED_2700SSP_INTC TYPE_ASPEED_INTC "-ast2700ssp"
++#define TYPE_ASPEED_2700SSP_INTCIO TYPE_ASPEED_INTC "io-ast2700ssp"
 +
-+    ARMv7MState armv7m;
-+};
-+
-+#define TYPE_ASPEED27X0SSP_SOC "aspeed27x0ssp-soc"
-+OBJECT_DECLARE_SIMPLE_TYPE(Aspeed27x0SSPSoCState, ASPEED27X0SSP_SOC)
-+
- #define TYPE_ASPEED10X0_SOC "aspeed10x0-soc"
- OBJECT_DECLARE_SIMPLE_TYPE(Aspeed10x0SoCState, ASPEED10X0_SOC)
+ OBJECT_DECLARE_TYPE(AspeedINTCState, AspeedINTCClass, ASPEED_INTC)
  
-@@ -259,6 +271,8 @@ enum {
-     ASPEED_DEV_SLIIO,
-     ASPEED_GIC_DIST,
-     ASPEED_GIC_REDIST,
-+    ASPEED_DEV_IPC0,
-+    ASPEED_DEV_IPC1,
- };
+ #define ASPEED_INTC_MAX_INPINS 10
+diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+index be7f516a3b1b..e889246951f7 100644
+--- a/hw/intc/aspeed_intc.c
++++ b/hw/intc/aspeed_intc.c
+@@ -62,6 +62,50 @@ REG32(GICINT196_STATUS,     0x44)
+ REG32(GICINT197_EN,         0x50)
+ REG32(GICINT197_STATUS,     0x54)
  
- qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
-diff --git a/hw/arm/aspeed_ast27x0-ssp.c b/hw/arm/aspeed_ast27x0-ssp.c
-new file mode 100644
-index 000000000000..80ec5996c1d1
---- /dev/null
-+++ b/hw/arm/aspeed_ast27x0-ssp.c
-@@ -0,0 +1,294 @@
 +/*
-+ * ASPEED Ast27x0 SSP SoC
-+ *
-+ * Copyright (C) 2025 ASPEED Technology Inc.
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
++ * SSP INTC Registers
 + */
++REG32(SSPINT128_EN,             0x2000)
++REG32(SSPINT128_STATUS,         0x2004)
++REG32(SSPINT129_EN,             0x2100)
++REG32(SSPINT129_STATUS,         0x2104)
++REG32(SSPINT130_EN,             0x2200)
++REG32(SSPINT130_STATUS,         0x2204)
++REG32(SSPINT131_EN,             0x2300)
++REG32(SSPINT131_STATUS,         0x2304)
++REG32(SSPINT132_EN,             0x2400)
++REG32(SSPINT132_STATUS,         0x2404)
++REG32(SSPINT133_EN,             0x2500)
++REG32(SSPINT133_STATUS,         0x2504)
++REG32(SSPINT134_EN,             0x2600)
++REG32(SSPINT134_STATUS,         0x2604)
++REG32(SSPINT135_EN,             0x2700)
++REG32(SSPINT135_STATUS,         0x2704)
++REG32(SSPINT136_EN,             0x2800)
++REG32(SSPINT136_STATUS,         0x2804)
++REG32(SSPINT137_EN,             0x2900)
++REG32(SSPINT137_STATUS,         0x2904)
++REG32(SSPINT138_EN,             0x2A00)
++REG32(SSPINT138_STATUS,         0x2A04)
++REG32(SSPINT160_169_EN,         0x2B00)
++REG32(SSPINT160_169_STATUS,     0x2B04)
 +
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/qdev-clock.h"
-+#include "hw/misc/unimp.h"
-+#include "hw/arm/aspeed_soc.h"
++/*
++ * SSP INTCIO Registers
++ */
++REG32(SSPINT160_EN,         0x180)
++REG32(SSPINT160_STATUS,     0x184)
++REG32(SSPINT161_EN,         0x190)
++REG32(SSPINT161_STATUS,     0x194)
++REG32(SSPINT162_EN,         0x1A0)
++REG32(SSPINT162_STATUS,     0x1A4)
++REG32(SSPINT163_EN,         0x1B0)
++REG32(SSPINT163_STATUS,     0x1B4)
++REG32(SSPINT164_EN,         0x1C0)
++REG32(SSPINT164_STATUS,     0x1C4)
++REG32(SSPINT165_EN,         0x1D0)
++REG32(SSPINT165_STATUS,     0x1D4)
 +
-+#define AST2700_SSP_RAM_SIZE (32 * MiB)
-+
-+static const hwaddr aspeed_soc_ast27x0ssp_memmap[] = {
-+    [ASPEED_DEV_SRAM]      =  0x00000000,
-+    [ASPEED_DEV_INTC]      =  0x72100000,
-+    [ASPEED_DEV_SCU]       =  0x72C02000,
-+    [ASPEED_DEV_SCUIO]     =  0x74C02000,
-+    [ASPEED_DEV_UART0]     =  0x74C33000,
-+    [ASPEED_DEV_UART1]     =  0x74C33100,
-+    [ASPEED_DEV_UART2]     =  0x74C33200,
-+    [ASPEED_DEV_UART3]     =  0x74C33300,
-+    [ASPEED_DEV_UART4]     =  0x72C1A000,
-+    [ASPEED_DEV_INTCIO]    =  0x74C18000,
-+    [ASPEED_DEV_IPC0]      =  0x72C1C000,
-+    [ASPEED_DEV_IPC1]      =  0x74C39000,
-+    [ASPEED_DEV_UART5]     =  0x74C33400,
-+    [ASPEED_DEV_UART6]     =  0x74C33500,
-+    [ASPEED_DEV_UART7]     =  0x74C33600,
-+    [ASPEED_DEV_UART8]     =  0x74C33700,
-+    [ASPEED_DEV_UART9]     =  0x74C33800,
-+    [ASPEED_DEV_UART10]    =  0x74C33900,
-+    [ASPEED_DEV_UART11]    =  0x74C33A00,
-+    [ASPEED_DEV_UART12]    =  0x74C33B00,
-+    [ASPEED_DEV_TIMER1]    =  0x72C10000,
-+};
-+
-+static const int aspeed_soc_ast27x0ssp_irqmap[] = {
-+    [ASPEED_DEV_SCU]       = 12,
-+    [ASPEED_DEV_UART0]     = 164,
-+    [ASPEED_DEV_UART1]     = 164,
-+    [ASPEED_DEV_UART2]     = 164,
-+    [ASPEED_DEV_UART3]     = 164,
-+    [ASPEED_DEV_UART4]     = 8,
-+    [ASPEED_DEV_UART5]     = 164,
-+    [ASPEED_DEV_UART6]     = 164,
-+    [ASPEED_DEV_UART7]     = 164,
-+    [ASPEED_DEV_UART8]     = 164,
-+    [ASPEED_DEV_UART9]     = 164,
-+    [ASPEED_DEV_UART10]    = 164,
-+    [ASPEED_DEV_UART11]    = 164,
-+    [ASPEED_DEV_UART12]    = 164,
-+    [ASPEED_DEV_TIMER1]    = 16,
-+};
-+
-+/* SSPINT 164 */
-+static const int ast2700_ssp132_ssp164_intcmap[] = {
-+    [ASPEED_DEV_UART0]     = 7,
-+    [ASPEED_DEV_UART1]     = 8,
-+    [ASPEED_DEV_UART2]     = 9,
-+    [ASPEED_DEV_UART3]     = 10,
-+    [ASPEED_DEV_UART5]     = 11,
-+    [ASPEED_DEV_UART6]     = 12,
-+    [ASPEED_DEV_UART7]     = 13,
-+    [ASPEED_DEV_UART8]     = 14,
-+    [ASPEED_DEV_UART9]     = 15,
-+    [ASPEED_DEV_UART10]    = 16,
-+    [ASPEED_DEV_UART11]    = 17,
-+    [ASPEED_DEV_UART12]    = 18,
-+};
-+
-+struct nvic_intc_irq_info {
-+    int irq;
-+    int intc_idx;
-+    int orgate_idx;
-+    const int *ptr;
-+};
-+
-+static struct nvic_intc_irq_info ast2700_ssp_intcmap[] = {
-+    {160, 1, 0, NULL},
-+    {161, 1, 1, NULL},
-+    {162, 1, 2, NULL},
-+    {163, 1, 3, NULL},
-+    {164, 1, 4, ast2700_ssp132_ssp164_intcmap},
-+    {165, 1, 5, NULL},
-+    {166, 1, 6, NULL},
-+    {167, 1, 7, NULL},
-+    {168, 1, 8, NULL},
-+    {169, 1, 9, NULL},
-+    {128, 0, 1, NULL},
-+    {129, 0, 2, NULL},
-+    {130, 0, 3, NULL},
-+    {131, 0, 4, NULL},
-+    {132, 0, 5, ast2700_ssp132_ssp164_intcmap},
-+    {133, 0, 6, NULL},
-+    {134, 0, 7, NULL},
-+    {135, 0, 8, NULL},
-+    {136, 0, 9, NULL},
-+};
-+
-+static qemu_irq aspeed_soc_ast27x0ssp_get_irq(AspeedSoCState *s, int dev)
+ static const AspeedINTCIRQ *aspeed_intc_get_irq(AspeedINTCClass *aic,
+                                                 uint32_t reg)
+ {
+@@ -450,6 +494,50 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+     }
+ }
+ 
++static void aspeed_ssp_intc_write(void *opaque, hwaddr offset, uint64_t data,
++                                        unsigned size)
 +{
-+    Aspeed27x0SSPSoCState *a = ASPEED27X0SSP_SOC(s);
-+    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
++    AspeedINTCState *s = ASPEED_INTC(opaque);
++    const char *name = object_get_typename(OBJECT(s));
++    uint32_t reg = offset >> 2;
 +
-+    int or_idx;
-+    int idx;
-+    int i;
++    trace_aspeed_intc_write(name, offset, size, data);
 +
-+    for (i = 0; i < ARRAY_SIZE(ast2700_ssp_intcmap); i++) {
-+        if (sc->irqmap[dev] == ast2700_ssp_intcmap[i].irq) {
-+            assert(ast2700_ssp_intcmap[i].ptr);
-+            or_idx = ast2700_ssp_intcmap[i].orgate_idx;
-+            idx = ast2700_ssp_intcmap[i].intc_idx;
-+            return qdev_get_gpio_in(DEVICE(&a->intc[idx].orgates[or_idx]),
-+                                    ast2700_ssp_intcmap[i].ptr[dev]);
-+        }
++    switch (reg) {
++    case R_SSPINT128_EN:
++    case R_SSPINT129_EN:
++    case R_SSPINT130_EN:
++    case R_SSPINT131_EN:
++    case R_SSPINT132_EN:
++    case R_SSPINT133_EN:
++    case R_SSPINT134_EN:
++    case R_SSPINT135_EN:
++    case R_SSPINT136_EN:
++    case R_SSPINT160_169_EN:
++        aspeed_intc_enable_handler(s, offset, data);
++        break;
++    case R_SSPINT128_STATUS:
++    case R_SSPINT129_STATUS:
++    case R_SSPINT130_STATUS:
++    case R_SSPINT131_STATUS:
++    case R_SSPINT132_STATUS:
++    case R_SSPINT133_STATUS:
++    case R_SSPINT134_STATUS:
++    case R_SSPINT135_STATUS:
++    case R_SSPINT136_STATUS:
++        aspeed_intc_status_handler(s, offset, data);
++        break;
++    case R_SSPINT160_169_STATUS:
++        aspeed_intc_status_handler_multi_outpins(s, offset, data);
++        break;
++    default:
++        s->regs[reg] = data;
++        break;
 +    }
 +
-+    return qdev_get_gpio_in(DEVICE(&a->armv7m), sc->irqmap[dev]);
++    return;
 +}
 +
-+static void aspeed_soc_ast27x0ssp_init(Object *obj)
+ static uint64_t aspeed_intcio_read(void *opaque, hwaddr offset,
+                                    unsigned int size)
+ {
+@@ -496,6 +584,39 @@ static void aspeed_intcio_write(void *opaque, hwaddr offset, uint64_t data,
+     }
+ }
+ 
++static void aspeed_ssp_intcio_write(void *opaque, hwaddr offset, uint64_t data,
++                                unsigned size)
 +{
-+    Aspeed27x0SSPSoCState *a = ASPEED27X0SSP_SOC(obj);
-+    AspeedSoCState *s = ASPEED_SOC(obj);
-+    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-+    int i;
++    AspeedINTCState *s = ASPEED_INTC(opaque);
++    const char *name = object_get_typename(OBJECT(s));
++    uint32_t reg = offset >> 2;
 +
-+    object_initialize_child(obj, "armv7m", &a->armv7m, TYPE_ARMV7M);
-+    object_initialize_child(obj, "scu", &s->scu, TYPE_ASPEED_2700_SCU);
-+    s->sysclk = qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
-+    qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev", sc->silicon_rev);
++    trace_aspeed_intc_write(name, offset, size, data);
 +
-+    for (i = 0; i < sc->uarts_num; i++) {
-+        object_initialize_child(obj, "uart[*]", &s->uart[i], TYPE_SERIAL_MM);
++    switch (reg) {
++    case R_SSPINT160_EN:
++    case R_SSPINT161_EN:
++    case R_SSPINT162_EN:
++    case R_SSPINT163_EN:
++    case R_SSPINT164_EN:
++    case R_SSPINT165_EN:
++        aspeed_intc_enable_handler(s, offset, data);
++        break;
++    case R_SSPINT160_STATUS:
++    case R_SSPINT161_STATUS:
++    case R_SSPINT162_STATUS:
++    case R_SSPINT163_STATUS:
++    case R_SSPINT164_STATUS:
++    case R_SSPINT165_STATUS:
++        aspeed_intc_status_handler(s, offset, data);
++        break;
++    default:
++        s->regs[reg] = data;
++        break;
 +    }
 +
-+    object_initialize_child(obj, "intc0", &a->intc[0],
-+                            TYPE_ASPEED_2700SSP_INTC);
-+    object_initialize_child(obj, "intc1", &a->intc[1],
-+                            TYPE_ASPEED_2700SSP_INTCIO);
-+
-+    object_initialize_child(obj, "timerctrl", &s->timerctrl,
-+                            TYPE_UNIMPLEMENTED_DEVICE);
-+    object_initialize_child(obj, "ipc0", &a->ipc[0],
-+                            TYPE_UNIMPLEMENTED_DEVICE);
-+    object_initialize_child(obj, "ipc1", &a->ipc[1],
-+                            TYPE_UNIMPLEMENTED_DEVICE);
-+    object_initialize_child(obj, "scuio", &a->scuio,
-+                            TYPE_UNIMPLEMENTED_DEVICE);
++    return;
 +}
+ 
+ static const MemoryRegionOps aspeed_intc_ops = {
+     .read = aspeed_intc_read,
+@@ -517,6 +638,26 @@ static const MemoryRegionOps aspeed_intcio_ops = {
+     }
+ };
+ 
++static const MemoryRegionOps aspeed_ssp_intc_ops = {
++    .read = aspeed_intc_read,
++    .write = aspeed_ssp_intc_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    }
++};
 +
-+static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
++static const MemoryRegionOps aspeed_ssp_intcio_ops = {
++    .read = aspeed_intcio_read,
++    .write = aspeed_ssp_intcio_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    }
++};
++
+ static void aspeed_intc_instance_init(Object *obj)
+ {
+     AspeedINTCState *s = ASPEED_INTC(obj);
+@@ -674,11 +815,81 @@ static const TypeInfo aspeed_2700_intcio_info = {
+     .class_init = aspeed_2700_intcio_class_init,
+ };
+ 
++static AspeedINTCIRQ aspeed_2700ssp_intc_irqs[ASPEED_INTC_MAX_INPINS] = {
++    {0, 0, 10, R_SSPINT160_169_EN, R_SSPINT160_169_STATUS},
++    {1, 10, 1, R_SSPINT128_EN, R_SSPINT128_STATUS},
++    {2, 11, 1, R_SSPINT129_EN, R_SSPINT129_STATUS},
++    {3, 12, 1, R_SSPINT130_EN, R_SSPINT130_STATUS},
++    {4, 13, 1, R_SSPINT131_EN, R_SSPINT131_STATUS},
++    {5, 14, 1, R_SSPINT132_EN, R_SSPINT132_STATUS},
++    {6, 15, 1, R_SSPINT133_EN, R_SSPINT133_STATUS},
++    {7, 16, 1, R_SSPINT134_EN, R_SSPINT134_STATUS},
++    {8, 17, 1, R_SSPINT135_EN, R_SSPINT135_STATUS},
++    {9, 18, 1, R_SSPINT136_EN, R_SSPINT136_STATUS},
++};
++
++static void aspeed_2700ssp_intc_class_init(ObjectClass *klass, const void *data)
 +{
-+    Aspeed27x0SSPSoCState *a = ASPEED27X0SSP_SOC(dev_soc);
-+    AspeedSoCState *s = ASPEED_SOC(dev_soc);
-+    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-+    DeviceState *armv7m;
-+    g_autofree char *sram_name = NULL;
-+    int i;
-+
-+    if (!clock_has_source(s->sysclk)) {
-+        error_setg(errp, "sysclk clock must be wired up by the board code");
-+        return;
-+    }
-+
-+    /* AST27X0 SSP Core */
-+    armv7m = DEVICE(&a->armv7m);
-+    qdev_prop_set_uint32(armv7m, "num-irq", 256);
-+    qdev_prop_set_string(armv7m, "cpu-type", aspeed_soc_cpu_type(sc));
-+    qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
-+    object_property_set_link(OBJECT(&a->armv7m), "memory",
-+                             OBJECT(s->memory), &error_abort);
-+    sysbus_realize(SYS_BUS_DEVICE(&a->armv7m), &error_abort);
-+
-+    sram_name = g_strdup_printf("aspeed.dram.%d",
-+                                CPU(a->armv7m.cpu)->cpu_index);
-+
-+    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size,
-+                                errp)) {
-+        return;
-+    }
-+    memory_region_add_subregion(s->memory,
-+                                sc->memmap[ASPEED_DEV_SRAM],
-+                                &s->sram);
-+
-+    /* SCU */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
-+        return;
-+    }
-+    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->scu), 0, sc->memmap[ASPEED_DEV_SCU]);
-+
-+    /* INTC */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&a->intc[0]), errp)) {
-+        return;
-+    }
-+
-+    aspeed_mmio_map(s, SYS_BUS_DEVICE(&a->intc[0]), 0,
-+                    sc->memmap[ASPEED_DEV_INTC]);
-+
-+    /* INTCIO */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&a->intc[1]), errp)) {
-+        return;
-+    }
-+
-+    aspeed_mmio_map(s, SYS_BUS_DEVICE(&a->intc[1]), 0,
-+                    sc->memmap[ASPEED_DEV_INTCIO]);
-+
-+    /* irq source orgates -> INTC0 */
-+    for (i = 0; i < ASPEED_INTC_GET_CLASS(&a->intc[0])->num_inpins; i++) {
-+        qdev_connect_gpio_out(DEVICE(&a->intc[0].orgates[i]), 0,
-+                              qdev_get_gpio_in(DEVICE(&a->intc[0]), i));
-+    }
-+    for (i = 0; i < ASPEED_INTC_GET_CLASS(&a->intc[0])->num_outpins; i++) {
-+        assert(i < ARRAY_SIZE(ast2700_ssp_intcmap));
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&a->intc[0]), i,
-+                           qdev_get_gpio_in(DEVICE(&a->armv7m),
-+                                            ast2700_ssp_intcmap[i].irq));
-+    }
-+    /* irq source orgates -> INTCIO */
-+    for (i = 0; i < ASPEED_INTC_GET_CLASS(&a->intc[1])->num_inpins; i++) {
-+        qdev_connect_gpio_out(DEVICE(&a->intc[1].orgates[i]), 0,
-+                              qdev_get_gpio_in(DEVICE(&a->intc[1]), i));
-+    }
-+    /* INTCIO -> INTC */
-+    for (i = 0; i < ASPEED_INTC_GET_CLASS(&a->intc[1])->num_outpins; i++) {
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&a->intc[1]), i,
-+                        qdev_get_gpio_in(DEVICE(&a->intc[0].orgates[0]), i));
-+    }
-+    /* UART */
-+    if (!aspeed_soc_uart_realize(s, errp)) {
-+        return;
-+    }
-+
-+    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->timerctrl),
-+                                  "aspeed.timerctrl",
-+                                  sc->memmap[ASPEED_DEV_TIMER1], 0x200);
-+    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&a->ipc[0]),
-+                                  "aspeed.ipc0",
-+                                  sc->memmap[ASPEED_DEV_IPC0], 0x1000);
-+    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&a->ipc[1]),
-+                                  "aspeed.ipc1",
-+                                  sc->memmap[ASPEED_DEV_IPC1], 0x1000);
-+    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&a->scuio),
-+                                  "aspeed.scuio",
-+                                  sc->memmap[ASPEED_DEV_SCUIO], 0x1000);
-+}
-+
-+static void aspeed_soc_ast27x0ssp_class_init(ObjectClass *klass, const void *data)
-+{
-+    static const char * const valid_cpu_types[] = {
-+        ARM_CPU_TYPE_NAME("cortex-m4"), /* TODO: cortex-m4f */
-+        NULL
-+    };
 +    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedSoCClass *sc = ASPEED_SOC_CLASS(dc);
++    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
 +
-+    /* Reason: The Aspeed SoC can only be instantiated from a board */
-+    dc->user_creatable = false;
-+    dc->realize = aspeed_soc_ast27x0ssp_realize;
-+
-+    sc->valid_cpu_types = valid_cpu_types;
-+    sc->silicon_rev = AST2700_A1_SILICON_REV;
-+    sc->sram_size = AST2700_SSP_RAM_SIZE;
-+    sc->spis_num = 0;
-+    sc->ehcis_num = 0;
-+    sc->wdts_num = 0;
-+    sc->macs_num = 0;
-+    sc->uarts_num = 13;
-+    sc->uarts_base = ASPEED_DEV_UART0;
-+    sc->irqmap = aspeed_soc_ast27x0ssp_irqmap;
-+    sc->memmap = aspeed_soc_ast27x0ssp_memmap;
-+    sc->num_cpus = 1;
-+    sc->get_irq = aspeed_soc_ast27x0ssp_get_irq;
++    dc->desc = "ASPEED 2700 SSP INTC Controller";
++    aic->num_lines = 32;
++    aic->num_inpins = 10;
++    aic->num_outpins = 19;
++    aic->mem_size = 0x4000;
++    aic->nr_regs = 0x2B08 >> 2;
++    aic->reg_offset = 0x0;
++    aic->reg_ops = &aspeed_ssp_intc_ops;
++    aic->irq_table = aspeed_2700ssp_intc_irqs;
++    aic->irq_table_count = ARRAY_SIZE(aspeed_2700ssp_intc_irqs);
 +}
 +
-+static const TypeInfo aspeed_soc_ast27x0ssp_types[] = {
-+    {
-+        .name           = TYPE_ASPEED27X0SSP_SOC,
-+        .parent         = TYPE_ASPEED_SOC,
-+        .instance_size  = sizeof(Aspeed27x0SSPSoCState),
-+        .instance_init  = aspeed_soc_ast27x0ssp_init,
-+        .class_init     = aspeed_soc_ast27x0ssp_class_init,
-+    },
++static const TypeInfo aspeed_2700ssp_intc_info = {
++    .name = TYPE_ASPEED_2700SSP_INTC,
++    .parent = TYPE_ASPEED_INTC,
++    .class_init = aspeed_2700ssp_intc_class_init,
 +};
 +
-+DEFINE_TYPES(aspeed_soc_ast27x0ssp_types)
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 09b1cfe5b572..39b74a89ed8e 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -44,6 +44,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_soc_common.c',
-   'aspeed_ast2400.c',
-   'aspeed_ast2600.c',
-+  'aspeed_ast27x0-ssp.c',
-   'aspeed_ast10x0.c',
-   'aspeed_eeprom.c',
-   'fby35.c'))
++static AspeedINTCIRQ aspeed_2700ssp_intcio_irqs[ASPEED_INTC_MAX_INPINS] = {
++    {0, 0, 1, R_SSPINT160_EN, R_SSPINT160_STATUS},
++    {1, 1, 1, R_SSPINT161_EN, R_SSPINT161_STATUS},
++    {2, 2, 1, R_SSPINT162_EN, R_SSPINT162_STATUS},
++    {3, 3, 1, R_SSPINT163_EN, R_SSPINT163_STATUS},
++    {4, 4, 1, R_SSPINT164_EN, R_SSPINT164_STATUS},
++    {5, 5, 1, R_SSPINT165_EN, R_SSPINT165_STATUS},
++};
++
++static void aspeed_2700ssp_intcio_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
++
++    dc->desc = "ASPEED 2700 SSP INTC IO Controller";
++    aic->num_lines = 32;
++    aic->num_inpins = 6;
++    aic->num_outpins = 6;
++    aic->mem_size = 0x400;
++    aic->nr_regs = 0x1d8 >> 2;
++    aic->reg_offset = 0;
++    aic->reg_ops = &aspeed_ssp_intcio_ops;
++    aic->irq_table = aspeed_2700ssp_intcio_irqs;
++    aic->irq_table_count = ARRAY_SIZE(aspeed_2700ssp_intcio_irqs);
++}
++
++static const TypeInfo aspeed_2700ssp_intcio_info = {
++    .name = TYPE_ASPEED_2700SSP_INTCIO,
++    .parent = TYPE_ASPEED_INTC,
++    .class_init = aspeed_2700ssp_intcio_class_init,
++};
++
+ static void aspeed_intc_register_types(void)
+ {
+     type_register_static(&aspeed_intc_info);
+     type_register_static(&aspeed_2700_intc_info);
+     type_register_static(&aspeed_2700_intcio_info);
++    type_register_static(&aspeed_2700ssp_intc_info);
++    type_register_static(&aspeed_2700ssp_intcio_info);
+ }
+ 
+ type_init(aspeed_intc_register_types);
 -- 
 2.49.0
 

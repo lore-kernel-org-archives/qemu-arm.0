@@ -1,173 +1,168 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2318473njj;
-        Mon, 5 May 2025 02:43:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVVkP6o8f3wXaWjAEVHxrUCEINPkpJhBnDegtxl+fp2qdDljVURTEK67ZR/+KBHvkka8906aKOq2UeuUg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGmmINNESZ/7n4GDmD3IhAir10ZD32McuEgafaBDvOjE/NG4x0Ckq4q3GbTXMMexo4Cg1jh
-X-Received: by 2002:a05:6214:21a1:b0:6e8:fa33:2969 with SMTP id 6a1803df08f44-6f5237552b3mr149568686d6.10.1746438220730;
-        Mon, 05 May 2025 02:43:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746438220; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2338340njj;
+        Mon, 5 May 2025 03:30:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXgUgsdMWjkUZbYNMFhFxfZhs0owOMjYi6CBqokj/eznwyqxjnxGAhkCxjNM80tkeE/jMLnFwmqoX0rZg==@linaro.org
+X-Google-Smtp-Source: AGHT+IE5Xllng+NZz8wfo1F2Qof3wYV/2MvIqMR1zjD4imtxkdVL+WOjHGbd4AgUuqiNM6N5pDpa
+X-Received: by 2002:a05:620a:60f3:b0:7ca:eb5b:6de9 with SMTP id af79cd13be357-7caeb5b6df3mr249739385a.42.1746441011639;
+        Mon, 05 May 2025 03:30:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746441011; cv=none;
         d=google.com; s=arc-20240605;
-        b=AaAN2v6PmQpfoXwehny3s67CcDStuA3f3EQHZah8gV0FrKkoA8hGjqvqSbcThTLDMW
-         AxYt71UF7W9fphU+CnJGhNgTfs3AlBg30bggDA5I+QmE7WALI1tk3TNkdhBOU7vd0n7M
-         NhS3MjmmkZKZle7XBrh4td0unv+SevwYQJ0uXqlHIa203l511VHuupIH5RypGY5RQ+1v
-         OPrIRB57XLclzJ8O3o0Y5WmYEDVtb+oCahNNLmhaHBBEPl/ymLEV+Ls6Vs75hFHN/2NC
-         on2QbMpqvEqWHHkP8AIEeo3mLdBXpNnDCZKB+SyMkJrzh01OTEjm+8jUcYox38V7LqCQ
-         EB5g==
+        b=VoNBm8DE73zyxxHwdzmD6qsKEtayMkKddDpugUIlD1P8ySPEOna74ltiArrK4k+HhD
+         kXfLbRh0muuGwVK4LL0pWkIePJGocOs/sYWQwmFF9ZJABgc+2i1m0WmeuKDKMivjk5bQ
+         CQ1LuMy/vC6G8G9jMtixGcuYb5h8EZ49mBo8N6aQHsKbvgmKfUfIaFNcxamOHpiSz6bu
+         0fZrPT8wChCkazxnwTzLYOIw/ads9krSwQsPdGKihc+HKQFxPFCKo/BHg0zNsrwVEf+M
+         +GFUuZkiQd9QDYCmtYUdtv+upyTMtCT9nbhsq36dobdJ9kHFJfFdfjDhrBqtq/Av5+Fl
+         eQSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=sP81zsT/RNSG8ANhqUBnaYmRGZAXZNzC428xVjzVw84=;
-        fh=AGXQaQ6zXqcJ0wDuEolRrfxGhnBKi5dc8WUas1QN40I=;
-        b=JeQtJUAOCS8EAaCpj9xBlOR1Y0tVJhYlRAug63sEe6LQ9czNU83pXeYGI1pSU3s2KL
-         VnJam3vIaBs7dgZBgmaQYl4y0Q9+d7I+0rftHc+NxnBZTLSHB/b9cXckqV6dp2Qj7AHi
-         kMm+e+ioMBaob2OmjNSWYXU4iysDQ8VGh5RhqZ7qqcpmNYVlNGYasKMkH2SfN8NhjVFT
-         q3tkiGurPa1xcvksPCm+uPAoME1e9QlpGNhTw76UNH7OAOptVU8J+gPZ8f6vJItBds/b
-         E7sJz9ufQtXw2t+hnyTykTSrUfqHGHZn0fzQjhEn5n1/p5+2CxqZND4pw8z5KMIYvpPE
-         5vAw==;
+         :in-reply-to:autocrypt:content-language:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=98+niTqY62qg8EJapl96jlCaj8jKHPwFxwJjWhai2tI=;
+        fh=opkdwLw58f7TCETRZ1Q6QxNxbwsUVEqy16TktWLoWl8=;
+        b=bai76jLcdhLoc/08I3Os8pBef8DnVRQDnAgt6taRe+v+ZzInuGwTEwlI12BTSSM+/H
+         IkoN8MbdCHC9N1cIQU8HJz8NGLljHbz64oRQwUVzuZ4ZEeAw6AeVn5QXT8GW1K5ara/q
+         79RpeaBBmGehp+s5NOfYR+/nNOE5lj9ugBqOwuhoDEdOIayp8+jepubwH2nsYqSLqxrg
+         jqpDniYbd4UJJiwN6ez4TBsTQH5UEryqX2x2KMjAr7YecP7KxvszKAkxdOZ4oAQj0Tzq
+         g1vBDPmLI3z6uA1mTzpI4uzE0xspUQmg+WQTdVzDtvH5KsWGgDGfcIMV0S19ecBtdZMd
+         jLlQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hdzrntVr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="KPb8eeh/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f50f3aced1si84837816d6.44.2025.05.05.02.43.40
+        by mx.google.com with ESMTPS id af79cd13be357-7cad2457ba4si825757685a.629.2025.05.05.03.30.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 May 2025 02:43:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 05 May 2025 03:30:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hdzrntVr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="KPb8eeh/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uBsMF-00067m-9t; Mon, 05 May 2025 05:43:31 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uBt4t-00019r-6H; Mon, 05 May 2025 06:29:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBsMD-000673-KM
- for qemu-arm@nongnu.org; Mon, 05 May 2025 05:43:29 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uBt4s-00019Z-1V
+ for qemu-devel@nongnu.org; Mon, 05 May 2025 06:29:38 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uBsMB-0003iP-Qj
- for qemu-arm@nongnu.org; Mon, 05 May 2025 05:43:29 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uBt4p-0001n9-8g
+ for qemu-devel@nongnu.org; Mon, 05 May 2025 06:29:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1746438207;
+ s=mimecast20190719; t=1746440973;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=sP81zsT/RNSG8ANhqUBnaYmRGZAXZNzC428xVjzVw84=;
- b=hdzrntVrD6hdCa055MHPiLWVllTXkeZnSrQSGNvgkcMn3YzLmSIY/Lhqvb6GvjRjl3TGjY
- cydhVd8InbaVdc8Jx1eYx7GoSOHVfdTFuV9JNPAVoSWMmGeUeF0GiVjOZTWjdq8naUIo0s
- 2xV1RfxsjrgLRsIq6grjDnJFjkZ7Z/k=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=98+niTqY62qg8EJapl96jlCaj8jKHPwFxwJjWhai2tI=;
+ b=KPb8eeh/rlygUKCJcNnijwA/Wu2OYCSOIE9tIEavXl1F58trKMVsWAP3Q5Ec3HstlmyzLT
+ sWYl3j9IsFDc4aG4XoD0Ur5jN5vkvsp4HTRqKFt95HSLD+A22DyHIEhlLqRmYLVRiS5Y3E
+ M9slIre/IDznuVPgsAJ+/MkBoS2JIko=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-369-R_RO9NiaMvOWl_CDN9h88Q-1; Mon, 05 May 2025 05:43:24 -0400
-X-MC-Unique: R_RO9NiaMvOWl_CDN9h88Q-1
-X-Mimecast-MFC-AGG-ID: R_RO9NiaMvOWl_CDN9h88Q_1746438203
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-43cfda30a3cso20162085e9.3
- for <qemu-arm@nongnu.org>; Mon, 05 May 2025 02:43:23 -0700 (PDT)
+ us-mta-675-_jIk5rtJMBimx4g_uXRq6Q-1; Mon, 05 May 2025 06:29:32 -0400
+X-MC-Unique: _jIk5rtJMBimx4g_uXRq6Q-1
+X-Mimecast-MFC-AGG-ID: _jIk5rtJMBimx4g_uXRq6Q_1746440971
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-39c1b1c0969so2505048f8f.1
+ for <qemu-devel@nongnu.org>; Mon, 05 May 2025 03:29:32 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746438203; x=1747043003;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:to:subject:user-agent:mime-version:date
+ d=1e100.net; s=20230601; t=1746440971; x=1747045771;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=sP81zsT/RNSG8ANhqUBnaYmRGZAXZNzC428xVjzVw84=;
- b=nxqd80qde4KoUNLGx8TPMq76chzcjzS96MZO1gOYTaJg3VNS+vJIbqbP2EZTp1/LAx
- qSdmIH+psh2TXGQPmi6WHmBaZ//6LkZxNJfh6mbUs2bpiNepHBhfYCypcefrB0EyIVp+
- oBp8TKalyxY6gUcYfYjM4BKgZ3ZuDKVYzYPlzeBkYnfP6nXlQ00U30Dd2Gj8bRUgcjr3
- zd9iwJR10QMv8GUS3DqLWyNe23QluNLyDMKGXXullUfFPdbPuI88qvzK9TPtM8i5utjP
- 1CWeEhOyH4rJkZ2JDjOIsH5Lax6xcLHYezBmUe8g8k76t9bBCFJbmhYPfPB541GJtPbU
- OhOA==
+ bh=98+niTqY62qg8EJapl96jlCaj8jKHPwFxwJjWhai2tI=;
+ b=IHxKuC85IG3ILWuFvrdYH0/09l8dvPaoBHIi4ILfAQCA5b1TJ5k59DNDPCLFL26H8q
+ SHdKzaCksXH1bPdduZTSGzwlYZpzuGFIPHqlwKOBhWuRvmenSTFtOE/0hqggIYZLyyku
+ HlX8w9puKjP7M4XAOGRFxFK4eoaZfBcZH28cXtJrdvux1odK3tQ0X+aN/LZdvRCvyj3k
+ 7K9PQuJ6BhB2sNyYKOiU7lEIzivlU0GCvDTJ0hI1Qdnn7T8wtg2xrgomDoWtXv8AL34t
+ HTeHcV8sg45Qbho3tmUluJdta6p09/AMiOAugvLYMp9LfSQUIkqROaSvtwk2uwKG7rvY
+ 49UQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWTAqSHERZVfgVsTSqiVTHsj1La/PInkxvUhINhovpc0hYQVZExKCUL4SHIt9rfnj7ASYSHWgGnnA==@nongnu.org
-X-Gm-Message-State: AOJu0YxwXJsJsXpqPZU+b5/pN36zPECIw9dbuQTy3xxEnlwzgAG2aTb5
- nplYu7eIlH4qJfo5vv20Lp19FbeGmSkhXSbsjX+xyKj7H+6XAPtn22uuA9Fk67SLOEFHc5KHI+u
- kdD08+Ei8KoUYOa2uIkGKcSIgNu/x1blD1DAehvZV4qrnMeNQjg==
-X-Gm-Gg: ASbGncuzh5l+t1CLN5P3sCe1pv1/6GCi1xp/H0FXy/GK/TXs25WllP4i5bIEFpad1t9
- utVSgdlJVJ1IeTtkayVnXlG5Zb3D8atOsEZCeYeaLx/8UeoYIxRvUmBm8jbnDr780oo7RC66u/x
- SU4Rn8TmrMir35DuYV65n538rHhMpgzNhNDCKdpvA2kSLVk7/ID22AQuasf+WB7I/NHOI79RZS4
- 940uYtorQtSFzGfecBaOie2ckiR2L+hm38nFRx0c3wdqhOBF2LMwTjOwIsiHy/xGQV8b2LOC4v9
- QOZZd5LHsVQRLM6/hPMeVlhhAO9sAxb8iGo6rxp6fjn/JcfFQg==
-X-Received: by 2002:a05:600c:1e1f:b0:43d:46de:b0eb with SMTP id
- 5b1f17b1804b1-441c48bca2dmr64706355e9.12.1746438202945; 
- Mon, 05 May 2025 02:43:22 -0700 (PDT)
-X-Received: by 2002:a05:600c:1e1f:b0:43d:46de:b0eb with SMTP id
- 5b1f17b1804b1-441c48bca2dmr64706105e9.12.1746438202560; 
- Mon, 05 May 2025 02:43:22 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ AJvYcCVfEPKkwKR3bKTwhe2cjgOzSxF8vNQf7Yhbh3P8SmtFzChkK0o3htRKP8mqAAL1nZz5CvGq3b3pZ9o9@nongnu.org
+X-Gm-Message-State: AOJu0Yws0KAQ3nApPVWRZAaffxyHpYdFDwbb1+SaxZPU04KmX2Eb4zqu
+ z+R8uUSwc6hlboojrbDjv2AFAoPVWw4/5Hl/u598d5dkp+ZutFo8DnqIg87IB/G2pY4iIdiYqqm
+ mU1Ouqf31NslYn55vwMPSWmp8ootiam+cRKuvXPfc649lnkVNqRVrTFWFU2hr
+X-Gm-Gg: ASbGnctB4LC342Ct6iV2m867xZHbjh9tcFiyQM3999l3wucXkC8OHfGY2poTx9AR6Hj
+ GLKei6Leb7eCt7G8eg1JOSHIkXI3dNQbZouHZmX8aWcQmmrM37yaY57irIC4qFnFYkg9I+oak5J
+ iR9a+lM4+/XPnAiiFL6VVVNnO7/zvFxiHV67pqvHbct+UqB0tNwuSuZug18wXg4pVKlN7cFkf4B
+ EQSAnvpQH41M2jo7e/TmZJTbFEd62Kl9AzZp8rZyuCiHyrZDq6wdageGZkKZoHFNP/EkZjuqkmu
+ cIKxnminJ0bphb7+SybUOyH+URF9SWYXHuyv07YU
+X-Received: by 2002:a05:6000:1a89:b0:391:3f4f:a172 with SMTP id
+ ffacd0b85a97d-3a09fddec9emr4403567f8f.49.1746440971157; 
+ Mon, 05 May 2025 03:29:31 -0700 (PDT)
+X-Received: by 2002:a05:6000:1a89:b0:391:3f4f:a172 with SMTP id
+ ffacd0b85a97d-3a09fddec9emr4403548f8f.49.1746440970723; 
+ Mon, 05 May 2025 03:29:30 -0700 (PDT)
+Received: from [192.168.0.7] (ip-109-42-49-87.web.vodafone.de. [109.42.49.87])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-441b89edfc2sm125931625e9.20.2025.05.05.02.43.21
+ ffacd0b85a97d-3a099b16ec6sm9748103f8f.83.2025.05.05.03.29.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 May 2025 02:43:22 -0700 (PDT)
-Message-ID: <ead3ea8e-4ce3-405f-9702-21e4f1331faf@redhat.com>
-Date: Mon, 5 May 2025 11:43:21 +0200
+ Mon, 05 May 2025 03:29:30 -0700 (PDT)
+Message-ID: <08323a18-a480-430a-8ba3-90617c319aa7@redhat.com>
+Date: Mon, 5 May 2025 12:29:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL 00/23] aspeed queue
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20250505090635.778785-1-clg@redhat.com>
- <3031f1d7-b842-4fee-adde-89a9e824ee57@linaro.org>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <3031f1d7-b842-4fee-adde-89a9e824ee57@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: TXJh-7UD_hgAF3oupJlnd5rd2AnVzGJe8SKJYIV3wkA_1746438203
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
+Subject: Re: [PATCH] hw/arm: Replace TABs for spaces
+To: Santiago Monserrat Campanello <santimonserr@gmail.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org
+References: <20250503201322.141948-1-santimonserr@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Content-Language: en-US
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20250503201322.141948-1-santimonserr@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -44
 X-Spam_score: -4.5
@@ -176,91 +171,404 @@ X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.411,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: G1ze9p7FYTUv
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: pXQsUxTMM/4/
 
-On 5/5/25 11:35, Philippe Mathieu-Daudé wrote:
-> Hi Cédric,
+On 03/05/2025 22.13, Santiago Monserrat Campanello wrote:
+> replaced for arm code
 > 
-> On 5/5/25 11:06, Cédric Le Goater wrote:
->> The following changes since commit e578dcc7e1590b20a84036afe5bdfa8d23a6048e:
->>
->>    pc-bios: Add AST27x0 vBootrom (2025-05-02 09:47:14 +0200)
->>
->> are available in the Git repository at:
->>
->>    https://github.com/legoater/qemu/ tags/pull-aspeed-20250505
->>
->> for you to fetch changes up to f32ef57f7de98ec36da52b0a13bd5d18ac4bd583:
->>
->>    docs: Add support for ast2700fc machine (2025-05-05 09:42:16 +0200)
->>
->> ----------------------------------------------------------------
->> aspeed queue:
->>
->> * Fixed AST2700 SPI model issues
->> * Updated SDK images
->> * Added FW support to the AST2700 EVB machines
->> * Introduced an AST27x0 multi-SoC machine
->>
->> ----------------------------------------------------------------
->> Jamin Lin (12):
->>        tests/functional/aspeed: Update test ASPEED SDK v09.06 for AST2500
->>        tests/functional/aspeed: Update test ASPEED SDK v09.06 for AST2600
->>        tests/functional/aspeed: Update test ASPEED SDK v03.00 for AST1030
->>        hw/arm/aspeed_ast27x0: Rename variable sram_name to name in ast2700 realize
->>        tests/functional/aspeed: Move I2C test into shared helper for AST2700 reuse
->>        tests/functional/aspeed: Update test ASPEED SDK v09.06
->>        tests/functional/aspeed: extract boot and login sequence into helper function
->>        hw/arm/aspeed_ast27x0 Introduce vbootrom memory region
->>        hw/arm/aspeed: Add support for loading vbootrom image via "-bios"
->>        tests/functional/aspeed: Add to test vbootrom for AST2700
->>        docs/system/arm/aspeed: move AST2700 content to new section
->>        docs/system/arm/aspeed: Support vbootrom for AST2700
->>
->> Joe Komlodi (1):
->>        hw/ssi/aspeed_smc: Allow 64-bit wide flash accesses
->>
->> Steven Lee (9):
->>        aspeed: ast27x0: Map unimplemented devices in SoC memory
->>        aspeed: ast27x0: Correct hex notation for device addresses
->>        hw/intc/aspeed: Add support for AST2700 SSP INTC
->>        hw/intc/aspeed: Add support for AST2700 TSP INTC
->>        hw/arm/aspeed_ast27x0-ssp: Introduce AST27x0 A1 SSP SoC
->>        hw/arm/aspeed_ast27x0-tsp: Introduce AST27x0 A1 TSP SoC
->>        hw/arm: Introduce ASPEED AST2700 A1 full core machine
->>        tests/function/aspeed: Add functional test for ast2700fc
->>        docs: Add support for ast2700fc machine
->>
->> Troy Lee (1):
->>        hw/arm: ast27x0: Wire up EHCI controllers
+> Signed-off-by: Santiago Monserrat Campanello <santimonserr@gmail.com>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/373
+
+  Hi!
+
+Thanks for tackling this! Some comments below...
+
 > 
-> If you ever have to send a v2, please remove the 'Change-Id:' tags.
-> 
+> diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+> index 91d7e3f04b..58b2a27533 100644
+> --- a/hw/arm/omap1.c
+> +++ b/hw/arm/omap1.c
+...
+> @@ -1592,22 +1592,22 @@ static inline void omap_clkm_idlect2_update(struct omap_mpu_state_s *s,
+>   {
+>       omap_clk clk;
+>   
+> -#define SET_ONOFF(clock, bit)				\
+> -    if (diff & (1 << bit)) {				\
+> -        clk = omap_findclk(s, clock);			\
+> -        omap_clk_onoff(clk, (value >> bit) & 1);	\
+> +#define SET_ONOFF(clock, bit)               \
+> +    if (diff & (1 << bit)) {                \
+> +        clk = omap_findclk(s, clock);           \
+> +        omap_clk_onoff(clk, (value >> bit) & 1);    \
 
-This is a Gerrit trailer AFAICT.
+Could you pease align the backslashes here?
 
-Why ? is it breaking some tool ? Can't we keep such reference ? If so,
-I'd rather fix checkpatch.pl.
+...
+> @@ -2244,39 +2244,39 @@ static void omap_uwire_write(void *opaque, hwaddr addr,
+>       }
+>   
+>       switch (offset) {
+> -    case 0x00:	/* TDR */
+> -        s->txbuf = value;				/* TD */
+> -        if ((s->setup[4] & (1 << 2)) &&			/* AUTO_TX_EN */
+> -                        ((s->setup[4] & (1 << 3)) ||	/* CS_TOGGLE_TX_EN */
+> -                         (s->control & (1 << 12)))) {	/* CS_CMD */
+> -            s->control |= 1 << 14;			/* CSRB */
+> +    case 0x00:  /* TDR */
+> +        s->txbuf = value;               /* TD */
+> +        if ((s->setup[4] & (1 << 2)) &&         /* AUTO_TX_EN */
+> +                        ((s->setup[4] & (1 << 3)) ||    /* CS_TOGGLE_TX_EN */
+> +                         (s->control & (1 << 12)))) {   /* CS_CMD */
+> +            s->control |= 1 << 14;          /* CSRB */
 
-Thanks,
+Please also align the comments here.
 
-C.
+> @@ -2962,9 +2962,9 @@ static void omap_mcbsp_intr_update(struct omap_mcbsp_s *s)
+>   
+>   static void omap_mcbsp_rx_newdata(struct omap_mcbsp_s *s)
+>   {
+> -    if ((s->spcr[0] >> 1) & 1)				/* RRDY */
+> -        s->spcr[0] |= 1 << 2;				/* RFULL */
+> -    s->spcr[0] |= 1 << 1;				/* RRDY */
+> +    if ((s->spcr[0] >> 1) & 1)              /* RRDY */
+> +        s->spcr[0] |= 1 << 2;               /* RFULL */
+> +    s->spcr[0] |= 1 << 1;               /* RRDY */
 
+dito.
 
+...
+> @@ -3064,27 +3064,27 @@ static void omap_mcbsp_req_update(struct omap_mcbsp_s *s)
+>   {
+>       int prev_rx_rate, prev_tx_rate;
+>       int rx_rate = 0, tx_rate = 0;
+> -    int cpu_rate = 1500000;	/* XXX */
+> +    int cpu_rate = 1500000; /* XXX */
+>   
+>       /* TODO: check CLKSTP bit */
+> -    if (s->spcr[1] & (1 << 6)) {			/* GRST */
+> -        if (s->spcr[0] & (1 << 0)) {			/* RRST */
+> -            if ((s->srgr[1] & (1 << 13)) &&		/* CLKSM */
+> -                            (s->pcr & (1 << 8))) {	/* CLKRM */
+> -                if (~s->pcr & (1 << 7))			/* SCLKME */
+> +    if (s->spcr[1] & (1 << 6)) {            /* GRST */
+> +        if (s->spcr[0] & (1 << 0)) {            /* RRST */
+> +            if ((s->srgr[1] & (1 << 13)) &&     /* CLKSM */
+> +                            (s->pcr & (1 << 8))) {  /* CLKRM */
+> +                if (~s->pcr & (1 << 7))         /* SCLKME */
+>                       rx_rate = cpu_rate /
+> -                            ((s->srgr[0] & 0xff) + 1);	/* CLKGDV */
+> +                            ((s->srgr[0] & 0xff) + 1);  /* CLKGDV */
+>               } else
+>                   if (s->codec)
+>                       rx_rate = s->codec->rx_rate;
+>           }
+>   
+> -        if (s->spcr[1] & (1 << 0)) {			/* XRST */
+> -            if ((s->srgr[1] & (1 << 13)) &&		/* CLKSM */
+> -                            (s->pcr & (1 << 9))) {	/* CLKXM */
+> -                if (~s->pcr & (1 << 7))			/* SCLKME */
+> +        if (s->spcr[1] & (1 << 0)) {            /* XRST */
+> +            if ((s->srgr[1] & (1 << 13)) &&     /* CLKSM */
+> +                            (s->pcr & (1 << 9))) {  /* CLKXM */
+> +                if (~s->pcr & (1 << 7))         /* SCLKME */
+>                       tx_rate = cpu_rate /
+> -                            ((s->srgr[0] & 0xff) + 1);	/* CLKGDV */
+> +                            ((s->srgr[0] & 0xff) + 1);  /* CLKGDV */
 
+dito
+
+> @@ -3703,25 +3703,25 @@ static const struct omap_map_s {
+>       const char *name;
+>   } omap15xx_dsp_mm[] = {
+>       /* Strobe 0 */
+> -    { 0xe1010000, 0xfffb0000, 0x800, "UART1 BT" },		/* CS0 */
+> -    { 0xe1010800, 0xfffb0800, 0x800, "UART2 COM" },		/* CS1 */
+> -    { 0xe1011800, 0xfffb1800, 0x800, "McBSP1 audio" },		/* CS3 */
+> -    { 0xe1012000, 0xfffb2000, 0x800, "MCSI2 communication" },	/* CS4 */
+> -    { 0xe1012800, 0xfffb2800, 0x800, "MCSI1 BT u-Law" },	/* CS5 */
+> -    { 0xe1013000, 0xfffb3000, 0x800, "uWire" },			/* CS6 */
+> -    { 0xe1013800, 0xfffb3800, 0x800, "I^2C" },			/* CS7 */
+> -    { 0xe1014000, 0xfffb4000, 0x800, "USB W2FC" },		/* CS8 */
+> -    { 0xe1014800, 0xfffb4800, 0x800, "RTC" },			/* CS9 */
+> -    { 0xe1015000, 0xfffb5000, 0x800, "MPUIO" },			/* CS10 */
+> -    { 0xe1015800, 0xfffb5800, 0x800, "PWL" },			/* CS11 */
+> -    { 0xe1016000, 0xfffb6000, 0x800, "PWT" },			/* CS12 */
+> -    { 0xe1017000, 0xfffb7000, 0x800, "McBSP3" },		/* CS14 */
+> -    { 0xe1017800, 0xfffb7800, 0x800, "MMC" },			/* CS15 */
+> -    { 0xe1019000, 0xfffb9000, 0x800, "32-kHz timer" },		/* CS18 */
+> -    { 0xe1019800, 0xfffb9800, 0x800, "UART3" },			/* CS19 */
+> -    { 0xe101c800, 0xfffbc800, 0x800, "TIPB switches" },		/* CS25 */
+> +    { 0xe1010000, 0xfffb0000, 0x800, "UART1 BT" },      /* CS0 */
+> +    { 0xe1010800, 0xfffb0800, 0x800, "UART2 COM" },     /* CS1 */
+> +    { 0xe1011800, 0xfffb1800, 0x800, "McBSP1 audio" },      /* CS3 */
+> +    { 0xe1012000, 0xfffb2000, 0x800, "MCSI2 communication" },   /* CS4 */
+> +    { 0xe1012800, 0xfffb2800, 0x800, "MCSI1 BT u-Law" },    /* CS5 */
+> +    { 0xe1013000, 0xfffb3000, 0x800, "uWire" },         /* CS6 */
+> +    { 0xe1013800, 0xfffb3800, 0x800, "I^2C" },          /* CS7 */
+> +    { 0xe1014000, 0xfffb4000, 0x800, "USB W2FC" },      /* CS8 */
+> +    { 0xe1014800, 0xfffb4800, 0x800, "RTC" },           /* CS9 */
+> +    { 0xe1015000, 0xfffb5000, 0x800, "MPUIO" },         /* CS10 */
+> +    { 0xe1015800, 0xfffb5800, 0x800, "PWL" },           /* CS11 */
+> +    { 0xe1016000, 0xfffb6000, 0x800, "PWT" },           /* CS12 */
+> +    { 0xe1017000, 0xfffb7000, 0x800, "McBSP3" },        /* CS14 */
+> +    { 0xe1017800, 0xfffb7800, 0x800, "MMC" },           /* CS15 */
+> +    { 0xe1019000, 0xfffb9000, 0x800, "32-kHz timer" },      /* CS18 */
+> +    { 0xe1019800, 0xfffb9800, 0x800, "UART3" },         /* CS19 */
+> +    { 0xe101c800, 0xfffbc800, 0x800, "TIPB switches" },     /* CS25 */
+>       /* Strobe 1 */
+> -    { 0xe101e000, 0xfffce000, 0x800, "GPIOs" },			/* CS28 */
+> +    { 0xe101e000, 0xfffce000, 0x800, "GPIOs" },         /* CS28 */
+
+dito
+
+>       { 0 }
+>   };
+> @@ -4025,18 +4025,18 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegion *dram,
+>                                 0xfffbd800, omap_findclk(s, "clk32-kHz"));
+>   
+>       /* Register mappings not currently implemented:
+> -     * MCSI2 Comm	fffb2000 - fffb27ff (not mapped on OMAP310)
+> -     * MCSI1 Bluetooth	fffb2800 - fffb2fff (not mapped on OMAP310)
+> -     * USB W2FC		fffb4000 - fffb47ff
+> -     * Camera Interface	fffb6800 - fffb6fff
+> -     * USB Host		fffba000 - fffba7ff
+> -     * FAC		fffba800 - fffbafff
+> -     * HDQ/1-Wire	fffbc000 - fffbc7ff
+> -     * TIPB switches	fffbc800 - fffbcfff
+> -     * Mailbox		fffcf000 - fffcf7ff
+> -     * Local bus IF	fffec100 - fffec1ff
+> -     * Local bus MMU	fffec200 - fffec2ff
+> -     * DSP MMU		fffed200 - fffed2ff
+> +     * MCSI2 Comm   fffb2000 - fffb27ff (not mapped on OMAP310)
+> +     * MCSI1 Bluetooth  fffb2800 - fffb2fff (not mapped on OMAP310)
+> +     * USB W2FC     fffb4000 - fffb47ff
+> +     * Camera Interface fffb6800 - fffb6fff
+> +     * USB Host     fffba000 - fffba7ff
+> +     * FAC      fffba800 - fffbafff
+> +     * HDQ/1-Wire   fffbc000 - fffbc7ff
+> +     * TIPB switches    fffbc800 - fffbcfff
+> +     * Mailbox      fffcf000 - fffcf7ff
+> +     * Local bus IF fffec100 - fffec1ff
+> +     * Local bus MMU    fffec200 - fffec2ff
+> +     * DSP MMU      fffed200 - fffed2ff
+
+Could you please align the addresses here?
+
+...
+> diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
+> index 2e45266e74..9333bf7cdb 100644
+> --- a/hw/i2c/omap_i2c.c
+> +++ b/hw/i2c/omap_i2c.c
+> @@ -55,16 +55,16 @@ struct OMAPI2CState {
+>       uint16_t test;
+>   };
+>   
+> -#define OMAP2_INTR_REV	0x34
+> -#define OMAP2_GC_REV	0x34
+> +#define OMAP2_INTR_REV  0x34
+> +#define OMAP2_GC_REV    0x34
+>   
+>   static void omap_i2c_interrupts_update(OMAPI2CState *s)
+>   {
+>       qemu_set_irq(s->irq, s->stat & s->mask);
+> -    if ((s->dma >> 15) & 1)					/* RDMA_EN */
+> -        qemu_set_irq(s->drq[0], (s->stat >> 3) & 1);		/* RRDY */
+> -    if ((s->dma >> 7) & 1)					/* XDMA_EN */
+> -        qemu_set_irq(s->drq[1], (s->stat >> 4) & 1);		/* XRDY */
+> +    if ((s->dma >> 15) & 1)                 /* RDMA_EN */
+> +        qemu_set_irq(s->drq[0], (s->stat >> 3) & 1);        /* RRDY */
+> +    if ((s->dma >> 7) & 1)                  /* XDMA_EN */
+> +        qemu_set_irq(s->drq[1], (s->stat >> 4) & 1);        /* XRDY */
+>   }
+>   
+>   static void omap_i2c_fifo_run(OMAPI2CState *s)
+> @@ -74,25 +74,25 @@ static void omap_i2c_fifo_run(OMAPI2CState *s)
+>       if (!i2c_bus_busy(s->bus))
+>           return;
+>   
+> -    if ((s->control >> 2) & 1) {				/* RM */
+> -        if ((s->control >> 1) & 1) {				/* STP */
+> +    if ((s->control >> 2) & 1) {                /* RM */
+> +        if ((s->control >> 1) & 1) {                /* STP */
+>               i2c_end_transfer(s->bus);
+> -            s->control &= ~(1 << 1);				/* STP */
+> +            s->control &= ~(1 << 1);                /* STP */
+>               s->count_cur = s->count;
+>               s->txlen = 0;
+> -        } else if ((s->control >> 9) & 1) {			/* TRX */
+> +        } else if ((s->control >> 9) & 1) {         /* TRX */
+>               while (ack && s->txlen)
+>                   ack = (i2c_send(s->bus,
+>                                           (s->fifo >> ((-- s->txlen) << 3)) &
+>                                           0xff) >= 0);
+> -            s->stat |= 1 << 4;					/* XRDY */
+> +            s->stat |= 1 << 4;                  /* XRDY */
+>           } else {
+>               while (s->rxlen < 4)
+>                   s->fifo |= i2c_recv(s->bus) << ((s->rxlen ++) << 3);
+> -            s->stat |= 1 << 3;					/* RRDY */
+> +            s->stat |= 1 << 3;                  /* RRDY */
+>           }
+>       } else {
+> -        if ((s->control >> 9) & 1) {				/* TRX */
+> +        if ((s->control >> 9) & 1) {                /* TRX */
+>               while (ack && s->count_cur && s->txlen) {
+>                   ack = (i2c_send(s->bus,
+>                                           (s->fifo >> ((-- s->txlen) << 3)) &
+> @@ -100,12 +100,12 @@ static void omap_i2c_fifo_run(OMAPI2CState *s)
+>                   s->count_cur --;
+>               }
+>               if (ack && s->count_cur)
+> -                s->stat |= 1 << 4;				/* XRDY */
+> +                s->stat |= 1 << 4;              /* XRDY */
+>               else
+> -                s->stat &= ~(1 << 4);				/* XRDY */
+> +                s->stat &= ~(1 << 4);               /* XRDY */
+>               if (!s->count_cur) {
+> -                s->stat |= 1 << 2;				/* ARDY */
+> -                s->control &= ~(1 << 10);			/* MST */
+> +                s->stat |= 1 << 2;              /* ARDY */
+> +                s->control &= ~(1 << 10);           /* MST */
+>               }
+>           } else {
+>               while (s->count_cur && s->rxlen < 4) {
+> @@ -113,26 +113,26 @@ static void omap_i2c_fifo_run(OMAPI2CState *s)
+>                   s->count_cur --;
+>               }
+>               if (s->rxlen)
+> -                s->stat |= 1 << 3;				/* RRDY */
+> +                s->stat |= 1 << 3;              /* RRDY */
+>               else
+> -                s->stat &= ~(1 << 3);				/* RRDY */
+> +                s->stat &= ~(1 << 3);               /* RRDY */
+>           }
+>           if (!s->count_cur) {
+> -            if ((s->control >> 1) & 1) {			/* STP */
+> +            if ((s->control >> 1) & 1) {            /* STP */
+>                   i2c_end_transfer(s->bus);
+> -                s->control &= ~(1 << 1);			/* STP */
+> +                s->control &= ~(1 << 1);            /* STP */
+>                   s->count_cur = s->count;
+>                   s->txlen = 0;
+>               } else {
+> -                s->stat |= 1 << 2;				/* ARDY */
+> -                s->control &= ~(1 << 10);			/* MST */
+> +                s->stat |= 1 << 2;              /* ARDY */
+> +                s->control &= ~(1 << 10);           /* MST */
+>               }
+>           }
+>       }
+>   
+> -    s->stat |= (!ack) << 1;					/* NACK */
+> +    s->stat |= (!ack) << 1;                 /* NACK */
+>       if (!ack)
+> -        s->control &= ~(1 << 1);				/* STP */
+> +        s->control &= ~(1 << 1);                /* STP */
+>   }
+
+Could you please align the comments in this function?
+
+...
+> @@ -214,41 +214,41 @@ static uint32_t omap_i2c_read(void *opaque, hwaddr addr)
+>               /* XXX: remote access (qualifier) error - what's that?  */
+>           }
+>           if (!s->rxlen) {
+> -            s->stat &= ~(1 << 3);				/* RRDY */
+> -            if (((s->control >> 10) & 1) &&			/* MST */
+> -                            ((~s->control >> 9) & 1)) {		/* TRX */
+> -                s->stat |= 1 << 2;				/* ARDY */
+> -                s->control &= ~(1 << 10);			/* MST */
+> +            s->stat &= ~(1 << 3);               /* RRDY */
+> +            if (((s->control >> 10) & 1) &&         /* MST */
+> +                            ((~s->control >> 9) & 1)) {     /* TRX */
+> +                s->stat |= 1 << 2;              /* ARDY */
+> +                s->control &= ~(1 << 10);           /* MST */
+>               }
+>           }
+> -        s->stat &= ~(1 << 11);					/* ROVR */
+> +        s->stat &= ~(1 << 11);                  /* ROVR */
+
+Please align in this hunk, too.
+
+> @@ -351,14 +351,14 @@ static void omap_i2c_write(void *opaque, hwaddr addr,
+>                             __func__);
+>               break;
+>           }
+> -        if ((value & (1 << 15)) && value & (1 << 0)) {		/* STT */
+> -            nack = !!i2c_start_transfer(s->bus, s->addr[1],	/* SA */
+> -                            (~value >> 9) & 1);			/* TRX */
+> -            s->stat |= nack << 1;				/* NACK */
+> -            s->control &= ~(1 << 0);				/* STT */
+> +        if ((value & (1 << 15)) && value & (1 << 0)) {      /* STT */
+> +            nack = !!i2c_start_transfer(s->bus, s->addr[1], /* SA */
+> +                            (~value >> 9) & 1);         /* TRX */
+> +            s->stat |= nack << 1;               /* NACK */
+> +            s->control &= ~(1 << 0);                /* STT */
+>               s->fifo = 0;
+>               if (nack)
+> -                s->control &= ~(1 << 1);			/* STP */
+> +                s->control &= ~(1 << 1);            /* STP */
+>               else {
+>                   s->count_cur = s->count;
+>                   omap_i2c_fifo_run(s);
+
+dito
+
+...
+> diff --git a/hw/misc/omap_clk.c b/hw/misc/omap_clk.c
+> index 0157c9be75..b32d55dc54 100644
+> --- a/hw/misc/omap_clk.c
+> +++ b/hw/misc/omap_clk.c
+> @@ -30,170 +30,170 @@ struct clk {
+>       struct clk *parent;
+>       struct clk *child1;
+>       struct clk *sibling;
+> -#define ALWAYS_ENABLED		(1 << 0)
+> -#define CLOCK_IN_OMAP310	(1 << 10)
+> -#define CLOCK_IN_OMAP730	(1 << 11)
+> -#define CLOCK_IN_OMAP1510	(1 << 12)
+> -#define CLOCK_IN_OMAP16XX	(1 << 13)
+> +#define ALWAYS_ENABLED      (1 << 0)
+> +#define CLOCK_IN_OMAP310    (1 << 10)
+> +#define CLOCK_IN_OMAP730    (1 << 11)
+> +#define CLOCK_IN_OMAP1510   (1 << 12)
+> +#define CLOCK_IN_OMAP16XX   (1 << 13)
+>       uint32_t flags;
+>       int id;
+>   
+> -    int running;		/* Is currently ticking */
+> -    int enabled;		/* Is enabled, regardless of its input clk */
+> -    unsigned long rate;		/* Current rate (if .running) */
+> -    unsigned int divisor;	/* Rate relative to input (if .enabled) */
+> -    unsigned int multiplier;	/* Rate relative to input (if .enabled) */
+> -    qemu_irq users[16];		/* Who to notify on change */
+> -    int usecount;		/* Automatically idle when unused */
+> +    int running;        /* Is currently ticking */
+> +    int enabled;        /* Is enabled, regardless of its input clk */
+> +    unsigned long rate;     /* Current rate (if .running) */
+> +    unsigned int divisor;   /* Rate relative to input (if .enabled) */
+> +    unsigned int multiplier;    /* Rate relative to input (if .enabled) */
+> +    qemu_irq users[16];     /* Who to notify on change */
+> +    int usecount;       /* Automatically idle when unused */
+
+dito
+
+  Thanks,
+   Thomas
 

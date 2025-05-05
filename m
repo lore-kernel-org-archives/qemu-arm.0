@@ -1,85 +1,85 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2778147njj;
-        Mon, 5 May 2025 16:20:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXg0op8VLHR1qptRvm24udvY90ACwf2Td2nrbSiILcYfqlyB7nPR5okRxE5kFg/6vPrpWfCJ/xDok4OhQ==@linaro.org
-X-Received: by 2002:a17:903:2f4d:b0:215:a56f:1e50 with SMTP id d9443c01a7336-22e32756795mr17462855ad.8.1746487224616;
-        Mon, 05 May 2025 16:20:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746487224; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2778152njj;
+        Mon, 5 May 2025 16:20:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUAz2xWnzxvqu4ZVUUpjW449nPDTi61cF9ftEkGu7awrwR97y+MQISGfvh6trPl18Wnpn4jhdj3L4S77A==@linaro.org
+X-Received: by 2002:a17:903:2b0c:b0:21f:2ded:76ea with SMTP id d9443c01a7336-22e1eae4269mr159021385ad.36.1746487225489;
+        Mon, 05 May 2025 16:20:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746487225; cv=none;
         d=google.com; s=arc-20240605;
-        b=FUwJBfv7eVH+XnEBVz2KQ/fFc/6ulkTWs3Aq5el0v4gwGRp6ab3Ihc1hZrelbRNAOR
-         9huclnalUJISp7A8/lC1WjtwHQRADWIrktS9SuB3lJTad+lIR6nNFLE9OcOaoqFh2/ht
-         m65BU7ILQ8t3D1EFXzINVQnmacXOW3aSF4bKRtCjq0oNbgpgjHSwHPLiQPUlb/CG2y7B
-         p8e8lgTZ96RsVFeNzrluATmZb73DGKmVGeWzfNcD5DmOLZMV/M6wx135K0fI20/6zumT
-         34+c8qH1nL9XsL34SPK1vJCyAZs6eYQCZ75B5nJ4gHX1ogKdg2g7PmQ847s31pWnfhzV
-         of2A==
+        b=H2nI4NVN9Voeh8rNMW4r4Ui/zgWX73idT6rqLSa4ub4ZlrPOFznASuys8DXBnJYeOJ
+         eXBML8JtQBMY83xKwKGsJ0Rd/U/cWKyIflii0T9P7+TMY/Zz/HZ7UoggchNfsglinVRk
+         7/pugxACbOMNOWYiDcnDCpEo4MYLp8Y5fy+z4q/XgMVHaIAE0JjAqcOpwADPN8UsaYOd
+         Ru892UGyZtSCjB+GtWANZKgxXKZBLWJCMr/jM4pCXbTmwfccTAofnxOvxcb4jqQ4KgJ7
+         DSyAkJ4pfBelob+w+GOijqVpIsf8vyNl/kQ3dUpAxI/mFOlKmVDp3hD9Cyj3zqlgL0XS
+         LORA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=oMNeg3Y4FuUndpYOZQCJwSPCGo/Nsl7SC/sGcqIL57A=;
-        fh=Q0vhaSQssZmnBx5CZNOi5gBKMTsXfBKbtgMtjIqlM0U=;
-        b=gcIgKkC99nweMRowFeiVg+n8iza/xhDfrJBUHEeZXVq4+oDLlkE1uive0zL7W9Jrsq
-         aMfo3knhr4/eScppXnv3E9vC6s+9p6wdQxSqddp1swHYyhGFYSb9j7tbZwaIs5HybNlK
-         bCUQaSfmViItdySPJ26BHeawLguSNsl71WBLeg3GWScBfgvJd9xHxDW7NSiX56Y+ORgI
-         O8P5Zqe2w0/1cmmh+17hWFGZHsy9jri0rJrrwxecFJy6nAB9RyFIUT55q0i/ylafv6Qh
-         LIjjuufaUBVRQtxNZzwLLcWUXPZxUCnv/Y7lGs8b2ip8mFZsW+ae+kI2xuW+jk3Vnd2d
-         2+FA==;
+        bh=Ktcl5OZ+t3GMcQQ7Jgx3PtMsJ0l/J5yPLlaHDm/4GNI=;
+        fh=MWZDj/meDOeVihhfKR8dhlaEivNrgZsdgDwzQiHm+Qg=;
+        b=N3rlp1kb0uRWP6BiUk7+01eZOmerKK4UIClMnApTvtsW26I2kHhFlPDh6dUfIrA3Xt
+         d8BOiXZVQPheGl4sH0QfoxLoz6d+AQSJoTG81uxQnSSQ4rp3IHXr5/H/6mDpyJb/wckF
+         iTybfVkZbJHItEdWkbfjnzeIGJkHXo3bvwCP2pbrlHnOaqowx/sp3ceavwQxJtYLd9Bn
+         rnxIwOCRmSAYks95d50QkK70MH+mzfPqPuTdUhwJv1x04P1/yFnUINhkhvVZzDqUl2T2
+         LzBsajexefbceQUUdJK8Yc376IERSUAjhXsGPE0ViqBWeQVwL371hP4eFcqAFNx0jnI6
+         /GeA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KTU27O7E;
+       dkim=pass header.i=@linaro.org header.s=google header.b=P9heetsE;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-22e0ba7f6cbsor45421455ad.0.2025.05.05.16.20.24
+        by mx.google.com with SMTPS id d9443c01a7336-22e0bb1943bsor59482435ad.4.2025.05.05.16.20.25
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 05 May 2025 16:20:24 -0700 (PDT)
+        Mon, 05 May 2025 16:20:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KTU27O7E;
+       dkim=pass header.i=@linaro.org header.s=google header.b=P9heetsE;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1746487224; x=1747092024; darn=linaro.org;
+        d=linaro.org; s=google; t=1746487225; x=1747092025; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=oMNeg3Y4FuUndpYOZQCJwSPCGo/Nsl7SC/sGcqIL57A=;
-        b=KTU27O7Ew6m1wJLXxDFpi1o5ozSBPIeGVm3d62BZ0Npnw0PNIgeLUoL/ywEnuOdjgn
-         3nPbwmL6sXX5G4HvRzebXh2kjvZIAKfLyibZx/bHm4F/mxs5UI9yMDPM533ZUuOSgRuz
-         rOa9W8wMbex4bLdvKEupahltqLR52aIn7/rsgoGwYWcP6xlDOOFcFQggR3FEG2sCpetS
-         zXFbRrW7ALgEHj990ipgsf2CSoe9prwOJOodIG/IDT13VD0GErDnipHnGxr+XlQUu4Ov
-         9AQgL9IWWYf9kKh3UOKu324rIzbkJI2eplXDiGjXOvw6+T4lykNsvCdxS01I0TrhHgYf
-         LQkw==
+        bh=Ktcl5OZ+t3GMcQQ7Jgx3PtMsJ0l/J5yPLlaHDm/4GNI=;
+        b=P9heetsEkpyAsGlG3t13OCr4eA8fcPdPMu8fvwUuA73RTmCHfDqSwf4MH2fwXpo9Av
+         gHeqKtprhKQPIy/Vzysw0VsbW2p1NkGWyNcVMmRMnpzZk9welylwAsFtZNRQtfwpOrBL
+         fqbrT7wPCjx0K+P8sFwS3MpibVMcdYMex4dmv7lFXO5y9IvYFaTUTVP3k1dfJN0NSC4E
+         QKRPHkFReMKjpnnvn36m+6wT4UUu6BswGpchZE0qr+bshrHS8KiFD0zYb18ajsm5J7SI
+         AvZvE1sxgqaqUqq/o+57OHmrCLnBGqjVrQIJKZb2nvJ2DwREG7wZMoJS5xpVJDpmXda3
+         qDzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746487224; x=1747092024;
+        d=1e100.net; s=20230601; t=1746487225; x=1747092025;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=oMNeg3Y4FuUndpYOZQCJwSPCGo/Nsl7SC/sGcqIL57A=;
-        b=XctUt3nhh3C58OOYJ9+bNSUu3UbN5sEMxJtfn10ZSHvAH4RUkV5zp3Zvo2gbc5uies
-         ozfdMPJv5GaDznTdcM9te6xE4ICnLY9Z9vOZHnbdR/qD2Dhc90x+KjSg/whS2fICRBDS
-         qe1xkvtlgrhttvE0PKyBB3hmqn1e2vnMP7/BkGibi/DyhMiU5cHIPtjH3qsfCl3jn8MT
-         g3jmjkENsecf66AyABn64VZ6VLykgcrVEcwA/GM+hskM7UPPf1wB5kO7d5oqKrD054xc
-         vqWihFl+coe7IxFHAo2YxAk0c1FD/5Gm9u+fvj47a1H345t2uxBX+fm4QoOIFDhq7DYS
-         BHtw==
-X-Forwarded-Encrypted: i=1; AJvYcCV93LGS3v6CyQjrh2PPQyBU4LopJuUsI7a0lH/NqyGaWWD4L01rjxtZAtx16YHF3+d5nQWjhVdJoakFQg==@linaro.org
-X-Gm-Message-State: AOJu0YwUWHvgqiXWa9jnPC+UAt4x8Za+wtAcBzd5B6rwEt7d5zNgrmg1
-	GiYHQLKM0ASO99HV045caqOoFxCODu598Dmi5FgNdcHO2AIeMnWSDWbJ4ksnKwXtiw==
-X-Gm-Gg: ASbGnct7UkpSfS/fjSBJ3yOFLkHX/InFAsCEvvGFLrrslWTIs05WHJucOuoyqcSrARe
-	HDLoDreuoZP/3QDoV4NCxz+MRuuKGco+gx8bRmZ3YW8BAIN474gKIsxs/XGcDTHroSwfSFgRj4v
-	5xrfpMW41L6ZcizMnxxwoVSSPjI/U1pmemC+gftd4sGyMYTABuxTBA4oUh5M51eAW/qpIN8ctkM
-	hzulJTX2nXwaDLauGGIMnwbrpW4REXdVinX5OUfp9jTAYWvWTE3ed9YP46g46erzBPLRjK1RbNl
-	vX2YGqKDuo+Sd+JnRTkr7a+Dxh7LSAqpczeBnnHz
-X-Google-Smtp-Source: AGHT+IHoFN+rr8Lwq19Sx2mB1Yb2Gf6GH5Yb4OTaXFvREpHxBgl5rUjVxpoL1Lsyqn6N2c59nXy8cg==
-X-Received: by 2002:a17:902:daca:b0:224:3d:2ffd with SMTP id d9443c01a7336-22e3285f134mr16144225ad.17.1746487224186;
-        Mon, 05 May 2025 16:20:24 -0700 (PDT)
+        bh=Ktcl5OZ+t3GMcQQ7Jgx3PtMsJ0l/J5yPLlaHDm/4GNI=;
+        b=nuHtFhUumkcqwrHd5kp1tU6pSvQ5VEIPCQI/SFKY/QwPlh5E1UORBmGX/YbsiNRtkv
+         1zTdhWhL49xZT5sFDdeP6UUxGtDYGrBoO+Qkt1h4l2fH1gR/D+ZkgkIL8HWp1CCm7Vwv
+         gIt1Tlv1bxSkzvkIQZCXsPG5mreG47Bn5BnV1c7Lzqhonwb18UtbgotJ8oOtEhuRRde/
+         sVZTbmWWmXmPiE5VrnfAB142zHUo9QqACZP6tdC4v3JqpWJO+y5bqKSp+rlAa40SIZjV
+         WpIEFyNo533EoD9Sxl8KlRcPv2tZDQH3E9mqd5bwodcVBlPx8rVaMomIgera0ENB6yCq
+         LBvg==
+X-Forwarded-Encrypted: i=1; AJvYcCVK2eK6AO+PydrTposLh7gn3dA9l/jkoyv26qvwZxk2HyKI5mUKQSTt0J8WhAkHRLyBtSZFdiKBvPz2Ng==@linaro.org
+X-Gm-Message-State: AOJu0Yzm0aBBbBWLTorKMyW+jChcYSgaCgWIZ1Me/DTmYfTWlJXW6LI4
+	j6abWzjNHPsntaWmYEAGgUHaP0P5O94PtAenS+wFFoEKWb9tsxWX98lb6rwXCVUYkQ==
+X-Gm-Gg: ASbGnctfrjFNIwy0qwrBfA30sZqPeUbyO/fWAwERof9fUTlbRMA3dDazNgWHMrW1FhT
+	b4MboxAE3uzfkqMhiC/naVQ5AF2z839l1+Pk54/1Hohmb2xTcK3aXnoqhqCekq0RRbjG7DcPzPf
+	q+717JkkX2FBd5ZQSTgsyi8GSi4mUbUi2m9P1j5Ofw3sFY1uzJ4IJg7/YeRO3KYz7Fthvhf4P99
+	aROY3Nt5Qu1fqo6OjydyS0oTroPWJ9CqK06w0DFBvfNkuR8oYd9NQ+WiLQLA3dr5f8ud4F/2Y/w
+	BYItfFLkwXBqM8ks3Alq5Tu1lH7sZnw8zPmaZkw2
+X-Google-Smtp-Source: AGHT+IEppQ78GCWxvrp1Kg3rIqo0UbIgXB98fJRAHTjCpcIyipY13SYl5qyGbdie65ZUaGKZqlqcrA==
+X-Received: by 2002:a17:902:ef07:b0:223:fdac:2e4 with SMTP id d9443c01a7336-22e1ea1f373mr137466205ad.1.1746487225057;
+        Mon, 05 May 2025 16:20:25 -0700 (PDT)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from pc.. ([38.41.223.211])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22e1522917asm60981715ad.201.2025.05.05.16.20.23
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22e1522917asm60981715ad.201.2025.05.05.16.20.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 May 2025 16:20:23 -0700 (PDT)
+        Mon, 05 May 2025 16:20:24 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: richard.henderson@linaro.org,
@@ -91,78 +91,209 @@ Cc: richard.henderson@linaro.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v6 04/50] meson: apply target config for picking files from libsystem and libuser
-Date: Mon,  5 May 2025 16:19:29 -0700
-Message-ID: <20250505232015.130990-5-pierrick.bouvier@linaro.org>
+Subject: [PATCH v6 05/50] target/arm: move kvm stubs and remove CONFIG_KVM from kvm_arm.h
+Date: Mon,  5 May 2025 16:19:30 -0700
+Message-ID: <20250505232015.130990-6-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250505232015.130990-1-pierrick.bouvier@linaro.org>
 References: <20250505232015.130990-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 7iCHI0aoa1CF
+X-TUID: yAqGL9WMrKTR
 
-semihosting code needs to be included only if CONFIG_SEMIHOSTING is set.
-However, this is a target configuration, so we need to apply it to the
-libsystem libuser source sets.
+Add a forward decl for struct kvm_vcpu_init to avoid pulling all kvm
+headers.
 
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- meson.build | 26 ++++++++++++++------------
- 1 file changed, 14 insertions(+), 12 deletions(-)
+ target/arm/kvm_arm.h  | 83 +------------------------------------------
+ target/arm/kvm-stub.c | 77 +++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 78 insertions(+), 82 deletions(-)
 
-diff --git a/meson.build b/meson.build
-index b2c79a7a928..1b365dcae17 100644
---- a/meson.build
-+++ b/meson.build
-@@ -4049,27 +4049,19 @@ common_ss.add(qom, qemuutil)
- common_ss.add_all(when: 'CONFIG_SYSTEM_ONLY', if_true: [system_ss])
- common_ss.add_all(when: 'CONFIG_USER_ONLY', if_true: user_ss)
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 05c3de8cd46..7b9c7c4a148 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -94,7 +94,7 @@ void kvm_arm_cpu_post_load(ARMCPU *cpu);
+  */
+ void kvm_arm_reset_vcpu(ARMCPU *cpu);
  
--libuser_ss = libuser_ss.apply({})
- libuser = static_library('user',
--                         libuser_ss.sources() + genh,
-+                         libuser_ss.all_sources() + genh,
-                          c_args: ['-DCONFIG_USER_ONLY',
-                                   '-DCOMPILING_SYSTEM_VS_USER'],
--                         dependencies: libuser_ss.dependencies(),
-+                         dependencies: libuser_ss.all_dependencies(),
-                          build_by_default: false)
--libuser = declare_dependency(objects: libuser.extract_all_objects(recursive: false),
--                             dependencies: libuser_ss.dependencies())
--common_ss.add(when: 'CONFIG_USER_ONLY', if_true: libuser)
+-#ifdef CONFIG_KVM
++struct kvm_vcpu_init;
+ /**
+  * kvm_arm_create_scratch_host_vcpu:
+  * @cpus_to_try: array of QEMU_KVM_ARM_TARGET_* values (terminated with
+@@ -221,85 +221,4 @@ int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
  
--libsystem_ss = libsystem_ss.apply({})
- libsystem = static_library('system',
--                           libsystem_ss.sources() + genh,
-+                           libsystem_ss.all_sources() + genh,
-                            c_args: ['-DCONFIG_SOFTMMU',
-                                     '-DCOMPILING_SYSTEM_VS_USER'],
--                           dependencies: libsystem_ss.dependencies(),
-+                           dependencies: libsystem_ss.all_dependencies(),
-                            build_by_default: false)
--libsystem = declare_dependency(objects: libsystem.extract_all_objects(recursive: false),
--                               dependencies: libsystem_ss.dependencies())
--common_ss.add(when: 'CONFIG_SYSTEM_ONLY', if_true: libsystem)
+ void kvm_arm_enable_mte(Object *cpuobj, Error **errp);
  
- # Note that this library is never used directly (only through extract_objects)
- # and is not built by default; therefore, source files not used by the build
-@@ -4308,6 +4300,16 @@ foreach target : target_dirs
-   target_common = common_ss.apply(config_target, strict: false)
-   objects = [common_all.extract_objects(target_common.sources())]
-   arch_deps += target_common.dependencies()
-+  if target_type == 'system'
-+    src = libsystem_ss.apply(config_target, strict: false)
-+    objects += libsystem.extract_objects(src.sources())
-+    arch_deps += src.dependencies()
-+  endif
-+  if target_type == 'user'
-+    src = libuser_ss.apply(config_target, strict: false)
-+    objects += libuser.extract_objects(src.sources())
-+    arch_deps += src.dependencies()
-+  endif
-   if target_base_arch in target_common_arch_libs
-     src = target_common_arch[target_base_arch].apply(config_target, strict: false)
-     lib = target_common_arch_libs[target_base_arch]
+-#else
+-
+-/*
+- * It's safe to call these functions without KVM support.
+- * They should either do nothing or return "not supported".
+- */
+-static inline bool kvm_arm_aarch32_supported(void)
+-{
+-    return false;
+-}
+-
+-static inline bool kvm_arm_pmu_supported(void)
+-{
+-    return false;
+-}
+-
+-static inline bool kvm_arm_sve_supported(void)
+-{
+-    return false;
+-}
+-
+-static inline bool kvm_arm_mte_supported(void)
+-{
+-    return false;
+-}
+-
+-/*
+- * These functions should never actually be called without KVM support.
+- */
+-static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+-{
+-    g_assert_not_reached();
+-}
+-
+-static inline void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
+-{
+-    g_assert_not_reached();
+-}
+-
+-static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
+-{
+-    g_assert_not_reached();
+-}
+-
+-static inline int kvm_arm_vgic_probe(void)
+-{
+-    g_assert_not_reached();
+-}
+-
+-static inline void kvm_arm_pmu_set_irq(ARMCPU *cpu, int irq)
+-{
+-    g_assert_not_reached();
+-}
+-
+-static inline void kvm_arm_pmu_init(ARMCPU *cpu)
+-{
+-    g_assert_not_reached();
+-}
+-
+-static inline void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa)
+-{
+-    g_assert_not_reached();
+-}
+-
+-static inline void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp)
+-{
+-    g_assert_not_reached();
+-}
+-
+-static inline uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
+-{
+-    g_assert_not_reached();
+-}
+-
+-static inline void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
+-{
+-    g_assert_not_reached();
+-}
+-
+-#endif
+-
+ #endif
+diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+index 965a486b320..2b73d0598c1 100644
+--- a/target/arm/kvm-stub.c
++++ b/target/arm/kvm-stub.c
+@@ -22,3 +22,80 @@ bool write_list_to_kvmstate(ARMCPU *cpu, int level)
+ {
+     g_assert_not_reached();
+ }
++
++/*
++ * It's safe to call these functions without KVM support.
++ * They should either do nothing or return "not supported".
++ */
++bool kvm_arm_aarch32_supported(void)
++{
++    return false;
++}
++
++bool kvm_arm_pmu_supported(void)
++{
++    return false;
++}
++
++bool kvm_arm_sve_supported(void)
++{
++    return false;
++}
++
++bool kvm_arm_mte_supported(void)
++{
++    return false;
++}
++
++/*
++ * These functions should never actually be called without KVM support.
++ */
++void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
++{
++    g_assert_not_reached();
++}
++
++void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
++{
++    g_assert_not_reached();
++}
++
++int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
++{
++    g_assert_not_reached();
++}
++
++int kvm_arm_vgic_probe(void)
++{
++    g_assert_not_reached();
++}
++
++void kvm_arm_pmu_set_irq(ARMCPU *cpu, int irq)
++{
++    g_assert_not_reached();
++}
++
++void kvm_arm_pmu_init(ARMCPU *cpu)
++{
++    g_assert_not_reached();
++}
++
++void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa)
++{
++    g_assert_not_reached();
++}
++
++void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp)
++{
++    g_assert_not_reached();
++}
++
++uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
++{
++    g_assert_not_reached();
++}
++
++void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
++{
++    g_assert_not_reached();
++}
 -- 
 2.47.2

@@ -1,133 +1,113 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2274832njj;
-        Mon, 5 May 2025 00:44:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUi42ChNkcp9JELL7sodUnQ7Bdwf4vDK33VJCdsY7p+ZJqn/4rdu4CN1d8IcaSoBv5qazZ8Sw7nabsZew==@linaro.org
-X-Google-Smtp-Source: AGHT+IG34gtWQzlrXGe2JkVk6qEmt3OebCjqXqpgq2nyVeo5gYA6ygBZhng90TvlIL+aZLJCmKDo
-X-Received: by 2002:a05:620a:8016:b0:7c5:3b3b:c9d8 with SMTP id af79cd13be357-7cae3aed06emr865308585a.45.1746431080078;
-        Mon, 05 May 2025 00:44:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746431080; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2299941njj;
+        Mon, 5 May 2025 01:57:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUNS2FefVzCDXqOvaPeIKC5/m1akOD2e3Flzb0OclSWpR2buKSH4MBG0pOGcpVA8RdAeXejUr7gXK0gNg==@linaro.org
+X-Google-Smtp-Source: AGHT+IG8h2QpmujF8HO/hZqLdEem7zKP4IbExI5x+3jMDPzsub+SN79RPoW1OpSmGTXZDJus7+Hp
+X-Received: by 2002:a05:6214:2249:b0:6e8:9bcd:bba6 with SMTP id 6a1803df08f44-6f515730808mr220533296d6.7.1746435474865;
+        Mon, 05 May 2025 01:57:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746435474; cv=none;
         d=google.com; s=arc-20240605;
-        b=CEO8awxUNWKAxptymHVaJwPDJXGeAPS+ccLciCNZsEhpnsNbLSJsBn9vK9iIIh8LB5
-         b0iaIxfGijFY+LVQ7FuuEuMQKGb7LkHxJJqnMle5E9DRIErBC871xSttFs9deIFyjYOq
-         StoF0Bnqic2keIH1cuqXxxMWdXcqvNY9oWxT+VUzvtXh6qC4c4rCI4C8qrmoZmamnrpT
-         kQVwukIjbjgx5wInSI2cVJjVNSDbo1FLVBIP8D3PmA/acBupPoyWJMfGQR6qAVuM4wlb
-         loqn84L8/uzGjw/5mEQKlZENOwDzudzWQhuAl8peFm4t0V7+tiVXkW3LL0YYBlYBKiaV
-         F+Hg==
+        b=eB1errbxq606ogJXE1wZ0K6H1GWuLqLOukqEhGXTN6rkSyRLgqxZs30Ed6+84ZkMTM
+         0Mbep2RhPY7BrgFu9JfHJxigSwGXk3LX0E3VarLG+wef9X6Ss6uszi+4nJyVpxJfXhDI
+         62aSkJIhPhzXjVmRQ4NaI/KgWvdGDlqXgDMjpfo/iiQJesVyFKBh5InaQJVO0POCdS+T
+         plxASDukYcIUCi5zImaZ761XPLIWoPzrPNt054w2tM7nu5TqeZTPDmvIv1B14sQ+jYib
+         9ts1nFo7jnltGuD6C4RYvHM3fEZ/4FoIIxeuuSsSA+pyCOb9gP+3PlOKNtMQcejc6VIY
+         UuUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=qb7O7kQOVSIJXAWnRL5R3ngm16twCyke34sYufxC98U=;
-        fh=QgHpGH3rLCa5kb4qYI2Dd+mOQf4l1wrbOWCqRsxrzSc=;
-        b=DbI63q2QG7kaqAcOv5EDJa9ujFDxKnHWlDFHqrCzBusjr+iX/f/K7lOojqq0fRITHL
-         C3PMES2ALqiE1wip175hILmnogydit0NhSszpywlPgLsnVNJvDFY/qWVq5kB5KpZtoHj
-         LD/ZBED7sgYwFh7bZ0sPj/fiVSCsWDz/vjg+1NVwvqEXgSQgmwwuMhe7iL0fbFIVvN25
-         Ll5NjVjx8Jft53gHCNin+vppRzjKwpMJ0jsv7G5a4i0Oqmt4xDWL+HU9xclOoIXb+np6
-         RbalHLwbcVrEuo9VtY/H2CAwyrNFx0mvTrH5gvj563e/PQ77M2u+szUNGqoFmsxtr/4K
-         ZsUg==;
+         :list-unsubscribe:list-id:precedence:mime-version:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=xWxa5P7luR+paqOHTEZpEHOhd6NdPfg3m21va3t0F3M=;
+        fh=RMScUtJiBDbawk2pInzonOlcFxOF5Le/X77FfUonBLw=;
+        b=UANY7SnKgR/8ejYJz4VCaNwpZKb5EfCEz/rM867t2egKrv1rhm1iMicRU1Ha28nV1j
+         BwyT+D8RrjQXI68bKg2O4s43QTEkDlvdme9oC9dHOCW5kf3sRz7rgfaziXwDA/UrICFt
+         9hDHant3GS037ux8hcskyfE44kdpD/qhKnbRUH6AiroTPxs1ahnonje4NjSpGaI/AcUN
+         QoVuVVcIqyiiw1farmxq5K5Pv10vEUriGlfGzBvPX3cPvg4M6ii2RFhdJgkfeU+cc7eK
+         QFpsIdWIrecwkQJ7LZYzaPWZCZ2jNO1CUAs4fyyiKJ280Pyh/j5RI1CQooGoMZPq5JGM
+         FElQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=neutral (no key) header.i=@beckhoff.com header.s=mail2022e header.b="a/MEsuMu";
+       dkim=pass header.i=@beckhoff.com header.s=mail2022r header.b=Hsd1aNF7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=beckhoff.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cad242016fsi803534085a.222.2025.05.05.00.44.39
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f50f477178si89696456d6.203.2025.05.05.01.57.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 May 2025 00:44:40 -0700 (PDT)
+        Mon, 05 May 2025 01:57:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=neutral (no key) header.i=@beckhoff.com header.s=mail2022e header.b="a/MEsuMu";
+       dkim=pass header.i=@beckhoff.com header.s=mail2022r header.b=Hsd1aNF7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=beckhoff.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uBqUx-0005IN-Uu; Mon, 05 May 2025 03:44:23 -0400
+	id 1uBrdq-0008GS-5f; Mon, 05 May 2025 04:57:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=q0bJ=XV=kaod.org=clg@ozlabs.org>)
- id 1uBqUv-0005Hk-Bz; Mon, 05 May 2025 03:44:21 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <C.Koehne@beckhoff.com>)
+ id 1uBrdn-0008Fq-OJ; Mon, 05 May 2025 04:57:35 -0400
+Received: from netsrv01.beckhoff.com ([62.159.14.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=q0bJ=XV=kaod.org=clg@ozlabs.org>)
- id 1uBqUs-0006ht-Kb; Mon, 05 May 2025 03:44:20 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZrYST6D4Nz4xNx;
- Mon,  5 May 2025 17:44:09 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZrYSQ0w5hz4xN6;
- Mon,  5 May 2025 17:44:03 +1000 (AEST)
-Message-ID: <c8b71cca-4b77-4796-96c7-7bbe0c2df3ba@kaod.org>
-Date: Mon, 5 May 2025 09:43:59 +0200
+ (Exim 4.90_1) (envelope-from <C.Koehne@beckhoff.com>)
+ id 1uBrdk-0004Ua-Ky; Mon, 05 May 2025 04:57:34 -0400
+DKIM-Signature: v=1; c=relaxed/relaxed; d=beckhoff.com; s=mail2022e; 
+ t=1746435450; bh=xWxa5P7luR+paqOHTEZpEHOhd6NdPfg3m21va3t0F3M=; h=
+ Subject:Subject:From:From:Date:Date:ReplyTo:ReplyTo:Cc:Cc:Message-Id:Message-Id;
+ a=ed25519-sha256; b=
+ a/MEsuMu2uwfax2W5qFp+xmvqWejg3ge3UG3qCrBoV99+XNo4XPa5CHnwwFGtX4KKs0BSYf4ZukrEUYNZH8DDw==
+DKIM-Signature: v=1; c=relaxed/relaxed; d=beckhoff.com; s=mail2022r; 
+ t=1746435450; bh=xWxa5P7luR+paqOHTEZpEHOhd6NdPfg3m21va3t0F3M=; h=
+ Subject:Subject:From:From:Date:Date:ReplyTo:ReplyTo:Cc:Cc:Message-Id:Message-Id;
+ a=rsa-sha256; b=
+ Hsd1aNF7M6LR43XW72VXTNos22dFzYbZmzmQvEazIoWf+knjG6sHl/2ahbDyMDoxU2ojuhAl8K+n6Df1oHpenbvrkQzyKRF6CjpsXx3PS2bYcFCVYy9DBzdj0Z6vwpB4JW85xpRq3VOReUAJNSldKcje3eNGtm1Ha1Ij/sUBmYBmdRQGW8CaILAuTnukekkfh5kgCaAGEO339Ot+df6+R03FB7+aiTMRlJfd24eoE+QSAEQ6OKN6FeIDrAHESeKIVkndcWSSFUrbPu7+pFET3VmA5/gIoc01QomX7GTq4G9/Ac2rGtmBfut4Hc4s3Ocg+ad5ppAxUMSUEOM3d22E5w==
+Received: from 172.17.6.19 by netsrv01.beckhoff.com
+ (TLS-ECDHE-RSA-WITH-AES-256-GCM-SHA384); Mon, 05 May 2025 08:57:29 GMT
+Received: from ex10.beckhoff.com (172.17.2.111) by ex13.beckhoff.com
+ (172.17.6.19) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Mon, 5 May
+ 2025 10:57:28 +0200
+Received: from ex10.beckhoff.com ([fe80::3762:2101:fb4e:8ffa]) by
+ ex10.beckhoff.com ([fe80::ab7f:9a91:d220:441b%12]) with mapi id
+ 15.02.1748.010; Mon, 5 May 2025 10:57:28 +0200
+From: =?utf-8?B?Q29ydmluIEvDtmhuZQ==?= <C.Koehne@beckhoff.com>
+To: "edgar.iglesias@gmail.com" <edgar.iglesias@gmail.com>
+CC: =?utf-8?B?WWFubmljayBWb8OfZW4=?= <Y.Vossen@beckhoff.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "pbonzini@redhat.com"
+ <pbonzini@redhat.com>, "alistair@alistair23.me" <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>
+Subject: Re: [PATCH 00/21] hw/arm: add CX7200 board emulation
+Thread-Topic: [PATCH 00/21] hw/arm: add CX7200 board emulation
+Thread-Index: AQHbtQZjoxBVL03fhEyFDr1uFHQy2LO0rXSAgA7+agA=
+Date: Mon, 5 May 2025 08:57:27 +0000
+Message-ID: <ad0470842bc7e1fdc17edc6cc1d13668d916456e.camel@beckhoff.com>
+References: <20250318130817.119636-1-corvin.koehne@gmail.com>
+ <b4a0daac7b200e4ffc08879977dbde120a8d5f73.camel@beckhoff.com>
+ <aAvpkV1ExuLthoH9@zapote>
+In-Reply-To: <aAvpkV1ExuLthoH9@zapote>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator: 
+x-originating-ip: [172.17.62.149]
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="=-8D6COArMecV0LJbJ0okm"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 8/9] tests/function/aspeed: Add functional test for
- ast2700fc
-To: Steven Lee <steven_lee@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, longzl2@lenovo.com, yunlin.tang@aspeedtech.com
-References: <20250505030618.3612042-1-steven_lee@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250505030618.3612042-1-steven_lee@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=q0bJ=XV=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
+Received-SPF: pass client-ip=62.159.14.10; envelope-from=C.Koehne@beckhoff.com;
+ helo=netsrv01.beckhoff.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,179 +122,167 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DKqvmIhTqWHB
+X-TUID: +3JKhuDazGhk
 
-On 5/5/25 05:06, Steven Lee wrote:
-> Introduce a new test suite for ast2700fc machine.
-> Rename the original test_aarch64_aspeed.py to
-> test_aarch64_aspeed_ast2700.py.
-> 
-> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-> Change-Id: I3855f55c9f6e5cca1270c179445f549f8d81f36c
+--=-8D6COArMecV0LJbJ0okm
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-meson.build should also be modified to take into account the new tests.
-I fixed it.
+On Fri, 2025-04-25 at 21:59 +0200, Edgar E. Iglesias wrote:
+> CAUTION: External Email!!
+> On Thu, Apr 24, 2025 at 10:48:17AM +0000, Corvin K=C3=B6hne wrote:
+> > On Tue, 2025-03-18 at 14:07 +0100, Corvin K=C3=B6hne wrote:
+> > > CAUTION: External Email!!
+> > > From: Corvin K=C3=B6hne <c.koehne@beckhoff.com>
+> > >=20
+> > > Beckhoff has build a board, called CX7200, based on the Xilinx Zynq A=
+9
+> > > platform. This commit series adds the Beckhoff CX7200 as new board va=
+riant
+> > > to
+> > > QEMU.
+> > >=20
+> > > The emulation is able to successfully boot an CX7200 image. The image
+> > > includes
+> > > some self tests executed on every boot. Only the cache self test fail=
+s due
+> > > to
+> > > QEMU emulating the cache as always being coherent. The self tests inc=
+lude
+> > > f.e.:
+> > >=20
+> > > * Network
+> > > * Flash
+> > > * CCAT DMA + EEPROM [1]
+> > > * TwinCAT (Beckhoff's automation control software [2])
+> > >=20
+> > > [1] https://github.com/beckhoff/ccat
+> > > [2] https://www.beckhoff.com/en-us/products/automation/
+> > >=20
+> > > Corvin K=C3=B6hne (1):
+> > > =C2=A0 MAINTAINERS: add myself as reviewer for Beckhoff devices
+> > >=20
+> > > YannickV (20):
+> > > =C2=A0 hw/timer: Make frequency configurable
+> > > =C2=A0 hw/timer: Make PERIPHCLK period configurable
+> > > =C2=A0 hw/dma/zynq-devcfg: Handle bitstream loading via DMA to 0xffff=
+ffff
+> > > =C2=A0 hw/arm/zynq-devcfg: Prevent unintended unlock during initializ=
+ation
+> > > =C2=A0 hw/dma/zynq: Notify devcfg on FPGA reset via SLCR control
+> > > =C2=A0 hw/dma/zynq-devcfg: Simulate dummy PL reset
+> > > =C2=A0 hw/dma/zynq-devcfg: Indicate power-up status of PL
+> > > =C2=A0 hw/dma/zynq-devcfg: Fix register memory
+> > > =C2=A0 hw/misc: Add dummy ZYNQ DDR controller
+> > > =C2=A0 hw/misc/zynq_slcr: Add logic for DCI configuration
+> > > =C2=A0 hw/misc: Add Beckhoff CCAT device
+> > > =C2=A0 hw/arm: Add new machine based on xilinx-zynq-a9 for Beckhoff C=
+X7200
+> > > =C2=A0 hw/arm/beckhoff_CX7200: Remove second SD controller
+> > > =C2=A0 hw/arm/beckhoff_CX7200: Remove second GEM
+> > > =C2=A0 hw/arm/beckhoff_CX7200: Adjust Flashes and Busses
+> > > =C2=A0 hw/arm/beckhoff_CX7200: Remove usb interfaces
+> > > =C2=A0 hw/arm/beckhoff_CX7200: Remove unimplemented devices
+> > > =C2=A0 hw/arm/beckhoff_CX7200: Set CPU frequency and PERIPHCLK period
+> > > =C2=A0 hw/arm/beckhoff_CX7200: Add CCAT to CX7200
+> > > =C2=A0 hw/arm/beckhoff_CX7200: Add dummy DDR CTRL to CX7200
+> > >=20
+> > > =C2=A0MAINTAINERS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 |=C2=A0=C2=A0 7 +
+> > > =C2=A0hw/arm/Kconfig=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 =
+18 ++
+> > > =C2=A0hw/arm/beckhoff_CX7200.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 | 440 ++++++++++++++++++++++++++++++
+> > > =C2=A0hw/arm/
+> > > https://nospamproxywebp.beckhoff.com/enQsig/link?id=3DBAgAAACF1PqAcgZ=
+XNGoAAACSdE
+> > > 7DUYKKiipqQsJl32BC_vIVe3kQ23Cr-DKSrQn5Y_I0ZnsAu8qZHVUsGVmYwKL0amQboD-
+> > > LYv9rWN-
+> > > mvEPUf2y-CZ1qrggzKI9xgbKnOi8XSPZVd2G0Lro-8fGR9tAuNB-
+> > > 3CWjEaKli0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0
+> > > > =C2=A0=C2=A0 1 +
+> > > =C2=A0hw/dma/xlnx-zynq-devcfg.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 |=C2=A0 36 ++-
+> > > =C2=A0hw/misc/Kconfig=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 =
+6 +
+> > > =C2=A0hw/misc/beckhoff_ccat.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 | 365 +++++++++++++++++++++++++
+> > > =C2=A0hw/misc/
+> > > https://nospamproxywebp.beckhoff.com/enQsig/link?id=3DBAgAAACF1PqAcgZ=
+XNGoAAACSdE
+> > > 7DUYKKiipqQsJl32BC_vIVe3kQ23Cr-DKSrQn5Y_I0ZnsAu8qZHVUsGVmYwKL0amQboD-
+> > > LYv9rWN-
+> > > mvEPUf2y-CZ1qrggzKI9xgbKnOi8XSPZVd2G0Lro-8fGR9tAuNB-
+> > > 3CWjEaKli0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0
+> > > > =C2=A0=C2=A0 2 +
+> > > =C2=A0hw/misc/zynq_ddr-ctrl.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 | 331 ++++++++++++++++++++++
+> > > =C2=A0hw/misc/zynq_slcr.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 47 ++++
+> > > =C2=A0hw/timer/a9gtimer.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 25 +-
+> > > =C2=A0hw/timer/arm_mptimer.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 33 ++-
+> > > =C2=A0include/hw/dma/xlnx-zynq-devcfg.h |=C2=A0=C2=A0 3 +
+> > > =C2=A0include/hw/timer/a9gtimer.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ |=C2=A0=C2=A0 2 +
+> > > =C2=A0include/hw/timer/arm_mptimer.h=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 =
+4 +
+> > > =C2=A015 files changed, 1309 insertions(+), 11 deletions(-)
+> > > =C2=A0create mode 100644 hw/arm/beckhoff_CX7200.c
+> > > =C2=A0create mode 100644 hw/misc/beckhoff_ccat.c
+> > > =C2=A0create mode 100644 hw/misc/zynq_ddr-ctrl.c
+> >=20
+> > Hi,
+> >=20
+> > any feedback for those commits?
+> >=20
+>=20
+> Hi Corvin,
+>=20
+> Thanks for the reminder and sorry for the delay! I started reviewing and
+> sending comments today. Cool work!
+>=20
+> It would be great if you could include a patch to docs/system/arm/
+> describing how to test this machine.
+>=20
+> Cheers,
+> Edgar
 
-Anyhow,
+Hi Edgar,
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
+thanks for your review! I'm going to add some instructions in v2.
 
 
+--=20
+Kind regards,
+Corvin
 
-> ---
->   ...peed.py => test_aarch64_aspeed_ast2700.py} |   0
->   .../test_aarch64_aspeed_ast2700fc.py          | 135 ++++++++++++++++++
->   2 files changed, 135 insertions(+)
->   rename tests/functional/{test_aarch64_aspeed.py => test_aarch64_aspeed_ast2700.py} (100%)
->   create mode 100755 tests/functional/test_aarch64_aspeed_ast2700fc.py
-> 
-> diff --git a/tests/functional/test_aarch64_aspeed.py b/tests/functional/test_aarch64_aspeed_ast2700.py
-> similarity index 100%
-> rename from tests/functional/test_aarch64_aspeed.py
-> rename to tests/functional/test_aarch64_aspeed_ast2700.py
-> diff --git a/tests/functional/test_aarch64_aspeed_ast2700fc.py b/tests/functional/test_aarch64_aspeed_ast2700fc.py
-> new file mode 100755
-> index 0000000000..b85370e182
-> --- /dev/null
-> +++ b/tests/functional/test_aarch64_aspeed_ast2700fc.py
-> @@ -0,0 +1,135 @@
-> +#!/usr/bin/env python3
-> +#
-> +# Functional test that boots the ASPEED SoCs with firmware
-> +#
-> +# Copyright (C) 2022 ASPEED Technology Inc
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> +
-> +import os
-> +
-> +from qemu_test import QemuSystemTest, Asset
-> +from qemu_test import wait_for_console_pattern
-> +from qemu_test import exec_command_and_wait_for_pattern
-> +
-> +
-> +class AST2x00MachineSDK(QemuSystemTest):
-> +
-> +    def do_test_aarch64_aspeed_sdk_start(self, image):
-> +        self.require_netdev('user')
-> +        self.vm.set_console()
-> +        self.vm.add_args('-device',
-> +                         'tmp105,bus=aspeed.i2c.bus.1,address=0x4d,id=tmp-test')
-> +        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
-> +                         '-net', 'nic', '-net', 'user', '-snapshot')
-> +
-> +        self.vm.launch()
-> +
-> +    def verify_openbmc_boot_and_login(self, name):
-> +        wait_for_console_pattern(self, 'U-Boot 2023.10')
-> +        wait_for_console_pattern(self, '## Loading kernel from FIT Image')
-> +        wait_for_console_pattern(self, 'Starting kernel ...')
-> +
-> +        wait_for_console_pattern(self, f'{name} login:')
-> +        exec_command_and_wait_for_pattern(self, 'root', 'Password:')
-> +        exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
-> +
-> +    ASSET_SDK_V906_AST2700 = Asset(
-> +            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.06/ast2700-default-obmc.tar.gz',
-> +            'f1d53e0be8a404ecce3e105f72bc50fa4e090ad13160ffa91b10a6e0233a9dc6')
-> +
-> +    def do_ast2700_i2c_test(self):
-> +        exec_command_and_wait_for_pattern(self,
-> +            'echo lm75 0x4d > /sys/class/i2c-dev/i2c-1/device/new_device ',
-> +            'i2c i2c-1: new_device: Instantiated device lm75 at 0x4d')
-> +        exec_command_and_wait_for_pattern(self,
-> +            'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '0')
-> +        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
-> +                    property='temperature', value=18000)
-> +        exec_command_and_wait_for_pattern(self,
-> +            'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '18000')
-> +
-> +    def do_ast2700fc_ssp_test(self):
-> +        self.vm.shutdown()
-> +        self.vm.set_console(console_index=1)
-> +        self.vm.launch()
-> +
-> +        exec_command_and_wait_for_pattern(self, '\012', 'ssp:~$')
-> +        exec_command_and_wait_for_pattern(self, 'version',
-> +                                          'Zephyr version 3.7.1')
-> +        exec_command_and_wait_for_pattern(self, 'md 72c02000 1',
-> +                                          '[72c02000] 06010103')
-> +
-> +    def do_ast2700fc_tsp_test(self):
-> +        self.vm.shutdown()
-> +        self.vm.set_console(console_index=2)
-> +        self.vm.launch()
-> +
-> +        exec_command_and_wait_for_pattern(self, '\012', 'tsp:~$')
-> +        exec_command_and_wait_for_pattern(self, 'version',
-> +                                          'Zephyr version 3.7.1')
-> +        exec_command_and_wait_for_pattern(self, 'md 72c02000 1',
-> +                                          '[72c02000] 06010103')
-> +
-> +    def start_ast2700fc_test(self, name):
-> +        ca35_core = 4
-> +        uboot_size = os.path.getsize(self.scratch_file(name,
-> +                                                       'u-boot-nodtb.bin'))
-> +        uboot_dtb_load_addr = hex(0x400000000 + uboot_size)
-> +
-> +        load_images_list = [
-> +            {
-> +                'addr': '0x400000000',
-> +                'file': self.scratch_file(name,
-> +                                          'u-boot-nodtb.bin')
-> +            },
-> +            {
-> +                'addr': str(uboot_dtb_load_addr),
-> +                'file': self.scratch_file(name, 'u-boot.dtb')
-> +            },
-> +            {
-> +                'addr': '0x430000000',
-> +                'file': self.scratch_file(name, 'bl31.bin')
-> +            },
-> +            {
-> +                'addr': '0x430080000',
-> +                'file': self.scratch_file(name, 'optee',
-> +                                          'tee-raw.bin')
-> +            }
-> +        ]
-> +
-> +        for load_image in load_images_list:
-> +            addr = load_image['addr']
-> +            file = load_image['file']
-> +            self.vm.add_args('-device',
-> +                             f'loader,force-raw=on,addr={addr},file={file}')
-> +
-> +        for i in range(ca35_core):
-> +            self.vm.add_args('-device',
-> +                             f'loader,addr=0x430000000,cpu-num={i}')
-> +
-> +        load_elf_list = {
-> +            'ssp': self.scratch_file(name, 'zephyr-aspeed-ssp.elf'),
-> +            'tsp': self.scratch_file(name, 'zephyr-aspeed-tsp.elf')
-> +        }
-> +
-> +        for cpu_num, key in enumerate(load_elf_list, start=4):
-> +            file = load_elf_list[key]
-> +            self.vm.add_args('-device',
-> +                             f'loader,file={file},cpu-num={cpu_num}')
-> +
-> +        self.do_test_aarch64_aspeed_sdk_start(
-> +                self.scratch_file(name, 'image-bmc'))
-> +
-> +    def test_aarch64_ast2700fc_sdk_v09_06(self):
-> +        self.set_machine('ast2700fc')
-> +
-> +        self.archive_extract(self.ASSET_SDK_V906_AST2700)
-> +        self.start_ast2700fc_test('ast2700-default')
-> +        self.verify_openbmc_boot_and_login('ast2700-default')
-> +        self.do_ast2700_i2c_test()
-> +        self.do_ast2700fc_ssp_test()
-> +        self.do_ast2700fc_tsp_test()
-> +
-> +if __name__ == '__main__':
-> +    QemuSystemTest.main()
+--=-8D6COArMecV0LJbJ0okm
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEgvRSla3m2t/H2U9G2FTaVjFeAmoFAmgYfXYACgkQ2FTaVjFe
+AmpInA//XTtzqbwnNAH8aSJb5YJ+MgGBPkDcNENT9UHyFI/1hserPdXfd4V2lb5E
+M6JFvGYBIanIo+80oxlErD5KAsq9Y0gFTmvPM/EdN7xrv3CZiE+rzBB9CZ8tvakC
+/5TwlWUQ8AN+r6wB10dP1kFNri/svGuDuXdTf2yN/3pOBW6ZjcKlY6PliBSxyDqr
+tE/9ViRip+sFrwAt0tef1mk/HBVnDm4OlUTsj1ZbmfX92JEEXcSPMyZEFfQ3tXTr
+wCUrWPlNAehCl8W6BlSA+xt2/YcQTF/kEnK6/DkdgCb4lt3lWfm7ZKi1X9RMGxUK
+1SbYTOGanzf1wrmFEhVteyWaN6b7TW/8/3SPB2tlP4rs1zCIOZznogF6Xn2IwZw+
+PerMF8dsknurRvne7IC0CmIeOUgItIxA2Z5K9MQAK0syt0FemazCyMtCd/Ng+kfK
+0AeGfY/jxjqUNoDWvxNFWfvpqKWwXGW/buEPOCU9Mo1XK8/dgJTySYqFBy3JueQc
+LJouaLui+eLLwfqdPr5XyJ0usaP8W6cbq9OwENtH3Ph5mcaJ/6Qn4eoDwy9Kv6Ig
+j13ihKHJWoMpJiXadsfmlXZZxMP0U/PvtbXBz7mHhGS5Qsabph1Jru77MeXcbEDu
+gDYfZ9+izjQiuoXiSUqcWKQGmIeb93rn/uxTMEu8hxO5YJLPpRY=
+=iqd7
+-----END PGP SIGNATURE-----
+
+--=-8D6COArMecV0LJbJ0okm--
 

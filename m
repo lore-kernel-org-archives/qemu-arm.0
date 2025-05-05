@@ -1,207 +1,248 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2089567njj;
-        Sun, 4 May 2025 13:57:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXII8dub5/x7iXKMjLQnIqxcLwUnPo00T0FhKOvGZeIgJpdLPxYd2gejEKg+MfBPcRKywKqohviD4B75w==@linaro.org
-X-Google-Smtp-Source: AGHT+IHSXeL6JSnZT3d9d42z9xn2Zdm3Z97nEF4cYOFjh66ykZ856uX1qGOiHbQDVxNnsyeU6vl/
-X-Received: by 2002:a05:620a:1664:b0:7c5:4f5f:15b7 with SMTP id af79cd13be357-7cae3a9c3fcmr586980485a.21.1746392262357;
-        Sun, 04 May 2025 13:57:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746392262; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2287236njj;
+        Mon, 5 May 2025 01:19:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWr04wmFV7UxD9mjnh20nNkmRHEHbAZ88MMkPVfkQKq5oT8peC2yOz9zTA1wiCCDiIYE3jZzxd9PCJLow==@linaro.org
+X-Google-Smtp-Source: AGHT+IF0DWCtJzfI7FwPBo6NY0akDltY7uvL8ocKT/II4ckuyEpXh8yldh7xaBQw5VPQ9dOvODbE
+X-Received: by 2002:a05:620a:170a:b0:7c5:4d2e:4d2d with SMTP id af79cd13be357-7cae3b0ca45mr894708385a.50.1746433155296;
+        Mon, 05 May 2025 01:19:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746433155; cv=none;
         d=google.com; s=arc-20240605;
-        b=S4qLgy9sNegKWOQSJdarUDu2XsqGOa9GrwNHXQr60j7k9fJkOee09FULt9kCsdq+Pn
-         Jw/o48aLkYQWdFyMf5CwygErzVGQIqZdcnY7q//06s+sFd1UNEKgoXs9J0x6FqWXktLj
-         Dy0/LMRqLN/bxhnr8DKs0cVcWQxsWoQp5/uXmHqeGsXoym+hiunMfXYAlapa/YneFP58
-         jOLC8oAh4SGhyBzQGPRKEgyvr/TpzAhphEBVcSMZweVLFJo0HFr0Gt7iiiCVaE7dUXN+
-         9/2PCn6j5R31jdcuuZElKLpfSDkgtMCbc610jllE8ZfT4h3pGzjrVeDACWBv273QIThn
-         F0Mw==
+        b=UMJc5FpBHry1vhTZ8ji9uysHh4AHfJhrOMQWNuWisfKrpyOq/ilm68/ACSI1XGiSM7
+         ylI3RBT55bPZsAogzX50O6pf5PhMyG/p4VSH2fyK0g0cDkiVfyzlL86gGmuOqAquauN9
+         LyabrNcyGARt37YqQAUGEkU6oUmLMlEpc4Qd8N3lEAKMUNVfMAeusn/V06j90Qwtyeo8
+         pkdcUOLyNahP1IeH2bGO0JRiL+NQBv/PB+7nn86295CnnQGXaTiV0HjZZqn3pKRY7lpM
+         2b1x9pSbNuv81Kdyk7l5kmEuMVc6/uaCjlN0JHneCRl1ABcq1cl7TqzfFwkSFcQvUXQ+
+         +82Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=el8ZwnuFADKnWT5Jx67GSOlo5+a9PaEYQq8A/ViamLA=;
-        fh=m2VraIPxhAhyiKyM9VAS116srqIrpxnq+m7EVELXdfM=;
-        b=ZsrA6qC3x9Pmce61quAfHCJtGL2Kdaft+37MLN4ztd4mNc57BXAPonKys/euf5pJvj
-         iXUNyTWzIozUcVkWW+w366843pt/Cp0RQ2uaW/y7c0wLLXzyd+CIV/HKY5L1zErzWFru
-         JwtbXgrgTlFo7KRoHgK8EnH8gXVh+CGUK13o5Nu18C1qAgwqnniHED6CvjjDVzl3ZD4P
-         QcF7ROvcwhfDWCOrDVcv/eJev7YeeEpgnwE683Jg0a+3grmfKOZ/avzJ+9foJtmIt6Dr
-         A2SprJPTiwoBYyoAPcLmSL9FrnBf2NeJHKpqXZFxMoI6dk1gmtJyEUNiGJRvTVNhge9g
-         YceA==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=ZiiD4ub45n6wjGHUVcmoDtrZrSOwJUWD5UkM8L/cXm8=;
+        fh=fa9alKsURA/QmA3Et5IqbCWb2Ccj9qXwAApSZSc2yyo=;
+        b=HxGIeq5M9PmWLdxEE2NFiwHvC+7EcmHKcGrVStHHm0pqm0PblFLE02REPHsvZs+7IB
+         7ArwB3SnpAshvAKWq8rXcB7Sw4CdBnE0RKX8Mp3WmFcWuDCQVgh52QDerBfqrOZKYPP0
+         I+GH49Q7bYkpyLr/un6oBTWnfwVCP1FqWOXgc1LAbT6nRlNC3WhloDQY58235Ogk4m4n
+         KIImSLm8MwLKMoe6cg+2ELHSRKjANV2mpraVrob4u9w8+esmTIeENpzXPyGYob3NIDQT
+         /65OJvNEvWnUHHBIJUX1GZLb4D6P6Gz3Q6TlHaGmvSTLOe8ZAobsrUdpbBVsEAeAjsHo
+         DGkQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UttDiJsL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cad23ba76csi784904585a.100.2025.05.04.13.57.42
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="InrQmx/8";
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7cad2432664si830383785a.392.2025.05.05.01.19.15
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 04 May 2025 13:57:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 05 May 2025 01:19:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UttDiJsL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uBgOx-0008PA-CI; Sun, 04 May 2025 16:57:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uBgOo-0008LS-BW
- for qemu-devel@nongnu.org; Sun, 04 May 2025 16:57:23 -0400
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uBgOm-0006wF-DK
- for qemu-devel@nongnu.org; Sun, 04 May 2025 16:57:21 -0400
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-224100e9a5cso51794745ad.2
- for <qemu-devel@nongnu.org>; Sun, 04 May 2025 13:57:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1746392239; x=1746997039; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=el8ZwnuFADKnWT5Jx67GSOlo5+a9PaEYQq8A/ViamLA=;
- b=UttDiJsLtPOGIV2Nk034IRbQb1wUNDHsuv1rmrapK0+kzKfbqmgGY3x13JndfNFtRf
- fOBne8X7dTHvTOj2+dJTJD7YhXGkFIgjT9gWS+zlEJ/bWX/7QFits31wanKC+ocGk0cV
- US3wiVaXdnfb7aAfpXPJtPMNrvxXL8kauolkEKdJPI7O1PXqDrZUHToNlgumHMQ+cgeG
- V/cVqxS0ePEVxaPrd9bcpumaCYJ38RfYWNia3PZFmPyEI98K2q6/A65S3n5WufDgD/CI
- YjpZHPNABGp9uoukgyGZN8kcyMfPI1fV/8yYAsvoFA5g7AiF3Sr62JXCssKyv91OX7IP
- O+AQ==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="InrQmx/8";
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1746433154;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ZiiD4ub45n6wjGHUVcmoDtrZrSOwJUWD5UkM8L/cXm8=;
+	b=InrQmx/8gUZ5oVGOm3nMi7Q3STm17598WmcZUMm1xTHMdw9sUd/IytL408u8l9kDENqM1K
+	wgoRjg3l5MTwZOKvkgWPJPvQCfVEBMTymSb3QEgAYI+OmKq3eftW55TjUxUEXocz894ycd
+	gTvmMcSx15Z3Cyyz/3M5E64EnY3Nbko=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-606-Utz6SeqeMDajqCSbBDgidw-1; Mon, 05 May 2025 04:19:12 -0400
+X-MC-Unique: Utz6SeqeMDajqCSbBDgidw-1
+X-Mimecast-MFC-AGG-ID: Utz6SeqeMDajqCSbBDgidw_1746433151
+Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-39131f2bbe5so1259520f8f.3
+        for <alex.bennee@linaro.org>; Mon, 05 May 2025 01:19:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746392239; x=1746997039;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=el8ZwnuFADKnWT5Jx67GSOlo5+a9PaEYQq8A/ViamLA=;
- b=Wm1AIhi1BOYwyUHBxIE3HArJDTGIDj2fzh8GJMgyVSuX7znHiNbYcFO6awZdy0tjsx
- B2B+Y82r+sV7p5/rSqQ8H/rSMyDpuWJTtWVdSZM6cNrA4bgGjeSHXF3VXlyA9EF6qcEs
- L/A/eCgBB5Dg46QtFyGGbd/U4wW0qUIk3YaYh/8sr4ZBrka8lmZVyP5CB/6dGmZNzm8R
- i22PYxdKdlZz6h0tWpZsi5IqeYx5wuiVA2/kJjhN5YvgU8Vp79oYld3fqtK4fEyzh54/
- zjhJaQ4IGUdLe55LZWOPuvr9o5fQcvzkaVze4kPvI+osF/UrxiIGEH1PfdU0hB/dA+BC
- 9F+g==
-X-Gm-Message-State: AOJu0Yzii+I9Kaebgt3Q1oil4izahOjTYbM9xe0AH5XQUHivzF5R5zYl
- Lbok3ggThEKALTJSJIQKyXmOaTcvXzes95bnB1IM9Mf3KfkUjh7lIKwprOF8dCoPAJFV1YXDi8D
- O
-X-Gm-Gg: ASbGncsZeu7B+FxoD993IfzapZypqjNoHh4sUciCur37uy1YvThCexaHtWbf4MsjWjJ
- sDD9xqgmzr7CH6QSjKmB7UmZhgkeGWMVobLvUvyqgU2rq42vk1ShEqT9uEN8hZmuK84tDH20Gmc
- gxNwWI7nmFCCnpcwbI9154d3AMc8o576NRBimUC9J1FKvCou5pOPXXEvHdG9hb8XCo96oTyRsDM
- 9cwVhHKl+RERqGUjboauMy/zR269HjvGVs9jhX+NXl5+MVsFJshM6EmcYi/NyUCbDjsW0ebr0Mn
- DlD3lxTbvWd01T2/rosgjo3QrSsYPf8TIhIzhkaLT+tP40UH5hE/PFEVoDxSA7dkJPMnZtoyx0M
- =
-X-Received: by 2002:a17:902:ec85:b0:21f:988d:5758 with SMTP id
- d9443c01a7336-22e1ea61942mr69746255ad.35.1746392238999; 
- Sun, 04 May 2025 13:57:18 -0700 (PDT)
-Received: from stoup.. (71-212-47-143.tukw.qwest.net. [71.212.47.143])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-22e150eadfcsm41346425ad.32.2025.05.04.13.57.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 04 May 2025 13:57:18 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: foss@percivaleng.com,
-	qemu-arm@nongnu.org
-Subject: [PATCH 04/12] target/arm: Fill in TCGCPUOps.pointer_wrap
-Date: Sun,  4 May 2025 13:57:05 -0700
-Message-ID: <20250504205714.3432096-5-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250504205714.3432096-1-richard.henderson@linaro.org>
-References: <20250504205714.3432096-1-richard.henderson@linaro.org>
+        d=1e100.net; s=20230601; t=1746433151; x=1747037951;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZiiD4ub45n6wjGHUVcmoDtrZrSOwJUWD5UkM8L/cXm8=;
+        b=KefjpBkY31YKXEo0KSpqLEPONto1McGzwSlrGIhbWcfbd5VtlrZvJWgRMsXOUCKS8Z
+         ZI2aKcndSRVvWNvdrzU/OyY+txjXP+2W1soVG+Gaw72lPveWR7SGrHlC9FbDtSCC1ckl
+         hDNwCBNjt4Uy/+0gkVRqC7nOsyNpvk1rBlXVil5bzHovMIju/DPUtHSgCUY9HWUZlnZS
+         bPOBK9K3KxLuhnkA1QpvqAWhxSFogC4P0zcpzDSlWZ3byRUYd+FMBB/KqUyxb8YClH1f
+         tGSvj3Zj/tlKkr3U0R+3pZOh0WCxHmT+gCgAMzc/r88ig+c7YcxdZmdDBvhlNB3BHhDt
+         223g==
+X-Forwarded-Encrypted: i=1; AJvYcCXQdYmsYGwg1odM5ILVFb8egr0iASWt45hWuuZR3Bj8te1YE0/vfcqWw3/nzpEreLNSobV0EmfMrZDxyw==@linaro.org
+X-Gm-Message-State: AOJu0YxeC4WNLkzUrSkh8WUZBNcek4IXdDa5PPMgvYFYWsFHe3RzcSpu
+	G/9Vi4TB+NRkXW0bMK2MjClRxrg6lAROO94rxP4wcWjgjZ4QtQ4T2upOyg4Ti00WMtB6X3SEt4S
+	I48nFBrvhBkK9eETmiQnmflwzFk/IlgItdLxWInW/QeElIHwbtVUgvA==
+X-Gm-Gg: ASbGncty17iVwXH3pq6J53/lgElzud7wLR7MPnL6JU+e/EOAy+tPk7EiN0l/SgmK2lM
+	Sbzv2lKMyCAHmE0GWR34CrE/C6OYez8NBHBd+jA5YXyAeumCsJHI6/F6XVOMEBkkMDpNS3uIdvg
+	jNlcXMb/5pMemncvPkReWAvi1lpKdwqzcZZ4hqzKOudrhADT6yGVc63u2qrzlh5rE19hyZ9iiFv
+	q5ql6T4ldN8NOtZDOYSdaZnTP0U+j21wSzWVnjBvQTHTHKAR7UCR9Gurl6sOozoS8GSdJab9yCX
+	CB/J48xRDhQillWYkXAaLhYg4m1uopIBoOftCUZovX27DPRylAokvLk4owk=
+X-Received: by 2002:a05:6000:2583:b0:391:4674:b136 with SMTP id ffacd0b85a97d-3a09fd7c676mr3826653f8f.29.1746433150700;
+        Mon, 05 May 2025 01:19:10 -0700 (PDT)
+X-Received: by 2002:a05:6000:2583:b0:391:4674:b136 with SMTP id ffacd0b85a97d-3a09fd7c676mr3826634f8f.29.1746433150199;
+        Mon, 05 May 2025 01:19:10 -0700 (PDT)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a099ae3d3bsm9765237f8f.33.2025.05.05.01.19.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 05 May 2025 01:19:09 -0700 (PDT)
+Message-ID: <fd3219d3-bab3-4991-afbe-fd80549bbca4@redhat.com>
+Date: Mon, 5 May 2025 10:19:08 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Reply-To: eric.auger@redhat.com
+Subject: Re: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a PCIe RC
+To: Donald Dutile <ddutile@redhat.com>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: jgg@nvidia.com, nicolinc@nvidia.com, berrange@redhat.com,
+ nathanc@nvidia.com, mochs@nvidia.com, smostafa@google.com,
+ linuxarm@huawei.com, wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
+ jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
+References: <20250502102707.110516-1-shameerali.kolothum.thodi@huawei.com>
+ <20250502102707.110516-2-shameerali.kolothum.thodi@huawei.com>
+ <03c31d89-ad24-4470-99d0-a77e693e3ba2@redhat.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <03c31d89-ad24-4470-99d0-a77e693e3ba2@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: zNgAAf2QbseLCBbxxeLD34an-rDTZZZ_Gq4W3lcfNx4_1746433151
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Y52TdwQinIuT
+X-TUID: NCdjSq80RGN6
 
-For a-profile, check A32 vs A64 state.
-For m-profile, use cpu_pointer_wrap_uint32.
+Hi,
+On 5/2/25 8:16 PM, Donald Dutile wrote:
+>
+>
+> On 5/2/25 6:27 AM, Shameer Kolothum wrote:
+>> Although this change does not affect functionality at present, it lays
+>> the groundwork for enabling user-created SMMUv3 devices in
+>> future patches
+>>
+>> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+>> ---
+>>   hw/arm/smmuv3.c | 26 ++++++++++++++++++++++++++
+>>   hw/arm/virt.c   |  3 ++-
+>>   2 files changed, 28 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+>> index ab67972353..605de9b721 100644
+>> --- a/hw/arm/smmuv3.c
+>> +++ b/hw/arm/smmuv3.c
+>> @@ -24,6 +24,7 @@
+>>   #include "hw/qdev-properties.h"
+>>   #include "hw/qdev-core.h"
+>>   #include "hw/pci/pci.h"
+>> +#include "hw/pci/pci_bridge.h"
+>>   #include "cpu.h"
+>>   #include "exec/target_page.h"
+>>   #include "trace.h"
+>> @@ -1874,6 +1875,25 @@ static void smmu_reset_exit(Object *obj,
+>> ResetType type)
+>>       smmuv3_init_regs(s);
+>>   }
+>>   +static int smmuv3_pcie_bus(Object *obj, void *opaque)
+>> +{
+>> +    DeviceState *d = opaque;
+>> +    PCIBus *bus;
+>> +
+>> +    if (!object_dynamic_cast(obj, TYPE_PCI_HOST_BRIDGE)) {
+>> +        return 0;
+>> +    }
+>> +
+>> +    bus = PCI_HOST_BRIDGE(obj)->bus;
+>> +    if (d->parent_bus && !strcmp(bus->qbus.name,
+>> d->parent_bus->name)) {
+>> +        object_property_set_link(OBJECT(d), "primary-bus", OBJECT(bus),
+>> +                                 &error_abort);
+>> +        /* Return non-zero as we got the bus and don't need further
+>> iteration.*/
+>> +        return 1;
+>> +    }
+>> +    return 0;
+>> +}
+>> +
+>>   static void smmu_realize(DeviceState *d, Error **errp)
+>>   {
+>>       SMMUState *sys = ARM_SMMU(d);
+>> @@ -1882,6 +1902,10 @@ static void smmu_realize(DeviceState *d, Error
+>> **errp)
+>>       SysBusDevice *dev = SYS_BUS_DEVICE(d);
+>>       Error *local_err = NULL;
+>>   +    if (!object_property_get_link(OBJECT(d), "primary-bus",
+>> &error_abort)) {
+>> +        object_child_foreach_recursive(object_get_root(),
+>> smmuv3_pcie_bus, d);
+>> +    }
+>> +
+>>       c->parent_realize(d, &local_err);
+>>       if (local_err) {
+>>           error_propagate(errp, local_err);
+>> @@ -1996,6 +2020,8 @@ static void smmuv3_class_init(ObjectClass
+>> *klass, const void *data)
+>>       device_class_set_parent_realize(dc, smmu_realize,
+>>                                       &c->parent_realize);
+>>       device_class_set_props(dc, smmuv3_properties);
+>> +    dc->hotpluggable = false;
+>> +    dc->bus_type = TYPE_PCIE_BUS;
+> Does this force legacy SMMUv3 to be tied to a PCIe bus now?
+> if so, will that break some existing legacy smmuv3 configs?, i.e.,
+> virtio-scsi attached to a legacy smmuv3.
 
-Cc: qemu-arm@nongnu.org
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu.c         | 24 ++++++++++++++++++++++++
- target/arm/tcg/cpu-v7m.c |  1 +
- 2 files changed, 25 insertions(+)
+Previously the SMMU was already always attached to a PCI primary-bus
+(vms->bus ie. pci0). virtio-scsi-pci is the device being protected. The
+SMMU is not able to protect platforms devices atm.
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 45cb6fd7ee..18edcf49c6 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2710,6 +2710,29 @@ static const struct SysemuCPUOps arm_sysemu_ops = {
- #endif
- 
- #ifdef CONFIG_TCG
-+#ifndef CONFIG_USER_ONLY
-+static vaddr aprofile_pointer_wrap(CPUState *cs, int mmu_idx,
-+                                   vaddr result, vaddr base)
-+{
-+    /*
-+     * The Stage2 and Phys indexes are only used for ptw on arm32,
-+     * and all pte's are aligned, so we never produce a wrap for these.
-+     * Double check that we're not truncating a 40-bit physical address.
-+     */
-+    assert((unsigned)mmu_idx < (ARMMMUIdx_Stage2_S & ARM_MMU_IDX_COREIDX_MASK));
-+
-+    if (!is_a64(cpu_env(cs))) {
-+        return (uint32_t)result;
-+    }
-+
-+    /*
-+     * TODO: For FEAT_CPA2, decide how to we want to resolve
-+     * Unpredictable_CPACHECK in AddressIncrement.
-+     */
-+    return result;
-+}
-+#endif /* !CONFIG_USER_ONLY */
-+
- static const TCGCPUOps arm_tcg_ops = {
-     .mttcg_supported = true,
-     /* ARM processors have a weak memory model */
-@@ -2729,6 +2752,7 @@ static const TCGCPUOps arm_tcg_ops = {
-     .untagged_addr = aarch64_untagged_addr,
- #else
-     .tlb_fill_align = arm_cpu_tlb_fill_align,
-+    .pointer_wrap = aprofile_pointer_wrap,
-     .cpu_exec_interrupt = arm_cpu_exec_interrupt,
-     .cpu_exec_halt = arm_cpu_exec_halt,
-     .cpu_exec_reset = cpu_reset,
-diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
-index 95b23d9b55..8e1a083b91 100644
---- a/target/arm/tcg/cpu-v7m.c
-+++ b/target/arm/tcg/cpu-v7m.c
-@@ -249,6 +249,7 @@ static const TCGCPUOps arm_v7m_tcg_ops = {
-     .record_sigbus = arm_cpu_record_sigbus,
- #else
-     .tlb_fill_align = arm_cpu_tlb_fill_align,
-+    .pointer_wrap = cpu_pointer_wrap_uint32,
-     .cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt,
-     .cpu_exec_halt = arm_cpu_exec_halt,
-     .cpu_exec_reset = cpu_reset,
--- 
-2.43.0
+My only concern is we are highjacking the "bus" prop to record the bus
+hierarchy the SMMU is protecting. While the SMMU is a platform device
+and does not inherit the PCI device base class its bus type becomes
+"TYPE_PCIE_BUS". So in terms of qom hierachy is is seen as a PCI device
+now? I don't know if it is a problem. An alternative could be to keep
+the bus pointer and type as it was before and introduce a primary-bus
+property. Adding Markus, Peter, Daniel and Alex in to.
 
+At some point it was envisionned to support protected platform devices
+(I think this was need for CCA). My fear is that if we turn the bus type
+to PCIE it may be difficult to extend the support to non PCIe protected
+devices. The SMMU shall remain a platform device being able to protect
+either PCI devices and, in the future, platform devices.
+
+Thanks
+
+Eric
+>
+>>   }
+>>     static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 177f3dd22c..3bae4e374f 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -56,6 +56,7 @@
+>>   #include "qemu/cutils.h"
+>>   #include "qemu/error-report.h"
+>>   #include "qemu/module.h"
+>> +#include "hw/pci/pci_bus.h"
+>>   #include "hw/pci-host/gpex.h"
+>>   #include "hw/virtio/virtio-pci.h"
+>>   #include "hw/core/sysbus-fdt.h"
+>> @@ -1442,7 +1443,7 @@ static void create_smmu(const VirtMachineState
+>> *vms,
+>>       }
+>>       object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
+>>                                &error_abort);
+>> -    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+>> +    qdev_realize_and_unref(dev, &bus->qbus, &error_fatal);
+>>       sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+>>       for (i = 0; i < NUM_SMMU_IRQS; i++) {
+>>           sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+>

@@ -1,85 +1,85 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2778396njj;
-        Mon, 5 May 2025 16:20:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUSG9m7dECLggmsfHuZJ8rzIABMWR5YEaG0JZjuzefq4QUIXTfbzUZXyojEPh+O5MrBvkqrurRTBBzpEw==@linaro.org
-X-Received: by 2002:a17:902:ce88:b0:22e:17e4:efd9 with SMTP id d9443c01a7336-22e363b1c1cmr11933025ad.43.1746487252805;
-        Mon, 05 May 2025 16:20:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746487252; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2778410njj;
+        Mon, 5 May 2025 16:20:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVUKAFcTMpMXzp1Fcuo6xyssEombtufURj2goa0WftcxlTAg7ySZH7jHugNTFUpy2zW4iaKrphdnc1ZSg==@linaro.org
+X-Received: by 2002:a17:903:2ecb:b0:223:4341:a994 with SMTP id d9443c01a7336-22e328ba7e9mr14326885ad.9.1746487254628;
+        Mon, 05 May 2025 16:20:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746487254; cv=none;
         d=google.com; s=arc-20240605;
-        b=DPuQLbmV8YkyfwMIh9/obLSRWy1u5cM3Uts5x3x33bR6xLMpF5OfiaWe4eLsKUu8I/
-         PeUJCfQZW8qHEZT1b3BX4WqPoL6iwg+KcCnaWEb26+emVQhxNxvJqr0aQ0KI/Q/vUwaV
-         UizAcCqk8Pf7Zt17q1YH0rGRkPE7HYSRspzp5mVM09gLSI7dI4CJXkgXLHm7QgKEcelH
-         5ABiYf707QhqMsjmzW8neWdAA9zIPVXA6o2xfS4E9YM6gQImPiS+Wh8n978bfV7zCouC
-         lHkH9VIUBbfWVDZeMa/6CwZsbijgtt5kmhH0IveIAlQ5tDQoIILyyh9L8TsMUex3J3nD
-         CBUg==
+        b=lNHEcrmIOQMy+qPPGevrEKRBQatHFS9qy6sLA66sPUl0JkWhhys3XQ3BstbUlQIzda
+         4bGpFaIjVGk/3FO1zHBEbBvAHMKtI3RzHsHmcADO9vWM1bmZBQdOrAaLWo+vPMieV5Ag
+         ROTkrG+fbn5q4WkIYXW4EN/7SX7AA8sV7bovbZCGPkxnnUie5vSNngcK3TYzMTL8viPZ
+         plvIWFCX63LNluI0dNNat+NjAeowjvaV3F/8OJv1dj3FhSbhLMf5tWwspEJGS+xxg4Ft
+         XNwXPIU+qK1TPIpIHn8+NLgb3OR6t+nPR2LZe+Ni8gySDZ8KImfSYaWPS09jsKabmFks
+         vYsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=oONThx//EO5WSiuREF023HuwIIuJ5yNwT7cwhGAiXZE=;
-        fh=Gn4FXM/AEF51WYrs/cGzGE/fx/yz6ohpErQwkbLP9YU=;
-        b=IiuPqj9k9+MeUd6xTpJPyEcM7US91GKQE0G5AvU126ZvJezR30dJj4V8NHgS2vCph0
-         cVWt2A3CQFfaBNO+ROF91LqzFngYIwQftZWug6dXPHBQAa/kzg+fvwUNT2CR7QDkKAsR
-         cntOpZ+YJz83OKEf34D1Cf8L9cp1ruqZyhkdDCeFF6/pG3SfmcVcOIxYt6gzKCRUigRu
-         S9W6cbBqst9++4oLmkt3yhJD/oi8d1TOjupw5ulr9Dr6w2SDX89V533xM8l38h4IVqv7
-         WGeviXkPdlSYjb7rPAf0V52K7PAS6JTJWQ1cy6kHIEZOdRI5Ct6x4D+PB89mk2G+YYx2
-         Gccg==;
+        bh=RCBMR6tP31v0B0NBZf6LKRmnPLfJofFf8No/ewC08TY=;
+        fh=D4h4MhVbpv6vFDSrhC+kPZ3kCRxoe1beszONJY9/V5U=;
+        b=PsLs7oFtcMtDIBNfVWhnEN2oCw5wG1m9ZmUlarBudASKIr+zbo0+htaWUk3C+En6bR
+         0c+TtfL2KFFJxmJhyBiH5Vnvi1BkZlzDt2nezbmnUXDQ1mBrEejI3kPSNPYrbpv5fxm1
+         k6XJGSh2EaOgZuNSMfgz/xND8gYdoG025H1Mx5XTQ+mnUtV8GiBJgzZt37NhqpyZ4NnB
+         cZaljnNzAoBthUhNR/FJre/04HJhMT9ptiRWNZW8o+CHKb/2FYhVGpUqVAmIGAlpZf7c
+         6R5t1tTQS5i+1EwaR2Emgh6TD0b1voMLc4EOxUGWxkbMe683K3wnctZNQEH6bAuGfbI1
+         FkcQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kCQTVIma;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uWqNVTx0;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-22e0bb19364sor77236355ad.4.2025.05.05.16.20.52
+        by mx.google.com with SMTPS id d9443c01a7336-22e0bc7e0ddsor57445225ad.17.2025.05.05.16.20.54
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 05 May 2025 16:20:52 -0700 (PDT)
+        Mon, 05 May 2025 16:20:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kCQTVIma;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uWqNVTx0;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1746487252; x=1747092052; darn=linaro.org;
+        d=linaro.org; s=google; t=1746487254; x=1747092054; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=oONThx//EO5WSiuREF023HuwIIuJ5yNwT7cwhGAiXZE=;
-        b=kCQTVIma7AaUt0oCjABWAv/RlDhdW0B65VkGgglqvrGN/QfAa8cJT1QjijAXYbL56z
-         ab68sbbLtTPWG3hoKdopKyGsXsLKsBflftVJLcU2k2MEg69PqSRkm+PAE2ESj/CmNfVf
-         Q6FlZExzhMeKs4eQjtH0cYls5IZSCMBU666l+pBsX6uPF1GwfjWzgHsf0vLTMit4se2w
-         BzRcKyFgloilOuBmFmqu/v6rhPhSumrmmmZ0LqKAaQP+lebWu1E2FpgAllf2/Kd4dXBk
-         ZZy3P53Xpjgk3WWTEaXvCJe35KWAADfBDaUF5cDjV1fhdg4Oxh9LL4sgDJFPq6rYHlVa
-         B91g==
+        bh=RCBMR6tP31v0B0NBZf6LKRmnPLfJofFf8No/ewC08TY=;
+        b=uWqNVTx0ygUx4VXbIaCSMvG0kA5zubLtKO92y85fodto2PxMZiLcaDOCatpB+F7flC
+         Shogxs5S05dDauVw+hOmNp3liMlZ9CSP30vLH0S+cAHkjLKG8Uhy6T89p4KwWqmuxaZ5
+         Yu1UtQdjafg1WV1JZovA6Az0Yfn6i+NF5ZjomUGaze4F8V1fajEFEtAQUYFZqm7dG0pq
+         AaR0rHm8mkDEYjkiuKoQ/gTdQsyKb9xapghD5DfeJMcM7DXGD+m0rpU4/GmEZ9g4VeBo
+         UH2S4LPicK7L82bHPVd3rgwEZSNjJz2dpiPoFqSy06pjHbbZWcT2RQC4hyTw2y/4Kmbl
+         MFHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746487252; x=1747092052;
+        d=1e100.net; s=20230601; t=1746487254; x=1747092054;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=oONThx//EO5WSiuREF023HuwIIuJ5yNwT7cwhGAiXZE=;
-        b=ksUD024eye1E53xiKwa0K24dYE2rvR2Xt7ss9DD4pWd29dg/9O1erXBlcrVbfyVFOv
-         VABtsuqXARIIo/gK7d5JI5JjIoYEC1tnLbS1LqGshdLlRNri3uzGNEuZROfWB8WrJTlE
-         suISKVhoapvQNONu1m2Dl9oIU6P6XaGPhyMg5zgjpZuEeUZ9L620Ti22xxn4fUJE0/85
-         1v/SFmzl7DkdW26a9bXRJn2C4BT6/kw2tjo58tBwj/6gkExTgfPVPw9za825XacClc2s
-         9F9MR3oPKPZod2FK6E5RxQ4YufMuHiIcUodtLJsIoCL+UbesiK6DUEdwl4oraXwY/YDd
-         NXEA==
-X-Forwarded-Encrypted: i=1; AJvYcCXmrmDJlzOi9TqJ/8nQXDwDEQcn2A7tGzKLdRamAcPBM4GdNuGrMBON5irdsXHcDSO6qZzseOxC6UcYSg==@linaro.org
-X-Gm-Message-State: AOJu0YzSjSCRtjiWZu4GIQ3X8BuqlSyetmFclroinXdtUzdI6fuDtT6W
-	scqH0LFeKOJWsXXOV30bk5zh3fxSJR5M0ztdnANXtRRW+oTK6K8haMLXeiYJ94LN3w==
-X-Gm-Gg: ASbGnct1wfguDqJd0XSAu8OM5GzSWEbQ7qO0qQF+aKpBZ7GbxK/cxFTitAVDi+tF7P4
-	V+33sWyr7LjvJ2CwPt3vc6LGTrlfQPSLHbtenTORXynhWtVq4+sHm3d+OZAffAdNNA/BMPPlcHk
-	Vh2g0ZYu+oOkvV/jiJRJfmgABrK/DwFG3kTNl9l1g0Is4od7X1DgGLrqGqpEUxBk4vt0XhoLXdn
-	Ld2XMYuyYq/sWTgOszLRti0TF0tcI6ZeKFkpMgKXYUTFxOksSx13w9tv96eXJ/MOFnxDQEBx+z3
-	DdwVv2hkP4V8RcKFjBeySRu6OKYajY0DN3KeYfcS
-X-Google-Smtp-Source: AGHT+IFKCrJfIDo/31BgGwDwgpaARmni7MMqsmZbFLEssmnSeYuJ1cHa2Ln0JoRRYGFqfKT1x0RIAQ==
-X-Received: by 2002:a17:903:1ce:b0:220:faa2:c911 with SMTP id d9443c01a7336-22e35fdf665mr13176195ad.14.1746487252440;
-        Mon, 05 May 2025 16:20:52 -0700 (PDT)
+        bh=RCBMR6tP31v0B0NBZf6LKRmnPLfJofFf8No/ewC08TY=;
+        b=Ef552IHmROuQWAwMnV/gYS8FZcSbY4BOt1ic6uVbt2WF02JL1VNdnJh/Kao3EUMS0A
+         UnpGat6ED8rUi58w0iGRH+GlhFxayQXZJjGtNT+vMabwIW4bhohteqrv7cySNA8H1Edg
+         l5p+tcEm31SUgw0y6u3cDraCMpG/FSBJqfDOmNoYKMBvfmeBQJOKC32gN7kWOILu/flr
+         8kAUSF4c99b4bRLrQqctfMPjsaQM9vKJhg+oM/oa4n2rndG7BRSnzqL6eeY7uJfrO84t
+         tA2d6ed9i3uYqRgHq4jQdVY2EOk6S9ydBS/qdMJGWkYXHuK6nzpTVEfuNUVCVFsML0Qy
+         EOtw==
+X-Forwarded-Encrypted: i=1; AJvYcCXuLbj5WgJEO29n4xnnPT//qRNEzeIbFEEKAfS54SlGoY4s+lMpRtWCgPn/fq+VlHzaxpXUvB1j6MotIQ==@linaro.org
+X-Gm-Message-State: AOJu0Yw6C8GIXJ5DaAAONEJRYgDCUxiRyPH2waVO2VN7y6JykbN2Z0I6
+	nxfoyStF6qNRSvRhdVMEXD0eHYxrpJAlHtF7dtpYNIai4AH+pp4+05L/p952Wb9EgA==
+X-Gm-Gg: ASbGncv1zs/W2zXXbKlMjdQseDmGWFpXuncwJDM5edeSMR2OIEOFFHiKrafyQ3/xPY/
+	GhsjkyifkpxkP0H5eHs4GXciY+ZU6DG55sKZ4Qanniur2AIRnNwZji308i7b5n5p4Ak7y5hjOAP
+	eGAod+UAQCqccPb7fiL7lh29CsPLbqDMXHef5S05PrLfe9TrN6WiPE2EsTA42in82YkdqnkjQqD
+	7FZkk95hMYxMiaWcpGxhWT10o01smNDeWSo69ed+sb47trTP8Vwbq9xZKC/yZbQr4Pqh0g7g9CH
+	fORiDvTM0w/Q0blFBN6AI9IxZyxeGMndOnfxhO5H
+X-Google-Smtp-Source: AGHT+IEEWCUQlzVgGthYff6k9Jr792b5t/XjUuobOuK1wX1EdUQjPmf7ipfIT8E8WlUj0rABldNgmg==
+X-Received: by 2002:a17:903:291:b0:225:ac99:ae08 with SMTP id d9443c01a7336-22e328b6d64mr17397715ad.5.1746487254221;
+        Mon, 05 May 2025 16:20:54 -0700 (PDT)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from pc.. ([38.41.223.211])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22e1522917asm60981715ad.201.2025.05.05.16.20.51
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22e1522917asm60981715ad.201.2025.05.05.16.20.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 May 2025 16:20:52 -0700 (PDT)
+        Mon, 05 May 2025 16:20:53 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: richard.henderson@linaro.org,
@@ -91,35 +91,90 @@ Cc: richard.henderson@linaro.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v6 36/50] target/arm/machine: reduce migration include to avoid target specific definitions
-Date: Mon,  5 May 2025 16:20:01 -0700
-Message-ID: <20250505232015.130990-37-pierrick.bouvier@linaro.org>
+Subject: [PATCH v6 38/50] target/arm/machine: move cpu_post_load kvm bits to kvm_arm_cpu_post_load function
+Date: Mon,  5 May 2025 16:20:03 -0700
+Message-ID: <20250505232015.130990-39-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250505232015.130990-1-pierrick.bouvier@linaro.org>
 References: <20250505232015.130990-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: NHZs8on0lwDu
+X-TUID: RX103Owk4iyi
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/machine.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ target/arm/kvm_arm.h |  4 +++-
+ target/arm/kvm.c     | 13 ++++++++++++-
+ target/arm/machine.c |  8 +-------
+ 3 files changed, 16 insertions(+), 9 deletions(-)
 
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index d156c790b66..00fc82db711 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -83,8 +83,10 @@ void kvm_arm_cpu_pre_save(ARMCPU *cpu);
+  * @cpu: ARMCPU
+  *
+  * Called from cpu_post_load() to update KVM CPU state from the cpreg list.
++ *
++ * Returns: true on success, or false if write_list_to_kvmstate failed.
+  */
+-void kvm_arm_cpu_post_load(ARMCPU *cpu);
++bool kvm_arm_cpu_post_load(ARMCPU *cpu);
+ 
+ /**
+  * kvm_arm_reset_vcpu:
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 8f68aa10298..8132f2345c5 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -977,13 +977,24 @@ void kvm_arm_cpu_pre_save(ARMCPU *cpu)
+     }
+ }
+ 
+-void kvm_arm_cpu_post_load(ARMCPU *cpu)
++bool kvm_arm_cpu_post_load(ARMCPU *cpu)
+ {
++    if (!write_list_to_kvmstate(cpu, KVM_PUT_FULL_STATE)) {
++        return false;
++    }
++    /* Note that it's OK for the TCG side not to know about
++     * every register in the list; KVM is authoritative if
++     * we're using it.
++     */
++    write_list_to_cpustate(cpu);
++
+     /* KVM virtual time adjustment */
+     if (cpu->kvm_adjvtime) {
+         cpu->kvm_vtime = *kvm_arm_get_cpreg_ptr(cpu, KVM_REG_ARM_TIMER_CNT);
+         cpu->kvm_vtime_dirty = true;
+     }
++
++    return true;
+ }
+ 
+ void kvm_arm_reset_vcpu(ARMCPU *cpu)
 diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 978249fb71b..f7956898fa1 100644
+index 868246a98c0..e442d485241 100644
 --- a/target/arm/machine.c
 +++ b/target/arm/machine.c
-@@ -6,7 +6,8 @@
- #include "kvm_arm.h"
- #include "internals.h"
- #include "cpu-features.h"
--#include "migration/cpu.h"
-+#include "migration/qemu-file-types.h"
-+#include "migration/vmstate.h"
- #include "target/arm/gtimer.h"
+@@ -976,15 +976,9 @@ static int cpu_post_load(void *opaque, int version_id)
+     }
  
- static bool vfp_needed(void *opaque)
+     if (kvm_enabled()) {
+-        if (!write_list_to_kvmstate(cpu, KVM_PUT_FULL_STATE)) {
++        if (!kvm_arm_cpu_post_load(cpu)) {
+             return -1;
+         }
+-        /* Note that it's OK for the TCG side not to know about
+-         * every register in the list; KVM is authoritative if
+-         * we're using it.
+-         */
+-        write_list_to_cpustate(cpu);
+-        kvm_arm_cpu_post_load(cpu);
+     } else {
+         if (!write_list_to_cpustate(cpu)) {
+             return -1;
 -- 
 2.47.2

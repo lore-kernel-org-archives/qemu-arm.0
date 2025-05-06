@@ -1,446 +1,367 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp3054346njj;
-        Tue, 6 May 2025 04:48:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVEal4XP+jmV2e3/HZsRv2u02k4lqQGSEc/HQD3vIQG2b3Y4CoXpSvGx1IQhQpnUn769FY0lGKzkouFjw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHCOKAwrEwQwLh7O6T0dNb8VAnKnr+RuTJUVZWak/RSL7ygP7IH5wrMSnXBlscJyrm6mbwP
-X-Received: by 2002:a05:620a:4591:b0:7c9:2394:4195 with SMTP id af79cd13be357-7cae3aeab4emr1649749585a.35.1746532089368;
-        Tue, 06 May 2025 04:48:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746532089; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp3074520njj;
+        Tue, 6 May 2025 05:21:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVHGAGJNy3FBypV1004G5MB4wPBaVxt+/dGPqZ2yi7+jfM79ut9XFJ++u2Us+LgLpZ18+4dIjQVYId3Jg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGtRCjgrlvlpTpHq57eJgF2CrPcGT4aIfA3uXI2rz6w9UwtiuhnZEzGH6HG++5kous5FJRB
+X-Received: by 2002:a05:622a:514f:b0:477:6ee2:18cd with SMTP id d75a77b69052e-4910bdcb077mr41263741cf.5.1746534069689;
+        Tue, 06 May 2025 05:21:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746534069; cv=none;
         d=google.com; s=arc-20240605;
-        b=UEfTUA0qkAlqCM3Qz/sqmNuFOnR1YJqznrh4F1afAAuopuJbAL9leoOX9veNQlRo0Z
-         n4bDYMq+ZRaCCBQJxMTMohXbNSN8S+Lk+BR8MP5PIItSe8X/arJy4jiE/dxkUe+2npbE
-         FJ3bJlFWu1SZ5Faxw5zmOafdcakFm8bG11GsI0C+N55QsGR/5wnkSm9QP25+CTGQtiw2
-         VA40HHjVaQTtYTYu7hUc/JTgjscfklD0oXA/319mmf5ft6Mmb25qezlAMiORPAsjhY7Z
-         DwO9ohKn3iXmyPtNcQW0fkERR7cs3brkYmVWSO7PtImFtbt/6g7jMeZFrl9mU2H+fBgN
-         h4SQ==
+        b=PouI9jdgBGmywZl5cFBhyWOAiiE+I96JQIx1YdAc3wV4w1IntEZVqn6CDhX6Q6gkSB
+         EdzXDbfejjoDDU2zlMw8AsODDbXLWTrDl8qZlADeI6xuyw0m725oMkcN0Hr4OWtGSm5k
+         70LmE+KqbJF/ZrigRIpXLn61lJPu4uAPvkP2IT0maxpPUci+IPfE7+GikLHPC7Retfpo
+         b6+ultpkHpltamD9eFGDM7dDX+iRbl/5zhZjZ1dHBoV1mt0nmiDDamyPJClLa8irVS1G
+         jy3xbHZh7pyfYxBjJKPJlVJbziFO/hnD+ANE3Kb8zCAcz098HHve9YHuoq/DOmcphITZ
+         ZVXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:date:references:in-reply-to
-         :subject:cc:to:from:dkim-signature;
-        bh=fPA83f9n7U+j2ivhh1cgKqvTOzonyblIQVSHD3/jO+Y=;
-        fh=sIdwBD3opvx/tF512e+gRmeZIlkc+xG+0Qv/lcb5wxw=;
-        b=F/wuYb0U3qrSY8YHCijrQXfGO0kzZ9ShwizAYAR3f5jW1hndCsF8T9d5pSK+BhVQaY
-         c/Niu9aztq6vjwyHdF0ErJLAIg/Zh0gs8Dy7oRtfwH62Wbt0vwrD3R8EivQnQCyErF13
-         lBuVX6J7You/IH3NMYs0v23V58lrutlKD4hx32plh3GMg1WzDKsFUYmgtDLFahJWOckv
-         iyG8NAoDIyFtzR1FzCqP3XzSY7ZzvEFsCPbwiFJQvTCCvB4Nc/khz52JVSlanxr8DZjQ
-         4NLLPxtku/Wo+BzyW8szL0cnhIcikl02BMxOARrIfQLQs7HTyIssTZ10e5srAshoikZ4
-         tOXA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to;
+        bh=Xe0QMl1xLCEC0Ub/22N0R84LEIBaK9EYMjGYjLPug6U=;
+        fh=AtSZlTbvUC5SqYZRkP6jWmIYrdZanWbWGYet89mx+XA=;
+        b=XGA2b4eNp1zGqO+luR6Yp5g6+WPLhHOIi603dYp+UrSEIJFqNfPj3/4aRZ4oKsHxlg
+         yDkQ1k6xl0YMrch/qVwmQJBvRPx5tTnXoCeHUfCSn87OY7AwoyL1ZvExv+fiPLPeHqcn
+         3FJyuVXvNknQaqo6vNv1Qw3zRL0PTWZK7GyyzLRvGrTHex157O9yZNuEosixe3iPY5BQ
+         FAItVmIcnSOc1FxpqhAhn+zJtOWiCZd1WxjLpW65/sbrUZj58YewXdnCQ0OLVxY9oS6D
+         Vsyj4+UKM1e0DehGW6c/QNLyUzDt3uRjCqOCOd9N9nE+KEdeMiVKdV5jeicfGYjkf0LJ
+         13Kw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fm+lUuU9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cad23ba98csi1085167785a.109.2025.05.06.04.48.09
+        by mx.google.com with ESMTPS id d75a77b69052e-48bb76806f5si115102251cf.410.2025.05.06.05.21.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 May 2025 04:48:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 06 May 2025 05:21:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fm+lUuU9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uCGlj-0003N0-Lr; Tue, 06 May 2025 07:47:27 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uCHI0-0005mB-00; Tue, 06 May 2025 08:20:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1uCGlh-0003Me-JB
- for qemu-arm@nongnu.org; Tue, 06 May 2025 07:47:25 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uCHHt-0005lR-Hb; Tue, 06 May 2025 08:20:41 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1uCGlf-0003Zv-Cu
- for qemu-arm@nongnu.org; Tue, 06 May 2025 07:47:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1746532041;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fPA83f9n7U+j2ivhh1cgKqvTOzonyblIQVSHD3/jO+Y=;
- b=Fm+lUuU9guQ2xNU6VqvV/rZQSoW3dZLFqY2bhoj5SXm62CcBi2+TVle3LBaYwsZxwXBbSr
- 5hGN5KpTY69dsGoNP0xzkUnoP95n79iFFSGN0ccjiMsnQW7Hbi+UKb4Os7yLgwcsmQR5UC
- 2XrxOshfDIwWYWLGZFE7WgzyS1Cc180=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-329-7WaJU5MjN_GLa4L2N08WeQ-1; Tue,
- 06 May 2025 07:47:18 -0400
-X-MC-Unique: 7WaJU5MjN_GLa4L2N08WeQ-1
-X-Mimecast-MFC-AGG-ID: 7WaJU5MjN_GLa4L2N08WeQ_1746532036
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 904811955D54; Tue,  6 May 2025 11:47:15 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.27])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 56427195608D; Tue,  6 May 2025 11:47:14 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id AFC1D21E66C3; Tue, 06 May 2025 13:47:11 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Shameer Kolothum via <qemu-devel@nongnu.org>
-Cc: <qemu-arm@nongnu.org>,  Shameer Kolothum
- <shameerali.kolothum.thodi@huawei.com>,  <eric.auger@redhat.com>,
- <peter.maydell@linaro.org>,  <jgg@nvidia.com>,  <nicolinc@nvidia.com>,
- <ddutile@redhat.com>,  <berrange@redhat.com>,  <nathanc@nvidia.com>,
- <mochs@nvidia.com>,  <smostafa@google.com>,  <linuxarm@huawei.com>,
- <wangzhou1@hisilicon.com>,  <jiangkunkun@huawei.com>,
- <jonathan.cameron@huawei.com>,  <zhangfei.gao@linaro.org>
-Subject: Re: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a PCIe RC
-In-Reply-To: <20250502102707.110516-2-shameerali.kolothum.thodi@huawei.com>
- (Shameer Kolothum via's message of "Fri, 2 May 2025 11:27:02 +0100")
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uCHHm-00080j-W6; Tue, 06 May 2025 08:20:40 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZsHTx346Cz67jPn;
+ Tue,  6 May 2025 20:17:57 +0800 (CST)
+Received: from frapeml500006.china.huawei.com (unknown [7.182.85.219])
+ by mail.maildlp.com (Postfix) with ESMTPS id 430E01400E3;
+ Tue,  6 May 2025 20:20:21 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml500006.china.huawei.com (7.182.85.219) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 6 May 2025 14:20:21 +0200
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Tue, 6 May 2025 14:20:21 +0200
+To: Markus Armbruster <armbru@redhat.com>, Shameer Kolothum via
+ <qemu-devel@nongnu.org>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "eric.auger@redhat.com"
+ <eric.auger@redhat.com>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "jgg@nvidia.com" <jgg@nvidia.com>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "ddutile@redhat.com"
+ <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
+ "nathanc@nvidia.com" <nathanc@nvidia.com>, "mochs@nvidia.com"
+ <mochs@nvidia.com>, "smostafa@google.com" <smostafa@google.com>, Linuxarm
+ <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
+ <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+Subject: RE: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a PCIe RC
+Thread-Topic: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a PCIe RC
+Thread-Index: AQHbu1V0fvNxmQCU0kS/eGPfhGB2G7PFgqACgAADXVA=
+Date: Tue, 6 May 2025 12:20:20 +0000
+Message-ID: <3583d81cd00f4dc3b78aeeaa90d1e52e@huawei.com>
 References: <20250502102707.110516-1-shameerali.kolothum.thodi@huawei.com>
  <20250502102707.110516-2-shameerali.kolothum.thodi@huawei.com>
-Date: Tue, 06 May 2025 13:47:11 +0200
-Message-ID: <877c2ut0zk.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ <877c2ut0zk.fsf@pond.sub.org>
+In-Reply-To: <877c2ut0zk.fsf@pond.sub.org>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.203.177.241]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.414,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +lOy2tVAIKL0
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+From:  Shameerali Kolothum Thodi via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: jmf2x75eUVFA
 
-Shameer Kolothum via <qemu-devel@nongnu.org> writes:
-
-> Although this change does not affect functionality at present, it lays
-> the groundwork for enabling user-created SMMUv3 devices in
-> future patches
->
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
->  hw/arm/smmuv3.c | 26 ++++++++++++++++++++++++++
->  hw/arm/virt.c   |  3 ++-
->  2 files changed, 28 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index ab67972353..605de9b721 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -24,6 +24,7 @@
->  #include "hw/qdev-properties.h"
->  #include "hw/qdev-core.h"
->  #include "hw/pci/pci.h"
-> +#include "hw/pci/pci_bridge.h"
->  #include "cpu.h"
->  #include "exec/target_page.h"
->  #include "trace.h"
-> @@ -1874,6 +1875,25 @@ static void smmu_reset_exit(Object *obj, ResetType=
- type)
->      smmuv3_init_regs(s);
->  }
->=20=20
-> +static int smmuv3_pcie_bus(Object *obj, void *opaque)
-> +{
-> +    DeviceState *d =3D opaque;
-> +    PCIBus *bus;
-> +
-> +    if (!object_dynamic_cast(obj, TYPE_PCI_HOST_BRIDGE)) {
-> +        return 0;
-> +    }
-> +
-> +    bus =3D PCI_HOST_BRIDGE(obj)->bus;
-> +    if (d->parent_bus && !strcmp(bus->qbus.name, d->parent_bus->name)) {
-> +        object_property_set_link(OBJECT(d), "primary-bus", OBJECT(bus),
-> +                                 &error_abort);
-> +        /* Return non-zero as we got the bus and don't need further iter=
-ation.*/
-> +        return 1;
-> +    }
-> +    return 0;
-> +}
-> +
->  static void smmu_realize(DeviceState *d, Error **errp)
->  {
->      SMMUState *sys =3D ARM_SMMU(d);
-> @@ -1882,6 +1902,10 @@ static void smmu_realize(DeviceState *d, Error **e=
-rrp)
->      SysBusDevice *dev =3D SYS_BUS_DEVICE(d);
->      Error *local_err =3D NULL;
->=20=20
-> +    if (!object_property_get_link(OBJECT(d), "primary-bus", &error_abort=
-)) {
-> +        object_child_foreach_recursive(object_get_root(), smmuv3_pcie_bu=
-s, d);
-> +    }
-> +
->      c->parent_realize(d, &local_err);
->      if (local_err) {
->          error_propagate(errp, local_err);
-> @@ -1996,6 +2020,8 @@ static void smmuv3_class_init(ObjectClass *klass, c=
-onst void *data)
->      device_class_set_parent_realize(dc, smmu_realize,
->                                      &c->parent_realize);
->      device_class_set_props(dc, smmuv3_properties);
-> +    dc->hotpluggable =3D false;
-> +    dc->bus_type =3D TYPE_PCIE_BUS;
-
-This is very, very wrong.
-
-The function serves as .class_init() for QOM type "arm-smmuv3", defined
-as:
-
-   static const TypeInfo smmuv3_type_info =3D {
-       .name          =3D TYPE_ARM_SMMUV3,
-       .parent        =3D TYPE_ARM_SMMU,
-
-Subtype of "arm-smmuv3".
-
-       .instance_size =3D sizeof(SMMUv3State),
-       .instance_init =3D smmuv3_instance_init,
-       .class_size    =3D sizeof(SMMUv3Class),
-       .class_init    =3D smmuv3_class_init,
-   };
-
-
-    static const TypeInfo smmu_base_info =3D {
-        .name          =3D TYPE_ARM_SMMU,
-        .parent        =3D TYPE_SYS_BUS_DEVICE,
-
-Subtype of "sys-bus-device".
-
-        .instance_size =3D sizeof(SMMUState),
-        .class_data    =3D NULL,
-        .class_size    =3D sizeof(SMMUBaseClass),
-        .class_init    =3D smmu_base_class_init,
-        .abstract      =3D true,
-    };
-
-Have a look at the instance struct:
-
-   struct SMMUv3State {
-       SMMUState     smmu_state;
-
-Starts with the supertype's instance struct, as is proper.
-
-       uint32_t features;
-       [more ...]
-   };
-
-Here's the supertype's instance struct:
-
-   struct SMMUState {
-       /* <private> */
-       SysBusDevice  dev;
-
-Again, starts with the supertype's instance struct.
-
-       const char *mrtypename;
-       [more...]
-   };
-
-This is a sysbus device, not a PCI device.  Monkey-patching dc->bus_type
-from TYPE_SYSTEM_BUS to TYPE_PCIE_BUS won't change that.  All it
-accomplishes is making the qdev core believe it plugs into a PCIE bus.
-This can only end in tears.
-
-In fact, when I build with the entire series applied (so the device can
-actually be used with -device), the result dies within seconds of my ad
-hoc testing:
-
-    $ qemu-system-aarch64 -nodefaults -S -display none -monitor stdio -M vi=
-rt -device pxb-pcie,id=3Dpcie.1,bus_nr=3D2 -device arm-smmuv3,bus=3Dpcie.1
-    QEMU 10.0.50 monitor - type 'help' for more information
-    qemu-system-aarch64: -device arm-smmuv3,bus=3Dpcie.1: warning: SMMUv3 d=
-evice only supported with pcie.0 for DT
-    (qemu) info qtree
-    bus: main-system-bus
-      type System
-      dev: pxb-host, id ""
-        x-config-reg-migration-enabled =3D true
-        bypass-iommu =3D false
-        bus: pcie.1
-          type pxb-pcie-bus
-          dev: arm-smmuv3, id ""
-            gpio-out "sysbus-irq" 4
-            stage =3D "nested"
-            bus_num =3D 0 (0x0)
-    Segmentation fault (core dumped)
-
-Backtrace:
-
-    #0  0x00005555557d8521 in pcibus_dev_print
-        (mon=3D0x55555826d0e0, dev=3D0x5555590ad360, indent=3D8)
-        at ../hw/pci/pci-hmp-cmds.c:140
-    #1  0x0000555555eac0a0 in bus_print_dev
-        (bus=3D<optimized out>, mon=3D<optimized out>, dev=3D0x5555590ad360=
-, indent=3D8)
-        at ../system/qdev-monitor.c:773
-    #2  qdev_print (mon=3D<optimized out>, dev=3D<optimized out>, indent=3D=
-8)
-        at ../system/qdev-monitor.c:805
-    #3  qbus_print
-        (mon=3Dmon@entry=3D0x55555826d0e0, bus=3Dbus@entry=3D0x5555590ac4a0=
-, indent=3D6,=20
-        indent@entry=3D4, details=3Ddetails@entry=3Dtrue) at ../system/qdev=
--monitor.c:821
-    #4  0x0000555555eabd92 in qbus_print
-        (mon=3D0x55555826d0e0, bus=3D<optimized out>, indent=3D2, details=
-=3Dtrue)
-        at ../system/qdev-monitor.c:824
-    #5  0x0000555555979789 in handle_hmp_command_exec
-        (cmd=3D<optimized out>, mon=3D0x55555826d0e0, qdict=3D0x55555907d8e=
-0)
-        at ../monitor/hmp.c:1106
-    #6  handle_hmp_command_exec
-        (mon=3D0x55555826d0e0, cmd=3D0x55555769d220 <hmp_info_cmds+2560>, q=
-dict=3D0x55555907d8e0) at ../monitor/hmp.c:1098
-    #7  handle_hmp_command (mon=3Dmon@entry=3D0x55555826d0e0, cmdline=3D<op=
-timized out>,=20
-        cmdline@entry=3D0x555558657490 "info qtree") at ../monitor/hmp.c:11=
-58
-    #8  0x000055555597983c in monitor_command_cb
-
-Crash line is
-
-    int class =3D pci_get_word(d->config + PCI_CLASS_DEVICE);
-
-Debugger shows that d->config is invalid.  This is hardly surprising!
-
-The qdev core is trying to print information on the "arm_smmuv3" device
-here.  It's working with a DeviceState.  Your monkey-patching convinced
-it it's a PCIDevice, so it duly calls pcibus_dev_print() to print PCI
-device information.  pcibus_dev_print() casts the DeviceState * to
-PCIDevice *.  This assumes the device's instance actually starts with
-PCIDevice.  It actually starts with SysBusDevice.
-
-Unsurprisingly, and "make check" also fails:
-
-    >>> MESON_TEST_ITERATION=3D1 MSAN_OPTIONS=3Dhalt_on_error=3D1:abort_on_=
-error=3D1:print_summary=3D1:print_stacktrace=3D1 RUST_BACKTRACE=3D1 QTEST_Q=
-EMU_BINARY=3D./qemu-system-aarch64 QTEST_QEMU_IMG=3D./qemu-img G_TEST_DBUS_=
-DAEMON=3D/work/armbru/qemu/tests/dbus-vmstate-daemon.sh ASAN_OPTIONS=3Dhalt=
-_on_error=3D1:abort_on_error=3D1:print_summary=3D1 PYTHON=3D/work/armbru/qe=
-mu/bld-arm/pyvenv/bin/python3 UBSAN_OPTIONS=3Dhalt_on_error=3D1:abort_on_er=
-ror=3D1:print_summary=3D1:print_stacktrace=3D1 MALLOC_PERTURB_=3D22 /work/a=
-rmbru/qemu/bld-arm/tests/qtest/test-hmp --tap -k
-    =E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
-=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
-=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
-=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
-=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95 =E2=9C=80  =E2=80=95=E2=80=95=E2=80=
-=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
-=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
-=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
-=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
-=E2=80=95
-    stderr:
-    qemu-system-aarch64: ../hw/core/qdev.c:113: qdev_set_parent_bus: Assert=
-ion `dc->bus_type && object_dynamic_cast(OBJECT(bus), dc->bus_type)' failed.
-    Broken pipe
-    ../tests/qtest/libqtest.c:208: kill_qemu() detected QEMU death from sig=
-nal 6 (Aborted) (core dumped)
-
-and
-
-    >>> MESON_TEST_ITERATION=3D1 MSAN_OPTIONS=3Dhalt_on_error=3D1:abort_on_=
-error=3D1:print_summary=3D1:print_stacktrace=3D1 RUST_BACKTRACE=3D1 QTEST_Q=
-EMU_BINARY=3D./qemu-system-aarch64 MALLOC_PERTURB_=3D86 QTEST_QEMU_IMG=3D./=
-qemu-img G_TEST_DBUS_DAEMON=3D/work/armbru/qemu/tests/dbus-vmstate-daemon.s=
-h ASAN_OPTIONS=3Dhalt_on_error=3D1:abort_on_error=3D1:print_summary=3D1 PYT=
-HON=3D/work/armbru/qemu/bld-arm/pyvenv/bin/python3 UBSAN_OPTIONS=3Dhalt_on_=
-error=3D1:abort_on_error=3D1:print_summary=3D1:print_stacktrace=3D1 /work/a=
-rmbru/qemu/bld-arm/tests/qtest/qom-test --tap -k
-    =E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
-=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
-=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
-=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
-=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95 =E2=9C=80  =E2=80=95=E2=80=95=E2=80=
-=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
-=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
-=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
-=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
-=E2=80=95
-    stderr:
-    qemu-system-aarch64: ../hw/core/qdev.c:113: qdev_set_parent_bus: Assert=
-ion `dc->bus_type && object_dynamic_cast(OBJECT(bus), dc->bus_type)' failed.
-    Broken pipe
-    ../tests/qtest/libqtest.c:208: kill_qemu() detected QEMU death from sig=
-nal 6 (Aborted) (core dumped)
-
-Please make sure "make check" passes before posting patches for review.
-If you need help getting there, post them marked RFC and with the bad
-test results right in the cover letter.
-
->  }
->=20=20
->  static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 177f3dd22c..3bae4e374f 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -56,6 +56,7 @@
->  #include "qemu/cutils.h"
->  #include "qemu/error-report.h"
->  #include "qemu/module.h"
-> +#include "hw/pci/pci_bus.h"
->  #include "hw/pci-host/gpex.h"
->  #include "hw/virtio/virtio-pci.h"
->  #include "hw/core/sysbus-fdt.h"
-> @@ -1442,7 +1443,7 @@ static void create_smmu(const VirtMachineState *vms,
->      }
->      object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
->                               &error_abort);
-> -    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-> +    qdev_realize_and_unref(dev, &bus->qbus, &error_fatal);
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
->      for (i =3D 0; i < NUM_SMMU_IRQS; i++) {
->          sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-
-What are you trying to accomplish?
-
-I *guess* you're trying to change the "arm-smmuv3" device to be a PCI
-device.  Correct?
-
-The only way to do that is making it a subtype of PCIDevice, i.e. change
-the parent chain from
-
-   arm-smmuv3 -> arm-smmu -> sys-bus-device -> device -> object
-
-to something like
-
-   arm-smmuv3 ->    ...   -> pci-device -> device -> object
-
-Note you cannot have different subtypes of the same supertype (say
-"arm-smmu") plug into different buses.  If you need a common device core
-to plug into different buses, things get more complicated.  Here's how
-the "serial-FOO" devices do it:
-
-* "serial-mm", a subtype of "sys-bus-device", thus plugs into system bus
-* "serial-isa", a subtype of "isa-device", thus plugs into ISA bus
-* "serial-pci", a subtype of "pci-device", thus plugs into PCI bus
-
-They all *contain* the core "serial" device, which is a subtype of
-"device", and thus does not plug into any bus.  "Contain" is "has a",
-not "subtype of".
-
-[...]
-
+SGkgTWFya3VzLA0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IE1hcmt1
+cyBBcm1icnVzdGVyIDxhcm1icnVAcmVkaGF0LmNvbT4NCj4gU2VudDogVHVlc2RheSwgTWF5IDYs
+IDIwMjUgMTI6NDcgUE0NCj4gVG86IFNoYW1lZXIgS29sb3RodW0gdmlhIDxxZW11LWRldmVsQG5v
+bmdudS5vcmc+DQo+IENjOiBxZW11LWFybUBub25nbnUub3JnOyBTaGFtZWVyYWxpIEtvbG90aHVt
+IFRob2RpDQo+IDxzaGFtZWVyYWxpLmtvbG90aHVtLnRob2RpQGh1YXdlaS5jb20+OyBlcmljLmF1
+Z2VyQHJlZGhhdC5jb207DQo+IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgamdnQG52aWRpYS5j
+b207IG5pY29saW5jQG52aWRpYS5jb207DQo+IGRkdXRpbGVAcmVkaGF0LmNvbTsgYmVycmFuZ2VA
+cmVkaGF0LmNvbTsgbmF0aGFuY0BudmlkaWEuY29tOw0KPiBtb2Noc0BudmlkaWEuY29tOyBzbW9z
+dGFmYUBnb29nbGUuY29tOyBMaW51eGFybQ0KPiA8bGludXhhcm1AaHVhd2VpLmNvbT47IFdhbmd6
+aG91IChCKSA8d2FuZ3pob3UxQGhpc2lsaWNvbi5jb20+Ow0KPiBqaWFuZ2t1bmt1biA8amlhbmdr
+dW5rdW5AaHVhd2VpLmNvbT47IEpvbmF0aGFuIENhbWVyb24NCj4gPGpvbmF0aGFuLmNhbWVyb25A
+aHVhd2VpLmNvbT47IHpoYW5nZmVpLmdhb0BsaW5hcm8ub3JnDQo+IFN1YmplY3Q6IFJlOiBbUEFU
+Q0ggdjIgMS82XSBody9hcm0vc21tdXYzOiBBZGQgc3VwcG9ydCB0byBhc3NvY2lhdGUgYQ0KPiBQ
+Q0llIFJDDQo+IA0KPiBTaGFtZWVyIEtvbG90aHVtIHZpYSA8cWVtdS1kZXZlbEBub25nbnUub3Jn
+PiB3cml0ZXM6DQo+IA0KPiA+IEFsdGhvdWdoIHRoaXMgY2hhbmdlIGRvZXMgbm90IGFmZmVjdCBm
+dW5jdGlvbmFsaXR5IGF0IHByZXNlbnQsIGl0IGxheXMNCj4gPiB0aGUgZ3JvdW5kd29yayBmb3Ig
+ZW5hYmxpbmcgdXNlci1jcmVhdGVkIFNNTVV2MyBkZXZpY2VzIGluDQo+ID4gZnV0dXJlIHBhdGNo
+ZXMNCj4gPg0KPiA+IFNpZ25lZC1vZmYtYnk6IFNoYW1lZXIgS29sb3RodW0NCj4gPHNoYW1lZXJh
+bGkua29sb3RodW0udGhvZGlAaHVhd2VpLmNvbT4NCj4gPiAtLS0NCj4gPiAgaHcvYXJtL3NtbXV2
+My5jIHwgMjYgKysrKysrKysrKysrKysrKysrKysrKysrKysNCj4gPiAgaHcvYXJtL3ZpcnQuYyAg
+IHwgIDMgKystDQo+ID4gIDIgZmlsZXMgY2hhbmdlZCwgMjggaW5zZXJ0aW9ucygrKSwgMSBkZWxl
+dGlvbigtKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2h3L2FybS9zbW11djMuYyBiL2h3L2FybS9z
+bW11djMuYw0KPiA+IGluZGV4IGFiNjc5NzIzNTMuLjYwNWRlOWI3MjEgMTAwNjQ0DQo+ID4gLS0t
+IGEvaHcvYXJtL3NtbXV2My5jDQo+ID4gKysrIGIvaHcvYXJtL3NtbXV2My5jDQo+ID4gQEAgLTI0
+LDYgKzI0LDcgQEANCj4gPiAgI2luY2x1ZGUgImh3L3FkZXYtcHJvcGVydGllcy5oIg0KPiA+ICAj
+aW5jbHVkZSAiaHcvcWRldi1jb3JlLmgiDQo+ID4gICNpbmNsdWRlICJody9wY2kvcGNpLmgiDQo+
+ID4gKyNpbmNsdWRlICJody9wY2kvcGNpX2JyaWRnZS5oIg0KPiA+ICAjaW5jbHVkZSAiY3B1Lmgi
+DQo+ID4gICNpbmNsdWRlICJleGVjL3RhcmdldF9wYWdlLmgiDQo+ID4gICNpbmNsdWRlICJ0cmFj
+ZS5oIg0KPiA+IEBAIC0xODc0LDYgKzE4NzUsMjUgQEAgc3RhdGljIHZvaWQgc21tdV9yZXNldF9l
+eGl0KE9iamVjdCAqb2JqLA0KPiBSZXNldFR5cGUgdHlwZSkNCj4gPiAgICAgIHNtbXV2M19pbml0
+X3JlZ3Mocyk7DQo+ID4gIH0NCj4gPg0KPiA+ICtzdGF0aWMgaW50IHNtbXV2M19wY2llX2J1cyhP
+YmplY3QgKm9iaiwgdm9pZCAqb3BhcXVlKQ0KPiA+ICt7DQo+ID4gKyAgICBEZXZpY2VTdGF0ZSAq
+ZCA9IG9wYXF1ZTsNCj4gPiArICAgIFBDSUJ1cyAqYnVzOw0KPiA+ICsNCj4gPiArICAgIGlmICgh
+b2JqZWN0X2R5bmFtaWNfY2FzdChvYmosIFRZUEVfUENJX0hPU1RfQlJJREdFKSkgew0KPiA+ICsg
+ICAgICAgIHJldHVybiAwOw0KPiA+ICsgICAgfQ0KPiA+ICsNCj4gPiArICAgIGJ1cyA9IFBDSV9I
+T1NUX0JSSURHRShvYmopLT5idXM7DQo+ID4gKyAgICBpZiAoZC0+cGFyZW50X2J1cyAmJiAhc3Ry
+Y21wKGJ1cy0+cWJ1cy5uYW1lLCBkLT5wYXJlbnRfYnVzLQ0KPiA+bmFtZSkpIHsNCj4gPiArICAg
+ICAgICBvYmplY3RfcHJvcGVydHlfc2V0X2xpbmsoT0JKRUNUKGQpLCAicHJpbWFyeS1idXMiLCBP
+QkpFQ1QoYnVzKSwNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJmVycm9y
+X2Fib3J0KTsNCj4gPiArICAgICAgICAvKiBSZXR1cm4gbm9uLXplcm8gYXMgd2UgZ290IHRoZSBi
+dXMgYW5kIGRvbid0IG5lZWQgZnVydGhlcg0KPiBpdGVyYXRpb24uKi8NCj4gPiArICAgICAgICBy
+ZXR1cm4gMTsNCj4gPiArICAgIH0NCj4gPiArICAgIHJldHVybiAwOw0KPiA+ICt9DQo+ID4gKw0K
+PiA+ICBzdGF0aWMgdm9pZCBzbW11X3JlYWxpemUoRGV2aWNlU3RhdGUgKmQsIEVycm9yICoqZXJy
+cCkNCj4gPiAgew0KPiA+ICAgICAgU01NVVN0YXRlICpzeXMgPSBBUk1fU01NVShkKTsNCj4gPiBA
+QCAtMTg4Miw2ICsxOTAyLDEwIEBAIHN0YXRpYyB2b2lkIHNtbXVfcmVhbGl6ZShEZXZpY2VTdGF0
+ZSAqZCwgRXJyb3INCj4gKiplcnJwKQ0KPiA+ICAgICAgU3lzQnVzRGV2aWNlICpkZXYgPSBTWVNf
+QlVTX0RFVklDRShkKTsNCj4gPiAgICAgIEVycm9yICpsb2NhbF9lcnIgPSBOVUxMOw0KPiA+DQo+
+ID4gKyAgICBpZiAoIW9iamVjdF9wcm9wZXJ0eV9nZXRfbGluayhPQkpFQ1QoZCksICJwcmltYXJ5
+LWJ1cyIsICZlcnJvcl9hYm9ydCkpDQo+IHsNCj4gPiArICAgICAgICBvYmplY3RfY2hpbGRfZm9y
+ZWFjaF9yZWN1cnNpdmUob2JqZWN0X2dldF9yb290KCksDQo+IHNtbXV2M19wY2llX2J1cywgZCk7
+DQo+ID4gKyAgICB9DQo+ID4gKw0KPiA+ICAgICAgYy0+cGFyZW50X3JlYWxpemUoZCwgJmxvY2Fs
+X2Vycik7DQo+ID4gICAgICBpZiAobG9jYWxfZXJyKSB7DQo+ID4gICAgICAgICAgZXJyb3JfcHJv
+cGFnYXRlKGVycnAsIGxvY2FsX2Vycik7DQo+ID4gQEAgLTE5OTYsNiArMjAyMCw4IEBAIHN0YXRp
+YyB2b2lkIHNtbXV2M19jbGFzc19pbml0KE9iamVjdENsYXNzDQo+ICprbGFzcywgY29uc3Qgdm9p
+ZCAqZGF0YSkNCj4gPiAgICAgIGRldmljZV9jbGFzc19zZXRfcGFyZW50X3JlYWxpemUoZGMsIHNt
+bXVfcmVhbGl6ZSwNCj4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJmMt
+PnBhcmVudF9yZWFsaXplKTsNCj4gPiAgICAgIGRldmljZV9jbGFzc19zZXRfcHJvcHMoZGMsIHNt
+bXV2M19wcm9wZXJ0aWVzKTsNCj4gPiArICAgIGRjLT5ob3RwbHVnZ2FibGUgPSBmYWxzZTsNCj4g
+PiArICAgIGRjLT5idXNfdHlwZSA9IFRZUEVfUENJRV9CVVM7DQo+IA0KPiBUaGlzIGlzIHZlcnks
+IHZlcnkgd3JvbmcuDQo+IA0KPiBUaGUgZnVuY3Rpb24gc2VydmVzIGFzIC5jbGFzc19pbml0KCkg
+Zm9yIFFPTSB0eXBlICJhcm0tc21tdXYzIiwgZGVmaW5lZA0KPiBhczoNCj4gDQo+ICAgIHN0YXRp
+YyBjb25zdCBUeXBlSW5mbyBzbW11djNfdHlwZV9pbmZvID0gew0KPiAgICAgICAgLm5hbWUgICAg
+ICAgICAgPSBUWVBFX0FSTV9TTU1VVjMsDQo+ICAgICAgICAucGFyZW50ICAgICAgICA9IFRZUEVf
+QVJNX1NNTVUsDQo+IA0KPiBTdWJ0eXBlIG9mICJhcm0tc21tdXYzIi4NCj4gDQo+ICAgICAgICAu
+aW5zdGFuY2Vfc2l6ZSA9IHNpemVvZihTTU1VdjNTdGF0ZSksDQo+ICAgICAgICAuaW5zdGFuY2Vf
+aW5pdCA9IHNtbXV2M19pbnN0YW5jZV9pbml0LA0KPiAgICAgICAgLmNsYXNzX3NpemUgICAgPSBz
+aXplb2YoU01NVXYzQ2xhc3MpLA0KPiAgICAgICAgLmNsYXNzX2luaXQgICAgPSBzbW11djNfY2xh
+c3NfaW5pdCwNCj4gICAgfTsNCj4gDQo+IA0KPiAgICAgc3RhdGljIGNvbnN0IFR5cGVJbmZvIHNt
+bXVfYmFzZV9pbmZvID0gew0KPiAgICAgICAgIC5uYW1lICAgICAgICAgID0gVFlQRV9BUk1fU01N
+VSwNCj4gICAgICAgICAucGFyZW50ICAgICAgICA9IFRZUEVfU1lTX0JVU19ERVZJQ0UsDQo+IA0K
+PiBTdWJ0eXBlIG9mICJzeXMtYnVzLWRldmljZSIuDQo+IA0KPiAgICAgICAgIC5pbnN0YW5jZV9z
+aXplID0gc2l6ZW9mKFNNTVVTdGF0ZSksDQo+ICAgICAgICAgLmNsYXNzX2RhdGEgICAgPSBOVUxM
+LA0KPiAgICAgICAgIC5jbGFzc19zaXplICAgID0gc2l6ZW9mKFNNTVVCYXNlQ2xhc3MpLA0KPiAg
+ICAgICAgIC5jbGFzc19pbml0ICAgID0gc21tdV9iYXNlX2NsYXNzX2luaXQsDQo+ICAgICAgICAg
+LmFic3RyYWN0ICAgICAgPSB0cnVlLA0KPiAgICAgfTsNCj4gDQo+IEhhdmUgYSBsb29rIGF0IHRo
+ZSBpbnN0YW5jZSBzdHJ1Y3Q6DQo+IA0KPiAgICBzdHJ1Y3QgU01NVXYzU3RhdGUgew0KPiAgICAg
+ICAgU01NVVN0YXRlICAgICBzbW11X3N0YXRlOw0KPiANCj4gU3RhcnRzIHdpdGggdGhlIHN1cGVy
+dHlwZSdzIGluc3RhbmNlIHN0cnVjdCwgYXMgaXMgcHJvcGVyLg0KPiANCj4gICAgICAgIHVpbnQz
+Ml90IGZlYXR1cmVzOw0KPiAgICAgICAgW21vcmUgLi4uXQ0KPiAgICB9Ow0KPiANCj4gSGVyZSdz
+IHRoZSBzdXBlcnR5cGUncyBpbnN0YW5jZSBzdHJ1Y3Q6DQo+IA0KPiAgICBzdHJ1Y3QgU01NVVN0
+YXRlIHsNCj4gICAgICAgIC8qIDxwcml2YXRlPiAqLw0KPiAgICAgICAgU3lzQnVzRGV2aWNlICBk
+ZXY7DQo+IA0KPiBBZ2Fpbiwgc3RhcnRzIHdpdGggdGhlIHN1cGVydHlwZSdzIGluc3RhbmNlIHN0
+cnVjdC4NCj4gDQo+ICAgICAgICBjb25zdCBjaGFyICptcnR5cGVuYW1lOw0KPiAgICAgICAgW21v
+cmUuLi5dDQo+ICAgIH07DQo+IA0KPiBUaGlzIGlzIGEgc3lzYnVzIGRldmljZSwgbm90IGEgUENJ
+IGRldmljZS4gIE1vbmtleS1wYXRjaGluZyBkYy0+YnVzX3R5cGUNCj4gZnJvbSBUWVBFX1NZU1RF
+TV9CVVMgdG8gVFlQRV9QQ0lFX0JVUyB3b24ndCBjaGFuZ2UgdGhhdC4gIEFsbCBpdA0KPiBhY2Nv
+bXBsaXNoZXMgaXMgbWFraW5nIHRoZSBxZGV2IGNvcmUgYmVsaWV2ZSBpdCBwbHVncyBpbnRvIGEg
+UENJRSBidXMuDQo+IFRoaXMgY2FuIG9ubHkgZW5kIGluIHRlYXJzLg0KPiANCj4gSW4gZmFjdCwg
+d2hlbiBJIGJ1aWxkIHdpdGggdGhlIGVudGlyZSBzZXJpZXMgYXBwbGllZCAoc28gdGhlIGRldmlj
+ZSBjYW4NCj4gYWN0dWFsbHkgYmUgdXNlZCB3aXRoIC1kZXZpY2UpLCB0aGUgcmVzdWx0IGRpZXMg
+d2l0aGluIHNlY29uZHMgb2YgbXkgYWQNCj4gaG9jIHRlc3Rpbmc6DQo+IA0KPiAgICAgJCBxZW11
+LXN5c3RlbS1hYXJjaDY0IC1ub2RlZmF1bHRzIC1TIC1kaXNwbGF5IG5vbmUgLW1vbml0b3Igc3Rk
+aW8gLU0NCj4gdmlydCAtZGV2aWNlIHB4Yi1wY2llLGlkPXBjaWUuMSxidXNfbnI9MiAtZGV2aWNl
+IGFybS1zbW11djMsYnVzPXBjaWUuMQ0KPiAgICAgUUVNVSAxMC4wLjUwIG1vbml0b3IgLSB0eXBl
+ICdoZWxwJyBmb3IgbW9yZSBpbmZvcm1hdGlvbg0KPiAgICAgcWVtdS1zeXN0ZW0tYWFyY2g2NDog
+LWRldmljZSBhcm0tc21tdXYzLGJ1cz1wY2llLjE6IHdhcm5pbmc6DQo+IFNNTVV2MyBkZXZpY2Ug
+b25seSBzdXBwb3J0ZWQgd2l0aCBwY2llLjAgZm9yIERUDQo+ICAgICAocWVtdSkgaW5mbyBxdHJl
+ZQ0KPiAgICAgYnVzOiBtYWluLXN5c3RlbS1idXMNCj4gICAgICAgdHlwZSBTeXN0ZW0NCj4gICAg
+ICAgZGV2OiBweGItaG9zdCwgaWQgIiINCj4gICAgICAgICB4LWNvbmZpZy1yZWctbWlncmF0aW9u
+LWVuYWJsZWQgPSB0cnVlDQo+ICAgICAgICAgYnlwYXNzLWlvbW11ID0gZmFsc2UNCj4gICAgICAg
+ICBidXM6IHBjaWUuMQ0KPiAgICAgICAgICAgdHlwZSBweGItcGNpZS1idXMNCj4gICAgICAgICAg
+IGRldjogYXJtLXNtbXV2MywgaWQgIiINCj4gICAgICAgICAgICAgZ3Bpby1vdXQgInN5c2J1cy1p
+cnEiIDQNCj4gICAgICAgICAgICAgc3RhZ2UgPSAibmVzdGVkIg0KPiAgICAgICAgICAgICBidXNf
+bnVtID0gMCAoMHgwKQ0KPiAgICAgU2VnbWVudGF0aW9uIGZhdWx0IChjb3JlIGR1bXBlZCkNCg0K
+QWguLk15IGJhZC4gSSBkaWRuJ3QgdGVzdCB0aGlzLiBUaGFua3MgZm9yIHRha2luZyB0aW1lIHRv
+IHRlc3QgdGhpcy4NCg0KPiANCj4gQmFja3RyYWNlOg0KPiANCj4gICAgICMwICAweDAwMDA1NTU1
+NTU3ZDg1MjEgaW4gcGNpYnVzX2Rldl9wcmludA0KPiAgICAgICAgIChtb249MHg1NTU1NTgyNmQw
+ZTAsIGRldj0weDU1NTU1OTBhZDM2MCwgaW5kZW50PTgpDQo+ICAgICAgICAgYXQgLi4vaHcvcGNp
+L3BjaS1obXAtY21kcy5jOjE0MA0KPiAgICAgIzEgIDB4MDAwMDU1NTU1NWVhYzBhMCBpbiBidXNf
+cHJpbnRfZGV2DQo+ICAgICAgICAgKGJ1cz08b3B0aW1pemVkIG91dD4sIG1vbj08b3B0aW1pemVk
+IG91dD4sIGRldj0weDU1NTU1OTBhZDM2MCwNCj4gaW5kZW50PTgpDQo+ICAgICAgICAgYXQgLi4v
+c3lzdGVtL3FkZXYtbW9uaXRvci5jOjc3Mw0KPiAgICAgIzIgIHFkZXZfcHJpbnQgKG1vbj08b3B0
+aW1pemVkIG91dD4sIGRldj08b3B0aW1pemVkIG91dD4sIGluZGVudD04KQ0KPiAgICAgICAgIGF0
+IC4uL3N5c3RlbS9xZGV2LW1vbml0b3IuYzo4MDUNCj4gICAgICMzICBxYnVzX3ByaW50DQo+ICAg
+ICAgICAgKG1vbj1tb25AZW50cnk9MHg1NTU1NTgyNmQwZTAsDQo+IGJ1cz1idXNAZW50cnk9MHg1
+NTU1NTkwYWM0YTAsIGluZGVudD02LA0KPiAgICAgICAgIGluZGVudEBlbnRyeT00LCBkZXRhaWxz
+PWRldGFpbHNAZW50cnk9dHJ1ZSkgYXQgLi4vc3lzdGVtL3FkZXYtDQo+IG1vbml0b3IuYzo4MjEN
+Cj4gICAgICM0ICAweDAwMDA1NTU1NTVlYWJkOTIgaW4gcWJ1c19wcmludA0KPiAgICAgICAgICht
+b249MHg1NTU1NTgyNmQwZTAsIGJ1cz08b3B0aW1pemVkIG91dD4sIGluZGVudD0yLCBkZXRhaWxz
+PXRydWUpDQo+ICAgICAgICAgYXQgLi4vc3lzdGVtL3FkZXYtbW9uaXRvci5jOjgyNA0KPiAgICAg
+IzUgIDB4MDAwMDU1NTU1NTk3OTc4OSBpbiBoYW5kbGVfaG1wX2NvbW1hbmRfZXhlYw0KPiAgICAg
+ICAgIChjbWQ9PG9wdGltaXplZCBvdXQ+LCBtb249MHg1NTU1NTgyNmQwZTAsIHFkaWN0PTB4NTU1
+NTU5MDdkOGUwKQ0KPiAgICAgICAgIGF0IC4uL21vbml0b3IvaG1wLmM6MTEwNg0KPiAgICAgIzYg
+IGhhbmRsZV9obXBfY29tbWFuZF9leGVjDQo+ICAgICAgICAgKG1vbj0weDU1NTU1ODI2ZDBlMCwg
+Y21kPTB4NTU1NTU3NjlkMjIwDQo+IDxobXBfaW5mb19jbWRzKzI1NjA+LCBxZGljdD0weDU1NTU1
+OTA3ZDhlMCkgYXQgLi4vbW9uaXRvci9obXAuYzoxMDk4DQo+ICAgICAjNyAgaGFuZGxlX2htcF9j
+b21tYW5kIChtb249bW9uQGVudHJ5PTB4NTU1NTU4MjZkMGUwLA0KPiBjbWRsaW5lPTxvcHRpbWl6
+ZWQgb3V0PiwNCj4gICAgICAgICBjbWRsaW5lQGVudHJ5PTB4NTU1NTU4NjU3NDkwICJpbmZvIHF0
+cmVlIikgYXQNCj4gLi4vbW9uaXRvci9obXAuYzoxMTU4DQo+ICAgICAjOCAgMHgwMDAwNTU1NTU1
+OTc5ODNjIGluIG1vbml0b3JfY29tbWFuZF9jYg0KPiANCj4gQ3Jhc2ggbGluZSBpcw0KPiANCj4g
+ICAgIGludCBjbGFzcyA9IHBjaV9nZXRfd29yZChkLT5jb25maWcgKyBQQ0lfQ0xBU1NfREVWSUNF
+KTsNCj4gDQo+IERlYnVnZ2VyIHNob3dzIHRoYXQgZC0+Y29uZmlnIGlzIGludmFsaWQuICBUaGlz
+IGlzIGhhcmRseSBzdXJwcmlzaW5nIQ0KPiANCj4gVGhlIHFkZXYgY29yZSBpcyB0cnlpbmcgdG8g
+cHJpbnQgaW5mb3JtYXRpb24gb24gdGhlICJhcm1fc21tdXYzIiBkZXZpY2UNCj4gaGVyZS4gIEl0
+J3Mgd29ya2luZyB3aXRoIGEgRGV2aWNlU3RhdGUuICBZb3VyIG1vbmtleS1wYXRjaGluZyBjb252
+aW5jZWQNCj4gaXQgaXQncyBhIFBDSURldmljZSwgc28gaXQgZHVseSBjYWxscyBwY2lidXNfZGV2
+X3ByaW50KCkgdG8gcHJpbnQgUENJDQo+IGRldmljZSBpbmZvcm1hdGlvbi4gIHBjaWJ1c19kZXZf
+cHJpbnQoKSBjYXN0cyB0aGUgRGV2aWNlU3RhdGUgKiB0bw0KPiBQQ0lEZXZpY2UgKi4gIFRoaXMg
+YXNzdW1lcyB0aGUgZGV2aWNlJ3MgaW5zdGFuY2UgYWN0dWFsbHkgc3RhcnRzIHdpdGgNCj4gUENJ
+RGV2aWNlLiAgSXQgYWN0dWFsbHkgc3RhcnRzIHdpdGggU3lzQnVzRGV2aWNlLg0KPiANCj4gVW5z
+dXJwcmlzaW5nbHksIGFuZCAibWFrZSBjaGVjayIgYWxzbyBmYWlsczoNCj4gDQo+ICAgICA+Pj4g
+TUVTT05fVEVTVF9JVEVSQVRJT049MQ0KPiBNU0FOX09QVElPTlM9aGFsdF9vbl9lcnJvcj0xOmFi
+b3J0X29uX2Vycm9yPTE6cHJpbnRfc3VtbWFyeT0xOnByaW50DQo+IF9zdGFja3RyYWNlPTEgUlVT
+VF9CQUNLVFJBQ0U9MSBRVEVTVF9RRU1VX0JJTkFSWT0uL3FlbXUtc3lzdGVtLQ0KPiBhYXJjaDY0
+IFFURVNUX1FFTVVfSU1HPS4vcWVtdS1pbWcNCj4gR19URVNUX0RCVVNfREFFTU9OPS93b3JrL2Fy
+bWJydS9xZW11L3Rlc3RzL2RidXMtdm1zdGF0ZS0NCj4gZGFlbW9uLnNoDQo+IEFTQU5fT1BUSU9O
+Uz1oYWx0X29uX2Vycm9yPTE6YWJvcnRfb25fZXJyb3I9MTpwcmludF9zdW1tYXJ5PTENCj4gUFlU
+SE9OPS93b3JrL2FybWJydS9xZW11L2JsZC1hcm0vcHl2ZW52L2Jpbi9weXRob24zDQo+IFVCU0FO
+X09QVElPTlM9aGFsdF9vbl9lcnJvcj0xOmFib3J0X29uX2Vycm9yPTE6cHJpbnRfc3VtbWFyeT0x
+OnByaW4NCj4gdF9zdGFja3RyYWNlPTEgTUFMTE9DX1BFUlRVUkJfPTIyIC93b3JrL2FybWJydS9x
+ZW11L2JsZC0NCj4gYXJtL3Rlc3RzL3F0ZXN0L3Rlc3QtaG1wIC0tdGFwIC1rDQo+IA0KPiDigJXi
+gJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXi
+gJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJUNCj4g4oCV4oCVIOKc
+gA0KPiDigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXi
+gJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJUNCj4g
+4oCV4oCVDQo+ICAgICBzdGRlcnI6DQo+ICAgICBxZW11LXN5c3RlbS1hYXJjaDY0OiAuLi9ody9j
+b3JlL3FkZXYuYzoxMTM6IHFkZXZfc2V0X3BhcmVudF9idXM6DQo+IEFzc2VydGlvbiBgZGMtPmJ1
+c190eXBlICYmIG9iamVjdF9keW5hbWljX2Nhc3QoT0JKRUNUKGJ1cyksIGRjLQ0KPiA+YnVzX3R5
+cGUpJyBmYWlsZWQuDQo+ICAgICBCcm9rZW4gcGlwZQ0KPiAgICAgLi4vdGVzdHMvcXRlc3QvbGli
+cXRlc3QuYzoyMDg6IGtpbGxfcWVtdSgpIGRldGVjdGVkIFFFTVUgZGVhdGggZnJvbQ0KPiBzaWdu
+YWwgNiAoQWJvcnRlZCkgKGNvcmUgZHVtcGVkKQ0KPiANCj4gYW5kDQo+IA0KPiAgICAgPj4+IE1F
+U09OX1RFU1RfSVRFUkFUSU9OPTENCj4gTVNBTl9PUFRJT05TPWhhbHRfb25fZXJyb3I9MTphYm9y
+dF9vbl9lcnJvcj0xOnByaW50X3N1bW1hcnk9MTpwcmludA0KPiBfc3RhY2t0cmFjZT0xIFJVU1Rf
+QkFDS1RSQUNFPTEgUVRFU1RfUUVNVV9CSU5BUlk9Li9xZW11LXN5c3RlbS0NCj4gYWFyY2g2NCBN
+QUxMT0NfUEVSVFVSQl89ODYgUVRFU1RfUUVNVV9JTUc9Li9xZW11LWltZw0KPiBHX1RFU1RfREJV
+U19EQUVNT049L3dvcmsvYXJtYnJ1L3FlbXUvdGVzdHMvZGJ1cy12bXN0YXRlLQ0KPiBkYWVtb24u
+c2gNCj4gQVNBTl9PUFRJT05TPWhhbHRfb25fZXJyb3I9MTphYm9ydF9vbl9lcnJvcj0xOnByaW50
+X3N1bW1hcnk9MQ0KPiBQWVRIT049L3dvcmsvYXJtYnJ1L3FlbXUvYmxkLWFybS9weXZlbnYvYmlu
+L3B5dGhvbjMNCj4gVUJTQU5fT1BUSU9OUz1oYWx0X29uX2Vycm9yPTE6YWJvcnRfb25fZXJyb3I9
+MTpwcmludF9zdW1tYXJ5PTE6cHJpbg0KPiB0X3N0YWNrdHJhY2U9MSAvd29yay9hcm1icnUvcWVt
+dS9ibGQtYXJtL3Rlc3RzL3F0ZXN0L3FvbS10ZXN0IC0tdGFwIC1rDQo+IA0KPiDigJXigJXigJXi
+gJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXi
+gJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJUNCj4g4oCV4oCVIOKcgA0KPiDi
+gJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXi
+gJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJXigJUNCj4g4oCV4oCV
+DQo+ICAgICBzdGRlcnI6DQo+ICAgICBxZW11LXN5c3RlbS1hYXJjaDY0OiAuLi9ody9jb3JlL3Fk
+ZXYuYzoxMTM6IHFkZXZfc2V0X3BhcmVudF9idXM6DQo+IEFzc2VydGlvbiBgZGMtPmJ1c190eXBl
+ICYmIG9iamVjdF9keW5hbWljX2Nhc3QoT0JKRUNUKGJ1cyksIGRjLQ0KPiA+YnVzX3R5cGUpJyBm
+YWlsZWQuDQo+ICAgICBCcm9rZW4gcGlwZQ0KPiAgICAgLi4vdGVzdHMvcXRlc3QvbGlicXRlc3Qu
+YzoyMDg6IGtpbGxfcWVtdSgpIGRldGVjdGVkIFFFTVUgZGVhdGggZnJvbQ0KPiBzaWduYWwgNiAo
+QWJvcnRlZCkgKGNvcmUgZHVtcGVkKQ0KPiANCj4gUGxlYXNlIG1ha2Ugc3VyZSAibWFrZSBjaGVj
+ayIgcGFzc2VzIGJlZm9yZSBwb3N0aW5nIHBhdGNoZXMgZm9yIHJldmlldy4NCj4gSWYgeW91IG5l
+ZWQgaGVscCBnZXR0aW5nIHRoZXJlLCBwb3N0IHRoZW0gbWFya2VkIFJGQyBhbmQgd2l0aCB0aGUg
+YmFkDQo+IHRlc3QgcmVzdWx0cyByaWdodCBpbiB0aGUgY292ZXIgbGV0dGVyLg0KDQpTdXJlLiBX
+aWxsIHJ1biAibWFrZSBjaGVjayIgaW4gZnV0dXJlLg0KDQo+ID4gIH0NCj4gPg0KPiA+ICBzdGF0
+aWMgaW50IHNtbXV2M19ub3RpZnlfZmxhZ19jaGFuZ2VkKElPTU1VTWVtb3J5UmVnaW9uICppb21t
+dSwNCj4gPiBkaWZmIC0tZ2l0IGEvaHcvYXJtL3ZpcnQuYyBiL2h3L2FybS92aXJ0LmMNCj4gPiBp
+bmRleCAxNzdmM2RkMjJjLi4zYmFlNGUzNzRmIDEwMDY0NA0KPiA+IC0tLSBhL2h3L2FybS92aXJ0
+LmMNCj4gPiArKysgYi9ody9hcm0vdmlydC5jDQo+ID4gQEAgLTU2LDYgKzU2LDcgQEANCj4gPiAg
+I2luY2x1ZGUgInFlbXUvY3V0aWxzLmgiDQo+ID4gICNpbmNsdWRlICJxZW11L2Vycm9yLXJlcG9y
+dC5oIg0KPiA+ICAjaW5jbHVkZSAicWVtdS9tb2R1bGUuaCINCj4gPiArI2luY2x1ZGUgImh3L3Bj
+aS9wY2lfYnVzLmgiDQo+ID4gICNpbmNsdWRlICJody9wY2ktaG9zdC9ncGV4LmgiDQo+ID4gICNp
+bmNsdWRlICJody92aXJ0aW8vdmlydGlvLXBjaS5oIg0KPiA+ICAjaW5jbHVkZSAiaHcvY29yZS9z
+eXNidXMtZmR0LmgiDQo+ID4gQEAgLTE0NDIsNyArMTQ0Myw3IEBAIHN0YXRpYyB2b2lkIGNyZWF0
+ZV9zbW11KGNvbnN0DQo+IFZpcnRNYWNoaW5lU3RhdGUgKnZtcywNCj4gPiAgICAgIH0NCj4gPiAg
+ICAgIG9iamVjdF9wcm9wZXJ0eV9zZXRfbGluayhPQkpFQ1QoZGV2KSwgInByaW1hcnktYnVzIiwg
+T0JKRUNUKGJ1cyksDQo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJmVycm9yX2Fi
+b3J0KTsNCj4gPiAtICAgIHN5c2J1c19yZWFsaXplX2FuZF91bnJlZihTWVNfQlVTX0RFVklDRShk
+ZXYpLCAmZXJyb3JfZmF0YWwpOw0KPiA+ICsgICAgcWRldl9yZWFsaXplX2FuZF91bnJlZihkZXYs
+ICZidXMtPnFidXMsICZlcnJvcl9mYXRhbCk7DQo+ID4gICAgICBzeXNidXNfbW1pb19tYXAoU1lT
+X0JVU19ERVZJQ0UoZGV2KSwgMCwgYmFzZSk7DQo+ID4gICAgICBmb3IgKGkgPSAwOyBpIDwgTlVN
+X1NNTVVfSVJRUzsgaSsrKSB7DQo+ID4gICAgICAgICAgc3lzYnVzX2Nvbm5lY3RfaXJxKFNZU19C
+VVNfREVWSUNFKGRldiksIGksDQo+IA0KPiBXaGF0IGFyZSB5b3UgdHJ5aW5nIHRvIGFjY29tcGxp
+c2g/DQo+IA0KPiBJICpndWVzcyogeW91J3JlIHRyeWluZyB0byBjaGFuZ2UgdGhlICJhcm0tc21t
+dXYzIiBkZXZpY2UgdG8gYmUgYSBQQ0kNCj4gZGV2aWNlLiAgQ29ycmVjdD8NCg0KTm90IHJlYWxs
+eS4gU01NVXYzIGlzIGEgcGxhdGZvcm0gZGV2aWNlIGFuZCBpdCBpcyBub3JtYWxseSBhc3NvY2lh
+dGVkIHdpdGggYSBQQ0llIFJDLg0KQ3VycmVudGx5IFFlbXUgaGFzIGEgbWFjaGluZSB3aWRlIFNN
+TVV2MygtbWFjaGluZSB2aXJ0LCBpb21tdT1zbW11djMpIGFuZCANCmlzIGFzc29jaWF0ZWQgYnkg
+ZGVmYXVsdCB3aXRoIHRoZSBQY2llLjAgYnVzLiBUaGlzIHNlcmllcyBhcyBleHBsYWluZWQgaW4g
+Y292ZXIgbGV0dGVyIGFkZHMNCnN1cHBvcnQgdG8gdXNlci1jcmVhdGFibGUgU01NVXYzIGRldmlj
+ZXMgYW5kIHJlcXVpcmVzIGEgd2F5IHRvIGFzc29jaWF0ZSBhIFBDSWUgUkMuDQoNClRoaXMgd2Fz
+IGluaXRpYWxseSBkb25lIGluIHRoZSBSRkMgYXMgYmVsb3csDQoNCi1kZXZpY2UgYXJtLXNtbXV2
+MyxwY2ktYnVzPXBjaWUuMA0KDQpCdXQgdGhlcmUgd2VyZSBmZWVkYmFjayByZWNlaXZlZCB0aGF0
+IGl0IGlzIG1vcmUgaW50dWl0aXZlIGFuZCBlYXN5IGZvciBsaWJ2aXJ0IHRvIHVzZQ0KdGhlIFFl
+bXUgZGV2aWNlIGRlZmF1bHQgImJ1cyIgcHJvcGVydHkgdG8gYWNoaWV2ZSB0aGlzLA0KDQotZGV2
+aWNlIGFybS1zbW11djMsYnVzPXBjaWUuMA0KDQpBbmQgaGVuY2UgdGhlIGNoYW5nZSB0bywNCg0K
+ICBkYy0+YnVzX3R5cGUgPSBUWVBFX1BDSUVfQlVTOw0KDQpQbGVhc2Ugc2VlIHRoZSBkaXNjdXNz
+aW9uIG9uIHRoaXMgd2UgaGFkIGluIHRoaXMgdGhyZWFkLA0KaHR0cHM6Ly9sb3JlLmtlcm5lbC5v
+cmcvcWVtdS1kZXZlbC9mMWI5MTAzNC1iZTJhLTQ5M2UtOTIyOS1jMTY0ZTA4OTU4MjVAcmVkaGF0
+LmNvbS8NCg0KU28gZnJvbSB5b3VyIHJlcGx5LCBpdCBpcyBvYnZpb3VzIHRoYXQgd2UgY2FuJ3Qg
+dXNlIHRoZSBkZWZhdWx0ICJidXMiIGFzIHVzZWQgIHRoaXMgcGF0Y2ggYW5kDQpwcm9iYWJseSB0
+aGUgb25seSB3YXkgaXMgdG8gdXNlICBhIGRpZmZlcmVudCBwcm9wZXJ0eSBuYW1lIGxpa2UsDQoN
+Ci1kZXZpY2UgYXJtLXNtbXV2MyxwcmltYXJ5LWJ1cz1wY2llLjANCg0KUGxlYXNlIGxldCBtZSBr
+bm93IGlmIHRoZXJlIGlzIGFub3RoZXIgd2F5IHRvIGFjaGlldmUgdGhlIHNhbWUgd2l0aCBkZWZh
+dWx0ICJidXMiLg0KDQpUaGFua3MgYWdhaW4gZm9yIHRha2luZyB0aGUgdGltZSB0byBydW4gdGhl
+IGFib3ZlIHRlc3RzIGFuZCB0aGUgZXhwbGFuYXRpb24uDQoNClRoYW5rcywNClNoYW1lZXINCg0K
+DQo+IFRoZSBvbmx5IHdheSB0byBkbyB0aGF0IGlzIG1ha2luZyBpdCBhIHN1YnR5cGUgb2YgUENJ
+RGV2aWNlLCBpLmUuIGNoYW5nZQ0KPiB0aGUgcGFyZW50IGNoYWluIGZyb20NCj4gDQo+ICAgIGFy
+bS1zbW11djMgLT4gYXJtLXNtbXUgLT4gc3lzLWJ1cy1kZXZpY2UgLT4gZGV2aWNlIC0+IG9iamVj
+dA0KPiANCj4gdG8gc29tZXRoaW5nIGxpa2UNCj4gDQo+ICAgIGFybS1zbW11djMgLT4gICAgLi4u
+ICAgLT4gcGNpLWRldmljZSAtPiBkZXZpY2UgLT4gb2JqZWN0DQo+IA0KPiBOb3RlIHlvdSBjYW5u
+b3QgaGF2ZSBkaWZmZXJlbnQgc3VidHlwZXMgb2YgdGhlIHNhbWUgc3VwZXJ0eXBlIChzYXkNCj4g
+ImFybS1zbW11IikgcGx1ZyBpbnRvIGRpZmZlcmVudCBidXNlcy4gIElmIHlvdSBuZWVkIGEgY29t
+bW9uIGRldmljZSBjb3JlDQo+IHRvIHBsdWcgaW50byBkaWZmZXJlbnQgYnVzZXMsIHRoaW5ncyBn
+ZXQgbW9yZSBjb21wbGljYXRlZC4gIEhlcmUncyBob3cNCj4gdGhlICJzZXJpYWwtRk9PIiBkZXZp
+Y2VzIGRvIGl0Og0KPiANCj4gKiAic2VyaWFsLW1tIiwgYSBzdWJ0eXBlIG9mICJzeXMtYnVzLWRl
+dmljZSIsIHRodXMgcGx1Z3MgaW50byBzeXN0ZW0gYnVzDQo+ICogInNlcmlhbC1pc2EiLCBhIHN1
+YnR5cGUgb2YgImlzYS1kZXZpY2UiLCB0aHVzIHBsdWdzIGludG8gSVNBIGJ1cw0KPiAqICJzZXJp
+YWwtcGNpIiwgYSBzdWJ0eXBlIG9mICJwY2ktZGV2aWNlIiwgdGh1cyBwbHVncyBpbnRvIFBDSSBi
+dXMNCj4gDQo+IFRoZXkgYWxsICpjb250YWluKiB0aGUgY29yZSAic2VyaWFsIiBkZXZpY2UsIHdo
+aWNoIGlzIGEgc3VidHlwZSBvZg0KPiAiZGV2aWNlIiwgYW5kIHRodXMgZG9lcyBub3QgcGx1ZyBp
+bnRvIGFueSBidXMuICAiQ29udGFpbiIgaXMgImhhcyBhIiwNCj4gbm90ICJzdWJ0eXBlIG9mIi4N
+Cj4gDQo+IFsuLi5dDQo+IA0KDQo=

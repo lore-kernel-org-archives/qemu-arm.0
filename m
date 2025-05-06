@@ -1,136 +1,135 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2798672njj;
-        Mon, 5 May 2025 17:12:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXV7sZj7jzxHEzM6bFd2m9dJxKO2Mt6ZNsl4drwZhtr55oot5sUP1ffJS4iKkcnyOcDpDW31a+0lF9jag==@linaro.org
-X-Google-Smtp-Source: AGHT+IFkJQ1XPNrITbqtsylOe9LIiTD5DzqqszFxGuFMRY6x4z+tdqU0oEZvkM3kZYs+tU1H1VWG
-X-Received: by 2002:ad4:5d4d:0:b0:6f4:f458:7f0e with SMTP id 6a1803df08f44-6f5354210e2mr25240036d6.37.1746490353966;
-        Mon, 05 May 2025 17:12:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746490353; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2798875njj;
+        Mon, 5 May 2025 17:13:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXIp1DO49Iu9E+9HX331bsmHsAfIPzbkOsOALsoQH/E+4jAmSK+1FdiWTm1dsnwEE1LgPgC8FEW+luACg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHyd7WsS+hAfovjO3AyHfDxE7NZXnENzmzQoNN99M9qvPYDNNdqvOcFt1k4PAvZ+yvXN0nE
+X-Received: by 2002:a05:620a:628e:b0:7c7:a604:d432 with SMTP id af79cd13be357-7cae3ab1dd2mr1600237385a.30.1746490381732;
+        Mon, 05 May 2025 17:13:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746490381; cv=none;
         d=google.com; s=arc-20240605;
-        b=C4hd5a2GAQeN4xX6fThLcAgdEkKWVMG/ZdnsTut7/kMSjdZX2pImDA7aOZIIw1YFlN
-         Yc7u9cyKN8UeQlMIAjmh1xvJQxMaVE5ezoc/vUl0qlySl8XlP2UKFif1PNyLGqOUymx7
-         I7LO0Y63dCxIitZchRX6wKS8k+jlAlKpB4N8uk/sTM1cxcHwsGmrrqMoLP1zwcbkQNH3
-         q1xTFICyKU6oh3Pa1mgebry56d9KFR93G13zz8KcL02UOIJxlywAvSTY+MMrsLV9laUD
-         1IFA12cfFaS9B3lJG4Hmd9gJ4+fJntrEo9qH8ycD5PAmQ1ggCItUbgfmuc01iDz/Lr74
-         z48Q==
+        b=MwnfO3jAdGJWoUn3huXBJFRGOfuaK/iXN9gupav3VdlcGB9dTjrjDj8wFc+qJBWCBq
+         npNs4BO5h7ardoUw/bnbOoQWSFnHh8B/8zBYRO1URPafZ9ns5vw7q16fdGkcN2haXgpJ
+         AhCQFTc58GZ19tf8WM0O6o6Ie1cUUQC7uyydd/Bl7Wp1jOYzU9kb/Csn2y7F690hkYwv
+         rH7CslygjmYRS73eMxWpS7Zxxh3OqtyGz5KP6VMosQUUcBuH7vq5s/FTG+NhYKxTwGEy
+         z2yRr0k8FspxfxETVu9JB7CTGomU9PI3KpqI/FB9lqwGpL10fV5XIyOC4hS9fdBCd1WD
+         8eDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:content-language:references:cc:to:subject:from
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=WwbE5zCuRNdoSj9HMHlPp/aP8km5G0RdQVXA9a3KT6Q=;
-        fh=MLx3bAzpvfXe6kXmqSBIictH9EJN2bS/DuTDXglv+/0=;
-        b=GlWNFrA6hB4vswB0xMOj31ZuVjSyv9HdBP/oAUNJ4yQOEWKzA1lS1zIpXX5QWozfHQ
-         sffx8JOf0I+rlK8JrR9qMX+HFWpjdg/4E6xdWGqaZrreJ044SSM2bIFqU53ubLOoy/al
-         QNtIYp2UuYZXX4d49XeZ5zqFwOZB/S2lXev80+Q8g2+BbD7rkRMaXRBOGWgyqMc4Zu8e
-         UWTBhtaxyNQmfWdEd0GTFseykzi5c1V9dmmaIPvgw5zMA9AwQhe9zWYwJ7pA+8oCml53
-         nx+WwLlI6iabf8j+sNKgrLzfhjy0HwYq6HPAbqr61zfMAfQqWfPyCsO/HfuR4vQKJcGW
-         x97w==;
+        bh=cATzkfXbohQXK2Q2vXX1nYmyT7NMj8ji2K01wgqx4QU=;
+        fh=MEflMIWjIKnWi2wIS/DDMwA+BKGKy8hIoLFkZblrYQ0=;
+        b=A2bC95W/10csH7/EfZHQ5dLyIClpsWlMAeY+MRotN8b+uWNWsokTKD8iwK2R2TIrBb
+         +ZMXyTQ4N9otvzF3/pUgvCS5Q0WkKEjygz0mmGudfMrV0neq9rumaWgGHuvvaccqjlFk
+         cmFADJYOzrHRgb6MqKufdcXPSjodABvdLxFAbNDQ4WBrNAUNqXSExaS98M0fF0FpuCmy
+         I25Nis8M/+H6xtKTmcUyrjbv27Eq25MhLWKf+DwNXttue2wdRXuV2PqMxzZBQ6FUp+dX
+         oHE1g1Ra9NohneLaXBkDb4ZsiRdBhkIDcA2xAMBIoN2pEOsAkGwThiUExTM2gIy9uP+1
+         4baA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YF4HaJAr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uCFc78gk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f50f3bd9edsi109667166d6.114.2025.05.05.17.12.33
+        by mx.google.com with ESMTPS id af79cd13be357-7cad23cad95si1074212685a.177.2025.05.05.17.13.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 May 2025 17:12:33 -0700 (PDT)
+        Mon, 05 May 2025 17:13:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YF4HaJAr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uCFc78gk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uC5ut-00058z-3W; Mon, 05 May 2025 20:12:11 -0400
+	id 1uC5vY-0006ZN-Hx; Mon, 05 May 2025 20:12:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uC5ur-00057b-41
- for qemu-devel@nongnu.org; Mon, 05 May 2025 20:12:09 -0400
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+ id 1uC5vT-0006V4-Uh
+ for qemu-devel@nongnu.org; Mon, 05 May 2025 20:12:48 -0400
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uC5up-0000AN-An
- for qemu-devel@nongnu.org; Mon, 05 May 2025 20:12:08 -0400
-Received: by mail-pf1-x42e.google.com with SMTP id
- d2e1a72fcca58-7403f3ece96so6643321b3a.0
- for <qemu-devel@nongnu.org>; Mon, 05 May 2025 17:12:06 -0700 (PDT)
+ id 1uC5vN-0000CK-OL
+ for qemu-devel@nongnu.org; Mon, 05 May 2025 20:12:47 -0400
+Received: by mail-pl1-x635.google.com with SMTP id
+ d9443c01a7336-22c3407a87aso75004015ad.3
+ for <qemu-devel@nongnu.org>; Mon, 05 May 2025 17:12:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1746490325; x=1747095125; darn=nongnu.org;
+ d=linaro.org; s=google; t=1746490360; x=1747095160; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:references
  :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
  :cc:subject:date:message-id:reply-to;
- bh=WwbE5zCuRNdoSj9HMHlPp/aP8km5G0RdQVXA9a3KT6Q=;
- b=YF4HaJAr4TmyXJOuqdxtZQh7TV1jC03CE8aHjPyX8Ll+My/QV9KEWtmi45R2VgsPBk
- 7lIF6Pd2qGes9dE1wBCg8OmCsBSeuKpBOwWHNQtIg8TLWhJhYVtwYIb5d2mk4/cWYdLD
- 2zqKQiuA4OPRniMi901gwdYvhI63a8qtwM474sbB9YHGnHj8EaYxbG2YdGwgJMOD1qXB
- obsNa2lH83F1ZPmISo8IFl1MLH9IPpq/4xgKwf2r3Y3gbJx88xiIVuAYfNxJk55GpwGW
- dWmMtsZbdL20RFxjuKPWWS88Q4reINKoLzXfX29qy2V4XNf6NGcyOuq0g5drgndS7Iry
- 2iiQ==
+ bh=cATzkfXbohQXK2Q2vXX1nYmyT7NMj8ji2K01wgqx4QU=;
+ b=uCFc78gkm8GGfa90SBqLBzy1MjGAIrEx9t63k3BvBryrZnzfUT+CSxOs6WnRvms47o
+ +k+51W5BZ8Jxan0XKQw+k2fhm97NbSkaPN6V0xz9CqhVSKFh2abfC9cQ/ml97tYinJY/
+ 04oKqAoK6hVz2mKP0p02J4y568foNvYYXwlShzNif1Nj9D9CcmirUVJiVdOoZPpFTfrP
+ TLg+INgJryVPF00B9UJ57DJJFvWrCR7Ud0ykbElQKbEvozKFbNt/VnU2RadGEGHMzvrz
+ EPywkYlv8Qbfos1x/ncjb1+t7dQW/M7AHFT+xWytzdNvMd2CZEekR6r1PtCiuf/2Pk0x
+ jWDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746490325; x=1747095125;
+ d=1e100.net; s=20230601; t=1746490360; x=1747095160;
  h=content-transfer-encoding:in-reply-to:content-language:references
  :cc:to:subject:from:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=WwbE5zCuRNdoSj9HMHlPp/aP8km5G0RdQVXA9a3KT6Q=;
- b=gsQNLwc5iwJuxJXzUxrdyerphqyI557h14w8Z0My6Aqx6hlNFS6ll6gIAhYAWUonNj
- DJYxpKrmUp4TqnpkQT81o6XdUqMsiV/UR+g3+QA322nrvKjw2TzQMuiQaWV5FTnQ7ouQ
- ZpSmSLVHNXCNWx/KVeQgTXXlwLA6ddNiPJ0AxnveF5SQyevjALDGFGIQvc9UtVSHJjXd
- 37EedxMI4VYvIml85SdwqQcjwRNjdLGumbaw6SJl/zcjSiqxpPjWL7v1mBhFSivhFaKQ
- UN3FH2R1tICd80/hbi5ZP1zr7rv6vDcBt9U0hmmX0sFi7j5041qUMYD41hJ1TVTPyno8
- d9Yg==
+ bh=cATzkfXbohQXK2Q2vXX1nYmyT7NMj8ji2K01wgqx4QU=;
+ b=WDi40EszGBTZhU7BgJa/VYU0OhcWolXrLzK7daklWZTaJFbgwYYe06TEDzp5CJSa5n
+ OUubEp4MYISNUbEWwmaMweEXIitV7eGnNZj9Uv0Rz9jbM0KXoPIC2EpYvfFpqtI2/Hwo
+ Tl8OIH0KuUaQPL17RRi5fqEspM3o3KfbBVWXEzQZ4etvJvjiOd759wGMrfka9Ug5ptIH
+ XGkTryFhwYVCIE8bqjUO4e1OZ2u5zgV/Vy8evCtbROd5ri+7aMU41lQqVS7jhZ3B1o15
+ i/tyS8Ha7aOlnEUP61YaaWmBNW7sNn+k9wVaZNhuI3DNpIHsYWa59TvADyuuxIFckY6y
+ MZvg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUA26bTtNB+iGx056zkaV4YSCtS93EkTui/2CK19NRxvN83ySiiPmRLfd1z6tnTvqKS4aX7jrsN5Mzt@nongnu.org
-X-Gm-Message-State: AOJu0Yxj8VxPSVlxb5zCoSS1jOmF42OxSUIIwMObwwOfPAnIAtOGBloL
- LllZrpY7DEpb/XWDqrMAkdjhnbKLD/zk/8qkDJg3RARUnGzj75nmLjGVs1e9CplHB+q2r3S7Cp3
- 3lV8=
-X-Gm-Gg: ASbGncvrd4RuTd6RDIKorOtBrIQQltZb4mbNZw3WCk2fJdzRx+up8UYHz1hghaI+bij
- aP3naQ7c/FDE7Hjg3iOuOUajURepTaukD2zPLoVOjNiN6LAF9I94JxvEdO8hdXPZGKW4LtBcACN
- /K9BOIpjqrOw9XbLgT5eiYltdA7HnidBBu8zWgA5NA9CwIAMjAQ3/8rs5V5N2zUlCCA66l5Sl1x
- CHKAqSWTEhSGwNiMgJng3TOxdw1FhH+gSxHX0Cm1GmrnvG8j586iIRhjMIlFObJXkIADcIAch27
- /+uJUvHp06uKferkaO1NmMS7kGpmUVU3pdFxX/czpTMCpXZ7F0lQRbpJqJks74HcWLM3AJjNx9X
- vq4l/ASnWHmMnAuSfGcA=
-X-Received: by 2002:a05:6a00:e84:b0:736:4cde:5c0e with SMTP id
- d2e1a72fcca58-740919e4dbdmr1318238b3a.10.1746490325492; 
- Mon, 05 May 2025 17:12:05 -0700 (PDT)
+ AJvYcCXfTs4+li/MtwpLYH/8s6QRSRyGoBT9WsN6Tp8klcDV70E2nP5grF4H00HZxi+Ua6s1FJeLmH8OMhgS@nongnu.org
+X-Gm-Message-State: AOJu0YzSNlCDGab/rk3NS+HvKrBrbUsWWRcs7pyotRfrvlU2ed7JnPiv
+ mlyJJwO/FYJEx2oSA8qFIYiSl+vdaxXYthiCfkx3ef1t56GnsU2w3boEwEW1rH8=
+X-Gm-Gg: ASbGncsjtqCGPUM4FaUJq8acnQAIQjM7VsHP+TunjMqIBQVsfczXrHffM9kHIJJ7Vud
+ PR4hwRtqW4++g9UlO0fSutlHcavb4tdGYXqrUN+uCye0TkhlJBAUYpeBnQK4v1Fbh7qsLF6gv3X
+ Dhy9FCEOxcO6cb6Rf0gnIQ5PJGlAzxUiWnob+ZaZYa7UoV7s5ycaQhHDqz0mUmRqNTBPrvEIPy9
+ WHUSNqbtFcuGxBx9/Ns3EftLFs+/DYDAf5/OX3Y9HXpHVjZFiLnpBVhIPH4vcFrliw+5H1WQXuE
+ ejOoWbeROk6B5V6sEF9/CuNxIOa11MSzF5aZHNeOzd8aGpro4+MZlBP1kg7asiaEAviAc5buDT1
+ Gn7ePOceukrnzWERY2AM=
+X-Received: by 2002:a17:903:8cd:b0:224:fa0:36da with SMTP id
+ d9443c01a7336-22e1ea54c68mr115503445ad.18.1746490359828; 
+ Mon, 05 May 2025 17:12:39 -0700 (PDT)
 Received: from ?IPV6:2804:7f0:b400:8604:71fc:f75a:e2f5:e7b5?
  ([2804:7f0:b400:8604:71fc:f75a:e2f5:e7b5])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-74058dbbe25sm7795188b3a.59.2025.05.05.17.12.02
+ d9443c01a7336-22e15229474sm61393085ad.184.2025.05.05.17.12.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 May 2025 17:12:05 -0700 (PDT)
-Message-ID: <a8566819-5a9c-464f-8c8b-b74ff9f65207@linaro.org>
-Date: Mon, 5 May 2025 21:12:01 -0300
+ Mon, 05 May 2025 17:12:39 -0700 (PDT)
+Message-ID: <ee369c86-3bb5-45d6-a6ca-b1d1573cb115@linaro.org>
+Date: Mon, 5 May 2025 21:12:35 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Gustavo Romero <gustavo.romero@linaro.org>
-Subject: Re: [RFC 05/24] hw/arm/virt: Introduce machine state acpi pcihp flags
- and props
+Subject: Re: [RFC 06/24] hw/acpi: Rename and move build_x86_acpi_pci_hotplug
+ to pcihp
 To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
  imammedo@redhat.com, anisinha@redhat.com, mst@redhat.com,
  shannon.zhaosl@gmail.com
 Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com
 References: <20250428102628.378046-1-eric.auger@redhat.com>
- <20250428102628.378046-6-eric.auger@redhat.com>
+ <20250428102628.378046-7-eric.auger@redhat.com>
 Content-Language: en-US
-In-Reply-To: <20250428102628.378046-6-eric.auger@redhat.com>
+In-Reply-To: <20250428102628.378046-7-eric.auger@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pf1-x42e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,127 +144,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +oxPd/02gm6s
+X-TUID: NMPGlWF6KDQR
 
 Hi Eric,
 
 On 4/28/25 07:25, Eric Auger wrote:
-> acpi_pcihp VirtMachineClass state flag will allow
-> to opt in for acpi pci hotplug. This is guarded by a
-> class no_acpi_pcihp flag to manage compats (<= 10.0
-> machine types will not support ACPI PCI hotplug).
+> We plan to reuse build_x86_acpi_pci_hotplug() implementation
+> for ARM so let's move the code to generic pcihp.
 > 
-> Machine state acpi_pcihp flag msu be set before the creation
-                         nit:    ^--- must be set
-
-
-> of the GED device which will use it.
+> Associated static aml_pci_pdsm() helper is also moved along.
+> build_x86_acpi_pci_hotplug is renamed into build_acpi_pci_hotplug().
 > 
-> Currently the ACPI PCI HP is turned off by default. This will
-> change later on for 10.1 machine type.
-> 
-> We also introduce properties to allow disabling it.
+> No code change intended.
 > 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > ---
->   include/hw/arm/virt.h |  2 ++
->   hw/arm/virt.c         | 27 +++++++++++++++++++++++++++
->   2 files changed, 29 insertions(+)
+>   hw/i386/acpi-build.h    |   4 -
+>   include/hw/acpi/pcihp.h |   6 ++
+>   hw/acpi/pcihp.c         | 174 +++++++++++++++++++++++++++++++++++++++-
+>   hw/i386/acpi-build.c    | 150 +---------------------------------
+>   4 files changed, 181 insertions(+), 153 deletions(-)
 > 
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index c8e94e6aed..1e9d002880 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -135,6 +135,7 @@ struct VirtMachineClass {
->       bool no_tcg_lpa2;
->       bool no_ns_el2_virt_timer_irq;
->       bool no_nested_smmu;
-> +    bool no_acpi_pcihp;
->   };
+> diff --git a/hw/i386/acpi-build.h b/hw/i386/acpi-build.h
+> index 0dce155c8c..8ba3c33e48 100644
+> --- a/hw/i386/acpi-build.h
+> +++ b/hw/i386/acpi-build.h
+> @@ -5,10 +5,6 @@
 >   
->   struct VirtMachineState {
-> @@ -156,6 +157,7 @@ struct VirtMachineState {
->       bool mte;
->       bool dtb_randomness;
->       bool second_ns_uart_present;
-> +    bool acpi_pcihp;
->       OnOffAuto acpi;
->       VirtGICType gic_version;
->       VirtIOMMUType iommu;
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 3e72adaa91..1601750913 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2414,8 +2414,10 @@ static void machvirt_init(MachineState *machine)
->       create_pcie(vms);
+>   extern const struct AcpiGenericAddress x86_nvdimm_acpi_dsmio;
 >   
->       if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
-> +        vms->acpi_pcihp &= !vmc->no_acpi_pcihp;
->           vms->acpi_dev = create_acpi_ged(vms);
->       } else {
-> +        vms->acpi_pcihp = false;
->           create_gpio_devices(vms, VIRT_GPIO, sysmem);
->       }
+> -/* PCI Hot-plug registers bases. See docs/spec/acpi_pci_hotplug.txt */
+> -#define ACPI_PCIHP_SEJ_BASE 0x8
+> -#define ACPI_PCIHP_BNMR_BASE 0x10
+> -
+>   void acpi_setup(void);
+>   Object *acpi_get_i386_pci_host(void);
 >   
-> @@ -2610,6 +2612,20 @@ static void virt_set_its(Object *obj, bool value, Error **errp)
->       vms->its = value;
->   }
+> diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
+> index ac21a95913..2da0bc45c9 100644
+> --- a/include/hw/acpi/pcihp.h
+> +++ b/include/hw/acpi/pcihp.h
+> @@ -33,6 +33,10 @@
+>   #define ACPI_PCIHP_IO_BASE_PROP "acpi-pcihp-io-base"
+>   #define ACPI_PCIHP_IO_LEN_PROP "acpi-pcihp-io-len"
 >   
-> +static bool virt_get_acpi_pcihp(Object *obj, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
-> +
-> +    return vms->acpi_pcihp;
-> +}
-> +
-> +static void virt_set_acpi_pcihp(Object *obj, bool value, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
-> +
-> +    vms->acpi_pcihp = value;
-> +}
-> +
->   static bool virt_get_dtb_randomness(Object *obj, Error **errp)
->   {
->       VirtMachineState *vms = VIRT_MACHINE(obj);
-> @@ -3327,6 +3343,10 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->                                             "in ACPI table header."
->                                             "The string may be up to 8 bytes in size");
->   
-> +    object_class_property_add_bool(oc, "acpi-pcihp",
-> +                                   virt_get_acpi_pcihp, virt_set_acpi_pcihp);
-> +    object_class_property_set_description(oc, "acpi-pcihp",
-> +                                          "Force acpi pci hotplug");
+> +/* PCI Hot-plug registers bases. See docs/spec/acpi_pci_hotplug.txt */
 
-How about "Force ACPI PCI hotplug"?
-
-
->   }
->   
->   static void virt_instance_init(Object *obj)
-> @@ -3365,6 +3385,9 @@ static void virt_instance_init(Object *obj)
->           }
->       }
->   
-> +    /* default disallows ACPI PCI hotplug */
-> +    vms->acpi_pcihp = false;
-> +
->       /* Default disallows iommu instantiation */
->       vms->iommu = VIRT_IOMMU_NONE;
->   
-> @@ -3415,8 +3438,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(10, 1)
->   
->   static void virt_machine_10_0_options(MachineClass *mc)
->   {
-> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-> +
->       virt_machine_10_1_options(mc);
->       compat_props_add(mc->compat_props, hw_compat_10_0, hw_compat_10_0_len);
-> +    /* 10.0 and earlier do not support ACPI PCI hotplug */
-> +    vmc->no_acpi_pcihp = true;
->   }
->   DEFINE_VIRT_MACHINE(10, 0)
->   
+This reference needs to be updated to point to acpi_pci_hotplug.rst.
 
 Otherwise,
 
@@ -274,3 +199,394 @@ Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
 
 Cheers,
 Gustavo
+
+> +#define ACPI_PCIHP_SEJ_BASE 0x8
+> +#define ACPI_PCIHP_BNMR_BASE 0x10
+> +
+>   typedef struct AcpiPciHpPciStatus {
+>       uint32_t up;
+>       uint32_t down;
+> @@ -69,6 +73,8 @@ void acpi_pcihp_device_unplug_request_cb(HotplugHandler *hotplug_dev,
+>                                            AcpiPciHpState *s, DeviceState *dev,
+>                                            Error **errp);
+>   
+> +void build_acpi_pci_hotplug(Aml *table, uint64_t pcihp_addr);
+> +
+>   /* Called on reset */
+>   void acpi_pcihp_reset(AcpiPciHpState *s);
+>   
+> diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
+> index 5f79c9016b..35d8c0bfd2 100644
+> --- a/hw/acpi/pcihp.c
+> +++ b/hw/acpi/pcihp.c
+> @@ -26,7 +26,7 @@
+>   
+>   #include "qemu/osdep.h"
+>   #include "hw/acpi/pcihp.h"
+> -
+> +#include "hw/acpi/aml-build.h"
+>   #include "hw/pci-host/i440fx.h"
+>   #include "hw/pci/pci.h"
+>   #include "hw/pci/pci_bridge.h"
+> @@ -513,6 +513,178 @@ void acpi_pcihp_init(Object *owner, AcpiPciHpState *s, PCIBus *root_bus,
+>                                      OBJ_PROP_FLAG_READ);
+>   }
+>   
+> +static void build_append_pci_dsm_func0_common(Aml *ctx, Aml *retvar)
+> +{
+> +    Aml *UUID, *ifctx1;
+> +    uint8_t byte_list[1] = { 0 }; /* nothing supported yet */
+> +
+> +    aml_append(ctx, aml_store(aml_buffer(1, byte_list), retvar));
+> +    /*
+> +     * PCI Firmware Specification 3.1
+> +     * 4.6.  _DSM Definitions for PCI
+> +     */
+> +    UUID = aml_touuid("E5C937D0-3553-4D7A-9117-EA4D19C3434D");
+> +    ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(0), UUID)));
+> +    {
+> +        /* call is for unsupported UUID, bail out */
+> +        aml_append(ifctx1, aml_return(retvar));
+> +    }
+> +    aml_append(ctx, ifctx1);
+> +
+> +    ifctx1 = aml_if(aml_lless(aml_arg(1), aml_int(2)));
+> +    {
+> +        /* call is for unsupported REV, bail out */
+> +        aml_append(ifctx1, aml_return(retvar));
+> +    }
+> +    aml_append(ctx, ifctx1);
+> +}
+> +
+> +static Aml *aml_pci_pdsm(void)
+> +{
+> +    Aml *method, *ifctx, *ifctx1;
+> +    Aml *ret = aml_local(0);
+> +    Aml *caps = aml_local(1);
+> +    Aml *acpi_index = aml_local(2);
+> +    Aml *zero = aml_int(0);
+> +    Aml *one = aml_int(1);
+> +    Aml *not_supp = aml_int(0xFFFFFFFF);
+> +    Aml *func = aml_arg(2);
+> +    Aml *params = aml_arg(4);
+> +    Aml *bnum = aml_derefof(aml_index(params, aml_int(0)));
+> +    Aml *sunum = aml_derefof(aml_index(params, aml_int(1)));
+> +
+> +    method = aml_method("PDSM", 5, AML_SERIALIZED);
+> +
+> +    /* get supported functions */
+> +    ifctx = aml_if(aml_equal(func, zero));
+> +    {
+> +        build_append_pci_dsm_func0_common(ifctx, ret);
+> +
+> +        aml_append(ifctx, aml_store(zero, caps));
+> +        aml_append(ifctx,
+> +            aml_store(aml_call2("AIDX", bnum, sunum), acpi_index));
+> +        /*
+> +         * advertise function 7 if device has acpi-index
+> +         * acpi_index values:
+> +         *            0: not present (default value)
+> +         *     FFFFFFFF: not supported (old QEMU without PIDX reg)
+> +         *        other: device's acpi-index
+> +         */
+> +        ifctx1 = aml_if(aml_lnot(
+> +                     aml_or(aml_equal(acpi_index, zero),
+> +                            aml_equal(acpi_index, not_supp), NULL)
+> +                 ));
+> +        {
+> +            /* have supported functions */
+> +            aml_append(ifctx1, aml_or(caps, one, caps));
+> +            /* support for function 7 */
+> +            aml_append(ifctx1,
+> +                aml_or(caps, aml_shiftleft(one, aml_int(7)), caps));
+> +        }
+> +        aml_append(ifctx, ifctx1);
+> +
+> +        aml_append(ifctx, aml_store(caps, aml_index(ret, zero)));
+> +        aml_append(ifctx, aml_return(ret));
+> +    }
+> +    aml_append(method, ifctx);
+> +
+> +    /* handle specific functions requests */
+> +    /*
+> +     * PCI Firmware Specification 3.1
+> +     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
+> +     *        Operating Systems
+> +     */
+> +    ifctx = aml_if(aml_equal(func, aml_int(7)));
+> +    {
+> +       Aml *pkg = aml_package(2);
+> +
+> +       aml_append(ifctx, aml_store(aml_call2("AIDX", bnum, sunum), acpi_index));
+> +       aml_append(ifctx, aml_store(pkg, ret));
+> +       /*
+> +        * Windows calls func=7 without checking if it's available,
+> +        * as workaround Microsoft has suggested to return invalid for func7
+> +        * Package, so return 2 elements package but only initialize elements
+> +        * when acpi_index is supported and leave them uninitialized, which
+> +        * leads elements to being Uninitialized ObjectType and should trip
+> +        * Windows into discarding result as an unexpected and prevent setting
+> +        * bogus 'PCI Label' on the device.
+> +        */
+> +       ifctx1 = aml_if(aml_lnot(aml_lor(
+> +                    aml_equal(acpi_index, zero), aml_equal(acpi_index, not_supp)
+> +                )));
+> +       {
+> +           aml_append(ifctx1, aml_store(acpi_index, aml_index(ret, zero)));
+> +           /*
+> +            * optional, if not impl. should return null string
+> +            */
+> +           aml_append(ifctx1, aml_store(aml_string("%s", ""),
+> +                                        aml_index(ret, one)));
+> +       }
+> +       aml_append(ifctx, ifctx1);
+> +
+> +       aml_append(ifctx, aml_return(ret));
+> +    }
+> +
+> +    aml_append(method, ifctx);
+> +    return method;
+> +}
+> +
+> +void build_acpi_pci_hotplug(Aml *table, uint64_t pcihp_addr)
+> +{
+> +    Aml *scope;
+> +    Aml *field;
+> +    Aml *method;
+> +
+> +    scope =  aml_scope("_SB.PCI0");
+> +
+> +    aml_append(scope,
+> +        aml_operation_region("PCST", AML_SYSTEM_IO, aml_int(pcihp_addr), 0x08));
+> +    field = aml_field("PCST", AML_DWORD_ACC, AML_NOLOCK, AML_WRITE_AS_ZEROS);
+> +    aml_append(field, aml_named_field("PCIU", 32));
+> +    aml_append(field, aml_named_field("PCID", 32));
+> +    aml_append(scope, field);
+> +
+> +    aml_append(scope,
+> +        aml_operation_region("SEJ", AML_SYSTEM_IO,
+> +                             aml_int(pcihp_addr + ACPI_PCIHP_SEJ_BASE), 0x04));
+> +    field = aml_field("SEJ", AML_DWORD_ACC, AML_NOLOCK, AML_WRITE_AS_ZEROS);
+> +    aml_append(field, aml_named_field("B0EJ", 32));
+> +    aml_append(scope, field);
+> +
+> +    aml_append(scope,
+> +        aml_operation_region("BNMR", AML_SYSTEM_IO,
+> +                             aml_int(pcihp_addr + ACPI_PCIHP_BNMR_BASE), 0x08));
+> +    field = aml_field("BNMR", AML_DWORD_ACC, AML_NOLOCK, AML_WRITE_AS_ZEROS);
+> +    aml_append(field, aml_named_field("BNUM", 32));
+> +    aml_append(field, aml_named_field("PIDX", 32));
+> +    aml_append(scope, field);
+> +
+> +    aml_append(scope, aml_mutex("BLCK", 0));
+> +
+> +        method = aml_method("PCEJ", 2, AML_NOTSERIALIZED);
+> +    aml_append(method, aml_acquire(aml_name("BLCK"), 0xFFFF));
+> +    aml_append(method, aml_store(aml_arg(0), aml_name("BNUM")));
+> +    aml_append(method,
+> +        aml_store(aml_shiftleft(aml_int(1), aml_arg(1)), aml_name("B0EJ")));
+> +    aml_append(method, aml_release(aml_name("BLCK")));
+> +    aml_append(method, aml_return(aml_int(0)));
+> +    aml_append(scope, method);
+> +
+> +    method = aml_method("AIDX", 2, AML_NOTSERIALIZED);
+> +    aml_append(method, aml_acquire(aml_name("BLCK"), 0xFFFF));
+> +    aml_append(method, aml_store(aml_arg(0), aml_name("BNUM")));
+> +    aml_append(method,
+> +        aml_store(aml_shiftleft(aml_int(1), aml_arg(1)), aml_name("PIDX")));
+> +    aml_append(method, aml_store(aml_name("PIDX"), aml_local(0)));
+> +    aml_append(method, aml_release(aml_name("BLCK")));
+> +    aml_append(method, aml_return(aml_local(0)));
+> +    aml_append(scope, method);
+> +
+> +    aml_append(scope, aml_pci_pdsm());
+> +
+> +    aml_append(table, scope);
+> +}
+> +
+>   const VMStateDescription vmstate_acpi_pcihp_pci_status = {
+>       .name = "acpi_pcihp_pci_status",
+>       .version_id = 1,
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 864f6b5bf8..2d1eea4a1a 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -647,96 +647,6 @@ static bool build_append_notification_callback(Aml *parent_scope,
+>       return !!nr_notifiers;
+>   }
+>   
+> -static Aml *aml_pci_pdsm(void)
+> -{
+> -    Aml *method, *ifctx, *ifctx1;
+> -    Aml *ret = aml_local(0);
+> -    Aml *caps = aml_local(1);
+> -    Aml *acpi_index = aml_local(2);
+> -    Aml *zero = aml_int(0);
+> -    Aml *one = aml_int(1);
+> -    Aml *not_supp = aml_int(0xFFFFFFFF);
+> -    Aml *func = aml_arg(2);
+> -    Aml *params = aml_arg(4);
+> -    Aml *bnum = aml_derefof(aml_index(params, aml_int(0)));
+> -    Aml *sunum = aml_derefof(aml_index(params, aml_int(1)));
+> -
+> -    method = aml_method("PDSM", 5, AML_SERIALIZED);
+> -
+> -    /* get supported functions */
+> -    ifctx = aml_if(aml_equal(func, zero));
+> -    {
+> -        build_append_pci_dsm_func0_common(ifctx, ret);
+> -
+> -        aml_append(ifctx, aml_store(zero, caps));
+> -        aml_append(ifctx,
+> -            aml_store(aml_call2("AIDX", bnum, sunum), acpi_index));
+> -        /*
+> -         * advertise function 7 if device has acpi-index
+> -         * acpi_index values:
+> -         *            0: not present (default value)
+> -         *     FFFFFFFF: not supported (old QEMU without PIDX reg)
+> -         *        other: device's acpi-index
+> -         */
+> -        ifctx1 = aml_if(aml_lnot(
+> -                     aml_or(aml_equal(acpi_index, zero),
+> -                            aml_equal(acpi_index, not_supp), NULL)
+> -                 ));
+> -        {
+> -            /* have supported functions */
+> -            aml_append(ifctx1, aml_or(caps, one, caps));
+> -            /* support for function 7 */
+> -            aml_append(ifctx1,
+> -                aml_or(caps, aml_shiftleft(one, aml_int(7)), caps));
+> -        }
+> -        aml_append(ifctx, ifctx1);
+> -
+> -        aml_append(ifctx, aml_store(caps, aml_index(ret, zero)));
+> -        aml_append(ifctx, aml_return(ret));
+> -    }
+> -    aml_append(method, ifctx);
+> -
+> -    /* handle specific functions requests */
+> -    /*
+> -     * PCI Firmware Specification 3.1
+> -     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
+> -     *        Operating Systems
+> -     */
+> -    ifctx = aml_if(aml_equal(func, aml_int(7)));
+> -    {
+> -       Aml *pkg = aml_package(2);
+> -
+> -       aml_append(ifctx, aml_store(aml_call2("AIDX", bnum, sunum), acpi_index));
+> -       aml_append(ifctx, aml_store(pkg, ret));
+> -       /*
+> -        * Windows calls func=7 without checking if it's available,
+> -        * as workaround Microsoft has suggested to return invalid for func7
+> -        * Package, so return 2 elements package but only initialize elements
+> -        * when acpi_index is supported and leave them uninitialized, which
+> -        * leads elements to being Uninitialized ObjectType and should trip
+> -        * Windows into discarding result as an unexpected and prevent setting
+> -        * bogus 'PCI Label' on the device.
+> -        */
+> -       ifctx1 = aml_if(aml_lnot(aml_lor(
+> -                    aml_equal(acpi_index, zero), aml_equal(acpi_index, not_supp)
+> -                )));
+> -       {
+> -           aml_append(ifctx1, aml_store(acpi_index, aml_index(ret, zero)));
+> -           /*
+> -            * optional, if not impl. should return null string
+> -            */
+> -           aml_append(ifctx1, aml_store(aml_string("%s", ""),
+> -                                        aml_index(ret, one)));
+> -       }
+> -       aml_append(ifctx, ifctx1);
+> -
+> -       aml_append(ifctx, aml_return(ret));
+> -    }
+> -
+> -    aml_append(method, ifctx);
+> -    return method;
+> -}
+> -
+>   /*
+>    * build_prt - Define interrupt routing rules
+>    *
+> @@ -1227,62 +1137,6 @@ static Aml *build_q35_dram_controller(const AcpiMcfgInfo *mcfg)
+>       return dev;
+>   }
+>   
+> -static void build_x86_acpi_pci_hotplug(Aml *table, uint64_t pcihp_addr)
+> -{
+> -    Aml *scope;
+> -    Aml *field;
+> -    Aml *method;
+> -
+> -    scope =  aml_scope("_SB.PCI0");
+> -
+> -    aml_append(scope,
+> -        aml_operation_region("PCST", AML_SYSTEM_IO, aml_int(pcihp_addr), 0x08));
+> -    field = aml_field("PCST", AML_DWORD_ACC, AML_NOLOCK, AML_WRITE_AS_ZEROS);
+> -    aml_append(field, aml_named_field("PCIU", 32));
+> -    aml_append(field, aml_named_field("PCID", 32));
+> -    aml_append(scope, field);
+> -
+> -    aml_append(scope,
+> -        aml_operation_region("SEJ", AML_SYSTEM_IO,
+> -                             aml_int(pcihp_addr + ACPI_PCIHP_SEJ_BASE), 0x04));
+> -    field = aml_field("SEJ", AML_DWORD_ACC, AML_NOLOCK, AML_WRITE_AS_ZEROS);
+> -    aml_append(field, aml_named_field("B0EJ", 32));
+> -    aml_append(scope, field);
+> -
+> -    aml_append(scope,
+> -        aml_operation_region("BNMR", AML_SYSTEM_IO,
+> -                             aml_int(pcihp_addr + ACPI_PCIHP_BNMR_BASE), 0x08));
+> -    field = aml_field("BNMR", AML_DWORD_ACC, AML_NOLOCK, AML_WRITE_AS_ZEROS);
+> -    aml_append(field, aml_named_field("BNUM", 32));
+> -    aml_append(field, aml_named_field("PIDX", 32));
+> -    aml_append(scope, field);
+> -
+> -    aml_append(scope, aml_mutex("BLCK", 0));
+> -
+> -    method = aml_method("PCEJ", 2, AML_NOTSERIALIZED);
+> -    aml_append(method, aml_acquire(aml_name("BLCK"), 0xFFFF));
+> -    aml_append(method, aml_store(aml_arg(0), aml_name("BNUM")));
+> -    aml_append(method,
+> -        aml_store(aml_shiftleft(aml_int(1), aml_arg(1)), aml_name("B0EJ")));
+> -    aml_append(method, aml_release(aml_name("BLCK")));
+> -    aml_append(method, aml_return(aml_int(0)));
+> -    aml_append(scope, method);
+> -
+> -    method = aml_method("AIDX", 2, AML_NOTSERIALIZED);
+> -    aml_append(method, aml_acquire(aml_name("BLCK"), 0xFFFF));
+> -    aml_append(method, aml_store(aml_arg(0), aml_name("BNUM")));
+> -    aml_append(method,
+> -        aml_store(aml_shiftleft(aml_int(1), aml_arg(1)), aml_name("PIDX")));
+> -    aml_append(method, aml_store(aml_name("PIDX"), aml_local(0)));
+> -    aml_append(method, aml_release(aml_name("BLCK")));
+> -    aml_append(method, aml_return(aml_local(0)));
+> -    aml_append(scope, method);
+> -
+> -    aml_append(scope, aml_pci_pdsm());
+> -
+> -    aml_append(table, scope);
+> -}
+> -
+>   static Aml *build_q35_osc_method(bool enable_native_pcie_hotplug)
+>   {
+>       Aml *if_ctx;
+> @@ -1394,7 +1248,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>           aml_append(dsdt, sb_scope);
+>   
+>           if (pm->pcihp_bridge_en || pm->pcihp_root_en) {
+> -            build_x86_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
+> +            build_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
+>           }
+>           build_piix4_pci0_int(dsdt);
+>       } else if (q35) {
+> @@ -1438,7 +1292,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>           aml_append(dsdt, sb_scope);
+>   
+>           if (pm->pcihp_bridge_en) {
+> -            build_x86_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
+> +            build_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
+>           }
+>           build_q35_pci0_int(dsdt);
+>       }
+

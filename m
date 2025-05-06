@@ -1,159 +1,204 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2969926njj;
-        Tue, 6 May 2025 01:43:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWlBPLdDF2GuUCAz6LuXgbdheRvZgWgjKla+s7/GsZDP7J+37/ZsSelUVCDCQX5NtHRgKlGv2lkrzKNvQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGra9eB75TxJ3cpMOaDEq9tXWI0CgAZT3t3pxd0YAwz/PvM02vc/JDZA7zGgqzKjya74iXf
-X-Received: by 2002:a05:622a:191c:b0:476:7112:4add with SMTP id d75a77b69052e-4910c48ae2bmr39138111cf.18.1746521027228;
-        Tue, 06 May 2025 01:43:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746521027; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2974272njj;
+        Tue, 6 May 2025 01:55:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUvRcKTcXczuoSgB/v7Y4ndvwWLckA6OytKsxjgJTjh1jVb1LZtCoH/mBcvMq3BQEPcTgBFr6xwNuSSuw==@linaro.org
+X-Received: by 2002:a17:907:6d24:b0:ace:6c29:a98c with SMTP id a640c23a62f3a-ad17b83545amr1454534166b.37.1746521739622;
+        Tue, 06 May 2025 01:55:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746521739; cv=none;
         d=google.com; s=arc-20240605;
-        b=Wifphbd1gGk5hR8xbVV8UsMc+xzfBGfye2QK5FgyNdzljwrdGwHMIxBKfZ0XDf+ESg
-         IFYU7wt+qiofj3wTFtqiQmJZ+ZU1OGAwfSCb4cHKL7zpPCB98WZYA5YQiMvQTF9r1PhA
-         wPou/i4pf0ZuzNhmaaXumpRaOARnMgcqjnJcIxvk4OdsNt/Y2fpyg6UqUuF0pWOBzAL+
-         QSHC4VfUVDtVeu+q3/Xlv9CjL9axTrtztSZV4yXu4b0MplxmdcoTYElkFvSse5yw8JUn
-         xP98YSFns5likiQIeASgx9diVJq5ZBN+Ho75L9NSMarEVFruO0AR0HfN6jExdJENDGUn
-         i/SQ==
+        b=Mek/ZU2knxeAiaYxM63pNTFYyl4VvURIn9+F0iljThuWqykqq4YsdhcjEDBwVRc6G5
+         ZusSGjPL+PpOCMVJSlAZyl+6b0wO1n63nXnKWCIAAnfm2y/OIxhfjS7dGUvL3m88MC2e
+         LhbTB76PxVRyWV4ukjGBGFyJJjHIXjXepuUE20lB/yaORSYORoGmoKB44DC1GfLMmOmG
+         9oOL7VEntOIVxgrrCSvojd2KeKhXh5Hr+zyhnNp2dyJ/dJuSUPoA0+5WfGmaFyI0l958
+         nyaq2sL8iDWVkJSSqP0ND2nRQoOBtv0Z7wJUVxTok3+3GNmZ2S8JWKdj3IeatYNRsWtf
+         m8IQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to;
-        bh=LoWiU8FnR0arXqvveUm1oX+CJvnQPS3KUsv2C0Jtnlg=;
-        fh=EweIyo/XuLsL+DQwKjetqkIKDtQZsKG3czQxYZ+phIc=;
-        b=MrveMr9yJRLxds7rYAZOmw9ixwkQSQly0d1TBrCbIfolH0uw6XsvLE6uImJGIWyI6j
-         td+4SCYVLanbjrf2oca15UqvsXa/kiWrg6wz5kfBBKIHkh4Tx6yXJmc624rfjJX2TwnE
-         xpRg/HneHq8R5z8KkK1KvNZMRxlSfb8LL6x6YpYTf/6LJavlBpQ6aIDhaPUXOR6YDRKg
-         EZQK+Z4UDcB/DN8R6cDCXvKr7b7/JZx0Dt4kVAbPfw+0EGrxRnPXmKqA2F5dMuPvNkaw
-         FJwvC7qK9mgDwoJ3IOgp89gsk/ERIyZ6sTElqiU3oi7Dm7cPBNyUB/ERysk5A+rEl3Px
-         XIlw==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=r7WeRI1zx+FoyOA/YldoDkOxqvxpYNFgz6XaGrQKjpI=;
+        fh=BD74Y+ftVhxTveEkOTw2XYnciDR+6gKs7UYfO+aFYh8=;
+        b=PCZ6dza7G0ROypKAzgQNyn0JZRnZyRef4oKS2oSFGBMiqGNTBk8y49ER2GI8s7GgQH
+         jvtlvd5hQenSVIx3EpQLN1wP6AHkova9TN8SsCYlSg87Xbuh3wCE5N+DCfDnEP+LoOJ3
+         gLZo3c/rjqLREqwBFgjI7oocIO3e9g0GiBZSQcK7pNo/Ll3iyjbKxDiAaTWrZTUBRBfd
+         D4GlEuG1giqww0wsKFTymaMqPZzP/9qcC1j/mADeVSbmoeiF5/6Im2KsCQU6AftuqgO8
+         HMNmYD2etso2HSZrSmrtV80nat/o16trbCttQ2oGRFw9x3R5pFx8e4W45z2g5Cs6peq0
+         Fp0Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-48b98724b71si104333341cf.381.2025.05.06.01.43.47
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ti7SHm4A;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a640c23a62f3a-ad0c70c3919sor536977166b.1.2025.05.06.01.55.39
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 May 2025 01:43:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 06 May 2025 01:55:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uCDtZ-00037F-0k; Tue, 06 May 2025 04:43:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1uCDtV-000351-9I; Tue, 06 May 2025 04:43:17 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1uCDtT-0006Dp-8R; Tue, 06 May 2025 04:43:16 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZsBcz13JNz6M574;
- Tue,  6 May 2025 16:38:43 +0800 (CST)
-Received: from frapeml500006.china.huawei.com (unknown [7.182.85.219])
- by mail.maildlp.com (Postfix) with ESMTPS id 7089C1402FC;
- Tue,  6 May 2025 16:43:12 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml500006.china.huawei.com (7.182.85.219) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 6 May 2025 10:43:12 +0200
-Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
- frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Tue, 6 May 2025 10:43:12 +0200
-To: Donald Dutile <ddutile@redhat.com>, Nicolin Chen <nicolinc@nvidia.com>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
- <jgg@nvidia.com>, "berrange@redhat.com" <berrange@redhat.com>,
- "nathanc@nvidia.com" <nathanc@nvidia.com>, "mochs@nvidia.com"
- <mochs@nvidia.com>, "smostafa@google.com" <smostafa@google.com>, Linuxarm
- <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
- <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
-Subject: RE: [PATCH v2 2/6] hw/arm/virt-acpi-build: Update IORT for multiple
- smmuv3 devices
-Thread-Topic: [PATCH v2 2/6] hw/arm/virt-acpi-build: Update IORT for multiple
- smmuv3 devices
-Thread-Index: AQHbu00ZUUd2QcOmi06BQgcpw2jcEbO/cwCAgAASCoCABcnzAA==
-Date: Tue, 6 May 2025 08:43:12 +0000
-Message-ID: <0e4b8d9e17734de685e9a471ee864ff1@huawei.com>
-References: <20250502102707.110516-1-shameerali.kolothum.thodi@huawei.com>
- <20250502102707.110516-3-shameerali.kolothum.thodi@huawei.com>
- <aBT9S25tQTVGKkii@Asurada-Nvidia>
- <29e1775b-b35d-4510-a3a6-d49af81cca06@redhat.com>
-In-Reply-To: <29e1775b-b35d-4510-a3a6-d49af81cca06@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.203.177.241]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ti7SHm4A;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1746521739; x=1747126539; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=r7WeRI1zx+FoyOA/YldoDkOxqvxpYNFgz6XaGrQKjpI=;
+        b=Ti7SHm4AawkR1fJeBbO1G1cNOAYScIGI0qt2fY7NrsnfdILZP4Z5MgUsScrCWPbz33
+         4ZIgQP0WVjeJYDpIPuaVuhUe9USZaiKAxMuKHDzKPjW/MOc5BKrIwh1rRpB8rk4WrbAo
+         mUe48DoppHaTwBQ4jueuMgQZhBwvw0O655SUlMAGmRB4nESZ4iMQGE6nzaBTTVFHJo2I
+         oJYU+nrBrYeq54rtCzJpxY+ul1rk1gBPMV4PsICh9fHT7U0jAl/pQ24nW2XQqjcvS9jn
+         KS/ude/loQ/s4f8srZ61Us2MrpvT4riJ3Jjdq1keFfDg0GzeuxqiMVH6Uo8eBnWC6U6H
+         Pflw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1746521739; x=1747126539;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=r7WeRI1zx+FoyOA/YldoDkOxqvxpYNFgz6XaGrQKjpI=;
+        b=O8HixioECZWstBEDtrwpl6d8+wJiI2BfCvNalW2VpdkAxmMHpRpt8ntrygGU/XH/hD
+         DL9TXM3+MsNyotg9BswDl3OsW5cIZTDSNFTj5vlPNGutBVQhZD/cNaxxr6Tad4KXlSKY
+         IPRGsbzG/VbMtamFspnRZXpiVbj8CJZDXUeYJ4Fg7yJzYM997nTbDrOtRUpDPeiFVolG
+         CoPH+NAKSmnFCKdvpl8PQumfDKC7PO1+eFJ0JYnjOuAJa4lxWysi2ufiIvjVrJvJu/+k
+         bWLQlHOa8lkb2/wUKJUIgxwvVd4MunftVtFFdgMURMTf5U/fgHtnspur2j87gMXjZxEe
+         4oPQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVuu+PG7StEDPs4B1Yi1AaRjAqsiwpMMtcb1A6rGc9pi8M4dHRALQ6fZOECgWXo4bCV9MSVgZ4cccqYCw==@linaro.org
+X-Gm-Message-State: AOJu0YzpQeI9+DiJCM81NuXBzUTjcKf7FkqC2m47B3xBgY/MdgDTV1xQ
+	Kntz7uruQX0wgt4sdiV/J9ywHwfrxuSdxq2PTfjjmjzgsB8Ael3wihVKnrSBdGR//A==
+X-Gm-Gg: ASbGncvv+BvVoypM565QT+vbclwElqZwm13lMKlAQdRYprTtbSY4Qep4d1gMLJohHxm
+	VpCPwoxe1gVXYvskhGSPHC/2kh3uFCCjNrray42R3E0bVVAuXEQ7781ajkX18LNGy9TdyKaUnb2
+	C2TtuDmeSomvAvA7ylG8yhUjCdWZC6dLLC+iiDAwzYadm0vbsQIhvTqwGdrSuHNs5T5ItNTEd5N
+	wXXOIm0U5sJ2AsY+E9CjJHVGKOJTz3bQcVjDgdX04g7KIRWVyDfMQR6qv3WKjeqdb+RTsnEAsaH
+	O0k4V9OrhZYCJetlxIePh7HsD9JoJcltUwag3LITuZrRywiC8DCbo2M1xkOgi1SvwOf+opb1/m/
+	jhMe4Q6LlifpT0w==
+X-Google-Smtp-Source: AGHT+IHifHRffEq5bdMQfPubSpOyrj3WXjvuBj9ZM/+bmICtF/DDCxyvX+7c81bPwv9FmYrdouWSVA==
+X-Received: by 2002:a17:907:3fa4:b0:abf:73ba:fd60 with SMTP id a640c23a62f3a-ad17b5dbc19mr1529984066b.29.1746521738971;
+        Tue, 06 May 2025 01:55:38 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [10.194.152.213] (238.21.205.77.rev.sfr.net. [77.205.21.238])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ad189146f61sm661188366b.9.2025.05.06.01.55.35
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 06 May 2025 01:55:37 -0700 (PDT)
+Message-ID: <59c4d557-2f73-4b56-8650-f16ed3cd7bb2@linaro.org>
+Date: Tue, 6 May 2025 10:55:34 +0200
 MIME-Version: 1.0
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-From:  Shameerali Kolothum Thodi via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Hyq/w+Up53gA
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH] hw/virtio: Introduce CONFIG_VIRTIO_LEGACY to disable
+ legacy support
+To: "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Stefano Garzarella <sgarzare@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ David Hildenbrand <david@redhat.com>, =?UTF-8?Q?Eugenio_P=C3=A9rez?=
+ <eperezma@redhat.com>, Jonah Palmer <jonah.palmer@oracle.com>,
+ Raphael Norwitz <raphael.norwitz@nutanix.com>,
+ Jason Wang <jasowang@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-ppc@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Akihiko Odaki <akihiko.odaki@daynix.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ Anton Johansson <anjo@rev.ng>, Pierrick Bouvier
+ <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+References: <20250502132441.64723-1-philmd@linaro.org>
+ <aBnCk2WE_SNkRgSH@redhat.com> <20250506040903-mutt-send-email-mst@kernel.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250506040903-mutt-send-email-mst@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: BjzzodfsDUPt
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRG9uYWxkIER1dGlsZSA8
-ZGR1dGlsZUByZWRoYXQuY29tPg0KPiBTZW50OiBGcmlkYXksIE1heSAyLCAyMDI1IDc6MTggUE0N
-Cj4gVG86IE5pY29saW4gQ2hlbiA8bmljb2xpbmNAbnZpZGlhLmNvbT47IFNoYW1lZXJhbGkgS29s
-b3RodW0gVGhvZGkNCj4gPHNoYW1lZXJhbGkua29sb3RodW0udGhvZGlAaHVhd2VpLmNvbT4NCj4g
-Q2M6IHFlbXUtYXJtQG5vbmdudS5vcmc7IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsNCj4gZXJpYy5h
-dWdlckByZWRoYXQuY29tOyBwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc7IGpnZ0BudmlkaWEuY29t
-Ow0KPiBiZXJyYW5nZUByZWRoYXQuY29tOyBuYXRoYW5jQG52aWRpYS5jb207IG1vY2hzQG52aWRp
-YS5jb207DQo+IHNtb3N0YWZhQGdvb2dsZS5jb207IExpbnV4YXJtIDxsaW51eGFybUBodWF3ZWku
-Y29tPjsgV2FuZ3pob3UgKEIpDQo+IDx3YW5nemhvdTFAaGlzaWxpY29uLmNvbT47IGppYW5na3Vu
-a3VuIDxqaWFuZ2t1bmt1bkBodWF3ZWkuY29tPjsNCj4gSm9uYXRoYW4gQ2FtZXJvbiA8am9uYXRo
-YW4uY2FtZXJvbkBodWF3ZWkuY29tPjsNCj4gemhhbmdmZWkuZ2FvQGxpbmFyby5vcmcNCj4gU3Vi
-amVjdDogUmU6IFtQQVRDSCB2MiAyLzZdIGh3L2FybS92aXJ0LWFjcGktYnVpbGQ6IFVwZGF0ZSBJ
-T1JUIGZvcg0KPiBtdWx0aXBsZSBzbW11djMgZGV2aWNlcw0KPiANCj4gDQo+IA0KPiBPbiA1LzIv
-MjUgMToxMyBQTSwgTmljb2xpbiBDaGVuIHdyb3RlOg0KPiA+IE9uIEZyaSwgTWF5IDAyLCAyMDI1
-IGF0IDExOjI3OjAzQU0gKzAxMDAsIFNoYW1lZXIgS29sb3RodW0gd3JvdGU6DQo+ID4+IEBAIC00
-Myw2ICs0Myw3IEBADQo+ID4+ICAgI2luY2x1ZGUgImh3L2FjcGkvZ2VuZXJpY19ldmVudF9kZXZp
-Y2UuaCINCj4gPj4gICAjaW5jbHVkZSAiaHcvYWNwaS90cG0uaCINCj4gPj4gICAjaW5jbHVkZSAi
-aHcvYWNwaS9obWF0LmgiDQo+ID4+ICsjaW5jbHVkZSAiaHcvYXJtL3NtbXV2My5oIg0KPiA+PiAg
-ICNpbmNsdWRlICJody9wY2kvcGNpZV9ob3N0LmgiDQo+ID4+ICAgI2luY2x1ZGUgImh3L3BjaS9w
-Y2kuaCINCj4gPj4gICAjaW5jbHVkZSAiaHcvcGNpL3BjaV9idXMuaCINCj4gPj4gQEAgLTI2Niw2
-ICsyNjcsNzUgQEAgc3RhdGljIGludCBpb3J0X2lkbWFwX2NvbXBhcmUoZ2NvbnN0cG9pbnRlciBh
-LA0KPiBnY29uc3Rwb2ludGVyIGIpDQo+ID4+ICAgICAgIHJldHVybiBpZG1hcF9hLT5pbnB1dF9i
-YXNlIC0gaWRtYXBfYi0+aW5wdXRfYmFzZTsNCj4gPj4gICB9DQo+ID4+DQo+ID4+ICtzdHJ1Y3Qg
-U01NVXYzRGV2aWNlIHsNCj4gPj4gKyAgICBpbnQgaXJxOw0KPiA+PiArICAgIGh3YWRkciBiYXNl
-Ow0KPiA+PiArICAgIEdBcnJheSAqc21tdV9pZG1hcHM7DQo+ID4+ICsgICAgc2l6ZV90IG9mZnNl
-dDsNCj4gPj4gK307DQo+ID4+ICt0eXBlZGVmIHN0cnVjdCBTTU1VdjNEZXZpY2UgU01NVXYzRGV2
-aWNlOw0KPiA+DQo+ID4gIlNNTVV2M0RldmljZSIgc291bmRzIHRvbyBnZW5lcmFsLCBsaWtlIGNv
-bWluZyBmcm9tIHNtbXV2My5oIDotLw0KPiA+DQo+ID4gR2l2ZW4gdGhpcyBkZXNjcmliZXMgU01N
-VXYzJ3MgSU9SVCBub2RlLCBJIHN0aWxsIHRoaW5rIHdlIHNob3VsZCBuYW1lDQo+ID4gaXQgc29t
-ZXRoaW5nIGxpa2UgIklvcnRTTU1VdjNOb2RlIiBvciBzby4NCj4gPg0KPiArMS4uIHRoZSBtb3Jl
-IGdlbmVyaWMgbmFtZSBoYWQgbWUgdGhpbmtpbmcgaXQgd2FzIGJyb2FkZXIgdGhhbiBJT1JULi4N
-Cj4gdGhlIElPUlQtcmVsYXRlZCBuYW1pbmcgaXMgYW4gaW1wcm92ZW1lbnQuDQoNCkkgdGhvdWdo
-dCBpdCBpcyBvYnZpb3VzIGFzIEkgYWxyZWFkeSByZXBsaWVkIHRvIE5pY29saW4g8J+Yii4gSSB3
-aWxsIGNvbnNpZGVyIHRoaXMuDQoNClRoYW5rcywNClNoYW1lZXINCg==
+On 6/5/25 10:12, Michael S. Tsirkin wrote:
+> On Tue, May 06, 2025 at 09:04:50AM +0100, Daniel P. Berrangé wrote:
+>> On Fri, May 02, 2025 at 03:24:41PM +0200, Philippe Mathieu-Daudé wrote:
+>>> Legacy VirtIO devices don't have their endianness clearly defined.
+>>> QEMU infers it taking the endianness of the (target) binary, or,
+>>> when a target support switching endianness at runtime, taking the
+>>> endianness of the vCPU accessing the device.
+>>>
+>>> Devices modelling shouldn't really change depending on a property
+>>> of a CPU accessing it.
+>>>
+>>> For heterogeneous systems, it is simpler to break such dev <-> cpu
+
+         ^^^^^^^^^^^^^
+
+>>> dependency, only allowing generic device models, with no knowledge
+>>> of CPU (or DMA controller) accesses.
+>>>
+>>> Therefore we introduce the VIRTIO_LEGACY Kconfig key. We keep the
+>>> current default (enabled).
+>>> New binaries can set CONFIG_VIRTIO_LEGACY=n to restrict models to
+>>> the VirtIO version 1 spec.
+>>
+>> IMHO that isn't acceptable. In order to be able to provide an
+>> upgrade path from the old binaries, we need the need the new
+>> binaries to be able to serve the same use cases & disabling
+>> virtio 0.9 support prevents that.
+
+This isn't for the single binary effort, there we are taking a
+lot of care to not introduce any change.
+
+This is for after it; once we have a single binary (one architecture
+run by an instance) we can start testing heterogeneous emulation
+(different architectures in the same instance).
+
+>> I don't see a compelling
+>> technical reason why we can't support virtio 0.9 from this
+>> endian point.
+
+VirtIO 0.9 needs knowledge of the vCPU architecture to get its
+endianness. So we need to somehow propagate that at creation
+time, guarantying which vCPU (or set of vCPUs) will access a
+virtio device.
+
+The use case I'd like to figure out is how should we model
+plugging a virtio 0.9 device in into a fully emulated
+ZynqMP machine, which has little-endian ARM cores and big
+endian MicroBlaze cores.
+
+Alex said this is unlikely to happen, and better is to
+ignore this case by not allowing virtio pre-1.0 devices in
+our future heterogeneous emulator.
+
+In this same thread Pierrick pointed me to the reference in
+the spec: '2.4.3 Legacy Interfaces: A Note on Virtqueue Endianness',
+"It is assumed that the host is already aware of the guest endian."
+
+I suppose this means a pre-1.0 virtio device expect to be used by
+a single guest OS, but it is not clear the guest OS as fixed
+endianness, because the code path checks vCPU endianness at
+runtime, so passing guest endianness as a property to pre-1.0
+devices isn't really an option.
+
+Anyway I think 1/ I posted this too early, "speculating" as Pierrick
+noticed, and confuse the community w.r.t. "single binary" and
+2/ I don' t understand legacy virtio and its endianness handling
+enough to figure a clever idea to keep using it heterogeneous
+setup, so I'll let this task to someone more familiar with that tech.
+
+>> Yes may be more ugly/messy than we would like, but that's par
+>> for the course with QEMU emulating arbitrary device models.
+>> If the new binaries can't cope with messy devices then I think
+>> we are doing something wrong.
+
+> 
+> To be more specific, having a kconfig knob modifying the device
+> without regards for machine types, means it is no longer
+> enough to inspect the command line to figure out the
+> compatiblity. That's a problem.
+> 
+
+OK. I won't pursue in this direction. I apologize for mentioning
+this topic again too early.
+
+Regards,
+
+Phil.

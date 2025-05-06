@@ -1,170 +1,212 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2957741njj;
-        Tue, 6 May 2025 01:12:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW83i5poUHUup5OG8VGCb1WMTgmcEPBgCp1HUqxz2EDZOCWWD9a3GsddbUc5ARWgAWXiuWq5E/iadq/pA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHQTSkoD8bzf2VAouQCbJcodrIfGVSEb+6HMB9CQFHhS8+J88ji0leSUPTdcHbEjpyo6SXD
-X-Received: by 2002:a05:622a:828a:b0:491:18c2:2d1 with SMTP id d75a77b69052e-49118c20402mr19083771cf.7.1746519138993;
-        Tue, 06 May 2025 01:12:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746519138; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2958759njj;
+        Tue, 6 May 2025 01:14:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV8365+gGzLFPuTKAyB1FOWM2cgB3V3aLN/45Suokf1Rvsnh+l2pn7EJefyLf9O0SCchR+7vHlcGBe3pw==@linaro.org
+X-Google-Smtp-Source: AGHT+IExb1OT/Y7GAS+o49JGws1g6lhO6V4DO3FXyzlGUafeAPzafH1AdhbG10oI8rdv+YWUSaNw
+X-Received: by 2002:ad4:5cec:0:b0:6f4:c84d:d1bd with SMTP id 6a1803df08f44-6f528c3ec59mr148617006d6.6.1746519297850;
+        Tue, 06 May 2025 01:14:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746519297; cv=none;
         d=google.com; s=arc-20240605;
-        b=C8uWL8fn5PT4aXGzdqrGU2jSfYKEVlvNEe6nTht6L9RC1O4//og43BYBBOMZjbaa8O
-         oafHDiBFbBNX++CxiGWMAntC6G+Fy7Qls/PHZJyBqvjSK3xQgtSGyNs7QjTgWX+LuKVI
-         KThfyiBXX/cWqG2L4Hhgor447VVmi5G8LqYrnuWeq73Zq48N6nsqsSuuLm640gDwIaQP
-         X03trnM7+lSaeDcYdjE7l4F7aN9i04bLzVsVN2wJJKa+a0VCjMdbei/7StGQgrBNUMsb
-         AKLKKDlnJmraqq0FfpNukD61b5ATQl//6UgsT6stXfByPJl4sTPhIwizc20tXKxGdoOb
-         +nLA==
+        b=SwPDbj4ZBMBwzn3ltreqafLpV+cC/joUfPQ7RfYlzITa/IPEWEuZU7Hjc+Wb7Dvysx
+         5U1g0HntBFsIzayfbOQNXjv2hfUxrcYFuDKMsnsga5O6mpSVdZnRd+wmf5YDiNsM619X
+         JawXLr4iwqAf5xoZFuScHOOjR4pyyvq7njp+HwfkAKMj3PwZwoLkQH3UMpeIdbZv5Lq7
+         4unHe3gy2P9T5FgnEWh09FcLu59CHp9cwcNoVafp9ElQr79XLaP4o9DLGFWMQ8rBHF62
+         aL6TeutzjmHDKRC+oEcCKOTRaNOwNggjnhLf9b/xP06iQTKp7M28+7HqkYg7687ykCgs
+         aLAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=QHkcgapeVW41/Wm10mgZOFbCNxv68aW1y+Puf9VsBQ4=;
-        fh=FKcawtrxkkRl/ejKrvToX0UgRUUml8G5sOBdiL0s6BM=;
-        b=GSb/DRlVU5AasZlhDMMrc83PxYCrZUIFTFnem4vDWmTAVFTtxzanwjCrTJJUp5+psI
-         MYJia+yB6ecLz1jd0fbB+Jutc8R0TeEDWaDycPtYlsILJcZd9y66QfFCpmmu157kx5cp
-         u/lGj13LNVc+iFaLszaXgj4T2uc1v1g0Bw2RihJ3GQpIJFzvSIOIp7M0YvnK8zAuvq+/
-         KpJo16eFn4vIvBnUMOZD/uUPl1OH2r8MY/V6PBxC+XEhjlM5y8eWMyyrz/WsolkVzmjR
-         F+Yw6/KSizzxU4eeF8f6FvvAexghCGeP1XGeWRA2mZnV22odon1NLNVGZGc7y6O+qmVX
-         sU/Q==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to;
+        bh=wYUrvCtk/YEXa7P8PAlWeoUfjBOVlKDnfbdaBHA8MeQ=;
+        fh=L5k2mRSqinh8rv+X+K9B0cKsw7VXHEq5HuwmzaH9KTE=;
+        b=W6G3jvQp2pImsZ4cv77KDZsYl/zuvZFOzckE1QuQpQkI7AXN0SlzN9nLFRSF51ilmP
+         FrMjJaghmB4r0/ambcpQNRDPHffTpnbwOxuM3k8ufNzbC/o0MxauuKl4aqq16UESljri
+         qBwiiqxBz3PNi6vbFhmMOci8u73TdQmYZBQEs9lmEJOcK4ohLYFUyrGel7K+zL/KIn78
+         4+vckQFdmIcP1uKFUgtYC9zQsJ/EGBLVPdyjt+iImK577xJ8PYxuEjR6Jh+YiWcADyCT
+         W7YlzNg5tcnvJ4aXxo0OURBvVjDYz1w9qDBCRt3GZ3OqZ+Ql7ZWSAUfl2P66b0JgOD5M
+         7Ytw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bUx95B94;
-       spf=pass (google.com: domain of mst@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <mst@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-48b982471cesi105026641cf.289.2025.05.06.01.12.18
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f50f4c2c5esi112452476d6.500.2025.05.06.01.14.57
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 May 2025 01:12:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mst@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 06 May 2025 01:14:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bUx95B94;
-       spf=pass (google.com: domain of mst@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1746519138;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=QHkcgapeVW41/Wm10mgZOFbCNxv68aW1y+Puf9VsBQ4=;
-	b=bUx95B94w2V7MHUgAK+ZRN/BSopQfd4NWspX5kiXew53KVqC117UT+e8wir3WyjaC3YaoK
-	zZgQIkhVP+bwzo+NRpv7jWgWSwBHB0GipX/Zw7NjulU3gExAsxRz/TCOjWOa/aVRueCv0h
-	NOYg2hV4uwmQD9kHK+1UaXSjRfJu+ls=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-658-JybBZWjWNUWeuIDsT0OZhQ-1; Tue, 06 May 2025 04:12:17 -0400
-X-MC-Unique: JybBZWjWNUWeuIDsT0OZhQ-1
-X-Mimecast-MFC-AGG-ID: JybBZWjWNUWeuIDsT0OZhQ_1746519136
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-43cf3168b87so22637735e9.2
-        for <alex.bennee@linaro.org>; Tue, 06 May 2025 01:12:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746519136; x=1747123936;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=QHkcgapeVW41/Wm10mgZOFbCNxv68aW1y+Puf9VsBQ4=;
-        b=Chn2VvNic7pXQv6qcqsYn7woe3Ba5k7Lj6V98HqPVBH0qGZXq8mCtjb8yN3q53OIqE
-         jbwVSqHO9T2hBtnVxE4GXtT8qaDs6qjAdnVvwWGVKIaLL1ZPg1EHc8uCUUrb7vcC9TCq
-         xn+Ol/iKPNZtqLfsQ91zLR8yfu5i/d4GS7t0lHTNFASiX8MHZtgFvNLYvk+04peNH0J1
-         Tz3+IDfeL29VVGpTe55XsR0MZ7j+dnHQ+jHKjNYkNnoy1X22A8eGZ5VzCf2VwA8WUyWv
-         Any/YtM9jVvWSKGLhQ/S/O13Ltljap8m6gL5x5iHB8wYK4rigjItiaUHc45wVNtWMP/e
-         GCFA==
-X-Forwarded-Encrypted: i=1; AJvYcCWARydM289znc3mEtBIlZybaYmgpCzb8jbZKIRGtNDazaG2xv2aFDaJXkP5L0p1hoakni4HlFz/P0ALxg==@linaro.org
-X-Gm-Message-State: AOJu0Yxde0vz0qkONUnZaS6hKcKgg0BXZSvkYD9IzcePCpcwoDpqhKN9
-	ZMIw3G+m0yveqH/3hhvtzHATNLjjQvRxxt6Gkr9+YcRb6+Fv2ST0TrQvI/R5gqz24hpQnnM2wWf
-	JFHTPgzN9Oiv1cFxJ1UtAnE6FXgTbStG/4Ccd6ipFLPgfm3CdcGO83A==
-X-Gm-Gg: ASbGncuorVi3irEkxGY7Su/6l+P6OpcMZ70YEfhxBOmD1mcI79w7lj6Ik5JVnqNtqbo
-	J2WHX0g/0J9o8lkFOfJNOiAWowPaB4s0R9Fh6xR+85nBcQ6jxtitI9yaFyEa4te2eDzaf7IlySR
-	c3eocbuTXEECrumss8wJpscxPKklvhfdlmhiU+6ALIRNZeeF2NInZZJD2jBdKjqjj4iqY2fVMWD
-	rEn6i6uhjUMr1WkK5WlKLTmbrslRWlviaP5Av7+U6r9HRidCPDUhMW7USLC+yA+D/s0nCk94jZU
-	BTovuw==
-X-Received: by 2002:a05:600c:1914:b0:43b:c0fa:f9dd with SMTP id 5b1f17b1804b1-441bbf33f76mr110821895e9.25.1746519136419;
-        Tue, 06 May 2025 01:12:16 -0700 (PDT)
-X-Received: by 2002:a05:600c:1914:b0:43b:c0fa:f9dd with SMTP id 5b1f17b1804b1-441bbf33f76mr110821635e9.25.1746519136071;
-        Tue, 06 May 2025 01:12:16 -0700 (PDT)
-Return-Path: <mst@redhat.com>
-Received: from redhat.com ([2a0d:6fc0:1517:1000:ea83:8e5f:3302:3575])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-441b8a2874asm158415125e9.26.2025.05.06.01.12.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 May 2025 01:12:15 -0700 (PDT)
-Date: Tue, 6 May 2025 04:12:11 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
-Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	qemu-devel@nongnu.org,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Stefano Garzarella <sgarzare@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	David Hildenbrand <david@redhat.com>,
-	Eugenio =?iso-8859-1?Q?P=E9rez?= <eperezma@redhat.com>,
-	Jonah Palmer <jonah.palmer@oracle.com>,
-	Raphael Norwitz <raphael.norwitz@nutanix.com>,
-	Jason Wang <jasowang@redhat.com>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
-	qemu-ppc@nongnu.org,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Cornelia Huck <cohuck@redhat.com>, Anton Johansson <anjo@rev.ng>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org,
-	Mark Cave-Ayland <mark.caveayland@nutanix.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [RFC PATCH] hw/virtio: Introduce CONFIG_VIRTIO_LEGACY to disable
- legacy support
-Message-ID: <20250506040903-mutt-send-email-mst@kernel.org>
-References: <20250502132441.64723-1-philmd@linaro.org>
- <aBnCk2WE_SNkRgSH@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uCDRj-0007kt-MP; Tue, 06 May 2025 04:14:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uCDRg-0007jT-N7; Tue, 06 May 2025 04:14:32 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uCDRe-0002Z9-DF; Tue, 06 May 2025 04:14:32 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Zs9zn4gKzz6M53T;
+ Tue,  6 May 2025 16:09:57 +0800 (CST)
+Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
+ by mail.maildlp.com (Postfix) with ESMTPS id E469F1402ED;
+ Tue,  6 May 2025 16:14:26 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 6 May 2025 10:14:26 +0200
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Tue, 6 May 2025 10:14:26 +0200
+To: Nicolin Chen <nicolinc@nvidia.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
+ <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, "nathanc@nvidia.com"
+ <nathanc@nvidia.com>, "mochs@nvidia.com" <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
+ <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+Subject: RE: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a PCIe RC
+Thread-Topic: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a PCIe RC
+Thread-Index: AQHbu1V0fvNxmQCU0kS/eGPfhGB2G7O/dXYAgAXRX2A=
+Date: Tue, 6 May 2025 08:14:26 +0000
+Message-ID: <ce59282671674258a6dacd38fe09207c@huawei.com>
+References: <20250502102707.110516-1-shameerali.kolothum.thodi@huawei.com>
+ <20250502102707.110516-2-shameerali.kolothum.thodi@huawei.com>
+ <aBT/DKnSpdV1SEmb@Asurada-Nvidia>
+In-Reply-To: <aBT/DKnSpdV1SEmb@Asurada-Nvidia>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.203.177.241]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-In-Reply-To: <aBnCk2WE_SNkRgSH@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: UcDOBpCWd04hs29PKuXDGS4ux8W40ZV1pTlbkdXJ1rU_1746519136
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-X-TUID: Li3Gx5h01CK0
-
-On Tue, May 06, 2025 at 09:04:50AM +0100, Daniel P. Berrangé wrote:
-> On Fri, May 02, 2025 at 03:24:41PM +0200, Philippe Mathieu-Daudé wrote:
-> > Legacy VirtIO devices don't have their endianness clearly defined.
-> > QEMU infers it taking the endianness of the (target) binary, or,
-> > when a target support switching endianness at runtime, taking the
-> > endianness of the vCPU accessing the device.
-> > 
-> > Devices modelling shouldn't really change depending on a property
-> > of a CPU accessing it.
-> > 
-> > For heterogeneous systems, it is simpler to break such dev <-> cpu
-> > dependency, only allowing generic device models, with no knowledge
-> > of CPU (or DMA controller) accesses.
-> > 
-> > Therefore we introduce the VIRTIO_LEGACY Kconfig key. We keep the
-> > current default (enabled).
-> > New binaries can set CONFIG_VIRTIO_LEGACY=n to restrict models to
-> > the VirtIO version 1 spec.
-> 
-> IMHO that isn't acceptable. In order to be able to provide an
-> upgrade path from the old binaries, we need the need the new
-> binaries to be able to serve the same use cases & disabling
-> virtio 0.9 support prevents that. I don't see a compelling
-> technical reason why we can't support virtio 0.9 from this
-> endian point.
-> 
-> Yes may be more ugly/messy than we would like, but that's par
-> for the course with QEMU emulating arbitrary device models.
-> If the new binaries can't cope with messy devices then I think
-> we are doing something wrong.
-> 
-> With regards,
-> Daniel
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KiXusExsCxiN
 
 
-To be more specific, having a kconfig knob modifying the device
-without regards for machine types, means it is no longer
-enough to inspect the command line to figure out the
-compatiblity. That's a problem.
 
--- 
-MST
+> -----Original Message-----
+> From: Nicolin Chen <nicolinc@nvidia.com>
+> Sent: Friday, May 2, 2025 6:23 PM
+> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> eric.auger@redhat.com; peter.maydell@linaro.org; jgg@nvidia.com;
+> ddutile@redhat.com; berrange@redhat.com; nathanc@nvidia.com;
+> mochs@nvidia.com; smostafa@google.com; Linuxarm
+> <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
+> jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
+> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
+> Subject: Re: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a
+> PCIe RC
+>=20
+> On Fri, May 02, 2025 at 11:27:02AM +0100, Shameer Kolothum wrote:
+> > Although this change does not affect functionality at present, it lays
+> > the groundwork for enabling user-created SMMUv3 devices in future
+> > patches
+> >
+> > Signed-off-by: Shameer Kolothum
+> <shameerali.kolothum.thodi@huawei.com>
+>=20
+> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+>=20
+> With some nits:
+>=20
+> > ---
+> >  hw/arm/smmuv3.c | 26 ++++++++++++++++++++++++++
+> >  hw/arm/virt.c   |  3 ++-
+> >  2 files changed, 28 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c index
+> > ab67972353..605de9b721 100644
+> > --- a/hw/arm/smmuv3.c
+> > +++ b/hw/arm/smmuv3.c
+> > @@ -24,6 +24,7 @@
+> >  #include "hw/qdev-properties.h"
+> >  #include "hw/qdev-core.h"
+> >  #include "hw/pci/pci.h"
+> > +#include "hw/pci/pci_bridge.h"
+>=20
+> Could probably replace the pci.h since pci_bridge.h includes it.
+
+I think it is best not to as it is indirect inclusion.
+
+>=20
+> > +static int smmuv3_pcie_bus(Object *obj, void *opaque) {
+> > +    DeviceState *d =3D opaque;
+> > +    PCIBus *bus;
+> > +
+> > +    if (!object_dynamic_cast(obj, TYPE_PCI_HOST_BRIDGE)) {
+> > +        return 0;
+> > +    }
+> > +
+> > +    bus =3D PCI_HOST_BRIDGE(obj)->bus;
+> > +    if (d->parent_bus && !strcmp(bus->qbus.name, d->parent_bus-
+> >name)) {
+> > +        object_property_set_link(OBJECT(d), "primary-bus", OBJECT(bus)=
+,
+> > +                                 &error_abort);
+> > +        /* Return non-zero as we got the bus and don't need further
+> > + iteration.*/
+>=20
+> Missing a space behind the '.'
+
+Sure.
+
+>=20
+> > +        return 1;
+> > +    }
+> > +    return 0;
+> > +}
+>=20
+> > @@ -1442,7 +1443,7 @@ static void create_smmu(const
+> VirtMachineState *vms,
+> >      }
+> >      object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
+> >                               &error_abort);
+> > -    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+> > +    qdev_realize_and_unref(dev, &bus->qbus, &error_fatal);
+>=20
+> Could add a line of note in the commit message for this change?
+
+Will do.=20
+
+Thanks,
+Shameer

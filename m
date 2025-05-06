@@ -1,175 +1,138 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp3191283njj;
-        Tue, 6 May 2025 08:15:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW1y04pA4egn6MqkaZ75zm9QzP7bEtgdEBm8tNziVJnZKlaVd/ZiZnKU7peeB2AqGrxHIZ6xB6qCHUJag==@linaro.org
-X-Google-Smtp-Source: AGHT+IEgVucjsENFr+xmhSGHl/8xUUX1skMThfynQJv2035tKNPDlUH+IWVd96jishXN3UGx2BUQ
-X-Received: by 2002:ac8:584a:0:b0:476:8fcb:9aa3 with SMTP id d75a77b69052e-490f19bec39mr59397481cf.13.1746544525363;
-        Tue, 06 May 2025 08:15:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746544525; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp3217790njj;
+        Tue, 6 May 2025 08:59:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVPqoRhLUlBPnvkZqB4NvxCXIGAoqFPfivs1+/LnhuDeKvPQcxkEmNcnzqXyIv1juoMjPGUMuvhRf3MbQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHKvqmLJ6MQD8eacMOrztFZLtl5LOBHpX+PEBphsorb37Zg8f8PdxorUcW3AfUPgMlGeRy/
+X-Received: by 2002:a05:6214:488:b0:6e6:6252:ad1a with SMTP id 6a1803df08f44-6f528d1f453mr196072356d6.28.1746547160422;
+        Tue, 06 May 2025 08:59:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746547160; cv=none;
         d=google.com; s=arc-20240605;
-        b=WnpnSggjMKLi2i98uEgDi2dV1gxOtTUMbIAul21JcHMXBaKqQOu8eOzCOXr8A7uOaH
-         Kt/Gi0JIBBL5/rSN9OV3eyF0sSQEwjURTrExRCPms6k/3smbBHo3Sh8OCXdX3+uyI/gl
-         XdGELJWY1KPgSHBIOB9a+vo9edhHYD/WC3lTlI48BZb05mQ7t1x2K3Q5NppXhZtDeHph
-         4uQYELZ7R6j8BVzUG0Gmr5G+gumqGb/PvS2J4Amjt0S62He+/G9l55o79KakAOh5A54v
-         VwjVzTrqq3tRyrJbT47tmD7VI+7gSgxCz/6+PCjqZj0/0A8dHqIZff/bGnZt08J2sSUN
-         rECg==
+        b=ikmOus+O+cmf5xLELPvj3ARE3IOu8A67yZef63TZluI1YcbHxMwb32uxboXvnUthcM
+         7v8HelR5XbbMnpWz1rDTkNopvlFhAoCpUYm7L8XGV5/f7qrVJ7/L1S7vCSdTY0I2gf9c
+         IxaBLz1LgvIfX6VW7ZRYb5Hd741rLHGtvCnZzu6rEmf7YXsDlE4oxzc/rn2ARVnNlwzK
+         AVSVRhdlmYFOsmaB+x/5VXrXl2F/LrsWKBWb1Nc+JGjzNmysxvCLi8curGmAsYd4kQQ5
+         D//zYxcTQ1faTAOsxlsu4uuenObfXqEeLyqcv77PdiAlvb2qAEEBGPCETDs2Ag6Wolpr
+         zCIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=S9Rx5fjuXqU6W7L9hiqlW3zm/KvXt/S4tAkzaORUBjg=;
-        fh=q2p+GChqy8udXY9VuOpuFgJtdIFTLnVM/vp+SZ+fTy8=;
-        b=Fm3RWR0WE13p02jQxlJUfUgq/eVwBJcRvhDrxSlrZqjmYLs0kEmsImJ9HKYVI4iMCA
-         5zp4XwyY/gwN5IdjGxZPCoJoFHjGwB75sGXQ/t1WdROho/Oq1a/gYLGffva6w2kcSz2G
-         sZ5pAX5TDoDI5ABu5Xrhk1iGRLI4S3tlk59kvl86TyPnVzn437NbB45wyHhDLTKGU0ah
-         fC02ywHhQ0/zPAD1ZxfIJOdAubEFuQYAwGwYOgdAAAN/YKBSLeg20hPMYIRItNRrtLBy
-         dL5GYceMdu/YcNo3L30FSOkXL6Ls/zRzJRqjo6WtiR+YeLk1uylAQKFeAZ6vZWbIgJse
-         3KHg==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=/hmJ+hjTUvQX+dcTw0OYmAwCC/0CAiS1J0LqNT8Txnw=;
+        fh=KJ/IN5Sux9qSKTVTbbKy/qOBtt1COPs8ubdVmJFu6K8=;
+        b=XrX6ekiF2nMdvCDxz0/cK8RTS+EJlj1JuMkhk5+bOXWdudhuS3F1CEWpEcSGbDCcyr
+         bLMwGL63pYItSKsR+FRV+yXtVEW5cr0YZurR7M6vdmQLHupJpForGzorRXOHDBD2uUMY
+         jZdedT7i/j6OBS9PP095Dk1Uooiagp/2F3aDlTBVYVb4N0YK9cIDNnXf4/4YUqnWf1Rb
+         QcmpDfjqQsVBFG+WDIgk+6oc+KAKASO0OmSwz/vlsElBbPJxwqHfKFtsz7Lvbl6/cLPm
+         PhCfnLrQWpSbidCvwTa8Tv6kGqfR08hj1e+vQ6cBj1m1oLuxjObRGz+SiqPtCCtjpJL7
+         Io6w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fzVfC7/A";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i7i69DYG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-48b990fca6dsi120849441cf.649.2025.05.06.08.15.25
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f50f490730si115182956d6.313.2025.05.06.08.59.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 May 2025 08:15:25 -0700 (PDT)
+        Tue, 06 May 2025 08:59:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fzVfC7/A";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i7i69DYG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uCK0b-0002gx-5k; Tue, 06 May 2025 11:15:01 -0400
+	id 1uCKh4-0005KM-1t; Tue, 06 May 2025 11:58:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uCK0Y-0002fd-G4
- for qemu-arm@nongnu.org; Tue, 06 May 2025 11:14:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uCKh1-0005Ih-QF
+ for qemu-arm@nongnu.org; Tue, 06 May 2025 11:58:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uCK0W-0000BK-KC
- for qemu-arm@nongnu.org; Tue, 06 May 2025 11:14:58 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uCKgz-00060b-93
+ for qemu-arm@nongnu.org; Tue, 06 May 2025 11:58:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1746544495;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1746547127;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=S9Rx5fjuXqU6W7L9hiqlW3zm/KvXt/S4tAkzaORUBjg=;
- b=fzVfC7/A2IUraGXWUbfexZfAdnvDDIWylHJphr03FvqbMsF/b8IWmFxheDKg31hXXKslAR
- Z/gZe991eehzVfiaOHovNHkh/bsa5MwMBnHvj4mDMwre8KDAgKn+XXak84vzr+6cF3jTk+
- i3clCWXo4wKnihqGQJrjNsWFG3s3XTk=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references;
+ bh=/hmJ+hjTUvQX+dcTw0OYmAwCC/0CAiS1J0LqNT8Txnw=;
+ b=i7i69DYGi/ItHJMZbw4laheBB7sWzC7rRhGqo9cfWmd2dL1I5I1tftazpLksLzD2aisAdK
+ 4QKWyhgxyS/otuaO2OWWv2n9Xhk3B+2xDaWg+JdtvBGCBskYXvRsHbEn/BvjzIgs5kWl9i
+ DlfGqeh8OYnjH8MPd+aKhZJaZ/zBCNM=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-410-ha3K6kF2OnSPu3vWwmw5qQ-1; Tue, 06 May 2025 11:14:53 -0400
-X-MC-Unique: ha3K6kF2OnSPu3vWwmw5qQ-1
-X-Mimecast-MFC-AGG-ID: ha3K6kF2OnSPu3vWwmw5qQ_1746544492
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-43d08915f61so29817085e9.2
- for <qemu-arm@nongnu.org>; Tue, 06 May 2025 08:14:53 -0700 (PDT)
+ us-mta-569-EXK7PYgYMeCbCIgRGGaoZw-1; Tue, 06 May 2025 11:58:45 -0400
+X-MC-Unique: EXK7PYgYMeCbCIgRGGaoZw-1
+X-Mimecast-MFC-AGG-ID: EXK7PYgYMeCbCIgRGGaoZw_1746547125
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-39ee54d5a00so1919186f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 06 May 2025 08:58:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746544492; x=1747149292;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=S9Rx5fjuXqU6W7L9hiqlW3zm/KvXt/S4tAkzaORUBjg=;
- b=wFXn7QRd0Wo3gkTk7Y2447WECF7/MjCsFTsGgPEdCBYBnRebO0kq2XPOdHcWS/FZ9e
- /yIFrygOkiuIZtXaW+RPo66fITf4xqOaAMwULwSGFlQwwSe0iancfuMH4ADQ1s0kBS2c
- mLYw5h/RVBN1fPsZt0KwPVBVDy0cjnMVfBQvyTbnKhDDhTcGdiPUYi/emJFibzoMMl+H
- 0UukAhnz7Cb453caTWZaAZcEMU/4lHZPHA1X5STk25MNemUxc6zIdTjc98wx6TMBMLVq
- By/KtS5yrvOFwnNn4U9QVwujcNarl7SgBQ0MPmV+C04HTIHyugEgEAfm/Uf5aoqaMeH5
- lniA==
-X-Gm-Message-State: AOJu0Yy4nMpPHFAU9ke0GTBO0xuQ8odj6g5Kgp/H/Wk+kCoFfCn6ucoy
- GHgUj+IAfTTgNZ+Ol46C7wmx1vm6IR6P5NGcW/s6zw8u9i/DDlZ/3fgZOfB0KB1uMl6mFCUjjiD
- dDS1kRxLIXiNcXI+C5AirX0kXR4+0jc0zZeXX3rgR6alxwJ+BxQ==
-X-Gm-Gg: ASbGncsLmOjkqg6xSoTOmihUzoJ3iVKf3oxNawA4WLufVf0bj0ZDOB/3pg2M94Gpz+P
- FtvErL8Uv/IaHg/L4Tq9M3uz8v4Crm/IurYMk2jhyt1RG2ZNI6tGt34u6DmbSICA/xbJhj6czfT
- iq3x5SL3P8QThTp4BlRQ0Z3/9bPNjVZZvmm1zuNeMzQ3jnxifnvp7b/eDxb9lyADNsX4qtlJIym
- n8mNB4xMgASjBUCuEVvcHImoocQwrQ7KxtwHr0We5bmylH1nfOCWKCU4Pnop5kJK1SdtCd31lFb
- fZYTZpv1eomrs2RKCKvfpQX5nRayiVW/Uk4LtSt9h8pwtdLTVQ==
-X-Received: by 2002:a05:6000:1acd:b0:391:23de:b19a with SMTP id
- ffacd0b85a97d-3a09fd7dbb0mr9604245f8f.31.1746544492500; 
- Tue, 06 May 2025 08:14:52 -0700 (PDT)
-X-Received: by 2002:a05:6000:1acd:b0:391:23de:b19a with SMTP id
- ffacd0b85a97d-3a09fd7dbb0mr9604220f8f.31.1746544492090; 
- Tue, 06 May 2025 08:14:52 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ d=1e100.net; s=20230601; t=1746547124; x=1747151924;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=/hmJ+hjTUvQX+dcTw0OYmAwCC/0CAiS1J0LqNT8Txnw=;
+ b=QU6fIWUWAgMb9xrxPLkg2aANq7JrA06d/2lwMOjbbrumou0wNY44yb4xDuvG/Ca2K0
+ 79KYmkJij3EaZFolEyCSw4ahbEbdv3SckZ7xuMIoAqu8ZvzgwaWPPtQ2Uc/+g8rVujiD
+ nakyw7AzDZkbkRGIFs3ng5raCaLeHMt8dZ8PWDYM/r/PlXk+Db76DuAQ3I/+3WnsXnTm
+ omXTw2CG5pu+DzZIeGCZ7TQJznV0WmNFgL0KWU2n5ZOdTNNfCYFPNrvJW821ZNHfECCq
+ C4a0Ko0ANRVLynMzqAeqeNNoVo+2IMJMO1Rmg99+fp7aQP8dYXdwRnc18rSSAq7m4SCE
+ tx2Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXy9VYJ4t3zV2DA0GYNDWL2J57OnsorJ68T/5GhTEbgqGx0GnrPy+E7vE0NYpbjSHb6DjDW93sNUw==@nongnu.org
+X-Gm-Message-State: AOJu0YyRCgEWEpj1N0FyjsU4j4JeGFP1Py3iqpXmxhcmuFFB9QB3FgBd
+ qaZvMTP+kJ1VOE6oDpyJwg7IMq17XUkxECf6hGuuOYAZXhRJobGY1DSTfUnRaLJYazNDjhaH6e5
+ XjRQ5D3OynYLZKmYl/e169c4oDByiULPha6U53aa3ry2yLeVgjQ==
+X-Gm-Gg: ASbGncsSZneMPEMYXrSAlPcva3F6OktJY6MxqroCogZ2Y5tTvxS7rG+cnOd4G0RyqRn
+ 51eHBtehC6RAs4rmYem9xzRQXa1JyxTBdTQhMRlmCe6DESukjqANQ4QUC9VDcc13UbeB7jMQ/QQ
+ 4fKeSuXJIA3Pxqa3MNVodApLdQ0kNip4MgN5HTtrv8HikZYWo8pUzdm9cbwzg79MhLU4E3kSr/F
+ d3NwAFBTuN+XOlAwCeZy2InWFZOdJ2bSZZOEM7ed1iKOBgenCSgufy37NNZTZ8wr0inuPmcwl7i
+ PS18/SzZlko69geHrSNrlPBK28MAmbocadoqJuBLC3tfZ3JTVNz4HfkNrOU=
+X-Received: by 2002:a05:6000:22c3:b0:3a0:8465:43 with SMTP id
+ ffacd0b85a97d-3a0ac1ff1bdmr3202678f8f.43.1746547124513; 
+ Tue, 06 May 2025 08:58:44 -0700 (PDT)
+X-Received: by 2002:a05:6000:22c3:b0:3a0:8465:43 with SMTP id
+ ffacd0b85a97d-3a0ac1ff1bdmr3202650f8f.43.1746547124024; 
+ Tue, 06 May 2025 08:58:44 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a099ae7bb3sm14173442f8f.51.2025.05.06.08.14.51
+ ffacd0b85a97d-3a099ae3356sm13867447f8f.29.2025.05.06.08.58.42
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 May 2025 08:14:51 -0700 (PDT)
-Message-ID: <2476d134-e342-4c2c-84ae-4d5972c30a94@redhat.com>
-Date: Tue, 6 May 2025 17:14:50 +0200
+ Tue, 06 May 2025 08:58:43 -0700 (PDT)
+Message-ID: <5e24182d-a8bc-41fa-9741-6caecaa0c12e@redhat.com>
+Date: Tue, 6 May 2025 17:58:42 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL 22/23] tests/function/aspeed: Add functional test for
- ast2700fc
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Steven Lee <steven_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>
-References: <20250505090635.778785-1-clg@redhat.com>
- <20250505090635.778785-23-clg@redhat.com>
- <CAFEAcA8wmqAtcgfPvyMY8nujTWNCSC0DYO64aA5up-sTWCr_jA@mail.gmail.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <CAFEAcA8wmqAtcgfPvyMY8nujTWNCSC0DYO64aA5up-sTWCr_jA@mail.gmail.com>
+Subject: Re: [RFC 00/24] APCI PCI Hotplug support on ARM
+To: Gustavo Romero <gustavo.romero@linaro.org>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ imammedo@redhat.com, anisinha@redhat.com, mst@redhat.com,
+ shannon.zhaosl@gmail.com
+Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com
+References: <20250428102628.378046-1-eric.auger@redhat.com>
+ <6a52f974-3e13-49ba-bfeb-e30e683e4ce5@linaro.org>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <6a52f974-3e13-49ba-bfeb-e30e683e4ce5@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: URa_FVJxFJrT7sUYc5Eu9x4qM9o1iXvetCnB4s2liw4_1746544492
+X-Mimecast-MFC-PROC-ID: Hd3HoMzTPxEuLe_PW4xBeuVSWwvVUJLos4YGhLvvPSM_1746547125
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
 X-Spam_score: -3.5
 X-Spam_bar: ---
@@ -177,7 +140,7 @@ X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.414,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -190,80 +153,228 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7AsgTcaQy+dY
+X-TUID: C9EZmim3MYw/
 
-On 5/6/25 16:22, Peter Maydell wrote:
-> On Mon, 5 May 2025 at 10:12, Cédric Le Goater <clg@redhat.com> wrote:
+Hi Gustavo,
+
+On 5/5/25 3:26 PM, Gustavo Romero wrote:
+> Hi Eric,
+>
+> On 4/28/25 07:25, Eric Auger wrote:
+>> This series enables APCI PCI hotplug/hotunplug on ARM
+>> and makes it default for 10.1 machine type. This aligns with
+>> x86 q35 machine. Expected benefits should be similar to
+>> those listed in [1].
 >>
->> From: Steven Lee <steven_lee@aspeedtech.com>
+>> The infrastructure used in x86 is heavily reused and a
+>> huge part of the series consists in moving code from
+>> hw/i386/acpi-build.c to a generic place and slightly
+>> adapting it to make it usable on ARM. The DSDT table is
+>> augmented to support ACPI PCI hotplug elements.
 >>
->> Introduce a new test suite for ast2700fc machine.
->> Rename the original test_aarch64_aspeed.py to
->> test_aarch64_aspeed_ast2700.py.
+>> On ARM we use use a GED event to notify the OS about
+>> hotplug events.
 >>
->> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
->> Change-Id: I3855f55c9f6e5cca1270c179445f549f8d81f36c
->> Reviewed-by: Cédric Le Goater <clg@redhat.com>
->> Link: https://lore.kernel.org/qemu-devel/20250505030618.3612042-1-steven_lee@aspeedtech.com
->> [ clg: Added new tests in meson.build ]
->> Signed-off-by: Cédric Le Goater <clg@redhat.com>
-> 
-> Hi; this new test seems to trigger an error in a clang-sanitizer
-> build; would you mind having a look?
+>> I have not noticed any tests/qtest/bios-tables-test failures
+>> neither on x86 nor ARM. x86 DSDT table has not changed.
+>> ARM DSDT table definitively has but there are no tests
+>> impacted. ARM misses hotplug tests that do exist on x86. This
+>> most probably should be considered in the future.
+>>
+>> Best Regards
+>>
+>> Eric
+>>
+>> This series can be found at:
+>> https://github.com/eauger/qemu/tree/arm-acpi-pcihp-rfc
+>>
+>> [1] [PATCH v6 0/6] Use ACPI PCI hot-plug for Q35
+>> https://lore.kernel.org/all/20210713004205.775386-1-jusual@redhat.com/
+>
+> I've just started to review your series and went to a quick smoke test
+> by hotplugging a net adapter and got the following kernel internal error:
+>
+> (qemu) device_add virtio-net-pci,bus=pcie.1,addr=0,id=na
+> (qemu) [   64.165411] pci 0000:01:00.0: [1af4:1041] type 00 class
+> 0x020000
+> [   64.165895] pci 0000:01:00.0: reg 0x14: [mem 0x00000000-0x00000fff]
+> [   64.166259] pci 0000:01:00.0: reg 0x20: [mem 0x00000000-0x00003fff
+> 64bit pref]
+> [   64.166658] pci 0000:01:00.0: reg 0x30: [mem 0x00000000-0x0003ffff
+> pref]
+> [   64.167153] pci 0000:01:00.0: enabling Extended Tags
+> [   64.179972] Internal error: synchronous external abort:
+> 0000000096000050 [#1] SMP
+> [   64.180719] Modules linked in: aes_ce_blk aes_ce_cipher polyval_ce
+> polyval_generic ghash_ce gf128mul sha2_ce binfmt_misc sha256_arm64
+> sha1_ce nls_ascii nls_cp437 vfat fat evdev cfg80211 rfkill loop fuse
+> efi_pstore drm dm_mod dax configfs efivarfs qemu_fw_cfg ip_tables
+> x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic virtio_scsi
+> virtio_net scsi_mod net_failover failover virtio_blk scsi_common
+> crct10dif_ce crct10dif_common virtio_pci virtio_pci_legacy_dev
+> virtio_pci_modern_dev virtio_mmio
+> [   64.183656] CPU: 0 PID: 23 Comm: kworker/u2:1 Not tainted
+> 6.1.0-30-arm64 #1  Debian 6.1.124-1
+> [   64.184071] Hardware name: QEMU QEMU Virtual Machine, BIOS
+> edk2-stable202408-prebuilt.qemu.org 08/13/2024
+> [   64.184759] Workqueue: kacpi_hotplug acpi_hotplug_work_fn
+> [   64.185320] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS
+> BTYPE=--)
+> [   64.185737] pc : acpi_ex_system_memory_space_handler+0x290/0x300
+> [   64.186175] lr : acpi_ev_address_space_dispatch+0x124/0x334
+> [   64.186490] sp : ffff80000a6bb3b0
+> [   64.186663] x29: ffff80000a6bb3b0 x28: ffff0003fcbb08b8 x27:
+> 0000000000000000
+> [   64.187126] x26: ffff0003fcbb0288 x25: ffff80000a6bb568 x24:
+> 0000000000000001
+> [   64.187499] x23: ffff80000a6bb568 x22: 0000000000000004 x21:
+> ffff0000c206cb00
+> [   64.187885] x20: 00000000090c0014 x19: 0000000000000020 x18:
+> 0000000000000000
+> [   64.188265] x17: 0000000000000000 x16: 0000000000000000 x15:
+> 0000000000000000
+> [   64.188640] x14: 0000000000000000 x13: 4d43c3194dea1791 x12:
+> 4d7a3553e5c937d0
+> [   64.189003] x11: 0000000000000001 x10: 0000000000000000 x9 :
+> ffff800008735b34
+> [   64.189383] x8 : 0000000000000001 x7 : ffff80000873c850 x6 :
+> 00000000000000f8
+> [   64.189778] x5 : ffff0000c206cb00 x4 : 0000000000000000 x3 :
+> 00000000090c0018
+> [   64.190163] x2 : ffff80000a9af014 x1 : 00000000090c0018 x0 :
+> 0000000000000001
+> [   64.190734] Call trace:
+> [   64.191086]  acpi_ex_system_memory_space_handler+0x290/0x300
+> [   64.191696]  acpi_ev_address_space_dispatch+0x124/0x334
+> [   64.192042]  acpi_ex_access_region+0xe4/0x2e0
+> [   64.192287]  acpi_ex_field_datum_io+0x88/0x200
+> [   64.192509]  acpi_ex_write_with_update_rule+0xd4/0x120
+> [   64.192793]  acpi_ex_insert_into_field+0x210/0x2b0
+> [   64.193048]  acpi_ex_write_data_to_field+0xa0/0x190
+> [   64.193298]  acpi_ex_store_object_to_node+0x150/0x240
+> [   64.193527]  acpi_ex_store+0x144/0x300
+> [   64.193726]  acpi_ex_opcode_1A_1T_1R+0x218/0x580
+> [   64.193971]  acpi_ds_exec_end_op+0x24c/0x4b0
+> [   64.194227]  acpi_ps_parse_loop+0x100/0x6a0
+> [   64.194477]  acpi_ps_parse_aml+0x94/0x3b0
+> [   64.194674]  acpi_ps_execute_method+0x128/0x25c
+> [   64.194922]  acpi_ns_evaluate+0x1f0/0x2d0
+> [   64.195148]  acpi_evaluate_object+0x138/0x2d0
+> [   64.195380]  acpi_evaluate_dsm+0xb8/0x134
+> [   64.195613]  acpi_check_dsm+0x34/0xdc
+> [   64.195822]  smbios_attr_is_visible+0x5c/0xb0
+> [   64.196089]  internal_create_group+0xd0/0x3d0
+> [   64.196335]  internal_create_groups+0x58/0xe0
+> [   64.196584]  sysfs_create_groups+0x20/0x30
+> [   64.196813]  device_add_groups+0x18/0x2c
+> [   64.197039]  bus_add_device+0x48/0x160
+> [   64.197260]  device_add+0x3a4/0x85c
+> [   64.197463]  pci_device_add+0x308/0x660
+> [   64.197680]  pci_scan_single_device+0xe4/0x114
+> [   64.197941]  pci_scan_slot+0x70/0x1fc
+> [   64.198155]  acpiphp_rescan_slot+0x90/0xa4
+> [   64.198366]  acpiphp_hotplug_notify+0x2a8/0x300
+> [   64.198584]  acpi_device_hotplug+0x138/0x4c0
+> [   64.198819]  acpi_hotplug_work_fn+0x2c/0x4c
+> [   64.199045]  process_one_work+0x1f4/0x460
+> [   64.199277]  worker_thread+0x188/0x4e0
+> [   64.199492]  kthread+0xe0/0xe4
+> [   64.199671]  ret_from_fork+0x10/0x20
+> [   64.200114] Code: f90002e0 52800000 17ffff97 f94002e0 (b9000040)
+> [   64.200820] ---[ end trace 0000000000000000 ]---
+>
+> (qemu)
+>
+> This is a Debian Bookworm stock kernel 6.1. I built QEMU from your GH
+> branch.
+>
+> The machine was started with:
+>
+> ./qemu-system-aarch64 -m 16G -nographic -machine
+> type=virt,gic-version=max -cpu cortex-a57 -initrd
+> /mnt/initrd.img-6.1.0-30-arm64 -kernel /mnt/vmlinuz-6.1.0-30-arm64
+> -append "root=/dev/vda1 console=ttyAMA0,115200 acpi=force" -device
+> virtio-scsi-pci -device virtio-blk-pci,drive=root -drive
+> if=none,id=root,file=/mnt/debian-12-nocloud-arm64.qcow2 -device
+> pcie-root-port,id=pcie.1,chassis=1,slot=1 -bios
+> ./pc-bios/edk2-aarch64-code.fd
+>
+> ./pc-bios/edk2-aarch64-code.fd is the one found under ./build dir, so
+> nothing special.
 
-yes. I can reproduce. I will check next week.
+I have just tested debian-12-nocloud-arm64.qcow2 which features
+6.1.0-34-arm64 + edk2-aarch64-code.fd and I am able to
+hotplug/hot-unplug the virtio-net-pci device. Can you retry without
 
-Thanks,
+-initrd /mnt/initrd.img-6.1.0-30-arm64 -kernel
+/mnt/vmlinuz-6.1.0-30-arm64 -append "root=/dev/vda1
+console=ttyAMA0,115200 acpi=force" ?
 
-C.
+Cheers
 
-
-
-
-> 
->   Output: qemu-system-aarch64: warning: hub port hub0port0 has no peer
-> qemu-system-aarch64: warning: hub 0 with no nics
-> qemu-system-aarch64: warning: netdev hub0port0 has no peer
-> qemu-system-aarch64: warning: nic ftgmac100.0 has no peer
-> qemu-system-aarch64: warning: nic ftgmac100.1 has no peer
-> qemu-system-aarch64: warning: nic ftgmac100.2 has no peer
-> qemu-system-aarch64: warning: requested NIC (#net038, model
-> unspecified) was not created (not supported by this machine?)
-> ../../system/memory.c:2798:27: runtime error: null pointer passed as
-> argument 2, which is declared to never be null
-> /usr/include/stdlib.h:962:6: note: nonnull attribute specified here
->      #0 0x617e4121b113 in flatview_lookup
-> /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../system/memory.c:2798:12
->      #1 0x617e4121b113 in memory_region_find_rcu
-> /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../system/memory.c:2833:10
->      #2 0x617e4121a5a9 in memory_region_find
-> /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../system/memory.c:2860:11
->      #3 0x617e411c21ea in rom_check_and_register_reset
-> /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../hw/core/loader.c:1317:19
->      #4 0x617e411d5ec7 in qdev_machine_creation_done
-> /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../hw/core/machine.c:1756:9
->      #5 0x617e403d4877 in qemu_machine_creation_done
-> /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../system/vl.c:2782:5
->      #6 0x617e403d4877 in qmp_x_exit_preconfig
-> /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../system/vl.c:2810:10
->      #7 0x617e403d9a3c in qemu_init
-> /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../system/vl.c:3844:9
->      #8 0x617e41301126 in main
-> /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../system/main.c:71:5
->      #9 0x7faf8202a1c9 in __libc_start_call_main
-> csu/../sysdeps/nptl/libc_start_call_main.h:58:16
->      #10 0x7faf8202a28a in __libc_start_main csu/../csu/libc-start.c:360:3
->      #11 0x617e3f920654 in _start
-> (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/qemu-system-aarch64+0x161d654)
-> (BuildId: f3f8c2ca821e695937a615bee293c4a5a336a6bd)
-> 
-> SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior
-> ../../system/memory.c:2798:27
-> 
-> 
-> thanks
-> -- PMM
-> 
+Eric
+>
+> It seems Linux acpi crashed when ingesting the _DSM method but I could
+> not
+> figure out what exactly in it could cause it.
+>
+>
+> Cheers,
+> Gustavo
+>
+>>
+>> Eric Auger (24):
+>>    hw/pci/pcie_port: Fix pcie_slot_is_hotpluggbale_bus typo
+>>    hw/acpi/ged: Fix wrong identation
+>>    hw/i386/acpi-build: Fix build_append_notfication_callback typo
+>>    hw/i386/acpi-build: Make aml_pci_device_dsm() static
+>>    hw/arm/virt: Introduce machine state acpi pcihp flags and props
+>>    hw/acpi: Rename and move build_x86_acpi_pci_hotplug to pcihp
+>>    hw/pci-host/gpex-acpi: Add native_pci_hotplug arg to
+>>      acpi_dsdt_add_pci_osc
+>>    hw/pci-host/gpex-acpi: Split host bridge OSC and DSM generation
+>>    hw/pci-host/gpex-acpi: Propagate hotplug type info from virt machine
+>>      downto gpex
+>>    hw/i386/acpi-build: Turn build_q35_osc_method into a generic method
+>>    hw/pci-host/gpex-acpi: Use build_pci_host_bridge_osc_method
+>>    hw/i386/acpi-build: Introduce build_append_pcihp_resources() helper
+>>    hw/acpi/pcihp: Add an AmlRegionSpace arg to build_acpi_pci_hotplug
+>>    hw/i386/acpi-build: Move build_append_notification_callback to pcihp
+>>    hw/i386/acpi-build: Move remaining pcihp generic functions to pcihp
+>>    hw/i386/acpi-build: Introduce and use acpi_get_pci_host
+>>    hw/arm/virt-acpi-build: Add DSDT additions for PCI hotplug
+>>    hw/acpi/ged: Prepare the device to react to PCI hotplug events
+>>    hw/acpi/ged: Call pcihp plug callbacks in hotplug handler
+>>      implementation
+>>    hw/acpi/ged: Support migration of AcpiPciHpState
+>>    hw/core/sysbus: Introduce sysbus_mmio_map_name() helper
+>>    hw/arm/virt: Let virt support pci hotplug/unplug GED event
+>>    hw/arm/virt: Plug pcihp hotplug/hotunplug callbacks
+>>    hw/arm/virt: Use ACPI PCI hotplug by default
+>>
+>>   hw/i386/acpi-build.h                   |   4 -
+>>   include/hw/acpi/aml-build.h            |   2 +
+>>   include/hw/acpi/generic_event_device.h |   5 +
+>>   include/hw/acpi/pci.h                  |   4 +-
+>>   include/hw/acpi/pcihp.h                |  14 +
+>>   include/hw/arm/virt.h                  |   4 +
+>>   include/hw/pci-host/gpex.h             |   1 +
+>>   include/hw/sysbus.h                    |   1 +
+>>   hw/acpi/aml-build.c                    |  50 +++
+>>   hw/acpi/generic_event_device.c         |  64 +++-
+>>   hw/acpi/pci.c                          |  20 ++
+>>   hw/acpi/pcihp.c                        | 428 +++++++++++++++++++++-
+>>   hw/arm/virt-acpi-build.c               |  26 ++
+>>   hw/arm/virt.c                          | 100 +++++-
+>>   hw/core/sysbus.c                       |  11 +
+>>   hw/i386/acpi-build.c                   | 475 +------------------------
+>>   hw/pci-host/gpex-acpi.c                |  75 +---
+>>   hw/pci/pcie_port.c                     |   4 +-
+>>   hw/arm/Kconfig                         |   2 +
+>>   19 files changed, 748 insertions(+), 542 deletions(-)
+>>
+>
 

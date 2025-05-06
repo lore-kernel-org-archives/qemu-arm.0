@@ -1,292 +1,165 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2991588njj;
-        Tue, 6 May 2025 02:35:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWqyQB1/emKa0w6OPTG9OosXYhVtlaumyBAWzSCyhn8jj3em0Hml4Rz8hwvnXxbjPP15z7nMyfpEfR/MA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHMh7JXrTzARwRj79K1+L+voZSRrN/eS3kijHAc/YmYw4ZWCzoPRjKqjKhMy+NxcwLC2Msy
-X-Received: by 2002:a05:6512:3987:b0:549:8cc8:efed with SMTP id 2adb3069b0e04-54fb4a6eb38mr660508e87.48.1746524129767;
-        Tue, 06 May 2025 02:35:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746524129; cv=none;
-        d=google.com; s=arc-20240605;
-        b=QfjqxVID4dluW0uR86sbYxF8pnoedSyFXOUYFesdK7GCMLzlkc/EnwXf90JrKkrx6C
-         gMkIbabo96jHEcWrDlHYsh8mBszo6JPBi8E2Z9d0M64K8vKNHO7sY2ChChfECamTIs8T
-         F6p5uIGScaFQ+PtwD4fBIhwpbVf/fcNMB6IH7CSKcUcb134erNf5dE88FYZRLG20brS+
-         zCWLN+9v92y+yX3MJ+btZKqZLeOeB3/4VQROBVDdiIvCd3H3W8p8HQ32HqMJHg9iTpaw
-         J9xLsrUdgBMcVPinWasygeoJsNcQ3hwLmerTpcw12o7H4tikueaGedgOzSIL9kkLRjvV
-         1sqw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=m9Nj0TTI4/KXc+zG295t2eZu7dXoGbjXFPHXgCwgiT0=;
-        fh=KCCeGxXJiftc12UB8r0SbDBBRXFjWPwNY8i8y04pDSI=;
-        b=ZHc7l2Qgys5z+gBCoTSJyDJVallOnQT9EFFPL/sfn9o255m4jSi4lcDTdsvjqUwnMI
-         EE64y9jyyBPjTFeLmrEOlGwPcTCN3UpHrIAyj0GxgdoiPqcLJQJVPZndmIpXBXT/FMxX
-         dgvpwEZCMjmwN1PUWzndxHNcbTrUoL9gxwFVaeH8bZGK9ZXR1tDoJXirDDWmPq2Wgr+3
-         kkQgcWQ0cr+moIRjyl80zNV+WWb0VG70NRaa7lqHJysERSyXBolGsx7i2EdKdUnvj+na
-         IsrR8UbVezfEI+Nwb07E884mt5+EIw59rto2NAhj+TcUkBa0lcguXbdRgPlQq/2RYszb
-         f3RQ==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R72NUBrG;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 2adb3069b0e04-54ea94e22f3si3960888e87.192.2025.05.06.02.35.29
-        for <alex.bennee@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([185.126.160.109])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ad1894c02a8sm670773666b.122.2025.05.06.03.12.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 May 2025 02:35:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R72NUBrG;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1746524128;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=m9Nj0TTI4/KXc+zG295t2eZu7dXoGbjXFPHXgCwgiT0=;
-	b=R72NUBrGUUkXuyQJx1sb9+EFV4ZOMl4CEZMOePxoFY/pYq22XrEjvIp7ypSq18i63r3QEm
-	n7Xibcrsk5e+mz3bn3GYPv/uuFrT4GGKjV3lhlHpWS85ev56Qrds4/wMQgLLuerKOPR1Gg
-	86Tqagf8azmEN5uvQTGwMzt9la7ii/0=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-658-AaaR5BeBNcGacJ6U3HqaUA-1; Tue, 06 May 2025 05:35:27 -0400
-X-MC-Unique: AaaR5BeBNcGacJ6U3HqaUA-1
-X-Mimecast-MFC-AGG-ID: AaaR5BeBNcGacJ6U3HqaUA_1746524126
-Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-43f405810b4so27772545e9.1
-        for <alex.bennee@linaro.org>; Tue, 06 May 2025 02:35:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746524126; x=1747128926;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=m9Nj0TTI4/KXc+zG295t2eZu7dXoGbjXFPHXgCwgiT0=;
-        b=Y4kQ5llUuY6hyTbDcqpsq5h2zBteUiKKOdM2Ow9FzohJ39yv08KbquQoo5NsVt3KYQ
-         8ythvCWY62mxeJBQKvz3YigrdllXhNBKKveS3eupnNbqHxsb04X9mKVE9s7IdudWtOD/
-         xgyy3mPDE3JOWrTjUzuT7y4qY8wNw44l3QWgdXn5LfcfCyUZIHANFlQO0DCV5rP6WTVa
-         Y/86ZyyJ/y19DfDsSWO9JYVvl6ckpk8OjcpWluH+g7U1FBbN29OG3KEWqWtGRLzlT5gv
-         /pYyeHkNMiEQSPW88oMSzxl70eUdtHqfGzZKX70vv6uhIpErzSpXuQwate22d4aSRJYT
-         1WyA==
-X-Forwarded-Encrypted: i=1; AJvYcCUG8gBeFfu3IygWXapvH7GnWNIPoYjmHEVYiI7wYN/QSitsAxxKRZDHt05S1tWq++fwNlsPukLBxEzpvw==@linaro.org
-X-Gm-Message-State: AOJu0YxnVxPRy1ZhDdyVAElExCPWiz+qL/5KMXYIi7MdLOUya82CJ0oX
-	bG5IiQJ/ku3lCkV4ny/YdKpEn33G+KWy1odYUYiJUN/MVRfexE6yoaNpo36T7uf8cKgHw3FSI+d
-	CSYrJM7IBT4f3hGkmvGm/oT4sSyKzewBFNUIhdZ3EN54WMIo3NPT93Q==
-X-Gm-Gg: ASbGncubWd+joCE27rWdh8QoZExxzsKGFeoIHW7W9x1XcS8VGGxJfs94iyeEJRluOVJ
-	bl/vW0cBLl5vgeM2up/1dQjwT6iVvkwhulZJwS1SiRuBKDjvzuTAqh9PmZ2JOqsnIw9TicUrnyw
-	20pga3115BKIhLD3f1yAetv9EoIf4VGYUBiRuFRswxuFqVu3H3fB6+wd4EmyD45EUaHPCdB+83Y
-	70hazYDTvtyPLiOPB9cxPVajMaXCiUlpQ5oH6CmYSHTTHgLM3HnPJuvE+ehv4NkfYScmhqeu3cR
-	IN9BIlpSZc0v/whjDiX/xJyomB3yNWrauLfYahzVLEC9ShKM7pLi1/yWcIA=
-X-Received: by 2002:a05:600c:4ed0:b0:43c:f332:703a with SMTP id 5b1f17b1804b1-441d053bc13mr21103755e9.31.1746524125970;
-        Tue, 06 May 2025 02:35:25 -0700 (PDT)
-X-Received: by 2002:a05:600c:4ed0:b0:43c:f332:703a with SMTP id 5b1f17b1804b1-441d053bc13mr21103435e9.31.1746524125561;
-        Tue, 06 May 2025 02:35:25 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-441b89cc469sm164379135e9.6.2025.05.06.02.35.24
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 06 May 2025 02:35:24 -0700 (PDT)
-Message-ID: <f1b91034-be2a-493e-9229-c164e0895825@redhat.com>
-Date: Tue, 6 May 2025 11:35:23 +0200
+        Tue, 06 May 2025 03:12:35 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id A36745F8BD;
+	Tue,  6 May 2025 11:12:34 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>,  qemu-devel@nongnu.org,
+  Thomas Huth <thuth@redhat.com>,  Alexandre Iooss <erdnaxe@crans.org>,
+  "Michael S. Tsirkin" <mst@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  David Hildenbrand <david@redhat.com>,  Pierrick
+ Bouvier <pierrick.bouvier@linaro.org>,  qemu-arm@nongnu.org,  Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Peter Xu
+ <peterx@redhat.com>,  Peter
+ Maydell <peter.maydell@linaro.org>,  Mahmoud Mandour
+ <ma.mandourr@gmail.com>,  Manos Pitsidianakis
+ <manos.pitsidianakis@linaro.org>,  qemu-stable@nongnu.org
+Subject: Re: [PATCH 8/9] virtio-gpu: fix hang under TCG when unmapping blob
+In-Reply-To: <8994da6c-a369-40c7-b1c6-433519ba90a5@daynix.com> (Akihiko
+	Odaki's message of "Sun, 4 May 2025 17:19:45 +0900")
+References: <20250428125918.449346-1-alex.bennee@linaro.org>
+	<20250428125918.449346-9-alex.bennee@linaro.org>
+	<8b123991-21f2-47b5-851d-6b53fbfaa691@collabora.com>
+	<8994da6c-a369-40c7-b1c6-433519ba90a5@daynix.com>
+User-Agent: mu4e 1.12.10; emacs 30.1
+Date: Tue, 06 May 2025 11:12:34 +0100
+Message-ID: <874ixyoxnx.fsf@draig.linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a PCIe RC
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- Donald Dutile <ddutile@redhat.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Markus Armbruster <armbru@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: "jgg@nvidia.com" <jgg@nvidia.com>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "nathanc@nvidia.com" <nathanc@nvidia.com>,
- "mochs@nvidia.com" <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>,
- "Wangzhou (B)" <wangzhou1@hisilicon.com>,
- jiangkunkun <jiangkunkun@huawei.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
-References: <20250502102707.110516-1-shameerali.kolothum.thodi@huawei.com>
- <20250502102707.110516-2-shameerali.kolothum.thodi@huawei.com>
- <03c31d89-ad24-4470-99d0-a77e693e3ba2@redhat.com>
- <fd3219d3-bab3-4991-afbe-fd80549bbca4@redhat.com>
- <aa895207758d4515986fd6cfe05b5917@huawei.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <aa895207758d4515986fd6cfe05b5917@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: EujmpcSwEnDcJzyfm41gczIwnH4J94Verzyp_DV1JzA_1746524126
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: hGN7iXhz2OZS
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: E0SJm/dy+L8i
 
-Hi Shameer,
+Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 
-On 5/6/25 11:07 AM, Shameerali Kolothum Thodi wrote:
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: Monday, May 5, 2025 9:19 AM
->> To: Donald Dutile <ddutile@redhat.com>; Shameerali Kolothum Thodi
->> <shameerali.kolothum.thodi@huawei.com>; qemu-arm@nongnu.org;
->> qemu-devel@nongnu.org; Markus Armbruster <armbru@redhat.com>;
->> Peter Maydell <peter.maydell@linaro.org>; Daniel P. Berrange
->> <berrange@redhat.com>; Alex Bennée <alex.bennee@linaro.org>
->> Cc: jgg@nvidia.com; nicolinc@nvidia.com; berrange@redhat.com;
->> nathanc@nvidia.com; mochs@nvidia.com; smostafa@google.com; Linuxarm
->> <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
->> jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
->> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
->> Subject: Re: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a
->> PCIe RC
->>
->> Hi,
->> On 5/2/25 8:16 PM, Donald Dutile wrote:
+> On 2025/04/30 3:48, Dmitry Osipenko wrote:
+>> On 4/28/25 15:59, Alex Benn=C3=83=C2=A9e wrote:
+>>> From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 >>>
->>> On 5/2/25 6:27 AM, Shameer Kolothum wrote:
->>>> Although this change does not affect functionality at present, it lays
->>>> the groundwork for enabling user-created SMMUv3 devices in
->>>> future patches
->>>>
->>>> Signed-off-by: Shameer Kolothum
->> <shameerali.kolothum.thodi@huawei.com>
->>>> ---
->>>>   hw/arm/smmuv3.c | 26 ++++++++++++++++++++++++++
->>>>   hw/arm/virt.c   |  3 ++-
->>>>   2 files changed, 28 insertions(+), 1 deletion(-)
->>>>
->>>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->>>> index ab67972353..605de9b721 100644
->>>> --- a/hw/arm/smmuv3.c
->>>> +++ b/hw/arm/smmuv3.c
->>>> @@ -24,6 +24,7 @@
->>>>   #include "hw/qdev-properties.h"
->>>>   #include "hw/qdev-core.h"
->>>>   #include "hw/pci/pci.h"
->>>> +#include "hw/pci/pci_bridge.h"
->>>>   #include "cpu.h"
->>>>   #include "exec/target_page.h"
->>>>   #include "trace.h"
->>>> @@ -1874,6 +1875,25 @@ static void smmu_reset_exit(Object *obj,
->>>> ResetType type)
->>>>       smmuv3_init_regs(s);
->>>>   }
->>>>   +static int smmuv3_pcie_bus(Object *obj, void *opaque)
->>>> +{
->>>> +    DeviceState *d = opaque;
->>>> +    PCIBus *bus;
->>>> +
->>>> +    if (!object_dynamic_cast(obj, TYPE_PCI_HOST_BRIDGE)) {
->>>> +        return 0;
->>>> +    }
->>>> +
->>>> +    bus = PCI_HOST_BRIDGE(obj)->bus;
->>>> +    if (d->parent_bus && !strcmp(bus->qbus.name,
->>>> d->parent_bus->name)) {
->>>> +        object_property_set_link(OBJECT(d), "primary-bus", OBJECT(bus),
->>>> +                                 &error_abort);
->>>> +        /* Return non-zero as we got the bus and don't need further
->>>> iteration.*/
->>>> +        return 1;
->>>> +    }
->>>> +    return 0;
->>>> +}
->>>> +
->>>>   static void smmu_realize(DeviceState *d, Error **errp)
->>>>   {
->>>>       SMMUState *sys = ARM_SMMU(d);
->>>> @@ -1882,6 +1902,10 @@ static void smmu_realize(DeviceState *d,
->> Error
->>>> **errp)
->>>>       SysBusDevice *dev = SYS_BUS_DEVICE(d);
->>>>       Error *local_err = NULL;
->>>>   +    if (!object_property_get_link(OBJECT(d), "primary-bus",
->>>> &error_abort)) {
->>>> +        object_child_foreach_recursive(object_get_root(),
->>>> smmuv3_pcie_bus, d);
->>>> +    }
->>>> +
->>>>       c->parent_realize(d, &local_err);
->>>>       if (local_err) {
->>>>           error_propagate(errp, local_err);
->>>> @@ -1996,6 +2020,8 @@ static void smmuv3_class_init(ObjectClass
->>>> *klass, const void *data)
->>>>       device_class_set_parent_realize(dc, smmu_realize,
->>>>                                       &c->parent_realize);
->>>>       device_class_set_props(dc, smmuv3_properties);
->>>> +    dc->hotpluggable = false;
->>>> +    dc->bus_type = TYPE_PCIE_BUS;
->>> Does this force legacy SMMUv3 to be tied to a PCIe bus now?
->>> if so, will that break some existing legacy smmuv3 configs?, i.e.,
->>> virtio-scsi attached to a legacy smmuv3.
->> Previously the SMMU was already always attached to a PCI primary-bus
->> (vms->bus ie. pci0). virtio-scsi-pci is the device being protected. The
->> SMMU is not able to protect platforms devices atm.
->>
->> My only concern is we are highjacking the "bus" prop to record the bus
->> hierarchy the SMMU is protecting. While the SMMU is a platform device
->> and does not inherit the PCI device base class its bus type becomes
->> "TYPE_PCIE_BUS". So in terms of qom hierachy is is seen as a PCI device
->> now? I don't know if it is a problem. An alternative could be to keep
->> the bus pointer and type as it was before and introduce a primary-bus
->> property. Adding Markus, Peter, Daniel and Alex in to.
-> Yes. The SMMUV3 is a platform device and we are making the bus type
-> here as PCIE which is a bit odd. As replied elsewhere in this thread,
-> in the initial RFC we had a specific "pci-bus" property associated with 
-> SMMUv3 device, 
-> Eg:
-> -device arm-smmuv3,pci-bus=pcie.0,...
+>>> This commit fixes an indefinite hang when using VIRTIO GPU blob objects
+>>> under TCG in certain conditions.
+>>>
+>>> The VIRTIO_GPU_CMD_RESOURCE_MAP_BLOB VIRTIO command creates a
+>>> MemoryRegion and attaches it to an offset on a PCI BAR of the
+>>> VirtIOGPUdevice. The VIRTIO_GPU_CMD_RESOURCE_UNMAP_BLOB command unmaps
+>>> it.
+>>>
+>>> Because virglrenderer commands are not thread-safe they are only
+>>> called on the main context and QEMU performs the cleanup in three steps
+>>> to prevent a use-after-free scenario where the guest can access the
+>>> region after it=E2=80=99s unmapped:
+>>>
+>>> 1. From the main context, the region=E2=80=99s field finish_unmapping i=
+s false
+>>>     by default, so it sets a variable cmd_suspended, increases the
+>>>     renderer_blocked variable, deletes the blob subregion, and unparents
+>>>     the blob subregion causing its reference count to decrement.
+>>>
+>>> 2. From an RCU context, the MemoryView gets freed, the FlatView gets
+>>>     recalculated, the free callback of the blob region
+>>>     virtio_gpu_virgl_hostmem_region_free is called which sets the
+>>>     region=E2=80=99s field finish_unmapping to true, allowing the main =
+thread
+>>>     context to finish replying to the command
+>>>
+>>> 3. From the main context, the command is processed again, but this time
+>>>     finish_unmapping is true, so virgl_renderer_resource_unmap can be
+>>>     called and a response is sent to the guest.
+>>>
+>>> It happens so that under TCG, if the guest has no timers configured (and
+>>> thus no interrupt will cause the CPU to exit), the RCU thread does not
+>>> have enough time to grab the locks and recalculate the FlatView.
+>>>
+>>> That=E2=80=99s not a big problem in practice since most guests will ass=
+ume a
+>>> response will happen later in time and go on to do different things,
+>>> potentially triggering interrupts and allowing the RCU context to run.
+>>> If the guest waits for the unmap command to complete though, it blocks
+>>> indefinitely. Attaching to the QEMU monitor and force quitting the guest
+>>> allows the cleanup to continue.
 >
-> But then there were feedback that, it is more intuitive and easy for libvirt
-> if we can just use the default "bus" property associated with a  Qemu device.
-> Hence the change.
-I also think that using the bus property was natural. It is only when
-you look at the actual implementation and potential implications on
-hierarchy introspections that it may be frown upon. That's why I call
-for specialists feedback ;-)
+> The RCU thread should be free to kick in if the guest is waiting and
+> idle. That may be a problem that should be analyzed and fixed.
 >
->> At some point it was envisionned to support protected platform devices
->> (I think this was need for CCA). My fear is that if we turn the bus type
->> to PCIE it may be difficult to extend the support to non PCIe protected
->> devices. The SMMU shall remain a platform device being able to protect
->> either PCI devices and, in the future, platform devices.
-> Ok. So in the case of platform device how do we envisage to specify the "bus"?
+>>>
+>>> There's no reason why the FlatView recalculation can't occur right away
+>>> when we delete the blob subregion, however. It does not, because when we
+>>> create the subregion we set the object as its own parent:
+>>>
+>>>      memory_region_init_ram_ptr(mr, OBJECT(mr), "blob", size, data);
+>>>
+>>> The extra reference is what prevents freeing the memory region object in
+>>> the memory transaction of deleting the subregion.
+>>>
+>>> This commit changes the owner object to the device, which removes the
+>>> extra owner reference in the memory region and causes the MR to be
+>>> freed right away in the main context.
+>>>
+>>> Acked-by: Michael S. Tsirkin <mst@redhat.com>
+>>> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+>>> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>>> Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>>> Message-Id: <20250410122643.1747913-3-manos.pitsidianakis@linaro.org>
+>>> Cc: qemu-stable@nongnu.org
+>>> ---
+>>>   hw/display/virtio-gpu-virgl.c | 2 +-
+>>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/hw/display/virtio-gpu-virgl.c b/hw/display/virtio-gpu-virg=
+l.c
+>>> index 71a7500de9..8fbe4e70cc 100644
+>>> --- a/hw/display/virtio-gpu-virgl.c
+>>> +++ b/hw/display/virtio-gpu-virgl.c
+>>> @@ -112,7 +112,7 @@ virtio_gpu_virgl_map_resource_blob(VirtIOGPU *g,
+>>>       vmr->g =3D g;
+>>>       mr =3D g_new0(MemoryRegion, 1);
+>>>   -    memory_region_init_ram_ptr(mr, OBJECT(mr), "blob", size,
+>>> data);
+>>> +    memory_region_init_ram_ptr(mr, OBJECT(g), "blob", size, data);
+>>>       memory_region_add_subregion(&b->hostmem, offset, mr);
+>>>       memory_region_set_enabled(mr, true);
+>>>=20=20=20
+>> This change makes QEMU to crash.
+>> AFAICT, it effectively reverts code to old bugged version [1] that
+>> was
+>> rejected in the past.
+>> +Akihiko Odaki
+>> [1]
+>> https://lore.kernel.org/qemu-devel/20230915111130.24064-10-ray.huang@amd=
+.com/
 >
-> -device arm-smmv3, primary-bus=sysbus
-The problem is on a SOC not all platform devices are protected by an
-SMMU. One needs to be more precise I think
-
+> I think you are right.
 >
-> Or something like having a SMMUv3 dev without any bus and each platform
-> device has to specify the SMMUv3?
-> Eg:
+> Changing the owner indeed makes the MR to be freed right away, but
+> this is because it makes a reference by the FlatView to the MR
+> dangling and can lead to use-after-free.
 >
-> -device arm-smmv3,id=smmuv3.3
-> -device xxxx,smmuv3= smmuv3.3
-Yeah I think this would look that way instead.
+> Setting the owner to the device implies that the device keeps the
+> storage of the MR and. The references to the MR must be counted by the
+> device to keep the storage available in such a case.
 
-The last attempt was
-https://lore.kernel.org/all/20210902081429.140293-1-chunming_li1234@163.com/
-if I remember correctly but it did not go further. It defined a
-peri-sid-map[%d] prop array to define SIDs but I don't really get how it
-defines which device is protected.
+Well the lifetime of the region is effectively controlled by the virgl
+resource manager. There is a disconnect between when we can finally free
+the MR and when the virglrenderer is done with it.
 
+> The MR itself doesn't count the references. It is fine as long as the
+> MR is kept alive by being parented by the device, but
+> virtio_gpu_virgl_unmap_resource_blob() unparents the MR and breaks the
+> assumption. That's why the device shouldn't be the the owner of the
+> MR.
 
-
-> If later, I think we can stick to current one. 
-That's also my pov.
-
-Cheers
-
-Eric
+Then who should? Ultimately some object needs to "own" the MR until we
+know it can be freed (so no longer mapped into the guest and no longer
+referenced by virglrenderer). The normal MR refcounting isn't enough
+because the lifetime extends beyond when it is "visible" in the FlatView.
 
 >
-> Thanks,
-> Shameer
+> Regards,
+> Akihiko Odaki
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

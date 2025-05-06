@@ -1,640 +1,246 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2971751njj;
-        Tue, 6 May 2025 01:49:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXOMmIh19khiMkvtWZapGbNFikgcG5GtEWOnXQBXBbeBFbQ3q321D+zkqpPm/TMxVkjgqSJY6VfBA01aA==@linaro.org
-X-Google-Smtp-Source: AGHT+IF7uIJgEqRaUIV9f8TaggA9r78XU7VTv7zcYh/xjo84irHw4lh7lhHOqdcir08HOk1ASdvF
-X-Received: by 2002:a05:622a:6185:b0:48a:d21f:4ea with SMTP id d75a77b69052e-48dff7de2b2mr171667331cf.13.1746521345393;
-        Tue, 06 May 2025 01:49:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746521345; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp2973211njj;
+        Tue, 6 May 2025 01:52:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXhNfSoSDg/ojVK3sRNLgu0i2pBMGRYDDM1Uu24GUhMKGu8mGJtXsBvjLQi1nRUnPDu4HzKE+4NdVAtpw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFhvbbaA4J4BTtnaJrP1XyEiByRToGDbdKH1MJfvn6BXmNzf94RbK1Rorlv10IKPnOe1dfL
+X-Received: by 2002:ad4:5ae1:0:b0:6e8:fa33:2969 with SMTP id 6a1803df08f44-6f535896b35mr40594856d6.10.1746521570488;
+        Tue, 06 May 2025 01:52:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746521570; cv=none;
         d=google.com; s=arc-20240605;
-        b=Sq/KFCbmSyOX9YtAJGg0/N1tqSNoWTdqV3/YOH6GypCpxlh5rkBjZQDbT1RR17v034
-         vCJvmUPNia4G/ymshcY8o9YBU4T10A/iZPnSLf7IW3Vhroo6Pv8cTkP8OD0kQiFfxfLs
-         4JJ/cU0LMPbpTlLXXj1T3AzK2aFtv9lkEzDeS8eDi7c/lyJpG7XL2dEpmXliidanxL7w
-         t11MQNs/dERPF4gbGJ3etq4b6DB47XgALTt5VjEa2Qoo6VGtMmiC7onBa/fF5FSZHR8x
-         4iShXjXYAcIl5kxksHSI5ow7l84J0SXwKj3fADSb8QicbhVEnwC1Tr4i5aNMIYYkZLgv
-         /5Hg==
+        b=TQBaxOyH7B//KAG0hKWclTM+rEQTqZPEMSNP7nHoNXk/GPZgRtkDtjcxKjpJRv+JYn
+         ApQ6H11Q0aMLDySq1nGJD6GoHgJRJocPJ4TSPeRxdqspzJXAKdD5vyRK2mWcYfOAAGTf
+         XSk5UckV+n7+l7WwBVo2OCEia7Joa2I5+mCuKJVlEjTe8Gf+uuPD9zjdGlF6XWuKu0Zi
+         FH3D7eErTLsKfVX37bCaGUa5Rq/gs8uWB2nsLLFRZ6YaRT/G1y+oVmu53iWyg/kdCIXw
+         mjdepAsyO9iRz1dBoSlhoy4gAd3PjunvItezHioVZ2ZlTmtvnCagLesb0xkXpbeGDqZi
+         IspQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=QVxZVJ5LX1akRCCymi/wJGGYuvzNmuWxYIFERkzuVV4=;
-        fh=Lx84XuDKke5oGzibpmHEhqy+EVI4tAIi/GIEa4ShSrI=;
-        b=iAute9W5AnKnhYRC0DPgbwbuwMWwRQ4P9gayD+O1KXaVYSUoq8paq5IuwPUKyoE8wU
-         m9WDeAivZoaHVidtHtKc9yHlecY5cndxCbaLU3f7ZwvoOvII71sg29uv245cFEBbnAZu
-         NKSRWiwdZ001ZBZyxxUMEsXo4bDchj41WlgWjdpZL/2w0XAKKNjIvdOsGqfYsZVHyjv5
-         51J1Dn99P/0RVfxegyv93qfGANnyR8+1/QIKexxEB2FFZYZdOcMp38dczM4C4sSs2UWQ
-         s3DvnNdFjtHj+ycdT+mVYFeEy8A8RCtcnM9rFjAo1/2gWh47jrH57jJ9Cbf6YpjGT4y5
-         AhoA==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=aMnNQjB04WG0Qqvm2ABXs0Bc8TJ2dI2m6KYQ6aIicSc=;
+        fh=zInp4xe4IkcRrNM2aFMptin5JRRr9I02FEAKlsM82YU=;
+        b=FwY887RzpxJ1x4/pxOYOaABDYtBw+S8ySK1PW2ACUpBVgUyxCzp0IcffSd2UUHg015
+         xMXgdwj2AmLZiRVfr6iTKsiL9N+mTAv1fI/sO0w2WZtY7TjZdNsMQ6i5Lf+/oK4NqWNr
+         OsfwSp5dP1Qy/FqxnG+Em+oCYoHpwj9a6He/SuPs/4Gbd7kuPyRxnWn2cxHp7zdDj4ic
+         hKaOFh64d+/kN6wYLrOH/7ztWp06nw6nRxqOm5EtioEN9f1r4N5cbClxucciSMsaANWf
+         BOuHiX743/z567G1DvCi8hqTLodbXbJeHIOPXoe8EjmnGbTAAuls8wARNlRFXZAVa7bM
+         ndAQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/65/WCa";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cBSMiSQD;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-48b98724228si109556741cf.347.2025.05.06.01.49.05
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f50f4c2c53si104313296d6.511.2025.05.06.01.52.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 May 2025 01:49:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 06 May 2025 01:52:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/65/WCa";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cBSMiSQD;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uCDyX-0006SX-67; Tue, 06 May 2025 04:48:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uCDyV-0006SF-IE
- for qemu-devel@nongnu.org; Tue, 06 May 2025 04:48:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uCDyS-0006kp-4F
- for qemu-devel@nongnu.org; Tue, 06 May 2025 04:48:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1746521302;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QVxZVJ5LX1akRCCymi/wJGGYuvzNmuWxYIFERkzuVV4=;
- b=g/65/WCa0ip4lhB7tT/Yu9FJglwB4rkG0Umskum7fKcQgGDUNA4Ts36wltrfkE2QGUw09x
- y/8drqoNidX2pFFc8MtrqNjX38UMRzdIXCPWqUQBBZm7xfMx2tSYtguQeOfXb1QJzqXDRu
- 4zrd4BCp+eJLNMephfbVn6QpeFAyybw=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-606-LnvWI77zNX6SzCTqF38b1w-1; Tue, 06 May 2025 04:48:21 -0400
-X-MC-Unique: LnvWI77zNX6SzCTqF38b1w-1
-X-Mimecast-MFC-AGG-ID: LnvWI77zNX6SzCTqF38b1w_1746521300
-Received: by mail-ej1-f72.google.com with SMTP id
- a640c23a62f3a-acb61452b27so591775866b.2
- for <qemu-devel@nongnu.org>; Tue, 06 May 2025 01:48:21 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746521300; x=1747126100;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=QVxZVJ5LX1akRCCymi/wJGGYuvzNmuWxYIFERkzuVV4=;
- b=HOnzTHGniBrKJqAKKjeRnX9uN+Nq67Izgpad3lpjfn8zQNsmH/5QJ4c2LM9iW5bXKC
- h2Kz7V0LNI1GaymuGOWjf0TqPNbT8FwND9sQspNq7brXlzxeBYj//yLYu7rjYgERF+Yu
- NU7DKCh4WzsO4Tmf+BYbfUE9oGfSRm+lX37moiNFuQtZ1XG7Edq1vKluCKDW5pdiUPTp
- bxqT+IuyqyChqO3QYsLbDjOibt/kCb371lnrgzU6ifYG5S3lr1GcXF3lm8qnZYRmO7QD
- /CcSKQkesSvP38G8RcT3y40/n7YqWLGSVmEwhn28+BqtmnvbcXO+dSApdoWClqEJrYBm
- KKmg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVrXPG7zXALi14UgGgsDpwKd5XcJpVdFp+RB/UH294Wge5uHF4eT/ZMVCZCBtF306Ggo+NHz5y5D4U7@nongnu.org
-X-Gm-Message-State: AOJu0Yzf5T8BNz8UN2/TGpHFkTrxSEqseSUBsi6+3sgkD7czJ0+DD7zR
- MNVZe8+3gHh9Po7hejpG2+qvYQvLovo6c0xyvXGnBVuj+9qHTVGPHEZi2HQh2t8qi+4V5bXHmOj
- gRojP9/W7ULFf8SeJ7Xcp/QGJS34FyzekByrFKB5tm2nJyy/6mx72BCknbvAG
-X-Gm-Gg: ASbGncvKPbw9h15FkCYIsQLHfOg29tMUNnnRs/Gz1uB9oUMDnG2t1PFx1kksKfxAQKp
- UoAmVLZqb+H4N0Soy3ELtvZfATh1oghQHZb1J7qf6wK6/Fyn/DC0WI8BNjQTEQVcptQfnvpVrtw
- 8wz5SmAaiJk2ZnkKmP6RhvZvNVc3lLdrhIBS1ThE7RXGOdgYUUGiECiZJUE2kaN064+4jvBKjRw
- J5HzGEZPYwADF8MzkFa5HngP9Y1mthy+VuKEXZKV1DVXRtUzQzfmmbYRpbUt/amspWfQNFqX6dD
- +fOgpXeSrtTUZaCGqX8uHYeoX18DdvPjp44QN0obhAvXiM4zEWJ18B69USY=
-X-Received: by 2002:a17:907:c388:b0:acb:1078:9f79 with SMTP id
- a640c23a62f3a-ad1d4536f53mr204630966b.18.1746521299655; 
- Tue, 06 May 2025 01:48:19 -0700 (PDT)
-X-Received: by 2002:a05:600c:821b:b0:43c:e70d:4504 with SMTP id
- 5b1f17b1804b1-441d0fd2cf7mr16799845e9.19.1746520986293; 
- Tue, 06 May 2025 01:43:06 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-441b2af32a0sm209759555e9.23.2025.05.06.01.42.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 May 2025 01:42:51 -0700 (PDT)
-Message-ID: <d4cb6d94-fa0e-4905-b1fd-3a0e5c62f44d@redhat.com>
-Date: Tue, 6 May 2025 10:42:47 +0200
+	s=mimecast20190719; t=1746521570;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=aMnNQjB04WG0Qqvm2ABXs0Bc8TJ2dI2m6KYQ6aIicSc=;
+	b=cBSMiSQD+B+cyS6DFTJCGslDsZiACs2IJVrjlXSO/QKYFirXKvMMElTCXe2Bl7qy2yser7
+	Wh6wXhC+F0SkyqLPml070By+oX71aM08Sx1pTlIgjf46mV2PhvV9NSIeWq70hETCRvziR4
+	JgQnGxLF1me8fvr06hWdCcB8JpUjkrs=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-211-WPyLGutYPD6BO0B2GvrW6g-1; Tue,
+ 06 May 2025 04:52:49 -0400
+X-MC-Unique: WPyLGutYPD6BO0B2GvrW6g-1
+X-Mimecast-MFC-AGG-ID: WPyLGutYPD6BO0B2GvrW6g_1746521567
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 592FF1955E74;
+	Tue,  6 May 2025 08:52:46 +0000 (UTC)
+Received: from gondolin.str.redhat.com (dhcp-192-216.str.redhat.com [10.33.192.216])
+	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id E04D21956094;
+	Tue,  6 May 2025 08:52:38 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: eric.auger.pro@gmail.com,
+	eric.auger@redhat.com,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	kvmarm@lists.linux.dev,
+	peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	maz@kernel.org,
+	oliver.upton@linux.dev,
+	sebott@redhat.com,
+	shameerali.kolothum.thodi@huawei.com,
+	armbru@redhat.com,
+	berrange@redhat.com,
+	abologna@redhat.com,
+	jdenemar@redhat.com,
+	agraf@csgraf.de
+Cc: shahuang@redhat.com,
+	mark.rutland@arm.com,
+	philmd@linaro.org,
+	pbonzini@redhat.com,
+	Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH v6 00/14] arm: rework id register storage
+Date: Tue,  6 May 2025 10:52:20 +0200
+Message-ID: <20250506085234.855779-1-cohuck@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 06/24] hw/acpi: Rename and move build_x86_acpi_pci_hotplug
- to pcihp
-Content-Language: en-US
-To: Gustavo Romero <gustavo.romero@linaro.org>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- imammedo@redhat.com, anisinha@redhat.com, mst@redhat.com,
- shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com
-References: <20250428102628.378046-1-eric.auger@redhat.com>
- <20250428102628.378046-7-eric.auger@redhat.com>
- <ee369c86-3bb5-45d6-a6ca-b1d1573cb115@linaro.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <ee369c86-3bb5-45d6-a6ca-b1d1573cb115@linaro.org>
-Content-Type: text/plain; charset=UTF-8
+Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.414,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EPDsb/VY5NWJ
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+X-TUID: IKtySeSbppLJ
 
+Just some small changes:
+- fixed up some botched conversions noted by Eric (thanks!)
+- rebased to current master
+- new patch with a small cleanup suggested by Eric
 
+Also available at
+https://gitlab.com/cohuck/qemu/-/commits/arm-rework-idreg-storage-v6
 
-On 5/6/25 2:12 AM, Gustavo Romero wrote:
-> Hi Eric,
->
-> On 4/28/25 07:25, Eric Auger wrote:
->> We plan to reuse build_x86_acpi_pci_hotplug() implementation
->> for ARM so let's move the code to generic pcihp.
->>
->> Associated static aml_pci_pdsm() helper is also moved along.
->> build_x86_acpi_pci_hotplug is renamed into build_acpi_pci_hotplug().
->>
->> No code change intended.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>   hw/i386/acpi-build.h    |   4 -
->>   include/hw/acpi/pcihp.h |   6 ++
->>   hw/acpi/pcihp.c         | 174 +++++++++++++++++++++++++++++++++++++++-
->>   hw/i386/acpi-build.c    | 150 +---------------------------------
->>   4 files changed, 181 insertions(+), 153 deletions(-)
->>
->> diff --git a/hw/i386/acpi-build.h b/hw/i386/acpi-build.h
->> index 0dce155c8c..8ba3c33e48 100644
->> --- a/hw/i386/acpi-build.h
->> +++ b/hw/i386/acpi-build.h
->> @@ -5,10 +5,6 @@
->>     extern const struct AcpiGenericAddress x86_nvdimm_acpi_dsmio;
->>   -/* PCI Hot-plug registers bases. See
->> docs/spec/acpi_pci_hotplug.txt */
->> -#define ACPI_PCIHP_SEJ_BASE 0x8
->> -#define ACPI_PCIHP_BNMR_BASE 0x10
->> -
->>   void acpi_setup(void);
->>   Object *acpi_get_i386_pci_host(void);
->>   diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
->> index ac21a95913..2da0bc45c9 100644
->> --- a/include/hw/acpi/pcihp.h
->> +++ b/include/hw/acpi/pcihp.h
->> @@ -33,6 +33,10 @@
->>   #define ACPI_PCIHP_IO_BASE_PROP "acpi-pcihp-io-base"
->>   #define ACPI_PCIHP_IO_LEN_PROP "acpi-pcihp-io-len"
->>   +/* PCI Hot-plug registers bases. See
->> docs/spec/acpi_pci_hotplug.txt */
->
-> This reference needs to be updated to point to acpi_pci_hotplug.rst.
-fixed here and above in the file
+<v5 cover letter>
+Just a quick respin to fix a missed conversion in hvf.c.
 
-Thanks!
+<v4 cover letter>
+Next iteration of the id register patches; only small changes.
 
-Eric
->
-> Otherwise,
->
-> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
->
->
-> Cheers,
-> Gustavo
->
->> +#define ACPI_PCIHP_SEJ_BASE 0x8
->> +#define ACPI_PCIHP_BNMR_BASE 0x10
->> +
->>   typedef struct AcpiPciHpPciStatus {
->>       uint32_t up;
->>       uint32_t down;
->> @@ -69,6 +73,8 @@ void
->> acpi_pcihp_device_unplug_request_cb(HotplugHandler *hotplug_dev,
->>                                            AcpiPciHpState *s,
->> DeviceState *dev,
->>                                            Error **errp);
->>   +void build_acpi_pci_hotplug(Aml *table, uint64_t pcihp_addr);
->> +
->>   /* Called on reset */
->>   void acpi_pcihp_reset(AcpiPciHpState *s);
->>   diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
->> index 5f79c9016b..35d8c0bfd2 100644
->> --- a/hw/acpi/pcihp.c
->> +++ b/hw/acpi/pcihp.c
->> @@ -26,7 +26,7 @@
->>     #include "qemu/osdep.h"
->>   #include "hw/acpi/pcihp.h"
->> -
->> +#include "hw/acpi/aml-build.h"
->>   #include "hw/pci-host/i440fx.h"
->>   #include "hw/pci/pci.h"
->>   #include "hw/pci/pci_bridge.h"
->> @@ -513,6 +513,178 @@ void acpi_pcihp_init(Object *owner,
->> AcpiPciHpState *s, PCIBus *root_bus,
->>                                      OBJ_PROP_FLAG_READ);
->>   }
->>   +static void build_append_pci_dsm_func0_common(Aml *ctx, Aml *retvar)
->> +{
->> +    Aml *UUID, *ifctx1;
->> +    uint8_t byte_list[1] = { 0 }; /* nothing supported yet */
->> +
->> +    aml_append(ctx, aml_store(aml_buffer(1, byte_list), retvar));
->> +    /*
->> +     * PCI Firmware Specification 3.1
->> +     * 4.6.  _DSM Definitions for PCI
->> +     */
->> +    UUID = aml_touuid("E5C937D0-3553-4D7A-9117-EA4D19C3434D");
->> +    ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(0), UUID)));
->> +    {
->> +        /* call is for unsupported UUID, bail out */
->> +        aml_append(ifctx1, aml_return(retvar));
->> +    }
->> +    aml_append(ctx, ifctx1);
->> +
->> +    ifctx1 = aml_if(aml_lless(aml_arg(1), aml_int(2)));
->> +    {
->> +        /* call is for unsupported REV, bail out */
->> +        aml_append(ifctx1, aml_return(retvar));
->> +    }
->> +    aml_append(ctx, ifctx1);
->> +}
->> +
->> +static Aml *aml_pci_pdsm(void)
->> +{
->> +    Aml *method, *ifctx, *ifctx1;
->> +    Aml *ret = aml_local(0);
->> +    Aml *caps = aml_local(1);
->> +    Aml *acpi_index = aml_local(2);
->> +    Aml *zero = aml_int(0);
->> +    Aml *one = aml_int(1);
->> +    Aml *not_supp = aml_int(0xFFFFFFFF);
->> +    Aml *func = aml_arg(2);
->> +    Aml *params = aml_arg(4);
->> +    Aml *bnum = aml_derefof(aml_index(params, aml_int(0)));
->> +    Aml *sunum = aml_derefof(aml_index(params, aml_int(1)));
->> +
->> +    method = aml_method("PDSM", 5, AML_SERIALIZED);
->> +
->> +    /* get supported functions */
->> +    ifctx = aml_if(aml_equal(func, zero));
->> +    {
->> +        build_append_pci_dsm_func0_common(ifctx, ret);
->> +
->> +        aml_append(ifctx, aml_store(zero, caps));
->> +        aml_append(ifctx,
->> +            aml_store(aml_call2("AIDX", bnum, sunum), acpi_index));
->> +        /*
->> +         * advertise function 7 if device has acpi-index
->> +         * acpi_index values:
->> +         *            0: not present (default value)
->> +         *     FFFFFFFF: not supported (old QEMU without PIDX reg)
->> +         *        other: device's acpi-index
->> +         */
->> +        ifctx1 = aml_if(aml_lnot(
->> +                     aml_or(aml_equal(acpi_index, zero),
->> +                            aml_equal(acpi_index, not_supp), NULL)
->> +                 ));
->> +        {
->> +            /* have supported functions */
->> +            aml_append(ifctx1, aml_or(caps, one, caps));
->> +            /* support for function 7 */
->> +            aml_append(ifctx1,
->> +                aml_or(caps, aml_shiftleft(one, aml_int(7)), caps));
->> +        }
->> +        aml_append(ifctx, ifctx1);
->> +
->> +        aml_append(ifctx, aml_store(caps, aml_index(ret, zero)));
->> +        aml_append(ifctx, aml_return(ret));
->> +    }
->> +    aml_append(method, ifctx);
->> +
->> +    /* handle specific functions requests */
->> +    /*
->> +     * PCI Firmware Specification 3.1
->> +     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
->> +     *        Operating Systems
->> +     */
->> +    ifctx = aml_if(aml_equal(func, aml_int(7)));
->> +    {
->> +       Aml *pkg = aml_package(2);
->> +
->> +       aml_append(ifctx, aml_store(aml_call2("AIDX", bnum, sunum),
->> acpi_index));
->> +       aml_append(ifctx, aml_store(pkg, ret));
->> +       /*
->> +        * Windows calls func=7 without checking if it's available,
->> +        * as workaround Microsoft has suggested to return invalid
->> for func7
->> +        * Package, so return 2 elements package but only initialize
->> elements
->> +        * when acpi_index is supported and leave them uninitialized,
->> which
->> +        * leads elements to being Uninitialized ObjectType and
->> should trip
->> +        * Windows into discarding result as an unexpected and
->> prevent setting
->> +        * bogus 'PCI Label' on the device.
->> +        */
->> +       ifctx1 = aml_if(aml_lnot(aml_lor(
->> +                    aml_equal(acpi_index, zero),
->> aml_equal(acpi_index, not_supp)
->> +                )));
->> +       {
->> +           aml_append(ifctx1, aml_store(acpi_index, aml_index(ret,
->> zero)));
->> +           /*
->> +            * optional, if not impl. should return null string
->> +            */
->> +           aml_append(ifctx1, aml_store(aml_string("%s", ""),
->> +                                        aml_index(ret, one)));
->> +       }
->> +       aml_append(ifctx, ifctx1);
->> +
->> +       aml_append(ifctx, aml_return(ret));
->> +    }
->> +
->> +    aml_append(method, ifctx);
->> +    return method;
->> +}
->> +
->> +void build_acpi_pci_hotplug(Aml *table, uint64_t pcihp_addr)
->> +{
->> +    Aml *scope;
->> +    Aml *field;
->> +    Aml *method;
->> +
->> +    scope =  aml_scope("_SB.PCI0");
->> +
->> +    aml_append(scope,
->> +        aml_operation_region("PCST", AML_SYSTEM_IO,
->> aml_int(pcihp_addr), 0x08));
->> +    field = aml_field("PCST", AML_DWORD_ACC, AML_NOLOCK,
->> AML_WRITE_AS_ZEROS);
->> +    aml_append(field, aml_named_field("PCIU", 32));
->> +    aml_append(field, aml_named_field("PCID", 32));
->> +    aml_append(scope, field);
->> +
->> +    aml_append(scope,
->> +        aml_operation_region("SEJ", AML_SYSTEM_IO,
->> +                             aml_int(pcihp_addr +
->> ACPI_PCIHP_SEJ_BASE), 0x04));
->> +    field = aml_field("SEJ", AML_DWORD_ACC, AML_NOLOCK,
->> AML_WRITE_AS_ZEROS);
->> +    aml_append(field, aml_named_field("B0EJ", 32));
->> +    aml_append(scope, field);
->> +
->> +    aml_append(scope,
->> +        aml_operation_region("BNMR", AML_SYSTEM_IO,
->> +                             aml_int(pcihp_addr +
->> ACPI_PCIHP_BNMR_BASE), 0x08));
->> +    field = aml_field("BNMR", AML_DWORD_ACC, AML_NOLOCK,
->> AML_WRITE_AS_ZEROS);
->> +    aml_append(field, aml_named_field("BNUM", 32));
->> +    aml_append(field, aml_named_field("PIDX", 32));
->> +    aml_append(scope, field);
->> +
->> +    aml_append(scope, aml_mutex("BLCK", 0));
->> +
->> +        method = aml_method("PCEJ", 2, AML_NOTSERIALIZED);
->> +    aml_append(method, aml_acquire(aml_name("BLCK"), 0xFFFF));
->> +    aml_append(method, aml_store(aml_arg(0), aml_name("BNUM")));
->> +    aml_append(method,
->> +        aml_store(aml_shiftleft(aml_int(1), aml_arg(1)),
->> aml_name("B0EJ")));
->> +    aml_append(method, aml_release(aml_name("BLCK")));
->> +    aml_append(method, aml_return(aml_int(0)));
->> +    aml_append(scope, method);
->> +
->> +    method = aml_method("AIDX", 2, AML_NOTSERIALIZED);
->> +    aml_append(method, aml_acquire(aml_name("BLCK"), 0xFFFF));
->> +    aml_append(method, aml_store(aml_arg(0), aml_name("BNUM")));
->> +    aml_append(method,
->> +        aml_store(aml_shiftleft(aml_int(1), aml_arg(1)),
->> aml_name("PIDX")));
->> +    aml_append(method, aml_store(aml_name("PIDX"), aml_local(0)));
->> +    aml_append(method, aml_release(aml_name("BLCK")));
->> +    aml_append(method, aml_return(aml_local(0)));
->> +    aml_append(scope, method);
->> +
->> +    aml_append(scope, aml_pci_pdsm());
->> +
->> +    aml_append(table, scope);
->> +}
->> +
->>   const VMStateDescription vmstate_acpi_pcihp_pci_status = {
->>       .name = "acpi_pcihp_pci_status",
->>       .version_id = 1,
->> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
->> index 864f6b5bf8..2d1eea4a1a 100644
->> --- a/hw/i386/acpi-build.c
->> +++ b/hw/i386/acpi-build.c
->> @@ -647,96 +647,6 @@ static bool
->> build_append_notification_callback(Aml *parent_scope,
->>       return !!nr_notifiers;
->>   }
->>   -static Aml *aml_pci_pdsm(void)
->> -{
->> -    Aml *method, *ifctx, *ifctx1;
->> -    Aml *ret = aml_local(0);
->> -    Aml *caps = aml_local(1);
->> -    Aml *acpi_index = aml_local(2);
->> -    Aml *zero = aml_int(0);
->> -    Aml *one = aml_int(1);
->> -    Aml *not_supp = aml_int(0xFFFFFFFF);
->> -    Aml *func = aml_arg(2);
->> -    Aml *params = aml_arg(4);
->> -    Aml *bnum = aml_derefof(aml_index(params, aml_int(0)));
->> -    Aml *sunum = aml_derefof(aml_index(params, aml_int(1)));
->> -
->> -    method = aml_method("PDSM", 5, AML_SERIALIZED);
->> -
->> -    /* get supported functions */
->> -    ifctx = aml_if(aml_equal(func, zero));
->> -    {
->> -        build_append_pci_dsm_func0_common(ifctx, ret);
->> -
->> -        aml_append(ifctx, aml_store(zero, caps));
->> -        aml_append(ifctx,
->> -            aml_store(aml_call2("AIDX", bnum, sunum), acpi_index));
->> -        /*
->> -         * advertise function 7 if device has acpi-index
->> -         * acpi_index values:
->> -         *            0: not present (default value)
->> -         *     FFFFFFFF: not supported (old QEMU without PIDX reg)
->> -         *        other: device's acpi-index
->> -         */
->> -        ifctx1 = aml_if(aml_lnot(
->> -                     aml_or(aml_equal(acpi_index, zero),
->> -                            aml_equal(acpi_index, not_supp), NULL)
->> -                 ));
->> -        {
->> -            /* have supported functions */
->> -            aml_append(ifctx1, aml_or(caps, one, caps));
->> -            /* support for function 7 */
->> -            aml_append(ifctx1,
->> -                aml_or(caps, aml_shiftleft(one, aml_int(7)), caps));
->> -        }
->> -        aml_append(ifctx, ifctx1);
->> -
->> -        aml_append(ifctx, aml_store(caps, aml_index(ret, zero)));
->> -        aml_append(ifctx, aml_return(ret));
->> -    }
->> -    aml_append(method, ifctx);
->> -
->> -    /* handle specific functions requests */
->> -    /*
->> -     * PCI Firmware Specification 3.1
->> -     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
->> -     *        Operating Systems
->> -     */
->> -    ifctx = aml_if(aml_equal(func, aml_int(7)));
->> -    {
->> -       Aml *pkg = aml_package(2);
->> -
->> -       aml_append(ifctx, aml_store(aml_call2("AIDX", bnum, sunum),
->> acpi_index));
->> -       aml_append(ifctx, aml_store(pkg, ret));
->> -       /*
->> -        * Windows calls func=7 without checking if it's available,
->> -        * as workaround Microsoft has suggested to return invalid
->> for func7
->> -        * Package, so return 2 elements package but only initialize
->> elements
->> -        * when acpi_index is supported and leave them uninitialized,
->> which
->> -        * leads elements to being Uninitialized ObjectType and
->> should trip
->> -        * Windows into discarding result as an unexpected and
->> prevent setting
->> -        * bogus 'PCI Label' on the device.
->> -        */
->> -       ifctx1 = aml_if(aml_lnot(aml_lor(
->> -                    aml_equal(acpi_index, zero),
->> aml_equal(acpi_index, not_supp)
->> -                )));
->> -       {
->> -           aml_append(ifctx1, aml_store(acpi_index, aml_index(ret,
->> zero)));
->> -           /*
->> -            * optional, if not impl. should return null string
->> -            */
->> -           aml_append(ifctx1, aml_store(aml_string("%s", ""),
->> -                                        aml_index(ret, one)));
->> -       }
->> -       aml_append(ifctx, ifctx1);
->> -
->> -       aml_append(ifctx, aml_return(ret));
->> -    }
->> -
->> -    aml_append(method, ifctx);
->> -    return method;
->> -}
->> -
->>   /*
->>    * build_prt - Define interrupt routing rules
->>    *
->> @@ -1227,62 +1137,6 @@ static Aml *build_q35_dram_controller(const
->> AcpiMcfgInfo *mcfg)
->>       return dev;
->>   }
->>   -static void build_x86_acpi_pci_hotplug(Aml *table, uint64_t
->> pcihp_addr)
->> -{
->> -    Aml *scope;
->> -    Aml *field;
->> -    Aml *method;
->> -
->> -    scope =  aml_scope("_SB.PCI0");
->> -
->> -    aml_append(scope,
->> -        aml_operation_region("PCST", AML_SYSTEM_IO,
->> aml_int(pcihp_addr), 0x08));
->> -    field = aml_field("PCST", AML_DWORD_ACC, AML_NOLOCK,
->> AML_WRITE_AS_ZEROS);
->> -    aml_append(field, aml_named_field("PCIU", 32));
->> -    aml_append(field, aml_named_field("PCID", 32));
->> -    aml_append(scope, field);
->> -
->> -    aml_append(scope,
->> -        aml_operation_region("SEJ", AML_SYSTEM_IO,
->> -                             aml_int(pcihp_addr +
->> ACPI_PCIHP_SEJ_BASE), 0x04));
->> -    field = aml_field("SEJ", AML_DWORD_ACC, AML_NOLOCK,
->> AML_WRITE_AS_ZEROS);
->> -    aml_append(field, aml_named_field("B0EJ", 32));
->> -    aml_append(scope, field);
->> -
->> -    aml_append(scope,
->> -        aml_operation_region("BNMR", AML_SYSTEM_IO,
->> -                             aml_int(pcihp_addr +
->> ACPI_PCIHP_BNMR_BASE), 0x08));
->> -    field = aml_field("BNMR", AML_DWORD_ACC, AML_NOLOCK,
->> AML_WRITE_AS_ZEROS);
->> -    aml_append(field, aml_named_field("BNUM", 32));
->> -    aml_append(field, aml_named_field("PIDX", 32));
->> -    aml_append(scope, field);
->> -
->> -    aml_append(scope, aml_mutex("BLCK", 0));
->> -
->> -    method = aml_method("PCEJ", 2, AML_NOTSERIALIZED);
->> -    aml_append(method, aml_acquire(aml_name("BLCK"), 0xFFFF));
->> -    aml_append(method, aml_store(aml_arg(0), aml_name("BNUM")));
->> -    aml_append(method,
->> -        aml_store(aml_shiftleft(aml_int(1), aml_arg(1)),
->> aml_name("B0EJ")));
->> -    aml_append(method, aml_release(aml_name("BLCK")));
->> -    aml_append(method, aml_return(aml_int(0)));
->> -    aml_append(scope, method);
->> -
->> -    method = aml_method("AIDX", 2, AML_NOTSERIALIZED);
->> -    aml_append(method, aml_acquire(aml_name("BLCK"), 0xFFFF));
->> -    aml_append(method, aml_store(aml_arg(0), aml_name("BNUM")));
->> -    aml_append(method,
->> -        aml_store(aml_shiftleft(aml_int(1), aml_arg(1)),
->> aml_name("PIDX")));
->> -    aml_append(method, aml_store(aml_name("PIDX"), aml_local(0)));
->> -    aml_append(method, aml_release(aml_name("BLCK")));
->> -    aml_append(method, aml_return(aml_local(0)));
->> -    aml_append(scope, method);
->> -
->> -    aml_append(scope, aml_pci_pdsm());
->> -
->> -    aml_append(table, scope);
->> -}
->> -
->>   static Aml *build_q35_osc_method(bool enable_native_pcie_hotplug)
->>   {
->>       Aml *if_ctx;
->> @@ -1394,7 +1248,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->>           aml_append(dsdt, sb_scope);
->>             if (pm->pcihp_bridge_en || pm->pcihp_root_en) {
->> -            build_x86_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
->> +            build_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
->>           }
->>           build_piix4_pci0_int(dsdt);
->>       } else if (q35) {
->> @@ -1438,7 +1292,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->>           aml_append(dsdt, sb_scope);
->>             if (pm->pcihp_bridge_en) {
->> -            build_x86_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
->> +            build_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
->>           }
->>           build_q35_pci0_int(dsdt);
->>       }
->
+Changed from v3:
+- added R-bs (thanks!)
+- added missing SPDX header
+- merged patch introducing accessors for kvm to the first user
+- skip over sysregs outside of the id register range when generating
+  register definitions again
 
+Also available at
+https://gitlab.com/cohuck/qemu/-/commits/arm-rework-idreg-storage-v4
+
+<v3 cover letter>
+Yet another update of the id register series, less changes this time
+around.
+
+Changed from v2:
+- changed generation of the various register defines via the "DEF"
+  magic suggested by Richard
+- some kvm-only code moved to kvm.c; some code potentially useful to
+  non-kvm code stayed out of there (the cpu model code will make use
+  of it, and that one should be extendable outside of kvm -- a
+  revised version of those patches is still in the works, but I'll be
+  off for a few days and rather wanted to get this one out first)
+
+Also available at
+https://gitlab.com/cohuck/qemu/-/commits/arm-rework-idreg-storage-v3
+
+<v2 cover letter>
+
+Changed from v1:
+- Noticed that we missed the hvf code. Converted, compiled, but not tested
+  as I'm lacking an environment for testing.
+- Hopefully incorporated most of the suggested changes -- if I missed
+  something, it was unintentional unless mentioned below.
+  - fixed repeated inclusion of definitions
+  - hopefully made macros more robust
+  - removed distinction between reading 32/64 values, which was mostly
+    adding churn for little value
+  - postponed generating property definitions to the cpu model patches,
+    where they are actually used
+  - juggled hunks and moved them to the right patches
+  - fixed some typos
+- rebased to a more recent code base
+
+NOT changed from v1:
+- definitions are still generated from the Linux sysregs file
+  - I still think updating the generated files on demand (so that we can
+    double check the result) is the right thing to do
+  - I'm open to changing the source of the definitions from the sysregs
+    file to the JSON definitions published by Arm; however, I first wanted
+    to get the code using it right -- we can switch out the code generating
+    the file to use a different source easily later on, and I'd also like
+    to steal parts of the script from Linux once integrated (which I think
+    hasn't happened yet?)
+
+<v1 cover letter>
+
+[Note: I've kept the cc list from the last round of cpu model patches;
+so if you're confused as to why you're cc:ed here, take it as a
+heads-up that a new cpu model series will come along soon]
+
+This patch series contains patches extracted from the larger cpu model
+series (RFC v2 last posted at
+https://lore.kernel.org/qemu-devel/20241206112213.88394-1-cohuck@redhat.com/)
+and aims at providing a base upon which we can continue with building
+support for cpu models, but which is hopefully already an improvement
+on its own.
+
+Main changes from the patches in that series include:
+- post-pone the changes to handle KVM writable ID registers for cpu models
+  (I have a series including that on top of this one)
+- change how we store the list of ID registers, and access them
+  basically, use an enum for indexing, and an enum doing encodings in a
+  pattern similar to cpregs
+- move some hunks to different patches
+- update the scripts to generate the register descriptions, and run
+  them against a recent Linux sysregs file
+
+What I've kept:
+- generating the register descriptions from the Linux sysregs file
+  I think that file is still our best bet to generate the descriptions
+  easily, and updating the definitions is a manual step that can be checked
+  for unintended changes
+- most of the hard work that Eric had been doing; all new bugs in there
+  are my own :)
+
+</v1 cover letter>
+</v2 cover letter>
+</v3 cover letter>
+</v4 cover letter>
+</v5 cover letter>
+
+Cornelia Huck (2):
+  arm/cpu: switch to a generated cpu-sysregs.h.inc
+  arm/kvm: use fd instead of fdarray[2]
+
+Eric Auger (12):
+  arm/cpu: Add sysreg definitions in cpu-sysregs.h
+  arm/cpu: Store aa64isar0/aa64zfr0 into the idregs arrays
+  arm/cpu: Store aa64isar1/2 into the idregs array
+  arm/cpu: Store aa64pfr0/1 into the idregs array
+  arm/cpu: Store aa64mmfr0-3 into the idregs array
+  arm/cpu: Store aa64dfr0/1 into the idregs array
+  arm/cpu: Store aa64smfr0 into the idregs array
+  arm/cpu: Store id_isar0-7 into the idregs array
+  arm/cpu: Store id_pfr0/1/2 into the idregs array
+  arm/cpu: Store id_dfr0/1 into the idregs array
+  arm/cpu: Store id_mmfr0-5 into the idregs array
+  arm/cpu: Add sysreg generation scripts
+
+ hw/intc/armv7m_nvic.c                 |  27 +-
+ scripts/gen-cpu-sysregs-header.awk    |  35 ++
+ scripts/update-aarch64-sysreg-code.sh |  25 ++
+ target/arm/cpu-features.h             | 317 +++++++++---------
+ target/arm/cpu-sysregs.h              |  42 +++
+ target/arm/cpu-sysregs.h.inc          |  52 +++
+ target/arm/cpu.c                      | 111 +++----
+ target/arm/cpu.h                      |  80 +++--
+ target/arm/cpu64.c                    | 128 +++----
+ target/arm/helper.c                   |  68 ++--
+ target/arm/hvf/hvf.c                  |  39 ++-
+ target/arm/internals.h                |   6 +-
+ target/arm/kvm.c                      | 139 ++++----
+ target/arm/ptw.c                      |   6 +-
+ target/arm/tcg/cpu-v7m.c              | 174 +++++-----
+ target/arm/tcg/cpu32.c                | 320 +++++++++---------
+ target/arm/tcg/cpu64.c                | 459 +++++++++++++-------------
+ 17 files changed, 1103 insertions(+), 925 deletions(-)
+ create mode 100755 scripts/gen-cpu-sysregs-header.awk
+ create mode 100755 scripts/update-aarch64-sysreg-code.sh
+ create mode 100644 target/arm/cpu-sysregs.h
+ create mode 100644 target/arm/cpu-sysregs.h.inc
+
+-- 
+2.49.0

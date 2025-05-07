@@ -1,85 +1,85 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp94329njb;
-        Wed, 7 May 2025 16:42:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVv+swmkM6kNCxgfmg4XEGIkv8KpcinfCkxpd/l//fVyJRQ0GxZl5TH/zk4YkHzttnS+JBoAXydriPNVA==@linaro.org
-X-Received: by 2002:a17:90a:dfd0:b0:2ee:db8a:2a01 with SMTP id 98e67ed59e1d1-30b3a6e77c0mr1346572a91.30.1746661379461;
-        Wed, 07 May 2025 16:42:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746661379; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp94338njb;
+        Wed, 7 May 2025 16:43:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWO4dvxhkk7EDpntVYYMOzih8DPXcjrYTa/7JYP7cPwroRuOrANxvkq9U+iYhsMPr4ZSAV3IbCnH9saHA==@linaro.org
+X-Received: by 2002:a17:903:194e:b0:216:4676:dfb5 with SMTP id d9443c01a7336-22e8476ee2dmr19555405ad.21.1746661380468;
+        Wed, 07 May 2025 16:43:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746661380; cv=none;
         d=google.com; s=arc-20240605;
-        b=BZ3lKXMxnpcEbMRXbs30G16TM7V2lv6aVOAthF6dyyMHHuOweTbaKoVzN1vUAKIdup
-         uWiVCbjk/8W3NQvJlCUfcAkefVfpW3Nm0LoMh/zn/OFkZqBpAerSLSq3m+kXCqoMopkx
-         Vk2mSFlgrzDRb0wE1hMKXqRsPJC5FdSG5wHuYj7LFEMtt144ca6oAOKm/1JFhaVS87Yx
-         TTpYVt82QOscKIpoLcZ+QuFu/GJQfGtQofKv//NKbkj42ORwR1AbLmJkmGpwn3JWJlUV
-         aP6VuG7JZ5pQgB5qMHqSInp3dPp5hFdkeNo6Aiq7FbuSuLk4ZBAL9Qjo1PTUar2dH5SU
-         Eybw==
+        b=H2pOXWjIp/8g62gP3U//+TDnyij9P3bbFU/vZFuFBgEiWtVfA+W2n1J7mAdsSIzF5e
+         rRNCjD+sXPS1hqKItpFHVYC1KnQPhbuiPBOTkCnHh49ulEjgJDNI8nMrGU7hagLeaq5X
+         WsBSD3Rx9K7RXTv/wsy53N+VjQRzF8CRV7kuy0HnmRfg3YsMBaibwYq/Alr1YqeoSsVi
+         +SbpO+Lotp8yxG5KQqF53W9YRef7gCmacUpLi8CmgkbEnjj5YZIih4oFxYqt4Wq+POOS
+         jXEzKr7J7rHqSvX7hJ+MQ7Q8QOau0XGRsej6JBzU0znSWPfUm/mew0Da+MmTHwGsN24o
+         tN8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=fgtSyivanfJoltGbQqPmVVFicsFn6el5hIn8rUX6RjU=;
-        fh=FnN+i1cqQljdaCxbOFbhloRWl77rIhgYlBhUUfuNR+k=;
-        b=QJ/ghUosduwlTn3dHM6nbU2i3So4m0UTs7l2985RAFIM3rpA+R/0gNx1ANgKDCDCgO
-         PjK4b8L51QUU8DTRREaEcw7yxIcF7wfA6DPiCRzuRV7XDAyKcG395NAKd2SUjqH9BT61
-         TxyYRH9K5S7c/zWAEPgfiW5GTRA65wKauAAdj5WMVosXgf45diuoZc0X0saLfjyU+iov
-         QkP/o+8F0tIDKz3voO0yBs4WXtkltMSnWSlxRkBVfL86eCf/VwYt/TCcP/NJxxPrSXUa
-         td56fiizqsSopuADfD+/JA2StRx2hOpMAr2Yl27hghP3WWZLLOur69oPKlS2yQsc3fpk
-         +etA==;
+        bh=u/RowU+G9lDkd5OLEKmfnzuDeOXrVzkwWk098+SYGJQ=;
+        fh=/IrG5WCEuZSoFHww0kx7biGqlJjHdAGIyasIqGzVKwM=;
+        b=bYubMUKT8UPc++iG0TCB4YWnBHW7FNsgxJUIu6lBQ88Sw8YGx7zwZwuck2I8haqPFK
+         a8rHY36ear1iXp/C2hZHd9OpHwodckAZq3O/7uMvouMWvV2gKf4qFxps1vytZmWxcNeo
+         JWXuKMX6ighIHoOLSTMzPBpPmY7SEqxKEUhZYZ/txe9qYsud0b+RpBlEEE3ZbFi1PKm+
+         JKvde9gyAc6g3wf4hxCVM8XMNWi64mTmEkFtfvQmY10W2E35ttSnbtbz7+SvUgoXn28Z
+         g6gUU3MQXr9ySjkMOy6iP91suc9YVe1u1jjt0ZTJ2OcDvV6FUO4Eo0dMOH9V+cUD0gpr
+         vRoA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FqyvQAdJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=be5KErRf;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-22e0bb19476sor89430945ad.1.2025.05.07.16.42.59
+        by mx.google.com with SMTPS id d9443c01a7336-22e7f21268csor5945555ad.3.2025.05.07.16.43.00
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 07 May 2025 16:42:59 -0700 (PDT)
+        Wed, 07 May 2025 16:43:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FqyvQAdJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=be5KErRf;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1746661379; x=1747266179; darn=linaro.org;
+        d=linaro.org; s=google; t=1746661380; x=1747266180; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=fgtSyivanfJoltGbQqPmVVFicsFn6el5hIn8rUX6RjU=;
-        b=FqyvQAdJqLJyeaXeQ3WxfT5zDDe8jACdCwss+YlxaLN6cdZQc+ktd/0jqT0nAVLiS9
-         iPrYOriatneMJYInSwMnLJ72crnupfF1BQPiFMTt5Kb4cfvYHyGyHeciYkz4HOq9fNLK
-         OM4zTDsYJfqyz6tpEkNhYuaIrFmZSsJFBmB7IVGdHsNWJqRqdotjLPlSv/Q/1GUv9Pvj
-         DhIAggs4AhOToQtDI6CJkdS6FbuEbSq40polzXlDTVL7RUg6gcVHVaHySukpzbEq5a4n
-         00f19FKuGREoBcy+qyi+U6OK3puLrnwLGtf36nPqg+KHbfEnxTT8a9hQnUL3kYYQ/65C
-         XZMg==
+        bh=u/RowU+G9lDkd5OLEKmfnzuDeOXrVzkwWk098+SYGJQ=;
+        b=be5KErRfpnEe+PXKl8Af5gabM2I2ta/tcsozdCOX/fcZ31CHacprFGhFJSfn6u8H3Y
+         aYuexJVTuvPkOCz2ZVWPYYJnSEJBkKjWKiJCXTyYk4EOLSnqx/JrmLPzCEiqg8mjX8l2
+         Zqt8jfT8j6K3lqETGRsbSm4l4d3Jt5GEF5Zn+QePFwdc8vKJbCzBogeyR8fWbZqFNVhp
+         kAKNJWTygRRtG8HJAjqEGzOp4KeTYBjaZuUTJwZs2eStZQumUO490zKvOgShE6VOKsLK
+         bJkrBZHQtLgRLD0ikSyQv2fM8T0z5aJHTqNZKbjlfVjFqhJPmJTJrq9O2CE1ljoWFnma
+         GwJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746661379; x=1747266179;
+        d=1e100.net; s=20230601; t=1746661380; x=1747266180;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=fgtSyivanfJoltGbQqPmVVFicsFn6el5hIn8rUX6RjU=;
-        b=SPuNg4oR0LY+zZCfXfT6oHzMpRt6Nzb7cFUGW/QMuSaTnfzFRmseniRqk7DtmoB37E
-         Ss9/tUXbUFn2u3l5/MyIaoYH91lugFOw/ln2RQi8xeXeALD6ztkTQIguAxvbuawJxmBP
-         CHaU9bOXHTht4bUzYUt5518sHqC1+PXkcawGbkSqdr6FbZquMKNZ9FLAF9yPiJZa04+N
-         +XBNl5OfOTPvK6d3vcPYA9lQ8LTvPqNjFlx6OU6ucJSQLn0faIa0yRhxH1P0Wwozogna
-         wrt8m4IHib6VR0RtqK43mDuQA80Vr10ftn/cVQ+r5/y9TZnwz6YXcy8zYYccROMyGLXF
-         7HTw==
-X-Forwarded-Encrypted: i=1; AJvYcCUE9hkpYgQJ8ekoX1HzCKv90L7qhS9EzLbxvcDbHeZmoC6bcPPT2oivJcRU69zS8tz3RsksIYZeZDPbBw==@linaro.org
-X-Gm-Message-State: AOJu0YzllSeNeDRnOgse/ol2u7XxENGG8Sjatq3fQeG+5sUA2GTN2WqU
-	V34sf49HQJsUcjdjHMUlnE+7MG51GgdFq02EH+YhdYFIG0VLBxwfJCfsZVaTbhDajw==
-X-Gm-Gg: ASbGncuvXWbO9Et72tuR0wY5GMssJCJ3dKklP9M30UzQvDUMVdZIzb6pi5ZKCzPSUm4
-	5Pxw+4u7q1wjUwGWNCzNKCqAPGp4on5Qwe4hxKBnGv9UzswtXSgIIh9pRT15udOTgSW8yZImSDr
-	7QvodNQU2r5eXg3l5w/cCuwnA77oZ+Bxo5KoiLLaHshrel3UnCUmTmhuGixDn91Q2krCPsxdeHe
-	zPfMTkwwxvjm3NgCnOT18mrWNOnnu/v9073lyDUO8c7RuPoBsCPnLP77V7H7M2G0iUerLDHAOdJ
-	X9n/iYRQ/t9ylcQfkrRgBH6eXiwYTkrDsQPkhKvZ
-X-Google-Smtp-Source: AGHT+IFZtlB2FlSxHJFsDXQB3WyDA4iBd5Ccf1T5vX11nbBzlbCtPEp6lNvox6Ap3RnU2n0tDbAJyA==
-X-Received: by 2002:a17:902:d4cc:b0:223:325c:89de with SMTP id d9443c01a7336-22e856138c1mr20153195ad.1.1746661379102;
+        bh=u/RowU+G9lDkd5OLEKmfnzuDeOXrVzkwWk098+SYGJQ=;
+        b=lmVFJfHn3Bg6FRPnN1z5AdvSTyHoLE0BelFKypBIPVkbGMvWkYeATd2eTg5rGwR/1C
+         WnyXCppPUnql7wIr+ApKilBXK1ccpvqgXJV4Mq8TEB8QR/xIfyrTTAy+llB4Cs0Ik/0y
+         bQXAvDdZplaJZqk3Q9slOESIoVKKpl/3dL96JD/CHg1f5IMv40jIYUMtAmnkbiZ/2BTC
+         q7Ma9Wijwd41DMS/p6KQ7+rePBqqY9A5VOKiWaIyadaKmyP2TDjB2oabLsTVGYaZZp+j
+         gXwUBJYhGX+dCJ0/tq0A0P6U7AuRI7TGxmxwBp8Qwy9qwINlUAQ/qnKQivy0teorT9f3
+         7Hxg==
+X-Forwarded-Encrypted: i=1; AJvYcCWEdHYtfIq1pfh+muHIep/vXAJoqA/SYNWA+lcEQQn/Ql5mo87GqJWCx1xRXM3xwshuejwjDVWA4NSd0A==@linaro.org
+X-Gm-Message-State: AOJu0YymcqaPcXXu3ieoGfK80+dsAw9scpAp49CCgWSiBgJsNN2Bdlzn
+	M+mm34PlQQ+WQVBacoNcsprBQ5xXsXJunbXSBnikaOn8nNbUos8XTzTDsrCUFu7AlQ==
+X-Gm-Gg: ASbGncsrUqG6EY+iZ5k37ViaBMpvVjt2ercSLJjAeaJHSPyv7rk+B7dXbo8JnmyUhjD
+	0cTtMdqqsKz/SFuSKna1XvYdz5H9zAjegM0d9/8e6XkD1tkvZp4ODXaEXVkb3CFvo8f+rDGHAoW
+	Y+AYFxxG6uKc+TXIjhtMkEe6soDejZ0Pl8nPp+BNVKc/jyNd1/+sogJFLYIa+G52wAf9bljWc7i
+	2ved3QzJDNWzomu3pGXb472PxSSD6KDjTjpPCZ2zX+VkaYlgtjvd8F6Svp7bc/RH0nYcO+MX8b+
+	YiVolU2W67XLSX9sP8671Kv7pasvHki0Qgl5EVbM
+X-Google-Smtp-Source: AGHT+IFr6AonYuZbiOdyHtNzMRkQACG1nPGT85mHzH8LSDoJ9GfVu4Ipl9+GAoDhcc3RgvKKndBmow==
+X-Received: by 2002:a17:902:e5c1:b0:215:58be:334e with SMTP id d9443c01a7336-22e846e735dmr20084035ad.10.1746661379975;
         Wed, 07 May 2025 16:42:59 -0700 (PDT)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from pc.. ([38.41.223.211])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22e815806fdsm6491325ad.17.2025.05.07.16.42.58
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22e815806fdsm6491325ad.17.2025.05.07.16.42.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 May 2025 16:42:58 -0700 (PDT)
+        Wed, 07 May 2025 16:42:59 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -91,36 +91,53 @@ Cc: qemu-arm@nongnu.org,
 	kvm@vger.kernel.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v7 18/49] target/arm/debug_helper: remove target_ulong
-Date: Wed,  7 May 2025 16:42:09 -0700
-Message-ID: <20250507234241.957746-19-pierrick.bouvier@linaro.org>
+Subject: [PATCH v7 19/49] target/arm/debug_helper: compile file twice (user, system)
+Date: Wed,  7 May 2025 16:42:10 -0700
+Message-ID: <20250507234241.957746-20-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250507234241.957746-1-pierrick.bouvier@linaro.org>
 References: <20250507234241.957746-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: cnuqJ7CPpBwJ
+X-TUID: r43eQhBQj1yB
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/debug_helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/arm/meson.build | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index cad0a5db707..69fb1d0d9ff 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -380,7 +380,7 @@ bool arm_debug_check_breakpoint(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
--    target_ulong pc;
-+    vaddr pc;
-     int n;
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index de214fe5d56..48a6bf59353 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -1,7 +1,6 @@
+ arm_ss = ss.source_set()
+ arm_common_ss = ss.source_set()
+ arm_ss.add(files(
+-  'debug_helper.c',
+   'gdbstub.c',
+   'helper.c',
+   'vfp_fpscr.c',
+@@ -29,11 +28,18 @@ arm_system_ss.add(files(
+ arm_user_ss = ss.source_set()
+ arm_user_ss.add(files('cpu.c'))
+ arm_user_ss.add(when: 'TARGET_AARCH64', if_false: files(
+-  'cpu32-stubs.c'))
++  'cpu32-stubs.c',
++))
++arm_user_ss.add(files(
++  'debug_helper.c',
++))
  
-     /*
+ arm_common_system_ss.add(files('cpu.c'), capstone)
+ arm_common_system_ss.add(when: 'TARGET_AARCH64', if_false: files(
+   'cpu32-stubs.c'))
++arm_common_system_ss.add(files(
++  'debug_helper.c',
++))
+ 
+ subdir('hvf')
+ 
 -- 
 2.47.2

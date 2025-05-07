@@ -1,177 +1,92 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp3919298njj;
-        Wed, 7 May 2025 09:15:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVUOxZkAQYI4fdIHMu/rNXfqyp1yM+2sm0OZBs5z+t1p6+7jrbXmZpLmD87C+SXOXQaz7Go/Zlmsj74lA==@linaro.org
-X-Google-Smtp-Source: AGHT+IH2sdAHPh5RtCQ3lI6sQi57JOhxVTSZt2c1LNE84h6tMI0OXUvA3xvYv50w9MlLeZ12jId1
-X-Received: by 2002:a05:6102:158c:b0:4bb:9b46:3f87 with SMTP id ada2fe7eead31-4dc737cc2fbmr2589534137.6.1746634500998;
-        Wed, 07 May 2025 09:15:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746634500; cv=none;
-        d=google.com; s=arc-20240605;
-        b=HeMc5gZM8OJweUuqAK+U4imA3eRwnSITi+2RfZsn/esBmqSC9A284ls/RrquH5Ql/m
-         10dCbYckomN+P0PvTVEonH/owRFrqDRRW5wpPgXLvclTwLV3h4YOzt6IJ3iHqUJa92cW
-         8ylW8uP/VyAkKrAE/cJQXeWPEO0YN7lxU/rdOwVq3gf10lVYTbYCRfQTe3u7gh2cQODn
-         sRDGGAvPPlny0/puofZPBIFUPMx0mk6ZgKmenLz7b8LWQLKohTZjl4vp/ViqHbR63FPC
-         Yhg3+HmhCVHl/aRZ2t7M13SX9htF/6EwjNakiFNoW0R9u0scuq3hDdhnDu1u2hESNvhd
-         JCxg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:mime-version:dkim-signature;
-        bh=Xuf152WHysRq+Z/dYsErZxczCzfSa1/+B94t6hcxHpU=;
-        fh=F8QvC3l6WZuFWVU35sh2bNu0yr+d79C+PwuX895jUyI=;
-        b=H2Ubs5OkVZEvzxJQ2dPc/lNDWFyVNI6EZ/VqzOUYS5AOkSHw4ztQc43nlTTPxxGchZ
-         DedEbfE8b5EV3wmLy31Sf1qMU1nSr4yZUv5d47mHQ5PSvB2J5QpioC/tw4K0e9HtS5NF
-         h8eeYx6U+2OM9UQ7YwQpPtnmPx/wV7108zSsb54/rF8LXM1o/nuHpuvKa+ia991NE+U5
-         X8E8s7TqY55hHMXri91kH3Ix0LnGpAIz9aYVlOzkpL4XluOx50BaeX2R8LjmjwuMUt/f
-         HTNvUHOULWcwS/Yt/D5UsDdsYCScwjruAGcgiXyzfaIMx2+1K5XVe/5ETdTTE8Yf+ClC
-         TyMg==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gXewaCcE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4daf2631366si3450086137.630.2025.05.07.09.15.00
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 May 2025 09:15:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gXewaCcE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uChPn-00022H-6F; Wed, 07 May 2025 12:14:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lebrongandalf@gmail.com>)
- id 1uCgrn-0005ij-9g; Wed, 07 May 2025 11:39:27 -0400
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <lebrongandalf@gmail.com>)
- id 1uCgrk-0000LO-H1; Wed, 07 May 2025 11:39:27 -0400
-Received: by mail-yb1-xb32.google.com with SMTP id
- 3f1490d57ef6-e6e1cd3f1c5so30994276.0; 
- Wed, 07 May 2025 08:39:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1746632362; x=1747237162; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=Xuf152WHysRq+Z/dYsErZxczCzfSa1/+B94t6hcxHpU=;
- b=gXewaCcEAddckr+cf6EHWDXUgu+rybjR8AMd1Q7tKn8pr8xy8ZD7ZnTcfu4KXu3EeT
- OCU5Blvce0QywbwWHjpTlAv+7QaCia0Ld53cg3UIPqzG1zO5rRtfMVKVbVEpvVysFBWW
- O0cEQ93xou1EZnVcGgph80Pt2kZFf3UYoHd/scARtlY/PvyzLQSKDJk71s9+s8cEF5Tv
- 6jU3XE/5Xeg7NfEyoDXns6iUyu8P4WR+7ctB49myHpGy0Ao31NJG3Q1uOn9ornTrgPy6
- P35EAOeW4pVAKXAJV5DKA6hZUm4J5NVfz6kdevj2xpvA9vDO8n71bAzSLEonfemGvjQV
- PGkg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746632362; x=1747237162;
- h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Xuf152WHysRq+Z/dYsErZxczCzfSa1/+B94t6hcxHpU=;
- b=gxHBAs2TaL1MN3OWcShpnulQYmSNxBW6DEpvOpC0QTfxveIazk9quwdzH+Gct7IFw8
- 79UJFtF5LZLfhCvT9L+w5twzo4jjYj+gDBX/byTimtPW+jYzhLBXKRXg6vsoZnNeJUEU
- pK4FQ1eZlfK0INrT46LPqNkrr1f+C/JGrDlXHYYVulJb3cjrfZguMQZwJt0NOu/vw2GV
- uE7bWKHf4v2PNdzuzG5tsGpw8iDkNJglAFLaxkNh5dFdNT/B6IxcWg6JwASHFlAo5cR7
- rvZ3AWz8uOX0Ut0lxupAhtLmuXjKfmdA5cxA7l7IbjMSIql2aSJJy49GHXzTYSHxo5g7
- k/Ag==
-X-Gm-Message-State: AOJu0Yx4SST5/7b8/u+Sk9U5yrQzXJa5yplVEG4YoPIZWqlsMgZU6Raa
- bht8hEkhCHNtmB4URC20rjm1vHROlzm6pLEL0uPw+bq93+VneDGsa51TpaxTehTIy+sFXM61v2t
- vQRs08RNCVDjI0ONWkChdbypakEzPgwhQQg==
-X-Gm-Gg: ASbGncvxFB6kuoMJi7QQKEY9051mhR7zXkihk2uO7Bl7BBTr3n+7dRNsquflEzkIlFk
- QJhrZuijCjwbH/tibdmd5K6DyQjOJKlk53TMsvbyleuhv/qCRYO023SRto7E4tnuGq24hIXkYFy
- NtuN72vpMdVY0YQ5/H3H02
-X-Received: by 2002:a25:f449:0:b0:e78:d3db:7e11 with SMTP id
- 3f1490d57ef6-e78d3db8ab2mr2706685276.10.1746632361867; Wed, 07 May 2025
- 08:39:21 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([185.126.160.109])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5fa77b8fe2fsm9977563a12.57.2025.05.07.09.58.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 07 May 2025 09:58:49 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 43D715F858;
+	Wed,  7 May 2025 17:58:48 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Julian Armistead <julian.armistead@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [RFC PATCH] target/arm: allow gdb to read ARM_CP_NORAW regs
+Date: Wed,  7 May 2025 17:58:40 +0100
+Message-Id: <20250507165840.401623-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-From: GanDalf LeBron <lebrongandalf@gmail.com>
-Date: Wed, 7 May 2025 23:39:11 +0800
-X-Gm-Features: ATxdqUEWTtV-j2xG-mwcdJmbs9Oa9ek--qlyiXJGYC9JMRznQTjPO8Rz3TyNkeA
-Message-ID: <CA+V5jYUjqDc-UWKvQrX24c+MKtm+zdx4YCWU036180A4rX4ybQ@mail.gmail.com>
-Subject: The current implementation status of ARM Secure SMMU in QEMU
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000007b808506348d8911"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
- envelope-from=lebrongandalf@gmail.com; helo=mail-yb1-xb32.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 07 May 2025 12:14:33 -0400
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Dk2Tu7yjOy11
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 34Mdu4LG9hRE
 
---0000000000007b808506348d8911
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Before this we suppress all ARM_CP_NORAW registers being listed under
+GDB. This includes useful registers like CurrentEL which gets tagged
+as ARM_CP_NO_RAW because it is one of the ARM_CP_SPECIAL_MASK
+registers. These are registers TCG can directly compute because we
+have the information at compile time but until now with no readfn.
 
-Hi there!
+Add a .readfn to return the CurrentEL and then loosen the restrictions
+in arm_register_sysreg_for_feature to allow ARM_CP_NORAW registers to
+be read if there is a readfn available.
 
-I am writing to inquire about the current implementation status of Secure
-SMMU features in QEMU.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Julian Armistead <julian.armistead@linaro.org>
+---
+ target/arm/gdbstub.c |  6 +++++-
+ target/arm/helper.c  | 15 ++++++++++++++-
+ 2 files changed, 19 insertions(+), 2 deletions(-)
 
-I understand that non-secure SMMU emulation for general peripheral DMA
-(IOVA to PA translation and protection managed by the Normal World) is
-well-established in QEMU. However, my current understanding is that
-specific *Secure SMMU* functionality=E2=80=94where the SMMU's configuration=
- and
-page tables are managed by Secure World software (e.g., at *Secure EL2)* to
-protect DMA for secure peripherals or confidential VMs=E2=80=94may not yet =
-be fully
-implemented.
-
-Could you please confirm or clarify this? Specifically, I'm interested in
-whether QEMU supports management of SMMU page tables and configurations by
-software running in Secure EL2?
-
-Any pointers to existing support, relevant discussions, patches, or roadmap
-information regarding Secure SMMU capabilities would be greatly appreciated=
-.
-
-Thank you for your time and efforts.
-
-LeBronGanDalf
-
---0000000000007b808506348d8911
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><p><br></p><p>Hi there!</p><p>I am writing to inquire abou=
-t the current implementation status of Secure SMMU features in QEMU.</p><p>=
-I understand that non-secure SMMU emulation for general peripheral DMA (IOV=
-A to PA translation and protection managed by the Normal World) is well-est=
-ablished in QEMU. However, my current understanding is that specific <stron=
-g>Secure SMMU</strong> functionality=E2=80=94where the SMMU&#39;s configura=
-tion and page tables are managed by Secure World software (e.g., at <b>Secu=
-re EL2)</b> to protect DMA for secure peripherals or confidential VMs=E2=80=
-=94may not yet be fully implemented.</p><p>Could you please confirm or clar=
-ify this? Specifically, I&#39;m interested in whether QEMU supports managem=
-ent of SMMU page tables and configurations by software running in Secure EL=
-2?</p><p>Any pointers to existing support, relevant discussions, patches, o=
-r roadmap information regarding Secure SMMU capabilities would be greatly a=
-ppreciated.</p><p>Thank you for your time and efforts.</p><p>LeBronGanDalf<=
-/p></div>
-
---0000000000007b808506348d8911--
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index ce4497ad7c..029678ac9a 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -282,7 +282,11 @@ static void arm_register_sysreg_for_feature(gpointer key, gpointer value,
+     CPUARMState *env = &cpu->env;
+     DynamicGDBFeatureInfo *dyn_feature = &cpu->dyn_sysreg_feature;
+ 
+-    if (!(ri->type & (ARM_CP_NO_RAW | ARM_CP_NO_GDB))) {
++    if (!(ri->type & ARM_CP_NO_GDB)) {
++        /* skip ARM_CP_NO_RAW if there are no helper functions */
++        if ((ri->type & ARM_CP_NO_RAW) && !ri->readfn) {
++            return;
++        }
+         if (arm_feature(env, ARM_FEATURE_AARCH64)) {
+             if (ri->state == ARM_CP_STATE_AA64) {
+                 arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 7fb6e88630..7ea1307c20 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -4993,6 +4993,17 @@ static void ic_ivau_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ }
+ #endif
+ 
++/*
++ * Normally the current_el is known at translation time and we can
++ * emit the result directly in TCG code. However this helper exists
++ * only so we can also expose CURRENTEL to gdb.
++ */
++static uint64_t aa64_currentel_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    int el = arm_current_el(env);
++    return el;
++}
++
+ static const ARMCPRegInfo v8_cp_reginfo[] = {
+     /*
+      * Minimal set of EL0-visible registers. This will need to be expanded
+@@ -5031,7 +5042,9 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+     },
+     { .name = "CURRENTEL", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 0, .opc2 = 2, .crn = 4, .crm = 2,
+-      .access = PL1_R, .type = ARM_CP_CURRENTEL },
++      .access = PL1_R, .type = ARM_CP_CURRENTEL,
++      .readfn = aa64_currentel_read
++    },
+     /*
+      * Instruction cache ops. All of these except `IC IVAU` NOP because we
+      * don't emulate caches.
+-- 
+2.39.5

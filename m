@@ -1,416 +1,297 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp3504191njj;
-        Tue, 6 May 2025 18:14:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXZiiade73z2zE7NTwAlyb3vGoo3O6780vX22yYrA/tTW2hAYXG0+d3IX6WKV7tjiF8w+aicldBGebG2Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IFPd5sEqLof2kQPdtEgpkVh9rDBKxSnEAy9pdc82uGSAz3HVn1gjJwSzoSyh32ir9wNui+f
-X-Received: by 2002:a05:622a:342:b0:47a:eade:95ec with SMTP id d75a77b69052e-49227294e1cmr22017231cf.38.1746580450223;
-        Tue, 06 May 2025 18:14:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746580450; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp3548780njj;
+        Tue, 6 May 2025 20:27:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXmiuypAJ9LyVwiqU/8D7dIZq8rNmHO7GGqYYvQB4cWeGbHcv8Ut+lFE47ueePRwgUIAnO4FlPvD77HCQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IG1AgJWlomXkyfKuq5GPDre8sm23yjOCrPcyOZaWdbIcmXB6pWXIA1reBYBrpIQby64Ukd1
+X-Received: by 2002:a05:622a:1924:b0:48a:f7d7:f9f8 with SMTP id d75a77b69052e-49225b36a3fmr29139481cf.14.1746588457061;
+        Tue, 06 May 2025 20:27:37 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1746588457; cv=pass;
         d=google.com; s=arc-20240605;
-        b=S1rxL0cHyfEnm7cHiPHgAhiODGIfh4zO27Yjg68ljJfq3zB7kB1arLC7ONit+d3Pm5
-         Pwq2qx++Svtv2KJfazsE0xLZ870O6yrUHqvl+WeCO7yATnISd10s2AdnwCAVM5Bh5fVv
-         Sr3Gq/CkLiGxZzyiDSaDwy3ok6M1M3un459MGJlx3wrkrOzT3F5bdtKcXwDu1bBAOHWt
-         7mg9kv3F9CxBDUFCtVIRzK5RuOA8sExKNBrnWgIVGRbrz/KdG3U67zQjJrJjO5OJTeN8
-         0dl5zU3zKRTiDh4RZZbRy3F6C6KqSk70kI3oqUTpG7n8AlLoYe6C5OIPzYeQbYabcoS6
-         McPg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=biWn4iUEDJAnOAG+znpBWAQ33a2j0qUNnx1zGVkay56nGIq3zu+mQe3RyEAXu7hYyT
+         sLW3Hlb/NqyoqoDER4hOr/l+FsoRcc2WW+e8ldqj7+c9Sg9Ds86tCcAOASyTP5ERhGu/
+         Y+O8Jvcfr/9YWT9V1iPIPFKbt3pKenas1qnMp2Co/CZOFEHofvjKoCl2wsNqsDIJuDSp
+         A8Wnh8Q5Sfu6rPFDgO4GPM+Y3aSZGBiql/jtvm+iGZUEDghu82rLu4Zwwqcexejpr0A+
+         5rBjNX3GOGBDsI90be/VtCcVVFPfII3dtoLIRc4WmdxVR5CpbF9x73QRoZIkhlFwC6e4
+         pZbQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:content-language:references:cc:to:from:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Y9mrtvVZoMnX0hgOqATpravBv8ydphVGhC2o4/rgQl0=;
-        fh=6OVjRBdJis0Kdggf/FWrsS9lbF2HpHWg6ERD0PnIz2M=;
-        b=TOquxEUajvOig96QNTllRUb+TxhuL/TjJFbdTt668pbQbb9CHLkE4VqATItSSbxtbY
-         ZP3H1X4hgkKkMLnlC+hB+GzWZ02DHBXOMLWp8wdXkUsVnJa4AY/+CqFCkaOC/OcSqWTK
-         Oj/dwM7KiIVTkRmF5I7dYkHGDiMc9fGHeqmv+ovZEqsG2GWD/G0GoMFYqkESCq98w7ty
-         3n+tRH1pZZClNyA03F0OoIEAAiapiBmtvcrrR2TvfQv4KW/a27r3wdmoWpEWCr3LbwYh
-         HlDhyEqihPBEcr/AQzyubSWVwhbhM0yhXSXVyCbgLr7VAfHePAt2zQOkFy7f8oj9puHg
-         3B4A==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=dMeZ7cNXgy2D3R429dgW6C1RFIcasPpI1NpQEkLi/Ac=;
+        fh=Yk8fdFcJ+fZbI85f5hXXWK5ZsjB9QjDY470kzeDdU1g=;
+        b=bjiQbkb7Db/ANJnEkEpcXFUkxhyZMaV8ZphMacNtEmYMrS5hGzqOPx+WAzCXzirIEG
+         wjiMROQ0vuv6h1WXh61Cpe6fn9pzq6g+06V8TCj34gmzQERqy2BLLUHlNahuJ4Y4U60J
+         WEWOXuoDR5F1rikOIrCLnOQR/kRFPGDLpPMa7ag+iqAhMDTvklgisc3/EXFOv+dwhP4q
+         PZAlBSp/C6/w+kJPU5acqG9jzRRDCa3xhey5xIIngX0+3d8ccUR1ioXHQ1iuTKoCRbsF
+         ry2xaFiZqqtYLFylHmIfre0LJQ8B5bJXxfEbr+ZrL+rmQBIBT6Ur+cl0p7mxZvg9xafI
+         X5qw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=l1ONVPAw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=bSYO3a5k;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-49223457191si9542801cf.486.2025.05.06.18.14.10
+        by mx.google.com with ESMTPS id d75a77b69052e-49222f8abb8si10655321cf.372.2025.05.06.20.27.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 May 2025 18:14:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 06 May 2025 20:27:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=l1ONVPAw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=bSYO3a5k;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uCTM1-0007FM-32; Tue, 06 May 2025 21:13:45 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uCVRO-00027z-M7; Tue, 06 May 2025 23:27:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uCTLx-0007Ex-1j
- for qemu-devel@nongnu.org; Tue, 06 May 2025 21:13:41 -0400
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uCTLu-0005fK-1T
- for qemu-devel@nongnu.org; Tue, 06 May 2025 21:13:40 -0400
-Received: by mail-pl1-x644.google.com with SMTP id
- d9443c01a7336-22e661313a3so755755ad.3
- for <qemu-devel@nongnu.org>; Tue, 06 May 2025 18:13:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1746580416; x=1747185216; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
- :cc:subject:date:message-id:reply-to;
- bh=Y9mrtvVZoMnX0hgOqATpravBv8ydphVGhC2o4/rgQl0=;
- b=l1ONVPAwrfMe4x3MvjkoAe5dJYSSdHk9jixKEG+QW8O4rjdLy8Zc+jWRHbt3SVjADl
- /a4w5IbCEyls+yFnCwlIK7MitM3V23B14s57Y/e2aNhYINghtzBjgNj1UMPsTlxf5HUq
- zwGXgAwO1M3Ib5a9aA16oak3jjTXUCeEVRTakXXgy9aoaT9QAxhI9X9bjeK7mvjgvZr3
- 5ylY5OrbUXytMe9FBW9eabCzbWb0m+NvP3i/R9TIBSsL3jX7iYyeUgIFATFrhO5VhsL4
- A2KXZzGWeIhXDNj4kbQfVW6kmKBpKHv/fV3bvhsst8L+PjwcFd/WuPLkw7xDW3wudT4z
- T5nw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746580416; x=1747185216;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Y9mrtvVZoMnX0hgOqATpravBv8ydphVGhC2o4/rgQl0=;
- b=qbmXNAi6qCASoRv+q0LNRzuvXGn17E9Xu/SA/TuF+qy4r/EJ6vg/T1tLv8MOrJ4MFn
- sPLekbMfjwQUV1SOdTvKfMQHO9F1CnFvgRiZpc+8hMkJzyowmJyI7VTuyo8K3byof2Aw
- LFlW/lB+xU329y4BBUvvKp25MPu9lsDEb0ossqYFHNWK417q+hQqK3CNYDhVYvNium8B
- wce4XAaDewJJxcsO+jQ1vIcrvc7cd3WTRp92jfo+wMKATUrVsvj2n3X9Bl+Giyc1oYEb
- MFStUC3JCc+rrFfwrV6qOv/KBXSniSPEuvlDYkOUdN86dRRiJKIX2u66Du9Jl4dstU3m
- e6tw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW20QwkQXmryFcM9sJ4f3JnJUk7l8sC6Luk7dSBu74+Dg5zwsx4InXXNMylFsTYv6WoJpeYJ60viurO@nongnu.org
-X-Gm-Message-State: AOJu0YzbfIZ5mHH6/a9dkusTyCVUXtJ5br+sJBL2WpuN2Bm/omCxoSbq
- M5feSqmzI2DOp6kLNkTDzwmx21E4Ye4E2cFnd5VS8OrxrXnRRPHtgg8YBJ26iQU=
-X-Gm-Gg: ASbGncuRU++N6z1aVkKutRrypiFvSr8eo+OWKLUBkZUyyQo7aLzzgwFfhFBW3/YRCaK
- tSq/cpOr6DT7F0V+fa0eTb6jMJ+yetNY7biSGU0+g8JR7JZgcFzfS0Mzbk+7a7VCFI77hgzMulU
- ybbz/HzZW1+7IPzPjYhiCTyZv/by26aMww7HztNHvIGoT+FmwVlbR42A6Nlm61CWr4FizH0Fsgt
- CgPrDZhvt86zdGm7Ggw6YJhIP//H17q99tlQiWi4yvLJjHx1ZO3K4LM6FpiU9B4T+hTVJJyNgNL
- cbs59GPdJogg+qhvCJ1BoUaxDmNvCWzqSKdfl4Gan2TTyGP7nd856C5MTpQjtxbmygjnbztYIN8
- vgZk7Buzh51i+mgkx/yM=
-X-Received: by 2002:a17:902:ecc6:b0:22e:505d:57e5 with SMTP id
- d9443c01a7336-22e5ea27f4bmr20046015ad.11.1746580415771; 
- Tue, 06 May 2025 18:13:35 -0700 (PDT)
-Received: from ?IPV6:2804:7f0:b400:8604:fdbc:e6b2:66ea:1256?
- ([2804:7f0:b400:8604:fdbc:e6b2:66ea:1256])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-30aaec170eesm563033a91.31.2025.05.06.18.13.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 May 2025 18:13:35 -0700 (PDT)
-Message-ID: <9a58f718-a7ad-4838-a5d1-9df8f3d43372@linaro.org>
-Date: Tue, 6 May 2025 22:13:31 -0300
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1uCVRM-00027f-Hw; Tue, 06 May 2025 23:27:24 -0400
+Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1uCVRJ-000616-RK; Tue, 06 May 2025 23:27:24 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=REodUbgKZbiBI6J89m4O/XNBMfKPaSsT4QPnEshYftERRASv9aANG7LezmIeAOMl92v1PKi6dvL63pxQ+CoGrEU1fy4tyq6tSn9IQQLt7baHEgtCBa+QFDfqHvZ6JeVUqhIB2BDK1VfxxX7MDki+4PzdHSBOobrA6tEDBs+1m5aWWzi5WM4rc3OQh+8tWZySoCd5NQHZDZNn21ZeCOSlQ0UFHPjih0vhJugfUoyXOY6XtGlvXy7kCE6AyQEZldpVRYcOsilBKZRevTKE9La58PYXoAANlL7KaaBWA+iaDKFnMyfDOWgtCpXAbmn9PaEO2HvJXrHi4UFJr+xX6fhOlA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=dMeZ7cNXgy2D3R429dgW6C1RFIcasPpI1NpQEkLi/Ac=;
+ b=kLZn6+T4Epk1TcWO2akWVW03ISkTsO7g/lDf2sDFIXi8ZkTwFp1UT9gBm1yzxQehwiMpIZE02oyC71nHkKolFC7etUCsEjpVdoldYrPxoGsqtaKBDnL5qihFc4I1fDK4P9hfxX/AXl4HamKlkQ2VoiB+SRQD0XOuVT1RxkTCDPSUarTembYvaOlYdmXs/FyLC27Cf7KzvPbhFfhmIzUv4hWSeluS8dwV9V7cc13e8mFlfFClbZdn9sM7II/y8VChDIkDAqMCuByF0yPhKY9noXSbJXLxUHHHrIv7XdCF+TaXolgHKyzgAxD6ukKpvsaBNcJ1+xyrAndZvA6rmpmx7g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=dMeZ7cNXgy2D3R429dgW6C1RFIcasPpI1NpQEkLi/Ac=;
+ b=bSYO3a5k9zBgb1VYa7ndWS6zGejQmHkvINI6g9TDntiLo5siYIAVC2bTKaOl1wpI5XT7Y0YVR+KTto7e0xDVkZTxPQpQrXICVnOolRFTMVaFn5e7cnyy/9g7ROM0YrugKLzRO79ckCFgAEvZFUvgUZgspTC4a+kCKPALdcDjXuuqBMo0u/2jcIFNSFMDHlhzquTfFDYFJfCnm1b0lyRdMzwy8oJy5xrG6WjG0P8ZpagqNTwCejsi/cGGRgC+UWWf4Hpp+yQOhFSAoEpqhoCaR8gOgZ1bYhkaV/pxo349/r4S6qhIVSjcEhwhTJYTDmXJ3+H6tt6aBNh8nw+qbv6fyg==
+Received: from KL1PR0601MB4180.apcprd06.prod.outlook.com
+ (2603:1096:820:29::12) by TY1PPF538B52D78.apcprd06.prod.outlook.com
+ (2603:1096:408::913) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8699.22; Wed, 7 May
+ 2025 03:27:09 +0000
+Received: from KL1PR0601MB4180.apcprd06.prod.outlook.com
+ ([fe80::6fe5:1995:96a2:552a]) by KL1PR0601MB4180.apcprd06.prod.outlook.com
+ ([fe80::6fe5:1995:96a2:552a%6]) with mapi id 15.20.8699.026; Wed, 7 May 2025
+ 03:27:08 +0000
+From: Steven Lee <steven_lee@aspeedtech.com>
+To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee
+ <troy_lee@aspeedtech.com>
+Subject: RE: [PULL 22/23] tests/function/aspeed: Add functional test for
+ ast2700fc
+Thread-Topic: [PULL 22/23] tests/function/aspeed: Add functional test for
+ ast2700fc
+Thread-Index: AQHbvZ0t0Yc9C7DxeU2uF6ycw55mmrPFqUaAgAAOuACAAMfk4A==
+Date: Wed, 7 May 2025 03:27:08 +0000
+Message-ID: <KL1PR0601MB4180B1D7391DCF7B65233FB88588A@KL1PR0601MB4180.apcprd06.prod.outlook.com>
+References: <20250505090635.778785-1-clg@redhat.com>
+ <20250505090635.778785-23-clg@redhat.com>
+ <CAFEAcA8wmqAtcgfPvyMY8nujTWNCSC0DYO64aA5up-sTWCr_jA@mail.gmail.com>
+ <2476d134-e342-4c2c-84ae-4d5972c30a94@redhat.com>
+In-Reply-To: <2476d134-e342-4c2c-84ae-4d5972c30a94@redhat.com>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: KL1PR0601MB4180:EE_|TY1PPF538B52D78:EE_
+x-ms-office365-filtering-correlation-id: 31a28bff-bdfc-4c5e-fe87-08dd8d170c58
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|366016|1800799024|376014|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?Nitid3Y4c0EyMk5WN3BwMWpWdUVqMFFRUW5BYTdPVHZVZW55Q0dza1liYjlt?=
+ =?utf-8?B?QjhlaGxGQXNjNHVxeER4Vmc3NDlmTWYvTUxCVFRQS1FEMlUvRnhVSGJiZ3R2?=
+ =?utf-8?B?bmYxSUMwWU1FdjQ3Y3VlKzlCS1RiVktwYUVIY1RDVXZ3dUp3dGRGaXpOT2Mv?=
+ =?utf-8?B?L0w0dVVlTmVZdXZ0N2lXeDFsTDdRVmdvMDM3L216S0hlNnVNM0JXOW9vV3Rj?=
+ =?utf-8?B?VzBiaTA5NUwrS2Z2NVU1bmhCVGhQSEpxNVhHdnRaM1RieXU3bURvUTJFWGE3?=
+ =?utf-8?B?MG8rWDdtWnJFOENId3ZiK3VDOWN4OTFzODhtUVp6WW4rbWR2QjdGd0xmWC9C?=
+ =?utf-8?B?WnZTcTJmRjE4d1d5eVczVzhoUU85dm1ma1Q2YnBDWjh6ZzdmQjZrTmcreTFm?=
+ =?utf-8?B?TXorUnlhZlFPVkg5NTJYMHZRMXczeWZaTmxjL2wvM2VhY1JBTXF2QUFoam5a?=
+ =?utf-8?B?S2dTdmdtcFJTelFodlVFVlU5SmhtNDVqNlYxQ25xNTJrRTVCeEJWMUZWUGRa?=
+ =?utf-8?B?eTkxUTY2TmhHTzQyelBNZUI1VVNlQS90NW56alhnS21uQ2FKT2dKcWZqNE9Y?=
+ =?utf-8?B?K3QvU1hFNUpGMDh0STR0MVFZZTBFSjhETU1pczlvNi9mSnFQUVFBY3RDbGJM?=
+ =?utf-8?B?NENLT2E4SDMyZGJma202KzRyV0hrS3htamVTKzJrTWRIWVRQVHRKQzdoV25Z?=
+ =?utf-8?B?MG4vMTM0UW1aL1l0dC9OcmhqL1F4ei9qVUY0L3ZLc0lERitkVUNSSlpWM084?=
+ =?utf-8?B?OEh5NlNDU3NwL2pvZXJFSlRJQjc5R0hOSkgxMWtKOXVGR3FtRUNMVTc5bzFJ?=
+ =?utf-8?B?dFEraFhXeXFIWnRVQXg0akxkK0oveSsyMzFwU1FYNjRhaXh5WVdlRWhPK3dS?=
+ =?utf-8?B?VS9XTXM4Qk1BdUVBNEFQQzdkMWVvUERrUEJqOUs2OXh4V0FKamg2d3VLNGpD?=
+ =?utf-8?B?T2Y2ZW5tb25UU21FZDRQL29HcjIwdVZqbzBvaDgwZUlkeFp6V2pkQmJZUm9U?=
+ =?utf-8?B?ZnkwaG5MdlUzZXRLNmVWbGpYRUxrajdOQXRhTm0ya2hpOUtWR016dHdOYzg2?=
+ =?utf-8?B?cm9WTUNrZ0FyMVhPcE03S2RMYllTTFhhUE4yMWx3ZXNZYlJiN1dqVC9SUFc4?=
+ =?utf-8?B?bG9TVk5DZ0pzQTBDcmN0UlZsSGg4aFUzTDJ0bzBDVHZDb0o4WmE5ZTZjVXVV?=
+ =?utf-8?B?ZjlpcEY1Y1V6N1dUQm90SUpSakovckgzbTFUQSt2OXRoUUdnL2NkM2Z6YWZl?=
+ =?utf-8?B?SFc5ZmJ6KzVHcGRzMGV2bHUrREtpZUI1Z21pRldTcWczV29wV3E1NkJWaUJr?=
+ =?utf-8?B?MURmWkJVYkxiSXlvbjEvaUx3cDd2cjQ1VVJmL292cTBrSnlRV1laR0ZicFlh?=
+ =?utf-8?B?RkRIdlNiVXpzbDdBZXNpbXAxRDdvREpPaHFPNWxxV1RxRmtEQXRuTTVPaEdl?=
+ =?utf-8?B?L2xlOG0vOXZFbGl4RHZvVWIvU0tJT2FRRStrTFhSM3RuTlhBY1lOVWhDMmk1?=
+ =?utf-8?B?MkdKSGRLZ2dTc04rQTY0aEtWeW15YjFKT3h1Y29VZEQwTW5KQTQxcVo4OUhU?=
+ =?utf-8?B?K2EwUWZNS1JMSDFsQkJiRWZwbXlZTEhJbkdickdLNHE0U1VsTVdSTzZiS3ow?=
+ =?utf-8?B?UDdsbnhzYytDSmtxS1lrN2haTGtWZ1hSKzFqcUZxcThFRDBQQmk4QlQwZ1Rm?=
+ =?utf-8?B?N05lSkZXTnNmWUpUUmxJZTlSakgzN2hzdk5xSUhiQnRBY0FjczJGL0VpV21x?=
+ =?utf-8?B?ZnlBYjhhU2VNbkJkUGdhYWZyYXlxZDYrcTJEOHZONXlraHBaTDk3ZTdIeGZz?=
+ =?utf-8?B?Q0QrcnkxR2RDUUNGekFIK3c0eHN6UlllRUtxckhBM0NXVWEyUkcrWVJobEh3?=
+ =?utf-8?B?Tkk3eWpJV2NwbGV1dDVOK2lrY0NucUNheWhVaU1XM1BwYnA5SXZoVGhyZEFr?=
+ =?utf-8?B?V3BiSUUwa0JTdG40djBjdHQ4cE1oa01VcTJLb3c5SUt4OUI4S1JVZTU5VGtm?=
+ =?utf-8?Q?3V0REbPKadDMS9Gv2/emQSz5lq6PdM=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:KL1PR0601MB4180.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE; SFS:(13230040)(366016)(1800799024)(376014)(38070700018); DIR:OUT;
+ SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?OEFsMmdpWEVacy9Vb21IZDQrYlhNemJDaytZS3VKYys1QzlwanhxYWpDYW9I?=
+ =?utf-8?B?dHV2d0RBTVRjQWhNdTN0a09mSFpJQ0t0cXdoaXBMUEZUOVh0TThKc3VrSDY0?=
+ =?utf-8?B?R3BzU3pwQ1oxVmNJa1B2RFRrK3MvUHZrMkFIZjRGamR6SXVIME4xOFB2WVYz?=
+ =?utf-8?B?NmNmYzFHSlMwRTBOdUlLbElCT0tmNFluTHUzQmRldmJYRWZEcnFXa2R0RTNF?=
+ =?utf-8?B?Rjh3U0U2TUF0bFlWdjlZTnhKSXBZajJmWndWaldkNy9UU20rUXU0UXJJcDdC?=
+ =?utf-8?B?c0FxRUROS3cwTEw1MDJsM0NGTDNldDhab3dzck1TR2hZakZKZDJhek1tei9t?=
+ =?utf-8?B?M0dNV0NXUVQ3SDhDN3QzK0krL1JkZGU4UnlLM296aThib0hkYmwrNG4zVnE2?=
+ =?utf-8?B?ZnlZVlF1Q1A3L0ZNQlQ3SVFRMWROZGVDZ2lKZGl2Z0xHeWxrM25hT3BHNmov?=
+ =?utf-8?B?QWpocm0rSTBvZzROL2tuTjl5YVpia0poTWtJbmxIZXpuVUpzak9uOExEVnpN?=
+ =?utf-8?B?RjRSTWxlSFN5NEIybGRLcllETXJXdFNQT0E3NDllTVFMMWxzbm1mdGMrWkVT?=
+ =?utf-8?B?NU1oaTVINkd3U2duNzRzSHNjYmpJYnN2SnhXVHMzVVFxTkdBclRZZmN2QzB3?=
+ =?utf-8?B?RDVHbnMxUHpraThUbys5NHJ0UlVNdGcrZGJOMWxQYWZCT01ad0ZWQ2x5TjZZ?=
+ =?utf-8?B?SFV4YU95RjVJQTA5ekhZNWw2eDBRT1RJNUV6SGpnMDV6UWV3R1hrMUdpYVBO?=
+ =?utf-8?B?NXhkaEtDU2JzNkI4WUwzNGp2L3JPLzlBSUJVZGdRQU5ucWVnZWxFSWRnVzgx?=
+ =?utf-8?B?ckNhcW5ZeDU4K21qNTQvQWY3YU1mY2dGRWZyNmpLU0VDWUZXdW9vN3FZYndR?=
+ =?utf-8?B?V2NaWkt6Q1BDemR6dXFmNGsvdTF5ek93YmlFQkdseG1hUG9LOTJ3M1dCTFpi?=
+ =?utf-8?B?YUJzT2ZoN2dyeTJlYjNJRm9CSTJxb1VrdHdNK3lLbTVIblduWFlFTFFPS1dh?=
+ =?utf-8?B?MWdXb1M5VVdwWSs4Uk5MdCtKTGVHTnZ6U2h3KzFjUWRjRCs4Wnc4c2ljSnBZ?=
+ =?utf-8?B?aGl1bWNMVHR2ei9mc0xCVWFHaVQ4c091REoxQjRVNXJuMDRVTDlnVkdrQ01l?=
+ =?utf-8?B?aStpejFqaEFpcGtaWng0RURVMkN6TjBlcVVJVlZRTzNSREhUUFR1T2tVL3B5?=
+ =?utf-8?B?c2VQcWVZZkN0REdBb3dLbzh0USs4bGVjekt5ck1xOWYxZE1LcmR5OWhtZlJs?=
+ =?utf-8?B?a3JQb3pYS0FXZStMTnNoSEwvUk1BTWJtaVlqZG01TmNKNlZoRFVTZnJZUUVW?=
+ =?utf-8?B?ZDZ0ODY2V09mV1E3VUJKZS9WWVJkSWFoeEw3azFFcHRFRE9tUHEvQkhka1Fo?=
+ =?utf-8?B?RVBHNEV6YzFQQXdaV1hueHR5V0NSYVlReVVsT1pDTzEyM0x1TW5LVm0ycW1B?=
+ =?utf-8?B?UzViWTNyZkxnUGRkcG4wdStaTjJOWXVhRVR2Y2VFYnZETnBNd1lINlgrSlUy?=
+ =?utf-8?B?c1FOejVQTEJodWt6SHh1Y2pWRGl6bTlZOTEwbVF4ZTZCSDBacnRkeUs0cS9E?=
+ =?utf-8?B?dFloTWRLTUdad0ZHbW1vcFRyWDVJZlo5ZzIxYTkxMURYVXNiL0twWWRWSGEr?=
+ =?utf-8?B?YTRXaUVjODdTUFVyK3ZCQjJucmhGb3M3Mjg2emQyd3d2OEdnc1lRdlp2U2NL?=
+ =?utf-8?B?RW5iY0ZXbFBHK2NnZzFDdVR4NW9GUmFqWlRTcFFLazY3TjEzYU1DeXlXeUJR?=
+ =?utf-8?B?UC81UW5SOFFQWUZReXdIaHBHeUpJSm96U3crSTk2Mk04djFkK29iakExbEta?=
+ =?utf-8?B?ZlF2TVVkVm0zRWhsUnpDYm1BekVBWDJNWWVSMWxQZk1QRXdOUTdISW1Lanpz?=
+ =?utf-8?B?QlVSSTNhcnRzMjVkNmpaY3RTV3hMZjA5Nk9OYWYwNGQ4cjRwK1dSc2JuOUtP?=
+ =?utf-8?B?TWV6YVV3NlZndUdDQytTRnQvSlUwSHhrN2Fua1FpaFIxaVhlNGRINkRCazVQ?=
+ =?utf-8?B?NWJ2UThPUm52M2VpcFJzQ0dNQXpaeWduRVFBZWVsb2YyVWlJWFc1SXpkaHF4?=
+ =?utf-8?B?dmE4ZGE3MndxeGIxY1JaZSs4YTFWSzhESTJqbTJyNmVjcG5OT1k5c2YxL3BX?=
+ =?utf-8?Q?XYkiF+Iy3b8QrSL6xN62bYsEd?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 00/24] APCI PCI Hotplug support on ARM
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com
-References: <20250428102628.378046-1-eric.auger@redhat.com>
- <6a52f974-3e13-49ba-bfeb-e30e683e4ce5@linaro.org>
- <5e24182d-a8bc-41fa-9741-6caecaa0c12e@redhat.com>
- <b409baa6-8834-4841-a544-ee8055c54051@linaro.org>
-Content-Language: en-US
-In-Reply-To: <b409baa6-8834-4841-a544-ee8055c54051@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::644;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x644.google.com
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR0601MB4180.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 31a28bff-bdfc-4c5e-fe87-08dd8d170c58
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 May 2025 03:27:08.6950 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: fyZbW+xh+D2pDtaOntVrRfLPaPykhWyAfjaDdLUssDnlBJTkiDMlA3dvu4zBWGszT0ZoyH3ZGO4mPHEKEiBL7m9WdR3IsO/C//aUBI6UV00=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY1PPF538B52D78
+Received-SPF: pass client-ip=2a01:111:f403:c405::7;
+ envelope-from=steven_lee@aspeedtech.com;
+ helo=TYDPR03CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xkqd5g/nzKDq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: FRNHag/YgmLR
 
-Hi Eric,
-
-On 5/6/25 21:51, Gustavo Romero wrote:
-> Hi Eric,
-> 
-> On 5/6/25 12:58, Eric Auger wrote:
->> Hi Gustavo,
->>
->> On 5/5/25 3:26 PM, Gustavo Romero wrote:
->>> Hi Eric,
->>>
->>> On 4/28/25 07:25, Eric Auger wrote:
->>>> This series enables APCI PCI hotplug/hotunplug on ARM
->>>> and makes it default for 10.1 machine type. This aligns with
->>>> x86 q35 machine. Expected benefits should be similar to
->>>> those listed in [1].
->>>>
->>>> The infrastructure used in x86 is heavily reused and a
->>>> huge part of the series consists in moving code from
->>>> hw/i386/acpi-build.c to a generic place and slightly
->>>> adapting it to make it usable on ARM. The DSDT table is
->>>> augmented to support ACPI PCI hotplug elements.
->>>>
->>>> On ARM we use use a GED event to notify the OS about
->>>> hotplug events.
->>>>
->>>> I have not noticed any tests/qtest/bios-tables-test failures
->>>> neither on x86 nor ARM. x86 DSDT table has not changed.
->>>> ARM DSDT table definitively has but there are no tests
->>>> impacted. ARM misses hotplug tests that do exist on x86. This
->>>> most probably should be considered in the future.
->>>>
->>>> Best Regards
->>>>
->>>> Eric
->>>>
->>>> This series can be found at:
->>>> https://github.com/eauger/qemu/tree/arm-acpi-pcihp-rfc
->>>>
->>>> [1] [PATCH v6 0/6] Use ACPI PCI hot-plug for Q35
->>>> https://lore.kernel.org/all/20210713004205.775386-1-jusual@redhat.com/
->>>
->>> I've just started to review your series and went to a quick smoke test
->>> by hotplugging a net adapter and got the following kernel internal error:
->>>
->>> (qemu) device_add virtio-net-pci,bus=pcie.1,addr=0,id=na
->>> (qemu) [   64.165411] pci 0000:01:00.0: [1af4:1041] type 00 class
->>> 0x020000
->>> [   64.165895] pci 0000:01:00.0: reg 0x14: [mem 0x00000000-0x00000fff]
->>> [   64.166259] pci 0000:01:00.0: reg 0x20: [mem 0x00000000-0x00003fff
->>> 64bit pref]
->>> [   64.166658] pci 0000:01:00.0: reg 0x30: [mem 0x00000000-0x0003ffff
->>> pref]
->>> [   64.167153] pci 0000:01:00.0: enabling Extended Tags
->>> [   64.179972] Internal error: synchronous external abort:
->>> 0000000096000050 [#1] SMP
->>> [   64.180719] Modules linked in: aes_ce_blk aes_ce_cipher polyval_ce
->>> polyval_generic ghash_ce gf128mul sha2_ce binfmt_misc sha256_arm64
->>> sha1_ce nls_ascii nls_cp437 vfat fat evdev cfg80211 rfkill loop fuse
->>> efi_pstore drm dm_mod dax configfs efivarfs qemu_fw_cfg ip_tables
->>> x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic virtio_scsi
->>> virtio_net scsi_mod net_failover failover virtio_blk scsi_common
->>> crct10dif_ce crct10dif_common virtio_pci virtio_pci_legacy_dev
->>> virtio_pci_modern_dev virtio_mmio
->>> [   64.183656] CPU: 0 PID: 23 Comm: kworker/u2:1 Not tainted
->>> 6.1.0-30-arm64 #1  Debian 6.1.124-1
->>> [   64.184071] Hardware name: QEMU QEMU Virtual Machine, BIOS
->>> edk2-stable202408-prebuilt.qemu.org 08/13/2024
->>> [   64.184759] Workqueue: kacpi_hotplug acpi_hotplug_work_fn
->>> [   64.185320] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS
->>> BTYPE=--)
->>> [   64.185737] pc : acpi_ex_system_memory_space_handler+0x290/0x300
->>> [   64.186175] lr : acpi_ev_address_space_dispatch+0x124/0x334
->>> [   64.186490] sp : ffff80000a6bb3b0
->>> [   64.186663] x29: ffff80000a6bb3b0 x28: ffff0003fcbb08b8 x27:
->>> 0000000000000000
->>> [   64.187126] x26: ffff0003fcbb0288 x25: ffff80000a6bb568 x24:
->>> 0000000000000001
->>> [   64.187499] x23: ffff80000a6bb568 x22: 0000000000000004 x21:
->>> ffff0000c206cb00
->>> [   64.187885] x20: 00000000090c0014 x19: 0000000000000020 x18:
->>> 0000000000000000
->>> [   64.188265] x17: 0000000000000000 x16: 0000000000000000 x15:
->>> 0000000000000000
->>> [   64.188640] x14: 0000000000000000 x13: 4d43c3194dea1791 x12:
->>> 4d7a3553e5c937d0
->>> [   64.189003] x11: 0000000000000001 x10: 0000000000000000 x9 :
->>> ffff800008735b34
->>> [   64.189383] x8 : 0000000000000001 x7 : ffff80000873c850 x6 :
->>> 00000000000000f8
->>> [   64.189778] x5 : ffff0000c206cb00 x4 : 0000000000000000 x3 :
->>> 00000000090c0018
->>> [   64.190163] x2 : ffff80000a9af014 x1 : 00000000090c0018 x0 :
->>> 0000000000000001
->>> [   64.190734] Call trace:
->>> [   64.191086]  acpi_ex_system_memory_space_handler+0x290/0x300
->>> [   64.191696]  acpi_ev_address_space_dispatch+0x124/0x334
->>> [   64.192042]  acpi_ex_access_region+0xe4/0x2e0
->>> [   64.192287]  acpi_ex_field_datum_io+0x88/0x200
->>> [   64.192509]  acpi_ex_write_with_update_rule+0xd4/0x120
->>> [   64.192793]  acpi_ex_insert_into_field+0x210/0x2b0
->>> [   64.193048]  acpi_ex_write_data_to_field+0xa0/0x190
->>> [   64.193298]  acpi_ex_store_object_to_node+0x150/0x240
->>> [   64.193527]  acpi_ex_store+0x144/0x300
->>> [   64.193726]  acpi_ex_opcode_1A_1T_1R+0x218/0x580
->>> [   64.193971]  acpi_ds_exec_end_op+0x24c/0x4b0
->>> [   64.194227]  acpi_ps_parse_loop+0x100/0x6a0
->>> [   64.194477]  acpi_ps_parse_aml+0x94/0x3b0
->>> [   64.194674]  acpi_ps_execute_method+0x128/0x25c
->>> [   64.194922]  acpi_ns_evaluate+0x1f0/0x2d0
->>> [   64.195148]  acpi_evaluate_object+0x138/0x2d0
->>> [   64.195380]  acpi_evaluate_dsm+0xb8/0x134
->>> [   64.195613]  acpi_check_dsm+0x34/0xdc
->>> [   64.195822]  smbios_attr_is_visible+0x5c/0xb0
->>> [   64.196089]  internal_create_group+0xd0/0x3d0
->>> [   64.196335]  internal_create_groups+0x58/0xe0
->>> [   64.196584]  sysfs_create_groups+0x20/0x30
->>> [   64.196813]  device_add_groups+0x18/0x2c
->>> [   64.197039]  bus_add_device+0x48/0x160
->>> [   64.197260]  device_add+0x3a4/0x85c
->>> [   64.197463]  pci_device_add+0x308/0x660
->>> [   64.197680]  pci_scan_single_device+0xe4/0x114
->>> [   64.197941]  pci_scan_slot+0x70/0x1fc
->>> [   64.198155]  acpiphp_rescan_slot+0x90/0xa4
->>> [   64.198366]  acpiphp_hotplug_notify+0x2a8/0x300
->>> [   64.198584]  acpi_device_hotplug+0x138/0x4c0
->>> [   64.198819]  acpi_hotplug_work_fn+0x2c/0x4c
->>> [   64.199045]  process_one_work+0x1f4/0x460
->>> [   64.199277]  worker_thread+0x188/0x4e0
->>> [   64.199492]  kthread+0xe0/0xe4
->>> [   64.199671]  ret_from_fork+0x10/0x20
->>> [   64.200114] Code: f90002e0 52800000 17ffff97 f94002e0 (b9000040)
->>> [   64.200820] ---[ end trace 0000000000000000 ]---
->>>
->>> (qemu)
->>>
->>> This is a Debian Bookworm stock kernel 6.1. I built QEMU from your GH
->>> branch.
->>>
->>> The machine was started with:
->>>
->>> ./qemu-system-aarch64 -m 16G -nographic -machine
->>> type=virt,gic-version=max -cpu cortex-a57 -initrd
->>> /mnt/initrd.img-6.1.0-30-arm64 -kernel /mnt/vmlinuz-6.1.0-30-arm64
->>> -append "root=/dev/vda1 console=ttyAMA0,115200 acpi=force" -device
->>> virtio-scsi-pci -device virtio-blk-pci,drive=root -drive
->>> if=none,id=root,file=/mnt/debian-12-nocloud-arm64.qcow2 -device
->>> pcie-root-port,id=pcie.1,chassis=1,slot=1 -bios
->>> ./pc-bios/edk2-aarch64-code.fd
->>>
->>> ./pc-bios/edk2-aarch64-code.fd is the one found under ./build dir, so
->>> nothing special.
->>
->> I have just tested debian-12-nocloud-arm64.qcow2 which features
->> 6.1.0-34-arm64 + edk2-aarch64-code.fd and I am able to
->> hotplug/hot-unplug the virtio-net-pci device. Can you retry without
->>
->> -initrd /mnt/initrd.img-6.1.0-30-arm64 -kernel
->> /mnt/vmlinuz-6.1.0-30-arm64 -append "root=/dev/vda1
->> console=ttyAMA0,115200 acpi=force" ?
-> 
-> Sure, so I got the same internal error without passing the kernel, the initrd,
-> and the append command.
-> 
-> 
-> I also tried with a pristine Debian .qcow2 taken from:
-> 
-> https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-nocloud-arm64.qcow2
-> 
-> I'm building your Github branch:
-> 
-> gromero@gromero0:/mnt/git/qemu_/build$ git branch -vv | grep eauger
-> * arm-acpi-pcihp-rfc        cf92b293ff [eauger/arm-acpi-pcihp-rfc] hw/arm/virt: Use ACPI PCI hotplug by default
-> gromero@gromero0:/mnt/git/qemu_/build$ git log --oneline -1
-> cf92b293ff (HEAD -> arm-acpi-pcihp-rfc, eauger/arm-acpi-pcihp-rfc) hw/arm/virt: Use ACPI PCI hotplug by default
-> 
-> I tried in a pristine ./build dir.
-> 
-> QEMU options:
-> 
-> gromero@gromero0:/mnt/git/qemu_/build$ ./qemu-system-aarch64 -m 16G -nographic -machine type=virt,gic-version=max -cpu max -drive if=none,file=/mnt/debian/debian-12-nocloud-arm64.qcow2,format=qcow2,id=hd -device virtio-blk-device,drive=hd -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1,addr=0x2.0x0 -bios ./pc-bios/edk2-aarch64-code.fd
-> UEFI firmware (version edk2-stable202408-prebuilt.qemu.org built at 16:28:50 on Sep 12 2024)
-> 
-> gromero@gromero0:/mnt/git/qemu_/build$ md5sum ./pc-bios/edk2-aarch64-code.fd
-> 3426cd25efb1593f86352ec0c61d66f5  ./pc-bios/edk2-aarch64-code.fd
-> 
-> and I get the same error:
-> 
-> root@localhost:~# QEMU 10.0.50 monitor - type 'help' for more information
-> (qemu) device_add virtio-net-pci,bus=pcie.1,addr=0,id=na
-> (qemu) [   56.865284] pci 0000:01:00.0: [1af4:1041] type 00 class 0x020000
-> [   56.866620] pci 0000:01:00.0: reg 0x14: [mem 0x00000000-0x00000fff]
-> [   56.867711] pci 0000:01:00.0: reg 0x20: [mem 0x00000000-0x00003fff 64bit pref]
-> [   56.868287] pci 0000:01:00.0: reg 0x30: [mem 0x00000000-0x0003ffff pref]
-> [   56.869143] pci 0000:01:00.0: enabling Extended Tags
-> [   56.900481] Internal error: synchronous external abort: 0000000096000050 [#1] SMP
-> [   56.900911] Modules linked in: aes_ce_blk binfmt_misc aes_ce_cipher polyval_ce polyval_generic ghash_ce gf128mul sha3_ce sha3_generic sha512_ce sha512_arm64 sha2_ce sha256_arm64 sha1_ce nls_ascii nls_cp437 vfat fat evdev cfg80211 rfkill loop fuse drm efi_pstore dm_mod dax configfs efivarfs qemu_fw_cfg ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic virtio_net net_failover failover virtio_blk crct10dif_ce crct10dif_common virtio_pci virtio_pci_legacy_dev virtio_pci_modern_dev virtio_mmio
-> [   56.903132] CPU: 0 PID: 10 Comm: kworker/u2:0 Not tainted 6.1.0-34-arm64 #1  Debian 6.1.135-1
-> [   56.903753] Hardware name: QEMU QEMU Virtual Machine, BIOS edk2-stable202408-prebuilt.qemu.org 08/13/2024
-> [   56.904126] Workqueue: kacpi_hotplug acpi_hotplug_work_fn
-> [   56.904877] pstate: 60402005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> [   56.905085] pc : acpi_ex_system_memory_space_handler+0x290/0x300
-> [   56.905306] lr : acpi_ev_address_space_dispatch+0x124/0x334
-> [   56.905471] sp : ffff80000809b3b0
-> [   56.905580] x29: ffff80000809b3b0 x28: ffff0003fcb852d0 x27: 0000000000000000
-> [   56.905856] x26: ffff0003fcb85558 x25: ffff80000809b568 x24: 0000000000000001
-> [   56.906092] x23: ffff80000809b568 x22: 0000000000000004 x21: ffff0000c1644980
-> [   56.906333] x20: 00000000090c0014 x19: 0000000000000020 x18: 0000000000000000
-> [   56.906557] x17: 0000000000000000 x16: 0000000000000000 x15: 0000000000000000
-> [   56.906793] x14: 0000000000000000 x13: ffffb8324c78ebb0 x12: 0000000000000001
-> [   56.907016] x11: 000000000000002e x10: ffffb8324cab6e20 x9 : ffffb8324b2076b4
-> [   56.907236] x8 : 0000000000000001 x7 : ffffb8324b20e3d0 x6 : 00000000000000f8
-> [   56.907473] x5 : ffff0000c1644980 x4 : 0000000000000000 x3 : 00000000090c0018
-> [   56.907705] x2 : ffff800008837014 x1 : 00000000090c0018 x0 : 0000000000000001
-> [   56.908026] Call trace:
-> [   56.908226]  acpi_ex_system_memory_space_handler+0x290/0x300
-> [   56.908540]  acpi_ev_address_space_dispatch+0x124/0x334
-> [   56.908736]  acpi_ex_access_region+0xe4/0x2e0
-> [   56.908870]  acpi_ex_field_datum_io+0x88/0x200
-> [   56.909003]  acpi_ex_write_with_update_rule+0xd4/0x120
-> [   56.909152]  acpi_ex_insert_into_field+0x210/0x2b0
-> [   56.909285]  acpi_ex_write_data_to_field+0xa0/0x190
-> [   56.909426]  acpi_ex_store_object_to_node+0x150/0x240
-> [   56.909569]  acpi_ex_store+0x144/0x300
-> [   56.909688]  acpi_ex_opcode_1A_1T_1R+0x218/0x580
-> [   56.909824]  acpi_ds_exec_end_op+0x24c/0x4b0
-> [   56.909953]  acpi_ps_parse_loop+0x100/0x6a0
-> [   56.910074]  acpi_ps_parse_aml+0x94/0x3b0
-> [   56.910197]  acpi_ps_execute_method+0x128/0x25c
-> [   56.910331]  acpi_ns_evaluate+0x1f0/0x2d0
-> [   56.910445]  acpi_evaluate_object+0x138/0x2d0
-> [   56.910573]  acpi_evaluate_dsm+0xb8/0x134
-> [   56.910696]  acpi_check_dsm+0x34/0xdc
-> [   56.910809]  smbios_attr_is_visible+0x5c/0xb0
-> [   56.910937]  internal_create_group+0xd0/0x3d0
-> [   56.911066]  internal_create_groups+0x58/0xe0
-> [   56.911194]  sysfs_create_groups+0x20/0x30
-> [   56.911315]  device_add_groups+0x18/0x2c
-> [   56.911435]  bus_add_device+0x48/0x160
-> [   56.911552]  device_add+0x3a4/0x85c
-> [   56.911678]  pci_device_add+0x308/0x660
-> [   56.911803]  pci_scan_single_device+0xe4/0x114
-> [   56.911937]  pci_scan_slot+0x70/0x1fc
-> [   56.912039]  acpiphp_rescan_slot+0x90/0xa4
-> [   56.912161]  acpiphp_hotplug_notify+0x2a8/0x300
-> [   56.912290]  acpi_device_hotplug+0x138/0x4c0
-> [   56.912428]  acpi_hotplug_work_fn+0x2c/0x4c
-> [   56.912549]  process_one_work+0x1f4/0x460
-> [   56.912679]  worker_thread+0x188/0x4e0
-> [   56.912792]  kthread+0xe0/0xe4
-> [   56.912892]  ret_from_fork+0x10/0x20
-> [   56.913136] Code: f90002e0 52800000 17ffff97 f94002e0 (b9000040)
-> [   56.913532] ---[ end trace 0000000000000000 ]---
-> 
-> 
-> I'm wondering if we are using the same  ./pc-bios/edk2-aarch64-code.fd, although
-> I can't see how it would cause such error.
-
-hmm actually I'm able to properly hotplug the network device using the exactly
-same sw stack as above (your branch, Debian 12, edk2) but running on an arm64 host.
-
-It seems your running on a arm64 host since you're passing --enable-kvm. Do you
-mind trying it on a x86_64 or without --enable-kvm on the arm64 host? I'm able to
-reproduce it on arm64 host without --enable-kvm but not with --enable-kvm passed to QEMU.
-
-
-Cheers,
-Gustavo
+SGkgQ8OpZHJpYywgUGV0ZXIsDQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJv
+bTogQ8OpZHJpYyBMZSBHb2F0ZXIgPGNsZ0ByZWRoYXQuY29tPg0KPiBTZW50OiBUdWVzZGF5LCBN
+YXkgNiwgMjAyNSAxMToxNSBQTQ0KPiBUbzogUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBs
+aW5hcm8ub3JnPg0KPiBDYzogcWVtdS1hcm1Abm9uZ251Lm9yZzsgcWVtdS1kZXZlbEBub25nbnUu
+b3JnOyBTdGV2ZW4gTGVlDQo+IDxzdGV2ZW5fbGVlQGFzcGVlZHRlY2guY29tPjsgSmFtaW4gTGlu
+IDxqYW1pbl9saW5AYXNwZWVkdGVjaC5jb20+DQo+IFN1YmplY3Q6IFJlOiBbUFVMTCAyMi8yM10g
+dGVzdHMvZnVuY3Rpb24vYXNwZWVkOiBBZGQgZnVuY3Rpb25hbCB0ZXN0IGZvcg0KPiBhc3QyNzAw
+ZmMNCj4gDQo+IE9uIDUvNi8yNSAxNjoyMiwgUGV0ZXIgTWF5ZGVsbCB3cm90ZToNCj4gPiBPbiBN
+b24sIDUgTWF5IDIwMjUgYXQgMTA6MTIsIEPDqWRyaWMgTGUgR29hdGVyIDxjbGdAcmVkaGF0LmNv
+bT4gd3JvdGU6DQo+ID4+DQo+ID4+IEZyb206IFN0ZXZlbiBMZWUgPHN0ZXZlbl9sZWVAYXNwZWVk
+dGVjaC5jb20+DQo+ID4+DQo+ID4+IEludHJvZHVjZSBhIG5ldyB0ZXN0IHN1aXRlIGZvciBhc3Qy
+NzAwZmMgbWFjaGluZS4NCj4gPj4gUmVuYW1lIHRoZSBvcmlnaW5hbCB0ZXN0X2FhcmNoNjRfYXNw
+ZWVkLnB5IHRvDQo+ID4+IHRlc3RfYWFyY2g2NF9hc3BlZWRfYXN0MjcwMC5weS4NCj4gPj4NCj4g
+Pj4gU2lnbmVkLW9mZi1ieTogU3RldmVuIExlZSA8c3RldmVuX2xlZUBhc3BlZWR0ZWNoLmNvbT4N
+Cj4gPj4gQ2hhbmdlLUlkOiBJMzg1NWY1NWM5ZjZlNWNjYTEyNzBjMTc5NDQ1ZjU0OWY4ZDgxZjM2
+Yw0KPiA+PiBSZXZpZXdlZC1ieTogQ8OpZHJpYyBMZSBHb2F0ZXIgPGNsZ0ByZWRoYXQuY29tPg0K
+PiA+PiBMaW5rOg0KPiA+PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9xZW11LWRldmVsLzIwMjUw
+NTA1MDMwNjE4LjM2MTIwNDItMS1zdGV2ZW5fbGUNCj4gPj4gZUBhc3BlZWR0ZWNoLmNvbSBbIGNs
+ZzogQWRkZWQgbmV3IHRlc3RzIGluIG1lc29uLmJ1aWxkIF0NCj4gPj4gU2lnbmVkLW9mZi1ieTog
+Q8OpZHJpYyBMZSBHb2F0ZXIgPGNsZ0ByZWRoYXQuY29tPg0KPiA+DQo+ID4gSGk7IHRoaXMgbmV3
+IHRlc3Qgc2VlbXMgdG8gdHJpZ2dlciBhbiBlcnJvciBpbiBhIGNsYW5nLXNhbml0aXplcg0KPiA+
+IGJ1aWxkOyB3b3VsZCB5b3UgbWluZCBoYXZpbmcgYSBsb29rPw0KPiANCj4geWVzLiBJIGNhbiBy
+ZXByb2R1Y2UuIEkgd2lsbCBjaGVjayBuZXh0IHdlZWsuDQo+IA0KDQpUaGUgaXNzdWUgaXMgcmVs
+YXRlZCB0byBpbXByb3BlciBNQUMgY29uZmlndXJhdGlvbiBpbiB0aGUgYXN0MjcwMGZjIG1hY2hp
+bmUuDQpJIHdpbGwgc3VibWl0IGEgbmV3IHBhdGNoIHNlcmllcyB0byBmaXggaXQuDQoNClJlZ2Fy
+ZHMsDQpTdGV2ZW4NCiANCj4gPg0KPiA+ICAgT3V0cHV0OiBxZW11LXN5c3RlbS1hYXJjaDY0OiB3
+YXJuaW5nOiBodWIgcG9ydCBodWIwcG9ydDAgaGFzIG5vIHBlZXINCj4gPiBxZW11LXN5c3RlbS1h
+YXJjaDY0OiB3YXJuaW5nOiBodWIgMCB3aXRoIG5vIG5pY3MNCj4gPiBxZW11LXN5c3RlbS1hYXJj
+aDY0OiB3YXJuaW5nOiBuZXRkZXYgaHViMHBvcnQwIGhhcyBubyBwZWVyDQo+ID4gcWVtdS1zeXN0
+ZW0tYWFyY2g2NDogd2FybmluZzogbmljIGZ0Z21hYzEwMC4wIGhhcyBubyBwZWVyDQo+ID4gcWVt
+dS1zeXN0ZW0tYWFyY2g2NDogd2FybmluZzogbmljIGZ0Z21hYzEwMC4xIGhhcyBubyBwZWVyDQo+
+ID4gcWVtdS1zeXN0ZW0tYWFyY2g2NDogd2FybmluZzogbmljIGZ0Z21hYzEwMC4yIGhhcyBubyBw
+ZWVyDQo+ID4gcWVtdS1zeXN0ZW0tYWFyY2g2NDogd2FybmluZzogcmVxdWVzdGVkIE5JQyAoI25l
+dDAzOCwgbW9kZWwNCj4gPiB1bnNwZWNpZmllZCkgd2FzIG5vdCBjcmVhdGVkIChub3Qgc3VwcG9y
+dGVkIGJ5IHRoaXMgbWFjaGluZT8pDQo+ID4gLi4vLi4vc3lzdGVtL21lbW9yeS5jOjI3OTg6Mjc6
+IHJ1bnRpbWUgZXJyb3I6IG51bGwgcG9pbnRlciBwYXNzZWQgYXMNCj4gPiBhcmd1bWVudCAyLCB3
+aGljaCBpcyBkZWNsYXJlZCB0byBuZXZlciBiZSBudWxsDQo+ID4gL3Vzci9pbmNsdWRlL3N0ZGxp
+Yi5oOjk2Mjo2OiBub3RlOiBub25udWxsIGF0dHJpYnV0ZSBzcGVjaWZpZWQgaGVyZQ0KPiA+ICAg
+ICAgIzAgMHg2MTdlNDEyMWIxMTMgaW4gZmxhdHZpZXdfbG9va3VwDQo+ID4NCj4gL21udC9udm1l
+ZGlzay9saW5hcm8vcWVtdS1mcm9tLWxhcHRvcC9xZW11L2J1aWxkL2FybS1jbGFuZy8uLi8uLi9z
+eXN0ZW0vDQo+IG1lbW9yeS5jOjI3OTg6MTINCj4gPiAgICAgICMxIDB4NjE3ZTQxMjFiMTEzIGlu
+IG1lbW9yeV9yZWdpb25fZmluZF9yY3UNCj4gPg0KPiAvbW50L252bWVkaXNrL2xpbmFyby9xZW11
+LWZyb20tbGFwdG9wL3FlbXUvYnVpbGQvYXJtLWNsYW5nLy4uLy4uL3N5c3RlbS8NCj4gbWVtb3J5
+LmM6MjgzMzoxMA0KPiA+ICAgICAgIzIgMHg2MTdlNDEyMWE1YTkgaW4gbWVtb3J5X3JlZ2lvbl9m
+aW5kDQo+ID4NCj4gL21udC9udm1lZGlzay9saW5hcm8vcWVtdS1mcm9tLWxhcHRvcC9xZW11L2J1
+aWxkL2FybS1jbGFuZy8uLi8uLi9zeXN0ZW0vDQo+IG1lbW9yeS5jOjI4NjA6MTENCj4gPiAgICAg
+ICMzIDB4NjE3ZTQxMWMyMWVhIGluIHJvbV9jaGVja19hbmRfcmVnaXN0ZXJfcmVzZXQNCj4gPg0K
+PiAvbW50L252bWVkaXNrL2xpbmFyby9xZW11LWZyb20tbGFwdG9wL3FlbXUvYnVpbGQvYXJtLWNs
+YW5nLy4uLy4uL2h3L2NvcmUNCj4gL2xvYWRlci5jOjEzMTc6MTkNCj4gPiAgICAgICM0IDB4NjE3
+ZTQxMWQ1ZWM3IGluIHFkZXZfbWFjaGluZV9jcmVhdGlvbl9kb25lDQo+ID4NCj4gL21udC9udm1l
+ZGlzay9saW5hcm8vcWVtdS1mcm9tLWxhcHRvcC9xZW11L2J1aWxkL2FybS1jbGFuZy8uLi8uLi9o
+dy9jb3JlDQo+IC9tYWNoaW5lLmM6MTc1Njo5DQo+ID4gICAgICAjNSAweDYxN2U0MDNkNDg3NyBp
+biBxZW11X21hY2hpbmVfY3JlYXRpb25fZG9uZQ0KPiA+DQo+IC9tbnQvbnZtZWRpc2svbGluYXJv
+L3FlbXUtZnJvbS1sYXB0b3AvcWVtdS9idWlsZC9hcm0tY2xhbmcvLi4vLi4vc3lzdGVtL3YNCj4g
+bC5jOjI3ODI6NQ0KPiA+ICAgICAgIzYgMHg2MTdlNDAzZDQ4NzcgaW4gcW1wX3hfZXhpdF9wcmVj
+b25maWcNCj4gPg0KPiAvbW50L252bWVkaXNrL2xpbmFyby9xZW11LWZyb20tbGFwdG9wL3FlbXUv
+YnVpbGQvYXJtLWNsYW5nLy4uLy4uL3N5c3RlbS92DQo+IGwuYzoyODEwOjEwDQo+ID4gICAgICAj
+NyAweDYxN2U0MDNkOWEzYyBpbiBxZW11X2luaXQNCj4gPg0KPiAvbW50L252bWVkaXNrL2xpbmFy
+by9xZW11LWZyb20tbGFwdG9wL3FlbXUvYnVpbGQvYXJtLWNsYW5nLy4uLy4uL3N5c3RlbS92DQo+
+IGwuYzozODQ0OjkNCj4gPiAgICAgICM4IDB4NjE3ZTQxMzAxMTI2IGluIG1haW4NCj4gPg0KPiAv
+bW50L252bWVkaXNrL2xpbmFyby9xZW11LWZyb20tbGFwdG9wL3FlbXUvYnVpbGQvYXJtLWNsYW5n
+Ly4uLy4uL3N5c3RlbS8NCj4gbWFpbi5jOjcxOjUNCj4gPiAgICAgICM5IDB4N2ZhZjgyMDJhMWM5
+IGluIF9fbGliY19zdGFydF9jYWxsX21haW4NCj4gPiBjc3UvLi4vc3lzZGVwcy9ucHRsL2xpYmNf
+c3RhcnRfY2FsbF9tYWluLmg6NTg6MTYNCj4gPiAgICAgICMxMCAweDdmYWY4MjAyYTI4YSBpbiBf
+X2xpYmNfc3RhcnRfbWFpbiBjc3UvLi4vY3N1L2xpYmMtc3RhcnQuYzozNjA6Mw0KPiA+ICAgICAg
+IzExIDB4NjE3ZTNmOTIwNjU0IGluIF9zdGFydA0KPiA+DQo+ICgvbW50L252bWVkaXNrL2xpbmFy
+by9xZW11LWZyb20tbGFwdG9wL3FlbXUvYnVpbGQvYXJtLWNsYW5nL3FlbXUtc3lzdGUNCj4gPiBt
+LWFhcmNoNjQrMHgxNjFkNjU0KQ0KPiA+IChCdWlsZElkOiBmM2Y4YzJjYTgyMWU2OTU5MzdhNjE1
+YmVlMjkzYzRhNWEzMzZhNmJkKQ0KPiA+DQo+ID4gU1VNTUFSWTogVW5kZWZpbmVkQmVoYXZpb3JT
+YW5pdGl6ZXI6IHVuZGVmaW5lZC1iZWhhdmlvcg0KPiA+IC4uLy4uL3N5c3RlbS9tZW1vcnkuYzoy
+Nzk4OjI3DQo+ID4NCj4gPg0KPiA+IHRoYW5rcw0KPiA+IC0tIFBNTQ0KPiA+DQoNCg==

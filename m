@@ -1,112 +1,113 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp3668911njj;
-        Wed, 7 May 2025 02:08:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXK2AyN4eil95HtRd00fDBkRZ4TzYXqg0A7BDSdg6SOfz5COMYt5OXdmWzyURGcVGiEMts6GI9Aad6myA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFGw6LDzVJ23VQHwdLZRLJ8JY/lG8h6Mxr/hqsNnsR5RsNqXd6ZHCOIVKhqy7kHwoCDF4Pt
-X-Received: by 2002:a05:622a:1108:b0:48d:2fa6:3876 with SMTP id d75a77b69052e-49226eb577cmr32943811cf.8.1746608909562;
-        Wed, 07 May 2025 02:08:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746608909; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp3919298njj;
+        Wed, 7 May 2025 09:15:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVUOxZkAQYI4fdIHMu/rNXfqyp1yM+2sm0OZBs5z+t1p6+7jrbXmZpLmD87C+SXOXQaz7Go/Zlmsj74lA==@linaro.org
+X-Google-Smtp-Source: AGHT+IH2sdAHPh5RtCQ3lI6sQi57JOhxVTSZt2c1LNE84h6tMI0OXUvA3xvYv50w9MlLeZ12jId1
+X-Received: by 2002:a05:6102:158c:b0:4bb:9b46:3f87 with SMTP id ada2fe7eead31-4dc737cc2fbmr2589534137.6.1746634500998;
+        Wed, 07 May 2025 09:15:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746634500; cv=none;
         d=google.com; s=arc-20240605;
-        b=lHmsLpfrHEOSXG7Ws080CbKsb9TJjJC+WUHgGBs4uy8r+vHoqNsACH9ajmjfp9HJws
-         Jr2av3uBtPc++CZJfoeRLAWKcpPLpgijSZfx6gvMDaPeZo2tLlE4AVIFq4+aAeXE9g8j
-         dtSX3/YuhkWRaMlrFGLfgTBE/mKkRsVW0KzbDPOcEp+aCn6Sy/OSQU6ivRi2frcrpJrz
-         o/q29QgDB/zWDxwfqYpe+i2hjV3ZKmhabZ324Gvf+93nsjVetLIzIfHqbHmrVYNGEObs
-         dn6tnWgrOWr+g37WEor9NInpPm4bHRfmVUIswocctnQ4TLzZ0IZa/aKOQTbkbUR+5mcQ
-         RJ/A==
+        b=HeMc5gZM8OJweUuqAK+U4imA3eRwnSITi+2RfZsn/esBmqSC9A284ls/RrquH5Ql/m
+         10dCbYckomN+P0PvTVEonH/owRFrqDRRW5wpPgXLvclTwLV3h4YOzt6IJ3iHqUJa92cW
+         8ylW8uP/VyAkKrAE/cJQXeWPEO0YN7lxU/rdOwVq3gf10lVYTbYCRfQTe3u7gh2cQODn
+         sRDGGAvPPlny0/puofZPBIFUPMx0mk6ZgKmenLz7b8LWQLKohTZjl4vp/ViqHbR63FPC
+         Yhg3+HmhCVHl/aRZ2t7M13SX9htF/6EwjNakiFNoW0R9u0scuq3hDdhnDu1u2hESNvhd
+         JCxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to;
-        bh=x2k8/raJoNSVu8sF443Dpqc6Fr9x6XXq3kZPJk2DqRg=;
-        fh=5bOSaMxUPS5M8q+SL1uOg3Nb9ftaUpTpfAUd6waJ22c=;
-        b=B86/wEwvQKtedpPxsc4nBtTGv1oyCEG5HvM0ZIESfCEQN8xkHk0XQQsRW44SWqpvBF
-         DXzIg+W8pR7Y1FiKxUuuXKk0TlbNVBxmj19KAGxICemxTMj4bbjZKH9SfWvSBbTbz2Cv
-         eHMLy+lySDCAb4OteA/PIbJieQH4gLmw7lsxQqSUMLeNHQe/4uAMGDpYZTvqSv2AzxO0
-         4xwTc3RF/7YF3sN4YTeAENrc63DlYp0BzUjhG6qcLSTQTFOXKrxxvfpNDGgVMg4E7URp
-         ZNTFCNCQzrLOtvOG9jMHsfhYsdSwJhRK2VuI4i4Ik6mbFqOdMOsK7aBI71a2ccooF5aH
-         +3Cw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:mime-version:dkim-signature;
+        bh=Xuf152WHysRq+Z/dYsErZxczCzfSa1/+B94t6hcxHpU=;
+        fh=F8QvC3l6WZuFWVU35sh2bNu0yr+d79C+PwuX895jUyI=;
+        b=H2Ubs5OkVZEvzxJQ2dPc/lNDWFyVNI6EZ/VqzOUYS5AOkSHw4ztQc43nlTTPxxGchZ
+         DedEbfE8b5EV3wmLy31Sf1qMU1nSr4yZUv5d47mHQ5PSvB2J5QpioC/tw4K0e9HtS5NF
+         h8eeYx6U+2OM9UQ7YwQpPtnmPx/wV7108zSsb54/rF8LXM1o/nuHpuvKa+ia991NE+U5
+         X8E8s7TqY55hHMXri91kH3Ix0LnGpAIz9aYVlOzkpL4XluOx50BaeX2R8LjmjwuMUt/f
+         HTNvUHOULWcwS/Yt/D5UsDdsYCScwjruAGcgiXyzfaIMx2+1K5XVe/5ETdTTE8Yf+ClC
+         TyMg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gXewaCcE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4922126c2cdsi16561991cf.144.2025.05.07.02.08.29
+        by mx.google.com with ESMTPS id ada2fe7eead31-4daf2631366si3450086137.630.2025.05.07.09.15.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 May 2025 02:08:29 -0700 (PDT)
+        Wed, 07 May 2025 09:15:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gXewaCcE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uCalB-0002qK-AF; Wed, 07 May 2025 05:08:13 -0400
+	id 1uChPn-00022H-6F; Wed, 07 May 2025 12:14:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1uCako-0002JE-Hd; Wed, 07 May 2025 05:07:54 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1uCakj-0002sZ-VX; Wed, 07 May 2025 05:07:50 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZsprG3tStz6K9dp;
- Wed,  7 May 2025 16:50:38 +0800 (CST)
-Received: from frapeml500006.china.huawei.com (unknown [7.182.85.219])
- by mail.maildlp.com (Postfix) with ESMTPS id 9ED0D1400D9;
- Wed,  7 May 2025 16:50:51 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml500006.china.huawei.com (7.182.85.219) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 7 May 2025 10:50:51 +0200
-Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
- frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Wed, 7 May 2025 10:50:51 +0200
-To: Markus Armbruster <armbru@redhat.com>, Donald Dutile <ddutile@redhat.com>
-CC: Shameer Kolothum via <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
- <jgg@nvidia.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "berrange@redhat.com" <berrange@redhat.com>, "nathanc@nvidia.com"
- <nathanc@nvidia.com>, "mochs@nvidia.com" <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>,
- "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
- <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
-Subject: RE: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a PCIe RC
-Thread-Topic: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a PCIe RC
-Thread-Index: AQHbu1V0fvNxmQCU0kS/eGPfhGB2G7PFgqACgAB1wICAANEzi4AAFpHg
-Date: Wed, 7 May 2025 08:50:51 +0000
-Message-ID: <72f9043a73294bfc9b539ae9b94836d3@huawei.com>
-References: <20250502102707.110516-1-shameerali.kolothum.thodi@huawei.com>
- <20250502102707.110516-2-shameerali.kolothum.thodi@huawei.com>
- <877c2ut0zk.fsf@pond.sub.org>
- <e02e884b-0f3d-4426-8a67-2cbd23e80e8c@redhat.com>
- <87frhglwjl.fsf@pond.sub.org>
-In-Reply-To: <87frhglwjl.fsf@pond.sub.org>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.203.177.241]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <lebrongandalf@gmail.com>)
+ id 1uCgrn-0005ij-9g; Wed, 07 May 2025 11:39:27 -0400
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <lebrongandalf@gmail.com>)
+ id 1uCgrk-0000LO-H1; Wed, 07 May 2025 11:39:27 -0400
+Received: by mail-yb1-xb32.google.com with SMTP id
+ 3f1490d57ef6-e6e1cd3f1c5so30994276.0; 
+ Wed, 07 May 2025 08:39:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1746632362; x=1747237162; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=Xuf152WHysRq+Z/dYsErZxczCzfSa1/+B94t6hcxHpU=;
+ b=gXewaCcEAddckr+cf6EHWDXUgu+rybjR8AMd1Q7tKn8pr8xy8ZD7ZnTcfu4KXu3EeT
+ OCU5Blvce0QywbwWHjpTlAv+7QaCia0Ld53cg3UIPqzG1zO5rRtfMVKVbVEpvVysFBWW
+ O0cEQ93xou1EZnVcGgph80Pt2kZFf3UYoHd/scARtlY/PvyzLQSKDJk71s9+s8cEF5Tv
+ 6jU3XE/5Xeg7NfEyoDXns6iUyu8P4WR+7ctB49myHpGy0Ao31NJG3Q1uOn9ornTrgPy6
+ P35EAOeW4pVAKXAJV5DKA6hZUm4J5NVfz6kdevj2xpvA9vDO8n71bAzSLEonfemGvjQV
+ PGkg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1746632362; x=1747237162;
+ h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Xuf152WHysRq+Z/dYsErZxczCzfSa1/+B94t6hcxHpU=;
+ b=gxHBAs2TaL1MN3OWcShpnulQYmSNxBW6DEpvOpC0QTfxveIazk9quwdzH+Gct7IFw8
+ 79UJFtF5LZLfhCvT9L+w5twzo4jjYj+gDBX/byTimtPW+jYzhLBXKRXg6vsoZnNeJUEU
+ pK4FQ1eZlfK0INrT46LPqNkrr1f+C/JGrDlXHYYVulJb3cjrfZguMQZwJt0NOu/vw2GV
+ uE7bWKHf4v2PNdzuzG5tsGpw8iDkNJglAFLaxkNh5dFdNT/B6IxcWg6JwASHFlAo5cR7
+ rvZ3AWz8uOX0Ut0lxupAhtLmuXjKfmdA5cxA7l7IbjMSIql2aSJJy49GHXzTYSHxo5g7
+ k/Ag==
+X-Gm-Message-State: AOJu0Yx4SST5/7b8/u+Sk9U5yrQzXJa5yplVEG4YoPIZWqlsMgZU6Raa
+ bht8hEkhCHNtmB4URC20rjm1vHROlzm6pLEL0uPw+bq93+VneDGsa51TpaxTehTIy+sFXM61v2t
+ vQRs08RNCVDjI0ONWkChdbypakEzPgwhQQg==
+X-Gm-Gg: ASbGncvxFB6kuoMJi7QQKEY9051mhR7zXkihk2uO7Bl7BBTr3n+7dRNsquflEzkIlFk
+ QJhrZuijCjwbH/tibdmd5K6DyQjOJKlk53TMsvbyleuhv/qCRYO023SRto7E4tnuGq24hIXkYFy
+ NtuN72vpMdVY0YQ5/H3H02
+X-Received: by 2002:a25:f449:0:b0:e78:d3db:7e11 with SMTP id
+ 3f1490d57ef6-e78d3db8ab2mr2706685276.10.1746632361867; Wed, 07 May 2025
+ 08:39:21 -0700 (PDT)
 MIME-Version: 1.0
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+From: GanDalf LeBron <lebrongandalf@gmail.com>
+Date: Wed, 7 May 2025 23:39:11 +0800
+X-Gm-Features: ATxdqUEWTtV-j2xG-mwcdJmbs9Oa9ek--qlyiXJGYC9JMRznQTjPO8Rz3TyNkeA
+Message-ID: <CA+V5jYUjqDc-UWKvQrX24c+MKtm+zdx4YCWU036180A4rX4ybQ@mail.gmail.com>
+Subject: The current implementation status of ARM Secure SMMU in QEMU
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000007b808506348d8911"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
+ envelope-from=lebrongandalf@gmail.com; helo=mail-yb1-xb32.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 07 May 2025 12:14:33 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,122 +119,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9tNK6Muc1lGX
+X-TUID: Dk2Tu7yjOy11
 
+--0000000000007b808506348d8911
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+Hi there!
 
-> -----Original Message-----
-> From: Markus Armbruster <armbru@redhat.com>
-> Sent: Wednesday, May 7, 2025 8:17 AM
-> To: Donald Dutile <ddutile@redhat.com>
-> Cc: Shameer Kolothum via <qemu-devel@nongnu.org>; qemu-
-> arm@nongnu.org; Shameerali Kolothum Thodi
-> <shameerali.kolothum.thodi@huawei.com>; eric.auger@redhat.com;
-> peter.maydell@linaro.org; jgg@nvidia.com; nicolinc@nvidia.com;
-> berrange@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
-> smostafa@google.com; Linuxarm <linuxarm@huawei.com>; Wangzhou (B)
-> <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
-> Jonathan Cameron <jonathan.cameron@huawei.com>;
-> zhangfei.gao@linaro.org
-> Subject: Re: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a
-> PCIe RC
->=20
-> Donald Dutile <ddutile@redhat.com> writes:
->=20
-> [...]
->=20
-> > In this series, an iommu/smmu needs to be placed -BETWEEN- a sysbus
-> and a PCIe-tree,
-> > or step-wise, plug an smmuv3 into a sysbus, and a pcie tree/domain/RC
-> into an SMMUv3.
->=20
-> RC =3D root complex?
+I am writing to inquire about the current implementation status of Secure
+SMMU features in QEMU.
 
-Yes.
+I understand that non-secure SMMU emulation for general peripheral DMA
+(IOVA to PA translation and protection managed by the Normal World) is
+well-established in QEMU. However, my current understanding is that
+specific *Secure SMMU* functionality=E2=80=94where the SMMU's configuration=
+ and
+page tables are managed by Secure World software (e.g., at *Secure EL2)* to
+protect DMA for secure peripherals or confidential VMs=E2=80=94may not yet =
+be fully
+implemented.
 
->=20
-> > So, an smmu needs to be associated with a bus (tree), i.e., pcie.0, pci=
-e.1...
-> > One could model it as a PCIe device, attached at the pcie-RC ... but th=
-at's
-> not how it's modelled in ARM hw.
->=20
-> Physical ARM hardware?
->=20
-> Assuming the virtual devices and buses we're discussing model physical
-> devices and buses:
->=20
-> * What are the physical devices of interest?
->=20
-> * How are they wired together?  Which of the wires are buses, in
->   particular PCI buses?
+Could you please confirm or clarify this? Specifically, I'm interested in
+whether QEMU supports management of SMMU page tables and configurations by
+software running in Secure EL2?
 
-SMMUv3 is a platform device and its placement in a system is typically as b=
-elow
-for PCI devices,
+Any pointers to existing support, relevant discussions, patches, or roadmap
+information regarding Secure SMMU capabilities would be greatly appreciated=
+.
 
-+------------------+
-|   PCIe Devices   |
-+------------------+
-         |
-         v
-  +-------------+      +---------------+
-  |  PCIe RC A  |<---->| Interconnect  |
-  +-------------+      +---------------+
-                               |
-                               |
-                        +------v---+
-                        | SMMUv3.A |
-                        | (IOMMU)  |
-                        +----+-----+
-                             |
-                             v
-                     +-------+--------+
-                     |   System RAM   |
-                     +----------------+
-=20
-This patch is attempting to establish that association between the PCIe RC =
-and=20
-the SMMUv3 device so that Qemu can build the ACPI tables/DT iommu mappings =
-=20
-for the SMMUv3 device.
+Thank you for your time and efforts.
 
-> > SMMU's are discovered via ACPI tables.
-> >
-> > That leaves us back to the 'how to associate an SMMUv3 to a PCIe
-> tree(RC)',
-> > and that leads me to the other discussion & format I saw btwn Eric &
-> Shameer:
-> >  -device arm-smmv3,id=3Dsmmuv3.3
-> >  -device xxxx,smmuv3=3D smmuv3.3
-> > where one tags a (PCIe) device to an smmuv3(id), which is needed to bui=
-ld
-> the (proper) IORT for (pcie-)device<->SMMUv3 associativity in a multi-
-> SMMUv3 configuration.
-> >
-> > We could keep the bus=3Dpcie.X option for the -device arm-smmuv3 to
-> indicate that all PCIe devices connected to the pcie.0 tree go through th=
-at
-> smmuv3;
-> > qdev would model/config as the smmuv3 is 'attached to pcie.0'... which =
-it
-> sorta is...  and I think the IORT build could associate all devices on pc=
-ie.0 to
-> be associated
-> > with the proper smmuv3.
->=20
-> Device property "bus" is strictly for specifying into which the bus the
-> device is to be plugged.  The device's type must match the bus: only a
-> PCI device can plug into a PCI bus, and so forth.
+LeBronGanDalf
 
-The whole idea of reusing the "bus" property for SMMUv3 device was to make
-it easier for libvirt. As I mentioned earlier we could go back and use a di=
-fferent
-property name like "primary-bus" or "pci-bus" for SMMUv3 dev here.
+--0000000000007b808506348d8911
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Thanks,
-Shameer
+<div dir=3D"ltr"><p><br></p><p>Hi there!</p><p>I am writing to inquire abou=
+t the current implementation status of Secure SMMU features in QEMU.</p><p>=
+I understand that non-secure SMMU emulation for general peripheral DMA (IOV=
+A to PA translation and protection managed by the Normal World) is well-est=
+ablished in QEMU. However, my current understanding is that specific <stron=
+g>Secure SMMU</strong> functionality=E2=80=94where the SMMU&#39;s configura=
+tion and page tables are managed by Secure World software (e.g., at <b>Secu=
+re EL2)</b> to protect DMA for secure peripherals or confidential VMs=E2=80=
+=94may not yet be fully implemented.</p><p>Could you please confirm or clar=
+ify this? Specifically, I&#39;m interested in whether QEMU supports managem=
+ent of SMMU page tables and configurations by software running in Secure EL=
+2?</p><p>Any pointers to existing support, relevant discussions, patches, o=
+r roadmap information regarding Secure SMMU capabilities would be greatly a=
+ppreciated.</p><p>Thank you for your time and efforts.</p><p>LeBronGanDalf<=
+/p></div>
+
+--0000000000007b808506348d8911--

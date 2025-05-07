@@ -1,124 +1,85 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp3659858njj;
-        Wed, 7 May 2025 01:46:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWjkc8jcAeyYNeXHE3Z9YHTAZck6AeL7X89NBUu96eP8+Sg2Rii4Q6fjERHcVUI76gfRjvQBauXqc0UJQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFq5RCsAT6gBgaaW67G1OkgtHu851IJAMEtdfr1jGszRqKopos/PYTm2PLm+yYrnSHiMQuk
-X-Received: by 2002:ae9:f407:0:b0:7ca:dac1:a2c3 with SMTP id af79cd13be357-7caf73abc6dmr318856285a.27.1746607609114;
-        Wed, 07 May 2025 01:46:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746607609; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp3695210njj;
+        Wed, 7 May 2025 03:10:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWj6s7hUJTdGfeCj12tS89GZgM5JYxGRYFtRUqCAZPyxchAv1pjnzLddPl+B3vZqU+tZQFRrbZQZLrxuw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHIY7QRtr56Kbg26F7+hMJ1wWo3iuR7VKtKsOLbMTychrGZqvXcUcXZvyY9OG5KO+t+fbaD
+X-Received: by 2002:a05:620a:44d4:b0:7c5:42c8:ac82 with SMTP id af79cd13be357-7caf7387d0dmr405071185a.23.1746612629599;
+        Wed, 07 May 2025 03:10:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746612629; cv=none;
         d=google.com; s=arc-20240605;
-        b=SJ/MmMgq4GFdjW8c8PlolX796cBHqjYFe67RbApRVcKPDvN3WipXvpaFPGruO/mdn0
-         CUUxVTT8yNW5R7pNIznS6LH7D9qnSZWihW2l6w/4mPihU89TywysiYFVRbRFmQ2SYpuj
-         dhGJ9o7PuPJv4TuH44VgvbNq+C3mP5j95eo89cF48N/WZMw+JowZ1XkCpJAIgQ7oqoCI
-         9yIEuRhiGeNJApQlCYowRggg2g1SRlxdCvzZ7Zmex7Z3MEGucopo6YcpwybsAetHjVia
-         3GI4yhzaxvIIaWbpFACI7haA9KfRBExI94Y0mXLMz++uiUrs8Z3VQU0yG7gnMrWnX0fm
-         tgUQ==
+        b=dNyTi+3RZrqKowsK5TdcObvIVDJTD7qLzIWmWaTDVfS6Q/DRwNvPbeHkyUzTO+ZWmf
+         kQewri4xuRpp3ZvLSm/p5l95bMRcCVYl46jHL3McI7UuNWtT0r52v3XWGcSOcZDMzhP1
+         DnMg17dai99AtOMw6Ooyw2hp+EbDYgdX6dK77OTapeyZoimR6eC10JmR09SrnNL0oz54
+         WCgxh/VWO4hkhGgL8oVOBzZpnOM9i2d4oNmQI/FDcH8FQc3T/2UW2iKYoBLRgC8Mm3cf
+         nEvwOHkP3gxSkD1pMFvyL5ew3lA4F5VLz/3Wc8OM6FXGDRwvPgUZLysPF6aHcRcHH02o
+         VlUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=gnn2Vq4mb6y5HITMbTlLn96B2uBq2q4paLMypMJGpAI=;
-        fh=KXjeiJdA5ec3RkjIQNXel0WC0Yqj33k+9iHTxZz+bvw=;
-        b=JQbTKWVfNL+ObEcWwMqazRw/rDb7/3d9Y5MWwpayBQ91esiO/9R/V13pqkWjoUhwP7
-         xQM5sQh5iG40pkl1r4V6FKcyMX6ahhQwhgK3WrFpTNh3Y6vbLgnGM2d/a4zL4pkCRNox
-         nT9atgIkSghsW/FtCKYrlTQAIYMdIfknoKtKtLfEEu8l9oE6eA2vdwCD1MZjSp7lTfXK
-         V2r3oEQbSfYkgUOEZVbHkOQzYycYgCv0dndeshITCfsOYH2Wi3NpV7Tk0iBrp1NO3wwI
-         R4Rzb2H7ERCbELefVRjno/NDPT4dNnYC6WMc3/2GNhmDwoXKo8f7knatbsuxb9Qq/kOI
-         78kQ==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=kN8kUf8yR/+M902hFP2siJPo8DKRxUF3QT1c9Xx7Sjc=;
+        fh=Yg1QA3CYCa2LdK3Mf8oXZ+DbfQ0OHIFsuQO5E7pFx2w=;
+        b=XzV6f0GkYoz+i/v6vVQutuRVNZjMpdqkvHAnaUHDXrP19JZsCexZMnrwLW6iHV8sKn
+         ggT5BgypMQA/QWoSU9m7LeJ5qnTrmKwQqOFG02n4FWvth/GsTKivvPFfQsygEo5wbLW2
+         dMXV0kdg4f8NAQVqEY+sJDGVNVCHWnmgwQ0gccuH3vrufMMqfc8T5o3Eehk9C0Irb6xT
+         YS0f3BZsqyDDYOs7NhLt2zkNVnjoGlMKCRGDi3lD4cnhVpigCRJvqquKtJ2NGkNIrF2x
+         vTWKRPyiAxLBc6XqJozicBW5BrCe/YfmO55WsQdZIVUwfMdR0l6M11ptY9lvAgiUXyT8
+         zSyg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AE6isCGb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7caf75b135bsi159040285a.419.2025.05.07.01.46.49
+        by mx.google.com with ESMTPS id af79cd13be357-7caf7594ddbsi166535885a.283.2025.05.07.03.10.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 May 2025 01:46:49 -0700 (PDT)
+        Wed, 07 May 2025 03:10:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AE6isCGb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uCaQH-0007tH-LA; Wed, 07 May 2025 04:46:37 -0400
+	id 1uCbjF-0005YD-H5; Wed, 07 May 2025 06:10:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <timlee660101@gmail.com>)
- id 1uCaQG-0007sq-A1; Wed, 07 May 2025 04:46:36 -0400
-Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <timlee660101@gmail.com>)
- id 1uCaQE-0000RG-E4; Wed, 07 May 2025 04:46:36 -0400
-Received: by mail-oa1-x30.google.com with SMTP id
- 586e51a60fabf-2d09d495c6cso1769755fac.3; 
- Wed, 07 May 2025 01:46:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1746607592; x=1747212392; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=gnn2Vq4mb6y5HITMbTlLn96B2uBq2q4paLMypMJGpAI=;
- b=AE6isCGbsg1L9CwgCY4MGfBC4vH4MvE/8OhHcy5t1NROBQaSsReCx3Dx3U0gtDiXNX
- aqfANSvk263TkczPNDbJiUfkctungTfSihz6tLuVYtuBWVaomXBmbMCFgosqg57KKxTE
- 3MNcuzJe68vjwwKb+k0UwWv+ZNJ29WT+jAncU4gM8YOILqzSrIoOqRx+md0n5+zis9Qu
- 7VsAfc0wsdB7XmEjJhZroxSc7pOKu0KsUcyh+djsH6Tq1jKRNkpF9oq1vTctQfNPdu0t
- Kxxeze33MYHZ6yzQr2nFHk7rDqVAKKnNIgnZZE1qOv6nGIcXdy+OrMLSk5O01w94XNit
- 7LMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746607592; x=1747212392;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=gnn2Vq4mb6y5HITMbTlLn96B2uBq2q4paLMypMJGpAI=;
- b=wm4cvwWouPo1OuyvohGZVbMwUV0XTbr2Xc0YwwGAfN2VnSbvYySvCu3izP/lup3wyd
- E1darD7wnWuSDhwuU0s+pEQUGYQsgenUhQsRjBHhOkScwW8GXisnKK7gr4aOW5cZzXbY
- RNi/6L3Bn31TA36VnEWJauDt//Ekb9Ub2sNomSWQM3Snhl+Dbggq8BIafijubXT4NUQl
- r4SN1BwnjJgg6ueGdE//0DyEQfsNjRwo9MNp8UOXOQeyZxK9tfg9brUvPhYV2+AVrWMm
- w0HAvgcUO6tGoKImPRFIjBZ9Rto6Rbhw9fNFGTEAa+r2d21ceM1Hik25loVeWaUvyhS6
- DAuQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUtFwGMj0Uj5DHbJQvqrz9j+GsXY17p1uRHhN1+sVPNSOe7xWsRP+tXsJYW3gxQrqIS/eveAPF3eyUj/Q==@nongnu.org,
- AJvYcCWoYDWPIxKPR4l8PNQwI4dDH7U9Z5pHkpQ7uI5m0LfJyddf2fo+WkqUn/2AXd6rZwmAztPJarpKMQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yzt8ZpkQ8bhv03OTcvfogHfOF1GtlaDuBZSa6UbBQURlABg2Z+t
- NKuguCr6JkyLn3bD0D9M/R7vKPfFC8Hcbws5eFjkbfyIFkkLnKtKopOQzhLzE1rDkNZ+NgsqE06
- XjALlEOcPelyojpqSKAnqTwIHC/8=
-X-Gm-Gg: ASbGncsHAbgT0lU2oLuXTtuTaSH1DV0gf5vkZ0V5ek4Dq7x0InuCa8DczwYLGCt243r
- YAagiZgeQl3Ot2C4l7Zm/a8529I0/b8AW16kMgF4f26ujoaWg9LXxdEZTr9BKKiS/dbw6Y0HxYY
- 8O3BwrZEZ+5sCMhjZq7m/Qc+s=
-X-Received: by 2002:a05:6870:891c:b0:2bd:456c:92a with SMTP id
- 586e51a60fabf-2db5be369e8mr1380426fac.10.1746607591769; Wed, 07 May 2025
- 01:46:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1uCbjD-0005Sl-5A; Wed, 07 May 2025 06:10:15 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1uCbjA-0004CR-HS; Wed, 07 May 2025 06:10:14 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Wed, 7 May
+ 2025 18:10:05 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Wed, 7 May 2025 18:10:05 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: <troy_lee@aspeedtech.com>, <longzl2@lenovo.com>,
+ <yunlin.tang@aspeedtech.com>, <steven_lee@aspeedtech.com>
+Subject: [PATCH v1 0/3] hw/arm/aspeed_ast2700-fc: Fix null pointer dereference
+Date: Wed, 7 May 2025 18:10:02 +0800
+Message-ID: <20250507101005.1474823-1-steven_lee@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20250418091208.1888768-1-timlee660101@gmail.com>
- <CAFEAcA_O1B7oXbK3RHLvSJHZaMSM-aVG_CD9Y7dH0OpAs7sibg@mail.gmail.com>
-In-Reply-To: <CAFEAcA_O1B7oXbK3RHLvSJHZaMSM-aVG_CD9Y7dH0OpAs7sibg@mail.gmail.com>
-From: Tim Lee <timlee660101@gmail.com>
-Date: Wed, 7 May 2025 16:46:20 +0800
-X-Gm-Features: ATxdqUGRxlYMsQyce2DuWwyKelYvna9Ur6BlQScs3BxuI_DWfa36HhgIuXTXtk8
-Message-ID: <CAJG6D+hbqbLqQhqGA0sb4ngkuvC00ex7iR3p9UP-kWatoCGqUA@mail.gmail.com>
-Subject: Re: [PATCH] tests/qtest: Add qtest for NPCM8XX PSPI module
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: farosas@suse.de, lvivier@redhat.com, pbonzini@redhat.com, 
- wuhaotsh@google.com, kfting@nuvoton.com, chli30@nuvoton.com, 
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2001:4860:4864:20::30;
- envelope-from=timlee660101@gmail.com; helo=mail-oa1-x30.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=steven_lee@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,169 +92,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Steven Lee <steven_lee@aspeedtech.com>
+From:  Steven Lee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ovG9fywkm0KM
+X-TUID: WIZQiu7gbWrl
 
-Hi Peter,
-Thanks for your suggestion. Those changes will be included in v2.
+Clang's sanitizer reports a runtime error when booting with
+'-net nic -net user', due to a null pointer being passed
+to memory_region_find(), which subsequently triggers a crash in
+flatview_lookup().
 
-Peter Maydell <peter.maydell@linaro.org> =E6=96=BC 2025=E5=B9=B45=E6=9C=886=
-=E6=97=A5 =E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=888:52=E5=AF=AB=E9=81=93=EF=BC=
-=9A
->
-> On Fri, 18 Apr 2025 at 10:12, Tim Lee <timlee660101@gmail.com> wrote:
-> >
-> > - Created qtest to check initialization of registers in PSPI Module
-> > - Implemented test into Build File
-> >
-> > Tested:
-> > ./build/tests/qtest/npcm8xx-pspi_test
-> >
-> > Signed-off-by: Tim Lee <timlee660101@gmail.com>
-> > ---
-> >  MAINTAINERS                     |   1 +
-> >  tests/qtest/meson.build         |   3 +
-> >  tests/qtest/npcm8xx_pspi-test.c | 104 ++++++++++++++++++++++++++++++++
-> >  3 files changed, 108 insertions(+)
-> >  create mode 100644 tests/qtest/npcm8xx_pspi-test.c
-> >
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index d54b5578f8..0162f59bf7 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -892,6 +892,7 @@ F: hw/sensor/adm1266.c
-> >  F: include/hw/*/npcm*
-> >  F: tests/qtest/npcm*
-> >  F: tests/qtest/adm1266-test.c
-> > +F: tests/qtest/npcm8xx_pspi-test.c
->
-> This file is already matched as being in this section by the
-> wildcard two lines earlier.
+The root cause is that CA35 memory region is not mapped to system
+memory. In addition, unconfigured NICs (due to missing peers)
+lead to a cascade of warnings and possibly misbehavior.
 
-MAINTAINERS file keep no change.
->
-> >  F: pc-bios/npcm7xx_bootrom.bin
-> >  F: pc-bios/npcm8xx_bootrom.bin
-> >  F: roms/vbootrom
->
-> > diff --git a/tests/qtest/npcm8xx_pspi-test.c b/tests/qtest/npcm8xx_pspi=
--test.c
-> > new file mode 100644
-> > index 0000000000..107bce681f
-> > --- /dev/null
-> > +++ b/tests/qtest/npcm8xx_pspi-test.c
-> > @@ -0,0 +1,104 @@
-> > +#include "qemu/osdep.h"
-> > +#include "libqtest.h"
-> > +#include "qemu/module.h"
->
-> Every source file needs to start with the usual brief
-> comment giving its copyright/license information (and we
-> like that to include an SPDX-license-Identifier these days
-> for new source files).
->
+Fix by:
+- Reduce ca35 ram size to 1GiB to match the ast2700a1-evb.
+- Map ca35_memory into system memory
+- Add nic configuration in ast2700fc's ca35 init function.
 
-Add comment for copyright/license information.
-> > +
-> > +#define DATA_OFFSET 0x00
-> > +#define CTL_SPIEN   0x01
-> > +#define CTL_OFFSET  0x02
-> > +#define CTL_MOD     0x04
-> > +
-> > +typedef struct PSPI {
-> > +    uint64_t base_addr;
-> > +} PSPI;
-> > +
-> > +PSPI pspi_defs =3D {
-> > +    .base_addr  =3D 0xf0201000
-> > +};
-> > +
-> > +static uint16_t pspi_read_data(QTestState *qts, const PSPI *pspi)
-> > +{
-> > +    return qtest_readw(qts, pspi->base_addr + DATA_OFFSET);
-> > +}
-> > +
-> > +static void pspi_write_data(QTestState *qts, const PSPI *pspi, uint16_=
-t value)
-> > +{
-> > +    qtest_writew(qts, pspi->base_addr + DATA_OFFSET, value);
-> > +}
-> > +
-> > +static uint32_t pspi_read_ctl(QTestState *qts, const PSPI *pspi)
-> > +{
-> > +    return qtest_readl(qts, pspi->base_addr + CTL_OFFSET);
-> > +}
-> > +
-> > +static void pspi_write_ctl(QTestState *qts, const PSPI *pspi, uint32_t=
- value)
-> > +{
-> > +    qtest_writel(qts, pspi->base_addr + CTL_OFFSET, value);
-> > +}
->
-> If I'm reading the implementation correctly, it makes both
-> the DATA and CTL registers 16 bits, but this code has the
-> data register 16 bits and the control register 32 bits.
-> Which is correct ?
->
+Steven Lee (3):
+  hw/arm/aspeed_ast2700-fc: Fix null pointer dereference in ca35 init
+  hw/arm/aspeed_ast27x0: Fix unimplemented region overlap with vbootrom
+  docs: Remove ast2700fc from Aspeed family boards
 
-Yes, you are right! DATA and CLT registers both use 16 bits.
-> > +/* Check PSPI can be reset to default value */
-> > +static void test_init(gconstpointer pspi_p)
-> > +{
-> > +    const PSPI *pspi =3D pspi_p;
-> > +
-> > +    QTestState *qts =3D qtest_init("-machine npcm845-evb");
-> > +    pspi_write_ctl(qts, pspi, CTL_SPIEN);
-> > +    g_assert_cmphex(pspi_read_ctl(qts, pspi), =3D=3D, CTL_SPIEN);
-> > +
-> > +    qtest_quit(qts);
-> > +}
-> > +
-> > +/* Check PSPI can be r/w data register */
-> > +static void test_data(gconstpointer pspi_p)
-> > +{
-> > +    const PSPI *pspi =3D pspi_p;
-> > +    uint16_t test =3D 0x1234;
-> > +    uint16_t output;
-> > +
-> > +    QTestState *qts =3D qtest_init("-machine npcm845-evb");
-> > +
-> > +    /* Write to data register */
-> > +    pspi_write_data(qts, pspi, test);
-> > +    printf("Wrote 0x%x to data register\n", test);
->
-> Don't put printf()s in test cases, please. The test
-> output is supposed to be TAP test protocol format, and
-> the printfs insert random junk into that.
->
-> If you need to output some kind of message, you can use
-> g_test_message(), but for simple stuff like this I don't think
-> the printfs are really adding anything, because the test is
-> so short.
->
+ docs/system/arm/aspeed.rst |  2 +-
+ hw/arm/aspeed_ast27x0-fc.c | 16 ++++++++++++++--
+ hw/arm/aspeed_ast27x0.c    |  4 ++--
+ 3 files changed, 17 insertions(+), 5 deletions(-)
 
-Remove printf() in test cases.
-> > +
-> > +    /* Read from data register */
-> > +    output =3D pspi_read_data(qts, pspi);
-> > +    printf("Read 0x%x from data register\n", output);
->
-> Can we assert something useful here about what we read
-> (e.g. that it's the same as what we wrote) ?
->
+-- 
+2.34.1
 
-Currently, I just write test data to data register then read data from
-it and verify it.
-> > +
-> > +    qtest_quit(qts);
-> > +}
->
-> thanks
-> -- PMM
-
-
-
---=20
-Best regards,
-Tim Lee

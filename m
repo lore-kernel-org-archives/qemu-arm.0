@@ -1,85 +1,85 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp94245njb;
-        Wed, 7 May 2025 16:42:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXEYeYRHR2UPBVeUILSdP+yuK7wtD1ywaWAlc1499Se+FAm1JDsR2sF+nWJmcjtwYyWrwGXfr/ZkSFDkA==@linaro.org
-X-Received: by 2002:a17:902:e950:b0:220:cd9a:a167 with SMTP id d9443c01a7336-22e5ea424e5mr80702135ad.4.1746661367331;
-        Wed, 07 May 2025 16:42:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746661367; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp94249njb;
+        Wed, 7 May 2025 16:42:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXoVxR5lLsuaRchItnUuJWDNHmXpjM7mEp4GrbNtztk0Viuli77Vuwh8OvGAgiOyLnK8q5eCeEcv/rtkA==@linaro.org
+X-Received: by 2002:a17:90b:3c08:b0:30a:9025:84d6 with SMTP id 98e67ed59e1d1-30b3a6ea5dbmr1590273a91.29.1746661368123;
+        Wed, 07 May 2025 16:42:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746661368; cv=none;
         d=google.com; s=arc-20240605;
-        b=dqS11P3SeoKwj4L9j7a9v7I3AdbdUVnhD4bqAlnZOagVK/S74qWDRyddwhgT5xEjmf
-         q3qEnemjMIiiseAjrVFb8SUVqKRqEqd0owMS446kQqzj3tPcTTTfWflIWD/hQdwhYyob
-         vKZEfh8JzPOG+arh22IwFGDmXMI2qSTjYlKV44PRl9AmpuJb5VAEWwaAMnmwboiBRpvO
-         HWEvBvsngZ126KofZR4XwoPIyV2nispHRpQ1c9WTf9A+Jv7xHIRiTgMrDbWJMCz6Z0Ti
-         1xb4zzOxHquhaPUk5VaIJYrSImvFZ9qqIZtWvuqDaRSKhbJxoqLjxBr41Yr2jg8WVMUH
-         qY4A==
+        b=bOZ+/lufc9CbYh84fqDslxIPKL/vqNR2wDptRmG0bPSWrQlLvjJvs/mwyg/Rm+gcx1
+         kHip0xUokjoRRZAcb/n+zrYfR2tUm6DRzbyK9cXTrUQ+cl5Oi1BWuyiKiOgk64YLS0Yy
+         XMW27Cwny1abc1PjlDqVhc9iWvKQ3J81ovXcWV9Hw8Hm9ANdBRB/CqaCQ2/6rIal+4e6
+         JpU6hijT7675dIiQWMoujGgWFAzqKrN4KlVJRewnMOrCK0OJV3ec26Z+BFYfAxbMdQPS
+         ZxCuig262HTV9EZaLSD7YuVwwrmPrHiZZPRzgm7yTaU0Grx9NcrkLOU/gSNCDs2bWZLb
+         z00Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8AlvH8T2wxvPoUN2cgh0nAAaoM8ETcHqqaWl8h2qra8=;
-        fh=QFjzMxdY5T0CQoYZYRi/ophEf7WlsKSEX/VFD4dBr1w=;
-        b=awqeLwmxd8YYv3sMwgY9qjst/FBt75AeBeuFJ/oPjImaeVq2IM4XNPfLHMTkFPgPza
-         pO48+XGVupXHmQp4RHAqXWn4T+bXO/XFt4f2KFrcwEs0s/fI4Ti/sKM1dg797PfMIoD9
-         UGNR2z0ThH2Gk9SP8AYcon56ZAFHQRonkobTFituH8D/n4Pkw5v5QbzPLDEN6hD8S1iQ
-         EaWkFD6ejX09JL40CQDoviq1Dkl6WV+kgdhpS1avs7IndKF8EeD2W/5isyf2q3cT0xbU
-         ZnCiwFWMhvV/eGRCjBnFUfDXM3fwYFtYXeTytPEqymQvTIriE2FcqGJdkKFlN27jm+Zp
-         J+XQ==;
+        bh=hckfD0sziqBh1sSWGP9c0OUCVTgvBeVKgVHtB7xMeJ4=;
+        fh=iGDiFXVBDqqQDuIioQfXANsL1SGRGGNcp38LpKjz7GY=;
+        b=Kv1FdZAbRKJUBHWBbHmtir6hKR8da+xFPo4EBlygacq9mROY5mKH7cTt4ZVtXLh6EL
+         W9+BllosJIRw9YmVSxrv3i592Z6fSc1q/FeBotGV4Ud0AYQiiloe9I5/0npEZr8RC6Bh
+         daZF2Os4k52t9aCHqGLXCZH0NMf0G13W6zCxkGRng1XaBvfoJptnShixoM/uzNjR2BXF
+         LPctIk0W4Pe1b+pgeVz9n5AM6fVTi5Pc+x6qe0dVZ9huX0dw3pbVCpkcUHvxy02heUgL
+         9HAmKZ7Vat16GV7usqZPhz6t6PN12P44XQ14UV1CHGos5IqPShTl15F+x9h8i6Gpwg1E
+         YmKQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pHDthf0n;
+       dkim=pass header.i=@linaro.org header.s=google header.b=R4olPoqy;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-22e0bb19364sor119870425ad.4.2025.05.07.16.42.47
+        by mx.google.com with SMTPS id d9443c01a7336-22e0be8bbe6sor136243775ad.16.2025.05.07.16.42.48
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 07 May 2025 16:42:47 -0700 (PDT)
+        Wed, 07 May 2025 16:42:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pHDthf0n;
+       dkim=pass header.i=@linaro.org header.s=google header.b=R4olPoqy;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1746661367; x=1747266167; darn=linaro.org;
+        d=linaro.org; s=google; t=1746661368; x=1747266168; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=8AlvH8T2wxvPoUN2cgh0nAAaoM8ETcHqqaWl8h2qra8=;
-        b=pHDthf0n7ALRRa9xoQFbQoFtVLryHnqjn3K4PWUaCfokgDhwwwL5BqdrFqoKlfWdQ0
-         VvoGs2X4aKCjB3IUnX1bViaMfcjMuIwZ7I+TejfbdY5hNw4Axx99ek+JtxfSi0HA50NK
-         JcX4lCuw1NU+zN+ktWHhBTr+bblDbdZpQOpWPmuO0ywXM83EHtcnOYJsLBuhQsMeyc72
-         rkQyeLCUTEYqraYCNcRo+3iSRpSkuSk12tMJZeXAvUq92lqpGbnakAViOx+nB2Ab5mUg
-         vyw/yHGnztFQ96O5p3mgD0uRAtYhSOqccar+XfLR6z4GEnPkoVQANLUc0ZCJYIdMxe7u
-         DHzg==
+        bh=hckfD0sziqBh1sSWGP9c0OUCVTgvBeVKgVHtB7xMeJ4=;
+        b=R4olPoqy26niakzaQFV+EVPBPQSPafGhGoUtcqeuBF3N0j81SD0Whw+cCEoJMnDi9W
+         VEqGI9HdsGEhiEM+DqpNxtFmK9r9gAMuJ3QRY9yKqxir3Aj4F+ulu3hrDfNGok4+UQve
+         LljBS/fbzajGboklq0x8YzAEiQur9GwZcWSTLcevJJe7VY4AUHNUK+Qi+z3exBJAw2B8
+         x5lhM4c4WPKM4ITe0bHRldum20fYIyYhoWlhe8o0OQiVIPaEjkapDINs21bj0L9vAqrg
+         8Rpbc9ajzX4betrBOA2t/N9cvsuuaaXDlg/So/b7xT33A8Hsw+YhkLYOozglj8AkE5Hd
+         /qrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746661367; x=1747266167;
+        d=1e100.net; s=20230601; t=1746661368; x=1747266168;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=8AlvH8T2wxvPoUN2cgh0nAAaoM8ETcHqqaWl8h2qra8=;
-        b=rH+ryUpPA0DJh1QSAX6RPWp36fKFSo7b3/vkKl6EanWBHE+s75hBhzYfaYVI5Q8qXz
-         62c+3XqWISWR41/97wECN/Z/Pv4m9227EGisOhMLsy8GR9TZn+zlNVmDnWGl0+xQvhab
-         3Yo60ca2LZmlaZyJq+kSTZeKDXGY7J6zD4MdCeeSN7Y+P6Pgi41J8rQbgSDdKhUH+WSZ
-         FlY44NLihDDq7P/9yyvEf4BxE1AU+6vAtqCNebhN6+HMQhO0TRzUNZIAa8pzvl1kf6d4
-         UThB8jVOJE/+XEY6ClNFds1fFJVisNOzDaL30IQhkI5UA/6CSKikjUnvedJTIM7xxR6C
-         xRsA==
-X-Forwarded-Encrypted: i=1; AJvYcCWFUETmCL/LNLtcXbudP9/4ug1RnMHXjNTmv/ZzxSnOGSvF/+ElglzxFaJRNQjkTeVtPHfTKdNAGFH6Tg==@linaro.org
-X-Gm-Message-State: AOJu0Yzz9SDaTIyqZQZAk2R7FdigtOX/CggBFALmyd02YoER5N4JDp1N
-	fflhPxZHORSE5HvAzbJBwW+Tjq/4ud+tbFXcUTwHokVzmzTDvdOM9iFbiubUkEQT7w==
-X-Gm-Gg: ASbGncttlyUgCI1yWI3SvtluEk6m3x7B3oBbtgmU3sTbwgkveiFOe1AT/vusLYINcy1
-	7kZhuiuxemwI2yQ2S6Ta2OzjsZJq13D3eZZ7u9f8V9cm3caX6nGMTTThPGCgFi7fpgyqXSAsOb1
-	D+MQ5lh0/lflIpnm+7gGr+lJ1tm/yUWtqWyFH3NLHciR/EjUkg/3YlPQWXfT1aU6fdHE8chw1IL
-	ksNt//KcoMhLIflz+mVzrRQBwVdGV8E71H+O+dIp8JYp+gbdax37IMC2H00vTSzeATxhDt/Pb7/
-	1ZHW4uMQPo2s9B14ktZxSyrVqbuGaM14us6Yq7XY
-X-Google-Smtp-Source: AGHT+IHc9BLJTRra4Ml/NypvQQD2sL46NjWq+atgO/ogg8mn3XracQtlR5Z2GwyWMF3jG2uboLtq3g==
-X-Received: by 2002:a17:902:cad3:b0:22e:7c70:ed12 with SMTP id d9443c01a7336-22e7c70ee50mr26992465ad.48.1746661366936;
-        Wed, 07 May 2025 16:42:46 -0700 (PDT)
+        bh=hckfD0sziqBh1sSWGP9c0OUCVTgvBeVKgVHtB7xMeJ4=;
+        b=LIZjFrQK90YK/i71qfI2II3wNnvfjshEJfkn2xgEfFx2dG26R7cGb74pBj4aI3f2Vv
+         Bz4ffzsj9JxwVXlRxK/KLeRumVcYOrcg70MzbH4ezjT7wfjGaF4TdWiABlpyAZpvXe9L
+         nNn+qTNT/3oKY+vI0knKi8cKzoJq+csHjlzU0RAxukr6lMUSQw1UgG6qOak64ITRYjTL
+         LswNI7Wz0aPFpNXHBsA/6M1bt80sRFRp8kYxJokporVxrkJHfMB6W+zaTRe9g8/2R73P
+         doAuA1Xk0qq0z1Gq3aUY1noEcNQ/6pEf19GhzwlZM11o2Gth2/20AOPsTq+L4D2geeZM
+         maJg==
+X-Forwarded-Encrypted: i=1; AJvYcCXu13pih1+WTKJ2VpKD7fqnqFqR2CZiB/7U6RDCHuzl7DH+WLT0JO4XdwmIKwzo/BOtOHwjtpRZoNJ51w==@linaro.org
+X-Gm-Message-State: AOJu0Yxnw1O7eodmmENoSJYL04uLBfM9XNX3Tz2YPfttj5rkKxs41xkW
+	sFFLas0UH+6zh4wW6z4mvbi0ziK3lnietyHZAPoBJH92dThu8xo8TtQjQ3UGCyS0zg==
+X-Gm-Gg: ASbGncvWVF2qLI19mdre5gPbwmdOq8RDajIE8zpmYeh3z7O/u2i3H/0PnR0mTPt5rHZ
+	kzQSZwxsL3zf8RNcEJ7vSl6CT73rWcXguwycWXlRPl9buAD3eXPdCiolOM9A9x1Mhc/YNttp7tb
+	RcLMZ71KSz+e9u5iHrPZABiunWmhF2CQBKnCQF29h2QxzbAdkYviAuGKZQvdjgVIlMo+6c0wnZU
+	zTHwwTrs1wi7FYQb+32Opu2GBhKqsVPwlyM4K9p9Zx0DnMCDbMZpXa64AtTUPmjcisIf2LBQSyu
+	iqi/EBr3PnBFefjcOtRdp9PfJHdbQKi/n0aK6pmPqDSNQ9XBaHQ=
+X-Google-Smtp-Source: AGHT+IHhqOsHNXPZF4TnzOtAP6h/+c55CQlBQVlH/8L+pGzc2viJ6SxyDzkoMnBGSlSBqkYi5ON24Q==
+X-Received: by 2002:a17:903:d1:b0:224:194c:6942 with SMTP id d9443c01a7336-22e8dc8f2dcmr14656095ad.34.1746661367784;
+        Wed, 07 May 2025 16:42:47 -0700 (PDT)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from pc.. ([38.41.223.211])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22e815806fdsm6491325ad.17.2025.05.07.16.42.46
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22e815806fdsm6491325ad.17.2025.05.07.16.42.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 May 2025 16:42:46 -0700 (PDT)
+        Wed, 07 May 2025 16:42:47 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -91,207 +91,34 @@ Cc: qemu-arm@nongnu.org,
 	kvm@vger.kernel.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v7 04/49] target/arm: move kvm stubs and remove CONFIG_KVM from kvm_arm.h
-Date: Wed,  7 May 2025 16:41:55 -0700
-Message-ID: <20250507234241.957746-5-pierrick.bouvier@linaro.org>
+Subject: [PATCH v7 05/49] target/arm/kvm-stub: add kvm_arm_reset_vcpu stub
+Date: Wed,  7 May 2025 16:41:56 -0700
+Message-ID: <20250507234241.957746-6-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250507234241.957746-1-pierrick.bouvier@linaro.org>
 References: <20250507234241.957746-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: mKorO/O2AZse
+X-TUID: EiPu2CPiELQM
 
-Add a forward decl for struct kvm_vcpu_init to avoid pulling all kvm
-headers.
+Needed in target/arm/cpu.c once kvm is possible.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/kvm_arm.h  | 83 +------------------------------------------
- target/arm/kvm-stub.c | 77 +++++++++++++++++++++++++++++++++++++++
- 2 files changed, 78 insertions(+), 82 deletions(-)
+ target/arm/kvm-stub.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 5f17fc2f3d5..5bf5d56648f 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -94,7 +94,7 @@ void kvm_arm_cpu_post_load(ARMCPU *cpu);
-  */
- void kvm_arm_reset_vcpu(ARMCPU *cpu);
- 
--#ifdef CONFIG_KVM
-+struct kvm_vcpu_init;
- /**
-  * kvm_arm_create_scratch_host_vcpu:
-  * @fdarray: filled in with kvmfd, vmfd, cpufd file descriptors in that order
-@@ -216,85 +216,4 @@ int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
- 
- void kvm_arm_enable_mte(Object *cpuobj, Error **errp);
- 
--#else
--
--/*
-- * It's safe to call these functions without KVM support.
-- * They should either do nothing or return "not supported".
-- */
--static inline bool kvm_arm_aarch32_supported(void)
--{
--    return false;
--}
--
--static inline bool kvm_arm_pmu_supported(void)
--{
--    return false;
--}
--
--static inline bool kvm_arm_sve_supported(void)
--{
--    return false;
--}
--
--static inline bool kvm_arm_mte_supported(void)
--{
--    return false;
--}
--
--/*
-- * These functions should never actually be called without KVM support.
-- */
--static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
--{
--    g_assert_not_reached();
--}
--
--static inline void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
--{
--    g_assert_not_reached();
--}
--
--static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
--{
--    g_assert_not_reached();
--}
--
--static inline int kvm_arm_vgic_probe(void)
--{
--    g_assert_not_reached();
--}
--
--static inline void kvm_arm_pmu_set_irq(ARMCPU *cpu, int irq)
--{
--    g_assert_not_reached();
--}
--
--static inline void kvm_arm_pmu_init(ARMCPU *cpu)
--{
--    g_assert_not_reached();
--}
--
--static inline void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa)
--{
--    g_assert_not_reached();
--}
--
--static inline void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp)
--{
--    g_assert_not_reached();
--}
--
--static inline uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
--{
--    g_assert_not_reached();
--}
--
--static inline void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
--{
--    g_assert_not_reached();
--}
--
--#endif
--
- #endif
 diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
-index 965a486b320..2b73d0598c1 100644
+index 2b73d0598c1..e34d3f5e6b4 100644
 --- a/target/arm/kvm-stub.c
 +++ b/target/arm/kvm-stub.c
-@@ -22,3 +22,80 @@ bool write_list_to_kvmstate(ARMCPU *cpu, int level)
+@@ -99,3 +99,8 @@ void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
  {
      g_assert_not_reached();
  }
 +
-+/*
-+ * It's safe to call these functions without KVM support.
-+ * They should either do nothing or return "not supported".
-+ */
-+bool kvm_arm_aarch32_supported(void)
-+{
-+    return false;
-+}
-+
-+bool kvm_arm_pmu_supported(void)
-+{
-+    return false;
-+}
-+
-+bool kvm_arm_sve_supported(void)
-+{
-+    return false;
-+}
-+
-+bool kvm_arm_mte_supported(void)
-+{
-+    return false;
-+}
-+
-+/*
-+ * These functions should never actually be called without KVM support.
-+ */
-+void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
-+{
-+    g_assert_not_reached();
-+}
-+
-+void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
-+{
-+    g_assert_not_reached();
-+}
-+
-+int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
-+{
-+    g_assert_not_reached();
-+}
-+
-+int kvm_arm_vgic_probe(void)
-+{
-+    g_assert_not_reached();
-+}
-+
-+void kvm_arm_pmu_set_irq(ARMCPU *cpu, int irq)
-+{
-+    g_assert_not_reached();
-+}
-+
-+void kvm_arm_pmu_init(ARMCPU *cpu)
-+{
-+    g_assert_not_reached();
-+}
-+
-+void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa)
-+{
-+    g_assert_not_reached();
-+}
-+
-+void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp)
-+{
-+    g_assert_not_reached();
-+}
-+
-+uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
-+{
-+    g_assert_not_reached();
-+}
-+
-+void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
++void kvm_arm_reset_vcpu(ARMCPU *cpu)
 +{
 +    g_assert_not_reached();
 +}

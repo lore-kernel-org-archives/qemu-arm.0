@@ -1,124 +1,88 @@
-Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp3673665njj;
-        Wed, 7 May 2025 02:19:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUfdy+74obQhmJF2in96V3GWyumcSB1EXEzE5IDQufAwIoqAltGq60fvJnGGengoHkFQPdvfoPQCbOfxw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGj3FHu7LYk8zgFhst8HM6hkr68UICeqPtuXpJzdhjtSprrW8Mk2p2kx4AEXyrc+U+UsxqC
-X-Received: by 2002:a05:6214:5c9:b0:6f5:4508:fd84 with SMTP id 6a1803df08f44-6f54509024dmr19153146d6.35.1746609583981;
-        Wed, 07 May 2025 02:19:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746609583; cv=none;
+Received: by 2002:a17:504:3e81:b0:1be9:327d:8ee3 with SMTP id v1csp3695231njj;
+        Wed, 7 May 2025 03:10:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXPL42EibtHCi5mlTPEmrB0n9AtWXFij5C+ougureqneXdb6sMizA+vDeDSlCJwqtwaWvv/2joY/jpxSQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH4VdvmEyYuunfBdIPEIYVshJYrM3Br3zJDfsrtIbBOXWHpjqph2thBLbYW64rx8pIR5/7u
+X-Received: by 2002:a05:6214:2243:b0:6e8:fa33:2965 with SMTP id 6a1803df08f44-6f5429eccdfmr49514616d6.14.1746612632276;
+        Wed, 07 May 2025 03:10:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746612632; cv=none;
         d=google.com; s=arc-20240605;
-        b=dTMG8rhw/bvs2ULFTjhYxtmPTCFlIqmF7o2BO1g/iw/ozQldIztZVTn/SaBE8lSZM4
-         2vhAGatAR/JVTfTen1oNxKdX41CWeSc+Ze8ipEfimPyIdmgmpd3oOhCHXKxiyfMsb6up
-         1ovh20NDhzinki+8U1jzCt4A9VuMK47WpCxIFDyTbhjKW4fUZfiQDb2Ju7pp/NcnsEfH
-         /dsds4ZJasZoW/1bleX44Y4upyBMFevP0gLODhl2hJAutcxzScjG5+MFQatJ0u9ItYq6
-         IsC7K8RiPPIFYJtuGnjQt3hWMepR+mZ4g+SoxVOptcUniQWD8nGQIBxgdAovjf5s1QGr
-         D2mA==
+        b=Co8fEYv1gPGrWX688IfeZ23Grs9E0Fkbj2tZoP120q1MiJvtmkBqi1m81DhiGmYy1n
+         zlPe3osNCZ6z7cV4kW+gaKgIytjw7kJAhvAlWLk3ADZgA+8xq9R8aYahGMyR3UFFfHdr
+         GJmFnALVHK0BqrnPyAnyv9iM+yDf2kVdcVjamFRUD5BUrknzekuYE4PpvavkBErDbDDV
+         jijcyyswI7tDQKdsc/A79QTFMX6HAmplDtQdQVyfCBKqTYbJ/S7swavuvaEu81X0q43t
+         Rz0/1GODdpCuDFj7iByrygcb3jez1+49/SwnK8EwtMCgl6IjomXnCxDnC7pE+tkHBrIk
+         djpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=pcdvujWM7E7CRcZLjZytCLuGjS6SIp8h6sop6QNazwE=;
-        fh=Z4lyKIbkDDPlI9XyzIoulYiRvQVT0xpxpGaSawix8YI=;
-        b=U/ew6VH8YLIGLVsEssqdEiDtprrn/kbuwoX2vgN7FkBYynyxVyX/D2wp2KFu8C7Nc9
-         ZmK4qXTbg+IM2UlpJES7Ie+/GELDPPCkHyM8mBxoc3wNoggcvCJCl2Dc7DAMjmjdarO8
-         ziNmNSQdX+2UwLDIBW3SAF95BBUg0Bef5pNkswkSsb5XKmcal70B2X+nKSY9ebmB2uR7
-         TgBgXSu8mylk1nE0vMy2gRKi7WjXIE78SnH5lAErY9FAfTiTDmO4/sprlr8tZUSbS+gX
-         5vC4IgUP/XpofJ3uQckoa+LeQsSApbXQs1dZEPKypgnfDidm8xS41TP7c+3jiSzCzI4Q
-         ZV6Q==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=69hmZTueU4Mk9OaCahEdd5h9Ej0wxIPStRGSKPHhsdE=;
+        fh=Yg1QA3CYCa2LdK3Mf8oXZ+DbfQ0OHIFsuQO5E7pFx2w=;
+        b=CE3SOFCYZSwxPp0iCWiRFr5VtKftBo2v/p6aMcPdzXHvRN7aTQibKbR+Fbn86Ffudt
+         GUNoA3/4mkFbo1cbZk3OtIg7qmKBu88l8H7h+D5SJCbXMHid3/osiDIpBmieOOo1wJUN
+         aGYVh83hN8HeS4HHLOHcLy+l6D1J5B5XXk6C2WQ4wRCyW/G40ebf1rv76eOVCymiSf9W
+         0xFLk6W/9x3A4oMH4ZG6UwQcX+ecWh5e30Y7IbYS3RMrG3xIXpC+ls9CksZhfs/QjD3J
+         k9Jf+lF7Bd6a+Z32S2e0hsxREmKnOk9hjG1ESoWdtEKr+QSV7Gq4NrjqpjMUI8nqrIaK
+         UxPg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Brh+MHWH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4922126b2f9si15927681cf.190.2025.05.07.02.19.43
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f5426517f9si16132346d6.132.2025.05.07.03.10.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 May 2025 02:19:43 -0700 (PDT)
+        Wed, 07 May 2025 03:10:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Brh+MHWH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uCavx-00085U-JU; Wed, 07 May 2025 05:19:21 -0400
+	id 1uCbjJ-0005le-Si; Wed, 07 May 2025 06:10:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <timlee660101@gmail.com>)
- id 1uCavu-00080b-VX; Wed, 07 May 2025 05:19:19 -0400
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <timlee660101@gmail.com>)
- id 1uCavp-0006Ne-QH; Wed, 07 May 2025 05:19:18 -0400
-Received: by mail-pj1-x102a.google.com with SMTP id
- 98e67ed59e1d1-30aa8a259e0so798467a91.1; 
- Wed, 07 May 2025 02:19:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1746609549; x=1747214349; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=pcdvujWM7E7CRcZLjZytCLuGjS6SIp8h6sop6QNazwE=;
- b=Brh+MHWHtn1hZHjfE9q6TEszCIfcy7bo02bFtJ4rews5fCNjRliNhXCdB+7v0oHVuc
- knzCJeibfFO7U7QwFBMuUgvSeUzWvoTDA8JKEOiMLfn3CChwkSaRg+TMjCFmH03+ywdQ
- tyd3BCSeTXAwGgK5dJjkB0TMy0uAdw1QOjpCOfXaKLfotm+izR79w0REVMDHHh9733US
- cXccynZil0YYJPadnpbEJrac5lEiZnPpJxu7uokmkycuBNQdi2vu+xBZaWMkZZLFWk8h
- WSyMgtKFvY2AdNjuHoS2uN9TumhJ1Nf1arXuzxyqmrlfZIl0KQl7nbdQYMVDLE/UDrXF
- CMRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746609549; x=1747214349;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=pcdvujWM7E7CRcZLjZytCLuGjS6SIp8h6sop6QNazwE=;
- b=Xn3ojEnG6D5TRZ/aJw867K45HjOwgZqupYWSLltZG+A6PPxOQUkmRbzx3QYYtTuPGL
- nSJaiWbuLa/GewOiVd4fxBLMZFAgyOogRBc0BhQkSZhGY2zhJUzvRmBo6R+FqlqUI846
- yOyN9vzCQwq4FIPOmgmHOPknlYTUI8P+iKiIOkiUL12E6/f6Gm6Vndyo8XzBcmg7srpI
- 8JIkHx4tHO6NvCgan+uFh2EpCwCIe7rvvNiN4r6bSPBujbDT3iL7zu12zQFAOypSAfGQ
- t0Vv0DJi42wHlqnKL4hUrzgdEKjApWQE8Jb1Pzgh1WMC06M77oZrsclzuuMam2/rMx17
- mr8g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVKmxppADghlCKnPx58evpUaW6SqLW8LgUXoxO6EOd+qrxeo+KbMLi8W//dkGSR0UYIFss9PHUM1HBs@nongnu.org
-X-Gm-Message-State: AOJu0Yy6hRs7FGBNchbIuGCDWQRRyfIU1yr1Ua9rsnkJSoU9+4dvfsHn
- 1rV6e+NHjB3TOlfrIM212jwy2U84/Hu4nqofRr73ZmVv41Oz3fwl
-X-Gm-Gg: ASbGnctNGi7XXoMCqRe9glwgUHZBRAfHHRXHRfRYUVQPI3e8iGlwT7PEAGkc3V42+LY
- EU2L5IELx+0VIt9jCZsXdISr3z+k9x2I/fFvsHycbcAl/vTrBYt+C958/MLT+fWmNUyj7micSJN
- 5HW3LQUFO0IheTCNY+n2CnHILA8I7R+3mhGlS9MShg19hdPdlO3s4TyDEse9/gTWqJzSkjFmAGW
- yFWbCL+qsF2sqsngZZFMWrlhczuWMZGPy+Po4ZJtg7HTWbEDPkxsZ8fI/EcSPo8ycBJknXHAtQI
- jffdR7lhub+9qDYIshX44N5/qkewmjhRyKM+fvyiedKgFLgCAag9x0fRf+sikLpqWXpFExmeuAI
- UBVprczyS
-X-Received: by 2002:a17:90b:3908:b0:2ee:aa28:79aa with SMTP id
- 98e67ed59e1d1-30aac184527mr3839449a91.6.1746609549362; 
- Wed, 07 May 2025 02:19:09 -0700 (PDT)
-Received: from hcdev-d520mt.. (60-250-196-139.hinet-ip.hinet.net.
- [60.250.196.139]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-30aae500d66sm1489788a91.7.2025.05.07.02.19.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 07 May 2025 02:19:09 -0700 (PDT)
-From: Tim Lee <timlee660101@gmail.com>
-To: farosas@suse.de, lvivier@redhat.com, pbonzini@redhat.com,
- wuhaotsh@google.com, kfting@nuvoton.com, chli30@nuvoton.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Tim Lee <timlee660101@gmail.com>
-Subject: [v2] tests/qtest: Add qtest for NPCM8XX PSPI module
-Date: Wed,  7 May 2025 17:18:59 +0800
-Message-Id: <20250507091859.2507455-1-timlee660101@gmail.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1uCbjI-0005gy-25; Wed, 07 May 2025 06:10:20 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1uCbjG-0004CR-HB; Wed, 07 May 2025 06:10:19 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Wed, 7 May
+ 2025 18:10:06 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Wed, 7 May 2025 18:10:06 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: <troy_lee@aspeedtech.com>, <longzl2@lenovo.com>,
+ <yunlin.tang@aspeedtech.com>, <steven_lee@aspeedtech.com>
+Subject: [PATCH v1 2/3] hw/arm/aspeed_ast27x0: Fix unimplemented region
+ overlap with vbootrom
+Date: Wed, 7 May 2025 18:10:04 +0800
+Message-ID: <20250507101005.1474823-3-steven_lee@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250507101005.1474823-1-steven_lee@aspeedtech.com>
+References: <20250507101005.1474823-1-steven_lee@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
- envelope-from=timlee660101@gmail.com; helo=mail-pj1-x102a.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=steven_lee@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,174 +95,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Steven Lee <steven_lee@aspeedtech.com>
+From:  Steven Lee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: b9s1wQcGmmoq
+X-TUID: OFIkbc44Rrcc
 
-- Created qtest to check initialization of registers in PSPI Module
-- Implemented test into Build File
+The unimplemented memory region overlaps with the VBootROM address
+range, causing incorrect memory layout and potential behavior issues.
 
-Tested:
-./build/tests/qtest/npcm8xx-pspi_test
+This patch adjusts the size and start address of the unimplemented
+region to avoid collision. The IO memory region (ASPEED_DEV_IOMEM) is
+now moved to 0x20000 to reserve space for VBootROM at 0x0.
 
-Signed-off-by: Tim Lee <timlee660101@gmail.com>
+Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+Change-Id: I1d775577816b1e93bb54c899ac3722eb6902c577
 ---
-Changes since v1:
-- MAINTAINERS file not need to change
-- Add comment for copyright/license information
-- Correct CTL registers to use 16 bits
-- Remove printf() in test cases
+ hw/arm/aspeed_ast27x0.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- tests/qtest/meson.build         |   3 +
- tests/qtest/npcm8xx_pspi-test.c | 118 ++++++++++++++++++++++++++++++++
- 2 files changed, 121 insertions(+)
- create mode 100644 tests/qtest/npcm8xx_pspi-test.c
-
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 3136d15e0f..88672a8b00 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -210,6 +210,8 @@ qtests_npcm7xx = \
-    'npcm7xx_watchdog_timer-test',
-    'npcm_gmac-test'] + \
-    (slirp.found() ? ['npcm7xx_emc-test'] : [])
-+qtests_npcm8xx = \
-+  ['npcm8xx_pspi-test']
- qtests_aspeed = \
-   ['aspeed_hace-test',
-    'aspeed_smc-test',
-@@ -257,6 +259,7 @@ qtests_aarch64 = \
-   (config_all_accel.has_key('CONFIG_TCG') and                                            \
-    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
-+  (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : []) + \
-   ['arm-cpu-features',
-    'numa-test',
-    'boot-serial-test',
-diff --git a/tests/qtest/npcm8xx_pspi-test.c b/tests/qtest/npcm8xx_pspi-test.c
-new file mode 100644
-index 0000000000..13b8a8229c
---- /dev/null
-+++ b/tests/qtest/npcm8xx_pspi-test.c
-@@ -0,0 +1,118 @@
-+/*
-+ * QTests for the Nuvoton NPCM8XX PSPI Controller
-+ *
-+ * Copyright (c) 2025 Nuvoton Technology Corporation
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest.h"
-+#include "qemu/module.h"
-+
-+/* Register offsets */
-+#define DATA_OFFSET 0x00
-+#define CTL_SPIEN   0x01
-+#define CTL_OFFSET  0x02
-+#define CTL_MOD     0x04
-+
-+typedef struct PSPI {
-+    uint64_t base_addr;
-+} PSPI;
-+
-+PSPI pspi_defs = {
-+    .base_addr  = 0xf0201000
-+};
-+
-+static uint16_t pspi_read_data(QTestState *qts, const PSPI *pspi)
-+{
-+    return qtest_readw(qts, pspi->base_addr + DATA_OFFSET);
-+}
-+
-+static void pspi_write_data(QTestState *qts, const PSPI *pspi, uint16_t value)
-+{
-+    qtest_writew(qts, pspi->base_addr + DATA_OFFSET, value);
-+}
-+
-+static uint16_t pspi_read_ctl(QTestState *qts, const PSPI *pspi)
-+{
-+    return qtest_readw(qts, pspi->base_addr + CTL_OFFSET);
-+}
-+
-+static void pspi_write_ctl(QTestState *qts, const PSPI *pspi, uint16_t value)
-+{
-+    qtest_writew(qts, pspi->base_addr + CTL_OFFSET, value);
-+}
-+
-+/* Check PSPI can be reset to default value */
-+static void test_init(gconstpointer pspi_p)
-+{
-+    const PSPI *pspi = pspi_p;
-+
-+    QTestState *qts = qtest_init("-machine npcm845-evb");
-+
-+    /* Write CTL_SPIEN value to control register for enable PSPI module */
-+    pspi_write_ctl(qts, pspi, CTL_SPIEN);
-+    g_assert_cmphex(pspi_read_ctl(qts, pspi), ==, CTL_SPIEN);
-+
-+    qtest_quit(qts);
-+}
-+
-+/* Check PSPI can be r/w data register */
-+static void test_data(gconstpointer pspi_p)
-+{
-+    const PSPI *pspi = pspi_p;
-+    uint16_t test = 0x1234;
-+    uint16_t output;
-+
-+    QTestState *qts = qtest_init("-machine npcm845-evb");
-+
-+    /* Enable 16-bit data interface mode */
-+    pspi_write_ctl(qts, pspi, CTL_MOD);
-+    g_assert_cmphex(pspi_read_ctl(qts, pspi), ==, CTL_MOD);
-+
-+    /* Write to data register */
-+    pspi_write_data(qts, pspi, test);
-+
-+    /* Read from data register */
-+    output = pspi_read_data(qts, pspi);
-+    g_assert_cmphex(output, ==, test);
-+
-+    qtest_quit(qts);
-+}
-+
-+/* Check PSPI can be r/w control register */
-+static void test_ctl(gconstpointer pspi_p)
-+{
-+    const PSPI *pspi = pspi_p;
-+    uint8_t control = CTL_MOD;
-+
-+    QTestState *qts = qtest_init("-machine npcm845-evb");
-+
-+    /* Write CTL_MOD value to control register for 16-bit interface mode */
-+    qtest_memwrite(qts, pspi->base_addr + CTL_OFFSET,
-+                   &control, sizeof(control));
-+    g_assert_cmphex(pspi_read_ctl(qts, pspi), ==, control);
-+
-+    qtest_quit(qts);
-+}
-+
-+static void pspi_add_test(const char *name, const PSPI* wd,
-+        GTestDataFunc fn)
-+{
-+    g_autofree char *full_name = g_strdup_printf("npcm8xx_pspi/%s",  name);
-+    qtest_add_data_func(full_name, wd, fn);
-+}
-+
-+#define add_test(name, td) pspi_add_test(#name, td, test_##name)
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+
-+    add_test(init, &pspi_defs);
-+    add_test(ctl, &pspi_defs);
-+    add_test(data, &pspi_defs);
-+    return g_test_run();
-+}
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 1974a25766..bb61c30cf4 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -23,14 +23,14 @@
+ #include "qobject/qlist.h"
+ #include "qemu/log.h"
+ 
+-#define AST2700_SOC_IO_SIZE          0x01000000
++#define AST2700_SOC_IO_SIZE          0x00FE0000
+ #define AST2700_SOC_IOMEM_SIZE       0x01000000
+ #define AST2700_SOC_DPMCU_SIZE       0x00040000
+ #define AST2700_SOC_LTPI_SIZE        0x01000000
+ 
+ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+-    [ASPEED_DEV_IOMEM]     =  0x00000000,
+     [ASPEED_DEV_VBOOTROM]  =  0x00000000,
++    [ASPEED_DEV_IOMEM]     =  0x00020000,
+     [ASPEED_DEV_SRAM]      =  0x10000000,
+     [ASPEED_DEV_DPMCU]     =  0x11000000,
+     [ASPEED_DEV_IOMEM0]    =  0x12000000,
 -- 
 2.34.1
 

@@ -1,105 +1,105 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp429579njb;
-        Thu, 8 May 2025 06:41:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUGhfmZFM+ylMM0UMxLj9ndOyrhXYsiEqhK1j8AzX/UcxGZLfSKDVD0BJyu3PuL4Ck7HKGyGFw1Rmql6g==@linaro.org
-X-Google-Smtp-Source: AGHT+IHb6ucL3rweGYpPQUak8UiErCzIMnNx2ywNTOwxmw1UoG0KZTnNdWpBCfl6dxUz/8nFHGjb
-X-Received: by 2002:a05:620a:468d:b0:7c5:3e22:616f with SMTP id af79cd13be357-7caf73a197emr996008585a.21.1746711690334;
-        Thu, 08 May 2025 06:41:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746711690; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp429749njb;
+        Thu, 8 May 2025 06:41:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXxbYoUA/Q5rv9kku0GaTVTmkJHGoEzkY+I7XHFVil19EMaLeLkUTXD+l94CvKkh+9oeWmw/ml8mrwe3A==@linaro.org
+X-Google-Smtp-Source: AGHT+IFZeqgD8yaBAd33SxMEojH4WuEg+xCBnLLRvSTucI3NY9H5ZZ8cCkdQ01TlclkTSphOkFzu
+X-Received: by 2002:a05:620a:4050:b0:7c0:a1c8:1db3 with SMTP id af79cd13be357-7ccf995e8cbmr513528985a.11.1746711707552;
+        Thu, 08 May 2025 06:41:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746711707; cv=none;
         d=google.com; s=arc-20240605;
-        b=Mi37tHqAysgxGjdcR+W1BXWwBATDWOGrsj+pDKO7ukW1dknPPDVKuq0ymqpgn/davj
-         urDJv2T8T1z5QiwM5NqC5g9XN0z5fXT34C48XRRCEASriXieiHJuvYDuvCE+Gydrww3w
-         CzSB76NvJpTPCQLlu1sqOn5J0CNpMPhK1XQjq6DfoVbS8vC7ilfQXyXW5gkQo+mfjX4z
-         ZUwHEpiK44Vufrxh7rS2mxXjzFQgBCJ3x0htBWU72KzmcmRSqYHiNIavE87DvwZZPZ6a
-         lnpGFoNAXb72YtP99JeLb1579dDr/xsxE1GhFrJSyoVB7kWSrtyYuAgfaMv+g7nOkfP2
-         mRrA==
+        b=DztxtqbkGXsILtAr7arZDonMu+txZRCx9Q1lIr8TpmKe4nav1LpXETZpyVWHSM38cO
+         g8ye1lfYCZf7w1b7/2ZGdhgpeAVgCDXNJsocNJBPT/08eF8GEEnIdJtTyNmkSeA8KmO7
+         t+SB99DhDSVuLqqum5mwulyJ+oYcriwjRRBM0RCqOizu8bcFZAY+sa+u9C8YXvgLwOp6
+         xnrxZ2RhsZMc2H0qlvUuYYCoqRQXk85MvOe50GxS4UxRQ0uTlYy+F2fPz15qVqvjTFiQ
+         sLYZAbRLkk9Rd4lBuoXgcvemnmv9i4EeG5WGt7tzwO5x4QVNROOHeB6Lf03V9SgSRZcT
+         BniQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=GfnNMh8um2i71NVQR7Vo7AAo9gkZrP7mDUQkPEIxOEM=;
-        fh=mrqVgQ/Zi9y5buc0Uh+k1qBn386BDuRq/zdFgpnP4ck=;
-        b=ZlpZVlZVLh7YY7d7dFZhCdeZdA6QHeleGW2q5KE41qA/0VPRYhFW2DAjjBX9CwQw1a
-         5l228aqlSKPTIssvgQmxg7hK+edd5XwF6fFfIiHrr/O1gxCbDWUC3XY9yXh9B9HM/XxL
-         JzGdu4/Qw3293bEhZUkUBo9vU1UPxyQPRdJCg3KHoLtSVUaiFFKCCJAYqIM92RkI9aiL
-         L4Loiw3KMKVfAYUYqzeDD1lf5dvAXp5XrOizsjoVptJVM35K0f1SerqdrWdPTW5Uke40
-         McqONX8/2aIsYRE62JRB7tKSvZIhz5QPzJJNh9aTZe/b16xVRzBjjZv7MJ9ijNpK+EL8
-         WhCw==;
+        bh=sqRI2bUWFL/LTWDPgHwj3plQ/Zek5ug5WOQHcPBpHVI=;
+        fh=uSSdbRjOZAzbRXFCsA2rhdrbOUV1nVOimVF8xojjsuQ=;
+        b=DTR0DSFT7QBcjivW5IJDGYVnwMQ8L4GHXH3j/aIb1vrNMaSYiXzF8GaFHjxG7iheDv
+         IOKArd32o1e/axiLm081RdzPT621plbxJIMNcjhSdp40LqkJgrYt0T3S9vUN0fk3s6m+
+         Ca5WINrjhNm8Nua7FobINYlNXZ4HnNLU30XbIFleNOm8/mQRPm1zKNbMO7lbezqUf+y0
+         i83uXbH9CHiJ0DofdXIQW+Q8o0i/SAS1KxCrvwEOMiZHhBa13HcJoogee8XXOpaIzXxf
+         pwcClE4b5qxDH1/Cw/aMa8xWak8jV+yyl1qBT4gRt1McTMR7MnS9x1bzZqD6g3NKfaFH
+         6PvQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="HPKYNVL/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=B8ixyavl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7caf75948easi463321985a.220.2025.05.08.06.41.30
+        by mx.google.com with ESMTPS id af79cd13be357-7caf75e0d46si474881485a.610.2025.05.08.06.41.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 May 2025 06:41:30 -0700 (PDT)
+        Thu, 08 May 2025 06:41:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="HPKYNVL/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=B8ixyavl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uD1V4-00010D-Ih; Thu, 08 May 2025 09:41:22 -0400
+	id 1uD1VP-0001n5-VE; Thu, 08 May 2025 09:41:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uD1V2-0000rl-01
- for qemu-arm@nongnu.org; Thu, 08 May 2025 09:41:20 -0400
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uD1VO-0001kf-8p
+ for qemu-arm@nongnu.org; Thu, 08 May 2025 09:41:42 -0400
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uD1Uz-0004Yi-U5
- for qemu-arm@nongnu.org; Thu, 08 May 2025 09:41:19 -0400
-Received: by mail-pg1-x529.google.com with SMTP id
- 41be03b00d2f7-b1fb650bdf7so567859a12.1
- for <qemu-arm@nongnu.org>; Thu, 08 May 2025 06:41:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uD1VM-0004c8-Cq
+ for qemu-arm@nongnu.org; Thu, 08 May 2025 09:41:41 -0400
+Received: by mail-pg1-x535.google.com with SMTP id
+ 41be03b00d2f7-b1fcb97d209so1917637a12.1
+ for <qemu-arm@nongnu.org>; Thu, 08 May 2025 06:41:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1746711676; x=1747316476; darn=nongnu.org;
+ d=linaro.org; s=google; t=1746711698; x=1747316498; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=GfnNMh8um2i71NVQR7Vo7AAo9gkZrP7mDUQkPEIxOEM=;
- b=HPKYNVL/Oo3D9bI81bb6wIyVbcgPC0g8Qdd4/aj+veIe0nnneDIBgm0zxzhNlEdmHF
- QhA+uAdq7HzTNb9kdyNWfPEYDIajoWakuUrrI6Q+28+Z0U+zxjMErE+MCzp9OuhEhS4r
- EvoCxDiW3iVND21Fnu2v/BDy1GHZz7g28CpcmdFgPSFuhDxReM62i1p1KA04Y839355y
- XAiCsW14q56WCviGKwrfgmsWQ4jfUPaCnxT4v9iNNuGqEp2jztLzOxkKHkmDhxjnbnqM
- NUWQo60rCgPvLyGzauGTNA0qjEhz2X9eG90YNAPotdwpuKbEixlS9i2XCf7qLOQMwlmU
- oYRQ==
+ bh=sqRI2bUWFL/LTWDPgHwj3plQ/Zek5ug5WOQHcPBpHVI=;
+ b=B8ixyavlGVNn72GR+ktMu1GI2RNoKl/1jZ1zZkglyjs17bGIsRbg+NttK7ZHtd7nUK
+ AB/IrubSQfetl1ZqZwY/SQlpucNwlQ2zqWxDpI9PIEGRbUrlifB+m5G1C9sh16dhNiNI
+ EF0Y4D/1anaDp7kdnsyle7pAqDsnMD3y7VPDDB/+zEHpgsURfrINdArM5Krxujk6eo+b
+ rX+lsUZ/T3zYaQ1+PUQDc41ITDlcjewADM4H6yQCjNhzYoFpKbQ6mu0hOsS9BS5rJ/b9
+ bw8FOGexKfSXSqbKiohMpBLHW/Oa2kjgkgsQz2oFc12LaDSOaul+P3H/Ss+Gay0TAQUv
+ reTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746711676; x=1747316476;
+ d=1e100.net; s=20230601; t=1746711698; x=1747316498;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=GfnNMh8um2i71NVQR7Vo7AAo9gkZrP7mDUQkPEIxOEM=;
- b=Eee42pZs8A8VPGlzu40i5klf29YBmJylQc+oYlM9MChqZ58wrh9ysfyFeUY5nQPpdQ
- t/jz3Pb+/9XS62FCoxWHofW/NrBd8psfAXyt/TdRnAAw2IpELbZ//U8dUBLEIzvM86ez
- ixacdyUw+2ikI9SAsskfSKEeUGch0NeWLtFJlxQa9l1fwCM0ZWXxKuo4C2f2s7Y8QDTo
- LU8nWFk1XZyED29S08m2tRZTwKd9X6+UY71fjk9FkDQLkukka4SldlitQXb6pt+A9c9K
- RkjU3+XfXHIWhBOXumMpqaDAxENPh2A233zpIWbMCemdF2hOTeVNyIoZ1Tt5L0+Fu2RD
- K/UQ==
+ bh=sqRI2bUWFL/LTWDPgHwj3plQ/Zek5ug5WOQHcPBpHVI=;
+ b=CDl+1nQwOXjZS4hWjc3DUN5EQA7iVeBvE/JjG6vU9FycM1znCGP33fwOiys00wHviH
+ 7KIISLUnYPcf5m9RKjJZ5YqHZlytQn7WlupBc7CfkxFr1/WjZbZalE4p6zlFKVoXrZ+Y
+ s4vF4RtHVd0n5n4nTjhyGr69y5wy3T2wd49+n6a3D90lO5A4ApXHWGY4LasmK5cG3esg
+ dmmPW+iHBtISRdRWrjhNwkSgr6np9Y5dE8yIKazNxyhCQWH/eyGGqgwyC74D5N2Wbtkp
+ AWiozis3FbRGY9rrN7Ac8UUaEMzIlYXAH5N+TrlVdVKAYtjF5dgk46YyF5KiNG+68Q2M
+ kqfg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWfy1549h2Kt47WO7Caf4oM8z8LDeT5tLMLZezvLJQ4V7mjmKYjBwQl1tWLTQzO1h9JQgzuyrXiKQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yz265N98s1tDimxr6JwpXQ2rLqH4n1ywNsUyvUNMM4yPW1EL5QA
- hxUhnXwtIxjjZKZtnBzg3+j5S1bA8LK0kQyP0TjhTpsoFsyxzYnQF0HpLq4Bb9E=
-X-Gm-Gg: ASbGnctt/mj34zNLCou1VPa2XdRRofQBwZEKNyxP0RN9jqw/zAx5zskKjuywM3Vze+G
- RVdpaIHGcXe3HRPvGf7XnhIbw9S+R+GUsVHI/YptTNVkloGaMr3R9/SKc/REIDZ+izceuaqMVEs
- xNkdrjLvNiKddcXgRXW0tKy7verIpuZsSU5N1Z/WcYkP0qOQJdgC0vP62KP2CBuBsKri4+j80ia
- ACALSE4cC3N/vhIhI7W1+yS6LUFhKCepx/NUyYCw5dSPWmY2lXdertY326BdWdjPmypGI0EudDN
- mTJurAYkQahJqobQGVi48GaYhA4P/9bFBOi23qZ+Ly0ChaAXlsyCN7e//ksxbL+399sjR6Hh+Bc
- gg+Pjaqg/HBWW3+g=
-X-Received: by 2002:a17:90b:278e:b0:2fa:1a23:c01d with SMTP id
- 98e67ed59e1d1-30aac1b407amr10664017a91.21.1746711675615; 
- Thu, 08 May 2025 06:41:15 -0700 (PDT)
+ AJvYcCVBSYxmqaN3auPvqB2du/e5cwXfeUzwMXO7u801G/j/vL977pCqz7tOT4y2nutzB+N9GdKv/NkKgQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzEDZhmNQuu2uxqdlowqcH80WvFohDeedhTB46bO1RIqjYGoXUJ
+ vSEyWC6KH6wcQ/6jF3ae4BAwAbr5jDRRuAsp0ZsyyefIs3MRlUv5rT8OC7kwhWI=
+X-Gm-Gg: ASbGncuprGWRzjwzUvLnfmbQaRvRRXnei5PXDLElRXqSek6ENQjymGBXFUk7iRIQV4p
+ XYAIdBGh5wCwFjfZ5PlMr5/XcTsdTMHubSzBfVcVZVSk1hcKbYAIdbFR4GexCZ1+xUYAoFi6aq7
+ np3fStjnF65noQEhzQF7/XziDTNaLXHG5w5HXwytekBkjNosb0YrJTyQtLNry9wr8ndoIfhbT+W
+ iX1nC7hGxDXVHjVLU+gAMq17y1veDq1waQGhMFcsQ0YtpRNpt9RGC/XjuLJhWxKes29XDV8mLA/
+ kgqp9U089i80QmSOkbBvWbqj9qFIVIsyLqJVKTPFNmvf5w3cVn4BCHbuOLGZ2ZkHdZDkIonCs3V
+ 50gFJiySKq4VV8KM=
+X-Received: by 2002:a17:902:c94f:b0:215:a303:24e9 with SMTP id
+ d9443c01a7336-22e846a2ab2mr48657765ad.3.1746711698591; 
+ Thu, 08 May 2025 06:41:38 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-30ad4d56981sm2115127a91.28.2025.05.08.06.41.01
+ d9443c01a7336-22e766dffefsm24985605ad.33.2025.05.08.06.41.24
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 08 May 2025 06:41:15 -0700 (PDT)
+ Thu, 08 May 2025 06:41:38 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>, kvm@vger.kernel.org,
@@ -125,25 +125,24 @@ Cc: Richard Henderson <richard.henderson@linaro.org>, kvm@vger.kernel.org,
  Huacai Chen <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>,
  Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v4 14/27] hw/intc/apic: Remove
- APICCommonState::legacy_instance_id field
-Date: Thu,  8 May 2025 15:35:37 +0200
-Message-ID: <20250508133550.81391-15-philmd@linaro.org>
+Subject: [PATCH v4 15/27] hw/core/machine: Remove hw_compat_2_6[] array
+Date: Thu,  8 May 2025 15:35:38 +0200
+Message-ID: <20250508133550.81391-16-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250508133550.81391-1-philmd@linaro.org>
 References: <20250508133550.81391-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
- envelope-from=philmd@linaro.org; helo=mail-pg1-x529.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
+ envelope-from=philmd@linaro.org; helo=mail-pg1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -158,59 +157,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dw+poA6gJUYw
+X-TUID: sBPuarYKAaqD
 
-The APICCommonState::legacy_instance_id boolean was only set
-in the pc_compat_2_6[] array, via the 'legacy-instance-id=on'
-property. We removed all machines using that array, lets remove
-that property, simplifying apic_common_realize().
-
-Because instance_id is initialized as initial_apic_id, we can
-not register vmstate_apic_common directly via dc->vmsd.
+The hw_compat_2_6[] array was only used by the pc-q35-2.6 and
+pc-i440fx-2.6 machines, which got removed. Remove it.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- include/hw/i386/apic_internal.h | 1 -
- hw/intc/apic_common.c           | 5 -----
- 2 files changed, 6 deletions(-)
+ include/hw/boards.h | 3 ---
+ hw/core/machine.c   | 8 --------
+ 2 files changed, 11 deletions(-)
 
-diff --git a/include/hw/i386/apic_internal.h b/include/hw/i386/apic_internal.h
-index 429278da618..db6a9101530 100644
---- a/include/hw/i386/apic_internal.h
-+++ b/include/hw/i386/apic_internal.h
-@@ -188,7 +188,6 @@ struct APICCommonState {
-     uint32_t vapic_control;
-     DeviceState *vapic;
-     hwaddr vapic_paddr; /* note: persistence via kvmvapic */
--    bool legacy_instance_id;
-     uint32_t extended_log_dest;
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index 5f1a0fb7e28..a881db8e7d6 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -841,7 +841,4 @@ extern const size_t hw_compat_2_8_len;
+ extern GlobalProperty hw_compat_2_7[];
+ extern const size_t hw_compat_2_7_len;
+ 
+-extern GlobalProperty hw_compat_2_6[];
+-extern const size_t hw_compat_2_6_len;
+-
+ #endif
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index e7001bf92cd..ce98820f277 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -275,14 +275,6 @@ GlobalProperty hw_compat_2_7[] = {
  };
+ const size_t hw_compat_2_7_len = G_N_ELEMENTS(hw_compat_2_7);
  
-diff --git a/hw/intc/apic_common.c b/hw/intc/apic_common.c
-index 37a7a7019d3..1d259b97e63 100644
---- a/hw/intc/apic_common.c
-+++ b/hw/intc/apic_common.c
-@@ -294,9 +294,6 @@ static void apic_common_realize(DeviceState *dev, Error **errp)
-         info->enable_tpr_reporting(s, true);
-     }
+-GlobalProperty hw_compat_2_6[] = {
+-    { "virtio-mmio", "format_transport_address", "off" },
+-    /* Optional because not all virtio-pci devices support legacy mode */
+-    { "virtio-pci", "disable-modern", "on",  .optional = true },
+-    { "virtio-pci", "disable-legacy", "off", .optional = true },
+-};
+-const size_t hw_compat_2_6_len = G_N_ELEMENTS(hw_compat_2_6);
+-
+ MachineState *current_machine;
  
--    if (s->legacy_instance_id) {
--        instance_id = VMSTATE_INSTANCE_ID_ANY;
--    }
-     vmstate_register_with_alias_id(NULL, instance_id, &vmstate_apic_common,
-                                    s, -1, 0, NULL);
- 
-@@ -412,8 +409,6 @@ static const Property apic_properties_common[] = {
-     DEFINE_PROP_UINT8("version", APICCommonState, version, 0x14),
-     DEFINE_PROP_BIT("vapic", APICCommonState, vapic_control, VAPIC_ENABLE_BIT,
-                     true),
--    DEFINE_PROP_BOOL("legacy-instance-id", APICCommonState, legacy_instance_id,
--                     false),
- };
- 
- static void apic_common_get_id(Object *obj, Visitor *v, const char *name,
+ static char *machine_get_kernel(Object *obj, Error **errp)
 -- 
 2.47.1
 

@@ -1,155 +1,262 @@
-Received: by 2002:a05:7022:a9b:b0:a0:2f73:dc0d with SMTP id dd27csp363130dlb;
-        Thu, 8 May 2025 05:07:53 -0700 (PDT)
-X-Received: by 2002:a05:690c:3749:b0:703:ac44:d367 with SMTP id 00721157ae682-70a2ce6c5e7mr49255447b3.6.1746706073189;
-        Thu, 08 May 2025 05:07:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746706073; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp426317njb;
+        Thu, 8 May 2025 06:36:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXenMlocf/KWLWdcqVZ3Iuv8H4kNb+fn2827C3ob/OabEE0U6c0mqUSERL+6V3E7qr4hKFxf4hbplB1SA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGiN+c5aBQz1fF+SO4dmaOPQY4nboiNH4l1UXyk9NKz1otVcNZOcipd9EPGpS/WZdR81WDK
+X-Received: by 2002:a05:620a:4083:b0:7c9:6d26:91b9 with SMTP id af79cd13be357-7caf7406201mr1300689585a.36.1746711385034;
+        Thu, 08 May 2025 06:36:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746711385; cv=none;
         d=google.com; s=arc-20240605;
-        b=HB30fL1+pDNec0/zEqvCeC9yLPQbzqbhaXV5Y+s9mfr4Ht1ELJFAyb0Q6Vdq3pqpcv
-         8frVav1VypK215szWIOrBqj4ebA7IdhemUjqzgjtqceWeMMDaLsL6Hv5aq+3cK84eUkF
-         +PB2+9YU6itQUFFVGwjqEq37wSKTLjiX/MZkJDwwAU+mA+HYojxnZH7/pxsl9z+4YMza
-         f8KdIMwW+BdtGFv44D5Qbg1Usp8XEwDoKWxhqHP38SioFCmgw1ryBQ8hU+1OkL1NnChM
-         9z5Do4lcIsG03jGUSFKADLLrdkBBvfJs2/I4ByaTzkLt3J39amDVJjvyBSf3HfTyIqJn
-         TS6Q==
+        b=gWcrd/SrAn/CER/MutE/nDhj9HLeFXbzpxL5Q9Gtsc39g5aJpdlYfRsN7Qa3RQ58wY
+         G4Fge4u9Dkg5+jb15HCjMpMqHkkuTjyYI68mB6OsM21I1af6g+99YJnNcm8PlP19GT1m
+         uZSfAYXBryWEc96ZsSsrMlmHSFitTKecTARB8dqvB5B2j5W5Ii/lK30iDadUc80o0Wo2
+         YNeKciKYJ+GIsu37HYZJAvKCt1GtL9/0/lYXBbZk6IyXmV/OnKUnN5CWgeulPaT2x/z9
+         +qsV/KGWUM/ud70EgRp2m6dzAoAH+bDFJXldAYpREp36lGMpxhvEisJxyZO4hLzDyaGv
+         e7Lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=YL87FuhWDvRyv0KfIzORqijLk934LJSUMog7volKFdc=;
-        fh=qFyuN+9aQ9YqLK0SiskoA6AJyTxb1+Ky9x7CdeetCiw=;
-        b=eQoAYRYYlw55D+UQsyun8ESvOrgze3frAPg7v0WHFv8R9Jso4Ltphz2xU72YHdvkIP
-         wSD7SxPKC3rak21R7taQbqFF1FCtizDAWC6/GU3V4bjMtJqQN8sZMPulVBrjpDaFyS3k
-         TvUKdHR696ymHOMcOtgeRnc4AgKCdMj6h2dTd/+qZPrMAZ3/XpOmFC81h1kc/GsixpeW
-         91BpqTuEygB+LMtcEADBdY4k8Kr6PkDnnm4S3xHeo+SUWrvGcQgT4aZMeW8XhHluGa1G
-         vSVpf5zhYoZ9h2f4nZyhn3V3/S0eScdwig9NjbY/wayGSsIH0U4MtrpDTN7A6Qz75Opf
-         bqCA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=9KuBrSw61wT1TUDNwR8So3hV4T+jBIcjNnsvQibQhUU=;
+        fh=mZiMDdJiWzfY2kHnKtLKIcLCLgCfiO7izcNd8lJ4kq0=;
+        b=Y9TVTMeS/BXcctdO5y0shhPmuhgJ3bpJK/lqfcrpyUQN/NYc3PcGRck76cnnti3UxK
+         DcAWUOj8uBVuA2VQA12cD5KlXJGkTDjko9CXeV4jPD9OpqvfT7QlfnMxpfxSsyeYJHMs
+         lbv1eSJ+b0jyv+KiyiHKPwfM9caIC/ygoXyR3IaaPKr+g56k5B/3P2rYmMbTGeJV3aid
+         m7iqsl8OT3KLA4UGqNe1TuR9IIbvZd1vr0s/YmjleoJM6jFEO73jyiwnGkcXzmbCrf8B
+         66Gni+7qoCwmBaUfZHbN/YySFme0trUNii4bO+QJuJN7Rqqe6p7g402lmMzs/VNF8ned
+         PmDQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yqLz0+Bz;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=v7MK66rW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-708c46f95f0sor98860127b3.16.2025.05.08.05.07.53
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7caf751d729si462442385a.80.2025.05.08.06.36.24
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 08 May 2025 05:07:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 08 May 2025 06:36:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yqLz0+Bz;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=v7MK66rW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uD1Q6-00067h-7S; Thu, 08 May 2025 09:36:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uD1Q5-00067Q-5C
+ for qemu-arm@nongnu.org; Thu, 08 May 2025 09:36:13 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uD1Q3-0003gc-1W
+ for qemu-arm@nongnu.org; Thu, 08 May 2025 09:36:12 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-22e4db05fe8so10633125ad.0
+ for <qemu-arm@nongnu.org>; Thu, 08 May 2025 06:36:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1746706073; x=1747310873; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YL87FuhWDvRyv0KfIzORqijLk934LJSUMog7volKFdc=;
-        b=yqLz0+BzDqFD5vG6r6djdMRrYvpKQUZXFjXuUM6/+bcLRCphTDNrBsHwdO8ugR6aEF
-         z93ZSPba7MqIJRIgE40+t7RbVQt5RWtLzL2yC22anrayiezNSDNrpC4gwejt9YR7s8pI
-         LWv9+dTtnBddfbCbQ0f3v9ooKXcjAcU8+XIIxstWrZRQ1hspq9Ymj12sa78QkRWubGaz
-         5Jur+RNQj9ZaSMpGgte+4jBoNvwbpwp50mds+OdXlPiDIlHIQ/ppMDup24yzMk2jHITk
-         0HZuQo5+lZnLHKrpy213K0zS5aDUN2WmMC1Da6G23d2GQ4NZugt9n123od62AHtrwC+Y
-         hqXQ==
+ d=linaro.org; s=google; t=1746711368; x=1747316168; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=9KuBrSw61wT1TUDNwR8So3hV4T+jBIcjNnsvQibQhUU=;
+ b=v7MK66rWl+/gtcAjLXnjGZ1UPMBUlatDxgLkdFo80EJm+v0uSPfJ/gKS9XZid5Jr6n
+ 6GNmaZOx5BqV/ZcTb4FihCfxmUdrQmZsqxD/E6fHEV8PWWv2VdA9mDbJcXU2uOKussQH
+ O+XLH53pbIjyMBRZ730H7kAvGybtZvbjISjtyOlTlqKiy/trlBrCwJE6GQ+7qrR/Ohbv
+ pVzxiYyo4p/CRgSJkQIlz7efrPmj9eKSJ80mLgcKzJbWfi5sb2pNccSHSsb3ESPh026d
+ tSrRF+oYPqjfS/X2Jg1Hgz+lnYbDKqmWI+1nOtMnIpHy8WV+7Jzbza4CH5SEHjY0ntPt
+ SnkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746706073; x=1747310873;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=YL87FuhWDvRyv0KfIzORqijLk934LJSUMog7volKFdc=;
-        b=qJjtGM3A9do9eqWWqkHcGk5R3nlm9w7YTJalyIIUiKDFNzd0LE/zPVxv6gRq0Ml2Cp
-         Ao3ZU7CptMOOHsAGHDVZ+AFwK7QoAzdN4Wa2rLrXsEL9CsY6g6elcY120k7G6HzprmU7
-         9isNsr87Y3SFoY4ToY1KGaBcPi6WnNXppJEVUuwZdm2MxwMn9qw2exqSLISGlshc2LIu
-         SsJO/IGEZtCHdsAOMdhNH/ITiBpYASI7yiHMAqZNBkHaccmWQUY6P+Mnw2efwEpokFVj
-         pq6n1dk6ll+IsXUXRckDTIc4i6jLU+65DIJZ/x9aeE34tlIAd8AdKufzG6IVvGht7k0r
-         Csrg==
-X-Gm-Message-State: AOJu0Ywrb5fTms30HjfAAHLN1dDpz3YBXG3Cvt1pfYwkuZrT09vvNIS3
-	bciI9JjPySb4mpOQX3vJO7mGB1/lAyxfORRLYqp//CDzJEu5q2S76ahQJfchhOhbdPhOyxG3Lwa
-	lO0pw2bSG9g0BJUrlPTAePJnRGpO3MrwA9oXpIx6SsXA8MXG6Jc0=
-X-Gm-Gg: ASbGncv8QlZLbauSjUQUg2T1YZ5Q+Q28vbBmTqWpxP+pnp/woiwlNVPqKJNPDaBqaZ1
-	lEkL9IfRVKAgdXMyvlptJ2SSEzpgFgS+2wv3CK2udX9ApcgVKXkMBxp7pnHaIAlC1ZEGav7fVc1
-	lOx9aLOJxfqjCygve8WwEtYVU=
-X-Google-Smtp-Source: AGHT+IE5s+nuYHd6x2a6aCI7dtUK2PdHv+gp2usVJxorITTM1P4EYvIoJcl9QwMcbO2gplMF/xxze1IqiTWVweuX+Cg=
-X-Received: by 2002:a05:6902:2b84:b0:e78:6954:49f1 with SMTP id
- 3f1490d57ef6-e78ef5efa6dmr3846126276.4.1746706072667; Thu, 08 May 2025
- 05:07:52 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1746711368; x=1747316168;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=9KuBrSw61wT1TUDNwR8So3hV4T+jBIcjNnsvQibQhUU=;
+ b=HpY+VzeSD+KjyKHiNDtP3la4ttLiAZY7XbjU3//1+ExJge+TnZNC9zbRpvR+EGJHzm
+ fg319SzYTAlaXIub5I4Q1Jhs5X0uJOcvY/Gwo2ixCkQfYL/bC+V/FKVLzD/xrgTDDpz3
+ pLWvd2OuBN7mL6I2qxe4OOhTAB4BfeMf88sBSlSVKsYePqBxbhb0DZCkJNb0JftgWoBN
+ gg4F5CWDJ3KbZLA18se/owM7UYZNFeLTlnnkLVbiBP0wGpv+8nhil92iCSWPJ2d8PcDG
+ Iqrrg1VtLfRgi4fqs1RAsLtRWgjYMHASop5BSO0LHpLx+YbqqeZvEEJJebAPXViNzNj8
+ +POQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW4XopA0XWauMAXgwRMBSpeHkM/Og6a4J6VsNP2wDRvUOS8FZy9foL1ew6hWU8OKQfzoASb37u6Pw==@nongnu.org
+X-Gm-Message-State: AOJu0Yzf/7ucyS+IJGoGttSP2sHnPfoDDpQnbJR3IcCAm/q0ls9Q+Kti
+ ODwX1QsIPCjllWyR7wg7LkgpSPsoYMfVm+Fo/Ht41jtuqlUy8mX+Hi1qVBWpp0I=
+X-Gm-Gg: ASbGncv4FxbhIQfB+0Is+hH0ckfCp40EKcRd61y3sKrp2eCZdxZ7W80JvMubMM1a0zm
+ qZlcnMSK+4LKF7Sb2LKaS+GOfbN1etJT3Tnsf9HG+DEk/6oB/SiqZ/LoXSr0c38QiPCo1G0URhl
+ 76m62tKpmtyr80Isq/Mf2eyTfWeeHB5vjLgGcJt3Oxt3JxsL7kLTAeJMyXZ76z695xvslJchLb6
+ ykYGqOrbg78+sK6S1ODIvUvM6XZRbxg9Wcsi+RLgxVDqtEsZSd7bSW2UXrtaqfRDvvJep8V6QE6
+ /SAs0+v9zVOSM1aekKDmMoXqAPKlv+V8X44eBaQLg8oO2k/YtC+91RwHgt0afS5WXUTIY2ijtLC
+ el9LfKuj3hleB/2xlVPG+onJkoQ==
+X-Received: by 2002:a17:903:478d:b0:220:e924:99dd with SMTP id
+ d9443c01a7336-22e5ecc52a4mr120970055ad.34.1746711368214; 
+ Thu, 08 May 2025 06:36:08 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-22e1521fd31sm112108055ad.130.2025.05.08.06.35.54
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 08 May 2025 06:36:07 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>, kvm@vger.kernel.org,
+ Sergio Lopez <slp@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Yi Liu <yi.l.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org,
+ Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
+ Zhao Liu <zhao1.liu@intel.com>, Yanan Wang <wangyanan55@huawei.com>,
+ Helge Deller <deller@gmx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Ani Sinha <anisinha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?q?Cl=C3=A9ment=20Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Huacai Chen <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>
+Subject: [PATCH v4 00/27] hw/i386/pc: Remove deprecated 2.6 and 2.7 PC machines
+Date: Thu,  8 May 2025 15:35:23 +0200
+Message-ID: <20250508133550.81391-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-References: <20250507165840.401623-1-alex.bennee@linaro.org>
- <CAFEAcA_0cf=XEbH9VQdTHqu1wekSmFDLdqnnzpcwnshCT-UUCg@mail.gmail.com> <87zffnmidy.fsf@draig.linaro.org>
-In-Reply-To: <87zffnmidy.fsf@draig.linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 8 May 2025 13:07:40 +0100
-X-Gm-Features: ATxdqUHvqCH0dZwizDr8EfdhDc4AqOMpAhinqOWIMw7rKJfMVDevOb_UT-kHgyk
-Message-ID: <CAFEAcA80-CWEQYwTQPziUxm5V1K93VZstLh2r9mTGkD5QueKoA@mail.gmail.com>
-Subject: Re: [RFC PATCH] target/arm: allow gdb to read ARM_CP_NORAW regs
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Julian Armistead <julian.armistead@linaro.org>, 
-	"open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 5PznW7zseObp
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=philmd@linaro.org; helo=mail-pl1-x62d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NP1UxtdHEsVC
 
-On Thu, 8 May 2025 at 12:50, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
-> > On Wed, 7 May 2025 at 17:58, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
-wrote:
-> >>
-> >> Before this we suppress all ARM_CP_NORAW registers being listed under
-> >> GDB. This includes useful registers like CurrentEL which gets tagged
-> >> as ARM_CP_NO_RAW because it is one of the ARM_CP_SPECIAL_MASK
-> >> registers. These are registers TCG can directly compute because we
-> >> have the information at compile time but until now with no readfn.
-> >>
-> >> Add a .readfn to return the CurrentEL and then loosen the restrictions
-> >> in arm_register_sysreg_for_feature to allow ARM_CP_NORAW registers to
-> >> be read if there is a readfn available.
-> >
-> > The primary use case for NO_RAW is "system instructions" like
-> > the TLB maintenance insns. These don't make sense to expose
-> > to a debugger.
->
-> I think we could re-think the logic:
->
->     /*
->      * By convention, for wildcarded registers only the first
->      * entry is used for migration; the others are marked as
->      * ALIAS so we don't try to transfer the register
->      * multiple times. Special registers (ie NOP/WFI) are
->      * never migratable and not even raw-accessible.
->      */
->     if (r2->type & ARM_CP_SPECIAL_MASK) {
->         r2->type |=3D ARM_CP_NO_RAW;
->     }
+Since v3:
+- Addressed Thomas and Zhao review comments
+- Rename fw_cfg_init_mem_[no]dma() helpers
+- Remove unused CPU properties
+- Remove {multi,linux}boot.bin
+- Added R-b tags
 
-Well, we definitely don't want WFI or the DC ZVA etc
-"registers" to be exposed to GDB or for us to try to handle
-them in KVM state sync or migration... ARM_CP_NOP is less
-clear because we use it pretty widely for more than one
-purpose. The main one is "system instruction that we don't
-need to implement". (CP_NOP + a readable register is a
-questionable combination since the guest will expect it to
-update the general-purpose destreg, not leave it untouched,
-but we do have some.)
+Since v2:
+- Addressed Mark review comments and added his R-b tags
 
-> > If we want the gdbstub access to system registers to be
-> > more than our current "we provide the ones that are easy",
-> > then I think I'd like to see a bit more up-front analysis of
-> > what the gdbstub needs and whether we've got into a bit of
-> > a mess with our ARM_CP_* flags that we could straighten out.
->
-> Yeah - hence the RFC. CurrentEL is a super useful one to expose though
-> when you are debugging complex hypervisor setups.
+The versioned 'pc' and 'q35' machines up to 2.12 been marked
+as deprecated two releases ago, and are older than 6 years,
+so according to our support policy we can remove them.
 
-One problem with this patch is the one that the reporter of
-https://gitlab.com/qemu-project/qemu/-/issues/2760 noted
-in the conversation there: it will allow the debugger to
-read registers which have a side-effect on read, like
-ICC_IAR1_EL1: we almost certainly do not want to allow
-the debugger to acknowledge an interrupt by doing a sysreg
-read.
+This series only includes the 2.6 and 2.7 machines removal,
+as it is a big enough number of LoC removed. Rest will
+follow.
 
-thanks
--- PMM
+Based-on: <20250506143905.4961-1-philmd@linaro.org>
+
+Philippe Mathieu-Daudé (27):
+  hw/i386/pc: Remove deprecated pc-q35-2.6 and pc-i440fx-2.6 machines
+  hw/i386/pc: Remove PCMachineClass::legacy_cpu_hotplug field
+  hw/nvram/fw_cfg: Rename fw_cfg_init_mem() with '_nodma' suffix
+  hw/mips/loongson3_virt: Prefer using fw_cfg_init_mem_nodma()
+  hw/nvram/fw_cfg: Factor fw_cfg_init_mem_internal() out
+  hw/nvram/fw_cfg: Rename fw_cfg_init_mem_wide() ->
+    fw_cfg_init_mem_dma()
+  hw/i386/x86: Remove X86MachineClass::fwcfg_dma_enabled field
+  hw/i386/pc: Remove multiboot.bin
+  hw/nvram/fw_cfg: Remove fw_cfg_io_properties::dma_enabled
+  hw/i386/pc: Remove linuxboot.bin
+  hw/i386/pc: Remove pc_compat_2_6[] array
+  target/i386/cpu: Remove CPUX86State::enable_cpuid_0xb field
+  target/i386/cpu: Remove CPUX86State::fill_mtrr_mask field
+  hw/intc/apic: Remove APICCommonState::legacy_instance_id field
+  hw/core/machine: Remove hw_compat_2_6[] array
+  hw/virtio/virtio-mmio: Remove
+    VirtIOMMIOProxy::format_transport_address field
+  hw/i386/pc: Remove deprecated pc-q35-2.7 and pc-i440fx-2.7 machines
+  hw/i386/pc: Remove pc_compat_2_7[] array
+  target/i386/cpu: Remove CPUX86State::full_cpuid_auto_level field
+  target/i386/cpu: Remove CPUX86State::enable_l3_cache field
+  hw/audio/pcspk: Remove PCSpkState::migrate field
+  hw/core/machine: Remove hw_compat_2_7[] array
+  hw/i386/intel_iommu: Remove IntelIOMMUState::buggy_eim field
+  hw/intc/ioapic: Remove IOAPICCommonState::version field
+  hw/virtio/virtio-pci: Remove VirtIOPCIProxy::ignore_backend_features
+    field
+  hw/char/virtio-serial: Do not expose the 'emergency-write' property
+  hw/virtio/virtio-pci: Remove VIRTIO_PCI_FLAG_PAGE_PER_VQ definition
+
+ hw/intc/ioapic_internal.h           |   3 +-
+ include/hw/acpi/cpu_hotplug.h       |   3 -
+ include/hw/boards.h                 |   6 -
+ include/hw/i386/apic_internal.h     |   1 -
+ include/hw/i386/intel_iommu.h       |   1 -
+ include/hw/i386/pc.h                |   9 --
+ include/hw/i386/x86.h               |   2 -
+ include/hw/nvram/fw_cfg.h           |   9 +-
+ include/hw/virtio/virtio-mmio.h     |   1 -
+ include/hw/virtio/virtio-pci.h      |   2 -
+ include/hw/virtio/virtio-serial.h   |   2 -
+ pc-bios/optionrom/optionrom.h       |   4 -
+ target/i386/cpu.h                   |  15 --
+ hw/acpi/cpu_hotplug.c               | 230 ---------------------------
+ hw/arm/virt.c                       |   2 +-
+ hw/audio/pcspk.c                    |  10 --
+ hw/char/virtio-serial-bus.c         |   9 +-
+ hw/core/machine.c                   |  17 --
+ hw/display/virtio-vga.c             |  10 --
+ hw/hppa/machine.c                   |   2 +-
+ hw/i386/acpi-build.c                |   4 +-
+ hw/i386/fw_cfg.c                    |   5 +-
+ hw/i386/intel_iommu.c               |   5 +-
+ hw/i386/microvm.c                   |   3 -
+ hw/i386/multiboot.c                 |   7 +-
+ hw/i386/pc.c                        |  22 +--
+ hw/i386/pc_piix.c                   |  23 ---
+ hw/i386/pc_q35.c                    |  24 ---
+ hw/i386/x86-common.c                |   6 +-
+ hw/i386/x86.c                       |   2 -
+ hw/intc/apic_common.c               |   5 -
+ hw/intc/ioapic.c                    |  18 +--
+ hw/intc/ioapic_common.c             |   2 +-
+ hw/mips/loongson3_virt.c            |   2 +-
+ hw/nvram/fw_cfg.c                   |  48 +++---
+ hw/riscv/virt.c                     |   4 +-
+ hw/virtio/virtio-mmio.c             |  15 --
+ hw/virtio/virtio-pci.c              |  12 +-
+ target/i386/cpu.c                   | 152 ++++++++----------
+ target/i386/kvm/kvm.c               |  10 +-
+ tests/qtest/test-x86-cpuid-compat.c |  11 --
+ pc-bios/meson.build                 |   2 -
+ pc-bios/multiboot.bin               | Bin 1024 -> 0 bytes
+ pc-bios/optionrom/Makefile          |   2 +-
+ pc-bios/optionrom/linuxboot.S       | 195 -----------------------
+ pc-bios/optionrom/multiboot.S       | 232 ---------------------------
+ pc-bios/optionrom/multiboot_dma.S   | 234 +++++++++++++++++++++++++++-
+ 47 files changed, 349 insertions(+), 1034 deletions(-)
+ delete mode 100644 pc-bios/multiboot.bin
+ delete mode 100644 pc-bios/optionrom/linuxboot.S
+ delete mode 100644 pc-bios/optionrom/multiboot.S
+
+-- 
+2.47.1
+

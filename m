@@ -1,118 +1,185 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5fa7781b1d2sm11139496a12.39.2025.05.08.06.37.27
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp427214njb;
+        Thu, 8 May 2025 06:37:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCV3ze4mNbVWcaCmM1dQY9fJ8d85+FUNxTfEbADqnOg5ljVPe15RKLB7qDdZso2nrcoyF121s8NSPdcrQw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHIl+4/LzGwYn+/RbfbeNErzmCdNYjTDX7tOMpZIRzwgOwPIE7ZJcudZbeW/yrbuE/UfazF
+X-Received: by 2002:a05:6830:f89:b0:72b:782a:56d7 with SMTP id 46e09a7af769-7321c8dc6cemr2232167a34.23.1746711462873;
+        Thu, 08 May 2025 06:37:42 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1746711462; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=WdJLG/8oI82pLHHqT/eSDNodfWMnzrjC2AodNj6IbJgwYPcK5DkkDByK80FzI4XYD3
+         1c2Cy4crrYAIdzAQr4QVoPDfOuCjnsXOPQVZBPEzgvayaVNBWiRYUHYl1Zef4ZEjK0g0
+         x56iG6BM7oGnu/7mnysYTbfTqqxCL3Oz8kovcm11+4Zv9LXMnRcm8IRv58Rl57u292pZ
+         wWsGYUppmWVoOVRgFNDUm4mBE6V1NzAZjjJXdRBed+x7XIFjl/AIJQbsupzrPD7bCpuh
+         7WOIKXQP63YaZSfGo+/XpfgRRyPaTiw9Y8P2cOdjbOq2QVH3kH8RjIFXcBq0VJLwGre/
+         sjvg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=kL4pIFttZ2qmq1tFiNzzTmUrRSAgtctinyd6wOyzE6Q=;
+        fh=KhXgU75ATScSLlDYaxgIau59trLUCVVx/NPY8gDAqZY=;
+        b=MJEcSzWzToSPFZXeFiNCuZ5XfzAcite1EZNzhgY6G/TCRI9/P+pya0FnK8SPZmz732
+         GieTWwEFaBbCVVOy6F5uMB9Nc1WDBYObupiq7jTQZjDRLNN2ipwh+xxbmDDx5vSNIjpK
+         t5fmwZE8bEolvJBIvH7ywUDwRGTHOhsjVR4w6oUMnyDEciA2cQGTotAtOnz2bu3aTzDp
+         2Ny7wV8LVFZtoPD+H/qj8oYM7RwxPamztRp4rN4rhW4KQzoRjjR7qPkmazdIzINlVBgc
+         m7ifUD4hEUYcc5eSrH5nWr0GbWIcZstIfO8mghj6cKe6n354jutj6QCvGvfzYoUFo02+
+         OS4A==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gb86tvxH;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-45863-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-45863-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm+bounces-45863-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 46e09a7af769-732109dd5f7si2443682a34.39.2025.05.08.06.37.42
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 May 2025 06:37:28 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 0A8E45F767;
-	Thu,  8 May 2025 14:37:27 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org,  Julian Armistead <julian.armistead@linaro.org>,
-  "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Subject: Re: [RFC PATCH] target/arm: allow gdb to read ARM_CP_NORAW regs
-In-Reply-To: <CAFEAcA80-CWEQYwTQPziUxm5V1K93VZstLh2r9mTGkD5QueKoA@mail.gmail.com>
-	(Peter Maydell's message of "Thu, 8 May 2025 13:07:40 +0100")
-References: <20250507165840.401623-1-alex.bennee@linaro.org>
-	<CAFEAcA_0cf=XEbH9VQdTHqu1wekSmFDLdqnnzpcwnshCT-UUCg@mail.gmail.com>
-	<87zffnmidy.fsf@draig.linaro.org>
-	<CAFEAcA80-CWEQYwTQPziUxm5V1K93VZstLh2r9mTGkD5QueKoA@mail.gmail.com>
-User-Agent: mu4e 1.12.10; emacs 30.1
-Date: Thu, 08 May 2025 14:37:26 +0100
-Message-ID: <87o6w3mdex.fsf@draig.linaro.org>
+        Thu, 08 May 2025 06:37:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-45863-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gb86tvxH;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-45863-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-45863-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 89FA53A3A46
+	for <alex.bennee@linaro.org>; Thu,  8 May 2025 13:37:24 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id C71E0227B95;
+	Thu,  8 May 2025 13:37:39 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="gb86tvxH"
+Received: from mail-pj1-f42.google.com (mail-pj1-f42.google.com [209.85.216.42])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 20CB0215F46
+	for <kvm@vger.kernel.org>; Thu,  8 May 2025 13:37:37 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.216.42
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1746711459; cv=none; b=sfyxFXxIuYrT9TYsgdm2uGrnn3U0o31V40H3Shb6O762oVnFZJMDIL2u4AAZfOUi2/dt8ltcYfMabizT4eWnIOHD7UuGrlqEzWgx2ethp+tAd7nwf5CJd9nHACEVoOfMZ0UPMfzj9T5ienjJnSAbiSNsxqBeaDcClYwkNWvKzgQ=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1746711459; c=relaxed/simple;
+	bh=KCmhYs0xw0YqbtcY6GSMEssa+051TTUsa6rWSwAu8dI=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=RcgN28F+WtcKaTu/ZTqtasXxiEU78fIh2j946OPghNie3LzIieuu540XRjpWXJg3ab+uA8ryXclCHrijPD+OfkmDWvC5+9obmAJCmx8xfuJpexxYuJ4OOIwu5HXzVQR5iEJrq8AxoktNa7myaexQBi7X3V+/xB8wRu2TpcO1NY8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=gb86tvxH; arc=none smtp.client-ip=209.85.216.42
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+Received: by mail-pj1-f42.google.com with SMTP id 98e67ed59e1d1-30ab344a1d8so988162a91.3
+        for <kvm@vger.kernel.org>; Thu, 08 May 2025 06:37:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1746711457; x=1747316257; darn=vger.kernel.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kL4pIFttZ2qmq1tFiNzzTmUrRSAgtctinyd6wOyzE6Q=;
+        b=gb86tvxHS//n5xXZJKebeNyJ5Vg47VLvmxWFYLSCnKItCZUoAYj9dq5tKbX30eUFpy
+         PzN10TpI5Dv4bxRzmKLWKpALj4BYFt+KtoTSuZtozaYSkRE3sWbpPi8EqJK8NEFqjVMZ
+         j6U7uVVAOl8ZFurt8CrQH1JdQhayv10YttcmdsaN59qtJ/K+77njC50YQRl5T2uRP9U0
+         KKc1fvscVzlFPgrJZalXvy7u6n80JP+uWvdAQbIqjbApYMmdyYYz4TBeAc1KWKEApm2n
+         wMBS+EOy2kUB5tWHT+vBD8vlLmMyHyBTijLM/AG8g1FU0Yu2CRTdfLPI7EYvsHrBOLgK
+         L4gg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1746711457; x=1747316257;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=kL4pIFttZ2qmq1tFiNzzTmUrRSAgtctinyd6wOyzE6Q=;
+        b=reKjcL0d0IUZQF2nVpyrTns/0ORcpJ6ZODfqF3tAcO0aWUbhJs1btP1H7kVfarrBt6
+         P1g/DNn90eiAassb6S+Gz1PejF+GOshwfdkdn/qF0GNZnthwTuJIO5etQS56zVFop1l8
+         nVmlP0YRaP2Or+JWsETY94/qMOniqI67IXVxp1EiXcQNJr9sWKIZCeSMhFC9mlwaHjH0
+         H6OcqmlUwR4jS2hVFv5bCGqt4Yf/H+ZkUE70qetLtcZOVFu4684ng3wcWg+eGDujr6N8
+         ikvdCaW/Xn4iGApJpwIMTUjN7iYdjP4jORc1vC2U7trK9iiudd24otGVUHg0TTGy3YZi
+         Imnw==
+X-Forwarded-Encrypted: i=1; AJvYcCUYcI6UZbjTkUH/q8ULFWi4C+4xzZGYYTTEH5g0imqXH/pdO+dZLtB4d6ZPKC9OgRVsOzE=@vger.kernel.org
+X-Gm-Message-State: AOJu0YwOfT5Hd7odzQLkgJUwJX2aGtwGNsHZVmiRL33uJ4lPyfm2mD0H
+	KtyJj8jyGegzl4Di8NGSPSqp0AQOnRvrvqXflMWxqrA1QTIh2L3yDwFD9186uEg=
+X-Gm-Gg: ASbGncuwCTzMzHA4yB4j/8XCpyjw+1Anx6urOX8rxVsVyKUbRNhTI25LPw+cTY2KN0T
+	DVpeRy9IHZDi7FJQKCOUo+l4+n32obBITuQBYhzHNBBVaRP8pR/yc1kYryfh365hdltjbgRbZdl
+	vCIYZTPbClXK2ftypnMu28wJi53Ni9lBWQH8vbtLanKfPn8yaF/zpH4PKyak2wbL5DcVsGE/eBM
+	/AncrJ8X75vo9vK4KYdjDjl2O+hVJChHF2iF5CDksNa2p8vLo4xNc09Gc93rQFNYo3yRYCDNkov
+	axe9zUAxfzjBWwXDqgeP51rsJiJ9h2SrOvpZUwnuXjlqlwkvLLHdGY9ONL+LbOd+NxiVP5xIg7+
+	ga9uvr8GDHTKEAOf4cOTXksasyQ==
+X-Received: by 2002:a17:90b:1d03:b0:2fe:e0a9:49d4 with SMTP id 98e67ed59e1d1-30b28cd784amr5179358a91.2.1746711457171;
+        Thu, 08 May 2025 06:37:37 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22e15228ce9sm112128395ad.163.2025.05.08.06.37.23
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Thu, 08 May 2025 06:37:36 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+	kvm@vger.kernel.org,
+	Sergio Lopez <slp@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Yi Liu <yi.l.liu@intel.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	qemu-riscv@nongnu.org,
+	Weiwei Li <liwei1518@gmail.com>,
+	Amit Shah <amit@kernel.org>,
+	Zhao Liu <zhao1.liu@intel.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Helge Deller <deller@gmx.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Fabiano Rosas <farosas@suse.de>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	=?UTF-8?q?Cl=C3=A9ment=20Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Jason Wang <jasowang@redhat.com>
+Subject: [PATCH v4 04/27] hw/mips/loongson3_virt: Prefer using fw_cfg_init_mem_nodma()
+Date: Thu,  8 May 2025 15:35:27 +0200
+Message-ID: <20250508133550.81391-5-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250508133550.81391-1-philmd@linaro.org>
+References: <20250508133550.81391-1-philmd@linaro.org>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: mW3Kjl0hFxQH
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: YUNs6SGUkLwu
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+fw_cfg_init_mem_wide() is prefered to initialize fw_cfg
+with DMA support. Without DMA, use fw_cfg_init_mem_nodma().
 
-> On Thu, 8 May 2025 at 12:50, Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
-ote:
->>
->> Peter Maydell <peter.maydell@linaro.org> writes:
->>
->> > On Wed, 7 May 2025 at 17:58, Alex Benn=C3=A9e <alex.bennee@linaro.org>=
- wrote:
->> >>
->> >> Before this we suppress all ARM_CP_NORAW registers being listed under
->> >> GDB. This includes useful registers like CurrentEL which gets tagged
->> >> as ARM_CP_NO_RAW because it is one of the ARM_CP_SPECIAL_MASK
->> >> registers. These are registers TCG can directly compute because we
->> >> have the information at compile time but until now with no readfn.
->> >>
->> >> Add a .readfn to return the CurrentEL and then loosen the restrictions
->> >> in arm_register_sysreg_for_feature to allow ARM_CP_NORAW registers to
->> >> be read if there is a readfn available.
->> >
->> > The primary use case for NO_RAW is "system instructions" like
->> > the TLB maintenance insns. These don't make sense to expose
->> > to a debugger.
->>
->> I think we could re-think the logic:
->>
->>     /*
->>      * By convention, for wildcarded registers only the first
->>      * entry is used for migration; the others are marked as
->>      * ALIAS so we don't try to transfer the register
->>      * multiple times. Special registers (ie NOP/WFI) are
->>      * never migratable and not even raw-accessible.
->>      */
->>     if (r2->type & ARM_CP_SPECIAL_MASK) {
->>         r2->type |=3D ARM_CP_NO_RAW;
->>     }
->
-> Well, we definitely don't want WFI or the DC ZVA etc
-> "registers" to be exposed to GDB or for us to try to handle
-> them in KVM state sync or migration... ARM_CP_NOP is less
-> clear because we use it pretty widely for more than one
-> purpose. The main one is "system instruction that we don't
-> need to implement". (CP_NOP + a readable register is a
-> questionable combination since the guest will expect it to
-> update the general-purpose destreg, not leave it untouched,
-> but we do have some.)
->
->> > If we want the gdbstub access to system registers to be
->> > more than our current "we provide the ones that are easy",
->> > then I think I'd like to see a bit more up-front analysis of
->> > what the gdbstub needs and whether we've got into a bit of
->> > a mess with our ARM_CP_* flags that we could straighten out.
->>
->> Yeah - hence the RFC. CurrentEL is a super useful one to expose though
->> when you are debugging complex hypervisor setups.
->
-> One problem with this patch is the one that the reporter of
-> https://gitlab.com/qemu-project/qemu/-/issues/2760 noted
-> in the conversation there: it will allow the debugger to
-> read registers which have a side-effect on read, like
-> ICC_IAR1_EL1: we almost certainly do not want to allow
-> the debugger to acknowledge an interrupt by doing a sysreg
-> read.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/mips/loongson3_virt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Doesn't raw_readfn offer these semantics?
+diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
+index de6fbcc0cb4..654a2f0999f 100644
+--- a/hw/mips/loongson3_virt.c
++++ b/hw/mips/loongson3_virt.c
+@@ -286,7 +286,7 @@ static void fw_conf_init(void)
+     FWCfgState *fw_cfg;
+     hwaddr cfg_addr = virt_memmap[VIRT_FW_CFG].base;
+ 
+-    fw_cfg = fw_cfg_init_mem_wide(cfg_addr, cfg_addr + 8, 8, 0, NULL);
++    fw_cfg = fw_cfg_init_mem_nodma(cfg_addr, cfg_addr + 8, 8);
+     fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, (uint16_t)current_machine->smp.cpus);
+     fw_cfg_add_i16(fw_cfg, FW_CFG_MAX_CPUS, (uint16_t)current_machine->smp.max_cpus);
+     fw_cfg_add_i64(fw_cfg, FW_CFG_RAM_SIZE, loaderparams.ram_size);
+-- 
+2.47.1
 
-    /*
-     * Function for doing a "raw" read; used when we need to copy
-     * coprocessor state to the kernel for KVM or out for
-     * migration. This only needs to be provided if there is also a
-     * readfn and it has side effects (for instance clear-on-read bits).
-     */
-    CPReadFn *raw_readfn;
-
-So maybe:
-
-        /* We can only read ARM_CP_NO_RAW regs without side effects */
-        if ((ri->type & ARM_CP_NO_RAW) && !ri->raw_readfn) {
-            return;
-        }
-
-And I guess we can strengthen the gdb helper to NOP any writes to such
-registers.
-
->
-> thanks
-> -- PMM
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro

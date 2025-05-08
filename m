@@ -1,223 +1,216 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp429299njb;
-        Thu, 8 May 2025 06:40:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWHX5QeKg+fz0Lj8YcubsWxz32Ufhi8lx+nN7IqDRtBlug6SCniFl8KzSHw8pjlDWYxWM7U2tyt5evhzA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGBMKFBpcJoHC9sddXUOD0IXLcV4zBwuo1nL3RcOCsdCGyqaxtKv59kUsNPH3WMkRhKrisK
-X-Received: by 2002:a05:6214:4009:b0:6f5:473d:e52c with SMTP id 6a1803df08f44-6f54c3a777fmr55405006d6.15.1746711658412;
-        Thu, 08 May 2025 06:40:58 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1746711658; cv=pass;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp429579njb;
+        Thu, 8 May 2025 06:41:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUGhfmZFM+ylMM0UMxLj9ndOyrhXYsiEqhK1j8AzX/UcxGZLfSKDVD0BJyu3PuL4Ck7HKGyGFw1Rmql6g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHb6ucL3rweGYpPQUak8UiErCzIMnNx2ywNTOwxmw1UoG0KZTnNdWpBCfl6dxUz/8nFHGjb
+X-Received: by 2002:a05:620a:468d:b0:7c5:3e22:616f with SMTP id af79cd13be357-7caf73a197emr996008585a.21.1746711690334;
+        Thu, 08 May 2025 06:41:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746711690; cv=none;
         d=google.com; s=arc-20240605;
-        b=C15nSm5AKjGjX9Kw6zHevHnVH8Fdv42ar4lHnlhcXT1kGwhSHNC0WlTGtyw+6uL0Ot
-         C2KvF9CawAdidut6KZY7ab1spmTyaP+G2Hx9p/b2syn+5GX73NBv906dlIbNvkYvoqTv
-         4X5A5GB42/6agB82C9rryc010JYwcvdEw626ruuwn63+elMwMLhupd5hI5lchVsbX+pC
-         kthjeoVQHkXsk8pJUFswTHKwDoDw37LSk/Q4BWjvR40Ie7d4zQN0VIeKw2BSFs7ng2Nn
-         4n9j5IPbY73fIQgZhKSsKARK5CqeOMIIS5++7sDbMbbF41Z0wkuBaDDvil8OyzU6VkZx
-         tk4Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=mAafb+dHM0R7U2T8OMZzAcuOcBI3QoaSzAwGll5ygQs=;
-        fh=B+14+zmOR1Dz6IIAmIknzFz8xYCc8NspjFRvVedxLcI=;
-        b=G8ngNZufmyynfWbTSy3q/EkJyQnJrAN2dLs2swMQ5aGkrG7e2/M4lcs37tnouksgSa
-         GCv9ogQhYMGCL5FlLo3/2hXX/ohVcs4h4XCnv5vhdnzD8IbA5GctdxMk6Y3x1t96YR2C
-         VylL81YuoRStZaGjxNEMzT1H2ue9tbpxZSiyE5gmmUhuCzuvYSSB5EyDpiqphm0zh8CX
-         WXcxCenZHVBaLZvbiSYIVi3T+IpqseFGeBmt8mLB7AecbdZtZ7jqpNpj2AYg0JYDNXV1
-         Nj7xnvhKhRIQENjDk8p/hyP/TDbYc+b9Hz9/w/oB9i7jiVoEzSFapDnjoyNrUqe1IA/L
-         o82Q==;
+        b=Mi37tHqAysgxGjdcR+W1BXWwBATDWOGrsj+pDKO7ukW1dknPPDVKuq0ymqpgn/davj
+         urDJv2T8T1z5QiwM5NqC5g9XN0z5fXT34C48XRRCEASriXieiHJuvYDuvCE+Gydrww3w
+         CzSB76NvJpTPCQLlu1sqOn5J0CNpMPhK1XQjq6DfoVbS8vC7ilfQXyXW5gkQo+mfjX4z
+         ZUwHEpiK44Vufrxh7rS2mxXjzFQgBCJ3x0htBWU72KzmcmRSqYHiNIavE87DvwZZPZ6a
+         lnpGFoNAXb72YtP99JeLb1579dDr/xsxE1GhFrJSyoVB7kWSrtyYuAgfaMv+g7nOkfP2
+         mRrA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=GfnNMh8um2i71NVQR7Vo7AAo9gkZrP7mDUQkPEIxOEM=;
+        fh=mrqVgQ/Zi9y5buc0Uh+k1qBn386BDuRq/zdFgpnP4ck=;
+        b=ZlpZVlZVLh7YY7d7dFZhCdeZdA6QHeleGW2q5KE41qA/0VPRYhFW2DAjjBX9CwQw1a
+         5l228aqlSKPTIssvgQmxg7hK+edd5XwF6fFfIiHrr/O1gxCbDWUC3XY9yXh9B9HM/XxL
+         JzGdu4/Qw3293bEhZUkUBo9vU1UPxyQPRdJCg3KHoLtSVUaiFFKCCJAYqIM92RkI9aiL
+         L4Loiw3KMKVfAYUYqzeDD1lf5dvAXp5XrOizsjoVptJVM35K0f1SerqdrWdPTW5Uke40
+         McqONX8/2aIsYRE62JRB7tKSvZIhz5QPzJJNh9aTZe/b16xVRzBjjZv7MJ9ijNpK+EL8
+         WhCw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VFHB0K9E;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-45872-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-45872-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-45872-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f54264ce80si45250606d6.125.2025.05.08.06.40.58
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="HPKYNVL/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7caf75948easi463321985a.220.2025.05.08.06.41.30
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 May 2025 06:40:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-45872-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 08 May 2025 06:41:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VFHB0K9E;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-45872-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-45872-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 662324C5AC5
-	for <alex.bennee@linaro.org>; Thu,  8 May 2025 13:40:59 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 1146684D13;
-	Thu,  8 May 2025 13:40:57 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="VFHB0K9E"
-Received: from mail-pl1-f171.google.com (mail-pl1-f171.google.com [209.85.214.171])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 566694B1E6D
-	for <kvm@vger.kernel.org>; Thu,  8 May 2025 13:40:54 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.171
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1746711656; cv=none; b=a9KZSeLVXMjaltUNGCgVydYdXVoiOMRnmEla04o8ZAgAAdMNZ7La8J3SSGh7MQyOYnDEpu0utj0OoSdaXg9yWriHatJRZKXM2hNHeZi6cmXjgsz9d2VOps+UQMvj3Su5iWPFxcU/1Ly/xcnA3HE2fe4sE1/lLdOnDOTWtTzkYQs=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1746711656; c=relaxed/simple;
-	bh=NqL/KPnW3rHo+PJFRpMlW3G98lRMn8/Ip73RFjJkb5M=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=lK3T2WwVbIaxfer49lLiOCZgB8pMo4uwjSaugc5DTR6xMOzrwWT4TLClxg6LmlptqmxoekAuNFTwVWnlWcbl6Sg3HA8J2emd7B1+CgCIkWnEsdnCtU2aNiiq7UsA1pjXQM+dI6XN9T+p3N/9GOguV19a5anZX/mKWKCS7bu8cWU=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=VFHB0K9E; arc=none smtp.client-ip=209.85.214.171
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-pl1-f171.google.com with SMTP id d9443c01a7336-2264aefc45dso14444485ad.0
-        for <kvm@vger.kernel.org>; Thu, 08 May 2025 06:40:54 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b="HPKYNVL/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uD1V4-00010D-Ih; Thu, 08 May 2025 09:41:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uD1V2-0000rl-01
+ for qemu-arm@nongnu.org; Thu, 08 May 2025 09:41:20 -0400
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uD1Uz-0004Yi-U5
+ for qemu-arm@nongnu.org; Thu, 08 May 2025 09:41:19 -0400
+Received: by mail-pg1-x529.google.com with SMTP id
+ 41be03b00d2f7-b1fb650bdf7so567859a12.1
+ for <qemu-arm@nongnu.org>; Thu, 08 May 2025 06:41:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1746711653; x=1747316453; darn=vger.kernel.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mAafb+dHM0R7U2T8OMZzAcuOcBI3QoaSzAwGll5ygQs=;
-        b=VFHB0K9Emv9MP5XpBafFr2bkj6JXcs1W0g/EwmNf0HsUBMZZ+sBeYTvOQkT/KAkrOV
-         hUQ6iPZGzF9Bhz7IXVYxaQe0ihGf54MeGX89R30Gs8YG0JrSqxAyD2yvqOmD0LOToNq7
-         0NY9YNxjB4KdohvZq5obntsnNVZmhs0N7wjz6J5bM8nChxNReACZpQ+v+GvM3UGfX5qS
-         /t7pZ+ndCWpTX1z/Vidonp7jGyTytQw4/+rkugJa2Momon+YyIFWC5vDjmCgTKMuzolh
-         2EzOXFjR87X9w1Bm42zVVKmTnbHTL4Ha0KH/cqO+m2hrxgfwpiZ3NXiJbLrzIFMGooZC
-         rXZA==
+ d=linaro.org; s=google; t=1746711676; x=1747316476; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=GfnNMh8um2i71NVQR7Vo7AAo9gkZrP7mDUQkPEIxOEM=;
+ b=HPKYNVL/Oo3D9bI81bb6wIyVbcgPC0g8Qdd4/aj+veIe0nnneDIBgm0zxzhNlEdmHF
+ QhA+uAdq7HzTNb9kdyNWfPEYDIajoWakuUrrI6Q+28+Z0U+zxjMErE+MCzp9OuhEhS4r
+ EvoCxDiW3iVND21Fnu2v/BDy1GHZz7g28CpcmdFgPSFuhDxReM62i1p1KA04Y839355y
+ XAiCsW14q56WCviGKwrfgmsWQ4jfUPaCnxT4v9iNNuGqEp2jztLzOxkKHkmDhxjnbnqM
+ NUWQo60rCgPvLyGzauGTNA0qjEhz2X9eG90YNAPotdwpuKbEixlS9i2XCf7qLOQMwlmU
+ oYRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746711653; x=1747316453;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=mAafb+dHM0R7U2T8OMZzAcuOcBI3QoaSzAwGll5ygQs=;
-        b=wlFc7npnRE2FiOSYijQ8GOvyp8Vdsoew84dAozMVS1vGzYCj5vVetNDPHsL5iJPdhI
-         iQaDaJ2Tw+3G/GXJTibHx7hhf0ZErq7Z2pbKh/uHHAL2HgZm3kHZF07glToD9f0X++ZA
-         /HuPM3cmQ1aAJM2llNZ3JgH3DIit50PrjgPKsJNitzncj8RLfXR11y5m+8jUDjspzgHd
-         ViPY4RTWjHQkQtxpS+mTomE/jQi2GQcGBjqXIiN7Z20E0fxMEojVzcN8k4TsV4i1bytL
-         bWpAqO9EXiPepya3fgKPdb4TNC2atJsHBebp7pBBW/HQthdnuYX2FSBAI4+Ch1YyVt4H
-         hAXw==
-X-Forwarded-Encrypted: i=1; AJvYcCVrNc+gLOaqaTG9MukpCpooQXIAQF3Etbk1jA9cyHHJyB5RRV7NOKnqqyY2SaZqQTjF/i8=@vger.kernel.org
-X-Gm-Message-State: AOJu0YzZn7/T/FIf3XUGD5lDo/2iEvvTmrvkJ/s2eDlRw2xnMs80GUqM
-	QUMQR3tj3RW6m2+4VWPhhlJpBQEwQPC6nFBQLxBETlG4FqH3CuEfOzJSVxhqZfs=
-X-Gm-Gg: ASbGncuFZgXI4NH2DtgAnOb/T6zdGGbn8Ikmn70srGdpXlOtMN9TDezyB3OjKoii9y1
-	p6Rr+4EnXXWduMCwQ7mV64prnRcBhaJ43oW/WPprwJT2vQSCH+FeJyFdzUe5eRlKQA3fKojghwe
-	32T9OKohqbGMZaeIeHVMuqCc/Z+T362vxTIa2jS1XVrxRWjaxscWf5kxzD+VY/qvrlFartxyfN+
-	+bEGnzutLSnSs+SWlRmr/0mX2sBUsd4a2y2kp8OsusFJMeM0QHUpiNkyeGfEm8YG8MXmnL8qpe+
-	M8mM3vEoNEitAKX6y9VSkiiEopil/C+hgHoL0KJkHSwhO2i+bQOFGpehR2gjguq+o1hqmtafjvB
-	3S8HTP0kaBHpmkzg=
-X-Received: by 2002:a17:903:194e:b0:224:f12:3734 with SMTP id d9443c01a7336-22e8660509bmr47849675ad.30.1746711653500;
-        Thu, 08 May 2025 06:40:53 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22e150eb5d2sm112359365ad.7.2025.05.08.06.40.40
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 08 May 2025 06:40:53 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1746711676; x=1747316476;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=GfnNMh8um2i71NVQR7Vo7AAo9gkZrP7mDUQkPEIxOEM=;
+ b=Eee42pZs8A8VPGlzu40i5klf29YBmJylQc+oYlM9MChqZ58wrh9ysfyFeUY5nQPpdQ
+ t/jz3Pb+/9XS62FCoxWHofW/NrBd8psfAXyt/TdRnAAw2IpELbZ//U8dUBLEIzvM86ez
+ ixacdyUw+2ikI9SAsskfSKEeUGch0NeWLtFJlxQa9l1fwCM0ZWXxKuo4C2f2s7Y8QDTo
+ LU8nWFk1XZyED29S08m2tRZTwKd9X6+UY71fjk9FkDQLkukka4SldlitQXb6pt+A9c9K
+ RkjU3+XfXHIWhBOXumMpqaDAxENPh2A233zpIWbMCemdF2hOTeVNyIoZ1Tt5L0+Fu2RD
+ K/UQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWfy1549h2Kt47WO7Caf4oM8z8LDeT5tLMLZezvLJQ4V7mjmKYjBwQl1tWLTQzO1h9JQgzuyrXiKQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yz265N98s1tDimxr6JwpXQ2rLqH4n1ywNsUyvUNMM4yPW1EL5QA
+ hxUhnXwtIxjjZKZtnBzg3+j5S1bA8LK0kQyP0TjhTpsoFsyxzYnQF0HpLq4Bb9E=
+X-Gm-Gg: ASbGnctt/mj34zNLCou1VPa2XdRRofQBwZEKNyxP0RN9jqw/zAx5zskKjuywM3Vze+G
+ RVdpaIHGcXe3HRPvGf7XnhIbw9S+R+GUsVHI/YptTNVkloGaMr3R9/SKc/REIDZ+izceuaqMVEs
+ xNkdrjLvNiKddcXgRXW0tKy7verIpuZsSU5N1Z/WcYkP0qOQJdgC0vP62KP2CBuBsKri4+j80ia
+ ACALSE4cC3N/vhIhI7W1+yS6LUFhKCepx/NUyYCw5dSPWmY2lXdertY326BdWdjPmypGI0EudDN
+ mTJurAYkQahJqobQGVi48GaYhA4P/9bFBOi23qZ+Ly0ChaAXlsyCN7e//ksxbL+399sjR6Hh+Bc
+ gg+Pjaqg/HBWW3+g=
+X-Received: by 2002:a17:90b:278e:b0:2fa:1a23:c01d with SMTP id
+ 98e67ed59e1d1-30aac1b407amr10664017a91.21.1746711675615; 
+ Thu, 08 May 2025 06:41:15 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-30ad4d56981sm2115127a91.28.2025.05.08.06.41.01
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 08 May 2025 06:41:15 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	kvm@vger.kernel.org,
-	Sergio Lopez <slp@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Yi Liu <yi.l.liu@intel.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	qemu-riscv@nongnu.org,
-	Weiwei Li <liwei1518@gmail.com>,
-	Amit Shah <amit@kernel.org>,
-	Zhao Liu <zhao1.liu@intel.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Helge Deller <deller@gmx.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Ani Sinha <anisinha@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Fabiano Rosas <farosas@suse.de>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	=?UTF-8?q?Cl=C3=A9ment=20Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Huacai Chen <chenhuacai@kernel.org>,
-	Jason Wang <jasowang@redhat.com>
-Subject: [PATCH v4 13/27] target/i386/cpu: Remove CPUX86State::fill_mtrr_mask field
-Date: Thu,  8 May 2025 15:35:36 +0200
-Message-ID: <20250508133550.81391-14-philmd@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>, kvm@vger.kernel.org,
+ Sergio Lopez <slp@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Yi Liu <yi.l.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org,
+ Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
+ Zhao Liu <zhao1.liu@intel.com>, Yanan Wang <wangyanan55@huawei.com>,
+ Helge Deller <deller@gmx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Ani Sinha <anisinha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?q?Cl=C3=A9ment=20Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Huacai Chen <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PATCH v4 14/27] hw/intc/apic: Remove
+ APICCommonState::legacy_instance_id field
+Date: Thu,  8 May 2025 15:35:37 +0200
+Message-ID: <20250508133550.81391-15-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250508133550.81391-1-philmd@linaro.org>
 References: <20250508133550.81391-1-philmd@linaro.org>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: TfQnMiTSzZ4S
+Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
+ envelope-from=philmd@linaro.org; helo=mail-pg1-x529.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dw+poA6gJUYw
 
-The CPUX86State::fill_mtrr_mask boolean was only disabled
-for the pc-q35-2.6 and pc-i440fx-2.6 machines, which got
-removed. Being now always %true, we can remove it and simplify
-kvm_get_msrs().
+The APICCommonState::legacy_instance_id boolean was only set
+in the pc_compat_2_6[] array, via the 'legacy-instance-id=on'
+property. We removed all machines using that array, lets remove
+that property, simplifying apic_common_realize().
+
+Because instance_id is initialized as initial_apic_id, we can
+not register vmstate_apic_common directly via dc->vmsd.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- target/i386/cpu.h     |  3 ---
- target/i386/cpu.c     |  1 -
- target/i386/kvm/kvm.c | 10 +++-------
- 3 files changed, 3 insertions(+), 11 deletions(-)
+ include/hw/i386/apic_internal.h | 1 -
+ hw/intc/apic_common.c           | 5 -----
+ 2 files changed, 6 deletions(-)
 
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 06817a31cf9..7585407da54 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -2253,9 +2253,6 @@ struct ArchCPU {
-     /* Enable auto level-increase for Intel Processor Trace leave */
-     bool intel_pt_auto_level;
+diff --git a/include/hw/i386/apic_internal.h b/include/hw/i386/apic_internal.h
+index 429278da618..db6a9101530 100644
+--- a/include/hw/i386/apic_internal.h
++++ b/include/hw/i386/apic_internal.h
+@@ -188,7 +188,6 @@ struct APICCommonState {
+     uint32_t vapic_control;
+     DeviceState *vapic;
+     hwaddr vapic_paddr; /* note: persistence via kvmvapic */
+-    bool legacy_instance_id;
+     uint32_t extended_log_dest;
+ };
  
--    /* if true fill the top bits of the MTRR_PHYSMASKn variable range */
--    bool fill_mtrr_mask;
--
-     /* if true override the phys_bits value with a value read from the host */
-     bool host_phys_bits;
+diff --git a/hw/intc/apic_common.c b/hw/intc/apic_common.c
+index 37a7a7019d3..1d259b97e63 100644
+--- a/hw/intc/apic_common.c
++++ b/hw/intc/apic_common.c
+@@ -294,9 +294,6 @@ static void apic_common_realize(DeviceState *dev, Error **errp)
+         info->enable_tpr_reporting(s, true);
+     }
  
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 6fe37f71b1e..fb505d13122 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -8810,7 +8810,6 @@ static const Property x86_cpu_properties[] = {
-     DEFINE_PROP_UINT32("guest-phys-bits", X86CPU, guest_phys_bits, -1),
-     DEFINE_PROP_BOOL("host-phys-bits", X86CPU, host_phys_bits, false),
-     DEFINE_PROP_UINT8("host-phys-bits-limit", X86CPU, host_phys_bits_limit, 0),
--    DEFINE_PROP_BOOL("fill-mtrr-mask", X86CPU, fill_mtrr_mask, true),
-     DEFINE_PROP_UINT32("level-func7", X86CPU, env.cpuid_level_func7,
-                        UINT32_MAX),
-     DEFINE_PROP_UINT32("level", X86CPU, env.cpuid_level, UINT32_MAX),
-diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index c9a3c02e3e3..87edce99e85 100644
---- a/target/i386/kvm/kvm.c
-+++ b/target/i386/kvm/kvm.c
-@@ -4635,13 +4635,9 @@ static int kvm_get_msrs(X86CPU *cpu)
-      * we're migrating to.
-      */
- 
--    if (cpu->fill_mtrr_mask) {
--        QEMU_BUILD_BUG_ON(TARGET_PHYS_ADDR_SPACE_BITS > 52);
--        assert(cpu->phys_bits <= TARGET_PHYS_ADDR_SPACE_BITS);
--        mtrr_top_bits = MAKE_64BIT_MASK(cpu->phys_bits, 52 - cpu->phys_bits);
--    } else {
--        mtrr_top_bits = 0;
+-    if (s->legacy_instance_id) {
+-        instance_id = VMSTATE_INSTANCE_ID_ANY;
 -    }
-+    QEMU_BUILD_BUG_ON(TARGET_PHYS_ADDR_SPACE_BITS > 52);
-+    assert(cpu->phys_bits <= TARGET_PHYS_ADDR_SPACE_BITS);
-+    mtrr_top_bits = MAKE_64BIT_MASK(cpu->phys_bits, 52 - cpu->phys_bits);
+     vmstate_register_with_alias_id(NULL, instance_id, &vmstate_apic_common,
+                                    s, -1, 0, NULL);
  
-     for (i = 0; i < ret; i++) {
-         uint32_t index = msrs[i].index;
+@@ -412,8 +409,6 @@ static const Property apic_properties_common[] = {
+     DEFINE_PROP_UINT8("version", APICCommonState, version, 0x14),
+     DEFINE_PROP_BIT("vapic", APICCommonState, vapic_control, VAPIC_ENABLE_BIT,
+                     true),
+-    DEFINE_PROP_BOOL("legacy-instance-id", APICCommonState, legacy_instance_id,
+-                     false),
+ };
+ 
+ static void apic_common_get_id(Object *obj, Visitor *v, const char *name,
 -- 
 2.47.1
 

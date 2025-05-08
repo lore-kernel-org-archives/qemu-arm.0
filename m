@@ -1,95 +1,94 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp470879njb;
-        Thu, 8 May 2025 07:42:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUSJGe8X871DAyeqMRiyi+L1nxyM91lvgYAdC4uv/tujrTN48tdENlntTvGnhCLbyi8O0KG0w2O7TqpUQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHQp2ciZyKCUX4Fb7zYkTZjqccAzGpwaf+HyBdlbZfXQqonHIh4FB4iHUlvKB/ixF1xVexA
-X-Received: by 2002:ac8:5712:0:b0:472:133f:93ae with SMTP id d75a77b69052e-49227f39b4fmr103322941cf.48.1746715322769;
-        Thu, 08 May 2025 07:42:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746715322; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp471190njb;
+        Thu, 8 May 2025 07:42:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXAYEByTAufscsJ6YVU6FRbndH/z8RMuJkvej1Dj9pdJOvRQk8gKaumqiP7Dn3yrpYhI30FHUWjESK9Kg==@linaro.org
+X-Google-Smtp-Source: AGHT+IH5jk24ujy3HZFFEr6g0AmvvAhZqD6kNUIM6v2rBRg2IXWTaHnNMScbOKykF+AgvWk0w72J
+X-Received: by 2002:a05:622a:40c8:b0:48c:ff99:4064 with SMTP id d75a77b69052e-49449212435mr53854161cf.5.1746715350432;
+        Thu, 08 May 2025 07:42:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746715350; cv=none;
         d=google.com; s=arc-20240605;
-        b=YKrYjERKCfP0eqiQmBP9LaYox4fEKjNzwgpUTcQeDZ6idF1I+FooTj3TW1WNCfJG3L
-         fT6b9QEoOJrQM2TpoTGP8Kp361Xq3xJQmc7176Gh0TqfylcEXmXRbwItEP7bkO6q0XvB
-         i3qMlBraLWbEusSAcpJ7Qw+KLnFoNO2Kcj880ff11mMgQEpGU2hdnzC98huyPgZFSzcJ
-         UJ5FJyw33MIOWOc1ekw2Sl5M36dFi3Vuu47t/uUGlbaA011AaqMN0zSY9y70mO8bO1i8
-         ARjTMmE4JfGQivNi5eSa8K55jVD0pnNn6PD7jsJdi0EZxUHeCZ/opR1QpvTQrdhRPAye
-         Iqxg==
+        b=SbL4q6fUy3uXSoF1peNiAYaLrEk9/13dCUhzM0PeCrHfUNrTMm/HvtwiCTg7m1NEXn
+         HiuFp3RR+W3yoIobzIg1i/t0EWPhD06XcQ9H7agGohwdJlvNG7S474xI4ZpwbPLceoo8
+         vLfATs8gJNhOZeEGTKgFXDhz3hej2JqAToytSX7/IfahIBpcSvLS1mJGm8RVyi9uiBYX
+         XoEcYDa5BmcIjWNp4jFBZ02xjkgwRE7M0u81SOm7TqLQaJ5uWbcjyuuazOM/nXUmn5tw
+         nAKeHTWmwBFtrnIfaLgz76+MKjfTgFdWivQVMoG5ct8x1JIbuLL1mVJMupmk8rkGRB0n
+         w4Cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=tHyyoI2eXMXaL7BAlXVr1M7eUE65B35IC5CIRU66uIk=;
+        bh=UOqIO1CEm9qmOLzRB/pCK+LThTMuOpcZYyDIO1qxp7c=;
         fh=mV1hj/g4izUEtI00kKHr/+DcS8Ht1XYt/8wmIYnJvQU=;
-        b=ULbDFZ/eiHuf9c73+iwmLQYV8/U29ltftW9/KkYEJuX9iGinImtdDQ4ccy7Ts9NI4M
-         7XAMAd7ugnLakQV4PcSbzPwMOs3gOdEbzlKU3+gusDRT1pTdop/EpodlODPbwGLK82wo
-         0HX2TiEAi3+70voLl3NV32R79hszf7WCYOm1Cu4x+IEt9ggyOAFl2ikit0pp/YrjCdmq
-         mk96ayysT825vxyF8B9SRWT3yPYJVtJbXHqy4bB24l2GQLaMbXzrjkJXGWUFyVB0jAJ4
-         9Z0tPVp+3YUEon+kNJmqZAx82dky2BdJpNbybYuwigHa9IA1on019LaeHVVfUab1ogiG
-         1z+w==;
+        b=U0I+5tEkfg0NwEWINYdiwYuS0KY+TA/Tfs0zITs70Ij++8FYpCjGQH3Do7aeOBAngQ
+         d7jKkGocdsBG9/hXnHaFqkL7dIlAt8gkFc4og/AOvvO7H2BTyLfJ9rHDenCBLcIA6Z8B
+         rPEgbzgjwagF1Cl4OqBJmuooA/rous/XNDymnntC9s2WLXsCb9Mnal/Jl2RD8wckAD2g
+         lycKtMiNgX99DpZxj0sfz5xpeCLGR00Yd3zk87R80JCltZVoAhCl6ovAS2FFYy847dqZ
+         8bhXbDfJ/vRgsqaEtW3Koqozh9ZKq5qpjhhFciTO09b3CCXwO49of6jynqsy0maYngAF
+         n31g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KNMjwMfH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q3+dnltu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-49223928c22si46988361cf.658.2025.05.08.07.42.02
+        by mx.google.com with ESMTPS id d75a77b69052e-49220f81a24si48293591cf.45.2025.05.08.07.42.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 May 2025 07:42:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 08 May 2025 07:42:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KNMjwMfH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q3+dnltu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uD2Ra-0005fu-Sj; Thu, 08 May 2025 10:41:51 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uD2S2-0006M0-HT; Thu, 08 May 2025 10:42:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uD2RZ-0005dt-2P
- for qemu-arm@nongnu.org; Thu, 08 May 2025 10:41:49 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uD2Rg-0005pz-28
+ for qemu-devel@nongnu.org; Thu, 08 May 2025 10:41:56 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uD2RU-0004z1-GY
- for qemu-arm@nongnu.org; Thu, 08 May 2025 10:41:48 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uD2Rd-000502-53
+ for qemu-devel@nongnu.org; Thu, 08 May 2025 10:41:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1746715302;
+ s=mimecast20190719; t=1746715312;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=tHyyoI2eXMXaL7BAlXVr1M7eUE65B35IC5CIRU66uIk=;
- b=KNMjwMfHgZwmWSHtYTqTaGZsunvKONjWqXnuT5/dJY3MGkEokVvvuIDBdEn2sFmlIVru82
- hvMhHP6fyKxbrkdy6HImKjtXxA+iIzyrogBAGYoFCFP6b1njlgUAizt7qpWXLl0MqUTjW7
- TjOwL993ryQnG4Ad1j5Sx6SEnL+ax9w=
+ bh=UOqIO1CEm9qmOLzRB/pCK+LThTMuOpcZYyDIO1qxp7c=;
+ b=Q3+dnltu7yIFApXBsnn13e8ieWNQU7woRceqsooj+XWYbAcmyHfFVfS2D/Br9wY3UrATDx
+ u5BSRO9nVEW2onr+/LZvSs4+PN+kcYLmvHz3m6VVY+oQpEoJj2uK9JXo8KEwRJyxZeRFnf
+ 16i5svpr64tOI4aYPo45icfZL1qqfIo=
 Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-609-PToQqRGGNDi0liAlK39GSw-1; Thu,
- 08 May 2025 10:41:41 -0400
-X-MC-Unique: PToQqRGGNDi0liAlK39GSw-1
-X-Mimecast-MFC-AGG-ID: PToQqRGGNDi0liAlK39GSw_1746715300
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-465-MTXY0f4yPRCwHUc1hxCV-g-1; Thu,
+ 08 May 2025 10:41:49 -0400
+X-MC-Unique: MTXY0f4yPRCwHUc1hxCV-g-1
+X-Mimecast-MFC-AGG-ID: MTXY0f4yPRCwHUc1hxCV-g_1746715305
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 15AA819560B0; Thu,  8 May 2025 14:41:40 +0000 (UTC)
+ id DD6DF1955D84; Thu,  8 May 2025 14:41:44 +0000 (UTC)
 Received: from thuth-p1g4.redhat.com (unknown [10.44.32.200])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3BCE519560AD; Thu,  8 May 2025 14:41:35 +0000 (UTC)
+ id E4DE719560AD; Thu,  8 May 2025 14:41:40 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Brad Smith <brad@comstyle.com>, qemu-devel@nongnu.org
 Cc: Warner Losh <imp@bsdimp.com>, Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [RFC PATCH 3/5] hw/arm: Compile musicpal and the xlnx machines with
- the right CFLAGS
-Date: Thu,  8 May 2025 16:41:18 +0200
-Message-ID: <20250508144120.163009-4-thuth@redhat.com>
+Subject: [PATCH 4/5] tests/vm: Update OpenBSD to 7.7
+Date: Thu,  8 May 2025 16:41:19 +0200
+Message-ID: <20250508144120.163009-5-thuth@redhat.com>
 In-Reply-To: <20250508144120.163009-1-thuth@redhat.com>
 References: <20250508144120.163009-1-thuth@redhat.com>
 MIME-Version: 1.0
@@ -106,59 +105,47 @@ X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.416,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XiqPBsraGIEK
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1DJfWkDi4Eaf
 
 From: Thomas Huth <thuth@redhat.com>
 
-These machines include ui/console.h, which in turn includes the
-pixman headers and <epoxy/gl.h> via ui/surface.h. If these library
-headers are located outside of /usr/include (like gl.h on OpenBSD 7.7),
-we must make sure to compile this code with the right CFLAGS so that
-the headers can be found.
+OpenBSD 7.7 has been released at the end of April 2025, so let's
+update to that version.
 
+Reported-by: Brad Smith <brad@comstyle.com>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- Note: Paolo had a better suggestion here:
- https://lists.libreplanet.org/archive/html/qemu-arm/2025-05/msg00571.html
-
- hw/arm/meson.build | 4 ++--
+ tests/vm/openbsd | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 5098795f61d..51d0c055abf 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -8,7 +8,7 @@ arm_common_ss.add(when: 'CONFIG_HIGHBANK', if_true: files('highbank.c'))
- arm_common_ss.add(when: 'CONFIG_INTEGRATOR', if_true: files('integratorcp.c'))
- arm_common_ss.add(when: 'CONFIG_MICROBIT', if_true: files('microbit.c'))
- arm_common_ss.add(when: 'CONFIG_MPS3R', if_true: files('mps3r.c'))
--arm_common_ss.add(when: 'CONFIG_MUSICPAL', if_true: [pixman, files('musicpal.c')])
-+arm_common_ss.add(when: 'CONFIG_MUSICPAL', if_true: [files('musicpal.c'), pixman, opengl])
- arm_common_ss.add(when: 'CONFIG_NETDUINOPLUS2', if_true: files('netduinoplus2.c'))
- arm_common_ss.add(when: 'CONFIG_OLIMEX_STM32_H405', if_true: files('olimex-stm32-h405.c'))
- arm_common_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx.c', 'npcm7xx_boards.c'))
-@@ -34,7 +34,7 @@ arm_common_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c'
- arm_common_ss.add(when: 'CONFIG_STM32F405_SOC', if_true: files('stm32f405_soc.c'))
- arm_common_ss.add(when: 'CONFIG_B_L475E_IOT01A', if_true: files('b-l475e-iot01a.c'))
- arm_common_ss.add(when: 'CONFIG_STM32L4X5_SOC', if_true: files('stm32l4x5_soc.c'))
--arm_common_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp.c', 'xlnx-zcu102.c'))
-+arm_common_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: [files('xlnx-zynqmp.c', 'xlnx-zcu102.c'), pixman, opengl])
- arm_common_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal.c', 'xlnx-versal-virt.c'))
- arm_common_ss.add(when: 'CONFIG_FSL_IMX25', if_true: files('fsl-imx25.c', 'imx25_pdk.c'))
- arm_common_ss.add(when: 'CONFIG_FSL_IMX31', if_true: files('fsl-imx31.c', 'kzm.c'))
+diff --git a/tests/vm/openbsd b/tests/vm/openbsd
+index 5e4f76f3988..2ea86a01bad 100755
+--- a/tests/vm/openbsd
++++ b/tests/vm/openbsd
+@@ -22,8 +22,8 @@ class OpenBSDVM(basevm.BaseVM):
+     name = "openbsd"
+     arch = "x86_64"
+ 
+-    link = "https://cdn.openbsd.org/pub/OpenBSD/7.6/amd64/install76.iso"
+-    csum = "60cba8cb391b50bba8fa10fc768bd0529636f5345d82133c93e22c798d8e5269"
++    link = "https://cdn.openbsd.org/pub/OpenBSD/7.7/amd64/install77.iso"
++    csum = "da0106e39463f015524dca806f407c37a9bdd17e6dfffe533b06a2dd2edd8a27"
+     size = "20G"
+     pkgs = [
+         # tools
 -- 
 2.49.0
 

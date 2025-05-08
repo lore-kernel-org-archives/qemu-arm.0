@@ -1,100 +1,105 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp293995njb;
-        Thu, 8 May 2025 02:36:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXx6qHm4flBAtRwqjd53mVJhG8tBcKHFptvrU0MmZZzjV8wxQdRcoyJX13zuzY8Ob5zQWNkgj+H4cIX/A==@linaro.org
-X-Google-Smtp-Source: AGHT+IGYgIZ0xY8ZiwRV4EBcTleDHZwVK6x0imDvcS2PUmshwEuq9rFltNesFX3ACUSvKeuZTJOG
-X-Received: by 2002:ac8:7f83:0:b0:491:1a65:8958 with SMTP id d75a77b69052e-49225a40099mr88061071cf.3.1746696976969;
-        Thu, 08 May 2025 02:36:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746696976; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp294037njb;
+        Thu, 8 May 2025 02:36:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXG2Qdd9Hb8kDrli4sH6bTdiFp7yDGw5gPbXFvWM7Vm7mXrkp8hUCYkxAEEWI5jvj8WG+h/6IbTi8RU8A==@linaro.org
+X-Google-Smtp-Source: AGHT+IF5y3Wy2wK7a6LjjgJ4QVK+wrvOaIAj1Y2/nx3mIoUF62CGpUQ6g3p3auhOxTmsTQazUAJq
+X-Received: by 2002:a05:620a:d8b:b0:7c5:5d4b:e621 with SMTP id af79cd13be357-7ccf9e85b25mr278569785a.37.1746696981570;
+        Thu, 08 May 2025 02:36:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746696981; cv=none;
         d=google.com; s=arc-20240605;
-        b=ItRtUo1CsPRNQ9GcD3MCzMxvu3mUv6mIi/5Gg1uNHQcfJfr3eeoraAIOaCJvhz/7Dt
-         RqmmIvJe++1Drv7Ela6IqZp8A65rNdavjK0LwF3YlovhTHlhmWzbEr4ZVKL/OTt/7hPu
-         RfhurriKSSyzLturbZSHDvTSlPlVW7JXjuOh27Oh1hqP/YZmGfl5cN25BA0yNjqZZk3k
-         8jrVwREl2K7bSE8RYSLDg87hCJ0+ieo0IuoyDiveOiqASL28Re1fTk8DzvQlVS0+TtSV
-         Rwql3MpdtXEPUX2o/k+Q+jTkxwnzrHnw8sslzh1epBYov2/iqoQA68yMaViN/TgSpWtj
-         asQA==
+        b=kJruHoAJguEO9HT7c0BUjvN4NmqIl/24ZymjJd7sZxzB/S+qNIDWplhKMVwXdSxi80
+         xjoW7crmeui6Qm3ZGRXKrUUREV9F/HVXW2KB7wbY/rpWd/W57VFFEZQDzYKfIvTHvH6o
+         P0uI9RlJ+GyT7T/r+4LVF3u5Fc9floPrXOhsX8FTWG/ZoV5txc0cg9WJMX+INyD9Vz/Q
+         mVicqe6X9j+8dk6LUMoq/MjO7VRmQV/lWIpzVFCvnMvVrWyfHQjPtZzI5tOwj0Hin9UW
+         IFMmjm77iZYPyivb4awpNQ5hr97oB034skxKIwJdtBczFnW5Y2GQle3Q/3VbS7PpGr3q
+         oVYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Yu4z3kDfhVanSoLPb79ZKcDNzb1K4g026do4JnzWrhY=;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=nU4LiLynOrWE+N38igctS6l33SUxz1Pd5CrmiqYD5vI=;
         fh=cp5/pjrGBiOSnVnIYR1qYu8cyK1vwqycjiVaN+zSIMY=;
-        b=CTpADcEAigbn84NuU9OUgnlKxfgfjc7uhZasuXrvojlVgGarg9aXS0VfJ74EkQk8X3
-         /H7xxR4sthXFVzSS5suXJ4pTSZAPluk1AkP33VT+z6cWqQ4ht4eb+InSIWlcqpTfKmes
-         Zqq9cPryL1xMlK/aIQlsXIUOoNHZJ0MT0iTGRHtx0f+ltsosbitHflRm/0D2cEn1rCMY
-         tSP01pr3g/xc5cLRDm5piiMyWbFjQu6mtHSpD/BivdEjHXDtMS/dhC6vPW7D5rkgxj6C
-         BiI+1FcctoAckY+hnK1sZdU4Z3e8MfOLRINQx5vp4hjtLm/ZlZKQ/SjliecTLTxClwrH
-         O92g==;
+        b=aekp2mX70d0mNS0JzQyM5M7i2k752C6/O+xrsrIqoTkKakcYyaCt8ptFLx4P+Mmurd
+         VX7IibJTqsRBsqdC77/qt3v0SW6ttLup0k9r6AgfteGvaugp3ptJ1eKGPnXFBvRjZsSd
+         yWVi4+jNfUIjHhO1rFAn2bXI76fiRiRPqWcbcPHhfloktFQgp5JjxH9hpaAsDm/UIPyU
+         qcL5rmid0MfyTaR0waA9i/Sx/mAsfWSYlt64f0fGlD+ALpPXU+dZ8uPxcTDEnpVe2RBH
+         L2gxM8qEOY0HXdOFcG3Z9/uEiLhwRGqDPufmMq1XfzUfEVqBu7fFKcO/SaZWgqdve7A8
+         +qgw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CNLEfsny;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RsWvonQZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4922345706esi40198741cf.493.2025.05.08.02.36.16
+        by mx.google.com with ESMTPS id af79cd13be357-7caf75c999asi421752785a.522.2025.05.08.02.36.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 May 2025 02:36:16 -0700 (PDT)
+        Thu, 08 May 2025 02:36:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CNLEfsny;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RsWvonQZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uCxfF-0005Ml-0K; Thu, 08 May 2025 05:35:37 -0400
+	id 1uCxfU-0005PJ-9R; Thu, 08 May 2025 05:35:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uCxfC-0005MN-Cr
- for qemu-arm@nongnu.org; Thu, 08 May 2025 05:35:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uCxfT-0005P8-Fq
+ for qemu-arm@nongnu.org; Thu, 08 May 2025 05:35:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uCxfA-0007ku-NM
- for qemu-arm@nongnu.org; Thu, 08 May 2025 05:35:33 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uCxfR-0007m5-QF
+ for qemu-arm@nongnu.org; Thu, 08 May 2025 05:35:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1746696929;
+ s=mimecast20190719; t=1746696949;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=Yu4z3kDfhVanSoLPb79ZKcDNzb1K4g026do4JnzWrhY=;
- b=CNLEfsny0iUAWc1GmSab3wxUEs5G8+Wqx/u3ZjM0ftkY3OmQ3duIleGq29NlnllNdSXM49
- BLaZetfQJn+NMdvZFXYIX8mazxHwpUMm8i88rcAMLZ2b0ZoBrnvdVLbh3HfdAbm+XDcQuQ
- wXzHsB9AHc6GYzpsrd7uRkSZTxkxdBs=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=nU4LiLynOrWE+N38igctS6l33SUxz1Pd5CrmiqYD5vI=;
+ b=RsWvonQZNhtIxX09T9I0Qebo4PGY3pxTaaVvGJCcWJ01FCrTmrkEAj+jvFlg7e2r8wYxUC
+ LBZKRQ6hf7MyfmDwVRYJ9Yt1EUDN0T0VnZt9vO7rWytAnGxrmz6U3alyGfWtrqleARb34y
+ /By6cjaQTSh3puvj20mhgfkAeHd/KQU=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-211-kxSRSutfMpucepgutmvS-A-1; Thu,
- 08 May 2025 05:35:27 -0400
-X-MC-Unique: kxSRSutfMpucepgutmvS-A-1
-X-Mimecast-MFC-AGG-ID: kxSRSutfMpucepgutmvS-A_1746696925
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-18-U53I7ScRNmuThrUlJpeP0w-1; Thu,
+ 08 May 2025 05:35:47 -0400
+X-MC-Unique: U53I7ScRNmuThrUlJpeP0w-1
+X-Mimecast-MFC-AGG-ID: U53I7ScRNmuThrUlJpeP0w_1746696946
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D4A8D19560AB; Thu,  8 May 2025 09:35:24 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A4E67180045C; Thu,  8 May 2025 09:35:46 +0000 (UTC)
 Received: from thuth-p1g4.redhat.com (unknown [10.44.32.200])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 474E21955F24; Thu,  8 May 2025 09:35:20 +0000 (UTC)
+ id BD7C91955F24; Thu,  8 May 2025 09:35:42 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Brad Smith <brad@comstyle.com>
 Cc: Warner Losh <imp@bsdimp.com>, Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 0/5] Fix dependencies in arm machines and update OpenBSD to 7.7
-Date: Thu,  8 May 2025 11:35:14 +0200
-Message-ID: <20250508093519.144004-1-thuth@redhat.com>
+Subject: [PATCH 5/5] Revert "meson.build: Disable -fzero-call-used-regs on
+ OpenBSD"
+Date: Thu,  8 May 2025 11:35:19 +0200
+Message-ID: <20250508093519.144004-6-thuth@redhat.com>
+In-Reply-To: <20250508093519.144004-1-thuth@redhat.com>
+References: <20250508093519.144004-1-thuth@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: EPlUpv44O1XDvsP4VTCT4uVkj5Q-BRdpFLh0EUIOmjU_1746696925
+X-Mimecast-MFC-PROC-ID: 2V_LOXktuFnQ0FsBJ64FahJSmuwdFhUFoKZ2S2k5Jh8_1746696946
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
 X-Spam_score: -3.5
@@ -118,34 +123,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KNcyUp/mbbQ5
+X-TUID: 85k6FU8ZdHyr
 
-At the end of April, OpenBSD 7.7 has been released, so we could update
-our test VM to that version now. However, I noticed that some arm machines
-now fail to compile since they fail to include the <epoxy/gl.h> header.
-This header resides in /usr/X11R6/include instead of /usr/include in
-OpenBSD, so we have to make sure that the machines are compiled with the
-right CFLAGS (or don't include the header at all if it is not really
-necessary). Thus the first patches of this series clean up this first
-before we can finally switch to OpenBSD 7.7. The last patch then
-also reverts a hack for OpenBSD in the main meson.build file since the
-related problem has finally been fixed there.
+From: Thomas Huth <thuth@redhat.com>
 
-Thomas Huth (5):
-  include/hw/dma/xlnx_dpdma: Remove dependency on console.h
-  hw/display/bcm2835_fb: Move inclusion of console.h to the .c file
-  hw/arm: Compile musicpal and the xlnx machines with the right CFLAGS
-  tests/vm: Update OpenBSD to 7.7
-  Revert "meson.build: Disable -fzero-call-used-regs on OpenBSD"
+This reverts commit 2d6d995709482cc8b6a76dbb5334a28001a14a9a.
 
- meson.build                     | 6 +-----
- include/hw/display/bcm2835_fb.h | 1 -
- include/hw/dma/xlnx_dpdma.h     | 1 -
- hw/display/bcm2835_fb.c         | 1 +
- hw/arm/meson.build              | 4 ++--
- tests/vm/openbsd                | 4 ++--
- 6 files changed, 6 insertions(+), 11 deletions(-)
+OpenBSD 7.7 fixed the problem with the -fzero-call-used-regs on OpenBSD,
+see https://github.com/openbsd/src/commit/03eca72d1e030b7a542cd6aec1 for
+the fix there.
 
+Suggested-by: Brad Smith <brad@comstyle.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ meson.build | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 6c61e1dcaec..5f0e6a65cb0 100644
+--- a/meson.build
++++ b/meson.build
+@@ -699,11 +699,7 @@ hardening_flags = [
+ #
+ # NB: Clang 17 is broken and SEGVs
+ # https://github.com/llvm/llvm-project/issues/75168
+-#
+-# NB2: This clashes with the "retguard" extension of OpenBSD's Clang
+-# https://gitlab.com/qemu-project/qemu/-/issues/2278
+-if host_os != 'openbsd' and \
+-   cc.compiles('extern struct { void (*cb)(void); } s; void f(void) { s.cb(); }',
++if cc.compiles('extern struct { void (*cb)(void); } s; void f(void) { s.cb(); }',
+                name: '-fzero-call-used-regs=used-gpr',
+                args: ['-O2', '-fzero-call-used-regs=used-gpr'])
+     hardening_flags += '-fzero-call-used-regs=used-gpr'
 -- 
 2.49.0
 

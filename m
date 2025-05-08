@@ -1,114 +1,113 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp731440njb;
-        Thu, 8 May 2025 15:08:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVp9kovcYk5HWjR8fL0lq9NK53srqaOXttx/1vErPbsVvHYWg5wZhH33YNYTAg2RuLbZTg6SsTvARU0dA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHpRqMlBB5jnXX9H9p3matBs3jRrCLYVwyodTglELXknWwin7GlLGMS/leq/vaPhZ1l3+1E
-X-Received: by 2002:ac8:5f95:0:b0:48d:7cb6:c616 with SMTP id d75a77b69052e-494529e5cefmr15440731cf.14.1746742081318;
-        Thu, 08 May 2025 15:08:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746742081; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp731318njb;
+        Thu, 8 May 2025 15:07:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX/XkcmKOvqjJj70wFE7RlHIYs/jUUqNOYn8PVAB8nKIHBjmeiVYYWVzm4LieXlw+ahgX/Ep2/xoQCL/Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHLmCbmU8NI2DdueIe+c0xIbyp+PZD0Sniwj+fIV530jiPfEufyjfgPm7XyWJpYyfrAQp8e
+X-Received: by 2002:a05:6214:1bc8:b0:6e8:fbb7:6760 with SMTP id 6a1803df08f44-6f6e47956dfmr15413006d6.1.1746742064229;
+        Thu, 08 May 2025 15:07:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746742064; cv=none;
         d=google.com; s=arc-20240605;
-        b=OYjQ46QlGJ9tyJSlAzGn0wPWLsfVZ5sz2cKsHEjvGTUlGSDg0zGahg3UhkmvFEAgtp
-         PKpO5za3/bJivyKeKLCVs5ElfjSpCeCGTTqUQl/fDIHPXz4tntv0HtIz7tr543EMhK9V
-         pHA4MzlODgdJc/Kak/mI/4CLcx5vG1R0KmF0IkY/CdxPas+vUUQ6DsqPtOuiIasN3xsq
-         hJ0EmwjxHs42VgBcMcnuLSvxF32bOgDrhg5jiNhlANTiHGImF9IL5kR2jus8p/wSHBPz
-         B0NFQaDYS1lbEF6a0Dz3SjLTx5zhNHR8fo+mNafZpIFo+EdDkVPZ/DfD8LNazdlfAZsy
-         47nw==
+        b=TuimK5X13bNp5nfDM5l5CzSLSooYmUg1ZqfPwXZ02Dk17cRZIXGhBlxOqVmy78BggT
+         G6mAo6u9X7d7ZRIwdspSWzXTdxwYQ+GLcNLQdiVq4y7NAgS4rg5YzS2qhbuUoE1cyv1R
+         0f+YcTP1Klcu0kb4xERd7nMzFQE+pP+t5zXgaVPuJriPAdUQY69+8P715P2ov7uahaM/
+         iaAEIPi4ODVkES2w3ut2bY5UPPZomAUOPl/TGuMNvLa8QYGvhlQqKyVFguZgcbVZoN++
+         ekjGmCgisxalgRHdds2g0daGQ5jm9CER2lIT9wyNLlOSs5m+JVIGm049vpA0SQ9oUV3j
+         v/ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=fJU6UlRN3H7dSUUIlwcfvpO29WmnqKnNMBXNRLUsUNk=;
-        fh=i7BETd2JINKhy6RpDuba6EbGfJLwXIsAF82eD1oT82E=;
-        b=hM3v1V3uTApvx2LdEu5VwoJKV5EA+o1JyM58R7uzyf4LEB0IXGtTRBpNbHr9SNUFc9
-         A44/k6sMa/yrMO9QIunW+vVk7kFZIeRZLxGHzxAck9TaYQTainY6fJ5MWX0d6GYxinT/
-         sLT29jS7kHrSGgJ69Ja20eqE58tqufxctWaBZt6eottEbbWPnfWiDdewCn+yMqy7s+gs
-         lY3B939F1o44ub17G8tdnUenLYk8G4vsACYgYkXJ0XziVRDSqb9zE0TQodbqUFYOlmu5
-         uZwHHGH2vHKBDT4/CzAQErN6LJFjzm9gM7M55mQi8BSfr3Sx0kOihV+uEXZgS34MpHQc
-         WLAA==;
+         :mime-version:date:dkim-signature;
+        bh=r/pZDNj5CYqDMrS+f9OQvU0SRaHFWWrjwhjlTFIbAco=;
+        fh=xNQ7i73U4I2ZsdU/dKF+fa+8pughUf89wFfJROyf1nw=;
+        b=OIquRj+ctQqi58NMjg5cIxRMxDvKCn/fRKOdTMrlSPM9jKa7g7rdzjwo1keo+YnaqI
+         Ak7XHIkOnZ6DPJWSndO6x7cz9axDEDVFMHgoKp2kB+6paZbQ9glAJXmZVNYhCmt4vTSG
+         n2NxoOn9tgcDlu+wvCCwbF5UE4Z3U4TqG37IedCuzvR3PgJmJPiLuohp1r2hLtPzSew7
+         LR3LG+41b+wJScU359SyDQZ+rrO5olUnTgY2du1uJ/B7/3REyzMh0nBnI0unQozP+KNF
+         F+BFr1zNp3o5gdAVUTGc8fgCwv40/Y8gcwwufCAXJ4/QoS/6mD/2Z6G06KgqwbQvWbyr
+         /zvA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=IKZ+xG0o;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=yehTiwGU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-49452582774si6166751cf.446.2025.05.08.15.08.01
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a4b100si8418606d6.289.2025.05.08.15.07.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 May 2025 15:08:01 -0700 (PDT)
+        Thu, 08 May 2025 15:07:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=IKZ+xG0o;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=yehTiwGU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uD9Ox-0007YW-JC; Thu, 08 May 2025 18:07:35 -0400
+	id 1uD9Or-0007LB-Je; Thu, 08 May 2025 18:07:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3HSsdaAwKCDAZMNUTQefQRMZSaaSXQ.OaYcQYg-MdYZaZSZg.adS@flex--nabihestefan.bounces.google.com>)
- id 1uD9Ov-0007WG-FC
- for qemu-arm@nongnu.org; Thu, 08 May 2025 18:07:33 -0400
-Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a])
+ <3GisdaAwKCC0WJKRQNbcNOJWPXXPUN.LXVZNVd-JaVWXWPWd.XaP@flex--nabihestefan.bounces.google.com>)
+ id 1uD9Oq-0007HX-9E
+ for qemu-arm@nongnu.org; Thu, 08 May 2025 18:07:28 -0400
+Received: from mail-pf1-x44a.google.com ([2607:f8b0:4864:20::44a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3HSsdaAwKCDAZMNUTQefQRMZSaaSXQ.OaYcQYg-MdYZaZSZg.adS@flex--nabihestefan.bounces.google.com>)
- id 1uD9Op-0001gx-Qf
- for qemu-arm@nongnu.org; Thu, 08 May 2025 18:07:33 -0400
-Received: by mail-pg1-x54a.google.com with SMTP id
- 41be03b00d2f7-b115383fcecso888267a12.1
- for <qemu-arm@nongnu.org>; Thu, 08 May 2025 15:07:26 -0700 (PDT)
+ <3GisdaAwKCC0WJKRQNbcNOJWPXXPUN.LXVZNVd-JaVWXWPWd.XaP@flex--nabihestefan.bounces.google.com>)
+ id 1uD9On-0001ge-Pi
+ for qemu-arm@nongnu.org; Thu, 08 May 2025 18:07:27 -0400
+Received: by mail-pf1-x44a.google.com with SMTP id
+ d2e1a72fcca58-74089884644so1536879b3a.3
+ for <qemu-arm@nongnu.org>; Thu, 08 May 2025 15:07:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1746742045; x=1747346845; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=fJU6UlRN3H7dSUUIlwcfvpO29WmnqKnNMBXNRLUsUNk=;
- b=IKZ+xG0oucPtz2mPv9CqiptxvLPgIprgz4B+yUgPYt3cZRwevI1XZsuOTvTl1czcIF
- h5S/UzUC3wIhDAykUrBZl9gZuudi+NQGobOyKTs//SavhcKPXSnhNohIgxgM5g98Y/M4
- PGOeiZcJNe2YApQjleC0kN6cza1TcVYzp8+I/8TaZpn5bmPN1Jfp1r+252HVwmSvh5E1
- Clkaq86ubZjmDi5SouFFWbLtja4Zi8N7O3GeLxNdTFKHm7Qcp1JaUuL0XtOSA0ehR9YG
- 36jAGVzwdr4+mlOallzJ/C8yZTSSsIUg/jmQpI3pN2jq2ze9WRaoRiFTQ4yBeRnlIdhx
- nqYg==
+ d=google.com; s=20230601; t=1746742043; x=1747346843; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=r/pZDNj5CYqDMrS+f9OQvU0SRaHFWWrjwhjlTFIbAco=;
+ b=yehTiwGUVWhyX8tYLzQkh4VV2Mz28ooi0dCGCyww/rOKiJOW6eN4f6F4Bjicp2GyWi
+ aNPN8zAIVt+rry9AHK6lDG+mxLvR/fIVoEmtCV7vBvQguBdAy5B9gLYWH8UF6ALIJTr8
+ Z9DAZpiN6e9sI6CcKrNKURfodpwMpVrTFBwL29frOTwaYos/ZneRcFj+CDNxkpsJnpzZ
+ vNlJyqwW/EI/7XTtMADFSSxl6/Mzqu2Oc3Lo6lNogQvrM/+hZarLF5Djyk6bvGNRFGsM
+ dVp9xCNRsIR5YYoT4P69F3PDwwFklyevMfHrTSvUuInouabsUrmKM2JxDFwQ6LVPoN7E
+ ovtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746742045; x=1747346845;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=fJU6UlRN3H7dSUUIlwcfvpO29WmnqKnNMBXNRLUsUNk=;
- b=LWF/g3PyXzjJR8Jiw5gpTNe57f9KPaQU1Wr3YxX7IMnCc0gAb3bQ1XuNG+SxJIespS
- UcN4cBX8mHjcxudg8BJEeAl1QvldCk+PY9/kWx4DQfRXou+20YZGKBZqNaM8yrds6mGx
- ugoocpZIAZYdnYAa53YE6IdymTwmmJJmp8OXFbNt7f8aLDWMIQtjAZY6AlOyCsg4gFkL
- DwkRPXI50cHDI2jo/wL4qJUkttUS27TQHQZW2Gi26nJrArC/RugKLYE1gVj9J2Bj5aAP
- WJ6zgolEHvs/ejJWG0NbRSWpgOdzJjQSdkzByRddM/moVFuOAPUEciuAvsKBD0+TCD1j
- os7Q==
+ d=1e100.net; s=20230601; t=1746742043; x=1747346843;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=r/pZDNj5CYqDMrS+f9OQvU0SRaHFWWrjwhjlTFIbAco=;
+ b=eIdL2we4Accy9GYtRZLePAGwt7ofbnLFYThcSm4h5cZTiWCeJwiwEXsmqL1TcSPF3J
+ hJu3oQRbbBd4M5Bxhc51pV3PrHlRLPN0lg756WswYDiZvNjMgxo5ojmhDB4wM5QviDFd
+ MG0yi+qFie4mrXzg2lQpdZLrdCnyUwjqJibksF2meWY7HLZtxh/MxC3WhbP9DkMuMorS
+ QIPoGy93Y4313HPpIvLHHTP/V0EufvNR6q60ZzNmVbSPMklgyTDlENrh1ga5XAlftP09
+ XU1VOe31XPvgdF5O92r9d8kLGQfR14Eq5w+zExC8g+KSi/Plj20p86rWq9avcMPSU0b5
+ hzSw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXSX8FWGVrQlVUXoBfWbhOzSaJv72XoN0sisGf3fMwo/O3xBh/PJUin/4VEX9XKHT6QBfaCAsRO0A==@nongnu.org
-X-Gm-Message-State: AOJu0Yx3TD0PIM94PF9M/zh+gkHgEIq7agvY1B2FT1FIzJy0zYvZQ5Rh
- N3KrUvBaitbTzqO+z6JZB92p1Bl6wYK6OP7IsjD50jbkDeeEoW6DcwgFIsOwVdK2uzqvXEblBrn
- FIVN5b0CXrAHAB5zbyzQyET9GVQ==
-X-Received: from plez11.prod.google.com ([2002:a17:902:cccb:b0:223:f487:afc6])
+ AJvYcCUfbAjCvqoUTXOhMYXnlwiW3ai676yqG5Z1vu0N0rAczYICo3/tnP4HPXURF6FfzbsL+7z5iz4X9w==@nongnu.org
+X-Gm-Message-State: AOJu0YwSTbibLlnvk3Cc/YPywLv0JKr4+UD7Y4Rq4WWW6fvS5ji7NR2o
+ fF8sgL5trpfnxjCPSSAOO8jvKDVFhl3z6USWXecdXK8pzKgNJfwij5d+4WYCBqfnBCay5xok48e
+ fUvo35Svsfjtr5VRPXlYRRY/TZg==
+X-Received: from pgbcp14.prod.google.com
+ ([2002:a05:6a02:400e:b0:b0c:3032:f595])
  (user=nabihestefan job=prod-delivery.src-stubby-dispatcher) by
- 2002:a17:902:ea0b:b0:224:24d3:60f4 with SMTP id
- d9443c01a7336-22fc8b49391mr14117325ad.15.1746742045671; 
- Thu, 08 May 2025 15:07:25 -0700 (PDT)
-Date: Thu,  8 May 2025 22:07:18 +0000
-In-Reply-To: <20250508220718.735415-1-nabihestefan@google.com>
+ 2002:a05:6a21:338f:b0:1f1:432:f4a3 with SMTP id
+ adf61e73a8af0-215abb397f6mr1064386637.23.1746742042889; 
+ Thu, 08 May 2025 15:07:22 -0700 (PDT)
+Date: Thu,  8 May 2025 22:07:16 +0000
 Mime-Version: 1.0
-References: <20250508220718.735415-1-nabihestefan@google.com>
 X-Mailer: git-send-email 2.49.0.1015.ga840276032-goog
-Message-ID: <20250508220718.735415-3-nabihestefan@google.com>
-Subject: [PATCH 2/2] tests/qtest: Migrate GMAC test from 7xx to 8xx
+Message-ID: <20250508220718.735415-1-nabihestefan@google.com>
+Subject: [PATCH 0/2] hw/arm: Nuvoton 8xx - GMAC patches
 From: Nabih Estefan <nabihestefan@google.com>
 To: qemu-devel@nongnu.org
 Cc: kfting@nuvoton.com, wuhaotsh@google.com, peter.maydell@linaro.org, 
  farosas@suse.de, lvivier@redhat.com, pbonzini@redhat.com, qemu-arm@nongnu.org, 
  Nabih Estefan <nabihestefan@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::54a;
- envelope-from=3HSsdaAwKCDAZMNUTQefQRMZSaaSXQ.OaYcQYg-MdYZaZSZg.adS@flex--nabihestefan.bounces.google.com;
- helo=mail-pg1-x54a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::44a;
+ envelope-from=3GisdaAwKCC0WJKRQNbcNOJWPXXPUN.LXVZNVd-JaVWXWPWd.XaP@flex--nabihestefan.bounces.google.com;
+ helo=mail-pf1-x44a.google.com
 X-Spam_score_int: -100
 X-Spam_score: -10.1
 X-Spam_bar: ----------
@@ -130,178 +129,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JcRkI6XYRKm/
+X-TUID: /F9Lzj1HYgd7
 
-For upstreaming we migrated this test to 7xx (since that was already
-upstream) move it back to 8xx where it can check the 4 GMACs since that
-is the board this test was originally created for.
+This is a set of patches to add the GMAC devices to the 8xx board and
+migrate the GMAC tests to 8xx, which is how they were originally
+created.
 
-Signed-off-by: Nabih Estefan <nabihestefan@google.com>
----
+Hao Wu (1):
+  hw/arm: Add GMAC devices to NPCM8XX SoC
+
+Nabih Estefan Diaz (1):
+  tests/qtest: Migrate GMAC test from 7xx to 8xx
+
+ hw/arm/npcm8xx.c             | 54 ++++++++++++++++++++---
+ include/hw/arm/npcm8xx.h     |  5 ++-
  tests/qtest/meson.build      |  6 ++-
  tests/qtest/npcm_gmac-test.c | 85 ++++++++++++++++++++++++++++++++++--
- 2 files changed, 86 insertions(+), 5 deletions(-)
+ 4 files changed, 139 insertions(+), 11 deletions(-)
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 3136d15e0f..ea9f8bc4b2 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -207,9 +207,10 @@ qtests_npcm7xx = \
-    'npcm7xx_sdhci-test',
-    'npcm7xx_smbus-test',
-    'npcm7xx_timer-test',
--   'npcm7xx_watchdog_timer-test',
--   'npcm_gmac-test'] + \
-+   'npcm7xx_watchdog_timer-test'] + \
-    (slirp.found() ? ['npcm7xx_emc-test'] : [])
-+qtests_npcm8xx = \
-+  ['npcm_gmac-test']
- qtests_aspeed = \
-   ['aspeed_hace-test',
-    'aspeed_smc-test',
-@@ -257,6 +258,7 @@ qtests_aarch64 = \
-   (config_all_accel.has_key('CONFIG_TCG') and                                            \
-    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
-+  (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : []) + \
-   ['arm-cpu-features',
-    'numa-test',
-    'boot-serial-test',
-diff --git a/tests/qtest/npcm_gmac-test.c b/tests/qtest/npcm_gmac-test.c
-index c28b471ab2..1317da2cd7 100644
---- a/tests/qtest/npcm_gmac-test.c
-+++ b/tests/qtest/npcm_gmac-test.c
-@@ -36,7 +36,7 @@ typedef struct TestData {
-     const GMACModule *module;
- } TestData;
- 
--/* Values extracted from hw/arm/npcm7xx.c */
-+/* Values extracted from hw/arm/npcm8xx.c */
- static const GMACModule gmac_module_list[] = {
-     {
-         .irq        = 14,
-@@ -46,6 +46,14 @@ static const GMACModule gmac_module_list[] = {
-         .irq        = 15,
-         .base_addr  = 0xf0804000
-     },
-+    {
-+        .irq        = 16,
-+        .base_addr  = 0xf0806000
-+    },
-+    {
-+        .irq        = 17,
-+        .base_addr  = 0xf0808000
-+    }
- };
- 
- /* Returns the index of the GMAC module. */
-@@ -174,18 +182,32 @@ static uint32_t gmac_read(QTestState *qts, const GMACModule *mod,
-     return qtest_readl(qts, mod->base_addr + regno);
- }
- 
-+static uint16_t pcs_read(QTestState *qts, const GMACModule *mod,
-+                          NPCMRegister regno)
-+{
-+    uint32_t write_value = (regno & 0x3ffe00) >> 9;
-+    qtest_writel(qts, PCS_BASE_ADDRESS + NPCM_PCS_IND_AC_BA, write_value);
-+    uint32_t read_offset = regno & 0x1ff;
-+    return qtest_readl(qts, PCS_BASE_ADDRESS + read_offset);
-+}
-+
- /* Check that GMAC registers are reset to default value */
- static void test_init(gconstpointer test_data)
- {
-     const TestData *td = test_data;
-     const GMACModule *mod = td->module;
--    QTestState *qts = qtest_init("-machine npcm750-evb");
-+    QTestState *qts = qtest_init("-machine npcm845-evb");
- 
- #define CHECK_REG32(regno, value) \
-     do { \
-         g_assert_cmphex(gmac_read(qts, mod, (regno)), ==, (value)); \
-     } while (0)
- 
-+#define CHECK_REG_PCS(regno, value) \
-+    do { \
-+        g_assert_cmphex(pcs_read(qts, mod, (regno)), ==, (value)); \
-+    } while (0)
-+
-     CHECK_REG32(NPCM_DMA_BUS_MODE, 0x00020100);
-     CHECK_REG32(NPCM_DMA_XMT_POLL_DEMAND, 0);
-     CHECK_REG32(NPCM_DMA_RCV_POLL_DEMAND, 0);
-@@ -235,6 +257,63 @@ static void test_init(gconstpointer test_data)
-     CHECK_REG32(NPCM_GMAC_PTP_TAR, 0);
-     CHECK_REG32(NPCM_GMAC_PTP_TTSR, 0);
- 
-+    if (mod->base_addr == 0xf0802000) {
-+        CHECK_REG_PCS(NPCM_PCS_SR_CTL_ID1, 0x699e);
-+        CHECK_REG_PCS(NPCM_PCS_SR_CTL_ID2, 0);
-+        CHECK_REG_PCS(NPCM_PCS_SR_CTL_STS, 0x8000);
-+
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_CTRL, 0x1140);
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_STS, 0x0109);
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_DEV_ID1, 0x699e);
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_DEV_ID2, 0x0ced0);
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_AN_ADV, 0x0020);
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_LP_BABL, 0);
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_AN_EXPN, 0);
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_EXT_STS, 0xc000);
-+
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_ABL, 0x0003);
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_LWR, 0x0038);
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_UPR, 0);
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_LWR, 0x0038);
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_UPR, 0);
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_LWR, 0x0058);
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_UPR, 0);
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_LWR, 0x0048);
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_UPR, 0);
-+
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MMD_DIG_CTRL1, 0x2400);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_AN_CTRL, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_AN_INTR_STS, 0x000a);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_TC, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_DBG_CTRL, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_MCTRL0, 0x899c);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_TXTIMER, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_RXTIMER, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_LINK_TIMER_CTRL, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_MCTRL1, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_DIG_STS, 0x0010);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_ICG_ERRCNT1, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MISC_STS, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_RX_LSTS, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_BSTCTRL0, 0x00a);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_LVLCTRL0, 0x007f);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_GENCTRL0, 0x0001);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_GENCTRL1, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_STS, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_RX_GENCTRL0, 0x0100);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_RX_GENCTRL1, 0x1100);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_RX_LOS_CTRL0, 0x000e);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MPLL_CTRL0, 0x0100);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MPLL_CTRL1, 0x0032);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MPLL_STS, 0x0001);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MISC_CTRL2, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_LVL_CTRL, 0x0019);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MISC_CTRL0, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MISC_CTRL1, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_DIG_CTRL2, 0);
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_DIG_ERRCNT_SEL, 0);
-+    }
-+
-     qtest_quit(qts);
- }
- 
-@@ -242,7 +321,7 @@ static void gmac_add_test(const char *name, const TestData* td,
-                           GTestDataFunc fn)
- {
-     g_autofree char *full_name = g_strdup_printf(
--            "npcm7xx_gmac/gmac[%d]/%s", gmac_module_index(td->module), name);
-+            "npcm8xx_gmac/gmac[%d]/%s", gmac_module_index(td->module), name);
-     qtest_add_data_func(full_name, td, fn);
- }
- 
 -- 
 2.49.0.1015.ga840276032-goog
 

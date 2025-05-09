@@ -1,417 +1,163 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp940173njb;
-        Fri, 9 May 2025 01:15:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXmubjjW5EbOtUgR+J+gDJDGc+/3PxhBgZYIZsiGoRNOjvwYuaeq/n5Qah0kaOKhdsJxbIOazPpAgX08A==@linaro.org
-X-Google-Smtp-Source: AGHT+IGzw6dl6MN6/k0sR5tVo2639LOKksxSEWumQJqe7mfC1/7mnpk7wSNgq0x6tpeG9YGUOJJq
-X-Received: by 2002:a05:622a:c7:b0:474:f778:bdae with SMTP id d75a77b69052e-494527362d7mr32602591cf.12.1746778530671;
-        Fri, 09 May 2025 01:15:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746778530; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp824660njb;
+        Thu, 8 May 2025 19:28:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCX3MmEBRvQMoP8XqPgH1muZq0hWufUoI6jx+GeaRC9HsBxVXN3iWOVHSfjPqO37xPi53KAV+Zc/guPBnQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGvXQNekyJblFInsVDQuOPKbPftBP96kT4GejeK7XgH38OfMkd+1ZrigdvKOvoTTeOy89NP
+X-Received: by 2002:a05:6a20:438f:b0:1f5:8479:dfe2 with SMTP id adf61e73a8af0-215ababd10dmr1946726637.6.1746757706488;
+        Thu, 08 May 2025 19:28:26 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1746757706; cv=pass;
         d=google.com; s=arc-20240605;
-        b=QI6RFMrPqddzXdFEcNphg8RtCEe2k8BjiJnHK3n6ykKqa+ACdlwfcAMqQ9YFUBdKtP
-         TsYEm7EbbkQEFpspv0SmOmMG3Mvly2LaSdU9TGV+WttI87BPFZ+s2CvriY5ESW6Ya6Xz
-         cYrTfUktQQ3QASt44iVg0mU8vG9HYHR+2uV4g4JUMXTan54I0F2pyHyHy6UrqrEMs9Te
-         bKqAdKbpAre5U5O6np0UsXsKyVOeImLCZChH7a7P7MtxI4dggTrlGgp15r4PB1XZRQ4m
-         vqmYqESPsnsdbcnriATLuz/+Kbez8WlDLhFqu37yQQF3C1Qhvqf33Ek7XkPrfXIdpq6T
-         Fhaw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=8MAwnkQzHH8nuVJQNG0jeKb218M3ZgM99kwjysGqgG4=;
-        fh=f9jphsLTKxSLLGV1u9uX4zu9RtvFy2EOpuRTYYLZVOE=;
-        b=Yg0hsa7JfStbz/heBcvxXRFNJ3LWUpNDUQZnESzDdXyKWbGK9KnZ22DpTS1YyYdkPe
-         zbeDNJSsotN2vBGu5+5Fu9ZkuhxoVizFFGocKQ5QxK0TKFHBx2v7hlm8jQektP+4oBDP
-         81r+/fdE3rCiK8gF911iFQinzCimwN7Qu9ZgEHKk6vPoP0HKyyHxBQUKa4qvU6lEzO3L
-         czdcibkwBCAd/mhCWxC2bVYiPqsyvpfTp+Du4BZaN7ctVqym3PmIQvMqicOMLqr4bGHS
-         1Mof7uWqduN7HVQu0C3QIN5MeHWFYY6wnvuzuoHmfl93c2ANlXcc9G6K4lWxPaK1AIC8
-         Oyvw==;
+        b=PEk/IYRhPU+1Pdiz2xLtAXIVF+DZTwcQAag5Xpqrp1uAETq+3vo507ObcDH9/YJvDj
+         PMj9nSlV88BD8GEIoXKLZQPRItgShr2g7DVTflVWUUj2Xs2N9ZMEVIw4q8DLKuhm2Q7M
+         Yq1f2Yjpqg5vBN+TtQc20Xl2I0KtC/nJBN9ltPihhFz71xUsZBVAwOEvhxqWxh3z2lNw
+         tama9MUKcYH6Kb56y5nqR+ad19iDVn5SgWAOvAsFJaBa3XqlMEUCHDu8GARjThd2CWlA
+         8fwwzXOIFXS8vbJiGFEWQlF04DGVr/wT4SwmwFTl8blYBa6J2ca5hgJMbQeqOzJ+6iBr
+         qhig==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=YK29kjJ6FkrlkwGnDKSwgGFC86uH2ukFjLwT3qV58f0=;
+        fh=JxHmcrA01BA5QK0KCw1k/zuTtIunTfHN6Hx8q/ntgXs=;
+        b=XUdhoxUqZJ2iWrGOwYhQjh6t/2oPIPCnMCOVrvi9pA8LQuosIR6jDFE9oLfAxQicuT
+         WvuamSLK6XhqmlRZLF8ZNo1WOM/Ku1s+OJC5tCJAkjuSI0evYyEBrQ88tjtrT4RTuH75
+         s43K6CZMXRSUDa/sRtBtITOQ4PCm0EMWokfU9SkyjI9jMzgdQ4rl/jsqKd7GaCMzVFxt
+         a9+hTY0WUvyqMGIq0Fcg+SRy7YPXERagTys07M+9PDnQbiGMDyr9aYHhwn1aW7dh4xAa
+         MO/gAA4na1hDn8dtyNiy5BmGlbqQo7uVH2p52SSyO3bCGrHA0qGv9gJL4ckz0Wh2L8nD
+         /yog==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iIbryudG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-494525574fasi15925361cf.314.2025.05.09.01.15.30
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=YHTEaQwL;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-46002-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-46002-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <kvm+bounces-46002-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-b2352ed13casi1272782a12.606.2025.05.08.19.28.26
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 May 2025 01:15:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 08 May 2025 19:28:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46002-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iIbryudG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uDIsm-0004lp-D2; Fri, 09 May 2025 04:15:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1uDIsd-0004k8-QR
- for qemu-arm@nongnu.org; Fri, 09 May 2025 04:14:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1uDIsb-0001wt-7O
- for qemu-arm@nongnu.org; Fri, 09 May 2025 04:14:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1746778485;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8MAwnkQzHH8nuVJQNG0jeKb218M3ZgM99kwjysGqgG4=;
- b=iIbryudGkimRpRXEaojF1TVXRh+KRhJu6Jrn7RFGIxuVTV7p4EF9VmJ24iaCMPHp51boGo
- DauS2yAtBbo+NFFDyi3NjwjHEqQwIOy1LUcPXn4K0DUXj8S/rI7W/Yz64dOzJC0YT4CxnP
- 2yMLTzL97G5/xNZn46ZbXxYo7KK4hR4=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-513-GemdPNb5Pk6ayAcQAYatqQ-1; Fri,
- 09 May 2025 04:14:42 -0400
-X-MC-Unique: GemdPNb5Pk6ayAcQAYatqQ-1
-X-Mimecast-MFC-AGG-ID: GemdPNb5Pk6ayAcQAYatqQ_1746778480
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B945419560A1; Fri,  9 May 2025 08:14:39 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.100])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2B5751956095; Fri,  9 May 2025 08:14:32 +0000 (UTC)
-Date: Fri, 9 May 2025 09:14:29 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-Cc: Donald Dutile <ddutile@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Shameer Kolothum via <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "jgg@nvidia.com" <jgg@nvidia.com>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "nathanc@nvidia.com" <nathanc@nvidia.com>,
- "mochs@nvidia.com" <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>,
- Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>,
- jiangkunkun <jiangkunkun@huawei.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
-Subject: Re: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a PCIe RC
-Message-ID: <aB25ZRu7pCJNpamt@redhat.com>
-References: <20250502102707.110516-1-shameerali.kolothum.thodi@huawei.com>
- <20250502102707.110516-2-shameerali.kolothum.thodi@huawei.com>
- <877c2ut0zk.fsf@pond.sub.org>
- <e02e884b-0f3d-4426-8a67-2cbd23e80e8c@redhat.com>
- <87frhglwjl.fsf@pond.sub.org>
- <72f9043a73294bfc9b539ae9b94836d3@huawei.com>
- <d21e0c57-b89a-4c79-958e-e633de039e4c@redhat.com>
- <c0ab36fc56ff498196b359f5aee3746b@huawei.com>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=YHTEaQwL;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-46002-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-46002-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 2BD393B2657
+	for <alex.bennee@linaro.org>; Fri,  9 May 2025 02:28:08 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 83329244668;
+	Fri,  9 May 2025 02:28:22 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="YHTEaQwL"
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3F198242D6D
+	for <kvm@vger.kernel.org>; Fri,  9 May 2025 02:28:19 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.18
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1746757702; cv=none; b=nd8YHX0EFOWY8+OFFYII3IROsi0yzYwXIc/HDB7WOCafqkmrSAFcOzlk8tEIo9Io3yTugIHOar/gZyKSDF3O7YOo82AlXeN/igtAPRSvU+VgVk1aFJ1ezCyWjSwoEzyHAapjagQE+EQBmgmgXEsMJ5n8N1sSxFoWWRst2yc53Kk=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1746757702; c=relaxed/simple;
+	bh=HbeDO7ZVXvOmx4YVzsa4pjo9QCbE4vkbbC4HZsiYVtQ=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=Yc26HHS8EvbPlSj/kGyDdHeVihg5qb1nRbBVw0oZkjdf7nRy/16c06U66SM54E71UkbUEYp8MvKJ5luAkpFb2o4RlBVbdk0+76CEB+anLdd7Mh+7LlTFJMnvEIyvpFOwxfF4mHHWnwThZ15N2PRqSvVwBzHu6V4MjYlV+0T4eu8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=YHTEaQwL; arc=none smtp.client-ip=192.198.163.18
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1746757700; x=1778293700;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=HbeDO7ZVXvOmx4YVzsa4pjo9QCbE4vkbbC4HZsiYVtQ=;
+  b=YHTEaQwLrXQRz6XHbn54+T0VfgKuicU/yRsNdwUgvbln5jXK4IMiQHvi
+   JcLVmqEbntaH7xS1EcTnCGsYpQTdJyl48ydx+3FUphxXZM0q8L9mCLcou
+   lI4KAXB2mGvnCwaKt/CSFAyW3pp8qbNopOSnnnY9RBjn5SfbGoJadMgKq
+   dF26a8v07daPHrNLDKOMJWTKZLMa2s3tDUQw1YCpMPhWWvq42oDYKY84V
+   mWchj/qXQIUu54BynQnxfwDtvDGGKgLX7oBgTzTb8uknBwKttq8L59Bxi
+   egG+OInBh0n7LFw+9RpvwfWizg8AaHnuicAwlNjz+hwT1meP1s6+DcxTJ
+   A==;
+X-CSE-ConnectionGUID: ce5VFJ4TQoOnilFsI7C31w==
+X-CSE-MsgGUID: bAcMQFdpROieo4hHGlGTtw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11427"; a="47827602"
+X-IronPort-AV: E=Sophos;i="6.15,274,1739865600"; 
+   d="scan'208";a="47827602"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 May 2025 19:28:19 -0700
+X-CSE-ConnectionGUID: tXMqZeFxRrOJzvCFF6Qm8A==
+X-CSE-MsgGUID: wBhidVKCTveefVXArIqFKg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,274,1739865600"; 
+   d="scan'208";a="141686752"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.39])
+  by fmviesa004.fm.intel.com with ESMTP; 08 May 2025 19:28:12 -0700
+Date: Fri, 9 May 2025 10:49:14 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+	kvm@vger.kernel.org, Sergio Lopez <slp@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu <yi.l.liu@intel.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org,
+	Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
+	Yanan Wang <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Fabiano Rosas <farosas@suse.de>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	=?iso-8859-1?Q?Cl=E9ment?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
+	qemu-arm@nongnu.org,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Jason Wang <jasowang@redhat.com>
+Subject: Re: [PATCH v4 03/27] hw/nvram/fw_cfg: Rename fw_cfg_init_mem() with
+ '_nodma' suffix
+Message-ID: <aB1tKnGs4slN5AEi@intel.com>
+References: <20250508133550.81391-1-philmd@linaro.org>
+ <20250508133550.81391-4-philmd@linaro.org>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <c0ab36fc56ff498196b359f5aee3746b@huawei.com>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.416,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +tc0LlSJW262
+In-Reply-To: <20250508133550.81391-4-philmd@linaro.org>
+X-TUID: mZsDJEPfCyV+
 
-On Fri, May 09, 2025 at 07:29:28AM +0000, Shameerali Kolothum Thodi wrote:
+On Thu, May 08, 2025 at 03:35:26PM +0200, Philippe Mathieu-Daudé wrote:
+> Date: Thu,  8 May 2025 15:35:26 +0200
+> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Subject: [PATCH v4 03/27] hw/nvram/fw_cfg: Rename fw_cfg_init_mem() with
+>  '_nodma' suffix
+> X-Mailer: git-send-email 2.47.1
 > 
+> Rename fw_cfg_init_mem() as fw_cfg_init_mem_nodma()
+> to distinct with the DMA version (currently named
+> fw_cfg_init_mem_wide).
 > 
-> > -----Original Message-----
-> > From: Donald Dutile <ddutile@redhat.com>
-> > Sent: Thursday, May 8, 2025 2:45 PM
-> > To: Shameerali Kolothum Thodi
-> > <shameerali.kolothum.thodi@huawei.com>; Markus Armbruster
-> > <armbru@redhat.com>
-> > Cc: Shameer Kolothum via <qemu-devel@nongnu.org>; qemu-
-> > arm@nongnu.org; eric.auger@redhat.com; peter.maydell@linaro.org;
-> > jgg@nvidia.com; nicolinc@nvidia.com; berrange@redhat.com;
-> > nathanc@nvidia.com; mochs@nvidia.com; smostafa@google.com; Linuxarm
-> > <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
-> > jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
-> > <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
-> > Subject: Re: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a
-> > PCIe RC
-> > 
-> > 
-> > 
-> > On 5/7/25 4:50 AM, Shameerali Kolothum Thodi wrote:
-> > >
-> > >
-> > >> -----Original Message-----
-> > >> From: Markus Armbruster <armbru@redhat.com>
-> > >> Sent: Wednesday, May 7, 2025 8:17 AM
-> > >> To: Donald Dutile <ddutile@redhat.com>
-> > >> Cc: Shameer Kolothum via <qemu-devel@nongnu.org>; qemu-
-> > >> arm@nongnu.org; Shameerali Kolothum Thodi
-> > >> <shameerali.kolothum.thodi@huawei.com>; eric.auger@redhat.com;
-> > >> peter.maydell@linaro.org; jgg@nvidia.com; nicolinc@nvidia.com;
-> > >> berrange@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
-> > >> smostafa@google.com; Linuxarm <linuxarm@huawei.com>; Wangzhou
-> > (B)
-> > >> <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
-> > >> Jonathan Cameron <jonathan.cameron@huawei.com>;
-> > >> zhangfei.gao@linaro.org
-> > >> Subject: Re: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a
-> > >> PCIe RC
-> > >>
-> > >> Donald Dutile <ddutile@redhat.com> writes:
-> > >>
-> > >> [...]
-> > >>
-> > >>> In this series, an iommu/smmu needs to be placed -BETWEEN- a sysbus
-> > >> and a PCIe-tree,
-> > >>> or step-wise, plug an smmuv3 into a sysbus, and a pcie tree/domain/RC
-> > >> into an SMMUv3.
-> > >>
-> > >> RC = root complex?
-> > >
-> > > Yes.
-> > >
-> > +1.
-> > 
-> > >>
-> > >>> So, an smmu needs to be associated with a bus (tree), i.e., pcie.0,
-> > pcie.1...
-> > >>> One could model it as a PCIe device, attached at the pcie-RC ... but
-> > that's
-> > >> not how it's modelled in ARM hw.
-> > >>
-> > >> Physical ARM hardware?
-> > >>
-> > yes, physical hw.
-> > 
-> > >> Assuming the virtual devices and buses we're discussing model physical
-> > >> devices and buses:
-> > >>
-> > >> * What are the physical devices of interest?
-> > >>
-> > >> * How are they wired together?  Which of the wires are buses, in
-> > >>    particular PCI buses?
-> > >
-> > > SMMUv3 is a platform device and its placement in a system is typically as
-> > below
-> > > for PCI devices,
-> > >
-> > > +------------------+
-> > > |   PCIe Devices   |
-> > > +------------------+
-> > >           |
-> > >           v
-> > >    +-------------+      +---------------+
-> > >    |  PCIe RC A  |<---->| Interconnect  |
-> > >    +-------------+      +---------------+
-> > >                                 |
-> > >                                 |
-> > >                          +------v---+
-> > >                          | SMMUv3.A |
-> > >                          | (IOMMU)  |
-> > >                          +----+-----+
-> > >                               |
-> > >                               v
-> > >                       +-------+--------+
-> > >                       |   System RAM   |
-> > >                       +----------------+
-> > >
-> > > This patch is attempting to establish that association between the PCIe
-> > RC and
-> > > the SMMUv3 device so that Qemu can build the ACPI tables/DT iommu
-> > mappings
-> > > for the SMMUv3 device.
-> > >
-> > I would refer to the ARM SMMU spec, Figure 2.3 in the G.a version, where
-> > it's slightly different; more like:
-> 
-> That's right. The spec does indeed cover all possible scenarios, whereas my earlier
-> comments were focused more specifically on the common case of systems using
-> SMMUv3 with PCIe devices.
-> 
-> Currently, QEMU doesn't support non-PCI devices with SMMUv3, neither the
-> more complex distributed SMMU cases you have described below. And this series
-> doesn't aim to add those supports either. If needed, we can treat those as a separate
-> effortsâ€”similar to what was attempted in [1]. That said, agree that the design
-> choices we make now should not hinder adding such support in the future.
-> 
-> And as far as I can see, nothing in this series would prevent that and if anything,
-> the new device type SMMUv3 model actually makes it easier to support those.
-> 
-> >   +------------------+
-> >   |   PCIe Devices   | (one device, unless a PCIe switch is btwn the RC &
-> > 'Devices';
-> >   +------------------+   or, see more typical expansion below)
-> >             |
-> >      +-------------+
-> >      |  PCIe RC A  |
-> >      +-------------+
-> >             |
-> >      +------v---+    +-----------------------------------+
-> >      | SMMUv3.A |    | Wide assortment of other platform |
-> >      | (IOMMU)  |    |   devices not using SMMU          |
-> >      +----+-----+    +-----------------------------------+
-> >           |                      |   |   |
-> >    +------+----------------------+---+---+-+
-> >    |         System Interconnect           |
-> >    +---------------------------------------+
-> >                                 |
-> >    +-------+--------+     +-----+-------------+
-> >    |   System RAM   |<--->| CPU (NUMA socket) |
-> >    +----------------+     +-------------------+
-> > 
-> > In fact, the PCIe can be quite complex with PCIe bridges, and multiple Root
-> > Ports (RP's),
-> > and multiple SMMU's:
-> > 
-> >      +--------------+   +--------------+   +--------------+
-> >      | PCIe Device  |   | PCIe Device  |   | PCIe Device  |
-> >      +--------------+   +--------------+   +--------------+
-> >            |                  |                  |        <--- PCIe bus
-> >       +----------+       +----------+      +----------+
-> >       | PCIe RP  |       | PCIe RP  |      | PCIe RP  |  <- may be PCI Bridge, may
-> > not
-> >       +----------+       +----------+      +----------+
-> >           |                  |                  |
-> >       +----------+       +----------+       +----------+
-> >       |  SMMU    |       |  SMMU    |       |  SMMU    |
-> >       +----------+       +----------+       +----------+
-> >           |                  |                  |   <- may be a bus, may not(hidden from OS)
-> >           +------------------+------------------+
-> >                              |
-> >              +--------------------------+
-> >              |          PCI RC A        |
-> >              +--------------------------+
-> > 
-> > where PCIe RP's could be represented (even virtually) in -hw-
-> > as a PCIe bridge, each downstream being a different PCIe bus under
-> > a single PCIe RC (A, in above pic) -domain-.
-> > ... or the RPs don't have to have a PCIe bridge, and look like
-> > 'just an RP' that provides a PCIe (pt-to-pt, serial) bus, provided
-> > by a PCIe RC. ... the PCIe architecture allows both, and I've seen
-> > both implementations in hw (at least from an lspci perspective).
-> > 
-> > You can see the above hw implementation by doing an lspci on most
-> > PCIe systems (definitely common on x86), where the RP's are represented
-> > by 'PCIe bridge' elements -- and lots of them.
-> > In real hw, these RP's effectively become (multiple) up & downstream
-> > transaction queues
-> > (which implement PCI ordering, and deadlock avoidance).
-> > SMMUs are effectively 'inserted' in the (upstream) queue path(s).
-> > 
-> > The important take away above: the SMMU can be RP &/or device-specific -
-> > - they
-> > do not have to be bound to an entire PCIe domain ... the *fourth* part of
-> > an lspci output for a PCIe device: Domain:Bus:Device.Function.
-> > This is the case for INTEL & AMD IOMMUs ... and why the ACPI tables have
-> > to describe which devices (busses often) are associated with which
-> > SMMU(in IORT)
-> > or IOMMU(DMAR/IVRS's for INTEL/AMD IOMMU).
-> > 
-> > The final take away: the (QEMU) SMMU/IOMMU must be associated with a
-> > PCIe bus
-> > OR, the format has to be something like:
-> >    -device smmuv3, id=smmuv3.1
-> >    -device <blah>, smmu=smmuv3.1
-> 
-> Agree. For PCie devices with SMMUv3 we need to associate it with a PCIe bus
-> and for non-pci cases probably needs a per device association.
-> 
-> > where the device <-> SMMU (or if extended to x86, iommu) associativity is
-> > set w/o bus associativity.
-> > It'd be far easier to tag an entire bus with an SMMU/IOMMU, than a per-
-> > device format, esp. if
-> > one has lots of PCIe devices in their model; actually, even if they only have
-> > one bus and 8 devices
-> > (common), it'd be nice if a single iommu/smmu<->bus-num associativity
-> > could be set.
-> > 
-> > Oh, one final note: it is possible, although I haven't seen it done this way
-> > yet,
-> > that an SMMU could be -in- a PCIe switch (further distributing SMMU
-> > functionality
-> > across a large PCIe subsystem) and it -could- be a PCIe device in the switch,
-> > btwn the upstream and downstream bridges -- actually doing the SMMU
-> > xlations
-> > at that layer..... for QEMU & IORT, it's associated with a PCIe bus.
-> > But, if done correctly, that shouldn't matter -- in the example you gave wrt
-> > serial,
-> > it would be a new device, using common smmu core: smmuv3-pcie.
-> > [Note: AMD actually identifies it's IOMMU as a PCIe device in an RC ... but
-> > still uses
-> >         the ACPI tables to configure it to the OS.. so the PCIe-device is basically
-> > a
-> >         device w/o a PCIe driver. AMD just went through hoops dealing with
-> > MS
-> >         and AMD-IOMMU-identification via PCIe.]
-> > 
-> > So, stepping back, and looking at a broad(er) SMMU -or- IOMMU QEMU
-> > perspective,
-> > I would think this type of format would be best:
-> > 
-> > - bus pcie, id=pcie.<num>
-> > - device iommu=[intel_iommu|smmuv3|amd_iommu], bus=[sysbus |
-> > pcie.<num>], id=iommu.<num>
-> > [Yes, I'm sticking with 'iommu' as the generic naming... everyone thinks of
-> > device SMMUs as IOMMUs,
-> >   and QEMU should have a more arch-agnostic naming of these system
-> > functions. ]
-> 
-> Ok. But to circle back to what originally started this discussionâ€”how important
-> is it to rely on the default "bus" in this case? As Markus pointed out, SMMUv3
-> is a platform device on the sysbus, so its default bus type canâ€™t point to something
-> like PCIe. QEMU doesnâ€™t currently support that.
-> 
-> The main motivation for using the default "bus" so far has been to have better
-> compatibility with libvirt. Would libvirt be flexible enough if we switched to using
-> something like a "primary-bus" property instead?
+> Suggested-by: Zhao Liu <zhao1.liu@intel.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>  include/hw/nvram/fw_cfg.h | 3 ++-
+>  hw/hppa/machine.c         | 2 +-
+>  hw/nvram/fw_cfg.c         | 7 +++----
+>  3 files changed, 6 insertions(+), 6 deletions(-)
 
-Sorry if my previous comments misled you, when I previously talked about
-linking via a "bus" property I was not considering the fact that "bus"
-is a special property inside QEMU. From a libvirt POV we don't care what
-the property is call - it was just intended to be a general illustration
-of cross-referencing the iommu with the PCI bus it needed to be associated
-with.
-
-> -device arm-smmuv3,primary-bus=pcie.0
-> -device virtio-net-pci,bus=pcie.0
-> -device pxb-pcie,id=pcie.1,bus_nr=2
-> -device arm-smmuv3,primary-bus=pcie.1
-> ...
-
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 

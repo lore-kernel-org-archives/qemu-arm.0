@@ -1,160 +1,223 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp1180271njb;
-        Fri, 9 May 2025 08:27:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVOX9wQDwxxOMKrhcelDngL/qndD0vxZbIMjfWg3XNI6699KXb7iGwPc7Bd9QVAu0JrX5kiJj+thggHFg==@linaro.org
-X-Google-Smtp-Source: AGHT+IH4hyal9cIi9FTbfs6KRq1ziOQStzGFf7q0NUntlwA8W8NVS2quagSDpbxfZVBOYrNlQYyE
-X-Received: by 2002:a05:620a:4487:b0:7c9:4d4d:206e with SMTP id af79cd13be357-7cd010f18edmr606673685a.6.1746804474997;
-        Fri, 09 May 2025 08:27:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746804474; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp1183974njb;
+        Fri, 9 May 2025 08:33:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVp1Nd3xZYliy2z98fxnumqq3UCfJlebTBgTFEwcbhTIwgVE7+4mpeFcDIFoJ0Ck8C37EkWfSdXprgOgg==@linaro.org
+X-Google-Smtp-Source: AGHT+IH17umdNyOkLF6tV/V5oWXy2NdN+zo5w33zjzxsfjMal31OQbvzho3qdBfBg0xycYtjr288
+X-Received: by 2002:a05:6402:3509:b0:5fc:3e6e:f048 with SMTP id 4fb4d7f45d1cf-5fca035ef1dmr3315078a12.0.1746804828932;
+        Fri, 09 May 2025 08:33:48 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1746804828; cv=pass;
         d=google.com; s=arc-20240605;
-        b=kQiD9xtaiZwVYxYLDxNgRjpfL6qjD3p77CF2lrQZSs2F6WX4mlQc60Ea19r951+rYZ
-         Q/MSYrfZAtdHlSqn7TjfIgkPHZZWZSImjbAz0K285pw7SMeA6c2su9lF5tSrGPf5Bhu6
-         z0qJEe/nO3PQtw7wZTKsIEjZq2knSvKG9o661igtHP9btS+r9V6mOnLw3CFwoQxA1rEd
-         CynOVz13Nbm2G7XD0x1zUfXYP8E0Z/6hmiq1jN8mHzJdsEH7HT54r7oRSnWq0rBOZERN
-         BwX/61nxYr0jkeRu0wFv1wZOAo+7Z+tfPcqU/Pb8W5ZDBaYAWB0DwyIbWZd1iO5MCCH6
-         8bUQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=fo9OcAbrNLsD2a7f50+Dm7QG8zYmPULAcM7xDP6trQA=;
-        fh=FXY2km0ss2oRZq6xYz6fU08HIb34qyzmox/BLlOb+M8=;
-        b=itdZFWhouj6XifaknnMYwEhhQaR0laSmmzZw6hphzqzulRjNP6DSJj5TWiiHKT6djA
-         c+NTaQs7iDLo+MQa3i4UL7/COYlwmnl0BKqt9+lR3Y2DGR/tAPUZbWfa5hHQuCqrRI/i
-         a8XbKtQcZtUad5T6DQVZdB+juFAxz400LlS4/PxIboSGzDFpXkSmGmRBUwf/SCk7ihAJ
-         6tIlPCGTy6mz10DPad5iER65u2eLNxL11poL7GoHVzB8lTpJkkBoXUgd8F+SFRGbYnH1
-         cMMmxpf9QSLWKzw7+j4HGvG/Tkqb69RP5xOmJOdHBZwzn7m8LJKwZ96WY9XTqrf99AZ4
-         4glg==;
+        b=fZXj+vk3wDCPNy8LPpKNy7UlhHCrOIQrtBAHxcIpAN9TzgrcFpPOtK+U/PG3a8AC8c
+         tMUv3eMdL17c1m4S33MlYVPgzUq2tQgQTI1OHx72/OPsWxcFJ3YNjOW5fdn2FFv8LRtZ
+         xupjolEVSSWiIuItQgxBNp2erMCjd0V2/AB+O6/zJnZ+HlYC7d/6U93d9dgntYhvq8UI
+         fsIYwO9806n1WiRSKr2zq1+QJyhCJq/laJwYk37nUQdpgbgnhFMlbqRYTdYN9naOXnFn
+         rUeH7qyU6xkYlmsyR0EAjkoLUB/4m1Uxe9srNwplj0vIQGhKeM660EkX581K7UU/ZTKZ
+         rstQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=cxYNx3ojouceqPK+Dr7auESWb9mDE/VjwCaYTP8lEmw=;
+        fh=Ufg5Xd5/T1gmW2p8eKpMUbAvNxxmmI/Fx9Stqfo1ay8=;
+        b=P6v3NwSUkfjkFhLaKShksxeer3JEA5udnpZZa2eZvB22f8qyS5Oq9Wt4lVbM8V7Fcu
+         vyy7nKge+0Njg1fFUFVx7CX05ENZ6Ca/W1OMnPP51VCENBeoqde2XUCRN0W971zEptPe
+         wnSOU91tJA3fY3lcYM4DbA+kpeGz8MG+ngDbbv8Xg7DSKJrJQCRIUzOddm4nc616DPi0
+         u50D/p3m5dFRNOP+yNqp2nOFxlbXQXPePzUKRF5zql24lfD+X2nBXLOqo8Wte/QDlqIM
+         WYGhmL/DPFyBFnx29gI5AHoLeL1eIDecsbOt7sfnGa6djmytmIw/gmZJSeNEHjytUOrb
+         +lkA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BCMQ3KY9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd00fed56bsi261132985a.460.2025.05.09.08.27.54
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cl22f+jI;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46072-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-46072-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-46072-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5fc9d6f4c81si1645676a12.522.2025.05.09.08.33.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 May 2025 08:27:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 May 2025 08:33:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46072-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BCMQ3KY9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uDPde-0005CR-2Z; Fri, 09 May 2025 11:27:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uDPdb-0005Aq-Og
- for qemu-arm@nongnu.org; Fri, 09 May 2025 11:27:47 -0400
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uDPdZ-0008Bp-TY
- for qemu-arm@nongnu.org; Fri, 09 May 2025 11:27:47 -0400
-Received: by mail-yb1-xb2e.google.com with SMTP id
- 3f1490d57ef6-e733e25bfc7so2291764276.3
- for <qemu-arm@nongnu.org>; Fri, 09 May 2025 08:27:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1746804464; x=1747409264; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=fo9OcAbrNLsD2a7f50+Dm7QG8zYmPULAcM7xDP6trQA=;
- b=BCMQ3KY95qESfmhEFFo7it3m9SAF1RuI+8VpRXdyrczVt6y6zGSvQErNe7SIk9dwcB
- zK5brfeuOLg6FZiwTog9ys7G097K1OSO1PprZftMlw2Djoyd08csYNY8GesfaJykViHn
- VTtH16uFH+yN9syyPc+FYSojLqsl+mLujAd+B31yrkjg4sz8jwdfmLT+vnD6wPrMrHe7
- Bqng98pdoc9iWNYych3OZano8BEv/10HbTHsWBCXLDc40dxEK2HEjW4s8aS3thy1KW7L
- CJQ3CCwfN65cn3vp/IXZ5wPtXpHM6TvfPWDQCnkafvfxLmYvqOJ8nIRugx+UkTy6pzBx
- D1ew==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cl22f+jI;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46072-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-46072-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 18F1418935A2
+	for <alex.bennee@linaro.org>; Fri,  9 May 2025 15:34:01 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 73A3A1F03D5;
+	Fri,  9 May 2025 15:33:44 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="cl22f+jI"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98C0A22CBE9
+	for <kvm@vger.kernel.org>; Fri,  9 May 2025 15:33:42 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1746804824; cv=none; b=HSv24rn1r1EHtdZuTcn0HRONp5ignw2vuZAjKFIOeyiPo3z3hubzJNaXuF/tn7q/b+/u7GhTH2l/S7A9nyTWLXRJXHMn2BPj+9XDG+IeYHF8a3mmt2oeu200SK46FWfsvaK//TPn17B3tA0UBbLfiI6HagtR9dH/fZit3neNUKc=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1746804824; c=relaxed/simple;
+	bh=HldbnI7znCYnOnbLT4smVScvkvvXgrFbnasmUcwcVF8=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=HFRNXdN02vi+DibBm7JMPBcyTscMD9Tkz8wXt/fZAllXE25hINYkCIT5xofTwVCju+Oy/P0+57pUljy5Vc1MZlbTmQVvu4asMRhOJsIE0Kt0JV8Tc3b9VvR6shI3C3r5aJ5KhBnt7fjUfI4F3FKE0sLL4Qs40AiBoWH3kNZrdqc=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=cl22f+jI; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1746804821;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=cxYNx3ojouceqPK+Dr7auESWb9mDE/VjwCaYTP8lEmw=;
+	b=cl22f+jIhOLr4F4dEys0mGoMisZnsQWl+tKxpxXBHLd8MNk9vd2DLO2A/DmKSuqbxDWXY0
+	VnMOtMpJSxLYL9p5GE+bWnoEYQsI0sEFYqY/m2LYaAwbOgJ2a7dC8b/4euumXRB/POK0pP
+	NaVW6PGrteOK2/HPg0TJhRVArtd7MTs=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-516-QDPAWoz6OzCxH0sWfOEjjQ-1; Fri, 09 May 2025 11:33:40 -0400
+X-MC-Unique: QDPAWoz6OzCxH0sWfOEjjQ-1
+X-Mimecast-MFC-AGG-ID: QDPAWoz6OzCxH0sWfOEjjQ_1746804819
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3a0b63ca572so1384546f8f.0
+        for <kvm@vger.kernel.org>; Fri, 09 May 2025 08:33:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746804464; x=1747409264;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=fo9OcAbrNLsD2a7f50+Dm7QG8zYmPULAcM7xDP6trQA=;
- b=BDLHv3i/WH901MLr3RIsUIOvlYVSI2gBfx7tyhwQ0UaqdujnyLgRTKNLOImXX4bbY+
- RX4v7JBcRr2c41QHLPfGSeA9WR/5/tnp6ivFKTWc00TBlhvjiPSchIuXzG0CBPZkxZgm
- lGukMXD5MjKxHTSg8c75kW8ROlWCHCGDVxx1tuR67ca9o/t7vM+tW+SesRVQMJ9TFdVt
- VlIogJHhDPlyZulwB2c00bKEmOteJf6glC7DQjMlhY++6uozO44LWApBsieZQYKJBSjA
- f9dNygoa0xdnuXfoHCcA6/bTG2YXl2A71M+SLJPf30WMUYzq5aVh+WuA8JyzqiECc9P6
- cHxA==
-X-Gm-Message-State: AOJu0Yx5Hlmkp3uUydeb+1e3oHeqTiIrt0Wle1FpC6Rd9qULpDE0YhJK
- VabfPjlor9s64X9Ql/jrwSEDvarTdSkIjNr8PulFia/DHVNdqXDRzfUboJ1DkH8DJOTYj7GBGtc
- 02vv+7r/ee6iUAqEEF9QOSkNPTbvmTjwDNSZX+w==
-X-Gm-Gg: ASbGncvVtmlYvHdqVs8HWpaQcj8gVn16jlpuIWLPKUkdRFkfJTMqq+4Ch+vR2GI+nVZ
- 2gBeyZZ2JMgP6a9p3sPh8EwNVC+uZP405Y4sR7ZIDefNCiyp8Mf+gJMixY6zU0ltWdk5MFl1Rsu
- qCdZU0ICazC6MAs6X57HamklI=
-X-Received: by 2002:a25:7b87:0:b0:e78:ff9f:4935 with SMTP id
- 3f1490d57ef6-e78ff9f4ad8mr2627217276.34.1746804464531; Fri, 09 May 2025
- 08:27:44 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1746804819; x=1747409619;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=cxYNx3ojouceqPK+Dr7auESWb9mDE/VjwCaYTP8lEmw=;
+        b=G5wKbi3WmWJH/2xelq9QOaMdHvSiDkU2g8HsFIkaJZrIoQr2zevp1/5PnnrWcGvUj/
+         61Cnrdzud1TJdKNwz9vwCfKvEIlkgW5nt36HaqUSi4GJT1UG/eYrzCUwwEHqN3LKWnkT
+         nszcBnLv4UwM6IEBmjbYjgusSqBpxM2LU8CXslLL3qG1Sax0cM3Jdyq318Krmiux0gnj
+         eKc8aNG5BkeG2Aw7L4Y/hPBva/hz0mxZS+E82JmlhsMzrc23jiii6nyy3GWR8XxxrlLC
+         +t+hGfgm8ijtCxbkH5lNe0ShaCrVn/uU9S41vtC9KlwHaxPOdO465gj8AVD+U3mVZKb5
+         Wt4Q==
+X-Forwarded-Encrypted: i=1; AJvYcCXOwatqzIgIahYxhwln+4z3MUpNpfUQf9ufEm7rkPOYNNrnVdBnO0pGKGLoPMOB/kxuyRQ=@vger.kernel.org
+X-Gm-Message-State: AOJu0Yw05NYSfeJkHy2AMDPKR68MfhAwO8ok1MNE75M7PuVFKCaE2Mmg
+	30/QiLTeda8DDLq+2QDIkLb56LrHpZ4C7xo8T+3RwfL3a8v/IDmulLhZexvbG+iJrx2ZMxOsYG7
+	p4oKjHiWjvbEpHFYbhsMKDsksxfnFw7KnmeTr2VMxTdIf+TkWdw==
+X-Gm-Gg: ASbGncuVNLACPDhiC+0O+3lgQz2jHyUtqc49PXU4tGbQ3ieubpacuE508htKpKiqi/V
+	7Isp8qIHOZ+6Oj+wEe4RhvLgf5MSuDxWumXVlFwbPCxw+OuIMLQiVTPUI5f8cnT3hTod2kjWm7k
+	beE7dHSpFTlS9gL7rtFfwwCPdjXVqLeCgZspXoSjp51SX/rm6efuAG9/na2wta5tl10yXavByEG
+	UdvFpwf+KnwDnzMObBVFGbhGApMcSfunX9zDqveFbGQAA6ASJGND6hy2CrlbfSquLay8dyQwY3s
+	OreS7/DZWRcy/6kV6lfL9o60S7Ljirex
+X-Received: by 2002:a5d:5f82:0:b0:3a0:7af3:843f with SMTP id ffacd0b85a97d-3a1f6432cb9mr3198015f8f.19.1746804818901;
+        Fri, 09 May 2025 08:33:38 -0700 (PDT)
+X-Received: by 2002:a5d:5f82:0:b0:3a0:7af3:843f with SMTP id ffacd0b85a97d-3a1f6432cb9mr3197999f8f.19.1746804818536;
+        Fri, 09 May 2025 08:33:38 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442d14e6d74sm66226135e9.21.2025.05.09.08.33.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 May 2025 08:33:38 -0700 (PDT)
+Date: Fri, 9 May 2025 17:33:36 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ kvm@vger.kernel.org, Sergio Lopez <slp@redhat.com>, Gerd Hoffmann
+ <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Laurent
+ Vivier <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu
+ <yi.l.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>, Eduardo
+ Habkost <eduardo@habkost.net>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>, Marcelo Tosatti
+ <mtosatti@redhat.com>, qemu-riscv@nongnu.org, Weiwei Li
+ <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>, Zhao Liu
+ <zhao1.liu@intel.com>, Yanan Wang <wangyanan55@huawei.com>, Helge Deller
+ <deller@gmx.de>, Palmer Dabbelt <palmer@dabbelt.com>, Ani Sinha
+ <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>, Paolo Bonzini
+ <pbonzini@redhat.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?B?Q2zDqW1lbnQ=?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
+ qemu-arm@nongnu.org, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
+ <marcandre.lureau@redhat.com>, Huacai Chen <chenhuacai@kernel.org>, Jason
+ Wang <jasowang@redhat.com>
+Subject: Re: [PATCH v4 03/27] hw/nvram/fw_cfg: Rename fw_cfg_init_mem() with
+ '_nodma' suffix
+Message-ID: <20250509173336.637f0ed8@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250508133550.81391-4-philmd@linaro.org>
+References: <20250508133550.81391-1-philmd@linaro.org>
+	<20250508133550.81391-4-philmd@linaro.org>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <20250505090635.778785-1-clg@redhat.com>
- <20250505090635.778785-23-clg@redhat.com>
- <CAFEAcA8wmqAtcgfPvyMY8nujTWNCSC0DYO64aA5up-sTWCr_jA@mail.gmail.com>
- <ce9162f3-a3d3-4a76-a261-af16384ea82e@redhat.com>
-In-Reply-To: <ce9162f3-a3d3-4a76-a261-af16384ea82e@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 9 May 2025 16:27:32 +0100
-X-Gm-Features: ATxdqUEF2muhkKyVPw7UZ9BWrBBl61yCtzy507J8xOQVAFZeS_ItKXuOX-STwSQ
-Message-ID: <CAFEAcA-OJmmKgLrd6P-+Kb=-Zh52GL0y+vfNLrivM97T4DDDwg@mail.gmail.com>
-Subject: Re: [PULL 22/23] tests/function/aspeed: Add functional test for
- ast2700fc
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Steven Lee <steven_lee@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CvPABodmxprp
+X-TUID: DYrtLbdMPFP0
 
-On Fri, 9 May 2025 at 15:32, C=C3=A9dric Le Goater <clg@redhat.com> wrote:
-> In the ast2700fc machine and the fby35, each SoC has its own memory
-> region and, since there is no need for the global system memory
-> region, it's empty. But in some places, like
-> rom_check_and_register_reset(), it's a problem for the flattened
-> global view.
+On Thu,  8 May 2025 15:35:26 +0200
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
 
-Generally speaking, board models should set things up so
-that the "main" SoC for the board uses the main system memory
-MR, rather than creating its own empty MR for that purpose,
-I think.
+> Rename fw_cfg_init_mem() as fw_cfg_init_mem_nodma()
+> to distinct with the DMA version (currently named
+> fw_cfg_init_mem_wide).
+>=20
+> Suggested-by: Zhao Liu <zhao1.liu@intel.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-But separately from that, it's weird to get into flatview_lookup
-with an empty FlatView here. We called memory_region_find(),
-which is a wrapper around memory_region_find_rcu(). That
-function doesn't make assumptions about where the MR it's
-passed is from: it walks up the tree of MRs to find the
-root MR, it looks up the AddressSpace for that root MR,
-and then it gets the FlatView for that AS and calls
-flatview_lookup(). If the FlatView we end up with doesn't
-have the MR in it, what's happened ?
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
--- PMM
+> ---
+>  include/hw/nvram/fw_cfg.h | 3 ++-
+>  hw/hppa/machine.c         | 2 +-
+>  hw/nvram/fw_cfg.c         | 7 +++----
+>  3 files changed, 6 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+> index d41b9328fd1..d5161a79436 100644
+> --- a/include/hw/nvram/fw_cfg.h
+> +++ b/include/hw/nvram/fw_cfg.h
+> @@ -307,7 +307,8 @@ bool fw_cfg_add_file_from_generator(FWCfgState *s,
+> =20
+>  FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
+>                                  AddressSpace *dma_as);
+> -FWCfgState *fw_cfg_init_mem(hwaddr ctl_addr, hwaddr data_addr);
+> +FWCfgState *fw_cfg_init_mem_nodma(hwaddr ctl_addr, hwaddr data_addr,
+> +                                  unsigned data_width);
+>  FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
+>                                   hwaddr data_addr, uint32_t data_width,
+>                                   hwaddr dma_addr, AddressSpace *dma_as);
+> diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
+> index dacedc5409c..0d768cb90b0 100644
+> --- a/hw/hppa/machine.c
+> +++ b/hw/hppa/machine.c
+> @@ -201,7 +201,7 @@ static FWCfgState *create_fw_cfg(MachineState *ms, PC=
+IBus *pci_bus,
+>      int btlb_entries =3D HPPA_BTLB_ENTRIES(&cpu[0]->env);
+>      int len;
+> =20
+> -    fw_cfg =3D fw_cfg_init_mem(addr, addr + 4);
+> +    fw_cfg =3D fw_cfg_init_mem_nodma(addr, addr + 4, 1);
+>      fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, ms->smp.cpus);
+>      fw_cfg_add_i16(fw_cfg, FW_CFG_MAX_CPUS, HPPA_MAX_CPUS);
+>      fw_cfg_add_i64(fw_cfg, FW_CFG_RAM_SIZE, ms->ram_size);
+> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> index 54cfa07d3f5..10f8f8db86f 100644
+> --- a/hw/nvram/fw_cfg.c
+> +++ b/hw/nvram/fw_cfg.c
+> @@ -1087,11 +1087,10 @@ FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
+>      return s;
+>  }
+> =20
+> -FWCfgState *fw_cfg_init_mem(hwaddr ctl_addr, hwaddr data_addr)
+> +FWCfgState *fw_cfg_init_mem_nodma(hwaddr ctl_addr, hwaddr data_addr,
+> +                                  unsigned data_width)
+>  {
+> -    return fw_cfg_init_mem_wide(ctl_addr, data_addr,
+> -                                fw_cfg_data_mem_ops.valid.max_access_siz=
+e,
+> -                                0, NULL);
+> +    return fw_cfg_init_mem_wide(ctl_addr, data_addr, data_width, 0, NULL=
+);
+>  }
+> =20
+> =20
+

@@ -1,130 +1,142 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp987762njb;
-        Fri, 9 May 2025 03:11:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWCnDabYdC1tbOZghBdos0LfPc5eSH7TbzC17+YrEYxVG7zZxBpAMdsjCxouiOIFkpLCXNzAasjMUDcwg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGLK6CVqUE1Ij1gh+QzRO0evonffpu2QmK4D5Z804/oJlLDUy7PXQf8qhmsAsASYk1oe3HB
-X-Received: by 2002:a05:620a:2695:b0:7c5:f696:f8e5 with SMTP id af79cd13be357-7cd01103f44mr522074185a.14.1746785487128;
-        Fri, 09 May 2025 03:11:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746785487; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp1033573njb;
+        Fri, 9 May 2025 04:44:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUH8VTgGyBWOZ1ifx0BazpWP9Ttvm5iwNr/g1CPPJpfZPg/wSc/YaxPZGIKr8l56+YaUbT2QXF9WPXq+A==@linaro.org
+X-Google-Smtp-Source: AGHT+IFcLWv6gFGn2re+i52XXMjb48lOTtX52c5xBFW4f+ObUrwcw4zXmIKo7US0oZ5jL04//iTM
+X-Received: by 2002:a05:622a:56:b0:491:1874:bd9d with SMTP id d75a77b69052e-4945275e65dmr42659601cf.28.1746791082282;
+        Fri, 09 May 2025 04:44:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746791082; cv=none;
         d=google.com; s=arc-20240605;
-        b=LCwYMDRtADUflgO2viGGrBJOiQsT8XtghTJhkSLxncT8hplP/3oP36umjLCrgTiYYS
-         Wf/AlJYfuzFrV3nDFW9MmRUUv/2cbvRPBb8e/H0iqlZ1BfedqLslzTy29mjUeqkotbSw
-         HHsznss1e7+vIS8+NrJPCMoCEFoXE5Sklf/fafnzWI+q4f46FNYeJlOlAMwVORFYXZgb
-         lyx6w4CVd2ldvgyqfh7m0YAPRdHlqMYwaPeS3ZV6dolNNuFoRRGkgC6W+9u8yOtL4e8s
-         hU1QHHSSrpo6WGkzPry2vvgzSrxfRnX3PGXth8pDNQMz1ZMtKao7ru/rxuQJzVv2eyiC
-         4eCQ==
+        b=NblUtSmd14WITVsi00YYA6NZOhm+UAVeLCFIop7F/wgPxN6QKAjWHa4LdZAcImn/ji
+         UQYsViOdRbRQG9zqpbnbJz2VT4LecbL+zsuqAkhc10xwSbFxUndyvOLOdmM4MU2/f+aP
+         wuwgrtu2Zk8Glq6p0kM720yNBTXyvIiTet8sf3vdw4ZgepwzjtlxpKj0YRInwKpfCBVH
+         a6Hl9Z1e2A5Xz82G9RqxnVCSwMPHQgKKP0TyJ8nYTkESXYL5Ph7p7IAOr2K0Sqp/1QK0
+         ZnGFTCpAALSV5zMLAUy4SyzHgsQzUO6Z0QvV6Ym2/rDnGGg3pEuJASgrH+QsmQHpu9It
+         WPNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=vzOYVwbVsTwu+0lWOOtG4t67q5DwQfPHmQk35YDbQUg=;
-        fh=XwZ+SlKA2ObuTzjRd0BDrVQXnQFFQXDytsanjW2699w=;
-        b=VWWE1ruvpTG/CVAe6GDFaC3QRhgLfvnFeYrfAn0/vim/DJiS+/5xqhF3L186VgbGRE
-         RxcK18kjBu9MQ3Q4jn1P6Uq5XiKpkoiapCbH5gftM9tkO7NCzSKWupV9DxKvNg1VtkRP
-         7tsHQS69xGurcb9w7sBX9DTE8CGW0X7rIQpVxihR+GXFgGkZYE5Xobg2wc8F8S3SbRu+
-         tLWiNC/rWi54eThPx05WtISwBGKugUwAyGTtPrz5oh8ytxW0NLhmAWstVLaTAdLUxuIF
-         bDIN4ZX7Ii6eEOCwWg2QKKSagGTlNbddYD1dZZtJYhz58pyuNeGQZzfz/6q8O4RzFz3m
-         j92A==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=OWPMhJ0Sk0mJLU2ZE9eP/Hx0TLPpyirbi6sQ6Yk4IDw=;
+        fh=SVf9gdLvgO+hCeUnHU0P4sNtnYKoMdRAlXowfKwztIU=;
+        b=GGKCeD+lzqHgRmrJemf1N3QguTe3jRSckgZWskW/Sj6EheHZWZ1aJrBpWdEGn1K6DV
+         N0lLJZ+2t5dyAXviWTGjft7nhl/UB9Iz38oa19lLLtH0NWtJyWivk9VCZhy8VNIf8bUx
+         L/Ew3W+/FsUPpcubKwbYOOVwWj1vba9LNPsV2sM4kps81zNZxPO0WjywdM+pNQnnWOOC
+         QqHNMtiT1yW3xhhcZLBK9c8DyTk8DqRLF9teSnu67NrCbcKZRrANRz42eugnNkhG8dIn
+         3QGL3ie3vik+ANkbuhefshc4osh9IiR/0gzbMJATUtaMCLr3Gk3EUuaRMVcaqtxYA+5m
+         y6CQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=LCwinC2B;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GeY7YRYf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd00fd484bsi189925285a.217.2025.05.09.03.11.27
+        by mx.google.com with ESMTPS id d75a77b69052e-4945245993asi20041611cf.33.2025.05.09.04.44.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 May 2025 03:11:27 -0700 (PDT)
+        Fri, 09 May 2025 04:44:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=LCwinC2B;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GeY7YRYf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uDKhJ-0007YF-Ib; Fri, 09 May 2025 06:11:17 -0400
+	id 1uDM9N-0006H0-Us; Fri, 09 May 2025 07:44:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uDKhH-0007Wo-El; Fri, 09 May 2025 06:11:15 -0400
-Received: from mgamail.intel.com ([198.175.65.10])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uDKhF-0001b8-N2; Fri, 09 May 2025 06:11:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1746785474; x=1778321474;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=DYzgfmr2nHUFnRtfKx2VUV7W2FkMFo4CpLIHKoL2k0I=;
- b=LCwinC2BbEhFPn4fpJFHI11N/cD/mejWq6aKk6qeb6xHU9iikF/Qd/Dl
- pXLKtmWQd/of8Q9sWphsv5MAsd19gVhozzGws2XScj5dYhzbyCqCRdy8/
- BZ67/zy6snE1wfGMJYvuW8usFIGh4RHz+TxgvoSPVDkTyvUgqNM/hQWWG
- HXWx7EJUd3EDUjwzCflmrHsu5foDMUGAyE0acC13wFTfvpCSOZQlDyuzm
- cYxmjMm34WtOltdbGzhuIz0HwLALIepVAKuZz6xbRjm33SF/NDvr3e583
- Qz0bVaOKnhxbwdbEdpKnVC89y0CCYSskcoLaG9CRsvZtTjhefx5M4/bF0 g==;
-X-CSE-ConnectionGUID: Xpb41upyQ1yAvxMVCkmF9g==
-X-CSE-MsgGUID: 0AaCUsluRaWIG7TKWM0XeA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11427"; a="66013414"
-X-IronPort-AV: E=Sophos;i="6.15,274,1739865600"; d="scan'208";a="66013414"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 May 2025 03:11:10 -0700
-X-CSE-ConnectionGUID: HKEkuJfoTV22rXlvJht/zw==
-X-CSE-MsgGUID: 34wmXNVFQ0SpQaxijdq0mQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,274,1739865600"; d="scan'208";a="137577882"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by fmviesa009.fm.intel.com with ESMTP; 09 May 2025 03:11:02 -0700
-Date: Fri, 9 May 2025 18:32:05 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- kvm@vger.kernel.org, Sergio Lopez <slp@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Laurent Vivier <lvivier@redhat.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu <yi.l.liu@intel.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org,
- Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
- Yanan Wang <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>,
- Palmer Dabbelt <palmer@dabbelt.com>, Ani Sinha <anisinha@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- =?iso-8859-1?Q?Cl=E9ment?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
- qemu-arm@nongnu.org,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Huacai Chen <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Subject: Re: [PATCH v4 24/27] hw/intc/ioapic: Remove
- IOAPICCommonState::version field
-Message-ID: <aB3Zpc45+/OZ7hq2@intel.com>
-References: <20250508133550.81391-1-philmd@linaro.org>
- <20250508133550.81391-25-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uDM9H-0006GG-56
+ for qemu-arm@nongnu.org; Fri, 09 May 2025 07:44:15 -0400
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uDM99-00054o-Vz
+ for qemu-arm@nongnu.org; Fri, 09 May 2025 07:44:13 -0400
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-7081165a238so16035807b3.1
+ for <qemu-arm@nongnu.org>; Fri, 09 May 2025 04:44:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1746791045; x=1747395845; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=OWPMhJ0Sk0mJLU2ZE9eP/Hx0TLPpyirbi6sQ6Yk4IDw=;
+ b=GeY7YRYf4LK2+S13Phras32OwIRKPL9fb/erF4q/OLmxBKWu3cfEZtkCCpuH8d/hfD
+ JYtcYg3Y5aWZo9RaC4xRwyHhUX3vqWmNeVTzD5O7IJdEoxwhhAdNYEpLBzTJb2PiZbkP
+ IbFc4pCOqlYTsVIQc/fad18Y1TsF+6XIpUMHrgB2XMb8Ej4OTKbxnjosWqogFKLPEalk
+ 98KwD3sO1RD3GhX38LqgvMaRuXek0WRiT+2qgsw9e8EDhsBGJRg4E7sOQ14rJNSG9nn1
+ GsTSt0bXtXROR46K53bGA0Z+ovVpHpWGbP0XjTkU0WR1FTfO227uGQS9hjNs+Bcq5yz7
+ kkJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1746791045; x=1747395845;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=OWPMhJ0Sk0mJLU2ZE9eP/Hx0TLPpyirbi6sQ6Yk4IDw=;
+ b=LAHrJWGt+zzoUD1Gp8lorafGiGSaiwBhon7t3cdv6ORdt3VUgmAOUx2Cmu+A/he22r
+ cRIfpvDYsqPbVfOMTDiQR6CBTtmtwy35cRfCyLfj07KG2U2HqTHt1oxv2s15l+ofFmNJ
+ qjkE95hScegKT8jCxtXEf7/qJduGmBTgUalouHbf1KaFzweDIxOwJyFG2imitNDCXJUh
+ 0W954c+qkfNNQiGUTmncpmelA9Cf2AG4spuwMXGhzAqYxVAt4smiDkRNq+3wgfR/o0bc
+ FJOt/seBTjX2MaFyPAOgDdoPl1VmrjxKwIA/3NTFq7q/8HFNaGq3JfTfCESU4U3Q0edm
+ pqdg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVlU+UKcYCsPohG6oj91FLn4gKG0sAccZMr4O4fvzJX4HiDh3LF+oAOIlRWlrGgr6yxOG7BoQ9knw==@nongnu.org
+X-Gm-Message-State: AOJu0Yx/qnJ3OKtjnnaQAExmwxoz+fhrPo8rCQe7uJabs/mrYlA6kg7f
+ +S+tqCpP6uwi2HF7TQ6MSshziTHqBje7WoMPoyiTvLgLdnNYTgK7qHkCGRIqre/C1r48SbOk05r
+ qzFGfhztye/qtbcD8WSWmWhvHRXtDFgjGzYyU9A==
+X-Gm-Gg: ASbGnctanZizS31CweYfNNx9jBFF58K+9q9BdJKbSxhebCjelkjVz/A30kI/lyjjDMA
+ b7MijoHBiXRjvSBrLVvrhlUoF+Ir7+GrOZ5HZFyvnZbq75gmKzDVlA3xw9yVJmhzOOCwTO7Ed7b
+ RJ/xF0VqIwCIg9Kx+/Q6DqgFo=
+X-Received: by 2002:a05:690c:4489:b0:708:100a:57b0 with SMTP id
+ 00721157ae682-70a3f9e4badmr38279097b3.8.1746791045315; Fri, 09 May 2025
+ 04:44:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250508133550.81391-25-philmd@linaro.org>
-Received-SPF: pass client-ip=198.175.65.10; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -57
-X-Spam_score: -5.8
-X-Spam_bar: -----
-X-Spam_report: (-5.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.416,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20250502102707.110516-1-shameerali.kolothum.thodi@huawei.com>
+ <20250502102707.110516-2-shameerali.kolothum.thodi@huawei.com>
+ <877c2ut0zk.fsf@pond.sub.org>
+ <e02e884b-0f3d-4426-8a67-2cbd23e80e8c@redhat.com>
+ <87frhglwjl.fsf@pond.sub.org> <72f9043a73294bfc9b539ae9b94836d3@huawei.com>
+ <d21e0c57-b89a-4c79-958e-e633de039e4c@redhat.com>
+ <CAFEAcA9bZ6Rd4PSMG61mJ5Ja07j3--DQE7KqA8RZwxGH3N51sA@mail.gmail.com>
+ <3d7824d9fcf04e2e961d30a5f3404b52@huawei.com>
+ <CAFEAcA-HWuAUVhqsE7p2BMo6wg+7F273Q_J2LVLrHzFagTjxgg@mail.gmail.com>
+ <aB3dAPNgXj7w9-7L@redhat.com>
+In-Reply-To: <aB3dAPNgXj7w9-7L@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 9 May 2025 12:43:54 +0100
+X-Gm-Features: ATxdqUFgLyjyeViuXI9TIX-GTN5xgvuJ3wiqu4qsd_2ry_z0YWIPux9C51IebDc
+Message-ID: <CAFEAcA-2XS3jBAzLnx9m-V_mqrJr47BsbQamTzszTPN+rmisfA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a PCIe RC
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>, 
+ Donald Dutile <ddutile@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
+ Shameer Kolothum via <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, 
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "nathanc@nvidia.com" <nathanc@nvidia.com>, 
+ "mochs@nvidia.com" <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>, 
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun <jiangkunkun@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>, 
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,54 +151,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 50mGQyFkfmjP
+X-TUID: oSlWuKcnmR7r
 
-On Thu, May 08, 2025 at 03:35:47PM +0200, Philippe Mathieu-Daudé wrote:
-> Date: Thu,  8 May 2025 15:35:47 +0200
-> From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Subject: [PATCH v4 24/27] hw/intc/ioapic: Remove IOAPICCommonState::version
->  field
-> X-Mailer: git-send-email 2.47.1
-> 
-> The IOAPICCommonState::version integer was only set
-> in the hw_compat_2_7[] array, via the 'version=0x11'
-> property. We removed all machines using that array,
-> lets remove that property, simplify by only using the
-> default version (defined as IOAPIC_VER_DEF).
-> 
-> For the record, this field was introduced in commit
-> 20fd4b7b6d9 ("x86: ioapic: add support for explicit EOI"):
-> 
->  >   Some old Linux kernels (upstream before v4.0), or any released RHEL
->  >   kernels has problem in sending APIC EOI when IR is enabled.
->  >   Meanwhile, many of them only support explicit EOI for IOAPIC, which
->  >   is only introduced in IOAPIC version 0x20. This patch provide a way
->  >   to boost QEMU IOAPIC to version 0x20, in order for QEMU to correctly
->  >   receive EOI messages.
->  >
->  >   Without boosting IOAPIC version to 0x20, kernels before commit
->  >   d32932d ("x86/irq: Convert IOAPIC to use hierarchical irqdomain
->  >   interfaces") will have trouble enabling both IR and level-triggered
->  >   interrupt devices (like e1000).
->  >
->  >   To upgrade IOAPIC to version 0x20, we need to specify:
->  >
->  >     -global ioapic.version=0x20
->  >
->  >   To be compatible with old systems, 0x11 will still be the default
->  >   IOAPIC version. Here 0x11 and 0x20 are the only versions to be
->  >   supported.
->  >
->  >   One thing to mention: this patch only applies to emulated IOAPIC. It
->  >   does not affect kernel IOAPIC behavior.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-> ---
->  hw/intc/ioapic_internal.h |  3 +--
->  hw/intc/ioapic.c          | 18 ++----------------
->  hw/intc/ioapic_common.c   |  2 +-
->  3 files changed, 4 insertions(+), 19 deletions(-)
+On Fri, 9 May 2025 at 11:46, Daniel P. Berrang=C3=A9 <berrange@redhat.com> =
+wrote:
+>
+> On Fri, May 09, 2025 at 11:37:14AM +0100, Peter Maydell wrote:
+> > (I want to start here by saying that I appreciate that I'm
+> > coming in without having read the previous discussion, so
+> > this is kind of going back over ground you've already
+> > been through.)
+> >
+> > I agree that rather than having an entirely separate "SMMU with
+> > acceleration" it would be better to have it be a property on
+> > the SMMU device. But why do we need it to be user created?
+> > Making it user-created leads into all kinds of tricky areas
+> > mostly surrounding the fact that QEMU right now simply doesn't
+> > support having user-created sysbus devices and other kinds
+> > of device with complex wiring-up. -device is really intended
+> > for "this is a model of a device that in real hardware is
+> > pluggable and has basically one connection, like a PCI card
+> > has a PCI-slot".
+>
+> In terms of "why does it need to be user created" - the goal was to expos=
+e
+> multiple SMMUs to the guest, each associated with a separate physical SMM=
+U.
+> IIUC, each physical NUMA node would have its own SMMU.
+>
+> So configuring a guest VM will require creating multiple PXBs, one for
+> each virtual NUMA node, and then creating SMMUs for each PXB.
+>
+> Since there was a need for the user to create SMMUs for the PXBs, the
+> question was then raised, why shouldn't the default SMMU also be
+> user creatable in the same way, so that mgmt apps like libvirt have
+> a single way to configure the SMMUs with -device.
 
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Sure, the default "there's just one pci bridge and either
+no SMMU or one SMMU" isn't that special. But we don't
+have good infrastructure for creating sysbus devices on
+the command line, whether it's the default SMMU or the
+extra SMMUs or a UART or anything else. I guess the
+dynamic_sysbus stuff works, but I've never really liked it
+(it's basically "the board will magically do the right thing",
+and to some extent it's working around the way we have
+very patchy support for "I want to configure a board the
+device created rather than configuring a device I am
+creating").
 
+-- PMM

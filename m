@@ -1,101 +1,101 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp893575njb;
-        Thu, 8 May 2025 23:16:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXvEc+23qrjyJhcsG3foIGPAF1D19szIr/bXe95kqtaAHjOCzwPhwXIB6Er1xB6yPT+lLSXWZ83YLJx5Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IE4FfjCHlA5PWKE24Xa1H1JGPgTFAAxZArWnJH47HZ7l2Vn8eXTVizZJWSgbDAOuR3Kt3sQ
-X-Received: by 2002:a17:907:1b1a:b0:acb:6edd:b255 with SMTP id a640c23a62f3a-ad21928f9famr223195966b.56.1746771388690;
-        Thu, 08 May 2025 23:16:28 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1746771388; cv=pass;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp898721njb;
+        Thu, 8 May 2025 23:30:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXxRESriJcsD/FO2SfIdbmn2R3v5HptkvM3hZksoFgByEFASTA+Awol21132+12GIPMLNvJVBxBshoD8Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IEIuBZqRlbtAPauhOBKIFFTToLyvBKJm+w5SZafMivyLfhyjV4x086LbTPr1RLLjikwDyo+
+X-Received: by 2002:a05:6a00:1808:b0:740:afda:a742 with SMTP id d2e1a72fcca58-7423b2e8a7fmr3274058b3a.0.1746772220142;
+        Thu, 08 May 2025 23:30:20 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1746772220; cv=pass;
         d=google.com; s=arc-20240605;
-        b=W74KlBdeeqzrdebv0TdGSqy2cf2DGmvF2RJojaF5qigRK5VFrjlGdJCBTDt0qyEyBX
-         pHXkYMO8Tr26+tLL8Q4VczAe0SnfDKHgvgBwYyk6+hQm5mfLTpRat371IioeftHZxdQ8
-         6qOQnEBFWV3vfJ3UrkFno/kcNCg956gKjNPIKapdPS6FUFEaqCpiPlcN/VZ7zlr8gDyI
-         658kxy2BV9NUj1NQ6BqOxaEu1JwTM12LrPsTVTRkF9J49kxwGwE3/pNh5PYC/x/QgYGN
-         9PTxNqydvGlNDxK2lbXnqNX/zloZg2lijCaB3F1/At60Z2yOjMRTHg/HtQgif1FmBQzc
-         5epg==
+        b=Y1KKVbQTMYXICx5ZVRc2XRkPPT25FjuHWKLWByG+5V/YrXuLfRXmhUVgx3OYtXyoMl
+         NBgnAU13SX8//VFjNWcDF29LR1+dixQi2UO9PALouXeKW3/9+zmBe2zpqapunpwhLjxT
+         1dMMQyUS17U4opvQvXZ6HslKEeK1WDTmkNg/+TRgVa9wWZ10YRhe81jRPZY60+GZcKr8
+         ADvI8wqH7mxlMr4UavcBjWSiTpaLTRKOdwfCvko6WAFdoNHsc2STAQO3B7v9S9ESO4xw
+         y6JYSr7QK5gFVyyK/xa/4kuVfnueWQRrqb1mWkL3OTHhjMt2TQmFj7aiQPkvOBOxZC04
+         VQqQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
          :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=LaXjqdzyT2qMCogBq6BCSwa+I5jEyWKYzozVBkP2BFc=;
+        bh=ZNiveLZw4SeTsm1rtLo+DeeRdMk6ACvMlw4OC6TGY4E=;
         fh=JxHmcrA01BA5QK0KCw1k/zuTtIunTfHN6Hx8q/ntgXs=;
-        b=XNww5DThM1r7Z9q5xgEbIkWLb8IInGmnoYcqa8Gdg0GWnA36jzFYJ1im3OhWplwaAl
-         WIiN+bNAWvsg8mN566Kgjs8CT2SRD26S4X9Ni23WvvUrWxfknOS6cbK9zZS8o1ErZBKo
-         E3kckQjXhQg6RVSSzHXo4atUNWrXSbc7i81dYTOXBhHc67QDhQ/9QS0e9pJzF6oJ1wCd
-         WNQ034zDXAu5ItnLHH2qLXTcggvwFekEoQYHrw4az7stuu360hNndHbD3RPQqkXScW3Y
-         6iEXf9bfKCKcYYZlgmJZD+gUJVo13CbKxl3wmaSYo9OB0e7MNXKGTpTZgMIFvErGnvfe
-         FSMg==;
+        b=Bo3de70DEJgphn6Pi2xwhFD68UNxDTmYIwpChs+AcRUMbelnqYTScUh6jOuNzdXgqo
+         lAzl6wPN7xHhDr5SdC1LD7Wcs+Sl5rU3HFjsCop3G0SxlW9fbJ/yqhAiZSWR+/hc79zy
+         QBfeic1hlaMswtlBbk2WFO3xW2FEOe1fffYNwNGzdn7Njq+B16ed28VOw07D2LpeiTqk
+         rWVD9g639c/srj7llUa2sQ93bMBI7Z8L/aOdoNFX/nyHNFej159tbMUAKKt+QOPqAVk4
+         pEcY0MtpYOOFPkGdwdaMF6wHQo52/2sRSCWiUio3IuG9j0erwkv1eUSy/cgIujHG/Bqm
+         0bYA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="NsIkG/V5";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=XnCTc5Cq;
        arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-46013-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-46013-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-46015-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-46015-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-46013-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5fc9c9e46cdsi992770a12.20.2025.05.08.23.16.28
+Return-Path: <kvm+bounces-46015-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id d2e1a72fcca58-74237a89740si1927745b3a.282.2025.05.08.23.30.19
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 May 2025 23:16:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-46013-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        Thu, 08 May 2025 23:30:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46015-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="NsIkG/V5";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=XnCTc5Cq;
        arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-46013-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-46013-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-46015-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-46015-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id CBFFE1C0069D
-	for <alex.bennee@linaro.org>; Fri,  9 May 2025 06:16:40 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 274039C1132
+	for <alex.bennee@linaro.org>; Fri,  9 May 2025 06:30:01 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id C8427269CF5;
-	Fri,  9 May 2025 06:16:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 65F3826B08B;
+	Fri,  9 May 2025 06:30:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="NsIkG/V5"
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="XnCTc5Cq"
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EF4A326A09A
-	for <kvm@vger.kernel.org>; Fri,  9 May 2025 06:16:20 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.8
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 16151238D3A
+	for <kvm@vger.kernel.org>; Fri,  9 May 2025 06:30:12 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.16
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1746771383; cv=none; b=LfQd4+GA6HFKAZCVu5ialw+wxy0V6Zq+S2TkHwghDlMXGig9ebYVl/cwvY6vxCEmHumuDSdLabmaRR5Jy1Dj+p946eZyZY0xXkouhqJy3ghRIBRXZadXunpIcl2rnfbBdzC4H1SUZimz5d7my8bMW0pev67WmcL+4O3I2Mk4gmU=
+	t=1746772215; cv=none; b=YRbV165K6HJ1lSlRGomz37rTCdCDbZMFFAtJLnmvGcDSpvwwO+sfDorrzDIIZVWHt3W1WrO3wHAEa8IuOjEFflQisPUDq9epIeXip64khSnTb1lAZBX3Re14eobo3B0Sgru5+Si2kgwmlRj081R8PpOsG/WXjy2dUSuTt/6gNcA=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1746771383; c=relaxed/simple;
-	bh=ggqJ1IiHFWvnWutr4RX9vZ4PtcAAvKkNUvCBk+pjK5I=;
+	s=arc-20240116; t=1746772215; c=relaxed/simple;
+	bh=MwKGYQG9WPfO/eaUNra1yxomNX0ZRmzfFjJZWMYXPD8=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=MxsaHjCQ+KsbH5BMendEqB57RMrj2Xf1SlwkNTJOP2VJFdRKL0hFCZa5sQnyOEUwXiz11D/uc7S1NBPJmYJod2TcsJ4LhSaYCTXd7YgNg5rHqvnCyrTii9LOiB0c+eciKUJzsvcIp3mxLY1g0LYPSpXUeRr7IkHZSbWAXzjfLuo=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=NsIkG/V5; arc=none smtp.client-ip=192.198.163.8
+	 Content-Type:Content-Disposition:In-Reply-To; b=PN2JngyE9LujOYDpV8Yv7M0ELt1mnD4Zz5dOlQoa0zwr1gCj3lINsQshrMk/119wXMcWbLfzzwIrXzlmLhMtcXffBT4JwPEM7vbdSdhe6ElpIwl5yG4gjTkghSwGPS6swTkkswOQs8uKy+nLTzMMTYOFzSOvmy4I1Tqyai2G0yc=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=XnCTc5Cq; arc=none smtp.client-ip=198.175.65.16
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1746771382; x=1778307382;
+  t=1746772213; x=1778308213;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:content-transfer-encoding:in-reply-to;
-  bh=ggqJ1IiHFWvnWutr4RX9vZ4PtcAAvKkNUvCBk+pjK5I=;
-  b=NsIkG/V5I6mqbpDQnvasYozaIcdUaVaX4KjyI0ZdGID8bEr1DSkVIbP8
-   yv9np0kLPXNi7XWlhSxID/VweeNKXmIIKuWaFTkBbZpG3Of3dNZlRRnmA
-   bO4j3ZfGPK4CKwtflkuGXrYqdAfYMAyPdzxvlQUyERcvL1OV9Uu9kSSDY
-   2zxpUCgGI6ADX8dXzZw0ICQEc4yAQT5y7Gq7kMuMlghPtSJhUAL4aDtwS
-   wrOAvr186ar3Vi7YmpSq6XTQ6SFqvogtHD26m23IwJzilLmvLGtNq+f5r
-   cvV2KwiKiQtJezW5ERAIw0X1KhjTGtPDhSOsM9j+kuj9t7VzYn7Wd7k45
+  bh=MwKGYQG9WPfO/eaUNra1yxomNX0ZRmzfFjJZWMYXPD8=;
+  b=XnCTc5Cqju36iG7PNNYSdSpnOV/uLBGxX3Bef4V7s5NW4GBkxZuEsGII
+   1Ie35K29LDzRmiwF298iNL9KpPNywlM48vt6gsbZZ/eHKajWQYF6/kbD1
+   SmOicYddD98Aed8LzJCfVUr8AS6D0sODT18x2Law7ImBiW8S6mcsKmZAX
+   27hZ+Alr0+lGZyOWe+j8DYU9KIfk4UOtR9KK6GKiviOxawUh6y72aSyzx
+   v8HAbKU6JEvpdsva2spwbuaN4zGV4XLAsmUf7Pnfy35liT/t5/tqOUBS2
+   10u1tTyyJTEeVsrUDmtpFeLA+elrkfbL5PnPsfl+K07vqvZF0am9vW12e
    Q==;
-X-CSE-ConnectionGUID: Z7JX5FOGRtWM2PraEMf8FQ==
-X-CSE-MsgGUID: 36WhjvCQTsSIqhbwfpHYFA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11427"; a="66119790"
+X-CSE-ConnectionGUID: e3p1bAEFRsyyW5bOibI2WQ==
+X-CSE-MsgGUID: C3QmzbNvQ1iFNSh6JldZKQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11427"; a="48666601"
 X-IronPort-AV: E=Sophos;i="6.15,274,1739865600"; 
-   d="scan'208";a="66119790"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 May 2025 23:16:20 -0700
-X-CSE-ConnectionGUID: EShOvyRJSeCCU7P6Wp2LEQ==
-X-CSE-MsgGUID: a3tZ14YNSzus0U3OwlV/+g==
+   d="scan'208";a="48666601"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 May 2025 23:30:12 -0700
+X-CSE-ConnectionGUID: ntFz4u6uTvCcURBhCR8UiQ==
+X-CSE-MsgGUID: wgmLekf5RmKGnRzsEc3R9Q==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.15,274,1739865600"; 
-   d="scan'208";a="137043614"
+   d="scan'208";a="159825084"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.39])
-  by orviesa007.jf.intel.com with ESMTP; 08 May 2025 23:16:13 -0700
-Date: Fri, 9 May 2025 14:37:15 +0800
+  by fmviesa002.fm.intel.com with ESMTP; 08 May 2025 23:30:05 -0700
+Date: Fri, 9 May 2025 14:51:07 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
@@ -123,11 +123,11 @@ Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
 	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
 	Huacai Chen <chenhuacai@kernel.org>,
 	Jason Wang <jasowang@redhat.com>
-Subject: Re: [PATCH v4 09/27] hw/nvram/fw_cfg: Remove
- fw_cfg_io_properties::dma_enabled
-Message-ID: <aB2imx1sp9sgMs3c@intel.com>
+Subject: Re: [PATCH v4 06/27] hw/nvram/fw_cfg: Rename fw_cfg_init_mem_wide()
+ -> fw_cfg_init_mem_dma()
+Message-ID: <aB2l25PwH4e0jaTb@intel.com>
 References: <20250508133550.81391-1-philmd@linaro.org>
- <20250508133550.81391-10-philmd@linaro.org>
+ <20250508133550.81391-7-philmd@linaro.org>
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
@@ -137,85 +137,45 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250508133550.81391-10-philmd@linaro.org>
-X-TUID: yNxpj9z5Js7x
+In-Reply-To: <20250508133550.81391-7-philmd@linaro.org>
+X-TUID: NVfQ9QGtYbXU
 
-On Thu, May 08, 2025 at 03:35:32PM +0200, Philippe Mathieu-Daudé wrote:
-> Date: Thu,  8 May 2025 15:35:32 +0200
+On Thu, May 08, 2025 at 03:35:29PM +0200, Philippe Mathieu-Daudé wrote:
+> Date: Thu,  8 May 2025 15:35:29 +0200
 > From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Subject: [PATCH v4 09/27] hw/nvram/fw_cfg: Remove
->  fw_cfg_io_properties::dma_enabled
+> Subject: [PATCH v4 06/27] hw/nvram/fw_cfg: Rename fw_cfg_init_mem_wide() ->
+>  fw_cfg_init_mem_dma()
 > X-Mailer: git-send-email 2.47.1
 > 
-> Now than all calls to fw_cfg_init_io_dma() pass DMA arguments,
-> the 'dma_enabled' of the TYPE_FW_CFG_IO type is not used anymore.
-> Remove it, simplifying fw_cfg_init_io_dma() and fw_cfg_io_realize().
+> "wide" in fw_cfg_init_mem_wide() means "DMA support".
+> Rename for clarity.
 > 
-> Note, we can not remove the equivalent in fw_cfg_mem_properties[]
-> because it is still used in HPPA and MIPS Loongson3 machines:
-> 
->   $ git grep -w fw_cfg_init_mem_nodma
->   hw/hppa/machine.c:204:    fw_cfg = fw_cfg_init_mem_nodma(addr, addr + 4, 1);
->   hw/mips/loongson3_virt.c:289:    fw_cfg = fw_cfg_init_mem_nodma(cfg_addr, cfg_addr + 8, 8);
-> 
-> 'linuxboot.bin' isn't used anymore, we'll remove it in the
-> next commit.
-> 
+> Suggested-by: Zhao Liu <zhao1.liu@intel.com>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 > ---
->  hw/i386/fw_cfg.c     |  5 +----
->  hw/i386/x86-common.c |  5 +----
->  hw/nvram/fw_cfg.c    | 26 ++++++++------------------
->  3 files changed, 10 insertions(+), 26 deletions(-)
+>  include/hw/nvram/fw_cfg.h | 6 +++---
+>  hw/arm/virt.c             | 2 +-
+>  hw/nvram/fw_cfg.c         | 6 +++---
+>  hw/riscv/virt.c           | 4 ++--
+>  4 files changed, 9 insertions(+), 9 deletions(-)
 > 
-> diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
-> index 5c0bcd5f8a9..1fe084fd720 100644
-> --- a/hw/i386/fw_cfg.c
-> +++ b/hw/i386/fw_cfg.c
-> @@ -221,10 +221,7 @@ void fw_cfg_add_acpi_dsdt(Aml *scope, FWCfgState *fw_cfg)
->       * of the i/o region used is FW_CFG_CTL_SIZE; when using DMA, the
->       * DMA control register is located at FW_CFG_DMA_IO_BASE + 4
->       */
-> -    Object *obj = OBJECT(fw_cfg);
-> -    uint8_t io_size = object_property_get_bool(obj, "dma_enabled", NULL) ?
-> -        ROUND_UP(FW_CFG_CTL_SIZE, 4) + sizeof(dma_addr_t) :
-> -        FW_CFG_CTL_SIZE;
-> +    uint8_t io_size = ROUND_UP(FW_CFG_CTL_SIZE, 4) + sizeof(dma_addr_t);
->      Aml *dev = aml_device("FWCF");
->      Aml *crs = aml_resource_template();
->  
-> diff --git a/hw/i386/x86-common.c b/hw/i386/x86-common.c
-> index 27254a0e9f1..ee594364415 100644
-> --- a/hw/i386/x86-common.c
-> +++ b/hw/i386/x86-common.c
-> @@ -991,10 +991,7 @@ void x86_load_linux(X86MachineState *x86ms,
->      }
->  
->      option_rom[nb_option_roms].bootindex = 0;
-> -    option_rom[nb_option_roms].name = "linuxboot.bin";
-> -    if (fw_cfg_dma_enabled(fw_cfg)) {
-> -        option_rom[nb_option_roms].name = "linuxboot_dma.bin";
-> -    }
-> +    option_rom[nb_option_roms].name = "linuxboot_dma.bin";
->      nb_option_roms++;
->  }
->  
-> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-> index 51b028b5d0a..ef976a4bce2 100644
-> --- a/hw/nvram/fw_cfg.c
-> +++ b/hw/nvram/fw_cfg.c
-> @@ -1026,12 +1026,9 @@ FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
->      FWCfgIoState *ios;
->      FWCfgState *s;
->      MemoryRegion *iomem = get_system_io();
-> -    bool dma_requested = dma_iobase && dma_as;
->  
-> +    assert(dma_iobase);
+> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+> index d5161a79436..c4c49886754 100644
+> --- a/include/hw/nvram/fw_cfg.h
+> +++ b/include/hw/nvram/fw_cfg.h
+> @@ -309,9 +309,9 @@ FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
+>                                  AddressSpace *dma_as);
+>  FWCfgState *fw_cfg_init_mem_nodma(hwaddr ctl_addr, hwaddr data_addr,
+>                                    unsigned data_width);
+> -FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
+> -                                 hwaddr data_addr, uint32_t data_width,
+> -                                 hwaddr dma_addr, AddressSpace *dma_as);
+> +FWCfgState *fw_cfg_init_mem_dma(hwaddr ctl_addr,
+> +                                hwaddr data_addr, uint32_t data_width,
+> +                                hwaddr dma_addr, AddressSpace *dma_as);
 
-Maybe a rebase nit? In v3, it is:
+There's one more use in latest master:
 
-assert(dma_iobase && dma_as);
-
-Others are fine for me.
+git grep fw_cfg_init_mem_wide
+hw/loongarch/fw_cfg.c:    fw_cfg = fw_cfg_init_mem_wide(VIRT_FWCFG_BASE + 8, VIRT_FWCFG_BASE, 8,
 

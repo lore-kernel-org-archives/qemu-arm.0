@@ -1,121 +1,191 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp731606njb;
-        Thu, 8 May 2025 15:08:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWeac8YLPjcACT1dTSJAvEA1IwGoCYwhWjV83nl9x/6/icx7fe1G85TmkgFtTurXGFTjfwyBvRxs8Mddw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHHexNpRBRm7LAs0Qal0upz6h5fxz8LGlfdoWiYbzo+B7AWaTQ/jtgGxzhJaVngFaYjv1he
-X-Received: by 2002:a05:622a:2cf:b0:48a:c411:e864 with SMTP id d75a77b69052e-4945271d99bmr15200671cf.7.1746742100889;
-        Thu, 08 May 2025 15:08:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746742100; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp800401njb;
+        Thu, 8 May 2025 18:08:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWWlxBU+cY5LV8m7PtEjyoYK5j/FKw649cCDR9uZdnyG1xzjXDXNWKRhhZHwmKdChIuhn9TfN3OOsnh+A==@linaro.org
+X-Google-Smtp-Source: AGHT+IEs9qRrdsr9qo0jlEiO5bdHU9p5my6AZ50oDAR+6dBWbA/Mvkdc+G+ANsM6yddlFlbCCqE8
+X-Received: by 2002:a05:622a:1a14:b0:476:b764:e315 with SMTP id d75a77b69052e-494527f48c8mr24766111cf.52.1746752909125;
+        Thu, 08 May 2025 18:08:29 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1746752909; cv=pass;
         d=google.com; s=arc-20240605;
-        b=FxpOVJRdla9abZ3z77iIPJcVZXPBJZwTfU0cA8NMaOhIKyO8zj5Sd1X3Em36qvrnu7
-         nbZ+Us7WY18SOpAjB19tBhSUkWruGH/vyeHXYgijwKAoRYRVcDQSzOjErYLvHe6aKCmT
-         /07NcxiNn8azt/Euxs/Ok1q/gwMtLj7zdN9mXsB8qTKoNoHJbasCR26GTzp+X6lQXdNt
-         349hCwO70O1zAA3eiKNVHvCRIPl333ZbwPkff2azkl5MNg+67OI4YHn1zaWxHmp3Px7m
-         xK+Yhu9ObS4tZSSdLYA91T7kQH3Scze8JbKPCJfNkAZb5vx/ahDh4TWBPONpfVmFFHM7
-         R+dQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=WlT1BhZyqaweLaniykJLCE/gyLVmHhXr+aj2b3HP+1D+jwv8VPOFqX9V0ykAlmJb57
+         LPDEsWo3VdCRRJX7PtNaI0+hzKXhgFvgpEurwLnze4GDjlzzwomNniDFADYAs+Q+uK7X
+         FCOkmNPGlyd5sRP4ioT52qVbUqsgAlZt6EK6/IyqKc5Zabl8FSTmHIaq8lhmD58xycq0
+         MN157VbbGAcPQox4crGy5qKdfdKPMtNTg8SMyLo+Vo60suMiC2LyV/U59asDn4YzUeEI
+         UdnH2go6zs3ZzDwI0tDIQa6T3RQt4V1BhudEAc4fGAjDF9crQ7cCyEHxpexdYOL36lsd
+         EDuw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=y8fZ2oazQrEG5s1AS0nB/dvBEbv4XtnmcMMlYNe4V5k=;
-        fh=hfmjFFdRcnFKLJ2EKcv4i4Gy3gwoaULFwvUxvnL1qw0=;
-        b=bd/dINa+aDqSAIhIElQGRipmZDY6Vld9UfOqo38kWlzzWQT2c6W1tuBJw9eVHveCSJ
-         UGSkVNcWTsasY4nXHW+J9FLIL9IrAsBDkVzQ2Ad0JerJDUpj6KanBUMX2z0jq5j8CVjB
-         2BryuFl6R59Iity+48OU/Q92GB1KDNW5wsXJEvfLVtx2BFpWTYJxBqtPzFsyy+1ZON3Q
-         cokI0rNFfYDBhK3rmBfgAjY1WX4o2L/bNSwoWkQAwYMene77n+f1O0xdnImPiBCJ3Af9
-         8dv1gTUEqPgK4iZHEYsX5ZcB+6psA1dntFryypckWu+VmH0U09Ad+L7jEqK2Yq0/1aIS
-         yUuQ==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=wGNe1tOjU1MkpdrGEfM/CsPZU4C6RElvUMLww3wmWBk=;
+        fh=6ZW3Uif9oyR7ujkl1hv/pYU3YjW7yfqFAVeXFG4spIU=;
+        b=VGjy75fWFooonZt6dkjP9phPPlajEKMlKzlLfaHArqqNgCz1GX7m5Dzd0ZsW6c47+w
+         FlLreU+nWOGnbqgKlL3VpvYdvHwQhwtKgGLPg0PKFkEZEoInYPWUmdKSCm5zVAtXbWr+
+         f2mymYfZERX8SCPEh0KRJpFFpPX85KcvvGFIeELw3Q4XdZ36+ITjn3eX5SVP0vandJQ2
+         Hol2kSF7NDXOAXb2hNvk9//5yJmg5iZycQJAMrWuKcNpkZTWJtj05bTV8xPsxB2dBfjq
+         xrMWPZTkfxFYFxXKbigXi8nRxx6wpVo5gGr/RvlBnNoFvqyAVeTMdCN0J8J8insusY/j
+         /cyw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=eiy50BvV;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@nuvoton.com header.s=selector1 header.b=aUSHH9Yt;
+       arc=pass (i=1 spf=pass spfdomain=nuvoton.com dkim=pass dkdomain=nuvoton.com dmarc=pass fromdomain=nuvoton.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nuvoton.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-494524598fdsi6337641cf.72.2025.05.08.15.08.20
+        by mx.google.com with ESMTPS id d75a77b69052e-49452479ba3si9324061cf.176.2025.05.08.18.08.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 May 2025 15:08:20 -0700 (PDT)
+        Thu, 08 May 2025 18:08:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=eiy50BvV;
+       dkim=pass header.i=@nuvoton.com header.s=selector1 header.b=aUSHH9Yt;
+       arc=pass (i=1 spf=pass spfdomain=nuvoton.com dkim=pass dkdomain=nuvoton.com dmarc=pass fromdomain=nuvoton.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nuvoton.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uD9Ot-0007QR-1S; Thu, 08 May 2025 18:07:31 -0400
+	id 1uDCDR-0001rf-HV; Thu, 08 May 2025 21:07:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3HCsdaAwKCC8YLMTSPdePQLYRZZRWP.NZXbPXf-LcXYZYRYf.ZcR@flex--nabihestefan.bounces.google.com>)
- id 1uD9Or-0007Li-OZ
- for qemu-arm@nongnu.org; Thu, 08 May 2025 18:07:29 -0400
-Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3HCsdaAwKCC8YLMTSPdePQLYRZZRWP.NZXbPXf-LcXYZYRYf.ZcR@flex--nabihestefan.bounces.google.com>)
- id 1uD9Op-0001gp-Sk
- for qemu-arm@nongnu.org; Thu, 08 May 2025 18:07:29 -0400
-Received: by mail-pg1-x54a.google.com with SMTP id
- 41be03b00d2f7-6c8f99fef10so1390365a12.3
- for <qemu-arm@nongnu.org>; Thu, 08 May 2025 15:07:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1746742044; x=1747346844; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=y8fZ2oazQrEG5s1AS0nB/dvBEbv4XtnmcMMlYNe4V5k=;
- b=eiy50BvVW45y/oE5CNt2L3nlf0/qzCPIkyGidnIdk2dku1CI/uXnI39y1PDYYPewuX
- GsEqUCWdCKZrPW9d37jVFWPWSKRX4e04iikA4IuAiJNZYsMwOd5NmRnxrHTl6DpoHHKD
- eWe2ucHXpIh7yvBkyw0N/fzCwRSsprkrlO4bjno9xbhc3y3VHewq/C4mq6FWlmnlDd1m
- lyvJnTzWedn21CNsmKjITadFDd1WheFkr0mhfNAiUF2DZWBQcGnW6M0c9j/PrGa/BPwP
- bYucxevk5okdPCfXZNMGoGtLSHPir5afAvbGB5pqnC9VMm1dNzIDjOnYNdzCCw21zEhY
- oodQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746742044; x=1747346844;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=y8fZ2oazQrEG5s1AS0nB/dvBEbv4XtnmcMMlYNe4V5k=;
- b=dRRVHnWub+7vnwlCyWN516tbVQAyA0Q40Y/9wwywxN8rK45syrlIDp21T6krQ1agxZ
- QFFe34UHrR1BY/3oEvW58Uwhccs49CM2xE+8leNtpBxqawWOyiIPX2j0kMB3OYWMWkCf
- iVA0aSuHzkwR4YD2c/cxhTz52aPif0+rgWg0KQ/KfQMSY4HLFIUzZ/C3VgLRCIBKnsGw
- 3qgU/7qsirmnw8M2P4sWpFP5V1n+RVS2Xy3ntvHuUBtbiHnPbuv1f46FUSgX36ijXT5C
- 3Yb1g0/VLFYJwIQ8RVLe/N+6Zo6Oct7Na7bkypdb008MEz+f3265vMr2BGuTsZrvDAcX
- Q3xw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXYcmq15PLHlSjNnShqYx1Do7kFvvf6K26MTpSlvhAtURRLEa4AVxaYSQBwtbg3Zglx+NH05nHYoA==@nongnu.org
-X-Gm-Message-State: AOJu0YxtbtHYUtGWizsjHdnQM1NkZvUoEXj68A37bDLtZwAcFe1ULlZ9
- klj2iaa/6CFKpbQbOuEx9vu0sTjCEusdPkswwpnLqBdcSsrJp2J9u2UjQqHN51CKe4TAN9iiWGF
- IYH19YjgJ23zmAGp3TpjCdsVsuw==
-X-Received: from pgut4.prod.google.com ([2002:a65:6084:0:b0:b1f:f3f1:9e07])
- (user=nabihestefan job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:6a20:3d81:b0:1f5:7df9:f13c with SMTP id
- adf61e73a8af0-215abc734c6mr1249250637.41.1746742044337; 
- Thu, 08 May 2025 15:07:24 -0700 (PDT)
-Date: Thu,  8 May 2025 22:07:17 +0000
-In-Reply-To: <20250508220718.735415-1-nabihestefan@google.com>
-Mime-Version: 1.0
-References: <20250508220718.735415-1-nabihestefan@google.com>
-X-Mailer: git-send-email 2.49.0.1015.ga840276032-goog
-Message-ID: <20250508220718.735415-2-nabihestefan@google.com>
-Subject: [PATCH 1/2] hw/arm: Add GMAC devices to NPCM8XX SoC
-From: Nabih Estefan <nabihestefan@google.com>
-To: qemu-devel@nongnu.org
-Cc: kfting@nuvoton.com, wuhaotsh@google.com, peter.maydell@linaro.org, 
- farosas@suse.de, lvivier@redhat.com, pbonzini@redhat.com, qemu-arm@nongnu.org, 
- Nabih Estefan <nabihestefan@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::54a;
- envelope-from=3HCsdaAwKCC8YLMTSPdePQLYRZZRWP.NZXbPXf-LcXYZYRYf.ZcR@flex--nabihestefan.bounces.google.com;
- helo=mail-pg1-x54a.google.com
-X-Spam_score_int: -100
-X-Spam_score: -10.1
-X-Spam_bar: ----------
-X-Spam_report: (-10.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.499,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ (Exim 4.90_1) (envelope-from <KFTING@nuvoton.com>)
+ id 1uDCDO-0001rL-KE; Thu, 08 May 2025 21:07:50 -0400
+Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <KFTING@nuvoton.com>)
+ id 1uDCDM-0003Fh-A1; Thu, 08 May 2025 21:07:50 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=PNK6zVRqk44905ae33u/M8PWQna4hQwOlwUArEauxuG44ujmyB5Bu34FDF+x1L4jfynD7G+Aj6s+MbUuV0MXRf3cvNJL8eBPQbKP4mw4IJCM40YNCwal42IWRe/PLDTnvZ2/hCTzuIj/hL+S0sxf0WfQ+RdpT/+cYYdX3jriDB8K1oQoaT2/5oD64Sccr9yL1/2gTVX4NjHg1/8TrmYM+VKEhULJFt3QA3hfXEyeEnSbkItj0uJyOBbdoaW0JGRDTs8GDBXdfWk8G+mQDGjssVWCSQg0unRivb6uaCfavXkqakVmO+Fpu0IPWVNYuWuHkIhONRfs0yx5ya2/DjICwg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=wGNe1tOjU1MkpdrGEfM/CsPZU4C6RElvUMLww3wmWBk=;
+ b=chpmfGBTrGRQeO3lQLPnrsG3oya7qfKDmFKmAHN/katITDj9iCwQ+Hiayz4BPG7A5WhpGnSZWRYrePu7cZWdP7PSVNxDmGP/eSI/OFRz2bVb9tC0dnfgX5lmhfF0JsMkZmoFSZ5bCqUvxY2wpqPd73ja9kNuriJSHkFlODupyiZNNgMpqYn2yqKfNjMe/uZqkqhh2GISLRlW7H34358cGD4iqKPAotWoI5G1Eht13U6p2sOvEVpoqnUfcqbQpEuJeD6yKUJfeIcwyz9g9+75C2e61bI+9jzxdocJCBozGBCb5feeBwBXgdxO1rbHqbFqDdykDr9PQDawhiGlS1+uJw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nuvoton.com; dmarc=pass action=none header.from=nuvoton.com;
+ dkim=pass header.d=nuvoton.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nuvoton.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=wGNe1tOjU1MkpdrGEfM/CsPZU4C6RElvUMLww3wmWBk=;
+ b=aUSHH9YtxACf8MxDSTl8VX46hfYbR4t4ygeI2EjmuUrzvhfAv3TRAOjggwZOF6CM11BxYjFbVn4IjnYXMga6k0DzYQ6DKJd29SNNcli/QIDzAplwp4T80Bp/UFrE4SFHlG9GG4iS3BT7PspTJFCwvwDBj3X1/N6j9TO6LlZUPzo=
+Received: from TYZPR03MB6896.apcprd03.prod.outlook.com (2603:1096:400:289::14)
+ by TYZPR03MB8190.apcprd03.prod.outlook.com (2603:1096:405:25::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8678.31; Fri, 9 May
+ 2025 01:07:40 +0000
+Received: from TYZPR03MB6896.apcprd03.prod.outlook.com
+ ([fe80::ac4e:718:3b03:3123]) by TYZPR03MB6896.apcprd03.prod.outlook.com
+ ([fe80::ac4e:718:3b03:3123%6]) with mapi id 15.20.8699.026; Fri, 9 May 2025
+ 01:07:39 +0000
+From: "KFTING@nuvoton.com" <KFTING@nuvoton.com>
+To: Tim Lee <timlee660101@gmail.com>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "wuhaotsh@google.com" <wuhaotsh@google.com>,
+ "CHLI30@nuvoton.com" <CHLI30@nuvoton.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+Subject: RE: [v2] hw/arm/npcm8xx_boards: Add auto zero flash image and device
+ part number
+Thread-Topic: [v2] hw/arm/npcm8xx_boards: Add auto zero flash image and device
+ part number
+Thread-Index: AQHbv78SS00M65miW0SL9hgmvHv+lrPJfcbQ
+Date: Fri, 9 May 2025 01:07:39 +0000
+Message-ID: <TYZPR03MB6896AFFE1901AC461C4939AFDB8AA@TYZPR03MB6896.apcprd03.prod.outlook.com>
+References: <20250508021510.2959328-1-timlee660101@gmail.com>
+In-Reply-To: <20250508021510.2959328-1-timlee660101@gmail.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nuvoton.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB6896:EE_|TYZPR03MB8190:EE_
+x-ms-office365-filtering-correlation-id: a2e4d568-40f6-486d-95f4-08dd8e95e4c6
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|1800799024|366016|376014|38070700018;
+x-microsoft-antispam-message-info: =?us-ascii?Q?WQQHeH1ExcbNqC9VHlYOQ9P2RBag9hQCp15f5eH++LsfL+q3rr6KENIqmZXT?=
+ =?us-ascii?Q?Cn6J+oOtW2RhjwlgWl2zOvAW3AkAXXcrzD7K1dtXPA1CuOKXcsP69YVYgGnf?=
+ =?us-ascii?Q?KAYUsAdhgkDOxEnvPx/jF3IoAadJG6ywDBVHR9VMPB+QwYDl3ycEjTi5nhQh?=
+ =?us-ascii?Q?2w87qGhh8xPfZiYcrTTuW9Wv2MOOYe0r60DTwSdFrYPZpBA4VRmB1ThQhCPe?=
+ =?us-ascii?Q?2hSW7WaTIuHs/U+Ba3LuZxGyIfn0xuh7robmZeichjYEfTBzQxV4o2BTK3eC?=
+ =?us-ascii?Q?Htcg/aaYC8FdsuZcn+XcHLf/oxbhkoW7hVT1UrJ3dQBQriyEcgAeRUjVNrwG?=
+ =?us-ascii?Q?kyR/5VHUpQ4+uE+zwtXvdtGE1wg1CThYbXM3BoJqeQvngqIG0Svw3Aeq+RUt?=
+ =?us-ascii?Q?uDaKHH8k3ijvIQnkIzvrrxVhdNKQh/cOqsWOOA+7D4M+NAbWuP+AjVNGSrWL?=
+ =?us-ascii?Q?wdjMVC/pjwuqVSg3ZOk0e75hdiSONlymH8HE9yL5cOUU+HmbhTEf0aCVivJZ?=
+ =?us-ascii?Q?iBIDbVmjf5iWCoqm8bz7Jjs+Cpot0S0ObuHYs6qPugLOcVDNC0Zqz4icuNCG?=
+ =?us-ascii?Q?xTQRkGZGbbI1eZOENMPlA8JGKQcU/MtS+KHLomgUVWzWXsAmpC2NhN4x+Jf6?=
+ =?us-ascii?Q?XiFjmCEZ5rK3+ugFmqXDlSDRgZJgRUzALdsJkQ6cAlsWkpFI6QU3DCUbAY6Z?=
+ =?us-ascii?Q?j1Vps8uhWufkZpzm29h1yRwwsilMLflWFva7iFklUbizQz0jRKrFnPofTbbs?=
+ =?us-ascii?Q?HL8o971lrW6hGFkbFy/u+gJMNichQCh0Q0lBGOKMORa0skIX6mOJMr/fIAKe?=
+ =?us-ascii?Q?yATtQeLt8EnkuHwkb0fzZ2I73OEq0ZVkRpVnQ+5WMw6KNj83H9po4aaJAtwH?=
+ =?us-ascii?Q?mbKybvYrMfzlt5qEGIfboe1Z6efEbqcmEswS3+LHl5GmAhaQ5bXTGymobggt?=
+ =?us-ascii?Q?2JluUJCD4D++ESuXg5xW2126BzSJ78qsAu4VbfvfVoRUkG0wSePmP+3dA4GD?=
+ =?us-ascii?Q?kC2fHwUxYYnvkbZLxLIPJsYbvcSE63t3dAReHLezlBUgrbLzSoV1eoRwLZVw?=
+ =?us-ascii?Q?+LkZrzt6jyTZngVs8+KHWcqGKAtps84YnZ4/vkYbE2JaMDh4kj2kd5UxrrC9?=
+ =?us-ascii?Q?plYCqap+Qz+k20cdtregtp2iHTLWAYE8iTEcfuAqoCDCTV7fXMB1kUmaRBck?=
+ =?us-ascii?Q?kk3FnPo57XydkCYef4rVaqGlJeWd1lvaXSzZCS9bGK2iTpuBwzDzJo87C3rM?=
+ =?us-ascii?Q?qqKgxoy2jLT8XgtBXwHhjYjneRrOuutt7tOL/ZYjn2B1YZgLyVvdoKFr0jlg?=
+ =?us-ascii?Q?i/7M6WlPawIpUIUyzosZvdMZIAfIPDZN+Z8ZDDXk8nosGNptQVDithB7iy5X?=
+ =?us-ascii?Q?MZYSvTowr18aQVNOLRMYnx9tkxMBkLpEN+aM87CcAP2WjUC08HMpnKeMoau0?=
+ =?us-ascii?Q?sqams5RwI1Vgs8zd+Zqcc/loDqCWmb03SRCQIUF16hhVQ3uzTXRlhw=3D=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:TYZPR03MB6896.apcprd03.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(376014)(38070700018); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?XAV2R1PsbLJ/EVxSD7mGf5QeDRphsDnMu3Raj4eFStNkwihju3jQkKuqIhpU?=
+ =?us-ascii?Q?afMPSpaJmSLfWkNyTHn8WJkAIPQNCahUvJwOYivWF/53jtXJFV2WEJtrzE8g?=
+ =?us-ascii?Q?XNuWTK8nTvCuXHz+Wox3t70mVM8wX9PLPkN9YMEx8HwXSx4ospedG0p/1GYU?=
+ =?us-ascii?Q?cCM99rRNII/c+3DRTYUB4L69CouUbRxussqMOvgNw49glsAdRbgTU6eAqovi?=
+ =?us-ascii?Q?KccmO3T2AawHzF/KqDY5W6/y+waFPvtYAetOQmBZcVzqJHPdo8XyeE0wzpqC?=
+ =?us-ascii?Q?Qes2JtRQudSSR2pdrlR6Q6Ip7XVe9odvsF3pzzmdMndZgPLoHgdXN/otZ05N?=
+ =?us-ascii?Q?rozyFQSMtlzcOGIpbo+dfpxsRWqRKXGwVCVaBiLKS1XwgRE3zMG+oZhbEyVN?=
+ =?us-ascii?Q?0aiXvoTcvmC69bgZuukUCaejSRvVRNlhB+a4UFZ7xx186Z8n4ssvjVGM101p?=
+ =?us-ascii?Q?OXaga+3u/iuV2yOkh0wzUbe6gf8BxFl2VOB8pQHiNC7BwSbb4hQoVaw57fVz?=
+ =?us-ascii?Q?5jMfNtxV85W4/59ya6J1YY6zI0cUD3UxSPIupXk2vDvf9ENiPdjVIGI4x/A7?=
+ =?us-ascii?Q?m7YIoRSNMhrtQM0t28Asr+wVwmN6nvMqmUs1NxARJanQjfXGa3yITyyBIz0J?=
+ =?us-ascii?Q?oJYzQsMcL71j5Af7SStLkgTeybBgtgGH2cdzOjgXwi4WoNXCz0QzIQRPRBfN?=
+ =?us-ascii?Q?oTR4Wg86ehs8YM5+wuKgys+3B268iMqpGi9ySPaV8HaDR9/hBcqEEkWlluDt?=
+ =?us-ascii?Q?WmeEBET6TTPYN6YwMxQcefpc5JC+gEK/vI3D8peU2jAt1FFNmfwgaEUzKMaq?=
+ =?us-ascii?Q?DYi22Ev2bZFyYSXdZG9wCkRa+X8syXBsArk5W2L6NsZcKDas2PD+JgnRa/0y?=
+ =?us-ascii?Q?TdS/mXERXF+5/oxGKTObLu0Zqlse5mlggd0s/PJTliI2iyqbGb4cDKtNzJbJ?=
+ =?us-ascii?Q?bEefq/SkbQKOPqyIF8bX9Iq9eDDq9aNNDsq/TwBsDEAxBSxFLPr6GYyj9Ctx?=
+ =?us-ascii?Q?c63pI6SOQmNRnqNx6uw3Y8hE+1zluQFJOAnUDyulYsMsP23ZuKIMYtBUFIkl?=
+ =?us-ascii?Q?OQVuanZ2tWdAx+o7Vmv6gspJ8E0vN4LNtZzAVmgBA8hpEtkmo9HPkiFjLNv9?=
+ =?us-ascii?Q?9q1eb4WC0LyG4ng/hwKowMBWhxmxsieg347czbJWT5aAObp8x6t/x0CfoQwy?=
+ =?us-ascii?Q?EKgSEpsmPULoI09XWWKJZ4NQ5OJXV9lJuL7iNBl7zOFkIRMHBeG6TCZ68mhk?=
+ =?us-ascii?Q?J0TqQtIvb2R0FRnFIygiJUZ/W0g2C5v7KcYwqYjZh/vh5yhM2DEnSF9NjXwd?=
+ =?us-ascii?Q?ZkJ259pO/hjOAVqceWQep/uCbj5mdzzlh6p4LsxP15dE2mI0n0ee6Ve1JRMq?=
+ =?us-ascii?Q?eigMAdy/rKPLbv1fn9UxzR2wpmX2qYZg7ddjdcOTyXC3QH+UlQyGa24dBW7Y?=
+ =?us-ascii?Q?J6Bm45zjMkf2lycPCjR+2hYnkFEKFkzcsfL6ksE+B00GhPY3lVpH6XrRLs7S?=
+ =?us-ascii?Q?1BdN9a2nnZT5dyVcrNDmBU03fIUZKYktxXMQIN0WzO5X5ANak8+HghfduP2r?=
+ =?us-ascii?Q?enQeLKNqQ0dt5v86pX5YATaMqi7sr2eHc0uAXASc?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: nuvoton.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6896.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a2e4d568-40f6-486d-95f4-08dd8e95e4c6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 May 2025 01:07:39.5343 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a3f24931-d403-4b4a-94f1-7d83ac638e07
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: yuzsaxoEOU8qg5yAsmI3oxZs1ZUk0LqV6Sa33MhfYA243/tP9ELYKtnw/g4omJt4GuvaL0GgfJcsYQ+GXlAgMA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB8190
+Received-SPF: pass client-ip=2a01:111:f403:c405::7;
+ envelope-from=KFTING@nuvoton.com;
+ helo=TYDPR03CU002.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,145 +200,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ce+s+YWGm5h5
+X-TUID: kmAw5l+mMGOM
 
-From: Hao Wu <wuhaotsh@google.com>
+From: Tim Lee <timlee660101@gmail.com>
+Sent: Thursday, May 8, 2025 10:15 AM
+To: peter.maydell@linaro.org; wuhaotsh@google.com; CS20 KFTing <KFTING@nuvo=
+ton.com>; CS20 CHLi30 <CHLI30@nuvoton.com>
+Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org; Tim Lee <timlee660101@gmail=
+.com>
+Subject: [v2] hw/arm/npcm8xx_boards: Add auto zero flash image and device p=
+art number
 
-The GMAC was originally created for the 8xx machine. During upstreaming
-both the GMAC and the 8XX we removed it so they would not depend on each
-other for the process, that connection should be added back in.
 
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
-Signed-off-by: Nabih Estefan <nabihestefan@google.com>
+Fix flash device part number to `mx66l1g45g` according image-bmc run on npc=
+m8xx evb board (SPIFlash...SF: Detected mx66l1g45g, total 128 MiB)
+
+And add auto zero flash image size to resolve error below after executing
+`./qemu-system-aarch64 -machine npcm845-evb -drive file=3Dimage-bmc`
+
+Error message:
+qemu-system-aarch64: mx66l1g45g device '/machine/unattached/device[73]'
+requires 134217728 bytes, mtd0 block backend provides 67108864 bytes
+
+Tested:
+Build passes and runs ./qemu-system-aarch64 -machine npcm845-evb normally
+
+Signed-off-by: Tim Lee <timlee660101@gmail.com>
 ---
- hw/arm/npcm8xx.c         | 54 ++++++++++++++++++++++++++++++++++++----
- include/hw/arm/npcm8xx.h |  5 +++-
- 2 files changed, 53 insertions(+), 6 deletions(-)
+Changes since v1:
+- Add a statement that checks whether the storage is writable
 
-diff --git a/hw/arm/npcm8xx.c b/hw/arm/npcm8xx.c
-index d7ee306de7..d14bf55cd7 100644
---- a/hw/arm/npcm8xx.c
-+++ b/hw/arm/npcm8xx.c
-@@ -67,6 +67,9 @@
- /* SDHCI Modules */
- #define NPCM8XX_MMC_BA          0xf0842000
- 
-+/* PCS Module */
-+#define NPCM8XX_PCS_BA          0xf0780000
-+
- /* PSPI Modules */
- #define NPCM8XX_PSPI_BA         0xf0201000
- 
-@@ -85,6 +88,10 @@ enum NPCM8xxInterrupt {
-     NPCM8XX_ADC_IRQ             = 0,
-     NPCM8XX_PECI_IRQ            = 6,
-     NPCM8XX_KCS_HIB_IRQ         = 9,
-+    NPCM8XX_GMAC1_IRQ           = 14,
-+    NPCM8XX_GMAC2_IRQ,
-+    NPCM8XX_GMAC3_IRQ,
-+    NPCM8XX_GMAC4_IRQ,
-     NPCM8XX_MMC_IRQ             = 26,
-     NPCM8XX_PSPI_IRQ            = 28,
-     NPCM8XX_TIMER0_IRQ          = 32,   /* Timer Module 0 */
-@@ -260,6 +267,14 @@ static const hwaddr npcm8xx_smbus_addr[] = {
-     0xfff0a000,
- };
- 
-+/* Register base address for each GMAC Module */
-+static const hwaddr npcm8xx_gmac_addr[] = {
-+    0xf0802000,
-+    0xf0804000,
-+    0xf0806000,
-+    0xf0808000,
-+};
-+
- /* Register base address for each USB host EHCI registers */
- static const hwaddr npcm8xx_ehci_addr[] = {
-     0xf0828100,
-@@ -444,6 +459,11 @@ static void npcm8xx_init(Object *obj)
-         object_initialize_child(obj, "mft[*]", &s->mft[i], TYPE_NPCM7XX_MFT);
-     }
- 
-+    for (i = 0; i < ARRAY_SIZE(s->gmac); i++) {
-+        object_initialize_child(obj, "gmac[*]", &s->gmac[i], TYPE_NPCM_GMAC);
-+    }
-+    object_initialize_child(obj, "pcs", &s->pcs, TYPE_NPCM_PCS);
-+
-     object_initialize_child(obj, "mmc", &s->mmc, TYPE_NPCM7XX_SDHCI);
-     object_initialize_child(obj, "pspi", &s->pspi, TYPE_NPCM_PSPI);
- }
-@@ -668,6 +688,35 @@ static void npcm8xx_realize(DeviceState *dev, Error **errp)
-         sysbus_connect_irq(sbd, 0, npcm8xx_irq(s, NPCM8XX_MFT0_IRQ + i));
-     }
- 
-+    /*
-+     * GMAC Modules. Cannot fail.
-+     */
-+    QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm8xx_gmac_addr) != ARRAY_SIZE(s->gmac));
-+    for (i = 0; i < ARRAY_SIZE(s->gmac); i++) {
-+        SysBusDevice *sbd = SYS_BUS_DEVICE(&s->gmac[i]);
-+
-+        /* This is used to make sure that the NIC can create the device */
-+        qemu_configure_nic_device(DEVICE(sbd), false, NULL);
-+
-+        /*
-+         * The device exists regardless of whether it's connected to a QEMU
-+         * netdev backend. So always instantiate it even if there is no
-+         * backend.
-+         */
-+        sysbus_realize(sbd, &error_abort);
-+        sysbus_mmio_map(sbd, 0, npcm8xx_gmac_addr[i]);
-+        /*
-+         * N.B. The values for the second argument sysbus_connect_irq are
-+         * chosen to match the registration order in npcm7xx_emc_realize.
-+         */
-+        sysbus_connect_irq(sbd, 0, npcm8xx_irq(s, NPCM8XX_GMAC1_IRQ + i));
-+    }
-+    /*
-+     * GMAC Physical Coding Sublayer(PCS) Module. Cannot fail.
-+     */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->pcs), &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->pcs), 0, NPCM8XX_PCS_BA);
-+
-     /*
-      * Flash Interface Unit (FIU). Can fail if incorrect number of chip selects
-      * specified, but this is a programming error.
-@@ -741,12 +790,7 @@ static void npcm8xx_realize(DeviceState *dev, Error **errp)
-     create_unimplemented_device("npcm8xx.ahbpci",       0xf0400000,   1 * MiB);
-     create_unimplemented_device("npcm8xx.dap",          0xf0500000, 960 * KiB);
-     create_unimplemented_device("npcm8xx.mcphy",        0xf05f0000,  64 * KiB);
--    create_unimplemented_device("npcm8xx.pcs",          0xf0780000, 256 * KiB);
-     create_unimplemented_device("npcm8xx.tsgen",        0xf07fc000,   8 * KiB);
--    create_unimplemented_device("npcm8xx.gmac1",        0xf0802000,   8 * KiB);
--    create_unimplemented_device("npcm8xx.gmac2",        0xf0804000,   8 * KiB);
--    create_unimplemented_device("npcm8xx.gmac3",        0xf0806000,   8 * KiB);
--    create_unimplemented_device("npcm8xx.gmac4",        0xf0808000,   8 * KiB);
-     create_unimplemented_device("npcm8xx.copctl",       0xf080c000,   4 * KiB);
-     create_unimplemented_device("npcm8xx.tipctl",       0xf080d000,   4 * KiB);
-     create_unimplemented_device("npcm8xx.rst",          0xf080e000,   4 * KiB);
-diff --git a/include/hw/arm/npcm8xx.h b/include/hw/arm/npcm8xx.h
-index 3436abff99..a8377db490 100644
---- a/include/hw/arm/npcm8xx.h
-+++ b/include/hw/arm/npcm8xx.h
-@@ -28,7 +28,8 @@
- #include "hw/misc/npcm7xx_mft.h"
- #include "hw/misc/npcm7xx_pwm.h"
- #include "hw/misc/npcm7xx_rng.h"
--#include "hw/net/npcm7xx_emc.h"
-+#include "hw/net/npcm_gmac.h"
-+#include "hw/net/npcm_pcs.h"
- #include "hw/nvram/npcm7xx_otp.h"
- #include "hw/sd/npcm7xx_sdhci.h"
- #include "hw/timer/npcm7xx_timer.h"
-@@ -99,6 +100,8 @@ struct NPCM8xxState {
-     EHCISysBusState     ehci[2];
-     OHCISysBusState     ohci[2];
-     NPCM7xxFIUState     fiu[3];
-+    NPCMGMACState       gmac[4];
-+    NPCMPCSState        pcs;
-     NPCM7xxSDHCIState   mmc;
-     NPCMPSPIState       pspi;
- };
--- 
-2.49.0.1015.ga840276032-goog
+ hw/arm/npcm8xx_boards.c | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
 
+diff --git a/hw/arm/npcm8xx_boards.c b/hw/arm/npcm8xx_boards.c index 3fb847=
+8e72..79295a586c 100644
+--- a/hw/arm/npcm8xx_boards.c
++++ b/hw/arm/npcm8xx_boards.c
+@@ -27,6 +27,7 @@
+ #include "qemu/error-report.h"
+ #include "qemu/datadir.h"
+ #include "qemu/units.h"
++#include "system/block-backend.h"
+
+ #define NPCM845_EVB_POWER_ON_STRAPS 0x000017ff
+
+@@ -59,10 +60,26 @@ static void npcm8xx_connect_flash(NPCM7xxFIUState *fiu,=
+ int cs_no,  {
+     DeviceState *flash;
+     qemu_irq flash_cs;
++    BlockBackend *blk;
++    BlockDriverState *bs;
++    uint64_t blk_size, perm, shared_perm;
+
+     flash =3D qdev_new(flash_type);
+     if (dinfo) {
+         qdev_prop_set_drive(flash, "drive", blk_by_legacy_dinfo(dinfo));
++        blk =3D blk_by_legacy_dinfo(dinfo);
++        bs =3D blk_bs(blk);
++        blk_size =3D blk_getlength(blk);
++
++        if (!bdrv_is_read_only(bs)) {
++            if (blk_size < fiu->flash_size) {
++                blk_get_perm(blk, &perm, &shared_perm);
++                blk_set_perm(blk, BLK_PERM_ALL, BLK_PERM_ALL, &error_abort=
+);
++                blk_truncate(blk, fiu->flash_size, true, PREALLOC_MODE_OFF=
+,
++                             BDRV_REQ_ZERO_WRITE, &error_abort);
++                blk_set_perm(blk, perm, shared_perm, &error_abort);
++            }
++        }
+     }
+     qdev_realize_and_unref(flash, BUS(fiu->spi), &error_fatal);
+
+@@ -194,7 +211,8 @@ static void npcm845_evb_init(MachineState *machine)
+     qdev_realize(DEVICE(soc), NULL, &error_fatal);
+
+     npcm8xx_load_bootrom(machine, soc);
+-    npcm8xx_connect_flash(&soc->fiu[0], 0, "w25q256", drive_get(IF_MTD, 0,=
+ 0));
++    npcm8xx_connect_flash(&soc->fiu[0], 0, "mx66l1g45g",
++                          drive_get(IF_MTD, 0, 0));
+     npcm845_evb_i2c_init(soc);
+     npcm845_evb_fan_init(NPCM8XX_MACHINE(machine), soc);
+     npcm8xx_load_kernel(machine, soc);
+--
+2.34.1
+
+Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+________________________________
+________________________________
+ The privileged confidential information contained in this email is intende=
+d for use only by the addressees as indicated by the original sender of thi=
+s email. If you are not the addressee indicated in this email or are not re=
+sponsible for delivery of the email to such a person, please kindly reply t=
+o the sender indicating this fact and delete all copies of it from your com=
+puter and network server immediately. Your cooperation is highly appreciate=
+d. It is advised that any unauthorized use of confidential information of N=
+uvoton is strictly prohibited; and any information in this email irrelevant=
+ to the official business of Nuvoton shall be deemed as neither given nor e=
+ndorsed by Nuvoton.

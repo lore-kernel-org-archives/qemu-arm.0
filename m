@@ -1,195 +1,166 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp905735njb;
-        Thu, 8 May 2025 23:49:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVYzj5DhVTzEd2b2twQg4cLy4LhsYyxvPJCqJDed7fmJVGxGNx4DcJxbovODbBAgHhS83w3O7gBnSBPnA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEIBCiY1tFbTOl0JztDkDoDpl/K2woW0tw1aW3BPg+NfzMSI8X+Hji7Jkp9m9hzcdQNUgdq
-X-Received: by 2002:a05:6402:5114:b0:5f8:504a:88d5 with SMTP id 4fb4d7f45d1cf-5fca0731b67mr1650310a12.7.1746773387803;
-        Thu, 08 May 2025 23:49:47 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1746773387; cv=pass;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp941498njb;
+        Fri, 9 May 2025 01:19:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWfgRthpwkCoz1bSTs6C+EP3uwE5UojB+emJGMaZXoZah6QruE84W0OB2wN2h/69jC5sBj6QLRjz6wkbQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEcEjishXatFoiI2Dr/Ea35r9iarP6lWPFkZwopDTm0N4TrtB3tsvbsm0DQGEPi4JD7rsdj
+X-Received: by 2002:a05:620a:4403:b0:7c7:70dc:e921 with SMTP id af79cd13be357-7cd01157dbdmr438135185a.36.1746778743029;
+        Fri, 09 May 2025 01:19:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746778743; cv=none;
         d=google.com; s=arc-20240605;
-        b=Con5bR6VcZSfpB1gpcFdumRRbzi/4s5EaXdY6Zznqw0S01LoTOZO3bCGg+vpYYrPit
-         dsUUg0tgOHfm0+dn2M36NSU785B2kajbxTSgA+CByP8vUxgvARJfUWpOsP4ujpZJ2+Bs
-         ZpUKCH17ribpTWhXP4FgTQfG9RmDmLSUXE/d61bcOBp2fClYUrC7xeS/WIy+dYvAeS6/
-         ikhibVP7OJN/ORShjZwVNY4fd0d8snY3OHNvTTsPQwAjwx/eXWgaryn2UjEQuaAEGfpS
-         W116d9R2ohFMFfmGMBhrAkHjUhBUrFz9H0SEbYwW+sgaPoW7o+lAWDT35H2aFqd0iGxr
-         LiMQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=59cdBi6kRt8fTdNcXgmxlheeMaGHMLWplc56/ilHrwg=;
-        fh=Q8omI+ATFA/q+WOClFqBZjMkLCUnNMldHOUWFyGFFAk=;
-        b=jo46CBtj1jLrP+O57nocHnsAdjXvYRbnkkBk+3ZkAnvPjUOAkGIUV453EHusUITzvL
-         pcGrJWmH2555rhow4OA1oh3OFS9LE6dEc9YQVL/4Mns1YVXLvEZx8P7NwtN7u5RcIfhW
-         guDVedPlgzttzpWYfIqSCEsIIhkLFOLfFd2FTGjY3wQ4WXF2qfK1mTjLRnB1bUGNV/M6
-         sgWR7qj1ltGZBr5MneCEHgWb83z0CWHd/la3vvsYZaZfwsWYtjBOaWnYM1wv9TmGHKoS
-         AogCExfdOYSpjFSqTI38kxv+HY9UaG4VG/8Qv4wouBiImcOjeMnq7VZk2vboVsCHTmLG
-         Xp+Q==;
+        b=fk8lTD4SDRlOrAkXkexr41Ig9zr+jj3JvA8QxLdPJKFodOImP3bQc+uW2kFGEgOaAN
+         F2KMC+GU3+KR140ar6b5+u7r3VVeyPm66SqitoItkGIHQfv7mIayO4CRbDSK3aJai2nV
+         iqk8Aah+Jjitlmxw+RKVwRk2Tny3RKBM/XkxMc4Uj1P/d3jEd1de4R81VmE60B0nCly+
+         PS/+kHStKIbB/kt17tPi5RILKOOfk9efpcx0JgNkmFW7ZaQwC2Jsad9lFrUU7BC9r2Sf
+         NUGqogpTJaXRmEAfFOM7IkDA18qKAA+dUDMRLchsjy9muscGPjicnaQ9hJADr8xf8I2I
+         jC5Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to;
+        bh=iiZ7PjO68CzOjLPxBFPkMJIKf/2rSmhMmYxRbH2XX7A=;
+        fh=XpA3y4NDnw9nJ5k9+OOPg+ex+gFhcwdkMX0pyIVkAq8=;
+        b=eWTSYgfeSlYSLeqeRXM+6IBLotkFa5JT6y/MfNMh1ABKlE75SU4oo6BqX6fuMXeYKE
+         T/mg1P/YvpumONqtv/mr3g16ykPdrZPKxj+UQTPyd9kpnpUSHpLuIEQhB1+KxCCbU3kN
+         VuAZh3OTaIRI2gQHTa4zrYwCrNUhmxkJCIw9Rl8cOXEjaywtgzdMLhFEdKn4tZGR87EO
+         aLTdTtwgCs72xOjBDdmGJakaeKY5laY18C7BvtTvi2ydiEUKoKdSmuLA4ogIR2cGTXtH
+         A2oLJ8AAdkira07XXXxQt5DUCBE2Yjc6LVZW/aRGU/vwgHNZRwJOh7er1YWaOriafW0z
+         1VxA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=hlVBONVe;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-46019-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-46019-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-46019-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5fc9c9e72b7si1072524a12.111.2025.05.08.23.49.47
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7cd00fe2595si171943685a.345.2025.05.09.01.19.02
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 May 2025 23:49:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-46019-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 09 May 2025 01:19:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=hlVBONVe;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-46019-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-46019-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 167DF1C04033
-	for <alex.bennee@linaro.org>; Fri,  9 May 2025 06:50:00 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 3038126D4F9;
-	Fri,  9 May 2025 06:49:43 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="hlVBONVe"
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B6B8B238C39
-	for <kvm@vger.kernel.org>; Fri,  9 May 2025 06:49:40 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.16
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1746773383; cv=none; b=FYF/B/UtSfmN/DahCMruNatBUJIpirpvcIV1TQ0cG03dCqk8wluuvm50FGGuP6q8Lzf4Q93L0lmoIVqRRzJ9ReFOHsaR8MXDw8T2lUjas5yPGl//ZntozxW2HSvvdW2iETQ2pR7VnZUYXNDH1ij+nkSOuJ6d8cGTwtNjEOpVbEw=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1746773383; c=relaxed/simple;
-	bh=Avp9ih7O0rS3iqGb/YM02n6x4BTddKP/bzEfaLI3gZg=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=SpEERfd52A+weuVgAOXWDVRrXkYHh+qocY+rGHWBFvbEtdibkrl/IKZTtkqf2c2YATPBrqEfeCu7HnECZFSDFXZRIhlA9MlOx+HTUQeMDS3dN7sb1D+AV8biwc+ad5LaAAsJg0UYWr6N4YW0Ev02oZccTlLhCOZzTbjLxH0pdnw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=hlVBONVe; arc=none smtp.client-ip=192.198.163.16
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1746773381; x=1778309381;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=Avp9ih7O0rS3iqGb/YM02n6x4BTddKP/bzEfaLI3gZg=;
-  b=hlVBONVeAKrcd9etaXuNTWOLLw+opfwasWwIUpTJHiqoWMv+IgDb603S
-   UDk6s0OBZnF6fTialQYxeXgKkZty7PQRhdVhEloTF63M+ujN/FqcZoTss
-   6jDf1fj794FliNzrBLRYGu34KGyaGvlKcmEfjpRI/lHLNrzVAtdntqUn7
-   GbXzHJcGIhf7/65evYCwy6fBRWjJiRKUpEThnnd5+MdkFXmelBpC4jg/I
-   1ejcHz/CcXipqijb/waK90my+1cO2ZXrYY+btbRoKQHCb+yHfiEe6rHzl
-   ZqDw2EOJVw85EDQ/s2mzMZblWUJwikXc11iAMBKhgPzg8I1D+590+eewP
-   w==;
-X-CSE-ConnectionGUID: +sHkugZ/RjiKCaA+PjJ2+w==
-X-CSE-MsgGUID: 3ljZ47xsTICB0GN1Dbr8pA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11427"; a="36216115"
-X-IronPort-AV: E=Sophos;i="6.15,274,1739865600"; 
-   d="scan'208";a="36216115"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 May 2025 23:49:40 -0700
-X-CSE-ConnectionGUID: 7Pzedr8eSwG9Ykn8VQdFWQ==
-X-CSE-MsgGUID: +phI7N1YS5m7iubQu1JxEw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,274,1739865600"; 
-   d="scan'208";a="136419659"
-Received: from xiaoyaol-hp-g830.ccr.corp.intel.com (HELO [10.124.247.1]) ([10.124.247.1])
-  by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 May 2025 23:49:31 -0700
-Message-ID: <23260c74-01ba-45bc-bf2f-b3e19c28ec8a@intel.com>
-Date: Fri, 9 May 2025 14:49:27 +0800
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 12/27] target/i386/cpu: Remove
- CPUX86State::enable_cpuid_0xb field
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>, kvm@vger.kernel.org,
- Sergio Lopez <slp@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Laurent Vivier
- <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Yi Liu <yi.l.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org,
- Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
- Zhao Liu <zhao1.liu@intel.com>, Yanan Wang <wangyanan55@huawei.com>,
- Helge Deller <deller@gmx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
- Ani Sinha <anisinha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- =?UTF-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
- qemu-arm@nongnu.org, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
- <marcandre.lureau@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
- Jason Wang <jasowang@redhat.com>
-References: <20250508133550.81391-1-philmd@linaro.org>
- <20250508133550.81391-13-philmd@linaro.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uDIwJ-0005ev-33; Fri, 09 May 2025 04:18:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uDIwG-0005ec-1A; Fri, 09 May 2025 04:18:36 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uDIwD-0002da-A8; Fri, 09 May 2025 04:18:35 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Zv1wt4Ytfz6M4l0;
+ Fri,  9 May 2025 16:13:50 +0800 (CST)
+Received: from frapeml500005.china.huawei.com (unknown [7.182.85.13])
+ by mail.maildlp.com (Postfix) with ESMTPS id 5F4B21402A5;
+ Fri,  9 May 2025 16:18:24 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml500005.china.huawei.com (7.182.85.13) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Fri, 9 May 2025 10:18:11 +0200
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Fri, 9 May 2025 10:18:11 +0200
+To: =?utf-8?B?RGFuaWVsIFAuIEJlcnJhbmfDqQ==?= <berrange@redhat.com>
+CC: Donald Dutile <ddutile@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
+ Shameer Kolothum via <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
+ <jgg@nvidia.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "nathanc@nvidia.com" <nathanc@nvidia.com>, "mochs@nvidia.com"
+ <mochs@nvidia.com>, "smostafa@google.com" <smostafa@google.com>, Linuxarm
+ <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
+ <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+Subject: RE: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a PCIe RC
+Thread-Topic: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a PCIe RC
+Thread-Index: AQHbu1V0fvNxmQCU0kS/eGPfhGB2G7PFgqACgAB1wICAANEzi4AAFpHggAHGkICAAUBjwP//9XyAgAAiG3A=
+Date: Fri, 9 May 2025 08:18:11 +0000
+Message-ID: <5b46c81a412f410494f28a2f9ebb9430@huawei.com>
+References: <20250502102707.110516-1-shameerali.kolothum.thodi@huawei.com>
+ <20250502102707.110516-2-shameerali.kolothum.thodi@huawei.com>
+ <877c2ut0zk.fsf@pond.sub.org>
+ <e02e884b-0f3d-4426-8a67-2cbd23e80e8c@redhat.com>
+ <87frhglwjl.fsf@pond.sub.org> <72f9043a73294bfc9b539ae9b94836d3@huawei.com>
+ <d21e0c57-b89a-4c79-958e-e633de039e4c@redhat.com>
+ <c0ab36fc56ff498196b359f5aee3746b@huawei.com> <aB25ZRu7pCJNpamt@redhat.com>
+In-Reply-To: <aB25ZRu7pCJNpamt@redhat.com>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-From: Xiaoyao Li <xiaoyao.li@intel.com>
-In-Reply-To: <20250508133550.81391-13-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: GQOmn9cexpMF
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.203.177.241]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hCRYMUpilM94
 
-On 5/8/2025 9:35 PM, Philippe Mathieu-Daudé wrote:
-> The CPUX86State::enable_cpuid_0xb boolean was only disabled
-> for the pc-q35-2.6 and pc-i440fx-2.6 machines, which got
-> removed. Being now always %true, we can remove it and simplify
-> cpu_x86_cpuid().
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   target/i386/cpu.h | 3 ---
->   target/i386/cpu.c | 6 ------
->   2 files changed, 9 deletions(-)
-> 
-> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-> index 0db70a70439..06817a31cf9 100644
-> --- a/target/i386/cpu.h
-> +++ b/target/i386/cpu.h
-> @@ -2241,9 +2241,6 @@ struct ArchCPU {
->        */
->       bool legacy_multi_node;
->   
-> -    /* Compatibility bits for old machine types: */
-> -    bool enable_cpuid_0xb;
-> -
->       /* Enable auto level-increase for all CPUID leaves */
->       bool full_cpuid_auto_level;
->   
-> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> index 49179f35812..6fe37f71b1e 100644
-> --- a/target/i386/cpu.c
-> +++ b/target/i386/cpu.c
-> @@ -6982,11 +6982,6 @@ void cpu_x86_cpuid(CPUX86State *env, uint32_t index, uint32_t count,
->           break;
->       case 0xB:
->           /* Extended Topology Enumeration Leaf */
-> -        if (!cpu->enable_cpuid_0xb) {
-> -                *eax = *ebx = *ecx = *edx = 0;
-> -                break;
-> -        }
-> -
->           *ecx = count & 0xff;
->           *edx = cpu->apic_id;
->   
-> @@ -8828,7 +8823,6 @@ static const Property x86_cpu_properties[] = {
->       DEFINE_PROP_UINT64("ucode-rev", X86CPU, ucode_rev, 0),
->       DEFINE_PROP_BOOL("full-cpuid-auto-level", X86CPU, full_cpuid_auto_level, true),
->       DEFINE_PROP_STRING("hv-vendor-id", X86CPU, hyperv_vendor),
-> -    DEFINE_PROP_BOOL("cpuid-0xb", X86CPU, enable_cpuid_0xb, true),
-
-It's deprecating the "cpuid-0xb" property.
-
-I think we need go with the standard process to deprecate it.
-
->       DEFINE_PROP_BOOL("x-vendor-cpuid-only", X86CPU, vendor_cpuid_only, true),
->       DEFINE_PROP_BOOL("x-amd-topoext-features-only", X86CPU, amd_topoext_features_only, true),
->       DEFINE_PROP_BOOL("lmce", X86CPU, enable_lmce, false),
-
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRGFuaWVsIFAuIEJlcnJh
+bmfDqSA8YmVycmFuZ2VAcmVkaGF0LmNvbT4NCj4gU2VudDogRnJpZGF5LCBNYXkgOSwgMjAyNSA5
+OjE0IEFNDQo+IFRvOiBTaGFtZWVyYWxpIEtvbG90aHVtIFRob2RpIDxzaGFtZWVyYWxpLmtvbG90
+aHVtLnRob2RpQGh1YXdlaS5jb20+DQo+IENjOiBEb25hbGQgRHV0aWxlIDxkZHV0aWxlQHJlZGhh
+dC5jb20+OyBNYXJrdXMgQXJtYnJ1c3Rlcg0KPiA8YXJtYnJ1QHJlZGhhdC5jb20+OyBTaGFtZWVy
+IEtvbG90aHVtIHZpYSA8cWVtdS0NCj4gZGV2ZWxAbm9uZ251Lm9yZz47IHFlbXUtYXJtQG5vbmdu
+dS5vcmc7IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsNCj4gcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3Jn
+OyBqZ2dAbnZpZGlhLmNvbTsgbmljb2xpbmNAbnZpZGlhLmNvbTsNCj4gbmF0aGFuY0BudmlkaWEu
+Y29tOyBtb2Noc0BudmlkaWEuY29tOyBzbW9zdGFmYUBnb29nbGUuY29tOyBMaW51eGFybQ0KPiA8
+bGludXhhcm1AaHVhd2VpLmNvbT47IFdhbmd6aG91IChCKSA8d2FuZ3pob3UxQGhpc2lsaWNvbi5j
+b20+Ow0KPiBqaWFuZ2t1bmt1biA8amlhbmdrdW5rdW5AaHVhd2VpLmNvbT47IEpvbmF0aGFuIENh
+bWVyb24NCj4gPGpvbmF0aGFuLmNhbWVyb25AaHVhd2VpLmNvbT47IHpoYW5nZmVpLmdhb0BsaW5h
+cm8ub3JnDQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjIgMS82XSBody9hcm0vc21tdXYzOiBBZGQg
+c3VwcG9ydCB0byBhc3NvY2lhdGUgYQ0KPiBQQ0llIFJDDQo+IA0KDQpbLi4uXQ0KDQo+ID4gPiAt
+IGJ1cyBwY2llLCBpZD1wY2llLjxudW0+DQo+ID4gPiAtIGRldmljZSBpb21tdT1baW50ZWxfaW9t
+bXV8c21tdXYzfGFtZF9pb21tdV0sIGJ1cz1bc3lzYnVzIHwNCj4gPiA+IHBjaWUuPG51bT5dLCBp
+ZD1pb21tdS48bnVtPg0KPiA+ID4gW1llcywgSSdtIHN0aWNraW5nIHdpdGggJ2lvbW11JyBhcyB0
+aGUgZ2VuZXJpYyBuYW1pbmcuLi4gZXZlcnlvbmUgdGhpbmtzDQo+IG9mDQo+ID4gPiBkZXZpY2Ug
+U01NVXMgYXMgSU9NTVVzLA0KPiA+ID4gICBhbmQgUUVNVSBzaG91bGQgaGF2ZSBhIG1vcmUgYXJj
+aC1hZ25vc3RpYyBuYW1pbmcgb2YgdGhlc2Ugc3lzdGVtDQo+ID4gPiBmdW5jdGlvbnMuIF0NCj4g
+Pg0KPiA+IE9rLiBCdXQgdG8gY2lyY2xlIGJhY2sgdG8gd2hhdCBvcmlnaW5hbGx5IHN0YXJ0ZWQg
+dGhpcyBkaXNjdXNzaW9u4oCUaG93DQo+IGltcG9ydGFudA0KPiA+IGlzIGl0IHRvIHJlbHkgb24g
+dGhlIGRlZmF1bHQgImJ1cyIgaW4gdGhpcyBjYXNlPyBBcyBNYXJrdXMgcG9pbnRlZCBvdXQsDQo+
+IFNNTVV2Mw0KPiA+IGlzIGEgcGxhdGZvcm0gZGV2aWNlIG9uIHRoZSBzeXNidXMsIHNvIGl0cyBk
+ZWZhdWx0IGJ1cyB0eXBlIGNhbuKAmXQgcG9pbnQgdG8NCj4gc29tZXRoaW5nDQo+ID4gbGlrZSBQ
+Q0llLiBRRU1VIGRvZXNu4oCZdCBjdXJyZW50bHkgc3VwcG9ydCB0aGF0Lg0KPiA+DQo+ID4gVGhl
+IG1haW4gbW90aXZhdGlvbiBmb3IgdXNpbmcgdGhlIGRlZmF1bHQgImJ1cyIgc28gZmFyIGhhcyBi
+ZWVuIHRvIGhhdmUNCj4gYmV0dGVyDQo+ID4gY29tcGF0aWJpbGl0eSB3aXRoIGxpYnZpcnQuIFdv
+dWxkIGxpYnZpcnQgYmUgZmxleGlibGUgZW5vdWdoIGlmIHdlIHN3aXRjaGVkDQo+IHRvIHVzaW5n
+DQo+ID4gc29tZXRoaW5nIGxpa2UgYSAicHJpbWFyeS1idXMiIHByb3BlcnR5IGluc3RlYWQ/DQo+
+IA0KPiBTb3JyeSBpZiBteSBwcmV2aW91cyBjb21tZW50cyBtaXNsZWQgeW91LCB3aGVuIEkgcHJl
+dmlvdXNseSB0YWxrZWQgYWJvdXQNCj4gbGlua2luZyB2aWEgYSAiYnVzIiBwcm9wZXJ0eSBJIHdh
+cyBub3QgY29uc2lkZXJpbmcgdGhlIGZhY3QgdGhhdCAiYnVzIg0KPiBpcyBhIHNwZWNpYWwgcHJv
+cGVydHkgaW5zaWRlIFFFTVUuIEZyb20gYSBsaWJ2aXJ0IFBPViB3ZSBkb24ndCBjYXJlIHdoYXQN
+Cj4gdGhlIHByb3BlcnR5IGlzIGNhbGwgLSBpdCB3YXMganVzdCBpbnRlbmRlZCB0byBiZSBhIGdl
+bmVyYWwgaWxsdXN0cmF0aW9uDQo+IG9mIGNyb3NzLXJlZmVyZW5jaW5nIHRoZSBpb21tdSB3aXRo
+IHRoZSBQQ0kgYnVzIGl0IG5lZWRlZCB0byBiZSBhc3NvY2lhdGVkDQo+IHdpdGguDQoNCkNvb2wu
+IFRoYXQgbWFrZXMgbGlmZSBlYXNpZXIg8J+Yig0KDQpUaGFua3MsDQpTaGFtZWVyDQo=

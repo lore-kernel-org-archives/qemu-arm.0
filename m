@@ -1,101 +1,101 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp961744njb;
-        Fri, 9 May 2025 02:10:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUb2JG/d0aWWK+ifTgmcvzdq2m7gpimEavGEm+u5sm4x+mE0AnwvqLggSRMysorl49wm8xf4p8alWpxkQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHjd0IPDOZPZKUiqpa5cSMCsj1z+7GjIB9bt+O0sLjf3Nwrwo2DZ65flXboa+spovO/t3rQ
-X-Received: by 2002:a05:620a:3188:b0:7cd:40:351 with SMTP id af79cd13be357-7cd01163523mr464102385a.58.1746781810208;
-        Fri, 09 May 2025 02:10:10 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1746781810; cv=pass;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp962171njb;
+        Fri, 9 May 2025 02:11:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXLcHV2P/QnQvXwuqrCaqk0VJ4ns0lSWl7uxsRHFXmy72IVEcZv+Ze15qsOxz0ENyia6JLfSCCLrR8m/Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHYRxRRKnyKfVgCZ1p7bDRBzF/UpyccMzceH68T1dEkLAeGweAWTAT7UBsBItAJuMHevage
+X-Received: by 2002:a05:6a00:17a1:b0:73c:a55c:6cdf with SMTP id d2e1a72fcca58-7423ba88b17mr3305005b3a.1.1746781873190;
+        Fri, 09 May 2025 02:11:13 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1746781873; cv=pass;
         d=google.com; s=arc-20240605;
-        b=S/lV5fST2yYc+4AJVbUz+uyNhxljxGUpf3W0MJ26tcer6cG9eJggLu5ifMgzMgFeb8
-         Iipq5seAiAjImj+Z0yafwnah1q6KBvYMUFI/m9TSGeLX5TARZMR8JhNhK9W5AG5RoEIB
-         2c6jRp0kuoiRhVFV2LRuyTZoVB8qzqfTCY8i2qQWwN3aZMszB/rFJ4s7TcEeeeHxpJ59
-         4bVN7CQGtZrGnhqHfWeaUTGtjNQF8jT/RZA/1Frtn3rr2uzQKD7OtNXoDNo/oJJkirpZ
-         Hq8QalQXH5daiDgZ15L7+18Fc8ydh6CQTBo5uN9c1uaW7ttMn2EvTrF/n09uCE8EKcHp
-         o4IA==
+        b=h/paASdwhEace7qAzDJl8WOW60FNqVslHB7AIodEIpxdxCPk6K7TI++65ZMxv2My1v
+         YzhFQaA0DoTHudmm6VrKlSekPqYqdRI8caH4MfPIbo9xxR2x5jqmDWHxcEK5Oao3bzi2
+         UYmZ0D+e5J3GRF0gwdKKGy0CdBlgOF3zI9pMkkIVs24rsmk4JASXsfvJdvzbj+WlKAmv
+         MnR9dhViqh/hEbpQj7HnniVKCT9b1rNViHboZ3Hr1Vl54seC5QEjkOgdnQKCc+XLOcGV
+         z/mK7j1k2aeQjD4ha2BengL5akHEoWSAhD6/PSt377wH75SPJPp//CWm7RgDLHiNstrb
+         W/QQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
          :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=sO4GiTOePJmHBhgwahsomT+YxFqbxv781CJfPc/HEzk=;
+        bh=fVidkUReupXkYXeUBaJy5RbMmvFLHsDxJdskVaNJb+8=;
         fh=y1fwdwYJ+ybi/Gz9eikWWAo4cmx9n1IS5+H12IBZSDg=;
-        b=ZXAjBi3vr+whujQxBxcjS/646Bza/8hVjYhuPkm4KU+9GazVE+akS5q3372LKjL6l+
-         vGDFjkIEnFgjwvoXJQga5St8xOgWUBTpo0pj7GjwQlLqhmvLsP5IaI0b1PF36UVpSYTT
-         I7wBWMu27ZJ8F6rZu1rZnkPsWOkNkGBp3rQGcHnQu47ZLJI6KfPBk6ZTTtMcbOcvE2VX
-         LC8BroOp2kkPEPJSOgm/8Stkoa0CiJGwSdBv6Ibq/Gf2s9oT7cY+XYlzXcoXhufwZlmS
-         qJPxmcmALegJoOCp9r39LlBsWrVArQ2rfrLg1bBtRdyT6Nc3A+mWHpHaFp7dish/a6kT
-         NXTQ==;
+        b=gdSsAA/46tVHmMwGBBdfZCjGB3BqL5AHhmAKDzqIQ0JFK/tigwr+TZvLzDAH2G8/cw
+         BOLpuECJMzumbuupIWmmhExFYj/yVxJ/A5QZbeVykO/usBsqU+HECr8E7HUDuEXiv6U9
+         a6mxoyCdcP0CIx3S0a8AIHqvgr0T5WZiU5LqUlidgVFSRUtsC4Zx5ELpN0OHr0f7Hjap
+         EIqGXZptdZviACRHTsXoAP7Bq7AjPqyl+Hz4b6GQ5DqxV96y0gzp0jqY+gDpaK5t1Ydf
+         pwfgto5LWghHCnE+FEa4hwiUAZm7q4HrD9+TWo5hnrUs5oyClczB1K+bnpGUUUeHiCRl
+         YxSw==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=ZY7bDLNP;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=EPPwu0oZ;
        arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-46035-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-46035-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-46036-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-46036-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-46035-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd00f5194csi180468185a.39.2025.05.09.02.10.10
+Return-Path: <kvm+bounces-46036-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id d2e1a72fcca58-74237a404eesi2250319b3a.234.2025.05.09.02.11.12
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 May 2025 02:10:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-46035-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        Fri, 09 May 2025 02:11:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46036-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=ZY7bDLNP;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=EPPwu0oZ;
        arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-46035-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-46035-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-46036-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-46036-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 36C9F17B36A
-	for <alex.bennee@linaro.org>; Fri,  9 May 2025 09:10:11 +0000 (UTC)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id A44B37B58DC
+	for <alex.bennee@linaro.org>; Fri,  9 May 2025 09:09:46 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id E67AD274FCF;
-	Fri,  9 May 2025 09:10:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id EC69A2750EA;
+	Fri,  9 May 2025 09:10:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="ZY7bDLNP"
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="EPPwu0oZ"
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 23C2F201266
-	for <kvm@vger.kernel.org>; Fri,  9 May 2025 09:10:03 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.12
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 36008201266
+	for <kvm@vger.kernel.org>; Fri,  9 May 2025 09:10:31 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.18
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1746781805; cv=none; b=J4zU3hUOwhXPEl09UscZKMPYy5Lf8rC5mSEwmwwIUQx5sKvHnTNS9WfmHmO0RbNL7SrDKl03n5wWa1TWXhP/KhzI+z8FS5pcjSnu0SKhP6RSeEx8kT8sx2Gx0epVww6Hp/nh7rRc5rcnVMar9s2jSw68gSpkqk2+Q6JHQyJncVk=
+	t=1746781833; cv=none; b=M6rC6T5ALU0mbZew2wGFFfqjobSCN4/aDcIIf1xAh8VxIou8Y6x0TuDkcvKLjriJKgIBM+i5snT/wSvE0YoFdTY/DHCPKnuQ4eKLGCNT1v8Vae6xyVMSG6X0MrimAtvZGs5aj4hyk3AyhhpoiIRUmGl1AEPo0PlZ5FHnHHZzwGk=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1746781805; c=relaxed/simple;
-	bh=UxsyZzWNkwrxjYcXBWnFnM0Egm8Nx5UTD5jcKBNb4Es=;
+	s=arc-20240116; t=1746781833; c=relaxed/simple;
+	bh=OJ/sh/VtJoFNwUXpYSmxCGdbslcUwkfuu8I5VXJHUnM=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=t6V6RNFyyfiMTGjSaRoQ00VgiURI/CT0yGNAeV0p+Vq15zE6rFeKwAn1+9BF65ANMWUVcUyqSFA8iDMgi9JYUl2xOVNYForG+EVyjsE98Bddrln+KSgipKMblsV8qYd8ZzLTw0AYPPnL9QKz1lG1SasB+30fOsZqhcyHb6nQYAM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=ZY7bDLNP; arc=none smtp.client-ip=198.175.65.12
+	 Content-Type:Content-Disposition:In-Reply-To; b=MP4P+4CPSsS9McA2HrgCLxTwm8+NypGK6WMZN1E5CZxHUo2IAfORp2nGUOM9Ou8CQ5/n/8xkfSaBy71LeModHNPcA2RSEFmUCRSrn7lPpPVHXvXxW6lUwCoVxxsEUuc2t0tI1eiocPvx80qt5mWTkHBOsvarIijbkQ7J+cyfL5I=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=EPPwu0oZ; arc=none smtp.client-ip=198.175.65.18
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1746781804; x=1778317804;
+  t=1746781832; x=1778317832;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:content-transfer-encoding:in-reply-to;
-  bh=UxsyZzWNkwrxjYcXBWnFnM0Egm8Nx5UTD5jcKBNb4Es=;
-  b=ZY7bDLNPSA3Nvud1l1JDCETIMPhWFoN6JLy7U/pv8ZMzmgvigMQoq2DD
-   ny7dmt61WMRGhqOgd1J9XJdSQ9zAhqy96JKHD7oaAC7kXJ1U562MlXaxk
-   XhEecO5jlLOoMSlZ/vEUfH1mM2zcOdnGX/wKOqhfAkO+Ee5zFHKdoOPYV
-   klWNT1ONz3M+p0bx7ge6f974vNdgTMbQi4vPh/e9e9GIAtXfjq5MUgzqz
-   g0XwxnCbZyHnL9i7xBj/wVSure9xXks5drIPvODYuzvLSOdlLJ/iuZT4z
-   DJPNDQ137TiqOlLn+rOK49y3fHNfStv4Z+pxXJngaATGaCZU8cNXHAZbs
+  bh=OJ/sh/VtJoFNwUXpYSmxCGdbslcUwkfuu8I5VXJHUnM=;
+  b=EPPwu0oZTvspSvU2PsYKlE6JKcxTAXUpV1cu61Q934sQh0ERuzFXXTVB
+   2bdX/unw6UwVT/bbb3vkkdzV7WioYCb9kOoBN2S2MBtKGDQM77dHDq1/2
+   wQfJMJDPT+cOTtEaqVjPDbrmKYspydPxnrMIN8m4wK/txerfMCplxd3Gk
+   2Tu/AvVAmSakhj+RPWgDN/pMFCZP/gyi1UH5q0KYQazy1CSjkijKZrXWs
+   XHJtLgQnTb2l2MVHBKT+eGWZQybrvvvHNGgIQ4v6gFjoIybEzrCM8AOW+
+   HNHxaCBGO/UzFC5vsFrm1TSYB9HbbQXVDnyiOHRjwt+kn0rafhSDErNXf
    A==;
-X-CSE-ConnectionGUID: B3+REHOsSfq8uJaujSCcwg==
-X-CSE-MsgGUID: Efxu5w1wTxSRpPRrL0FiTA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11427"; a="60004056"
+X-CSE-ConnectionGUID: fpL0OAfQTdyQkqq9S3YmeQ==
+X-CSE-MsgGUID: UwLYwknvR2eRMdBmjZGt8Q==
+X-IronPort-AV: E=McAfee;i="6700,10204,11427"; a="48757935"
 X-IronPort-AV: E=Sophos;i="6.15,274,1739865600"; 
-   d="scan'208";a="60004056"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 May 2025 02:10:03 -0700
-X-CSE-ConnectionGUID: q2n6DGcgQ961UrU2zD5Opg==
-X-CSE-MsgGUID: ixYYo8l2QHy72d+IpCL59A==
+   d="scan'208";a="48757935"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 May 2025 02:10:31 -0700
+X-CSE-ConnectionGUID: krxuoSxmQbWwFC7YTaR4ng==
+X-CSE-MsgGUID: iKwOz92dRZmPDyuOT9YhGw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.15,274,1739865600"; 
-   d="scan'208";a="136952061"
+   d="scan'208";a="136448402"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.39])
-  by fmviesa008.fm.intel.com with ESMTP; 09 May 2025 02:09:56 -0700
-Date: Fri, 9 May 2025 17:30:58 +0800
+  by orviesa010.jf.intel.com with ESMTP; 09 May 2025 02:10:24 -0700
+Date: Fri, 9 May 2025 17:31:26 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
@@ -125,11 +125,10 @@ Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
 	Jason Wang <jasowang@redhat.com>,
 	Mark Cave-Ayland <mark.caveayland@nutanix.com>,
 	Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH v4 14/27] hw/intc/apic: Remove
- APICCommonState::legacy_instance_id field
-Message-ID: <aB3LUkdAtoXr5U8u@intel.com>
+Subject: Re: [PATCH v4 15/27] hw/core/machine: Remove hw_compat_2_6[] array
+Message-ID: <aB3Lbk88E+YzKsWc@intel.com>
 References: <20250508133550.81391-1-philmd@linaro.org>
- <20250508133550.81391-15-philmd@linaro.org>
+ <20250508133550.81391-16-philmd@linaro.org>
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
@@ -139,31 +138,25 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250508133550.81391-15-philmd@linaro.org>
-X-TUID: HEwju3K4xlbW
+In-Reply-To: <20250508133550.81391-16-philmd@linaro.org>
+X-TUID: R24fji+DiJPI
 
-On Thu, May 08, 2025 at 03:35:37PM +0200, Philippe Mathieu-Daudé wrote:
-> Date: Thu,  8 May 2025 15:35:37 +0200
+On Thu, May 08, 2025 at 03:35:38PM +0200, Philippe Mathieu-Daudé wrote:
+> Date: Thu,  8 May 2025 15:35:38 +0200
 > From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Subject: [PATCH v4 14/27] hw/intc/apic: Remove
->  APICCommonState::legacy_instance_id field
+> Subject: [PATCH v4 15/27] hw/core/machine: Remove hw_compat_2_6[] array
 > X-Mailer: git-send-email 2.47.1
 > 
-> The APICCommonState::legacy_instance_id boolean was only set
-> in the pc_compat_2_6[] array, via the 'legacy-instance-id=on'
-> property. We removed all machines using that array, lets remove
-> that property, simplifying apic_common_realize().
-> 
-> Because instance_id is initialized as initial_apic_id, we can
-> not register vmstate_apic_common directly via dc->vmsd.
+> The hw_compat_2_6[] array was only used by the pc-q35-2.6 and
+> pc-i440fx-2.6 machines, which got removed. Remove it.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 > Reviewed-by: Thomas Huth <thuth@redhat.com>
 > ---
->  include/hw/i386/apic_internal.h | 1 -
->  hw/intc/apic_common.c           | 5 -----
->  2 files changed, 6 deletions(-)
+>  include/hw/boards.h | 3 ---
+>  hw/core/machine.c   | 8 --------
+>  2 files changed, 11 deletions(-)
 
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 

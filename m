@@ -1,166 +1,311 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp980198njb;
-        Fri, 9 May 2025 02:59:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUKthIppJgUmC4xM6wFBNpl1OHIUXVOjqipFIaagCCrzc2CIKVmvn+FKz0KJ+V3ZO+F6xBMreHdYhA4Rg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFT+BHCoqB0xpld1Dk/mYTOjR3AruD5x9ocBHHZUliV+BdV/ikEK3gvX+gkx9ZN/6/ynWNR
-X-Received: by 2002:ad4:5742:0:b0:6e8:9a55:824f with SMTP id 6a1803df08f44-6f6e47a7653mr35720406d6.6.1746784755657;
-        Fri, 09 May 2025 02:59:15 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1746784755; cv=pass;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp983791njb;
+        Fri, 9 May 2025 03:04:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXK8MHN2SrcqOl577nMxy1mGiO4EqSzo1OHFp4JGJoZSCKfQ5s++Ux3jsXSvnHlobTDC7X8lYT2/+zIYw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFD/cqLl0gH7eR/2rpJPh10fRxXGWIEx5CbNHBcPOOwChVX9OpY+3jGEgSIv89CEQayUPte
+X-Received: by 2002:a05:6871:285:b0:2bc:7e72:2110 with SMTP id 586e51a60fabf-2dba42958c2mr1615760fac.13.1746785073585;
+        Fri, 09 May 2025 03:04:33 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1746785073; cv=pass;
         d=google.com; s=arc-20240605;
-        b=N+E8wcbEBORmD0yybq6fCFgkYXHrsAeLVhj2xyIH6fE2zCrfxfP5+GLIzMTJyk1Qrq
-         DiStx99WejoA3mZm9fk2GkTkY/Tfb6mB2KDxZmId3yuBXQBaSMCxCWWJ6xOh2bgn1P0F
-         137jWkbEhmCQ7S5qPihPUgRl4YYcDr9/PC1HgvbuDKLouMgJRpYzyuKSeiq3bpBxzAOJ
-         cLoieza1V1mp/KfILLyy1UUB1YMvse6zDfh6U3Ywvl2RA947Y4Lk8sZeIZEn8Iu3Aqik
-         ymRjRSdXtCypS0KQ7H7cQy5dvulu70Pwd0yOfO9SM9lX+q1bLPPbTDcuyX8mTOsbhRtd
-         51sA==
+        b=KvGNFLfpVNQVk48gpCirKIcfwDnpGuvv499fMD2W8SEkja/DA93O0km8/e9ncjTG0P
+         nCEcsDq95QblkMbk3WUCBjUVidIm2EyDHfxxIQF8a17UdT8kaoHK1JHs4uxfxHbUHITO
+         1X2G4wU3qWBg/rGRIa0iuODdan62+6lZTfyb2rB9wsheWz1ZqwAR/YOSGvXfRks4df9C
+         DNQRQrIsmWjUU2m+paSVwcWTU52tg/TPTK3uS9iO3nVnClawm4SqyZV/wQYjjbv5kcBw
+         KIMmT6WgD0PfkZ9G0O7cywPvqeOBBzaNdCwGVTLMxRnykUn/wUve0/CyrujCRHjnKmH9
+         hhvQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=DQ76rNrxRWlJSgmmmbf6aZu/43Iu9QVrFi8sTvZQQnM=;
-        fh=XwZ+SlKA2ObuTzjRd0BDrVQXnQFFQXDytsanjW2699w=;
-        b=G7/zHGlMy7sNe0QEJgL+Imw+YuElw5wjRJo8xSsX1pfBF3zp9yP3INADPqz+ZShrp3
-         5OG2R3sX1OD85eTYUaui/tEKTpo2DccrQobzE6jnIey6yftbIw+MisSd1UnSWEF6HCDd
-         t0N/I9v0mFZc8ngo+eCNyPcYgBzqKNPSm34xZoctIbPC8FMufZAYEAdsW4EkxMjnHoRQ
-         CoOJxfcEGl0iC86MQeaOzZ0pu+eAmMcqD9Qe+t9euPf7bdNbR+hYPuxb3XZEUNbfxhuK
-         xSSMwnghF84s5DkWl2tcB5AqcDwYIz3krM+ZZvi+8qs9daTxCUsVD7oUZEiiVuYWrqhA
-         zSQA==;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version
+         :list-unsubscribe:list-subscribe:list-id:precedence:date:message-id
+         :dkim-signature;
+        bh=5Kwk95fuora+GIrWiSHPyNGLxMslBv3jG49YqLT5rLo=;
+        fh=o/P2LZtKIs4ywYmKCREVJ8hbfU58jnmAu5cy6u91w+Q=;
+        b=VZYrOKk0KjQRor7W9x/mr3L1q+YBgR0AUWepkG7xiOjTfRbdbgFxo7dOKHXXOA5ja5
+         GacMxcNYmmV9qChyLuIVAcV62P0J2ojJJbx5Fv94iXtiKDckcKvxxbNFG06EMICmhzic
+         wFCw6Qg90nR+4YUDDWTSW6gmk7/VSk9ToGp6/0b5aFyVJqYfOKuZuvoPqj1Ha5udz4Kt
+         Fu46mekgxl8716NH1dHb8zywCy9NgAp3twjd7fGDJBUpXlWqBwMSvoKu2KSep289y8dO
+         gO6+O05bbkKeGMWKFGlrEsVDcTV0vCSFN8JD7zqXQtNxyvfsCvCmIPgN8ao9TxF9cync
+         +5FA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=jldv0FcS;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-46052-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-46052-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-46052-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e39e7267si19252156d6.10.2025.05.09.02.59.15
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fLUkoKa9;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46053-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-46053-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-46053-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 586e51a60fabf-2dba06c3012si1280710fac.60.2025.05.09.03.04.33
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 May 2025 02:59:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-46052-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        Fri, 09 May 2025 03:04:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46053-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=jldv0FcS;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-46052-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-46052-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fLUkoKa9;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46053-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-46053-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 74FDB4A3963
-	for <alex.bennee@linaro.org>; Fri,  9 May 2025 09:59:09 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 0D3133AB860
+	for <alex.bennee@linaro.org>; Fri,  9 May 2025 10:04:15 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id CA9E2269AEE;
-	Fri,  9 May 2025 09:59:04 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 5C215270569;
+	Fri,  9 May 2025 10:04:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="jldv0FcS"
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="fLUkoKa9"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E107B2676FE
-	for <kvm@vger.kernel.org>; Fri,  9 May 2025 09:59:02 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.13
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 42FC9222576
+	for <kvm@vger.kernel.org>; Fri,  9 May 2025 10:04:25 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1746784744; cv=none; b=RaAoZsII5avZCDtVBJ++AFatidWJ5UP8rZ9uGXluXSPwDeDw0MQWWZ9Zgz5n0pbjfeYU8YqOACxaY4SjtzycrcY5/yQ5SqxoeSoihPB4PEyOgzQ6NMZMu1hkIq8Z/qvc4GzjrOib7CV3fO5B+oZMZ3MeVB2P7RmeWFwLxhnujZQ=
+	t=1746785068; cv=none; b=Fa/jocRNaDyAhKCWhhBRdVlJmZ/oeT4kL0Gxeu7QgSAyl+RRCGirbrRwEMwyzVd4QOd031T5/4ANW7+xi5nqL/awhJulLF8LZdiymXOf9Gz6OQ1GRpPiC03WA3VkQ6FwErGGqFikbxkPGbbVILkuO32MEAuVWRtjs3Ae89Lvkms=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1746784744; c=relaxed/simple;
-	bh=FrtgzPushvTfBtYzrA4xryV0T5y0Ofrk1OzBI442UsA=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=W/vsY8JEBDxn1Su/So+mJl9G1szJBB7npemFTPFFzXBlW2Lldm2SzvxfVpq8m0C/+QwK/RxgJiWMfDpYvnphJpfWVAL3rvuTv7OnkjLFXHGi/RILNq6wQgA678bg/y9KO8TvHV7X3b88/5J5B45HGPKpiROuDCmu3qErGryE4L8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=jldv0FcS; arc=none smtp.client-ip=192.198.163.13
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1746784743; x=1778320743;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=FrtgzPushvTfBtYzrA4xryV0T5y0Ofrk1OzBI442UsA=;
-  b=jldv0FcSLqdkk2+miLitmlcBvWS8wf1fU4fcyUqdh0fSLfPaiI7qy8kK
-   ZG44hDoP7qCwJ/IN37C5ID1xNa1zIJ309mWsrlzST2KBWETbR6GuUg4So
-   u619UFar3d7F620baRGzT16Dk3C643pJSuQsC3EWOmOamVqecox5FhZSa
-   aAMgev9pe/3o+xBrd1sooQD92KtmuYFUs1Zth+iEnlnxzLHbSWRayg4Hi
-   EL5GqvSnvebsgUX2b5aAd1sv9ltRArsjoDnG1Nhqr8CS2+nMZ6X0sqA5O
-   OPgDaugrEQMWc+kpTn2zDQIytsaZlNrG41sqqyi+BBAu+PdBl/6Krh/Os
-   w==;
-X-CSE-ConnectionGUID: 0fX4TXi/RFKpfD5hTqJRaQ==
-X-CSE-MsgGUID: 80WK1V5sQm2CHp3s+tZ5Kw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11427"; a="51263050"
-X-IronPort-AV: E=Sophos;i="6.15,274,1739865600"; 
-   d="scan'208";a="51263050"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 May 2025 02:59:02 -0700
-X-CSE-ConnectionGUID: QWtv1rnXQuKrD0DM8sgCQA==
-X-CSE-MsgGUID: iX3VjJpPSQSoXwK10eontg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,274,1739865600"; 
-   d="scan'208";a="141524192"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.39])
-  by orviesa004.jf.intel.com with ESMTP; 09 May 2025 02:58:54 -0700
-Date: Fri, 9 May 2025 18:19:56 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
-	kvm@vger.kernel.org, Sergio Lopez <slp@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu <yi.l.liu@intel.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org,
-	Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
-	Yanan Wang <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Ani Sinha <anisinha@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Fabiano Rosas <farosas@suse.de>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	=?iso-8859-1?Q?Cl=E9ment?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
-	qemu-arm@nongnu.org,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
-	Huacai Chen <chenhuacai@kernel.org>,
-	Jason Wang <jasowang@redhat.com>,
-	Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Subject: Re: [PATCH v4 27/27] hw/virtio/virtio-pci: Remove
- VIRTIO_PCI_FLAG_PAGE_PER_VQ definition
-Message-ID: <aB3WzIjvBmE1SjI9@intel.com>
-References: <20250508133550.81391-1-philmd@linaro.org>
- <20250508133550.81391-28-philmd@linaro.org>
+	s=arc-20240116; t=1746785068; c=relaxed/simple;
+	bh=YdGWdajXJnO2jUJFgdShCqGe0D3/FFUYMJAE8e2eCPs=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=YpvFMV1zU4zWx9ibuGKOCfp7sS8/a9bBmav9Ytci20HD42eRHZEuTfIDw37+3cqgjOHSLzyjtk/zRhMtr38fhXGUtcV3wwV8LbMNCxQ5vo+BJm7jIFAV6Bgij9Qvb4YDkT5armFe91ryPjVbBFBMuxg+dTSawNkpejMqfN8ocrA=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=fLUkoKa9; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1746785065;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=5Kwk95fuora+GIrWiSHPyNGLxMslBv3jG49YqLT5rLo=;
+	b=fLUkoKa9xaMy0NZPY0yZw06Gol3ZrnOK2AELpPXNlC0BNyyyiKlADLvkjlh2vm64wXC5u8
+	TXu9c7yrGK9Dl52ZtVdlupLJBvwJ6CpdvkGGDVIBfpX1e+hzmg4Vfj4fJ3K2E9Grhr9QYz
+	vWhFeS+qnp39C8waKNO6XYydcCX66/w=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-15-8eJwT_XlMry864-rVgJ23w-1; Fri, 09 May 2025 06:04:23 -0400
+X-MC-Unique: 8eJwT_XlMry864-rVgJ23w-1
+X-Mimecast-MFC-AGG-ID: 8eJwT_XlMry864-rVgJ23w_1746785063
+Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-3a0bd786a53so704741f8f.0
+        for <kvm@vger.kernel.org>; Fri, 09 May 2025 03:04:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1746785063; x=1747389863;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=5Kwk95fuora+GIrWiSHPyNGLxMslBv3jG49YqLT5rLo=;
+        b=DYuUgzNgD3fvotMtwd2pgqEJVayd+YbRybkCrdgr54y1mG0+tHiM+zUtRujrVhBIhj
+         qIF7zaXtLJ4J4/CSReHVqoY/oqpQZwar8zg6ZicWoAmVez8ODfsVG/OYWH5aEnRQLfV9
+         ttTef1/VOjCXk+CjCIXDGNQRkpkIyi5AXcdBjrDHDCgUbQafdC/GgrV6SlIHytUVO6qL
+         V/q3qnezya7nS2LM+8v21MuaVuxXWRVJnUfKSPN0c1PyH7ae7eOL485nzRxlDQGbWrUx
+         NQNR9Anp10M/jKUZTe62dTaY68CnuFy87WxOA7Lv/f4T7x3lbOPSkOmHtpCGH9kNoExi
+         7Eyg==
+X-Forwarded-Encrypted: i=1; AJvYcCVbEyc8H7/k5k26K/QtZ2zywd0QcEe3rIhPpbDPSjsRGysbbpOnkkkNOMxtkV9x2UyQKgE=@vger.kernel.org
+X-Gm-Message-State: AOJu0YxrIL6g5K4kd4hCYRNr/7kvEzKgOcm4d/F7Hd252KmSNmg7V7av
+	Y2x4UCqgYuFw05ny8bOCPy55qkIn/PT1gc6/3m80xcKPhu+jyn/I7wwvZAAl+xwKi4bST2DIDwv
+	Jpsyza6/JyPoKWNH6BVcPL0S41r7k7UGoqP4pRgxXdXTt5+EAyQ==
+X-Gm-Gg: ASbGncv7ee+texY61SCusG+XYqTAl58GkTN/EIf8XohqOdZULmzxg0Jtq19Gsz5/7mh
+	WsscAspH5OJ5+GdLX4l0LQ0RED/EXoh4novzswGEY3g0ZJsBlGpuRmGr207aSYUs8rXes89WqG0
+	GCXefN31ZTKFFbo8mujsA8feNQa2hj6qMcpTE63maSD48moPQrM1yXeaSLScgoOkE0wd76nCGyn
+	JtnWOJSIEbUx1D47GeGr+VDcfKbRYr9iCjut+rLQTjLRUQeF++j7aUVvOO1Q7v962uFxcarFLX0
+	IBFYxF6a1iMEJBNQN3N0cpIbYc/Id/W8uBnm2j6gnzTwVqoP4iEf
+X-Received: by 2002:a05:6000:3113:b0:39e:e3fa:a66b with SMTP id ffacd0b85a97d-3a1f6445d7dmr2296762f8f.34.1746785062711;
+        Fri, 09 May 2025 03:04:22 -0700 (PDT)
+X-Received: by 2002:a05:6000:3113:b0:39e:e3fa:a66b with SMTP id ffacd0b85a97d-3a1f6445d7dmr2296709f8f.34.1746785062268;
+        Fri, 09 May 2025 03:04:22 -0700 (PDT)
+Received: from [192.168.0.7] (ltea-047-064-115-173.pools.arcor-ip.net. [47.64.115.173])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a1f5a2cee4sm2783959f8f.67.2025.05.09.03.04.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 09 May 2025 03:04:21 -0700 (PDT)
+Message-ID: <2f526570-7ab0-479c-967c-b3f95f9f19e3@redhat.com>
+Date: Fri, 9 May 2025 12:04:19 +0200
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
 List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: How to mark internal properties (was: Re: [PATCH v4 12/27]
+ target/i386/cpu: Remove CPUX86State::enable_cpuid_0xb field)
+To: Zhao Liu <zhao1.liu@intel.com>, Xiaoyao Li <xiaoyao.li@intel.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ "Daniel P. Berrange" <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ kvm@vger.kernel.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Laurent Vivier
+ <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Yi Liu <yi.l.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org,
+ Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Ani Sinha <anisinha@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
+ Jason Wang <jasowang@redhat.com>
+References: <20250508133550.81391-1-philmd@linaro.org>
+ <20250508133550.81391-13-philmd@linaro.org>
+ <23260c74-01ba-45bc-bf2f-b3e19c28ec8a@intel.com> <aB2vjuT07EuO6JSQ@intel.com>
+From: Thomas Huth <thuth@redhat.com>
+Content-Language: en-US
+Autocrypt: addr=thuth@redhat.com; keydata=
+ xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
+ yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
+ 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
+ tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
+ 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
+ O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
+ 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
+ gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
+ 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
+ zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzR5UaG9tYXMgSHV0
+ aCA8dGh1dGhAcmVkaGF0LmNvbT7CwXgEEwECACIFAlVgX6oCGwMGCwkIBwMCBhUIAgkKCwQW
+ AgMBAh4BAheAAAoJEC7Z13T+cC21EbIP/ii9cvT2HHGbFRl8HqGT6+7Wkb+XLMqJBMAIGiQK
+ QIP3xk1HPTsLfVG0ao4hy/oYkGNOP8+ubLnZen6Yq3zAFiMhQ44lvgigDYJo3Ve59gfe99KX
+ EbtB+X95ODARkq0McR6OAsPNJ7gpEUzfkQUUJTXRDQXfG/FX303Gvk+YU0spm2tsIKPl6AmV
+ 1CegDljzjycyfJbk418MQmMu2T82kjrkEofUO2a24ed3VGC0/Uz//XCR2ZTo+vBoBUQl41BD
+ eFFtoCSrzo3yPFS+w5fkH9NT8ChdpSlbNS32NhYQhJtr9zjWyFRf0Zk+T/1P7ECn6gTEkp5k
+ ofFIA4MFBc/fXbaDRtBmPB0N9pqTFApIUI4vuFPPO0JDrII9dLwZ6lO9EKiwuVlvr1wwzsgq
+ zJTPBU3qHaUO4d/8G+gD7AL/6T4zi8Jo/GmjBsnYaTzbm94lf0CjXjsOX3seMhaE6WAZOQQG
+ tZHAO1kAPWpaxne+wtgMKthyPLNwelLf+xzGvrIKvLX6QuLoWMnWldu22z2ICVnLQChlR9d6
+ WW8QFEpo/FK7omuS8KvvopFcOOdlbFMM8Y/8vBgVMSsK6fsYUhruny/PahprPbYGiNIhKqz7
+ UvgyZVl4pBFjTaz/SbimTk210vIlkDyy1WuS8Zsn0htv4+jQPgo9rqFE4mipJjy/iboDzsFN
+ BFH7eUwBEAC2nzfUeeI8dv0C4qrfCPze6NkryUflEut9WwHhfXCLjtvCjnoGqFelH/PE9NF4
+ 4VPSCdvD1SSmFVzu6T9qWdcwMSaC+e7G/z0/AhBfqTeosAF5XvKQlAb9ZPkdDr7YN0a1XDfa
+ +NgA+JZB4ROyBZFFAwNHT+HCnyzy0v9Sh3BgJJwfpXHH2l3LfncvV8rgFv0bvdr70U+On2XH
+ 5bApOyW1WpIG5KPJlDdzcQTyptOJ1dnEHfwnABEfzI3dNf63rlxsGouX/NFRRRNqkdClQR3K
+ gCwciaXfZ7ir7fF0u1N2UuLsWA8Ei1JrNypk+MRxhbvdQC4tyZCZ8mVDk+QOK6pyK2f4rMf/
+ WmqxNTtAVmNuZIwnJdjRMMSs4W4w6N/bRvpqtykSqx7VXcgqtv6eqoDZrNuhGbekQA0sAnCJ
+ VPArerAZGArm63o39me/bRUQeQVSxEBmg66yshF9HkcUPGVeC4B0TPwz+HFcVhheo6hoJjLq
+ knFOPLRj+0h+ZL+D0GenyqD3CyuyeTT5dGcNU9qT74bdSr20k/CklvI7S9yoQje8BeQAHtdV
+ cvO8XCLrpGuw9SgOS7OP5oI26a0548M4KldAY+kqX6XVphEw3/6U1KTf7WxW5zYLTtadjISB
+ X9xsRWSU+Yqs3C7oN5TIPSoj9tXMoxZkCIHWvnqGwZ7JhwARAQABwsFfBBgBAgAJBQJR+3lM
+ AhsMAAoJEC7Z13T+cC21hPAQAIsBL9MdGpdEpvXs9CYrBkd6tS9mbaSWj6XBDfA1AEdQkBOn
+ ZH1Qt7HJesk+qNSnLv6+jP4VwqK5AFMrKJ6IjE7jqgzGxtcZnvSjeDGPF1h2CKZQPpTw890k
+ fy18AvgFHkVk2Oylyexw3aOBsXg6ukN44vIFqPoc+YSU0+0QIdYJp/XFsgWxnFIMYwDpxSHS
+ 5fdDxUjsk3UBHZx+IhFjs2siVZi5wnHIqM7eK9abr2cK2weInTBwXwqVWjsXZ4tq5+jQrwDK
+ cvxIcwXdUTLGxc4/Z/VRH1PZSvfQxdxMGmNTGaXVNfdFZjm4fz0mz+OUi6AHC4CZpwnsliGV
+ ODqwX8Y1zic9viSTbKS01ZNp175POyWViUk9qisPZB7ypfSIVSEULrL347qY/hm9ahhqmn17
+ Ng255syASv3ehvX7iwWDfzXbA0/TVaqwa1YIkec+/8miicV0zMP9siRcYQkyTqSzaTFBBmqD
+ oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
+ IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
+ yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
+In-Reply-To: <aB2vjuT07EuO6JSQ@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250508133550.81391-28-philmd@linaro.org>
-X-TUID: JSkNbx+sE+15
+X-TUID: /YSHgELusmcU
 
-On Thu, May 08, 2025 at 03:35:50PM +0200, Philippe Mathieu-Daudé wrote:
-> Date: Thu,  8 May 2025 15:35:50 +0200
-> From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Subject: [PATCH v4 27/27] hw/virtio/virtio-pci: Remove
->  VIRTIO_PCI_FLAG_PAGE_PER_VQ definition
-> X-Mailer: git-send-email 2.47.1
+On 09/05/2025 09.32, Zhao Liu wrote:
+> On Fri, May 09, 2025 at 02:49:27PM +0800, Xiaoyao Li wrote:
+>> Date: Fri, 9 May 2025 14:49:27 +0800
+>> From: Xiaoyao Li <xiaoyao.li@intel.com>
+>> Subject: Re: [PATCH v4 12/27] target/i386/cpu: Remove
+>>   CPUX86State::enable_cpuid_0xb field
+>>
+>> On 5/8/2025 9:35 PM, Philippe Mathieu-DaudÃ© wrote:
+>>> The CPUX86State::enable_cpuid_0xb boolean was only disabled
+>>> for the pc-q35-2.6 and pc-i440fx-2.6 machines, which got
+>>> removed. Being now always %true, we can remove it and simplify
+>>> cpu_x86_cpuid().
+>>>
+>>> Signed-off-by: Philippe Mathieu-DaudÃ© <philmd@linaro.org>
+>>> ---
+>>>    target/i386/cpu.h | 3 ---
+>>>    target/i386/cpu.c | 6 ------
+>>>    2 files changed, 9 deletions(-)
+>>>
+>>> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+>>> index 0db70a70439..06817a31cf9 100644
+>>> --- a/target/i386/cpu.h
+>>> +++ b/target/i386/cpu.h
+>>> @@ -2241,9 +2241,6 @@ struct ArchCPU {
+>>>         */
+>>>        bool legacy_multi_node;
+>>> -    /* Compatibility bits for old machine types: */
+>>> -    bool enable_cpuid_0xb;
+>>> -
+>>>        /* Enable auto level-increase for all CPUID leaves */
+>>>        bool full_cpuid_auto_level;
+>>> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+>>> index 49179f35812..6fe37f71b1e 100644
+>>> --- a/target/i386/cpu.c
+>>> +++ b/target/i386/cpu.c
+>>> @@ -6982,11 +6982,6 @@ void cpu_x86_cpuid(CPUX86State *env, uint32_t index, uint32_t count,
+>>>            break;
+>>>        case 0xB:
+>>>            /* Extended Topology Enumeration Leaf */
+>>> -        if (!cpu->enable_cpuid_0xb) {
+>>> -                *eax = *ebx = *ecx = *edx = 0;
+>>> -                break;
+>>> -        }
+>>> -
+>>>            *ecx = count & 0xff;
+>>>            *edx = cpu->apic_id;
+>>> @@ -8828,7 +8823,6 @@ static const Property x86_cpu_properties[] = {
+>>>        DEFINE_PROP_UINT64("ucode-rev", X86CPU, ucode_rev, 0),
+>>>        DEFINE_PROP_BOOL("full-cpuid-auto-level", X86CPU, full_cpuid_auto_level, true),
+>>>        DEFINE_PROP_STRING("hv-vendor-id", X86CPU, hyperv_vendor),
+>>> -    DEFINE_PROP_BOOL("cpuid-0xb", X86CPU, enable_cpuid_0xb, true),
+>>
+>> It's deprecating the "cpuid-0xb" property.
+>>
+>> I think we need go with the standard process to deprecate it.
 > 
-> VIRTIO_PCI_FLAG_PAGE_PER_VQ was only used by the hw_compat_2_7[]
-> array, via the 'page-per-vq=on' property. We removed all
-> machines using that array, lets remove all the code around
-> VIRTIO_PCI_FLAG_PAGE_PER_VQ (see commit 9a4c0e220d8 for similar
-> VIRTIO_PCI_FLAG_* enum removal).
+> Thanks! I got your point.
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-> ---
->  include/hw/virtio/virtio-pci.h |  1 -
->  hw/display/virtio-vga.c        | 10 ----------
->  hw/virtio/virtio-pci.c         |  7 +------
->  3 files changed, 1 insertion(+), 17 deletions(-)
+> Though this property is introduced for compatibility, as its comment
+> said "Compatibility bits for old machine types", it is also useful for
+> somer users.
 
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Thanks for your clarifications, Zhao! But I think this shows again the 
+problem that we have hit a couple of times in the past already: Properties 
+are currently used for both, config knobs for the users and internal 
+switches for configuration of the machine. We lack a proper way to say "this 
+property is usable for the user" and "this property is meant for internal 
+configuration only".
+
+I wonder whether we could maybe come up with a naming scheme to better 
+distinguish the two sets, e.g. by using a prefix similar to the "x-" prefix 
+for experimental properties? We could e.g. say that all properties starting 
+with a "q-" are meant for QEMU-internal configuration only or something 
+similar (and maybe even hide those from the default help output when running 
+"-device xyz,help" ?)? Anybody any opinions or better ideas on this?
+
+  Thomas
+
+
+> Fo example, in the early development stages of TDX, when there was no
+> full support for CPU topology, Intel had disable this property for
+> testing and found this bug:
+> 
+> https://lore.kernel.org/qemu-devel/20250227062523.124601-3-zhao1.liu@intel.com/
+> 
+> So, I think there may be other similar use cases as well.
+> 
+> And, if someone wants to emulate ancient x86 CPUs (though I can't
+> currently confirm from which generation of CPUs 0xb support started), he
+> may want to consider disable this property as well.
+> 
+> The main problem here is that the "property" mechanism doesn't
+> distinguish between internal use/public use, and although it was originally
+> intended for internal QEMU use, it also leaks to the user, creating some
+> external use cases.
+> 
+> @Philippe, thank you for cleaning up this case! I think we can keep this
+> property, and if you don't mind, I can modify its comment later to
+> indicate that it's used to adjust the topology support for the CPU.
+> 
+> Thanks,
+> Zhao
+> 
+> 
 

@@ -1,121 +1,121 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp1178151njb;
-        Fri, 9 May 2025 08:23:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUUuxapHz85h/IXrA7mPb3W6r58sgj8LNZzXwyeLxwbo3XhURYsJ0cqSC63m64Jf+9lRLMD4QvHPL9Bzg==@linaro.org
-X-Google-Smtp-Source: AGHT+IF9NPS4h9r6jJNk/ENCBJ9ke5ol2g/Wc0Ki0iPJ3mnCMA3NBDdsJtWw7J3EvgJETZSMKmhI
-X-Received: by 2002:a17:907:a0cd:b0:ac8:1cf7:7aa7 with SMTP id a640c23a62f3a-ad218f072c3mr471439366b.15.1746804237590;
-        Fri, 09 May 2025 08:23:57 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1746804237; cv=pass;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp1185237njb;
+        Fri, 9 May 2025 08:35:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVAE6qD+OoWXzoakH2LFx3ptGI6iesfgec0CmZfJGB2OVfxgK5TWn8AStpkCQ+KXascIisLMt2GflqraQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHB3GnZxOGq8OFu4rR87rVXGLQPyulDY9w5603OYx6Z2feTi5Th1p9NCKoZEKQn6LW7mKvK
+X-Received: by 2002:a05:6a20:6f96:b0:1f3:34a4:bf01 with SMTP id adf61e73a8af0-2159a0c6e08mr11063783637.17.1746804941550;
+        Fri, 09 May 2025 08:35:41 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1746804941; cv=pass;
         d=google.com; s=arc-20240605;
-        b=Hdikoa9fNKTRbi29ToXmSijWaA4+WzPHKtqswxSThmQPlIaAtmccTn19AmSFaD1SEz
-         aQ0lnwGlocLvgNXO8tTT2R4VSao7Eoe5xYDKPDstBzuykKv5+Euuz4VQFeaPcoHtGzaT
-         OTjjV05asNWaHppjtG883Sdzl6DelfMujVAMyddaco/5vg0Ok3A3aBQleesrgYoTJUu5
-         6YBo/2SP0HNCz5Cv9C3YwFRevhzMKPLgyCPFRZxM7aW5la2wc2FAwdsMzjtp6UIqYVDL
-         HZfJmWlEy2/Nlrh6dwQuWRyFTZCnQKVrZeub7D8yf4qsxZ6SEIuq8OhM8lNFi76x/1KG
-         iUgg==
+        b=c+olXGO7Ktp0i+AhSDmxvbqNiKJqYpGbTBF49V4OtVugdgyo87a5/I5waLVU47GDOZ
+         0pwrOhgBoqIe1F5078+UtzadNnVFFyxfbx5jdnLdwZLzU5TrvhAOzg9zxDq850r9Xs+u
+         FW1bQsprx8uhRsq8EhviEPkoZmd7GJI1psOxu2eeIFnCX621tsJTQMZl/EamDg+QGXkc
+         NUfSh+UCpxybDqkBvhSrM1fLjN8GhNVnCC084oH5tk9A+qj4Xb7IDawJ5/8Sl1VWFi89
+         9AP2lIenginh/5cm3qaqOLQ5/emCkMKA2az9ak5ljnXbn+zwJdE/C26T9FxzXlyF42r8
+         yzMQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=UbfgctwTat72Vztwb/ysK4sx3FtDutARgQGzZ60JQJo=;
-        fh=9pYpKLLJvZoEoLrgGPXqA7vJMscv238fXtiZbzdm4bw=;
-        b=a491PeqN+AP61vEU+Bk+TzzR5uaiqgxkdkJ1JDfucqDP+NQgq5VR6p3BWDjNxhkK3p
-         p6LeZCq/QhdFbi0lyMMABfxLOuEHmg6nze8ltdZIpj21wD3kEnhR1SaPEAKR+Agemp7J
-         51cf4ukeP4S+D3G1qvIhzTUNpwbWKA5/4lERDKMlBnbS1w8VyP/aikB4UGS/5Kuy4gIC
-         yFYstIWUwrXnmLK5BtxeuU0RN3healAi2BbpLFJD435+evtcKDJ2QtwLjiceUbrP0dAO
-         /A6E5Ee1iAprpR5k8C7+Kq8MTvi/YHeaQ1qZKKug7j0OrYfY+M8tPtpAnmvOdGJqsppz
-         ivzg==;
+        bh=KvgodsRX5jVPKQKXhLVAtbiUkGwGclYVHGBsI+/pme4=;
+        fh=zq/SsxPDgI6Z1kwHnwF4X1HtErE8jGt/sdVsa00MDB8=;
+        b=klNYD8QXAwQd+L3ak68CV3sa05NRAYfBajeIY3DNrHlemtYM/H3t/Vta9Al73dZGyu
+         7QhnS/ArFGlOaZc1WPJyG7f4/8kgjycBKbXdTuPOlt56YRtzKMZEbdxKY6efFK80DGjN
+         Qp8otDRx4sfcnBGPgY//RFmGFYl/KGtWX/uAY0yqrwMnp5D9X4g0x2QehG/7cT5nwcRH
+         L/ao6m7vSJhPj3Aj7pY5pu/+8jjDgIvHbRazsWsmZGG84BRiEO+DeXpgLzYtpWGyi8nn
+         q8Ky/6TVZQYxah63pmX4Qhv3LJwpeghCl+cu6fdE1gRf29ikc/9HuNUle21u29AhAo7e
+         ls5A==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OZD79d1N;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ZFGbZw/O";
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-46071-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-46071-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-46073-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-46073-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-46071-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id a640c23a62f3a-ad2198a05ddsi165746766b.462.2025.05.09.08.23.57
+Return-Path: <kvm+bounces-46073-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-b2349325fbesi2842068a12.50.2025.05.09.08.35.41
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 May 2025 08:23:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-46071-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        Fri, 09 May 2025 08:35:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46073-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OZD79d1N;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ZFGbZw/O";
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-46071-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-46071-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-46073-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-46073-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id B07391C25603
-	for <alex.bennee@linaro.org>; Fri,  9 May 2025 15:24:09 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 2F8A43A94D5
+	for <alex.bennee@linaro.org>; Fri,  9 May 2025 15:35:13 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id E60F5222595;
-	Fri,  9 May 2025 15:23:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 7010F22DA0E;
+	Fri,  9 May 2025 15:35:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="OZD79d1N"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="ZFGbZw/O"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0E91622DA10
-	for <kvm@vger.kernel.org>; Fri,  9 May 2025 15:23:46 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A3CCC21B9CE
+	for <kvm@vger.kernel.org>; Fri,  9 May 2025 15:35:26 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1746804228; cv=none; b=nF32G9ZzUA3gKYk7acvhgCq4+3lSm2iG0lpRXtjUEcqcEko072+DCauYwkF4aq6djpHti3XDzRmO7hTnFoEEaPwJ3GIIUN+8ohU4R0MQez4IMSJQHPxrWrUMuyPS/2brC269ObwknpYDvY6EW+VNocWutThzBXEe432TBT4JnnM=
+	t=1746804928; cv=none; b=ucZzN5dPCLVoa975m27eWjHT+Ew7IgJUQ81BTqooadIUoJZBxURCKQAiM7/KQeFbxsjdCXBL239Fua84K8gZss5P3KGu4dkU86Q9+aeZQqgRp9r5xTp9bq4ue1QLTNKjx2Av8gtsfhO+Zi+vck7JHYuKdtHBBdoBj1xZG7o6Wyk=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1746804228; c=relaxed/simple;
-	bh=bSHvkoUMAGUvpPbwAld32PC6XRt5ph5cd71mNkkkyDI=;
+	s=arc-20240116; t=1746804928; c=relaxed/simple;
+	bh=/1OWeYzNZb24eJtczRx1xZ6IizjxkO5KMaeMzrkc/IU=;
 	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=afa+F6G+p5e2+ojOYn0F1pjZcKQAMOI+KqF3gYCfhQSC1dgrHClFuC2dsjKiJtkLDK537rXuHvR1KAOk/zsZy1MXFxkPPrag6JN6SVtyLAueLaY185vPaBuGeTNKJ1m8gwtVoPBR6+158bqkUL/7ZQT5mzOkm9/dGXn+UspWd4Y=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=OZD79d1N; arc=none smtp.client-ip=170.10.129.124
+	 MIME-Version:Content-Type; b=F9JXLY1CqlWyYGa1KxUTHtErmEIUUIfm8A4Jd0QPwZ5KJl6/ttaF7A+3yc4CUbbRtEDkKiuNjC8mYGLqs10bnsO3QnJncXFOHOdgWxV3RGlV7tkN2JPUkR/59Q/7mjIoSkpgHQuiA/Mu96+pO07zgLrRhte7jxBJTO+lUQB8DWs=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=ZFGbZw/O; arc=none smtp.client-ip=170.10.133.124
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1746804226;
+	s=mimecast20190719; t=1746804925;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=UbfgctwTat72Vztwb/ysK4sx3FtDutARgQGzZ60JQJo=;
-	b=OZD79d1NnNxV0aF1BO+gKsqaG4t1epDQqUy8g88QqYBIQ/6uf1bbAgATf0nQysiCeAJ/ig
-	zllsyJZxS158+wwfE9k8fZpPB2j2uIKcTreoVR9/ma1+HswcizgyvdkzRV7S6hjAMOKl/Z
-	vzDvW/G1T7rZTvASeszYdk3oJ4/GNwk=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=KvgodsRX5jVPKQKXhLVAtbiUkGwGclYVHGBsI+/pme4=;
+	b=ZFGbZw/ORZvsvZ8/aZoqiIKWUdl8L6xW1T0cFtqaT7C8FEvTOK/GnABDON/13HFM+uAgfR
+	dq8B9nxYak79efMcbTbZ0jg0sGJ7JTajzLAlBWqL9hr5GnQN2f2k3Ntl8w6JpsFHlBoXHs
+	mL5fxQZgpcCZGFuO2pI/r+ZXLNimbng=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-681-2fg458lJOemPzb3nlYOlDw-1; Fri, 09 May 2025 11:23:43 -0400
-X-MC-Unique: 2fg458lJOemPzb3nlYOlDw-1
-X-Mimecast-MFC-AGG-ID: 2fg458lJOemPzb3nlYOlDw_1746804222
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-43d209dc2d3so10560585e9.3
-        for <kvm@vger.kernel.org>; Fri, 09 May 2025 08:23:42 -0700 (PDT)
+ us-mta-686-FJF-P9iRP5aTlXr0KO3SWA-1; Fri, 09 May 2025 11:35:24 -0400
+X-MC-Unique: FJF-P9iRP5aTlXr0KO3SWA-1
+X-Mimecast-MFC-AGG-ID: FJF-P9iRP5aTlXr0KO3SWA_1746804923
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-440667e7f92so12100305e9.3
+        for <kvm@vger.kernel.org>; Fri, 09 May 2025 08:35:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746804221; x=1747409021;
+        d=1e100.net; s=20230601; t=1746804923; x=1747409723;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=UbfgctwTat72Vztwb/ysK4sx3FtDutARgQGzZ60JQJo=;
-        b=p59w1VEd82mJiPGN5sD/kLY4mqZ657X88Iwp4YoaZ2TQrByaOHahGrC1mmljSB/ggJ
-         WMtcotui6GxH27PIf/ZcdEq53RuCzbBYC0CVIW5Io1mo7WVAUEkJw1pg02tCd0Y1341k
-         w5gOLikf7NdHhXyJm5ckAFdXATJEXiPYD3mj5UK+aN2q8kp5VGSGoruCX5BhZUyimB56
-         cz8txlvS9pqdb9vC1sOxNYSICQcoqZv4R/7t28GnuwqAaI1Ov+77lDnEt6slvVvhlJkR
-         5HmZmYllYDTQ+soV1FTdHGyTAAqfI0F6Cmbrrbu/tbHP0O3I02bTtCzW9ZFX/whc7uyB
-         Rzew==
-X-Forwarded-Encrypted: i=1; AJvYcCUy3tzF4Ntx1o/3RrZMGVkjYIDPaRj3XtzS/72tYiAQ8wxIOKpkRzdruB8YX3mxES0yG58=@vger.kernel.org
-X-Gm-Message-State: AOJu0YwSsDWZjImmL469DEq9kBn+K9Lbq31OsG6Wk5+P8dWztFoFBMad
-	LWI4vIEdKLyOU9SiUb9GxlDzRvvRfi7cR90zUvmFVt42lO4xU3X8L3F8Ti3NfBihiKFwWU1Qq1q
-	t9DHj/xsL/SrdZzsalX+aAhuiPlfJcmrFgU1+ubC8tMjBMMocnTgzO/SR65z8
-X-Gm-Gg: ASbGnctflYC3z3+o69ohU7jukimLELa/Z40SL1pYA34M8x63PNpFBp9gSRjeiJmZi+Q
-	mF11lgDvoXY6woDSsdOVmu41ixzGDvO9u4G/xiYRsG3lIGiI8F2MyrmbTonYYIxGSC3tlBrgdl+
-	JXjun47SEVzaPGvzYssR3NCusk/3sM2vC2wTErKuHl9HuzrBNYQidEU6Gr2BK0lC6e8VlWpnrHB
-	CVafkr+JfrMshS3dkEQov1AF4BgUUgKhT6pyW5DFo+G13jfZMqTbrenbow04kL6wlAKMmWqUOzF
-	PE/27uGBrLwLmDO3UwpkplTfpEfjIdOX
-X-Received: by 2002:a05:600c:4e46:b0:442:c993:6f94 with SMTP id 5b1f17b1804b1-442d6d3dafbmr37079555e9.12.1746804221460;
-        Fri, 09 May 2025 08:23:41 -0700 (PDT)
-X-Received: by 2002:a05:600c:4e46:b0:442:c993:6f94 with SMTP id 5b1f17b1804b1-442d6d3dafbmr37079275e9.12.1746804221031;
-        Fri, 09 May 2025 08:23:41 -0700 (PDT)
+        bh=KvgodsRX5jVPKQKXhLVAtbiUkGwGclYVHGBsI+/pme4=;
+        b=tut5Vl/YNbszwOWcppO5dwsYJNRCOx7bp5Z4Twcgi0delL9xD50raYUF+Znqa+8E6H
+         KzR7vUye9UfL6C9m5Wy5IPaGHIj+NqTz7x8zYL91vkVdth1qqJvbxsfoYqYIUM843KrV
+         LneeM+WSnRgXaTs3nl2DiwZ3XmuEO819am7rB0BWSulbrHiyl/s0sA0cHpNdS9m9VQZx
+         aL2Q9dI+wOEFkFwrpSYZcyNDH/MMMZljVVXB38FPSHyyzSjduuHqVUmVnSL7EHvDh1fT
+         C+qj9TUTIL3Ma8bDW81wbDQqFJCWNJ6TZzgW4/IJsVeMqJWcnBYdqqAnSKCCc04PQPxU
+         akEg==
+X-Forwarded-Encrypted: i=1; AJvYcCUSA0q1vHC8aupaJUSllAvxsxRVx1zYRWgEsSysKzVZSIf9ECqAq5CgUchAQIVjjvwOaIY=@vger.kernel.org
+X-Gm-Message-State: AOJu0YzNRHHcl5C4z6nXMWMpTtEFyuy0dakNVLTJggVfRmUJHzbDqgCO
+	NRuaL4k7uIhvLDj6cbadlFtDSfEf1bTuHvhpQCWx1AWT2LPkPq0u5pXgP3SELp1L6FyJYKhhUqh
+	Fx9Uuz55yQPAHv21RZxWangOXhi3RTzlszZ3cxcxDU9aZUuvycA==
+X-Gm-Gg: ASbGnctgibXn4zdU/3YbbePyW9me8lqWuGEGXHx9CIeT2Ddg/3tUf2BwuoWmc7K+e+L
+	K71DW0yO7b7uHJIXmhK9g1dzjPrYOaqhIQwmidL8dTnl/b1pr7dvnQrJc/GhLJCR3ZCAZYK51/F
+	zNhE7G+JKav2wRIsQIqpHxp9bZS7GIelyGuoi6YHlTo3g86FWmCyq1j4BeO7B1Zoo9shW40DRzk
+	dc7mjJECqfNWfyzJLrodlUXPbzqmfv6fGtjLTwJh9peMMqKHIBEiROcXxdb4JjpXZBH3Z0rhgu6
+	YCNCWusj/oTbdJAEPfqij9vtnpP2dOY9
+X-Received: by 2002:a05:600c:1d8c:b0:43c:fe85:e4ba with SMTP id 5b1f17b1804b1-442d6d6477amr38265145e9.15.1746804923097;
+        Fri, 09 May 2025 08:35:23 -0700 (PDT)
+X-Received: by 2002:a05:600c:1d8c:b0:43c:fe85:e4ba with SMTP id 5b1f17b1804b1-442d6d6477amr38264785e9.15.1746804922673;
+        Fri, 09 May 2025 08:35:22 -0700 (PDT)
 Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442d67efdd0sm32939935e9.24.2025.05.09.08.23.38
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442cd32f1eesm76794905e9.9.2025.05.09.08.35.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 May 2025 08:23:40 -0700 (PDT)
-Date: Fri, 9 May 2025 17:23:36 +0200
+        Fri, 09 May 2025 08:35:22 -0700 (PDT)
+Date: Fri, 9 May 2025 17:35:19 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
@@ -135,14 +135,13 @@ Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?B?Q2zDqW1lbnQ=?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
  qemu-arm@nongnu.org, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
  <marcandre.lureau@redhat.com>, Huacai Chen <chenhuacai@kernel.org>, Jason
- Wang <jasowang@redhat.com>, Mark Cave-Ayland <mark.caveayland@nutanix.com>,
- Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH v4 01/27] hw/i386/pc: Remove deprecated pc-q35-2.6 and
- pc-i440fx-2.6 machines
-Message-ID: <20250509172336.6e73884f@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20250508133550.81391-2-philmd@linaro.org>
+ Wang <jasowang@redhat.com>
+Subject: Re: [PATCH v4 04/27] hw/mips/loongson3_virt: Prefer using
+ fw_cfg_init_mem_nodma()
+Message-ID: <20250509173519.50d4f073@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250508133550.81391-5-philmd@linaro.org>
 References: <20250508133550.81391-1-philmd@linaro.org>
-	<20250508133550.81391-2-philmd@linaro.org>
+	<20250508133550.81391-5-philmd@linaro.org>
 X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
@@ -152,78 +151,39 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: HJa9uAFp5/ZF
+X-TUID: eQAzUrmD1Gry
 
-On Thu,  8 May 2025 15:35:24 +0200
+On Thu,  8 May 2025 15:35:27 +0200
 Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
 
-> These machines has been supported for a period of more than 6 years.
-> According to our versioned machine support policy (see commit
-> ce80c4fa6ff "docs: document special exception for machine type
-> deprecation & removal") they can now be removed.
-
-if these machine types are the last users of compat arrays,
-it's better to remove array at the same time, aka squash
-those patches later in series into this one.
-That leaves no illusion that compats could be used in the later patches.
-=20
+> fw_cfg_init_mem_wide() is prefered to initialize fw_cfg
+> with DMA support. Without DMA, use fw_cfg_init_mem_nodma().
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
 > ---
->  hw/i386/pc_piix.c | 14 --------------
->  hw/i386/pc_q35.c  | 14 --------------
->  2 files changed, 28 deletions(-)
+>  hw/mips/loongson3_virt.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index 7a62bb06500..98a118fd4a0 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -764,20 +764,6 @@ static void pc_i440fx_machine_2_7_options(MachineCla=
-ss *m)
+> diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
+> index de6fbcc0cb4..654a2f0999f 100644
+> --- a/hw/mips/loongson3_virt.c
+> +++ b/hw/mips/loongson3_virt.c
+> @@ -286,7 +286,7 @@ static void fw_conf_init(void)
+>      FWCfgState *fw_cfg;
+>      hwaddr cfg_addr =3D virt_memmap[VIRT_FW_CFG].base;
 > =20
->  DEFINE_I440FX_MACHINE(2, 7);
-> =20
-> -static void pc_i440fx_machine_2_6_options(MachineClass *m)
-> -{
-> -    X86MachineClass *x86mc =3D X86_MACHINE_CLASS(m);
-> -    PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
-> -
-> -    pc_i440fx_machine_2_7_options(m);
-> -    pcmc->legacy_cpu_hotplug =3D true;
-> -    x86mc->fwcfg_dma_enabled =3D false;
-> -    compat_props_add(m->compat_props, hw_compat_2_6, hw_compat_2_6_len);
-> -    compat_props_add(m->compat_props, pc_compat_2_6, pc_compat_2_6_len);
-> -}
-> -
-> -DEFINE_I440FX_MACHINE(2, 6);
-> -
->  #ifdef CONFIG_ISAPC
->  static void isapc_machine_options(MachineClass *m)
->  {
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index 33211b1876f..b7ffb5f1216 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -658,17 +658,3 @@ static void pc_q35_machine_2_7_options(MachineClass =
-*m)
->  }
-> =20
->  DEFINE_Q35_MACHINE(2, 7);
-> -
-> -static void pc_q35_machine_2_6_options(MachineClass *m)
-> -{
-> -    X86MachineClass *x86mc =3D X86_MACHINE_CLASS(m);
-> -    PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
-> -
-> -    pc_q35_machine_2_7_options(m);
-> -    pcmc->legacy_cpu_hotplug =3D true;
-> -    x86mc->fwcfg_dma_enabled =3D false;
-> -    compat_props_add(m->compat_props, hw_compat_2_6, hw_compat_2_6_len);
-> -    compat_props_add(m->compat_props, pc_compat_2_6, pc_compat_2_6_len);
-> -}
-> -
-> -DEFINE_Q35_MACHINE(2, 6);
+> -    fw_cfg =3D fw_cfg_init_mem_wide(cfg_addr, cfg_addr + 8, 8, 0, NULL);
+
+just a question, given it's a rather modern machine is there a reason
+why it is not using DMA here?
+
+> +    fw_cfg =3D fw_cfg_init_mem_nodma(cfg_addr, cfg_addr + 8, 8);
+>      fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, (uint16_t)current_machine->sm=
+p.cpus);
+>      fw_cfg_add_i16(fw_cfg, FW_CFG_MAX_CPUS, (uint16_t)current_machine->s=
+mp.max_cpus);
+>      fw_cfg_add_i64(fw_cfg, FW_CFG_RAM_SIZE, loaderparams.ram_size);
 

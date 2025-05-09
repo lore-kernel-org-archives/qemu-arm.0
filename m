@@ -1,101 +1,101 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp824799njb;
-        Thu, 8 May 2025 19:29:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVvZA24AiFFs7ae30G8cQxP2bFWdoxJDZ+yE6IeFFEBg17ywSsifcxfzhKsy3A+B36bgfz8TDdaLuZcPw==@linaro.org
-X-Google-Smtp-Source: AGHT+IETHIVUBI4iXHtbnBNMx1avan2kdXo+MO/jBOXj8tQ6yZ4WrS5QVYD2fyAHV2+UH3Nol/HB
-X-Received: by 2002:ad4:5dcf:0:b0:6e8:f4a1:68a4 with SMTP id 6a1803df08f44-6f6e480e30bmr26064566d6.39.1746757741594;
-        Thu, 08 May 2025 19:29:01 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1746757741; cv=pass;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp825121njb;
+        Thu, 8 May 2025 19:30:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXhLqFCHfJLWSkZu58l390Z0P+7geobT5SSKMWstxpw5SMvFOgXFRN9mCEMnoanTMnNfuMatCPbGHApIw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH3Vv+zA3BFM6a8X8zVX8U5fF3vpuYGlhjhYfng4Zkb6jBF/hIEhbu2XSmycuCCn0OGknYT
+X-Received: by 2002:a05:6402:51ca:b0:5ec:9e6e:c48f with SMTP id 4fb4d7f45d1cf-5fca081ac40mr1018182a12.29.1746757815247;
+        Thu, 08 May 2025 19:30:15 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1746757815; cv=pass;
         d=google.com; s=arc-20240605;
-        b=DHf4m+M4adpNv/JgA4HOTIXyw70lk6cX6jvcibPAy75KE+GlWjTe/Skpu8OyI/cn+b
-         rI2daoq5/Cg9pIAPfyxXdLT2k1OnDhHef0g7Ek7yxc72BEEes6UqUzQ4Qd9fzaVnvdrJ
-         GHbVImAWTV7PGH1m0rWKTQuDMWTr4CauxQX5drq41nJHYzo5A5we+fPGfnoijOZotf7Y
-         vNl8usDYxdnKCaIlzjRtoBudy0JlRXrjVi3p+hdeCRhjY8bezE5p3FcsPcOWsv0MyyAo
-         IpvyHuKHEcypLZcJJAqzGNwD74ZAUCT0km9tpE06OTdXznqZ6vMYig6VRGFQgzowCl6J
-         eQ1g==
+        b=K15yMenb8/AcDsNN2yh0lmOdu2iQK4aWm1R6lTmDXJULVnxGFo6F5LHikL0NPfY75i
+         IGAAjD6bIRP/RpyjeIohsavqhnapkW3BLYNErJkj5XNUM7JWZjZDF4+4ZyhrVVN6IJBm
+         4j6ameG0TgMGvXlxROeV3sXKhk+a8W5q2V2vf72WlYW802q2UYl/akvd6aSeuMzGzWst
+         n2y1KtWGZlc9Oc4E01N8kMFn1TuWp6LcVrxsQu6Wr1SpMeR/VhFHbIHF0N46OOm/t1z8
+         8eM5NmTQt7caheSy+9XtF3ydmqvgFGUrgKI/Al2gMjnU9MGM44Hd/9LzkwL/QXS4DaiT
+         9ylA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
          :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=T2XFUTD5arq5D/f2FnQF7kji+xeW4nZJ0kcUxVTk/fU=;
+        bh=z1ZTo3CannnG6X0Xjvzje/4YlkpGWBFI0+LAAdNFiPw=;
         fh=JxHmcrA01BA5QK0KCw1k/zuTtIunTfHN6Hx8q/ntgXs=;
-        b=AteyIlHCDVqcdXNZoingOxGTE4SVkk/IoJH4c9u5xvp5E+bRzPZqoVAXVm9EN0m3/S
-         vPwOr6TDNWdWrF86QzEqx1PRiJS34Rg5TyjKKrfMx0VbbgnfDXrvMP3onP51B1py7ObW
-         +55p9C8maQLx1Q/74UhNjUjqmA1e3kl0KZTEh0Jo0/viiNUpuWHsEve/8bUke4/PtM0Z
-         x3MarOP/F83AEsK5nj0yHOnGXPHdya2Y6LZbsHVacx1Zq1RB3YUT8d9atsOEA694T5A5
-         A3PuYl4CK2WhScTI4FPnhJboi3W6p1jDQt7ajL7qMW7xPWq5yY0pk3HbiyH1SkW9l6UX
-         JdIA==;
+        b=g1/FYADp9+Y6ITXFyxO6EamyycsS22iyss4GXuccWJzYTNUlFXeHpXCS6HxIHsgKAu
+         VaMmiJXp8Fqa+828XfbSLxlp+of2Z3RVgso1928m1YLrzqdE+AfWBi51W0qcj9IjiFFQ
+         L2Z1xpT2HiNI8Ki4M9QBvqS0CBfcjgDDkqvwqur/c3lARAeI7FNuksPEu3G+yEDFn5T0
+         pMHMqzqmmJ1UFLaI86B6W7Ce19GH9s788oiGm9BSVo/j3O8HkGDFWWHOJS2CMlGQb6JX
+         39RGFe1zNDNm0uDkyZrg5an6XznsVSXR9+s2qnTe6smljcjBw/LOUAMDQOqhKQfnTjw9
+         oeDg==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=JmjDBPVO;
+       dkim=pass header.i=@intel.com header.s=Intel header.b="PZp2OnF/";
        arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-46003-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-46003-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-46004-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-46004-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-46003-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a58be8si12973126d6.407.2025.05.08.19.29.01
+Return-Path: <kvm+bounces-46004-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5fc9d6c1984si785464a12.257.2025.05.08.19.30.15
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 May 2025 19:29:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-46003-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        Thu, 08 May 2025 19:30:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46004-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=JmjDBPVO;
+       dkim=pass header.i=@intel.com header.s=Intel header.b="PZp2OnF/";
        arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-46003-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-46003-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-46004-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-46004-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id C187D16BB79
-	for <alex.bennee@linaro.org>; Fri,  9 May 2025 02:29:01 +0000 (UTC)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 456DA1C231D3
+	for <alex.bennee@linaro.org>; Fri,  9 May 2025 02:30:21 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 875FC24167B;
-	Fri,  9 May 2025 02:28:56 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 10377244668;
+	Fri,  9 May 2025 02:29:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="JmjDBPVO"
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="PZp2OnF/"
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 521DA13E02D
-	for <kvm@vger.kernel.org>; Fri,  9 May 2025 02:28:54 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.14
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4D61C13E02D
+	for <kvm@vger.kernel.org>; Fri,  9 May 2025 02:29:56 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.16
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1746757736; cv=none; b=S7zUZEi6+HaAAKdwknBlR+mtitrq1sMeQJ8fJ0t58u85ZYHQy+u8lwklO95X5HUYfMGP1ClKip4a2k9ERn/iZEUwYQ1bDd/8oFf6sTyHmLNfe6jR/pHeceZJdMD5UbYusN9ipE/vT2GgSc6pnXloKnCcD5YgOBu2uS8k6CscJGQ=
+	t=1746757798; cv=none; b=NL3KAUAYEh4GkgAr8NmdtdV36JncT5RSBQRO6HGXrWvZwhl0dqwFsbKo7Ilb4Akgonu+dHTLEWEqaRqkulB1eJtb1KLZg7HXZivT1HSTFeWoU3CzjCLuAOkH8ftejA40Pz/y4ihQNwdIeUQhdfdCHdOjm7RNjWaggtCh/qs/bqg=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1746757736; c=relaxed/simple;
-	bh=RMprCGbtdSV40HLQjrF+qRBk02ekzXK5EPWksg+SrrM=;
+	s=arc-20240116; t=1746757798; c=relaxed/simple;
+	bh=7Tb77gPHUH0LPQdGOdm6IjNB2V0ob4F/eCHrWe81rIU=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=JsKqIRQQxfZN915OzB7DootmuHwl4t+f8Oal1KNZt48V7+CeUIRfIbzYoVnfSrceK8VowB/eHKk7aktAU2RsYH0KkvLRCkovayRBMiulX3HlOsg94ax/99V8LWTrC4Xa4nSU15ojt0bczuSa1I7GIzbMdRNQ7VQBmh0HnQNeZZY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=JmjDBPVO; arc=none smtp.client-ip=192.198.163.14
+	 Content-Type:Content-Disposition:In-Reply-To; b=jB57XliM+hsJb9rad3ki0LtCmGZUPDs04Q+ZSuES8jsRFFvCN7dEKLEeliaAgKKMM921Wg7h3gh1snoDYZwhwenM44F7pL3nqxydie4kwUTkwTM02N0ItNt6ujDwxUusmXrK0B8vv8vuigiS1RBbQ9JYen7LaKVyCj1TtbJnDm0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=PZp2OnF/; arc=none smtp.client-ip=192.198.163.16
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1746757734; x=1778293734;
+  t=1746757797; x=1778293797;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:content-transfer-encoding:in-reply-to;
-  bh=RMprCGbtdSV40HLQjrF+qRBk02ekzXK5EPWksg+SrrM=;
-  b=JmjDBPVO8KypqzqHLQEwrjEi7k+vQfNJ+0D4dFTyqJvkyRW7VBErxdwL
-   9f54hfN8KK8MSP65oAVEwe9e9hcpOnu75FaXjkjQnGxLIhlW5/ZYQEE+z
-   nWo++sB0oNnQHsvp+2/LzpJJaIgcZdkqWf/dWV+EmW1SP4taqNcU8dCqO
-   Txtt0GgWwgDgwLofnZThCXQB986yW3FTn4ux4b5nPvRInSPZd6k3d6Dtt
-   SOeN+mEfXoxpM+w2gYZhYoFgLIJMp05VRWPebMNzAtD/wgJ3XP0NBNNSk
-   E6p3XsgErA9ZGqg2YO+aElqyDulhz2srMrjyo4VniwcpnJaaHLqdW6U0M
-   g==;
-X-CSE-ConnectionGUID: apUlp2CHSyuZZknsUT1+wQ==
-X-CSE-MsgGUID: tsiPp4I4Sb2fywzSxmoIkg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11427"; a="48683052"
+  bh=7Tb77gPHUH0LPQdGOdm6IjNB2V0ob4F/eCHrWe81rIU=;
+  b=PZp2OnF/mJDspnZsTrz2K5LQeK4cYvqs5DZ0wthb1p6gI3ZUy4lpKvTC
+   ND/7gVwazTk6k/FbYh6To6juSOQ5LuK/E6qosRlStTptKLFvy2BvleQrb
+   fFM4mvUqSnmrqCWa3LS1iLwWUriN7tt3DbwTfKOKxbL/cijacD0OKZpFU
+   c+MLMfp2NIUDBk2b5k22BetuAu9W88pcS4WWoda+rTdLn389LD0NXdt1X
+   zoInX5e70FrwhiQjHI/aYoEpQOmg1aQL02IVvVteU8tiJQOe6A2tuPa9W
+   CFl+EWKvbKvf4ApeH+A3GTHASQ8nAYQZ6Y5FvbGkDwpEeswg/83cAJGFc
+   w==;
+X-CSE-ConnectionGUID: 7XKkcDqLSa2aNtAah3ttdA==
+X-CSE-MsgGUID: K4Wf8DTLRZ2zWEWvASNbRQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11427"; a="36196651"
 X-IronPort-AV: E=Sophos;i="6.15,274,1739865600"; 
-   d="scan'208";a="48683052"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 May 2025 19:28:53 -0700
-X-CSE-ConnectionGUID: 4cioW0uESkCHgfQCf0s58Q==
-X-CSE-MsgGUID: CXGlrR/DRviiDer3bjIwEw==
+   d="scan'208";a="36196651"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 May 2025 19:29:56 -0700
+X-CSE-ConnectionGUID: O4kiPmhbQaGrST7uwiUwRg==
+X-CSE-MsgGUID: ovYRMySHRxKudYS2HsQStw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.15,274,1739865600"; 
-   d="scan'208";a="136183450"
+   d="scan'208";a="136362015"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.39])
-  by orviesa009.jf.intel.com with ESMTP; 08 May 2025 19:28:47 -0700
-Date: Fri, 9 May 2025 10:49:48 +0800
+  by orviesa010.jf.intel.com with ESMTP; 08 May 2025 19:29:50 -0700
+Date: Fri, 9 May 2025 10:50:51 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
@@ -123,11 +123,11 @@ Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
 	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
 	Huacai Chen <chenhuacai@kernel.org>,
 	Jason Wang <jasowang@redhat.com>
-Subject: Re: [PATCH v4 04/27] hw/mips/loongson3_virt: Prefer using
- fw_cfg_init_mem_nodma()
-Message-ID: <aB1tTCJ2isIYbiIt@intel.com>
+Subject: Re: [PATCH v4 05/27] hw/nvram/fw_cfg: Factor
+ fw_cfg_init_mem_internal() out
+Message-ID: <aB1ti7GJSJwbhaoz@intel.com>
 References: <20250508133550.81391-1-philmd@linaro.org>
- <20250508133550.81391-5-philmd@linaro.org>
+ <20250508133550.81391-6-philmd@linaro.org>
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
@@ -137,23 +137,26 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250508133550.81391-5-philmd@linaro.org>
-X-TUID: Rp0rIr7MO4WG
+In-Reply-To: <20250508133550.81391-6-philmd@linaro.org>
+X-TUID: PzXYc1RxOcaL
 
-On Thu, May 08, 2025 at 03:35:27PM +0200, Philippe Mathieu-Daudé wrote:
-> Date: Thu,  8 May 2025 15:35:27 +0200
+On Thu, May 08, 2025 at 03:35:28PM +0200, Philippe Mathieu-Daudé wrote:
+> Date: Thu,  8 May 2025 15:35:28 +0200
 > From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Subject: [PATCH v4 04/27] hw/mips/loongson3_virt: Prefer using
->  fw_cfg_init_mem_nodma()
+> Subject: [PATCH v4 05/27] hw/nvram/fw_cfg: Factor
+>  fw_cfg_init_mem_internal() out
 > X-Mailer: git-send-email 2.47.1
 > 
-> fw_cfg_init_mem_wide() is prefered to initialize fw_cfg
-> with DMA support. Without DMA, use fw_cfg_init_mem_nodma().
+> Factor fw_cfg_init_mem_internal() out of fw_cfg_init_mem_wide().
+> In fw_cfg_init_mem_wide(), assert DMA arguments are provided.
+> Callers without DMA have to use the fw_cfg_init_mem() helper.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->  hw/mips/loongson3_virt.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/nvram/fw_cfg.c | 17 +++++++++++++----
+>  1 file changed, 13 insertions(+), 4 deletions(-)
+
+Fine for me,
 
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 

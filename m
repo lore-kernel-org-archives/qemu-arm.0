@@ -1,131 +1,172 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp1679307njb;
-        Sat, 10 May 2025 05:13:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUFHX6+jSBFcTFtc2n8dljU8tZA9EPSsbYMn+wpoQ15z7AKP7oaNFsPZqLab0CAFPTp2/HhSRUOnEo8WQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHiVKHRIW5+galTyPWDl+eHrjcRiscCCL/d+L0xHQFn8xv+s2pR6vZyjFKdh9XH2U9tGHYe
-X-Received: by 2002:a17:90b:1e53:b0:2fc:3264:3666 with SMTP id 98e67ed59e1d1-30c3d64d90amr10137560a91.30.1746879187817;
-        Sat, 10 May 2025 05:13:07 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1746879187; cv=pass;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp1261266njb;
+        Fri, 9 May 2025 10:34:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUcfVkHOMWvQOcjBC0Ik5RvInZCdsRHZr5POc1Y5Vr9ndB/Ywey9agJVaJV18Niz8dl6OVG9sJt1NRmWg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFNZ07z+XZ6cJ+cdA3V3OYXsRCyXWk7pTZMOMwI56hhHCTINmlLYDCPhhRXIEghvgG2YCjF
+X-Received: by 2002:a05:622a:1190:b0:48b:4d30:fced with SMTP id d75a77b69052e-4945261e04cmr60322571cf.0.1746812094149;
+        Fri, 09 May 2025 10:34:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746812094; cv=none;
         d=google.com; s=arc-20240605;
-        b=HuY3h+jf7cSEAp3wlvXNEYyq22oGQ+Y9CHyWQjqScSe2q1w2ErCRL3Yoioxirleg/e
-         ovZHX2+xh3EYugM0XNRP6fP6eTzAyCs2UOPcFa63fUM9o52lUpMwPdXLjq45CH7wIiPe
-         y9olZE7vYQfBaZRzgl2CabmkC+GhRuFXKTKx7JUpwlVukZm4CS5CDwyaYApAp9OX+rCO
-         MmSLmWtDSXtYet+PsPUZYdsYpIbrAV6kuyTbH4S88l95b9TujV6r8FsBfi1GVVed2zvk
-         C6E71acdWkXf+cZtDjqeBXwcNEiQT1MmmtCeM90fN0hoYPxVPHhMbY7AS1S3kjNWs3v8
-         +1Jg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=da87Gvfr92nTmRe9YFikUiBtrxbK9MwMgr9kg1RROaY=;
-        fh=zQ93gWpICIvEzEVrvbNQw5VseMqBXVA0tR6W6zOEW2E=;
-        b=NTKjrOVJTMwQxqmoxF7ZIKSYz8gA/45/7uuRqm5uuFhgLJwjrKnK7PeKdYzxwiow0/
-         yEEOssBONx9xru1KOB9EMvxeWP9C+3LI9SNwNM9xuVILyoVvqjBRsh5qSmGDPmIALG/Z
-         XGMaFom4u9S86qnWo1FYViy6XTwKKMAzk40GL4QhDwFMZe4MN/V37JMcF8ApW/LznD9r
-         SHMSGJtG7yZtKY/u9+LUeyN2bv41nNOEBfxu/TFR7ZMVjOBjI+FCCvh8eBbwUhyWx+h/
-         edF8L9jp/9KA5Z3JJ+xx7CRzpH+CTwruMbNvWb129fPcF/JTcdoh023TRvqac7EHOTHB
-         Ermw==;
+        b=NMoryfdCTzHrjK0QjONMQdFyeApWeYySZkewqlnY2RZiQCofr8RP7pLjLN2XyJDOmM
+         nXOvOn9+R9FBHTmwY820gvolns1/6G54nRhV12bYgqcEKr7v+IkQcf3VdXLt1pkszQ2E
+         cFoAFtBDxHhniC5/vUn7N5h/+Z3HDM93uz15+1Whx3dJRVGGKvVrymqpTzWqzgFWkIf2
+         tJFdRNidtEY/zfKEmJZtfgJ3lnuJNLU0a4ac5/IkrHiFZ4lsvi/LBYv6qpzFhwXmnmN8
+         ITsP9VRSwsegZA0JAXfmLF9NVoeaCe0chAM3kL6Bqu4DgjqPAUbiPSo3l91zcqj6nCmQ
+         vZFw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=5POo5JTMEcXvcliahFXEcisESlZvcsj3wN5QlvfIxSg=;
+        fh=3PQdBJyLW2lxENAimu7TfGbP//LVLHtiaxBwuFSiDHY=;
+        b=Z6k9axN66WJ2IAFT9kXxruJrYJ21m+z8LHaVJqWxnCv3qFxxvvkwYfnjPVEs5XLRf/
+         G/0pKYQeV/ELaohIAnsHpiaOVDwGeDjP4QzXR+sXa0/hcLZgLhmV/T0YNfKejxzzb6gv
+         9fmJQ/id2XLgQTrwPCbHE8dL9bLromlfj31fzkbO/o0A7XmIqM6KVtugeXcgwhP0Qbq4
+         EjxHAILyLG+xNBgqBNsTNNPf/YJEYpU4fbfKF5C420jr4zLudAIPsQFjz6kXVkhpKuxW
+         WOJICc5jt3TvAqql5tTD/gctp0XCo2yYqnAkDakzRsr4JkXF2OxwnV/d8D5rpEyfuqFe
+         dfTw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@collabora.com header.s=zohomail header.b=NxwCYmm7;
-       arc=pass (i=1 spf=pass spfdomain=collabora.com dkim=pass dkdomain=collabora.com dmarc=pass fromdomain=collabora.com>);
-       spf=pass (google.com: domain of dmitry.osipenko@collabora.com designates 136.143.188.12 as permitted sender) smtp.mailfrom=dmitry.osipenko@collabora.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=collabora.com
-Return-Path: <dmitry.osipenko@collabora.com>
-Received: from sender4-op-o12.zoho.com (sender4-op-o12.zoho.com. [136.143.188.12])
-        by mx.google.com with ESMTPS id 98e67ed59e1d1-30ad4841387si9086960a91.19.2025.05.10.05.13.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 10 May 2025 05:13:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dmitry.osipenko@collabora.com designates 136.143.188.12 as permitted sender) client-ip=136.143.188.12;
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yym6UKsx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-494525b4242si23820051cf.651.2025.05.09.10.34.54
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 09 May 2025 10:34:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@collabora.com header.s=zohomail header.b=NxwCYmm7;
-       arc=pass (i=1 spf=pass spfdomain=collabora.com dkim=pass dkdomain=collabora.com dmarc=pass fromdomain=collabora.com>);
-       spf=pass (google.com: domain of dmitry.osipenko@collabora.com designates 136.143.188.12 as permitted sender) smtp.mailfrom=dmitry.osipenko@collabora.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=collabora.com
-ARC-Seal: i=1; a=rsa-sha256; t=1746879175; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=CQqi0aQRkMyWKiBG9y86zueiHzyBoWZqTdb3ij3pG8We7Oz63UKphmty9iyppXAjOaR3Dr3u3sLcQ9A7dSj4oVSpcKNGwo2kE+1ZKku/6GUbPCV14trBRb3vBleTaRXQi+69VhHEUVhbopdgji6X5W8Ykq1qFlre+5Y5GLtMv8E=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1746879175; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=da87Gvfr92nTmRe9YFikUiBtrxbK9MwMgr9kg1RROaY=; 
-	b=F2C1bYxeUEC1urcRyP1UPJz62kUBFOEP7IdQODVsJo7yLSDsoSALc6uKvH/uFVG0I4fJsL2OjMeDN4E4TeDh5H6CWIgKV/35Kh1kAZ8M9G/awMKXuj/5LdVHYStEdYRozFK3+zuGP5FUiUTKy6Ph0SeJZ8XEmCSZudLtBnVQ2g0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1746879175;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=da87Gvfr92nTmRe9YFikUiBtrxbK9MwMgr9kg1RROaY=;
-	b=NxwCYmm7eiB2fDVfMi7Ugvzij/zXWswkfpvC5dsuDY+f/6q4FMz302nNwLMRWE45
-	HjIMfCzv2LI8oaqYJ2NHkJgcnhbGr01dwHAmPRyZevoYq2DylhXXyBIG84lrM/GGwFb
-	86fSLBIPcOEpeV8WfR9FkPIlxRdqa96yTlsxVx+Y=
-Received: by mx.zohomail.com with SMTPS id 1746879172685901.4554516787928;
-	Sat, 10 May 2025 05:12:52 -0700 (PDT)
-Message-ID: <d370ffec-f430-4377-80bc-323d5087834c@collabora.com>
-Date: Sat, 10 May 2025 15:12:45 +0300
+       dkim=pass header.i=@linaro.org header.s=google header.b=yym6UKsx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uDRcM-0005bR-Bn; Fri, 09 May 2025 13:34:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uDRcI-0005ap-Kq
+ for qemu-arm@nongnu.org; Fri, 09 May 2025 13:34:34 -0400
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uDRcG-0007Vf-Sk
+ for qemu-arm@nongnu.org; Fri, 09 May 2025 13:34:34 -0400
+Received: by mail-yb1-xb32.google.com with SMTP id
+ 3f1490d57ef6-e78e3200bb2so2385140276.3
+ for <qemu-arm@nongnu.org>; Fri, 09 May 2025 10:34:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1746812071; x=1747416871; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=5POo5JTMEcXvcliahFXEcisESlZvcsj3wN5QlvfIxSg=;
+ b=yym6UKsxxHEneJlH4oLJWXQGqo8EFcSZ31AvhQJ9cyiMc7YtmNBzilExzz+CtCayHg
+ Uod6aBKv5gpfQ5ZHHb/H3MUP6prWwugI+j+eYreXzI4JVB3WFZOomK/zBIvdnLyIY9L3
+ oAmXMHGezsvupbvN76Ss8gqa9a//AR1DtyiaXTQFmAMLDidruhbhQQBvG8CgR3bR2Fch
+ NhOcUD9q5g69RdcaIOesf7xSrZ3uk61U8FtLvAQqtN5frkcpq9nHz126KbPpqaOHWLPY
+ D69Xm7sCRpKpR2416f9Taw19nU1I2UaabLdOdsJYTe2b3Tzgz90quTP5kIA5eIemNecp
+ 57Ww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1746812071; x=1747416871;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=5POo5JTMEcXvcliahFXEcisESlZvcsj3wN5QlvfIxSg=;
+ b=hdycutDSpvj8s432eIzTCFdMetW/dczLdJRizhNW+SOXFYiT4/Brt1RJ6Le0w+lrxN
+ Gtu1ngxczX4kI1M2hQMz318y+Y9ulH9BUPc4BzB67FmlVVifyCjnCZB8P0mw2yALuuq6
+ uMVrJqp4WRp+3JOZacVVVon+NPp8OfFUy4tqK+c38nMOkf12d2HdT5+yYMDAyQTmfQPs
+ AbOkU3IU1gCnICexLx2+/+njJleI61HnxtsaBbRHpOPvx/XHD0P7bOX2XytAHRSoaBDG
+ e2DgRJm6c407Y8WP38BZrUckVCu8mnWgXA0yeLea15vRkgv8j5mihcJ84owczcRo6bbA
+ ARJg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUCRHQOS9hgbms6ZozApDy/nqcUNDXooqPeDDxwby7hpb/1K+Dwtle1U1SjRIOAA+Is/VTAzMHHJg==@nongnu.org
+X-Gm-Message-State: AOJu0YyZjmIJfzqEuTS0EPse0j7HFLrIitGeRSmQ3QEjDy6vcAF0z7Eq
+ AVCdbruq3dl4QuHCT05JzHj4ZjINuGeBB+q7wdfg9zNnrRKkuC+pqzmIqcwAcD+GxoVVyzd20D3
+ Qk66WuZXIfwUxxAOWlHQBlvunCVhe9CWRgi3KGQ==
+X-Gm-Gg: ASbGncvXhvQBuz2W3NwM+6KuSfXKO2KTvp5D3T180jGwLex8XZzZaF1+K63blJ/VcGR
+ CjBWe5r/HdCRLFJo6cjy9zhsUxyBcC+e5JvMKmep8j3FqkJtVv6YkgBpCfESo09pwpCojwKcN19
+ p2oPoLvk8f73DYQDRgb7Rnol/UIKfPO5XJ5g==
+X-Received: by 2002:a05:6902:228d:b0:e78:f3ea:200b with SMTP id
+ 3f1490d57ef6-e78fdc71abamr5857607276.22.1746812070986; Fri, 09 May 2025
+ 10:34:30 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 12/14] ui/gtk-gl-area: Remove extra draw call in
- refresh
-To: Akihiko Odaki <akihiko.odaki@daynix.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- David Hildenbrand <david@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- qemu-arm@nongnu.org, Mahmoud Mandour <ma.mandourr@gmail.com>,
- Markus Armbruster <armbru@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, John Snow <jsnow@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Peter Maydell <peter.maydell@linaro.org>,
- Alexandre Iooss <erdnaxe@crans.org>, Dongwon Kim <dongwon.kim@intel.com>,
- Vivek Kasireddy <vivek.kasireddy@intel.com>
-References: <20250506125715.232872-1-alex.bennee@linaro.org>
- <20250506125715.232872-13-alex.bennee@linaro.org>
- <d5a8cec1-f689-4d31-b6bb-b63eaa4ce2af@daynix.com>
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Content-Language: en-US
-In-Reply-To: <d5a8cec1-f689-4d31-b6bb-b63eaa4ce2af@daynix.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
-X-TUID: anYjWlcqVJz2
+References: <20250505131130.82206-1-santimonserr@gmail.com>
+In-Reply-To: <20250505131130.82206-1-santimonserr@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 9 May 2025 18:34:19 +0100
+X-Gm-Features: ATxdqUGY75Fo6psiRVX78ErX6GDtG6GXy41vQPQSl3qZFWHKXiWnZ0GYDGLJ10A
+Message-ID: <CAFEAcA_754T6Aucak+MimuaP0gO8mtUoAmq5wNj1N9oDmpa5eQ@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/arm: Replace TABs for spaces
+To: Santiago Monserrat Campanello <santimonserr@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, thuth@redhat.com, 
+ sw@weilnetz.de
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb32.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xApfUHXG52oN
 
-On 5/10/25 07:52, Akihiko Odaki wrote:
-> On 2025/05/06 21:57, Alex Bennée wrote:
->> From: Dongwon Kim <dongwon.kim@intel.com>
->>
->> This partially reverts commit 77bf310084dad38b3a2badf01766c659056f1cf2
->> which causes some guest display corruption when gtk-gl-area
->> is used for GTK rendering (e.g. Wayland Compositor) possibly due to
->> simulataneous accesses on the guest frame buffer by host compositor
->> and the guest.
-> 
-> Simply reverting the part of the commit may re-introduce the problem the
-> commit tried to solve, which will be a regression as the commit is
-> already included in releases.
-> 
-> I guess the problem is that the gl_block callback of GraphicHwOps is not
-> properly implemented and it is what should be fixed.
+On Mon, 5 May 2025 at 14:11, Santiago Monserrat Campanello
+<santimonserr@gmail.com> wrote:
+>
+> replaced all TABs for spaces for arm code
+>
+> Signed-off-by: Santiago Monserrat Campanello <santimonserr@gmail.com>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/373
+>
+> ---
+> replaced all tabs with spaces using vim :retab
+> used 4 spaces except in some defines and comments where I tried to
+> put everything alinged in the same column for better readability
+>
+> fixed the alignment of the previous version
+> ---
+>  hw/arm/omap1.c           | 1016 +++++++++++++++++++-------------------
+>  hw/arm/omap_sx1.c        |    2 +-
+>  hw/dma/omap_dma.c        |  334 ++++++-------
+>  hw/gpio/omap_gpio.c      |   28 +-
+>  hw/i2c/omap_i2c.c        |  178 +++----
+>  hw/intc/omap_intc.c      |  154 +++---
+>  hw/misc/omap_clk.c       |  470 +++++++++---------
+>  hw/timer/pxa2xx_timer.c  |   76 +--
+>  include/hw/arm/omap.h    |  534 ++++++++++----------
+>  include/hw/arm/sharpsl.h |    2 +-
+>  include/hw/arm/soc_dma.h |    4 +-
+>  11 files changed, 1399 insertions(+), 1399 deletions(-)
 
-The reverted commit made QEMU GTK GUI unusable under Wayland. It was
-fixing problem which requires very specific QEMU setup, while breaking
-generic setups. The offending change should be reverted as it introduced
-a bigger problem. A proper solution should be found, meanwhile QEMU GTK
-under Wayland should be restored, IMO.
+Hi; thanks for this patch. As a general note, this is a really
+big patch, even though it's only doing tab-to-space conversion.
 
-For the reference see [1]. First bug reports about a mirrored display
-problem were made to me on IRC a year ago and the root of the problem
-was identified only couple months ago.
+If it were touching more than one kind of Arm related code
+I would ask to split it up into multiple patches, but since
+all of these are basically related to the same OMAP board
+and it happens to apply cleanly and I can confirm it's
+only changing whitespace characters and not anything else,
+I've applied it to target-arm.next.
 
-[1]
-https://lore.kernel.org/qemu-devel/5aedf1ad-d9b0-4edb-a050-f3d9bee9bccb@collabora.com/
-
-As of today, the GTK problem isn't understood.
-
--- 
-Best regards,
-Dmitry
+thanks
+-- PMM

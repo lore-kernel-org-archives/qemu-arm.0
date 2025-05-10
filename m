@@ -1,89 +1,89 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp1518907njb;
-        Fri, 9 May 2025 21:42:44 -0700 (PDT)
-X-Received: by 2002:a17:90a:dfd0:b0:2ff:6a5f:9b39 with SMTP id 98e67ed59e1d1-30c3d3eb4e3mr10999897a91.18.1746852164461;
-        Fri, 09 May 2025 21:42:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746852164; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp1519668njb;
+        Fri, 9 May 2025 21:45:34 -0700 (PDT)
+X-Received: by 2002:a05:6a20:12d1:b0:1f8:d245:616d with SMTP id adf61e73a8af0-215abb39886mr7313683637.21.1746852334681;
+        Fri, 09 May 2025 21:45:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746852334; cv=none;
         d=google.com; s=arc-20240605;
-        b=T3repA/0Ji2rXRN/T8ouuiLZJNA7xiNudor3QwlrlSa7HewBcqltuwSlTXnBIzGpQA
-         JSMT8jEB8JYQE2U6g48F02BxbFRwUl+8f8UuBK9XQXkuXAQ0IhuGN8wNuakz1S6cn7B7
-         lVF2HFFhCR1PEIZp1wHHAM8HuTmx95I7PUS/c5WILnjlzwjzCG7Qg7LUThnD2aJc9E/I
-         2V8YsaycptDmk0aPSGWJuGZxPwhPzmkBUoVuduV7VPMt+TGO6wEtXrWpzeBMl7ZWhY9p
-         bu/e9eeJJNnycTRC19ZOyBvQ83qK5fxXr30U2Eo6KLOUTWgo9PRx7ht6/4Q1cexGBrwB
-         IbEQ==
+        b=fP8V3pv+oDvnMGeZAI3JLK8rlhSx9MF7fyKwXY/uEV+4+IxKFCNUIdlN1IUh3l8hAK
+         hG4NQuzcCTghlvwv/EssnsBhZp1F+iCWci4eN/9tdR2unrTBlEvARTgaGc/Ua4OqmG+v
+         9ZZbYX25i4tzeFU72L4t59ScUobCQw8n/+r0T/bkoqs2htDcdDLaAJDbnfIXr/qzJ/y1
+         cjsgtFZDgo/7FuW+zW23ryteplLo2lx64luRUZOUOuniWmrW1N12scpIyi/i80NmJbpb
+         VS6aU1P/VXvkxw888G2PSfxb2gTc5li41q3ZA9B90BL97alCTvSdJ/48rHxCn1YphbWM
+         c5AA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=pKj0+92XPB0tm2IzBJgADrWacxZv1TgpLy5sr0GANuY=;
+        bh=QrSMM4TKtkt+LPkj2y0AwU2n7uM1JNftoyOLUf6bXyA=;
         fh=ZHcH16rPeTNtLnvhEH+sm1+eIB2p2w58S6Iys3eeOi8=;
-        b=giKyJ7O2b4JwHCx2Z3dXDoXulxcBmiO/QiRZxvsDTSqw77X5aDCHc5hvg9moSmZX1O
-         naaLaoPJ89XLwt6keiW1kuD2xds8PfZhbOKBo21qRKBngQjuIxC6V68jhotGh2iuoD6T
-         ecupPVf49xX95ees/MnvBPjAtPpCIlCz3cpS2X9yV28vPspLcHbAg/JzUZXZPoE46qLg
-         FavbZV4jh9ln5vAwS6kIJdL9rB3xpo1w53F6QMLpAqKQ2w6UL8vcnzYWMZPNm5NFj99+
-         aiJRmbNWFP00BK8z4h9woisV3TAn50uCpZr4JVgArCRaIn7KtPyRTPtwz5H7CwkLBXze
-         ttGA==;
+        b=fO/H1ASv78fae8bIusE3xPiH3/bZ4JIejn9vtZ/oAbTX3Ow/Y6QgqLbJNoUKYIrFdL
+         LxLFcxNoL74Geiv+zXpEZLfT5GJeFmA7sEkOeQS9UO3oIjIe161JCQ69hv+A1UIy7CGE
+         CldvdnwiN+jhqU4WjfOytL/1KNfioDOK9US0DE3VqcE+TX3w6n1hCFP91h5eSb/Qmv4k
+         I3bDjWIOw1o0ltczg/E1NtE0SemDt+iws2eI0E7d0Q/YxkiLZF0mWwdP0wKh8VB21Nxp
+         hnM23EWtkCHpXOo26d9RzgFmBPvYmnx7cswnG6uy8+VF+DcmM6LvfQP0SC71lwyqoGxd
+         FE+g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=LdpXSnas;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Snsdr+zM;
        spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 98e67ed59e1d1-30c39ed0ec8sor3277425a91.3.2025.05.09.21.42.44
+        by mx.google.com with SMTPS id 41be03b00d2f7-b234922eb09sor2614238a12.1.2025.05.09.21.45.34
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 09 May 2025 21:42:44 -0700 (PDT)
+        Fri, 09 May 2025 21:45:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=LdpXSnas;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Snsdr+zM;
        spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1746852164; x=1747456964; darn=linaro.org;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1746852334; x=1747457134; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=pKj0+92XPB0tm2IzBJgADrWacxZv1TgpLy5sr0GANuY=;
-        b=LdpXSnasQwolaYAWpa1FxvmHPPcgscYVB4NYed7Z5cygVnHOojyRwlg6hBBwwpNAct
-         SDPkWffeUVzqqkzj4e0PmB1Gd7vvnD+o98rW5QJ/etmfbs1iDVHmsO/Eyw+yYbThbjTV
-         ND42SwoMjEdEJfO2KVIjQypmBi2vxrHkc2Q8GTInghKrK40JFB+9iGH8QNMyPpQmvuot
-         EGHxuqfnEGmHn+o9w49tQc2a3sjYFFDEr9daIKrIYlKrXtFv6UPbREpSJu/FKEM4sHwq
-         ttp2C/9M2lknI44BaqEhFk0nIXQwosHxzhogc3NI3VoeX4IWTJYf8Kq5VIibjwS2DS2B
-         JJFw==
+        bh=QrSMM4TKtkt+LPkj2y0AwU2n7uM1JNftoyOLUf6bXyA=;
+        b=Snsdr+zMxnQvo0aDByBTKheVfVDwSQDk+yJjVzBqRSPHKd7+BFsrsgUlqUHv6ZGwaK
+         hvPHNXnwZcRXUUiwRyH6+rkVgMcIeQE3xNGwQGraNhzebHB/V35VL6JCvhFizIj84/k/
+         wpd9MZ2hdzTk4DValKggq3Y3hJc9llJoe0mp13vKWC3wWdAanVSUtComc1WheR9gWEDn
+         xaajo40wObKGrXmXzWj0cCcIjo8/FYSwFdPmMZoW4auY/BdB17K1u9uHJEtIYE2nBbMm
+         ilw5mIsmU7g7nhGWHuel8yNDW4lnEL2+eRxRjnYGtHEcKVTwilPielnNAMOooMgno5AG
+         kS6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746852164; x=1747456964;
+        d=1e100.net; s=20230601; t=1746852334; x=1747457134;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=pKj0+92XPB0tm2IzBJgADrWacxZv1TgpLy5sr0GANuY=;
-        b=VsMa+vWCtLw3oxPgxNL13utcDSUAZ10FrQFUbnHGxDdKpcdgh1BMvtOHQBq9dr0rB6
-         65tpBPXX8P1knMD5LHe8KNDY/R1lPuBHCf47fvmOFI5b1TSPnfioGwK7+gQFdJzJx/jF
-         tM93tnvzXiW2buJqh0ljwzUFKyOEexKlAw9K/i1u1Tjz1qV2DYU3KF9EBsiK4FXDfn7E
-         rfKedrckSSSWHpnrIRpd8Y0URaTsTqJSH/PBoXgBPogj38jP7+ssFovm/Qeh9m4sw7dh
-         1+rdTcPOyOUgmK/Jjhxv5jNVhptXOpUXEwM8jbPlIk59atmX1DUI692YEnFAumiUlAfJ
-         ROqA==
-X-Gm-Message-State: AOJu0Yxp2VL/IFCO/tMaLjHOWs64q9uwofw+dcQ6+bL8WB4edt5WepPa
-	L47Fcey6r020BMuJRZe96WkUJsryAAkhp9QKoNi9bb4w/iB0XA+xsF1DlIiNGf0aYZKz1c+2KJc
-	w
-X-Gm-Gg: ASbGncv8jGBYffTsgGv4N8s8oIgcCC0zcVZrEX1a0/VQ+TLpu3mOW6eE0dIq7cHrTq0
-	5RufNTdNwfKEzS47bFs989D77J7Uj0dQeU63n9wFLoaeV0jaUMRnNr6u8/3r4270bgIy5yGlof0
-	COHPhma4A+RN/fN2GcSN1K9wHfJxOr2wBTN8IPTl+2vC3N7DVXQ/jbAt5817pTJUy00JhqIPy+z
-	ac0UGXng7oyvZJunWUTEEwF/iKa5CJK4GasS8x/FTJwzFWkWVy9QUX7+GqXbMMrj4WyhrQrFm/7
-	7rFjHvYfgEMOqlmuqt4usnytSkyDYduDzaDVijJAPee8yBDpJlAGMQlny5udVg==
-X-Google-Smtp-Source: AGHT+IHfBq0rzikQMG7X7NlwScAD2E0MqGgqTMZKI44qGpJNGbd+9I4OMMDi5xYz0ZOR2fgUcih/Pg==
-X-Received: by 2002:a17:90b:55c4:b0:30a:dc08:d0fe with SMTP id 98e67ed59e1d1-30c3d3e83c7mr10742320a91.16.1746852163791;
-        Fri, 09 May 2025 21:42:43 -0700 (PDT)
+        bh=QrSMM4TKtkt+LPkj2y0AwU2n7uM1JNftoyOLUf6bXyA=;
+        b=NPrGyvtCD52SKHjfcTSIRD8/zDjgDTEZZBHWNBbpVGNN4eZ8+eSnGL6TbpaNeZ+5dc
+         RjZlulh7rw1G5RTOPiOPxZFIgQWIFFzrlf1plvHrSj307Aq96aPkDcKmp1kqsLsLEMdE
+         Fes3agTjttGDODDLKAH6VsJfNafMJFdy7x1Hiu+HqDR+HDOqG2evNsmUg0UnB8phA6Y5
+         3kGHTYXd4wmqjx1wAKd0cqxiT2tq4nTbusnlw9WZqN6lQXQazkJsliZTbUMn5MMJ4IYi
+         8OuHqbuXBSV2S8+RN9BRTcl40z54Z/zAAMxJtJPrO/Y8xjQvQyU5h/03q3IqMi6H9git
+         1Q7Q==
+X-Gm-Message-State: AOJu0YxV9UL+IZeELI0coBp5AZhCKH5S1/4RsAkn/ILtOtmCxcgxTLtO
+	UhXN083KEFlrpaSlkLRc5M/BrxPB5ThAr5X+NphKCspdw8M+Ed+WbEYcW+SbE0P2Xo/mT9m/GHp
+	2
+X-Gm-Gg: ASbGncuwvhlxXMFhXrbAy3X/WjUbaK8pjagrM5qv25xmNbjww/5ly3Gv9K+Dc3pN3WH
+	UIAC8nB3I5LJ6SpRNgapNQtgXUVSdev2mAuX6He07f27s2GsIrcq7RSDIGczXH43g7O+CUhgA3m
+	QtDFXbT1jiTgtzBt+n3gwmGXtrrUfVR+PRKq/BXEQt4Xj7iDIT3K5W5Y37Givc/OvpPmoUVa9eS
+	3a1Wm9+U1/rD2BjaQIH1+VJRnLul/aT3mtyGmkfIrZ2tNyBsCHZ8U2lK0VRudAr7ee+CHczQkMf
+	RUhWDU7xplXttyGLB4T9P3FE9zx28XhMh2QnJcshLCI+eu/xPcT5ttC93SFiGQ==
+X-Google-Smtp-Source: AGHT+IFrYoQEbzLU5wPGDpCzZFJ2jWLYUP+crdH2QfRE3HaxOyAg9RQnpWXBl9AuJI6MXi1y7pJp5w==
+X-Received: by 2002:a05:6300:668a:b0:1f5:7007:9ea5 with SMTP id adf61e73a8af0-215ababa3d9mr9801554637.2.1746852334098;
+        Fri, 09 May 2025 21:45:34 -0700 (PDT)
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from [10.100.116.185] ([157.82.128.1])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30ad4d56976sm4957693a91.27.2025.05.09.21.42.39
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b235198cccdsm2265681a12.64.2025.05.09.21.45.29
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 May 2025 21:42:43 -0700 (PDT)
-Message-ID: <cabfe49b-38af-4ecc-a338-1fe175dd7226@daynix.com>
-Date: Sat, 10 May 2025 13:42:38 +0900
+        Fri, 09 May 2025 21:45:33 -0700 (PDT)
+Message-ID: <f0890b48-9b80-4ae7-892a-c45fd3dee089@daynix.com>
+Date: Sat, 10 May 2025 13:45:28 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 05/14] contrib/plugins: add a scaling factor to the ips
- arg
+Subject: Re: [PATCH v2 06/14] contrib/plugins: allow setting of instructions
+ per quantum
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -102,114 +102,80 @@ Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Fabiano Rosas <farosas@suse.de>, Peter Maydell <peter.maydell@linaro.org>,
  Alexandre Iooss <erdnaxe@crans.org>
 References: <20250506125715.232872-1-alex.bennee@linaro.org>
- <20250506125715.232872-6-alex.bennee@linaro.org>
+ <20250506125715.232872-7-alex.bennee@linaro.org>
 Content-Language: en-US
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <20250506125715.232872-6-alex.bennee@linaro.org>
+In-Reply-To: <20250506125715.232872-7-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: ARpoaXQtDPtC
+X-TUID: lfTvRkRuLBfR
 
 On 2025/05/06 21:57, Alex Bennée wrote:
-> It's easy to get lost in zeros while setting the numbers of
-> instructions per second. Add a scaling suffix to make things simpler.
+> The default is we update time every 1/10th of a second or so. However
+> for some cases we might want to update time more frequently. Allow
+> this to be set via the command line through the ipq argument.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 > 
 > ---
 > v2
->    - normalise the suffix before a full strcmp0
->    - check endptr actually set
->    - fix checkpatch
+>    - checkpatch fixes.
 > ---
->   contrib/plugins/ips.c | 36 +++++++++++++++++++++++++++++++++++-
->   1 file changed, 35 insertions(+), 1 deletion(-)
+>   docs/about/emulation.rst |  4 ++++
+>   contrib/plugins/ips.c    | 10 +++++++++-
+>   2 files changed, 13 insertions(+), 1 deletion(-)
 > 
+> diff --git a/docs/about/emulation.rst b/docs/about/emulation.rst
+> index a72591ee4d..456d01d5b0 100644
+> --- a/docs/about/emulation.rst
+> +++ b/docs/about/emulation.rst
+> @@ -811,6 +811,10 @@ This plugin can limit the number of Instructions Per Second that are executed::
+>     * - ips=N
+>       - Maximum number of instructions per cpu that can be executed in one second.
+>         The plugin will sleep when the given number of instructions is reached.
+> +  * - ipq=N
+> +    - Instructions per quantum. How many instructions before we re-calculate time.
+> +      The lower the number the more accurate time will be, but the less efficient the plugin.
+> +      Defaults to ips/10
+>   
+>   Other emulation features
+>   ------------------------
 > diff --git a/contrib/plugins/ips.c b/contrib/plugins/ips.c
-> index e5297dbb01..9b166a7d6c 100644
+> index 9b166a7d6c..62ed8ddd08 100644
 > --- a/contrib/plugins/ips.c
 > +++ b/contrib/plugins/ips.c
-> @@ -20,6 +20,8 @@
->   
->   QEMU_PLUGIN_EXPORT int qemu_plugin_version = QEMU_PLUGIN_VERSION;
->   
-> +#define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
-> +
-
-G_N_ELEMENTS() is already available.
-
->   /* how many times do we update time per sec */
->   #define NUM_TIME_UPDATE_PER_SEC 10
->   #define NSEC_IN_ONE_SEC (1000 * 1000 * 1000)
-> @@ -129,6 +131,18 @@ static void plugin_exit(qemu_plugin_id_t id, void *udata)
->       qemu_plugin_scoreboard_free(vcpus);
->   }
->   
-> +typedef struct {
-> +    const char *suffix;
-> +    unsigned long multipler;
-
-I prefer to have an explicitly-sized type: uint32_t in this case. It 
-also saves typing several characters as a bonus.
-
-> +} scale_entry;
-
-docs/devel/style.rst says
- > Structured type names are in CamelCase; harder to type but standing
- > out.
-
-> +
-> +/* a bit like units.h but not binary */
-> +static scale_entry scales[] = {
-> +    { "khz", 1000 },
-> +    { "mhz", 1000 * 1000 },
-> +    { "ghz", 1000 * 1000 * 1000 },
-
-Having "hz" as suffixes look a bit awkard. "1 giga instructions per 
-second" sounds natural, but "1 gigahertz instructions per second" 
-doesn't to me. Practically, it would be easier to just type "g" instead 
-of "ghz".
-
-util/cutils.c has similar code though I guess a plugin cannot be linked 
-to it.
-
-> +};
-> +
->   QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+> @@ -147,6 +147,8 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
 >                                              const qemu_info_t *info, int argc,
 >                                              char **argv)
-> @@ -137,12 +151,32 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+>   {
+> +    bool ipq_set = false;
+> +
+>       for (int i = 0; i < argc; i++) {
 >           char *opt = argv[i];
 >           g_auto(GStrv) tokens = g_strsplit(opt, "=", 2);
->           if (g_strcmp0(tokens[0], "ips") == 0) {
-> -            max_insn_per_second = g_ascii_strtoull(tokens[1], NULL, 10);
-> +            char *endptr = NULL;
-> +            max_insn_per_second = g_ascii_strtoull(tokens[1], &endptr, 10);
->               if (!max_insn_per_second && errno) {
->                   fprintf(stderr, "%s: couldn't parse %s (%s)\n",
->                           __func__, tokens[1], g_strerror(errno));
->                   return -1;
+> @@ -177,6 +179,9 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+>                       return -1;
+>                   }
 >               }
-> +
-> +            if (endptr && *endptr != 0) {
-> +                g_autofree gchar *lower = g_utf8_strdown(endptr, -1);
-> +                unsigned long scale = 0;
-> +
-> +                for (int j = 0; j < ARRAY_SIZE(scales); j++) {
-> +                    if (g_strcmp0(lower, scales[j].suffix) == 0) {
-> +                        scale = scales[j].multipler;
-> +                        break;
-> +                    }
-> +                }
-> +
-> +                if (scale) {
-> +                    max_insn_per_second *= scale;
-> +                } else {
-> +                    fprintf(stderr, "bad suffix: %s\n", endptr);
-> +                    return -1;
-> +                }
-> +            }
+> +        } else if (g_strcmp0(tokens[0], "ipq") == 0) {
+> +            max_insn_per_quantum = g_ascii_strtoull(tokens[1], NULL, 10);
+
+It may be nice to have an error check performed for ips.
+
+> +            ipq_set = true;
 >           } else {
 >               fprintf(stderr, "option parsing failed: %s\n", opt);
 >               return -1;
+> @@ -184,7 +189,10 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+>       }
+>   
+>       vcpus = qemu_plugin_scoreboard_new(sizeof(vCPUTime));
+> -    max_insn_per_quantum = max_insn_per_second / NUM_TIME_UPDATE_PER_SEC;
+> +
+> +    if (!ipq_set) {
+> +        max_insn_per_quantum = max_insn_per_second / NUM_TIME_UPDATE_PER_SEC;
+> +    }
+>   
+>       if (max_insn_per_quantum == 0) {
+>           fprintf(stderr, "minimum of %d instructions per second needed\n",

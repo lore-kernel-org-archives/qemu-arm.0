@@ -1,172 +1,370 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp1261266njb;
-        Fri, 9 May 2025 10:34:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUcfVkHOMWvQOcjBC0Ik5RvInZCdsRHZr5POc1Y5Vr9ndB/Ywey9agJVaJV18Niz8dl6OVG9sJt1NRmWg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFNZ07z+XZ6cJ+cdA3V3OYXsRCyXWk7pTZMOMwI56hhHCTINmlLYDCPhhRXIEghvgG2YCjF
-X-Received: by 2002:a05:622a:1190:b0:48b:4d30:fced with SMTP id d75a77b69052e-4945261e04cmr60322571cf.0.1746812094149;
-        Fri, 09 May 2025 10:34:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746812094; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp1513135njb;
+        Fri, 9 May 2025 21:21:54 -0700 (PDT)
+X-Received: by 2002:a17:903:32ca:b0:223:f408:c3e2 with SMTP id d9443c01a7336-22fc8b41541mr86667715ad.14.1746850914455;
+        Fri, 09 May 2025 21:21:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746850914; cv=none;
         d=google.com; s=arc-20240605;
-        b=NMoryfdCTzHrjK0QjONMQdFyeApWeYySZkewqlnY2RZiQCofr8RP7pLjLN2XyJDOmM
-         nXOvOn9+R9FBHTmwY820gvolns1/6G54nRhV12bYgqcEKr7v+IkQcf3VdXLt1pkszQ2E
-         cFoAFtBDxHhniC5/vUn7N5h/+Z3HDM93uz15+1Whx3dJRVGGKvVrymqpTzWqzgFWkIf2
-         tJFdRNidtEY/zfKEmJZtfgJ3lnuJNLU0a4ac5/IkrHiFZ4lsvi/LBYv6qpzFhwXmnmN8
-         ITsP9VRSwsegZA0JAXfmLF9NVoeaCe0chAM3kL6Bqu4DgjqPAUbiPSo3l91zcqj6nCmQ
-         vZFw==
+        b=BP8O7SKFh/ngLv3O2Tm7ooi1t91MzPz69SXdY5SUYlqoySLLcwB6RXmfR4oR1ogriZ
+         vxpohZ0HL8R3LlMtivKtyhDioY8Iz4kxaGMB/hozHkkbyEBTCqqyE4G6Y3dzHms6+N+F
+         dTeemD+g82v8BiXYkz0jxvUtVZeZuMvlu2YX1iuasvrRnezWh8zGjbvbpLdtdLNdtMBu
+         yvy+Sb7xhhjpfa0AovI9+ifbWC1/XhgH0tNxr0tU3Phur7+iyLmNf+/KW/2rkkgbek/M
+         3F6eAjByK8UZA6WIEylPLsu/aClKjOyGs7RX7URmy1CU42Jq9PhXzi+HkwHzo89JqjFB
+         lziw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=5POo5JTMEcXvcliahFXEcisESlZvcsj3wN5QlvfIxSg=;
-        fh=3PQdBJyLW2lxENAimu7TfGbP//LVLHtiaxBwuFSiDHY=;
-        b=Z6k9axN66WJ2IAFT9kXxruJrYJ21m+z8LHaVJqWxnCv3qFxxvvkwYfnjPVEs5XLRf/
-         G/0pKYQeV/ELaohIAnsHpiaOVDwGeDjP4QzXR+sXa0/hcLZgLhmV/T0YNfKejxzzb6gv
-         9fmJQ/id2XLgQTrwPCbHE8dL9bLromlfj31fzkbO/o0A7XmIqM6KVtugeXcgwhP0Qbq4
-         EjxHAILyLG+xNBgqBNsTNNPf/YJEYpU4fbfKF5C420jr4zLudAIPsQFjz6kXVkhpKuxW
-         WOJICc5jt3TvAqql5tTD/gctp0XCo2yYqnAkDakzRsr4JkXF2OxwnV/d8D5rpEyfuqFe
-         dfTw==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=qPsDrHE/DgFgkvsM6mufkD2WR4T0NAe42f/Qx3S1T8s=;
+        fh=844MzXBlPUgvB9rTPJs8WMQKM8K3siMtcVyOpAhfjZg=;
+        b=LYEHx4IuyDNeUcHyK5gpYq//e+a4rgb9GfUXUnTRykX+3eXs08oKqaFnX4l3S0XIpi
+         HeG0wY0E5VgYvcKhCTXOmZ3me9kieUePzEaKKTcN7wf0mzJmhyk/1oRM0zh8gCW/rEsU
+         f7C87nJVEiSimp5wV4+IMLH/X9grsubfX9f6bnPpwWLHgx6ivRBUgrn25N5nUnEDNtMa
+         F6DylaknmrnWlAhGQDdMXHjzF9m4PtEYmeVtuUVjdUQ6dGCSzvufbZjW1g83gPAoarzo
+         351ZMU9AVFDvxw7O43MPvObrRRZ3AAFVROO1eIp3JhzhqFUXgbjFu8lHwA55D4MRelqv
+         gcUQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yym6UKsx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="HmMeZ3/5";
+       spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-494525b4242si23820051cf.651.2025.05.09.10.34.54
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-22fc6f2215asor28669245ad.12.2025.05.09.21.21.54
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 May 2025 10:34:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 09 May 2025 21:21:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yym6UKsx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="HmMeZ3/5";
+       spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uDRcM-0005bR-Bn; Fri, 09 May 2025 13:34:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uDRcI-0005ap-Kq
- for qemu-arm@nongnu.org; Fri, 09 May 2025 13:34:34 -0400
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uDRcG-0007Vf-Sk
- for qemu-arm@nongnu.org; Fri, 09 May 2025 13:34:34 -0400
-Received: by mail-yb1-xb32.google.com with SMTP id
- 3f1490d57ef6-e78e3200bb2so2385140276.3
- for <qemu-arm@nongnu.org>; Fri, 09 May 2025 10:34:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1746812071; x=1747416871; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=5POo5JTMEcXvcliahFXEcisESlZvcsj3wN5QlvfIxSg=;
- b=yym6UKsxxHEneJlH4oLJWXQGqo8EFcSZ31AvhQJ9cyiMc7YtmNBzilExzz+CtCayHg
- Uod6aBKv5gpfQ5ZHHb/H3MUP6prWwugI+j+eYreXzI4JVB3WFZOomK/zBIvdnLyIY9L3
- oAmXMHGezsvupbvN76Ss8gqa9a//AR1DtyiaXTQFmAMLDidruhbhQQBvG8CgR3bR2Fch
- NhOcUD9q5g69RdcaIOesf7xSrZ3uk61U8FtLvAQqtN5frkcpq9nHz126KbPpqaOHWLPY
- D69Xm7sCRpKpR2416f9Taw19nU1I2UaabLdOdsJYTe2b3Tzgz90quTP5kIA5eIemNecp
- 57Ww==
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1746850914; x=1747455714; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=qPsDrHE/DgFgkvsM6mufkD2WR4T0NAe42f/Qx3S1T8s=;
+        b=HmMeZ3/5l6A32WiXUgsGPksB6hJh8SVs+RgtffadF8sBkeh1U4t7Q1jWswzlAoPYgS
+         202oC83TAXUgN1w5yNS34mG/lq+jpwjTD8XhqRwDuedYTsDbRp4Hcat+y8k4G429zrkR
+         T0M+8nmngCPLMESx1w6JV/2GmGKtU6Y31wfbI+8RownyEhtR1JqgNHFBjqgZbWHkw45P
+         2qqrnIlE1CN22jCTUyxX2x3wTv0C6AaPgOGb9xfolmRDzacTnz5F4hxlo3TttFW73iQv
+         fra8G56AuyalJN5Dn6Sy8zyjP/iYXaAHXq9Ekk+kY/l54Af74lHnBltdldJ5McHGXadv
+         h5ow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746812071; x=1747416871;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=5POo5JTMEcXvcliahFXEcisESlZvcsj3wN5QlvfIxSg=;
- b=hdycutDSpvj8s432eIzTCFdMetW/dczLdJRizhNW+SOXFYiT4/Brt1RJ6Le0w+lrxN
- Gtu1ngxczX4kI1M2hQMz318y+Y9ulH9BUPc4BzB67FmlVVifyCjnCZB8P0mw2yALuuq6
- uMVrJqp4WRp+3JOZacVVVon+NPp8OfFUy4tqK+c38nMOkf12d2HdT5+yYMDAyQTmfQPs
- AbOkU3IU1gCnICexLx2+/+njJleI61HnxtsaBbRHpOPvx/XHD0P7bOX2XytAHRSoaBDG
- e2DgRJm6c407Y8WP38BZrUckVCu8mnWgXA0yeLea15vRkgv8j5mihcJ84owczcRo6bbA
- ARJg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUCRHQOS9hgbms6ZozApDy/nqcUNDXooqPeDDxwby7hpb/1K+Dwtle1U1SjRIOAA+Is/VTAzMHHJg==@nongnu.org
-X-Gm-Message-State: AOJu0YyZjmIJfzqEuTS0EPse0j7HFLrIitGeRSmQ3QEjDy6vcAF0z7Eq
- AVCdbruq3dl4QuHCT05JzHj4ZjINuGeBB+q7wdfg9zNnrRKkuC+pqzmIqcwAcD+GxoVVyzd20D3
- Qk66WuZXIfwUxxAOWlHQBlvunCVhe9CWRgi3KGQ==
-X-Gm-Gg: ASbGncvXhvQBuz2W3NwM+6KuSfXKO2KTvp5D3T180jGwLex8XZzZaF1+K63blJ/VcGR
- CjBWe5r/HdCRLFJo6cjy9zhsUxyBcC+e5JvMKmep8j3FqkJtVv6YkgBpCfESo09pwpCojwKcN19
- p2oPoLvk8f73DYQDRgb7Rnol/UIKfPO5XJ5g==
-X-Received: by 2002:a05:6902:228d:b0:e78:f3ea:200b with SMTP id
- 3f1490d57ef6-e78fdc71abamr5857607276.22.1746812070986; Fri, 09 May 2025
- 10:34:30 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1746850914; x=1747455714;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=qPsDrHE/DgFgkvsM6mufkD2WR4T0NAe42f/Qx3S1T8s=;
+        b=Vou9vOgrePnxfUiZcyl8MJ2b+5Wa3z8yV7JTKYqmQMM0x28oPyO8W8/qAkjf5HdUbm
+         f1RDPLYz4pzqak6FvUASuyDAFaRmjb6uI64Ze592hg6RLqglXTXCgoM2o4ZSwOvlff2s
+         saJVx7Bc2uBbfOfLuojXRdqgXZtTibXh5r/Rw7ZfhXdrCwYkxcC0z5KsQr5uMXbgjS/e
+         2IO1IcqmgzwnlsKLYV2zC6wMNDXV8jB4H1WhzCd6PlnaiYxXynPazLtx0cY6e5HyDd8x
+         CcVs9Wz7r/P4iy1Lsy+xOxtapEA9RItJw0BJ9zwvyYqNjorhox5jkQRsgPD3YZCHWIvz
+         W5Ww==
+X-Gm-Message-State: AOJu0YyaBW1wDkai3DROcuPZTtW5/4CIRGfoqLlndzTQEMocsxkc4ZLc
+	ubQKG7MqL0boB1FCfXpOEnc5PkoX/3m1eZSgU6YEjTVAMmhpUDdB8WDi5jAcGFW+Or7XEtRw753
+	+
+X-Gm-Gg: ASbGnctTgUuXds7MRruC3FhxbYVU7GhoRzoiP42y9PfDFKk/VMGraXcTxfI/x+gAmEL
+	mKUFylU8uPIPVk/zLwrR+gZM1tvHl+H+pe9NS9lzamLfMabznrThI5hDCrokPf7guTJ+KC4cBlf
+	UO9J3jxNrvjwa9DlIuj3tDIAmowu9tVPCpWdILSiWK0wDjmag8yUiY+4ooK3BTDzM+/lsRIZRjh
+	1s9NsHvV/VknHqutM9UHZpdrtH1AVFfWCUqcS0CNgE/7u46QzrvajoAEauVdj2/g6hpcvViZ5ot
+	CedS/QG71FutR07k5qTH3OBeoHZ57Vle0cRT5/C5uyjw0UZgouFV9PekNISWQg==
+X-Google-Smtp-Source: AGHT+IHxphVRFoXmz6jZVf3z8pHT4Ah1U0GfTb39t5YB6PE8f0K2EmkSBGB4+9ONoLjiTwB6HgyhIA==
+X-Received: by 2002:a17:902:d487:b0:21f:617a:f1b2 with SMTP id d9443c01a7336-22fc91a84e2mr85355995ad.46.1746850913593;
+        Fri, 09 May 2025 21:21:53 -0700 (PDT)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from [10.100.116.185] ([157.82.128.1])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22fc82bfc20sm25262335ad.256.2025.05.09.21.21.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 09 May 2025 21:21:53 -0700 (PDT)
+Message-ID: <d2429cfd-d1b1-435c-b202-7f90f7365bf2@daynix.com>
+Date: Sat, 10 May 2025 13:21:47 +0900
 MIME-Version: 1.0
-References: <20250505131130.82206-1-santimonserr@gmail.com>
-In-Reply-To: <20250505131130.82206-1-santimonserr@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 9 May 2025 18:34:19 +0100
-X-Gm-Features: ATxdqUGY75Fo6psiRVX78ErX6GDtG6GXy41vQPQSl3qZFWHKXiWnZ0GYDGLJ10A
-Message-ID: <CAFEAcA_754T6Aucak+MimuaP0gO8mtUoAmq5wNj1N9oDmpa5eQ@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/arm: Replace TABs for spaces
-To: Santiago Monserrat Campanello <santimonserr@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, thuth@redhat.com, 
- sw@weilnetz.de
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb32.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xApfUHXG52oN
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 03/14] tests/tcg: make aarch64 boot.S handle different
+ starting modes
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ David Hildenbrand <david@redhat.com>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, John Snow <jsnow@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Peter Maydell <peter.maydell@linaro.org>,
+ Alexandre Iooss <erdnaxe@crans.org>,
+ Julian Armistead <julian.armistead@linaro.org>,
+ Jim MacArthur <jim.macarthur@linaro.org>
+References: <20250506125715.232872-1-alex.bennee@linaro.org>
+ <20250506125715.232872-4-alex.bennee@linaro.org>
+Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <20250506125715.232872-4-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: 8t6LAUxbgtHj
 
-On Mon, 5 May 2025 at 14:11, Santiago Monserrat Campanello
-<santimonserr@gmail.com> wrote:
->
-> replaced all TABs for spaces for arm code
->
-> Signed-off-by: Santiago Monserrat Campanello <santimonserr@gmail.com>
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/373
->
+On 2025/05/06 21:57, Alex Bennée wrote:
+> Currently the boot.S code assumes everything starts at EL1. This will
+> break things like the memory test which will barf on unaligned memory
+> access when run at a higher level.
+> 
+> Adapt the boot code to do some basic verification of the starting mode
+> and the minimal configuration to move to the lower exception levels.
+> With this we can run the memory test with:
+> 
+>    -M virt,secure=on
+>    -M virt,secure=on,virtualization=on
+>    -M virt,virtualisation=on
+> 
+> If a test needs to be at a particular EL it can use the semihosting
+> command line to indicate the level we should execute in.
+> 
+> Cc: Julian Armistead <julian.armistead@linaro.org>
+> Cc: Jim MacArthur <jim.macarthur@linaro.org>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> 
 > ---
-> replaced all tabs with spaces using vim :retab
-> used 4 spaces except in some defines and comments where I tried to
-> put everything alinged in the same column for better readability
->
-> fixed the alignment of the previous version
+> v2
+>    - allow tests to control the final EL we end up at
+>    - use tabs consistently
+>    - validate command line arg is between 1 and 3
 > ---
->  hw/arm/omap1.c           | 1016 +++++++++++++++++++-------------------
->  hw/arm/omap_sx1.c        |    2 +-
->  hw/dma/omap_dma.c        |  334 ++++++-------
->  hw/gpio/omap_gpio.c      |   28 +-
->  hw/i2c/omap_i2c.c        |  178 +++----
->  hw/intc/omap_intc.c      |  154 +++---
->  hw/misc/omap_clk.c       |  470 +++++++++---------
->  hw/timer/pxa2xx_timer.c  |   76 +--
->  include/hw/arm/omap.h    |  534 ++++++++++----------
->  include/hw/arm/sharpsl.h |    2 +-
->  include/hw/arm/soc_dma.h |    4 +-
->  11 files changed, 1399 insertions(+), 1399 deletions(-)
+>   tests/tcg/aarch64/Makefile.softmmu-target |   3 +-
+>   tests/tcg/aarch64/system/boot.S           | 135 +++++++++++++++++++++-
+>   2 files changed, 136 insertions(+), 2 deletions(-)
+> 
+> diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+> index 9c52475b7a..f7a7d2b800 100644
+> --- a/tests/tcg/aarch64/Makefile.softmmu-target
+> +++ b/tests/tcg/aarch64/Makefile.softmmu-target
+> @@ -68,7 +68,8 @@ run-plugin-semiconsole-with-%: semiconsole
+>   
+>   # vtimer test needs EL2
+>   QEMU_EL2_MACHINE=-machine virt,virtualization=on,gic-version=2 -cpu cortex-a57 -smp 4
+> -run-vtimer: QEMU_OPTS=$(QEMU_EL2_MACHINE) $(QEMU_BASE_ARGS) -kernel
+> +QEMU_EL2_BASE_ARGS=-semihosting-config enable=on,target=native,chardev=output,arg="2"
+> +run-vtimer: QEMU_OPTS=$(QEMU_EL2_MACHINE) $(QEMU_EL2_BASE_ARGS) -kernel
+>   
+>   # Simple Record/Replay Test
+>   .PHONY: memory-record
+> diff --git a/tests/tcg/aarch64/system/boot.S b/tests/tcg/aarch64/system/boot.S
+> index a5df9c173d..a52d28c881 100644
+> --- a/tests/tcg/aarch64/system/boot.S
+> +++ b/tests/tcg/aarch64/system/boot.S
+> @@ -16,6 +16,7 @@
+>   #define semihosting_call hlt 0xf000
+>   #define SYS_WRITEC	0x03	/* character to debug channel */
+>   #define SYS_WRITE0	0x04	/* string to debug channel */
+> +#define SYS_GET_CMDLINE 0x15	/* get command line */
+>   #define SYS_EXIT	0x18
+>   
+>   	.align	12
+> @@ -81,10 +82,137 @@ lower_a32_serror:
+>   .error:
+>   	.string "Terminated by exception.\n"
+>   
+> +	.align 8
+> +.get_cmd:
 
-Hi; thanks for this patch. As a general note, this is a really
-big patch, even though it's only doing tab-to-space conversion.
+This label is prefixed with a dot, which is inconsistent with the other 
+labels except ".error".
 
-If it were touching more than one kind of Arm related code
-I would ask to split it up into multiple patches, but since
-all of these are basically related to the same OMAP board
-and it happens to apply cleanly and I can confirm it's
-only changing whitespace characters and not anything else,
-I've applied it to target-arm.next.
+I guess ".error" is prefixed with a dot to make it local, but a local 
+symbol needs to be prefixed with ".L" instead according to:
+https://sourceware.org/binutils/docs-2.41/as/Symbol-Names.html#Local-Symbol-Names
 
-thanks
--- PMM
+ > A local symbol is any symbol beginning with certain local label
+ > prefixes. By default, the local label prefix is ‘.L’ for ELF systems
+ > or ‘L’ for traditional a.out systems, but each target may have its own
+ > set of local label prefixes. On the HPPA local symbols begin with
+ > ‘L$’.
+
+> +	.quad	cmdline
+> +	.quad	128
+> +
+>   	.text
+>   	.align 4
+>   	.global __start
+>   __start:
+> +	/*
+> +	 * The test can set the semihosting command line to the target
+> +	 * EL needed for the test. Keep that in w11.
+> +	 */
+> +	mov	x0, SYS_GET_CMDLINE
+> +	adr	x1, .get_cmd
+> +	semihosting_call
+> +	adrp	x10, cmdline
+> +	add	x10, x10, :lo12:cmdline
+ > +	ldrb	w11, [x10]> +	cbz	w11, 2f
+> +
+> +	/* sanity check, clamp to 1 if invalid */
+> +	cmp w11, #'0'
+> +	b.lt 1f
+> +	cmp w11, #'4'
+> +	b.ge 1f
+> +	sub	w11, w11, #'0'
+> +	b 2f
+> +1:	mov w11, #1
+> +
+> +2:
+
+This "sanity check" made me wonder what it is for. This code is simply 
+unnecessary if any unknown values are to be ignored and is a bit 
+misleading to have this code as it looks like it adds an additional 
+behavior. "sub w11, w11, #'0'" is also unnecessary; we can compare w11 
+with '2' and '3' later instead.
+
+The patch message says this sanity check was added with v2 so I looked 
+for a previous review and found this:
+https://lore.kernel.org/qemu-devel/svmkvs.2mf5q4qhsfz83@linaro.org/
+
+ > cmp w11, #'0'
+ > b.lt curr_sp0_sync
+ > cmp w11, #'4'
+ > b.ge curr_sp0_sync
+
+Now I get the original intent; it was to raise an error instead of 
+simply ignoring unknown values. However I also see a few problems with 
+this original code:
+- It still ignores unknown strings that are longer than one character.
+- curr_sp0_sync leads to the code that writes a message saying 
+"Terminated by exception.", which is incorrect.
+- "cmp w11, #'0'" is unnecessary if you check the value after "sub	w11, 
+w11, #'0'".
+
+> +	/* Determine current Exception Level */
+> +	mrs	x0, CurrentEL
+> +	lsr	x0, x0, #2	  /* CurrentEL[3:2] contains the current EL */
+> +
+> +	/* Branch based on current EL */
+> +	cmp	x0, #3
+> +	b.eq	setup_el3
+> +	cmp	x0, #2
+> +	b.eq	setup_el2
+> +	cmp	x0, #1
+> +	b.eq	at_testel	     /* Already at EL1, skip transition */
+> +	/* Should not be at EL0 - error out */
+> +	b	curr_sp0_sync
+> +
+> +setup_el3:
+> +	/* Ensure we trap if we get anything wrong */
+> +	adr	x0, vector_table
+> +	msr	vbar_el3, x0
+> +
+> +	/* Does the test want to be at EL3? */
+> +	cmp	w11, #3
+> +	beq	at_testel
+> +
+> +	/* Configure EL3 to for lower states (EL2 or EL1) */
+> +	mrs	x0, scr_el3
+> +	orr	x0, x0, #(1 << 10)    /* RW = 1: EL2/EL1 execution state is AArch64 */
+> +	orr	x0, x0, #(1 << 0)     /* NS = 1: Non-secure state */
+> +	msr	scr_el3, x0
+> +
+> +	/*
+> +	 * We need to check if EL2 is actually enabled via ID_AA64PFR0_EL1,
+> +	 * otherwise we should just jump straight to EL1.
+> +	 */
+> +	mrs	x0, id_aa64pfr0_el1
+> +	ubfx	x0, x0, #8, #4	      /* Extract EL2 field (bits 11:8) */
+> +	cbz	x0, el2_not_present   /* If field is 0 no EL2 */
+> +
+> +
+> +	/* Prepare SPSR for exception return to EL2 */
+> +	mov	x0, #0x3c9	      /* DAIF bits and EL2h mode (9) */
+> +	msr	spsr_el3, x0
+> +
+> +	/* Set EL2 entry point */
+> +	adr	x0, setup_el2
+> +	msr	elr_el3, x0
+> +
+> +	/* Return to EL2 */
+> +	eret
+> +	nop
+
+Why is a nop placed here?
+
+> +
+> +el2_not_present:
+> +	/* Initialize SCTLR_EL1 with reset value */
+> +	msr	sctlr_el1, xzr
+> +
+> +	/* Set EL1 entry point */
+> +	adr	x0, at_testel
+> +	msr	elr_el3, x0
+> +
+> +	/* Prepare SPSR for exception return to EL1h with interrupts masked */
+> +	mov	x0, #0x3c5	      /* DAIF bits and EL1h mode (5) */
+> +	msr	spsr_el3, x0
+> +
+> +	isb			      /* Synchronization barrier */
+> +	eret			      /* Jump to EL1 */
+> +
+> +setup_el2:
+> +	/* Ensure we trap if we get anything wrong */
+> +	adr	x0, vector_table
+> +	msr	vbar_el2, x0
+> +
+> +	/* Does the test want to be at EL2? */
+> +	cmp	w11, #2
+> +	beq	at_testel
+> +
+> +	/* Configure EL2 to allow transition to EL1 */
+> +	mrs	x0, hcr_el2
+> +	orr	x0, x0, #(1 << 31)    /* RW = 1: EL1 execution state is AArch64 */
+> +	msr	hcr_el2, x0
+> +
+> +	/* Initialize SCTLR_EL1 with reset value */
+> +	msr	sctlr_el1, xzr
+> +
+> +	/* Set EL1 entry point */
+> +	adr	x0, at_testel
+> +	msr	elr_el2, x0
+> +
+> +	/* Prepare SPSR for exception return to EL1 */
+> +	mov	x0, #(0x5 << 0)	      /* EL1h (SPx), with interrupts disabled */
+> +	msr	spsr_el2, x0
+> +
+> +	/* Return to EL1 */
+> +	eret
+> +
+> +	nop
+> +
+> +	/*
+> +	 * At the target EL for the test, usually EL1. Note we still
+> +	 * set everything up as if we were at EL1.
+> +	 */
+> +at_testel:
+>   	/* Installs a table of exception vectors to catch and handle all
+>   	   exceptions by terminating the process with a diagnostic.  */
+>   	adr	x0, vector_table
+> @@ -100,7 +228,7 @@ __start:
+>   	 * maps RAM to the first Gb. The stage2 tables have two 2mb
+>   	 * translation block entries covering a series of adjacent
+>   	 * 4k pages.
+> -	*/
+> +	 */
+>   
+>   	/* Stage 1 entry: indexed by IA[38:30] */
+>   	adr	x1, .				/* phys address */
+> @@ -233,6 +361,11 @@ __sys_outc:
+>   	ret
+>   
+>   	.data
+> +
+> +	.align 8
+> +cmdline:
+> +	.space 128, 0
+> +
+>   	.align	12
+>   
+>   	/* Translation table

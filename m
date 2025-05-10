@@ -1,69 +1,69 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp1546302njb;
-        Fri, 9 May 2025 23:13:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXboG7LBpHE/P1VdwnQw60BsAX75ogNFaP4YnoeHa30qtaE2xq8JO7K+OKXQeETZ9lSrRIOr40D3YMCRw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEPkzDXaB3xd0qUZ7/3Yl8ik7IQa4UHQYnuLmFkfLfyGBvTRCFNqCUD+/2JTQ+LmeDFP4Un
-X-Received: by 2002:a05:6214:2523:b0:6e8:9797:f94e with SMTP id 6a1803df08f44-6f6e482d215mr96674606d6.35.1746857606986;
-        Fri, 09 May 2025 23:13:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746857606; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp1547271njb;
+        Fri, 9 May 2025 23:16:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVY9T6Am5UOikwD3wN9KnuV/5eY6KT3xXJT2hn9/cbyB8lfGav8mUqYBNLa5YAbugpEKb8QAPGCXoBH1Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IGmpHW6IBDSnBESJhZiEep47tz90QVLch3u67qOws7kwsioXMlolpF6KDzeCJo6eu6fkLyJ
+X-Received: by 2002:ac8:598b:0:b0:478:eb5f:f948 with SMTP id d75a77b69052e-494527f3b69mr75347431cf.49.1746857769712;
+        Fri, 09 May 2025 23:16:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746857769; cv=none;
         d=google.com; s=arc-20240605;
-        b=ECpYgal9/cJOaxe/rume4ume8fLaMwO+Gok07DYNSF8DtEzisq449L/ykDaRt8jipm
-         /bQhVcyg377Bf/V4zvvDozXhZVifnlrTAlSn5PeXRsvqcEHGGDVQBqXbu5XAPhRfYvCs
-         vDgPihRwteajIhDg1+YMPJpNhaF4MvWOh/b012WO8n7cYggmV3ryVBWJhCThffepSTVi
-         IemP5USEMOjmL3I+UE32rFu6w1RyFQwpAG2iinARQGcn8eS8Hn6ozsnN5P1qiJWYknQM
-         5+Vq2WULxySEqjHXf4aucIO5n7FUo/Ary8t8e5771EJavuhN6BcZjG9vffh24jTU0D9x
-         HPfg==
+        b=lSAUA5+d2uh9TqacT5+HDbo4kg3K2jaThojK4mWNLDDqmduo2Um0857T7q13Z2nQYU
+         cA30dsMgIHE34xNzKtOqJmXmamrtqlTrACxr/ZvoKYyi+kmXYUf3vCo4KejGVsdlsPHP
+         ExsSrdbD1f2uMa4xkkrsq9KmTssIrEWQHNrd+XVfqRCHHuTtiAuTvgyzITJ78SfepT1O
+         Uke2ocPpKhGvTHlxxspo7BMbEstdJ0NGdekovym/n9tu5hdSLqahbJkQtEFTb6awiyxK
+         GPeTKcXRmO5/LALXRJ6u2rR7SiLrUbyNN4eMm8543RgTQkdIbuguV7JcBSzPF7TCvSHF
+         +Fkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=MoSd+xGZQMu9Iaijmq/P4PY5t6t2i2QbPHu3L9ThkO8=;
+        bh=aZyuwSQZXEk2PfLOzAvFPkGXAAACR3XAGzx+cvBQPtA=;
         fh=gCXMQKs6lZ8CIfxrgvNmsucbxJPLBUoEizQFcmzUdmQ=;
-        b=c086Cbm+q92kP2qb9Plh8tDQ/tnvyl57vn9c1ISZixGqpgWubx6Qrd4j0jrTWJEHOj
-         rIz+k2lU6wAxuUro7Ae4NKmnqqahrW7ob9MeEoDeQMnxY8GrVR86DwwpTWaIHLq8EH95
-         ErjuaLu+tePOfSXlm54LY3bSWbzRjncdvacYDIrdxTm/R3hQXtgmplmlNpYvWhtFBvKN
-         P5GaSQgpyZq2TvvxO7tr63OIQMxeQi3whB3qN+0RMJFQHDXNzHYX2QoVks8pNFK70dBh
-         l+e+t4g+JcSYmrNs9b5KubnEuPdbGqJVg/ak9ezh7z15QKRmvgYSXInCfHfvGRGaczqA
-         iv+g==;
+        b=cLUogvrRIBGuePCWObjk9UBLaKWNjgpWsAz/Ylg38V9eIUEa79tdoqwn6PdkYhE8P7
+         qMOPdXl2McO5RzpCsAFC6TnsBBqpCxxEieGd+GxbqX/bLwI63xJCany8OE0pef6i3XqL
+         EqQGp2BrtvgNMSk+jdka4dUXXIBU2Wp/fx+JZA1XbsgWpc/auE7yrqVHATG6RnALB/iC
+         gwpFRx7H9IYpwNKxrGUVbUVkjNVhK6X+9BeMlz8A8yK9+RpXSz/WC9yzyAS4PXO9nn4A
+         t8FHURuSuWJcrQMsiX5wzFnFHb/5pf0aqJVfvuZA4BvDxcjDy+G4vK/RTBhs2m+zLdsh
+         H89g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e39e7423si39223566d6.92.2025.05.09.23.13.26
+        by mx.google.com with ESMTPS id d75a77b69052e-49452555b7bsi35815841cf.288.2025.05.09.23.16.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 May 2025 23:13:26 -0700 (PDT)
+        Fri, 09 May 2025 23:16:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uDdSU-0007Ut-TE; Sat, 10 May 2025 02:13:14 -0400
+	id 1uDdUn-0000by-2t; Sat, 10 May 2025 02:15:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=HX7T=X2=kaod.org=clg@ozlabs.org>)
- id 1uDdSR-0007Th-24; Sat, 10 May 2025 02:13:11 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ id 1uDdUm-0000aJ-14; Sat, 10 May 2025 02:15:36 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=HX7T=X2=kaod.org=clg@ozlabs.org>)
- id 1uDdSO-0007Jy-Nn; Sat, 10 May 2025 02:13:10 -0400
+ id 1uDdUj-0007dO-La; Sat, 10 May 2025 02:15:35 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZvbC06pNHz4xRB;
- Sat, 10 May 2025 16:13:00 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZvbFs032Pz4xS7;
+ Sat, 10 May 2025 16:15:29 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZvbBw5BLSz4xQX;
- Sat, 10 May 2025 16:12:56 +1000 (AEST)
-Message-ID: <6407690d-0e50-42b1-9f9c-e98eb450d784@kaod.org>
-Date: Sat, 10 May 2025 08:12:52 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZvbFm6Qszz4x0L;
+ Sat, 10 May 2025 16:15:24 +1000 (AEST)
+Message-ID: <ba12c8bd-2d9e-46f1-a89e-fa3692e1098a@kaod.org>
+Date: Sat, 10 May 2025 08:15:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 06/22] hw/misc/aspeed_hace: Support accumulative mode
- for direct access mode
+Subject: Re: [PATCH v1 08/22] hw/misc/aspeed_hace: Support DMA 64 bits dram
+ address.
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -74,9 +74,9 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20250321092623.2097234-1-jamin_lin@aspeedtech.com>
- <20250321092623.2097234-7-jamin_lin@aspeedtech.com>
- <c2789dae-3c0e-4ad3-b3ba-07493bdbec28@kaod.org>
- <SI2PR06MB504109C2AA0AC26C243C30BAFC8AA@SI2PR06MB5041.apcprd06.prod.outlook.com>
+ <20250321092623.2097234-9-jamin_lin@aspeedtech.com>
+ <ff5e84c5-4714-4897-90b6-40df76746443@kaod.org>
+ <SI2PR06MB504194D74CCFCBB9403B7214FC8AA@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -121,16 +121,17 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <SI2PR06MB504109C2AA0AC26C243C30BAFC8AA@SI2PR06MB5041.apcprd06.prod.outlook.com>
+In-Reply-To: <SI2PR06MB504194D74CCFCBB9403B7214FC8AA@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=HX7T=X2=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -146,89 +147,148 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: A3kzrZ7bvrzs
+X-TUID: erjbL9B0ccbL
 
-On 5/9/25 08:55, Jamin Lin wrote:
+On 5/9/25 09:04, Jamin Lin wrote:
 > Hi Cédric
 > 
->> Subject: Re: [PATCH v1 06/22] hw/misc/aspeed_hace: Support accumulative
->> mode for direct access mode
+>> Subject: Re: [PATCH v1 08/22] hw/misc/aspeed_hace: Support DMA 64 bits
+>> dram address.
 >>
 >> On 3/21/25 10:26, Jamin Lin wrote:
->>> Enable accumulative mode for direct access mode operations. In direct
->>> access mode, only a single source buffer is used, so the "iovec" count is set to
->> 1.
->>> If "acc_mode" is enabled:
->>> 1. Accumulate "total_req_len" with the current request length ("plen").
->>> 2. Check for padding and determine whether this is the final request.
+>>> According to the AST2700 design, the data source address is 64-bit,
+>>> with R_HASH_SRC_HI storing bits [63:32] and R_HASH_SRC storing bits
+>> [31:0].
+>>>
+>>> Similarly, the digest address is 64-bit, with R_HASH_DEST_HI storing
+>>> bits [63:32] and R_HASH_DEST storing bits [31:0].
+>>>
+>>> Ideally, sg_addr should be 64-bit for the AST2700, using the following
+>>> program to obtain the 64-bit sg_addr and convert it to a DRAM offset:
+>>>
+>>> ```
+>>> sg_addr = deposit64(sg_addr, 32, 32,
+>>>                       address_space_ldl_le(&s->dram_as, src +
+>> SG_LIST_ADDR_SIZE,
+>>>
+>> MEMTXATTRS_UNSPECIFIED,
+>>> NULL); sg_addr -= 0x400000000; ```
+>>
+>> I don't think the code extract above is useful.
+>>
+>>> To maintain compatibility with older SoCs such as the AST2600, the
+>>> AST2700 HW HACE controllers automatically set bit 34 of the 64-bit sg_addr.
+>>
+>> I suppose that's what bits [30:28] of the first word of the scatter-gather entry
+>> are for ?
+>>
+>>> As a result,
+>>> the firmware only needs to provide a 32-bit sg_addr containing bits [31:0].
+>>> This is sufficient for the AST2700, as it uses a DRAM offset rather
+>>> than a DRAM address.
+>>
+>> yes the HACE model can use a relative address because the DRAM memory
+>> region is directly available. There is no need to construct a physical address.
+>>
+>>> Introduce a has_dma64 class attribute and set it to true for the AST2700.
 >>>
 >>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 >>> ---
->>>    hw/misc/aspeed_hace.c | 15 ++++++++++++++-
->>>    1 file changed, 14 insertions(+), 1 deletion(-)
+>>>    include/hw/misc/aspeed_hace.h |  1 +
+>>>    hw/misc/aspeed_hace.c         | 27 ++++++++++++++++++++++++++-
+>>>    2 files changed, 27 insertions(+), 1 deletion(-)
 >>>
+>>> diff --git a/include/hw/misc/aspeed_hace.h
+>>> b/include/hw/misc/aspeed_hace.h index a4479bd383..58fb66009a 100644
+>>> --- a/include/hw/misc/aspeed_hace.h
+>>> +++ b/include/hw/misc/aspeed_hace.h
+>>> @@ -52,6 +52,7 @@ struct AspeedHACEClass {
+>>>        uint32_t src_hi_mask;
+>>>        uint32_t dest_hi_mask;
+>>>        uint32_t key_hi_mask;
+>>> +    bool has_dma64;
+>>>    };
+>>>
+>>>    #endif /* ASPEED_HACE_H */
 >>> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c index
->>> 8cf3f194a5..d06158dffd 100644
+>>> 51c6523fab..8f333fc97e 100644
 >>> --- a/hw/misc/aspeed_hace.c
 >>> +++ b/hw/misc/aspeed_hace.c
->>> @@ -223,8 +223,21 @@ static void do_hash_operation(AspeedHACEState *s,
->> int algo, bool sg_mode,
->>>                return;
->>>            }
->>>            iov[0].iov_base = haddr;
->>> -        iov[0].iov_len = plen;
->>>            i = 1;
->>> +        if (acc_mode) {
+>>> @@ -148,6 +148,7 @@ static bool has_padding(AspeedHACEState *s, struct
+>> iovec *iov,
+>>>    static void do_hash_operation(AspeedHACEState *s, int algo, bool
+>> sg_mode,
+>>>                                  bool acc_mode)
+>>>    {
+>>> +    AspeedHACEClass *ahc = ASPEED_HACE_GET_CLASS(s);
+>>>        bool sg_acc_mode_final_request = false;
+>>>        g_autofree uint8_t *digest_buf = NULL;
+>>>        struct iovec iov[ASPEED_HACE_MAX_SG]; @@ -182,6 +183,9 @@
+>> static
+>>> void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>>>                }
+>>>
+>>>                src = deposit64(src, 0, 32, s->regs[R_HASH_SRC]);
+>>> +            if (ahc->has_dma64) {
+>>> +                src = deposit64(src, 32, 32, s->regs[R_HASH_SRC_HI]);
+>>> +            }
 >>
->> hmm, more complexity is being added to do_hash_operation(). I would
->> introduce a sub routine do_hash_operation_acc() to handle accumulative
->> mode.
+>> That's where a little helper would be nice to have.
 >>
-> Thanks for the review and suggestion.
-> I refactor "do_hash_operation" and changes looks like as following
+> I add hash_get_source_addr help function.
+> Please see patch 6 comments.
 > 
-> New Helper functions:
+>>>                src += i * SG_LIST_ENTRY_SIZE;
+>>>
+>>>                len = address_space_ldl_le(&s->dram_as, src, @@ -190,6
+>>> +194,21 @@ static void do_hash_operation(AspeedHACEState *s, int algo,
+>> bool sg_mode,
+>>>                sg_addr = address_space_ldl_le(&s->dram_as, src +
+>> SG_LIST_LEN_SIZE,
+>>>
+>> MEMTXATTRS_UNSPECIFIED, NULL);
+>>>                sg_addr &= SG_LIST_ADDR_MASK;
+>>> +            /*
+>>> +             * Ideally, sg_addr should be 64-bit for the AST2700, using
+>> the
+>>> +             * following program to obtain the 64-bit sg_addr and
+>> convert it
+>>> +             * to a DRAM offset:
+>>> +             * sg_addr = deposit64(sg_addr, 32, 32,
+>>> +             *      address_space_ldl_le(&s->dram_as, src +
+>> SG_ADDR_LEN_SIZE,
+>>> +             *
+>> MEMTXATTRS_UNSPECIFIED, NULL);
+>>> +             * sg_addr -= 0x400000000;
+>>> +             *
+>>
+>> I don't think the above comment is useful. Please keep the one below.
+>>
+>>> +             * To maintain compatibility with older SoCs such as the
+>> AST2600,
+>>> +             * the AST2700 HW automatically set bit 34 of the 64-bit
+>> sg_addr.
+>>> +             * As a result, the firmware only needs to provide a 32-bit
+>> sg_addr
+>>> +             * containing bits [31:0]. This is sufficient for the AST2700,
+>> as
+>>> +             * it uses a DRAM offset rather than a DRAM address.
+>>> +             */
+>>
 > 
-> hash_get_source_addr
-> hash_prepare_direct_iov
-> hash_prepare_sg_iov
-> hash_get_digest_addr
-> hash_write_digest_and_unmap_iov
-> hash_execute_non_acc_mode
-> hash_execute_acc_mode
+> Thanks for suggestion will update them.
 > 
-> ```
-> static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
->                                bool acc_mode)
-> {
->      struct iovec iov[ASPEED_HACE_MAX_SG];
->      bool acc_final_request = false;
->      int iov_idx = -1;
+>> The SG_LIST_ADDR_MASK needs an update though. AFAICT, it's bigger on
+>> AST2700.
 > 
->      /* Prepares the iov for hashing operations based on the selected mode */
->      if (sg_mode) {
->          iov_idx = hash_prepare_sg_iov(s, iov, acc_mode, &acc_final_request);
->      } else {
->          iov_idx = hash_prepare_direct_iov(s, iov);
->      }
-> 
->      if (iov_idx <= 0) {
->          qemu_log_mask(LOG_GUEST_ERROR,
->                        "%s: Failed to prepare iov\n", __func__);
->           return;
->      }
-> 
->      /* Executes the hash operation */
->      if (acc_mode) {
->          hash_execute_acc_mode(s, algo, iov, iov_idx, acc_final_request);
->      } else {
->          hash_execute_non_acc_mode(s, algo, iov, iov_idx);
->      }
-> }
+> The value of SG_LIST_ADDR_MASK was wrong for AST2700, AST2600 and AST1030.
+> The correct value should be 0x7FFFFFF8.
+> Will create a new patch to fix it.
+> Please see patch 4 comments.
+> By the way, AST2500 do not support SG mode.
 
-This looks better.
+Should we introduce a class attribute then ?
 
-Thanks !
+Thanks,
 
 C.
-

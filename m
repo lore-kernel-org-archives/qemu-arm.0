@@ -1,101 +1,120 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp2197894njb;
-        Sun, 11 May 2025 06:19:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWjH/sQSF7/CboQz4obtUL9s57fgvk5Iyy9w7/Rvl2xwBR10bybnJWaC2MNw8fQso1CFuAFwtXigUryLg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG9KJ2zbZt/ScLK3yvUHJhI5gRdD8RnAl3F5VZNB+MdC3DLtbfTx8rp57Lpa+3hWahL2cHu
-X-Received: by 2002:ad4:5fca:0:b0:6d8:a8e1:b57b with SMTP id 6a1803df08f44-6f6e4814d2dmr177413806d6.36.1746969566601;
-        Sun, 11 May 2025 06:19:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746969566; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp2208034njb;
+        Sun, 11 May 2025 06:42:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXJymaumcWb7MZrraIGtYCqJnr3Ec6iIYY3VnYmXCDLBwx1APnj4PYeITc1TJRmPv+YfjThbmcn5UioBw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGgSAuBQZsloKwMQpzw76t0qQVbw9cLI/QalIv7YJzEJ0yKRNlHYz+3XUvF2NnV+HiaiOco
+X-Received: by 2002:a05:620a:1707:b0:7c7:b5e9:6428 with SMTP id af79cd13be357-7cd01103f1fmr1588756685a.22.1746970965000;
+        Sun, 11 May 2025 06:42:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746970964; cv=none;
         d=google.com; s=arc-20240605;
-        b=fBENacj/oLTjkrCgbSiqLbGvyBYQ8pNUjSX6MtTbtlM4ZdzuZKleJO8XUv9Bjanq49
-         zaS3ioHagCGiUu+Azq2nFVTxu05Pak+mPKj+IFQ8q8+7Hrt+p62cQmKv+PdACc4NJ0mZ
-         C+ZHxaKT4Xd6ExwLpgeU8Dt9Uj62MAUiTo3lxFMAebtPZS77Ywp9DqBaanbeleqk5yPK
-         oT7F9y2EClDj3Gh9LqPi6GbJQ/P9CmBLH/NLgcSp6+fv33FFyA2RFcluQz3q9LdzidC5
-         nWQe6IwAzlNhHo60da5BByWkbHNtQNfTEHArG+RiMSl4PE1C5lAOzDdN+rLKoDG4pDAH
-         AeYA==
+        b=CDGaFA7EXC36ztXA/OV9QWOCB53HwRmzZTtZfRS43Y6mED1MPK7w4FS4wMp+BDHnBd
+         zNIS9Ho5jhSmupibj7dcYvgFRWhMBnFnEeG7QHGDU+e+i9YqnHbmMGlE5L0IaEuFW8td
+         cICl9cZXm4ma3y2tNhwFRYKw4cPliOBGDXxe8teamu3uGOUhiUsvAtOR64cg38hsr3yO
+         oxw43E7lglzusxUKSp6MSjIA+ZVQgeXmgjKZfbcwgKQD+R0lR70UoClM8yhnF+Go7orT
+         Laesdr+diK+CUR2pYvoiI+b6NRWz0jeruDL6V1n7bFXW0JW95afaUU2CVuHcEaKDocR1
+         DhFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:dkim-signature
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=HYI+R/XhePBCc4hhIRowIa/32ouxYcJz8NLw9wXskas=;
-        fh=imbpCNWr0c9cGotT0S0gK2Ku0NTEEh1/OS2/SvdfCmI=;
-        b=XtCbrZJDj3bnYZrc/fx5gi3Sf+b6uVzaOO72qEhGOMst+53W6NMFb1RhPJ5jr5gmLh
-         pP3BR21/JyRFlMQ2/MK4oRFXOwNKeLVNVf0C3tEt1p+5wYg5XIDxNL7LpvakbANb9aMp
-         e44zXGDQwpbajX7EARFCUpbRE2bpeYu1br9ZHKsvZQwowVYfccVmVydFqFjfXZEfoUT+
-         uF2zfy4NgkjvlSqKh9FUOU8DLKG569hSQmH0U083V4w/SGS3tEcxqvM9lKoQZ+RpoiJD
-         phNSnUOvw3pNDiesFFglTv+Z8/iFw04UTH3lglMK2+sixSWT97urychyYGpHWQFtHkgf
-         e7QQ==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=c8QV6w8cr2EJNiCqD8Y9EVvczLMeIeIzR3zKiEmzbhE=;
+        fh=aOZT0ZPchmQZaVfIfMUPb21uDskyhHLm1FV/touQElo=;
+        b=LtL47wQZe3ttZ53ckP16HieJOjZ5G739cs6PWtNluERCYZNS7Chdg+0JthZ1RLX4qR
+         6QB1eo+z4cTXbP9vz1AW980SkphqyllcxI7vCne7viHb1QPLt01tMk8INjG4VE13kE5J
+         QM7o23L+M02PN1nOkUSEVKPw2JiukMCubwPG/4iH/d9Mo5tnAGQoPTsP5yQHSd98hVNA
+         Lv23wuNF8J3DGEeEPWuKdMtpH65z+g+PrcDuwYbmYJTcmRGgJz7S2gBtVwmqTzowbb40
+         v4N1xaH9buH1VrDlXa6sgjyvMRmg3aTx0IVaCEigPId1ylJivdxYQffJoedD8mpi3Z9V
+         tfpg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nut.email header.s=uberspace header.b=dMnl6Wqp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=IrIyET3L;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a434e3si69597896d6.225.2025.05.11.06.19.26
+        by mx.google.com with ESMTPS id af79cd13be357-7cd00fd4667si668974685a.224.2025.05.11.06.42.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 11 May 2025 06:19:26 -0700 (PDT)
+        Sun, 11 May 2025 06:42:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nut.email header.s=uberspace header.b=dMnl6Wqp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=IrIyET3L;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uE6WH-0006Ut-MK; Sun, 11 May 2025 09:15:05 -0400
+	id 1uE6wu-0000Ag-QU; Sun, 11 May 2025 09:42:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <neither@nut.email>) id 1uE6WD-0006QW-EO
- for qemu-devel@nongnu.org; Sun, 11 May 2025 09:15:01 -0400
-Received: from mailgate02.uberspace.is ([2a00:d0c0:200:0:1c7b:a6ff:fee0:8ea4])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uE6wt-0000AO-Ih
+ for qemu-devel@nongnu.org; Sun, 11 May 2025 09:42:35 -0400
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <neither@nut.email>) id 1uE6WB-0006oz-EQ
- for qemu-devel@nongnu.org; Sun, 11 May 2025 09:15:01 -0400
-Received: from skiff.uberspace.de (skiff.uberspace.de [185.26.156.131])
- by mailgate02.uberspace.is (Postfix) with ESMTPS id 064A4180043
- for <qemu-devel@nongnu.org>; Sun, 11 May 2025 15:14:48 +0200 (CEST)
-Received: (qmail 25986 invoked by uid 990); 11 May 2025 13:14:47 -0000
-Authentication-Results: skiff.uberspace.de;
-	auth=pass (plain)
-Received: from unknown (HELO unkown) (::1)
- by skiff.uberspace.de (Haraka/3.0.1) with ESMTPSA;
- Sun, 11 May 2025 15:14:47 +0200
-From: Julian Ganz <neither@nut.email>
-To: qemu-devel@nongnu.org
-Cc: Julian Ganz <neither@nut.email>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH v4 06/23] target/arm: call plugin trap callbacks
-Date: Sun, 11 May 2025 15:13:58 +0200
-Message-ID: <4d70838eca2c28791d70691d170c197678fba212.1746968215.git.neither@nut.email>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <cover.1746968215.git.neither@nut.email>
-References: <cover.1746968215.git.neither@nut.email>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uE6wr-0002VN-IC
+ for qemu-devel@nongnu.org; Sun, 11 May 2025 09:42:35 -0400
+Received: by mail-yw1-x112c.google.com with SMTP id
+ 00721157ae682-70a2b85aeb7so28892967b3.1
+ for <qemu-devel@nongnu.org>; Sun, 11 May 2025 06:42:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1746970952; x=1747575752; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=c8QV6w8cr2EJNiCqD8Y9EVvczLMeIeIzR3zKiEmzbhE=;
+ b=IrIyET3Lx3cwWV5tEJOhrn3MZVXGoVQgomKXgXGQTaB0mMRjdBA9XYfvDZsiOloDwl
+ Hqljqw/UoAkWwN4gnD4L4y6zNwlYv02jt/zyz3c+g5TaGXOcKhcrCP+ThEI9dM/KEzNp
+ CZzPyQmcNB4rzhIq1SQS5rFjJtZ5b1KhM/E7gzOGMg/pVO/bQNkCP8edo2fNk76061Z8
+ qRn9dryUvD1nrEKoAxpvAgLl3EB4xFfzu3L8Yv6dY2rXDLPXM+AnWZ//zKd9bnhz76uK
+ H6MJmGPW56A2c1lvv0m+1OXVvUNt0w1yiHkn72PbK8+wKBjkcO8yMpmCtUDt8nwgteX4
+ 7RPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1746970952; x=1747575752;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=c8QV6w8cr2EJNiCqD8Y9EVvczLMeIeIzR3zKiEmzbhE=;
+ b=KDqyLN6ClKrvZZrD0hoyNb6GyO9LzuqTGQIWyyj2B7OGjFnboBxzwQH/LnGqsSgYnk
+ tYsSsMrVA564F8GkUf4CnZoasJ83WtuEm51cVcTGsHNLaVUmLGyefUn4+M0NXFVtkqkB
+ VKgahrjkcjtDILNTz0f6oimU92OjYUnmVu9Tq+yAvjGiOlfJSQvq7WAiCVUwxc26IiwX
+ 3CtAMYjbYX7htcyHPv5SH+Pp2PQyOiKzcrz3HAt7lalVyGIqo+A0xi1EUhZrh5Bx+wCb
+ 7FlBPIWsePegeD8QdJ3gwkQzZTvJVcAJoeJUq99vZXFXBd0LM9/IsdYCmMFwiFa46xW8
+ 12qQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUunRwVmGNg+msoOPh1hxLykr1iEBTTHW3fgxtNOil68+Fp7TENvVsdu3TPtz9VQJxcy8Ka2A6rkPPm@nongnu.org
+X-Gm-Message-State: AOJu0Yw1jpXEiCDl61FzQi6s19yQ/mZaObGB7tNfcuHRo1tzZopu0Sjk
+ F9+17zb1J74/4xLDYoHXX1rvVfQfZHPh6GuLMgDCyBxbPVfxYKOVS8TSuE2qUzWSV9u+Y81bipX
+ okTqr6iIiCNcRVTYzCtkMxIgTNYzl1rPzJ3i6g0+7ecHdPLHY
+X-Gm-Gg: ASbGncu9Mldw5DPGJjBbw9p5mWsDbIyirP/DJ4URpjCxj3ucfs7vPpWvidRURHBhCX6
+ 2zbQ5klQ1l7zw4o48kguL3wp0aaLKGsQNwG6dkiovIplDl3R4vw0a5nA4NBzjWoaBDoYRjHdknc
+ 91Q4KK3zdMTdGfrL5qhRreMz3kFMSxcbv3MQ==
+X-Received: by 2002:a05:690c:9b02:b0:6f7:5a46:fe5f with SMTP id
+ 00721157ae682-70a3f9f1baemr133419117b3.1.1746970951726; Sun, 11 May 2025
+ 06:42:31 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Rspamd-Bar: -----
-X-Rspamd-Report: REPLY(-4) BAYES_HAM(-2.999664) MID_CONTAINS_FROM(1)
- MIME_GOOD(-0.1) R_MISSING_CHARSET(0.5)
-X-Rspamd-Score: -5.599664
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=nut.email; s=uberspace;
- h=from:to:cc:subject:date;
- bh=bbEiU1sNfooIpCQomdykENuhynIKYHFUt2scPZzgUOg=;
- b=dMnl6Wqpm5RqrUl95/ezRtIc1I7UNoqQwK8mlXiVVNS3IBYgyXJ0nSWqOaL9amvODuoBEkQTNp
- MAAhH6FV/Obb+BNMU6nNf+8MkfLANSHTdgDhQdH32OfbZEt3HlpIjEAhfk3ruF0w1csUtfHuIDvI
- 9b1Mk3YrJ3giAk2qfxBHpFsKndxTy7ta/Z/7NNe2qoW3S5ZuucszXY/rxkdlM8ICF9iI3F3f6FGo
- I0NMNf5eByoVP4c1TUPK9Zx8VmlNNkOpnte26KCHx6j0nn4tFURHHZA/l4/pv6QwSrawBkByQGgi
- HVgUjF6v8Ds6GRhOzGAye05lEntjXgZS0g8vpP8Va6AyphvIK5cQNEIH7CKevWah/TTuB2P8pRma
- ZsNq2Ugy5LQl47Dg44uZPk8C+My9XP7pCKhddRmuNthfmMdGqJtH+vNhHtjNSuy3IcLP0/hcLbiV
- uhIlAuugGJy9r5pFpXrzqBqjxGAdsV4a5EDtvO051MBjOeEnkiGLpalINTHCtBdF4GXqH//guqzt
- tL7Ul5KJDM/ithvdG5j8uhymGDOg2L1vRZKHRX03UTHCfuFQo+M3K55cukmOF3fXbHHy/ZTwGGRg
- 7VsVRtO8vxHLOJmbnFH0ptjgMK61CKrzRVEGR7ED07gdSyr3rYZ0xHYzf+itgZWmVd6pH7gHFtcf
- 4=
-Received-SPF: pass client-ip=2a00:d0c0:200:0:1c7b:a6ff:fee0:8ea4;
- envelope-from=neither@nut.email; helo=mailgate02.uberspace.is
+References: <20250315142050.3642741-1-linux@roeck-us.net>
+ <CAFEAcA-zPwJrq3oQk3MRp9ZCyTzDOg2-Je00v20pVzrKe8he6w@mail.gmail.com>
+ <5d350a95-886e-420c-8b0d-a3be57b9490d@roeck-us.net>
+In-Reply-To: <5d350a95-886e-420c-8b0d-a3be57b9490d@roeck-us.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 11 May 2025 14:42:19 +0100
+X-Gm-Features: AX0GCFvYQrK_dqdtJp97tVMCTi_d9IIIX4A80GO-0yS9aEeHNHqdB2U0i6Pq22E
+Message-ID: <CAFEAcA-9MCRfHb+O-qdMHAOgSVEUY26h7dUzF-yaF81oFZHs4w@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm: Add missing psci_conduit to NPCM8XX SoC boot info
+To: Guenter Roeck <linux@roeck-us.net>
+Cc: Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Hao Wu <wuhaotsh@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -111,143 +130,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MV/4V+c1OIUY
+X-TUID: S+Nm97W55mx+
 
-We recently introduced API for registering callbacks for trap related
-events as well as the corresponding hook functions. Due to differences
-between architectures, the latter need to be called from target specific
-code.
+On Tue, 18 Mar 2025 at 19:54, Guenter Roeck <linux@roeck-us.net> wrote:
+>
+> On 3/18/25 09:59, Peter Maydell wrote:
+> > On Sat, 15 Mar 2025 at 14:20, Guenter Roeck <linux@roeck-us.net> wrote:
+> >>
+> >> Without psci_conduit, the Linux kernel crashes almost immediately.
+> >>
+> >>      psci: probing for conduit method from DT.
+> >>      Internal error: Oops - Undefined instruction: 0000000002000000 [#1] PREEMPT SMP
+> >>
+> >> Fixes: ae0c4d1a1290 ("hw/arm: Add NPCM8XX SoC")
+> >> Cc: Hao Wu <wuhaotsh@google.com>
+> >> Cc: Peter Maydell <peter.maydell@linaro.org>
+> >> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> >> ---
+> >>   hw/arm/npcm8xx.c | 1 +
+> >>   1 file changed, 1 insertion(+)
+> >>
+> >> diff --git a/hw/arm/npcm8xx.c b/hw/arm/npcm8xx.c
+> >> index f182accc47..e5a1929ed7 100644
+> >> --- a/hw/arm/npcm8xx.c
+> >> +++ b/hw/arm/npcm8xx.c
+> >> @@ -346,6 +346,7 @@ static struct arm_boot_info npcm8xx_binfo = {
+> >>       .secure_boot            = false,
+> >>       .board_id               = -1,
+> >>       .board_setup_addr       = NPCM8XX_BOARD_SETUP_ADDR,
+> >> +    .psci_conduit           = QEMU_PSCI_CONDUIT_SMC,
+> >>   };
+> >
+> > Why do we need this for npcm8xx when we don't need it
+> > for npcm7xx? Or is it also broken on 7xx?
+> >
+>
+> I don't see a reference to psci in npcm7xx devicetree files
+> in the upstream Linux kernel.
+>
+> $ git grep psci arch/arm64/boot/dts/nuvoton/ arch/arm/boot/dts/nuvoton/
+> arch/arm64/boot/dts/nuvoton/ma35d1.dtsi:                        enable-method = "psci";
+> arch/arm64/boot/dts/nuvoton/ma35d1.dtsi:                        enable-method = "psci";
+> arch/arm64/boot/dts/nuvoton/ma35d1.dtsi:        psci {
+> arch/arm64/boot/dts/nuvoton/ma35d1.dtsi:                compatible = "arm,psci-0.2";
+> arch/arm64/boot/dts/nuvoton/nuvoton-npcm845.dtsi:                       enable-method = "psci";
+> arch/arm64/boot/dts/nuvoton/nuvoton-npcm845.dtsi:                       enable-method = "psci";
+> arch/arm64/boot/dts/nuvoton/nuvoton-npcm845.dtsi:                       enable-method = "psci";
+> arch/arm64/boot/dts/nuvoton/nuvoton-npcm845.dtsi:                       enable-method = "psci";
+> arch/arm64/boot/dts/nuvoton/nuvoton-npcm845.dtsi:       psci {
+> arch/arm64/boot/dts/nuvoton/nuvoton-npcm845.dtsi:               compatible      = "arm,psci-1.0";
 
-This change places hooks for ARM (and Aarch64) targets. We decided to
-treat the (V)IRQ, (VI/VF)NMI, (V)FIQ and VSERR exceptions as interrupts
-since they are, presumably, async in nature.
+I guess the aarch32 versions of the board don't use psci and
+the aarch64 one does.
 
-Signed-off-by: Julian Ganz <neither@nut.email>
----
- target/arm/helper.c       | 24 ++++++++++++++++++++++++
- target/arm/tcg/m_helper.c | 18 ++++++++++++++++++
- 2 files changed, 42 insertions(+)
+Would any of the Nuvoton folks like to comment on this patch?
+It looks like a correct fix to me.
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 4a2d1ecbfe..7416f9c8ac 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -34,6 +34,7 @@
- #endif
- #include "cpregs.h"
- #include "target/arm/gtimer.h"
-+#include "qemu/plugin.h"
- 
- #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
- 
-@@ -10218,6 +10219,24 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
-     }
- }
- 
-+static void arm_do_plugin_vcpu_interrupt_cb(CPUState *cs, uint64_t from)
-+{
-+    switch (cs->exception_index) {
-+    case EXCP_IRQ:
-+    case EXCP_VIRQ:
-+    case EXCP_NMI:
-+    case EXCP_VINMI:
-+    case EXCP_FIQ:
-+    case EXCP_VFIQ:
-+    case EXCP_VFNMI:
-+    case EXCP_VSERR:
-+        qemu_plugin_vcpu_interrupt_cb(cs, from);
-+        break;
-+    default:
-+        qemu_plugin_vcpu_exception_cb(cs, from);
-+    }
-+}
-+
- static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
- {
-     /*
-@@ -10886,6 +10905,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
-     unsigned int new_el = env->exception.target_el;
-+    uint64_t last_pc = env->pc;
- 
-     assert(!arm_feature(env, ARM_FEATURE_M));
- 
-@@ -10902,6 +10922,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
-     if (tcg_enabled() && arm_is_psci_call(cpu, cs->exception_index)) {
-         arm_handle_psci_call(cpu);
-         qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
-+        qemu_plugin_vcpu_hostcall_cb(cs, last_pc);
-         return;
-     }
- 
-@@ -10913,6 +10934,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
- #ifdef CONFIG_TCG
-     if (cs->exception_index == EXCP_SEMIHOST) {
-         tcg_handle_semihosting(cs);
-+        qemu_plugin_vcpu_hostcall_cb(cs, last_pc);
-         return;
-     }
- #endif
-@@ -10938,6 +10960,8 @@ void arm_cpu_do_interrupt(CPUState *cs)
-     if (!kvm_enabled()) {
-         cs->interrupt_request |= CPU_INTERRUPT_EXITTB;
-     }
-+
-+    arm_do_plugin_vcpu_interrupt_cb(cs, last_pc);
- }
- #endif /* !CONFIG_USER_ONLY */
- 
-diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
-index 6614719832..bcb4aae0d5 100644
---- a/target/arm/tcg/m_helper.c
-+++ b/target/arm/tcg/m_helper.c
-@@ -23,6 +23,7 @@
- #if !defined(CONFIG_USER_ONLY)
- #include "hw/intc/armv7m_nvic.h"
- #endif
-+#include "qemu/plugin.h"
- 
- static void v7m_msr_xpsr(CPUARMState *env, uint32_t mask,
-                          uint32_t reg, uint32_t val)
-@@ -2185,6 +2186,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
-     CPUARMState *env = &cpu->env;
-     uint32_t lr;
-     bool ignore_stackfaults;
-+    uint64_t last_pc = env->pc;
- 
-     arm_log_exception(cs);
- 
-@@ -2352,6 +2354,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
-         g_assert_not_reached();
- #endif
-         env->regs[15] += env->thumb ? 2 : 4;
-+        qemu_plugin_vcpu_hostcall_cb(cs, last_pc);
-         return;
-     case EXCP_BKPT:
-         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_DEBUG, false);
-@@ -2418,6 +2421,21 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
- 
-     ignore_stackfaults = v7m_push_stack(cpu);
-     v7m_exception_taken(cpu, lr, false, ignore_stackfaults);
-+
-+    switch (cs->exception_index) {
-+    case EXCP_IRQ:
-+    case EXCP_VIRQ:
-+    case EXCP_NMI:
-+    case EXCP_VINMI:
-+    case EXCP_FIQ:
-+    case EXCP_VFIQ:
-+    case EXCP_VFNMI:
-+    case EXCP_VSERR:
-+        qemu_plugin_vcpu_interrupt_cb(cs, last_pc);
-+        break;
-+    default:
-+        qemu_plugin_vcpu_exception_cb(cs, last_pc);
-+    }
- }
- 
- uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
--- 
-2.49.0
-
+thanks
+-- PMM

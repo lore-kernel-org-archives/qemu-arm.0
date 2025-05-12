@@ -1,147 +1,175 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp2608556njb;
-        Mon, 12 May 2025 03:07:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVGjVnStYYmsQecbWU1us5V1K7I/iVJsFn+G6M6ScZTSam8Gq9GAAKaoW26YWyX4IsRFRKlKadvIOqDAA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHDnQZgcsLaaj72/2pgjVKhV2ZAYyQLLceX233Rk+fbXJSIOi3sGMwt8J9KpWTLHzpZ8QKU
-X-Received: by 2002:a05:620a:28cf:b0:7ca:e989:23fd with SMTP id af79cd13be357-7cd010f1360mr1546081785a.24.1747044432283;
-        Mon, 12 May 2025 03:07:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747044432; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp2723942njb;
+        Mon, 12 May 2025 06:33:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWmHt+7iQfXW6nFgBzPhjkosjLMmJkU0X4M3tAaSRk89Oev0DJwlWly/XDcEg/yqpnzlEb6MlOps6cQQg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGeS/A3PL4kkgZcPVGkItzHSTGGPibpUske0Mi/CNJjO96Q4IwoX+Gg7oIPlLwmUstsT/gA
+X-Received: by 2002:a17:90b:1b0f:b0:301:a0e9:66f with SMTP id 98e67ed59e1d1-30c3cff2d16mr23790654a91.14.1747056806067;
+        Mon, 12 May 2025 06:33:26 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1747056806; cv=pass;
         d=google.com; s=arc-20240605;
-        b=gUYT5b8WprmxYMlSRVK+WTvV+6VYNkqfs+VRHgnFlkDAqIk2w1GOxlq1l4uuU85qda
-         HQft3irAqO02CMLs2bb1uM25Q3rMsNttR3rz3BziMFG+YQh1IETuQDzfjuHIEkAPKgzl
-         WRU1oTuBMkhmTqejdZwqw3L+Du5OQho3xsiuNCcDBt4U+BnABXSJ6vbp9HuhJoTaU5Qy
-         pArdWou+RlsIQ4ykgcZBeCTOE5ErnEv7Xyfh2vX1fDfZdu+QrSF7lHOeFwRR+xLn+iBW
-         AfcSfop8D6DXjZV3Cm4l5yX4r4cnvM9i/Jdf8OGLduYEg1RzVhQRx0vLxD/EPQQuRuOr
-         Ijiw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=HczL6Nd7ZixXd5rqN6aNd6HYOrkGqiMhPCFx7BsY+A0=;
-        fh=Syqchg4K5fv3yHRJnedxG7Ne36xNMUAL1n/Tsi4Sxi8=;
-        b=DuDL6ulVpqvPYgk6Ynoa3zCJd1awxqbTrJp6U0brtNprfIE9nISq1KLZsz4fTMLWWu
-         HUlli70ZU04ez/FFHPSnarlcniOUXDOoJKKFUiecor1JWIBgm/NwYpe4B49vhga+wF4g
-         gCkDfgzjubeMARa+KJ7YxB2YBLk3BiHpZ0EypCVl1fpf1dqfTy0muib85M2uAnjYSsOh
-         RLeVreRy8SQXVNPuikdSs1L8URwfHksQC+fFvLQeLEptcXLm5oTxLkefTh1j0KK9o0Jx
-         vQmxeTNXhjo3A2dr38BlD2QE7S0WP1XpTmILlyR+Kb6iNfj4Io+88dBsguiZjPO+NUUC
-         VSNw==;
+        b=Qb/e8OHtGvByuI81GvivVs+fSXlzR5ilE2WWbu94g/MWFrF8VYCG4+XyUNpNlW4zWQ
+         cOrYvPBEL3spKwHvgRtgwfbOuxS9MFDk2iAIgvF1OgUazBTW1rlXJjEZGVdC7TDslNXD
+         jGds9ViqbX06i/9EqxkEBJXe/6unhDpQl6JGMTStuinMbd3SZb7xsXVnFLxAUqUXizjB
+         eigT6YVuPXJtsWp0OXVJcOtwvT7QUTvMFan0MieyFEAgsjiz9hcFkI0iIk9P9X/sv/72
+         VyZZ09p56uDx9BW+0p7vATvo89T7+cP/LrqFPaXTi7qPMPbP8m5sQ044tq2NG/HsYcbQ
+         71Gg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
+        bh=hkyH+w/EppDZ+b2QG9PMzBytMQMkHhxc3nUYv6t6DZ4=;
+        fh=sUGtUJ1qPIegT26TIzvUgR/LjfKg8mfMMiTFYr56wgc=;
+        b=Nex5X2FGUsHa/VdAAzzVDcDkrKdGU4wJErjrLG2FQomcSxCXR/X+svegZyoaQ1eAeB
+         vKw1rYcwB0FtlSqlkSQsVMdpezs4bOSIXw7ryAsFmBecgTfIyrASsD0xxP2SBP00bRfS
+         Cx9B4RP4Yht818dVS0mfU2RmoNWR6jac+qtdc1nnIfozUrCA5ee8ZRZBJXuHFSd2bfzv
+         EwiS1ZrJIAXx0RXRonZzC84XLJ4otuXAb5H4mF+IqOJsPdoj0kTKEoD16kmmUhIKWBDb
+         oVACEDegDiGN/QlRSUQ7VJHNXiXVummMrzDnCC7bQhQWoILRKsyrs/EapfNIISP4DPtF
+         oquw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="y/qCm9jK";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd00fd43a9si804531085a.249.2025.05.12.03.07.12
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=bK3Zssgc;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-46172-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-46172-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <kvm+bounces-46172-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-30ad50bd941si13513308a91.156.2025.05.12.06.33.25
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 May 2025 03:07:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 May 2025 06:33:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46172-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="y/qCm9jK";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uEQ3Y-0000vG-Dq; Mon, 12 May 2025 06:06:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uEQ3P-0000u7-LL
- for qemu-arm@nongnu.org; Mon, 12 May 2025 06:06:35 -0400
-Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uEQ3N-0002EQ-UG
- for qemu-arm@nongnu.org; Mon, 12 May 2025 06:06:35 -0400
-Received: by mail-yb1-xb2a.google.com with SMTP id
- 3f1490d57ef6-e78fc91f2dfso2809732276.2
- for <qemu-arm@nongnu.org>; Mon, 12 May 2025 03:06:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1747044392; x=1747649192; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=HczL6Nd7ZixXd5rqN6aNd6HYOrkGqiMhPCFx7BsY+A0=;
- b=y/qCm9jK76bTvsvKO0oIB0q2kguksffE0P9EG05nMaJulfjcPNZhT49HtaUYo8ALKA
- FOhOG5VjTClA+ImEg3Hzby0XtzU4emo+yZDl9vPeP+1VR59uvYOecjcQImLHCehkiZkk
- k2H3edZbd/Xwzu5lEaRJqlMlqtC8pMNHYxaJee3rOC2/uTaz+U8sPbNWwF2z2lfEwiMj
- p1eXxSaKBAAWNZYY8g1TEtHHI9uusRjqv6bXf5v81vvVtpAjieXeA3dIUJYmda6KOTh6
- H6cjnzTrp9hHys1ryAw8XV+rbEDv4RsaeNT6W9z01YjrfXuwSSW/72lEr7duMwqyr3f2
- /cPg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747044392; x=1747649192;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=HczL6Nd7ZixXd5rqN6aNd6HYOrkGqiMhPCFx7BsY+A0=;
- b=JRoEMt60du7J7mWSSLXZnqwDwlXNAN7NuQ3Xa9g+6op1PRqIyuEAajSxjFsJ+jGJp1
- y9iMONBq6O50E9iid4EDGoHC0WEETYG+GuH2rkxxfJt8Uvr5UNtDyMxwv3B91aGvVdsm
- l9gzfR+C7PIGpc0RhZKbWu2Tu6kihzZK0vfZWn3YzIaquLGmeTtgQZ7XD5azFcgLniCg
- udta/TmRCSCr/JLu7b6bGgJ0YJzMEtacnI5wmIIQeJLpwviGyFb1ubJF3s9Glh2DcYxJ
- SSqOxQDsC0JyiWjkyu5VZSkc0G3Y61904lG3x/x4UDYk5M4/DvZcBJm2WD0SZyZZesY5
- Aoxg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVaBdfyTOuEkJFt/2ub0OItd+g4V6ADApIAv1rGfSPVMgP1GAMvhI0uwS/N2+2JfP7hZcBeULlUPA==@nongnu.org
-X-Gm-Message-State: AOJu0YxEoFkOQF8M+B5rVJhOPkofw8fc/RpPV5ekpQQzuNvw4m/TKf/B
- dBXbbdR6WbJl0IYxhBlYIGS43DQeZXVtkadhvwI471dfl1Ftya5ILbTUd83rxH/GDFlrlGvq2Sx
- 3EmhooztKd41FnsrS31HrwRcYatOdLq+mBnVjnw==
-X-Gm-Gg: ASbGnctqGaieSnx801S0mUNY/g7YGHC2RvEg9eEhw1MMJhGUKF8me8MjrjE+FxUKb4/
- gYbGSAClO+DIlRpp8Pt1Imm506RN+/umD0qISrjhXW8jnhiq0GFU5K/21BfcLahoQyePypGHVqX
- keTe2mPcSQ7ryxZ1qEV7FakdSiMZancTuqdw==
-X-Received: by 2002:a05:690c:6283:b0:708:35b1:d55b with SMTP id
- 00721157ae682-70a3f9ed3dfmr156288527b3.8.1747044391908; Mon, 12 May 2025
- 03:06:31 -0700 (PDT)
+       dkim=pass header.i=@intel.com header.s=Intel header.b=bK3Zssgc;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-46172-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-46172-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 058607A48B5
+	for <alex.bennee@linaro.org>; Mon, 12 May 2025 13:32:11 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 1F1D926771F;
+	Mon, 12 May 2025 13:33:20 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="bK3Zssgc"
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 46C815674E
+	for <kvm@vger.kernel.org>; Mon, 12 May 2025 13:33:17 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.19
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1747056799; cv=none; b=E/BGggOkYnabRfAlv3SPHYoxddTre/zuMG3rsxnsnan1jCDdus1Am0NVw/xPvHWnufi6ER0KPPKjj89H60aF3DdcNUlCkg5BudUuT+x0AlLFSSYOcU5OFgiBztfcTbXb1FdE2TWhAEuplGxUwBbt/9WO0rEN2kMbADsp0rzPLdg=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1747056799; c=relaxed/simple;
+	bh=F7j3cep47puNwkdI95QJzzsEY4MpzPeMA6iUkercExs=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=SyP/C+1onJbPX6BSedKyfjT3CJ3PWZkUVl30taJjjxT4tdohCx2qlYr04WVqlihUA4WNbNlXYF5BUOInWXq9nzey2hBK2QZCIcFREtg8rgoBe9NJUxgECydW+7LxE62Q+WVJSkxLKgGvjYSp57QhPzl79AI4wR+FGAbsWxVKekg=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=bK3Zssgc; arc=none smtp.client-ip=192.198.163.19
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1747056798; x=1778592798;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=F7j3cep47puNwkdI95QJzzsEY4MpzPeMA6iUkercExs=;
+  b=bK3Zssgc8WQxXhhFAFnh/xeAjzQGldHBH+/xhMISnk6ai2quRCGgoo1X
+   c6Z3il0ahMADTlz0DJQrQHGT/dUtPrEMm9vTHqp6LdDODzMVKPdnM4JqB
+   tYFfh4+K7Ad7DbaMU/TJ3ROYgKooOzjPSC1pNU2CC3I89AIByq7Zehv7Q
+   Tqqso0/02s90HM2IRRk0Iok23Vjl/HzyeV+HwDXIoFC7LYctbM/PnUFJK
+   zxF1OvPC0j5quUYR7l2x2hk7C3yQcEHQw1wz3Hqaq9IKgq6bsX6rWOeei
+   GiNMOVBrcuOOsluTAxDHdVlveBhpTmDWIU437CnD6vCZkkVdJuGuivWJy
+   g==;
+X-CSE-ConnectionGUID: XRLwSzvTS6O4NveA5shidg==
+X-CSE-MsgGUID: JKwYrNWdTGGlpxaW1l5naA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11431"; a="47960751"
+X-IronPort-AV: E=Sophos;i="6.15,282,1739865600"; 
+   d="scan'208";a="47960751"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 May 2025 06:33:17 -0700
+X-CSE-ConnectionGUID: 8a8HyKboSVah4ASvPQPnYQ==
+X-CSE-MsgGUID: zzCrsy+8RXOjD7uwBo8uaA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,282,1739865600"; 
+   d="scan'208";a="137081420"
+Received: from xiaoyaol-hp-g830.ccr.corp.intel.com (HELO [10.124.247.1]) ([10.124.247.1])
+  by orviesa009-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 May 2025 06:33:10 -0700
+Message-ID: <e5a305cc-4c8b-48df-99fe-539ebd9b72f9@intel.com>
+Date: Mon, 12 May 2025 21:33:06 +0800
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <20250508072706.114278-1-thuth@redhat.com>
-In-Reply-To: <20250508072706.114278-1-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 May 2025 11:06:20 +0100
-X-Gm-Features: AX0GCFvqKcPyA_QwmnBwHh-Uc2dtrJB2eqZqP9uv-vYdt8LLdRDhIbu_mutj4MY
-Message-ID: <CAFEAcA8gmFVres5yZTz6QuuioBeEFLZams=BNZR9oXUJmffoeA@mail.gmail.com>
-Subject: Re: [RFC PATCH] MAINTAINERS: Add an entry for the Bananapi machine
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qianfan Zhao <qianfanguijin@163.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IA6Z9yCCszyG
+User-Agent: Mozilla Thunderbird
+Subject: Re: How to mark internal properties
+To: Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ kvm@vger.kernel.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Yi Liu <yi.l.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org,
+ Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Ani Sinha <anisinha@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
+ Jason Wang <jasowang@redhat.com>
+References: <20250508133550.81391-1-philmd@linaro.org>
+ <20250508133550.81391-13-philmd@linaro.org>
+ <23260c74-01ba-45bc-bf2f-b3e19c28ec8a@intel.com> <aB2vjuT07EuO6JSQ@intel.com>
+ <2f526570-7ab0-479c-967c-b3f95f9f19e3@redhat.com>
+ <CAFEAcA-kuHvxjuV_cMh-Px3C-k2Gd51jFqhwndO52vm++M_jAA@mail.gmail.com>
+ <aCG6MuDLrQpoTqpg@redhat.com> <87jz6mqeu5.fsf@pond.sub.org>
+Content-Language: en-US
+From: Xiaoyao Li <xiaoyao.li@intel.com>
+In-Reply-To: <87jz6mqeu5.fsf@pond.sub.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: CAK9/tBRZeOZ
 
-On Thu, 8 May 2025 at 08:27, Thomas Huth <thuth@redhat.com> wrote:
->
-> From: Thomas Huth <thuth@redhat.com>
->
-> This machine was still missing from the MAINTAINERS file. Since there
-> is likely no active maintainer around for this machine (I didn't spot
-> any contributions from Qianfan Zhao in the git log after 2023), I'm
-> suggesting Peter as maintainer with status set to "Odd fixes".
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On 5/12/2025 6:54 PM, Markus Armbruster wrote:
+> Daniel P. Berrangé<berrange@redhat.com> writes:
+> 
+>> On Mon, May 12, 2025 at 09:46:30AM +0100, Peter Maydell wrote:
+>>> On Fri, 9 May 2025 at 11:04, Thomas Huth<thuth@redhat.com> wrote:
+>>>> Thanks for your clarifications, Zhao! But I think this shows again the
+>>>> problem that we have hit a couple of times in the past already: Properties
+>>>> are currently used for both, config knobs for the users and internal
+>>>> switches for configuration of the machine. We lack a proper way to say "this
+>>>> property is usable for the user" and "this property is meant for internal
+>>>> configuration only".
+>>>>
+>>>> I wonder whether we could maybe come up with a naming scheme to better
+>>>> distinguish the two sets, e.g. by using a prefix similar to the "x-" prefix
+>>>> for experimental properties? We could e.g. say that all properties starting
+>>>> with a "q-" are meant for QEMU-internal configuration only or something
+>>>> similar (and maybe even hide those from the default help output when running
+>>>> "-device xyz,help" ?)? Anybody any opinions or better ideas on this?
+>>> I think a q-prefix is potentially a bit clunky unless we also have
+>>> infrastructure to say eg DEFINE_INTERNAL_PROP_BOOL("foo", ...)
+>>> and have it auto-add the prefix, and to have the C APIs for
+>>> setting properties search for both "foo" and "q-foo" so you
+>>> don't have to write qdev_prop_set_bit(dev, "q-foo", ...).
 
-Seems reasonable; applied to target-arm.next
+> If we make intent explicit with DEFINE_INTERNAL_PROP_FOO(), is repeating
+> intent in the name useful?
 
--- PMM
++1 for DEFINE_INTERNAL_PROP_FOO(). I have the same thought.
+
+We need something in code to restrict the *internal* property really 
+internal, i.e., not user settable. What the name of the property is 
+doesn't matter.

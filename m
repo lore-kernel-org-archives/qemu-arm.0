@@ -1,223 +1,225 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp2772398njb;
-        Mon, 12 May 2025 07:46:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXGD/QRWUGYPK6QoGuXwdjfAdVZE3J+SBnhj7cTfTqsIjtNnc8JJeTpe30qvTP7gdxOoCZRvcd7yrztHg==@linaro.org
-X-Received: by 2002:a05:600c:1c26:b0:442:e109:3032 with SMTP id 5b1f17b1804b1-442ea0a09c8mr8384535e9.24.1747061204850;
-        Mon, 12 May 2025 07:46:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747061204; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp2798709njb;
+        Mon, 12 May 2025 08:24:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVo3RB59vO6UJzRDPmOhTc/n1ntkgCxWuZ4b2UdYghmnVBCtD5GNeNsRkF8Fw0HLbZ5Jilv5oPRajUaUA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFKJWbUYhztglnuLIvnAdLs1DBYhm0FHPaPEIw6AXeVwNn57Xk9kdPMCsCMcD8TE6equ1pD
+X-Received: by 2002:ad4:5e88:0:b0:6f5:117c:76cf with SMTP id 6a1803df08f44-6f6e48408c9mr195275986d6.40.1747063492224;
+        Mon, 12 May 2025 08:24:52 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1747063492; cv=pass;
         d=google.com; s=arc-20240605;
-        b=iXe85Jqz7Bv1UJaGYjJ5oksj/GJP12nDPfpCFDtXcyN6A+/pSep89oTfYfqfQRKmJs
-         1yXHhrRg7gVYKuEzHqiZ2LyK4ZwNoMumKRHHRKoLjUynLpfHmE9YH0OVVsKQUx31mtoY
-         tLhkvDbFJvNgeL6kkHTM0r6loKdGCT91Rm0aVB+RIWWJhGnFyHsQxNentUmguavyotCx
-         C7kQ+/JduGImNI+T66/SX6pAgmM5CmKrEqL5QpkfGcBXjDvC/2JiRccW93gz2yNwMQZ9
-         sia+QfKOT5Jf0uKK9cWx6yH4T8eSIR8Pr3kIBRjHN5AmOa6A+fC+O6o6j56as3twHnoN
-         K7dQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=YdI+i4zev0OQ7/OBo6IO5PLh4ziQxP2ot1AsLf6mhbc=;
-        fh=SVU9LrTKGaX1V9eUZIJYvi6L/52NKANANAFFkyVjnnM=;
-        b=llxQBrCTSQqdn5WpZs39VTZfb6Gtc/jmAikz26eWs9IH9xqYlNx2l+zN0SH7VDBNOs
-         hhQBpTkeuBWQftRyyt4vOl9U9dhYm1ilEl2mvgdK3ibQlonTC13Hm0+eyHUfFP1aaIl+
-         9uiMIopHa9yEleKZrWnNpqvNKhUL/uxv+CZ/GnGaf1TYEM0de/mlTx7RwhmdU6lGyUZC
-         Is7No27NbCDRQmmpiG/ggwUQFi6TQbyZHL0MBS5/eREqcz540vox4eB4Vf/PsEkRtu62
-         XgXQNCmrlKN5sU1ul9s4LSgALbLzoSwwiHSP7TVppHjn1XmNlGynmqT4KbuCpWypEQIp
-         +CEQ==;
+        b=jnPFRjfMU/bUTMTlIOzSgNRXHfPaXZvBkKuVzUJZKRG/7WUWLTikbRiZqG0uvAdB1E
+         Tcen63uWWA6MmTtYXe6JmBpgjdD9wP6WZbMDqltu8v9zwzDNgFuXVKwGhlmh4O/j5VMJ
+         tTAzYACqbeSytIwoHnlYVANxu0AMQzYlMOetUIfXbtCWj+zK5XN6a2/gHth5d3nlxBi3
+         ffN5cNiNIIAg0o27Oy9sI7O2e5b9cIuyrh67q8gwftBkZbLcSi77IRpk9MoNa8vs1vIf
+         /GzPRu0+LKVJCkOKJATiQThxQEKa1B33Evhn0dCvhETnfZ4BPekXZxZ01oD5oBEw6KGc
+         ObKw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=0uPxPAlbokCBFELfvxkftEEGEGO3nEqu1EeO7daiHGU=;
+        fh=ssfOTddxQKhmvXiiAM7WYr8MwVRUV1FLNnn1iOwawRI=;
+        b=TUNWJGhCQOBvetadKALCG3QSDK2EXuuUkL3WElCV+0QnHv3NM+vPjqxPheMPOryQLn
+         8vwr4am3d06JK6aqfboOzM3qBLPrzv2re3Nkk1f3p3UJ09TChvv/1WZd6xabzS1NYvC7
+         3IrkEWEXHcN145q25XRh7pmgmsMyfU77uA0ZPryRGxXHPWIdiscksPuwgnwljSgIUIt1
+         MpDrccKddRhwAG7rKak+WgtaUa6iqL+WTi+wTM8MnYcjqni2WYfymE5d6SvdC1NSIqw2
+         ZZs8v8wfzFe/a7FR4z47hBOhbOCwvcXLtlEYTdFpUT7X/bufvqEJiJYUhXGzbYn9H0W+
+         dn0w==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="i3gueVM/";
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-442d67d9a73sor29190805e9.1.2025.05.12.07.46.44
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QiM6zOCv;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46187-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-46187-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-46187-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a4b871si95653236d6.319.2025.05.12.08.24.52
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 12 May 2025 07:46:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="i3gueVM/";
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1747061204; x=1747666004; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=YdI+i4zev0OQ7/OBo6IO5PLh4ziQxP2ot1AsLf6mhbc=;
-        b=i3gueVM/AB/S2o+2+0WDdH+b/XESuZ4YkQ9TVObj8jOk8wbrp0UTex3os4uAQZT1Ij
-         MVkc8TWmXgRAkBMwi+MkddMPBnRuSjBGlT1TD1xACdB+tFSKMZplJT+mPyjYTq8IIq73
-         z8r1HC6rfCmvLSXCIQDJH9sipck0GEeWSJJ3DkUguaKgFc1elFNlyo+lSJcGCXjMjAW/
-         B+kt6FRA5ZRMU7XhnBMbRShezSnaloeiyw5NRFPRzuVJLvbxoH7xLSeIxv1tLeTFKZJf
-         o/xq7C9MGOWms5WsvkmsuCxsQn0uisk+p2H6LRmkRe8CpGhuWPi+cmk0D8YkojkH/9pj
-         ywAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747061204; x=1747666004;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=YdI+i4zev0OQ7/OBo6IO5PLh4ziQxP2ot1AsLf6mhbc=;
-        b=Aix/HEosNdfE8CmFCvP5faFyGJU+eufDOPeQlW+dPCSbZkApIIdxOwHnU/aHyNEnly
-         hNa3SSPExuClce0AlQA6fMKG8fa+KVpgPYV3WHkXG26tPDfx7xhQ0MKyeHANngnyqrit
-         NpCXtbJYpouMSrMyeJIDDML/vX+ILB+ABdlDCM7olF5gUH+Dqsp+xnLsUkt1Z+yJAaJ+
-         SezPGTepe/mz35sR3RmMGavmiqS//GNJ/MU6WGMd9C/zIrfBuN07K0yb+zTbFQfmCrjs
-         PHhkq6o9UfEtccoY+gY7ckdUcYHgj4O2S3IU2Z9Lh2yVTXF05yH8adVL0Gy03yHtiow6
-         X2LQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXa2b6XW13FiimhagQRRcg2+0VKgNsjszXQkm4yyXYpBkE7j0zuIel4QOd6NRaKMOZoqpY0TtFuENDpqg==@linaro.org
-X-Gm-Message-State: AOJu0Yw+5w/HO9zRaKa4Rrw+VuMVERtwOIYRTcjT8SWPNyhVDhDa/zLq
-	2Y27N/6yuXA6EmYmZYjKoi5RtGceo/6t5G+fm1p1hJaHHKP83BuO9W+JJCWjk2taBQ==
-X-Gm-Gg: ASbGncuPgL/1TdIE8BPlGBopHX6QZyBsMP1oRCZ22zQ+eaVdaj1tlxmU6dHRIjsOXHw
-	UQEnCFqhl9SAiYN7927GLS20Wae66kDXgHD2RS5DFuQT1RQVW99U+T/IUYIEkCwqORvDS4Gh7Gm
-	GTd5cP60kktFU7Qvl5XWCe762PiPpsyxvROUKDXeYJxl+O6Op7uL6obpMqkZn7V0MUbL5YnBUl5
-	qvJ1+kftf9WynBFjh3LFeZKrMkb2Qg4z/ntqHFm82PRBgwaBaIFl3kBvolLxRvMrcA5vbYp8DuH
-	bHgSF/Yo9wSzQWmZ+Pv6c6LjDDSV+VLoaln47hEm6AJVN1H+06kUCqgFb9wqMhGAQwK+PWSpFTw
-	MlIzDaseIkRPZQe+cmKkL09OsFrsvPcUq
-X-Google-Smtp-Source: AGHT+IEJcNtepBTtSyidNPWfopTkNDkFWovfT5ZLmLhkGXOvIk00cQ0ltg5PYK7+UFqsTiggrnU14w==
-X-Received: by 2002:a05:600c:3b84:b0:43d:683:8cb2 with SMTP id 5b1f17b1804b1-442d6d44b30mr120675365e9.14.1747061204308;
-        Mon, 12 May 2025 07:46:44 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from xps13.c.hoisthospitality.com (110.8.30.213.rev.vodafone.pt. [213.30.8.110])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442d68585d1sm129173445e9.31.2025.05.12.07.46.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 May 2025 07:46:43 -0700 (PDT)
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: qemu-devel@nongnu.org,
-	thuth@redhat.com,
-	berrange@redhat.com
-Cc: gustavo.romero@linaro.org,
-	eric.auger@redhat.com,
-	alex.bennee@linaro.org,
-	philmd@linaro.org,
-	peter.maydell@linaro.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH v4] tests/functional: Add PCI hotplug test for aarch64
-Date: Mon, 12 May 2025 15:45:45 +0100
-Message-ID: <20250512144629.182340-1-gustavo.romero@linaro.org>
-X-Mailer: git-send-email 2.43.0
+        Mon, 12 May 2025 08:24:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46187-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QiM6zOCv;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46187-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-46187-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 6192617348F
+	for <alex.bennee@linaro.org>; Mon, 12 May 2025 15:24:49 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 6A83122A801;
+	Mon, 12 May 2025 15:24:44 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="QiM6zOCv"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7964A22FF37
+	for <kvm@vger.kernel.org>; Mon, 12 May 2025 15:24:42 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1747063484; cv=none; b=U+s8m9p8hTyYXA6s+EW0Qw6WMmvsN0ltbOK9wE7Is4k55CeAFnTETb4ARrAyW4dG2OIhKYOA25yP1da7/6rorQf7K1lZTvik6xe5ulHN8ki+GabZ9PYWEA0DUUe5oubddFCQu73U+EnAiE8aTMT18dP5neYG4UTxVFmJQDC61zs=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1747063484; c=relaxed/simple;
+	bh=vH266j5hHgeV7VIVyG6DV3JLoILm7xcpcQgFEFrLW2g=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=TAu/FLibJfeKFMgPFVH3Sez0ZW9o3l5lUhHwZuCY6PdKQF/EqOzSlDjV9YmmI0eH8nrs8Gd5y1wnTVE7ik+XkYmWP083TgqQO506BimVTi4UvoYdM4O+H3nhnKZjN8sajnxTUHvx8AKB+MV97ZBl0eS/+QhZ15zJ5YSHk9isf8o=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=QiM6zOCv; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1747063481;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0uPxPAlbokCBFELfvxkftEEGEGO3nEqu1EeO7daiHGU=;
+	b=QiM6zOCvn+gjK3h6rbADrk4chqyPE4rGjH6g9+UajnGUgkzP9Uv22tha0a8Xf7bd+dh+u7
+	HUd+Rvp4/Jw8kG8FbivpEhpdjj2LW9WCh2shyWP5R+TEmjqFZD6mxCMxuZ5jo7JgoiUenE
+	L7ojPFyzOm4C18ja4wg3oCH0r0GJ5BM=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-689-nNWtjf9YOAW6dqPeChMT6w-1; Mon, 12 May 2025 11:24:40 -0400
+X-MC-Unique: nNWtjf9YOAW6dqPeChMT6w-1
+X-Mimecast-MFC-AGG-ID: nNWtjf9YOAW6dqPeChMT6w_1747063479
+Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-43ce8f82e66so23752575e9.3
+        for <kvm@vger.kernel.org>; Mon, 12 May 2025 08:24:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747063479; x=1747668279;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0uPxPAlbokCBFELfvxkftEEGEGO3nEqu1EeO7daiHGU=;
+        b=iLLswH8ni/uwhDoFg/bNhqmPWp9bvskWuCi1OveRQUokmRlPVtgbl2FP5MKf51bQ+S
+         nueZBt6YMXgEA03KP5+fmk88ctuQxtwzb7sBajT0PvzryJt1jZGQhBSvmhuqqhYEjRtZ
+         9hAkrvpgIq1VFKd9YHpg4SBrKNmsNvfRQRRDOLpWsxPEFQ+9qEK0jg95rjH3GxYrEa+g
+         2pWydfqdMWMYcAySluRo1P7NdPAcOYNofNjMu7+M9LvVTqfV0q6eEqGapT8G5tF5J+Tp
+         jk4CfvMLZ7itP5WdwX9QBa0qlQ5D7aGJdtg7XbdbNocDCRqf36xqylPJxJpFf3eNyjn8
+         SD4g==
+X-Forwarded-Encrypted: i=1; AJvYcCVetd4O3gPc6YJh8htNMAVnolkj7zJRdW5y6N4DWcXRrqIkxcXBCAF9qI3xWU0DTQgymoQ=@vger.kernel.org
+X-Gm-Message-State: AOJu0YwgaE6ZmkHovlkr7tfIv0nBSSs3Rm52PxmDNCvGOi0bVE3/IPcU
+	DYoLvCgMNbqIlqn6P/eCcpmgW2fxc2LvDBrwMrcRfuQ8JugFBibEGPnQWqDNUtlw0aNvUB5ou5W
+	kqMUSfoFuPnlg1XdfMaDHzIvnt/G6LTlARx5uXXBLQ96V31Ibzw==
+X-Gm-Gg: ASbGncuz0raoxnfVoSqn1XPhX8xzmJgya5M1xVQwTkcM/W8PpKOYVnGCukbMplFL6in
+	VC72jdK5gAbZy1L/M48+69G2AsiBuanLQaFdYxD3l/rEaxu6zXVkV7sMRFGkK7CRYKN0xOjTmtz
+	P79Podyzm2EBYB/JXT8njHT/HCh7GCD0SdTqxQqe8F0z90npqbruSZYSfaQzRt5UKboVeN5Bt67
+	yOpfYbFKhJW4zWkTueYEC/C+jdhSgqRphOzA6TDpJ0T/XVRGO1fb1MTSwqInOlc3xYjfwXFSxwe
+	R/XGPA6Gtx9U17DDjOjHhlkGWe2F3EFL
+X-Received: by 2002:a05:6000:1868:b0:3a0:b392:c2f with SMTP id ffacd0b85a97d-3a1f648782cmr10140800f8f.44.1747063479025;
+        Mon, 12 May 2025 08:24:39 -0700 (PDT)
+X-Received: by 2002:a05:6000:1868:b0:3a0:b392:c2f with SMTP id ffacd0b85a97d-3a1f648782cmr10140783f8f.44.1747063478678;
+        Mon, 12 May 2025 08:24:38 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442cd3aeb26sm173676635e9.29.2025.05.12.08.24.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 May 2025 08:24:38 -0700 (PDT)
+Date: Mon, 12 May 2025 17:24:35 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ kvm@vger.kernel.org, Sergio Lopez <slp@redhat.com>, Gerd Hoffmann
+ <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Laurent
+ Vivier <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu
+ <yi.l.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>, Eduardo
+ Habkost <eduardo@habkost.net>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>, Marcelo Tosatti
+ <mtosatti@redhat.com>, qemu-riscv@nongnu.org, Weiwei Li
+ <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>, Zhao Liu
+ <zhao1.liu@intel.com>, Yanan Wang <wangyanan55@huawei.com>, Helge Deller
+ <deller@gmx.de>, Palmer Dabbelt <palmer@dabbelt.com>, Ani Sinha
+ <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>, Paolo Bonzini
+ <pbonzini@redhat.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?B?Q2zDqW1lbnQ=?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
+ qemu-arm@nongnu.org, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
+ <marcandre.lureau@redhat.com>, Huacai Chen <chenhuacai@kernel.org>, Jason
+ Wang <jasowang@redhat.com>
+Subject: Re: [PATCH v4 13/27] target/i386/cpu: Remove
+ CPUX86State::fill_mtrr_mask field
+Message-ID: <20250512172435.6ad4cbbc@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250508133550.81391-14-philmd@linaro.org>
+References: <20250508133550.81391-1-philmd@linaro.org>
+	<20250508133550.81391-14-philmd@linaro.org>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: l5nGIpHp+gbA
+Content-Transfer-Encoding: quoted-printable
+X-TUID: ZMvVtkGi6lXM
 
-Add a functional test, aarch64_hotplug_pci, to exercise PCI hotplug and
-hot-unplug on arm64.
+On Thu,  8 May 2025 15:35:36 +0200
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
 
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
----
- MAINTAINERS                                  |  5 ++
- tests/functional/meson.build                 |  1 +
- tests/functional/test_aarch64_hotplug_pci.py | 74 ++++++++++++++++++++
- 3 files changed, 80 insertions(+)
- create mode 100755 tests/functional/test_aarch64_hotplug_pci.py
+> The CPUX86State::fill_mtrr_mask boolean was only disabled
+> for the pc-q35-2.6 and pc-i440fx-2.6 machines, which got
+> removed. Being now always %true, we can remove it and simplify
+> kvm_get_msrs().
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  target/i386/cpu.h     |  3 ---
+>  target/i386/cpu.c     |  1 -
+>  target/i386/kvm/kvm.c | 10 +++-------
+>  3 files changed, 3 insertions(+), 11 deletions(-)
+>=20
+> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+> index 06817a31cf9..7585407da54 100644
+> --- a/target/i386/cpu.h
+> +++ b/target/i386/cpu.h
+> @@ -2253,9 +2253,6 @@ struct ArchCPU {
+>      /* Enable auto level-increase for Intel Processor Trace leave */
+>      bool intel_pt_auto_level;
+> =20
+> -    /* if true fill the top bits of the MTRR_PHYSMASKn variable range */
+> -    bool fill_mtrr_mask;
+> -
+>      /* if true override the phys_bits value with a value read from the h=
+ost */
+>      bool host_phys_bits;
+> =20
+> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> index 6fe37f71b1e..fb505d13122 100644
+> --- a/target/i386/cpu.c
+> +++ b/target/i386/cpu.c
+> @@ -8810,7 +8810,6 @@ static const Property x86_cpu_properties[] =3D {
+>      DEFINE_PROP_UINT32("guest-phys-bits", X86CPU, guest_phys_bits, -1),
+>      DEFINE_PROP_BOOL("host-phys-bits", X86CPU, host_phys_bits, false),
+>      DEFINE_PROP_UINT8("host-phys-bits-limit", X86CPU, host_phys_bits_lim=
+it, 0),
+> -    DEFINE_PROP_BOOL("fill-mtrr-mask", X86CPU, fill_mtrr_mask, true),
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 23174b4ca7..9ebb768214 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2065,6 +2065,11 @@ S: Supported
- F: include/hw/pci/pcie_doe.h
- F: hw/pci/pcie_doe.c
- 
-+ARM PCI Hotplug
-+M: Gustavo Romero <gustavo.romero@linaro.org>
-+S: Supported
-+F: tests/functional/test_aarch64_hotplug_pci.py
-+
- ACPI/SMBIOS
- M: Michael S. Tsirkin <mst@redhat.com>
- M: Igor Mammedov <imammedo@redhat.com>
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index 52b4706cfe..2d68840fa2 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -83,6 +83,7 @@ tests_aarch64_system_quick = [
- tests_aarch64_system_thorough = [
-   'aarch64_aspeed_ast2700',
-   'aarch64_aspeed_ast2700fc',
-+  'aarch64_hotplug_pci',
-   'aarch64_imx8mp_evk',
-   'aarch64_raspi3',
-   'aarch64_raspi4',
-diff --git a/tests/functional/test_aarch64_hotplug_pci.py b/tests/functional/test_aarch64_hotplug_pci.py
-new file mode 100755
-index 0000000000..fa1bb62c8f
---- /dev/null
-+++ b/tests/functional/test_aarch64_hotplug_pci.py
-@@ -0,0 +1,74 @@
-+#!/usr/bin/env python3
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+#
-+# The test hotplugs a PCI device and checks it on a Linux guest.
-+#
-+# Copyright (c) 2025 Linaro Ltd.
-+#
-+# Author:
-+#  Gustavo Romero <gustavo.romero@linaro.org>
-+#
-+# This work is licensed under the terms of the GNU GPL, version 2 or
-+# later.  See the COPYING file in the top-level directory.
-+
-+from qemu_test import LinuxKernelTest, Asset, exec_command_and_wait_for_pattern
-+from qemu_test import BUILD_DIR
-+
-+class HotplugPCI(LinuxKernelTest):
-+
-+    ASSET_KERNEL = Asset(
-+        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm64/'
-+         'current/images/netboot/debian-installer/arm64/linux'),
-+        '3821d4db56d42c6a4eac62f31846e35465940afd87746b4cfcdf5c9eca3117b2')
-+
-+    ASSET_INITRD = Asset(
-+        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm64/'
-+         'current/images/netboot/debian-installer/arm64/initrd.gz'),
-+        '2583ec22b45265ad69e82f198674f53d4cd85be124fe012eedc2fd91156bc4b4')
-+
-+    def test_hotplug_pci(self):
-+
-+        self.set_machine('virt')
-+        self.vm.add_args('-m', '512M')
-+        self.vm.add_args('-cpu', 'cortex-a57')
-+        self.vm.add_args('-append',
-+                         'console=ttyAMA0,115200 init=/bin/sh')
-+        self.vm.add_args('-device',
-+                         'pcie-root-port,bus=pcie.0,chassis=1,slot=1,id=pcie.1')
-+        self.vm.add_args('-bios', self.build_file('pc-bios',
-+                                                  'edk2-aarch64-code.fd'))
-+
-+        # BusyBox prompt
-+        prompt = "~ #"
-+        self.launch_kernel(self.ASSET_KERNEL.fetch(),
-+                           self.ASSET_INITRD.fetch(),
-+                           wait_for=prompt)
-+
-+        # Check for initial state: 2 network adapters, lo and enp0s1.
-+        exec_command_and_wait_for_pattern(self,
-+                                          'ls -l /sys/class/net | wc -l',
-+                                          '2')
-+
-+        # Hotplug one network adapter to the root port, i.e. pcie.1 bus.
-+        self.vm.cmd('device_add',
-+                    driver='virtio-net-pci',
-+                    bus='pcie.1',
-+                    addr=0,
-+                    id='na')
-+        # Wait for the kernel to recognize the new device.
-+        self.wait_for_console_pattern('virtio-pci')
-+        self.wait_for_console_pattern('virtio_net')
-+
-+        # Check if there is a new network adapter.
-+        exec_command_and_wait_for_pattern(self,
-+                                          'ls -l /sys/class/net | wc -l',
-+                                          '3')
-+
-+        self.vm.cmd('device_del', id='na')
-+        exec_command_and_wait_for_pattern(self,
-+                                          'ls -l /sys/class/net | wc -l',
-+                                          '2')
-+
-+if __name__ == '__main__':
-+    LinuxKernelTest.main()
--- 
-2.43.0
+same as previous patch, deprecate 1st then remove
+
+>      DEFINE_PROP_UINT32("level-func7", X86CPU, env.cpuid_level_func7,
+>                         UINT32_MAX),
+>      DEFINE_PROP_UINT32("level", X86CPU, env.cpuid_level, UINT32_MAX),
+> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+> index c9a3c02e3e3..87edce99e85 100644
+> --- a/target/i386/kvm/kvm.c
+> +++ b/target/i386/kvm/kvm.c
+> @@ -4635,13 +4635,9 @@ static int kvm_get_msrs(X86CPU *cpu)
+>       * we're migrating to.
+>       */
+> =20
+> -    if (cpu->fill_mtrr_mask) {
+> -        QEMU_BUILD_BUG_ON(TARGET_PHYS_ADDR_SPACE_BITS > 52);
+> -        assert(cpu->phys_bits <=3D TARGET_PHYS_ADDR_SPACE_BITS);
+> -        mtrr_top_bits =3D MAKE_64BIT_MASK(cpu->phys_bits, 52 - cpu->phys=
+_bits);
+> -    } else {
+> -        mtrr_top_bits =3D 0;
+> -    }
+> +    QEMU_BUILD_BUG_ON(TARGET_PHYS_ADDR_SPACE_BITS > 52);
+> +    assert(cpu->phys_bits <=3D TARGET_PHYS_ADDR_SPACE_BITS);
+> +    mtrr_top_bits =3D MAKE_64BIT_MASK(cpu->phys_bits, 52 - cpu->phys_bit=
+s);
+> =20
+>      for (i =3D 0; i < ret; i++) {
+>          uint32_t index =3D msrs[i].index;
+

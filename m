@@ -1,202 +1,226 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp2769546njb;
-        Mon, 12 May 2025 07:41:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV1FhTcBE69E7ohGaCeMOW3ls3t842Nw8pWKNBozGsS7LYkmWny+mVoi/Eo1tteulGSL8GtbRReaRtJXg==@linaro.org
-X-Google-Smtp-Source: AGHT+IH3aaJLw+HgMh4jdNW8U9+09GaRoK9IgezjPZG+QKAohAlZomxyqaE33xzxbFLzOpK7VyrE
-X-Received: by 2002:a05:6214:8d:b0:6f6:e7ba:83c5 with SMTP id 6a1803df08f44-6f6e7ba8447mr125453066d6.29.1747060913693;
-        Mon, 12 May 2025 07:41:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747060913; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp2797488njb;
+        Mon, 12 May 2025 08:22:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVEEQn4GzZj7ZRK7gAjhoU9qBVro8vMqRixUC4OYFalGkxo1St9u9AfyHtAi9w6xX1X+u2cx6bNeNqI7g==@linaro.org
+X-Google-Smtp-Source: AGHT+IE7hus9v8PJtNI/4QCvg5rGxEkAFNcpwxjAMGMHaSipt61WA5dcWRzmC5tmt2SsqCho8W/O
+X-Received: by 2002:a05:6214:5b82:b0:6f6:e6d1:40bf with SMTP id 6a1803df08f44-6f6e6d14223mr268240136d6.38.1747063368432;
+        Mon, 12 May 2025 08:22:48 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1747063368; cv=pass;
         d=google.com; s=arc-20240605;
-        b=kxEj7JZlXdtzOF78NTqTHhXPjcV83P86lCW2VWhnc3xMWdGP0OP+NIv7X3WWw4aUQZ
-         4n/Xn7VHZDWy0kcUcPizMt1nsqEwDcXDj6PMLs3dNFwHzOy7ocflvd18lUGzgMxGNPnL
-         ygfsop4NsECIgJTp4k6k5HTalMDsmTsqb0uvb3Qg02DTFOhUpVqtVOcu0bu41QlXAoTm
-         TI9QKh48LY0CoGfp+R0zh8Et+43eLwkPd2HdcOv+sHhbUP0qq9fx5qBkAtZLVrwL51el
-         HqhSNwxM8/AJpRTehOarPe/f+6PoSvYMDUNtCOicKbyOY45Pm1eAPa8/s/pUO+Z1Oem+
-         FtxA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=4d4YBJ0+n8f1xwDhJd3Y0pI66pBwlrMHwokzfZnjvjA=;
-        fh=p9o0XcjsulIReoPvwNrM/h4B68cSUkm0XQ5iVooRGWM=;
-        b=G3fIhy51OqOL0/T15D+QRpr6LZc0fhbZfZID/A6DppqA28mVSnKdYJ6WSrxTIe6oik
-         4ZW26Ws0EPOlksCgWEF4PzUlrI403ugYCmFZLtAOKpojvXro5QDp61gPLKOvbsMuKdoy
-         C9niXEAEWcYDQfZqzqTfbWFf+R4PBID851XAXxqh1yFg8yN4JAVGGN+Hn8R9M7tWYYqn
-         K4pcL0FYfxpUFlHO+JgirK1dYQgg/iKtILjVCb6Z6JCAhraH1ZeGo4uhOnSWBkotg+ys
-         nutjzyDSL7TBEAUeJRqxEkoCnyX+ZEH8gu2YGM3PJGji6j0YYOZZJTJ5uzwfNB/eiHOp
-         H6sA==;
+        b=gwjZORyQSddF8ZNHF6d18KviLRWrNtVoU3ROsrPtq9ME0SY0DtRkS9u93TXf1QWubh
+         Vke63K5lhvcAIEReMqiH8/lDnXZ++l5pbcQRWEGi9HfczkaVfjv0sZV6VYMdnmyAtW3w
+         ar1m5Dsidita2OEDgH0m1n6+WGWfIZ7l6Zk0arv0g3g/+Vefdqm4EbDLG6aza+Nvbau0
+         Jm/DnsO0Th4JBmzgoJh2S3wkOAhLpJJpwNrSpGGQB2bLFWIGP4/A+S8b/fNfihrrytZo
+         zcqe+BC0EnF4zfToLebh73a3C/ehiH8lztti9zE/QUs6fw4ED36tHOZ5mCbgJU37lY62
+         C8Aw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=3fDbveoy634fX30HQGWyRUGP5YagE3FENcZZx4UjSE4=;
+        fh=YNQtviqj93rF0iXH4/LsTINvEKf18jqwnuCnIhfgXdQ=;
+        b=YIsncqCduYatxrRx8SKFwvk+tziTuH2YJpPdk0ea29xWgcrMjxRd/wnCVF5lBQ6jYi
+         OoBsaBSnWF7jgStj9+J8YOxl6laDuA6tdlsZKuivur8zCXH5riq/Dz/IKE3vcKKnw/BL
+         D1iGQkozuaZJKB40w4lUp4cJP2n/6/sqfhx9Hp3RmB/4El22DxBjilmc4eN/9vPeOjyH
+         Suii2FGM9wBbcoDZBfReEwLP8wuB1flY5TTgWzODarMw862JU6DQu9adP13DF/I8nlH8
+         xTgKlsnP7pLCgQxDEslHIGrI/dJk+js8jKImXZK70KY7u1d0qejl0wBDkHfnAqPFdifE
+         XqGQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4945258399bsi85721381cf.441.2025.05.12.07.41.53
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bf6jcUby;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46186-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-46186-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-46186-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a43198si89558686d6.183.2025.05.12.08.22.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 May 2025 07:41:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 May 2025 08:22:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46186-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uEULD-0004bE-RU; Mon, 12 May 2025 10:41:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1uEULB-0004ah-M5; Mon, 12 May 2025 10:41:13 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1uEUL9-0000Di-3y; Mon, 12 May 2025 10:41:13 -0400
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 0683755BC03;
- Mon, 12 May 2025 16:41:03 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id Z7rQEdTdCDjh; Mon, 12 May 2025 16:41:00 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id DEB0955BC02; Mon, 12 May 2025 16:41:00 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id DB06B745682;
- Mon, 12 May 2025 16:41:00 +0200 (CEST)
-Date: Mon, 12 May 2025 16:41:00 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Xiaoyao Li <xiaoyao.li@intel.com>
-cc: Markus Armbruster <armbru@redhat.com>, 
- =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
- Zhao Liu <zhao1.liu@intel.com>, 
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org, 
- Richard Henderson <richard.henderson@linaro.org>, kvm@vger.kernel.org, 
- Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu <yi.l.liu@intel.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Eduardo Habkost <eduardo@habkost.net>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Alistair Francis <alistair.francis@wdc.com>, 
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
- Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org, 
- Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>, 
- Yanan Wang <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>, 
- Palmer Dabbelt <palmer@dabbelt.com>, Ani Sinha <anisinha@redhat.com>, 
- Igor Mammedov <imammedo@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- =?ISO-8859-15?Q?Cl=E9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>, 
- qemu-arm@nongnu.org, 
- =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>, 
- Huacai Chen <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bf6jcUby;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46186-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-46186-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 5579A46131D
+	for <alex.bennee@linaro.org>; Mon, 12 May 2025 15:22:42 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id E1B3E22A1C0;
+	Mon, 12 May 2025 15:22:36 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Bf6jcUby"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B5F882356C3
+	for <kvm@vger.kernel.org>; Mon, 12 May 2025 15:22:34 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1747063356; cv=none; b=OCp5Ph1uigkjB0A8upWFqekvqCUsGFrIZ7ND5z8n+HlsDMBTy93Q21el6FJyyPJmSCq9asPTAVcgKs9vsm8KCjfUvA7jPha+xmFbDWgb3fkK+MyqEQyw7L28aYJLFgm59HEJ+mJQMXwL38hYSzji6ZWZVOKGBZ1Sia1Nkm7QF9M=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1747063356; c=relaxed/simple;
+	bh=ZLutuZ31sDh170vy+Jlj34Ncf3BEZ+c9dIbvFrsjNGk=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=UNQDIsDpX+sz1aVIfMcXt+IUMC1X3jNT342gs5pj5jhfKUGdyZR5BZJQlO9n+oodRMMwwWY9CqeeHuAv5IKsGhOi8XyPq9iF8RWrWE2B2HqYRbq4zlmZN55cOVax28kGmhLGu2iMXKuWusK1rXgpUlTewuIeMyIcvMO4c3WmmP0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Bf6jcUby; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1747063353;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=3fDbveoy634fX30HQGWyRUGP5YagE3FENcZZx4UjSE4=;
+	b=Bf6jcUby7njrVX8s/a01LBYJ9k/WsQZHoCAyFPBt5DBT0Ar2uBS6oRCkCILQF5DZTzetPy
+	dE86pgwQdOQ0bnO13EqMMPJ6WiHXNBs8m2C6UHtYS+weFeQdwmiW2BjkQeg+lOHjR1ic/f
+	z5tZDyFlzn3+sWDMcA8sG2Vivqc8RZw=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-115-t4jirGzFP6CU6h-SC-csSQ-1; Mon, 12 May 2025 11:22:32 -0400
+X-MC-Unique: t4jirGzFP6CU6h-SC-csSQ-1
+X-Mimecast-MFC-AGG-ID: t4jirGzFP6CU6h-SC-csSQ_1747063351
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-43f251dc364so28142655e9.2
+        for <kvm@vger.kernel.org>; Mon, 12 May 2025 08:22:32 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747063351; x=1747668151;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=3fDbveoy634fX30HQGWyRUGP5YagE3FENcZZx4UjSE4=;
+        b=ig3K49nX8JPPA8vPVBf/+2BdVktznCCF9z+IdnaV6RtijES6AUv1iHqAgj/uEbBJvE
+         9ehwH4jN4wgmDBAA8+iWDyVPjywLJXBA3fxiRFPRJ2iXrFHciuRBfyyrEQ3hUTh2J6xc
+         KYA3/OXRiCMr7B5ZzxBi+VhonqWUWae0NcE1ydXbcwoeIQs1uQw2X3pF2LAvxGNeOyRi
+         4ca2UO6f3XJxvmLorLL22ReenPpbb3N0qj0s+4VR1tYUUKMAGmCQzW0t8w5rG2OXUnnI
+         vseKQdFPC1GF3jttlyw/RcIHrYBhMfNXMDO1Sk90N7SgI5NgZMBY0McuaroHYbK1SVDR
+         dfRg==
+X-Forwarded-Encrypted: i=1; AJvYcCW8ksdUknRN8HlD2c69XCj7NBTxrGWK6lcO4FDSHdflyknVNRZ5AnGUVyY8Nm+UVTJgjUE=@vger.kernel.org
+X-Gm-Message-State: AOJu0YwdZLh9O/f9K6Mu4KOpZAaMl2jM/IcN8jus+zTLU40HASnTuoFj
+	uzT0tN6pHgMN/hlXLOmL7DglArZHawGVYudDkbfR9pGZzKDUfB+w9wJubNMpjx9hvBMHoZV0F3z
+	MMMTlIvGvBgMf+1UsA+G0TVQix0qPlLpapOv9jEvtWaN1j1lnNw==
+X-Gm-Gg: ASbGncsKBQG8A+XrQ3mM2z1Lo6Z6JmU+AvPikTG5K4H87nIPcWTkSZf+Z3kb2hAZ+5g
+	sM81LTmSR3DCx/fHOxd46uDbVNu4RGCRZMBrRGXNMic6/ufPDQFt2l2GXfb9r266qhAsc7qyBTm
+	TkX4H8LlmFA8LOn3wXri0HHWJX3yqsqClEs7w8a2AV9ADxBzTBZ+I7lebALckjWI6XABnP4+FOx
+	P26hpQ0SMNHNcbaThKrz+OLMAShZteZrs5SReFSQtXsXehTv/Bdzol9FFpB1ZevHGyjVrH29cJ0
+	zxQH7eDYhmUWVPK0SQ/GiLsc/Oi2yBOZ
+X-Received: by 2002:a5d:64cb:0:b0:3a2:56f:e931 with SMTP id ffacd0b85a97d-3a2056fea7bmr4650568f8f.19.1747063351042;
+        Mon, 12 May 2025 08:22:31 -0700 (PDT)
+X-Received: by 2002:a5d:64cb:0:b0:3a2:56f:e931 with SMTP id ffacd0b85a97d-3a2056fea7bmr4650532f8f.19.1747063350573;
+        Mon, 12 May 2025 08:22:30 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442d67ed1bcsm127891875e9.18.2025.05.12.08.22.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 May 2025 08:22:30 -0700 (PDT)
+Date: Mon, 12 May 2025 17:22:26 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: "Daniel P. =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>, Peter
+ Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, Zhao
+ Liu <zhao1.liu@intel.com>, Xiaoyao Li <xiaoyao.li@intel.com>, Philippe
+ =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, qemu-devel@nongnu.org, Richard Henderson
+ <richard.henderson@linaro.org>, kvm@vger.kernel.org, Gerd Hoffmann
+ <kraxel@redhat.com>, Laurent Vivier <lvivier@redhat.com>, Jiaxun Yang
+ <jiaxun.yang@flygoat.com>, Yi Liu <yi.l.liu@intel.com>, "Michael S.
+ Tsirkin" <mst@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>, Alistair Francis
+ <alistair.francis@wdc.com>, Daniel Henrique Barboza
+ <dbarboza@ventanamicro.com>, Marcelo Tosatti <mtosatti@redhat.com>,
+ qemu-riscv@nongnu.org, Weiwei Li <liwei1518@gmail.com>, Amit Shah
+ <amit@kernel.org>, Yanan Wang <wangyanan55@huawei.com>, Helge Deller
+ <deller@gmx.de>, Palmer Dabbelt <palmer@dabbelt.com>, Ani Sinha
+ <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>, Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>, =?UTF-8?B?Q2zDqW1lbnQ=?= Mathieu--Drif
+ <clement.mathieu--drif@eviden.com>, qemu-arm@nongnu.org, =?UTF-8?B?TWFy?=
+ =?UTF-8?B?Yy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>, Huacai Chen
+ <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>
 Subject: Re: How to mark internal properties
-In-Reply-To: <e5a305cc-4c8b-48df-99fe-539ebd9b72f9@intel.com>
-Message-ID: <f342557b-e589-f51d-cfd8-04f97e9c5efd@eik.bme.hu>
+Message-ID: <20250512172226.433900f8@imammedo.users.ipa.redhat.com>
+In-Reply-To: <87jz6mqeu5.fsf@pond.sub.org>
 References: <20250508133550.81391-1-philmd@linaro.org>
- <20250508133550.81391-13-philmd@linaro.org>
- <23260c74-01ba-45bc-bf2f-b3e19c28ec8a@intel.com> <aB2vjuT07EuO6JSQ@intel.com>
- <2f526570-7ab0-479c-967c-b3f95f9f19e3@redhat.com>
- <CAFEAcA-kuHvxjuV_cMh-Px3C-k2Gd51jFqhwndO52vm++M_jAA@mail.gmail.com>
- <aCG6MuDLrQpoTqpg@redhat.com> <87jz6mqeu5.fsf@pond.sub.org>
- <e5a305cc-4c8b-48df-99fe-539ebd9b72f9@intel.com>
+	<20250508133550.81391-13-philmd@linaro.org>
+	<23260c74-01ba-45bc-bf2f-b3e19c28ec8a@intel.com>
+	<aB2vjuT07EuO6JSQ@intel.com>
+	<2f526570-7ab0-479c-967c-b3f95f9f19e3@redhat.com>
+	<CAFEAcA-kuHvxjuV_cMh-Px3C-k2Gd51jFqhwndO52vm++M_jAA@mail.gmail.com>
+	<aCG6MuDLrQpoTqpg@redhat.com>
+	<87jz6mqeu5.fsf@pond.sub.org>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-2120470484-1747060860=:11021"
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XFvS0/w3pGDl
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 1eChbqn6H/v1
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On Mon, 12 May 2025 12:54:26 +0200
+Markus Armbruster <armbru@redhat.com> wrote:
 
---3866299591-2120470484-1747060860=:11021
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+> Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
+>=20
+> > On Mon, May 12, 2025 at 09:46:30AM +0100, Peter Maydell wrote: =20
+> >> On Fri, 9 May 2025 at 11:04, Thomas Huth <thuth@redhat.com> wrote: =20
+> >> > Thanks for your clarifications, Zhao! But I think this shows again t=
+he
+> >> > problem that we have hit a couple of times in the past already: Prop=
+erties
+> >> > are currently used for both, config knobs for the users and internal
+> >> > switches for configuration of the machine. We lack a proper way to s=
+ay "this
+> >> > property is usable for the user" and "this property is meant for int=
+ernal
+> >> > configuration only".
+> >> >
+> >> > I wonder whether we could maybe come up with a naming scheme to bett=
+er
+> >> > distinguish the two sets, e.g. by using a prefix similar to the "x-"=
+ prefix
+> >> > for experimental properties? We could e.g. say that all properties s=
+tarting
+> >> > with a "q-" are meant for QEMU-internal configuration only or someth=
+ing
+> >> > similar (and maybe even hide those from the default help output when=
+ running
+> >> > "-device xyz,help" ?)? Anybody any opinions or better ideas on this?=
+ =20
+> >>=20
+> >> I think a q-prefix is potentially a bit clunky unless we also have
+> >> infrastructure to say eg DEFINE_INTERNAL_PROP_BOOL("foo", ...)
+> >> and have it auto-add the prefix, and to have the C APIs for
+> >> setting properties search for both "foo" and "q-foo" so you
+> >> don't have to write qdev_prop_set_bit(dev, "q-foo", ...). =20
+>=20
+> If we make intent explicit with DEFINE_INTERNAL_PROP_FOO(), is repeating
+> intent in the name useful?
 
-On Mon, 12 May 2025, Xiaoyao Li wrote:
-> On 5/12/2025 6:54 PM, Markus Armbruster wrote:
->> Daniel P. Berrangé<berrange@redhat.com> writes:
->>> On Mon, May 12, 2025 at 09:46:30AM +0100, Peter Maydell wrote:
->>>> On Fri, 9 May 2025 at 11:04, Thomas Huth<thuth@redhat.com> wrote:
->>>>> Thanks for your clarifications, Zhao! But I think this shows again the
->>>>> problem that we have hit a couple of times in the past already: 
->>>>> Properties
->>>>> are currently used for both, config knobs for the users and internal
->>>>> switches for configuration of the machine. We lack a proper way to say 
->>>>> "this
->>>>> property is usable for the user" and "this property is meant for 
->>>>> internal
->>>>> configuration only".
->>>>> 
->>>>> I wonder whether we could maybe come up with a naming scheme to better
->>>>> distinguish the two sets, e.g. by using a prefix similar to the "x-" 
->>>>> prefix
->>>>> for experimental properties? We could e.g. say that all properties 
->>>>> starting
->>>>> with a "q-" are meant for QEMU-internal configuration only or something
->>>>> similar (and maybe even hide those from the default help output when 
->>>>> running
->>>>> "-device xyz,help" ?)? Anybody any opinions or better ideas on this?
->>>> I think a q-prefix is potentially a bit clunky unless we also have
->>>> infrastructure to say eg DEFINE_INTERNAL_PROP_BOOL("foo", ...)
->>>> and have it auto-add the prefix, and to have the C APIs for
->>>> setting properties search for both "foo" and "q-foo" so you
->>>> don't have to write qdev_prop_set_bit(dev, "q-foo", ...).
->
->> If we make intent explicit with DEFINE_INTERNAL_PROP_FOO(), is repeating
->> intent in the name useful?
->
-> +1 for DEFINE_INTERNAL_PROP_FOO(). I have the same thought.
->
-> We need something in code to restrict the *internal* property really 
-> internal, i.e., not user settable. What the name of the property is doesn't 
-> matter.
+While we are inventing a new API, I'd say that _INTERNAL_ is not the only t=
+hing
+on my wish-list wrt properties.
+It would be also nice to know when a property is set by internal or externa=
+l user
+or if it still has default value.
 
-What's an internal property? Properties are there to make some field of an 
-object introspectable and settable from command line and QEMU monitor or 
-other external interfaces. If that's not needed for something why is it 
-defined as a property in the first place and not just e.g. C accessor 
-functions as part of the device's interface instead? I think this may be 
-overusing QOM for things that may not need it and adding complexity where 
-not needed. It reminds me of patches that wanted to export via-ide IRQs or 
-ISA IRQs just to be able to connect them to other parts _of the same chip_ 
-becuase this chip is modeled as multiple QOM objects for reusing code from 
-those. But in reality the chip does not have such pins and these are 
-internal connections so I think it would be better to model these as 
-functions and not QOM constructs that the user can change. In general, if 
-the device or object has an external connection or a knob that the user 
-may need to change or connect to another device (like building a board 
-from parts you can wire pins together) then those need properties or 
-qemu_irqs but other "internal properties" may need some other way to 
-access and often simple accessor functions are enough for this as these 
-internal properties are only accessed form the code. That way we would not 
-need even more complexity to hide these from the user, instead of that 
-just don't expose them but use something else where a property is not 
-needed. A property is just like an accessor function with additional 
-complexity to expose it to other interfaces so it's externally settable 
-and introspectable but we don't need those for internal properties so we 
-can drop that complexity and get back to the accessor function at the 
-bottom of it.
+Basically we are looking at different flags for properties and INERNAL being
+one of them.
 
-Regards,
-BALATON Zoltan
---3866299591-2120470484-1747060860=:11021--
+Maybe instead of specialized macro, we should have a more generic
+   DEFINE_PROP_WITH_FLAGS_FOO(...,flags)
+So we won't have to rewrite it again when we think of another flag to turn =
+on/off.
+
+
+=46rom previous uses of x- flag, some of such properties are created as
+temporary | developer-only and occasionally as a crutch (still no intended =
+for end user).
+But then sometimes such properties get promoted to ABI with fat warnings
+not to touch them. Having stable|unstable flag could help here without
+need to rename property (and prevent breaking users who (ab)used it if we c=
+are).
+

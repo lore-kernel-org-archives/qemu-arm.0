@@ -1,116 +1,219 @@
-Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp2207168njb;
-        Sun, 11 May 2025 06:40:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVmE5YcT7Bt+MY1ZD/kKS2qNNb2gI+ylsVojVqQ82Y/HNXqNBjpIeHr7d+4KyREtNqJ7K38/X+Dv52slQ==@linaro.org
-X-Received: by 2002:a05:6902:2708:b0:e78:f00e:882f with SMTP id 3f1490d57ef6-e78fdcd59c3mr13262067276.25.1746970820574;
-        Sun, 11 May 2025 06:40:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1746970820; cv=none;
+Received: by 2002:a17:505:110e:b0:1be9:327d:8ee3 with SMTP id pu14csp2758306njb;
+        Mon, 12 May 2025 07:23:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWQYqhqMeSQs8hYm+m2s5w5m3DARyCzSiNquAXuwEYPKoLA7E0PZjU1IWVJeqlMXDM9Hd39ccglW7uJcg==@linaro.org
+X-Received: by 2002:a05:6000:2dc4:b0:3a0:b1f7:c1e9 with SMTP id ffacd0b85a97d-3a0b98fcd85mr15625989f8f.1.1747059828945;
+        Mon, 12 May 2025 07:23:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747059828; cv=none;
         d=google.com; s=arc-20240605;
-        b=MWKbxuTEt956CTknqJINuAlF5/g30kVK+ln9XDpkbbLVVYsd8CasAHmhOxWQ0kDn41
-         AXeM+Ayx9jSy57qEnAZ0ot364jlw2H9QzNF2Yb/MoIbY+ufvjlFWy/z9dO/TIYCwjJsd
-         Bna+Tv5wRTw3PuFbDSWbbUvNW3SvQp0LMWL4koblUW75YluYZs57eZv+J+YFDQdkO0Sl
-         3sHneoHSUte0DDIg5LoP1KrJxvDPyFEXHbKHWf1dnrkS5+K/7ImR379Giqh+Nk29VNes
-         5quFt+TCu+NUPloYjDfnB85X2tQNZHvv14t7jqAPdmh45DShRtqux96xTIONP4e1Z1Ju
-         D1VQ==
+        b=UmDE7OzEjmwvsuw5yKe86++eyniu7yDOHYfuxLrZRg/jaueFxjrJ4tODX0FFWNmzjw
+         Q2W1eY90oh6vjbSKM15skOeEalKBc2afb24eahu2xnGzNWgWJ12Nl8uaZQxZ7UQxfOcz
+         rHsRJFCbW4z7fEtdSL+Z9/acpxGVzOMKnbvgKNUuOOVH2mWAcUZI7mO1P552fAY0hA3D
+         4TRTpGj4nTaInNG0D0px6xI2NnbwUuVEEDrRMb1OALUxss30KA4RvmtVTRwDFyu4M2in
+         MHRYcqSWvFTnwZKsA0yNtZdeaUWQra16XbtQGmaD8azZMqlFYPl+dg886KCdSzFBXRH+
+         BDGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=tQYCAYnSnMLVlXmM6Q3dpe1j9yqTGHdnD9s/TU+XfR0=;
-        fh=jrmVsj9zdOLsuHSWUb/5ZC+PZwZtsPCmNBSX0dguCzM=;
-        b=RwbLPyrY+A+cmk7t8u8hGLjMLA1n+/X22+W7AP+W43KaB5A5PzEybBRWG26puO3EiJ
-         fVoa2K2sYh1Ne+i78n1rKqYp4N2j4AZsP33irKHY0jJuQWqb7a26HZOU5lgQic/6M+Uy
-         XGzpCZ7WODnr4LvqHyxdvxhEizN/geTsWuArN8loXOLhF+sF1STrTwsH4/GXT+2z9ITh
-         iFMuJ7MFslP9BofnHjuP56yCDya8c2u6OLOA0qnDWBaqqzN6Y/Mlnx7uWhqwrt6epojK
-         HIxupAZR3KsW7VZf+K4zNZEbm9O1F0UmnLs0DFt2krvS1Pvy+vu7NwVN24ew2vpWSKSr
-         gvIw==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=ZoyqA4/3ub1McfI/VtMSnnTsDusnutY8ftzaVytS2Ck=;
+        fh=ahtsxHC71WPcZ9bMM+HoC+7mBbVpWE33lcf7Mn2nM40=;
+        b=j83gMmjG3UOXuJm7d7yeY6EjNS6GmdjjiAeAauCKByZ8Uq7Z3sVuSSkYIGw9RwkNXX
+         GnxlMuCwfliEeObfxBWdhpchDAdF4CbVIAbd40NEEc7qeDiwAOGxcYK3rd8qEQT2YB6H
+         eiEAAaxy3z8wpJSUoZ+Z/wt1PDIfB6ULC2Od4z7jYbjddG+EoQooGVpAo1z4X/olt3ll
+         uAIGJj+x0Y0JyLuAIZ5fC4kjJaglSMx8fyOVvvVnH/N1kZ1BKI52KmxxAX1TAmRo/7cx
+         05v/YO0CEoTJHqwWM519uNwhC16LVsTUsA62AZWLDhZktEgOOp4LJ9rdi00/yhvCAIoz
+         valw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f2g7EP8p;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RFthGxQq;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <gustavo.romero@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 3f1490d57ef6-e78fd4629b5sor3089780276.2.2025.05.11.06.40.20
+        by mx.google.com with SMTPS id ffacd0b85a97d-3a2078deb16sor440399f8f.3.2025.05.12.07.23.48
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 11 May 2025 06:40:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 12 May 2025 07:23:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f2g7EP8p;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RFthGxQq;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1746970820; x=1747575620; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=tQYCAYnSnMLVlXmM6Q3dpe1j9yqTGHdnD9s/TU+XfR0=;
-        b=f2g7EP8p2B47Py29wktliy9cXnizoWrt5gQY6+7Gnk5vlDr88llJlNI4VuQfaG1WGr
-         bAqBpKnsD9kDYzQXM/L2uooSexAi8Zj39cCWgVnHQetrE+NiqpHOscxbCwrNAK6caFg9
-         TNX391OgcDpCqw3x2Q0l+250aZduNAEJBtWOndDHGTvpXQoSa7amYV4XCKOCuHpR+CS2
-         ul8ctRH3+WTNwQcPoufNj4aPR/LLb9wvYVXezWWeYWpGRUqZQzFgplf2KT4nSZdLVBRS
-         SWNYamXxGbZbjrFpAzcdG5pX5qpXLJOzEcLLyZvOPPE3HP9kCIqxsE1Xvjkj37PbyeTx
-         Exjg==
+        d=linaro.org; s=google; t=1747059828; x=1747664628; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZoyqA4/3ub1McfI/VtMSnnTsDusnutY8ftzaVytS2Ck=;
+        b=RFthGxQqrBnzgSb4Yxlx4SF0Xnk3rn6o2VnAsD18gfbmagWCMhW+0WJSFFrsDm7IFJ
+         KI4vvZMHCRfJO+5CgPnQpySCxDv6UO5G78UHev702jncYH/QCzmOLxkImEBVuQM3DxVh
+         X53LDnVgLSYukC1Sb+6epA9vUTaabNGKmeSKTNwPWeSHxp1SlfOMDfeAOy6Bi3XC91l9
+         OrvJQ64fqqTg3qviBdkFLJ8VQ/TZTTRpy4Rsb3VWGMjB+mXsfDMMaEuKIhpJcE+YkvXs
+         pj+0bpE9UsqfXspoaYSbursT67H8IFvRy9AzC6UnbWzv0DpSPradPsl9ghDvn8KXZ4tv
+         bTpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746970820; x=1747575620;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1747059828; x=1747664628;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=tQYCAYnSnMLVlXmM6Q3dpe1j9yqTGHdnD9s/TU+XfR0=;
-        b=b2aByloAnFPnzIG74aY4kIRq2q98BVgQyVS+ko85O127qubA8oBs0apYQQkNYCbrQb
-         JqyDX6HB7s3+HulZKP0AZbxdkzA54yb8iAgNwJwhOlHwTrWPVsvkPVgyoKoeZGm95yIz
-         W3uT1ffV+e5YLoda+6v3oZyHcOwvn4jrvu+BMeE37xCz/F27bcXI1EfmpbVM9O3Uew0v
-         TyG3jyNp3mFwIjTYNrbafODKeEsZIsS+SfaD0m0nh3RQbYvehebNxs+YsRjTmZGc1jYq
-         0hP+we5+A0GY/bTJK5cj/MHcu7oH5NnOO9wAJd8XYrg3O3lKjArjvJmiUBl0+ylxsLvs
-         aMRQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVfoBm25tS3yy6B/+y/CtINyofMghyfrhMxtq79ZGzXI0Mx5bVYsQ8xw2/XoHsB03J33cKFOEu7GAaP+w==@linaro.org
-X-Gm-Message-State: AOJu0Yy/EvqPF2k/VEMpNAUpqJtDviS3WDjZynQSoUMMqGgE+9GSlhUS
-	HSWYD5bX5V69zfnQli9a/xlgO+d4MwCIBdCXmXZpsQJtVYt5VhXGuS2m91TaEr8/9dxOeSOahmF
-	4s/ZYgOnO4d0XQ9xDCGZjffcxC9se0ZiUvEZLBrdV
-X-Gm-Gg: ASbGncuQDxp/7Fes9gk7unFfip5+Qm87OI0bMX72Xc4sIsDqOQMKCfGkTuVRSUcV+uB
-	CEq9Was+0r9IEncEodB4LC+fGzCbvi38YmcF63xrzpoUmSkHGCneL73cNDMXAvfPp+YhQ6/D2pc
-	Ckp0JyQ9r3ZtRbFDWxQ+DCVkO8rkzWKexUJQ==
-X-Google-Smtp-Source: AGHT+IE0KyLbfrS2S6y6k0L5Sv5Y/BL7XPKyq9u/1NkOPd9IMbHcYOljv/+I7+C94CfPc8CC+GuYQ3cEH7yDPqKhrqM=
-X-Received: by 2002:a05:6902:2503:b0:e78:f4df:8441 with SMTP id
- 3f1490d57ef6-e78fd9be186mr13405339276.0.1746970820155; Sun, 11 May 2025
- 06:40:20 -0700 (PDT)
+        bh=ZoyqA4/3ub1McfI/VtMSnnTsDusnutY8ftzaVytS2Ck=;
+        b=dmt2SLdMpHOTtI2sLqpN1cCGmmrs6i1/nbCYok9Md9M8AZGrrZVoIRkMeLUVu0Xwzm
+         K66r+cUYcZSL9cXvReW/uyExI2x748RsDMq9Zq143mvyiFN0WU1RoUsBdvFxqzJ1xzhD
+         XQ8y/XgoO1cARCH7Ufpv2h0I66o0pkhK6dQbnhvEaroX4aC01wXkvFoitD429LPv1v7w
+         /jwHiqS3DTfmRvtAv2vPaXXI4zep4fJvT1ZoXX6Pz4vkV9qi/tkWBG+n78XdKLAUJTyd
+         XLnOqPYZ0MDg2YhAXcblPH9vcngqGLbdlP67JIX/sacFXJgTQ6FqLw6gZonYC4BT5xBc
+         u9FA==
+X-Forwarded-Encrypted: i=1; AJvYcCUvOROWME5keHaS9FeNag2yf5rMdvYFSs8ehhVKzP7SAkPVDSi7nJhv52q/t7+Q5hzhUIdKZxp8kyk5hg==@linaro.org
+X-Gm-Message-State: AOJu0YxsBMsLo40+odSd61kFaa2rUzGkWF86Cbsqq+KhYez7Pp5BYksz
+	LdY8Vhr6jkvOB/FRXXLde6NMkXUT9U39bjKIh3o/VqeoMNVH5S4O9WQs3R7BgmKtmQ==
+X-Gm-Gg: ASbGnctpSRVEWIuO3nfp79qQPIkzXWC/+Qd61ozFhD27TqnhxnyGuQYL6fjCyR7Oiqm
+	rd9aZogPzyCZ5yL2/b0eXHmcj70Zb6STIG52nbYT3cR0CsTfKdBjA4+pH9ZUIB+1CoSX81wG9rt
+	ca8XnW1+5Ofr4HLkYpQYV/njj3+MPGj7sGzppzKff3AlaJmE3DGwaG/W245p/fiYUHIxGXuVfkk
+	eGwuf81rOolKIjrRiqDznpybi5r3v1gb1S/PQQ/wl1lsQ4F2qfyjLV8ZakWc+Is86cjKD4Q6n0L
+	xMVRJJOw5wGgH4joYhMNMVJ1ay9vZu4J9eVl+WY3TStAZPgEZhpE0FhlQBlNLg5zq9F4L78w5wu
+	jzBVl/uuMsb0A040SZ7SP18o9zhcg4GB9
+X-Google-Smtp-Source: AGHT+IHGqCroQ3f4wU2wRmK1gSspBwzBJ7L9nIhkPWkDkHTsKZ1fvE+zD7CFJXEeKn3SRQgp09yexQ==
+X-Received: by 2002:a05:6000:1888:b0:3a0:b8bd:608 with SMTP id ffacd0b85a97d-3a0b99076d7mr14483026f8f.7.1747059828354;
+        Mon, 12 May 2025 07:23:48 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from xps13.c.hoisthospitality.com (110.8.30.213.rev.vodafone.pt. [213.30.8.110])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442cd3aeb6esm172597005e9.25.2025.05.12.07.23.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 May 2025 07:23:47 -0700 (PDT)
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: qemu-devel@nongnu.org,
+	thuth@redhat.com,
+	berrange@redhat.com
+Cc: gustavo.romero@linaro.org,
+	eric.auger@redhat.com,
+	alex.bennee@linaro.org,
+	philmd@linaro.org,
+	peter.maydell@linaro.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH v3] tests/functional: Add PCI hotplug test for aarch64
+Date: Mon, 12 May 2025 15:23:25 +0100
+Message-ID: <20250512142336.181080-1-gustavo.romero@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20250507234241.957746-1-pierrick.bouvier@linaro.org>
-In-Reply-To: <20250507234241.957746-1-pierrick.bouvier@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 11 May 2025 14:40:09 +0100
-X-Gm-Features: AX0GCFthFJShMwduZaRe8unlmupmQOaRCZ993P7xtVVqY51NCVV1-mxoKOxg2B0
-Message-ID: <CAFEAcA_NgJw=eu+M5WJty0gsq240b8gK3-ZcJ1znwYZz5WC=wA@mail.gmail.com>
-Subject: Re: [PATCH v7 00/49] single-binary: compile target/arm twice
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, anjo@rev.ng, 
-	Richard Henderson <richard.henderson@linaro.org>, alex.bennee@linaro.org, 
-	Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: NztPNxHKz4Ut
+Content-Transfer-Encoding: 8bit
+X-TUID: 0l+C351mf+3T
 
-On Thu, 8 May 2025 at 00:42, Pierrick Bouvier
-<pierrick.bouvier@linaro.org> wrote:
->
-> More work toward single-binary.
->
-> Some files have external dependencies for the single-binary:
-> - target/arm/gdbstub.c: gdbhelpers
-> - target/arm/arm-qmp-cmds.c: qapi
-> - target/arm/tcg/translate*: need deep cleanup in include/tcg
-> - target/arm/tcg/cpu*: need TargetInfo implemented for arm/aarch64
-> - target/arm/tcg/*-helper*: need deeper split between aarch64 and arm code
-> They will not be ported in this series.
->
-> Built on {linux, windows, macos} x {x86_64, aarch64}
-> Fully tested on linux x {x86_64, aarch64}
->
-> Series is now tested and fully reviewed. Thanks for pulling it.
+Add a functional test, aarch64_hotplug_pci, to exercise PCI hotplug and
+hot-unplug on arm64.
 
-Do you/Philippe have a plan for how you want this to go into
-the tree? I know Philippe has been taking a lot of the
-single-binary related patches. Let me know if you want me
-to pick it up via target-arm.
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+---
+ MAINTAINERS                                  |  5 ++
+ tests/functional/meson.build                 |  1 +
+ tests/functional/test_aarch64_hotplug_pci.py | 72 ++++++++++++++++++++
+ 3 files changed, 78 insertions(+)
+ create mode 100755 tests/functional/test_aarch64_hotplug_pci.py
 
--- PMM
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 23174b4ca7..9ebb768214 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2065,6 +2065,11 @@ S: Supported
+ F: include/hw/pci/pcie_doe.h
+ F: hw/pci/pcie_doe.c
+ 
++ARM PCI Hotplug
++M: Gustavo Romero <gustavo.romero@linaro.org>
++S: Supported
++F: tests/functional/test_aarch64_hotplug_pci.py
++
+ ACPI/SMBIOS
+ M: Michael S. Tsirkin <mst@redhat.com>
+ M: Igor Mammedov <imammedo@redhat.com>
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 52b4706cfe..2d68840fa2 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -83,6 +83,7 @@ tests_aarch64_system_quick = [
+ tests_aarch64_system_thorough = [
+   'aarch64_aspeed_ast2700',
+   'aarch64_aspeed_ast2700fc',
++  'aarch64_hotplug_pci',
+   'aarch64_imx8mp_evk',
+   'aarch64_raspi3',
+   'aarch64_raspi4',
+diff --git a/tests/functional/test_aarch64_hotplug_pci.py b/tests/functional/test_aarch64_hotplug_pci.py
+new file mode 100755
+index 0000000000..f4a05de39e
+--- /dev/null
++++ b/tests/functional/test_aarch64_hotplug_pci.py
+@@ -0,0 +1,72 @@
++#!/usr/bin/env python3
++#
++# The test hotplugs a PCI device and checks it on a Linux guest.
++#
++# Copyright (c) 2025 Linaro Ltd.
++#
++# Author:
++#  Gustavo Romero <gustavo.romero@linaro.org>
++#
++# This work is licensed under the terms of the GNU GPL, version 2 or
++# later.  See the COPYING file in the top-level directory.
++
++from qemu_test import LinuxKernelTest, Asset, exec_command_and_wait_for_pattern
++from qemu_test import BUILD_DIR
++
++class HotplugPCI(LinuxKernelTest):
++
++    ASSET_KERNEL = Asset(
++        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm64/'
++         'current/images/netboot/debian-installer/arm64/linux'),
++        '3821d4db56d42c6a4eac62f31846e35465940afd87746b4cfcdf5c9eca3117b2')
++
++    ASSET_INITRD = Asset(
++        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm64/'
++         'current/images/netboot/debian-installer/arm64/initrd.gz'),
++        '2583ec22b45265ad69e82f198674f53d4cd85be124fe012eedc2fd91156bc4b4')
++
++    def test_hotplug_pci(self):
++
++        self.set_machine('virt')
++        self.vm.add_args('-m', '512M')
++        self.vm.add_args('-cpu', 'cortex-a57')
++        self.vm.add_args('-append',
++                         'console=ttyAMA0,115200 init=/bin/sh')
++        self.vm.add_args('-device',
++                         'pcie-root-port,bus=pcie.0,chassis=1,slot=1,id=pcie.1')
++        self.vm.add_args('-bios', self.build_file('pc-bios',
++                                                  'edk2-aarch64-code.fd'))
++
++        # BusyBox prompt
++        prompt = "~ #"
++        self.launch_kernel(self.ASSET_KERNEL.fetch(),
++                           self.ASSET_INITRD.fetch(),
++                           wait_for=prompt)
++
++        # Check for initial state: 2 network adapters, lo and enp0s1.
++        exec_command_and_wait_for_pattern(self,
++                                          'ls -l /sys/class/net | wc -l',
++                                          '2')
++
++        # Hotplug one network adapter to the root port, i.e. pcie.1 bus.
++        self.vm.cmd('device_add',
++                    driver='virtio-net-pci',
++                    bus='pcie.1',
++                    addr=0,
++                    id='na')
++        # Wait for the kernel to recognize the new device.
++        self.wait_for_console_pattern('virtio-pci')
++        self.wait_for_console_pattern('virtio_net')
++
++        # Check if there is a new network adapter.
++        exec_command_and_wait_for_pattern(self,
++                                          'ls -l /sys/class/net | wc -l',
++                                          '3')
++
++        self.vm.cmd('device_del', id='na')
++        exec_command_and_wait_for_pattern(self,
++                                          'ls -l /sys/class/net | wc -l',
++                                          '2')
++
++if __name__ == '__main__':
++    LinuxKernelTest.main()
+-- 
+2.43.0

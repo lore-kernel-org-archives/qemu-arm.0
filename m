@@ -1,176 +1,296 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp688828njb;
-        Tue, 13 May 2025 10:49:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWn6LRpMzJGyq3QqepiTLuWcT9qs7RexG8IfP7yyhW5Ff/CTZiKdL2FIrv5lMgODkFK5V19szsAL5FGPg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFG8/dLKeKvxt4Y82MLb0uCj/aVV7tYC/cCTzQUu0aVi4E3m4uH8yIAa+UNqT/sjUU9cG7P
-X-Received: by 2002:a05:622a:17c8:b0:477:41f1:285d with SMTP id d75a77b69052e-49495cd3561mr6204531cf.19.1747158552072;
-        Tue, 13 May 2025 10:49:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747158552; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp688848njb;
+        Tue, 13 May 2025 10:49:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUFfsBZUh2QJhJCxiNJ0cGkTVEL5GTPL5zrw24ZeAXRePyUr9QEkXuKfnaCXurhT/K/ezuKdaW7nc2TGA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFcdlMjcZDria/N1l7t+efUl5oZXKVjNFcygyyBj2+jxnRLCdfKtdP4cm4I6bOgDmZJ717P
+X-Received: by 2002:a05:6214:4011:b0:6e8:9e9c:d20f with SMTP id 6a1803df08f44-6f896e2e7cdmr5298556d6.21.1747158543517;
+        Tue, 13 May 2025 10:49:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747158543; cv=none;
         d=google.com; s=arc-20240605;
-        b=E3z/mKfIKNlYBBwwvbC4EzHaQSdzifrj4MD9ko3YaMQVIFUuB39xgGdSgxzJz90UAL
-         4wA1Z2NSmibvqzvGSe+KON/q3+IweNfUqz0Mq7kpbKU94lBKpMLht4wIP7H6UqyPp3Q7
-         2bVSWkrA+T2QxySdG6cnmA76noRpVCZ1Jsn7RhxU49uoc12GPJfL1VEmxot2Guj8zU0J
-         bwfrstkMxkOa+9r6aJaGrw6gNA+wbJoXjO1hRcNoPXMBjtVDcwt58REZGB+ZVzmo3sSs
-         js2rGMAHdn+yTrN3vkWmpGpuUNqR+hC91kBb2t4yezlRbJAah7LBVHbuPIWPAZTjZr3m
-         Iexw==
+        b=T9ADTTccLy/+jxk/5ENzQexdYlRz4XJeCl9dVBwahoBrA8F7IS03RJDZOrW0kaWHsv
+         ACmjvZdPaHj3/U7QjqLoTZjLMVGgdo6m4XnCNgWR27iUews0s5FiLgR51m/DQx7CWkqg
+         9mCE7GdGllGAv5uwV/m+j5tirx8AAR4ZhA7/zXhU5i3QItovy03hy/mG75l2qKaD1r3b
+         SAjyfwcE4a9E5BWrZv9tFcJsUWuoN8Tqj+6DWYB/4SIeCxPru6zfN3VLQqN+q10Q3iaV
+         Hr3fK6CYPp1rin/7M1s25wjEVbJXDgt8EgnDFPNqvbYdsNaenjLr4eH/s474foe7chdx
+         eNtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=AdJyj/3YunQPgnoavXNfU5+nphnaMTFTvEkxD36KHXw=;
-        fh=Hwj35q3gEvHWOOQ42ujcvwo7tkyd0tze4NwQBLEr5HQ=;
-        b=D2MWa8xMV69Pt5itw+965lJu82exvTPGkzLbo8/vChWyzesbi2Yv1GbQ/VSrSnvfQt
-         Lw8PyOuhuNP6YotWQ5r9lWK0DUueMnic6r+MACOkvRP/7stWIfE7xXjNJbIoSJRtHYQp
-         USGOIz7IMz8RKHigQE8/gBi7Nhc0wwMijeuPcCQDoDRTO2P2s2bCIz7jlDC2XhqzuNMl
-         uXc5ZAKrfosiKeN2LxPCe0uhT1KcgUk0jQfQf19fSAYkxV9axaN9vgJAd0C3uW89jH+w
-         R0vRpXHWz5upxzfKD08qQOTSYaMqj/geM44xkH4WDqHhuXGnvaLTQDnB2FZs1zsD2KdG
-         Fh4Q==;
+        bh=NiBLsAOib2fbx3En55zCnPHZz2Kn8ay16k8dNjN2Wz8=;
+        fh=oAG6HIcuSPumOYs2ef0NYEkSLIm7D6VhhjfDQzOYEY4=;
+        b=RLBjIWM/o0+G6dS9MEdzDbiYZ7n9BgEEi+4NtxvMaUmF5SeTb4kSgFvcjsYVCfoLbg
+         FIjYGTkwkFzZQ2T1hF5GjkPgtwtHka/bGi8c12piT6J6tnbEkuq/7ZP6Bje81Xoz6AJM
+         X2GaiQKlJ5GHF9fDCglUptZF3MIZrD53ZXI+L/Gq6s7GBNcaG0C+LM4HvdxLyEvRByxq
+         +03BHial5+U71evME/yyNzCrtv+wxkWFfsGpBSyojFLeUaCvnHQ+OLJrLRAIXb5h0IRU
+         nKiGfK/1kMJ/JdWGx4TjA/G7+5ZClMtVhfGUd7tGxIWuQOeD2eSWdD+VHNv/aLqx4ntu
+         ND4A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WosqhyHu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=abDMiwXi;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4945255d89esi121593731cf.237.2025.05.13.10.49.11
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a42e5bsi118009386d6.208.2025.05.13.10.49.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 10:49:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 May 2025 10:49:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WosqhyHu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=abDMiwXi;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uEtkU-00035f-TL; Tue, 13 May 2025 13:49:02 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uEtkM-0002AW-Vs; Tue, 13 May 2025 13:48:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtcp-0000u9-9x
- for qemu-arm@nongnu.org; Tue, 13 May 2025 13:41:12 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtcW-0000gf-Jw
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 13:41:01 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtcl-0003Ri-39
- for qemu-arm@nongnu.org; Tue, 13 May 2025 13:41:05 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-43ce70f9afbso60988135e9.0
- for <qemu-arm@nongnu.org>; Tue, 13 May 2025 10:41:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtcU-0003Qu-NC
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 13:40:48 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-442eb5d143eso9469955e9.0
+ for <qemu-devel@nongnu.org>; Tue, 13 May 2025 10:40:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1747158061; x=1747762861; darn=nongnu.org;
+ d=linaro.org; s=google; t=1747158045; x=1747762845; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=AdJyj/3YunQPgnoavXNfU5+nphnaMTFTvEkxD36KHXw=;
- b=WosqhyHuTW9SZYrhIMsj2t/V8Ky42HEyYP5a0EAvkvBeiibBd4434yZvC+O9mJtCgu
- 8Uj+kui23PYh2By/90bOgN90II4s5nJU1GKQ0guJ7Z2WnG8NRmVZ1MPDKcYd4m0dv+2C
- WOPo/FDLi6i5Y3dgkyokVFbGEhJ+Kfw11s7luwCwA+VREuJGZLlcGcbaKUY/FKayZ18q
- 9V9b2OruUozHSOJXN1GBbQwwRjUvijOU8jBYJZOnaQw3g0bhioiaRp9/WMJq0gAP+wdO
- cd3PqLdajaSJaWhr7dOjqfOoLiRicexGcKHfHrqev2l9r2gRjaZy+EzgyQJrOKNgK8ip
- dK+g==
+ bh=NiBLsAOib2fbx3En55zCnPHZz2Kn8ay16k8dNjN2Wz8=;
+ b=abDMiwXisWF1xKskxqYVOY1ve3+C9vkFl/okwjZp0XxVMYetviuw6nUJ4ZGpzlcNRN
+ vDOn6mg76XTK56HmlgkcWYtHdrxueSs/9ygt0QrsRzcsZSJg9ZKYkTyMSt2J/ufMEmb3
+ YDRekKHerq+LYfBF6IATOI80Plp8f/J6Y+4sT7Cy3zmeTa/V3KyLnEggwzxGf839M1EH
+ 93W8wJG8hW3gkjG5DjNVJqI5DeYifmFZZDugYTFoVbUzBfBDJFYAGoa816cFj4FzwOPI
+ EVoWCV2rN4azGYAxDU3l2HILsLi9ALemyYWRfsxoxWF33+rhE+72H+4jOycWcvsbwuD+
+ rZmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747158061; x=1747762861;
+ d=1e100.net; s=20230601; t=1747158045; x=1747762845;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=AdJyj/3YunQPgnoavXNfU5+nphnaMTFTvEkxD36KHXw=;
- b=wvwVKidWeOUAm2Ro1H7iQO+lu/Qj3/8+NcxMCJ0uE2Pl+a+fHu/AIzbwKOem9VvmXd
- qecsI5TIAaU66GgcLbQolRcrJDQONRrvG0AERPbH2MSTjxN3ycohT9ecQ/Ye4MKHTAF1
- Ou+zMdizMjo8KBVJHHAVbh/cXrJRFjYPgHxCLjkHzR9fZVU528aHEAIIdwopf6rf+Vmx
- fMxBZsxrcMiYVoWcf/YScOrzvhrlQn/sYJ4GWJ+S+Qp86MNAByGAG5uIaBLC14wTL+KJ
- lbwBmRlX3rsXAW1U1FqtQhaUYg75UtVmrVaqjwL89mBr8xq/mRGp1dXW6TN58DwLZEA7
- kwbg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVsH5Xvf8lHapwi9Hf71AopAU8Xf1vPR3+vBodr5mKvwVCsZikezNMNxmMnFOBdNfV9pbyzuKAI7w==@nongnu.org
-X-Gm-Message-State: AOJu0Yz313YrorI+QcxHuUAM1VXA2ZtrKJweXGnjv7b9ikbmCxmQwOwb
- 3gxRl9/EL+xwUk5PVIKYHAfMMzq/S9ijruJqxry5Z/VQoZqm67Gc8Iu+JWteETQ=
-X-Gm-Gg: ASbGncvyPOyOm0gM4ctcjh0Smrhc36yzMHRMRNds8So++yv/uYAuP+W2pM2xGcvSVYJ
- hPLVnV7Q3qbWPxocpETYZufHrmzMx/z4zPlxUDrut+xPwgN4Ma7mZNAxrqrx4zTgx2EcSIaJeIL
- OLjilYyl8nZR1iWFFKAmRaoBZ0CLiSq3m/pHhrVB9OMIfPpCiXDsaz8MHlfnWAx/PBPpArCUCAu
- H08dIJB4LJ0VXRmLkQSHH7ythT6kP3VrnTmvcGHF2aDFN2T1Me4IRfMyxZXdKmJDst7NOyZZPDs
- WVLV0lN8b0QyRAAmFPydoZkvLVvKW+nYG3VB1S3i/hgsJYOCDks0HoSbq8An+bxtjHVL/TZu110
- Ejiq1LULA/xcrO6T2GmucT33Agh43
-X-Received: by 2002:a05:600c:524c:b0:43c:f597:d582 with SMTP id
- 5b1f17b1804b1-442f20ba9f0mr1823085e9.1.1747158060572; 
- Tue, 13 May 2025 10:41:00 -0700 (PDT)
+ bh=NiBLsAOib2fbx3En55zCnPHZz2Kn8ay16k8dNjN2Wz8=;
+ b=YyaawqavDXQN09mHFHjKIvVxPuLeoNalj1/P9Rg5arSgbjuLI0B4NBZqLbjDPlQZC4
+ MExvcB9Hs67ecy/k8YJx9XOBzQqCoxYjIosZHyp0xxKlfp93hzcwR6hkBOMdqnw0NRJl
+ A6BPNDQ3lh6ZA0F8ZE80jUAlPV4AY8A8LjT2LiwVzwyiRG3aWWQjrfa1SaEQC6KLSkG4
+ XtwInMUGzh67Y0FqsL+Dk9omkjuqt3QR+fYpvuCnDxbe3J3btX/aMjvlWDndTx8FRy5t
+ OGmdEJU09MsOANBh0yj1PEQOFNoK2cnmhOASkLI47795S8PmiD/3wF2m1Q9RHlNnqF6m
+ Ifeg==
+X-Gm-Message-State: AOJu0YzwrLIMXMpQNAS2x8efXx9sY+eENdZZcUicR/m3mIdeQnOehTUt
+ C/3LZBPpQ3eCHFEHM1ea+KJC6ViAgmoQUWEWkWrUcNaUT7Qi9J6UozgmRR5RR5zhNLil/UjyngT
+ Hlsk=
+X-Gm-Gg: ASbGncshNioQpNNs31aVnJfM68ktQFhVKyV8x0RNsx3R6Sy/a6YuBS085wOYA5KKJbf
+ YOSOcSrv/TCZ38WFycq55y0LLDx/vgFBPh+QQOtE/9OXgqNe+/OHzMGEguFjbkRkfc0FZiJ6Dty
+ +EWK89GfllEcvQZLDojUrrwa+2jNW2rOKOakUA+BSlys0joVtrxt5ylO5AjCtyVQFdHoOl6Lt3i
+ HOSNKG96j+x0qedMM1XyfFuzGlsmoSRb9TMHJQ1OtXthrbcBrCAmidkomgvJny3DdsJTATV7ToL
+ gdAYWKdcIJ/+6dgidfvtvI3PESRyWtgnr7ENDt8eDZWKkSzD9aX4ZebzCR/kO/2ShCsECXJFAx2
+ tUl1+7meXp6HY2Cy8SbFLHCrfnKEu
+X-Received: by 2002:a05:600c:3e87:b0:442:e0e0:250 with SMTP id
+ 5b1f17b1804b1-442f21793d5mr2180355e9.29.1747158044743; 
+ Tue, 13 May 2025 10:40:44 -0700 (PDT)
 Received: from localhost.localdomain (110.8.30.213.rev.vodafone.pt.
  [213.30.8.110]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-442cd32f194sm221374605e9.10.2025.05.13.10.40.58
+ ffacd0b85a97d-3a1f57dddebsm16769490f8f.3.2025.05.13.10.40.43
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 13 May 2025 10:41:00 -0700 (PDT)
+ Tue, 13 May 2025 10:40:44 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 18/19] hw/arm/virt-acpi: Replace arm_feature() ->
- arm_cpu_has_feature()
-Date: Tue, 13 May 2025 18:39:27 +0100
-Message-ID: <20250513173928.77376-19-philmd@linaro.org>
+Subject: [PATCH 15/19] target/arm: Extract feature definitions to
+ 'cpu_has_feature.h' header
+Date: Tue, 13 May 2025 18:39:24 +0100
+Message-ID: <20250513173928.77376-16-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250513173928.77376-1-philmd@linaro.org>
 References: <20250513173928.77376-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: htyZ/Dm5IEgk
-
-Using arm_cpu_has_feature() instead of arm_feature() remove
-a dependency on (the indirectly included) "cpu.h" header.
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aKbQEq0cRWrL
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- hw/arm/virt-acpi-build.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ target/arm/cpu.h             | 54 +-----------------------------
+ target/arm/cpu_has_feature.h | 65 ++++++++++++++++++++++++++++++++++++
+ 2 files changed, 66 insertions(+), 53 deletions(-)
+ create mode 100644 target/arm/cpu_has_feature.h
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 20dc93fbc54..cc4ec7ad465 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -58,6 +58,7 @@
- #include "hw/acpi/ghes.h"
- #include "hw/acpi/viot.h"
- #include "hw/virtio/virtio-acpi.h"
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 116745975fa..cf3ff21965c 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -30,6 +30,7 @@
+ #include "exec/gdbstub.h"
+ #include "exec/page-protection.h"
+ #include "qapi/qapi-types-common.h"
 +#include "target/arm/cpu_has_feature.h"
- #include "target/arm/multiprocessing.h"
- #include "target/arm/psci.h"
+ #include "target/arm/gtimer.h"
  
-@@ -693,7 +694,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
-         uint64_t physical_base_address = 0, gich = 0, gicv = 0;
-         uint32_t vgic_interrupt = vms->virt ? ARCH_GIC_MAINT_IRQ : 0;
--        uint32_t pmu_interrupt = arm_feature(&armcpu->env, ARM_FEATURE_PMU) ?
-+        uint32_t pmu_interrupt = arm_cpu_has_feature(armcpu, ARM_FEATURE_PMU) ?
-                                              VIRTUAL_PMU_IRQ : 0;
+ #define EXCP_UDEF            1   /* undefined instruction */
+@@ -2376,59 +2377,6 @@ FIELD(MFAR, NS, 63, 1)
  
-         if (vms->gic_version == VIRT_GIC_VERSION_2) {
+ QEMU_BUILD_BUG_ON(ARRAY_SIZE(((ARMCPU *)0)->ccsidr) <= R_V7M_CSSELR_INDEX_MASK);
+ 
+-/* If adding a feature bit which corresponds to a Linux ELF
+- * HWCAP bit, remember to update the feature-bit-to-hwcap
+- * mapping in linux-user/elfload.c:get_elf_hwcap().
+- */
+-enum arm_features {
+-    ARM_FEATURE_AUXCR,  /* ARM1026 Auxiliary control register.  */
+-    ARM_FEATURE_XSCALE, /* Intel XScale extensions.  */
+-    ARM_FEATURE_IWMMXT, /* Intel iwMMXt extension.  */
+-    ARM_FEATURE_V6,
+-    ARM_FEATURE_V6K,
+-    ARM_FEATURE_V7,
+-    ARM_FEATURE_THUMB2,
+-    ARM_FEATURE_PMSA,   /* no MMU; may have Memory Protection Unit */
+-    ARM_FEATURE_NEON,
+-    ARM_FEATURE_M, /* Microcontroller profile.  */
+-    ARM_FEATURE_OMAPCP, /* OMAP specific CP15 ops handling.  */
+-    ARM_FEATURE_THUMB2EE,
+-    ARM_FEATURE_V7MP,    /* v7 Multiprocessing Extensions */
+-    ARM_FEATURE_V7VE, /* v7 Virtualization Extensions (non-EL2 parts) */
+-    ARM_FEATURE_V4T,
+-    ARM_FEATURE_V5,
+-    ARM_FEATURE_STRONGARM,
+-    ARM_FEATURE_VAPA, /* cp15 VA to PA lookups */
+-    ARM_FEATURE_GENERIC_TIMER,
+-    ARM_FEATURE_MVFR, /* Media and VFP Feature Registers 0 and 1 */
+-    ARM_FEATURE_DUMMY_C15_REGS, /* RAZ/WI all of cp15 crn=15 */
+-    ARM_FEATURE_CACHE_TEST_CLEAN, /* 926/1026 style test-and-clean ops */
+-    ARM_FEATURE_CACHE_DIRTY_REG, /* 1136/1176 cache dirty status register */
+-    ARM_FEATURE_CACHE_BLOCK_OPS, /* v6 optional cache block operations */
+-    ARM_FEATURE_MPIDR, /* has cp15 MPIDR */
+-    ARM_FEATURE_LPAE, /* has Large Physical Address Extension */
+-    ARM_FEATURE_V8,
+-    ARM_FEATURE_AARCH64, /* supports 64 bit mode */
+-    ARM_FEATURE_CBAR, /* has cp15 CBAR */
+-    ARM_FEATURE_CBAR_RO, /* has cp15 CBAR and it is read-only */
+-    ARM_FEATURE_EL2, /* has EL2 Virtualization support */
+-    ARM_FEATURE_EL3, /* has EL3 Secure monitor support */
+-    ARM_FEATURE_THUMB_DSP, /* DSP insns supported in the Thumb encodings */
+-    ARM_FEATURE_PMU, /* has PMU support */
+-    ARM_FEATURE_VBAR, /* has cp15 VBAR */
+-    ARM_FEATURE_M_SECURITY, /* M profile Security Extension */
+-    ARM_FEATURE_M_MAIN, /* M profile Main Extension */
+-    ARM_FEATURE_V8_1M, /* M profile extras only in v8.1M and later */
+-    /*
+-     * ARM_FEATURE_BACKCOMPAT_CNTFRQ makes the CPU default cntfrq be 62.5MHz
+-     * if the board doesn't set a value, instead of 1GHz. It is for backwards
+-     * compatibility and used only with CPU definitions that were already
+-     * in QEMU before we changed the default. It should not be set on any
+-     * CPU types added in future.
+-     */
+-    ARM_FEATURE_BACKCOMPAT_CNTFRQ, /* 62.5MHz timer default */
+-};
+-
+ static inline int arm_feature(CPUARMState *env, int feature)
+ {
+     return (env->features & (1ULL << feature)) != 0;
+diff --git a/target/arm/cpu_has_feature.h b/target/arm/cpu_has_feature.h
+new file mode 100644
+index 00000000000..2adfccd9208
+--- /dev/null
++++ b/target/arm/cpu_has_feature.h
+@@ -0,0 +1,65 @@
++/*
++ * Helper to check ARM CPU has features
++ *
++ *  Copyright (c) 2003 Fabrice Bellard
++ *
++ * SPDX-License-Identifier: LGPL-2.1-or-later
++ */
++#ifndef TARGET_ARM_CPU_HAS_FEATURE_H
++#define TARGET_ARM_CPU_HAS_FEATURE_H
++
++/*
++ * If adding a feature bit which corresponds to a Linux ELF
++ * HWCAP bit, remember to update the feature-bit-to-hwcap
++ * mapping in linux-user/elfload.c:get_elf_hwcap().
++ */
++typedef enum arm_features {
++    ARM_FEATURE_AUXCR,  /* ARM1026 Auxiliary control register.  */
++    ARM_FEATURE_XSCALE, /* Intel XScale extensions.  */
++    ARM_FEATURE_IWMMXT, /* Intel iwMMXt extension.  */
++    ARM_FEATURE_V6,
++    ARM_FEATURE_V6K,
++    ARM_FEATURE_V7,
++    ARM_FEATURE_THUMB2,
++    ARM_FEATURE_PMSA,   /* no MMU; may have Memory Protection Unit */
++    ARM_FEATURE_NEON,
++    ARM_FEATURE_M, /* Microcontroller profile.  */
++    ARM_FEATURE_OMAPCP, /* OMAP specific CP15 ops handling.  */
++    ARM_FEATURE_THUMB2EE,
++    ARM_FEATURE_V7MP,    /* v7 Multiprocessing Extensions */
++    ARM_FEATURE_V7VE, /* v7 Virtualization Extensions (non-EL2 parts) */
++    ARM_FEATURE_V4T,
++    ARM_FEATURE_V5,
++    ARM_FEATURE_STRONGARM,
++    ARM_FEATURE_VAPA, /* cp15 VA to PA lookups */
++    ARM_FEATURE_GENERIC_TIMER,
++    ARM_FEATURE_MVFR, /* Media and VFP Feature Registers 0 and 1 */
++    ARM_FEATURE_DUMMY_C15_REGS, /* RAZ/WI all of cp15 crn=15 */
++    ARM_FEATURE_CACHE_TEST_CLEAN, /* 926/1026 style test-and-clean ops */
++    ARM_FEATURE_CACHE_DIRTY_REG, /* 1136/1176 cache dirty status register */
++    ARM_FEATURE_CACHE_BLOCK_OPS, /* v6 optional cache block operations */
++    ARM_FEATURE_MPIDR, /* has cp15 MPIDR */
++    ARM_FEATURE_LPAE, /* has Large Physical Address Extension */
++    ARM_FEATURE_V8,
++    ARM_FEATURE_AARCH64, /* supports 64 bit mode */
++    ARM_FEATURE_CBAR, /* has cp15 CBAR */
++    ARM_FEATURE_CBAR_RO, /* has cp15 CBAR and it is read-only */
++    ARM_FEATURE_EL2, /* has EL2 Virtualization support */
++    ARM_FEATURE_EL3, /* has EL3 Secure monitor support */
++    ARM_FEATURE_THUMB_DSP, /* DSP insns supported in the Thumb encodings */
++    ARM_FEATURE_PMU, /* has PMU support */
++    ARM_FEATURE_VBAR, /* has cp15 VBAR */
++    ARM_FEATURE_M_SECURITY, /* M profile Security Extension */
++    ARM_FEATURE_M_MAIN, /* M profile Main Extension */
++    ARM_FEATURE_V8_1M, /* M profile extras only in v8.1M and later */
++    /*
++     * ARM_FEATURE_BACKCOMPAT_CNTFRQ makes the CPU default cntfrq be 62.5MHz
++     * if the board doesn't set a value, instead of 1GHz. It is for backwards
++     * compatibility and used only with CPU definitions that were already
++     * in QEMU before we changed the default. It should not be set on any
++     * CPU types added in future.
++     */
++    ARM_FEATURE_BACKCOMPAT_CNTFRQ, /* 62.5MHz timer default */
++} ArmCpuFeature;
++
++#endif
 -- 
 2.47.1
 

@@ -1,208 +1,245 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp439768njb;
-        Tue, 13 May 2025 04:14:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWT7O1Sk6aoAiUaJifYhvfOJkmhNQHd+yAa++Fb0knQKBajXnE8GY1rXp6SwO6fUTkTF5CumdkAPz2+3Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IFJU9t4052Nv3QxN0C7u5swkkwSeZT7fK6BFNMnI7gQI5dEB6k2RsYxbz6P0hf4/ZyxNQVE
-X-Received: by 2002:a17:90b:4fc5:b0:2ff:58b8:5c46 with SMTP id 98e67ed59e1d1-30c3cff586emr25605792a91.8.1747134890810;
-        Tue, 13 May 2025 04:14:50 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1747134890; cv=pass;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp440093njb;
+        Tue, 13 May 2025 04:15:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVfrOS5QuCjdGOxygbWCrvBDDbBECroMW56/sdJtDA+Y2miIkVoEdFgaM+miLnyYMe3JY718EAAN/0dbQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFSbu+3ki2s94xdbLCg1M18L770o1vZ3l5nGwg4QbcLk0j2gIaEDlND2oYJP/DMov+C32IC
+X-Received: by 2002:ac8:5d0d:0:b0:494:48b1:a046 with SMTP id d75a77b69052e-4945271499bmr269790181cf.11.1747134930791;
+        Tue, 13 May 2025 04:15:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747134930; cv=none;
         d=google.com; s=arc-20240605;
-        b=dv7KsyQsfgK9NFLz7FTbDbCcema59yaIAr4w12eGFobQ2EzEW+9ngcAZP9lnQeec1v
-         odRtv3kb+KewyGQsNHaC/O1WJrTLTZbqIESbJNCxB5CuQkgREWOo46Nqe5xHHyHdLi+U
-         ymUbElkTmizdxBlcp5a32ck+kfulp3Qzl3Qxn3V5kTj/W1QFWCHa/fNN80qfT7zZQZO5
-         8M9K3hxmLr0do7lsHPQxIviJI08aAG85X2oKNACeLEUdZuuF8475NCZcmPyY/8iScG36
-         SUh5EZxd6KtmZ+2bETgOlcPhUnQNdTwdOCgWi6HFpi1T9ykITpM67B254DiyV9wPmGEO
-         58bg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=hrWL8St/KjWNdQDgkpm2yN+yrijnA+A+ERdMiZgrZ2I=;
-        fh=dAU02dIjD2uGkw9DxANKfNkp+IKd2sdF6nFoHeYEsd4=;
-        b=YNaCAKOGWiT6+A68e8Igqo4iWqRszWj/99UttYTtApunvd3zbvPBUjdBdShDjLcrK8
-         BnXFmwfcZUlWvnZsKDHd+KYjcwC6b3SFdiVbwyQOgR8JtNjRTc0jQFk3bdSXWIfqVX+y
-         a/RnBxMkA8kJGCRVbQZn9ynykkyF0l1Zj6qlv1Ic1z4V86zZJ1kJYotL/IYzssTJKcfC
-         vyWL6T7OtDqVb1fxR7JC3J5AYJJBwJQJE4KVik0XoCsBmo5MInsmdAzAtM9/kwbcoErZ
-         y8kIYzyCSnR2HvRzfqPXKYSW3fKrYB+2Y+auxuQEkMlB2Ds/RGFcAiyTLdLUcB0acYso
-         T8IA==;
+        b=LOngwGlV2EorPoig9mPiBbml6+wbnkqAn/pU8fiBhrkhY9o9J+ZAvuKmZPSmStW6yT
+         ZgYYK/2hALH/BIenR5sZsJE02KSPpJ3Ryd701GR9BZUn0L6xrH2kQCmu50DfGZq9f3bL
+         21qYatEJEsDgPRWXCtMLFma2euTRqbU+dqQI8aYF8qX2U46uDgtWMIatDYt/uS+SXCaS
+         wGPTG0NWU8I8T40DEgKko1qKPJlEqu6qX+WBYmBJ+VxZeMiWBzlJ9OlEIEl7rTHiDZcL
+         BtAqjer5onmec/jvadlNqYL5Ehx6R0pFLXMdCyzXcgOuZJofbWEO3hWIVf9DhQW4OHSO
+         ohqw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=EdZWGCTfHAv4Rt4pgfT5uyM5omJoF3xIHNbIX10ORVc=;
+        fh=X5nH5YuFPf4WKqGf6XsKhoyhnk+YS/0SzZ/7HifbnvI=;
+        b=QkYvch+usJvaHrYT0EWurqrfoGxX14HgMf9Lk3CvSKav/zMaAZYnSkHnhxFgRA2Kk2
+         pqTxOYJx0YE0Xn5yMruGkwEti9IHVx1GD1pXLDMQWseJU011FSxtx0z60HqE8CZDQq+I
+         NwIYwrh56qdn2J27ywGm13j9fgTEHFCB+V2ano1U3BHfqfKF+FBnRncv9RqaOmuuuGu7
+         mqHC+P/PhydIbsQy86ZBC8ga/NUHg9ueSKlhNeSJ8Vlw3/eAQeg1edHmZmrGTHs5O/m9
+         Y8KrcMg7trz6/Zl/C4+vmQGB1pheJwzNm3+yMVT83nJx1eAxzt2UGiM6Xrjj7EKJ8A7D
+         3/8w==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D4sC98TE;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-46345-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-46345-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-46345-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id 98e67ed59e1d1-30ad4d34a26si15822875a91.70.2025.05.13.04.14.50
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-494525b359dsi104568531cf.669.2025.05.13.04.15.30
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 May 2025 04:14:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-46345-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 13 May 2025 04:15:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D4sC98TE;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-46345-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-46345-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id D429C3BBD1E
-	for <alex.bennee@linaro.org>; Tue, 13 May 2025 11:14:31 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 277D628C87E;
-	Tue, 13 May 2025 11:14:47 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="D4sC98TE"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2A7AC23A990
-	for <kvm@vger.kernel.org>; Tue, 13 May 2025 11:14:44 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1747134886; cv=none; b=GsRR0TWQArfkUc83XthSnm1GdJaR43DdP8Mjt7/GRAyCN0NvdLqQmwe/hEcaHCnMNtGFeGNS9AjLfenF277PJ6huQZY1gEwv+CoWb3ZeVrwHI6VoolW8z0BAeuUYQD/TdDrKTN1nntSzt7oSSGCwrhRhCiKY113TbcZQkN4H9PQ=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1747134886; c=relaxed/simple;
-	bh=OoqwyKaXIijdk0wtYgUfR3fx6ZDVZYEX4wtA2ilEMxo=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=CfGOzdB4U0Zt0b8O8easgYK2vhNSC5dGG2DMdeHNNZLZHqZA1v09zihgXBfTrX6yiDnD/14oA2+vPipfTQzyDhDgHrJUHJ+Wnv3vXjpGUoO5crWd10QyvX3JGuVOk+a0xkfz+24mE1sIdv+u+MK+ivndj6wV/knTtnsdl6v2n4w=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=D4sC98TE; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1747134883;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=hrWL8St/KjWNdQDgkpm2yN+yrijnA+A+ERdMiZgrZ2I=;
-	b=D4sC98TE5QvqIQxL5+Ul8UsXlA8JHMfG59e5e6cG7nVHqjpWY+ul3ps6IPQxUbYSRbatoO
-	WWwqOXUqiDR3jB2bUNsyvcDbQ1Uxm28wcVdv89HJwCjRMyz/6+x4QlEbSPZimlt/XY0kTD
-	85nFDO+S944x+7EkesPcfp0145njBfk=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-464-q7Wr9KwjN7uXYHPGLeM0Qw-1; Tue, 13 May 2025 07:14:43 -0400
-X-MC-Unique: q7Wr9KwjN7uXYHPGLeM0Qw-1
-X-Mimecast-MFC-AGG-ID: q7Wr9KwjN7uXYHPGLeM0Qw_1747134882
-Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-3a2057d164bso772256f8f.1
-        for <kvm@vger.kernel.org>; Tue, 13 May 2025 04:14:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747134882; x=1747739682;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=hrWL8St/KjWNdQDgkpm2yN+yrijnA+A+ERdMiZgrZ2I=;
-        b=VYXHxmcbCjkVdUgbseV5HoRrn2otf4RkBmVyvDMLhUtb+9im7XSQMt1lrARGA8i934
-         /IFYL8sLNWrQn6eMIGanslTKzczWFFS/cdCcCtfaxkH0NFWIkn6RwLjYhf05afOQEasi
-         5GL6fDbL5aWa66wzAyIAx29PXk/68VJuWYvNgw+e5Hm7sXhma3ndRrEJl9h0WxkMbHGf
-         HYfl+eGdbNVNQcl02Sf1zR7ZSSZl2cW54kKFl/7ZrP1RGGm3WE9l6Z5GCHMJiM254XjW
-         N+9c5twfAjiURYdk0vMhhzgNGD100Vo1O8q//tsXIClGizcE4P/IL6R9TykHiBca00gj
-         A9HA==
-X-Forwarded-Encrypted: i=1; AJvYcCWqf1O5JlCsCeACJ1N4AgPi6v/Tilnju/FWg5YfCzsY2lw9sR/REG/xn1RFBrSX2mmEhdU=@vger.kernel.org
-X-Gm-Message-State: AOJu0YyVFn7yNTRvH/Vf91Z5sjgXKI5UxyL5SFSNtRyO+4jZjuyfTE2x
-	c9uNKMxBduuYHsOxIt1XOgsdpr0pKvkUdRtxse1979PNVBwKBJ266Y40ImGxjFLBbVpg+zifrG/
-	clDvZHTFlSj7K1ziL+uim8s8aCub+eIg7ddVeLffsq5FhLiuFLQ==
-X-Gm-Gg: ASbGncvLXcGbFMUR1e79PrcnkXHvCxyZTHOOUcofL0a07dSP53Yf9gm7Kj4s3+jKyFW
-	gJ1fBI49UBgd776yZP+bYD1liJp8F73kOC7tJSVu6WXcT6UepxBHite76fuiUrGHR9hbXRLf4Hb
-	F9O7Ij6Kiri9fzd5O9/cLME0ancosiYZ4k7+VF8QchYrpNzg60FXeb+Unm5DYlyFs7JnWJDSG6I
-	3WMRsSJclNeUpf/dgR+MuyfxmL7zDeS6xMF3LmMONxMOtYetocfOZE29+Uj7Q+ojoQT4eNwZ1x5
-	dDLXsdgoNevdjTwPCYBOi+wCIXfYixG4
-X-Received: by 2002:a05:6000:3113:b0:3a0:b308:8427 with SMTP id ffacd0b85a97d-3a1f6482d31mr13683859f8f.37.1747134881725;
-        Tue, 13 May 2025 04:14:41 -0700 (PDT)
-X-Received: by 2002:a05:6000:3113:b0:3a0:b308:8427 with SMTP id ffacd0b85a97d-3a1f6482d31mr13683826f8f.37.1747134881344;
-        Tue, 13 May 2025 04:14:41 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a1f5a4d21esm16063106f8f.99.2025.05.13.04.14.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 May 2025 04:14:40 -0700 (PDT)
-Date: Tue, 13 May 2025 13:14:39 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Zhao Liu <zhao1.liu@intel.com>
-Cc: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- kvm@vger.kernel.org, Sergio Lopez <slp@redhat.com>, Gerd Hoffmann
- <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Laurent
- Vivier <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu
- <yi.l.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>, Eduardo
- Habkost <eduardo@habkost.net>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, Marcelo Tosatti
- <mtosatti@redhat.com>, qemu-riscv@nongnu.org, Weiwei Li
- <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>, Yanan Wang
- <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>, Palmer Dabbelt
- <palmer@dabbelt.com>, Ani Sinha <anisinha@redhat.com>, Fabiano Rosas
- <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>, Liu Zhiwei
- <zhiwei_liu@linux.alibaba.com>, =?UTF-8?B?Q2zDqW1lbnQ=?= Mathieu--Drif
- <clement.mathieu--drif@eviden.com>, qemu-arm@nongnu.org, =?UTF-8?B?TWFy?=
- =?UTF-8?B?Yy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>, Huacai Chen
- <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>
-Subject: Re: [PATCH v4 20/27] target/i386/cpu: Remove
- CPUX86State::enable_l3_cache field
-Message-ID: <20250513131439.3ae54224@imammedo.users.ipa.redhat.com>
-In-Reply-To: <aB3GsY71YH4usdSi@intel.com>
-References: <20250508133550.81391-1-philmd@linaro.org>
-	<20250508133550.81391-21-philmd@linaro.org>
-	<aB3GsY71YH4usdSi@intel.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uEnbX-0005qO-7y; Tue, 13 May 2025 07:15:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uEnbP-0005kr-92
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 07:15:17 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uEnbM-0006UH-EV
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 07:15:14 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZxYfc4GSHz6M4Wr;
+ Tue, 13 May 2025 19:10:16 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id D54D61402F4;
+ Tue, 13 May 2025 19:14:56 +0800 (CST)
+Received: from SecurePC-101-06.china.huawei.com (10.122.19.247) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 13 May 2025 13:14:56 +0200
+To: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
+ <peter.maydell@linaro.org>, <mst@redhat.com>
+CC: <linux-cxl@vger.kernel.org>, <linuxarm@huawei.com>, <qemu-arm@nongnu.org>, 
+ Yuquan Wang <wangyuquan1236@phytium.com.cn>, Itaru Kitayama
+ <itaru.kitayama@linux.dev>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>
+Subject: [PATCH v13 0/5] arm/virt: CXL support via pxb_cxl
+Date: Tue, 13 May 2025 12:14:50 +0100
+Message-ID: <20250513111455.128266-1-Jonathan.Cameron@huawei.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: eq5/6wQ0Wi54
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.122.19.247]
+X-ClientProxiedBy: lhrpeml100012.china.huawei.com (7.191.174.184) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9CT8XttYPCTt
 
-On Fri, 9 May 2025 17:11:13 +0800
-Zhao Liu <zhao1.liu@intel.com> wrote:
+V13:
+- Make CXL fixed memory windows sysbus devices.
+  IIRC this was requested by Peter in one of the reviews a long time back
+  but at the time the motivation was less strong than it becomes with some
+  WiP patches for hotness monitoring and high performance direct connect
+  where we need a machine type independent way to iterate all the CXL
+  fixed memory windows. This is a convenient place to do it so drag that
+  work forward into this series.
 
-> On Thu, May 08, 2025 at 03:35:43PM +0200, Philippe Mathieu-Daud=C3=A9 wro=
-te:
-> > Date: Thu,  8 May 2025 15:35:43 +0200
-> > From: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> > Subject: [PATCH v4 20/27] target/i386/cpu: Remove
-> >  CPUX86State::enable_l3_cache field
-> > X-Mailer: git-send-email 2.47.1
-> >=20
-> > The CPUX86State::enable_l3_cache boolean was only disabled
-> > for the pc-q35-2.7 and pc-i440fx-2.7 machines, which got
-> > removed.  Being now always %true, we can remove it and simplify
-> > cpu_x86_cpuid() and encode_cache_cpuid80000006().
-> >=20
-> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> > ---
-> >  target/i386/cpu.h |  6 ------
-> >  target/i386/cpu.c | 39 +++++++++++++--------------------------
-> >  2 files changed, 13 insertions(+), 32 deletions(-)
-> >=20
-> > diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-> > index b5cbd91c156..62239b0a562 100644
-> > --- a/target/i386/cpu.h
-> > +++ b/target/i386/cpu.h
-> > @@ -2219,12 +2219,6 @@ struct ArchCPU {
-> >       */
-> >      bool enable_lmce;
-> > =20
-> > -    /* Compatibility bits for old machine types.
-> > -     * If true present virtual l3 cache for VM, the vcpus in the same =
-virtual
-> > -     * socket share an virtual l3 cache.
-> > -     */
-> > -    bool enable_l3_cache;
-> > -
-> >      /* Compatibility bits for old machine types.
-> >       * If true present L1 cache as per-thread, not per-core.
-> >       */ =20
->=20
-> I realize this is another special case.
->=20
-> There is no support for hybrid x86 CPUs in QEMU, but it's also true that
-> there are some actual modern x86 Client CPUs without l3 cache, such as
-> Intel MTL's low power E core (and it has vmx support, i.e., support KVM).
->=20
-> So I think we can keep this property as well, to have some more
-> configuration options for users' emulation.
+  This allows us to drop separate list and necessary machine specific
+  access code in favour of
+  object_child_foreach_recursive(object_get_root(),...)
+  One snag is that the ordering of multiple fixed memory windows in that
+  walk depends on the underlying g_hash_table iterations rather than the
+  order of creation. In the memory map layout and ACPI table creation we
+  need both stable and predictable ordering. Resolve this in a similar
+  fashion to object_class_get_list_sorted() be throwing them in a GSList
+  and sorting that. Only use this when a sorted list is needed.
 
-it also seems that libvirt uses it.
+  Dropped RFC as now I'm happy with this code and would like to get it
+  upstream!  Particularly as it broken even today due to enscripten
+  related changes that stop us using g_slist_sort(). Easy fix though.
+
+Note that we have an issue for CXL emulation in general and TCG which
+is being discussed in:
+https://lore.kernel.org/all/20250425183524.00000b28@huawei.com/
+(also affects some other platforms)
+
+Until that is resolved, either rebase this back on 10.0 or just
+don't let code run out of it (don't use KMEM to expose it as normal
+memory, use DAX instead).
+
+Previous cover letter.
+
+Back in 2022, this series stalled on the absence of a solution to device
+tree support for PCI Expander Bridges (PXB) and we ended up only having
+x86 support upstream. I've been carrying the arm64 support out of tree
+since then, with occasional nasty surprises (e.g. UNIMP + DT issue seen
+a few weeks ago) and a fair number of fiddly rebases.
+gitlab.com/jic23/qemu cxl-<latest date>
+
+A recent discussion with Peter Maydell indicated that there are various
+other ACPI only features now, so in general he might be more relaxed
+about DT support being necessary. The upcoming vSMMUv3 support would
+run into this problem as well.
+
+I presented the background to the PXB issue at Linaro connect 2022. In
+short the issue is that PXBs steal MMIO space from the main PCI root
+bridge. The challenge is knowing how much to steal.
+
+On ACPI platforms, we can rely on EDK2 to perform an enumeration and
+configuration of the PCI topology and QEMU can update the ACPI tables
+after EDK2 has done this when it can simply read the space used by the
+root ports. On device tree, there is no entity to figure out that
+enumeration so we don't know how to size the stolen region.
+
+Three approaches were discussed:
+1) Enumerating in QEMU. Horribly complex and the last thing we want is a
+   3rd enumeration implementation that ends up out of sync with EDK2 and
+   the kernel (there are frequent issues because of how those existing
+   implementations differ.
+2) Figure out how to enumerate in kernel. I never put a huge amount of work
+   into this, but it seemed likely to involve a nasty dance with similar
+   very specific code to that EDK2 is carrying and would very challenging
+   to upstream (given the lack of clarity on real use cases for PXBs and
+   DT).
+3) Hack it based on the control we have which is bus numbers.
+   No one liked this but it worked :)
+
+The other little wrinkle would be the need to define full bindings for CXL
+on DT + implement a fairly complex kernel stack as equivalent in ACPI
+involves a static table, CEDT, new runtime queries via _DSM and a description
+of various components. Doable, but so far there is no interest on physical
+platforms. Worth noting that for now, the QEMU CXL emulation is all about
+testing and developing the OS stack, not about virtualization (performance
+is terrible except in some very contrived situations!)
+
+Back to posting as an RFC because there was some discussion of approach to
+modelling the devices that may need a bit of redesign.
+The discussion kind of died out on the back of DT issue and I doubt anyone
+can remember the details.
+
+https://lore.kernel.org/qemu-devel/20220616141950.23374-1-Jonathan.Cameron@huawei.com/
+
+There is only a very simple test in here, because my intent is not to
+duplicate what we have on x86, but just to do a smoke test that everything
+is hooked up.  In general we need much more comprehensive end to end CXL
+tests but that requires a reaonsably stable guest software stack. A few
+people have expressed interest in working on that, but we aren't there yet.
+
+Note that this series has a very different use case to that in the proposed
+SBSA-ref support:
+https://lore.kernel.org/qemu-devel/20250117034343.26356-1-wangyuquan1236@phytium.com.cn/
+
+SBSA-ref is a good choice if you want a relatively simple mostly fixed
+configuration.  That works well with the limited host system
+discoverability etc as EDK2 can be build against a known configuration.
+
+My interest with this support in arm/virt is support host software stack
+development (we have a wide range of contributors, most of whom are working
+on emulation + the kernel support). I care about the weird corners. As such
+I need to be able to bring up variable numbers of host bridges, multiple CXL
+Fixed Memory Windows with varying characteristics (interleave etc), complex
+NUMA topologies with wierd performance characteristics etc. We can do that
+on x86 upstream today, or my gitlab tree. Note that we need arm support
+for some arch specific features in the near future (cache flushing).
+Doing kernel development with this need for flexibility on SBSA-ref is not
+currently practical. SBSA-ref CXL support is an excellent thing, just
+not much use to me for this work.
+
+Jonathan Cameron (5):
+  hw/cxl-host: Add an index field to CXLFixedMemoryWindow
+  hw/cxl: Make the CXL fixed memory windows devices.
+  hw/cxl-host: Allow split of establishing memory address and mmio
+    setup.
+  hw/arm/virt: Basic CXL enablement on pci_expander_bridge instances
+    pxb-cxl
+  qtest/cxl: Add aarch64 virt test for CXL
+
+ include/hw/arm/virt.h     |   4 +
+ include/hw/cxl/cxl.h      |   4 +
+ include/hw/cxl/cxl_host.h |   6 +-
+ hw/acpi/cxl.c             |  83 +++++++++------
+ hw/arm/virt-acpi-build.c  |  34 ++++++
+ hw/arm/virt.c             |  29 +++++
+ hw/cxl/cxl-host-stubs.c   |   8 +-
+ hw/cxl/cxl-host.c         | 218 ++++++++++++++++++++++++++++++++------
+ hw/i386/pc.c              |  51 ++++-----
+ tests/qtest/cxl-test.c    |  59 ++++++++---
+ tests/qtest/meson.build   |   1 +
+ 11 files changed, 389 insertions(+), 108 deletions(-)
+
+-- 
+2.43.0
 

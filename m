@@ -1,89 +1,114 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp324499njb;
-        Mon, 12 May 2025 23:36:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV5i0HyP6EHULr7k/YL5P2cg8dUcAW8abFJfOq1ixljVxqviTq0QIw+PKhNOOtwTZbRIcJ3hqsNYoBOZg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGbXpXO3cwWkSv21K+HGd2JWocJXwL6mIV7Wsjyr1RJtGZRrEAfhQWi8TrjBebRFWrjk7iM
-X-Received: by 2002:a05:6214:c85:b0:6e8:ec85:8325 with SMTP id 6a1803df08f44-6f6e481ef8cmr240553536d6.39.1747118218201;
-        Mon, 12 May 2025 23:36:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747118218; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp334467njb;
+        Tue, 13 May 2025 00:05:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWcnlSkiha02sI3frHZb+uWW7CHfkhfJmf/7Wj83ZZfK7j0pjco95/j91vvqDuQpJAJPmtv04lpo0IpHg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFFzFKd0WIWWDBwbk758DAuANBXDg6I2TftO/X9bNhV2uTLNvO2bRlDWV+lxhEukKpaV5fv
+X-Received: by 2002:a05:6214:c8b:b0:6ea:d393:9634 with SMTP id 6a1803df08f44-6f6e4795886mr247880476d6.3.1747119923992;
+        Tue, 13 May 2025 00:05:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747119923; cv=none;
         d=google.com; s=arc-20240605;
-        b=hZ8qSLjKWoFIeD+FVIxXgOmiU2tgsBF5ng8Pzti8OPwh1/8YO7cvMBQKzkqjgNJLoX
-         wtEPCLF2Vo/Mo/w5EYbp/tUoii65/jk8p+6sma9ePkN7tTRq3docOKFo2PejApmpl+Y4
-         FEgqwl38oPMbU6xDqorPShk3UpaoLCNoDtO9cgt+3hrxZxDC+evOmbK5feffr8YtjVLY
-         tjfylg0hCo5+gQDoxhGRoYLelOMLtcxmE01dAXTw44spYhcUrYTNfVyafuU9K/mW02Fk
-         ZOJHPkmx9n/6GaCl77lHsQa0n/8VgUUjRrkMcUzTGMwvGJ/RUNNfMPiAKmDXawtAmmCY
-         aZlQ==
+        b=g8N5yRbft2Y6NwkwB2xQsv+1iKaJYsnuZXiCiPsNQeas4n0CVZtD6Hwps/Uc2yqKCi
+         k9qXGxOFy0iFC9qTj/pvRlazhS9TmciHnKF2Kn39ESBv1KW3nJXlx5OvECsW6imjYQey
+         h2Texzejt4p5zPun3hdaXEb5SdO8DE2XGusE+mxp3msYKUzGshL9geP5b2Bo717fFYMK
+         BgCFcLtNtibPgsmFbqLeUxvrXBo3wxC6MUV/Us30FROk3qm/0nftOiKdoi7Y+q2bNm6X
+         JwQDMEYEW5GdOthRhRNtdod5UvW/e+zegvdP52IiWBSjgw/1ldlPpT2L9p4hoXGZt6Bk
+         0GkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=lVN9Qx9gVxPWGd2M9SOvyhJ3nJbK4gJMSH33R7yNIm4=;
-        fh=HOpiatFOnx6Qe0fRCbmTPNKe4Ajfqa5KxAPfGCatY1Y=;
-        b=baKGCjbTjn+Ggo5Ks5gIVuaCKvcvEwyc87TqwM80pNUQwYhfn03Fk/dmlpCMFKbVx5
-         qHZHo6umcTaCg3PmwFn0LvdxXaoG41RuVFJJ4v9tjR1YE2/wlc2gTxL5Nu0AVERUvl7X
-         VyDEtIpjuE986bdvSP6/FJxIkmJNxyVI0XNHdKFwUOSnxDiUm07MtJa6jF2goG9AFTJp
-         myIqgtWlM1dcPulflzoGGSXEn9FKdScBaGjzLcBltogFgA18FUxO6S6K+wOO4PKqjpCB
-         X97kHLp54r7CVy8WQoLP+w9UK1eR9QzVt1ljn9KwRwfPDH7vEU2F38nhcXI2a+faKj+8
-         JUNQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=sm03/Q/lzf8bEEwW8ivqKXEvcHKm+6g5c9M+WRgVk3k=;
+        fh=RMScUtJiBDbawk2pInzonOlcFxOF5Le/X77FfUonBLw=;
+        b=eFEM5SfdZvDFhHIzMDGzehm7ovfxGqiW630nWNMbqzy3l62TEL0ai+uPSm82XcOKHB
+         jVdI60+FaibEPP0MccaSha80A7EtVLX/sgIZvasXxNXLGb4F1zU/2BIeKBffK3eggKsf
+         vosicnkk4fpUpw2zxaf7qsY6cHqXvj3p6LTDfSdfKl9iV6WbgjJRnp5H0RacMFsEUdXm
+         9Xw+ZowPiH0GRm4byVuUp/u8JiG6nCAanaq/NfJUa0oKxp8FJbcGX5FyLwMrTYtK7VE7
+         JTZZaQk2Gpm9U7RNgbY2al1dsqyapeHKO4pwgjGpVZPDrenBi45gmtG7ZmdjRpTao4ww
+         mjmQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=neutral (no key) header.i=@nongnu.org;
+       dkim=pass header.i=@beckhoff.com header.s=mail2022r header.b=X6TACYEj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=beckhoff.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a58cb2si111438276d6.400.2025.05.12.23.36.58
+        by mx.google.com with ESMTPS id d75a77b69052e-4948687bcecsi16494431cf.430.2025.05.13.00.05.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 May 2025 23:36:58 -0700 (PDT)
+        Tue, 13 May 2025 00:05:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=neutral (no key) header.i=@nongnu.org;
+       dkim=pass header.i=@beckhoff.com header.s=mail2022r header.b=X6TACYEj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=beckhoff.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uEjEE-0002Gg-UK; Tue, 13 May 2025 02:35:03 -0400
+	id 1uEjh8-0002HS-3R; Tue, 13 May 2025 03:04:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uEjC2-0006Kr-PQ; Tue, 13 May 2025 02:32:51 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <C.Koehne@beckhoff.com>)
+ id 1uEjh0-0002Gj-M7; Tue, 13 May 2025 03:04:46 -0400
+Received: from netsrv01.beckhoff.com ([62.159.14.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uEjC1-0002Ee-07; Tue, 13 May 2025 02:32:46 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ (Exim 4.90_1) (envelope-from <C.Koehne@beckhoff.com>)
+ id 1uEjgy-0005R9-CA; Tue, 13 May 2025 03:04:45 -0400
+DKIM-Signature: v=1; c=relaxed/relaxed; d=beckhoff.com; s=mail2022e; 
+ t=1747119880; bh=sm03/Q/lzf8bEEwW8ivqKXEvcHKm+6g5c9M+WRgVk3k=; h=
+ Subject:Subject:From:From:Date:Date:ReplyTo:ReplyTo:Cc:Cc:Message-Id:Message-Id;
+ a=ed25519-sha256; b=
+ 1aB1fKGwB/NkgKIq/i5lrp/h6DzngWzXl3LR0WrqMOjKxvuHwWItqYiG1wOq2M9mMl10whHuaQTRGDH5bvnVAQ==
+DKIM-Signature: v=1; c=relaxed/relaxed; d=beckhoff.com; s=mail2022r; 
+ t=1747119880; bh=sm03/Q/lzf8bEEwW8ivqKXEvcHKm+6g5c9M+WRgVk3k=; h=
+ Subject:Subject:From:From:Date:Date:ReplyTo:ReplyTo:Cc:Cc:Message-Id:Message-Id;
+ a=rsa-sha256; b=
+ X6TACYEjAW2IWbfG2m0rfO6CNDKEeMR8wAwjsrNcgvecd0VELHkOAUPkeLxGENldnXRcP77licLrsfZO0ms9kK0ykKZWPBi20o8b11St3OP1aynX7s/gJxFlPAFWRA3sf8hgDHPaSjpcE2jMAmIbfRIvq40jbtBDqs7DSwMdtXXVzEXNkKZ50RGaEgFLFMSLXys0RlACWVOWH86JVB9GnyqK46iZoQ1bPWMigOEIkDj1qK8hkppQjSWqTnD7xp0y7bVH6AhekE1nH2NEqrtSkMVmbsyQzxQxjaje4TMJ2gQs5B47I0Pevf75EV7pDUZuoXPU7HrJ3EaDF/Y3BE3thQ==
+Received: from 172.17.2.111 by netsrv01.beckhoff.com
+ (TLS-ECDHE-RSA-WITH-AES-256-GCM-SHA384); Tue, 13 May 2025 07:04:39 GMT
+Received: from ex10.beckhoff.com (172.17.2.111) by ex10.beckhoff.com
+ (172.17.2.111) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 13 May
- 2025 14:29:11 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 13 May 2025 14:29:11 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>, Laurent Vivier
- <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v2 25/25] test/qtest/hace: Add tests for AST2700
-Date: Tue, 13 May 2025 14:28:55 +0800
-Message-ID: <20250513062901.2256865-26-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250513062901.2256865-1-jamin_lin@aspeedtech.com>
-References: <20250513062901.2256865-1-jamin_lin@aspeedtech.com>
+ 2025 09:04:38 +0200
+Received: from ex10.beckhoff.com ([fe80::3762:2101:fb4e:8ffa]) by
+ ex10.beckhoff.com ([fe80::ab7f:9a91:d220:441b%12]) with mapi id
+ 15.02.1748.010; Tue, 13 May 2025 09:04:38 +0200
+From: =?utf-8?B?Q29ydmluIEvDtmhuZQ==?= <C.Koehne@beckhoff.com>
+To: "edgar.iglesias@gmail.com" <edgar.iglesias@gmail.com>
+CC: =?utf-8?B?WWFubmljayBWb8OfZW4=?= <Y.Vossen@beckhoff.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "pbonzini@redhat.com"
+ <pbonzini@redhat.com>, "alistair@alistair23.me" <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>
+Subject: Re: [PATCH 05/21] hw/dma/zynq: Notify devcfg on FPGA reset via SLCR
+ control
+Thread-Topic: [PATCH 05/21] hw/dma/zynq: Notify devcfg on FPGA reset via SLCR
+ control
+Thread-Index: AQHbmAca5jtbyEnGik22643XdTO7ZrO0p/aAgBuxBgA=
+Date: Tue, 13 May 2025 07:04:38 +0000
+Message-ID: <cd2f3e8f128df4dfb067ec541ac7f6ebf7ee18a0.camel@beckhoff.com>
+References: <20250318130817.119636-1-corvin.koehne@gmail.com>
+ <20250318130817.119636-6-corvin.koehne@gmail.com> <aAu0T_XTt2uwermj@zapote>
+In-Reply-To: <aAu0T_XTt2uwermj@zapote>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator: 
+x-originating-ip: [172.17.62.149]
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="=-+72oS1c9DCYwkUFXd1t5"
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=62.159.14.10; envelope-from=C.Koehne@beckhoff.com;
+ helo=netsrv01.beckhoff.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,152 +121,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eomARu3Xsfxw
+X-TUID: PiAZSE0J8NBD
 
-The HACE models in AST2600 and AST2700 are nearly identical. Based on the
-AST2600 test cases, new tests have been added for AST2700.
+--=-+72oS1c9DCYwkUFXd1t5
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Implemented test functions for SHA-256, SHA-384, SHA-512, and MD5.
-Added scatter-gather and accumulation test variants.
-For AST2700, the HACE controller base address starts at "0x12070000", and
-the DRAM start address is "0x4_00000000".
+On Fri, 2025-04-25 at 18:11 +0200, Edgar E. Iglesias wrote:
+> CAUTION: External Email!!
+> On Tue, Mar 18, 2025 at 02:07:56PM +0100, Corvin K=C3=B6hne wrote:
+> > From: YannickV <Y.Vossen@beckhoff.com>
+> >=20
+> > When the FPGA_RST_CTRL register in the SLCR (System Level Control
+> > Register) is written to, the devcfg (Device Configuration) should
+> > indicate the finished reset.
+> >=20
+> > Problems occure when Loaders trigger a reset via SLCR and poll for
+> > the done flag in devcfg. Since the flag will never be set, this can
+> > result in an endless loop.
+> >=20
+> > A callback function `slcr_reset_handler` is added to the
+> > `XlnxZynqDevcfg` structure. The `slcr_reset` function sets the
+> > `PCFG_DONE` flag when triggered by an FPGA reset in the SLCR.
+> > The SLCR write handler calls the `slcr_reset` function when the
+> > FPGA reset control register (`R_FPGA_RST_CTRL`) is written with
+> > the reset value.
+>=20
+> Could you please refer to the specs where this is described?
+> I couldn't find it...
+>=20
+>=20
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
----
- tests/qtest/ast2700-hace-test.c | 98 +++++++++++++++++++++++++++++++++
- tests/qtest/meson.build         |  2 +
- 2 files changed, 100 insertions(+)
- create mode 100644 tests/qtest/ast2700-hace-test.c
+Looks like we've misread the specs and our loader code. Our loader writes a=
+ one
+to PCFG_DONE and FPGA_RST_CTRL and then polls PCFG_DONE, so we thought that=
+ it's
+related. However, we've rechecked it and on hardware PCFG_DONE isn't reset =
+on
+this write. According to the spec, PCFG_DONE is a Write 1 to Clear register=
+ but
+it won't reset when the condition for setting PCFG_DONE is still true. We'r=
+e
+going to fix this in v2, thanks.
 
-diff --git a/tests/qtest/ast2700-hace-test.c b/tests/qtest/ast2700-hace-test.c
-new file mode 100644
-index 0000000000..a400e2962b
---- /dev/null
-+++ b/tests/qtest/ast2700-hace-test.c
-@@ -0,0 +1,98 @@
-+/*
-+ * QTest testcase for the ASPEED Hash and Crypto Engine
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2025 ASPEED Technology Inc.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest.h"
-+#include "qemu/bitops.h"
-+#include "aspeed-hace-utils.h"
-+
-+static const struct AspeedMasks as2700_masks = {
-+    .src  = 0x7fffffff,
-+    .dest = 0x7ffffff8,
-+    .key = 0x7ffffff8,
-+    .len  = 0x0fffffff,
-+    .src_hi  = 0x00000003,
-+    .dest_hi = 0x00000003,
-+    .key_hi = 0x00000003,
-+};
-+
-+/* ast2700 */
-+static void test_md5_ast2700(void)
-+{
-+    aspeed_test_md5("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-+}
-+
-+static void test_sha256_ast2700(void)
-+{
-+    aspeed_test_sha256("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-+}
-+
-+static void test_sha256_sg_ast2700(void)
-+{
-+    aspeed_test_sha256_sg("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-+}
-+
-+static void test_sha384_ast2700(void)
-+{
-+    aspeed_test_sha384("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-+}
-+
-+static void test_sha384_sg_ast2700(void)
-+{
-+    aspeed_test_sha384_sg("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-+}
-+
-+static void test_sha512_ast2700(void)
-+{
-+    aspeed_test_sha512("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-+}
-+
-+static void test_sha512_sg_ast2700(void)
-+{
-+    aspeed_test_sha512_sg("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-+}
-+
-+static void test_sha256_accum_ast2700(void)
-+{
-+    aspeed_test_sha256_accum("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-+}
-+
-+static void test_sha384_accum_ast2700(void)
-+{
-+    aspeed_test_sha384_accum("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-+}
-+
-+static void test_sha512_accum_ast2700(void)
-+{
-+    aspeed_test_sha512_accum("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-+}
-+
-+static void test_addresses_ast2700(void)
-+{
-+    aspeed_test_addresses("-machine ast2700a1-evb", 0x12070000, &as2700_masks);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+
-+    qtest_add_func("ast2700/hace/addresses", test_addresses_ast2700);
-+    qtest_add_func("ast2700/hace/sha512", test_sha512_ast2700);
-+    qtest_add_func("ast2700/hace/sha384", test_sha384_ast2700);
-+    qtest_add_func("ast2700/hace/sha256", test_sha256_ast2700);
-+    qtest_add_func("ast2700/hace/md5", test_md5_ast2700);
-+
-+    qtest_add_func("ast2700/hace/sha512_sg", test_sha512_sg_ast2700);
-+    qtest_add_func("ast2700/hace/sha384_sg", test_sha384_sg_ast2700);
-+    qtest_add_func("ast2700/hace/sha256_sg", test_sha256_sg_ast2700);
-+
-+    qtest_add_func("ast2700/hace/sha512_accum", test_sha512_accum_ast2700);
-+    qtest_add_func("ast2700/hace/sha384_accum", test_sha384_accum_ast2700);
-+    qtest_add_func("ast2700/hace/sha256_accum", test_sha256_accum_ast2700);
-+
-+    return g_test_run();
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index bb14a22ebe..c587688f67 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -216,6 +216,7 @@ qtests_aspeed = \
-    'aspeed_smc-test']
- qtests_aspeed64 = \
-   ['ast2700-gpio-test',
-+   'ast2700-hace-test',
-    'ast2700-smc-test']
- 
- qtests_stm32l4x5 = \
-@@ -362,6 +363,7 @@ endif
- qtests = {
-   'aspeed_hace-test': files('aspeed-hace-utils.c', 'aspeed_hace-test.c'),
-   'aspeed_smc-test': files('aspeed-smc-utils.c', 'aspeed_smc-test.c'),
-+  'ast2700-hace-test': files('aspeed-hace-utils.c', 'ast2700-hace-test.c'),
-   'ast2700-smc-test': files('aspeed-smc-utils.c', 'ast2700-smc-test.c'),
-   'bios-tables-test': [io, 'boot-sector.c', 'acpi-utils.c', 'tpm-emu.c'],
-   'cdrom-test': files('boot-sector.c'),
--- 
-2.43.0
+
+--=20
+Kind regards,
+Corvin
+
+--=-+72oS1c9DCYwkUFXd1t5
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEgvRSla3m2t/H2U9G2FTaVjFeAmoFAmgi7wQACgkQ2FTaVjFe
+Amqamg/+KYgwrZE0oh2oaoB0fnHJiuSTVKbPMTwASvQ9OO+TxvwawV3sRw6Zi2f4
+lb62rC/kBpkLXH3H9qpYve/UqAlAH8km04dMyHXt3f5rH3dUgW8daszsmToJH1AN
+D5Qc0OLM5dgL1Rrl0KYL4+IB3+SSKanB35iY7AAtVXiKr+k5+Mm7WkyZft5rakd+
+1OPRdu+Or9zO8LmTkQZ2sRM9QbK/9et4G3+OoPmEOiVAXY9k68OCdg/Ul8Jh4KYv
+zSg4QO5MlB4BzfL0tVdAzaEA9aFvtIksX1P88frUmMqjeI0aolxPnjLaPo7JPA2D
+egdO+3gwSqcWZbJsurqq5kthAGVLCb/pVHFPG4/jh8p4sPm0jHSfnM3rb4r5UUJx
+N+LdOaNPGpf4tGPATLbpvj7JQC6SmjlG76QjjjvZDCQlZ1vHHipwPO3Hl+AbPqni
+PKdryBhZqo0GbBFeH2EMqKgab/U3qwRFbjreyrYsTmKVqBWDzsscjMWe/JcG9GR7
+g234icW964mrXcwdOe5+A+a15kTpFwLFuDkumH5cwyYGuVimsuS/1mA6ki93TBBI
+J/FyD1AhpK3PKe8jo03mFTtKoiHqR/9iP8ojsinbnaJqszHVtutXwumaGSXVjmbU
+RJDWvg4SiwNQLfiRCU30G3o0PZm3Im2ZQZrZrBvRKAQrzot9nGc=
+=Xxnp
+-----END PGP SIGNATURE-----
+
+--=-+72oS1c9DCYwkUFXd1t5--
 

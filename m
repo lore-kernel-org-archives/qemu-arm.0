@@ -1,268 +1,225 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp321849njb;
-        Mon, 12 May 2025 23:29:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWFnL7g7il5Zr1bAyob03UlsbX9U8JTgR1mkhMX9N6u5pEH9r/p5lh98rCWAyelY+S46P5QKMdGxt1pDg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFhWieK/hamfbTBC5aTh40aMZAZN3WE25qK96zAPDeWk2kNBC8Zr2oiBZ3bP9Dd4a9sg/qm
-X-Received: by 2002:a05:620a:400c:b0:7c7:f7ba:270a with SMTP id af79cd13be357-7cd0116dd1cmr2776384385a.47.1747117784966;
-        Mon, 12 May 2025 23:29:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747117784; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp358132njb;
+        Tue, 13 May 2025 01:08:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXKca2WNBQ9g+ecqBr1A/dd78JWKfes4YXdDYJ/V89EjF1+CEAdY7Lm3CRK1Ja5+6Q31OBzAhBL5iUVXw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHxg5lj0H4yu/cDvHR6duamNWR2Hq5wYV7eL0vjXOJHKkRyQhhy7hMSZ97k5TM0TMtPmFtR
+X-Received: by 2002:a17:907:1c17:b0:ad2:455e:6ec0 with SMTP id a640c23a62f3a-ad2455e72bdmr943743266b.20.1747123716541;
+        Tue, 13 May 2025 01:08:36 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1747123716; cv=pass;
         d=google.com; s=arc-20240605;
-        b=Y2zGE+v3k9vrsO+UgUwbJNxhoHnq2HhzNRf6g8yGd+y3bdMLqlfC1cmLYO7874zrUp
-         mUvezohJMujcLfBn7PajuuQ4LkG1H+G0s+2Gv7aZCeJS0skf1IjLFLVD9Skj8iIZ+i1e
-         QvdwOUZBcqcC4S3riQcTxgFdV8lUCAhLPJxlbQ94MOMTP/u+YHfGy6S7dMumzJNOOory
-         xTXvUB2yJ4OIPvamlf+SSq4GvoR4a+2/dKihlIjuLez8ZqvUWSPYf2A8p0KhvLb2+ojC
-         D35Kq/7T76WqtMSBXF4C1qCsCEgT32Mv6GwcPs8LdYajJE6IDMS72CYsBFou2VIBSusl
-         fssQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=G4ODHwdKA9eIYacunjI/KzpldMhloQwk3ZWrLqSW9y4=;
-        fh=XVCbtZt0NlM3WRi/g+G2SrIUzl8hrRaPGDpFr//3vj8=;
-        b=kwIAORU/iyd2hVSX1+ffZCGhVGGIjRTrsG4bLXOnUAxQDRROeAxmL1u8j015MG72df
-         B6hku1vb4B1VNhYRHOIcFEiRCxDnbKyGH39DsPWHFWkq9qLsp8nqA94zWEQn7IEWAGWl
-         /E936Bkmyq4exhholcBj1ewZFpc6u9TARHhAfYjDVCTxDTWE1XudEbrXqRJVnpDohQsl
-         tH4cVExhzI4ZqNzNiO0XLdqjBOf/r314k1FobIosPV6oog5GWgdxM4D/VQ+ryYWCyO0T
-         RonVMAPkaXgTnI7pppGD+cumvoMJByxqxigneoiltxvvhOvzXvJZ2suR5ZXhumqqWagK
-         7NYw==;
+        b=ZtOOqMzF4QqW7eRuCfAKXeCz1NAAudz+2sRUS3o0mtGs02bIKO82guNNqHvsygIcvD
+         7AAjfKfQKg313NZbFmF7PIntHt3bQSTPJKi4sCgh++tekt00mJnFwUVlUds4sXnc9gfT
+         aKKy0wAVoAEJiQPA7u6MesoIVEDRf2DkXqMCrXpWKHjllJFjJBPdNzjb680MUdwxF09h
+         5FCqR90eu4FPHavai9QjcPyFdizKakwWiBw8fYACFDHVhDAQKNtEWUqR+5kOYd+ReZ8E
+         /iDjP576CXtvAmJYX65P9NHgIuvNZgVqQuvljxQ2YffjqcOvIYGPl2H769K1FOtDKXlK
+         S9CQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:user-agent:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=I+Gv9eTQq4KU9E7dEF3HAfmHKcWMwL8LbrI4vrBOurs=;
+        fh=0usNiQ1WRbfP5ZtZpAoEPkod0OPeqrgfUKkKTmb3YZs=;
+        b=PtecHHoNxyERVXPWhNGdoxVkWMgpPuKBCMqwVgJYXqWPYgpUu7r2t6E6p2bfhTjj4F
+         bSCCc89kvtPBbSAi1L3yxT72qtbU+9LMPat8M4Qw5Qjr5pL64kb15XjiVDlQuiNtUtAB
+         Y8OhFCZajKXUpHfPGIewBkFzVLWyWOYFd2wfZSQ8CbbaH8we0U1hBqxye4CVDY/6qQwY
+         wuidR49KXNd5Kik/DdnnxKbFZfXm2rx7TWsWQ6LX02JMPIykUVbXcNqj7Ptf08U0BxuP
+         R1mEX7l8jok+/z+yPcG03bsxC3d+gypP2tljdIoOsksC47/n5+H82GOBQuwUoFZ8jDk7
+         J3HQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd00fefe13si1052532585a.532.2025.05.12.23.29.44
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VUShxRIQ;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46302-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-46302-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-46302-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
+        by mx.google.com with ESMTPS id a640c23a62f3a-ad219c8b09fsi688520466b.867.2025.05.13.01.08.36
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 May 2025 23:29:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 May 2025 01:08:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46302-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uEj8q-0002DS-KL; Tue, 13 May 2025 02:29:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uEj8m-0002D8-7U; Tue, 13 May 2025 02:29:24 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uEj8j-0001jk-4k; Tue, 13 May 2025 02:29:23 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 13 May
- 2025 14:29:02 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 13 May 2025 14:29:02 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>, Laurent Vivier
- <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v2 00/25] Fix incorrect hash results on AST2700
-Date: Tue, 13 May 2025 14:28:30 +0800
-Message-ID: <20250513062901.2256865-1-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VUShxRIQ;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46302-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-46302-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id E9F0C19E2BC5
+	for <alex.bennee@linaro.org>; Tue, 13 May 2025 08:08:48 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id B93411F4E59;
+	Tue, 13 May 2025 08:08:30 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="VUShxRIQ"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D7EDA1F5424
+	for <kvm@vger.kernel.org>; Tue, 13 May 2025 08:08:28 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1747123710; cv=none; b=nVJR+19HLydcCKp/spSsj1IomVWb0bfVzYoOLkpBPdnldiI/BakIom1YCyz8puwC2TnWwGMEtffGQ3KhWJJlUq+Qppt2T/r+AaQnt4ecyQlPOsA4hqOO+JMWdFmlzyTs87bmPpgdTyGFWK0Gp6GqRgsdVTCuQ5EraLVazdB3N80=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1747123710; c=relaxed/simple;
+	bh=y05rK/geavaNrB3PHWtOJ+zgvLpJvQ3MPvMJo9zeBX0=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
+	 MIME-Version:Content-Type; b=kkqnxAAIU9089gdKnfZZg5F4mFhUUoPT709IaHnuSWqZwHCEPHQb1yn6yV8ZOSi3mXBk8UU/sk7maQdBkrCcc70ocVkpiiqh6HZXJHIML84lPoDnpR4h33a1pSb9hJ0iJmNnOHxKslyMh7DXtGfPcFHjkrKyfIdV+2ioCNQK0QM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=VUShxRIQ; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1747123707;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=I+Gv9eTQq4KU9E7dEF3HAfmHKcWMwL8LbrI4vrBOurs=;
+	b=VUShxRIQ+0Kmlg/mh8nESzCLlJJKESy1eJ6x7elTIDhTfR9netaadblSBizqfgrf/Ph1h8
+	lfVcYZIYFC8Be72SPg0U7z8gsH5PKztK2bwKfkB/LZ0tyXAF4YFAbNA4xHl8VV5x33/eM6
+	2L4kF0TbaRCwoK+rQU0Kx4+nUqw+TCg=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-145-Tdm_Y8VHNDu_jRyW3wVE9A-1; Tue,
+ 13 May 2025 04:08:24 -0400
+X-MC-Unique: Tdm_Y8VHNDu_jRyW3wVE9A-1
+X-Mimecast-MFC-AGG-ID: Tdm_Y8VHNDu_jRyW3wVE9A_1747123701
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 9E6531955D8F;
+	Tue, 13 May 2025 08:08:20 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.27])
+	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 8AFA818003FC;
+	Tue, 13 May 2025 08:08:18 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id C227321E66C3; Tue, 13 May 2025 10:08:15 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,  Peter
+ Maydell
+ <peter.maydell@linaro.org>,  Thomas Huth <thuth@redhat.com>,  Zhao Liu
+ <zhao1.liu@intel.com>,  Xiaoyao Li <xiaoyao.li@intel.com>,  Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Paolo Bonzini
+ <pbonzini@redhat.com>,
+  qemu-devel@nongnu.org,  Richard Henderson <richard.henderson@linaro.org>,
+  kvm@vger.kernel.org,  Gerd Hoffmann <kraxel@redhat.com>,  Laurent Vivier
+ <lvivier@redhat.com>,  Jiaxun Yang <jiaxun.yang@flygoat.com>,  Yi Liu
+ <yi.l.liu@intel.com>,  "Michael S. Tsirkin" <mst@redhat.com>,  Eduardo
+ Habkost <eduardo@habkost.net>,  Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>,  Alistair Francis
+ <alistair.francis@wdc.com>,  Daniel Henrique Barboza
+ <dbarboza@ventanamicro.com>,  Marcelo Tosatti <mtosatti@redhat.com>,
+  qemu-riscv@nongnu.org,  Weiwei Li <liwei1518@gmail.com>,  Amit Shah
+ <amit@kernel.org>,  Yanan Wang <wangyanan55@huawei.com>,  Helge Deller
+ <deller@gmx.de>,  Palmer Dabbelt <palmer@dabbelt.com>,  Ani Sinha
+ <anisinha@redhat.com>,  Fabiano Rosas <farosas@suse.de>,  Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>,  =?utf-8?Q?Cl=C3=A9ment?= Mathieu--Drif
+ <clement.mathieu--drif@eviden.com>,  qemu-arm@nongnu.org,  =?utf-8?Q?Marc?=
+ =?utf-8?Q?-Andr=C3=A9?=
+ Lureau <marcandre.lureau@redhat.com>,  Huacai Chen
+ <chenhuacai@kernel.org>,  Jason Wang <jasowang@redhat.com>
+Subject: Re: How to mark internal properties
+In-Reply-To: <20250512172226.433900f8@imammedo.users.ipa.redhat.com> (Igor
+	Mammedov's message of "Mon, 12 May 2025 17:22:26 +0200")
+References: <20250508133550.81391-1-philmd@linaro.org>
+	<20250508133550.81391-13-philmd@linaro.org>
+	<23260c74-01ba-45bc-bf2f-b3e19c28ec8a@intel.com>
+	<aB2vjuT07EuO6JSQ@intel.com>
+	<2f526570-7ab0-479c-967c-b3f95f9f19e3@redhat.com>
+	<CAFEAcA-kuHvxjuV_cMh-Px3C-k2Gd51jFqhwndO52vm++M_jAA@mail.gmail.com>
+	<aCG6MuDLrQpoTqpg@redhat.com> <87jz6mqeu5.fsf@pond.sub.org>
+	<20250512172226.433900f8@imammedo.users.ipa.redhat.com>
+Date: Tue, 13 May 2025 10:08:15 +0200
+Message-ID: <87msbhgcgg.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FVSsELQUHun0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-TUID: QGKQIE73AufU
 
-v1:
- 1. Added support for 64-bit DMA in the HACE model
- 2. Refactored the do_hash operation in the HACE model
- 3. Fixed a crash caused by out-of-bound memory access in HACE
- 4. Added more trace events and implemented dumping of source hash data and
-    resulting digests to improve debugging
- 5. Refactored the HACE QTest framework to support both AST1030 and AST2700
- 6. Added a test case for SHA384
+Igor Mammedov <imammedo@redhat.com> writes:
 
-v2:
-  1. Create new helper functions
-     hash_get_source_addr
-     hash_prepare_direct_iov
-     hash_prepare_sg_iov
-     hash_get_digest_addr
-     hash_write_digest_and_unmap_iov
-     hash_execute_non_acc_mode
-     hash_execute_acc_mode
-  2. Refactor do_hash_operation
-  3. Fix review issue
-  4. Revise trace-events
-  5. Move register size to instance class and dynamically allocate regs
+> On Mon, 12 May 2025 12:54:26 +0200
+> Markus Armbruster <armbru@redhat.com> wrote:
+>
+>> Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
+>>=20
+>> > On Mon, May 12, 2025 at 09:46:30AM +0100, Peter Maydell wrote:=20=20
+>> >> On Fri, 9 May 2025 at 11:04, Thomas Huth <thuth@redhat.com> wrote:=20=
+=20
+>> >> > Thanks for your clarifications, Zhao! But I think this shows again =
+the
+>> >> > problem that we have hit a couple of times in the past already: Pro=
+perties
+>> >> > are currently used for both, config knobs for the users and internal
+>> >> > switches for configuration of the machine. We lack a proper way to =
+say "this
+>> >> > property is usable for the user" and "this property is meant for in=
+ternal
+>> >> > configuration only".
+>> >> >
+>> >> > I wonder whether we could maybe come up with a naming scheme to bet=
+ter
+>> >> > distinguish the two sets, e.g. by using a prefix similar to the "x-=
+" prefix
+>> >> > for experimental properties? We could e.g. say that all properties =
+starting
+>> >> > with a "q-" are meant for QEMU-internal configuration only or somet=
+hing
+>> >> > similar (and maybe even hide those from the default help output whe=
+n running
+>> >> > "-device xyz,help" ?)? Anybody any opinions or better ideas on this=
+?=20=20
+>> >>=20
+>> >> I think a q-prefix is potentially a bit clunky unless we also have
+>> >> infrastructure to say eg DEFINE_INTERNAL_PROP_BOOL("foo", ...)
+>> >> and have it auto-add the prefix, and to have the C APIs for
+>> >> setting properties search for both "foo" and "q-foo" so you
+>> >> don't have to write qdev_prop_set_bit(dev, "q-foo", ...).=20=20
+>>=20
+>> If we make intent explicit with DEFINE_INTERNAL_PROP_FOO(), is repeating
+>> intent in the name useful?
+>
+> While we are inventing a new API, I'd say that _INTERNAL_ is not the only=
+ thing
+> on my wish-list wrt properties.
+> It would be also nice to know when a property is set by internal or exter=
+nal user
+> or if it still has default value.
 
-This patchset resolves incorrect hash results reported on the AST2700 platform.
-This update addresses the following kernel warnings and test failures related to
-the crypto self-test framework:
+We commonly assume "value is default implies user didn't touch it",
+which is of course wrong unless it's a value the user cannot set.
 
-aspeed-hmac-sha512 test failed (incorrect result)
-aspeed-hmac-sha384 test failed (incorrect result)
-aspeed-sha512 test failed (incorrect result)
-aspeed-sha384 test failed (incorrect result)
-aspeed-hmac-sha256 test failed (incorrect result)
-aspeed-hmac-sha224 test failed (incorrect result)
-aspeed-hmac-sha1 test failed (incorrect result)
-aspeed-sha224 test failed (incorrect result)
-aspeed-sha256 test failed (incorrect result)
-aspeed-sha1 test failed (incorrect result)
+> Basically we are looking at different flags for properties and INERNAL be=
+ing
+> one of them.
+>
+> Maybe instead of specialized macro, we should have a more generic
+>    DEFINE_PROP_WITH_FLAGS_FOO(...,flags)
+> So we won't have to rewrite it again when we think of another flag to tur=
+n on/off.
+>
+>
+> From previous uses of x- flag, some of such properties are created as
+> temporary | developer-only and occasionally as a crutch (still no intende=
+d for end user).
+> But then sometimes such properties get promoted to ABI with fat warnings
+> not to touch them. Having stable|unstable flag could help here without
+> need to rename property (and prevent breaking users who (ab)used it if we=
+ care).
 
-How to test it
+I think QAPI's explicit 'unstable' and 'deprecated' flags have been a
+success.  Their meaning is clear, and they come with documentation
+(because adding them without won't compile).
 
-Use the following command to dump information about the supported digest methods
-via the ast_crypto_engine hardware engine:
-
-root@ast2700-default:~# openssl engine -pre DUMP_INFO ast_crypto_engine
-
-Digest SHA1, NID=64, AF_ALG info: name=sha1ALG_ERR: , driver=aspeed-sha1 (hw accelerated)
-Digest SHA224, NID=675, AF_ALG info: name=sha224ALG_ERR: , driver=aspeed-sha224 (hw accelerated)
-Digest SHA256, NID=672, AF_ALG info: name=sha256ALG_ERR: , driver=aspeed-sha256 (hw accelerated)
-Digest SHA384, NID=673, AF_ALG info: name=sha384ALG_ERR: , driver=aspeed-sha384 (hw accelerated)
-Digest SHA512, NID=674, AF_ALG info: name=sha512ALG_ERR: , driver=aspeed-sha512 (hw accelerated)
-
-The status of SHA1, SHA224, SHA256, SHA384, and SHA512 should be marked as
-hw accelerated, indicating that these algorithms are supported by hardware
-acceleration via the aspeed drivers.
-
-Create a test file on the host machine and compute its HASH value as the
-expected result
-
-Create a 256MB test file
-
-$ dd if=/dev/random of=/tmp/256M bs=1M count=256
-Generate Hash Values Using SHA1, SHA224, SHA256, SHA384, and SHA512
-
-Use the following commands to generate HASH values for a 256MB file using
-different SHA algorithms:
-
-$ sha1sum /tmp/256M
-7fc628811a31ab87b0502dab3ed8d3ef07565885  /tmp/256M
-
-$ sha224sum /tmp/256M
-2d261c11ba05b3a62e0efeab51c307d9933426c7e18204683ef3da54  /tmp/256M
-
-$ sha256sum /tmp/256M
-5716d1700ee35c92ca5ca5b466639e9c36eed3f1447c1aec27f16d0fe113f94d  /tmp/256M
-
-$ sha384sum /tmp/256M
-fb6bc62afa1096dcd3b870e7d2546b7a5a177b5f2bbd5c9759218182454709e0c504a2d9c26404e04aa8010a291b7f1c  /tmp/256M
-
-$ sha512sum /tmp/256M
-fbceda7be34836fe857781656318ecd5b457a833a24c8736d5b8ef8d07e1950eebcdb140eebe4f12b5ff59586f7eb1c64fa95869c63dd9e4703d91261093c5c9  /tmp/256M
-
-Generate HASH Values Using the Hardware Engine
-
-Use the following commands to generate HASH values for a 256MB file using
-various SHA algorithms with the ast_crypto_engine hardware engine:
-
-root@ast2700-default:~# openssl dgst -sha1 -engine ast_crypto_engine /tmp/256M
-Engine "ast_crypto_engine" set.
-SHA1(/tmp/256M)= 7fc628811a31ab87b0502dab3ed8d3ef07565885
-
-root@ast2700-default:~# openssl dgst -sha224 -engine ast_crypto_engine /tmp/256M
-Engine "ast_crypto_engine" set.
-SHA2-224(/tmp/256M)= 2d261c11ba05b3a62e0efeab51c307d9933426c7e18204683ef3da54
-
-root@ast2700-default:~# openssl dgst -sha256 -engine ast_crypto_engine /tmp/256M
-Engine "ast_crypto_engine" set.
-SHA2-256(/tmp/256M)= 5716d1700ee35c92ca5ca5b466639e9c36eed3f1447c1aec27f16d0fe113f94d
-
-root@ast2700-default:~# openssl dgst -sha384 -engine ast_crypto_engine /tmp/256M
-Engine "ast_crypto_engine" set.
-SHA2-384(/tmp/256M)= fb6bc62afa1096dcd3b870e7d2546b7a5a177b5f2bbd5c9759218182454709e0c504a2d9c26404e04aa8010a291b7f1c
-
-root@ast2700-default:~# openssl dgst -sha512 -engine ast_crypto_engine /tmp/256M
-Engine "ast_crypto_engine" set.
-SHA2-512(/tmp/256M)= fbceda7be34836fe857781656318ecd5b457a833a24c8736d5b8ef8d07e1950eebcdb140eebe4f12b5ff59586f7eb1c64fa95869c63dd9e4703d91261093c5c9
-
-The HASH values generated here should exactly match those computed on the host
-machine using sha shell commands, verifying both the correctness of the
-hardware-accelerated results and the functionality of the ast_crypto_engine.
-
-Jamin Lin (25):
-  hw/misc/aspeed_hace: Remove unused code for better readability
-  hw/misc/aspeed_hace: Improve readability and consistency in variable
-    naming
-  hw/misc/aspeed_hace: Ensure HASH_IRQ is always set to prevent firmware
-    hang
-  hw/misc/aspeed_hace: Refactor hash buffer setup into helper functions
-    for clarity
-  hw/misc/aspeed_hace: Split hash execution into helper functions for
-    clarity
-  hw/misc/aspeed_hace: Introduce 64-bit hash source address helper
-    function
-  hw/misc/aspeed_hace: Rename R_HASH_DEST to R_HASH_DIGEST and introduce
-    64-bit hash digest address helper
-  hw/misc/aspeed_hace: Support accumulative mode for direct access mode
-  hw/misc/aspeed_hace: Move register size to instance class and
-    dynamically allocate regs
-  hw/misc/aspeed_hace: Add support for source, digest, key buffer 64 bit
-    addresses
-  hw/misc/aspeed_hace: Support DMA 64 bits dram address
-  hw/misc/aspeed_hace: Add trace-events for better debugging
-  hw/misc/aspeed_hace: Support to dump plaintext and digest for better
-    debugging
-  tests/qtest: Reorder aspeed test list
-  test/qtest: Introduce a new aspeed-hace-utils.c to place common
-    testcases
-  test/qtest/hace: Specify explicit array sizes for test vectors and
-    hash results
-  test/qtest/hace: Adjust test address range for AST1030 due to SRAM
-    limitations
-  test/qtest/hace: Add SHA-384 test cases for ASPEED HACE model
-  test/qtest/hace: Add SHA-384 tests for AST2600
-  test/qtest/hace: Add tests for AST1030
-  test/qtest/hace: Update source data and digest data type to 64-bit
-  test/qtest/hace: Support 64-bit source and digest addresses for
-    AST2700
-  test/qtest/hace: Support to test upper 32 bits of digest and source
-    addresses
-  test/qtest/hace: Support to validate 64-bit hmac key buffer addresses
-  test/qtest/hace: Add tests for AST2700
-
- include/hw/misc/aspeed_hace.h   |  11 +-
- tests/qtest/aspeed-hace-utils.h |  84 +++++
- hw/misc/aspeed_hace.c           | 480 ++++++++++++++++--------
- tests/qtest/aspeed-hace-utils.c | 646 ++++++++++++++++++++++++++++++++
- tests/qtest/aspeed_hace-test.c  | 577 +++++-----------------------
- tests/qtest/ast2700-hace-test.c |  98 +++++
- hw/misc/trace-events            |   8 +
- tests/qtest/meson.build         |  13 +-
- 8 files changed, 1280 insertions(+), 637 deletions(-)
- create mode 100644 tests/qtest/aspeed-hace-utils.h
- create mode 100644 tests/qtest/aspeed-hace-utils.c
- create mode 100644 tests/qtest/ast2700-hace-test.c
-
--- 
-2.43.0
+Pushing QOM closer to QAPI when we can makes sense to me.
 

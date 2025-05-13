@@ -1,224 +1,236 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp460503njb;
-        Tue, 13 May 2025 04:57:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW7MeTTSLO2C9xDFKod6phEN/sg+/vzMLadHsstgpvmrYnC+1qtC9YfKGyCQQyRcm6yW+KqAwBWtLZbxg==@linaro.org
-X-Google-Smtp-Source: AGHT+IH9mrcnZ3vTm+bUnKfb6ZOXOlmENEX5FkmoSwad+1Fuhsfka20WpeVM+mE6SmeT+eWKIq3p
-X-Received: by 2002:a05:6214:1949:b0:6f5:41cd:9dd2 with SMTP id 6a1803df08f44-6f6e481d160mr337176026d6.37.1747137435855;
-        Tue, 13 May 2025 04:57:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747137435; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp440838njb;
+        Tue, 13 May 2025 04:16:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWpEebrUE5UhByaeHNpSZQxO2uvMZKCx/DYueK8F88th9aiihu9Z2hA4gaEC77HR3A901nai1QkfQLxTQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFaURdtxywAKwzVFmmCOHO1N6+Vkv+zPOQ4b0w+uJGWAC1ukME/9dvlrWVcCzu/jK8djK50
+X-Received: by 2002:a05:620a:d81:b0:7c7:a537:7ce2 with SMTP id af79cd13be357-7cd01115c96mr2431067385a.32.1747135014612;
+        Tue, 13 May 2025 04:16:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747135014; cv=none;
         d=google.com; s=arc-20240605;
-        b=OU6WUJ6T3FiSZLSdZlFTAyl6HwhA2/w96L04lWDBIGdIdq3DsJmU3Mdf7CUKf4Wi0w
-         AKc8ACkg4azVO0Upy8YNsrHg9Sl/Yez3hRCPzGtb2gIQURP+W69GdUgKsXZlLii+VVpI
-         gaPcMEMfGJzmZ6IPFnpjPUQ1lyc5oqMiNKxwkXDjo2OFVoL2qkFlCniZFWeo6/jjJfAz
-         vgW3RGxaKi4kIaJ+uAJ9kkGvIwI7pOWBeGAqkB29A3Pgf7sTxaZeNZhkEPz4VFwGaUMT
-         iSCgkKY+XFnQdaXwK9zcAQtyPDhSeaXOx9/cst+9L606Mc7q7fFoq+VzvK/3JwVJyON9
-         TZxQ==
+        b=BStI8t9XwAv82jIVx12t6oY33BYRo2StW+drQWhiBq7OevBBFpCg2LdjhHYt2p2kyv
+         oRJZXPcA+IqCYS7R2KxFYkTsmVC8MBKzu0qkupzQcbWu4bq+f/M96XM47zQcOcqlEqrG
+         AShGWLQ540rT5z01KXIXwZ3V9GKoTSrYGB00jXz4GbHsC+zCn1gNG6rAWhUpIhVdUIg+
+         S+O194F09ved+YxF1nE7wdfNoATPdbdWJGogWd1EQmtRXbfNtqIyhO304fdedCjZPxEZ
+         5cAUwI9v147pKI3Y85Fv6geDOm/Daoi0EbeotuhJmoHslGvUSNwOW1fx/bSAHbF3K401
+         DyWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=N1iB5gvmLzqgimGLRjWOz8X1HYfCPTyJ1LadMmLJHh8=;
-        fh=I7Qv5hrQ1oZsx4ajrBWM3/89bcJiclOoQA/C65d0RlY=;
-        b=D9od6YcW8lXgYN43BLyTfT22jvLUyJtq0sAwak84J4aeYVniacg3cN5A2OFsiFEfkw
-         Yn3Xnvg0VKQYLTnY2L6oDSXJqX80+KRj1orMqcxGw8elg+mQsHOZUnZmkLI2hRyEJ6f7
-         uUJ+BAK1fLb9ZbBJFU8mKqeSsMwEk0R617/01JNZB/ZidCdtL9hgWKx2+RfUWVuYRJXf
-         1uXG6JOcV7JBZD7/12PrKprfmOainhIv8QKQ2fUO1Ye+iGabCgIL32S0slVr0uYXrPVW
-         /lwC+1EVgB/T0v+zrj33cMGRywUbMaz4wDpxIc5LUbHwycbKJXWcvgr2nVkktWetvWfM
-         yg7g==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=EUavEMNq0BIAmF05dbWWawEZZEeWmnZxDVW8LPlDsmo=;
+        fh=X5nH5YuFPf4WKqGf6XsKhoyhnk+YS/0SzZ/7HifbnvI=;
+        b=hszRldUZl2eQFyCNT1io9SHsGlV6skAz2qMsIRZR7cyKsQNo2FmQAlMrrN7xccxeZT
+         XC39wmXWZv0z2Py0x20gpp6Zza/1D9ZiXkPxtqSm5LdlmXmUwjxl7RJobJo2RwulgJEo
+         pqmICjPZgDJjEFnzhZlhFyQX4oLDantpdWs4Jfv0IWElP5F3mrmqsjUpqgSQV+Ewoeb0
+         vBWR/9U9h2J646uHvu1jB4Fw9sRVQR0Slymb4Q4ibzZ8HRitReNq5OpWJPsClVTgJ1qS
+         yq203GBvIQBvqMAEf1oQEvEcv3+pXXQHn068BEfJzN2iGWCJfWh4FWDExp2FyrmikqIU
+         24IA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iIQOfBaJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e4a9a99asi105166706d6.492.2025.05.13.04.57.15
+        by mx.google.com with ESMTPS id af79cd13be357-7cd00fd3ee4si1056080585a.327.2025.05.13.04.16.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 04:57:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 May 2025 04:16:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iIQOfBaJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uEoFi-0003o9-IV; Tue, 13 May 2025 07:56:54 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uEncl-0007zw-AC; Tue, 13 May 2025 07:16:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uEoFg-0003nj-7u
- for qemu-arm@nongnu.org; Tue, 13 May 2025 07:56:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uEncj-0007yY-9n
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 07:16:37 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uEoFd-000396-Tt
- for qemu-arm@nongnu.org; Tue, 13 May 2025 07:56:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1747137409;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=N1iB5gvmLzqgimGLRjWOz8X1HYfCPTyJ1LadMmLJHh8=;
- b=iIQOfBaJwjDUpokRvzFqEtuddp7ydjuDpD9mrFvsZKl5NI+1SutXdJQdb9P58Hmkg33GKA
- PXd0nUAllM0yc3smW1Rxx+w0k80rwGNOmnuD0ybu/tri/JjP3TGOTgZYzCMWHJ7IBdE3up
- 2BayMFoT67fSx8OO4bWDUSbOuWYgmxM=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-624-s0X6PC2vObGEfUJXOzx54Q-1; Tue,
- 13 May 2025 07:56:46 -0400
-X-MC-Unique: s0X6PC2vObGEfUJXOzx54Q-1
-X-Mimecast-MFC-AGG-ID: s0X6PC2vObGEfUJXOzx54Q_1747137404
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9FC361955D82; Tue, 13 May 2025 11:56:44 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.44.32.62])
- by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A572E1953B82; Tue, 13 May 2025 11:56:40 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, Brad Smith <brad@comstyle.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2] meson.build: Compile hw_common_arch_libs files with right
- header include paths
-Date: Tue, 13 May 2025 13:56:37 +0200
-Message-ID: <20250513115637.184940-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uEnch-0006sd-DU
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 07:16:37 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZxYhQ0h1yz6M4Lf;
+ Tue, 13 May 2025 19:11:50 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 5A624140276;
+ Tue, 13 May 2025 19:16:30 +0800 (CST)
+Received: from SecurePC-101-06.china.huawei.com (10.122.19.247) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 13 May 2025 13:16:29 +0200
+To: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
+ <peter.maydell@linaro.org>, <mst@redhat.com>
+CC: <linux-cxl@vger.kernel.org>, <linuxarm@huawei.com>, <qemu-arm@nongnu.org>, 
+ Yuquan Wang <wangyuquan1236@phytium.com.cn>, Itaru Kitayama
+ <itaru.kitayama@linux.dev>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>
+Subject: [PATCH v13 3/5] hw/cxl-host: Allow split of establishing memory
+ address and mmio setup.
+Date: Tue, 13 May 2025 12:14:53 +0100
+Message-ID: <20250513111455.128266-4-Jonathan.Cameron@huawei.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250513111455.128266-1-Jonathan.Cameron@huawei.com>
+References: <20250513111455.128266-1-Jonathan.Cameron@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
+Content-Type: text/plain
+X-Originating-IP: [10.122.19.247]
+X-ClientProxiedBy: lhrpeml100012.china.huawei.com (7.191.174.184) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
 X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.549,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: I9qWZNK6LDke
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5/m1zw+6c2DP
 
-From: Thomas Huth <thuth@redhat.com>
+On arm/virt the memory map is set up before any devices are brought
+up.  To enable this provide split functions to establish the fw->base
+and later to actually map it.
 
-Since commit 6f4e8a92bbd ("hw/arm: make most of the compilation units
-common"), compilation of some arm machines (like musicpal) fails on
-certain host systems like OpenBSD 7.6/7.7 since headers like <epoxy/gl.h>
-don't reside in /usr/include and we currently don't add the right
-CFLAGS for the common files to include the additional header search
-paths. Add a loop similar to what we already did in commit 727bb5b477e6
-to fix it.
-
-With this fix applied, we can now also drop the explicit dependency
-on pixman for the arm musicpal machine.
-
-Fixes: 6f4e8a92bbd ("hw/arm: make most of the compilation units common")
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-[thuth: Add commit message + changes in hw/arm/meson.build]
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 ---
- v2: Change the subject of the patch according to Paolo's suggestion
+ include/hw/cxl/cxl_host.h |  2 ++
+ hw/cxl/cxl-host-stubs.c   |  2 ++
+ hw/cxl/cxl-host.c         | 44 ++++++++++++++++++++++++++++++++++++++-
+ 3 files changed, 47 insertions(+), 1 deletion(-)
 
- meson.build        | 27 ++++++++++++++++-----------
- hw/arm/meson.build |  2 +-
- 2 files changed, 17 insertions(+), 12 deletions(-)
-
-diff --git a/meson.build b/meson.build
-index 5ac64075be7..7131aa2b21d 100644
---- a/meson.build
-+++ b/meson.build
-@@ -3228,6 +3228,7 @@ config_devices_mak_list = []
- config_devices_h = {}
- config_target_h = {}
- config_target_mak = {}
-+config_base_arch_mak = {}
+diff --git a/include/hw/cxl/cxl_host.h b/include/hw/cxl/cxl_host.h
+index 6dce2cde07..aee9d573d6 100644
+--- a/include/hw/cxl/cxl_host.h
++++ b/include/hw/cxl/cxl_host.h
+@@ -16,6 +16,8 @@
+ void cxl_machine_init(Object *obj, CXLState *state);
+ void cxl_fmws_link_targets(Error **errp);
+ void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp);
++hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr);
++void cxl_fmws_update_mmio(void);
+ hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr);
+ GSList *cxl_fmws_get_all_sorted(void);
  
- disassemblers = {
-   'alpha' : ['CONFIG_ALPHA_DIS'],
-@@ -3419,6 +3420,11 @@ foreach target : target_dirs
-     config_all_devices += config_devices
-   endif
-   config_target_mak += {target: config_target}
+diff --git a/hw/cxl/cxl-host-stubs.c b/hw/cxl/cxl-host-stubs.c
+index 13eb6bf6a4..d9e38618d6 100644
+--- a/hw/cxl/cxl-host-stubs.c
++++ b/hw/cxl/cxl-host-stubs.c
+@@ -11,6 +11,8 @@
+ void cxl_fmws_link_targets(Error **errp) {};
+ void cxl_machine_init(Object *obj, CXLState *state) {};
+ void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp) {};
++hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr) { return base; };
++void cxl_fmws_update_mmio(void) {};
+ hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
+ {
+     return base;
+diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
+index 438f2920e1..3b9184e7e7 100644
+--- a/hw/cxl/cxl-host.c
++++ b/hw/cxl/cxl-host.c
+@@ -383,6 +383,7 @@ void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp)
+ struct cfmw_update_state {
+     hwaddr base;
+     hwaddr maxaddr;
++    bool update_mmio;
+ };
+ 
+ static void cxl_fmws_update(Object *obj, void *opaque)
+@@ -397,7 +398,9 @@ static void cxl_fmws_update(Object *obj, void *opaque)
+     fw = CXL_FMW(obj);
+     if (s->base + fw->size <= s->maxaddr) {
+         fw->base = s->base;
+-        sysbus_mmio_map(SYS_BUS_DEVICE(fw), 0, fw->base);
++        if (s->update_mmio) {
++            sysbus_mmio_map(SYS_BUS_DEVICE(fw), 0, fw->base);
++        }
+         s->base += fw->size;
+     }
+ 
+@@ -438,6 +441,24 @@ GSList *cxl_fmws_get_all_sorted(void)
+     return g_slist_sort_with_data(cxl_fmws_get_all(), cfmws_cmp, NULL);
+ }
+ 
++hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
++{
++    GSList *cfmws_list, *iter;
 +
-+  # build a merged config for all targets with the same TARGET_BASE_ARCH
-+  target_base_arch = config_target['TARGET_BASE_ARCH']
-+  config_base_arch = config_base_arch_mak.get(target_base_arch, {}) + config_target
-+  config_base_arch_mak += {target_base_arch: config_base_arch}
- endforeach
- target_dirs = actual_target_dirs
++    struct cfmw_update_state cfmwss = {
++        .base = base,
++        .maxaddr = max_addr,
++        .update_mmio = false,
++    };
++    cfmws_list = cxl_fmws_get_all_sorted();
++    for (iter = cfmws_list; iter; iter = iter->next) {
++        cxl_fmws_update(iter->data, &cfmwss);
++    }
++    g_slist_free(cfmws_list);
++
++    return cfmwss.base;
++}
++
+ hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
+ {
+     GSList *cfmws_list, *iter;
+@@ -445,6 +466,7 @@ hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
+     struct cfmw_update_state cfmwss = {
+         .base = base,
+         .maxaddr = max_addr,
++        .update_mmio = true,
+     };
+     cfmws_list = cxl_fmws_get_all_sorted();
+     for (iter = cfmws_list; iter; iter = iter->next) {
+@@ -455,6 +477,26 @@ hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
+     return cfmwss.base;
+ }
  
-@@ -4099,28 +4105,27 @@ common_all = static_library('common',
- 
- # construct common libraries per base architecture
- hw_common_arch_libs = {}
--foreach target : target_dirs
--  config_target = config_target_mak[target]
--  target_base_arch = config_target['TARGET_BASE_ARCH']
-+foreach target_base_arch, config_base_arch : config_base_arch_mak
-+  if target_base_arch in hw_common_arch
-+    base_arch_hw = hw_common_arch[target_base_arch].apply(config_base_arch, strict: false)
-+    base_arch_common = common_ss.apply(config_base_arch, strict: false)
- 
--  # check if already generated
--  if target_base_arch in hw_common_arch_libs
--    continue
--  endif
-+    lib_deps = base_arch_hw.dependencies()
-+    foreach dep : base_arch_common.dependencies()
-+      lib_deps += dep.partial_dependency(compile_args: true, includes: true)
-+    endforeach
- 
--  if target_base_arch in hw_common_arch
-     target_inc = [include_directories('target' / target_base_arch)]
--    src = hw_common_arch[target_base_arch]
-     lib = static_library(
-       'hw_' + target_base_arch,
-       build_by_default: false,
--      sources: src.all_sources() + genh,
-+      sources: base_arch_hw.sources() + genh,
-       include_directories: common_user_inc + target_inc,
-       implicit_include_directories: false,
-       # prevent common code to access cpu compile time
-       # definition, but still allow access to cpu.h
-       c_args: ['-DCPU_DEFS_H', '-DCOMPILING_SYSTEM_VS_USER', '-DCONFIG_SOFTMMU'],
--      dependencies: src.all_dependencies())
-+      dependencies: lib_deps)
-     hw_common_arch_libs += {target_base_arch: lib}
-   endif
- endforeach
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 5098795f61d..8e3bf495dbf 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -8,7 +8,7 @@ arm_common_ss.add(when: 'CONFIG_HIGHBANK', if_true: files('highbank.c'))
- arm_common_ss.add(when: 'CONFIG_INTEGRATOR', if_true: files('integratorcp.c'))
- arm_common_ss.add(when: 'CONFIG_MICROBIT', if_true: files('microbit.c'))
- arm_common_ss.add(when: 'CONFIG_MPS3R', if_true: files('mps3r.c'))
--arm_common_ss.add(when: 'CONFIG_MUSICPAL', if_true: [pixman, files('musicpal.c')])
-+arm_common_ss.add(when: 'CONFIG_MUSICPAL', if_true: files('musicpal.c'))
- arm_common_ss.add(when: 'CONFIG_NETDUINOPLUS2', if_true: files('netduinoplus2.c'))
- arm_common_ss.add(when: 'CONFIG_OLIMEX_STM32_H405', if_true: files('olimex-stm32-h405.c'))
- arm_common_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx.c', 'npcm7xx_boards.c'))
++static int cxl_fmws_mmio_map(Object *obj, void *opaque)
++{
++    struct CXLFixedWindow *fw;
++
++    if (!object_dynamic_cast(obj, TYPE_CXL_FMW)) {
++        return 0;
++    }
++    fw = CXL_FMW(obj);
++    sysbus_mmio_map(SYS_BUS_DEVICE(fw), 0, fw->base);
++
++    return 0;
++}
++
++void cxl_fmws_update_mmio(void)
++{
++    /* Ordering is not required for this */
++    object_child_foreach_recursive(object_get_root(), cxl_fmws_mmio_map,
++                                   NULL);
++}
++
+ static void cxl_fmw_realize(DeviceState *dev, Error **errp)
+ {
+     CXLFixedWindow *fw = CXL_FMW(dev);
 -- 
-2.49.0
+2.43.0
 

@@ -1,124 +1,122 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp553424njb;
-        Tue, 13 May 2025 07:17:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVlTOyMIB1Ok+8IWiPoI+DP00ma90fDfThlIqXvejme9Sz2stc5QwJND3uaacqTB09B0T9NdFVITWH5og==@linaro.org
-X-Google-Smtp-Source: AGHT+IGFHmYMkzYAOfyE3A90oLncVK5V1OQ803U6pIuJ96koG5ugmkEPtLFIINGNG2T9V2+N6bVL
-X-Received: by 2002:a05:6214:202d:b0:6d8:99cf:d2e3 with SMTP id 6a1803df08f44-6f6e47c350dmr293907226d6.22.1747145844197;
-        Tue, 13 May 2025 07:17:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747145844; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp553879njb;
+        Tue, 13 May 2025 07:18:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWN4KMZABHM1/S1U+2NO/7MNjvksmHgpRCZ76bM74LlYjLXMP+Q5q0KWf3YwB155JSGJcvFksgdqFmDbg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFoc99/YWpySblDqcj3bbs+ulltRdWxuXKpgXDL9Q1Zf+F72TpNSCOBVkfMHH0qfap5ci+t
+X-Received: by 2002:a05:622a:1a0d:b0:48b:2c4c:8bf with SMTP id d75a77b69052e-4945261dfd0mr247340971cf.0.1747145883677;
+        Tue, 13 May 2025 07:18:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747145883; cv=none;
         d=google.com; s=arc-20240605;
-        b=cYNVm0VSZaGmoYBQPy8MrjwsUns/+BdcxAY1GMREy3tcJCyewsCVw6U3lerQCxkkKB
-         gOsF3CzX56kvB/Oghd17St+Cvh8hJO5QRfK6vq1RMBeZsr03qt2JGy08oD5JUBC0IXRL
-         bPFDP1dC9SYStd3lL0dNsvWJPu33y2jhi1M4AEFxOsI2tKFxeYNDpI/7V7go6USo0q4C
-         5fzUP5Vynjh1FAKaZYfXAg06kT8IoAEyJWO8tSyq/izY5RMg4HnYC5kJyb9ZXFIku805
-         cpCQ059ie348rFel4rx/dBPt26pVHkTFgjDQoum+5izDLlnZQruodq/X8FtPhCjQSfw7
-         5irg==
+        b=UCHzQr6Fl6exWJtJkmEXldlZyMcVrmaYrwQCX5WgQo7up+YyOoMcG8lOWHS8C72KP0
+         1K8mHwwwcV5h2QuBgE5UVsk477b8hixCzau/LzfZwOJII9N/3N5SLlaiGX5YF6Wcp9gF
+         YQa526e2/inIVqRXzVNz9MyG2lem9Q3IXQYHMnLOs7jh86aAWma1AZ727wFPJyMFVoZg
+         VvhkXw1mXpB4UEkRSZ/41PeIXD7tY1LKOqUZhbJ7+CcLxibcmJwmQNvaLmobD6eKPXRD
+         rmTzgFj1gxFvK1LS/07HCco/t5xeZgzvV8g5p3CLGLWoS6EeAyfKvcl7bdykxIZe2h3h
+         e15w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=LygLYLUFHvvftBVrooqDvqdi3Y2+LGMw70v0Ar+6UnA=;
-        fh=ZZwLt5H82yHLOWpnvJwJfXwO1u4fGNY7kNtWC/UDUJc=;
-        b=Pw6Y83Tuy6Gc0j4AaHsHysHDj7p+FmsevoyxDIp/QsPLME5Oe4LwSontcndEO8hKMs
-         D0eFYZ7CqTiG8sZ46WEtsE3vlp+vgnA+33GTxHSBm5kdOT4UyCrZIrXC2PuydKzNezDx
-         0uF8wSkFW0OTwCzidWvp9yVk6GzJL9T7PRXdJWGc+vhD0xIpCDCiXBk8vYLLeb8BUodZ
-         2jw2g0x339hXBxRVKE9QvlGKWfAX4oCAVwZYp52Cueb+cIVTBStYNQ6MIqyHVZ9Nt2U3
-         vAt53otKoqL17f1/cLSvmVU+U9yW5Y6kmAqr2zreCbChSpkekELrzIrcOVR1RXcrnEhe
-         OJtg==;
+        bh=e3t/nIVRg+2jwmgdqscl/THpDb4n/5JCjlQr5Qe7fL8=;
+        fh=X2dDt+3Lvg31+5nZKRV8fJCiaCcM59n0JDz7rKqnEUA=;
+        b=JbDsG66i2hhJ+RrlZ8lk8Y4YAELNZXi+gUaJKSiwog6aQIYQPWKM06cQwn5USpGCHP
+         YnFtH1pFHSCnFfeBCM+4JgAyNGKIjnS90ddcVxVu36j8PKIlOfUH2ZE36tOjIpqruZfb
+         I6iq0qSOufbtSwngO6InjpZ/QqrZoQoWQjtzz0CZONgYtX21Ze7OOyVqd5VsQQ4cUU8E
+         tMnlIXqhBNaKM2//wNZPSt/RC+HBndEvHEQEksAjqkXi1Ule9IrmCofj/aXAr7dA0MJP
+         iizHlekO5+BJnhr0e8AEsw+8vC/lCmC41hIw1px28pkmYl3dnb3lVJn5hByXTkM9jNQ+
+         1isg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@adacore.com header.s=google header.b=SuQwc2y6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@adacore.com header.s=google header.b=Sry6ZYwp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=adacore.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a646e0si110153146d6.491.2025.05.13.07.17.24
+        by mx.google.com with ESMTPS id d75a77b69052e-494525575f9si109924401cf.311.2025.05.13.07.18.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 07:17:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 May 2025 07:18:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@adacore.com header.s=google header.b=SuQwc2y6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@adacore.com header.s=google header.b=Sry6ZYwp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=adacore.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uEqQ4-000439-5S; Tue, 13 May 2025 10:15:45 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uEqQI-00045Y-9F; Tue, 13 May 2025 10:15:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
- id 1uEqPy-00041z-0w
- for qemu-devel@nongnu.org; Tue, 13 May 2025 10:15:38 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1uEqQ3-00043B-B1
+ for qemu-arm@nongnu.org; Tue, 13 May 2025 10:15:43 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
- id 1uEqPw-0005Yx-8c
- for qemu-devel@nongnu.org; Tue, 13 May 2025 10:15:37 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-442ec3ce724so5332685e9.0
- for <qemu-devel@nongnu.org>; Tue, 13 May 2025 07:15:35 -0700 (PDT)
+ id 1uEqQ1-0005as-2p
+ for qemu-arm@nongnu.org; Tue, 13 May 2025 10:15:43 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-441d437cfaaso34836655e9.1
+ for <qemu-arm@nongnu.org>; Tue, 13 May 2025 07:15:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=adacore.com; s=google; t=1747145734; x=1747750534; darn=nongnu.org;
+ d=adacore.com; s=google; t=1747145739; x=1747750539; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LygLYLUFHvvftBVrooqDvqdi3Y2+LGMw70v0Ar+6UnA=;
- b=SuQwc2y6dpVjxGihv9FqGCZPmDki2l0IBPVAgyfF4+GFZ5FlQexahEQ/ILQ4i8qOqQ
- Uuw6JkLAyFJGzSBs+sSI14b06TEWDXw8koq0Tw0kcTBj9jyB0FgYZ0/eSFakGDFBQhNX
- 4vHPckk9vYD5LXkPbS6X9WScVG4e71C23MVRSMZiLmdnsjEluHKcF6UYgeO5e1cHrpeY
- 0nF5W4RmvBUtC40tZU2XGR4QhzSrGBC6cEGA5aIpAPneJT3W0lJv30zmZnUcs3R/Ep/s
- 9Zj+ykxI15gK+PH2qUqETqWoI/ARV4XSzrsCC9W+9aR70G/XplxIl9HsQwNr87qbFYTd
- YHfA==
+ bh=e3t/nIVRg+2jwmgdqscl/THpDb4n/5JCjlQr5Qe7fL8=;
+ b=Sry6ZYwpleV+byZK1JOUxOmixbn7WeItJOsf/MgVP1MRFwv9Srr0um2UUnQEmh614I
+ JnqYmMWS8cT1i3SVl+3EJOWYQnFjkEk7RC2VRUjIa/OuQlhVLTVycOgsrrsXZFm5fpps
+ lgwTjoemvd9W533qecwSkJjyh22jE7GuQ61Us1yO2DzHJdqKr+IbK8K4RLDOzrtOml4M
+ 1B+qjyEZWohJ37HeBIFmEjTX6PsI01L9aoAsgqAMjYdOBK0DNPMXmwkbWWTq99+zafCQ
+ jUDOGn3VdBjiZQACagWgpuvoP6GAy9p757TFCu25oQwDbWjFhUfKuXTDRYT94GT75mx1
+ XaAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747145734; x=1747750534;
+ d=1e100.net; s=20230601; t=1747145739; x=1747750539;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=LygLYLUFHvvftBVrooqDvqdi3Y2+LGMw70v0Ar+6UnA=;
- b=v5ZYVLcuw5pNi/tUuPMFuO8xNw2AinHDkjdVwI3/ewGe5QGQT09KyAngFQ29BJRDzX
- IkeVfY8BdxfD5a/DsOHTsUWP6hEX5x/yb0FAim6KVQRtJjlq5S9LL8ETc7WFpDa4Gzxb
- bGziJreUhNdZrvRBFVWsUa3GSuGJ1qNhW+i5lyGnSGAFIq7CpRiHSGsVFUH5TCC7L92m
- uj8wMPZsImJ/oriWNUVT/iko5mp08FcT36Pqikv82y4yBQnRRH1R52n9Y+o8B3Kau6kW
- WkdfqZqb6+rbNua64dQCk7pmnyDT2C2VK7xswWjxFqJXfmHYW+vpuHoF0s5aa1wKtoQ+
- 5F6g==
-X-Gm-Message-State: AOJu0YwFFlgSYOHA2wuA0fe1bc+WFWMZBcOxOT32s71VqWf1MVj+rRFs
- t2J9FhhU66fiJj0wH9xeZAVpYxDqFbXSZKdvRDmbzmMWbdgLsAbVhMYRvvkMR9Qm1rbmLbo/FA0
- =
-X-Gm-Gg: ASbGnct4b8hgKUMWZfiyVVvRmZBj6iztf0IlKza2P7bOfa9HtFt+eETxRaM7E2y4aN3
- lfzzMV4qd0mlCcudWhaaT88gjOnIlrIxrWfppzHv9FqQIJdtT1htfMLi6ZZW3yBxlHvDCdqhcgS
- 73DT0INJFD8zuKKSr206E8p6U6o5Br8v3KQS49Mt51kFaqXGTovpEVHKL+YrAyQoFuc2PqOPOLK
- zK9zOdy+2KGXIQkqIvFRkK11fAGoLHfufMvf12IH9xC4L4at/llcDg0lpWBHLQ5zJJTEs0aPlqI
- /5CZth9in0AjNRjzY9+sV8wR3rihHe/zHpvrnvD9MJ8oNWHTxbSyqbp1CwwHkBS3ezhJsn/NTWT
- yEfSi34GN/2CZh9pJsCjPfR7n3R5bIDH6cOGYYf9JAbTSnYSa
-X-Received: by 2002:a05:600c:3e8c:b0:43d:fa58:81d3 with SMTP id
- 5b1f17b1804b1-442d6ddf4d7mr128742945e9.32.1747145734371; 
- Tue, 13 May 2025 07:15:34 -0700 (PDT)
+ bh=e3t/nIVRg+2jwmgdqscl/THpDb4n/5JCjlQr5Qe7fL8=;
+ b=tO9kCu97E1zuDL2u9Qk284txxxSJkBdnhDxvgtMHnk6QdCveBLKZgEnLSZ+D41agMz
+ omhXrcUmeI5xkcmWLZBM8h1M+AmTLvesTvObNo9B7rUDG75MmnvjUSqiA4Czyjg20/on
+ zjX2cnvPMZjb/jQVKNA+2Ymgf8kPz/Sgk7TVuxewUH3aZf8hVTfyP6vN4d+lS7QHsFy1
+ OQwx3g9HzG2EK0fc3MCJz3tKnngpdZf2uD5Rh0nWwbHmK7FytIECNCKohvP7GIQ62W8w
+ M3ykylnTprYLns5j1sfRu0bDcpFp4tZSTEgMe5Jz4CkoAfMymQaV7AQ6SI3EHqEgJ2si
+ GY9w==
+X-Gm-Message-State: AOJu0YyPYCvrEtHtVwmcTyruiIBVBf0cRc55s62nwqksukNJKcftjhzy
+ zVKlzbiunaYd5LxSG+F94qZtcICPErwFe7hK/WLl7p9MiK2EIbHrcHA3Cwp5og==
+X-Gm-Gg: ASbGncs//MdMEEmEUv+VWGrwXAWebkqZAXzD1VLBrn8PymMoKvo8hV6mrpQXBlFFQBl
+ jacAt6HnRPnS/jdPXAMWV0jbZDAtsC3BG0/a9bhalpVExmk/oU/cP7YnsYftQ2kMQ/CeYjek8Bo
+ oR66DA283Z7m2ieIpOlZ6NG/KXLv3Joq7GTRVjJlWOyoVPiD8EVCClf/zNRu+sYBGbyaIqWvdmc
+ WEXAqk6+w14gRj485zPuYyoPQoH3iBEAQMqhd/aYAd5Qwj6zjb1gjB0Rv9jidf8BcxYu2iMFKxi
+ a81zdPcFRxg1OKr5CB8xr8eC76kn48sM6fmjiTmbN+xDUl512Df1qfgs+xsidmf2BFMGcRIyXH2
+ Daenrd9fT8rHgeWkw5m8uNwaafPi5V7G/fYTgu9CQn+JCYrzF
+X-Received: by 2002:a05:600c:3d14:b0:43c:fd27:a216 with SMTP id
+ 5b1f17b1804b1-442d6dd21demr135625765e9.23.1747145739335; 
+ Tue, 13 May 2025 07:15:39 -0700 (PDT)
 Received: from chigot-Dell.telnowedge.local
  (lmontsouris-659-1-24-67.w81-250.abo.wanadoo.fr. [81.250.175.67])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-442cd3b7e7fsm213438805e9.39.2025.05.13.07.15.33
+ 5b1f17b1804b1-442cd3b7e7fsm213438805e9.39.2025.05.13.07.15.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 May 2025 07:15:34 -0700 (PDT)
+ Tue, 13 May 2025 07:15:39 -0700 (PDT)
 From: =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, edgar.iglesias@gmail.com,
- alistair@alistair23.me,
+ alistair@alistair23.me, Frederic Konrad <konrad.frederic@yahoo.fr>,
  =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>
-Subject: [PATCH 1/4] hw/arm: make cpu targeted by arm_load_kernel the primary
- CPU.
-Date: Tue, 13 May 2025 16:14:45 +0200
-Message-Id: <20250513141448.297946-2-chigot@adacore.com>
+Subject: [PATCH 3/4] hw/arm/xlnx-zynqmp: wire a second GIC for the Cortex-R5
+Date: Tue, 13 May 2025 16:14:47 +0200
+Message-Id: <20250513141448.297946-4-chigot@adacore.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250513141448.297946-1-chigot@adacore.com>
 References: <20250513141448.297946-1-chigot@adacore.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=chigot@adacore.com; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=chigot@adacore.com; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -127,99 +125,231 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: duUf+fVTzrkG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Mo/2cu7vnAXf
 
-Currently, arm booting processus assumes that the first_cpu is the CPU
-that will boot: `arm_load_kernel` is powering off all but the `first_cpu`;
-`do_cpu_reset` is setting the loader address only for this `first_cpu`.
+From: Frederic Konrad <konrad.frederic@yahoo.fr>
 
-For most of the boards, this isn't an issue as the kernel is loaded and
-booted on the first CPU anyway. However, for zynqmp, the option
-"boot-cpu" allows to choose any CPUs.
-
-Create a new arm_boot_info entry `primary_cpu` recording which CPU will
-be boot first. This one is set when `arm_boot_kernel` is called.
+This wires a second GIC for the Cortex-R5, all the IRQs are split when there
+is an RPU instanciated.
 
 Signed-off-by: Clément Chigot <chigot@adacore.com>
 ---
- hw/arm/boot.c         | 15 +++++++--------
- include/hw/arm/boot.h |  3 +++
- 2 files changed, 10 insertions(+), 8 deletions(-)
+ hw/arm/xlnx-zynqmp.c         | 88 +++++++++++++++++++++++++++++++++---
+ include/hw/arm/xlnx-zynqmp.h |  6 +++
+ 2 files changed, 87 insertions(+), 7 deletions(-)
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index f94b940bc3..8da4c67fa9 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -743,7 +743,7 @@ static void do_cpu_reset(void *opaque)
-             } else {
-                 if (arm_feature(env, ARM_FEATURE_EL3) &&
-                     (info->secure_boot ||
--                     (info->secure_board_setup && cs == first_cpu))) {
-+                     (info->secure_board_setup && cpu == info->primary_cpu))) {
-                     /* Start this CPU in Secure SVC */
-                     target_el = 3;
-                 }
-@@ -751,7 +751,7 @@ static void do_cpu_reset(void *opaque)
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index ec96a46eec..be33669f87 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -26,8 +26,6 @@
+ #include "target/arm/cpu-qom.h"
+ #include "target/arm/gtimer.h"
  
-             arm_emulate_firmware_reset(cs, target_el);
+-#define GIC_NUM_SPI_INTR 160
+-
+ #define ARM_PHYS_TIMER_PPI  30
+ #define ARM_VIRT_TIMER_PPI  27
+ #define ARM_HYP_TIMER_PPI   26
+@@ -206,7 +204,7 @@ static const XlnxZynqMPGICRegion xlnx_zynqmp_gic_regions[] = {
  
--            if (cs == first_cpu) {
-+            if (cpu == info->primary_cpu) {
-                 AddressSpace *as = arm_boot_address_space(cpu, info);
+ static inline int arm_gic_ppi_index(int cpu_nr, int ppi_index)
+ {
+-    return GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_index;
++    return XLXN_ZYNQMP_GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_index;
+ }
  
-                 cpu_set_pc(cs, info->loader_start);
-@@ -1238,6 +1238,9 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
-     info->dtb_filename = ms->dtb;
-     info->dtb_limit = 0;
+ static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
+@@ -377,6 +375,8 @@ static void xlnx_zynqmp_init(Object *obj)
+     XlnxZynqMPState *s = XLNX_ZYNQMP(obj);
+     int i;
+     int num_apus = MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
++    int num_rpus = MIN((int)(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS),
++                       XLNX_ZYNQMP_NUM_RPU_CPUS);
  
-+    /* We assume the CPU passed as argument is the primary CPU.  */
-+    info->primary_cpu = cpu;
+     object_initialize_child(obj, "apu-cluster", &s->apu_cluster,
+                             TYPE_CPU_CLUSTER);
+@@ -390,6 +390,12 @@ static void xlnx_zynqmp_init(Object *obj)
+ 
+     object_initialize_child(obj, "gic", &s->gic, gic_class_name());
+ 
++    if (num_rpus > 0) {
++        /* Do not create the rpu_gic in case we don't have rpus..  */
++        object_initialize_child(obj, "rpu_gic", &s->rpu_gic,
++                                gic_class_name());
++    }
 +
-     /* Load the kernel.  */
-     if (!info->kernel_filename || info->firmware_loaded) {
-         arm_setup_firmware_boot(cpu, info);
-@@ -1287,12 +1290,8 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
+     for (i = 0; i < XLNX_ZYNQMP_NUM_GEMS; i++) {
+         object_initialize_child(obj, "gem[*]", &s->gem[i], TYPE_CADENCE_GEM);
+         object_initialize_child(obj, "gem-irq-orgate[*]",
+@@ -439,6 +445,13 @@ static void xlnx_zynqmp_init(Object *obj)
+     object_initialize_child(obj, "qspi-irq-orgate",
+                             &s->qspi_irq_orgate, TYPE_OR_IRQ);
  
-             object_property_set_int(cpuobj, "psci-conduit", info->psci_conduit,
-                                     &error_abort);
--            /*
--             * Secondary CPUs start in PSCI powered-down state. Like the
--             * code in do_cpu_reset(), we assume first_cpu is the primary
--             * CPU.
--             */
--            if (cs != first_cpu) {
-+            /* Secondary CPUs start in PSCI powered-down state.  */
-+            if (ARM_CPU(cs) != info->primary_cpu) {
-                 object_property_set_bool(cpuobj, "start-powered-off", true,
-                                          &error_abort);
-             }
-diff --git a/include/hw/arm/boot.h b/include/hw/arm/boot.h
-index b12bf61ca8..a2e22bda8a 100644
---- a/include/hw/arm/boot.h
-+++ b/include/hw/arm/boot.h
-@@ -132,6 +132,9 @@ struct arm_boot_info {
-     bool secure_board_setup;
- 
-     arm_endianness endianness;
++    for (i = 0; i < ARRAY_SIZE(s->splitter); i++) {
++        g_autofree char *name = g_strdup_printf("irq-splitter%d", i);
++        object_initialize_child(obj, name, &s->splitter[i], TYPE_SPLIT_IRQ);
++    }
 +
-+    /* CPU having load the kernel and that should be the first to boot.  */
-+    ARMCPU *primary_cpu;
- };
++
++
+     for (i = 0; i < XLNX_ZYNQMP_NUM_USB; i++) {
+         object_initialize_child(obj, "usb[*]", &s->usb[i], TYPE_USB_DWC3);
+     }
+@@ -452,10 +465,13 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+     uint8_t i;
+     uint64_t ram_size;
+     int num_apus = MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
++    int num_rpus = MIN((int)(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS),
++                       XLNX_ZYNQMP_NUM_RPU_CPUS);
+     const char *boot_cpu = s->boot_cpu ? s->boot_cpu : "apu-cpu[0]";
+     ram_addr_t ddr_low_size, ddr_high_size;
+-    qemu_irq gic_spi[GIC_NUM_SPI_INTR];
++    qemu_irq gic_spi[XLXN_ZYNQMP_GIC_NUM_SPI_INTR];
+     Error *err = NULL;
++    DeviceState *splitter;
  
- /**
+     ram_size = memory_region_size(s->ddr_ram);
+ 
+@@ -502,13 +518,21 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+         g_free(ocm_name);
+     }
+ 
+-    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", GIC_NUM_SPI_INTR + 32);
++    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", XLXN_ZYNQMP_GIC_NUM_SPI_INTR + 32);
+     qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
+     qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", num_apus);
+     qdev_prop_set_bit(DEVICE(&s->gic), "has-security-extensions", s->secure);
+     qdev_prop_set_bit(DEVICE(&s->gic),
+                       "has-virtualization-extensions", s->virt);
+ 
++    if (num_rpus > 0) {
++        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "num-irq",
++                             XLXN_ZYNQMP_GIC_NUM_SPI_INTR + 32);
++        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "revision", 1);
++        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "num-cpu", num_rpus);
++        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "first-cpu-index", 4);
++    }
++
+     qdev_realize(DEVICE(&s->apu_cluster), NULL, &error_fatal);
+ 
+     /* Realize APUs before realizing the GIC. KVM requires this.  */
+@@ -608,13 +632,63 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    if (num_rpus > 0) {
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->rpu_gic), errp)) {
++            return;
++        }
++
++        for (i = 0; i < num_rpus; i++) {
++            qemu_irq irq;
++
++            sysbus_mmio_map(SYS_BUS_DEVICE(&s->rpu_gic), i + 1,
++                            GIC_BASE_ADDR + i * 0x1000);
++            sysbus_connect_irq(SYS_BUS_DEVICE(&s->rpu_gic), i,
++                               qdev_get_gpio_in(DEVICE(&s->rpu_cpu[i]),
++                                                ARM_CPU_IRQ));
++            sysbus_connect_irq(SYS_BUS_DEVICE(&s->rpu_gic), i + num_rpus,
++                               qdev_get_gpio_in(DEVICE(&s->rpu_cpu[i]),
++                                                ARM_CPU_FIQ));
++            sysbus_connect_irq(SYS_BUS_DEVICE(&s->rpu_gic), i + num_rpus * 2,
++                               qdev_get_gpio_in(DEVICE(&s->rpu_cpu[i]),
++                                                ARM_CPU_VIRQ));
++            sysbus_connect_irq(SYS_BUS_DEVICE(&s->rpu_gic), i + num_rpus * 3,
++                               qdev_get_gpio_in(DEVICE(&s->rpu_cpu[i]),
++                                                ARM_CPU_VFIQ));
++            irq = qdev_get_gpio_in(DEVICE(&s->rpu_gic),
++                                   arm_gic_ppi_index(i, ARM_PHYS_TIMER_PPI));
++            qdev_connect_gpio_out(DEVICE(&s->rpu_cpu[i]), GTIMER_PHYS, irq);
++            irq = qdev_get_gpio_in(DEVICE(&s->rpu_gic),
++                                   arm_gic_ppi_index(i, ARM_VIRT_TIMER_PPI));
++            qdev_connect_gpio_out(DEVICE(&s->rpu_cpu[i]), GTIMER_VIRT, irq);
++            irq = qdev_get_gpio_in(DEVICE(&s->rpu_gic),
++                                   arm_gic_ppi_index(i, ARM_HYP_TIMER_PPI));
++            qdev_connect_gpio_out(DEVICE(&s->rpu_cpu[i]), GTIMER_HYP, irq);
++            irq = qdev_get_gpio_in(DEVICE(&s->rpu_gic),
++                                   arm_gic_ppi_index(i, ARM_SEC_TIMER_PPI));
++            qdev_connect_gpio_out(DEVICE(&s->rpu_cpu[i]), GTIMER_SEC, irq);
++        }
++
++        sysbus_mmio_map(SYS_BUS_DEVICE(&s->rpu_gic), 0, GIC_BASE_ADDR);
++    }
++
+     if (!s->boot_cpu_ptr) {
+         error_setg(errp, "ZynqMP Boot cpu %s not found", boot_cpu);
+         return;
+     }
+ 
+-    for (i = 0; i < GIC_NUM_SPI_INTR; i++) {
+-        gic_spi[i] = qdev_get_gpio_in(DEVICE(&s->gic), i);
++    for (i = 0; i < XLXN_ZYNQMP_GIC_NUM_SPI_INTR; i++) {
++        splitter = DEVICE(&s->splitter[i]);
++        qdev_prop_set_uint16(splitter, "num-lines", 2);
++        qdev_realize(splitter, NULL, &error_abort);
++        if (num_rpus > 0) {
++            gic_spi[i] = qdev_get_gpio_in(splitter, 0);
++            qdev_connect_gpio_out(splitter, 0,
++                                  qdev_get_gpio_in(DEVICE(&s->gic), i));
++            qdev_connect_gpio_out(splitter, 1,
++                                  qdev_get_gpio_in(DEVICE(&s->rpu_gic), i));
++        } else {
++            gic_spi[i] = qdev_get_gpio_in(DEVICE(&s->gic), i);
++        }
+     }
+ 
+     for (i = 0; i < XLNX_ZYNQMP_NUM_GEMS; i++) {
+diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+index c137ac59e8..a69953650d 100644
+--- a/include/hw/arm/xlnx-zynqmp.h
++++ b/include/hw/arm/xlnx-zynqmp.h
+@@ -42,6 +42,7 @@
+ #include "hw/misc/xlnx-zynqmp-crf.h"
+ #include "hw/timer/cadence_ttc.h"
+ #include "hw/usb/hcd-dwc3.h"
++#include "hw/core/split-irq.h"
+ 
+ #define TYPE_XLNX_ZYNQMP "xlnx-zynqmp"
+ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
+@@ -87,12 +88,14 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
+                                   XLNX_ZYNQMP_MAX_HIGH_RAM_SIZE)
+ 
+ #define XLNX_ZYNQMP_NUM_TTC 4
++#define XLXN_ZYNQMP_GIC_NUM_SPI_INTR 160
+ 
+ /*
+  * Unimplemented mmio regions needed to boot some images.
+  */
+ #define XLNX_ZYNQMP_NUM_UNIMP_AREAS 1
+ 
++
+ struct XlnxZynqMPState {
+     /*< private >*/
+     DeviceState parent_obj;
+@@ -105,6 +108,9 @@ struct XlnxZynqMPState {
+     GICState gic;
+     MemoryRegion gic_mr[XLNX_ZYNQMP_GIC_REGIONS][XLNX_ZYNQMP_GIC_ALIASES];
+ 
++    GICState rpu_gic;
++    SplitIRQ splitter[XLXN_ZYNQMP_GIC_NUM_SPI_INTR];
++
+     MemoryRegion ocm_ram[XLNX_ZYNQMP_NUM_OCM_BANKS];
+ 
+     MemoryRegion *ddr_ram;
 -- 
 2.34.1
 

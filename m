@@ -1,221 +1,171 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp671376njb;
-        Tue, 13 May 2025 10:18:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUi+JoH0bVdaTZe3ah9fdYoEOSoY3U7B2ycXjB5+qFlvF3swhEYECwNhCGlIm6eQWfgungu0XCjWDWsOw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGVPuK+RjbxdW+GOfBsAwD3fvUPR4zb70WPdWKJ2o/nPTMcb+lRXqKs9tUDab07coMWyivZ
-X-Received: by 2002:a05:622a:4291:b0:479:1a3f:f1f0 with SMTP id d75a77b69052e-49495ce9ecemr5141291cf.41.1747156719467;
-        Tue, 13 May 2025 10:18:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747156719; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp686292njb;
+        Tue, 13 May 2025 10:44:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX2kW5JsCWlhFCyfApCyZ9ng+cKFXGUdx2rCknS4aycZ4ZEZVmud0/hXdJ/nn9pB41sYrIHolBBQpl/9w==@linaro.org
+X-Google-Smtp-Source: AGHT+IEnyAwwhBZFl0zZWofGRCWG/sLzAc4Tw5oMJK/MMA28Z8EvLAwPSqIvKF1A/mjT7H8p0sRD
+X-Received: by 2002:a05:622a:989:b0:476:95dd:521c with SMTP id d75a77b69052e-49495d1c2a4mr4972961cf.45.1747158259346;
+        Tue, 13 May 2025 10:44:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747158259; cv=none;
         d=google.com; s=arc-20240605;
-        b=Hg1gEwm0JHU14S9JwMpkEL9r2bBy74fkfV7kKcZvSJZpqEWv75qmX5MbqhmPQSI+MQ
-         4OTt/mE811jMNtCYiM6Mgqkq/Yv0KGr4umoWba0pXQsm37eFeUgoZhw/8EoEbmKZnB3U
-         7JCyaxfkH+KDlzgJz2nYPF/1RtnDbdPWVynVYBDb0tmi80NoCDv/7SpwSN2BEvwUewgs
-         krVzc5iozvS2kbXMCUQZGN3S2ohmmk4t783FENZw+JpobKpwUdQ1aKey/Hfqg40RvzsM
-         sdZ/NcHAR49lyR06wEWU05Z4NJsMyGk4jyF/x5MPdNLIFVj9auAF+I8HqB/iK/Dt43go
-         py0Q==
+        b=fmtwHNYlKUfnmEaG4w/6SlAnmPUL4iVqOQHqhx0N0AP9S7VKtxgG75yJch5TIhyQYj
+         roscZL7thc4uFizPgG9A+cQ1OGLgIKW5mkEyvuz5U/Hp+sSXiS/XqSPfq6L8i+5RNqGM
+         +quEzGwtEuP0o4+gXRlqOtFRlfDEKMn5Zmj9Pe7580YuH8cI1m1k4oriOofeFx8jAC8c
+         uXYaxQ3YFt29Eh3505PGJJYsoxnZlTiRV48oimkKPV3Thpp5DgJUBCwP4JCaePAkTqRv
+         uGCeOhIRQohafeu0GXxJt4STcZiNb1H56wLODFKCUUYrmXB1VP6GGUYsYsaT9fhtU9PS
+         ACQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature:sender:precedence:errors-to:list-subscribe
-         :list-help:list-post:list-unsubscribe:list-id;
-        bh=92VKl5M8N6yTo/u89ILBeJrAILC8Bk1ppBFcXFhcPnA=;
-        fh=2np1AqjOMry92uAcxjCIGdMT8ADjU6NYqKCGqmZ+kmY=;
-        b=J/ywdlLr2FmL49Frz6RAWkJFSG9X5eRFbA0bjJIFpF9VrX23lRbvYk7L2bhYKuLqXt
-         mgGDt/CwyGXT5q/nzPl8/phl4CUmqEqugNsO9dHlnYOYDEKpnNnfoeV3C94SQ12smBYZ
-         iH60PhVwFZ2gn42EHpRDl5ZwMgHALfl+PZbLKZsft69PH3eTO5bWeLLRhtQp38ymlUOS
-         xjH0Qhugd2VX56wLshqGJUizCKZLy8EUy6LjBy6tyceUu/hj7/PSarwRAgemNbkGr62+
-         voI/C/LoA/ycM0knh+jnmb0JypJ+NMuhL+rd6f5L0+mh3pemeTBzmcxvvDeotEgJ62AJ
-         q3dQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=FlgmqWinD7NQwKFSRiJub8ZlgVYRN5tlN02/pnlcz3E=;
+        fh=rWr3/RxcQ6hZYC3ZZpwll9FK+dfEf61S04arp2Ykbvk=;
+        b=WkzEdqfzBQGihOh/+O/P8vFmyBit4Zd0Mi2yLJYq5UllvtXhgSDKh3TibGS43xSx87
+         hltVlUH5e8Ulxoip9B8JpFUwpmVEadJC4I0uogG1wQhJeNWtHImUyPZEheMvUPwSajel
+         JLKDPHXa+gTUh6BniN8AJAtuqkXIrr+9qJTNcXPNXvxZSBXmdC8jdfEtp2wxnwB19it5
+         8CKjA1di1eld9OBjrkLmmKBUEUvdiLFj6sulVfaRamzuvtTzPqUTvSTnjJHPO745rYbt
+         vTFwIknG5dovKG5oYRdLVmZyFC5HTlniDNpJElZp6VrRMt6AKECkvAL+2Thd9aTC/IKW
+         F/zA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=y8WXGc88;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=H2lcgZv5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <xen-devel-bounces@lists.xenproject.org>
-Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id d75a77b69052e-494525b1d5dsi116647101cf.624.2025.05.13.10.18.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 May 2025 10:18:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-49452479bf7si110371011cf.171.2025.05.13.10.44.19
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 13 May 2025 10:44:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=y8WXGc88;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=H2lcgZv5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from list by lists.xenproject.org with outflank-mailman.983384.1369753 (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1uEtGB-0000xO-Cu; Tue, 13 May 2025 17:17:43 +0000
-X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 983384.1369753; Tue, 13 May 2025 17:17:43 +0000
-Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
-	by lists.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1uEtGB-0000xH-9S; Tue, 13 May 2025 17:17:43 +0000
-Received: by outflank-mailman (input) for mailman id 983384;
- Tue, 13 May 2025 17:17:41 +0000
-Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
- helo=se1-gles-flk1.inumbo.com)
- by lists.xenproject.org with esmtp (Exim 4.92)
- (envelope-from <SRS0=Yd/e=X5=linaro.org=philmd@srs-se1.protection.inumbo.net>)
- id 1uEtG9-0000xB-PT
- for xen-devel@lists.xenproject.org; Tue, 13 May 2025 17:17:41 +0000
-Received: from mail-wm1-x32b.google.com (mail-wm1-x32b.google.com
- [2a00:1450:4864:20::32b])
- by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
- id 2c366bab-301e-11f0-9ffb-bf95429c2676;
- Tue, 13 May 2025 19:17:39 +0200 (CEST)
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-442eb5d143eso9207585e9.0
- for <xen-devel@lists.xenproject.org>; Tue, 13 May 2025 10:17:39 -0700 (PDT)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uEtfr-0003Qr-Si; Tue, 13 May 2025 13:44:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtbk-0008Pb-Ha
+ for qemu-arm@nongnu.org; Tue, 13 May 2025 13:40:00 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtbi-00039V-Mr
+ for qemu-arm@nongnu.org; Tue, 13 May 2025 13:40:00 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-43cf05f0c3eso38909365e9.0
+ for <qemu-arm@nongnu.org>; Tue, 13 May 2025 10:39:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1747157995; x=1747762795; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=FlgmqWinD7NQwKFSRiJub8ZlgVYRN5tlN02/pnlcz3E=;
+ b=H2lcgZv5lkwQ2TjE6djdysechGwVmP+Mfhq/Bc69c6e3mNH8PDEikqxA/89a9pW9vG
+ p5zgZXWqpEqkb1Axq+a5HOtUIRQvHNmBFnELZZWOwrhG4YAeCpn+o+4CUuJvbbfP3CjT
+ Ar/F8Xfyo+ihd6Y/kPz9Cw5dyqmt0fbVHdpR5izTdi9n8gKjNEExChNCIKO0JxJ77jfV
+ eY+LU3B/Qbp6r2+zBgfpCDF2sg69hWiO1vEy9p9Q/NbG/w3rJgL6cUmxozs/dSlrHI2D
+ KT84aze0O/kbafG/OjHmVITlGHrjqKM4gfxORqX9wRvGo9RDkZq/iKvt3RMtDfDgtwTI
+ oqfA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1747157995; x=1747762795;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=FlgmqWinD7NQwKFSRiJub8ZlgVYRN5tlN02/pnlcz3E=;
+ b=ZDbak+dPkt7bzCtVWaNqJCJYpkHjzUnVrsrfau9e7Mlruh4/3bwlzhiLGHJXNAvkBQ
+ U+clKPYyHhsRZKn8U12hWiUbZceRBkEX5UX8mHOdP5Ej+E+Zqm0QJDowbGrnvnoqy1hW
+ eEGVOlFocZfrzaC+8R2wInL+EsCGl2N1sTm1rnjaMB/RXPoqp6joIYPP8oUZsuahjPSl
+ Xp0jcobV1y5MUBQwHMmYYtuDmfAj78Ws21bUW76CKbkxvg24SI59Nw6CXrXwzGbGiKno
+ q/UBvsJhJYIOXDPIEkRKz+JuhDkCE435+KaDmGm7hyf/+R5of99otCxS3M/TrqAqhaQN
+ 7Elw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUz6Dkmg8u2ItRLdh/aWRiit20kyfm8NOkiQ7l4+jSsLJ+t9homTIMMzlpfuonI08LGWuM/sG2LzA==@nongnu.org
+X-Gm-Message-State: AOJu0YyqIo5vPs+f3iUfY2pBA596E9QGmhEa5i+vRulDVzD8wehvd2vu
+ 4Z7gne8KvDQaUQrlySNskQ4ANH6Ptnwk4w2cEi1L0F2YTnOv6nr7eklbyZQ1Q0Y=
+X-Gm-Gg: ASbGnct5RkGI2xy59Bfk/swBnEZBcYzsJkRDmUV+p1ZzGnfJG4g05roFcxi/fBKt9rv
+ WqNYHr/JHCqwTOHdzeua8Ob5kx6TMWgPh/d6p7+i96XPZVZCNpg2jITT0yB3pPQULnJMZ9Evc7W
+ Y0/jt9Vwbfi2sdeBidDLAr2eq08ObL4BjNek3W6ipORjRmjW4o16m0RmkAhuGtnsIJCbN0nKjEO
+ 73uhH0VMJWqllupUI8dzOoUD4ZotXgOExn3BtnlVFG+E+b9KcjJjIERhrkwkytFKT3b/oZT3rsc
+ QOaPAGQ+rDmMY3GEBQuii2ItocryEQAhOOX1D8RtQdLjb3UD77ykPZc4u8J5FcvwXy7wbsspGo1
+ NjL+pTe2wpwlH6zNs+PDIlVFaKyez
+X-Received: by 2002:a05:600c:1c12:b0:440:61eb:2ce5 with SMTP id
+ 5b1f17b1804b1-442f20ffcc5mr2233185e9.17.1747157995571; 
+ Tue, 13 May 2025 10:39:55 -0700 (PDT)
 Received: from localhost.localdomain (110.8.30.213.rev.vodafone.pt.
  [213.30.8.110]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-442cd3b7e7fsm219095405e9.39.2025.05.13.10.17.38
+ ffacd0b85a97d-3a1f58f2b29sm17198563f8f.53.2025.05.13.10.39.54
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 13 May 2025 10:17:38 -0700 (PDT)
-X-BeenThere: xen-devel@lists.xenproject.org
-List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Precedence: list
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: 2c366bab-301e-11f0-9ffb-bf95429c2676
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1747156659; x=1747761459; darn=lists.xenproject.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=92VKl5M8N6yTo/u89ILBeJrAILC8Bk1ppBFcXFhcPnA=;
-        b=y8WXGc88plDzxeImPfmWsDGppio65vXCpRNa60+mtQZsP6Dmz/pR3Ss764fZNTVYPw
-         vsZ4u6aCvjB4jIxL/7imbGMl8RY4RUeRuaNhUjyhMeGHYz2Ok4VmFET0x0YgXBZEQeaQ
-         0nnkTnbg0AXwTJhBMRoz56SWnmHLroejL/ojVDlqsHoW4XYOY9s6U/N6j1u8MzdOgXB6
-         kKflLmcQxNo6Ot+kl4OutfKnyRtzjkmLIcdB2OFmewtwwa2guRQcdLPaJxygLYl5BL9X
-         xc++ga50GR+F4D1QNHtvbexQSuMhmapzWyXspG7n5raa+RmkLi7r/6+fHgTa+xgRseQe
-         CpaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747156659; x=1747761459;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=92VKl5M8N6yTo/u89ILBeJrAILC8Bk1ppBFcXFhcPnA=;
-        b=PB3d5JSa7YvNZsjaXwnkLDOw73CaeM8fPoJV6h149E25mffEZ2clumg/HkRsrOJmeB
-         Mu8cIpex+uM1JqpVM+utJmgsIrfhhodt4cfZ1paFNc6LdGrh0MB4DVZw43VhsEl5OwyG
-         NAoEU51yjBTVRS1UleerelWIkxMhGcPzuykR7soO5fQCoQItpGlW++wg0/pz0Z+pPN2o
-         4lVZwpYhmLKQiQsGsdGRe4bc97G81tQMonbq+x3zsifEEqf/8zkGC9wSxCS7PUIejrCQ
-         p9+Xir1JB0ltM2ahhafF6toWUKauCsaUZCtFNlv6A2ytorRxS/aAIzpWAtg5Nf3BrsCb
-         pMyw==
-X-Forwarded-Encrypted: i=1; AJvYcCXtTdvfjFFf7OucZq+ZDUUQDvTXaY09ym6uxHSHcsH2Pj5lp85HGZKJHgAW/Zk17DbKhYckVImi+lY=@lists.xenproject.org
-X-Gm-Message-State: AOJu0Yx20EyaOzCMT9k5XphV43kqvo8xAmdAl/h5FeEjS6sWI+6l4uhM
-	X2fcoV1EWz8KRhaLpXBSqIiORhKJzE0wkJSo+BDJ0tqdkNWGfl490+++wGsbM7k=
-X-Gm-Gg: ASbGncuxs+FUKbN7aojoUlJsimugkoo65m0MfJyJBRwwya6MSdHrdkWSD3qTlEc3lQ9
-	P4sSsUBFnbSR4s/jzz9i+rePXp/4RjE5cP9MF7nuSLY4MbQrJsnPxslytqu7XkHfQgRgfruyKlw
-	iiHWftJcVgeR+aAgnNTM2J8uTzDrKDHRr1oo98VWLJh0njJPueMo9s/k7fXKzZjZnjTFAncN+gE
-	2CnQGnvCEvWsll7MFyK6T94w+Uy+2A6l5smGoEowuRtUfbO94stjzwVHGqUFRhhHyyP5qHJd5LM
-	zsDVFdDrpz7acUHYQO/l6sDfuSq4BTVmCSGo1Z3ktotM/oos6fTgySwjggziwcrGRqQQwdxH+6x
-	tGa1Zr9oWUKlRzikl2hP4+UuIBA3U
-X-Received: by 2002:a05:600c:4e0e:b0:43c:fdbe:4398 with SMTP id 5b1f17b1804b1-442f20bae9amr1785765e9.6.1747156659284;
-        Tue, 13 May 2025 10:17:39 -0700 (PDT)
+ Tue, 13 May 2025 10:39:55 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	xen-devel@lists.xenproject.org,
-	Anthony PERARD <anthony@xenproject.org>,
-	David Woodhouse <dwmw@amazon.co.uk>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	qemu-arm@nongnu.org,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Paul Durrant <paul@xen.org>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH] hw/xen/arch_hvm: Unify x86 and ARM variants
-Date: Tue, 13 May 2025 18:17:37 +0100
-Message-ID: <20250513171737.74386-1-philmd@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 05/19] hw/arm/boot: Include missing 'system/memory.h' header
+Date: Tue, 13 May 2025 18:39:14 +0100
+Message-ID: <20250513173928.77376-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250513173928.77376-1-philmd@linaro.org>
+References: <20250513173928.77376-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 2OwEs8hTE6fP
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: x37u+3SR7yo3
 
-As each target declares the same prototypes, we can
-use a single header, removing the TARGET_XXX uses.
+default_reset_secondary() uses address_space_stl_notdirty(),
+itself declared in "system/memory.h". Include this header in
+order to avoid when refactoring headers:
 
+  ../hw/arm/boot.c:281:5: error: implicit declaration of function 'address_space_stl_notdirty' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+    address_space_stl_notdirty(as, info->smp_bootreg_addr,
+    ^
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/arm/xen_arch_hvm.h  |  9 ---------
- include/hw/i386/xen_arch_hvm.h | 11 -----------
- include/hw/xen/arch_hvm.h      | 14 ++++++++++----
- hw/arm/xen-pvh.c               |  1 -
- 4 files changed, 10 insertions(+), 25 deletions(-)
- delete mode 100644 include/hw/arm/xen_arch_hvm.h
- delete mode 100644 include/hw/i386/xen_arch_hvm.h
+ hw/arm/boot.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/include/hw/arm/xen_arch_hvm.h b/include/hw/arm/xen_arch_hvm.h
-deleted file mode 100644
-index 8fd645e7232..00000000000
---- a/include/hw/arm/xen_arch_hvm.h
-+++ /dev/null
-@@ -1,9 +0,0 @@
--#ifndef HW_XEN_ARCH_ARM_HVM_H
--#define HW_XEN_ARCH_ARM_HVM_H
--
--#include <xen/hvm/ioreq.h>
--void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
--void arch_xen_set_memory(XenIOState *state,
--                         MemoryRegionSection *section,
--                         bool add);
--#endif
-diff --git a/include/hw/i386/xen_arch_hvm.h b/include/hw/i386/xen_arch_hvm.h
-deleted file mode 100644
-index 1000f8f5433..00000000000
---- a/include/hw/i386/xen_arch_hvm.h
-+++ /dev/null
-@@ -1,11 +0,0 @@
--#ifndef HW_XEN_ARCH_I386_HVM_H
--#define HW_XEN_ARCH_I386_HVM_H
--
--#include <xen/hvm/ioreq.h>
--#include "hw/xen/xen-hvm-common.h"
--
--void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
--void arch_xen_set_memory(XenIOState *state,
--                         MemoryRegionSection *section,
--                         bool add);
--#endif
-diff --git a/include/hw/xen/arch_hvm.h b/include/hw/xen/arch_hvm.h
-index df39c819c8f..8bacaa4ec41 100644
---- a/include/hw/xen/arch_hvm.h
-+++ b/include/hw/xen/arch_hvm.h
-@@ -1,5 +1,11 @@
--#if defined(TARGET_I386) || defined(TARGET_X86_64)
--#include "hw/i386/xen_arch_hvm.h"
--#elif defined(TARGET_ARM) || defined(TARGET_AARCH64)
--#include "hw/arm/xen_arch_hvm.h"
-+#ifndef HW_XEN_ARCH_HVM_H
-+#define HW_XEN_ARCH_HVM_H
-+
-+#include <xen/hvm/ioreq.h>
-+#include "hw/xen/xen-hvm-common.h"
-+
-+void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
-+void arch_xen_set_memory(XenIOState *state,
-+                         MemoryRegionSection *section,
-+                         bool add);
- #endif
-diff --git a/hw/arm/xen-pvh.c b/hw/arm/xen-pvh.c
-index 4b26bcff7a5..1a9eeb01c8e 100644
---- a/hw/arm/xen-pvh.c
-+++ b/hw/arm/xen-pvh.c
-@@ -10,7 +10,6 @@
- #include "hw/boards.h"
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index f94b940bc31..79afb51b8a5 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -19,6 +19,7 @@
+ #include "system/kvm.h"
+ #include "system/tcg.h"
  #include "system/system.h"
- #include "hw/xen/xen-pvh-common.h"
--#include "hw/xen/arch_hvm.h"
- 
- #define TYPE_XEN_ARM  MACHINE_TYPE_NAME("xenpvh")
- 
++#include "system/memory.h"
+ #include "system/numa.h"
+ #include "hw/boards.h"
+ #include "system/reset.h"
 -- 
 2.47.1
 

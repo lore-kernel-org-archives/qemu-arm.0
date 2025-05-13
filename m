@@ -1,203 +1,142 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp592779njb;
-        Tue, 13 May 2025 08:16:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCViLnFWvYlnsOen4qxvD0I7KvzpsmdbnnkmXRWybnwWgiTaHPGBP//QscOQ6wgeIZuL+DYju6H5J2gA8Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IGPc+GMqKB5hBywXqUVxq5l9qJ+wYOUTGAPL1kw2jq08fHqnGfCA/bjCv8FTeITPLEONU66
-X-Received: by 2002:a05:6000:2ce:b0:39a:c8a8:4fdc with SMTP id ffacd0b85a97d-3a1f6437880mr14262463f8f.16.1747149397898;
-        Tue, 13 May 2025 08:16:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747149397; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp597010njb;
+        Tue, 13 May 2025 08:23:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXo/p+yW+IsFiCwJTQlk+ngru+pViYHM1sjPFuq+dUDIrSokCrcHnD3XD7UPqqeKtCSL3XRyjvFgYRozQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHx2dEytRCy1Y14/uAu+IpycaxRKlTYqQj8okPzopA2mFGn1RM+/UCiHZxloMCoVKoHGOlK
+X-Received: by 2002:a05:6102:945:b0:4dd:b6df:1908 with SMTP id ada2fe7eead31-4df6e4d1a33mr3562262137.12.1747149810633;
+        Tue, 13 May 2025 08:23:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747149810; cv=none;
         d=google.com; s=arc-20240605;
-        b=BWAF63MUIEd7VBrFDyR/onQQo7RBT7ivuIQJCK+m3Wrmew3sPzxOuYYsGphWS3q3Fu
-         WBzBW7lSi+yQgXE2ANfc+zma3W17AFkOtdQ0MsMm3Jh6m4c9VFNpDeJGxANH+mRcxC5r
-         4nzv5K5yRq5zSNHH+M3ARnXPlf24GnRJCI4i2qVqRcWmF6uF4MUtZBv0iyfwwUkBq/Qu
-         c8GYFxmhBuc0N+vUWm2KNtNDguWSGyaMlvduIMAJ5EsJAi9BcRJbk3uxg5uOyRNa19Jk
-         fgmMVtuaruB4mQhciGytgPr8lq633hHMrOy5WPuR7BlK6wG5IfVOdQTFKXSFVRDgOI8W
-         aFbg==
+        b=crGrNyHxkMIezGm8eVUVxIdtbibayfMl5gl9H4x0ItA7ddXgjY1+BYZidJkjfRGnpA
+         1WmtKwHP5OZXor4Stwt+GVeI85p0tYqjSoqOI5hNC1D6a0+ouejPsfLzcursJ0giCmf2
+         YNMQbRwgwffvWc4gGgzRksmX4S9TWEUp6u9ER5kcTwIo70Fa54MlRUMSM5AwliBZB916
+         mdM9nnsmezpgewhi18Ei7U+7MZoTnBhHAYnAXEIu8w9kcCQURSEHYk/FKmA2pK0zs+LA
+         CvN3s8k+3D9sWUI2y2v+jo70yqhG34iaf39VvYLAZnQJKOTGteU5UblVao26QuSSy/vN
+         x05Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=/XoJ42U2y/9zd0YP7um9oFc+AhPWl/ZEz6pZ6QwMtwA=;
-        fh=SNEoNKIHlzrqDZNWkE/KXxIup6LUBTVeev3TkBzzq4c=;
-        b=ORng49gq9GIx7bgXYseNGSDOMDoF57FAOxVMNNxLftM8riiS9IJFKYvf+kVkTzea3t
-         8fnoFwqqMJ9Y724ZvuUent9yWuxNq1GGyb0zofupMNtiwuFGl08V0HWM8Pxx0tG3cAF5
-         k8Oj+l3Kh4zvdgEm5t4k3Sff4Cy8zfArQ048Su1irReV/sRytUL105t5AWme9v7/xRTc
-         v5EWfhYr6Hc4T9FHCvDbhZJ2sL57qFCP9bire9CQAAJbOUEzrXvey1lrOEg8FnY19dgL
-         qgBA/oTDsMWwrxtHRCx48TGNZc8t/bXv/we1QHKaqQibqHnXb1o1gOCdg9Fha4i89sFH
-         hYMw==;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=cgbu7nue8vQ9ere64ITgIcQRi4NqnKKSII3mmlr4q+U=;
+        fh=iM9GwfGv21/blqyxO272EqVSEyp03V2YmKTOh+3dT00=;
+        b=Ej0Yty3JN85pAKKrvivIjq4yjOlB8jdN56hGJkNIjCOoLMXL24Pmr3XG/8/pdHTfKB
+         7mrrCsRi6KihlnAIFO9F2O8Ll2iPJHreif17XIC3wwI1QrdCTAmsnGoyDTo+/Xn36SyC
+         FYr+2X0f9xc6smKpWdn8uZ1gguCdIAOgmZSW5eaDH0fcp8kBAO0PxGGw5aU4XOolBbD7
+         Mfu2OU4N3szGblFX22ZQMblnsT7NWddECogxE+p40lzgnkCy/pJnKqhM51tgPIpkdoE7
+         0P+zwryTDRBuBm88bC9AZ/tm3Mume7bY96momZWgl50xTg+6Wsu4hoXb8gSVaZcflH8Z
+         mNIA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=edVE0MQU;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZRsP34et;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a1f5a5e5dbsi7922054f8f.32.2025.05.13.08.16.37
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-879f62f3d2dsi3914844241.164.2025.05.13.08.23.30
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 May 2025 08:16:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Tue, 13 May 2025 08:23:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=edVE0MQU;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZRsP34et;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1747149396;
+	s=mimecast20190719; t=1747149810;
 	h=from:from:reply-to:reply-to:subject:subject:date:date:
 	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/XoJ42U2y/9zd0YP7um9oFc+AhPWl/ZEz6pZ6QwMtwA=;
-	b=edVE0MQUj5kIjJYyc2XBE84QUrCUI+zOi0FX+jFRPazpNOzsnL/lFzZ3I8YFYHgik/8E19
-	ThGqsbf6JvLr54UgoWy5tfokiqvmgPKf5seuuZhebY7AVdZNjr40tO+IxBuIspaxQlqCC7
-	sNoNmrF7lwA3XMU13mkLw4bKgFDURJo=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-574-X0UEktQGMAyEymMSRk4Kzw-1; Tue, 13 May 2025 11:16:35 -0400
-X-MC-Unique: X0UEktQGMAyEymMSRk4Kzw-1
-X-Mimecast-MFC-AGG-ID: X0UEktQGMAyEymMSRk4Kzw_1747149394
-Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3a0b7124b5fso3741070f8f.2
-        for <alex.bennee@linaro.org>; Tue, 13 May 2025 08:16:35 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747149394; x=1747754194;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=/XoJ42U2y/9zd0YP7um9oFc+AhPWl/ZEz6pZ6QwMtwA=;
-        b=HUu+X+KKUJIAINCGtJHZNdnNHcBtV8pji5noZczgPQ/ORMjzusm20ds26xk0KnJ8jd
-         KOhv6jAgkXwevSTySwRiA32PHfweFD6dXpPU8KXW87AVaq/ALhIvHaMVnq3BaxxSw1Eg
-         hgy1+sZAhbkXbATIfaoMZlWIAPa8UK3Pd+MC43YV5SVzTL6ABWE4ZoUBYeks+OSTwpBF
-         7BWC3fLSx/hUD80uFYp1Cb2FSg2ETkJvT70+6gxEhp8hep4sPPkhN4pTi4tA4r+GelsO
-         MWX2ob/RUso6PCgqKWmu/f2aEBgnWsusJYUkxCm5YZjDcmgf5u0KBQtVt7nXfo12AvUR
-         jkcA==
-X-Forwarded-Encrypted: i=1; AJvYcCV4FQPEyPnJuxQYZTUyapjSHrCrZESQi3kObvObfTtKCOmaSatUWkSAEEWvBmKkHActP+CiElPlPrnAaw==@linaro.org
-X-Gm-Message-State: AOJu0Yx5LcDe9RMmzlMHyAxITDkdzN7U7k0Zqr3C8LDxtL2VoHW2QaBD
-	r9z6auYyukwpvv4iSkMrxIFBaW4IlGYcTKknxuLSWYdsq/KCr/9Qz4dmMKsMPQKdU1I1KDn4zGR
-	OWDqlHrZTdLydudMbS38aEv2USEj6AzR6pyEENue2bN3c1tekFyvACA==
-X-Gm-Gg: ASbGncvMmpFUN7qkZ1/6La7pRCYzDjKI7lj/jZz6r6KZurO/Wk7Zr0TqhWVN8/ViMmB
-	hlCEdVSx/UJLy+wh9iIhLu1NzVWj17NgyjtyLOC1jzDK4l0s8RWYwpZlJSVPMjj5UsQCNc96s0P
-	wgCAYECarEomaOl1N5EBX0dDYxH6M3f01kUPVc+Fg7MXuP8UHb6KLs9WWLJ/95xJAYvBUL6fS/b
-	l9ScZlHdLjmlKC+uUVvkMOVZVK7XbDWoZ+/h76TqwFtlNTEFi4IPRU0ThLipTKWyL90YW8Cvm+Q
-	ziboljv9eGbIutcilglS/OMD9VL3p5KcVWMbkatdtee/5pRb+jhLzvgnlTo=
-X-Received: by 2002:a5d:598e:0:b0:39c:2688:612b with SMTP id ffacd0b85a97d-3a1f64277femr15647010f8f.7.1747149394195;
-        Tue, 13 May 2025 08:16:34 -0700 (PDT)
-X-Received: by 2002:a5d:598e:0:b0:39c:2688:612b with SMTP id ffacd0b85a97d-3a1f64277femr15646959f8f.7.1747149393817;
-        Tue, 13 May 2025 08:16:33 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a1f58ecb46sm16707990f8f.30.2025.05.13.08.16.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 May 2025 08:16:33 -0700 (PDT)
-Message-ID: <b62b7529-e782-41d6-91d4-c59af1b92020@redhat.com>
-Date: Tue, 13 May 2025 17:16:30 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH v3 04/10] kvm: kvm_get_writable_id_regs
-To: Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
- peter.maydell@linaro.org, richard.henderson@linaro.org,
- alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- sebott@redhat.com, shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com
-Cc: agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com,
- philmd@linaro.org, pbonzini@redhat.com
+	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
+	bh=cgbu7nue8vQ9ere64ITgIcQRi4NqnKKSII3mmlr4q+U=;
+	b=ZRsP34etH4pHoTsHtiujKhfL+70Z5mti1uVWYe2NGZ6hDrj6D7dot4V9ByswUmsfHXb6xh
+	SJzzPlwC/aXC+QzkHvKUyg9FVuHMDsyv0Sbj4dM99iFhkjCxhgQFJOY4/PAyHG+oqjWPd4
+	pjVCV2XhPzyiUaBvzjZRSB/zHTu1Zjc=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-195-GJWtSxzUOQ2zpbXRAKwSLg-1; Tue,
+ 13 May 2025 11:23:26 -0400
+X-MC-Unique: GJWtSxzUOQ2zpbXRAKwSLg-1
+X-Mimecast-MFC-AGG-ID: GJWtSxzUOQ2zpbXRAKwSLg_1747149804
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id AB46819560AF;
+	Tue, 13 May 2025 15:23:23 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.110])
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 6FEF919560A7;
+	Tue, 13 May 2025 15:23:16 +0000 (UTC)
+Date: Tue, 13 May 2025 16:23:13 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Cornelia Huck <cohuck@redhat.com>
+Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
+	peter.maydell@linaro.org, richard.henderson@linaro.org,
+	alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+	sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
+	armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
+	agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com,
+	philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [PATCH v3 02/10] arm/cpu: Add sysreg properties generation
+Message-ID: <aCNj4dFWLkBZrmmh@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20250414163849.321857-1-cohuck@redhat.com>
- <20250414163849.321857-5-cohuck@redhat.com>
- <4f370fae-8234-48ca-97e2-3b7038092974@redhat.com> <878qn0po69.fsf@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <878qn0po69.fsf@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: KpGjCJIldlvCQpH6dAexafhvogvBaCJ3W7TGvsqDktY_1747149394
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-TUID: yuFrPQFy6bwj
+ <20250414163849.321857-3-cohuck@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250414163849.321857-3-cohuck@redhat.com>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-TUID: ceEEn5xXoSFx
 
+On Mon, Apr 14, 2025 at 06:38:41PM +0200, Cornelia Huck wrote:
+> From: Eric Auger <eric.auger@redhat.com>
+> 
+> Introduce a script that automates the generation of system register
+> properties definitions from a given linux source tree
+> arch/arm64/tools/sysreg.
+> 
+> Invocation of
+> ./update-aarch64-sysreg-code.sh $PATH_TO_LINUX_SOURCE_TREE
+> in scripts directory additionally generates
+> target/arm/cpu-sysreg-properties.c containing definitions for
+> feature ID registers.
+> 
+> update-aarch64-sysreg-code.sh additionally calls
+> gen-cpu-sysreg-properties.awk which is inherited from kernel
+> arch/arm64/tools/gen-sysreg.awk. All credits to Mark Rutland
+> the original author of this script.
+> 
+> [CH: split off from original patch adding both sysreg definitions
+>  and properties]
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> ---
+>  scripts/gen-cpu-sysreg-properties.awk | 325 ++++++++++++++++++++++++++
+>  scripts/update-aarch64-sysreg-code.sh |   5 +-
+>  2 files changed, 329 insertions(+), 1 deletion(-)
+>  create mode 100755 scripts/gen-cpu-sysreg-properties.awk
+> 
+> diff --git a/scripts/gen-cpu-sysreg-properties.awk b/scripts/gen-cpu-sysreg-properties.awk
+> new file mode 100755
+> index 000000000000..76c37938b168
+> --- /dev/null
+> +++ b/scripts/gen-cpu-sysreg-properties.awk
+> @@ -0,0 +1,325 @@
+> +#!/bin/awk -f
+> +# SPDX-License-Identifier: GPL-2.0
 
+GPL-2.0 is a deprecated SPDX identifier. checkpatch.pl ought to
+have complained about this, requiring GPL-2.0-or-later as the
+preference, with GPL-2.0-only requiring justification in the
+commit.
 
-On 5/13/25 4:42 PM, Cornelia Huck wrote:
-> On Tue, May 13 2025, Eric Auger <eric.auger@redhat.com> wrote:
->
->> Hi Connie,
->>
->> On 4/14/25 6:38 PM, Cornelia Huck wrote:
->>> Add an helper to retrieve the writable id reg bitmask. The
->>> status of the query is stored in the CPU struct so that an
->>> an error, if any, can be reported on vcpu realize().
->>>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->>> ---
->>>  target/arm/cpu.h     | 26 ++++++++++++++++++++++++++
->>>  target/arm/kvm.c     | 32 ++++++++++++++++++++++++++++++++
->>>  target/arm/kvm_arm.h |  7 +++++++
->>>  3 files changed, 65 insertions(+)
->>>
->>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
->>> index d27134f4a025..bbee7ff2414a 100644
->>> --- a/target/arm/cpu.h
->>> +++ b/target/arm/cpu.h
->>> @@ -856,6 +856,26 @@ typedef struct {
->>>      uint32_t map, init, supported;
->>>  } ARMVQMap;
->>>  
->>> +typedef enum ARMIdRegsState {
->>> +    WRITABLE_ID_REGS_UNKNOWN,
->>> +    WRITABLE_ID_REGS_NOT_DISCOVERABLE,
->>> +    WRITABLE_ID_REGS_FAILED,
->>> +    WRITABLE_ID_REGS_AVAIL,
->>> +} ARMIdRegsState;
->>> +
->>> +/*
->>> + * The following structures are for the purpose of mapping the output of
->>> + * KVM_ARM_GET_REG_WRITABLE_MASKS that also may cover id registers we do
->>> + * not support in QEMU
->>> + * ID registers in op0==3, op1=={0,1,3}, crn=0, crm=={0-7}, op2=={0-7},
->>> + * as used by the KVM_ARM_GET_REG_WRITABLE_MASKS ioctl call.
->>> + */
->>> +#define NR_ID_REGS (3 * 8 * 8)
->> We may rename this define to better associate to the KVM API. I tend to
->> mix it with NUM_ID_IDX now ;-)
->> maybe something like KVM_NR_EXPOSED_ID_REGS
-> The kernel calls it KVM_FEATURE_ID_RANGE_SIZE, but I'd like to avoid
-> adding 'KVM' in the name, as it is basically a range of registers and
-> nothing really KVM specific... maybe ID_REG_RANGE_SIZE?
-what about NR_ID_REG_MASKS
-because it is masks actually.
->
->>> +
->>> +typedef struct IdRegMap {
->>> +    uint64_t regs[NR_ID_REGS];
->>> +} IdRegMap;
->> I would add a comment saying this is the mask array, just to prevent the
->> reading from thinking it is the actual reg content.
-> "More comments" seems to be a theme :) I'll go ahead and add them where
-> it makes sense.
-yeah. I am sorry. previously we had a single indexing and on top of that
-we have several kinds of definitions for id regs and writable masks.
-Even for me who contributed to that mess it can be difficult to parse so
-I imagine it can be painful to read for other readers too ;-)
+> +# gen-cpu-sysreg-properties.awk: arm64 sysreg header generator
+> +#
+> +# Usage: awk -f gen-cpu-sysreg-properties.awk $LINUX_PATH/arch/arm64/tools/sysreg
 
-Eric
->
->>> +
->>>  /* REG is ID_XXX */
->>>  #define FIELD_DP64_IDREG(ISAR, REG, FIELD, VALUE)                       \
->>>      ({                                                                  \
->>> @@ -1044,6 +1064,12 @@ struct ArchCPU {
->>>       */
->>>      bool host_cpu_probe_failed;
->>>  
->>> +    /*
->>> +     * state of writable id regs query used to report an error, if any,
->>> +     * on KVM custom vcpu model realize
->>> +     */
->>> +    ARMIdRegsState writable_id_regs;
->> maybe rename into writable_id_reg_status that would better reflect what
->> it is.
-> Indeed.
->
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

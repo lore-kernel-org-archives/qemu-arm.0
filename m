@@ -1,99 +1,73 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp629962njb;
-        Tue, 13 May 2025 09:15:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCV9J0djHt6768P+HOwlcv+FxvdD+bxdXJ9XN3IgM409EI0eP5PBhjU+vKuzv27sVA0KGLl2UIE+SWtXKg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFaCBRByjvGSrEUToEpjdTWRcQR9hnQJnyCSpC11a7G6x9vGbojTbM6p+Ks4xgo3+Jq7j+f
-X-Received: by 2002:a05:6820:1b05:b0:603:fada:ac53 with SMTP id 006d021491bc7-6084b5d67f5mr11064088eaf.2.1747152955870;
-        Tue, 13 May 2025 09:15:55 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1747152955; cv=pass;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp631233njb;
+        Tue, 13 May 2025 09:17:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXFyNzgfBEbdxPqI8rnlzhVBtSXMt/OD2xywNpdu1J7dPbpNqJNDenz+ynb17tnkaSEaJ4o0sMVsPCo3A==@linaro.org
+X-Google-Smtp-Source: AGHT+IGLKhCq+PMTPyqFo/lVxaqi3vVIdi4B4MCjEviynLOuE7PlDH38Vk9nvnWRr/stYSftxMN6
+X-Received: by 2002:a05:622a:410b:b0:48b:512a:a919 with SMTP id d75a77b69052e-49495c56ea7mr1428451cf.3.1747153058659;
+        Tue, 13 May 2025 09:17:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747153058; cv=none;
         d=google.com; s=arc-20240605;
-        b=IY51T2fJkUG9d+W2pM5iTA7F8NJaENsbUr7FscG1Hy063VHxSF6keB1TZHerPKkARK
-         qHWTBiYDgHmiHys1fHWsZKEsOXsywfYYFamB0Hdq7RT0SioSTscVNX8cscZZ7KsKXQa8
-         xNwGushB2qAVG9yKrj8FJNDBnzsN4t/7Qzbu11gNH4DMdaYiEcZrdfFvgDOH+MxTJ5lv
-         YJ70EGq3qNCQWcu2MIl+5qg7YY7ZIOZHJ9M4LwVhy/iuUIzpjJuNieNG5943okZsDrWF
-         nQ2orVTMY1FuTTHBH38OsBCpMnR+DCQ5XU5NZ11oLOGIpKmUhBtJ8hySIQ3Hr3HtMdzB
-         DLZQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-disposition:mime-version
-         :list-unsubscribe:list-subscribe:list-id:precedence:references
-         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=3H+YxSQA77WT2zoxSF0xFsZjcb58V5BplyA9TltcVTE=;
+        b=lbFN5tshuCTlv4MfUIIvBci+ucJVV1n7WixHlWrMuDE4OP0FjPyefAQ8qqjOm2TKHo
+         4frwtYMVpwo6byE+Sasfe/DYdZEA4yBJ3ViH+rAlm9p4hP7f5d8fQFWkBJ3GN4Zg2RWd
+         iK7G2TYfOyschI6lsCwyDC03WmzeCByV+Sgw5wpalUg7a06R4T0bTXKZok7lGSNdnB5i
+         ZvXQecAs2gFYgBgoPUGKVM4E18l4hYWnmyWEBKOAHTblppO/xR1Mm8w/zgHxxA2wTrJC
+         RwvPyt1iVx1wfhA0bVSvdOe2ZsY/+gRVLAXoOHa2w8JbwPa9Iu9dAnVBU5MRVdpjmwBY
+         GIcQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=xrlJmq+sxj06Pce/vrGFl4DL6yT50KGGqCTzoiNbwfQ=;
         fh=iM9GwfGv21/blqyxO272EqVSEyp03V2YmKTOh+3dT00=;
-        b=Qh2PjI4EQ1zxwrP7pQS4xB2SeWlRrDfrHjlgjdND+ybHQAZzmQ6FN7LhqQbMLB0eOu
-         7TPgSr838IVmCYDstLwnECOH6jqktfARTeeW/PlcJ5RHUELhGf84iRCZZoEKmrxlj6TR
-         cSnMigTD0KOyzrbPQWkjbHI/jB+CyecMwQ4ngzfjVYrTXSiQ1IyP2UDFrlN+F+pwxmH3
-         7/rkxcaOkIPAcHLsxuQ6+Z4w9g2fCoQGN7s6l0qLJ0t1YYFcTmrMc3HORp8Y4biB8TIs
-         UeeXyRjqEgLzXSOQifyImR9/uM04P2LFOeMo3vl4Fq+YKMVKsV02SF2xZ1p/W4uDiSm5
-         sPpA==;
+        b=YJAsGDgk/OTnUrRSVJiWQ65x0RbOPjdpqcubMz2NaHkJ0fT79wyf+0B4WRHHj6lhs3
+         jf1giMVZhyse4A83qzk2+hROhH0U9DC8WKX+hT9cB5rngYg29s/WR5i55FtByuKWvmqu
+         14qXuD2JXcoC0E1xk6grbfjsDdMb4O7OuLj6GGhA1mo6/ao6lS3Z+suBfBppzMwkMwLI
+         dtWlCVkdPB+GyP2Q28kd8EV/cQ4VbBzEPn/wfOpkq6evIRAO364zJhXYcurUpQ5FVCAH
+         wJsf0wHcvae+RH2QNrzV14OOLygR7mgwjWquwnH1cB9nJXq2axrvnlP5+q/CqFaLDxt8
+         2Pkg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OOnea6Y+;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvmarm+bounces-21506-alex.bennee=linaro.org@lists.linux.dev designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvmarm+bounces-21506-alex.bennee=linaro.org@lists.linux.dev";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h+o+XTox;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm+bounces-21506-alex.bennee=linaro.org@lists.linux.dev>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id 006d021491bc7-6083feed3casi5355152eaf.80.2025.05.13.09.15.55
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-49452557962si116597231cf.270.2025.05.13.09.17.38
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 May 2025 09:15:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm+bounces-21506-alex.bennee=linaro.org@lists.linux.dev designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        Tue, 13 May 2025 09:17:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OOnea6Y+;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvmarm+bounces-21506-alex.bennee=linaro.org@lists.linux.dev designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvmarm+bounces-21506-alex.bennee=linaro.org@lists.linux.dev";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h+o+XTox;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id E33F18635E5
-	for <alex.bennee@linaro.org>; Tue, 13 May 2025 16:15:36 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 476B6245008;
-	Tue, 13 May 2025 16:15:53 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="OOnea6Y+"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4E74F1A38E1
-	for <kvmarm@lists.linux.dev>; Tue, 13 May 2025 16:15:50 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1747152953; cv=none; b=FeE0ckJta+kRHYhlStbC7h+pJ46xEVljshEhoH4S1WLInnAUD7QidMOy3sLxLK5k1hOxzEGhwillGcM0w3BtlwLHUB8rtolPPFuOU+g18eDljImaG1e3rg+dz8yl2GYS84NhB50TkUo5s1ARg9batYY7tBCBg000lGsbYzy0V88=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1747152953; c=relaxed/simple;
-	bh=20MS4R1woUiSACr68kf8fJraCW3LrTbnXZXJMjztyi0=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=DGIyA4UoKopwrG4plPNutytn/QcwEz6zUrEqPnuzZNFlqgxKuYth1Xr5Lh9dQL1teiJ3CB6TNBxkohZ+n+OKRPYEWfAjMmP8jeVjlTKg5UOHoaDQrDgdrKEkLlDyQr02wpW86vcukKJB4J7RCfX3JgtGw2CTRgfxZ7gzv9jfi4c=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=OOnea6Y+; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1747152950;
+	s=mimecast20190719; t=1747153058;
 	h=from:from:reply-to:reply-to:subject:subject:date:date:
 	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
-	bh=3H+YxSQA77WT2zoxSF0xFsZjcb58V5BplyA9TltcVTE=;
-	b=OOnea6Y+2dfQ925bAyCvgbGFq5vPNFhavziO9Mz+X2Alx7PE0P2ULyCqvPqLyMu4dtOMWt
-	+nu4lkBjP3DLHqSrJwSvQ4O5rXHK5cYqkWtsz9aWKh9AFi7hyOYSJKfOrgu5Paj4mIUedZ
-	IyYgY8q89udreokirk78EVV9svmYVQw=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xrlJmq+sxj06Pce/vrGFl4DL6yT50KGGqCTzoiNbwfQ=;
+	b=h+o+XToxQEBvKB0HK59T2SBAtisQzhBdUG6kt/e4BymM5TUsGzZr6are6/XF6KrMJEgVyh
+	y2WoKXjYB2eiKEYhLN/6x7Dz/0afAYL/kmgrxaPKbXZrT2ZrDeLKVrGmFuXFybu9ehw3TP
+	xrZQfgwVRstksNQLAnG5a8Q7IneBYy4=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-135-dl3M_j5RPL-4gEjGGkuNrg-1; Tue,
- 13 May 2025 12:15:48 -0400
-X-MC-Unique: dl3M_j5RPL-4gEjGGkuNrg-1
-X-Mimecast-MFC-AGG-ID: dl3M_j5RPL-4gEjGGkuNrg_1747152946
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-359-EqwJaqy9O9WjiFPI_ymCpQ-1; Tue,
+ 13 May 2025 12:17:35 -0400
+X-MC-Unique: EqwJaqy9O9WjiFPI_ymCpQ-1
+X-Mimecast-MFC-AGG-ID: EqwJaqy9O9WjiFPI_ymCpQ_1747153053
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 0896E195608E;
-	Tue, 13 May 2025 16:15:46 +0000 (UTC)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 0C3C2195DE0B;
+	Tue, 13 May 2025 16:17:33 +0000 (UTC)
 Received: from redhat.com (unknown [10.42.28.110])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 3963A19560A3;
-	Tue, 13 May 2025 16:15:39 +0000 (UTC)
-Date: Tue, 13 May 2025 17:15:36 +0100
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 9100930001A1;
+	Tue, 13 May 2025 16:17:27 +0000 (UTC)
+Date: Tue, 13 May 2025 17:17:24 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Cornelia Huck <cohuck@redhat.com>
 Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
@@ -104,82 +78,79 @@ Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
 	agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com,
 	philmd@linaro.org, pbonzini@redhat.com
-Subject: Re: [PATCH v6 12/14] arm/cpu: Add sysreg generation scripts
-Message-ID: <aCNwKBDtJES0GX3q@redhat.com>
+Subject: Re: [PATCH for-10.1 v5 02/13] arm/cpu: Store aa64isar0/aa64zfr0 into
+ the idregs arrays
+Message-ID: <aCNwlHK5lNNLzxeX@redhat.com>
 Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20250506085234.855779-1-cohuck@redhat.com>
- <20250506085234.855779-13-cohuck@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvmarm@lists.linux.dev
-List-Id: <kvmarm.lists.linux.dev>
-List-Subscribe: <mailto:kvmarm+subscribe@lists.linux.dev>
-List-Unsubscribe: <mailto:kvmarm+unsubscribe@lists.linux.dev>
+References: <20250409144304.912325-1-cohuck@redhat.com>
+ <20250409144304.912325-3-cohuck@redhat.com>
+ <aCNoEs-jQ7IUTt8q@redhat.com>
+ <875xi4pkqp.fsf@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250506085234.855779-13-cohuck@redhat.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <875xi4pkqp.fsf@redhat.com>
 User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: h4j95FB6xgx0
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: 6AWHhWxie0Os
 
-On Tue, May 06, 2025 at 10:52:32AM +0200, Cornelia Huck wrote:
-> From: Eric Auger <eric.auger@redhat.com>
+On Tue, May 13, 2025 at 05:56:46PM +0200, Cornelia Huck wrote:
+> On Tue, May 13 2025, Daniel P. Berrangé <berrange@redhat.com> wrote:
 > 
-> Introduce scripts that automate the generation of system register
-> definitions from a given linux source tree arch/arm64/tools/sysreg.
+> > On Wed, Apr 09, 2025 at 04:42:53PM +0200, Cornelia Huck wrote:
+> >> From: Eric Auger <eric.auger@redhat.com>
+> >> 
+> >> Also add kvm add accessors for storing host features into idregs.
+> >> 
+> >> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> >> Reviewed-by: Sebastian Ott <sebott@redhat.com>
+> >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> >> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> >> ---
+> >>  target/arm/cpu-features.h | 57 ++++++++++++++++++++-------------------
+> >>  target/arm/cpu-sysregs.h  |  4 +++
+> >>  target/arm/cpu.c          | 10 +++----
+> >>  target/arm/cpu.h          |  2 --
+> >>  target/arm/cpu64.c        |  8 +++---
+> >>  target/arm/helper.c       |  6 +++--
+> >>  target/arm/hvf/hvf.c      |  3 ++-
+> >>  target/arm/kvm.c          | 30 ++++++++++++++++++---
+> >>  target/arm/tcg/cpu64.c    | 44 ++++++++++++++++++------------
+> >>  9 files changed, 101 insertions(+), 63 deletions(-)
+> >
+> >> diff --git a/target/arm/cpu-sysregs.h b/target/arm/cpu-sysregs.h
+> >> index 7877a3b06a8e..e89a1105904c 100644
+> >> --- a/target/arm/cpu-sysregs.h
+> >> +++ b/target/arm/cpu-sysregs.h
+> >> @@ -39,4 +39,8 @@ extern const uint32_t id_register_sysreg[NUM_ID_IDX];
+> >>  
+> >>  int get_sysreg_idx(ARMSysRegs sysreg);
+> >>  
+> >> +#ifdef CONFIG_KVM
+> >> +uint64_t idregs_sysreg_to_kvm_reg(ARMSysRegs sysreg);
+> >> +#endif
+> >
+> > This breaks the build when KVM is disabled, and/or not available
+> > on the build target architecture
+> >
+> > In file included from ../target/arm/cpu.h:35,
+> >                  from /var/home/berrange/src/virt/qemu/include/hw/arm/digic.h:21,
+> >                  from ../hw/arm/digic_boards.c:31:
+> > /var/home/berrange/src/virt/qemu/target/arm/cpu-sysregs.h:42:8: error: attempt to use poisoned ‘CONFIG_KVM’
+> >    42 | #ifdef CONFIG_KVM
+> >       |        ^
+> > In file included from /var/home/berrange/src/virt/qemu/include/exec/poison.h:7,
+> >                  from /var/home/berrange/src/virt/qemu/include/qemu/osdep.h:38,
+> >                  from ../hw/arm/digic_boards.c:26:
+> > ./config-poison.h:185:20: note: poisoned here
+> >   185 | #pragma GCC poison CONFIG_KVM
+> >       |                    ^~~~~~~~~~
+> > ninja: build stopped: subcommand failed.
 > 
-> Invocation of
-> ./update-aarch64-sysreg-code.sh $PATH_TO_LINUX_SOURCE_TREE
-> in scripts directory generates target/arm/cpu-sysregs.h.inc
-> containing defines for all system registers.
-> 
-> [CH: update to handle current kernel sysregs structure, and to emit
->      the re-worked register structures; cpu properties will be added
->      later]
-> Reviewed-by: Sebastian Ott <sebott@redhat.com>
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->  scripts/gen-cpu-sysregs-header.awk    | 35 +++++++++++++++++++++++++++
->  scripts/update-aarch64-sysreg-code.sh | 25 +++++++++++++++++++
->  2 files changed, 60 insertions(+)
->  create mode 100755 scripts/gen-cpu-sysregs-header.awk
->  create mode 100755 scripts/update-aarch64-sysreg-code.sh
-> 
-> diff --git a/scripts/gen-cpu-sysregs-header.awk b/scripts/gen-cpu-sysregs-header.awk
-> new file mode 100755
-> index 000000000000..b6b207e3c0fd
-> --- /dev/null
-> +++ b/scripts/gen-cpu-sysregs-header.awk
-> @@ -0,0 +1,35 @@
-> +#!/bin/awk -f
-> +# SPDX-License-Identifier: GPL-2.0
+> I have already fixed that one in v6.
 
-Invalid license name here - hopefully checkpatch.pl is warning
-about this.
-
-Same issue as in the other sysreg script in the host CPU model
-series.
-
-
-> diff --git a/scripts/update-aarch64-sysreg-code.sh b/scripts/update-aarch64-sysreg-code.sh
-> new file mode 100755
-> index 000000000000..721f41a9a516
-> --- /dev/null
-> +++ b/scripts/update-aarch64-sysreg-code.sh
-> @@ -0,0 +1,25 @@
-> +#!/bin/sh -e
-> +#
-> +# Update target/arm/cpu-sysregs.h
-> +# from a linux source tree (arch/arm64/tools/sysreg)
-> +#
-> +# Copyright Red Hat, Inc. 2024
-> +#
-> +# Authors:
-> +#          Eric Auger <eric.auger@redhat.com>
-
-Although its fairly short, this still deserves SPDX-License-Identifier
-to be set.
+Ah yes, I was testing v5 as that one can apply with the KVM CPU model series
 
 With regards,
 Daniel
@@ -187,4 +158,3 @@ Daniel
 |: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
 |: https://libvirt.org         -o-            https://fstop138.berrange.com :|
 |: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-

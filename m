@@ -1,347 +1,228 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp562902njb;
-        Tue, 13 May 2025 07:31:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUmLi88tt1eQnth5PYj01hEuWrHsREhn4Ds4mYzJznHKm2161B/192/QhCrqy3a1zt914UWU4gyC5ayZw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFpvQmfrWNOhw7/D+bh/CK1rKnQ8Ct74oCM6xRCVSi/yKfPyQVUwaJ16Dz3AGP6nrt0ZjPh
-X-Received: by 2002:a05:6122:17aa:b0:528:f40f:347f with SMTP id 71dfb90a1353d-52c53b461e0mr14471577e0c.2.1747146696990;
-        Tue, 13 May 2025 07:31:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747146696; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp838835njb;
+        Tue, 13 May 2025 15:56:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVqrZhFE0amt+7E3XBhsJeHCmidcdi9P9uycLZS/EyWwWdx0WNfQf44nQsBhrTLu5ZD1YJnKEzzXqe/Sg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGASIU4o4Z3PDpX0UWPQtCTzcv9D6YJqKsvNya1zVZhklnznKUVOH0xehYwNafZ1DoksoZZ
+X-Received: by 2002:a05:620a:688b:b0:7c2:3f1f:1a15 with SMTP id af79cd13be357-7cd1de7cb5dmr735887185a.8.1747176977470;
+        Tue, 13 May 2025 15:56:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747176977; cv=none;
         d=google.com; s=arc-20240605;
-        b=EznPj0e1d0NyN47HUouIQ/XWpks2yy40CpV0n7lldw+53HRUYeZnnZEL6QBOYA4VXN
-         IB2YNpMSasW6riAwI4aeLwtSxetgaZYZYVkKrgjjOs7511X2r/qKfY4RBdpSnvvJOKFu
-         Yasp4YBo0piUpHP9IOfnprZOeHoIU7EtROCLr0vovNxsacKun5n9jnyF1oBCcvemL8Mw
-         3mJBLMphJl2RXdwIxmD3kyONLytmamnswGmgANSGncbMlymgOlmuaFzE91ah77nuIDfm
-         7rL8xJApUnwf74Zwzryk68JHXtYRicsY9Q94aXkaFpznWsOs68MV6ZJseNp5vXPUIiSR
-         v8VQ==
+        b=WA+v/PHhIbMQn0K25ycsw+urQyCmo7Totczwhs0a3H/iuvKYSLDpR18xeF3bkodMxm
+         c+EM87hG3f3g0k7PE8m1Vv9aD97MLw2e3f0r0Ef0FUgUep4peG7Sm1kHUlYXg3TwcUml
+         lA9cxJMESusbOgA4rAHd9zHg9Av3qhxa0AjZh2zyS0Th9ZYhp9PpdeynUNQ4ppnSczv4
+         62GnfEsDw8YPtCg17kdFV0GfE0GMIHmi6PezpLYJokt33ubRHCeqCC78vMNjsp7DUGGH
+         7uKKpLFHsklU9LlkGQc1q49tzULqk6k/WhL7U9ReGWDt7z/48vR7nX69lqA0dYU8V1gT
+         i2kQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=kJnrKexwHwdXj+CB7Gav0WgyIYENhp5GhJAlL4b2KHY=;
-        fh=NDneJSz1Sd4YM5M0U4Gi7b3Rlp7+THADfYDyaRRtl54=;
-        b=KowcjyZOqvuS2c3S6R4V1zDhIHPIDOqVw5/E9WqRvguE1E+6coyI8lLWEXSPIW3t77
-         AqayR9h/g/hLRHnyZREKhynSQ85ha04YDTeKVm3eI9v3FjPAOf/dpvaDX7gOVy3r8Sxi
-         y8AnI5VQiAC8S6Zf9/ZBdHeT9MMldAlOdOOFsBKmHBrQPTknvFk4xAqJztzGgSakhFbv
-         6yMU3zp410QgT6sRPGFnY0fyXLB35dLnz+kG7K6ndMJbK98UkI5+pTSEdnCdpIyl0LUd
-         Gn9aV0uXbUlHhAi6pl42F3Fo1eNQkRfpDSGxyK20GLlUql7Q/qA/YYCZ2ViNiHGfuGL6
-         4BhA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=LBJDbb+g+rnG8821hA+sNUH+3t1umps8kf5QOmsN0dM=;
+        fh=tDo1sjLGPAilqSF1yiKQyjDS2gdQWx5jJt4qeyTFl4E=;
+        b=jCHoz2jPiBq8UOsd0NR0yPKs3fMwmFh00samiLnB07xmtI7QZGRe5lX5RCDygEH2ss
+         b22gXL+Vhb0PeKxEm2/EtMieWDoTmKmcmqW0DET49O3tbOHH3yUO7BhJala/dkRtYPwV
+         hcg2QSwoPt92vfteTtlOgWLSeUjnnti6ZpXjzQZeuP4weDspVujVsIvIr4M2CnN8TztS
+         L774E8eqqAr4R9ptEPsIkucIdi1cAbhQtIZsSvuKDhiv6YVZnNWHyuTmY0Cg4jplGwiX
+         B8+Oe3EqzG2r3XPxqn5/mJu9t+0zDZUnp3ze4rPWmswuRZnBjhSup5HNKm48j5tVg7h7
+         BzMg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L5Abr2VM;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-52c53ca6bf9si4324520e0c.233.2025.05.13.07.31.36
+       dkim=pass header.i=@linaro.org header.s=google header.b=eEekhJ6W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7cd00ff0505si1291891185a.571.2025.05.13.15.56.17
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 May 2025 07:31:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 13 May 2025 15:56:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L5Abr2VM;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1747146696;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=kJnrKexwHwdXj+CB7Gav0WgyIYENhp5GhJAlL4b2KHY=;
-	b=L5Abr2VMsPgAa5cP66KieUC3l53excGIe3FQySxzXu0zic0w7K7rxxmaqC20SSrl3amXfg
-	SP/jSPFLhQmK7x7jFKnBlDPsffrBTA6h0JkFhHU4SWYbHiiVpwwH5h4JhB6DrAUQ2vEDYD
-	601Ew2L+l+OaXesjwhlrsT1APBn8zFE=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-287-8Jc5l2zSPm6qyJSWKc0rxQ-1; Tue, 13 May 2025 10:31:35 -0400
-X-MC-Unique: 8Jc5l2zSPm6qyJSWKc0rxQ-1
-X-Mimecast-MFC-AGG-ID: 8Jc5l2zSPm6qyJSWKc0rxQ_1747146694
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-441c96c1977so37483635e9.0
-        for <alex.bennee@linaro.org>; Tue, 13 May 2025 07:31:35 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=eEekhJ6W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uEyXY-00062G-6Z; Tue, 13 May 2025 18:56:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uEyXW-00061U-8l
+ for qemu-arm@nongnu.org; Tue, 13 May 2025 18:55:58 -0400
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uEyXT-0003lp-Ek
+ for qemu-arm@nongnu.org; Tue, 13 May 2025 18:55:58 -0400
+Received: by mail-pj1-x1035.google.com with SMTP id
+ 98e67ed59e1d1-309fac646adso310800a91.1
+ for <qemu-arm@nongnu.org>; Tue, 13 May 2025 15:55:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1747176954; x=1747781754; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=LBJDbb+g+rnG8821hA+sNUH+3t1umps8kf5QOmsN0dM=;
+ b=eEekhJ6WlQnt0wZusp+z9QV5rvDfaZixX2XBij8byAbVug9ZUYkdxg+iC3TR2FnqJz
+ nhhtDqm4gz4+3atXMou1zLaU1lxouPnDCt/cTtCXwsNlBSJoyTZlTKtgHs0iSO187rqe
+ St4KnFz+rPQQ0DhEYzjwOHrPiTrPZ4PTzt9CjQTYYqaTak4tofbI1nXQ6vFio/MrlMDS
+ gKKxNSealfRH3a9k99rXvgIsH4i3kDMa9z/n+0ZI/teUjPBAc7qvtSWOYpUsfp0BtS4u
+ 6WcF3DcKVHg3DrREToanBaNNTkIHb0Aihn5UUH+QuGJisg8elG/F7AyBxVYPn3fc+oMr
+ Y4Kw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747146694; x=1747751494;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=kJnrKexwHwdXj+CB7Gav0WgyIYENhp5GhJAlL4b2KHY=;
-        b=qbW1YzfNPGQFaiCRot/CEdEG5SLwV9LDRHZrRqiNH2sFlefXsahRrNF2f6ewkAJt7v
-         uotTu446WjTFbNT5Kd1zvHr/nSc4y2FfeBGWExtT9UCyNT5mHnmr0h5EAYprpwmUAePZ
-         glJvaJrz6mvM2R+3ug0QVpvN69UDRooXSlOdaB6WqEbWGsEZEN2VhgLL+kA9UtC9WRkc
-         12fb8DdqyELOFalVZAd+glDzaoR4nIkqXPjkK0tJ2/YzdPsw1mYOJjYAEEjk9Ku80fK6
-         X9JxAAwmMI0ScR8fyLEl2nc0KZrWIc/ximSeJ8QyO0qSJdSzaGUTJxXaiPdP7+ljhwmX
-         +Neg==
-X-Forwarded-Encrypted: i=1; AJvYcCVJ4CPXUtR5PMQ5H4tf6kLcoynBTLvgmEJ/n5XJNRVQFBUjLGqpiXRSdkT+jjOOGz9fu67HrfXx5lXm0Q==@linaro.org
-X-Gm-Message-State: AOJu0YzN7Yd0jX2GAFyUI2NOI49qKez9axOpmGwc1K3YH3/P6TAKZPgF
-	OiKGH2wmoqONA6duEEcrPWQ7wszTw3uwcK83Nsvj3yxqKHEE6zMU8MdpHOnc2mWvbbFsArJvceY
-	Er+OlH9tyOX07h1N3NUxWGOB1LtoYPolJp/jWFuLjGvUZ3YHplkSfVw==
-X-Gm-Gg: ASbGncvXBTc4cH3HWpeOsdKm8u/LX5Pwehnm2qWTvpm0rNze8CIXu23s5EzuwZysKGw
-	Uib4QS00Dj36q9Lg6sOf/kp6HEQyQapRwhkpUbInmzpToJHSTUNLZdWhub0n7578oSlGE75VJ+M
-	6+EClXfkVS904ty67R5Nqfux9812ITpi1Fu3ZXpsj5KF5zo2XdEo7c2q3YvWqZ8VSQzkjK5tmWe
-	fod8yFnga17xDw0HPU28D9ZJdUnaBJ/sZqyKhyjzAUTWKvDcXigtuGHxLHcvshTnmJ/VV8E2IsI
-	3Lr0q1qt/T7IoHpbtzVtjjvMy/6nLaeWjN7AgjrkOWkR+Iie40BrixmdtFQ=
-X-Received: by 2002:a05:600c:8284:b0:43c:fa52:7d2d with SMTP id 5b1f17b1804b1-442d6dd2478mr127725745e9.20.1747146694228;
-        Tue, 13 May 2025 07:31:34 -0700 (PDT)
-X-Received: by 2002:a05:600c:8284:b0:43c:fa52:7d2d with SMTP id 5b1f17b1804b1-442d6dd2478mr127725245e9.20.1747146693778;
-        Tue, 13 May 2025 07:31:33 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442cd3aeb6esm216527915e9.25.2025.05.13.07.31.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 May 2025 07:31:33 -0700 (PDT)
-Message-ID: <a706e9a2-0a49-4296-ba0a-8001f433b8b8@redhat.com>
-Date: Tue, 13 May 2025 16:31:30 +0200
+ d=1e100.net; s=20230601; t=1747176954; x=1747781754;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=LBJDbb+g+rnG8821hA+sNUH+3t1umps8kf5QOmsN0dM=;
+ b=piZryZnZFkVG9W+RHAQeuNNnE+cM7XY75LGN9HidszFjVUGG+0qdbA+uTla4A3OK6O
+ Q787sYaTcYaOogw/PB9h+X5v6EsZRo0JE2hakOSkSgInZH7V9ZT7audE4k1oNkoo3E3q
+ XkCDYcuhcg6Rm2xe0mp9a834LDETm53nBz8cen8iLTUibVaPKY13AMF0s2LReR0kX8GA
+ 0ByOlk6B13kzfLP1hxIvxWlZ5dAHGLIjUnuyGidq5Xkh+il/7mF9VEopknEIcpJPuBLu
+ n0JzXPJalzX35O4Y/Eswsu54Pwg8TexI5xEL95zOaZ39gBcqaLOAFMKxjfzEETKX5Gci
+ PA/g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUcpp9Y0iH2QM10Eziuy8LhAdv6juh5rpnhoYgCUHRPSUGg9blzYRPOby/y6jgwF73c/ta0u+qZ/A==@nongnu.org
+X-Gm-Message-State: AOJu0YwnGaCSJp3N/o2cqXg/JnpvedG6cJFYBcKV7Y4a7M0UqVl9Tnjq
+ Fez5VvcpKzCDOjwePxcC7iz5zeyMjVKr6kP6DzxeItiWL4hHal1pKPLcZgXKO6o=
+X-Gm-Gg: ASbGnctWGLnM+/t9SNF2/QbDNkPEbFHiQNgdjEDD4K4ZBJ6C/Q40wVHBxwJ14mlPIkS
+ x9WbxADXkQWVRNlRVV/ujnfYjZBFhkJfKjyzoJVFW8aFVxzk4AM1tipY9mc7cvCkShpHphkE7qI
+ aeuURtBCeNbA8aPSzs7gHvgXUC+bnemZou47+lr6kEMuIzqH8ItknS7jEUblQqDasMjCNaa4iYi
+ aI7XEBdMVawvnvhzm8DoenoEc4cDu3yWg6utFtJIJrrIYHsw0gBZXPrnGAACrHO28X9rq3K2l6z
+ BPhRXpMa3NfETDhAGUAbefHOiJ+Vm8pRsFNlZ0DFrFuyQT3aZ2G8t2U/MjQwZAnY
+X-Received: by 2002:a17:90b:33c8:b0:2fa:2268:1af4 with SMTP id
+ 98e67ed59e1d1-30e0db01419mr7180936a91.7.1747176953809; 
+ Tue, 13 May 2025 15:55:53 -0700 (PDT)
+Received: from [192.168.1.87] ([38.41.223.211])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-30e33482fd3sm136941a91.37.2025.05.13.15.55.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 13 May 2025 15:55:53 -0700 (PDT)
+Message-ID: <d7e3158c-2115-4a74-96a1-aec7fa99e172@linaro.org>
+Date: Tue, 13 May 2025 15:55:52 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH v3 06/10] arm/kvm: Allow reading all the writable ID
- registers
-To: Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
- peter.maydell@linaro.org, richard.henderson@linaro.org,
- alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- sebott@redhat.com, shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com
-Cc: agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com,
- philmd@linaro.org, pbonzini@redhat.com
-References: <20250414163849.321857-1-cohuck@redhat.com>
- <20250414163849.321857-7-cohuck@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250414163849.321857-7-cohuck@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: mU61gdfq5qTvofCYpYdutvAhzwWUYIV4wa64ekxbXEs_1747146694
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH] hw/xen/arch_hvm: Unify x86 and ARM variants
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-TUID: fNHPDsT7yELC
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ xen-devel@lists.xenproject.org, Anthony PERARD <anthony@xenproject.org>,
+ David Woodhouse <dwmw@amazon.co.uk>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org,
+ Stefano Stabellini <sstabellini@kernel.org>, Paul Durrant <paul@xen.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20250513171737.74386-1-philmd@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20250513171737.74386-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1035.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: m+jhinxxRx8s
 
-
-
-On 4/14/25 6:38 PM, Cornelia Huck wrote:
-> From: Eric Auger <eric.auger@redhat.com>
->
-> At the moment kvm_arm_get_host_cpu_features() reads a subset of the
-> ID regs. As we want to introduce properties for all writable ID reg
-> fields, we want more genericity and read more default host register
-> values.
->
-> Introduce a new get_host_cpu_idregs() helper and add a new exhaustive
-> boolean parameter to kvm_arm_get_host_cpu_features() and
-> kvm_arm_set_cpu_features_from_host() to select the right behavior.
-> The host cpu model will keep the legacy behavior unless the writable
-> id register interface is available.
->
-> A writable_map IdRegMap is introduced in the CPU object. A subsequent
-> patch will populate it.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+On 5/13/25 10:17 AM, Philippe Mathieu-Daudé wrote:
+> As each target declares the same prototypes, we can
+> use a single header, removing the TARGET_XXX uses.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->  target/arm/cpu-sysregs.h |  2 ++
->  target/arm/cpu.h         |  3 ++
->  target/arm/cpu64.c       |  2 +-
->  target/arm/kvm.c         | 78 ++++++++++++++++++++++++++++++++++++++--
->  target/arm/kvm_arm.h     |  9 +++--
->  target/arm/trace-events  |  1 +
->  6 files changed, 89 insertions(+), 6 deletions(-)
->
-> diff --git a/target/arm/cpu-sysregs.h b/target/arm/cpu-sysregs.h
-> index e89a1105904c..367fab51f19e 100644
-> --- a/target/arm/cpu-sysregs.h
-> +++ b/target/arm/cpu-sysregs.h
-> @@ -41,6 +41,8 @@ int get_sysreg_idx(ARMSysRegs sysreg);
->  
->  #ifdef CONFIG_KVM
->  uint64_t idregs_sysreg_to_kvm_reg(ARMSysRegs sysreg);
-> +int kvm_idx_to_idregs_idx(int kidx);
-> +int idregs_idx_to_kvm_idx(ARMIDRegisterIdx idx);
->  #endif
->  
->  #endif /* ARM_CPU_SYSREGS_H */
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 775a8aebc5d3..8717c5e7695b 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1088,6 +1088,9 @@ struct ArchCPU {
->       */
->      ARMIdRegsState writable_id_regs;
->  
-> +    /* ID reg writable bitmask (KVM only) */
-> +    IdRegMap *writable_map;
-as it is KVM only we may put it in ifdef CONFIG_KVM block above
+>   include/hw/arm/xen_arch_hvm.h  |  9 ---------
+>   include/hw/i386/xen_arch_hvm.h | 11 -----------
+>   include/hw/xen/arch_hvm.h      | 14 ++++++++++----
+>   hw/arm/xen-pvh.c               |  1 -
+>   4 files changed, 10 insertions(+), 25 deletions(-)
+>   delete mode 100644 include/hw/arm/xen_arch_hvm.h
+>   delete mode 100644 include/hw/i386/xen_arch_hvm.h
+> 
+> diff --git a/include/hw/arm/xen_arch_hvm.h b/include/hw/arm/xen_arch_hvm.h
+> deleted file mode 100644
+> index 8fd645e7232..00000000000
+> --- a/include/hw/arm/xen_arch_hvm.h
+> +++ /dev/null
+> @@ -1,9 +0,0 @@
+> -#ifndef HW_XEN_ARCH_ARM_HVM_H
+> -#define HW_XEN_ARCH_ARM_HVM_H
+> -
+> -#include <xen/hvm/ioreq.h>
+> -void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
+> -void arch_xen_set_memory(XenIOState *state,
+> -                         MemoryRegionSection *section,
+> -                         bool add);
+> -#endif
+> diff --git a/include/hw/i386/xen_arch_hvm.h b/include/hw/i386/xen_arch_hvm.h
+> deleted file mode 100644
+> index 1000f8f5433..00000000000
+> --- a/include/hw/i386/xen_arch_hvm.h
+> +++ /dev/null
+> @@ -1,11 +0,0 @@
+> -#ifndef HW_XEN_ARCH_I386_HVM_H
+> -#define HW_XEN_ARCH_I386_HVM_H
+> -
+> -#include <xen/hvm/ioreq.h>
+> -#include "hw/xen/xen-hvm-common.h"
+> -
+> -void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
+> -void arch_xen_set_memory(XenIOState *state,
+> -                         MemoryRegionSection *section,
+> -                         bool add);
+> -#endif
+> diff --git a/include/hw/xen/arch_hvm.h b/include/hw/xen/arch_hvm.h
+> index df39c819c8f..8bacaa4ec41 100644
+> --- a/include/hw/xen/arch_hvm.h
+> +++ b/include/hw/xen/arch_hvm.h
+> @@ -1,5 +1,11 @@
+> -#if defined(TARGET_I386) || defined(TARGET_X86_64)
+> -#include "hw/i386/xen_arch_hvm.h"
+> -#elif defined(TARGET_ARM) || defined(TARGET_AARCH64)
+> -#include "hw/arm/xen_arch_hvm.h"
+> +#ifndef HW_XEN_ARCH_HVM_H
+> +#define HW_XEN_ARCH_HVM_H
 > +
->      /* QOM property to indicate we should use the back-compat CNTFRQ default */
->      bool backcompat_cntfrq;
->  
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 839442745ea4..60a709502697 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -757,7 +757,7 @@ static void aarch64_host_initfn(Object *obj)
->  {
->  #if defined(CONFIG_KVM)
->      ARMCPU *cpu = ARM_CPU(obj);
-> -    kvm_arm_set_cpu_features_from_host(cpu);
-> +    kvm_arm_set_cpu_features_from_host(cpu, false);
->      if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
->          aarch64_add_sve_properties(obj);
->          aarch64_add_pauth_properties(obj);
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 6e3cd06e9bc5..b07d5f16db50 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -41,6 +41,7 @@
->  #include "hw/acpi/ghes.h"
->  #include "target/arm/gtimer.h"
->  #include "migration/blocker.h"
-> +#include "cpu-custom.h"
->  
->  const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
->      KVM_CAP_INFO(DEVICE_CTRL),
-> @@ -270,7 +271,73 @@ static int get_host_cpu_reg(int fd, ARMHostCPUFeatures *ahcf, ARMIDRegisterIdx i
->      return ret;
->  }
->  
-> -static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-> +int kvm_idx_to_idregs_idx(int kidx)
-> +{
-> +    int op1, crm, op2;
-> +    ARMSysRegs sysreg;
+> +#include <xen/hvm/ioreq.h>
+> +#include "hw/xen/xen-hvm-common.h"
 > +
-> +    op1 = kidx / 64;
-> +    if (op1 == 2) {
-> +        op1 = 3;
-> +    }
-> +    crm = (kidx % 64) / 8;
-> +    op2 = kidx % 8;
-> +    sysreg = ENCODE_ID_REG(3, op1, 0, crm, op2);
-> +    return get_sysreg_idx(sysreg);
-> +}
-> +
-> +int idregs_idx_to_kvm_idx(ARMIDRegisterIdx idx)
-> +{
-> +    ARMSysRegs sysreg = id_register_sysreg[idx];
-> +
-> +    return KVM_ARM_FEATURE_ID_RANGE_IDX((sysreg & CP_REG_ARM64_SYSREG_OP0_MASK) >> CP_REG_ARM64_SYSREG_OP0_SHIFT,
-> +                                        (sysreg & CP_REG_ARM64_SYSREG_OP1_MASK) >> CP_REG_ARM64_SYSREG_OP1_SHIFT,
-> +                                        (sysreg & CP_REG_ARM64_SYSREG_CRN_MASK) >> CP_REG_ARM64_SYSREG_CRN_SHIFT,
-> +                                        (sysreg & CP_REG_ARM64_SYSREG_CRM_MASK) >> CP_REG_ARM64_SYSREG_CRM_SHIFT,
-> +                                        (sysreg & CP_REG_ARM64_SYSREG_OP2_MASK) >> CP_REG_ARM64_SYSREG_OP2_SHIFT);
-> +}
-> +
-> +
-> +/*
-> + * get_host_cpu_idregs: Read all the writable ID reg host values
-> + *
-> + * Need to be called once the writable mask has been populated
-> + * Note we may want to read all the known id regs but some of them are not
-> + * writable and return an error, hence the choice of reading only those which
-> + * are writable. Those are also readable!
-> + */
-> +static int get_host_cpu_idregs(ARMCPU *cpu, int fd, ARMHostCPUFeatures *ahcf)
-> +{
-> +    int err = 0;
-> +    int i;
-> +
-> +    for (i = 0; i < NUM_ID_IDX; i++) {
-> +        ARM64SysReg *sysregdesc = &arm64_id_regs[i];
-> +        ARMSysRegs sysreg = sysregdesc->sysreg;
-> +        uint64_t writable_mask = cpu->writable_map->regs[idregs_idx_to_kvm_idx(i)];
-> +        uint64_t *reg;
-> +        int ret;
-> +
-> +        if (!writable_mask) {
-> +            continue;
-> +        }
-> +
-> +        reg = &ahcf->isar.idregs[i];
-> +        ret = read_sys_reg64(fd, reg, idregs_sysreg_to_kvm_reg(sysreg));
-> +        trace_get_host_cpu_idregs(sysregdesc->name, *reg);
-> +        if (ret) {
-> +            error_report("%s error reading value of host %s register (%m)",
-> +                         __func__, sysregdesc->name);
-> +
-> +            err = ret;
-> +        }
-> +    }
-> +    return err;
-> +}
-> +
-> +static bool
-> +kvm_arm_get_host_cpu_features(ARMCPU *cpu, ARMHostCPUFeatures *ahcf,
-> +                              bool exhaustive)
-maybe the exhaustive term shall be replaced by handle_writable_id_regs
-which tells more explicitly what it does
->  {
->      /* Identify the feature bits corresponding to the host CPU, and
->       * fill out the ARMHostCPUClass fields accordingly. To do this
-> @@ -398,6 +465,11 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->          err |= get_host_cpu_reg(fd, ahcf, ID_DFR1_EL1_IDX);
->          err |= get_host_cpu_reg(fd, ahcf, ID_MMFR5_EL1_IDX);
->  
-> +        /* Make sure writable ID reg values are read */
-> +        if (exhaustive) {
-> +            err |= get_host_cpu_idregs(cpu, fd, ahcf);
-> +        }
-> +
->          /*
->           * DBGDIDR is a bit complicated because the kernel doesn't
->           * provide an accessor for it in 64-bit mode, which is what this
-> @@ -467,13 +539,13 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->      return true;
->  }
->  
-> -void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
-> +void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu, bool exhaustive)
->  {
->      CPUARMState *env = &cpu->env;
->  
->      if (!arm_host_cpu_features.dtb_compatible) {
->          if (!kvm_enabled() ||
-> -            !kvm_arm_get_host_cpu_features(&arm_host_cpu_features)) {
-> +            !kvm_arm_get_host_cpu_features(cpu, &arm_host_cpu_features, exhaustive)) {
->              /* We can't report this error yet, so flag that we need to
->               * in arm_cpu_realizefn().
->               */
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index 8d1f20ca8d89..90ba4f7d8987 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -141,8 +141,12 @@ uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu);
->   *
->   * Set up the ARMCPU struct fields up to match the information probed
->   * from the host CPU.
-> + *
-> + * @cpu: cpu object
-> + * @exhaustive: if true, all the feature ID regs are queried instead of
-s/queried/handled
-> + *              a subset
->   */
-> -void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
-> +void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu, bool exhaustive);
->  
->  /**
->   * kvm_arm_add_vcpu_properties:
-> @@ -257,7 +261,8 @@ static inline int kvm_arm_get_writable_id_regs(ARMCPU *cpu, IdRegMap *idregmap)
->  /*
->   * These functions should never actually be called without KVM support.
->   */
-> -static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
-> +static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu,
-> +                                                      bool exhaustive)
->  {
->      g_assert_not_reached();
->  }
-> diff --git a/target/arm/trace-events b/target/arm/trace-events
-> index 4438dce7becc..17e52c0705f2 100644
-> --- a/target/arm/trace-events
-> +++ b/target/arm/trace-events
-> @@ -13,3 +13,4 @@ arm_gt_update_irq(int timer, int irqstate) "gt_update_irq: timer %d irqstate %d"
->  
->  # kvm.c
->  kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova = 0x%"PRIx64" is translated into 0x%"PRIx64
-> +get_host_cpu_idregs(const char *name, uint64_t value) "scratch vcpu host value for %s is 0x%"PRIx64
+> +void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
+> +void arch_xen_set_memory(XenIOState *state,
+> +                         MemoryRegionSection *section,
+> +                         bool add);
+>   #endif
+> diff --git a/hw/arm/xen-pvh.c b/hw/arm/xen-pvh.c
+> index 4b26bcff7a5..1a9eeb01c8e 100644
+> --- a/hw/arm/xen-pvh.c
+> +++ b/hw/arm/xen-pvh.c
+> @@ -10,7 +10,6 @@
+>   #include "hw/boards.h"
+>   #include "system/system.h"
+>   #include "hw/xen/xen-pvh-common.h"
+> -#include "hw/xen/arch_hvm.h"
+>   
+>   #define TYPE_XEN_ARM  MACHINE_TYPE_NAME("xenpvh")
+>   
 
-Eric
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+

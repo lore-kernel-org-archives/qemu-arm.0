@@ -1,122 +1,123 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp552993njb;
-        Tue, 13 May 2025 07:16:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVGL6AfpqlpubhHyUTaGwkOXS/rXepu4nYpmF9M1BruStWgYjFUMkm2nmEthoHdrfuFuZmqROi/tWMRpA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGLm/Hp5wPag6rwKsZ2hTI0Y6SIiV0GfjuNR5dScW5AzHafiA9WDEPKLWo6P6PCDcfnNew4
-X-Received: by 2002:a05:620a:bc5:b0:7c5:4c49:769c with SMTP id af79cd13be357-7cd010d525cmr2655764085a.6.1747145797887;
-        Tue, 13 May 2025 07:16:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747145797; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp553235njb;
+        Tue, 13 May 2025 07:17:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU5Kc6AgpNGJG4mGCo4G7C3bVmm7NKUEE8T+SLm2y/ZN+pF6V6Z9nIHE0NNpITACJ5Eszr+DDn8/e/h2g==@linaro.org
+X-Google-Smtp-Source: AGHT+IGUkSbYOX0zZbbedend6OBqKz7SO6T48X/IgjrEIYpGvyfUyi+xZzbsbQtltIXc+jh087b3
+X-Received: by 2002:a05:620a:438e:b0:7c5:53ab:a745 with SMTP id af79cd13be357-7cd0114ef20mr3342015685a.36.1747145828621;
+        Tue, 13 May 2025 07:17:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747145828; cv=none;
         d=google.com; s=arc-20240605;
-        b=GoeWtgpju3aMIDtHOiOLHdo6Y3ZhhybfDp20C+B5g5bsqqg9gQks5sEMMsBLvMlRab
-         DLtuMxAXeIxXlqvgbDE8E/yImh0d0UoUtzQejhyyCHQLvCnbAjKhBG9AMPLsJFZiz1Bm
-         mjX2+KRN2NC2fd6P0r7MWqMHEIlW774ayNSALLdRys05vgExUUxD8PSdXuLJkiVH3hf/
-         F8o79QjVFgtbxt7QvQV9el8IjCbpqvsE6ZM0DIkiNc3d/hxGJVA46aJiHuA63IeGpXCF
-         NMgC08uI3GPKBOsbgotv7ViirhiO26yEKip0sa//QnyDe6ooKnxu41D/rtKKrdaiV2JE
-         Hleg==
+        b=G0hthNUICK/huBx8qOVOiXBphuAFJPwsbZMC4UTw6cS22130STYNydJYPrd1Ns4YY4
+         lQfjw0xdGN5nBUWzo/czxtCSj/VZ6fZkxjUaaZ1lwuAoPJ3aL7onYXWhX/FfEIOKXIZZ
+         IiJwJxe6zCLEhlpfiBU/9QnDaDaFU2c3wWg6WT3Y/8J1nuF0zv/QCC1vZKqDqS9BbgM+
+         Wt04JNKb+OHQUk6LK4/BmHqZ1h0fMMZ21dJf32867FUnpXDn9lxtK9yKRhMiXzL/JbZB
+         LvLborqUxiScpttR4OoqV3W64FofNlR53fmuWeOjbwrIFo3+I2bXahRYVH3zjQcXuO9a
+         7gbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=98OOmrWk25E/kwedxRasvOoS2mo+ShZuSOIhL7Rf3TY=;
-        fh=ZZwLt5H82yHLOWpnvJwJfXwO1u4fGNY7kNtWC/UDUJc=;
-        b=EVdsmo429+rq1yQzD8cXKQEDsVlaMZb/GsztQ9WrC5GbQKsQ/Vsn4s11CVsyX+ges1
-         n9EZ1SDsUteu+uCr88ttBIX5+tZx4/FnOwOAmPF2fhlv06LjXthQWKudgz6GSPsmNBqB
-         TSUWlSa36uD1PzXDn+brCK+BeQDMj4P8jvP7IFMk67On/R0ypPMsvOOYeO8rjPmGHS6c
-         QZ2YbGiGGBviyUg1w4Vhs3y2KeVfXK1NODiyfOze/MczXpWncr2t9dU/tNQWWMTuG9sy
-         Bpq4ztpzxLDBTKzTRt9oVoSkP70B9uxK/zsLoY3wqTzoT+PUY4A4zAHyh59GUgLEGQvT
-         ztBg==;
+        bh=omIYyhjnPokjM8hDN/Na4Ta4HqneXcIGJ9F+NHfzW2Y=;
+        fh=X2dDt+3Lvg31+5nZKRV8fJCiaCcM59n0JDz7rKqnEUA=;
+        b=fATo/3fG/VzZYT+lXxOcMDa6RPV/b2PkNOq1/3fJjh6PTyhYXtICsFMfPgoOh+Rayd
+         x13cKEowa5DNdGJX0NDrg5ahSq0++ndWLFGkOFl6i/HB8obpJbXVtLZKpWruM/6ERja1
+         fBSr6KCHTkUALPiMi+lCh76S7q66xssRehN4XxBOvCitJ+cNNuqCQsEpfmrWZtAX0qcH
+         TeC4nRj40SCvd3CMHB9ag5G/dw4L96U+dBiHz1N2zKutA0HC6H3j+4P10kfHNJ7M5a3u
+         qoRceM9qcHt31i0W5wOyQ2VUED4rcBdLc6oJP6f6ePiYoC68c4iKqqeRvF35hoh12A3R
+         Oi5Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@adacore.com header.s=google header.b=UbA1purc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@adacore.com header.s=google header.b="N3RNAS/k";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=adacore.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd00fee752si1188343885a.545.2025.05.13.07.16.37
+        by mx.google.com with ESMTPS id af79cd13be357-7cd00fd4bfesi1092344585a.317.2025.05.13.07.17.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 07:16:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 May 2025 07:17:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@adacore.com header.s=google header.b=UbA1purc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@adacore.com header.s=google header.b="N3RNAS/k";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=adacore.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uEqQC-000450-Mx; Tue, 13 May 2025 10:15:52 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uEqQC-00044p-4F; Tue, 13 May 2025 10:15:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
- id 1uEqQ4-00043j-QT
- for qemu-arm@nongnu.org; Tue, 13 May 2025 10:15:47 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1uEqQ1-00042I-CG
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 10:15:42 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
- id 1uEqQ2-0005bT-DK
- for qemu-arm@nongnu.org; Tue, 13 May 2025 10:15:44 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-43cec5cd73bso38704685e9.3
- for <qemu-arm@nongnu.org>; Tue, 13 May 2025 07:15:41 -0700 (PDT)
+ id 1uEqPy-0005aH-W9
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 10:15:40 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-43cfebc343dso37945255e9.2
+ for <qemu-devel@nongnu.org>; Tue, 13 May 2025 07:15:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=adacore.com; s=google; t=1747145741; x=1747750541; darn=nongnu.org;
+ d=adacore.com; s=google; t=1747145737; x=1747750537; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=98OOmrWk25E/kwedxRasvOoS2mo+ShZuSOIhL7Rf3TY=;
- b=UbA1purcJ66oyDt1g9lAjt1woRnpsgNUKH0XeXK58Niy8zCqdYLFHO7WP53zMEFfmV
- MdcezDKEM1fD0ZZNJnStZX/sJfcAv+p3Rgh4u6rNAG1XBTvuOZwCWRJk/+EygJsCasIH
- mKCOrc8ihCONWH9SpI61oELGW9yvkvmLu1Se+6hsKnUfFXfmfpf8HH9ACvIMWTdGEDIZ
- MLQ47FYW/BrpBFS8+gEx7Z2XUXY44E8+iyj2VSm2aiY6AKQClzIydGocuxH8XOhMTlqD
- asVLDabsSxT72ICZSQam5YUjPOgI9UtKfWiHx2sCLNVIKDAYyodNrKpJ0OAOR92UWRxP
- XW0g==
+ bh=omIYyhjnPokjM8hDN/Na4Ta4HqneXcIGJ9F+NHfzW2Y=;
+ b=N3RNAS/kcPvaRIMAwAHBFz/jmVa6PtPaMkvItl3pj3R2itmoIid0gCCU03iH/DP0dc
+ uQYGjZtRcpnKu743TWIa/HfwbEbeRtHQPQKs0cdmyUtIOYrarhs640Ako2Aeyjz03gJw
+ xUK2Kd8jBdi2RCRgQRyjrg28HjJI7aKGOmqXWVfo78paR3rpin7nFZZDFRkgvrkLz5/P
+ rvf15z7UjdDSq2emgQMJMzd38xplHYO+XfIDlvTU0poItmuAsq9ZTwXc/2MhlNlQsC6e
+ ukFM/a/syFYzZ6jYMB0mn0VV/Ywp5PJP2CxoRdoH4Z11TIwYAxRsYafvD7diz1z4PgVp
+ 1N+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747145741; x=1747750541;
+ d=1e100.net; s=20230601; t=1747145737; x=1747750537;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=98OOmrWk25E/kwedxRasvOoS2mo+ShZuSOIhL7Rf3TY=;
- b=OC/9rTMpmjfzL75f9ElocTwOaviEkUYvpGNufcK/dZJ1zZDSs0BIQfmN9xfGN8nIPh
- garJinovabNjR+zJwBtz7UJFg7mqsqVMY2r9eCaYy60E4Hok199z6EcbH1EDfCBwo8kv
- bCBh/1qLirqWI92s3sQKJ1xo01zMyzT3b4+FxqlAO/unIvJnNDnIc1p+VF2OKbcKY+jO
- WutdEY34hoOeX8O5FfEx4Tg0bQUyLeViQ3WXv632PS9f8qRW/oaO7KGTrvtlko1CAf3K
- dYDPXTks+9ct6xdydtnt4D2CixPWktMwqA6sUkP1kSuDXKR5S2niT9pf6JYLO62eOe7k
- CnKg==
-X-Gm-Message-State: AOJu0YwmM+N4LW1LJZ7Ks9y+VoPhoHbfQ5M5GLrhUGzbdQyhTqB//in6
- NNvZESvu3PAsQNnM1L68486881EjrV5JH9od/uj63LAlI/5ChkvYj1UrOvIUAw==
-X-Gm-Gg: ASbGnctCT0J/SsJt8c8Y9l8WJP31d6XOA05f5xeZXD28XDEy0icTRT5DiZzHs3x0kPA
- Piv1hfEE9XzYdxiyk0S8etRS2x31T9ht6tvBWX1MWDcjkj+ssSVqWB0w9YggwX72qWH3Y8MViv6
- Y5t8+AUYGKfnKS6MD869C58WFZHon6xgEi3hAyq7vFtH69Hw+zcm9h3xU37BWKD6uaeK9ylw2x7
- 4SlmdikeVEqAfxXbvvA4H+5seL75da9o2xd6FmjUnBr3WRAuadXQsjWPta818PU0eyaKI6Wtio9
- Cu1KJ0Nzi0EMBAjweh8xqyqB/8VZjeSHz8gd3iLdIVxhcud2GuUEeAgUwAEc1hKGSSDdwUyRSdj
- YP5+mr55sl+wtyB+gUYF6fI+CWajjQY5+qDnZFGy8SaJcHBxoFYw1TBurUsw=
-X-Received: by 2002:a05:600c:4451:b0:43d:526:e0ce with SMTP id
- 5b1f17b1804b1-442d6dc51e8mr128437535e9.21.1747145740789; 
- Tue, 13 May 2025 07:15:40 -0700 (PDT)
+ bh=omIYyhjnPokjM8hDN/Na4Ta4HqneXcIGJ9F+NHfzW2Y=;
+ b=fSDuaDEM3Xpr5EFlSvbyvTZ+20UtqfpdmWAe327JGEtI/2O1O1fdcOk7fMgBPSbved
+ 8J/LY4CTI2wIVqz/0qJyGP6OdeolJ4xU1YR8a+9dFDew46wEiuza+q20/47Xb7IJN4ea
+ kwbRpuR8yBRfhhaAasNRZX0rkOZd6Dl9Og4D/MYDigfTmjrRbm/Dd8dc4o15RZx4xbZm
+ fxczl+ShL1tdIMIrHQAv03HebG1fsEvRoR9Iftv+8XdbYA8TkOV9U1f2i6dkhiE4wlKk
+ UwnUc42qr9oUf5DOd3ho4+KF/fJVotC9ghmf4tTkvH5LDeuqsSLmAIzVKLIdWAdpWfuo
+ tpUw==
+X-Gm-Message-State: AOJu0YxkBktFvX6mtn7eG7hvUxUjBHue1i+K+9GNYMFQnqSy8soGp47c
+ qqy+uUfH1BTTeqZcmEVeZ0gzqkQ9GK0K66BAipoiUarQMt6mm08apiTd98s76bQUCzIvhp1AG6s
+ =
+X-Gm-Gg: ASbGnct2dyHsf8nnRVSzT+kce+DKXY2Ed2pl3bRjtIkpfaGrB+4zD5hFBZkTdaEs1p3
+ WJv5ky+1DDHpJPKVNXueiiZ4TAyrFpevfcNSgIpxdPYGihK7cNSGn55b/PNXWKQrR3uuK0LeR4A
+ E7emvoSGV3yKDK56HDx0XM9y2fd5N+GGrRFNksJqQyMIX/64GUZEjaQnhAHw2YvZ2CVmElJB8hi
+ zr29CH0k9VlfZ3gCEDSE1bBnc550Rlj/6OPsptb/KWX6+fHUpf9WHIwweI8cOy0cbpm6l2tyYyB
+ n+qrl9385aOa1Qztu6vBk8LOxKm6nkeDDwzlLrMPcNrVfjggMyO9QuDhF9bmp7DevwzuAiwPuTK
+ 7NsFWUdOfF+qBWA54ZlgG3AtjOWPwbO4o5jVKO9t97LxOM35T
+X-Received: by 2002:a05:600c:37cd:b0:43c:e6d1:efe7 with SMTP id
+ 5b1f17b1804b1-442d6dd21e9mr122130445e9.26.1747145737182; 
+ Tue, 13 May 2025 07:15:37 -0700 (PDT)
 Received: from chigot-Dell.telnowedge.local
  (lmontsouris-659-1-24-67.w81-250.abo.wanadoo.fr. [81.250.175.67])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-442cd3b7e7fsm213438805e9.39.2025.05.13.07.15.40
+ 5b1f17b1804b1-442cd3b7e7fsm213438805e9.39.2025.05.13.07.15.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 May 2025 07:15:40 -0700 (PDT)
+ Tue, 13 May 2025 07:15:36 -0700 (PDT)
 From: =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, edgar.iglesias@gmail.com,
- alistair@alistair23.me,
+ alistair@alistair23.me, Frederic Konrad <konrad.frederic@yahoo.fr>,
  =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>
-Subject: [PATCH 4/4] hw/arm/xlnx-zynqmp: adapt cluster-id based on the boot cpu
-Date: Tue, 13 May 2025 16:14:48 +0200
-Message-Id: <20250513141448.297946-5-chigot@adacore.com>
+Subject: [PATCH 2/4] hw/intc/arm_gic: introduce a first-cpu-index property
+Date: Tue, 13 May 2025 16:14:46 +0200
+Message-Id: <20250513141448.297946-3-chigot@adacore.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250513141448.297946-1-chigot@adacore.com>
 References: <20250513141448.297946-1-chigot@adacore.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=chigot@adacore.com; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=chigot@adacore.com; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,85 +126,71 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: q04+bl3FXx55
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dgpWqaZrCi80
 
-When gdb is being connected to QEmu, it will be attached to the first
-CPU cluster. However, the ZynqMP board has two clusters, those being of
-two different architectures.
-Therefore, when gdb is connecting to the ZynqMP, it receives the target
-descriptor of the first CPU cluster. Up to now, it was always the APU
-cluster, which is AARCH64.
+From: Frederic Konrad <konrad.frederic@yahoo.fr>
 
-When booting on a RPU, gdb will still connect to the APU. If gdb is
-supporting only ARM32, it will receive the APU target descriptor,
-resulting in:
-  | (gdb) target remote :1234
-  | warning: while parsing target description (at line 1): Target
-  | description specified unknown architecture "aarch64"
-
-Adjust the cluster-id based on the boot cpu will resolve the above
-issue; allowing a pure ARM32 toolchain to debug programs running on
-RPUs.
+This introduces a first-cpu-index property to the arm-gic, as some SOCs
+could have two separate GIC (ie: the zynqmp).
 
 Signed-off-by: Clément Chigot <chigot@adacore.com>
 ---
- hw/arm/xlnx-zynqmp.c | 16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
+ hw/intc/arm_gic.c                | 2 +-
+ hw/intc/arm_gic_common.c         | 1 +
+ include/hw/intc/arm_gic_common.h | 2 ++
+ 3 files changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index be33669f87..f23ace6446 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -221,7 +221,13 @@ static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
+diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+index d18bef40fc..899f133363 100644
+--- a/hw/intc/arm_gic.c
++++ b/hw/intc/arm_gic.c
+@@ -59,7 +59,7 @@ static const uint8_t gic_id_gicv2[] = {
+ static inline int gic_get_current_cpu(GICState *s)
+ {
+     if (!qtest_enabled() && s->num_cpu > 1) {
+-        return current_cpu->cpu_index;
++        return current_cpu->cpu_index - s->first_cpu_index;
+     }
+     return 0;
+ }
+diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
+index 0f0c48d89a..ed5be05645 100644
+--- a/hw/intc/arm_gic_common.c
++++ b/hw/intc/arm_gic_common.c
+@@ -350,6 +350,7 @@ static void arm_gic_common_linux_init(ARMLinuxBootIf *obj,
  
-     object_initialize_child(OBJECT(s), "rpu-cluster", &s->rpu_cluster,
-                             TYPE_CPU_CLUSTER);
--    qdev_prop_set_uint32(DEVICE(&s->rpu_cluster), "cluster-id", 1);
-+
-+    /* In order to connect gdb to the boot cpu, adjust the cluster-id.  */
-+    if (!strncmp(boot_cpu, "rpu-cpu", 7)) {
-+        qdev_prop_set_uint32(DEVICE(&s->rpu_cluster), "cluster-id", 0);
-+    } else {
-+        qdev_prop_set_uint32(DEVICE(&s->rpu_cluster), "cluster-id", 1);
-+    }
+ static const Property arm_gic_common_properties[] = {
+     DEFINE_PROP_UINT32("num-cpu", GICState, num_cpu, 1),
++    DEFINE_PROP_UINT32("first-cpu-index", GICState, first_cpu_index, 0),
+     DEFINE_PROP_UINT32("num-irq", GICState, num_irq, 32),
+     /* Revision can be 1 or 2 for GIC architecture specification
+      * versions 1 or 2, or 0 to indicate the legacy 11MPCore GIC.
+diff --git a/include/hw/intc/arm_gic_common.h b/include/hw/intc/arm_gic_common.h
+index 97fea4102d..93a3cc2bf8 100644
+--- a/include/hw/intc/arm_gic_common.h
++++ b/include/hw/intc/arm_gic_common.h
+@@ -129,6 +129,8 @@ struct GICState {
+     uint32_t num_lrs;
  
-     for (i = 0; i < num_rpus; i++) {
-         const char *name;
-@@ -380,7 +386,6 @@ static void xlnx_zynqmp_init(Object *obj)
+     uint32_t num_cpu;
++    /* cpu_index of the first CPU, attached to this GIC.  */
++    uint32_t first_cpu_index;
  
-     object_initialize_child(obj, "apu-cluster", &s->apu_cluster,
-                             TYPE_CPU_CLUSTER);
--    qdev_prop_set_uint32(DEVICE(&s->apu_cluster), "cluster-id", 0);
- 
-     for (i = 0; i < num_apus; i++) {
-         object_initialize_child(OBJECT(&s->apu_cluster), "apu-cpu[*]",
-@@ -475,6 +480,13 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
- 
-     ram_size = memory_region_size(s->ddr_ram);
- 
-+    /* In order to connect gdb to the boot cpu, adjust the cluster-id.  */
-+    if (!strncmp(boot_cpu, "apu-cpu", 7)) {
-+        qdev_prop_set_uint32(DEVICE(&s->apu_cluster), "cluster-id", 0);
-+    } else {
-+        qdev_prop_set_uint32(DEVICE(&s->apu_cluster), "cluster-id", 1);
-+    }
-+
-     /*
-      * Create the DDR Memory Regions. User friendly checks should happen at
-      * the board level
+     MemoryRegion iomem; /* Distributor */
+     /* This is just so we can have an opaque pointer which identifies
 -- 
 2.34.1
 

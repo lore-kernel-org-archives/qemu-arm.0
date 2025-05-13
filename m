@@ -1,413 +1,192 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp391310njb;
-        Tue, 13 May 2025 02:30:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVRgj+ra0s8m6TslZT0wDe8CnIjbER9xm3JXbAaxEnbIG3/jefg1YJ+0lSb7dDVQkWTtvqtOqjMS4edbA==@linaro.org
-X-Google-Smtp-Source: AGHT+IErHXTdKUAHGYqY7/eJvZOgthPI7cWR2ZqB8Dac837fKyCH2P+qdJP1CjT3EKtrTtHM5aKk
-X-Received: by 2002:a05:620a:4614:b0:7c5:65ab:5002 with SMTP id af79cd13be357-7cd011793a2mr3034418785a.49.1747128611667;
-        Tue, 13 May 2025 02:30:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747128611; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp392765njb;
+        Tue, 13 May 2025 02:33:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVJ2tkWOzIp9//WyZpzS6UD+1+NwJwWY09mcb+q25mUvVCQJ16OnwTTOKuQ6sMIXeJx1CLb98Z2nZxSQA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFSLNbFKzkK+sGU12gwN7IYK8XNfmiU4miNmRbEQGOWPe35+8HURj3ZoPtu/EnoYwe9qBzC
+X-Received: by 2002:ac8:7fc8:0:b0:476:8d3d:adb6 with SMTP id d75a77b69052e-49452761716mr253893101cf.23.1747128803661;
+        Tue, 13 May 2025 02:33:23 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1747128803; cv=pass;
         d=google.com; s=arc-20240605;
-        b=RtYGxWIvmyJZmPwpPN2aQjqdCEnnh0bOGXHiEpXH9Cth/1wpew2r+SeNfwJuYgzhaF
-         LcmPpBHYewQTxIvs+pzxVzIQtCnc8Du8gM7QFRfB8yuxbF2ZSzc+Ie4PrUws1LfBaMwG
-         7rLciE+1CYsb712tRWg+rhZPitD0REEOvm+fF4GvWotyv4ABqwyiecmrHkhvVa7c4D5H
-         qylNOobvpC/Mp8/ZFK3M/lJN12obIPn9L3Gl/OtDI0f1wqddxzrsVmCYNJ/oLBVGXuah
-         E6JB7AXIcglvZDygKwrbNFrISJkK8+YHbQWoV/w+rtuyxLPtzDFDTRoIzfyuqGyeIK+a
-         rMGg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=GX+RyOEyFb/04KSchr3/KVvZXnW79gVY6DRLWfxso80=;
-        fh=w0GU0x1fgN4MkTfRhk9cORDgIktorigTof7ruv0/Oxc=;
-        b=QAIt8771uPmPDq6ndqhxNEPFbVGxAgDSMy6oUqF49IAja5pO2ZNu6keXjGd0tqYLl1
-         TnF2ysnvnLGu/xYlmv8PWrKDrQF9vN6+xh6lqVvPPcwKJIfqTIDoh8thsrZPq71/MuDe
-         U4w+VEVU/i2W8PdetVauKY/HPMj3quKQFax27cQoFgj1MM5CQpDOjvbxVRWYW86ITYiZ
-         da9/Ntg43N4hmku6qGZ+wwUkUioLYXOXpHIscKffhuKA+b4zMUJFl/HY1w8QqbY9B/hA
-         6IS1qoS2+/aj9f4LayF6M92KXzSZN30fBZf4Zo70u4YoVnPUmxqL8YrI+SVyHji0aGcB
-         twUQ==;
+        b=JAkeX3Si/Q7UE95J7EY9CJ2Y9aXqsFJJUEP1gQy1wvX24/QSFZHPOdPUpyTHimisY1
+         Byp7DdbmWPi9L/4eL4hBstawnJpyVKh9XucVOMO48nOWm5GbKZpQD0qrdCRSOASHZAqN
+         7+zDv8Ito+ODG6o/83FBD8EyzlBQEC0MW/CfnXCmPE13+Neu8KyvLwxonG308GJhJmZ9
+         3L1Bu8pXyUopJo6YJi8fZPeVUWb+U3Ow/NXr6knzgOl4QFe8gEW2wnbkkzpwO9K6ksST
+         z49cYoHB50Snjsbaj3ZzNKSQdsfy+nddJNPQjXEttNfl5X9/qmV8AVIAr4OWETDJW5O5
+         iWKA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=user-agent:in-reply-to:content-disposition:mime-version
+         :list-unsubscribe:list-subscribe:list-id:precedence:references
+         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=FSlig199wVoNbDgW3dvwZUsFQR5bFCcLzhfmn5TmBRM=;
+        fh=Fwj35Yd61KYQsl+ISIcXJZaslf67A0O8IR4zEQg5//A=;
+        b=dK4LZlv9UiIo9WCJu94OSdaV+QEfMRwClA2H2jxlTUsex59ZVYzR/k4vCLu0+lAl65
+         +L1k+DwhZNs3uMLI4uGJDi68YR/yMJK2V/edfXkdlqbxCNAit6kzG2Eo3DfAmYEbag3P
+         7oMXEr77nkz3PlEEpExhCpJa3Rsw9CtaPTj6SvCBkoyvyydypU5Bbef/Tzr/7cGBwy8m
+         2VFw87JrhFRWIDGZ2Cj2SX6jv5G5V67rNjUgFWa9CaynTLvThHiNu+yLbhz2vm2oF5qI
+         0OvsK7dst0Ig1JsquwfrUG5vTPUw9+B8uU58bWUXvsTIUnN3qkkGf48yG/aGZd9OqjU9
+         ohjw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dTaYdGLD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MtzlO7cx;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46315-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-46315-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd00fe39b4si1177743485a.458.2025.05.13.02.30.11
+Return-Path: <kvm+bounces-46315-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id d75a77b69052e-49452587cc3si106457631cf.465.2025.05.13.02.33.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 02:30:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 May 2025 02:33:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46315-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dTaYdGLD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MtzlO7cx;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46315-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-46315-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uElxY-0004dX-3i; Tue, 13 May 2025 05:30:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1uElxW-0004d1-E7
- for qemu-devel@nongnu.org; Tue, 13 May 2025 05:29:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1uElxT-0003ZD-1W
- for qemu-devel@nongnu.org; Tue, 13 May 2025 05:29:58 -0400
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id BB758465EE6
+	for <alex.bennee@linaro.org>; Tue, 13 May 2025 09:33:24 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 3778C2206A7;
+	Tue, 13 May 2025 09:33:19 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="MtzlO7cx"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 40D101DDA18
+	for <kvm@vger.kernel.org>; Tue, 13 May 2025 09:33:17 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1747128798; cv=none; b=NZ4kS+MjLppEx8an3dMwOR/6i/D5yTWe7/x1aRqXKmh6ePaszamRdw3wkdSah2AQQKeB4PJ4i39DsqspXcXB/VFPcXmaCmeSh9PZXpkW1tvQ6StClJ6cbEjrrsep6dtKleaN88FmMjmqHa/M95ZPwCiJborRURahlKH7jISC1L0=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1747128798; c=relaxed/simple;
+	bh=kYCafdnnhoHb78BLur38mghelPeeuES2wDf7yRCgoNM=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=MzmYTCiTzsjgAd+lSgnxk/6xBYn8T6KHPUBG5ae99aay70EjRQoc1ecfy9Uc5RTjrznF8tX4dJaBSZUtTobfa94rQPrlFZy16GKP1tJ/6X/dDnMMP9XVJgTZeOHVwOcajnGCoj0cuEUR4pjSWW19Rnj0TtJnImAiXEeeIL3pLYQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=MtzlO7cx; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1747128592;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=GX+RyOEyFb/04KSchr3/KVvZXnW79gVY6DRLWfxso80=;
- b=dTaYdGLDfjG/LBne9Iji7F/KrrJEx2XKM0Jfh2N+RD2o8nIbk6zYz9kZiwFEW0gmp+guM1
- fuSSrDpr5ZvU2CSgh+zDojAk48glCco0F6W9iHmprUw0NC5zPKJ7sMtua0bhQJN0F7896K
- GqU0B2kZLqHdNaUnCZkDayK+szG7thE=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-537-oQRpwvDkPPu6b3vj04uz_g-1; Tue, 13 May 2025 05:29:50 -0400
-X-MC-Unique: oQRpwvDkPPu6b3vj04uz_g-1
-X-Mimecast-MFC-AGG-ID: oQRpwvDkPPu6b3vj04uz_g_1747128590
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-442cdf07ad9so22330285e9.2
- for <qemu-devel@nongnu.org>; Tue, 13 May 2025 02:29:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747128590; x=1747733390;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=GX+RyOEyFb/04KSchr3/KVvZXnW79gVY6DRLWfxso80=;
- b=Yxo0OYVj8ltGvzInjPGuqt1wlQqxx7k1MRWdmAk7ugGUgfEGX09wY6Y0hbTjAkYc86
- TAKqqVMdhgQxwEKmQQWJpcvRCFsHmwXC5INJEfN/hxA5T3HtcZ0oYj5cCjbeS0jMmYeU
- W777wd/81W3Uj3Nm1Ta0YJ7fWiwP2/3lCDIPVgi/p5jCU5Fg0fvhcxbnrWSjPD9w5gxW
- XPFegIlQd1DhuOIFSImN27pvqxlsUj0jmJTDUgo3ngYfOvFUtQvICeMSfbOsR1Puz8vQ
- rtonc4GOEOschmZ8Gg0e+k7AmxX48Ng94ME56Q5ZDRWorFJXnqMwo3kpXIk1rr89PquD
- za1w==
-X-Gm-Message-State: AOJu0YzshE4BfUmQqpqlxVvvG5+HeKOBVF9ZDIlSm6ihwrS2OVeQj1/2
- 9G82depY/ulTSC2BjJcqvF3ZtqvCYyenUATWhB6EMDEhJitKw2fORS+j6px+5ibcQujx/OKek02
- 9hqyrvrrwEml/BnZa+0oNSiwLUgMUTlcLJafoLSA2d5RWI8A5oHKsnoZYrueKDPBtgS2JzB6374
- h0W9EPllp7i/+03mI6AQocxpBJo7o=
-X-Gm-Gg: ASbGncvtoQVuk/Lx7lcveSDoUeh1YaBfAn41yVKhhnkmL6DSvg/8Xbsi5VCjrXT3HgM
- vmpVtUSoICM2Gx0JcQmcd0VdRZgrJGwhxPzlw5S46Q2em5kUmfIhwSg+yFR/YbG/v8ls=
-X-Received: by 2002:a05:600c:4e45:b0:43d:46de:b0eb with SMTP id
- 5b1f17b1804b1-442d6d44814mr147536685e9.12.1747128589538; 
- Tue, 13 May 2025 02:29:49 -0700 (PDT)
-X-Received: by 2002:a05:600c:4e45:b0:43d:46de:b0eb with SMTP id
- 5b1f17b1804b1-442d6d44814mr147536375e9.12.1747128589114; Tue, 13 May 2025
- 02:29:49 -0700 (PDT)
+	s=mimecast20190719; t=1747128796;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
+	bh=FSlig199wVoNbDgW3dvwZUsFQR5bFCcLzhfmn5TmBRM=;
+	b=MtzlO7cx/FGWDWlQNnOjzbi3hnmy6IyrSO9+Ugr1YC3tHwIHYVPLtVCwR8WKMn96IV8szy
+	UmVb2YNCm/GE2z5CzBG2+rjzIGT6KcrpcBz4QRzVEndlALRUVnoR9BWcwIuiKQfC/1f7S0
+	C5WdRgRz8sTr3AlFoHHunhBRV7OklSU=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-341-926khPqKNyaih3aDkOWbew-1; Tue,
+ 13 May 2025 05:33:13 -0400
+X-MC-Unique: 926khPqKNyaih3aDkOWbew-1
+X-Mimecast-MFC-AGG-ID: 926khPqKNyaih3aDkOWbew_1747128790
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id AF84E18004A7;
+	Tue, 13 May 2025 09:33:08 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.110])
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D703730001A1;
+	Tue, 13 May 2025 09:32:50 +0000 (UTC)
+Date: Tue, 13 May 2025 10:32:44 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: Markus Armbruster <armbru@redhat.com>,
+	Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
+	Xiaoyao Li <xiaoyao.li@intel.com>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	kvm@vger.kernel.org, Gerd Hoffmann <kraxel@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu <yi.l.liu@intel.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org,
+	Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
+	Yanan Wang <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Fabiano Rosas <farosas@suse.de>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	=?utf-8?Q?Cl=C3=A9ment?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
+	qemu-arm@nongnu.org,
+	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Jason Wang <jasowang@redhat.com>
+Subject: Re: How to mark internal properties
+Message-ID: <aCMRvH0rWpWlgSNs@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20250508133550.81391-13-philmd@linaro.org>
+ <23260c74-01ba-45bc-bf2f-b3e19c28ec8a@intel.com>
+ <aB2vjuT07EuO6JSQ@intel.com>
+ <2f526570-7ab0-479c-967c-b3f95f9f19e3@redhat.com>
+ <CAFEAcA-kuHvxjuV_cMh-Px3C-k2Gd51jFqhwndO52vm++M_jAA@mail.gmail.com>
+ <aCG6MuDLrQpoTqpg@redhat.com>
+ <87jz6mqeu5.fsf@pond.sub.org>
+ <eedd1fa2-5856-41b8-8e6b-38bd5c98ce8f@nutanix.com>
+ <87ecwshqj4.fsf@pond.sub.org>
+ <60cd3ba8-2ab1-74ac-54ea-5e3b309788a1@eik.bme.hu>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <20250513083343.148497-1-thuth@redhat.com>
-In-Reply-To: <20250513083343.148497-1-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Date: Tue, 13 May 2025 11:29:35 +0200
-X-Gm-Features: AX0GCFt6xkm39Y0EmcUuZTFtWe0QcBEO6mu1BmK3-900m6RYx0iVb5tpo7TZxtg
-Message-ID: <CABgObfZnEcbU24N5SQLLwK-XepuxOR_+sRFnjioLkuTbTCJRNQ@mail.gmail.com>
-Subject: Re: [PATCH] meson.build: Compile common_ss files with right system
- header include paths
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qemu-arm <qemu-arm@nongnu.org>, Brad Smith <brad@comstyle.com>
-Content-Type: multipart/alternative; boundary="000000000000ee6fff063501125f"
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.551,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GpHbFG8QTXEI
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <60cd3ba8-2ab1-74ac-54ea-5e3b309788a1@eik.bme.hu>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: PCQV3EwyE6N+
 
---000000000000ee6fff063501125f
-Content-Type: text/plain; charset="UTF-8"
+On Tue, May 13, 2025 at 11:26:31AM +0200, BALATON Zoltan wrote:
+> On Tue, 13 May 2025, Markus Armbruster wrote:
+> > Mark Cave-Ayland <mark.caveayland@nutanix.com> writes:
+> > > On a related note this also brings us back to the discussion as to
+> > > the relationship between qdev and QOM: at one point I was under the
+> > > impression that qdev properties were simply QOM properties that were
+> > > exposed externally, i.e on the commmand line for use with -device.
+> > > 
+> > > Can you provide an update on what the current thinking is in this
+> > > area, in particular re: scoping of qdev vs QOM properties?
+> > 
+> > qdev is a leaky layer above QOM.
+> > 
+> > qdev properties are also QOM properties.
+> > 
+> > All device properties are exposed externally.
+> 
+> That was clear but the question was if QOM properties (that are not qdev
+> properties) exist and if so are they also exposed? If not exposed it may be
+> used for internal properties (where simpler solutions aren't convenient) but
+> maybe qdev also adds easier definition of properties that's why they used
+> instead of QOM properties?
 
-Il mar 13 mag 2025, 10:33 Thomas Huth <thuth@redhat.com> ha scritto:
+NB, not everything we expose is a QDev. We directly expose QOM
+via "-object" if they implement the 'UserCreatable' interface.
+If we want internal properties, that should likely be wired in
+to the QOM level directly.
 
-> From: Thomas Huth <thuth@redhat.com>
->
-> Since commit 6f4e8a92bbd ("hw/arm: make most of the compilation units
-> common"), compilation of some arm machines (like musicpal) fails on
-> certain host systems like OpenBSD 7.6/7.7 since headers like <epoxy/gl.h>
-> don't reside in /usr/include and we currently don't add the right
-> CFLAGS for the common files to include the additional header search
-> paths. Add a loop similar to what we already did in commit 727bb5b477e6
-> to fix it.
->
-> With this fix applied, we can now also drop the explicit dependency
-> on pixman for the arm musicpal machine.
->
+Conceptually you could even say that everything QEMU creates should
+live under -object, and no other args ought to need to exist. We have
+decades of evolved code making that impractical though.
 
-Thanks, maybe replace common_ss with hw_common_arch_libs in the subject?
-These are not necessarily compiled once.
-
-Paolo
-
-Fixes: 6f4e8a92bbd ("hw/arm: make most of the compilation units common")
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> [thuth: Add commit message + changes in hw/arm/meson.build]
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  meson.build        | 27 ++++++++++++++++-----------
->  hw/arm/meson.build |  2 +-
->  2 files changed, 17 insertions(+), 12 deletions(-)
->
-> diff --git a/meson.build b/meson.build
-> index 5ac64075be7..7131aa2b21d 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -3228,6 +3228,7 @@ config_devices_mak_list = []
->  config_devices_h = {}
->  config_target_h = {}
->  config_target_mak = {}
-> +config_base_arch_mak = {}
->
->  disassemblers = {
->    'alpha' : ['CONFIG_ALPHA_DIS'],
-> @@ -3419,6 +3420,11 @@ foreach target : target_dirs
->      config_all_devices += config_devices
->    endif
->    config_target_mak += {target: config_target}
-> +
-> +  # build a merged config for all targets with the same TARGET_BASE_ARCH
-> +  target_base_arch = config_target['TARGET_BASE_ARCH']
-> +  config_base_arch = config_base_arch_mak.get(target_base_arch, {}) +
-> config_target
-> +  config_base_arch_mak += {target_base_arch: config_base_arch}
->  endforeach
->  target_dirs = actual_target_dirs
->
-> @@ -4099,28 +4105,27 @@ common_all = static_library('common',
->
->  # construct common libraries per base architecture
->  hw_common_arch_libs = {}
-> -foreach target : target_dirs
-> -  config_target = config_target_mak[target]
-> -  target_base_arch = config_target['TARGET_BASE_ARCH']
-> +foreach target_base_arch, config_base_arch : config_base_arch_mak
-> +  if target_base_arch in hw_common_arch
-> +    base_arch_hw =
-> hw_common_arch[target_base_arch].apply(config_base_arch, strict: false)
-> +    base_arch_common = common_ss.apply(config_base_arch, strict: false)
->
-> -  # check if already generated
-> -  if target_base_arch in hw_common_arch_libs
-> -    continue
-> -  endif
-> +    lib_deps = base_arch_hw.dependencies()
-> +    foreach dep : base_arch_common.dependencies()
-> +      lib_deps += dep.partial_dependency(compile_args: true, includes:
-> true)
-> +    endforeach
->
-> -  if target_base_arch in hw_common_arch
->      target_inc = [include_directories('target' / target_base_arch)]
-> -    src = hw_common_arch[target_base_arch]
->      lib = static_library(
->        'hw_' + target_base_arch,
->        build_by_default: false,
-> -      sources: src.all_sources() + genh,
-> +      sources: base_arch_hw.sources() + genh,
->        include_directories: common_user_inc + target_inc,
->        implicit_include_directories: false,
->        # prevent common code to access cpu compile time
->        # definition, but still allow access to cpu.h
->        c_args: ['-DCPU_DEFS_H', '-DCOMPILING_SYSTEM_VS_USER',
-> '-DCONFIG_SOFTMMU'],
-> -      dependencies: src.all_dependencies())
-> +      dependencies: lib_deps)
->      hw_common_arch_libs += {target_base_arch: lib}
->    endif
->  endforeach
-> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-> index 5098795f61d..8e3bf495dbf 100644
-> --- a/hw/arm/meson.build
-> +++ b/hw/arm/meson.build
-> @@ -8,7 +8,7 @@ arm_common_ss.add(when: 'CONFIG_HIGHBANK', if_true:
-> files('highbank.c'))
->  arm_common_ss.add(when: 'CONFIG_INTEGRATOR', if_true:
-> files('integratorcp.c'))
->  arm_common_ss.add(when: 'CONFIG_MICROBIT', if_true: files('microbit.c'))
->  arm_common_ss.add(when: 'CONFIG_MPS3R', if_true: files('mps3r.c'))
-> -arm_common_ss.add(when: 'CONFIG_MUSICPAL', if_true: [pixman,
-> files('musicpal.c')])
-> +arm_common_ss.add(when: 'CONFIG_MUSICPAL', if_true: files('musicpal.c'))
->  arm_common_ss.add(when: 'CONFIG_NETDUINOPLUS2', if_true:
-> files('netduinoplus2.c'))
->  arm_common_ss.add(when: 'CONFIG_OLIMEX_STM32_H405', if_true:
-> files('olimex-stm32-h405.c'))
->  arm_common_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx.c',
-> 'npcm7xx_boards.c'))
-> --
-> 2.49.0
->
->
-
---000000000000ee6fff063501125f
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote gmail_quote_contai=
-ner"><div dir=3D"ltr" class=3D"gmail_attr">Il mar 13 mag 2025, 10:33 Thomas=
- Huth &lt;<a href=3D"mailto:thuth@redhat.com">thuth@redhat.com</a>&gt; ha s=
-critto:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
-0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">From: Th=
-omas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=3D"_blank" rel=3D"=
-noreferrer">thuth@redhat.com</a>&gt;<br>
-<br>
-Since commit 6f4e8a92bbd (&quot;hw/arm: make most of the compilation units<=
-br>
-common&quot;), compilation of some arm machines (like musicpal) fails on<br=
->
-certain host systems like OpenBSD 7.6/7.7 since headers like &lt;epoxy/gl.h=
-&gt;<br>
-don&#39;t reside in /usr/include and we currently don&#39;t add the right<b=
-r>
-CFLAGS for the common files to include the additional header search<br>
-paths. Add a loop similar to what we already did in commit 727bb5b477e6<br>
-to fix it.<br>
-<br>
-With this fix applied, we can now also drop the explicit dependency<br>
-on pixman for the arm musicpal machine.<br></blockquote></div></div><div di=
-r=3D"auto"><br></div><div dir=3D"auto">Thanks, maybe replace common_ss with=
-=C2=A0hw_common_arch_libs in the subject? These are not necessarily compile=
-d once.</div><div dir=3D"auto"><br></div><div dir=3D"auto">Paolo</div><div =
-dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_quote gmail_qu=
-ote_container"><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
-x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Fixes: 6f4=
-e8a92bbd (&quot;hw/arm: make most of the compilation units common&quot;)<br=
->
-Signed-off-by: Paolo Bonzini &lt;<a href=3D"mailto:pbonzini@redhat.com" tar=
-get=3D"_blank" rel=3D"noreferrer">pbonzini@redhat.com</a>&gt;<br>
-[thuth: Add commit message + changes in hw/arm/meson.build]<br>
-Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=
-=3D"_blank" rel=3D"noreferrer">thuth@redhat.com</a>&gt;<br>
----<br>
-=C2=A0meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 27 ++++++++++++++++---------=
---<br>
-=C2=A0hw/arm/meson.build |=C2=A0 2 +-<br>
-=C2=A02 files changed, 17 insertions(+), 12 deletions(-)<br>
-<br>
-diff --git a/meson.build b/meson.build<br>
-index 5ac64075be7..7131aa2b21d 100644<br>
---- a/meson.build<br>
-+++ b/meson.build<br>
-@@ -3228,6 +3228,7 @@ config_devices_mak_list =3D []<br>
-=C2=A0config_devices_h =3D {}<br>
-=C2=A0config_target_h =3D {}<br>
-=C2=A0config_target_mak =3D {}<br>
-+config_base_arch_mak =3D {}<br>
-<br>
-=C2=A0disassemblers =3D {<br>
-=C2=A0 =C2=A0&#39;alpha&#39; : [&#39;CONFIG_ALPHA_DIS&#39;],<br>
-@@ -3419,6 +3420,11 @@ foreach target : target_dirs<br>
-=C2=A0 =C2=A0 =C2=A0config_all_devices +=3D config_devices<br>
-=C2=A0 =C2=A0endif<br>
-=C2=A0 =C2=A0config_target_mak +=3D {target: config_target}<br>
-+<br>
-+=C2=A0 # build a merged config for all targets with the same TARGET_BASE_A=
-RCH<br>
-+=C2=A0 target_base_arch =3D config_target[&#39;TARGET_BASE_ARCH&#39;]<br>
-+=C2=A0 config_base_arch =3D config_base_arch_mak.get(target_base_arch, {})=
- + config_target<br>
-+=C2=A0 config_base_arch_mak +=3D {target_base_arch: config_base_arch}<br>
-=C2=A0endforeach<br>
-=C2=A0target_dirs =3D actual_target_dirs<br>
-<br>
-@@ -4099,28 +4105,27 @@ common_all =3D static_library(&#39;common&#39;,<br>
-<br>
-=C2=A0# construct common libraries per base architecture<br>
-=C2=A0hw_common_arch_libs =3D {}<br>
--foreach target : target_dirs<br>
--=C2=A0 config_target =3D config_target_mak[target]<br>
--=C2=A0 target_base_arch =3D config_target[&#39;TARGET_BASE_ARCH&#39;]<br>
-+foreach target_base_arch, config_base_arch : config_base_arch_mak<br>
-+=C2=A0 if target_base_arch in hw_common_arch<br>
-+=C2=A0 =C2=A0 base_arch_hw =3D hw_common_arch[target_base_arch].apply(conf=
-ig_base_arch, strict: false)<br>
-+=C2=A0 =C2=A0 base_arch_common =3D common_ss.apply(config_base_arch, stric=
-t: false)<br>
-<br>
--=C2=A0 # check if already generated<br>
--=C2=A0 if target_base_arch in hw_common_arch_libs<br>
--=C2=A0 =C2=A0 continue<br>
--=C2=A0 endif<br>
-+=C2=A0 =C2=A0 lib_deps =3D base_arch_hw.dependencies()<br>
-+=C2=A0 =C2=A0 foreach dep : base_arch_common.dependencies()<br>
-+=C2=A0 =C2=A0 =C2=A0 lib_deps +=3D dep.partial_dependency(compile_args: tr=
-ue, includes: true)<br>
-+=C2=A0 =C2=A0 endforeach<br>
-<br>
--=C2=A0 if target_base_arch in hw_common_arch<br>
-=C2=A0 =C2=A0 =C2=A0target_inc =3D [include_directories(&#39;target&#39; / =
-target_base_arch)]<br>
--=C2=A0 =C2=A0 src =3D hw_common_arch[target_base_arch]<br>
-=C2=A0 =C2=A0 =C2=A0lib =3D static_library(<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;hw_&#39; + target_base_arch,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0build_by_default: false,<br>
--=C2=A0 =C2=A0 =C2=A0 sources: src.all_sources() + genh,<br>
-+=C2=A0 =C2=A0 =C2=A0 sources: base_arch_hw.sources() + genh,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0include_directories: common_user_inc + target_in=
-c,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0implicit_include_directories: false,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0# prevent common code to access cpu compile time=
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0# definition, but still allow access to cpu.h<br=
->
-=C2=A0 =C2=A0 =C2=A0 =C2=A0c_args: [&#39;-DCPU_DEFS_H&#39;, &#39;-DCOMPILIN=
-G_SYSTEM_VS_USER&#39;, &#39;-DCONFIG_SOFTMMU&#39;],<br>
--=C2=A0 =C2=A0 =C2=A0 dependencies: src.all_dependencies())<br>
-+=C2=A0 =C2=A0 =C2=A0 dependencies: lib_deps)<br>
-=C2=A0 =C2=A0 =C2=A0hw_common_arch_libs +=3D {target_base_arch: lib}<br>
-=C2=A0 =C2=A0endif<br>
-=C2=A0endforeach<br>
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build<br>
-index 5098795f61d..8e3bf495dbf 100644<br>
---- a/hw/arm/meson.build<br>
-+++ b/hw/arm/meson.build<br>
-@@ -8,7 +8,7 @@ arm_common_ss.add(when: &#39;CONFIG_HIGHBANK&#39;, if_true:=
- files(&#39;highbank.c&#39;))<br>
-=C2=A0arm_common_ss.add(when: &#39;CONFIG_INTEGRATOR&#39;, if_true: files(&=
-#39;integratorcp.c&#39;))<br>
-=C2=A0arm_common_ss.add(when: &#39;CONFIG_MICROBIT&#39;, if_true: files(&#3=
-9;microbit.c&#39;))<br>
-=C2=A0arm_common_ss.add(when: &#39;CONFIG_MPS3R&#39;, if_true: files(&#39;m=
-ps3r.c&#39;))<br>
--arm_common_ss.add(when: &#39;CONFIG_MUSICPAL&#39;, if_true: [pixman, files=
-(&#39;musicpal.c&#39;)])<br>
-+arm_common_ss.add(when: &#39;CONFIG_MUSICPAL&#39;, if_true: files(&#39;mus=
-icpal.c&#39;))<br>
-=C2=A0arm_common_ss.add(when: &#39;CONFIG_NETDUINOPLUS2&#39;, if_true: file=
-s(&#39;netduinoplus2.c&#39;))<br>
-=C2=A0arm_common_ss.add(when: &#39;CONFIG_OLIMEX_STM32_H405&#39;, if_true: =
-files(&#39;olimex-stm32-h405.c&#39;))<br>
-=C2=A0arm_common_ss.add(when: &#39;CONFIG_NPCM7XX&#39;, if_true: files(&#39=
-;npcm7xx.c&#39;, &#39;npcm7xx_boards.c&#39;))<br>
--- <br>
-2.49.0<br>
-<br>
-</blockquote></div></div></div>
-
---000000000000ee6fff063501125f--
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

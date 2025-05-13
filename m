@@ -1,118 +1,123 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp688546njb;
-        Tue, 13 May 2025 10:48:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW9FT4/cZqHGKKzBXAD+ioscyNthgr+Ahf3o6CmqnT/FnSitCfEiloB7GJFSh6UWB/kY40U8P7cx8HUiA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFOm/JlNm37CdmwOvZWIt8KdO7KGaxY2AA4v1/nE5dLSueteDV1amraMIXqnN7coPbbuW5C
-X-Received: by 2002:a05:622a:6092:b0:476:7199:4da1 with SMTP id d75a77b69052e-49495cf3831mr5786051cf.46.1747158519605;
-        Tue, 13 May 2025 10:48:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747158519; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp688574njb;
+        Tue, 13 May 2025 10:48:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXFgfyf47hEyYkTH/StNaLIzL7PU3Ngd9TYQ9lOX0Rv/jYU6akd3lAxu2qm8+S406VVEzbARx2R6wxIzA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHCJCDpiNsl7u9lXv/F+EIYKVTNo8llUUpnQVmB4hIwbJ7GTUs1hZT4Zk2kpK7ite55ihf1
+X-Received: by 2002:a05:622a:2506:b0:48b:50ea:85af with SMTP id d75a77b69052e-49495c61d89mr6112141cf.8.1747158512194;
+        Tue, 13 May 2025 10:48:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747158512; cv=none;
         d=google.com; s=arc-20240605;
-        b=HDlPklaqZ5+g6ZhKZvRjXYJTs46dWUHRNDR5yh45H6hTwUhkoC1zBXFWe9jTE9xYqx
-         untGsDAfBVWYeNnnLaftQfzBrmuyEwLq2G7hR5lUDzXIa7iCtUfwTORcBgL3l35AtHNl
-         Fo9vyG4Q3t35k3n0ABH6xUy9ntOT+IXQu/Lsw7psxoas3aScvHxD+cffNCVUYw2b5yRH
-         8hX37clfSD28JrQnS5EQpVdcJz9YjaioqR2CbJgL9VZ8/S/Nn3OlyYC/n3BN7w6qGpS5
-         lP53CuY14tOOQ5Im6B6ReV17WHrVL1yZYlF/Gd0iez6cSvXbPMOir+RednwmTTQI9CUe
-         iLpw==
+        b=VZAreAgkqkEp31g39r+4l3oGEsy1WHOzb1LLLMjVNX5r3imJq9CHNXAbjrt6ISd4h9
+         N1a6TS3wGr3mipbMDT/OqpYAUxz1D3+AN21T/OijuOjiU2xqXAHaFpk1va9q0yjFrzSD
+         cCKiIyWYXcG6OBzatvIlciPnDS9wh1JPHuWZUCvvpxVQiCNGhC6VNbyBS99nvBbegbqi
+         NxGtwnjKLJ1sQrXU1+qWbxGB6G8kN4aP5m+LQv2hNWhk9O3akn1zxQupQyzAUKFQ1Jun
+         ToZmR7J6UWu4Ejqk6KZRDNLp//bQAEwy2av0VxTfxx3gtxKwb0BfGOxlBvgfERIBkhHM
+         WVeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=YAlhkkHQNtCeNGg6GfhmpRyuZYVVpeda25JByShss/U=;
-        fh=oAG6HIcuSPumOYs2ef0NYEkSLIm7D6VhhjfDQzOYEY4=;
-        b=N3omeXyVBB9Ehpn1RdmmPL69dxwseHPiJVrgWVmjkVGZQuWmnheqIO+SdcPT7RHmz4
-         x6Wvf4XTNFevmausxqqMtZCLgII7sC6vCVLk70+2rI1XBlNJn6JSZTXCYtJMZBU6hZOa
-         4yWAAgZ5OncPkSQI/9ulBikZQU5qFMy5EXW0UOZwoRKE0ofuRD3Aqse6uBI3Nll4U02x
-         mEKS8zvSLHKPCVdUPowp4oFUyZY2/WIXbrTe4Mi8bvNKpsJ/iU+7io7OWh0HnF6FljCc
-         N0hIPMF0MYT/mzRQdBeV0lNaur3LZ7nfPMYjGO1FhbrNZX4r71ZkKah1c8GYzwhzsP58
-         CLNg==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Mc5S9P/50U+uOhuImq7ntWk/pRQZs10UmelyfyrMZ/I=;
+        fh=WZiIPrTY25yc5HYtJk8nfPrAY3f2/uNkYS7+okLXM9k=;
+        b=DW6tNtAiJPPEaS7yt25gF+nOMmYzR/xGeOSPp+1hVx7drO6soVzhE4ooNt3AmjXWJU
+         2JYwgqai7GgS+ms6EN9XzzqpUBUWi8PUbuNTI6S49WZBBxWQ8zt845QD29ejn1VjaAn1
+         ZKhZUJmSPNz+T0pfR31r+sicoZ7ewMVIfrRYXyMCmLn9pQoml7XzUMdHWE3d3nGDw+cC
+         RJo/8ceE4mifkMzs2qkobkF+qDyQLF8n81NK8/3HNuROG9HE0fLaeQBEAPRtQvzGSLfT
+         4hgzih8gGrze+qG//IJMNIPp7XpBUmNva6Xye35HLtV9klTwC/q/QszfrTESWKbaEYp8
+         Ibrg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QKaxxoM1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=XtMiMzbi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-49452580de1si108418451cf.404.2025.05.13.10.48.39
+        by mx.google.com with ESMTPS id d75a77b69052e-49452554d1fsi119536301cf.332.2025.05.13.10.48.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 10:48:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 May 2025 10:48:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QKaxxoM1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=XtMiMzbi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uEtg0-0003c6-8V; Tue, 13 May 2025 13:44:24 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uEtg0-0003c9-DL; Tue, 13 May 2025 13:44:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtbM-00082k-Ow
- for qemu-devel@nongnu.org; Tue, 13 May 2025 13:39:37 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtcp-0000u8-9i
+ for qemu-arm@nongnu.org; Tue, 13 May 2025 13:41:12 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtbK-00036v-1l
- for qemu-devel@nongnu.org; Tue, 13 May 2025 13:39:36 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-43cfe574976so43055965e9.1
- for <qemu-devel@nongnu.org>; Tue, 13 May 2025 10:39:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtck-0003RZ-TR
+ for qemu-arm@nongnu.org; Tue, 13 May 2025 13:41:05 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-441d1ed82faso41445345e9.0
+ for <qemu-arm@nongnu.org>; Tue, 13 May 2025 10:40:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1747157970; x=1747762770; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=YAlhkkHQNtCeNGg6GfhmpRyuZYVVpeda25JByShss/U=;
- b=QKaxxoM1SFYcJ3yCuOeIxP0f77U6FugpRCqbwP4L7m0tE9wJ780EZRCUM1DOhMnyuk
- q7+wZtdioGoSp0yhQWYzCreeGDYSPf26XnxwgDj0BXsZUOYaDFaEnLSm2PoyYhJtK8cd
- d1/C5PQKX3kX9umMvWQh8sAn5zzj0bFZEn3btwFnwTz5KkNmzzzTaMxYQLUgGtEk1Yrg
- 6TzaqOnbnrJ5Tv5+5nRDxh5DcZfEMu1q4Y3/31bxBcohzzC/dfMQ/6O//NQn+9TE24/h
- i/pN8FIf9Vy+FY3Ry0Ljtn5ZYZckyks6TR6TNx1TVHHeglJYL8fIeQq4c34O1v5K1jqH
- rJ/Q==
+ d=linaro.org; s=google; t=1747158055; x=1747762855; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Mc5S9P/50U+uOhuImq7ntWk/pRQZs10UmelyfyrMZ/I=;
+ b=XtMiMzbiW37jSEUA7c/VQb+J1gZozMwDIkBcgt5URMFBmPyzIdkkmhlQzPA8P4buWm
+ 1b/BTe7GSaLNACC9+haMtbu5paHvtEa2yRuDTUC6lTX2Uhh7fuVBC4r/p87PCINFZBP0
+ sLm252opMS9OVXy+0kCMT+VTBkZ2MBZt9JOwIJsTJtpg1b4H0Fauh2S0Ih7xp+DfSr/+
+ OUrZb1A8otzlgKN0M3DKoV5xR4wATJw0MG46n0usKHrHB2HaKEIl4ZiE2RzUT9etVOXj
+ f62VbZ7L5RaJHP2ZO2lhaLgHiz0FdA2nYrrSewiTLobYVm9xLRyj2rfHLhjZVuyVmy+X
+ 5f3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747157970; x=1747762770;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=YAlhkkHQNtCeNGg6GfhmpRyuZYVVpeda25JByShss/U=;
- b=Ersqf76Sjf3McDYXMp2Eb1pBPsP1sAQOD4LRzH8kWMic2qR7odoOnnuwliOBEuxX+E
- EQIK+a2RyBSWN5dRwX6yPU9vrOX5ET7w7eZ+IkrquJjOTLlS3NAzfEJV9VwCIuCupNxm
- xLLnVgCXG154aQewV7YZNxt071Ye1cN4tKtmJnrFncE9GcK/vZxeRBIw9U+H7zdTNe/S
- aW6cM2AUSTKGMww44qcyjLx1WutChud/tW298M9SH6bc/S12XG/euQqSsKmKvsZPyCWb
- dNjoYVs+XqzW8n4EbL3/xy+VNnpuKyo+3UCfH+GEVShLJKOjfhzXUQe/QA5FGy0Hgg3P
- r9PA==
-X-Gm-Message-State: AOJu0YyY4ELouldmNoED6j+mE4BDBb+me7QuPtHn1qbwI/6VrIEerNga
- 2XZaDIZ0/1C69BzMoZis/zHmrlZXW/53jSZI0G/A3rKPRGgY0b9L1ETXg9y0ril3VfYE1i/Knvs
- pxN0=
-X-Gm-Gg: ASbGncvtFTZYL2b3MJGxId+MYChOqzk1HNbUJcv1Kj4oDY0IiXUqU38FukK0kzHWfvt
- 5dMEM08cxsnO5Cbln5w51IyjXT9/OtSv3B+I9lGASQlASidJTrNjqPDQNgpJvaIcXWn2oNZMPDU
- D6jueEldddrbWBQckqIZAkCGbgdkRfDxaonoOVZwgSjQURYBH50p4g4C4k09tIRq3VVbS58HwyJ
- 6LYHh26cqL9qJhNYcyRf5vDLbaJP9biwWqJtwD3+xZW2GpRnQPp4vChc865uFagytPJ4I6UZRV+
- 9yLGtTwcwms9fZHlpv+34F5RvvkJARmUUkBrX5/ml2QF+uIsTdyrDhds38CNmHAslu++M3xO5E2
- +ENJ4N49FtH5hSNrq5F9gO8EBr1Zr
-X-Received: by 2002:a05:600c:524c:b0:43b:c95f:fd9 with SMTP id
- 5b1f17b1804b1-442f20baa38mr1870945e9.5.1747157970443; 
- Tue, 13 May 2025 10:39:30 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1747158055; x=1747762855;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Mc5S9P/50U+uOhuImq7ntWk/pRQZs10UmelyfyrMZ/I=;
+ b=JABkyqYMdVzXMHE9fMtS9IUQKuiax0X++XRjUGAIFeHh7/FYkblyADPVtcII+1gE2U
+ f3yxPqfltYgpavhMD+9212LvczUwh9HPFsOdQvmBlBzN0ApaEi9Yi+XaAEb3+GH5cXbH
+ QOq0jRZmpahD8T8XHw76t64V/eEXmMtj/D97MVTQAmtrT+1rBwIcFr4HkMU6Ze+dYrcJ
+ osA23zDE200mtKh/Q1hX/8gyoT7a3L7ND8rO0IIvFWrex1PinPgZOgwRfH39s7FtqaAh
+ YHHuLH6d6F4DoDFN4eW2B/z2efssPxpN5dKS5TQXvBrW+7CBjhTP8U8e8Qik1/x2A8fZ
+ Y2sw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWz7Adp9ZdcodCLl5IhXlFnn0LLQa6Rk2d4/OMY7Abw3G/TKQXia3mzOW+ubAjKfqkMj06sZyXKgg==@nongnu.org
+X-Gm-Message-State: AOJu0YzOAg/HpCn6HHOi1R/23eNbEIISNwVWPZ8USF3fAm5q5dJCGNd/
+ RZvb7CJY26QjMpF40hNN4+8/BP/KrJaVNFAbmfJ3nXvMpgO6bJFLBQqF7xWgR2I=
+X-Gm-Gg: ASbGncsAn0X+kRQSpzF9Y2I0rh68k4I7xlkEoN0XselBgDY/jPiKWbM4tZ8IetMfABJ
+ SS1B/sbPAB3SKP1KjpiGSK+yDBV9l5TL+ak3FH1VpxOMUGojQdLr1zThx+783x1QIXvY7LZIEpu
+ Of2jGJ587FI3sIGJoYQp63j6RO7Oad/684HgjgNyn4I6k5lx1qyvzy8AhrxiPMsjSC3Ergor6ak
+ Br6YJ/W5ksAbSPOeRoAJdygrisktS6mLXGfvOFZX2YKeJC3fu7h3zuRYlLCAp8IUPM/A74D38Xp
+ mVEv3FHCtSl2zd6eGBIijTm/L4uqnEBTGBnhWsGiydp2Oqp+SP2zierVi6B088nRRVUH8rKHZgI
+ ggsrnyXvgtG1oAOegw2802LfoPNv2
+X-Received: by 2002:a05:600c:6308:b0:441:b3f0:e5f6 with SMTP id
+ 5b1f17b1804b1-442f215dcc7mr1737495e9.25.1747158054951; 
+ Tue, 13 May 2025 10:40:54 -0700 (PDT)
 Received: from localhost.localdomain (110.8.30.213.rev.vodafone.pt.
  [213.30.8.110]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-442d67d5c09sm178235065e9.7.2025.05.13.10.39.29
+ 5b1f17b1804b1-442d67d7795sm181970525e9.8.2025.05.13.10.40.53
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 13 May 2025 10:39:29 -0700 (PDT)
+ Tue, 13 May 2025 10:40:53 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 00/19] target/arm: More header rework around arm_feature() &
- multiprocessing.h
-Date: Tue, 13 May 2025 18:39:09 +0100
-Message-ID: <20250513173928.77376-1-philmd@linaro.org>
+Subject: [PATCH 17/19] hw/arm/realview: Replace arm_feature() ->
+ arm_cpu_has_feature()
+Date: Tue, 13 May 2025 18:39:26 +0100
+Message-ID: <20250513173928.77376-18-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250513173928.77376-1-philmd@linaro.org>
+References: <20250513173928.77376-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,130 +126,78 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mzTjyoOvXNpc
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: d6YkfsLKsqDx
 
-Before I respin my "single-binary: Make hw/arm/ common" [1] I'm
-extracting these random cleanup patches. Some aren't necessary
-anymore because now units in arm_common_ss[] can access "cpu.h",
-but the patches are reviewed and simplify a bit IMO.
+By using arm_cpu_has_feature() instead of arm_feature()
+we don't need to include "cpu.h" anymore.
 
-Based-on: <20250512180502.2395029-1-pierrick.bouvier@linaro.org>
-          "single-binary: compile target/arm twice"
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ hw/arm/realview.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
-[1] https://lore.kernel.org/qemu-devel/20250403235821.9909-1-philmd@linaro.org/
-
-Philippe Mathieu-Daudé (19):
-  target/arm/tcg-stubs: compile file once (system)
-  target/arm/hvf_arm: Avoid using poisoned CONFIG_HVF definition
-  target/arm: Only link with zlib when TCG is enabled
-  target/arm/cpregs: Include missing 'target/arm/cpu.h' header
-  hw/arm/boot: Include missing 'system/memory.h' header
-  target/arm/cpu-features: Include missing 'cpu.h' header
-  target/arm/qmp: Include missing 'cpu.h' header
-  target/arm/kvm: Include missing 'cpu-qom.h' header
-  target/arm/hvf: Include missing 'cpu-qom.h' header
-  hw/arm: Remove unnecessary 'cpu.h' header
-  target/arm: Restrict inclusion of 'multiprocessing.h'
-  target/arm: Move some definitions from 'cpu.h' to 'multiprocessing.h'
-  hw/arm: Include missing 'target/arm/gtimer.h' header
-  target/arm: Extract PSCI definitions to 'psci.h'
-  target/arm: Extract feature definitions to 'cpu_has_feature.h' header
-  target/arm: Add arm_cpu_has_feature() helper
-  hw/arm/realview: Replace arm_feature() -> arm_cpu_has_feature()
-  hw/arm/virt-acpi: Replace arm_feature() -> arm_cpu_has_feature()
-  target/arm: Always include full path to 'cpu.h'
-
- MAINTAINERS                    |  1 +
- include/hw/arm/boot.h          |  3 +-
- target/arm/cpregs.h            |  1 +
- target/arm/cpu-features.h      |  1 +
- target/arm/cpu.h               | 79 ++--------------------------------
- target/arm/cpu_has_feature.h   | 67 ++++++++++++++++++++++++++++
- target/arm/hvf_arm.h           | 18 +-------
- target/arm/kvm_arm.h           |  1 +
- target/arm/multiprocessing.h   | 18 ++++++++
- target/arm/psci.h              | 18 ++++++++
- target/arm/tcg/translate.h     |  2 +-
- hw/arm/aspeed_ast2600.c        |  1 +
- hw/arm/aspeed_ast27x0.c        |  2 +
- hw/arm/bananapi_m2u.c          |  1 +
- hw/arm/bcm2838.c               |  1 +
- hw/arm/boot.c                  |  2 +
- hw/arm/exynos4210.c            |  3 +-
- hw/arm/fsl-imx8mp.c            |  1 +
- hw/arm/highbank.c              |  2 +-
- hw/arm/imx8mp-evk.c            |  1 +
- hw/arm/mcimx6ul-evk.c          |  1 +
- hw/arm/mcimx7d-sabre.c         |  1 +
- hw/arm/mps3r.c                 |  2 +-
- hw/arm/npcm8xx.c               |  2 +
- hw/arm/orangepi.c              |  1 +
- hw/arm/realview.c              | 10 ++---
- hw/arm/sbsa-ref.c              |  2 +
- hw/arm/smmuv3.c                |  1 -
- hw/arm/virt-acpi-build.c       |  4 +-
- hw/arm/virt.c                  |  1 +
- hw/arm/xlnx-versal-virt.c      |  1 +
- hw/arm/xlnx-zcu102.c           |  1 +
- hw/vmapple/vmapple.c           |  3 ++
- target/arm/arch_dump.c         |  2 +-
- target/arm/arm-powerctl.c      |  2 +-
- target/arm/arm-qmp-cmds.c      |  1 +
- target/arm/cortex-regs.c       |  2 +-
- target/arm/cpu.c               | 10 ++++-
- target/arm/cpu64.c             |  2 +-
- target/arm/debug_helper.c      |  2 +-
- target/arm/gdbstub.c           |  2 +-
- target/arm/gdbstub64.c         |  2 +-
- target/arm/helper.c            |  3 +-
- target/arm/hvf-stub.c          | 20 +++++++++
- target/arm/hvf/hvf.c           |  1 +
- target/arm/hyp_gdbstub.c       |  2 +-
- target/arm/kvm-stub.c          |  2 +-
- target/arm/kvm.c               |  3 +-
- target/arm/machine.c           |  2 +-
- target/arm/ptw.c               |  2 +-
- target/arm/tcg-stubs.c         |  2 +-
- target/arm/tcg/cpu-v7m.c       |  2 +-
- target/arm/tcg/cpu32.c         |  2 +-
- target/arm/tcg/cpu64.c         |  2 +-
- target/arm/tcg/helper-a64.c    |  2 +-
- target/arm/tcg/hflags.c        |  2 +-
- target/arm/tcg/iwmmxt_helper.c |  2 +-
- target/arm/tcg/m_helper.c      |  2 +-
- target/arm/tcg/mte_helper.c    |  2 +-
- target/arm/tcg/mve_helper.c    |  2 +-
- target/arm/tcg/neon_helper.c   |  2 +-
- target/arm/tcg/op_helper.c     |  4 +-
- target/arm/tcg/pauth_helper.c  |  2 +-
- target/arm/tcg/psci.c          |  3 +-
- target/arm/tcg/sme_helper.c    |  2 +-
- target/arm/tcg/sve_helper.c    |  2 +-
- target/arm/tcg/tlb-insns.c     |  2 +-
- target/arm/tcg/tlb_helper.c    |  2 +-
- target/arm/tcg/vec_helper.c    |  2 +-
- target/arm/tcg/vfp_helper.c    |  2 +-
- target/arm/vfp_fpscr.c         |  2 +-
- target/arm/meson.build         |  4 +-
- target/arm/tcg/meson.build     |  2 +
- 73 files changed, 221 insertions(+), 143 deletions(-)
- create mode 100644 target/arm/cpu_has_feature.h
- create mode 100644 target/arm/psci.h
- create mode 100644 target/arm/hvf-stub.c
-
+diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+index 5c9050490b4..4c0a8b42709 100644
+--- a/hw/arm/realview.c
++++ b/hw/arm/realview.c
+@@ -9,7 +9,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "cpu.h"
+ #include "hw/sysbus.h"
+ #include "hw/arm/boot.h"
+ #include "hw/arm/primecell.h"
+@@ -31,6 +30,7 @@
+ #include "hw/sd/sd.h"
+ #include "audio/audio.h"
+ #include "target/arm/cpu-qom.h"
++#include "target/arm/cpu_has_feature.h"
+ 
+ #define SMP_BOOT_ADDR 0xe0000000
+ #define SMP_BOOTREG_ADDR 0x10000030
+@@ -77,7 +77,6 @@ static void realview_init(MachineState *machine,
+                           enum realview_board_type board_type)
+ {
+     ARMCPU *cpu = NULL;
+-    CPUARMState *env;
+     MemoryRegion *sysmem = get_system_memory();
+     MemoryRegion *ram_lo;
+     MemoryRegion *ram_hi = g_new(MemoryRegion, 1);
+@@ -138,16 +137,15 @@ static void realview_init(MachineState *machine,
+         cpu_irq[n] = qdev_get_gpio_in(DEVICE(cpuobj), ARM_CPU_IRQ);
+     }
+     cpu = ARM_CPU(first_cpu);
+-    env = &cpu->env;
+-    if (arm_feature(env, ARM_FEATURE_V7)) {
++    if (arm_cpu_has_feature(cpu, ARM_FEATURE_V7)) {
+         if (is_mpcore) {
+             proc_id = 0x0c000000;
+         } else {
+             proc_id = 0x0e000000;
+         }
+-    } else if (arm_feature(env, ARM_FEATURE_V6K)) {
++    } else if (arm_cpu_has_feature(cpu, ARM_FEATURE_V6K)) {
+         proc_id = 0x06000000;
+-    } else if (arm_feature(env, ARM_FEATURE_V6)) {
++    } else if (arm_cpu_has_feature(cpu, ARM_FEATURE_V6)) {
+         proc_id = 0x04000000;
+     } else {
+         proc_id = 0x02000000;
 -- 
 2.47.1
 

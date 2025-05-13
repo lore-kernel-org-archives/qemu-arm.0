@@ -1,102 +1,101 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp589566njb;
-        Tue, 13 May 2025 08:12:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXz3ey6gWBseI3JEmBAfyIkEs1Wv2cu92FU9NK2BgpwdHcPWeJZBqaUsWGt/R1PjrqkUs5V97J+zgy3FQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IG9wUD1OP8Zsm5cE6ydnZGP9Ubqbg+vyAElx8z5Wptayry3vtCMY6ufz15CsTX7Os0+3J+W
-X-Received: by 2002:a05:6830:2902:b0:730:5d6:5990 with SMTP id 46e09a7af769-73226b04154mr12535005a34.24.1747149125675;
-        Tue, 13 May 2025 08:12:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747149125; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp592779njb;
+        Tue, 13 May 2025 08:16:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCViLnFWvYlnsOen4qxvD0I7KvzpsmdbnnkmXRWybnwWgiTaHPGBP//QscOQ6wgeIZuL+DYju6H5J2gA8Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IGPc+GMqKB5hBywXqUVxq5l9qJ+wYOUTGAPL1kw2jq08fHqnGfCA/bjCv8FTeITPLEONU66
+X-Received: by 2002:a05:6000:2ce:b0:39a:c8a8:4fdc with SMTP id ffacd0b85a97d-3a1f6437880mr14262463f8f.16.1747149397898;
+        Tue, 13 May 2025 08:16:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747149397; cv=none;
         d=google.com; s=arc-20240605;
-        b=kot7pBvNwLJzNIxiT48Vs7gzdt6bFqK8MtYeuVvFFSP7+RRBAbOXHjE9j31tiEU8sB
-         pwX3KF0ZGH21kedtUQXwOk3muQAONtZz+Kul4FUngucINgGWMx5QZQhPgO9w+9a+Le3h
-         98MG3BFitCqsjSffqkDgM3zl2STd1kHB8fNci9ARD7l3GTJYBKdkGnXLYa38cKXzSmiA
-         fmablmLENcBieSSvEL6nEfL0UbG85s7VezskynakLBjUMlBKm5huCnZc8UgiEH22mMLp
-         ftNPKR3ak65Ht//8xo5Cdq8BOAxFv5kwAQH/TEpYYIMIoxI+fbcGzW/HT0ZWxy4GXOXB
-         UMMg==
+        b=BWAF63MUIEd7VBrFDyR/onQQo7RBT7ivuIQJCK+m3Wrmew3sPzxOuYYsGphWS3q3Fu
+         WBzBW7lSi+yQgXE2ANfc+zma3W17AFkOtdQ0MsMm3Jh6m4c9VFNpDeJGxANH+mRcxC5r
+         4nzv5K5yRq5zSNHH+M3ARnXPlf24GnRJCI4i2qVqRcWmF6uF4MUtZBv0iyfwwUkBq/Qu
+         c8GYFxmhBuc0N+vUWm2KNtNDguWSGyaMlvduIMAJ5EsJAi9BcRJbk3uxg5uOyRNa19Jk
+         fgmMVtuaruB4mQhciGytgPr8lq633hHMrOy5WPuR7BlK6wG5IfVOdQTFKXSFVRDgOI8W
+         aFbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:reply-to:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=8/KQTBCUFT6lIczxYv9kya2WRKORWdtfT/IOQQeFA4I=;
-        fh=16OBzPJVG1BQ2X3F/eQFhWQyGvJuDlG1OYiaNSTWbB8=;
-        b=Hy9u7qySiqhuIraJvlLuO6jB9fJBxmPg1hMFtKVXfrxkhxCv4vIprL2yKPz+ifGwVc
-         wBXi3zgsUwdLeTrVPUIzbJibfh4IJJ3a70lN+m/YtL+YoooaKAtPtw33yAlM7jiYnfDb
-         vHmgDJky7ho7YogEDJm4enh6ooh3DJ3/1bLIzb4OdyZX/CgTQlUGdsBb7+HXHW1qSEEJ
-         PyFEMbHlVDGHEO7zKMUaGNXx8d/z+S121jo6DiocnCfi4g1JauRWUvjnYTCi1u5IGpX3
-         Zh3XCQmQym4PL9FBjDQpPgaiAlD7PBO7O1fmEYRFMgsrWDx75q5FQlbMkee7dqFja9RF
-         FGcA==;
+        bh=/XoJ42U2y/9zd0YP7um9oFc+AhPWl/ZEz6pZ6QwMtwA=;
+        fh=SNEoNKIHlzrqDZNWkE/KXxIup6LUBTVeev3TkBzzq4c=;
+        b=ORng49gq9GIx7bgXYseNGSDOMDoF57FAOxVMNNxLftM8riiS9IJFKYvf+kVkTzea3t
+         8fnoFwqqMJ9Y724ZvuUent9yWuxNq1GGyb0zofupMNtiwuFGl08V0HWM8Pxx0tG3cAF5
+         k8Oj+l3Kh4zvdgEm5t4k3Sff4Cy8zfArQ048Su1irReV/sRytUL105t5AWme9v7/xRTc
+         v5EWfhYr6Hc4T9FHCvDbhZJ2sL57qFCP9bire9CQAAJbOUEzrXvey1lrOEg8FnY19dgL
+         qgBA/oTDsMWwrxtHRCx48TGNZc8t/bXv/we1QHKaqQibqHnXb1o1gOCdg9Fha4i89sFH
+         hYMw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q1X25Qs1;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=edVE0MQU;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <eric.auger@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4deb1fefacdsi4342059137.208.2025.05.13.08.12.05
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a1f5a5e5dbsi7922054f8f.32.2025.05.13.08.16.37
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 May 2025 08:12:05 -0700 (PDT)
+        Tue, 13 May 2025 08:16:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q1X25Qs1;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=edVE0MQU;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1747149125;
+	s=mimecast20190719; t=1747149396;
 	h=from:from:reply-to:reply-to:subject:subject:date:date:
 	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
 	 content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=8/KQTBCUFT6lIczxYv9kya2WRKORWdtfT/IOQQeFA4I=;
-	b=Q1X25Qs14OpVXU57vKlfTn11CEX3jsKh7vgV8rQ6WQzpVGGxcm7azcjReG/prCOrs5yXio
-	15qfNspBjtohGbCDA3cylfxaRS0ma9Y9tLhkkL6xWKqC2PyZaRpkpPXjg61v80sNtBbCtU
-	E8UeZ+YsLagYWStj28mE2No+la5sqYI=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=/XoJ42U2y/9zd0YP7um9oFc+AhPWl/ZEz6pZ6QwMtwA=;
+	b=edVE0MQUj5kIjJYyc2XBE84QUrCUI+zOi0FX+jFRPazpNOzsnL/lFzZ3I8YFYHgik/8E19
+	ThGqsbf6JvLr54UgoWy5tfokiqvmgPKf5seuuZhebY7AVdZNjr40tO+IxBuIspaxQlqCC7
+	sNoNmrF7lwA3XMU13mkLw4bKgFDURJo=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-246-R-f-NGGfN4SUgAtJz4cWhQ-1; Tue, 13 May 2025 11:12:04 -0400
-X-MC-Unique: R-f-NGGfN4SUgAtJz4cWhQ-1
-X-Mimecast-MFC-AGG-ID: R-f-NGGfN4SUgAtJz4cWhQ_1747149123
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-43efa869b19so39378345e9.2
-        for <alex.bennee@linaro.org>; Tue, 13 May 2025 08:12:03 -0700 (PDT)
+ us-mta-574-X0UEktQGMAyEymMSRk4Kzw-1; Tue, 13 May 2025 11:16:35 -0400
+X-MC-Unique: X0UEktQGMAyEymMSRk4Kzw-1
+X-Mimecast-MFC-AGG-ID: X0UEktQGMAyEymMSRk4Kzw_1747149394
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3a0b7124b5fso3741070f8f.2
+        for <alex.bennee@linaro.org>; Tue, 13 May 2025 08:16:35 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747149123; x=1747753923;
+        d=1e100.net; s=20230601; t=1747149394; x=1747754194;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:reply-to:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=8/KQTBCUFT6lIczxYv9kya2WRKORWdtfT/IOQQeFA4I=;
-        b=Pi84w73U40GRlPUBtY8nFWEQVNC4cNMaqnKhCRXv3b/oB1A57gKThwwMCvRmbKCwRk
-         XMYy9ZI6Vm5+G2LN1wv7zPsM3WFqHEAOlcER1LNZF7DfbHMC5V9/264B8H0Gd7/YAnOe
-         xANW8fM6LxK/XpU/UWbozPV3r361oCxwr65dpYR3Sq6N1i9JwQZJE1PuV7zGrmVlZyOq
-         SFsX22AWdJEd0DOSpWNwZy08L6QFZbZdEgYcykcjds8wHRH2M96Js6C/e896xjdP9kaz
-         Cax7u19ndd26cBiqYtM77dWx2LMFgLLRjPO20pu9URgB0BCPQyz7Ofozri2BJNHQRAyT
-         3dXw==
-X-Forwarded-Encrypted: i=1; AJvYcCXCQTbz1CXZKLduHI9tq+Xk7ZggLUjdOvTBT2P1g3TwOURl/dADMSW2GK2lduucNpNgCjc/1MhezT5I4A==@linaro.org
-X-Gm-Message-State: AOJu0YyeIVi1qa33pil632ZB/cqAlEhQHJjKY7sbgaoqB19s0n7+lKDs
-	2us4LD5O8kKC6ri0/YMtgWDsKi10n9Nawvjws9DvHu0ICSygXGNLnS0FgwooLGxkLxy0lHwEUR4
-	Xp7u4Zk7YbxwD0kke8bM3+DGRw8aneftx1uRSBWPxIlAhiRQV9c4X1A==
-X-Gm-Gg: ASbGnctFgsqfR46/7SifLDogo4f0Vbb6ywJbvbC03QkDdgNlV0NbISXeQ04Rptztt4U
-	yjIbrF5E+ekIesvE4oiTdQTkrF568r92+HgIhY178iVPhnzDTDtHPmmrx9JzIgY0qR6oTH7zdCM
-	RIyjWj0Ee8N3n/cVrd18VXSnGmSSMXWIQBdrRuzhcjxez2OJCK2mswdtYrKpTDuEyyK9VDsOJef
-	OIt2E/pOIH7BX/UuQGIIYWHIaB3AMgfdUfpC6x31uxx8lt9Mkx2L02JacNyHLUUWOI2KqM/zTm3
-	Ex2HDcvdOznr3RerH23thk77wE5qZpVBq5TCweJVN4z+n9gcf3JWz9I5aLA=
-X-Received: by 2002:a05:600c:4454:b0:440:6a5f:c308 with SMTP id 5b1f17b1804b1-442d6d44bd0mr180390855e9.13.1747149122884;
-        Tue, 13 May 2025 08:12:02 -0700 (PDT)
-X-Received: by 2002:a05:600c:4454:b0:440:6a5f:c308 with SMTP id 5b1f17b1804b1-442d6d44bd0mr180390485e9.13.1747149122480;
-        Tue, 13 May 2025 08:12:02 -0700 (PDT)
+        bh=/XoJ42U2y/9zd0YP7um9oFc+AhPWl/ZEz6pZ6QwMtwA=;
+        b=HUu+X+KKUJIAINCGtJHZNdnNHcBtV8pji5noZczgPQ/ORMjzusm20ds26xk0KnJ8jd
+         KOhv6jAgkXwevSTySwRiA32PHfweFD6dXpPU8KXW87AVaq/ALhIvHaMVnq3BaxxSw1Eg
+         hgy1+sZAhbkXbATIfaoMZlWIAPa8UK3Pd+MC43YV5SVzTL6ABWE4ZoUBYeks+OSTwpBF
+         7BWC3fLSx/hUD80uFYp1Cb2FSg2ETkJvT70+6gxEhp8hep4sPPkhN4pTi4tA4r+GelsO
+         MWX2ob/RUso6PCgqKWmu/f2aEBgnWsusJYUkxCm5YZjDcmgf5u0KBQtVt7nXfo12AvUR
+         jkcA==
+X-Forwarded-Encrypted: i=1; AJvYcCV4FQPEyPnJuxQYZTUyapjSHrCrZESQi3kObvObfTtKCOmaSatUWkSAEEWvBmKkHActP+CiElPlPrnAaw==@linaro.org
+X-Gm-Message-State: AOJu0Yx5LcDe9RMmzlMHyAxITDkdzN7U7k0Zqr3C8LDxtL2VoHW2QaBD
+	r9z6auYyukwpvv4iSkMrxIFBaW4IlGYcTKknxuLSWYdsq/KCr/9Qz4dmMKsMPQKdU1I1KDn4zGR
+	OWDqlHrZTdLydudMbS38aEv2USEj6AzR6pyEENue2bN3c1tekFyvACA==
+X-Gm-Gg: ASbGncvMmpFUN7qkZ1/6La7pRCYzDjKI7lj/jZz6r6KZurO/Wk7Zr0TqhWVN8/ViMmB
+	hlCEdVSx/UJLy+wh9iIhLu1NzVWj17NgyjtyLOC1jzDK4l0s8RWYwpZlJSVPMjj5UsQCNc96s0P
+	wgCAYECarEomaOl1N5EBX0dDYxH6M3f01kUPVc+Fg7MXuP8UHb6KLs9WWLJ/95xJAYvBUL6fS/b
+	l9ScZlHdLjmlKC+uUVvkMOVZVK7XbDWoZ+/h76TqwFtlNTEFi4IPRU0ThLipTKWyL90YW8Cvm+Q
+	ziboljv9eGbIutcilglS/OMD9VL3p5KcVWMbkatdtee/5pRb+jhLzvgnlTo=
+X-Received: by 2002:a5d:598e:0:b0:39c:2688:612b with SMTP id ffacd0b85a97d-3a1f64277femr15647010f8f.7.1747149394195;
+        Tue, 13 May 2025 08:16:34 -0700 (PDT)
+X-Received: by 2002:a5d:598e:0:b0:39c:2688:612b with SMTP id ffacd0b85a97d-3a1f64277femr15646959f8f.7.1747149393817;
+        Tue, 13 May 2025 08:16:33 -0700 (PDT)
 Return-Path: <eric.auger@redhat.com>
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a1f5a4c76dsm16745142f8f.92.2025.05.13.08.12.00
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a1f58ecb46sm16707990f8f.30.2025.05.13.08.16.31
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 May 2025 08:12:01 -0700 (PDT)
-Message-ID: <3ad1d053-8a11-4a28-9a94-778389addfeb@redhat.com>
-Date: Tue, 13 May 2025 17:12:00 +0200
+        Tue, 13 May 2025 08:16:33 -0700 (PDT)
+Message-ID: <b62b7529-e782-41d6-91d4-c59af1b92020@redhat.com>
+Date: Tue, 13 May 2025 17:16:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH v3 01/10] arm/cpu: Add infra to handle generated ID
- register definitions
+Subject: Re: [PATCH v3 04/10] kvm: kvm_get_writable_id_regs
 To: Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
  peter.maydell@linaro.org, richard.henderson@linaro.org,
@@ -106,142 +105,99 @@ To: Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
 Cc: agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com,
  philmd@linaro.org, pbonzini@redhat.com
 References: <20250414163849.321857-1-cohuck@redhat.com>
- <20250414163849.321857-2-cohuck@redhat.com>
- <6c06a198-1608-4919-8b6e-68e3c28c2526@redhat.com> <87bjrwppwj.fsf@redhat.com>
+ <20250414163849.321857-5-cohuck@redhat.com>
+ <4f370fae-8234-48ca-97e2-3b7038092974@redhat.com> <878qn0po69.fsf@redhat.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <87bjrwppwj.fsf@redhat.com>
+In-Reply-To: <878qn0po69.fsf@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 09x1TSaZWruqOD7Bh5H1iqK9EYZger_95RIzzC8ahnE_1747149123
+X-Mimecast-MFC-PROC-ID: KpGjCJIldlvCQpH6dAexafhvogvBaCJ3W7TGvsqDktY_1747149394
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-TUID: +hVareGd4TKq
+X-TUID: yuFrPQFy6bwj
 
 
 
-On 5/13/25 4:05 PM, Cornelia Huck wrote:
+On 5/13/25 4:42 PM, Cornelia Huck wrote:
 > On Tue, May 13 2025, Eric Auger <eric.auger@redhat.com> wrote:
 >
 >> Hi Connie,
 >>
 >> On 4/14/25 6:38 PM, Cornelia Huck wrote:
->>> From: Eric Auger <eric.auger@redhat.com>
+>>> Add an helper to retrieve the writable id reg bitmask. The
+>>> status of the query is stored in the CPU struct so that an
+>>> an error, if any, can be reported on vcpu realize().
 >>>
->>> The known ID regs are described in a new initialization function
->>> dubbed initialize_cpu_sysreg_properties(). That code will be
->>> automatically generated from linux arch/arm64/tools/sysreg. For the
->>> time being let's just describe a single id reg, CTR_EL0. In this
->>> description we only care about non RES/RAZ fields, ie. named fields.
->>>
->>> The registers are populated in an array indexed by ARMIDRegisterIdx
->>> and their fields are added in a sorted list.
->>>
->>> [CH: adapted to reworked register storage]
 >>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 >>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 >>> ---
->>>  target/arm/cpu-custom.h            | 60 ++++++++++++++++++++++++++++++
->>>  target/arm/cpu-sysreg-properties.c | 41 ++++++++++++++++++++
->>>  target/arm/cpu64.c                 |  2 +
->>>  target/arm/meson.build             |  1 +
->>>  4 files changed, 104 insertions(+)
->>>  create mode 100644 target/arm/cpu-custom.h
->> do we still want reference to the "custom" terminology, following
->> initial comments?
-> Hm, maybe 'cpu-idregs.h'?
-OK for me
+>>>  target/arm/cpu.h     | 26 ++++++++++++++++++++++++++
+>>>  target/arm/kvm.c     | 32 ++++++++++++++++++++++++++++++++
+>>>  target/arm/kvm_arm.h |  7 +++++++
+>>>  3 files changed, 65 insertions(+)
+>>>
+>>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+>>> index d27134f4a025..bbee7ff2414a 100644
+>>> --- a/target/arm/cpu.h
+>>> +++ b/target/arm/cpu.h
+>>> @@ -856,6 +856,26 @@ typedef struct {
+>>>      uint32_t map, init, supported;
+>>>  } ARMVQMap;
+>>>  
+>>> +typedef enum ARMIdRegsState {
+>>> +    WRITABLE_ID_REGS_UNKNOWN,
+>>> +    WRITABLE_ID_REGS_NOT_DISCOVERABLE,
+>>> +    WRITABLE_ID_REGS_FAILED,
+>>> +    WRITABLE_ID_REGS_AVAIL,
+>>> +} ARMIdRegsState;
+>>> +
+>>> +/*
+>>> + * The following structures are for the purpose of mapping the output of
+>>> + * KVM_ARM_GET_REG_WRITABLE_MASKS that also may cover id registers we do
+>>> + * not support in QEMU
+>>> + * ID registers in op0==3, op1=={0,1,3}, crn=0, crm=={0-7}, op2=={0-7},
+>>> + * as used by the KVM_ARM_GET_REG_WRITABLE_MASKS ioctl call.
+>>> + */
+>>> +#define NR_ID_REGS (3 * 8 * 8)
+>> We may rename this define to better associate to the KVM API. I tend to
+>> mix it with NUM_ID_IDX now ;-)
+>> maybe something like KVM_NR_EXPOSED_ID_REGS
+> The kernel calls it KVM_FEATURE_ID_RANGE_SIZE, but I'd like to avoid
+> adding 'KVM' in the name, as it is basically a range of registers and
+> nothing really KVM specific... maybe ID_REG_RANGE_SIZE?
+what about NR_ID_REG_MASKS
+because it is masks actually.
+>
+>>> +
+>>> +typedef struct IdRegMap {
+>>> +    uint64_t regs[NR_ID_REGS];
+>>> +} IdRegMap;
+>> I would add a comment saying this is the mask array, just to prevent the
+>> reading from thinking it is the actual reg content.
+> "More comments" seems to be a theme :) I'll go ahead and add them where
+> it makes sense.
+yeah. I am sorry. previously we had a single indexing and on top of that
+we have several kinds of definitions for id regs and writable masks.
+Even for me who contributed to that mess it can be difficult to parse so
+I imagine it can be painful to read for other readers too ;-)
 
 Eric
 >
->>>  create mode 100644 target/arm/cpu-sysreg-properties.c
->>>
->>> diff --git a/target/arm/cpu-custom.h b/target/arm/cpu-custom.h
->>> new file mode 100644
->>> index 000000000000..615347376e56
->>> --- /dev/null
->>> +++ b/target/arm/cpu-custom.h
->>> @@ -0,0 +1,60 @@
->>> +/*
->>> + * handle ID registers and their fields
->>> + *
->>> + * SPDX-License-Identifier: GPL-2.0-or-later
->>> + */
->>> +#ifndef ARM_CPU_CUSTOM_H
->>> +#define ARM_CPU_CUSTOM_H
 >>> +
->>> +#include "qemu/osdep.h"
->>> +#include "qemu/error-report.h"
->>> +#include "cpu.h"
->>> +#include "cpu-sysregs.h"
->>> +
->>> +typedef struct ARM64SysRegField {
->>> +    const char *name; /* name of the field, for instance CTR_EL0_IDC */
->>> +    int index;
->> worth to add a comment saying this is the ARMIDRegisterIdx of the parent
->> sysreg.
-> ok
->
->>> +    int lower;
->>> +    int upper;
->>> +} ARM64SysRegField;
->>> +
->>> +typedef struct ARM64SysReg {
->>> +    const char *name;   /* name of the sysreg, for instance CTR_EL0 */
->>> +    ARMSysRegs sysreg;
->>> +    int index;
->> now that we have different kinds of indexing, may be worth adding a
->> comment to explain which one is being used.
->> I guess here it is ARMIDRegisterIdx. So you could even change the data type.
-> Yeah, comments are good, I'll add some.
->
->>> +    GList *fields; /* list of named fields, excluding RES* */
->>> +} ARM64SysReg;
->>> +
->>> +void initialize_cpu_sysreg_properties(void);
->>> +
->>> +/*
->>> + * List of exposed ID regs (automatically populated from linux
->>> + * arch/arm64/tools/sysreg)
->>> + */
->>> +extern ARM64SysReg arm64_id_regs[NUM_ID_IDX];
->>> +
->>> +/* Allocate a new field and insert it at the head of the @reg list */
->>> +static inline GList *arm64_sysreg_add_field(ARM64SysReg *reg, const char *name,
->>> +                                     uint8_t min, uint8_t max) {
->>> +
->>> +     ARM64SysRegField *field = g_new0(ARM64SysRegField, 1);
->>> +
->>> +     field->name = name;
->>> +     field->lower = min;
->>> +     field->upper = max;
->>> +     field->index = reg->index;
->>> +
->>> +     reg->fields = g_list_append(reg->fields, field);
->>> +     return reg->fields;
->>> +}
->>> +
->>> +static inline ARM64SysReg *arm64_sysreg_get(ARMIDRegisterIdx index)
->>> +{
->>> +        ARM64SysReg *reg = &arm64_id_regs[index];
->>> +
->>> +        reg->index = index;
->>> +        reg->sysreg = id_register_sysreg[index];
->>> +        return reg;
->>> +}
->>> +
->>> +#endif
->>> diff --git a/target/arm/cpu-sysreg-properties.c b/target/arm/cpu-sysreg-properties.c
->>> new file mode 100644
->>> index 000000000000..8b7ef5badfb9
->>> --- /dev/null
->>> +++ b/target/arm/cpu-sysreg-properties.c
->>> @@ -0,0 +1,41 @@
->>> +/*
->>> + * QEMU ARM CPU SYSREG PROPERTIES
->>> + * to be generated from linux sysreg
->>> + *
->>> + * Copyright (c) Red Hat, Inc. 2024
->> maybe increment the year now ;-)
-> Wait, it is 2025 already? :)
+>>>  /* REG is ID_XXX */
+>>>  #define FIELD_DP64_IDREG(ISAR, REG, FIELD, VALUE)                       \
+>>>      ({                                                                  \
+>>> @@ -1044,6 +1064,12 @@ struct ArchCPU {
+>>>       */
+>>>      bool host_cpu_probe_failed;
+>>>  
+>>> +    /*
+>>> +     * state of writable id regs query used to report an error, if any,
+>>> +     * on KVM custom vcpu model realize
+>>> +     */
+>>> +    ARMIdRegsState writable_id_regs;
+>> maybe rename into writable_id_reg_status that would better reflect what
+>> it is.
+> Indeed.
 >

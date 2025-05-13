@@ -1,126 +1,246 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp358390njb;
-        Tue, 13 May 2025 01:09:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVVgHMzt2WoedDz327+m3F0028jh0A6i2mlDgxWIomcc1nnf8NDw45RLN7axQjj8++fE4nm5OgwkyK6GQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHizMvg56TmJWJIvxxKoZt3bcXfplZZwptakS5mFwN171sc1tFrPaR3W7EqZXALnd1nSdTK
-X-Received: by 2002:a05:622a:553:b0:48e:9b67:df3d with SMTP id d75a77b69052e-49452761e62mr247465741cf.23.1747123752941;
-        Tue, 13 May 2025 01:09:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747123752; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp375497njb;
+        Tue, 13 May 2025 01:53:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUTbqOMNyBUC9N5JDayqNIayuVlA5GfuYNOuj20ECuCu7Qf7ZnEQqldSz3b2agSAMXsN9+OB+ukcaIzsQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH3zaTf1zNJL2pPVuY6peB4/VppLgzvlCOPQ1rb59TUVPZn3g4nQTQtPxtBXkN+OeuoFCdO
+X-Received: by 2002:a05:6a00:2313:b0:736:65c9:9187 with SMTP id d2e1a72fcca58-7423be711famr20424292b3a.9.1747126413208;
+        Tue, 13 May 2025 01:53:33 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1747126413; cv=pass;
         d=google.com; s=arc-20240605;
-        b=EQV9BcSIZt/L29UCexfLP76Vf3ZDaBMaqjQGK+y8Oowv7bsmKl/mBF1AS1wY4okXnB
-         09EtzjRDc8BB7G+IpLVnLfU9gN3ku9Q/INin1kM2mGVKwIfSi9QK5ffRx+VzticqkRHk
-         YXcPCXHctQixUYMe/wof9rEyB+Q2tkFkV3p0TX6jxkMviFhIYJhDbe5d4oZT62dlI0px
-         pCQe38p2Gfx8U0bER5XPtZdSKRSJdfBupV6I1gimD51TsAdj6TTuLaCrJwvtiM/ia31X
-         1gauVwHcf6VF7yjXIq3pLeEMqKQMlFhZrRIB6ld5jIBkK+oDS4SvBe0tAMhiIg9Z/Hjq
-         SAVg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=GyZGzQEG6K8258XInicdwaKZnAK1rvDOyn3LGw7rvsM=;
-        fh=XVCbtZt0NlM3WRi/g+G2SrIUzl8hrRaPGDpFr//3vj8=;
-        b=Dk7zN5AUZ+VC3NSAgI2c2koP6MGFEqIwYVkiZY0dU3S6WXNjGLqjK6/3Cjbwho+IEO
-         LwpnP1IaEdsK1JY1NHzxU/Qz7B29+2vmCNmiztrxgWDJfpWzm38VsqEqyCo5z/nQwIAU
-         U1tZd2iOS0uWxF3kmnZjUJq/ZQabmc7Rgxf5fx0wQowBvTsQqKFFXkP0ryJCgKS8CW6A
-         LRvsRreu9hCJ0KUyNrvrPvYXY0lVsSIx3evDnWtl1hrPJ0aOmXLW4QH3pTwshTKwJAXD
-         yi2ZD8O/R3Lj0O0afLrUqz2ErnMPY1BKT6ECtfVSS/R/1cxmEkZ8SsLBX0Q051ArLw5E
-         nIpg==;
+        b=bPOXy9m8V4IofC1fZ4leiN+5myganu4FrHCbRBaQyZFtBYR73JG97ALEMWWBha4kaH
+         sH/iHNFS7hzBGr5pWctN5Bx1fcA+9/sKpKabsefVpSrHpUlA2uyLULPRMaSxWPJVm0Q9
+         ZgVzkqEB7WAjarqI+ecf4yo+OFZiL7QrSQpR8N4ek1M1oGkdach8yA8gWwB0oF/86Gcg
+         Rh6SRL/aQeCkzKVe+nm6cpRrqIKjHSIcA85JXD2VuIbNCmTD03RHxi/TWVz/SmE1AOit
+         oUylSUI0Yj0yw5+v4K3wpphrXce4ZO3nLuaiOXP3W5JF2t2q0u+xrVVA9GgckvCfEysj
+         KZGQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=1c399StXOuA/U3cRc3qzs9RfJEJILu72MXX9iqzRvVo=;
+        fh=R1i78VWkac+z1wCAUaMgEdyRD2wG08V9m1cAAqo4NQg=;
+        b=amweKkkqqsb4YIolcLj17ERIu3xMs12FvquWyvuqgCKW3lrMssO7990QyogcjWKWiA
+         X9Yfp6K9tj4FvisNmLqutCb4Db0qNAD9+Y5tEeZw01POkvn0dRcyZfPcIp03Zp9s7DZN
+         BBhaxs+jdB2eBCorrRdPPLTzKhZBJT78oLxXA6I8vUh76+qHn4uBbrQHX8WQWaNNtbs1
+         hOD1XMNKlJgNuSKiaEOtWBQSXthaN4NI7OqI2N1x9zUvbzcWA2/C2RTRClptA2xJh/Jm
+         SMII5jthDszOR3j+6bh+G9XyAPdIcKaLQyVmEBGVvkN4azFdp0PtxAQ2YF4OP/22rKXl
+         7LWw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4945259a60fsi98813221cf.495.2025.05.13.01.09.12
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NHybqdPq;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46308-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-46308-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-46308-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-b234941ae90si11703533a12.73.2025.05.13.01.53.33
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 01:09:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 May 2025 01:53:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46308-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uEkgW-0005AA-Oc; Tue, 13 May 2025 04:08:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uEkgT-00059t-0w; Tue, 13 May 2025 04:08:17 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uEkgQ-0003YM-LV; Tue, 13 May 2025 04:08:16 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 13 May
- 2025 16:08:06 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 13 May 2025 16:08:06 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>, Laurent Vivier
- <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v1] tests/qtest/aspeed_smc-test: Fix memory leaks
-Date: Tue, 13 May 2025 16:08:06 +0800
-Message-ID: <20250513080806.1005996-1-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NHybqdPq;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46308-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-46308-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 51209865988
+	for <alex.bennee@linaro.org>; Tue, 13 May 2025 08:53:14 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id D8EDB1DF982;
+	Tue, 13 May 2025 08:53:28 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="NHybqdPq"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 02A421DB12E
+	for <kvm@vger.kernel.org>; Tue, 13 May 2025 08:53:26 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1747126408; cv=none; b=HlzrhCSyLLtje6bITLeuyyEnzXR6267eSARAA2buQjZ9j5ZC1krQ4HOjUqDaqbp9gZe0qcJcYgdUCIu2J91ANzafduxZGsKCYNd0onL9ZX+t6zuxOw70Uo1PeAbjQbti+BnjM52qaZ6Zxde3yKo4lh6etQsCW3DuTdL5bg0fPuc=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1747126408; c=relaxed/simple;
+	bh=KQZ+iXiAFPkxLPIE21Tbwpzk3RkIHaafzHl5b1wK0G4=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=a87doi6ftyfETiixv5lv6/iN92bCx9hVnqUFwsViL8M5EzXD8mPRXnYTa1nw75hishTkYAPCEX9eDJlP1iCm6ZEAc6UXbxyMp7nk0rUMCXD6AGHPADsClpI0cYCP7CojB0EVPm6USthvGlyt8tYatRSlc4vP3+6imNpwpPdCmmQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=NHybqdPq; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1747126405;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1c399StXOuA/U3cRc3qzs9RfJEJILu72MXX9iqzRvVo=;
+	b=NHybqdPqpeos68XsLuSP3PWWFxsIb2Q0M1fLjcjY2rl4EG66Yd1sDIqcxV1QUaRDmYFmiv
+	ZYI9tWp/AcLqFHjcUZTUwlrIobSEOyW/pSMoPUSfq7HWGG9tasaZjOetlHMnbjc/zfkfqi
+	8mtbMUMVnE/2ZCspgz7ANdN6JQuI+f8=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-665-ewz-AKXJNY6cTxsN0t0qrQ-1; Tue, 13 May 2025 04:53:22 -0400
+X-MC-Unique: ewz-AKXJNY6cTxsN0t0qrQ-1
+X-Mimecast-MFC-AGG-ID: ewz-AKXJNY6cTxsN0t0qrQ_1747126402
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-43e9b0fd00cso26085565e9.0
+        for <kvm@vger.kernel.org>; Tue, 13 May 2025 01:53:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747126401; x=1747731201;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=1c399StXOuA/U3cRc3qzs9RfJEJILu72MXX9iqzRvVo=;
+        b=v4Ch27GVqU4Xg+MeD4Slww8QU6Mb6omkNoMwAmYIUoloFGOhIEGktidRFVSpFDPQaa
+         qie3W6VZYOsi19w9+q2JhwhIuuEYeigL9AAJ7bZbZk0qCAyyIALxDtzUkyRVq4W/Z2CW
+         g79Pg500QCIJK6SP3ipm7BUCKA8hngsmiBWjicwKMPnIlwUP3r3YccyjgR2B94JInNug
+         XC/ZR2C6uqm1vBrxr+KBltawB05Mb6kAEHdvJspR4i1Po709wYWoisfEEoiYDPjuVsSq
+         DQSho8oZXYGwXKbwmGf7N+9JoPJ4V9IDhScQAVhYXeBHyqplGPPuNuSG0NPtbDT/R0S2
+         dYlA==
+X-Forwarded-Encrypted: i=1; AJvYcCWMMKo8cwp66vyahIxppwHxyCp1mi77ZVzezX1BsL3+QvBBYGv/V0Z4nJrmRZlXq4rGFpA=@vger.kernel.org
+X-Gm-Message-State: AOJu0YxoVLvTYuoWjYOPPoveHcVFTEJA5j53XmuFrSdn6QBxWB47f9DC
+	MWbugQGK7Lau+jG/FKmtdJ5uLxvH5wE9o032DPg5IrQTJG9aP30PTv0nPs6ySwAEfv04bvFByoc
+	pBdb6qsdmJ2+WC9PUxRO2DV9dq7JEMBNaQ9QbaYbh/7/G3Cl3Sw==
+X-Gm-Gg: ASbGnctgWcKOFJOhmxPBTqj3lpnUM3yvw/4MfsPj0kGngHgE0qxbmND1T5GrwPXoInj
+	JG/ulA2esgcVY8YDEQAiCcyXPOxMWcezll+aHGzgIkqscrDJatHagLADHdFAx2sy86oTVZ2GIMa
+	puR+fwhI+Lyn4rU1TS6mwFUKcQbl+ETRlh7Cbg1tbRUOoYhVG20Fq26I9Z/o4i2ZovaKt/onvA/
+	zfLtO/0+xcdzHJw4SiFRjC9Bw2Xib3kGoIdGYDynIxuRTnKFZE+E0svdL60BikEMywbi1a6laxF
+	7YLVokp1RqLy872TPJbl8gw3cNK5SFGI
+X-Received: by 2002:a05:600c:3148:b0:440:6a68:826a with SMTP id 5b1f17b1804b1-442eace91cemr25179655e9.13.1747126401662;
+        Tue, 13 May 2025 01:53:21 -0700 (PDT)
+X-Received: by 2002:a05:600c:3148:b0:440:6a68:826a with SMTP id 5b1f17b1804b1-442eace91cemr25179245e9.13.1747126401294;
+        Tue, 13 May 2025 01:53:21 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442cd3aeccdsm198387905e9.32.2025.05.13.01.53.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 May 2025 01:53:20 -0700 (PDT)
+Date: Tue, 13 May 2025 10:53:17 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ kvm@vger.kernel.org, Sergio Lopez <slp@redhat.com>, Gerd Hoffmann
+ <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Laurent
+ Vivier <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu
+ <yi.l.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>, Eduardo
+ Habkost <eduardo@habkost.net>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>, Marcelo Tosatti
+ <mtosatti@redhat.com>, qemu-riscv@nongnu.org, Weiwei Li
+ <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>, Zhao Liu
+ <zhao1.liu@intel.com>, Yanan Wang <wangyanan55@huawei.com>, Helge Deller
+ <deller@gmx.de>, Palmer Dabbelt <palmer@dabbelt.com>, Ani Sinha
+ <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>, Paolo Bonzini
+ <pbonzini@redhat.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?B?Q2zDqW1lbnQ=?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
+ qemu-arm@nongnu.org, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
+ <marcandre.lureau@redhat.com>, Huacai Chen <chenhuacai@kernel.org>, Jason
+ Wang <jasowang@redhat.com>, Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH v4 17/27] hw/i386/pc: Remove deprecated pc-q35-2.7 and
+ pc-i440fx-2.7 machines
+Message-ID: <20250513105317.0185bf3b@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250508133550.81391-18-philmd@linaro.org>
+References: <20250508133550.81391-1-philmd@linaro.org>
+	<20250508133550.81391-18-philmd@linaro.org>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m2ayzbHaM0tx
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: w614fh4IoIcG
 
-Link: https://patchwork.kernel.org/project/qemu-devel/patch/20250509175047.26066-1-farosas@suse.de/
+On Thu,  8 May 2025 15:35:40 +0200
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- tests/qtest/aspeed_smc-test.c | 5 +++++
- 1 file changed, 5 insertions(+)
+> These machines has been supported for a period of more than 6 years.
+> According to our versioned machine support policy (see commit
+> ce80c4fa6ff "docs: document special exception for machine type
+> deprecation & removal") they can now be removed.  Remove the qtest
+> in test-x86-cpuid-compat.c file.
 
-diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-index 4e1389385d..52a00e6f0a 100644
---- a/tests/qtest/aspeed_smc-test.c
-+++ b/tests/qtest/aspeed_smc-test.c
-@@ -228,5 +228,10 @@ int main(int argc, char **argv)
-     unlink(ast2500_evb_data.tmp_path);
-     unlink(ast2600_evb_data.tmp_path);
-     unlink(ast1030_evb_data.tmp_path);
-+    g_free(palmetto_data.tmp_path);
-+    g_free(ast2500_evb_data.tmp_path);
-+    g_free(ast2600_evb_data.tmp_path);
-+    g_free(ast1030_evb_data.tmp_path);
-+
-     return ret;
- }
--- 
-2.43.0
+same comment as 1/27,
+
+I'd squash pc|hw_compat_2_7 removal in here
+
+other than that loos good to me, with above
+  Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/i386/pc_piix.c                   |  9 ---------
+>  hw/i386/pc_q35.c                    | 10 ----------
+>  tests/qtest/test-x86-cpuid-compat.c | 11 -----------
+>  3 files changed, 30 deletions(-)
+>=20
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index 98a118fd4a0..98bd8d0e67b 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -755,15 +755,6 @@ static void pc_i440fx_machine_2_8_options(MachineCla=
+ss *m)
+> =20
+>  DEFINE_I440FX_MACHINE(2, 8);
+> =20
+> -static void pc_i440fx_machine_2_7_options(MachineClass *m)
+> -{
+> -    pc_i440fx_machine_2_8_options(m);
+> -    compat_props_add(m->compat_props, hw_compat_2_7, hw_compat_2_7_len);
+> -    compat_props_add(m->compat_props, pc_compat_2_7, pc_compat_2_7_len);
+> -}
+> -
+> -DEFINE_I440FX_MACHINE(2, 7);
+> -
+>  #ifdef CONFIG_ISAPC
+>  static void isapc_machine_options(MachineClass *m)
+>  {
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index b7ffb5f1216..a1f46cd8f03 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -648,13 +648,3 @@ static void pc_q35_machine_2_8_options(MachineClass =
+*m)
+>  }
+> =20
+>  DEFINE_Q35_MACHINE(2, 8);
+> -
+> -static void pc_q35_machine_2_7_options(MachineClass *m)
+> -{
+> -    pc_q35_machine_2_8_options(m);
+> -    m->max_cpus =3D 255;
+> -    compat_props_add(m->compat_props, hw_compat_2_7, hw_compat_2_7_len);
+> -    compat_props_add(m->compat_props, pc_compat_2_7, pc_compat_2_7_len);
+> -}
+> -
+> -DEFINE_Q35_MACHINE(2, 7);
+> diff --git a/tests/qtest/test-x86-cpuid-compat.c b/tests/qtest/test-x86-c=
+puid-compat.c
+> index 456e2af6657..5e0547e81b7 100644
+> --- a/tests/qtest/test-x86-cpuid-compat.c
+> +++ b/tests/qtest/test-x86-cpuid-compat.c
+> @@ -345,17 +345,6 @@ int main(int argc, char **argv)
+> =20
+>      /* Check compatibility of old machine-types that didn't
+>       * auto-increase level/xlevel/xlevel2: */
+> -    if (qtest_has_machine("pc-i440fx-2.7")) {
+> -        add_cpuid_test("x86/cpuid/auto-level/pc-2.7",
+> -                       "486", "arat=3Don,avx512vbmi=3Don,xsaveopt=3Don",
+> -                       "pc-i440fx-2.7", "level", 1);
+> -        add_cpuid_test("x86/cpuid/auto-xlevel/pc-2.7",
+> -                       "486", "3dnow=3Don,sse4a=3Don,invtsc=3Don,npt=3Do=
+n,svm=3Don",
+> -                       "pc-i440fx-2.7", "xlevel", 0);
+> -        add_cpuid_test("x86/cpuid/auto-xlevel2/pc-2.7",
+> -                       "486", "xstore=3Don", "pc-i440fx-2.7",
+> -                       "xlevel2", 0);
+> -    }
+>      if (qtest_has_machine("pc-i440fx-2.9")) {
+>          add_cpuid_test("x86/cpuid/auto-level7/pc-i440fx-2.9/off",
+>                         "Conroe", NULL, "pc-i440fx-2.9",
 

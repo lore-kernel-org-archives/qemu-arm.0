@@ -1,123 +1,118 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp688521njb;
-        Tue, 13 May 2025 10:48:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUKPyAfhNQbAW+r2P6/8rH0Sa2oYEnppzLtZTm8LxEbEz9wEikbMP1Uewv00Ym4SNgLxKEys+Mu80IBfA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGemH5+3SzsS+wVWQlGmx+4scmAQmY+sRKYeUKh6Y3TSxfWeS/r64yXPjnYZ58QIwIjdBZT
-X-Received: by 2002:a05:620a:1918:b0:7ca:ca21:23b8 with SMTP id af79cd13be357-7cd287fa807mr81113085a.7.1747158516675;
-        Tue, 13 May 2025 10:48:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747158516; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp688546njb;
+        Tue, 13 May 2025 10:48:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW9FT4/cZqHGKKzBXAD+ioscyNthgr+Ahf3o6CmqnT/FnSitCfEiloB7GJFSh6UWB/kY40U8P7cx8HUiA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFOm/JlNm37CdmwOvZWIt8KdO7KGaxY2AA4v1/nE5dLSueteDV1amraMIXqnN7coPbbuW5C
+X-Received: by 2002:a05:622a:6092:b0:476:7199:4da1 with SMTP id d75a77b69052e-49495cf3831mr5786051cf.46.1747158519605;
+        Tue, 13 May 2025 10:48:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747158519; cv=none;
         d=google.com; s=arc-20240605;
-        b=YR7EZn6ESGaoHu1y7YYsx/F+M4Cj7fVQOXnVmBjnjj2JDxOWnxq5hggo4ewPNZj9pm
-         3+nz+WH2/gyQlZa0CTNhSX15nqD9EGprao0Q0UrIEs+Ux86zTZn3S59yciD7s8Udg43p
-         uZjKYGAW14CooBHKp8nT9/osRsUBWDj/fS3EwRUvKUx2bOMD2sIrsZfpO4QUo1QnNYGe
-         ncqzWrjlipTK1kpiVIMRxaC4NLT/BRWdEO+YSCBdoTs8l/dYcxLQnZt4fo9xdaCzGthM
-         Zqa+tT6wJ683grXHznTQl8P1+ppOulxp5rPiMGFeo9nZQu7fbJPvMXPoL2poQRDKi+IJ
-         eQcg==
+        b=HDlPklaqZ5+g6ZhKZvRjXYJTs46dWUHRNDR5yh45H6hTwUhkoC1zBXFWe9jTE9xYqx
+         untGsDAfBVWYeNnnLaftQfzBrmuyEwLq2G7hR5lUDzXIa7iCtUfwTORcBgL3l35AtHNl
+         Fo9vyG4Q3t35k3n0ABH6xUy9ntOT+IXQu/Lsw7psxoas3aScvHxD+cffNCVUYw2b5yRH
+         8hX37clfSD28JrQnS5EQpVdcJz9YjaioqR2CbJgL9VZ8/S/Nn3OlyYC/n3BN7w6qGpS5
+         lP53CuY14tOOQ5Im6B6ReV17WHrVL1yZYlF/Gd0iez6cSvXbPMOir+RednwmTTQI9CUe
+         iLpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=rQ3g7cfW3jvPyWxEbqJvfCwLD4zthzCwcF0/oFX4jZo=;
-        fh=uEEYT8SByNxL5aihDjEsY031PAE6o7iuAF8ukLE+U9I=;
-        b=aeACFPGeEPemAbtf1AuQRSzTYt3tPPs3q5bLadThnK7exPS1az+7VaqLJ5aEoF8GNS
-         an6mRz7nsBeKGwUKEu3Txm7FM3tZEWdoKaMeIskvdSgdUar+sXsP/x9z6eYIsSYFiriG
-         ZcPKy36vakt1YnNszeNcQ4zE+gXxMxUU2Vg/Drhc+eWPdNSKQoKRwUiKLwDcwdiKUMLa
-         RM4qVjO2UNR70+ljjf6qoziH6OH+RnQzSfrkZWnMxK6n8bVbC38mwSI8GZPyrEnvB1Kp
-         K8+KfRnTZ9PPb2aa5Wfcdzi20KyCpMaObtb5BeKCnfcF+wmq2u5/sNL7ay/qbjUWvj3H
-         VZ5Q==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=YAlhkkHQNtCeNGg6GfhmpRyuZYVVpeda25JByShss/U=;
+        fh=oAG6HIcuSPumOYs2ef0NYEkSLIm7D6VhhjfDQzOYEY4=;
+        b=N3omeXyVBB9Ehpn1RdmmPL69dxwseHPiJVrgWVmjkVGZQuWmnheqIO+SdcPT7RHmz4
+         x6Wvf4XTNFevmausxqqMtZCLgII7sC6vCVLk70+2rI1XBlNJn6JSZTXCYtJMZBU6hZOa
+         4yWAAgZ5OncPkSQI/9ulBikZQU5qFMy5EXW0UOZwoRKE0ofuRD3Aqse6uBI3Nll4U02x
+         mEKS8zvSLHKPCVdUPowp4oFUyZY2/WIXbrTe4Mi8bvNKpsJ/iU+7io7OWh0HnF6FljCc
+         N0hIPMF0MYT/mzRQdBeV0lNaur3LZ7nfPMYjGO1FhbrNZX4r71ZkKah1c8GYzwhzsP58
+         CLNg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rR3gTLV3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QKaxxoM1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd00fe1754si1205981985a.351.2025.05.13.10.48.36
+        by mx.google.com with ESMTPS id d75a77b69052e-49452580de1si108418451cf.404.2025.05.13.10.48.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 10:48:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 May 2025 10:48:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rR3gTLV3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QKaxxoM1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uEtg8-0003fT-HT; Tue, 13 May 2025 13:44:33 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uEtg0-0003c6-8V; Tue, 13 May 2025 13:44:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtdn-0001fr-Sa
- for qemu-arm@nongnu.org; Tue, 13 May 2025 13:42:08 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtbM-00082k-Ow
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 13:39:37 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtdm-0003ZT-53
- for qemu-arm@nongnu.org; Tue, 13 May 2025 13:42:07 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-442ec3ce724so7405355e9.0
- for <qemu-arm@nongnu.org>; Tue, 13 May 2025 10:42:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtbK-00036v-1l
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 13:39:36 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-43cfe574976so43055965e9.1
+ for <qemu-devel@nongnu.org>; Tue, 13 May 2025 10:39:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1747158124; x=1747762924; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=rQ3g7cfW3jvPyWxEbqJvfCwLD4zthzCwcF0/oFX4jZo=;
- b=rR3gTLV37rriQJQ2fWNYsmFBN+G3whtDWtkwH2sC/NmEnsY7gBsGSuzCSMAtw0wZkM
- cwhQ+DWKnFwbs3AM98cG10QpDo6t0L7O+8hrq+VStT27rtUCWDGaarRqTTeACU55fvnr
- 6K7Lp/wXCZNvCZ8WVCpQsN8fGDTdM6O7S4QRV38UjUmkuXAedYTzkwfyfj3Uzsqv6sDq
- tC4pd1LXBgcZF6DTT5E8/yV2v9ofKqxSdkon4Gtl/iHi/HaRJGUU1jXrbuw5PZD52g2w
- x/x1IfZjDlQRMTsBuoq071Z3AZTbrspZz/HCdc3dyJDwz7a22VlqnLb+mBckK3A21QZR
- d9Tg==
+ d=linaro.org; s=google; t=1747157970; x=1747762770; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=YAlhkkHQNtCeNGg6GfhmpRyuZYVVpeda25JByShss/U=;
+ b=QKaxxoM1SFYcJ3yCuOeIxP0f77U6FugpRCqbwP4L7m0tE9wJ780EZRCUM1DOhMnyuk
+ q7+wZtdioGoSp0yhQWYzCreeGDYSPf26XnxwgDj0BXsZUOYaDFaEnLSm2PoyYhJtK8cd
+ d1/C5PQKX3kX9umMvWQh8sAn5zzj0bFZEn3btwFnwTz5KkNmzzzTaMxYQLUgGtEk1Yrg
+ 6TzaqOnbnrJ5Tv5+5nRDxh5DcZfEMu1q4Y3/31bxBcohzzC/dfMQ/6O//NQn+9TE24/h
+ i/pN8FIf9Vy+FY3Ry0Ljtn5ZYZckyks6TR6TNx1TVHHeglJYL8fIeQq4c34O1v5K1jqH
+ rJ/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747158124; x=1747762924;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=rQ3g7cfW3jvPyWxEbqJvfCwLD4zthzCwcF0/oFX4jZo=;
- b=W1yy09zZIi/h+IUX/MaQB76fYpHV1+uoIHYi5ssRZPpFt/gnp5KeyFSo5XH9Xx6Bei
- uaesz5UYfcoQWkF0EXoqP8hissUBET8lalKqwEleunOxJ39le53hw1ja3jpXEz7P7TvJ
- LZ9DZY723ABspKCFQg8LMXImfrntpn7qN2Oe/khsSPZGB9F+9ANWZDB64iCw3XHZ1G3a
- rRlJ6IFJQZWySkTh8UT2RsjMA9f5f4rPZKIScFGqC/0+e1Y7cq6g1XPR6nTn86ZE4wwq
- 6YPCifXWp+QDlJRXUGKzE6DvrAsUsftMGbb4ThetYUymC5/IXgeN0zKX9SiMZSCEM4Hz
- giIg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXU/A7Ka5/pGhKxLsse0+5I0dzaC4mQkVDVCE3+OWJlZJ2VdIrjD1/tFa0as7+ineR/LFgp8vPBVg==@nongnu.org
-X-Gm-Message-State: AOJu0YyUL9iKiXWoesMJGFStE1JDErb7NCBwyxmbw7YC+r7vBWKMn82b
- sKtdWLWoboLxO4u9xBGzVxNcM6tTqZ83EYVIhYf78sdJty0l72JXNo1hjcWqr9s=
-X-Gm-Gg: ASbGncuTGfLDhFJGrjs4yt+cxwJap291GYAGGIfX/UJp3ydyMQ3RE1mrfg3KCNOR3IR
- AlFQ9HGWL0/tVLfU3cBJRXfaWnxGyApCoPsqlnKBT3u2EHT3RIOQ8z44dBvHAFvjydQbodgtjLT
- ccSyGg00Qw6BTfFeN2O64fxoHukrKZ2UCVjScW8z4ZNA/HQojZad7gEhAAaOBDCsFAyeodaDyX3
- 2p5GcB2EKNF4oyJtrEmnzJuWgUnjf3ZHcYU9p3mrhoOG305NY7qJGTspKvEikIXzgbgw6sG0VfI
- cP5vuepPOwWMX5AGlKxeG3+SHMWm0y4MPCVkYc9Eqvs48uJf5mSAK3lY8h2zDv9NBpujhhiudYW
- GiirFOtVnzCqUSCp6ursJae0GE9M/
-X-Received: by 2002:a05:600c:1553:b0:43c:e9f7:d6a3 with SMTP id
- 5b1f17b1804b1-442f20e8186mr2075995e9.13.1747158124605; 
- Tue, 13 May 2025 10:42:04 -0700 (PDT)
-Received: from [10.61.1.197] (110.8.30.213.rev.vodafone.pt. [213.30.8.110])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-442d685869csm181759085e9.26.2025.05.13.10.42.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 May 2025 10:42:04 -0700 (PDT)
-Message-ID: <d05792d0-3164-4504-91b9-1570d668653d@linaro.org>
-Date: Tue, 13 May 2025 18:42:03 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/19] target/arm: More header rework around arm_feature()
- & multiprocessing.h
+ d=1e100.net; s=20230601; t=1747157970; x=1747762770;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=YAlhkkHQNtCeNGg6GfhmpRyuZYVVpeda25JByShss/U=;
+ b=Ersqf76Sjf3McDYXMp2Eb1pBPsP1sAQOD4LRzH8kWMic2qR7odoOnnuwliOBEuxX+E
+ EQIK+a2RyBSWN5dRwX6yPU9vrOX5ET7w7eZ+IkrquJjOTLlS3NAzfEJV9VwCIuCupNxm
+ xLLnVgCXG154aQewV7YZNxt071Ye1cN4tKtmJnrFncE9GcK/vZxeRBIw9U+H7zdTNe/S
+ aW6cM2AUSTKGMww44qcyjLx1WutChud/tW298M9SH6bc/S12XG/euQqSsKmKvsZPyCWb
+ dNjoYVs+XqzW8n4EbL3/xy+VNnpuKyo+3UCfH+GEVShLJKOjfhzXUQe/QA5FGy0Hgg3P
+ r9PA==
+X-Gm-Message-State: AOJu0YyY4ELouldmNoED6j+mE4BDBb+me7QuPtHn1qbwI/6VrIEerNga
+ 2XZaDIZ0/1C69BzMoZis/zHmrlZXW/53jSZI0G/A3rKPRGgY0b9L1ETXg9y0ril3VfYE1i/Knvs
+ pxN0=
+X-Gm-Gg: ASbGncvtFTZYL2b3MJGxId+MYChOqzk1HNbUJcv1Kj4oDY0IiXUqU38FukK0kzHWfvt
+ 5dMEM08cxsnO5Cbln5w51IyjXT9/OtSv3B+I9lGASQlASidJTrNjqPDQNgpJvaIcXWn2oNZMPDU
+ D6jueEldddrbWBQckqIZAkCGbgdkRfDxaonoOVZwgSjQURYBH50p4g4C4k09tIRq3VVbS58HwyJ
+ 6LYHh26cqL9qJhNYcyRf5vDLbaJP9biwWqJtwD3+xZW2GpRnQPp4vChc865uFagytPJ4I6UZRV+
+ 9yLGtTwcwms9fZHlpv+34F5RvvkJARmUUkBrX5/ml2QF+uIsTdyrDhds38CNmHAslu++M3xO5E2
+ +ENJ4N49FtH5hSNrq5F9gO8EBr1Zr
+X-Received: by 2002:a05:600c:524c:b0:43b:c95f:fd9 with SMTP id
+ 5b1f17b1804b1-442f20baa38mr1870945e9.5.1747157970443; 
+ Tue, 13 May 2025 10:39:30 -0700 (PDT)
+Received: from localhost.localdomain (110.8.30.213.rev.vodafone.pt.
+ [213.30.8.110]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-442d67d5c09sm178235065e9.7.2025.05.13.10.39.29
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 13 May 2025 10:39:29 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-References: <20250513173928.77376-1-philmd@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250513173928.77376-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 00/19] target/arm: More header rework around arm_feature() &
+ multiprocessing.h
+Date: Tue, 13 May 2025 18:39:09 +0100
+Message-ID: <20250513173928.77376-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,28 +121,130 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2Phi85P4UKNK
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mzTjyoOvXNpc
 
-On 13/5/25 19:39, Philippe Mathieu-Daudé wrote:
+Before I respin my "single-binary: Make hw/arm/ common" [1] I'm
+extracting these random cleanup patches. Some aren't necessary
+anymore because now units in arm_common_ss[] can access "cpu.h",
+but the patches are reviewed and simplify a bit IMO.
 
-> Philippe Mathieu-Daudé (19):
->    target/arm/tcg-stubs: compile file once (system)
->    target/arm/hvf_arm: Avoid using poisoned CONFIG_HVF definition
->    target/arm: Only link with zlib when TCG is enabled
+Based-on: <20250512180502.2395029-1-pierrick.bouvier@linaro.org>
+          "single-binary: compile target/arm twice"
 
->    target/arm: Always include full path to 'cpu.h'
+[1] https://lore.kernel.org/qemu-devel/20250403235821.9909-1-philmd@linaro.org/
 
-Missing review: 1-3 & 19
+Philippe Mathieu-Daudé (19):
+  target/arm/tcg-stubs: compile file once (system)
+  target/arm/hvf_arm: Avoid using poisoned CONFIG_HVF definition
+  target/arm: Only link with zlib when TCG is enabled
+  target/arm/cpregs: Include missing 'target/arm/cpu.h' header
+  hw/arm/boot: Include missing 'system/memory.h' header
+  target/arm/cpu-features: Include missing 'cpu.h' header
+  target/arm/qmp: Include missing 'cpu.h' header
+  target/arm/kvm: Include missing 'cpu-qom.h' header
+  target/arm/hvf: Include missing 'cpu-qom.h' header
+  hw/arm: Remove unnecessary 'cpu.h' header
+  target/arm: Restrict inclusion of 'multiprocessing.h'
+  target/arm: Move some definitions from 'cpu.h' to 'multiprocessing.h'
+  hw/arm: Include missing 'target/arm/gtimer.h' header
+  target/arm: Extract PSCI definitions to 'psci.h'
+  target/arm: Extract feature definitions to 'cpu_has_feature.h' header
+  target/arm: Add arm_cpu_has_feature() helper
+  hw/arm/realview: Replace arm_feature() -> arm_cpu_has_feature()
+  hw/arm/virt-acpi: Replace arm_feature() -> arm_cpu_has_feature()
+  target/arm: Always include full path to 'cpu.h'
+
+ MAINTAINERS                    |  1 +
+ include/hw/arm/boot.h          |  3 +-
+ target/arm/cpregs.h            |  1 +
+ target/arm/cpu-features.h      |  1 +
+ target/arm/cpu.h               | 79 ++--------------------------------
+ target/arm/cpu_has_feature.h   | 67 ++++++++++++++++++++++++++++
+ target/arm/hvf_arm.h           | 18 +-------
+ target/arm/kvm_arm.h           |  1 +
+ target/arm/multiprocessing.h   | 18 ++++++++
+ target/arm/psci.h              | 18 ++++++++
+ target/arm/tcg/translate.h     |  2 +-
+ hw/arm/aspeed_ast2600.c        |  1 +
+ hw/arm/aspeed_ast27x0.c        |  2 +
+ hw/arm/bananapi_m2u.c          |  1 +
+ hw/arm/bcm2838.c               |  1 +
+ hw/arm/boot.c                  |  2 +
+ hw/arm/exynos4210.c            |  3 +-
+ hw/arm/fsl-imx8mp.c            |  1 +
+ hw/arm/highbank.c              |  2 +-
+ hw/arm/imx8mp-evk.c            |  1 +
+ hw/arm/mcimx6ul-evk.c          |  1 +
+ hw/arm/mcimx7d-sabre.c         |  1 +
+ hw/arm/mps3r.c                 |  2 +-
+ hw/arm/npcm8xx.c               |  2 +
+ hw/arm/orangepi.c              |  1 +
+ hw/arm/realview.c              | 10 ++---
+ hw/arm/sbsa-ref.c              |  2 +
+ hw/arm/smmuv3.c                |  1 -
+ hw/arm/virt-acpi-build.c       |  4 +-
+ hw/arm/virt.c                  |  1 +
+ hw/arm/xlnx-versal-virt.c      |  1 +
+ hw/arm/xlnx-zcu102.c           |  1 +
+ hw/vmapple/vmapple.c           |  3 ++
+ target/arm/arch_dump.c         |  2 +-
+ target/arm/arm-powerctl.c      |  2 +-
+ target/arm/arm-qmp-cmds.c      |  1 +
+ target/arm/cortex-regs.c       |  2 +-
+ target/arm/cpu.c               | 10 ++++-
+ target/arm/cpu64.c             |  2 +-
+ target/arm/debug_helper.c      |  2 +-
+ target/arm/gdbstub.c           |  2 +-
+ target/arm/gdbstub64.c         |  2 +-
+ target/arm/helper.c            |  3 +-
+ target/arm/hvf-stub.c          | 20 +++++++++
+ target/arm/hvf/hvf.c           |  1 +
+ target/arm/hyp_gdbstub.c       |  2 +-
+ target/arm/kvm-stub.c          |  2 +-
+ target/arm/kvm.c               |  3 +-
+ target/arm/machine.c           |  2 +-
+ target/arm/ptw.c               |  2 +-
+ target/arm/tcg-stubs.c         |  2 +-
+ target/arm/tcg/cpu-v7m.c       |  2 +-
+ target/arm/tcg/cpu32.c         |  2 +-
+ target/arm/tcg/cpu64.c         |  2 +-
+ target/arm/tcg/helper-a64.c    |  2 +-
+ target/arm/tcg/hflags.c        |  2 +-
+ target/arm/tcg/iwmmxt_helper.c |  2 +-
+ target/arm/tcg/m_helper.c      |  2 +-
+ target/arm/tcg/mte_helper.c    |  2 +-
+ target/arm/tcg/mve_helper.c    |  2 +-
+ target/arm/tcg/neon_helper.c   |  2 +-
+ target/arm/tcg/op_helper.c     |  4 +-
+ target/arm/tcg/pauth_helper.c  |  2 +-
+ target/arm/tcg/psci.c          |  3 +-
+ target/arm/tcg/sme_helper.c    |  2 +-
+ target/arm/tcg/sve_helper.c    |  2 +-
+ target/arm/tcg/tlb-insns.c     |  2 +-
+ target/arm/tcg/tlb_helper.c    |  2 +-
+ target/arm/tcg/vec_helper.c    |  2 +-
+ target/arm/tcg/vfp_helper.c    |  2 +-
+ target/arm/vfp_fpscr.c         |  2 +-
+ target/arm/meson.build         |  4 +-
+ target/arm/tcg/meson.build     |  2 +
+ 73 files changed, 221 insertions(+), 143 deletions(-)
+ create mode 100644 target/arm/cpu_has_feature.h
+ create mode 100644 target/arm/psci.h
+ create mode 100644 target/arm/hvf-stub.c
+
+-- 
+2.47.1
+

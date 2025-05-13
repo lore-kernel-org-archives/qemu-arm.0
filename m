@@ -1,221 +1,190 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp441260njb;
-        Tue, 13 May 2025 04:17:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWrIdP7hfKbObNjfMxmVmeOyLLvdhly7vP3kkc4ywCBcw4FQfVkWSNpg3E6n8JexNWJUwfLRjM24m1wbg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEOiBPzlO5MFTZErkn+80GcRd/EImqITX86ooXAm5/I87QDOAY5E9fovFh/1Apk3A08jgvs
-X-Received: by 2002:a05:620a:3196:b0:7c5:4278:d15e with SMTP id af79cd13be357-7cd01103897mr2240732285a.33.1747135070780;
-        Tue, 13 May 2025 04:17:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747135070; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp444452njb;
+        Tue, 13 May 2025 04:24:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUxuO678W1NdO+9SX21MrhVtA2XBHtTKvtPC4dOjH2Mlhc6rrcisq+KJAi45POXu18zRE1gaV/X6D5o/g==@linaro.org
+X-Google-Smtp-Source: AGHT+IESLke/Rk24HMh08r5TnM5833axFVOvVFhDQWSVLbCGNCjREwed/+DccuPEKV50EVQM+zi3
+X-Received: by 2002:a17:902:ecc2:b0:22e:9f5:6f17 with SMTP id d9443c01a7336-22fc8b32d0amr189065995ad.13.1747135456223;
+        Tue, 13 May 2025 04:24:16 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1747135456; cv=pass;
         d=google.com; s=arc-20240605;
-        b=ZcvADQnr1z1EFuc7wuR1QTEMu5bYXnEMdYuwJtT30rgb3StyrSJytVHb1QXVs/KShe
-         C3hrY2RX27lTJPRC5BrHHkF1M2eswxDEdcj4iZa13eX2YOhc+SB2sRvYBlq6Ck5fHmUm
-         hx8vrIaym3mdjIfr8NYtLnnGJx9aV8mFo1iln3lK67/dpdN5jm0toItjMaCsO9I+5/j0
-         6FlypPREX7HuUP1KDwiZ1Z9Sqae6QKKdo1ghkszyi7rMgJp6rfudFNY4hf0/m+121saZ
-         P+IPwoq2s8XtYhQ8rw2UtljAXAq84ouhuH7CtBKknbVZ2OsxI3w7qk9Ey0eWBmJwqRUI
-         MTAQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=GEW0mcwl2Snm0W0j01EzpuneJ0iLzuSWZbuRf7t0Gnk=;
-        fh=X5nH5YuFPf4WKqGf6XsKhoyhnk+YS/0SzZ/7HifbnvI=;
-        b=PSOt3FkkQ/AvGuayu1Xt74o6Ezfio6s6ofnIXjxnnZFl2l/EAN5F7Tfn7R5BCuoRfj
-         q05skWE+R2jSQ9yQ9WToWDRdLZ8+1z5L0SMAvXFiP9yONmMYa4rsbteepGqb4WirZ0xE
-         /D5mXSoaqkYN26hZIIVRtwszDpb7ugiaAumojZiqWf0cdMiR/Kehd7T4rJ/ejCafmfMo
-         YAjEMAKdfP3eWje1oFYsI7jnRH3GNPOCJCET+CPKZnAhOnTGJqcQGp8ZC50cyK9LLVK8
-         /mkWHTybu4OXUvNN1av5B3masZts1WkbN7aTaTVl1ddwbvpJQDL10zmOb+Ml1MCmtrm5
-         H0mg==;
+        b=GDg2vjg8JUhtS73rBxASJ4MWumZfc5ldbrMlP5SKj81K/3Ur2eYe0fDsfp/qZfEo2k
+         Ry74J5vj/NVVsNQBmw63/pHXtV4tyl9KMd7x+CbrvGqaxhJsN+zD/VVlM8UAa6ohnYp3
+         B9dBdt8Rt9HVBI/d66s7jTLnXpC+T19YuRn5hdTIoc0/+blhzhfdvGOMrjJoWxr3i1mF
+         HR6lcFDHSLWp0oCowpDE963ubGxO6gu1COrFlTRUcjJGgrsWF+NkP9ixogkqNLIVu4j9
+         /QWCrhAA2aXzcPqkSKCa5j9FaazNzvVN3v7oV5jgSz5GqcynRCAwXQs6hskvTPXh9XtU
+         BvVw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=XrH7sINLTStGfBHqPPfKqploDfxrQD6FVuxl9QrE70E=;
+        fh=fxWPW0LP1uaGqDeuy2ntIGXK7+YUe0OsEz+0pdJcCGM=;
+        b=N2aCr9fAOg6nYsDV1CJOy6PelC4uKd1DVawvitrhrk28Xbna5rA+ve4QP8DsnwrQxw
+         7LPS+UOlOwLgmpbxtFnYG0s6tKP4+l6/oKMQ2AgbQZ8RicOMCAlMX9X9PAfKvlGMrW/8
+         VCXcV+1AXoV9zkPTgt3gUD9ROuEJSLYR8kHdhXNxBLlfC9iLMic00uZMFQf0tzVTQzm6
+         cF0Rzms1NqhEApv6KFVArB9GYvIMr59UPrPARKBpeuf8JWY5KY7G3a7f71MO3XSCi5xj
+         xTC5Fp8Zo0/yJAOil8ogwfLMAMDAM47ssSIKeRrdBbPkxfXFKgJ8MRmQJw3gEaKo9aPu
+         2MNQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd00fd45f0si1051621585a.281.2025.05.13.04.17.50
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ll7pVrbg;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46347-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-46347-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-46347-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
+        by mx.google.com with ESMTPS id d9443c01a7336-22fc5a30e75si129469675ad.165.2025.05.13.04.24.15
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 04:17:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 May 2025 04:24:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46347-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uEndh-0001A9-RL; Tue, 13 May 2025 07:17:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uEndg-00016R-8V
- for qemu-devel@nongnu.org; Tue, 13 May 2025 07:17:36 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uEnde-0006xd-Ar
- for qemu-devel@nongnu.org; Tue, 13 May 2025 07:17:35 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZxYlp2r1zz6L4yM;
- Tue, 13 May 2025 19:14:46 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 668081400C8;
- Tue, 13 May 2025 19:17:32 +0800 (CST)
-Received: from SecurePC-101-06.china.huawei.com (10.122.19.247) by
- frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 13 May 2025 13:17:31 +0200
-To: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
- <peter.maydell@linaro.org>, <mst@redhat.com>
-CC: <linux-cxl@vger.kernel.org>, <linuxarm@huawei.com>, <qemu-arm@nongnu.org>, 
- Yuquan Wang <wangyuquan1236@phytium.com.cn>, Itaru Kitayama
- <itaru.kitayama@linux.dev>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>
-Subject: [PATCH v13 5/5] qtest/cxl: Add aarch64 virt test for CXL
-Date: Tue, 13 May 2025 12:14:55 +0100
-Message-ID: <20250513111455.128266-6-Jonathan.Cameron@huawei.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250513111455.128266-1-Jonathan.Cameron@huawei.com>
-References: <20250513111455.128266-1-Jonathan.Cameron@huawei.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ll7pVrbg;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46347-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-46347-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 7D1C57B04F6
+	for <alex.bennee@linaro.org>; Tue, 13 May 2025 11:22:44 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id E14F428D8C4;
+	Tue, 13 May 2025 11:23:46 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Ll7pVrbg"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0180023F424
+	for <kvm@vger.kernel.org>; Tue, 13 May 2025 11:23:44 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1747135426; cv=none; b=tksnL3MXNtHIvWDaplpv8BICO0DdLBdcWXzizj5/Hq/g0wzYkWsqDICIplKuOz9lk6CbIzY5jHmInSOHtjtk4akf45V9pb0FFVsawbnRvUWPwNsxRp6Sj+kmbGg9oA80rNg9i4MHUH74AplUod6EH9pvH8ROXHS9t/ZjbPOiNFA=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1747135426; c=relaxed/simple;
+	bh=UmtbBJRv6Phk1m3lAkSOmJC/eHcblEqbvBE5Y3m3d14=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=m5rlXICLoRQhsQZe+ytZhELdwXc2aHOriUiCC+VM0/n2cV1I/viFUR2WJXROkVGgX/UZLi6O9pmn3W8JuSZQEzpEXQgcq0EAlhetmqcF5Rpn/zAYEZ02JKAgqdO1Qfg9QTLDBM6uvn5t6uTTtgLl5GxbWzjVy65mI+tCbSvYjSY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Ll7pVrbg; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1747135423;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=XrH7sINLTStGfBHqPPfKqploDfxrQD6FVuxl9QrE70E=;
+	b=Ll7pVrbgto79NmOe2FFDw+1dJ3wuvDsnayLnSrw2/zopJGA6tOd/WRto2aFWH5Eeg13Lhz
+	vCDiAgrhpjrtgv9YbC3aIplQRkDPRu41xmJb84zeHlSyFArme8CPErTAYRyarHmSARWx+k
+	YaqVLoefUcY8eJd8lOtGP3LfBSbbSGI=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-12-1WvmCKAoOxiu0vORCOXmGg-1; Tue, 13 May 2025 07:23:42 -0400
+X-MC-Unique: 1WvmCKAoOxiu0vORCOXmGg-1
+X-Mimecast-MFC-AGG-ID: 1WvmCKAoOxiu0vORCOXmGg_1747135421
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-43d4d15058dso39686795e9.0
+        for <kvm@vger.kernel.org>; Tue, 13 May 2025 04:23:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747135421; x=1747740221;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=XrH7sINLTStGfBHqPPfKqploDfxrQD6FVuxl9QrE70E=;
+        b=XNQmzAEgkcGIlBx0Pgcahe8CfoA9ok5x1ULHxgxdDraoZKdwS+ENPs/R4ETnTC8ETG
+         RtbhWnAKJk9/PlMM46iTourHbVBvVugPXtBi91tkxmVoFFlpNuY8QXktP63vGcQBSBjo
+         sFA0P/QbaXQXfmJ8b/cwIXtHgb5HgXDnpBxKHb4yPqqQBoIjAPknfEk8DnFxxkNaU7rO
+         /6FKlim4zz55L+iZxVr5YsGnYi2n3jjYIOHTQUKJcnb5Xqlz5ilUmR58a3/eCbJI4x8u
+         6WLQAKBjdnvuAcDxeAPS4FXTx3wC8RPIMqCQUB7WSeBL/xg2JG1KcJbslvM6JSn80Vup
+         Ee6A==
+X-Forwarded-Encrypted: i=1; AJvYcCXM3W9aElyPi1fhkL/VWnV2ypVrO/YeNyD/jYWs6mnEG9ARdTFO2C9aEowLSLrDYKmm4/I=@vger.kernel.org
+X-Gm-Message-State: AOJu0YzeetS0x3Jj/MPFTGWri4zF5rh298pWnhaJJc0flEhscSsjN0PX
+	zzBOAu3vb9Fka5MBhHKWl4Py3rOS4TZ/dEEe9vn95nka+QOtDe8qJgIPx96ei+A+NM+SRAxRBHo
+	MEqSqWpgm6479uo9t1v8hp7X4r1SdxD2GQ/tB4Fn49JGHyq9mVQ==
+X-Gm-Gg: ASbGncvNxA5mN3WnGvzolhStK71BZKK4NgQjvmwsI5GMm+SqmbSzkdG0xgAT8NEfxeb
+	hAnNzLtz/wVXgAdjYWPzSTfoiF/iQTJoImiqbM8st93OKU6d3FUoHtGDZDn3qhZ6RwY1ttw7VGq
+	uueOKw53V8coJjbIQqc3jgTUVJ9MoQJhVbCn28zHEPVJNX/ScrKcKbav2kYTqw64cTR/5Iq/vP8
+	HnebIhimy2BIIWW5oddltGWsx45OyYQ6T6kpW7M+d62SKhu82LtMFmpvpnCTQLIvzOBNlRTOm26
+	rCSMU13ypDwGfxTVGZHjYVvXc1tqdhyi
+X-Received: by 2002:a05:600c:1e18:b0:43c:fe15:41cb with SMTP id 5b1f17b1804b1-442dc95a564mr126025885e9.15.1747135421378;
+        Tue, 13 May 2025 04:23:41 -0700 (PDT)
+X-Received: by 2002:a05:600c:1e18:b0:43c:fe15:41cb with SMTP id 5b1f17b1804b1-442dc95a564mr126025345e9.15.1747135420906;
+        Tue, 13 May 2025 04:23:40 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442cd3af15bsm208511805e9.30.2025.05.13.04.23.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 May 2025 04:23:40 -0700 (PDT)
+Date: Tue, 13 May 2025 13:23:38 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ kvm@vger.kernel.org, Sergio Lopez <slp@redhat.com>, Gerd Hoffmann
+ <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Laurent
+ Vivier <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu
+ <yi.l.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>, Eduardo
+ Habkost <eduardo@habkost.net>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>, Marcelo Tosatti
+ <mtosatti@redhat.com>, qemu-riscv@nongnu.org, Weiwei Li
+ <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>, Zhao Liu
+ <zhao1.liu@intel.com>, Yanan Wang <wangyanan55@huawei.com>, Helge Deller
+ <deller@gmx.de>, Palmer Dabbelt <palmer@dabbelt.com>, Ani Sinha
+ <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>, Paolo Bonzini
+ <pbonzini@redhat.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?B?Q2zDqW1lbnQ=?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
+ qemu-arm@nongnu.org, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
+ <marcandre.lureau@redhat.com>, Huacai Chen <chenhuacai@kernel.org>, Jason
+ Wang <jasowang@redhat.com>, devel@lists.libvirt.org
+Subject: Re: [PATCH v4 00/27] hw/i386/pc: Remove deprecated 2.6 and 2.7 PC
+ machines
+Message-ID: <20250513132338.4089736b@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250508133550.81391-1-philmd@linaro.org>
+References: <20250508133550.81391-1-philmd@linaro.org>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.122.19.247]
-X-ClientProxiedBy: lhrpeml100012.china.huawei.com (7.191.174.184) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3pRqRDxAseBE
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: xiMJcVugkHMq
 
-Add a single complex case for aarch64 virt machine.
-Given existing much more comprehensive tests for x86 cover the
-common functionality, a single test should be enough to verify
-that the aarch64 part continue to work.
+On Thu,  8 May 2025 15:35:23 +0200
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
 
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
----
- tests/qtest/cxl-test.c  | 59 ++++++++++++++++++++++++++++++++---------
- tests/qtest/meson.build |  1 +
- 2 files changed, 47 insertions(+), 13 deletions(-)
+> Since v3:
+> - Addressed Thomas and Zhao review comments
+> - Rename fw_cfg_init_mem_[no]dma() helpers
+> - Remove unused CPU properties
+> - Remove {multi,linux}boot.bin
+> - Added R-b tags
+>=20
+> Since v2:
+> - Addressed Mark review comments and added his R-b tags
+>=20
+> The versioned 'pc' and 'q35' machines up to 2.12 been marked
+> as deprecated two releases ago, and are older than 6 years,
+> so according to our support policy we can remove them.
+>=20
+> This series only includes the 2.6 and 2.7 machines removal,
+> as it is a big enough number of LoC removed. Rest will
+> follow.
 
-diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
-index a600331843..c7189d6222 100644
---- a/tests/qtest/cxl-test.c
-+++ b/tests/qtest/cxl-test.c
-@@ -19,6 +19,12 @@
-     "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
-     "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
- 
-+#define QEMU_VIRT_2PXB_CMD \
-+    "-machine virt,cxl=on -cpu max " \
-+    "-device pxb-cxl,id=cxl.0,bus=pcie.0,bus_nr=52 " \
-+    "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
-+    "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
-+
- #define QEMU_RP \
-     "-device cxl-rp,id=rp0,bus=cxl.0,chassis=0,slot=0 "
- 
-@@ -197,25 +203,52 @@ static void cxl_2pxb_4rp_4t3d(void)
-     qtest_end();
-     rmdir(tmpfs);
- }
-+
-+static void cxl_virt_2pxb_4rp_4t3d(void)
-+{
-+    g_autoptr(GString) cmdline = g_string_new(NULL);
-+    char template[] = "/tmp/cxl-test-XXXXXX";
-+    const char *tmpfs;
-+
-+    tmpfs = mkdtemp(template);
-+
-+    g_string_printf(cmdline, QEMU_VIRT_2PXB_CMD QEMU_4RP QEMU_4T3D,
-+                    tmpfs, tmpfs, tmpfs, tmpfs, tmpfs, tmpfs,
-+                    tmpfs, tmpfs);
-+
-+    qtest_start(cmdline->str);
-+    qtest_end();
-+    rmdir(tmpfs);
-+}
- #endif /* CONFIG_POSIX */
- 
- int main(int argc, char **argv)
- {
--    g_test_init(&argc, &argv, NULL);
-+    const char *arch = qtest_get_arch();
- 
--    qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
--    qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
--    qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
--    qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
--    qtest_add_func("/pci/cxl/rp", cxl_root_port);
--    qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
-+    g_test_init(&argc, &argv, NULL);
-+    if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
-+        qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
-+        qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
-+        qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
-+        qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
-+        qtest_add_func("/pci/cxl/rp", cxl_root_port);
-+        qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
- #ifdef CONFIG_POSIX
--    qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
--    qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
--    qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
--    qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
--    qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
--    qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4", cxl_2pxb_4rp_4t3d);
-+        qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
-+        qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
-+        qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
-+        qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
-+        qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
-+        qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4",
-+                       cxl_2pxb_4rp_4t3d);
- #endif
-+    } else if (strcmp(arch, "aarch64") == 0) {
-+#ifdef CONFIG_POSIX
-+        qtest_add_func("/pci/cxl/virt/pxb_x2_root_port_x4_type3_x4",
-+                       cxl_virt_2pxb_4rp_4t3d);
-+#endif
-+    }
-+
-     return g_test_run();
- }
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 7daf619845..361000267a 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -258,6 +258,7 @@ qtests_aarch64 = \
-   (config_all_accel.has_key('CONFIG_TCG') and                                            \
-    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
-+  qtests_cxl +                                                                                  \
-   ['arm-cpu-features',
-    'numa-test',
-    'boot-serial-test',
--- 
-2.43.0
+CCing libvirt folks
+
+series removes some properties that has been used as compat
+knobs with 2.6/2.7 machine types that are being removed.
+
+However libvirt might still use them,
+please check if being removed properties are safe to remove
+as is | should be deprecated 1st | should be left alone
+from an immediate user perspective.
+
+>=20
+> Based-on: <20250506143905.4961-1-philmd@linaro.org>
+>=20
+[...]
 

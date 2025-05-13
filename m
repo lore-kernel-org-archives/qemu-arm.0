@@ -1,230 +1,143 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp634869njb;
-        Tue, 13 May 2025 09:23:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUhfnEZATOpxbyv6sxDck9KhiA0EhrWvzwxR6bZg2M5nnUebptmOEbRSRl3CW76xd8JMFP3Oa0OI3f/Ng==@linaro.org
-X-Google-Smtp-Source: AGHT+IFc/6O8xDKts8BenwK43+WXnTLu5SbwSESQ9/LMZaXNrzjmyOL77dThDrWbMgv5ZsYPUroX
-X-Received: by 2002:a05:622a:1e8f:b0:476:8cad:72d9 with SMTP id d75a77b69052e-49495cdb700mr1124021cf.33.1747153421556;
-        Tue, 13 May 2025 09:23:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747153421; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp660209njb;
+        Tue, 13 May 2025 10:03:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWoFIYgKQrnCmNYUbZKsTAJrZ1M3hsES91thvuGh6ReV1zrtimc+SvjWR8/AWi7T0xmOthJnBCYSU0xMA==@linaro.org
+X-Received: by 2002:a05:600c:358b:b0:43d:42b:e186 with SMTP id 5b1f17b1804b1-442f20e8141mr1125485e9.8.1747155813038;
+        Tue, 13 May 2025 10:03:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747155813; cv=none;
         d=google.com; s=arc-20240605;
-        b=kV1HMB6OA5AjiJUlvrBNyhzrGfu9RGClm48GczOtSyIjB+DnBqtZQHlGZEWBc7aAxj
-         0pObJwn4pMTyanmsNr8SVUmAly9x0tY2YLu6o7E5r5ccYVNQwyVK8ndeiUqwDFI9yH3T
-         Ft/BH0EsJGj3JGx4y/JI5mzc3Nw4BlxqfpeFnAYCC4EIyt2UEg9N+Xrx0dmR+JmsHxNT
-         T/YX7o4nOsvWphWEFcDHItgmn/23snYjkPPfJpjn7FvlL0ZKJ85xCQcA6uHbOCF2UGgc
-         UrmWoVY+/Ew//cFZSthqfZHZJFrlztIewBBJU60R96YJpPe5TvG+CIYnxxxxPbSwQSbm
-         Xhug==
+        b=knuWw/zYtWRSwK3WxtoBwDH3p9MNKw03HJvwUD6Sm/xUq1WWOxQ3WI+kvHyEuR1qbO
+         b4R2KPSioE3ONOLYtpxM0xYIWsqyDAR9bmy7IPtsQOEic3bXhLLPC+qY5nYMMzIR9io3
+         A69vyS2/d+rL+ifNUysd2zlJME/LA2oabZ79VfPLtxULeK7BuxFx/MmaDrx4oIpWjqei
+         XuAuwB4kOAB7KYns1/OX1/ppQms3033aAsBazPDelI7NwRkfLv08/LQ/ERe6ITNWAZ3a
+         XXJ+PeaWCgE829Bednd/t0ConBq157/18dTsrHNlxgyeCZIFsYsVYFuzuMiYz1f9GSiO
+         Q8mQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=8/O3L74GuKzo/TjHS1Hrvth01wGf5AOef3YEOHWTqhA=;
-        fh=iM9GwfGv21/blqyxO272EqVSEyp03V2YmKTOh+3dT00=;
-        b=NvUGFLsN4T67nv+mPgLokS1PWEpegnZV2f1LEFN9l/P3qRuLBLyq6PzdVjK9XOUqKS
-         DVU9uH1vxGzrsIJN6zsc2KZnleSq88WlzQxUL+fzq/70fFqhFsd2rW7vfpV0RwbGxDSk
-         e3LojPftUSJmUqc1ibhhVJPH4PKuc4zhUARJuVV9ITGFuyG+av5mDlCA0srBJ1UZ8Ztc
-         MwTQ3fK1JytHgzY1j8G7An2v7wg7c+xJTgGKaesV2bnZ5FFlrSzbHc4w+tWKm0C2U1vy
-         jBjzMkGyfKSsVBQhBvEr6HmiBDR6gLs8+4HJncTHFB4hKJAL2HHKAXCCD9MKoqrDyKYu
-         lN1Q==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=ec7nBzZXny1twVolLK/NIf749kxcJmpJJJ9Zt7x7exA=;
+        fh=J34ZExoMr9iQReftymWN90GeH9rkpv8QIehE3RzimX8=;
+        b=DdsO+QHuDMUtiHOvE1JCgb625i+jMmUBbS9Zn9VqmBhpejmaRQPGDtzS+oWgBvKmnl
+         K6M5YEwmz8wAvOX07KP7iQgOWgOa+R3IzEmEOlvY24a2LL0EkqIaRc2JQ4/dWD78ylVW
+         QCkMs+d+B0kllTtOpXdcEtHGIZCAN5OsVXtqYS83SCGeecQtBd3zBlHSnhgAm0weWZ3O
+         xN5GQNuvLgX2UYZbFy66/Fl2CvTO0odsDJOTVIvToAvXN7PO+J+MwjiI4EwyO6xzL2G5
+         ny5MOv2FOjP0VeP52J1tDgs2YKxYLrhXDIzwv7DlViIA6YUSut99ltKyt5PdlCsTRdsz
+         FCbw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QIgvwijN;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-494525b2bb1si110822071cf.630.2025.05.13.09.23.41
+       dkim=pass header.i=@linaro.org header.s=google header.b=JiFVsDNt;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-442d67e2c6dsor27801365e9.3.2025.05.13.10.03.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 May 2025 09:23:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Tue, 13 May 2025 10:03:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QIgvwijN;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1747153421;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
-	bh=8/O3L74GuKzo/TjHS1Hrvth01wGf5AOef3YEOHWTqhA=;
-	b=QIgvwijNwP2KM4P0Q/9v7Kv1TNwDLG9Bsj+ISinwNH6J2+B+BG8Xd0OkJSDJEXvOSrEULZ
-	pCmdq/xLJBR1O9q2HyiT7sF25NvR9vZ8vuRCxDpXT6cTHxmvC3Mk2qxpu3DEJvrEtz5iMX
-	mSm43dc2uiSaHyqbd82243hNUV6jZLI=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-325-cYDl4VDJPni-SiULaYn4YA-1; Tue,
- 13 May 2025 12:23:38 -0400
-X-MC-Unique: cYDl4VDJPni-SiULaYn4YA-1
-X-Mimecast-MFC-AGG-ID: cYDl4VDJPni-SiULaYn4YA_1747153416
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B08D31800875;
-	Tue, 13 May 2025 16:23:35 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.110])
-	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 614281945CB4;
-	Tue, 13 May 2025 16:23:30 +0000 (UTC)
-Date: Tue, 13 May 2025 17:23:27 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Cornelia Huck <cohuck@redhat.com>
-Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
-	peter.maydell@linaro.org, richard.henderson@linaro.org,
-	alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
-	sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
-	armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
-	agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com,
-	philmd@linaro.org, pbonzini@redhat.com
-Subject: Re: [PATCH v3 10/10] arm/cpu-features: document ID reg properties
-Message-ID: <aCNx_1EyWmRoZU-_@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20250414163849.321857-1-cohuck@redhat.com>
- <20250414163849.321857-11-cohuck@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=JiFVsDNt;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1747155812; x=1747760612; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ec7nBzZXny1twVolLK/NIf749kxcJmpJJJ9Zt7x7exA=;
+        b=JiFVsDNts6RiumFGlK511SUw2Hfl2oCmSxkx5HjEeK6JA5GJStGCaAFHD9RnrG14XK
+         Q9Aw+yAfAOPaRsTVwINprtf/C/p5jyALqaBIH0DYWn5kSaNcDAaA/+ImZPXQJjASh4y0
+         EdFIZp13dke388ZyEX5yOOvD84WwsxFImRPKMz6cBGJjkUUuauDK2DFC6PboDZZKtN2C
+         q7ww8Te4E+I6xwMnr67jEnHWNq/bL7gZPn/AWRoJ8QmRk98ZJUxvErw8hcRdwBEciDpo
+         b2/sjp1WzkHQON25o2jF3M4ugNLngGsZIvz+BUb5v2cn9TG84K02VmvY9SvAAxtW7i8R
+         FSEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747155812; x=1747760612;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ec7nBzZXny1twVolLK/NIf749kxcJmpJJJ9Zt7x7exA=;
+        b=OqBVa2FQ6XHe5f9L/jAoRHQNMY5wOFCUPj9G5XobGz2z+2XrX8oNdMGmXyD8Po24ye
+         TvI0d1YzJVr8ZDkcrQfQaNrRx5f2+eRdPm8MOpNASuiVhWs3c9Pufy4se37i2JADowZO
+         n9rSJ3989VqRjpCz6FqJwkgBIfBoqfgN2gdJDFTYzxayzFKAUN8kDX5OhNs2EQqATvgm
+         ec0CKl+N04Zn8a1tgvV1pEuh9ToxnOYApfWxZ/m0aS0vX8uG9jkDgMkcJPsh+vZPCnWh
+         BinwV0EEp7fE4MUVFI8DZEsSPK7Gn89hCCTt4j3L6ziDYlVwhyXckf/PBlyIJn22pOKd
+         H2zA==
+X-Forwarded-Encrypted: i=1; AJvYcCUOSeCDcMJ93Oux7lb8eOrMmapppyhMdF4r+/femOkGnm0By4pwDr2maBfqk02mFcI1O5Vk00HUG1PsBg==@linaro.org
+X-Gm-Message-State: AOJu0YyaENH8fkarQJCudMTASzIAMRowrdeOoPQ0p/VAOf0BfnwhZCct
+	390r6oJGGiLcHsik6sGxfiTsyseREtcLoag9Y94Pm0RF4P6VDYGQ+QxfxBMGg54wzw==
+X-Gm-Gg: ASbGncsnKKq0hC+amgmaXFevzsfYz7pLRWZRacDsdKHzkUUFOHDQ1wyUfKNKl7+ScCi
+	jX+vls7YFtKe+x0EQZSOv6n7jINEBbHrk27kNOOxysR5L91ca0YMZw+0yqIPPI7rn0q0YDa7ve+
+	q9JMsNzX8Oyya67jTK01KgcSONY50mJUSNNKPrnsKbSwV/bV2vnTl/swrR9gnl47Qv0XEH37It+
+	cKMXOvBPM1iO9Ei94YmVF1PDo5/pcU+oiYTGkTmRN/Aiai1OIlwrI00tNuJxT672qOHeJVZml1P
+	GaV8NA4jOPFn1p3txivwdsdZyG8RFmKFbwPHG4C14PxxaOv5uzeJoN0vAvu1pdH8aG2lIrSc27l
+	NIv3JF2Sn8FkBRyJ/X+7M9VatJk4=
+X-Google-Smtp-Source: AGHT+IHuvD7b+uKWAZi2SJclzjF+sG6qnTzikqIaAqLvy1x6sWnsYSvbygtOJLCjYHGjW57+5kTnug==
+X-Received: by 2002:a05:600c:3b17:b0:43c:f8fc:f686 with SMTP id 5b1f17b1804b1-442f20bb64dmr1242485e9.3.1747155812242;
+        Tue, 13 May 2025 10:03:32 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [10.61.1.204] (110.8.30.213.rev.vodafone.pt. [213.30.8.110])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442d687bdcbsm176408005e9.40.2025.05.13.10.03.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 13 May 2025 10:03:31 -0700 (PDT)
+Message-ID: <39c6f5ab-6e45-491d-a0e8-07408e29e2f8@linaro.org>
+Date: Tue, 13 May 2025 18:03:29 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20250414163849.321857-11-cohuck@redhat.com>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-X-TUID: 6f6Wi43Sy2ZZ
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 30/48] target/arm/ptw: replace TARGET_AARCH64 by
+ CONFIG_ATOMIC64 from arm_casq_ptw
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: kvm@vger.kernel.org, alex.bennee@linaro.org, anjo@rev.ng,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20250512180502.2395029-1-pierrick.bouvier@linaro.org>
+ <20250512180502.2395029-31-pierrick.bouvier@linaro.org>
+ <91cd9b9a-8c67-47d3-8b19-ebaf0b4fab5d@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <91cd9b9a-8c67-47d3-8b19-ebaf0b4fab5d@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: WGvfWWq3jBZn
 
-On Mon, Apr 14, 2025 at 06:38:49PM +0200, Cornelia Huck wrote:
-> Add some documentation for how individual ID registers can be
-> configured with the host cpu model.
+On 5/13/25 03:41, Philippe Mathieu-Daudé wrote:
+> On 12/5/25 20:04, Pierrick Bouvier wrote:
+>> This function needs 64 bit compare exchange, so we hide implementation
+>> for hosts not supporting it (some 32 bit target, which don't run 64 bit
+>> guests anyway).
+>>
+>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>> ---
+>>   target/arm/ptw.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+>> index 68ec3f5e755..44170d831cc 100644
+>> --- a/target/arm/ptw.c
+>> +++ b/target/arm/ptw.c
+>> @@ -737,7 +737,7 @@ static uint64_t arm_casq_ptw(CPUARMState *env, uint64_t old_val,
+>>                                uint64_t new_val, S1Translate *ptw,
+>>                                ARMMMUFaultInfo *fi)
+>>   {
+>> -#if defined(TARGET_AARCH64) && defined(CONFIG_TCG)
+>> +#if defined(CONFIG_ATOMIC64) && defined(CONFIG_TCG)
+>>       uint64_t cur_val;
+>>       void *host = ptw->out_host;
 > 
-> [CH: adapt to removal of the 'custom' model, added some more
->  explanations about using the ID register props]
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->  docs/system/arm/cpu-features.rst | 104 ++++++++++++++++++++++++++++---
->  1 file changed, 96 insertions(+), 8 deletions(-)
+> I'd feel safer squashing:
 > 
-> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-> index 37d5dfd15b34..22faefd76edd 100644
-> --- a/docs/system/arm/cpu-features.rst
-> +++ b/docs/system/arm/cpu-features.rst
-> @@ -2,7 +2,10 @@ Arm CPU Features
->  ================
->  
->  CPU features are optional features that a CPU of supporting type may
-> -choose to implement or not.  In QEMU, optional CPU features have
-> +choose to implement or not.  QEMU provides two different mechanisms
-> +to configure those features:
-> +
-> +1. For most CPU models, optional CPU features may have
->  corresponding boolean CPU proprieties that, when enabled, indicate
->  that the feature is implemented, and, conversely, when disabled,
->  indicate that it is not implemented. An example of an Arm CPU feature
-> @@ -29,6 +32,16 @@ supports the feature.  While ``aarch64`` currently only works with KVM,
->  it could work with TCG.  CPU features that are specific to KVM are
->  prefixed with "kvm-" and are described in "KVM VCPU Features".
->  
-> +2. Additionally, the ``host`` CPU model on KVM allows to configure optional
-> +CPU features via the corresponding ID registers. The host kernel allows
-> +to write a subset of ID register fields. The host model exposes
-> +properties for each writable ID register field. Those options are named
-> +SYSREG_<IDREG>_<FIELD>. IDREG and FIELD names are those used in the
-> +ARM ARM Reference Manual. They can also be found in the Linux
-> +arch/arm64/tool/sysreg file which is used to automatically generate the
-> +description for those registers and fields. This currently only has been
-> +implemented for KVM.
+> -- >8 --
+> @@ -743,2 +743,5 @@ static uint64_t arm_casq_ptw(CPUARMState *env, uint64_t old_val,
+> 
+> +    /* AArch32 does not have FEAT_HADFS */
+> +    assert(cpu_isar_feature(aa64_hafs, env_archcpu(env)));
 
-Whereever they are referencing 'host', the docs should also
-mention 'max' CPU which should be a drop-in functional
-equivalent.
-
-> +
->  CPU Feature Probing
->  ===================
->  
-> @@ -124,13 +137,20 @@ A note about CPU models and KVM
->  
->  Named CPU models generally do not work with KVM.  There are a few cases
->  that do work, e.g. using the named CPU model ``cortex-a57`` with KVM on a
-> -seattle host, but mostly if KVM is enabled the ``host`` CPU type must be
-> -used.  This means the guest is provided all the same CPU features as the
-> -host CPU type has.  And, for this reason, the ``host`` CPU type should
-> -enable all CPU features that the host has by default.  Indeed it's even
-> -a bit strange to allow disabling CPU features that the host has when using
-> -the ``host`` CPU type, but in the absence of CPU models it's the best we can
-> -do if we want to launch guests without all the host's CPU features enabled.
-> +seattle host, but mostly if KVM is enabled, the ``host`` CPU model must be
-> +used.
-> +
-> +Using the ``host`` type means the guest is provided all the same CPU
-> +features as the host CPU type has.  And, for this reason, the ``host``
-> +CPU type should enable all CPU features that the host has by default.
-> +
-> +In case some features need to be hidden to the guest, and the host kernel
-> +supports it, the ``host`` model can be instructed to disable individual
-> +ID register values. This is especially useful for migration purposes.
-> +However, this interface will not allow configuring an arbitrary set of
-> +features; the ID registers must describe a subset of the host's features,
-> +and all differences to the host's configuration must actually be supported
-> +by the kernel to be deconfigured.
->  
->  Enabling KVM also affects the ``query-cpu-model-expansion`` QMP command.  The
->  affect is not only limited to specific features, as pointed out in example
-> @@ -167,6 +187,13 @@ disabling many SVE vector lengths would be quite verbose, the ``sve<N>`` CPU
->  properties have special semantics (see "SVE CPU Property Parsing
->  Semantics").
->  
-> +Additionally, if supported by KVM on the host kernel, the ``host`` CPU model
-> +may be configured via individual ID register field properties, for example::
-> +
-> +  $ qemu-system-aarch64 -M virt -cpu host,SYSREG_ID_AA64ISAR0_EL1_DP=0x0
-> +
-> +This forces ID_AA64ISAR0_EL1 DP field to 0.
-> +
->  KVM VCPU Features
->  =================
->  
-> @@ -466,3 +493,64 @@ Legal values for ``S`` are 30, 34, 36, and 39; the default is 30.
->  
->  As with ``x-rme``, the ``x-l0gptsz`` property may be renamed or
->  removed in some future QEMU release.
-> +
-> +Configuring CPU features via ID register fields
-> +===============================================
-> +
-> +Note that this is currently only supported under KVM, and with the
-> +``host`` CPU model.
-> +
-> +Querying available ID register fields
-> +-------------------------------------
-> +
-> +QEMU will create properties for all ID register fields that are
-> +reported as being writable by the kernel, and that are known to the
-> +QEMU instance. Therefore, the same QEMU binary may expose different
-> +properties when run under a different kernel.
-> +
-> +To find out all available writable ID register fields, use the
-> +``query-cpu-model-expansion`` QMP command::
-> +
-> +  (QEMU) query-cpu-model-expansion type=full model={"name":"host"}
-> +  {"return": {
-> +   "model": {"name": "host", "props": {
-> +   "SYSREG_ID_AA64PFR0_EL1_EL3": 1, "SYSREG_ID_AA64ISAR2_EL1_CLRBHB": 0,
-> +   "SYSREG_CTR_EL0_L1Ip": 3, "SYSREG_CTR_EL0_DminLine": 4,
-> +   "SYSREG_ID_AA64MMFR0_EL1_BIGEND": 1, "SYSREG_ID_AA64MMFR1_EL1_ECBHB": 0,
-> +   "SYSREG_ID_AA64MMFR2_EL1_CnP": 1, "SYSREG_ID_DFR0_EL1_PerfMon": 4,
-> +   "SYSREG_ID_AA64PFR0_EL1_DIT": 0, "SYSREG_ID_AA64MMFR1_EL1_HAFDBS": 2,
-> +   "SYSREG_ID_AA64ISAR0_EL1_FHM": 0, "SYSREG_ID_AA64ISAR2_EL1_CSSC": 0,
-> +   "SYSREG_ID_AA64ISAR0_EL1_DP": 1, (...)
-> +   }}}}
-> +
-> +If a certain field in an ID register does not show up in this list, it
-> +is not writable with the specific host kernel.
-
-On x86,   "-cpu help" will list all feature names too. It makes the
-output pretty huge, so not sure if we want to mirror that on arm ?
-It is at least more useful to humans though, compared to QMP.
+Why?  This is checked in the setting of param.{ha,hd}.
+See aa{32,64}_va_parameters.
 
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+r~

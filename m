@@ -1,192 +1,219 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp392765njb;
-        Tue, 13 May 2025 02:33:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVJ2tkWOzIp9//WyZpzS6UD+1+NwJwWY09mcb+q25mUvVCQJ16OnwTTOKuQ6sMIXeJx1CLb98Z2nZxSQA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFSLNbFKzkK+sGU12gwN7IYK8XNfmiU4miNmRbEQGOWPe35+8HURj3ZoPtu/EnoYwe9qBzC
-X-Received: by 2002:ac8:7fc8:0:b0:476:8d3d:adb6 with SMTP id d75a77b69052e-49452761716mr253893101cf.23.1747128803661;
-        Tue, 13 May 2025 02:33:23 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1747128803; cv=pass;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp385932njb;
+        Tue, 13 May 2025 02:16:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVT1o74MquKDXpeK5LXncpxWMsyjLWZy79s1PWkI+a5Nkw4NPJObLIz0MjRKTjjSjspuDYxHxRtoDy6bQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IE7gheIpYk7+XctIIIWytvZ5NEQ250pbtUVW4JEqhRzUMth6TLG+d2bfUnl6lxsK/LLKq8j
+X-Received: by 2002:a17:903:2cb:b0:224:2207:5130 with SMTP id d9443c01a7336-22fc91a72a8mr217870355ad.45.1747127794608;
+        Tue, 13 May 2025 02:16:34 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1747127794; cv=pass;
         d=google.com; s=arc-20240605;
-        b=JAkeX3Si/Q7UE95J7EY9CJ2Y9aXqsFJJUEP1gQy1wvX24/QSFZHPOdPUpyTHimisY1
-         Byp7DdbmWPi9L/4eL4hBstawnJpyVKh9XucVOMO48nOWm5GbKZpQD0qrdCRSOASHZAqN
-         7+zDv8Ito+ODG6o/83FBD8EyzlBQEC0MW/CfnXCmPE13+Neu8KyvLwxonG308GJhJmZ9
-         3L1Bu8pXyUopJo6YJi8fZPeVUWb+U3Ow/NXr6knzgOl4QFe8gEW2wnbkkzpwO9K6ksST
-         z49cYoHB50Snjsbaj3ZzNKSQdsfy+nddJNPQjXEttNfl5X9/qmV8AVIAr4OWETDJW5O5
-         iWKA==
+        b=JbjHkJ+zu2gh7AkuIkGCKbVXKx0u4stZGLRwobIVBviGhjGbcoxzyNjewc+A5eHhGO
+         jhrPx+tRo/r2g9UBi1rpJD1/vzbpmVGbkaOCza3A49/Oqqy7a213F7jwmRDB3Jv7Ltqb
+         /qgY6tXh00ETH5X9NBmgp7+xX6c8BnW+eIGMjsxuJ7sPP7CrwQ3JilPk+fMAKWgFMAuX
+         Hs3jf7w2XfQo8ATVPZ0W9Ps2c2se6rwquIHhB91cbpcMv2Ef+RUkHwE+9Bz4zebrdNdl
+         ytemGXDsdu6xbMitrCipJ4GQJKVd8GLgSCBccM1BREkV8INowsg/etLFGZD3lY1dmpia
+         gLcg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-disposition:mime-version
-         :list-unsubscribe:list-subscribe:list-id:precedence:references
-         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=FSlig199wVoNbDgW3dvwZUsFQR5bFCcLzhfmn5TmBRM=;
-        fh=Fwj35Yd61KYQsl+ISIcXJZaslf67A0O8IR4zEQg5//A=;
-        b=dK4LZlv9UiIo9WCJu94OSdaV+QEfMRwClA2H2jxlTUsex59ZVYzR/k4vCLu0+lAl65
-         +L1k+DwhZNs3uMLI4uGJDi68YR/yMJK2V/edfXkdlqbxCNAit6kzG2Eo3DfAmYEbag3P
-         7oMXEr77nkz3PlEEpExhCpJa3Rsw9CtaPTj6SvCBkoyvyydypU5Bbef/Tzr/7cGBwy8m
-         2VFw87JrhFRWIDGZ2Cj2SX6jv5G5V67rNjUgFWa9CaynTLvThHiNu+yLbhz2vm2oF5qI
-         0OvsK7dst0Ig1JsquwfrUG5vTPUw9+B8uU58bWUXvsTIUnN3qkkGf48yG/aGZd9OqjU9
-         ohjw==;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=HlADszS+Jp7Q3TGl9uZ1eHzM09x0nyHrIGrUpdW9aBo=;
+        fh=QnWEzPYFWrpqsf36XBu2GHlnBIRLpttF8+TJcz3ZnBQ=;
+        b=FBVQQbPL3QWkMOtO05SPQdZC/CElWtnT7azA/YpWEuuiD+FWp8LlMYzg2c0PQafXAT
+         2abFYBpQCDdiJDufP+aaUK/OsH5LHg/i4AZxapa8Bo3PXXSgun9HVqIuE1fip7z9eFVR
+         SkfKMAJwDAyb6FTFjd6FqJ9ei+LWKaRmT+ziutwI8Vxjz+FZj2GHzqlK5E7TaqXgja1K
+         S+uYwe85wThvSNuclrbab70mGzMKa9G6r1I788jIjdkIDOj1lMp/ROxWXkHOAxUknuln
+         HV+aRTLMbC8MK60CPeqwGhFI2yVsKm951jU+LKQbJWswIIwXBVl5whAuRFiHFRrNdLVm
+         JMdg==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MtzlO7cx;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JWKQDwN0;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-46315-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-46315-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-46311-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-46311-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-46315-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id d75a77b69052e-49452587cc3si106457631cf.465.2025.05.13.02.33.23
+Return-Path: <kvm+bounces-46311-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id d9443c01a7336-22fc6f36184si124620715ad.499.2025.05.13.02.16.34
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 May 2025 02:33:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-46315-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        Tue, 13 May 2025 02:16:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46311-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MtzlO7cx;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JWKQDwN0;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-46315-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-46315-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-46311-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-46311-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id BB758465EE6
-	for <alex.bennee@linaro.org>; Tue, 13 May 2025 09:33:24 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 24FC23A63A1
+	for <alex.bennee@linaro.org>; Tue, 13 May 2025 09:16:08 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 3778C2206A7;
-	Tue, 13 May 2025 09:33:19 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 05AB71F1513;
+	Tue, 13 May 2025 09:16:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="MtzlO7cx"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="JWKQDwN0"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 40D101DDA18
-	for <kvm@vger.kernel.org>; Tue, 13 May 2025 09:33:17 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 26C8F1E0DFE
+	for <kvm@vger.kernel.org>; Tue, 13 May 2025 09:16:20 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1747128798; cv=none; b=NZ4kS+MjLppEx8an3dMwOR/6i/D5yTWe7/x1aRqXKmh6ePaszamRdw3wkdSah2AQQKeB4PJ4i39DsqspXcXB/VFPcXmaCmeSh9PZXpkW1tvQ6StClJ6cbEjrrsep6dtKleaN88FmMjmqHa/M95ZPwCiJborRURahlKH7jISC1L0=
+	t=1747127782; cv=none; b=Mu3M1zYRf78eO+zP1KgCJZGw7s7KPpUmTrOEqh6s0He2zvmMv9KSiqRSpHfudedvZnT9PwG08fEux1/lsZEsHCIe1PNWPlTZBnsj3HRwS2kTKgDieU+cpt0ThQ4vi5W0/p1HYAsODW4+6M6kSU7fqqTVtP7TOIN/UxyIwqGnS/k=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1747128798; c=relaxed/simple;
-	bh=kYCafdnnhoHb78BLur38mghelPeeuES2wDf7yRCgoNM=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=MzmYTCiTzsjgAd+lSgnxk/6xBYn8T6KHPUBG5ae99aay70EjRQoc1ecfy9Uc5RTjrznF8tX4dJaBSZUtTobfa94rQPrlFZy16GKP1tJ/6X/dDnMMP9XVJgTZeOHVwOcajnGCoj0cuEUR4pjSWW19Rnj0TtJnImAiXEeeIL3pLYQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=MtzlO7cx; arc=none smtp.client-ip=170.10.129.124
+	s=arc-20240116; t=1747127782; c=relaxed/simple;
+	bh=HNtjjCsC/MT4RXrShvWdcT3xvS8QL8bkihqK2Jg1q8c=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=ZmZjI3S2eKmCxKvkudPg8Cak+EeaM4eaeJFmpKOE1/1aOomGL1QI07WnxdjnJ+kllFXReMOfQfSSmvM3fje/RtXwmabxU+E9CT+jsZPu5MeSqW2ePtcQ9A4hdDhn4RBsg4Hlv2TjEreS9bY79Fb0m6KAovDUyXE8OQtM+mujuN4=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=JWKQDwN0; arc=none smtp.client-ip=170.10.133.124
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1747128796;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
-	bh=FSlig199wVoNbDgW3dvwZUsFQR5bFCcLzhfmn5TmBRM=;
-	b=MtzlO7cx/FGWDWlQNnOjzbi3hnmy6IyrSO9+Ugr1YC3tHwIHYVPLtVCwR8WKMn96IV8szy
-	UmVb2YNCm/GE2z5CzBG2+rjzIGT6KcrpcBz4QRzVEndlALRUVnoR9BWcwIuiKQfC/1f7S0
-	C5WdRgRz8sTr3AlFoHHunhBRV7OklSU=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-341-926khPqKNyaih3aDkOWbew-1; Tue,
- 13 May 2025 05:33:13 -0400
-X-MC-Unique: 926khPqKNyaih3aDkOWbew-1
-X-Mimecast-MFC-AGG-ID: 926khPqKNyaih3aDkOWbew_1747128790
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id AF84E18004A7;
-	Tue, 13 May 2025 09:33:08 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.110])
-	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D703730001A1;
-	Tue, 13 May 2025 09:32:50 +0000 (UTC)
-Date: Tue, 13 May 2025 10:32:44 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: Markus Armbruster <armbru@redhat.com>,
-	Mark Cave-Ayland <mark.caveayland@nutanix.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Thomas Huth <thuth@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
-	Xiaoyao Li <xiaoyao.li@intel.com>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>,
-	kvm@vger.kernel.org, Gerd Hoffmann <kraxel@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu <yi.l.liu@intel.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org,
-	Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
-	Yanan Wang <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Ani Sinha <anisinha@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Fabiano Rosas <farosas@suse.de>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	=?utf-8?Q?Cl=C3=A9ment?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
-	qemu-arm@nongnu.org,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	Huacai Chen <chenhuacai@kernel.org>,
-	Jason Wang <jasowang@redhat.com>
-Subject: Re: How to mark internal properties
-Message-ID: <aCMRvH0rWpWlgSNs@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20250508133550.81391-13-philmd@linaro.org>
- <23260c74-01ba-45bc-bf2f-b3e19c28ec8a@intel.com>
- <aB2vjuT07EuO6JSQ@intel.com>
- <2f526570-7ab0-479c-967c-b3f95f9f19e3@redhat.com>
- <CAFEAcA-kuHvxjuV_cMh-Px3C-k2Gd51jFqhwndO52vm++M_jAA@mail.gmail.com>
- <aCG6MuDLrQpoTqpg@redhat.com>
- <87jz6mqeu5.fsf@pond.sub.org>
- <eedd1fa2-5856-41b8-8e6b-38bd5c98ce8f@nutanix.com>
- <87ecwshqj4.fsf@pond.sub.org>
- <60cd3ba8-2ab1-74ac-54ea-5e3b309788a1@eik.bme.hu>
+	s=mimecast20190719; t=1747127779;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=HlADszS+Jp7Q3TGl9uZ1eHzM09x0nyHrIGrUpdW9aBo=;
+	b=JWKQDwN0pSDx/g1GA6zTji++Me02ha7VaarjpmP6bt0iQICsZ8cwkGO4MKRogGnHxPnCfA
+	L1GKaK1w7ftsQagAN1FjcBM/SCY1kA13qGkIkxzvlArrZk/Zv7k+9cj6q+G065oRtsb45b
+	z2XjksHhsrSdwl4gS7e5LvtsrrC1oE8=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-444-moBnj5AlPgOUHe6hhvxhKQ-1; Tue, 13 May 2025 05:16:18 -0400
+X-MC-Unique: moBnj5AlPgOUHe6hhvxhKQ-1
+X-Mimecast-MFC-AGG-ID: moBnj5AlPgOUHe6hhvxhKQ_1747127777
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-43ea256f039so39710765e9.0
+        for <kvm@vger.kernel.org>; Tue, 13 May 2025 02:16:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747127777; x=1747732577;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=HlADszS+Jp7Q3TGl9uZ1eHzM09x0nyHrIGrUpdW9aBo=;
+        b=nWmOB+IEXx6ZRbDj7IxxiofKILAbVc54n9lj+v+dm8Iw0UKJJhyz8ToyOZJE1j44/T
+         ARByJ//OFTVksnv5pfN4Xqn2zLCGP8QD2jRpeyG9gOGLe/uAiXqM3n9Y0WzR2UqZj006
+         +LVjexGklu4Xun7WdEYjpVyVHbiQQ/fM5uh0D3wRgYplOge4982YPkPkB779F7h12vRp
+         9sZBJUaci8usHTwMojQfKbJrhPZziHS+XkFodR9BRM2BrVza0hCxtxZ2+ohkTnjiNv1m
+         gXCvat+S+6eBXj3qTtcZOImQQenTYVOC7EVs8oWcPY7aovNildhhsrNe278XzD0mIyt5
+         n1WQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV/QMa6USt3/XRCdxyDyUR3dbTTZAK4FIDBoqJspxFtTugkmACyWo2Svf8gOiyX9DL9c4w=@vger.kernel.org
+X-Gm-Message-State: AOJu0YxP1yy+ILUZhqf6xjnn7jLifryc8wIgX8VXKXwddesy7tsu6s8c
+	spm56oRMtcDw6FyHXIRsQI/G1Sj2pAEdvzst2c8Wzx+PZwAOVjTMw8XDPHXTM2lfCfRFhppMjwG
+	ng65pyza5crKnVHNqPlHbW1SCK3n3LxP4O3nQJKVSno3wD+eYnw==
+X-Gm-Gg: ASbGncuqZETa6pTPc/CPbKG+3Ls8Rrhsx/1bLa4vvfOOO1iRk3rRSdBPMFmIXQ7o/IK
+	P1rkj/OK1oPOzCalHMTEcgapTjXKBhKG+ornf6vAoy4pGx72ohbelnSJn1ShIkSV2hPQrC32qZ0
+	3HupPCRAAk7bsx1G48c9Hi12Jc718zhjFf/0xw163F/ePk89KQi8vwyHjBG2Nv8l4AaXdf7PHgq
+	cKGGqi7mAhpTQSCPMfYjHR2HDVSAJhP4k+paQwtKg19VnpzoFvbUtjAIxyT6qBPTHlCTA2UZA9I
+	p6RuT0PrT316jWEqjc8PIlzr8b+6aQ7d
+X-Received: by 2002:a05:600c:6308:b0:43c:fe15:41c9 with SMTP id 5b1f17b1804b1-442d6d3e6d9mr160272625e9.9.1747127776777;
+        Tue, 13 May 2025 02:16:16 -0700 (PDT)
+X-Received: by 2002:a05:600c:6308:b0:43c:fe15:41c9 with SMTP id 5b1f17b1804b1-442d6d3e6d9mr160272145e9.9.1747127776344;
+        Tue, 13 May 2025 02:16:16 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a1f58f2f65sm15734373f8f.55.2025.05.13.02.16.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 May 2025 02:16:15 -0700 (PDT)
+Date: Tue, 13 May 2025 11:16:14 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ kvm@vger.kernel.org, Sergio Lopez <slp@redhat.com>, Gerd Hoffmann
+ <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Laurent
+ Vivier <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu
+ <yi.l.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>, Eduardo
+ Habkost <eduardo@habkost.net>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>, Marcelo Tosatti
+ <mtosatti@redhat.com>, qemu-riscv@nongnu.org, Weiwei Li
+ <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>, Zhao Liu
+ <zhao1.liu@intel.com>, Yanan Wang <wangyanan55@huawei.com>, Helge Deller
+ <deller@gmx.de>, Palmer Dabbelt <palmer@dabbelt.com>, Ani Sinha
+ <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>, Paolo Bonzini
+ <pbonzini@redhat.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?B?Q2zDqW1lbnQ=?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
+ qemu-arm@nongnu.org, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
+ <marcandre.lureau@redhat.com>, Huacai Chen <chenhuacai@kernel.org>, Jason
+ Wang <jasowang@redhat.com>, Mark Cave-Ayland <mark.caveayland@nutanix.com>
+Subject: Re: [PATCH v4 23/27] hw/i386/intel_iommu: Remove
+ IntelIOMMUState::buggy_eim field
+Message-ID: <20250513111614.31479c42@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250508133550.81391-24-philmd@linaro.org>
+References: <20250508133550.81391-1-philmd@linaro.org>
+	<20250508133550.81391-24-philmd@linaro.org>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
 List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <60cd3ba8-2ab1-74ac-54ea-5e3b309788a1@eik.bme.hu>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-TUID: PCQV3EwyE6N+
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: D3r+P8hKJ1vX
 
-On Tue, May 13, 2025 at 11:26:31AM +0200, BALATON Zoltan wrote:
-> On Tue, 13 May 2025, Markus Armbruster wrote:
-> > Mark Cave-Ayland <mark.caveayland@nutanix.com> writes:
-> > > On a related note this also brings us back to the discussion as to
-> > > the relationship between qdev and QOM: at one point I was under the
-> > > impression that qdev properties were simply QOM properties that were
-> > > exposed externally, i.e on the commmand line for use with -device.
-> > > 
-> > > Can you provide an update on what the current thinking is in this
-> > > area, in particular re: scoping of qdev vs QOM properties?
-> > 
-> > qdev is a leaky layer above QOM.
-> > 
-> > qdev properties are also QOM properties.
-> > 
-> > All device properties are exposed externally.
-> 
-> That was clear but the question was if QOM properties (that are not qdev
-> properties) exist and if so are they also exposed? If not exposed it may be
-> used for internal properties (where simpler solutions aren't convenient) but
-> maybe qdev also adds easier definition of properties that's why they used
-> instead of QOM properties?
+On Thu,  8 May 2025 15:35:46 +0200
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
 
-NB, not everything we expose is a QDev. We directly expose QOM
-via "-object" if they implement the 'UserCreatable' interface.
-If we want internal properties, that should likely be wired in
-to the QOM level directly.
+> The IntelIOMMUState::buggy_eim boolean was only set in
+> the hw_compat_2_7[] array, via the 'x-buggy-eim=3Dtrue'
+> property. We removed all machines using that array, lets
+> remove that property, simplifying vtd_decide_config().
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 
-Conceptually you could even say that everything QEMU creates should
-live under -object, and no other args ought to need to exist. We have
-decades of evolved code making that impractical though.
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+> ---
+>  include/hw/i386/intel_iommu.h | 1 -
+>  hw/i386/intel_iommu.c         | 5 ++---
+>  2 files changed, 2 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/include/hw/i386/intel_iommu.h b/include/hw/i386/intel_iommu.h
+> index e95477e8554..29304329d05 100644
+> --- a/include/hw/i386/intel_iommu.h
+> +++ b/include/hw/i386/intel_iommu.h
+> @@ -303,7 +303,6 @@ struct IntelIOMMUState {
+>      uint32_t intr_size;             /* Number of IR table entries */
+>      bool intr_eime;                 /* Extended interrupt mode enabled */
+>      OnOffAuto intr_eim;             /* Toggle for EIM cabability */
+> -    bool buggy_eim;                 /* Force buggy EIM unless eim=3Doff =
+*/
+>      uint8_t aw_bits;                /* Host/IOVA address width (in bits)=
+ */
+>      bool dma_drain;                 /* Whether DMA r/w draining enabled =
+*/
+>      bool dma_translation;           /* Whether DMA translation supported=
+ */
+> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+> index 5f8ed1243d1..c980cecb4ee 100644
+> --- a/hw/i386/intel_iommu.c
+> +++ b/hw/i386/intel_iommu.c
+> @@ -3823,7 +3823,6 @@ static const Property vtd_properties[] =3D {
+>      DEFINE_PROP_UINT32("version", IntelIOMMUState, version, 0),
+>      DEFINE_PROP_ON_OFF_AUTO("eim", IntelIOMMUState, intr_eim,
+>                              ON_OFF_AUTO_AUTO),
+> -    DEFINE_PROP_BOOL("x-buggy-eim", IntelIOMMUState, buggy_eim, false),
+>      DEFINE_PROP_UINT8("aw-bits", IntelIOMMUState, aw_bits,
+>                        VTD_HOST_ADDRESS_WIDTH),
+>      DEFINE_PROP_BOOL("caching-mode", IntelIOMMUState, caching_mode, FALS=
+E),
+> @@ -4731,11 +4730,11 @@ static bool vtd_decide_config(IntelIOMMUState *s,=
+ Error **errp)
+>      }
+> =20
+>      if (s->intr_eim =3D=3D ON_OFF_AUTO_AUTO) {
+> -        s->intr_eim =3D (kvm_irqchip_in_kernel() || s->buggy_eim)
+> +        s->intr_eim =3D kvm_irqchip_in_kernel()
+>                        && x86_iommu_ir_supported(x86_iommu) ?
+>                                                ON_OFF_AUTO_ON : ON_OFF_AU=
+TO_OFF;
+>      }
+> -    if (s->intr_eim =3D=3D ON_OFF_AUTO_ON && !s->buggy_eim) {
+> +    if (s->intr_eim =3D=3D ON_OFF_AUTO_ON) {
+>          if (kvm_irqchip_is_split() && !kvm_enable_x2apic()) {
+>              error_setg(errp, "eim=3Don requires support on the KVM side"
+>                               "(X2APIC_API, first shipped in v4.7)");
 

@@ -1,231 +1,413 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp379432njb;
-        Tue, 13 May 2025 02:02:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXeGw/kVj0T4dZEvsP3sGz9NHibd3dxq9/SdFMMp6T+fYMls7DeFWB/SCf+tUBws9Ip8/1UFVKYsgT3ow==@linaro.org
-X-Google-Smtp-Source: AGHT+IHs7jexK3wXbwHbplNrYN2zOWFgFqxuWM0H08VjE5wb8KZE5+3dwchbIqcVPNpUbnr2L9Mt
-X-Received: by 2002:a05:620a:688b:b0:7c2:3f1f:1a15 with SMTP id af79cd13be357-7cd1de7cb5dmr353448585a.8.1747126966694;
-        Tue, 13 May 2025 02:02:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747126966; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp391310njb;
+        Tue, 13 May 2025 02:30:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVRgj+ra0s8m6TslZT0wDe8CnIjbER9xm3JXbAaxEnbIG3/jefg1YJ+0lSb7dDVQkWTtvqtOqjMS4edbA==@linaro.org
+X-Google-Smtp-Source: AGHT+IErHXTdKUAHGYqY7/eJvZOgthPI7cWR2ZqB8Dac837fKyCH2P+qdJP1CjT3EKtrTtHM5aKk
+X-Received: by 2002:a05:620a:4614:b0:7c5:65ab:5002 with SMTP id af79cd13be357-7cd011793a2mr3034418785a.49.1747128611667;
+        Tue, 13 May 2025 02:30:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747128611; cv=none;
         d=google.com; s=arc-20240605;
-        b=F03/mT4RIzo1BicmYvHFZ20+oFPK5tyRjPCb+uwjrJLsrzN3cMrNZhU5hx90HUFd/h
-         ltTLeUTK4Xm1HtVtoSRWHVqZMkYZxbninAmcKQC3LKDSCM8LpYrIuADYz8qyrsUqPOdt
-         fJKExe6R1u5J+O6wKc8UpRWXebJn3/EGFyFsCKpr0V5xji0qUyj/qqGGUQMZCI1WyMrq
-         t30QTfId+K3zC3jTNy32P714c/8+Rw83JU0ofqO4IIR39uzc7l0MbuzI3f0bG+AcrAyW
-         3+N9YWE92sbQ+ZDWM7p1102uEdc35HsQiW01aJMClgJp1cqg5+co+n/xjBCETMuhRZfz
-         t4fQ==
+        b=RtYGxWIvmyJZmPwpPN2aQjqdCEnnh0bOGXHiEpXH9Cth/1wpew2r+SeNfwJuYgzhaF
+         LcmPpBHYewQTxIvs+pzxVzIQtCnc8Du8gM7QFRfB8yuxbF2ZSzc+Ie4PrUws1LfBaMwG
+         7rLciE+1CYsb712tRWg+rhZPitD0REEOvm+fF4GvWotyv4ABqwyiecmrHkhvVa7c4D5H
+         qylNOobvpC/Mp8/ZFK3M/lJN12obIPn9L3Gl/OtDI0f1wqddxzrsVmCYNJ/oLBVGXuah
+         E6JB7AXIcglvZDygKwrbNFrISJkK8+YHbQWoV/w+rtuyxLPtzDFDTRoIzfyuqGyeIK+a
+         rMGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=HE5E63A6rmg07JemaPIfncFI01OB8TrlgBKDzNGQzCc=;
-        fh=Zavh94HUuPJB5gl0IfSVe2gXOofN1UEdXC5UKXChR9A=;
-        b=T+Istcj6i8CUObLtfGs/9fnpwShd/VFE86vTLYMEFmz+cNJ6pxcmWQzLJYIxkv8FV0
-         JCHq+G+VcZ+mdnZ/pGOstbKkdxk+EZAOxiY2d4ZInFnZyZ5/NTUJGSWEKXMiJdpAtHTN
-         0zA+07PAPwEBcaIBQvxYxxHDjujC+P1IsMC5Hg83/zrW+GuiLfl2upnRa1BStvYeVAeu
-         /0viBkdEe7ZbPcxvT/ovC4SLeuKkz+Yde7D0xkI0zrH8mx8pB9TsFP3ofPub2HPZGla4
-         VhQHnVU21ZDPegVY8HO6TmE+XgzJEr3OWMpRGVKdLClobDvIr4wW8u5LqjunE7pa1W0k
-         0uJw==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=GX+RyOEyFb/04KSchr3/KVvZXnW79gVY6DRLWfxso80=;
+        fh=w0GU0x1fgN4MkTfRhk9cORDgIktorigTof7ruv0/Oxc=;
+        b=QAIt8771uPmPDq6ndqhxNEPFbVGxAgDSMy6oUqF49IAja5pO2ZNu6keXjGd0tqYLl1
+         TnF2ysnvnLGu/xYlmv8PWrKDrQF9vN6+xh6lqVvPPcwKJIfqTIDoh8thsrZPq71/MuDe
+         U4w+VEVU/i2W8PdetVauKY/HPMj3quKQFax27cQoFgj1MM5CQpDOjvbxVRWYW86ITYiZ
+         da9/Ntg43N4hmku6qGZ+wwUkUioLYXOXpHIscKffhuKA+b4zMUJFl/HY1w8QqbY9B/hA
+         6IS1qoS2+/aj9f4LayF6M92KXzSZN30fBZf4Zo70u4YoVnPUmxqL8YrI+SVyHji0aGcB
+         twUQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FlqB2w1F;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dTaYdGLD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd06c5c379si883776985a.240.2025.05.13.02.02.46
+        by mx.google.com with ESMTPS id af79cd13be357-7cd00fe39b4si1177743485a.458.2025.05.13.02.30.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 02:02:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 May 2025 02:30:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FlqB2w1F;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dTaYdGLD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uElX5-0006vC-Kt; Tue, 13 May 2025 05:02:39 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uElxY-0004dX-3i; Tue, 13 May 2025 05:30:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1uElX3-0006u5-1N
- for qemu-arm@nongnu.org; Tue, 13 May 2025 05:02:37 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1uElxW-0004d1-E7
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 05:29:58 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1uElX0-0000bt-00
- for qemu-arm@nongnu.org; Tue, 13 May 2025 05:02:36 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1uElxT-0003ZD-1W
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 05:29:58 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1747126952;
+ s=mimecast20190719; t=1747128592;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=HE5E63A6rmg07JemaPIfncFI01OB8TrlgBKDzNGQzCc=;
- b=FlqB2w1FxAvztT4Ph7UpEnufeCeGaunFAlrLwYroSRoTuEg8AztzMsIn1UJWYEeETyPUwz
- 2dcOdTaxcMjNOvj0WJl+2qXk29nv1rk/TuxBfmzaiVEWn/jJ2JiYURS0GWzTSajPQlD424
- LlHTOYAqqRJmEHlZSLiGiD1yukdqm88=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=GX+RyOEyFb/04KSchr3/KVvZXnW79gVY6DRLWfxso80=;
+ b=dTaYdGLDfjG/LBne9Iji7F/KrrJEx2XKM0Jfh2N+RD2o8nIbk6zYz9kZiwFEW0gmp+guM1
+ fuSSrDpr5ZvU2CSgh+zDojAk48glCco0F6W9iHmprUw0NC5zPKJ7sMtua0bhQJN0F7896K
+ GqU0B2kZLqHdNaUnCZkDayK+szG7thE=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-643-IfJeIn-ONCiqf3KQ2V0lkA-1; Tue, 13 May 2025 05:02:30 -0400
-X-MC-Unique: IfJeIn-ONCiqf3KQ2V0lkA-1
-X-Mimecast-MFC-AGG-ID: IfJeIn-ONCiqf3KQ2V0lkA_1747126950
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-3a1f7204d72so2232294f8f.0
- for <qemu-arm@nongnu.org>; Tue, 13 May 2025 02:02:30 -0700 (PDT)
+ us-mta-537-oQRpwvDkPPu6b3vj04uz_g-1; Tue, 13 May 2025 05:29:50 -0400
+X-MC-Unique: oQRpwvDkPPu6b3vj04uz_g-1
+X-Mimecast-MFC-AGG-ID: oQRpwvDkPPu6b3vj04uz_g_1747128590
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-442cdf07ad9so22330285e9.2
+ for <qemu-devel@nongnu.org>; Tue, 13 May 2025 02:29:50 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747126949; x=1747731749;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=HE5E63A6rmg07JemaPIfncFI01OB8TrlgBKDzNGQzCc=;
- b=q/tXTxyT7hu5edoutK9K0nh4uy0krY6modVKoj2uq/Q7ZdEgNOa7TJUiYO/tcmg8j2
- XA0NUDgZfZXX/3rvcTClUKS4dWc2Y2ekXH0GhYX3CVejq2cgiCWazUNhKSr77ASjGxD1
- XmjTkEU4dsgId0MtQy3smA0QJL4oTabfbBhQU+e1NsWYNcchMy00sV2eGvUpLTcyNDHj
- cHcBVfSOZlNITZTVz3sofk8Pb012ljQKfpTdH88vb8io+PcZHYMskJ52ZDTuumhg0bpI
- q/cwQm4mZuJAjDwr7STpTRCHhTj90WdVi3a2Z2112hUNMsUYif+dRm1fclFyESL7YFaJ
- 8d1g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWj8qpmu7//Fxn37XSbvqGB5K48MIRrnJxwfcRcfa1lUvuScy9KFikJMXwXCKL6ifyFx6G1ApaA8Q==@nongnu.org
-X-Gm-Message-State: AOJu0YydnPrX+WTkXpwqWljStYiDHSxtouyThBfD/bTmEyjnteMtS2bx
- fcev1IoP7zi8K37NTmhSMp1vSs8QVihm5Ky7q88SBaympvkk+I4woBw3DNYDKgnxiHydVDqnCMp
- HcfPNGfOdHJqm9QwE2KGgo7zKjO9XwKlyrqqBDN00XGnuRunHNQ==
-X-Gm-Gg: ASbGnctOwn6PJ31XivmDs2L3f+0JeS4oaRuZUwMjrvb/Y0EUjUNq4v4vNUIi93FweEY
- hVOIJXtSCqlCBcJzYaXyPrmjNeYQQh6uu6scBQJEA+1DDCqdN8na6NQU7br1qRQDmk6EWGajL24
- ZU1CQRv3G7joXeGlZspHtXW81wke09p1PJueONxNW2OQw3APRBzfCDNCHLjkkoPGVSzLJBwILKt
- 3b9Z2XGpGqIamRhKP0c6RQbPkM2wQ88xBqpME8TgF/ho+ZdTrgzAAsa9h3+RbXDkmMvb4aVFinv
- MKqPCAWtcVjZMNNb09ATXhPE8KiX3Xx1
-X-Received: by 2002:adf:f687:0:b0:3a1:fa6c:4735 with SMTP id
- ffacd0b85a97d-3a1fa6c4838mr8573383f8f.35.1747126949668; 
- Tue, 13 May 2025 02:02:29 -0700 (PDT)
-X-Received: by 2002:adf:f687:0:b0:3a1:fa6c:4735 with SMTP id
- ffacd0b85a97d-3a1fa6c4838mr8573329f8f.35.1747126949240; 
- Tue, 13 May 2025 02:02:29 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a1f58f296csm15256712f8f.47.2025.05.13.02.02.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 May 2025 02:02:28 -0700 (PDT)
-Date: Tue, 13 May 2025 11:02:27 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- kvm@vger.kernel.org, Sergio Lopez <slp@redhat.com>, Gerd Hoffmann
- <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Laurent
- Vivier <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu
- <yi.l.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>, Eduardo
- Habkost <eduardo@habkost.net>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, Marcelo Tosatti
- <mtosatti@redhat.com>, qemu-riscv@nongnu.org, Weiwei Li
- <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>, Zhao Liu
- <zhao1.liu@intel.com>, Yanan Wang <wangyanan55@huawei.com>, Helge Deller
- <deller@gmx.de>, Palmer Dabbelt <palmer@dabbelt.com>, Ani Sinha
- <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>, Paolo Bonzini
- <pbonzini@redhat.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- =?UTF-8?B?Q2zDqW1lbnQ=?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
- qemu-arm@nongnu.org, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
- <marcandre.lureau@redhat.com>, Huacai Chen <chenhuacai@kernel.org>, Jason
- Wang <jasowang@redhat.com>, Mark Cave-Ayland <mark.caveayland@nutanix.com>,
- Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH v4 21/27] hw/audio/pcspk: Remove PCSpkState::migrate field
-Message-ID: <20250513110227.04d709b2@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20250508133550.81391-22-philmd@linaro.org>
-References: <20250508133550.81391-1-philmd@linaro.org>
- <20250508133550.81391-22-philmd@linaro.org>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+ d=1e100.net; s=20230601; t=1747128590; x=1747733390;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=GX+RyOEyFb/04KSchr3/KVvZXnW79gVY6DRLWfxso80=;
+ b=Yxo0OYVj8ltGvzInjPGuqt1wlQqxx7k1MRWdmAk7ugGUgfEGX09wY6Y0hbTjAkYc86
+ TAKqqVMdhgQxwEKmQQWJpcvRCFsHmwXC5INJEfN/hxA5T3HtcZ0oYj5cCjbeS0jMmYeU
+ W777wd/81W3Uj3Nm1Ta0YJ7fWiwP2/3lCDIPVgi/p5jCU5Fg0fvhcxbnrWSjPD9w5gxW
+ XPFegIlQd1DhuOIFSImN27pvqxlsUj0jmJTDUgo3ngYfOvFUtQvICeMSfbOsR1Puz8vQ
+ rtonc4GOEOschmZ8Gg0e+k7AmxX48Ng94ME56Q5ZDRWorFJXnqMwo3kpXIk1rr89PquD
+ za1w==
+X-Gm-Message-State: AOJu0YzshE4BfUmQqpqlxVvvG5+HeKOBVF9ZDIlSm6ihwrS2OVeQj1/2
+ 9G82depY/ulTSC2BjJcqvF3ZtqvCYyenUATWhB6EMDEhJitKw2fORS+j6px+5ibcQujx/OKek02
+ 9hqyrvrrwEml/BnZa+0oNSiwLUgMUTlcLJafoLSA2d5RWI8A5oHKsnoZYrueKDPBtgS2JzB6374
+ h0W9EPllp7i/+03mI6AQocxpBJo7o=
+X-Gm-Gg: ASbGncvtoQVuk/Lx7lcveSDoUeh1YaBfAn41yVKhhnkmL6DSvg/8Xbsi5VCjrXT3HgM
+ vmpVtUSoICM2Gx0JcQmcd0VdRZgrJGwhxPzlw5S46Q2em5kUmfIhwSg+yFR/YbG/v8ls=
+X-Received: by 2002:a05:600c:4e45:b0:43d:46de:b0eb with SMTP id
+ 5b1f17b1804b1-442d6d44814mr147536685e9.12.1747128589538; 
+ Tue, 13 May 2025 02:29:49 -0700 (PDT)
+X-Received: by 2002:a05:600c:4e45:b0:43d:46de:b0eb with SMTP id
+ 5b1f17b1804b1-442d6d44814mr147536375e9.12.1747128589114; Tue, 13 May 2025
+ 02:29:49 -0700 (PDT)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: TJw3yOOmHLvrR2Xv0bSgcyG2xqv928WU19637Y2hMtU_1747126950
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+References: <20250513083343.148497-1-thuth@redhat.com>
+In-Reply-To: <20250513083343.148497-1-thuth@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Tue, 13 May 2025 11:29:35 +0200
+X-Gm-Features: AX0GCFt6xkm39Y0EmcUuZTFtWe0QcBEO6mu1BmK3-900m6RYx0iVb5tpo7TZxtg
+Message-ID: <CABgObfZnEcbU24N5SQLLwK-XepuxOR_+sRFnjioLkuTbTCJRNQ@mail.gmail.com>
+Subject: Re: [PATCH] meson.build: Compile common_ss files with right system
+ header include paths
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-arm <qemu-arm@nongnu.org>, Brad Smith <brad@comstyle.com>
+Content-Type: multipart/alternative; boundary="000000000000ee6fff063501125f"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -35
 X-Spam_score: -3.6
 X-Spam_bar: ---
 X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.551,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cjF5iWi184BR
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GpHbFG8QTXEI
 
-On Thu,  8 May 2025 15:35:44 +0200
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
+--000000000000ee6fff063501125f
+Content-Type: text/plain; charset="UTF-8"
 
-> The PCSpkState::migrate boolean was only set in the
-> pc_compat_2_7[] array, via the 'migrate=3Doff' property.
-> We removed all machines using that array, lets remove
-> that property, simplifying vmstate_spk[].
+Il mar 13 mag 2025, 10:33 Thomas Huth <thuth@redhat.com> ha scritto:
 
-same as 14/27, it should be safe to remove without deprecation
+> From: Thomas Huth <thuth@redhat.com>
+>
+> Since commit 6f4e8a92bbd ("hw/arm: make most of the compilation units
+> common"), compilation of some arm machines (like musicpal) fails on
+> certain host systems like OpenBSD 7.6/7.7 since headers like <epoxy/gl.h>
+> don't reside in /usr/include and we currently don't add the right
+> CFLAGS for the common files to include the additional header search
+> paths. Add a loop similar to what we already did in commit 727bb5b477e6
+> to fix it.
+>
+> With this fix applied, we can now also drop the explicit dependency
+> on pixman for the arm musicpal machine.
+>
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Thanks, maybe replace common_ss with hw_common_arch_libs in the subject?
+These are not necessarily compiled once.
 
-=20
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
+Paolo
+
+Fixes: 6f4e8a92bbd ("hw/arm: make most of the compilation units common")
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> [thuth: Add commit message + changes in hw/arm/meson.build]
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  hw/audio/pcspk.c | 10 ----------
->  1 file changed, 10 deletions(-)
->=20
-> diff --git a/hw/audio/pcspk.c b/hw/audio/pcspk.c
-> index a419161b5b1..0e83ba0bf73 100644
-> --- a/hw/audio/pcspk.c
-> +++ b/hw/audio/pcspk.c
-> @@ -56,7 +56,6 @@ struct PCSpkState {
->      unsigned int play_pos;
->      uint8_t data_on;
->      uint8_t dummy_refresh_clock;
-> -    bool migrate;
->  };
-> =20
->  static const char *s_spk =3D "pcspk";
-> @@ -196,18 +195,10 @@ static void pcspk_realizefn(DeviceState *dev, Error=
- **errp)
->      pcspk_state =3D s;
->  }
-> =20
-> -static bool migrate_needed(void *opaque)
-> -{
-> -    PCSpkState *s =3D opaque;
-> -
-> -    return s->migrate;
-> -}
-> -
->  static const VMStateDescription vmstate_spk =3D {
->      .name =3D "pcspk",
->      .version_id =3D 1,
->      .minimum_version_id =3D 1,
-> -    .needed =3D migrate_needed,
->      .fields =3D (const VMStateField[]) {
->          VMSTATE_UINT8(data_on, PCSpkState),
->          VMSTATE_UINT8(dummy_refresh_clock, PCSpkState),
-> @@ -218,7 +209,6 @@ static const VMStateDescription vmstate_spk =3D {
->  static const Property pcspk_properties[] =3D {
->      DEFINE_AUDIO_PROPERTIES(PCSpkState, card),
->      DEFINE_PROP_UINT32("iobase", PCSpkState, iobase,  0x61),
-> -    DEFINE_PROP_BOOL("migrate", PCSpkState, migrate,  true),
->  };
-> =20
->  static void pcspk_class_initfn(ObjectClass *klass, const void *data)
+>  meson.build        | 27 ++++++++++++++++-----------
+>  hw/arm/meson.build |  2 +-
+>  2 files changed, 17 insertions(+), 12 deletions(-)
+>
+> diff --git a/meson.build b/meson.build
+> index 5ac64075be7..7131aa2b21d 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -3228,6 +3228,7 @@ config_devices_mak_list = []
+>  config_devices_h = {}
+>  config_target_h = {}
+>  config_target_mak = {}
+> +config_base_arch_mak = {}
+>
+>  disassemblers = {
+>    'alpha' : ['CONFIG_ALPHA_DIS'],
+> @@ -3419,6 +3420,11 @@ foreach target : target_dirs
+>      config_all_devices += config_devices
+>    endif
+>    config_target_mak += {target: config_target}
+> +
+> +  # build a merged config for all targets with the same TARGET_BASE_ARCH
+> +  target_base_arch = config_target['TARGET_BASE_ARCH']
+> +  config_base_arch = config_base_arch_mak.get(target_base_arch, {}) +
+> config_target
+> +  config_base_arch_mak += {target_base_arch: config_base_arch}
+>  endforeach
+>  target_dirs = actual_target_dirs
+>
+> @@ -4099,28 +4105,27 @@ common_all = static_library('common',
+>
+>  # construct common libraries per base architecture
+>  hw_common_arch_libs = {}
+> -foreach target : target_dirs
+> -  config_target = config_target_mak[target]
+> -  target_base_arch = config_target['TARGET_BASE_ARCH']
+> +foreach target_base_arch, config_base_arch : config_base_arch_mak
+> +  if target_base_arch in hw_common_arch
+> +    base_arch_hw =
+> hw_common_arch[target_base_arch].apply(config_base_arch, strict: false)
+> +    base_arch_common = common_ss.apply(config_base_arch, strict: false)
+>
+> -  # check if already generated
+> -  if target_base_arch in hw_common_arch_libs
+> -    continue
+> -  endif
+> +    lib_deps = base_arch_hw.dependencies()
+> +    foreach dep : base_arch_common.dependencies()
+> +      lib_deps += dep.partial_dependency(compile_args: true, includes:
+> true)
+> +    endforeach
+>
+> -  if target_base_arch in hw_common_arch
+>      target_inc = [include_directories('target' / target_base_arch)]
+> -    src = hw_common_arch[target_base_arch]
+>      lib = static_library(
+>        'hw_' + target_base_arch,
+>        build_by_default: false,
+> -      sources: src.all_sources() + genh,
+> +      sources: base_arch_hw.sources() + genh,
+>        include_directories: common_user_inc + target_inc,
+>        implicit_include_directories: false,
+>        # prevent common code to access cpu compile time
+>        # definition, but still allow access to cpu.h
+>        c_args: ['-DCPU_DEFS_H', '-DCOMPILING_SYSTEM_VS_USER',
+> '-DCONFIG_SOFTMMU'],
+> -      dependencies: src.all_dependencies())
+> +      dependencies: lib_deps)
+>      hw_common_arch_libs += {target_base_arch: lib}
+>    endif
+>  endforeach
+> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+> index 5098795f61d..8e3bf495dbf 100644
+> --- a/hw/arm/meson.build
+> +++ b/hw/arm/meson.build
+> @@ -8,7 +8,7 @@ arm_common_ss.add(when: 'CONFIG_HIGHBANK', if_true:
+> files('highbank.c'))
+>  arm_common_ss.add(when: 'CONFIG_INTEGRATOR', if_true:
+> files('integratorcp.c'))
+>  arm_common_ss.add(when: 'CONFIG_MICROBIT', if_true: files('microbit.c'))
+>  arm_common_ss.add(when: 'CONFIG_MPS3R', if_true: files('mps3r.c'))
+> -arm_common_ss.add(when: 'CONFIG_MUSICPAL', if_true: [pixman,
+> files('musicpal.c')])
+> +arm_common_ss.add(when: 'CONFIG_MUSICPAL', if_true: files('musicpal.c'))
+>  arm_common_ss.add(when: 'CONFIG_NETDUINOPLUS2', if_true:
+> files('netduinoplus2.c'))
+>  arm_common_ss.add(when: 'CONFIG_OLIMEX_STM32_H405', if_true:
+> files('olimex-stm32-h405.c'))
+>  arm_common_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx.c',
+> 'npcm7xx_boards.c'))
+> --
+> 2.49.0
+>
+>
+
+--000000000000ee6fff063501125f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote gmail_quote_contai=
+ner"><div dir=3D"ltr" class=3D"gmail_attr">Il mar 13 mag 2025, 10:33 Thomas=
+ Huth &lt;<a href=3D"mailto:thuth@redhat.com">thuth@redhat.com</a>&gt; ha s=
+critto:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">From: Th=
+omas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=3D"_blank" rel=3D"=
+noreferrer">thuth@redhat.com</a>&gt;<br>
+<br>
+Since commit 6f4e8a92bbd (&quot;hw/arm: make most of the compilation units<=
+br>
+common&quot;), compilation of some arm machines (like musicpal) fails on<br=
+>
+certain host systems like OpenBSD 7.6/7.7 since headers like &lt;epoxy/gl.h=
+&gt;<br>
+don&#39;t reside in /usr/include and we currently don&#39;t add the right<b=
+r>
+CFLAGS for the common files to include the additional header search<br>
+paths. Add a loop similar to what we already did in commit 727bb5b477e6<br>
+to fix it.<br>
+<br>
+With this fix applied, we can now also drop the explicit dependency<br>
+on pixman for the arm musicpal machine.<br></blockquote></div></div><div di=
+r=3D"auto"><br></div><div dir=3D"auto">Thanks, maybe replace common_ss with=
+=C2=A0hw_common_arch_libs in the subject? These are not necessarily compile=
+d once.</div><div dir=3D"auto"><br></div><div dir=3D"auto">Paolo</div><div =
+dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_quote gmail_qu=
+ote_container"><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
+x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Fixes: 6f4=
+e8a92bbd (&quot;hw/arm: make most of the compilation units common&quot;)<br=
+>
+Signed-off-by: Paolo Bonzini &lt;<a href=3D"mailto:pbonzini@redhat.com" tar=
+get=3D"_blank" rel=3D"noreferrer">pbonzini@redhat.com</a>&gt;<br>
+[thuth: Add commit message + changes in hw/arm/meson.build]<br>
+Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=
+=3D"_blank" rel=3D"noreferrer">thuth@redhat.com</a>&gt;<br>
+---<br>
+=C2=A0meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 27 ++++++++++++++++---------=
+--<br>
+=C2=A0hw/arm/meson.build |=C2=A0 2 +-<br>
+=C2=A02 files changed, 17 insertions(+), 12 deletions(-)<br>
+<br>
+diff --git a/meson.build b/meson.build<br>
+index 5ac64075be7..7131aa2b21d 100644<br>
+--- a/meson.build<br>
++++ b/meson.build<br>
+@@ -3228,6 +3228,7 @@ config_devices_mak_list =3D []<br>
+=C2=A0config_devices_h =3D {}<br>
+=C2=A0config_target_h =3D {}<br>
+=C2=A0config_target_mak =3D {}<br>
++config_base_arch_mak =3D {}<br>
+<br>
+=C2=A0disassemblers =3D {<br>
+=C2=A0 =C2=A0&#39;alpha&#39; : [&#39;CONFIG_ALPHA_DIS&#39;],<br>
+@@ -3419,6 +3420,11 @@ foreach target : target_dirs<br>
+=C2=A0 =C2=A0 =C2=A0config_all_devices +=3D config_devices<br>
+=C2=A0 =C2=A0endif<br>
+=C2=A0 =C2=A0config_target_mak +=3D {target: config_target}<br>
++<br>
++=C2=A0 # build a merged config for all targets with the same TARGET_BASE_A=
+RCH<br>
++=C2=A0 target_base_arch =3D config_target[&#39;TARGET_BASE_ARCH&#39;]<br>
++=C2=A0 config_base_arch =3D config_base_arch_mak.get(target_base_arch, {})=
+ + config_target<br>
++=C2=A0 config_base_arch_mak +=3D {target_base_arch: config_base_arch}<br>
+=C2=A0endforeach<br>
+=C2=A0target_dirs =3D actual_target_dirs<br>
+<br>
+@@ -4099,28 +4105,27 @@ common_all =3D static_library(&#39;common&#39;,<br>
+<br>
+=C2=A0# construct common libraries per base architecture<br>
+=C2=A0hw_common_arch_libs =3D {}<br>
+-foreach target : target_dirs<br>
+-=C2=A0 config_target =3D config_target_mak[target]<br>
+-=C2=A0 target_base_arch =3D config_target[&#39;TARGET_BASE_ARCH&#39;]<br>
++foreach target_base_arch, config_base_arch : config_base_arch_mak<br>
++=C2=A0 if target_base_arch in hw_common_arch<br>
++=C2=A0 =C2=A0 base_arch_hw =3D hw_common_arch[target_base_arch].apply(conf=
+ig_base_arch, strict: false)<br>
++=C2=A0 =C2=A0 base_arch_common =3D common_ss.apply(config_base_arch, stric=
+t: false)<br>
+<br>
+-=C2=A0 # check if already generated<br>
+-=C2=A0 if target_base_arch in hw_common_arch_libs<br>
+-=C2=A0 =C2=A0 continue<br>
+-=C2=A0 endif<br>
++=C2=A0 =C2=A0 lib_deps =3D base_arch_hw.dependencies()<br>
++=C2=A0 =C2=A0 foreach dep : base_arch_common.dependencies()<br>
++=C2=A0 =C2=A0 =C2=A0 lib_deps +=3D dep.partial_dependency(compile_args: tr=
+ue, includes: true)<br>
++=C2=A0 =C2=A0 endforeach<br>
+<br>
+-=C2=A0 if target_base_arch in hw_common_arch<br>
+=C2=A0 =C2=A0 =C2=A0target_inc =3D [include_directories(&#39;target&#39; / =
+target_base_arch)]<br>
+-=C2=A0 =C2=A0 src =3D hw_common_arch[target_base_arch]<br>
+=C2=A0 =C2=A0 =C2=A0lib =3D static_library(<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;hw_&#39; + target_base_arch,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0build_by_default: false,<br>
+-=C2=A0 =C2=A0 =C2=A0 sources: src.all_sources() + genh,<br>
++=C2=A0 =C2=A0 =C2=A0 sources: base_arch_hw.sources() + genh,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0include_directories: common_user_inc + target_in=
+c,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0implicit_include_directories: false,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0# prevent common code to access cpu compile time=
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0# definition, but still allow access to cpu.h<br=
+>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0c_args: [&#39;-DCPU_DEFS_H&#39;, &#39;-DCOMPILIN=
+G_SYSTEM_VS_USER&#39;, &#39;-DCONFIG_SOFTMMU&#39;],<br>
+-=C2=A0 =C2=A0 =C2=A0 dependencies: src.all_dependencies())<br>
++=C2=A0 =C2=A0 =C2=A0 dependencies: lib_deps)<br>
+=C2=A0 =C2=A0 =C2=A0hw_common_arch_libs +=3D {target_base_arch: lib}<br>
+=C2=A0 =C2=A0endif<br>
+=C2=A0endforeach<br>
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build<br>
+index 5098795f61d..8e3bf495dbf 100644<br>
+--- a/hw/arm/meson.build<br>
++++ b/hw/arm/meson.build<br>
+@@ -8,7 +8,7 @@ arm_common_ss.add(when: &#39;CONFIG_HIGHBANK&#39;, if_true:=
+ files(&#39;highbank.c&#39;))<br>
+=C2=A0arm_common_ss.add(when: &#39;CONFIG_INTEGRATOR&#39;, if_true: files(&=
+#39;integratorcp.c&#39;))<br>
+=C2=A0arm_common_ss.add(when: &#39;CONFIG_MICROBIT&#39;, if_true: files(&#3=
+9;microbit.c&#39;))<br>
+=C2=A0arm_common_ss.add(when: &#39;CONFIG_MPS3R&#39;, if_true: files(&#39;m=
+ps3r.c&#39;))<br>
+-arm_common_ss.add(when: &#39;CONFIG_MUSICPAL&#39;, if_true: [pixman, files=
+(&#39;musicpal.c&#39;)])<br>
++arm_common_ss.add(when: &#39;CONFIG_MUSICPAL&#39;, if_true: files(&#39;mus=
+icpal.c&#39;))<br>
+=C2=A0arm_common_ss.add(when: &#39;CONFIG_NETDUINOPLUS2&#39;, if_true: file=
+s(&#39;netduinoplus2.c&#39;))<br>
+=C2=A0arm_common_ss.add(when: &#39;CONFIG_OLIMEX_STM32_H405&#39;, if_true: =
+files(&#39;olimex-stm32-h405.c&#39;))<br>
+=C2=A0arm_common_ss.add(when: &#39;CONFIG_NPCM7XX&#39;, if_true: files(&#39=
+;npcm7xx.c&#39;, &#39;npcm7xx_boards.c&#39;))<br>
+-- <br>
+2.49.0<br>
+<br>
+</blockquote></div></div></div>
+
+--000000000000ee6fff063501125f--
 

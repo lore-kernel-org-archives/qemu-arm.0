@@ -1,347 +1,219 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp503992njb;
-        Tue, 13 May 2025 06:06:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUtV25tBwNNMI7CW3qWwmqflElI9yXGc/aJRa0C7ft5ORJxn+8WbFg1sqrRdYRDQ6JGNqVctX9xD54OLw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHqDc8+ynUxs2zuSQAkVzkeVKB+JgNGKcm4II1X3z5Zf0BysKYRl2tBZjqoR9W6vhubBYax
-X-Received: by 2002:ad4:5dea:0:b0:6f5:3e46:63eb with SMTP id 6a1803df08f44-6f6e47aa6cemr254455696d6.13.1747141595173;
-        Tue, 13 May 2025 06:06:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747141595; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp543695njb;
+        Tue, 13 May 2025 07:05:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVMb6oaoUt5Y6HL79HgQM3D8AKrcDzHh77hgsB9X8N4kml3X0IOcYMDZrwYdDAU4OhaFdzGYSx9PzSQPA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGDEMGZL4we2MIiJ4j4qHvEup/g9o4dTnbX3F7odhsVUaYHSpqGb0tB0cqQHRtssQfV/hOv
+X-Received: by 2002:a05:622a:559b:b0:494:7191:9f80 with SMTP id d75a77b69052e-494873dbe47mr58133131cf.16.1747145130036;
+        Tue, 13 May 2025 07:05:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747145130; cv=none;
         d=google.com; s=arc-20240605;
-        b=DOlxX3GZLj65sjAtK44lfsvwykuJ+vtHUdyx+Q813ZjM70Dm14PBQ9htu9dZPUSCGR
-         zGZwvvey7FYrZcYg81c6SKQy+2u0gBc/jJXv882s/q6THmE7r6EKjioGMf2PKg5s+R5y
-         IdaK6vPQtCQLV0w8Ig9UxVtjry0FDzS8s9+nhCTy2WZgG/kNUNjVnFnCXb4Y5rkceqI7
-         iRTYp0bsYcoBD2KaZUh81wT4Q/labD6OXWfgV4sq0EQ50+VbwCcRfTLkuFCK/aG0B0dg
-         FxDM6HSzycG040rWcheeAGW8uAFgKzzNolAnlPiM6JWPHJeXTEdCVhNhhOvviBO8p5HE
-         RSbw==
+        b=OKAhumoUknvXSSzer+DrnicZdcVphaGoNmfJPZ7DHKFbWyvxQDodIRy1/qrosQe0mh
+         Vi0kPTooGT1UcONMcNDGulIAHHRl3cxEEZHTlMimg0gv6WO5T+/ivzVeftBL1mJ+Gp9s
+         mXKt+tsnu5hhvR0WNgvDZsfE6qq/t7X31c79R6DaHDUnGZ6yNihzj8CenqQS+vSUoKVc
+         I1szPc9f3DTZDWVYoqaK79aXB1fs3FE68gAeISXr83cbWR7taB/+/BJ0ofdubIBoGFr+
+         Ix39izwYLXFWDNreu94QHR6FvWnTTW9554KEeu9G4gHI46uW80uY1PLx6/v+rKmo6+JQ
+         nZ6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=5IEHmeZckJ6Lj9osqw1LF5z23AXSwmIcme8gsWSzHMs=;
-        fh=KIQWrerkHcHGY8pI9tE4eJlk73GRvR/oZFuXy8RkeGg=;
-        b=LkaveeptbFgK7XxhWwSWFDespFYapOeoUqHkj0kBqXAqEBalcahTo314X9neINE+eO
-         tLXJjo3h/0VjLJoF2Ic7QCzVVxwhE8RFw+SdFKTHN4ymGbpKr/WHuWFwwmWtWWS3IUwb
-         ZI6LEyKEnz/Fore0DQdyDpg5smEx0b3gDb4+wpc5NwE5T4VcY8IXlrzpweRzrrPnk5zs
-         ONcCvntwq2VFeXFXSMuT7qKNs+cIq2640YoxOrNW4TANBcx8txRVIIXU0nIfjLlLYC85
-         VyYVabg6TXrX5fGlx4sTD+34fkA2uzFwYaV0sZo3PSAsYGGMZDGOG6noH+T0hyEOtOEy
-         1gAQ==;
+        h=mime-version:message-id:date:user-agent:references:organization
+         :in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=Uk82EjzJtnyar56E26L6uDoZS2+bPln9a7V28aPdNsM=;
+        fh=iQ7n1v0snccwxUvUyN2HRcGQY4i7GKA5J/Y52/7OCuQ=;
+        b=TgkPSfDGfn1ZlF8k557yOZhDg1w/t4CvGK0N3bHoffZ9zxHyBQv1V5hHLkTV+2aqq5
+         rYBRo07qA5pGNizWlS0GCgta02XU/Zbrj1+2uwt0/XyAZSc6V7d4wORH7MsxilzErodR
+         eWld5JiBVtFs6cFVdJAgJgqYi0QVhAOQFwOa70XQg0E/KvCUuGTVnBZCWFhdkEDlANAl
+         UiV6k78oEGnuIL/MJfDoHrx0gKpKJAfT7ndkb6VI4K90QWox6akVdMCOhVm43L68WnU5
+         iV8/+BDojLQgyR1bezBsHXaC0gt/0lBj3nYuIilLacL7Brytk9zbTgvctAzgesXWhyIK
+         bqaQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a4bc76si111089716d6.310.2025.05.13.06.06.34
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GyYwC5d6;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-49452479becsi112004481cf.157.2025.05.13.07.05.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 06:06:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 May 2025 07:05:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uEpKT-0008Nv-5x; Tue, 13 May 2025 09:05:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=uZst=X5=kaod.org=clg@ozlabs.org>)
- id 1uEpJa-00087v-76; Tue, 13 May 2025 09:05:01 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=uZst=X5=kaod.org=clg@ozlabs.org>)
- id 1uEpJX-0003Ga-8i; Tue, 13 May 2025 09:04:57 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4ZxcBj3jtDz4xQW;
- Tue, 13 May 2025 23:04:45 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4ZxcBd1qWlz4xQN;
- Tue, 13 May 2025 23:04:40 +1000 (AEST)
-Message-ID: <e05b8809-3e64-456e-8b88-0026b0e14588@kaod.org>
-Date: Tue, 13 May 2025 15:04:37 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GyYwC5d6;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1747145129;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Uk82EjzJtnyar56E26L6uDoZS2+bPln9a7V28aPdNsM=;
+	b=GyYwC5d6bpk4t0T+wIVyjrWFfplMU/qtp5vXF3oSVlSqcnXDwPf+ZXX6BsbcFIAtmQCosB
+	qJOS2lX+GQM8NVyUvZlK786II6VpVePmsL7TxK5wq2CV+eAlThQCJHIT8zi3EEnHr7DgH1
+	ie0volc+ytsMbFm2LZGZH7Sz3+3Th4U=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-91-l9mYAlONNdeqolyRROXIag-1; Tue,
+ 13 May 2025 10:05:24 -0400
+X-MC-Unique: l9mYAlONNdeqolyRROXIag-1
+X-Mimecast-MFC-AGG-ID: l9mYAlONNdeqolyRROXIag_1747145122
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id EDD37195DE5B;
+	Tue, 13 May 2025 14:05:20 +0000 (UTC)
+Received: from localhost (dhcp-192-216.str.redhat.com [10.33.192.216])
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D8CEE19373EB;
+	Tue, 13 May 2025 14:05:18 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
+ oliver.upton@linux.dev, sebott@redhat.com,
+ shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
+ berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com
+Cc: agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com,
+ philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [PATCH v3 01/10] arm/cpu: Add infra to handle generated ID
+ register definitions
+In-Reply-To: <6c06a198-1608-4919-8b6e-68e3c28c2526@redhat.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Michael O'Neill, Amy
+ Ross"
+References: <20250414163849.321857-1-cohuck@redhat.com>
+ <20250414163849.321857-2-cohuck@redhat.com>
+ <6c06a198-1608-4919-8b6e-68e3c28c2526@redhat.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Tue, 13 May 2025 16:05:16 +0200
+Message-ID: <87bjrwppwj.fsf@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 05/25] hw/misc/aspeed_hace: Split hash execution into
- helper functions for clarity
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20250513062901.2256865-1-jamin_lin@aspeedtech.com>
- <20250513062901.2256865-6-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250513062901.2256865-6-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=uZst=X5=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pNHt9K4wL1fL
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-TUID: sxzWKcAOhv5S
 
-Hello Jamin
+On Tue, May 13 2025, Eric Auger <eric.auger@redhat.com> wrote:
 
-On 5/13/25 08:28, Jamin Lin wrote:
-> Refactor "do_hash_operation()" by extracting hash execution and result handling
-> into dedicated helper functions:
-> 
-> - "hash_write_digest_and_unmap_iov()": Writes the digest result to memory and
->    unmaps IOVs after processing.
-> - "hash_execute_non_acc_mode()": Handles one-shot (non-accumulated) hash
->    operations.
-> - "hash_execute_acc_mode()": Handles accumulated hashing, including update and
->    finalize logic.
-> 
-> No functional changes introduced.
+> Hi Connie,
+>
+> On 4/14/25 6:38 PM, Cornelia Huck wrote:
+>> From: Eric Auger <eric.auger@redhat.com>
+>>
+>> The known ID regs are described in a new initialization function
+>> dubbed initialize_cpu_sysreg_properties(). That code will be
+>> automatically generated from linux arch/arm64/tools/sysreg. For the
+>> time being let's just describe a single id reg, CTR_EL0. In this
+>> description we only care about non RES/RAZ fields, ie. named fields.
+>>
+>> The registers are populated in an array indexed by ARMIDRegisterIdx
+>> and their fields are added in a sorted list.
+>>
+>> [CH: adapted to reworked register storage]
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>> ---
+>>  target/arm/cpu-custom.h            | 60 ++++++++++++++++++++++++++++++
+>>  target/arm/cpu-sysreg-properties.c | 41 ++++++++++++++++++++
+>>  target/arm/cpu64.c                 |  2 +
+>>  target/arm/meson.build             |  1 +
+>>  4 files changed, 104 insertions(+)
+>>  create mode 100644 target/arm/cpu-custom.h
+> do we still want reference to the "custom" terminology, following
+> initial comments?
 
-This patch is breaking 'check-qtest-arm'
+Hm, maybe 'cpu-idregs.h'?
 
-   
-   stderr:
-   **
-   ERROR:../tests/qtest/aspeed_hace-test.c:254:test_sha512: assertion failed (digest == test_result_sha512)
+>>  create mode 100644 target/arm/cpu-sysreg-properties.c
+>>
+>> diff --git a/target/arm/cpu-custom.h b/target/arm/cpu-custom.h
+>> new file mode 100644
+>> index 000000000000..615347376e56
+>> --- /dev/null
+>> +++ b/target/arm/cpu-custom.h
+>> @@ -0,0 +1,60 @@
+>> +/*
+>> + * handle ID registers and their fields
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +#ifndef ARM_CPU_CUSTOM_H
+>> +#define ARM_CPU_CUSTOM_H
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "qemu/error-report.h"
+>> +#include "cpu.h"
+>> +#include "cpu-sysregs.h"
+>> +
+>> +typedef struct ARM64SysRegField {
+>> +    const char *name; /* name of the field, for instance CTR_EL0_IDC */
+>> +    int index;
+> worth to add a comment saying this is the ARMIDRegisterIdx of the parent
+> sysreg.
 
+ok
 
-Thanks,
+>> +    int lower;
+>> +    int upper;
+>> +} ARM64SysRegField;
+>> +
+>> +typedef struct ARM64SysReg {
+>> +    const char *name;   /* name of the sysreg, for instance CTR_EL0 */
+>> +    ARMSysRegs sysreg;
+>> +    int index;
+> now that we have different kinds of indexing, may be worth adding a
+> comment to explain which one is being used.
+> I guess here it is ARMIDRegisterIdx. So you could even change the data type.
 
-C.
+Yeah, comments are good, I'll add some.
 
-   
+>> +    GList *fields; /* list of named fields, excluding RES* */
+>> +} ARM64SysReg;
+>> +
+>> +void initialize_cpu_sysreg_properties(void);
+>> +
+>> +/*
+>> + * List of exposed ID regs (automatically populated from linux
+>> + * arch/arm64/tools/sysreg)
+>> + */
+>> +extern ARM64SysReg arm64_id_regs[NUM_ID_IDX];
+>> +
+>> +/* Allocate a new field and insert it at the head of the @reg list */
+>> +static inline GList *arm64_sysreg_add_field(ARM64SysReg *reg, const char *name,
+>> +                                     uint8_t min, uint8_t max) {
+>> +
+>> +     ARM64SysRegField *field = g_new0(ARM64SysRegField, 1);
+>> +
+>> +     field->name = name;
+>> +     field->lower = min;
+>> +     field->upper = max;
+>> +     field->index = reg->index;
+>> +
+>> +     reg->fields = g_list_append(reg->fields, field);
+>> +     return reg->fields;
+>> +}
+>> +
+>> +static inline ARM64SysReg *arm64_sysreg_get(ARMIDRegisterIdx index)
+>> +{
+>> +        ARM64SysReg *reg = &arm64_id_regs[index];
+>> +
+>> +        reg->index = index;
+>> +        reg->sysreg = id_register_sysreg[index];
+>> +        return reg;
+>> +}
+>> +
+>> +#endif
+>> diff --git a/target/arm/cpu-sysreg-properties.c b/target/arm/cpu-sysreg-properties.c
+>> new file mode 100644
+>> index 000000000000..8b7ef5badfb9
+>> --- /dev/null
+>> +++ b/target/arm/cpu-sysreg-properties.c
+>> @@ -0,0 +1,41 @@
+>> +/*
+>> + * QEMU ARM CPU SYSREG PROPERTIES
+>> + * to be generated from linux sysreg
+>> + *
+>> + * Copyright (c) Red Hat, Inc. 2024
+> maybe increment the year now ;-)
 
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/misc/aspeed_hace.c | 133 ++++++++++++++++++++++++++----------------
->   1 file changed, 83 insertions(+), 50 deletions(-)
-> 
-> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-> index 22eea62693..eb513ba00f 100644
-> --- a/hw/misc/aspeed_hace.c
-> +++ b/hw/misc/aspeed_hace.c
-> @@ -228,26 +228,96 @@ static int hash_prepare_sg_iov(AspeedHACEState *s, struct iovec *iov,
->       return iov_idx;
->   }
->   
-> -static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
-> -                              bool acc_mode)
-> +static void hash_write_digest_and_unmap_iov(AspeedHACEState *s,
-> +                                            struct iovec *iov,
-> +                                            int iov_idx,
-> +                                            uint8_t *digest_buf,
-> +                                            size_t digest_len)
-> +{
-> +    if (address_space_write(&s->dram_as, s->regs[R_HASH_DEST],
-> +                            MEMTXATTRS_UNSPECIFIED, digest_buf, digest_len)) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: Failed to write digest to 0x%x\n",
-> +                      __func__, s->regs[R_HASH_DEST]);
-> +    }
-> +
-> +    for (; iov_idx > 0; iov_idx--) {
-> +        address_space_unmap(&s->dram_as, iov[iov_idx - 1].iov_base,
-> +                            iov[iov_idx - 1].iov_len, false,
-> +                            iov[iov_idx - 1].iov_len);
-> +    }
-> +}
-> +
-> +static void hash_execute_non_acc_mode(AspeedHACEState *s, int algo,
-> +                                      struct iovec *iov, int iov_idx)
->   {
->       g_autofree uint8_t *digest_buf = NULL;
-> -    struct iovec iov[ASPEED_HACE_MAX_SG];
-> -    bool acc_final_request = false;
->       Error *local_err = NULL;
-> -    size_t digest_len = 0;
-> -    int iov_idx = -1;
-> +    size_t digest_len;
-> +
-> +    if (qcrypto_hash_bytesv(algo, iov, iov_idx, &digest_buf,
-> +                            &digest_len, &local_err) < 0) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: qcrypto hash bytesv failed : %s",
-> +                      __func__, error_get_pretty(local_err));
-> +        error_free(local_err);
-> +        return;
-> +    }
-> +
-> +    hash_write_digest_and_unmap_iov(s, iov, iov_idx, digest_buf, digest_len);
-> +}
-> +
-> +static void hash_execute_acc_mode(AspeedHACEState *s, int algo,
-> +                                  struct iovec *iov, int iov_idx,
-> +                                  bool final_request)
-> +{
-> +    g_autofree uint8_t *digest_buf = NULL;
-> +    Error *local_err = NULL;
-> +    size_t digest_len;
->   
-> -    if (acc_mode && s->hash_ctx == NULL) {
-> +    if (s->hash_ctx == NULL) {
->           s->hash_ctx = qcrypto_hash_new(algo, &local_err);
->           if (s->hash_ctx == NULL) {
-> -            qemu_log_mask(LOG_GUEST_ERROR, "qcrypto hash failed : %s",
-> -                          error_get_pretty(local_err));
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto hash new failed : %s",
-> +                          __func__, error_get_pretty(local_err));
->               error_free(local_err);
->               return;
->           }
->       }
->   
-> +    if (qcrypto_hash_updatev(s->hash_ctx, iov, iov_idx, &local_err) < 0) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto hash updatev failed : %s",
-> +                      __func__, error_get_pretty(local_err));
-> +        error_free(local_err);
-> +        return;
-> +    }
-> +
-> +    if (final_request) {
-> +        if (qcrypto_hash_finalize_bytes(s->hash_ctx, &digest_buf,
-> +                                        &digest_len, &local_err)) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "%s: qcrypto hash finalize bytes failed : %s",
-> +                          __func__, error_get_pretty(local_err));
-> +            error_free(local_err);
-> +            local_err = NULL;
-> +        }
-> +
-> +        qcrypto_hash_free(s->hash_ctx);
-> +
-> +        s->hash_ctx = NULL;
-> +        s->total_req_len = 0;
-> +    }
-> +
-> +    hash_write_digest_and_unmap_iov(s, iov, iov_idx, digest_buf, digest_len);
-> +}
-> +
-> +static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
-> +                              bool acc_mode)
-> +{
-> +    struct iovec iov[ASPEED_HACE_MAX_SG];
-> +    bool acc_final_request = false;
-> +    int iov_idx = -1;
-> +
->       /* Prepares the iov for hashing operations based on the selected mode */
->       if (sg_mode) {
->           iov_idx = hash_prepare_sg_iov(s, iov, acc_mode, &acc_final_request);
-> @@ -261,48 +331,11 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
->            return;
->       }
->   
-> +    /* Executes the hash operation */
->       if (acc_mode) {
-> -        if (qcrypto_hash_updatev(s->hash_ctx, iov, iov_idx, &local_err) < 0) {
-> -            qemu_log_mask(LOG_GUEST_ERROR, "qcrypto hash update failed : %s",
-> -                          error_get_pretty(local_err));
-> -            error_free(local_err);
-> -            return;
-> -        }
-> -
-> -        if (acc_final_request) {
-> -            if (qcrypto_hash_finalize_bytes(s->hash_ctx, &digest_buf,
-> -                                            &digest_len, &local_err)) {
-> -                qemu_log_mask(LOG_GUEST_ERROR,
-> -                              "qcrypto hash finalize failed : %s",
-> -                              error_get_pretty(local_err));
-> -                error_free(local_err);
-> -                local_err = NULL;
-> -            }
-> -
-> -            qcrypto_hash_free(s->hash_ctx);
-> -
-> -            s->hash_ctx = NULL;
-> -            s->total_req_len = 0;
-> -        }
-> -    } else if (qcrypto_hash_bytesv(algo, iov, iov_idx, &digest_buf,
-> -                                   &digest_len, &local_err) < 0) {
-> -        qemu_log_mask(LOG_GUEST_ERROR, "qcrypto hash bytesv failed : %s",
-> -                      error_get_pretty(local_err));
-> -        error_free(local_err);
-> -        return;
-> -    }
-> -
-> -    if (address_space_write(&s->dram_as, s->regs[R_HASH_DEST],
-> -                            MEMTXATTRS_UNSPECIFIED,
-> -                            digest_buf, digest_len)) {
-> -        qemu_log_mask(LOG_GUEST_ERROR,
-> -                      "aspeed_hace: address space write failed\n");
-> -    }
-> -
-> -    for (; iov_idx > 0; iov_idx--) {
-> -        address_space_unmap(&s->dram_as, iov[iov_idx - 1].iov_base,
-> -                            iov[iov_idx - 1].iov_len, false,
-> -                            iov[iov_idx - 1].iov_len);
-> +        hash_execute_acc_mode(s, algo, iov, iov_idx, acc_final_request);
-> +    } else {
-> +        hash_execute_non_acc_mode(s, algo, iov, iov_idx);
->       }
->   }
->   
-
+Wait, it is 2025 already? :)

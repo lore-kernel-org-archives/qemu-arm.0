@@ -1,172 +1,221 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp362671njb;
-        Tue, 13 May 2025 01:19:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWl58ZIGLAX8KRwUzMBSMF5WNzNm/xNaCgmv8+A67yPznAwf7QwSF518SuPifuQlWdPaUjXUl4q809ORQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGikcmbOddelfQ3cZzK+76UmNaApUfKhlu6RTAUTI0F0EmFU2GM+ycu5aPQ7t6KaeekNRw2
-X-Received: by 2002:a05:6214:246c:b0:6e4:5a38:dd0f with SMTP id 6a1803df08f44-6f85b549fc9mr37245266d6.4.1747124354052;
-        Tue, 13 May 2025 01:19:14 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1747124354; cv=pass;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp368623njb;
+        Tue, 13 May 2025 01:34:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWQtg6B0MTIaiSfyqOfW0ca/jlNZ3EWNbCVta6LdMCOE8wOv+EIsGsO8Cu5Dmu5kEP5Hjk2ZDUC4IgiYQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFULU6DLCgXTOh0oAS/Yj/wTzcrvTJC2k07Tru+o2+MC6sznbECueN7BWXikwmJNKhS1ebT
+X-Received: by 2002:ad4:5fca:0:b0:6e4:3eb1:2bdb with SMTP id 6a1803df08f44-6f6e4813f6bmr230063856d6.43.1747125255704;
+        Tue, 13 May 2025 01:34:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747125255; cv=none;
         d=google.com; s=arc-20240605;
-        b=JR7heZov7gGnFiZ23M8ca5862oGLRhtiwYEo2nwr0YVGWCqXXQ9BeDkRYaMMsIWYYh
-         /vsn7HecTPcBVYsUQSqaPa5E01+rEpWCOweR8va6n9Cz631R4Sk/pVwmp95XHL6H75RH
-         /o9FUlD/50ItaE6XRjrNHSKCPwOIq1EI5WJ/+8GBIX3/dCvw5gDMK+IBPwmoC0DYYecl
-         CJXa47Cf3N/AOng2WGak9JWJnYPG5zHIJ9DhINzchsOVk5scGlAct9lyEcJZ9KdRMTcS
-         lgejS2g7UfIO4jvb2o413Gn/s4aBeWm9DTjWb0bE+12GGAGYlyyt9x9dEZzSPBP2xQ0m
-         xtvQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :user-agent:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature;
-        bh=cvwaWtricW1FLg5RbIrhWuiuXIjHoaZjwfgC/DtHd8o=;
-        fh=eNqrwe2j2K47a8MwoIbBvZq9GJdzirsVlXi1vaAxhRg=;
-        b=X87JqfGyLbc5lLJJx++MWyJ9kbqvYuxsCGygNa8AMc0OmembLtUmEB0JGw4PyDJ3t6
-         57i5RiAkrN+1cFV3dDpst3XdjvX079RWHDoeOduw768ATgoSEw1Cc4dqMY/jL+q0Bk/R
-         htZOYz1c2tquijzYmXMTY30aSs8vDd7JOB0kYSkWcvhmpLhwzMBGutJXofjNljmEfq35
-         LtD4YF1jiKeilDbS6ke3kmSUnU5TMKQjpummBSp+aJeJ2Sq07vAGUjlPC0Loemx6Yrib
-         HBuuU7keQUwbxwXyWftNEcp3Dy7R4op2n+7tybXHAAh7Jc7Qsl8aw1ljcLJBDT0ZoiuD
-         a+tA==;
+        b=MeT/xz+qlhgwf3CWWjcSj5Tiw+g5QkVcmraYarAknKTE3Sb5bo4m1gqVGMMjZMJ+Y1
+         vrirgYUuOv1GgngHgwAGwzyYQuw2yUb0xHSuyOcE+85OC6UKAotFZZOs1Y/mxTp1T0yL
+         PzUi0jEWr5cV5jkqqoM2EaeJHaHq3P9geoO9g/tNp4iFIwgJ5djCffkRpR5mmZtxFagw
+         PNe6RmfHK33JfUqUvFqq7M9Ppmg/6fEzYAxB10EsEFLGiakrTSrXGwqhOZKK84CsXRRX
+         eEHZwrYdX7iOCvRnLZeGJnDC8cV1M00Raf57R3EcH+TYIvbDOec2F/EksmYCkqC9VayR
+         5HVQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=TqM99o8hq6ejXQr8Ag8go9dDfz10eSysRHw7IIJ+3sg=;
+        fh=clnRGO9H92gDqkWyvP0RV0pWUP79JwZ6FdvbGkuy0aA=;
+        b=EDn6DA/O0UjN6j6c1QfUw1RVxYnW/Mr3M6nB/XSgMzH+v++cRUTuuxg4HAfMxXrfGz
+         Lu3+ZwQ+bJgSaaxGx6yPAg9MyinFj46qpMoujSwGKTT2D00wHcpI6CkCIvN77JnmxTax
+         mO9nFmozv5fEw+4PMDTuHNyquCuEVfjxcwot8hna8BNT5fUOjiTUQhAbdaznUd7LvrjH
+         8f3EmgUUuIK/P6m4UFrVffSXeEl3Y/NxQn22SoyaoLS0YUR8BffbSvgGFSPxH2ZGzZRM
+         BJLKqGDlTEOOgC97IbGWXv2ojK6dMwYs/FiaIKVPiX1PyxFgSYIBzj27NdfEKq039hFf
+         6Kpg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TYXETnoj;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-46305-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-46305-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hqpIfxNE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-46305-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e39e742esi111685266d6.56.2025.05.13.01.19.13
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a58e91si112422206d6.433.2025.05.13.01.34.15
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 May 2025 01:19:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-46305-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 13 May 2025 01:34:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TYXETnoj;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-46305-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-46305-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hqpIfxNE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 12DA416A0CD
-	for <alex.bennee@linaro.org>; Tue, 13 May 2025 08:19:15 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id B76CD1F5846;
-	Tue, 13 May 2025 08:19:10 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="TYXETnoj"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ED1072AEE1
-	for <kvm@vger.kernel.org>; Tue, 13 May 2025 08:19:08 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1747124350; cv=none; b=lCFrFxxszjgBec6O2r2xjgGZ/wP/Wc584fOsuLgrZmpprWMocDPqKGVGOCowLgqqnVBDK6QVs1ibrA1SFCdvxkxskWtOo0NfvsowS8TVyMwSx+0/G5htzpsbqW7J90fseqCDgqVMDYlasSji95gV0an3tFlEdgCRKwLE8RXClUQ=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1747124350; c=relaxed/simple;
-	bh=Su6QEfqVQhlYWCGByUc3CjzhnmYrhcigEMloWS5yMs8=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=Q78KMXdeJW27kS1zSPNshEgD1WxGXt/iY9iN6kvyIU0c1po0Q2kHmYAK5GuniYsAF+5apeT3E6nPzVkKOmrziZqY0pJ7nBB20lZyy/urlmdKmWM8FfNSW2BM3hQvqihU75rVJYEXx59u395y7bIGKBEVtD4O8HHyb16/+76yJK8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=TYXETnoj; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uEl5O-0005UQ-FP; Tue, 13 May 2025 04:34:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uEl5M-0005RG-Kw
+ for qemu-arm@nongnu.org; Tue, 13 May 2025 04:34:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uEl5I-0006QV-N5
+ for qemu-arm@nongnu.org; Tue, 13 May 2025 04:34:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1747124347;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=cvwaWtricW1FLg5RbIrhWuiuXIjHoaZjwfgC/DtHd8o=;
-	b=TYXETnojCn4XxORgq9eWplenz47EHTj7jomjEDj49lJ8Mu69ZaZFjxPmXIjnKosJWovvhg
-	pu+/4EC2fsp/MGNpPgKIH9VgYW0NqrvJezU6c+dn+X12X02Q1vyIFk05256a7+SD9EfY6M
-	Z4MWz3QRvOat/c8EO/RoxVRzyVsVoh4=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ s=mimecast20190719; t=1747125233;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=TqM99o8hq6ejXQr8Ag8go9dDfz10eSysRHw7IIJ+3sg=;
+ b=hqpIfxNElHCUYU4jm1HcGKDqdoYsZeOcPn7A/OuSKAaHxl2QbZzcaaDXobuvfKLA8g7gd+
+ GySLFJW/phdxGsgzDW0uyKIKatsf7RSn8qa1phCFXDegmexmcgHF1BZ70ClFk610mZoEF/
+ SNAT09vZ7U54lRxJDb2US9XtpL8kfcE=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-113-8v6VDVqdObG3jXi-EDCLSg-1; Tue,
- 13 May 2025 04:19:02 -0400
-X-MC-Unique: 8v6VDVqdObG3jXi-EDCLSg-1
-X-Mimecast-MFC-AGG-ID: 8v6VDVqdObG3jXi-EDCLSg_1747124340
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 29F15195396A;
-	Tue, 13 May 2025 08:18:59 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.27])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D641C19560BC;
-	Tue, 13 May 2025 08:18:57 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 50D3521E66C2; Tue, 13 May 2025 10:18:55 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Peter
- Maydell
- <peter.maydell@linaro.org>,  Thomas Huth <thuth@redhat.com>,  Zhao Liu
- <zhao1.liu@intel.com>,  Xiaoyao Li <xiaoyao.li@intel.com>,  Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Paolo Bonzini
- <pbonzini@redhat.com>,
-  qemu-devel@nongnu.org,  Richard Henderson <richard.henderson@linaro.org>,
-  kvm@vger.kernel.org,  Gerd Hoffmann <kraxel@redhat.com>,  Laurent Vivier
- <lvivier@redhat.com>,  Jiaxun Yang <jiaxun.yang@flygoat.com>,  Yi Liu
- <yi.l.liu@intel.com>,  "Michael S. Tsirkin" <mst@redhat.com>,  Eduardo
- Habkost <eduardo@habkost.net>,  Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>,  Alistair Francis
- <alistair.francis@wdc.com>,  Daniel Henrique Barboza
- <dbarboza@ventanamicro.com>,  Marcelo Tosatti <mtosatti@redhat.com>,
-  qemu-riscv@nongnu.org,  Weiwei Li <liwei1518@gmail.com>,  Amit Shah
- <amit@kernel.org>,  Yanan Wang <wangyanan55@huawei.com>,  Helge Deller
- <deller@gmx.de>,  Palmer Dabbelt <palmer@dabbelt.com>,  Ani Sinha
- <anisinha@redhat.com>,  Igor Mammedov <imammedo@redhat.com>,  Fabiano
- Rosas <farosas@suse.de>,  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-  =?utf-8?Q?Cl=C3=A9ment?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
-  qemu-arm@nongnu.org,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,
-  Huacai Chen <chenhuacai@kernel.org>,  Jason Wang <jasowang@redhat.com>
-Subject: Re: How to mark internal properties
-In-Reply-To: <eedd1fa2-5856-41b8-8e6b-38bd5c98ce8f@nutanix.com> (Mark
-	Cave-Ayland's message of "Mon, 12 May 2025 15:48:34 +0100")
-References: <20250508133550.81391-1-philmd@linaro.org>
-	<20250508133550.81391-13-philmd@linaro.org>
-	<23260c74-01ba-45bc-bf2f-b3e19c28ec8a@intel.com>
-	<aB2vjuT07EuO6JSQ@intel.com>
-	<2f526570-7ab0-479c-967c-b3f95f9f19e3@redhat.com>
-	<CAFEAcA-kuHvxjuV_cMh-Px3C-k2Gd51jFqhwndO52vm++M_jAA@mail.gmail.com>
-	<aCG6MuDLrQpoTqpg@redhat.com> <87jz6mqeu5.fsf@pond.sub.org>
-	<eedd1fa2-5856-41b8-8e6b-38bd5c98ce8f@nutanix.com>
-Date: Tue, 13 May 2025 10:18:55 +0200
-Message-ID: <87ecwshqj4.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-397-lpSzAbdyMqalurRxKN1qBg-1; Tue,
+ 13 May 2025 04:33:51 -0400
+X-MC-Unique: lpSzAbdyMqalurRxKN1qBg-1
+X-Mimecast-MFC-AGG-ID: lpSzAbdyMqalurRxKN1qBg_1747125230
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6363A180056F; Tue, 13 May 2025 08:33:50 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.44.32.62])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 8CCFF1943282; Tue, 13 May 2025 08:33:45 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org, Brad Smith <brad@comstyle.com>
+Subject: [PATCH] meson.build: Compile common_ss files with right system header
+ include paths
+Date: Tue, 13 May 2025 10:33:43 +0200
+Message-ID: <20250513083343.148497-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: BO+eJbCGuMfk
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.551,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HdBet5FAGTzy
 
-Mark Cave-Ayland <mark.caveayland@nutanix.com> writes:
+From: Thomas Huth <thuth@redhat.com>
 
-> On a related note this also brings us back to the discussion as to the relationship between qdev and QOM: at one point I was under the impression that qdev properties were simply QOM properties that were exposed externally, i.e on the commmand line for use with -device.
->
-> Can you provide an update on what the current thinking is in this area, in particular re: scoping of qdev vs QOM properties?
+Since commit 6f4e8a92bbd ("hw/arm: make most of the compilation units
+common"), compilation of some arm machines (like musicpal) fails on
+certain host systems like OpenBSD 7.6/7.7 since headers like <epoxy/gl.h>
+don't reside in /usr/include and we currently don't add the right
+CFLAGS for the common files to include the additional header search
+paths. Add a loop similar to what we already did in commit 727bb5b477e6
+to fix it.
 
-qdev is a leaky layer above QOM.
+With this fix applied, we can now also drop the explicit dependency
+on pixman for the arm musicpal machine.
 
-qdev properties are also QOM properties.
+Fixes: 6f4e8a92bbd ("hw/arm: make most of the compilation units common")
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+[thuth: Add commit message + changes in hw/arm/meson.build]
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ meson.build        | 27 ++++++++++++++++-----------
+ hw/arm/meson.build |  2 +-
+ 2 files changed, 17 insertions(+), 12 deletions(-)
 
-All device properties are exposed externally.
-
-We use device properties for:
-
-* Letting users configure pluggable devices, with -device or device_add
-
-* Letting code configure onboard devices
-
-  For onboard devices that are also pluggable, everything exposed to
-  code is also exposed externally.  This might be a mistake in places.
-
-* Letting the machine versioning machinery adjust device configuration
-
-  Some properties are meant to be used just for this.  They're exposed
-  externally regardless, which is a mistake.
+diff --git a/meson.build b/meson.build
+index 5ac64075be7..7131aa2b21d 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3228,6 +3228,7 @@ config_devices_mak_list = []
+ config_devices_h = {}
+ config_target_h = {}
+ config_target_mak = {}
++config_base_arch_mak = {}
+ 
+ disassemblers = {
+   'alpha' : ['CONFIG_ALPHA_DIS'],
+@@ -3419,6 +3420,11 @@ foreach target : target_dirs
+     config_all_devices += config_devices
+   endif
+   config_target_mak += {target: config_target}
++
++  # build a merged config for all targets with the same TARGET_BASE_ARCH
++  target_base_arch = config_target['TARGET_BASE_ARCH']
++  config_base_arch = config_base_arch_mak.get(target_base_arch, {}) + config_target
++  config_base_arch_mak += {target_base_arch: config_base_arch}
+ endforeach
+ target_dirs = actual_target_dirs
+ 
+@@ -4099,28 +4105,27 @@ common_all = static_library('common',
+ 
+ # construct common libraries per base architecture
+ hw_common_arch_libs = {}
+-foreach target : target_dirs
+-  config_target = config_target_mak[target]
+-  target_base_arch = config_target['TARGET_BASE_ARCH']
++foreach target_base_arch, config_base_arch : config_base_arch_mak
++  if target_base_arch in hw_common_arch
++    base_arch_hw = hw_common_arch[target_base_arch].apply(config_base_arch, strict: false)
++    base_arch_common = common_ss.apply(config_base_arch, strict: false)
+ 
+-  # check if already generated
+-  if target_base_arch in hw_common_arch_libs
+-    continue
+-  endif
++    lib_deps = base_arch_hw.dependencies()
++    foreach dep : base_arch_common.dependencies()
++      lib_deps += dep.partial_dependency(compile_args: true, includes: true)
++    endforeach
+ 
+-  if target_base_arch in hw_common_arch
+     target_inc = [include_directories('target' / target_base_arch)]
+-    src = hw_common_arch[target_base_arch]
+     lib = static_library(
+       'hw_' + target_base_arch,
+       build_by_default: false,
+-      sources: src.all_sources() + genh,
++      sources: base_arch_hw.sources() + genh,
+       include_directories: common_user_inc + target_inc,
+       implicit_include_directories: false,
+       # prevent common code to access cpu compile time
+       # definition, but still allow access to cpu.h
+       c_args: ['-DCPU_DEFS_H', '-DCOMPILING_SYSTEM_VS_USER', '-DCONFIG_SOFTMMU'],
+-      dependencies: src.all_dependencies())
++      dependencies: lib_deps)
+     hw_common_arch_libs += {target_base_arch: lib}
+   endif
+ endforeach
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 5098795f61d..8e3bf495dbf 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -8,7 +8,7 @@ arm_common_ss.add(when: 'CONFIG_HIGHBANK', if_true: files('highbank.c'))
+ arm_common_ss.add(when: 'CONFIG_INTEGRATOR', if_true: files('integratorcp.c'))
+ arm_common_ss.add(when: 'CONFIG_MICROBIT', if_true: files('microbit.c'))
+ arm_common_ss.add(when: 'CONFIG_MPS3R', if_true: files('mps3r.c'))
+-arm_common_ss.add(when: 'CONFIG_MUSICPAL', if_true: [pixman, files('musicpal.c')])
++arm_common_ss.add(when: 'CONFIG_MUSICPAL', if_true: files('musicpal.c'))
+ arm_common_ss.add(when: 'CONFIG_NETDUINOPLUS2', if_true: files('netduinoplus2.c'))
+ arm_common_ss.add(when: 'CONFIG_OLIMEX_STM32_H405', if_true: files('olimex-stm32-h405.c'))
+ arm_common_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx.c', 'npcm7xx_boards.c'))
+-- 
+2.49.0
 

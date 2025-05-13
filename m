@@ -1,227 +1,205 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp413242njb;
-        Tue, 13 May 2025 03:19:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU4Sic3dxCg70iEmievIl/m0EjOPLVbHWrbT1Dc1WsChLYkbMldS4y53luORHBfTRBTXMlzu6IebcqBNQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IF3X8aL/Sf+eQU2DXnGH3KFoAwZnJ6/JllveE1xytKL9Tao8iFtNMKIRR11nt1VmHU9ihRr
-X-Received: by 2002:a05:622a:2c3:b0:476:95dd:520e with SMTP id d75a77b69052e-49452742128mr261856401cf.16.1747131592774;
-        Tue, 13 May 2025 03:19:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747131592; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp431853njb;
+        Tue, 13 May 2025 04:01:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWo2kyV4PDAd0Cd9D2An+1x9WAaddDPXqn9XfsOThMAL5PbSG7/LMVJyEutOMmHqXWDzKvs79YiHdwKow==@linaro.org
+X-Google-Smtp-Source: AGHT+IHX1m+uBri7X7PaRzdKEOY/8sdheBbxjUn3/DsK59qpmpnhi6Rb2dPBmC83wGaYwPP+WVss
+X-Received: by 2002:a05:620a:1907:b0:7ca:ca00:73f with SMTP id af79cd13be357-7cd01119af4mr2736667585a.30.1747134091019;
+        Tue, 13 May 2025 04:01:31 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1747134091; cv=pass;
         d=google.com; s=arc-20240605;
-        b=NfSwx2RCnWwci2rpO0e9OsSb9ITmVZd9a/nyKcx5Ye0y/T9yJQhOp1j8HHvAJkNjAD
-         JAs6xHm6cfdxnWEKjyg7pBkyAuC8uwxSGy8PBjuFcOSqJ6qgMcbhuxi5vX1x/bv7cR3/
-         1kqXhbsrV8l5MTVUBXvRpgvYu3j1JX3pvQAyjz5/YddM0X3sPjj389pMsOjnIVi5lv4V
-         Y4AxkrgqSQN8XjYZjisd5bdJsNQakKrIE9ZujEC+eRN3riNelmApuXjYbTotlos/o1aT
-         p/VzyQ/UowuSMyhmwq+Z437+F+5QZ+9GGb3aKVMIVtAj15RqkyOZOlTX3D5fgMKhY+oC
-         mYxA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=cRFVwNL/q1APjBkV0o0pxCp932asVyl0IyTJ08vI01U=;
-        fh=D8MXsp1x3LODr1VyFDnkUCz+3h5HMWXoE2VOJVd2wGI=;
-        b=UiU+y/QLawAlcPl5oMD1DBv80UdlbB0bUuIqTiD11E4nfCUjfUoWu+a69Kwl7YSZQa
-         FPASbBTDuwE6c1PM9OnauzmDNZic7lRHqVkSkEunqTWbX9bQIA2r6jrlgweYiX9nFgwJ
-         cwz1J3aalk5pKCiWtzrlXFk6ut8HlcQGrUgKomhSBQQIlYQh0y3ldmcLEVVKsio4snCb
-         3KPqdutQOTV91VeEa3I5xptslz7culFFDnEh0cvm8wCGDGMENPWI0nkSjY3+1vKWnK5N
-         QkughJw32py1ouhQf9rQWUHsLcPe6a3ssPeFIkVyq0LoEjmwf5cFRYBS09thU0M5LbyZ
-         NItw==;
+        b=cbNBvxAC+d5+/gBFvhE1clq6DkWFKCNXkWWaWhCn3gUrKmV6+y14HPz24/ddoPZm5z
+         jULVjAsvVjez54BkjRyq6PO80vxU8e14f5hGVwiKmkeut+pYr8t4KlnuYwssxOMfBqXx
+         9SvxK/KDein7DnvFLmL0qAWxqx3nDsnBDZ9hI53paiUfhf8oEzQIOL9Ne2eeAVnnCNba
+         gR55dvJSrPB1PWzOGmquOTIrH1Lo4X38ni+V5LEF8MuL71Nx/CBGB95Vid6M/z6u1y0W
+         U6Bk4wqcPFrcnaRy3C7hyrIHE1a5hv+H2bC2aF4AV/+/5L2V6xO6Kr+EDi9/ejvWu1rI
+         RRgQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :user-agent:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature;
+        bh=TS2yL7ZCoRqSI1GlyDP1hf6SFl052EjkRDbZaOdY3kM=;
+        fh=cwUEZrVCNSyL8NEWYGN+hx3DpiU7VesRpJ7zFuuTHx0=;
+        b=PbWv2jW4wNs2qvqLGOujPC8Nb+Qye4qrS6qqjJ6TDmi3M7/rUUMWY4HyK81NKMe2ny
+         cW3OXhomT211R9R7fC0DmrqbtMJIJ2UJGJHyCrM0lJ8Cnk3qEsTTbJ87Uji+juYE2Hav
+         X+rPQaS7eFC5OMakBP8FB9xt0kzBt7SUoz/8rqUSdzF8o8DbhfXOB8GDhK1uwlnQumbA
+         VbAWR/iFmPg3AM8V3aCxJO9i3ezQ3t5sofOMJnMCReXQ5y0aUuQAOwQsjqxwfGIoBPwN
+         xOdVnKyIu6W9mjU0r1/j1CBh9P5JFQRWEIzcS+WOZbAdLbaldNvVlCzeYyDK3Aamv87X
+         NsOA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MesK5L/c";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZsXKvAbL;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46343-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-46343-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-49452479846si113215231cf.159.2025.05.13.03.19.52
+Return-Path: <kvm+bounces-46343-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id af79cd13be357-7cd010219a3si1171760785a.600.2025.05.13.04.01.30
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 03:19:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 May 2025 04:01:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46343-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MesK5L/c";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZsXKvAbL;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-46343-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-46343-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uEmjg-00019T-Gg; Tue, 13 May 2025 06:19:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
- id 1uEmjd-00018s-J2
- for qemu-arm@nongnu.org; Tue, 13 May 2025 06:19:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
- id 1uEmjb-0000YX-4k
- for qemu-arm@nongnu.org; Tue, 13 May 2025 06:19:41 -0400
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 219D14600B7
+	for <alex.bennee@linaro.org>; Tue, 13 May 2025 11:01:32 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 7AAAC20DD7D;
+	Tue, 13 May 2025 11:01:27 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="ZsXKvAbL"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6D7F5253F1B
+	for <kvm@vger.kernel.org>; Tue, 13 May 2025 11:01:25 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1747134087; cv=none; b=I4kdIdWFJchZgTdLSfkIYRiquALjeKxPyKcQR+/nUAMQsfaHVGUbabxCEUL9ynqNS9WBCod48ysMaO0Qk2JSQd1kqVIWWwXumS8zSVEzZVNnNd5/fD0rGQpz8YrP0MPmih8Ei3L0FdriykIERHxujcdZOt33TXrXge/6jMBfcJA=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1747134087; c=relaxed/simple;
+	bh=LyGtikM+Z/LwqKetaaf7fzBqSjJIV7gFNqYTAxmYYdc=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
+	 MIME-Version:Content-Type; b=k7Simp/4HVoHcnheEn+JdxUgWDj6W8Z1UhLkc2gX+yE7UTdlS/Vf06Ks1i1HlYTd55r+778DACHHl9iYSpsoWgdhthxE+yvJHlIeA4ayPejr2m/crNavArfvCAAU9JAEKmHAYb22PEXlLcfan3k+r8qZ3GkuVllhR2ciCUEPPi0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=ZsXKvAbL; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1747131578;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=cRFVwNL/q1APjBkV0o0pxCp932asVyl0IyTJ08vI01U=;
- b=MesK5L/csd0KRWcvhDQ3nPyIvDK8+WebyXXLHg+5to4EhyyPqneb46vmDmngZSAfZe2CVt
- DjFjbKk9zHvG0+N7ujtzm7i8DDz6z/QshoAnZ/HCP2FTHuSw6Rhh4JzK/j0q77vmVj9NUC
- wfySxB7mLLrdW4mZa7bOYG3ctUUoOVc=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-596-bj1TBxa9OaOJB4xgtW_LKw-1; Tue, 13 May 2025 06:19:35 -0400
-X-MC-Unique: bj1TBxa9OaOJB4xgtW_LKw-1
-X-Mimecast-MFC-AGG-ID: bj1TBxa9OaOJB4xgtW_LKw_1747131574
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-43cf3168b87so23927895e9.2
- for <qemu-arm@nongnu.org>; Tue, 13 May 2025 03:19:35 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747131574; x=1747736374;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=cRFVwNL/q1APjBkV0o0pxCp932asVyl0IyTJ08vI01U=;
- b=cD+dZaNRG5trXYDDzfYFDRsDnVHHih/ezHxAop8QPVHfYGDPlnTcTlvVrZwJ0YJqMD
- Gr3BegUXRoJUUSRp+ltMYF+G7j5x4UDgGt4PEtjRHJyYu+ack/COMak7qHgtaPkJnA9O
- 8IWnV5/PAFaARiVpJe4jbh/JjDO0ZGFRpJIAWiks6p0/J9WIaFSE36iarzZCc+9jx9sf
- zodvyN72enlkTwSETxAg8U9PVgqesTwCFmo2iRcLNybBhAdt14grunGqjIEaB6GgYhyt
- 7O661fzzlnyHFZcXllNgVto/EKc/KtwLymZ5seLgThCYs+dcoHAnD4HA+MRT6LKk6Hz2
- Osqg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXDSiz6f8jAzxF8o9YeDPWQ0rSiingTO8xZ4jOYUOqne/Mv6h8RcrzUMg9eJU7iyXK+TjU+OAtq2Q==@nongnu.org
-X-Gm-Message-State: AOJu0YwAHVlJ3c1p8zFNUSFeUK/0zSlh+vOEhudTdqkypFFqPXSlk8vS
- 1JpnybuzSCGFfUKm+zXfRTpUOurVKz3sYUNuZMVQ0lmuGSTcAC4korndjYlA1+y6H4qJO8ZYFUJ
- UZqukNOuaNAdZ2EOp7bJ8uYKZRlP59rwbGhihau4jIvomTtUXdQ==
-X-Gm-Gg: ASbGncuSujkJCFpxMOC4T5QDz+3rY1+62tRxSE45Z8biQ80D61uj7sS0FcX6v9e8Ddp
- 5xClgPuiPxfPH024+idC4/gw8+cbSBbof0dE1DH5lmVdSoIMVKhJDGDEANEkIgx6wM2XLbJ0tm9
- K+WxBTrpYVsmbm9gC5wggPODkg0TiKhFkCgJA0efn9nrYpM0vBVW6W8vxn+LKdGjJqDyAIeyGhY
- gw5wskvtpKPtDAnOQcCYaSvRE1nSSwZYDAma7eEeqz80DFfCo/wrxCrHwL7KNTpK5V5CELASW1W
- 8lCsbmh+nolbL8QASMTJyLl+ZeXVddQH/Ptyr07CcqdDGpnvCQ==
-X-Received: by 2002:a05:600c:528e:b0:43d:7413:cb3e with SMTP id
- 5b1f17b1804b1-442d6d17f7cmr124318005e9.1.1747131574442; 
- Tue, 13 May 2025 03:19:34 -0700 (PDT)
-X-Received: by 2002:a05:600c:528e:b0:43d:7413:cb3e with SMTP id
- 5b1f17b1804b1-442d6d17f7cmr124317655e9.1.1747131574054; 
- Tue, 13 May 2025 03:19:34 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:e10:ef90:343a:68f:2e91:95c?
- ([2a01:e0a:e10:ef90:343a:68f:2e91:95c])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-442e9f1d1bbsm41332385e9.25.2025.05.13.03.19.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 May 2025 03:19:33 -0700 (PDT)
-Message-ID: <cf58909d-f0cd-453f-baf6-898139cc8bd5@redhat.com>
-Date: Tue, 13 May 2025 12:19:32 +0200
+	s=mimecast20190719; t=1747134084;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=TS2yL7ZCoRqSI1GlyDP1hf6SFl052EjkRDbZaOdY3kM=;
+	b=ZsXKvAbLP1wvf6+Pm+ITBh8jSgO8zw0hGYNhiEyemdCkZ+4DVa2ZjK1uE7Aw/OdsyFBsWr
+	kxhA5/vQRsZbBbvBLKDnWfPlpYFgDHe5Llp8YUUambkcw3VD4E2AdLceU5i+4eAsByvuYN
+	cow77nyhwJ6FEOl2ilL0aJ4eOewY6xc=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-355-x9G-84KkPWytHRhwPHMyKQ-1; Tue,
+ 13 May 2025 07:01:20 -0400
+X-MC-Unique: x9G-84KkPWytHRhwPHMyKQ-1
+X-Mimecast-MFC-AGG-ID: x9G-84KkPWytHRhwPHMyKQ_1747134076
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id A636A1953976;
+	Tue, 13 May 2025 11:01:15 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.27])
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id BDAA830001A1;
+	Tue, 13 May 2025 11:01:13 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 1772A21E66E3; Tue, 13 May 2025 13:01:11 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: Mark Cave-Ayland <mark.caveayland@nutanix.com>,  Daniel P. =?utf-8?Q?B?=
+ =?utf-8?Q?errang=C3=A9?=
+ <berrange@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  Thomas
+ Huth <thuth@redhat.com>,  Zhao Liu <zhao1.liu@intel.com>,  Xiaoyao Li
+ <xiaoyao.li@intel.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,
+  Paolo Bonzini <pbonzini@redhat.com>,  qemu-devel@nongnu.org,  Richard
+ Henderson <richard.henderson@linaro.org>,  kvm@vger.kernel.org,  Gerd
+ Hoffmann <kraxel@redhat.com>,  Laurent Vivier <lvivier@redhat.com>,
+  Jiaxun Yang <jiaxun.yang@flygoat.com>,  Yi Liu <yi.l.liu@intel.com>,
+  "Michael S. Tsirkin" <mst@redhat.com>,  Eduardo Habkost
+ <eduardo@habkost.net>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+  Alistair Francis <alistair.francis@wdc.com>,  Daniel Henrique Barboza
+ <dbarboza@ventanamicro.com>,  Marcelo Tosatti <mtosatti@redhat.com>,
+  qemu-riscv@nongnu.org,  Weiwei Li <liwei1518@gmail.com>,  Amit Shah
+ <amit@kernel.org>,  Yanan Wang <wangyanan55@huawei.com>,  Helge Deller
+ <deller@gmx.de>,  Palmer Dabbelt <palmer@dabbelt.com>,  Ani Sinha
+ <anisinha@redhat.com>,  Igor Mammedov <imammedo@redhat.com>,  Fabiano
+ Rosas <farosas@suse.de>,  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+  =?utf-8?Q?Cl=C3=A9ment?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
+  qemu-arm@nongnu.org,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,
+  Huacai Chen <chenhuacai@kernel.org>,  Jason Wang <jasowang@redhat.com>
+Subject: Re: How to mark internal properties
+In-Reply-To: <60cd3ba8-2ab1-74ac-54ea-5e3b309788a1@eik.bme.hu> (BALATON
+	Zoltan's message of "Tue, 13 May 2025 11:26:31 +0200 (CEST)")
+References: <20250508133550.81391-1-philmd@linaro.org>
+	<20250508133550.81391-13-philmd@linaro.org>
+	<23260c74-01ba-45bc-bf2f-b3e19c28ec8a@intel.com>
+	<aB2vjuT07EuO6JSQ@intel.com>
+	<2f526570-7ab0-479c-967c-b3f95f9f19e3@redhat.com>
+	<CAFEAcA-kuHvxjuV_cMh-Px3C-k2Gd51jFqhwndO52vm++M_jAA@mail.gmail.com>
+	<aCG6MuDLrQpoTqpg@redhat.com> <87jz6mqeu5.fsf@pond.sub.org>
+	<eedd1fa2-5856-41b8-8e6b-38bd5c98ce8f@nutanix.com>
+	<87ecwshqj4.fsf@pond.sub.org>
+	<60cd3ba8-2ab1-74ac-54ea-5e3b309788a1@eik.bme.hu>
+Date: Tue, 13 May 2025 13:01:11 +0200
+Message-ID: <87v7q4epvs.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] tests/qtest/aspeed_smc-test: Fix memory leaks
-To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20250513080806.1005996-1-jamin_lin@aspeedtech.com>
-From: Laurent Vivier <lvivier@redhat.com>
-Autocrypt: addr=lvivier@redhat.com; keydata=
- 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
-In-Reply-To: <20250513080806.1005996-1-jamin_lin@aspeedtech.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: eGQCq70gR8cW4zO4Q_Fc_J-MduoUGLdicybDGL0s6wA_1747131574
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=lvivier@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.551,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: v6xrkrwTHIxW
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: /0nM2REyhmkL
 
-On 13/05/2025 10:08, Jamin Lin wrote:
-> Link: https://patchwork.kernel.org/project/qemu-devel/patch/20250509175047.26066-1-farosas@suse.de/
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   tests/qtest/aspeed_smc-test.c | 5 +++++
->   1 file changed, 5 insertions(+)
-> 
-> diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-> index 4e1389385d..52a00e6f0a 100644
-> --- a/tests/qtest/aspeed_smc-test.c
-> +++ b/tests/qtest/aspeed_smc-test.c
-> @@ -228,5 +228,10 @@ int main(int argc, char **argv)
->       unlink(ast2500_evb_data.tmp_path);
->       unlink(ast2600_evb_data.tmp_path);
->       unlink(ast1030_evb_data.tmp_path);
-> +    g_free(palmetto_data.tmp_path);
-> +    g_free(ast2500_evb_data.tmp_path);
-> +    g_free(ast2600_evb_data.tmp_path);
-> +    g_free(ast1030_evb_data.tmp_path);
-> +
->       return ret;
->   }
+BALATON Zoltan <balaton@eik.bme.hu> writes:
 
-Reviewed-by: Laurent Vivier <lvivier@redhat.com>
+> On Tue, 13 May 2025, Markus Armbruster wrote:
+>> Mark Cave-Ayland <mark.caveayland@nutanix.com> writes:
+>>> On a related note this also brings us back to the discussion as to the relationship between qdev and QOM: at one point I was under the impression that qdev properties were simply QOM properties that were exposed externally, i.e on the commmand line for use with -device.
+>>>
+>>> Can you provide an update on what the current thinking is in this area, in particular re: scoping of qdev vs QOM properties?
+>>
+>> qdev is a leaky layer above QOM.
+>>
+>> qdev properties are also QOM properties.
+>>
+>> All device properties are exposed externally.
+>
+> That was clear but the question was if QOM properties (that are not qdev properties) exist and if so are they also exposed? If not exposed it may be used for internal properties (where simpler solutions aren't convenient) but maybe qdev also adds easier definition of properties that's why they used instead of QOM properties?
+>
+>> We use device properties for:
+>>
+>> * Letting users configure pluggable devices, with -device or device_add
+>>
+>> * Letting code configure onboard devices
+>>
+>>  For onboard devices that are also pluggable, everything exposed to
+>>  code is also exposed externally.  This might be a mistake in places.
+>
+> If a device is pluggable, theoretically a user could create a machine from them declaratively, e.g. starting from a "none" machine or like plugging cards in a motherboard so their properties should be exposed as long as those properties correspond to the device pins they model or configurable options. Only properties that are implementation details should not be exposed because setting them can break the device. There are a few places where we have such properties. But you say "in places" so I think you meant the same.
+
+Building machines declaratively has been the dream for many years.
+
+I chose to write "might be in places", because I can't point to examples
+offhand to support a stronger claim :)
+
+External interfaces should be intentional, i.e. carefully curated to
+serve actual use cases.  They should also be stable and documented.
+
+The QOM parts of our external interfaces are largely accidental,
+unstable, and undocumented.  We have some internal need, we create
+something to serve it, and expose it externally simply because we lack
+the means not to.
+
+>> * Letting the machine versioning machinery adjust device configuration
+>>
+>>  Some properties are meant to be used just for this.  They're exposed
+>>  externally regardless, which is a mistake.
+>
+> Question is if we want to allow users to tweak these compatibility options, like selectively enable/disable when migrating between QEMU versions or for testing. It might have some uses and maybe that's the reason why people would like these to go through deprecation instead of just dropping them. Marking some properties not exposed would get the same resistance then so may not solve the issue.
+
+If you need to mess with properties to make migration work, that's a
+bug.  That's versioning machinery's job.
+
+External interfaces just for testing can be okay.  We should not promise
+stability there.  We should still be intentional, and we should still
+document.
+
+Attempts to get rid of external interfaces always draw resistance, even
+when they're accidental.
 

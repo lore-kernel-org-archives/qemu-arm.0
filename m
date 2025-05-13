@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp440093njb;
-        Tue, 13 May 2025 04:15:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVfrOS5QuCjdGOxygbWCrvBDDbBECroMW56/sdJtDA+Y2miIkVoEdFgaM+miLnyYMe3JY718EAAN/0dbQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFSbu+3ki2s94xdbLCg1M18L770o1vZ3l5nGwg4QbcLk0j2gIaEDlND2oYJP/DMov+C32IC
-X-Received: by 2002:ac8:5d0d:0:b0:494:48b1:a046 with SMTP id d75a77b69052e-4945271499bmr269790181cf.11.1747134930791;
-        Tue, 13 May 2025 04:15:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747134930; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp440747njb;
+        Tue, 13 May 2025 04:16:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV4Qv0N7xiCxef9TxVVB9eS1SLT/kGuX4mO6x3SDxayvb4qcwzq/Kwk4jkSliM8zngOUy1Jivk+HJHltw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHiZKUSwUHynMo8TE0nQusn7tVo+Mi6/jAWUtE4QRjKnskRrKusmHJpVaK18dMXPrHFUFJz
+X-Received: by 2002:a05:622a:4a18:b0:494:78db:1e55 with SMTP id d75a77b69052e-49478db1e5amr130555171cf.11.1747135004055;
+        Tue, 13 May 2025 04:16:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747135004; cv=none;
         d=google.com; s=arc-20240605;
-        b=LOngwGlV2EorPoig9mPiBbml6+wbnkqAn/pU8fiBhrkhY9o9J+ZAvuKmZPSmStW6yT
-         ZgYYK/2hALH/BIenR5sZsJE02KSPpJ3Ryd701GR9BZUn0L6xrH2kQCmu50DfGZq9f3bL
-         21qYatEJEsDgPRWXCtMLFma2euTRqbU+dqQI8aYF8qX2U46uDgtWMIatDYt/uS+SXCaS
-         wGPTG0NWU8I8T40DEgKko1qKPJlEqu6qX+WBYmBJ+VxZeMiWBzlJ9OlEIEl7rTHiDZcL
-         BtAqjer5onmec/jvadlNqYL5Ehx6R0pFLXMdCyzXcgOuZJofbWEO3hWIVf9DhQW4OHSO
-         ohqw==
+        b=hsnL+yj+jLnT9IIjDJTQ7W2eXWkXG7Jr58n0KJhrF4k0O6IVkp+lfrdsjzuPfnxM8q
+         6JS8hZlaWzjYR+m8mOzOtDyzrjKY+176YZC+9C7dwMMSgNKSkTFM9N9OtrB+T22sPTIk
+         shUK8oZQvmM0qVLvXmnj2jYN1QrZJIbJ5hri2Slb1/bwFkSy9mh3Rfx8QwkoWGGNOTDo
+         07Vq27OGHURQLOfeUewcr/bTd/KN8JlcLzkptUq9GRdDHqVpIqoXXrlFYScLqIl8zNVw
+         PLbqK68OdZZmjlCfnyRad8ALr5tQ+nhR8OUxD46DdocY9lwBTJwiM9urGgTlWMikGNye
+         GIUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=EdZWGCTfHAv4Rt4pgfT5uyM5omJoF3xIHNbIX10ORVc=;
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=Kw5GUo6G5vq0OEeDFh0S8tJSRt2uinPR7u1qF0m2T+E=;
         fh=X5nH5YuFPf4WKqGf6XsKhoyhnk+YS/0SzZ/7HifbnvI=;
-        b=QkYvch+usJvaHrYT0EWurqrfoGxX14HgMf9Lk3CvSKav/zMaAZYnSkHnhxFgRA2Kk2
-         pqTxOYJx0YE0Xn5yMruGkwEti9IHVx1GD1pXLDMQWseJU011FSxtx0z60HqE8CZDQq+I
-         NwIYwrh56qdn2J27ywGm13j9fgTEHFCB+V2ano1U3BHfqfKF+FBnRncv9RqaOmuuuGu7
-         mqHC+P/PhydIbsQy86ZBC8ga/NUHg9ueSKlhNeSJ8Vlw3/eAQeg1edHmZmrGTHs5O/m9
-         Y8KrcMg7trz6/Zl/C4+vmQGB1pheJwzNm3+yMVT83nJx1eAxzt2UGiM6Xrjj7EKJ8A7D
-         3/8w==;
+        b=cfwQB7C/7lSxxYjCP3mLwm3X1PqbWTeJRVduf7gv4M3S9DHeejnPVoqvsz+mqX9bwT
+         M0PQR6YdQ6AO/f904FHC1ICyOZqjJcE1Xpg6Ydz1ejvp9F8WS/n3VPjDl07euj8UrxZ2
+         XzuGiCjE/tuvBnx1Shhe7KOpLVRJAtg/6yhKHEFta54EGJVuXuB3/r5GoZBpqLdns54C
+         oCAqWqscK83t3tXah7elHm6wThI7vo5hPJZ5R/Ut+neLcC0uttMID/p8Iw30TDm45KpD
+         DfVOzPEqCpsyuh/Wsbmc3lpEREBANXs3GR+rFjFp9B2m6HF9/m42TJE20PRJrrAgvTf9
+         IfZA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-494525b359dsi104568531cf.669.2025.05.13.04.15.30
+        by mx.google.com with ESMTPS id d75a77b69052e-494524583fbsi112146621cf.130.2025.05.13.04.16.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 04:15:30 -0700 (PDT)
+        Tue, 13 May 2025 04:16:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,37 +42,39 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uEnbX-0005qO-7y; Tue, 13 May 2025 07:15:23 -0400
+	id 1uEncK-0006w6-Ts; Tue, 13 May 2025 07:16:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uEnbP-0005kr-92
- for qemu-devel@nongnu.org; Tue, 13 May 2025 07:15:17 -0400
+ id 1uEncE-0006sD-06
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 07:16:07 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uEnbM-0006UH-EV
- for qemu-devel@nongnu.org; Tue, 13 May 2025 07:15:14 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZxYfc4GSHz6M4Wr;
- Tue, 13 May 2025 19:10:16 +0800 (CST)
+ id 1uEnc9-0006nh-R8
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 07:16:04 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZxYk12GDVz6L59v;
+ Tue, 13 May 2025 19:13:13 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id D54D61402F4;
- Tue, 13 May 2025 19:14:56 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 4E43A140390;
+ Tue, 13 May 2025 19:15:59 +0800 (CST)
 Received: from SecurePC-101-06.china.huawei.com (10.122.19.247) by
  frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 13 May 2025 13:14:56 +0200
+ 15.1.2507.39; Tue, 13 May 2025 13:15:58 +0200
 To: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
  <peter.maydell@linaro.org>, <mst@redhat.com>
 CC: <linux-cxl@vger.kernel.org>, <linuxarm@huawei.com>, <qemu-arm@nongnu.org>, 
  Yuquan Wang <wangyuquan1236@phytium.com.cn>, Itaru Kitayama
  <itaru.kitayama@linux.dev>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
  <philmd@linaro.org>
-Subject: [PATCH v13 0/5] arm/virt: CXL support via pxb_cxl
-Date: Tue, 13 May 2025 12:14:50 +0100
-Message-ID: <20250513111455.128266-1-Jonathan.Cameron@huawei.com>
+Subject: [PATCH v13 2/5] hw/cxl: Make the CXL fixed memory windows devices.
+Date: Tue, 13 May 2025 12:14:52 +0100
+Message-ID: <20250513111455.128266-3-Jonathan.Cameron@huawei.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250513111455.128266-1-Jonathan.Cameron@huawei.com>
+References: <20250513111455.128266-1-Jonathan.Cameron@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -106,140 +108,515 @@ Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
 From:  Jonathan Cameron via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9CT8XttYPCTt
+X-TUID: JFLERjo13dmr
 
-V13:
-- Make CXL fixed memory windows sysbus devices.
-  IIRC this was requested by Peter in one of the reviews a long time back
-  but at the time the motivation was less strong than it becomes with some
-  WiP patches for hotness monitoring and high performance direct connect
-  where we need a machine type independent way to iterate all the CXL
-  fixed memory windows. This is a convenient place to do it so drag that
-  work forward into this series.
+Previously these somewhat device like structures were tracked using a list
+in the CXLState in each machine.  This is proving restrictive in a few
+cases where we need to iterate through these without being aware of the
+machine type. Just make them sysbus devices.
 
-  This allows us to drop separate list and necessary machine specific
-  access code in favour of
-  object_child_foreach_recursive(object_get_root(),...)
-  One snag is that the ordering of multiple fixed memory windows in that
-  walk depends on the underlying g_hash_table iterations rather than the
-  order of creation. In the memory map layout and ACPI table creation we
-  need both stable and predictable ordering. Resolve this in a similar
-  fashion to object_class_get_list_sorted() be throwing them in a GSList
-  and sorting that. Only use this when a sorted list is needed.
+Restrict them to not user created as they need to be visible to early
+stages of machine init given effects on the memory map.
 
-  Dropped RFC as now I'm happy with this code and would like to get it
-  upstream!  Particularly as it broken even today due to enscripten
-  related changes that stop us using g_slist_sort(). Easy fix though.
+This change both simplifies state tracking and enables features needed
+for performance optimization and hotness tracking by making it possible
+to retrieve the fixed memory window on actions elsewhere in the topology.
 
-Note that we have an issue for CXL emulation in general and TCG which
-is being discussed in:
-https://lore.kernel.org/all/20250425183524.00000b28@huawei.com/
-(also affects some other platforms)
+In some cases the ordering of the Fixed Memory Windows matters.
+For those utility functions provide a GSList sorted by the window index.
+This ensures that we get consistency across:
+- ordering in the command line
+- ordering of the host PA ranges
+- ordering of ACPI CEDT structures describing the CFMWS.
 
-Until that is resolved, either rebase this back on 10.0 or just
-don't let code run out of it (don't use KMEM to expose it as normal
-memory, use DAX instead).
+Other aspects don't have this constraint. For those direct iteration
+of the underlying hash structures is fine.
 
-Previous cover letter.
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+---
+I think Peter Maydell suggested this a long time back when
+the original CXL support series was under review but not 100% sure.
+---
+ include/hw/cxl/cxl.h      |   3 +
+ include/hw/cxl/cxl_host.h |   4 +-
+ hw/acpi/cxl.c             |  83 +++++++++++--------
+ hw/cxl/cxl-host-stubs.c   |   6 +-
+ hw/cxl/cxl-host.c         | 169 +++++++++++++++++++++++++++++++-------
+ hw/i386/pc.c              |  51 ++++++------
+ 6 files changed, 223 insertions(+), 93 deletions(-)
 
-Back in 2022, this series stalled on the absence of a solution to device
-tree support for PCI Expander Bridges (PXB) and we ended up only having
-x86 support upstream. I've been carrying the arm64 support out of tree
-since then, with occasional nasty surprises (e.g. UNIMP + DT issue seen
-a few weeks ago) and a fair number of fiddly rebases.
-gitlab.com/jic23/qemu cxl-<latest date>
-
-A recent discussion with Peter Maydell indicated that there are various
-other ACPI only features now, so in general he might be more relaxed
-about DT support being necessary. The upcoming vSMMUv3 support would
-run into this problem as well.
-
-I presented the background to the PXB issue at Linaro connect 2022. In
-short the issue is that PXBs steal MMIO space from the main PCI root
-bridge. The challenge is knowing how much to steal.
-
-On ACPI platforms, we can rely on EDK2 to perform an enumeration and
-configuration of the PCI topology and QEMU can update the ACPI tables
-after EDK2 has done this when it can simply read the space used by the
-root ports. On device tree, there is no entity to figure out that
-enumeration so we don't know how to size the stolen region.
-
-Three approaches were discussed:
-1) Enumerating in QEMU. Horribly complex and the last thing we want is a
-   3rd enumeration implementation that ends up out of sync with EDK2 and
-   the kernel (there are frequent issues because of how those existing
-   implementations differ.
-2) Figure out how to enumerate in kernel. I never put a huge amount of work
-   into this, but it seemed likely to involve a nasty dance with similar
-   very specific code to that EDK2 is carrying and would very challenging
-   to upstream (given the lack of clarity on real use cases for PXBs and
-   DT).
-3) Hack it based on the control we have which is bus numbers.
-   No one liked this but it worked :)
-
-The other little wrinkle would be the need to define full bindings for CXL
-on DT + implement a fairly complex kernel stack as equivalent in ACPI
-involves a static table, CEDT, new runtime queries via _DSM and a description
-of various components. Doable, but so far there is no interest on physical
-platforms. Worth noting that for now, the QEMU CXL emulation is all about
-testing and developing the OS stack, not about virtualization (performance
-is terrible except in some very contrived situations!)
-
-Back to posting as an RFC because there was some discussion of approach to
-modelling the devices that may need a bit of redesign.
-The discussion kind of died out on the back of DT issue and I doubt anyone
-can remember the details.
-
-https://lore.kernel.org/qemu-devel/20220616141950.23374-1-Jonathan.Cameron@huawei.com/
-
-There is only a very simple test in here, because my intent is not to
-duplicate what we have on x86, but just to do a smoke test that everything
-is hooked up.  In general we need much more comprehensive end to end CXL
-tests but that requires a reaonsably stable guest software stack. A few
-people have expressed interest in working on that, but we aren't there yet.
-
-Note that this series has a very different use case to that in the proposed
-SBSA-ref support:
-https://lore.kernel.org/qemu-devel/20250117034343.26356-1-wangyuquan1236@phytium.com.cn/
-
-SBSA-ref is a good choice if you want a relatively simple mostly fixed
-configuration.  That works well with the limited host system
-discoverability etc as EDK2 can be build against a known configuration.
-
-My interest with this support in arm/virt is support host software stack
-development (we have a wide range of contributors, most of whom are working
-on emulation + the kernel support). I care about the weird corners. As such
-I need to be able to bring up variable numbers of host bridges, multiple CXL
-Fixed Memory Windows with varying characteristics (interleave etc), complex
-NUMA topologies with wierd performance characteristics etc. We can do that
-on x86 upstream today, or my gitlab tree. Note that we need arm support
-for some arch specific features in the near future (cache flushing).
-Doing kernel development with this need for flexibility on SBSA-ref is not
-currently practical. SBSA-ref CXL support is an excellent thing, just
-not much use to me for this work.
-
-Jonathan Cameron (5):
-  hw/cxl-host: Add an index field to CXLFixedMemoryWindow
-  hw/cxl: Make the CXL fixed memory windows devices.
-  hw/cxl-host: Allow split of establishing memory address and mmio
-    setup.
-  hw/arm/virt: Basic CXL enablement on pci_expander_bridge instances
-    pxb-cxl
-  qtest/cxl: Add aarch64 virt test for CXL
-
- include/hw/arm/virt.h     |   4 +
- include/hw/cxl/cxl.h      |   4 +
- include/hw/cxl/cxl_host.h |   6 +-
- hw/acpi/cxl.c             |  83 +++++++++------
- hw/arm/virt-acpi-build.c  |  34 ++++++
- hw/arm/virt.c             |  29 +++++
- hw/cxl/cxl-host-stubs.c   |   8 +-
- hw/cxl/cxl-host.c         | 218 ++++++++++++++++++++++++++++++++------
- hw/i386/pc.c              |  51 ++++-----
- tests/qtest/cxl-test.c    |  59 ++++++++---
- tests/qtest/meson.build   |   1 +
- 11 files changed, 389 insertions(+), 108 deletions(-)
-
+diff --git a/include/hw/cxl/cxl.h b/include/hw/cxl/cxl.h
+index b2bcce7ed6..a610795c87 100644
+--- a/include/hw/cxl/cxl.h
++++ b/include/hw/cxl/cxl.h
+@@ -27,6 +27,7 @@
+ typedef struct PXBCXLDev PXBCXLDev;
+ 
+ typedef struct CXLFixedWindow {
++    SysBusDevice parent_obj;
+     int index;
+     uint64_t size;
+     char **targets;
+@@ -38,6 +39,8 @@ typedef struct CXLFixedWindow {
+     MemoryRegion mr;
+     hwaddr base;
+ } CXLFixedWindow;
++#define TYPE_CXL_FMW "cxl-fmw"
++OBJECT_DECLARE_SIMPLE_TYPE(CXLFixedWindow, CXL_FMW)
+ 
+ typedef struct CXLState {
+     bool is_enabled;
+diff --git a/include/hw/cxl/cxl_host.h b/include/hw/cxl/cxl_host.h
+index c9bc9c7c50..6dce2cde07 100644
+--- a/include/hw/cxl/cxl_host.h
++++ b/include/hw/cxl/cxl_host.h
+@@ -14,8 +14,10 @@
+ #define CXL_HOST_H
+ 
+ void cxl_machine_init(Object *obj, CXLState *state);
+-void cxl_fmws_link_targets(CXLState *stat, Error **errp);
++void cxl_fmws_link_targets(Error **errp);
+ void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp);
++hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr);
++GSList *cxl_fmws_get_all_sorted(void);
+ 
+ extern const MemoryRegionOps cfmws_ops;
+ 
+diff --git a/hw/acpi/cxl.c b/hw/acpi/cxl.c
+index 9cd7905ea2..20806e5dd4 100644
+--- a/hw/acpi/cxl.c
++++ b/hw/acpi/cxl.c
+@@ -22,6 +22,7 @@
+ #include "hw/pci/pci_bridge.h"
+ #include "hw/pci/pci_host.h"
+ #include "hw/cxl/cxl.h"
++#include "hw/cxl/cxl_host.h"
+ #include "hw/mem/memory-device.h"
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/aml-build.h"
+@@ -135,56 +136,62 @@ static void cedt_build_chbs(GArray *table_data, PXBCXLDev *cxl)
+  * Interleave ways encoding in CXL 2.0 ECN: 3, 6, 12 and 16-way memory
+  * interleaving.
+  */
+-static void cedt_build_cfmws(GArray *table_data, CXLState *cxls)
++static int cedt_build_cfmws(Object *obj, void *opaque)
+ {
+-    GList *it;
++    struct CXLFixedWindow *fw;
++    Aml *cedt = opaque;
++    GArray *table_data = cedt->buf;
++    int i;
+ 
+-    for (it = cxls->fixed_windows; it; it = it->next) {
+-        CXLFixedWindow *fw = it->data;
+-        int i;
++    if (!object_dynamic_cast(obj, TYPE_CXL_FMW)) {
++        return 0;
++    }
++    fw = CXL_FMW(obj);
+ 
+-        /* Type */
+-        build_append_int_noprefix(table_data, 1, 1);
++    /* Type */
++    build_append_int_noprefix(table_data, 1, 1);
+ 
+-        /* Reserved */
+-        build_append_int_noprefix(table_data, 0, 1);
++    /* Reserved */
++    build_append_int_noprefix(table_data, 0, 1);
+ 
+-        /* Record Length */
+-        build_append_int_noprefix(table_data, 36 + 4 * fw->num_targets, 2);
++    /* Record Length */
++    build_append_int_noprefix(table_data, 36 + 4 * fw->num_targets, 2);
+ 
+-        /* Reserved */
+-        build_append_int_noprefix(table_data, 0, 4);
++    /* Reserved */
++    build_append_int_noprefix(table_data, 0, 4);
+ 
+-        /* Base HPA */
+-        build_append_int_noprefix(table_data, fw->mr.addr, 8);
++    /* Base HPA */
++    build_append_int_noprefix(table_data, fw->mr.addr, 8);
+ 
+-        /* Window Size */
+-        build_append_int_noprefix(table_data, fw->size, 8);
++    /* Window Size */
++    build_append_int_noprefix(table_data, fw->size, 8);
+ 
+-        /* Host Bridge Interleave Ways */
+-        build_append_int_noprefix(table_data, fw->enc_int_ways, 1);
++    /* Host Bridge Interleave Ways */
++    build_append_int_noprefix(table_data, fw->enc_int_ways, 1);
+ 
+-        /* Host Bridge Interleave Arithmetic */
+-        build_append_int_noprefix(table_data, 0, 1);
++    /* Host Bridge Interleave Arithmetic */
++    build_append_int_noprefix(table_data, 0, 1);
+ 
+-        /* Reserved */
+-        build_append_int_noprefix(table_data, 0, 2);
++    /* Reserved */
++    build_append_int_noprefix(table_data, 0, 2);
+ 
+-        /* Host Bridge Interleave Granularity */
+-        build_append_int_noprefix(table_data, fw->enc_int_gran, 4);
++    /* Host Bridge Interleave Granularity */
++    build_append_int_noprefix(table_data, fw->enc_int_gran, 4);
+ 
+-        /* Window Restrictions */
+-        build_append_int_noprefix(table_data, 0x0f, 2); /* No restrictions */
++    /* Window Restrictions */
++    build_append_int_noprefix(table_data, 0x0f, 2);
+ 
+-        /* QTG ID */
+-        build_append_int_noprefix(table_data, 0, 2);
++    /* QTG ID */
++    build_append_int_noprefix(table_data, 0, 2);
+ 
+-        /* Host Bridge List (list of UIDs - currently bus_nr) */
+-        for (i = 0; i < fw->num_targets; i++) {
+-            g_assert(fw->target_hbs[i]);
+-            build_append_int_noprefix(table_data, PXB_DEV(fw->target_hbs[i])->bus_nr, 4);
+-        }
++    /* Host Bridge List (list of UIDs - currently bus_nr) */
++    for (i = 0; i < fw->num_targets; i++) {
++        g_assert(fw->target_hbs[i]);
++        build_append_int_noprefix(table_data,
++                                  PXB_DEV(fw->target_hbs[i])->bus_nr, 4);
+     }
++
++    return 0;
+ }
+ 
+ static int cxl_foreach_pxb_hb(Object *obj, void *opaque)
+@@ -202,6 +209,7 @@ void cxl_build_cedt(GArray *table_offsets, GArray *table_data,
+                     BIOSLinker *linker, const char *oem_id,
+                     const char *oem_table_id, CXLState *cxl_state)
+ {
++    GSList *cfmws_list, *iter;
+     Aml *cedt;
+     AcpiTable table = { .sig = "CEDT", .rev = 1, .oem_id = oem_id,
+                         .oem_table_id = oem_table_id };
+@@ -213,7 +221,12 @@ void cxl_build_cedt(GArray *table_offsets, GArray *table_data,
+     /* reserve space for CEDT header */
+ 
+     object_child_foreach_recursive(object_get_root(), cxl_foreach_pxb_hb, cedt);
+-    cedt_build_cfmws(cedt->buf, cxl_state);
++
++    cfmws_list = cxl_fmws_get_all_sorted();
++    for (iter = cfmws_list; iter; iter = iter->next) {
++        cedt_build_cfmws(iter->data, cedt);
++    }
++    g_slist_free(cfmws_list);
+ 
+     /* copy AML table into ACPI tables blob and patch header there */
+     g_array_append_vals(table_data, cedt->buf->data, cedt->buf->len);
+diff --git a/hw/cxl/cxl-host-stubs.c b/hw/cxl/cxl-host-stubs.c
+index cae4afcdde..13eb6bf6a4 100644
+--- a/hw/cxl/cxl-host-stubs.c
++++ b/hw/cxl/cxl-host-stubs.c
+@@ -8,8 +8,12 @@
+ #include "hw/cxl/cxl.h"
+ #include "hw/cxl/cxl_host.h"
+ 
+-void cxl_fmws_link_targets(CXLState *stat, Error **errp) {};
++void cxl_fmws_link_targets(Error **errp) {};
+ void cxl_machine_init(Object *obj, CXLState *state) {};
+ void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp) {};
++hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
++{
++    return base;
++};
+ 
+ const MemoryRegionOps cfmws_ops;
+diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
+index b7aa429ddf..438f2920e1 100644
+--- a/hw/cxl/cxl-host.c
++++ b/hw/cxl/cxl-host.c
+@@ -22,12 +22,12 @@
+ #include "hw/pci/pcie_port.h"
+ #include "hw/pci-bridge/pci_expander_bridge.h"
+ 
+-static void cxl_fixed_memory_window_config(CXLState *cxl_state,
+-                                           CXLFixedMemoryWindowOptions *object,
++static void cxl_fixed_memory_window_config(CXLFixedMemoryWindowOptions *object,
+                                            int index, Error **errp)
+ {
+     ERRP_GUARD();
+-    g_autofree CXLFixedWindow *fw = g_malloc0(sizeof(*fw));
++    DeviceState *dev = qdev_new(TYPE_CXL_FMW);
++    CXLFixedWindow *fw = CXL_FMW(dev);
+     strList *target;
+     int i;
+ 
+@@ -67,35 +67,41 @@ static void cxl_fixed_memory_window_config(CXLState *cxl_state,
+         fw->targets[i] = g_strdup(target->value);
+     }
+ 
+-    cxl_state->fixed_windows = g_list_append(cxl_state->fixed_windows,
+-                                             g_steal_pointer(&fw));
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), errp);
++
++    return;
+ }
+ 
+-void cxl_fmws_link_targets(CXLState *cxl_state, Error **errp)
++static int cxl_fmws_link(Object *obj, void *opaque)
+ {
+-    if (cxl_state && cxl_state->fixed_windows) {
+-        GList *it;
+-
+-        for (it = cxl_state->fixed_windows; it; it = it->next) {
+-            CXLFixedWindow *fw = it->data;
+-            int i;
+-
+-            for (i = 0; i < fw->num_targets; i++) {
+-                Object *o;
+-                bool ambig;
+-
+-                o = object_resolve_path_type(fw->targets[i],
+-                                             TYPE_PXB_CXL_DEV,
+-                                             &ambig);
+-                if (!o) {
+-                    error_setg(errp, "Could not resolve CXLFM target %s",
+-                               fw->targets[i]);
+-                    return;
+-                }
+-                fw->target_hbs[i] = PXB_CXL_DEV(o);
+-            }
++    struct CXLFixedWindow *fw;
++    int i;
++
++    if (!object_dynamic_cast(obj, TYPE_CXL_FMW)) {
++        return 0;
++    }
++    fw = CXL_FMW(obj);
++
++    for (i = 0; i < fw->num_targets; i++) {
++        Object *o;
++        bool ambig;
++
++        o = object_resolve_path_type(fw->targets[i], TYPE_PXB_CXL_DEV,
++                                     &ambig);
++        if (!o) {
++            error_setg(&error_fatal, "Could not resolve CXLFM target %s",
++                       fw->targets[i]);
++            return 1;
+         }
++        fw->target_hbs[i] = PXB_CXL_DEV(o);
+     }
++    return 0;
++}
++
++void cxl_fmws_link_targets(Error **errp)
++{
++    /* Order doesn't matter for this, so no need to build list */
++    object_child_foreach_recursive(object_get_root(), cxl_fmws_link, NULL);
+ }
+ 
+ static bool cxl_hdm_find_target(uint32_t *cache_mem, hwaddr addr,
+@@ -335,7 +341,7 @@ static void machine_set_cfmw(Object *obj, Visitor *v, const char *name,
+     }
+ 
+     for (it = cfmw_list, index = 0; it; it = it->next, index++) {
+-        cxl_fixed_memory_window_config(state, it->value, index, errp);
++        cxl_fixed_memory_window_config(it->value, index, errp);
+     }
+     state->cfmw_list = cfmw_list;
+ }
+@@ -373,3 +379,110 @@ void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp)
+         }
+     }
+ }
++
++struct cfmw_update_state {
++    hwaddr base;
++    hwaddr maxaddr;
++};
++
++static void cxl_fmws_update(Object *obj, void *opaque)
++{
++    struct CXLFixedWindow *fw;
++    struct cfmw_update_state *s = opaque;
++
++    if (!object_dynamic_cast(obj, TYPE_CXL_FMW)) {
++        return;
++    }
++
++    fw = CXL_FMW(obj);
++    if (s->base + fw->size <= s->maxaddr) {
++        fw->base = s->base;
++        sysbus_mmio_map(SYS_BUS_DEVICE(fw), 0, fw->base);
++        s->base += fw->size;
++    }
++
++    return;
++}
++
++static int cxl_fmws_find(Object *obj, void *opaque)
++{
++    GSList **list = opaque;
++
++    if (!object_dynamic_cast(obj, TYPE_CXL_FMW)) {
++        return 0;
++    }
++    *list = g_slist_prepend(*list, obj);
++
++    return 0;
++}
++
++static GSList *cxl_fmws_get_all(void)
++{
++    GSList *list = NULL;
++
++    object_child_foreach_recursive(object_get_root(), cxl_fmws_find, &list);
++
++    return list;
++}
++
++static gint cfmws_cmp(gconstpointer a, gconstpointer b, gpointer d)
++{
++    const struct CXLFixedWindow *ap = a;
++    const struct CXLFixedWindow *bp = b;
++
++    return ap->index > bp->index;
++}
++
++GSList *cxl_fmws_get_all_sorted(void)
++{
++    return g_slist_sort_with_data(cxl_fmws_get_all(), cfmws_cmp, NULL);
++}
++
++hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
++{
++    GSList *cfmws_list, *iter;
++
++    struct cfmw_update_state cfmwss = {
++        .base = base,
++        .maxaddr = max_addr,
++    };
++    cfmws_list = cxl_fmws_get_all_sorted();
++    for (iter = cfmws_list; iter; iter = iter->next) {
++        cxl_fmws_update(iter->data, &cfmwss);
++    }
++    g_slist_free(cfmws_list);
++
++    return cfmwss.base;
++}
++
++static void cxl_fmw_realize(DeviceState *dev, Error **errp)
++{
++    CXLFixedWindow *fw = CXL_FMW(dev);
++
++    memory_region_init_io(&fw->mr, OBJECT(dev), &cfmws_ops, fw,
++                          "cxl-fixed-memory-region", fw->size);
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &fw->mr);
++}
++
++static void cxl_fmw_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->desc = "CXL Fixed Memory Window";
++    dc->realize = cxl_fmw_realize;
++    /* Reason - created by machines as tightly coupled to machine memory map */
++    dc->user_creatable = false;
++}
++
++static const TypeInfo cxl_fmw_info = {
++    .name = TYPE_CXL_FMW,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(CXLFixedWindow),
++    .class_init = cxl_fmw_class_init,
++};
++
++static void cxl_host_register_types(void)
++{
++    type_register_static(&cxl_fmw_info);
++}
++type_init(cxl_host_register_types)
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 70656157ca..9978398876 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -630,7 +630,7 @@ void pc_machine_done(Notifier *notifier, void *data)
+                               &error_fatal);
+ 
+     if (pcms->cxl_devices_state.is_enabled) {
+-        cxl_fmws_link_targets(&pcms->cxl_devices_state, &error_fatal);
++        cxl_fmws_link_targets(&error_fatal);
+     }
+ 
+     /* set the number of CPUs */
+@@ -739,20 +739,28 @@ static uint64_t pc_get_cxl_range_start(PCMachineState *pcms)
+     return cxl_base;
+ }
+ 
+-static uint64_t pc_get_cxl_range_end(PCMachineState *pcms)
++static int cxl_get_fmw_end(Object *obj, void *opaque)
+ {
+-    uint64_t start = pc_get_cxl_range_start(pcms) + MiB;
++    struct CXLFixedWindow *fw;
++    uint64_t *start = opaque;
+ 
+-    if (pcms->cxl_devices_state.fixed_windows) {
+-        GList *it;
+-
+-        start = ROUND_UP(start, 256 * MiB);
+-        for (it = pcms->cxl_devices_state.fixed_windows; it; it = it->next) {
+-            CXLFixedWindow *fw = it->data;
+-            start += fw->size;
+-        }
++    if (!object_dynamic_cast(obj, TYPE_CXL_FMW)) {
++        return 0;
+     }
++    fw = CXL_FMW(obj);
++
++    *start += fw->size;
+ 
++    return 0;
++}
++
++static uint64_t pc_get_cxl_range_end(PCMachineState *pcms)
++{
++    uint64_t start = pc_get_cxl_range_start(pcms) + MiB;
++
++    /* Ordering doesn't matter so no need to build a sorted list */
++    object_child_foreach_recursive(object_get_root(), cxl_get_fmw_end,
++                                   &start);
+     return start;
+ }
+ 
+@@ -954,23 +962,10 @@ void pc_memory_init(PCMachineState *pcms,
+         cxl_base = pc_get_cxl_range_start(pcms);
+         memory_region_init(mr, OBJECT(machine), "cxl_host_reg", cxl_size);
+         memory_region_add_subregion(system_memory, cxl_base, mr);
+-        cxl_resv_end = cxl_base + cxl_size;
+-        if (pcms->cxl_devices_state.fixed_windows) {
+-            hwaddr cxl_fmw_base;
+-            GList *it;
+-
+-            cxl_fmw_base = ROUND_UP(cxl_base + cxl_size, 256 * MiB);
+-            for (it = pcms->cxl_devices_state.fixed_windows; it; it = it->next) {
+-                CXLFixedWindow *fw = it->data;
+-
+-                fw->base = cxl_fmw_base;
+-                memory_region_init_io(&fw->mr, OBJECT(machine), &cfmws_ops, fw,
+-                                      "cxl-fixed-memory-region", fw->size);
+-                memory_region_add_subregion(system_memory, fw->base, &fw->mr);
+-                cxl_fmw_base += fw->size;
+-                cxl_resv_end = cxl_fmw_base;
+-            }
+-        }
++        cxl_base = ROUND_UP(cxl_base + cxl_size, 256 * MiB);
++
++        cxl_resv_end = cxl_fmws_set_memmap_and_update_mmio(cxl_base,
++                                                           maxphysaddr);
+     }
+ 
+     /* Initialize PC system firmware */
 -- 
 2.43.0
 

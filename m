@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp323068njb;
-        Mon, 12 May 2025 23:32:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXA4q/LNVWd1WrnZIqmYprmPWeOhFNMlPboU+T/dIuzWDX/8Bw8wHLsDkjYbnXBt+jc2P2+PvOx3tSELg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG3UvUYqrpGAZvmJEJ1DLcy8wCZBmsjfp6QiDSKrorDXMCYExkKr2R3RfxHjL9zISR5kzIL
-X-Received: by 2002:a05:622a:8c:b0:477:e4e:9186 with SMTP id d75a77b69052e-4945271c7d6mr225037451cf.11.1747117960319;
-        Mon, 12 May 2025 23:32:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747117960; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp323322njb;
+        Mon, 12 May 2025 23:33:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXO42CvrDS2mTCbY9ejGL4OMmLaCIt2H3idZKBgcvtT02J4giw3oWGq6LzHWlcMmuld2H5ve03SDuR1WA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEBm2SExR7LNsrfrcHC/YLSDXMaAbqsUYjSU+A7Jg4yW/eiXO4dgTjx1fshayfD5xRHOc+4
+X-Received: by 2002:a05:620a:2a16:b0:7c5:dfe6:222a with SMTP id af79cd13be357-7cd011577c5mr2259452385a.42.1747118004057;
+        Mon, 12 May 2025 23:33:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747118004; cv=none;
         d=google.com; s=arc-20240605;
-        b=HRGr0qooFjD2x3WgDLEKUw/7gtgVG0qxf+KYo8RaSUWnd1hPHfOthTuuygRjMW9DjM
-         C3EQV1/VV3T5+QfBqm3ARC9216FCg7n0vuh9XRKg3RxEQeokoKMBc1HiFtlurLwNTCQI
-         +DknjCi3uyPmPyipL8SG8Ylzh7t58BlDhYf8rmeBxrqo3nL5H0WjQMQBKx49pzuplO18
-         RZJVBA0W/vZmY4B7Qg1yA+MpwNRqwdDPgZMvdAI8JfVKH+U0+T6yvYVqtMeZJPKsW6Dg
-         d5YnzbNQJAgNqLpQsCtO0S8JjZCqwPF8k1XjOmpHNuAXP4Q6Pvc+hs19PsF+0NZhdvac
-         6G5Q==
+        b=F94NccTRK7hQD3MuZ7v3/AzoLZ1+CwGxr+KFZfDBsJ+djRLwzPgmrgIs2T3UA2X7qR
+         B1XWwLzCOJhuh9FIZpiZ7YoDNWZFZzz2rqoFAWlMJQvDPBFfNc9W9W4dVhT0VeEpad8/
+         lsIeWW3jcE0NSbuE24ATgZRu87rm8WStak4lVcnUBNkwI5yXfdXhl9XwuHf7dZpLrkMF
+         glq+M6KsFohzX0I30qtlKZQKu1G67ZcBzRsK5nwc75nXdGioVeNHjIDW5aVzRo6f19Vc
+         GVa5I4TssxYv1vhv/wV2nKD6/sTBR2xouV2xwaDA47PW6SwOXFTdqIseQmIGrwew/vi9
+         wqpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=HTSwq+LIXyVBCo2FXDdnPjcjPmmeUeqwTMH3XoK7O8w=;
+        bh=nO7CcWR92+r3gtg9ECXw//xEY2wZXNoiOfqHG6er0w0=;
         fh=XVCbtZt0NlM3WRi/g+G2SrIUzl8hrRaPGDpFr//3vj8=;
-        b=j0RYWmnuebbGFbA60ZwhUbLEvDJYkHL605ppaXMaa9Lx0aM8JfvT8vhih03gDB2hCQ
-         bwReKUx1FhLfJs9v7SJvsa3CDbST0wle5aPbnUTv5QXHQyhl+gvWnXcCAofbttDWJajK
-         XkXPmvs8F3L3eC6M9CBzYHH5CLijOkx+foVzG32mENEExkwEUSL99gcgIphsOBdi74pz
-         IKw/wgoUOhVWeF4Wb9y0R/RKcb7xkukajBPAt9LwTbxkYpQONzj5DFI8Na+rmr/vTFNd
-         Cte6v912AgdUs1tmlLdf3XEEyHJ+dZkYuD3PUz0nBQuGHKDksxRsM8P/JGy68bcYRB/R
-         nNLg==;
+        b=PZxBT/5zZxBUTe3NSax/XU6Ryz+m0HzaJyRRDwDSG/bDBPUjx/a14phJclWh+NdBOO
+         8ilaEE0t+ShtvtH5x9wG4iqlV5pSJjOX1C91Mp6EJ5xDca7USOc3BS70c2WzzzahkG/Q
+         3GoajdJZsgJwMdvaqIJotjCkeKqOhuF9xV8+pbQgSHRsFzHtIowoB5/I4/2XuVShAGaL
+         Uh5qfEf16XEzJ0I9NTE/tMq7A4y/Dw/KdVZ/9+RgVv90LHJqathaJmQrlqxvx9lpISFH
+         KqRDQaNS8baftOKbVWbwM9DnTZTK+yeCyaHFCXYSeHHH3PoBhDfFEp1MWmgJSUGOKLWU
+         P/PQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-49452581ce4si103552171cf.444.2025.05.12.23.32.40
+        by mx.google.com with ESMTPS id af79cd13be357-7cd00fe1ffcsi1107755985a.397.2025.05.12.23.33.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 May 2025 23:32:40 -0700 (PDT)
+        Mon, 12 May 2025 23:33:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,22 +42,22 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uEjBV-0005gn-H7; Tue, 13 May 2025 02:32:16 -0400
+	id 1uEjCH-0006Kn-NN; Tue, 13 May 2025 02:33:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uEjAR-00053K-2v; Tue, 13 May 2025 02:31:10 -0400
+ id 1uEjAi-0005K3-8L; Tue, 13 May 2025 02:31:39 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uEjAL-000252-Bl; Tue, 13 May 2025 02:31:03 -0400
+ id 1uEjAg-00026a-Js; Tue, 13 May 2025 02:31:24 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 13 May
- 2025 14:29:05 +0800
+ 2025 14:29:06 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 13 May 2025 14:29:05 +0800
+ Transport; Tue, 13 May 2025 14:29:06 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -66,10 +66,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v2 09/25] hw/misc/aspeed_hace: Move register size to instance
- class and dynamically allocate regs
-Date: Tue, 13 May 2025 14:28:39 +0800
-Message-ID: <20250513062901.2256865-10-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 13/25] hw/misc/aspeed_hace: Support to dump plaintext and
+ digest for better debugging
+Date: Tue, 13 May 2025 14:28:43 +0800
+Message-ID: <20250513062901.2256865-14-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250513062901.2256865-1-jamin_lin@aspeedtech.com>
 References: <20250513062901.2256865-1-jamin_lin@aspeedtech.com>
@@ -100,195 +100,110 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pVJ1yGt2WtFP
+X-TUID: LF7pwMfyJ3Pp
 
-Dynamically allocate the register array by removing the hardcoded
-ASPEED_HACE_NR_REGS macro.
-
-To support different register sizes across SoC variants, introduce a new
-"nr_regs" class attribute and replace the static "regs" array with dynamically
-allocated memory.
-
-Add a new "aspeed_hace_unrealize" function to properly free the allocated "regs"
-memory during device cleanup.
-
-Remove the bounds checking in the MMIO read/write handlers since the
-MemoryRegion size now matches the (register array size << 2).
-
-This commit updates the VMState fields accordingly. The VMState version was
-already bumped in a previous patch of this series, so no further version change
-is needed.
+1. Added "hace_hexdump()" to dump a contiguous buffer using qemu_hexdump.
+2. Added "hace_iov_hexdump()" to flatten and dump scatter-gather source vectors.
+3. Introduced a new trace event: "aspeed_hace_hexdump".
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- include/hw/misc/aspeed_hace.h |  5 +++--
- hw/misc/aspeed_hace.c         | 36 ++++++++++++++++++-----------------
- 2 files changed, 22 insertions(+), 19 deletions(-)
+ hw/misc/aspeed_hace.c | 46 +++++++++++++++++++++++++++++++++++++++++++
+ hw/misc/trace-events  |  1 +
+ 2 files changed, 47 insertions(+)
 
-diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
-index b69a038d35..f30d606559 100644
---- a/include/hw/misc/aspeed_hace.h
-+++ b/include/hw/misc/aspeed_hace.h
-@@ -22,7 +22,6 @@
- 
- OBJECT_DECLARE_TYPE(AspeedHACEState, AspeedHACEClass, ASPEED_HACE)
- 
--#define ASPEED_HACE_NR_REGS (0x64 >> 2)
- #define ASPEED_HACE_MAX_SG  256 /* max number of entries */
- 
- struct AspeedHACEState {
-@@ -31,7 +30,7 @@ struct AspeedHACEState {
-     MemoryRegion iomem;
-     qemu_irq irq;
- 
--    uint32_t regs[ASPEED_HACE_NR_REGS];
-+    uint32_t *regs;
-     uint32_t total_req_len;
- 
-     MemoryRegion *dram_mr;
-@@ -44,10 +43,12 @@ struct AspeedHACEState {
- struct AspeedHACEClass {
-     SysBusDeviceClass parent_class;
- 
-+    const MemoryRegionOps *reg_ops;
-     uint32_t src_mask;
-     uint32_t dest_mask;
-     uint32_t key_mask;
-     uint32_t hash_mask;
-+    uint64_t nr_regs;
-     bool raise_crypt_interrupt_workaround;
- };
- 
 diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index ef777bb594..63404a76f7 100644
+index 1ffec029dc..50607d2cfa 100644
 --- a/hw/misc/aspeed_hace.c
 +++ b/hw/misc/aspeed_hace.c
-@@ -386,13 +386,6 @@ static uint64_t aspeed_hace_read(void *opaque, hwaddr addr, unsigned int size)
+@@ -10,8 +10,10 @@
+  */
  
-     addr >>= 2;
- 
--    if (addr >= ASPEED_HACE_NR_REGS) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
--                      __func__, addr << 2);
--        return 0;
--    }
--
-     return s->regs[addr];
- }
- 
-@@ -404,13 +397,6 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
- 
-     addr >>= 2;
- 
--    if (addr >= ASPEED_HACE_NR_REGS) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
--                      __func__, addr << 2);
--        return;
--    }
--
-     switch (addr) {
-     case R_STATUS:
-         if (data & HASH_IRQ) {
-@@ -507,13 +493,14 @@ static const MemoryRegionOps aspeed_hace_ops = {
- static void aspeed_hace_reset(DeviceState *dev)
- {
-     struct AspeedHACEState *s = ASPEED_HACE(dev);
-+    AspeedHACEClass *ahc = ASPEED_HACE_GET_CLASS(s);
- 
-     if (s->hash_ctx != NULL) {
-         qcrypto_hash_free(s->hash_ctx);
-         s->hash_ctx = NULL;
-     }
- 
--    memset(s->regs, 0, sizeof(s->regs));
-+    memset(s->regs, 0, ahc->nr_regs << 2);
-     s->total_req_len = 0;
- }
- 
-@@ -521,11 +508,13 @@ static void aspeed_hace_realize(DeviceState *dev, Error **errp)
- {
-     AspeedHACEState *s = ASPEED_HACE(dev);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    AspeedHACEClass *ahc = ASPEED_HACE_GET_CLASS(s);
- 
-     sysbus_init_irq(sbd, &s->irq);
- 
-+    s->regs = g_new(uint32_t, ahc->nr_regs);
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_hace_ops, s,
--            TYPE_ASPEED_HACE, 0x1000);
-+                          TYPE_ASPEED_HACE, ahc->nr_regs << 2);
- 
-     if (!s->dram_mr) {
-         error_setg(errp, TYPE_ASPEED_HACE ": 'dram' link not set");
-@@ -548,17 +537,25 @@ static const VMStateDescription vmstate_aspeed_hace = {
-     .version_id = 2,
-     .minimum_version_id = 2,
-     .fields = (const VMStateField[]) {
--        VMSTATE_UINT32_ARRAY(regs, AspeedHACEState, ASPEED_HACE_NR_REGS),
-         VMSTATE_UINT32(total_req_len, AspeedHACEState),
-         VMSTATE_END_OF_LIST(),
-     }
+ #include "qemu/osdep.h"
++#include "qemu/cutils.h"
+ #include "qemu/log.h"
+ #include "qemu/error-report.h"
++#include "qemu/iov.h"
+ #include "hw/misc/aspeed_hace.h"
+ #include "qapi/error.h"
+ #include "migration/vmstate.h"
+@@ -88,6 +90,42 @@ static const struct {
+       QCRYPTO_HASH_ALGO_SHA256 },
  };
  
-+static void aspeed_hace_unrealize(DeviceState *dev)
++static void hace_hexdump(const char *desc, const char *buf, size_t size)
 +{
-+    AspeedHACEState *s = ASPEED_HACE(dev);
++    g_autoptr(GString) str = g_string_sized_new(64);
++    size_t len;
++    size_t i;
 +
-+    g_free(s->regs);
-+    s->regs = NULL;
++    for (i = 0; i < size; i += len) {
++        len = MIN(16, size - i);
++        g_string_truncate(str, 0);
++        qemu_hexdump_line(str, buf + i, len, 1, 4);
++        trace_aspeed_hace_hexdump(desc, i, str->str);
++    }
 +}
 +
- static void aspeed_hace_class_init(ObjectClass *klass, const void *data)
++static void hace_iov_hexdump(const char *desc, const struct iovec *iov,
++                             const unsigned int iov_cnt)
++{
++    size_t size = 0;
++    char *buf;
++    int i;
++
++    for (i = 0; i < iov_cnt; i++) {
++        size += iov[i].iov_len;
++    }
++
++    buf = g_malloc(size);
++
++    if (!buf) {
++        return;
++    }
++
++    iov_to_buf(iov, iov_cnt, 0, buf, size);
++    hace_hexdump(desc, buf, size);
++    g_free(buf);
++}
++
+ static int hash_algo_lookup(uint32_t reg)
  {
-     DeviceClass *dc = DEVICE_CLASS(klass);
+     int i;
+@@ -303,6 +341,10 @@ static void hash_write_digest_and_unmap_iov(AspeedHACEState *s,
+                       __func__, digest_addr);
+     }
  
-     dc->realize = aspeed_hace_realize;
-+    dc->unrealize = aspeed_hace_unrealize;
-     device_class_set_legacy_reset(dc, aspeed_hace_reset);
-     device_class_set_props(dc, aspeed_hace_properties);
-     dc->vmsd = &vmstate_aspeed_hace;
-@@ -579,6 +576,7 @@ static void aspeed_ast2400_hace_class_init(ObjectClass *klass, const void *data)
++    if (trace_event_get_state_backends(TRACE_ASPEED_HACE_HEXDUMP)) {
++        hace_hexdump("digest", (char *)digest_buf, digest_len);
++    }
++
+     for (; iov_idx > 0; iov_idx--) {
+         address_space_unmap(&s->dram_as, iov[iov_idx - 1].iov_base,
+                             iov[iov_idx - 1].iov_len, false,
+@@ -396,6 +438,10 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+          return;
+     }
  
-     dc->desc = "AST2400 Hash and Crypto Engine";
++    if (trace_event_get_state_backends(TRACE_ASPEED_HACE_HEXDUMP)) {
++        hace_iov_hexdump("plaintext", iov, iov_idx);
++    }
++
+     /* Executes the hash operation */
+     if (acc_mode) {
+         hash_execute_acc_mode(s, algo, iov, iov_idx, acc_final_request);
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index b2587c37d7..70ca1bd85d 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -308,6 +308,7 @@ aspeed_hace_write(uint64_t offset, uint64_t data) "offset 0x%" PRIx64 " data 0x%
+ aspeed_hace_hash_sg(int index, uint64_t addr, uint32_t len) "%d: addr 0x%" PRIx64 " len 0x%" PRIx32
+ aspeed_hace_hash_addr(const char *s, uint64_t addr) "%s: 0x%" PRIx64
+ aspeed_hace_hash_execute_acc_mode(bool final_request) "final request: %d"
++aspeed_hace_hexdump(const char *desc, uint32_t offset, char *s) "%s: 0x%08x: %s"
  
-+    ahc->nr_regs = 0x64 >> 2;
-     ahc->src_mask = 0x0FFFFFFF;
-     ahc->dest_mask = 0x0FFFFFF8;
-     ahc->key_mask = 0x0FFFFFC0;
-@@ -598,6 +596,7 @@ static void aspeed_ast2500_hace_class_init(ObjectClass *klass, const void *data)
- 
-     dc->desc = "AST2500 Hash and Crypto Engine";
- 
-+    ahc->nr_regs = 0x64 >> 2;
-     ahc->src_mask = 0x3fffffff;
-     ahc->dest_mask = 0x3ffffff8;
-     ahc->key_mask = 0x3FFFFFC0;
-@@ -617,6 +616,7 @@ static void aspeed_ast2600_hace_class_init(ObjectClass *klass, const void *data)
- 
-     dc->desc = "AST2600 Hash and Crypto Engine";
- 
-+    ahc->nr_regs = 0x64 >> 2;
-     ahc->src_mask = 0x7FFFFFFF;
-     ahc->dest_mask = 0x7FFFFFF8;
-     ahc->key_mask = 0x7FFFFFF8;
-@@ -636,6 +636,7 @@ static void aspeed_ast1030_hace_class_init(ObjectClass *klass, const void *data)
- 
-     dc->desc = "AST1030 Hash and Crypto Engine";
- 
-+    ahc->nr_regs = 0x64 >> 2;
-     ahc->src_mask = 0x7FFFFFFF;
-     ahc->dest_mask = 0x7FFFFFF8;
-     ahc->key_mask = 0x7FFFFFF8;
-@@ -655,6 +656,7 @@ static void aspeed_ast2700_hace_class_init(ObjectClass *klass, const void *data)
- 
-     dc->desc = "AST2700 Hash and Crypto Engine";
- 
-+    ahc->nr_regs = 0x64 >> 2;
-     ahc->src_mask = 0x7FFFFFFF;
-     ahc->dest_mask = 0x7FFFFFF8;
-     ahc->key_mask = 0x7FFFFFF8;
+ # bcm2835_property.c
+ bcm2835_mbox_property(uint32_t tag, uint32_t bufsize, size_t resplen) "mbox property tag:0x%08x in_sz:%u out_sz:%zu"
 -- 
 2.43.0
 

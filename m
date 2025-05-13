@@ -1,357 +1,268 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp94020njb;
-        Mon, 12 May 2025 12:42:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXXXLfSxypkW4n0u7OtrT8Z/TWdtPQCW006UwYpjZU1YfEyByKTJZVeIotioFjWsyNUD+0arDQwBDzTtQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE5GgoX7mJ/dIMOoMd7N54+G0mly4wgjb0O9sVlC3LSBlRN6UGvhEhcOUq4WuP+gNHx75rJ
-X-Received: by 2002:a17:903:22cd:b0:223:7006:4db2 with SMTP id d9443c01a7336-22fc8c925b3mr205391615ad.31.1747078966590;
-        Mon, 12 May 2025 12:42:46 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1747078966; cv=pass;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp321849njb;
+        Mon, 12 May 2025 23:29:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWFnL7g7il5Zr1bAyob03UlsbX9U8JTgR1mkhMX9N6u5pEH9r/p5lh98rCWAyelY+S46P5QKMdGxt1pDg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFhWieK/hamfbTBC5aTh40aMZAZN3WE25qK96zAPDeWk2kNBC8Zr2oiBZ3bP9Dd4a9sg/qm
+X-Received: by 2002:a05:620a:400c:b0:7c7:f7ba:270a with SMTP id af79cd13be357-7cd0116dd1cmr2776384385a.47.1747117784966;
+        Mon, 12 May 2025 23:29:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747117784; cv=none;
         d=google.com; s=arc-20240605;
-        b=CZV5jJa01xP/583jbOizK4405Iykqddcuj2y6IsIMjEwGNerbZBea8zd2SG+dLnuNZ
-         TwP19SOe9Hu2ZYexiiE3Wb25rqGGz2IdpFkeP66Jvf1C9dfIFrsUqAsfjbGx2DHPhKWn
-         RhViisFD8ccJClUy92sqXGJaFJJtoihGNy3iT3CPW5Zr4fvNdK3bUTGblflqARi97uvq
-         gMdtBfhBzCxXyZ+BvCYchX9BqskPFD0eMzjn14QvRpa4FnFJ7cKLGT9+iyXg8tc/JQvf
-         Q5WILQJEikklAE+2l7IvBxydgPCB9Uq7nTdD6KJstB8nQughNmCx2fx0KwFWDPEmZ57z
-         fXRg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=nkDtm9Lnjo5cyrTByxOa1qBNfkDZM4x6dBOWMRIyzWY=;
-        fh=/ig5Gs1qOTSL7QPAOVvXlMgYZk3eOloVx045BDCnIP8=;
-        b=e7/zssJtsSEPJHc6hq9tviygQpnURVUAMLRJdK0jGcfoquyYQqZ2CSp/PmZB6OXseJ
-         m4Z5BYlTWXwOZu6f6K+Mk8Z1yKjKJa1mHLE+U72P7p9XQfhJdRVBT705y+HC6hEJot/r
-         3Ev4lwXAgUFX08ZTnr4ia6frOG/xrUDjzVc5us8adXLgxy863r3NETJxlu5kozABWWNq
-         B4Ix9FXEr5XjEHkZLP3WNfHD1jdxJFgSLer09XwU0yyr5e8YV6A2JKJZ4TrTBWxFm07Z
-         wwUfHpDtXp0TG6HpPw7Gw9571EuF4fYWjosKro71x0+VJ2vzYYBBz71aIC89ArqgmOYF
-         Xdfw==;
+        b=Y2zGE+v3k9vrsO+UgUwbJNxhoHnq2HhzNRf6g8yGd+y3bdMLqlfC1cmLYO7874zrUp
+         mUvezohJMujcLfBn7PajuuQ4LkG1H+G0s+2Gv7aZCeJS0skf1IjLFLVD9Skj8iIZ+i1e
+         QvdwOUZBcqcC4S3riQcTxgFdV8lUCAhLPJxlbQ94MOMTP/u+YHfGy6S7dMumzJNOOory
+         xTXvUB2yJ4OIPvamlf+SSq4GvoR4a+2/dKihlIjuLez8ZqvUWSPYf2A8p0KhvLb2+ojC
+         D35Kq/7T76WqtMSBXF4C1qCsCEgT32Mv6GwcPs8LdYajJE6IDMS72CYsBFou2VIBSusl
+         fssQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=G4ODHwdKA9eIYacunjI/KzpldMhloQwk3ZWrLqSW9y4=;
+        fh=XVCbtZt0NlM3WRi/g+G2SrIUzl8hrRaPGDpFr//3vj8=;
+        b=kwIAORU/iyd2hVSX1+ffZCGhVGGIjRTrsG4bLXOnUAxQDRROeAxmL1u8j015MG72df
+         B6hku1vb4B1VNhYRHOIcFEiRCxDnbKyGH39DsPWHFWkq9qLsp8nqA94zWEQn7IEWAGWl
+         /E936Bkmyq4exhholcBj1ewZFpc6u9TARHhAfYjDVCTxDTWE1XudEbrXqRJVnpDohQsl
+         tH4cVExhzI4ZqNzNiO0XLdqjBOf/r314k1FobIosPV6oog5GWgdxM4D/VQ+ryYWCyO0T
+         RonVMAPkaXgTnI7pppGD+cumvoMJByxqxigneoiltxvvhOvzXvJZ2suR5ZXhumqqWagK
+         7NYw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fsr+1zb5;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-644838-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-644838-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-644838-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
-        by mx.google.com with ESMTPS id d9443c01a7336-22fc6f134besi109231525ad.331.2025.05.12.12.42.46
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7cd00fefe13si1052532585a.532.2025.05.12.23.29.44
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 May 2025 12:42:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-644838-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 12 May 2025 23:29:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fsr+1zb5;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-644838-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-644838-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id A5F797A3A4E
-	for <alex.bennee@linaro.org>; Mon, 12 May 2025 19:41:30 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 7396F2980C8;
-	Mon, 12 May 2025 19:42:39 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Fsr+1zb5"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 539121BD9C8
-	for <linux-kernel@vger.kernel.org>; Mon, 12 May 2025 19:42:36 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1747078959; cv=none; b=VknzgGHx+nbuUjlPO7Oy/3l+ujZU3/l2yTFNmU4tUu6YFk3uIVa+GoLZYUs0oJXNPRb06OhiUDgT5qyXmJJyz7T3DjVb7ScbmgBRqdlFMgI65hZ5lLNmC/lzaQiYh0tUwfX95SS7PCm/UcrjHD2TrWLcLyQlnhUskw6727cnTHg=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1747078959; c=relaxed/simple;
-	bh=WPoMWXNs6PPsFi29Ii/vfvaSDr07bGVlHyTdttpAvHQ=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=NKljhChWbutsiPHa9riifu3Ca4yDsK3vXrizRKTUrnc/4DXlW3hnLFzS65GB+otCvoT4GBWQP7ST6qBgCa99/HA9vbiLQhy+Ya6+9jutF9vLYBxezRAN3UvIbVYl3mHck4SDb9rYozCfHm63YSdf7t++vuQ0Y2UjVGa4vaRRiu8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Fsr+1zb5; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1747078956;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=nkDtm9Lnjo5cyrTByxOa1qBNfkDZM4x6dBOWMRIyzWY=;
-	b=Fsr+1zb5nI4fQ4ArAlg/w+6aqX8qzvv9izj7wUUxUvvuxrmRZOS2ar7LO0e/Y7Q4jk5+e/
-	/tHMXk99hLTeiY/S9d8XbpwTJ+d/g5QEY7vRedcXetGxfke+HaKuf0Fbl44LmXOsr/0CD5
-	bf298oRyvvuumvZ9nwKE1EU0oPoHKA0=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-319-eaQSzSDwOOS_L077D_nR_Q-1; Mon, 12 May 2025 15:42:32 -0400
-X-MC-Unique: eaQSzSDwOOS_L077D_nR_Q-1
-X-Mimecast-MFC-AGG-ID: eaQSzSDwOOS_L077D_nR_Q_1747078952
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-43eea5a5d80so27159375e9.1
-        for <linux-kernel@vger.kernel.org>; Mon, 12 May 2025 12:42:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747078951; x=1747683751;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=nkDtm9Lnjo5cyrTByxOa1qBNfkDZM4x6dBOWMRIyzWY=;
-        b=hcvuOnJy9l5zziCCxWwo6oV7ECnnFjoLj2hQLHvMa+IwpGrgTTdpKsOvhz9ihqc/6w
-         h5+FmvRYnR9w/H4ZWonBOJtPZU9f66stWXCdBXhcfED9H7rEwK79RQVqoJY2Hp1pq+QZ
-         qGK6bhT1/T//ndN9xG9EcqrW5CR4tTG1OvNhH6WdCtphQRM3ugNDnC4MpoURNf25lYcN
-         vbS44DAJNCOOseOclmM0B4xNrb/yLMvwnmWoorOq/465QpVySiJ/wC1VREnekVWZpwuo
-         pN0hU6qMxcZ+FlSEMiTXzi5ZXa3xD/vo8Kqdut7ySYJogUVXCc7qtQO4XYvo5qPXvBqi
-         2Xig==
-X-Forwarded-Encrypted: i=1; AJvYcCUWc6BxNICYgnBlpKaMtkkdYM+IumW+OcbsU1Yh0PtBlyRT+Fqg6XLfXwYQrGn4POO+b02i9/mydLpFPKs=@vger.kernel.org
-X-Gm-Message-State: AOJu0YzG4B1xTNMWOFn9SZyzqGLzLbkCDbZZzg2J6SYBaZn9ZSppdCmE
-	82TtskQ6so9tUHDnk1nN7dhAiUf3LDqgYMhwsuFMLO/bznO+CFQdl5+vo9BnDzRWJSukbOJMMLw
-	QiRunBBBjmpvqi5rJdWcLrJZLs2ycJ2JDZ9QDJb0rgFrpsrU3UyKICkHyxJznXg==
-X-Gm-Gg: ASbGncvZ0CnUHYInVVGO4ryVlFdCu4hWNPURMZN0YCQEi/q8VuQwGD9Ej7hy4w2cX62
-	nVuGNhRonfurXdayqykNQtoCv8IfJiJyX+8Fhu1NdRJhhNLG7ZkYQ/HpQJZQep3yHtR+lXc6Ght
-	pHPh+9Wj5fYMWI/a9vtV/o3W/6oqAySaSKS4Lq69jnqD6fXGimzUbQkvsiiYW9E3p91KkAocPiI
-	v8cRXtCyh6bpPJffj5eVENpsSy8uFvqfcTekLujks0C7FUtPjH8lEK1qRjBAdGfA1gHgtcQW5EQ
-	b+aH9A==
-X-Received: by 2002:a05:600c:a00a:b0:43c:eeee:b70a with SMTP id 5b1f17b1804b1-442d6dd2421mr120003625e9.22.1747078951530;
-        Mon, 12 May 2025 12:42:31 -0700 (PDT)
-X-Received: by 2002:a05:600c:a00a:b0:43c:eeee:b70a with SMTP id 5b1f17b1804b1-442d6dd2421mr120003535e9.22.1747078951123;
-        Mon, 12 May 2025 12:42:31 -0700 (PDT)
-Received: from redhat.com ([2a0d:6fc0:1517:1000:ea83:8e5f:3302:3575])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442eb5f4ca8sm3063405e9.18.2025.05.12.12.42.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 May 2025 12:42:30 -0700 (PDT)
-Date: Mon, 12 May 2025 15:42:27 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Igor Mammedov <imammedo@redhat.com>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, Gavin Shan <gshan@redhat.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	Ani Sinha <anisinha@redhat.com>,
-	Dongjiu Geng <gengdongjiu1@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v8 09/20] acpi/ghes: don't hard-code the number of
- sources for HEST table
-Message-ID: <20250512154053-mutt-send-email-mst@kernel.org>
-References: <cover.1741374594.git.mchehab+huawei@kernel.org>
- <1c024a700815fa4a100fc3bada477481fd266a83.1741374594.git.mchehab+huawei@kernel.org>
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uEj8q-0002DS-KL; Tue, 13 May 2025 02:29:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1uEj8m-0002D8-7U; Tue, 13 May 2025 02:29:24 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1uEj8j-0001jk-4k; Tue, 13 May 2025 02:29:23 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 13 May
+ 2025 14:29:02 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Tue, 13 May 2025 14:29:02 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>, Laurent Vivier
+ <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open list:ASPEED
+ BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
+Subject: [PATCH v2 00/25] Fix incorrect hash results on AST2700
+Date: Tue, 13 May 2025 14:28:30 +0800
+Message-ID: <20250513062901.2256865-1-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1c024a700815fa4a100fc3bada477481fd266a83.1741374594.git.mchehab+huawei@kernel.org>
-X-TUID: 9hKGhnWPXewW
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: FVSsELQUHun0
 
-On Fri, Mar 07, 2025 at 08:14:38PM +0100, Mauro Carvalho Chehab wrote:
-> The current code is actually dependent on having just one error
-> structure with a single source, as any change there would cause
-> migration issues.
-> 
-> As the number of sources should be arch-dependent, as it will depend on
-> what kind of notifications will exist, and how many errors can be
-> reported at the same time, change the logic to be more flexible,
-> allowing the number of sources to be defined when building the
-> HEST table by the caller.
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+v1:
+ 1. Added support for 64-bit DMA in the HACE model
+ 2. Refactored the do_hash operation in the HACE model
+ 3. Fixed a crash caused by out-of-bound memory access in HACE
+ 4. Added more trace events and implemented dumping of source hash data and
+    resulting digests to improve debugging
+ 5. Refactored the HACE QTest framework to support both AST1030 and AST2700
+ 6. Added a test case for SHA384
 
-Breaks CI:
+v2:
+  1. Create new helper functions
+     hash_get_source_addr
+     hash_prepare_direct_iov
+     hash_prepare_sg_iov
+     hash_get_digest_addr
+     hash_write_digest_and_unmap_iov
+     hash_execute_non_acc_mode
+     hash_execute_acc_mode
+  2. Refactor do_hash_operation
+  3. Fix review issue
+  4. Revise trace-events
+  5. Move register size to instance class and dynamically allocate regs
 
-https://gitlab.com/mstredhat/qemu/-/jobs/10007863974
+This patchset resolves incorrect hash results reported on the AST2700 platform.
+This update addresses the following kernel warnings and test failures related to
+the crypto self-test framework:
 
-I dropped the patchset for now, pls rebase and repost.
+aspeed-hmac-sha512 test failed (incorrect result)
+aspeed-hmac-sha384 test failed (incorrect result)
+aspeed-sha512 test failed (incorrect result)
+aspeed-sha384 test failed (incorrect result)
+aspeed-hmac-sha256 test failed (incorrect result)
+aspeed-hmac-sha224 test failed (incorrect result)
+aspeed-hmac-sha1 test failed (incorrect result)
+aspeed-sha224 test failed (incorrect result)
+aspeed-sha256 test failed (incorrect result)
+aspeed-sha1 test failed (incorrect result)
 
-> ---
->  hw/acpi/ghes.c           | 39 +++++++++++++++++++++------------------
->  hw/arm/virt-acpi-build.c |  8 +++++++-
->  include/hw/acpi/ghes.h   | 17 ++++++++++++-----
->  3 files changed, 40 insertions(+), 24 deletions(-)
-> 
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index 668ca72587c7..f49d0d628fc4 100644
-> --- a/hw/acpi/ghes.c
-> +++ b/hw/acpi/ghes.c
-> @@ -238,17 +238,17 @@ ghes_gen_err_data_uncorrectable_recoverable(GArray *block,
->   * See docs/specs/acpi_hest_ghes.rst for blobs format.
->   */
->  static void build_ghes_error_table(AcpiGhesState *ags, GArray *hardware_errors,
-> -                                   BIOSLinker *linker)
-> +                                   BIOSLinker *linker, int num_sources)
->  {
->      int i, error_status_block_offset;
->  
->      /* Build error_block_address */
-> -    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
-> +    for (i = 0; i < num_sources; i++) {
->          build_append_int_noprefix(hardware_errors, 0, sizeof(uint64_t));
->      }
->  
->      /* Build read_ack_register */
-> -    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
-> +    for (i = 0; i < num_sources; i++) {
->          /*
->           * Initialize the value of read_ack_register to 1, so GHES can be
->           * writable after (re)boot.
-> @@ -263,13 +263,13 @@ static void build_ghes_error_table(AcpiGhesState *ags, GArray *hardware_errors,
->  
->      /* Reserve space for Error Status Data Block */
->      acpi_data_push(hardware_errors,
-> -        ACPI_GHES_MAX_RAW_DATA_LENGTH * ACPI_GHES_ERROR_SOURCE_COUNT);
-> +        ACPI_GHES_MAX_RAW_DATA_LENGTH * num_sources);
->  
->      /* Tell guest firmware to place hardware_errors blob into RAM */
->      bios_linker_loader_alloc(linker, ACPI_HW_ERROR_FW_CFG_FILE,
->                               hardware_errors, sizeof(uint64_t), false);
->  
-> -    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
-> +    for (i = 0; i < num_sources; i++) {
->          /*
->           * Tell firmware to patch error_block_address entries to point to
->           * corresponding "Generic Error Status Block"
-> @@ -295,12 +295,14 @@ static void build_ghes_error_table(AcpiGhesState *ags, GArray *hardware_errors,
->  }
->  
->  /* Build Generic Hardware Error Source version 2 (GHESv2) */
-> -static void build_ghes_v2(GArray *table_data,
-> -                          BIOSLinker *linker,
-> -                          enum AcpiGhesNotifyType notify,
-> -                          uint16_t source_id)
-> +static void build_ghes_v2_entry(GArray *table_data,
-> +                                BIOSLinker *linker,
-> +                                const AcpiNotificationSourceId *notif_src,
-> +                                uint16_t index, int num_sources)
->  {
->      uint64_t address_offset;
-> +    const uint16_t notify = notif_src->notify;
-> +    const uint16_t source_id = notif_src->source_id;
->  
->      /*
->       * Type:
-> @@ -331,7 +333,7 @@ static void build_ghes_v2(GArray *table_data,
->                                     address_offset + GAS_ADDR_OFFSET,
->                                     sizeof(uint64_t),
->                                     ACPI_HW_ERROR_FW_CFG_FILE,
-> -                                   source_id * sizeof(uint64_t));
-> +                                   index * sizeof(uint64_t));
->  
->      /* Notification Structure */
->      build_ghes_hw_error_notification(table_data, notify);
-> @@ -351,8 +353,7 @@ static void build_ghes_v2(GArray *table_data,
->                                     address_offset + GAS_ADDR_OFFSET,
->                                     sizeof(uint64_t),
->                                     ACPI_HW_ERROR_FW_CFG_FILE,
-> -                                   (ACPI_GHES_ERROR_SOURCE_COUNT + source_id)
-> -                                   * sizeof(uint64_t));
-> +                                   (num_sources + index) * sizeof(uint64_t));
->  
->      /*
->       * Read Ack Preserve field
-> @@ -368,22 +369,26 @@ static void build_ghes_v2(GArray *table_data,
->  void acpi_build_hest(AcpiGhesState *ags, GArray *table_data,
->                       GArray *hardware_errors,
->                       BIOSLinker *linker,
-> +                     const AcpiNotificationSourceId *notif_source,
-> +                     int num_sources,
->                       const char *oem_id, const char *oem_table_id)
->  {
->      AcpiTable table = { .sig = "HEST", .rev = 1,
->                          .oem_id = oem_id, .oem_table_id = oem_table_id };
->      uint32_t hest_offset;
-> +    int i;
->  
->      hest_offset = table_data->len;
->  
-> -    build_ghes_error_table(ags, hardware_errors, linker);
-> +    build_ghes_error_table(ags, hardware_errors, linker, num_sources);
->  
->      acpi_table_begin(&table, table_data);
->  
->      /* Error Source Count */
-> -    build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, 4);
-> -    build_ghes_v2(table_data, linker,
-> -                  ACPI_GHES_NOTIFY_SEA, ACPI_HEST_SRC_ID_SEA);
-> +    build_append_int_noprefix(table_data, num_sources, 4);
-> +    for (i = 0; i < num_sources; i++) {
-> +        build_ghes_v2_entry(table_data, linker, &notif_source[i], i, num_sources);
-> +    }
->  
->      acpi_table_end(linker, &table);
->  
-> @@ -515,8 +520,6 @@ void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
->          return;
->      }
->  
-> -    assert(ACPI_GHES_ERROR_SOURCE_COUNT == 1);
-> -
->      if (!ags->use_hest_addr) {
->          get_hw_error_offsets(le64_to_cpu(ags->hw_error_le),
->                               &cper_addr, &read_ack_register_addr);
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 040d875d4e83..ea9682ee2662 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -893,6 +893,10 @@ static void acpi_align_size(GArray *blob, unsigned align)
->      g_array_set_size(blob, ROUND_UP(acpi_data_len(blob), align));
->  }
->  
-> +static const AcpiNotificationSourceId hest_ghes_notify[] = {
-> +    { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
-> +};
-> +
->  static
->  void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->  {
-> @@ -954,7 +958,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->          if (ags) {
->              acpi_add_table(table_offsets, tables_blob);
->              acpi_build_hest(ags, tables_blob, tables->hardware_errors,
-> -                            tables->linker, vms->oem_id, vms->oem_table_id);
-> +                            tables->linker, hest_ghes_notify,
-> +                            ARRAY_SIZE(hest_ghes_notify),
-> +                            vms->oem_id, vms->oem_table_id);
->          }
->      }
->  
-> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-> index 5265102ba51f..8c4b08433760 100644
-> --- a/include/hw/acpi/ghes.h
-> +++ b/include/hw/acpi/ghes.h
-> @@ -57,13 +57,18 @@ enum AcpiGhesNotifyType {
->      ACPI_GHES_NOTIFY_RESERVED = 12
->  };
->  
-> -enum {
-> -    ACPI_HEST_SRC_ID_SEA = 0,
-> -    /* future ids go here */
-> -
-> -    ACPI_GHES_ERROR_SOURCE_COUNT
-> +/*
-> + * ID numbers used to fill HEST source ID field
-> + */
-> +enum AcpiGhesSourceID {
-> +    ACPI_HEST_SRC_ID_SYNC,
->  };
->  
-> +typedef struct AcpiNotificationSourceId {
-> +    enum AcpiGhesSourceID source_id;
-> +    enum AcpiGhesNotifyType notify;
-> +} AcpiNotificationSourceId;
-> +
->  /*
->   * AcpiGhesState stores GPA values that will be used to fill HEST entries.
->   *
-> @@ -84,6 +89,8 @@ typedef struct AcpiGhesState {
->  void acpi_build_hest(AcpiGhesState *ags, GArray *table_data,
->                       GArray *hardware_errors,
->                       BIOSLinker *linker,
-> +                     const AcpiNotificationSourceId * const notif_source,
-> +                     int num_sources,
->                       const char *oem_id, const char *oem_table_id);
->  void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
->                            GArray *hardware_errors);
-> -- 
-> 2.48.1
+How to test it
+
+Use the following command to dump information about the supported digest methods
+via the ast_crypto_engine hardware engine:
+
+root@ast2700-default:~# openssl engine -pre DUMP_INFO ast_crypto_engine
+
+Digest SHA1, NID=64, AF_ALG info: name=sha1ALG_ERR: , driver=aspeed-sha1 (hw accelerated)
+Digest SHA224, NID=675, AF_ALG info: name=sha224ALG_ERR: , driver=aspeed-sha224 (hw accelerated)
+Digest SHA256, NID=672, AF_ALG info: name=sha256ALG_ERR: , driver=aspeed-sha256 (hw accelerated)
+Digest SHA384, NID=673, AF_ALG info: name=sha384ALG_ERR: , driver=aspeed-sha384 (hw accelerated)
+Digest SHA512, NID=674, AF_ALG info: name=sha512ALG_ERR: , driver=aspeed-sha512 (hw accelerated)
+
+The status of SHA1, SHA224, SHA256, SHA384, and SHA512 should be marked as
+hw accelerated, indicating that these algorithms are supported by hardware
+acceleration via the aspeed drivers.
+
+Create a test file on the host machine and compute its HASH value as the
+expected result
+
+Create a 256MB test file
+
+$ dd if=/dev/random of=/tmp/256M bs=1M count=256
+Generate Hash Values Using SHA1, SHA224, SHA256, SHA384, and SHA512
+
+Use the following commands to generate HASH values for a 256MB file using
+different SHA algorithms:
+
+$ sha1sum /tmp/256M
+7fc628811a31ab87b0502dab3ed8d3ef07565885  /tmp/256M
+
+$ sha224sum /tmp/256M
+2d261c11ba05b3a62e0efeab51c307d9933426c7e18204683ef3da54  /tmp/256M
+
+$ sha256sum /tmp/256M
+5716d1700ee35c92ca5ca5b466639e9c36eed3f1447c1aec27f16d0fe113f94d  /tmp/256M
+
+$ sha384sum /tmp/256M
+fb6bc62afa1096dcd3b870e7d2546b7a5a177b5f2bbd5c9759218182454709e0c504a2d9c26404e04aa8010a291b7f1c  /tmp/256M
+
+$ sha512sum /tmp/256M
+fbceda7be34836fe857781656318ecd5b457a833a24c8736d5b8ef8d07e1950eebcdb140eebe4f12b5ff59586f7eb1c64fa95869c63dd9e4703d91261093c5c9  /tmp/256M
+
+Generate HASH Values Using the Hardware Engine
+
+Use the following commands to generate HASH values for a 256MB file using
+various SHA algorithms with the ast_crypto_engine hardware engine:
+
+root@ast2700-default:~# openssl dgst -sha1 -engine ast_crypto_engine /tmp/256M
+Engine "ast_crypto_engine" set.
+SHA1(/tmp/256M)= 7fc628811a31ab87b0502dab3ed8d3ef07565885
+
+root@ast2700-default:~# openssl dgst -sha224 -engine ast_crypto_engine /tmp/256M
+Engine "ast_crypto_engine" set.
+SHA2-224(/tmp/256M)= 2d261c11ba05b3a62e0efeab51c307d9933426c7e18204683ef3da54
+
+root@ast2700-default:~# openssl dgst -sha256 -engine ast_crypto_engine /tmp/256M
+Engine "ast_crypto_engine" set.
+SHA2-256(/tmp/256M)= 5716d1700ee35c92ca5ca5b466639e9c36eed3f1447c1aec27f16d0fe113f94d
+
+root@ast2700-default:~# openssl dgst -sha384 -engine ast_crypto_engine /tmp/256M
+Engine "ast_crypto_engine" set.
+SHA2-384(/tmp/256M)= fb6bc62afa1096dcd3b870e7d2546b7a5a177b5f2bbd5c9759218182454709e0c504a2d9c26404e04aa8010a291b7f1c
+
+root@ast2700-default:~# openssl dgst -sha512 -engine ast_crypto_engine /tmp/256M
+Engine "ast_crypto_engine" set.
+SHA2-512(/tmp/256M)= fbceda7be34836fe857781656318ecd5b457a833a24c8736d5b8ef8d07e1950eebcdb140eebe4f12b5ff59586f7eb1c64fa95869c63dd9e4703d91261093c5c9
+
+The HASH values generated here should exactly match those computed on the host
+machine using sha shell commands, verifying both the correctness of the
+hardware-accelerated results and the functionality of the ast_crypto_engine.
+
+Jamin Lin (25):
+  hw/misc/aspeed_hace: Remove unused code for better readability
+  hw/misc/aspeed_hace: Improve readability and consistency in variable
+    naming
+  hw/misc/aspeed_hace: Ensure HASH_IRQ is always set to prevent firmware
+    hang
+  hw/misc/aspeed_hace: Refactor hash buffer setup into helper functions
+    for clarity
+  hw/misc/aspeed_hace: Split hash execution into helper functions for
+    clarity
+  hw/misc/aspeed_hace: Introduce 64-bit hash source address helper
+    function
+  hw/misc/aspeed_hace: Rename R_HASH_DEST to R_HASH_DIGEST and introduce
+    64-bit hash digest address helper
+  hw/misc/aspeed_hace: Support accumulative mode for direct access mode
+  hw/misc/aspeed_hace: Move register size to instance class and
+    dynamically allocate regs
+  hw/misc/aspeed_hace: Add support for source, digest, key buffer 64 bit
+    addresses
+  hw/misc/aspeed_hace: Support DMA 64 bits dram address
+  hw/misc/aspeed_hace: Add trace-events for better debugging
+  hw/misc/aspeed_hace: Support to dump plaintext and digest for better
+    debugging
+  tests/qtest: Reorder aspeed test list
+  test/qtest: Introduce a new aspeed-hace-utils.c to place common
+    testcases
+  test/qtest/hace: Specify explicit array sizes for test vectors and
+    hash results
+  test/qtest/hace: Adjust test address range for AST1030 due to SRAM
+    limitations
+  test/qtest/hace: Add SHA-384 test cases for ASPEED HACE model
+  test/qtest/hace: Add SHA-384 tests for AST2600
+  test/qtest/hace: Add tests for AST1030
+  test/qtest/hace: Update source data and digest data type to 64-bit
+  test/qtest/hace: Support 64-bit source and digest addresses for
+    AST2700
+  test/qtest/hace: Support to test upper 32 bits of digest and source
+    addresses
+  test/qtest/hace: Support to validate 64-bit hmac key buffer addresses
+  test/qtest/hace: Add tests for AST2700
+
+ include/hw/misc/aspeed_hace.h   |  11 +-
+ tests/qtest/aspeed-hace-utils.h |  84 +++++
+ hw/misc/aspeed_hace.c           | 480 ++++++++++++++++--------
+ tests/qtest/aspeed-hace-utils.c | 646 ++++++++++++++++++++++++++++++++
+ tests/qtest/aspeed_hace-test.c  | 577 +++++-----------------------
+ tests/qtest/ast2700-hace-test.c |  98 +++++
+ hw/misc/trace-events            |   8 +
+ tests/qtest/meson.build         |  13 +-
+ 8 files changed, 1280 insertions(+), 637 deletions(-)
+ create mode 100644 tests/qtest/aspeed-hace-utils.h
+ create mode 100644 tests/qtest/aspeed-hace-utils.c
+ create mode 100644 tests/qtest/ast2700-hace-test.c
+
+-- 
+2.43.0
 

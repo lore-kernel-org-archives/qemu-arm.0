@@ -1,128 +1,128 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp687060njb;
-        Tue, 13 May 2025 10:45:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWqDywuPoj9pUP0U+Sx/lrJWt1o9hOux/1yrW7BLJ4QIoc8tb1Kl5+8HdEWBEB9fxMIQRvdMI5O6Bhgjg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEv4FPvPalthZO3NRr6/xi70upY00063BelC2JO63LKkI3rXDmF7TrPs+2CCzqDNamIpPSA
-X-Received: by 2002:a05:622a:4007:b0:494:7a4e:435e with SMTP id d75a77b69052e-49495ce7056mr5248391cf.40.1747158298689;
-        Tue, 13 May 2025 10:44:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747158298; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp687180njb;
+        Tue, 13 May 2025 10:46:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWVZ6+cQ6XlcHq7KcIBu02LThj9qnQ1Wf0jBKDi2c2ipoflNRitMQsi+FAEk9dWDfhaD0vNio1fB+2nTQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGxJLCTCb4rTbvm/0HjeV6VF+FlhAOZQvNL4RX5dQuJBSAce5HZ8G8Bt4wqMU3y2ObWHjj0
+X-Received: by 2002:a05:622a:488c:b0:477:41e5:cb8d with SMTP id d75a77b69052e-49495cfc764mr4898591cf.44.1747158363410;
+        Tue, 13 May 2025 10:46:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747158363; cv=none;
         d=google.com; s=arc-20240605;
-        b=cs8QjWsb2K6YbjWx11l4nGAYIijnDP6fHnHv63JTV7Klyj9HnjpagY3q9sBAo10Dds
-         1wFXLC36cuRlqNQHnuQaiCz1e1m9pJhKczqknpsb5GsBxERbhgkysjgruhF4dIAsbjT6
-         a8Rxjmevs4MHWw2IgovJWTjNXRMiVLvNVDnXRvICM4hrfUZSRafaSDLkb22dS42iSw9I
-         7tsKR581dv4DxyMoDhw8I4FIl4gc8cTRxw2loT4eMnz8vm/fKEvdZRtIpeUU7RuLffg2
-         4F+Uv0wL+Yrx0R/duNf08rVZemFARrmQ+j7vZytDmMYTnKpYXOLYdr8/TiwHw7MIm9Kr
-         X9Fw==
+        b=J7gIv0e7v+DakdNn6oAJfi3tIgUOsVB050BN2/ZvmN4E9Oykz9Og/xHkG2hQCqlzGN
+         Zzl9bfdCPI4dnRX25PKjGaTHj7OWdLs6ypuFW2gYni5U54uWscjXTkBNS+gtCoFQ23bQ
+         1hgN5J9ASttNQGbmIQz3oCKcGgOgSy3dYoOmEF20Y0XIBqw9+HAB0s+BJu4w3h3iMibC
+         Jy/dJHtWfm+ZblRtgk9KNII3CO5c4FtESO1KsKQ+Zie6GwJ/GyrYeVv+7j4iHvIv2sno
+         EwPXukCnIGiOm3Igw9/Ph2xLUQzBXmS4pHwDSZZqz1Y2A8W1Dp70HlWVT9LANAIgR7YS
+         2P9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=1DnV5Hp0tmpiDlfH4Mi6kMgDb46uwa+8Kt5FmKdT51M=;
+        bh=QPgspPdCqoQQVEjmAK01XGF8m07nuW7MT8jEXvl7SIQ=;
         fh=oAG6HIcuSPumOYs2ef0NYEkSLIm7D6VhhjfDQzOYEY4=;
-        b=V2+8iy8Fm+73GMAOpGszZu3pqdd/zdnEY0cd0HDs3agAGkjKMRGIcbUnKROrqGpIoU
-         Jg4bDMyJxg9SpufyAyysOEVvt4q7CYVuSJsJcEVXpgyScz6oZz+RYiAEnv7VBkOLmavM
-         XCw184HMyW8kdRDFZwKG/TYXYeJrVnfj6cX9T1zmCP1nnVnXiVwIfyJjd8CXWqqbNwC5
-         jIBKoJ3wD9ubnL0Pi8iboQ9AmwH9f0fjqDQBiY6qAyeG6KXOpdsVJiqQUzqBSOg0NkWT
-         GNwa2rG32QK75+N1RB+w636zlgT7lin+c3T7k1xBVtylI6F1Ydnj6Pd6tWennDUTVHtE
-         oxLA==;
+        b=AmENEnrTLjdMY7LEaiZEEirhZzL8JI+GA51eUXp2j8tNMzqS8WDxaujBPEs5kHKYhh
+         5G0gk9rS8ak6lWKHxPUAVYYg20C/uttpQ2fFrR/XO+SsWI3f2JUygbjjW1FaqonROERJ
+         RppXHHVWkOkNw2QHaiez9SvBo4UhrxAH30VKIZlXyJrOPCsWPfcwgYSaY0I9S+Cw/vRR
+         Xa/w4SBclo6HM8WIGr8CRzJ0WHhG24CRoUxYwVJkYeWkOd57MmZU4Q32A2ify+N2YNFH
+         UBWL5J9+qXk+ZX/N0mQMLMpX2lX0e10X2q/vb1iqeUQs8aK5CHilsYp3f3zbiQwIT2y/
+         Mulg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lRWrR187;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CVWLPI8T;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-49458be6bd5si111465361cf.279.2025.05.13.10.44.58
+        by mx.google.com with ESMTPS id d75a77b69052e-4945257e2b4si118331381cf.353.2025.05.13.10.46.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 10:44:58 -0700 (PDT)
+        Tue, 13 May 2025 10:46:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lRWrR187;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CVWLPI8T;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uEtft-0003Ub-Am; Tue, 13 May 2025 13:44:17 -0400
+	id 1uEtg1-0003cM-8L; Tue, 13 May 2025 13:44:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtbp-0008UM-0q
- for qemu-devel@nongnu.org; Tue, 13 May 2025 13:40:05 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtcu-0000xz-8Z
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 13:41:14 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtbm-0003A5-Hv
- for qemu-devel@nongnu.org; Tue, 13 May 2025 13:40:04 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-440685d6afcso65667055e9.0
- for <qemu-devel@nongnu.org>; Tue, 13 May 2025 10:40:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtcr-0003U2-Dc
+ for qemu-devel@nongnu.org; Tue, 13 May 2025 13:41:11 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-43cf05f0c3eso38918085e9.0
+ for <qemu-devel@nongnu.org>; Tue, 13 May 2025 10:41:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1747158000; x=1747762800; darn=nongnu.org;
+ d=linaro.org; s=google; t=1747158066; x=1747762866; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1DnV5Hp0tmpiDlfH4Mi6kMgDb46uwa+8Kt5FmKdT51M=;
- b=lRWrR187na1dm6eToYjimuxUggZNOr26rlpqJJL9Kp7H335QxStUoQkf3bpNTij4CI
- fvDS+qvMin7BcS9futLRJ4YGuvOJ96pw1MYO7UW795A0bPAZnDf11PQsyve+8dCyz8Lc
- 47qBz0M0Dg9Cl+BwuHQ2CLhMgJJVSLa0BjsN3yCds8naAXZhYWixO8NuxGE5b49AbxlD
- l1ldrHdPOwuU20zgDgkn77U6cngQxUx3wune4zcFh9fvYUGSUPuSm2Hi08DNPouMIkJH
- fc1IRwq4pTWzV9m9NOyhhlPBbZeSzZ7znSFBQhEhSA5RsZQ8igSSVATOmm5qSp/Vj3ge
- rkiw==
+ bh=QPgspPdCqoQQVEjmAK01XGF8m07nuW7MT8jEXvl7SIQ=;
+ b=CVWLPI8T72apClAY9eF/fHR4SW55OY8/r/yLLRAobefl6EHO6mV6AUFPjwhKzHQWv7
+ LY44AsiE6EMaQjePASdJeztPUcN3rp1NGiXG4G7PxsLRBYpZVdPqKeRS+7tlFTZSHDZT
+ SwRtttORsnl+OQ4wHhebP3vdj/xO/P8YJxEmCPRxpWuBaxvbr28Es7yJFvKjcsmBlgJ5
+ ml5Pwj/edq661zp1Vb+UdNQFevQBnqUY4MyivPmjdLkcFlnDIVvzTGFZWdxtvnc7R3xA
+ N0Ntd3q+31Ft7THPWGpocg4+SJtpuW4ujJtVY+rdeM25j2J8aILJ5PvZlc7KCcFMAeQs
+ IS4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747158000; x=1747762800;
+ d=1e100.net; s=20230601; t=1747158066; x=1747762866;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=1DnV5Hp0tmpiDlfH4Mi6kMgDb46uwa+8Kt5FmKdT51M=;
- b=jopH7KuQNEYIuKEC+fqCxlkjH5r7trjFJ6QSQAY0R6iRYKGtaPaHi0DEKXxy/04n4y
- z9Pp09DrPdlDW/dDE6UdO++977F90+UIVEUu1p2PxLYeifYfiS2RXoz2q46vfTu0qXsk
- +WSEaNbDAABUyMVcEH8jQoxzhQmhqSd/6ghqbCBRBrm0eH/po8xA1hO5tZ/jjsKb3vA5
- zkqxkBkYWSYIAUrgwumRpASNPsvryEHxzOaLd/rYsKUN9dE8HuDBOTAO1q1cJyRjwoTR
- DTAtUiORlZYVjMxqosowQ6M+xeYPLlBWRJSWZK+rzOp9+BuPF32wLpG5fFd6QOOh2v3A
- 10sw==
-X-Gm-Message-State: AOJu0YzCNhnpNUNCocy6KhqAf96JghoWGQ5CeeI6baW7EckDqSe0wOMu
- XBkFfP5XHQvV2MdNnlXp6Zw1vtuHKLC0AW/IH4thPyyL7cdk+lt1gs9qUMNCEuKbhXNmcZJzIFA
- 1bi8=
-X-Gm-Gg: ASbGnctQ6E3E5vAxn1z8m24jb8+kZBmwavUvRrAueOqG62Q9/VFdCKB3b9h3hg2CRGB
- KSTsgaP39rq6AQcK+pnKNpKvylwoo15QPW2RwdD4HRZZvT6rOslShWW4YAIPxqGDOsRxmmhrBCK
- Rxl9lAYlZDdJm4cgb0ex2Dw26HBQLD+UGFr71eaWa5C2rOyhzBTtBqUIcD2wKNlBLpEpq0m/me5
- XvMkcblJ5lcKqZheqJbNU4I8FV7KVTblSaGJM/Jcf5UtBjbJBSiVPE7MJbeMffv0LEzn1XqfTCM
- Jlh2gHf/9gulVBtjSA6E90oe1WwkdM8Vwj5gNqgNhfN664xZ60UQ8rbGw8cpdOtaxi50pXyPq8g
- a3q6/UsrhV/r7G89pHZ/QgODJ4kwN
-X-Received: by 2002:a05:600c:4454:b0:442:e109:3032 with SMTP id
- 5b1f17b1804b1-442f2161883mr1705145e9.24.1747158000373; 
- Tue, 13 May 2025 10:40:00 -0700 (PDT)
+ bh=QPgspPdCqoQQVEjmAK01XGF8m07nuW7MT8jEXvl7SIQ=;
+ b=IOV8JP3JjE39eOkj1Ir+p/xkTHZ80GgK5DIVIwaFhkrt/Te+Ki7an4mmLZxJHbExHX
+ E1e4QprKuKPSTUifQBTSqhoeoX+FiPwrhRZwgHxVnOLvZ+PEBtDmFcq2pAFrhpq2TRDR
+ 0FNJqFqaKLZUa8TJSk3ZY/FJXl9Omx4a1jeoLmTEQkMxkZhI9lQ7AxisK7kWS5XuxDeV
+ d0wcljPqD0YdcyuR08HnyuSysz2TKPoT+rPALq7za97jcOlY6sg6/UnEUB9IJGFHX9TA
+ EeDFrrvM568/DJiaP/1Xxd9Y7DOuVWsMQ+rMhQXUXgKUb8Ow5/KgTphji3D4HGkUTZs7
+ f1+A==
+X-Gm-Message-State: AOJu0Yy45chTBr3souP52GTng8Gf8nIF5DXR4uLYDyGhp9cMOsW2Gdn6
+ lIGqqTQWAg+iyALJvLaYZ+xE2i3l62VVZ4sSuCZ0mbJB2/4qWsP1QXS8pxhKnBPoPsGB5x82Meb
+ tdyg=
+X-Gm-Gg: ASbGncvd2a35cGYU1KddmokvGIpg585fmGwqqi5ktD3wwlioFg1D3Ww1Lym/Wjb7/Aa
+ yr11XLO0+UhSlQxS4kjl7yRsiopauhTQJBKU8I0BSrOL5+hSODXgGRF5Ul182MmHoTNKovm2kSr
+ WdXKS2J4keyes+zmz4eGICAEi0YAg0QwsSZ2i3jrsK0xALIuXPawWG8sXQDEoCcdVYpJByQCX20
+ 7Rb5Vvl2VwH2B40ksEpfg2zuENAhKcmm84ptxR9jveCedWrugJSrfzJG4VA5gaJtYhPY/yvBtWX
+ Y7VHMMEonhOLRiAnSUczo5Cvba4//lLeVJ0QTfbX9gewvGVpNS7ghSG6P8NdBnF/m9otM1KkCLJ
+ 6h/uhlJCpdEXkcg5+9AvwvASHklSU
+X-Received: by 2002:a05:600c:1c12:b0:440:61eb:2ce5 with SMTP id
+ 5b1f17b1804b1-442f20ffcc5mr2262185e9.17.1747158066257; 
+ Tue, 13 May 2025 10:41:06 -0700 (PDT)
 Received: from localhost.localdomain (110.8.30.213.rev.vodafone.pt.
  [213.30.8.110]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-442cd32835dsm220888235e9.6.2025.05.13.10.39.59
+ 5b1f17b1804b1-442cd3aeb6esm222584945e9.25.2025.05.13.10.41.04
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 13 May 2025 10:39:59 -0700 (PDT)
+ Tue, 13 May 2025 10:41:05 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 06/19] target/arm/cpu-features: Include missing 'cpu.h' header
-Date: Tue, 13 May 2025 18:39:15 +0100
-Message-ID: <20250513173928.77376-7-philmd@linaro.org>
+Subject: [PATCH 19/19] target/arm: Always include full path to 'cpu.h'
+Date: Tue, 13 May 2025 18:39:28 +0100
+Message-ID: <20250513173928.77376-20-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250513173928.77376-1-philmd@linaro.org>
 References: <20250513173928.77376-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,38 +137,560 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: axU9CCTzWxBO
+X-TUID: MWiZb+BqFBiz
 
-"target/arm/cpu-features.h" dereferences the ARMISARegisters
-structure, which is defined in "cpu.h". Include the latter to
-avoid when refactoring unrelated headers:
+Some files include "cpu.h", others "target/arm/cpu.h".
+Unify by using the latter which is more explicit.
 
-  In file included from target/arm/internals.h:33:
-  target/arm/cpu-features.h:45:54: error: unknown type name 'ARMISARegisters'
-     45 | static inline bool isar_feature_aa32_thumb_div(const ARMISARegisters *id)
-        |                                                      ^
-  target/arm/cpu-features.h:47:12: error: use of undeclared identifier 'R_ID_ISAR0_DIVIDE_SHIFT'
-     47 |     return FIELD_EX32(id->id_isar0, ID_ISAR0, DIVIDE) != 0;
-        |            ^
-
+Suggested-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/cpu-features.h | 1 +
- 1 file changed, 1 insertion(+)
+ target/arm/cpregs.h            | 2 +-
+ target/arm/cpu-features.h      | 2 +-
+ target/arm/tcg/translate.h     | 2 +-
+ target/arm/arch_dump.c         | 2 +-
+ target/arm/arm-powerctl.c      | 2 +-
+ target/arm/arm-qmp-cmds.c      | 2 +-
+ target/arm/cortex-regs.c       | 2 +-
+ target/arm/cpu.c               | 2 +-
+ target/arm/cpu64.c             | 2 +-
+ target/arm/debug_helper.c      | 2 +-
+ target/arm/gdbstub.c           | 2 +-
+ target/arm/gdbstub64.c         | 2 +-
+ target/arm/helper.c            | 2 +-
+ target/arm/hyp_gdbstub.c       | 2 +-
+ target/arm/kvm-stub.c          | 2 +-
+ target/arm/kvm.c               | 2 +-
+ target/arm/machine.c           | 2 +-
+ target/arm/ptw.c               | 2 +-
+ target/arm/tcg-stubs.c         | 2 +-
+ target/arm/tcg/cpu-v7m.c       | 2 +-
+ target/arm/tcg/cpu32.c         | 2 +-
+ target/arm/tcg/cpu64.c         | 2 +-
+ target/arm/tcg/helper-a64.c    | 2 +-
+ target/arm/tcg/hflags.c        | 2 +-
+ target/arm/tcg/iwmmxt_helper.c | 2 +-
+ target/arm/tcg/m_helper.c      | 2 +-
+ target/arm/tcg/mte_helper.c    | 2 +-
+ target/arm/tcg/mve_helper.c    | 2 +-
+ target/arm/tcg/neon_helper.c   | 2 +-
+ target/arm/tcg/op_helper.c     | 2 +-
+ target/arm/tcg/pauth_helper.c  | 2 +-
+ target/arm/tcg/psci.c          | 2 +-
+ target/arm/tcg/sme_helper.c    | 2 +-
+ target/arm/tcg/sve_helper.c    | 2 +-
+ target/arm/tcg/tlb-insns.c     | 2 +-
+ target/arm/tcg/tlb_helper.c    | 2 +-
+ target/arm/tcg/vec_helper.c    | 2 +-
+ target/arm/tcg/vfp_helper.c    | 2 +-
+ target/arm/vfp_fpscr.c         | 2 +-
+ 39 files changed, 39 insertions(+), 39 deletions(-)
 
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index c1a7ae37356..25a7c2928ba 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -23,7 +23,7 @@
+ 
+ #include "hw/registerfields.h"
+ #include "target/arm/kvm-consts.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ 
+ /*
+  * ARMCPRegInfo type field bits:
 diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 525e4cee12f..4452e7c21e3 100644
+index 4452e7c21e3..90c5efd6eac 100644
 --- a/target/arm/cpu-features.h
 +++ b/target/arm/cpu-features.h
-@@ -22,6 +22,7 @@
+@@ -22,7 +22,7 @@
  
  #include "hw/registerfields.h"
  #include "qemu/host-utils.h"
-+#include "cpu.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
  
  /*
   * Naming convention for isar_feature functions:
+diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+index 1bfdb0fb9bb..f8eb0d4a5a8 100644
+--- a/target/arm/tcg/translate.h
++++ b/target/arm/tcg/translate.h
+@@ -1,7 +1,7 @@
+ #ifndef TARGET_ARM_TRANSLATE_H
+ #define TARGET_ARM_TRANSLATE_H
+ 
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "tcg/tcg-op.h"
+ #include "tcg/tcg-op-gvec.h"
+ #include "exec/translator.h"
+diff --git a/target/arm/arch_dump.c b/target/arm/arch_dump.c
+index 1dd79849c13..9c90430d1b6 100644
+--- a/target/arm/arch_dump.c
++++ b/target/arm/arch_dump.c
+@@ -19,7 +19,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "elf.h"
+ #include "system/dump.h"
+ #include "cpu-features.h"
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index 20c70c7d6bb..4cffe557e37 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -9,7 +9,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "cpu-qom.h"
+ #include "internals.h"
+ #include "arm-powerctl.h"
+diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+index 930ec37413d..392887d3b48 100644
+--- a/target/arm/arm-qmp-cmds.c
++++ b/target/arm/arm-qmp-cmds.c
+@@ -30,7 +30,7 @@
+ #include "qapi/qapi-commands-misc-target.h"
+ #include "qobject/qdict.h"
+ #include "qom/qom-qobject.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ 
+ static GICCapability *gic_cap_new(int version)
+ {
+diff --git a/target/arm/cortex-regs.c b/target/arm/cortex-regs.c
+index ae817b08ddf..2caa8855f02 100644
+--- a/target/arm/cortex-regs.c
++++ b/target/arm/cortex-regs.c
+@@ -7,7 +7,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "cpregs.h"
+ 
+ 
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 759636a3b0e..00f06916e62 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -27,7 +27,7 @@
+ #include "target/arm/idau.h"
+ #include "qemu/module.h"
+ #include "qapi/error.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #ifdef CONFIG_TCG
+ #include "exec/translation-block.h"
+ #include "accel/tcg/cpu-ops.h"
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 00629a5d1d1..34f43094da9 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -20,7 +20,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "cpregs.h"
+ #include "qemu/module.h"
+ #include "qemu/units.h"
+diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
+index 69fb1d0d9ff..a6199a73740 100644
+--- a/target/arm/debug_helper.c
++++ b/target/arm/debug_helper.c
+@@ -7,7 +7,7 @@
+  */
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "cpu-features.h"
+ #include "cpregs.h"
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index ce4497ad7c3..d148d8434f1 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -18,7 +18,7 @@
+  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+  */
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "exec/gdbstub.h"
+ #include "gdbstub/helpers.h"
+ #include "gdbstub/commands.h"
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index 64ee9b3b567..b6033f431d8 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -18,7 +18,7 @@
+  */
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "gdbstub/helpers.h"
+ #include "gdbstub/commands.h"
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 7859729c39f..05a50c5c750 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9,7 +9,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+ #include "trace.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "cpu-features.h"
+ #include "exec/page-protection.h"
+diff --git a/target/arm/hyp_gdbstub.c b/target/arm/hyp_gdbstub.c
+index bb5969720ce..73c9a9a8333 100644
+--- a/target/arm/hyp_gdbstub.c
++++ b/target/arm/hyp_gdbstub.c
+@@ -10,7 +10,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "gdbstub/enums.h"
+ 
+diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+index 34e57fab011..532018b745e 100644
+--- a/target/arm/kvm-stub.c
++++ b/target/arm/kvm-stub.c
+@@ -10,7 +10,7 @@
+  *
+  */
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "kvm_arm.h"
+ 
+ bool write_kvmstate_to_list(ARMCPU *cpu)
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 5969249b579..d280d08a63e 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -25,7 +25,7 @@
+ #include "system/kvm.h"
+ #include "system/kvm_int.h"
+ #include "kvm_arm.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "trace.h"
+ #include "internals.h"
+ #include "hw/pci/pci.h"
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index e442d485241..f0524615fe1 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -1,5 +1,5 @@
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "qemu/error-report.h"
+ #include "system/kvm.h"
+ #include "system/tcg.h"
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 44170d831cc..03047d10d87 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -14,7 +14,7 @@
+ #include "exec/target_page.h"
+ #include "exec/tlb-flags.h"
+ #include "accel/tcg/probe.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "cpu-features.h"
+ #include "idau.h"
+diff --git a/target/arm/tcg-stubs.c b/target/arm/tcg-stubs.c
+index 5e5166c0490..672b5b01db0 100644
+--- a/target/arm/tcg-stubs.c
++++ b/target/arm/tcg-stubs.c
+@@ -8,7 +8,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ 
+ void write_v7m_exception(CPUARMState *env, uint32_t new_exc)
+diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
+index 95b23d9b55d..9b7108d9678 100644
+--- a/target/arm/tcg/cpu-v7m.c
++++ b/target/arm/tcg/cpu-v7m.c
+@@ -9,7 +9,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "accel/tcg/cpu-ops.h"
+ #include "internals.h"
+ 
+diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
+index 2c45b7eddda..5bf78d9240a 100644
+--- a/target/arm/tcg/cpu32.c
++++ b/target/arm/tcg/cpu32.c
+@@ -9,7 +9,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "accel/tcg/cpu-ops.h"
+ #include "internals.h"
+ #include "target/arm/idau.h"
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index 29ab0ac79da..c95036df2a5 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -20,7 +20,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "qemu/module.h"
+ #include "qapi/visitor.h"
+ #include "hw/qdev-properties.h"
+diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
+index 4f618ae390e..1713348a55d 100644
+--- a/target/arm/tcg/helper-a64.c
++++ b/target/arm/tcg/helper-a64.c
+@@ -19,7 +19,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "gdbstub/helpers.h"
+ #include "exec/helper-proto.h"
+ #include "qemu/host-utils.h"
+diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
+index 1ccec63bbd4..d77eacb7338 100644
+--- a/target/arm/tcg/hflags.c
++++ b/target/arm/tcg/hflags.c
+@@ -6,7 +6,7 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "cpu-features.h"
+ #include "exec/translation-block.h"
+diff --git a/target/arm/tcg/iwmmxt_helper.c b/target/arm/tcg/iwmmxt_helper.c
+index ba054b6b4db..3489f6d01c3 100644
+--- a/target/arm/tcg/iwmmxt_helper.c
++++ b/target/arm/tcg/iwmmxt_helper.c
+@@ -21,7 +21,7 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ 
+ #define HELPER_H "tcg/helper.h"
+ #include "exec/helper-proto.h.inc"
+diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+index 6614719832e..5d657f5c753 100644
+--- a/target/arm/tcg/m_helper.c
++++ b/target/arm/tcg/m_helper.c
+@@ -7,7 +7,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "cpu-features.h"
+ #include "gdbstub/helpers.h"
+diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
+index 0efc18a181e..66e90b03520 100644
+--- a/target/arm/tcg/mte_helper.c
++++ b/target/arm/tcg/mte_helper.c
+@@ -19,7 +19,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "exec/page-protection.h"
+ #ifdef CONFIG_USER_ONLY
+diff --git a/target/arm/tcg/mve_helper.c b/target/arm/tcg/mve_helper.c
+index 506d1c34757..105fc0a4b9d 100644
+--- a/target/arm/tcg/mve_helper.c
++++ b/target/arm/tcg/mve_helper.c
+@@ -18,7 +18,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "vec_internal.h"
+ #include "exec/helper-proto.h"
+diff --git a/target/arm/tcg/neon_helper.c b/target/arm/tcg/neon_helper.c
+index 2cc8241f1e4..44f1aafd17d 100644
+--- a/target/arm/tcg/neon_helper.c
++++ b/target/arm/tcg/neon_helper.c
+@@ -8,7 +8,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "tcg/tcg-gvec-desc.h"
+ #include "fpu/softfloat.h"
+ #include "vec_internal.h"
+diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+index e0f9c91450a..3a4a76e999e 100644
+--- a/target/arm/tcg/op_helper.c
++++ b/target/arm/tcg/op_helper.c
+@@ -18,7 +18,7 @@
+  */
+ #include "qemu/osdep.h"
+ #include "qemu/main-loop.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "exec/helper-proto.h"
+ #include "exec/target_page.h"
+ #include "internals.h"
+diff --git a/target/arm/tcg/pauth_helper.c b/target/arm/tcg/pauth_helper.c
+index c591c3052c3..0ae329710ac 100644
+--- a/target/arm/tcg/pauth_helper.c
++++ b/target/arm/tcg/pauth_helper.c
+@@ -18,7 +18,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "cpu-features.h"
+ #include "accel/tcg/cpu-ldst.h"
+diff --git a/target/arm/tcg/psci.c b/target/arm/tcg/psci.c
+index 0313cdd6ba2..05ecd647c9f 100644
+--- a/target/arm/tcg/psci.c
++++ b/target/arm/tcg/psci.c
+@@ -17,7 +17,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "exec/helper-proto.h"
+ #include "kvm-consts.h"
+ #include "qemu/main-loop.h"
+diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
+index de0c6e54d4b..a2104b4751d 100644
+--- a/target/arm/tcg/sme_helper.c
++++ b/target/arm/tcg/sme_helper.c
+@@ -18,7 +18,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "tcg/tcg-gvec-desc.h"
+ #include "exec/helper-proto.h"
+diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
+index a2c363a4e17..afd110431cd 100644
+--- a/target/arm/tcg/sve_helper.c
++++ b/target/arm/tcg/sve_helper.c
+@@ -18,7 +18,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "exec/page-protection.h"
+ #include "exec/helper-proto.h"
+diff --git a/target/arm/tcg/tlb-insns.c b/target/arm/tcg/tlb-insns.c
+index 95c26c6d463..bc8353cdbb5 100644
+--- a/target/arm/tcg/tlb-insns.c
++++ b/target/arm/tcg/tlb-insns.c
+@@ -9,7 +9,7 @@
+ #include "qemu/log.h"
+ #include "exec/cputlb.h"
+ #include "exec/target_page.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "cpu-features.h"
+ #include "cpregs.h"
+diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
+index 23c72a99f5c..ea7d0c74c88 100644
+--- a/target/arm/tcg/tlb_helper.c
++++ b/target/arm/tcg/tlb_helper.c
+@@ -6,7 +6,7 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "cpu-features.h"
+ 
+diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
+index 986eaf8ffa4..9e2715e34de 100644
+--- a/target/arm/tcg/vec_helper.c
++++ b/target/arm/tcg/vec_helper.c
+@@ -18,7 +18,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "exec/helper-proto.h"
+ #include "tcg/tcg-gvec-desc.h"
+ #include "fpu/softfloat.h"
+diff --git a/target/arm/tcg/vfp_helper.c b/target/arm/tcg/vfp_helper.c
+index b1324c5c0a6..ac532ef8511 100644
+--- a/target/arm/tcg/vfp_helper.c
++++ b/target/arm/tcg/vfp_helper.c
+@@ -18,7 +18,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "cpu-features.h"
+ #include "fpu/softfloat.h"
+diff --git a/target/arm/vfp_fpscr.c b/target/arm/vfp_fpscr.c
+index 92ea60ebbf2..a196bcfa803 100644
+--- a/target/arm/vfp_fpscr.c
++++ b/target/arm/vfp_fpscr.c
+@@ -18,7 +18,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "cpu.h"
++#include "target/arm/cpu.h"
+ #include "internals.h"
+ #include "cpu-features.h"
+ 
 -- 
 2.47.1
 

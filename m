@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp322258njb;
-        Mon, 12 May 2025 23:30:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWURLG28Q/RcpjCE0rfcPZPfuPUwfplq/xuZMZy/cWYWYSBMYPrdqrPk4uQDu94+ElJgGFjYrq/DXIGZg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFkOF6IHOBYf8kwjkzwPkZklo5OFQK75XKFj8gxoPE1JFVR9wFsWhAadvj3ii+QL4Jydg8d
-X-Received: by 2002:a05:6214:5006:b0:6d8:99cf:d2db with SMTP id 6a1803df08f44-6f6e481cf8emr325507876d6.38.1747117843250;
-        Mon, 12 May 2025 23:30:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747117843; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp322392njb;
+        Mon, 12 May 2025 23:31:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXUlEMjnlYscX4cflXRWisHg0gis2oHgWCD/beFci4a+SM1/0s7IbxvJ0NAOiuw+W2MHmi358ZPXGPUsQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEA8UqkJp9V6m4EBdyp+mYL7tvZsZcVU1U4k6UaXxlbM4HFOvtHAMeFXor+qMv4f//dX95A
+X-Received: by 2002:ad4:5ae2:0:b0:6f4:cdca:2a6e with SMTP id 6a1803df08f44-6f6e4858725mr262093006d6.45.1747117860056;
+        Mon, 12 May 2025 23:31:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747117860; cv=none;
         d=google.com; s=arc-20240605;
-        b=WK6GtaC+T/pCooPaRxJIFvn1f1tcis1cCxSAK5zZHztnF/L5hlXPbRfAVrfvPG8JlW
-         MXnaWJng1nX3mH3aMIO53zaATa72cafDSi6MNDfvxR7cA/DnjeFm/4wSkXCft0kz0iHW
-         gHSMdIchnCJPAJsUIW7QopGTskDPfzUoAU7c7fSbvAYA8unXpUyeai7RNXmkpg2OifIN
-         yy29NIMkgAnWcRFxL3nModEhT8dWEHdeK1G+nl59o5uxAIqtr6y33suCc3OPq4cv6imG
-         RRP5aCokdJRvvqlj4InanPSyLSmRfLIkmWNXROxKHhPzlXuVwzBjguGhzOL4/WGY1bi2
-         OW5g==
+        b=VapRfjoQBckSOGVm+HBMQf1F5X7Jc+NBrhRDMc5wsZ8ffaae+Sbxk8bwM8J+4y5Mhn
+         28yAKAdzlqeqFUQz4hjN/ebiLBPDnAIePEFrHF5GIGuWnhp0JnnWcBFzlOEUjVKghato
+         pjXJ0ewkqN7WVg+KS0Rhj2bJ8XfUnlzR4wTgYbhTgxEs9XUn6jDW4F/pfqVwbu0OBxPz
+         Fvy5vBWY+c93qmO/JZcG+xuwNhG2KNCXBIPMC1R8/gDQJhoVYYbcnjjPa5Wayyqixlzo
+         g7rADDiAx4xWdnHe4/5kUXdWMlWdokgJSaq/io8OMWuynKF4W3s/4JyTt3s+at5qexsr
+         lnjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=OlJEw1u7I+PyR37kwlI3LovEEZq2VG75c3wOLpSwH5I=;
+        bh=iRskobnV/85riHpvu9ie3nb7Ojm1L2BblChxB0EszSg=;
         fh=XVCbtZt0NlM3WRi/g+G2SrIUzl8hrRaPGDpFr//3vj8=;
-        b=TqpTN3ek8lLAYQ+u+WmGRaz59LddkEW5S5a/L2rTemoVgoJNjwFA2dVW8vtKCB3sx8
-         UPIhuWvppsHT+tQYF+0tUreRm3Lfs67MZJQQ6uxWgaPyLKQA0poL1GW5b4V0iMHscW8c
-         V8dIJVoLyJrLQf9s9k2rS/QCURE5dyEy3RRQJrfp8eBn4Bhv91NWvOXNrZEM8WTnpFmM
-         8oxNdXPVy7eDydveFdgcX3FeFobo73OwwM52vSiD0utzLPQBIFWUI796yiAon5u9PzW3
-         1s23LrS8u/MDIAfUiWKrg6k8msGj4IUz8cROEKnS9Z+hVhiDL5TZDtnOSP6DzWxnWq4G
-         8kkw==;
+        b=SyeqHezSXkzZ8hzXPa5l+IrmXWOy3F+wZt7YDz8rafXYWqxT7SMoZ0wW8wwP7f4MP0
+         o3Lraj6VjRU7PxTWLWXxJ+eY0VvDZczoiInpm23dap9qhVxOAgrQcUoUEJyFQ35Cz6PF
+         I23CN0D17sa1dej8N45qVEz4Z/XMiPJIaZZ9RjkRTN/QLdVGBJPDj46yO+wI0eM6u4Ry
+         G+bFlSXnnat1eWUY4c/eeGghQsH+fQwvp5pkyf3IfKTxt6H3XfXNKulJJ+rqBzlxlOQ2
+         /kjo0Of+xuia5AxtumxZnJZFfsm9iKIqtgC02waN6XdNSqpHlM07ZwRrAYcPyuLafuyQ
+         sqMA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a43002si108271016d6.268.2025.05.12.23.30.43
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a4b0f5si110772046d6.276.2025.05.12.23.30.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 May 2025 23:30:43 -0700 (PDT)
+        Mon, 12 May 2025 23:31:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,15 +42,15 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uEj9E-0002jD-39; Tue, 13 May 2025 02:29:52 -0400
+	id 1uEj9Q-0003Ds-Rq; Tue, 13 May 2025 02:30:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uEj98-0002S1-3A; Tue, 13 May 2025 02:29:46 -0400
+ id 1uEj9M-0003AY-F5; Tue, 13 May 2025 02:30:00 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uEj96-0001lo-Ad; Tue, 13 May 2025 02:29:45 -0400
+ id 1uEj9K-0001nN-M4; Tue, 13 May 2025 02:30:00 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 13 May
@@ -66,10 +66,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v2 03/25] hw/misc/aspeed_hace: Ensure HASH_IRQ is always set
- to prevent firmware hang
-Date: Tue, 13 May 2025 14:28:33 +0800
-Message-ID: <20250513062901.2256865-4-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 05/25] hw/misc/aspeed_hace: Split hash execution into
+ helper functions for clarity
+Date: Tue, 13 May 2025 14:28:35 +0800
+Message-ID: <20250513062901.2256865-6-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250513062901.2256865-1-jamin_lin@aspeedtech.com>
 References: <20250513062901.2256865-1-jamin_lin@aspeedtech.com>
@@ -100,65 +100,188 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: y5PfaJn6XoaQ
+X-TUID: PriH6f+Y+Nxm
 
-Currently, if the program encounters an unsupported algorithm, it does not set
-the HASH_IRQ bit in the status register and send an interrupt to indicate
-command completion. As a result, the FW gets stuck waiting for a completion
-signal from the HACE module.
+Refactor "do_hash_operation()" by extracting hash execution and result handling
+into dedicated helper functions:
 
-Additionally, in do_hash_operation, if an error occurs within the conditional
-statement, the HASH_IRQ bit is not set in the status register. This causes the
-firmware to continuously send HASH commands, as it is unaware that the HACE
-model has completed processing the command.
+- "hash_write_digest_and_unmap_iov()": Writes the digest result to memory and
+  unmaps IOVs after processing.
+- "hash_execute_non_acc_mode()": Handles one-shot (non-accumulated) hash
+  operations.
+- "hash_execute_acc_mode()": Handles accumulated hashing, including update and
+  finalize logic.
 
-To fix this, the HASH_IRQ bit in the status register must always be set to
-ensure that the firmware receives an interrupt from the HACE module, preventing
-it from getting stuck or repeatedly sending HASH commands.
+No functional changes introduced.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Fixes: c5475b3 ("hw: Model ASPEED's Hash and Crypto Engine")
 ---
- hw/misc/aspeed_hace.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ hw/misc/aspeed_hace.c | 133 ++++++++++++++++++++++++++----------------
+ 1 file changed, 83 insertions(+), 50 deletions(-)
 
 diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index 6be94963bc..1256926d22 100644
+index 22eea62693..eb513ba00f 100644
 --- a/hw/misc/aspeed_hace.c
 +++ b/hw/misc/aspeed_hace.c
-@@ -267,12 +267,6 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
-                             iov[iov_idx - 1].iov_len, false,
-                             iov[iov_idx - 1].iov_len);
-     }
--
--    /*
--     * Set status bits to indicate completion. Testing shows hardware sets
--     * these irrespective of HASH_IRQ_EN.
--     */
--    s->regs[R_STATUS] |= HASH_IRQ;
+@@ -228,26 +228,96 @@ static int hash_prepare_sg_iov(AspeedHACEState *s, struct iovec *iov,
+     return iov_idx;
  }
  
- static uint64_t aspeed_hace_read(void *opaque, hwaddr addr, unsigned int size)
-@@ -356,10 +350,16 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
-                 qemu_log_mask(LOG_GUEST_ERROR,
-                         "%s: Invalid hash algorithm selection 0x%"PRIx64"\n",
-                         __func__, data & ahc->hash_mask);
--                break;
-+        } else {
-+            do_hash_operation(s, algo, data & HASH_SG_EN,
-+                    ((data & HASH_HMAC_MASK) == HASH_DIGEST_ACCUM));
-         }
--        do_hash_operation(s, algo, data & HASH_SG_EN,
--                ((data & HASH_HMAC_MASK) == HASH_DIGEST_ACCUM));
+-static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+-                              bool acc_mode)
++static void hash_write_digest_and_unmap_iov(AspeedHACEState *s,
++                                            struct iovec *iov,
++                                            int iov_idx,
++                                            uint8_t *digest_buf,
++                                            size_t digest_len)
++{
++    if (address_space_write(&s->dram_as, s->regs[R_HASH_DEST],
++                            MEMTXATTRS_UNSPECIFIED, digest_buf, digest_len)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Failed to write digest to 0x%x\n",
++                      __func__, s->regs[R_HASH_DEST]);
++    }
 +
-+        /*
-+         * Set status bits to indicate completion. Testing shows hardware sets
-+         * these irrespective of HASH_IRQ_EN.
-+         */
-+        s->regs[R_STATUS] |= HASH_IRQ;
++    for (; iov_idx > 0; iov_idx--) {
++        address_space_unmap(&s->dram_as, iov[iov_idx - 1].iov_base,
++                            iov[iov_idx - 1].iov_len, false,
++                            iov[iov_idx - 1].iov_len);
++    }
++}
++
++static void hash_execute_non_acc_mode(AspeedHACEState *s, int algo,
++                                      struct iovec *iov, int iov_idx)
+ {
+     g_autofree uint8_t *digest_buf = NULL;
+-    struct iovec iov[ASPEED_HACE_MAX_SG];
+-    bool acc_final_request = false;
+     Error *local_err = NULL;
+-    size_t digest_len = 0;
+-    int iov_idx = -1;
++    size_t digest_len;
++
++    if (qcrypto_hash_bytesv(algo, iov, iov_idx, &digest_buf,
++                            &digest_len, &local_err) < 0) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: qcrypto hash bytesv failed : %s",
++                      __func__, error_get_pretty(local_err));
++        error_free(local_err);
++        return;
++    }
++
++    hash_write_digest_and_unmap_iov(s, iov, iov_idx, digest_buf, digest_len);
++}
++
++static void hash_execute_acc_mode(AspeedHACEState *s, int algo,
++                                  struct iovec *iov, int iov_idx,
++                                  bool final_request)
++{
++    g_autofree uint8_t *digest_buf = NULL;
++    Error *local_err = NULL;
++    size_t digest_len;
  
-         if (data & HASH_IRQ_EN) {
-             qemu_irq_raise(s->irq);
+-    if (acc_mode && s->hash_ctx == NULL) {
++    if (s->hash_ctx == NULL) {
+         s->hash_ctx = qcrypto_hash_new(algo, &local_err);
+         if (s->hash_ctx == NULL) {
+-            qemu_log_mask(LOG_GUEST_ERROR, "qcrypto hash failed : %s",
+-                          error_get_pretty(local_err));
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto hash new failed : %s",
++                          __func__, error_get_pretty(local_err));
+             error_free(local_err);
+             return;
+         }
+     }
+ 
++    if (qcrypto_hash_updatev(s->hash_ctx, iov, iov_idx, &local_err) < 0) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto hash updatev failed : %s",
++                      __func__, error_get_pretty(local_err));
++        error_free(local_err);
++        return;
++    }
++
++    if (final_request) {
++        if (qcrypto_hash_finalize_bytes(s->hash_ctx, &digest_buf,
++                                        &digest_len, &local_err)) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: qcrypto hash finalize bytes failed : %s",
++                          __func__, error_get_pretty(local_err));
++            error_free(local_err);
++            local_err = NULL;
++        }
++
++        qcrypto_hash_free(s->hash_ctx);
++
++        s->hash_ctx = NULL;
++        s->total_req_len = 0;
++    }
++
++    hash_write_digest_and_unmap_iov(s, iov, iov_idx, digest_buf, digest_len);
++}
++
++static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
++                              bool acc_mode)
++{
++    struct iovec iov[ASPEED_HACE_MAX_SG];
++    bool acc_final_request = false;
++    int iov_idx = -1;
++
+     /* Prepares the iov for hashing operations based on the selected mode */
+     if (sg_mode) {
+         iov_idx = hash_prepare_sg_iov(s, iov, acc_mode, &acc_final_request);
+@@ -261,48 +331,11 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+          return;
+     }
+ 
++    /* Executes the hash operation */
+     if (acc_mode) {
+-        if (qcrypto_hash_updatev(s->hash_ctx, iov, iov_idx, &local_err) < 0) {
+-            qemu_log_mask(LOG_GUEST_ERROR, "qcrypto hash update failed : %s",
+-                          error_get_pretty(local_err));
+-            error_free(local_err);
+-            return;
+-        }
+-
+-        if (acc_final_request) {
+-            if (qcrypto_hash_finalize_bytes(s->hash_ctx, &digest_buf,
+-                                            &digest_len, &local_err)) {
+-                qemu_log_mask(LOG_GUEST_ERROR,
+-                              "qcrypto hash finalize failed : %s",
+-                              error_get_pretty(local_err));
+-                error_free(local_err);
+-                local_err = NULL;
+-            }
+-
+-            qcrypto_hash_free(s->hash_ctx);
+-
+-            s->hash_ctx = NULL;
+-            s->total_req_len = 0;
+-        }
+-    } else if (qcrypto_hash_bytesv(algo, iov, iov_idx, &digest_buf,
+-                                   &digest_len, &local_err) < 0) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "qcrypto hash bytesv failed : %s",
+-                      error_get_pretty(local_err));
+-        error_free(local_err);
+-        return;
+-    }
+-
+-    if (address_space_write(&s->dram_as, s->regs[R_HASH_DEST],
+-                            MEMTXATTRS_UNSPECIFIED,
+-                            digest_buf, digest_len)) {
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "aspeed_hace: address space write failed\n");
+-    }
+-
+-    for (; iov_idx > 0; iov_idx--) {
+-        address_space_unmap(&s->dram_as, iov[iov_idx - 1].iov_base,
+-                            iov[iov_idx - 1].iov_len, false,
+-                            iov[iov_idx - 1].iov_len);
++        hash_execute_acc_mode(s, algo, iov, iov_idx, acc_final_request);
++    } else {
++        hash_execute_non_acc_mode(s, algo, iov, iov_idx);
+     }
+ }
+ 
 -- 
 2.43.0
 

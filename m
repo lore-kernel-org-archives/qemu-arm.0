@@ -1,123 +1,122 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp688673njb;
-        Tue, 13 May 2025 10:48:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV/1VWybSYJiZ3iJAeNJKhW9pOnuyrOcJaqYaiOHTJ9zVFLM+oGQ56FT58ya92Po9t/fr6kJZgjov68vw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEgNhwmsR5WgccnKo2jz5pWt92lPTyVopYqxmD6XXkj+D/CbDzH21AJQN/UzgzoDrY4po13
-X-Received: by 2002:a05:6214:d0c:b0:6f8:8df1:63e with SMTP id 6a1803df08f44-6f896dfb2d2mr5275036d6.3.1747158534584;
-        Tue, 13 May 2025 10:48:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747158534; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp688683njb;
+        Tue, 13 May 2025 10:48:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUv803DL8SnHqM9a6ZXA1jy6BOx07JRnNaY8+ugWYdf0snsaK4lPgm+bNwdfgC4l5vTAHwPob/owrpB3A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHu0E5fMuQ3QMEDCg2+jE/eW0evn+PwYAtUWn4S0pPEjSQsom4V08qTz18aQVQ4Mr2aU9oo
+X-Received: by 2002:a05:622a:5815:b0:47a:e482:2eae with SMTP id d75a77b69052e-49495cca896mr5860591cf.31.1747158536235;
+        Tue, 13 May 2025 10:48:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747158536; cv=none;
         d=google.com; s=arc-20240605;
-        b=XEoiHxQfQYpnUcSkUF09an3ApShmbgc3dYC93Va+DZcDyH/4oNpxW4OrDR9Wy7mnRQ
-         lhPeX6us+lmCio/84EpozkS3I1a01+xiNzTuximZ5STczeubm4xqDj2FI78c2EsTs7jW
-         hJcjwvbnOuUUlp8NNLJ2el5mY/dQ/2oNEW0L3I1xLAmk3Uos1zJPgHaYTqxliO/LX9CK
-         cBZiRsLYCVruqDEl3zIf5W+MUxFUGst8RWccJ8EtN73VswZNqT5T+UVC+vQq+UsLQ0d2
-         zrcU/En/LskbAI4/ZtTethI3nx66WrgwIprNiGdI6BWDxvgqnVILW6fJ/7ubAYL7NZCF
-         4BNQ==
+        b=Ae1l8OHL2oi4n68FIJW/bsq4Xgi+86mtF97tWmYBemiZFBPKqTKEX5obvh9ylPfwZo
+         zHJCu3zonw6nnh88eI5jFGWE+fNwh1uisHPzs3EkJZHA0ga7VcUNO4A2x1uDL5TCFooK
+         bfrqxMkmxHkz7tvqvJQhRiEZtxVz7P4TpwZQvklO8y04mREal/BN26aZEqLAB0BDJDrM
+         66e7//DhKdHB8WLTq8OrkEFTIaN3tyR3Ij8macpQAU/kGUcazSWfc8RRjIiPoiFw4dtH
+         AGakRhppuMOZX4YANERs12d0EHhXXpRiGgz+3KvBXKJM4yM2TN7ftCtBHmK32a9lZ6Br
+         Zhsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=mOQr33THEcq0t4i2qfK/BB9LCYbfrT4uaAwTHlVrFMs=;
-        fh=VUYQg3svJ9KX0xG6/C6v89YvNOXOBeD5Rc2guppdDLs=;
-        b=Rqq8eG0eBbrD3Tvf6XqJZQvYZ2holDffYIFlfAFAYkJcII1P1sgfZyH6IWf4jy87Il
-         1/c0KGoov+ohp8YSnr935dTLxWnP/wRUDoHEFT38++QsVzjQTgimFJjw1ghh5ZUnDZ6p
-         xasgLoZjWoQZ3iOiuH0YB6k/A/tMUqVhAGZfEQQiiwHIbXhVToJVOAdTMRteKyA/VUmm
-         X3VAn6Kefnk5hnP6j2K+uqsGdcHlpC+Uw2wPQT+gHnfLaC2QvlaA/K6H0lo9wcWHlRAX
-         oyrOxXkRrt8tD4IMfTk0SGks0JKUhDhDGAlkakn1Ytd0V8cD7cuF95GEr1XVNMQGyDY3
-         snnQ==;
+        bh=neloj2ajHaqhmJKWG5e1yATLyBo4rGwFX0cyyLIOZTY=;
+        fh=WTgO2+h2ajIVWbN2+yyS3Aa187R+LuckKr5xjTV0+Qg=;
+        b=DvtIW9y7ymPc5eYrFFWs3vKPE5HGt80cjTJ/Ilcv08RXrM36vMzLUdQY2hjXYMgDfq
+         K77HiZ6EmBiF+f9SR0XL50h8tHcr4b/kXIBbzBwQV5YZDViEQa7G4s7RyRFA+j+6spdr
+         Sc/WPY9rQeZaQXAhIJ3vGYXRdXexuEXQlTysyxHz4zZQnXFR1fiDWQRh+4wzaKL+FJ0q
+         PWXR4n4eY+ZsQQR1wdaLu5HFJbu1LLHGBsk3BAKaZzvATuPS3CDSH51lq7LYi5JgnJW/
+         r3iwqaPafaxsks/zxiXZCvUs5PGMZWyIuerNqprye10L2NnC0T+mTBKEMEwmUMSR6EJE
+         y0Eg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=phrswJal;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bfREviDu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e39f7796si117667136d6.152.2025.05.13.10.48.54
+        by mx.google.com with ESMTPS id d75a77b69052e-4945257ef24si115326831cf.356.2025.05.13.10.48.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 10:48:54 -0700 (PDT)
+        Tue, 13 May 2025 10:48:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=phrswJal;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bfREviDu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uEtk3-0000i0-0g; Tue, 13 May 2025 13:48:35 -0400
+	id 1uEtkF-0001mR-JO; Tue, 13 May 2025 13:48:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtcI-0000PE-CS
- for qemu-arm@nongnu.org; Tue, 13 May 2025 13:40:36 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtcS-0000bp-Fd
+ for qemu-arm@nongnu.org; Tue, 13 May 2025 13:40:44 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtcG-0003PW-93
- for qemu-arm@nongnu.org; Tue, 13 May 2025 13:40:33 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-3a1f9791a4dso2577160f8f.0
- for <qemu-arm@nongnu.org>; Tue, 13 May 2025 10:40:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uEtcP-0003QU-Om
+ for qemu-arm@nongnu.org; Tue, 13 May 2025 13:40:44 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-43cfba466b2so66564325e9.3
+ for <qemu-arm@nongnu.org>; Tue, 13 May 2025 10:40:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1747158030; x=1747762830; darn=nongnu.org;
+ d=linaro.org; s=google; t=1747158040; x=1747762840; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=mOQr33THEcq0t4i2qfK/BB9LCYbfrT4uaAwTHlVrFMs=;
- b=phrswJalDLMHHbOAWS9yMlaQnLeJj40ph9Rhac7dD0ylVM1LF2VnkFS0ljMo+lhxfI
- JfgpmN0xLteCgpDNw6iWChINhQ2MCn/QHDzABJakbOCcYE2uPongkdwNHsPsbnyRUvRy
- yB0sf/NF7Okj9z4xNirWVLtU6awRqKpIqzGInBWiSXJLSpXGPf2NhjrUVDPIJDEJjipU
- PCVAMmUyE27ORMpm5mq2PU8TdB8HNO+gjV4ezLSKseVyOF5sNCmBWNgdUVk1dtGuxrKH
- w/2sHHHMUyzJko7hoVJNahvUbO+vPmcnuV4PmIh9an1ePdnjz3ocFj8oWOmuHRhQheFr
- qGYg==
+ bh=neloj2ajHaqhmJKWG5e1yATLyBo4rGwFX0cyyLIOZTY=;
+ b=bfREviDu+0i//TdpfEOa3kEuqEgEEx92hYoR+mTs7hADq8ebbP/bN+EmmLIXxnDC/+
+ E43p1ZlXPdpjwKQUY7HlQoo4rMa94XTJ67fSk9VTDmmNcdWKueIrrS9nA0y8zEKTCIxq
+ iMt9xtGZrwu+PS6PXehK5M+7fyEBGq9Tk1ycO5w3Zfs0irEjsi1SAPIq7UZaLPEvjOY8
+ UOLmFcRbNx2LLcq2/H5sc96NVNPfcQ7kdMQRRcw51TmBbaPPUwW306INPTzQPG7Z4ba5
+ ftloINI86oMffxfPes+AjPKAG3zucXBoHxzIQyJc3fJsBtd8/f8mU0GkLQWH3ZipA0X6
+ FWzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747158030; x=1747762830;
+ d=1e100.net; s=20230601; t=1747158040; x=1747762840;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=mOQr33THEcq0t4i2qfK/BB9LCYbfrT4uaAwTHlVrFMs=;
- b=a1bQVX/y7INuTqu8mcyGW7VAArGJsbJTJ25WDZin0QZwTY+CDdjh8iqJ7jBauBV8EL
- vZ/wO3XpYpFd7VfijWtlhJOXb56nMLFAJSLSRL3yFPEPSNjy9MNgmFxgdVQAP3mpil1t
- hEtAx0M/9XxT0seu/UiSSDyezNIXBHOnkV5aqYmVp7Vgpu8V5Q6TGbyJZM3bvK29cSFc
- YYvAkziST0CrDZhgmijWJdmbc/NvaL0eZKlne9PQO5gVFcYUrGlZTlJly7+chCx7e6oy
- K0src4YIqmvfS8YhJ7RsJNkRYo0tya7gKMjKxTISa686YOor6M2e3eO79uCP0sM9ZkS7
- SXdQ==
+ bh=neloj2ajHaqhmJKWG5e1yATLyBo4rGwFX0cyyLIOZTY=;
+ b=wDJRUwVKnzXWDdiLxpQ710gk9OjlZjQZW7x3SrpLF0xuOXjcGnWUC9IfnrZZiaxy/a
+ AUGcosTuwtPwKv1LfIfdIWZkEy5ZSkskMNPAYdnNlsWBPuuF+AnPDwxLT2rNogqTTgom
+ 6vVxRLxsxw1LPh5k46RqcD5IkAJw74DobEM2c8Fxf999ZUMtLrzmF0yXzj69ohBOxEQm
+ /VHYzjCV2jsqWFdFiS4/rtxnlGT5a22XlrOuolEuBwR++HhRb3KcdqR0xVQ2jW4oeJDZ
+ kC8FPiaa1Sy6Ss9pr5I+xJmrkcgJhxr6qWNkK+P/ta2FzErz7ajq+y7auEmwts5KPgBN
+ J5lw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVoSto+/sX9mzr29uKXCteoFvZojx5a6bweMuvNSGDc91+mcq561XvfbOpiUaP7cLO8rmLRYUoYdA==@nongnu.org
-X-Gm-Message-State: AOJu0Yw8CH9+M2knFQgqJ0ua1L6+pe98Bpa6RdWDe5Whl/D/EzDtio7W
- 7c9U2qM5+lfyIwEwTWEhpNgRewSGWxRqZmLlqNaU7K70LFgLXlpA/F3zXs7Djws=
-X-Gm-Gg: ASbGncvOEzVnoa5HQz15aoJUwkh3K/IPYJUeuzf7QlYNixyA1PiCoWVlQmT6XsjMGca
- fah4guY2fPsrVYcBbWRjglsNLbvWLLk+YBZc0ceMH/FmCJZdQlr2v7yI2qRIbVCKqcADjgPWwgi
- 9GgRlid8oYGdEnJRmauS6i3JmPDmDgwtYmKOYtO/kgxYJ7iiApPZityWS67fjZ/8YDMe3/8mh+a
- 2Q4mLFK8xBF6lVwd8QBNIEfVEqWQ2oqGVV5FzhqzATbxQ79aTVSsLCHF+Ltu2HkFTyEnlHCb3eG
- lkASidy6Q6AQvdzgtwps7KYRgKceIWkS3V0fn4d11zTN5vrUfVw0X6Fx7w3HkkMOreC+S75rBzZ
- T/YOR0Sk+wEL+XRL5bJks6cBH2X23
-X-Received: by 2002:a5d:68d2:0:b0:3a0:9705:eb13 with SMTP id
- ffacd0b85a97d-3a34991e9a6mr113074f8f.43.1747158030224; 
- Tue, 13 May 2025 10:40:30 -0700 (PDT)
+ AJvYcCXaTCRQBUBaX2RWvBQBpYhpWpO+ulUlAYsZQouLbhcbfzNliUT6ppG7MyIrl3lY0eIks/d2gQDWrQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyJIZb62+mJypZE+HIEho1atnNr2XWDPqokE+T7L71gKU0WzUoJ
+ 1yfEiqKO4B0aKQyjNFwTskA7JcMhq+Ez/bEsPjUB1zJBXkmJsrL0m5r84AoYIxA=
+X-Gm-Gg: ASbGncvIM+I4woRhTXe6kujwK5HNzu2cIuHAVJkLF+YHFqSzRWzfUPbcQYhYonuNHgi
+ TLXT6wTIj3ycX3yLHH/pUsu+3i4ekYnvDibh68rZSGc+JR1EdOUDkuNXka8qOTBLD5ulkd2Ks6Q
+ x0z7G5W7TwqNmtBLfAWaD5LSEMj+KKZZL6KDNtfCSrb+R6ioxZ3JG8mDdenS2SebvyyxLFoncpa
+ syIqTcgJRakr1LI9f4JFUfk9KW6c4ffsLBEOPlf2BCOSNNHZxZNJn998afQSZwgfeysc0q8EvQk
+ wUUqz4TJXmYAdt9vXWdSOVpr6kE74UL/NDmKlMuRvsnzX28RR07a+RJ0J2I/7X6+eBois8usGvV
+ vZHqhAwQ8gUM/oHnh9g+QvgKXozss
+X-Received: by 2002:a05:600c:3e88:b0:43c:ec28:d31b with SMTP id
+ 5b1f17b1804b1-442f20db116mr2935415e9.10.1747158039949; 
+ Tue, 13 May 2025 10:40:39 -0700 (PDT)
 Received: from localhost.localdomain (110.8.30.213.rev.vodafone.pt.
  [213.30.8.110]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a1f58f2a1dsm16527595f8f.43.2025.05.13.10.40.29
+ 5b1f17b1804b1-442d67d5c09sm178270065e9.7.2025.05.13.10.40.39
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 13 May 2025 10:40:29 -0700 (PDT)
+ Tue, 13 May 2025 10:40:39 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 12/19] target/arm: Move some definitions from 'cpu.h' to
- 'multiprocessing.h'
-Date: Tue, 13 May 2025 18:39:21 +0100
-Message-ID: <20250513173928.77376-13-philmd@linaro.org>
+Subject: [PATCH 14/19] target/arm: Extract PSCI definitions to 'psci.h'
+Date: Tue, 13 May 2025 18:39:23 +0100
+Message-ID: <20250513173928.77376-15-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250513173928.77376-1-philmd@linaro.org>
 References: <20250513173928.77376-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -139,167 +138,306 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sZY3LSSXegUA
+X-TUID: 3SiGrnpzryzO
 
-arm_build_mp_affinity() and affinity mask definitionss are
-related to multiprocessing. Move them to "multiprocessing.h",
-including this header when necessary.
+Extract PSCI definitions (which are not target specific)
+to the new "target/arm/psci.h", so code from hw/arm/ can
+use them without having to include the target specific
+"cpu.h" header.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/cpu.h             | 17 -----------------
- target/arm/multiprocessing.h | 18 ++++++++++++++++++
- hw/arm/aspeed_ast2600.c      |  1 +
- hw/arm/aspeed_ast27x0.c      |  1 +
- hw/arm/exynos4210.c          |  1 +
- hw/arm/npcm8xx.c             |  1 +
- hw/arm/sbsa-ref.c            |  1 +
- hw/vmapple/vmapple.c         |  1 +
- target/arm/kvm.c             |  1 +
- 9 files changed, 25 insertions(+), 17 deletions(-)
+ include/hw/arm/boot.h      |  3 ++-
+ target/arm/cpu.h           |  7 ++-----
+ target/arm/psci.h          | 18 ++++++++++++++++++
+ hw/arm/bananapi_m2u.c      |  1 +
+ hw/arm/boot.c              |  1 +
+ hw/arm/highbank.c          |  1 +
+ hw/arm/imx8mp-evk.c        |  1 +
+ hw/arm/mcimx6ul-evk.c      |  1 +
+ hw/arm/mcimx7d-sabre.c     |  1 +
+ hw/arm/orangepi.c          |  1 +
+ hw/arm/sbsa-ref.c          |  1 +
+ hw/arm/virt-acpi-build.c   |  1 +
+ hw/arm/virt.c              |  1 +
+ hw/arm/xlnx-versal-virt.c  |  1 +
+ hw/arm/xlnx-zcu102.c       |  1 +
+ hw/vmapple/vmapple.c       |  1 +
+ target/arm/helper.c        |  1 +
+ target/arm/hvf/hvf.c       |  1 +
+ target/arm/tcg/op_helper.c |  1 +
+ target/arm/tcg/psci.c      |  1 +
+ 20 files changed, 39 insertions(+), 6 deletions(-)
+ create mode 100644 target/arm/psci.h
 
+diff --git a/include/hw/arm/boot.h b/include/hw/arm/boot.h
+index b12bf61ca81..648fdb88862 100644
+--- a/include/hw/arm/boot.h
++++ b/include/hw/arm/boot.h
+@@ -12,6 +12,7 @@
+ #define HW_ARM_BOOT_H
+ 
+ #include "target/arm/cpu-qom.h"
++//#include "target/arm/psci.h"
+ #include "qemu/notify.h"
+ 
+ typedef enum {
+@@ -100,7 +101,7 @@ struct arm_boot_info {
+      * as the conduit specifies calls should go to (eg guest firmware booted
+      * to EL3) then PSCI will not be enabled.
+      */
+-    int psci_conduit;
++    int psci_conduit;//
+     /* Used internally by arm_boot.c */
+     int is_linux;
+     hwaddr initrd_start;
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 33ac0c9f818..b70c7a3ecd2 100644
+index b70c7a3ecd2..116745975fa 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -1155,23 +1155,6 @@ void gt_rme_post_el_change(ARMCPU *cpu, void *opaque);
- 
- void arm_cpu_post_init(Object *obj);
- 
--#define ARM_AFF0_SHIFT 0
--#define ARM_AFF0_MASK  (0xFFULL << ARM_AFF0_SHIFT)
--#define ARM_AFF1_SHIFT 8
--#define ARM_AFF1_MASK  (0xFFULL << ARM_AFF1_SHIFT)
--#define ARM_AFF2_SHIFT 16
--#define ARM_AFF2_MASK  (0xFFULL << ARM_AFF2_SHIFT)
--#define ARM_AFF3_SHIFT 32
--#define ARM_AFF3_MASK  (0xFFULL << ARM_AFF3_SHIFT)
--#define ARM_DEFAULT_CPUS_PER_CLUSTER 8
--
--#define ARM32_AFFINITY_MASK (ARM_AFF0_MASK | ARM_AFF1_MASK | ARM_AFF2_MASK)
--#define ARM64_AFFINITY_MASK \
--    (ARM_AFF0_MASK | ARM_AFF1_MASK | ARM_AFF2_MASK | ARM_AFF3_MASK)
--#define ARM64_AFFINITY_INVALID (~ARM64_AFFINITY_MASK)
--
--uint64_t arm_build_mp_affinity(int idx, uint8_t clustersz);
--
- #ifndef CONFIG_USER_ONLY
- extern const VMStateDescription vmstate_arm_cpu;
- 
-diff --git a/target/arm/multiprocessing.h b/target/arm/multiprocessing.h
-index 81715d345c2..8eec79b11d8 100644
---- a/target/arm/multiprocessing.h
-+++ b/target/arm/multiprocessing.h
-@@ -11,6 +11,24 @@
- 
- #include "target/arm/cpu-qom.h"
- 
-+#define ARM_AFF0_SHIFT 0
-+#define ARM_AFF0_MASK  (0xFFULL << ARM_AFF0_SHIFT)
-+#define ARM_AFF1_SHIFT 8
-+#define ARM_AFF1_MASK  (0xFFULL << ARM_AFF1_SHIFT)
-+#define ARM_AFF2_SHIFT 16
-+#define ARM_AFF2_MASK  (0xFFULL << ARM_AFF2_SHIFT)
-+#define ARM_AFF3_SHIFT 32
-+#define ARM_AFF3_MASK  (0xFFULL << ARM_AFF3_SHIFT)
-+#define ARM_DEFAULT_CPUS_PER_CLUSTER 8
-+
-+#define ARM32_AFFINITY_MASK \
-+            (ARM_AFF0_MASK|ARM_AFF1_MASK|ARM_AFF2_MASK)
-+#define ARM64_AFFINITY_MASK \
-+            (ARM_AFF0_MASK|ARM_AFF1_MASK|ARM_AFF2_MASK|ARM_AFF3_MASK)
-+#define ARM64_AFFINITY_INVALID (~ARM64_AFFINITY_MASK)
-+
-+uint64_t arm_build_mp_affinity(int idx, uint8_t clustersz);
-+
- uint64_t arm_cpu_mp_affinity(ARMCPU *cpu);
- 
+@@ -3098,11 +3098,8 @@ static inline bool bswap_code(bool sctlr_b)
  #endif
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index d12707f0abe..62a9200dac6 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -17,6 +17,7 @@
- #include "net/net.h"
- #include "system/system.h"
- #include "target/arm/cpu-qom.h"
-+#include "target/arm/multiprocessing.h"
+ }
  
- #define ASPEED_SOC_IOMEM_SIZE       0x00200000
- #define ASPEED_SOC_DPMCU_SIZE       0x00040000
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 1974a257660..a38c2a19751 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -22,6 +22,7 @@
- #include "hw/intc/arm_gicv3.h"
- #include "qobject/qlist.h"
- #include "qemu/log.h"
-+#include "target/arm/multiprocessing.h"
+-enum {
+-    QEMU_PSCI_CONDUIT_DISABLED = 0,
+-    QEMU_PSCI_CONDUIT_SMC = 1,
+-    QEMU_PSCI_CONDUIT_HVC = 2,
+-};
++void cpu_get_tb_cpu_state(CPUARMState *env, vaddr *pc,
++                          uint64_t *cs_base, uint32_t *flags);
  
- #define AST2700_SOC_IO_SIZE          0x01000000
- #define AST2700_SOC_IOMEM_SIZE       0x01000000
-diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index 56267ec2bd2..e83a88d3369 100644
---- a/hw/arm/exynos4210.c
-+++ b/hw/arm/exynos4210.c
-@@ -36,6 +36,7 @@
- #include "hw/sd/sdhci.h"
- #include "hw/usb/hcd-ehci.h"
- #include "target/arm/cpu-qom.h"
-+#include "target/arm/multiprocessing.h"
+ #ifndef CONFIG_USER_ONLY
+ /* Return the address space index to use for a memory access */
+diff --git a/target/arm/psci.h b/target/arm/psci.h
+new file mode 100644
+index 00000000000..8b868dfbb91
+--- /dev/null
++++ b/target/arm/psci.h
+@@ -0,0 +1,18 @@
++/*
++ * ARM Power State Coordination Interface (PSCI) definitions
++ *
++ *  Copyright (c) 2003 Fabrice Bellard
++ *
++ * SPDX-License-Identifier: LGPL-2.1-or-later
++ */
++
++#ifndef TARGET_ARM_PSCI_H
++#define TARGET_ARM_PSCI_H
++
++enum {
++    QEMU_PSCI_CONDUIT_DISABLED = 0,
++    QEMU_PSCI_CONDUIT_SMC = 1,
++    QEMU_PSCI_CONDUIT_HVC = 2,
++};
++
++#endif
+diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
+index b750a575f72..61e01a38099 100644
+--- a/hw/arm/bananapi_m2u.c
++++ b/hw/arm/bananapi_m2u.c
+@@ -27,6 +27,7 @@
+ #include "hw/qdev-properties.h"
+ #include "hw/arm/allwinner-r40.h"
+ #include "hw/arm/boot.h"
++#include "target/arm/psci.h"
  
- #define EXYNOS4210_CHIPID_ADDR         0x10000000
+ static struct arm_boot_info bpim2u_binfo;
  
-diff --git a/hw/arm/npcm8xx.c b/hw/arm/npcm8xx.c
-index d7ee306de7a..e6c16537eef 100644
---- a/hw/arm/npcm8xx.c
-+++ b/hw/arm/npcm8xx.c
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 79afb51b8a5..b81a850819b 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
 @@ -29,6 +29,7 @@
- #include "qapi/error.h"
+ #include "qemu/config-file.h"
+ #include "qemu/option.h"
  #include "qemu/units.h"
- #include "system/system.h"
-+#include "target/arm/multiprocessing.h"
++#include "target/arm/psci.h"
  
- /*
-  * This covers the whole MMIO space. We'll use this to catch any MMIO accesses
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index deae5cf9861..25ffb029ff4 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -52,6 +52,7 @@
+ /* Kernel boot protocol is specified in the kernel docs
+  * Documentation/arm/Booting and Documentation/arm64/booting.txt
+diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
+index 5b2719555af..0ce39877822 100644
+--- a/hw/arm/highbank.c
++++ b/hw/arm/highbank.c
+@@ -36,6 +36,7 @@
+ #include "qemu/log.h"
  #include "qom/object.h"
  #include "target/arm/cpu-qom.h"
++#include "target/arm/psci.h"
+ 
+ #define SMP_BOOT_ADDR           0x100
+ #define SMP_BOOT_REG            0x40
+diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
+index b3082fa60d8..81fe0361ea7 100644
+--- a/hw/arm/imx8mp-evk.c
++++ b/hw/arm/imx8mp-evk.c
+@@ -15,6 +15,7 @@
+ #include "system/qtest.h"
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
++#include "target/arm/psci.h"
+ #include <libfdt.h>
+ 
+ static void imx8mp_evk_modify_dtb(const struct arm_boot_info *info, void *fdt)
+diff --git a/hw/arm/mcimx6ul-evk.c b/hw/arm/mcimx6ul-evk.c
+index 86982cb0772..be5e50abf17 100644
+--- a/hw/arm/mcimx6ul-evk.c
++++ b/hw/arm/mcimx6ul-evk.c
+@@ -18,6 +18,7 @@
+ #include "hw/qdev-properties.h"
+ #include "qemu/error-report.h"
+ #include "system/qtest.h"
++#include "target/arm/psci.h"
+ 
+ static void mcimx6ul_evk_init(MachineState *machine)
+ {
+diff --git a/hw/arm/mcimx7d-sabre.c b/hw/arm/mcimx7d-sabre.c
+index 33119610113..e0f25b92594 100644
+--- a/hw/arm/mcimx7d-sabre.c
++++ b/hw/arm/mcimx7d-sabre.c
+@@ -20,6 +20,7 @@
+ #include "hw/qdev-properties.h"
+ #include "qemu/error-report.h"
+ #include "system/qtest.h"
++#include "target/arm/psci.h"
+ 
+ static void mcimx7d_sabre_init(MachineState *machine)
+ {
+diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
+index e0956880d11..99037a09a36 100644
+--- a/hw/arm/orangepi.c
++++ b/hw/arm/orangepi.c
+@@ -26,6 +26,7 @@
+ #include "hw/qdev-properties.h"
+ #include "hw/arm/allwinner-h3.h"
+ #include "hw/arm/boot.h"
++#include "target/arm/psci.h"
+ 
+ static struct arm_boot_info orangepi_binfo;
+ 
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 25ffb029ff4..d5ce15b688f 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -53,6 +53,7 @@
+ #include "target/arm/cpu-qom.h"
  #include "target/arm/gtimer.h"
-+#include "target/arm/multiprocessing.h"
+ #include "target/arm/multiprocessing.h"
++#include "target/arm/psci.h"
  
  #define RAMLIMIT_GB 8192
  #define RAMLIMIT_BYTES (RAMLIMIT_GB * GiB)
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 7e8e0f0298d..20dc93fbc54 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -59,6 +59,7 @@
+ #include "hw/acpi/viot.h"
+ #include "hw/virtio/virtio-acpi.h"
+ #include "target/arm/multiprocessing.h"
++#include "target/arm/psci.h"
+ 
+ #define ARM_SPI_BASE 32
+ 
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 9a6cd085a37..d110cb07943 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -79,6 +79,7 @@
+ #include "target/arm/internals.h"
+ #include "target/arm/multiprocessing.h"
+ #include "target/arm/gtimer.h"
++#include "target/arm/psci.h"
+ #include "hw/mem/pc-dimm.h"
+ #include "hw/mem/nvdimm.h"
+ #include "hw/acpi/generic_event_device.h"
+diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
+index adadbb72902..7e1b93b782d 100644
+--- a/hw/arm/xlnx-versal-virt.c
++++ b/hw/arm/xlnx-versal-virt.c
+@@ -21,6 +21,7 @@
+ #include "hw/arm/xlnx-versal.h"
+ #include "hw/arm/boot.h"
+ #include "target/arm/multiprocessing.h"
++#include "target/arm/psci.h"
+ #include "qom/object.h"
+ 
+ #define TYPE_XLNX_VERSAL_VIRT_MACHINE MACHINE_TYPE_NAME("xlnx-versal-virt")
+diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
+index 14b6641a713..c46bf11ce24 100644
+--- a/hw/arm/xlnx-zcu102.c
++++ b/hw/arm/xlnx-zcu102.c
+@@ -26,6 +26,7 @@
+ #include "qom/object.h"
+ #include "net/can_emu.h"
+ #include "audio/audio.h"
++#include "target/arm/psci.h"
+ 
+ struct XlnxZCU102 {
+     MachineState parent_obj;
 diff --git a/hw/vmapple/vmapple.c b/hw/vmapple/vmapple.c
-index 16e6110b68f..47f23b6e2c0 100644
+index 2dc5e15e791..b61f5ea51a4 100644
 --- a/hw/vmapple/vmapple.c
 +++ b/hw/vmapple/vmapple.c
-@@ -51,6 +51,7 @@
- #include "system/reset.h"
- #include "system/runstate.h"
+@@ -53,6 +53,7 @@
  #include "system/system.h"
-+#include "target/arm/multiprocessing.h"
+ #include "target/arm/gtimer.h"
+ #include "target/arm/multiprocessing.h"
++#include "target/arm/psci.h"
  
  struct VMAppleMachineState {
      MachineState parent;
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index a08a269ad61..5969249b579 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -39,6 +39,7 @@
- #include "hw/acpi/acpi.h"
- #include "hw/acpi/ghes.h"
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 76312102879..7859729c39f 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -34,6 +34,7 @@
+ #endif
+ #include "cpregs.h"
  #include "target/arm/gtimer.h"
-+#include "target/arm/multiprocessing.h"
- #include "migration/blocker.h"
++#include "target/arm/psci.h"
  
- const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+ #define HELPER_H "tcg/helper.h"
+ #include "exec/helper-proto.h.inc"
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 42258cc2d88..8fbd4c4be59 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -33,6 +33,7 @@
+ #include "target/arm/internals.h"
+ #include "target/arm/multiprocessing.h"
+ #include "target/arm/gtimer.h"
++#include "target/arm/psci.h"
+ #include "trace.h"
+ #include "migration/vmstate.h"
+ 
+diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+index 073a8319fa5..e0f9c91450a 100644
+--- a/target/arm/tcg/op_helper.c
++++ b/target/arm/tcg/op_helper.c
+@@ -26,6 +26,7 @@
+ #include "accel/tcg/cpu-ldst.h"
+ #include "accel/tcg/probe.h"
+ #include "target/arm/gtimer.h"
++#include "target/arm/psci.h"
+ #include "cpregs.h"
+ 
+ #define SIGNBIT (uint32_t)0x80000000
+diff --git a/target/arm/tcg/psci.c b/target/arm/tcg/psci.c
+index cabed43e8a8..0313cdd6ba2 100644
+--- a/target/arm/tcg/psci.c
++++ b/target/arm/tcg/psci.c
+@@ -25,6 +25,7 @@
+ #include "internals.h"
+ #include "arm-powerctl.h"
+ #include "target/arm/multiprocessing.h"
++#include "target/arm/psci.h"
+ 
+ bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
+ {
 -- 
 2.47.1
 

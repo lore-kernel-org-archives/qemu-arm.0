@@ -1,73 +1,73 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1272033njb;
-        Wed, 14 May 2025 08:26:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU1hn7Ch0SHr2pfUSnyx5M4BLlFus/SAlxwDXgYEozG/eLsbcxXCG+ZxUGHBAoAqcD5ArDPJkOfTz7YgQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IF+EvPiB+rkYKIO29Qp6XT5WUdkD+Q0kLVW+3pvhQuQYQI6bEYE0vhnhQgc23wItvqV3Wjn
-X-Received: by 2002:a05:620a:3188:b0:7c5:5fa0:45f6 with SMTP id af79cd13be357-7cd2889123amr520154785a.50.1747236391412;
-        Wed, 14 May 2025 08:26:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747236391; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1273974njb;
+        Wed, 14 May 2025 08:29:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXTT5v9sajJTbaweJi8lwDb5W3TKZQtIdkJ6pAsd4SnolQ7j6BseB0cVOQjoFDYe84ux1NCN7imeY2Elw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFRb3RyI1/jBAKVNXlS8HkURDrmnM/MOr3kdSitItHv7dag840CPTw1E/6xwb7eGrZth/L+
+X-Received: by 2002:a05:6214:e45:b0:6d4:1425:6d2d with SMTP id 6a1803df08f44-6f896ec0c13mr49559166d6.43.1747236582277;
+        Wed, 14 May 2025 08:29:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747236582; cv=none;
         d=google.com; s=arc-20240605;
-        b=Ju6BeT7F7sJ2twGaV+2hFw7GMKaxMZFkVX2npWDTPVQ6q+1Kz0xzitfhAWgtHu3bUp
-         t0im61NXy+TBK8rmKK4MU5L07xxEG3dqAHqwFLPqai+6yYDVbGTgmToTbrthdsR5HT9R
-         WXP5ME6uGQnnNboAQEjMN7D0fq81tmBCG/UVfiJhiIDaAsmXrOgQcaKFl8UFrVGZ5JXB
-         RS6Fq+LT/vePnQFnNp3S+Gnu6En++mBRfKAYoJpwlUeBqrCounx5Csgu1TCdfc22kEUY
-         QX9AAX+NeeICm5DUeiCA7tYznsojET066d9sydyLEJC4W8KU5JT+xR14GuaTW3iTQggJ
-         hwEg==
+        b=B9Qq/UoE3qix9BKdFim4HBctZffzPeyi4AaMk0isAfqbnUwyFNABGiVnys0Eses5Gl
+         dnV7I3++D5Gh+PZ0APiBbWj/KuMCbc6mgXC8PFyA93F/UaDPVpZUqOgYnKqftoi+NjS5
+         SJJQVcHHfon/Hl048rz5VQWtzO4mmScLDz2ii+RzA1us8jVUat89udeLTtjrMeXb3tUq
+         ElOy/NxEtWPsT1v4Ky8a3TWZm2GTG9hYG5tVEQtDi2LPrd73KKBZW2gIAIw6idkf4rvp
+         suKJbZ81eVI1S1t595XpDJiRA2jq+0eO/paGSHajn+XJ1dII5DcSpcckxDz1CIqJ8m9H
+         6keg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=user-agent:in-reply-to:content-transfer-encoding
          :content-disposition:mime-version:references:reply-to:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=YvXcEYB8GmnfSL56FqDCdhwjR6lZVlguKBnz4DxzyG8=;
+        bh=Ujc5g4wP7awZPP/3/jYO0KhWUewU++24FB98JsLaKD0=;
         fh=iM9GwfGv21/blqyxO272EqVSEyp03V2YmKTOh+3dT00=;
-        b=LnKVkyuHXtcjyk5tA/7rlfNDiSC2HN2JtBVvBYEl9S2rfgpSeAVjgBTWYU4CQj4UAo
-         APSEUW2u0/dwQKKnracrwtA1hKQntxSMbQ1DgYKRp9GJrLnz+vUkxlDJ3ww7QXMQxW4U
-         xXj6/jPlNo204NWulHIN7Uq3VUhnl1K9uRHhcZ7FCh0EYBlnqWVfExpVmTfXwbkQ1IYO
-         c6k1yuHEEKiR027bZEmqgXwxXBDo07YkGA86GnGjO0Hcn10OijND58RISRseLUTc6IsJ
-         E1pwHYWVgFC8ZvvkfJfxvRreX7hewFLcm78rTM9jb5bjwKDCvMl7XxgI5uPnK3zURtYN
-         fePQ==;
+        b=Ed47/d6Ut8gImdsUtTp5M1Jwq7ot+bne/Ol6wT/CmmAAVlOvAkXDJm9fDMSsFP5QL4
+         h77iShq6MV27ySUdclqAnP2Q9HYHYRsjTiisXr1Ew95rcR7F4pmYUo2Th+j4EXjdjlOT
+         0eBqY2WJd60n8zh3mvKHrDNZofqlDcFEkzAf3Czhmp+NrlcmvY+SSqGcHprEBQWYaOAw
+         N7MgdcDglLvSpUqE9a6Hauk7iGVdmRlafbX2R860UmLaxQFRzT9XVjmJpzwOT6j6Jedj
+         6FPG1dX7ncrXG+hq4IR/68k3aboZ3zN5I0lm8GE9YaDXF4mGksZxstXVw2JQyxUgaa4U
+         r5pQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZIThQdiC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fA9mDWP4;
        spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <berrange@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd00fed898si1381812885a.498.2025.05.14.08.26.31
+        by mx.google.com with ESMTPS id af79cd13be357-7cd00f6a070si1331567985a.150.2025.05.14.08.29.42
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 May 2025 08:26:31 -0700 (PDT)
+        Wed, 14 May 2025 08:29:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZIThQdiC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fA9mDWP4;
        spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1747236391;
+	s=mimecast20190719; t=1747236581;
 	h=from:from:reply-to:reply-to:subject:subject:date:date:
 	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
 	 content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=YvXcEYB8GmnfSL56FqDCdhwjR6lZVlguKBnz4DxzyG8=;
-	b=ZIThQdiCRYFa/SNl+JV0sJWymUQBLNx8ZFIKodqgTglYL6I6COQCXzndjfnN9IIU7vod7w
-	w1YPyEHOEjVfO4j+p5YyDOto74DH0cldFzQ1KNxYXZdv57LM0pe6xbyhS7AXMXxljlKM43
-	OkVgfz+8wOFBsKY2m0n7D9xqwZmaaA4=
+	bh=Ujc5g4wP7awZPP/3/jYO0KhWUewU++24FB98JsLaKD0=;
+	b=fA9mDWP498+PGxrdSIZ1WZa/UmWeKU0iV9g/SCqzCY0gewT3Xj3RiJRTeePZ5/pEFKJg61
+	o596ZZCfJH9sfsS2FC0mIfSXuP2JFZX8ImX8GyKnUN/RvIaNsPp1VL8Lkzb8Yb6Mg5SYXT
+	aaAiIg7LrU6BmedZRFma/owcE/3oFJQ=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-633-0QcoPX4xOl6EmAV5GTXP4w-1; Wed,
- 14 May 2025 11:26:29 -0400
-X-MC-Unique: 0QcoPX4xOl6EmAV5GTXP4w-1
-X-Mimecast-MFC-AGG-ID: 0QcoPX4xOl6EmAV5GTXP4w_1747236387
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-107-7PXd5x_dMUW1RklfQzMz_w-1; Wed,
+ 14 May 2025 11:29:38 -0400
+X-MC-Unique: 7PXd5x_dMUW1RklfQzMz_w-1
+X-Mimecast-MFC-AGG-ID: 7PXd5x_dMUW1RklfQzMz_w_1747236574
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 52C1A180056F;
-	Wed, 14 May 2025 15:26:26 +0000 (UTC)
+	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id BAE8E1800EC8;
+	Wed, 14 May 2025 15:29:33 +0000 (UTC)
 Received: from redhat.com (unknown [10.42.28.147])
-	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 763141955BC0;
-	Wed, 14 May 2025 15:26:20 +0000 (UTC)
-Date: Wed, 14 May 2025 16:26:17 +0100
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 54BB618004A7;
+	Wed, 14 May 2025 15:29:27 +0000 (UTC)
+Date: Wed, 14 May 2025 16:29:24 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Cornelia Huck <cohuck@redhat.com>
 Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
@@ -78,68 +78,75 @@ Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
 	agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com,
 	philmd@linaro.org, pbonzini@redhat.com
-Subject: Re: [PATCH v6 12/14] arm/cpu: Add sysreg generation scripts
-Message-ID: <aCS2GbNCzQ3jc2ka@redhat.com>
+Subject: Re: [PATCH v3 02/10] arm/cpu: Add sysreg properties generation
+Message-ID: <aCS21A8UmjEedTIP@redhat.com>
 Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20250506085234.855779-1-cohuck@redhat.com>
- <20250506085234.855779-13-cohuck@redhat.com>
- <aCNwKBDtJES0GX3q@redhat.com>
- <87ecwrckfc.fsf@redhat.com>
+References: <20250414163849.321857-1-cohuck@redhat.com>
+ <20250414163849.321857-3-cohuck@redhat.com>
+ <aCNj4dFWLkBZrmmh@redhat.com>
+ <878qmzciyg.fsf@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <87ecwrckfc.fsf@redhat.com>
+In-Reply-To: <878qmzciyg.fsf@redhat.com>
 User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-TUID: PvyU9ck+iJ9O
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-TUID: 5Igc1+qCJzZo
 
-On Wed, May 14, 2025 at 04:54:15PM +0200, Cornelia Huck wrote:
+On Wed, May 14, 2025 at 05:25:59PM +0200, Cornelia Huck wrote:
 > On Tue, May 13 2025, Daniel P. Berrangé <berrange@redhat.com> wrote:
 > 
-> > On Tue, May 06, 2025 at 10:52:32AM +0200, Cornelia Huck wrote:
+> > On Mon, Apr 14, 2025 at 06:38:41PM +0200, Cornelia Huck wrote:
 > >> From: Eric Auger <eric.auger@redhat.com>
 > >> 
-> >> Introduce scripts that automate the generation of system register
-> >> definitions from a given linux source tree arch/arm64/tools/sysreg.
+> >> Introduce a script that automates the generation of system register
+> >> properties definitions from a given linux source tree
+> >> arch/arm64/tools/sysreg.
 > >> 
 > >> Invocation of
 > >> ./update-aarch64-sysreg-code.sh $PATH_TO_LINUX_SOURCE_TREE
-> >> in scripts directory generates target/arm/cpu-sysregs.h.inc
-> >> containing defines for all system registers.
+> >> in scripts directory additionally generates
+> >> target/arm/cpu-sysreg-properties.c containing definitions for
+> >> feature ID registers.
 > >> 
-> >> [CH: update to handle current kernel sysregs structure, and to emit
-> >>      the re-worked register structures; cpu properties will be added
-> >>      later]
-> >> Reviewed-by: Sebastian Ott <sebott@redhat.com>
+> >> update-aarch64-sysreg-code.sh additionally calls
+> >> gen-cpu-sysreg-properties.awk which is inherited from kernel
+> >> arch/arm64/tools/gen-sysreg.awk. All credits to Mark Rutland
+> >> the original author of this script.
+> >> 
+> >> [CH: split off from original patch adding both sysreg definitions
+> >>  and properties]
 > >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > >> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 > >> ---
-> >>  scripts/gen-cpu-sysregs-header.awk    | 35 +++++++++++++++++++++++++++
-> >>  scripts/update-aarch64-sysreg-code.sh | 25 +++++++++++++++++++
-> >>  2 files changed, 60 insertions(+)
-> >>  create mode 100755 scripts/gen-cpu-sysregs-header.awk
-> >>  create mode 100755 scripts/update-aarch64-sysreg-code.sh
+> >>  scripts/gen-cpu-sysreg-properties.awk | 325 ++++++++++++++++++++++++++
+> >>  scripts/update-aarch64-sysreg-code.sh |   5 +-
+> >>  2 files changed, 329 insertions(+), 1 deletion(-)
+> >>  create mode 100755 scripts/gen-cpu-sysreg-properties.awk
 > >> 
-> >> diff --git a/scripts/gen-cpu-sysregs-header.awk b/scripts/gen-cpu-sysregs-header.awk
+> >> diff --git a/scripts/gen-cpu-sysreg-properties.awk b/scripts/gen-cpu-sysreg-properties.awk
 > >> new file mode 100755
-> >> index 000000000000..b6b207e3c0fd
+> >> index 000000000000..76c37938b168
 > >> --- /dev/null
-> >> +++ b/scripts/gen-cpu-sysregs-header.awk
-> >> @@ -0,0 +1,35 @@
+> >> +++ b/scripts/gen-cpu-sysreg-properties.awk
+> >> @@ -0,0 +1,325 @@
 > >> +#!/bin/awk -f
 > >> +# SPDX-License-Identifier: GPL-2.0
 > >
-> > Invalid license name here - hopefully checkpatch.pl is warning
-> > about this.
+> > GPL-2.0 is a deprecated SPDX identifier. checkpatch.pl ought to
+> > have complained about this, requiring GPL-2.0-or-later as the
+> > preference, with GPL-2.0-only requiring justification in the
+> > commit.
 > 
-> It might not check .awk scripts?
+> GPL-2.0 is inherited from the Linux script mentioned; not sure if
+> GPL-2.0-only would be the correct fit here?
 
-The existence of SPDX tags is only checked for .c, .h,
-.py, .pl, .sh, .json & .inc
+Yes, according to the table of deprecated terms at the bottom of
 
-The validation of license names is checked unconditionally any time
-the SPDX-License-Identifier tag is seen.
+https://spdx.org/licenses/
+
+GPL-2.0-only would indeed be the correct replacement.
 
 With regards,
 Daniel

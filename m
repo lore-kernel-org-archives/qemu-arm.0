@@ -1,459 +1,200 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1328305njb;
-        Wed, 14 May 2025 09:51:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUrVf/2IpofO/GHeQQbhi69ESlf6NinPUZX2TiSOkA/o0MySWGrPGwCckTStJUoacKTeM+9n42fI5Zqqw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEHHkdViswqb/TaoYMZPyKSDXBEvOxS//LGPa19dlBjSUUwd85W3ZW+A+QpUJSWZ2aef1U5
-X-Received: by 2002:a05:6512:b1e:b0:549:965f:5960 with SMTP id 2adb3069b0e04-550db92a24amr117622e87.16.1747241473964;
-        Wed, 14 May 2025 09:51:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747241473; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1329660njb;
+        Wed, 14 May 2025 09:53:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXQn+BBSMFZH+uQaI6/8nLcVoeZMJ9nnAg3bbM/KQnhIiYV646qYy7yK5VqCDDRLGSq5ZA/trnCDlOQbA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHvY4pFb2qP69cH0voCLTJ/JR7MxEm5KLq6FAh8Nu1h9MCVSIGTF667aDqMGMz2HYbXfHSr
+X-Received: by 2002:ad4:4eef:0:b0:6f0:e2d4:5287 with SMTP id 6a1803df08f44-6f896e57a51mr58795546d6.24.1747241622956;
+        Wed, 14 May 2025 09:53:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747241622; cv=none;
         d=google.com; s=arc-20240605;
-        b=CFiafUxHPBypj8fKtKJLPwICEnkTU89LrWs+l4EqZ9WygVhiX7fZtUQPfR1NGlc0Gs
-         Wo/fuMywRb/tZyKvUzsOIik6v27zwQbM5R7+94PF/XqyKKkrWrLOpVIGleisCfMikSNa
-         ZJ1Wqp3H5F2vIG6IBJxJ8BSOhPnHHPhp8DPgV3aWocZ6zxricGIURoipB7cYq7rpMy6s
-         R3URgAtsUcxRw6ijahIWP+20jTB7BDCrK3Rmo+fWCp2TQSXtlje1yaF7NfopevfQWSyt
-         XKiKuqzccVS/TQlj3WAtwoJBZ9XsCOaScHkg12IGnYwlgS7uuYkynSLBvyZ8aL7gx+bI
-         rw8Q==
+        b=ZvTjKDlL2uOhaO9JEdtTNKJlSgpZ4eJeQTjR8M+wUBzMJlfvMk/DapL3zQHlQ2pDpE
+         yrCH2SDGI2pmv3WGT3SdYH0K13fMrRtXQ/SP8wcsN/BAEykAFj5WbwqPkhCQTyyaUUTx
+         aBuK7e3Sh1WMOvq5+mKjzpXQT1j/4XO/tZM9XLouIEMVkBZ2PGTVhOTjQvI+RTUkD3GA
+         5WNYb851mAQZHPTEoRY92pinLxrXxuv1lrV9hprx6T6eU6s88FKZg+gq5yTW3Y7k0FQe
+         DP5kzSqrb3IuvEGf1NBGWv5wA1/sqa1tORkACydCG7RERkTSj7aPasxza6xCfrnLV2NB
+         8kfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=mUTJb/2zql+qRiUr2YYbs176NNlUSnNA+/YM7STjSYg=;
-        fh=RUa1rJJRpwihP9UZ0Q6cNNiGY63sZ7zx7sY6ynAU9rw=;
-        b=Zr2vX8oTZoAKzC8zUL7/spj6kh+eYxHgMhManKeDGWjEANDFKcUC/JW3NXaUqTYfd+
-         jXLSGlLm4UD+PeWLpzWq83yQy3FmhUFxKxCheSKLAKOgRZRyre/+nxeOKQ8lyjyWk1J3
-         lrfbdudzdbsEq5BKpDZLceIEs1MV+fqeWQH4GtrK/eHtfs8tm9kTMkbq073Ne4KDjOmT
-         Kzs2h0Kv+HgOwkMkFD6MZBRIyWxNeKbzWtp/2ujfBsDiw4QpkrBCSDqm2G2+rydiFGSo
-         OPQjhY+/3lv+pOVCZnWNsthmIzl3UfQvwLomQW6eURqggBU4zTwKOUWZjv30jsTxC/15
-         UvdA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=EJDvpjsckjvN0xZPH1wXDoMTsindwY7WPuMUHXI/XOA=;
+        fh=4M2uMVvqgd4D86qUSMmW4AkoSdqwequBmjuhPCK9gpc=;
+        b=PDZ739iZMphf2VxfmofUJwNxr20qSAF9WcyINP8gQNL6So6+Y3Ox4JarDiXdosIdi0
+         Y8CTKk0w27x7+EChFHz9v5SlC+5KH1wkgtRRsD/s3R+E7GQO1svtv19We/OssdMr1Bzb
+         RqKB7K8KX/knJF3dUBiYkyuXuS56fxT+DjO3RdeDT1zfG3HFvokm/jthmslsLSjios2W
+         3pdOaprnLI8wX1ddOqjpo9N0AJiHz8xFiVSKAMZ7uvf89OQNYdxAaw4vQJlFu6tV5YGP
+         rrP54zgD6y4ms67GEcviYENKTgCekjcyiIvj9FaGY6BdIFBql2+cGQjfUPpaVaP2er/s
+         Qcig==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iQ8Zt7RS;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 2adb3069b0e04-54fc650b996si6260401e87.320.2025.05.14.09.51.13
+       dkim=pass header.i=@linaro.org header.s=google header.b=xSACArT7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a649b4si136463466d6.498.2025.05.14.09.53.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 May 2025 09:51:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 14 May 2025 09:53:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iQ8Zt7RS;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1747241472;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=mUTJb/2zql+qRiUr2YYbs176NNlUSnNA+/YM7STjSYg=;
-	b=iQ8Zt7RSvUdxOjBNBCSkYsTt7bPKDD6pW2XfLw/XqNsnSdOCqF0vaUnnq5eYM/WBXvOLBb
-	Apv54PkbxqFrNgGl1/M0FQFo1g84Vl3Ombyd8QgDPLN82EeXfBZNzF6v04ZPdweVATUeo3
-	HN/T2FfKzRW4ur8dWB+iL9v2BqfX5NQ=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-250-HNgM32DLPQCMuGGNFX1GkA-1; Wed, 14 May 2025 12:51:11 -0400
-X-MC-Unique: HNgM32DLPQCMuGGNFX1GkA-1
-X-Mimecast-MFC-AGG-ID: HNgM32DLPQCMuGGNFX1GkA_1747241470
-Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-3a34f19c977so33601f8f.0
-        for <alex.bennee@linaro.org>; Wed, 14 May 2025 09:51:10 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=xSACArT7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uFFMJ-0002vB-JQ; Wed, 14 May 2025 12:53:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uFFMH-0002p4-5Q
+ for qemu-arm@nongnu.org; Wed, 14 May 2025 12:53:29 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uFFMF-00060u-CF
+ for qemu-arm@nongnu.org; Wed, 14 May 2025 12:53:28 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-441c99459e9so213295e9.3
+ for <qemu-arm@nongnu.org>; Wed, 14 May 2025 09:53:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1747241605; x=1747846405; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=EJDvpjsckjvN0xZPH1wXDoMTsindwY7WPuMUHXI/XOA=;
+ b=xSACArT7WXbRyt4GDoACwBIbYeFQCCcDHsguPHKeKKUViMrrBI2idcjTisMvsZ0xIp
+ xiA6IVwXOC5fJA4wqHMZW3Vzq0KZ+stFOGTDp26hp4Ivd7VXZKCaGYa4hlKOaoGmrpJn
+ nyoLbcTST327oYJDOQM96at4BcYh9XVCtADnxKZS8RrjnfdfxtoOE4+6NAosIEW3mZwF
+ qZaJUToesb31OkgJo7E8ujkts9VJYi42Xtkt/9F3eFLKa27tSsZiksAk+mrqxC5Xhdpi
+ eM7cG6tvc5iTIzmvjnv2Z0WU59hLCmwJPfNBb7DQqcqh8HV/UGjbbLvh7HeXcFB8UNRK
+ ji2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747241470; x=1747846270;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=mUTJb/2zql+qRiUr2YYbs176NNlUSnNA+/YM7STjSYg=;
-        b=Bqu/RQrCPZsfSVLxWkqk78QugbkEG9wsGIE7MhrDo2EnxXaYT0GhP2Ulz31YNjlzqH
-         0VWH0KwpoNJhISFT4FKg26vFXqAyiG1VubEAwiWF1ZU58v+o/Oe5SLMgSFTf98Y4p2OO
-         hbAuILJxL8Ta8LkZesrE6tGWIc4Kwbx9WS78bugHVN3NSTd1SQV/Oz/TEAs1rdtcD+K8
-         qscvyPSAE9m0+tac0cjtiG6BfnjnwvMlEq75kZq7rFK9SCLHTPxkici3cch17+eIe2wv
-         Svee2/DWmK7KQgz74LgfnauIPEo57Sa+m+70IufpWIadutxjMzt32NaK5UkQ8zYMAJ4a
-         Nc+g==
-X-Forwarded-Encrypted: i=1; AJvYcCXbS/jHcj2awU05QNfVggU9NsXw0a7Cjk9suK+rjtw36lOJM+Vrav5EB08IWDWsd7/joXs/JYLag31sAg==@linaro.org
-X-Gm-Message-State: AOJu0YxZd4YQmsJ7a3shJq9GWc4OsATz8Yo3XHVUwWTMDzYn47zWa0Sb
-	PfR3UnNkL3Sc2FExMVjQNm13EO/8emHxRElpEqJhioOrquAiZpPr8wKtBwVHsQzp/HJ/eRWIEY9
-	cW+ZtlD8aGQIHcJAKBqZg6OIE6vMM6cLsfhHi5wi6nx7cx3lORtgMwTNdSA==
-X-Gm-Gg: ASbGncuWL5NMI6J2qekuPYNengBHfOtv3+qCWfLkkcMlEqPSlwx2QJFrbuhBY5ZF1B7
-	vB4QgtGM1n39CZP8p4EKoc/NpoOwMYCOpOj/aiB7r3gNe/gJk+20Ae5/S/dJboCONmLfgi97UR3
-	9phyQz9Vqyebod+hTXnR03Y9w8EXCiQWB51VWCeYpClU4+Gj+dnD5ASraKq0N3z2/vPmqqb1bfn
-	gnYSWKqaXWQWXBUr7FFBw9dumZThxi7PSwvyNcLVHllkuFic6Vwfw7Kiop2F3oDD9rh43NP0emo
-	lUE3yUeZd0LW7wLmwQsuS1LDWfctbPDmkFPK7qVdstYKBA74s2ieqGJhAJI=
-X-Received: by 2002:a05:6000:2a5:b0:3a0:b817:2d7a with SMTP id ffacd0b85a97d-3a351222edemr217506f8f.29.1747241469864;
-        Wed, 14 May 2025 09:51:09 -0700 (PDT)
-X-Received: by 2002:a05:6000:2a5:b0:3a0:b817:2d7a with SMTP id ffacd0b85a97d-3a351222edemr217476f8f.29.1747241469352;
-        Wed, 14 May 2025 09:51:09 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a1f57dde0esm20519053f8f.18.2025.05.14.09.51.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 May 2025 09:51:08 -0700 (PDT)
-Message-ID: <1843dcc8-cc05-4289-b71b-cf32fa9a5ec7@redhat.com>
-Date: Wed, 14 May 2025 18:51:07 +0200
+ d=1e100.net; s=20230601; t=1747241605; x=1747846405;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=EJDvpjsckjvN0xZPH1wXDoMTsindwY7WPuMUHXI/XOA=;
+ b=u+l0hDcHbTH+k9tWyAW8TJYgEKu0jirsfpwhv/+vRNFjgJ7gHm1FbGhnD1M8HHGW+3
+ oCoRcaOvWHGcrz5a5luHsz0aGRkoCGdOWr/FWp3wucYAqzrUnREMN/qaJ3Dos8qhYzYG
+ G5Tp3Gd2c7eNeuzKvrwZvvNf0AqiTxUjp+eZ3xuqRSFYiNCnniOBb1a41CuOoBXR3Pcx
+ oxh3G4zATqItt+6+I6pBhtSvv+fr5s+2Y9bzsLhb0RYQDKVu1mTX1YIvWfcECa1+3sue
+ J6h5tTPSjVv9HIle68HByZMkRAM/za6ucxN7SCxjwx9U6OlnfLyi0kPKBlZ8yjdIw8YF
+ buNA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXQUsqRmdm5ruxsFYwXBvP6vOKahWgvUGvdt7RGTbyl/OAg+IoPTN/oxhVjcZiXJuQMF3a0Q6eqwQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyZ2tB121JNRNDQcGT39kiiJWuQtE4C1zcdOg77it0DUj9X7MjH
+ qxOb7Wl+BTUsicCgXaJAfj5SMLxcR1FVj1MELyjr3/Wv9SkeUaUF4SWxze8PLBw=
+X-Gm-Gg: ASbGncultWkmnSktKjJ8C9n7IZJ24cmGhU263tRRMDsI0c31qOLC0jB3WXoZvcTIqUi
+ 3TGirJ3XoHB6aaHCEdsK/bpp6P1VhIjm7ufOskoUaM3UlgPXIEdbNJ0v2RXGLNArZvYR6lnMlze
+ XhxAEudKpCkmEyVLNpshLQB8F0Qw9ssiqpWEJ0oiuTexsdylnKLZNjjQvF33DNzSfMcUMQ0SLcn
+ n5n707juFC8AzUZW6UAZSnqgddblMxr3Np8tFbW/3kEI7lP84GLajL4p1+HvpsPo0Kmf6qo5zOb
+ qzEHINWQEsCL8uieXwC5IqhIfLJqG98Mo3esIJS7ysDm9eRTTm9Oqu7M8ud1ZmK9N1bypjYlAe9
+ iQ9oDuI2l1eE8cmK99g==
+X-Received: by 2002:a05:600c:609a:b0:441:d43d:4f68 with SMTP id
+ 5b1f17b1804b1-442f210de3dmr46598685e9.15.1747241605605; 
+ Wed, 14 May 2025 09:53:25 -0700 (PDT)
+Received: from [10.61.1.248] (110.8.30.213.rev.vodafone.pt. [213.30.8.110])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-442f397b6fbsm37092555e9.39.2025.05.14.09.53.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 14 May 2025 09:53:25 -0700 (PDT)
+Message-ID: <f7bcd8b2-2c0c-4907-8a0e-af172c235d56@linaro.org>
+Date: Wed, 14 May 2025 17:53:24 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [RFC 00/24] APCI PCI Hotplug support on ARM
-To: Gustavo Romero <gustavo.romero@linaro.org>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- imammedo@redhat.com, anisinha@redhat.com, mst@redhat.com,
- shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-References: <20250428102628.378046-1-eric.auger@redhat.com>
- <6a52f974-3e13-49ba-bfeb-e30e683e4ce5@linaro.org>
- <5e24182d-a8bc-41fa-9741-6caecaa0c12e@redhat.com>
- <b409baa6-8834-4841-a544-ee8055c54051@linaro.org>
- <9a58f718-a7ad-4838-a5d1-9df8f3d43372@linaro.org>
- <59c2d331-3daa-46aa-aa59-9a55cae40b90@linaro.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <59c2d331-3daa-46aa-aa59-9a55cae40b90@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: LZedu_INN_DOuEBYeVIxslZLmHn8OhancR0Bn6i0euQ_1747241470
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH 16/19] target/arm: Add arm_cpu_has_feature() helper
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+References: <20250513173928.77376-1-philmd@linaro.org>
+ <20250513173928.77376-17-philmd@linaro.org>
+ <b6c81748-091b-4d61-8d34-beaa0442aab3@linaro.org>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <b6c81748-091b-4d61-8d34-beaa0442aab3@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: Y8l+4VpzxAZX
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: eDTbmPM3xVFx
 
-Hi Gustavo,
+On 14/5/25 10:24, Richard Henderson wrote:
+> On 5/13/25 18:39, Philippe Mathieu-Daudé wrote:
+>> arm_cpu_has_feature() is equivalent of arm_feature(), however
+>> while the latter uses CPUARMState so is target-specific, the
+>> former doesn't and can be called by target-agnostic code in hw/.
+> 
+> CPUARMState is no more target-specific than ARMCPU.
 
-On 5/14/25 6:27 PM, Gustavo Romero wrote:
-> Hi Eric,
->
-> On 5/7/25 22:13, Gustavo Romero wrote:
->> Hi Eric,
+ARMCPU is forward-declared as opaque pointer in target/arm/cpu-qom.h,
+so we can expose prototypes using it to non-ARM units.
+CPUARMState is only declared in "cpu.h", itself only accessible by
+ARM-related units.
+
+> 
+> Did you really mean to use CPUState?
+> Or is it merely that arm_cpu_has_feature is out-of-line?
+> 
+> 
+> r~
+> 
 >>
->> On 5/6/25 21:51, Gustavo Romero wrote:
->>> Hi Eric,
->>>
->>> On 5/6/25 12:58, Eric Auger wrote:
->>>> Hi Gustavo,
->>>>
->>>> On 5/5/25 3:26 PM, Gustavo Romero wrote:
->>>>> Hi Eric,
->>>>>
->>>>> On 4/28/25 07:25, Eric Auger wrote:
->>>>>> This series enables APCI PCI hotplug/hotunplug on ARM
->>>>>> and makes it default for 10.1 machine type. This aligns with
->>>>>> x86 q35 machine. Expected benefits should be similar to
->>>>>> those listed in [1].
->>>>>>
->>>>>> The infrastructure used in x86 is heavily reused and a
->>>>>> huge part of the series consists in moving code from
->>>>>> hw/i386/acpi-build.c to a generic place and slightly
->>>>>> adapting it to make it usable on ARM. The DSDT table is
->>>>>> augmented to support ACPI PCI hotplug elements.
->>>>>>
->>>>>> On ARM we use use a GED event to notify the OS about
->>>>>> hotplug events.
->>>>>>
->>>>>> I have not noticed any tests/qtest/bios-tables-test failures
->>>>>> neither on x86 nor ARM. x86 DSDT table has not changed.
->>>>>> ARM DSDT table definitively has but there are no tests
->>>>>> impacted. ARM misses hotplug tests that do exist on x86. This
->>>>>> most probably should be considered in the future.
->>>>>>
->>>>>> Best Regards
->>>>>>
->>>>>> Eric
->>>>>>
->>>>>> This series can be found at:
->>>>>> https://github.com/eauger/qemu/tree/arm-acpi-pcihp-rfc
->>>>>>
->>>>>> [1] [PATCH v6 0/6] Use ACPI PCI hot-plug for Q35
->>>>>> https://lore.kernel.org/all/20210713004205.775386-1-jusual@redhat.com/
->>>>>>
->>>>>
->>>>> I've just started to review your series and went to a quick smoke
->>>>> test
->>>>> by hotplugging a net adapter and got the following kernel internal
->>>>> error:
->>>>>
->>>>> (qemu) device_add virtio-net-pci,bus=pcie.1,addr=0,id=na
->>>>> (qemu) [   64.165411] pci 0000:01:00.0: [1af4:1041] type 00 class
->>>>> 0x020000
->>>>> [   64.165895] pci 0000:01:00.0: reg 0x14: [mem
->>>>> 0x00000000-0x00000fff]
->>>>> [   64.166259] pci 0000:01:00.0: reg 0x20: [mem 0x00000000-0x00003fff
->>>>> 64bit pref]
->>>>> [   64.166658] pci 0000:01:00.0: reg 0x30: [mem 0x00000000-0x0003ffff
->>>>> pref]
->>>>> [   64.167153] pci 0000:01:00.0: enabling Extended Tags
->>>>> [   64.179972] Internal error: synchronous external abort:
->>>>> 0000000096000050 [#1] SMP
->>>>> [   64.180719] Modules linked in: aes_ce_blk aes_ce_cipher polyval_ce
->>>>> polyval_generic ghash_ce gf128mul sha2_ce binfmt_misc sha256_arm64
->>>>> sha1_ce nls_ascii nls_cp437 vfat fat evdev cfg80211 rfkill loop fuse
->>>>> efi_pstore drm dm_mod dax configfs efivarfs qemu_fw_cfg ip_tables
->>>>> x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic virtio_scsi
->>>>> virtio_net scsi_mod net_failover failover virtio_blk scsi_common
->>>>> crct10dif_ce crct10dif_common virtio_pci virtio_pci_legacy_dev
->>>>> virtio_pci_modern_dev virtio_mmio
->>>>> [   64.183656] CPU: 0 PID: 23 Comm: kworker/u2:1 Not tainted
->>>>> 6.1.0-30-arm64 #1  Debian 6.1.124-1
->>>>> [   64.184071] Hardware name: QEMU QEMU Virtual Machine, BIOS
->>>>> edk2-stable202408-prebuilt.qemu.org 08/13/2024
->>>>> [   64.184759] Workqueue: kacpi_hotplug acpi_hotplug_work_fn
->>>>> [   64.185320] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS
->>>>> BTYPE=--)
->>>>> [   64.185737] pc : acpi_ex_system_memory_space_handler+0x290/0x300
->>>>> [   64.186175] lr : acpi_ev_address_space_dispatch+0x124/0x334
->>>>> [   64.186490] sp : ffff80000a6bb3b0
->>>>> [   64.186663] x29: ffff80000a6bb3b0 x28: ffff0003fcbb08b8 x27:
->>>>> 0000000000000000
->>>>> [   64.187126] x26: ffff0003fcbb0288 x25: ffff80000a6bb568 x24:
->>>>> 0000000000000001
->>>>> [   64.187499] x23: ffff80000a6bb568 x22: 0000000000000004 x21:
->>>>> ffff0000c206cb00
->>>>> [   64.187885] x20: 00000000090c0014 x19: 0000000000000020 x18:
->>>>> 0000000000000000
->>>>> [   64.188265] x17: 0000000000000000 x16: 0000000000000000 x15:
->>>>> 0000000000000000
->>>>> [   64.188640] x14: 0000000000000000 x13: 4d43c3194dea1791 x12:
->>>>> 4d7a3553e5c937d0
->>>>> [   64.189003] x11: 0000000000000001 x10: 0000000000000000 x9 :
->>>>> ffff800008735b34
->>>>> [   64.189383] x8 : 0000000000000001 x7 : ffff80000873c850 x6 :
->>>>> 00000000000000f8
->>>>> [   64.189778] x5 : ffff0000c206cb00 x4 : 0000000000000000 x3 :
->>>>> 00000000090c0018
->>>>> [   64.190163] x2 : ffff80000a9af014 x1 : 00000000090c0018 x0 :
->>>>> 0000000000000001
->>>>> [   64.190734] Call trace:
->>>>> [   64.191086]  acpi_ex_system_memory_space_handler+0x290/0x300
->>>>> [   64.191696]  acpi_ev_address_space_dispatch+0x124/0x334
->>>>> [   64.192042]  acpi_ex_access_region+0xe4/0x2e0
->>>>> [   64.192287]  acpi_ex_field_datum_io+0x88/0x200
->>>>> [   64.192509]  acpi_ex_write_with_update_rule+0xd4/0x120
->>>>> [   64.192793]  acpi_ex_insert_into_field+0x210/0x2b0
->>>>> [   64.193048]  acpi_ex_write_data_to_field+0xa0/0x190
->>>>> [   64.193298]  acpi_ex_store_object_to_node+0x150/0x240
->>>>> [   64.193527]  acpi_ex_store+0x144/0x300
->>>>> [   64.193726]  acpi_ex_opcode_1A_1T_1R+0x218/0x580
->>>>> [   64.193971]  acpi_ds_exec_end_op+0x24c/0x4b0
->>>>> [   64.194227]  acpi_ps_parse_loop+0x100/0x6a0
->>>>> [   64.194477]  acpi_ps_parse_aml+0x94/0x3b0
->>>>> [   64.194674]  acpi_ps_execute_method+0x128/0x25c
->>>>> [   64.194922]  acpi_ns_evaluate+0x1f0/0x2d0
->>>>> [   64.195148]  acpi_evaluate_object+0x138/0x2d0
->>>>> [   64.195380]  acpi_evaluate_dsm+0xb8/0x134
->>>>> [   64.195613]  acpi_check_dsm+0x34/0xdc
->>>>> [   64.195822]  smbios_attr_is_visible+0x5c/0xb0
->>>>> [   64.196089]  internal_create_group+0xd0/0x3d0
->>>>> [   64.196335]  internal_create_groups+0x58/0xe0
->>>>> [   64.196584]  sysfs_create_groups+0x20/0x30
->>>>> [   64.196813]  device_add_groups+0x18/0x2c
->>>>> [   64.197039]  bus_add_device+0x48/0x160
->>>>> [   64.197260]  device_add+0x3a4/0x85c
->>>>> [   64.197463]  pci_device_add+0x308/0x660
->>>>> [   64.197680]  pci_scan_single_device+0xe4/0x114
->>>>> [   64.197941]  pci_scan_slot+0x70/0x1fc
->>>>> [   64.198155]  acpiphp_rescan_slot+0x90/0xa4
->>>>> [   64.198366]  acpiphp_hotplug_notify+0x2a8/0x300
->>>>> [   64.198584]  acpi_device_hotplug+0x138/0x4c0
->>>>> [   64.198819]  acpi_hotplug_work_fn+0x2c/0x4c
->>>>> [   64.199045]  process_one_work+0x1f4/0x460
->>>>> [   64.199277]  worker_thread+0x188/0x4e0
->>>>> [   64.199492]  kthread+0xe0/0xe4
->>>>> [   64.199671]  ret_from_fork+0x10/0x20
->>>>> [   64.200114] Code: f90002e0 52800000 17ffff97 f94002e0 (b9000040)
->>>>> [   64.200820] ---[ end trace 0000000000000000 ]---
->>>>>
->>>>> (qemu)
->>>>>
->>>>> This is a Debian Bookworm stock kernel 6.1. I built QEMU from your GH
->>>>> branch.
->>>>>
->>>>> The machine was started with:
->>>>>
->>>>> ./qemu-system-aarch64 -m 16G -nographic -machine
->>>>> type=virt,gic-version=max -cpu cortex-a57 -initrd
->>>>> /mnt/initrd.img-6.1.0-30-arm64 -kernel /mnt/vmlinuz-6.1.0-30-arm64
->>>>> -append "root=/dev/vda1 console=ttyAMA0,115200 acpi=force" -device
->>>>> virtio-scsi-pci -device virtio-blk-pci,drive=root -drive
->>>>> if=none,id=root,file=/mnt/debian-12-nocloud-arm64.qcow2 -device
->>>>> pcie-root-port,id=pcie.1,chassis=1,slot=1 -bios
->>>>> ./pc-bios/edk2-aarch64-code.fd
->>>>>
->>>>> ./pc-bios/edk2-aarch64-code.fd is the one found under ./build dir, so
->>>>> nothing special.
->>>>
->>>> I have just tested debian-12-nocloud-arm64.qcow2 which features
->>>> 6.1.0-34-arm64 + edk2-aarch64-code.fd and I am able to
->>>> hotplug/hot-unplug the virtio-net-pci device. Can you retry without
->>>>
->>>> -initrd /mnt/initrd.img-6.1.0-30-arm64 -kernel
->>>> /mnt/vmlinuz-6.1.0-30-arm64 -append "root=/dev/vda1
->>>> console=ttyAMA0,115200 acpi=force" ?
->>>
->>> Sure, so I got the same internal error without passing the kernel,
->>> the initrd,
->>> and the append command.
->>>
->>>
->>> I also tried with a pristine Debian .qcow2 taken from:
->>>
->>> https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-nocloud-arm64.qcow2
->>>
->>>
->>> I'm building your Github branch:
->>>
->>> gromero@gromero0:/mnt/git/qemu_/build$ git branch -vv | grep eauger
->>> * arm-acpi-pcihp-rfc        cf92b293ff [eauger/arm-acpi-pcihp-rfc]
->>> hw/arm/virt: Use ACPI PCI hotplug by default
->>> gromero@gromero0:/mnt/git/qemu_/build$ git log --oneline -1
->>> cf92b293ff (HEAD -> arm-acpi-pcihp-rfc, eauger/arm-acpi-pcihp-rfc)
->>> hw/arm/virt: Use ACPI PCI hotplug by default
->>>
->>> I tried in a pristine ./build dir.
->>>
->>> QEMU options:
->>>
->>> gromero@gromero0:/mnt/git/qemu_/build$ ./qemu-system-aarch64 -m 16G
->>> -nographic -machine type=virt,gic-version=max -cpu max -drive
->>> if=none,file=/mnt/debian/debian-12-nocloud-arm64.qcow2,format=qcow2,id=hd
->>> -device virtio-blk-device,drive=hd -device
->>> pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1,addr=0x2.0x0 -bios
->>> ./pc-bios/edk2-aarch64-code.fd
->>> UEFI firmware (version edk2-stable202408-prebuilt.qemu.org built at
->>> 16:28:50 on Sep 12 2024)
->>>
->>> gromero@gromero0:/mnt/git/qemu_/build$ md5sum
->>> ./pc-bios/edk2-aarch64-code.fd
->>> 3426cd25efb1593f86352ec0c61d66f5  ./pc-bios/edk2-aarch64-code.fd
->>>
->>> and I get the same error:
->>>
->>> root@localhost:~# QEMU 10.0.50 monitor - type 'help' for more
->>> information
->>> (qemu) device_add virtio-net-pci,bus=pcie.1,addr=0,id=na
->>> (qemu) [   56.865284] pci 0000:01:00.0: [1af4:1041] type 00 class
->>> 0x020000
->>> [   56.866620] pci 0000:01:00.0: reg 0x14: [mem 0x00000000-0x00000fff]
->>> [   56.867711] pci 0000:01:00.0: reg 0x20: [mem
->>> 0x00000000-0x00003fff 64bit pref]
->>> [   56.868287] pci 0000:01:00.0: reg 0x30: [mem
->>> 0x00000000-0x0003ffff pref]
->>> [   56.869143] pci 0000:01:00.0: enabling Extended Tags
->>> [   56.900481] Internal error: synchronous external abort:
->>> 0000000096000050 [#1] SMP
->>> [   56.900911] Modules linked in: aes_ce_blk binfmt_misc
->>> aes_ce_cipher polyval_ce polyval_generic ghash_ce gf128mul sha3_ce
->>> sha3_generic sha512_ce sha512_arm64 sha2_ce sha256_arm64 sha1_ce
->>> nls_ascii nls_cp437 vfat fat evdev cfg80211 rfkill loop fuse drm
->>> efi_pstore dm_mod dax configfs efivarfs qemu_fw_cfg ip_tables
->>> x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic virtio_net
->>> net_failover failover virtio_blk crct10dif_ce crct10dif_common
->>> virtio_pci virtio_pci_legacy_dev virtio_pci_modern_dev virtio_mmio
->>> [   56.903132] CPU: 0 PID: 10 Comm: kworker/u2:0 Not tainted
->>> 6.1.0-34-arm64 #1  Debian 6.1.135-1
->>> [   56.903753] Hardware name: QEMU QEMU Virtual Machine, BIOS
->>> edk2-stable202408-prebuilt.qemu.org 08/13/2024
->>> [   56.904126] Workqueue: kacpi_hotplug acpi_hotplug_work_fn
->>> [   56.904877] pstate: 60402005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS
->>> BTYPE=--)
->>> [   56.905085] pc : acpi_ex_system_memory_space_handler+0x290/0x300
->>> [   56.905306] lr : acpi_ev_address_space_dispatch+0x124/0x334
->>> [   56.905471] sp : ffff80000809b3b0
->>> [   56.905580] x29: ffff80000809b3b0 x28: ffff0003fcb852d0 x27:
->>> 0000000000000000
->>> [   56.905856] x26: ffff0003fcb85558 x25: ffff80000809b568 x24:
->>> 0000000000000001
->>> [   56.906092] x23: ffff80000809b568 x22: 0000000000000004 x21:
->>> ffff0000c1644980
->>> [   56.906333] x20: 00000000090c0014 x19: 0000000000000020 x18:
->>> 0000000000000000
->>> [   56.906557] x17: 0000000000000000 x16: 0000000000000000 x15:
->>> 0000000000000000
->>> [   56.906793] x14: 0000000000000000 x13: ffffb8324c78ebb0 x12:
->>> 0000000000000001
->>> [   56.907016] x11: 000000000000002e x10: ffffb8324cab6e20 x9 :
->>> ffffb8324b2076b4
->>> [   56.907236] x8 : 0000000000000001 x7 : ffffb8324b20e3d0 x6 :
->>> 00000000000000f8
->>> [   56.907473] x5 : ffff0000c1644980 x4 : 0000000000000000 x3 :
->>> 00000000090c0018
->>> [   56.907705] x2 : ffff800008837014 x1 : 00000000090c0018 x0 :
->>> 0000000000000001
->>> [   56.908026] Call trace:
->>> [   56.908226]  acpi_ex_system_memory_space_handler+0x290/0x300
->>> [   56.908540]  acpi_ev_address_space_dispatch+0x124/0x334
->>> [   56.908736]  acpi_ex_access_region+0xe4/0x2e0
->>> [   56.908870]  acpi_ex_field_datum_io+0x88/0x200
->>> [   56.909003]  acpi_ex_write_with_update_rule+0xd4/0x120
->>> [   56.909152]  acpi_ex_insert_into_field+0x210/0x2b0
->>> [   56.909285]  acpi_ex_write_data_to_field+0xa0/0x190
->>> [   56.909426]  acpi_ex_store_object_to_node+0x150/0x240
->>> [   56.909569]  acpi_ex_store+0x144/0x300
->>> [   56.909688]  acpi_ex_opcode_1A_1T_1R+0x218/0x580
->>> [   56.909824]  acpi_ds_exec_end_op+0x24c/0x4b0
->>> [   56.909953]  acpi_ps_parse_loop+0x100/0x6a0
->>> [   56.910074]  acpi_ps_parse_aml+0x94/0x3b0
->>> [   56.910197]  acpi_ps_execute_method+0x128/0x25c
->>> [   56.910331]  acpi_ns_evaluate+0x1f0/0x2d0
->>> [   56.910445]  acpi_evaluate_object+0x138/0x2d0
->>> [   56.910573]  acpi_evaluate_dsm+0xb8/0x134
->>> [   56.910696]  acpi_check_dsm+0x34/0xdc
->>> [   56.910809]  smbios_attr_is_visible+0x5c/0xb0
->>> [   56.910937]  internal_create_group+0xd0/0x3d0
->>> [   56.911066]  internal_create_groups+0x58/0xe0
->>> [   56.911194]  sysfs_create_groups+0x20/0x30
->>> [   56.911315]  device_add_groups+0x18/0x2c
->>> [   56.911435]  bus_add_device+0x48/0x160
->>> [   56.911552]  device_add+0x3a4/0x85c
->>> [   56.911678]  pci_device_add+0x308/0x660
->>> [   56.911803]  pci_scan_single_device+0xe4/0x114
->>> [   56.911937]  pci_scan_slot+0x70/0x1fc
->>> [   56.912039]  acpiphp_rescan_slot+0x90/0xa4
->>> [   56.912161]  acpiphp_hotplug_notify+0x2a8/0x300
->>> [   56.912290]  acpi_device_hotplug+0x138/0x4c0
->>> [   56.912428]  acpi_hotplug_work_fn+0x2c/0x4c
->>> [   56.912549]  process_one_work+0x1f4/0x460
->>> [   56.912679]  worker_thread+0x188/0x4e0
->>> [   56.912792]  kthread+0xe0/0xe4
->>> [   56.912892]  ret_from_fork+0x10/0x20
->>> [   56.913136] Code: f90002e0 52800000 17ffff97 f94002e0 (b9000040)
->>> [   56.913532] ---[ end trace 0000000000000000 ]---
->>>
->>>
->>> I'm wondering if we are using the same 
->>> ./pc-bios/edk2-aarch64-code.fd, although
->>> I can't see how it would cause such error.
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>> ---
+>>   target/arm/cpu_has_feature.h | 2 ++
+>>   target/arm/cpu.c             | 7 +++++++
+>>   2 files changed, 9 insertions(+)
 >>
->> hmm actually I'm able to properly hotplug the network device using
->> the exactly
->> same sw stack as above (your branch, Debian 12, edk2) but running on
->> an arm64 host.
->>
->> It seems your running on a arm64 host since you're passing
->> --enable-kvm. Do you
->> mind trying it on a x86_64 or without --enable-kvm on the arm64 host?
->> I'm able to
->> reproduce it on arm64 host without --enable-kvm but not with
->> --enable-kvm passed to QEMU.
->
-> What causes this behaviour is that the container size is < than the
-> register region
-> in the pcihp device:
->
-> [...]
->     00000000090c0000-00000000090c0013 (prio 0, i/o): pcihp container
->       00000000090c0000-00000000090c0017 (prio 0, i/o): acpi-pci-hotplug
-> [...]
->
-> Because ACPI_PCI_HOTPLUG_REG_LEN and ACPI_PCIHP_SIZE values don't
-> match. Please see my
-> comment in patch 18/24 for a possible fix for it.
+>> diff --git a/target/arm/cpu_has_feature.h b/target/arm/cpu_has_feature.h
+>> index 2adfccd9208..352f9d75bed 100644
+>> --- a/target/arm/cpu_has_feature.h
+>> +++ b/target/arm/cpu_has_feature.h
+>> @@ -62,4 +62,6 @@ typedef enum arm_features {
+>>       ARM_FEATURE_BACKCOMPAT_CNTFRQ, /* 62.5MHz timer default */
+>>   } ArmCpuFeature;
+>> +bool arm_cpu_has_feature(ARMCPU *cpu, ArmCpuFeature feature);
+>> +
+>>   #endif
+>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>> index 8c9d161f2ef..759636a3b0e 100644
+>> --- a/target/arm/cpu.c
+>> +++ b/target/arm/cpu.c
+>> @@ -54,6 +54,13 @@
+>>   #include "target/arm/gtimer.h"
+>>   #include "target/arm/multiprocessing.h"
+>> +bool arm_cpu_has_feature(ARMCPU *cpu, ArmCpuFeature feature)
+>> +{
+>> +    CPUARMState *env = &cpu->env;
+>> +
+>> +    return arm_feature(env, feature);
+>> +}
+>> +
+>>   static void arm_cpu_set_pc(CPUState *cs, vaddr value)
+>>   {
+>>       ARMCPU *cpu = ARM_CPU(cs);
+> 
 
-thank you very much for the investigation. This should be fixed in the
-next version I am about the send ...
-
-Eric
->
->
-> Cheers,
-> Gustavo
->

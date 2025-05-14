@@ -1,88 +1,139 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1044573njb;
-        Wed, 14 May 2025 02:05:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXbC/bh6/PuXI62yRLQlNeAH961h7vkG72/eMYLDbeGDoNinhEYQboSsVjPRLi/mWSz0UsN/T0xlFa6uA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEAy529zab19TLdYguJc3mgAMBoZ7uGFV+eStKp2P51ksfAPiYa3zQM82kw2EsskOUxNwRP
-X-Received: by 2002:a05:622a:2296:b0:476:8a5f:8cfb with SMTP id d75a77b69052e-49495d1fd16mr48621491cf.38.1747213510510;
-        Wed, 14 May 2025 02:05:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747213510; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1057705njb;
+        Wed, 14 May 2025 02:36:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUZT1gRMw91fUW7AwMza3q5SVLHMvqI1M7SeqzLE6ss1HHjC/UkVZf8f1hLHkSDv3WUVkt14prEL4phJg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFW5EMvPgzC76xHeoJ7misnXOycc0T+VAKbR0xXxuM8XUlM1HM11dyJjgcWOUCsF8t6KOpo
+X-Received: by 2002:a05:620a:29c3:b0:7c9:245f:bacd with SMTP id af79cd13be357-7cd28863f4emr354995485a.58.1747215375067;
+        Wed, 14 May 2025 02:36:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747215375; cv=none;
         d=google.com; s=arc-20240605;
-        b=isbPZqhMIkC+BNFl4mjpXUBONoUFOo2TpH9Invo6ej/CQhzphyRuM3+xlTl34l+QzJ
-         ezEKohHjapsvy7khArclpPG5uNUkMnzbupfW8DsHG/Sa35v3EZpil8JqxtayWIPT2qeq
-         GEbIh5/Vo2qCpN7qbHhWvLKunWPi/irKX1azmSujXmNldSEHlV381SukK/MeSSwjnpjC
-         I4pfV48lwtS4RnRFC9ZQeWH6x4LTlKmWGi6GmDaNOOXRaIwNiPZ7aqkxvFAvID3lVf5Z
-         hAHCSZ8Q2pHTGdrZGAHW/DlKj/oVuuYxRMoRpDcg0cHebtOjd803H+JGPlSlvkQqranU
-         UjDw==
+        b=dCXs1z5gZVw30WLa/lSZc1Z0l0pJkVMnCmqR/h9j5CkTg/amlF26vL0HABhKZdqEoE
+         93bNfDqo5wELD0oRemB8d8SloNeqpkkNgRL6IiBjgYLsE/6hpgtT5JFqVXeJv2BWSUje
+         sf3RE0tb8FQiPpnzy1tP0wRjCAk2ONkRz6xCdzdNA0hyyctznVNH1xQCpQ3fW0I4p1Qf
+         g9JEQelLcvBVX+NelbggpOO73GV1l+4gjtJTVCSjAq7bh3dsIfpXAlt8FaAgHQlP26LH
+         eyGhXB4E/Tt4zDX3YyZNUUd/UI8qyfoqX5iCp/brpelLV+5K2cQl5/yrH4i0Cv0TkxvY
+         YxOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=hAtF3suDn3bR4LWBpICkTQ6L+45cCcAd59MuIDWswOA=;
-        fh=Yg1QA3CYCa2LdK3Mf8oXZ+DbfQ0OHIFsuQO5E7pFx2w=;
-        b=S4GWyVX+oWGOJE8ju80JEPnAsftYaeeeoa1fGfVJ4LTPO/ZFhC7GarRgSQzyDS1RXE
-         xxc9rp36B2bl1dCAAqPL/90Vs7PEZjd6rlMXXuvuHctc4JYMultV6ufZSWhojqXIjHL/
-         B0gyDKLEAhyYow8wbB2nq75/jS63aCrCWapIi3Umq+T9Y6loY5s8QhpEHN59sjmtdtPy
-         j5eVmgzGmGbLBlbNp2qbcS6lkk2n9+wq1aPVQHXRs/tzcPiRhj8FF/ZYm+b5q5GJk3Lg
-         g6PRrGxIBHRyRC0qiTGFtH9pI1krm8jWcxwYxCVsneQA7TN7n6JiNkjKrNZqbjv4/MQ6
-         Iv/A==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=0vvKfoQFgl2zhQbrK2/KOIa5wjPdTTmfkhC9NE/hf4o=;
+        fh=gCXMQKs6lZ8CIfxrgvNmsucbxJPLBUoEizQFcmzUdmQ=;
+        b=PTK1cKrUbr39km4BETU0pMHhnQiBpMkZwglDoB7oUxs6wh/OFoIlqe4SyqRbJtL7Cs
+         oo3PJvrr1pAceXdycilP2oCOj3AD3Zf/KH7RPkQ7g2MzrepbPyJcDq1gHL6PL0JkbKoz
+         QHO+Hd21E7x2f+16vrUjLW41d5KmdfsgsGQyuOEb0tBiMieX3AXkSVYW1X+8nBY49Wv5
+         m3BwSe//qjVpv++SJnAgqPPDQp9gEHpVHuPFh6iiUREuOh5B1H9A8ZOwLi/rADF/+DFP
+         5Q+yA22fCpmewRsP5AXfXMiFC8LCk3ywPgoQRaNREB3QUhGpV0Exef3EkPx96lfLvN/B
+         AkyA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-49452459a18si124998681cf.30.2025.05.14.02.05.10
+        by mx.google.com with ESMTPS id af79cd13be357-7cd00fec61csi1304717285a.534.2025.05.14.02.36.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 May 2025 02:05:10 -0700 (PDT)
+        Wed, 14 May 2025 02:36:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uF827-0006eI-QW; Wed, 14 May 2025 05:04:11 -0400
+	id 1uF8Wv-0005t5-KD; Wed, 14 May 2025 05:36:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1uF825-0006dC-Pq; Wed, 14 May 2025 05:04:09 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <SRS0=lSqA=X6=kaod.org=clg@ozlabs.org>)
+ id 1uF8Wt-0005sq-7b; Wed, 14 May 2025 05:35:59 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1uF824-0002Ei-3C; Wed, 14 May 2025 05:04:09 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Wed, 14 May
- 2025 17:03:54 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Wed, 14 May 2025 17:03:54 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>, Jamin Lin
- <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <longzl2@lenovo.com>,
- <yunlin.tang@aspeedtech.com>, <steven_lee@aspeedtech.com>
-Subject: [PATCH v2 1/5] hw/arm/aspeed_ast2700-fc: Fix null pointer dereference
- in ca35 init
-Date: Wed, 14 May 2025 17:03:49 +0800
-Message-ID: <20250514090354.1461717-2-steven_lee@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250514090354.1461717-1-steven_lee@aspeedtech.com>
-References: <20250514090354.1461717-1-steven_lee@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <SRS0=lSqA=X6=kaod.org=clg@ozlabs.org>)
+ id 1uF8Wq-0005d6-K4; Wed, 14 May 2025 05:35:58 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Zy7W833KHz4xQd;
+ Wed, 14 May 2025 19:35:48 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Zy7W36rNqz4wd0;
+ Wed, 14 May 2025 19:35:43 +1000 (AEST)
+Message-ID: <0eeb5138-cccc-425a-b9cb-8b38581bc1b1@kaod.org>
+Date: Wed, 14 May 2025 11:35:40 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 05/25] hw/misc/aspeed_hace: Split hash execution into
+ helper functions for clarity
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20250513062901.2256865-1-jamin_lin@aspeedtech.com>
+ <20250513062901.2256865-6-jamin_lin@aspeedtech.com>
+ <e05b8809-3e64-456e-8b88-0026b0e14588@kaod.org>
+ <SI2PR06MB50417B9694B1462E3772FDB0FC91A@SI2PR06MB5041.apcprd06.prod.outlook.com>
+ <SI2PR06MB50412C3C9EA79C28A07629E6FC91A@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <SI2PR06MB50412C3C9EA79C28A07629E6FC91A@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=steven_lee@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=lSqA=X6=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,89 +146,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Steven Lee <steven_lee@aspeedtech.com>
-From:  Steven Lee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: V+iEU9tQoDIj
+X-TUID: 5nKd8UG+z+pF
 
-Clang's sanitizer reports a runtime error when booting with
-'-net nic -net user', due to a null pointer being passed
-to memory_region_find(), which subsequently triggers a crash in
-flatview_lookup().
+Hello Jamin,
 
-Root cause:
-- Missing NIC configuration in the CA35 initialization.
+On 5/14/25 04:48, Jamin Lin wrote:
+> Hi Cédric,
+> 
+>> Subject: RE: [PATCH v2 05/25] hw/misc/aspeed_hace: Split hash execution into
+>> helper functions for clarity
+>>
+>> Hi Cédric
+>>
+>>> Subject: Re: [PATCH v2 05/25] hw/misc/aspeed_hace: Split hash
+>>> execution into helper functions for clarity
+>>>
+>>> Hello Jamin
+>>>
+>>> On 5/13/25 08:28, Jamin Lin wrote:
+>>>> Refactor "do_hash_operation()" by extracting hash execution and
+>>>> result handling into dedicated helper functions:
+>>>>
+>>>> - "hash_write_digest_and_unmap_iov()": Writes the digest result to
+>>>> memory
+>>> and
+>>>>     unmaps IOVs after processing.
+>>>> - "hash_execute_non_acc_mode()": Handles one-shot (non-accumulated)
+>>> hash
+>>>>     operations.
+>>>> - "hash_execute_acc_mode()": Handles accumulated hashing, including
+>>> update and
+>>>>     finalize logic.
+>>>>
+>>>> No functional changes introduced.
+>>>
+>>> This patch is breaking 'check-qtest-arm'
+>>>
+>>>
+>>>     stderr:
+>>>     **
+>>>     ERROR:../tests/qtest/aspeed_hace-test.c:254:test_sha512: assertion
+>>> failed (digest == test_result_sha512)
+>>>
+>>
+> 
+> I’d like to provide some additional information:
+> 
+> My test environment is Ubuntu 24.04, and the glibc version is 2.39.
+> I previously encountered issues where very very older versions of glibc (such as those on Ubuntu 18.04) did not support SHA-512 properly.
+> In those cases, I switched to using libgcrypt to perform SHA-512 testing instead.
+> 
+> If you're still experiencing failures when testing SHA-512, please try building with either the "--enable-gcrypt" or "--enable-nettle" option enabled.
 
-Fix:
-- Reduce ca35 ram size from 2GiB to 1GiB to align with ast2700a1-evb,
-  where the ram-container is defined as 1GiB in its class.
-- Add nic configuration in ast2700fc's ca35 init function.
+The test fails on RHEL9 and Ubuntu 22.04 and it doesn't on F42. Most
+likely, it is a compiler behavior difference.
 
-Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
----
- hw/arm/aspeed_ast27x0-fc.c | 15 +++++++++++++--
- 1 file changed, 13 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
-index 125a3ade40..ff64605663 100644
---- a/hw/arm/aspeed_ast27x0-fc.c
-+++ b/hw/arm/aspeed_ast27x0-fc.c
-@@ -48,7 +48,7 @@ struct Ast2700FCState {
-     bool mmio_exec;
- };
- 
--#define AST2700FC_BMC_RAM_SIZE (2 * GiB)
-+#define AST2700FC_BMC_RAM_SIZE (1 * GiB)
- #define AST2700FC_CM4_DRAM_SIZE (32 * MiB)
- 
- #define AST2700FC_HW_STRAP1 0x000000C0
-@@ -59,6 +59,7 @@ struct Ast2700FCState {
- static void ast2700fc_ca35_init(MachineState *machine)
- {
-     Ast2700FCState *s = AST2700A1FC(machine);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
-     AspeedSoCState *soc;
-     AspeedSoCClass *sc;
- 
-@@ -86,6 +87,14 @@ static void ast2700fc_ca35_init(MachineState *machine)
-                                  AST2700FC_BMC_RAM_SIZE, &error_abort)) {
-         return;
-     }
-+
-+    for (int i = 0; i < sc->macs_num; i++) {
-+        if ((amc->macs_mask & (1 << i)) &&
-+            !qemu_configure_nic_device(DEVICE(&soc->ftgmac100[i]),
-+                                       true, NULL)) {
-+            break;
-+        }
-+    }
-     if (!object_property_set_int(OBJECT(&s->ca35), "hw-strap1",
-                                  AST2700FC_HW_STRAP1, &error_abort)) {
-         return;
-@@ -171,6 +180,7 @@ static void ast2700fc_init(MachineState *machine)
- static void ast2700fc_class_init(ObjectClass *oc, const void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
- 
-     mc->alias = "ast2700fc";
-     mc->desc = "ast2700 full core support";
-@@ -178,12 +188,13 @@ static void ast2700fc_class_init(ObjectClass *oc, const void *data)
-     mc->no_floppy = 1;
-     mc->no_cdrom = 1;
-     mc->min_cpus = mc->max_cpus = mc->default_cpus = 6;
-+    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON;
- }
- 
- static const TypeInfo ast2700fc_types[] = {
-     {
-         .name           = MACHINE_TYPE_NAME("ast2700fc"),
--        .parent         = TYPE_MACHINE,
-+        .parent         = TYPE_ASPEED_MACHINE,
-         .class_init     = ast2700fc_class_init,
-         .instance_size  = sizeof(Ast2700FCState),
-     },
--- 
-2.43.0
+The problem is due to the local 'size_t digest_len' variable not being
+initialized to zero. With that fixed, the test passes on all distros.
+
+Please split patch 5 to introduce these routines one by one :
+
+   hash_prepare_sg_iov
+   hash_prepare_direct_iov
+   hash_execute_acc_mode
+   hash_execute_non_acc_mode
+
+Thanks,
+
+C.
+
 

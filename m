@@ -1,139 +1,104 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1326046njb;
-        Wed, 14 May 2025 09:47:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVtNqG/oyq1CWIs33IbdUoMbKJgVugJPDyNPIaCGtZOlz4w+zUrdXpO2v0XwFyOqqOdux4ppaiojrrORQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGX1ZAdOZDKPsAhwNhwdyuY3p0AGA5eOrY+QlLdId87UytFruqw3fkI2/SysXY+R6FeF4qo
-X-Received: by 2002:a05:6214:19ed:b0:6f5:4508:fd84 with SMTP id 6a1803df08f44-6f896ec9ca4mr62054416d6.35.1747241226068;
-        Wed, 14 May 2025 09:47:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747241226; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1342603njb;
+        Wed, 14 May 2025 10:11:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVdxRWaAqxI3KTlBdF+bhoDCAI51BjBdkwMYZFjrx5ULYfLgf9x3qBvyPn/Crz0sSA3KoVECAzXKuU9Rw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH7eN1kUwSJiGkdfMlf9wY6/BOLfs2NykJbzG3Jzz8z46+At5RPLm7UU0MEIlNRNtnT8U37
+X-Received: by 2002:a05:620a:4551:b0:7c5:642f:b22c with SMTP id af79cd13be357-7cd287eac26mr567447385a.20.1747242681590;
+        Wed, 14 May 2025 10:11:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747242681; cv=none;
         d=google.com; s=arc-20240605;
-        b=AW72U+kKpICjELOhahOgrKK3K7v6YjyGFNWOmJ5GyugWiIHDAysD7MnGz24Ml8UXR6
-         0aL+g4FFQ6ca0XEiyfoCRwW9ao0lKDrdCUDUVwRhOI3HIoLhkJA4H0A4QQa/m7YrSsiU
-         RpLIoO5QrzfwkvJ9KRxKEWGQ7UleplC5W32F/3KQr5A2Yo8GF2ifp93aivHPkCxdMfFd
-         gYy1bb2zV3RdhrZCkdzu+Xu/M71S+K8kbkxERKuCbR0d+jPZaLgdiME7MIWkTlVkUJH3
-         TPS6xG6v7i+ZKx9masnqGwZ39xz1RIjERfP1blACc1jMpGbGHePAEQLn8/4L3o+nOVUR
-         GJug==
+        b=ZVORo9O+UynRCoeeKUUwrRolBUjQu8g2xWFWCKumLWMBMsiDLLdHDiFD4U2PJXvANb
+         TyVLfhPF0Qj7fwu4AfMpPUOArtjgeXH+q7tV/1cSFr9oyGCCEwP5UVBmPxsUpHYIVMmI
+         xLNHp/RugA4VVwIyKfSSLGzz/gEG1TCCjp2glZ6Tp1j0Gr7naS43M7KCrfHXclctdRWj
+         UuFnT/u5Vz0KnDFg/zLv9zDNIRk+6E6a1iioazoAwQxKEDOZAnGjSWfkJq5BYoTdKluI
+         HDpVDEIBPn9E1zMeJzNg8pnQhvjZpmk0EE79aOI/rc/qb5QSytDxUfQ3MJkrA688WkkH
+         GucQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=8893/NzsFk9tQOeGxihb/t7h/4NJ94lUWPU/ys1E+Tw=;
-        fh=Sp1hDIiTShcBZMyB7JNBkG5HJD97p8l4Dmj/+HBJR6c=;
-        b=hqRrpMFMiDgUl5zCA/bTKnVkeooCD1BN/o3fjHXzY+ld+HMo/Yg737+8fiYxLnzYYu
-         L3YgQAqTK9RxR3KfDJaCTWnvGFrGtwWlz1JmdgbbX/wfJ9uGHI8lEC/xh1dlm8h23Zee
-         ySlAZvpJj4WaIKJUJzd/zFSg6mrQE9MWqmbsUIHKkd4hQX64aL9ewPPbZ63LXfBIgOEw
-         fTUZpBhqxUkm+jgnG/kmbKWEQWV6UqU9aO7uqsbVwa/abKRufIVWhAi1TAEkcdQEL+9p
-         ESfTmBSOh+H7rXyjKcpSH+8r+wnGfIqm9qK2isqH3YgrFCvKL0mPV0FWXCOO9vtIWcdo
-         y4hg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=bk+PPY/DK8Nnng0SmUZp5iO4hjhBdFMMt9eKsKFKxHE=;
+        fh=uYJrYLplVlPp9m4JQmP4YNBZY8OxB84kzGSMUd/o4NA=;
+        b=H4fN8OLBgnjHk6R741NDg0a+W2ih3xzVcXTiKSQY/2vR+ey9tOnZieXW3xIUD+lwa4
+         PS6C9zmEU8JmaUPdsU6+J5IYFrx85Ij4VfbV9Iof2GfJTbgXWR43kglriOVX6o2CCUwv
+         T4if7LMAlBdIA4KKivOv9PcDMbwO+eUXdeiHAY5+Hnb8H87DPEn/m02/LdN3aetszjQL
+         bjif+kN1yHXTTrean214aFephAswhuu6ex6ubRS2w9G+K0lhoKZnqCrDJeS6f9tbuXi1
+         +W+Zdk09KjCsl+HmFZ8Em4AlkAzyQemsTI9ZOrArBnR77cwQG4QDaaIxWSZ86hFM8W1o
+         rliQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="GUpPd3/8";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A+wdmes4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e39e7202si111840586d6.2.2025.05.14.09.47.05
+        by mx.google.com with ESMTPS id ada2fe7eead31-4deb20290e5si5457054137.491.2025.05.14.10.11.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 May 2025 09:47:06 -0700 (PDT)
+        Wed, 14 May 2025 10:11:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="GUpPd3/8";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A+wdmes4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uFFFz-0002zu-Py; Wed, 14 May 2025 12:46:59 -0400
+	id 1uFFYR-000274-Pg; Wed, 14 May 2025 13:06:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uFFFm-0002jc-2b
- for qemu-arm@nongnu.org; Wed, 14 May 2025 12:46:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1uFFYM-00021N-2g
+ for qemu-arm@nongnu.org; Wed, 14 May 2025 13:05:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uFFFh-0004na-Rd
- for qemu-arm@nongnu.org; Wed, 14 May 2025 12:46:45 -0400
+ id 1uFFY9-0007hd-U1
+ for qemu-arm@nongnu.org; Wed, 14 May 2025 13:05:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1747241200;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1747242345;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8893/NzsFk9tQOeGxihb/t7h/4NJ94lUWPU/ys1E+Tw=;
- b=GUpPd3/8KCib7O8BPDRKqBD6n6u+iqALiu19LqQYtJuHBu6a+ZycWxGI/lsNWjAQZRfd1n
- 73zyKvi1lCRl0Apuret65IxVunHJ6H+uQrE0kmGJH1Co25eqbF2AA2fFV0YINDhOvw5oAJ
- 8hta0Md0jfUxqpFh3wlC99rM2dpc4Is=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-231-gqwJ1Q5jNVmLpKwOnK8YfQ-1; Wed, 14 May 2025 12:46:38 -0400
-X-MC-Unique: gqwJ1Q5jNVmLpKwOnK8YfQ-1
-X-Mimecast-MFC-AGG-ID: gqwJ1Q5jNVmLpKwOnK8YfQ_1747241198
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-440667e7f92so127965e9.3
- for <qemu-arm@nongnu.org>; Wed, 14 May 2025 09:46:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747241197; x=1747845997;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=8893/NzsFk9tQOeGxihb/t7h/4NJ94lUWPU/ys1E+Tw=;
- b=QzdqNwBB1lsFLzp33zV71u65SAnP70kdnRmsSj9TP8uAZamBsLdJinTwLOV9izmX5J
- EO1RSEbHqBnJfkUVSCHbT5iRUtGAlKv4goCXnvKHu1THydtqABFE7Ep9z2790JrjDgtv
- cgFsO0bBRZc9za8O4tEdh1Kttlrc3X6Sv9qPinI51akZeRm25hmdywYz7bPStBc/GGPr
- 49WwrykKhKiRblPpfqEoChZS0awiKyznzX38hQ1tepvUAE5kAmUxdDr0QU8hNBdGoBfY
- Ez5/YUqb7uYabpawvxQPz86T/SlX/0PLVRTSWKL4c3+4Gzs1PLT/5kssbkf6UewqPAA5
- Gp4w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXqIb1Z2dSff5pztzpkOdNt8TSqkRX8ev+aDmeAThHwztuH91IvIfN90NlxRHjLHtRP5sELUHSOEg==@nongnu.org
-X-Gm-Message-State: AOJu0Yz2WhV+RzdQenruFHZq6hq+6Pdu6bhS8ijQ5O5uu33lUI1l9uk2
- V4ACIG8d6NzC71zXkS1MMSjsAlQgpEzhyaaFxzoOwSTE2CAj2FamKKoYeC9yLszP34JWANM00KB
- ZIvKbDmcUfYH+/G7bN9tLD7FAZYsvaWRryoKzAzdBMTUQ6+jPXg==
-X-Gm-Gg: ASbGncuthzaYm8XP3B23zGxEAbML6eDqOKaBirhZQ3BluPxfYluOWlAcLac9HZTuShg
- tkYUDMhohdfbEN77QXUVLOKxQVPdG3EeGJsbDByhgxxqfcOBfw83GB1Ljt75+ZmbsOOtci+BsVj
- /4I2/gYc6av5y2mJxBHvj1+YqV86aJUanCL1TDhiAz2HOCW8N6NX/dpq5zo2CCtiJCHZJl+Y07m
- 9ZXv01eTZB3tuBdgyeOBEcqGGXS1NrVY89vsu2XrNGb0k9zIRELpwXWiU1nr6IyinGDVZE/gkE5
- fWXzhGMhylJl1FB9D8bBNOC6DfURWv3PouWTE4fv2jub+OpZcorEwXYa5p4=
-X-Received: by 2002:a05:600c:a42:b0:442:f4d4:522 with SMTP id
- 5b1f17b1804b1-442f4d44013mr25334685e9.5.1747241197408; 
- Wed, 14 May 2025 09:46:37 -0700 (PDT)
-X-Received: by 2002:a05:600c:a42:b0:442:f4d4:522 with SMTP id
- 5b1f17b1804b1-442f4d44013mr25334515e9.5.1747241196939; 
- Wed, 14 May 2025 09:46:36 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-442f3380498sm38676575e9.11.2025.05.14.09.46.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 14 May 2025 09:46:35 -0700 (PDT)
-Message-ID: <b7f9bd89-e1a1-45bb-bbc0-c44f495ae82f@redhat.com>
-Date: Wed, 14 May 2025 18:46:33 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 18/24] hw/acpi/ged: Prepare the device to react to PCI
- hotplug events
-To: Gustavo Romero <gustavo.romero@linaro.org>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- imammedo@redhat.com, anisinha@redhat.com, mst@redhat.com,
- shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com
-References: <20250428102628.378046-1-eric.auger@redhat.com>
- <20250428102628.378046-19-eric.auger@redhat.com>
- <e68728e0-c478-475c-8cab-f64907afbcfb@linaro.org>
+ bh=bk+PPY/DK8Nnng0SmUZp5iO4hjhBdFMMt9eKsKFKxHE=;
+ b=A+wdmes4uFcIkj6tu87/KYxtp3EzHSb8hFKCYXtbCmO7ixMqyGGeuIiROvGnC5SU7GtfR9
+ pJHSWy0BCa74MreMKoiUpf2jXb4EXPe+86Hlp7aZDECfE+PBASPuLC2ROdeBSC5UwfVO3D
+ qbRD4Sc028O/h8GLwQAAYQRXevyMiPw=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-652-6aBGfKNZMGOlyASyFQ05nw-1; Wed,
+ 14 May 2025 13:05:43 -0400
+X-MC-Unique: 6aBGfKNZMGOlyASyFQ05nw-1
+X-Mimecast-MFC-AGG-ID: 6aBGfKNZMGOlyASyFQ05nw_1747242341
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 421F0180087B; Wed, 14 May 2025 17:05:41 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.44.32.14])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id D8D2830001B0; Wed, 14 May 2025 17:05:36 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <e68728e0-c478-475c-8cab-f64907afbcfb@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: bYE9YVO3L-_7Ua5eJ7tpJ_6htfgMSLDSGvBS1BrwWNE_1747241198
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
+ anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
+Cc: pbonzini@redhat.com,
+	Jonathan.Cameron@huawei.com,
+	philmd@linaro.org
+Subject: [PATCH 12/22] hw/i386/acpi-build: Move
+ build_append_pci_bus_devices/pcihp_slots to pcihp
+Date: Wed, 14 May 2025 19:00:59 +0200
+Message-ID: <20250514170431.2786231-13-eric.auger@redhat.com>
+In-Reply-To: <20250514170431.2786231-1-eric.auger@redhat.com>
+References: <20250514170431.2786231-1-eric.auger@redhat.com>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -37
 X-Spam_score: -3.8
@@ -142,7 +107,7 @@ X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.686,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -155,202 +120,431 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ppu03YaDNgHt
+X-TUID: Sw223Fn0AI5I
 
-Hi Gustavo,
+We intend to reuse build_append_pci_bus_devices and
+build_append_pcihp_slots on ARM. So Let's move them to
+hw/acpi/pcihp.c as well as all static helpers they
+use.
 
-On 5/14/25 6:20 PM, Gustavo Romero wrote:
-> Hi Eric,
->
-> On 4/28/25 07:25, Eric Auger wrote:
->> QEMU will notify the OS about PCI hotplug/hotunplug events through
->> GED interrupts. Let the GED device handle a new PCI hotplug event.
->> On its occurence it calls the \\_SB.PCI0.PCNT method with the BLCK
->
-> nit: occurrence -^
->
->
->> mutex held.
->>
->> The GED device uses a dedicated MMIO region that will be mapped
->> by the machine code.
->>
->> At this point the GED still does not support PCI device hotplug in
->> its TYPE_HOTPLUG_HANDLER implementation. This will come in a
->> subsequent patch
->
-> nit: period missing ^
->
->
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>   include/hw/acpi/generic_event_device.h |  5 +++++
->>   include/hw/acpi/pcihp.h                |  2 ++
->>   hw/acpi/generic_event_device.c         | 14 ++++++++++++++
->>   3 files changed, 21 insertions(+)
->>
->> diff --git a/include/hw/acpi/generic_event_device.h
->> b/include/hw/acpi/generic_event_device.h
->> index d2dac87b4a..28be6c0582 100644
->> --- a/include/hw/acpi/generic_event_device.h
->> +++ b/include/hw/acpi/generic_event_device.h
->> @@ -63,6 +63,7 @@
->>   #include "hw/acpi/memory_hotplug.h"
->>   #include "hw/acpi/ghes.h"
->>   #include "hw/acpi/cpu.h"
->> +#include "hw/acpi/pcihp.h"
->>   #include "qom/object.h"
->>     #define ACPI_POWER_BUTTON_DEVICE "PWRB"
->> @@ -101,6 +102,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AcpiGedState, ACPI_GED)
->>   #define ACPI_GED_PWR_DOWN_EVT      0x2
->>   #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
->>   #define ACPI_GED_CPU_HOTPLUG_EVT    0x8
->> +#define ACPI_GED_PCI_HOTPLUG_EVT    0x10
->>     typedef struct GEDState {
->>       MemoryRegion evt;
->> @@ -114,6 +116,9 @@ struct AcpiGedState {
->>       MemoryRegion container_memhp;
->>       CPUHotplugState cpuhp_state;
->>       MemoryRegion container_cpuhp;
->> +    AcpiPciHpState pcihp_state;
->> +    MemoryRegion container_pcihp;
->> +
->>       GEDState ged_state;
->>       uint32_t ged_event_bitmap;
->>       qemu_irq irq;
->> diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
->> index 451ef74284..abb6e14549 100644
->> --- a/include/hw/acpi/pcihp.h
->> +++ b/include/hw/acpi/pcihp.h
->> @@ -38,6 +38,8 @@
->>   #define ACPI_PCIHP_SEJ_BASE 0x8
->>   #define ACPI_PCIHP_BNMR_BASE 0x10
->>   +#define ACPI_PCI_HOTPLUG_REG_LEN 0x14
->
-> This is wrong, no? It should be 0x18, i.e. 24 bytes or 6 registers of
-> 4 bytes.
-yes this is wrong. you are totally right. I am about to send a new
-version where this is fixed, sorry. I noticed that when testing the acpi
-index modality which did not work with the RFC series.
+No functional change intended.
 
-Now I am using ACPI_PCIHP_SIZE.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+---
+ include/hw/acpi/pci.h   |   1 -
+ include/hw/acpi/pcihp.h |   2 +
+ hw/acpi/pcihp.c         | 173 ++++++++++++++++++++++++++++++++++++++++
+ hw/i386/acpi-build.c    | 172 ---------------------------------------
+ 4 files changed, 175 insertions(+), 173 deletions(-)
 
-Cheers
-
-Eric
->
-> I think it's better to move the defines in pcihp.c into pcihp.h and
-> use them to define ACPI_PCI_HOTPLUG_REG_LEN so the values are
-> consistent, like:
->
-> diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-> index 82b8ea2811..3ab8b9de94 100644
-> --- a/hw/acpi/pcihp.c
-> +++ b/hw/acpi/pcihp.c
-> @@ -44,14 +44,6 @@
->  #include "qobject/qnum.h"
->  #include "trace.h"
->  
-> -#define ACPI_PCIHP_SIZE 0x0018
-> -#define PCI_UP_BASE 0x0000
-> -#define PCI_DOWN_BASE 0x0004
-> -#define PCI_EJ_BASE 0x0008
-> -#define PCI_RMV_BASE 0x000c
-> -#define PCI_SEL_BASE 0x0010
-> -#define PCI_AIDX_BASE 0x0014
-> -
->  typedef struct AcpiPciHpFind {
->      int bsel;
->      PCIBus *bus;
-> diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
-> index abb6e14549..6b79adcaef 100644
-> --- a/include/hw/acpi/pcihp.h
-> +++ b/include/hw/acpi/pcihp.h
-> @@ -38,7 +38,15 @@
->  #define ACPI_PCIHP_SEJ_BASE 0x8
->  #define ACPI_PCIHP_BNMR_BASE 0x10
->  
-> -#define ACPI_PCI_HOTPLUG_REG_LEN 0x14
-> +#define ACPI_PCIHP_SIZE 0x0018
-> +#define PCI_UP_BASE 0x0000
-> +#define PCI_DOWN_BASE 0x0004
-> +#define PCI_EJ_BASE 0x0008
-> +#define PCI_RMV_BASE 0x000c
-> +#define PCI_SEL_BASE 0x0010
-> +#define PCI_AIDX_BASE 0x0014
-> +
-> +#define ACPI_PCI_HOTPLUG_REG_LEN ACPI_PCIHP_SIZE
->  
->  typedef struct AcpiPciHpPciStatus {
->      uint32_t up;
->
->
-> or even use only one of them (ACPI_PCI_HOTPLUG_REG_LEN,
-> ACPI_PCIHP_SIZE, or
-> another new name that would fit better in both contexts).
->
->
-> Cheers,
-> Gustavo
->
->> +
->>   typedef struct AcpiPciHpPciStatus {
->>       uint32_t up;
->>       uint32_t down;
->> diff --git a/hw/acpi/generic_event_device.c
->> b/hw/acpi/generic_event_device.c
->> index 7b2d582fff..0fd8baba97 100644
->> --- a/hw/acpi/generic_event_device.c
->> +++ b/hw/acpi/generic_event_device.c
->> @@ -26,6 +26,7 @@ static const uint32_t ged_supported_events[] = {
->>       ACPI_GED_PWR_DOWN_EVT,
->>       ACPI_GED_NVDIMM_HOTPLUG_EVT,
->>       ACPI_GED_CPU_HOTPLUG_EVT,
->> +    ACPI_GED_PCI_HOTPLUG_EVT,
->>   };
->>     /*
->> @@ -121,6 +122,12 @@ void build_ged_aml(Aml *table, const char *name,
->> HotplugHandler *hotplug_dev,
->>                              aml_notify(aml_name("\\_SB.NVDR"),
->>                                         aml_int(0x80)));
->>                   break;
->> +            case ACPI_GED_PCI_HOTPLUG_EVT:
->> +                aml_append(if_ctx,
->> +                           aml_acquire(aml_name("\\_SB.PCI0.BLCK"),
->> 0xFFFF));
->> +                aml_append(if_ctx, aml_call0("\\_SB.PCI0.PCNT"));
->> +                aml_append(if_ctx,
->> aml_release(aml_name("\\_SB.PCI0.BLCK")));
->> +                break;
->>               default:
->>                   /*
->>                    * Please make sure all the events in
->> ged_supported_events[]
->> @@ -299,6 +306,8 @@ static void acpi_ged_send_event(AcpiDeviceIf
->> *adev, AcpiEventStatusBits ev)
->>           sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
->>       } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
->>           sel = ACPI_GED_CPU_HOTPLUG_EVT;
->> +    } else if (ev & ACPI_PCI_HOTPLUG_STATUS) {
->> +        sel = ACPI_GED_PCI_HOTPLUG_EVT;
->>       } else {
->>           /* Unknown event. Return without generating interrupt. */
->>           warn_report("GED: Unsupported event %d. No irq injected", ev);
->> @@ -428,6 +437,11 @@ static void acpi_ged_realize(DeviceState *dev,
->> Error **errp)
->>               cpu_hotplug_hw_init(&s->container_cpuhp, OBJECT(dev),
->>                                   &s->cpuhp_state, 0);
->>               break;
->> +        case ACPI_GED_PCI_HOTPLUG_EVT:
->> +            memory_region_init(&s->container_pcihp, OBJECT(dev),
->> +                                "pcihp container",
->> +                                ACPI_PCI_HOTPLUG_REG_LEN);
->> +            sysbus_init_mmio(sbd, &s->container_pcihp);
->>           }
->>           ged_events--;
->>       }
->
+diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
+index ab0187a894..4dca22c0e2 100644
+--- a/include/hw/acpi/pci.h
++++ b/include/hw/acpi/pci.h
+@@ -37,7 +37,6 @@ typedef struct AcpiMcfgInfo {
+ void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info,
+                 const char *oem_id, const char *oem_table_id);
+ 
+-void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus);
+ void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope);
+ 
+ void build_srat_generic_affinity_structures(GArray *table_data);
+diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
+index 7c5d59243f..4d820b4baf 100644
+--- a/include/hw/acpi/pcihp.h
++++ b/include/hw/acpi/pcihp.h
+@@ -80,6 +80,8 @@ void build_append_pcihp_resources(Aml *table,
+                                   uint64_t io_addr, uint64_t io_len);
+ bool build_append_notification_callback(Aml *parent_scope, const PCIBus *bus);
+ 
++void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus);
++
+ /* Called on reset */
+ void acpi_pcihp_reset(AcpiPciHpState *s);
+ 
+diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
+index 907a08ac7f..942669ea89 100644
+--- a/hw/acpi/pcihp.c
++++ b/hw/acpi/pcihp.c
+@@ -27,6 +27,7 @@
+ #include "qemu/osdep.h"
+ #include "hw/acpi/pcihp.h"
+ #include "hw/acpi/aml-build.h"
++#include "hw/acpi/acpi_aml_interface.h"
+ #include "hw/pci-host/i440fx.h"
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pci_bridge.h"
+@@ -763,6 +764,178 @@ bool build_append_notification_callback(Aml *parent_scope, const PCIBus *bus)
+     return !!nr_notifiers;
+ }
+ 
++static void build_append_pcihp_notify_entry(Aml *method, int slot)
++{
++    Aml *if_ctx;
++    int32_t devfn = PCI_DEVFN(slot, 0);
++
++    if_ctx = aml_if(aml_and(aml_arg(0), aml_int(0x1U << slot), NULL));
++    aml_append(if_ctx, aml_notify(aml_name("S%.02X", devfn), aml_arg(1)));
++    aml_append(method, if_ctx);
++}
++
++static bool is_devfn_ignored_generic(const int devfn, const PCIBus *bus)
++{
++    const PCIDevice *pdev = bus->devices[devfn];
++
++    if (PCI_FUNC(devfn)) {
++        if (IS_PCI_BRIDGE(pdev)) {
++            /*
++             * Ignore only hotplugged PCI bridges on !0 functions, but
++             * allow describing cold plugged bridges on all functions
++             */
++            if (DEVICE(pdev)->hotplugged) {
++                return true;
++            }
++        }
++    }
++    return false;
++}
++
++static bool is_devfn_ignored_hotplug(const int devfn, const PCIBus *bus)
++{
++    PCIDevice *pdev = bus->devices[devfn];
++    if (pdev) {
++        return is_devfn_ignored_generic(devfn, bus) ||
++               !DEVICE_GET_CLASS(pdev)->hotpluggable ||
++               /* Cold plugged bridges aren't themselves hot-pluggable */
++               (IS_PCI_BRIDGE(pdev) && !DEVICE(pdev)->hotplugged);
++    } else { /* non populated slots */
++         /*
++          * hotplug is supported only for non-multifunction device
++          * so generate device description only for function 0
++          */
++        if (PCI_FUNC(devfn) ||
++            (pci_bus_is_express(bus) && PCI_SLOT(devfn) > 0)) {
++            return true;
++        }
++    }
++    return false;
++}
++
++static Aml *aml_pci_static_endpoint_dsm(PCIDevice *pdev)
++{
++    Aml *method;
++
++    g_assert(pdev->acpi_index != 0);
++    method = aml_method("_DSM", 4, AML_SERIALIZED);
++    {
++        Aml *params = aml_local(0);
++        Aml *pkg = aml_package(1);
++        aml_append(pkg, aml_int(pdev->acpi_index));
++        aml_append(method, aml_store(pkg, params));
++        aml_append(method,
++            aml_return(aml_call5("EDSM", aml_arg(0), aml_arg(1),
++                                 aml_arg(2), aml_arg(3), params))
++        );
++    }
++    return method;
++}
++
++static Aml *aml_pci_device_dsm(void)
++{
++    Aml *method;
++
++    method = aml_method("_DSM", 4, AML_SERIALIZED);
++    {
++        Aml *params = aml_local(0);
++        Aml *pkg = aml_package(2);
++        aml_append(pkg, aml_int(0));
++        aml_append(pkg, aml_int(0));
++        aml_append(method, aml_store(pkg, params));
++        aml_append(method,
++            aml_store(aml_name("BSEL"), aml_index(params, aml_int(0))));
++        aml_append(method,
++            aml_store(aml_name("ASUN"), aml_index(params, aml_int(1))));
++        aml_append(method,
++            aml_return(aml_call5("PDSM", aml_arg(0), aml_arg(1),
++                                 aml_arg(2), aml_arg(3), params))
++        );
++    }
++    return method;
++}
++
++void build_append_pcihp_slots(Aml *parent_scope, PCIBus *bus)
++{
++    int devfn;
++    Aml *dev, *notify_method = NULL, *method;
++    QObject *bsel = object_property_get_qobject(OBJECT(bus),
++                        ACPI_PCIHP_PROP_BSEL, NULL);
++    uint64_t bsel_val = qnum_get_uint(qobject_to(QNum, bsel));
++    qobject_unref(bsel);
++
++    aml_append(parent_scope, aml_name_decl("BSEL", aml_int(bsel_val)));
++    notify_method = aml_method("DVNT", 2, AML_NOTSERIALIZED);
++
++    for (devfn = 0; devfn < ARRAY_SIZE(bus->devices); devfn++) {
++        int slot = PCI_SLOT(devfn);
++        int adr = slot << 16 | PCI_FUNC(devfn);
++
++        if (is_devfn_ignored_hotplug(devfn, bus)) {
++            continue;
++        }
++
++        if (bus->devices[devfn]) {
++            dev = aml_scope("S%.02X", devfn);
++        } else {
++            dev = aml_device("S%.02X", devfn);
++            aml_append(dev, aml_name_decl("_ADR", aml_int(adr)));
++        }
++
++        /*
++         * Can't declare _SUN here for every device as it changes 'slot'
++         * enumeration order in linux kernel, so use another variable for it
++         */
++        aml_append(dev, aml_name_decl("ASUN", aml_int(slot)));
++        aml_append(dev, aml_pci_device_dsm());
++
++        aml_append(dev, aml_name_decl("_SUN", aml_int(slot)));
++        /* add _EJ0 to make slot hotpluggable  */
++        method = aml_method("_EJ0", 1, AML_NOTSERIALIZED);
++        aml_append(method,
++            aml_call2("PCEJ", aml_name("BSEL"), aml_name("_SUN"))
++        );
++        aml_append(dev, method);
++
++        build_append_pcihp_notify_entry(notify_method, slot);
++
++        /* device descriptor has been composed, add it into parent context */
++        aml_append(parent_scope, dev);
++    }
++    aml_append(parent_scope, notify_method);
++}
++
++void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus)
++{
++    int devfn;
++    Aml *dev;
++
++    for (devfn = 0; devfn < ARRAY_SIZE(bus->devices); devfn++) {
++        /* ACPI spec: 1.0b: Table 6-2 _ADR Object Bus Types, PCI type */
++        int adr = PCI_SLOT(devfn) << 16 | PCI_FUNC(devfn);
++        PCIDevice *pdev = bus->devices[devfn];
++
++        if (!pdev || is_devfn_ignored_generic(devfn, bus)) {
++            continue;
++        }
++
++        /* start to compose PCI device descriptor */
++        dev = aml_device("S%.02X", devfn);
++        aml_append(dev, aml_name_decl("_ADR", aml_int(adr)));
++
++        call_dev_aml_func(DEVICE(bus->devices[devfn]), dev);
++        /* add _DSM if device has acpi-index set */
++        if (pdev->acpi_index &&
++            !object_property_get_bool(OBJECT(pdev), "hotpluggable",
++                                      &error_abort)) {
++            aml_append(dev, aml_pci_static_endpoint_dsm(pdev));
++        }
++
++        /* device descriptor has been composed, add it into parent context */
++        aml_append(parent_scope, dev);
++    }
++}
++
+ const VMStateDescription vmstate_acpi_pcihp_pci_status = {
+     .name = "acpi_pcihp_pci_status",
+     .version_id = 1,
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index f08ce407c8..06b4b8eed4 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -338,29 +338,6 @@ build_facs(GArray *table_data)
+     g_array_append_vals(table_data, reserved, 40); /* Reserved */
+ }
+ 
+-static Aml *aml_pci_device_dsm(void)
+-{
+-    Aml *method;
+-
+-    method = aml_method("_DSM", 4, AML_SERIALIZED);
+-    {
+-        Aml *params = aml_local(0);
+-        Aml *pkg = aml_package(2);
+-        aml_append(pkg, aml_int(0));
+-        aml_append(pkg, aml_int(0));
+-        aml_append(method, aml_store(pkg, params));
+-        aml_append(method,
+-            aml_store(aml_name("BSEL"), aml_index(params, aml_int(0))));
+-        aml_append(method,
+-            aml_store(aml_name("ASUN"), aml_index(params, aml_int(1))));
+-        aml_append(method,
+-            aml_return(aml_call5("PDSM", aml_arg(0), aml_arg(1),
+-                                 aml_arg(2), aml_arg(3), params))
+-        );
+-    }
+-    return method;
+-}
+-
+ static Aml *aml_pci_edsm(void)
+ {
+     Aml *method, *ifctx;
+@@ -414,155 +391,6 @@ static Aml *aml_pci_edsm(void)
+     return method;
+ }
+ 
+-static Aml *aml_pci_static_endpoint_dsm(PCIDevice *pdev)
+-{
+-    Aml *method;
+-
+-    g_assert(pdev->acpi_index != 0);
+-    method = aml_method("_DSM", 4, AML_SERIALIZED);
+-    {
+-        Aml *params = aml_local(0);
+-        Aml *pkg = aml_package(1);
+-        aml_append(pkg, aml_int(pdev->acpi_index));
+-        aml_append(method, aml_store(pkg, params));
+-        aml_append(method,
+-            aml_return(aml_call5("EDSM", aml_arg(0), aml_arg(1),
+-                                 aml_arg(2), aml_arg(3), params))
+-        );
+-    }
+-    return method;
+-}
+-
+-static void build_append_pcihp_notify_entry(Aml *method, int slot)
+-{
+-    Aml *if_ctx;
+-    int32_t devfn = PCI_DEVFN(slot, 0);
+-
+-    if_ctx = aml_if(aml_and(aml_arg(0), aml_int(0x1U << slot), NULL));
+-    aml_append(if_ctx, aml_notify(aml_name("S%.02X", devfn), aml_arg(1)));
+-    aml_append(method, if_ctx);
+-}
+-
+-static bool is_devfn_ignored_generic(const int devfn, const PCIBus *bus)
+-{
+-    const PCIDevice *pdev = bus->devices[devfn];
+-
+-    if (PCI_FUNC(devfn)) {
+-        if (IS_PCI_BRIDGE(pdev)) {
+-            /*
+-             * Ignore only hotplugged PCI bridges on !0 functions, but
+-             * allow describing cold plugged bridges on all functions
+-             */
+-            if (DEVICE(pdev)->hotplugged) {
+-                return true;
+-            }
+-        }
+-    }
+-    return false;
+-}
+-
+-static bool is_devfn_ignored_hotplug(const int devfn, const PCIBus *bus)
+-{
+-    PCIDevice *pdev = bus->devices[devfn];
+-    if (pdev) {
+-        return is_devfn_ignored_generic(devfn, bus) ||
+-               !DEVICE_GET_CLASS(pdev)->hotpluggable ||
+-               /* Cold plugged bridges aren't themselves hot-pluggable */
+-               (IS_PCI_BRIDGE(pdev) && !DEVICE(pdev)->hotplugged);
+-    } else { /* non populated slots */
+-         /*
+-         * hotplug is supported only for non-multifunction device
+-         * so generate device description only for function 0
+-         */
+-        if (PCI_FUNC(devfn) ||
+-            (pci_bus_is_express(bus) && PCI_SLOT(devfn) > 0)) {
+-            return true;
+-        }
+-    }
+-    return false;
+-}
+-
+-void build_append_pcihp_slots(Aml *parent_scope, PCIBus *bus)
+-{
+-    int devfn;
+-    Aml *dev, *notify_method = NULL, *method;
+-    QObject *bsel = object_property_get_qobject(OBJECT(bus),
+-                        ACPI_PCIHP_PROP_BSEL, NULL);
+-    uint64_t bsel_val = qnum_get_uint(qobject_to(QNum, bsel));
+-    qobject_unref(bsel);
+-
+-    aml_append(parent_scope, aml_name_decl("BSEL", aml_int(bsel_val)));
+-    notify_method = aml_method("DVNT", 2, AML_NOTSERIALIZED);
+-
+-    for (devfn = 0; devfn < ARRAY_SIZE(bus->devices); devfn++) {
+-        int slot = PCI_SLOT(devfn);
+-        int adr = slot << 16 | PCI_FUNC(devfn);
+-
+-        if (is_devfn_ignored_hotplug(devfn, bus)) {
+-            continue;
+-        }
+-
+-        if (bus->devices[devfn]) {
+-            dev = aml_scope("S%.02X", devfn);
+-        } else {
+-            dev = aml_device("S%.02X", devfn);
+-            aml_append(dev, aml_name_decl("_ADR", aml_int(adr)));
+-        }
+-
+-        /*
+-         * Can't declare _SUN here for every device as it changes 'slot'
+-         * enumeration order in linux kernel, so use another variable for it
+-         */
+-        aml_append(dev, aml_name_decl("ASUN", aml_int(slot)));
+-        aml_append(dev, aml_pci_device_dsm());
+-
+-        aml_append(dev, aml_name_decl("_SUN", aml_int(slot)));
+-        /* add _EJ0 to make slot hotpluggable  */
+-        method = aml_method("_EJ0", 1, AML_NOTSERIALIZED);
+-        aml_append(method,
+-            aml_call2("PCEJ", aml_name("BSEL"), aml_name("_SUN"))
+-        );
+-        aml_append(dev, method);
+-
+-        build_append_pcihp_notify_entry(notify_method, slot);
+-
+-        /* device descriptor has been composed, add it into parent context */
+-        aml_append(parent_scope, dev);
+-    }
+-    aml_append(parent_scope, notify_method);
+-}
+-
+-void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus)
+-{
+-    int devfn;
+-    Aml *dev;
+-
+-    for (devfn = 0; devfn < ARRAY_SIZE(bus->devices); devfn++) {
+-        /* ACPI spec: 1.0b: Table 6-2 _ADR Object Bus Types, PCI type */
+-        int adr = PCI_SLOT(devfn) << 16 | PCI_FUNC(devfn);
+-        PCIDevice *pdev = bus->devices[devfn];
+-
+-        if (!pdev || is_devfn_ignored_generic(devfn, bus)) {
+-            continue;
+-        }
+-
+-        /* start to compose PCI device descriptor */
+-        dev = aml_device("S%.02X", devfn);
+-        aml_append(dev, aml_name_decl("_ADR", aml_int(adr)));
+-
+-        call_dev_aml_func(DEVICE(bus->devices[devfn]), dev);
+-        /* add _DSM if device has acpi-index set */
+-        if (pdev->acpi_index &&
+-            !object_property_get_bool(OBJECT(pdev), "hotpluggable",
+-                                      &error_abort)) {
+-            aml_append(dev, aml_pci_static_endpoint_dsm(pdev));
+-        }
+-
+-        /* device descriptor has been composed, add it into parent context */
+-        aml_append(parent_scope, dev);
+-    }
+-}
+-
+ /*
+  * build_prt - Define interrupt routing rules
+  *
+-- 
+2.49.0
 

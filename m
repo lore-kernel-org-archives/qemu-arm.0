@@ -1,246 +1,113 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1188566njb;
-        Wed, 14 May 2025 06:29:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU3vG69MfITns8Y40vAqIB3YlxG9LBO1eL5lSnmM/2spcQXqTxl5LyhZiVKy3Rx8JAEBQpTG1OPripH5Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IGpoDfKEow6nHwssZ+YHNl0j/n0bUXAwwY5ZyTNSfDSufqHtkU18Kv4iPe5IoUXEyIFx9E6
-X-Received: by 2002:a05:620a:2910:b0:7cd:146:3f9c with SMTP id af79cd13be357-7cd287c999bmr412312885a.5.1747229345861;
-        Wed, 14 May 2025 06:29:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747229345; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1201652njb;
+        Wed, 14 May 2025 06:48:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVZyfglpgvp2pqMN8cN4nQvCLjdUXfuvWybCjyTUX6wg1a3EYMB1ZsTRYpzaL0uQqoRhkioqz9gNDYCBQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFGDRHQfrfGooaGbytrSHpUndle9Yk4TvbvEmMqW7qJw3yF0YKVwaEdX8q/tq539fYeB+No
+X-Received: by 2002:a05:6000:2481:b0:38f:3c01:fb1f with SMTP id ffacd0b85a97d-3a3496c35e6mr2444129f8f.30.1747230489786;
+        Wed, 14 May 2025 06:48:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747230489; cv=none;
         d=google.com; s=arc-20240605;
-        b=Qm0havaKF0l1RxO1eByG19QVoVCYp8NUgmzK9uYVilGXzj6eMitlZkgHqeSNJ8dp5W
-         07eXa+GPzoAbeFwDNSWO1oBOaw2FX2EwlsA6WMcSdy+8uB3XKmG1EoSRmBKs+++SB4D0
-         tGs4OGhvmdN97XajscGhT1GyZRit1lHReNKS1OpvSVI+5X42OHzUb4e0R0LFh9EikCfv
-         xogC2PkjN+Ohv+elihRoYN5a3c1QT92prJVYrxUat4StqIxdir/NRGCOZAszBGcZwAMo
-         O7DAtEi6CJNJOeTAPfPnfaXigs9fZR1MHw1jqaN6WouDBMRv3uOboBvmPauAfYyNOMro
-         tcqg==
+        b=JHuz8jwywuAp27/KiSSZc8QHXhAzZVG4sQcEEw4rR6ZIe0jjUHAh1TT/lH7sVcA3o2
+         BQUnABy/i0Pq9ajqNXXwrUHp01jYEG+sGuSOt7hDbieR1UjwDDJxJQoDXk6NYCpVTU4b
+         vF+eUFwtwymxIOxY7lHYdDe2S98EwCdl6geNAz2Evkj7Ju5WNLC4yrpYzFzPGd2pDUgc
+         qoRYRfaRTk+BJRJEMWYKDBgjTh6pUmUi369Sy/aggv9kL8Ku+h+0Z5Qc0l9tWf2kNV2I
+         DpwdcE1JVptCx9/uUUmVv7E4xRCsHuIAhYwiqUoYex3LQREPUHmJYQ1m9Me8KsYBWVFU
+         Va9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=JHn8AdZYh5rmsPnGxFSZXcuFWSETN8ZSVj1hGnT9uJc=;
-        fh=XL1vsVqBurpXOV0YIkxstd1w2kkcT0XNnPEnAEU8CaI=;
-        b=UDhTSwwSvqNpofd3YL3xRzvotYGT79p4vqa9tUak3ZcCH9zlJXp4tMFFfod/v7Od6l
-         Jig/v3L9+NX7pPk9yuN4YJ73WpT5HY/2jYJkkrHS00ax1s926xuyIfIBOFFKPImCSPgG
-         kmPCVprT1L+g+zuiJjRAkyNODGEEbrOEzhNw3JnSfM44kGcJBj5ytQlHZQb2ZJcXikpV
-         o2WTemm/VArgCyVZ7FFRyOLhUHLcKscW2iq16iTsfDwarxgnA+ytB/jkomV0TZLx41Bd
-         WwqhdgkLBSQKxY3FyQdebipdT+MCCem0B9goHwmYnPWycfDVoGaTSkgS4NiJCGvLdoXZ
-         lwPg==;
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=HCkJbFlmlMvu/m2SsPDolJ7VX8J/gzvzd6fam2//rM0=;
+        fh=dHOtjAGENO5knUwSeQ8LkYDvTF/gSV2BvNe2GOyBGVk=;
+        b=WRxL8zot6qqBzMFdZWQbdixHohEgBDNoCv5XYNXsjX9X1AlA5yAeTQl5I2Wwagd6g2
+         1d4ZSdmqFFha9dbonockxh8RsbwxeASGiiYwu7p1lkwxkjK66Qbvpk1dYwkGJYc4LPda
+         0kQWTZBnshfZXqx8lv6XJ8cLhLL/pO+Qfkv545GBlpdDKG+LjKgnReu+GPQ2hXXa7oaV
+         lO7ZnyAwqPy41y5rRwhF5uNTmOBTyruDb6Tf66THuWnUA3OKmvxKKNrKyuXcGk/fuBx3
+         xiKh3v7JM9ldf1RvhrF2c5mnMVgb0eE6xq8bSbJXF4vNRonze6IYf508uyfwyXOpNjVS
+         5Uxg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NFyqIvO8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd00fe1a10si1475309685a.377.2025.05.14.06.29.05
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 May 2025 06:29:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=shameerali.kolothum.thodi@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <shameerali.kolothum.thodi@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a1f5a6a67fsi9605390f8f.226.2025.05.14.06.48.09
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 May 2025 06:48:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NFyqIvO8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uFC9M-0001JD-2n; Wed, 14 May 2025 09:27:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uFC9K-0001Hk-4M
- for qemu-arm@nongnu.org; Wed, 14 May 2025 09:27:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uFC9H-0006FA-Ak
- for qemu-arm@nongnu.org; Wed, 14 May 2025 09:27:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1747229270;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=JHn8AdZYh5rmsPnGxFSZXcuFWSETN8ZSVj1hGnT9uJc=;
- b=NFyqIvO8P5YzBj/N3bZMg0RGalqKOlZH13wd9gcPvkgjLDcZthtOwS1hyk+Ny6yMA0C//7
- gaOm0NHKzeY+iy268MOgXhx2RV2O/9HBQv+1+TdHLe0ZwjdedDMls6uSK9L6HXuYQLyDl8
- IiTqeRmgn8VnhwKhbTuyRvBmsWpuN7o=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-255-eHkGCCgQOiWqkp7qakB-qw-1; Wed, 14 May 2025 09:27:49 -0400
-X-MC-Unique: eHkGCCgQOiWqkp7qakB-qw-1
-X-Mimecast-MFC-AGG-ID: eHkGCCgQOiWqkp7qakB-qw_1747229268
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-43d0a037f97so35434255e9.2
- for <qemu-arm@nongnu.org>; Wed, 14 May 2025 06:27:48 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747229267; x=1747834067;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=JHn8AdZYh5rmsPnGxFSZXcuFWSETN8ZSVj1hGnT9uJc=;
- b=LkVndndIHNnaF6VOPa+wKEwW2sbYKznxJBhws1YmImXjlZ2QttTZjJGvKeIgTsvlvp
- oAo3RZcP3Z2766WNdNkL6C6pvTVLWbY4wry9kFMhEsWtad8FVMTnoNgmTBsgrkwUqZVX
- Ze6fhtRG8X5WUI8mg3Aj8p8H4A2jZM9pTnMpQDmv5C930LW7xfwxIElz2dvXhtTyF+qp
- l9mapIFE/m46q+6zQ7KfkhyWag+V20x11F2PXPpxx7FNnsq1iE8482UziEosQUftxYCQ
- dZhCRuOM1LAGqFSXU66IsGgjwAlR+6lMEMuZ7Cjlt6PUX1SXWNDJGu96UbB/4DTKYhtW
- n9zg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXUKaGLHpydD0dweK1FMVlOg0qZ16Uv+x17YHirqTqjzWVPqV3ZkOJbEcqiZloUVi7TIdl8id92MA==@nongnu.org
-X-Gm-Message-State: AOJu0YxUy1YH1eKy5kFUYKXwYNlVW9vHzh3fF4iV2L13lFIlPU4P2JcI
- eOI6U9tpZDWkXiXrcDmRnxbc5IssGV8wgT4ZXSMlWbrP/kl/wcZDTfiH0xcNd+Z2htwhlvyKzt8
- o0xkFSIErVilQYXNmpNoWzH9mUwO2QDcnibLWolL7ZS2B7l3C3/FoIhHiRsnr
-X-Gm-Gg: ASbGncv0vwtb6XtoS2OZobnGc8G+rgTFLjgUztIupTVNmbvucj0Zl2VOzsF7OmP/qin
- yo59s7iZPtFENP+07nhrqC+JpqY4rn9yMuTcm5Gdx+ww3pcgXY70WYCliJxci9E+SfobB732BR3
- UMve6/ZODgQ/K0hN7ApmMTO6l0miSaGcR9c7ionv/WxPwctTL+TyszMbds/Sr6w/MMonmqSj7eC
- v492mGH0w3CC2or7yqlyhLnxgoKZSTrcmY79vWKwUrG6ST88e4jOWQbQvdzbux5H5Y7CGJs/VOp
- tRwbNSG7PM1Y8AAaPRZ64MYWIM/vE353ojy7r3/Fdf2eDOfuZA==
-X-Received: by 2002:a05:6000:2510:b0:39a:c467:a095 with SMTP id
- ffacd0b85a97d-3a3496a67camr2677114f8f.24.1747229267660; 
- Wed, 14 May 2025 06:27:47 -0700 (PDT)
-X-Received: by 2002:a05:6000:2510:b0:39a:c467:a095 with SMTP id
- ffacd0b85a97d-3a3496a67camr2677089f8f.24.1747229267305; 
- Wed, 14 May 2025 06:27:47 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a1f58ebe4fsm20074754f8f.39.2025.05.14.06.27.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 14 May 2025 06:27:46 -0700 (PDT)
-Message-ID: <395b5586-67f9-48db-9830-c4ace0b85e47@redhat.com>
-Date: Wed, 14 May 2025 15:27:45 +0200
+       spf=pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=shameerali.kolothum.thodi@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZyF3333rdz6H7jl;
+	Wed, 14 May 2025 21:45:19 +0800 (CST)
+Received: from frapeml100007.china.huawei.com (unknown [7.182.85.133])
+	by mail.maildlp.com (Postfix) with ESMTPS id E8EF01400DC;
+	Wed, 14 May 2025 21:48:08 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml100007.china.huawei.com (7.182.85.133) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Wed, 14 May 2025 15:47:53 +0200
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Wed, 14 May 2025 15:47:53 +0200
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: "eric.auger@redhat.com" <eric.auger@redhat.com>, Cornelia Huck
+	<cohuck@redhat.com>, "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+	<qemu-arm@nongnu.org>, "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "maz@kernel.org"
+	<maz@kernel.org>, "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+	"sebott@redhat.com" <sebott@redhat.com>, "armbru@redhat.com"
+	<armbru@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
+	"abologna@redhat.com" <abologna@redhat.com>, "jdenemar@redhat.com"
+	<jdenemar@redhat.com>
+CC: "agraf@csgraf.de" <agraf@csgraf.de>, "shahuang@redhat.com"
+	<shahuang@redhat.com>, "mark.rutland@arm.com" <mark.rutland@arm.com>,
+	"philmd@linaro.org" <philmd@linaro.org>, "pbonzini@redhat.com"
+	<pbonzini@redhat.com>
+Subject: RE: [PATCH v3 00/10] kvm/arm: Introduce a customizable aarch64 KVM
+ host model
+Thread-Topic: [PATCH v3 00/10] kvm/arm: Introduce a customizable aarch64 KVM
+ host model
+Thread-Index: AQHbrVvRKlWe4qTsaku+jGkyYZoxlrPQu3UAgAGVOyA=
+Date: Wed, 14 May 2025 13:47:52 +0000
+Message-ID: <4fcfb4624f90491ebb238de76f04e4e5@huawei.com>
+References: <20250414163849.321857-1-cohuck@redhat.com>
+ <dadc4acd-97c8-4647-9467-89cd1966a6f2@redhat.com>
+In-Reply-To: <dadc4acd-97c8-4647-9467-89cd1966a6f2@redhat.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.203.177.241]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/5] hw/arm/aspeed_ast27x0: Fix unimplemented region
- overlap with vbootrom
-To: Steven Lee <steven_lee@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, longzl2@lenovo.com, yunlin.tang@aspeedtech.com
-References: <20250514090354.1461717-1-steven_lee@aspeedtech.com>
- <20250514090354.1461717-3-steven_lee@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
- 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
- yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
- 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
- ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
- RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
- gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
- 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
- Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
- tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSJDw6lkcmljIExl
- IEdvYXRlciA8Y2xnQHJlZGhhdC5jb20+wsGRBBMBCAA7FiEEoPZlSPBIlev+awtgUaNDx8/7
- 7KEFAmTLlVECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AACgkQUaNDx8/77KG0eg//
- S0zIzTcxkrwJ/9XgdcvVTnXLVF9V4/tZPfB7sCp8rpDCEseU6O0TkOVFoGWM39sEMiQBSvyY
- lHrP7p7E/JYQNNLh441MfaX8RJ5Ul3btluLapm8oHp/vbHKV2IhLcpNCfAqaQKdfk8yazYhh
- EdxTBlzxPcu+78uE5fF4wusmtutK0JG0sAgq0mHFZX7qKG6LIbdLdaQalZ8CCFMKUhLptW71
- xe+aNrn7hScBoOj2kTDRgf9CE7svmjGToJzUxgeh9mIkxAxTu7XU+8lmL28j2L5uNuDOq9vl
- hM30OT+pfHmyPLtLK8+GXfFDxjea5hZLF+2yolE/ATQFt9AmOmXC+YayrcO2ZvdnKExZS1o8
- VUKpZgRnkwMUUReaF/mTauRQGLuS4lDcI4DrARPyLGNbvYlpmJWnGRWCDguQ/LBPpbG7djoy
- k3NlvoeA757c4DgCzggViqLm0Bae320qEc6z9o0X0ePqSU2f7vcuWN49Uhox5kM5L86DzjEQ
- RHXndoJkeL8LmHx8DM+kx4aZt0zVfCHwmKTkSTQoAQakLpLte7tWXIio9ZKhUGPv/eHxXEoS
- 0rOOAZ6np1U/xNR82QbF9qr9TrTVI3GtVe7Vxmff+qoSAxJiZQCo5kt0YlWwti2fFI4xvkOi
- V7lyhOA3+/3oRKpZYQ86Frlo61HU3r6d9wzOwU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhW
- pOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNLSoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZ
- KXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVUcP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwp
- bV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6
- TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFU
- CSLB2AE4wXQkJbApye48qnZ09zc929df5gU6hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iS
- YBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616dtb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6g
- LxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7
- JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1cOY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0Sdu
- jWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/Jx
- IqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k
- 8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoXywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjK
- yKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9j
- hQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Tad2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yop
- s302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it+OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/p
- LHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1nHzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBU
- wYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVISl73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lU
- XOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfA
- HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
- izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250514090354.1461717-3-steven_lee@aspeedtech.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: UjME-gBucHNhWw-y4lrJTWFvc8jViFYJTX_kN00Yd3g_1747229268
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.686,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xQul9Imsigit
+X-TUID: wOvn9Ph+DyGn
 
-On 5/14/25 11:03, Steven Lee wrote:
-> The unimplemented memory region overlaps with the VBootROM address
-> range, causing incorrect memory layout and potential behavior issues.
-> 
-> This patch adjusts the size and start address of the unimplemented
-> region to avoid collision. The IO memory region (ASPEED_DEV_IOMEM) is
-> now moved to 0x20000 to reserve space for VBootROM at 0x0.
-> 
-> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-
-You didn't reply to the question I asked on the v1 series.
-How useful is this ASPEED_DEV_IOMEM region ?
-
-Thanks,
-
-C.
-
-
-
-> ---
->   hw/arm/aspeed_ast27x0.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index 1974a25766..bb61c30cf4 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -23,14 +23,14 @@
->   #include "qobject/qlist.h"
->   #include "qemu/log.h"
->   
-> -#define AST2700_SOC_IO_SIZE          0x01000000
-> +#define AST2700_SOC_IO_SIZE          0x00FE0000
->   #define AST2700_SOC_IOMEM_SIZE       0x01000000
->   #define AST2700_SOC_DPMCU_SIZE       0x00040000
->   #define AST2700_SOC_LTPI_SIZE        0x01000000
->   
->   static const hwaddr aspeed_soc_ast2700_memmap[] = {
-> -    [ASPEED_DEV_IOMEM]     =  0x00000000,
->       [ASPEED_DEV_VBOOTROM]  =  0x00000000,
-> +    [ASPEED_DEV_IOMEM]     =  0x00020000,
->       [ASPEED_DEV_SRAM]      =  0x10000000,
->       [ASPEED_DEV_DPMCU]     =  0x11000000,
->       [ASPEED_DEV_IOMEM0]    =  0x12000000,
-
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRXJpYyBBdWdlciA8ZXJp
+Yy5hdWdlckByZWRoYXQuY29tPg0KPiBTZW50OiBUdWVzZGF5LCBNYXkgMTMsIDIwMjUgNDozMCBQ
+TQ0KPiBUbzogQ29ybmVsaWEgSHVjayA8Y29odWNrQHJlZGhhdC5jb20+OyBlcmljLmF1Z2VyLnBy
+b0BnbWFpbC5jb207IHFlbXUtDQo+IGRldmVsQG5vbmdudS5vcmc7IHFlbXUtYXJtQG5vbmdudS5v
+cmc7IGt2bWFybUBsaXN0cy5saW51eC5kZXY7DQo+IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsg
+cmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZzsNCj4gYWxleC5iZW5uZWVAbGluYXJvLm9yZzsg
+bWF6QGtlcm5lbC5vcmc7IG9saXZlci51cHRvbkBsaW51eC5kZXY7DQo+IHNlYm90dEByZWRoYXQu
+Y29tOyBTaGFtZWVyYWxpIEtvbG90aHVtIFRob2RpDQo+IDxzaGFtZWVyYWxpLmtvbG90aHVtLnRo
+b2RpQGh1YXdlaS5jb20+OyBhcm1icnVAcmVkaGF0LmNvbTsNCj4gYmVycmFuZ2VAcmVkaGF0LmNv
+bTsgYWJvbG9nbmFAcmVkaGF0LmNvbTsgamRlbmVtYXJAcmVkaGF0LmNvbQ0KPiBDYzogYWdyYWZA
+Y3NncmFmLmRlOyBzaGFodWFuZ0ByZWRoYXQuY29tOyBtYXJrLnJ1dGxhbmRAYXJtLmNvbTsNCj4g
+cGhpbG1kQGxpbmFyby5vcmc7IHBib256aW5pQHJlZGhhdC5jb20NCj4gU3ViamVjdDogUmU6IFtQ
+QVRDSCB2MyAwMC8xMF0ga3ZtL2FybTogSW50cm9kdWNlIGEgY3VzdG9taXphYmxlIGFhcmNoNjQN
+Cj4gS1ZNIGhvc3QgbW9kZWwNCg0KWy4uLl0NCg0KPiA+IFdlIHN0aWxsIGhhdmUgdG8gZGVhbCB3
+aXRoIE1JRFIvUkVWSURSL0FJRFIgZGlmZmVyZW5jZXMgYnkgZXhwbG9pdGluZw0KPiA+DQo+IGh0
+dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xp
+bnV4LmdpdC9jb21taXQ/aQ0KPiBkPWQzMDBiMDE2OGVhOGZkNTAyMmExNDEzYmQzN2FiNjNmNGU1
+YTdkNGQNCj4gPiAoaW4gYSBkaWZmZXJlbnQgc2VyaWVzLikNCj4gU2hhbWVlciwgZG8geW91IHBs
+YW4gdG8gY29udHJpYnV0ZSB0aGUgcWVtdSBpbnRlZ3JhdGlvbiBvZiB0aGlzIGZlYXR1cmUNCj4g
+eW91IGRldmVsb3BwZWQgb24ga2VybmVsIHNpZGU7IG9yIGRvIHlvdSBhbGxvdyB1cyB0byBpbnRl
+Z3JhdGUgaXQgaW4NCj4gdGhpcyBzZXJpZXM/DQoNClllcywgaXQncyBvbiBteSBUb0RvIGxpc3Qu
+IEknbGwgZmlyc3QgZ28gdGhyb3VnaCB0aGlzIHNlcmllcyBhbmQgdGhlbiB3b3JrIG9uDQphZGRp
+bmcgdGhlIGFib3ZlIHN1cHBvcnQgb24gdG9wIG9mIGl0Lg0KDQpUaGFua3MsDQpTaGFtZWVyDQoN
+Cg==

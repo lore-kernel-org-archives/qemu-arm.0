@@ -1,87 +1,87 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1338031njb;
-        Wed, 14 May 2025 10:05:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUZtteipg3R6ue/BuXhUsYdX0AG+HqVEEUSs6tMUt7b6+eMsDK8MMn4UG+hO9yAP/lEvS9NCiGZO4DBqg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGIZq+iT9gLWnna+fC1k9UMsMP5179LNwdqzoQPBCGMm+ZhA9hQNkYSEBebjF0oLDlhcUB+
-X-Received: by 2002:a05:6000:2a3:b0:399:6dc0:f134 with SMTP id ffacd0b85a97d-3a349947e6dmr3600574f8f.51.1747242329283;
-        Wed, 14 May 2025 10:05:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747242329; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1338756njb;
+        Wed, 14 May 2025 10:06:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUAFDT1CrbP0D60IhmXKIbGRjNXnVTcrvPd914OR5O2R0Vl/oOCYNCI24VAQk/StbmewDlgH8k1kfeZ5A==@linaro.org
+X-Google-Smtp-Source: AGHT+IEpi7mtoup8ypqxWxeVMFkTyv0H6m20ZRz/0AyWxe0Nvw/CzaPSgz4k/Gtf8NpqtCcKegFQ
+X-Received: by 2002:a05:622a:418d:b0:48c:c81c:4773 with SMTP id d75a77b69052e-49495d06258mr65763681cf.40.1747242378871;
+        Wed, 14 May 2025 10:06:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747242378; cv=none;
         d=google.com; s=arc-20240605;
-        b=kkWVk9HoSvIjaZeMx3Jz+rCYo73OyoSUqCbcq/0jyinIKYDNKdzwnWVhOUJfv5tmp2
-         Zt3JKIrzzva3jJDIjklyVmkY8CwTS3O5usQInSDVSSLMg17i4lALEyD2iugDBK9KwKp9
-         bKwpaL/+uLR/JY0GKNb3zIftxjPuYXV04RLrCRj2ibkIYew3PxPkftQuWgxqMmA1eeVW
-         SFjIrbB7H+nM44I2Ad5awd8D1a0rfMglBNGVDFUZa+vOMpvUCXt+I5kgLF0iWMJ8OEIm
-         A/z8+x4qy9WAUejzng7kyHjKCE13lzZUGQJpcuCe/UEv+viVT4UnpEmhhnAx+vfoPBI8
-         r3PA==
+        b=YcO9BnxbO9a12df9jwU0R0uaABLCpB0nji7Xqd2EUI3OmP0kwp2S2969+v0XtWwfHS
+         z6EbNRC6TuGgKk36Xu7AdR7DwqER1qaApRxOklVZh4DrGX36hIBkdz78WztR+ud8Uymm
+         BsDqRjmV84GUsNRflCqJlLH9QvDpWMID6S3kn6a+57Swv1URyWZNJiJPfEjo8mY9FPK9
+         Q62VlOGk95omJkuBrslIYij9kpQYCax6/KTCw+x6fQJupIJUnipLYiGr11oyq4fzjIkO
+         Uopmby4wE5/5AqOlT0SZxPc3ohWBhD6iUOfGCdqFW7WhIqJsUorEvAPKFA+7GzbHiRH8
+         Vo1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=37bWn0/SLN7Et2zFWZ1hnl9+t8mUMekHwstaQlziV6U=;
+        bh=yVIJWQ0kvBuB0SkOogCK3Yd6KsTducu6vpbj9Cu3wcs=;
         fh=uYJrYLplVlPp9m4JQmP4YNBZY8OxB84kzGSMUd/o4NA=;
-        b=lqkWQ16XFp1cl7HnkkfSQpNRjGVCEvKKz3RAXUKixY3Q/RCt+E+UNfObu3Sa5cKgW/
-         J5m95UIMT2H2DLFma+OTsQDzBINCY9HDYsq7dEbHvWceSNSAkVdICOTMow58njdfGSPn
-         T1gHqzHE0boahwWb7RH7Oe4lrKhB2UqAkF5itd/aTQ8kUNpHI8PasaYQlWW0GX0DIAFe
-         S4E8EIkSZ5erqyBPztXSS19i4q8T61e60jhvyFPKauq124wjZfWynJqezQCi+lrUUFvJ
-         PvXz8tlrt+t2oB0Rlry+Ml3h6pObV6QM4veffdMEkG7BaaNZZW8PfeM9EjFdoOGLfKoe
-         ZKag==;
+        b=OorT9WbQ5/+/fu2Rl3YmwCrF+oqvm15LMAT/B5g+oc/eyHkxlAAkfOSt0zPlIkycbV
+         YvpY9nbDoW4L1qkMidnqe2qAwo+XOtMV4QXn/AmbJaJ2xiU9cCv6EgK03o2rvKmy6KM0
+         tVtwzsRFXIqABDeFUDsZ+HOugdwUVnne/mj29iBBwv474d8T/ChIypLCuuwXdEHPcks3
+         G9enfIjAw5q6Qnk7tJKV55PnK8bePgpdszkEK8WhKrejGOk4xVtOpo5sjgjKRl6uBV+3
+         qSZ+d4ypRJEPSPa2yrXZ9QcN40RSOeti16vV2Cmsh9STiOMTutj3JDbxgP5FnvEEBpWD
+         v65A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ty8v5Oah;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dECI92LF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-442f39954a1si17516485e9.149.2025.05.14.10.05.29
+        by mx.google.com with ESMTPS id d75a77b69052e-4945259b2f5si130120271cf.537.2025.05.14.10.06.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 May 2025 10:05:29 -0700 (PDT)
+        Wed, 14 May 2025 10:06:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ty8v5Oah;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dECI92LF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uFFXd-0001hx-Vd; Wed, 14 May 2025 13:05:14 -0400
+	id 1uFFXY-0001Y6-Ny; Wed, 14 May 2025 13:05:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uFFXa-0001dX-CC
- for qemu-devel@nongnu.org; Wed, 14 May 2025 13:05:10 -0400
+ id 1uFFXW-0001Ty-Mf
+ for qemu-devel@nongnu.org; Wed, 14 May 2025 13:05:06 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uFFXX-0007bI-Jh
- for qemu-devel@nongnu.org; Wed, 14 May 2025 13:05:09 -0400
+ id 1uFFXT-0007P3-Ec
+ for qemu-devel@nongnu.org; Wed, 14 May 2025 13:05:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1747242306;
+ s=mimecast20190719; t=1747242302;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=37bWn0/SLN7Et2zFWZ1hnl9+t8mUMekHwstaQlziV6U=;
- b=Ty8v5OahI1ggi2G852jp/ZPcdUYpiwDAHKDoPm59XkQa22YRZ9nynT7f+fh/DWaZcOxhOm
- zHsardhlemZYhv866DCkDcLV/FFjifKGNiEKPJixkgS7hZoHsfhUqbjxuEabOgQCXN1pKx
- tu3fzPS1pWoHCtqTkyGcee7l3Vx2ktw=
+ bh=yVIJWQ0kvBuB0SkOogCK3Yd6KsTducu6vpbj9Cu3wcs=;
+ b=dECI92LFKq+7gL0Sokx1tpvk1kDIebku7oU8miuXcivtn93R14Xy4LSbIdkfJsWQ3DnGoV
+ sNzdH0OCI5Oyz/nfoKZwGs//5y2y2dizgXxw2L6o/1oWPKmiX0hheneuBDSk4QgJ6zx+nm
+ 5s5yIE0vstfPtabS4fM4w1bqNy84R8s=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-627-E7G1LCGHPcGolzQ0IPk1Ig-1; Wed,
- 14 May 2025 13:05:03 -0400
-X-MC-Unique: E7G1LCGHPcGolzQ0IPk1Ig-1
-X-Mimecast-MFC-AGG-ID: E7G1LCGHPcGolzQ0IPk1Ig_1747242302
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-47-Q6b1etonNSqZC3TLReqeiw-1; Wed,
+ 14 May 2025 13:04:58 -0400
+X-MC-Unique: Q6b1etonNSqZC3TLReqeiw-1
+X-Mimecast-MFC-AGG-ID: Q6b1etonNSqZC3TLReqeiw_1747242297
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 47CB7180036F; Wed, 14 May 2025 17:05:02 +0000 (UTC)
+ id 3567F18001EA; Wed, 14 May 2025 17:04:57 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.14])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C0FC930001B0; Wed, 14 May 2025 17:04:57 +0000 (UTC)
+ id 64A2630001B0; Wed, 14 May 2025 17:04:51 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
@@ -89,10 +89,10 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: pbonzini@redhat.com,
 	Jonathan.Cameron@huawei.com,
 	philmd@linaro.org
-Subject: [PATCH 04/22] hw/pci-host/gpex-acpi: Add native_pci_hotplug arg to
- acpi_dsdt_add_pci_osc
-Date: Wed, 14 May 2025 19:00:51 +0200
-Message-ID: <20250514170431.2786231-5-eric.auger@redhat.com>
+Subject: [PATCH 03/22] hw/acpi: Rename and move build_x86_acpi_pci_hotplug to
+ pcihp
+Date: Wed, 14 May 2025 19:00:50 +0200
+Message-ID: <20250514170431.2786231-4-eric.auger@redhat.com>
 In-Reply-To: <20250514170431.2786231-1-eric.auger@redhat.com>
 References: <20250514170431.2786231-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -107,7 +107,7 @@ X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.686,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,70 +122,488 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7SZi53XeeZfu
+X-TUID: SItaplSVqPlE
 
-Add a new argument to acpi_dsdt_add_pci_osc to be able to disable
-native pci hotplug.
+We plan to reuse build_x86_acpi_pci_hotplug() implementation
+for ARM so let's move the code to generic pcihp.
+
+Associated static aml_pci_pdsm() helper is also moved along.
+build_x86_acpi_pci_hotplug is renamed into build_acpi_pci_hotplug().
+
+No code change intended.
+
+Also fix the reference to  acpi_pci_hotplug.rst documentation
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
 
 ---
 
 rfc -> v1:
-- updated the "Allow OS control for all 5 features" comment
+- make build_append_pci_dsm_func0_common non static and move it to
+  pcihp
 ---
- hw/pci-host/gpex-acpi.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
+ hw/i386/acpi-build.h    |   4 -
+ include/hw/acpi/pcihp.h |   9 +-
+ hw/acpi/pcihp.c         | 174 ++++++++++++++++++++++++++++++++++++++-
+ hw/i386/acpi-build.c    | 176 +---------------------------------------
+ 4 files changed, 183 insertions(+), 180 deletions(-)
 
-diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
-index 0aba47c71c..f34b7cf25e 100644
---- a/hw/pci-host/gpex-acpi.c
-+++ b/hw/pci-host/gpex-acpi.c
-@@ -50,7 +50,7 @@ static void acpi_dsdt_add_pci_route_table(Aml *dev, uint32_t irq,
-     }
+diff --git a/hw/i386/acpi-build.h b/hw/i386/acpi-build.h
+index 275ec058a1..8ba3c33e48 100644
+--- a/hw/i386/acpi-build.h
++++ b/hw/i386/acpi-build.h
+@@ -5,10 +5,6 @@
+ 
+ extern const struct AcpiGenericAddress x86_nvdimm_acpi_dsmio;
+ 
+-/* PCI Hot-plug registers' base. See docs/specs/acpi_pci_hotplug.rst */
+-#define ACPI_PCIHP_SEJ_BASE 0x8
+-#define ACPI_PCIHP_BNMR_BASE 0x10
+-
+ void acpi_setup(void);
+ Object *acpi_get_i386_pci_host(void);
+ 
+diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
+index a97904bada..95efe9a804 100644
+--- a/include/hw/acpi/pcihp.h
++++ b/include/hw/acpi/pcihp.h
+@@ -3,7 +3,7 @@
+  *
+  * QEMU supports PCI hotplug via ACPI. This module
+  * implements the interface between QEMU and the ACPI BIOS.
+- * Interface specification - see docs/specs/acpi_pci_hotplug.txt
++ * Interface specification - see docs/specs/acpi_pci_hotplug.rst
+  *
+  * Copyright (c) 2013, Red Hat Inc, Michael S. Tsirkin (mst@redhat.com)
+  * Copyright (c) 2006 Fabrice Bellard
+@@ -33,6 +33,10 @@
+ #define ACPI_PCIHP_IO_BASE_PROP "acpi-pcihp-io-base"
+ #define ACPI_PCIHP_IO_LEN_PROP "acpi-pcihp-io-len"
+ 
++/* PCI Hot-plug registers bases. See docs/spec/acpi_pci_hotplug.rst */
++#define ACPI_PCIHP_SEJ_BASE 0x8
++#define ACPI_PCIHP_BNMR_BASE 0x10
++
+ typedef struct AcpiPciHpPciStatus {
+     uint32_t up;
+     uint32_t down;
+@@ -69,6 +73,9 @@ void acpi_pcihp_device_unplug_request_cb(HotplugHandler *hotplug_dev,
+                                          AcpiPciHpState *s, DeviceState *dev,
+                                          Error **errp);
+ 
++void build_acpi_pci_hotplug(Aml *table, uint64_t pcihp_addr);
++void build_append_pci_dsm_func0_common(Aml *ctx, Aml *retvar);
++
+ /* Called on reset */
+ void acpi_pcihp_reset(AcpiPciHpState *s);
+ 
+diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
+index aac90013d4..e0260f67e6 100644
+--- a/hw/acpi/pcihp.c
++++ b/hw/acpi/pcihp.c
+@@ -26,7 +26,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "hw/acpi/pcihp.h"
+-
++#include "hw/acpi/aml-build.h"
+ #include "hw/pci-host/i440fx.h"
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pci_bridge.h"
+@@ -513,6 +513,178 @@ void acpi_pcihp_init(Object *owner, AcpiPciHpState *s, PCIBus *root_bus,
+                                    OBJ_PROP_FLAG_READ);
  }
  
--static void acpi_dsdt_add_pci_osc(Aml *dev)
-+static void acpi_dsdt_add_pci_osc(Aml *dev, bool enable_native_pcie_hotplug)
++void build_append_pci_dsm_func0_common(Aml *ctx, Aml *retvar)
++{
++    Aml *UUID, *ifctx1;
++    uint8_t byte_list[1] = { 0 }; /* nothing supported yet */
++
++    aml_append(ctx, aml_store(aml_buffer(1, byte_list), retvar));
++    /*
++     * PCI Firmware Specification 3.1
++     * 4.6.  _DSM Definitions for PCI
++     */
++    UUID = aml_touuid("E5C937D0-3553-4D7A-9117-EA4D19C3434D");
++    ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(0), UUID)));
++    {
++        /* call is for unsupported UUID, bail out */
++        aml_append(ifctx1, aml_return(retvar));
++    }
++    aml_append(ctx, ifctx1);
++
++    ifctx1 = aml_if(aml_lless(aml_arg(1), aml_int(2)));
++    {
++        /* call is for unsupported REV, bail out */
++        aml_append(ifctx1, aml_return(retvar));
++    }
++    aml_append(ctx, ifctx1);
++}
++
++static Aml *aml_pci_pdsm(void)
++{
++    Aml *method, *ifctx, *ifctx1;
++    Aml *ret = aml_local(0);
++    Aml *caps = aml_local(1);
++    Aml *acpi_index = aml_local(2);
++    Aml *zero = aml_int(0);
++    Aml *one = aml_int(1);
++    Aml *not_supp = aml_int(0xFFFFFFFF);
++    Aml *func = aml_arg(2);
++    Aml *params = aml_arg(4);
++    Aml *bnum = aml_derefof(aml_index(params, aml_int(0)));
++    Aml *sunum = aml_derefof(aml_index(params, aml_int(1)));
++
++    method = aml_method("PDSM", 5, AML_SERIALIZED);
++
++    /* get supported functions */
++    ifctx = aml_if(aml_equal(func, zero));
++    {
++        build_append_pci_dsm_func0_common(ifctx, ret);
++
++        aml_append(ifctx, aml_store(zero, caps));
++        aml_append(ifctx,
++            aml_store(aml_call2("AIDX", bnum, sunum), acpi_index));
++        /*
++         * advertise function 7 if device has acpi-index
++         * acpi_index values:
++         *            0: not present (default value)
++         *     FFFFFFFF: not supported (old QEMU without PIDX reg)
++         *        other: device's acpi-index
++         */
++        ifctx1 = aml_if(aml_lnot(
++                     aml_or(aml_equal(acpi_index, zero),
++                            aml_equal(acpi_index, not_supp), NULL)
++                 ));
++        {
++            /* have supported functions */
++            aml_append(ifctx1, aml_or(caps, one, caps));
++            /* support for function 7 */
++            aml_append(ifctx1,
++                aml_or(caps, aml_shiftleft(one, aml_int(7)), caps));
++        }
++        aml_append(ifctx, ifctx1);
++
++        aml_append(ifctx, aml_store(caps, aml_index(ret, zero)));
++        aml_append(ifctx, aml_return(ret));
++    }
++    aml_append(method, ifctx);
++
++    /* handle specific functions requests */
++    /*
++     * PCI Firmware Specification 3.1
++     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
++     *        Operating Systems
++     */
++    ifctx = aml_if(aml_equal(func, aml_int(7)));
++    {
++       Aml *pkg = aml_package(2);
++
++       aml_append(ifctx, aml_store(aml_call2("AIDX", bnum, sunum), acpi_index));
++       aml_append(ifctx, aml_store(pkg, ret));
++       /*
++        * Windows calls func=7 without checking if it's available,
++        * as workaround Microsoft has suggested to return invalid for func7
++        * Package, so return 2 elements package but only initialize elements
++        * when acpi_index is supported and leave them uninitialized, which
++        * leads elements to being Uninitialized ObjectType and should trip
++        * Windows into discarding result as an unexpected and prevent setting
++        * bogus 'PCI Label' on the device.
++        */
++       ifctx1 = aml_if(aml_lnot(aml_lor(
++                    aml_equal(acpi_index, zero), aml_equal(acpi_index, not_supp)
++                )));
++       {
++           aml_append(ifctx1, aml_store(acpi_index, aml_index(ret, zero)));
++           /*
++            * optional, if not impl. should return null string
++            */
++           aml_append(ifctx1, aml_store(aml_string("%s", ""),
++                                        aml_index(ret, one)));
++       }
++       aml_append(ifctx, ifctx1);
++
++       aml_append(ifctx, aml_return(ret));
++    }
++
++    aml_append(method, ifctx);
++    return method;
++}
++
++void build_acpi_pci_hotplug(Aml *table, uint64_t pcihp_addr)
++{
++    Aml *scope;
++    Aml *field;
++    Aml *method;
++
++    scope =  aml_scope("_SB.PCI0");
++
++    aml_append(scope,
++        aml_operation_region("PCST", AML_SYSTEM_IO, aml_int(pcihp_addr), 0x08));
++    field = aml_field("PCST", AML_DWORD_ACC, AML_NOLOCK, AML_WRITE_AS_ZEROS);
++    aml_append(field, aml_named_field("PCIU", 32));
++    aml_append(field, aml_named_field("PCID", 32));
++    aml_append(scope, field);
++
++    aml_append(scope,
++        aml_operation_region("SEJ", AML_SYSTEM_IO,
++                             aml_int(pcihp_addr + ACPI_PCIHP_SEJ_BASE), 0x04));
++    field = aml_field("SEJ", AML_DWORD_ACC, AML_NOLOCK, AML_WRITE_AS_ZEROS);
++    aml_append(field, aml_named_field("B0EJ", 32));
++    aml_append(scope, field);
++
++    aml_append(scope,
++        aml_operation_region("BNMR", AML_SYSTEM_IO,
++                             aml_int(pcihp_addr + ACPI_PCIHP_BNMR_BASE), 0x08));
++    field = aml_field("BNMR", AML_DWORD_ACC, AML_NOLOCK, AML_WRITE_AS_ZEROS);
++    aml_append(field, aml_named_field("BNUM", 32));
++    aml_append(field, aml_named_field("PIDX", 32));
++    aml_append(scope, field);
++
++    aml_append(scope, aml_mutex("BLCK", 0));
++
++        method = aml_method("PCEJ", 2, AML_NOTSERIALIZED);
++    aml_append(method, aml_acquire(aml_name("BLCK"), 0xFFFF));
++    aml_append(method, aml_store(aml_arg(0), aml_name("BNUM")));
++    aml_append(method,
++        aml_store(aml_shiftleft(aml_int(1), aml_arg(1)), aml_name("B0EJ")));
++    aml_append(method, aml_release(aml_name("BLCK")));
++    aml_append(method, aml_return(aml_int(0)));
++    aml_append(scope, method);
++
++    method = aml_method("AIDX", 2, AML_NOTSERIALIZED);
++    aml_append(method, aml_acquire(aml_name("BLCK"), 0xFFFF));
++    aml_append(method, aml_store(aml_arg(0), aml_name("BNUM")));
++    aml_append(method,
++        aml_store(aml_shiftleft(aml_int(1), aml_arg(1)), aml_name("PIDX")));
++    aml_append(method, aml_store(aml_name("PIDX"), aml_local(0)));
++    aml_append(method, aml_release(aml_name("BLCK")));
++    aml_append(method, aml_return(aml_local(0)));
++    aml_append(scope, method);
++
++    aml_append(scope, aml_pci_pdsm());
++
++    aml_append(table, scope);
++}
++
+ const VMStateDescription vmstate_acpi_pcihp_pci_status = {
+     .name = "acpi_pcihp_pci_status",
+     .version_id = 1,
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 9e584e69fd..b92765fbd9 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -361,32 +361,6 @@ static Aml *aml_pci_device_dsm(void)
+     return method;
+ }
+ 
+-static void build_append_pci_dsm_func0_common(Aml *ctx, Aml *retvar)
+-{
+-    Aml *UUID, *ifctx1;
+-    uint8_t byte_list[1] = { 0 }; /* nothing supported yet */
+-
+-    aml_append(ctx, aml_store(aml_buffer(1, byte_list), retvar));
+-    /*
+-     * PCI Firmware Specification 3.1
+-     * 4.6.  _DSM Definitions for PCI
+-     */
+-    UUID = aml_touuid("E5C937D0-3553-4D7A-9117-EA4D19C3434D");
+-    ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(0), UUID)));
+-    {
+-        /* call is for unsupported UUID, bail out */
+-        aml_append(ifctx1, aml_return(retvar));
+-    }
+-    aml_append(ctx, ifctx1);
+-
+-    ifctx1 = aml_if(aml_lless(aml_arg(1), aml_int(2)));
+-    {
+-        /* call is for unsupported REV, bail out */
+-        aml_append(ifctx1, aml_return(retvar));
+-    }
+-    aml_append(ctx, ifctx1);
+-}
+-
+ static Aml *aml_pci_edsm(void)
  {
-     Aml *method, *UUID, *ifctx, *ifctx1, *elsectx, *buf;
+     Aml *method, *ifctx;
+@@ -647,96 +621,6 @@ static bool build_append_notification_callback(Aml *parent_scope,
+     return !!nr_notifiers;
+ }
  
-@@ -77,11 +77,12 @@ static void acpi_dsdt_add_pci_osc(Aml *dev)
-     aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
+-static Aml *aml_pci_pdsm(void)
+-{
+-    Aml *method, *ifctx, *ifctx1;
+-    Aml *ret = aml_local(0);
+-    Aml *caps = aml_local(1);
+-    Aml *acpi_index = aml_local(2);
+-    Aml *zero = aml_int(0);
+-    Aml *one = aml_int(1);
+-    Aml *not_supp = aml_int(0xFFFFFFFF);
+-    Aml *func = aml_arg(2);
+-    Aml *params = aml_arg(4);
+-    Aml *bnum = aml_derefof(aml_index(params, aml_int(0)));
+-    Aml *sunum = aml_derefof(aml_index(params, aml_int(1)));
+-
+-    method = aml_method("PDSM", 5, AML_SERIALIZED);
+-
+-    /* get supported functions */
+-    ifctx = aml_if(aml_equal(func, zero));
+-    {
+-        build_append_pci_dsm_func0_common(ifctx, ret);
+-
+-        aml_append(ifctx, aml_store(zero, caps));
+-        aml_append(ifctx,
+-            aml_store(aml_call2("AIDX", bnum, sunum), acpi_index));
+-        /*
+-         * advertise function 7 if device has acpi-index
+-         * acpi_index values:
+-         *            0: not present (default value)
+-         *     FFFFFFFF: not supported (old QEMU without PIDX reg)
+-         *        other: device's acpi-index
+-         */
+-        ifctx1 = aml_if(aml_lnot(
+-                     aml_or(aml_equal(acpi_index, zero),
+-                            aml_equal(acpi_index, not_supp), NULL)
+-                 ));
+-        {
+-            /* have supported functions */
+-            aml_append(ifctx1, aml_or(caps, one, caps));
+-            /* support for function 7 */
+-            aml_append(ifctx1,
+-                aml_or(caps, aml_shiftleft(one, aml_int(7)), caps));
+-        }
+-        aml_append(ifctx, ifctx1);
+-
+-        aml_append(ifctx, aml_store(caps, aml_index(ret, zero)));
+-        aml_append(ifctx, aml_return(ret));
+-    }
+-    aml_append(method, ifctx);
+-
+-    /* handle specific functions requests */
+-    /*
+-     * PCI Firmware Specification 3.1
+-     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
+-     *        Operating Systems
+-     */
+-    ifctx = aml_if(aml_equal(func, aml_int(7)));
+-    {
+-       Aml *pkg = aml_package(2);
+-
+-       aml_append(ifctx, aml_store(aml_call2("AIDX", bnum, sunum), acpi_index));
+-       aml_append(ifctx, aml_store(pkg, ret));
+-       /*
+-        * Windows calls func=7 without checking if it's available,
+-        * as workaround Microsoft has suggested to return invalid for func7
+-        * Package, so return 2 elements package but only initialize elements
+-        * when acpi_index is supported and leave them uninitialized, which
+-        * leads elements to being Uninitialized ObjectType and should trip
+-        * Windows into discarding result as an unexpected and prevent setting
+-        * bogus 'PCI Label' on the device.
+-        */
+-       ifctx1 = aml_if(aml_lnot(aml_lor(
+-                    aml_equal(acpi_index, zero), aml_equal(acpi_index, not_supp)
+-                )));
+-       {
+-           aml_append(ifctx1, aml_store(acpi_index, aml_index(ret, zero)));
+-           /*
+-            * optional, if not impl. should return null string
+-            */
+-           aml_append(ifctx1, aml_store(aml_string("%s", ""),
+-                                        aml_index(ret, one)));
+-       }
+-       aml_append(ifctx, ifctx1);
+-
+-       aml_append(ifctx, aml_return(ret));
+-    }
+-
+-    aml_append(method, ifctx);
+-    return method;
+-}
+-
+ /*
+  * build_prt - Define interrupt routing rules
+  *
+@@ -1227,62 +1111,6 @@ static Aml *build_q35_dram_controller(const AcpiMcfgInfo *mcfg)
+     return dev;
+ }
  
-     /*
--     * Allow OS control for all 5 features:
--     * PCIeHotplug SHPCHotplug PME AER PCIeCapability.
-+     * Allow OS control for SHPCHotplug, PME, AER, PCIeCapability,
-+     * and PCIeHotplug depending on enable_native_pcie_hotplug
-      */
--    aml_append(ifctx, aml_and(aml_name("CTRL"), aml_int(0x1F),
--                              aml_name("CTRL")));
-+    aml_append(ifctx, aml_and(aml_name("CTRL"),
-+               aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)),
-+               aml_name("CTRL")));
+-static void build_x86_acpi_pci_hotplug(Aml *table, uint64_t pcihp_addr)
+-{
+-    Aml *scope;
+-    Aml *field;
+-    Aml *method;
+-
+-    scope =  aml_scope("_SB.PCI0");
+-
+-    aml_append(scope,
+-        aml_operation_region("PCST", AML_SYSTEM_IO, aml_int(pcihp_addr), 0x08));
+-    field = aml_field("PCST", AML_DWORD_ACC, AML_NOLOCK, AML_WRITE_AS_ZEROS);
+-    aml_append(field, aml_named_field("PCIU", 32));
+-    aml_append(field, aml_named_field("PCID", 32));
+-    aml_append(scope, field);
+-
+-    aml_append(scope,
+-        aml_operation_region("SEJ", AML_SYSTEM_IO,
+-                             aml_int(pcihp_addr + ACPI_PCIHP_SEJ_BASE), 0x04));
+-    field = aml_field("SEJ", AML_DWORD_ACC, AML_NOLOCK, AML_WRITE_AS_ZEROS);
+-    aml_append(field, aml_named_field("B0EJ", 32));
+-    aml_append(scope, field);
+-
+-    aml_append(scope,
+-        aml_operation_region("BNMR", AML_SYSTEM_IO,
+-                             aml_int(pcihp_addr + ACPI_PCIHP_BNMR_BASE), 0x08));
+-    field = aml_field("BNMR", AML_DWORD_ACC, AML_NOLOCK, AML_WRITE_AS_ZEROS);
+-    aml_append(field, aml_named_field("BNUM", 32));
+-    aml_append(field, aml_named_field("PIDX", 32));
+-    aml_append(scope, field);
+-
+-    aml_append(scope, aml_mutex("BLCK", 0));
+-
+-    method = aml_method("PCEJ", 2, AML_NOTSERIALIZED);
+-    aml_append(method, aml_acquire(aml_name("BLCK"), 0xFFFF));
+-    aml_append(method, aml_store(aml_arg(0), aml_name("BNUM")));
+-    aml_append(method,
+-        aml_store(aml_shiftleft(aml_int(1), aml_arg(1)), aml_name("B0EJ")));
+-    aml_append(method, aml_release(aml_name("BLCK")));
+-    aml_append(method, aml_return(aml_int(0)));
+-    aml_append(scope, method);
+-
+-    method = aml_method("AIDX", 2, AML_NOTSERIALIZED);
+-    aml_append(method, aml_acquire(aml_name("BLCK"), 0xFFFF));
+-    aml_append(method, aml_store(aml_arg(0), aml_name("BNUM")));
+-    aml_append(method,
+-        aml_store(aml_shiftleft(aml_int(1), aml_arg(1)), aml_name("PIDX")));
+-    aml_append(method, aml_store(aml_name("PIDX"), aml_local(0)));
+-    aml_append(method, aml_release(aml_name("BLCK")));
+-    aml_append(method, aml_return(aml_local(0)));
+-    aml_append(scope, method);
+-
+-    aml_append(scope, aml_pci_pdsm());
+-
+-    aml_append(table, scope);
+-}
+-
+ static Aml *build_q35_osc_method(bool enable_native_pcie_hotplug)
+ {
+     Aml *if_ctx;
+@@ -1394,7 +1222,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+         aml_append(dsdt, sb_scope);
  
-     ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
-     aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
-@@ -192,7 +193,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
-             if (is_cxl) {
-                 build_cxl_osc_method(dev);
-             } else {
--                acpi_dsdt_add_pci_osc(dev);
-+                acpi_dsdt_add_pci_osc(dev, true);
-             }
+         if (pm->pcihp_bridge_en || pm->pcihp_root_en) {
+-            build_x86_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
++            build_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
+         }
+         build_piix4_pci0_int(dsdt);
+     } else if (q35) {
+@@ -1438,7 +1266,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+         aml_append(dsdt, sb_scope);
  
-             aml_append(scope, dev);
-@@ -267,7 +268,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+         if (pm->pcihp_bridge_en) {
+-            build_x86_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
++            build_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
+         }
+         build_q35_pci0_int(dsdt);
      }
-     aml_append(dev, aml_name_decl("_CRS", rbuf));
- 
--    acpi_dsdt_add_pci_osc(dev);
-+    acpi_dsdt_add_pci_osc(dev, true);
- 
-     Aml *dev_res0 = aml_device("%s", "RES0");
-     aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));
 -- 
 2.49.0
 

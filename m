@@ -1,87 +1,87 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1338857njb;
-        Wed, 14 May 2025 10:06:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXzwB8bUTuybLdZV3SLE8b+f3gB7Jvza1ihIGZ+Y0uGrvotlj4mtNDKx0OicooAW06Owfq6K7Q4Ud89aQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHrBmYy6PNtcgF0c2szRsQVHlcNe9tOwVyJxHWE+WPuNjqhkQPonf59J+gqPsYjhiCs0XRZ
-X-Received: by 2002:a05:6000:1786:b0:3a0:b733:f262 with SMTP id ffacd0b85a97d-3a3499528eemr3228409f8f.51.1747242386703;
-        Wed, 14 May 2025 10:06:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747242386; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1338879njb;
+        Wed, 14 May 2025 10:06:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWeFFhpQF3h90hPed7ZqD88V/ldnPLpUDp+bTFMb23F2HSHtd9ODqWmGOFGByqm4ROadIB9M9MAOnGsng==@linaro.org
+X-Google-Smtp-Source: AGHT+IEnt3z+LZiaXurpbnCJY/LfzUxTGjxK3F8viF7C9oPdY/nyujyo7P0LUssolWaLbeUMcf3s
+X-Received: by 2002:a05:622a:1e1a:b0:477:e56:46f1 with SMTP id d75a77b69052e-49495c882edmr74998791cf.21.1747242388711;
+        Wed, 14 May 2025 10:06:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747242388; cv=none;
         d=google.com; s=arc-20240605;
-        b=OiyhhkfqJHfda4ySbXVd1TnCSHjDMAcmSClJ3T3GD8CS8+5wpYVR4fvv9IAc4R1BMB
-         qarKrGHzaRSTzz/m4fLmGUCaG/f3oM2Gf4UpbkHVreIMbqAJtRkcFQXNidgQbPd0wjFs
-         WZ23+8hdbroe0F6NrmwHCKiPRjTiKNemUfCTB6haJmI5FRDAi0YukMJRgGQ5AL/+SitW
-         2J9f2nEewsLZry7pRagQmd0vwctMW5rfmFPF7koKdjjp/l3vXBT/90UWUjJSo2YWwSgi
-         KuO0hqVWgqKqrDLGC8TrynUZgPQFm+sAEndqf/nMpyu3mMCV1yqiJwV0yvXkdsIyoA9g
-         vY9Q==
+        b=cGzBALAcsnsGiGfJtrZGoq96UjHKcou4Gpjq1WLQs9qBDsrglOVXZ005R6bNuOCAmj
+         hUH1exUR/OX4qlzKHm3KNsz6Bt+M3v4Yx4x4R1PFRXHmO+ry1GebYBXbv+Vqs9tQzlht
+         mImgv7IH8/N6bDPxgeStqkGXRq4yTHp0wKXTH0fgtbdxahozY3GbWphQ68vh3lTt/i/h
+         v61ksssRC1cQcwxSDJDo+QWMdvyDwf2gda//j5RThcTZhr5w0Ep11+VT1O6MomkZML57
+         V2HGEZ/DlLwYg178L3cY3O+CFgr5sHpLaRhPn2YBhD3kobkf73Epnmo6VRTGk+khjw8n
+         wcjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=uOgagoQbQa+YMDdJYWRuhwDrdLu99VVST32rRop9ovs=;
+        bh=aEG1v7qYwyhYnnCowUaIRbxAXHrWCuXwUQVXOPAcN0U=;
         fh=uYJrYLplVlPp9m4JQmP4YNBZY8OxB84kzGSMUd/o4NA=;
-        b=RMvgFtfZQ1sOo5GbwD3s/5s68vdDM1FOm1YWoEhNmbN/nfKxrdDhBZhUaqrgY1GDFS
-         iOWd42zHucpYFxL/96h8vp9OkNRvvH4XG6yf4Yh8nEDQUZeOWtxLBNY09qit/yY53Pr+
-         WEkUPF/2Mc0IY99/C6Eu871ctlE97CERVsuqvpMsiwbp6OP71zyNZhzCkfuu/zeFwDTO
-         jN7ecqfmWpfdLfCS2D5EDYnMURK0OAM1OfkdnPBHoz4VdsxeQtuVJGMgfLTwHUstqocu
-         Q+3y8EDPJuQOQbRDvVt6W+YpewQNh85/65EHZHlt3T4EabQey7CMXnRDohMshOzXJ319
-         XWqg==;
+        b=XMKrRHhgqf7JWECvJmx8/SRyhOn7Zt75ER9GnpXs/tM27Da6WafLfjfeqbDKxE1+rz
+         EYxVMc/BnO15+359rad87v66CUoRXKpYcUpcWpTjPEenjq7pHdYV2ZYRWQYwC5S9rqYT
+         6pos03yAqBbO0xF6oMnZvOSWM41XXCd64zzW5ABFfVn8gpVuS9K+nOq22P38BOkpZVY/
+         GVFZ0yCb7AVEMhjKgFY/0pKV+X29Mo/TH4NCKbBbOOUkbg6XFpRsvxTk2JSxliiQJMpQ
+         gB8Vyxa8l7U9XkYlf/dtv/CeppRIh2OsixDHFFlcmf3/ov14UYhTKiNwcDtUuvLXKhHj
+         36UA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CgoacY6L;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JF6GIxnx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a1f5bfd84dsi10082407f8f.437.2025.05.14.10.06.26
+        by mx.google.com with ESMTPS id d75a77b69052e-494525821f1si134546511cf.437.2025.05.14.10.06.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 May 2025 10:06:26 -0700 (PDT)
+        Wed, 14 May 2025 10:06:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CgoacY6L;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JF6GIxnx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uFFYS-000280-Mh; Wed, 14 May 2025 13:06:04 -0400
+	id 1uFFYY-0002UY-SP; Wed, 14 May 2025 13:06:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uFFYP-00023u-1Q
- for qemu-arm@nongnu.org; Wed, 14 May 2025 13:06:01 -0400
+ id 1uFFYV-0002EN-3D
+ for qemu-arm@nongnu.org; Wed, 14 May 2025 13:06:07 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uFFYL-0007id-QW
- for qemu-arm@nongnu.org; Wed, 14 May 2025 13:06:00 -0400
+ id 1uFFYP-0007kQ-Kg
+ for qemu-arm@nongnu.org; Wed, 14 May 2025 13:06:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1747242350;
+ s=mimecast20190719; t=1747242360;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uOgagoQbQa+YMDdJYWRuhwDrdLu99VVST32rRop9ovs=;
- b=CgoacY6L6P1kqP1OhTRHbSffEcan6Co0eYy3udQBtF/EOd0zU7Kx+4nUjy9Tq2PePdWURf
- TgyloLUYzBS9X/fqU4FLG9O2F1JEoro8XUfeUhWk6LCx+ZlLT+FpoD8UKz3HCjCRezFB5r
- byk5gALpDvy8aNoXdx3fr+ZpUfH3m9E=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=aEG1v7qYwyhYnnCowUaIRbxAXHrWCuXwUQVXOPAcN0U=;
+ b=JF6GIxnx+8otVdYyCO/GUDH2NXv4r94C9SF3uIPvQWI5OcTsk97Kf8k2+0TBIpNzT1e4fl
+ NMo4bILvkAmFSGnfWkOOO1FDx64ejRzPRypAg9WeCbLGSngBOVkdvcjlrd5gm2vkWE5zEf
+ pEZbZv/5wMilJtBKMZfnxJctPiA+tDw=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-261-mh1HELJVNzmNNRFWKNIY-g-1; Wed,
- 14 May 2025 13:05:47 -0400
-X-MC-Unique: mh1HELJVNzmNNRFWKNIY-g-1
-X-Mimecast-MFC-AGG-ID: mh1HELJVNzmNNRFWKNIY-g_1747242346
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-687-cvcKi6y6Mh2pkcD8iB8KOQ-1; Wed,
+ 14 May 2025 13:05:57 -0400
+X-MC-Unique: cvcKi6y6Mh2pkcD8iB8KOQ-1
+X-Mimecast-MFC-AGG-ID: cvcKi6y6Mh2pkcD8iB8KOQ_1747242356
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1576518004AD; Wed, 14 May 2025 17:05:46 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6E5681956089; Wed, 14 May 2025 17:05:56 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.14])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C8D7330001B0; Wed, 14 May 2025 17:05:41 +0000 (UTC)
+ id 46C7130001B0; Wed, 14 May 2025 17:05:50 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
@@ -89,9 +89,10 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: pbonzini@redhat.com,
 	Jonathan.Cameron@huawei.com,
 	philmd@linaro.org
-Subject: [PATCH 13/22] hw/i386/acpi-build: Introduce and use acpi_get_pci_host
-Date: Wed, 14 May 2025 19:01:00 +0200
-Message-ID: <20250514170431.2786231-14-eric.auger@redhat.com>
+Subject: [PATCH 15/22] hw/arm/virt-acpi-build: Modify the DSDT ACPI table to
+ enable ACPI PCI hotplug
+Date: Wed, 14 May 2025 19:01:02 +0200
+Message-ID: <20250514170431.2786231-16-eric.auger@redhat.com>
 In-Reply-To: <20250514170431.2786231-1-eric.auger@redhat.com>
 References: <20250514170431.2786231-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -106,7 +107,7 @@ X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.686,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,158 +122,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pi3XjM52MeWz
+X-TUID: qBoRpjncAmVh
 
-pcihp acpi_set_pci_info() generic code currently uses
-acpi_get_i386_pci_host() to retrieve the pci host bridge.
-
-Let's rename acpi_get_i386_pci_host into acpi_get_pci_host and
-move it in pci generic code.
-
-The helper is augmented with the support of ARM GPEX.
+Modify the DSDT ACPI table to enable ACPI PCI hotplug.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- include/hw/acpi/pci.h |  2 ++
- hw/acpi/pci.c         | 20 ++++++++++++++++++++
- hw/acpi/pcihp.c       |  3 ++-
- hw/i386/acpi-build.c  | 24 ++++--------------------
- 4 files changed, 28 insertions(+), 21 deletions(-)
+ include/hw/arm/virt.h    |  1 +
+ hw/arm/virt-acpi-build.c | 25 +++++++++++++++++++++++++
+ hw/arm/virt.c            |  1 +
+ hw/arm/Kconfig           |  2 ++
+ 4 files changed, 29 insertions(+)
 
-diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
-index 4dca22c0e2..310cbd02db 100644
---- a/include/hw/acpi/pci.h
-+++ b/include/hw/acpi/pci.h
-@@ -41,4 +41,6 @@ void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope);
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 10ea581f06..1b2e2e1284 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -79,6 +79,7 @@ enum {
+     VIRT_ACPI_GED,
+     VIRT_NVDIMM_ACPI,
+     VIRT_PVTIME,
++    VIRT_ACPI_PCIHP,
+     VIRT_LOWMEMMAP_LAST,
+ };
  
- void build_srat_generic_affinity_structures(GArray *table_data);
- 
-+Object *acpi_get_pci_host(void);
-+
- #endif
-diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
-index d511a85029..4191886ebe 100644
---- a/hw/acpi/pci.c
-+++ b/hw/acpi/pci.c
-@@ -26,6 +26,7 @@
- #include "qemu/osdep.h"
- #include "qemu/error-report.h"
- #include "qom/object_interfaces.h"
-+#include "qom/object.h"
- #include "qapi/error.h"
- #include "hw/boards.h"
- #include "hw/acpi/aml-build.h"
-@@ -33,6 +34,9 @@
- #include "hw/pci/pci_bridge.h"
- #include "hw/pci/pci_device.h"
- #include "hw/pci/pcie_host.h"
-+#include "hw/pci-host/i440fx.h"
-+#include "hw/pci-host/q35.h"
-+#include "hw/pci-host/gpex.h"
- 
- /*
-  * PCI Firmware Specification, Revision 3.0
-@@ -301,3 +305,19 @@ void build_srat_generic_affinity_structures(GArray *table_data)
-     object_child_foreach_recursive(object_get_root(), build_acpi_generic_port,
-                                    table_data);
- }
-+
-+Object *acpi_get_pci_host(void)
-+{
-+    Object *host;
-+
-+    host = object_resolve_type_unambiguous(TYPE_I440FX_PCI_HOST_BRIDGE, NULL);
-+    if (host) {
-+        return host;
-+    }
-+    host = object_resolve_type_unambiguous(TYPE_Q35_HOST_DEVICE, NULL);
-+    if (host) {
-+        return host;
-+    }
-+    host = object_resolve_type_unambiguous(TYPE_GPEX_HOST, NULL);
-+    return host;
-+}
-diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-index 942669ea89..d800371ddc 100644
---- a/hw/acpi/pcihp.c
-+++ b/hw/acpi/pcihp.c
-@@ -36,6 +36,7 @@
- #include "hw/pci-bridge/xio3130_downstream.h"
- #include "hw/i386/acpi-build.h"
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index be5e00a56e..2b642e2426 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -34,6 +34,7 @@
+ #include "hw/core/cpu.h"
+ #include "hw/acpi/acpi-defs.h"
  #include "hw/acpi/acpi.h"
-+#include "hw/acpi/pci.h"
- #include "hw/pci/pci_bus.h"
- #include "migration/vmstate.h"
- #include "qapi/error.h"
-@@ -102,7 +103,7 @@ static void *acpi_set_bsel(PCIBus *bus, void *opaque)
- static void acpi_set_pci_info(bool has_bridge_hotplug)
- {
-     static bool bsel_is_set;
--    Object *host = acpi_get_i386_pci_host();
-+    Object *host = acpi_get_pci_host();
-     PCIBus *bus;
-     BSELInfo info = { .bsel_alloc = ACPI_PCIHP_BSEL_DEFAULT,
-                       .has_bridge_hotplug = has_bridge_hotplug };
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 06b4b8eed4..bcfba2ccb3 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -269,27 +269,11 @@ static void acpi_get_misc_info(AcpiMiscInfo *info)
- #endif
- }
- 
--/*
-- * Because of the PXB hosts we cannot simply query TYPE_PCI_HOST_BRIDGE.
-- * On i386 arch we only have two pci hosts, so we can look only for them.
-- */
--Object *acpi_get_i386_pci_host(void)
--{
--    PCIHostState *host;
--
--    host = PCI_HOST_BRIDGE(object_resolve_path("/machine/i440fx", NULL));
--    if (!host) {
--        host = PCI_HOST_BRIDGE(object_resolve_path("/machine/q35", NULL));
--    }
--
--    return OBJECT(host);
--}
--
- static void acpi_get_pci_holes(Range *hole, Range *hole64)
- {
-     Object *pci_host;
- 
--    pci_host = acpi_get_i386_pci_host();
-+    pci_host = acpi_get_pci_host();
- 
-     if (!pci_host) {
-         return;
-@@ -1245,7 +1229,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
- 
-     sb_scope = aml_scope("\\_SB");
-     {
--        Object *pci_host = acpi_get_i386_pci_host();
-+        Object *pci_host = acpi_get_pci_host();
- 
-         if (pci_host) {
-             PCIBus *pbus = PCI_HOST_BRIDGE(pci_host)->bus;
-@@ -1306,7 +1290,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-     if (pm->pcihp_bridge_en || pm->pcihp_root_en) {
-         bool has_pcnt;
- 
--        Object *pci_host = acpi_get_i386_pci_host();
-+        Object *pci_host = acpi_get_pci_host();
-         PCIBus *b = PCI_HOST_BRIDGE(pci_host)->bus;
- 
-         scope = aml_scope("\\_SB.PCI0");
-@@ -1946,7 +1930,7 @@ static bool acpi_get_mcfg(AcpiMcfgInfo *mcfg)
-     Object *pci_host;
-     QObject *o;
- 
--    pci_host = acpi_get_i386_pci_host();
-+    pci_host = acpi_get_pci_host();
-     if (!pci_host) {
-         return false;
-     }
++#include "hw/acpi/pcihp.h"
+ #include "hw/nvram/fw_cfg_acpi.h"
+ #include "hw/acpi/bios-linker-loader.h"
+ #include "hw/acpi/aml-build.h"
+@@ -836,6 +837,30 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                          (irqmap[VIRT_MMIO] + ARM_SPI_BASE),
+                          0, NUM_VIRTIO_TRANSPORTS);
+     acpi_dsdt_add_pci(scope, memmap, irqmap[VIRT_PCIE] + ARM_SPI_BASE, vms);
++
++    aml_append(dsdt, scope);
++
++    if (vms->acpi_pcihp) {
++        Aml *pci0_scope = aml_scope("\\_SB.PCI0");
++
++        aml_append(pci0_scope, aml_pci_edsm());
++        build_acpi_pci_hotplug(dsdt, AML_SYSTEM_MEMORY,
++                               memmap[VIRT_ACPI_PCIHP].base);
++        build_append_pcihp_resources(pci0_scope,
++                                     memmap[VIRT_ACPI_PCIHP].base,
++                                     memmap[VIRT_ACPI_PCIHP].size);
++
++        /* Scan all PCI buses. Generate tables to support hotplug. */
++        build_append_pci_bus_devices(pci0_scope, vms->bus);
++        if (object_property_find(OBJECT(vms->bus), ACPI_PCIHP_PROP_BSEL)) {
++            build_append_pcihp_slots(pci0_scope, vms->bus);
++        }
++        build_append_notification_callback(pci0_scope, vms->bus);
++        aml_append(dsdt, pci0_scope);
++    }
++
++    scope = aml_scope("\\_SB");
++
+     if (vms->acpi_dev) {
+         build_ged_aml(scope, "\\_SB."GED_DEVICE,
+                       HOTPLUG_HANDLER(vms->acpi_dev),
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index a0deeaf2b3..4aa40c8e8b 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -183,6 +183,7 @@ static const MemMapEntry base_memmap[] = {
+     [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
+     [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
+     [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
++    [VIRT_ACPI_PCIHP] =         { 0x090c0000, 0x00001000 },
+     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index a55b44d7bd..572b4dabd5 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -34,6 +34,8 @@ config ARM_VIRT
+     select ACPI_HW_REDUCED
+     select ACPI_APEI
+     select ACPI_VIOT
++    select ACPI_PCIHP
++    select ACPI_PCI_BRIDGE
+     select VIRTIO_MEM_SUPPORTED
+     select ACPI_CXL
+     select ACPI_HMAT
 -- 
 2.49.0
 

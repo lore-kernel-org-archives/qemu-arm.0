@@ -1,133 +1,108 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1333304njb;
-        Wed, 14 May 2025 10:00:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXa2l12tAawl188AlSzfYy+OtDCIJMHR+I47/wsAFvV7oGoqdv44AmpyA51qHN1uTeHtz9YJo4IvFah1w==@linaro.org
-X-Google-Smtp-Source: AGHT+IFCR7+ysxq/XX57hToxvm4VjT+slSTINtTeCJ2nBmz4TCHo4zGbvlf+7uTGjXPI5t2ur5RF
-X-Received: by 2002:a05:6214:2b08:b0:6e8:8e10:424d with SMTP id 6a1803df08f44-6f896ec2fa8mr57889196d6.41.1747242022854;
-        Wed, 14 May 2025 10:00:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747242022; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1337705njb;
+        Wed, 14 May 2025 10:05:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUD1mPkG8NmMjrWGK0N1EUl+4bqCcRTOUxy9X6JZTdYeWmBMORoiRrSw6oSpxTX7T5mzPKI2WQs64aUZQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEIeCWVjmsjQeLLp/dHogRqgcE//XfMiChTpf3XCJaEEqp0p/3SVG8Ws4jwqw6AksEoW+Vp
+X-Received: by 2002:a05:622a:258a:b0:476:909b:8287 with SMTP id d75a77b69052e-49495cd4256mr66535021cf.20.1747242306878;
+        Wed, 14 May 2025 10:05:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747242306; cv=none;
         d=google.com; s=arc-20240605;
-        b=XKfXWxp/iCvbE4QF85w4I/U7Yc9ekAr08xYKU/VTeouBVxw8rK1zjD+avn/Az7zbEN
-         61qK2C0nntZaBUx9A4f0VaXIzjXmHfiwN3HQgW6kdADmC4x5gYgg26yasAkRWSs05Zkm
-         oXYY2mFFth+uK1PaUZkwDKP3Zq13QoKHi+snf3/Gb9PXAj34A/yaBLqUzLe8l9kevdiM
-         uMJHdtcSw6G4nVRUMahiM2BrUdw4CdZFuzrNdJCgcXjSPJg1yOE4rlSNcXI2hlx9WHf7
-         ayvsgbTQ8GPsfvJx/IGGEimOTR/1zoI1GIpZVvRaCw9dD03BanaxQ9hcEXVhvHr+R52c
-         op6A==
+        b=V6ZElM/izvK4uiwjY57XCtOsxgEfXQz4/wDkkY976hdd2bGPqwJwjCNIr4U8SjPHDS
+         zfg36+//3ugqNGAp/EoOSQY0k0/jB1qhw/avAexxcY+KYb6pyLnVzxFP2rmn3YDJI765
+         lAvPEUoho1140bSQmVs9+1vVTkzUJBSfaFFY3xCx4N2rZ/WyQFP4BNBrLfTD3YkVL5a1
+         v+lcij1wAf2J63Wb8vVKBOaWkOuhUwqzG8CrrrdT+oDnRsHGojwfA13htlE6o1ifFrSg
+         6TsH++NMFJmj81IqvZlZzy4V7ZHoBlFtHRMaJjrvSr3xhRFju1KTlpLODRHagqyOt85C
+         3LRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=g3S4QE6pPmLrLEvlLvbVcXELDi040PZqynpaUxvCe/o=;
-        fh=HwaYrsfZ8LcCazn84E0DeOJgxipYsKCL5K7RLF73qIQ=;
-        b=S9kB6k8j//a3QWcaqhoezE6W/lBGO01GoaFlTc65zZz57R4iuvc5U+l3JxZuVWicXC
-         ciGKImA06mmUfTrAmGiCuco19IFAzt8oZys6earBFl3lal4QfatKnhwicepdpsJBi724
-         GxQ6qAkoeJhsnA5w1jZm0edmvaERSTM2DgPpGd8tEubv2+g0vf/wOrmM0uuplTQEnrD8
-         spoPGgdjIMSJ4FG19lMApFH0xkxiCaOXJV37Tb6MomRjNq6DYu38qTt0VYN3EO/jja/w
-         FIMfdFI+qkXPSWa5sSB0AglA4GGacdS1XrqlbdGBkuNRRssTqWmylCRyXaOlWfT5Q4mu
-         7l6w==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=FfxxDXRigcdUPC7PzHN5ldH5uTJbuBfOi1SV8mijeZ4=;
+        fh=uYJrYLplVlPp9m4JQmP4YNBZY8OxB84kzGSMUd/o4NA=;
+        b=hjlwagCpPNid4Lgj0Ucus1TKv3LIWhfQyEn05ZOZcTQi4EvL0GedG9I/WhagCOmXB0
+         bWRCFnTIN882WhcGgbgwjEd/ATR5aq+oa13KYJGO0b5DAZJoPbGd0CGPmuuEmkMANZsm
+         +7IeUiASrza0Yb8whSDyaYqWiloqhYNbKDss5H4GxQ42l7a4cNQd5PnT7yfWfIb/33FG
+         oBoXaN0v1oE+gtvx27sWC2D/vpEJZ5Zy/r/Ez7Mcx2P1C+adDtqE3Wfj12TCauag1NG4
+         wKopDlfv/FsOTJ86oR9qIKXZ5NcDa+5nhwkxAkK54PXvFJCmrOw2q4LeMwfSNdDoEpMt
+         YPjg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="S8CpU/LE";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vb1dnEuQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a64706si136721796d6.493.2025.05.14.10.00.22
+        by mx.google.com with ESMTPS id d75a77b69052e-494525b48a4si140848421cf.636.2025.05.14.10.05.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 May 2025 10:00:22 -0700 (PDT)
+        Wed, 14 May 2025 10:05:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="S8CpU/LE";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vb1dnEuQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uFFSo-0000I2-IE; Wed, 14 May 2025 13:00:14 -0400
+	id 1uFFXN-0001Gh-88; Wed, 14 May 2025 13:04:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uFFSX-0007vM-JZ
- for qemu-arm@nongnu.org; Wed, 14 May 2025 12:59:58 -0400
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uFFSV-0006eW-SE
- for qemu-arm@nongnu.org; Wed, 14 May 2025 12:59:57 -0400
-Received: by mail-pg1-x536.google.com with SMTP id
- 41be03b00d2f7-b268e4bfd0dso4834699a12.2
- for <qemu-arm@nongnu.org>; Wed, 14 May 2025 09:59:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1747241994; x=1747846794; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=g3S4QE6pPmLrLEvlLvbVcXELDi040PZqynpaUxvCe/o=;
- b=S8CpU/LEgwDu3CmD6OZlOImrDFWuX5Mr2XnV1TAmk79rP9ow9Q0nhmBBOBbvnJshyg
- 9JkuXHcN4O8xaGh3FA407W8qSZDMmBiYjXaW6TpsNCE47giPZbKNspe4LYdFEQVO1rrA
- CUgO/c7M4AlAMgWCK1B1nfnmzIZRobrvk9sQozd/g/bMeIne8ciTnQ6itvxFHJPengng
- //Qpud+DzOfwLfF5XEvKqxTsZJ4j49d/2GQRKB3cXC6DnPTL69yo/gt6RHXjIV0ND8at
- dsUUe4g13OrYC0m30gNW4feqeC1kl2NMdlSNiJgX4hgFfl6fslDdTyOcYJY5CDSt7IMK
- w2+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747241994; x=1747846794;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=g3S4QE6pPmLrLEvlLvbVcXELDi040PZqynpaUxvCe/o=;
- b=Bt6/sLgnXX3fB9rjFSnHILVB0UuT8g0JH6YvL0ZAG62Ud06NyUPHOrQWFFJ2qG290w
- /q4UZlx5OVvc8SAAzyH/ehu68Y//mPrNzV0F1B9A4/SGbcIpIAztFz+qLfHHLNOW85gr
- PTYs8KH+Sm6ImRJ3WKvYjyJqVvHQIg61zr8WZRjFyFVlHwRXt4IH8arFEsT2xFuFQl0z
- oSouSnEkJKc8L38iu9D9/veyvYkCoHi4t7AO3dL1+OO2IV2/pLIvpIW2atJOd6RjB1YG
- ew6lDX3vi97qpPLvnx/QTR0v9zj1Tpza/Q4n8Q1MmwvaW76rFTIJNTO2vhtTbxZAlWGk
- j7Cw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVDvR6rjxAQgNqdPlH6MovkJNmRIjoi8+yezq29FVNBGquN7isYvjAboiWEkGQaG04GcQ/zhfuDKg==@nongnu.org
-X-Gm-Message-State: AOJu0Yw99dUSXZH/1RFXA6Gx0YVC2ql1oN9LehYSHD98MrzTsO86G1dR
- Fi7OxiBPFOn81CYdrr7BvZ5h1uUIhvPKD1FFHkyNGYMxXZPlvn8PNv1elZ4qs491wFU6/f7HArY
- PIZ0=
-X-Gm-Gg: ASbGncuTgtrj/+Z+HYivQtODR491tc49TJMUjrW6aowSw9uP5RVkY9tqJVkGgGvYEh6
- cDcy9vb7VUygKPAD6ana/Bjxsgcx662QjmfSv2QFzcyfzIXSiyGEMBjAhtXIrOR5gH1t/xzvczo
- mQ+S8aW/1ABtRW+lUvI2hSO0R4kmfmid5ubdoAm0FZ+zBtjmNjsbd4hBz+d3Ij5EC3lv0g5yy46
- kqnarEZjStFJyPsPuB+Y7QXYtkuyqFxqTNmHPPLnMWgc3TO9bCpsct1I5xGC9HSWckE4si8b/5C
- mMgYrfNJ53R2+FxXpt1pkLm2AnzqCW4i4d6MOVYyHXKKeRxtkq6PrCbOU836SYEt
-X-Received: by 2002:a17:90a:e704:b0:2ff:58e1:2bb1 with SMTP id
- 98e67ed59e1d1-30e2e62fd2bmr5984474a91.32.1747241994192; 
- Wed, 14 May 2025 09:59:54 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-30e334254f5sm1822292a91.13.2025.05.14.09.59.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 14 May 2025 09:59:53 -0700 (PDT)
-Message-ID: <59b1ccbe-9ddb-43f0-98c4-8000a08d27b0@linaro.org>
-Date: Wed, 14 May 2025 09:59:53 -0700
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uFFXL-0001FW-0q
+ for qemu-arm@nongnu.org; Wed, 14 May 2025 13:04:55 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uFFXI-0007NL-5v
+ for qemu-arm@nongnu.org; Wed, 14 May 2025 13:04:54 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1747242291;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=FfxxDXRigcdUPC7PzHN5ldH5uTJbuBfOi1SV8mijeZ4=;
+ b=Vb1dnEuQ9Jyrl77k+3znj/7PC7mr6Gv0TM+prgpPMv/GCWi0HgFFjYHw0X5/GQW1kR91Es
+ PcKYTCH0oaGP1BdXq2YtjYbeGOopuaeqYCTRHibpTn2O2gp6iea6SF6CwYkMcaNFl3OR+7
+ F0ijdmMXwVOK7AxaTWca/o95I6ylJ8w=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-224-EIQPppqRNSG0Or_Djy7Cvg-1; Wed,
+ 14 May 2025 13:04:44 -0400
+X-MC-Unique: EIQPppqRNSG0Or_Djy7Cvg-1
+X-Mimecast-MFC-AGG-ID: EIQPppqRNSG0Or_Djy7Cvg_1747242281
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6F8B418001CA; Wed, 14 May 2025 17:04:41 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.44.32.14])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id B88EF30001B0; Wed, 14 May 2025 17:04:35 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
+ anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
+Cc: pbonzini@redhat.com,
+	Jonathan.Cameron@huawei.com,
+	philmd@linaro.org
+Subject: [PATCH 00/22] ACPI PCI Hotplug support on ARM
+Date: Wed, 14 May 2025 19:00:47 +0200
+Message-ID: <20250514170431.2786231-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 16/19] target/arm: Add arm_cpu_has_feature() helper
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20250513173928.77376-1-philmd@linaro.org>
- <20250513173928.77376-17-philmd@linaro.org>
- <b6c81748-091b-4d61-8d34-beaa0442aab3@linaro.org>
- <f7bcd8b2-2c0c-4907-8a0e-af172c235d56@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <f7bcd8b2-2c0c-4907-8a0e-af172c235d56@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -37
+X-Spam_score: -3.8
+X-Spam_bar: ---
+X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.686,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,79 +117,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5RoeCciSH5kV
+X-TUID: W/OI9Yz8GGWJ
 
-On 5/14/25 9:53 AM, Philippe Mathieu-Daudé wrote:
-> On 14/5/25 10:24, Richard Henderson wrote:
->> On 5/13/25 18:39, Philippe Mathieu-Daudé wrote:
->>> arm_cpu_has_feature() is equivalent of arm_feature(), however
->>> while the latter uses CPUARMState so is target-specific, the
->>> former doesn't and can be called by target-agnostic code in hw/.
->>
->> CPUARMState is no more target-specific than ARMCPU.
-> 
-> ARMCPU is forward-declared as opaque pointer in target/arm/cpu-qom.h,
-> so we can expose prototypes using it to non-ARM units.
-> CPUARMState is only declared in "cpu.h", itself only accessible by
-> ARM-related units.
-> 
+This series enables ACPI PCI hotplug/hotunplug on ARM
+and makes it default for 10.1 machine type. This aligns with
+x86 q35 machine. Expected benefits should be similar to
+those listed in [1].
 
-Maybe we can simply postpone introduction of arm_cpu_has_feature() when 
-it will be really needed.
+It is still possible to disable it using a virt machine
+option: virt,acpi-pcihp=off and restore the legacy behavior.
 
-Patches 17 and 18 are not strictly needed, as cpu.h (which resolves to 
-target/arm/cpu.h implicitely) is perfectly accessible to code in hw/arm 
-without any problem.
+The infrastructure used in x86 is heavily reused and a
+huge part of the series consists in moving code from
+hw/i386/acpi-build.c to a generic place and slightly
+adapting it to make it usable on ARM. The DSDT table is
+augmented to support ACPI PCI hotplug elements.
 
-I asked in the past if there was a real need for this function, but 
-didn't have a clear answer on where it's mandatory. In this series, it's 
-an optional change.
+On ARM we use use a GED event to notify the OS about
+hotplug events.
 
-That said, I don't want block any work arguing over this, so if you feel 
-it's better to have it, so be it, and let's pull this.
+I have not noticed any tests/qtest/bios-tables-test failures
+neither on x86 nor ARM. x86 DSDT table has not changed.
+ARM DSDT table definitively has but there are no tests
+impacted. ARM misses hotplug tests that do exist on x86. This
+most probably should be considered in the future.
 
->>
->> Did you really mean to use CPUState?
->> Or is it merely that arm_cpu_has_feature is out-of-line?
->>
->>
->> r~
->>
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>> ---
->>>    target/arm/cpu_has_feature.h | 2 ++
->>>    target/arm/cpu.c             | 7 +++++++
->>>    2 files changed, 9 insertions(+)
->>>
->>> diff --git a/target/arm/cpu_has_feature.h b/target/arm/cpu_has_feature.h
->>> index 2adfccd9208..352f9d75bed 100644
->>> --- a/target/arm/cpu_has_feature.h
->>> +++ b/target/arm/cpu_has_feature.h
->>> @@ -62,4 +62,6 @@ typedef enum arm_features {
->>>        ARM_FEATURE_BACKCOMPAT_CNTFRQ, /* 62.5MHz timer default */
->>>    } ArmCpuFeature;
->>> +bool arm_cpu_has_feature(ARMCPU *cpu, ArmCpuFeature feature);
->>> +
->>>    #endif
->>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->>> index 8c9d161f2ef..759636a3b0e 100644
->>> --- a/target/arm/cpu.c
->>> +++ b/target/arm/cpu.c
->>> @@ -54,6 +54,13 @@
->>>    #include "target/arm/gtimer.h"
->>>    #include "target/arm/multiprocessing.h"
->>> +bool arm_cpu_has_feature(ARMCPU *cpu, ArmCpuFeature feature)
->>> +{
->>> +    CPUARMState *env = &cpu->env;
->>> +
->>> +    return arm_feature(env, feature);
->>> +}
->>> +
->>>    static void arm_cpu_set_pc(CPUState *cs, vaddr value)
->>>    {
->>>        ARMCPU *cpu = ARM_CPU(cs);
->>
-> 
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/arm-acpi-pcihp-v1
+
+previous RFC:
+https://github.com/eauger/qemu/tree/arm-acpi-pcihp-rfc
+
+History:
+RFC -> v1:
+- First 3 trivial patches were pulled separately
+- Fix of the register region size (0x18), ie. ACPI_PCIHP_SIZE
+- addition of aml_pci_edsm which was not called in RFC
+- acpi-index feature is now fixed. vms->bus was not set on
+  acpi_pcihp_init. The init sequence is still hacky though. Suggestions
+  appreciated.
+
+[1] [PATCH v6 0/6] Use ACPI PCI hot-plug for Q35
+https://lore.kernel.org/all/20210713004205.775386-1-jusual@redhat.com/
+
+
+Eric Auger (22):
+  hw/i386/acpi-build: Make aml_pci_device_dsm() static
+  hw/arm/virt: Introduce machine state acpi pcihp flags and props
+  hw/acpi: Rename and move build_x86_acpi_pci_hotplug to pcihp
+  hw/pci-host/gpex-acpi: Add native_pci_hotplug arg to
+    acpi_dsdt_add_pci_osc
+  hw/pci-host/gpex-acpi: Split host bridge OSC and DSM generation
+  hw/pci-host/gpex-acpi: Propagate hotplug type info from virt machine
+    downto gpex
+  hw/i386/acpi-build: Turn build_q35_osc_method into a generic method
+  hw/pci-host/gpex-acpi: Use build_pci_host_bridge_osc_method
+  hw/i386/acpi-build: Introduce build_append_pcihp_resources() helper
+  hw/acpi/pcihp: Add an AmlRegionSpace arg to build_acpi_pci_hotplug
+  hw/i386/acpi-build: Move build_append_notification_callback to pcihp
+  hw/i386/acpi-build: Move build_append_pci_bus_devices/pcihp_slots to
+    pcihp
+  hw/i386/acpi-build: Introduce and use acpi_get_pci_host
+  hw/i386/acpi-build: Move aml_pci_edsm to a generic place
+  hw/arm/virt-acpi-build: Modify the DSDT ACPI table to enable ACPI PCI
+    hotplug
+  hw/acpi/ged: Prepare the device to react to PCI hotplug events
+  hw/acpi/ged: Call pcihp plug callbacks in hotplug handler
+    implementation
+  hw/acpi/ged: Support migration of AcpiPciHpState
+  hw/core/sysbus: Introduce sysbus_mmio_map_name() helper
+  hw/arm/virt: Let virt support pci hotplug/unplug GED event
+  hw/arm/virt: Plug pcihp hotplug/hotunplug callbacks
+  hw/arm/virt: Use ACPI PCI hotplug by default
+
+ hw/i386/acpi-build.h                   |   4 -
+ include/hw/acpi/aml-build.h            |   2 +
+ include/hw/acpi/generic_event_device.h |   5 +
+ include/hw/acpi/pci.h                  |   4 +-
+ include/hw/acpi/pcihp.h                |  19 +-
+ include/hw/arm/virt.h                  |   4 +
+ include/hw/pci-host/gpex.h             |   1 +
+ include/hw/sysbus.h                    |   1 +
+ hw/acpi/aml-build.c                    |  50 +++
+ hw/acpi/generic_event_device.c         |  55 +++
+ hw/acpi/pci.c                          |  20 +
+ hw/acpi/pcihp.c                        | 482 ++++++++++++++++++++-
+ hw/arm/virt-acpi-build.c               |  27 ++
+ hw/arm/virt.c                          | 107 ++++-
+ hw/core/sysbus.c                       |  11 +
+ hw/i386/acpi-build.c                   | 552 +------------------------
+ hw/pci-host/gpex-acpi.c                |  75 +---
+ hw/arm/Kconfig                         |   2 +
+ 18 files changed, 806 insertions(+), 615 deletions(-)
+
+-- 
+2.49.0
 

@@ -1,388 +1,321 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1313507njb;
-        Wed, 14 May 2025 09:27:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWfFqTz40VaAZxgi8Uqo1xg7WlABvVafNAsENcUuFLPG5/cv17B4ChH/Yo5Q+xpS0fLFIMOdyax3Tfv3A==@linaro.org
-X-Received: by 2002:a05:600c:3e87:b0:43c:ee62:33f5 with SMTP id 5b1f17b1804b1-442f2179830mr37642535e9.27.1747240039767;
-        Wed, 14 May 2025 09:27:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747240039; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1322787njb;
+        Wed, 14 May 2025 09:41:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXruHh8tgn37m+aY76azNeuvXeiI9F3kbyDThMNvO12YEIhVLY3zfXbTS0E6JWTDVZP6u2ffWG930CFFQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH3YpdnWxZ2jMF6UHgO0bfUpCltVckLg4+6TCJJVa8osPXdfhj1L6fumxXHdEgtfoioQo0M
+X-Received: by 2002:a05:6214:29e3:b0:6e8:f3af:ed59 with SMTP id 6a1803df08f44-6f896e2e3afmr59544896d6.22.1747240875940;
+        Wed, 14 May 2025 09:41:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747240875; cv=none;
         d=google.com; s=arc-20240605;
-        b=LzQkAtohbmZqMUkqlb7xn7Zd3drnyxyEptZogWgLFCh0QfusfKq75P7buG2j5EmaEG
-         Q4yh7qKLiSGN+44xPQuGR2Zq0AO1+oT9nqvQsIUKfRIAZqccK20AhEzhz4rbyHR/GCof
-         fnYUAUddblpES5PZvhr8RCd4EQck4u2f5NLnjoXFiWi6OpNaRdTuXzQoqqyaWUGJBcpW
-         +gEQgF9KudHgJPVc3JZP7evNh4id1RDCM3yR0cm39U932zv3MWW2R6+0qqxt2qPUz09B
-         utJ3Oh8H3nuvHS3PfkxH1EQtVo3IY28Rl3i1A/XWtHczLuDVvBfAoEVpEitc3XfYeX4k
-         Nkyg==
+        b=MvE2fGtbgjAXhzEOxnxEZRwTq3H+uoU/Qo1JcuCRRRvgB3DAg/o6fm33vx/sQ6TfU7
+         hcP06D15DIF5SUftY8BMUxm5IB6mUPXzSBEpOGhmmd6dgSy4EABo9tEakPGpCCzvVGMs
+         J6bZTQIWhSFAxhBdSsn0q5ooIf8oBpajfCDUnLYWcc6M9FMocE9a2VZGy6ENrYesijZY
+         O5kOmv6PzmxF74lsuYReL+48ZkFueElxPpeP/ra8ZR0EfaaqTPub90B3JvDbezv4IFG5
+         pXYlh2WCVVeWsy5chIwDz6aETCWBXzn+sXo+SRqDARneGkJEOstf3WWBDKBAu4D1ctqJ
+         DH1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=uhFC5ACEieyZkSM12um1qZ3FN5YCFLgh0HKuOq0fth0=;
-        fh=3Q1b9+7e0XoeoXY/r8q+OFw5C+mI8d5+IOV58MwJvPk=;
-        b=crNB4dc0ceSBfUt45SzVr/sYPQAXG3XbHlCN+iYpqTW0euJDxeyxiR7p9Yu4CVoswq
-         2LpgGLnUDvKrzjyJKHKh1cGCLaaoH96czjYOt5iu8ZafuAgatudQjof/NSsLIvgq7Qz0
-         aPdM93JGfWpZa6SHfht5p+f2qAX1pdNQlLxxXRH4IbkHaIY8w9DAwfn4YbsfMDcVpZmE
-         48IUaZAxGXx9V7Ig/j7r4aUiSmxPp1TNgIqkG6zsc3RfsyZwOLtl5id5RBZ6g2QluPpv
-         uao6gHkxAqIL2ZK3dx4GfjtnKiJtUeVlKJLhVnPNhtNqdyjukVJx/xnxHA4VW1TQXcsV
-         96cw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=D1aXl1eViToMl9JPTvZ+ucdanKKTMhp7uZv/rNwK4io=;
+        fh=DnAhT3uI7/tssVu7fVAJej7FkhqWEDo0/qhvk9t+biU=;
+        b=lxmNLZfnapTgTwYRj/6cuaaVURRRQgrlAK+tkTMyjAKw7S6/sfLpiMmrmS5HYxgIny
+         dpkqMb1cTukk+hQcM/432Or8sQJGBcwDdPFj9DaXJnVT8db2Ya/PBKG4+YC47dwrMKNX
+         JcS4deZbT1wdor+6U+1ZFb7nlDzsma9VeFin7GNZRh/vF7JOWC5ETg/MabVWOa6X/ICf
+         bUVtM4/Pyg+fVyZX3c/MvjWXKzwayKSxWAaCLEyfh0h8oNxCreKsuTOp+6c2hcKccze2
+         Pc736gjHJNhJit8fLTCvBgoXpS0nD1ohn9MiAR24jHM0naG71HXim6RsFS1IwOto1Qny
+         9bLA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WdCsFlKo;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Lirivbl5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-442d67e2d49sor35279545e9.4.2025.05.14.09.27.19
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a58d45si140890276d6.436.2025.05.14.09.41.15
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 14 May 2025 09:27:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 14 May 2025 09:41:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WdCsFlKo;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Lirivbl5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uFF9g-0000bt-6W; Wed, 14 May 2025 12:40:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1uFEqK-00054G-Nt
+ for qemu-devel@nongnu.org; Wed, 14 May 2025 12:20:31 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1uFEqH-0000c4-1e
+ for qemu-devel@nongnu.org; Wed, 14 May 2025 12:20:27 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-43cfe574976so57885e9.1
+ for <qemu-devel@nongnu.org>; Wed, 14 May 2025 09:20:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1747240039; x=1747844839; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=uhFC5ACEieyZkSM12um1qZ3FN5YCFLgh0HKuOq0fth0=;
-        b=WdCsFlKorgOuMWZFppxW5yJPmUKFj/EPloWgDcVXme2HqOizBK4uLSJPWuycjbl2Yx
-         ajhadyGxf4iXPemBPy23pwIoOKrQEj7Nl9A75/cq6+Z7BMWKVEgk29zWQ7LCyjIASShZ
-         H0bIaKHakv/te4nRYOq/5wqWdgQjJhRh5rlktf+bN+1BPnII14P5MuvwXj+FSZ70SZ/S
-         wcJnuA6ekkEzZR/UUCK1gUcmGhr+Mo9oVSe+gD3Ut21R5SuS5ZNAYHr3otQZNiuXnoQ4
-         ygFawbKRV4xBYRxahxR21eGgEOwgG7zyyB7dcNT1PaHDRNtyx2BR2IIjzKNc2PE2rinX
-         XB3A==
+ d=linaro.org; s=google; t=1747239616; x=1747844416; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=D1aXl1eViToMl9JPTvZ+ucdanKKTMhp7uZv/rNwK4io=;
+ b=Lirivbl5AhQEXZ45wOrtTshI/uDlm8DJHM7CiDHoWfFnfFEn8PYEV7ENFCR2SH7x+v
+ BMI7ja0I64fU6290Xt+oUotffLZRQsaLV2SUInf6oJy/xP5uGxfbd+7ackKd2rX83umB
+ ZgpV11tDe5kLfh7f9QlcXUvZ8FjIxyW8hOA27qHP9s62zpkSXXrWYPXbQa8gIuf89Gbr
+ VWQmDsIAAZ7LRRddb9gGy8BOQUNsc4IlYgOa5CM9OckXCVoDffyUSXU9lfG/bmn2z6hD
+ NBngBCoEKZuAKwuGm6xlu6EByNh8+Xe2cfRPoBxxhol+W+S4mKzEXbpWdzUyCu6UIyhn
+ teIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747240039; x=1747844839;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=uhFC5ACEieyZkSM12um1qZ3FN5YCFLgh0HKuOq0fth0=;
-        b=ZD4FR9gZ2m+6vRoc7m4XC37hqw2IxTLTJgHVic+qdCuSYmMaxFivPFXEijzWxP90Km
-         I7b6dJq2Hzmqc0QY/FsRQIPNB/eHcehDyBZ6EgG6qWOZJDeWQRnyZMguhmFWJFoitTcO
-         sRQEx1R1tqlKWunWKMJVr3l36lFZ7hL7RppCqNrb6C55do1xoVShgq6p0WYPLzPCkI0S
-         tQdmJ+89K+vZfVa9T6rVMK7jGQjyzIJIZaRtytRjsiiZqAL7v6LRgfT+81nJ5NEScgyh
-         YaehWscyA4nsHOOfK0c0UZlZp29e4TYa8TKXeVqVeGeBDZY9fzDsfflmLDO8PKRtfu9y
-         JKqA==
-X-Forwarded-Encrypted: i=1; AJvYcCVyEJifjtfJlUJq7kgtAthHUu53p/KTYUxLLQsx6y1R6a5ieh6+/pBtikmuW39p/MWQhwDpQLsEgDgFFA==@linaro.org
-X-Gm-Message-State: AOJu0YxZjq1OWeyg/LHDBMh6JFnhdQJDnT8af7amb5vr2uwdsdceQOHS
-	SK00zBa0bn85VB2kSAtm0tdAOWZAhYMwgYzsd9CECq+gvVKuXMNwgy8AeJwEJpuVVw==
-X-Gm-Gg: ASbGncsssV4M6ODxJluxXFqGbpnjP4MegQ3YE3yo+JHBwFiEf41HjDFDqTVkajmE0sT
-	tx2hcp330yVD87cdb1EsGImhAWZp+T/np/LDUWMMxdeGg8D0PY29SeDGCR+F4Ng8j0bq9hPC/wr
-	GqwU6mODbRD2MUsADbMZZAPC/SrA9IZnBCQY9GxM3au9S/IdrXuf5abakr4pnSs2f4slUD6uq7U
-	QB6fQmyTjl59/MeYldw5Tq57qFLCXtlYp45dPHa3oiIWHca9HLae1g9YAyEnqVhlnSseBIHXzbd
-	aGE+Qn0sqHioMEZTWmpuQ22DJxa/h7OyT9UEtC6m5nRGzhAA20ic/kHKHYrSThq9x5xuBwSmGG9
-	wsqULx/bZ3gWMUQ==
-X-Google-Smtp-Source: AGHT+IG1uyCfL8dSVVPdOcBuvXtKwZjR+XhbKEiRLo2bFfzgVQJkB5h1Z6/XkUA6QTAnU5lcXfZTFA==
-X-Received: by 2002:a05:600c:358b:b0:43d:42b:e186 with SMTP id 5b1f17b1804b1-442f20e8141mr37652525e9.8.1747240039106;
-        Wed, 14 May 2025 09:27:19 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
+ d=1e100.net; s=20230601; t=1747239616; x=1747844416;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=D1aXl1eViToMl9JPTvZ+ucdanKKTMhp7uZv/rNwK4io=;
+ b=uVkRWtmzeo57yRXaKVsIHaQD9u2yAK84ZPluupMKy4hfnliQmAdcZza96FrGH7KDc7
+ aBKFZ4tcOmu6jvNWuLr4SNW0JMuP1X8I9tcrgd0bv50QoseYi9IAdBVKNKinq6Rpwwy7
+ vld9f4Q8LqltNEuaRjELtp1xLXiV0TjR5wPuVC5gvnt2qwQvHDtCn1bBLRmZrWHK8Vma
+ gaV90TawM3g/Brkp59uP8CV6O4XloKuCvXN4+9h4gPIRNxbzF8JSEnq9+uV5wpHNA/gA
+ zAk3vn0fCo0IWBJCfHMS4sQDP9YuoySF+YRjGZroirp0VukTf7fzMgPRGHHQ0Gp/JBQf
+ tKaw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWrlnmy7RDlOrh2d71teXOriQuoTuYFQ/tPW0728aZoBwlGPMhpsrIuE3jACPPJh6VDYQX6tY60C0WP@nongnu.org
+X-Gm-Message-State: AOJu0YwVh2ZyyRXOdMJZtblEHy7P2BSARPqiNHvuYRF4gQY8CtVGOQKZ
+ CAWmf1illIeSVDepEsEnxOAzFiis4u0nnoVrDNz/MimaWC8vO02/FN9d/CGtMn0=
+X-Gm-Gg: ASbGncsN2lRPmaluXIxjSqYryxDQw3ld/JsdbaGDpq2NQ7eFIdtsx2jALdXHajAw6fw
+ h7JDk5sGJvIPL6QYNpLlXAD+P9XaRhYB2O4YvgxToSXCOZFvga8gLvaTyy+abzEz0CUakO4thRv
+ 0wPWA7MuQiyyJMXet7y4DjOv0ejqK9gBeZEm0k+pKZNI0OnHDXuiI7bibVGUj2lG/z+nwhJ5psP
+ kD4cIUo6lc5uu9l5ij5z1R5hnO79+FloYGZZhu9/IzNxivmU4EyJ8+qddi/948SkQu9K8WsB+1q
+ ah8HkjAFRhjvDBA8OikFWtK2PDmxekwHFKxNFdFLo4er2bAPhQGaShOt7Y3oDthINcVb/DwRj1I
+ pCRYzx4rWcDnj5A==
+X-Received: by 2002:a05:600c:1f95:b0:43c:ec4c:25b4 with SMTP id
+ 5b1f17b1804b1-442f20e85d7mr44469095e9.10.1747239615814; 
+ Wed, 14 May 2025 09:20:15 -0700 (PDT)
 Received: from [10.93.18.105] (110.8.30.213.rev.vodafone.pt. [213.30.8.110])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442f337dbb7sm35994605e9.14.2025.05.14.09.27.17
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 May 2025 09:27:18 -0700 (PDT)
-Message-ID: <59c2d331-3daa-46aa-aa59-9a55cae40b90@linaro.org>
-Date: Wed, 14 May 2025 17:27:17 +0100
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-442f337db47sm34846335e9.12.2025.05.14.09.20.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 14 May 2025 09:20:15 -0700 (PDT)
+Message-ID: <e68728e0-c478-475c-8cab-f64907afbcfb@linaro.org>
+Date: Wed, 14 May 2025 17:20:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 00/24] APCI PCI Hotplug support on ARM
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: Re: [RFC 18/24] hw/acpi/ged: Prepare the device to react to PCI
+ hotplug events
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ imammedo@redhat.com, anisinha@redhat.com, mst@redhat.com,
+ shannon.zhaosl@gmail.com
+Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com
 References: <20250428102628.378046-1-eric.auger@redhat.com>
- <6a52f974-3e13-49ba-bfeb-e30e683e4ce5@linaro.org>
- <5e24182d-a8bc-41fa-9741-6caecaa0c12e@redhat.com>
- <b409baa6-8834-4841-a544-ee8055c54051@linaro.org>
- <9a58f718-a7ad-4838-a5d1-9df8f3d43372@linaro.org>
+ <20250428102628.378046-19-eric.auger@redhat.com>
 Content-Language: en-US
-In-Reply-To: <9a58f718-a7ad-4838-a5d1-9df8f3d43372@linaro.org>
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <20250428102628.378046-19-eric.auger@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: cqL7i78gyPkl
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: EnEkngCx8mKx
 
 Hi Eric,
 
-On 5/7/25 22:13, Gustavo Romero wrote:
-> Hi Eric,
-> 
-> On 5/6/25 21:51, Gustavo Romero wrote:
->> Hi Eric,
->>
->> On 5/6/25 12:58, Eric Auger wrote:
->>> Hi Gustavo,
->>>
->>> On 5/5/25 3:26 PM, Gustavo Romero wrote:
->>>> Hi Eric,
->>>>
->>>> On 4/28/25 07:25, Eric Auger wrote:
->>>>> This series enables APCI PCI hotplug/hotunplug on ARM
->>>>> and makes it default for 10.1 machine type. This aligns with
->>>>> x86 q35 machine. Expected benefits should be similar to
->>>>> those listed in [1].
->>>>>
->>>>> The infrastructure used in x86 is heavily reused and a
->>>>> huge part of the series consists in moving code from
->>>>> hw/i386/acpi-build.c to a generic place and slightly
->>>>> adapting it to make it usable on ARM. The DSDT table is
->>>>> augmented to support ACPI PCI hotplug elements.
->>>>>
->>>>> On ARM we use use a GED event to notify the OS about
->>>>> hotplug events.
->>>>>
->>>>> I have not noticed any tests/qtest/bios-tables-test failures
->>>>> neither on x86 nor ARM. x86 DSDT table has not changed.
->>>>> ARM DSDT table definitively has but there are no tests
->>>>> impacted. ARM misses hotplug tests that do exist on x86. This
->>>>> most probably should be considered in the future.
->>>>>
->>>>> Best Regards
->>>>>
->>>>> Eric
->>>>>
->>>>> This series can be found at:
->>>>> https://github.com/eauger/qemu/tree/arm-acpi-pcihp-rfc
->>>>>
->>>>> [1] [PATCH v6 0/6] Use ACPI PCI hot-plug for Q35
->>>>> https://lore.kernel.org/all/20210713004205.775386-1-jusual@redhat.com/
->>>>
->>>> I've just started to review your series and went to a quick smoke test
->>>> by hotplugging a net adapter and got the following kernel internal error:
->>>>
->>>> (qemu) device_add virtio-net-pci,bus=pcie.1,addr=0,id=na
->>>> (qemu) [   64.165411] pci 0000:01:00.0: [1af4:1041] type 00 class
->>>> 0x020000
->>>> [   64.165895] pci 0000:01:00.0: reg 0x14: [mem 0x00000000-0x00000fff]
->>>> [   64.166259] pci 0000:01:00.0: reg 0x20: [mem 0x00000000-0x00003fff
->>>> 64bit pref]
->>>> [   64.166658] pci 0000:01:00.0: reg 0x30: [mem 0x00000000-0x0003ffff
->>>> pref]
->>>> [   64.167153] pci 0000:01:00.0: enabling Extended Tags
->>>> [   64.179972] Internal error: synchronous external abort:
->>>> 0000000096000050 [#1] SMP
->>>> [   64.180719] Modules linked in: aes_ce_blk aes_ce_cipher polyval_ce
->>>> polyval_generic ghash_ce gf128mul sha2_ce binfmt_misc sha256_arm64
->>>> sha1_ce nls_ascii nls_cp437 vfat fat evdev cfg80211 rfkill loop fuse
->>>> efi_pstore drm dm_mod dax configfs efivarfs qemu_fw_cfg ip_tables
->>>> x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic virtio_scsi
->>>> virtio_net scsi_mod net_failover failover virtio_blk scsi_common
->>>> crct10dif_ce crct10dif_common virtio_pci virtio_pci_legacy_dev
->>>> virtio_pci_modern_dev virtio_mmio
->>>> [   64.183656] CPU: 0 PID: 23 Comm: kworker/u2:1 Not tainted
->>>> 6.1.0-30-arm64 #1  Debian 6.1.124-1
->>>> [   64.184071] Hardware name: QEMU QEMU Virtual Machine, BIOS
->>>> edk2-stable202408-prebuilt.qemu.org 08/13/2024
->>>> [   64.184759] Workqueue: kacpi_hotplug acpi_hotplug_work_fn
->>>> [   64.185320] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS
->>>> BTYPE=--)
->>>> [   64.185737] pc : acpi_ex_system_memory_space_handler+0x290/0x300
->>>> [   64.186175] lr : acpi_ev_address_space_dispatch+0x124/0x334
->>>> [   64.186490] sp : ffff80000a6bb3b0
->>>> [   64.186663] x29: ffff80000a6bb3b0 x28: ffff0003fcbb08b8 x27:
->>>> 0000000000000000
->>>> [   64.187126] x26: ffff0003fcbb0288 x25: ffff80000a6bb568 x24:
->>>> 0000000000000001
->>>> [   64.187499] x23: ffff80000a6bb568 x22: 0000000000000004 x21:
->>>> ffff0000c206cb00
->>>> [   64.187885] x20: 00000000090c0014 x19: 0000000000000020 x18:
->>>> 0000000000000000
->>>> [   64.188265] x17: 0000000000000000 x16: 0000000000000000 x15:
->>>> 0000000000000000
->>>> [   64.188640] x14: 0000000000000000 x13: 4d43c3194dea1791 x12:
->>>> 4d7a3553e5c937d0
->>>> [   64.189003] x11: 0000000000000001 x10: 0000000000000000 x9 :
->>>> ffff800008735b34
->>>> [   64.189383] x8 : 0000000000000001 x7 : ffff80000873c850 x6 :
->>>> 00000000000000f8
->>>> [   64.189778] x5 : ffff0000c206cb00 x4 : 0000000000000000 x3 :
->>>> 00000000090c0018
->>>> [   64.190163] x2 : ffff80000a9af014 x1 : 00000000090c0018 x0 :
->>>> 0000000000000001
->>>> [   64.190734] Call trace:
->>>> [   64.191086]  acpi_ex_system_memory_space_handler+0x290/0x300
->>>> [   64.191696]  acpi_ev_address_space_dispatch+0x124/0x334
->>>> [   64.192042]  acpi_ex_access_region+0xe4/0x2e0
->>>> [   64.192287]  acpi_ex_field_datum_io+0x88/0x200
->>>> [   64.192509]  acpi_ex_write_with_update_rule+0xd4/0x120
->>>> [   64.192793]  acpi_ex_insert_into_field+0x210/0x2b0
->>>> [   64.193048]  acpi_ex_write_data_to_field+0xa0/0x190
->>>> [   64.193298]  acpi_ex_store_object_to_node+0x150/0x240
->>>> [   64.193527]  acpi_ex_store+0x144/0x300
->>>> [   64.193726]  acpi_ex_opcode_1A_1T_1R+0x218/0x580
->>>> [   64.193971]  acpi_ds_exec_end_op+0x24c/0x4b0
->>>> [   64.194227]  acpi_ps_parse_loop+0x100/0x6a0
->>>> [   64.194477]  acpi_ps_parse_aml+0x94/0x3b0
->>>> [   64.194674]  acpi_ps_execute_method+0x128/0x25c
->>>> [   64.194922]  acpi_ns_evaluate+0x1f0/0x2d0
->>>> [   64.195148]  acpi_evaluate_object+0x138/0x2d0
->>>> [   64.195380]  acpi_evaluate_dsm+0xb8/0x134
->>>> [   64.195613]  acpi_check_dsm+0x34/0xdc
->>>> [   64.195822]  smbios_attr_is_visible+0x5c/0xb0
->>>> [   64.196089]  internal_create_group+0xd0/0x3d0
->>>> [   64.196335]  internal_create_groups+0x58/0xe0
->>>> [   64.196584]  sysfs_create_groups+0x20/0x30
->>>> [   64.196813]  device_add_groups+0x18/0x2c
->>>> [   64.197039]  bus_add_device+0x48/0x160
->>>> [   64.197260]  device_add+0x3a4/0x85c
->>>> [   64.197463]  pci_device_add+0x308/0x660
->>>> [   64.197680]  pci_scan_single_device+0xe4/0x114
->>>> [   64.197941]  pci_scan_slot+0x70/0x1fc
->>>> [   64.198155]  acpiphp_rescan_slot+0x90/0xa4
->>>> [   64.198366]  acpiphp_hotplug_notify+0x2a8/0x300
->>>> [   64.198584]  acpi_device_hotplug+0x138/0x4c0
->>>> [   64.198819]  acpi_hotplug_work_fn+0x2c/0x4c
->>>> [   64.199045]  process_one_work+0x1f4/0x460
->>>> [   64.199277]  worker_thread+0x188/0x4e0
->>>> [   64.199492]  kthread+0xe0/0xe4
->>>> [   64.199671]  ret_from_fork+0x10/0x20
->>>> [   64.200114] Code: f90002e0 52800000 17ffff97 f94002e0 (b9000040)
->>>> [   64.200820] ---[ end trace 0000000000000000 ]---
->>>>
->>>> (qemu)
->>>>
->>>> This is a Debian Bookworm stock kernel 6.1. I built QEMU from your GH
->>>> branch.
->>>>
->>>> The machine was started with:
->>>>
->>>> ./qemu-system-aarch64 -m 16G -nographic -machine
->>>> type=virt,gic-version=max -cpu cortex-a57 -initrd
->>>> /mnt/initrd.img-6.1.0-30-arm64 -kernel /mnt/vmlinuz-6.1.0-30-arm64
->>>> -append "root=/dev/vda1 console=ttyAMA0,115200 acpi=force" -device
->>>> virtio-scsi-pci -device virtio-blk-pci,drive=root -drive
->>>> if=none,id=root,file=/mnt/debian-12-nocloud-arm64.qcow2 -device
->>>> pcie-root-port,id=pcie.1,chassis=1,slot=1 -bios
->>>> ./pc-bios/edk2-aarch64-code.fd
->>>>
->>>> ./pc-bios/edk2-aarch64-code.fd is the one found under ./build dir, so
->>>> nothing special.
->>>
->>> I have just tested debian-12-nocloud-arm64.qcow2 which features
->>> 6.1.0-34-arm64 + edk2-aarch64-code.fd and I am able to
->>> hotplug/hot-unplug the virtio-net-pci device. Can you retry without
->>>
->>> -initrd /mnt/initrd.img-6.1.0-30-arm64 -kernel
->>> /mnt/vmlinuz-6.1.0-30-arm64 -append "root=/dev/vda1
->>> console=ttyAMA0,115200 acpi=force" ?
->>
->> Sure, so I got the same internal error without passing the kernel, the initrd,
->> and the append command.
->>
->>
->> I also tried with a pristine Debian .qcow2 taken from:
->>
->> https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-nocloud-arm64.qcow2
->>
->> I'm building your Github branch:
->>
->> gromero@gromero0:/mnt/git/qemu_/build$ git branch -vv | grep eauger
->> * arm-acpi-pcihp-rfc        cf92b293ff [eauger/arm-acpi-pcihp-rfc] hw/arm/virt: Use ACPI PCI hotplug by default
->> gromero@gromero0:/mnt/git/qemu_/build$ git log --oneline -1
->> cf92b293ff (HEAD -> arm-acpi-pcihp-rfc, eauger/arm-acpi-pcihp-rfc) hw/arm/virt: Use ACPI PCI hotplug by default
->>
->> I tried in a pristine ./build dir.
->>
->> QEMU options:
->>
->> gromero@gromero0:/mnt/git/qemu_/build$ ./qemu-system-aarch64 -m 16G -nographic -machine type=virt,gic-version=max -cpu max -drive if=none,file=/mnt/debian/debian-12-nocloud-arm64.qcow2,format=qcow2,id=hd -device virtio-blk-device,drive=hd -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1,addr=0x2.0x0 -bios ./pc-bios/edk2-aarch64-code.fd
->> UEFI firmware (version edk2-stable202408-prebuilt.qemu.org built at 16:28:50 on Sep 12 2024)
->>
->> gromero@gromero0:/mnt/git/qemu_/build$ md5sum ./pc-bios/edk2-aarch64-code.fd
->> 3426cd25efb1593f86352ec0c61d66f5  ./pc-bios/edk2-aarch64-code.fd
->>
->> and I get the same error:
->>
->> root@localhost:~# QEMU 10.0.50 monitor - type 'help' for more information
->> (qemu) device_add virtio-net-pci,bus=pcie.1,addr=0,id=na
->> (qemu) [   56.865284] pci 0000:01:00.0: [1af4:1041] type 00 class 0x020000
->> [   56.866620] pci 0000:01:00.0: reg 0x14: [mem 0x00000000-0x00000fff]
->> [   56.867711] pci 0000:01:00.0: reg 0x20: [mem 0x00000000-0x00003fff 64bit pref]
->> [   56.868287] pci 0000:01:00.0: reg 0x30: [mem 0x00000000-0x0003ffff pref]
->> [   56.869143] pci 0000:01:00.0: enabling Extended Tags
->> [   56.900481] Internal error: synchronous external abort: 0000000096000050 [#1] SMP
->> [   56.900911] Modules linked in: aes_ce_blk binfmt_misc aes_ce_cipher polyval_ce polyval_generic ghash_ce gf128mul sha3_ce sha3_generic sha512_ce sha512_arm64 sha2_ce sha256_arm64 sha1_ce nls_ascii nls_cp437 vfat fat evdev cfg80211 rfkill loop fuse drm efi_pstore dm_mod dax configfs efivarfs qemu_fw_cfg ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic virtio_net net_failover failover virtio_blk crct10dif_ce crct10dif_common virtio_pci virtio_pci_legacy_dev virtio_pci_modern_dev virtio_mmio
->> [   56.903132] CPU: 0 PID: 10 Comm: kworker/u2:0 Not tainted 6.1.0-34-arm64 #1  Debian 6.1.135-1
->> [   56.903753] Hardware name: QEMU QEMU Virtual Machine, BIOS edk2-stable202408-prebuilt.qemu.org 08/13/2024
->> [   56.904126] Workqueue: kacpi_hotplug acpi_hotplug_work_fn
->> [   56.904877] pstate: 60402005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
->> [   56.905085] pc : acpi_ex_system_memory_space_handler+0x290/0x300
->> [   56.905306] lr : acpi_ev_address_space_dispatch+0x124/0x334
->> [   56.905471] sp : ffff80000809b3b0
->> [   56.905580] x29: ffff80000809b3b0 x28: ffff0003fcb852d0 x27: 0000000000000000
->> [   56.905856] x26: ffff0003fcb85558 x25: ffff80000809b568 x24: 0000000000000001
->> [   56.906092] x23: ffff80000809b568 x22: 0000000000000004 x21: ffff0000c1644980
->> [   56.906333] x20: 00000000090c0014 x19: 0000000000000020 x18: 0000000000000000
->> [   56.906557] x17: 0000000000000000 x16: 0000000000000000 x15: 0000000000000000
->> [   56.906793] x14: 0000000000000000 x13: ffffb8324c78ebb0 x12: 0000000000000001
->> [   56.907016] x11: 000000000000002e x10: ffffb8324cab6e20 x9 : ffffb8324b2076b4
->> [   56.907236] x8 : 0000000000000001 x7 : ffffb8324b20e3d0 x6 : 00000000000000f8
->> [   56.907473] x5 : ffff0000c1644980 x4 : 0000000000000000 x3 : 00000000090c0018
->> [   56.907705] x2 : ffff800008837014 x1 : 00000000090c0018 x0 : 0000000000000001
->> [   56.908026] Call trace:
->> [   56.908226]  acpi_ex_system_memory_space_handler+0x290/0x300
->> [   56.908540]  acpi_ev_address_space_dispatch+0x124/0x334
->> [   56.908736]  acpi_ex_access_region+0xe4/0x2e0
->> [   56.908870]  acpi_ex_field_datum_io+0x88/0x200
->> [   56.909003]  acpi_ex_write_with_update_rule+0xd4/0x120
->> [   56.909152]  acpi_ex_insert_into_field+0x210/0x2b0
->> [   56.909285]  acpi_ex_write_data_to_field+0xa0/0x190
->> [   56.909426]  acpi_ex_store_object_to_node+0x150/0x240
->> [   56.909569]  acpi_ex_store+0x144/0x300
->> [   56.909688]  acpi_ex_opcode_1A_1T_1R+0x218/0x580
->> [   56.909824]  acpi_ds_exec_end_op+0x24c/0x4b0
->> [   56.909953]  acpi_ps_parse_loop+0x100/0x6a0
->> [   56.910074]  acpi_ps_parse_aml+0x94/0x3b0
->> [   56.910197]  acpi_ps_execute_method+0x128/0x25c
->> [   56.910331]  acpi_ns_evaluate+0x1f0/0x2d0
->> [   56.910445]  acpi_evaluate_object+0x138/0x2d0
->> [   56.910573]  acpi_evaluate_dsm+0xb8/0x134
->> [   56.910696]  acpi_check_dsm+0x34/0xdc
->> [   56.910809]  smbios_attr_is_visible+0x5c/0xb0
->> [   56.910937]  internal_create_group+0xd0/0x3d0
->> [   56.911066]  internal_create_groups+0x58/0xe0
->> [   56.911194]  sysfs_create_groups+0x20/0x30
->> [   56.911315]  device_add_groups+0x18/0x2c
->> [   56.911435]  bus_add_device+0x48/0x160
->> [   56.911552]  device_add+0x3a4/0x85c
->> [   56.911678]  pci_device_add+0x308/0x660
->> [   56.911803]  pci_scan_single_device+0xe4/0x114
->> [   56.911937]  pci_scan_slot+0x70/0x1fc
->> [   56.912039]  acpiphp_rescan_slot+0x90/0xa4
->> [   56.912161]  acpiphp_hotplug_notify+0x2a8/0x300
->> [   56.912290]  acpi_device_hotplug+0x138/0x4c0
->> [   56.912428]  acpi_hotplug_work_fn+0x2c/0x4c
->> [   56.912549]  process_one_work+0x1f4/0x460
->> [   56.912679]  worker_thread+0x188/0x4e0
->> [   56.912792]  kthread+0xe0/0xe4
->> [   56.912892]  ret_from_fork+0x10/0x20
->> [   56.913136] Code: f90002e0 52800000 17ffff97 f94002e0 (b9000040)
->> [   56.913532] ---[ end trace 0000000000000000 ]---
->>
->>
->> I'm wondering if we are using the same  ./pc-bios/edk2-aarch64-code.fd, although
->> I can't see how it would cause such error.
-> 
-> hmm actually I'm able to properly hotplug the network device using the exactly
-> same sw stack as above (your branch, Debian 12, edk2) but running on an arm64 host.
-> 
-> It seems your running on a arm64 host since you're passing --enable-kvm. Do you
-> mind trying it on a x86_64 or without --enable-kvm on the arm64 host? I'm able to
-> reproduce it on arm64 host without --enable-kvm but not with --enable-kvm passed to QEMU.
+On 4/28/25 07:25, Eric Auger wrote:
+> QEMU will notify the OS about PCI hotplug/hotunplug events through
+> GED interrupts. Let the GED device handle a new PCI hotplug event.
+> On its occurence it calls the \\_SB.PCI0.PCNT method with the BLCK
 
-What causes this behaviour is that the container size is < than the register region
-in the pcihp device:
+nit: occurrence -^
 
-[...]
-     00000000090c0000-00000000090c0013 (prio 0, i/o): pcihp container
-       00000000090c0000-00000000090c0017 (prio 0, i/o): acpi-pci-hotplug
-[...]
 
-Because ACPI_PCI_HOTPLUG_REG_LEN and ACPI_PCIHP_SIZE values don't match. Please see my
-comment in patch 18/24 for a possible fix for it.
+> mutex held.
+> 
+> The GED device uses a dedicated MMIO region that will be mapped
+> by the machine code.
+> 
+> At this point the GED still does not support PCI device hotplug in
+> its TYPE_HOTPLUG_HANDLER implementation. This will come in a
+> subsequent patch
+
+nit: period missing ^
+
+
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>   include/hw/acpi/generic_event_device.h |  5 +++++
+>   include/hw/acpi/pcihp.h                |  2 ++
+>   hw/acpi/generic_event_device.c         | 14 ++++++++++++++
+>   3 files changed, 21 insertions(+)
+> 
+> diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+> index d2dac87b4a..28be6c0582 100644
+> --- a/include/hw/acpi/generic_event_device.h
+> +++ b/include/hw/acpi/generic_event_device.h
+> @@ -63,6 +63,7 @@
+>   #include "hw/acpi/memory_hotplug.h"
+>   #include "hw/acpi/ghes.h"
+>   #include "hw/acpi/cpu.h"
+> +#include "hw/acpi/pcihp.h"
+>   #include "qom/object.h"
+>   
+>   #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+> @@ -101,6 +102,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AcpiGedState, ACPI_GED)
+>   #define ACPI_GED_PWR_DOWN_EVT      0x2
+>   #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
+>   #define ACPI_GED_CPU_HOTPLUG_EVT    0x8
+> +#define ACPI_GED_PCI_HOTPLUG_EVT    0x10
+>   
+>   typedef struct GEDState {
+>       MemoryRegion evt;
+> @@ -114,6 +116,9 @@ struct AcpiGedState {
+>       MemoryRegion container_memhp;
+>       CPUHotplugState cpuhp_state;
+>       MemoryRegion container_cpuhp;
+> +    AcpiPciHpState pcihp_state;
+> +    MemoryRegion container_pcihp;
+> +
+>       GEDState ged_state;
+>       uint32_t ged_event_bitmap;
+>       qemu_irq irq;
+> diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
+> index 451ef74284..abb6e14549 100644
+> --- a/include/hw/acpi/pcihp.h
+> +++ b/include/hw/acpi/pcihp.h
+> @@ -38,6 +38,8 @@
+>   #define ACPI_PCIHP_SEJ_BASE 0x8
+>   #define ACPI_PCIHP_BNMR_BASE 0x10
+>   
+> +#define ACPI_PCI_HOTPLUG_REG_LEN 0x14
+
+This is wrong, no? It should be 0x18, i.e. 24 bytes or 6 registers of 4 bytes.
+
+I think it's better to move the defines in pcihp.c into pcihp.h and
+use them to define ACPI_PCI_HOTPLUG_REG_LEN so the values are consistent, like:
+
+diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
+index 82b8ea2811..3ab8b9de94 100644
+--- a/hw/acpi/pcihp.c
++++ b/hw/acpi/pcihp.c
+@@ -44,14 +44,6 @@
+  #include "qobject/qnum.h"
+  #include "trace.h"
+  
+-#define ACPI_PCIHP_SIZE 0x0018
+-#define PCI_UP_BASE 0x0000
+-#define PCI_DOWN_BASE 0x0004
+-#define PCI_EJ_BASE 0x0008
+-#define PCI_RMV_BASE 0x000c
+-#define PCI_SEL_BASE 0x0010
+-#define PCI_AIDX_BASE 0x0014
+-
+  typedef struct AcpiPciHpFind {
+      int bsel;
+      PCIBus *bus;
+diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
+index abb6e14549..6b79adcaef 100644
+--- a/include/hw/acpi/pcihp.h
++++ b/include/hw/acpi/pcihp.h
+@@ -38,7 +38,15 @@
+  #define ACPI_PCIHP_SEJ_BASE 0x8
+  #define ACPI_PCIHP_BNMR_BASE 0x10
+  
+-#define ACPI_PCI_HOTPLUG_REG_LEN 0x14
++#define ACPI_PCIHP_SIZE 0x0018
++#define PCI_UP_BASE 0x0000
++#define PCI_DOWN_BASE 0x0004
++#define PCI_EJ_BASE 0x0008
++#define PCI_RMV_BASE 0x000c
++#define PCI_SEL_BASE 0x0010
++#define PCI_AIDX_BASE 0x0014
++
++#define ACPI_PCI_HOTPLUG_REG_LEN ACPI_PCIHP_SIZE
+  
+  typedef struct AcpiPciHpPciStatus {
+      uint32_t up;
+
+
+or even use only one of them (ACPI_PCI_HOTPLUG_REG_LEN, ACPI_PCIHP_SIZE, or
+another new name that would fit better in both contexts).
 
 
 Cheers,
 Gustavo
+
+> +
+>   typedef struct AcpiPciHpPciStatus {
+>       uint32_t up;
+>       uint32_t down;
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+> index 7b2d582fff..0fd8baba97 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -26,6 +26,7 @@ static const uint32_t ged_supported_events[] = {
+>       ACPI_GED_PWR_DOWN_EVT,
+>       ACPI_GED_NVDIMM_HOTPLUG_EVT,
+>       ACPI_GED_CPU_HOTPLUG_EVT,
+> +    ACPI_GED_PCI_HOTPLUG_EVT,
+>   };
+>   
+>   /*
+> @@ -121,6 +122,12 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
+>                              aml_notify(aml_name("\\_SB.NVDR"),
+>                                         aml_int(0x80)));
+>                   break;
+> +            case ACPI_GED_PCI_HOTPLUG_EVT:
+> +                aml_append(if_ctx,
+> +                           aml_acquire(aml_name("\\_SB.PCI0.BLCK"), 0xFFFF));
+> +                aml_append(if_ctx, aml_call0("\\_SB.PCI0.PCNT"));
+> +                aml_append(if_ctx, aml_release(aml_name("\\_SB.PCI0.BLCK")));
+> +                break;
+>               default:
+>                   /*
+>                    * Please make sure all the events in ged_supported_events[]
+> @@ -299,6 +306,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+>           sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
+>       } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
+>           sel = ACPI_GED_CPU_HOTPLUG_EVT;
+> +    } else if (ev & ACPI_PCI_HOTPLUG_STATUS) {
+> +        sel = ACPI_GED_PCI_HOTPLUG_EVT;
+>       } else {
+>           /* Unknown event. Return without generating interrupt. */
+>           warn_report("GED: Unsupported event %d. No irq injected", ev);
+> @@ -428,6 +437,11 @@ static void acpi_ged_realize(DeviceState *dev, Error **errp)
+>               cpu_hotplug_hw_init(&s->container_cpuhp, OBJECT(dev),
+>                                   &s->cpuhp_state, 0);
+>               break;
+> +        case ACPI_GED_PCI_HOTPLUG_EVT:
+> +            memory_region_init(&s->container_pcihp, OBJECT(dev),
+> +                                "pcihp container",
+> +                                ACPI_PCI_HOTPLUG_REG_LEN);
+> +            sysbus_init_mmio(sbd, &s->container_pcihp);
+>           }
+>           ged_events--;
+>       }
+

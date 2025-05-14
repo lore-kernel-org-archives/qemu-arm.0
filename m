@@ -1,133 +1,101 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp849134njb;
-        Tue, 13 May 2025 16:20:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW12f8NjDGfLtrOBd1skIVnuyYtlb4D6V4s/a9YsXaCqXW04rQ7IoW+8WYBjhZBJVM+DweVNIJuFFE27w==@linaro.org
-X-Google-Smtp-Source: AGHT+IEKrDBQOktucOVyTelf2gH7P9wubut136+RvMhSvTWYjOhStOEEYD8JBAejmzNBb34/bpex
-X-Received: by 2002:a05:620a:1a0e:b0:7c5:544e:2ccf with SMTP id af79cd13be357-7cd28890f8cmr211101085a.57.1747178445829;
-        Tue, 13 May 2025 16:20:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747178445; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp863809njb;
+        Tue, 13 May 2025 17:04:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVzVBJp4zUyy7ozylSqX90blyCbm7ypDthfm9d+mturHf2mLWaPsaPIKSus/IifmaX8ny3jeThHhYNdNQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFb9/2ZUcD9p3r2dhZL20RL4tHoWx5dyL7a0NOmbvOC3vD9ZLKo2uHyDJBHTFpntiHoHllt
+X-Received: by 2002:a05:622a:4111:b0:476:b480:e440 with SMTP id d75a77b69052e-49495ccdb4fmr29616641cf.23.1747181048862;
+        Tue, 13 May 2025 17:04:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747181048; cv=none;
         d=google.com; s=arc-20240605;
-        b=fCXYaDz3pzIDUtInzcBE3n8pCG1obdR1zzO12+mn1ROj1GAliJbMTm0D4gvQhCdAh/
-         ZxCDYwjLaPfaha8Y12A3CQB+YYoEe6AsvG4RyVY4kus37vSUTHWPFrDcPkI7QtGm7v/b
-         HEgNKctKMnqY4isWWwN4LHcD1nHpERcxcg0E/LUFSS84gxmz5ANQ/YUC3etg3THTBB0P
-         0ihEt2L5AWURxLJbQJqBABzSjKpSpuQYESpzW49cXY/NbvjBVOE9JeneF33o1ef0YjXb
-         qlB/yGk1G217SL+GhQjRveHfCHBP1T/zQ/kYd6zwPUZKAgn/vRKFUIxJTPMu0uOB8ejN
-         BvfA==
+        b=SOIA96nrkIBsM83epmaah4KFKnDvORrcskvB/6Vc9/3aoP1Yal+k5uMbg+nhUuVfji
+         G0oM3QxApDe7lEPbk0LwR7UQATfEeBNjZ2LIwK5preuuuyD9+Lyog/Yt34MShVDnBt1b
+         n9tWCkH8ilB5JS4NqMixNmPj0esDMsbfAdqItvUyVdkEpwSzYeocW3e+oMDLYFVplt4L
+         FlLur4ItSqEAkYUxgJxtFx9yfp5oX0Ld99DAzW8Ni8QwArWQ8mHqBYzrvzbJG1BIkx2l
+         diGmR+Nfk+0I1wG9RvieqPgiysJWbeQKl6YtSP2D9X4mXxcyqm+G2sRc8yGUPizjn2eH
+         pIsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ptnBdOrH3dXuhVdA1Pm0/5wz+jwDYOdOULmTRQstQJ4=;
-        fh=uWUSW3+uiVZpqmaiuF0saxcqT9QzgiZ/eGdqQdZFzRI=;
-        b=fgZbRzS+2Oo0BmWz+4oTD0oPu8APJSE9fGVW9utYUKr1XcWZMxUC8rU/dI0JtmisWI
-         06anFPshkI7fxdkdJw01eLWHNAVFthnFPHdQX8vpmu5OOJP17Qxk1ZniDvq+/woFtuZz
-         +DZSIQ4B4XBbrAbTEEPTiAyFiOxoJ2uhC/VxwM0dkj+rBQ68u4INcukATDlprB2F7lRp
-         G9fwyekcLn8a+AS030r9Xj7KDPIAXIWUvTWamoB11aYzEci0M1os534YvgxF6zu4Dmlw
-         0zmT4SrsZt780oB76EXBi5vkdbK0MIxtV5Z5tGxFu8sJwsKLDmlvaA4RV7i0E5Tq6i1o
-         Fq6Q==;
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:message-id:in-reply-to:subject:cc:to:from:date
+         :dkim-signature;
+        bh=sseWur14j1D3TqA8ChdJbKuoZ3Mc0bikD2PAMeBzx/E=;
+        fh=vaepxFUK0aoS2vzPjSz5RFsZj1kKwVtdQsrszJg9o6g=;
+        b=RVBagFbgwpaJm1L+yUBJpCVqTU0Z0UGxlmpD3nMn04umPGzpTRpnx8GAXduMzZmT19
+         MQC3TdSRH0k1DRYvNAVmLfk8JZ9kBS8W/yk4gFUvTCMkYoFEKKP1ptxH2p4I2dGTBCpo
+         e7CRhMgH3s9FST24cb9H9Tnbz6jQ/5iSziDsFE1zzO6YFt/MYqSIVPIJ4SuhOqiIuUQm
+         K8aUYZqtJbWqT12rJqjly/S+n+bwjYJnQe/VakuPuW1BTXPtnassGGk68/5nmweDRvbm
+         I2DPFdM5lSlU355x6tvdDiB+UQlrOO77v8MziSG+pXa9n1ON2g14ES3iy9Y0BkIHGwY6
+         hd6Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nwTkIOrU;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=cak51oBc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd01021351si1207242185a.593.2025.05.13.16.20.45
+        by mx.google.com with ESMTPS id d75a77b69052e-49452599eb7si122122691cf.500.2025.05.13.17.04.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 May 2025 16:20:45 -0700 (PDT)
+        Tue, 13 May 2025 17:04:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nwTkIOrU;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=cak51oBc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uEyv5-0007Ed-NC; Tue, 13 May 2025 19:20:19 -0400
+	id 1uEzav-00051q-AY; Tue, 13 May 2025 20:03:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uEyv4-0007EJ-SS
- for qemu-arm@nongnu.org; Tue, 13 May 2025 19:20:18 -0400
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uEyv2-00067T-68
- for qemu-arm@nongnu.org; Tue, 13 May 2025 19:20:18 -0400
-Received: by mail-pg1-x52f.google.com with SMTP id
- 41be03b00d2f7-b2093aef78dso6197342a12.0
- for <qemu-arm@nongnu.org>; Tue, 13 May 2025 16:20:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1747178414; x=1747783214; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ptnBdOrH3dXuhVdA1Pm0/5wz+jwDYOdOULmTRQstQJ4=;
- b=nwTkIOrUZMrNyEefbxktyCfXxxj0pcOD5MiyPWlgsCjrs9ATaSBScbBl0vYzgGsZd6
- /EXCReGNeNlK61dpVmaqP3A6DwnnTQPPyGNzzOGftWV4BZD1j6GQ6eIadHo5lEXmaMFd
- MT4eRFAZndlDNIVe6c3ezrpB5aJ8T4Lo1ygRpDzEXqrD84G/srzY2eQa5unRyJrBI3dZ
- +vzjcuN/IaoUzEtrXKsGHQTYlMNTICXIAAioQ+jOPM5PvoH7+fwjuGXYyP/hgoPi0EPQ
- /iQB8wjVxnMRj2WdgApR/ltuaEQc32TfRCgGTbSXxyXIfBNvp1uzF+Xy7E7nHtlt3ru+
- lOfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747178414; x=1747783214;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ptnBdOrH3dXuhVdA1Pm0/5wz+jwDYOdOULmTRQstQJ4=;
- b=Hyj2BVxoeZF/xn0zxZcoHQm9z/pLY3R5nZyJvxRa0MSI8EDRX+e+4iqHKPujVWB9Hv
- 9LMziCfZ0JFrc7Q6R/OFehjumqdyaDy+De0HT/NSNKOe3PA9tdcupjlqdZH8+/8zXxRt
- FW7YuhvSPfEbGwzO7zQG7yilxx247e+42+o4JkQAeFKGIIFLQUx36ad88CNVEN8mJTih
- wSZ0Mgj8XVUZJEIKrJXOXJNujgaTAPDtDj1OqX181y266DwLucBFTMX97lRTwN/Y5mc1
- ktZD8oYoyCuZEdqRJnN2SNx00q86+TM6Fa7uJNNPhvlsdJ4FGmtfzsumiBwvzaujYZHU
- R2Hw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU9rM/BHdL79RqNCAq/h6Ye/tH6QZMKC7CfKXeV/KrE5o3zHJb8F7mZbGVUAFXtyx2DxicNWlnfYw==@nongnu.org
-X-Gm-Message-State: AOJu0YxSUm9Hqa+vv01MYdBVmZPneeJRTnlq0vXkj36FLMLqPYKmpy6T
- 58jBGI4E6tixDzx7YcfBR24Dp0eLNm0tPRHap7k5mdEyaFz/Vb4UeIRXMEQCxDo=
-X-Gm-Gg: ASbGncsxVRhzkdUAipOJ0zd1n067KT7mWvnrkwMu5xkfp9W0t2/Gh5OOwFQqsuAU13J
- qo9smwRVirPJHjzuvCIxrkNJrSbyXGycCEna+4TswXME+t89ENypiengjtj0d499kbULEPhAjxj
- /Wx1rpadlrgL9UqEffk7EWQ5En/LFc8juL7MpRv3m0WTKeUpllVxcLtN3tf6HS4ExV02pEQw8n0
- fmqajMKxC9yygeiuicbZ4oT2qgPcwb3dParoYhFTXlSvcMixxIvUzE4IaWFztbuOqt/1cAF6cur
- OwmWTMPugKP8lKdmK2bsw4T8RV9zQTc/ckwuto1CHvzkLuz4eW9ueAn6pFJsGFGR
-X-Received: by 2002:a17:90b:518d:b0:2f2:a664:df20 with SMTP id
- 98e67ed59e1d1-30e2e59bfd7mr2339027a91.7.1747178414356; 
- Tue, 13 May 2025 16:20:14 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-30e3345ffcesm160832a91.29.2025.05.13.16.20.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 May 2025 16:20:13 -0700 (PDT)
-Message-ID: <d1bf2e99-7320-4a20-a5cb-2e7ce70036b8@linaro.org>
-Date: Tue, 13 May 2025 16:20:13 -0700
+ (Exim 4.90_1) (envelope-from <sstabellini@kernel.org>)
+ id 1uEzat-00051a-9D; Tue, 13 May 2025 20:03:31 -0400
+Received: from dfw.source.kernel.org ([139.178.84.217])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sstabellini@kernel.org>)
+ id 1uEzar-0001nD-Ix; Tue, 13 May 2025 20:03:31 -0400
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 592015C4A49;
+ Wed, 14 May 2025 00:01:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AFE4EC4CEE4;
+ Wed, 14 May 2025 00:03:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1747181006;
+ bh=V9r0H4FFmFHRbUIuzb5awbyVY/AV8w/CNxahp6ppDzw=;
+ h=Date:From:To:cc:Subject:In-Reply-To:References:From;
+ b=cak51oBcWts0nQZvhmBIFOTpaWUvxUBJUukktKF/Pke+GX7qiEBMl9OtrF26/jE3T
+ xxH0V9yTBAa6HjEtyvj0+SDps7B82kg1+pbxHUStpgQ0RfvA3CyRtjZ2XMZvSz6jIg
+ TaSBywL2pzpArbM25+PQrp0oPQKd5i9JSv1eKgelZPG/nq2A0BbraLlFWMA/eZKOvj
+ aQ71KQx9MjcBGTxhJMksqsGBGLMtF+Haky1ODud96RoOZVx9HacHLPEqUiBdIt3FY/
+ r59yBQV6f9KD83wbK+Lprqyd8gYrEaDCRaiZVEuE/yYhR0pl5RyWwYx4KMvOtBuqiR
+ qra2z5ZoKrqvw==
+Date: Tue, 13 May 2025 17:03:23 -0700 (PDT)
+From: Stefano Stabellini <sstabellini@kernel.org>
+X-X-Sender: sstabellini@ubuntu-linux-20-04-desktop
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+ xen-devel@lists.xenproject.org, Anthony PERARD <anthony@xenproject.org>, 
+ David Woodhouse <dwmw@amazon.co.uk>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org, 
+ Stefano Stabellini <sstabellini@kernel.org>, Paul Durrant <paul@xen.org>, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] hw/xen/arch_hvm: Unify x86 and ARM variants
+In-Reply-To: <20250513171737.74386-1-philmd@linaro.org>
+Message-ID: <alpine.DEB.2.22.394.2505131703140.368682@ubuntu-linux-20-04-desktop>
+References: <20250513171737.74386-1-philmd@linaro.org>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] meson.build: Compile hw_common_arch_libs files with
- right header include paths
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, Brad Smith <brad@comstyle.com>
-References: <20250513115637.184940-1-thuth@redhat.com>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20250513115637.184940-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x52f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: multipart/mixed; boundary="8323329-946740503-1747181006=:368682"
+Received-SPF: pass client-ip=139.178.84.217;
+ envelope-from=sstabellini@kernel.org; helo=dfw.source.kernel.org
+X-Spam_score_int: -85
+X-Spam_score: -8.6
+X-Spam_bar: --------
+X-Spam_report: (-8.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.549,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_HI=-5, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,50 +110,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CuVcVbG9nsO1
+X-TUID: w/dtaHShB4Z7
 
-Hi Thomas,
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-On 5/13/25 4:56 AM, Thomas Huth wrote:
-> From: Thomas Huth <thuth@redhat.com>
+--8323329-946740503-1747181006=:368682
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+
+On Tue, 13 May 2025, Philippe Mathieu-Daudé wrote:
+> As each target declares the same prototypes, we can
+> use a single header, removing the TARGET_XXX uses.
 > 
-> Since commit 6f4e8a92bbd ("hw/arm: make most of the compilation units
-> common"), compilation of some arm machines (like musicpal) fails on
-> certain host systems like OpenBSD 7.6/7.7 since headers like <epoxy/gl.h>
-> don't reside in /usr/include and we currently don't add the right
-> CFLAGS for the common files to include the additional header search
-> paths. Add a loop similar to what we already did in commit 727bb5b477e6
-> to fix it.
-> 
-> With this fix applied, we can now also drop the explicit dependency
-> on pixman for the arm musicpal machine.
-> 
-> Fixes: 6f4e8a92bbd ("hw/arm: make most of the compilation units common")
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> [thuth: Add commit message + changes in hw/arm/meson.build]
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
+
+
 > ---
->   v2: Change the subject of the patch according to Paolo's suggestion
+>  include/hw/arm/xen_arch_hvm.h  |  9 ---------
+>  include/hw/i386/xen_arch_hvm.h | 11 -----------
+>  include/hw/xen/arch_hvm.h      | 14 ++++++++++----
+>  hw/arm/xen-pvh.c               |  1 -
+>  4 files changed, 10 insertions(+), 25 deletions(-)
+>  delete mode 100644 include/hw/arm/xen_arch_hvm.h
+>  delete mode 100644 include/hw/i386/xen_arch_hvm.h
 > 
->   meson.build        | 27 ++++++++++++++++-----------
->   hw/arm/meson.build |  2 +-
->   2 files changed, 17 insertions(+), 12 deletions(-)
-
-
-Thanks for the patch.
-I didn't run into any issue when building for {linux, macos, windows, 
-freebsd}, so I assumed it was safe to do things this way and specific 
-dependencies could just be listed with associated sources.
-It seems like there are cracks in this approach, so adding all the 
-dependencies per base arch is a good idea.
-
-Any chance you could base it on this commit [1] (and add it for new 
-libraries as well)?
-
-This is going to be pulled very shortly (as part of a wider series), and 
-the same fix will be needed.
-
-[1] 20250512180502.2395029-4-pierrick.bouvier@linaro.org
-
-Thanks,
-Pierrick
+> diff --git a/include/hw/arm/xen_arch_hvm.h b/include/hw/arm/xen_arch_hvm.h
+> deleted file mode 100644
+> index 8fd645e7232..00000000000
+> --- a/include/hw/arm/xen_arch_hvm.h
+> +++ /dev/null
+> @@ -1,9 +0,0 @@
+> -#ifndef HW_XEN_ARCH_ARM_HVM_H
+> -#define HW_XEN_ARCH_ARM_HVM_H
+> -
+> -#include <xen/hvm/ioreq.h>
+> -void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
+> -void arch_xen_set_memory(XenIOState *state,
+> -                         MemoryRegionSection *section,
+> -                         bool add);
+> -#endif
+> diff --git a/include/hw/i386/xen_arch_hvm.h b/include/hw/i386/xen_arch_hvm.h
+> deleted file mode 100644
+> index 1000f8f5433..00000000000
+> --- a/include/hw/i386/xen_arch_hvm.h
+> +++ /dev/null
+> @@ -1,11 +0,0 @@
+> -#ifndef HW_XEN_ARCH_I386_HVM_H
+> -#define HW_XEN_ARCH_I386_HVM_H
+> -
+> -#include <xen/hvm/ioreq.h>
+> -#include "hw/xen/xen-hvm-common.h"
+> -
+> -void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
+> -void arch_xen_set_memory(XenIOState *state,
+> -                         MemoryRegionSection *section,
+> -                         bool add);
+> -#endif
+> diff --git a/include/hw/xen/arch_hvm.h b/include/hw/xen/arch_hvm.h
+> index df39c819c8f..8bacaa4ec41 100644
+> --- a/include/hw/xen/arch_hvm.h
+> +++ b/include/hw/xen/arch_hvm.h
+> @@ -1,5 +1,11 @@
+> -#if defined(TARGET_I386) || defined(TARGET_X86_64)
+> -#include "hw/i386/xen_arch_hvm.h"
+> -#elif defined(TARGET_ARM) || defined(TARGET_AARCH64)
+> -#include "hw/arm/xen_arch_hvm.h"
+> +#ifndef HW_XEN_ARCH_HVM_H
+> +#define HW_XEN_ARCH_HVM_H
+> +
+> +#include <xen/hvm/ioreq.h>
+> +#include "hw/xen/xen-hvm-common.h"
+> +
+> +void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
+> +void arch_xen_set_memory(XenIOState *state,
+> +                         MemoryRegionSection *section,
+> +                         bool add);
+>  #endif
+> diff --git a/hw/arm/xen-pvh.c b/hw/arm/xen-pvh.c
+> index 4b26bcff7a5..1a9eeb01c8e 100644
+> --- a/hw/arm/xen-pvh.c
+> +++ b/hw/arm/xen-pvh.c
+> @@ -10,7 +10,6 @@
+>  #include "hw/boards.h"
+>  #include "system/system.h"
+>  #include "hw/xen/xen-pvh-common.h"
+> -#include "hw/xen/arch_hvm.h"
+>  
+>  #define TYPE_XEN_ARM  MACHINE_TYPE_NAME("xenpvh")
+>  
+> -- 
+> 2.47.1
+> 
+--8323329-946740503-1747181006=:368682--

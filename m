@@ -1,63 +1,63 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1693053njb;
-        Thu, 15 May 2025 01:16:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXC54EHFrapiwA3uUuQ+/2JO+5DQXsXB6CyAtsMiLmE69K6SdVH9RzoTzn7YgEdRKlfnO7uUJ627IflqA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHgHppi0QXZ6jTFbr6rpIAAP4L3J041pTAz4UhZ0gLSNJxZVq0b+BJ9Rm/1OnbZzAx4LLst
-X-Received: by 2002:a05:620a:31a2:b0:7c5:fa85:1ac3 with SMTP id af79cd13be357-7cd3c80b2edmr185661885a.45.1747296969408;
-        Thu, 15 May 2025 01:16:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747296969; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1693200njb;
+        Thu, 15 May 2025 01:16:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUxyB4p+ygIY1mLaPusegFy6oN4jjVcMYK5C2kBH2rsoDI2OOI0ZG8596OZWB6/vlJBbRG2NZlL0S3qxw==@linaro.org
+X-Google-Smtp-Source: AGHT+IE9Yb0u3oZdfZseWW+LseSPKKJfnRmgNdR8iPNtdA+m8g6n+8r4ALoJ+Gnp08D/ATN5iio/
+X-Received: by 2002:a05:6214:224a:b0:6e8:ed7f:1a79 with SMTP id 6a1803df08f44-6f896ea68a5mr107564186d6.32.1747296996928;
+        Thu, 15 May 2025 01:16:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747296996; cv=none;
         d=google.com; s=arc-20240605;
-        b=MUVnbOYPJwIeUl9Q+7IhFNS0NE527NkiWPE0ysrhZo+9yRnuBL4eUvotkEHdgPLZiv
-         VwZZm3eexMV/SzU5VMfd/eP4tTK9m2N3u5C2kCjzNek1+wzTn8jynFNnKl6kI8dHUK8K
-         /6JwQg5fzGpxHjxMN7zqse+lM9RFJKIFq1JBop14Leq3QjRjscxAOTfqFmduYw2B+ft7
-         TANcVA5d88s6DWU3BZwxBhtmv7CUIdv0MJEiINscU/wZ2MNmcMD0uzG5tZUl5dxR9vGL
-         4yCsr2XSpcd57PjhSpHCM0WIQ3M9oGcCcEimwGB1YaDXwz8LTUtsJfCF5m9gidXo40vY
-         DnhA==
+        b=TmSgYKV09e4jhHgWB0WCDt+LObsOrW9zoh9AZDTzjqUs0oZVA77BbibFUmgvec6aVB
+         Ap8XljlmFOpcXrO7HSBg8aceL/nScn02LH3RqHZzzkKt6Pc83sPXzI+bBRSkLikMkYAH
+         +4HPl9RUaykoz4RCyDkm5hevfRkGMVfLL0YiWCauZKIHAnebiuafQUk/OyTBflf+par8
+         LWYvob99GAzNYGHFvzZT7Nmytsw63evDBUGR3GnOTaD8r3qEQTLv4o/EqmekswkSsfyb
+         UYiFhvz9rzyrEu4pcuId3VrORJ1+XZFnmjWhiWumh6Ug4/YfE90inMzoGMiU58gqsq9I
+         pATw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=Aelj0p6JptkynqyMwOwGO+XhvPWCGExYZNRnQ1xws3s=;
+        bh=tuoetdWQFHMIxPwthaEmCmaKURKGU8A3sDKf3gAErAI=;
         fh=HOpiatFOnx6Qe0fRCbmTPNKe4Ajfqa5KxAPfGCatY1Y=;
-        b=XqlgHEBkU90ajjt1OV/o4mILAU/sYN/dBOvBqi27JRhPmqvHkBwAWw6XkoKwhGB07P
-         0VummooK6v0NlqqTj4z9LvZCXcqtscrW18w+8sVV8D8P/gajAP+TE3N++bxrjhSx7fTl
-         Ua8sNDloGKSsuInhvo9Ta8wJRqvpeXe++hD1FczlSW/16tP0TRUt25W/Lrja2+1Q5WIB
-         xqYlbxEGMfyGzdXKziv6D6iWb1bR6o9AEMGIPBD9gfEwZOICauobtXByRUlgkEkykCAc
-         x4UppUGBJxZS7iqmg2lsisg9Y7nH4FN6uFKmWpr3XEM3TQwkKX+4CeTwM2VaWyuugGsg
-         06iQ==;
+        b=P9KA8rRNDO8HVqNf2X65/GHD5w2X4/DdI269IsGOsddLa9yf0CGAJL86elfUL+5T+N
+         JivDn3qoLrd6EHhLYe2pLUOk1p1bHcaRXTcqHHZpX2gZXgVhelnMdlCt5w7D/FBQ9mp5
+         GVPW36LkBH6UBv86t2Djls0tAH7/PLJwzMGU5jTBoMwq6FV9Q7WlbqNPcXMYb1OdJSwn
+         IJWRXagzx/hyy8coLBRChGoaYQIZxSVI9Awupm24luU2gpYKsc75fDekALyOk+8QR5ru
+         hhPZ9ArSWdNJOmSqfqRwYd/LQ2FaDufFEeHZVGDPWcuX+stsWDnQW7pGgbL/jrb5jnlY
+         6uZA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd00fd4650si1553544585a.255.2025.05.15.01.16.09
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e39e7272si151769816d6.98.2025.05.15.01.16.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 May 2025 01:16:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 15 May 2025 01:16:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uFTiz-0000gT-J7; Thu, 15 May 2025 04:13:53 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uFTiY-0005tQ-Bh; Thu, 15 May 2025 04:13:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uFThL-0008VW-TM; Thu, 15 May 2025 04:12:12 -0400
+ id 1uFTi1-0003Im-68; Thu, 15 May 2025 04:12:54 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uFThJ-00018W-Hh; Thu, 15 May 2025 04:12:11 -0400
+ id 1uFThz-0001HG-9B; Thu, 15 May 2025 04:12:52 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 15 May
- 2025 16:10:16 +0800
+ 2025 16:10:17 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 15 May 2025 16:10:16 +0800
+ Transport; Thu, 15 May 2025 16:10:17 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -67,9 +67,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 22/28] test/qtest/hace: Add SHA-384 tests for AST2600
-Date: Thu, 15 May 2025 16:09:54 +0800
-Message-ID: <20250515081008.583578-23-jamin_lin@aspeedtech.com>
+Subject: [PATCH v3 27/28] test/qtest/hace: Support to validate 64-bit hmac key
+ buffer addresses
+Date: Thu, 15 May 2025 16:09:59 +0800
+Message-ID: <20250515081008.583578-28-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250515081008.583578-1-jamin_lin@aspeedtech.com>
 References: <20250515081008.583578-1-jamin_lin@aspeedtech.com>
@@ -85,84 +86,132 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ltUq/NFQlRXp
+From:  Jamin Lin via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZvDehesEqedp
 
-Introduced "test_sha384_ast2600" to validate SHA-384 hashing.
-Added "test_sha384_sg_ast2600" for scatter-gather SHA-384 verification.
-Implemented "test_sha384_accum_ast2600" to test SHA-384 accumulation.
-Registered new test cases in "main" to ensure execution.
+Added "key" and "key_hi" fields to "AspeedMasks" for 64-bit addresses test.
+Updated "aspeed_test_addresses" to validate "HACE_HASH_KEY_BUFF" and
+"HACE_HASH_KEY_BUFF_HI".
+Ensured correct masking of 64-bit addresses by checking both lower and upper
+32-bit registers.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/aspeed_hace-test.c | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ tests/qtest/aspeed-hace-utils.h |  2 ++
+ tests/qtest/aspeed-hace-utils.c | 14 ++++++++++++++
+ tests/qtest/aspeed_hace-test.c  |  4 ++++
+ 3 files changed, 20 insertions(+)
 
+diff --git a/tests/qtest/aspeed-hace-utils.h b/tests/qtest/aspeed-hace-utils.h
+index de8055a1db..c8b2ec45af 100644
+--- a/tests/qtest/aspeed-hace-utils.h
++++ b/tests/qtest/aspeed-hace-utils.h
+@@ -50,9 +50,11 @@ struct AspeedSgList {
+ struct AspeedMasks {
+     uint32_t src;
+     uint32_t dest;
++    uint32_t key;
+     uint32_t len;
+     uint32_t src_hi;
+     uint32_t dest_hi;
++    uint32_t key_hi;
+ };
+ 
+ void aspeed_test_md5(const char *machine, const uint32_t base,
+diff --git a/tests/qtest/aspeed-hace-utils.c b/tests/qtest/aspeed-hace-utils.c
+index cb78f18117..0f7f911e5e 100644
+--- a/tests/qtest/aspeed-hace-utils.c
++++ b/tests/qtest/aspeed-hace-utils.c
+@@ -591,6 +591,8 @@ void aspeed_test_addresses(const char *machine, const uint32_t base,
+     g_assert_cmphex(qtest_readl(s, base + HACE_HASH_SRC_HI), ==, 0);
+     g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DIGEST), ==, 0);
+     g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DIGEST_HI), ==, 0);
++    g_assert_cmphex(qtest_readl(s, base + HACE_HASH_KEY_BUFF), ==, 0);
++    g_assert_cmphex(qtest_readl(s, base + HACE_HASH_KEY_BUFF_HI), ==, 0);
+     g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DATA_LEN), ==, 0);
+ 
+     /* Check that the address masking is correct */
+@@ -609,6 +611,14 @@ void aspeed_test_addresses(const char *machine, const uint32_t base,
+     g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DIGEST_HI), ==,
+                     expected->dest_hi);
+ 
++    qtest_writel(s, base + HACE_HASH_KEY_BUFF, 0xffffffff);
++    g_assert_cmphex(qtest_readl(s, base + HACE_HASH_KEY_BUFF), ==,
++                    expected->key);
++
++    qtest_writel(s, base + HACE_HASH_KEY_BUFF_HI, 0xffffffff);
++    g_assert_cmphex(qtest_readl(s, base + HACE_HASH_KEY_BUFF_HI), ==,
++                    expected->key_hi);
++
+     qtest_writel(s, base + HACE_HASH_DATA_LEN, 0xffffffff);
+     g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DATA_LEN), ==,
+                     expected->len);
+@@ -618,6 +628,8 @@ void aspeed_test_addresses(const char *machine, const uint32_t base,
+     qtest_writel(s, base + HACE_HASH_SRC_HI, 0);
+     qtest_writel(s, base + HACE_HASH_DIGEST, 0);
+     qtest_writel(s, base + HACE_HASH_DIGEST_HI, 0);
++    qtest_writel(s, base + HACE_HASH_KEY_BUFF, 0);
++    qtest_writel(s, base + HACE_HASH_KEY_BUFF_HI, 0);
+     qtest_writel(s, base + HACE_HASH_DATA_LEN, 0);
+ 
+     /* Check that all bits are now zero */
+@@ -625,6 +637,8 @@ void aspeed_test_addresses(const char *machine, const uint32_t base,
+     g_assert_cmphex(qtest_readl(s, base + HACE_HASH_SRC_HI), ==, 0);
+     g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DIGEST), ==, 0);
+     g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DIGEST_HI), ==, 0);
++    g_assert_cmphex(qtest_readl(s, base + HACE_HASH_KEY_BUFF), ==, 0);
++    g_assert_cmphex(qtest_readl(s, base + HACE_HASH_KEY_BUFF_HI), ==, 0);
+     g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DATA_LEN), ==, 0);
+ 
+     qtest_quit(s);
 diff --git a/tests/qtest/aspeed_hace-test.c b/tests/qtest/aspeed_hace-test.c
-index 42a306af2a..ab0c98330e 100644
+index 31890d574e..38777020ca 100644
 --- a/tests/qtest/aspeed_hace-test.c
 +++ b/tests/qtest/aspeed_hace-test.c
-@@ -44,6 +44,16 @@ static void test_sha256_sg_ast2600(void)
-     aspeed_test_sha256_sg("-machine ast2600-evb", 0x1e6d0000, 0x80000000);
- }
+@@ -13,24 +13,28 @@
+ static const struct AspeedMasks ast1030_masks = {
+     .src  = 0x7fffffff,
+     .dest = 0x7ffffff8,
++    .key = 0x7ffffff8,
+     .len  = 0x0fffffff,
+ };
  
-+static void test_sha384_ast2600(void)
-+{
-+    aspeed_test_sha384("-machine ast2600-evb", 0x1e6d0000, 0x80000000);
-+}
-+
-+static void test_sha384_sg_ast2600(void)
-+{
-+    aspeed_test_sha384_sg("-machine ast2600-evb", 0x1e6d0000, 0x80000000);
-+}
-+
- static void test_sha512_ast2600(void)
- {
-     aspeed_test_sha512("-machine ast2600-evb", 0x1e6d0000, 0x80000000);
-@@ -59,6 +69,11 @@ static void test_sha256_accum_ast2600(void)
-     aspeed_test_sha256_accum("-machine ast2600-evb", 0x1e6d0000, 0x80000000);
- }
+ static const struct AspeedMasks ast2600_masks = {
+     .src  = 0x7fffffff,
+     .dest = 0x7ffffff8,
++    .key = 0x7ffffff8,
+     .len  = 0x0fffffff,
+ };
  
-+static void test_sha384_accum_ast2600(void)
-+{
-+    aspeed_test_sha384_accum("-machine ast2600-evb", 0x1e6d0000, 0x80000000);
-+}
-+
- static void test_sha512_accum_ast2600(void)
- {
-     aspeed_test_sha512_accum("-machine ast2600-evb", 0x1e6d0000, 0x80000000);
-@@ -117,13 +132,16 @@ int main(int argc, char **argv)
+ static const struct AspeedMasks ast2500_masks = {
+     .src  = 0x3fffffff,
+     .dest = 0x3ffffff8,
++    .key = 0x3fffffc0,
+     .len  = 0x0fffffff,
+ };
  
-     qtest_add_func("ast2600/hace/addresses", test_addresses_ast2600);
-     qtest_add_func("ast2600/hace/sha512", test_sha512_ast2600);
-+    qtest_add_func("ast2600/hace/sha384", test_sha384_ast2600);
-     qtest_add_func("ast2600/hace/sha256", test_sha256_ast2600);
-     qtest_add_func("ast2600/hace/md5", test_md5_ast2600);
+ static const struct AspeedMasks ast2400_masks = {
+     .src  = 0x0fffffff,
+     .dest = 0x0ffffff8,
++    .key = 0x0fffffc0,
+     .len  = 0x0fffffff,
+ };
  
-     qtest_add_func("ast2600/hace/sha512_sg", test_sha512_sg_ast2600);
-+    qtest_add_func("ast2600/hace/sha384_sg", test_sha384_sg_ast2600);
-     qtest_add_func("ast2600/hace/sha256_sg", test_sha256_sg_ast2600);
- 
-     qtest_add_func("ast2600/hace/sha512_accum", test_sha512_accum_ast2600);
-+    qtest_add_func("ast2600/hace/sha384_accum", test_sha384_accum_ast2600);
-     qtest_add_func("ast2600/hace/sha256_accum", test_sha256_accum_ast2600);
- 
-     qtest_add_func("ast2500/hace/addresses", test_addresses_ast2500);
 -- 
 2.43.0
 

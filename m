@@ -1,91 +1,111 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1688589njb;
-        Thu, 15 May 2025 01:05:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXOmtUsI/cC1I3+SzDzKGrhjObNYyyprfheE8amUM94f+72dtPbKP8h+lCWiyPQeYHTKFTCkBXZ3rTkVw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGFT3w+ah2cXtR/KsuGPwfuTlVfixRQ7vWEJOj5TtGdehxJav9r+Kq/NOEhma0gCp53xYCk
-X-Received: by 2002:a05:622a:15d6:b0:494:a447:5bbb with SMTP id d75a77b69052e-494a4476005mr23368861cf.16.1747296353247;
-        Thu, 15 May 2025 01:05:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747296353; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1689747njb;
+        Thu, 15 May 2025 01:08:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWJ+9Er/fN5JUfyVnQZrTwJ469QfGCJ52TQxevlSq6f7diEb06lIYsRYLqEHSB60/EtRPP8k8vwUmBdBw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFcr0amiR6jPeiougvCOGwAdtQnJMQ6PZrzUaxB4NWtUZsEYOpoyWIt7kG2POaF0FEFZVsI
+X-Received: by 2002:a05:6402:34c4:b0:5fc:efae:6a89 with SMTP id 4fb4d7f45d1cf-5ff988a1efbmr5745646a12.13.1747296502141;
+        Thu, 15 May 2025 01:08:22 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1747296502; cv=pass;
         d=google.com; s=arc-20240605;
-        b=gBy5CF9y9kDskVjhrW4r0eRRGujAeiLYy5O4DDsf9XS0z7rz8i+SSWuhpOZVhxm+bX
-         hzACcHMOt+A5ol+K83yNy9BkyiKqvdqXjU/gW3/zvlc5EXzWicFcYr/WUzvGorZ7D+xd
-         sqPDfG7Hp2rFl3sTYB5GoRDNbrJpQue7E3XBio5GIv5nF+n3tMX60eqjUsDPc07hk/nm
-         c+gWYA6Dy0fmOZPANrJz3a8TLuZB0+5ZIlBPqv5rcUwABjq1AaFKUFpqqrBREUA1vwwX
-         nlO5bykDBArQywBxNuJqSO8VmsrgqrEQjU8xt6AXb9obv/aEtJ4f8i93c//GgRgrNIMx
-         jSHg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=AZ3gw59ROmZyae0xB3Y7XdCQdhj0OkIKfEAyfLSzdKA=;
+        b=kWBAoEaj/4oq1XDOvt9M4KbDaDc1fNRvfJNBOnKtSmHBeydQp+2rG6DDhY9bKWEt/8
+         o96GrJV1tFCeapbd8BgS9MSbSRjwUorKZP6T1e6c6GhviyLRbKcDP9/TfPKvut3Czyhe
+         +PZ6EnyRN87UF5DZuzMytuJ/90aj59aC6gCfgnuT+vREVba3D5m88g9hcwzuvsxxmL7M
+         JjJtuBMpuHrkVKDqSSZKb9SQzJjSN0/EJP1pcTSdnMmDXDVAY5ro+CD0LXBAKeZGJyRV
+         09W9TGQYWGR72Uwrd3tnmmVov/IkZw/SzYO+Wd0kXkEOwPt57kXwr3qWIJ5jZGFWWXUD
+         wptA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
+        bh=MXxIKt/Z4eQn4b7b2ILxzGpy0xOFcexDfhADh0Vh000=;
         fh=Q8omI+ATFA/q+WOClFqBZjMkLCUnNMldHOUWFyGFFAk=;
-        b=fATnXen+mtWVnz2r41XuMKSqO/01aUiZ7/RcLXPutQiORbyou3HhP9Cf9EzkKJvbDF
-         CH7xuYTTP0xnFZKqvYEzXvZjuNRscGqivRfetBdiOiwYOKJtPweubUojc2A5/WQ7mXj1
-         GgpOUmgESiPOVLgngpwhgugRosoKazqamJHCMvxheQSw0kbjHG6uPUEQVMZ2lIhETh6Z
-         BGQf1jUsmjqJ6Fjl3oWDFy5Qumy0xQt9+grFHaytXVlazC2QiVdH1aJ2jl9+PKArgiMk
-         Vrd80I3wk3iKHEOFdTTwrVfmMhYKedBE5/FeNbPUz/s4St8sjTi4ennj12V97p9zsV7W
-         qDLQ==;
+        b=YHkqmBESQyDpt6KRIAvqajh3I8g73wHC0OZ/xdrjHI1PWZcCTqdFp3ISb4n4E7IFOP
+         v1BmqP1et7YO+K8/h2p1WIYRDBMA4rXUVeTox2hqORYO5ZmbFHW4CLo/eG9ixA3uelB9
+         avuIz8gBTweuPO6K2IarKvdbEYXjym3x4BahcR7hR4YA+58xYPIr/CbERI7L1kgYmJEZ
+         gDIWg5lsSDPiJCTLEcvq4MKNN7e2uI+vP9/WehCsK0N2/VG8mjAUngcQbSMCehgHGT4b
+         iy4vq1mXRet8p6U1EsGRX27oDneQUQNDLuET9AMoUzd+z4Lgq1Iv1nFAltDo8bYVLNNB
+         untg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=oEByV3br;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=gFMslssZ;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-46652-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-46652-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-494525b377asi148731681cf.667.2025.05.15.01.05.53
+Return-Path: <kvm+bounces-46652-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5fc9c9e437bsi10321887a12.22.2025.05.15.01.08.21
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 May 2025 01:05:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 May 2025 01:08:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46652-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=oEByV3br;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=gFMslssZ;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-46652-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-46652-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uFTb9-0006QV-HG; Thu, 15 May 2025 04:05:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xiaoyao.li@intel.com>)
- id 1uFTb5-0006KD-Pm; Thu, 15 May 2025 04:05:43 -0400
-Received: from mgamail.intel.com ([198.175.65.13])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xiaoyao.li@intel.com>)
- id 1uFTb3-0000Sk-Uv; Thu, 15 May 2025 04:05:43 -0400
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 5CBA21BA4A7F
+	for <alex.bennee@linaro.org>; Thu, 15 May 2025 08:08:33 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0E04D2798F4;
+	Thu, 15 May 2025 08:08:16 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="gFMslssZ"
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F12841B6556
+	for <kvm@vger.kernel.org>; Thu, 15 May 2025 08:08:13 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.19
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1747296495; cv=none; b=nozxB05q3k2GRW8VwsOUDvoJsvNtrNlaPu1t5nMbmUeGPL55rRsTKbmjOtx1F4JZ04Z8peN/W/GR1k2HECesWcrPhDjT2sq1j0bUVP/bjl9qAEL8CEeKQfQsJTLiSH1AuMnGRCEaXRsT0UJWGWw9yLRVVI1Ba5pjA1ao0NoS7Rc=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1747296495; c=relaxed/simple;
+	bh=1AnATLoCvpWdtTCkDZsBgKnp3pMIZcVXqd27NhUqOtA=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=DVR5ija7HhNLzTwyzV86zGWu91Ey8+lMYAk0KrXS2KEfWBXSP/Yd+Dp9mY7cgi7/ZQKGaLU3ByTCxj/ibNukJ9uanXTbyXgC9faTzqIojvJT+AbOSIdawIXXtTf8e2tLSb5V7Vs8FM2pA1Fnplptsdig4R8plajsM2cwEBaFfjc=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=gFMslssZ; arc=none smtp.client-ip=198.175.65.19
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1747296342; x=1778832342;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=UJuyTxivS+g0xlBTa/B4ds5HvhahR14P6k02iRItjz0=;
- b=oEByV3br7po1AMyRp9HZM5SugXDn7MlHfd9bGPb4LCrbqtw8vizcaADW
- +UzLwO11rRT+95H9q/yUzP/SkeKOZKOIMENPN9TfXPPUKP7g/Lc/CQQbT
- HjBsHeZGQXfvA1fQXXU9BLGaM5Szwpx3RwwzX41mPR9TR2iVmX2Gie3f8
- eqk1AxBdMSPRO7JB1M8q1JEkBfh/aVsEcXXdp97pjNKQ5s97bPsAf/BM5
- fX39sJqZUrDc/1Gq/+GJXW8kTrUfrco+tvu/xYZEzUgULh1jUQ0/G2klm
- C3pwMV0Ud2p/L7NkTey6uE4JQjKKfPqxqbkh30aXZaazojbZ65mtRJ4et w==;
-X-CSE-ConnectionGUID: IRYwYA1NQIKT/5vn0eO2vg==
-X-CSE-MsgGUID: 5/2RyLzdSn2rIFaxsuqvag==
-X-IronPort-AV: E=McAfee;i="6700,10204,11433"; a="60230586"
-X-IronPort-AV: E=Sophos;i="6.15,290,1739865600"; d="scan'208";a="60230586"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 May 2025 01:05:39 -0700
-X-CSE-ConnectionGUID: 29do6jHcSNKogpDnvvqQaQ==
-X-CSE-MsgGUID: jDXGiLCiRNi3nxFHLXAR5Q==
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1747296494; x=1778832494;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=1AnATLoCvpWdtTCkDZsBgKnp3pMIZcVXqd27NhUqOtA=;
+  b=gFMslssZMZ5jG/DRZw2FSyNuFOdNpe5SLujqSaqPhtMWpxRfUFRO5xsS
+   0S76evd7vDhHiD8J1d5v1giKkXZ5sX9m95DMMLOtC5KkfLlUF4u1YMCte
+   OZQLG2jPp97rAob9+6ArzI53w+GwAbw4i7yPZHuu+8YArygm2ETOb602f
+   iOQotrKbm3/eqyxdbj+KouLDWIOG2atj8A2hrG1YrfEszITR/YF2Wznt3
+   Hlt56nQ4i9cGi0vzFoy+lrCZ2ql25ATZdSbTqQmXh3xzjL9+T3wYQBprv
+   LCJN79FYYp7qvmJpk4CRIdeT0rr3970U88yTCtUfIpCVlP+qm+nEfC1rU
+   w==;
+X-CSE-ConnectionGUID: vAIFEZh0Q4OYGIsohweaiw==
+X-CSE-MsgGUID: XGO3HbGGSgaJdLeiZMEaEw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11433"; a="49088614"
+X-IronPort-AV: E=Sophos;i="6.15,290,1739865600"; 
+   d="scan'208";a="49088614"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 May 2025 01:08:13 -0700
+X-CSE-ConnectionGUID: zUkxVkykSFCEb485bRZwWw==
+X-CSE-MsgGUID: AE6yTCKbQjS55KgTgA+1xg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,290,1739865600"; d="scan'208";a="138177981"
-Received: from xiaoyaol-hp-g830.ccr.corp.intel.com (HELO [10.124.247.1])
- ([10.124.247.1])
- by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 May 2025 01:05:19 -0700
-Message-ID: <e2ebf45c-619c-46bb-884d-e4113b703855@intel.com>
-Date: Thu, 15 May 2025 16:05:15 +0800
+X-IronPort-AV: E=Sophos;i="6.15,290,1739865600"; 
+   d="scan'208";a="138792583"
+Received: from xiaoyaol-hp-g830.ccr.corp.intel.com (HELO [10.124.247.1]) ([10.124.247.1])
+  by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 May 2025 01:08:02 -0700
+Message-ID: <c6ece176-ac65-40ea-aca2-285c2fd9a9a7@intel.com>
+Date: Thu, 15 May 2025 16:08:00 +0800
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 04/27] hw/mips/loongson3_virt: Prefer using
- fw_cfg_init_mem_nodma()
+Subject: Re: [PATCH v4 05/27] hw/nvram/fw_cfg: Factor
+ fw_cfg_init_mem_internal() out
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>, kvm@vger.kernel.org,
@@ -109,61 +129,63 @@ Cc: Richard Henderson <richard.henderson@linaro.org>, kvm@vger.kernel.org,
  <marcandre.lureau@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
  Jason Wang <jasowang@redhat.com>
 References: <20250508133550.81391-1-philmd@linaro.org>
- <20250508133550.81391-5-philmd@linaro.org>
+ <20250508133550.81391-6-philmd@linaro.org>
 Content-Language: en-US
 From: Xiaoyao Li <xiaoyao.li@intel.com>
-In-Reply-To: <20250508133550.81391-5-philmd@linaro.org>
+In-Reply-To: <20250508133550.81391-6-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=198.175.65.13; envelope-from=xiaoyao.li@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -50
-X-Spam_score: -5.1
-X-Spam_bar: -----
-X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.686,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=1, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yjJQEAxAROdw
+X-TUID: AjJOdtIvXyg6
 
 On 5/8/2025 9:35 PM, Philippe Mathieu-Daudé wrote:
-> fw_cfg_init_mem_wide() is prefered to initialize fw_cfg
-> with DMA support. Without DMA, use fw_cfg_init_mem_nodma().
+> Factor fw_cfg_init_mem_internal() out of fw_cfg_init_mem_wide().
+> In fw_cfg_init_mem_wide(), assert DMA arguments are provided.
+> Callers without DMA have to use the fw_cfg_init_mem() helper.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 Reviewed-by: Xiaoyao Li <xiaoyao.li@intel.com>
 
 > ---
->   hw/mips/loongson3_virt.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   hw/nvram/fw_cfg.c | 17 +++++++++++++----
+>   1 file changed, 13 insertions(+), 4 deletions(-)
 > 
-> diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
-> index de6fbcc0cb4..654a2f0999f 100644
-> --- a/hw/mips/loongson3_virt.c
-> +++ b/hw/mips/loongson3_virt.c
-> @@ -286,7 +286,7 @@ static void fw_conf_init(void)
->       FWCfgState *fw_cfg;
->       hwaddr cfg_addr = virt_memmap[VIRT_FW_CFG].base;
+> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> index 10f8f8db86f..4067324fb09 100644
+> --- a/hw/nvram/fw_cfg.c
+> +++ b/hw/nvram/fw_cfg.c
+> @@ -1053,9 +1053,9 @@ FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
+>       return s;
+>   }
 >   
-> -    fw_cfg = fw_cfg_init_mem_wide(cfg_addr, cfg_addr + 8, 8, 0, NULL);
-> +    fw_cfg = fw_cfg_init_mem_nodma(cfg_addr, cfg_addr + 8, 8);
->       fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, (uint16_t)current_machine->smp.cpus);
->       fw_cfg_add_i16(fw_cfg, FW_CFG_MAX_CPUS, (uint16_t)current_machine->smp.max_cpus);
->       fw_cfg_add_i64(fw_cfg, FW_CFG_RAM_SIZE, loaderparams.ram_size);
+> -FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
+> -                                 hwaddr data_addr, uint32_t data_width,
+> -                                 hwaddr dma_addr, AddressSpace *dma_as)
+> +static FWCfgState *fw_cfg_init_mem_internal(hwaddr ctl_addr,
+> +                                            hwaddr data_addr, uint32_t data_width,
+> +                                            hwaddr dma_addr, AddressSpace *dma_as)
+>   {
+>       DeviceState *dev;
+>       SysBusDevice *sbd;
+> @@ -1087,10 +1087,19 @@ FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
+>       return s;
+>   }
+>   
+> +FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
+> +                                 hwaddr data_addr, uint32_t data_width,
+> +                                 hwaddr dma_addr, AddressSpace *dma_as)
+> +{
+> +    assert(dma_addr && dma_as);
+> +    return fw_cfg_init_mem_internal(ctl_addr, data_addr, data_addr,
+> +                                    dma_addr, dma_as);
+> +}
+> +
+>   FWCfgState *fw_cfg_init_mem_nodma(hwaddr ctl_addr, hwaddr data_addr,
+>                                     unsigned data_width)
+>   {
+> -    return fw_cfg_init_mem_wide(ctl_addr, data_addr, data_width, 0, NULL);
+> +    return fw_cfg_init_mem_internal(ctl_addr, data_addr, data_width, 0, NULL);
+>   }
+>   
+>   
 

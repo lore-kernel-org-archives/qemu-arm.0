@@ -1,115 +1,134 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1826813njb;
-        Thu, 15 May 2025 05:48:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCW4RxwxPd6vtgK2AygE1lHyAiI87lYc7a/A9WegTH++urZvJrrtrahN4O1huOnKdIYiZLWUnPMfuBATww==@linaro.org
-X-Google-Smtp-Source: AGHT+IHBSZafrB7p/N3ehu2Nik4TquXKOMi4gC68wduyO9QCbK/bDzaBDuO+0xiaG0LFhgXTG5C3
-X-Received: by 2002:a05:622a:4108:b0:476:9b34:fe82 with SMTP id d75a77b69052e-494a33982abmr51976491cf.31.1747313284360;
-        Thu, 15 May 2025 05:48:04 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1747313284; cv=pass;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1935945njb;
+        Thu, 15 May 2025 08:22:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVYcjozsA8UhEFIqIO1zEXvl36CFJXWcHNn5cS/AsAn70rx5+k61FeBSdXWoyAWqo+IhMs+vK7h0n0aaA==@linaro.org
+X-Google-Smtp-Source: AGHT+IG/vVryYTodprEcWlhu12siHf1sSPlcHm5jYfm/jwd/ko6wUipW4YfnaeesOxM+YEgZb90d
+X-Received: by 2002:a05:6122:4147:b0:52a:916e:91cf with SMTP id 71dfb90a1353d-52dba80e89cmr85050e0c.3.1747322550019;
+        Thu, 15 May 2025 08:22:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747322549; cv=none;
         d=google.com; s=arc-20240605;
-        b=kgPsF86XX9S1SH9GBBIfHjOa1ihmLO+6bd1pyEqdBQD/0BvOSCoi/kNYMIOjHHbbjP
-         pPlrWgWQ1fFZcQt5GBoXwl1KAQnGXr7ENkPw1U3+w8ArPXP67aeC5HKQz8/ZyUYlNxXt
-         Y6X+S6JjWf5nuYT9uVWqWgd8z+cs/UwFUFvKaj6QtETSA7MiTFdtmaf6vqNSRaUE5G32
-         tscQb66OaUqkE6Nln50b+dYhbZgDmmE1O9uu0fFzlHHYObyYYa32IAO7+6kOpP2C/vyv
-         p/9uumwrgeDuJa7BKWRRgs600si7gwyMR7BweUK7yV7uRkdCcp1+YQK7+6n/Cxk9llgi
-         3kiQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=MU0CImHpRJrTU0DgwqWzEgYzDOE8nJuZBQJD+hjJN3LLO2t5ZQnc5h12WiAVh73FDS
+         cHEKwYOchwaRv7jIlFozt0JF8uvMrK8WMMgHWzx5n+fxxgF2KtfVJv0FdUHePfqgQcH4
+         U0+d0XI7U4bOCvWyG0r91HTIojD/L6J/xjNxYNxwX5SXo6vGBrhtg+FRBy6fvBJMxNxQ
+         MgMA19Mk0rUUvhiQC86eFKTQ7Y3ROH98srppxz69aUMrMff0DuGYwGLSJZilS0++q6w4
+         WmcdPsofViFVYmwcwb1nEIn7fiPtGAm1CfEHdaspY2SwPR3nd7v4OC9LASp4LZitNzOf
+         HM9A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:references:in-reply-to:subject:to:from
-         :message-id:date:dkim-signature;
-        bh=5oBCKR+BEOAMgT5mi2qQxrVeejcz+Hgy2JB8xmosz08=;
-        fh=alEL13DYEITECSbbUHMbidm18Box6cS8s897e13CZyg=;
-        b=PBPcXyA/ukOiV9UsIESlbiVIRPZC9WWXQlSewPpO5orQb4n7OXlAug661a+LrmANkk
-         LA+/HESXC/V1OU4UF0k50CFaLZTv0ONccFt/O81O4RWFy0WyFh/chbg8Ub9ja/f4ujex
-         9xoMakalJM6fhvbtdePxwsMvAMmHZW1ZlfrfpY/G3e+xhtjN2K4TMhmAx79EIJu7n3Yh
-         Cz1ZkqAxTbDwHcVEL0wTTfztSxbhv1Y5DSiWQ0WSXhUW+XyYqyRqUwbsnpHTe8EjRx/y
-         Hn7dTQlu1XqfHE5bHgREU1vBs9XLbUALA1ZAHHemtD8oXAKzN0fIU9GDFZYuccqrfiM4
-         BMwA==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=8Wwaufpr8Z6a4ck6g2EdvI8iMo2hfWASSYRcby6tdEc=;
+        fh=Tb0yAUdE/DqA/GnWRpfW0r9H/OtgFehHB2XTCRw7kpY=;
+        b=gDF7coTh6udvOUFjh3ypt9FiXQ00j3pi1Dm9PS/Ifdr1gOE5S5/6bRMy0/GRI6kci2
+         raevo7ka//zpdiB7h6GD1mA7n1GJJ7YH6gQS5nCx7NXMMyu1hdZ8rYlKicqOq7PhcGQr
+         h9aEl/ZGYdp8lcFjycATxcjoTza5+KgIGG2uAfljLWnI5RF4ZD6Eqh9ggfh8LI7ShUZM
+         r3VeKiZ4KFMBZAj/RsUjVUUZ5y6P5RRgiGr+uUJnPXnJZiG6bHm2REM1mV9D/qe/xHhd
+         KW8Nuu+0sW7+1mH9aQ+XkF6aeez5egrqj+5I/8gvsrIirqrHC13wKFUvE4FogI+Rayhw
+         rAdQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linux.beauty header.s=zmail header.b=bRugOOJS;
-       arc=pass (i=1 spf=pass spfdomain=linux.beauty dkim=pass dkdomain=linux.beauty dmarc=pass fromdomain=linux.beauty>);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vS1oM5lW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-49452458b21si155602641cf.24.2025.05.15.05.48.04
+        by mx.google.com with ESMTPS id ada2fe7eead31-4dfa66bce22si63071137.185.2025.05.15.08.22.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 May 2025 05:48:04 -0700 (PDT)
+        Thu, 15 May 2025 08:22:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.beauty header.s=zmail header.b=bRugOOJS;
-       arc=pass (i=1 spf=pass spfdomain=linux.beauty dkim=pass dkdomain=linux.beauty dmarc=pass fromdomain=linux.beauty>);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=vS1oM5lW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uFY0D-0006YI-NQ; Thu, 15 May 2025 08:47:57 -0400
+	id 1uFaPW-0007qH-Ut; Thu, 15 May 2025 11:22:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@linux.beauty>)
- id 1uFXza-0006PC-UK; Thu, 15 May 2025 08:47:23 -0400
-Received: from sender4-op-o15.zoho.com ([136.143.188.15])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@linux.beauty>)
- id 1uFXzY-0008Ap-PQ; Thu, 15 May 2025 08:47:18 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1747313088; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=lMgOIJTOSkogASr29Cz8ZYm/r0VPhQ10nxaEQS1xJllUJuU57PHR+HjffClRtoh4Sof51Em2cCOQ+OnSJpTmBbm4bl8U6375GqerCos8WgBtcM6feK6E7fZLvuHHq8gbmJFnbMU8cpIjKQij1ErxSE1sM964mqmayS5UFDDCuZ8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1747313088;
- h=Content-Type:Content-Transfer-Encoding:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To:Cc;
- bh=5oBCKR+BEOAMgT5mi2qQxrVeejcz+Hgy2JB8xmosz08=; 
- b=X7Z3jt5XftNaEADO5s73Q9r/d0+sVWZ9K+dhVhUe9fulAczJNkkkrSFUFBszcpVvzkhGU56yY0vPPfgkvZIidYpGhuoBWu4jZwIJCV+f1builUa2fWUTKu1PzH72j7FSyHvfgmY5cFQiXSXyaPC1hYeVWSKxT3VAoI7x1se3ayA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=linux.beauty;
- spf=pass  smtp.mailfrom=me@linux.beauty;
- dmarc=pass header.from=<me@linux.beauty>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1747313088; 
- s=zmail; d=linux.beauty; i=me@linux.beauty;
- h=Date:Date:Message-ID:From:From:To:To:Subject:Subject:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
- bh=5oBCKR+BEOAMgT5mi2qQxrVeejcz+Hgy2JB8xmosz08=;
- b=bRugOOJSjuvK8vNQ3xH2/07uoHPpbkZ25vwowS++2RBxVAd86hwWZjt8jansQrvE
- HjBivpgEXuZTOBjGSY0z7ZHNevOXjG51Jd3BOyhG84doBjCsThMv702kf6AQ3PcIMj8
- W5F7p3XG4Px/J3IEfOkXq17sa7hmaJx9/2TmtGUo=
-Received: by mx.zohomail.com with SMTPS id 1747313085797628.779226728745;
- Thu, 15 May 2025 05:44:45 -0700 (PDT)
-Date: Thu, 15 May 2025 20:44:39 +0800
-Message-ID: <87h61mrqko.wl-me@linux.beauty>
-From: Li Chen <me@linux.beauty>
-To: "Peter Maydell" <peter.maydell@linaro.org>,	"Shannon Zhao"
- <shannon.zhaosl@gmail.com>,	"Michael S. Tsirkin" <mst@redhat.com>,
- "Igor Mammedov" <imammedo@redhat.com>,	"Ani Sinha" <anisinha@redhat.com>,
- "Eduardo Habkost" <eduardo@habkost.net>,	"Marcel Apfelbaum"
- <marcel.apfelbaum@gmail.com>,	=?ISO-8859-1?Q?=22Philippe_Mathieu-Daud=E9?=
- =?ISO-8859-1?Q?=22?= <philmd@linaro.org>,	"Yanan Wang"
- <wangyanan55@huawei.com>,	"Zhao Liu" <zhao1.liu@intel.com>,	"Song Gao"
- <gaosong@loongson.cn>,	"Jiaxun Yang" <jiaxun.yang@flygoat.com>,	"Sunil V L"
- <sunilvl@ventanamicro.com>,	"Palmer Dabbelt" <palmer@dabbelt.com>,
- "Alistair Francis" <alistair.francis@wdc.com>,	"Weiwei Li"
- <liwei1518@gmail.com>,	"qemu-arm" <qemu-arm@nongnu.org>,	"qemu-devel"
- <qemu-devel@nongnu.org>,	"qemu-riscv" <qemu-riscv@nongnu.org>
-Subject: [PATCH V3 4/4] acpi/virt: suppress UART device & SPCR when guest has
- no serial hardware
-In-Reply-To: <87msberqzi.wl-me@linux.beauty>
-References: <87msberqzi.wl-me@linux.beauty>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?ISO-8859-4?Q?Goj=F2?=) APEL-LB/10.8 EasyPG/1.0.0
- Emacs/30.1 (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=GB2312
-Content-Transfer-Encoding: base64
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.15; envelope-from=me@linux.beauty;
- helo=sender4-op-o15.zoho.com
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uFaPV-0007ot-1T
+ for qemu-arm@nongnu.org; Thu, 15 May 2025 11:22:13 -0400
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uFaPR-0002nX-DC
+ for qemu-arm@nongnu.org; Thu, 15 May 2025 11:22:12 -0400
+Received: by mail-pg1-x52a.google.com with SMTP id
+ 41be03b00d2f7-b26d7ddbfd7so921611a12.0
+ for <qemu-arm@nongnu.org>; Thu, 15 May 2025 08:22:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1747322525; x=1747927325; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=8Wwaufpr8Z6a4ck6g2EdvI8iMo2hfWASSYRcby6tdEc=;
+ b=vS1oM5lWXnHL2bD1+v4TSycF4FvM1anQYbsvCkTkjnimPrJI5kvxPXOFEHv4lmPFpN
+ jcl+3N+M6qV/hiLvbXGrrBOqw4a6LqLHf8wXHI2eoP0TdIXMiT3Tw6XRzAGb66eCWvTk
+ IraaP5dawZOe4mtWT2oG/voCHoAcbumLjjB2T2M4+wepHpGDxHjST7KLHzRrksKkw0M3
+ O868vjY7rE1viofD6YmtDYnQzL5qNw8Pq/27ftlTQlnVnkLk38e1dHmbdZRJX72KNYmy
+ slTN9FxvZRrzIE8BpBkQgRHjp+O+Y9aX38vF2MujtN+feJd1eUbwD+4YXhLZmYvGnSk+
+ 1XrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1747322525; x=1747927325;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=8Wwaufpr8Z6a4ck6g2EdvI8iMo2hfWASSYRcby6tdEc=;
+ b=ArpOlYM2PFS9/XDIkNo2dQd+HbiMQNjwPq1xoqeNmpyCAmAjzD4LS/6LFv/mZUNqFP
+ 4KXLLvRd3MnpT+hQzf5Q4orGLqg3D4N7wDvyPrKEkf+vsHUQgb1Dcynny7xV088FIT/y
+ hihCCsxJCp3H75awwbAAsll9Yl9WR13AURbzsHKjKvClIyYU/RliawXqFE3kDqdsr+DW
+ p1r1Gqq/IUkGQI7Eq7pomNskaysEZXvJUKLPGHJdMhshRLPAeuNtIJX75MVh7BiWZZrm
+ tiKLodZ+KGH8tc68LP/CYKLUQgJrNZMwKLgsrR/+WCjNLX7UYqSfNgTgyoBMIe5waypX
+ 8Htg==
+X-Gm-Message-State: AOJu0YyUpD2qUyEZ/i5zzd1PoD6vSApFFU6X9dUf1Fyqnqd3qxAy4gdj
+ egIbQqtZ2MmXn+41OGXembAyzW2BEPCum7dcLlVlVqxTznVegaUiVi2uYtFMDXPVWAgn2GQN5s5
+ N
+X-Gm-Gg: ASbGncswSHi5iVVraByO5BxWuodDgqvhWgatd4YVIDw/rIgYg6P3gtcB4UBL2hfF69w
+ 45TN0uwAoI5fr+TrIesxyoWFeswAxcxyaGjoukJ9uBWdSFsOlgl9zSO2mCRLkWKURUTw6BU7xl9
+ aKBAK65RuJb2X6NSUQIY1wwClR7UwCzu6lC4smoXScFeVYrhOVOiNg5WxHnjfKMs7G2YmQ5QzgW
+ NqzBtj/v7Mg09zAlz4+J+/i7mqhJY55aOhuDQ3A+be1AYLwPLNFwIODpvRxML1Jo3Qdz21D98YI
+ jboPa2Qkhc6WNiJSbHEq6/WebSqiKi2qRui3AycaLoKpqCBexbiePUsOUNG0+XVW
+X-Received: by 2002:a05:6a21:4cc7:b0:1f5:7c6f:6c96 with SMTP id
+ adf61e73a8af0-215ff11a577mr11182366637.22.1747322524885; 
+ Thu, 15 May 2025 08:22:04 -0700 (PDT)
+Received: from [192.168.1.87] ([38.41.223.211])
+ by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-b26eb084980sm34145a12.58.2025.05.15.08.22.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 15 May 2025 08:22:04 -0700 (PDT)
+Message-ID: <b5c07354-fbe8-4910-a019-fa9fd7e813a5@linaro.org>
+Date: Thu, 15 May 2025 08:22:03 -0700
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 16/19] target/arm: Add arm_cpu_has_feature() helper
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel@nongnu.org
+References: <20250513173928.77376-1-philmd@linaro.org>
+ <20250513173928.77376-17-philmd@linaro.org>
+ <b6c81748-091b-4d61-8d34-beaa0442aab3@linaro.org>
+ <f7bcd8b2-2c0c-4907-8a0e-af172c235d56@linaro.org>
+ <59b1ccbe-9ddb-43f0-98c4-8000a08d27b0@linaro.org>
+ <eff0b1a9-5267-4290-a9d4-da95179289b9@linaro.org>
+Content-Language: en-US
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <eff0b1a9-5267-4290-a9d4-da95179289b9@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x52a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,79 +143,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GIwokbl81wDr
+X-TUID: LPaH5s0DEQbv
 
-RnJvbTogTGkgQ2hlbiA8Y2hlbmwzMTFAY2hpbmF0ZWxlY29tLmNuPg0KDQpUaGUgdmlydCBtYWNo
-aW5lcyBhbHdheXMgaW5zdGFudGlhdGUgYSBQTDAxMS8xNjU1MCBhdCBVQVJUMCBhbmQNCmRlc2Ny
-aWJlIGl0IGluIEFDUEkgKERTRFQgZGV2aWNlIG5vZGUgcGx1cyBvcHRpb25hbCBTUENSIHRhYmxl
-KS4gIFdoZW4NCnRoZSBjb21tYW5kIGxpbmUgY29udGFpbnMgobAtc2VyaWFsIG5vbmWhsSB0aGVy
-ZSBpcyBubyBiYWNrZW5kIGF0dGFjaGVkIHRvDQp0aGF0IFVBUlQsIHlldCB0aGUgZ3Vlc3Qgc3Rp
-bGwgZGlzY292ZXJzIGl0IHZpYSBBQ1BJIGFuZCBtYXkgdHJ5IHRvIHVzZQ0KaXQgYXMgYSBjb25z
-b2xlLCBjYXVzaW5nIHVuZXhwZWN0ZWQgcmVzdWx0cy4NCg0KU3VnZ2VzdGVkLWJ5OiBQaGlsaXBw
-ZSBNYXRoaWV1LURhdWSopiA8cGhpbG1kQGxpbmFyby5vcmc+DQpTaWduZWQtb2ZmLWJ5OiBMaSBD
-aGVuIDxjaGVubDMxMUBjaGluYXRlbGVjb20uY24+DQotLS0NCg0KIGh3L2FybS92aXJ0LWFjcGkt
-YnVpbGQuYyAgIHwgMTUgKysrKysrKysrLS0tLS0tDQogaHcvcmlzY3YvdmlydC1hY3BpLWJ1aWxk
-LmMgfCAgNiArKysrLS0NCiBpbmNsdWRlL3N5c3RlbS9zeXN0ZW0uaCAgICB8ICAyICsrDQogc3lz
-dGVtL3ZsLmMgICAgICAgICAgICAgICAgfCAgNSArKysrKw0KIDQgZmlsZXMgY2hhbmdlZCwgMjAg
-aW5zZXJ0aW9ucygrKSwgOCBkZWxldGlvbnMoLSkNCg0KZGlmZiAtLWdpdCBhL2h3L2FybS92aXJ0
-LWFjcGktYnVpbGQuYyBiL2h3L2FybS92aXJ0LWFjcGktYnVpbGQuYw0KaW5kZXggZjI1YzNiMjZj
-ZS4uOGExY2RlNGI0NCAxMDA2NDQNCi0tLSBhL2h3L2FybS92aXJ0LWFjcGktYnVpbGQuYw0KKysr
-IGIvaHcvYXJtL3ZpcnQtYWNwaS1idWlsZC5jDQpAQCAtNTksNiArNTksNyBAQA0KICNpbmNsdWRl
-ICJody9hY3BpL3Zpb3QuaCINCiAjaW5jbHVkZSAiaHcvdmlydGlvL3ZpcnRpby1hY3BpLmgiDQog
-I2luY2x1ZGUgInRhcmdldC9hcm0vbXVsdGlwcm9jZXNzaW5nLmgiDQorI2luY2x1ZGUgInN5c3Rl
-bS9zeXN0ZW0uaCINCiANCiAjZGVmaW5lIEFSTV9TUElfQkFTRSAzMg0KIA0KQEAgLTgyNSwxMSAr
-ODI2LDEzIEBAIGJ1aWxkX2RzZHQoR0FycmF5ICp0YWJsZV9kYXRhLCBCSU9TTGlua2VyICpsaW5r
-ZXIsIFZpcnRNYWNoaW5lU3RhdGUgKnZtcykNCiAgICAgICovDQogICAgIHNjb3BlID0gYW1sX3Nj
-b3BlKCJcXF9TQiIpOw0KICAgICBhY3BpX2RzZHRfYWRkX2NwdXMoc2NvcGUsIHZtcyk7DQotICAg
-IGFjcGlfZHNkdF9hZGRfdWFydChzY29wZSwgJm1lbW1hcFtWSVJUX1VBUlQwXSwNCi0gICAgICAg
-ICAgICAgICAgICAgICAgIChpcnFtYXBbVklSVF9VQVJUMF0gKyBBUk1fU1BJX0JBU0UpLCAwKTsN
-Ci0gICAgaWYgKHZtcy0+c2Vjb25kX25zX3VhcnRfcHJlc2VudCkgew0KLSAgICAgICAgYWNwaV9k
-c2R0X2FkZF91YXJ0KHNjb3BlLCAmbWVtbWFwW1ZJUlRfVUFSVDFdLA0KLSAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIChpcnFtYXBbVklSVF9VQVJUMV0gKyBBUk1fU1BJX0JBU0UpLCAxKTsNCisg
-ICAgaWYgKHNlcmlhbF9leGlzdCgpKSB7DQorICAgICAgICBhY3BpX2RzZHRfYWRkX3VhcnQoc2Nv
-cGUsICZtZW1tYXBbVklSVF9VQVJUMF0sDQorICAgICAgICAgICAgICAgICAgICAgICAgICAgKGly
-cW1hcFtWSVJUX1VBUlQwXSArIEFSTV9TUElfQkFTRSksIDApOw0KKyAgICAgICAgaWYgKHZtcy0+
-c2Vjb25kX25zX3VhcnRfcHJlc2VudCkgew0KKyAgICAgICAgICAgIGFjcGlfZHNkdF9hZGRfdWFy
-dChzY29wZSwgJm1lbW1hcFtWSVJUX1VBUlQxXSwNCisgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgKGlycW1hcFtWSVJUX1VBUlQxXSArIEFSTV9TUElfQkFTRSksIDEpOw0KKyAgICAgICAg
-fQ0KICAgICB9DQogICAgIGlmICh2bWMtPmFjcGlfZXhwb3NlX2ZsYXNoKSB7DQogICAgICAgICBh
-Y3BpX2RzZHRfYWRkX2ZsYXNoKHNjb3BlLCAmbWVtbWFwW1ZJUlRfRkxBU0hdKTsNCkBAIC05NDEs
-NyArOTQ0LDcgQEAgdm9pZCB2aXJ0X2FjcGlfYnVpbGQoVmlydE1hY2hpbmVTdGF0ZSAqdm1zLCBB
-Y3BpQnVpbGRUYWJsZXMgKnRhYmxlcykNCiANCiAgICAgYWNwaV9hZGRfdGFibGUodGFibGVfb2Zm
-c2V0cywgdGFibGVzX2Jsb2IpOw0KIA0KLSAgICBpZiAobXMtPmVuYWJsZV9zcGNyKSB7DQorICAg
-IGlmIChtcy0+ZW5hYmxlX3NwY3IgJiYgc2VyaWFsX2V4aXN0KCkpIHsNCiAgICAgICAgIHNwY3Jf
-c2V0dXAodGFibGVzX2Jsb2IsIHRhYmxlcy0+bGlua2VyLCB2bXMpOw0KICAgICB9DQogDQpkaWZm
-IC0tZ2l0IGEvaHcvcmlzY3YvdmlydC1hY3BpLWJ1aWxkLmMgYi9ody9yaXNjdi92aXJ0LWFjcGkt
-YnVpbGQuYw0KaW5kZXggN2Y2ZDIyMWM2My4uNGUwZjY5NWExNiAxMDA2NDQNCi0tLSBhL2h3L3Jp
-c2N2L3ZpcnQtYWNwaS1idWlsZC5jDQorKysgYi9ody9yaXNjdi92aXJ0LWFjcGktYnVpbGQuYw0K
-QEAgLTM5LDYgKzM5LDcgQEANCiAjaW5jbHVkZSAicWFwaS9lcnJvci5oIg0KICNpbmNsdWRlICJx
-ZW11L2Vycm9yLXJlcG9ydC5oIg0KICNpbmNsdWRlICJzeXN0ZW0vcmVzZXQuaCINCisjaW5jbHVk
-ZSAic3lzdGVtL3N5c3RlbS5oIg0KIA0KICNkZWZpbmUgQUNQSV9CVUlMRF9UQUJMRV9TSVpFICAg
-ICAgICAgICAgIDB4MjAwMDANCiAjZGVmaW5lIEFDUElfQlVJTERfSU5UQ19JRChzb2NrZXQsIGlu
-ZGV4KSAoKHNvY2tldCA8PCAyNCkgfCAoaW5kZXgpKQ0KQEAgLTQ0OSw3ICs0NTAsOCBAQCBzdGF0
-aWMgdm9pZCBidWlsZF9kc2R0KEdBcnJheSAqdGFibGVfZGF0YSwNCiAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICBtZW1tYXBbVklSVF9BUExJQ19TXS5zaXplLCAiUlNDVjAwMDIiKTsN
-CiAgICAgfQ0KIA0KLSAgICBhY3BpX2RzZHRfYWRkX3VhcnQoc2NvcGUsICZtZW1tYXBbVklSVF9V
-QVJUMF0sIFVBUlQwX0lSUSk7DQorICAgIGlmIChzZXJpYWxfZXhpc3QoKSkNCisgICAgICAgIGFj
-cGlfZHNkdF9hZGRfdWFydChzY29wZSwgJm1lbW1hcFtWSVJUX1VBUlQwXSwgVUFSVDBfSVJRKTsN
-CiANCiAgICAgaWYgKHNvY2tldF9jb3VudCA9PSAxKSB7DQogICAgICAgICB2aXJ0aW9fYWNwaV9k
-c2R0X2FkZChzY29wZSwgbWVtbWFwW1ZJUlRfVklSVElPXS5iYXNlLA0KQEAgLTY4MSw3ICs2ODMs
-NyBAQCBzdGF0aWMgdm9pZCB2aXJ0X2FjcGlfYnVpbGQoUklTQ1ZWaXJ0U3RhdGUgKnMsIEFjcGlC
-dWlsZFRhYmxlcyAqdGFibGVzKQ0KIA0KICAgICBhY3BpX2FkZF90YWJsZSh0YWJsZV9vZmZzZXRz
-LCB0YWJsZXNfYmxvYik7DQogDQotICAgIGlmIChtcy0+ZW5hYmxlX3NwY3IpIHsNCisgICAgaWYg
-KG1zLT5lbmFibGVfc3BjciAmJiBzZXJpYWxfZXhpc3QoKSkgew0KICAgICAgICAgc3Bjcl9zZXR1
-cCh0YWJsZXNfYmxvYiwgdGFibGVzLT5saW5rZXIsIHMpOw0KICAgICB9DQogDQpkaWZmIC0tZ2l0
-IGEvaW5jbHVkZS9zeXN0ZW0vc3lzdGVtLmggYi9pbmNsdWRlL3N5c3RlbS9zeXN0ZW0uaA0KaW5k
-ZXggYTdlZmZlN2RmZC4uY2ExYWYzODQzMiAxMDA2NDQNCi0tLSBhL2luY2x1ZGUvc3lzdGVtL3N5
-c3RlbS5oDQorKysgYi9pbmNsdWRlL3N5c3RlbS9zeXN0ZW0uaA0KQEAgLTc1LDYgKzc1LDggQEAg
-ZXh0ZXJuIHVuc2lnbmVkIGludCBuYl9wcm9tX2VudnM7DQogLyogUmV0dXJuIHRoZSBDaGFyZGV2
-IGZvciBzZXJpYWwgcG9ydCBpLCBvciBOVUxMIGlmIG5vbmUgKi8NCiBDaGFyZGV2ICpzZXJpYWxf
-aGQoaW50IGkpOw0KIA0KK2Jvb2wgc2VyaWFsX2V4aXN0KHZvaWQpOw0KKw0KIC8qIHBhcmFsbGVs
-IHBvcnRzICovDQogDQogI2RlZmluZSBNQVhfUEFSQUxMRUxfUE9SVFMgMw0KZGlmZiAtLWdpdCBh
-L3N5c3RlbS92bC5jIGIvc3lzdGVtL3ZsLmMNCmluZGV4IDUyMDk1NmY0YTEuLjdlMjE5ZGY3YmYg
-MTAwNjQ0DQotLS0gYS9zeXN0ZW0vdmwuYw0KKysrIGIvc3lzdGVtL3ZsLmMNCkBAIC0xNDg0LDYg
-KzE0ODQsMTEgQEAgQ2hhcmRldiAqc2VyaWFsX2hkKGludCBpKQ0KICAgICByZXR1cm4gTlVMTDsN
-CiB9DQogDQorYm9vbCBzZXJpYWxfZXhpc3Qodm9pZCkNCit7DQorICAgIHJldHVybiBzZXJpYWxf
-aGQoMCkgPyB0cnVlIDogZmFsc2U7DQorfQ0KKw0KIHN0YXRpYyBib29sIHBhcmFsbGVsX3BhcnNl
-KGNvbnN0IGNoYXIgKmRldm5hbWUsIEVycm9yICoqZXJycCkNCiB7DQogICAgIHN0YXRpYyBpbnQg
-aW5kZXggPSAwOw0KLS0gDQoyLjQ5LjANCg0KDQo=
+On 5/15/25 4:05 AM, Philippe Mathieu-Daudé wrote:
+> On 14/5/25 18:59, Pierrick Bouvier wrote:
+>> On 5/14/25 9:53 AM, Philippe Mathieu-Daudé wrote:
+>>> On 14/5/25 10:24, Richard Henderson wrote:
+>>>> On 5/13/25 18:39, Philippe Mathieu-Daudé wrote:
+>>>>> arm_cpu_has_feature() is equivalent of arm_feature(), however
+>>>>> while the latter uses CPUARMState so is target-specific, the
+>>>>> former doesn't and can be called by target-agnostic code in hw/.
+>>>>
+>>>> CPUARMState is no more target-specific than ARMCPU.
+>>>
+>>> ARMCPU is forward-declared as opaque pointer in target/arm/cpu-qom.h,
+>>> so we can expose prototypes using it to non-ARM units.
+>>> CPUARMState is only declared in "cpu.h", itself only accessible by
+>>> ARM-related units.
+>>>
+>>
+>> Maybe we can simply postpone introduction of arm_cpu_has_feature() when
+>> it will be really needed.
+>>
+>> Patches 17 and 18 are not strictly needed, as cpu.h (which resolves to
+>> target/arm/cpu.h implicitely) is perfectly accessible to code in hw/arm
+>> without any problem.
+> 
+> OK.
+> 
+> Peter, would you be OK to take reviewed patches #1 up to #15 (the
+> previous one) or do you rather I respin them?
+>
+
+In case you respin, feel free to include the base series, so we can 
+combine both.
+
+> Regards,
+> 
+> Phil.
+

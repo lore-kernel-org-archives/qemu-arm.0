@@ -1,191 +1,187 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1689747njb;
-        Thu, 15 May 2025 01:08:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWJ+9Er/fN5JUfyVnQZrTwJ469QfGCJ52TQxevlSq6f7diEb06lIYsRYLqEHSB60/EtRPP8k8vwUmBdBw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFcr0amiR6jPeiougvCOGwAdtQnJMQ6PZrzUaxB4NWtUZsEYOpoyWIt7kG2POaF0FEFZVsI
-X-Received: by 2002:a05:6402:34c4:b0:5fc:efae:6a89 with SMTP id 4fb4d7f45d1cf-5ff988a1efbmr5745646a12.13.1747296502141;
-        Thu, 15 May 2025 01:08:22 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1747296502; cv=pass;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1691131njb;
+        Thu, 15 May 2025 01:11:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUl6yNZJWx7qpkUvdx5HDk827VvKKs2oaJQ1o4Jqx4NcUqpnoLlrdxFrOke+PBgd84sSCuErIEmdp0+AA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFqOCHgLAayyM2Y2mKrR2iKqTPqqY4ikj8aNaZ2435Po2C8lpQF8JFPbTDpEI4yQBuwrLJk
+X-Received: by 2002:a05:6214:519b:b0:6e6:6c39:cb71 with SMTP id 6a1803df08f44-6f896ef6c59mr88677776d6.45.1747296686434;
+        Thu, 15 May 2025 01:11:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747296686; cv=none;
         d=google.com; s=arc-20240605;
-        b=kWBAoEaj/4oq1XDOvt9M4KbDaDc1fNRvfJNBOnKtSmHBeydQp+2rG6DDhY9bKWEt/8
-         o96GrJV1tFCeapbd8BgS9MSbSRjwUorKZP6T1e6c6GhviyLRbKcDP9/TfPKvut3Czyhe
-         +PZ6EnyRN87UF5DZuzMytuJ/90aj59aC6gCfgnuT+vREVba3D5m88g9hcwzuvsxxmL7M
-         JjJtuBMpuHrkVKDqSSZKb9SQzJjSN0/EJP1pcTSdnMmDXDVAY5ro+CD0LXBAKeZGJyRV
-         09W9TGQYWGR72Uwrd3tnmmVov/IkZw/SzYO+Wd0kXkEOwPt57kXwr3qWIJ5jZGFWWXUD
-         wptA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=MXxIKt/Z4eQn4b7b2ILxzGpy0xOFcexDfhADh0Vh000=;
-        fh=Q8omI+ATFA/q+WOClFqBZjMkLCUnNMldHOUWFyGFFAk=;
-        b=YHkqmBESQyDpt6KRIAvqajh3I8g73wHC0OZ/xdrjHI1PWZcCTqdFp3ISb4n4E7IFOP
-         v1BmqP1et7YO+K8/h2p1WIYRDBMA4rXUVeTox2hqORYO5ZmbFHW4CLo/eG9ixA3uelB9
-         avuIz8gBTweuPO6K2IarKvdbEYXjym3x4BahcR7hR4YA+58xYPIr/CbERI7L1kgYmJEZ
-         gDIWg5lsSDPiJCTLEcvq4MKNN7e2uI+vP9/WehCsK0N2/VG8mjAUngcQbSMCehgHGT4b
-         iy4vq1mXRet8p6U1EsGRX27oDneQUQNDLuET9AMoUzd+z4Lgq1Iv1nFAltDo8bYVLNNB
-         untg==;
+        b=eiavt8AL17MPdbbuWZDVyo1lh13zl6qlvzGLv6dD4uDnUl3hr9rL55IwtC5X/6wODR
+         vOZeSislaO8tuM61cHZoOMzqbcAFAfxyD81HUqTewGcEG8ZhYR0NO74ClWRqozln67QJ
+         5BRaEYH3eQrwrnWf3zsHjQ15ocwo7ujDnLRYb6grKjwYSg9RbAa4jmneLt+w+WCZyfCz
+         miceRvAcHiYfotAkDQ1w15f2EW4nWkbIzr0D+iy9e+jPIwetgtSKtWki6ufH81nHZvC9
+         Gi8piitCT/2GJibAFRdpd/JjDPeb1gqFkxBKOfn6cMREzzvBSGyDAURc8kGcPrDPmm8F
+         B3mg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=V/me/UF1CQriit9GnU0VNyL+PailNiTnAVcjse4lq18=;
+        fh=XVCbtZt0NlM3WRi/g+G2SrIUzl8hrRaPGDpFr//3vj8=;
+        b=LcjSuomQrHzG/EBjfhD/Kc2R3dZIuPp10LjNVaboPdrGE6m0X8g9Y4JqFP3u3yO3Ah
+         3eSzpVNnbL/Kx37OrVSbYZjKNUH16bTvJql814J1bqLlbVgkxn3DrOhqRyKa58VaEC+g
+         XYbf7u6PxU+nQPBh8TIybKebG2vm6Q/DkLPHkp4rDmcP3EaXVJSHchmB0vs/q5I0Uej+
+         ubXdD94duOEkIDWSYj+AwRR0HOnz7p+vQEk3HHuqy/rZxHhj8KFHpoSlTik/n+Co7t+f
+         ZrX9jBIAR3rdam3kFWasTH8EyTXX9TE1h+C/plzkfzKKrwnfvMTFl4MuuCS0LIVpjbzG
+         CPzg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=gFMslssZ;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-46652-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-46652-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-46652-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5fc9c9e437bsi10321887a12.22.2025.05.15.01.08.21
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f6e3a42e50si151165216d6.227.2025.05.15.01.11.26
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 May 2025 01:08:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-46652-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 15 May 2025 01:11:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=gFMslssZ;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-46652-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-46652-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 5CBA21BA4A7F
-	for <alex.bennee@linaro.org>; Thu, 15 May 2025 08:08:33 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0E04D2798F4;
-	Thu, 15 May 2025 08:08:16 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="gFMslssZ"
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F12841B6556
-	for <kvm@vger.kernel.org>; Thu, 15 May 2025 08:08:13 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.19
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1747296495; cv=none; b=nozxB05q3k2GRW8VwsOUDvoJsvNtrNlaPu1t5nMbmUeGPL55rRsTKbmjOtx1F4JZ04Z8peN/W/GR1k2HECesWcrPhDjT2sq1j0bUVP/bjl9qAEL8CEeKQfQsJTLiSH1AuMnGRCEaXRsT0UJWGWw9yLRVVI1Ba5pjA1ao0NoS7Rc=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1747296495; c=relaxed/simple;
-	bh=1AnATLoCvpWdtTCkDZsBgKnp3pMIZcVXqd27NhUqOtA=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=DVR5ija7HhNLzTwyzV86zGWu91Ey8+lMYAk0KrXS2KEfWBXSP/Yd+Dp9mY7cgi7/ZQKGaLU3ByTCxj/ibNukJ9uanXTbyXgC9faTzqIojvJT+AbOSIdawIXXtTf8e2tLSb5V7Vs8FM2pA1Fnplptsdig4R8plajsM2cwEBaFfjc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=gFMslssZ; arc=none smtp.client-ip=198.175.65.19
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1747296494; x=1778832494;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=1AnATLoCvpWdtTCkDZsBgKnp3pMIZcVXqd27NhUqOtA=;
-  b=gFMslssZMZ5jG/DRZw2FSyNuFOdNpe5SLujqSaqPhtMWpxRfUFRO5xsS
-   0S76evd7vDhHiD8J1d5v1giKkXZ5sX9m95DMMLOtC5KkfLlUF4u1YMCte
-   OZQLG2jPp97rAob9+6ArzI53w+GwAbw4i7yPZHuu+8YArygm2ETOb602f
-   iOQotrKbm3/eqyxdbj+KouLDWIOG2atj8A2hrG1YrfEszITR/YF2Wznt3
-   Hlt56nQ4i9cGi0vzFoy+lrCZ2ql25ATZdSbTqQmXh3xzjL9+T3wYQBprv
-   LCJN79FYYp7qvmJpk4CRIdeT0rr3970U88yTCtUfIpCVlP+qm+nEfC1rU
-   w==;
-X-CSE-ConnectionGUID: vAIFEZh0Q4OYGIsohweaiw==
-X-CSE-MsgGUID: XGO3HbGGSgaJdLeiZMEaEw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11433"; a="49088614"
-X-IronPort-AV: E=Sophos;i="6.15,290,1739865600"; 
-   d="scan'208";a="49088614"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 May 2025 01:08:13 -0700
-X-CSE-ConnectionGUID: zUkxVkykSFCEb485bRZwWw==
-X-CSE-MsgGUID: AE6yTCKbQjS55KgTgA+1xg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,290,1739865600"; 
-   d="scan'208";a="138792583"
-Received: from xiaoyaol-hp-g830.ccr.corp.intel.com (HELO [10.124.247.1]) ([10.124.247.1])
-  by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 May 2025 01:08:02 -0700
-Message-ID: <c6ece176-ac65-40ea-aca2-285c2fd9a9a7@intel.com>
-Date: Thu, 15 May 2025 16:08:00 +0800
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uFTg3-0003VS-4D; Thu, 15 May 2025 04:10:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1uFTfm-000336-MA; Thu, 15 May 2025 04:10:36 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1uFTfj-00010V-Sw; Thu, 15 May 2025 04:10:33 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 15 May
+ 2025 16:10:09 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Thu, 15 May 2025 16:10:09 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>, Laurent Vivier
+ <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open list:ASPEED
+ BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
+Subject: [PATCH v3 04/28] hw/misc/aspeed_hace: Extract direct mode hash buffer
+ setup into helper function
+Date: Thu, 15 May 2025 16:09:36 +0800
+Message-ID: <20250515081008.583578-5-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250515081008.583578-1-jamin_lin@aspeedtech.com>
+References: <20250515081008.583578-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 05/27] hw/nvram/fw_cfg: Factor
- fw_cfg_init_mem_internal() out
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>, kvm@vger.kernel.org,
- Sergio Lopez <slp@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Laurent Vivier
- <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Yi Liu <yi.l.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org,
- Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
- Zhao Liu <zhao1.liu@intel.com>, Yanan Wang <wangyanan55@huawei.com>,
- Helge Deller <deller@gmx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
- Ani Sinha <anisinha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- =?UTF-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
- qemu-arm@nongnu.org, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
- <marcandre.lureau@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
- Jason Wang <jasowang@redhat.com>
-References: <20250508133550.81391-1-philmd@linaro.org>
- <20250508133550.81391-6-philmd@linaro.org>
-Content-Language: en-US
-From: Xiaoyao Li <xiaoyao.li@intel.com>
-In-Reply-To: <20250508133550.81391-6-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: AjJOdtIvXyg6
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: apX/Kl+wdQhy
 
-On 5/8/2025 9:35 PM, Philippe Mathieu-Daudé wrote:
-> Factor fw_cfg_init_mem_internal() out of fw_cfg_init_mem_wide().
-> In fw_cfg_init_mem_wide(), assert DMA arguments are provided.
-> Callers without DMA have to use the fw_cfg_init_mem() helper.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+To improve code readability and maintainability of do_hash_operation(), this
+commit introduces a new helper function: hash_prepare_direct_iov().
+This function encapsulates the logic for setting up the I/O vector (iov)
+in direct mode (non-scatter-gather).
 
-Reviewed-by: Xiaoyao Li <xiaoyao.li@intel.com>
+No functional changes are introduced.
 
-> ---
->   hw/nvram/fw_cfg.c | 17 +++++++++++++----
->   1 file changed, 13 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-> index 10f8f8db86f..4067324fb09 100644
-> --- a/hw/nvram/fw_cfg.c
-> +++ b/hw/nvram/fw_cfg.c
-> @@ -1053,9 +1053,9 @@ FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
->       return s;
->   }
->   
-> -FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
-> -                                 hwaddr data_addr, uint32_t data_width,
-> -                                 hwaddr dma_addr, AddressSpace *dma_as)
-> +static FWCfgState *fw_cfg_init_mem_internal(hwaddr ctl_addr,
-> +                                            hwaddr data_addr, uint32_t data_width,
-> +                                            hwaddr dma_addr, AddressSpace *dma_as)
->   {
->       DeviceState *dev;
->       SysBusDevice *sbd;
-> @@ -1087,10 +1087,19 @@ FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
->       return s;
->   }
->   
-> +FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
-> +                                 hwaddr data_addr, uint32_t data_width,
-> +                                 hwaddr dma_addr, AddressSpace *dma_as)
-> +{
-> +    assert(dma_addr && dma_as);
-> +    return fw_cfg_init_mem_internal(ctl_addr, data_addr, data_addr,
-> +                                    dma_addr, dma_as);
-> +}
-> +
->   FWCfgState *fw_cfg_init_mem_nodma(hwaddr ctl_addr, hwaddr data_addr,
->                                     unsigned data_width)
->   {
-> -    return fw_cfg_init_mem_wide(ctl_addr, data_addr, data_width, 0, NULL);
-> +    return fw_cfg_init_mem_internal(ctl_addr, data_addr, data_width, 0, NULL);
->   }
->   
->   
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+---
+ hw/misc/aspeed_hace.c | 42 ++++++++++++++++++++++++++++++++----------
+ 1 file changed, 32 insertions(+), 10 deletions(-)
+
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+index 1256926d22..42c6f29f82 100644
+--- a/hw/misc/aspeed_hace.c
++++ b/hw/misc/aspeed_hace.c
+@@ -142,6 +142,31 @@ static bool has_padding(AspeedHACEState *s, struct iovec *iov,
+     return false;
+ }
+ 
++static int hash_prepare_direct_iov(AspeedHACEState *s, struct iovec *iov)
++{
++    uint32_t src;
++    void *haddr;
++    hwaddr plen;
++    int iov_idx;
++
++    plen = s->regs[R_HASH_SRC_LEN];
++    src = s->regs[R_HASH_SRC];
++    haddr = address_space_map(&s->dram_as, src, &plen, false,
++                              MEMTXATTRS_UNSPECIFIED);
++    if (haddr == NULL) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Unable to map address, addr=0x%x, "
++                      "plen=0x%" HWADDR_PRIx "\n",
++                      __func__, src, plen);
++        return -1;
++    }
++
++    iov[0].iov_base = haddr;
++    iov[0].iov_len = plen;
++    iov_idx = 1;
++
++    return iov_idx;
++}
+ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+                               bool acc_mode)
+ {
+@@ -169,6 +194,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+         }
+     }
+ 
++    /* Prepares the iov for hashing operations based on the selected mode */
+     if (sg_mode) {
+         for (iov_idx = 0; !(len & SG_LIST_LEN_LAST); iov_idx++) {
+             if (iov_idx == ASPEED_HACE_MAX_SG) {
+@@ -211,17 +237,13 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+             }
+         }
+     } else {
+-        plen = s->regs[R_HASH_SRC_LEN];
++        iov_idx = hash_prepare_direct_iov(s, iov);
++    }
+ 
+-        haddr = address_space_map(&s->dram_as, s->regs[R_HASH_SRC],
+-                                  &plen, false, MEMTXATTRS_UNSPECIFIED);
+-        if (haddr == NULL) {
+-            qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
+-            return;
+-        }
+-        iov[0].iov_base = haddr;
+-        iov[0].iov_len = plen;
+-        iov_idx = 1;
++    if (iov_idx <= 0) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Failed to prepare iov\n", __func__);
++         return;
+     }
+ 
+     if (acc_mode) {
+-- 
+2.43.0
 

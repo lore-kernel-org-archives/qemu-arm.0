@@ -1,69 +1,70 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1947167njb;
-        Thu, 15 May 2025 08:39:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVh8C1sV1oOD3JsxLQ04DwU7+NaKl6qfdSpU+HTmW4Ni4P9OIzu9AADTsm31l/+vKW17JIL/1jhkcipYw==@linaro.org
-X-Google-Smtp-Source: AGHT+IH56QZnglzWkhaqO9h2ADZDXFLuIwoYCZhasniJvmiULAYjJwi60LCy8zoJqu6ctsTIvgYh
-X-Received: by 2002:a05:6214:2684:b0:6ed:1637:442f with SMTP id 6a1803df08f44-6f8a3210cedmr59932366d6.17.1747323569579;
-        Thu, 15 May 2025 08:39:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747323569; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1947250njb;
+        Thu, 15 May 2025 08:39:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUpBcWNvjQXqWGvREq8GJs4ZQVzv/k1Ib5pAWaId9ueQrmalnGpnhFnlTaj2lKncSAAVnypbxx4hudxeg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHl0+uirKG97SnqWmSDNB0cUzRYA2rfR/05IGDr3p9r1ax3I2ias3ogsEi7V5G6IjYUZYtU
+X-Received: by 2002:a05:6102:3e13:b0:4bb:c8e5:aa6d with SMTP id ada2fe7eead31-4dfa6c61049mr136462137.17.1747323575864;
+        Thu, 15 May 2025 08:39:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747323575; cv=none;
         d=google.com; s=arc-20240605;
-        b=BSbAEf35Uil14Y1RMezL/4G3v3Zz+UnDl+PtKNNeBsTQWxyfuCkatuSsMeDSsOK6rG
-         BLckO0t0RU+DZG70zGGuuurI8cYgE7+0dyt6nICxqIwILtG0VcJsBQUe7aU3kK9e9n5r
-         oFB7fxU948y1Z69lKwjCMg2DLV+QQSf/BBDJOrM5+lfaT/Pl2alHRVJIUjMgGt+W3fZ1
-         VNFdKaGpS+AYlB3c0VKNLvlEHOqvmgZ2ltH6+0tSUoiYCzUG5RAaAPfSzQGxaC1r7uPr
-         riHiVGrzFWdD5ACl7QR8ltsZX1Uhs3cJx6UWCJ85997CCbqbZtctdxzwc3k/j0Khq+Tq
-         5vQA==
+        b=VSsmStxH+HN9xpa7iXVmS7meaM5tL4weAzgO5eaILIJyHHPYnWubCfja0k1IYenilJ
+         xScZg5DaJnY7IZ4MqEM9djieVQ3Ols6bmV8mz3FwzJjRRsUtudlvdgyQ19E4SwvPWnOy
+         PsKielm+5bjUwlNG7Koo/qo6jkYTkdSfN6MdQqOrOyqvwhv1+ftamqKxfvveucngQJyN
+         ML+HjdMinhSeVtRuAra+PmUhbK5roC0RWXo/zP9WsZdq6MG323pcruJEnwY3zOhO4TC6
+         WcK5W+OdeAjMIrobTeAJl2UH+1X9Dy9MA2tZwBqVMDPxe+VsqgO/VKGP9OSL1WNLnP2Y
+         TMjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=ocmnV2GWtSq3V0yNvdY3M/5w9Ajvv0VMgCeCDVSbzfM=;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=MZ94gqAs+KS8FYyYZ4bSu8skgSS044kl+1USR8DT1Xs=;
         fh=zInp4xe4IkcRrNM2aFMptin5JRRr9I02FEAKlsM82YU=;
-        b=Eq9sgwu9itze8NyxROctp0JV6Eyr9Yzsqkizn9iOWIrYdU6NMDdAAy5MyUxaPCJufW
-         EUjdbz32Cb3z6gSEqg9VYnVZCIt9xKugqLPj64j0nyAae4406DUCwIneCd/ILMSJJxfR
-         zR0fWoz9VVW9B+7Zn3RPr1AnVI8hX7NXnMP8c2SdweLqY6CdDeHGplSd4EfN9STECOcp
-         dduuCPWH0r4j0hgj4JYXW2skQYQEUuZY8r9u2SYuQPLCAYEhGxVzpgE+n2Z4EMhSy7QT
-         svgovtZR8ALvuTItyPDK3yT72ztSWA7J5hWN0hxQWFKFMkfz5WMlEKU4YuKTGr37RQYN
-         O0wQ==;
+        b=FqqT1F5KYt9PP5I5Z074jCwLE2iekce1ffqNM4jMKnX2AKKOB9AwfO2P22XL+m7xBD
+         xofYDF7WuqSetATeJNdtGxFOBlrpGvReb1cWF7Ol3PlD/IJFIFIN1yaiVKb32sSKziGB
+         K2TWewR4mIGGJ7DTRTs8Vot36ZqYW3n/GmKIfa7n5eUmgFuPwf+atS3VxfNIlAsx4Oxg
+         RhkiBsAl1YyULq0ckS808uUDypQItKndx563yZKUrf2lNXBpkXknTSpbXrWbhJu20I9I
+         stUI7KLZlSHrNoVRddvGgJuqidFRNETxLe405tpSOWlj66jvwqNmFDExqWrj1gWVPPSw
+         vB1A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gtu9P52k;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h5ahijEg;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f8b09c5a25si594876d6.415.2025.05.15.08.39.29
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4dfa68b7eb9si73028137.510.2025.05.15.08.39.35
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 May 2025 08:39:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Thu, 15 May 2025 08:39:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gtu9P52k;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h5ahijEg;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1747323569;
+	s=mimecast20190719; t=1747323575;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=ocmnV2GWtSq3V0yNvdY3M/5w9Ajvv0VMgCeCDVSbzfM=;
-	b=Gtu9P52kSsPrtMjaYFVjgUlIx+5u3BlLdinwZd8PqARQ45R1uNwRdYR+U3wtff+QbOD1t8
-	lQlAXoOVgWTXoQlki43YhGq9AYSMF8S9b/EZY07Sn1JCgWvuMSWFOS+64XP1JUIUzj3joK
-	Uy8bZlWTK3LotxtoQPl9C0yD1qJ9sf0=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=MZ94gqAs+KS8FYyYZ4bSu8skgSS044kl+1USR8DT1Xs=;
+	b=h5ahijEgHsgsBV+y14bbz5RE+3Z0oaRJWyrev7Ik40DWJJ8AtEf+gBl7aADT1QByCnxvSV
+	ECamh7m/uk2j6AWAqG1kYl4lrLe+SjBKe6kQlWG3KoW63Lht608F/DrdH3ahff/Q7BPjMX
+	U/5YBd+6ecF1/tQbi5lHOxP0Bhd+EEQ=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-92-VyR5x9TqPT-0LNh_wGrlmg-1; Thu,
- 15 May 2025 11:39:26 -0400
-X-MC-Unique: VyR5x9TqPT-0LNh_wGrlmg-1
-X-Mimecast-MFC-AGG-ID: VyR5x9TqPT-0LNh_wGrlmg_1747323562
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-459-HAprc9LLOwCRjWLnxuBJMQ-1; Thu,
+ 15 May 2025 11:39:31 -0400
+X-MC-Unique: HAprc9LLOwCRjWLnxuBJMQ-1
+X-Mimecast-MFC-AGG-ID: HAprc9LLOwCRjWLnxuBJMQ_1747323570
 Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 8EC371800874;
-	Thu, 15 May 2025 15:39:21 +0000 (UTC)
+	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 13AA019560A2;
+	Thu, 15 May 2025 15:39:29 +0000 (UTC)
 Received: from gondolin.redhat.com (unknown [10.45.225.145])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id C47C11956066;
-	Thu, 15 May 2025 15:39:12 +0000 (UTC)
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 125C11954B00;
+	Thu, 15 May 2025 15:39:21 +0000 (UTC)
 From: Cornelia Huck <cohuck@redhat.com>
 To: eric.auger.pro@gmail.com,
 	eric.auger@redhat.com,
@@ -87,166 +88,238 @@ Cc: shahuang@redhat.com,
 	philmd@linaro.org,
 	pbonzini@redhat.com,
 	Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH v7 00/14] arm: rework id register storage
-Date: Thu, 15 May 2025 17:38:53 +0200
-Message-ID: <20250515153907.151174-1-cohuck@redhat.com>
+Subject: [PATCH v7 01/14] arm/cpu: Add sysreg definitions in cpu-sysregs.h
+Date: Thu, 15 May 2025 17:38:54 +0200
+Message-ID: <20250515153907.151174-2-cohuck@redhat.com>
+In-Reply-To: <20250515153907.151174-1-cohuck@redhat.com>
+References: <20250515153907.151174-1-cohuck@redhat.com>
 MIME-Version: 1.0
 Content-type: text/plain
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: MDpN5vmqtOoU
+X-TUID: /LJ/jObKI1jF
 
-Some small fixes, including fixing up/adding SPDX identifiers, keeping the
-series bisectable, and updating MAINTAINERS (please check if that's ok.)
+From: Eric Auger <eric.auger@redhat.com>
 
-Also available at
-https://gitlab.com/cohuck/qemu/-/commits/arm-rework-idreg-storage-v7
+This new header contains macros that define aarch64 registers.
+In a subsequent patch, this will be replaced by a more exhaustive
+version that will be generated from linux arch/arm64/tools/sysreg
+file. Those macros are sufficient to migrate the storage of those
+ID regs from named fields in isar struct to an array cell.
 
-<v6 cover letter>
-Just some small changes:
-- fixed up some botched conversions noted by Eric (thanks!)
-- rebased to current master
-- new patch with a small cleanup suggested by Eric
-
-<v5 cover letter>
-Just a quick respin to fix a missed conversion in hvf.c.
-
-<v4 cover letter>
-Next iteration of the id register patches; only small changes.
-
-Changed from v3:
-- added R-bs (thanks!)
-- added missing SPDX header
-- merged patch introducing accessors for kvm to the first user
-- skip over sysregs outside of the id register range when generating
-  register definitions again
-
-Also available at
-https://gitlab.com/cohuck/qemu/-/commits/arm-rework-idreg-storage-v4
-
-<v3 cover letter>
-Yet another update of the id register series, less changes this time
-around.
-
-Changed from v2:
-- changed generation of the various register defines via the "DEF"
-  magic suggested by Richard
-- some kvm-only code moved to kvm.c; some code potentially useful to
-  non-kvm code stayed out of there (the cpu model code will make use
-  of it, and that one should be extendable outside of kvm -- a
-  revised version of those patches is still in the works, but I'll be
-  off for a few days and rather wanted to get this one out first)
-
-Also available at
-https://gitlab.com/cohuck/qemu/-/commits/arm-rework-idreg-storage-v3
-
-<v2 cover letter>
-
-Changed from v1:
-- Noticed that we missed the hvf code. Converted, compiled, but not tested
-  as I'm lacking an environment for testing.
-- Hopefully incorporated most of the suggested changes -- if I missed
-  something, it was unintentional unless mentioned below.
-  - fixed repeated inclusion of definitions
-  - hopefully made macros more robust
-  - removed distinction between reading 32/64 values, which was mostly
-    adding churn for little value
-  - postponed generating property definitions to the cpu model patches,
-    where they are actually used
-  - juggled hunks and moved them to the right patches
-  - fixed some typos
-- rebased to a more recent code base
-
-NOT changed from v1:
-- definitions are still generated from the Linux sysregs file
-  - I still think updating the generated files on demand (so that we can
-    double check the result) is the right thing to do
-  - I'm open to changing the source of the definitions from the sysregs
-    file to the JSON definitions published by Arm; however, I first wanted
-    to get the code using it right -- we can switch out the code generating
-    the file to use a different source easily later on, and I'd also like
-    to steal parts of the script from Linux once integrated (which I think
-    hasn't happened yet?)
-
-<v1 cover letter>
-
-[Note: I've kept the cc list from the last round of cpu model patches;
-so if you're confused as to why you're cc:ed here, take it as a
-heads-up that a new cpu model series will come along soon]
-
-This patch series contains patches extracted from the larger cpu model
-series (RFC v2 last posted at
-https://lore.kernel.org/qemu-devel/20241206112213.88394-1-cohuck@redhat.com/)
-and aims at providing a base upon which we can continue with building
-support for cpu models, but which is hopefully already an improvement
-on its own.
-
-Main changes from the patches in that series include:
-- post-pone the changes to handle KVM writable ID registers for cpu models
-  (I have a series including that on top of this one)
-- change how we store the list of ID registers, and access them
-  basically, use an enum for indexing, and an enum doing encodings in a
-  pattern similar to cpregs
-- move some hunks to different patches
-- update the scripts to generate the register descriptions, and run
-  them against a recent Linux sysregs file
-
-What I've kept:
-- generating the register descriptions from the Linux sysregs file
-  I think that file is still our best bet to generate the descriptions
-  easily, and updating the definitions is a manual step that can be checked
-  for unintended changes
-- most of the hard work that Eric had been doing; all new bugs in there
-  are my own :)
-
-</v1 cover letter>
-</v2 cover letter>
-</v3 cover letter>
-</v4 cover letter>
-</v5 cover letter>
-</v6 cover letter>
-
-Cornelia Huck (2):
-  arm/cpu: switch to a generated cpu-sysregs.h.inc
-  arm/kvm: use fd instead of fdarray[2]
-
-Eric Auger (12):
-  arm/cpu: Add sysreg definitions in cpu-sysregs.h
-  arm/cpu: Store aa64isar0/aa64zfr0 into the idregs arrays
-  arm/cpu: Store aa64isar1/2 into the idregs array
-  arm/cpu: Store aa64pfr0/1 into the idregs array
-  arm/cpu: Store aa64mmfr0-3 into the idregs array
-  arm/cpu: Store aa64dfr0/1 into the idregs array
-  arm/cpu: Store aa64smfr0 into the idregs array
-  arm/cpu: Store id_isar0-7 into the idregs array
-  arm/cpu: Store id_pfr0/1/2 into the idregs array
-  arm/cpu: Store id_dfr0/1 into the idregs array
-  arm/cpu: Store id_mmfr0-5 into the idregs array
-  arm/cpu: Add sysreg generation scripts
-
- MAINTAINERS                           |   1 +
- hw/intc/armv7m_nvic.c                 |  27 +-
- scripts/gen-cpu-sysregs-header.awk    |  35 ++
- scripts/update-aarch64-sysreg-code.sh |  26 ++
- target/arm/cpu-features.h             | 317 +++++++++---------
- target/arm/cpu-sysregs.h              |  42 +++
- target/arm/cpu-sysregs.h.inc          |  52 +++
- target/arm/cpu.c                      | 111 +++----
- target/arm/cpu.h                      |  80 +++--
- target/arm/cpu64.c                    | 128 +++----
- target/arm/helper.c                   |  68 ++--
- target/arm/hvf/hvf.c                  |  39 ++-
- target/arm/internals.h                |   6 +-
- target/arm/kvm.c                      | 139 ++++----
- target/arm/ptw.c                      |   6 +-
- target/arm/tcg/cpu-v7m.c              | 174 +++++-----
- target/arm/tcg/cpu32.c                | 320 +++++++++---------
- target/arm/tcg/cpu64.c                | 459 +++++++++++++-------------
- 18 files changed, 1105 insertions(+), 925 deletions(-)
- create mode 100755 scripts/gen-cpu-sysregs-header.awk
- create mode 100755 scripts/update-aarch64-sysreg-code.sh
+[CH: reworked to use different structures]
+[CH: moved accessors from the patches first using them to here,
+     dropped interaction with writable registers, which will happen
+     later]
+[CH: use DEF magic suggested by rth]
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Sebastian Ott <sebott@redhat.com>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+---
+ target/arm/cpu-sysregs.h     | 42 +++++++++++++++++++++++++++++++
+ target/arm/cpu-sysregs.h.inc | 35 ++++++++++++++++++++++++++
+ target/arm/cpu.h             | 49 ++++++++++++++++++++++++++++++++++++
+ target/arm/cpu64.c           | 22 ++++++++++++++++
+ 4 files changed, 148 insertions(+)
  create mode 100644 target/arm/cpu-sysregs.h
  create mode 100644 target/arm/cpu-sysregs.h.inc
 
+diff --git a/target/arm/cpu-sysregs.h b/target/arm/cpu-sysregs.h
+new file mode 100644
+index 000000000000..7877a3b06a8e
+--- /dev/null
++++ b/target/arm/cpu-sysregs.h
+@@ -0,0 +1,42 @@
++/*
++ * Definitions for Arm ID system registers
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#ifndef ARM_CPU_SYSREGS_H
++#define ARM_CPU_SYSREGS_H
++
++/*
++ * Following is similar to the coprocessor regs encodings, but with an argument
++ * ordering that matches the ARM ARM. We also reuse the various CP_REG_ defines
++ * that actually are the same as the equivalent KVM_REG_ values.
++ */
++#define ENCODE_ID_REG(op0, op1, crn, crm, op2)          \
++    (((op0) << CP_REG_ARM64_SYSREG_OP0_SHIFT) |         \
++     ((op1) << CP_REG_ARM64_SYSREG_OP1_SHIFT) |         \
++     ((crn) << CP_REG_ARM64_SYSREG_CRN_SHIFT) |         \
++     ((crm) << CP_REG_ARM64_SYSREG_CRM_SHIFT) |         \
++     ((op2) << CP_REG_ARM64_SYSREG_OP2_SHIFT))
++
++#define DEF(NAME, OP0, OP1, CRN, CRM, OP2) NAME##_IDX,
++
++typedef enum ARMIDRegisterIdx {
++#include "cpu-sysregs.h.inc"
++    NUM_ID_IDX,
++} ARMIDRegisterIdx;
++
++#undef DEF
++#define DEF(NAME, OP0, OP1, CRN, CRM, OP2) \
++    SYS_##NAME = ENCODE_ID_REG(OP0, OP1, CRN, CRM, OP2),
++
++typedef enum ARMSysRegs {
++#include "cpu-sysregs.h.inc"
++} ARMSysRegs;
++
++#undef DEF
++
++extern const uint32_t id_register_sysreg[NUM_ID_IDX];
++
++int get_sysreg_idx(ARMSysRegs sysreg);
++
++#endif /* ARM_CPU_SYSREGS_H */
+diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
+new file mode 100644
+index 000000000000..6c9f9981cc5d
+--- /dev/null
++++ b/target/arm/cpu-sysregs.h.inc
+@@ -0,0 +1,35 @@
++DEF(ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
++DEF(ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
++DEF(ID_AA64SMFR0_EL1, 3, 0, 0, 4, 5)
++DEF(ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
++DEF(ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
++DEF(ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
++DEF(ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
++DEF(ID_AA64ISAR2_EL1, 3, 0, 0, 6, 2)
++DEF(ID_AA64MMFR0_EL1, 3, 0, 0, 7, 0)
++DEF(ID_AA64MMFR1_EL1, 3, 0, 0, 7, 1)
++DEF(ID_AA64MMFR2_EL1, 3, 0, 0, 7, 2)
++DEF(ID_AA64MMFR3_EL1, 3, 0, 0, 7, 3)
++DEF(ID_PFR0_EL1, 3, 0, 0, 1, 0)
++DEF(ID_PFR1_EL1, 3, 0, 0, 1, 1)
++DEF(ID_DFR0_EL1, 3, 0, 0, 1, 2)
++DEF(ID_MMFR0_EL1, 3, 0, 0, 1, 4)
++DEF(ID_MMFR1_EL1, 3, 0, 0, 1, 5)
++DEF(ID_MMFR2_EL1, 3, 0, 0, 1, 6)
++DEF(ID_MMFR3_EL1, 3, 0, 0, 1, 7)
++DEF(ID_ISAR0_EL1, 3, 0, 0, 2, 0)
++DEF(ID_ISAR1_EL1, 3, 0, 0, 2, 1)
++DEF(ID_ISAR2_EL1, 3, 0, 0, 2, 2)
++DEF(ID_ISAR3_EL1, 3, 0, 0, 2, 3)
++DEF(ID_ISAR4_EL1, 3, 0, 0, 2, 4)
++DEF(ID_ISAR5_EL1, 3, 0, 0, 2, 5)
++DEF(ID_MMFR4_EL1, 3, 0, 0, 2, 6)
++DEF(ID_ISAR6_EL1, 3, 0, 0, 2, 7)
++DEF(MVFR0_EL1, 3, 0, 0, 3, 0)
++DEF(MVFR1_EL1, 3, 0, 0, 3, 1)
++DEF(MVFR2_EL1, 3, 0, 0, 3, 2)
++DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
++DEF(ID_DFR1_EL1, 3, 0, 0, 3, 5)
++DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
++DEF(ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
++DEF(CTR_EL0, 3, 3, 0, 0, 1)
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 6ed6409cb7a8..b85f99a85a90 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -32,6 +32,7 @@
+ #include "qapi/qapi-types-common.h"
+ #include "target/arm/multiprocessing.h"
+ #include "target/arm/gtimer.h"
++#include "target/arm/cpu-sysregs.h"
+ 
+ #define EXCP_UDEF            1   /* undefined instruction */
+ #define EXCP_SWI             2   /* software interrupt */
+@@ -834,6 +835,53 @@ typedef struct {
+     uint32_t map, init, supported;
+ } ARMVQMap;
+ 
++/* REG is ID_XXX */
++#define FIELD_DP64_IDREG(ISAR, REG, FIELD, VALUE)                       \
++    ({                                                                  \
++        ARMISARegisters *i_ = (ISAR);                                   \
++        uint64_t regval = i_->idregs[REG ## _EL1_IDX];                  \
++        regval = FIELD_DP64(regval, REG, FIELD, VALUE);                 \
++        i_->idregs[REG ## _EL1_IDX] = regval;                           \
++    })
++
++#define FIELD_DP32_IDREG(ISAR, REG, FIELD, VALUE)                       \
++    ({                                                                  \
++        ARMISARegisters *i_ = (ISAR);                                   \
++        uint64_t regval = i_->idregs[REG ## _EL1_IDX];                  \
++        regval = FIELD_DP32(regval, REG, FIELD, VALUE);                 \
++        i_->idregs[REG ## _EL1_IDX] = regval;                           \
++    })
++
++#define FIELD_EX64_IDREG(ISAR, REG, FIELD)                              \
++    ({                                                                  \
++        const ARMISARegisters *i_ = (ISAR);                             \
++        FIELD_EX64(i_->idregs[REG ## _EL1_IDX], REG, FIELD);            \
++    })
++
++#define FIELD_EX32_IDREG(ISAR, REG, FIELD)                              \
++    ({                                                                  \
++        const ARMISARegisters *i_ = (ISAR);                             \
++        FIELD_EX32(i_->idregs[REG ## _EL1_IDX], REG, FIELD);            \
++    })
++
++#define FIELD_SEX64_IDREG(ISAR, REG, FIELD)                             \
++    ({                                                                  \
++        const ARMISARegisters *i_ = (ISAR);                             \
++        FIELD_SEX64(i_->idregs[REG ## _EL1_IDX], REG, FIELD);           \
++    })
++
++#define SET_IDREG(ISAR, REG, VALUE)                                     \
++    ({                                                                  \
++        ARMISARegisters *i_ = (ISAR);                                   \
++        i_->idregs[REG ## _EL1_IDX] = VALUE;                            \
++    })
++
++#define GET_IDREG(ISAR, REG)                                            \
++    ({                                                                  \
++        const ARMISARegisters *i_ = (ISAR);                             \
++        i_->idregs[REG ## _EL1_IDX];                                    \
++    })
++
+ /**
+  * ARMCPU:
+  * @env: #CPUARMState
+@@ -1040,6 +1088,7 @@ struct ArchCPU {
+         uint64_t id_aa64zfr0;
+         uint64_t id_aa64smfr0;
+         uint64_t reset_pmcr_el0;
++        uint64_t idregs[NUM_ID_IDX];
+     } isar;
+     uint64_t midr;
+     uint32_t revidr;
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 00629a5d1d11..e3fdff92c1b4 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -36,6 +36,28 @@
+ #include "cpu-features.h"
+ #include "cpregs.h"
+ 
++/* convert between <register>_IDX and SYS_<register> */
++#define DEF(NAME, OP0, OP1, CRN, CRM, OP2)      \
++    [NAME##_IDX] = SYS_##NAME,
++
++const uint32_t id_register_sysreg[NUM_ID_IDX] = {
++#include "cpu-sysregs.h.inc"
++};
++
++#undef DEF
++#define DEF(NAME, OP0, OP1, CRN, CRM, OP2) \
++    case SYS_##NAME: return NAME##_IDX;
++
++int get_sysreg_idx(ARMSysRegs sysreg)
++{
++    switch (sysreg) {
++#include "cpu-sysregs.h.inc"
++    }
++    g_assert_not_reached();
++}
++
++#undef DEF
++
+ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+ {
+     /*
 -- 
 2.49.0

@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1691261njb;
-        Thu, 15 May 2025 01:11:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX+GEzh3Z2v2IABvD/LoCJoZE8CVppKXP/4K6Si1qDRu9dk3m344fVxuX9oiH/dL3TCMBJK/XNWept3Wg==@linaro.org
-X-Google-Smtp-Source: AGHT+IE+BKMLjMh2gPmY/LmD48nQjz4mv3xbwLfgMjb4zu0o4Q1mb8PxTFRj1xXPNc+vlE6JBs54
-X-Received: by 2002:a05:622a:40c6:b0:494:aa40:b0c3 with SMTP id d75a77b69052e-494aa40b1d7mr2202221cf.10.1747296703496;
-        Thu, 15 May 2025 01:11:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747296703; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1691399njb;
+        Thu, 15 May 2025 01:12:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUroh45vDrNGz4VKF8ndZLQoyl0fXWkLXski+/z1QeTNykJUDsfUK6gjcRaIpbNbxdJTAwCyJ4C0RkyAQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFWYBoC6WBt2wqAQRCdVuv8FD7Oreszq915Uow7PYrLTJdKW/bgmcC6e8VOoTRyQQewXzSs
+X-Received: by 2002:a05:620a:27d6:b0:7c5:3e89:c6df with SMTP id af79cd13be357-7cd3c65231fmr211533085a.12.1747296724099;
+        Thu, 15 May 2025 01:12:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747296724; cv=none;
         d=google.com; s=arc-20240605;
-        b=cKpyX5w+GV9vxsXA1SNQrvlPfoeRsLwKnqsN3eCMBzjTh22X6kZS3Dhwhp6s7Y6q7c
-         djh9y7I4XUcOdRvRat1IzeG+eGKw1Rrs9Rnflpxgj4Ops5h0YvxMbgEBli6K9OPU/rXc
-         BY/gqaixmeKnv4rNu98oZJwf77vfs1ZpDUY5ghEpfdIffO/JDmwbwQ4MGaZx7zHegIlw
-         gXk4Z8a8krKKc7aNZhL1EQRwlEYMNXOIsS0yl1HT2cFNzxeq4KjAzClYaProrzA610K/
-         2BF5b5X+NE+OBTbSi2IKC09cDQMxdKJHbi5+fSaM+ZSW6e59KXiAd2dUwtMxnycMIeJz
-         VBRQ==
+        b=giGbJ7aYJ6tX53iinlPQOpTl7DjHGyP2nfPXNP2dzT0/Qh6y2smqec5tQyZ8vPgRKz
+         yq56YLkbNnRL+Q+ccUFWD5lHodf087raLPBFl3UI9ZTsYPu+y1tXoXCQL9fYBpjvTWXB
+         U4eofTZGY97g62LDzIHx8p2icOI++IFBX3fElp6Dsaw+kwsH5Ot1Wj2orZgItqZ3coOK
+         2SVzfobg/cfRkbmk2smZww+zQzn/eIvy/fzJd04qArPOeRX1DD8wA5QNctvC2tZPBFix
+         x7OAyiz8fZd+UV8kDmkQyBQhNfbPs6nCi9fD5UJuTUnd8xfmCxRogiAyMBjeL2MeYiA8
+         l9dA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=OlJEw1u7I+PyR37kwlI3LovEEZq2VG75c3wOLpSwH5I=;
+        bh=RK38aP0QKn4boTXt1w/5obRe+Q47fxGbv+JMpFFkRlY=;
         fh=XVCbtZt0NlM3WRi/g+G2SrIUzl8hrRaPGDpFr//3vj8=;
-        b=etHYfJSjZxQDzhyhTf9jfqkGXdXmHc6o65GD9TqfajKTMDLwPUlJGOwgPPABRkLe/G
-         LWrh9NLsWKEDwpuae7NBbbSbics1TugYCCiAwAJr5lM86yfCX9WA1ZGjmezxdy3SOe2n
-         zzu+8yai25FB+eKiO35xPcsZlMfwO0tPJcvqeV6Om6tzc3zcz18Y5MaEEfPMkW+K2hy7
-         fS30tKmIIzMumgEZiLEhF/ZMUbMDaRgUeE5cldgp4O91D7NpIx8ycwwXhTfyaXMzhiTr
-         utZmCsv4iQ73hl0v1bViOTN8O3SbPzw3h/JgAJNlJlPlPFO/Gz1y7YayuzCS9kbD0Hxs
-         pfdg==;
+        b=VMKol6xegr0S6l+nGdXqp4+UsOQFxZCoghelbeomyGDEIqhhG6vpjz5WsnRkddZrTg
+         +ICx0Zxszu6OPV00WtEMjshZR4xaste66h3riHk1ZJIpJrjcZpBY4wCzicKCEyrjYhZr
+         /oFeeqyxvYp0thi1lrNku60YqZ2XaRiu2cF40SG164xnmedbKAEtt9zZqOvkoRbrGkff
+         5PhaNSUF/ocuHh5VXMTE5C11aol1rUDR6MHVmPFfYbTgi46amhr79uAbaXKkmPw0xofm
+         zBYe96qctbEQ4iZySQPAMNh/n9nsSA9oJuYYYpgoTacDC9xtsYkv7rRF+2rUY0HRm/xt
+         8QKQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-49452458be8si160242321cf.9.2025.05.15.01.11.43
+        by mx.google.com with ESMTPS id af79cd13be357-7cd00f69c38si1500444885a.189.2025.05.15.01.12.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 May 2025 01:11:43 -0700 (PDT)
+        Thu, 15 May 2025 01:12:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,15 +42,15 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uFTfx-0003PO-KZ; Thu, 15 May 2025 04:10:46 -0400
+	id 1uFTgg-0005GJ-1z; Thu, 15 May 2025 04:11:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uFTfm-000331-Kw; Thu, 15 May 2025 04:10:36 -0400
+ id 1uFTfp-0003Bs-ND; Thu, 15 May 2025 04:10:37 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uFTfj-00011Y-Sm; Thu, 15 May 2025 04:10:33 -0400
+ id 1uFTfn-00011Y-N3; Thu, 15 May 2025 04:10:37 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 15 May
@@ -66,10 +66,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v3 03/28] hw/misc/aspeed_hace: Ensure HASH_IRQ is always set
- to prevent firmware hang
-Date: Thu, 15 May 2025 16:09:35 +0800
-Message-ID: <20250515081008.583578-4-jamin_lin@aspeedtech.com>
+Subject: [PATCH v3 05/28] hw/misc/aspeed_hace: Extract SG-mode hash buffer
+ setup into helper function
+Date: Thu, 15 May 2025 16:09:37 +0800
+Message-ID: <20250515081008.583578-6-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250515081008.583578-1-jamin_lin@aspeedtech.com>
 References: <20250515081008.583578-1-jamin_lin@aspeedtech.com>
@@ -100,65 +100,159 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 07YY/gZhjqwA
+X-TUID: 2zlEU8B9pMvn
 
-Currently, if the program encounters an unsupported algorithm, it does not set
-the HASH_IRQ bit in the status register and send an interrupt to indicate
-command completion. As a result, the FW gets stuck waiting for a completion
-signal from the HACE module.
+To improve code readability and maintainability of do_hash_operation(), this
+commit introduces a new helper function: hash_prepare_sg_iov().
 
-Additionally, in do_hash_operation, if an error occurs within the conditional
-statement, the HASH_IRQ bit is not set in the status register. This causes the
-firmware to continuously send HASH commands, as it is unaware that the HACE
-model has completed processing the command.
+This function handles scatter-gather (SG) mode setup, including SG list
+parsing, address mapping, and optional accumulation mode support with
+padding detection.
 
-To fix this, the HASH_IRQ bit in the status register must always be set to
-ensure that the firmware receives an interrupt from the HACE module, preventing
-it from getting stuck or repeatedly sending HASH commands.
+No functional changes are introduced.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Fixes: c5475b3 ("hw: Model ASPEED's Hash and Crypto Engine")
 ---
- hw/misc/aspeed_hace.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ hw/misc/aspeed_hace.c | 111 ++++++++++++++++++++++++------------------
+ 1 file changed, 63 insertions(+), 48 deletions(-)
 
 diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index 6be94963bc..1256926d22 100644
+index 42c6f29f82..22eea62693 100644
 --- a/hw/misc/aspeed_hace.c
 +++ b/hw/misc/aspeed_hace.c
-@@ -267,12 +267,6 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
-                             iov[iov_idx - 1].iov_len, false,
-                             iov[iov_idx - 1].iov_len);
-     }
--
--    /*
--     * Set status bits to indicate completion. Testing shows hardware sets
--     * these irrespective of HASH_IRQ_EN.
--     */
--    s->regs[R_STATUS] |= HASH_IRQ;
+@@ -167,6 +167,67 @@ static int hash_prepare_direct_iov(AspeedHACEState *s, struct iovec *iov)
+ 
+     return iov_idx;
  }
- 
- static uint64_t aspeed_hace_read(void *opaque, hwaddr addr, unsigned int size)
-@@ -356,10 +350,16 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
-                 qemu_log_mask(LOG_GUEST_ERROR,
-                         "%s: Invalid hash algorithm selection 0x%"PRIx64"\n",
-                         __func__, data & ahc->hash_mask);
--                break;
-+        } else {
-+            do_hash_operation(s, algo, data & HASH_SG_EN,
-+                    ((data & HASH_HMAC_MASK) == HASH_DIGEST_ACCUM));
-         }
--        do_hash_operation(s, algo, data & HASH_SG_EN,
--                ((data & HASH_HMAC_MASK) == HASH_DIGEST_ACCUM));
 +
-+        /*
-+         * Set status bits to indicate completion. Testing shows hardware sets
-+         * these irrespective of HASH_IRQ_EN.
-+         */
-+        s->regs[R_STATUS] |= HASH_IRQ;
++static int hash_prepare_sg_iov(AspeedHACEState *s, struct iovec *iov,
++                               bool acc_mode, bool *acc_final_request)
++{
++    uint32_t total_msg_len;
++    uint32_t pad_offset;
++    uint32_t len = 0;
++    uint32_t sg_addr;
++    uint32_t src;
++    int iov_idx;
++    hwaddr plen;
++    void *haddr;
++
++    for (iov_idx = 0; !(len & SG_LIST_LEN_LAST); iov_idx++) {
++        if (iov_idx == ASPEED_HACE_MAX_SG) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: Failed to set end of sg list marker\n",
++                          __func__);
++            return -1;
++        }
++
++        src = s->regs[R_HASH_SRC] + (iov_idx * SG_LIST_ENTRY_SIZE);
++
++        len = address_space_ldl_le(&s->dram_as, src,
++                                   MEMTXATTRS_UNSPECIFIED, NULL);
++        sg_addr = address_space_ldl_le(&s->dram_as, src + SG_LIST_LEN_SIZE,
++                                       MEMTXATTRS_UNSPECIFIED, NULL);
++        sg_addr &= SG_LIST_ADDR_MASK;
++
++        plen = len & SG_LIST_LEN_MASK;
++        haddr = address_space_map(&s->dram_as, sg_addr, &plen, false,
++                                  MEMTXATTRS_UNSPECIFIED);
++
++        if (haddr == NULL) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: Unable to map address, sg_addr=0x%x, "
++                          "plen=0x%" HWADDR_PRIx "\n",
++                          __func__, sg_addr, plen);
++            return -1;
++        }
++
++        iov[iov_idx].iov_base = haddr;
++        if (acc_mode) {
++            s->total_req_len += plen;
++
++            if (has_padding(s, &iov[iov_idx], plen, &total_msg_len,
++                            &pad_offset)) {
++                /* Padding being present indicates the final request */
++                *acc_final_request = true;
++                iov[iov_idx].iov_len = pad_offset;
++            } else {
++                iov[iov_idx].iov_len = plen;
++            }
++        } else {
++            iov[iov_idx].iov_len = plen;
++        }
++    }
++
++    return iov_idx;
++}
++
+ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+                               bool acc_mode)
+ {
+@@ -174,15 +235,8 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+     struct iovec iov[ASPEED_HACE_MAX_SG];
+     bool acc_final_request = false;
+     Error *local_err = NULL;
+-    uint32_t total_msg_len;
+     size_t digest_len = 0;
+-    uint32_t sg_addr = 0;
+-    uint32_t pad_offset;
+-    int iov_idx = 0;
+-    uint32_t len = 0;
+-    uint32_t src = 0;
+-    void *haddr;
+-    hwaddr plen;
++    int iov_idx = -1;
  
-         if (data & HASH_IRQ_EN) {
-             qemu_irq_raise(s->irq);
+     if (acc_mode && s->hash_ctx == NULL) {
+         s->hash_ctx = qcrypto_hash_new(algo, &local_err);
+@@ -196,46 +250,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+ 
+     /* Prepares the iov for hashing operations based on the selected mode */
+     if (sg_mode) {
+-        for (iov_idx = 0; !(len & SG_LIST_LEN_LAST); iov_idx++) {
+-            if (iov_idx == ASPEED_HACE_MAX_SG) {
+-                qemu_log_mask(LOG_GUEST_ERROR,
+-                        "aspeed_hace: guest failed to set end of sg list marker\n");
+-                break;
+-            }
+-
+-            src = s->regs[R_HASH_SRC] + (iov_idx * SG_LIST_ENTRY_SIZE);
+-
+-            len = address_space_ldl_le(&s->dram_as, src,
+-                                       MEMTXATTRS_UNSPECIFIED, NULL);
+-
+-            sg_addr = address_space_ldl_le(&s->dram_as, src + SG_LIST_LEN_SIZE,
+-                                           MEMTXATTRS_UNSPECIFIED, NULL);
+-            sg_addr &= SG_LIST_ADDR_MASK;
+-
+-            plen = len & SG_LIST_LEN_MASK;
+-            haddr = address_space_map(&s->dram_as, sg_addr, &plen, false,
+-                                      MEMTXATTRS_UNSPECIFIED);
+-            if (haddr == NULL) {
+-                qemu_log_mask(LOG_GUEST_ERROR,
+-                              "%s: qcrypto failed\n", __func__);
+-                return;
+-            }
+-            iov[iov_idx].iov_base = haddr;
+-            if (acc_mode) {
+-                s->total_req_len += plen;
+-
+-                if (has_padding(s, &iov[iov_idx], plen, &total_msg_len,
+-                                &pad_offset)) {
+-                    /* Padding being present indicates the final request */
+-                    acc_final_request = true;
+-                    iov[iov_idx].iov_len = pad_offset;
+-                } else {
+-                    iov[iov_idx].iov_len = plen;
+-                }
+-            } else {
+-                iov[iov_idx].iov_len = plen;
+-            }
+-        }
++        iov_idx = hash_prepare_sg_iov(s, iov, acc_mode, &acc_final_request);
+     } else {
+         iov_idx = hash_prepare_direct_iov(s, iov);
+     }
 -- 
 2.43.0
 

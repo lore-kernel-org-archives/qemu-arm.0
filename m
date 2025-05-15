@@ -1,221 +1,223 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1693329njb;
-        Thu, 15 May 2025 01:16:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWSJ/N4xVmsSNjl+EGSbN7bN3lU9xqlQBh+/F47QhvrkxIpSxWXVTPez1T7KmIfuN73ivZKzJfSEQ+35g==@linaro.org
-X-Google-Smtp-Source: AGHT+IGF5tLnbB5oreC6ddEfCp8IYFRMXjGhiXm5oW0qMoO5cDlF5hBEqpPOJCrDNYRS6rraJgHs
-X-Received: by 2002:a05:620a:3955:b0:7cd:1f0f:f61d with SMTP id af79cd13be357-7cd2886368cmr1188036685a.54.1747297016218;
-        Thu, 15 May 2025 01:16:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747297016; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp1693860njb;
+        Thu, 15 May 2025 01:18:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWiZgn1LYGisiRj5NtwGKSLFfTrBWL/sGe8s0AZ30AaO0PQIWHAL9IpHphz1ZAeNM3DkbQPaSxpg4apUA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEafiv+jKJhQfFouWGJuRkebLeUv4wbXEVZgCgclgcp6bvq4i01GYLUa+bZuPuxGTBxqyVy
+X-Received: by 2002:a17:907:720f:b0:ad2:1b64:2dee with SMTP id a640c23a62f3a-ad4f71589demr622073866b.33.1747297104046;
+        Thu, 15 May 2025 01:18:24 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1747297104; cv=pass;
         d=google.com; s=arc-20240605;
-        b=ZRDPACyIc9ltLKTndCKjGhaJXLKIeN0LKXxq0pqq0YwGXyvMusBsCYvvb+suDU7WIU
-         6DMwD3cE/zIkf5ZtSP3jKbKwp4J4D95ZZrUNMHhUKeHF2UxMdhjPEaUhG8vUMyx9jbuH
-         wrc5DkF2pzcb48RDkCz/bPZcRxWEXz5h5P7kQWfyI0tWiHy/fvxkX8dBQTv5bkEuwYh+
-         XePH4L5KA6Hjy/UK/m3WhWficrOUUGZzB9uw+OHaz5hyBg8Mx6BTuvzduKZmeNdmiSNU
-         eCWA2/s6SzIeMWGt/felaH9UN0dZ3w86VdAzR5skakrDgvVCxIT/FC06ViZwebKNyFOU
-         gfMw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=hzVRthXmkmrTxG6LEGeChXOk5i1io7ouMYvBggP9now=;
-        fh=XVCbtZt0NlM3WRi/g+G2SrIUzl8hrRaPGDpFr//3vj8=;
-        b=DFV6QhNB+m0/VZcXzemPU/uzdr5MQ1sGQx9+Hr8JizZKBmk0T7mvjhnmKuB0ziywh1
-         FPLVbkO4gqCbXD6I2rQgLY763RPyAg2+C5t9BJRh/iCZh53chLkr782TvEaPZisTFVIa
-         M8GhKLUneZl9eicPNRD+S1kDNiLEar6JppdR4IEjIOz+cOvWieJ/zgP2VQD4biQ829zr
-         tLLCFyS65GtB4ZJx0h8kI8oQpn8cz1XXJFn84YoJEh8jKQeJFUJj+jNHC5otH3xcZvun
-         fYv+CcNm7mr8620SFgcy+dQoYabtqm671wjkHtGgx0Am+b15n3qXGIVLhNorJHiOA/Ge
-         C5bA==;
+        b=MHIR06iu8t182kz5rGc4weZSx+A5E44/wA3qQfLoslmuKVEHbW7PDsm0oB6XXjWMxC
+         cd5Ad7aHq91QaGeXuYwftCkkslz8iA4ERoCG/XJK/HpseWbiUYl19AWQUqIv9UjXpDTF
+         t/JNvNrrWAyGynCr975Fd2gJ3zngWjQ/lG9ZPv5e164rqw62eRLd5Don4yXRefUuhddd
+         pBy2c8T/10qb+by1IS6rHmMhqLTyCjkUBVqwYbBezUcJE6N8eu+pfsv8lK9yDQiGUP5t
+         H2dTapSNvMzfmn5lQYqtfC0IY1eleMhXZb1EaAhahnwKyjPFZmiM++zU74ITmH1QGz+E
+         CJ4w==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
+        bh=+pY/fqjoInu4D2wZ2b2fEzNVWq2hV8yFh1NyH+E5qEE=;
+        fh=Q8omI+ATFA/q+WOClFqBZjMkLCUnNMldHOUWFyGFFAk=;
+        b=N6XInDR5x5ZlvKgL+miLsTy04E7ofZChzA2XbagYLcrEd+SqcoQQFxnxWTCEMAQ++0
+         ido/DMROQkunGW6dqbmYaGStFIld3inyRym5EGAhwBo0L6W21GgVlJUryKCy4Cc62x19
+         sc+ntRpZn26/R+dg6l/8QvCgPClnttwIbRAOyaAnV4T5aMFA7SLamgfsWMEQKGwWwv3f
+         0WrT8xDd7EqTYxGaAOg7C93GzHHN+wEAO/v1I7KIUPhUzYPY/ve0plZVgi0xFOxTzNfk
+         52IyfzlziGstGQXFjrauAXzteASPCzomUwhIcq0FVwnYF6M866y7+DbY5pvPXsYeHJax
+         Ef0g==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd01022ce3si1516196285a.626.2025.05.15.01.16.56
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=PuWb2r7D;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-46653-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-46653-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <kvm+bounces-46653-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
+        by mx.google.com with ESMTPS id a640c23a62f3a-ad51e6c3751si32378866b.635.2025.05.15.01.18.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 May 2025 01:16:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 May 2025 01:18:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-46653-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uFTi7-0003xE-Ep; Thu, 15 May 2025 04:13:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uFTgR-0004nP-Pw; Thu, 15 May 2025 04:11:16 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uFTgP-00010V-0j; Thu, 15 May 2025 04:11:15 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 15 May
- 2025 16:10:12 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 15 May 2025 16:10:12 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>, Laurent Vivier
- <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v3 13/28] hw/misc/aspeed_hace: Add support for source, digest,
- key buffer 64 bit addresses
-Date: Thu, 15 May 2025 16:09:45 +0800
-Message-ID: <20250515081008.583578-14-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250515081008.583578-1-jamin_lin@aspeedtech.com>
-References: <20250515081008.583578-1-jamin_lin@aspeedtech.com>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=PuWb2r7D;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-46653-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-46653-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 7BC401891693
+	for <alex.bennee@linaro.org>; Thu, 15 May 2025 08:18:10 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id B38EF1FFC59;
+	Thu, 15 May 2025 08:17:52 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="PuWb2r7D"
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9155A1ADFFE
+	for <kvm@vger.kernel.org>; Thu, 15 May 2025 08:17:50 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.19
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1747297072; cv=none; b=Wj7oj6gxlNOF/mZO+CuUfPbg/xpzIql9YftzHrxyZWCCx8Bc8u91wAGDKVQEYVTV4Fyhp2DPuGN9Q4s9vUj+tKMZAPSU41RQGvGRB6mF6cIYWS4OMWeVjnPckc5pSckmD40tUWqVULXlWrKD3ldp/b+2fYC+2k0IDz6D843JEqE=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1747297072; c=relaxed/simple;
+	bh=J0d7qIZ0wAM9NtgBW44TtLkYeQrux0sEamdBuRSRMrc=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=SZRnJ5oDbqMHVYc3ifAn0yKgOeEcaF8+vuln/kqCylgRlNovsKuScYzK5IYRATJxsBvrouL8lSeD2s+6SQYxM5hxGtFRZuSQOqeKZiwYBozMxH+Kti4LbWXKNPqpLqxdrs1uawLwtGX83O2HmglEXHeI+kfzgiOQAPrrMHpn2Qc=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=PuWb2r7D; arc=none smtp.client-ip=198.175.65.19
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1747297071; x=1778833071;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=J0d7qIZ0wAM9NtgBW44TtLkYeQrux0sEamdBuRSRMrc=;
+  b=PuWb2r7DjruTEwCGwqMjGlqWT+2s/BgZT4o9+eQtnoYDZCn1/HcR/9eo
+   ncBF8GhB24oZtuEp80dyhKgwslS/Us/dYgm0MAxz1ftR+fC1TdlE0WDMC
+   GYJw1Cdv3NP9S1dzJ/I1TGiA2N4hasZt2C77lI3Ii4JzQzru8Uwz9CH7V
+   VPn4jYIGJnipLzLClTskfRRr9kX3LE3GEIKCXFEbhWb3JBPDMzJrIJemc
+   mx1mQ1H4PbdmFVDT/e1FDgzCy0GmvxQXoiZI4S+j6RhzFy+0p6vqkGktW
+   Y+AR4xIdnFUWoeszv/zLUkkfautGeYmWeQ6DjN50z3WfrKjSyLSVRB4WC
+   Q==;
+X-CSE-ConnectionGUID: jyOlCT8oQ4OT0vCGWbkNKA==
+X-CSE-MsgGUID: RG3jERnuTfyFu7bZvE8+tQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11433"; a="49089793"
+X-IronPort-AV: E=Sophos;i="6.15,290,1739865600"; 
+   d="scan'208";a="49089793"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 May 2025 01:17:50 -0700
+X-CSE-ConnectionGUID: hqga7r+1R4WuaPQz4z97Ew==
+X-CSE-MsgGUID: w3HeNXTfQGigkpkjZsqihg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,290,1739865600"; 
+   d="scan'208";a="169367933"
+Received: from xiaoyaol-hp-g830.ccr.corp.intel.com (HELO [10.124.247.1]) ([10.124.247.1])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 May 2025 01:17:42 -0700
+Message-ID: <0805f8a8-1680-4962-80e3-6b43a6e344b6@intel.com>
+Date: Thu, 15 May 2025 16:17:38 +0800
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 06/27] hw/nvram/fw_cfg: Rename fw_cfg_init_mem_wide()
+ -> fw_cfg_init_mem_dma()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>, kvm@vger.kernel.org,
+ Sergio Lopez <slp@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Laurent Vivier
+ <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Yi Liu <yi.l.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org,
+ Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
+ Zhao Liu <zhao1.liu@intel.com>, Yanan Wang <wangyanan55@huawei.com>,
+ Helge Deller <deller@gmx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Ani Sinha <anisinha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
+ Jason Wang <jasowang@redhat.com>
+References: <20250508133550.81391-1-philmd@linaro.org>
+ <20250508133550.81391-7-philmd@linaro.org>
+Content-Language: en-US
+From: Xiaoyao Li <xiaoyao.li@intel.com>
+In-Reply-To: <20250508133550.81391-7-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: n9gN+rKqNeGs
+X-TUID: rigix2F11tfI
 
-According to the AST2700 design, the data source address is 64-bit, with
-R_HASH_SRC_HI storing bits [63:32] and R_HASH_SRC storing bits [31:0].
-Similarly, the digest address is 64-bit, with R_HASH_DIGEST_HI storing bits
-[63:32] and R_HASH_DIGEST storing bits [31:0]. The HMAC key buffer address is also
-64-bit, with R_HASH_KEY_BUFF_HI storing bits [63:32] and R_HASH_KEY_BUFF storing
-bits [31:0].
+On 5/8/2025 9:35 PM, Philippe Mathieu-Daudé wrote:
+> "wide" in fw_cfg_init_mem_wide() means "DMA support".
+> Rename for clarity.
 
-The AST2700 supports a maximum DRAM size of 8 GB, with a DRAM addressable range
-from 0x0_0000_0000 to 0x1_FFFF_FFFF. Since this range fits within 34 bits, only
-bits [33:0] are needed to store the DRAM offset. To optimize address storage,
-the high physical address bits [1:0] of the source, digest and key buffer
-addresses are stored as dram_offset bits [33:32].
+PS: at the time when fw_cfg_init_mem_wide() was first introcuded,
+'wide' was exactly for data_width. see commit 6c87e3d5967a.
 
-To achieve this, a src_hi_mask with a mask value of 0x3 is introduced, ensuring
-that src_addr_hi consists of bits [1:0]. The final src_addr is computed as
-(src_addr_hi[1:0] << 32) | src_addr[31:0], representing the DRAM offset within
-bits [33:0].
+> Suggested-by: Zhao Liu <zhao1.liu@intel.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Similarly, a dest_hi_mask with a mask value of 0x3 is introduced to ensure that
-dest_addr_hi consists of bits [1:0]. The final dest_addr is calculated as
-(dest_addr_hi[1:0] << 32) | dest_addr[31:0], representing the DRAM offset within
-bits [33:0].
+with the usage in hw/loongarch/fw_cfg.c fixed,
 
-Additionally, a key_hi_mask with a mask value of 0x3 is introduced to ensure
-that key_buf_addr_hi consists of bits [1:0]. The final key_buf_addr is
-determined as (key_buf_addr_hi[1:0] << 32) | key_buf_addr[31:0], representing
-the DRAM offset within bits [33:0].
+Reviewed-by: Xiaoyao Li <xiaoyao.li@intel.com>
 
-This approach eliminates the need to reduce the high part of the DRAM physical
-address for DMA operations. Previously, this was calculated as
-(high physical address bits [7:0] - 4), since the DRAM start address is
-0x4_00000000, making the high part address [7:0] - 4.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- include/hw/misc/aspeed_hace.h |  3 +++
- hw/misc/aspeed_hace.c         | 31 ++++++++++++++++++++++++++++++-
- 2 files changed, 33 insertions(+), 1 deletion(-)
-
-diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
-index f30d606559..9945b61863 100644
---- a/include/hw/misc/aspeed_hace.h
-+++ b/include/hw/misc/aspeed_hace.h
-@@ -50,6 +50,9 @@ struct AspeedHACEClass {
-     uint32_t hash_mask;
-     uint64_t nr_regs;
-     bool raise_crypt_interrupt_workaround;
-+    uint32_t src_hi_mask;
-+    uint32_t dest_hi_mask;
-+    uint32_t key_hi_mask;
- };
- 
- #endif /* ASPEED_HACE_H */
-diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index fef63eb488..d58645cabd 100644
---- a/hw/misc/aspeed_hace.c
-+++ b/hw/misc/aspeed_hace.c
-@@ -30,6 +30,9 @@
- #define R_HASH_DIGEST   (0x24 / 4)
- #define R_HASH_KEY_BUFF (0x28 / 4)
- #define R_HASH_SRC_LEN  (0x2c / 4)
-+#define R_HASH_SRC_HI       (0x90 / 4)
-+#define R_HASH_DIGEST_HI    (0x94 / 4)
-+#define R_HASH_KEY_BUFF_HI  (0x98 / 4)
- 
- #define R_HASH_CMD      (0x30 / 4)
- /* Hash algorithm selection */
-@@ -473,6 +476,15 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
-             }
-         }
-         break;
-+    case R_HASH_SRC_HI:
-+        data &= ahc->src_hi_mask;
-+        break;
-+    case R_HASH_DIGEST_HI:
-+        data &= ahc->dest_hi_mask;
-+        break;
-+    case R_HASH_KEY_BUFF_HI:
-+        data &= ahc->key_hi_mask;
-+        break;
-     default:
-         break;
-     }
-@@ -656,12 +668,29 @@ static void aspeed_ast2700_hace_class_init(ObjectClass *klass, const void *data)
- 
-     dc->desc = "AST2700 Hash and Crypto Engine";
- 
--    ahc->nr_regs = 0x64 >> 2;
-+    ahc->nr_regs = 0x9C >> 2;
-     ahc->src_mask = 0x7FFFFFFF;
-     ahc->dest_mask = 0x7FFFFFF8;
-     ahc->key_mask = 0x7FFFFFF8;
-     ahc->hash_mask = 0x00147FFF;
- 
-+    /*
-+     * The AST2700 supports a maximum DRAM size of 8 GB, with a DRAM
-+     * addressable range from 0x0_0000_0000 to 0x1_FFFF_FFFF. Since this range
-+     * fits within 34 bits, only bits [33:0] are needed to store the DRAM
-+     * offset. To optimize address storage, the high physical address bits
-+     * [1:0] of the source, digest and key buffer addresses are stored as
-+     * dram_offset bits [33:32].
-+     *
-+     * This approach eliminates the need to reduce the high part of the DRAM
-+     * physical address for DMA operations. Previously, this was calculated as
-+     * (high physical address bits [7:0] - 4), since the DRAM start address is
-+     * 0x4_00000000, making the high part address [7:0] - 4.
-+     */
-+    ahc->src_hi_mask = 0x00000003;
-+    ahc->dest_hi_mask = 0x00000003;
-+    ahc->key_hi_mask = 0x00000003;
-+
-     /*
-      * Currently, it does not support the CRYPT command. Instead, it only
-      * sends an interrupt to notify the firmware that the crypt command
--- 
-2.43.0
+> ---
+>   include/hw/nvram/fw_cfg.h | 6 +++---
+>   hw/arm/virt.c             | 2 +-
+>   hw/nvram/fw_cfg.c         | 6 +++---
+>   hw/riscv/virt.c           | 4 ++--
+>   4 files changed, 9 insertions(+), 9 deletions(-)
+> 
+> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+> index d5161a79436..c4c49886754 100644
+> --- a/include/hw/nvram/fw_cfg.h
+> +++ b/include/hw/nvram/fw_cfg.h
+> @@ -309,9 +309,9 @@ FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
+>                                   AddressSpace *dma_as);
+>   FWCfgState *fw_cfg_init_mem_nodma(hwaddr ctl_addr, hwaddr data_addr,
+>                                     unsigned data_width);
+> -FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
+> -                                 hwaddr data_addr, uint32_t data_width,
+> -                                 hwaddr dma_addr, AddressSpace *dma_as);
+> +FWCfgState *fw_cfg_init_mem_dma(hwaddr ctl_addr,
+> +                                hwaddr data_addr, uint32_t data_width,
+> +                                hwaddr dma_addr, AddressSpace *dma_as);
+>   
+>   FWCfgState *fw_cfg_find(void);
+>   bool fw_cfg_dma_enabled(void *opaque);
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 9a6cd085a37..7583f0a85d9 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1361,7 +1361,7 @@ static FWCfgState *create_fw_cfg(const VirtMachineState *vms, AddressSpace *as)
+>       FWCfgState *fw_cfg;
+>       char *nodename;
+>   
+> -    fw_cfg = fw_cfg_init_mem_wide(base + 8, base, 8, base + 16, as);
+> +    fw_cfg = fw_cfg_init_mem_dma(base + 8, base, 8, base + 16, as);
+>       fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, (uint16_t)ms->smp.cpus);
+>   
+>       nodename = g_strdup_printf("/fw-cfg@%" PRIx64, base);
+> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> index 4067324fb09..51b028b5d0a 100644
+> --- a/hw/nvram/fw_cfg.c
+> +++ b/hw/nvram/fw_cfg.c
+> @@ -1087,9 +1087,9 @@ static FWCfgState *fw_cfg_init_mem_internal(hwaddr ctl_addr,
+>       return s;
+>   }
+>   
+> -FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
+> -                                 hwaddr data_addr, uint32_t data_width,
+> -                                 hwaddr dma_addr, AddressSpace *dma_as)
+> +FWCfgState *fw_cfg_init_mem_dma(hwaddr ctl_addr,
+> +                                hwaddr data_addr, uint32_t data_width,
+> +                                hwaddr dma_addr, AddressSpace *dma_as)
+>   {
+>       assert(dma_addr && dma_as);
+>       return fw_cfg_init_mem_internal(ctl_addr, data_addr, data_addr,
+> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+> index be1bf0f6468..3ddea18c93e 100644
+> --- a/hw/riscv/virt.c
+> +++ b/hw/riscv/virt.c
+> @@ -1266,8 +1266,8 @@ static FWCfgState *create_fw_cfg(const MachineState *ms)
+>       hwaddr base = virt_memmap[VIRT_FW_CFG].base;
+>       FWCfgState *fw_cfg;
+>   
+> -    fw_cfg = fw_cfg_init_mem_wide(base + 8, base, 8, base + 16,
+> -                                  &address_space_memory);
+> +    fw_cfg = fw_cfg_init_mem_dma(base + 8, base, 8, base + 16,
+> +                                 &address_space_memory);
+>       fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, (uint16_t)ms->smp.cpus);
+>   
+>       return fw_cfg;
 

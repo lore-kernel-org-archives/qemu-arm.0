@@ -1,162 +1,224 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([185.126.160.109])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442fd59700asm28828285e9.34.2025.05.16.02.55.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 May 2025 02:55:03 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 33BA55F904;
-	Fri, 16 May 2025 10:55:02 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Gustavo Romero <gustavo.romero@linaro.org>
-Cc: qemu-devel@nongnu.org,  thuth@redhat.com,  berrange@redhat.com,
-  eric.auger@redhat.com,  philmd@linaro.org,  peter.maydell@linaro.org,
-  qemu-arm@nongnu.org
-Subject: Re: [PATCH v4] tests/functional: Add PCI hotplug test for aarch64
-In-Reply-To: <20250512144629.182340-1-gustavo.romero@linaro.org> (Gustavo
-	Romero's message of "Mon, 12 May 2025 15:45:45 +0100")
-References: <20250512144629.182340-1-gustavo.romero@linaro.org>
-User-Agent: mu4e 1.12.11; emacs 30.1
-Date: Fri, 16 May 2025 10:55:02 +0100
-Message-ID: <87frh4yj61.fsf@draig.linaro.org>
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp2469187njb;
+        Fri, 16 May 2025 04:38:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV3/etY/zTBwn7T6rK7kiDkCCYGkTfvM90AZygntVEwkElgRM1UZWhNSFgkqZwdU/89xcawiVNUGx6O4g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFj+zzKmuWRSq+kGx11BWHZj+8dDYsHcaKIXRHCahXkRhNW+FKTnsRp23A4fbtldUih2JkK
+X-Received: by 2002:a05:622a:4007:b0:494:7191:9f80 with SMTP id d75a77b69052e-494ae5309d6mr49236241cf.16.1747395502475;
+        Fri, 16 May 2025 04:38:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747395502; cv=none;
+        d=google.com; s=arc-20240605;
+        b=lXFMSGSoyyM38EplfOhMOC8LFOq1mS/jUo0cm9W6jCz8B0H91hIrRqOQYKExQZFqVn
+         fr6cQtt0AXdYVYYS58VW8gdSr0odk0gAviTH0MUoDiBSbmYmUd5YxxgmM2va1FVPzDHK
+         ssK9ameja4gm021yLbR3DcaeAGCLvheiaEruuMDH6uHsBKaS5YbLtPqOWdZRURa9TUwn
+         vfVgOLx8BwGIjA4PssHGC5eRyM29ufOJDRcvJ/hKrIzCykxoAAOtGe7Z/h7Xv0NTGPzO
+         NRAJCfciAdjtGoMcs2zhwQa2nNq7Q+qBxGPvbcbw5l9vMjp4elIsTElJyF58KscvPwIt
+         BcDA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=xZiL7C8ZZIe5yuMZECibEb9dEBxmu+cL20UcsLUd9p8=;
+        fh=Tm6V6rUUoasXce52UCTYbjlNxfk0eRqQhBijY1o7j58=;
+        b=lKZ8JNDN/BSxmimqfB630D/nzZLodj+5rBU/nrkvY5BLeHYzufgD6fXYK1UDEnypUJ
+         XqRlWykDy3ER9VOERj8WQNPy5uaSrPuBtgStNSZ1sqCLCbhl2aRu1Vn8nXGVuB2nN6Vw
+         ehm6/Imnd34+6JMGYxnhglsuJLqvvm5nI7SPXN6eifcR9NwCoTAucg89kFwRNbF25GYi
+         cfqQRIMikzjk344C9K4YD5vKeDdk2DCBFMug4ZnUyJl0pKGfH/BSl1olHIqtCAi0ipn4
+         +EHWM1bcFWCvxYs6Ybd7n3svEb3dGY+KEbxmFG7RYjMAsqWY7LST6+tyDjrVxf30jxvF
+         OJow==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xd6bnWnx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-494ae40c86bsi20382411cf.103.2025.05.16.04.38.22
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 16 May 2025 04:38:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xd6bnWnx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uFtOC-0007KO-9e; Fri, 16 May 2025 07:38:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uFtOA-0007K7-Km
+ for qemu-arm@nongnu.org; Fri, 16 May 2025 07:38:06 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uFtO8-00015O-DL
+ for qemu-arm@nongnu.org; Fri, 16 May 2025 07:38:06 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-441d1ed82faso15098625e9.0
+ for <qemu-arm@nongnu.org>; Fri, 16 May 2025 04:38:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1747395481; x=1748000281; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=xZiL7C8ZZIe5yuMZECibEb9dEBxmu+cL20UcsLUd9p8=;
+ b=xd6bnWnxbn7i8N0WbrT0fG29BpjHFLyJrEHYHPY/S+vSMcwI+ucn3usb6XcNt4DWBZ
+ HlOf2Z5ShlgKZ95q1i9weHK1u5lJ3hP/dRZMh8ccMOdlciRBwXkwHTEU7Nf1r0FprtMO
+ z/d0z3AgwK0lrwIT+jZngK+R/blWFzeD9kG2/lnfMEtWoYzfaubaklA83lGQSyyZ8L/k
+ 2QxyjVN+RnFsXHVaNB9isMgKyCCpuBT4SY8Sbwli8glz/UzmFlWu7H/1WGvf0nS0hpYX
+ PEbATF/WyCFZbUIOAliLbO5dXJ0S0pT+8d7W41BzRKDqz+kjBaBeN3626wLK2c3S/El4
+ pcvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1747395481; x=1748000281;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=xZiL7C8ZZIe5yuMZECibEb9dEBxmu+cL20UcsLUd9p8=;
+ b=ZOHTQwbhXmtGtFn4lwBCGjK/qYmqX9iuB/j8rspFkX0Ay6OlGG5DYzUCHA6DzcW+Fr
+ OPC2fqWBVCTE+xFgFe+rgle3Tc2s+zJh43IubLMKqpgT2vBvI4mJufHIW6XwYUnOANs1
+ JTQW4tawvyTQ0ySntXZOqfynE3QvSoIq3BtAGs86YJOvDhe2QGTqAoLE7kOSmeb5BOEv
+ HH9BLKxhxMHH4Odkq/kZsvoqMMRcwO5wuuOEzveqWCNTXASmK1jiToNBBwquw4Q7AJPU
+ 1gALCdjAaROl4JNrfUVoO12hTviqc3LI/yzKmxUJxgKMLrU28+1zMyAQ0NBmO66zkryC
+ kT/w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVpPyYnd8QUXjfmoW9DwmvblYG24TH96y/ILhFZzoi92mWclnyQhj/HCXe8kdz4y3Ut7Qv1mGji9Q==@nongnu.org
+X-Gm-Message-State: AOJu0YyOBUrc/1y1j12Izwa2/mLJRDvpneIk++0EjCSOHgnQmk2I+3ZE
+ zlHyycfTzaAXfDNWe2b/M4H5MqAPsUEhaSImaQIY4tseLilBbwRBHG8BoNWSp1EP7TE=
+X-Gm-Gg: ASbGncstJoELqhw7wt8oz9Js1L6uv2j4ucK+/eQSEA338UDVH6kqyNIT2zIJ0fXeXBW
+ bQde9nNM5u6vnD0xhiai1XPWfR+e7PldanA649rKKeXKpf1pPCNIxbMqagcQPvq7Oksos5U41RV
+ 9++sFacnICPg1eCg9on4xilyM/JOixhYajmI3SF5XPPTxwjlhw2AuHtqhFUdgn5J5mrVes6jVk+
+ zGGSGid+zzJ7Tk+ZtVEPhpjEJL7sduVvhS47zQ7JtEjNP69kAbPiCQXKOpB5FiAjAP0yGlO+arw
+ bNnnqU5lBF4X+NEwkN3O6HfKijj3xWBH5KCJJj4dZ5FX2Qo28cMH4JSYXk9S7cxhiXDBikSF/CB
+ Bv7HRnAtID3Ls
+X-Received: by 2002:a05:600c:1c86:b0:440:6a37:be0d with SMTP id
+ 5b1f17b1804b1-442feff8596mr23249605e9.15.1747395481000; 
+ Fri, 16 May 2025 04:38:01 -0700 (PDT)
+Received: from [10.61.1.248] (110.8.30.213.rev.vodafone.pt. [213.30.8.110])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-442f33690f0sm102074085e9.1.2025.05.16.04.38.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 16 May 2025 04:38:00 -0700 (PDT)
+Message-ID: <ecde12de-3e81-4d81-839c-7e97b6a2f668@linaro.org>
+Date: Fri, 16 May 2025 12:37:59 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: lIuDIC0RWMf8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/4] hw/intc/arm_gic: introduce a first-cpu-index property
+To: =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>
+Cc: qemu-devel@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, edgar.iglesias@gmail.com,
+ alistair@alistair23.me, Frederic Konrad <konrad.frederic@yahoo.fr>
+References: <20250513141448.297946-1-chigot@adacore.com>
+ <20250513141448.297946-3-chigot@adacore.com>
+ <3314f721-9c5e-479b-9fcc-3b8a021efde9@linaro.org>
+ <CAJ307EjyFBDLMe6EaeNUTWSwNTkSxSYJq5VxAD5u0BwZVu4Fqw@mail.gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAJ307EjyFBDLMe6EaeNUTWSwNTkSxSYJq5VxAD5u0BwZVu4Fqw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7Tj20dIyuRa3
 
-Gustavo Romero <gustavo.romero@linaro.org> writes:
+Hi Clément,
 
-> Add a functional test, aarch64_hotplug_pci, to exercise PCI hotplug and
-> hot-unplug on arm64.
+On 14/5/25 14:41, Clément Chigot wrote:
+> On Tue, May 13, 2025 at 5:39 PM Philippe Mathieu-Daudé
+> <philmd@linaro.org> wrote:
+>>
+>> On 13/5/25 16:14, Clément Chigot wrote:
+>>> From: Frederic Konrad <konrad.frederic@yahoo.fr>
+>>>
+>>> This introduces a first-cpu-index property to the arm-gic, as some SOCs
+>>> could have two separate GIC (ie: the zynqmp).
+>>>
+>>> Signed-off-by: Clément Chigot <chigot@adacore.com>
+>>> ---
+>>>    hw/intc/arm_gic.c                | 2 +-
+>>>    hw/intc/arm_gic_common.c         | 1 +
+>>>    include/hw/intc/arm_gic_common.h | 2 ++
+>>>    3 files changed, 4 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+>>> index d18bef40fc..899f133363 100644
+>>> --- a/hw/intc/arm_gic.c
+>>> +++ b/hw/intc/arm_gic.c
+>>> @@ -59,7 +59,7 @@ static const uint8_t gic_id_gicv2[] = {
+>>>    static inline int gic_get_current_cpu(GICState *s)
+>>>    {
+>>>        if (!qtest_enabled() && s->num_cpu > 1) {
+>>> -        return current_cpu->cpu_index;
+>>> +        return current_cpu->cpu_index - s->first_cpu_index;
+>>
+>> Note, CPUState::cpu_index is meant for accelerators code and shouldn't
+>> be used in hw/ (in particular because it vary when using hotplug).
+> 
+> Is there another way to perform that then ? As you can see `cpu_index`
+> is already present prior to my patch. I don't mind improving it as a
+> prerequisite for that series though.
 
-Queued to maintainer/may-2025, thanks.
+Yeah it is a pre-existing design issue, I was just thinking loudly,
+no need to worry for your use: if we ever clean it, we'll also
+clean here.
 
->
-> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-> Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-> ---
->  MAINTAINERS                                  |  5 ++
->  tests/functional/meson.build                 |  1 +
->  tests/functional/test_aarch64_hotplug_pci.py | 74 ++++++++++++++++++++
->  3 files changed, 80 insertions(+)
->  create mode 100755 tests/functional/test_aarch64_hotplug_pci.py
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 23174b4ca7..9ebb768214 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -2065,6 +2065,11 @@ S: Supported
->  F: include/hw/pci/pcie_doe.h
->  F: hw/pci/pcie_doe.c
->=20=20
-> +ARM PCI Hotplug
-> +M: Gustavo Romero <gustavo.romero@linaro.org>
-> +S: Supported
-> +F: tests/functional/test_aarch64_hotplug_pci.py
-> +
->  ACPI/SMBIOS
->  M: Michael S. Tsirkin <mst@redhat.com>
->  M: Igor Mammedov <imammedo@redhat.com>
-> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-> index 52b4706cfe..2d68840fa2 100644
-> --- a/tests/functional/meson.build
-> +++ b/tests/functional/meson.build
-> @@ -83,6 +83,7 @@ tests_aarch64_system_quick =3D [
->  tests_aarch64_system_thorough =3D [
->    'aarch64_aspeed_ast2700',
->    'aarch64_aspeed_ast2700fc',
-> +  'aarch64_hotplug_pci',
->    'aarch64_imx8mp_evk',
->    'aarch64_raspi3',
->    'aarch64_raspi4',
-> diff --git a/tests/functional/test_aarch64_hotplug_pci.py b/tests/functio=
-nal/test_aarch64_hotplug_pci.py
-> new file mode 100755
-> index 0000000000..fa1bb62c8f
-> --- /dev/null
-> +++ b/tests/functional/test_aarch64_hotplug_pci.py
-> @@ -0,0 +1,74 @@
-> +#!/usr/bin/env python3
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> +#
-> +# The test hotplugs a PCI device and checks it on a Linux guest.
-> +#
-> +# Copyright (c) 2025 Linaro Ltd.
-> +#
-> +# Author:
-> +#  Gustavo Romero <gustavo.romero@linaro.org>
-> +#
-> +# This work is licensed under the terms of the GNU GPL, version 2 or
-> +# later.  See the COPYING file in the top-level directory.
-> +
-> +from qemu_test import LinuxKernelTest, Asset, exec_command_and_wait_for_=
-pattern
-> +from qemu_test import BUILD_DIR
-> +
-> +class HotplugPCI(LinuxKernelTest):
-> +
-> +    ASSET_KERNEL =3D Asset(
-> +        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm6=
-4/'
-> +         'current/images/netboot/debian-installer/arm64/linux'),
-> +        '3821d4db56d42c6a4eac62f31846e35465940afd87746b4cfcdf5c9eca3117b=
-2')
-> +
-> +    ASSET_INITRD =3D Asset(
-> +        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm6=
-4/'
-> +         'current/images/netboot/debian-installer/arm64/initrd.gz'),
-> +        '2583ec22b45265ad69e82f198674f53d4cd85be124fe012eedc2fd91156bc4b=
-4')
-> +
-> +    def test_hotplug_pci(self):
-> +
-> +        self.set_machine('virt')
-> +        self.vm.add_args('-m', '512M')
-> +        self.vm.add_args('-cpu', 'cortex-a57')
-> +        self.vm.add_args('-append',
-> +                         'console=3DttyAMA0,115200 init=3D/bin/sh')
-> +        self.vm.add_args('-device',
-> +                         'pcie-root-port,bus=3Dpcie.0,chassis=3D1,slot=
-=3D1,id=3Dpcie.1')
-> +        self.vm.add_args('-bios', self.build_file('pc-bios',
-> +                                                  'edk2-aarch64-code.fd'=
-))
-> +
-> +        # BusyBox prompt
-> +        prompt =3D "~ #"
-> +        self.launch_kernel(self.ASSET_KERNEL.fetch(),
-> +                           self.ASSET_INITRD.fetch(),
-> +                           wait_for=3Dprompt)
-> +
-> +        # Check for initial state: 2 network adapters, lo and enp0s1.
-> +        exec_command_and_wait_for_pattern(self,
-> +                                          'ls -l /sys/class/net | wc -l',
-> +                                          '2')
-> +
-> +        # Hotplug one network adapter to the root port, i.e. pcie.1 bus.
-> +        self.vm.cmd('device_add',
-> +                    driver=3D'virtio-net-pci',
-> +                    bus=3D'pcie.1',
-> +                    addr=3D0,
-> +                    id=3D'na')
-> +        # Wait for the kernel to recognize the new device.
-> +        self.wait_for_console_pattern('virtio-pci')
-> +        self.wait_for_console_pattern('virtio_net')
-> +
-> +        # Check if there is a new network adapter.
-> +        exec_command_and_wait_for_pattern(self,
-> +                                          'ls -l /sys/class/net | wc -l',
-> +                                          '3')
-> +
-> +        self.vm.cmd('device_del', id=3D'na')
-> +        exec_command_and_wait_for_pattern(self,
-> +                                          'ls -l /sys/class/net | wc -l',
-> +                                          '2')
-> +
-> +if __name__ =3D=3D '__main__':
-> +    LinuxKernelTest.main()
+> 
+>>>        }
+>>>        return 0;
+>>>    }
+>>> diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
+>>> index 0f0c48d89a..ed5be05645 100644
+>>> --- a/hw/intc/arm_gic_common.c
+>>> +++ b/hw/intc/arm_gic_common.c
+>>> @@ -350,6 +350,7 @@ static void arm_gic_common_linux_init(ARMLinuxBootIf *obj,
+>>>
+>>>    static const Property arm_gic_common_properties[] = {
+>>>        DEFINE_PROP_UINT32("num-cpu", GICState, num_cpu, 1),
+>>> +    DEFINE_PROP_UINT32("first-cpu-index", GICState, first_cpu_index, 0),
+>>>        DEFINE_PROP_UINT32("num-irq", GICState, num_irq, 32),
+>>>        /* Revision can be 1 or 2 for GIC architecture specification
+>>>         * versions 1 or 2, or 0 to indicate the legacy 11MPCore GIC.
+>>> diff --git a/include/hw/intc/arm_gic_common.h b/include/hw/intc/arm_gic_common.h
+>>> index 97fea4102d..93a3cc2bf8 100644
+>>> --- a/include/hw/intc/arm_gic_common.h
+>>> +++ b/include/hw/intc/arm_gic_common.h
+>>> @@ -129,6 +129,8 @@ struct GICState {
+>>>        uint32_t num_lrs;
+>>>
+>>>        uint32_t num_cpu;
+>>> +    /* cpu_index of the first CPU, attached to this GIC.  */
+>>> +    uint32_t first_cpu_index;
+>>>
+>>>        MemoryRegion iomem; /* Distributor */
+>>>        /* This is just so we can have an opaque pointer which identifies
+>>
+>> Alternative series motivated to remove &first_cpu / qemu_get_cpu():
+>> https://lore.kernel.org/qemu-devel/20231212162935.42910-1-philmd@linaro.org/
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+(Just an observation, not an objection to this simple work-around).
+
+Regards,
+
+Phil.

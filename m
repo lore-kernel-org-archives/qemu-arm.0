@@ -1,314 +1,162 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp2276511njb;
-        Thu, 15 May 2025 19:59:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWnRo+APpdYs6kDiTEZn2mTG1oxHSK38/UlJrq8FNp6O9LXbX47YT/TW1diKNABtHPP3md4UQh4OA8ivQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGPZASQzJB6Xzq/ozFQnYb2X2b/6CqF32cVY8Vb+sYim8P1zwqun0V4A9UyzoH1ZIDZ4DYv
-X-Received: by 2002:a05:622a:5c8b:b0:476:7806:be7e with SMTP id d75a77b69052e-494ae3528e8mr37446121cf.11.1747364373535;
-        Thu, 15 May 2025 19:59:33 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1747364373; cv=pass;
-        d=google.com; s=arc-20240605;
-        b=NbZS2mxjqP5HTJX1UKja9OuaL4baLQhESw6zkm41Dk87NJz1m69DDNgcwlOi8UWSAF
-         KhyBqDIDHBSiz/r9ZSv9OKF3hBtRQiF4AivbXhzrAxXU9rbkJczAUowlcW30M1GLTRaJ
-         Eugs6MvEr/tKmY+0AJKyiiyqw94e8PwRLkRYr2m613vBwot4HO2wAIxB5Jib2lSsLLa4
-         8X9GUNjoYpv1BuRs50OnGqq6jWU6Tsu3hUGdqozT2txkJ4tJ9jKHLURwuP1kQjZTuj9V
-         f22P8PlNEU/CahuC+Bpfx+k67h9NBaY6D3NpMLAQC9m4ABW6Ds/2wNIV9DVqOkSiF1jy
-         fSEg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from:dkim-signature;
-        bh=3A4zh8L+pesKHuMqsF5sODbtSY+mfdbnhkw//XwHI6k=;
-        fh=b87BSk09M9Tw+6kfZpP3VCnUR7J204qmYtsmOYSf420=;
-        b=dDY42Bi2zHTi9dsxRyJpuEk5hq+hSiKVqMRqZiRNZTaLWU3AoMnPbNN0rzLfw5RajR
-         PGUYLO2y0KgNZV9LNk1hrvkpAmJtOdZXQ5D8lSYOQykwNaILWehLw7GxxNSjh63Ao0nM
-         TjV4X1mSA4g6G+e1H9oJmncLyt++xcTsz8e/m5I2rm8GteJHKeFWah031CxntF4kYEao
-         pZwepRRk1tLH3TLEahe+ibPVEgIlxmn0N9YmI55OptajGglvHo5TV1BFmwEbltUikPLS
-         4M/RtHrXQ0Pge0qU82Z9/3SMTiBOfd6C2W1jARFd2bPr8ItoCmIEWx6BAfYklnHvMn83
-         4haQ==;
-        dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=AvQwJkfM;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-494ae560401si12917731cf.323.2025.05.15.19.59.32
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 May 2025 19:59:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=AvQwJkfM;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uFlIH-0004bP-2e; Thu, 15 May 2025 22:59:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uFlIF-0004b6-10; Thu, 15 May 2025 22:59:27 -0400
-Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
- ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uFlIA-00025h-UG; Thu, 15 May 2025 22:59:25 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=KEuvQiNkoPSEBotJL3xn8CmbIALYp2JMvVH6mVaimnLvJRQb5hD/77AXpC+RPpACtHZJhwYdHLAuLsSvHE+zSuWSCDBWJ4vCTq1iO6AKxQ9gZoAzcXmtWnhcFGJkMR7WBNxzWxYWO4yoqZcczgllUGw7QbTNqm6rUbAzeIarG3RJNfuySD63MWA8Ll/m2ETwGCmoPXdUzbENQorgMMplZzdcvNZ8MV4uZlyHSWRtPV0jwG9mD2XL8fQRd9Z4mp2Vgtw0ZtoDvxIuxejbRwLUu47e5tcZbAVFr/F1alvQc4ZleDZok24tZnGyVhwZWWgie+f8f/8fnhBHJVvwhD49uA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3A4zh8L+pesKHuMqsF5sODbtSY+mfdbnhkw//XwHI6k=;
- b=mtFudgTLKiaVpksE/AeUQYIy9cw0KpY9iZ3tCgvZELaIz3HPy6FBr4WzmPQ05OKlj36KRC9AQMWpayua8QG8/0h1Z2VHbX484za+0LaZE0pul0i0UJLWqEyvSQfMSE2+yI+TqW+kXM22dNI7DCqt89C+2HLKMH1p+KlAboPfL7ETQKqhVujWXsItHh80rTtp4UOPCcZfLTMLpFrVi/CLNTqwt8lYZnPc4a5b0H9ENlPUPD7wK4VqyXe/Lu0EWzPljqGAdGhDkJrmYwFHt51bjyJVn6pBcI/IMIj011yBI2C8M4wGfAfBVr1c23fsgYTZ6kQnyfKRmjOJZFH3KN0cAw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3A4zh8L+pesKHuMqsF5sODbtSY+mfdbnhkw//XwHI6k=;
- b=AvQwJkfM20clS/v9GBL9V9HKBBM3u/VlK7w+tf9u3beHwJJTOn14rRB8HBaDBAYRXFJSPVsd1GFgNs/OwU3YH4xF1zys7EhGiDFlUa94Ti3R97o02DRE35FgRF4u8I3eNjwhZmFjAKwWsGAv7Nv7gKrHmBUfz9i3PjhSdZYj8dYpQcsKeB6exQ85E7lBsjkp1+adyb9PA/FYxN1UBLB3sHEMyIyAtbJ+nBSsE0oivv8ZRW/An/0yFYtvigSHmXWvaBV28hjto+HpEPueNceS3ZHuWEYOQVE1mAvgfLHUjZqAzFsE5B7FcN6fG1u2NO5f5nOnTtZMFsWcGQzsLVfGTw==
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
- SEZPR06MB6486.apcprd06.prod.outlook.com (2603:1096:101:179::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8722.31; Fri, 16 May
- 2025 02:59:11 +0000
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56]) by SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56%4]) with mapi id 15.20.8722.031; Fri, 16 May 2025
- 02:59:10 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-Subject: RE: [PULL 45/46] tests/functional/aspeed: Add test case for AST2700 A1
-Thread-Topic: [PULL 45/46] tests/functional/aspeed: Add test case for AST2700
- A1
-Thread-Index: AQHbkPqniOXydvp9UUCfny5pz+65h7PUCsMAgADoA0A=
-Date: Fri, 16 May 2025 02:59:10 +0000
-Message-ID: <SI2PR06MB5041918337B1F93AEF8AE4F2FC93A@SI2PR06MB5041.apcprd06.prod.outlook.com>
-References: <20250309135130.545764-1-clg@redhat.com>
- <20250309135130.545764-46-clg@redhat.com>
- <81355136-fddb-4134-bc75-5f8baddcefc3@redhat.com>
-In-Reply-To: <81355136-fddb-4134-bc75-5f8baddcefc3@redhat.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|SEZPR06MB6486:EE_
-x-ms-office365-filtering-correlation-id: eff7cc8a-3093-4f0a-a90e-08dd9425a1f3
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|376014|366016|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?bTg0eUZudEN1bXhvd3k1b3gzWEZPcFo0ZVVxUUcrWVRoRndYZkk2c3pabHFa?=
- =?utf-8?B?RkpTcmtYYXVPM3V4VVRUclRzTUdIcWtuRmdaVTBDcG9RZGJuQzRqS3FjMDFu?=
- =?utf-8?B?YXRuZ0hZT2s4eXE0c2pOWkNSUTlNVXBhYi9ML1pXYTZBWTQ0VExmNDc3YlRD?=
- =?utf-8?B?RWxLM0RySTRna2Jwdk44S1JnZEh4LzY2U3czNlZ3WXhPVWc2bTlvZ3VRZ3Iz?=
- =?utf-8?B?NHhYdVB1RWFZUG1wdmw0V3d6NjRJTi9hOFgrWUprSW1EVythbGRxMTJFbE82?=
- =?utf-8?B?ZG1VcncwTDROUmhTeHRHR3pCZDVtdjQrT0R6aERvSi9WRWNrZXVDTjRqRzIv?=
- =?utf-8?B?YjViRXpGdjlpbkxmbHhxK0hwNFg4UW0yQnk0OVgzZTIzcmNtLzh2dHlhM2hU?=
- =?utf-8?B?Z0QxZGU0Z3N1MkU5MklrV3FDUi9QanQ4QjJvbUJwQk9WdSsyWDEzMmN6SDRl?=
- =?utf-8?B?aXJYS1JXcC9MY29LQlAyWTN0aWRlSU5TNUsxODRrS2Y3c3h4Y1JXQUFxQ0dj?=
- =?utf-8?B?YTYzWnloUkJITVNobDRESjNVdVlOeFJPS3B5UmZndDFIZ3lkWFZ0dTlGLzg0?=
- =?utf-8?B?T2JUQnFQUWVjN1JIbVNWTnBvazdNYlRqV09RV3QvM1pBYzBvaHZ1UnhoVC9x?=
- =?utf-8?B?dWNPaksvN0pNVkEyQythNGZUcnN5S0tWc3owTnRyWWd6OWEwdk5nYm9keDFY?=
- =?utf-8?B?WTdXa2VZcVVqSXYzc2sxVllnMkpBUEZ6Z2FHMzVPZXpmNmdTTWFnMnJESnBP?=
- =?utf-8?B?M3Z4cUlDNG5OOTNSYVl4SGpBTEZoZFc0Y3hSWUxMQ1prMDJTV0UzYXdFcWwv?=
- =?utf-8?B?L1pqb2ZnNXpOM2d4c0NzZi91a05PNC9hV3NydFpmK1hOeVJ5ZElZQlI5emtD?=
- =?utf-8?B?bnJWY1ovZ2I2WS9RdjdkWVJRVkZ3ZXNEdFVTQnZRN0pKTVZ2ckZQMloxVzNa?=
- =?utf-8?B?dnJoR254K2dFV0p3MzB2cFp1d2lNS3dLUWpZdS9sY2tNeGtuQXlHVyt6RTVh?=
- =?utf-8?B?dG82RHR5VDRGY1NWQ2ZvVkRqcTJkUjJ0cExKdE1NcHplSkRsbGlmWkZzNUdG?=
- =?utf-8?B?SFRwSnV6dUZ0WlZVdlNydmpLRDlGTEZ1bndqcFZranZGeWt3MXJZNXJMYWpE?=
- =?utf-8?B?akErWmJGVzZOUkUvMFhHKzhCYlJpdzY4U2s3Zi9iTGRjRFovc2EzYzJlTzNr?=
- =?utf-8?B?WEtySldTQ3ZCWmF4NmhodFBUUktJVFZDZUZHUjgzem4rQzdWZUg0WkFZZ1hm?=
- =?utf-8?B?SzZpczkzS2JLWlZocTY5aU9TaWpnSXZ2eVhaTlBPRCtsRGNrcVlTM25IelFY?=
- =?utf-8?B?YkNKeFhOcTF5R1BJNUxaWkxMUU4zK3dsWUExamoxakhMaVdlRmNhN0Z6YXlP?=
- =?utf-8?B?RHBaSGhCY1JkY0dOUVU3U0xjbk9LY1pFRmlHOEpFYTBONUl1VlRpa0UrZ1dR?=
- =?utf-8?B?MmRobGJiZTh6TnB2L0h0TW1BcVRRbE5leEpkRGpWdWNnZGp0Q3Rvd2x0SkdJ?=
- =?utf-8?B?MU5nTzBEQWQrb1ZibU4rcXgvRXh4eTd1VjF5WEdab1NIV3lDbnBwZHE5ekRS?=
- =?utf-8?B?dDZHbEdUMzRFbEwrMTcvV3NqVUk2UEdnYjYvZTN0RVRYM09nZ21tMFNldzBu?=
- =?utf-8?B?OURob05hSGVBYnF4NW8xYkhPa3VHNkR3eEhMMlpybm55cmRNUzRUOC9PRmlR?=
- =?utf-8?B?Yytxb05WWitrUThxRHJ0c2xtOE1Kem5MSitWMmZNaU9GMkpiWUdjSE1PVWxo?=
- =?utf-8?B?dE42VlhMaXdMU3J0cm8vRHZvajVVSmdHMjloYWdnbHVGTWp0TWtNN2NkcWJU?=
- =?utf-8?B?NFhYUHlhNEc3M2g1Z2c4RHQxUHhKcFplVkRETFdkVU8zVi9PK3FsdGg5MjVh?=
- =?utf-8?B?VWsyNGt2cGZEbGI1aVloWHlVUlNHeTJ5RnhQMmdWV3Q1NzNPSlA5bVlKUjJ0?=
- =?utf-8?Q?oXHFUSQ49NPa4ExtDGMLSN8tGW2UoDTV?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE; SFS:(13230040)(376014)(366016)(1800799024)(38070700018); DIR:OUT;
- SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RGtneEtZSm16bkJnb3ZOTjQ0d0p4Q3NpWlFTdHdIZXBwRHg0dk5YNDNnUTJZ?=
- =?utf-8?B?NkRHR1B2bXZHOUZLU25wYXpUK3FZQ0dSQzFuSERoUytpQlhlbEpxdTJzVGJS?=
- =?utf-8?B?djB3czU5K3BhYUxmdDNOQml6VWVQMXpaUkdkbFk0NU9RRWcwcDZ3RnRuaHJi?=
- =?utf-8?B?ZFA4ZEpzTXdId29JSktWL01IdzlXTENMT3E4ekMvRWozUWptbkFzVWhHU0Vw?=
- =?utf-8?B?dVhzRk5Mb0tlVml6MjYzNU0wdGZEeldna1VMa1U0N2t4d1pkQ3A5K29oOW5n?=
- =?utf-8?B?Mzd2QkU3MzcvT2RHM1ZMVjNrSWlrU3BxamNzaGEwTHNyZVl1Q1FiU3dCaHZ1?=
- =?utf-8?B?a1F5aFlOWjl5LzcxTk9vZFkxbW9HUkVpU1o3Um9aelp5SmQ2K0hHV0I2TWF1?=
- =?utf-8?B?VGhXQUI3NVBpc0xvUWZQay90c2ROQ3UySGNVdVNnVWhiNGpDWUxjTUZlY3J4?=
- =?utf-8?B?UWJWeDgxR3BtMUUwWVZ5WjNrOVNUQnkrSS96ZTd1UjFHZkJ6b2RWcms1WEt0?=
- =?utf-8?B?SkNrZDJXSEF0aWJKUjlsVXFqNE9obmxVenFTeVZBVVV5S2xkN3lhcm9ZVThF?=
- =?utf-8?B?NG95NHYvektlQ2pzL0V6b3dmd2RRQnNIblFyTDVIWEttRFFISUU5dUNmUXE5?=
- =?utf-8?B?VVJ2eW1tV01nSGhQT0pGU25CL3EwUHMwZndWbXZTSFdsQWtkb0VwZmJMTHNz?=
- =?utf-8?B?eHpJRHVuK3pBcTNreFI5bXBGZUxCYVdqVEp0bkFCSmEzcUxDYXZYVStqd3JM?=
- =?utf-8?B?elJxK0N5eVZ1TjN6RlFISWdtdC92S3Bmdjd5VmVOVC8vSVdqQlE2R1I3K3Vr?=
- =?utf-8?B?eERCRDdtRGxEelBOVlQzSEJlSFFRT3d2U2ptUXBLRFZBRy9WU1ZISEZjYTdj?=
- =?utf-8?B?bktmWnlkRVpOaXVvU2RYdzBCa3VvdXk5VGtha2F4by8rVWlTVG5wYUZGdysv?=
- =?utf-8?B?Rm44OHJST2l3MFRrVzQzNEpYWno1MXp5MFVYaGlqTHhxQWloUnU1by9kNDZB?=
- =?utf-8?B?bEYrTVM5UThpdlBlKzkzbnhxbkh4SGY5ZU92ajc2dGh5VFBtMEp2UlFpTDlG?=
- =?utf-8?B?ak1OWGlnNFRiN3JMaUh3TUkzb1pwRmpFNmtkWks0SDhjVWlnNU5EV0ZLQm1v?=
- =?utf-8?B?RHhhQ0J0R25EYU5VRURqUnJBS1NRNStOUk83RHp2TlNncU85cnNNRTAxbEpZ?=
- =?utf-8?B?UExRNlRERXRHUUhzMnBxNFFiRVFQYWJxbjJFVjlOdHI0RVl1c1gzeEtrZ1My?=
- =?utf-8?B?OTBGbmp0bkl2Mk8yWE5SdEw0VTZQd2NlQytaUndqeW1ZNzV6K3RTRmtGNkJv?=
- =?utf-8?B?M1VlVHdpWFVtSmxEVjE3WVVyaWozb2NsWjcrUXBMZlc4MTl3QytXMWhhVjNQ?=
- =?utf-8?B?UnRwckVaL0hlcnRkeTlTYTFhOGpKbWFGd1cxS2NJbklHaFNoVHprTmEzbWRv?=
- =?utf-8?B?TFNyMTJ2ejhXU0QxRXh5Qmw1NlJLS2JzeEM1SFlnZUIzaDhDeFJoNnh3NWxp?=
- =?utf-8?B?ekg1dWszS3ZhV3JrdTdUbEYyZEhwUDR4WDhCTjZQZVAxU0pYekFPRHJIdVVH?=
- =?utf-8?B?K3J4RjJlZDBrV21XWThFSW0yczJCb2NyWWdicG5kcGVPdFNvVXo5TGcydGdZ?=
- =?utf-8?B?Yng4MDRxN0ZsenRyQWdkVFJ0bXFWcHlzdmxYczlVK2RQd2V1TmJzK0FBUXg1?=
- =?utf-8?B?eFpQNTZiQ0xicGxaRndCY2FobkhSbUpDbDRha0czZmNzWkd0aEd0ZXpieXQr?=
- =?utf-8?B?MklLOVByaStFV01ZdzZSNlBVbmorTXBkYVVTclFCcWkwYXFpdUU1WmRMeHlX?=
- =?utf-8?B?aEROTTdvc2tPYkwxNlgwTWExMzN5ZzBQSG9qcUprczlDcXphNVJNWE44Yi9q?=
- =?utf-8?B?UDBubjBySmYzYStUUTVRVHd6b0p3cWVWOTA4Y3Z6eW1zeVRMeEQ2Z0lpL2Ro?=
- =?utf-8?B?ZEZadHloV3Q0YnFJVmswM2g1MTlFdkk5a0I2REdHSnQ5TU5Yd2hqWGVPZ2pt?=
- =?utf-8?B?Q0ZlYTJJekk0Z3c0RTNmMDdGcnNzMXppZ3ZYcGo2dk0wbnc5dG0zMlZZQUpC?=
- =?utf-8?B?QUk0c2Z5eFJxdXdBN09xcnlvMnAvb2tDcWMzSDMwemZBVW5QcFI2dWJSWSto?=
- =?utf-8?Q?IpZH41MFxydnv7KfTwNjOKCrQ?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([185.126.160.109])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442fd59700asm28828285e9.34.2025.05.16.02.55.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 16 May 2025 02:55:03 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 33BA55F904;
+	Fri, 16 May 2025 10:55:02 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Gustavo Romero <gustavo.romero@linaro.org>
+Cc: qemu-devel@nongnu.org,  thuth@redhat.com,  berrange@redhat.com,
+  eric.auger@redhat.com,  philmd@linaro.org,  peter.maydell@linaro.org,
+  qemu-arm@nongnu.org
+Subject: Re: [PATCH v4] tests/functional: Add PCI hotplug test for aarch64
+In-Reply-To: <20250512144629.182340-1-gustavo.romero@linaro.org> (Gustavo
+	Romero's message of "Mon, 12 May 2025 15:45:45 +0100")
+References: <20250512144629.182340-1-gustavo.romero@linaro.org>
+User-Agent: mu4e 1.12.11; emacs 30.1
+Date: Fri, 16 May 2025 10:55:02 +0100
+Message-ID: <87frh4yj61.fsf@draig.linaro.org>
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: eff7cc8a-3093-4f0a-a90e-08dd9425a1f3
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 May 2025 02:59:10.8160 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: twJd4GWdHhEmo3vPbRd/HJ3K88Mz3VyERMVikiIHHeuJZUP8NOsrkvrZspk4yd77kNIbU/a0o8DotpSSitBum0LWL2a1yGF4WB/cZ1m5xJU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR06MB6486
-Received-SPF: pass client-ip=2a01:111:f403:c406::3;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=OS8PR02CU002.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4GV4hQD1Kr4r
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: lIuDIC0RWMf8
 
-SGkgQ8OpZHJpYw0KDQo+IA0KPiBPbiBhIEJFIGhvc3QsIGlmIEkgcnVuIGFuIGFzdDI3MDBhMC1l
-dmIgbWFjaGluZSA6DQo+IA0KPiAgICAgJCBxZW11LXN5c3RlbS1hYXJjaDY0IC1tYWNoaW5lIGFz
-dDI3MDBhMC1ldmIgIC4uLg0KPiAgICAgLi4uDQo+ICAgICBVLUJvb3QgMjAyMy4xMC12MDAuMDUu
-MDYgKE1hciAyNiAyMDI1IC0gMDU6NTk6MjYgKzAwMDApDQo+IA0KPiAgICAgU09DOiBBU1QyNzAw
-LUEwDQo+ICAgICBNb2RlbDogQVNUMjcwMCBFVkINCj4gICAgIERSQU06ICA4IEdpQiAoZWZmZWN0
-aXZlIDAgQnl0ZXMpDQo+IA0KPiBRRU1VIGhhbmdzLg0KPiANCj4gSWYgdGhlIFJBTSBzaXplIGlz
-IGRlZmluZWQgdG8gOGcNCj4gDQo+ICAgICAkIHFlbXUtc3lzdGVtLWFhcmNoNjQgLW1hY2hpbmUg
-YXN0MjcwMGEwLWV2YiAtbSA4ZyAgLi4uDQo+ICAgICAuLi4NCj4gICAgIFUtQm9vdCAyMDIzLjEw
-LXYwMC4wNS4wNiAoTWFyIDI2IDIwMjUgLSAwNTo1OToyNiArMDAwMCkNCj4gDQo+ICAgICBTT0M6
-IEFTVDI3MDAtQTANCj4gICAgIE1vZGVsOiBBU1QyNzAwIEVWQg0KPiAgICAgRFJBTTogIDggR2lC
-DQo+ICAgICBhc3BlZWRfZHAgZHBAMTJjMGEwMDA6IGFzcGVlZF9kcF9wcm9iZSgpOiBGYWlsZWQg
-dG8gYWNjZXNzIGRwLg0KPiB2ZXJzaW9uKDApDQo+ICAgICBDb3JlOiAgMTI1IGRldmljZXMsIDI3
-IHVjbGFzc2VzLCBkZXZpY2V0cmVlOiBzZXBhcmF0ZQ0KPiANCj4gbWFjaGluZSBib290cy4NCj4g
-DQo+IFdoZXJlYXMsIHdpdGggYW4gYXN0MjcwMGExLWV2YiBtYWNoaW5lIDoNCj4gDQo+ICAgICAk
-IHFlbXUtc3lzdGVtLWFhcmNoNjQgLW1hY2hpbmUgYXN0MjcwMGExLWV2YiAgLi4uDQo+ICAgICAu
-Li4NCj4gICAgIFUtQm9vdCAyMDIzLjEwLXYwMC4wNS4wNiAoTWFyIDI2IDIwMjUgLSAwNTo1OToy
-NiArMDAwMCkNCj4gDQo+ICAgICBTT0M6IEFTVDI3MDAtQTENCj4gICAgIE1vZGVsOiBBU1QyNzAw
-IEVWQg0KPiAgICAgRFJBTTogIDEgR2lCDQo+ICAgICBhc3BlZWRfZHAgZHBAMTJjMGEwMDA6IGFz
-cGVlZF9kcF9wcm9iZSgpOiBGYWlsZWQgdG8gYWNjZXNzIGRwLg0KPiB2ZXJzaW9uKDApDQo+ICAg
-ICBDb3JlOiAgMTI1IGRldmljZXMsIDI3IHVjbGFzc2VzLCBkZXZpY2V0cmVlOiBzZXBhcmF0ZQ0K
-PiANCj4gbWFjaGluZSBib290cy4NCj4gDQo+ICAgICAkIHFlbXUtc3lzdGVtLWFhcmNoNjQgLW1h
-Y2hpbmUgYXN0MjcwMGExLWV2YiAtbSA4ZyAgLi4uDQo+ICAgICAuLi4NCj4gICAgIFUtQm9vdCAy
-MDIzLjEwLXYwMC4wNS4wNiAoTWFyIDI2IDIwMjUgLSAwNTo1OToyNiArMDAwMCkNCj4gDQo+ICAg
-ICBTT0M6IEFTVDI3MDAtQTENCj4gICAgIE1vZGVsOiBBU1QyNzAwIEVWQg0KPiAgICAgRFJBTTog
-IDggR2lCDQo+ICAgICBhc3BlZWRfZHAgZHBAMTJjMGEwMDA6IGFzcGVlZF9kcF9wcm9iZSgpOiBG
-YWlsZWQgdG8gYWNjZXNzIGRwLg0KPiB2ZXJzaW9uKDApDQo+ICAgICBDb3JlOiAgMTI1IGRldmlj
-ZXMsIDI3IHVjbGFzc2VzLCBkZXZpY2V0cmVlOiBzZXBhcmF0ZQ0KPiANCj4gbWFjaGluZSBib290
-cy4NCj4gDQo+IA0KPiBJIFdvbmRlciBpZiB5b3UgY291bGQgYW5hbHl6ZSB0aGlzIGlzc3VlIHRv
-IGNoZWNrIGlmIGl0IGlzIHJlbGF0ZWQgdG8gb25lIG9mIG91cg0KPiBRRU1VIG1vZGVsLg0KPiAN
-Cj4gDQoNClNvcnJ5LCBJIG9ubHkgaGF2ZSBhIGxpdHRsZS1lbmRpYW4gaG9zdCBtYWNoaW5lICh4
-ODZfNjQpLg0KSXMgaXQgcG9zc2libGUgdG8gcnVuIGEgYmlnLWVuZGlhbihQT1dFUiBQQykgUUVN
-VSBob3N0IGVudmlyb25tZW50IG9uIHRoaXMgbWFjaGluZSwgc28gdGhhdCBJIGNhbiB0aGVuIHJ1
-biB0aGUgQVNUMjcwMCBRRU1VIHRhcmdldCBpbnNpZGUgaXQgdG8gYW5hbHl6ZSB0aGlzIGlzc3Vl
-Pw0KDQpJZiB5b3UgYWdyZWUsIGNvdWxkIHlvdSBwbGVhc2UgaGVscCBtZSBpbnNlcnQgdGhlIGZv
-bGxvd2luZyBsaW5lcyBpbnRvIHRoZSBmdW5jdGlvbiB0aGF0IGRldGVjdHMgdGhlIERSQU0gc2l6
-ZSBvbiB0aGUgQVNUMjcwMD8NCmh0dHBzOi8vZ2l0aHViLmNvbS9xZW11L3FlbXUvYmxvYi9tYXN0
-ZXIvaHcvYXJtL2FzcGVlZF9hc3QyN3gwLmMjTDMzMg0KaHR0cHM6Ly9naXRodWIuY29tL3FlbXUv
-cWVtdS9jb21taXQvNzQzNmRiMTA2M2JiZmVjYzJlNDk4YTdkNzk1NjEzYjMzMzEyZDY2NSANCmBg
-YGANCnN0YXRpYyB2b2lkIGFzcGVlZF9yYW1fY2FwYWNpdHlfd3JpdGUodm9pZCAqb3BhcXVlLCBo
-d2FkZHIgYWRkciwgdWludDY0X3QgZGF0YSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIHVuc2lnbmVkIGludCBzaXplKQ0Kew0KICAgIEFzcGVlZFNvQ1N0
-YXRlICpzID0gQVNQRUVEX1NPQyhvcGFxdWUpOw0KICAgIHJhbV9hZGRyX3QgcmFtX3NpemU7DQog
-ICAgTWVtVHhSZXN1bHQgcmVzdWx0Ow0KICAgIHVpbnQzMl90IHJlYWRfYmFja1s0XSA9IHswfTsN
-CiAgICByYW1fc2l6ZSA9IG9iamVjdF9wcm9wZXJ0eV9nZXRfdWludChPQkpFQ1QoJnMtPnNkbWMp
-LCAicmFtLXNpemUiLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICZl
-cnJvcl9hYm9ydCk7DQoNCiAgICBhc3NlcnQocmFtX3NpemUgPiAwKTsNCiAgICBwcmludGYoImph
-bWluIHNpemUgJWRcbiIsIHNpemUpOw0KICAgIHByaW50ZigiYWRkcj0lIiBQUkl4NjQgIiAoYWRk
-ciByYW1fc2l6ZSk9JSIgUFJJeDY0ICJcbiIsIGFkZHIsIChhZGRyICUgcmFtX3NpemUpKTsNCiAg
-ICAvKg0KICAgICAqIEVtdWxhdGUgZGRyIGNhcGFjaXR5IGhhcmR3YXJlIGJlaGF2aW9yLg0KICAg
-ICAqIElmIHdyaXRlcyB0aGUgZGF0YSB0byB0aGUgYWRkcmVzcyB3aGljaCBpcyBiZXlvbmQgdGhl
-IHJhbSBzaXplLA0KICAgICAqIGl0IHdvdWxkIHdyaXRlIHRoZSBkYXRhIHRvIHRoZSAiYWRkcmVz
-cyAlIHJhbV9zaXplIi4NCiAgICAgKi8NCiAgICByZXN1bHQgPSBhZGRyZXNzX3NwYWNlX3dyaXRl
-KCZzLT5kcmFtX2FzLCBhZGRyICUgcmFtX3NpemUsDQogICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICBNRU1UWEFUVFJTX1VOU1BFQ0lGSUVELCAmZGF0YSwgc2l6ZSk7DQogICAgaWYgKHJl
-c3VsdCAhPSBNRU1UWF9PSykgew0KICAgICAgICBxZW11X2xvZ19tYXNrKExPR19HVUVTVF9FUlJP
-UiwNCiAgICAgICAgICAgICAgICAgICAgICAiJXM6IERSQU0gd3JpdGUgZmFpbGVkLCBhZGRyOjB4
-JSIgSFdBRERSX1BSSXgNCiAgICAgICAgICAgICAgICAgICAgICAiLCBkYXRhIDoweCUiIFBSSXg2
-NCAgIlxuIiwNCiAgICAgICAgICAgICAgICAgICAgICBfX2Z1bmNfXywgYWRkciAlIHJhbV9zaXpl
-LCBkYXRhKTsNCiAgICB9DQoNCiAgICBhZGRyZXNzX3NwYWNlX3JlYWQoJnMtPmRyYW1fYXMsIGFk
-ZHIgJSByYW1fc2l6ZSwNCiAgICAgICAgICAgICAgICAgICAgICAgTUVNVFhBVFRSU19VTlNQRUNJ
-RklFRCwgcmVhZF9iYWNrLA0KICAgICAgICAgICAgICAgICAgICAgICBzaXplKTsNCg0KICAgIGZv
-cihpbnQgaT0wOyBpPDQ7IGkrKykgew0KICAgICAgICBwcmludGYoImphbWluIHJlYWRfYmFja1sl
-ZF09JXhcbiIsIGksIHJlYWRfYmFja1tpXSk7DQogICAgfQ0KfQ0KYGBgYA0KQWxzbywgY291bGQg
-eW91IHBsZWFzZSBwcm92aWRlIG1lIHdpdGggdGhlIGZvbGxvd2luZyBsb2c/DQoNClUtQm9vdCAy
-MDIzLjEwLXYwMC4wNS4wNiAoTWFyIDI2IDIwMjUgLSAwNTo1OToyNiArMDAwMCkNCg0KU09DOiBB
-U1QyNzAwLUEwDQpNb2RlbDogQVNUMjcwMCBFVkINCkRSQU06ICBqYW1pbiBzaXplIDQNCmFkZHI9
-YzAwMDAwMDAgKGFkZHIgcmFtX3NpemUpPTANCmphbWluIHJlYWRfYmFja1swXT1lYWRiZWVmNA0K
-amFtaW4gcmVhZF9iYWNrWzFdPTANCmphbWluIHJlYWRfYmFja1syXT0wDQpqYW1pbiByZWFkX2Jh
-Y2tbM109MA0KamFtaW4gc2l6ZSA0DQphZGRyPTQwMDAwMDAwIChhZGRyIHJhbV9zaXplKT0wDQpq
-YW1pbiByZWFkX2JhY2tbMF09YWRiZWVmNDMNCmphbWluIHJlYWRfYmFja1sxXT0wDQpqYW1pbiBy
-ZWFkX2JhY2tbMl09MA0KamFtaW4gcmVhZF9iYWNrWzNdPTANCmphbWluIHNpemUgNA0KYWRkcj0w
-IChhZGRyIHJhbV9zaXplKT0wDQpqYW1pbiByZWFkX2JhY2tbMF09ZGJlZWY0MzINCmphbWluIHJl
-YWRfYmFja1sxXT0wDQpqYW1pbiByZWFkX2JhY2tbMl09MA0KamFtaW4gcmVhZF9iYWNrWzNdPTAN
-CjEgR2lCDQoNCkl0J3MgcXVpdGUgc3RyYW5nZSwgYmVjYXVzZSB5b3UgbWVudGlvbmVkIHRoYXQg
-dGhlIEExIHZlcnNpb24gd29ya3MsIGJ1dCB0aGUgQTAgdmVyc2lvbiBkb2Vzbid0Lg0KSXQgc2Vl
-bXMgZGV0ZWN0IHRoZSBEUkFNIHNpemUgZmFpbGVkIGluIHRoaXMgbG9vcCwgIA0KaHR0cHM6Ly9n
-aXRodWIuY29tL0FzcGVlZFRlY2gtQk1DL3UtYm9vdC9ibG9iL2FzcGVlZC1tYXN0ZXItdjIwMjMu
-MTAvZHJpdmVycy9yYW0vYXNwZWVkL3NkcmFtX2FzdDI3MDAuYyNMMTE3Mw0Kc3RydWN0IGRkcl9j
-YXBhY2l0eSByYW1fc2l6ZVtdID0gew0KCQl7MHgxMDAwMDAwMCwJezIwOCwgMjU2fX0sIC8vIDI1
-Nk1CDQoJCXsweDIwMDAwMDAwLAl7MjA4LCA0MTZ9fSwgLy8gNTEyTUINCgkJezB4NDAwMDAwMDAs
-CXsyMDgsIDU2MH19LCAvLyAxR0INCgkJezB4ODAwMDAwMDAsCXs0NzIsIDg4MH19LCAvLyAyR0IN
-CgkJezB4MTAwMDAwMDAwLAl7NjU2LCA4ODB9fSwgLy8gNEdCDQoJCXsweDIwMDAwMDAwMCwJezg4
-MCwgODgwfX0sIC8vIDhHQg0KCQl9Ow0KdTMyIHRlc3RfcGF0dGVybiA9IDB4ZGVhZGJlZWYNCg0K
-Zm9yIChzeiA9IFNEUkFNX1NJWkVfOEdCIC0gMTsgc3ogPiBTRFJBTV9TSVpFXzI1Nk1COyBzei0t
-KSB7DQoJCXRlc3RfcGF0dGVybiA9ICh0ZXN0X3BhdHRlcm4gPDwgNCkgKyBzejsNCgkJd3JpdGVs
-KHRlc3RfcGF0dGVybiwgKHZvaWQgKilDRkdfU1lTX1NEUkFNX0JBU0UgKyByYW1fc2l6ZVtzel0u
-c2l6ZSk7DQoNCgkJaWYgKHJlYWRsKCh2b2lkICopQ0ZHX1NZU19TRFJBTV9CQVNFKSAhPSB0ZXN0
-X3BhdHRlcm4pDQoJCQlicmVhazsNCn0NCg0KUGxlYXNlIGhlbHAgdG8gZHVtcCB0aGlzIHJlZ2lz
-dGVyLg0KPT4gbWQgMTJjMDAwMTANCjEyYzAwMDEwOiAwMDAwMDAyOCAwMDAwMDAwMCAwMDAwMDAw
-MCAwMDAwMDAwMCAgKC4uLi4uLi4uLi4uLi4uLg0KDQoweDI4LS0+DQowMDEwIDEwMDANCkJpdDAg
-OiAwIEREUjQgU0RSQU0NCkJpdDoxIDogMCBSZXNlcnZlZA0KQml0OjQ6MiA6IDAxMCAtLT4gMUdC
-IA0KDQpUaGFua3MtSmFtaW4NCg0KPiBUaGFua3MsDQo+IA0KPiBDLg0KDQo=
+Gustavo Romero <gustavo.romero@linaro.org> writes:
+
+> Add a functional test, aarch64_hotplug_pci, to exercise PCI hotplug and
+> hot-unplug on arm64.
+
+Queued to maintainer/may-2025, thanks.
+
+>
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+> Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+> ---
+>  MAINTAINERS                                  |  5 ++
+>  tests/functional/meson.build                 |  1 +
+>  tests/functional/test_aarch64_hotplug_pci.py | 74 ++++++++++++++++++++
+>  3 files changed, 80 insertions(+)
+>  create mode 100755 tests/functional/test_aarch64_hotplug_pci.py
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 23174b4ca7..9ebb768214 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -2065,6 +2065,11 @@ S: Supported
+>  F: include/hw/pci/pcie_doe.h
+>  F: hw/pci/pcie_doe.c
+>=20=20
+> +ARM PCI Hotplug
+> +M: Gustavo Romero <gustavo.romero@linaro.org>
+> +S: Supported
+> +F: tests/functional/test_aarch64_hotplug_pci.py
+> +
+>  ACPI/SMBIOS
+>  M: Michael S. Tsirkin <mst@redhat.com>
+>  M: Igor Mammedov <imammedo@redhat.com>
+> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+> index 52b4706cfe..2d68840fa2 100644
+> --- a/tests/functional/meson.build
+> +++ b/tests/functional/meson.build
+> @@ -83,6 +83,7 @@ tests_aarch64_system_quick =3D [
+>  tests_aarch64_system_thorough =3D [
+>    'aarch64_aspeed_ast2700',
+>    'aarch64_aspeed_ast2700fc',
+> +  'aarch64_hotplug_pci',
+>    'aarch64_imx8mp_evk',
+>    'aarch64_raspi3',
+>    'aarch64_raspi4',
+> diff --git a/tests/functional/test_aarch64_hotplug_pci.py b/tests/functio=
+nal/test_aarch64_hotplug_pci.py
+> new file mode 100755
+> index 0000000000..fa1bb62c8f
+> --- /dev/null
+> +++ b/tests/functional/test_aarch64_hotplug_pci.py
+> @@ -0,0 +1,74 @@
+> +#!/usr/bin/env python3
+> +#
+> +# SPDX-License-Identifier: GPL-2.0-or-later
+> +#
+> +# The test hotplugs a PCI device and checks it on a Linux guest.
+> +#
+> +# Copyright (c) 2025 Linaro Ltd.
+> +#
+> +# Author:
+> +#  Gustavo Romero <gustavo.romero@linaro.org>
+> +#
+> +# This work is licensed under the terms of the GNU GPL, version 2 or
+> +# later.  See the COPYING file in the top-level directory.
+> +
+> +from qemu_test import LinuxKernelTest, Asset, exec_command_and_wait_for_=
+pattern
+> +from qemu_test import BUILD_DIR
+> +
+> +class HotplugPCI(LinuxKernelTest):
+> +
+> +    ASSET_KERNEL =3D Asset(
+> +        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm6=
+4/'
+> +         'current/images/netboot/debian-installer/arm64/linux'),
+> +        '3821d4db56d42c6a4eac62f31846e35465940afd87746b4cfcdf5c9eca3117b=
+2')
+> +
+> +    ASSET_INITRD =3D Asset(
+> +        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm6=
+4/'
+> +         'current/images/netboot/debian-installer/arm64/initrd.gz'),
+> +        '2583ec22b45265ad69e82f198674f53d4cd85be124fe012eedc2fd91156bc4b=
+4')
+> +
+> +    def test_hotplug_pci(self):
+> +
+> +        self.set_machine('virt')
+> +        self.vm.add_args('-m', '512M')
+> +        self.vm.add_args('-cpu', 'cortex-a57')
+> +        self.vm.add_args('-append',
+> +                         'console=3DttyAMA0,115200 init=3D/bin/sh')
+> +        self.vm.add_args('-device',
+> +                         'pcie-root-port,bus=3Dpcie.0,chassis=3D1,slot=
+=3D1,id=3Dpcie.1')
+> +        self.vm.add_args('-bios', self.build_file('pc-bios',
+> +                                                  'edk2-aarch64-code.fd'=
+))
+> +
+> +        # BusyBox prompt
+> +        prompt =3D "~ #"
+> +        self.launch_kernel(self.ASSET_KERNEL.fetch(),
+> +                           self.ASSET_INITRD.fetch(),
+> +                           wait_for=3Dprompt)
+> +
+> +        # Check for initial state: 2 network adapters, lo and enp0s1.
+> +        exec_command_and_wait_for_pattern(self,
+> +                                          'ls -l /sys/class/net | wc -l',
+> +                                          '2')
+> +
+> +        # Hotplug one network adapter to the root port, i.e. pcie.1 bus.
+> +        self.vm.cmd('device_add',
+> +                    driver=3D'virtio-net-pci',
+> +                    bus=3D'pcie.1',
+> +                    addr=3D0,
+> +                    id=3D'na')
+> +        # Wait for the kernel to recognize the new device.
+> +        self.wait_for_console_pattern('virtio-pci')
+> +        self.wait_for_console_pattern('virtio_net')
+> +
+> +        # Check if there is a new network adapter.
+> +        exec_command_and_wait_for_pattern(self,
+> +                                          'ls -l /sys/class/net | wc -l',
+> +                                          '3')
+> +
+> +        self.vm.cmd('device_del', id=3D'na')
+> +        exec_command_and_wait_for_pattern(self,
+> +                                          'ls -l /sys/class/net | wc -l',
+> +                                          '2')
+> +
+> +if __name__ =3D=3D '__main__':
+> +    LinuxKernelTest.main()
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

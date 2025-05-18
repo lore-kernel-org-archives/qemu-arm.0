@@ -1,254 +1,191 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp2807097njb;
-        Fri, 16 May 2025 13:54:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUZ8Ls3zkAMSiGgnfRRkqzcgEScae3MjJzjGZQAZHse1UZ9IM6nkc0EpH03dwgL6/mCOkaZRUwgYXnaWA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEAJM3R7XVhOc5y2Su7Az6I06empfniFWNOgwbjbanS5HMhbjM6pEd1uvpMTI0qb8FC5P5L
-X-Received: by 2002:a05:620a:3199:b0:7ca:f03a:4855 with SMTP id af79cd13be357-7cd46718a31mr525940285a.11.1747428848363;
-        Fri, 16 May 2025 13:54:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747428848; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp3426279njb;
+        Sat, 17 May 2025 21:56:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVlvIfDvCv7kduiw4KhEXRT6OU9xH7RSo2nI+JH3oFO3y/13hmsuRW+OTviin59wNp3l25D9gQ5hpphUw==@linaro.org
+X-Received: by 2002:a05:6a20:3d1c:b0:1ee:d418:f764 with SMTP id adf61e73a8af0-2170ce33ad3mr12441037637.38.1747544201669;
+        Sat, 17 May 2025 21:56:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747544201; cv=none;
         d=google.com; s=arc-20240605;
-        b=F6xPuKmCtnP1Gno2J2pta6TyW+eUYRRnxuVE6y0oj4x0XzAA4RTcbcQDpfqv3Tk/j2
-         hqq2hP8Qs2x42ZrX4Jia1vPRa3EtOxg75qyo8gKDOE5XNn3A01zkPexaco4kDMztxJwL
-         15peU4Qx71+FW2xuqjwGUbQA0eMVNTEAU6U79n/Oui0WOV+x3O0+9mgRY3veCwMhsqUL
-         Sh2sLPmpiZEnzz118A1gOpEEZrci6WOvR99rq5rj4seBme3ALgAF6gB4AoPy4GsACY6L
-         MzjpNL25sUZcrn9Vg7O40zJ21dJKKEslKMARElQdumv/R5rtHfUteh9KpqOav+zTau/g
-         rK9A==
+        b=CkSP5fu6OuXrWDWILnlHF6fJV+Q3srScewNoGttx/412LfCN2sXHSRy78A3xdMjht7
+         FwfVyAzfLG9DUYmgVepjfNxxb/ahWPGJidOYteWtcYwAPLHj5yQxM2WwleBt1b307KY0
+         +wSYMI7Gvxd/yCZBj5FiLYW6Q24nVGgpLvKcqn2ptLC56Ed0pF4p+Q/cg9otaTSzZrFb
+         Qwce08sPFkiojYAdsht7Tmf2vjntC2LK7oXKNdcd3ZJWrsNEh362gWV1Kh41O9aPojbf
+         A3r0nQ1LyiLJHzt5rmkypVeJYAC6hrZIx6cfjVxa1tJMBbGBdYR1D/C0UU4ponccWbJu
+         QUTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=pnURT22OIYnC5gJKVtsNGXOoWVpAeYrD0y8GllRNCk0=;
-        fh=6nfGxVyNiasIk13FqYvWbtlTc8MLu8W3xBR3oo7OVyw=;
-        b=lV57wMKiIUky7Lx3G1qtmBZlEw1XasDkcIw4d0DkVMqLcOE9yhNWbE2ogwKl/8G8M1
-         inx1AICG6Fnb61TMSLl066tt2A6J3MmOX/fHPjvUbAOhOflIt2RTPFhDkql52vJysJXG
-         K5+XH5w1Xa1FDJIv0nOSYOyc5Vr69pe3nyi+D0+39U5Y4nlspgI7sYfNVQqH//M39NKt
-         jbXBE0E4YJ2tih2snTOlYYsUbb989r6R59amRonV0anbjPodqw4prYytbIFl5y99owKx
-         ePFk3Pe4x8GJ7+J3ZwknUKGAaY/IBFPMDM65FJMYCnbrprVHGFd+/Lcu2CalaV3CdIYA
-         uuLg==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=W9/cBnVIez29CLs/L+Yh/duA+f3i6XOG+65a+hphMz4=;
+        fh=W0y4btdEQpNzIp/UFSJEVozq7VYd1fQUuKFKwBt0E/U=;
+        b=lDSgDZIW0L+lcnrK7KSJ1TdB0ct/dTx4L3s6xKp7Ib4nXpeG+PzdH5apZg7sGEdyiy
+         EynCDMs3YM0FWLwow9IlgLXLS0/6KaJtBfVtUHZofv7fJr/DzBCgIW5UM0Snt+RETFgt
+         KHdKtbQE3oQo+buW/UjVJ+YUhArabaeWmWIiEIo9KbSyGwQ8YWMskpus40tfOCbge+78
+         MBIHXy8aZMa8SRKxyKjH0R6Xf2Do0OK2S6F2UcmnkzKUzpeEipArzvmgLvrZ0D8peAr1
+         X7S5U8WSppDTLk/CV1qvDfXdSOUwJgDjyJtWUPxQqTCLM0rO4oxRbRS6ZEJoTAR36dzm
+         lq6Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DnGQZseR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd468f32cdsi277178185a.640.2025.05.16.13.54.08
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=NvtXzMBY;
+       spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-b26eadbb29csor3731946a12.0.2025.05.17.21.56.41
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 May 2025 13:54:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sat, 17 May 2025 21:56:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DnGQZseR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uG246-0001Dh-Sy; Fri, 16 May 2025 16:53:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
- id 1uG245-0001DM-Q6
- for qemu-arm@nongnu.org; Fri, 16 May 2025 16:53:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
- id 1uG244-0005Kg-86
- for qemu-arm@nongnu.org; Fri, 16 May 2025 16:53:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1747428834;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=pnURT22OIYnC5gJKVtsNGXOoWVpAeYrD0y8GllRNCk0=;
- b=DnGQZseRw3rx4q8eC/h0B1GlGTB+8IA0LyKQGhCsulkWHbbmkVHw8zHzDEmANBLtjViHtv
- aZhgptAjSarL8W+grwWIrRwI/lpE4BEUvA+yJNTmfixPomvvvBED12YuDMh4WJU3YlFWVe
- woDzkkQErylLfJrUmNPY75nY/9INtp0=
-Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
- [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-12-tDPvBPDBNyiZNngnMmKErg-1; Fri, 16 May 2025 16:53:53 -0400
-X-MC-Unique: tDPvBPDBNyiZNngnMmKErg-1
-X-Mimecast-MFC-AGG-ID: tDPvBPDBNyiZNngnMmKErg_1747428832
-Received: by mail-pl1-f197.google.com with SMTP id
- d9443c01a7336-231e3cfc144so8813005ad.2
- for <qemu-arm@nongnu.org>; Fri, 16 May 2025 13:53:52 -0700 (PDT)
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=NvtXzMBY;
+       spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1747544201; x=1748149001; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=W9/cBnVIez29CLs/L+Yh/duA+f3i6XOG+65a+hphMz4=;
+        b=NvtXzMBYCIL3mQuuz7DRMCsS+lv7DvJjwGzriYdorU8kThnyIN5a+25I5YjbwzDb6N
+         h3QFc0lAQn+b+gFBKDJRsIQP22mTk8ew7Am02W3eZHWzIDE+UQayv470AQBKsDepbAQU
+         J05uFWuHV2GkEloLsFcG/rdhXlAOU1VDwUupJl+HGyMWTFZDrhxKcW2B4ixlumUCTcbh
+         8NLuNcdRIYJBWJWNE0PT7eBUxLCK0f3o+gxxMAFolfDQo4sJUIY01vXZFfs8mX4vap1b
+         vu1DSS0cqHM1E4V2RXTWhAjGQAGJ9Os7vBL8y6IwljzInIjtU54HTpitFjkBeg/03rpj
+         76sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747428832; x=1748033632;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=pnURT22OIYnC5gJKVtsNGXOoWVpAeYrD0y8GllRNCk0=;
- b=p7RY29cZRpy55vGnE17T49RoDNCzit9tv5TMwgo2B69poVY+B/cvxOSVIByaelbtd2
- 8SPoVBOMHA6p/3d8664mzWTqt02QUaZ4YYojSG2uUVwx2EDSAJ2f8V2BWi3bDW8AcoFB
- m5ZhxgX6S0eqQL4ZgpC86bsfK4qCgVkEhw4VoDz6Iz9YTUw6WJA1cmFzlhDSNlf0dwx/
- DJ4HwvEwtiISHa/JQ5KBIiIlHglxPwNkhrXQ8eSgBmi4GHXMaQCCcKKk32D9rMXkYlti
- CnlkTTCMLNn867CJ1n5041m47dLSFTkCPpv7I3WSVy2LAVFOaREVJZ27+av13mySptJv
- 4KPQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWT+sDKWTpS33CNCa9Yc1a/ykqPikGIpeH/oEVn6PcCYIE5NEmrpVs0ibLVtQFkhbGc5j09JD8Axw==@nongnu.org
-X-Gm-Message-State: AOJu0YwP7+Eb52bFx/tUnc5jXdOPSX+fVD6iW525ztuUaE2QiYEPAbwC
- dIzlAcvYFJq0yfIEko+BMNxu6Rgmze4N41/wQZcwKGCxR0z+QD329XHD6CxhTYMYBRnSDyjMMiP
- H0+SNB3oH0BAtZBBb+VwkxShaPsgFmEQ9W+mX/mlqzzJMkEN/zwAJug==
-X-Gm-Gg: ASbGnctzY9TjgcwR4jrEVzkkwbNwzBTNlHTGeNVJyG/BSdPWe5wmjW+mC5Pyh3LGfUu
- EjZteZwnmBlIu90snIaGkXUwK0mWd9tYZhURdRlcW9wsyPq+SIjYaN6ekuTR9IN5VPTxPhXmvPN
- ass21E5vB5b+uMehesN/UKWXoXtlSmwcdU+RDGFXPynzotieZdTMuW6oDnl+WlG+XDbYB+ciFv5
- 7u9P+fwyxmS2WeXEA7s+fCIj4NrHPizeva8Xa2vplrzFvxQ6ulz4zNlZosJAIQhFVjKBU2FrnVl
- eTxgecFDjrFQ
-X-Received: by 2002:a17:903:2f4d:b0:22e:8183:1fae with SMTP id
- d9443c01a7336-231d4598d1dmr68338675ad.41.1747428832051; 
- Fri, 16 May 2025 13:53:52 -0700 (PDT)
-X-Received: by 2002:a17:903:2f4d:b0:22e:8183:1fae with SMTP id
- d9443c01a7336-231d4598d1dmr68338435ad.41.1747428831680; 
- Fri, 16 May 2025 13:53:51 -0700 (PDT)
-Received: from [192.168.40.164] ([70.105.235.240])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-231d4e981desm18520125ad.124.2025.05.16.13.53.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 May 2025 13:53:51 -0700 (PDT)
-Message-ID: <961b0a65-cadd-41a6-b754-9028dc1be4f6@redhat.com>
-Date: Fri, 16 May 2025 16:53:44 -0400
+        d=1e100.net; s=20230601; t=1747544201; x=1748149001;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=W9/cBnVIez29CLs/L+Yh/duA+f3i6XOG+65a+hphMz4=;
+        b=dxavVg9CFanovpvP5l85nZ9QIBs1nfgYIkbHI+KNgYbaiBVwrmykrDhpg39kZWBxja
+         FBw9ANg28d0wr3wA8Q8JwnkAJKS4RREG+g94SQobWNGRnVph1pXKw6/P1y+N/NyJ5nQd
+         EMGJdlUihkkZeDH3G7k8uQ1KNhkhtshhJuukaKIYaJRC+OScm8o2JXuN8cLdd3SttZ8q
+         g4Q0dlbaKTgTkjlcJ4fMXqxc6sG64uea9lGXFpC3fCSds+cwtOEYJgrjbYh1AaqzRpoy
+         WkCkNGUoLuCKioN6Fe3lE/wudbRWYTkaCandV3LzI+DYuIOZXh8AWe/ihNre9ov67wdY
+         L24A==
+X-Forwarded-Encrypted: i=1; AJvYcCUKsCEhJDlHJ5j+dhcJOCD4DVD0bmFp9ApK2WVX1ITX5vpfWkqi50s5HwkWJ59K5wNGV1/SMGFTVJ8eNg==@linaro.org
+X-Gm-Message-State: AOJu0Ywj1B9ZrOKyqqOa+R1biq/Xhw69dNx5tmOn5pFTr3SaN2UqfFyd
+	qGJjkjJ15uXCYa92Xfz22dU9CBT5Z/tQBUrBpupShqWXItz+hHV/TzaXruP3gECt9Tg=
+X-Gm-Gg: ASbGncteAUD8dCFnBHEl6jbojHTjOtiDgIqi3hgzeL8OC3vBlFsFU0moO/53OT9jCKQ
+	VNb+ooA71ojcl7/UN7Y4KswbxhBJ0H64bCAVOtyriJGwB1ThgWKWB/VJJgngmKsAZrqH6T1cvmf
+	kD68IaOSqryYjsFXwS9aNsBsyGyHqOaHKDJoWi9GAPpMx0fN8gxDq/3E4nnIpzdS1flrcqc9cgo
+	+Heym8JNd17KPjVKjMZ8TblLdjcA+Sym/RlQxbrchp8wMtQmSF23jQihNEn0Nd59KcFvmfw3A8b
+	7j0cK5fUjnCPVZidoASF5XKsg6j4BUt+FSRZmGQcDqxPdQ1Gmgwhom5k6ZoNjw==
+X-Google-Smtp-Source: AGHT+IE17VcvEavpeRxgfxNYGu0UiZ7U9RqdxTzGf4RpgZpNRkZpAOWxK+qNbKtURBc/tvnxO+axHw==
+X-Received: by 2002:a05:6a21:31c8:b0:20d:df67:4830 with SMTP id adf61e73a8af0-216f85ac739mr11814951637.0.1747544201109;
+        Sat, 17 May 2025 21:56:41 -0700 (PDT)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from [157.82.207.61] ([157.82.207.61])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b26eb0a906bsm3979875a12.71.2025.05.17.21.56.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 17 May 2025 21:56:40 -0700 (PDT)
+Message-ID: <63911dcc-482b-45c5-9468-120ae3df691b@daynix.com>
+Date: Sun, 18 May 2025 13:56:35 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/6] hw/arm/smmuv3: Add support to associate a PCIe RC
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- Markus Armbruster <armbru@redhat.com>,
- Shameer Kolothum via <qemu-devel@nongnu.org>,
+Subject: Re: [PATCH v2 12/14] ui/gtk-gl-area: Remove extra draw call in
+ refresh
+To: "Kim, Dongwon" <dongwon.kim@intel.com>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "jgg@nvidia.com" <jgg@nvidia.com>, "nicolinc@nvidia.com"
- <nicolinc@nvidia.com>, "berrange@redhat.com" <berrange@redhat.com>,
- "nathanc@nvidia.com" <nathanc@nvidia.com>,
- "mochs@nvidia.com" <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>,
- "Wangzhou (B)" <wangzhou1@hisilicon.com>,
- jiangkunkun <jiangkunkun@huawei.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
-References: <20250502102707.110516-1-shameerali.kolothum.thodi@huawei.com>
- <20250502102707.110516-2-shameerali.kolothum.thodi@huawei.com>
- <877c2ut0zk.fsf@pond.sub.org>
- <e02e884b-0f3d-4426-8a67-2cbd23e80e8c@redhat.com>
- <87frhglwjl.fsf@pond.sub.org> <72f9043a73294bfc9b539ae9b94836d3@huawei.com>
- <d21e0c57-b89a-4c79-958e-e633de039e4c@redhat.com>
- <CAFEAcA9bZ6Rd4PSMG61mJ5Ja07j3--DQE7KqA8RZwxGH3N51sA@mail.gmail.com>
-From: Donald Dutile <ddutile@redhat.com>
-In-Reply-To: <CAFEAcA9bZ6Rd4PSMG61mJ5Ja07j3--DQE7KqA8RZwxGH3N51sA@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: G84DezjKq_LBhztL3290lTakH63T8onOEsjv7dk8mHQ_1747428832
-X-Mimecast-Originator: redhat.com
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, John Snow <jsnow@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Peter Maydell <peter.maydell@linaro.org>,
+ Alexandre Iooss <erdnaxe@crans.org>,
+ "Kasireddy, Vivek" <vivek.kasireddy@intel.com>
+References: <20250506125715.232872-1-alex.bennee@linaro.org>
+ <20250506125715.232872-13-alex.bennee@linaro.org>
+ <d5a8cec1-f689-4d31-b6bb-b63eaa4ce2af@daynix.com>
+ <d370ffec-f430-4377-80bc-323d5087834c@collabora.com>
+ <f7d65908-cd12-4c44-a80a-07e23ff27833@daynix.com>
+ <PH8PR11MB6879FBA9E5133649714D74AEFA97A@PH8PR11MB6879.namprd11.prod.outlook.com>
 Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <PH8PR11MB6879FBA9E5133649714D74AEFA97A@PH8PR11MB6879.namprd11.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=ddutile@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.686,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZERfQsosq9BY
+Content-Transfer-Encoding: 8bit
+X-TUID: W8VG+OuyL44L
 
-
-
-On 5/8/25 9:57 AM, Peter Maydell wrote:
-> On Thu, 8 May 2025 at 14:46, Donald Dutile <ddutile@redhat.com> wrote:
-> 
->> I would refer to the ARM SMMU spec, Figure 2.3 in the G.a version, where
->> it's slightly different; more like:
+On 2025/05/13 2:01, Kim, Dongwon wrote:
+>> Subject: Re: [PATCH v2 12/14] ui/gtk-gl-area: Remove extra draw call in refresh
 >>
->>    +------------------+
->>    |   PCIe Devices   | (one device, unless a PCIe switch is btwn the RC & 'Devices';
->>    +------------------+   or, see more typical expansion below)
->>              |
->>       +-------------+
->>       |  PCIe RC A  |
->>       +-------------+
->>              |
->>       +------v---+    +-----------------------------------+
->>       | SMMUv3.A |    | Wide assortment of other platform |
->>       | (IOMMU)  |    |   devices not using SMMU          |
->>       +----+-----+    +-----------------------------------+
->>            |                      |   |   |
->>     +------+----------------------+---+---+-+
->>     |         System Interconnect           |
->>     +---------------------------------------+
->>                                  |
->>     +-------+--------+     +-----+-------------+
->>     |   System RAM   |<--->| CPU (NUMA socket) |
->>     +----------------+     +-------------------+
+>> On 2025/05/10 21:12, Dmitry Osipenko wrote:
+>>> On 5/10/25 07:52, Akihiko Odaki wrote:
+>>>> On 2025/05/06 21:57, Alex Bennée wrote:
+>>>>> From: Dongwon Kim <dongwon.kim@intel.com>
+>>>>>
+>>>>> This partially reverts commit
+>>>>> 77bf310084dad38b3a2badf01766c659056f1cf2
+>>>>> which causes some guest display corruption when gtk-gl-area is used
+>>>>> for GTK rendering (e.g. Wayland Compositor) possibly due to
+>>>>> simulataneous accesses on the guest frame buffer by host compositor
+>>>>> and the guest.
+>>>>
+>>>> Simply reverting the part of the commit may re-introduce the problem
+>>>> the commit tried to solve, which will be a regression as the commit
+>>>> is already included in releases.
+>>>>
+>>>> I guess the problem is that the gl_block callback of GraphicHwOps is
+>>>> not properly implemented and it is what should be fixed.
+>>>
+>>> The reverted commit made QEMU GTK GUI unusable under Wayland. It was
+>>> fixing problem which requires very specific QEMU setup, while breaking
+>>> generic setups. The offending change should be reverted as it
+>>> introduced a bigger problem. A proper solution should be found,
+>>> meanwhile QEMU GTK under Wayland should be restored, IMO.
+>>>
+>>> For the reference see [1]. First bug reports about a mirrored display
+>>> problem were made to me on IRC a year ago and the root of the problem
+>>> was identified only couple months ago.
+>>>
+>>> [1]
+>>> https://lore.kernel.org/qemu-devel/5aedf1ad-d9b0-4edb-a050-f3d9bee9bcc
+>>> b@collabora.com/
 >>
->> In fact, the PCIe can be quite complex with PCIe bridges, and multiple Root Ports (RP's),
->> and multiple SMMU's:
+>> That describes the context well. It should also be described with an inline
+>> comment so that we will not lose track of the known problem.
+> 
+> [Kim, Dongwon]  Do you mean we should have this info in the commit message?
+
+A comment in the code is better.
+
+A description of the current version of the code should be left as a 
+comment so that readers can find it without git blame.
+
+The commit message is suited for a description of the old version of 
+code (e.g., a bug fixed by the commit) or a comparison between the old 
+and new version; leaving them as comments will infinitely increase the 
+amount of the code.
+
+In this case, it is about a problem with the current version so it 
+should be written as a comment.
+
+> 
 >>
->>       +--------------+   +--------------+   +--------------+
->>       | PCIe Device  |   | PCIe Device  |   | PCIe Device  |
->>       +--------------+   +--------------+   +--------------+
->>             |                  |                  |        <--- PCIe bus
->>        +----------+       +----------+      +----------+
->>        | PCIe RP  |       | PCIe RP  |      | PCIe RP  |  <- may be PCI Bridge, may not
->>        +----------+       +----------+      +----------+
->>            |                  |                  |
->>        +----------+       +----------+       +----------+
->>        |  SMMU    |       |  SMMU    |       |  SMMU    |
->>        +----------+       +----------+       +----------+
->>            |                  |                  |   <- may be a bus, may not(hidden from OS)
->>            +------------------+------------------+
->>                               |
->>               +--------------------------+
->>               |          PCI RC A        |
->>               +--------------------------+
+>>>
+>>> As of today, the GTK problem isn't understood.
+>>>
 >>
+>> If your guess about simultaneous accesses on the guest frame buffer is correct,
+>> it's a bug of the emulated device, not GTK.
 > 
-> 
->> The final take away: the (QEMU) SMMU/IOMMU must be associated with a PCIe bus
->> OR, the format has to be something like:
->>     -device smmuv3, id=smmuv3.1
->>     -device <blah>, smmu=smmuv3.1
->> where the device <-> SMMU (or if extended to x86, iommu) associativity is set w/o bus associativity.
-> 
-> The problem here seems to me to be that in the hardware we're
-> modelling the SMMU always exists, because it's in the SoC,
-> but you're trying to arrange for it to be created on the
-> command line, via -device.
-> 
-> We don't have any of these problems with the current 'virt'
-> board code, because we have the board code create the iommu
-> (if the user asks for it via the iommu machine property),
-> and it can wire it up to the PCI root complex as needed.
-> 
-> thanks
-> -- PMM
-> 
-Peter,
-Hey!
-Learning more about the use-of/focus/expectation of '-device', I see your point.
-The issue is that there isn't just one SMMU in a system (as the diagram above illustrates), they have associativity to
-(pcie) devices (possibly more accurately, a pcie-(sub) tree) (for the focus of this discussion; could be non-pcie devices),
-and we need an option format to associate smmu to pcie(domain/subtree(RPs), devices), and that typically references
-busses (pxbs?) &/or pcie devices (-device). ... or do we only need to add iommu associativity to devices,
-  ie, the second option line above, -device <blah>, iommu=smmuv3.1 ... which should enable the right IORT(s) to be
-made for multiple smmus/iommus.
+> [Kim, Dongwon]  "Simultaneous accesses" was just a guess. This problem needs to be debugged further.
+> BTW, the problem the original commit was trying to fix is some lockup due to suspended rendering on
+> minimized or hidden GTK window. But according to Dmitry, this case wasn't hit in his setup with wayland
+> compositor so I assume the risk of not having an extra draw in gtk-gl-area would be low.
 
-- Don
+It is better to describe the estimation of the risk in the comment too.
 
-
+Regards,
+Akihiko Odaki

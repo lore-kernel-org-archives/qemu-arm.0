@@ -1,103 +1,96 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp4189721njb;
-        Mon, 19 May 2025 08:22:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU0oMlsoEDSr4RQ1iP4rm5bSUBGtmkU/txLQg8DWkdu13d7DXzmyBs09rKwp7POCMfJzyJtwDxViqNcCg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFuxS+0idTHJUbih0Bq+WmSjWAxsClr9GT4RGjNQaJ+YYUtslMf2QfsPk7X4bcxC15hn/hC
-X-Received: by 2002:a05:622a:1147:b0:476:6f90:395e with SMTP id d75a77b69052e-494b07cecb5mr244336571cf.21.1747668132959;
-        Mon, 19 May 2025 08:22:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747668132; cv=none;
+Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp4199329njb;
+        Mon, 19 May 2025 08:36:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUKRfnH9CIOVVFvuzykrhiLjsKus/8BnT7yC4sH/++olpT0G9/nf440oarLfOQPG9bs/DQMltF48AQOSw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEC0wmWcnSS90TOgGPf63BiERZridxOqJJdQ+VAzPffxBHCYO3ZQRQpPE42/trpEq1d7bsj
+X-Received: by 2002:ad4:5c6b:0:b0:6e8:8798:275d with SMTP id 6a1803df08f44-6f8b06f0796mr226790406d6.0.1747669016755;
+        Mon, 19 May 2025 08:36:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747669016; cv=none;
         d=google.com; s=arc-20240605;
-        b=aFrKO7RNC2Fx1Se/GxVjLBF/j9BoRV2kQEE6U+IPHAhGcWr8nCH7zXVAKCct2TJPiV
-         /B12UtP0TQTeT08FSccYuDwoNfbSPWRbFLPDWUjZnTDB5Zd2ObQy9vPvWVHhSoNUoaQ3
-         Da9w+orUPwtvSvFRDfLD8mWfw8ugXR0BNdxEG0ypnWMO8TCpu1dMK+eLKbJSQ0oMtQmc
-         CqXek4o35vsRUQxddwVLkJT2Cdf/Tsk1K2h1hqfnLIreUOs/5+ocLQT3lB0IJiHPvo0Y
-         yrWnUtZOqTnOEDnMo2eSH5ECcnmzRf7dHI4fBcT2XSNBPibPB974uml+3qgKe0xrv8jp
-         euIg==
+        b=FrjhLElxFnFBobNVlXNA6a9CqxM7PnGeKl20XwwCXDhsHyOIAnv1ik1UNRoxdR1wkq
+         c5ocaZArP+ceBVyavul0JAeIPXDxZ+xR+2cnnRTU0LttjDV/6iEzKb4ETVfDfqv/0g9V
+         ZhSf/NCr2SNZfbzi1MK6/Rr/6z4pl5nXEWcamXJQFS34EAOCZiieBhkxLa67+guhJWbQ
+         dAPjw5aXl0cp+Yx0z2vf2GIhLnwoF7JwE17OHl03i/Z+7Nty0XOyPI/eOffdJmET6I8P
+         L7PQBz+cu2KO2AetaDX1TY8iJrjqazf3aacO/KhKPql7jvx+YJ59zSPEOVoNTBLIYm/6
+         1aMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:dkim-signature
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=QLgLE0ZA/brDzSvdMKYG6n/wKEqkydhjkG9vOFhWNP0=;
-        fh=imbpCNWr0c9cGotT0S0gK2Ku0NTEEh1/OS2/SvdfCmI=;
-        b=kSoky8X23EeFmhu1o0vEwcg2lzDHudmZEe/HtWg8A1hk4z4LGscnuwK96k9sVF6pzC
-         cD1Qo9flY7yKUvVWmLYh1hCPljXBSY8ATEKFxh0a5MeG5Yz3oKufDcD+R+WkgU5/K6qx
-         Hew0Hq0a0jaMSM382zK5C5Z7eareQtv7QJF8TdmU/YvnbW5veGpWwQNfMh71JOLmn79m
-         Daee5ovbcsX0EaAWD7dlu/la2jyzPTqGzJlr9ruPtNIVJk3b7RBwEufAUfve4PyTxbMP
-         eXV+mSkwmQX5nhNlDLmv+F3JQWPtwcywuponM8YcmD6/rfE1usXu8w1eHDazLb3qLpiD
-         Kmbw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=H6NHArcCMVkOLbcABE2618sTFVVS5AMzB9+QW38JU1g=;
+        fh=7CBlhCm8rPguwA6q+glmdL309TG5LEE0NmARedT2V+Q=;
+        b=Y9mU4zHzbHA2u+iSiR5cbHd46mlzokcaG+JE+vSbZC4Cd9CKeKyZ4hIjtc42C3f36e
+         TU3ZCDrb/HmCNNZr1fUB106sz2+WnPIJnpQ4JGqLJmESxkFR0lAOQO4K8ah5B/rqHrJQ
+         TazVWuKJoMciaE0hwu3NTMAhMDD4R7dI1KXLbQ3rcDnhwsQuwWOLuR0QvHQQpl2ZhqGG
+         iEp05EryYZo9q3Y56WDSlH8AYyDDao95lZ1jun7SUWv9Q6BB/P8cOpu8dadhbV3ekmZM
+         aowEpXLPrGzzeU1GMz1YQ4rTd1H5BhWu4RXK0HRCKzlruONrsP2HCCG1MCb9+vIo4o36
+         ubFA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nut.email header.s=uberspace header.b=SDHW1W4X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-494ae40c572si89692041cf.20.2025.05.19.08.22.12
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-87bec143182si3176777241.66.2025.05.19.08.36.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 May 2025 08:22:12 -0700 (PDT)
+        Mon, 19 May 2025 08:36:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nut.email header.s=uberspace header.b=SDHW1W4X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uH2IC-0006tP-Ar; Mon, 19 May 2025 11:20:40 -0400
+	id 1uH2Xo-00069y-Kf; Mon, 19 May 2025 11:36:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <neither@nut.email>) id 1uH2I9-0006sU-CK
- for qemu-arm@nongnu.org; Mon, 19 May 2025 11:20:37 -0400
-Received: from mailgate02.uberspace.is ([185.26.156.114])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <neither@nut.email>) id 1uH2I6-0005T8-Qo
- for qemu-arm@nongnu.org; Mon, 19 May 2025 11:20:36 -0400
-Received: from skiff.uberspace.de (skiff.uberspace.de [185.26.156.131])
- by mailgate02.uberspace.is (Postfix) with ESMTPS id ED2A7180E93
- for <qemu-arm@nongnu.org>; Mon, 19 May 2025 17:20:23 +0200 (CEST)
-Received: (qmail 1422 invoked by uid 990); 19 May 2025 15:20:23 -0000
-Authentication-Results: skiff.uberspace.de;
-	auth=pass (plain)
-Received: from unknown (HELO unkown) (::1)
- by skiff.uberspace.de (Haraka/3.0.1) with ESMTPSA;
- Mon, 19 May 2025 17:20:23 +0200
-From: Julian Ganz <neither@nut.email>
-To: qemu-devel@nongnu.org
-Cc: Julian Ganz <neither@nut.email>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH v5 06/25] target/arm: call plugin trap callbacks
-Date: Mon, 19 May 2025 17:19:46 +0200
-Message-ID: <e90a289ac289d98ebf9982de302d2655f96b22d3.1747666625.git.neither@nut.email>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <cover.1747666625.git.neither@nut.email>
-References: <cover.1747666625.git.neither@nut.email>
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1uH2Xm-00069k-7b; Mon, 19 May 2025 11:36:46 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1uH2Xi-0007Nw-Tt; Mon, 19 May 2025 11:36:45 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4b1MCW4XJDz67LSk;
+ Mon, 19 May 2025 23:33:27 +0800 (CST)
+Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
+ by mail.maildlp.com (Postfix) with ESMTPS id DAAF214010C;
+ Mon, 19 May 2025 23:36:32 +0800 (CST)
+Received: from a2303103017.china.huawei.com (10.203.177.99) by
+ frapeml500003.china.huawei.com (7.182.85.28) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 19 May 2025 17:36:31 +0200
+To: <mst@redhat.com>, <imammedo@redhat.com>
+CC: <qemu-devel@nongnu.org>, <anisinha@redhat.com>, <armbru@redhat.com>,
+ <berrange@redhat.com>, <dapeng1.mi@linux.intel.com>, <eric.auger@redhat.com>, 
+ <farman@linux.ibm.com>, <gustavo.romero@linaro.org>,
+ <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
+ <linuxarm@huawei.com>, <mtosatti@redhat.com>, <peter.maydell@linaro.org>,
+ <philmd@linaro.org>, <qemu-arm@nongnu.org>, <richard.henderson@linaro.org>,
+ <shameerali.kolothum.thodi@huawei.com>, <shannon.zhaosl@gmail.com>,
+ <yangyicong@hisilicon.com>, <zhao1.liu@intel.com>
+Subject: [PATCH v11 0/6] Specifying cache topology on ARM
+Date: Mon, 19 May 2025 16:36:26 +0100
+Message-ID: <20250519153632.537-1-alireza.sanaee@huawei.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Rspamd-Bar: -----
-X-Rspamd-Report: REPLY(-4) BAYES_HAM(-2.999635) MID_CONTAINS_FROM(1)
- MIME_GOOD(-0.1) R_MISSING_CHARSET(0.5)
-X-Rspamd-Score: -5.599635
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=nut.email; s=uberspace;
- h=from:to:cc:subject:date;
- bh=6EPHJrxC3MYFqp3FW+kc56Uyv/wE7rHT4/YdFGMzvNc=;
- b=SDHW1W4XgHTidjjC4jAYj6gMV5VckHVrtoMWVn9aGgoSi0KxYUcoQbZ2KBDPbHIbOhvTaxcZr3
- odEIJYwpZ4nCLJQ0SqPeUlOJLdSYkVk1Yl+uv/86V8R4uuV/Rqul/yXXRPhoQ5ag+HNELC4jARZM
- aqHHRZTcC5PBEmVWhf+2pNp7E/EGxA9hETo/szXz25buCKPJKtw7ppgUVzYvmFwqRdDytNFPc5ct
- jK/vbyWfOujqUUGLa+odrn4v56Glzfg87jPZrz3v89ZpQoOYqCeOPN9dVImtzf8Dii9idrrZoDj7
- Ekx30gZB50nqDNBpayqAw25zZ9lD7h1uJv3UYGWlyeEeXk4ONCnWI3hp2lFQKd+d3ynuNyAYDpO3
- O3DxLtzy6BFW0U6zZF/hZCOGFKtacKAxBtodCEvEW8SUM38VzVJWmteJnOVv0jT3rBgpZDp4GxYy
- 9wBtUv+21nyc695668SpW5VtPbFHBW2pHOrxG5MfBUhZwPTWNWqYFTv5gP3juQU+pS8303KdUQAX
- pjHUS4952vPEXBe+KvuKNEGPEQHTKS9c94OyQeUwEIF3outtR4WHttOtPTHB1+AB5kPAOd7eQIsU
- kM7zd6Gli4a7vC42eb2mZIDcQhELRvY36Ns1Dq90GRBGF7aRBzDnDwmEg/vyPI31i3JtlXDZabbY
- g=
-Received-SPF: pass client-ip=185.26.156.114; envelope-from=neither@nut.email;
- helo=mailgate02.uberspace.is
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Content-Type: text/plain
+X-Originating-IP: [10.203.177.99]
+X-ClientProxiedBy: lhrpeml500005.china.huawei.com (7.191.163.240) To
+ frapeml500003.china.huawei.com (7.182.85.28)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,145 +103,151 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
+From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CNOTNuXM+2gK
+X-TUID: 2HxgzJEfIvaA
 
-We recently introduced API for registering callbacks for trap related
-events as well as the corresponding hook functions. Due to differences
-between architectures, the latter need to be called from target specific
-code.
+Specifying the cache layout in virtual machines is useful for
+applications and operating systems to fetch accurate information about
+the cache structure and make appropriate adjustments. Enforcing correct
+sharing information can lead to better optimizations. Patches that allow
+for an interface to express caches was landed in the prior cycles. This
+patchset uses the interface as a foundation.  Thus, the device tree and
+ACPI/PPTT table, and device tree are populated based on
+user-provided information and CPU topology.
 
-This change places hooks for ARM (and Aarch64) targets. We decided to
-treat the (V)IRQ, (VI/VF)NMI, (V)FIQ and VSERR exceptions as interrupts
-since they are, presumably, async in nature.
+Example:
 
-Signed-off-by: Julian Ganz <neither@nut.email>
----
- target/arm/helper.c       | 24 ++++++++++++++++++++++++
- target/arm/tcg/m_helper.c | 18 ++++++++++++++++++
- 2 files changed, 42 insertions(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 7631210287..06070441a6 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -34,6 +34,7 @@
- #endif
- #include "cpregs.h"
- #include "target/arm/gtimer.h"
-+#include "qemu/plugin.h"
- 
- #define HELPER_H "tcg/helper.h"
- #include "exec/helper-proto.h.inc"
-@@ -10214,6 +10215,24 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
-     }
- }
- 
-+static void arm_do_plugin_vcpu_interrupt_cb(CPUState *cs, uint64_t from)
-+{
-+    switch (cs->exception_index) {
-+    case EXCP_IRQ:
-+    case EXCP_VIRQ:
-+    case EXCP_NMI:
-+    case EXCP_VINMI:
-+    case EXCP_FIQ:
-+    case EXCP_VFIQ:
-+    case EXCP_VFNMI:
-+    case EXCP_VSERR:
-+        qemu_plugin_vcpu_interrupt_cb(cs, from);
-+        break;
-+    default:
-+        qemu_plugin_vcpu_exception_cb(cs, from);
-+    }
-+}
-+
- static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
- {
-     /*
-@@ -10880,6 +10899,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
-     unsigned int new_el = env->exception.target_el;
-+    uint64_t last_pc = env->pc;
- 
-     assert(!arm_feature(env, ARM_FEATURE_M));
- 
-@@ -10896,6 +10916,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
-     if (tcg_enabled() && arm_is_psci_call(cpu, cs->exception_index)) {
-         arm_handle_psci_call(cpu);
-         qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
-+        qemu_plugin_vcpu_hostcall_cb(cs, last_pc);
-         return;
-     }
- 
-@@ -10907,6 +10928,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
- #ifdef CONFIG_TCG
-     if (cs->exception_index == EXCP_SEMIHOST) {
-         tcg_handle_semihosting(cs);
-+        qemu_plugin_vcpu_hostcall_cb(cs, last_pc);
-         return;
-     }
- #endif
-@@ -10932,6 +10954,8 @@ void arm_cpu_do_interrupt(CPUState *cs)
-     if (!kvm_enabled()) {
-         cs->interrupt_request |= CPU_INTERRUPT_EXITTB;
-     }
-+
-+    arm_do_plugin_vcpu_interrupt_cb(cs, last_pc);
- }
- #endif /* !CONFIG_USER_ONLY */
- 
-diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
-index 6614719832..bcb4aae0d5 100644
---- a/target/arm/tcg/m_helper.c
-+++ b/target/arm/tcg/m_helper.c
-@@ -23,6 +23,7 @@
- #if !defined(CONFIG_USER_ONLY)
- #include "hw/intc/armv7m_nvic.h"
- #endif
-+#include "qemu/plugin.h"
- 
- static void v7m_msr_xpsr(CPUARMState *env, uint32_t mask,
-                          uint32_t reg, uint32_t val)
-@@ -2185,6 +2186,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
-     CPUARMState *env = &cpu->env;
-     uint32_t lr;
-     bool ignore_stackfaults;
-+    uint64_t last_pc = env->pc;
- 
-     arm_log_exception(cs);
- 
-@@ -2352,6 +2354,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
-         g_assert_not_reached();
- #endif
-         env->regs[15] += env->thumb ? 2 : 4;
-+        qemu_plugin_vcpu_hostcall_cb(cs, last_pc);
-         return;
-     case EXCP_BKPT:
-         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_DEBUG, false);
-@@ -2418,6 +2421,21 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
- 
-     ignore_stackfaults = v7m_push_stack(cpu);
-     v7m_exception_taken(cpu, lr, false, ignore_stackfaults);
-+
-+    switch (cs->exception_index) {
-+    case EXCP_IRQ:
-+    case EXCP_VIRQ:
-+    case EXCP_NMI:
-+    case EXCP_VINMI:
-+    case EXCP_FIQ:
-+    case EXCP_VFIQ:
-+    case EXCP_VFNMI:
-+    case EXCP_VSERR:
-+        qemu_plugin_vcpu_interrupt_cb(cs, last_pc);
-+        break;
-+    default:
-+        qemu_plugin_vcpu_exception_cb(cs, last_pc);
-+    }
- }
- 
- uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
++----------------+                            +----------------+
+|    Socket 0    |                            |    Socket 1    |
+|    (L3 Cache)  |                            |    (L3 Cache)  |
++--------+-------+                            +--------+-------+
+         |                                             |
++--------+--------+                            +--------+--------+
+|   Cluster 0     |                            |   Cluster 0     |
+|   (L2 Cache)    |                            |   (L2 Cache)    |
++--------+--------+                            +--------+--------+
+         |                                             |
++--------+--------+  +--------+--------+    +--------+--------+  +--------+----+
+|   Core 0         | |   Core 1        |    |   Core 0        |  |   Core 1    |
+|   (L1i, L1d)     | |   (L1i, L1d)    |    |   (L1i, L1d)    |  |   (L1i, L1d)|
++--------+--------+  +--------+--------+    +--------+--------+  +--------+----+
+         |                   |                       |                   |
++--------+              +--------+              +--------+          +--------+
+|Thread 0|              |Thread 1|              |Thread 1|          |Thread 0|
++--------+              +--------+              +--------+          +--------+
+|Thread 1|              |Thread 0|              |Thread 0|          |Thread 1|
++--------+              +--------+              +--------+          +--------+
+
+
+The following command will represent the system relying on **ACPI PPTT tables**.
+
+./qemu-system-aarch64 \
+ -machine virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluseter,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+ -cpu max \
+ -m 2048 \
+ -smp sockets=2,clusters=1,cores=2,threads=2 \
+ -kernel ./Image.gz \
+ -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=force" \
+ -initrd rootfs.cpio.gz \
+ -bios ./edk2-aarch64-code.fd \
+ -nographic
+
+The following command will represent the system relying on **the device tree**.
+
+./qemu-system-aarch64 \
+ -machine virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluseter,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+ -cpu max \
+ -m 2048 \
+ -smp sockets=2,clusters=1,cores=2,threads=2 \
+ -kernel ./Image.gz \
+ -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=off" \
+ -initrd rootfs.cpio.gz \
+ -nographic
+
+Failure cases:
+    1) There are scenarios where caches exist in systems' registers but
+    left unspecified by users. In this case qemu returns failure.
+
+    2) SMT threads cannot share caches which is not very common. More
+    discussions here [1].
+
+Currently only three levels of caches are supported to be specified from
+the command line. However, increasing the value does not require
+significant changes. Further, this patch assumes l2 and l3 unified
+caches and does not allow l(2/3)(i/d). The level terminology is
+thread/core/cluster/socket right now. Hierarchy assumed in this patch:
+Socket level = Cluster level + 1 = Core level + 2 = Thread level + 3;
+
+TODO:
+  1) Making the code to work with arbitrary levels
+  2) Separated data and instruction cache at L2 and L3.
+  3) Additional cache controls.  e.g. size of L3 may not want to just
+  match the underlying system, because only some of the associated host
+  CPUs may be bound to this VM.
+
+[1] https://lore.kernel.org/devicetree-spec/20250203120527.3534-1-alireza.sanaee@huawei.com/
+
+Change Log:
+  v10->v11:
+   * Fix some coding style issues.
+   * Rename some variables.
+
+  v9->v10:
+   * PPTT rev down to 2.
+
+  v8->v9:
+   * rebase to 10
+   * Fixed a bug in device-tree generation related to a scenario when
+        caches are shared at core in higher levels than 1.
+  v7->v8:
+   * rebase: Merge tag 'pull-nbd-2024-08-26' of https://repo.or.cz/qemu/ericb into staging
+   * I mis-included a file in patch #4 and I removed it in this one.
+
+  v6->v7:
+   * Intel stuff got pulled up, so rebase.
+   * added some discussions on device tree.
+
+  v5->v6:
+   * Minor bug fix.
+   * rebase based on new Intel patchset.
+     - https://lore.kernel.org/qemu-devel/20250110145115.1574345-1-zhao1.liu@intel.com/
+
+  v4->v5:
+    * Added Reviewed-by tags.
+    * Applied some comments.
+
+  v3->v4:
+    * Device tree added.
+
+Depends-on: Building PPTT with root node and identical implementation flag
+Depends-on: Msg-id: 20250423114130.902-1-alireza.sanaee@huawei.com
+
+Alireza Sanaee (6):
+  target/arm/tcg: increase cache level for cpu=max
+  arm/virt.c: add cache hierarchy to device tree
+  bios-tables-test: prepare to change ARM ACPI virt PPTT
+  hw/acpi/aml-build.c: add cache hierarchy to pptt table
+  tests/qtest/bios-table-test: testing new ARM ACPI PPTT topology
+  Update the ACPI tables according to the acpi aml_build change, also
+    empty bios-tables-test-allowed-diff.h.
+
+ hw/acpi/aml-build.c                        | 220 ++++++++++++-
+ hw/arm/virt-acpi-build.c                   |   8 +-
+ hw/arm/virt.c                              | 359 +++++++++++++++++++++
+ hw/cpu/core.c                              |  92 ++++++
+ hw/loongarch/virt-acpi-build.c             |   2 +-
+ include/hw/acpi/aml-build.h                |   4 +-
+ include/hw/arm/virt.h                      |   5 +
+ include/hw/cpu/core.h                      |  27 ++
+ target/arm/tcg/cpu64.c                     |  13 +
+ tests/data/acpi/aarch64/virt/PPTT.topology | Bin 356 -> 540 bytes
+ tests/qtest/bios-tables-test.c             |   4 +
+ 11 files changed, 724 insertions(+), 10 deletions(-)
+
 -- 
-2.49.0
+2.43.0
 

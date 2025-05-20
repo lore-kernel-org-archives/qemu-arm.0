@@ -1,83 +1,83 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp475985njc;
-        Tue, 20 May 2025 05:54:15 -0700 (PDT)
-X-Received: by 2002:a05:6a21:3984:b0:215:fd75:c43e with SMTP id adf61e73a8af0-2170cde530amr23747954637.27.1747745655334;
-        Tue, 20 May 2025 05:54:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747745655; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp476021njc;
+        Tue, 20 May 2025 05:54:20 -0700 (PDT)
+X-Received: by 2002:a17:903:3d0f:b0:231:c99b:9fd7 with SMTP id d9443c01a7336-231d43ad4b6mr237768145ad.19.1747745660052;
+        Tue, 20 May 2025 05:54:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747745660; cv=none;
         d=google.com; s=arc-20240605;
-        b=X0RdF8RSOOfsUyK0jdHYXpeb5nz6tnOb8H27Hou1BIV8XWK5Jz3sVyBPpofzhLvsdq
-         Qe4PYvkgvsIiRNFptN4zqYnRlotQsEK2hkm2+Mx4wVtE5JRTc+J+Pd1AwylpubgQ7/4r
-         8iGavFOvd5j6mnnIrVapTNWKjsArtp7fSs8ZTfnUopjDNy4B49TQHPFfc7o56w3Oj0ZH
-         u6cBtlp4Qf+Zf6D7FNI4UqpPNVirczKr0yhHhKVS80EdWaVSifgc9L/LxISOCZGhNjo1
-         aERirBxvOBC48k+ESJEXsvMqRJCsKGs1lKfimRDZnVuY5qpIudOogRshlTExkwUPO08r
-         1Akg==
+        b=fPeS+Jthcs/yFjQOurTDSN99BLmDj3NTc0XSd2MY32hN/0XI/nrDuhcw32RilyjkUY
+         p45jaBN4Z3tl464VOuCUKmm7u+pu//NxVRtgtQXtLC9+3v6Tp3L6m44iPkQTnfdIkofT
+         tVlDk7cJvvzzI81+a6LA/38sWtSrxoVyQKMzuwuF1EyhZzE/Je5ozB/6xwFGWSDQoj+/
+         2nXTfxeqOG92mhv6T+1Bw02E9xeVcH5/sUngYdVRqPC/x8E4eLb/rEykD4CrMlHsD9D0
+         WKXvSPsXPNtDxmtCA9ldGKNB3kKh49ATe5dfPp3C/ngG/jtMKxgaJANncKf5pzGxZPVd
+         l6Ag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=b7+9niXXB1Fhurf42nBGF3zTCxGh2saaYSnPS8Sr56Q=;
-        fh=c83Wg5kxw/cp3XwD8SOnXo6amZEECL7ObMsBt0nSc5o=;
-        b=aUmNvME6LV4eMP8p2kHlUk/hWQwgs9h/Qm7fdsWxo9/QCt/xGkkgXWEmXmooxKbazA
-         jELnfl7ObgQfQyhdZCMgvFE8WqoO0iu9yCsHOGEK4OIRgMhlSCbUrDBFZB2ae2Wc2jJY
-         mWv248Co96lbwH55KwxN3/VCLhW4p/MXYAlNgX7ryHsbG3tC5VIUZrPjAsXfU5NOpEPL
-         hQ9nOiOMeqonhSvY6Sxkafg2oBRN84/bwVz0ZWSXI3ky9Tnv306Iv8NuZAgYyh5SKwSK
-         YJ2n0giKc2qhhat/4OOlNX4Zp0lbLBNhOFAC9UumFccJfORX4qOnUQ7v3fb8GDxq7FIE
-         7Mhw==;
+        bh=cDG0pwUWpFnKg/l7uQqlMEQTPTDfS039RvtWFwYIZBA=;
+        fh=IY4uCNm7bjB4PRpOwzUwbF41e7X1eH3YrboLhFN8eP0=;
+        b=GmtAG8ofMokUgVrjYWuqh7cbzO6xFZAj+B89hs/C3rCfkpzNPKEhLXj7zDuYLMsumr
+         chPVp7fAqX5ERh1fzYdAz36AihqsYBruBvgPihrvrdZamN3vlCFDv9eRzSHQbc/t/Mcs
+         suJbNPqDbK5JUIE/irUjtOovo12jsWK0opFsgBTIu9G4VxTUAKury5PC9PlAv8Vgu+ZR
+         +sfSs8A7ds5vKSjHfXe7TPVndHojjTIlaORgY4C4mCmb4717EV5bbmBKpjDWSvfJQpS9
+         jXrmJ+oLQq8glbzyazpcQsuvrw+7vGqSMRZzIdZeI/w4wh1QmkMYNPMN2lhcl2tkWT9E
+         Dy4w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UOpQfuAT;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="S/f676EX";
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 41be03b00d2f7-b26eb086982sor7230520a12.7.2025.05.20.05.54.15
+        by mx.google.com with SMTPS id d9443c01a7336-231d47d9a78sor72656715ad.0.2025.05.20.05.54.19
         (Google Transport Security);
-        Tue, 20 May 2025 05:54:15 -0700 (PDT)
+        Tue, 20 May 2025 05:54:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UOpQfuAT;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="S/f676EX";
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1747745655; x=1748350455; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1747745659; x=1748350459; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=b7+9niXXB1Fhurf42nBGF3zTCxGh2saaYSnPS8Sr56Q=;
-        b=UOpQfuATHdKUOE1Ymi2y0JLvLQalk1S3mVcm5gH9USV/S6FaH5zyaoGGXFBcME2o6s
-         RCmSBztCpCFcC1gJAdkPdCvjHpJ7PJ6Nr7cs9KIl85eU+WfIQdFrvdzwfobEq5B1iMl3
-         OOABxcCuLqRSs5/GVOJJSPEsmW/+wUQshNjJr2gldHAVvjMkeorZOn2GXqKlVV/8TiVk
-         h67w+LSdHSImV5ZPFJ8gxjAPTsIEKXBiXKC5pWAnUw2nSXc/KH7mKkjkIN9dbhhmMXXS
-         fv/FOeLBafig0qh+uxBip8Vjrv9sj0uu4ajdSuDz2brCLxCWUOx9SU0zju7kxLLKZPYw
-         uLmg==
+        bh=cDG0pwUWpFnKg/l7uQqlMEQTPTDfS039RvtWFwYIZBA=;
+        b=S/f676EX6csJZM8J2XJFofEJhGHc94VFYyG3aAj5Dv3sk6QYt66cyGSS97OUdFZk2S
+         /yp/P/0yak2JR5UwUg3UwLBYEdnVetcMyzoS9qSIRs0gVzD0yYpt3Nr1Vlifvx1h6olx
+         +DSWRchhi+N24udc3rPwaIt7j5qVolUDbB3YQ2bp6c9BQPLXT9dcnrb9U5hjGMx1uUUa
+         UegADAqvjoX8TBvFYcRYrEjZuwi9oMkyvbVaPYY2KAbz/dvjxjuV3PSy9OLT3RUVL8l2
+         +bRYzoi5p0rxWK92gEPdPAorpVYhdEix+0PoXGbamgKwDxskhvINEyZS+95tBsvrU0DD
+         9/rA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747745655; x=1748350455;
+        d=1e100.net; s=20230601; t=1747745659; x=1748350459;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=b7+9niXXB1Fhurf42nBGF3zTCxGh2saaYSnPS8Sr56Q=;
-        b=u2uMIBsVWovs7pJoO9IR+odnl8HwQa6aXiCexV6dw9IYrSdedRhnX8LL63koXvYIIK
-         wlMGMBkuoFdlF7GotlObbkpPxNT7w8hNyW5Hft6lEwomPF+0OBFW1bN6ojSvuRxtoo0k
-         6BBSJFP2yXrsEqtyNJGSGcAg1zuC7L5majK3PseQgaboBXNSGAP9hlS/CT1MgJB16wpi
-         Oxb4jwkv+/Tsmf78SrlF8LHckJTqojDKlKo7BLhCl20GAzgT6gONJ06usaSBVk+tjSAq
-         CqLB0fcHf4PvAfugbBaYqFHjNbEeyi+tnIFHEcYFNJ4g3hm+xdBP5EiIOr2K6IYSgdCG
-         qr5g==
-X-Forwarded-Encrypted: i=1; AJvYcCWKeRPGkO6fCYSXXK7+mbgWpcYjNZsG/qCqUWJq+d0YavK7ToYe1yctMkuN9d0HdqFRanOp7ik=@linaro.org, AJvYcCWR8cdhJPFFcqm2zDz90p+9gW1p7ZMA0IiObnItGXAq3Ia0M8d87fU50yhUfIE/AwJ2syHwCPW9LmfCzSySIdnzGw==@linaro.org, AJvYcCX9rcJB3OUnqtK5Pk+ObNyBNGg03lTi+IKJLByGwN7s8luJoxqMdJ+EBb8W09RQAn3WLgotzeYc5LC0y5xOJ52ESac=@linaro.org
-X-Gm-Message-State: AOJu0Yxbdwcf1EWyHhNrU+b36xDVK94ZhFYnwk3gdJ5PhcAx6HFQee1t
-	Q6foQlWXTJrA49GtAR0OhMm5YIq4Hnfl9LhFJfALxebsVzlQqwgYp3a1
-X-Gm-Gg: ASbGnct42nWFTwy6DVTr5Hz5HI1zsamNf/E20Sc+rW2zxWgALcotYyDnauNLtPnt+fV
-	gFk0RR0ZKh321os5LQgnod8YDNXbKs8WWZXQ2q57XvS4jYJVU2XT02ZrYUUjZ13LCqkGG9/dg73
-	L69KDh1SQ8ah2zSVmu5LlB7XFMrhUbvPZes0mDBBxINQgTnKoy7KWkndpP5lqG+Yk/e6BTQ6zrH
-	IvFVmdT1VmVRPFGsyyRCy/NKxkj1seSOFqMqpNRO19roV7UQcd9nrt3iSAjNzyFbxcmcQ7yGVuB
-	/4GDdUViuy3deyeMCjiUbmwZRxxBtdrn+R+MmPwUNJ7ppsbxjpkJaJOOG7xeIQ==
-X-Google-Smtp-Source: AGHT+IFPlqRQ1YPOgXYMn8sylaCHdOyEFt8VqLuMxdXEvsU5rL1gozNwHMX/DB8mCdVHm0qWPQn8Vw==
-X-Received: by 2002:a17:90b:33c2:b0:2ff:58b8:5c46 with SMTP id 98e67ed59e1d1-30e830f7b18mr25403623a91.8.1747745654522;
-        Tue, 20 May 2025 05:54:14 -0700 (PDT)
+        bh=cDG0pwUWpFnKg/l7uQqlMEQTPTDfS039RvtWFwYIZBA=;
+        b=Znw/Tg9qqEYWmih8Dk9GaUsvcpzeX037r5UzuBQwZDoVFD6sxCeMCydUYp/4CzcoN4
+         XY9JPvFT3tkhIzhbnMO5gPOw3njLlH1gunNiIkI3jnLyw7PJH2wOSnr0QJiLESAaF6PZ
+         nuOXtBx97S7kAh4ckExF1VomLj6AqRkJOq7/OCbZX89g7iF9IWkyA+diYDUZDcrFFyPF
+         ItoqX7c1rYAbbi//5Mq3UVLp21o+ez+HmBvkfn5pDWoVzfl/W9lS7FXOgoPxUQBO2gux
+         oQJSOCYwKK6avwWYAPchrh68tLzTupi0dEhLHjB5iHiSDSCkojHYQjFIptbS4yhMdsI4
+         JPkA==
+X-Forwarded-Encrypted: i=1; AJvYcCUl0D4WMgYL9j+v3ZHU9PM/gvzwnoRP7cGCNqUtKMkXEl8nPjDiCh7piWEKseCVobkt17Lc1kYMhk/M4tS080CPDg==@linaro.org, AJvYcCWDg0/jYjnv4cTAjrWEg0WoLCLraVs8xmnI4tS+vsHzVCv/QF3Ih8Zndid/bv2FLW4cI4gDCMtK9o0UlceOHaHghFg=@linaro.org, AJvYcCWT2QI6cK9XVUjRGItj2hlJ933aa1JQ9cxDeooakmKJT8fTFF/twng/v8wOUgKYSZmF6hdFCsg=@linaro.org
+X-Gm-Message-State: AOJu0Yxibd006hrnTULn04zONXW+4qg4fiYq8QTpD62K51BuiB/5bzUb
+	Vs/Dw+ji5spp3CaiX0jLYP+lYQXah6hms/3Vha3YNkRj/Wmo/VG33hMN+tM0QLnR
+X-Gm-Gg: ASbGncszBAuJ1ndKK3JN9LbsmIcVxMnkAwY0y6/uu87dQv0I6yeOYii/emrTgyMEGDc
+	gCE9wf/fYyRq8+5gwQaMjTdbGC+uYl3u8kHAROdAdI669y2hy2BdQjuIJe2NE+32qQyg5HEm2BS
+	KHvcO9k0yar2me0NTzar/tEAzRXeMFi2dbuULi2P3tzJYfR2GrYa/Q7o1rye9SSYgkocpu3dlm9
+	v5a0Kpf9+4ZdaDB9G3jc03R8CO5DdrogM6uZrB9lKnKWTh8cZM+a7EQrDXibjA++ouFAyG6szMs
+	WyBG/EizTRal4EvTxG2Hyk4vcoyVTuniksVxg1ZqTSP3Ha5t/6U=
+X-Google-Smtp-Source: AGHT+IHsAaRA9611AxQxc5NVjTREuknnJ6IQooXldl0fBT1ED1f+IK7+hrgUEmMdzmSvtkHTD8mfWg==
+X-Received: by 2002:a17:90b:2c8c:b0:30e:823f:ef31 with SMTP id 98e67ed59e1d1-30e823ff071mr24002616a91.29.1747745648991;
+        Tue, 20 May 2025 05:54:08 -0700 (PDT)
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from ktock.. ([240d:1a:3b6:8b00:1bde:8310:e993:5dcc])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30f36364f9asm1625916a91.4.2025.05.20.05.54.09
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30f36364f9asm1625916a91.4.2025.05.20.05.54.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 May 2025 05:54:14 -0700 (PDT)
+        Tue, 20 May 2025 05:54:08 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -100,273 +100,252 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Kohei Tokunaga <ktokunaga.mail@gmail.com>,
 	qemu-arm@nongnu.org,
 	qemu-riscv@nongnu.org
-Subject: [PATCH 21/33] tcg/wasm32: Add call instruction
-Date: Tue, 20 May 2025 21:51:23 +0900
-Message-ID: <f25caa407e47079f1c305869a5bce9857fb86cfd.1747744132.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH 20/33] tcg/wasm32: Add exit_tb/goto_tb/goto_ptr instructions
+Date: Tue, 20 May 2025 21:51:22 +0900
+Message-ID: <021c0cb8cc58c4cb673b38b75d20d27e8dec1c40.1747744132.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1747744132.git.ktokunaga.mail@gmail.com>
 References: <cover.1747744132.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: zdR29k0/qm+f
+X-TUID: ALi+rFcHkRFe
 
-To call QEMU functions from a TB (i.e. a Wasm module), those functions must
-be imported into the module.
+In the Wasm backend, each TB is compiled to a separeted Wasm
+module. Control transfer between TBs (i.e. from one Wasm module to
+another) is handled by the caller of the module.
 
-Wasm's call instruction can invoke an imported function using a locally
-assigned function index. When a call TCG operation is generated, the Wasm
-backend assigns a unique ID (starting from 0) to the target function. The
-mapping between the function pointer and its assigned ID is recorded in the
-HelperInfo structure.
+The goto_tb and goto_ptr operations are implemented by returning
+control to the caller using the return instruction. The destination
+TB's pointer is passed to the caller via a shared wasmContext
+structure which is accessible from both the Wasm module and the caller. This
+wasmContext must be provided to the module as an argument which is
+accessible as the local variable at index 0.
 
-Since Wasm's call instruction requires arguments to be pushed onto the Wasm
-stack, the backend retrieves the function arguments from TCG's stack array
-and pushes them to the stack before the call. After the function returns,
-the result is retrieved from the stack and set in the corresponding TCG
-variable.
+If the destination TB is the current TB itself, there is no need to
+return control to the caller. Instead, execution can jump directly to
+the top of the loop within the TB.
 
-In our Emscripten build configuration with !has_int128_type, a 128-bit value
-is represented by the Int128 struct. These values are passed indirectly via
-pointer parameters and returned via a prepended pointer argument, as
-described in [1].
-
-[1] https://github.com/WebAssembly/tool-conventions/blob/060cf4073e46931160c2e9ecd43177ee1fe93866/BasicCABI.md#function-arguments-and-return-values
+The exit_tb operation sets the pointer in wasmContext to 0, indicating that
+there is no destination TB.
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- tcg/wasm32.h                |  10 +++
- tcg/wasm32/tcg-target.c.inc | 170 ++++++++++++++++++++++++++++++++++++
- 2 files changed, 180 insertions(+)
+ MAINTAINERS                 |   1 +
+ tcg/wasm32.h                |  17 ++++++
+ tcg/wasm32/tcg-target.c.inc | 111 ++++++++++++++++++++++++++++++++++++
+ 3 files changed, 129 insertions(+)
+ create mode 100644 tcg/wasm32.h
 
-diff --git a/tcg/wasm32.h b/tcg/wasm32.h
-index ffa359b7dc..1944249891 100644
---- a/tcg/wasm32.h
-+++ b/tcg/wasm32.h
-@@ -12,6 +12,16 @@ struct wasmContext {
-      * Pointer to the TB to be executed.
-      */
-     void *tb_ptr;
-+
-+    /*
-+     * Pointer to the tci_tb_ptr variable.
-+     */
-+    void *tci_tb_ptr;
-+
-+    /*
-+     * Buffer to store 128bit return value on call.
-+     */
-+    void *buf128;
- };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index ac5070d058..3ca93f90de 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3953,6 +3953,7 @@ M: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+ S: Maintained
+ F: tcg/wasm32/
+ F: tcg/wasm32.c
++F: tcg/wasm32.h
  
- #endif
+ Block drivers
+ -------------
+diff --git a/tcg/wasm32.h b/tcg/wasm32.h
+new file mode 100644
+index 0000000000..ffa359b7dc
+--- /dev/null
++++ b/tcg/wasm32.h
+@@ -0,0 +1,17 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#ifndef TCG_WASM32_H
++#define TCG_WASM32_H
++
++/*
++ * wasmContext is a data shared among QEMU and wasm modules.
++ */
++struct wasmContext {
++    /*
++     * Pointer to the TB to be executed.
++     */
++    void *tb_ptr;
++};
++
++#endif
 diff --git a/tcg/wasm32/tcg-target.c.inc b/tcg/wasm32/tcg-target.c.inc
-index 77db50cf85..708af1fbb6 100644
+index ea0d1ca874..77db50cf85 100644
 --- a/tcg/wasm32/tcg-target.c.inc
 +++ b/tcg/wasm32/tcg-target.c.inc
-@@ -140,6 +140,9 @@ static const uint8_t tcg_target_reg_index[TCG_TARGET_NB_REGS] = {
- #define TMP32_LOCAL_1_IDX 2
- #define TMP64_LOCAL_0_IDX 3
+@@ -25,6 +25,8 @@
+  * THE SOFTWARE.
+  */
  
-+/* function index */
-+#define HELPER_IDX_START 0 /* helper funcitons */
++#include "../wasm32.h"
 +
- #define BUF_SIZE 1024
- typedef struct LinkedBuf {
-     struct LinkedBuf *next;
-@@ -619,6 +622,12 @@ static void tcg_wasm_out_op_i32_store(TCGContext *s, uint32_t a, uint32_t o)
-     tcg_wasm_out_op_loadstore(s, 0x36, a, o);
+ /* Used for function call generation. */
+ #define TCG_TARGET_CALL_STACK_OFFSET    0
+ #define TCG_TARGET_STACK_ALIGN          8
+@@ -128,6 +130,11 @@ static const uint8_t tcg_target_reg_index[TCG_TARGET_NB_REGS] = {
+  */
+ #define BLOCK_PTR_IDX 17
+ 
++/*
++ * pointer to wasmContext
++ */
++#define CTX_IDX 0
++
+ /* Temporary local variables */
+ #define TMP32_LOCAL_0_IDX 1
+ #define TMP32_LOCAL_1_IDX 2
+@@ -334,6 +341,14 @@ static void tcg_wasm_out_op_i32_eqz(TCGContext *s)
+ {
+     tcg_wasm_out8(s, 0x45);
+ }
++static void tcg_wasm_out_op_i32_eq(TCGContext *s)
++{
++    tcg_wasm_out8(s, 0x46);
++}
++static void tcg_wasm_out_op_i32_ne(TCGContext *s)
++{
++    tcg_wasm_out8(s, 0x47);
++}
+ static void tcg_wasm_out_op_i64_lt_u(TCGContext *s)
+ {
+     tcg_wasm_out8(s, 0x54);
+@@ -380,6 +395,10 @@ static void tcg_wasm_out_op_end(TCGContext *s)
+ {
+     tcg_wasm_out8(s, 0x0b);
+ }
++static void tcg_wasm_out_op_return(TCGContext *s)
++{
++    tcg_wasm_out8(s, 0x0f);
++}
+ static void tcg_wasm_out_op_var(TCGContext *s, uint8_t instr, uint8_t i)
+ {
+     tcg_wasm_out8(s, instr);
+@@ -590,6 +609,16 @@ static void tcg_wasm_out_op_i64_load32_u(TCGContext *s, uint32_t a, uint32_t o)
+     tcg_wasm_out_op_loadstore(s, 0x35, a, o);
  }
  
-+static void tcg_wasm_out_op_call(TCGContext *s, uint32_t func_idx)
++static void tcg_wasm_out_op_i32_load(TCGContext *s, uint32_t a, uint32_t o)
 +{
-+    tcg_wasm_out8(s, 0x10);
-+    tcg_wasm_out_leb128_uint32_t(s, func_idx);
++    tcg_wasm_out_op_loadstore(s, 0x28, a, o);
++}
++
++static void tcg_wasm_out_op_i32_store(TCGContext *s, uint32_t a, uint32_t o)
++{
++    tcg_wasm_out_op_loadstore(s, 0x36, a, o);
 +}
 +
  static void tcg_wasm_out_op_not(TCGContext *s)
  {
      tcg_wasm_out_op_i64_const(s, -1);
-@@ -1626,6 +1635,165 @@ static void tcg_wasm_out_goto_tb(
-     tcg_wasm_out_op_end(s);
+@@ -1518,6 +1547,85 @@ static void tcg_wasm_out_brcond(TCGContext *s, TCGType type,
+     tcg_wasm_out_op_br_to_label(s, l, true);
  }
  
-+static void push_arg_i64(TCGContext *s, int *stack_offset)
++#define tcg_wasm_out_ctx_i32_store_const(s, f, v)                       \
++    do {                                                                \
++        tcg_wasm_out_op_local_get(s, CTX_IDX);                          \
++        tcg_wasm_out_op_i32_const(s, v);                                \
++        tcg_wasm_out_op_i32_store(s, 0, offsetof(struct wasmContext, f)); \
++    } while (0)
++
++#define tcg_wasm_out_ctx_i32_store_r(s, f, r)                           \
++    do {                                                                \
++        tcg_wasm_out_op_local_get(s, CTX_IDX);                          \
++        tcg_wasm_out_op_global_get_r(s, r);                             \
++        tcg_wasm_out_op_i32_wrap_i64(s);                                \
++        tcg_wasm_out_op_i32_store(s, 0, offsetof(struct wasmContext, f)); \
++    } while (0)
++
++#define tcg_wasm_out_ctx_i32_store_local32(s, f, var)                   \
++    do {                                                                \
++        tcg_wasm_out_op_local_get(s, CTX_IDX);                          \
++        tcg_wasm_out_op_local_get(s, var);                              \
++        tcg_wasm_out_op_i32_store(s, 0, offsetof(struct wasmContext, f)); \
++    } while (0)
++
++#define tcg_wasm_out_ctx_i32_load(s, f)                                 \
++    do {                                                                \
++        tcg_wasm_out_op_local_get(s, CTX_IDX);                          \
++        tcg_wasm_out_op_i32_load(s, 0, offsetof(struct wasmContext, f)); \
++    } while (0)
++
++static void tcg_wasm_out_exit_tb(TCGContext *s, uintptr_t arg)
 +{
-+    tcg_wasm_out_op_global_get_r(s, TCG_REG_CALL_STACK);
++    tcg_wasm_out_ctx_i32_store_const(s, tb_ptr, 0);
++    tcg_wasm_out_op_i32_const(s, (int32_t)arg);
++    tcg_wasm_out_op_return(s);
++}
++
++static void tcg_wasm_out_goto_ptr(TCGContext *s, TCGReg arg)
++{
++    tcg_wasm_out_op_global_get_r(s, arg);
 +    tcg_wasm_out_op_i32_wrap_i64(s);
-+    tcg_wasm_out_op_i64_load(s, 0, *stack_offset);
-+    *stack_offset = *stack_offset + 8;
++    tcg_wasm_out_ctx_i32_load(s, tb_ptr);
++    tcg_wasm_out_op_i32_eq(s);
++    tcg_wasm_out_op_if_noret(s);
++    tcg_wasm_out_op_i64_const(s, 0);
++    tcg_wasm_out_op_global_set(s, BLOCK_PTR_IDX);
++    tcg_wasm_out_op_br(s, 2); /* br to the top of loop */
++    tcg_wasm_out_op_end(s);
++
++    tcg_wasm_out_ctx_i32_store_r(s, tb_ptr, arg);
++    tcg_wasm_out_op_i32_const(s, 0);
++    tcg_wasm_out_op_return(s);
 +}
 +
-+static void gen_call(TCGContext *s, const TCGHelperInfo *info, int func_idx)
++static void tcg_wasm_out_goto_tb(
++    TCGContext *s, int which, uint32_t cur_reset_ptr)
 +{
-+    unsigned typemask = info->typemask;
-+    int rettype = typemask & 7;
-+    int stack_offset = 0;
++    tcg_wasm_out_op_i32_const(s, (int32_t)get_jmp_target_addr(s, which));
++    tcg_wasm_out_op_i32_load(s, 0, 0);
++    tcg_wasm_out_op_local_set(s, TMP32_LOCAL_0_IDX);
 +
-+    if (rettype ==  dh_typecode_i128) {
-+        /* receive 128bit return value via the buffer */
-+        tcg_wasm_out_ctx_i32_load(s, buf128);
-+    }
++    tcg_wasm_out_op_local_get(s, TMP32_LOCAL_0_IDX);
++    tcg_wasm_out_op_i32_const(s, cur_reset_ptr);
++    tcg_wasm_out_op_i32_ne(s);
++    tcg_wasm_out_op_if_noret(s);
 +
-+    for (typemask >>= 3; typemask; typemask >>= 3) {
-+        int typecode = typemask & 7;
-+        if (typecode == dh_typecode_void) {
-+            continue;
-+        }
-+        switch (typecode) {
-+        case dh_typecode_i32:
-+        case dh_typecode_s32:
-+        case dh_typecode_ptr:
-+            push_arg_i64(s, &stack_offset);
-+            tcg_wasm_out_op_i32_wrap_i64(s);
-+            break;
-+        case dh_typecode_i64:
-+        case dh_typecode_s64:
-+            push_arg_i64(s, &stack_offset);
-+            break;
-+        case dh_typecode_i128:
-+            tcg_wasm_out_op_global_get_r(s, TCG_REG_CALL_STACK);
-+            tcg_wasm_out_op_i32_wrap_i64(s);
-+            tcg_wasm_out_op_i32_const(s, stack_offset);
-+            tcg_wasm_out_op_i32_add(s);
-+            stack_offset += 16;
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+    }
++    tcg_wasm_out_op_local_get(s, TMP32_LOCAL_0_IDX);
++    tcg_wasm_out_ctx_i32_load(s, tb_ptr);
++    tcg_wasm_out_op_i32_eq(s);
++    tcg_wasm_out_op_if_noret(s);
++    tcg_wasm_out_op_i64_const(s, 0);
++    tcg_wasm_out_op_global_set(s, BLOCK_PTR_IDX);
++    tcg_wasm_out_op_br(s, 3); /* br to the top of loop */
++    tcg_wasm_out_op_end(s);
 +
-+    tcg_wasm_out_op_call(s, func_idx);
-+
-+    if (rettype != dh_typecode_void) {
-+        switch (rettype) {
-+        case dh_typecode_i32:
-+        case dh_typecode_s32:
-+        case dh_typecode_ptr:
-+            tcg_wasm_out_op_i64_extend_i32_s(s);
-+            tcg_wasm_out_op_global_set_r(s, TCG_REG_R0);
-+            break;
-+        case dh_typecode_i64:
-+        case dh_typecode_s64:
-+            tcg_wasm_out_op_global_set_r(s, TCG_REG_R0);
-+            break;
-+        case dh_typecode_i128:
-+            tcg_wasm_out_ctx_i32_load(s, buf128);
-+            tcg_wasm_out_op_i64_load(s, 0, 0);
-+            tcg_wasm_out_op_global_set_r(s, TCG_REG_R0);
-+            tcg_wasm_out_ctx_i32_load(s, buf128);
-+            tcg_wasm_out_op_i64_load(s, 0, 8);
-+            tcg_wasm_out_op_global_set_r(s, TCG_REG_R1);
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+    }
-+
-+    return;
++    tcg_wasm_out_ctx_i32_store_local32(s, tb_ptr, TMP32_LOCAL_0_IDX);
++    tcg_wasm_out_op_i32_const(s, 0);
++    tcg_wasm_out_op_return(s);
++    tcg_wasm_out_op_end(s);
 +}
-+
-+typedef struct HelperInfo {
-+    struct HelperInfo *next;
-+    uint32_t idx_on_qemu;
-+} HelperInfo;
-+
-+__thread HelperInfo *helpers;
-+
-+static void init_helpers(void)
-+{
-+    helpers = NULL;
-+}
-+
-+static int register_helper(TCGContext *s, int helper_idx_on_qemu)
-+{
-+    int idx = HELPER_IDX_START;
-+
-+    tcg_debug_assert(helper_idx_on_qemu >= 0);
-+
-+    HelperInfo *e = tcg_malloc(sizeof(HelperInfo));
-+    e->idx_on_qemu = helper_idx_on_qemu;
-+    e->next = NULL;
-+    if (helpers == NULL) {
-+        helpers = e;
-+        return idx;
-+    }
-+    HelperInfo *last = helpers;
-+    for (HelperInfo *p = last; p; p = p->next) {
-+        last = p;
-+        idx++;
-+    }
-+    last->next = e;
-+    return idx;
-+}
-+
-+static int helpers_len(void)
-+{
-+    int n = 0;
-+    for (HelperInfo *p = helpers; p; p = p->next) {
-+        n++;
-+    }
-+    return n;
-+}
-+
-+static inline int helpers_copy(uint32_t *dst)
-+{
-+    void *start = dst;
-+    for (HelperInfo *p = helpers; p; p = p->next) {
-+        *dst++ = p->idx_on_qemu;
-+    }
-+    return (int)dst - (int)start;
-+}
-+
-+
-+static int get_helper_idx(TCGContext *s, int helper_idx_on_qemu)
-+{
-+    int idx = HELPER_IDX_START;
-+
-+    for (HelperInfo *p = helpers; p; p = p->next) {
-+        if (p->idx_on_qemu == helper_idx_on_qemu) {
-+            return idx;
-+        }
-+        idx++;
-+    }
-+    return -1;
-+}
-+
-+static void tcg_wasm_out_call(TCGContext *s, int func,
-+                              const TCGHelperInfo *info)
-+{
-+    int func_idx = get_helper_idx(s, (int)func);
-+    if (func_idx < 0) {
-+        func_idx = register_helper(s, (int)func);
-+    }
-+
-+    tcg_wasm_out_ctx_i32_load(s, tci_tb_ptr);
-+    tcg_wasm_out_op_i32_const(s, (int32_t)s->code_ptr);
-+    tcg_wasm_out_op_i32_store(s, 0, 0);
-+
-+    gen_call(s, info, func_idx);
-+}
-+
 +
  static bool patch_reloc(tcg_insn_unit *code_ptr_i, int type,
                          intptr_t value, intptr_t addend)
  {
-@@ -2034,6 +2202,7 @@ static void tcg_out_call(TCGContext *s, const tcg_insn_unit *func,
-     insn = deposit32(insn, 0, 8, INDEX_op_call);
-     insn = deposit32(insn, 8, 4, which);
-     tcg_out32(s, insn);
-+    tcg_wasm_out_call(s, (int)func, info);
+@@ -1931,6 +2039,7 @@ static void tcg_out_call(TCGContext *s, const tcg_insn_unit *func,
+ static void tcg_out_exit_tb(TCGContext *s, uintptr_t arg)
+ {
+     tcg_out_op_p(s, INDEX_op_exit_tb, (void *)arg);
++    tcg_wasm_out_exit_tb(s, arg);
  }
  
- static void tcg_out_exit_tb(TCGContext *s, uintptr_t arg)
-@@ -3072,6 +3241,7 @@ static void tcg_out_tb_start(TCGContext *s)
-     init_sub_buf();
-     init_blocks();
-     init_label_info();
-+    init_helpers();
+ static void tcg_out_goto_tb(TCGContext *s, int which)
+@@ -1938,11 +2047,13 @@ static void tcg_out_goto_tb(TCGContext *s, int which)
+     /* indirect jump method. */
+     tcg_out_op_p(s, INDEX_op_goto_tb, (void *)get_jmp_target_addr(s, which));
+     set_jmp_reset_offset(s, which);
++    tcg_wasm_out_goto_tb(s, which, (uint32_t)s->code_ptr);
+ }
  
-     tcg_wasm_out_op_loop_noret(s);
-     tcg_wasm_out_op_global_get(s, BLOCK_PTR_IDX);
+ static void tcg_out_goto_ptr(TCGContext *s, TCGReg a0)
+ {
+     tcg_out_op_r(s, INDEX_op_goto_ptr, a0);
++    tcg_wasm_out_goto_ptr(s, a0);
+ }
+ 
+ void tb_target_set_jmp_target(const TranslationBlock *tb, int n,
 -- 
 2.43.0

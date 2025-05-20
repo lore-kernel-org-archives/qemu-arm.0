@@ -1,83 +1,83 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp475525njc;
-        Tue, 20 May 2025 05:53:24 -0700 (PDT)
-X-Received: by 2002:a17:90b:58ee:b0:30e:6ac1:3716 with SMTP id 98e67ed59e1d1-30e7d5bb679mr19995315a91.34.1747745604058;
-        Tue, 20 May 2025 05:53:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747745604; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp475588njc;
+        Tue, 20 May 2025 05:53:30 -0700 (PDT)
+X-Received: by 2002:a05:6a00:ae1c:b0:742:b3a6:db10 with SMTP id d2e1a72fcca58-742b3a6dc2bmr17307864b3a.18.1747745610127;
+        Tue, 20 May 2025 05:53:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747745610; cv=none;
         d=google.com; s=arc-20240605;
-        b=MQZwzQOd0POVQECZymmHHD16u7U9rig0XxIgN0Z7N8oTaRqVPxeZuOyJDKJQ0aBAa9
-         NuNjaQ8i9UvoUIkJe4BgqqMtjaShNpFAu5b/VEA95Nn/icy0Vp1VZAfxcno3anjIMccC
-         W0kL2toQPD6D4Ql6SYu6tPkytg6gQDbTFl88y4AZYTIW3j3PBctoIHM7G728EibGonzF
-         BHkYGPH3HkAA/GQrzUY+DXfpN3UHlJxkhzRELny3x8gKx1FacM19Y1upcBkg5GZRhZ2p
-         bs15/PdtQ7ru7FUiprQuV0sznQ4D8cK4IbmZVFO+E+5tLhBT/kiHBHSLT7SKV6T4XWXa
-         vp8A==
+        b=AE7cNu5d1/+GIpWKaz7jbtpp1fOZM8b5Uf1/cMEAwTlW9dp0li0wOmz28bZjqzqd+B
+         MKgsHDXnrTFVycYsgK1DQKmzTpOGnkU368lJPNp1FeDYB7PQ5E8m1jaybmWU8jS5rMvb
+         sqLeLgl6LpkzEvh5kY/A+5RGeZ0peQhLzGrXHo79lEcScqE6PP/yHLSpU5iT0y/th1/o
+         bMjR/wzR03HLXfFcmHwtma+/ZcZXiqLVZdUdns0HIyqUNvs4Or+/wtZ0Ii+VDLS3g5bf
+         k43osedlr5C+JEDVhEk+AO3p1zjoqFXPw5RN1tGRBs2PoSdI66KLnUUM7uQluHV90DkW
+         hdhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=DrYdTbrh0HLfQlm+zOWduDlR9Q8yHBtmdY6iR829V3U=;
-        fh=IrVF1HW4uARRhBC06bxMhwXjlEU0nfJueO4fwkjj2MM=;
-        b=N64jPagzgBxSgXk4M6bJKXdpVfrehUd0lsIEIUVTaE1239QqLSTB4kOiAenwqhcXe3
-         /OuVPWz4Vm0nSIg31l/O0NjkAjcV5jKP8KvHo5KXly5FoT2fukX4aoaJ9f4ebiYDWXGN
-         H+VzxPanmytWuUC+HlmwdDzIExrHF91sVTHcD8nEOyg5mQpaYBjyvnJNsue2vVGYP1YM
-         FdobOOXf7s1CviXKNSYclTQ7TrwZeC4UXt49/9kZEaGAluzvxnHfQ57/Oiim9MO1F9S6
-         aqsVoiwOUoVEYba0D1AO6gnnIcsfHA2U62pE9uk+qrGL5IKwc/GWfM+VuygqdP/9xfja
-         oWvA==;
+        bh=rhT21ZbeuAH6PwlwaEXlZP3fAXk3Eqmf4zwdAMPd7KE=;
+        fh=Fe6Y+Rg+aqsKr81cucX+XuvnR6DSpYVk2N090RWDpHw=;
+        b=YX3Q5SfSa8IaXHvcR/qFjfKKPB9Z5FslTiibyrbyiWj6dhdrQdJ+N5BBI8oWywdsdq
+         1ZT9IkoIGSbQWiVQQ0Q4U+3p5HpmRpJqetJWACUSXHat+za9I+hNC+1aVVhNA5C8F+Na
+         juJx51N7N5qA1+15MU7+F4Z9MBezeFaDItQTZHp02lVWCyeYSVcQrx9ueSkw7+ZA2vK7
+         9ctW+/EV4hbCqCV8+XmahQYUpwAsRxwi+QPhhEsIFuJS7qbwgPUwA0Auee+oOHQDeN0c
+         nbyqeNandFzlWiD85gVXCKpCc0+opRDLa2sbfs/W2tRoORf7nnSjWPWXY1ZZ6RNL6jbt
+         1W2w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="LYR8/JCK";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=B97TZmck;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 98e67ed59e1d1-30e7d47706asor7964705a91.1.2025.05.20.05.53.23
+        by mx.google.com with SMTPS id d2e1a72fcca58-742a9879629sor6007958b3a.8.2025.05.20.05.53.29
         (Google Transport Security);
-        Tue, 20 May 2025 05:53:24 -0700 (PDT)
+        Tue, 20 May 2025 05:53:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="LYR8/JCK";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=B97TZmck;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1747745603; x=1748350403; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1747745609; x=1748350409; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=DrYdTbrh0HLfQlm+zOWduDlR9Q8yHBtmdY6iR829V3U=;
-        b=LYR8/JCKQoBj3fDRyi3M+5pRLj9opB6J3eFkHogUdqqI9hcVRtSGI6r8unswm2Ncnj
-         9e5yO2ngzUBdExmvJP4i2n6D94ZVWt3CRJIenhug1yU/twm+MYSiV9wLi63zk/kiMEPC
-         NRpP2oyrD24kqCxyR/iilWeVbvgdqm/47Pe5FAiHP6VLW0RFN9z5pAiXXqIiv0X+eGaJ
-         PR4eQKUhN2BA+2h6kZdDBkKUepj4d7HhFmFoZ8mcdHCUZGuQE/m4SMnG1wO+lR/67N9C
-         eSt8wjZU7sPW6YQvkx/N4+TMUv6LQ20dULxzrOXIpH4m1f2h2/8Li0yWsQ6YOhxNOGEP
-         Y+BA==
+        bh=rhT21ZbeuAH6PwlwaEXlZP3fAXk3Eqmf4zwdAMPd7KE=;
+        b=B97TZmck3j7LqKrFr+L5/6hgC+quXB4Es63z+01FTfxJnieRmcvmkQuIyEt4wtJoh7
+         ZjBbZ1o2kN8f3Ky2kg9wW4OA7IKNRFXzarvH1HjbhRY36KRn+WCojb+IbvVsjqdN4e3Z
+         sZAEC3JpSCbUFg2xBIyuLoMxJF4APCV8Txtk0w7/FhzJytAl9XnUGknEwVwdfmxn17XP
+         gbWjpQWZFnIMCkYMgp9cUKMQoy4gCtoGUtlfeqwLhyhwdNBjThlmw4D/Rv7ubn0c2FMv
+         zd+mBGkhrlEIpfFxPvScDmwNI+djFVwQRTwUW4mwDPg+Ohncr4QQIoD7WSM7cZeQ9173
+         Cl2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747745603; x=1748350403;
+        d=1e100.net; s=20230601; t=1747745609; x=1748350409;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=DrYdTbrh0HLfQlm+zOWduDlR9Q8yHBtmdY6iR829V3U=;
-        b=ru+OKMvPcj2KiNOAe5Zk7umfNl7Btbv+I7ME1wEzby0oAgGtRkbVg3URNq3fdZqR2c
-         UzUUjNWDXZD8Iqj74g8G9/qX0wBt5qggr37+EGCIPBhvfoN8HoYq8jTMApvLLoAts8dj
-         iFGxcK4IxIfb6FtejIy90mhoHB5e7+5yCWXyu7JLjyGSKlBRKRftsWzdntR7QBEaJjJ8
-         6tC99IzXIrLgik3wRDfaeyPzgRSdtjNWtdyJcvsPfYPv8FAC05q5VaYoMKZ2SqikDsql
-         0ehIk3znvW0MnP+OqQU488Gi8FaTQN7eoWX51bvANrd01DNILR+qtcvpsHIO659cdtYD
-         3Afg==
-X-Forwarded-Encrypted: i=1; AJvYcCUz1w7UJwwYqeo56RRZ3GulFTeLclx9/bqp4XYLPYBNz2hUu30N5O5DTPcHfQrxOIvWGGsuBA+9Wiw2bd2AYMxriA==@linaro.org, AJvYcCVVA6pOhlgIRynmpVONqrRPINHjFYTRhmAWG8MVGbWOm+GVVAYqqDewUvZfxG61R8U11g1QzVRmzsbGJIElSiRv3tM=@linaro.org, AJvYcCWxbhnHoagAoIy/E/R7Gu32pMNvqYn/b/pPar2zr698hYkY/47tpYdHSikT/aR4+a7LbsKJqb4=@linaro.org
-X-Gm-Message-State: AOJu0YxSUDK1IYvib9MusqK7PYhl2fvdA5JaOLmP/Y5GBZJ+OEz7EjQK
-	NvF31gI1rO5LgaHEHNt0FJ8Fh+wlTb9nIDfL1xEFWhKwkbvr0tmVUepa
-X-Gm-Gg: ASbGnctaHAKWaGrkxVQSTNcOwdOYz+NOiofpmbl1xRdnciIogW4EagjUgfasrVmu6Bh
-	3VMuYetMxu4gY4wN+2vCj9roLO+kjbmxw0ZSiEZ1aMZV1XQmUJ2g+VQoDkbBLihnPJvzMGMd40Q
-	pScfYwavSUOVsesb6RwkDTe43E5lQknVB8yLzsX5iet1vuDL+UFKF5B0R7oV0giNbBNqtyACuEW
-	9xIMDI39dQ9rxlsjsW4zyFAJpWeAlqBw69eFFwvZ6aQ7Wv0XxL7Cq1CEev0e2K6ePi2v3QdF+SK
-	xWzZ3QYhqGmEQ7fn/1xVJM7oQg8X9HHZNAxCDoLdUDlrrbQte8PStFNTKd5Bdw==
-X-Google-Smtp-Source: AGHT+IHSVeSZrqI1p+LKyaXlkp/QemBYcHu0gGDpX+Iuujio4I5h58FLti/L/Smc9nkP49kM+CaNOw==
-X-Received: by 2002:a17:90b:4a50:b0:301:98fc:9b5a with SMTP id 98e67ed59e1d1-30e7d500953mr24868929a91.6.1747745603425;
-        Tue, 20 May 2025 05:53:23 -0700 (PDT)
+        bh=rhT21ZbeuAH6PwlwaEXlZP3fAXk3Eqmf4zwdAMPd7KE=;
+        b=uzn6dn+jluZcy4nap70rxFgLkBjuNJszr+cnZyfdnBoDemK3/tpBsPTjDw0gIubW3B
+         ME/P6/uCHjjBw8PCmxHHvU6c+5oP5UyO+kQaR0AI8E+hctlDCHC0gcCYaQh/NtYjPQhw
+         gg5jfLEUX/CzgTZLCr9F4uk+vEMVbkEkHSd18w6blOIzF1cewPnDtHXErbL6sQuLvAX0
+         d7M1lgn7gynuZmAZsgPmcdglGBsWDiQVIUL0Zj8dxeOgspfEED4udBGmimdM/cLh4/OP
+         Bx31dwuWrEjUkJARWYOLe0aZ/dUlQD5jRlWzbH6HTuZWooLx4bS1Z1vMD9GBvlfM6Fdy
+         jSUg==
+X-Forwarded-Encrypted: i=1; AJvYcCWfZiBWlywQZQ6IjpVaMcAGNJXLuqO7TIQgOG0AmW5CBjy6Sn6AOm8p5aY1FAhAzyQgIAd2xzI=@linaro.org, AJvYcCXIeiZL28qFnO1hVDpj1AnnOX/8mRbpIXvoX1OlcbGssulZikIaJuW7rmyZ9uClFdBH1v5rTSvfa1ci7Z74ZADhbrM=@linaro.org, AJvYcCXvAJAEZcb05BUh8JQ3skrsKMkmYjDscDlO/5QRgHRHfeDxuLb2XCZeEN/QRPwZx1O8+mmoy9ETT6VBKW7ezAVfWQ==@linaro.org
+X-Gm-Message-State: AOJu0YxYoinKn7cLCoWWQeX7cT2GrBIUlGx34B3gPLuK8YwPTbCEMSNz
+	XVeXdVeKFWuiflYIlsEr17WVFFl6NzZXvJmdGK49R7+yLzSRw/VTtIxs
+X-Gm-Gg: ASbGnctci/50CeDDkhDfQcMMCEmTDdllMB2gZ07A1vHXteOWLOjq/8t5TtLDUmF1/g/
+	I9tcNd8+VF3gTAtR8FYQacBC5UmsilKXP3MnsW7ZK/3ZHHZumZgrNvPZ/GqVqALtp0YbYJ3Yzdp
+	3q0GSq//eumNFfu1629npC9QYnLsHvwuZ6j3Nc/GmC890vhZc28r3bBcrUV1u55Ml0KpSPYTs1L
+	vGx4oO7mV7rz7vhHaCdLkNFQT31wJMPxbLkkEx/MAyfDw/qfxVUL8FtYn3wDLQw5p0mt0QGrQy+
+	XfJPoeDTu6SBrUo3v9BG9ZzPUyZ90OPDLfFniCONP/TKujnECnA=
+X-Google-Smtp-Source: AGHT+IELYgC8rXzpzxpWLznRI/A+e/6gacRu3KFNEtrvOk6g5j42KY2JurSbdVRhmlxiD4imG3/sXg==
+X-Received: by 2002:a17:90b:35cc:b0:30e:54be:37e7 with SMTP id 98e67ed59e1d1-30e7d5b7521mr27787860a91.24.1747745609377;
+        Tue, 20 May 2025 05:53:29 -0700 (PDT)
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from ktock.. ([240d:1a:3b6:8b00:1bde:8310:e993:5dcc])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30f36364f9asm1625916a91.4.2025.05.20.05.53.18
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30f36364f9asm1625916a91.4.2025.05.20.05.53.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 May 2025 05:53:22 -0700 (PDT)
+        Tue, 20 May 2025 05:53:28 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -100,170 +100,218 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Kohei Tokunaga <ktokunaga.mail@gmail.com>,
 	qemu-arm@nongnu.org,
 	qemu-riscv@nongnu.org
-Subject: [PATCH 12/33] tcg/wasm32: Add ext instructions
-Date: Tue, 20 May 2025 21:51:14 +0900
-Message-ID: <6c4e1684c2c1207c01ceff9168cf3031707040c6.1747744132.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH 13/33] tcg/wasm32: Add bswap instructions
+Date: Tue, 20 May 2025 21:51:15 +0900
+Message-ID: <b7368a9d3908e494261b838113e5ea479e24e73c.1747744132.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1747744132.git.ktokunaga.mail@gmail.com>
 References: <cover.1747744132.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: aZocOxkJkaL3
+X-TUID: FuzsGoaORQxr
 
-This commit implements the ext operations using Wasm's extend instructions.
+This commit implements the bswap operation using Wasm instructions.
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- tcg/wasm32/tcg-target.c.inc | 79 ++++++++++++++++++++++++++++++++++++-
- 1 file changed, 78 insertions(+), 1 deletion(-)
+ tcg/wasm32/tcg-target.c.inc | 136 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 136 insertions(+)
 
 diff --git a/tcg/wasm32/tcg-target.c.inc b/tcg/wasm32/tcg-target.c.inc
-index 90a5705442..dff79a9854 100644
+index dff79a9854..1a6069e288 100644
 --- a/tcg/wasm32/tcg-target.c.inc
 +++ b/tcg/wasm32/tcg-target.c.inc
-@@ -231,7 +231,14 @@ static void tcg_wasm_out_op_i64_extend_i32_u(TCGContext *s)
+@@ -118,6 +118,11 @@ static const uint8_t tcg_target_reg_index[TCG_TARGET_NB_REGS] = {
+     15, /* TCG_REG_R15 */
+ };
+ 
++/* Temporary local variables */
++#define TMP32_LOCAL_0_IDX 1
++#define TMP32_LOCAL_1_IDX 2
++#define TMP64_LOCAL_0_IDX 3
++
+ #define BUF_SIZE 1024
+ typedef struct LinkedBuf {
+     struct LinkedBuf *next;
+@@ -219,6 +224,10 @@ static void tcg_wasm_out_op_i64_shr_u(TCGContext *s)
  {
-     tcg_wasm_out8(s, 0xad);
+     tcg_wasm_out8(s, 0x88);
  }
--
-+static void tcg_wasm_out_op_i64_extend8_s(TCGContext *s)
++static void tcg_wasm_out_op_i64_rotr(TCGContext *s)
 +{
-+    tcg_wasm_out8(s, 0xc2);
++    tcg_wasm_out8(s, 0x8a);
 +}
-+static void tcg_wasm_out_op_i64_extend16_s(TCGContext *s)
-+{
-+    tcg_wasm_out8(s, 0xc3);
-+}
- static void tcg_wasm_out_op_i32_add(TCGContext *s)
+ static void tcg_wasm_out_op_i32_wrap_i64(TCGContext *s)
  {
-     tcg_wasm_out8(s, 0x6a);
-@@ -631,6 +638,60 @@ static void tcg_wasm_out_sextract(TCGContext *s, TCGReg dest, TCGReg arg1,
-     tcg_wasm_out_op_global_set_r(s, dest);
+     tcg_wasm_out8(s, 0xa7);
+@@ -255,6 +264,18 @@ static void tcg_wasm_out_op_i32_shl(TCGContext *s)
+ {
+     tcg_wasm_out8(s, 0x74);
+ }
++static void tcg_wasm_out_op_i32_shr_s(TCGContext *s)
++{
++    tcg_wasm_out8(s, 0x75);
++}
++static void tcg_wasm_out_op_i32_shr_u(TCGContext *s)
++{
++    tcg_wasm_out8(s, 0x76);
++}
++static void tcg_wasm_out_op_i32_rotr(TCGContext *s)
++{
++    tcg_wasm_out8(s, 0x78);
++}
+ 
+ static void tcg_wasm_out_op_if_ret_i64(TCGContext *s)
+ {
+@@ -295,6 +316,14 @@ static void tcg_wasm_out_op_global_get_r_i32(TCGContext *s, TCGReg r0)
+     tcg_wasm_out_op_global_get(s, tcg_target_reg_index[r0]);
+     tcg_wasm_out_op_i32_wrap_i64(s);
+ }
++static void tcg_wasm_out_op_local_get(TCGContext *s, uint8_t i)
++{
++    tcg_wasm_out_op_var(s, 0x20, i);
++}
++static void tcg_wasm_out_op_local_set(TCGContext *s, uint8_t i)
++{
++    tcg_wasm_out_op_var(s, 0x21, i);
++}
+ 
+ #define tcg_wasm_out_i64_calc(op)                                       \
+     static void tcg_wasm_out_i64_calc_##op(                             \
+@@ -692,6 +721,110 @@ static void tcg_wasm_out_extrl_i64_i32(TCGContext *s, TCGReg rd, TCGReg rs)
+     tcg_wasm_out_op_global_set_r(s, rd);
  }
  
-+static void tcg_wasm_out_ext8s(TCGContext *s, TCGReg rd, TCGReg rs)
++static void tcg_wasm_out_bswap64(
++    TCGContext *s, TCGReg dest, TCGReg src)
 +{
-+    tcg_wasm_out_op_global_get_r(s, rs);
-+    tcg_wasm_out_op_i64_extend8_s(s);
-+    tcg_wasm_out_op_global_set_r(s, rd);
-+}
++    tcg_wasm_out_op_global_get_r(s, src);
++    tcg_wasm_out_op_i64_const(s, 32);
++    tcg_wasm_out_op_i64_rotr(s);
++    tcg_wasm_out_op_local_set(s, TMP64_LOCAL_0_IDX);
 +
-+static void tcg_wasm_out_ext8u(TCGContext *s, TCGReg rd, TCGReg rs)
-+{
-+    tcg_wasm_out_op_global_get_r(s, rs);
-+    tcg_wasm_out_op_i64_const(s, 0xff);
++    tcg_wasm_out_op_local_get(s, TMP64_LOCAL_0_IDX);
++    tcg_wasm_out_op_i64_const(s, 0xff000000ff000000);
 +    tcg_wasm_out_op_i64_and(s);
-+    tcg_wasm_out_op_global_set_r(s, rd);
-+}
++    tcg_wasm_out_op_i64_const(s, 24);
++    tcg_wasm_out_op_i64_shr_u(s);
 +
-+static void tcg_wasm_out_ext16s(TCGContext *s, TCGReg rd, TCGReg rs)
-+{
-+    tcg_wasm_out_op_global_get_r(s, rs);
-+    tcg_wasm_out_op_i64_extend16_s(s);
-+    tcg_wasm_out_op_global_set_r(s, rd);
-+}
-+
-+static void tcg_wasm_out_ext16u(TCGContext *s, TCGReg rd, TCGReg rs)
-+{
-+    tcg_wasm_out_op_global_get_r(s, rs);
-+    tcg_wasm_out_op_i64_const(s, 0xffff);
++    tcg_wasm_out_op_local_get(s, TMP64_LOCAL_0_IDX);
++    tcg_wasm_out_op_i64_const(s, 0x00ff000000ff0000);
 +    tcg_wasm_out_op_i64_and(s);
-+    tcg_wasm_out_op_global_set_r(s, rd);
++    tcg_wasm_out_op_i64_const(s, 8);
++    tcg_wasm_out_op_i64_shr_u(s);
++
++    tcg_wasm_out_op_i64_or(s);
++
++    tcg_wasm_out_op_local_get(s, TMP64_LOCAL_0_IDX);
++    tcg_wasm_out_op_i64_const(s, 0x0000ff000000ff00);
++    tcg_wasm_out_op_i64_and(s);
++    tcg_wasm_out_op_i64_const(s, 8);
++    tcg_wasm_out_op_i64_shl(s);
++
++    tcg_wasm_out_op_local_get(s, TMP64_LOCAL_0_IDX);
++    tcg_wasm_out_op_i64_const(s, 0x000000ff000000ff);
++    tcg_wasm_out_op_i64_and(s);
++    tcg_wasm_out_op_i64_const(s, 24);
++    tcg_wasm_out_op_i64_shl(s);
++
++    tcg_wasm_out_op_i64_or(s);
++
++    tcg_wasm_out_op_i64_or(s);
++    tcg_wasm_out_op_global_set_r(s, dest);
 +}
 +
-+static void tcg_wasm_out_ext32s(TCGContext *s, TCGReg rd, TCGReg rs)
++static void tcg_wasm_out_bswap32(
++    TCGContext *s, TCGReg dest, TCGReg src, int flags)
 +{
-+    tcg_wasm_out_op_global_get_r(s, rs);
++    tcg_wasm_out_op_global_get_r(s, src);
 +    tcg_wasm_out_op_i32_wrap_i64(s);
-+    tcg_wasm_out_op_i64_extend_i32_s(s);
-+    tcg_wasm_out_op_global_set_r(s, rd);
++    tcg_wasm_out_op_local_set(s, TMP32_LOCAL_0_IDX);
++
++    tcg_wasm_out_op_local_get(s, TMP32_LOCAL_0_IDX);
++    tcg_wasm_out_op_i32_const(s, 16);
++    tcg_wasm_out_op_i32_rotr(s);
++    tcg_wasm_out_op_local_set(s, TMP32_LOCAL_0_IDX);
++
++    tcg_wasm_out_op_local_get(s, TMP32_LOCAL_0_IDX);
++    tcg_wasm_out_op_i32_const(s, 0xff00ff00);
++    tcg_wasm_out_op_i32_and(s);
++    tcg_wasm_out_op_i32_const(s, 8);
++    tcg_wasm_out_op_i32_shr_u(s);
++
++    tcg_wasm_out_op_local_get(s, TMP32_LOCAL_0_IDX);
++    tcg_wasm_out_op_i32_const(s, 0x00ff00ff);
++    tcg_wasm_out_op_i32_and(s);
++    tcg_wasm_out_op_i32_const(s, 8);
++    tcg_wasm_out_op_i32_shl(s);
++
++    tcg_wasm_out_op_i32_or(s);
++    if (flags & TCG_BSWAP_OS) {
++        tcg_wasm_out_op_i64_extend_i32_s(s);
++    } else {
++        tcg_wasm_out_op_i64_extend_i32_u(s);
++    }
++    tcg_wasm_out_op_global_set_r(s, dest);
 +}
 +
-+static void tcg_wasm_out_ext32u(TCGContext *s, TCGReg rd, TCGReg rs)
++static void tcg_wasm_out_bswap16(
++    TCGContext *s, TCGReg dest, TCGReg src, int flags)
 +{
-+    tcg_wasm_out_op_global_get_r(s, rs);
-+    tcg_wasm_out_op_i64_const(s, 0xffffffff);
-+    tcg_wasm_out_op_i64_and(s);
-+    tcg_wasm_out_op_global_set_r(s, rd);
-+}
++    tcg_wasm_out_op_global_get_r(s, src);
++    tcg_wasm_out_op_i32_wrap_i64(s);
++    tcg_wasm_out_op_local_set(s, TMP32_LOCAL_0_IDX);
 +
-+static void tcg_wasm_out_extrl_i64_i32(TCGContext *s, TCGReg rd, TCGReg rs)
-+{
-+    tcg_wasm_out_op_global_get_r(s, rs);
-+    tcg_wasm_out_op_i64_const(s, 0xffffffff);
-+    tcg_wasm_out_op_i64_and(s);
-+    tcg_wasm_out_op_global_set_r(s, rd);
++    tcg_wasm_out_op_local_get(s, TMP32_LOCAL_0_IDX);
++    tcg_wasm_out_op_i32_const(s, 8);
++    tcg_wasm_out_op_i32_rotr(s);
++    tcg_wasm_out_op_local_set(s, TMP32_LOCAL_0_IDX);
++
++    tcg_wasm_out_op_local_get(s, TMP32_LOCAL_0_IDX);
++    tcg_wasm_out_op_i32_const(s, 0x000000ff);
++    tcg_wasm_out_op_i32_and(s);
++
++    tcg_wasm_out_op_local_get(s, TMP32_LOCAL_0_IDX);
++    tcg_wasm_out_op_i32_const(s, 0xff000000);
++    tcg_wasm_out_op_i32_and(s);
++    tcg_wasm_out_op_i32_const(s, 16);
++    if (flags & TCG_BSWAP_OS) {
++        tcg_wasm_out_op_i32_shr_s(s);
++    } else {
++        tcg_wasm_out_op_i32_shr_u(s);
++    }
++
++    tcg_wasm_out_op_i32_or(s);
++    tcg_wasm_out_op_i64_extend_i32_u(s);
++    tcg_wasm_out_op_global_set_r(s, dest);
 +}
 +
  static void tcg_wasm_out_ld(
      TCGContext *s, TCGType type, TCGReg val, TCGReg base, intptr_t offset)
  {
-@@ -1126,33 +1187,39 @@ static const TCGOutOpExtract2 outop_extract2 = {
- static void tcg_out_ext8s(TCGContext *s, TCGType type, TCGReg rd, TCGReg rs)
- {
-     tcg_tci_out_sextract(s, type, rd, rs, 0, 8);
-+    tcg_wasm_out_ext8s(s, rd, rs);
+@@ -1768,6 +1901,7 @@ static void tgen_bswap16(TCGContext *s, TCGType type,
+     if (flags & TCG_BSWAP_OS) {
+         tcg_tci_out_sextract(s, TCG_TYPE_REG, a0, a0, 0, 16);
+     }
++    tcg_wasm_out_bswap16(s, a0, a1, flags);
  }
  
- static void tcg_out_ext8u(TCGContext *s, TCGReg rd, TCGReg rs)
- {
-     tcg_tci_out_extract(s, TCG_TYPE_REG, rd, rs, 0, 8);
-+    tcg_wasm_out_ext8u(s, rd, rs);
+ static const TCGOutOpBswap outop_bswap16 = {
+@@ -1782,6 +1916,7 @@ static void tgen_bswap32(TCGContext *s, TCGType type,
+     if (flags & TCG_BSWAP_OS) {
+         tcg_tci_out_sextract(s, TCG_TYPE_REG, a0, a0, 0, 32);
+     }
++    tcg_wasm_out_bswap32(s, a0, a1, flags);
  }
  
- static void tcg_out_ext16s(TCGContext *s, TCGType type, TCGReg rd, TCGReg rs)
+ static const TCGOutOpBswap outop_bswap32 = {
+@@ -1793,6 +1928,7 @@ static const TCGOutOpBswap outop_bswap32 = {
+ static void tgen_bswap64(TCGContext *s, TCGType type, TCGReg a0, TCGReg a1)
  {
-     tcg_tci_out_sextract(s, type, rd, rs, 0, 16);
-+    tcg_wasm_out_ext16s(s, rd, rs);
+     tcg_out_op_rr(s, INDEX_op_bswap64, a0, a1);
++    tcg_wasm_out_bswap64(s, a0, a1);
  }
  
- static void tcg_out_ext16u(TCGContext *s, TCGReg rd, TCGReg rs)
- {
-     tcg_tci_out_extract(s, TCG_TYPE_REG, rd, rs, 0, 16);
-+    tcg_wasm_out_ext16u(s, rd, rs);
- }
- 
- static void tcg_out_ext32s(TCGContext *s, TCGReg rd, TCGReg rs)
- {
-     tcg_debug_assert(TCG_TARGET_REG_BITS == 64);
-     tcg_tci_out_sextract(s, TCG_TYPE_I64, rd, rs, 0, 32);
-+    tcg_wasm_out_ext32s(s, rd, rs);
- }
- 
- static void tcg_out_ext32u(TCGContext *s, TCGReg rd, TCGReg rs)
- {
-     tcg_debug_assert(TCG_TARGET_REG_BITS == 64);
-     tcg_tci_out_extract(s, TCG_TYPE_I64, rd, rs, 0, 32);
-+    tcg_wasm_out_ext32u(s, rd, rs);
- }
- 
- static void tcg_out_exts_i32_i64(TCGContext *s, TCGReg rd, TCGReg rs)
-@@ -1169,6 +1236,7 @@ static void tcg_out_extrl_i64_i32(TCGContext *s, TCGReg rd, TCGReg rs)
- {
-     tcg_debug_assert(TCG_TARGET_REG_BITS == 64);
-     tcg_tci_out_mov(s, TCG_TYPE_I32, rd, rs);
-+    tcg_wasm_out_extrl_i64_i32(s, rd, rs);
- }
- 
- static bool tcg_out_xchg(TCGContext *s, TCGType type, TCGReg r1, TCGReg r2)
-@@ -1396,9 +1464,18 @@ static const TCGOutOpBinary outop_eqv = {
- };
- 
- #if TCG_TARGET_REG_BITS == 64
-+static void tcg_wasm_out_extrh_i64_i32(TCGContext *s, TCGReg a0, TCGReg a1)
-+{
-+    tcg_wasm_out_op_global_get_r(s, a1);
-+    tcg_wasm_out_op_i64_const(s, 32);
-+    tcg_wasm_out_op_i64_shr_u(s);
-+    tcg_wasm_out_op_global_set_r(s, a0);
-+}
-+
- static void tgen_extrh_i64_i32(TCGContext *s, TCGType t, TCGReg a0, TCGReg a1)
- {
-     tcg_tci_out_extract(s, TCG_TYPE_I64, a0, a1, 32, 32);
-+    tcg_wasm_out_extrh_i64_i32(s, a0, a1);
- }
- 
- static const TCGOutOpUnary outop_extrh_i64_i32 = {
+ static const TCGOutOpUnary outop_bswap64 = {
 -- 
 2.43.0

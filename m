@@ -1,307 +1,200 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp358105njc;
-        Tue, 20 May 2025 01:59:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW4PqgyEXBtBLLCYxBGOx3R37Nwa6NhZlNglsqaFntnCiCE17tHC5jWUnH9nWBcjDoBqAE4VI1ky+X09A==@linaro.org
-X-Google-Smtp-Source: AGHT+IGdxHMhgO0rGg5qi6rCGmqzcW6cN2D9Uo1zoEvjW9J0AeC3p1/FPO9ufUcPyqUuemjtdGsd
-X-Received: by 2002:a05:6214:2026:b0:6e8:98c0:e53d with SMTP id 6a1803df08f44-6f8b088bd3amr281957806d6.45.1747731569908;
-        Tue, 20 May 2025 01:59:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747731569; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp408975njc;
+        Tue, 20 May 2025 03:56:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXIeuu7iU2XZ073WuVCiTP8q78B4G2ufSqzBgI07ost1arYhaYZylo7nNfF8hyqFBD4BQbX6bHMTOq+Mw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFwnUnf1EKGXgJUC9S+TKbIvp1/WmakgRba12EG9iDRFDo9P7gqSVpK9tEPVGqNhx/ULDXX
+X-Received: by 2002:a05:622a:610c:b0:48a:e2ec:a3b4 with SMTP id d75a77b69052e-497b511e38cmr132179511cf.17.1747738570690;
+        Tue, 20 May 2025 03:56:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747738570; cv=none;
         d=google.com; s=arc-20240605;
-        b=To9Ugm21x2e5l47gLr7cWlz8YZgHyDwT1c2j61DZBKkCUQAwihu7h8c3NcdhB2Qj7b
-         Xkb7EkLu/G9e/UK/kw1FRW7dd8G5qGtHO5XEjVFO0DlR9hTy40w1ae5IRwncecZiVUvP
-         IiWYi/NlLpRxNXMCxvrNJ4EbhcKXWa7zOtqUM95BIv198+0EU3CabOXWKvZnvolnjvlX
-         ROHIzm+7rn3QgcONjN7d1NmvBk07HhMgCsP59zea+fz4jEqLsSyItB72kR/i+f7DJ8se
-         mr4AtB573FpZvTNp5nmbOyj1d+mzj+w/2Hi5SIkCrm6o0Wgbi3vlT0OWRhcOD33QnEp3
-         A3HA==
+        b=j7zlZ4c5IWfaY5ebOu/jAI2SAvfpQ24hBn1UC+Pe+g0FT/vXH4KRpORogQ7gX9fJ1q
+         O5LcU7DA5wuT093n4quriFiQg+tpvv3yK+HHqUADFPNz2Bw+TkUFgErntNRpLJ07eBua
+         l5K7sdmijJHLYPufQO85eGv9gcLroVhKhtx03FhXNN3rorehuDH5q6oc1w6UvaQYlFc9
+         RfFXKNj3p2+YqitAQwA2nGcWcM7fLTmFI0L6pEOn2X+0xx+U9X2U3fUZDuOWkYbCDXla
+         45kNrnVuNDXMWQHqjNZrsuZZ5Lm7aF3cDas1MMdYV3czrK316xrMlmwjnl0t0VcfAdoQ
+         Y+/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=PXmfsoToG8zDFHlkBLrJtcgVzVxtuNXwxm38JwXxDv0=;
-        fh=yUPwabYD9h1tySk1zuslNf3Z+Dm89tLSy/vOuPH+FFU=;
-        b=MDaoWQdh26CbCWFnGKZM4IVrHcQ20d1n8G/K8qvlao+N08zIOUFGjPF3iksF/iV/M4
-         7RgSJ+AFJEDToMtFFzvDwbRMgRy6JaecRfJI6esUltcaXAxFfv8joCrqoN0zfhaBJGcD
-         NJgriNHBFFhEw5LIgwBndz41qDpRnRT1JWRLlmqTEbo5FktOIt7FKwNLBrouzea0EALU
-         PQqu7EOjgtWxCvTD021I8OV8C/LrzAvwAc7nucGSZHCpzTE6wA0r47G3U+3HZGVbnvXk
-         Ai9DQE0qmupNr2rsXM14oGl3boG/FvvADv57WubtLPE8jSd3wP4g4m/ZxX+R0cgk9tXB
-         d8Pw==;
+        bh=d56XuPPi1HP2EPqByeAtI9ZEpb23Z+LV9ArzkamKZHM=;
+        fh=ow/YDOioMs5cntZ+fDNJOwOAifCgrFec8kW+GuodSkQ=;
+        b=JRBac/Mp+c2cKaWICUiBvy8wA2IklZ88aZmUGvM2ojkfn4ju4dL1CCNIgSIEo1dl+h
+         Tqpasy0OFCQh0pXkeYj95DCXSRMuenyX0FcdmbymHTRIYzneqjWaWu2YTXE9aTFvIdsO
+         1zdl1UUSvVEgcHOsDswFXRALNHZB9CyP2u9n57cT5K/QxLz1e6x6mED5yVOuyOtw/g5A
+         PcjXVZXaTf7YM/UXXbKI3DWoBORSU5Z0pBn/5dRRTLixqg0grVkQUf6i8cCVFzI2qtcq
+         XPj0s7htfC+Rt2feMoLga8UFvL9IxtNFTzeIgWLhfQLWXhyuO0PTQG36jA2Uvm7NlIG3
+         bA5A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=S6evVovi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wKdc5sFF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f8b08b7b6dsi104467126d6.124.2025.05.20.01.59.29
+        by mx.google.com with ESMTPS id d75a77b69052e-49a65634a3bsi16474521cf.473.2025.05.20.03.56.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 May 2025 01:59:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 20 May 2025 03:56:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=S6evVovi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wKdc5sFF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uHIoi-00037C-TS; Tue, 20 May 2025 04:59:20 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uHKdg-0004N6-Uz; Tue, 20 May 2025 06:56:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1uHIog-00036X-2J; Tue, 20 May 2025 04:59:18 -0400
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uHKde-0004MI-Ht
+ for qemu-devel@nongnu.org; Tue, 20 May 2025 06:56:02 -0400
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1uHIob-0007GJ-BF; Tue, 20 May 2025 04:59:15 -0400
-Received: by mail-pl1-x62a.google.com with SMTP id
- d9443c01a7336-2320e53167dso31757975ad.3; 
- Tue, 20 May 2025 01:59:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uHKdc-000193-QX
+ for qemu-devel@nongnu.org; Tue, 20 May 2025 06:56:02 -0400
+Received: by mail-yw1-x1131.google.com with SMTP id
+ 00721157ae682-70cb334de0cso29236617b3.0
+ for <qemu-devel@nongnu.org>; Tue, 20 May 2025 03:56:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1747731550; x=1748336350; darn=nongnu.org;
+ d=linaro.org; s=google; t=1747738559; x=1748343359; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=PXmfsoToG8zDFHlkBLrJtcgVzVxtuNXwxm38JwXxDv0=;
- b=S6evVoviCHC3DNeWwkJqlll+WG2IPzRH8U1cYm/OGd/g9U3FmAkWPw8BN8vWWMVWR/
- iHwzIQnMXhE854do+mWHaV6qM1INnKW39RbBSIfFceyIml5f4DEOnvYO25BWMRxfjiYt
- NQWBBT5YRoTU9iIUL/dSSnSTnXMwVybkiT7OLw0RHIbKnJr4cY6cLHQdnu3TvjECMVh3
- PhQQrO5Rzty16nPG8Slp25tbCwme1yWcMuOGctL0D4ERuRIallP1mevpwZv/zDsRbJxk
- h/Cst0OS8Y8QMlStfgfrmXPKoMuEpwOczj32SBu+3grQWE0iT3RpOZ3SD1RwNHTUbNH2
- ZgkQ==
+ bh=d56XuPPi1HP2EPqByeAtI9ZEpb23Z+LV9ArzkamKZHM=;
+ b=wKdc5sFFC0UsmBKAUpDcYCslHnNIacGdJRtgLZ8mz3iOg3QBHFmRDSWR1UU2GFKsMy
+ 7JZkYFWIM8lINSXUhdxxh98q18SHJrRwPjwaW3c9BrXP9qErckLwPKpTRgO3Ibitvrlf
+ J4vSBHDI7XR9VtPA0TGG2tzXv15OSELCmS/3ZHfNdx/XhWe1Mx6jd0rJKgUeNtDYUc0O
+ 2evZWZR6vPoUwsCe5ajmROyXttuckGGhcn/ufKrXUCpc8RLHQ+fdIpwUcalfdVf7Cevw
+ 5zuqs+ZV+IAQWAbPuzaPQL4g42dNpvG6LEa+0tt52nvHwge4xXaivgCGkcIvb67WF5/A
+ oDWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747731550; x=1748336350;
+ d=1e100.net; s=20230601; t=1747738559; x=1748343359;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=PXmfsoToG8zDFHlkBLrJtcgVzVxtuNXwxm38JwXxDv0=;
- b=sSyQhH1u18EC52RnpYJQc4IAVTcXe3RIJUEazL3T9arswt73Gjv0ZXngMJsOCf8ZXq
- y1Pywuh+V1uNTKkSAa//uybJ2Dk1wQuTyl/0KzwxDHGHbZInEsGwystC2NiK6MQ2guMp
- QI8+BNzYwNXyorJqJB8FiLhgQ8a3RYZPtmopNJvfq8ELr200tnx/GOoZhwWKcVKg83kI
- 759eJZQ6bpmsPvJW8aOshWHg4YSp1M28Xw2SwnuOAoReEcdTYoHx7E6zHbFyPIKlx4me
- xjzbHCwk2ZW5NtAjXcm+eKejrLt5VHUpPr0o++AKu5zo5SYcWagjTb17h0Pz8+Xj8hjX
- b5Nw==
+ bh=d56XuPPi1HP2EPqByeAtI9ZEpb23Z+LV9ArzkamKZHM=;
+ b=rtcl2bGp4Q0+ShmmwQq9Rlb/HhAspzXX2ZXbwXQyeVMLFgjGsH+LAPmFEPnkAS/a7c
+ 7Q9EB2Tgw1BG+3HIj3FHywRu5P6XC+UKM5KfScuB/U/x2eAxTItC+jk/I1eCloXzxYqu
+ 6MnLF5j0W7Bauq0E2S28rJ+MkY7PTeUChaxMc+Gn2gwns4dEv0kWEYh1aBEG5ad7h7EZ
+ L1q5jCcUQODwIdzomgRLqVXUC3TbjESIXgATvdlib11gG02YGMHOzzGVQzt7njQoxyBM
+ dkXcgUZylftQNJouQcM4rzBSlJZ5OlEINEWevsuh/AZq/hdlQhc8tcwgBhD4dmUGNteM
+ 9+IA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUv0FNc7TxS0m+5H6LX+GeZmXRGPjrefTSpWaZM3ebqgZF6zYnMdk9laFt5q1UelbeH7ouSZXQJUQ==@nongnu.org,
- AJvYcCWsw7OglpQEwQxvbcbrUaBrLdZsJiZD97JoJrSMjm3QA4HnyVr9KYrtYKydJBbrX351BX4iUu6cJNnBZQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyNzsgSfOYnuvmFXo9JJNZOTSrMHYdT1G2K3vp+M/AnYanJGjNP
- o/TtbFzW1Ld1OTlMyyKfPIFpXaMKxRcrISWX8ZJaPp8E9LfXX6xpML2HBt42mY9CI+uos8iXr+K
- 7uRdDlayD3wxyMKJttgSl+w42OnEX9S0=
-X-Gm-Gg: ASbGncsAUYxEwq9vnQHpYa/Iqb3im0FMa7Q8Alps3eWcqRpYyOLs2HZkYAfLQpUBVzK
- sfGk9jK75vlRlcVoDQwcODcLEmPZPyDixF+TthG7T9dwkOF63JcTR/15lACh9dqMOMuGXfeKHme
- h8JOmXudUqgotswpBc4aPPjKqzemKni/4=
-X-Received: by 2002:a17:903:46c6:b0:224:10a2:cad5 with SMTP id
- d9443c01a7336-231d43dcae5mr249045825ad.10.1747731550455; Tue, 20 May 2025
- 01:59:10 -0700 (PDT)
+ AJvYcCXLlX9hzkPtDy1V5KDGE/XAt2CfwCTt4mPX4DujKl7jP9C2R+hnvXDproSAwwl35HspLezrVr3usGQH@nongnu.org
+X-Gm-Message-State: AOJu0YxjHh5cYnE3p2d8qNs3JKrexiSCaPaCl+jKZ0ljWeBeuJvcRpxz
+ z3G9jzS9+cti4By9tHpb9vdfhtUyEVXMgnWfWAq6Yk2tz4/qyVs3qkwZ7/AW8hkJ66f/f98aze+
+ 83I46M/SI9Zw+8/ce97IwMXDmbq+4KE3BqN+aN2M83g==
+X-Gm-Gg: ASbGncuBh5i/5Zdu3kAk96Xap7F+okpo2kSEJu6e9Ax/AK12njmGZ30LShsyohiQKp2
+ LTTjvxOhjzV+3joEqTc8WDEKOjdFv6GW2TNJXfOMgwLVBFNE5W0kGpYXRUdC5zRfPGsq5jteJsI
+ 7ESnCZEoa5fnA+jUK85/zKXe3OFtk0AIHdQ99HOfzo2Fiq
+X-Received: by 2002:a05:690c:74c8:b0:702:5134:aab0 with SMTP id
+ 00721157ae682-70ca7baf406mr259144617b3.32.1747738559451; Tue, 20 May 2025
+ 03:55:59 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250513141448.297946-1-chigot@adacore.com>
- <20250513141448.297946-3-chigot@adacore.com>
- <3314f721-9c5e-479b-9fcc-3b8a021efde9@linaro.org>
- <CAFEAcA8vKNkfKgp_Yymo9NA1=E2XJYXAMTgO3z6q6DHgqkAwRw@mail.gmail.com>
-In-Reply-To: <CAFEAcA8vKNkfKgp_Yymo9NA1=E2XJYXAMTgO3z6q6DHgqkAwRw@mail.gmail.com>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Tue, 20 May 2025 09:58:56 +0100
-X-Gm-Features: AX0GCFufR3sFExf75WKEOarNbJYPI8XJJ56TCTvYmgc6P1qd08gyAOR-sHVC2jU
-Message-ID: <CAJy5ezoCOG+N5dQ9z0zCmd3YX1sE0ZJwQp=G1iRdkGf3V=aLpg@mail.gmail.com>
-Subject: Re: [PATCH 2/4] hw/intc/arm_gic: introduce a first-cpu-index property
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>, qemu-devel@nongnu.org, 
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org,
- alistair@alistair23.me, Frederic Konrad <konrad.frederic@yahoo.fr>
-Content-Type: multipart/alternative; boundary="0000000000003a4db706358d763a"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-pl1-x62a.google.com
+References: <20250315142050.3642741-1-linux@roeck-us.net>
+ <CAFEAcA-zPwJrq3oQk3MRp9ZCyTzDOg2-Je00v20pVzrKe8he6w@mail.gmail.com>
+ <5d350a95-886e-420c-8b0d-a3be57b9490d@roeck-us.net>
+ <CAFEAcA-9MCRfHb+O-qdMHAOgSVEUY26h7dUzF-yaF81oFZHs4w@mail.gmail.com>
+ <TYZPR03MB689654CB39D47E3ACCC24A29DB96A@TYZPR03MB6896.apcprd03.prod.outlook.com>
+In-Reply-To: <TYZPR03MB689654CB39D47E3ACCC24A29DB96A@TYZPR03MB6896.apcprd03.prod.outlook.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 20 May 2025 11:55:48 +0100
+X-Gm-Features: AX0GCFuER6MgQpEK2WT8SOEamRDgQgQTgmcL8dbc6efsCslvLIqKHkwlMIosPto
+Message-ID: <CAFEAcA9fvhoxABfY1kgDg2Xa7ZVpYfA0_9wwi3MkDfUJZ6U18A@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm: Add missing psci_conduit to NPCM8XX SoC boot info
+To: "KFTING@nuvoton.com" <KFTING@nuvoton.com>
+Cc: Guenter Roeck <linux@roeck-us.net>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Hao Wu <wuhaotsh@google.com>, 
+ "Avi.Fishman@nuvoton.com" <Avi.Fishman@nuvoton.com>, 
+ "tomer.maimon@nuvoton.com" <tomer.maimon@nuvoton.com>, 
+ "tali.perry@nuvoton.com" <tali.perry@nuvoton.com>,
+ "CHLI30@nuvoton.com" <CHLI30@nuvoton.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DDEciatkEohe
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: pdv1Ecx0FEiZ
 
---0000000000003a4db706358d763a
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, May 19, 2025 at 5:26=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
-.org>
-wrote:
-
-> On Tue, 13 May 2025 at 16:39, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.=
-org>
-> wrote:
+On Tue, 13 May 2025 at 02:04, KFTING@nuvoton.com <KFTING@nuvoton.com> wrote:
+>
+> Hi PMM:
+>
+> From: Peter Maydell <peter.maydell@linaro.org>
+> Sent: Sunday, May 11, 2025 9:42 PM
+> To: Guenter Roeck <linux@roeck-us.net>
+> Cc: CS20 KFTing <KFTING@nuvoton.com>; qemu-arm@nongnu.org; qemu-devel@nongnu.org; Hao Wu <wuhaotsh@google.com>
+> Subject: Re: [PATCH] hw/arm: Add missing psci_conduit to NPCM8XX SoC boot info
+>
+>
+> On Tue, 18 Mar 2025 at 19:54, Guenter Roeck <linux@roeck-us.net> wrote:
 > >
-> > On 13/5/25 16:14, Cl=C3=A9ment Chigot wrote:
-> > > From: Frederic Konrad <konrad.frederic@yahoo.fr>
+> > On 3/18/25 09:59, Peter Maydell wrote:
+> > > On Sat, 15 Mar 2025 at 14:20, Guenter Roeck <linux@roeck-us.net> wrote:
+> > >>
+> > >> Without psci_conduit, the Linux kernel crashes almost immediately.
+> > >>
+> > >>      psci: probing for conduit method from DT.
+> > >>      Internal error: Oops - Undefined instruction: 0000000002000000
+> > >> [#1] PREEMPT SMP
+> > >>
+> > >> Fixes: ae0c4d1a1290 ("hw/arm: Add NPCM8XX SoC")
+> > >> Cc: Hao Wu <wuhaotsh@google.com>
+> > >> Cc: Peter Maydell <peter.maydell@linaro.org>
+> > >> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> > >> ---
+> > >>   hw/arm/npcm8xx.c | 1 +
+> > >>   1 file changed, 1 insertion(+)
+> > >>
+> > >> diff --git a/hw/arm/npcm8xx.c b/hw/arm/npcm8xx.c index
+> > >> f182accc47..e5a1929ed7 100644
+> > >> --- a/hw/arm/npcm8xx.c
+> > >> +++ b/hw/arm/npcm8xx.c
+> > >> @@ -346,6 +346,7 @@ static struct arm_boot_info npcm8xx_binfo = {
+> > >>       .secure_boot            = false,
+> > >>       .board_id               = -1,
+> > >>       .board_setup_addr       = NPCM8XX_BOARD_SETUP_ADDR,
+> > >> +    .psci_conduit           = QEMU_PSCI_CONDUIT_SMC,
+> > >>   };
 > > >
-> > > This introduces a first-cpu-index property to the arm-gic, as some SO=
-Cs
-> > > could have two separate GIC (ie: the zynqmp).
+> > > Why do we need this for npcm8xx when we don't need it for npcm7xx?
+> > > Or is it also broken on 7xx?
 > > >
-> > > Signed-off-by: Cl=C3=A9ment Chigot <chigot@adacore.com>
-> > > ---
-> > >   hw/intc/arm_gic.c                | 2 +-
-> > >   hw/intc/arm_gic_common.c         | 1 +
-> > >   include/hw/intc/arm_gic_common.h | 2 ++
-> > >   3 files changed, 4 insertions(+), 1 deletion(-)
-> > >
-> > > diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-> > > index d18bef40fc..899f133363 100644
-> > > --- a/hw/intc/arm_gic.c
-> > > +++ b/hw/intc/arm_gic.c
-> > > @@ -59,7 +59,7 @@ static const uint8_t gic_id_gicv2[] =3D {
-> > >   static inline int gic_get_current_cpu(GICState *s)
-> > >   {
-> > >       if (!qtest_enabled() && s->num_cpu > 1) {
-> > > -        return current_cpu->cpu_index;
-> > > +        return current_cpu->cpu_index - s->first_cpu_index;
 > >
-> > Note, CPUState::cpu_index is meant for accelerators code and shouldn't
-> > be used in hw/ (in particular because it vary when using hotplug).
->
-> Mmm. I think my ideal solution for that would be that we
-> put the CPU index into the MemTxAttrs (requester_id, perhaps
-> with some extra flag that it's not a PCI requester ID).
-> Then every device that's looking at current_cpu to figure
-> out which CPU actually called it would be able to stop
-> doing that. We'd still have the "OK, so what number does
-> the GIC think this CPU is?" question, though.
->
-> For telling the GIC which CPUs it has connected to it, my
-> instinct is to say that ideally we'd have the GIC have
-> something like an array of link properties, and the board
-> or SoC code passes the GIC a pointer to each CPU in the
-> order it wants them to be.
->
-> But that would be quite a bit of fiddling around to achieve,
-> so I think I'm OK with the approach in this patch, especially
-> since the GICv2 is pretty well obsolete at this point.
->
-> (GICv3 also assumes "starting from zero", in several places
-> where it loops from 0 to s->num_cpu calling qemu_get_cpu().
-> Link properties is probably what I'm going to end up doing with
-> the GICv5 design.)
->
-> One note: if you add a new property to the GIC, please
-> also add documentation of it to the "QEMU interface" comment
-> in include/hw/intc/arm_gic.h.
->
->
->
-Yes, I agree with Peter.
+> > I don't see a reference to psci in npcm7xx devicetree files in the
+> > upstream Linux kernel.
 
-Another option is to have the GIC expose a per-cpu MR for the GICC
-interfaces.
-We would need to map these onto a per-cpu address-space. I think this is
-the way
-it works on real HW GICv2 with a per-cpu AMBA port. A problem with this
-approach
-is that it (in QEMU) doesn't scale very well to other GIC's with large
-numbers of cores.
-So the side-band signals with CPU index in memtxattrs sounds good to me!
-
-Cheers,
-Edgar
-
---0000000000003a4db706358d763a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
-mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, May 19,=
- 2025 at 5:26=E2=80=AFPM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@=
-linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote cl=
-ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
- rgb(204,204,204);padding-left:1ex">On Tue, 13 May 2025 at 16:39, Philippe =
-Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org" target=3D"_blan=
-k">philmd@linaro.org</a>&gt; wrote:<br>
-&gt;<br>
-&gt; On 13/5/25 16:14, Cl=C3=A9ment Chigot wrote:<br>
-&gt; &gt; From: Frederic Konrad &lt;<a href=3D"mailto:konrad.frederic@yahoo=
-.fr" target=3D"_blank">konrad.frederic@yahoo.fr</a>&gt;<br>
-&gt; &gt;<br>
-&gt; &gt; This introduces a first-cpu-index property to the arm-gic, as som=
-e SOCs<br>
-&gt; &gt; could have two separate GIC (ie: the zynqmp).<br>
-&gt; &gt;<br>
-&gt; &gt; Signed-off-by: Cl=C3=A9ment Chigot &lt;<a href=3D"mailto:chigot@a=
-dacore.com" target=3D"_blank">chigot@adacore.com</a>&gt;<br>
-&gt; &gt; ---<br>
-&gt; &gt;=C2=A0 =C2=A0hw/intc/arm_gic.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 | 2 +-<br>
-&gt; &gt;=C2=A0 =C2=A0hw/intc/arm_gic_common.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0| 1 +<br>
-&gt; &gt;=C2=A0 =C2=A0include/hw/intc/arm_gic_common.h | 2 ++<br>
-&gt; &gt;=C2=A0 =C2=A03 files changed, 4 insertions(+), 1 deletion(-)<br>
-&gt; &gt;<br>
-&gt; &gt; diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c<br>
-&gt; &gt; index d18bef40fc..899f133363 100644<br>
-&gt; &gt; --- a/hw/intc/arm_gic.c<br>
-&gt; &gt; +++ b/hw/intc/arm_gic.c<br>
-&gt; &gt; @@ -59,7 +59,7 @@ static const uint8_t gic_id_gicv2[] =3D {<br>
-&gt; &gt;=C2=A0 =C2=A0static inline int gic_get_current_cpu(GICState *s)<br=
+> > I guess the aarch32 versions of the board don't use psci and the aarch64 one does.
 >
-&gt; &gt;=C2=A0 =C2=A0{<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (!qtest_enabled() &amp;&amp; s-&gt;n=
-um_cpu &gt; 1) {<br>
-&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 return current_cpu-&gt;cpu_index;<br=
->
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return current_cpu-&gt;cpu_index - s=
--&gt;first_cpu_index;<br>
-&gt;<br>
-&gt; Note, CPUState::cpu_index is meant for accelerators code and shouldn&#=
-39;t<br>
-&gt; be used in hw/ (in particular because it vary when using hotplug).<br>
-<br>
-Mmm. I think my ideal solution for that would be that we<br>
-put the CPU index into the MemTxAttrs (requester_id, perhaps<br>
-with some extra flag that it&#39;s not a PCI requester ID).<br>
-Then every device that&#39;s looking at current_cpu to figure<br>
-out which CPU actually called it would be able to stop<br>
-doing that. We&#39;d still have the &quot;OK, so what number does<br>
-the GIC think this CPU is?&quot; question, though.<br>
-<br>
-For telling the GIC which CPUs it has connected to it, my<br>
-instinct is to say that ideally we&#39;d have the GIC have<br>
-something like an array of link properties, and the board<br>
-or SoC code passes the GIC a pointer to each CPU in the<br>
-order it wants them to be.<br>
-<br>
-But that would be quite a bit of fiddling around to achieve,<br>
-so I think I&#39;m OK with the approach in this patch, especially<br>
-since the GICv2 is pretty well obsolete at this point.<br>
-<br>
-(GICv3 also assumes &quot;starting from zero&quot;, in several places<br>
-where it loops from 0 to s-&gt;num_cpu calling qemu_get_cpu().<br>
-Link properties is probably what I&#39;m going to end up doing with<br>
-the GICv5 design.)<br>
-<br>
-One note: if you add a new property to the GIC, please<br>
-also add documentation of it to the &quot;QEMU interface&quot; comment<br>
-in include/hw/intc/arm_gic.h.<br>
-<br><br></blockquote><div><br></div><div>Yes, I agree with Peter.</div><div=
-><br></div><div>Another option is to have the GIC expose a per-cpu MR for t=
-he GICC interfaces.</div><div>We would need to map these onto a per-cpu add=
-ress-space. I think this is the way</div><div>it works on real HW GICv2 wit=
-h a per-cpu AMBA port. A problem with this approach</div><div>is that it (i=
-n QEMU) doesn&#39;t scale very well to other GIC&#39;s with large numbers o=
-f cores.</div><div>So the side-band signals with CPU index in memtxattrs=C2=
-=A0sounds good to me!</div><div><br></div><div>Cheers,</div><div>Edgar</div=
-><div><br></div><div><br></div></div></div>
+> > Would any of the Nuvoton folks like to comment on this patch?
+> > It looks like a correct fix to me.
 
---0000000000003a4db706358d763a--
+
+> Yes, the aarch64 uses psci.
+
+Thanks for confirming; I've applied this to target-arm.next.
+
+-- PMM

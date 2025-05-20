@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp324695njc;
-        Tue, 20 May 2025 00:36:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWcMEKczDKEthky3HtN61UAaJi7CEilsp4BJmY2UWNhI5G4K9tyWm7f7tHipm1mNWJz5k8sw34pJSfnVQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFHKTHDhu9mNqbuOucmjnD+nOYph1RVOY86UC6Juo/+cNqGLCBUqgTT2BJ+lI0v8bMiLHi+
-X-Received: by 2002:a05:620a:370a:b0:7c5:5e5b:2fdb with SMTP id af79cd13be357-7cd4677d69cmr2633167185a.41.1747726576388;
-        Tue, 20 May 2025 00:36:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747726576; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp324826njc;
+        Tue, 20 May 2025 00:36:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXS4CAjHOR319GJmHxJenfXv4V0UU6OWpjEnHxZyUcu9U1txso2lbMtekeLZoNkmdOYZmb/FBq8nHLJhg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGUatwhPDxlOf62i4nY+p+M+tMAsiFDnDeY8Gw27aHJA3mAbY8sBjke24afn5m99M49pJ/Q
+X-Received: by 2002:a05:6214:2341:b0:6f5:3f55:343c with SMTP id 6a1803df08f44-6f8b0902b73mr291916226d6.32.1747726603392;
+        Tue, 20 May 2025 00:36:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747726603; cv=none;
         d=google.com; s=arc-20240605;
-        b=DwwxO015EbQx4NDS8X2kTbMAmqOJTfPaC9nY5AyN7mAiTVhoiclcbGvwcU2WXXgIiQ
-         i06zfaGRmfDrT8laroWmFQTjzRFoipHFKcgYANhLauDfW0wPo09eDrG8/1xggwk+onpi
-         wulEvp0xomFTfifuDTbBMAKodzwNhwqJtPJvz1XRGxySQKJ1jwxV8EMk8VsmcxqUwZbr
-         zK3cihE0CJi+d71G6K3J31PFu1Ujj48NwOOCkN4RPo2v3URBVw+fGml38JfI1+pXwh14
-         Je47+9zUKFYivsLZVwvu0GSpccEvpssp8dOKgmlQz/xOqi9wnamgEuaJwbgg6JI8KvGc
-         w/Rg==
+        b=ePivkr7nQpHMNZEfeCDFh1Iti32fnV2AFZWyUBRs2yHlX50fTrr8H4Y6ulUSfN12Zf
+         6cCuKIX1Rd1sv/OyYuPFBxnQTFIMQf2d9Ld+rt8sbnrXBuvttDOVrB8M5VQ5PuVkMPKo
+         jVEAHtv/2YZavDKufVeRPAkdOLlBUV6TO1JLPOA2y2DO9DNyJE7H7XjlaplyYj+kQuuK
+         v7dEK4pUjGYhfq1EQZ17rZ+wCu+XK4CtWGk3BFrRyQKHkroyfJl02xEia8Kc5XLiTeVG
+         JT4nbvROdabvO+xN95++VtkcZO57gHzzqWCdrzESTAuErKdLYI/iFNLR1//TTZ22ahVV
+         kEIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=2xvAIXGiVWwYzAk3ZvmY8TKxBVdJAIOg4HYindNbFd4=;
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=myxfeLNDaV2gklqOwwlsWew052lzb9e+Xa3vDobXLUE=;
         fh=Gb4TIc8MExyZGNjx5T60USxFFuCM6mshEZ2Ta2WMSD4=;
-        b=G6pkxaJB/d5wfaYajVyrJXyd9tEIZZq9KBAkVXjHVzcJtlvXxRzMRz/WR3g6wlC6Rt
-         1mF7uS+3/saFaHfyNP5FvTkcscsetkgV5yED9QhhsUxwGysBA84LhXvVcbqAPwOBZq0t
-         8nS71zMpyse6WdddjRaBJpYvw/9YuqLC6twaXeRJk+VsCvZWHKwQ5cAxBbMYyRdW1aJx
-         w8M9i8Rnan+6EPZpq13EkjNeWVFb0XTwl43JLqovi5vh7BKlRQnU8O8WcTKNi1nJXAr/
-         bCPZsGGDpitEClCQvK/F8fQqhI5ISkI07FKJjdrZJk4DaK4jm6oqBHTxIWcHMP2abj7H
-         AJXw==;
+        b=FTo6L7eLdjCleqfS28f4913sITzbGOnuxsH9PFx98EpHUvCaK+fUq0CFnWXzZ/dhC3
+         1clraGkpe9yRfjFkVDKAw/s1+nEsxjipkMzEEUmEFRh+kklZNV1b8xr4PjKfeqyYf9DU
+         L2JISAO9lu59d8adgLmoRSGdJegBVgDS6wRQO1WqRv4bzZCMi8fvCikPbjoUK34yETv6
+         F9mfzAEdBOkFx9hcSrOiMiYoklALC2k4QCDS95QQZehVbwgwgQSlz6uvDiW+sSx0p8au
+         ZsC3OsvoyqTerEtO2OvbfMIAd//MrHWPdoG5jvHCPJgGyaNEwDhmuEFKA4e/TzM+Aqua
+         qFfg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd468ada93si575360885a.339.2025.05.20.00.36.16
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f8b09b8444si102304286d6.348.2025.05.20.00.36.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 May 2025 00:36:16 -0700 (PDT)
+        Tue, 20 May 2025 00:36:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,15 +42,15 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uHHWC-0002g3-08; Tue, 20 May 2025 03:36:08 -0400
+	id 1uHHWA-0002cH-J5; Tue, 20 May 2025 03:36:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uHHW3-0002NU-U7; Tue, 20 May 2025 03:36:01 -0400
+ id 1uHHVw-0002H9-QI; Tue, 20 May 2025 03:35:56 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uHHW2-0003tR-4q; Tue, 20 May 2025 03:35:59 -0400
+ id 1uHHVu-0003tR-HF; Tue, 20 May 2025 03:35:52 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 20 May
@@ -64,12 +64,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 2/3] hw/intc/aspeed Fix coding style
-Date: Tue, 20 May 2025 15:35:38 +0800
-Message-ID: <20250520073540.2014240-3-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 0/3] Fix RAM size detection failure on BE hosts
+Date: Tue, 20 May 2025 15:35:36 +0800
+Message-ID: <20250520073540.2014240-1-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250520073540.2014240-1-jamin_lin@aspeedtech.com>
-References: <20250520073540.2014240-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -97,39 +95,22 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 28p46yAA0WrE
+X-TUID: lH1flG2rxj7V
 
-Fix coding style issues from checkpatch.pl.
+v1:
+ 1. Fix RAM size detection failure on BE hosts
+ 2. INTC: Set impl.min_access_size to 4
+          Fix coding style
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- hw/intc/aspeed_intc.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+Jamin Lin (3):
+  hw/intc/aspeed: Set impl.min_access_size to 4
+  hw/intc/aspeed Fix coding style
+  hw/arm/aspeed_ast27x0: Fix RAM size detection failure on BE hosts
 
-diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-index 19f88853d8..5cd786dee6 100644
---- a/hw/intc/aspeed_intc.c
-+++ b/hw/intc/aspeed_intc.c
-@@ -1001,7 +1001,8 @@ static AspeedINTCIRQ aspeed_2700ssp_intcio_irqs[ASPEED_INTC_MAX_INPINS] = {
-     {5, 5, 1, R_SSPINT165_EN, R_SSPINT165_STATUS},
- };
- 
--static void aspeed_2700ssp_intcio_class_init(ObjectClass *klass, const void *data)
-+static void aspeed_2700ssp_intcio_class_init(ObjectClass *klass,
-+                                             const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
-@@ -1069,7 +1070,8 @@ static AspeedINTCIRQ aspeed_2700tsp_intcio_irqs[ASPEED_INTC_MAX_INPINS] = {
-     {5, 5, 1, R_TSPINT165_EN, R_TSPINT165_STATUS},
- };
- 
--static void aspeed_2700tsp_intcio_class_init(ObjectClass *klass, const void *data)
-+static void aspeed_2700tsp_intcio_class_init(ObjectClass *klass,
-+                                             const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
+ hw/arm/aspeed_ast27x0.c | 21 ++++++++++++++++-----
+ hw/intc/aspeed_intc.c   | 12 ++++++++++--
+ 2 files changed, 26 insertions(+), 7 deletions(-)
+
 -- 
 2.43.0
 

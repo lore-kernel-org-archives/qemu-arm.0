@@ -1,325 +1,352 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp529995njc;
-        Tue, 20 May 2025 07:10:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUjv6e/pHc5xSgI0SI/gHBVvYwcUHnWDtUE/dSccPpEQtnaDFaNvc+ebRG9WOA62ediMR3gX8A9EzeM4w==@linaro.org
-X-Google-Smtp-Source: AGHT+IFr/jhofU0LyG0uPUv0Axn+zKQeCRgtkJUJFC/hs1FTRxysi+8uox/1BfwHsw9jgtB7Fn8f
-X-Received: by 2002:a05:600c:1e1c:b0:43c:fffc:7855 with SMTP id 5b1f17b1804b1-442feffb6damr178408845e9.15.1747750230023;
-        Tue, 20 May 2025 07:10:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747750230; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp561186njc;
+        Tue, 20 May 2025 07:58:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWR81BnF/7wea7w0pzOGBlBiA4RKNxyZvgcV+cV+jycZIR7++J6lIUcvFPpOK5FNN0sOOBOREs79J54dg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEUxlYdNDs1R10oXW8G5+GDNaDu87PEIVX1K0RiWFz3vxI1y+03zI1tcUk5B7r5lTx7OcXA
+X-Received: by 2002:a05:6214:da2:b0:6e8:89bd:2b50 with SMTP id 6a1803df08f44-6f8b2cb9a48mr275814296d6.7.1747753126061;
+        Tue, 20 May 2025 07:58:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747753126; cv=none;
         d=google.com; s=arc-20240605;
-        b=gRDuE0dFMTbz5NmRlYR5yH6O9B+T08J5csbUJQO+U/1nQAYssXKGipfigv6AgjtiBC
-         M40v5MKixxaig1lsP0eLLD0AAAkOHaf+KmPMGx/Meukhiu6geCiNOPLzZxAtRCkX1QCC
-         9CU+uT+Jpbv8yI35K2fVeNs16l/p8ttLcaWFyHbm7ru33Zd6jleGYZXFJGxxApSsS7fd
-         uuCcqUeHma2DZdlgT7XtE4HyzNyTzdmebSeRJRYz8jh9Y+Mun1+8tHxvFmS9xX0ZN5qp
-         0PPyydp/dQZiYG+KhCl/v/xbcmSXQvNS/LCLk2tOewjXDF2TsBWLuZdhUO7PbcikPnw4
-         iY9g==
+        b=ZUck70PUoX4d2fz3vo0xEdIW2ndSMXVQWMvhRv9FSY8kn6icH9JFSIGK35VgV3ymTO
+         hcg1iVdoPzkqFwOtn8VlqTZWGwY6i0VdJGFVYWQjzcOd194VPOqWXj2oQ55wjIjwlAsM
+         tgrDPXOmmPmuRMOPuSnwRhsdDa0aOnIT0t4vGdZCmrY1T2REpL3xIYndCCon5zdacGbs
+         R8pzPXBcUwwm1e9OfkDF9B7YBMQYHzkSHsZHRH2DIG+yYRc9NlTDnGjsjto7l3dZnrNr
+         e31zJiU3bW/ORiwmmNKxFiudqD+KbiXTfxCTsNlDs7uev7N1Bp45GMxQ8r2rnYhsmYI+
+         85iQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=wTiO3+Hfc/CdWQbhAFjllN1Tm1FIAkftjxcvMbFqISg=;
-        fh=F/Ua+nq9pwGbDcipwgaU/gCLVKNetlgdxxTYCFcao3Y=;
-        b=hfyn96KP3uIkB16UMgSUbt6vKjWS5m70uZbWJNr+Y7L5EoY0hyK3gvBH/TnBGNNdls
-         4lenrAMjXsTtK33pCcq72z7K6fExcgIhf9JIjUP33U/YNH4tgfE6cm/JoUCLbmnpkbMO
-         0QIrmy8GcPw3wwplZ+S+Zh8VxhbyGd7Bt0H+NyCJ5ZTU6JZVJhr8dO1Ygu68r+wqV1EN
-         qIcwzrnps3Cy+dNNCWt2PuBDzwSAqjb4ux2d0ZehId+e8ktc7Cs/enGQzG5eBdHsKPEw
-         kSS2HL/kAffClJi6QwLM4+ShC82vzszKJay4IaJ+fzyp2g31R55XOydFHK00FR+z2sB5
-         6gZg==;
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature
+         :dkim-signature:dkim-signature:dkim-signature;
+        bh=zc0NXxGaHDQilt4Hjkb52J4hyjntzmNysUNSSQjbnqo=;
+        fh=17TmWUjQ9OelS8ryEK16BZNE2KalcKkLI36rKliv4CI=;
+        b=JoOzN76UXi75rN3Pi2/QZREtFR+LzJAKGs/iSGbCiVySipqSOS3RYf1uSjCUiqKIfJ
+         OZAwyAqsqHSmFv3B2c0wBas9sAJ3x9o/m3hT0jrYm9m39V1rPRy9qb+Q1NRx8YjjQEUC
+         IOttKZ7cdkdoQC0fFv5SojMrxvCycbNrzJav8qJzcH4Xo5k8iu9o4pVMMjDZIjDXk5z2
+         edHtEsMyNW6wqO7PLIGJf3HruHhCzJHq6dhRzhJmWSDgeR8fE6O78GKbAr4qmcT+tedy
+         eDsouc4io1uJ3CizTX/8Nq0ivbkvpNUjLHcsN9MnASHODcOG7SIHCVUGruXcMt0bUhQ6
+         /WyA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cRUngxin;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=A8M1a7bw;
+       dkim=neutral (no key) header.i=@nongnu.org header.s=susede2_ed25519;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=A8M1a7bw;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a3626f218bsi7097158f8f.825.2025.05.20.07.10.29
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f8b279a216si112356616d6.319.2025.05.20.07.58.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 May 2025 07:10:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 20 May 2025 07:58:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cRUngxin;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=A8M1a7bw;
+       dkim=neutral (no key) header.i=@nongnu.org header.s=susede2_ed25519;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=A8M1a7bw;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uHNfR-0002PF-Fx; Tue, 20 May 2025 10:10:05 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uHOQ9-0001IJ-LD; Tue, 20 May 2025 10:58:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uHNf9-0002OP-Ei
- for qemu-arm@nongnu.org; Tue, 20 May 2025 10:09:47 -0400
-Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936])
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1uHOQ6-0001Ht-BQ
+ for qemu-devel@nongnu.org; Tue, 20 May 2025 10:58:18 -0400
+Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uHNf6-00085P-GM
- for qemu-arm@nongnu.org; Tue, 20 May 2025 10:09:46 -0400
-Received: by mail-ua1-x936.google.com with SMTP id
- a1e0cc1a2514c-86feb84877aso1311594241.3
- for <qemu-arm@nongnu.org>; Tue, 20 May 2025 07:09:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1747750183; x=1748354983; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=wTiO3+Hfc/CdWQbhAFjllN1Tm1FIAkftjxcvMbFqISg=;
- b=cRUngxinPoymIA1v9E4osNr4h9Nd0vDmUYUvyVyhkBAAbmeEAotXOUX4hJ43pSV9RA
- zJY2EOT76Xp/SZGN+x5d3B1d6FcR/aPK3HEoss7jLQMk7TUzPdkoZoSafrHiL32Yc/P8
- qlDjUwewwvwarBVXC1iBQn7EadY+SUNYx6Q+5ITO4v2N7e+8midcoGwo1poLhaudTOxY
- 7ypuALSYtfxVWbC9DkRW/JxDQJYc//nk60OFFUATqjZEIj7g0HbYTj08xeD3Cun7YMNM
- mko+NcLG4kJ7e1wU6JaC9zodlAwCo2NBtYQABtSLyvQPYUm3bxk9whjqKNw5QCMpBbVT
- UdEA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747750183; x=1748354983;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=wTiO3+Hfc/CdWQbhAFjllN1Tm1FIAkftjxcvMbFqISg=;
- b=P7U1ENzDMDQoPZbKw0XOTQUUr2iXCd27u4klUPOmrgH2JL5loZvTecyfV9O7kuIhp4
- Bc+Siuj6lYXbFKLkDsVvvxyrLFgfX7ehWOr9GQGs7UN67hf+mtDQuWeCRWlwO7Tr+LIf
- g+5qd3RIJfZf4HM3/gpXs4qg83/nT1Rl3Lh48ESZEmstBkxqHOjdgt6fa3pZdzKpNb9B
- PA2IocLmh6dOkh81Og3cDhK1lNc8EXpDhwqye/eVe5fKRRyZ39exp3NXSS+4RrJVLs6N
- TjxZJP8d+2iZBzFyFpRdSzm+IEVKOI2lhUwqUIMUbkPX1MYlgQGO+rtz4Wpi6Pdybtei
- 9D2w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVgfwIqvwkjulWegv3EXaxByvb+8HsTXeL61xKXlKXk6UqyBzSJOZzpuryFHzQML67kddw3ECbaAA==@nongnu.org
-X-Gm-Message-State: AOJu0YxwVz8T7EgX/q5jV+q3qquw08viAlY1DZvhLKNIxUqRaQC7rl1Y
- dvsj7vmVb2yWmOXhvVsfzNA+IZ5sXi4u/9Z8+xFwiMQyJNU9/hUSPUxaXiRdx546HtE=
-X-Gm-Gg: ASbGncv+IxSs0dk9320PxywAOWhRWOXbSuU7P0LgUi8D/ahtX0rZaEQtpphB7Pkw2So
- oaHnlUerme4Mwfa4P71cLIwbmkd44JPh2ifky3wnRLIM5/WoyQeOazMTqI0M75apoIV6+B40SlR
- dCMrs9KB9JkpGLS5xIgY8WMj6OURIUgOrqzZIsan/UffdMss7m2wtSODhIfYI57Id1NaK0betgV
- Z4+eVbfxEMpOR1bf7oT3FgiQzI8xVG7qUGkDXbPc5aiVj+eYJTNDY+K5h5ANnS8cJHtOtoVGtD+
- 7TONSPSm/GMAdrYbC+jj+2Dcs4TXB21a68C8GSZMlYoX1y8m2zZctm/XsWv6z5ljfArBws/ljXh
- CD+9Oule+Tj0Rd93SlVOGVVx4BFFZUg==
-X-Received: by 2002:a05:6122:4883:b0:52a:792e:ce4c with SMTP id
- 71dfb90a1353d-52dbcc505cfmr12884839e0c.1.1747750182672; 
- Tue, 20 May 2025 07:09:42 -0700 (PDT)
-Received: from ?IPV6:2804:7f0:b401:d47f:6989:b93e:2caa:f174?
- ([2804:7f0:b401:d47f:6989:b93e:2caa:f174])
- by smtp.gmail.com with ESMTPSA id
- 71dfb90a1353d-52dbab6c0c2sm8416467e0c.42.2025.05.20.07.09.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 May 2025 07:09:42 -0700 (PDT)
-Message-ID: <e1ec0e15-ad26-456b-a8d7-16f683290651@linaro.org>
-Date: Tue, 20 May 2025 11:09:31 -0300
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1uHOQ3-00010L-U4
+ for qemu-devel@nongnu.org; Tue, 20 May 2025 10:58:18 -0400
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-out2.suse.de (Postfix) with ESMTPS id AAE6B2075D;
+ Tue, 20 May 2025 14:58:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1747753092; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=zc0NXxGaHDQilt4Hjkb52J4hyjntzmNysUNSSQjbnqo=;
+ b=A8M1a7bwJxwIEh4Ra+2PT47u9pCkyPCtuqtOE0cuKSCu74yVAy7v8zMmcLWkwspusIQ5Bw
+ 8PLpmLtNJ//yTYR9NKtYnf9+Fn3qqzpetlB0cIeFshX+lMYA2l0bigKa0GjBKggFDs7c6U
+ TEz5ksB9fODTQgYOg1n7AChMxR9a+v4=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1747753092;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=zc0NXxGaHDQilt4Hjkb52J4hyjntzmNysUNSSQjbnqo=;
+ b=1dWi5dCgt+HWmo4tnRCmUdlzsqGkWf38Gkgg+opPpUWnaP7YqO7TJ4HdBM1EU3gwct+MUD
+ BgazlstvBGpnd9Ag==
+Authentication-Results: smtp-out2.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1747753092; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=zc0NXxGaHDQilt4Hjkb52J4hyjntzmNysUNSSQjbnqo=;
+ b=A8M1a7bwJxwIEh4Ra+2PT47u9pCkyPCtuqtOE0cuKSCu74yVAy7v8zMmcLWkwspusIQ5Bw
+ 8PLpmLtNJ//yTYR9NKtYnf9+Fn3qqzpetlB0cIeFshX+lMYA2l0bigKa0GjBKggFDs7c6U
+ TEz5ksB9fODTQgYOg1n7AChMxR9a+v4=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1747753092;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=zc0NXxGaHDQilt4Hjkb52J4hyjntzmNysUNSSQjbnqo=;
+ b=1dWi5dCgt+HWmo4tnRCmUdlzsqGkWf38Gkgg+opPpUWnaP7YqO7TJ4HdBM1EU3gwct+MUD
+ BgazlstvBGpnd9Ag==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 1530013888;
+ Tue, 20 May 2025 14:58:11 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+ by imap1.dmz-prg2.suse.org with ESMTPSA id 2jdlMYOYLGjcLAAAD6G6ig
+ (envelope-from <farosas@suse.de>); Tue, 20 May 2025 14:58:11 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Jamin Lin via <qemu-devel@nongnu.org>, =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel
+ Stanley <joel@jms.id.au>, Laurent Vivier <lvivier@redhat.com>, Paolo
+ Bonzini <pbonzini@redhat.com>, "open list:ASPEED
+ BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Cc: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com
+Subject: Re: [PATCH v3 00/28] Fix incorrect hash results on AST2700
+In-Reply-To: <20250515081008.583578-1-jamin_lin@aspeedtech.com>
+References: <20250515081008.583578-1-jamin_lin@aspeedtech.com>
+Date: Tue, 20 May 2025 11:58:09 -0300
+Message-ID: <8734cz72im.fsf@suse.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/22] hw/pci-host/gpex-acpi: Use
- build_pci_host_bridge_osc_method
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- imammedo@redhat.com, anisinha@redhat.com, mst@redhat.com,
- shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org
-References: <20250514170431.2786231-1-eric.auger@redhat.com>
- <20250514170431.2786231-9-eric.auger@redhat.com>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20250514170431.2786231-9-eric.auger@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::936;
- envelope-from=gustavo.romero@linaro.org; helo=mail-ua1-x936.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Type: text/plain
+X-Spamd-Result: default: False [-4.30 / 50.00]; BAYES_HAM(-3.00)[100.00%];
+ NEURAL_HAM_LONG(-1.00)[-1.000];
+ NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
+ FUZZY_BLOCKED(0.00)[rspamd.com];
+ FREEMAIL_ENVRCPT(0.00)[gmail.com];
+ URIBL_BLOCKED(0.00)[imap1.dmz-prg2.suse.org:helo,suse.de:email,suse.de:mid,ast2700-default:email,nongnu.org:email];
+ DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ FREEMAIL_TO(0.00)[nongnu.org,kaod.org,linaro.org,aspeedtech.com,gmail.com,codeconstruct.com.au,jms.id.au,redhat.com];
+ MIME_TRACE(0.00)[0:+]; ARC_NA(0.00)[];
+ RCPT_COUNT_TWELVE(0.00)[13]; TO_MATCH_ENVRCPT_ALL(0.00)[];
+ RCVD_TLS_ALL(0.00)[]; MISSING_XM_UA(0.00)[];
+ FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
+ TO_DN_SOME(0.00)[]; RCVD_COUNT_TWO(0.00)[2];
+ RCVD_VIA_SMTP_AUTH(0.00)[]; MID_RHS_MATCH_FROM(0.00)[];
+ DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:email,suse.de:mid]
+X-Spam-Score: -4.30
+Received-SPF: pass client-ip=2a07:de40:b251:101:10:150:64:2;
+ envelope-from=farosas@suse.de; helo=smtp-out2.suse.de
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ULEL2Nroeuix
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: QYruMi92xT6K
 
-Hi Eric,
+Jamin Lin via <qemu-devel@nongnu.org> writes:
 
-On 5/14/25 14:00, Eric Auger wrote:
-> gpex build_host_bridge_osc() and x86 originated
-> build_pci_host_bridge_osc_method() are mostly identical.
-> 
-> In GPEX, SUPP is set to CDW2 but is not further used. CTRL
-> is same as Local0.
-> 
-> So let gpex code reuse build_pci_host_bridge_osc_method()
-> and remove build_host_bridge_osc().
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
-> ---
-> 
-> The DSDT diff  is given below:
-> diff --git a/dsdt.dsl_before b/dsdt.dsl_after_osc_change
-> index 3224a56..fa7558e 100644
-> --- a/dsdt.dsl_before
-> +++ b/dsdt.dsl_after_osc_change
-> @@ -5,13 +5,13 @@
->    *
->    * Disassembling to symbolic ASL+ operators
->    *
-> - * Disassembly of dsdt.dat, Mon Apr  7 05:33:06 2025
-> + * Disassembly of dsdt.dat, Mon Apr  7 05:37:20 2025
->    *
->    * Original Table Header:
->    *     Signature        "DSDT"
-> - *     Length           0x00001A4F (6735)
-> + *     Length           0x00001A35 (6709)
->    *     Revision         0x02
-> - *     Checksum         0xBF
-> + *     Checksum         0xDD
->    *     OEM ID           "BOCHS "
->    *     OEM Table ID     "BXPC    "
->    *     OEM Revision     0x00000001 (1)
-> @@ -1849,27 +1849,26 @@ DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
->                   {
->                       CreateDWordField (Arg3, 0x04, CDW2)
->                       CreateDWordField (Arg3, 0x08, CDW3)
-> -                    SUPP = CDW2 /* \_SB_.PCI0._OSC.CDW2 */
-> -                    CTRL = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
-> -                    CTRL &= 0x1F
-> +                    Local0 = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
-> +                    Local0 &= 0x1F
->                       If ((Arg1 != One))
->                       {
->                           CDW1 |= 0x08
->                       }
-> 
-> -                    If ((CDW3 != CTRL))
-> +                    If ((CDW3 != Local0))
->                       {
->                           CDW1 |= 0x10
->                       }
-> 
-> -                    CDW3 = CTRL /* \_SB_.PCI0.CTRL */
-> -                    Return (Arg3)
-> +                    CDW3 = Local0
->                   }
->                   Else
->                   {
->                       CDW1 |= 0x04
-> -                    Return (Arg3)
->                   }
-> +
-> +                Return (Arg3)
->               }
-> 
->               Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
+> v1:
+>  1. Added support for 64-bit DMA in the HACE model
+>  2. Refactored the do_hash operation in the HACE model
+>  3. Fixed a crash caused by out-of-bound memory access in HACE
+>  4. Added more trace events and implemented dumping of source hash data and
+>     resulting digests to improve debugging
+>  5. Refactored the HACE QTest framework to support both AST1030 and AST2700
+>  6. Added a test case for SHA384
+>
+> v2:
+>   1. Create new helper functions
+>      hash_get_source_addr
+>      hash_prepare_direct_iov
+>      hash_prepare_sg_iov
+>      hash_get_digest_addr
+>      hash_write_digest_and_unmap_iov
+>      hash_execute_non_acc_mode
+>      hash_execute_acc_mode
+>   2. Refactor do_hash_operation
+>   3. Fix review issue
+>   4. Revise trace-events
+>   5. Move register size to instance class and dynamically allocate regs
+>
+> v3:
+>   1. Split patch to introduce these routines one by one : 
+>        hash_prepare_sg_iov
+>        hash_prepare_direct_iov
+>        hash_execute_acc_mode
+>        hash_execute_non_acc_mode
+>        hash_write_digest_and_unmap_iov
+>   2. Fix run qtest failed  
+>  
+> This patchset resolves incorrect hash results reported on the AST2700 platform.
+> This update addresses the following kernel warnings and test failures related to
+> the crypto self-test framework:
+>
+> aspeed-hmac-sha512 test failed (incorrect result)
+> aspeed-hmac-sha384 test failed (incorrect result)
+> aspeed-sha512 test failed (incorrect result)
+> aspeed-sha384 test failed (incorrect result)
+> aspeed-hmac-sha256 test failed (incorrect result)
+> aspeed-hmac-sha224 test failed (incorrect result)
+> aspeed-hmac-sha1 test failed (incorrect result)
+> aspeed-sha224 test failed (incorrect result)
+> aspeed-sha256 test failed (incorrect result)
+> aspeed-sha1 test failed (incorrect result)
+>
+> How to test it
+>
+> Use the following command to dump information about the supported digest methods
+> via the ast_crypto_engine hardware engine:
+>
+> root@ast2700-default:~# openssl engine -pre DUMP_INFO ast_crypto_engine
+>
+> Digest SHA1, NID=64, AF_ALG info: name=sha1ALG_ERR: , driver=aspeed-sha1 (hw accelerated)
+> Digest SHA224, NID=675, AF_ALG info: name=sha224ALG_ERR: , driver=aspeed-sha224 (hw accelerated)
+> Digest SHA256, NID=672, AF_ALG info: name=sha256ALG_ERR: , driver=aspeed-sha256 (hw accelerated)
+> Digest SHA384, NID=673, AF_ALG info: name=sha384ALG_ERR: , driver=aspeed-sha384 (hw accelerated)
+> Digest SHA512, NID=674, AF_ALG info: name=sha512ALG_ERR: , driver=aspeed-sha512 (hw accelerated)
+>
+> The status of SHA1, SHA224, SHA256, SHA384, and SHA512 should be marked as
+> hw accelerated, indicating that these algorithms are supported by hardware
+> acceleration via the aspeed drivers.
+>
+> Create a test file on the host machine and compute its HASH value as the
+> expected result
+>
+> Create a 256MB test file
+>
+> $ dd if=/dev/random of=/tmp/256M bs=1M count=256
+> Generate Hash Values Using SHA1, SHA224, SHA256, SHA384, and SHA512
+>
+> Use the following commands to generate HASH values for a 256MB file using
+> different SHA algorithms:
+>
+> $ sha1sum /tmp/256M
+> 7fc628811a31ab87b0502dab3ed8d3ef07565885  /tmp/256M
+>
+> $ sha224sum /tmp/256M
+> 2d261c11ba05b3a62e0efeab51c307d9933426c7e18204683ef3da54  /tmp/256M
+>
+> $ sha256sum /tmp/256M
+> 5716d1700ee35c92ca5ca5b466639e9c36eed3f1447c1aec27f16d0fe113f94d  /tmp/256M
+>
+> $ sha384sum /tmp/256M
+> fb6bc62afa1096dcd3b870e7d2546b7a5a177b5f2bbd5c9759218182454709e0c504a2d9c26404e04aa8010a291b7f1c  /tmp/256M
+>
+> $ sha512sum /tmp/256M
+> fbceda7be34836fe857781656318ecd5b457a833a24c8736d5b8ef8d07e1950eebcdb140eebe4f12b5ff59586f7eb1c64fa95869c63dd9e4703d91261093c5c9  /tmp/256M
+>
+> Generate HASH Values Using the Hardware Engine
+>
+> Use the following commands to generate HASH values for a 256MB file using
+> various SHA algorithms with the ast_crypto_engine hardware engine:
+>
+> root@ast2700-default:~# openssl dgst -sha1 -engine ast_crypto_engine /tmp/256M
+> Engine "ast_crypto_engine" set.
+> SHA1(/tmp/256M)= 7fc628811a31ab87b0502dab3ed8d3ef07565885
+>
+> root@ast2700-default:~# openssl dgst -sha224 -engine ast_crypto_engine /tmp/256M
+> Engine "ast_crypto_engine" set.
+> SHA2-224(/tmp/256M)= 2d261c11ba05b3a62e0efeab51c307d9933426c7e18204683ef3da54
+>
+> root@ast2700-default:~# openssl dgst -sha256 -engine ast_crypto_engine /tmp/256M
+> Engine "ast_crypto_engine" set.
+> SHA2-256(/tmp/256M)= 5716d1700ee35c92ca5ca5b466639e9c36eed3f1447c1aec27f16d0fe113f94d
+>
+> root@ast2700-default:~# openssl dgst -sha384 -engine ast_crypto_engine /tmp/256M
+> Engine "ast_crypto_engine" set.
+> SHA2-384(/tmp/256M)= fb6bc62afa1096dcd3b870e7d2546b7a5a177b5f2bbd5c9759218182454709e0c504a2d9c26404e04aa8010a291b7f1c
+>
+> root@ast2700-default:~# openssl dgst -sha512 -engine ast_crypto_engine /tmp/256M
+> Engine "ast_crypto_engine" set.
+> SHA2-512(/tmp/256M)= fbceda7be34836fe857781656318ecd5b457a833a24c8736d5b8ef8d07e1950eebcdb140eebe4f12b5ff59586f7eb1c64fa95869c63dd9e4703d91261093c5c9
+>
+> The HASH values generated here should exactly match those computed on the host
+> machine using sha shell commands, verifying both the correctness of the
+> hardware-accelerated results and the functionality of the ast_crypto_engine.
+>
+> Jamin Lin (28):
+>   hw/misc/aspeed_hace: Remove unused code for better readability
+>   hw/misc/aspeed_hace: Improve readability and consistency in variable
+>     naming
+>   hw/misc/aspeed_hace: Ensure HASH_IRQ is always set to prevent firmware
+>     hang
+>   hw/misc/aspeed_hace: Extract direct mode hash buffer setup into helper
+>     function
+>   hw/misc/aspeed_hace: Extract SG-mode hash buffer setup into helper
+>     function
+>   hw/misc/aspeed_hace: Extract digest write and iov unmap into helper
+>     function
+>   hw/misc/aspeed_hace: Extract non-accumulation hash execution into
+>     helper function
+>   hw/misc/aspeed_hace: Extract accumulation-mode hash execution into
+>     helper function
+>   hw/misc/aspeed_hace: Introduce 64-bit hash source address helper
+>     function
+>   hw/misc/aspeed_hace: Rename R_HASH_DEST to R_HASH_DIGEST and introduce
+>     64-bit hash digest address helper
+>   hw/misc/aspeed_hace: Support accumulative mode for direct access mode
+>   hw/misc/aspeed_hace: Move register size to instance class and
+>     dynamically allocate regs
+>   hw/misc/aspeed_hace: Add support for source, digest, key buffer 64 bit
+>     addresses
+>   hw/misc/aspeed_hace: Support DMA 64 bits dram address
+>   hw/misc/aspeed_hace: Add trace-events for better debugging
+>   hw/misc/aspeed_hace: Support to dump plaintext and digest for better
+>     debugging
+>   tests/qtest: Reorder aspeed test list
+>   test/qtest: Introduce a new aspeed-hace-utils.c to place common
+>     testcases
+>   test/qtest/hace: Specify explicit array sizes for test vectors and
+>     hash results
+>   test/qtest/hace: Adjust test address range for AST1030 due to SRAM
+>     limitations
+>   test/qtest/hace: Add SHA-384 test cases for ASPEED HACE model
+>   test/qtest/hace: Add SHA-384 tests for AST2600
+>   test/qtest/hace: Add tests for AST1030
+>   test/qtest/hace: Update source data and digest data type to 64-bit
+>   test/qtest/hace: Support 64-bit source and digest addresses for
+>     AST2700
+>   test/qtest/hace: Support to test upper 32 bits of digest and source
+>     addresses
+>   test/qtest/hace: Support to validate 64-bit hmac key buffer addresses
+>   test/qtest/hace: Add tests for AST2700
+>
+>  include/hw/misc/aspeed_hace.h   |  11 +-
+>  tests/qtest/aspeed-hace-utils.h |  84 +++++
+>  hw/misc/aspeed_hace.c           | 479 +++++++++++++++--------
+>  tests/qtest/aspeed-hace-utils.c | 646 ++++++++++++++++++++++++++++++++
+>  tests/qtest/aspeed_hace-test.c  | 577 +++++-----------------------
+>  tests/qtest/ast2700-hace-test.c |  98 +++++
+>  hw/misc/trace-events            |   8 +
+>  tests/qtest/meson.build         |  13 +-
+>  8 files changed, 1279 insertions(+), 637 deletions(-)
+>  create mode 100644 tests/qtest/aspeed-hace-utils.h
+>  create mode 100644 tests/qtest/aspeed-hace-utils.c
+>  create mode 100644 tests/qtest/ast2700-hace-test.c
 
-The problem I face with diffs in the commit body is that tools like b4, which are
-based on git am, get very confused on how to handle it. I'm surprised nobody ever
-complained about it. I'm wondering if there is any catch on it, because I have to
-edit commits like this manually, removing the diff, to make it finally apply to
-the series. Anyways, do you mind at least removing the valid diff header, like:
+For qtest:
 
-> diff --git a/dsdt.dsl_before b/dsdt.dsl_after_osc_change
-> index 3224a56..fa7558e 100644
-> --- a/dsdt.dsl_before
-> +++ b/dsdt.dsl_after_osc_change
-
-from the commit message so it doesn't confuse b4?
-
-
-> ---
->   hw/pci-host/gpex-acpi.c | 60 +++--------------------------------------
->   1 file changed, 4 insertions(+), 56 deletions(-)
-> 
-> diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
-> index f1ab30f3d5..98c9868c3f 100644
-> --- a/hw/pci-host/gpex-acpi.c
-> +++ b/hw/pci-host/gpex-acpi.c
-> @@ -50,60 +50,7 @@ static void acpi_dsdt_add_pci_route_table(Aml *dev, uint32_t irq,
->       }
->   }
->   
-> -static Aml *build_host_bridge_osc(bool enable_native_pcie_hotplug)
-> -{
-> -    Aml *method, *UUID, *ifctx, *ifctx1, *elsectx;
-> -
-> -    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
-> -    aml_append(method,
-> -        aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
-> -
-> -    /* PCI Firmware Specification 3.0
-> -     * 4.5.1. _OSC Interface for PCI Host Bridge Devices
-> -     * The _OSC interface for a PCI/PCI-X/PCI Express hierarchy is
-> -     * identified by the Universal Unique IDentifier (UUID)
-> -     * 33DB4D5B-1FF7-401C-9657-7441C03DD766
-> -     */
-> -    UUID = aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766");
-> -    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
-> -    aml_append(ifctx,
-> -        aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
-> -    aml_append(ifctx,
-> -        aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
-> -    aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
-> -    aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
-> -
-> -    /*
-> -     * Allow OS control for SHPCHotplug, PME, AER, PCIeCapability,
-> -     * and PCIeHotplug depending on enable_native_pcie_hotplug
-> -     */
-> -    aml_append(ifctx, aml_and(aml_name("CTRL"),
-> -               aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)),
-> -               aml_name("CTRL")));
-> -
-> -    ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
-> -    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
-> -                              aml_name("CDW1")));
-> -    aml_append(ifctx, ifctx1);
-> -
-> -    ifctx1 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), aml_name("CTRL"))));
-> -    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x10),
-> -                              aml_name("CDW1")));
-> -    aml_append(ifctx, ifctx1);
-> -
-> -    aml_append(ifctx, aml_store(aml_name("CTRL"), aml_name("CDW3")));
-> -    aml_append(ifctx, aml_return(aml_arg(3)));
-> -    aml_append(method, ifctx);
-> -
-> -    elsectx = aml_else();
-> -    aml_append(elsectx, aml_or(aml_name("CDW1"), aml_int(4),
-> -                               aml_name("CDW1")));
-> -    aml_append(elsectx, aml_return(aml_arg(3)));
-> -    aml_append(method, elsectx);
-> -    return method;
-> -}
-> -
-> -static Aml *build_host_bridge_dsm(void)
-> +static Aml *build_pci_host_bridge_dsm_method(void)
->   {
->       Aml *method = aml_method("_DSM", 4, AML_NOTSERIALIZED);
->       Aml *UUID, *ifctx, *ifctx1, *buf;
-> @@ -134,8 +81,9 @@ static void acpi_dsdt_add_host_bridge_methods(Aml *dev,
->       aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
->       aml_append(dev, aml_name_decl("CTRL", aml_int(0)));
->       /* Declare an _OSC (OS Control Handoff) method */
-> -    aml_append(dev, build_host_bridge_osc(enable_native_pcie_hotplug));
-> -    aml_append(dev, build_host_bridge_dsm());
-> +    aml_append(dev,
-> +               build_pci_host_bridge_osc_method(enable_native_pcie_hotplug));
-> +    aml_append(dev, build_pci_host_bridge_dsm_method());
->   }
->   
->   void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
-
-Otherwise:
-
-Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
-
-
-Cheers,
-Gustavo
+Acked-by: Fabiano Rosas <farosas@suse.de>

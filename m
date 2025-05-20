@@ -1,321 +1,142 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp481976njc;
-        Tue, 20 May 2025 06:03:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVSw+67g2M+fNXxC7OGYBO2fMf9wDee5LpgvFirETDqVypJO3k1KWWfVo7hvvYywoT/DEgE+ThK5XkCAg==@linaro.org
-X-Google-Smtp-Source: AGHT+IE3+DFnHqW6agf40JArioWzPRBovU4pEpV52BRPvpHs5b15ZbkNVGMoY9n76Jj5UQgT0vlg
-X-Received: by 2002:a05:6122:d82:b0:518:965c:34a with SMTP id 71dfb90a1353d-52dba803331mr15654639e0c.2.1747746178599;
-        Tue, 20 May 2025 06:02:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747746178; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp525212njc;
+        Tue, 20 May 2025 07:05:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXefhXMy1MLr0f0jX9a0WeMk/9UaQk82fTqN/ydPaat8cTHIXmM6KSK4Vz8X5y44PT7G4W8biLOpGEzAg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEBpl/ogE4UU/+dFo0U4ZR7tEJ5xZetZDbRl1rLy5g6XIfVe85fVQTXtr0ub1rYuEU9u3jm
+X-Received: by 2002:a05:620a:1982:b0:7c5:d71c:6a47 with SMTP id af79cd13be357-7cd46af8c77mr2683763485a.8.1747749915729;
+        Tue, 20 May 2025 07:05:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747749915; cv=none;
         d=google.com; s=arc-20240605;
-        b=BM2nZ5YK6ec0255nuLaaq1xDE5Wtoi/2HLC7S3FFe6ZLWX7wf2hOeakf9Yrp0zr1jR
-         xpkLZDYqaTJ+JqlUA9unFt/7Xp7RKvZLP5UF/faM4eTnnEZ1CawXciXxnKoQ2STiQNeb
-         8kFfKvRNbTZIGbpe5LNfri9uKNWO9CoBxhtTeZuTM1e2r3oDbLxeUpOzd1tHaaB/wPva
-         FfiZafYpovHjzwSwSa0lTMGQJ0V3mwTIzr5dgxSpwjqtvRxtjl9LELra8ERC2FFJTZg9
-         E2tAFNe1Gf4yUaxVM4oNWZtLjiVBu53Pam7mXs59NLK4cWJUkaeL8NNir4+zUiv2zuLZ
-         O7Wg==
+        b=ezdtDEw7Tt5iB3Kx+AKsvhD0ncJlm5j9KJJuqofOkh0TFG9hYqIS0Wlp0mWmqMMsAN
+         RRyXrjNWTGgJnAxRMvAU3tJgvl2JzHTLWPtf+yoM5vbS047WBTqjNvPXl8i1OiWEeTTb
+         k1OxdrTdkmZQi8Yrb9Gp636Tqyf8gsr5SxeCqw7fp/ZH8F4qxqjRcHvi5htaQfWd9+u5
+         HI2+WCWPmkBqo/cSf9tRJpB3w9LREOnM2EEoMnf28BhVwzehxiAg6qJKGi8vckVG0P+A
+         4hrWpW3VR93lA/0dnYcLlqtBlZvncE2NkL37d6hSlZxlEGsOtJAZRKAvKNXt9PAItcYB
+         V6Mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=pMfbpzXhOe+YUNzUqs3qyQQ11n1TNRt1IoQEcji45Mg=;
-        fh=kFT2SEBJ7fVZx/ScsclkLEyHm+CsHacH9mVfla/4k8g=;
-        b=jklSm0TxIvZA+SOWFyP/QEsQItNhBE+KnCSwBl/MrxUciQdhfXITnV3YTn6eZxyz8V
-         lJkEeXaUHJOVoxzP9V4IW90gswNyTmvZVaqr7lzoZQLVyq4F8zlpJqxYHi7lcNHhSwp9
-         SK+2ObC9+Y7WVtKrljrpPFB4VMWtY8vNn58bgtQyUjGiZANgcQkRRgTHgeXK13QRd5yu
-         rMSFGwNo3gtqu0chnr+BN9gB/Q2zepufl4qcNKIy7YyefgBusNdu9WHfFgu6kUAJzHE/
-         YtBHSB0QMsvie/ys9qfVuwND5nSmIHEK1fUCX3pYKnf0FlTRBrYio3UMrSR+98FRIig+
-         PCcA==;
+        h=mime-version:message-id:date:user-agent:references:organization
+         :in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=Dqea7MZDYhyQlC4xKO8LGx5epUTJ/uHF9sDafau5YHY=;
+        fh=iQ7n1v0snccwxUvUyN2HRcGQY4i7GKA5J/Y52/7OCuQ=;
+        b=OJdKEZSU9DeP6hNTm2H125Mkp8PpEtrK03wG6Fkdn/46SwogaoFgF0/52Oyqh+R77N
+         m3YpFWWHwrt8MqTV16i0Vwr1xMv7lNjw8blraTWSqNJBocdgJdQYoB5t4+cTHdn7hWHZ
+         4KPfSly1a+9JVZ6vycg25ApJKqyErzaU5GfiBsz/xQyHOVXvXR37BcjSmnNuPBXBDfmS
+         FAOW3OiyKlt+NaJQtZEoEhCFJs5agbREHMHSnvR1aTMbSlQgOe+Ge9dmSi+Azn6WWiEd
+         4TbumHszfw58X7ejt8e4HOI2u6heKuxKsrFndwKOOHYBVQwy4KRY4WkL19FLI3pAHcQ+
+         sN1A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VzmeSbB7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-52dbaa41b8dsi3934605e0c.143.2025.05.20.06.02.58
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N3NHKvsq;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7cd467e8546si1049223885a.150.2025.05.20.07.05.15
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 May 2025 06:02:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 May 2025 07:05:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VzmeSbB7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uHMZB-0002JY-WF; Tue, 20 May 2025 08:59:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uHMZ8-0002Ip-UZ
- for qemu-devel@nongnu.org; Tue, 20 May 2025 08:59:32 -0400
-Received: from mail-ua1-x932.google.com ([2607:f8b0:4864:20::932])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uHMZ0-0001td-30
- for qemu-devel@nongnu.org; Tue, 20 May 2025 08:59:30 -0400
-Received: by mail-ua1-x932.google.com with SMTP id
- a1e0cc1a2514c-875b8e006f8so1549750241.0
- for <qemu-devel@nongnu.org>; Tue, 20 May 2025 05:59:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1747745958; x=1748350758; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=pMfbpzXhOe+YUNzUqs3qyQQ11n1TNRt1IoQEcji45Mg=;
- b=VzmeSbB7AAvYCSrsbpWLwyiTqYC7B2wmVAlsmtP+lP+ujGmcYNnUBZPoPSqXRhT5ND
- Z8eF7ASZPotyi3A7JxuAM44yuur0UZsGoOYZ6VFPf9ks2I8+vFVQnqFM92Wzm8pJNXdP
- uebJVmDFHkjiZQ6ncCCiWsgOtPDkDG3+RgVNwHZ9Jkjv8Z/8/c827ABYuFOOLM7YkzjO
- xCFMvD0YM67IKBQQg6chGOtkHVKC2wDeJpabHPemO+JrIdcu5QBnCLZjhFDgqRast8H6
- htPOeVdbMoR9ZiGNBcSCKGgX0SnQeWXqCX2BCh5M/n0LXIju3dER+mtt9By5828+0fB6
- dIdg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747745958; x=1748350758;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=pMfbpzXhOe+YUNzUqs3qyQQ11n1TNRt1IoQEcji45Mg=;
- b=d4w6LB5q8BQVjK7jGw6VJJ1rNuBDw+D4vM6zTUZh9GgeLbcBuHoT/Ttwt+8X2aq6yo
- 7wjv5TkoZrujhPQaK8PEziVyRpKBZk+mbbwGdU2p0L1PFX8oATJD8Rpgg/1buAiIykqR
- IT5LCGltsq9eDG3yiWWSWK/CRq8fBEmEDcuucWsGTTda1uVA/OeZDAIgV2N9PRePFvg9
- TyKi6kOJ7FHdtC94VU1+M6rzLx61cWmSv/hoQgoNiTnbsiTDcWGEIbFEsbj6CPE61NDk
- Ht01+N5xY30polfwXXB5L+QOPsGKvNtgmBn8q5TRO34gse+37ISjz4H207KqiMslClqr
- bL3A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWpDoZjYSLqMAhJl4jj6KST+9mlCOnsqHobyYWTC2KkeELcqRM7/ElhEE+A0udl+RiI2gBhFaa0cjnR@nongnu.org
-X-Gm-Message-State: AOJu0YzgiV30alB2kheOzog0QBw9VaBYHYos2ZOkeEUZKoPcThDZHy4S
- t8nh/ie7FJ+O0k53dBxvai1fDNYhJqXCdTI0fNnhjyo0KnGlyKfMO+R8vB7wndVldsQ=
-X-Gm-Gg: ASbGncv1S7v+lAA/83HmEB7pMuknhCdPskrRtJaXNZZip9DHfK33keA2ETxjLZFkLHD
- AaMWOaHgApQGc2TxyjLfGKXPU0sZCERpES+x+cvdgb4WcL0a6PKg9XWb/ye82EJ1m5Y1U5Re9L+
- x+WtszG90aQ6ul2a9JHJLozCEfI3fzsKlhHs8HxTsvl6yV00K1B4Ja/tu9frbQsEY1c+9MlTQf7
- O957GcwPZ2xI4NksvnnYPC+OMzEcjRhRiIhlFGO/YrMnYzHcs6oYygxlyr1WvvQaxdOYRgNlaO3
- QONAWgKXtZT77VH+DGabPmp4Wah35VrrERCqBDYVnP5J81GuCHRSH7Cj08iiDcQ9tt6GjTa+unh
- CfBXGVyUQAfAoIshUHuVzpqKPl57kTw==
-X-Received: by 2002:a05:6102:4411:b0:4dd:b259:ef3c with SMTP id
- ada2fe7eead31-4dfa6b685f7mr15755055137.9.1747745957959; 
- Tue, 20 May 2025 05:59:17 -0700 (PDT)
-Received: from ?IPV6:2804:7f0:b401:d47f:6989:b93e:2caa:f174?
- ([2804:7f0:b401:d47f:6989:b93e:2caa:f174])
- by smtp.gmail.com with ESMTPSA id
- ada2fe7eead31-4dfa66fdb81sm7956484137.18.2025.05.20.05.59.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 May 2025 05:59:17 -0700 (PDT)
-Message-ID: <c5b50b92-c580-4bc4-94ec-73e445fce312@linaro.org>
-Date: Tue, 20 May 2025 09:59:08 -0300
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N3NHKvsq;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1747749915;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Dqea7MZDYhyQlC4xKO8LGx5epUTJ/uHF9sDafau5YHY=;
+	b=N3NHKvsqUNEHNnFJDHitsvkJJkSS3XHQQPVbsgWFoCreZf53ujKto1hJIxbycY4fdVQ1Di
+	/PGLpOI9YTVInvZVVPFTT6NDvDnvM+zKYoP/S1darOcyC4q5gQ1tJ2yWclu60HR8C4wX/b
+	keKhfFwUQQPxCJSbKRiQS2jhY7VSKU0=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-94-bVnTc1EAMAylZKevhQ0_1Q-1; Tue,
+ 20 May 2025 10:05:14 -0400
+X-MC-Unique: bVnTc1EAMAylZKevhQ0_1Q-1
+X-Mimecast-MFC-AGG-ID: bVnTc1EAMAylZKevhQ0_1Q_1747749911
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 2C7151800874;
+	Tue, 20 May 2025 14:05:10 +0000 (UTC)
+Received: from localhost (dhcp-192-216.str.redhat.com [10.33.192.216])
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 693CB1956095;
+	Tue, 20 May 2025 14:05:07 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
+ oliver.upton@linux.dev, sebott@redhat.com,
+ shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
+ berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com
+Cc: agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com,
+ philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [PATCH v3 06/10] arm/kvm: Allow reading all the writable ID
+ registers
+In-Reply-To: <a706e9a2-0a49-4296-ba0a-8001f433b8b8@redhat.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Michael O'Neill, Amy
+ Ross"
+References: <20250414163849.321857-1-cohuck@redhat.com>
+ <20250414163849.321857-7-cohuck@redhat.com>
+ <a706e9a2-0a49-4296-ba0a-8001f433b8b8@redhat.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Tue, 20 May 2025 16:05:05 +0200
+Message-ID: <87jz6bbcoe.fsf@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 07/22] hw/i386/acpi-build: Turn build_q35_osc_method into
- a generic method
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- imammedo@redhat.com, anisinha@redhat.com, mst@redhat.com,
- shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org
-References: <20250514170431.2786231-1-eric.auger@redhat.com>
- <20250514170431.2786231-8-eric.auger@redhat.com>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20250514170431.2786231-8-eric.auger@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::932;
- envelope-from=gustavo.romero@linaro.org; helo=mail-ua1-x932.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: l5C3874Vqmdm
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-TUID: Y6HZAtlCNZM6
 
-Hi Eric,
+On Tue, May 13 2025, Eric Auger <eric.auger@redhat.com> wrote:
 
-On 5/14/25 14:00, Eric Auger wrote:
-> GPEX acpi_dsdt_add_pci_osc() does basically the same as
-> build_q35_osc_method().
-> 
-> Rename build_q35_osc_method() into build_pci_host_bridge_osc_method()
-> and move it into hw/acpi/aml-build.c. In a subsequent patch we will
-> use this later in place of acpi_dsdt_add_pci_osc().
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> On 4/14/25 6:38 PM, Cornelia Huck wrote:
+>> From: Eric Auger <eric.auger@redhat.com>
+>>
+>> At the moment kvm_arm_get_host_cpu_features() reads a subset of the
+>> ID regs. As we want to introduce properties for all writable ID reg
+>> fields, we want more genericity and read more default host register
+>> values.
+>>
+>> Introduce a new get_host_cpu_idregs() helper and add a new exhaustive
+>> boolean parameter to kvm_arm_get_host_cpu_features() and
+>> kvm_arm_set_cpu_features_from_host() to select the right behavior.
+>> The host cpu model will keep the legacy behavior unless the writable
+>> id register interface is available.
+>>
+>> A writable_map IdRegMap is introduced in the CPU object. A subsequent
+>> patch will populate it.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>> ---
+>>  target/arm/cpu-sysregs.h |  2 ++
+>>  target/arm/cpu.h         |  3 ++
+>>  target/arm/cpu64.c       |  2 +-
+>>  target/arm/kvm.c         | 78 ++++++++++++++++++++++++++++++++++++++--
+>>  target/arm/kvm_arm.h     |  9 +++--
+>>  target/arm/trace-events  |  1 +
+>>  6 files changed, 89 insertions(+), 6 deletions(-)
+>>
 
-Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+(...)
 
+>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+>> index 775a8aebc5d3..8717c5e7695b 100644
+>> --- a/target/arm/cpu.h
+>> +++ b/target/arm/cpu.h
+>> @@ -1088,6 +1088,9 @@ struct ArchCPU {
+>>       */
+>>      ARMIdRegsState writable_id_regs;
+>>  
+>> +    /* ID reg writable bitmask (KVM only) */
+>> +    IdRegMap *writable_map;
+> as it is KVM only we may put it in ifdef CONFIG_KVM block above
 
-Cheers,
-Gustavo
-
-> ---
->   include/hw/acpi/aml-build.h |  2 ++
->   hw/acpi/aml-build.c         | 50 ++++++++++++++++++++++++++++++++++
->   hw/i386/acpi-build.c        | 54 ++-----------------------------------
->   3 files changed, 54 insertions(+), 52 deletions(-)
-> 
-> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-> index c18f681342..177d60b414 100644
-> --- a/include/hw/acpi/aml-build.h
-> +++ b/include/hw/acpi/aml-build.h
-> @@ -508,4 +508,6 @@ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
->   void build_spcr(GArray *table_data, BIOSLinker *linker,
->                   const AcpiSpcrData *f, const uint8_t rev,
->                   const char *oem_id, const char *oem_table_id, const char *name);
-> +
-> +Aml *build_pci_host_bridge_osc_method(bool enable_native_pcie_hotplug);
->   #endif
-> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index f8f93a9f66..ba1dfe0b52 100644
-> --- a/hw/acpi/aml-build.c
-> +++ b/hw/acpi/aml-build.c
-> @@ -2614,3 +2614,53 @@ Aml *aml_i2c_serial_bus_device(uint16_t address, const char *resource_source)
->   
->       return var;
->   }
-> +
-> +Aml *build_pci_host_bridge_osc_method(bool enable_native_pcie_hotplug)
-> +{
-> +    Aml *if_ctx;
-> +    Aml *if_ctx2;
-> +    Aml *else_ctx;
-> +    Aml *method;
-> +    Aml *a_cwd1 = aml_name("CDW1");
-> +    Aml *a_ctrl = aml_local(0);
-> +
-> +    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
-> +    aml_append(method, aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
-> +
-> +    if_ctx = aml_if(aml_equal(
-> +        aml_arg(0), aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766")));
-> +    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
-> +    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
-> +
-> +    aml_append(if_ctx, aml_store(aml_name("CDW3"), a_ctrl));
-> +
-> +    /*
-> +     * Always allow native PME, AER (no dependencies)
-> +     * Allow SHPC (PCI bridges can have SHPC controller)
-> +     * Disable PCIe Native Hot-plug if ACPI PCI Hot-plug is enabled.
-> +     */
-> +    aml_append(if_ctx, aml_and(a_ctrl,
-> +        aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)), a_ctrl));
-> +
-> +    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(1))));
-> +    /* Unknown revision */
-> +    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x08), a_cwd1));
-> +    aml_append(if_ctx, if_ctx2);
-> +
-> +    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), a_ctrl)));
-> +    /* Capabilities bits were masked */
-> +    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x10), a_cwd1));
-> +    aml_append(if_ctx, if_ctx2);
-> +
-> +    /* Update DWORD3 in the buffer */
-> +    aml_append(if_ctx, aml_store(a_ctrl, aml_name("CDW3")));
-> +    aml_append(method, if_ctx);
-> +
-> +    else_ctx = aml_else();
-> +    /* Unrecognized UUID */
-> +    aml_append(else_ctx, aml_or(a_cwd1, aml_int(4), a_cwd1));
-> +    aml_append(method, else_ctx);
-> +
-> +    aml_append(method, aml_return(aml_arg(3)));
-> +    return method;
-> +}
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index b92765fbd9..41fde88b22 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -1111,56 +1111,6 @@ static Aml *build_q35_dram_controller(const AcpiMcfgInfo *mcfg)
->       return dev;
->   }
->   
-> -static Aml *build_q35_osc_method(bool enable_native_pcie_hotplug)
-> -{
-> -    Aml *if_ctx;
-> -    Aml *if_ctx2;
-> -    Aml *else_ctx;
-> -    Aml *method;
-> -    Aml *a_cwd1 = aml_name("CDW1");
-> -    Aml *a_ctrl = aml_local(0);
-> -
-> -    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
-> -    aml_append(method, aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
-> -
-> -    if_ctx = aml_if(aml_equal(
-> -        aml_arg(0), aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766")));
-> -    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
-> -    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
-> -
-> -    aml_append(if_ctx, aml_store(aml_name("CDW3"), a_ctrl));
-> -
-> -    /*
-> -     * Always allow native PME, AER (no dependencies)
-> -     * Allow SHPC (PCI bridges can have SHPC controller)
-> -     * Disable PCIe Native Hot-plug if ACPI PCI Hot-plug is enabled.
-> -     */
-> -    aml_append(if_ctx, aml_and(a_ctrl,
-> -        aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)), a_ctrl));
-> -
-> -    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(1))));
-> -    /* Unknown revision */
-> -    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x08), a_cwd1));
-> -    aml_append(if_ctx, if_ctx2);
-> -
-> -    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), a_ctrl)));
-> -    /* Capabilities bits were masked */
-> -    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x10), a_cwd1));
-> -    aml_append(if_ctx, if_ctx2);
-> -
-> -    /* Update DWORD3 in the buffer */
-> -    aml_append(if_ctx, aml_store(a_ctrl, aml_name("CDW3")));
-> -    aml_append(method, if_ctx);
-> -
-> -    else_ctx = aml_else();
-> -    /* Unrecognized UUID */
-> -    aml_append(else_ctx, aml_or(a_cwd1, aml_int(4), a_cwd1));
-> -    aml_append(method, else_ctx);
-> -
-> -    aml_append(method, aml_return(aml_arg(3)));
-> -    return method;
-> -}
-> -
->   static void build_acpi0017(Aml *table)
->   {
->       Aml *dev, *scope, *method;
-> @@ -1231,7 +1181,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->           aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A08")));
->           aml_append(dev, aml_name_decl("_CID", aml_eisaid("PNP0A03")));
->           aml_append(dev, aml_name_decl("_UID", aml_int(pcmc->pci_root_uid)));
-> -        aml_append(dev, build_q35_osc_method(!pm->pcihp_bridge_en));
-> +        aml_append(dev, build_pci_host_bridge_osc_method(!pm->pcihp_bridge_en));
->           aml_append(dev, aml_pci_edsm());
->           aml_append(sb_scope, dev);
->           if (mcfg_valid) {
-> @@ -1353,7 +1303,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->                   aml_append(dev, aml_name_decl("_CID", aml_eisaid("PNP0A03")));
->   
->                   /* Expander bridges do not have ACPI PCI Hot-plug enabled */
-> -                aml_append(dev, build_q35_osc_method(true));
-> +                aml_append(dev, build_pci_host_bridge_osc_method(true));
->               } else {
->                   aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A03")));
->               }
-
+Forgot to reply here; the CONFIG_KVM block is gone with a725f3710231
+("target/arm/cpu: always define kvm related registers")

@@ -1,83 +1,83 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp475695njc;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp475696njc;
         Tue, 20 May 2025 05:53:43 -0700 (PDT)
-X-Received: by 2002:a17:902:f54a:b0:224:1eab:97b2 with SMTP id d9443c01a7336-231de3baf53mr237249715ad.53.1747745623028;
+X-Received: by 2002:a05:6a21:900c:b0:1f5:790c:947 with SMTP id adf61e73a8af0-216218f7a98mr22162212637.19.1747745623200;
         Tue, 20 May 2025 05:53:43 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1747745623; cv=none;
         d=google.com; s=arc-20240605;
-        b=NlxjuSF8Af3spLXfYok8ph4gV1Tw8zseXE343bSO9tmc8hRqfA0H7y278JEqrNtjmC
-         4WnS1Eo20WHXFDfBFnDSRIPwah8KNy3P6tOXGGpzVWLKvhJfMbiKowNnptvcYe/TLkvN
-         UF2Dilg5ytI7nBgRLdkeI9zxijE2xSVcKueOqPEZgwAx9hVVNBKp1Ag5YJhXIdmK+/em
-         TQEump9fiXLTY08Z0qWZf1pI6AHB104nNi/fQIaRD2I1VJK16RxiuDx4kM7iLYSOY7SZ
-         F/u5Pf8uRtMdrQVqLvdhgHLFERH1gFDYWzcfzqJUQGywGezcm9hUqpNAI5Ds1720QPuz
-         1UFg==
+        b=SCZwWTFBWgMh9Mf957rLcpgea4XZ/LYQF5lXVF1PnskXX82M3cMC3XvVBxDdYjxK4f
+         PV56OD7bB8tgKOHnDMyanZzhAodQKHe9z/4Sv44PpIJqGkyHIdTFurGJoWmJQsgBfoMG
+         uVsliSbjyB+pj/N0EcjPWGZ3b/+W3ktgyFFuww3mBaCuGVK/6hMxHlG4VfxjyQj+I3p3
+         1y8jg50wSmocC9hXs0jWUVc1qnjhUkpqLoc3PAZb+tC4RoRyjOwVlQca8h/yiTffYvi8
+         wWqhbaxomj8cZtqw6OxUZVW9NbROqwWXv9vOqW9KZzf4/S6zzNuOikMySTZYvjQfdw8l
+         sOnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=u2q8jR3NRvJr0acKyFRjELmA4piI07T787KQwfPUSTw=;
-        fh=tWTt8Olro8PC37fQdxD6xuQ6xgO4WCqVV5dOPMANeFQ=;
-        b=bHf8jolOP8ipc92WmL3hCTNjjHSmXxYbNeDF4RV9Dx+7sseP7DLrzeeuO5ghhCBzs+
-         JlnVAlyRl3XImXQCPWCSNOeB/kxUgpFegchUYYtK+L/VWp9itB4uVOsBoAEbawyrFVQB
-         kpFxLiDOp/HXd7jhNkiXbzm5QtmhvXhQ+8y1EjwdcLFAFKP8ZYuFpTz0qZnLlYgs/80B
-         gNsl+5ctnLJIop2Gp2xV2zssJjCNkQD/b9jq4K+sbV0vvVccqgnriXlKrulJA8JGF2gA
-         /m5PXqcjsNZ5zRuPH1VQz7Snf61GFKhIiNtPSUJYwqP/aJVhTnQ7kVwLkoZras6tRb++
-         QuqQ==;
+        bh=muYREexfGkNao6CbCGkvnw0ziWfWGPqgkjYPqsUlkEQ=;
+        fh=SuZ3Il6+juWVFnsT/VTUHa0tfVGc7ktLxlz+cyhP4vk=;
+        b=IUITWNNNi2zADOrq84MZ9cgVb6AVA7q369I8v7q4CiLLov/ri7J7lrh4VEW5IiRRDZ
+         DEMS2xY/9u70zxQ4c9qVfATEXPt8e/41nk6ke46aie5lhOJufc6hk55jGAVpqHeiizwt
+         TNSEwvWE3W/bRr0VugnSzdxVztzhJ1Pxkzw3TuAkhUCYeeMRDxtwxfGqtxIjRqwzkWFv
+         4xELNflmAdezXVbGgnYVzKmJM268EGXAVaKlvs8gWla0kadtJ0VzuJB/v66I4sVbxK09
+         Ds6cgRo8qpF3z4fLnPLYN3pGPiBFmgn+SnJYYpq6bL7VSPgvlja+LVJTQUb0sI1hUaZm
+         hxnQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kwCVSG18;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FHfbDkhJ;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-231d4ad7ddasor62076075ad.6.2025.05.20.05.53.35
+        by mx.google.com with SMTPS id 41be03b00d2f7-b26eaf60b37sor5444198a12.1.2025.05.20.05.53.41
         (Google Transport Security);
         Tue, 20 May 2025 05:53:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kwCVSG18;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FHfbDkhJ;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1747745615; x=1748350415; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1747745621; x=1748350421; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=u2q8jR3NRvJr0acKyFRjELmA4piI07T787KQwfPUSTw=;
-        b=kwCVSG184kMlByYAnSTTWQ130lyxgdGIxkHgu/mKx/Yn1KINDO3qWVSwFMT+rS28pf
-         A/LocJVfXvzR/m9eaDSHaym6unp1CVpqZ4J76D3Qr4WlieSwzKESycY5LXRL/1aBzXok
-         07wi3DPFsAF+cnWT8JvCIqwg5iQj/spnxujtOEErhitUy5AiU8YIgAOYYChGK9uiA3ye
-         R0L0iBBjA0B65PVbqLFsk1HbNSmZItjMA8ZmBxMV3/2YIUCM6jVpW4yLaclt/cTzHdg0
-         uh/g+tDu1njlLeZckxVvpgN+oH3+O9uE/0dOHh6/3O14W0UN6CedSDc+1rVhsoF7LXVa
-         iACg==
+        bh=muYREexfGkNao6CbCGkvnw0ziWfWGPqgkjYPqsUlkEQ=;
+        b=FHfbDkhJd/Sff1kftEuTt07U7m3+7qG46YQ/7AzLtWYcD7OVF9RczSS0qQ7WzCvq4t
+         7AISoER4oPrFKsBCWxWElUB0dXCh6qCiDeuvygGdtaKeEr5qdFxPnFgNrAW/hc7oOORL
+         A5SMLN6MTjRtWUiEKNeQJCnhlkN9S8XMWNlcv9JXIsBWFRuoqUCotFV+UHN4IF5TVCvx
+         hT9ZRWsqr2CJI0cnBli5e3jvkRvxPTDrUJ9lLQqRgMcY99H9sWV4jQ4JaxVi/2MEOQV2
+         NrngXdL6IWlMmGTdOMy9BSqe9zg3kQ29pdZs9mF2/4XVadaIFc7bPAu/nEwwzPs/I6TB
+         iEOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747745615; x=1748350415;
+        d=1e100.net; s=20230601; t=1747745621; x=1748350421;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=u2q8jR3NRvJr0acKyFRjELmA4piI07T787KQwfPUSTw=;
-        b=R5t7jva5NGv4K3VZ3lnb7sSYDvHM3k+t9JrtKpA+9Uy1+YIvXrWi01fFSkBKrVRyL3
-         NR7Dj1OdUwaPL7MvA6pVjTXhCTpY0lZ4Z43548EwacvO0T7dCa6ge8hjiMDVqfhFYKK/
-         JUa57tgcNzxf0lhL3V9sckdqCtBZfrxYKGyE0BnbVhk5DmDs/6m87uJXx+4Ar1B05dLC
-         ssxYgmqMc1zZ7Mgz185GoOR6be5YrhD+kMopFRLWWG3bAo5wMfQM5goGHXucZGZwYXAb
-         IuPzyqKgDstmlaXES0qX8w2UziLBdgv9UwTWZ5l/cS1I+hokbRTpcoIZTKRg7Q++CGg6
-         AXUw==
-X-Forwarded-Encrypted: i=1; AJvYcCU5bPKTZiMeDLETCDZZq8+QZZ1Z6hNpNXkfbc+zxJ+04qlJnyC6tcbH/dP1ASTMKirgemc2W2ItFHk7Ypy/6KW+Ag==@linaro.org, AJvYcCUu1XayhloYOG68oyVQiqVZaKe7v+svR39nIFmN71hEe4wnpx0r3EtP3oJaIsvzKcOfZqO11V0QSmkMqLZoY17l64g=@linaro.org, AJvYcCVxBGL8bd+Hn5wEF29QxvauytbViZR4by/Wh/UsC8V++n1L/qZU+s/xgWjlZLdopGuWs2novKg=@linaro.org
-X-Gm-Message-State: AOJu0YzZSbVjyRjx3tzlduriaF/oxxbpklIhThB5Vf2qFFAm/3Sleibw
-	wsVhlMQ3zn6Va+TkG9zTwYbPV9ViUnEK0FE06FRskPqpzzclOHptos2DRpng2urX
-X-Gm-Gg: ASbGncsiI3qU9lBGfm0dHtLfTsIyZ/ca1CRBqUv597ZM6/3mLL7uVmDICsM2y8Wp4gr
-	sIOP4pd13+ujlvXu77X0QaPxz/MiAoLmLonHEVH6jHyYgmfw84+KaxT4T9NUO92C+HtT2jLlkA7
-	Z3igFtG2v+mgQpTiV5WXr2ONP6IH9XUNDDqTq0fDLn21376eeMPapbGemEulYSMWpQS3HRON/pI
-	PnMjtqXnhrcqMGu/KOrbLUN4fLyDXTXAZIa4m/qS4LmoRrrqCLBHDsyOJ0IUxd9ekYrx0sOErSl
-	C6uZFGIN8nUy0NP07S3959rd8iIw4k5r0DwKWiDQm4m8/VZu+4Fyk+ykesJByQ==
-X-Google-Smtp-Source: AGHT+IH4pYR+xBvjcKBjbRkQTBRJT8LDwYpUVuUOiwlfPNjevxQmlAFw2Wowy5/kkLk1V1frDu+5lA==
-X-Received: by 2002:a17:90a:e70f:b0:2ff:5e4e:864 with SMTP id 98e67ed59e1d1-30e832162d4mr26751801a91.25.1747745615178;
-        Tue, 20 May 2025 05:53:35 -0700 (PDT)
+        bh=muYREexfGkNao6CbCGkvnw0ziWfWGPqgkjYPqsUlkEQ=;
+        b=D9TCPpl/9gdLMy14QBr3sFWfCHl9CI+LBogEjwLHmsdFHgo2uch8nE69ePobOBKiLn
+         pVnTBYZUJUiuEfTdzgc35UCGUU5iUGabCNZAtV/L55/Yuy663Y2f6CewbdOQh68Pq46L
+         53ykH6wiNThYB9eX2OTMYEaiu0fT4NiEQGlXJH2sh/SBJIFloxjUopZIDenwcPzD+bSR
+         uW+w+YXt377R+qmoWvQwAyO42R/R8wa0eBsP2cSkmV1FS7gR4WxI0JgTXIz7e07/GdXh
+         Hx3YLck4DO6GGZrDw01BiQAI6sI7OQjDKFeGgW67VsmW0+QcyDpyw2VZG/MxbcClGQCE
+         VdlQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUbGa9PmbxtMPOfgXhnudFmPA0NbfgEZ/2490lg3lPXcA1C6w82160nwaHKSScTwca4uJiX2hbccY1etCFunTh7eg==@linaro.org, AJvYcCUez2/hKiBJqvBJ0owkpsa01Gvbu/vgTWMPaa2lKNE2u7CXMcHReonriHheMdcS81aoEFx81NL9NoV9A91mOiRXOmE=@linaro.org, AJvYcCVbcdh5G3yU5xFOmLNM+wYAJ/Z34fUqt6g+lnI6mVwpcLg8eXUx3+JcfiaauEIbvtmtPsN3Xjs=@linaro.org
+X-Gm-Message-State: AOJu0Yz/AtXiM/crJugGvC3DKVUQjLxFm7xobbYB18gO1xHCdKYePOir
+	VCDUI/kom9f67HXg+Q8LIC+0FkYX5hdIvH3xuuc7DhJdb27Snp8bDO3D
+X-Gm-Gg: ASbGnctzGJY9GGEoX3SpoMEI5OE90D7BOPbMXfnLeoZh1GUi80B+9HdjWAT5DTuhtY2
+	YUEa/Rm37mwUMGvJRP8MhFTDLKa17soXl+AXUuq3Ck6ma9ZAf/Ye/MM61Dp+m4mJGHGBoKEyaeK
+	g394UtIf6Mwrf8BjNYetvIJzE8jhfREmAQRqiOpshzU6Npb9keZx+g5m9yIIvq2Udx5G4Jt5qV9
+	K1rQjI/QQ+7hRR/M4XLqyp/T+inupdRvKW/1STwWW5X+dcrZZAcXUq+QJGxvg9w9Ga6r81fKDlA
+	ITWiTjl2QR5sUUe6c2/KZD0/AKU2R1vrhVMz9ahiUu6FbOMQrRY=
+X-Google-Smtp-Source: AGHT+IG0tzA7tiR6O7xDX+cIgsbg7F1YbaiTFl+UQp9GDGzuq1KjR9A3Fqt0K9BadY1lb0SPFB22fA==
+X-Received: by 2002:a17:90b:51cb:b0:2fe:84d6:cdf9 with SMTP id 98e67ed59e1d1-30e7d5ac8abmr21767013a91.26.1747745620806;
+        Tue, 20 May 2025 05:53:40 -0700 (PDT)
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from ktock.. ([240d:1a:3b6:8b00:1bde:8310:e993:5dcc])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30f36364f9asm1625916a91.4.2025.05.20.05.53.29
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30f36364f9asm1625916a91.4.2025.05.20.05.53.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 May 2025 05:53:34 -0700 (PDT)
+        Tue, 20 May 2025 05:53:40 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -100,189 +100,124 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Kohei Tokunaga <ktokunaga.mail@gmail.com>,
 	qemu-arm@nongnu.org,
 	qemu-riscv@nongnu.org
-Subject: [PATCH 14/33] tcg/wasm32: Add rem/div instructions
-Date: Tue, 20 May 2025 21:51:16 +0900
-Message-ID: <46ce312e6bfd409ab1ba882470bf4f1508e545e5.1747744132.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH 15/33] tcg/wasm32: Add andc/orc/eqv/nand/nor instructions
+Date: Tue, 20 May 2025 21:51:17 +0900
+Message-ID: <711394a374ef6df21e8759a1768ab542a787353a.1747744132.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1747744132.git.ktokunaga.mail@gmail.com>
 References: <cover.1747744132.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: nve8UXZuRBOs
+X-TUID: OudzuV7IjF6Z
 
-This commit implements rem and div operations using Wasm's rem/div
+This commit implements andc, orc, eqv, nand and nor operations using Wasm
 instructions.
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- tcg/wasm32/tcg-target.c.inc | 120 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 120 insertions(+)
+ tcg/wasm32/tcg-target.c.inc | 55 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 55 insertions(+)
 
 diff --git a/tcg/wasm32/tcg-target.c.inc b/tcg/wasm32/tcg-target.c.inc
-index 1a6069e288..66d3977d31 100644
+index 66d3977d31..50d772f3d6 100644
 --- a/tcg/wasm32/tcg-target.c.inc
 +++ b/tcg/wasm32/tcg-target.c.inc
-@@ -212,6 +212,22 @@ static void tcg_wasm_out_op_i64_mul(TCGContext *s)
+@@ -520,6 +520,56 @@ static void tcg_wasm_out_op_not(TCGContext *s)
+     tcg_wasm_out_op_i64_xor(s);
+ }
+ 
++static void tcg_wasm_out_andc(
++    TCGContext *s, TCGReg ret, TCGReg arg1, TCGReg arg2)
++{
++    tcg_wasm_out_op_global_get_r(s, arg1);
++    tcg_wasm_out_op_global_get_r(s, arg2);
++    tcg_wasm_out_op_not(s);
++    tcg_wasm_out_op_i64_and(s);
++    tcg_wasm_out_op_global_set_r(s, ret);
++}
++
++static void tcg_wasm_out_orc(
++    TCGContext *s, TCGReg ret, TCGReg arg1, TCGReg arg2)
++{
++    tcg_wasm_out_op_global_get_r(s, arg1);
++    tcg_wasm_out_op_global_get_r(s, arg2);
++    tcg_wasm_out_op_not(s);
++    tcg_wasm_out_op_i64_or(s);
++    tcg_wasm_out_op_global_set_r(s, ret);
++}
++
++static void tcg_wasm_out_eqv(
++    TCGContext *s, TCGReg ret, TCGReg arg1, TCGReg arg2)
++{
++    tcg_wasm_out_op_global_get_r(s, arg1);
++    tcg_wasm_out_op_global_get_r(s, arg2);
++    tcg_wasm_out_op_i64_xor(s);
++    tcg_wasm_out_op_not(s);
++    tcg_wasm_out_op_global_set_r(s, ret);
++}
++
++static void tcg_wasm_out_nand(
++    TCGContext *s, TCGReg ret, TCGReg arg1, TCGReg arg2)
++{
++    tcg_wasm_out_op_global_get_r(s, arg1);
++    tcg_wasm_out_op_global_get_r(s, arg2);
++    tcg_wasm_out_op_i64_and(s);
++    tcg_wasm_out_op_not(s);
++    tcg_wasm_out_op_global_set_r(s, ret);
++}
++
++static void tcg_wasm_out_nor(
++    TCGContext *s, TCGReg ret, TCGReg arg1, TCGReg arg2)
++{
++    tcg_wasm_out_op_global_get_r(s, arg1);
++    tcg_wasm_out_op_global_get_r(s, arg2);
++    tcg_wasm_out_op_i64_or(s);
++    tcg_wasm_out_op_not(s);
++    tcg_wasm_out_op_global_set_r(s, ret);
++}
++
+ static void tcg_wasm_out_shl(TCGContext *s, TCGReg ret,
+                              TCGReg arg1, TCGReg arg2)
  {
-     tcg_wasm_out8(s, 0x7e);
- }
-+static void tcg_wasm_out_op_i64_div_s(TCGContext *s)
-+{
-+    tcg_wasm_out8(s, 0x7f);
-+}
-+static void tcg_wasm_out_op_i64_div_u(TCGContext *s)
-+{
-+    tcg_wasm_out8(s, 0x80);
-+}
-+static void tcg_wasm_out_op_i64_rem_s(TCGContext *s)
-+{
-+    tcg_wasm_out8(s, 0x81);
-+}
-+static void tcg_wasm_out_op_i64_rem_u(TCGContext *s)
-+{
-+    tcg_wasm_out8(s, 0x82);
-+}
- static void tcg_wasm_out_op_i64_shl(TCGContext *s)
+@@ -1618,6 +1668,7 @@ static void tgen_andc(TCGContext *s, TCGType type,
+                       TCGReg a0, TCGReg a1, TCGReg a2)
  {
-     tcg_wasm_out8(s, 0x86);
-@@ -995,6 +1011,106 @@ static void tcg_wasm_out_movi(TCGContext *s, TCGType type,
-    tcg_wasm_out_op_global_set_r(s, ret);
+     tcg_out_op_rrr(s, INDEX_op_andc, a0, a1, a2);
++    tcg_wasm_out_andc(s, a0, a1, a2);
  }
  
-+static void tcg_wasm_out_rem_s(
-+    TCGContext *s, TCGType type, TCGReg ret, TCGReg arg1, TCGReg arg2)
-+{
-+    switch (type) {
-+    case TCG_TYPE_I32:
-+        tcg_wasm_out_op_global_get_r(s, arg1);
-+        tcg_wasm_out_op_i32_wrap_i64(s);
-+        tcg_wasm_out_op_i64_extend_i32_s(s);
-+        tcg_wasm_out_op_global_get_r(s, arg2);
-+        tcg_wasm_out_op_i32_wrap_i64(s);
-+        tcg_wasm_out_op_i64_extend_i32_s(s);
-+        tcg_wasm_out_op_i64_rem_s(s);
-+        tcg_wasm_out_op_global_set_r(s, ret);
-+        break;
-+    case TCG_TYPE_I64:
-+        tcg_wasm_out_op_global_get_r(s, arg1);
-+        tcg_wasm_out_op_global_get_r(s, arg2);
-+        tcg_wasm_out_op_i64_rem_s(s);
-+        tcg_wasm_out_op_global_set_r(s, ret);
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static void tcg_wasm_out_rem_u(
-+    TCGContext *s, TCGType type, TCGReg ret, TCGReg arg1, TCGReg arg2)
-+{
-+    switch (type) {
-+    case TCG_TYPE_I32:
-+        tcg_wasm_out_op_global_get_r(s, arg1);
-+        tcg_wasm_out_op_i64_const(s, 0xffffffff);
-+        tcg_wasm_out_op_i64_and(s);
-+        tcg_wasm_out_op_global_get_r(s, arg2);
-+        tcg_wasm_out_op_i64_const(s, 0xffffffff);
-+        tcg_wasm_out_op_i64_and(s);
-+        tcg_wasm_out_op_i64_rem_u(s);
-+        tcg_wasm_out_op_global_set_r(s, ret);
-+        break;
-+    case TCG_TYPE_I64:
-+        tcg_wasm_out_op_global_get_r(s, arg1);
-+        tcg_wasm_out_op_global_get_r(s, arg2);
-+        tcg_wasm_out_op_i64_rem_u(s);
-+        tcg_wasm_out_op_global_set_r(s, ret);
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static void tcg_wasm_out_div_s(
-+    TCGContext *s, TCGType type, TCGReg ret, TCGReg arg1, TCGReg arg2)
-+{
-+    switch (type) {
-+    case TCG_TYPE_I32:
-+        tcg_wasm_out_op_global_get_r(s, arg1);
-+        tcg_wasm_out_op_i32_wrap_i64(s);
-+        tcg_wasm_out_op_i64_extend_i32_s(s);
-+        tcg_wasm_out_op_global_get_r(s, arg2);
-+        tcg_wasm_out_op_i32_wrap_i64(s);
-+        tcg_wasm_out_op_i64_extend_i32_s(s);
-+        tcg_wasm_out_op_i64_div_s(s);
-+        tcg_wasm_out_op_global_set_r(s, ret);
-+        break;
-+    case TCG_TYPE_I64:
-+        tcg_wasm_out_op_global_get_r(s, arg1);
-+        tcg_wasm_out_op_global_get_r(s, arg2);
-+        tcg_wasm_out_op_i64_div_s(s);
-+        tcg_wasm_out_op_global_set_r(s, ret);
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static void tcg_wasm_out_div_u(
-+    TCGContext *s, TCGType type, TCGReg ret, TCGReg arg1, TCGReg arg2)
-+{
-+    switch (type) {
-+    case TCG_TYPE_I32:
-+        tcg_wasm_out_op_global_get_r(s, arg1);
-+        tcg_wasm_out_op_i64_const(s, 0xffffffff);
-+        tcg_wasm_out_op_i64_and(s);
-+        tcg_wasm_out_op_global_get_r(s, arg2);
-+        tcg_wasm_out_op_i64_const(s, 0xffffffff);
-+        tcg_wasm_out_op_i64_and(s);
-+        tcg_wasm_out_op_i64_div_u(s);
-+        tcg_wasm_out_op_global_set_r(s, ret);
-+        break;
-+    case TCG_TYPE_I64:
-+        tcg_wasm_out_op_global_get_r(s, arg1);
-+        tcg_wasm_out_op_global_get_r(s, arg2);
-+        tcg_wasm_out_op_i64_div_u(s);
-+        tcg_wasm_out_op_global_set_r(s, ret);
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
- static bool patch_reloc(tcg_insn_unit *code_ptr_i, int type,
-                         intptr_t value, intptr_t addend)
+ static const TCGOutOpBinary outop_andc = {
+@@ -1707,6 +1758,7 @@ static void tgen_eqv(TCGContext *s, TCGType type,
+                      TCGReg a0, TCGReg a1, TCGReg a2)
  {
-@@ -1556,6 +1672,7 @@ static void tgen_divs(TCGContext *s, TCGType type,
-                      ? INDEX_op_tci_divs32
-                      : INDEX_op_divs);
-     tcg_out_op_rrr(s, opc, a0, a1, a2);
-+    tcg_wasm_out_div_s(s, type, a0, a1, a2);
+     tcg_out_op_rrr(s, INDEX_op_eqv, a0, a1, a2);
++    tcg_wasm_out_eqv(s, a0, a1, a2);
  }
  
- static const TCGOutOpBinary outop_divs = {
-@@ -1574,6 +1691,7 @@ static void tgen_divu(TCGContext *s, TCGType type,
-                      ? INDEX_op_tci_divu32
-                      : INDEX_op_divu);
-     tcg_out_op_rrr(s, opc, a0, a1, a2);
-+    tcg_wasm_out_div_u(s, type, a0, a1, a2);
+ static const TCGOutOpBinary outop_eqv = {
+@@ -1788,6 +1840,7 @@ static void tgen_nand(TCGContext *s, TCGType type,
+                      TCGReg a0, TCGReg a1, TCGReg a2)
+ {
+     tcg_out_op_rrr(s, INDEX_op_nand, a0, a1, a2);
++    tcg_wasm_out_nand(s, a0, a1, a2);
  }
  
- static const TCGOutOpBinary outop_divu = {
-@@ -1718,6 +1836,7 @@ static void tgen_rems(TCGContext *s, TCGType type,
-                      ? INDEX_op_tci_rems32
-                      : INDEX_op_rems);
-     tcg_out_op_rrr(s, opc, a0, a1, a2);
-+    tcg_wasm_out_rem_s(s, type, a0, a1, a2);
+ static const TCGOutOpBinary outop_nand = {
+@@ -1799,6 +1852,7 @@ static void tgen_nor(TCGContext *s, TCGType type,
+                      TCGReg a0, TCGReg a1, TCGReg a2)
+ {
+     tcg_out_op_rrr(s, INDEX_op_nor, a0, a1, a2);
++    tcg_wasm_out_nor(s, a0, a1, a2);
  }
  
- static const TCGOutOpBinary outop_rems = {
-@@ -1732,6 +1851,7 @@ static void tgen_remu(TCGContext *s, TCGType type,
-                      ? INDEX_op_tci_remu32
-                      : INDEX_op_remu);
-     tcg_out_op_rrr(s, opc, a0, a1, a2);
-+    tcg_wasm_out_rem_u(s, type, a0, a1, a2);
+ static const TCGOutOpBinary outop_nor = {
+@@ -1822,6 +1876,7 @@ static void tgen_orc(TCGContext *s, TCGType type,
+                      TCGReg a0, TCGReg a1, TCGReg a2)
+ {
+     tcg_out_op_rrr(s, INDEX_op_orc, a0, a1, a2);
++    tcg_wasm_out_orc(s, a0, a1, a2);
  }
  
- static const TCGOutOpBinary outop_remu = {
+ static const TCGOutOpBinary outop_orc = {
 -- 
 2.43.0

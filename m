@@ -1,73 +1,76 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp324826njc;
-        Tue, 20 May 2025 00:36:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXS4CAjHOR319GJmHxJenfXv4V0UU6OWpjEnHxZyUcu9U1txso2lbMtekeLZoNkmdOYZmb/FBq8nHLJhg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGUatwhPDxlOf62i4nY+p+M+tMAsiFDnDeY8Gw27aHJA3mAbY8sBjke24afn5m99M49pJ/Q
-X-Received: by 2002:a05:6214:2341:b0:6f5:3f55:343c with SMTP id 6a1803df08f44-6f8b0902b73mr291916226d6.32.1747726603392;
-        Tue, 20 May 2025 00:36:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747726603; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp324921njc;
+        Tue, 20 May 2025 00:36:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX3SJOl5wMO3vR5RQ/ryKH5soRvcr6EsBmDJKniBnbZoFHSDS4dDvsbcLZe5BFgSYe2WWi7moPWDp+TIQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGiisdZJJ1ot35D01mUKHZLfsj74Smpa0ZqxEMfXE0rjngEJ5sRHW1i5dcft41H4fPFQvqi
+X-Received: by 2002:a05:620a:d8c:b0:7ca:ca00:735 with SMTP id af79cd13be357-7cd47fc5846mr2577569785a.41.1747726617982;
+        Tue, 20 May 2025 00:36:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747726617; cv=none;
         d=google.com; s=arc-20240605;
-        b=ePivkr7nQpHMNZEfeCDFh1Iti32fnV2AFZWyUBRs2yHlX50fTrr8H4Y6ulUSfN12Zf
-         6cCuKIX1Rd1sv/OyYuPFBxnQTFIMQf2d9Ld+rt8sbnrXBuvttDOVrB8M5VQ5PuVkMPKo
-         jVEAHtv/2YZavDKufVeRPAkdOLlBUV6TO1JLPOA2y2DO9DNyJE7H7XjlaplyYj+kQuuK
-         v7dEK4pUjGYhfq1EQZ17rZ+wCu+XK4CtWGk3BFrRyQKHkroyfJl02xEia8Kc5XLiTeVG
-         JT4nbvROdabvO+xN95++VtkcZO57gHzzqWCdrzESTAuErKdLYI/iFNLR1//TTZ22ahVV
-         kEIg==
+        b=k5LyErx3KDK5cPx7uQpDppCO6cSVqhYxHy1fpWEgkxF8yoQVBrbmuWlNee8+D0jUQc
+         MovRzrwyi2VO+8HM7k16ZaK1+f+6SpZ7jo0Yr9xF08c50grvERGFOlI6FLb1eeXVbgvL
+         14EgEdZtfEn5Un0tQhB5IKBHFt9MV/KptMb4IEACgr2PxvJ7AWuJ2ZSv6vNEtZHox4pP
+         haWwa7H9q7TPTeGpl79HrR6traSrk5aKs/0YeBdC/FDF/8jEcVbz9cVqa9pFTiNAwGQ2
+         NBntnoDxHu1LjtxqXEUFVUg493r9VZkpI5RCDMe3xVbXAy8A+6DRJTIDhR5kKakZcpAM
+         rq4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=myxfeLNDaV2gklqOwwlsWew052lzb9e+Xa3vDobXLUE=;
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=vlBSIVHkFH978bCqALFckfDd+uWXf0feBWEpApKTbe4=;
         fh=Gb4TIc8MExyZGNjx5T60USxFFuCM6mshEZ2Ta2WMSD4=;
-        b=FTo6L7eLdjCleqfS28f4913sITzbGOnuxsH9PFx98EpHUvCaK+fUq0CFnWXzZ/dhC3
-         1clraGkpe9yRfjFkVDKAw/s1+nEsxjipkMzEEUmEFRh+kklZNV1b8xr4PjKfeqyYf9DU
-         L2JISAO9lu59d8adgLmoRSGdJegBVgDS6wRQO1WqRv4bzZCMi8fvCikPbjoUK34yETv6
-         F9mfzAEdBOkFx9hcSrOiMiYoklALC2k4QCDS95QQZehVbwgwgQSlz6uvDiW+sSx0p8au
-         ZsC3OsvoyqTerEtO2OvbfMIAd//MrHWPdoG5jvHCPJgGyaNEwDhmuEFKA4e/TzM+Aqua
-         qFfg==;
+        b=Tihk+BPhVJ00REKKXBuQLA7OU+fr9VNnTzwRk5/cy9R7RT9b+R+1Tb3ujpDaF6bHHH
+         9mapSSbGyTEk0iClgoYF/IdDfgnI9+5BIGUb/SxP1AMcqFXYR1jS4CJmrB/KDwxTIsV2
+         whw1bhr8FLbDtVxhM/na8SN6lHI0nG0e0q8tKJFPJBW+m3mcFUHDfMBrammECRiJiUFe
+         C1ysz2O0y7Ohl09f83W+FBZSxQ0FzaLN1zy21B7QlB4uFoEzGpbItKD/ca1RLVRJgVhC
+         kYKWvABKHW8wQ4NgWPm/sWewOEJXd/MB41eBWZE94SS1A+uDZcCcbw4uuIQ9/W4IVIxH
+         Owyg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f8b09b8444si102304286d6.348.2025.05.20.00.36.43
+        by mx.google.com with ESMTPS id af79cd13be357-7cd468f1e67si1037938685a.617.2025.05.20.00.36.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 May 2025 00:36:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 20 May 2025 00:36:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uHHWA-0002cH-J5; Tue, 20 May 2025 03:36:06 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uHHW9-0002Z0-Od; Tue, 20 May 2025 03:36:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uHHVw-0002H9-QI; Tue, 20 May 2025 03:35:56 -0400
+ id 1uHHW7-0002TN-GU; Tue, 20 May 2025 03:36:03 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uHHVu-0003tR-HF; Tue, 20 May 2025 03:35:52 -0400
+ id 1uHHW5-0003tR-AA; Tue, 20 May 2025 03:36:02 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 20 May
- 2025 15:35:40 +0800
+ 2025 15:35:41 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 20 May 2025 15:35:40 +0800
+ Transport; Tue, 20 May 2025 15:35:41 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
  Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 0/3] Fix RAM size detection failure on BE hosts
-Date: Tue, 20 May 2025 15:35:36 +0800
-Message-ID: <20250520073540.2014240-1-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 3/3] hw/arm/aspeed_ast27x0: Fix RAM size detection failure
+ on BE hosts
+Date: Tue, 20 May 2025 15:35:39 +0800
+Message-ID: <20250520073540.2014240-4-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250520073540.2014240-1-jamin_lin@aspeedtech.com>
+References: <20250520073540.2014240-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -80,37 +83,99 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lH1flG2rxj7V
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ptv22vIJuIhy
 
-v1:
- 1. Fix RAM size detection failure on BE hosts
- 2. INTC: Set impl.min_access_size to 4
-          Fix coding style
+On big-endian hosts, the aspeed_ram_capacity_write() function previously passed
+the address of a 64-bit "data" variable directly to address_space_write(),
+assuming host and guest endianness matched.
 
-Jamin Lin (3):
-  hw/intc/aspeed: Set impl.min_access_size to 4
-  hw/intc/aspeed Fix coding style
-  hw/arm/aspeed_ast27x0: Fix RAM size detection failure on BE hosts
+However, the data is expected to be written in little-endian format to DRAM.
+On big-endian hosts, this led to incorrect data being written into DRAM,
+which caused the guest firmware to misdetect the DRAM size.
 
+As a result, U-Boot fails to boot and hangs.
+
+- Explicitly converting the 32-bit portion of "data" to little-endian format
+  using cpu_to_le32(), storing it in a temporary "uint32_t le_data".
+- Updating the MemoryRegionOps to restrict access to exactly 4 bytes
+  using .valid.{min,max}_access_size = 4 and .impl.min_access_size = 4.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Fixes: 7436db1 ("aspeed/soc: fix incorrect dram size for AST2700")
+---
  hw/arm/aspeed_ast27x0.c | 21 ++++++++++++++++-----
- hw/intc/aspeed_intc.c   | 12 ++++++++++--
- 2 files changed, 26 insertions(+), 7 deletions(-)
+ 1 file changed, 16 insertions(+), 5 deletions(-)
 
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 1974a25766..7ed0919b3f 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -335,24 +335,34 @@ static void aspeed_ram_capacity_write(void *opaque, hwaddr addr, uint64_t data,
+     AspeedSoCState *s = ASPEED_SOC(opaque);
+     ram_addr_t ram_size;
+     MemTxResult result;
++    uint32_t le_data;
+ 
+     ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
+                                         &error_abort);
+ 
+     assert(ram_size > 0);
+ 
++    if (size != 4) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Unsupported write size: %d (only 4-byte allowed)\n",
++                      __func__, size);
++        return;
++    }
++
++    le_data = cpu_to_le32((uint32_t)data);
++
+     /*
+      * Emulate ddr capacity hardware behavior.
+      * If writes the data to the address which is beyond the ram size,
+      * it would write the data to the "address % ram_size".
+      */
+     result = address_space_write(&s->dram_as, addr % ram_size,
+-                                 MEMTXATTRS_UNSPECIFIED, &data, 4);
++                                 MEMTXATTRS_UNSPECIFIED, &le_data, 4);
+     if (result != MEMTX_OK) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: DRAM write failed, addr:0x%" HWADDR_PRIx
+-                      ", data :0x%" PRIx64  "\n",
+-                      __func__, addr % ram_size, data);
++                      ", data :0x%x\n",
++                      __func__, addr % ram_size, le_data);
+     }
+ }
+ 
+@@ -360,9 +370,10 @@ static const MemoryRegionOps aspeed_ram_capacity_ops = {
+     .read = aspeed_ram_capacity_read,
+     .write = aspeed_ram_capacity_write,
+     .endianness = DEVICE_LITTLE_ENDIAN,
++    .impl.min_access_size = 4,
+     .valid = {
+-        .min_access_size = 1,
+-        .max_access_size = 8,
++        .min_access_size = 4,
++        .max_access_size = 4,
+     },
+ };
+ 
 -- 
 2.43.0
 

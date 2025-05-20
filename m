@@ -1,121 +1,127 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp408975njc;
-        Tue, 20 May 2025 03:56:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXIeuu7iU2XZ073WuVCiTP8q78B4G2ufSqzBgI07ost1arYhaYZylo7nNfF8hyqFBD4BQbX6bHMTOq+Mw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFwnUnf1EKGXgJUC9S+TKbIvp1/WmakgRba12EG9iDRFDo9P7gqSVpK9tEPVGqNhx/ULDXX
-X-Received: by 2002:a05:622a:610c:b0:48a:e2ec:a3b4 with SMTP id d75a77b69052e-497b511e38cmr132179511cf.17.1747738570690;
-        Tue, 20 May 2025 03:56:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747738570; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp463823njc;
+        Tue, 20 May 2025 05:31:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVM0avldmN/leIjUbgBc6y8pt0YB5U5ihcarzht195DccGqIc25gHjTCcBN9bg9XvvLR5PQ7zoqJRUQ8A==@linaro.org
+X-Google-Smtp-Source: AGHT+IEWvWAN+v+0Rl7GxaCCfa2oixn7zjLm8evBhXlxpBsXhYpcm+lwmDDVN/te8paOJbviDqg9
+X-Received: by 2002:a05:6602:4c82:b0:85b:3677:fa8b with SMTP id ca18e2360f4ac-86a2324baafmr2054587639f.13.1747744303350;
+        Tue, 20 May 2025 05:31:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747744303; cv=none;
         d=google.com; s=arc-20240605;
-        b=j7zlZ4c5IWfaY5ebOu/jAI2SAvfpQ24hBn1UC+Pe+g0FT/vXH4KRpORogQ7gX9fJ1q
-         O5LcU7DA5wuT093n4quriFiQg+tpvv3yK+HHqUADFPNz2Bw+TkUFgErntNRpLJ07eBua
-         l5K7sdmijJHLYPufQO85eGv9gcLroVhKhtx03FhXNN3rorehuDH5q6oc1w6UvaQYlFc9
-         RfFXKNj3p2+YqitAQwA2nGcWcM7fLTmFI0L6pEOn2X+0xx+U9X2U3fUZDuOWkYbCDXla
-         45kNrnVuNDXMWQHqjNZrsuZZ5Lm7aF3cDas1MMdYV3czrK316xrMlmwjnl0t0VcfAdoQ
-         Y+/g==
+        b=fwjm5p8qheD+EgpubZ8uz3HwLAGyGytnFLXFXyz4jPjNoK16VttQIPyr3kHfLvXov8
+         67w6R+sNeJfHTdKuGWK6b39sfWZlrqcFshb5mnhOwjYWFUQX7YSm95dmknG7RFbAMQ+n
+         8oNn2bAiRR2WTVMFBnJdB2VoTMkeSPDQzD+APPOyqoJO1ZYhDa+Tva5+YJ9Nw2mqBkP4
+         rxQJuURujHP+bI57ZzP1iKmpV2djxz4Sh7Fam7VOcoMJQgwxeDH0cyAMe5cCGyhRWMy4
+         IY8dZxJ3Mo7/nMHKyhVWcmoLXUCnhfDpDZdkjGFr5x79U1twmcN9unKtzkM5vaNjWRDw
+         nt4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=d56XuPPi1HP2EPqByeAtI9ZEpb23Z+LV9ArzkamKZHM=;
-        fh=ow/YDOioMs5cntZ+fDNJOwOAifCgrFec8kW+GuodSkQ=;
-        b=JRBac/Mp+c2cKaWICUiBvy8wA2IklZ88aZmUGvM2ojkfn4ju4dL1CCNIgSIEo1dl+h
-         Tqpasy0OFCQh0pXkeYj95DCXSRMuenyX0FcdmbymHTRIYzneqjWaWu2YTXE9aTFvIdsO
-         1zdl1UUSvVEgcHOsDswFXRALNHZB9CyP2u9n57cT5K/QxLz1e6x6mED5yVOuyOtw/g5A
-         PcjXVZXaTf7YM/UXXbKI3DWoBORSU5Z0pBn/5dRRTLixqg0grVkQUf6i8cCVFzI2qtcq
-         XPj0s7htfC+Rt2feMoLga8UFvL9IxtNFTzeIgWLhfQLWXhyuO0PTQG36jA2Uvm7NlIG3
-         bA5A==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=UJGR+g/Y+CLu5+h11cSkPA43CVX76D8jK97YeC0XAaM=;
+        fh=Rg0fJoo9u/v1adX9rTbk+Yi4iu01zgiRpUTbKaI02pw=;
+        b=SdzPd+OPj6U38WxPL7tVjxIrs1EFEX0sAAIvPMOfenpyOsVA4rABXLT2HbA47iGBAL
+         o7/E16Kc4qbsFQmrk5AwuZ+dJh8CYpLfKg58ahL3Zd9vxfHndAl5ig2HUO+n654pdKQI
+         oS3R6lHWbD13DDicH4ZswKqRB+HBhDTpigx4yS4GeemLiJpkfedqTLx1AwDlp5cE3EYc
+         8wA4ftvjs4MKIViQmDfnPUf9FoCQYPsqXpBHY41ZJmYD1k+dCmcH7KznYJmc1Wd/WGyh
+         X9T5HX/OVz24p+UkYf0WK3Y5/w8oBZwqPrImHqqKWcnP2EGMT1Z8SfdVWlcq5r+Z/xUT
+         qW3Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wKdc5sFF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ks2uB2Y6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-49a65634a3bsi16474521cf.473.2025.05.20.03.56.10
+        by mx.google.com with ESMTPS id 8926c6da1cb9f-4fbcc4938b3si5491196173.86.2025.05.20.05.31.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 May 2025 03:56:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 20 May 2025 05:31:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wKdc5sFF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ks2uB2Y6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uHKdg-0004N6-Uz; Tue, 20 May 2025 06:56:04 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uHM7l-00039A-KL; Tue, 20 May 2025 08:31:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uHKde-0004MI-Ht
- for qemu-devel@nongnu.org; Tue, 20 May 2025 06:56:02 -0400
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1uHM7f-00038F-1e
+ for qemu-arm@nongnu.org; Tue, 20 May 2025 08:31:10 -0400
+Received: from mail-vk1-xa2a.google.com ([2607:f8b0:4864:20::a2a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uHKdc-000193-QX
- for qemu-devel@nongnu.org; Tue, 20 May 2025 06:56:02 -0400
-Received: by mail-yw1-x1131.google.com with SMTP id
- 00721157ae682-70cb334de0cso29236617b3.0
- for <qemu-devel@nongnu.org>; Tue, 20 May 2025 03:56:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1uHM7Z-0004ex-NE
+ for qemu-arm@nongnu.org; Tue, 20 May 2025 08:31:06 -0400
+Received: by mail-vk1-xa2a.google.com with SMTP id
+ 71dfb90a1353d-527a2b89a11so1771561e0c.2
+ for <qemu-arm@nongnu.org>; Tue, 20 May 2025 05:30:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1747738559; x=1748343359; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=d56XuPPi1HP2EPqByeAtI9ZEpb23Z+LV9ArzkamKZHM=;
- b=wKdc5sFFC0UsmBKAUpDcYCslHnNIacGdJRtgLZ8mz3iOg3QBHFmRDSWR1UU2GFKsMy
- 7JZkYFWIM8lINSXUhdxxh98q18SHJrRwPjwaW3c9BrXP9qErckLwPKpTRgO3Ibitvrlf
- J4vSBHDI7XR9VtPA0TGG2tzXv15OSELCmS/3ZHfNdx/XhWe1Mx6jd0rJKgUeNtDYUc0O
- 2evZWZR6vPoUwsCe5ajmROyXttuckGGhcn/ufKrXUCpc8RLHQ+fdIpwUcalfdVf7Cevw
- 5zuqs+ZV+IAQWAbPuzaPQL4g42dNpvG6LEa+0tt52nvHwge4xXaivgCGkcIvb67WF5/A
- oDWA==
+ d=linaro.org; s=google; t=1747744257; x=1748349057; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=UJGR+g/Y+CLu5+h11cSkPA43CVX76D8jK97YeC0XAaM=;
+ b=Ks2uB2Y62TF1BIsTKwTI8KF9b803j6Kgoy0qpGr6O80sOsYcXNtYCm47vxM6jQrU5Z
+ J/vzv3t28yZLAc8gh2aAadhdsyBrTEUltMltMAudcPm9V+gSIG2TV0bGsD2MmT9ogeYY
+ Pz7z4IsOO2XU8UrEPpemUxpYM/SBe/gRDC5e2KIGZ4yQjHb3IhlKv1c6Cd3I5jlpBwNX
+ Ej0d3u16GEw1L3tcOMgI8NajLyx6/Ue7DQmFlfb63DQYXxrftyYqKMhQpbXGlI9npvzW
+ BYBj72pXEeUM2GAEvMzXXKqv0L7pDKvet2B+fjBevnYv1FSVmTW0h0XIs3eGJxDWeh2N
+ cCjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747738559; x=1748343359;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=d56XuPPi1HP2EPqByeAtI9ZEpb23Z+LV9ArzkamKZHM=;
- b=rtcl2bGp4Q0+ShmmwQq9Rlb/HhAspzXX2ZXbwXQyeVMLFgjGsH+LAPmFEPnkAS/a7c
- 7Q9EB2Tgw1BG+3HIj3FHywRu5P6XC+UKM5KfScuB/U/x2eAxTItC+jk/I1eCloXzxYqu
- 6MnLF5j0W7Bauq0E2S28rJ+MkY7PTeUChaxMc+Gn2gwns4dEv0kWEYh1aBEG5ad7h7EZ
- L1q5jCcUQODwIdzomgRLqVXUC3TbjESIXgATvdlib11gG02YGMHOzzGVQzt7njQoxyBM
- dkXcgUZylftQNJouQcM4rzBSlJZ5OlEINEWevsuh/AZq/hdlQhc8tcwgBhD4dmUGNteM
- 9+IA==
+ d=1e100.net; s=20230601; t=1747744257; x=1748349057;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=UJGR+g/Y+CLu5+h11cSkPA43CVX76D8jK97YeC0XAaM=;
+ b=k2dPTb2MHJOBZOGDA/JNkeDXPkRMBSwtQ99NDvFRO0fIKAnbAqG0aoXfYkWY5zWSoS
+ dGmbd0OZDMDV2Uho3KRSQBezov3ewSrI1lPBVwEEs/c6pKsJ2ecfTzYuKQqjofoHmAKG
+ x+E+8RdtpR4uHBNunjG2BiGpgvu7yUAjOSbr0sRwrKoKuoGSBbOUGMc7ze8PyLo5RyjM
+ SDl9CUYSGlDG4ZJwcO/OhfNvPvUe02+HrpXTOJaEJFoS7bFFsgKwsvFP79Mgi/OWDB5A
+ rPqDFXwfSQ1ql9MyCa1z/fjkOu+MUvM+oug34ANpVDuUElNBYQHwEVymRYi4hqbVjzyj
+ tUkQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXLlX9hzkPtDy1V5KDGE/XAt2CfwCTt4mPX4DujKl7jP9C2R+hnvXDproSAwwl35HspLezrVr3usGQH@nongnu.org
-X-Gm-Message-State: AOJu0YxjHh5cYnE3p2d8qNs3JKrexiSCaPaCl+jKZ0ljWeBeuJvcRpxz
- z3G9jzS9+cti4By9tHpb9vdfhtUyEVXMgnWfWAq6Yk2tz4/qyVs3qkwZ7/AW8hkJ66f/f98aze+
- 83I46M/SI9Zw+8/ce97IwMXDmbq+4KE3BqN+aN2M83g==
-X-Gm-Gg: ASbGncuBh5i/5Zdu3kAk96Xap7F+okpo2kSEJu6e9Ax/AK12njmGZ30LShsyohiQKp2
- LTTjvxOhjzV+3joEqTc8WDEKOjdFv6GW2TNJXfOMgwLVBFNE5W0kGpYXRUdC5zRfPGsq5jteJsI
- 7ESnCZEoa5fnA+jUK85/zKXe3OFtk0AIHdQ99HOfzo2Fiq
-X-Received: by 2002:a05:690c:74c8:b0:702:5134:aab0 with SMTP id
- 00721157ae682-70ca7baf406mr259144617b3.32.1747738559451; Tue, 20 May 2025
- 03:55:59 -0700 (PDT)
+ AJvYcCX04exBx4g1XRp/meHspEolu3OVrPFGVnJVn8oCzrQukeURE+lGw01e8AmLOuRt3OwaLbtT5ypDMA==@nongnu.org
+X-Gm-Message-State: AOJu0Yw/Wnvb3QJg0iZ73FYBh9nn4Ag/XBQuRMGR9Oqj8X7jTNqqj/+C
+ BMwzKIzc5Pv9TpTpnqdmW6lej7Fl5Q9dLclKXwxud303H1TUjloBU9dgRJEzgw7zNjs=
+X-Gm-Gg: ASbGncs6DGZTZWLGlAHzSroKTiHWVPdcZK1uFoKm3TnHqqpWFYm8AjvoaWI5tPEseEv
+ 40j2RlKWtclxF1cc91aopDrfMn3ANOyepsHN4GoBjGxc5xim5sTFAFLK8O62qkPkTq7i4gTUvKs
+ pZY4y0GRi3tApF0++T2ql22LJCHLtCas+K+fcZkG9GzqWI5Q5NsHR4OVRPjthtQ3LYpbCNH9xXt
+ x2CDBQGZ9ZRQ/OeAPBTHSZmXfU0lauY9MqnPwEcfDimd0E07+L0BjoDYazr4343Udzufx6ccUp+
+ odqsPkeQd21/8lmrh7BQtsIKm9K13Baw2VtMZTzLkkWozkRFu9Yn83XIYPZfkke5+2BdaT8vBL5
+ IlHBpzsEhmmI158bjasE5brkfIedaWw==
+X-Received: by 2002:a05:6122:16a7:b0:52a:ee1a:4249 with SMTP id
+ 71dfb90a1353d-52dba8d624fmr14816806e0c.7.1747744256846; 
+ Tue, 20 May 2025 05:30:56 -0700 (PDT)
+Received: from ?IPV6:2804:7f0:b401:d47f:6989:b93e:2caa:f174?
+ ([2804:7f0:b401:d47f:6989:b93e:2caa:f174])
+ by smtp.gmail.com with ESMTPSA id
+ 71dfb90a1353d-52dba910a60sm8454649e0c.9.2025.05.20.05.30.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 20 May 2025 05:30:56 -0700 (PDT)
+Message-ID: <a0275df9-7e4d-41ad-b417-7c27f820df9d@linaro.org>
+Date: Tue, 20 May 2025 09:30:45 -0300
 MIME-Version: 1.0
-References: <20250315142050.3642741-1-linux@roeck-us.net>
- <CAFEAcA-zPwJrq3oQk3MRp9ZCyTzDOg2-Je00v20pVzrKe8he6w@mail.gmail.com>
- <5d350a95-886e-420c-8b0d-a3be57b9490d@roeck-us.net>
- <CAFEAcA-9MCRfHb+O-qdMHAOgSVEUY26h7dUzF-yaF81oFZHs4w@mail.gmail.com>
- <TYZPR03MB689654CB39D47E3ACCC24A29DB96A@TYZPR03MB6896.apcprd03.prod.outlook.com>
-In-Reply-To: <TYZPR03MB689654CB39D47E3ACCC24A29DB96A@TYZPR03MB6896.apcprd03.prod.outlook.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 May 2025 11:55:48 +0100
-X-Gm-Features: AX0GCFuER6MgQpEK2WT8SOEamRDgQgQTgmcL8dbc6efsCslvLIqKHkwlMIosPto
-Message-ID: <CAFEAcA9fvhoxABfY1kgDg2Xa7ZVpYfA0_9wwi3MkDfUJZ6U18A@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm: Add missing psci_conduit to NPCM8XX SoC boot info
-To: "KFTING@nuvoton.com" <KFTING@nuvoton.com>
-Cc: Guenter Roeck <linux@roeck-us.net>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Hao Wu <wuhaotsh@google.com>, 
- "Avi.Fishman@nuvoton.com" <Avi.Fishman@nuvoton.com>, 
- "tomer.maimon@nuvoton.com" <tomer.maimon@nuvoton.com>, 
- "tali.perry@nuvoton.com" <tali.perry@nuvoton.com>,
- "CHLI30@nuvoton.com" <CHLI30@nuvoton.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/22] hw/i386/acpi-build: Make aml_pci_device_dsm() static
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ imammedo@redhat.com, anisinha@redhat.com, mst@redhat.com,
+ shannon.zhaosl@gmail.com
+Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org
+References: <20250514170431.2786231-1-eric.auger@redhat.com>
+ <20250514170431.2786231-2-eric.auger@redhat.com>
+Content-Language: en-US
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <20250514170431.2786231-2-eric.auger@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a2a;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-vk1-xa2a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,77 +130,61 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pdv1Ecx0FEiZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fG/oqfa1w+Ya
 
-On Tue, 13 May 2025 at 02:04, KFTING@nuvoton.com <KFTING@nuvoton.com> wrote:
->
-> Hi PMM:
->
-> From: Peter Maydell <peter.maydell@linaro.org>
-> Sent: Sunday, May 11, 2025 9:42 PM
-> To: Guenter Roeck <linux@roeck-us.net>
-> Cc: CS20 KFTing <KFTING@nuvoton.com>; qemu-arm@nongnu.org; qemu-devel@nongnu.org; Hao Wu <wuhaotsh@google.com>
-> Subject: Re: [PATCH] hw/arm: Add missing psci_conduit to NPCM8XX SoC boot info
->
->
-> On Tue, 18 Mar 2025 at 19:54, Guenter Roeck <linux@roeck-us.net> wrote:
-> >
-> > On 3/18/25 09:59, Peter Maydell wrote:
-> > > On Sat, 15 Mar 2025 at 14:20, Guenter Roeck <linux@roeck-us.net> wrote:
-> > >>
-> > >> Without psci_conduit, the Linux kernel crashes almost immediately.
-> > >>
-> > >>      psci: probing for conduit method from DT.
-> > >>      Internal error: Oops - Undefined instruction: 0000000002000000
-> > >> [#1] PREEMPT SMP
-> > >>
-> > >> Fixes: ae0c4d1a1290 ("hw/arm: Add NPCM8XX SoC")
-> > >> Cc: Hao Wu <wuhaotsh@google.com>
-> > >> Cc: Peter Maydell <peter.maydell@linaro.org>
-> > >> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> > >> ---
-> > >>   hw/arm/npcm8xx.c | 1 +
-> > >>   1 file changed, 1 insertion(+)
-> > >>
-> > >> diff --git a/hw/arm/npcm8xx.c b/hw/arm/npcm8xx.c index
-> > >> f182accc47..e5a1929ed7 100644
-> > >> --- a/hw/arm/npcm8xx.c
-> > >> +++ b/hw/arm/npcm8xx.c
-> > >> @@ -346,6 +346,7 @@ static struct arm_boot_info npcm8xx_binfo = {
-> > >>       .secure_boot            = false,
-> > >>       .board_id               = -1,
-> > >>       .board_setup_addr       = NPCM8XX_BOARD_SETUP_ADDR,
-> > >> +    .psci_conduit           = QEMU_PSCI_CONDUIT_SMC,
-> > >>   };
-> > >
-> > > Why do we need this for npcm8xx when we don't need it for npcm7xx?
-> > > Or is it also broken on 7xx?
-> > >
-> >
-> > I don't see a reference to psci in npcm7xx devicetree files in the
-> > upstream Linux kernel.
+Hi Eric,
 
-> > I guess the aarch32 versions of the board don't use psci and the aarch64 one does.
->
-> > Would any of the Nuvoton folks like to comment on this patch?
-> > It looks like a correct fix to me.
+On 5/14/25 14:00, Eric Auger wrote:
+> No need to export aml_pci_device_dsm() as it is only used
+> in hw/i386/acpi-build.c.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>   include/hw/acpi/pci.h | 1 -
+>   hw/i386/acpi-build.c  | 2 +-
+>   2 files changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
+> index 6359d574fd..ab0187a894 100644
+> --- a/include/hw/acpi/pci.h
+> +++ b/include/hw/acpi/pci.h
+> @@ -36,7 +36,6 @@ typedef struct AcpiMcfgInfo {
+>   
+>   void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info,
+>                   const char *oem_id, const char *oem_table_id);
+> -Aml *aml_pci_device_dsm(void);
+>   
+>   void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus);
+>   void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope);
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index f40ad062f9..9e584e69fd 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -338,7 +338,7 @@ build_facs(GArray *table_data)
+>       g_array_append_vals(table_data, reserved, 40); /* Reserved */
+>   }
+>   
+> -Aml *aml_pci_device_dsm(void)
+> +static Aml *aml_pci_device_dsm(void)
+>   {
+>       Aml *method;
+>   
+
+Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
 
 
-> Yes, the aarch64 uses psci.
-
-Thanks for confirming; I've applied this to target-arm.next.
-
--- PMM
+Cheers,
+Gustavo

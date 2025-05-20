@@ -1,142 +1,204 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp476523njc;
-        Tue, 20 May 2025 05:55:17 -0700 (PDT)
-X-Received: by 2002:a17:90b:3f4c:b0:2fe:994d:613b with SMTP id 98e67ed59e1d1-30e7d5be445mr24032777a91.35.1747745717464;
-        Tue, 20 May 2025 05:55:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747745717; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp546016njc;
+        Tue, 20 May 2025 07:32:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGr9Kb0hhkcxcNk3e3hRdqTHmbYpvJGpbU9ZuycTgxi+mf9litViCF+lxWwJL7aAEyuuBi5
+X-Received: by 2002:a05:6214:2ac:b0:6f8:c621:5a0d with SMTP id 6a1803df08f44-6f8c6215d4cmr174941896d6.19.1747751569802;
+        Tue, 20 May 2025 07:32:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747751569; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZeImEfNBIbOwUT2a3teVtm3HqGLwYLiOKc3OWEeqPBNEZD+9Q/quOGN8zAVkRuHmnN
-         hNPETtdK0K9vm8uG4tAsd4dpFmqz+eXFtFzaapln74UZI95pQ0LIR+Us28gaMzN636KW
-         YL3Hl6KUWlBAsVTmmbRHMKFwBJyngiALSxm5f5/OJQqjk6+i7OGOZl77B2KP0tk/HVfd
-         LnHq1ha13sCf+xCPHZHpzsAtpSUlcmmBhbJhKJjPj0hxYgP58kEVhwGGEVEg32OOPsUW
-         Hso0mI2FTKmBf/fPdu5DGkcGWDC0AiS7lAh9jCS8SZbuHpFxSR3uHpLoRQaEsWsaQZFv
-         sTuw==
+        b=I9bQlMdWGBAEDkvDyeXFiCx6hBLTY+/WCcVPAg5qhcpA4dmVhTki/LeN5a7gZJAyGm
+         fGs2dTtoowGmD4XhdGmWPJaVrtWmGFesXhljdS11fQ5FQTfE3n/FvmeYcTSb83E0gVZd
+         TiS+052fmD5CzNRAuVubSgHBJIlpWALSNP9aJ0QelCEsdcVap3ACXWf1Mom2Le7E1Y8W
+         LHsaeF3+PF27zZ702SbsYa/iVWnle1tHozpgoOYoBBv5KoEDi8+rjLwtduZkkevTel9N
+         AOBtAPjBKlCGwSb75pVXQx22SB+uZBfZbDln2SoaSgGbDug2ytCaBZlsmTIIR177+ox8
+         DV3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=pjfIs5gITyjRMKLD5/LED/i/qyf7Ai8DnNu3qgZkijk=;
-        fh=kccsKKhUy2h94BWF7xjm+SSPOQsVk70zMstvRNlqUK8=;
-        b=hco9Ge1fReyugsB4PPgo+u07mXz18lujl6kGV1PD6w54tECEAWetxhx3f87LgRswSg
-         ryAagcMjFKrlO5I0GN0tG/ufLaIN8Hvss+yCXwlaLcKgDIcpAFp02QMPpU6Sx/gtdtsA
-         DqIiEVsyZ4YeSoy2WxhpxRMQSWg1hFdUC0hJ/apQJZxtwXPjtUXO4w4Xng/a4HO9UND3
-         Y5Sx3Sk8Y8YnIAiU/3tM7Gd1du8L28SNvUq6k3UMVfVxz8uMdHfjNtKCWJ0vuwJQBtlC
-         tCbkYzE2ZAGbRsWHZhAmn6dG+rcOALjyCbE+vPzgLgjYl4KSgbIA1yy/osljUxbhIyMi
-         sYYA==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=eyyKewFowLGN6weCf+HOMRYql1fcCQIkABOVNAcjl/4=;
+        fh=1V1RvP6TsBXNjGvdtzpmIZYZE5MFhFdFCJDUVbiAOLs=;
+        b=bAQLpzXJZsZNgTeloLDVNF+xNdWNdeKR2MDotctKU5IzJB87MCxgaw/ivTXx6vgKrG
+         G45eL7iyAlsGoPINZfStRmN57fjs9koMZaEHZu6Kxts4QyIr1icxT9U7wY/iZhTjhWsn
+         Mwz8r0KoZF9HXy44Da4PScOR5y87WNfchmxuHlK9olVp4hvg2HpKicz8RTrZb7n5ppAU
+         7B7xPAkaFmA0B4bUMcJCr2AlsetZQHVW9JD1quR5TI9b2N7cu4/I2CJszo93nkiEB9UP
+         3uOaQjXKqUUNzrK3G1/Edds6j5d9o2xiebLhgaPZfvW8hXk/nwUanD3A7NTIFMpe4JGn
+         ZUDg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DyZwTfWy;
-       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <ktokunaga.mail@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 98e67ed59e1d1-30e7d4835c5sor7266671a91.2.2025.05.20.05.55.17
-        (Google Transport Security);
-        Tue, 20 May 2025 05:55:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DyZwTfWy;
-       spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1747745717; x=1748350517; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=pjfIs5gITyjRMKLD5/LED/i/qyf7Ai8DnNu3qgZkijk=;
-        b=DyZwTfWyUD3O85hd9zoRQWBX+iU9Nb6QWB1vJ1htEAikkZPlJ9wIM/IMhs90jzHo9Y
-         8i6ulpbhHK/9ghvZelx7NHoxWoUBsEJ8iFfXenvsGh9CUfhaZ7fRoH2jz2AbMWwhp3WI
-         eQp0VkqAEZsSCQ2ICfW/3iaypTFsS17/8wzBrqymwr7ppQ+YOU75Xs1C/Nx4lP5fRPlp
-         sQ7TOgva3CoA+AGr2bU/gdhwpebQxbQh9qx/87QQzDAv7l7jBrcGoW//yL77n4FHCVBe
-         1GckQIzi8ZbXb7t8kTmuTH8Gm/rGEnL4dn+P4kgejcGc5Uf8zl/dRL7qDWzD/ECaAnOS
-         oE1w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747745717; x=1748350517;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=pjfIs5gITyjRMKLD5/LED/i/qyf7Ai8DnNu3qgZkijk=;
-        b=l8iw/jzWkvigxwaa5TAwnVVtxHMXGJNoyx43kfv2wlYh+G9WQAtoF6Y3N0SHQNgR0R
-         dds4Qhi+sfWW0zAyh7QwL59c7UgUx9WY8BTq9d/mB1qLUVj0IcY2XkjOa29aWSUeIwn3
-         35m0Ooopx9UcKeiwi1D3XqXeWoGVv9yBeM4wlqLqHrbupXEV/EQj1mwegTXYL9ul3s+D
-         2eafW2gF9XZLuONkWoRgoscJYFD8GvSAb2ZVFGX/eLtU9AnObl3ZIKOZ18xF0wGhnQ+w
-         bLacOzHh4NXdThnxy8MbMFL5iPcXfhhggqo2OPG6PxcFcNJqWiWMzIcqMeMe7xZgWAde
-         R3kg==
-X-Forwarded-Encrypted: i=1; AJvYcCW5sXk1AYIjA2e5EPMBUG+fAZZvqOh3pYoMzih9SQUzLHTkggqbhj0EZm/dAFkI8v+o/9cIoNc=@linaro.org, AJvYcCWDJBTzUBmlvGB3VeSWrDuTAxRX/GEP+EjdVW3gLbgpDOzN+9jsjXqhkV7JVZv2GpVqh0xrU4Slaeht0v5lqgVISw==@linaro.org, AJvYcCX+NnYBNzMECjV0z9VoT7bTyOEUigobCyin0aoNBVERGKH5q70WKEr7pBNJilu3eBT2QbNF1Aw7A7pp4VqtxwcADLI=@linaro.org
-X-Gm-Message-State: AOJu0YxvLpWZu4SsnpO79LDvR/54b+2gOjB/dYqTAV122VtTsdtUhoRU
-	OJVYmedBqrjx7XhbGWqB5w6IU6UWOob4yBXeYOwAixvlBsR/epvfcbi6
-X-Gm-Gg: ASbGncspXNUHzRb1D1CNIENYizZ+8dq24vcGfA00KNbCDAydZBg33Je7vAQJusL9H95
-	ARTDsP0KYfyHOPlRGFoWw3DUFAbllrVOJhseZrJVH1um8KLtmN6nV3WWN4Z8vNq/cGIvLt5JQMN
-	85KVpMc4+bCrIucIax9t0NSmWoO8jtX0MmgFm0LXreLIm1sFN487H0Sbp5CyR/Qw9aa5L/7EqnU
-	UvaaTekXTfJ1j9pQlQt9FiVZhidn50SjGfJIAWy9+RxD5+YLdDzY2JfbIfB4Ow0kBzx4/LdsSd4
-	EJ2+5E/2VZWTuf2cs/pKsHAIcqh68MzptTVhxVz5zoP1faYycZP7CPf3+6TIKg==
-X-Google-Smtp-Source: AGHT+IFctWoCBwXZjWVIzlvOeAGpN4yYvW8TpdBxj/ko0x2Fmf9rUlfVzBwaYGHdhUFZEuZxeGUt7Q==
-X-Received: by 2002:a17:90b:3505:b0:305:2d27:7c9f with SMTP id 98e67ed59e1d1-30e7d555aadmr28951571a91.16.1747745716767;
-        Tue, 20 May 2025 05:55:16 -0700 (PDT)
-Return-Path: <ktokunaga.mail@gmail.com>
-Received: from ktock.. ([240d:1a:3b6:8b00:1bde:8310:e993:5dcc])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30f36364f9asm1625916a91.4.2025.05.20.05.55.11
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N5jZRK4b;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f8bc30467csi90289286d6.351.2025.05.20.07.32.49
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 May 2025 05:55:16 -0700 (PDT)
-From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	WANG Xuerui <git@xen0n.name>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Huacai Chen <chenhuacai@kernel.org>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Aleksandar Rikalo <arikalo@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <Alistair.Francis@wdc.com>,
-	Stefan Weil <sw@weilnetz.de>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Kohei Tokunaga <ktokunaga.mail@gmail.com>,
-	qemu-arm@nongnu.org,
-	qemu-riscv@nongnu.org
-Subject: [PATCH 32/33] meson: Propagate optimization flag for linking on Emscripten
-Date: Tue, 20 May 2025 21:51:34 +0900
-Message-ID: <8d969f197a9b3785fd6bca4ec57e3a42afdf62c0.1747744132.git.ktokunaga.mail@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <cover.1747744132.git.ktokunaga.mail@gmail.com>
-References: <cover.1747744132.git.ktokunaga.mail@gmail.com>
+        Tue, 20 May 2025 07:32:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N5jZRK4b;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1747751569;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=eyyKewFowLGN6weCf+HOMRYql1fcCQIkABOVNAcjl/4=;
+	b=N5jZRK4be3uB674rg7X+QFWSPzhx5uEsIjhVdbU0iYMrimeG7/AZjwBR799Bi4qyBUGar0
+	oyb8YY17JZaelY1Uk/g+mh5DasV5tk+Ww8blCHORHFZgvIK4tKx5rB0EZt1/z75D2I63ZN
+	91hAIJ9ig5LHb1jWgH+or1Qn5iRC5q4=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-595-ImkUYg0GNyGPiBPGff-8HQ-1; Tue, 20 May 2025 10:32:48 -0400
+X-MC-Unique: ImkUYg0GNyGPiBPGff-8HQ-1
+X-Mimecast-MFC-AGG-ID: ImkUYg0GNyGPiBPGff-8HQ_1747751567
+Received: by mail-ed1-f71.google.com with SMTP id 4fb4d7f45d1cf-602047ace12so1233386a12.2
+        for <alex.bennee@linaro.org>; Tue, 20 May 2025 07:32:48 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747751567; x=1748356367;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=eyyKewFowLGN6weCf+HOMRYql1fcCQIkABOVNAcjl/4=;
+        b=KzFqpljO6H/1/wpkgNZQu0O/FK1UY3YmIuxOz7LSpgaWNkgeoopcjjPCsM372jD9+u
+         xhlZYOX3K0dgmBmvYDplzOhXggqu1GBDXxlPXNwJHZRdB0Ed7bWQ79DPjke+F14x68Fz
+         fv7bmPaDSmrcdLTuNyXe/zuva125jy/xCT+n0KmXYCT0zpf8AVvoGrfgA53gdyfx/Zym
+         KiOabeWZZKEuBUMVpMp71cnDCO4OCk9otpUAJ98Pbgv2uITScXrNaemJi6ixxLS+IhGi
+         AKMd0WylJ7pnQCy1Bm7JykhrjMCYX8BdGPsq4FUgH9Wwe8cxeljfr0kAlwQOb4c2xfmA
+         hhIg==
+X-Gm-Message-State: AOJu0Ywrs7WwAR0G8bvrsmr/pxgy74o/8tuC1sBODIvFkDp56YAxS0r/
+	b4Wgh4YGFk17Rv0LeLmn+Tm/adxyHxA+Mu33m7nV7/xC+V4sFRtsHD2hJUSS/VkDvKPKHv59lKK
+	i53XTX8vOnwBRCk+EGWt2Vxbzd75/Nqnf5LN55SwV5FCdwHtT7K6+iaRpdQ==
+X-Gm-Gg: ASbGncstCX2m7n9BuQZfJAUJbBMCPccSUa9Un1GsYJP28jTAI1K7j/x3Zau5EL7uahz
+	0H5KuWYM4zNNJ8HDXOe69Ue+S0/Ve9S0W1FhVvuoP/RedYZwiYQUIk57Nht06BkVN3ZhcuD2EaZ
+	abdnH7RFSY2f58Qya0YHDakiDv7ewNxjAaQdxng0brOH7beviqYJPSYJSZV1bVq4nwkhWpOImqQ
+	NdDZ7wbHVEZtHezo9heXHcwBAk9V8HnihjtMY/Z2ExTsf42HTaBsCmRgfCEzZ8sJxRKMFWjMMRq
+	+Oe7FFrLUamiEw==
+X-Received: by 2002:a17:907:e915:b0:ad5:1e70:7150 with SMTP id a640c23a62f3a-ad52d443a03mr1562848466b.2.1747751566973;
+        Tue, 20 May 2025 07:32:46 -0700 (PDT)
+X-Received: by 2002:a17:907:e915:b0:ad5:1e70:7150 with SMTP id a640c23a62f3a-ad52d443a03mr1562843466b.2.1747751566513;
+        Tue, 20 May 2025 07:32:46 -0700 (PDT)
+Return-Path: <pbonzini@redhat.com>
+Received: from [192.168.10.81] ([151.95.46.79])
+        by smtp.googlemail.com with ESMTPSA id a640c23a62f3a-ad52d278247sm732727166b.76.2025.05.20.07.32.45
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 20 May 2025 07:32:45 -0700 (PDT)
+Message-ID: <5d54270a-51be-4462-a02d-a12432e42be4@redhat.com>
+Date: Tue, 20 May 2025 16:32:44 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: ZzgrduW3iBuK
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 23/33] include/exec: Allow using 64bit guest addresses on
+ emscripten
+To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ WANG Xuerui <git@xen0n.name>, Aurelien Jarno <aurelien@aurel32.net>,
+ Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Stefan Weil <sw@weilnetz.de>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org
+References: <cover.1747744132.git.ktokunaga.mail@gmail.com>
+ <d3e7e584cf61c76952f4c9d913ba80d905c80e76.1747744132.git.ktokunaga.mail@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Autocrypt: addr=pbonzini@redhat.com; keydata=
+ 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
+In-Reply-To: <d3e7e584cf61c76952f4c9d913ba80d905c80e76.1747744132.git.ktokunaga.mail@gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: a76zCVmNLLtXUcVn4NBj-saXvZYOgcuzfvpgB5vnRDU_1747751567
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: eetUk5pIrnk2
 
-Emscripten uses the optimization flag at link time to enable optimizations
-via Binaryen [1]. While meson.build currently recognizes the -Doptimization
-option, it does not propagate it to the linking. This commit updates
-meson.build to propagate the optimization flag to the linking when targeting
-WebAssembly.
+On 5/20/25 14:51, Kohei Tokunaga wrote:
+>     target_kconfig = []
+>     foreach sym: accelerators
+> -    # Disallow 64-bit on 32-bit emulation and virtualization
+> -    if host_long_bits < config_target['TARGET_LONG_BITS'].to_int()
+> -      continue
+> +    if host_arch != 'wasm32'
+> +      # Disallow 64-bit on 32-bit emulation and virtualization
+> +      if host_long_bits < config_target['TARGET_LONG_BITS'].to_int()
+> +        continue
+> +      endif
+>       endif
+>       if sym == 'CONFIG_TCG' or target in accelerator_targets.get(sym, [])
+>         config_target += { sym: 'y' }
 
-[1] https://emscripten.org/docs/optimizing/Optimizing-Code.html#how-emscripten-optimizes
+I'd prefer something like
 
-Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
----
- meson.build | 4 ++++
- 1 file changed, 4 insertions(+)
+# Detect host pointer size for the target configuration loop.
+host_long_bits = cc.sizeof('void *') * 8
+tcg_vaddr_bits = host_arch == 'wasm32' ? 64 : host_long_bits
+...
+config_host_data.set('TCG_VADDR_BITS', tcg_vaddr_bits)
 
-diff --git a/meson.build b/meson.build
-index f6ed867819..91e182092d 100644
---- a/meson.build
-+++ b/meson.build
-@@ -869,6 +869,10 @@ elif host_os == 'openbsd'
-     # Disable OpenBSD W^X if available
-     emulator_link_args = cc.get_supported_link_arguments('-Wl,-z,wxneeded')
-   endif
-+elif host_os == 'emscripten'
-+  if get_option('optimization') != 'plain'
-+    emulator_link_args += ['-O' + get_option('optimization')]
-+  endif
- endif
- 
- ###############################################
--- 
-2.43.0
+Then in the target configuration loop
+
+-    if host_long_bits < config_target['TARGET_LONG_BITS'].to_int()
++    if tcg_vaddr_bits < config_target['TARGET_LONG_BITS'].to_int()
+
+and throughout the code you can have
+
+#ifdef TCG_VADDR_BITS == 32
+...
+#else
+...
+#endif
+
+instead of
+
+#ifdef EMSCRIPTEN
+...
+#else
+...
+#endif
+
+In fact, I think this patch would be acceptable as a separate 
+submission, because it could be tested using TCI already.
+
+Paolo

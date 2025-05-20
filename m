@@ -1,215 +1,169 @@
-Received: by 2002:a17:505:bc8:b0:1be9:327d:8ee3 with SMTP id pe8csp4255698njb;
-        Mon, 19 May 2025 10:03:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVLeMqfch+ZHi1K4uc+Opzf2iXVLU4zGgMHRCGfoV8TZQx1PxW/tSO6UDdnvWAbyEQt2UvS0ilYtzWRrw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGUkilJUSlkV6aXkHyeHjTTAseGaUqoy+E/xUtuElBgQkfqdjBQVXTh5JM/Ygg7MSDhUWcF
-X-Received: by 2002:a05:6e02:3e06:b0:3d8:2023:d048 with SMTP id e9e14a558f8ab-3db84377bbdmr139826575ab.22.1747674202110;
-        Mon, 19 May 2025 10:03:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747674202; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp304033njc;
+        Mon, 19 May 2025 23:42:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUKN7+4ZotbsxHSVGTRLm0SHXo62JPGgkgML10ilZ2tP0ai4UwcAYZgE13DyYZUdMDfLIwIq66zJhaZmg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHK0+vEmawcR+qGVhfvIlED9M94Y2wVNXjYdOA1xs0olowIRsz3x4jmG9BLL39m/YaVAmSA
+X-Received: by 2002:a17:903:178e:b0:223:3b76:4e22 with SMTP id d9443c01a7336-231d43d54e3mr179058055ad.6.1747723331441;
+        Mon, 19 May 2025 23:42:11 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1747723331; cv=pass;
         d=google.com; s=arc-20240605;
-        b=Uu1p3c6HXyyrZSsWSUMgprb55KwiA3EI2nX804nL0P2qpalI0lf72+Ys+y0W24o+Wp
-         HThavzArWw9cKWvhJ0PRJ0xA3DhAkuyBlQANm9N/eWLQsqBXE07KBePQgAxYgC1nooSZ
-         K4+4XcrKkw8Drr6N5CnrlZYXelF5ijAdKBSZoMHofZl7vgirfGb6uu3K3+pw62nWAfAb
-         OTOvM81Cf8VIRxJAv4tQkZ+ue3JlAi9eYy8bP32t1CJ3uFQXVP9l2UpPjKorakcyzOZz
-         QuLfiJrgShWUqR6QfsTLa9EJ6skIcal0OWz9qdyUShW9Q8rWwGaGHWKqQC3T+td/RCRZ
-         0p6A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=GF1TnPinob2l4EmXUL83/ChqDdovsfU8ISM22SPljTo=;
-        fh=+zJVLDy5OjugktatOy7hRhbg4DknhfGfCoDmuv0g+Bs=;
-        b=f4BS/C05rmlNoPHybbTABkD+wFWnZoDsmZPhJKfYhc8P3a48nQ1GUnPz9r8i0AdG2N
-         4BLuQSck4laScEPR3SFlpWosgzf1VbPGCvKOFPEJOj5KO99VkyeFvSs7kF8MVBkMqLap
-         Au4xsmCiMLsirKMIEnCGyMhHTRGw+XPOEhZHEREZTtx9PQWQglD5hI5eDMlGBu6hAuZc
-         0oXHf8MmUkq6wQ9ykyL0V7eS9GxneuXo5vkP6xSOawC8bnQf//FDUOVB5nyQW9ECRVUW
-         vccTs6+meBghedXKt5V/ixkkHej9fuqYckXCT2yqB+/l9D40EXYkWyxkpb4wVN4Yt8Lz
-         4vXg==;
+        b=BsOi9mDI1cmFs2UOU9kBfSQatoe9q1d/iL9Ks541B5VNcFaAvmBwkQ50k8mLt1sXih
+         3ffZcCro+DeQY2SjcHABYXYuTEP8+DeZh7G2dUWA327r/RNgBF6l7C6k1PwHz+QEboOe
+         7YVoWAtLKW1LnVYfzRlSC8CBBUlwgbw+kePDRIhWD9dujAnyIRD9KDUUCPrcGH45wWSH
+         +cw9PPdAZLnuAdIL74HreG91A73W31LDpXq+1GzB3q0As10CMDZcSCiBeV9Ww6OLJWfY
+         NBYH4rR72LKZdJ4GQnfMsD2yjxRFJwfvYYh3tte4KfcfRAfSqnWi/QlzcsdGvy10Un9c
+         IGYA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=4qxGklo/JtayfWexug5mhPqTKDFRg9klTXYdFFJRXGs=;
+        fh=vRlcgZ7942FHQd1Q9f6uT6HY2D7AnE0jt7dFCXEYTHw=;
+        b=Bx5R2Jg8WZadxcAec5H+AUyhVJSpu8BDAk7ab6HcH8Mcnkl3FiIQ2tciuaMyakM3/F
+         UbZXF0NBtCoeXTQc469pHHmPa0016q3C/NXNTBBob9n65gYTmo6bmKzN/f9ByMBGEKfu
+         bDwuUW09rbMVxkk6r2WZEQGl3mjlQrtGFOZ3zyMhVToL7mAIxVIp21LKk922H54ocaG5
+         ZuHdOmorKUN27hBJ2z9wfIGK25QeGbeJnBN5bNChcFl0eYDzPeKu84g/emplBMPvk5Zk
+         004oA3PyLei0kUGhl0TiqP4HyCcisauLR0ZjpmqDgLe+Gcd9mfffFtaj2MFVu7deUQ/C
+         QmEA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JMetNqN1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9e14a558f8ab-3dc760193ecsi14371305ab.57.2025.05.19.10.03.22
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=VBuYz06M;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-655007-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-655007-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-655007-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id d9443c01a7336-231d4ee0843si115551675ad.581.2025.05.19.23.42.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 May 2025 10:03:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 19 May 2025 23:42:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-655007-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JMetNqN1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uH3tE-0000DC-6Q; Mon, 19 May 2025 13:03:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uH3t9-0008Vl-QS
- for qemu-arm@nongnu.org; Mon, 19 May 2025 13:02:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uH3t7-0000Sk-H4
- for qemu-arm@nongnu.org; Mon, 19 May 2025 13:02:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1747674171;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=GF1TnPinob2l4EmXUL83/ChqDdovsfU8ISM22SPljTo=;
- b=JMetNqN1BE2O5Wbt47qjbjEbTpqwpVyfSNbJO6grQEXc+RIydyPEMwaTDuZwh+SiiK5gt5
- uxpgfeZgWiursZhifWsvqmejzjkSZAo6siCwQYfIs2qbQVdb7sJZo76hiU/E5LWd8TnkG5
- 6otUyrt03MPwOfpgCNo3RLXZFjIKN94=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-639-zeCuMcZEPyydS8Yh9SiOYg-1; Mon,
- 19 May 2025 13:02:49 -0400
-X-MC-Unique: zeCuMcZEPyydS8Yh9SiOYg-1
-X-Mimecast-MFC-AGG-ID: zeCuMcZEPyydS8Yh9SiOYg_1747674168
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9A769180036D; Mon, 19 May 2025 17:02:48 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.44.32.102])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0F3AA1956096; Mon, 19 May 2025 17:02:45 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH] tests/functional: Add a test for the Stellaris arm machines
-Date: Mon, 19 May 2025 19:02:42 +0200
-Message-ID: <20250519170242.520805-1-thuth@redhat.com>
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=VBuYz06M;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-655007-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-655007-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 47FCC3B4980
+	for <alex.bennee@linaro.org>; Tue, 20 May 2025 06:41:48 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 901E525D1F9;
+	Tue, 20 May 2025 06:41:56 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="VBuYz06M"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4E83225CC75
+	for <linux-kernel@vger.kernel.org>; Tue, 20 May 2025 06:41:56 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1747723316; cv=none; b=YMjlFlRLDUCoFTRuIg9ajyh/aPvNc2HLOD+JVbLTso2gUl7AEE5OzkSBasAsIkajLeJSq64HIx1LTkxN9FaiVtIrETvFgk9qMxFTxPlJBI80m4S+0ZkP/RYMMJ4zMRbqa/uJTDj1sN6wd/jxzT3zNZQOvaLOqhwREUPEFMA/Izw=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1747723316; c=relaxed/simple;
+	bh=Ru70Z0gfk7r/ztNDvEUpiGKGD5w8V2rasl2zsjCvPA0=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=Ps37YaZX+QrhNkzbxhUk28CHwUSM6jytjJ7tedkKkGWaT30wqVaFJRR5S9As1neGBjvlwdp5j+25KJfL/j3yVD4ceiA/+8b8M+L3dClUl9zbsoM4E9Msj6sOErrA7u1nHJfsKjUdQwAF3nKDwxAFQZbKwDKxPBkl8LBszePdAYk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=VBuYz06M; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3228C4CEE9;
+	Tue, 20 May 2025 06:41:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747723315;
+	bh=Ru70Z0gfk7r/ztNDvEUpiGKGD5w8V2rasl2zsjCvPA0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=VBuYz06MRfh9VZgXTy6TtG/VN96a0tEFAkJyi3giyKjMIIfXe79Uy6URatuzkSpsX
+	 f+7Es9GWeQxVkCUTt8B+tQ1xg+staHWIIOXP+/GAdi+VTyVueDiSuC1QgSuA8nLfY7
+	 dgQrcTZHixh1kYlehURs6Szy+YbEsPcQdDisiWYUzKLClDEnoeXCKriDenBbVEkrZT
+	 ZCpLKHPd0TDicgukrrjsL0InEUumhMrAo+/PZ5Srl+b5wSIHSzf/qBdruwEEuRJ/Vg
+	 xZKe+MDi5ATv0csVs2bKBhMgpaBVRdZdr01hqj4N/Cvl6mxQURCCqR9B9K+G/+r6Si
+	 u3b1ecWMiFgiQ==
+Received: from mchehab by mail.kernel.org with local (Exim 4.98.2)
+	(envelope-from <mchehab+huawei@kernel.org>)
+	id 1uHGfh-00000005qtg-3yev;
+	Tue, 20 May 2025 08:41:53 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Shiju Jose <shiju.jose@huawei.com>,
+	qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+	Ani Sinha <anisinha@redhat.com>,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v9 11/20] acpi/generic_event_device: Update GHES migration to cover hest addr
+Date: Tue, 20 May 2025 08:41:30 +0200
+Message-ID: <5cfb087459104f5661ead08748c9712f2dfa1ef4.1747722973.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <cover.1747722973.git.mchehab+huawei@kernel.org>
+References: <cover.1747722973.git.mchehab+huawei@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.13,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YfivfMrgTamR
+Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+X-TUID: VCCURhsRQ324
 
-From: Thomas Huth <thuth@redhat.com>
+The GHES migration logic should now support HEST table location too.
 
-The 2023 edition of the QEMU advent calendar featured an image
-that we can use to test whether the lm3s6965evb machine is basically
-still working.
-
-And for the lm3s811evb there is a small test kernel on github
-which can be used to check its UART.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- MAINTAINERS                            |  1 +
- tests/functional/meson.build           |  1 +
- tests/functional/test_arm_stellaris.py | 48 ++++++++++++++++++++++++++
- 3 files changed, 50 insertions(+)
- create mode 100755 tests/functional/test_arm_stellaris.py
+ hw/acpi/generic_event_device.c | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 57dddcc80d6..49b008cdac4 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1002,6 +1002,7 @@ F: hw/display/ssd03*
- F: include/hw/input/gamepad.h
- F: include/hw/timer/stellaris-gptm.h
- F: docs/system/arm/stellaris.rst
-+F: tests/functional/test_arm_stellaris.py
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index 7a62f8d5bca1..d292f61b4e41 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -386,6 +386,34 @@ static const VMStateDescription vmstate_ghes_state = {
+     }
+ };
  
- STM32L4x5 SoC Family
- M: Samuel Tardieu <sam@rfc1149.net>
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index 52b4706cfe8..557d59ddf4d 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -137,6 +137,7 @@ tests_arm_system_thorough = [
-   'arm_raspi2',
-   'arm_replay',
-   'arm_smdkc210',
-+  'arm_stellaris',
-   'arm_sx1',
-   'arm_vexpress',
-   'arm_virt',
-diff --git a/tests/functional/test_arm_stellaris.py b/tests/functional/test_arm_stellaris.py
-new file mode 100755
-index 00000000000..cbd21cb1a0b
---- /dev/null
-+++ b/tests/functional/test_arm_stellaris.py
-@@ -0,0 +1,48 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that checks the serial console of the stellaris machines
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
++static const VMStateDescription vmstate_hest = {
++    .name = "acpi-hest",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT64(hest_addr_le, AcpiGhesState),
++        VMSTATE_END_OF_LIST()
++    },
++};
 +
-+from qemu_test import QemuSystemTest, Asset, exec_command_and_wait_for_pattern
-+from qemu_test import wait_for_console_pattern
++static bool hest_needed(void *opaque)
++{
++    AcpiGedState *s = opaque;
++    return s->ghes_state.hest_addr_le;
++}
 +
++static const VMStateDescription vmstate_hest_state = {
++    .name = "acpi-ged/hest",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = hest_needed,
++    .fields = (const VMStateField[]) {
++        VMSTATE_STRUCT(ghes_state, AcpiGedState, 1,
++                       vmstate_hest, AcpiGhesState),
++        VMSTATE_END_OF_LIST()
++    }
++};
 +
-+class StellarisMachine(QemuSystemTest):
-+
-+    ASSET_DAY22 = Asset(
-+        'https://www.qemu-advent-calendar.org/2023/download/day22.tar.gz',
-+        'ae3a63ef4b7a22c21bfc7fc0d85e402fe95e223308ed23ac854405016431ff51')
-+
-+    def test_lm3s6965evb(self):
-+        self.set_machine('lm3s6965evb')
-+        kernel_path = self.archive_extract(self.ASSET_DAY22,
-+                                           member='day22/day22.bin')
-+        self.vm.set_console()
-+        self.vm.add_args('-kernel', kernel_path)
-+        self.vm.launch()
-+
-+        wait_for_console_pattern(self, 'In a one horse open')
-+
-+    ASSET_NOTMAIN = Asset(
-+        'https://github.com/Ahelion/QemuArmM4FDemoSw/raw/master/build/notmain.bin',
-+        '6ceda031aa081a420fca2fca9e137fa681d6e3820d820ad1917736cb265e611a')
-+
-+    def test_lm3s811evb(self):
-+        self.set_machine('lm3s811evb')
-+        kernel_path = self.ASSET_NOTMAIN.fetch()
-+
-+        self.vm.set_console()
-+        self.vm.add_args('-cpu', 'cortex-m4')
-+        self.vm.add_args('-kernel', kernel_path)
-+        self.vm.launch()
-+
-+        # The test kernel emits an initial '!' and then waits for input.
-+        # For each character that we send it responds with a certain
-+        # other ASCII character.
-+        wait_for_console_pattern(self, '!')
-+        exec_command_and_wait_for_pattern(self, '789', 'cdf')
-+
-+
-+if __name__ == '__main__':
-+    QemuSystemTest.main()
+ static const VMStateDescription vmstate_acpi_ged = {
+     .name = "acpi-ged",
+     .version_id = 1,
+@@ -398,6 +426,7 @@ static const VMStateDescription vmstate_acpi_ged = {
+         &vmstate_memhp_state,
+         &vmstate_cpuhp_state,
+         &vmstate_ghes_state,
++        &vmstate_hest_state,
+         NULL
+     }
+ };
 -- 
 2.49.0
 

@@ -1,83 +1,83 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp475110njc;
-        Tue, 20 May 2025 05:52:34 -0700 (PDT)
-X-Received: by 2002:a17:90b:528d:b0:2fa:15ab:4de7 with SMTP id 98e67ed59e1d1-30e830ebd92mr28757627a91.12.1747745553801;
-        Tue, 20 May 2025 05:52:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747745553; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp475153njc;
+        Tue, 20 May 2025 05:52:39 -0700 (PDT)
+X-Received: by 2002:a17:902:f648:b0:22e:4dc4:5e91 with SMTP id d9443c01a7336-231de5b0d14mr254682625ad.53.1747745559503;
+        Tue, 20 May 2025 05:52:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747745559; cv=none;
         d=google.com; s=arc-20240605;
-        b=L8C8PJULpCfJvrlarSR5M/ODTcJdKcw9lZk+B432hbUZTZe13QafjKkz4CYqv+o/qt
-         0DOGekZCCV0xkiEWieIm1+Kgf8bqxa323NlwxWV/QJFp3NRxP6+8Lshfw+CzLcezO+SZ
-         Yz7TkOkIWwdeLKaRE5igSxyE2NtbBssh+GfjOHLPiQB0BodzhT+v95T9vnoF8cl2Rw9Q
-         QXHefV1CgnMK3szzkZdPNYDS3QU7DmzrMmF5/Rzwj3ZOoYw2IY0YBv0RkYadWGGYnki1
-         8eMiwDBiFPNiaG2WFwAK9NE2IAZ8mUK0QzlxnMHEpFGTsPWPyacbcU3Q6TeYAqnuWPJs
-         IyFA==
+        b=g00Nk5/kb8W85TdiStB2+opPfkFMcXqf+99CcTmP4g0qUZrCfJyjdsbef7qmb4CR70
+         B/igIwnCDS5CG98T9ryOCZHpEvNHw0inG7UYpKDDTeUifsM1Nw5PH74JGQfdW3WBj9pU
+         tOaP3mfyO+JxM0/EW8hvdKK4roUo/SGu7LJDcc/v+ZtrVpLJnsvM/PSxknxqGCb4kYbL
+         sTDJAPqyYMysxoK7hchS2FsC582VKaheuRtiKP/1bWBzGPATRxmjUsAVx5E6BWzBZMnV
+         TdUwz1OOH2v8wTrntr9FRBYwolyQmbsPaDxdsApHBwMCQWjxP4uV/pNWZvLE1NbZAELG
+         MqKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=NZx+To6+GeRUeSP4cgenq374zNADHJo0hk3kjG6JK1E=;
-        fh=tkhApB5hmxIO1yw03s3ejQH6kFZrwULyt47JL/x2OH4=;
-        b=VKFmRJ4q0Dz1qEvpwcY3uziFo25Nvc7nEQ5U0trlbU57rirfDTaZqIpqJp8iCwinBd
-         qli766VhGWA9+UWcxHoCY1wuq376UNo4SNmaeagQTVsHFehSf27OYkqBH8XgSwgGlPoN
-         Mi1uyiPLpTgFehYKhBm1k+cVJ+wEFjRO9M5bJPyyUn3b6oIow2/p0vnHsSfjNq0ipA46
-         gyC+Fhk+9T86BnMT4hieV2PtwianLgfHTZHFRLETb0mVETsr1oOM+O40SZ2lRk1Szym9
-         y28q4zupkYEzAMqyK6ZOQ7AWu5Bb5YK/CPZvwT51iZZitQTIVzPY/tlL8ds0b4NAhFw3
-         UXHA==;
+        bh=T0PaUQzzHF5lFv29qjDHJ20TRr//FMkUoGozxMxxEDU=;
+        fh=51zMU2VYXQCPRcF0JLtFXixY3e6SBOgu5ffscR2TrFA=;
+        b=QPMOhlaQIcgB1wIzEt3oDljIN0cRnIiuP1DNl0KtZXzHKH4C0aNLwWLP11EmzOpsdb
+         Gps4dp0KHznek7HUCSt5gthM4RPv5B/ocBBoM3aGy2ah9VSV85jzvk7bEoXIVpKF4UNV
+         qyvI5zFBFHBgRo6k2JazEEpkJW+0GUpn3g7eJFH8pdgduI5l+HewRQAPtsn5Mtik/mAR
+         LVEE3YVTWTAdKWIuJiDNXKBAISdSAnuG6Fuplu6aufW/qa5+YYMwTvyDu7HpjYX/QJzb
+         r1Ryjwz8cx8UxZD0EUxJjsPvpo+XBZBTzhC8kGBroV7JTJD3t9IIoaLWnXE0+BunV/uR
+         3e5Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Y32y7zOI;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=aYBnHuJi;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 98e67ed59e1d1-30e8575cdddsor5102738a91.3.2025.05.20.05.52.33
+        by mx.google.com with SMTPS id d9443c01a7336-231d4f065aasor71986435ad.16.2025.05.20.05.52.39
         (Google Transport Security);
-        Tue, 20 May 2025 05:52:33 -0700 (PDT)
+        Tue, 20 May 2025 05:52:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Y32y7zOI;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=aYBnHuJi;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1747745553; x=1748350353; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1747745559; x=1748350359; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=NZx+To6+GeRUeSP4cgenq374zNADHJo0hk3kjG6JK1E=;
-        b=Y32y7zOIwlvlGSBxq8tDnOd1uPHqOOFM7TnyXMTcPIcgJV4LVsdxy6BTiP1fZb4jWT
-         MjbY7iLBe1Bd6RLmeyXDZ59dnGL/2HZfS17qXExOcy3sGEV/xh4G0iG9rM6Axc3Gw0wI
-         OdxvFjy47lhcFLzSsQaQUJlRgBtUpg6QkdVkqC1tLwJasnZSw6owKodoYb5bFLtzMUOE
-         ZdUzsngQr8jPim8Up8ZgcelIIywjpQ8jW7Kr4rb7qArfWiaslNVAk7Frym6oo/TAQdO9
-         B3UAG5iVglmtgiv0+KuvaRfEf5tW4lbpfvkf04K8n37yIpRdtUcT0Fyb67LuIMNb686K
-         0sAA==
+        bh=T0PaUQzzHF5lFv29qjDHJ20TRr//FMkUoGozxMxxEDU=;
+        b=aYBnHuJiKjtf3olH4ysz2wFBSneKtK/MNnLotC9bIs7rb4J28HJQsIKBGL6ID+hdLP
+         Ya4hjVNHrdlN5955p/CqFqv0QsvgGoFVZrn4A0Wh9fZRtwAf4jTCD1wASstWM00ps+Vg
+         AZlFHwcX3/5qW2d8eYcUiA45ZsKtac8fUaeJffFLfiyvG4PwmEDOFAqr4S5t19P9bMO/
+         EoPbZydQd0YCDwN7mKODSHJx0j7uC9gOLAvPYnrdJeVi4tKns6OtTH7glRAXllYxpIzk
+         VHbE0Ng/BY0bmDeSyFOEWY2u9c+KbMOO9rPGY8dTP/aFZnd0xO5YQf/z1wj0c3HeMgzG
+         Sn7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747745553; x=1748350353;
+        d=1e100.net; s=20230601; t=1747745559; x=1748350359;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=NZx+To6+GeRUeSP4cgenq374zNADHJo0hk3kjG6JK1E=;
-        b=afdKYA6YmBwtfUVghw4GUf7U3Yj7rKwWDbEvp2KYPK1NqREvDLr7vqJcQ+IdhgqQiU
-         eGUQJexTtLllQcqxZo1BcKdYaYDvGrMatI+rEB1vPCiXnbG7RNYaaUn/zN6z+9ZjC4WD
-         /olMNI9EeS99Jol0OVTKBmGCY5ihA8K5t9xPNUV0qR9fNRl37KAmMkjrjvCZJFVCLcgN
-         omVb+RpuqwSjn9WOclcP/LZHr6Bih5bue81e97pMzgy8mC1V4KXVDgOf5kqsU+6iArfp
-         TOPfLzLe9ntO2ou4wu9FC78M81ETobEcmkumftdb7JTgc7bsO4aWfkhF5nTV6hmoYv42
-         xP5A==
-X-Forwarded-Encrypted: i=1; AJvYcCUzRjyRhaimE7X3XwM/OBhRrKAV8ka2rCMfdfYmV5VWASyE0AMVMirBj7SzS6KsnkjgCYo05p9MGiNEPvosKysWN/w=@linaro.org, AJvYcCWEkEXYZR777MQA/dutZbObEBUXZDgnQv7oiye4IZWGlhvBRVLXbDlZDgQQvMIt8tYq3CsvqUmQDagSeZbjP/O5gQ==@linaro.org, AJvYcCWg9Oxxk2DY9Qei4NDFEraVHbdkNaNuvn4Qz2q0nsV3/Ag6r76x/zeIJJrRjAGarbmff2vk69c=@linaro.org
-X-Gm-Message-State: AOJu0YzMDcAIwi46B0VaKyTjh8BZ5B962nIbbgEsjBp34WdTdu+GJe5m
-	QvCsSCuDEu5EU6rpyvWergC6Tcb+d1bNaounNncYq2RgWuwspgwIeKF1
-X-Gm-Gg: ASbGncvipJXaG5MTgb9DUUXiN8fh3PEG0yezJuN0tHsw9PjbqP+9/mWiXPNBdMQGp1a
-	DMAjcfaZjd+FosVSkY8ChF6GePTCLqf+XuGIPnZFzbXb4nwLXIqGlozn4VBASN7ytrRbup/rNNk
-	X9nODexJBOltGAcJ31AIp9FmdfChjMWgcpd2ahbjurDI40iYNDKodiAE/NY2I2eZQcVgPrQvLvV
-	B07Ydi8ymRRHl6ncQdIHz2Hk1eX9uVytGp3CiiHQmTYJiWtW9VKW925BUipOa5vQYJ+F+fuYkPJ
-	YcxUw1UGJvNAQAprahM4CTNo8LmRjIytyn+cYw02VxI6qIQ5qJwFPSN9qBgjWw==
-X-Google-Smtp-Source: AGHT+IHBlXaJvgNi8ZmIupZbQwe/gK71oK9VqvVg9wYGIpSs4wakRV4DDk3Cz065hGwWCWDovzWzVA==
-X-Received: by 2002:a17:90b:574b:b0:30a:5a9a:9fec with SMTP id 98e67ed59e1d1-30e830c4f3emr25133773a91.7.1747745553046;
-        Tue, 20 May 2025 05:52:33 -0700 (PDT)
+        bh=T0PaUQzzHF5lFv29qjDHJ20TRr//FMkUoGozxMxxEDU=;
+        b=bRANwukAFytaO26kNX4/qyzeLTCT5VYPUVdz6tYaSZ3WdlCKarHzkmDc+9qIkqM45r
+         5V9fUtWOBVB9c54ip4rRDHCGORJS35rUwbyMIHREHda6WzS61gClwtkrGrtp4FliClgQ
+         1OhwZDfbZoyWub8pfkMdbWoSPPuELBGeW2Ts9wTVNJoJAZbXCPL60+GMv8BCZn0oAynb
+         3zWzg3lKyAlFIjfVKAgDelgCZ16gDpbsuU8TeGMwYnOKALf78u7zv2x+NJ2AyFxu/qyx
+         LwSOoTN5tyajb/i8JXKTLRzJSEVzovWaBWbkGyWbElMc2h0eIZm/6QYwzVLxgh6kgpld
+         i6dQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUHih5Tro539K0glMZuje4vhcc7ZTIlfliDcsm4i/0ixvG7zXTYrRjpAlN9dmlTPScK/wAoEeY=@linaro.org, AJvYcCWLvx9EhGJWyEwGpQzguki3xzzjuD1Z/+R4KSvVoKHVNAgKjzu+j8DCmKWZGV22MNJhwf9znH7wnbNwWBMSLTX0bHw=@linaro.org, AJvYcCXHYte37QFf4A/39FoHlvZXhZo9JTqSS8IBL7N+T3BCiw0kGjYnxxQK+cZbiHF4V4sGkfYuyWI35knkonBI6DtdKQ==@linaro.org
+X-Gm-Message-State: AOJu0YzJoMhfFNFWtEHIVnACoFLtAZgp0ImBRxAYntkLkXPpSRDEor/x
+	LcdPgCpo/kNCRnZtwbTUwhw0Gx9fx3qXjbzqEI5ATRD+nSnMRt5X784i
+X-Gm-Gg: ASbGncuFl+if+W2kQ2aqr8qjfQh17sykMknBY4XoM3VWDb02fXyoxgQ63bU9l0IASuL
+	QafZX8O7Rw5XVojcSrxsIdhStkNS5X9whKu8kbWd5XOgbHvNWjK6wlOyHkqE/Qfp/EqsCwa5l8W
+	oYLWRokpSrmmfd/Fgk+/X/k4dkc8QcFJvwl2Tt67NLH6XO+1XxAEjmti6xGIqFK5/STr2gQwTDl
+	bOHjz7e/pcMDhAvbvVzFmFR5eGJSWDU1X7Fb6bHfjeKB7QRgIbFFWIHJICtGDWRTkFaDXQicLLp
+	2zNpiaV9ruh6ABXXE+CeFTqv8Ui8CEfIT4Ly7u3x8HPBVVEmZhE=
+X-Google-Smtp-Source: AGHT+IG4z7uH3nJBTNDQfyLfNQV18rt8GBswaQum9LIXlORmpxAC/0+aqvV7Ejz1IYPaI3IHgNwiMg==
+X-Received: by 2002:a17:90b:3a48:b0:2ff:72f8:3708 with SMTP id 98e67ed59e1d1-30e8314fdb5mr30880280a91.17.1747745558661;
+        Tue, 20 May 2025 05:52:38 -0700 (PDT)
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from ktock.. ([240d:1a:3b6:8b00:1bde:8310:e993:5dcc])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30f36364f9asm1625916a91.4.2025.05.20.05.52.27
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30f36364f9asm1625916a91.4.2025.05.20.05.52.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 May 2025 05:52:32 -0700 (PDT)
+        Tue, 20 May 2025 05:52:38 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -100,38 +100,215 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Kohei Tokunaga <ktokunaga.mail@gmail.com>,
 	qemu-arm@nongnu.org,
 	qemu-riscv@nongnu.org
-Subject: [PATCH 03/33] meson: Enable to build wasm backend
-Date: Tue, 20 May 2025 21:51:05 +0900
-Message-ID: <cb60bb4543170eaf2f22ff7cdf206e84f1c80bc5.1747744132.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH 04/33] tcg/wasm32: Set TCG_TARGET_INSN_UNIT_SIZE to 1
+Date: Tue, 20 May 2025 21:51:06 +0900
+Message-ID: <9e2af431443c9b4b70f1fc1ee02e1030318c0b8f.1747744132.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1747744132.git.ktokunaga.mail@gmail.com>
 References: <cover.1747744132.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: tnGKD2Jik8uG
+X-TUID: tCLl3gePvfYE
 
-Now that there is a backend for WebAssembly build (/tcg/wasm32/), the
-requirement of --enable-tcg-interpreter in meson.build can be removed.
+WebAssembly instructions vary in size, including single-byte
+instructions. This commit sets TCG_TARGET_INSN_UNIT_SIZE to 1 and updates
+the TCI fork to use "tcg_insn_unit_tci" (a uint32_t) for 4-byte operations.
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- meson.build | 4 ----
- 1 file changed, 4 deletions(-)
+ tcg/wasm32/tcg-target.c.inc | 40 ++++++++++++++++++++-----------------
+ tcg/wasm32/tcg-target.h     |  2 +-
+ 2 files changed, 23 insertions(+), 19 deletions(-)
 
-diff --git a/meson.build b/meson.build
-index ad2053f968..c533243157 100644
---- a/meson.build
-+++ b/meson.build
-@@ -911,10 +911,6 @@ if have_tcg
-     if not get_option('tcg_interpreter')
-       error('Unsupported CPU @0@, try --enable-tcg-interpreter'.format(cpu))
-     endif
--  elif host_arch == 'wasm32'
--    if not get_option('tcg_interpreter')
--      error('WebAssembly host requires --enable-tcg-interpreter')
--    endif
-   elif get_option('tcg_interpreter')
-     warning('Use of the TCG interpreter is not recommended on this host')
-     warning('architecture. There is a native TCG execution backend available')
+diff --git a/tcg/wasm32/tcg-target.c.inc b/tcg/wasm32/tcg-target.c.inc
+index 33b81f1fe2..126f9c0de7 100644
+--- a/tcg/wasm32/tcg-target.c.inc
++++ b/tcg/wasm32/tcg-target.c.inc
+@@ -39,6 +39,8 @@
+ #endif
+ #define TCG_TARGET_CALL_RET_I128        TCG_CALL_RET_NORMAL
+ 
++typedef uint32_t tcg_insn_unit_tci;
++
+ static TCGConstraintSetIndex
+ tcg_target_op_def(TCGOpcode op, TCGType type, unsigned flags)
+ {
+@@ -96,16 +98,18 @@ static const char *const tcg_target_reg_names[TCG_TARGET_NB_REGS] = {
+ };
+ #endif
+ 
+-static bool patch_reloc(tcg_insn_unit *code_ptr, int type,
++static bool patch_reloc(tcg_insn_unit *code_ptr_i, int type,
+                         intptr_t value, intptr_t addend)
+ {
++    tcg_insn_unit_tci *code_ptr = (tcg_insn_unit_tci *)code_ptr_i;
+     intptr_t diff = value - (intptr_t)(code_ptr + 1);
+ 
+     tcg_debug_assert(addend == 0);
+     tcg_debug_assert(type == 20);
+ 
+     if (diff == sextract32(diff, 0, type)) {
+-        tcg_patch32(code_ptr, deposit32(*code_ptr, 32 - type, type, diff));
++        tcg_patch32((tcg_insn_unit *)code_ptr,
++                    deposit32(*code_ptr, 32 - type, type, diff));
+         return true;
+     }
+     return false;
+@@ -122,7 +126,7 @@ static void stack_bounds_check(TCGReg base, intptr_t offset)
+ 
+ static void tcg_out_op_l(TCGContext *s, TCGOpcode op, TCGLabel *l0)
+ {
+-    tcg_insn_unit insn = 0;
++    tcg_insn_unit_tci insn = 0;
+ 
+     tcg_out_reloc(s, s->code_ptr, 20, l0, 0);
+     insn = deposit32(insn, 0, 8, op);
+@@ -131,14 +135,14 @@ static void tcg_out_op_l(TCGContext *s, TCGOpcode op, TCGLabel *l0)
+ 
+ static void tcg_out_op_p(TCGContext *s, TCGOpcode op, void *p0)
+ {
+-    tcg_insn_unit insn = 0;
++    tcg_insn_unit_tci insn = 0;
+     intptr_t diff;
+ 
+     /* Special case for exit_tb: map null -> 0. */
+     if (p0 == NULL) {
+         diff = 0;
+     } else {
+-        diff = p0 - (void *)(s->code_ptr + 1);
++        diff = p0 - (void *)(s->code_ptr + 4);
+         tcg_debug_assert(diff != 0);
+         if (diff != sextract32(diff, 0, 20)) {
+             tcg_raise_tb_overflow(s);
+@@ -151,7 +155,7 @@ static void tcg_out_op_p(TCGContext *s, TCGOpcode op, void *p0)
+ 
+ static void tcg_out_op_r(TCGContext *s, TCGOpcode op, TCGReg r0)
+ {
+-    tcg_insn_unit insn = 0;
++    tcg_insn_unit_tci insn = 0;
+ 
+     insn = deposit32(insn, 0, 8, op);
+     insn = deposit32(insn, 8, 4, r0);
+@@ -165,7 +169,7 @@ static void tcg_out_op_v(TCGContext *s, TCGOpcode op)
+ 
+ static void tcg_out_op_ri(TCGContext *s, TCGOpcode op, TCGReg r0, int32_t i1)
+ {
+-    tcg_insn_unit insn = 0;
++    tcg_insn_unit_tci insn = 0;
+ 
+     tcg_debug_assert(i1 == sextract32(i1, 0, 20));
+     insn = deposit32(insn, 0, 8, op);
+@@ -176,7 +180,7 @@ static void tcg_out_op_ri(TCGContext *s, TCGOpcode op, TCGReg r0, int32_t i1)
+ 
+ static void tcg_out_op_rl(TCGContext *s, TCGOpcode op, TCGReg r0, TCGLabel *l1)
+ {
+-    tcg_insn_unit insn = 0;
++    tcg_insn_unit_tci insn = 0;
+ 
+     tcg_out_reloc(s, s->code_ptr, 20, l1, 0);
+     insn = deposit32(insn, 0, 8, op);
+@@ -186,7 +190,7 @@ static void tcg_out_op_rl(TCGContext *s, TCGOpcode op, TCGReg r0, TCGLabel *l1)
+ 
+ static void tcg_out_op_rr(TCGContext *s, TCGOpcode op, TCGReg r0, TCGReg r1)
+ {
+-    tcg_insn_unit insn = 0;
++    tcg_insn_unit_tci insn = 0;
+ 
+     insn = deposit32(insn, 0, 8, op);
+     insn = deposit32(insn, 8, 4, r0);
+@@ -197,7 +201,7 @@ static void tcg_out_op_rr(TCGContext *s, TCGOpcode op, TCGReg r0, TCGReg r1)
+ static void tcg_out_op_rrm(TCGContext *s, TCGOpcode op,
+                            TCGReg r0, TCGReg r1, TCGArg m2)
+ {
+-    tcg_insn_unit insn = 0;
++    tcg_insn_unit_tci insn = 0;
+ 
+     tcg_debug_assert(m2 == extract32(m2, 0, 16));
+     insn = deposit32(insn, 0, 8, op);
+@@ -210,7 +214,7 @@ static void tcg_out_op_rrm(TCGContext *s, TCGOpcode op,
+ static void tcg_out_op_rrr(TCGContext *s, TCGOpcode op,
+                            TCGReg r0, TCGReg r1, TCGReg r2)
+ {
+-    tcg_insn_unit insn = 0;
++    tcg_insn_unit_tci insn = 0;
+ 
+     insn = deposit32(insn, 0, 8, op);
+     insn = deposit32(insn, 8, 4, r0);
+@@ -222,7 +226,7 @@ static void tcg_out_op_rrr(TCGContext *s, TCGOpcode op,
+ static void tcg_out_op_rrs(TCGContext *s, TCGOpcode op,
+                            TCGReg r0, TCGReg r1, intptr_t i2)
+ {
+-    tcg_insn_unit insn = 0;
++    tcg_insn_unit_tci insn = 0;
+ 
+     tcg_debug_assert(i2 == sextract32(i2, 0, 16));
+     insn = deposit32(insn, 0, 8, op);
+@@ -235,7 +239,7 @@ static void tcg_out_op_rrs(TCGContext *s, TCGOpcode op,
+ static void tcg_out_op_rrbb(TCGContext *s, TCGOpcode op, TCGReg r0,
+                             TCGReg r1, uint8_t b2, uint8_t b3)
+ {
+-    tcg_insn_unit insn = 0;
++    tcg_insn_unit_tci insn = 0;
+ 
+     tcg_debug_assert(b2 == extract32(b2, 0, 6));
+     tcg_debug_assert(b3 == extract32(b3, 0, 6));
+@@ -250,7 +254,7 @@ static void tcg_out_op_rrbb(TCGContext *s, TCGOpcode op, TCGReg r0,
+ static void tcg_out_op_rrrc(TCGContext *s, TCGOpcode op,
+                             TCGReg r0, TCGReg r1, TCGReg r2, TCGCond c3)
+ {
+-    tcg_insn_unit insn = 0;
++    tcg_insn_unit_tci insn = 0;
+ 
+     insn = deposit32(insn, 0, 8, op);
+     insn = deposit32(insn, 8, 4, r0);
+@@ -263,7 +267,7 @@ static void tcg_out_op_rrrc(TCGContext *s, TCGOpcode op,
+ static void tcg_out_op_rrrbb(TCGContext *s, TCGOpcode op, TCGReg r0,
+                              TCGReg r1, TCGReg r2, uint8_t b3, uint8_t b4)
+ {
+-    tcg_insn_unit insn = 0;
++    tcg_insn_unit_tci insn = 0;
+ 
+     tcg_debug_assert(b3 == extract32(b3, 0, 6));
+     tcg_debug_assert(b4 == extract32(b4, 0, 6));
+@@ -279,7 +283,7 @@ static void tcg_out_op_rrrbb(TCGContext *s, TCGOpcode op, TCGReg r0,
+ static void tcg_out_op_rrrr(TCGContext *s, TCGOpcode op,
+                             TCGReg r0, TCGReg r1, TCGReg r2, TCGReg r3)
+ {
+-    tcg_insn_unit insn = 0;
++    tcg_insn_unit_tci insn = 0;
+ 
+     insn = deposit32(insn, 0, 8, op);
+     insn = deposit32(insn, 8, 4, r0);
+@@ -293,7 +297,7 @@ static void tcg_out_op_rrrrrc(TCGContext *s, TCGOpcode op,
+                               TCGReg r0, TCGReg r1, TCGReg r2,
+                               TCGReg r3, TCGReg r4, TCGCond c5)
+ {
+-    tcg_insn_unit insn = 0;
++    tcg_insn_unit_tci insn = 0;
+ 
+     insn = deposit32(insn, 0, 8, op);
+     insn = deposit32(insn, 8, 4, r0);
+@@ -452,7 +456,7 @@ static void tcg_out_call(TCGContext *s, const tcg_insn_unit *func,
+                          const TCGHelperInfo *info)
+ {
+     ffi_cif *cif = info->cif;
+-    tcg_insn_unit insn = 0;
++    tcg_insn_unit_tci insn = 0;
+     uint8_t which;
+ 
+     if (cif->rtype == &ffi_type_void) {
+diff --git a/tcg/wasm32/tcg-target.h b/tcg/wasm32/tcg-target.h
+index bd03aa1bc4..2f0c27c905 100644
+--- a/tcg/wasm32/tcg-target.h
++++ b/tcg/wasm32/tcg-target.h
+@@ -41,7 +41,7 @@
+ #define TCG_TARGET_H
+ 
+ #define TCG_TARGET_INTERPRETER 1
+-#define TCG_TARGET_INSN_UNIT_SIZE 4
++#define TCG_TARGET_INSN_UNIT_SIZE 1
+ #define MAX_CODE_GEN_BUFFER_SIZE  ((size_t)-1)
+ 
+ /* Number of registers available. */
 -- 
 2.43.0

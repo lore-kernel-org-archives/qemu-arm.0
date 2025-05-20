@@ -1,83 +1,83 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp476021njc;
-        Tue, 20 May 2025 05:54:20 -0700 (PDT)
-X-Received: by 2002:a17:903:3d0f:b0:231:c99b:9fd7 with SMTP id d9443c01a7336-231d43ad4b6mr237768145ad.19.1747745660052;
-        Tue, 20 May 2025 05:54:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747745660; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp476079njc;
+        Tue, 20 May 2025 05:54:26 -0700 (PDT)
+X-Received: by 2002:a17:90b:1f8b:b0:30a:2007:65b6 with SMTP id 98e67ed59e1d1-30e83235af7mr17961845a91.34.1747745666564;
+        Tue, 20 May 2025 05:54:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747745666; cv=none;
         d=google.com; s=arc-20240605;
-        b=fPeS+Jthcs/yFjQOurTDSN99BLmDj3NTc0XSd2MY32hN/0XI/nrDuhcw32RilyjkUY
-         p45jaBN4Z3tl464VOuCUKmm7u+pu//NxVRtgtQXtLC9+3v6Tp3L6m44iPkQTnfdIkofT
-         tVlDk7cJvvzzI81+a6LA/38sWtSrxoVyQKMzuwuF1EyhZzE/Je5ozB/6xwFGWSDQoj+/
-         2nXTfxeqOG92mhv6T+1Bw02E9xeVcH5/sUngYdVRqPC/x8E4eLb/rEykD4CrMlHsD9D0
-         WKXvSPsXPNtDxmtCA9ldGKNB3kKh49ATe5dfPp3C/ngG/jtMKxgaJANncKf5pzGxZPVd
-         l6Ag==
+        b=KJx/ojYAW+NPCGTMGJgiwAeCGLuL9cl7GzaFnqVmFcIeuQLvM/awYbjEZcG8BxfWGR
+         UglwMB5YJsLlbquAU+SnSnaoIwuEe8G+3zowhG6F1bhIteKpbLBlhMxMGplBvkI6XshA
+         voQqCQTPh9VF8duE7UxQ9/INtMIfvXUNH+MJsvjA+eQrEbbtsTnB8qkoG0a+eQIDaXXX
+         xZi6zdesVoeJoEFNE33pqT3Z6QSBOdPQwOnwx9zbsBj3IP4tUhww/Ko9H1vLLQyRv6Ku
+         Y6wttyHX10Dd03NF/Ah1o+dB5yc92GU+Azk9eVTueI4AK+9Enaab8w6hoUOg3eMc5ZcE
+         qsSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=cDG0pwUWpFnKg/l7uQqlMEQTPTDfS039RvtWFwYIZBA=;
-        fh=IY4uCNm7bjB4PRpOwzUwbF41e7X1eH3YrboLhFN8eP0=;
-        b=GmtAG8ofMokUgVrjYWuqh7cbzO6xFZAj+B89hs/C3rCfkpzNPKEhLXj7zDuYLMsumr
-         chPVp7fAqX5ERh1fzYdAz36AihqsYBruBvgPihrvrdZamN3vlCFDv9eRzSHQbc/t/Mcs
-         suJbNPqDbK5JUIE/irUjtOovo12jsWK0opFsgBTIu9G4VxTUAKury5PC9PlAv8Vgu+ZR
-         +sfSs8A7ds5vKSjHfXe7TPVndHojjTIlaORgY4C4mCmb4717EV5bbmBKpjDWSvfJQpS9
-         jXrmJ+oLQq8glbzyazpcQsuvrw+7vGqSMRZzIdZeI/w4wh1QmkMYNPMN2lhcl2tkWT9E
-         Dy4w==;
+        bh=CvwVU9F6cQaGXnx8rRhBrrA5oqA9zp4XDJF1ywgSwYE=;
+        fh=I5jdQO/9LPET3tutA1MmDGXthUpFkEeQnWgsMl+jA7A=;
+        b=RQuKp1v9HcYRLtMysXXdgNAobZ93clY6f/uyCtDVHbsU3FXHbJzAtTH+uGGOvn1N4H
+         0hyAo5S8oukDJeal6vrrBx7JHOVtWXljgzjFgxHYJe/QBEqCUt4g097UpAugtjAoCdG0
+         dtQmY5uf5j4MefIzeuzq9ZjQjhLzEeqDzkoQPT/0ZAAwuAh4cwXxeK9zsVg6WRr3XqZT
+         PUUHuoHMUqgqkl5c1Lz2D6OJC11LHnqWoCaT+jU49/A6pxzRY65zi2+lSYAcuLhOmnPu
+         Xhuu78Yg5vcbqeP+wCnSd/rZ51cjVpINgHLMFtxQxzls7Kq8bT6+RMQlMUjBtvS+oYJC
+         ZKJA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="S/f676EX";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ltdOFkhU;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-231d47d9a78sor72656715ad.0.2025.05.20.05.54.19
+        by mx.google.com with SMTPS id 98e67ed59e1d1-30e7d5909d8sor7433408a91.6.2025.05.20.05.54.26
         (Google Transport Security);
-        Tue, 20 May 2025 05:54:20 -0700 (PDT)
+        Tue, 20 May 2025 05:54:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="S/f676EX";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ltdOFkhU;
        spf=pass (google.com: domain of ktokunaga.mail@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ktokunaga.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1747745659; x=1748350459; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1747745666; x=1748350466; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=cDG0pwUWpFnKg/l7uQqlMEQTPTDfS039RvtWFwYIZBA=;
-        b=S/f676EX6csJZM8J2XJFofEJhGHc94VFYyG3aAj5Dv3sk6QYt66cyGSS97OUdFZk2S
-         /yp/P/0yak2JR5UwUg3UwLBYEdnVetcMyzoS9qSIRs0gVzD0yYpt3Nr1Vlifvx1h6olx
-         +DSWRchhi+N24udc3rPwaIt7j5qVolUDbB3YQ2bp6c9BQPLXT9dcnrb9U5hjGMx1uUUa
-         UegADAqvjoX8TBvFYcRYrEjZuwi9oMkyvbVaPYY2KAbz/dvjxjuV3PSy9OLT3RUVL8l2
-         +bRYzoi5p0rxWK92gEPdPAorpVYhdEix+0PoXGbamgKwDxskhvINEyZS+95tBsvrU0DD
-         9/rA==
+        bh=CvwVU9F6cQaGXnx8rRhBrrA5oqA9zp4XDJF1ywgSwYE=;
+        b=ltdOFkhUabaWA2uE25lnmwRumX/hDCeryNIOLduHY0mGdZikx2iSott/tl9gAJrdXJ
+         kOQmu0phvhR3WlR8e2BZENwkB3UvvrDiT6yG0lhRYFqrmtiSrNv5XVheu4kvGafak5qc
+         AJUNJqJ7fFS7WYqrasgYN8Ij0c0LE/NbeKJm1qMCdvT3J+BO1Br08pBKkGHha6FSyws7
+         22xSB6m37DAtZ5WdKEcbQOF9wmfrTKz83gTBCVDq934xwXpEZGWoXCmITiMLy0lgUBZz
+         ExK+sV4cVWKesS+U1hmRirXgcKd1ur0Zn0mAB0bNIxbhAJrj33Z3U8NskLAAYZ0TEtKd
+         xbBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747745659; x=1748350459;
+        d=1e100.net; s=20230601; t=1747745666; x=1748350466;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=cDG0pwUWpFnKg/l7uQqlMEQTPTDfS039RvtWFwYIZBA=;
-        b=Znw/Tg9qqEYWmih8Dk9GaUsvcpzeX037r5UzuBQwZDoVFD6sxCeMCydUYp/4CzcoN4
-         XY9JPvFT3tkhIzhbnMO5gPOw3njLlH1gunNiIkI3jnLyw7PJH2wOSnr0QJiLESAaF6PZ
-         nuOXtBx97S7kAh4ckExF1VomLj6AqRkJOq7/OCbZX89g7iF9IWkyA+diYDUZDcrFFyPF
-         ItoqX7c1rYAbbi//5Mq3UVLp21o+ez+HmBvkfn5pDWoVzfl/W9lS7FXOgoPxUQBO2gux
-         oQJSOCYwKK6avwWYAPchrh68tLzTupi0dEhLHjB5iHiSDSCkojHYQjFIptbS4yhMdsI4
-         JPkA==
-X-Forwarded-Encrypted: i=1; AJvYcCUl0D4WMgYL9j+v3ZHU9PM/gvzwnoRP7cGCNqUtKMkXEl8nPjDiCh7piWEKseCVobkt17Lc1kYMhk/M4tS080CPDg==@linaro.org, AJvYcCWDg0/jYjnv4cTAjrWEg0WoLCLraVs8xmnI4tS+vsHzVCv/QF3Ih8Zndid/bv2FLW4cI4gDCMtK9o0UlceOHaHghFg=@linaro.org, AJvYcCWT2QI6cK9XVUjRGItj2hlJ933aa1JQ9cxDeooakmKJT8fTFF/twng/v8wOUgKYSZmF6hdFCsg=@linaro.org
-X-Gm-Message-State: AOJu0Yxibd006hrnTULn04zONXW+4qg4fiYq8QTpD62K51BuiB/5bzUb
-	Vs/Dw+ji5spp3CaiX0jLYP+lYQXah6hms/3Vha3YNkRj/Wmo/VG33hMN+tM0QLnR
-X-Gm-Gg: ASbGncszBAuJ1ndKK3JN9LbsmIcVxMnkAwY0y6/uu87dQv0I6yeOYii/emrTgyMEGDc
-	gCE9wf/fYyRq8+5gwQaMjTdbGC+uYl3u8kHAROdAdI669y2hy2BdQjuIJe2NE+32qQyg5HEm2BS
-	KHvcO9k0yar2me0NTzar/tEAzRXeMFi2dbuULi2P3tzJYfR2GrYa/Q7o1rye9SSYgkocpu3dlm9
-	v5a0Kpf9+4ZdaDB9G3jc03R8CO5DdrogM6uZrB9lKnKWTh8cZM+a7EQrDXibjA++ouFAyG6szMs
-	WyBG/EizTRal4EvTxG2Hyk4vcoyVTuniksVxg1ZqTSP3Ha5t/6U=
-X-Google-Smtp-Source: AGHT+IHsAaRA9611AxQxc5NVjTREuknnJ6IQooXldl0fBT1ED1f+IK7+hrgUEmMdzmSvtkHTD8mfWg==
-X-Received: by 2002:a17:90b:2c8c:b0:30e:823f:ef31 with SMTP id 98e67ed59e1d1-30e823ff071mr24002616a91.29.1747745648991;
-        Tue, 20 May 2025 05:54:08 -0700 (PDT)
+        bh=CvwVU9F6cQaGXnx8rRhBrrA5oqA9zp4XDJF1ywgSwYE=;
+        b=c25yDjEcnYMXgnUFCuE62uJk7Peqnmm0NsVn2ud022fGunf8GW4Yxxv8+7yLg5x0C7
+         W5IPcgmFlX16ArJfkkoFcTvaOgOxWSTUzTn/iTrUm03+1sTQYoVNtIrB+1/pHLe5GB5w
+         kuSsHOOGA4Jnd63jk9JcqaSeFzIELVJYJVn3XYAKSFPuZZ2Gy8zVJDRMDU9n4MW00GCH
+         FwJwIvJommOiotg3oXy+VuDYlyxbsJ5jRMXR4hEuyf1z8Jk7zMsTgnM9DLPhXOjffDVM
+         VD6nhOyWlPW4o6yai4vkGuoPpvyL3DHBFrLABr0JT7hYgQCPuad8k6rbXerQAQPZezNV
+         FP4Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUatMl6tD/67F6tb6/PvjX8117nB6sAoQPqSs3e9i2a83Euw6C3ytvMHXlktpi01uuHJu+oz/rCNtncwi7G5cqgyl0=@linaro.org, AJvYcCVH0I0YS1GoHAWi/FT3UghI81ZvKfoMy6pc8gaV+OTWDjdHOSnNYxdPex+io0gxqp/VyjQQRO8=@linaro.org, AJvYcCVv4HjWRvqIurGLCzY5twXMN3tzhqhNu7qQEo7eFRFcViJ8OIVC/YX5gGM/+ngkaMiHdjVswhQJNuJuZLmaQPW2UA==@linaro.org
+X-Gm-Message-State: AOJu0YylOAIrOOQmZpx+qe2UTyKpuf93yzBZeMErsxCZ5zdsjSG8UANt
+	6Gzw9Ij2yju0+nA0POJUnOXPNr73uoCk1tbOGM1lGiWk8tbgrqm2oM0O
+X-Gm-Gg: ASbGncuV/+2tcGEnlpbbktG9PqtFIuOO6PjKND1CygVhw7g72zkPi6uVoUYa8sm7KGm
+	qMAMPMMPcVoANMqkuIgd63V8IjxoSgmNGOI5KWyTZqCkTmYUFwvVZiM1OnSs6qRa7eE6Ujwzm07
+	6r4zC97veQbEbCVs0FH8MOe5OrFMUgKTn8VFLjybP07dLX6SZ0kjGm+CadZcRCWWuyOQKCghvlR
+	rdEhUjwljBuYnqCDyHRep6urORevOJgBt50qvmpOWnMBQX1qCYj3HeMJtqqzAbn4JD1C2FtYFBv
+	z+h4+oTZN8vufIw1hTf8y1w6i/4iGs/QtSiyt+/CUbhPkA607TA=
+X-Google-Smtp-Source: AGHT+IHUv1Ky3GKBjVeftojRctD7ekQgFkcQPAUZGG0rypCRZbOSLLaaaceS/2YOW575tisr9dvdyA==
+X-Received: by 2002:a17:90b:3c90:b0:30e:37be:6963 with SMTP id 98e67ed59e1d1-30e83228d1cmr24997945a91.29.1747745665822;
+        Tue, 20 May 2025 05:54:25 -0700 (PDT)
 Return-Path: <ktokunaga.mail@gmail.com>
 Received: from ktock.. ([240d:1a:3b6:8b00:1bde:8310:e993:5dcc])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30f36364f9asm1625916a91.4.2025.05.20.05.54.03
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30f36364f9asm1625916a91.4.2025.05.20.05.54.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 May 2025 05:54:08 -0700 (PDT)
+        Tue, 20 May 2025 05:54:25 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -100,252 +100,215 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Kohei Tokunaga <ktokunaga.mail@gmail.com>,
 	qemu-arm@nongnu.org,
 	qemu-riscv@nongnu.org
-Subject: [PATCH 20/33] tcg/wasm32: Add exit_tb/goto_tb/goto_ptr instructions
-Date: Tue, 20 May 2025 21:51:22 +0900
-Message-ID: <021c0cb8cc58c4cb673b38b75d20d27e8dec1c40.1747744132.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH 23/33] include/exec: Allow using 64bit guest addresses on emscripten
+Date: Tue, 20 May 2025 21:51:25 +0900
+Message-ID: <d3e7e584cf61c76952f4c9d913ba80d905c80e76.1747744132.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1747744132.git.ktokunaga.mail@gmail.com>
 References: <cover.1747744132.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: ALi+rFcHkRFe
+X-TUID: sZBbu84zpW3A
 
-In the Wasm backend, each TB is compiled to a separeted Wasm
-module. Control transfer between TBs (i.e. from one Wasm module to
-another) is handled by the caller of the module.
-
-The goto_tb and goto_ptr operations are implemented by returning
-control to the caller using the return instruction. The destination
-TB's pointer is passed to the caller via a shared wasmContext
-structure which is accessible from both the Wasm module and the caller. This
-wasmContext must be provided to the module as an argument which is
-accessible as the local variable at index 0.
-
-If the destination TB is the current TB itself, there is no need to
-return control to the caller. Instead, execution can jump directly to
-the top of the loop within the TB.
-
-The exit_tb operation sets the pointer in wasmContext to 0, indicating that
-there is no destination TB.
+To enable 64-bit guest support in Wasm 32bit memory model today, it was
+necessary to partially revert recent changes that removed support for
+different pointer widths between the host and guest (e.g. commits
+a70af12addd9060fdf8f3dbd42b42e3072c3914f and
+bf455ec50b6fea15b4d2493059365bf94c706273) when compiling with
+Emscripten. While this serves as a temporary workaround, a long-term
+solution could involve adopting Wasm's 64-bit memory model once it gains
+broader support, as it is currently not widely adopted (e.g. unsupported by
+Safari and libffi).
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- MAINTAINERS                 |   1 +
- tcg/wasm32.h                |  17 ++++++
- tcg/wasm32/tcg-target.c.inc | 111 ++++++++++++++++++++++++++++++++++++
- 3 files changed, 129 insertions(+)
- create mode 100644 tcg/wasm32.h
+ accel/tcg/cputlb.c             |  8 ++++----
+ include/exec/helper-head.h.inc |  6 ++++++
+ include/exec/tlb-common.h      | 14 ++++++++++----
+ include/exec/vaddr.h           | 11 +++++++++++
+ include/qemu/atomic.h          |  4 ++++
+ include/tcg/tcg.h              |  4 ++++
+ meson.build                    |  8 +++++---
+ 7 files changed, 44 insertions(+), 11 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index ac5070d058..3ca93f90de 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3953,6 +3953,7 @@ M: Kohei Tokunaga <ktokunaga.mail@gmail.com>
- S: Maintained
- F: tcg/wasm32/
- F: tcg/wasm32.c
-+F: tcg/wasm32.h
+V1:
+- Although I tried to use "#if HOST_LONG_BITS >= TARGET_LONG_BITS" based on
+  Paolo's suggestion from the previous patch series, TARGET_LONG_BITS is
+  marked as poisoned in include/exec/poison.h and cannot be used directly.
+
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 5f6d7c601c..b15e9e80ee 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -109,13 +109,13 @@ static inline uint64_t tlb_read_idx(const CPUTLBEntry *entry,
+ {
+     /* Do not rearrange the CPUTLBEntry structure members. */
+     QEMU_BUILD_BUG_ON(offsetof(CPUTLBEntry, addr_read) !=
+-                      MMU_DATA_LOAD * sizeof(uintptr_t));
++                      MMU_DATA_LOAD * sizeof(tlb_addr));
+     QEMU_BUILD_BUG_ON(offsetof(CPUTLBEntry, addr_write) !=
+-                      MMU_DATA_STORE * sizeof(uintptr_t));
++                      MMU_DATA_STORE * sizeof(tlb_addr));
+     QEMU_BUILD_BUG_ON(offsetof(CPUTLBEntry, addr_code) !=
+-                      MMU_INST_FETCH * sizeof(uintptr_t));
++                      MMU_INST_FETCH * sizeof(tlb_addr));
  
- Block drivers
- -------------
-diff --git a/tcg/wasm32.h b/tcg/wasm32.h
-new file mode 100644
-index 0000000000..ffa359b7dc
---- /dev/null
-+++ b/tcg/wasm32.h
-@@ -0,0 +1,17 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#ifndef TCG_WASM32_H
-+#define TCG_WASM32_H
-+
-+/*
-+ * wasmContext is a data shared among QEMU and wasm modules.
-+ */
-+struct wasmContext {
-+    /*
-+     * Pointer to the TB to be executed.
-+     */
-+    void *tb_ptr;
-+};
-+
+-    const uintptr_t *ptr = &entry->addr_idx[access_type];
++    const tlb_addr *ptr = &entry->addr_idx[access_type];
+     /* ofs might correspond to .addr_write, so use qatomic_read */
+     return qatomic_read(ptr);
+ }
+diff --git a/include/exec/helper-head.h.inc b/include/exec/helper-head.h.inc
+index 5b248fd713..7dfb4cfa46 100644
+--- a/include/exec/helper-head.h.inc
++++ b/include/exec/helper-head.h.inc
+@@ -58,6 +58,7 @@
+ # define dh_ctype_tl target_ulong
+ #endif /* COMPILING_PER_TARGET */
+ 
++#ifndef EMSCRIPTEN
+ #if __SIZEOF_POINTER__ == 4
+ # define dh_alias_vaddr i32
+ # define dh_typecode_vaddr dh_typecode_i32
+@@ -68,6 +69,11 @@
+ # error "sizeof pointer is different from {4,8}"
+ #endif /* __SIZEOF_POINTER__ */
+ # define dh_ctype_vaddr uintptr_t
++#else
++# define dh_alias_vaddr i64
++# define dh_typecode_vaddr dh_typecode_i64
++# define dh_ctype_vaddr uint64_t
 +#endif
-diff --git a/tcg/wasm32/tcg-target.c.inc b/tcg/wasm32/tcg-target.c.inc
-index ea0d1ca874..77db50cf85 100644
---- a/tcg/wasm32/tcg-target.c.inc
-+++ b/tcg/wasm32/tcg-target.c.inc
-@@ -25,6 +25,8 @@
-  * THE SOFTWARE.
+ 
+ /* We can't use glue() here because it falls foul of C preprocessor
+    recursive expansion rules.  */
+diff --git a/include/exec/tlb-common.h b/include/exec/tlb-common.h
+index 03b5a8ffc7..679054bb44 100644
+--- a/include/exec/tlb-common.h
++++ b/include/exec/tlb-common.h
+@@ -19,14 +19,20 @@
+ #ifndef EXEC_TLB_COMMON_H
+ #define EXEC_TLB_COMMON_H 1
+ 
++#ifndef EMSCRIPTEN
+ #define CPU_TLB_ENTRY_BITS (HOST_LONG_BITS == 32 ? 4 : 5)
++typedef uintptr_t tlb_addr;
++#else
++#define CPU_TLB_ENTRY_BITS 5
++typedef uint64_t tlb_addr;
++#endif
+ 
+ /* Minimalized TLB entry for use by TCG fast path. */
+ typedef union CPUTLBEntry {
+     struct {
+-        uintptr_t addr_read;
+-        uintptr_t addr_write;
+-        uintptr_t addr_code;
++        tlb_addr addr_read;
++        tlb_addr addr_write;
++        tlb_addr addr_code;
+         /*
+          * Addend to virtual address to get host address.  IO accesses
+          * use the corresponding iotlb value.
+@@ -37,7 +43,7 @@ typedef union CPUTLBEntry {
+      * Padding to get a power of two size, as well as index
+      * access to addr_{read,write,code}.
+      */
+-    uintptr_t addr_idx[(1 << CPU_TLB_ENTRY_BITS) / sizeof(uintptr_t)];
++    tlb_addr addr_idx[(1 << CPU_TLB_ENTRY_BITS) / sizeof(tlb_addr)];
+ } CPUTLBEntry;
+ 
+ QEMU_BUILD_BUG_ON(sizeof(CPUTLBEntry) != (1 << CPU_TLB_ENTRY_BITS));
+diff --git a/include/exec/vaddr.h b/include/exec/vaddr.h
+index 28bec632fb..ff57f944dd 100644
+--- a/include/exec/vaddr.h
++++ b/include/exec/vaddr.h
+@@ -9,6 +9,7 @@
+  * We do not support 64-bit guest on 32-host and detect at configure time.
+  * Therefore, a host pointer width will always fit a guest pointer.
   */
++#ifndef EMSCRIPTEN
+ typedef uintptr_t vaddr;
+ #define VADDR_PRId PRIdPTR
+ #define VADDR_PRIu PRIuPTR
+@@ -16,5 +17,15 @@ typedef uintptr_t vaddr;
+ #define VADDR_PRIx PRIxPTR
+ #define VADDR_PRIX PRIXPTR
+ #define VADDR_MAX UINTPTR_MAX
++#else
++/* Explicitly define this as 64bit on emscripten */
++typedef uint64_t vaddr;
++#define VADDR_PRId PRId64
++#define VADDR_PRIu PRIu64
++#define VADDR_PRIo PRIo64
++#define VADDR_PRIx PRIx64
++#define VADDR_PRIX PRIX64
++#define VADDR_MAX UINT64_MAX
++#endif
  
-+#include "../wasm32.h"
-+
- /* Used for function call generation. */
- #define TCG_TARGET_CALL_STACK_OFFSET    0
- #define TCG_TARGET_STACK_ALIGN          8
-@@ -128,6 +130,11 @@ static const uint8_t tcg_target_reg_index[TCG_TARGET_NB_REGS] = {
+ #endif
+diff --git a/include/qemu/atomic.h b/include/qemu/atomic.h
+index f80cba24cf..76a8fbcd8c 100644
+--- a/include/qemu/atomic.h
++++ b/include/qemu/atomic.h
+@@ -56,6 +56,7 @@
   */
- #define BLOCK_PTR_IDX 17
+ #define signal_barrier()    __atomic_signal_fence(__ATOMIC_SEQ_CST)
  
-+/*
-+ * pointer to wasmContext
-+ */
-+#define CTX_IDX 0
-+
- /* Temporary local variables */
- #define TMP32_LOCAL_0_IDX 1
- #define TMP32_LOCAL_1_IDX 2
-@@ -334,6 +341,14 @@ static void tcg_wasm_out_op_i32_eqz(TCGContext *s)
- {
-     tcg_wasm_out8(s, 0x45);
- }
-+static void tcg_wasm_out_op_i32_eq(TCGContext *s)
-+{
-+    tcg_wasm_out8(s, 0x46);
-+}
-+static void tcg_wasm_out_op_i32_ne(TCGContext *s)
-+{
-+    tcg_wasm_out8(s, 0x47);
-+}
- static void tcg_wasm_out_op_i64_lt_u(TCGContext *s)
- {
-     tcg_wasm_out8(s, 0x54);
-@@ -380,6 +395,10 @@ static void tcg_wasm_out_op_end(TCGContext *s)
- {
-     tcg_wasm_out8(s, 0x0b);
- }
-+static void tcg_wasm_out_op_return(TCGContext *s)
-+{
-+    tcg_wasm_out8(s, 0x0f);
-+}
- static void tcg_wasm_out_op_var(TCGContext *s, uint8_t instr, uint8_t i)
- {
-     tcg_wasm_out8(s, instr);
-@@ -590,6 +609,16 @@ static void tcg_wasm_out_op_i64_load32_u(TCGContext *s, uint32_t a, uint32_t o)
-     tcg_wasm_out_op_loadstore(s, 0x35, a, o);
- }
++#ifndef EMSCRIPTEN
+ /*
+  * Sanity check that the size of an atomic operation isn't "overly large".
+  * Despite the fact that e.g. i686 has 64-bit atomic operations, we do not
+@@ -63,6 +64,9 @@
+  * bit of sanity checking that other 32-bit hosts might build.
+  */
+ #define ATOMIC_REG_SIZE  sizeof(void *)
++#else
++#define ATOMIC_REG_SIZE  8 /* wasm supports 64bit atomics */
++#endif
  
-+static void tcg_wasm_out_op_i32_load(TCGContext *s, uint32_t a, uint32_t o)
-+{
-+    tcg_wasm_out_op_loadstore(s, 0x28, a, o);
-+}
-+
-+static void tcg_wasm_out_op_i32_store(TCGContext *s, uint32_t a, uint32_t o)
-+{
-+    tcg_wasm_out_op_loadstore(s, 0x36, a, o);
-+}
-+
- static void tcg_wasm_out_op_not(TCGContext *s)
- {
-     tcg_wasm_out_op_i64_const(s, -1);
-@@ -1518,6 +1547,85 @@ static void tcg_wasm_out_brcond(TCGContext *s, TCGType type,
-     tcg_wasm_out_op_br_to_label(s, l, true);
- }
+ /* Weak atomic operations prevent the compiler moving other
+  * loads/stores past the atomic operation load/store. However there is
+diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
+index 041d8035bc..62bc2c4ea8 100644
+--- a/include/tcg/tcg.h
++++ b/include/tcg/tcg.h
+@@ -218,6 +218,7 @@ typedef struct TCGv_ptr_d *TCGv_ptr;
+ typedef struct TCGv_vec_d *TCGv_vec;
+ typedef TCGv_ptr TCGv_env;
  
-+#define tcg_wasm_out_ctx_i32_store_const(s, f, v)                       \
-+    do {                                                                \
-+        tcg_wasm_out_op_local_get(s, CTX_IDX);                          \
-+        tcg_wasm_out_op_i32_const(s, v);                                \
-+        tcg_wasm_out_op_i32_store(s, 0, offsetof(struct wasmContext, f)); \
-+    } while (0)
-+
-+#define tcg_wasm_out_ctx_i32_store_r(s, f, r)                           \
-+    do {                                                                \
-+        tcg_wasm_out_op_local_get(s, CTX_IDX);                          \
-+        tcg_wasm_out_op_global_get_r(s, r);                             \
-+        tcg_wasm_out_op_i32_wrap_i64(s);                                \
-+        tcg_wasm_out_op_i32_store(s, 0, offsetof(struct wasmContext, f)); \
-+    } while (0)
-+
-+#define tcg_wasm_out_ctx_i32_store_local32(s, f, var)                   \
-+    do {                                                                \
-+        tcg_wasm_out_op_local_get(s, CTX_IDX);                          \
-+        tcg_wasm_out_op_local_get(s, var);                              \
-+        tcg_wasm_out_op_i32_store(s, 0, offsetof(struct wasmContext, f)); \
-+    } while (0)
-+
-+#define tcg_wasm_out_ctx_i32_load(s, f)                                 \
-+    do {                                                                \
-+        tcg_wasm_out_op_local_get(s, CTX_IDX);                          \
-+        tcg_wasm_out_op_i32_load(s, 0, offsetof(struct wasmContext, f)); \
-+    } while (0)
-+
-+static void tcg_wasm_out_exit_tb(TCGContext *s, uintptr_t arg)
-+{
-+    tcg_wasm_out_ctx_i32_store_const(s, tb_ptr, 0);
-+    tcg_wasm_out_op_i32_const(s, (int32_t)arg);
-+    tcg_wasm_out_op_return(s);
-+}
-+
-+static void tcg_wasm_out_goto_ptr(TCGContext *s, TCGReg arg)
-+{
-+    tcg_wasm_out_op_global_get_r(s, arg);
-+    tcg_wasm_out_op_i32_wrap_i64(s);
-+    tcg_wasm_out_ctx_i32_load(s, tb_ptr);
-+    tcg_wasm_out_op_i32_eq(s);
-+    tcg_wasm_out_op_if_noret(s);
-+    tcg_wasm_out_op_i64_const(s, 0);
-+    tcg_wasm_out_op_global_set(s, BLOCK_PTR_IDX);
-+    tcg_wasm_out_op_br(s, 2); /* br to the top of loop */
-+    tcg_wasm_out_op_end(s);
-+
-+    tcg_wasm_out_ctx_i32_store_r(s, tb_ptr, arg);
-+    tcg_wasm_out_op_i32_const(s, 0);
-+    tcg_wasm_out_op_return(s);
-+}
-+
-+static void tcg_wasm_out_goto_tb(
-+    TCGContext *s, int which, uint32_t cur_reset_ptr)
-+{
-+    tcg_wasm_out_op_i32_const(s, (int32_t)get_jmp_target_addr(s, which));
-+    tcg_wasm_out_op_i32_load(s, 0, 0);
-+    tcg_wasm_out_op_local_set(s, TMP32_LOCAL_0_IDX);
-+
-+    tcg_wasm_out_op_local_get(s, TMP32_LOCAL_0_IDX);
-+    tcg_wasm_out_op_i32_const(s, cur_reset_ptr);
-+    tcg_wasm_out_op_i32_ne(s);
-+    tcg_wasm_out_op_if_noret(s);
-+
-+    tcg_wasm_out_op_local_get(s, TMP32_LOCAL_0_IDX);
-+    tcg_wasm_out_ctx_i32_load(s, tb_ptr);
-+    tcg_wasm_out_op_i32_eq(s);
-+    tcg_wasm_out_op_if_noret(s);
-+    tcg_wasm_out_op_i64_const(s, 0);
-+    tcg_wasm_out_op_global_set(s, BLOCK_PTR_IDX);
-+    tcg_wasm_out_op_br(s, 3); /* br to the top of loop */
-+    tcg_wasm_out_op_end(s);
-+
-+    tcg_wasm_out_ctx_i32_store_local32(s, tb_ptr, TMP32_LOCAL_0_IDX);
-+    tcg_wasm_out_op_i32_const(s, 0);
-+    tcg_wasm_out_op_return(s);
-+    tcg_wasm_out_op_end(s);
-+}
-+
- static bool patch_reloc(tcg_insn_unit *code_ptr_i, int type,
-                         intptr_t value, intptr_t addend)
- {
-@@ -1931,6 +2039,7 @@ static void tcg_out_call(TCGContext *s, const tcg_insn_unit *func,
- static void tcg_out_exit_tb(TCGContext *s, uintptr_t arg)
- {
-     tcg_out_op_p(s, INDEX_op_exit_tb, (void *)arg);
-+    tcg_wasm_out_exit_tb(s, arg);
- }
++#ifndef EMSCRIPTEN
+ #if __SIZEOF_POINTER__ == 4
+ typedef TCGv_i32 TCGv_vaddr;
+ #elif __SIZEOF_POINTER__ == 8
+@@ -225,6 +226,9 @@ typedef TCGv_i64 TCGv_vaddr;
+ #else
+ # error "sizeof pointer is different from {4,8}"
+ #endif /* __SIZEOF_POINTER__ */
++#else
++typedef TCGv_i64 TCGv_vaddr;
++#endif
  
- static void tcg_out_goto_tb(TCGContext *s, int which)
-@@ -1938,11 +2047,13 @@ static void tcg_out_goto_tb(TCGContext *s, int which)
-     /* indirect jump method. */
-     tcg_out_op_p(s, INDEX_op_goto_tb, (void *)get_jmp_target_addr(s, which));
-     set_jmp_reset_offset(s, which);
-+    tcg_wasm_out_goto_tb(s, which, (uint32_t)s->code_ptr);
- }
+ /* call flags */
+ /* Helper does not read globals (either directly or through an exception). It
+diff --git a/meson.build b/meson.build
+index c533243157..f6ed867819 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3322,9 +3322,11 @@ foreach target : target_dirs
  
- static void tcg_out_goto_ptr(TCGContext *s, TCGReg a0)
- {
-     tcg_out_op_r(s, INDEX_op_goto_ptr, a0);
-+    tcg_wasm_out_goto_ptr(s, a0);
- }
- 
- void tb_target_set_jmp_target(const TranslationBlock *tb, int n,
+   target_kconfig = []
+   foreach sym: accelerators
+-    # Disallow 64-bit on 32-bit emulation and virtualization
+-    if host_long_bits < config_target['TARGET_LONG_BITS'].to_int()
+-      continue
++    if host_arch != 'wasm32'
++      # Disallow 64-bit on 32-bit emulation and virtualization
++      if host_long_bits < config_target['TARGET_LONG_BITS'].to_int()
++        continue
++      endif
+     endif
+     if sym == 'CONFIG_TCG' or target in accelerator_targets.get(sym, [])
+       config_target += { sym: 'y' }
 -- 
 2.43.0

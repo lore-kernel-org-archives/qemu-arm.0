@@ -1,305 +1,204 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp772410njc;
-        Tue, 20 May 2025 13:39:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUrm8igA2Um79JsYR2SiH5e5MMKO1VS9nDPayTvgzjjKZc2mvZvNlpTCuVoZxAB3Un04zkur3F0MPis4Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IHHnfW0/s9m7gh/j7d9B//c28v7SdbTO2W/84Vqt8jkZn1tYzAjwHCmgYE8ds/asaB6OJP0
-X-Received: by 2002:a92:cda6:0:b0:3d8:1d2d:60b0 with SMTP id e9e14a558f8ab-3db842aae78mr194953515ab.5.1747773569948;
-        Tue, 20 May 2025 13:39:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747773569; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp819050njc;
+        Tue, 20 May 2025 15:22:06 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGkJHpbhuC4J5AcYWo7Ett6oosTcEpwBx/mVMIpj088vthuGx4p3eLCeRro9pZpUWFbqGKZ
+X-Received: by 2002:a05:6602:6a46:b0:861:d8ca:3587 with SMTP id ca18e2360f4ac-86a24bdc7f8mr2685507539f.4.1747779726402;
+        Tue, 20 May 2025 15:22:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747779726; cv=none;
         d=google.com; s=arc-20240605;
-        b=Ks3QmavJAjVzFJXaT04Q73FbpnlV7aB8CuRjTa+MyRCObRsDxlp+5JjVRm7sS7HBNF
-         fR3DfPYcrhalA150N5Nys/etFHfotu0SCxvjV4GmFaFfWm/94aoHCw1WBfm9SmDu+9j8
-         aPFXx2CTjM+fshSulMnZEU7evo5gYjKiqXisJCGUQGq+Uq/cMq/2Z9UE+ObrbKV89JrH
-         HbKcJtJxnXZTBBvRErCwYruT8OYvzL8ICISP7ufivSEH6Tm1CZlMukZqLiucnl4yBS1s
-         7q55ofOPU4bVhNtcJy1pozFAPgWyFcgiuAeInpd31D5lFpZ8dX0dD6PPzPLJYf46oQ34
-         XvxQ==
+        b=Wk9gIuGqN15O1mAhukouux/Smo/E6hYR4oeqGdKIUESPKOaNB+WPH+L319Wzbrfhwi
+         qaEJeNFLxZ2to0o350rCdmOuAMVAIafF+jUMQ5FQu/E/EtZJ3xyXHg1HaSAt+CvAhWIN
+         mdPIPcal0PTXBLhCG29Enejsk4ggPsYvUmB1ExI8Ch3H47wdBy+XzLUj0PdKZmgl1vgM
+         GqgHeqTMSUbxxRaHQNqp5E5tjUEGIeRAcFo8WpkhhUCkF8FSA8dxO2j0OkwlnWmaC4r1
+         Gf6dbzLCo77GP0xTdVSStkdMvgE36XM0E06+b5U6USv84DRYxuJLYI9tZjj+4V7cs7qn
+         E6yA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:references:message-id
-         :content-transfer-encoding:cc:date:in-reply-to:from:subject
-         :mime-version:dkim-signature;
-        bh=LlC0TODa7KxYUpfpU68321KNCp6H6FT3J7MnALnUViM=;
-        fh=uV24iyMM+1WTlgF92eZXmnVGWrwiIiAr8jVB+GFXxBQ=;
-        b=RlubEw4unrPhm8Zo/PD3zyByedOHTiknDcKdL0qxfSdRHAc0zz6YMttyDBw5QeakS1
-         3efwArjLQ9mGiwSskoWpbgPPgJd+X/5L8ILxYqfgjBOiXsH7ullyuHdNokgJmqzZAaS+
-         2HO8LxSw3A+lb8uf5QYWJxiFXn+vZvz9NZSG/AJBLbGKyxcVhsno6rm0riIkNNyFw5GU
-         rLjw/Ig5qyUYw8oStJ5PE+doj2Lt/N7mYhChFnJXHplMPkxek/c+NsHADxQI6p/pY+cj
-         dxeheZprwv8EAq5AUxrN8pwVq7gNPCnRb4+Wo7vlwOdPOevG7XueSnG3VFLX9NdmL1ip
-         yFBA==;
+        h=content-transfer-encoding:message-id:references:in-reply-to:subject
+         :cc:to:from:date:mime-version:dkim-signature;
+        bh=9p09lx+xxbHsNO/bXtu8ToIhAFds31gXqfLJZrp+Zys=;
+        fh=nyLsu65KrxeUpmoWUsyVLF0zOQjnVIkVyDOh0TbxN2s=;
+        b=WFfwapeRkK4NiFRNSiAoHlG8Dw/D1z9C7sMwaVNCbQwoh3k1UZbJrXXuYIx64BWUEq
+         7ufw65dUcpazuZ0Lq2E27HoBRwSvOD2oElrWh/Ri64CrXthc4eR/UTupfcyO9yPfDxW4
+         r/x5/f7QmaNcDChC8muxM1Mrv46pVDV084VxfvB3KjtH3qPg5jmVEosmqnfLUomPO77K
+         Y0mJpv2GxJc9PivUsLp9H/WKlDzpe7lFdu01Mb+/iLS4wljkEYyTPP2xUa8SP1BUcxrX
+         5Ntl244VEsK5Kbiwp38Nhmk17uMYlKTlQkg9A5x0X6z/j/HRT5oCe3/0S+p7yofv22p3
+         AnSg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.dev header.s=key1 header.b=Q99WFAhU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9e14a558f8ab-3dc76c160efsi55741355ab.33.2025.05.20.13.39.29
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 May 2025 13:39:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=clcib5Bz;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <iii@linux.ibm.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
+        by mx.google.com with ESMTPS id 8926c6da1cb9f-4fbcc4be49fsi8737537173.140.2025.05.20.15.22.06
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 20 May 2025 15:22:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.dev header.s=key1 header.b=Q99WFAhU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uHTjg-0003WH-TE; Tue, 20 May 2025 16:38:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <itaru.kitayama@linux.dev>)
- id 1uHTje-0003Vk-1W
- for qemu-devel@nongnu.org; Tue, 20 May 2025 16:38:50 -0400
-Received: from out-173.mta1.migadu.com ([2001:41d0:203:375::ad])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <itaru.kitayama@linux.dev>)
- id 1uHTjb-0006PL-GX
- for qemu-devel@nongnu.org; Tue, 20 May 2025 16:38:49 -0400
-Content-Type: text/plain;
-	charset=us-ascii
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
- t=1747773521;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LlC0TODa7KxYUpfpU68321KNCp6H6FT3J7MnALnUViM=;
- b=Q99WFAhUM4c9CvOUBZ9CEYtfHJgTzvdjDRM8TVre/iZalux4nGAiMJQXSEMr6/NeJLtSYy
- VNgLjCb7/Xp9aFDFLoaaAQRAosNW22/ChM2umYCctjTh8RPhMsHNYcgUJu9jQ1BThTu3Rn
- 5qvYmN7YE9Jgq1Pv4LkGF3zvpmJOO4o=
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.600.51.1.1\))
-Subject: Re: [PATCH v13 5/5] qtest/cxl: Add aarch64 virt test for CXL
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Itaru Kitayama <itaru.kitayama@linux.dev>
-In-Reply-To: <20250519135413.000026b4@huawei.com>
-Date: Wed, 21 May 2025 05:38:21 +0900
-Cc: qemu-devel@nongnu.org, Fan Ni <fan.ni@samsung.com>,
- Peter Maydell <peter.maydell@linaro.org>, mst@redhat.com,
- linux-cxl@vger.kernel.org, linuxarm@huawei.com, qemu-arm@nongnu.org,
- Yuquan Wang <wangyuquan1236@phytium.com.cn>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <1BAB6FA9-F65A-41F4-ADC7-BE3F23E71AA0@linux.dev>
-References: <20250513111455.128266-1-Jonathan.Cameron@huawei.com>
- <20250513111455.128266-6-Jonathan.Cameron@huawei.com>
- <D9E503CC-1271-4008-9975-9BAEC7A33376@linux.dev>
- <20250519135413.000026b4@huawei.com>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-X-Migadu-Flow: FLOW_OUT
-Received-SPF: pass client-ip=2001:41d0:203:375::ad;
- envelope-from=itaru.kitayama@linux.dev; helo=out-173.mta1.migadu.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jPxfCrVs3Xyf
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=clcib5Bz;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0356517.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 54KIoiCc023106;
+	Tue, 20 May 2025 22:21:43 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=pp1; bh=9p09lx
+	+xxbHsNO/bXtu8ToIhAFds31gXqfLJZrp+Zys=; b=clcib5BzFCwRIG9wOrbQ8d
+	TRGdg9JgaCPrXjOKZuI/CIVl1JTuitNpvGhd4suFFZW9F2/HJ4fgw8aH3mYY6BQB
+	ERk+jD5/btw91Tb/9q9cZndvO27ARrJwq5S5Xeije78Zmg+gf9QC3k5fA/3F2sLc
+	aG4jhx+Dv0w8E1Q3D6+4RMmTYU+a8yP9OUeqbrlaLmgWtV36LD3VJYXaE/46iFsW
+	ICLf4Q3TD/pPrimtQFtrxloweEeFtnutCsukHVaV1s+YKE55s/2btNKy/VYxsyIh
+	xfqifwAQtAD8ljriMgQEM8WGPLMzSV3txwaNnL3uiJtoyXO2WSe3UW1XmYntQ4uQ
+	==
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 46ryc88un0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 20 May 2025 22:21:43 +0000 (GMT)
+Received: from m0356517.ppops.net (m0356517.ppops.net [127.0.0.1])
+	by pps.reinject (8.18.0.8/8.18.0.8) with ESMTP id 54KMLgQu007504;
+	Tue, 20 May 2025 22:21:42 GMT
+Received: from ppma23.wdc07v.mail.ibm.com (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 46ryc88umv-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 20 May 2025 22:21:42 +0000 (GMT)
+Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
+	by ppma23.wdc07v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 54KKOXi3031996;
+	Tue, 20 May 2025 22:21:41 GMT
+Received: from smtprelay05.dal12v.mail.ibm.com ([172.16.1.7])
+	by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 46rwmq192u-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 20 May 2025 22:21:40 +0000
+Received: from smtpav02.wdc07v.mail.ibm.com (smtpav02.wdc07v.mail.ibm.com [10.39.53.229])
+	by smtprelay05.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 54KMLepL29754034
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 20 May 2025 22:21:40 GMT
+Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id DBC0B58058;
+	Tue, 20 May 2025 22:21:39 +0000 (GMT)
+Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id E22B458059;
+	Tue, 20 May 2025 22:21:37 +0000 (GMT)
+Received: from ltc.linux.ibm.com (unknown [9.5.196.140])
+	by smtpav02.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+	Tue, 20 May 2025 22:21:37 +0000 (GMT)
+MIME-Version: 1.0
+Date: Tue, 20 May 2025 23:21:37 +0100
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
+        Thomas Huth
+ <thuth@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
+        qemu-arm@nongnu.org, Nicholas Piggin <npiggin@gmail.com>,
+        Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>,
+        Bin Meng <bmeng.cn@gmail.com>, Tyrone Ting
+ <kfting@nuvoton.com>,
+        Hao Wu <wuhaotsh@google.com>, Kyle Evans
+ <kevans@freebsd.org>,
+        Alistair Francis <alistair.francis@wdc.com>,
+        =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+        Laurent Vivier
+ <laurent@vivier.eu>, Riku Voipio <riku.voipio@iki.fi>,
+        Harsh Prateek Bora
+ <harshpb@linux.ibm.com>,
+        Fabiano Rosas <farosas@suse.de>, Alexandre Iooss
+ <erdnaxe@crans.org>,
+        Laurent Vivier <lvivier@redhat.com>,
+        Daniel Henrique
+ Barboza <danielhb413@gmail.com>,
+        Warner Losh <imp@bsdimp.com>,
+        Pierrick
+ Bouvier <pierrick.bouvier@linaro.org>,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        Mahmoud Mandour <ma.mandourr@gmail.com>, qemu-ppc@nongnu.org,
+        Paolo Bonzini
+ <pbonzini@redhat.com>, qemu-rust@nongnu.org,
+        qemu-riscv@nongnu.org
+Subject: Re: [PATCH v2 11/17] gdbstub: Try unlinking the unix socket before
+ binding
+In-Reply-To: <ee091002-a552-49fe-ae5e-8916937dba15@tls.msk.ru>
+References: <20250207153112.3939799-1-alex.bennee@linaro.org>
+ <20250207153112.3939799-12-alex.bennee@linaro.org>
+ <ee091002-a552-49fe-ae5e-8916937dba15@tls.msk.ru>
+Message-ID: <56e0a35b5c53b416db130c414cd0f3d6@linux.ibm.com>
+X-Sender: iii@linux.ibm.com
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Authority-Analysis: v=2.4 cv=XaCJzJ55 c=1 sm=1 tr=0 ts=682d0077 cx=c_pps a=3Bg1Hr4SwmMryq2xdFQyZA==:117 a=3Bg1Hr4SwmMryq2xdFQyZA==:17 a=IkcTkHD0fZMA:10 a=dt9VzEwgFbYA:10 a=VnNF1IyMAAAA:8 a=dwixPFO5EDRWQakTH6kA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+X-Proofpoint-GUID: QJsZVEz1xESpOME9ciwkwrUVa51ecEg8
+X-Proofpoint-ORIG-GUID: vjLgG9uT6KzjuiWAx3FmejLsrItBt8S7
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNTIwMDE3OSBTYWx0ZWRfX8YoPQ28a7zAS CbItkAD0cvQsjLQmlffpmzla3j+JN2Vn2028nFIMAQT0COKRNgoAWu/ju0BZnDZFxWDqAfu8Iaj cP3KlFb/TlArfEx2uVH93g8aS1g68STHinNeGAGvz3ky+3p78REG9tf6//EjMJVBwF1+N+FAJ07
+ 6DnkDviEHi7beZ9kVxfUv5OasyzWm3wg4+Fpi+6d8YQMPQJvBPgzuKwXtGefeFgmUUVmHP+pdp7 DMabT8ty6Xvbou658amxDMjxhKLDR05eKq1D4+xMexhQUXPOWiKaN8AfRLtwEVDmZmyfQYCnygC /rZeZxpOndKHOJDhIT0D5lCos8KEhJwgD8CrZNhNbhIgNP8f2OwpXAnfTFRiua6etaVbQ7cw2Q8
+ 2HbLgjwbPhkjIQ1/1Jq7Whwqvj2+KNgZjxqYKBzClbAXBTsASQC/G05mZ2ar7EhnLSLl5GS2
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
+ definitions=2025-05-20_10,2025-05-20_03,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0 adultscore=0
+ impostorscore=0 spamscore=0 clxscore=1011 mlxscore=0 lowpriorityscore=0
+ phishscore=0 malwarescore=0 bulkscore=0 priorityscore=1501 mlxlogscore=999
+ classifier=spam authscore=0 authtc=n/a authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2505160000
+ definitions=main-2505200179
+X-TUID: nrs8AuKN7YBm
 
-Jonathan,
+On 2025-05-20 15:50, Michael Tokarev wrote:
+> 07.02.2025 18:31, Alex Bennée wrote:
+>> From: Ilya Leoshkevich <iii@linux.ibm.com>
+>> 
+>> In case an emulated process execve()s another emulated process, bind()
+>> will fail, because the socket already exists. So try deleting it. Use
+>> the existing unix_listen() function which does this. Link qemu-user
+>> with qemu-sockets.c and add the monitor_get_fd() stub.
+>> 
+>> Note that it is not possible to handle this in do_execv(): deleting
+>> gdbserver_user_state.socket_path before safe_execve() is not correct,
+>> because the latter may fail, and afterwards we may lose control.
+> 
+> Please note: this is linux-user stuff, which is usually linked 
+> statically.
+> By linking it with qemu-sockets, we basically broke static linking, 
+> because
+> qemu-sockets uses getaddrinfo() &Co.  The previous code, I think, was 
+> there
+> for a reason, - to avoid this linkage.
+> 
+> How do you think about reverting this one and addressing the original
+> problem without using qemu-sockets?
+> 
+> Alternatively, it might be possible to split qemu-sockets.c into 
+> unix-related
+> stuff and generic stuff.
+> 
+> Thanks,
+> 
+> /mjt
 
-> On May 19, 2025, at 21:54, Jonathan Cameron =
-<Jonathan.Cameron@huawei.com> wrote:
->=20
-> On Thu, 15 May 2025 18:04:18 +0900
-> Itaru Kitayama <itaru.kitayama@linux.dev> wrote:
->=20
->>> On May 13, 2025, at 20:14, Jonathan Cameron =
-<Jonathan.Cameron@huawei.com> wrote:
->>>=20
->>> Add a single complex case for aarch64 virt machine.
->>> Given existing much more comprehensive tests for x86 cover the
->>> common functionality, a single test should be enough to verify
->>> that the aarch64 part continue to work.
->>>=20
->>> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
->>> ---
->>> tests/qtest/cxl-test.c  | 59 =
-++++++++++++++++++++++++++++++++---------
->>> tests/qtest/meson.build |  1 +
->>> 2 files changed, 47 insertions(+), 13 deletions(-)
->>>=20
->>> diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
->>> index a600331843..c7189d6222 100644
->>> --- a/tests/qtest/cxl-test.c
->>> +++ b/tests/qtest/cxl-test.c
->>> @@ -19,6 +19,12 @@
->>>    "-device pxb-cxl,id=3Dcxl.1,bus=3Dpcie.0,bus_nr=3D53 " \
->>>    "-M =
-cxl-fmw.0.targets.0=3Dcxl.0,cxl-fmw.0.targets.1=3Dcxl.1,cxl-fmw.0.size=3D4=
-G "
->>>=20
->>> +#define QEMU_VIRT_2PXB_CMD \
->>> +    "-machine virt,cxl=3Don -cpu max " \
->>> +    "-device pxb-cxl,id=3Dcxl.0,bus=3Dpcie.0,bus_nr=3D52 " \
->>> +    "-device pxb-cxl,id=3Dcxl.1,bus=3Dpcie.0,bus_nr=3D53 " \
->>> +    "-M =
-cxl-fmw.0.targets.0=3Dcxl.0,cxl-fmw.0.targets.1=3Dcxl.1,cxl-fmw.0.size=3D4=
-G "
->>> +
->>> #define QEMU_RP \
->>>    "-device cxl-rp,id=3Drp0,bus=3Dcxl.0,chassis=3D0,slot=3D0 "
->>>=20
->>> @@ -197,25 +203,52 @@ static void cxl_2pxb_4rp_4t3d(void)
->>>    qtest_end();
->>>    rmdir(tmpfs);
->>> }
->>> +
->>> +static void cxl_virt_2pxb_4rp_4t3d(void)
->>> +{
->>> +    g_autoptr(GString) cmdline =3D g_string_new(NULL);
->>> +    char template[] =3D "/tmp/cxl-test-XXXXXX";
->>> +    const char *tmpfs;
->>> +
->>> +    tmpfs =3D mkdtemp(template);
->>> +
->>> +    g_string_printf(cmdline, QEMU_VIRT_2PXB_CMD QEMU_4RP QEMU_4T3D,
->>> +                    tmpfs, tmpfs, tmpfs, tmpfs, tmpfs, tmpfs,
->>> +                    tmpfs, tmpfs);
->>> +
->>> +    qtest_start(cmdline->str);
->>> +    qtest_end();
->>> +    rmdir(tmpfs);
->>> +}
->>> #endif /* CONFIG_POSIX */
->>>=20
->>> int main(int argc, char **argv)
->>> {
->>> -    g_test_init(&argc, &argv, NULL);
->>> +    const char *arch =3D qtest_get_arch();
->>>=20
->>> -    qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
->>> -    qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
->>> -    qtest_add_func("/pci/cxl/pxb_with_window", =
-cxl_pxb_with_window);
->>> -    qtest_add_func("/pci/cxl/pxb_x2_with_window", =
-cxl_2pxb_with_window);
->>> -    qtest_add_func("/pci/cxl/rp", cxl_root_port);
->>> -    qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
->>> +    g_test_init(&argc, &argv, NULL);
->>> +    if (strcmp(arch, "i386") =3D=3D 0 || strcmp(arch, "x86_64") =3D=3D=
- 0) {
->>> +        qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
->>> +        qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
->>> +        qtest_add_func("/pci/cxl/pxb_with_window", =
-cxl_pxb_with_window);
->>> +        qtest_add_func("/pci/cxl/pxb_x2_with_window", =
-cxl_2pxb_with_window);
->>> +        qtest_add_func("/pci/cxl/rp", cxl_root_port);
->>> +        qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
->>> #ifdef CONFIG_POSIX
->>> -    qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
->>> -    qtest_add_func("/pci/cxl/type3_device_pmem", =
-cxl_t3d_persistent);
->>> -    qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
->>> -    qtest_add_func("/pci/cxl/type3_device_vmem_lsa", =
-cxl_t3d_volatile_lsa);
->>> -    qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
->>> -    qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4", =
-cxl_2pxb_4rp_4t3d);
->>> +        qtest_add_func("/pci/cxl/type3_device", =
-cxl_t3d_deprecated);
->>> +        qtest_add_func("/pci/cxl/type3_device_pmem", =
-cxl_t3d_persistent);
->>> +        qtest_add_func("/pci/cxl/type3_device_vmem", =
-cxl_t3d_volatile);
->>> +        qtest_add_func("/pci/cxl/type3_device_vmem_lsa", =
-cxl_t3d_volatile_lsa);
->>> +        qtest_add_func("/pci/cxl/rp_x2_type3_x2", =
-cxl_1pxb_2rp_2t3d);
->>> +        qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4",
->>> +                       cxl_2pxb_4rp_4t3d);
->>> #endif
->>> +    } else if (strcmp(arch, "aarch64") =3D=3D 0) {
->>> +#ifdef CONFIG_POSIX
->>> +        =
-qtest_add_func("/pci/cxl/virt/pxb_x2_root_port_x4_type3_x4",
->>> +                       cxl_virt_2pxb_4rp_4t3d);
->>> +#endif
->>> +    }
->>> +
->>>    return g_test_run();
->>> }
->>> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
->>> index 7daf619845..361000267a 100644
->>> --- a/tests/qtest/meson.build
->>> +++ b/tests/qtest/meson.build
->>> @@ -258,6 +258,7 @@ qtests_aarch64 =3D \
->>>  (config_all_accel.has_key('CONFIG_TCG') and                         =
-                   \
->>>   config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? =
-['tpm-tis-i2c-test'] : []) + \
->>>  (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 =
-: []) + \
->>> +  qtests_cxl +                                                      =
-                            \
->>>  ['arm-cpu-features',
->>>   'numa-test',
->>>   'boot-serial-test',
->>> --=20
->>> 2.43.0
->>>=20
->>=20
->> ~/projects/qemu/build$ meson test qtest-aarch64/cxl-test
->> ninja: Entering directory `/home/realm/projects/qemu/build'
->> [1/8] Generating qemu-version.h with a custom command (wrapped by =
-meson to capture output)
->> 1/1 qemu:qtest+qtest-aarch64 / qtest-aarch64/cxl-test        OK       =
-       0.17s   1 subtests passed
->>=20
->> Ok:                 1
->> Expected Fail:      0
->> Fail:               0
->> Unexpected Pass:    0
->> Skipped:            0
->> Timeout:            0
->>=20
->> Tested-by: Itaru Kitayama <itaru.kitayama@fujitsu.com =
-<mailto:itaru.kitayama@fujitsu.com>>
->>=20
->> Jonathan, would you push your branch this series applied? I manually =
-applied your series no issues though.
->=20
-> I'm reluctant to push a 'normal' staging CXL tree whilst we have the =
-TCG
-> issue outstanding (which is in mainline).
-> I can probably push one with a name that makes it clear we know it =
-will
-> crash under some circumstances though. I'll aim to get that done later =
-this week.
+I can split it.
 
-Okay, and understood.
+However, wasn't it already broken in this regard?
+With fccb744f41c69fec6fd92225fe907c6e69de5d44^ I get:
 
->=20
-> After talking to Richard Henderson I'm going to spin some images etc =
-to
-> make it easier for him to replicate that TCG issue.
->=20
-> Thanks for reviews.
+[2/2] Linking target qemu-s390x
+/usr/bin/ld: /usr/lib64/libglib-2.0.a(gutils.c.o): in function 
+`g_get_user_database_entry':
+(.text+0xeb): warning: Using 'getpwnam_r' in statically linked 
+applications requires at runtime the shared libraries from the glibc 
+version used for linking
+/usr/bin/ld: (.text+0x2be): warning: Using 'getpwuid' in statically 
+linked applications requires at runtime the shared libraries from the 
+glibc version used for linking
+/usr/bin/ld: (.text+0x134): warning: Using 'getpwuid_r' in statically 
+linked applications requires at runtime the shared libraries from the 
+glibc version used for linking
 
-The comments are from Zhijian.
+This comes from glib, but the ultimate result is still the same.
 
-Itaru.
+Also, what are the symptoms of the breakage? IIUC as long as execution
+does not reach getaddrinfo(), which it in this case should not, because
+it is used only on inet paths, there should not be any issues, right?
 
->=20
-> Jonathan
->=20
->>=20
->>=20
->=20
-
+In any case, the new warning is annoying and I better fix it for this
+reason alone.

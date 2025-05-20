@@ -1,163 +1,307 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp349137njc;
-        Tue, 20 May 2025 01:35:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCW3PLyp9qFSfjcT7AMGGCAhcwe58tbio4lHS0kKPjiSuR2MJE//Iezk5gG9t/7QM642SOKy42dLOiVD4Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IEQzeUwvZ1V0bK86SfQS5uAg+psLRHC49EVZidGamfD+VcO0sTgmiICcSyct/VU2uoYjAbC
-X-Received: by 2002:a17:907:9451:b0:ad5:fae:54c4 with SMTP id a640c23a62f3a-ad52f1a38b4mr1448173066b.4.1747730113333;
-        Tue, 20 May 2025 01:35:13 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1747730113; cv=pass;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp358105njc;
+        Tue, 20 May 2025 01:59:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW4PqgyEXBtBLLCYxBGOx3R37Nwa6NhZlNglsqaFntnCiCE17tHC5jWUnH9nWBcjDoBqAE4VI1ky+X09A==@linaro.org
+X-Google-Smtp-Source: AGHT+IGdxHMhgO0rGg5qi6rCGmqzcW6cN2D9Uo1zoEvjW9J0AeC3p1/FPO9ufUcPyqUuemjtdGsd
+X-Received: by 2002:a05:6214:2026:b0:6e8:98c0:e53d with SMTP id 6a1803df08f44-6f8b088bd3amr281957806d6.45.1747731569908;
+        Tue, 20 May 2025 01:59:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747731569; cv=none;
         d=google.com; s=arc-20240605;
-        b=jCmmZBAFQJCfWT7ol9WaaSq9sEQrJE/26oxxqYmaWFE/7bU7dJIobH2SWHkVtIh91o
-         K6z6dVtNv+JY7f6dp+PHK7mCRdzJ1xH/o57GCQyTftQT+cHM7gDhWgCFW7fuvXDwY6l8
-         RJ1mr83cUAQ40RIHzj4+Y0e/PtWh78PUyfv76uY5AQp3t5F+OV2LLcuDZGOeVBHFUDYO
-         CzQK9w6ord0ExUw7NFolcFfBRea39qb7luz0OlnEHLxIEjYCL3L04tfKBSNcRGwE/gHS
-         AQ0zafut3rJfzgd6P+1RnZ8mSKhKdfpxjcyyX7xnFlkzRG8maE9UJDPwyDzdfwJLNwt1
-         SrCg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date;
-        bh=wzidSgZ+TZgotzu0+51kL7SBZo91y9tgKY3K4V9D2Sk=;
-        fh=DjfmP4GuGmv+HIZ6mSuNbs+OASAdIuzO7/WHsW02d/E=;
-        b=QoQq1jSNB29Eq/eKZ8v6H5hEF9PgZSBXXwTqrTT/bmMZS4DwP2Bgc8dIc2gYpknk0S
-         +Qzb02XG6WCr3sj5DZ2Y22saqaWn3WVIi9QyKfXCiYcOuniu4K6T3ReCwRVzAE2IhcQJ
-         m1hmw6WxxScNCX+JzZnL5TqP00Cb+YHwcaE8rRcXwenWMsGsmeGk+3gDpPeYoUDKnhXN
-         7WxhEqC53oXs4eFR3osqvxgJCjGW+oiwRWXFYP5GpZKxGgR7NYsOCtXj8igZNz6M6exg
-         2+65P7iX7BdkvjvFlIFv7Sigd2EE8MMXmCYCDS+8VONyJLEGdmq3NDY987YLh/1iUOss
-         c4Kg==;
+        b=To9Ugm21x2e5l47gLr7cWlz8YZgHyDwT1c2j61DZBKkCUQAwihu7h8c3NcdhB2Qj7b
+         Xkb7EkLu/G9e/UK/kw1FRW7dd8G5qGtHO5XEjVFO0DlR9hTy40w1ae5IRwncecZiVUvP
+         IiWYi/NlLpRxNXMCxvrNJ4EbhcKXWa7zOtqUM95BIv198+0EU3CabOXWKvZnvolnjvlX
+         ROHIzm+7rn3QgcONjN7d1NmvBk07HhMgCsP59zea+fz4jEqLsSyItB72kR/i+f7DJ8se
+         mr4AtB573FpZvTNp5nmbOyj1d+mzj+w/2Hi5SIkCrm6o0Wgbi3vlT0OWRhcOD33QnEp3
+         A3HA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=PXmfsoToG8zDFHlkBLrJtcgVzVxtuNXwxm38JwXxDv0=;
+        fh=yUPwabYD9h1tySk1zuslNf3Z+Dm89tLSy/vOuPH+FFU=;
+        b=MDaoWQdh26CbCWFnGKZM4IVrHcQ20d1n8G/K8qvlao+N08zIOUFGjPF3iksF/iV/M4
+         7RgSJ+AFJEDToMtFFzvDwbRMgRy6JaecRfJI6esUltcaXAxFfv8joCrqoN0zfhaBJGcD
+         NJgriNHBFFhEw5LIgwBndz41qDpRnRT1JWRLlmqTEbo5FktOIt7FKwNLBrouzea0EALU
+         PQqu7EOjgtWxCvTD021I8OV8C/LrzAvwAc7nucGSZHCpzTE6wA0r47G3U+3HZGVbnvXk
+         Ai9DQE0qmupNr2rsXM14oGl3boG/FvvADv57WubtLPE8jSd3wP4g4m/ZxX+R0cgk9tXB
+         d8Pw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-655183-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-655183-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <linux-kernel+bounces-655183-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id a640c23a62f3a-ad54407ac61si567157966b.398.2025.05.20.01.35.13
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=S6evVovi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f8b08b7b6dsi104467126d6.124.2025.05.20.01.59.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 May 2025 01:35:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-655183-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 20 May 2025 01:59:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-655183-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-655183-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id A97E31BA2026
-	for <alex.bennee@linaro.org>; Tue, 20 May 2025 08:35:24 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 4DBA725EFB2;
-	Tue, 20 May 2025 08:35:00 +0000 (UTC)
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3EC8F265CB6
-	for <linux-kernel@vger.kernel.org>; Tue, 20 May 2025 08:34:55 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1747730100; cv=none; b=Px52YARBRm7uj5TV1OKpdMi0TMDL1u2tsMFILZQ9zz0KPD+GcDxBDayNgR/opLkKBaaYgJl92Pfx4lut3uL7WRggc8mmYtK56bOE1apsG58NjilQ6BODmQGPzV8CIqo/VOFSQFQQsMNp1E2N5Wg1V/Gxf95ocyySX2j1m131rGA=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1747730100; c=relaxed/simple;
-	bh=Tdh5UlTgTA7i3CrP20v5Ptgdnafwz59HG1w7O90i/UU=;
-	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=qgE9EVIomnct141XROUnXw0Rr4JzTLpYJfmH3wpD6C+9SDiuUJmuC4A+3bYN9+NUACGqW3/WXqVdwmlkblGf5HSTlMPLvOXdbcjh9TVcG3VrBCY4MfXl3WbrqFUlX4A8tbwB8FGCmi//zW42QL4UKsMg0H/NmCZ27kugWttJX4U=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4b1nmW6zKFz6M4pS;
-	Tue, 20 May 2025 16:30:03 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id A6BC21402FF;
-	Tue, 20 May 2025 16:34:53 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 20 May
- 2025 10:34:53 +0200
-Date: Tue, 20 May 2025 09:34:51 +0100
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-CC: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin"
-	<mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>, <qemu-arm@nongnu.org>,
-	<qemu-devel@nongnu.org>, Ani Sinha <anisinha@redhat.com>, Dongjiu Geng
-	<gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v9 04/20] Revert "hw/acpi/ghes: Make
- ghes_record_cper_errors() static"
-Message-ID: <20250520093451.0000245a@huawei.com>
-In-Reply-To: <1ee2df288540088176a1ac27c70cc2736d10ad16.1747722973.git.mchehab+huawei@kernel.org>
-References: <cover.1747722973.git.mchehab+huawei@kernel.org>
-	<1ee2df288540088176a1ac27c70cc2736d10ad16.1747722973.git.mchehab+huawei@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=S6evVovi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uHIoi-00037C-TS; Tue, 20 May 2025 04:59:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1uHIog-00036X-2J; Tue, 20 May 2025 04:59:18 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1uHIob-0007GJ-BF; Tue, 20 May 2025 04:59:15 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-2320e53167dso31757975ad.3; 
+ Tue, 20 May 2025 01:59:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1747731550; x=1748336350; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=PXmfsoToG8zDFHlkBLrJtcgVzVxtuNXwxm38JwXxDv0=;
+ b=S6evVoviCHC3DNeWwkJqlll+WG2IPzRH8U1cYm/OGd/g9U3FmAkWPw8BN8vWWMVWR/
+ iHwzIQnMXhE854do+mWHaV6qM1INnKW39RbBSIfFceyIml5f4DEOnvYO25BWMRxfjiYt
+ NQWBBT5YRoTU9iIUL/dSSnSTnXMwVybkiT7OLw0RHIbKnJr4cY6cLHQdnu3TvjECMVh3
+ PhQQrO5Rzty16nPG8Slp25tbCwme1yWcMuOGctL0D4ERuRIallP1mevpwZv/zDsRbJxk
+ h/Cst0OS8Y8QMlStfgfrmXPKoMuEpwOczj32SBu+3grQWE0iT3RpOZ3SD1RwNHTUbNH2
+ ZgkQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1747731550; x=1748336350;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=PXmfsoToG8zDFHlkBLrJtcgVzVxtuNXwxm38JwXxDv0=;
+ b=sSyQhH1u18EC52RnpYJQc4IAVTcXe3RIJUEazL3T9arswt73Gjv0ZXngMJsOCf8ZXq
+ y1Pywuh+V1uNTKkSAa//uybJ2Dk1wQuTyl/0KzwxDHGHbZInEsGwystC2NiK6MQ2guMp
+ QI8+BNzYwNXyorJqJB8FiLhgQ8a3RYZPtmopNJvfq8ELr200tnx/GOoZhwWKcVKg83kI
+ 759eJZQ6bpmsPvJW8aOshWHg4YSp1M28Xw2SwnuOAoReEcdTYoHx7E6zHbFyPIKlx4me
+ xjzbHCwk2ZW5NtAjXcm+eKejrLt5VHUpPr0o++AKu5zo5SYcWagjTb17h0Pz8+Xj8hjX
+ b5Nw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUv0FNc7TxS0m+5H6LX+GeZmXRGPjrefTSpWaZM3ebqgZF6zYnMdk9laFt5q1UelbeH7ouSZXQJUQ==@nongnu.org,
+ AJvYcCWsw7OglpQEwQxvbcbrUaBrLdZsJiZD97JoJrSMjm3QA4HnyVr9KYrtYKydJBbrX351BX4iUu6cJNnBZQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyNzsgSfOYnuvmFXo9JJNZOTSrMHYdT1G2K3vp+M/AnYanJGjNP
+ o/TtbFzW1Ld1OTlMyyKfPIFpXaMKxRcrISWX8ZJaPp8E9LfXX6xpML2HBt42mY9CI+uos8iXr+K
+ 7uRdDlayD3wxyMKJttgSl+w42OnEX9S0=
+X-Gm-Gg: ASbGncsAUYxEwq9vnQHpYa/Iqb3im0FMa7Q8Alps3eWcqRpYyOLs2HZkYAfLQpUBVzK
+ sfGk9jK75vlRlcVoDQwcODcLEmPZPyDixF+TthG7T9dwkOF63JcTR/15lACh9dqMOMuGXfeKHme
+ h8JOmXudUqgotswpBc4aPPjKqzemKni/4=
+X-Received: by 2002:a17:903:46c6:b0:224:10a2:cad5 with SMTP id
+ d9443c01a7336-231d43dcae5mr249045825ad.10.1747731550455; Tue, 20 May 2025
+ 01:59:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: lhrpeml100010.china.huawei.com (7.191.174.197) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: TTmiQfhf7iOv
+References: <20250513141448.297946-1-chigot@adacore.com>
+ <20250513141448.297946-3-chigot@adacore.com>
+ <3314f721-9c5e-479b-9fcc-3b8a021efde9@linaro.org>
+ <CAFEAcA8vKNkfKgp_Yymo9NA1=E2XJYXAMTgO3z6q6DHgqkAwRw@mail.gmail.com>
+In-Reply-To: <CAFEAcA8vKNkfKgp_Yymo9NA1=E2XJYXAMTgO3z6q6DHgqkAwRw@mail.gmail.com>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Tue, 20 May 2025 09:58:56 +0100
+X-Gm-Features: AX0GCFufR3sFExf75WKEOarNbJYPI8XJJ56TCTvYmgc6P1qd08gyAOR-sHVC2jU
+Message-ID: <CAJy5ezoCOG+N5dQ9z0zCmd3YX1sE0ZJwQp=G1iRdkGf3V=aLpg@mail.gmail.com>
+Subject: Re: [PATCH 2/4] hw/intc/arm_gic: introduce a first-cpu-index property
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>, qemu-devel@nongnu.org, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org,
+ alistair@alistair23.me, Frederic Konrad <konrad.frederic@yahoo.fr>
+Content-Type: multipart/alternative; boundary="0000000000003a4db706358d763a"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-pl1-x62a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DDEciatkEohe
 
-On Tue, 20 May 2025 08:41:23 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+--0000000000003a4db706358d763a
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-> The ghes_record_cper_errors() function was introduced to be used
-> by other types of errors, as part of the error injection
-> patch series. That's why it is not static.
-> 
-> Make it non-static again to allow its usage outside ghes.c
-> 
-> This reverts commit 611f3bdb20f7828b0813aa90d47d1275ef18329b.
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-FWIW (which is maybe just that I don't read the commit message
-again if you have to do a v10 ;)
+On Mon, May 19, 2025 at 5:26=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
+.org>
+wrote:
 
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> On Tue, 13 May 2025 at 16:39, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.=
+org>
+> wrote:
+> >
+> > On 13/5/25 16:14, Cl=C3=A9ment Chigot wrote:
+> > > From: Frederic Konrad <konrad.frederic@yahoo.fr>
+> > >
+> > > This introduces a first-cpu-index property to the arm-gic, as some SO=
+Cs
+> > > could have two separate GIC (ie: the zynqmp).
+> > >
+> > > Signed-off-by: Cl=C3=A9ment Chigot <chigot@adacore.com>
+> > > ---
+> > >   hw/intc/arm_gic.c                | 2 +-
+> > >   hw/intc/arm_gic_common.c         | 1 +
+> > >   include/hw/intc/arm_gic_common.h | 2 ++
+> > >   3 files changed, 4 insertions(+), 1 deletion(-)
+> > >
+> > > diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+> > > index d18bef40fc..899f133363 100644
+> > > --- a/hw/intc/arm_gic.c
+> > > +++ b/hw/intc/arm_gic.c
+> > > @@ -59,7 +59,7 @@ static const uint8_t gic_id_gicv2[] =3D {
+> > >   static inline int gic_get_current_cpu(GICState *s)
+> > >   {
+> > >       if (!qtest_enabled() && s->num_cpu > 1) {
+> > > -        return current_cpu->cpu_index;
+> > > +        return current_cpu->cpu_index - s->first_cpu_index;
+> >
+> > Note, CPUState::cpu_index is meant for accelerators code and shouldn't
+> > be used in hw/ (in particular because it vary when using hotplug).
+>
+> Mmm. I think my ideal solution for that would be that we
+> put the CPU index into the MemTxAttrs (requester_id, perhaps
+> with some extra flag that it's not a PCI requester ID).
+> Then every device that's looking at current_cpu to figure
+> out which CPU actually called it would be able to stop
+> doing that. We'd still have the "OK, so what number does
+> the GIC think this CPU is?" question, though.
+>
+> For telling the GIC which CPUs it has connected to it, my
+> instinct is to say that ideally we'd have the GIC have
+> something like an array of link properties, and the board
+> or SoC code passes the GIC a pointer to each CPU in the
+> order it wants them to be.
+>
+> But that would be quite a bit of fiddling around to achieve,
+> so I think I'm OK with the approach in this patch, especially
+> since the GICv2 is pretty well obsolete at this point.
+>
+> (GICv3 also assumes "starting from zero", in several places
+> where it loops from 0 to s->num_cpu calling qemu_get_cpu().
+> Link properties is probably what I'm going to end up doing with
+> the GICv5 design.)
+>
+> One note: if you add a new property to the GIC, please
+> also add documentation of it to the "QEMU interface" comment
+> in include/hw/intc/arm_gic.h.
+>
+>
+>
+Yes, I agree with Peter.
 
+Another option is to have the GIC expose a per-cpu MR for the GICC
+interfaces.
+We would need to map these onto a per-cpu address-space. I think this is
+the way
+it works on real HW GICv2 with a per-cpu AMBA port. A problem with this
+approach
+is that it (in QEMU) doesn't scale very well to other GIC's with large
+numbers of cores.
+So the side-band signals with CPU index in memtxattrs sounds good to me!
 
-> ---
->  hw/acpi/ghes.c         | 6 ++++--
->  include/hw/acpi/ghes.h | 2 ++
->  2 files changed, 6 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index b85bb48195a0..b709c177cdea 100644
-> --- a/hw/acpi/ghes.c
-> +++ b/hw/acpi/ghes.c
-> @@ -390,8 +390,8 @@ static void get_hw_error_offsets(uint64_t ghes_addr,
->      *read_ack_register_addr = ghes_addr + sizeof(uint64_t);
->  }
->  
-> -static void ghes_record_cper_errors(const void *cper, size_t len,
-> -                                    uint16_t source_id, Error **errp)
-> +void ghes_record_cper_errors(const void *cper, size_t len,
-> +                             uint16_t source_id, Error **errp)
->  {
->      uint64_t cper_addr = 0, read_ack_register_addr = 0, read_ack_register;
->      AcpiGedState *acpi_ged_state;
-> @@ -440,6 +440,8 @@ static void ghes_record_cper_errors(const void *cper, size_t len,
->  
->      /* Write the generic error data entry into guest memory */
->      cpu_physical_memory_write(cper_addr, cper, len);
-> +
-> +    return;
->  }
->  
->  int acpi_ghes_memory_errors(uint16_t source_id, uint64_t physical_address)
-> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-> index 578a582203ce..39619a2457cb 100644
-> --- a/include/hw/acpi/ghes.h
-> +++ b/include/hw/acpi/ghes.h
-> @@ -75,6 +75,8 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
->  void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
->                            GArray *hardware_errors);
->  int acpi_ghes_memory_errors(uint16_t source_id, uint64_t error_physical_addr);
-> +void ghes_record_cper_errors(const void *cper, size_t len,
-> +                             uint16_t source_id, Error **errp);
->  
->  /**
->   * acpi_ghes_present: Report whether ACPI GHES table is present
+Cheers,
+Edgar
 
+--0000000000003a4db706358d763a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
+mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, May 19,=
+ 2025 at 5:26=E2=80=AFPM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@=
+linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote cl=
+ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
+ rgb(204,204,204);padding-left:1ex">On Tue, 13 May 2025 at 16:39, Philippe =
+Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org" target=3D"_blan=
+k">philmd@linaro.org</a>&gt; wrote:<br>
+&gt;<br>
+&gt; On 13/5/25 16:14, Cl=C3=A9ment Chigot wrote:<br>
+&gt; &gt; From: Frederic Konrad &lt;<a href=3D"mailto:konrad.frederic@yahoo=
+.fr" target=3D"_blank">konrad.frederic@yahoo.fr</a>&gt;<br>
+&gt; &gt;<br>
+&gt; &gt; This introduces a first-cpu-index property to the arm-gic, as som=
+e SOCs<br>
+&gt; &gt; could have two separate GIC (ie: the zynqmp).<br>
+&gt; &gt;<br>
+&gt; &gt; Signed-off-by: Cl=C3=A9ment Chigot &lt;<a href=3D"mailto:chigot@a=
+dacore.com" target=3D"_blank">chigot@adacore.com</a>&gt;<br>
+&gt; &gt; ---<br>
+&gt; &gt;=C2=A0 =C2=A0hw/intc/arm_gic.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 | 2 +-<br>
+&gt; &gt;=C2=A0 =C2=A0hw/intc/arm_gic_common.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0| 1 +<br>
+&gt; &gt;=C2=A0 =C2=A0include/hw/intc/arm_gic_common.h | 2 ++<br>
+&gt; &gt;=C2=A0 =C2=A03 files changed, 4 insertions(+), 1 deletion(-)<br>
+&gt; &gt;<br>
+&gt; &gt; diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c<br>
+&gt; &gt; index d18bef40fc..899f133363 100644<br>
+&gt; &gt; --- a/hw/intc/arm_gic.c<br>
+&gt; &gt; +++ b/hw/intc/arm_gic.c<br>
+&gt; &gt; @@ -59,7 +59,7 @@ static const uint8_t gic_id_gicv2[] =3D {<br>
+&gt; &gt;=C2=A0 =C2=A0static inline int gic_get_current_cpu(GICState *s)<br=
+>
+&gt; &gt;=C2=A0 =C2=A0{<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (!qtest_enabled() &amp;&amp; s-&gt;n=
+um_cpu &gt; 1) {<br>
+&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 return current_cpu-&gt;cpu_index;<br=
+>
+&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return current_cpu-&gt;cpu_index - s=
+-&gt;first_cpu_index;<br>
+&gt;<br>
+&gt; Note, CPUState::cpu_index is meant for accelerators code and shouldn&#=
+39;t<br>
+&gt; be used in hw/ (in particular because it vary when using hotplug).<br>
+<br>
+Mmm. I think my ideal solution for that would be that we<br>
+put the CPU index into the MemTxAttrs (requester_id, perhaps<br>
+with some extra flag that it&#39;s not a PCI requester ID).<br>
+Then every device that&#39;s looking at current_cpu to figure<br>
+out which CPU actually called it would be able to stop<br>
+doing that. We&#39;d still have the &quot;OK, so what number does<br>
+the GIC think this CPU is?&quot; question, though.<br>
+<br>
+For telling the GIC which CPUs it has connected to it, my<br>
+instinct is to say that ideally we&#39;d have the GIC have<br>
+something like an array of link properties, and the board<br>
+or SoC code passes the GIC a pointer to each CPU in the<br>
+order it wants them to be.<br>
+<br>
+But that would be quite a bit of fiddling around to achieve,<br>
+so I think I&#39;m OK with the approach in this patch, especially<br>
+since the GICv2 is pretty well obsolete at this point.<br>
+<br>
+(GICv3 also assumes &quot;starting from zero&quot;, in several places<br>
+where it loops from 0 to s-&gt;num_cpu calling qemu_get_cpu().<br>
+Link properties is probably what I&#39;m going to end up doing with<br>
+the GICv5 design.)<br>
+<br>
+One note: if you add a new property to the GIC, please<br>
+also add documentation of it to the &quot;QEMU interface&quot; comment<br>
+in include/hw/intc/arm_gic.h.<br>
+<br><br></blockquote><div><br></div><div>Yes, I agree with Peter.</div><div=
+><br></div><div>Another option is to have the GIC expose a per-cpu MR for t=
+he GICC interfaces.</div><div>We would need to map these onto a per-cpu add=
+ress-space. I think this is the way</div><div>it works on real HW GICv2 wit=
+h a per-cpu AMBA port. A problem with this approach</div><div>is that it (i=
+n QEMU) doesn&#39;t scale very well to other GIC&#39;s with large numbers o=
+f cores.</div><div>So the side-band signals with CPU index in memtxattrs=C2=
+=A0sounds good to me!</div><div><br></div><div>Cheers,</div><div>Edgar</div=
+><div><br></div><div><br></div></div></div>
+
+--0000000000003a4db706358d763a--

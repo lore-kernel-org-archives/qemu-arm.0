@@ -1,132 +1,148 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1283691njc;
-        Wed, 21 May 2025 08:57:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXqOfVbsZUdL9Pz/hfEer4cm+b/ywC6P9QwiM98igxVGLecm+dKcG7Zebbgn9b4FjCXN9TnsHcV0XvIfA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEsOwYpXrfaUmDCo4aSeSm8sT0wj1fOx4skH/SbSC2l0PqvkdUX6V3v58PBfp7fP2INrIZt
-X-Received: by 2002:a05:6e02:2781:b0:3dc:7f17:72db with SMTP id e9e14a558f8ab-3dc7f177737mr55411875ab.5.1747843046083;
-        Wed, 21 May 2025 08:57:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747843046; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1296584njc;
+        Wed, 21 May 2025 09:12:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWdSjYBfp+hlaueikY+JQSnQeuYO4ut8RfjexFtnE2uEAK6DbI9LpUOoPmoWP+rjacQlQxQiUzwOk3yoA==@linaro.org
+X-Google-Smtp-Source: AGHT+IF0vH4rG/PTJILhV/KguNeT/AB5Hm4TXOCKDT73NDDXDAN0tphx2oVdXmpx+9frTriJpwMU
+X-Received: by 2002:a05:6e02:1745:b0:3d9:36a8:3d98 with SMTP id e9e14a558f8ab-3db84296deemr256724795ab.2.1747843973656;
+        Wed, 21 May 2025 09:12:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747843973; cv=none;
         d=google.com; s=arc-20240605;
-        b=KFnwoqewNe7/kOgqAtbgz2O2xV9EQCS021QExju3TRtj25JQdEfTDtCVMMKAVTB3So
-         Bv+lsERbNe8NGKqI0Gnu+8f3JAUwj01qsKpnRk+VOKTYQNIsRBTGcbYt2ICldxdjEV/Y
-         bdeQZmOOjzw0nZg9M4TN+7oRQUF3ikm1CPQHcmwoUXvzzLNo1Tnkkx5FL0XJ2VEwG75O
-         +rh8KaRY9/DgmhqUmy+ssx/HpePU+jht+Xi8H3TQ9VLSkX16rxL96fnfcBC7oqrlVm0X
-         9FfSMzmb8bbOy7XThBHbw39/pdQfbgOEQ47gMmlkrTb6EOERMcxnrqM++mcYKDhhlltO
-         BxTA==
+        b=dPYu7ydmusEbubDL98+rICXckDFIvsh/UeuOFpjLEClh+58rfDUyHs/UI2LYOqq91Q
+         1inbFzMD7dRmp1CO1w0XlrDlnulLfSyN3AFy6zfORLVEqtg3PDVNJkWXoA3oKhhVKmK8
+         Os47DWrhe548aRA5GeaLqPBVnZRSLZV7SpAP74wvYjRDh+k6yBcjJGRKUdfIFJBIu8sR
+         Av9oNgl98hCjZSImt3593bb2bfh+NJ0MVtIHPIpFb1YzFPYvCYZR2/MT1ot/m4MYnZr1
+         CKd56cO/lzeZTZIIPy//yz5OGRae8HCOcqzhJgGuIYTywrq7ea8gSqfOA83Qch8GPH0t
+         bJkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=sXe/04S6cKnAB1aqKd/RUQHfeMStc+3hnFyAaa6hcds=;
-        fh=Z2qDztSV8CWVU0ChRWBZcc7s5uQfKpc4TkuCRqvdIcI=;
-        b=KwWe9pGxkm50QvYWWFy5gs1HoQWIx8/OrIA+swDSw7yv3NyfjyO+kQEC8fV8IUtRX2
-         hyXG8z9OsnRoDXQt2kFlloTSSftARLUfSp0cVyWK9ReTEYgTbwHtXjHHyuZkMUunRub1
-         Fnq5fPVNq6XjRwp4xvMnUTqtzwFz/fsgkS7Q/ioC5quV6cwFsYncGiND3j6P719gHSea
-         Z1E9eZmno/5rTFNLQ/UlUN9I/QxNoJyOw7IVpyVrRoxnxO5nhXUdJzDrqHfkst3T8b1W
-         /16JGbd498csqpBf3A8MMRloSDfwVMMvHDJsZW8b6qofIVlsv/vnoHcRghI73J5l3Cpz
-         uqbg==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=XLF/+N32Jite/7MDBsWdP7VLLcDPcqAq9wogQc5MyqU=;
+        fh=OORrTSDfVyAfCCaXAUFxPXvHRgfqPTP/oDdmNaxnUBI=;
+        b=U9954qfotTFxO/bB1jPMKPkWpdycZ8YMW7dBYxJ67bc+R+ZtCsoBZgnKCwKIXPbyOO
+         sMVdFocQf4nwrKVfclkzvKJo6ZTVX3/QoOGAv1YwqV8uUSK5SdFfdKK34+bv53fTCgqP
+         mTXMssWVWV6gyBxH+5o+FOFWDQjsz0/fllZ78BdzsdmptqRvL4J6IVxWkcpQ4WElJaey
+         i5OqdIl/3eMFjTtU7sb8tD+tvxourUeCu/nJYt1WwMLhUI5ySvtIRY8+LRqlJMpexoHD
+         z1/26WgtvI1NQDJJuU/bcTtDJBQGUcl93DT0K09tdjK70Jk77ljJQglqAq+UvOAr2PJH
+         HAyg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fe6ctA9z;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8926c6da1cb9f-4fbe5fa6d6fsi11184779173.152.2025.05.21.08.57.25
+        by mx.google.com with ESMTPS id 8926c6da1cb9f-4fbcfac9c77si9103156173.61.2025.05.21.09.12.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 May 2025 08:57:26 -0700 (PDT)
+        Wed, 21 May 2025 09:12:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fe6ctA9z;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uHloe-0005j9-E6; Wed, 21 May 2025 11:57:12 -0400
+	id 1uHm3i-0007d3-BB; Wed, 21 May 2025 12:12:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=LBbo=YF=kaod.org=clg@ozlabs.org>)
- id 1uHloa-0005UY-Li; Wed, 21 May 2025 11:57:08 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uHm3h-0007ct-BY
+ for qemu-arm@nongnu.org; Wed, 21 May 2025 12:12:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=LBbo=YF=kaod.org=clg@ozlabs.org>)
- id 1uHloY-0008Ks-99; Wed, 21 May 2025 11:57:08 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4b2bdq4ypCz4xcw;
- Thu, 22 May 2025 01:57:03 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4b2bdm5JHvz4xNG;
- Thu, 22 May 2025 01:57:00 +1000 (AEST)
-Message-ID: <43cb4222-80ea-4871-aa31-c22efe3dd588@kaod.org>
-Date: Wed, 21 May 2025 17:57:00 +0200
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uHm3f-00023c-2f
+ for qemu-arm@nongnu.org; Wed, 21 May 2025 12:12:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1747843960;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=XLF/+N32Jite/7MDBsWdP7VLLcDPcqAq9wogQc5MyqU=;
+ b=fe6ctA9zgpbIjpjvdiuZ1xym4KQdAj4GKv1FYRwmTnt3Wpvj9INlATOCaVGBpjJ+TQjpOu
+ LsBm5pUb58G9aHV2xZuLWPVxX5lm56VZ6ANiicX7HWrfFQ1Pc8GsADO9Rxv0w4wF6YtRXv
+ aVsQtxOjowXcTrujYQFHxx5v/J6RKC0=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-119-ZKMX0wkCP9OHqIFc39gBRg-1; Wed, 21 May 2025 12:12:39 -0400
+X-MC-Unique: ZKMX0wkCP9OHqIFc39gBRg-1
+X-Mimecast-MFC-AGG-ID: ZKMX0wkCP9OHqIFc39gBRg_1747843958
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-43ceeaf1524so37996015e9.1
+ for <qemu-arm@nongnu.org>; Wed, 21 May 2025 09:12:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1747843958; x=1748448758;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=XLF/+N32Jite/7MDBsWdP7VLLcDPcqAq9wogQc5MyqU=;
+ b=dQo8OKJCAn3Pld3otprfpYGxCsH0IUfQ//vVee4SOKJcIXhwOlJY1J2nkYmRFWqUSR
+ HLdbb3FKdFuOlY+JmFs+oIKeRhuTVSI2CZKk+urym3+OFNMWieOuVCcIKs9lsM/lke6p
+ ocUt92SBZvUElAvz88/SpzzuMqOMhJm34SDZtKAH3z8TP9p7WfdMO2yWA+L5/aC6IghQ
+ BVQqMZUrz/DGjSMv514TcxX7VoKtKh4ACV9sqpQOD/nM2HazcAmIR9r0CwmJynNkY17x
+ f9thKU+xcADDKATo6ARk9NZI8nPzaCm8l7GCPbjKnpTJoOE7hZoacF4FpjsS1w8iDV7q
+ 8Gqg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVcfBI0LxeBL3cLK6gZR+YpzNdgWidbGEGeIo4nVGGGKMyk+vmJjkeqqzM3EBVVs/vTLnfsMo9lAQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxwTD+AloGZu/w7D1OVOe8tZCNVftHvlhvqi8RnBeR/uu20yPJs
+ I0AJ96X/TQSRNydIa1q55j6HB1sJgHh93Lg5QKZ+JMxqVM31ScTFuprFbUYoDtdgFMBoFGhq/eV
+ MRiQiZbCGOApuOidnNCTZ9Da6nwMEL4byjyXGDvyfTj2uT2RVIPgTzw==
+X-Gm-Gg: ASbGnctZg5hNuJTzYKeyjId3KQS0SQ7k0dAtlM4U83kZUrSd26X+806JGAj5JcEVM0j
+ GY8cnPel/27eHlcaYO0UHLaYs77s5Mgn/bGH/yqJoNNGmT0ldrhV4j0bN0RTK6Mv3t2vWgrziRT
+ ViFZshbQf1uoGbdlGjclpyNiaNeO50q62zbjDQt6YPyl418Ibv0ZKKeLqXHlP2sFIzh5pBLOgVL
+ SztKQt9UaGZ6yhdkz8F+E9AQ8Ox1YIK0anIARCadu4SqAm/Aep9MSyg4/POUpkaa9EPBYGJXjq7
+ lYg1VbySuULjhKvE0XtzdBLd0pPz7QzFcc/t3F/Umd52fXoBn6qLMODsI2E=
+X-Received: by 2002:a05:600c:3507:b0:43c:f509:2bbf with SMTP id
+ 5b1f17b1804b1-442f8524653mr270263555e9.15.1747843958011; 
+ Wed, 21 May 2025 09:12:38 -0700 (PDT)
+X-Received: by 2002:a05:600c:3507:b0:43c:f509:2bbf with SMTP id
+ 5b1f17b1804b1-442f8524653mr270263045e9.15.1747843957574; 
+ Wed, 21 May 2025 09:12:37 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-442eb85a3b1sm189915935e9.0.2025.05.21.09.12.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 21 May 2025 09:12:35 -0700 (PDT)
+Message-ID: <ed823ddc-6faa-42dc-bae5-c765d21c3cca@redhat.com>
+Date: Wed, 21 May 2025 18:12:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/3] hw/intc/aspeed: Set impl.min_access_size to 4
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20250520073540.2014240-1-jamin_lin@aspeedtech.com>
- <20250520073540.2014240-2-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250520073540.2014240-2-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Subject: Re: [PATCH 08/22] hw/pci-host/gpex-acpi: Use
+ build_pci_host_bridge_osc_method
+To: Gustavo Romero <gustavo.romero@linaro.org>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ imammedo@redhat.com, anisinha@redhat.com, mst@redhat.com,
+ shannon.zhaosl@gmail.com
+Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org
+References: <20250514170431.2786231-1-eric.auger@redhat.com>
+ <20250514170431.2786231-9-eric.auger@redhat.com>
+ <e1ec0e15-ad26-456b-a8d7-16f683290651@linaro.org>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <e1ec0e15-ad26-456b-a8d7-16f683290651@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: cd3-a8QrK3bCNZB8sAF0wX3K2oRE3jlExnJ_7-0hcvw_1747843958
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=LBbo=YF=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.184,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,80 +155,208 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gvqTTrmObRJE
+X-TUID: v0cqUlkO9Pzn
 
-On 5/20/25 09:35, Jamin Lin wrote:
-> This patch explicitly sets ".impl.min_access_size = 4" to match the
-> declared ".valid.min_access_size = 4", enforcing stricter access size
-> checking and preventing inconsistent partial accesses to the interrupt
-> controller registers.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Hi Gustavo,
 
+On 5/20/25 4:09 PM, Gustavo Romero wrote:
+> Hi Eric,
+>
+> On 5/14/25 14:00, Eric Auger wrote:
+>> gpex build_host_bridge_osc() and x86 originated
+>> build_pci_host_bridge_osc_method() are mostly identical.
+>>
+>> In GPEX, SUPP is set to CDW2 but is not further used. CTRL
+>> is same as Local0.
+>>
+>> So let gpex code reuse build_pci_host_bridge_osc_method()
+>> and remove build_host_bridge_osc().
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>
+>> ---
+>>
+>> The DSDT diff  is given below:
+>> diff --git a/dsdt.dsl_before b/dsdt.dsl_after_osc_change
+>> index 3224a56..fa7558e 100644
+>> --- a/dsdt.dsl_before
+>> +++ b/dsdt.dsl_after_osc_change
+>> @@ -5,13 +5,13 @@
+>>    *
+>>    * Disassembling to symbolic ASL+ operators
+>>    *
+>> - * Disassembly of dsdt.dat, Mon Apr  7 05:33:06 2025
+>> + * Disassembly of dsdt.dat, Mon Apr  7 05:37:20 2025
+>>    *
+>>    * Original Table Header:
+>>    *     Signature        "DSDT"
+>> - *     Length           0x00001A4F (6735)
+>> + *     Length           0x00001A35 (6709)
+>>    *     Revision         0x02
+>> - *     Checksum         0xBF
+>> + *     Checksum         0xDD
+>>    *     OEM ID           "BOCHS "
+>>    *     OEM Table ID     "BXPC    "
+>>    *     OEM Revision     0x00000001 (1)
+>> @@ -1849,27 +1849,26 @@ DefinitionBlock ("", "DSDT", 2, "BOCHS ",
+>> "BXPC    ", 0x00000001)
+>>                   {
+>>                       CreateDWordField (Arg3, 0x04, CDW2)
+>>                       CreateDWordField (Arg3, 0x08, CDW3)
+>> -                    SUPP = CDW2 /* \_SB_.PCI0._OSC.CDW2 */
+>> -                    CTRL = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
+>> -                    CTRL &= 0x1F
+>> +                    Local0 = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
+>> +                    Local0 &= 0x1F
+>>                       If ((Arg1 != One))
+>>                       {
+>>                           CDW1 |= 0x08
+>>                       }
+>>
+>> -                    If ((CDW3 != CTRL))
+>> +                    If ((CDW3 != Local0))
+>>                       {
+>>                           CDW1 |= 0x10
+>>                       }
+>>
+>> -                    CDW3 = CTRL /* \_SB_.PCI0.CTRL */
+>> -                    Return (Arg3)
+>> +                    CDW3 = Local0
+>>                   }
+>>                   Else
+>>                   {
+>>                       CDW1 |= 0x04
+>> -                    Return (Arg3)
+>>                   }
+>> +
+>> +                Return (Arg3)
+>>               }
+>>
+>>               Method (_DSM, 4, NotSerialized)  // _DSM:
+>> Device-Specific Method
+>
+> The problem I face with diffs in the commit body is that tools like
+> b4, which are
+> based on git am, get very confused on how to handle it. I'm surprised
+> nobody ever
+> complained about it. I'm wondering if there is any catch on it,
+> because I have to
+> edit commits like this manually, removing the diff, to make it finally
+> apply to
+> the series. Anyways, do you mind at least removing the valid diff
+> header, like:
+>
+>> diff --git a/dsdt.dsl_before b/dsdt.dsl_after_osc_change
+>> index 3224a56..fa7558e 100644
+>> --- a/dsdt.dsl_before
+>> +++ b/dsdt.dsl_after_osc_change
+>
+> from the commit message so it doesn't confuse b4?
+Thank you for reporting the issue. in tests/qtest/bios-tables-test.c it
+is written at the top that we shall put the diffs in disasembled ACPI
+content in the commit msg. I will look for previously landed patches and
+see whether the current layout can be fixed.
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Cheers
 
-Thanks,
-
-C.
-
-
-> ---
->   hw/intc/aspeed_intc.c | 6 ++++++
->   1 file changed, 6 insertions(+)
-> 
-> diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-> index 33fcbe729c..19f88853d8 100644
-> --- a/hw/intc/aspeed_intc.c
-> +++ b/hw/intc/aspeed_intc.c
-> @@ -737,6 +737,7 @@ static const MemoryRegionOps aspeed_intc_ops = {
->       .read = aspeed_intc_read,
->       .write = aspeed_intc_write,
->       .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .impl.min_access_size = 4,
->       .valid = {
->           .min_access_size = 4,
->           .max_access_size = 4,
-> @@ -747,6 +748,7 @@ static const MemoryRegionOps aspeed_intcio_ops = {
->       .read = aspeed_intcio_read,
->       .write = aspeed_intcio_write,
->       .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .impl.min_access_size = 4,
->       .valid = {
->           .min_access_size = 4,
->           .max_access_size = 4,
-> @@ -757,6 +759,7 @@ static const MemoryRegionOps aspeed_ssp_intc_ops = {
->       .read = aspeed_intc_read,
->       .write = aspeed_ssp_intc_write,
->       .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .impl.min_access_size = 4,
->       .valid = {
->           .min_access_size = 4,
->           .max_access_size = 4,
-> @@ -767,6 +770,7 @@ static const MemoryRegionOps aspeed_ssp_intcio_ops = {
->       .read = aspeed_intcio_read,
->       .write = aspeed_ssp_intcio_write,
->       .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .impl.min_access_size = 4,
->       .valid = {
->           .min_access_size = 4,
->           .max_access_size = 4,
-> @@ -777,6 +781,7 @@ static const MemoryRegionOps aspeed_tsp_intc_ops = {
->       .read = aspeed_intc_read,
->       .write = aspeed_tsp_intc_write,
->       .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .impl.min_access_size = 4,
->       .valid = {
->           .min_access_size = 4,
->           .max_access_size = 4,
-> @@ -787,6 +792,7 @@ static const MemoryRegionOps aspeed_tsp_intcio_ops = {
->       .read = aspeed_intcio_read,
->       .write = aspeed_tsp_intcio_write,
->       .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .impl.min_access_size = 4,
->       .valid = {
->           .min_access_size = 4,
->           .max_access_size = 4,
+Eric
+>
+>
+>> ---
+>>   hw/pci-host/gpex-acpi.c | 60 +++--------------------------------------
+>>   1 file changed, 4 insertions(+), 56 deletions(-)
+>>
+>> diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+>> index f1ab30f3d5..98c9868c3f 100644
+>> --- a/hw/pci-host/gpex-acpi.c
+>> +++ b/hw/pci-host/gpex-acpi.c
+>> @@ -50,60 +50,7 @@ static void acpi_dsdt_add_pci_route_table(Aml
+>> *dev, uint32_t irq,
+>>       }
+>>   }
+>>   -static Aml *build_host_bridge_osc(bool enable_native_pcie_hotplug)
+>> -{
+>> -    Aml *method, *UUID, *ifctx, *ifctx1, *elsectx;
+>> -
+>> -    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
+>> -    aml_append(method,
+>> -        aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
+>> -
+>> -    /* PCI Firmware Specification 3.0
+>> -     * 4.5.1. _OSC Interface for PCI Host Bridge Devices
+>> -     * The _OSC interface for a PCI/PCI-X/PCI Express hierarchy is
+>> -     * identified by the Universal Unique IDentifier (UUID)
+>> -     * 33DB4D5B-1FF7-401C-9657-7441C03DD766
+>> -     */
+>> -    UUID = aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766");
+>> -    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
+>> -    aml_append(ifctx,
+>> -        aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
+>> -    aml_append(ifctx,
+>> -        aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
+>> -    aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
+>> -    aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
+>> -
+>> -    /*
+>> -     * Allow OS control for SHPCHotplug, PME, AER, PCIeCapability,
+>> -     * and PCIeHotplug depending on enable_native_pcie_hotplug
+>> -     */
+>> -    aml_append(ifctx, aml_and(aml_name("CTRL"),
+>> -               aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 :
+>> 0x0)),
+>> -               aml_name("CTRL")));
+>> -
+>> -    ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
+>> -    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
+>> -                              aml_name("CDW1")));
+>> -    aml_append(ifctx, ifctx1);
+>> -
+>> -    ifctx1 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"),
+>> aml_name("CTRL"))));
+>> -    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x10),
+>> -                              aml_name("CDW1")));
+>> -    aml_append(ifctx, ifctx1);
+>> -
+>> -    aml_append(ifctx, aml_store(aml_name("CTRL"), aml_name("CDW3")));
+>> -    aml_append(ifctx, aml_return(aml_arg(3)));
+>> -    aml_append(method, ifctx);
+>> -
+>> -    elsectx = aml_else();
+>> -    aml_append(elsectx, aml_or(aml_name("CDW1"), aml_int(4),
+>> -                               aml_name("CDW1")));
+>> -    aml_append(elsectx, aml_return(aml_arg(3)));
+>> -    aml_append(method, elsectx);
+>> -    return method;
+>> -}
+>> -
+>> -static Aml *build_host_bridge_dsm(void)
+>> +static Aml *build_pci_host_bridge_dsm_method(void)
+>>   {
+>>       Aml *method = aml_method("_DSM", 4, AML_NOTSERIALIZED);
+>>       Aml *UUID, *ifctx, *ifctx1, *buf;
+>> @@ -134,8 +81,9 @@ static void acpi_dsdt_add_host_bridge_methods(Aml
+>> *dev,
+>>       aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
+>>       aml_append(dev, aml_name_decl("CTRL", aml_int(0)));
+>>       /* Declare an _OSC (OS Control Handoff) method */
+>> -    aml_append(dev, build_host_bridge_osc(enable_native_pcie_hotplug));
+>> -    aml_append(dev, build_host_bridge_dsm());
+>> +    aml_append(dev,
+>> +              
+>> build_pci_host_bridge_osc_method(enable_native_pcie_hotplug));
+>> +    aml_append(dev, build_pci_host_bridge_dsm_method());
+>>   }
+>>     void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+>
+> Otherwise:
+>
+> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+>
+>
+> Cheers,
+> Gustavo
+>
 

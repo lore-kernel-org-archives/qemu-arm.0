@@ -1,135 +1,100 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp750918njc;
-        Tue, 20 May 2025 13:00:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUufp+Z3bHiW0NWHeAqRrlpgA80S3vygw0ikuzK+1GijFJlogaLMTZWUWi5Llj1VtXNxgRoM+iHqLazrw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHb2WaqA7jhyX9Bwl6guRvgaczdXw/bv8q7XtvrK8ddD5Ze889HweT50lUfr4fEDH7k2DBp
-X-Received: by 2002:a05:622a:2305:b0:476:b7cf:4d42 with SMTP id d75a77b69052e-494b07da8c9mr321089131cf.27.1747771245160;
-        Tue, 20 May 2025 13:00:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747771245; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1006183njc;
+        Wed, 21 May 2025 00:38:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUO7Cb/Zn3+eHgERF1tXZc4qdPfDRGHGAn/9UcVy9NuDDf/lbfDQtBGRcrMoKng5UqCEJobdauh9CktuA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHteFbN28sbymHRQg6fsTS0CCORMt8T+FPmzVeRrQXIJdUWhndzIUMZb7EGMw/io8RbPADO
+X-Received: by 2002:a05:6e02:1489:b0:3d8:1d7c:e197 with SMTP id e9e14a558f8ab-3db842fe965mr207227145ab.7.1747813132076;
+        Wed, 21 May 2025 00:38:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747813132; cv=none;
         d=google.com; s=arc-20240605;
-        b=dUuJdWhCqIpGyZkNwJGmtxNXIzW+miejdM40Y/RqLSTkSz7CS5Z1li3XkyPpWVzi/x
-         ecIofHbgVppVvrrn2dbNgn0Zk2ByhlVGdO6EbjRT+1GX/shqw7l9lqljmz7IVON6U/uU
-         ABNnblGJhErUAvbxQciLyu5RoBSu3aEBi0tlhLQoDCIXS+qbc54oliPXD95SyISjV8w6
-         CaAucT+h1jKWpMGnyNkT/3b8NmR9CoRj7IrlyUtfC7aQaPUzbI3py/dUrsl9RNaISD/i
-         SYPZTPE5YYHOcUDdFv98aBn52tplKd6CGEaP0kdlt8fD9NSy+wbaj4j6CX8dSi1pMtzD
-         +RJQ==
+        b=damWl2VgE6dtxhlZiRaGLaUuLtUrmn3soiE3izcqvxahAZ9r/UBukANmlqKBTDmnxL
+         rFCBSlOgGtYUcpUPq1XR0ffB/ukoYVMjr1NlOvt57SDVFWHNTGjbaffa8q/7r2jYGqmT
+         PeL2TirzvbvjgimNXzBzdhK5BxWXcNemGf1V11yIkAwWD+Y6o6HmIDfcLMljfbEUa9Nk
+         UMmWQtY/AazebUVIXqFsJA2KqYKdx4fmfEmiQlAPXDPNriVb26T9FnDCRmWiJSbiqjfO
+         lU2bAjPisyjILPL455jkCT4jWgFpfja7aNV6HVqOWA26byZqdIGAQbmapgdo4Sj6j5qO
+         28/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=GuujTtlKxG0Vdawkfcvu+aUrsLj2lJNKbbFDPjMIYSY=;
-        fh=xmC/rh9/AuC5FCg2yypQmfZrbKdzbR5KETgBnLqTDYs=;
-        b=Ku1c9ccRe6+nkJ7TfzTKho2+qiiKZGw15e4si8/dzoQI/QClnMOCQbqp9bJBEIcblc
-         LqiqOWyW5V+DAqbq1w1Knx5vYqeHarnlVKqkl6Z8WHZWRSYAjKe6wZ+ULDMZ+0x/tuSX
-         ITwp5mY5YBJ+Y+jMgJ2qP8a34w1yddTmleTlPGyKibSkRd3+PmlHFVN3ptckrEt6ZIFF
-         7OQ5llfHfBA+4LKhUYEYKOidsAbd2vk1JGLbnryjrdTnwXrd84jHwMqVYaCh8SHdUj6B
-         PG+jiWt2PEWmxV07igon/mJtQFkIZcJUyQfyn0gG6rgLRaL8+KvINkY7CC666FKuzMq8
-         Z7hA==;
+         :list-unsubscribe:list-id:precedence:to:references:message-id
+         :content-transfer-encoding:cc:date:in-reply-to:from:subject
+         :mime-version:dkim-signature;
+        bh=FDRyYQYKESVO0x4TjsUHTCbe7EBx3+Et9GJ+7K2SYhk=;
+        fh=uV24iyMM+1WTlgF92eZXmnVGWrwiIiAr8jVB+GFXxBQ=;
+        b=UW924h82VE8Bi+IUmjWINsr/pqUdK+AmhA28lkxAKOBLw6+h2f9lWXg95bM0mw0D/Q
+         704sFSSS74MHuxDvG0s9Yi8KjH1rwgVbnGcqN9sV90LXqQ8JNoLR4WPiu5Pszb0uftl4
+         QIV9VGC3tqiroNcQGhikqgoUEqBvF0WgsulFWIKJpspWzYfBKW7fJCw6dQ/8FeZ6kYhN
+         IMRbofzfrQjeopyVuBtl3KtUgJEhW0BX5xSUVXOCAZmLH/VX2F7g9iPuX0WnNyCUE4rz
+         T8l+xELcS/HUO+ufmLq9H1Pw6PGCXagaMY6yYgjyGfSqfmpkrwkOWyTOIXVX4FMVN1/r
+         ZVRA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HYo8B01n;
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=uUaenXtG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-494ae577422si118214781cf.385.2025.05.20.13.00.45
+        by mx.google.com with ESMTPS id e9e14a558f8ab-3db8443ae20si128504075ab.86.2025.05.21.00.38.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 May 2025 13:00:45 -0700 (PDT)
+        Wed, 21 May 2025 00:38:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HYo8B01n;
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=uUaenXtG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uHT8Z-0002tl-0W; Tue, 20 May 2025 16:00:31 -0400
+	id 1uHe2C-0001jQ-I7; Wed, 21 May 2025 03:38:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uHT8X-0002rM-L3
- for qemu-arm@nongnu.org; Tue, 20 May 2025 16:00:29 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uHT8Q-0007pC-Ik
- for qemu-arm@nongnu.org; Tue, 20 May 2025 16:00:29 -0400
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-231c86bffc1so61255465ad.0
- for <qemu-arm@nongnu.org>; Tue, 20 May 2025 13:00:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1747771217; x=1748376017; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=GuujTtlKxG0Vdawkfcvu+aUrsLj2lJNKbbFDPjMIYSY=;
- b=HYo8B01n2sZD1MuRIDKyfIo1W7R2ZMQtGVIdZPVaKh4FynqejtaJUE7rrfsmaGKonU
- +hEumGz7zlA7ILpH319TvPJ+HdmsuiwxNBrUylj5SsOwqTvQVhLB//+xB4bK3qWx3Wqf
- 44zhFrKKE+zzt1ZY43Hjvm6RUuuS5NKSwSDI+39Oocac8AGM+5P9eEwQfGVsO18ZzZvy
- HrSiZ0rHFwppXEiNHnpVkTVJ7cdMK0xQS7z5IrTU3CysqKqdzEfRd1R2uMoDickFktLA
- fh0E9zF53a1AR3uHThT6fvY7Cx4dwMJwoEf2jwLZwHAo3h8AJjl3wG8uwN4rr9eRyNKS
- lt3g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747771217; x=1748376017;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=GuujTtlKxG0Vdawkfcvu+aUrsLj2lJNKbbFDPjMIYSY=;
- b=oPIyJrwL6cmtx6lZBmh/B2IFvrO8zutAQNjcRFlXKG//Lqqk3haWSFAQFX/PBRwPZr
- RmIL2v04jR5/CkARZmc5EncuxYY8FOUnXBWCt5aAbkJrUrvtoW6LMR7+QUoPjWqkmrzl
- h+uwfdDuMstoGxS+pWoIsz2CV6SVvzg7SVMQOaAenZsNBCUqxg6j+jNIbmYpJ2uBo9R6
- QEsl8sDNdnDHgWfgl4qrv24x2cpbas1/DqtNVaemgijDU9UvOqRo/4DgYTk565v8SRFq
- 9+jrVaUeDMiFABoN7CvxyNCkKDsIy/Luy5/88wGYFKKkEWuPdIa0UICY/+a4vVE88vz9
- zCPg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXfNJEb/+ZzNwdOnjM2JGgsKw6HbEnId9JvmaylQzTdVT6rPMh0LzbCnoMNBYpfzd952n8x5SZudg==@nongnu.org
-X-Gm-Message-State: AOJu0YxLkZIgHVBFfAeRjjWq6cVzbZhqpbj9lIyyi17WrRmF+RJoPqjh
- wOZat0ef2H8J+Vc0ry9lTm3KupGsqQSk1QZL0vojst3gHZMqsSOqTyjLha/4eVjwqCM=
-X-Gm-Gg: ASbGncvDQTLW5udrIawP4GP7xGwo6qj/sBtEtScdmf1G32YtHnhks2ugtIPf/2qYHK/
- ZH89Wd20AiSjymGOl1/Laka0hM0AT4vlpZjGEC1zKhW+sG94LOgHyUxStxCvlYgiGe5VNRc9bqp
- 4A7GoYHzJtPYX59InLEXL+j4+4/GXOLeiy9TVKR+U39RxxY2THzMgFRV7OglEg/LDAtm0qvEIq1
- D4fzYoHvHdinPXyttzitGCICgVKPh62h4kDdrW8ABaDO1NlCM9GTr29nd2eqrfyrTRdykjFZvt0
- k2McO4bw854u3QIfp/n2WWPNkbcDtKw3kTXQ5Iv3iWSATNp/KT2UYUEDtHKps0wGvEWx+kKoFu6
- J/juu5n0mAxdyCaeb4O7MHeTV+fgG1Q==
-X-Received: by 2002:a17:902:fc46:b0:231:bf74:e1df with SMTP id
- d9443c01a7336-231de3515demr238550995ad.7.1747771216649; 
- Tue, 20 May 2025 13:00:16 -0700 (PDT)
-Received: from ?IPV6:2804:7f0:b401:d47f:6989:b93e:2caa:f174?
- ([2804:7f0:b401:d47f:6989:b93e:2caa:f174])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-231d4ebaef0sm80368435ad.203.2025.05.20.13.00.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 May 2025 13:00:16 -0700 (PDT)
-Message-ID: <9b996b3a-cc60-499e-a8a6-028f16156180@linaro.org>
-Date: Tue, 20 May 2025 17:00:03 -0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 13/22] hw/i386/acpi-build: Introduce and use
- acpi_get_pci_host
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- imammedo@redhat.com, anisinha@redhat.com, mst@redhat.com,
- shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org
-References: <20250514170431.2786231-1-eric.auger@redhat.com>
- <20250514170431.2786231-14-eric.auger@redhat.com>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20250514170431.2786231-14-eric.auger@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x633.google.com
+ (Exim 4.90_1) (envelope-from <itaru.kitayama@linux.dev>)
+ id 1uHe29-0001j7-Nr
+ for qemu-arm@nongnu.org; Wed, 21 May 2025 03:38:39 -0400
+Received: from out-183.mta1.migadu.com ([2001:41d0:203:375::b7])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <itaru.kitayama@linux.dev>)
+ id 1uHe26-0002Lk-Mp
+ for qemu-arm@nongnu.org; Wed, 21 May 2025 03:38:37 -0400
+Content-Type: text/plain;
+	charset=utf-8
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+ t=1747813111;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=FDRyYQYKESVO0x4TjsUHTCbe7EBx3+Et9GJ+7K2SYhk=;
+ b=uUaenXtGkHCAoKlVVK7XYAGJtMDWIEq9Q5B/I8h9bZAtf67j6zsT2eVr9MYPvwRO7d+nA0
+ Am+eTeMciLwNpaNrA87ibfEv1DUXIgQJd9DOQW31B89vmaYlpuFzmf/kD9c6vmiy2UoRg0
+ XfwmnfCamcNrOuu1zFgeu+Hj4A/W79k=
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.600.51.1.1\))
+Subject: Re: [PATCH v13 5/5] qtest/cxl: Add aarch64 virt test for CXL
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+From: Itaru Kitayama <itaru.kitayama@linux.dev>
+In-Reply-To: <20250519135413.000026b4@huawei.com>
+Date: Wed, 21 May 2025 16:38:10 +0900
+Cc: qemu-devel@nongnu.org, Fan Ni <fan.ni@samsung.com>,
+ Peter Maydell <peter.maydell@linaro.org>, mst@redhat.com,
+ linux-cxl@vger.kernel.org, linuxarm@huawei.com, qemu-arm@nongnu.org,
+ Yuquan Wang <wangyuquan1236@phytium.com.cn>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <5CCC3C8C-7348-4409-9964-8367C8FC1C1E@linux.dev>
+References: <20250513111455.128266-1-Jonathan.Cameron@huawei.com>
+ <20250513111455.128266-6-Jonathan.Cameron@huawei.com>
+ <D9E503CC-1271-4008-9975-9BAEC7A33376@linux.dev>
+ <20250519135413.000026b4@huawei.com>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+X-Migadu-Flow: FLOW_OUT
+Received-SPF: pass client-ip=2001:41d0:203:375::b7;
+ envelope-from=itaru.kitayama@linux.dev; helo=out-183.mta1.migadu.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -144,180 +109,405 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aecUpw150Fqa
-
-Hi Eric,
-
-On 5/14/25 14:01, Eric Auger wrote:
-> pcihp acpi_set_pci_info() generic code currently uses
-> acpi_get_i386_pci_host() to retrieve the pci host bridge.
-> 
-> Let's rename acpi_get_i386_pci_host into acpi_get_pci_host and
-> move it in pci generic code.
-> 
-> The helper is augmented with the support of ARM GPEX.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->   include/hw/acpi/pci.h |  2 ++
->   hw/acpi/pci.c         | 20 ++++++++++++++++++++
->   hw/acpi/pcihp.c       |  3 ++-
->   hw/i386/acpi-build.c  | 24 ++++--------------------
->   4 files changed, 28 insertions(+), 21 deletions(-)
-> 
-> diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
-> index 4dca22c0e2..310cbd02db 100644
-> --- a/include/hw/acpi/pci.h
-> +++ b/include/hw/acpi/pci.h
-> @@ -41,4 +41,6 @@ void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope);
->   
->   void build_srat_generic_affinity_structures(GArray *table_data);
->   
-> +Object *acpi_get_pci_host(void);
-> +
->   #endif
-> diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
-> index d511a85029..4191886ebe 100644
-> --- a/hw/acpi/pci.c
-> +++ b/hw/acpi/pci.c
-> @@ -26,6 +26,7 @@
->   #include "qemu/osdep.h"
->   #include "qemu/error-report.h"
->   #include "qom/object_interfaces.h"
-> +#include "qom/object.h"
->   #include "qapi/error.h"
->   #include "hw/boards.h"
->   #include "hw/acpi/aml-build.h"
-> @@ -33,6 +34,9 @@
->   #include "hw/pci/pci_bridge.h"
->   #include "hw/pci/pci_device.h"
->   #include "hw/pci/pcie_host.h"
-> +#include "hw/pci-host/i440fx.h"
-> +#include "hw/pci-host/q35.h"
-> +#include "hw/pci-host/gpex.h"
->   
->   /*
->    * PCI Firmware Specification, Revision 3.0
-> @@ -301,3 +305,19 @@ void build_srat_generic_affinity_structures(GArray *table_data)
->       object_child_foreach_recursive(object_get_root(), build_acpi_generic_port,
->                                      table_data);
->   }
-> +
-> +Object *acpi_get_pci_host(void)
-> +{
-> +    Object *host;
-> +
-> +    host = object_resolve_type_unambiguous(TYPE_I440FX_PCI_HOST_BRIDGE, NULL);
-> +    if (host) {
-> +        return host;
-> +    }
-> +    host = object_resolve_type_unambiguous(TYPE_Q35_HOST_DEVICE, NULL);
-> +    if (host) {
-> +        return host;
-> +    }
-> +    host = object_resolve_type_unambiguous(TYPE_GPEX_HOST, NULL);
-> +    return host;
-> +}
-> diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-> index 942669ea89..d800371ddc 100644
-> --- a/hw/acpi/pcihp.c
-> +++ b/hw/acpi/pcihp.c
-> @@ -36,6 +36,7 @@
->   #include "hw/pci-bridge/xio3130_downstream.h"
->   #include "hw/i386/acpi-build.h"
->   #include "hw/acpi/acpi.h"
-> +#include "hw/acpi/pci.h"
->   #include "hw/pci/pci_bus.h"
->   #include "migration/vmstate.h"
->   #include "qapi/error.h"
-> @@ -102,7 +103,7 @@ static void *acpi_set_bsel(PCIBus *bus, void *opaque)
->   static void acpi_set_pci_info(bool has_bridge_hotplug)
->   {
->       static bool bsel_is_set;
-> -    Object *host = acpi_get_i386_pci_host();
-> +    Object *host = acpi_get_pci_host();
->       PCIBus *bus;
->       BSELInfo info = { .bsel_alloc = ACPI_PCIHP_BSEL_DEFAULT,
->                         .has_bridge_hotplug = has_bridge_hotplug };
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 06b4b8eed4..bcfba2ccb3 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -269,27 +269,11 @@ static void acpi_get_misc_info(AcpiMiscInfo *info)
->   #endif
->   }
->   
-> -/*
-> - * Because of the PXB hosts we cannot simply query TYPE_PCI_HOST_BRIDGE.
-> - * On i386 arch we only have two pci hosts, so we can look only for them.
-> - */
-> -Object *acpi_get_i386_pci_host(void)
-> -{
-> -    PCIHostState *host;
-> -
-> -    host = PCI_HOST_BRIDGE(object_resolve_path("/machine/i440fx", NULL));
-> -    if (!host) {
-> -        host = PCI_HOST_BRIDGE(object_resolve_path("/machine/q35", NULL));
-> -    }
-> -
-> -    return OBJECT(host);
-> -}
-> -
-
-It's also possible to add a child prop to the TYPE_GPEX_HOST in create_pcie, like:
-
-@@ -1510,6 +1510,7 @@ static void create_pcie(VirtMachineState *vms)
-      MachineClass *mc = MACHINE_GET_CLASS(ms);
-  
-      dev = qdev_new(TYPE_GPEX_HOST);
-+    object_property_add_child(OBJECT(vms), "gpex", OBJECT(dev));
-
-then follow to logic in acpi_get_i386_pci_host via:
-
-PCI_HOST_BRIDGE(object_resolve_path("/machine/gpex", NULL))
-
-but I like better your solution of using the final class types, so:
-
-Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+X-TUID: Pe3B4VnDdJkw
 
 
-Cheers,
-Gustavo
 
->   static void acpi_get_pci_holes(Range *hole, Range *hole64)
->   {
->       Object *pci_host;
->   
-> -    pci_host = acpi_get_i386_pci_host();
-> +    pci_host = acpi_get_pci_host();
->   
->       if (!pci_host) {
->           return;
-> @@ -1245,7 +1229,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->   
->       sb_scope = aml_scope("\\_SB");
->       {
-> -        Object *pci_host = acpi_get_i386_pci_host();
-> +        Object *pci_host = acpi_get_pci_host();
->   
->           if (pci_host) {
->               PCIBus *pbus = PCI_HOST_BRIDGE(pci_host)->bus;
-> @@ -1306,7 +1290,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->       if (pm->pcihp_bridge_en || pm->pcihp_root_en) {
->           bool has_pcnt;
->   
-> -        Object *pci_host = acpi_get_i386_pci_host();
-> +        Object *pci_host = acpi_get_pci_host();
->           PCIBus *b = PCI_HOST_BRIDGE(pci_host)->bus;
->   
->           scope = aml_scope("\\_SB.PCI0");
-> @@ -1946,7 +1930,7 @@ static bool acpi_get_mcfg(AcpiMcfgInfo *mcfg)
->       Object *pci_host;
->       QObject *o;
->   
-> -    pci_host = acpi_get_i386_pci_host();
-> +    pci_host = acpi_get_pci_host();
->       if (!pci_host) {
->           return false;
->       }
+> On May 19, 2025, at 21:54, Jonathan Cameron =
+<Jonathan.Cameron@huawei.com> wrote:
+>=20
+> On Thu, 15 May 2025 18:04:18 +0900
+> Itaru Kitayama <itaru.kitayama@linux.dev> wrote:
+>=20
+>>> On May 13, 2025, at 20:14, Jonathan Cameron =
+<Jonathan.Cameron@huawei.com> wrote:
+>>>=20
+>>> Add a single complex case for aarch64 virt machine.
+>>> Given existing much more comprehensive tests for x86 cover the
+>>> common functionality, a single test should be enough to verify
+>>> that the aarch64 part continue to work.
+>>>=20
+>>> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+>>> ---
+>>> tests/qtest/cxl-test.c  | 59 =
+++++++++++++++++++++++++++++++++---------
+>>> tests/qtest/meson.build |  1 +
+>>> 2 files changed, 47 insertions(+), 13 deletions(-)
+>>>=20
+>>> diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
+>>> index a600331843..c7189d6222 100644
+>>> --- a/tests/qtest/cxl-test.c
+>>> +++ b/tests/qtest/cxl-test.c
+>>> @@ -19,6 +19,12 @@
+>>>    "-device pxb-cxl,id=3Dcxl.1,bus=3Dpcie.0,bus_nr=3D53 " \
+>>>    "-M =
+cxl-fmw.0.targets.0=3Dcxl.0,cxl-fmw.0.targets.1=3Dcxl.1,cxl-fmw.0.size=3D4=
+G "
+>>>=20
+>>> +#define QEMU_VIRT_2PXB_CMD \
+>>> +    "-machine virt,cxl=3Don -cpu max " \
+>>> +    "-device pxb-cxl,id=3Dcxl.0,bus=3Dpcie.0,bus_nr=3D52 " \
+>>> +    "-device pxb-cxl,id=3Dcxl.1,bus=3Dpcie.0,bus_nr=3D53 " \
+>>> +    "-M =
+cxl-fmw.0.targets.0=3Dcxl.0,cxl-fmw.0.targets.1=3Dcxl.1,cxl-fmw.0.size=3D4=
+G "
+>>> +
+>>> #define QEMU_RP \
+>>>    "-device cxl-rp,id=3Drp0,bus=3Dcxl.0,chassis=3D0,slot=3D0 "
+>>>=20
+>>> @@ -197,25 +203,52 @@ static void cxl_2pxb_4rp_4t3d(void)
+>>>    qtest_end();
+>>>    rmdir(tmpfs);
+>>> }
+>>> +
+>>> +static void cxl_virt_2pxb_4rp_4t3d(void)
+>>> +{
+>>> +    g_autoptr(GString) cmdline =3D g_string_new(NULL);
+>>> +    char template[] =3D "/tmp/cxl-test-XXXXXX";
+>>> +    const char *tmpfs;
+>>> +
+>>> +    tmpfs =3D mkdtemp(template);
+>>> +
+>>> +    g_string_printf(cmdline, QEMU_VIRT_2PXB_CMD QEMU_4RP QEMU_4T3D,
+>>> +                    tmpfs, tmpfs, tmpfs, tmpfs, tmpfs, tmpfs,
+>>> +                    tmpfs, tmpfs);
+>>> +
+>>> +    qtest_start(cmdline->str);
+>>> +    qtest_end();
+>>> +    rmdir(tmpfs);
+>>> +}
+>>> #endif /* CONFIG_POSIX */
+>>>=20
+>>> int main(int argc, char **argv)
+>>> {
+>>> -    g_test_init(&argc, &argv, NULL);
+>>> +    const char *arch =3D qtest_get_arch();
+>>>=20
+>>> -    qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
+>>> -    qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
+>>> -    qtest_add_func("/pci/cxl/pxb_with_window", =
+cxl_pxb_with_window);
+>>> -    qtest_add_func("/pci/cxl/pxb_x2_with_window", =
+cxl_2pxb_with_window);
+>>> -    qtest_add_func("/pci/cxl/rp", cxl_root_port);
+>>> -    qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
+>>> +    g_test_init(&argc, &argv, NULL);
+>>> +    if (strcmp(arch, "i386") =3D=3D 0 || strcmp(arch, "x86_64") =3D=3D=
+ 0) {
+>>> +        qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
+>>> +        qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
+>>> +        qtest_add_func("/pci/cxl/pxb_with_window", =
+cxl_pxb_with_window);
+>>> +        qtest_add_func("/pci/cxl/pxb_x2_with_window", =
+cxl_2pxb_with_window);
+>>> +        qtest_add_func("/pci/cxl/rp", cxl_root_port);
+>>> +        qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
+>>> #ifdef CONFIG_POSIX
+>>> -    qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
+>>> -    qtest_add_func("/pci/cxl/type3_device_pmem", =
+cxl_t3d_persistent);
+>>> -    qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
+>>> -    qtest_add_func("/pci/cxl/type3_device_vmem_lsa", =
+cxl_t3d_volatile_lsa);
+>>> -    qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
+>>> -    qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4", =
+cxl_2pxb_4rp_4t3d);
+>>> +        qtest_add_func("/pci/cxl/type3_device", =
+cxl_t3d_deprecated);
+>>> +        qtest_add_func("/pci/cxl/type3_device_pmem", =
+cxl_t3d_persistent);
+>>> +        qtest_add_func("/pci/cxl/type3_device_vmem", =
+cxl_t3d_volatile);
+>>> +        qtest_add_func("/pci/cxl/type3_device_vmem_lsa", =
+cxl_t3d_volatile_lsa);
+>>> +        qtest_add_func("/pci/cxl/rp_x2_type3_x2", =
+cxl_1pxb_2rp_2t3d);
+>>> +        qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4",
+>>> +                       cxl_2pxb_4rp_4t3d);
+>>> #endif
+>>> +    } else if (strcmp(arch, "aarch64") =3D=3D 0) {
+>>> +#ifdef CONFIG_POSIX
+>>> +        =
+qtest_add_func("/pci/cxl/virt/pxb_x2_root_port_x4_type3_x4",
+>>> +                       cxl_virt_2pxb_4rp_4t3d);
+>>> +#endif
+>>> +    }
+>>> +
+>>>    return g_test_run();
+>>> }
+>>> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+>>> index 7daf619845..361000267a 100644
+>>> --- a/tests/qtest/meson.build
+>>> +++ b/tests/qtest/meson.build
+>>> @@ -258,6 +258,7 @@ qtests_aarch64 =3D \
+>>>  (config_all_accel.has_key('CONFIG_TCG') and                         =
+                   \
+>>>   config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? =
+['tpm-tis-i2c-test'] : []) + \
+>>>  (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 =
+: []) + \
+>>> +  qtests_cxl +                                                      =
+                            \
+>>>  ['arm-cpu-features',
+>>>   'numa-test',
+>>>   'boot-serial-test',
+>>> --=20
+>>> 2.43.0
+>>>=20
+>>=20
+>> ~/projects/qemu/build$ meson test qtest-aarch64/cxl-test
+>> ninja: Entering directory `/home/realm/projects/qemu/build'
+>> [1/8] Generating qemu-version.h with a custom command (wrapped by =
+meson to capture output)
+>> 1/1 qemu:qtest+qtest-aarch64 / qtest-aarch64/cxl-test        OK       =
+       0.17s   1 subtests passed
+>>=20
+>> Ok:                 1
+>> Expected Fail:      0
+>> Fail:               0
+>> Unexpected Pass:    0
+>> Skipped:            0
+>> Timeout:            0
+>>=20
+>> Tested-by: Itaru Kitayama <itaru.kitayama@fujitsu.com =
+<mailto:itaru.kitayama@fujitsu.com>>
+>>=20
+>> Jonathan, would you push your branch this series applied? I manually =
+applied your series no issues though.
+>=20
+> I'm reluctant to push a 'normal' staging CXL tree whilst we have the =
+TCG
+> issue outstanding (which is in mainline).
+> I can probably push one with a name that makes it clear we know it =
+will
+> crash under some circumstances though. I'll aim to get that done later =
+this week.
+>=20
+> After talking to Richard Henderson I'm going to spin some images etc =
+to
+> make it easier for him to replicate that TCG issue.
+
+While QEMU (the kernel is built off of cxl branch) boots fine and lspci =
+shows CXL devices as shown:
+
+root@localhost:~# lspci -mm
+00:00.0 "Host bridge" "Red Hat, Inc." "QEMU PCIe Host bridge" -p00 "Red =
+Hat, Inc." "Device 1100"
+00:01.0 "SCSI storage controller" "Red Hat, Inc." "Virtio block device" =
+-p00 "Red Hat, Inc." "Device 0002"
+00:02.0 "Ethernet controller" "Intel Corporation" "82540EM Gigabit =
+Ethernet Controller" -r03 -p00 "Red Hat, Inc." "QEMU Virtual Machine"
+00:03.0 "Host bridge" "Red Hat, Inc." "QEMU PCIe Expander bridge" -p00 =
+"Red Hat, Inc." "Device 1100"
+00:04.0 "Host bridge" "Red Hat, Inc." "QEMU PCIe Expander bridge" -p00 =
+"Red Hat, Inc." "Device 1100"
+35:00.0 "PCI bridge" "Intel Corporation" "Device 7075" -p00 "Intel =
+Corporation" "Device 0000"
+35:01.0 "PCI bridge" "Intel Corporation" "Device 7075" -p00 "Intel =
+Corporation" "Device 0000"
+36:00.0 "PCI bridge" "Huawei Technologies Co., Ltd." "Device a128" -p00 =
+"" ""
+36:00.1 "Serial bus controller [0c0b]" "Huawei Technologies Co., Ltd." =
+"Device a123" -p00 "Red Hat, Inc." "Device 1100"
+37:00.0 "PCI bridge" "Huawei Technologies Co., Ltd." "Device a129" -p00 =
+"" ""
+37:01.0 "PCI bridge" "Huawei Technologies Co., Ltd." "Device a129" -p00 =
+"" ""
+37:02.0 "PCI bridge" "Huawei Technologies Co., Ltd." "Device a129" -p00 =
+"" ""
+37:03.0 "PCI bridge" "Huawei Technologies Co., Ltd." "Device a129" -p00 =
+"" ""
+38:00.0 "CXL" "Intel Corporation" "Device 0d93" -r01 -p10 "Red Hat, =
+Inc." "Device 1100"
+3a:00.0 "CXL" "Intel Corporation" "Device 0d93" -r01 -p10 "Red Hat, =
+Inc." "Device 1100"
+bf:00.0 "PCI bridge" "Intel Corporation" "Device 7075" -p00 "Intel =
+Corporation" "Device 0000"
+bf:01.0 "PCI bridge" "Intel Corporation" "Device 7075" -p00 "Intel =
+Corporation" "Device 0000"
+c0:00.0 "PCI bridge" "Huawei Technologies Co., Ltd." "Device a128" -p00 =
+"" ""
+c0:00.1 "Serial bus controller [0c0b]" "Huawei Technologies Co., Ltd." =
+"Device a123" -p00 "Red Hat, Inc." "Device 1100"
+c1:00.0 "PCI bridge" "Huawei Technologies Co., Ltd." "Device a129" -p00 =
+"" ""
+c1:01.0 "PCI bridge" "Huawei Technologies Co., Ltd." "Device a129" -p00 =
+"" ""
+c1:02.0 "PCI bridge" "Huawei Technologies Co., Ltd." "Device a129" -p00 =
+"" ""
+c1:03.0 "PCI bridge" "Huawei Technologies Co., Ltd." "Device a129" -p00 =
+"" ""
+c2:00.0 "CXL" "Intel Corporation" "Device 0d93" -r01 -p10 "Red Hat, =
+Inc." "Device 1100"
+c4:00.0 "CXL" "Intel Corporation" "Device 0d93" -r01 -p10 "Red Hat, =
+Inc." "Device 1100=E2=80=9D
+
+but the cxl-list command takes 5-10 minutes to return the information. =
+I=E2=80=99ll test with your qtest minimalist setup to see if the system =
+is loaded. Am I seeing the TCG issue you mentioned?
+
+root@localhost:~# cxl list -M
+[
+  {
+    "memdev":"mem10",
+    "ram_size":2147483648,
+    "ram_qos_class":42,
+    "serial":11,
+    "numa_node":0,
+    "host":"cxl_rcd.10",
+    "firmware_version":"mock fw v1 "
+  },
+  {
+    "memdev":"mem5",
+    "pmem_size":1073741824,
+    "pmem_qos_class":42,
+    "ram_size":1073741824,
+    "ram_qos_class":42,
+    "serial":6,
+    "numa_node":1,
+    "host":"cxl_mem.5",
+    "firmware_version":"mock fw v1 "
+  },
+  {
+    "memdev":"mem1",
+    "pmem_size":1073741824,
+    "pmem_qos_class":42,
+    "ram_size":1073741824,
+    "ram_qos_class":42,
+    "serial":2,
+    "numa_node":1,
+    "host":"cxl_mem.1",
+    "firmware_version":"mock fw v1 "
+  },
+  {
+    "memdev":"mem6",
+    "pmem_size":1073741824,
+    "pmem_qos_class":42,
+    "ram_size":1073741824,
+    "ram_qos_class":42,
+    "serial":8,
+    "numa_node":1,
+    "host":"cxl_mem.7",
+    "firmware_version":"mock fw v1 "
+  },
+  {
+    "memdev":"mem3",
+    "pmem_size":1073741824,
+    "pmem_qos_class":42,
+    "ram_size":1073741824,
+    "ram_qos_class":42,
+    "serial":4,
+    "numa_node":1,
+    "host":"cxl_mem.3",
+    "firmware_version":"mock fw v1 "
+  },
+  {
+    "memdev":"mem4",
+    "pmem_size":1073741824,
+    "pmem_qos_class":42,
+    "ram_size":1073741824,
+    "ram_qos_class":42,
+    "serial":5,
+    "numa_node":0,
+    "host":"cxl_mem.4",
+    "firmware_version":"mock fw v1 "
+  },
+  {
+    "memdev":"mem0",
+    "pmem_size":1073741824,
+    "pmem_qos_class":42,
+    "ram_size":1073741824,
+    "ram_qos_class":42,
+    "serial":1,
+    "numa_node":0,
+    "host":"cxl_mem.0",
+    "firmware_version":"mock fw v1 "
+  },
+  {
+    "memdev":"mem2",
+    "pmem_size":1073741824,
+    "pmem_qos_class":42,
+    "ram_size":1073741824,
+    "ram_qos_class":42,
+    "serial":3,
+    "numa_node":0,
+    "host":"cxl_mem.2",
+    "firmware_version":"mock fw v1 "
+  },
+  {
+    "memdev":"mem7",
+    "pmem_size":1073741824,
+    "pmem_qos_class":42,
+    "ram_size":1073741824,
+    "ram_qos_class":42,
+    "serial":7,
+    "numa_node":0,
+    "host":"cxl_mem.6",
+    "firmware_version":"mock fw v1 "
+  },
+  {
+    "memdev":"mem8",
+    "pmem_size":1073741824,
+    "pmem_qos_class":42,
+    "ram_size":1073741824,
+    "ram_qos_class":42,
+    "serial":9,
+    "numa_node":0,
+    "host":"cxl_mem.8",
+    "firmware_version":"mock fw v1 "
+  },
+  {
+    "memdev":"mem9",
+    "pmem_size":1073741824,
+    "pmem_qos_class":42,
+    "ram_size":1073741824,
+    "ram_qos_class":42,
+    "serial":10,
+    "numa_node":1,
+    "host":"cxl_mem.9",
+    "firmware_version":"mock fw v1 "
+  },
+  {
+    "memdev":"mem12",
+    "ram_size":268435456,
+    "serial":0,
+    "host":"0000:c4:00.0",
+    "firmware_version":"BWFW VERSION 00"
+  },
+  {
+    "memdev":"mem11",
+    "ram_size":268435456,
+    "serial":0,
+    "host":"0000:c2:00.0",
+    "firmware_version":"BWFW VERSION 00"
+  },
+  {
+    "memdev":"mem14",
+    "pmem_size":268435456,
+    "serial":0,
+    "host":"0000:3a:00.0",
+    "firmware_version":"BWFW VERSION 00"
+  },
+  {
+    "memdev":"mem13",
+    "pmem_size":268435456,
+    "serial":0,
+    "host":"0000:38:00.0",
+    "firmware_version":"BWFW VERSION 00"
+  }
+]
+
+Getting this shouldn=E2=80=99t take minutes, even with the emulator I =
+think.
+
+Itaru.
+
+>=20
+> Thanks for reviews.
+>=20
+> Jonathan
+>=20
+>>=20
+>>=20
+>=20
 

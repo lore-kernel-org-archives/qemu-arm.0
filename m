@@ -1,164 +1,135 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1273457njc;
-        Wed, 21 May 2025 08:38:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXZFHzYNO//Z7/5sKl6Hmfv0mPz8YmLyD3Hiix+CHqoM01/t40kvcrMJHyNOGkfAwc7t1g3AYlew601Sg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEOSszFmKYx49xRRdVY1bNLkA3poUJgPCG4v50wgxBynAeZ+uXltVJLhqWO3QLkSbh7NpVM
-X-Received: by 2002:a05:6214:cc1:b0:6f8:d223:3c14 with SMTP id 6a1803df08f44-6f8d2233e2amr230073406d6.25.1747841895716;
-        Wed, 21 May 2025 08:38:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747841895; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1275299njc;
+        Wed, 21 May 2025 08:41:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVOb5A8RDsHcUubvGBMm7mpANQQpo8IOR/WKJyzs0GIzUszW4wePyR8MdN6GjD30mTeWD4oNjKiqwUJcw==@linaro.org
+X-Received: by 2002:a05:690c:6c91:b0:70d:f038:6c3d with SMTP id 00721157ae682-70df0387166mr56587957b3.3.1747842097377;
+        Wed, 21 May 2025 08:41:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747842097; cv=none;
         d=google.com; s=arc-20240605;
-        b=SwPMj28Fp2fRNMWs74mCq8ag9NMpY7dw+xo/+c4Y0w+O9Z8Cg2e7HLt5v/riqcAWmw
-         xVrfhUqLQwGzmvfNqJ7dnIK0A3XXCU9D4+FEyxqxtLiF5zWNwuKKA6eQbly1rQ6UUSr4
-         ZyRxABTIHsxF1qhcnHP91FTCrdfSYRK9vpm5tzGW42xp3jsbP9IO3FYjAflSEdMXUtGT
-         wnfohboDPClpihDSjLaeYieqZRfEEHrH4ZzCGmsdlxngwOE7Ty1IFwzJzWW5lVzMpsu3
-         xOLUheQIZo1A8PpdlMh/Uqr6rLbzChywnghhhTgq8qhJZbFnlKtDNshJp60VNlhOWwBz
-         MQiQ==
+        b=cFNeWG25tSCFuA3NRf4GQjn+++5WGzoBhktIfX8YFPTmJq9hqdgqROKOMdYZDUYxxL
+         BCsefnp0B09Q0e/diVQzpcbgjZsZqj5V7hPHlytpwvK4BXVZcewYotAHjZtxrYw0R2cx
+         cuNGeIBdsNcIFmNpa8BTuRSMH3jJ04Mixi5JAJriyF0SICsWjP9h5xTl6a9I4hBnilvi
+         DBh2QhXTd2RiZ11y7BFYyF7dQu9+8jxODcL6XcJJW8UwidNEr78NtxqK1jd7QgqKv7WJ
+         aMdDo54Z+jbgh58ct62CyXWGpL/n0LljtZ6xEjiD0I8FQ3RzjaBvpPfPGk6aeDnlnPKM
+         sqWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=QkPgWZNcU+OqVl8Pjj5kWpwum/G2qsNBSEgRtMibbfE=;
-        fh=hFaiyQGW6XhOSQ0Nnm/ZApgQ6vid9+itXfCX1qOHzpc=;
-        b=AmAHKzGCYuZNaiPEZjHUZqb7RtruOfth9h8ynOoD3CnilGe/c/6IgqnSs19KaepKdx
-         +iZ6oa6j3A7F6AjOUYQOmp03sUJM4ND+rIp1uzubCupAdz37jMgudHTzeR6n+4LXNMDC
-         8Y51kbYANRnsZehwcUag2ISmxPa4uviCis8I+GCKu6KSkmEYTIOwkgLa99GnY3m0aE6d
-         PL2507b9qc1Lp3XBTiDkAl+lKBJ0TAJMH4VxyRDb0jcSvM+B+xI2oF+AVDWoxht2jF7B
-         +6h7oqdFkabg/cIXwbz7ZDSQBv/sCTNiF2Se6F5RTCJJZXeHifLHlrrxWZ09gl5+FAn0
-         kcAw==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=spfLx4z/2w6V3UeSHe3VBdiO1OMuzXoFQOHptwcYaYc=;
+        fh=a2DZgWR0mtOhFS50Hh7SCZ9c00KrFTtoPbGnUTdK4vQ=;
+        b=lKS/hrbrRpJTMZ0p0o8lpWDZMoe9jCHaXZzM3khMPbKRPolMWoIT0XYdNNaq1FZErg
+         YDgPmjqQqDyux3vkWiaB7XaykQM9nbdtketHfypHLetuQUEsY5KtPFPXRQfLuSUyV44a
+         viW2R64fR9TsrhjGZ+xVcLDFUNtWfi5V1LA4gSwqo1TF9s4QHfo5eNdITPpuP1fxFQLA
+         AG04uwpN+5EhxHyxrCErncHA+34LZ5/zYvBHyEOAgy2WtrmOBOkz0o0ruzs5vpWC0FZr
+         0Ue7nucvso9oIHRVwt+tQMCZAEJSGTyoEaES1bHE6BKaGl//mkPk7szKS+S8ZkmHAmvm
+         qVzQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OuevJGmD;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6f8b0999843si130559406d6.266.2025.05.21.08.38.15
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z5C9l0WI;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 00721157ae682-70ca8514943sor66491917b3.7.2025.05.21.08.41.37
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 May 2025 08:38:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Wed, 21 May 2025 08:41:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OuevJGmD;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1747841895;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
-	bh=QkPgWZNcU+OqVl8Pjj5kWpwum/G2qsNBSEgRtMibbfE=;
-	b=OuevJGmD7RhkP8ooyvhuqbKPYpzfXEB3yHByBJ7N88n02pX6NmPVSTAd/VKu48KpxfXc7Q
-	FHVQm1+gT6m2c/JTTDaMT6vq+hbmtzJknQlGOFHSsQt8Lz3iwrJTiPRKc4dLecYTf+r7bb
-	pVC2zHqdG2MGkHxxV0uddeJqs2M1R3Y=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-635-YTyPHlwkPIiwWQ3UF61MnA-1; Wed,
- 21 May 2025 11:38:12 -0400
-X-MC-Unique: YTyPHlwkPIiwWQ3UF61MnA-1
-X-Mimecast-MFC-AGG-ID: YTyPHlwkPIiwWQ3UF61MnA_1747841889
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 98859180048E;
-	Wed, 21 May 2025 15:38:06 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.129])
-	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 399BB18003FC;
-	Wed, 21 May 2025 15:37:54 +0000 (UTC)
-Date: Wed, 21 May 2025 16:37:51 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Ilya Leoshkevich <iii@linux.ibm.com>, Michael Tokarev <mjt@tls.msk.ru>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
-	Thomas Huth <thuth@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
-	qemu-arm@nongnu.org, Nicholas Piggin <npiggin@gmail.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Bin Meng <bmeng.cn@gmail.com>, Tyrone Ting <kfting@nuvoton.com>,
-	Hao Wu <wuhaotsh@google.com>, Kyle Evans <kevans@freebsd.org>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Harsh Prateek Bora <harshpb@linux.ibm.com>,
-	Fabiano Rosas <farosas@suse.de>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Warner Losh <imp@bsdimp.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>, qemu-ppc@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-rust@nongnu.org,
-	qemu-riscv@nongnu.org
-Subject: Re: [PATCH v2 11/17] gdbstub: Try unlinking the unix socket before
- binding
-Message-ID: <aC3zT7gOMn4i-d4U@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20250207153112.3939799-1-alex.bennee@linaro.org>
- <20250207153112.3939799-12-alex.bennee@linaro.org>
- <ee091002-a552-49fe-ae5e-8916937dba15@tls.msk.ru>
- <56e0a35b5c53b416db130c414cd0f3d6@linux.ibm.com>
- <CAFEAcA8Mzo-Ne48=uFBTcy+CXNcnxGOaW941p=CRkD6gmC=JfA@mail.gmail.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z5C9l0WI;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1747842097; x=1748446897; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=spfLx4z/2w6V3UeSHe3VBdiO1OMuzXoFQOHptwcYaYc=;
+        b=Z5C9l0WIFdgm0CtvYGldkH+ciPTX6vsZli2uRs47Rcnsgj3tV2UW8lxPZW3y5rZ9Wn
+         ENLEUsFh3JkO1U6VWBrWus8O9rkfXZkB5Qlr/pGvw3huw3km+EjY98M/Jmv+AWShW0ND
+         U27BF17F86UygJA6hIDn/KZWlylNjAzxBXD3Vh0OXQD51ekuCcnu4Rwc0gLQL23+zkko
+         vWZWRXNz1/uz609b65cyJbbPWAGH5sOowEeEE9h9znqIfzAn2xOMMDeSyVmpYaG7r/lL
+         gyCPhYaJUysryNT8rI7hYMk1qraXwcdsDqimWFV7KfhaBmx5Z1UMifYYJc7QMihcNwm0
+         FtPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747842097; x=1748446897;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=spfLx4z/2w6V3UeSHe3VBdiO1OMuzXoFQOHptwcYaYc=;
+        b=jXVZUu3lGIlBnBQMXsBPbqx1KtQbrTDthQ+MV1BsZekke71hwPxsEaMLHVeDqFRZMj
+         MmjFsrFiDuoKYhF26wzQI//x4pQppRqkY5TpCJEhfX9mnya54T0j5ImkrlZofbd6t6KY
+         BpUvS/Rej0Qkkffq66WrakVI+cH9gaLKmFt8WyWf7yu/1bZBROhcgutaRaMZ3oZsJe9j
+         nBtz380iE0UNdWhjDwstELM8jsjsHMO4T5AXal5iawnVYkf4nd1Kdz/WnIfKPHfychhw
+         iIiFI2SgPAPSR8j++2jvqdjGzXSCrZt802IZH3FQBBiiRmOwP2/B/G/itpWq96FbG9m9
+         IlKQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWC901jyYBqA5EA/rpAKya5PPzBNDdM89jedPfPg6EpppcyQ7XYTOtQuAIt5BPPcieAeUAQJicGnQNcAg==@linaro.org
+X-Gm-Message-State: AOJu0Yzx93h7yCg035kJbpCZqdqLuxq9CNtLOUe7LjTMWEt3j0fQabmn
+	ys9OmhMSu6XEQPkwl2F/o/Izl8sAcIT+potlGT9nTuYlJpoW04oxShoNYA0G/HrN0GB3Y9NkZaT
+	bGSHxHWefMXqeds2co4v5TlFKXxF+bEEhRS79qNRcMcoM
+X-Gm-Gg: ASbGncsxrhfVudSnTBUjZOfCOQOiXHGjI5Ltnh+rMMS1nRhiCwlbcKA9i2PIo+KQn/9
+	kpcPVXtQ8zXsNhvNuEF3id4uboYLx9E/RJhDIG5OOL9MMSDVS1azXiv1Yt6q1d7chXJSwXNYjg9
+	EedZRKNqyY8ODzcMteL1zN8EnvSRkXHPPACka7RP5sYTgE
+X-Google-Smtp-Source: AGHT+IE4lqVILNbp+91oyYEN/v1dl/Zmyx+CpYjMBQPP1jiCqBYQw6fdo1H43hpPWRJPQhryy9tig6s4K7Ji5mcRMms=
+X-Received: by 2002:a05:690c:6002:b0:70c:beb2:d15d with SMTP id
+ 00721157ae682-70cbeb2d57cmr238950107b3.15.1747842096924; Wed, 21 May 2025
+ 08:41:36 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA8Mzo-Ne48=uFBTcy+CXNcnxGOaW941p=CRkD6gmC=JfA@mail.gmail.com>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-TUID: F786BKco9O8u
+References: <20250207153112.3939799-1-alex.bennee@linaro.org>
+ <20250207153112.3939799-12-alex.bennee@linaro.org> <ee091002-a552-49fe-ae5e-8916937dba15@tls.msk.ru>
+ <56e0a35b5c53b416db130c414cd0f3d6@linux.ibm.com> <CAFEAcA8Mzo-Ne48=uFBTcy+CXNcnxGOaW941p=CRkD6gmC=JfA@mail.gmail.com>
+ <aC3zT7gOMn4i-d4U@redhat.com>
+In-Reply-To: <aC3zT7gOMn4i-d4U@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 21 May 2025 16:41:24 +0100
+X-Gm-Features: AX0GCFv5PEVvm_Y2xRgD4c7fEzTF202zrflBykavwYv7tsKc7GPCnyfB1SeKVGQ
+Message-ID: <CAFEAcA_M5cJ3atABVCdR+_p2t3wvr3+Pmesq9Hs39J9c2ateWg@mail.gmail.com>
+Subject: Re: [PATCH v2 11/17] gdbstub: Try unlinking the unix socket before binding
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Ilya Leoshkevich <iii@linux.ibm.com>, Michael Tokarev <mjt@tls.msk.ru>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, qemu-devel@nongnu.org, 
+	Peter Xu <peterx@redhat.com>, Thomas Huth <thuth@redhat.com>, Weiwei Li <liwei1518@gmail.com>, 
+	qemu-arm@nongnu.org, Nicholas Piggin <npiggin@gmail.com>, 
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Bin Meng <bmeng.cn@gmail.com>, 
+	Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>, 
+	Kyle Evans <kevans@freebsd.org>, Alistair Francis <alistair.francis@wdc.com>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Laurent Vivier <laurent@vivier.eu>, Riku Voipio <riku.voipio@iki.fi>, 
+	Harsh Prateek Bora <harshpb@linux.ibm.com>, Fabiano Rosas <farosas@suse.de>, 
+	Alexandre Iooss <erdnaxe@crans.org>, Laurent Vivier <lvivier@redhat.com>, 
+	Daniel Henrique Barboza <danielhb413@gmail.com>, Warner Losh <imp@bsdimp.com>, 
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>, Palmer Dabbelt <palmer@dabbelt.com>, 
+	Mahmoud Mandour <ma.mandourr@gmail.com>, qemu-ppc@nongnu.org, 
+	Paolo Bonzini <pbonzini@redhat.com>, qemu-rust@nongnu.org, qemu-riscv@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 5gqqY7bLnCRl
 
-On Wed, May 21, 2025 at 04:34:24PM +0100, Peter Maydell wrote:
-> On Tue, 20 May 2025 at 23:22, Ilya Leoshkevich <iii@linux.ibm.com> wrote:
-> > However, wasn't it already broken in this regard?
-> > With fccb744f41c69fec6fd92225fe907c6e69de5d44^ I get:
+On Wed, 21 May 2025 at 16:38, Daniel P. Berrang=C3=A9 <berrange@redhat.com>=
+ wrote:
+>
+> On Wed, May 21, 2025 at 04:34:24PM +0100, Peter Maydell wrote:
+> > Also, mjt's packaging for Debian puts in some stubs for the
+> > offending getwpuid etc functions, which suppress the glib warnings
+> > (this is why he noticed this whereas none of the rest of us did):
 > >
-> > [2/2] Linking target qemu-s390x
-> > /usr/bin/ld: /usr/lib64/libglib-2.0.a(gutils.c.o): in function
-> > `g_get_user_database_entry':
-> > (.text+0xeb): warning: Using 'getpwnam_r' in statically linked
-> > applications requires at runtime the shared libraries from the glibc
-> > version used for linking
-> > /usr/bin/ld: (.text+0x2be): warning: Using 'getpwuid' in statically
-> > linked applications requires at runtime the shared libraries from the
-> > glibc version used for linking
-> > /usr/bin/ld: (.text+0x134): warning: Using 'getpwuid_r' in statically
-> > linked applications requires at runtime the shared libraries from the
-> > glibc version used for linking
-> >
-> > This comes from glib, but the ultimate result is still the same.
-> 
-> Those are in upstream glib, as you note. We can't fix those (unless we
-> have the enthusiasm to write patches for upstream glib: last time
-> we asked, they were not against the idea, but nobody on either side
-> had the time available to try to write the necessary patches).
-> But we can and should fix the cases in our own code.
-> 
-> > Also, what are the symptoms of the breakage? IIUC as long as execution
-> > does not reach getaddrinfo(), which it in this case should not, because
-> > it is used only on inet paths, there should not be any issues, right?
-> 
-> Correct -- if we don't call the function it's fine. But the easiest
-> way to be sure we don't call the function is to not link it in :-)
-> Otherwise future code changes could result in a call without our
-> realizing it.
-> 
-> Also, mjt's packaging for Debian puts in some stubs for the
-> offending getwpuid etc functions, which suppress the glib warnings
-> (this is why he noticed this whereas none of the rest of us did):
-> 
-> https://sources.debian.org/patches/qemu/1:10.0.0%2Bds-2/static-linux-user-stubs.diff/
+> > https://sources.debian.org/patches/qemu/1:10.0.0%2Bds-2/static-linux-us=
+er-stubs.diff/
+>
+> Oh interesting, I was conincidentally wondering if adding dummy
+> stubs might suppress this.
 
-Oh interesting, I was conincidentally wondering if adding dummy
-stubs might suppress this.
+If we do I think that g_assert_not_reached() is probably better than
+returning -1 etc.
 
-How about we pull that change upstream, and expand it to getaddrinfo
-too ?  I like the stubs much more than artificially splitting up
-the source files
+> How about we pull that change upstream, and expand it to getaddrinfo
+> too ?  I like the stubs much more than artificially splitting up
+> the source files
 
+The stub is still effectively a runtime assert. Splitting the
+source file gives us a compile time guarantee that we don't
+call the function, so I prefer that.
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+thanks
+-- PMM

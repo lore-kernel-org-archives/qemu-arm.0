@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.19])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ad52d490910sm929266466b.135.2025.05.21.09.42.52
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ad52d06dcafsm945245966b.54.2025.05.21.09.42.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 21 May 2025 09:42:55 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id BB1FA5F9FA;
-	Wed, 21 May 2025 17:42:50 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 139A15FA16;
+	Wed, 21 May 2025 17:42:51 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
@@ -29,91 +29,132 @@ Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
 	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
 	Gustavo Romero <gustavo.romero@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH v3 07/20] contrib/plugins: add a scaling factor to the ips arg
-Date: Wed, 21 May 2025 17:42:37 +0100
-Message-Id: <20250521164250.135776-8-alex.bennee@linaro.org>
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+	qemu-stable@nongnu.org
+Subject: [PATCH v3 11/20] hw/display: re-arrange memory region tracking
+Date: Wed, 21 May 2025 17:42:41 +0100
+Message-Id: <20250521164250.135776-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250521164250.135776-1-alex.bennee@linaro.org>
 References: <20250521164250.135776-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: rmp7Lt90I4s0
+X-TUID: 2/h7JhNkR418
 
-It's easy to get lost in zeros while setting the numbers of
-instructions per second. Add a scaling suffix to make things simpler.
+QOM objects can be embedded in other QOM objects and managed as part
+of their lifetime but this isn't the case for
+virtio_gpu_virgl_hostmem_region. However before we can split it out we
+need some other way of associating the wider data structure with the
+memory region.
 
+Fortunately MemoryRegion has an opaque pointer. This is passed down to
+MemoryRegionOps for device type regions but is unused in the
+memory_region_init_ram_ptr() case. Use the opaque to carry the
+reference and allow the final MemoryRegion object to be reaped when
+its reference count is cleared.
+
+Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-
+Message-Id: <20250410122643.1747913-2-manos.pitsidianakis@linaro.org>
+Cc: qemu-stable@nongnu.org
 ---
-v2
-  - normalise the suffix before a full strcmp0
-  - check endptr actually set
-  - fix checkpatch
-  - scale_entry -> ScaleEntry
-  - drop hz from suffix
----
- contrib/plugins/ips.c | 34 +++++++++++++++++++++++++++++++++-
- 1 file changed, 33 insertions(+), 1 deletion(-)
+ include/system/memory.h       |  1 +
+ hw/display/virtio-gpu-virgl.c | 23 ++++++++---------------
+ 2 files changed, 9 insertions(+), 15 deletions(-)
 
-diff --git a/contrib/plugins/ips.c b/contrib/plugins/ips.c
-index e5297dbb01..eb4418c25b 100644
---- a/contrib/plugins/ips.c
-+++ b/contrib/plugins/ips.c
-@@ -129,6 +129,18 @@ static void plugin_exit(qemu_plugin_id_t id, void *udata)
-     qemu_plugin_scoreboard_free(vcpus);
- }
+diff --git a/include/system/memory.h b/include/system/memory.h
+index fbbf4cf911..b3cef1acb5 100644
+--- a/include/system/memory.h
++++ b/include/system/memory.h
+@@ -783,6 +783,7 @@ struct MemoryRegion {
+     DeviceState *dev;
  
-+typedef struct {
-+    const char *suffix;
-+    unsigned long multipler;
-+} ScaleEntry;
-+
-+/* a bit like units.h but not binary */
-+static ScaleEntry scales[] = {
-+    { "k", 1000 },
-+    { "m", 1000 * 1000 },
-+    { "g", 1000 * 1000 * 1000 },
-+};
-+
- QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
-                                            const qemu_info_t *info, int argc,
-                                            char **argv)
-@@ -137,12 +149,32 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
-         char *opt = argv[i];
-         g_auto(GStrv) tokens = g_strsplit(opt, "=", 2);
-         if (g_strcmp0(tokens[0], "ips") == 0) {
--            max_insn_per_second = g_ascii_strtoull(tokens[1], NULL, 10);
-+            char *endptr = NULL;
-+            max_insn_per_second = g_ascii_strtoull(tokens[1], &endptr, 10);
-             if (!max_insn_per_second && errno) {
-                 fprintf(stderr, "%s: couldn't parse %s (%s)\n",
-                         __func__, tokens[1], g_strerror(errno));
-                 return -1;
-             }
-+
-+            if (endptr && *endptr != 0) {
-+                g_autofree gchar *lower = g_utf8_strdown(endptr, -1);
-+                unsigned long scale = 0;
-+
-+                for (int j = 0; j < G_N_ELEMENTS(scales); j++) {
-+                    if (g_strcmp0(lower, scales[j].suffix) == 0) {
-+                        scale = scales[j].multipler;
-+                        break;
-+                    }
-+                }
-+
-+                if (scale) {
-+                    max_insn_per_second *= scale;
-+                } else {
-+                    fprintf(stderr, "bad suffix: %s\n", endptr);
-+                    return -1;
-+                }
-+            }
-         } else {
-             fprintf(stderr, "option parsing failed: %s\n", opt);
-             return -1;
+     const MemoryRegionOps *ops;
++    /* opaque data, used by backends like @ops */
+     void *opaque;
+     MemoryRegion *container;
+     int mapped_via_alias; /* Mapped via an alias, container might be NULL */
+diff --git a/hw/display/virtio-gpu-virgl.c b/hw/display/virtio-gpu-virgl.c
+index 145a0b3879..71a7500de9 100644
+--- a/hw/display/virtio-gpu-virgl.c
++++ b/hw/display/virtio-gpu-virgl.c
+@@ -52,17 +52,11 @@ virgl_get_egl_display(G_GNUC_UNUSED void *cookie)
+ 
+ #if VIRGL_VERSION_MAJOR >= 1
+ struct virtio_gpu_virgl_hostmem_region {
+-    MemoryRegion mr;
++    MemoryRegion *mr;
+     struct VirtIOGPU *g;
+     bool finish_unmapping;
+ };
+ 
+-static struct virtio_gpu_virgl_hostmem_region *
+-to_hostmem_region(MemoryRegion *mr)
+-{
+-    return container_of(mr, struct virtio_gpu_virgl_hostmem_region, mr);
+-}
+-
+ static void virtio_gpu_virgl_resume_cmdq_bh(void *opaque)
+ {
+     VirtIOGPU *g = opaque;
+@@ -73,14 +67,12 @@ static void virtio_gpu_virgl_resume_cmdq_bh(void *opaque)
+ static void virtio_gpu_virgl_hostmem_region_free(void *obj)
+ {
+     MemoryRegion *mr = MEMORY_REGION(obj);
+-    struct virtio_gpu_virgl_hostmem_region *vmr;
++    struct virtio_gpu_virgl_hostmem_region *vmr = mr->opaque;
+     VirtIOGPUBase *b;
+     VirtIOGPUGL *gl;
+ 
+-    vmr = to_hostmem_region(mr);
+-    vmr->finish_unmapping = true;
+-
+     b = VIRTIO_GPU_BASE(vmr->g);
++    vmr->finish_unmapping = true;
+     b->renderer_blocked--;
+ 
+     /*
+@@ -118,8 +110,8 @@ virtio_gpu_virgl_map_resource_blob(VirtIOGPU *g,
+ 
+     vmr = g_new0(struct virtio_gpu_virgl_hostmem_region, 1);
+     vmr->g = g;
++    mr = g_new0(MemoryRegion, 1);
+ 
+-    mr = &vmr->mr;
+     memory_region_init_ram_ptr(mr, OBJECT(mr), "blob", size, data);
+     memory_region_add_subregion(&b->hostmem, offset, mr);
+     memory_region_set_enabled(mr, true);
+@@ -131,7 +123,9 @@ virtio_gpu_virgl_map_resource_blob(VirtIOGPU *g,
+      * command processing until MR is fully unreferenced and freed.
+      */
+     OBJECT(mr)->free = virtio_gpu_virgl_hostmem_region_free;
++    mr->opaque = vmr;
+ 
++    vmr->mr = mr;
+     res->mr = mr;
+ 
+     return 0;
+@@ -142,16 +136,15 @@ virtio_gpu_virgl_unmap_resource_blob(VirtIOGPU *g,
+                                      struct virtio_gpu_virgl_resource *res,
+                                      bool *cmd_suspended)
+ {
+-    struct virtio_gpu_virgl_hostmem_region *vmr;
+     VirtIOGPUBase *b = VIRTIO_GPU_BASE(g);
+     MemoryRegion *mr = res->mr;
++    struct virtio_gpu_virgl_hostmem_region *vmr;
+     int ret;
+ 
+     if (!mr) {
+         return 0;
+     }
+-
+-    vmr = to_hostmem_region(res->mr);
++    vmr = mr->opaque;
+ 
+     /*
+      * Perform async unmapping in 3 steps:
 -- 
 2.39.5

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.19])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ad52d277a1fsm922258566b.85.2025.05.21.09.42.50
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6005ac32b53sm9207614a12.64.2025.05.21.09.42.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 May 2025 09:42:50 -0700 (PDT)
+        Wed, 21 May 2025 09:42:56 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 31CB75F786;
-	Wed, 21 May 2025 17:42:50 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 265AC5FA1B;
+	Wed, 21 May 2025 17:42:51 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
@@ -29,96 +29,96 @@ Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
 	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
 	Gustavo Romero <gustavo.romero@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH v3 00/20] Maintainer updates for May (testing, plugins, virtio-gpu) - pre-PR
-Date: Wed, 21 May 2025 17:42:30 +0100
-Message-Id: <20250521164250.135776-1-alex.bennee@linaro.org>
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+	qemu-stable@nongnu.org
+Subject: [PATCH v3 12/20] virtio-gpu: fix hang under TCG when unmapping blob
+Date: Wed, 21 May 2025 17:42:42 +0100
+Message-Id: <20250521164250.135776-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250521164250.135776-1-alex.bennee@linaro.org>
+References: <20250521164250.135776-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: bXGKoaGE6mUQ
+X-TUID: hrwzs0BP0GgN
 
-Now the tree is open here is the state of my current maintainer
-queues. I've tagged the virtio-gpu changes as Cc: qemu-stable but
-given how close to release we were it didn't seem worth rushing them
-in for 10.0. I've included a MAINTAINERS patch just to make sure I can
-route any more fixes until a more full time maintainer volunteers.
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
-Unless there are any major objections I intend to send the PR on Friday.
+This commit fixes an indefinite hang when using VIRTIO GPU blob objects
+under TCG in certain conditions.
 
-For v3
-  - addressed review comments
-  - included gdb/next patches
+The VIRTIO_GPU_CMD_RESOURCE_MAP_BLOB VIRTIO command creates a
+MemoryRegion and attaches it to an offset on a PCI BAR of the
+VirtIOGPUdevice. The VIRTIO_GPU_CMD_RESOURCE_UNMAP_BLOB command unmaps
+it.
 
-For v2
-  - addressed various comments (see bellow --- in commits)
-  - added Akihiko/Dmitry as virtio-gpu reviewers
+Because virglrenderer commands are not thread-safe they are only
+called on the main context and QEMU performs the cleanup in three steps
+to prevent a use-after-free scenario where the guest can access the
+region after it’s unmapped:
 
-The following still need review:
+1. From the main context, the region’s field finish_unmapping is false
+   by default, so it sets a variable cmd_suspended, increases the
+   renderer_blocked variable, deletes the blob subregion, and unparents
+   the blob subregion causing its reference count to decrement.
 
-  MAINTAINERS: add Akihiko and Dmitry as reviewers
-  MAINTAINERS: add myself to virtio-gpu for Odd Fixes
-  tests/Makefile: include test-plugins in per-arch build deps
-  tests/tcg: make aarch64 boot.S handle different starting modes
-  tests/docker: expose $HOME/.cache/qemu as docker volume
+2. From an RCU context, the MemoryView gets freed, the FlatView gets
+   recalculated, the free callback of the blob region
+   virtio_gpu_virgl_hostmem_region_free is called which sets the
+   region’s field finish_unmapping to true, allowing the main thread
+   context to finish replying to the command
 
-Alex.
+3. From the main context, the command is processed again, but this time
+   finish_unmapping is true, so virgl_renderer_resource_unmap can be
+   called and a response is sent to the guest.
 
-Alex Bennée (12):
-  tests/docker: expose $HOME/.cache/qemu as docker volume
-  gitlab: disable debug info on CI builds
-  tests/tcg: make aarch64 boot.S handle different starting modes
-  tests/Makefile: include test-plugins in per-arch build deps
-  contrib/plugins: add a scaling factor to the ips arg
-  contrib/plugins: allow setting of instructions per quantum
-  MAINTAINERS: add myself to virtio-gpu for Odd Fixes
-  MAINTAINERS: add Akihiko and Dmitry as reviewers
-  hw/display: re-arrange memory region tracking
-  include/exec: fix assert in size_memop
-  include/gdbstub: fix include guard in commands.h
-  gdbstub: assert earlier in handle_read_all_regs
+It happens so that under TCG, if the guest has no timers configured (and
+thus no interrupt will cause the CPU to exit), the RCU thread does not
+have enough time to grab the locks and recalculate the FlatView.
 
-Dominik 'Disconnect3d' Czarnota (1):
-  gdbstub: Implement qGDBServerVersion packet
+That’s not a big problem in practice since most guests will assume a
+response will happen later in time and go on to do different things,
+potentially triggering interrupts and allowing the RCU context to run.
+If the guest waits for the unmap command to complete though, it blocks
+indefinitely. Attaching to the QEMU monitor and force quitting the guest
+allows the cleanup to continue.
 
-Dongwon Kim (1):
-  ui/gtk-gl-area: Remove extra draw call in refresh
+There's no reason why the FlatView recalculation can't occur right away
+when we delete the blob subregion, however. It does not, because when we
+create the subregion we set the object as its own parent:
 
-Gustavo Romero (1):
-  tests/functional: Add PCI hotplug test for aarch64
+    memory_region_init_ram_ptr(mr, OBJECT(mr), "blob", size, data);
 
-Manos Pitsidianakis (3):
-  virtio-gpu: fix hang under TCG when unmapping blob
-  virtio-gpu: refactor async blob unmapping
-  gdbstub: update aarch64-core.xml
+The extra reference is what prevents freeing the memory region object in
+the memory transaction of deleting the subregion.
 
-Nabih Estefan (1):
-  tests/qtest: fix igb test failure under --enable-ubsan
+This commit changes the owner object to the device, which removes the
+extra owner reference in the memory region and causes the MR to be
+freed right away in the main context.
 
-Yiwei Zhang (1):
-  virtio-gpu: support context init multiple timeline
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Tested-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20250410122643.1747913-3-manos.pitsidianakis@linaro.org>
+Cc: qemu-stable@nongnu.org
+---
+ hw/display/virtio-gpu-virgl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- MAINTAINERS                                  |  11 +-
- docs/about/emulation.rst                     |   4 +
- include/exec/memop.h                         |   4 +-
- include/gdbstub/commands.h                   |   2 +-
- include/system/memory.h                      |   1 +
- contrib/plugins/ips.c                        |  49 +++++-
- gdbstub/gdbstub.c                            |  19 ++-
- hw/display/virtio-gpu-virgl.c                | 104 ++++++++---
- tests/qtest/libqos/igb.c                     |   4 +-
- ui/gtk-gl-area.c                             |   1 -
- .gitlab-ci.d/buildtest-template.yml          |   1 +
- gdb-xml/aarch64-core.xml                     |  52 +++++-
- tests/Makefile.include                       |   2 +-
- tests/docker/Makefile.include                |  10 +-
- tests/functional/meson.build                 |   1 +
- tests/functional/test_aarch64_hotplug_pci.py |  74 ++++++++
- tests/tcg/aarch64/Makefile.softmmu-target    |   3 +-
- tests/tcg/aarch64/system/boot.S              | 171 ++++++++++++++++++-
- 18 files changed, 464 insertions(+), 49 deletions(-)
- create mode 100755 tests/functional/test_aarch64_hotplug_pci.py
-
+diff --git a/hw/display/virtio-gpu-virgl.c b/hw/display/virtio-gpu-virgl.c
+index 71a7500de9..8fbe4e70cc 100644
+--- a/hw/display/virtio-gpu-virgl.c
++++ b/hw/display/virtio-gpu-virgl.c
+@@ -112,7 +112,7 @@ virtio_gpu_virgl_map_resource_blob(VirtIOGPU *g,
+     vmr->g = g;
+     mr = g_new0(MemoryRegion, 1);
+ 
+-    memory_region_init_ram_ptr(mr, OBJECT(mr), "blob", size, data);
++    memory_region_init_ram_ptr(mr, OBJECT(g), "blob", size, data);
+     memory_region_add_subregion(&b->hostmem, offset, mr);
+     memory_region_set_enabled(mr, true);
+ 
 -- 
 2.39.5

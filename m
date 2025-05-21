@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.19])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ad52d497214sm929070366b.146.2025.05.21.09.42.55
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ad5572f6436sm674593966b.182.2025.05.21.09.42.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 May 2025 09:43:01 -0700 (PDT)
+        Wed, 21 May 2025 09:43:03 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 4AD235FA53;
+	by draig.lan (Postfix) with ESMTP id A7BC15FAFD;
 	Wed, 21 May 2025 17:42:51 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -30,54 +30,84 @@ Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
 	Gustavo Romero <gustavo.romero@linaro.org>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
-	Dongwon Kim <dongwon.kim@intel.com>,
-	Vivek Kasireddy <vivek.kasireddy@intel.com>
-Subject: [PATCH v3 14/20] ui/gtk-gl-area: Remove extra draw call in refresh
-Date: Wed, 21 May 2025 17:42:44 +0100
-Message-Id: <20250521164250.135776-15-alex.bennee@linaro.org>
+	Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>,
+	Patryk 'patryk4815' Sondej <patryk.sondej@gmail.com>
+Subject: [PATCH v3 19/20] gdbstub: Implement qGDBServerVersion packet
+Date: Wed, 21 May 2025 17:42:49 +0100
+Message-Id: <20250521164250.135776-20-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250521164250.135776-1-alex.bennee@linaro.org>
 References: <20250521164250.135776-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 9lBpJcFow/z0
+X-TUID: kurFBis45tye
 
-From: Dongwon Kim <dongwon.kim@intel.com>
+From: Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>
 
-This partially reverts commit 77bf310084dad38b3a2badf01766c659056f1cf2
-which causes some guest display corruption when gtk-gl-area
-is used for GTK rendering (e.g. Wayland Compositor) possibly due to
-simulataneous accesses on the guest frame buffer by host compositor
-and the guest.
+This commit adds support for the `qGDBServerVersion` packet to the qemu
+gdbstub  which could be used by clients to detect the QEMU version
+(and, e.g., use a workaround for known bugs).
 
-Fixes: 77bf310084 ("ui/gtk: Draw guest frame at refresh cycle")
-Reported-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Reported-by: Alex Bennée <alex.bennee@linaro.org>
-Tested-by: Alex Bennée <alex.bennee@linaro.org>
-Tested-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Cc: Marc-André Lureau <marcandre.lureau@redhat.com>
-Cc: Vivek Kasireddy <vivek.kasireddy@intel.com>
-Signed-off-by: Dongwon Kim <dongwon.kim@intel.com>
-Message-Id: <20250214170813.2234754-1-dongwon.kim@intel.com>
+This packet is not documented/standarized by GDB but it was implemented
+by LLDB gdbstub [0] and is helpful for projects like Pwndbg [1].
+
+This has been implemented by Patryk, who I included in Co-authored-by
+and who asked me to send the patch.
+
+[0] https://lldb.llvm.org/resources/lldbgdbremote.html#qgdbserverversion
+[1] https://github.com/pwndbg/pwndbg/issues/2648
+
+Co-authored-by: Patryk 'patryk4815' Sondej <patryk.sondej@gmail.com>
+Signed-off-by: Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>
+Message-Id: <20250403191340.53343-1-dominik.b.czarnota@gmail.com>
+[AJB: fix include, checkpatch linewrap]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- ui/gtk-gl-area.c | 1 -
- 1 file changed, 1 deletion(-)
+ gdbstub/gdbstub.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-diff --git a/ui/gtk-gl-area.c b/ui/gtk-gl-area.c
-index 2c9a0db425..9f7dc697f2 100644
---- a/ui/gtk-gl-area.c
-+++ b/ui/gtk-gl-area.c
-@@ -129,7 +129,6 @@ void gd_gl_area_refresh(DisplayChangeListener *dcl)
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index 6023c80d25..def0b7e877 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -28,6 +28,7 @@
+ #include "qemu/cutils.h"
+ #include "qemu/module.h"
+ #include "qemu/error-report.h"
++#include "qemu/target-info.h"
+ #include "trace.h"
+ #include "exec/gdbstub.h"
+ #include "gdbstub/commands.h"
+@@ -1597,6 +1598,18 @@ static void handle_query_threads(GArray *params, void *user_ctx)
+     gdbserver_state.query_cpu = gdb_next_attached_cpu(gdbserver_state.query_cpu);
+ }
  
-     if (vc->gfx.guest_fb.dmabuf &&
-         qemu_dmabuf_get_draw_submitted(vc->gfx.guest_fb.dmabuf)) {
--        gd_gl_area_draw(vc);
-         return;
-     }
- 
++static void handle_query_gdb_server_version(GArray *params, void *user_ctx)
++{
++#if defined(CONFIG_USER_ONLY)
++    g_string_printf(gdbserver_state.str_buf, "name:qemu-%s;version:%s;",
++                    target_name(), QEMU_VERSION);
++#else
++    g_string_printf(gdbserver_state.str_buf, "name:qemu-system-%s;version:%s;",
++                    target_name(), QEMU_VERSION);
++#endif
++    gdb_put_strbuf();
++}
++
+ static void handle_query_first_threads(GArray *params, void *user_ctx)
+ {
+     gdbserver_state.query_cpu = gdb_first_attached_cpu();
+@@ -1842,6 +1855,10 @@ static const GdbCmdParseEntry gdb_gen_query_table[] = {
+         .handler = handle_query_threads,
+         .cmd = "sThreadInfo",
+     },
++    {
++        .handler = handle_query_gdb_server_version,
++        .cmd = "GDBServerVersion",
++    },
+     {
+         .handler = handle_query_first_threads,
+         .cmd = "fThreadInfo",
 -- 
 2.39.5

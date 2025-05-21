@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.19])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ad52d4967e2sm919240766b.128.2025.05.21.09.42.52
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6005ae3918esm9074721a12.68.2025.05.21.09.42.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 21 May 2025 09:42:55 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id A7C2C5F9F5;
+	by draig.lan (Postfix) with ESMTP id CF02B5F9FC;
 	Wed, 21 May 2025 17:42:50 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -29,149 +29,89 @@ Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
 	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
 	Gustavo Romero <gustavo.romero@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v3 06/20] tests/functional: Add PCI hotplug test for aarch64
-Date: Wed, 21 May 2025 17:42:36 +0100
-Message-Id: <20250521164250.135776-7-alex.bennee@linaro.org>
+	"Michael S. Tsirkin" <mst@redhat.com>
+Subject: [PATCH v3 08/20] contrib/plugins: allow setting of instructions per quantum
+Date: Wed, 21 May 2025 17:42:38 +0100
+Message-Id: <20250521164250.135776-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250521164250.135776-1-alex.bennee@linaro.org>
 References: <20250521164250.135776-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ZvsoyIU7IVtq
+X-TUID: vRDUK5SyUy21
 
-From: Gustavo Romero <gustavo.romero@linaro.org>
+The default is we update time every 1/10th of a second or so. However
+for some cases we might want to update time more frequently. Allow
+this to be set via the command line through the ipq argument.
 
-Add a functional test, aarch64_hotplug_pci, to exercise PCI hotplug and
-hot-unplug on arm64.
-
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Message-Id: <20250512144629.182340-1-gustavo.romero@linaro.org>
-[AJB: add qemu-arm link]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 ---
+v3
+  - error checking for ipq
 v2
-  - add qemu-arm link to MAINTAINERS
+  - checkpatch fixes.
 ---
- MAINTAINERS                                  |  6 ++
- tests/functional/meson.build                 |  1 +
- tests/functional/test_aarch64_hotplug_pci.py | 74 ++++++++++++++++++++
- 3 files changed, 81 insertions(+)
- create mode 100755 tests/functional/test_aarch64_hotplug_pci.py
+ docs/about/emulation.rst |  4 ++++
+ contrib/plugins/ips.c    | 15 ++++++++++++++-
+ 2 files changed, 18 insertions(+), 1 deletion(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 7060cf49b9..818d7b9d5f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2078,6 +2078,12 @@ S: Supported
- F: include/hw/pci/pcie_doe.h
- F: hw/pci/pcie_doe.c
+diff --git a/docs/about/emulation.rst b/docs/about/emulation.rst
+index a72591ee4d..456d01d5b0 100644
+--- a/docs/about/emulation.rst
++++ b/docs/about/emulation.rst
+@@ -811,6 +811,10 @@ This plugin can limit the number of Instructions Per Second that are executed::
+   * - ips=N
+     - Maximum number of instructions per cpu that can be executed in one second.
+       The plugin will sleep when the given number of instructions is reached.
++  * - ipq=N
++    - Instructions per quantum. How many instructions before we re-calculate time.
++      The lower the number the more accurate time will be, but the less efficient the plugin.
++      Defaults to ips/10
  
-+ARM PCI Hotplug
-+M: Gustavo Romero <gustavo.romero@linaro.org>
-+L: qemu-arm@nongnu.org
-+S: Supported
-+F: tests/functional/test_aarch64_hotplug_pci.py
+ Other emulation features
+ ------------------------
+diff --git a/contrib/plugins/ips.c b/contrib/plugins/ips.c
+index eb4418c25b..f1523cbee3 100644
+--- a/contrib/plugins/ips.c
++++ b/contrib/plugins/ips.c
+@@ -145,6 +145,8 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+                                            const qemu_info_t *info, int argc,
+                                            char **argv)
+ {
++    bool ipq_set = false;
 +
- ACPI/SMBIOS
- M: Michael S. Tsirkin <mst@redhat.com>
- M: Igor Mammedov <imammedo@redhat.com>
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index 52b4706cfe..2d68840fa2 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -83,6 +83,7 @@ tests_aarch64_system_quick = [
- tests_aarch64_system_thorough = [
-   'aarch64_aspeed_ast2700',
-   'aarch64_aspeed_ast2700fc',
-+  'aarch64_hotplug_pci',
-   'aarch64_imx8mp_evk',
-   'aarch64_raspi3',
-   'aarch64_raspi4',
-diff --git a/tests/functional/test_aarch64_hotplug_pci.py b/tests/functional/test_aarch64_hotplug_pci.py
-new file mode 100755
-index 0000000000..fa1bb62c8f
---- /dev/null
-+++ b/tests/functional/test_aarch64_hotplug_pci.py
-@@ -0,0 +1,74 @@
-+#!/usr/bin/env python3
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+#
-+# The test hotplugs a PCI device and checks it on a Linux guest.
-+#
-+# Copyright (c) 2025 Linaro Ltd.
-+#
-+# Author:
-+#  Gustavo Romero <gustavo.romero@linaro.org>
-+#
-+# This work is licensed under the terms of the GNU GPL, version 2 or
-+# later.  See the COPYING file in the top-level directory.
+     for (int i = 0; i < argc; i++) {
+         char *opt = argv[i];
+         g_auto(GStrv) tokens = g_strsplit(opt, "=", 2);
+@@ -175,6 +177,14 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+                     return -1;
+                 }
+             }
++        } else if (g_strcmp0(tokens[0], "ipq") == 0) {
++            max_insn_per_quantum = g_ascii_strtoull(tokens[1], NULL, 10);
 +
-+from qemu_test import LinuxKernelTest, Asset, exec_command_and_wait_for_pattern
-+from qemu_test import BUILD_DIR
++            if (max_insn_per_quantum == 0 || max_insn_per_quantum == G_MAXUINT64) {
++                fprintf(stderr, "bad ipq value: %s\n", g_strerror(errno));
++                return -1;
++            }
++            ipq_set = true;
+         } else {
+             fprintf(stderr, "option parsing failed: %s\n", opt);
+             return -1;
+@@ -182,7 +192,10 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+     }
+ 
+     vcpus = qemu_plugin_scoreboard_new(sizeof(vCPUTime));
+-    max_insn_per_quantum = max_insn_per_second / NUM_TIME_UPDATE_PER_SEC;
 +
-+class HotplugPCI(LinuxKernelTest):
-+
-+    ASSET_KERNEL = Asset(
-+        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm64/'
-+         'current/images/netboot/debian-installer/arm64/linux'),
-+        '3821d4db56d42c6a4eac62f31846e35465940afd87746b4cfcdf5c9eca3117b2')
-+
-+    ASSET_INITRD = Asset(
-+        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm64/'
-+         'current/images/netboot/debian-installer/arm64/initrd.gz'),
-+        '2583ec22b45265ad69e82f198674f53d4cd85be124fe012eedc2fd91156bc4b4')
-+
-+    def test_hotplug_pci(self):
-+
-+        self.set_machine('virt')
-+        self.vm.add_args('-m', '512M')
-+        self.vm.add_args('-cpu', 'cortex-a57')
-+        self.vm.add_args('-append',
-+                         'console=ttyAMA0,115200 init=/bin/sh')
-+        self.vm.add_args('-device',
-+                         'pcie-root-port,bus=pcie.0,chassis=1,slot=1,id=pcie.1')
-+        self.vm.add_args('-bios', self.build_file('pc-bios',
-+                                                  'edk2-aarch64-code.fd'))
-+
-+        # BusyBox prompt
-+        prompt = "~ #"
-+        self.launch_kernel(self.ASSET_KERNEL.fetch(),
-+                           self.ASSET_INITRD.fetch(),
-+                           wait_for=prompt)
-+
-+        # Check for initial state: 2 network adapters, lo and enp0s1.
-+        exec_command_and_wait_for_pattern(self,
-+                                          'ls -l /sys/class/net | wc -l',
-+                                          '2')
-+
-+        # Hotplug one network adapter to the root port, i.e. pcie.1 bus.
-+        self.vm.cmd('device_add',
-+                    driver='virtio-net-pci',
-+                    bus='pcie.1',
-+                    addr=0,
-+                    id='na')
-+        # Wait for the kernel to recognize the new device.
-+        self.wait_for_console_pattern('virtio-pci')
-+        self.wait_for_console_pattern('virtio_net')
-+
-+        # Check if there is a new network adapter.
-+        exec_command_and_wait_for_pattern(self,
-+                                          'ls -l /sys/class/net | wc -l',
-+                                          '3')
-+
-+        self.vm.cmd('device_del', id='na')
-+        exec_command_and_wait_for_pattern(self,
-+                                          'ls -l /sys/class/net | wc -l',
-+                                          '2')
-+
-+if __name__ == '__main__':
-+    LinuxKernelTest.main()
++    if (!ipq_set) {
++        max_insn_per_quantum = max_insn_per_second / NUM_TIME_UPDATE_PER_SEC;
++    }
+ 
+     if (max_insn_per_quantum == 0) {
+         fprintf(stderr, "minimum of %d instructions per second needed\n",
 -- 
 2.39.5

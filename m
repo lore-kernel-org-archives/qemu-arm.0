@@ -1,321 +1,241 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1266622njc;
-        Wed, 21 May 2025 08:27:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUwhfZK4dtxMFlSBenWgCU2iihTWraHX+QTGiTGK/YeaxAqTJMtK5NiQfOhfyHBvJd4MnVjkJvnBT1QEQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IF6ws2k2K0UhbVsVXw42n0eYT3+bwwrCXEBbRKFZ7j+VaWw9K5ZdH/XpsXmsmIvqr2BWdq7
-X-Received: by 2002:a05:6e02:1489:b0:3d4:2ea4:6b87 with SMTP id e9e14a558f8ab-3db8493e8b1mr188496675ab.11.1747841262835;
-        Wed, 21 May 2025 08:27:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747841262; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1283391njc;
+        Wed, 21 May 2025 08:56:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXTyTfk+9JKVlq0fR5xKIno0EYmjj+NI1FqExWqlHqYUH0SuO8NMJE3sFAeclE6FF18RaIqfMP0avXwYQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGPMMFjAHyDY7VzY47XXvXhGIiZB1Cn2TwdePa/mr0VuQvioo16scChjcJVG60hNwr2fvRv
+X-Received: by 2002:a05:6602:380d:b0:864:4aa2:d796 with SMTP id ca18e2360f4ac-86a231e19e9mr2816823639f.8.1747843013370;
+        Wed, 21 May 2025 08:56:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747843013; cv=none;
         d=google.com; s=arc-20240605;
-        b=gl1mnN02n8UxPt72djyqdRMsrMrFCrhV3oyIUmlmwBRkugBOXEV7X5iq3HBqbIT/s2
-         aYeOPKFem7MlZ3jezTWDnU0UzsjCGdUkcI2iFQFJPjGDhkGAivCk+jB39Lw24Insl+0N
-         u6s3XCRsyUabrenZd3KQIkzLgAjD9SZ0dtTCiwZOYt+riZyQd71so3t9dnsEc/JgnEcV
-         DK3U05h+dxk2YA+53pTYqIvSodOGyefD5VcpPunhPnvSNoYnmbtdH1ZCzxpEz06NdAJN
-         blLtPgMSGIKz0Y7B6hyOPZ+tWB1mKlFi8UMC8hmBO/p24LXkfwHYhOrkXXiGgieOM1yy
-         RMtg==
+        b=YYbanQePbe9j53W8+dEKIZghcsVt2e0lynIGaUnuRKBfOWrqrxy9gUiJX+w4idE2MF
+         lLOjOr3N0HDf8bCiBOX6CF0Km/qrOC7jeHz2RtNsuoxj7GyxZGhxn7bQSuv9dA9Svwod
+         ROS/LNUuI1KcnUOt5YdLoxST89SGdeWcyngGG88YQMA/FTt/M68/IP56KsKo87+/+S7k
+         3Rgq+dFWx7TCx4SsbEkwOjIT8MiB3hrlUZJ8ml00vdouK450UPKYzac8M/HDvbdI74ER
+         xQFRvxxHpLIhOlhu49vwZ3O0W3pc4erfFq+o/VIDzulGsmsxdhF1qncv8zoSie6Kh3wU
+         oY8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=vYTckfD81agmH5Xmoc7T8HX6TcSOrbDNI8bR8zby13g=;
-        fh=vASB0+z+DzWpYC/1fA/+2GX166C3KbnXvEzhxexebEI=;
-        b=exdwtvY5y1qiWgp6su4MSoO9R620oe0Ub119s0ieaTpF6SDaHipKgzUnlAdKWTZUBO
-         gtgC7jNcHQP+GKdqfoAeebNNYJNDZnp3VsYGQLwMAdmIlHx480vDzL29tQ+Ij5W3xyE1
-         tL7A8b8D9OgwyVTd7IU9OBpzeKXaMS+joULPwHibJkopoAGgrZ2ASi8/rQKECThGaW26
-         kfGuMcE54PYSndQUqtVWKRxibZ/fCYZ9iQOEwlKuuEjpGcvD+2Qps9I+SrOgHz1tG1sQ
-         HgGKc2hvbMBv578ZFnJvxRiviZzRU7dfwTc09xA01ijN2RBkP/+O1QgBswwXtcIUTZyZ
-         MwyA==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=dkEPQQnqq2osiNVv4ua6vRwxHX1aKf0cG3l7GlRZhGE=;
+        fh=Z2qDztSV8CWVU0ChRWBZcc7s5uQfKpc4TkuCRqvdIcI=;
+        b=eGKWH0CF/aBCmOfrUYfd8ylJuHH2gV2zRRVpWiqtEdmTjYgL6vVCow9J+r+Wtt0rwm
+         +xCRYR+zlujoF8fk3ZXTqXpzYPqSKmxzGDbRi5fmQvrA4o69ndSY83RRCRrfDk16CleX
+         S5h4mLFBjxlrDDjeMIyH+bDyIrPF58PGRS27SUcFBt44ejOXyo6K1FTviwwEHHO1P5BY
+         jc6eYEKOQjxN9wJlH3AkjbJ76CghSW3DbuMySpzCSUpBGmkFR3GtruXdubwTnUrGwnB6
+         ogIurxR64Gy1byEkSCaTiO6H0bYpDnZTbEvMSNsCYAKTloqy3n6FNsZlm20+HLNCJgGg
+         5qyw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="eInr1Y/G";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9e14a558f8ab-3dc866be3b0si17276215ab.113.2025.05.21.08.27.42
+        by mx.google.com with ESMTPS id ca18e2360f4ac-86a235e335bsi824020239f.52.2025.05.21.08.56.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 May 2025 08:27:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 21 May 2025 08:56:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="eInr1Y/G";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uHlLY-0001Lx-6M; Wed, 21 May 2025 11:27:08 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uHlnq-0004L0-1r; Wed, 21 May 2025 11:56:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uHlLV-0001L8-3j
- for qemu-arm@nongnu.org; Wed, 21 May 2025 11:27:06 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uHlLS-000455-JV
- for qemu-arm@nongnu.org; Wed, 21 May 2025 11:27:04 -0400
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-231fd67a9aeso37961785ad.1
- for <qemu-arm@nongnu.org>; Wed, 21 May 2025 08:27:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1747841218; x=1748446018; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=vYTckfD81agmH5Xmoc7T8HX6TcSOrbDNI8bR8zby13g=;
- b=eInr1Y/GWsiqzvqie5z61PItyCwoqWpeuJgv1w3O41EmJsX/727Dicgyk2Lb9gOlqO
- fBcPLuQd5m7OuG+NbX4DMlbcCQcLv3fmUlFrcSSHOglkT7B28KafC7oZOhwv5Zz7dn5H
- sEc6AZKT52tW+Kf31WRBUKiPpr8GMGTcka8LwgAz+f1o/jzqKrVOh4SjfTn7RITtR69V
- 5hETu1/hyiNPQhCpzYSMt4YXyRjXVV5hbIplBdTXBg3THbtBMJLfJJ5FxNgOtjQQKGkM
- iu6aR/QTgz64W+inQHdkNaWGchsdasaqv1n9Wzp3w+sS90aZTxIK6+OORjpO6/DuDJY0
- KTSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747841218; x=1748446018;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=vYTckfD81agmH5Xmoc7T8HX6TcSOrbDNI8bR8zby13g=;
- b=HdZ4MaFaxPXNxjYxbV58YHKLrjUJXjg/POaO0+UdB7PiIF6SKExWKx5RCASO945eYB
- IGd6fzUrypOjgosOBlYpMZEw2D8ZQnRrdlcG/3heVfIpb6ljpuKaeG0au8H2mMG+zMOn
- TwlcK38QKTQMe5RYjpjIDrMGk6ueaRIJA/ulXz8glk2MgvVWiuYTm9YqVIfb1q55a/vM
- vl5pLTftxAzL8WCaosJP2v4GHnkrSaMkLobmSS7woCo9muyuYtijAHf/3a4YkhqIuTtF
- vxGH1P30qTt3Fu9+d6tY/jceUeu25FFDH7CezuwFs/Ga4rsBgIrWudRoncJ6Yu/9WyLK
- nlCA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW6ynJAx/vVLczKyqg3+K2Qnz9FUxNH+1qCHBc4OeRCKlzdZK666czTKS8L6bJ0kU9lgC6d+B4d0w==@nongnu.org
-X-Gm-Message-State: AOJu0YyqGU+vGRfmhWQYNmW08IrY/S4foFQRZxoie+SNYFssjNm40tv+
- SjaTeoa7C9O1H5h+WazSt000wB+MjMemawR/n2KEfdg8OsRQSW4JBPU7qDeLXTF0qbU=
-X-Gm-Gg: ASbGncuUT/wvYjX5DjJzZ+RG9Y/MUOV9dRzWpPdmcbIiKlkXD3WFgJvqX8gUqK4ylH9
- nnW0HoqyQ/S1T8PsOS7K9KjXo4el33g01eAqQL4auuEXjzjtS8K8VAMgC14GyeLSYfvmkw/s/Lm
- wckszj4NP6Hb4Yla2s5eATi+vSANqw2y8A7dsm9qtVgcXHxIgmVAP0dBDoCSoNp8sQcOKip2+B0
- k0GFHhErCcD+P4VKdf4rcGYuTmtKAsQlfKVrMFl6bhmRid1N2CdMzmycvHQi/Bvl8oalj0IGDn2
- Sskl1v2vDccWaqFNtXWkOibZ/K652CncaS/VG5YewvUcSC/QXAvMgbT6GBC//EZ2tsIpcTGSd4O
- PEHYVWieerlMCPsjIHtG7qOLznQuN5Q==
-X-Received: by 2002:a17:902:d2cf:b0:221:89e6:ccb6 with SMTP id
- d9443c01a7336-231d4ea09cfmr313156025ad.25.1747841218545; 
- Wed, 21 May 2025 08:26:58 -0700 (PDT)
-Received: from ?IPV6:2804:7f0:b401:d47f:532e:8fb1:3c49:40da?
- ([2804:7f0:b401:d47f:532e:8fb1:3c49:40da])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-231d4aca2d6sm94160185ad.3.2025.05.21.08.26.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 21 May 2025 08:26:58 -0700 (PDT)
-Message-ID: <ad7c7b84-9f12-4767-a349-df47c489c726@linaro.org>
-Date: Wed, 21 May 2025 12:26:39 -0300
+ (Exim 4.90_1) (envelope-from <SRS0=LBbo=YF=kaod.org=clg@ozlabs.org>)
+ id 1uHlnn-0004Cd-1m; Wed, 21 May 2025 11:56:19 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=LBbo=YF=kaod.org=clg@ozlabs.org>)
+ id 1uHlnf-0008F9-TB; Wed, 21 May 2025 11:56:18 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4b2bcd3th9z4xTx;
+ Thu, 22 May 2025 01:56:01 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4b2bcZ3Hn4z4xNG;
+ Thu, 22 May 2025 01:55:57 +1000 (AEST)
+Message-ID: <55f9f007-44c5-4a27-b3a5-9c4a939d1c6b@kaod.org>
+Date: Wed, 21 May 2025 17:55:54 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 14/22] hw/i386/acpi-build: Move aml_pci_edsm to a generic
- place
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- imammedo@redhat.com, anisinha@redhat.com, mst@redhat.com,
- shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org
-References: <20250514170431.2786231-1-eric.auger@redhat.com>
- <20250514170431.2786231-15-eric.auger@redhat.com>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20250514170431.2786231-15-eric.auger@redhat.com>
+Subject: Re: [PATCH v1 3/3] hw/arm/aspeed_ast27x0: Fix RAM size detection
+ failure on BE hosts
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com
+References: <20250520073540.2014240-1-jamin_lin@aspeedtech.com>
+ <20250520073540.2014240-4-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250520073540.2014240-4-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x633.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=LBbo=YF=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8TpnDfzkbqip
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qbgun0PbXUpZ
 
-Hi Eric,
-
-On 5/14/25 14:01, Eric Auger wrote:
-> Move aml_pci_edsm to pcihp since we want to reuse that for
-> ARM and acpi-index support.
+On 5/20/25 09:35, Jamin Lin wrote:
+> On big-endian hosts, the aspeed_ram_capacity_write() function previously passed
+> the address of a 64-bit "data" variable directly to address_space_write(),
+> assuming host and guest endianness matched.
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> However, the data is expected to be written in little-endian format to DRAM.
+> On big-endian hosts, this led to incorrect data being written into DRAM,
+> which caused the guest firmware to misdetect the DRAM size.
+> 
+> As a result, U-Boot fails to boot and hangs.
+> 
+> - Explicitly converting the 32-bit portion of "data" to little-endian format
+>    using cpu_to_le32(), storing it in a temporary "uint32_t le_data".
+> - Updating the MemoryRegionOps to restrict access to exactly 4 bytes
+>    using .valid.{min,max}_access_size = 4 and .impl.min_access_size = 4.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Fixes: 7436db1 ("aspeed/soc: fix incorrect dram size for AST2700")
 > ---
->   include/hw/acpi/pcihp.h |  2 ++
->   hw/acpi/pcihp.c         | 53 +++++++++++++++++++++++++++++++++++++++++
->   hw/i386/acpi-build.c    | 53 -----------------------------------------
->   3 files changed, 55 insertions(+), 53 deletions(-)
+>   hw/arm/aspeed_ast27x0.c | 21 ++++++++++++++++-----
+>   1 file changed, 16 insertions(+), 5 deletions(-)
 > 
-> diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
-> index 4d820b4baf..bc31dbff39 100644
-> --- a/include/hw/acpi/pcihp.h
-> +++ b/include/hw/acpi/pcihp.h
-> @@ -82,6 +82,8 @@ bool build_append_notification_callback(Aml *parent_scope, const PCIBus *bus);
+> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+> index 1974a25766..7ed0919b3f 100644
+> --- a/hw/arm/aspeed_ast27x0.c
+> +++ b/hw/arm/aspeed_ast27x0.c
+> @@ -335,24 +335,34 @@ static void aspeed_ram_capacity_write(void *opaque, hwaddr addr, uint64_t data,
+>       AspeedSoCState *s = ASPEED_SOC(opaque);
+>       ram_addr_t ram_size;
+>       MemTxResult result;
+> +    uint32_t le_data;
 >   
->   void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus);
+>       ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
+>                                           &error_abort);
 >   
-> +Aml *aml_pci_edsm(void);
+>       assert(ram_size > 0);
+>   
+> +    if (size != 4) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Unsupported write size: %d (only 4-byte allowed)\n",
+> +                      __func__, size);
+> +        return;
+> +    }
+
+The core memory subsystem should find such issues if the valid attributes
+of MemoryRegionOps are set correctly.
+
+> +    le_data = cpu_to_le32((uint32_t)data);
 > +
->   /* Called on reset */
->   void acpi_pcihp_reset(AcpiPciHpState *s);
->   
-> diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-> index d800371ddc..57fe8938b1 100644
-> --- a/hw/acpi/pcihp.c
-> +++ b/hw/acpi/pcihp.c
-> @@ -937,6 +937,59 @@ void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus)
+>       /*
+>        * Emulate ddr capacity hardware behavior.
+>        * If writes the data to the address which is beyond the ram size,
+>        * it would write the data to the "address % ram_size".
+>        */
+>       result = address_space_write(&s->dram_as, addr % ram_size,
+> -                                 MEMTXATTRS_UNSPECIFIED, &data, 4);
+> +                                 MEMTXATTRS_UNSPECIFIED, &le_data, 4);
+
+
+This should be enough :
+
+     address_space_stl_le(&s->dram_as, addr % ram_size, data,
+                          MEMTXATTRS_UNSPECIFIED, &result);
+
+Sorry for not spotting this earlier. Finding a BE host is difficult.
+Thanks for the time you spent on fixing this issue.
+
+C.
+
+
+>       if (result != MEMTX_OK) {
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "%s: DRAM write failed, addr:0x%" HWADDR_PRIx
+> -                      ", data :0x%" PRIx64  "\n",
+> -                      __func__, addr % ram_size, data);
+> +                      ", data :0x%x\n",
+> +                      __func__, addr % ram_size, le_data);
 >       }
 >   }
 >   
-> +Aml *aml_pci_edsm(void)
-> +{
-> +    Aml *method, *ifctx;
-> +    Aml *zero = aml_int(0);
-> +    Aml *func = aml_arg(2);
-> +    Aml *ret = aml_local(0);
-> +    Aml *aidx = aml_local(1);
-> +    Aml *params = aml_arg(4);
-> +
-> +    method = aml_method("EDSM", 5, AML_SERIALIZED);
-> +
-> +    /* get supported functions */
-> +    ifctx = aml_if(aml_equal(func, zero));
-> +    {
-> +        /* 1: have supported functions */
-> +        /* 7: support for function 7 */
-> +        const uint8_t caps = 1 | BIT(7);
-> +        build_append_pci_dsm_func0_common(ifctx, ret);
-> +        aml_append(ifctx, aml_store(aml_int(caps), aml_index(ret, zero)));
-> +        aml_append(ifctx, aml_return(ret));
-> +    }
-> +    aml_append(method, ifctx);
-> +
-> +    /* handle specific functions requests */
-> +    /*
-> +     * PCI Firmware Specification 3.1
-> +     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
-> +     *        Operating Systems
-> +     */
-> +    ifctx = aml_if(aml_equal(func, aml_int(7)));
-> +    {
-> +       Aml *pkg = aml_package(2);
-> +       aml_append(pkg, zero);
-> +       /* optional, if not impl. should return null string */
-> +       aml_append(pkg, aml_string("%s", ""));
-> +       aml_append(ifctx, aml_store(pkg, ret));
-> +
-> +       /*
-> +        * IASL is fine when initializing Package with computational data,
-> +        * however it makes guest unhappy /it fails to process such AML/.
-> +        * So use runtime assignment to set acpi-index after initializer
-> +        * to make OSPM happy.
-> +        */
-> +       aml_append(ifctx,
-> +           aml_store(aml_derefof(aml_index(params, aml_int(0))), aidx));
-> +       aml_append(ifctx, aml_store(aidx, aml_index(ret, zero)));
-> +       aml_append(ifctx, aml_return(ret));
-> +    }
-> +    aml_append(method, ifctx);
-> +
-> +    return method;
-> +}
-> +
->   const VMStateDescription vmstate_acpi_pcihp_pci_status = {
->       .name = "acpi_pcihp_pci_status",
->       .version_id = 1,
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index bcfba2ccb3..385e75d061 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -322,59 +322,6 @@ build_facs(GArray *table_data)
->       g_array_append_vals(table_data, reserved, 40); /* Reserved */
->   }
+> @@ -360,9 +370,10 @@ static const MemoryRegionOps aspeed_ram_capacity_ops = {
+>       .read = aspeed_ram_capacity_read,
+>       .write = aspeed_ram_capacity_write,
+>       .endianness = DEVICE_LITTLE_ENDIAN,
+> +    .impl.min_access_size = 4,
+>       .valid = {
+> -        .min_access_size = 1,
+> -        .max_access_size = 8,
+> +        .min_access_size = 4,
+> +        .max_access_size = 4,
+>       },
+>   };
 >   
-> -static Aml *aml_pci_edsm(void)
-> -{
-> -    Aml *method, *ifctx;
-> -    Aml *zero = aml_int(0);
-> -    Aml *func = aml_arg(2);
-> -    Aml *ret = aml_local(0);
-> -    Aml *aidx = aml_local(1);
-> -    Aml *params = aml_arg(4);
-> -
-> -    method = aml_method("EDSM", 5, AML_SERIALIZED);
-> -
-> -    /* get supported functions */
-> -    ifctx = aml_if(aml_equal(func, zero));
-> -    {
-> -        /* 1: have supported functions */
-> -        /* 7: support for function 7 */
-> -        const uint8_t caps = 1 | BIT(7);
-> -        build_append_pci_dsm_func0_common(ifctx, ret);
-> -        aml_append(ifctx, aml_store(aml_int(caps), aml_index(ret, zero)));
-> -        aml_append(ifctx, aml_return(ret));
-> -    }
-> -    aml_append(method, ifctx);
-> -
-> -    /* handle specific functions requests */
-> -    /*
-> -     * PCI Firmware Specification 3.1
-> -     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
-> -     *        Operating Systems
-> -     */
-> -    ifctx = aml_if(aml_equal(func, aml_int(7)));
-> -    {
-> -       Aml *pkg = aml_package(2);
-> -       aml_append(pkg, zero);
-> -       /* optional, if not impl. should return null string */
-> -       aml_append(pkg, aml_string("%s", ""));
-> -       aml_append(ifctx, aml_store(pkg, ret));
-> -
-> -       /*
-> -        * IASL is fine when initializing Package with computational data,
-> -        * however it makes guest unhappy /it fails to process such AML/.
-> -        * So use runtime assignment to set acpi-index after initializer
-> -        * to make OSPM happy.
-> -        */
-> -       aml_append(ifctx,
-> -           aml_store(aml_derefof(aml_index(params, aml_int(0))), aidx));
-> -       aml_append(ifctx, aml_store(aidx, aml_index(ret, zero)));
-> -       aml_append(ifctx, aml_return(ret));
-> -    }
-> -    aml_append(method, ifctx);
-> -
-> -    return method;
-> -}
-> -
->   /*
->    * build_prt - Define interrupt routing rules
->    *
 
-EDSM is not called from anywhere. _DSM method actually calls the PDSM, already defined
-in pcihp.c and generated by aml_pci_pdsm(). build_acpi_pci_hotplug(), which calls
-aml_pci_pdsm(), properly creates the PDSM method. Then in build_append_pcihp_slots()
-the a _DSM is defined per slot and inside it there is a call to PDSM, so I understand
-we should actually stick to the PDSM in pcihp.c instead of EDSM.
-
-EDSM, being used in i386 code, feels a outdated PDSM, so maybe PDSM should be used there,
-although a different story or a clean up for later. I'm not sure what "static endpoint"
-means in the context of EDSM.
-
-Hence this patch can be dropped in my understanding and:
-
-aml_append(pci0_scope, aml_pci_edsm()) in 15/22 too, without any prejudice to the
-hotplugging and unplugging in this series.
-
-
-Cheers,
-Gustavo

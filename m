@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1583595njc;
-        Wed, 21 May 2025 19:33:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWa47Z1nGQd7mY89Ny8EEJa2faCk/77HTdkK3QOfs58OqSR2Q2qNDfaginu4jbjhRNN1y8hheI2Gd9agw==@linaro.org
-X-Google-Smtp-Source: AGHT+IH4+smTAHXgkFn+4DWzGanmzhKgI3rbNXZ2mxpGcjLqkm3+IaGpF5JHMGYoYy7x0Ijy2l3O
-X-Received: by 2002:a05:622a:ed0:b0:499:36b4:6883 with SMTP id d75a77b69052e-49936b46948mr185193021cf.11.1747881219286;
-        Wed, 21 May 2025 19:33:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747881219; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1583639njc;
+        Wed, 21 May 2025 19:33:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV3bD+DtpwhT0LOEoGclPustQwugEbXaSrHhBzFT78Eh0Ms8pX/e40UNQP7f0bqdktTrEpR4xN1mq2V0A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHZTeWGuuPIzsWwNH6cJfbkJJ3k/CcWvh/hSxtp7OyIhTxymot+PUqu4KsqZgKXafYwJRfj
+X-Received: by 2002:a05:6e02:3784:b0:3d9:6485:39f0 with SMTP id e9e14a558f8ab-3db842bd205mr234159745ab.9.1747881224113;
+        Wed, 21 May 2025 19:33:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747881224; cv=none;
         d=google.com; s=arc-20240605;
-        b=dC/NQW3aWHDjC7x460JCiNIQR+myR9hRtLngiIXh0sGtvCLFJPypfJBpyP3ck5Dzvp
-         LLvkwSELgqJPuUcMyjsU6upGz69VGsZR1cKxW4M+hwtEIhcVIeEw7GR9whl0r9uFpn4C
-         Oo7Sx873AagZRdW0I6y8fsH6HHP7Zc1FxkRg/r+45Z5c68v90jijArOVd0uWmbF8v9K1
-         9Ck2/864M7gSe2eAUxXmv+nSia14pMIl2Rl27XPud4QbrjsSgWcYhXD2fQwOvTEgzgW1
-         34BJYaAiDimtK3nwxZYTQPheY3GwkqHMATsd2nyhOJ2DrgIxpuDnMieqid+QSE0nmmhq
-         DEiA==
+        b=fseZQYeCaqe5ct2aGiLObX8OXFGWH/bPKAtkaN6XZdeK9s60F5b12f3WyAy0bmnhyh
+         je34fCi38CQgTvQoEWyxt4BPTv91IpZaZzg+E5wuJQCuQc2WFWN4sA7axyok0h3DhRwR
+         voosoig7t+vZsX9OmTHlLZe4ZkXuwyr92TjskyWUVlXukHG8S6heekAw4KYvPA3g7h03
+         TMvIXVQV6j7AzfApBGL2MmdPPA1YJEzyRsvaXIAXr38SeK4afmOTQdgC4NmAjT9PkXAL
+         +WL1DycgFu2e0pBexkOtlzuom6DQqQL5/8gd5Zd6AHiuZTszX3wRUBJL52kRFtfMkjiy
+         s2fA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=InTsgxIWPLHm3sY/awSAF8zCfr43CjETjZV1nzHbH0k=;
-        fh=Gb4TIc8MExyZGNjx5T60USxFFuCM6mshEZ2Ta2WMSD4=;
-        b=jtRAlxiByAgeHh13RBMrckA9UzC34r0UXllHxef4M7BjQEfB+fVg5n2FQSK2KQHnkX
-         gz0cSth5ebSUFMvGGLURkwTweuq1ASwHJOuO6Yw269rt5OfcCvHRzvE9wTLIWeatCzbS
-         pSYZrrclHWZ3lawhB8R22VPNUUlVmuovcskyavutIo2yaS089fCIuUyJBsf0l6+YoUNJ
-         32AG/oh5w7QA8lTzT9y1tpfjjQhWLxr0567TRlWqO5PB6xdW27O5o15uO5qCiF8rhf7Q
-         sFU/d15MM8GtAc9mNMUzPmK9qfmG48fVJwG5egyMnxCbCjzRyF5Up/Isx1CzYRSMwXA/
-         Q0jg==;
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=JIUwWoojE8GKsABD7MQuLGxqDCkGPBrJEtf+woUoHPo=;
+        fh=no4a9QA/0zeIocEYrBrieE6XYIGB9KPekpO3W6wNjNE=;
+        b=ZSCN/tzOdSPV0h0DwZ33Y52RkvvKNzXxiIV2jCKnbOA6UCe6ef9eu8gWC1YkMoR4j1
+         H7CkqmEntnFiZ0P3XfwWbLdWjf7LGmRfOUk1McQHX6E6124Cd1FzM4hGuAx1LTnhe6W9
+         fzGrhjnxaPO94bY4rOsApOG/bdAcchPp4bs8827LDqwDkaqPHealc5mwQ7eaM+LdnL9W
+         hsADYrfVIMPHB96nsEz5Q908rjZPBftNnkkGA7SnV9392Qu7RVXMXyE+RCYgSwO0xpaD
+         9/B3q2oNs0iP/aG2g7e6QndJ3bXbsQXmsQpwUUUGQ6LJ11trh0QwnDjKkJYPZtg8urs/
+         QiwA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-494ae40d505si158509901cf.100.2025.05.21.19.33.39
+        by mx.google.com with ESMTPS id e9e14a558f8ab-3dc8a2cd540si27987765ab.55.2025.05.21.19.33.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 May 2025 19:33:39 -0700 (PDT)
+        Wed, 21 May 2025 19:33:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,15 +42,15 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uHvkP-0003JW-Lk; Wed, 21 May 2025 22:33:33 -0400
+	id 1uHvkV-0003KQ-1z; Wed, 21 May 2025 22:33:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uHvkC-0003Iq-Dt; Wed, 21 May 2025 22:33:18 -0400
+ id 1uHvkF-0003J0-QG; Wed, 21 May 2025 22:33:21 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uHvk8-00010W-Ow; Wed, 21 May 2025 22:33:14 -0400
+ id 1uHvkD-00010W-Gl; Wed, 21 May 2025 22:33:19 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 22 May
@@ -63,11 +63,14 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
  Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v2 0/3] Fix RAM size detection failure on BE hosts
-Date: Thu, 22 May 2025 10:33:01 +0800
-Message-ID: <20250522023305.2486536-1-jamin_lin@aspeedtech.com>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v2 1/3] hw/intc/aspeed: Set impl.min_access_size to 4
+Date: Thu, 22 May 2025 10:33:02 +0800
+Message-ID: <20250522023305.2486536-2-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250522023305.2486536-1-jamin_lin@aspeedtech.com>
+References: <20250522023305.2486536-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
@@ -95,24 +98,71 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /AdXtVNkH5G8
+X-TUID: xtSfbwdZNdRC
 
-v1:
- 1. Fix RAM size detection failure on BE hosts
- 2. INTC: Set impl.min_access_size to 4
-          Fix coding style
-v2:
-  Fix review issue.
+This patch explicitly sets ".impl.min_access_size = 4" to match the
+declared ".valid.min_access_size = 4", enforcing stricter access size
+checking and preventing inconsistent partial accesses to the interrupt
+controller registers.
 
-Jamin Lin (3):
-  hw/intc/aspeed: Set impl.min_access_size to 4
-  hw/intc/aspeed Fix coding style
-  hw/arm/aspeed_ast27x0: Fix RAM size detection failure on BE hosts
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+---
+ hw/intc/aspeed_intc.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
- hw/arm/aspeed_ast27x0.c | 10 ++++++----
- hw/intc/aspeed_intc.c   | 12 ++++++++++--
- 2 files changed, 16 insertions(+), 6 deletions(-)
-
+diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+index 33fcbe729c..19f88853d8 100644
+--- a/hw/intc/aspeed_intc.c
++++ b/hw/intc/aspeed_intc.c
+@@ -737,6 +737,7 @@ static const MemoryRegionOps aspeed_intc_ops = {
+     .read = aspeed_intc_read,
+     .write = aspeed_intc_write,
+     .endianness = DEVICE_LITTLE_ENDIAN,
++    .impl.min_access_size = 4,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+@@ -747,6 +748,7 @@ static const MemoryRegionOps aspeed_intcio_ops = {
+     .read = aspeed_intcio_read,
+     .write = aspeed_intcio_write,
+     .endianness = DEVICE_LITTLE_ENDIAN,
++    .impl.min_access_size = 4,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+@@ -757,6 +759,7 @@ static const MemoryRegionOps aspeed_ssp_intc_ops = {
+     .read = aspeed_intc_read,
+     .write = aspeed_ssp_intc_write,
+     .endianness = DEVICE_LITTLE_ENDIAN,
++    .impl.min_access_size = 4,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+@@ -767,6 +770,7 @@ static const MemoryRegionOps aspeed_ssp_intcio_ops = {
+     .read = aspeed_intcio_read,
+     .write = aspeed_ssp_intcio_write,
+     .endianness = DEVICE_LITTLE_ENDIAN,
++    .impl.min_access_size = 4,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+@@ -777,6 +781,7 @@ static const MemoryRegionOps aspeed_tsp_intc_ops = {
+     .read = aspeed_intc_read,
+     .write = aspeed_tsp_intc_write,
+     .endianness = DEVICE_LITTLE_ENDIAN,
++    .impl.min_access_size = 4,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+@@ -787,6 +792,7 @@ static const MemoryRegionOps aspeed_tsp_intcio_ops = {
+     .read = aspeed_intcio_read,
+     .write = aspeed_tsp_intcio_write,
+     .endianness = DEVICE_LITTLE_ENDIAN,
++    .impl.min_access_size = 4,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4,
 -- 
 2.43.0
 

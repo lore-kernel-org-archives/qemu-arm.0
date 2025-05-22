@@ -1,88 +1,88 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1648338njc;
-        Wed, 21 May 2025 23:08:02 -0700 (PDT)
-X-Received: by 2002:a17:902:d4c6:b0:231:eb7f:107e with SMTP id d9443c01a7336-231eb7f1265mr310503085ad.22.1747894082269;
-        Wed, 21 May 2025 23:08:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747894082; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1655733njc;
+        Wed, 21 May 2025 23:29:13 -0700 (PDT)
+X-Received: by 2002:a05:6a00:854:b0:736:6d4d:ffa6 with SMTP id d2e1a72fcca58-742a98ac52emr30333856b3a.15.1747895353172;
+        Wed, 21 May 2025 23:29:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747895353; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZbTuLg+FV93CTokD+sk4vd7fh8cR8MCeDb7PFojlOIATkTSJN3iA21H7ydPLyKRH9A
-         wsJkqz55x8VscE28P08vTHbXcVt9EEEez4OH8kNWpieiFGmUY+JDnercbEdVfNhG5Bvg
-         31YMCqv+KYkFGsGJQ05wrlOb9fi+BK3Ze3hMftgP8eyAdnAq3gFOeqsseumvlxulbLsK
-         wHE882eqzVIYXaacPmNffvKHJxnr/iExTILJq5ipXQCo+9TaRvAYxjMrDX86OpDgazoo
-         G1DRxFGh6lodoswt0YBTbaFIRbOXWQnNYNjoDYF2k9x5w4MR/p1W2mE8deMEWG8wv5X0
-         /r+g==
+        b=Zj1/aAhqezzoVh2L2sf+YEdbaXuU4TkQ+uaO1KiC+1j8SgqIVJk8n812x/m0MFQ1dm
+         pa/NB1fspDFZUxDzMgKwPyzplSp+2b7jse7NFjZSlnQIsx+93X1hdeabazwwf35LmmYg
+         n0v3pIs6ZksktbNquj9TeIEmK1h8EC852xrDXbfBOkd6qh446o05SDMVSiI5TLV3Roj0
+         qVqNO6iRMaBQN5MMqYr3N6rjFvZQVkpfS8MbmvrAEz2nnnfaPEeN45gu6qttFe1PLHka
+         w5hATS8t+f3a4Ew3KEBWRzum8QpSXrh7gdY3WsvKYDQVYu0cAyBx3yDilrFNrrVLcF5N
+         8wYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=1/zbCeClAfxLgAhFNJwlJvnFHsn5ox5S+Nz8tMBzj9U=;
-        fh=GpPa81iljgXyLXdnOoH/gVHeJjssJBaU+DJT2gHz7Eg=;
-        b=Uj9FLol1tq4ujpJSDizJgf6XiQAfLhg6gUWBM3vhOCWRz76t7qSrVjnp244+fLb3QY
-         ksiuZ10QHsR/QBVcwOBLgLHZ4X/+zC/kVmU1NbKGlOEtn0/PUr2uHi2B1jqRncK6ACfx
-         hha9BDYMQ3cs6a3sBjb7PD19By8HKxlwyyMGJsLHwxnqNfMhIE9xYyt5vxWWiMtfaA2S
-         NmRB2YMZG2CPW+5lfvdSxduL9F4bMBkTUeXlZqYr0aGQMPEeMvk1Y3+/8r+NjavYDVJI
-         XhveUyp/oABzREYci98zhYi07wqDuz721GSaKdqeVld+yaenewmJzy3Fh4YHnxI9RYts
-         UugA==;
+        bh=X7wJaoojbNMJ4yW0rFuO9RrN4Wd9IZN5FjfpVj1pWuw=;
+        fh=ZcLhvplTtSkz3Hi+EIlTJWPkxDl1ZbFPIHUbazlapxk=;
+        b=i3+eP1g8wqPPYEtivXRffxVKK+NiV7zicBYB6WhfD+yuQP9UpffU8UX+m8qnAMQ/pO
+         tcd0211T+Ydx5Zcn5Z1Ojeyv8FRwk9FZjyy7LSpRvzaTa1hFFR0mUAwyYhK2yqO81ICC
+         KGBOJrHtOQ+ayt4QeOzpw+BpjlJLypnJLW48fE0oTIqIfubitPSo1yjk8zfbHXcoF404
+         yiadKaBknOP56aMCOAsHqN6Q2C4cbI70njBunuVc1kmGb61HTSQkjsA4+HQwvLfeI8o+
+         dN4bwZHMdoui679un8jTo9bOltA3hn6zWgtAdUlQmi/c1mfH1pwq7lX8y1RBADFUtc5h
+         tiSQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=xNq2H6t2;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Ux4blz7W;
        spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-231d4aab239sor71448755ad.2.2025.05.21.23.08.02
+        by mx.google.com with SMTPS id d2e1a72fcca58-742a982d7cdsor10440738b3a.6.2025.05.21.23.29.13
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 21 May 2025 23:08:02 -0700 (PDT)
+        Wed, 21 May 2025 23:29:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=xNq2H6t2;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Ux4blz7W;
        spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1747894082; x=1748498882; darn=linaro.org;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1747895352; x=1748500152; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=1/zbCeClAfxLgAhFNJwlJvnFHsn5ox5S+Nz8tMBzj9U=;
-        b=xNq2H6t2HAG7+BAyCrCdYY0WpJPK+7E4sbVTJIwlNa2tGMcUQAAKGvf8R611fx7SIx
-         str3Ds1ZLMv4UWLsIHpEeZoZxjfLIghP9aJfz03QKVX14GBLepsxir5PVhxmMPd7ryRw
-         PlqOr1vpzjhmhf6/AcZAO+96ieesb7n1ycV7sQGx5maRS4aCny+6b/8C1xeTXHdft01f
-         lya1bQsJAAFil9hRR7hYtKej7FT4nJs0kB9SlgCusGQYjqbDJ6di213l2SFl7dlIX0Ez
-         loBMhA25oOPmIR91OpwN4rMEhuwFClMZ951ARA4dx+cIgOqUDBwYr1i5FluBVTI98okp
-         Aw6w==
+        bh=X7wJaoojbNMJ4yW0rFuO9RrN4Wd9IZN5FjfpVj1pWuw=;
+        b=Ux4blz7WfJ0FI1RFGhic5y+JHXiAzj7+eBENcvwH2KL9Yy3zhXLG/MCq8Dfz36xJBJ
+         NBTyVD3Qiru8L8bRG+mWpkjuxuJe22odrn2nknEsWd8fv754RogUTNmU3EVhNkq8ls9u
+         ApZ1BNvdTKj5IYDp4PLLIuXYfcXSzXpuaCqH3kxrajeqiOyn3INbS18qfZIbq9pu9R2J
+         pNcN82CbouOIfweSCpfAHoPjiDTCyXNJSoJ2IuyjjQwtUwIUE18WU98zO5J0JLtrzJj+
+         +7W7leMAFBYACYZWGOnCXNUt9Rdu1Bq9ROaHxirhjdfPF7q3WQK6T5Kkyefc3GQ7tPQM
+         Xpxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747894082; x=1748498882;
+        d=1e100.net; s=20230601; t=1747895352; x=1748500152;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=1/zbCeClAfxLgAhFNJwlJvnFHsn5ox5S+Nz8tMBzj9U=;
-        b=naGRsaMzJraRGZTuYUHc6aMJ3Wg6MH2UrYi3F84zXYG9KbBOl9zy8r5zhVPe7mv6Wa
-         CQUKcG7PXoiciB/2056kGnTAR90YTPOnx1o9V5hZak3qyXYvTCcp/8vHilUyVjeL5OtK
-         4K68M+V50150X6vQps7GUWdgjVi2rcEyRTZMNPgdpXH4hDndXEFvGfkgYI5S7wx4CqEL
-         fTe3qyi6IB6Yr8hdtKoWLXchi5zQ5XbLQpvvKu6aJeIfeTW/azTfD9VU+Pan5PgUWpMm
-         swW65KPWe7ug3TlhzL1BXivQyw3lb8hKJTYnVY7uUDVd+R5gf+t9/oD6Gdcdv0xHbV60
-         kH9g==
-X-Gm-Message-State: AOJu0YxiFEufzbZjwqjHw7mjbOQWL55RIRTcXeF0aWidKYsOGYE5j8ev
-	bT+deq5dXwEe7PemavlDz3AEHxQcKNuwn19VeSIS4fYsYt6+1aUIccOeRCqZ2iIeVUgFUFYifkT
-	+7x7S
-X-Gm-Gg: ASbGncsoEGy23x+q/9oNW1WAzoskE8E6/fL4npF6jDXYVh2N3fEJfEeUk1WSkn+6KYe
-	mTeBUHOifp5Zbomd6yOWdthyEs/YZC1wpyL4S05uzQVOUeZatk6aK7B8FmYPf7qdfVb0TE18D/c
-	v9JDccieQzIKO71fviQ5NsKzBrZIKGuDbFLv4nS2Qp3UZiED8bsw9NblKqkxJLhnToq9GEUPjpe
-	fU2plzxHOic+RRfNghNNpdof+IxbUBpyvpeUmMNSqm+eXZF1N8tBPz2UB1cRLMQhoiL1bmgYDhJ
-	hvH3Hkx1/txOCMuvO8WRECyBqTmAnpSzu2r3ugI5q014r4IiB9S6r7Vjawurng==
-X-Google-Smtp-Source: AGHT+IE3FVxFNCag2LpCvus0IyKip1VOr6LBz2pMT21bNPBHqu/FOw9nn4kFDMvwf+D00GnTfU35MA==
-X-Received: by 2002:a17:903:41d2:b0:232:108b:7bf4 with SMTP id d9443c01a7336-232108b7d59mr222539455ad.6.1747894081621;
-        Wed, 21 May 2025 23:08:01 -0700 (PDT)
+        bh=X7wJaoojbNMJ4yW0rFuO9RrN4Wd9IZN5FjfpVj1pWuw=;
+        b=P9E3iAzRVu7TsVoN/dNtkeR4tdZFU/Doa98V8UBE4fCJKPHGj8i6xzx8wqubuCr269
+         cVFLNuIoDf31YURrO3fUebgKq8nS8//mNaHlqImogqWbAR5ChzN8u3oOOoHoBw5t818W
+         JzGYDhalresmDRh+gjaj9bO9IWYtKRsIMVu5BaFJKqWelaNFFz5LuCRCacEKU92duAME
+         IU8UTVRSqrhGsOgf/3Def7c1C3AcNch9fe5bfCv1M/LTFql0tgYE0jK7DGHrb+i7ca1C
+         Qy5xpDNNWEPj4cUwOqe3iQd5++uSLt2ABha5l3Gws6y8bPV3Qa+q8oZHqYdDNCG9jh/C
+         17DQ==
+X-Gm-Message-State: AOJu0YwPJ06IPewECAPhwlu26n+193yl13swXC6ZyIfddzsoD9dNUiXx
+	4lIsoIp5nwEe8jrCo71mKoAdztXaBSKSE/gI1+GuvwhBXSC7p00HtlMr/BJ3dNZPyEgcQN0VNU6
+	j8wJ4
+X-Gm-Gg: ASbGnctyBJKH20IPXxCJPTzDmaQDBbKO6PVaeQ5TSqH83pL4RN1S1WfeCwiwUYTmqDi
+	v3e3DG5UIL8EoqSgnGWe2vPUYBDQTvkhXZ30v0fN9F5LneybWWrkgtxzd2vmKnojGbSSseGp35K
+	bBvQ7cv8DGpXz1FTJ6eHwMkNdBL9NhD0S/5J8jgBWhOcBl92QhX9jkpHGqJLdeOm3Q0hpj1oL0j
+	0WoymK8YVNA/3Jd2AgxoUgYY3bE8+9cRi8Caozq3bZZcLJKXuk6ZXSLMG2hs0He5/5ShIlnboF0
+	eYsRw8tarCEkScC+Nacw5iLv4APHWDNAUveLmn0BTLxqKiwC1PZvg+OuKlAQJA==
+X-Google-Smtp-Source: AGHT+IE1HJ96JVinrS9Y5I3LAC6A8WMBYeeLwC5abBhLV9ZVlcJcqNt+jIGZmR3nLyMsxzttAVOfFw==
+X-Received: by 2002:a05:6a00:ab87:b0:73c:c11:b42e with SMTP id d2e1a72fcca58-742a98d427dmr30701216b3a.20.1747895352477;
+        Wed, 21 May 2025 23:29:12 -0700 (PDT)
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from [10.100.116.185] ([157.82.128.1])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-231d4ed571esm102120095ad.248.2025.05.21.23.07.56
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-742a970b9basm10545596b3a.49.2025.05.21.23.29.07
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 21 May 2025 23:08:01 -0700 (PDT)
-Message-ID: <e6af12bd-1c36-4e50-8bae-d8d80cad13a0@daynix.com>
-Date: Thu, 22 May 2025 15:07:56 +0900
+        Wed, 21 May 2025 23:29:12 -0700 (PDT)
+Message-ID: <0e6cb7af-37eb-4e8d-b342-ecfcdb639f10@daynix.com>
+Date: Thu, 22 May 2025 15:29:06 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 16/20] include/exec: fix assert in size_memop
+Subject: Re: [PATCH v3 19/20] gdbstub: Implement qGDBServerVersion packet
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
@@ -99,51 +99,80 @@ Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Dmitry Osipenko <dmitry.osipenko@collabora.com>,
  Gustavo Romero <gustavo.romero@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
+ Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>,
+ Patryk 'patryk4815' Sondej <patryk.sondej@gmail.com>
 References: <20250521164250.135776-1-alex.bennee@linaro.org>
- <20250521164250.135776-17-alex.bennee@linaro.org>
+ <20250521164250.135776-20-alex.bennee@linaro.org>
 Content-Language: en-US
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <20250521164250.135776-17-alex.bennee@linaro.org>
+In-Reply-To: <20250521164250.135776-20-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: A9OgUj1o3U1o
+X-TUID: 9SsyCdBrBJvy
 
 On 2025/05/22 1:42, Alex Bennée wrote:
-> We can handle larger sized memops now, expand the range of the assert.
+> From: Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>
 > 
-> Fixes: 4b473e0c60 (tcg: Expand MO_SIZE to 3 bits)
+> This commit adds support for the `qGDBServerVersion` packet to the qemu
+> gdbstub  which could be used by clients to detect the QEMU version
+> (and, e.g., use a workaround for known bugs).
+> 
+> This packet is not documented/standarized by GDB but it was implemented
+> by LLDB gdbstub [0] and is helpful for projects like Pwndbg [1].
+> 
+> This has been implemented by Patryk, who I included in Co-authored-by
+> and who asked me to send the patch.
+> 
+> [0] https://lldb.llvm.org/resources/lldbgdbremote.html#qgdbserverversion
+> [1] https://github.com/pwndbg/pwndbg/issues/2648
+> 
+> Co-authored-by: Patryk 'patryk4815' Sondej <patryk.sondej@gmail.com>
+> Signed-off-by: Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>
+> Message-Id: <20250403191340.53343-1-dominik.b.czarnota@gmail.com>
+> [AJB: fix include, checkpatch linewrap]
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> 
 > ---
-> v2
->    - instead of 128 use 1 << MO_SIZE for future proofing
-> v3
->    - fix comment, 1 << MO_SIZE goes to 1024
-> ---
->   include/exec/memop.h | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>   gdbstub/gdbstub.c | 17 +++++++++++++++++
+>   1 file changed, 17 insertions(+)
 > 
-> diff --git a/include/exec/memop.h b/include/exec/memop.h
-> index 407a47d82c..e934bde809 100644
-> --- a/include/exec/memop.h
-> +++ b/include/exec/memop.h
-> @@ -162,8 +162,8 @@ static inline unsigned memop_size(MemOp op)
->   static inline MemOp size_memop(unsigned size)
->   {
->   #ifdef CONFIG_DEBUG_TCG
-> -    /* Power of 2 up to 8.  */
-> -    assert((size & (size - 1)) == 0 && size >= 1 && size <= 8);
-> +    /* Power of 2 up to 1024 */
-> +    assert((size & (size - 1)) == 0 && size >= 1 && size <= (1 << MO_SIZE));
-
-You missed the following thread:
-https://lore.kernel.org/qemu-devel/eec76ce0-c3ca-48ed-befe-e0930d4a39d9@linaro.org/
-
-I think you need to check the replies to the previous versions of this 
-series. There are several comments not addressed.
-
->   #endif
->       return (MemOp)ctz32(size);
+> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+> index 6023c80d25..def0b7e877 100644
+> --- a/gdbstub/gdbstub.c
+> +++ b/gdbstub/gdbstub.c
+> @@ -28,6 +28,7 @@
+>   #include "qemu/cutils.h"
+>   #include "qemu/module.h"
+>   #include "qemu/error-report.h"
+> +#include "qemu/target-info.h"
+>   #include "trace.h"
+>   #include "exec/gdbstub.h"
+>   #include "gdbstub/commands.h"
+> @@ -1597,6 +1598,18 @@ static void handle_query_threads(GArray *params, void *user_ctx)
+>       gdbserver_state.query_cpu = gdb_next_attached_cpu(gdbserver_state.query_cpu);
 >   }
+>   
+> +static void handle_query_gdb_server_version(GArray *params, void *user_ctx)
+> +{
+> +#if defined(CONFIG_USER_ONLY)
+> +    g_string_printf(gdbserver_state.str_buf, "name:qemu-%s;version:%s;",
+> +                    target_name(), QEMU_VERSION);
+> +#else
+> +    g_string_printf(gdbserver_state.str_buf, "name:qemu-system-%s;version:%s;",
+> +                    target_name(), QEMU_VERSION);
+> +#endif
+
+I sugguest passing "qemu" as the name property.
+
+I guess LLDB developers chose to explicitly have the key-value pair 
+syntax so that users can have one unified logic for parsing and avoid 
+the mess of HTTP's User-Agent; there is a proposal for Web that 
+introduces key-value pairs in a similar manner:
+https://developer.chrome.com/docs/privacy-security/user-agent-client-hints
+
+If we embed more information like to the name property, users will need 
+to have an additional logic to know if it's QEMU or to know other 
+information. Instead, we can emit:
+name:qemu;version:10.0.50;
+
+and we can use something like follows if we want to tell more:
+name:qemu;version:10.0.50;qemu-mode:system;qemu-target:hexagon;

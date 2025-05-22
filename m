@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1602760njc;
-        Wed, 21 May 2025 20:37:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWefbv+4xY4t9keAnkKqaoL06/aGo1Y5kOXnSROq3YwiEanKOEH7wl3K09mmzdmcSW/UsBVvN+eDUgqsQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IG0kmi1eCbZahAjVURLnMFI2uRjcemjuzGLQIdi7UddURuwBq41QdGgtzj3OQi+NS1ySV70
-X-Received: by 2002:a5d:854f:0:b0:85e:d0ca:b635 with SMTP id ca18e2360f4ac-86a173e5ad7mr2507230039f.2.1747885047345;
-        Wed, 21 May 2025 20:37:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747885047; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1602877njc;
+        Wed, 21 May 2025 20:37:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV2ISOERpXHw+CyzZ4Hwt3JZGbbS/d+Zc4eS6wrGKN8BVRa+VVu8z+8VJH1iVAtL/7MJovyKuiZfAtc7A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHJSAd2OSd417QA2uX+9eNRO9lbTpH5CyciPdIVSZKMQqD7RXAAZy4DDTgXBjj3rN4ZDmb3
+X-Received: by 2002:a05:622a:1e92:b0:48c:a62c:7568 with SMTP id d75a77b69052e-494b07e79a3mr356862661cf.25.1747885068855;
+        Wed, 21 May 2025 20:37:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747885068; cv=none;
         d=google.com; s=arc-20240605;
-        b=bdhhFqal0sj06J1/kDZ7IGhnuitwIuSkA1KfFRtRucwlad6xien99kzp2+g9Ojs9LI
-         4HS+jc8HcFaOM+W7n1LjCdji4ZnWlmYWyGE9mLowG6ntDnX205W/46zIbRb/yh5FpdQ0
-         5UvJ/bl/bfWe+kmGbS9eoMV2wri3wy7PG+h+mG34d3jny6F5+xVT2P1opjVIe7d8wmJ6
-         Ya83ENhwotrQzMcOdnnio9Ooej+viJCgclku9lzPJ+XwybRQ9x4ZEOcmE+I21LFylxD6
-         Kqb0fDbPvFv5bNYqEsV2BoWJqvPoVTWlxWsS/uvFOhYTC9iPOuavoXOzSsmx7HLSALLk
-         Efxw==
+        b=NDb7tr725nYEAUoMuPMYuKnj4KXNQRAcxGMAOMNxBXVHZfFhjH2O7YYq/nVS5A0zmX
+         zweXZf0SONwcBRoLakfIcX0ZNvEOatwei7bTrt8cMUFt/Zlfbb4yLY/Zyhw+73Deq+7M
+         DW9smLzoW2btiR6zJRPr1ubFHVVChMiOan7SZ1547rNa8kn66tK+oAOn6PmOGFq/0Tf7
+         pdaRSsziRlV16bC18PUkeo6tdHiwAPxHyYIT6FnrFHzfA8avgkwHzfMHNvnV+68dwfbl
+         JZbK0jT6eE7a9U8MD+R41bMqQ1QrSw4JMu4Sc+mcdR6fC1jsZZgmiL8mGBW9KkuQ2Yhj
+         qxgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=4XNoRv0mGHTx6B3kCDytahVfQv0nE/cHz8i18SRhf6E=;
+        bh=yqZQkF7fyoCyixWqJvPrcSXLF7zDV6t9Bf+U6Pb/AUQ=;
         fh=vQPqsNMqoAlDx9Lray1TJhxW/ME1Lx6izgi/4Tj22z8=;
-        b=TrOIVW+3muMKtkzCtTCj51fFGoCneP+NOB4MA06eWPU2PDTjXwoSMOmKASwWX/Jlwo
-         fzg4KDJDSLUl2eAxb0hIYwFcCp7GQYgzs6rIjG7QFcwb0+by1pYuelSS+urFG8ifnvpa
-         6RXHmHL3nH/El5bsh9pchv17wbKMhTWTUjLzHulrmUVY6jsTtU5NE8My5UkRzrwY+LjD
-         2ilULfnZSu4SYSUCBPk3yNxUGo9R2mo4wqwFTSlXpf+SGpGWoXujwMwCQ1JFy50cZazC
-         Ij05xOw8DyhK4pJAUG2x6ph0e+7gmge70qxHP2RaL8bo461w6ZwD0Xmqg716kefCytEz
-         D4iQ==;
+        b=dBt7k0JEiqFIBNzd9dF7mdc6JSGbDk+gI0+IgarcqjY11Ujg8mxq4GWCZD4L6OuQcf
+         S9m21F0gkzo1FCb0Re2OcGr/63Ty9IyOal77+Y1pvzItEzkj5BxsQfSr3tYrVP7qE7Ra
+         cmzeFSlIlrIgvGqu9uI0NBgykArHw/anxACjK6r9B/d8sbZR8n+0WeLKlhMAUwiZ+Rzn
+         qmC8ZQy6suS456o5CHMGHVFVFgaGu4RKLis4mCyfPALYArXikwQrFSaRxwK/0oQOsjZq
+         59l9ufDbdr7yX2rXYuDCnZYEjw54HJz8o7yMx3yn5e4ZDHayoop4oM16MBXXiA+oDFSl
+         kpXA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8926c6da1cb9f-4fbcc48e0dasi11370060173.107.2025.05.21.20.37.27
+        by mx.google.com with ESMTPS id d75a77b69052e-494b1d3614csi146347281cf.617.2025.05.21.20.37.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 May 2025 20:37:27 -0700 (PDT)
+        Wed, 21 May 2025 20:37:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,15 +42,15 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uHwk3-0005r4-Ug; Wed, 21 May 2025 23:37:11 -0400
+	id 1uHwk0-0005pd-VB; Wed, 21 May 2025 23:37:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1uHwjz-0005p2-K9; Wed, 21 May 2025 23:37:08 -0400
+ id 1uHwjw-0005nv-8H; Wed, 21 May 2025 23:37:05 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1uHwjx-00047S-7j; Wed, 21 May 2025 23:37:07 -0400
+ id 1uHwju-00047S-Nh; Wed, 21 May 2025 23:37:03 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 22 May
@@ -66,9 +66,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
 CC: <troy_lee@aspeedtech.com>, <longzl2@lenovo.com>,
  <yunlin.tang@aspeedtech.com>, <steven_lee@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 5/5] docs: Remove ast2700fc from Aspeed family boards
-Date: Thu, 22 May 2025 11:36:28 +0800
-Message-ID: <20250522033628.3752086-7-steven_lee@aspeedtech.com>
+Subject: [PATCH v3 4/5] hw/arm/fby35: Map BMC memory into system memory
+Date: Thu, 22 May 2025 11:36:27 +0800
+Message-ID: <20250522033628.3752086-6-steven_lee@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250522033628.3752086-1-steven_lee@aspeedtech.com>
 References: <20250522033628.3752086-1-steven_lee@aspeedtech.com>
@@ -99,28 +99,29 @@ Reply-to:  Steven Lee <steven_lee@aspeedtech.com>
 From:  Steven Lee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: v3yxvldsIoMr
+X-TUID: JrD4Mp+5nseQ
 
-The ast2700fc machine is now covered in the dedicated ast2700-evb
-section. Listing it in the general Aspeed board family list is
-redundant.
+Add the BMC memory region as a subregion of system_memory so that
+modules relying on system memory can operate correctly.
 
 Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- docs/system/arm/aspeed.rst | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/fby35.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 58a8020eec..43d27d83cb 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -1,4 +1,4 @@
--Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``ast2700fc``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
-+Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
- =================================================================================================================================================================================================================================================================================================================================================================================================================================
+diff --git a/hw/arm/fby35.c b/hw/arm/fby35.c
+index e123fa69e1..c14fc2efe9 100644
+--- a/hw/arm/fby35.c
++++ b/hw/arm/fby35.c
+@@ -77,6 +77,7 @@ static void fby35_bmc_init(Fby35State *s)
  
- The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
+     memory_region_init(&s->bmc_memory, OBJECT(&s->bmc), "bmc-memory",
+                        UINT64_MAX);
++    memory_region_add_subregion(get_system_memory(), 0, &s->bmc_memory);
+     memory_region_init_ram(&s->bmc_dram, OBJECT(&s->bmc), "bmc-dram",
+                            FBY35_BMC_RAM_SIZE, &error_abort);
+ 
 -- 
 2.43.0
 

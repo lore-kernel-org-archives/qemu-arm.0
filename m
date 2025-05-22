@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1722170njc;
-        Thu, 22 May 2025 02:18:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW1xois73dL52626wXTYYztKfczwb7fm7tDHeJTJdBfACHkMkRb/cLfu9l/5m53YysOfoT6oOhLUGy2jA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHAxJ+oVYwvjYVmjjNFNngImWkX4qS6He0tE0tUFolHoxwA6Rrk5+TcjkU3b4UjkTHrDnSS
-X-Received: by 2002:a05:620a:268d:b0:7c5:6a40:6a7a with SMTP id af79cd13be357-7cd39db74e7mr4787090485a.6.1747905492387;
-        Thu, 22 May 2025 02:18:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747905492; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1722187njc;
+        Thu, 22 May 2025 02:18:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU7gCYXk/I8+lERRBwVt3JYBqeTfY155sJlP61/KNJSz2Mj3d86pqHjQPcMWtnjy+g6pMKXiXRjQ91COg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHtNS/SeXuLUbTkV1QRyJiDcaZPdhGIAx4wFd+pvtfjlUrdinySwMtjXFZBkDH/pD22mttX
+X-Received: by 2002:a05:6214:2403:b0:6f5:421b:623c with SMTP id 6a1803df08f44-6f8b08c007amr438002576d6.25.1747905495687;
+        Thu, 22 May 2025 02:18:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747905495; cv=none;
         d=google.com; s=arc-20240605;
-        b=bBCisNFtELfhPn7FhA1phCWbl3ej6ViSa5hFx5IYqLxiCuX2s1C0ewNra80wivb7Ii
-         LjkrvQBeZiA5Xz1lw/QIb4y9Yu3foULrmF0LBqu8/5+mJhlB4uOD04ZvbJ75rkbb6LKi
-         w7671N/PrvvqofxvNU8VgCtjuYbNHVb3SxVGcdgoyJnzFzUTyRG9vK5mWAXc2liRlxYp
-         AsggnVBn+UzsQF0KNtYn3jcal73sIl87nqG21VCEI9A5AzJ5bmSlosvv1q3hlRSkk91E
-         EcpHeVHzeJXpVqHzyh8vY7W/5SM8eB7hWGSWuHSB6z5O1IlkGFhbikHkHc3MNEJBrG01
-         UQ+w==
+        b=ZDIaWQ0BgY3c0zerk9kez88BaT8AQ27l/OFRE2qnebO1Mm6yiJRuMu2YhAM/u4XSre
+         1RoYVRH9b4aB/bfBsAOcmE47bNKZnACYqiHn9L4gbiK2nAHRV5oLfMxFKWkJIvIDPQrk
+         ml8OmrNZIOP5tA0soTFi+cB4o+4WqZO/OKO+nRKaAeqYFD6HBhXuCKhnK9Ea0TlgCRkV
+         ASuJjUANu0ax7XsZsfpRdAn7TbX9k4B4gaBoG7E/yl3t9USSBam30Sw978TYSVEYgOSZ
+         lX6o2YKU0OILJk4Ju2QDDdIFIqnkIPyQl+yuPM19cdFKaDe7UyfpAjCPhwfbxLyT6Nj6
+         f1YQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=3wrgkZygoU5UFOAheJ8bScxjyJWi7qZjds7l7aiY8bc=;
-        fh=Yg1QA3CYCa2LdK3Mf8oXZ+DbfQ0OHIFsuQO5E7pFx2w=;
-        b=AGoE1sXR6Cpl7AswkECCCz+9mlArZrgdnfmUD76orqtewvQMPs6Wwa2Q/2DcNamr73
-         nLqXfNXAbt9EGcWmBz01dnrvaQ2FVZB84CStD4i3RUku4D0n3uraLfxu5zruz4/RWdZo
-         D1BFHntMzYlshOz34Ghm5rWiVHC40xmT/rL42+4iDjyrqdwrmAL1rbmLny0P5elFKxKH
-         JKFRGprceTkYK/nS9+62TfsjRyBQHad0fpp+L8nmNBLzoHJfwGF2ymm77hKw/0ItQpmt
-         2UeOPza11hIozc22/o+JB4GTzIMB1DX+T1D1rnMkrNeumsGi+T7ZPmoMX8Pa7AqMYqNs
-         Xg5A==;
+        bh=yqZQkF7fyoCyixWqJvPrcSXLF7zDV6t9Bf+U6Pb/AUQ=;
+        fh=vQPqsNMqoAlDx9Lray1TJhxW/ME1Lx6izgi/4Tj22z8=;
+        b=ZNvu4fZT4VJRgiH3NtpM9d+SYX++UjAskIJgVeTlqkzKPY638PBGbapo4RsDl8ixEH
+         lZMFqrsdWfSge26iXS7PSACyIXq8dIpVIRQn5G9aFSiXWco/eO10j6runF11H1G8Nzp1
+         z/vsmmNsVZGV8GVqQC/CUTp3fMypAQIPqMxKNzjOA/2EWEGNnpxG3o9DQ8PY8BD6tycG
+         zzCCLAlMF++R9+eFLgjswzNrYBhiEv+KdslZScG9x/VPV+iKIyLOhiQn0llN+0Muq8h2
+         fmavwiYwIwIRhXkYImXKpwJiHbxsZvUcWIMwAlU8pqpDquaTgjKQEs9XzHARgQChR2p7
+         hI5A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd467cf648si1622351785a.2.2025.05.22.02.18.12
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f8b09b00a8si151289846d6.321.2025.05.22.02.18.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 May 2025 02:18:12 -0700 (PDT)
+        Thu, 22 May 2025 02:18:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,15 +42,15 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uI23N-0006dn-29; Thu, 22 May 2025 05:17:29 -0400
+	id 1uI23N-0006e7-DV; Thu, 22 May 2025 05:17:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1uI23C-0006bS-MM; Thu, 22 May 2025 05:17:19 -0400
+ id 1uI23I-0006cE-RE; Thu, 22 May 2025 05:17:26 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1uI23B-0003Jw-2C; Thu, 22 May 2025 05:17:18 -0400
+ id 1uI23G-0003Jw-MB; Thu, 22 May 2025 05:17:24 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 22 May
@@ -64,17 +64,17 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <longzl2@lenovo.com>,
- <yunlin.tang@aspeedtech.com>, <steven_lee@aspeedtech.com>
-Subject: [PATCH v4 3/6] hw/arm/aspeed_ast27x0: Fix unimplemented region
- overlap with vbootrom
-Date: Thu, 22 May 2025 17:16:57 +0800
-Message-ID: <20250522091701.354185-4-steven_lee@aspeedtech.com>
+ <yunlin.tang@aspeedtech.com>, <steven_lee@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v4 5/6] hw/arm/fby35: Map BMC memory into system memory
+Date: Thu, 22 May 2025 17:16:59 +0800
+Message-ID: <20250522091701.354185-6-steven_lee@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250522091701.354185-1-steven_lee@aspeedtech.com>
 References: <20250522091701.354185-1-steven_lee@aspeedtech.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=steven_lee@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -99,48 +99,29 @@ Reply-to:  Steven Lee <steven_lee@aspeedtech.com>
 From:  Steven Lee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PNgJctqc51mw
+X-TUID: 6nO/cXm6O0tg
 
-The unimplemented memory region overlaps with the VBootROM address
-range, causing incorrect memory layout.
-
-This patch adjusts the size and start address of the unimplemented
-region to avoid collision. The IO memory region (ASPEED_DEV_IOMEM) is
-now moved to 0x20000 to reserve space for VBootROM at 0x0.
-
-Although the memory range 0x20000 - 0x10000000 is undefined in the
-datasheet and should not be required, further testing shows OP-TEE
-or U-Boot may access 0x400000 during early boot.
-Removing the unimplemented region causes firmware hangs.
-
-To prevent unexpected accesses, retain the region as a safeguard.
+Add the BMC memory region as a subregion of system_memory so that
+modules relying on system memory can operate correctly.
 
 Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast27x0.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/arm/fby35.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 1974a25766..bb61c30cf4 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -23,14 +23,14 @@
- #include "qobject/qlist.h"
- #include "qemu/log.h"
+diff --git a/hw/arm/fby35.c b/hw/arm/fby35.c
+index e123fa69e1..c14fc2efe9 100644
+--- a/hw/arm/fby35.c
++++ b/hw/arm/fby35.c
+@@ -77,6 +77,7 @@ static void fby35_bmc_init(Fby35State *s)
  
--#define AST2700_SOC_IO_SIZE          0x01000000
-+#define AST2700_SOC_IO_SIZE          0x00FE0000
- #define AST2700_SOC_IOMEM_SIZE       0x01000000
- #define AST2700_SOC_DPMCU_SIZE       0x00040000
- #define AST2700_SOC_LTPI_SIZE        0x01000000
+     memory_region_init(&s->bmc_memory, OBJECT(&s->bmc), "bmc-memory",
+                        UINT64_MAX);
++    memory_region_add_subregion(get_system_memory(), 0, &s->bmc_memory);
+     memory_region_init_ram(&s->bmc_dram, OBJECT(&s->bmc), "bmc-dram",
+                            FBY35_BMC_RAM_SIZE, &error_abort);
  
- static const hwaddr aspeed_soc_ast2700_memmap[] = {
--    [ASPEED_DEV_IOMEM]     =  0x00000000,
-     [ASPEED_DEV_VBOOTROM]  =  0x00000000,
-+    [ASPEED_DEV_IOMEM]     =  0x00020000,
-     [ASPEED_DEV_SRAM]      =  0x10000000,
-     [ASPEED_DEV_DPMCU]     =  0x11000000,
-     [ASPEED_DEV_IOMEM0]    =  0x12000000,
 -- 
 2.43.0
 

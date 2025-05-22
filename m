@@ -1,89 +1,89 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1642969njc;
-        Wed, 21 May 2025 22:55:59 -0700 (PDT)
-X-Received: by 2002:a17:903:187:b0:226:30f6:1639 with SMTP id d9443c01a7336-231d45e637dmr301680905ad.51.1747893359493;
-        Wed, 21 May 2025 22:55:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747893359; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1643984njc;
+        Wed, 21 May 2025 22:59:45 -0700 (PDT)
+X-Received: by 2002:a17:903:1b6d:b0:22e:3ea4:b55c with SMTP id d9443c01a7336-231d454425emr309785955ad.30.1747893584959;
+        Wed, 21 May 2025 22:59:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747893584; cv=none;
         d=google.com; s=arc-20240605;
-        b=NoAvd/8Vt3VTfPf4x4CJS5MiEtEefIQCGMEaPHLgIjcDU3TbZ14i7CoaQ2kXEgON2+
-         ktMqYp6bHagMWCFyigDYNUTO8hrgMkv1y/tO+uzbtvjs4nUU9ipmIPjYi9GeiegoYb7F
-         VcBbRxtxQgvMZUMA+5OHPst14sQ/5VqX7UtUKt+HxkQ698SUiAyc/yb+JI3w6lSLtExb
-         Mbl5uUdAJllHUFJkRmrbWAbSg7rvIC8GCMT4pkiIDDTK9euBc5SoYLO7+AU4T+iZLKDx
-         Ftu3xYvyU6ZSDYH2ArKx8MXj9uc3R+OKp5AEZvcxahrzWvz/1dOmm3fePrZu496qE83g
-         Nm+w==
+        b=RcNcnycekobZ4FG4I+2om7uzO3orF1ePI5uRCyHVpQACIXn79NmUOPuYyHAlMtjyhz
+         Nrx6KXng+k7ang4dlzQNLodVJfqF/awpdjAEdjKAyduyhXMouQ6Y/+wEyGmYA/V6aL08
+         N4JEC+RLH6ub+JBlQpiY8rJc+OX4Foz1nREcwVS6jMoPooYqKQDwFw58tij8dq2ugTcr
+         V9kpahtsjvHiWx+Lo97bWGOnFG6h4h9QkNGGgDTvl0tCtVoBcQtjiNt5Jnj4zrRQ5IAP
+         uy9GceIKoa3jbDO2Fzy0ESYGnyujxGPzEPELKPvqUCy2lO7gPtaCu21P6M4hfUanajLK
+         w5UQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=P9YtVX6tHIM4S8SiNEOfAuBtEEKz6i8ukp0QFvwVbCI=;
-        fh=0BpcUhEAu/ygqO2hQQNVjK8pf3EEaf00vml9Hn/yKkw=;
-        b=d5e0xAKa0GtkrIPj5bN6dnYoHx1p9j5YL1L+1kaoTfTC1hc05G6KksnhgSR4tVKGgt
-         TAc0kgK/Hi3qLa0QaJPr6u9ku/LN2fTgjZBz2WJR+i2q4Fiw9rKm3nH+TXjhDFR2+grI
-         JxXoMM4/9CJslTRVCQPYa4Sp4IhzoBRv/ynYTm0pRxB+IqSOhDQDazEPw5RZ/TzvwKH3
-         c5PDCkIsLNdy2oK/lDB/KWjl+8QV9UVA1GLUnVMA6wS92oILn416In6bMsG/x8jajqcn
-         Jg4ipxUB3PFimXjzHX15BvDRhIvtRo7CRDyBf9nJqBCKRdJ/v7ncLvJpNJKoKuudn7GB
-         xzlw==;
+        bh=ll92QMKsFRvpgTuMWBg4qCrKu3QQgX5gI3lF9iL3GEo=;
+        fh=POEL6Dwl8CQWgVEsofc+zJQeEwjZ5KJzO04JOE3Ynm4=;
+        b=GpkRTXKUCMKfTvGUiD7/zl133LoL+EW1CvSbYKpfU9+09eF7Xs9KPMmruoSY7twtqs
+         06XTrYSm6sdFfR30umNMRu1peu4ufpDzLECEIfaDEm66s3F8u+e13Zoe1GngcdAI6jk8
+         0hBplDa47eg1Mx9ntk9g3a5zW7HMF9fVcZzsYyZVPUfXb7fKRKCL7AWVtcl4G45VA4DQ
+         SyhMLJrT/tw0Zz1cAV0EHj/EUeleS9htstGpw4AYj5zVthPmT6ZfHBxkB03VnDNNpZCR
+         StQgzUETPdXpb0aAKF5M3DIr9HrBLungboeFJaPDpJnkXv9IqwBKC30WKqwhSrO14Idc
+         6V0w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=IGrhByzt;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="ltIy1/go";
        spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 98e67ed59e1d1-30e7d55684esor9940304a91.4.2025.05.21.22.55.59
+        by mx.google.com with SMTPS id d9443c01a7336-231d4ed7e0csor83314665ad.12.2025.05.21.22.59.44
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 21 May 2025 22:55:59 -0700 (PDT)
+        Wed, 21 May 2025 22:59:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=IGrhByzt;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="ltIy1/go";
        spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1747893359; x=1748498159; darn=linaro.org;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1747893584; x=1748498384; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=P9YtVX6tHIM4S8SiNEOfAuBtEEKz6i8ukp0QFvwVbCI=;
-        b=IGrhByztLI5QdGurSnO6+ETUPNRM0FnEjZvPHufF1lG3nydBVCflZP1u2dd5lae5Es
-         Nc+5oUzU8AxL6HN7Q9GZxHdRhzBP8xQy0rRrtU6s0cGbqUsOscY3Aq0OJ6UCWbU7Q/s2
-         EcEX8GtrwTKQ73tl2UCWe/j+wWnumUyHYkPNg4l4AvrFfGJUW4/Fjxs7BN1gbpxjphPT
-         YrWuhWKCmG1eNRjPcbqERDpO+EfGCigIMhYUdI1z1p5lC+xFO75+dXon2lQzpObo8cJr
-         9YRSivwHKVrcTTdsiFQQMzn1Uq7O8JMozeVv9RrGbH0pe/pIVLPhxZrex5jLfzjyY9T+
-         QT5g==
+        bh=ll92QMKsFRvpgTuMWBg4qCrKu3QQgX5gI3lF9iL3GEo=;
+        b=ltIy1/gochxmMHGAqpdqs1bdoiXxybeT3Fvkj6S2aNGSefsc1k6A4L7JKcTHwoFAOG
+         BwlxZSaJdsKCgtBkbYi06x4YsYjj8W8hcWtUnf1s5GP+J2ZHH4eYRcEgOsJ0R9+SKCEE
+         gJXwgYqfdP90TGFHET52QR+J380E5lq/N/k01NPS+BsR7tsFQOt2Hj3DOss65Z6f6Qhd
+         6HFK2oa9gldt1MVNGpNI3d23dvgAKq3bsmOfWVvQVYWMv/mfYczSYSSWBbDdG9S+1XBw
+         RCeMQmotKNmqUDv5Vc8uMJ9b1LP/mOOMJbO50W94rKDKUD7cmkVEUImsS2xTaw5Fsmrb
+         f7Ig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747893359; x=1748498159;
+        d=1e100.net; s=20230601; t=1747893584; x=1748498384;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=P9YtVX6tHIM4S8SiNEOfAuBtEEKz6i8ukp0QFvwVbCI=;
-        b=GCbYFFdnHsZb3wBRT4JyIAfhiYSfRXKevCl5IxIHAfe/Lx5mBBzykTW6Ji977bQWOT
-         cYapzWFxOml0ztVIEj7HAFdqaMIVi5LxxB8iY3YFoO/2GdtmrYjlYq3hsUb9LrauwmV/
-         W8shyrweInisUwBrT116t1qsPJhvWXdfBd06/oyJ375O8cAP72VRRcQ/azUs0JJlwKZx
-         3DzTaJorQZyI0ftAB2Z4lvfLI0nnGbIRnfEmXKcJpkS4fb5+oVzBNJQLie5nYRmgzNOk
-         oWErE9MDna2Y4P+rLxyyC1ZgtQzd/lcvds5gXdJddXdc2la0znYA+vqCcAQgTnG5J8vo
-         77AQ==
-X-Gm-Message-State: AOJu0Ywhuds26pHyoKQn5tig1oHeXOTk0k/fvQFwlOAWRcfhmu5GQ5vW
-	RbzO0jE2GM8iZrYbas5Dy+17n3D7Jx56ezC+ck1bttJnQVFXiBy/HpeYh6bU5HylwNT9e48NAvO
-	V/pq3
-X-Gm-Gg: ASbGncvQvoyNSP3RV1ugqtOdPoU8TTDJAW9Q6R18clZ+xD4d7y1hFd0F0HoffroxM68
-	Y+Pq23fo2aRrMLkrkY+W6pn2l2EPc7O8+pDZmsq++/n/Dlb07K0XTzTY0Kd4qNFvNgbBVGRL+bB
-	Kevyr3e4AYlLXznN9ZY53vSwP4G0tYFXZPAYuoozLafnz7ZBe4umuIgPVg7D1otcWC7I6a6uHMN
-	ufZqxGh0I3UJuMd/JwrBfLpvzxhrllKVFrF9MUZR6FPP/rn1L8b6BhlXAA4X8kyPYT+CBg3btiW
-	h1vFLgMXbA3aYcVi84bmZ5O5DwG7rx/Qo90Asy2b5bG/Z3eQiz/2iRjbqMbnTw==
-X-Google-Smtp-Source: AGHT+IHT+x1bXD9VP4n4gXHsME7KhEB7XkFIWRQM6Y47ObixU0hopbdl14D5eiQBNFc4FZJFOCVmnA==
-X-Received: by 2002:a17:90b:3e8e:b0:301:1bce:c255 with SMTP id 98e67ed59e1d1-30e7d5a93bamr34284005a91.27.1747893358872;
-        Wed, 21 May 2025 22:55:58 -0700 (PDT)
+        bh=ll92QMKsFRvpgTuMWBg4qCrKu3QQgX5gI3lF9iL3GEo=;
+        b=OPPYCZMKrJjfifZjm+dxkfixWIip9u/MxFvC31Qo5Nj7KW/i+zoCggf+ssA6sOmlpf
+         aWs71cqPuonkrd+Fp4/FsfrXcLytefJyPu065kO9BJju4sMbJvYFdEF3feoT+2m0A7nR
+         /78g59qk6Wu2vvaZmsIvFi7/RUAULnbCHmz7UzBJ7IwWk6xY9PvpVDHH2PZxl7PiTQRs
+         FU2XoZtaERwxxLPoVkvlNF5yValje/GfgsIes+lzorRrOvkqNa13ou/7TczGoYSENA9+
+         J77fGPAYN2mYC94Nf0r3xNeLIXb89FVApF1qW0zr3WbL5f6C5K34P1jy4g8BpodWw/19
+         mCIw==
+X-Gm-Message-State: AOJu0YzjnhqIVtqQbj5NfQLOzn6WTn4Dkno3YK/p4/5owJOLLhx38opM
+	/QdtOwDkz7kloQkKzILsL7yC/srM5MdmD0lve/l4LCGzqP5fV1Ne1bkwCwUYoQzlrmcrX+iReD8
+	XVh+j
+X-Gm-Gg: ASbGnctLGg4lbTp9P7RSBE0G1RkHQowuRDEBED6PHJ3j/sRtRolCKBColf3fqE6jLa0
+	q+xWGRLWyVgArTQ4aVKhYVZbuPk9L5Dmv1jNHzXwWt8D3eoxTpujH4v7trzwZ15KxYHbXMfDw6t
+	3JN9GXGA0mQ+f5gt0mhZni05YN6GG1fsYt/yXL35EZS48KpcIxyLkrB9OBlx9eQ6+Zk4o69/NHv
+	EtGp664m49ihIXWYAR4ZuHH/j6UHqRvEioA4gYJjlex3oQlM8h5Jzuqb/lN2XHU8SOzQzcn7750
+	7//oW6aZVDM5XJCe1YJxNvynP28UpBI6uMUvDlkm5wj3oJlAkzroe+PP7VGjeA==
+X-Google-Smtp-Source: AGHT+IGqHP9wyaMp3uwJkuTClRkae6ROCcsTqoUUE6+5eCLIu6eiqb3c0BDe7KQlQ/vmAS8jOcKP8Q==
+X-Received: by 2002:a17:902:c948:b0:22f:c91f:d05f with SMTP id d9443c01a7336-231d45c99c7mr354621945ad.46.1747893584297;
+        Wed, 21 May 2025 22:59:44 -0700 (PDT)
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from [10.100.116.185] ([157.82.128.1])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b26eaf6e609sm10581840a12.19.2025.05.21.22.55.54
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-231d4ebb0f5sm101672865ad.192.2025.05.21.22.59.39
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 21 May 2025 22:55:58 -0700 (PDT)
-Message-ID: <c3f5ae11-1333-4267-a07d-ff4112714cd5@daynix.com>
-Date: Thu, 22 May 2025 14:55:53 +0900
+        Wed, 21 May 2025 22:59:43 -0700 (PDT)
+Message-ID: <4d300cca-3ac2-4072-a35c-0b6aef970b26@daynix.com>
+Date: Thu, 22 May 2025 14:59:38 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 08/20] contrib/plugins: allow setting of instructions
- per quantum
+Subject: Re: [PATCH v3 12/20] virtio-gpu: fix hang under TCG when unmapping
+ blob
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
@@ -99,99 +99,95 @@ Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
  Dmitry Osipenko <dmitry.osipenko@collabora.com>,
  Gustavo Romero <gustavo.romero@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-stable@nongnu.org
 References: <20250521164250.135776-1-alex.bennee@linaro.org>
- <20250521164250.135776-9-alex.bennee@linaro.org>
+ <20250521164250.135776-13-alex.bennee@linaro.org>
 Content-Language: en-US
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <20250521164250.135776-9-alex.bennee@linaro.org>
+In-Reply-To: <20250521164250.135776-13-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: UYz9JFF+xDcE
+X-TUID: dNJa1nvx4IMu
 
 On 2025/05/22 1:42, Alex Bennée wrote:
-> The default is we update time every 1/10th of a second or so. However
-> for some cases we might want to update time more frequently. Allow
-> this to be set via the command line through the ipq argument.
+> From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> This commit fixes an indefinite hang when using VIRTIO GPU blob objects
+> under TCG in certain conditions.
 > 
+> The VIRTIO_GPU_CMD_RESOURCE_MAP_BLOB VIRTIO command creates a
+> MemoryRegion and attaches it to an offset on a PCI BAR of the
+> VirtIOGPUdevice. The VIRTIO_GPU_CMD_RESOURCE_UNMAP_BLOB command unmaps
+> it.
+> 
+> Because virglrenderer commands are not thread-safe they are only
+> called on the main context and QEMU performs the cleanup in three steps
+> to prevent a use-after-free scenario where the guest can access the
+> region after it’s unmapped:
+> 
+> 1. From the main context, the region’s field finish_unmapping is false
+>     by default, so it sets a variable cmd_suspended, increases the
+>     renderer_blocked variable, deletes the blob subregion, and unparents
+>     the blob subregion causing its reference count to decrement.
+> 
+> 2. From an RCU context, the MemoryView gets freed, the FlatView gets
+>     recalculated, the free callback of the blob region
+>     virtio_gpu_virgl_hostmem_region_free is called which sets the
+>     region’s field finish_unmapping to true, allowing the main thread
+>     context to finish replying to the command
+> 
+> 3. From the main context, the command is processed again, but this time
+>     finish_unmapping is true, so virgl_renderer_resource_unmap can be
+>     called and a response is sent to the guest.
+> 
+> It happens so that under TCG, if the guest has no timers configured (and
+> thus no interrupt will cause the CPU to exit), the RCU thread does not
+> have enough time to grab the locks and recalculate the FlatView.
+> 
+> That’s not a big problem in practice since most guests will assume a
+> response will happen later in time and go on to do different things,
+> potentially triggering interrupts and allowing the RCU context to run.
+> If the guest waits for the unmap command to complete though, it blocks
+> indefinitely. Attaching to the QEMU monitor and force quitting the guest
+> allows the cleanup to continue.
+> 
+> There's no reason why the FlatView recalculation can't occur right away
+> when we delete the blob subregion, however. It does not, because when we
+> create the subregion we set the object as its own parent:
+> 
+>      memory_region_init_ram_ptr(mr, OBJECT(mr), "blob", size, data);
+> 
+> The extra reference is what prevents freeing the memory region object in
+> the memory transaction of deleting the subregion.
+> 
+> This commit changes the owner object to the device, which removes the
+> extra owner reference in the memory region and causes the MR to be
+> freed right away in the main context.
+> 
+> Acked-by: Michael S. Tsirkin <mst@redhat.com>
+> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+> Tested-by: Alex Bennée <alex.bennee@linaro.org>
+> Message-Id: <20250410122643.1747913-3-manos.pitsidianakis@linaro.org>
+> Cc: qemu-stable@nongnu.org
 > ---
-> v3
->    - error checking for ipq
-> v2
->    - checkpatch fixes.
-> ---
->   docs/about/emulation.rst |  4 ++++
->   contrib/plugins/ips.c    | 15 ++++++++++++++-
->   2 files changed, 18 insertions(+), 1 deletion(-)
+>   hw/display/virtio-gpu-virgl.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/docs/about/emulation.rst b/docs/about/emulation.rst
-> index a72591ee4d..456d01d5b0 100644
-> --- a/docs/about/emulation.rst
-> +++ b/docs/about/emulation.rst
-> @@ -811,6 +811,10 @@ This plugin can limit the number of Instructions Per Second that are executed::
->     * - ips=N
->       - Maximum number of instructions per cpu that can be executed in one second.
->         The plugin will sleep when the given number of instructions is reached.
-> +  * - ipq=N
-> +    - Instructions per quantum. How many instructions before we re-calculate time.
-> +      The lower the number the more accurate time will be, but the less efficient the plugin.
-> +      Defaults to ips/10
+> diff --git a/hw/display/virtio-gpu-virgl.c b/hw/display/virtio-gpu-virgl.c
+> index 71a7500de9..8fbe4e70cc 100644
+> --- a/hw/display/virtio-gpu-virgl.c
+> +++ b/hw/display/virtio-gpu-virgl.c
+> @@ -112,7 +112,7 @@ virtio_gpu_virgl_map_resource_blob(VirtIOGPU *g,
+>       vmr->g = g;
+>       mr = g_new0(MemoryRegion, 1);
 >   
->   Other emulation features
->   ------------------------
-> diff --git a/contrib/plugins/ips.c b/contrib/plugins/ips.c
-> index eb4418c25b..f1523cbee3 100644
-> --- a/contrib/plugins/ips.c
-> +++ b/contrib/plugins/ips.c
-> @@ -145,6 +145,8 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
->                                              const qemu_info_t *info, int argc,
->                                              char **argv)
->   {
-> +    bool ipq_set = false;
-> +
->       for (int i = 0; i < argc; i++) {
->           char *opt = argv[i];
->           g_auto(GStrv) tokens = g_strsplit(opt, "=", 2);
-> @@ -175,6 +177,14 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
->                       return -1;
->                   }
->               }
-> +        } else if (g_strcmp0(tokens[0], "ipq") == 0) {
-> +            max_insn_per_quantum = g_ascii_strtoull(tokens[1], NULL, 10);
-> +
-> +            if (max_insn_per_quantum == 0 || max_insn_per_quantum == G_MAXUINT64) {
-> +                fprintf(stderr, "bad ipq value: %s\n", g_strerror(errno));
-
-This check should follow one of ips.
-
-First, it should check errno. Otherwise it may emit a cryptic message 
-saying: "bad ipq value: Success".
-
-max_insn_per_quantum == G_MAXUINT64 is unnecessary. A sufficiently large 
-value of max_insn_per_quantum should result in the same behavior anyway: 
-a quantum never ends.
-
-Following the check of ips is an easy way to implement a correct 
-checking and it also ensures consistency.
-
-> +                return -1;
-> +            }
-> +            ipq_set = true;
->           } else {
->               fprintf(stderr, "option parsing failed: %s\n", opt);
->               return -1;
-> @@ -182,7 +192,10 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
->       }
+> -    memory_region_init_ram_ptr(mr, OBJECT(mr), "blob", size, data);
+> +    memory_region_init_ram_ptr(mr, OBJECT(g), "blob", size, data);
+>       memory_region_add_subregion(&b->hostmem, offset, mr);
+>       memory_region_set_enabled(mr, true);
 >   
->       vcpus = qemu_plugin_scoreboard_new(sizeof(vCPUTime));
-> -    max_insn_per_quantum = max_insn_per_second / NUM_TIME_UPDATE_PER_SEC;
-> +
-> +    if (!ipq_set) {
-> +        max_insn_per_quantum = max_insn_per_second / NUM_TIME_UPDATE_PER_SEC;
-> +    }
->   
->       if (max_insn_per_quantum == 0) {
->           fprintf(stderr, "minimum of %d instructions per second needed\n",
+
+I suggest dropping this patch for now due to the reason I pointed out 
+for the first version of this series.

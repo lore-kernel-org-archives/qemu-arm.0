@@ -1,132 +1,124 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1631826njc;
-        Wed, 21 May 2025 22:16:53 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHte0Zf5uyptXbycC23o8D8q3T1tD6xnhYo2PYTVU/zjKhbOXleaRzy2Zs7iUMiLHsLQdmQ
-X-Received: by 2002:a05:622a:1b15:b0:494:7e69:137f with SMTP id d75a77b69052e-494ae46142bmr400736411cf.42.1747891013765;
-        Wed, 21 May 2025 22:16:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747891013; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1632597njc;
+        Wed, 21 May 2025 22:19:44 -0700 (PDT)
+X-Received: by 2002:a17:902:ea01:b0:231:97ab:9544 with SMTP id d9443c01a7336-231d452d4f0mr362174635ad.41.1747891184218;
+        Wed, 21 May 2025 22:19:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747891184; cv=none;
         d=google.com; s=arc-20240605;
-        b=RV+zJFwUH/ckowac4usj1HdwaBruXzHY6sI5B6NpFkcgm5yHXQnvQnC5kebNMqTsjP
-         aFMFAcmHRLPGMJXUaEjVhe/oeUTp9/AvdvxNrlcGKaPAqFbJbrzGkmEiUrpbnUC7jIgD
-         /L1kedR0AAWSxWHE5jXQt5ENCtkK3DSk7lVVn9gq3xwK+0uOgewwGZjkDzgyPtKHb9Bx
-         9y0JBEyV8fKiEDU4AbRsUSmGxyKLH6aclOdfcUGt8nactSt3yicFoZc+alYT3FYEmNfv
-         t/mzttPbeM3i8TR/W1VJcxv2BfKntkhlNleMAoNoR3DAnjjNZMrHIbaCTJJLhmSZ5Wtm
-         Fzug==
+        b=HuuCzjBbAwTpV62/veEUkv///hYHwgycGUmdVr/NxrFhzfpP5RT2lnvu9Clp6+Zyb6
+         fu/WJL14DccI1lHubuiP8aquhwAH+6u+nICDyPTSj2Wyx1vul64TH5DRY0PQJWAar9ra
+         G6PL98g2AWkWixFU9vGlZCidd+dR7RBXfvQjgCYbchwyrKt6Zp9lCPJebefU7m9weRTA
+         ZpDPwU8KDVGScQZmlhxICw8fGlN3N5/nhFO33OebtrsTIyK9zdRzXkQN22CedHtSr88P
+         9qbD2PHohSH9FpUi/whNOL/MNq5RV20ZSa59S6ba5SURtAFr7C0ZZDVDjSVcP10lFVOy
+         p/wQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:user-agent:message-id:date
-         :references:in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=yLyiRwnVOQqrfoOk18hKb/BEKJpPnp1Il7WAe14oY8k=;
-        fh=wV2BOmKvk8LTvV0S9Y+PwYY0Zo/bX5NQdGPYvEF6e3k=;
-        b=cuVjqudMgCM7XmJeAqjgpIUP6GLa5Ui0HDLqvWLq/TUFcPQt+dJq3Gtk+nyGaQWyjf
-         vG2wlxxXcew4FNaf9bOA0QIoepH5DDPqgUJFs8z/xPec5HKs+i8vOP64wyt0p9k17mWb
-         UKyVDEgy78QFiJBfnZ+t5x0Olmgts9OVm2CDLdAd4d3iKAWEOaxuVXcb9Co29aIpZjF5
-         XYGOF6vQOOz4ajGOM6wD2SBqSuxvw6kq+PB792LewAAIAJFWDSkxv/NbftSUElh9RAfq
-         L0ymYTNWdU8FY+f46kVrJRN+LsG6BYHZMU/LhROAta5GCGxWKiFmM1d1PzOiWjTBDVbf
-         zQLw==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=PF9DBrhsOTFqE8++SPnSPBoNs8mjJ7ckZTobz4u+DMI=;
+        fh=WiCG7F03YbG3IMmuP916iIopwAXtmeg3pxguSmumvWo=;
+        b=LTha2o89bkUQQLML7rusYNpPXMwCpKn/cW79lUtyqeXSQUpgnJ8NSnu5fLVHPQn3Ui
+         gETzhKZAwk9g9RfkJGAp8Dbt2hzLjHZDWCbOarX622+5HbU42BaBBxxYnbObVvKxPEf2
+         fZpE6FTPzEIqVnLP1GV/vlugBWpAqGZ4M1kTFvjCe6TzHcpXspWKjitIW4hK7PuhUjF7
+         kpXEFAb3LHO+SQw30zxgX+mJIf6L2SKN0O1fy4Rhg/2pClJAuK2YSv5Al/MMmCC1KmNf
+         HDbRT4V96KUnVBQQGExxj7UCXKKO+szMIx4EIUgwh3oJZYX1BsSC3kIk5k5VnrUCzpWI
+         jCuA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CcLtPA4+;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <armbru@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-494ae564291si144393821cf.324.2025.05.21.22.16.53
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=LrBrKhM6;
+       spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-231d47d9a78sor103661735ad.0.2025.05.21.22.19.44
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 May 2025 22:16:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (Google Transport Security);
+        Wed, 21 May 2025 22:19:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CcLtPA4+;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1747891013;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=yLyiRwnVOQqrfoOk18hKb/BEKJpPnp1Il7WAe14oY8k=;
-	b=CcLtPA4++cYfNuZCJpAxkhoRFIZGbvlO9WfjNMh8/oDhuXDQfCjWexngIF4DnKJjODiq6E
-	1Z0PSZRF6mEpcEFsTPLUjeR71NV5WLsxKJjGtRZU6RBeD7CHIu6ddVdQS0s2Win4e6+u5P
-	C9Goo8bp2wTYF8NpMajWT39wPJaNSp0=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-346-QQnmrHNnMim7F2hZJVa6Yg-1; Thu,
- 22 May 2025 01:16:49 -0400
-X-MC-Unique: QQnmrHNnMim7F2hZJVa6Yg-1
-X-Mimecast-MFC-AGG-ID: QQnmrHNnMim7F2hZJVa6Yg_1747891008
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 6C56A1955E79;
-	Thu, 22 May 2025 05:16:47 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.7])
-	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 6D32130002C0;
-	Thu, 22 May 2025 05:16:46 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 0D7A421E66C3; Thu, 22 May 2025 07:16:44 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org,  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-  Thomas Huth <thuth@redhat.com>,  Paolo Bonzini <pbonzini@redhat.com>,
-  Akihiko Odaki <akihiko.odaki@daynix.com>,  John Snow <jsnow@redhat.com>,
-  Fabiano Rosas <farosas@suse.de>,  Peter Xu <peterx@redhat.com>,
-  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-  Alexandre Iooss
- <erdnaxe@crans.org>,  Markus Armbruster <armbru@redhat.com>,  David
- Hildenbrand <david@redhat.com>,  Laurent Vivier <lvivier@redhat.com>,
-  Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Peter Maydell
- <peter.maydell@linaro.org>,  qemu-arm@nongnu.org,  Philippe =?utf-8?Q?Mat?=
- =?utf-8?Q?hieu-Daud=C3=A9?=
- <philmd@linaro.org>,  Mahmoud Mandour <ma.mandourr@gmail.com>,  Sriram
- Yagnaraman <sriram.yagnaraman@ericsson.com>,  Dmitry Osipenko
- <dmitry.osipenko@collabora.com>,  Gustavo Romero
- <gustavo.romero@linaro.org>,  "Michael S. Tsirkin" <mst@redhat.com>
-Subject: Re: [PATCH v3 09/20] MAINTAINERS: add myself to virtio-gpu for Odd
- Fixes
-In-Reply-To: <20250521164250.135776-10-alex.bennee@linaro.org> ("Alex
-	=?utf-8?Q?Benn=C3=A9e=22's?= message of "Wed, 21 May 2025 17:42:39 +0100")
-References: <20250521164250.135776-1-alex.bennee@linaro.org>
-	<20250521164250.135776-10-alex.bennee@linaro.org>
-Date: Thu, 22 May 2025 07:16:44 +0200
-Message-ID: <87ikltxm0z.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=LrBrKhM6;
+       spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1747891183; x=1748495983; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=PF9DBrhsOTFqE8++SPnSPBoNs8mjJ7ckZTobz4u+DMI=;
+        b=LrBrKhM6Bu7ZDmtioEQmIB12hKprQGz3d154jeEWcg/ru9GWcI2QOs77geefOCrB2u
+         iv184oqZPV5NoU62TJlvY1llq2MR9j//nlKiSwCJwr/iRhXeUpfz2J1JUUQCdK7lrnwj
+         kqmbiQguvx3tnvaVgwo2cstsWkO/GDanA64fcD9D5t6L3m72g0ELSBwcHkRk8WssIHLK
+         FXycCgBoFfyo8dhnQKlpKTM4LMzsPuDyjO2f10AZB3PZv2kh/GT0q1WNvWQA6LNChx9n
+         Ux5VI2oY2DVh1M13TqS8H5IBO87NyaEvEoYXKaj8uxeLBD8hknUxQ90MqJ/EVvVDoeWS
+         aEzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747891183; x=1748495983;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=PF9DBrhsOTFqE8++SPnSPBoNs8mjJ7ckZTobz4u+DMI=;
+        b=cTRdVANuTV1iVp8DVgZHK1IF8GHHoJrnvBPv0mJi9mTWLHR/959IBQS0LFrjhim6FV
+         BGa344HOuXHGn+eNXe6OA19L0RjOK0OUI3gNXgT5nDudlD9aViM1irvDZw5sh3YvJj/a
+         WQ/Fq3c3XBq0EVU3rWNUCf6fyOXzUPAWFmqqOvcBViyOzpWOzTuL6fVIyRXBuQ4g/4QX
+         jCZ8S/Zea5+e+RCQeC2RC7k7IB+SuyvA6uYqyXK74iXrwdLL/Y4mC00rnCukW2XsH7sx
+         zlYgrFlAWcY/Zp0+egUWA2WHyWdX9ryRDxX4uTAhqxuH5NO9tsy7kfMTR+q8LnRhV+to
+         PixQ==
+X-Gm-Message-State: AOJu0YyGs7z/Tw54C4NjtdSs+yYLcMEKUnPPgcKEffK60FxrqGbT4235
+	NsrvWTbhSW88VaxDLRnb2x8Q1sr4yRHyTOVeKo+yTETdnIXc7WKktTyWySdmoveflTX5XgY0j5s
+	vcIO+
+X-Gm-Gg: ASbGncsnkkL34jS9875KcMIw+I44HeJEXL4vgbQ0Qcju0bHa0i0R4VdtE0j7YoX4xfu
+	A82MWqTtUM4ybnYAaFiNVs/RZf853U6ZGlCBPRN2ojivItgnQ1maUvr3ojx748oErTyapVFfRDu
+	ARWdagSqAQCJKQs1R2KAqlVyHxc506ck63hjU9nMmvbfYJ2mVjNwDWAB5KU1B3h5/oFyO4r1zkj
+	5wri2LjkMLiEC/CNNfyv3QCcDfX4pRooK99t6YIniQdkfhQQXLk6c6gssRuo564pF87I1BscDdB
+	3GfmIGhVHFTj6a/CWUtHjtBbNUOTBsA68poITStNmwAFVJQw975KJFxUqIGDgw==
+X-Google-Smtp-Source: AGHT+IFJab9die+N7MMiqcb/2QSE1Lmc42YVnTc2KZjvkOnJyWrwELuYZGzNr/kiO+1T6JkyEKHjCA==
+X-Received: by 2002:a17:903:1a28:b0:231:c05f:29d7 with SMTP id d9443c01a7336-231d43a54f8mr325262675ad.13.1747891183562;
+        Wed, 21 May 2025 22:19:43 -0700 (PDT)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from [10.100.116.185] ([157.82.128.1])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-231d4ebae71sm100975585ad.190.2025.05.21.22.19.38
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 21 May 2025 22:19:43 -0700 (PDT)
+Message-ID: <acc76a26-d6b5-4ff4-a8d6-3595873157ea@daynix.com>
+Date: Thu, 22 May 2025 14:19:37 +0900
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-TUID: WfLcaw8/JtvE
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 04/20] tests/qtest: fix igb test failure under
+ --enable-ubsan
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ John Snow <jsnow@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>,
+ Markus Armbruster <armbru@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ Gustavo Romero <gustavo.romero@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Nabih Estefan <nabihestefan@google.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20250521164250.135776-1-alex.bennee@linaro.org>
+ <20250521164250.135776-5-alex.bennee@linaro.org>
+Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <20250521164250.135776-5-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: R/YemGc0EGCV
 
-Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
+On 2025/05/22 1:42, Alex Bennée wrote:
+> From: Nabih Estefan <nabihestefan@google.com>
+> 
+>    ../tests/qtest/libqos/igb.c:106:5: runtime error: load of misaligned address 0x562040be8e33 for type 'uint32_t', which requires 4 byte alignment
+> 
+> Instead of straight casting the uint8_t array, we can use ldl_le_p and
+> lduw_l_p to assure the unaligned access working properly against
+> uint32_t and uint16_t.
 
-> Seeing as I've taken a few patches to here now I might as well put
-> myself forward to maintain virtio-gpu. I've marked it as Odd Fixes as
-> it is not my core focus. If someone with more GPU experience comes
-> forward we can always update again.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->
-> ---
-> v2
->   - s/M:/S:/ for the maintainer entry
-> ---
->  MAINTAINERS | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 818d7b9d5f..8dfb393c06 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -2673,7 +2673,8 @@ F: hw/display/ramfb*.c
->  F: include/hw/display/ramfb.h
->=20=20
->  virtio-gpu
-> -S: Orphan
-> +M: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> +S: Odd Fixes
->  F: hw/display/virtio-gpu*
->  F: hw/display/virtio-vga.*
->  F: include/hw/virtio/virtio-gpu.h
-
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+I think the subject should mention the problem (the unaligned access) 
+instead of the method used to detect it (UBSan).

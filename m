@@ -1,177 +1,151 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1633645njc;
-        Wed, 21 May 2025 22:23:26 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFA7UWS+ROl3geQlx4b5DGoZw0sLg7qkS6H5yMlhywfVL9OHlTGuR6ZKG0UMWP9uSgP2PrV
-X-Received: by 2002:ac8:6f10:0:b0:477:6eca:b40c with SMTP id d75a77b69052e-494ae326c18mr410508021cf.1.1747891406218;
-        Wed, 21 May 2025 22:23:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747891406; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp1638223njc;
+        Wed, 21 May 2025 22:37:51 -0700 (PDT)
+X-Received: by 2002:a05:6a20:12c3:b0:1f5:6c94:2cd7 with SMTP id adf61e73a8af0-216219f81dcmr33308039637.42.1747892270771;
+        Wed, 21 May 2025 22:37:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747892270; cv=none;
         d=google.com; s=arc-20240605;
-        b=B+O/dhl3B9fTRFMyV3LkCzvnIc8Sj9JByddTnBy9R2XTrDxMDWTa+3BCsNF8Z9tyPB
-         DlqNnzNGAme0RClFBD76B6HiicI+N5/11y5GMd4MQR2jVh/uD4VgX8ssq+V0dket3Vnc
-         Y3sXH6CIG90Hdy4iMANBkJKmkqMcb3yorfgZQ6GRUJCtF3VZJkc2c4O/Q17ZxN3tXxUb
-         OHs5jkws5ZCZaKsLv2Es9W5brk+FuKZzz/g1pZJTIp7Rk312BG1aYz7nu9HS/plQvATc
-         LVm5PozQ8Sf/q4BSk4nQuBGXbN2HkAoTYylSFBzRpFxpmyyyFrefqmG+BCHozQ+uNPle
-         pECw==
+        b=SYu9POtS4PYrPMVwzGUT2Rc7cGNk/495jcur8W+PIVrVs768Bh2BhDy0hlmnzVhR9L
+         9+bXjUwjfzfBy9et8Rem2In0ltXWJ8m9NI4klMdtWAh3xwIPk9/oF7ZD1n2kuwuI2Xw4
+         S7LwKAjy/ip0wIaB5gwNKmYtlXK3BDjcMjlY9Mi6sS6Th2pcJ810m1jeYm1IaKJpWjFW
+         f2tIo8Ax4oLGMUYvVZtAHCJU7RWw4fFUjpeh8lAtur1Nxa5amTZO88M1o9gTcKP7k7Tq
+         9zGqJBSz4v9WXfHEG7ERQ9+ncmH7NupDmi3Ix5qEpH4jzEMDmjvy2y+4+3Ht4PPuB598
+         muOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=RQ5DNBLakYv1sNXF8lzSp1uOGb21M2SWltb7tOwuGAY=;
-        fh=jDVvgowtjTY8rpPSuwc8uct6IcZfEELg/CKNcOlO4Fc=;
-        b=Aczh/v72lx7HKZJzPNbAySuHtbv/4AwTvmhC9hqYbB3ZXG2SNvSoobd7fLbgCOZxhR
-         dIvJAXMrU+E/O/jhDPPXRthEobjWDuiatOOoTL3mis25Kx7omVD1MZ75XZm9AJJnWvew
-         ZcloOKwWeW17QfHOtNXIqezKIC1Lw3y8JgHfhlcmzYMUnbXvzYZ6e2fmtqk5Tm6Dq3hG
-         On4Zmg5rmWprBzdoyxayblHUVN8VA4Hjs8LEdVJeNn+bt+SiAG+e6S72INVhoCF17hPA
-         cRCmrpGcEQX5om38MAem1FpOMLSombntHzEclm7mrU6XtFmUvSQJrmvlqfOnILpZFhD+
-         TOZQ==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=D/WW7gFMS5n6X9DhlmFAqeQexSMZm71tGcMm/uNUx/E=;
+        fh=0BpcUhEAu/ygqO2hQQNVjK8pf3EEaf00vml9Hn/yKkw=;
+        b=CveYQb2bbEeCrVlSvHqtJr7BZt+lr05NCI8FTh/q6Acyo677DTVceWAqBYbs34bgrR
+         d3iX2wc8UtnC6Vh5zgSqp4YLfz8M396+EIKnZ2FX5TNmhZRl6KoJDMJfnn7eeE9GzPYZ
+         ECtmmA98TYQfKgCGp4CMic7kmzjpyr/I4MB3pmemWoQHSay3QSoMwKWlgUw3uJypVGdh
+         rSPrR/a2chX4FAcA53WMekPLICKiEEYoU7S9q1B1y+ao1ZaBv4NWWdJyXJUPq6W9EXBT
+         +wk7HMe288FrqFPid5O5FTxvjBFT2AKNNBjNi5HUMFccIe9zuQpm0imA+b/18YvIVnlB
+         oaig==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RPgtgbFg;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-49a1fb9c210si63646511cf.41.2025.05.21.22.23.26
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=U2TC47bZ;
+       spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-742a985b24fsor8217371b3a.10.2025.05.21.22.37.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 May 2025 22:23:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (Google Transport Security);
+        Wed, 21 May 2025 22:37:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RPgtgbFg;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1747891405;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=RQ5DNBLakYv1sNXF8lzSp1uOGb21M2SWltb7tOwuGAY=;
-	b=RPgtgbFgxZJ0iuhdGh2M2ycAosHF8GL5v507ErANdIHUXGPwWizLh//NkwO2lXbPDTJpPB
-	xSebIefYGcME5r2MbeLrNze3S0YkeB9N3zMur+C9RSWh/7YZvf09ecvwW+A7LqC7YsGV5Y
-	0Rg3n7NEcd4Se+IiWfAyuv3QvreRE20=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-634-PeZaVYnmOEy4fwsb18r2Jg-1; Thu, 22 May 2025 01:23:23 -0400
-X-MC-Unique: PeZaVYnmOEy4fwsb18r2Jg-1
-X-Mimecast-MFC-AGG-ID: PeZaVYnmOEy4fwsb18r2Jg_1747891403
-Received: by mail-ej1-f72.google.com with SMTP id a640c23a62f3a-ad53f8a49fdso462551766b.1
-        for <alex.bennee@linaro.org>; Wed, 21 May 2025 22:23:23 -0700 (PDT)
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=U2TC47bZ;
+       spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1747892270; x=1748497070; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=D/WW7gFMS5n6X9DhlmFAqeQexSMZm71tGcMm/uNUx/E=;
+        b=U2TC47bZEo//1s9kJ0PRRYOGan+Ti3T8Czkpw6DgwTo6ydWWWckH820u6jWIolkds1
+         sZusOWoTXtPnhk8EO4tLzR5zOA5IqCXxKkqzoIeQCv42sUYVlIiSQ0erlUlusgOlQuDZ
+         mFQ5Hno2hjVH8czwuuMMYkAUPy1GDUqu0IVzy4tRKFYgE8UJGWC69IhewG6W4LlZOOEH
+         nQ4elKyxPyNqok76sBO7TyL+nATFmknqEQLV5kZ2mmftAVIV+nULz65hj9Jl5MU5OtbD
+         VkilrOtrRIpQhCjlod6XJOlSWsUjwDE8QmDu4jTiCtLM5iIUWuJ6yVAI5U1BCCPzMfYE
+         koWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747891403; x=1748496203;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=RQ5DNBLakYv1sNXF8lzSp1uOGb21M2SWltb7tOwuGAY=;
-        b=uioRFsufgqwVyNUx72Dnwat6ETM/aYZIwNjv55Z4Sngs8YaePLy2+mevyAPxmwuYmI
-         JBlaxtGDoAmqxdIMMD3xbNo4TtsuisSFE6auPqylQtdsS44iJmtXWkA1+HF902GDlIqX
-         bxGqmHPzYH8QbrsxDFt40Wa/xFhscbIZj1ExvkGSidxs5VgvzU2hCDajjHDAuaYIA6Ys
-         exrvgeHtjblmjMTyNV614pWAI4nbXA6AGQhmXqzQXDAj18RXX1Wd2d3lE4KQTNe6sy4u
-         pAjtHQiPQLwh6k28p23/2z/3orLp7uFZ2YfqpZ9jY/WAJsUxB8PaUd239CougbFDFiV/
-         I07Q==
-X-Gm-Message-State: AOJu0YzBKSz2nJYg5sPstcBWsFALOwoEOlKd14cQ9N+gKX2bl+ZOyVNl
-	JpGl939A3u7WkTN87Actr6IHW5YwFSOnY78NLhIXxKVeiEBiVEweNb3g34wjpGCKPxPz6qRbfyR
-	Qe9qTe2sjip8I2EWyAaw8G5JqcQRoN02Kav7XRzKbIpmXTePSYnHSR0442yFkPT/xtUjPGRN6/w
-	H4iyHndyFDWgZiIqoLcqd4wlzdhgtPxDGl7A9/xFq6
-X-Gm-Gg: ASbGnctNmtX/ygA7g9UFE+CMe7ddjc+LM3Lk97cS+YvWpJc09Ad8wHZ7SPuE4zCRSiR
-	35sw2+6PeWIITjtLv/+yW882e/fy+AO+B6kaxAmBv0dnWIleN1FJpm7+YEsc84P98B5C1iCq3eQ
-	nfj9euGSfkwm3or/up50GqNVKzW2eMXWNrlzzJ+WdG7sMc3eOj4y9vWZH+kY1bQI2cAYIHeFWKB
-	c1giuOvTRdF+V0rP7zaDfvKi9oF8/BmpDAdOOYYDSFeD7QMK0g6N77YjKhkI54xeb0sLhey0rMl
-	7sWKG7ICFi0aAXokryVo2x7ZJMPTxigHuqZsM3yjkm0=
-X-Received: by 2002:a17:906:dc93:b0:ad5:6ca3:c795 with SMTP id a640c23a62f3a-ad56ca3cb15mr1313287366b.33.1747891402768;
-        Wed, 21 May 2025 22:23:22 -0700 (PDT)
-X-Received: by 2002:a17:906:dc93:b0:ad5:6ca3:c795 with SMTP id a640c23a62f3a-ad56ca3cb15mr1313284166b.33.1747891402339;
-        Wed, 21 May 2025 22:23:22 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.7] (ip-109-42-49-201.web.vodafone.de. [109.42.49.201])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ad52d04af2asm1023178466b.4.2025.05.21.22.23.19
+        d=1e100.net; s=20230601; t=1747892270; x=1748497070;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=D/WW7gFMS5n6X9DhlmFAqeQexSMZm71tGcMm/uNUx/E=;
+        b=q6KT7IuvjB5j2ktnPK6Q+t7h2IcMS+UUh/wse/TQgHtnyQlpHHmr1GahNedA1sLTnB
+         jbswNS5925xqyRQphClmJ1hlO8NuzQzRegxsvppsDglz0+3crkuAIi5U2X1I61P0jD7m
+         Y5SIiggGe6xs+aD9wto3jR0KhoyQxvGeczlCf7mHwqvyq2VxXchad7189wDRo6SlR1K+
+         Cd0gnvpAYX11GIEU2K3/OK3iPNKM+oo2ZyFcG8EGEkVlM6pDEGoPk7s2ks/5+A+luo0f
+         JSvZjDSA8dfuMlBiqBNF4Sf4Hj4zi58TCh+SImKYOK0IHJUBGr+JWh+VRLxPwoi/cumJ
+         zo9w==
+X-Gm-Message-State: AOJu0Yzm11YiMdDXsVXWid769/7C7M7GZy+ZgHOLlWiP7bBmYsFdfKGh
+	1Lj3vealGyH5YChaPPFJeK2oDGARqCt9ihcB6rlFx6etYYG8NSHm2Xje+y7TOybh7Qp4dPA4QbS
+	OWauX
+X-Gm-Gg: ASbGncvVh+9uyXO2+qo/Ma1M8+gI7dXxkMlifzERyyRCkG0Apj7XpmNnXYU7+swcMpn
+	7jvpFYMYGOP0hhLotSpWaio1bdIyjbsk//RGBI+878GGtDmZlDaPzDbrlzVl7rYiOOAKIC8dBQB
+	s+ijYvLBEhXhI05O03Zwf7O3zJxzzb7pnA1NYS4FrTY92n2Yap0zV7kqp7S6DCzI4Y0nRIvVHNF
+	FCgeafMWV+sQvOWckjfBqUpOMHTauN37ouiv6OM2yZPZ2FJyqDUNej5dkPmMEsdFOGHZ1pmUHF+
+	rbFzCnVGWQ7uKv5loNbiBwF7l5gyQ28PV9PXiVCAzrlcKHm//WuHZXUFJaj83w==
+X-Google-Smtp-Source: AGHT+IEOYM57uiObFmkje+0PJRJ03xAWB9mXFfxxWST0ML3udBCH2luGW74caFQtW0DbVY986bg0pA==
+X-Received: by 2002:a05:6a00:3d4d:b0:742:3fb4:f992 with SMTP id d2e1a72fcca58-742a97c3f4dmr30575214b3a.10.1747892270067;
+        Wed, 21 May 2025 22:37:50 -0700 (PDT)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from [10.100.116.185] ([157.82.128.1])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-742a9876e62sm10779205b3a.147.2025.05.21.22.37.45
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 21 May 2025 22:23:21 -0700 (PDT)
-Message-ID: <66dfd3b6-733f-40de-a771-40ddf83cec5e@redhat.com>
-Date: Thu, 22 May 2025 07:23:19 +0200
+        Wed, 21 May 2025 22:37:49 -0700 (PDT)
+Message-ID: <15677d5c-cd86-4d75-a21e-0c011800cd55@daynix.com>
+Date: Thu, 22 May 2025 14:37:44 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 01/20] tests/docker: expose $HOME/.cache/qemu as docker
- volume
+Subject: Re: [PATCH v3 05/20] tests/Makefile: include test-plugins in per-arch
+ build deps
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Akihiko Odaki
- <akihiko.odaki@daynix.com>, John Snow <jsnow@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Peter Xu <peterx@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Markus Armbruster <armbru@redhat.com>,
- David Hildenbrand <david@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ John Snow <jsnow@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>,
+ Markus Armbruster <armbru@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Mahmoud Mandour <ma.mandourr@gmail.com>,
  Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
  Dmitry Osipenko <dmitry.osipenko@collabora.com>,
  Gustavo Romero <gustavo.romero@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>
 References: <20250521164250.135776-1-alex.bennee@linaro.org>
- <20250521164250.135776-2-alex.bennee@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20250521164250.135776-2-alex.bennee@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: HrPC1KOfTk2Wd1GVvP00iXebYTFE_arYnKL8mYjH6b8_1747891403
-X-Mimecast-Originator: redhat.com
+ <20250521164250.135776-6-alex.bennee@linaro.org>
 Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <20250521164250.135776-6-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: MUXyhpWZprOI
+X-TUID: q3sE2M5awJV+
 
-On 21/05/2025 18.42, Alex Bennée wrote:
-> If you want to run functional tests we should share .cache/qemu so we
-> don't force containers to continually re-download images.
+On 2025/05/22 1:42, Alex Bennée wrote:
+> The user can run a subset of the tcg tests directly, e.g.:
+> 
+>    make run-tcg-tests-hexagon-linux-user
+> 
+> but in this case we fail if there has not been a full build to ensure
+> all the test-plugins are there. Fix the dependency to ensure we always
+> will build them before running tests.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   tests/Makefile.include | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index 23fb722d42..7f7f62cbf6 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -46,7 +46,7 @@ $(foreach TARGET,$(TCG_TESTS_TARGETS), \
+>           $(eval $(BUILD_DIR)/tests/tcg/config-$(TARGET).mak: config-host.mak))
+>   
+>   .PHONY: $(TCG_TESTS_TARGETS:%=build-tcg-tests-%)
+> -$(TCG_TESTS_TARGETS:%=build-tcg-tests-%): build-tcg-tests-%: $(BUILD_DIR)/tests/tcg/config-%.mak
+> +$(TCG_TESTS_TARGETS:%=build-tcg-tests-%): build-tcg-tests-%: $(BUILD_DIR)/tests/tcg/config-%.mak test-plugins
 
-Maybe add something about the ccache relocation to the commit message?
+I don't think this is going to work.
 
-Anyway:
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+test-plugins will invoke run-ninja, which is defined as follows:
+
+run-ninja: config-host.mak
+ifneq ($(filter $(ninja-targets), $(ninja-cmd-goals)),)
+	+$(if $(MAKE.nq),@:,$(quiet-@)$(NINJA) $(NINJAFLAGS) \
+	   $(sort $(filter $(ninja-targets), $(ninja-cmd-goals))) | cat)
+
+$(ninja-cmd-goals) should contain test-plugins, but it doesn't if I 
+understand it correctly.
+
+>   	$(call quiet-command, \
+>               $(MAKE) -C tests/tcg/$* $(SUBDIR_MAKEFLAGS), \
+>           "BUILD","$* guest-tests")

@@ -1,69 +1,69 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp2380148njc;
-        Fri, 23 May 2025 01:09:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXh46nw6HbwVbhZKuH0u+OdPRr7+ZQCPIa4zIIG1xFzI5lLJI/+07VZkvdyEatvOZK6bmhz0B4lZFIeeA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHy7/Ospy6UAMjPO3q5F8AP+HajMQ1LU9BIuiurVfwz0Y9BHRM+zO7qirq4KHHWdxcxz/26
-X-Received: by 2002:a05:6e02:216b:b0:3dc:7b3d:6a5a with SMTP id e9e14a558f8ab-3dc7b3d6fc4mr130563395ab.10.1747987768870;
-        Fri, 23 May 2025 01:09:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747987768; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp2380681njc;
+        Fri, 23 May 2025 01:10:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUTXukGcGXOUd80YuIioT5oSqxFiHp4YpFOhpOCURcqFiIRmMuWBqgtueMZAJQ4Bm1M5PAUu8NFdfvvOA==@linaro.org
+X-Google-Smtp-Source: AGHT+IG/++7m3j6O0DHxY9ondWpmdQhwZj44ko2spR+etES5lpD+4I4hTCDhKhzrletBjMZXFUFV
+X-Received: by 2002:a05:6602:3816:b0:869:d7bf:6f31 with SMTP id ca18e2360f4ac-86caf08eba2mr332202339f.6.1747987841143;
+        Fri, 23 May 2025 01:10:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747987841; cv=none;
         d=google.com; s=arc-20240605;
-        b=er8rZrsZzk1Q9/1GYzVtrFQHkmGqO0F2QvHEekahe7MbNUxIT+zk5WwM1n1juJqVgn
-         vr4wiy+fC9WhqUr/G9H8lSSQQ0Lm5fO8Rg/ogMrCAyXtlVIWFYLbDnHhyCf4jCrGj7jg
-         wdFvbDd7551ueYtElCnNBjpE72eRqvEq18qBlgENkkrNXRyNPhyQfe6UNNVcFyktLOA6
-         9q7J+OnTHHepdgfBbVlwywoYzARcZ/CpBRSYe/ReYiDSgNG8Vp6ejH8zArJa/JDfDTfI
-         5n+PFObZ0J0sGwPY8i4DLyh1hj4EQTyKqGblqqci03dw8sPRGZNG1msfExAHGa2OxOWE
-         7Wgg==
+        b=VEdMIjbvBlDmoLfmzWgFHjB0O9khOENPpRczoUnwK0rpzXnHBpmeutKlpTD2cR/L9e
+         sKgmVhoRI/QwxOECo2G1sDPPjsEpsIn+tNm/v8CLXyjEeE8mJE4L0vQiA+ZOzlThym8E
+         /FzzHsM//LxaQ2fRhsLIYer6bcdRDC2veP0LZaFebTirD4MHtGq4oTuXM4kiNKSIGBWo
+         UPjEscHFhdOqykyWsSlPn0vpqerZ/Wxth6dKYryISKRhYEDr6voNF6iNiDevVZ9WUl0f
+         pOeWn6OPIF1k3Jc4aiRT4iEzVLRByLNtODXI1sDwETpYxAY39GIB3F9jeVcd+yUrAz8e
+         Awlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=kZ15X7TKfMBIpWv++0TFbfTCiIGIXeb6+GB2UjpJLSc=;
+        bh=urGpyY4bPVhs7T1mEsKOBg5UU0noOkMpno96OwGm/cU=;
         fh=QgHpGH3rLCa5kb4qYI2Dd+mOQf4l1wrbOWCqRsxrzSc=;
-        b=IGVKV2eG5pZpA0oYyng2mqZPyKZgSWZEN33/WyqXHw4PwzPTXpKlxHxGLlb8M4CULc
-         Y46/3Su0TZGbXUWLCTjfj6kl8Hrb/qKT0XRH6Eqqa9y6f3U6B/smUay+AkpfSiz/hsc8
-         rNDnMUsiVyXPxftYfjSjVT8+FIIcQipIzaiGX4007fcK2qoLf3Zgtsocc/yqAXZfRch8
-         ZnQfqOEXtZDHcaCFjwcvs0yvzZk96bO0rhLrnTk89hiAFNG5U5kOyyMpF3amV5jNiyiN
-         84K0z855ebN1P2wX9CDghIrYBxTjN5NHXYkGVYruZTjQbhmjsQG8MSJyYVM7KATexNBj
-         4TAA==;
+        b=TLWi1uE+PVMx6nqMts5NtpQTDng636NR8sAmHJcN9G8DiwWatTEOIcvZHwpbjyMnF2
+         LkKzd4r7kWrF7JMk0PHnwOb30IRmnu6Yo6crOyhLmO5G2h/ms3iVI51pYWDU/aLC01bg
+         M+REwvaldqeJvur3xbe75HyaFT0Ff9tPihSymZAgDehW7wN/FVO4l2+hCxrv7RPUsPDl
+         nP+qbbdKR+H16q0ZlcjjPONWErD2o3RzuxXxRQI6ftmvqxXrpQrDrAjs1LIlWfFITP2a
+         LAViLbKVfS8o+cPGmnF+CvjCgxVc1j2+HDStYO6wqk1rvkmbldQgteNlKV5OIJqHhBOG
+         hTag==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9e14a558f8ab-3dc73fff78bsi108310025ab.61.2025.05.23.01.09.28
+        by mx.google.com with ESMTPS id ca18e2360f4ac-86a236fb74dsi771219239f.77.2025.05.23.01.10.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 May 2025 01:09:28 -0700 (PDT)
+        Fri, 23 May 2025 01:10:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uINSp-0001bI-D0; Fri, 23 May 2025 04:09:11 -0400
+	id 1uINU8-0002YM-5I; Fri, 23 May 2025 04:10:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=fO70=YH=kaod.org=clg@ozlabs.org>)
- id 1uINSn-0001b3-Ny; Fri, 23 May 2025 04:09:09 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ id 1uINU6-0002Qn-51; Fri, 23 May 2025 04:10:30 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=fO70=YH=kaod.org=clg@ozlabs.org>)
- id 1uINSl-0002Bj-97; Fri, 23 May 2025 04:09:09 -0400
+ id 1uINU4-0002Wc-4w; Fri, 23 May 2025 04:10:29 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4b3d8r0l8jz4xfM;
- Fri, 23 May 2025 18:09:00 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4b3dBS54ZZz4wyR;
+ Fri, 23 May 2025 18:10:24 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4b3d8m13tsz4xfL;
- Fri, 23 May 2025 18:08:55 +1000 (AEST)
-Message-ID: <2c8cfff2-8a8f-451a-8495-7f151dd7a376@kaod.org>
-Date: Fri, 23 May 2025 10:08:54 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4b3dBP03MSz4xfM;
+ Fri, 23 May 2025 18:10:20 +1000 (AEST)
+Message-ID: <1fe3a240-82dc-4f57-a6ff-0aa12a542764@kaod.org>
+Date: Fri, 23 May 2025 10:10:18 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/6] hw/arm/aspeed_ast2700-fc: Fix null pointer
- dereference in ca35 init
+Subject: Re: [PATCH v4 3/6] hw/arm/aspeed_ast27x0: Fix unimplemented region
+ overlap with vbootrom
 To: Steven Lee <steven_lee@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>,
@@ -72,7 +72,7 @@ To: Steven Lee <steven_lee@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com, longzl2@lenovo.com, yunlin.tang@aspeedtech.com
 References: <20250522091701.354185-1-steven_lee@aspeedtech.com>
- <20250522091701.354185-2-steven_lee@aspeedtech.com>
+ <20250522091701.354185-4-steven_lee@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -117,17 +117,16 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250522091701.354185-2-steven_lee@aspeedtech.com>
+In-Reply-To: <20250522091701.354185-4-steven_lee@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=fO70=YH=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -143,26 +142,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UUWquJTucpJ5
+X-TUID: TlFDPsnr3bER
 
 On 5/22/25 11:16, Steven Lee wrote:
-> Clang's sanitizer reports a runtime error when booting with
-> '-net nic -net user', due to a null pointer being passed
-> to memory_region_find(), which subsequently triggers a crash in
-> flatview_lookup().
-
-I don't see such errors.
-
-> Root cause:
-> - Missing NIC configuration in the CA35 initialization.
+> The unimplemented memory region overlaps with the VBootROM address
+> range, causing incorrect memory layout.
 > 
-> Fix:
-> - Add nic configuration in ast2700fc's ca35 init function.
+> This patch adjusts the size and start address of the unimplemented
+> region to avoid collision. The IO memory region (ASPEED_DEV_IOMEM) is
+> now moved to 0x20000 to reserve space for VBootROM at 0x0.
+> 
+> Although the memory range 0x20000 - 0x10000000 is undefined in the
+> datasheet and should not be required, further testing shows OP-TEE
+> or U-Boot may access 0x400000 during early boot.
+> Removing the unimplemented region causes firmware hangs.
+> > To prevent unexpected accesses, retain the region as a safeguard.
+> 
+> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
 
-However it would be nice to have network support.
 
-Could you please rephrase the commit log ?
 
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
@@ -170,28 +170,30 @@ C.
 
 
 
-> 
-> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+
 > ---
->   hw/arm/aspeed_ast27x0-fc.c | 7 +++++++
->   1 file changed, 7 insertions(+)
+>   hw/arm/aspeed_ast27x0.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
-> index 125a3ade40..7bf4f2a52d 100644
-> --- a/hw/arm/aspeed_ast27x0-fc.c
-> +++ b/hw/arm/aspeed_ast27x0-fc.c
-> @@ -86,6 +86,13 @@ static void ast2700fc_ca35_init(MachineState *machine)
->                                    AST2700FC_BMC_RAM_SIZE, &error_abort)) {
->           return;
->       }
-> +
-> +    for (int i = 0; i < sc->macs_num; i++) {
-> +        if (!qemu_configure_nic_device(DEVICE(&soc->ftgmac100[i]),
-> +                                       true, NULL)) {
-> +            break;
-> +        }
-> +    }
->       if (!object_property_set_int(OBJECT(&s->ca35), "hw-strap1",
->                                    AST2700FC_HW_STRAP1, &error_abort)) {
->           return;
+> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+> index 1974a25766..bb61c30cf4 100644
+> --- a/hw/arm/aspeed_ast27x0.c
+> +++ b/hw/arm/aspeed_ast27x0.c
+> @@ -23,14 +23,14 @@
+>   #include "qobject/qlist.h"
+>   #include "qemu/log.h"
+>   
+> -#define AST2700_SOC_IO_SIZE          0x01000000
+> +#define AST2700_SOC_IO_SIZE          0x00FE0000
+>   #define AST2700_SOC_IOMEM_SIZE       0x01000000
+>   #define AST2700_SOC_DPMCU_SIZE       0x00040000
+>   #define AST2700_SOC_LTPI_SIZE        0x01000000
+>   
+>   static const hwaddr aspeed_soc_ast2700_memmap[] = {
+> -    [ASPEED_DEV_IOMEM]     =  0x00000000,
+>       [ASPEED_DEV_VBOOTROM]  =  0x00000000,
+> +    [ASPEED_DEV_IOMEM]     =  0x00020000,
+>       [ASPEED_DEV_SRAM]      =  0x10000000,
+>       [ASPEED_DEV_DPMCU]     =  0x11000000,
+>       [ASPEED_DEV_IOMEM0]    =  0x12000000,
 

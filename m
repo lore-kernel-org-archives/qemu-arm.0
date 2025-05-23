@@ -1,205 +1,562 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp2444687njc;
-        Fri, 23 May 2025 03:40:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXu/PpwwUPZ9TAi18ciPE1IfN/qWWOLCpN85q/S4T4KWabtQbfsfziQJpOjrv3cCXCk9wvyvgy1RdTLdQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IF7bqQpqhT4Oy2RfdU1Dy3fzc9zSZjvW9EyGUokRLO53Q91SMtQdXFM3bp36qXyp8xSGMSL
-X-Received: by 2002:a92:ca4e:0:b0:3dc:870a:e07e with SMTP id e9e14a558f8ab-3dc870ae2b8mr95188055ab.4.1747996815214;
-        Fri, 23 May 2025 03:40:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747996815; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp2473771njc;
+        Fri, 23 May 2025 04:37:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW4IfwWQN2yybzT6WjMFANIjZQlRr2L1dtvH5iWmy6rNPi7YjTn6A0SbzkOwz7xiQtJvcPwAuZ7NtzXJQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFjRERhMAGoLhBZKIy9cd5fIiReYRmyq5Ulsk4ggQeA8AN0ZJxkJ8axj6rw2PuRA/Avb3v8
+X-Received: by 2002:a05:6102:5e85:b0:4dd:b82d:e0de with SMTP id ada2fe7eead31-4e05365043dmr23725690137.17.1748000239963;
+        Fri, 23 May 2025 04:37:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748000239; cv=none;
         d=google.com; s=arc-20240605;
-        b=TN0TUuPIvudQfYa4VE/Md/P/H4zsvcP4xHvA1I952HnDQBaV7w7ZSgP88kP9rUH2UI
-         0NWutqoxgpq+f1Au9pRdXulK8ptR5zqCIexlHStzpv3nmBtAM/YA9Kv9AhTnP9ahq5wx
-         TzfupAAsljCWnT3CpqwUhgS7jH8/RC4VtMT2D9gJNvQce4UY1mKnuyCINnv1R9eWBC4K
-         EJiVpPhXHhAxJf50W0bjca3H2Oej1YJTs8SLTRcHM074IsjJbnXMzpnpp3M4FGXQQL+p
-         pO8X3Dp+uHODvQiLWlT9kfr7agqTGtR0CDcQ0PyCxzeBHKMiwNiu4pN8bIPTIQnnT2tC
-         UBHg==
+        b=YFSxYj9DZmknO+JdUH4HruLiGu0dJQRYRKWbLlyoS4+kdTEfN0Z1aC2Z5WyXIxn5EH
+         Hdbhh1juzZBAyEbaAjv74hAdBHdcGjedczXaRIspKLzmY2QKYRfHanseENwLlY/Qelim
+         Le6D/qgCDPdZWHzXBaRiWk4LX5HIBYonmhjs0SzcJh/gqQLJhllyH4ArfQaBi3NSRLvD
+         3E41PifO6XsISke8tv7Zh4MCCa67/c9bEgOxB3Z+svdh+uRQtAp4Z+04Daq4PF9KlvNW
+         55q+ZehycaHXfpivv9zOS5byxMBlOxtIA0vWWwHqyt3UdeF3xzY5hX2XWP0uFnlJJlPv
+         bDxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=n3nEOXUd0K3eBO2aQGa5aMnc1Y4vZOf0CoPFlUYuvU8=;
-        fh=QgHpGH3rLCa5kb4qYI2Dd+mOQf4l1wrbOWCqRsxrzSc=;
-        b=idyRQvn4cJeA49pMp18ApaJVSHaiYlOuJRgjyp9D1LoMNO9i197rvu+aYwUg89oI4O
-         +3JO4bFR/ErBiwOvpLNRMVNfndhTxVhUinB1d02sRbaXfmrlS/Ll4rWpQ/kEzYGSs0di
-         UGZRFjVKhyE4aeLKPjRVYcZyRCm9BWHjIs/p7H+5EbhY//kVASccONtF+DWTGS0GzLXg
-         QAzsccD55I1+HiicPHOgl8mrPFguBE41/6xX3X9o7IZYWMQh/g4AP5WpzWzqjYQHz2eu
-         IF8iMjOzppN3ZSA5kG2KWWnoDWWgKWvO5lVC8zSClpm/juGz4tr12nlEH9+cRUVasKsk
-         I6Sw==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=feFR28ur8iWV2E6dtw3gC5COSsFgqvfRjlNM0tviJLg=;
+        fh=FFcxFM2uhrTJo/SzPfgszERozwUY6POsDsITUB8pqI8=;
+        b=P1JaLQ8A2RrECPlZayjDn0kfXtPSa+fKb8+P1EmPHv/EgQoD8RPJ/2t1zKpzcdHyky
+         vozaoXNvQAK+iThDg6V7f+gZ/IGue36qxq5o00a9RQguEpn9PjUOxKmVQqWtinENSTx4
+         mEkel1+10407POoJRr/DgJpNB38cbBsl8XoTxVKsGQ6f9Wy2VisV42XC165upE4tArln
+         08YIkH7u9Wxjkb/x36oU23WnlOAqmrgsjHcY55cAOwnkcy4Wqvs8kvDF7HIuBhPIhQdJ
+         EfuYrr+ETzNA9LLwvb4uadIy8IE1lGICkXvB+WU8kxCCOG3pSVjD/e5kCUns+w03AWM2
+         wr5w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@maquefel.me header.s=mail header.b=od7ApWyr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8926c6da1cb9f-4fbcc4935a9si14185581173.87.2025.05.23.03.40.15
+        by mx.google.com with ESMTPS id ada2fe7eead31-4dfa67feb11si7476053137.337.2025.05.23.04.37.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 May 2025 03:40:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 23 May 2025 04:37:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@maquefel.me header.s=mail header.b=od7ApWyr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uIPoi-0002R1-I4; Fri, 23 May 2025 06:39:56 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uIQi4-00088d-8i; Fri, 23 May 2025 07:37:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=fO70=YH=kaod.org=clg@ozlabs.org>)
- id 1uIPog-0002QX-LU; Fri, 23 May 2025 06:39:54 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <nikita.shubin@maquefel.me>)
+ id 1uIQhz-00083k-0t; Fri, 23 May 2025 07:37:03 -0400
+Received: from forward500d.mail.yandex.net ([2a02:6b8:c41:1300:1:45:d181:d500])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=fO70=YH=kaod.org=clg@ozlabs.org>)
- id 1uIPoe-0004np-FY; Fri, 23 May 2025 06:39:54 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4b3hVr1W0Dz4xf9;
- Fri, 23 May 2025 20:39:48 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4b3hVm3VFfz4xdx;
- Fri, 23 May 2025 20:39:44 +1000 (AEST)
-Message-ID: <97b35cef-8c31-4d06-9658-651d0babdd8f@kaod.org>
-Date: Fri, 23 May 2025 12:39:41 +0200
+ (Exim 4.90_1) (envelope-from <nikita.shubin@maquefel.me>)
+ id 1uIQht-0003g5-Ju; Fri, 23 May 2025 07:37:00 -0400
+Received: from mail-nwsmtp-smtp-production-main-84.klg.yp-c.yandex.net
+ (mail-nwsmtp-smtp-production-main-84.klg.yp-c.yandex.net
+ [IPv6:2a02:6b8:c42:4946:0:640:90b4:0])
+ by forward500d.mail.yandex.net (Yandex) with ESMTPS id CFB4061319;
+ Fri, 23 May 2025 14:36:51 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-84.klg.yp-c.yandex.net
+ (smtp/Yandex) with ESMTPSA id kaOXlq9LjuQ0-DQOMmh0C; 
+ Fri, 23 May 2025 14:36:51 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=maquefel.me; s=mail;
+ t=1748000211; bh=feFR28ur8iWV2E6dtw3gC5COSsFgqvfRjlNM0tviJLg=;
+ h=Message-ID:Date:In-Reply-To:Cc:Subject:References:To:From;
+ b=od7ApWyrtlh9/dy0kUZ8MdcEIU1i3GabeBGPfJHflzFAqyXmUlnDDTo9WqYhw7SqJ
+ aDuHMVRSrSWQ6YKoSCV9Y1rVH5446lqOQ6/oIOxGEJny1eVTExrcatFIkml1EfgfyJ
+ Ascl1nVG8xZ6JM+QEWYtuIluvs041U+nyVsI8Mpg=
+Authentication-Results: mail-nwsmtp-smtp-production-main-84.klg.yp-c.yandex.net;
+ dkim=pass header.i=@maquefel.me
+From: Nikita Shubin <nikita.shubin@maquefel.me>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Alexandre Iooss <erdnaxe@crans.org>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Ilya Chichkov <i.chichkov@yadro.com>,
+ Nikita Shubin <n.shubin@yadro.com>
+Subject: [PATCH v2 3/3] tests/qtest: add qtests for STM32 DMA
+Date: Fri, 23 May 2025 14:36:47 +0300
+Message-ID: <20250523113647.4388-4-nikita.shubin@maquefel.me>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250523113647.4388-1-nikita.shubin@maquefel.me>
+References: <20250523113647.4388-1-nikita.shubin@maquefel.me>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 0/6] hw/arm/aspeed_ast2700-fc: Fix null pointer
- dereference
-To: Steven Lee <steven_lee@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, longzl2@lenovo.com, yunlin.tang@aspeedtech.com
-References: <20250523093144.991408-1-steven_lee@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250523093144.991408-1-steven_lee@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=fO70=YH=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a02:6b8:c41:1300:1:45:d181:d500;
+ envelope-from=nikita.shubin@maquefel.me; helo=forward500d.mail.yandex.net
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: x2P4y10dfXpF
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 32ygH3f7Eehx
 
-On 5/23/25 11:31, Steven Lee wrote:
-> Clang's sanitizer reports a runtime error when booting with
-> '-net nic -net user', due to a null pointer being passed
-> to memory_region_find(), which subsequently triggers a crash in
-> flatview_lookup().
-> 
-> Root cause:
-> - Missing NIC configuration in the CA35 initialization.
-> 
-> Fix:
-> - Reduce ca35 ram size from 2GiB to 1GiB to align with ast2700a1-evb,
->    where the ram-container is defined as 1GiB in its class.
-> - Add nic configuration in ast2700fc's ca35 init function.
-> 
-> 
-> v2:
-> - Split the CA35 memory mapping into a separate patch.
-> - Added a new patch to fix BMC memory mapping in the fby35 machine,
->    which had a similar issue (unmapped system_memory).
-> - Removed Change-Id tag from commit messages
-> 
-> v3:
-> - Fixed issue with incorrectly inheriting TYPE_ASPEED_MACHINE.
-> - Rewrote the commit message for "Map BMC memory into system memory".
-> - Added more details to the commit message for "Fix unimplemented region
->    overlap with VBootROM".
-> 
-> v4:
-> - Split the first patch "Fix null pointer dereference" into two patches.
-> - Remove the patch "hw/arm/aspeed_ast27x0: Fix unimplemented
->    region overlap with vbootrom".
-> 
-> v5:
-> - Rewrote the commit message for the first patch to:
->      "hw/arm/aspeed_ast2700-fc: Add network support".
-> 
-> Steven Lee (6):
->    hw/arm/aspeed_ast2700-fc: Add network support
->    hw/arm/aspeed_ast2700-fc: Reduce ca35 ram size to align with ast2700a1
->    hw/arm/aspeed_ast27x0: Fix unimplemented region overlap with vbootrom
->    hw/arm/aspeed_ast27x0-fc: Map ca35 memory into system memory
->    hw/arm/fby35: Map BMC memory into system memory
->    docs: Remove ast2700fc from Aspeed family boards
-> 
->   docs/system/arm/aspeed.rst |  2 +-
->   hw/arm/aspeed_ast27x0-fc.c | 10 +++++++++-
->   hw/arm/aspeed_ast27x0.c    |  4 ++--
->   hw/arm/fby35.c             |  1 +
->   4 files changed, 13 insertions(+), 4 deletions(-)
-> 
+From: Nikita Shubin <n.shubin@yadro.com>
 
+Signed-off-by: Nikita Shubin <n.shubin@yadro.com>
+---
+ tests/qtest/meson.build      |   1 +
+ tests/qtest/stm32-dma-test.c | 421 +++++++++++++++++++++++++++++++++++
+ 2 files changed, 422 insertions(+)
+ create mode 100644 tests/qtest/stm32-dma-test.c
 
-Applied to aspeed-next.
-
-Thanks,
-
-C.
-
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 3136d15e0f..5cd14d3cfd 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -239,6 +239,7 @@ qtests_arm = \
+   (config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_VEXPRESS') ? ['test-arm-mptimer'] : []) + \
+   (config_all_devices.has_key('CONFIG_MICROBIT') ? ['microbit-test'] : []) + \
++  (config_all_devices.has_key('CONFIG_STM32F100_SOC') ? ['stm32-dma-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') ? qtests_stm32l4x5 : []) + \
+   (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed_fsi-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') and
+diff --git a/tests/qtest/stm32-dma-test.c b/tests/qtest/stm32-dma-test.c
+new file mode 100644
+index 0000000000..36c9898756
+--- /dev/null
++++ b/tests/qtest/stm32-dma-test.c
+@@ -0,0 +1,421 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++/*
++ * QTest testcase for STM32 DMA engine.
++ *
++ * This includes STM32F1xxxx, STM32F2xxxx and GD32F30x
++ *
++ * Author: 2025 Nikita Shubin <n.shubin@yadro.com>
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/bitops.h"
++#include "libqtest-single.h"
++#include "libqos/libqos.h"
++
++/* Offsets in stm32vldiscovery platform: */
++#define DMA_BASE    0x40020000
++#define SRAM_BASE   0x20000000
++
++/* Global interrupt flag */
++#define DMA_ISR_GIF   BIT(0)
++/* Full transfer finish */
++#define DMA_ISR_TCIF  BIT(1)
++/* Half transfer finish */
++#define DMA_ISR_HTIF  BIT(2)
++/* Transfer error */
++#define DMA_ISR_TEIF  BIT(3)
++
++/* Used register/fields definitions */
++#define DMA_CCR(idx)     (0x08 + 0x14 * idx)
++#define DMA_CNDTR(idx)   (0x0C + 0x14 * idx)
++#define DMA_CPAR(idx)    (0x10 + 0x14 * idx)
++#define DMA_CMAR(idx)    (0x14 + 0x14 * idx)
++
++#define DMA_MAX_CHAN    7
++
++/* Register offsets for a dma chan0 within a dma block. */
++#define DMA_CHAN(_idx, _irq)  \
++    { \
++        .ccr = DMA_CCR(_idx), \
++        .cndrt = DMA_CNDTR(_idx), \
++        .cpar = DMA_CPAR(_idx), \
++        .cmar = DMA_CMAR(_idx), \
++        .irq_line = _irq,\
++    }
++
++typedef struct DMAChan {
++    uint32_t ccr;
++    uint32_t cndrt;
++    uint32_t cpar;
++    uint32_t cmar;
++    uint8_t irq_line;
++} DMAChan;
++
++const DMAChan dma_chans[] = {
++    DMA_CHAN(0, 11),
++    DMA_CHAN(1, 12),
++    DMA_CHAN(2, 12),
++    DMA_CHAN(3, 13),
++    DMA_CHAN(4, 14),
++    DMA_CHAN(5, 16),
++    DMA_CHAN(6, 17),
++};
++
++/* Register offsets for a dma within a dma block. */
++typedef struct DMA {
++    uint32_t base_addr;
++    uint32_t isr;
++    uint32_t ofcr;
++} DMA;
++
++const DMA dma = {
++    .base_addr = DMA_BASE,
++    .isr = 0x00,
++    .ofcr = 0x04,
++};
++
++typedef struct TestData {
++    QTestState *qts;
++    const DMA *dma;
++    const DMAChan *chans;
++} TestData;
++
++#define NVIC_ISER 0xE000E100
++#define NVIC_ISPR 0xE000E200
++#define NVIC_ICPR 0xE000E280
++
++static void enable_nvic_irq(unsigned int n)
++{
++    writel(NVIC_ISER, 1 << n);
++}
++
++static void unpend_nvic_irq(unsigned int n)
++{
++    writel(NVIC_ICPR, 1 << n);
++}
++
++static bool check_nvic_pending(unsigned int n)
++{
++    return readl(NVIC_ISPR) & (1 << n);
++}
++
++static uint32_t dma_read(const TestData *td, uint32_t offset)
++{
++    return qtest_readl(td->qts, td->dma->base_addr + offset);
++}
++
++static void dma_write(const TestData *td, uint32_t offset, uint32_t value)
++{
++    qtest_writel(td->qts, td->dma->base_addr + offset, value);
++}
++
++static void dma_write_ofcr(const TestData *td, uint32_t value)
++{
++    return dma_write(td, td->dma->ofcr, value);
++}
++
++static uint32_t dma_read_isr(const TestData *td)
++{
++    return dma_read(td, td->dma->isr);
++}
++
++static void dma_write_ccr(const TestData *td, uint8_t idx, uint32_t value)
++{
++    dma_write(td, td->chans[idx].ccr, value);
++}
++
++static uint32_t dma_read_ccr(const TestData *td, uint8_t idx)
++{
++    return dma_read(td, td->chans[idx].ccr);
++}
++
++static void dma_write_cndrt(const TestData *td, uint8_t idx, uint32_t value)
++{
++    dma_write(td, td->chans[idx].cndrt, value);
++}
++
++static void dma_write_cpar(const TestData *td, uint8_t idx, uint32_t value)
++{
++    dma_write(td, td->chans[idx].cpar, value);
++}
++
++static void dma_write_cmar(const TestData *td, uint8_t idx, uint32_t value)
++{
++    dma_write(td, td->chans[idx].cmar, value);
++}
++
++static void test_m2m(gconstpointer test_data)
++{
++    const TestData *td = test_data;
++    QTestState *s = td->qts;
++    const uint32_t patt_len = 0xff;
++    g_autofree char *pattern_check = g_malloc(patt_len);
++    g_autofree char *pattern = g_malloc(patt_len);
++    uint8_t idx = 0;
++    uint32_t val;
++
++    enable_nvic_irq(td->chans[idx].irq_line);
++    qtest_irq_intercept_in(global_qtest, "/machine/soc/dma[0]");
++
++    /* write addr */
++    dma_write_cpar(td, idx, SRAM_BASE);
++    dma_write_cmar(td, idx, SRAM_BASE + patt_len);
++
++    /* enable increment and M2M */
++    val = dma_read_ccr(td, idx);
++    val |= BIT(1); /* TCIE */
++    val |= BIT(6); /* PINC */
++    val |= BIT(7); /* MINC */
++    val |= BIT(14); /* M2M */
++    dma_write_ccr(td, idx, val);
++
++    generate_pattern(pattern, patt_len, patt_len);
++    qtest_memwrite(s, SRAM_BASE, pattern, patt_len);
++
++    dma_write_cndrt(td, idx, patt_len);
++
++    val |= BIT(0); /* enable channel */
++    dma_write_ccr(td, idx, val);
++
++    qtest_memread(s, SRAM_BASE + patt_len, pattern_check, patt_len);
++
++    g_assert(memcmp(pattern, pattern_check, patt_len) == 0);
++
++    g_assert_true(check_nvic_pending(td->chans[idx].irq_line));
++}
++
++typedef struct width_pattern {
++    uint32_t src;
++    uint8_t swidth;
++    uint32_t dst;
++    uint8_t dwidth;
++} width_pattern;
++
++static void test_width(gconstpointer test_data)
++{
++    const width_pattern patterns[] = {
++        { 0xb0,       1, 0xb0,       1 },
++        { 0xb0,       1, 0x00b0,     2 },
++        { 0xb0,       1, 0x000000b0, 4 },
++        { 0xb1b0,     2, 0xb0,       1 },
++        { 0xb1b0,     2, 0xb1b0,     2 },
++        { 0xb1b0,     2, 0x0000b1b0, 4 },
++        { 0xb3b2b1b0, 4, 0xb0,       1 },
++        { 0xb3b2b1b0, 4, 0xb1b0,     2 },
++        { 0xb3b2b1b0, 4, 0xb3b2b1b0, 4 },
++    };
++
++    const TestData *td = test_data;
++    QTestState *s = td->qts;
++    const uint32_t patt = 0xffffffff;
++    const uint32_t patt_len = 4;
++    uint8_t idx = 0;
++    uint32_t dst;
++    uint32_t val;
++    QDict *resp;
++
++    resp = qmp("{'execute':'system_reset' }");
++    qobject_unref(resp);
++
++    /* write addr */
++    dma_write_cpar(td, idx, SRAM_BASE);
++    dma_write_cmar(td, idx, SRAM_BASE + patt_len);
++
++    /* enable increment and M2M */
++    val = dma_read_ccr(td, idx);
++    val |= BIT(6); /* PINC */
++    val |= BIT(7); /* MINC */
++    val |= BIT(14); /* M2M */
++    dma_write_ccr(td, idx, val);
++
++    for (int i = 0; i < ARRAY_SIZE(patterns); i++) {
++        /* fill destination and source with pattern */
++        qtest_memwrite(s, SRAM_BASE, &patt, patt_len);
++        qtest_memwrite(s, SRAM_BASE + patt_len, &patt, patt_len);
++
++        qtest_memwrite(s, SRAM_BASE, &patterns[i].src, patterns[i].swidth);
++
++        dma_write_cndrt(td, idx, 1);
++        val |= BIT(0); /* enable channel */
++        val = deposit32(val, 8, 2, patterns[i].swidth >> 1);
++        val = deposit32(val, 10, 2, patterns[i].dwidth >> 1);
++        dma_write_ccr(td, idx, val);
++
++        qtest_memread(s, SRAM_BASE + patt_len, &dst, patterns[i].dwidth);
++
++        g_assert(memcmp(&dst, &patterns[i].dst, patterns[i].dwidth) == 0);
++
++        /* disable chan */
++        val &= ~BIT(0);
++        dma_write_ccr(td, idx, val);
++    }
++}
++
++static void dma_set_irq(unsigned int idx, int num, int level)
++{
++    g_autofree char *name = g_strdup_printf("/machine/soc/dma[%u]",
++                                            idx);
++    qtest_set_irq_in(global_qtest, name, NULL, num, level);
++}
++
++static void test_triggers(gconstpointer test_data)
++{
++    const TestData *td = test_data;
++    QTestState *s = td->qts;
++    const uint32_t patt = 0xffffffff;
++    const uint32_t patt_len = 4;
++    uint32_t dst;
++    uint32_t val;
++    QDict *resp;
++
++    resp = qmp("{'execute':'system_reset' }");
++    qobject_unref(resp);
++
++    for (int i = 0; i < ARRAY_SIZE(dma_chans); i++) {
++        qtest_memset(s, SRAM_BASE, 0, patt_len * 2);
++        qtest_memwrite(s, SRAM_BASE, &patt, patt_len);
++
++        /* write addr */
++        dma_write_cpar(td, i, SRAM_BASE);
++        dma_write_cmar(td, i, SRAM_BASE + patt_len);
++
++        val = dma_read_ccr(td, i);
++
++        dma_write_cndrt(td, i, 1);
++        val |= BIT(0); /* enable channel */
++        val = deposit32(val, 8, 2, patt_len >> 1);
++        val = deposit32(val, 10, 2, patt_len >> 1);
++        dma_write_ccr(td, i, val);
++
++        dma_set_irq(0, i, 1);
++
++        qtest_memread(s, SRAM_BASE + patt_len, &dst, patt_len);
++
++        g_assert(memcmp(&dst, &patt, patt_len) == 0);
++
++        /* disable chan */
++        val &= ~BIT(0);
++        dma_write_ccr(td, i, val);
++    }
++}
++
++static void test_interrupts(gconstpointer test_data)
++{
++    const TestData *td = test_data;
++    const uint32_t patt_len = 1024;
++    uint8_t idx = 0;
++    uint32_t val;
++    QDict *resp;
++
++    resp = qmp("{'execute':'system_reset' }");
++    qobject_unref(resp);
++
++    enable_nvic_irq(td->chans[idx].irq_line);
++
++    /* write addr */
++    dma_write_cpar(td, idx, SRAM_BASE);
++    dma_write_cmar(td, idx, SRAM_BASE + patt_len);
++
++    /* write counter */
++    dma_write_cndrt(td, idx, 2);
++
++    /* enable increment and M2M */
++    val = dma_read_ccr(td, idx);
++    val |= BIT(0); /* EN */
++    val |= BIT(1); /* TCIE */
++    val |= BIT(2); /* HTIE */
++    val |= BIT(3); /* TEIE */
++    val |= BIT(6); /* PINC */
++    val |= BIT(7); /* MINC */
++    dma_write_ccr(td, idx, val);
++
++    /* Half-transfer */
++    dma_set_irq(0, idx, 1);
++    g_assert_true(check_nvic_pending(td->chans[idx].irq_line));
++    val = dma_read_isr(td);
++
++    g_assert_true(val & DMA_ISR_GIF);
++    g_assert_true(val & DMA_ISR_HTIF);
++    unpend_nvic_irq(td->chans[idx].irq_line);
++
++    dma_write_ofcr(td, 0xffffffff);
++    val = dma_read_isr(td);
++    g_assert_false(val & DMA_ISR_GIF);
++    g_assert_false(val & DMA_ISR_HTIF);
++
++    /* Full-transfer */
++    dma_set_irq(0, idx, 1);
++    g_assert_true(check_nvic_pending(td->chans[idx].irq_line));
++    val = dma_read_isr(td);
++
++    g_assert_true(val & DMA_ISR_GIF);
++    g_assert_true(val & DMA_ISR_HTIF);
++    g_assert_true(val & DMA_ISR_TCIF);
++    unpend_nvic_irq(td->chans[idx].irq_line);
++
++    dma_write_ofcr(td, 0xffffffff);
++    val = dma_read_isr(td);
++    g_assert_false(val & DMA_ISR_GIF);
++    g_assert_false(val & DMA_ISR_HTIF);
++    g_assert_false(val & DMA_ISR_TCIF);
++
++    /* Error-on-transfer */
++    val = dma_read_ccr(td, idx);
++    val &= ~BIT(0);
++    dma_write_ccr(td, idx, val);
++
++    dma_write_cndrt(td, idx, 1);
++    dma_write_cpar(td, idx, 0xffffffff);
++
++    val |= BIT(0);
++    dma_write_ccr(td, idx, val);
++
++    dma_set_irq(0, idx, 1);
++    g_assert_true(check_nvic_pending(td->chans[idx].irq_line));
++    val = dma_read_isr(td);
++
++    g_assert_true(val & DMA_ISR_GIF);
++    g_assert_true(val & DMA_ISR_TEIF);
++    unpend_nvic_irq(td->chans[idx].irq_line);
++
++    dma_write_ofcr(td, 0xffffffff);
++    val = dma_read_isr(td);
++    g_assert_false(val & DMA_ISR_GIF);
++    g_assert_false(val & DMA_ISR_TEIF);
++}
++
++static void stm32_add_test(const char *name, const TestData *td,
++                           GTestDataFunc fn)
++{
++    g_autofree char *full_name = g_strdup_printf(
++        "stm32_dma/%s", name);
++    qtest_add_data_func(full_name, td, fn);
++}
++
++/* Convenience macro for adding a test with a predictable function name. */
++#define add_test(name, td) stm32_add_test(#name, td, test_##name)
++
++int main(int argc, char **argv)
++{
++    TestData testdata;
++    QTestState *s;
++    int ret;
++
++    g_test_init(&argc, &argv, NULL);
++    s = qtest_start("-machine stm32vldiscovery");
++    g_test_set_nonfatal_assertions();
++
++    TestData *td = &testdata;
++    td->qts = s;
++    td->dma = &dma;
++    td->chans = dma_chans;
++    add_test(m2m, td);
++    add_test(width, td);
++    add_test(triggers, td);
++    add_test(interrupts, td);
++
++    ret = g_test_run();
++    qtest_end();
++
++    return ret;
++}
+-- 
+2.48.1
 

@@ -1,368 +1,268 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp2387345njc;
-        Fri, 23 May 2025 01:27:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVEUZQTaIVGMMfhJkUUeMnZjqHkAewCsQBU/ujeP84lY9sOK/AyqEXtKAbg2J7JYY+CEYgFgch7P85Gow==@linaro.org
-X-Google-Smtp-Source: AGHT+IE6A5LSOdfo9jF2t+oq5cj74KkwwkmR6OtUo+hcnDvSqOXnnVGtyleMW/dnStKjRiD+POwT
-X-Received: by 2002:a5d:5f46:0:b0:3a0:7017:61f6 with SMTP id ffacd0b85a97d-3a35c825eefmr27706164f8f.14.1747988855345;
-        Fri, 23 May 2025 01:27:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747988855; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp2407560njc;
+        Fri, 23 May 2025 02:17:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWAP5XU5bQ+9hXXc9lsAI6e3xr73JiC3MQy+eqZeQ3DSs6+mP5BTb/3aB2F4qXWoVRi3jwFlH9fl18sJA==@linaro.org
+X-Google-Smtp-Source: AGHT+IH/6wOBd5EdvefToaolFwe15TI/FWh6P+tJg/dPXupzgY27XmEi1nOXfXd7W7Q5tH8wzzWG
+X-Received: by 2002:a05:6602:2743:b0:864:4aa2:d796 with SMTP id ca18e2360f4ac-86caf09906emr253787139f.8.1747991834686;
+        Fri, 23 May 2025 02:17:14 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1747991834; cv=pass;
         d=google.com; s=arc-20240605;
-        b=TDSWzaFN84kdFX+paElestpvvqP73QuqG+FrUdx9lqU+1PoONgIl+kC/QZ4iI9bHiU
-         I8F2GoG9XsWrChfOHOljTkcH6Lw1BYYVGAuwQUNF+vXNUB0H93+bltB7Rw2/8UMRPqbM
-         t4O1hMPdJgAPKcmdUFZFlNtlhbTNgCmc5lxMyXNMuMSN8o0WKp1sUeKn1HEe5mkoxSzD
-         ldOJz0iE6rbQ5vFm2OUOSFgTnwPTbst2FbTfoORS0zUi1YBinM3m1GDrLKTIizDrhFhJ
-         OWcYwZ2q496cBF201CcOXZvZj0HNoy95nANY6AkvwI9qqsr6NUrjePeHu/zR0LW1Djg4
-         nPHw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=p/k5PDTsL0lH/RpI2CxrZnvSoQEOjOz3n7vluBa2Q98=;
-        fh=rx6U8xDRIQCLCYSEaMUM6JxzflCE8tIJYYv5Xp9MH70=;
-        b=JuCgJYOB4z+a0tKJlsSgQvsdSM544cVHkZ+Jf7/BxRD/RJnMq0mamVTs2IVvpFnbLX
-         adlb8puIQfh7JbeqVS7BUK6CHs06KWUhWqJlb599rOoq5N6sqRP64n9zxo2EH57ytjtR
-         6QBJuCao4apqLSAetyzjkgrq1qlT813wSkYtWfsXo5Ao1J1fb0+8jOZTLr1EqkC50nwq
-         ifnT9GzhLa5/923WQMe7VuBQJzCvZ8wgYH//giyg2Y8VCpGZZs5Bx+i533+0TgZ3Vr8v
-         z1gC0N64l8npZrDvioY9uvsh2dJ6NZYugeazRKiQZ/8iApsyWm6imv1VjiV+lkFIBkWY
-         PVcw==;
+        b=VxnmnUV/tnJ6owa+L23DnGvIcNwe6BpnU4msF3eP+BrozsRKs2D01LX6GKAk93WZFW
+         BQZ7cqG/bR3tml6S0MrbM8xs1p578JCc/8KuyvxGYTiYQ9EYJsaVzYjuhOGZp7Az+Ek0
+         b1NDRXFQnP2O8pmzPvBMgyrG3XBTvzoXXFmIyCq8xPEjckGqKk1x5FkMa4xIuFv6UC2f
+         YdtiCJ5ikziajsZXqrkHs3DCmwQLArcX6qJJKgaPpbSxfrGrxa0fk80TrUaoRs0BTjvI
+         II5DMVpffyviK0l6b2HwB4ynZu/FzPeP+QtE3fFj0b5S4xnbtkRJVNRIE6O0JgIBnfiv
+         i2WA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=mcKYnpn6Tx/P0EdmU/2mUFWI9v9+u09hwYR1MZjJKVE=;
+        fh=P/g+kTUW+s4mkE+kIha88BM4QHPFj0V3iiVMqTGtdOk=;
+        b=fNoWd/Kwx0xBrKl4uxTyp674xVNZ4i47yUC0nE50poyHuyK5H1ArgfgkYqpEjkrPiL
+         fSC2oPMlgcADez4F8c9au4ilozbG+yHGez72hDoec30tsWnkOM8WdSMmVhMPXsoR49u2
+         KS6GZMeD0fNa9n1OD5lXaz+XDcj0mnjwP03JEqrc5rXKtC/t80kJGZmNmTBpkoJ5yIee
+         6JwedkKn0slt/oFLzrc1NBTNBBMomChR23R2mNvvi1+MwfRIDZ0kI0wZVtnNYR1mq7Hf
+         pSdeeldHUDNAT3OWN78YzUnf428ytGSpMPAYdfc7Cr50eIYOu0yYKtahPFEIH9lVhzAX
+         O7DA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=shameerali.kolothum.thodi@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <shameerali.kolothum.thodi@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a35ca4c917si12972321f8f.128.2025.05.23.01.27.35
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 May 2025 01:27:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=R5KWBGni;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ca18e2360f4ac-86a235dfdd6si1756063939f.35.2025.05.23.02.17.14
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 23 May 2025 02:17:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=shameerali.kolothum.thodi@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4b3dVT2ZLRz6L5BG;
-	Fri, 23 May 2025 16:24:17 +0800 (CST)
-Received: from frapeml100005.china.huawei.com (unknown [7.182.85.132])
-	by mail.maildlp.com (Postfix) with ESMTPS id 5B9451402FF;
-	Fri, 23 May 2025 16:27:34 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml100005.china.huawei.com (7.182.85.132) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Fri, 23 May 2025 10:27:34 +0200
-Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
- frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Fri, 23 May 2025 10:27:34 +0200
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Cornelia Huck <cohuck@redhat.com>, "eric.auger.pro@gmail.com"
-	<eric.auger.pro@gmail.com>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "maz@kernel.org"
-	<maz@kernel.org>, "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
-	"sebott@redhat.com" <sebott@redhat.com>, "armbru@redhat.com"
-	<armbru@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
-	"abologna@redhat.com" <abologna@redhat.com>, "jdenemar@redhat.com"
-	<jdenemar@redhat.com>
-CC: "agraf@csgraf.de" <agraf@csgraf.de>, "shahuang@redhat.com"
-	<shahuang@redhat.com>, "mark.rutland@arm.com" <mark.rutland@arm.com>,
-	"philmd@linaro.org" <philmd@linaro.org>, "pbonzini@redhat.com"
-	<pbonzini@redhat.com>
-Subject: RE: [PATCH v3 06/10] arm/kvm: Allow reading all the writable ID
- registers
-Thread-Topic: [PATCH v3 06/10] arm/kvm: Allow reading all the writable ID
- registers
-Thread-Index: AQHbrVwDcXqCrMgzAUqDqJzZ5+FsArPgHVQw
-Date: Fri, 23 May 2025 08:27:34 +0000
-Message-ID: <ee2e2631faf640f3807c08c6acd95732@huawei.com>
-References: <20250414163849.321857-1-cohuck@redhat.com>
- <20250414163849.321857-7-cohuck@redhat.com>
-In-Reply-To: <20250414163849.321857-7-cohuck@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.203.177.241]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=R5KWBGni;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uIOWL-0002E0-2n; Fri, 23 May 2025 05:16:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1uIOWI-0002DD-SC; Fri, 23 May 2025 05:16:51 -0400
+Received: from mail-eastasiaazlp170110003.outbound.protection.outlook.com
+ ([2a01:111:f403:c400::3] helo=HK3PR03CU002.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1uIOWF-0002vM-D1; Fri, 23 May 2025 05:16:50 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=NZJSz8Hqq4AmMU6uHUFc8L5WFghbVMYsbTRnMFvLjh6dUi+pNs8MeNyKWhGr7d91cjBaKeVYwz0OPqCUxZlTu2CMQOW91nLJ16F/4uSvYvL64pq/d6c7bvr5bIY8SQNemTqF7NzBz57U/+uFdVGQGURNi9YvInZH5+BQ8v7KUq2XinFoIQOBhrIAbKjByARBxaRGsjAPRT/Lyn3S7wNF1NPRFUfkaMLG1G1yeH3WB+/ctcyYWsLVssfdHH4tVB5pRRg3g1k9lA6jMWHKKmM6YzC0Dz9T7/qUYaGpoPpI/ToR7AaZBrX1CUHruND+EKBf3qZ+Vx3XTBowYw5tXcD+Yw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=mcKYnpn6Tx/P0EdmU/2mUFWI9v9+u09hwYR1MZjJKVE=;
+ b=J3r1Vig5S5oJkOmlExGhN8m+II8XgyTsabuD9LpCWCcWxZ4e3+5maCSMTTr0gNPzInH6nYVP6+PxTi4P0ihZR5sD1SRYxYMv/FsJjPGeC6bVzHjfw9bj+5zH8KdT0tYpJPBoZxPKIipOR+AFH0JC3dDCO/CJzl3dHVHJ2b93p1GI4Yasie+C63aQTbBK8ABlNGRhYoWedTUXTaV4o88/PX2UVcNUElJVhiLmN8aE0GXPIBWAIBnSgzDbWc3rOoAh0Qwgs4ojz+xN4slX4N7GLe2jAGC1RbZ3fdHIQWE6aSV2Windz0legFdUL1jWpxDglrIaVkVFXw+kskEt6lQn3A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=mcKYnpn6Tx/P0EdmU/2mUFWI9v9+u09hwYR1MZjJKVE=;
+ b=R5KWBGni5XOPB9aMJjAkp0gMJNme+ryv9vnBFi81CasXTqd2a6KN8eXnv5rVXVFiQj7s6+575mO0DJ2lDbS1W9P+2/AMw1q8k5BuOmXyN/IQ2PauDywOo6s62S5OJGID4n/vmm+JldpHSdVgdwFgyo0rhLubgcv6VZP/gVs4FlEtYsj0EBN1UlWWhgY5B3XGrTQOA7szXqGBrVfTf4OivXA2vYQl8LJXK+PhivcF2mvZ1VVTZ/6NrzjznRLCWdgf55Y2/+gEgtDB5ks3lrgfOKyTxqcHPoD3/KK4trEkhy+ug88d8+YiGWCzKJV80GXQMYLGANCYgtPGInzE6ODtzA==
+Received: from KL1PR0601MB4180.apcprd06.prod.outlook.com
+ (2603:1096:820:29::12) by SEZPR06MB6717.apcprd06.prod.outlook.com
+ (2603:1096:101:17b::14) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8746.30; Fri, 23 May
+ 2025 09:16:35 +0000
+Received: from KL1PR0601MB4180.apcprd06.prod.outlook.com
+ ([fe80::6fe5:1995:96a2:552a]) by KL1PR0601MB4180.apcprd06.prod.outlook.com
+ ([fe80::6fe5:1995:96a2:552a%7]) with mapi id 15.20.8769.019; Fri, 23 May 2025
+ 09:16:34 +0000
+From: Steven Lee <steven_lee@aspeedtech.com>
+To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, "longzl2@lenovo.com"
+ <longzl2@lenovo.com>, Yunlin Tang <yunlin.tang@aspeedtech.com>
+Subject: RE: [PATCH v4 1/6] hw/arm/aspeed_ast2700-fc: Fix null pointer
+ dereference in ca35 init
+Thread-Topic: [PATCH v4 1/6] hw/arm/aspeed_ast2700-fc: Fix null pointer
+ dereference in ca35 init
+Thread-Index: AQHbyvpM5pV2daqYyU+ycFV8zjXVU7Pf3eUAgAASPCA=
+Date: Fri, 23 May 2025 09:16:34 +0000
+Message-ID: <KL1PR0601MB41804A5716A72B83196F7C3E8598A@KL1PR0601MB4180.apcprd06.prod.outlook.com>
+References: <20250522091701.354185-1-steven_lee@aspeedtech.com>
+ <20250522091701.354185-2-steven_lee@aspeedtech.com>
+ <2c8cfff2-8a8f-451a-8495-7f151dd7a376@kaod.org>
+In-Reply-To: <2c8cfff2-8a8f-451a-8495-7f151dd7a376@kaod.org>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: KL1PR0601MB4180:EE_|SEZPR06MB6717:EE_
+x-ms-office365-filtering-correlation-id: 9c526d00-9264-4d1f-1de8-08dd99da83c1
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|1800799024|366016|376014|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?NEF2TlZWTUJBUkgwajNpeDc4N2xhcVI1ODlRRmZJYkZWRTdBbGxLaUVpUC80?=
+ =?utf-8?B?SGxISmlHL3dWdUllbmp1ai9qd1NjYnNLcVZTbnlMTmgrbjlWeWcrOTU4TEtx?=
+ =?utf-8?B?emZEK3NGbG5GVTdZYmhYc2dxTWdnV0MvR3FWVDFmVUhVS25EbWUzWllkcUJi?=
+ =?utf-8?B?cDc3bFNydkpBeXN6TGJpYW8zaE12WnNoYm9zYzdBZUNBOTFmR3JQTGtwYnFt?=
+ =?utf-8?B?bXp3RWJZc00wY1p3SzVPaWE0QnZtRitvbk5pY05FTmxEdmp3aU5rSHVTVm5r?=
+ =?utf-8?B?Z2NJYitESXMzdHJFZytZb1VlblFkb0dBV1RzaDlrU0VUUEVxZXZjY1RtbGkr?=
+ =?utf-8?B?UWNJS0JXOWhhUlZlVkpJVmNTN01xbEUyMWUvYW9ZOEZzazNld2UyNGM5S21H?=
+ =?utf-8?B?b0lNMmlKTHdkOC9qejFYY2VxWWY1aXdCbUVPVkxTV3ZpNnNpV2ZxUHNvbngw?=
+ =?utf-8?B?dE5TOEdDVWpjQU1VZXEzMDZZU1lMZFVKOFNPMlREVzBwZmdHTW5Fa0g2U3VJ?=
+ =?utf-8?B?cnkwYldnSGVxZVlXdU5yWWlrZXgyRG5CSlZIaCtmeWovVUZqajVJRmQvNjJs?=
+ =?utf-8?B?bHl0Q0NQbStheGRYS2NjVk9OWTVJODhrR3dDLzNaaDYzSE41ejBOOUkzblBh?=
+ =?utf-8?B?SzhSbnRsZHNNd0c5K1loZzdmR2U4UEgyUFJab2x4N3BGWSt2cWM3V2loNFB3?=
+ =?utf-8?B?Sm9GTmU1b2FtRnpMSTlmbWlYS0ZidHZpcWZUSUtFR09BSnYvSUNZdjFQMnVT?=
+ =?utf-8?B?OUZpdjMxZVdQaFd3UDhxM1NrSmJGNmxHRHV4eFY5eFVkbW5IZjNGcHdaMU50?=
+ =?utf-8?B?bTJYT09tTnc2bkp0dno1YUpBZ1NBeUF1aWlmZ3RMS25tMjE1bGhGUkxhNS9p?=
+ =?utf-8?B?R1RiYnZTalcwazNKZFMva29mU3FyZjNqdUxLRE9Vd0lmdnVEYUtWYm9hcFlk?=
+ =?utf-8?B?cUhDUnkxK0l1Zzc2RVIrNWthdmlMNnhPYzdRTWlFaHRtcE03Z0xBWDNPZktC?=
+ =?utf-8?B?UHdnSm92djluSGpKNk1JVVNaVWZtWUhSVXdlTWRxS3MzQWVPMEFac2piMXk1?=
+ =?utf-8?B?bVEySUsxczF5ZllpQW1Hd2s3Mm5uMy9WVW9KQTZkMjlkZ2UrVFoxRGJxVGRZ?=
+ =?utf-8?B?Z1NCOEJoR3BuTkhKZDZST1M4ZmNmaHhEUDM3RTNPVk55bmNnMVNQT3YydWxM?=
+ =?utf-8?B?SGl4YlBZcVRUamdBZitWVWFOUU5PZGxwMWljdk94a0F1M2R4dTFZQXJ3NDVi?=
+ =?utf-8?B?SjJFdm1mSVY1M25ZWERoMmRLSEI0ajY0enFSWFpSN1Z2NXhiNXYvbko3Nkt4?=
+ =?utf-8?B?S2wrVVBkYzFTSmFPMXYwR1JMUEloLzcydUFKaEhjRng2dmYzMVRHNEhlK0xQ?=
+ =?utf-8?B?bjJrRnkzS29QTi8yL25ybWNHNWJlcWxHRCt4K3NhaTljZjJkc0JPL2Rnb1lD?=
+ =?utf-8?B?UVRPWWxDRXdqZW8wa2YrQ2lXVlNpZG1JdnN6VkNZWHl1VWVpQm1kM0o5Q1BL?=
+ =?utf-8?B?aGtaZldHRE40eDVaR1JiMFpwYWNSeVl3eFV5OWl2Mm0wc0xJSDJzS1FvckNB?=
+ =?utf-8?B?THlDUEFGdFM5SWp0MGVWQ042VU9HYnRSelZwRFVST1JjQTJFWnRocFVjK0Rp?=
+ =?utf-8?B?QzM3SjcyMHdUVFZ6WkJZRExUTDMrazBLT05wbmQxVmdyR0NpWTVxVmdLUjlD?=
+ =?utf-8?B?cDN6UzlxZkl6KzlTYTk2YytMVElmaXNhT2hVNFM0MTNab3lMTGs0bHVCTjNz?=
+ =?utf-8?B?dlRCaXp0UkJ6c0YvK3pJT3JUVG9KNEtOMEowaTVOTG9XU2RYYlpYemlGK05V?=
+ =?utf-8?B?SWtkcHU2YnJXSXd2ZmQzQkxGZkhBcUUvRDJrbEM5eVBsd2FEamJ0cC8yNmdF?=
+ =?utf-8?B?MXRZREdSZVNuS2RRT0JNSkF2cUw1cTB6Z3ZUanROUE1hSGtOOU1pYWlORVUv?=
+ =?utf-8?B?U2NkOUd4RGkzR0dFTVpwZ3lMSmY0T1VQTzBPY2RjdDVxNFgyOUQ2aFVjN0dR?=
+ =?utf-8?B?V0hMS2Y2bzVnPT0=?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:KL1PR0601MB4180.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE; SFS:(13230040)(1800799024)(366016)(376014)(38070700018); DIR:OUT;
+ SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?UTlFa2NBUExVUm5aaldVSzJnWUwwaEM4ditFN0dPQUZEd2RUZXBQbXVIRFVL?=
+ =?utf-8?B?WFpNeDRNYzFGYXlTMWpPeXlCNjJJL1c3b245cjBxb2N1VXd3Z1B6dWgvcEZB?=
+ =?utf-8?B?cm5PVFZiRzdPQWd1V3ZOMjVPQ29xZE0vdXNrc2xlTHU0VVVYNnJqNHhGeDcr?=
+ =?utf-8?B?WUQwdEpFSHNhVGk5MWEvTFBkMmR1d2dreVBjYUZvQ3NySW1pK0F4d0hOQ01P?=
+ =?utf-8?B?bWhTWkM1aFljY2lZRzRnNlArNG5CdjRsQmJkSE44c0t1eDFlZEI1T1cva3Z5?=
+ =?utf-8?B?Z2VxMENzODN1ZEV3czFlUm15OWhYRWRvNnhZZ1d4YWFIS3NCQ0srUmJ1a2NN?=
+ =?utf-8?B?bmhnNTVUckw1V05MLzZsRDk3a2RnWkh6am0zeTFyRGZFQ3pTY0VPSUNVZldm?=
+ =?utf-8?B?NXdkc09Udm5Ha1dqcHVuYmRnUG1wdTkybStRUXZQMXd0bzBJM2doNkkvbmhw?=
+ =?utf-8?B?V0FJQTlhRHZ6L0Iwa3I4QWZjb3FHMWtueHlKTUlQRUY0WC85YUdDYThJd3py?=
+ =?utf-8?B?R3FnVXJ1dEJpcFhnZ3grVlYwZmt5RktqYXgveU0yNTJZcWhWWHZocXQ2K3dh?=
+ =?utf-8?B?ckdWR2FjRmNFVXlzbzZmZnBCaXJEaFQ5ZC9ycnJpU2w4YXk5U2xhc1dxUVNn?=
+ =?utf-8?B?aDhKU3VoU2JPdGZiRUt6TitYd3piOVdOTzhualI0a3NXcTNZeWt1KzhidC9E?=
+ =?utf-8?B?VWkvSk1FdzQ3ZFQ5U0wxSFdhK3c4QkRUUVFUZDM2V0poWmp4dHpFRG9uSitV?=
+ =?utf-8?B?MTY3ZGhzQ2xFek5iYnAzOHFweEpDbHJHbEFKTEQzQ3psYzc1OG53bUpjU1l4?=
+ =?utf-8?B?dFVGTEFONXRKbXRpSDNzM3A1Ulh6aGJScGdJcVp0WHlRTzNhOCtpOW1WV1Ni?=
+ =?utf-8?B?cXRrVWtjenA0NHlISGN3UWQyWEd1SnJ3b2hjV2t3dzVXVFdtWVZ3YzRrUHlB?=
+ =?utf-8?B?RnFGVEhOV1M4NnFBUk1MdmZoRUVFQWNaWjB3YzMzcHdXRyszNjJNaG45R1J6?=
+ =?utf-8?B?aXhwdWQzc1RBakMwbkNtTTJFWjdwQWJNRk1tajJEb09USXB0T25kVng1TnRS?=
+ =?utf-8?B?ekJsUk9qcG5xYktiRnFvV3RmZjBvcVp3amJlMDltMUpwMnhDT2JEZ25ISXMy?=
+ =?utf-8?B?ekFxZzluU0UxYmREa21ZVGRJK01ackVjcGxUQnV1U1ZwM3l2N1BjcGZjaHZa?=
+ =?utf-8?B?TTZGYzhzellwSWp2S2JpakdyVzU1USttazdBWjJFSVF3RVk2MXoybUU3U1oz?=
+ =?utf-8?B?cVVKN3ZPYk1jb1o3R2p0SU5IUVRqYWUrOWNMTmkxWlBFTERpK1ZVTDllQ2RW?=
+ =?utf-8?B?TUplWEZ5NXlJYy9uQkJ2QU85NHZGc2NvbmdwTTF6SU91cDhkZEdxTVhuVW9H?=
+ =?utf-8?B?NjdjSnpWaytzZUVkb3d3b2pEdjFpWjhZbzJYMmFqMVM4aXVFSzRRVkMvWkZo?=
+ =?utf-8?B?QndaLzQvSElyREE3blZDVWNENGp3R2x1K3hXL2crbk5XVGlxTGVNa1pyTXVy?=
+ =?utf-8?B?REtLYnM2dXlKZ3JycXp3NUgwNEJGV0ppY3JrT3pLWGs4L28wY2pUaHdvOGRh?=
+ =?utf-8?B?Z0VJbjhRWGRsdklNVDN5S09DQjRINlRFSENnR2krSkdMSXhiMSs5Z082TnVN?=
+ =?utf-8?B?eC8veENQbXNBZGNhYm5NTEc3dlI0TWwxaG5pMGo1UmJvTWJSUWJvWW1ZSXMr?=
+ =?utf-8?B?ZFgybHJ6QjUza3B4UXk1cmc0bEJ0enlyeUIxT2IxTUwrcjZQcVV3aE1XNHo0?=
+ =?utf-8?B?ckcxaDh2bE84dStidDl3ckJ1QXdYSEo2TXhReVlsRUx1OVdwMzlPb1FPNzdZ?=
+ =?utf-8?B?WnRxeUN2N1BRcmlxZHJxV3ZHVXlzVytFNWVvZmNJM2d6Sms4RGw3T0t3azk4?=
+ =?utf-8?B?TDRwV3U3K2JQakRMTW5iQm94N0c1RWVhMTFZSFI0WnI1V1hvUS9mLzlxY3Uw?=
+ =?utf-8?B?NjhKS0s0TEFudFVYWnoxUlE0UFJpajNKMXQzRkJtQXJRQWhBVTk5bEo0TWJF?=
+ =?utf-8?B?KzNyM0xtNVRlSnp3eUYyNXN6SGFrTDk4VWhsaDJHeFdVa1Q3Mzg1RmFnSXBP?=
+ =?utf-8?B?S0hENHJ1YWxFRkZmc1hzU3RBQ04wY1hKeEpkOXJOMEJWYXBGWGhnanVtMnV1?=
+ =?utf-8?Q?lDDcgFsFw54+y3NmXX3+id5lW?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-TUID: CNVhZvQXq5KF
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR0601MB4180.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9c526d00-9264-4d1f-1de8-08dd99da83c1
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 May 2025 09:16:34.8781 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: l3pD/y/qpWBW6gxhoHxkgBFYPOMyjlsTTgY3R4FJ0ka5m6QoiyHnXqYXSmS4nbs85gcKc1Pz+fqtaXMHfldGTdAm0uWHUaXuJNQcCAgL+6c=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR06MB6717
+Received-SPF: pass client-ip=2a01:111:f403:c400::3;
+ envelope-from=steven_lee@aspeedtech.com;
+ helo=HK3PR03CU002.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lupXoSvnWRBm
 
-
-
-> -----Original Message-----
-> From: Cornelia Huck <cohuck@redhat.com>
-> Sent: Monday, April 14, 2025 5:39 PM
-> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
-> devel@nongnu.org; qemu-arm@nongnu.org; kvmarm@lists.linux.dev;
-> peter.maydell@linaro.org; richard.henderson@linaro.org;
-> alex.bennee@linaro.org; maz@kernel.org; oliver.upton@linux.dev;
-> sebott@redhat.com; Shameerali Kolothum Thodi
-> <shameerali.kolothum.thodi@huawei.com>; armbru@redhat.com;
-> berrange@redhat.com; abologna@redhat.com; jdenemar@redhat.com
-> Cc: agraf@csgraf.de; shahuang@redhat.com; mark.rutland@arm.com;
-> philmd@linaro.org; pbonzini@redhat.com; Cornelia Huck
-> <cohuck@redhat.com>
-> Subject: [PATCH v3 06/10] arm/kvm: Allow reading all the writable ID
-> registers
->=20
-> From: Eric Auger <eric.auger@redhat.com>
->=20
-> At the moment kvm_arm_get_host_cpu_features() reads a subset of the
-> ID regs. As we want to introduce properties for all writable ID reg
-> fields, we want more genericity and read more default host register
-> values.
->=20
-> Introduce a new get_host_cpu_idregs() helper and add a new exhaustive
-> boolean parameter to kvm_arm_get_host_cpu_features() and
-> kvm_arm_set_cpu_features_from_host() to select the right behavior.
-> The host cpu model will keep the legacy behavior unless the writable
-> id register interface is available.
->=20
-> A writable_map IdRegMap is introduced in the CPU object. A subsequent
-> patch will populate it.
->=20
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->  target/arm/cpu-sysregs.h |  2 ++
->  target/arm/cpu.h         |  3 ++
->  target/arm/cpu64.c       |  2 +-
->  target/arm/kvm.c         | 78 ++++++++++++++++++++++++++++++++++++++--
->  target/arm/kvm_arm.h     |  9 +++--
->  target/arm/trace-events  |  1 +
->  6 files changed, 89 insertions(+), 6 deletions(-)
->=20
-> diff --git a/target/arm/cpu-sysregs.h b/target/arm/cpu-sysregs.h
-> index e89a1105904c..367fab51f19e 100644
-> --- a/target/arm/cpu-sysregs.h
-> +++ b/target/arm/cpu-sysregs.h
-> @@ -41,6 +41,8 @@ int get_sysreg_idx(ARMSysRegs sysreg);
->=20
->  #ifdef CONFIG_KVM
->  uint64_t idregs_sysreg_to_kvm_reg(ARMSysRegs sysreg);
-> +int kvm_idx_to_idregs_idx(int kidx);
-> +int idregs_idx_to_kvm_idx(ARMIDRegisterIdx idx);
->  #endif
->=20
->  #endif /* ARM_CPU_SYSREGS_H */
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 775a8aebc5d3..8717c5e7695b 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1088,6 +1088,9 @@ struct ArchCPU {
->       */
->      ARMIdRegsState writable_id_regs;
->=20
-> +    /* ID reg writable bitmask (KVM only) */
-> +    IdRegMap *writable_map;
-> +
->      /* QOM property to indicate we should use the back-compat CNTFRQ
-> default */
->      bool backcompat_cntfrq;
->=20
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 839442745ea4..60a709502697 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -757,7 +757,7 @@ static void aarch64_host_initfn(Object *obj)
->  {
->  #if defined(CONFIG_KVM)
->      ARMCPU *cpu =3D ARM_CPU(obj);
-> -    kvm_arm_set_cpu_features_from_host(cpu);
-> +    kvm_arm_set_cpu_features_from_host(cpu, false);
->      if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
->          aarch64_add_sve_properties(obj);
->          aarch64_add_pauth_properties(obj);
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 6e3cd06e9bc5..b07d5f16db50 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -41,6 +41,7 @@
->  #include "hw/acpi/ghes.h"
->  #include "target/arm/gtimer.h"
->  #include "migration/blocker.h"
-> +#include "cpu-custom.h"
->=20
->  const KVMCapabilityInfo kvm_arch_required_capabilities[] =3D {
->      KVM_CAP_INFO(DEVICE_CTRL),
-> @@ -270,7 +271,73 @@ static int get_host_cpu_reg(int fd,
-> ARMHostCPUFeatures *ahcf, ARMIDRegisterIdx i
->      return ret;
->  }
->=20
-> -static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-> +int kvm_idx_to_idregs_idx(int kidx)
-> +{
-> +    int op1, crm, op2;
-> +    ARMSysRegs sysreg;
-> +
-> +    op1 =3D kidx / 64;
-> +    if (op1 =3D=3D 2) {
-> +        op1 =3D 3;
-> +    }
-> +    crm =3D (kidx % 64) / 8;
-> +    op2 =3D kidx % 8;
-> +    sysreg =3D ENCODE_ID_REG(3, op1, 0, crm, op2);
-> +    return get_sysreg_idx(sysreg);
-> +}
-> +
-> +int idregs_idx_to_kvm_idx(ARMIDRegisterIdx idx)
-> +{
-> +    ARMSysRegs sysreg =3D id_register_sysreg[idx];
-> +
-> +    return KVM_ARM_FEATURE_ID_RANGE_IDX((sysreg &
-> CP_REG_ARM64_SYSREG_OP0_MASK) >>
-> CP_REG_ARM64_SYSREG_OP0_SHIFT,
-> +                                        (sysreg & CP_REG_ARM64_SYSREG_OP=
-1_MASK) >>
-> CP_REG_ARM64_SYSREG_OP1_SHIFT,
-> +                                        (sysreg & CP_REG_ARM64_SYSREG_CR=
-N_MASK) >>
-> CP_REG_ARM64_SYSREG_CRN_SHIFT,
-> +                                        (sysreg & CP_REG_ARM64_SYSREG_CR=
-M_MASK) >>
-> CP_REG_ARM64_SYSREG_CRM_SHIFT,
-> +                                        (sysreg & CP_REG_ARM64_SYSREG_OP=
-2_MASK) >>
-> CP_REG_ARM64_SYSREG_OP2_SHIFT);
-> +}
-> +
-> +
-> +/*
-> + * get_host_cpu_idregs: Read all the writable ID reg host values
-> + *
-> + * Need to be called once the writable mask has been populated
-> + * Note we may want to read all the known id regs but some of them are
-> not
-> + * writable and return an error, hence the choice of reading only those
-> which
-> + * are writable. Those are also readable!
-> + */
-> +static int get_host_cpu_idregs(ARMCPU *cpu, int fd, ARMHostCPUFeatures
-> *ahcf)
-> +{
-> +    int err =3D 0;
-> +    int i;
-> +
-> +    for (i =3D 0; i < NUM_ID_IDX; i++) {
-> +        ARM64SysReg *sysregdesc =3D &arm64_id_regs[i];
-> +        ARMSysRegs sysreg =3D sysregdesc->sysreg;
-> +        uint64_t writable_mask =3D cpu->writable_map-
-> >regs[idregs_idx_to_kvm_idx(i)];
-> +        uint64_t *reg;
-> +        int ret;
-> +
-> +        if (!writable_mask) {
-> +            continue;
-> +        }
-> +
-> +        reg =3D &ahcf->isar.idregs[i];
-> +        ret =3D read_sys_reg64(fd, reg, idregs_sysreg_to_kvm_reg(sysreg)=
-);
-
-I think we can use get_host_cpu_reg() here.
-
-> +        trace_get_host_cpu_idregs(sysregdesc->name, *reg);
-> +        if (ret) {
-> +            error_report("%s error reading value of host %s register (%m=
-)",
-> +                         __func__, sysregdesc->name);
-> +
-> +            err =3D ret;
-> +        }
-> +    }
-> +    return err;
-> +}
-> +
-> +static bool
-> +kvm_arm_get_host_cpu_features(ARMCPU *cpu, ARMHostCPUFeatures
-> *ahcf,
-> +                              bool exhaustive)
->  {
->      /* Identify the feature bits corresponding to the host CPU, and
->       * fill out the ARMHostCPUClass fields accordingly. To do this
-> @@ -398,6 +465,11 @@ static bool
-> kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->          err |=3D get_host_cpu_reg(fd, ahcf, ID_DFR1_EL1_IDX);
->          err |=3D get_host_cpu_reg(fd, ahcf, ID_MMFR5_EL1_IDX);
->=20
-> +        /* Make sure writable ID reg values are read */
-> +        if (exhaustive) {
-> +            err |=3D get_host_cpu_idregs(cpu, fd, ahcf);
-> +        }
-
-
-Also if we do this a bit above can we avoid reading the ID registers twice
-if "exhaustive=3Dtrue" ?
-
-Thanks,
-Shameer
-
-> +
->          /*
->           * DBGDIDR is a bit complicated because the kernel doesn't
->           * provide an accessor for it in 64-bit mode, which is what this
-> @@ -467,13 +539,13 @@ static bool
-> kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->      return true;
->  }
->=20
-> -void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
-> +void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu, bool
-> exhaustive)
->  {
->      CPUARMState *env =3D &cpu->env;
->=20
->      if (!arm_host_cpu_features.dtb_compatible) {
->          if (!kvm_enabled() ||
-> -            !kvm_arm_get_host_cpu_features(&arm_host_cpu_features)) {
-> +            !kvm_arm_get_host_cpu_features(cpu, &arm_host_cpu_features,
-> exhaustive)) {
->              /* We can't report this error yet, so flag that we need to
->               * in arm_cpu_realizefn().
->               */
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index 8d1f20ca8d89..90ba4f7d8987 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -141,8 +141,12 @@ uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu);
->   *
->   * Set up the ARMCPU struct fields up to match the information probed
->   * from the host CPU.
-> + *
-> + * @cpu: cpu object
-> + * @exhaustive: if true, all the feature ID regs are queried instead of
-> + *              a subset
->   */
-> -void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
-> +void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu, bool
-> exhaustive);
->=20
->  /**
->   * kvm_arm_add_vcpu_properties:
-> @@ -257,7 +261,8 @@ static inline int
-> kvm_arm_get_writable_id_regs(ARMCPU *cpu, IdRegMap *idregmap)
->  /*
->   * These functions should never actually be called without KVM support.
->   */
-> -static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
-> +static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu,
-> +                                                      bool exhaustive)
->  {
->      g_assert_not_reached();
->  }
-> diff --git a/target/arm/trace-events b/target/arm/trace-events
-> index 4438dce7becc..17e52c0705f2 100644
-> --- a/target/arm/trace-events
-> +++ b/target/arm/trace-events
-> @@ -13,3 +13,4 @@ arm_gt_update_irq(int timer, int irqstate)
-> "gt_update_irq: timer %d irqstate %d"
->=20
->  # kvm.c
->  kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova =3D
-> 0x%"PRIx64" is translated into 0x%"PRIx64
-> +get_host_cpu_idregs(const char *name, uint64_t value) "scratch vcpu host
-> value for %s is 0x%"PRIx64
-> --
-> 2.49.0
->=20
+SGkgQ8OpZHJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBDw6lk
+cmljIExlIEdvYXRlciA8Y2xnQGthb2Qub3JnPg0KPiBTZW50OiBGcmlkYXksIE1heSAyMywgMjAy
+NSA0OjA5IFBNDQo+IFRvOiBTdGV2ZW4gTGVlIDxzdGV2ZW5fbGVlQGFzcGVlZHRlY2guY29tPjsg
+UGV0ZXIgTWF5ZGVsbA0KPiA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPjsgVHJveSBMZWUgPGxl
+ZXRyb3lAZ21haWwuY29tPjsgSmFtaW4gTGluDQo+IDxqYW1pbl9saW5AYXNwZWVkdGVjaC5jb20+
+OyBBbmRyZXcgSmVmZmVyeQ0KPiA8YW5kcmV3QGNvZGVjb25zdHJ1Y3QuY29tLmF1PjsgSm9lbCBT
+dGFubGV5IDxqb2VsQGptcy5pZC5hdT47IG9wZW4NCj4gbGlzdDpBU1BFRUQgQk1DcyA8cWVtdS1h
+cm1Abm9uZ251Lm9yZz47IG9wZW4gbGlzdDpBbGwgcGF0Y2hlcyBDQyBoZXJlDQo+IDxxZW11LWRl
+dmVsQG5vbmdudS5vcmc+DQo+IENjOiBUcm95IExlZSA8dHJveV9sZWVAYXNwZWVkdGVjaC5jb20+
+OyBsb25nemwyQGxlbm92by5jb207IFl1bmxpbiBUYW5nDQo+IDx5dW5saW4udGFuZ0Bhc3BlZWR0
+ZWNoLmNvbT4NCj4gU3ViamVjdDogUmU6IFtQQVRDSCB2NCAxLzZdIGh3L2FybS9hc3BlZWRfYXN0
+MjcwMC1mYzogRml4IG51bGwgcG9pbnRlcg0KPiBkZXJlZmVyZW5jZSBpbiBjYTM1IGluaXQNCj4g
+DQo+IE9uIDUvMjIvMjUgMTE6MTYsIFN0ZXZlbiBMZWUgd3JvdGU6DQo+ID4gQ2xhbmcncyBzYW5p
+dGl6ZXIgcmVwb3J0cyBhIHJ1bnRpbWUgZXJyb3Igd2hlbiBib290aW5nIHdpdGggJy1uZXQgbmlj
+DQo+ID4gLW5ldCB1c2VyJywgZHVlIHRvIGEgbnVsbCBwb2ludGVyIGJlaW5nIHBhc3NlZCB0bw0K
+PiA+IG1lbW9yeV9yZWdpb25fZmluZCgpLCB3aGljaCBzdWJzZXF1ZW50bHkgdHJpZ2dlcnMgYSBj
+cmFzaCBpbg0KPiA+IGZsYXR2aWV3X2xvb2t1cCgpLg0KPiANCj4gSSBkb24ndCBzZWUgc3VjaCBl
+cnJvcnMuDQo+IA0KPiA+IFJvb3QgY2F1c2U6DQo+ID4gLSBNaXNzaW5nIE5JQyBjb25maWd1cmF0
+aW9uIGluIHRoZSBDQTM1IGluaXRpYWxpemF0aW9uLg0KPiA+DQo+ID4gRml4Og0KPiA+IC0gQWRk
+IG5pYyBjb25maWd1cmF0aW9uIGluIGFzdDI3MDBmYydzIGNhMzUgaW5pdCBmdW5jdGlvbi4NCj4g
+DQo+IEhvd2V2ZXIgaXQgd291bGQgYmUgbmljZSB0byBoYXZlIG5ldHdvcmsgc3VwcG9ydC4NCj4g
+DQo+IENvdWxkIHlvdSBwbGVhc2UgcmVwaHJhc2UgdGhlIGNvbW1pdCBsb2cgPw0KPiANCg0KV2ls
+bCByZXdyaXRlIGNvbW1pdCBsb2cgdG8gIkFkZCBuZXR3b3JrIHN1cHBvcnQgZm9yIGFzdDI3MDBm
+YyINCg0KUmVnYXJkcywNClN0ZXZlbg0KDQo+ID4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBTdGV2ZW4g
+TGVlIDxzdGV2ZW5fbGVlQGFzcGVlZHRlY2guY29tPg0KPiA+IC0tLQ0KPiA+ICAgaHcvYXJtL2Fz
+cGVlZF9hc3QyN3gwLWZjLmMgfCA3ICsrKysrKysNCj4gPiAgIDEgZmlsZSBjaGFuZ2VkLCA3IGlu
+c2VydGlvbnMoKykNCj4gPg0KPiA+IGRpZmYgLS1naXQgYS9ody9hcm0vYXNwZWVkX2FzdDI3eDAt
+ZmMuYyBiL2h3L2FybS9hc3BlZWRfYXN0Mjd4MC1mYy5jDQo+ID4gaW5kZXggMTI1YTNhZGU0MC4u
+N2JmNGYyYTUyZCAxMDA2NDQNCj4gPiAtLS0gYS9ody9hcm0vYXNwZWVkX2FzdDI3eDAtZmMuYw0K
+PiA+ICsrKyBiL2h3L2FybS9hc3BlZWRfYXN0Mjd4MC1mYy5jDQo+ID4gQEAgLTg2LDYgKzg2LDEz
+IEBAIHN0YXRpYyB2b2lkIGFzdDI3MDBmY19jYTM1X2luaXQoTWFjaGluZVN0YXRlDQo+ICptYWNo
+aW5lKQ0KPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQVNUMjcwMEZDX0JN
+Q19SQU1fU0laRSwNCj4gJmVycm9yX2Fib3J0KSkgew0KPiA+ICAgICAgICAgICByZXR1cm47DQo+
+ID4gICAgICAgfQ0KPiA+ICsNCj4gPiArICAgIGZvciAoaW50IGkgPSAwOyBpIDwgc2MtPm1hY3Nf
+bnVtOyBpKyspIHsNCj4gPiArICAgICAgICBpZiAoIXFlbXVfY29uZmlndXJlX25pY19kZXZpY2Uo
+REVWSUNFKCZzb2MtPmZ0Z21hYzEwMFtpXSksDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIHRydWUsIE5VTEwpKSB7DQo+ID4gKyAgICAgICAgICAgIGJyZWFrOw0K
+PiA+ICsgICAgICAgIH0NCj4gPiArICAgIH0NCj4gPiAgICAgICBpZiAoIW9iamVjdF9wcm9wZXJ0
+eV9zZXRfaW50KE9CSkVDVCgmcy0+Y2EzNSksICJody1zdHJhcDEiLA0KPiA+ICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgQVNUMjcwMEZDX0hXX1NUUkFQMSwNCj4gJmVycm9yX2Fi
+b3J0KSkgew0KPiA+ICAgICAgICAgICByZXR1cm47DQoNCg==

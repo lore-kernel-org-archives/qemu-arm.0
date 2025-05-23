@@ -1,170 +1,368 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp2381137njc;
-        Fri, 23 May 2025 01:11:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWLPk/9rA9zlTE6PifnjfvJzGd8bQjlYA87H497p2BOGhP9Q3eqMf/hE+PIShQjSkIX019RMltnLU3BRA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGBG4xXMtAfN4v6XBQDVqpSSOUMLuytOAFsqOYceU2cdFzmiPRpHFv0ZMcRZbmDnFKyP+vJ
-X-Received: by 2002:a05:6e02:3e05:b0:3dc:7f17:72cd with SMTP id e9e14a558f8ab-3dc7f17782amr137294325ab.19.1747987910071;
-        Fri, 23 May 2025 01:11:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1747987910; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp2387345njc;
+        Fri, 23 May 2025 01:27:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVEUZQTaIVGMMfhJkUUeMnZjqHkAewCsQBU/ujeP84lY9sOK/AyqEXtKAbg2J7JYY+CEYgFgch7P85Gow==@linaro.org
+X-Google-Smtp-Source: AGHT+IE6A5LSOdfo9jF2t+oq5cj74KkwwkmR6OtUo+hcnDvSqOXnnVGtyleMW/dnStKjRiD+POwT
+X-Received: by 2002:a5d:5f46:0:b0:3a0:7017:61f6 with SMTP id ffacd0b85a97d-3a35c825eefmr27706164f8f.14.1747988855345;
+        Fri, 23 May 2025 01:27:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747988855; cv=none;
         d=google.com; s=arc-20240605;
-        b=FUNviRXS4iw54jYn9NGgieQjnyRR70PJcnlpzXU91RC0JUhEsEvBnHojl1LkZsJT3I
-         pz+x7DafnD+tH/TM7s197U+x23voTBWZCTAhAgOvbXyGCe880FJpO+xsh/X65vEunOH+
-         hzE2xM/KNdb8vcLDxEAFgEUwJtZLkdZCbxyM14Gll3knBAYj4YQ6RcrxAxRZ+fIhPqYu
-         25YHEXd0uihu+4/QFewjwDPzf3gQHx2duD5yLfJuJVC9KYRCLOKzyj4olwJNWaZa8jdK
-         c3y3WrNqY39oQQbkLKg2twSx7GcPMFdbvPaM5Q0dpbQy+Juv5QU0iYUPgqLJFoTsNqTV
-         4xxA==
+        b=TDSWzaFN84kdFX+paElestpvvqP73QuqG+FrUdx9lqU+1PoONgIl+kC/QZ4iI9bHiU
+         I8F2GoG9XsWrChfOHOljTkcH6Lw1BYYVGAuwQUNF+vXNUB0H93+bltB7Rw2/8UMRPqbM
+         t4O1hMPdJgAPKcmdUFZFlNtlhbTNgCmc5lxMyXNMuMSN8o0WKp1sUeKn1HEe5mkoxSzD
+         ldOJz0iE6rbQ5vFm2OUOSFgTnwPTbst2FbTfoORS0zUi1YBinM3m1GDrLKTIizDrhFhJ
+         OWcYwZ2q496cBF201CcOXZvZj0HNoy95nANY6AkvwI9qqsr6NUrjePeHu/zR0LW1Djg4
+         nPHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=oQS6BML7NXG+2Cc/ctmcDCDHAPEWkryxgZtRg+uv184=;
-        fh=Z2qDztSV8CWVU0ChRWBZcc7s5uQfKpc4TkuCRqvdIcI=;
-        b=TJPx4UfyzapAzhvhybQxjpSgXFWmtvG12wq2Dn95G4skKzMnN9FwpHW0jjB8diMsUP
-         YNsQmYMdrEoA9VzV6qoxbsY/Qe5S2ZO0uUEOE/7jxt7aRDNUfYHyPjzl9NjlwM65NN5u
-         /E+A01Kw6C/7RXOf4doe047+qWS49jXR8o3+dzv+k+RTZBU4SUeDPRFitKEzlXwJlSfT
-         32D7rQ5mh371Yh/SKjWwvq/gIW/p/26eh2/sTzXcl3nMILYcgruX0LNqi00HmQqkvz2A
-         Oq9U/ELK4LsfeGLdfRHSdVroHBnSTJVbAcXGXxAxxPAunwK/11WkIR5OFzCEhq2Z6B4P
-         DbkA==;
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=p/k5PDTsL0lH/RpI2CxrZnvSoQEOjOz3n7vluBa2Q98=;
+        fh=rx6U8xDRIQCLCYSEaMUM6JxzflCE8tIJYYv5Xp9MH70=;
+        b=JuCgJYOB4z+a0tKJlsSgQvsdSM544cVHkZ+Jf7/BxRD/RJnMq0mamVTs2IVvpFnbLX
+         adlb8puIQfh7JbeqVS7BUK6CHs06KWUhWqJlb599rOoq5N6sqRP64n9zxo2EH57ytjtR
+         6QBJuCao4apqLSAetyzjkgrq1qlT813wSkYtWfsXo5Ao1J1fb0+8jOZTLr1EqkC50nwq
+         ifnT9GzhLa5/923WQMe7VuBQJzCvZ8wgYH//giyg2Y8VCpGZZs5Bx+i533+0TgZ3Vr8v
+         z1gC0N64l8npZrDvioY9uvsh2dJ6NZYugeazRKiQZ/8iApsyWm6imv1VjiV+lkFIBkWY
+         PVcw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9e14a558f8ab-3dc8298d8f2si67114425ab.21.2025.05.23.01.11.50
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 May 2025 01:11:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=shameerali.kolothum.thodi@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <shameerali.kolothum.thodi@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a35ca4c917si12972321f8f.128.2025.05.23.01.27.35
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 23 May 2025 01:27:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uINVF-000465-Un; Fri, 23 May 2025 04:11:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=fO70=YH=kaod.org=clg@ozlabs.org>)
- id 1uINVE-00042S-7G; Fri, 23 May 2025 04:11:40 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=fO70=YH=kaod.org=clg@ozlabs.org>)
- id 1uINVC-0002dP-7w; Fri, 23 May 2025 04:11:39 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4b3dCq67Nhz4x1t;
- Fri, 23 May 2025 18:11:35 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4b3dCm5KQPz4wyR;
- Fri, 23 May 2025 18:11:32 +1000 (AEST)
-Message-ID: <a4b67229-722d-4b94-b971-fa8a516dd44f@kaod.org>
-Date: Fri, 23 May 2025 10:11:30 +0200
+       spf=pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=shameerali.kolothum.thodi@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4b3dVT2ZLRz6L5BG;
+	Fri, 23 May 2025 16:24:17 +0800 (CST)
+Received: from frapeml100005.china.huawei.com (unknown [7.182.85.132])
+	by mail.maildlp.com (Postfix) with ESMTPS id 5B9451402FF;
+	Fri, 23 May 2025 16:27:34 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml100005.china.huawei.com (7.182.85.132) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Fri, 23 May 2025 10:27:34 +0200
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Fri, 23 May 2025 10:27:34 +0200
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Cornelia Huck <cohuck@redhat.com>, "eric.auger.pro@gmail.com"
+	<eric.auger.pro@gmail.com>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+	<qemu-arm@nongnu.org>, "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "maz@kernel.org"
+	<maz@kernel.org>, "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+	"sebott@redhat.com" <sebott@redhat.com>, "armbru@redhat.com"
+	<armbru@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
+	"abologna@redhat.com" <abologna@redhat.com>, "jdenemar@redhat.com"
+	<jdenemar@redhat.com>
+CC: "agraf@csgraf.de" <agraf@csgraf.de>, "shahuang@redhat.com"
+	<shahuang@redhat.com>, "mark.rutland@arm.com" <mark.rutland@arm.com>,
+	"philmd@linaro.org" <philmd@linaro.org>, "pbonzini@redhat.com"
+	<pbonzini@redhat.com>
+Subject: RE: [PATCH v3 06/10] arm/kvm: Allow reading all the writable ID
+ registers
+Thread-Topic: [PATCH v3 06/10] arm/kvm: Allow reading all the writable ID
+ registers
+Thread-Index: AQHbrVwDcXqCrMgzAUqDqJzZ5+FsArPgHVQw
+Date: Fri, 23 May 2025 08:27:34 +0000
+Message-ID: <ee2e2631faf640f3807c08c6acd95732@huawei.com>
+References: <20250414163849.321857-1-cohuck@redhat.com>
+ <20250414163849.321857-7-cohuck@redhat.com>
+In-Reply-To: <20250414163849.321857-7-cohuck@redhat.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.203.177.241]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/3] Fix RAM size detection failure on BE hosts
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20250522023305.2486536-1-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250522023305.2486536-1-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=fO70=YH=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sqmTGuf1s+rm
-
-On 5/22/25 04:33, Jamin Lin wrote:
-> v1:
->   1. Fix RAM size detection failure on BE hosts
->   2. INTC: Set impl.min_access_size to 4
->            Fix coding style
-> v2:
->    Fix review issue.
-> 
-> Jamin Lin (3):
->    hw/intc/aspeed: Set impl.min_access_size to 4
->    hw/intc/aspeed Fix coding style
->    hw/arm/aspeed_ast27x0: Fix RAM size detection failure on BE hosts
-> 
->   hw/arm/aspeed_ast27x0.c | 10 ++++++----
->   hw/intc/aspeed_intc.c   | 12 ++++++++++--
->   2 files changed, 16 insertions(+), 6 deletions(-)
-> 
+X-TUID: CNVhZvQXq5KF
 
 
-Applied to aspeed-next.
+
+> -----Original Message-----
+> From: Cornelia Huck <cohuck@redhat.com>
+> Sent: Monday, April 14, 2025 5:39 PM
+> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
+> devel@nongnu.org; qemu-arm@nongnu.org; kvmarm@lists.linux.dev;
+> peter.maydell@linaro.org; richard.henderson@linaro.org;
+> alex.bennee@linaro.org; maz@kernel.org; oliver.upton@linux.dev;
+> sebott@redhat.com; Shameerali Kolothum Thodi
+> <shameerali.kolothum.thodi@huawei.com>; armbru@redhat.com;
+> berrange@redhat.com; abologna@redhat.com; jdenemar@redhat.com
+> Cc: agraf@csgraf.de; shahuang@redhat.com; mark.rutland@arm.com;
+> philmd@linaro.org; pbonzini@redhat.com; Cornelia Huck
+> <cohuck@redhat.com>
+> Subject: [PATCH v3 06/10] arm/kvm: Allow reading all the writable ID
+> registers
+>=20
+> From: Eric Auger <eric.auger@redhat.com>
+>=20
+> At the moment kvm_arm_get_host_cpu_features() reads a subset of the
+> ID regs. As we want to introduce properties for all writable ID reg
+> fields, we want more genericity and read more default host register
+> values.
+>=20
+> Introduce a new get_host_cpu_idregs() helper and add a new exhaustive
+> boolean parameter to kvm_arm_get_host_cpu_features() and
+> kvm_arm_set_cpu_features_from_host() to select the right behavior.
+> The host cpu model will keep the legacy behavior unless the writable
+> id register interface is available.
+>=20
+> A writable_map IdRegMap is introduced in the CPU object. A subsequent
+> patch will populate it.
+>=20
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> ---
+>  target/arm/cpu-sysregs.h |  2 ++
+>  target/arm/cpu.h         |  3 ++
+>  target/arm/cpu64.c       |  2 +-
+>  target/arm/kvm.c         | 78 ++++++++++++++++++++++++++++++++++++++--
+>  target/arm/kvm_arm.h     |  9 +++--
+>  target/arm/trace-events  |  1 +
+>  6 files changed, 89 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/target/arm/cpu-sysregs.h b/target/arm/cpu-sysregs.h
+> index e89a1105904c..367fab51f19e 100644
+> --- a/target/arm/cpu-sysregs.h
+> +++ b/target/arm/cpu-sysregs.h
+> @@ -41,6 +41,8 @@ int get_sysreg_idx(ARMSysRegs sysreg);
+>=20
+>  #ifdef CONFIG_KVM
+>  uint64_t idregs_sysreg_to_kvm_reg(ARMSysRegs sysreg);
+> +int kvm_idx_to_idregs_idx(int kidx);
+> +int idregs_idx_to_kvm_idx(ARMIDRegisterIdx idx);
+>  #endif
+>=20
+>  #endif /* ARM_CPU_SYSREGS_H */
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 775a8aebc5d3..8717c5e7695b 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1088,6 +1088,9 @@ struct ArchCPU {
+>       */
+>      ARMIdRegsState writable_id_regs;
+>=20
+> +    /* ID reg writable bitmask (KVM only) */
+> +    IdRegMap *writable_map;
+> +
+>      /* QOM property to indicate we should use the back-compat CNTFRQ
+> default */
+>      bool backcompat_cntfrq;
+>=20
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index 839442745ea4..60a709502697 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -757,7 +757,7 @@ static void aarch64_host_initfn(Object *obj)
+>  {
+>  #if defined(CONFIG_KVM)
+>      ARMCPU *cpu =3D ARM_CPU(obj);
+> -    kvm_arm_set_cpu_features_from_host(cpu);
+> +    kvm_arm_set_cpu_features_from_host(cpu, false);
+>      if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+>          aarch64_add_sve_properties(obj);
+>          aarch64_add_pauth_properties(obj);
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 6e3cd06e9bc5..b07d5f16db50 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -41,6 +41,7 @@
+>  #include "hw/acpi/ghes.h"
+>  #include "target/arm/gtimer.h"
+>  #include "migration/blocker.h"
+> +#include "cpu-custom.h"
+>=20
+>  const KVMCapabilityInfo kvm_arch_required_capabilities[] =3D {
+>      KVM_CAP_INFO(DEVICE_CTRL),
+> @@ -270,7 +271,73 @@ static int get_host_cpu_reg(int fd,
+> ARMHostCPUFeatures *ahcf, ARMIDRegisterIdx i
+>      return ret;
+>  }
+>=20
+> -static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+> +int kvm_idx_to_idregs_idx(int kidx)
+> +{
+> +    int op1, crm, op2;
+> +    ARMSysRegs sysreg;
+> +
+> +    op1 =3D kidx / 64;
+> +    if (op1 =3D=3D 2) {
+> +        op1 =3D 3;
+> +    }
+> +    crm =3D (kidx % 64) / 8;
+> +    op2 =3D kidx % 8;
+> +    sysreg =3D ENCODE_ID_REG(3, op1, 0, crm, op2);
+> +    return get_sysreg_idx(sysreg);
+> +}
+> +
+> +int idregs_idx_to_kvm_idx(ARMIDRegisterIdx idx)
+> +{
+> +    ARMSysRegs sysreg =3D id_register_sysreg[idx];
+> +
+> +    return KVM_ARM_FEATURE_ID_RANGE_IDX((sysreg &
+> CP_REG_ARM64_SYSREG_OP0_MASK) >>
+> CP_REG_ARM64_SYSREG_OP0_SHIFT,
+> +                                        (sysreg & CP_REG_ARM64_SYSREG_OP=
+1_MASK) >>
+> CP_REG_ARM64_SYSREG_OP1_SHIFT,
+> +                                        (sysreg & CP_REG_ARM64_SYSREG_CR=
+N_MASK) >>
+> CP_REG_ARM64_SYSREG_CRN_SHIFT,
+> +                                        (sysreg & CP_REG_ARM64_SYSREG_CR=
+M_MASK) >>
+> CP_REG_ARM64_SYSREG_CRM_SHIFT,
+> +                                        (sysreg & CP_REG_ARM64_SYSREG_OP=
+2_MASK) >>
+> CP_REG_ARM64_SYSREG_OP2_SHIFT);
+> +}
+> +
+> +
+> +/*
+> + * get_host_cpu_idregs: Read all the writable ID reg host values
+> + *
+> + * Need to be called once the writable mask has been populated
+> + * Note we may want to read all the known id regs but some of them are
+> not
+> + * writable and return an error, hence the choice of reading only those
+> which
+> + * are writable. Those are also readable!
+> + */
+> +static int get_host_cpu_idregs(ARMCPU *cpu, int fd, ARMHostCPUFeatures
+> *ahcf)
+> +{
+> +    int err =3D 0;
+> +    int i;
+> +
+> +    for (i =3D 0; i < NUM_ID_IDX; i++) {
+> +        ARM64SysReg *sysregdesc =3D &arm64_id_regs[i];
+> +        ARMSysRegs sysreg =3D sysregdesc->sysreg;
+> +        uint64_t writable_mask =3D cpu->writable_map-
+> >regs[idregs_idx_to_kvm_idx(i)];
+> +        uint64_t *reg;
+> +        int ret;
+> +
+> +        if (!writable_mask) {
+> +            continue;
+> +        }
+> +
+> +        reg =3D &ahcf->isar.idregs[i];
+> +        ret =3D read_sys_reg64(fd, reg, idregs_sysreg_to_kvm_reg(sysreg)=
+);
+
+I think we can use get_host_cpu_reg() here.
+
+> +        trace_get_host_cpu_idregs(sysregdesc->name, *reg);
+> +        if (ret) {
+> +            error_report("%s error reading value of host %s register (%m=
+)",
+> +                         __func__, sysregdesc->name);
+> +
+> +            err =3D ret;
+> +        }
+> +    }
+> +    return err;
+> +}
+> +
+> +static bool
+> +kvm_arm_get_host_cpu_features(ARMCPU *cpu, ARMHostCPUFeatures
+> *ahcf,
+> +                              bool exhaustive)
+>  {
+>      /* Identify the feature bits corresponding to the host CPU, and
+>       * fill out the ARMHostCPUClass fields accordingly. To do this
+> @@ -398,6 +465,11 @@ static bool
+> kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>          err |=3D get_host_cpu_reg(fd, ahcf, ID_DFR1_EL1_IDX);
+>          err |=3D get_host_cpu_reg(fd, ahcf, ID_MMFR5_EL1_IDX);
+>=20
+> +        /* Make sure writable ID reg values are read */
+> +        if (exhaustive) {
+> +            err |=3D get_host_cpu_idregs(cpu, fd, ahcf);
+> +        }
+
+
+Also if we do this a bit above can we avoid reading the ID registers twice
+if "exhaustive=3Dtrue" ?
 
 Thanks,
+Shameer
 
-C.
-
-
+> +
+>          /*
+>           * DBGDIDR is a bit complicated because the kernel doesn't
+>           * provide an accessor for it in 64-bit mode, which is what this
+> @@ -467,13 +539,13 @@ static bool
+> kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>      return true;
+>  }
+>=20
+> -void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+> +void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu, bool
+> exhaustive)
+>  {
+>      CPUARMState *env =3D &cpu->env;
+>=20
+>      if (!arm_host_cpu_features.dtb_compatible) {
+>          if (!kvm_enabled() ||
+> -            !kvm_arm_get_host_cpu_features(&arm_host_cpu_features)) {
+> +            !kvm_arm_get_host_cpu_features(cpu, &arm_host_cpu_features,
+> exhaustive)) {
+>              /* We can't report this error yet, so flag that we need to
+>               * in arm_cpu_realizefn().
+>               */
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index 8d1f20ca8d89..90ba4f7d8987 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -141,8 +141,12 @@ uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu);
+>   *
+>   * Set up the ARMCPU struct fields up to match the information probed
+>   * from the host CPU.
+> + *
+> + * @cpu: cpu object
+> + * @exhaustive: if true, all the feature ID regs are queried instead of
+> + *              a subset
+>   */
+> -void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
+> +void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu, bool
+> exhaustive);
+>=20
+>  /**
+>   * kvm_arm_add_vcpu_properties:
+> @@ -257,7 +261,8 @@ static inline int
+> kvm_arm_get_writable_id_regs(ARMCPU *cpu, IdRegMap *idregmap)
+>  /*
+>   * These functions should never actually be called without KVM support.
+>   */
+> -static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+> +static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu,
+> +                                                      bool exhaustive)
+>  {
+>      g_assert_not_reached();
+>  }
+> diff --git a/target/arm/trace-events b/target/arm/trace-events
+> index 4438dce7becc..17e52c0705f2 100644
+> --- a/target/arm/trace-events
+> +++ b/target/arm/trace-events
+> @@ -13,3 +13,4 @@ arm_gt_update_irq(int timer, int irqstate)
+> "gt_update_irq: timer %d irqstate %d"
+>=20
+>  # kvm.c
+>  kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova =3D
+> 0x%"PRIx64" is translated into 0x%"PRIx64
+> +get_host_cpu_idregs(const char *name, uint64_t value) "scratch vcpu host
+> value for %s is 0x%"PRIx64
+> --
+> 2.49.0
+>=20

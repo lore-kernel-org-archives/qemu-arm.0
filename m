@@ -1,153 +1,149 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp3142437njc;
-        Sat, 24 May 2025 04:07:28 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHGTFc58oo8OlUNdoADo4rJ1MScRKXW4G88uO1PRW701O5HCh96AkicGztOj3Q6uZpCcz0Y
-X-Received: by 2002:a05:6e02:2407:b0:3dc:870a:e07e with SMTP id e9e14a558f8ab-3dc9b6652e3mr20463405ab.4.1748084847850;
-        Sat, 24 May 2025 04:07:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748084847; cv=none;
-        d=google.com; s=arc-20240605;
-        b=aA7mifSzGO4DQPjqp4Ps+unyIP+PcetSTN8uazWVl8J4cNoFLCQzu40sqplzdzOpC8
-         JBudx/4jSdj/+2yZfM5w5cpi1Cs2LX+Wb9xemrhlWfCW/cQHfojZDQVT32B9vFHwne7Q
-         sV1FAtZ2DECLhE7EPEC5pQGNflfw5PUynVy8XwAxtTCqSeBe1Z/hFUkINWa5Iwkrht1R
-         7eUwi6KhoMo7zNRtJHlssRTBg/ZP50WGb+MtBSIDXFILNvnK/M16ATS0OwhP48HcExZB
-         YWOLyU3mtX8tFpHcpo5RPzNI/1OBlrGjG3K75jrCqySEzZsrgL8f6T/2Ju1dgEaq9Cy2
-         yRFw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=rxux+cQznw+yXgLhUltPmceByWr9BOkwRx5pPAy7P1U=;
-        fh=jgrumDk551Ivv5C4zZV9MlkdzoKJqxuzM1Qnm2KBKqw=;
-        b=kwI5e9jSIiFaQOsQoGJCja9mx3FIVq5Y+4AoigGq0oNDConR3ijyPSNAc6Na2EtvBM
-         BzT9rKf9OH5dqSJyjncs7OOSPh5vTXdZ3ga7YbuV4X9Yqmuakf3l+bezSvgAk0kdCExo
-         giHdTZHbnhtKVMTVAWkwo/mlIAHSlp4u2Njg5R0+Nb6O666QEgCTvmgzdWD7h46xmXTm
-         8kBKcBfxQOemwYgc3UKmFfYG4lz6G0G2V+5u0qzae29lG7vRgZjhZUaWsMz1SwXJrtPT
-         7HZFCbJOAe1yXvReWhhqZYApjuzGdRNRa4jGkeTpS4jgCGzq027GvroSBUY6NLmNhbAO
-         8h8A==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IT3zjuOu;
-       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <mst@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id e9e14a558f8ab-3dc8389fe37si82433745ab.71.2025.05.24.04.07.27
-        for <alex.bennee@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([185.126.160.19])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-602d2282d3asm1267520a12.16.2025.05.24.08.38.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 24 May 2025 04:07:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IT3zjuOu;
-       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1748084847;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=rxux+cQznw+yXgLhUltPmceByWr9BOkwRx5pPAy7P1U=;
-	b=IT3zjuOui9Tol9UoxkfkvnVmUEjyesbPEkFcG2MK++wUCkEr1e+QJuL5my3diPNsq3G/OD
-	ZXBMgDpSbuM+HedQY4a9oMqMl4nJlRSsQ+PoskHKLeOJaC8ejpt/EJv7wgQXAL5YgZFhFL
-	9bOhf6HCzbhB4/CioMSFNzrVhWlZcE0=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-29-XgD3q9DTOHi402q-QAGYmw-1; Sat, 24 May 2025 07:07:26 -0400
-X-MC-Unique: XgD3q9DTOHi402q-QAGYmw-1
-X-Mimecast-MFC-AGG-ID: XgD3q9DTOHi402q-QAGYmw_1748084845
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-442cd12d151so4777765e9.1
-        for <alex.bennee@linaro.org>; Sat, 24 May 2025 04:07:25 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748084844; x=1748689644;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=rxux+cQznw+yXgLhUltPmceByWr9BOkwRx5pPAy7P1U=;
-        b=VD+vKzPONj3kiyOumND2Qqqbk2juGAogDfmQNKacTxGxPMp1cNsTN22EGJ/effTzwt
-         fVnfZgWeDduBbxnAjjha8Bj0t2sb4WUFeUgiegGqY7XqbsWzWnMxi7tjXBw/9SPHUWvU
-         ZG274fwTGdpKHw/EkR4srcQBwpl2PN2U2Cau4rItuMt3Oq+BxPstfpDcgIaWsTbh+qeS
-         i6LjZ/A3/EJpGvtnco2ZPcxzvAhzZfqwkM5wADVd4rWYN9l7hNqiBIEuGGbqRzpWGip4
-         YfQgZHDlOuOLmNzLv8+nvtOu3y14aU/R+dxWsJwSNhFhR6kdSEmsmnCKZNegwpFByxQm
-         jNGA==
-X-Gm-Message-State: AOJu0YwCgymryOTUn2fzA7UXqmUEHSeCyFLu8cFHpesSbgB6/JKZbi2D
-	HLQZvpumusfJldINukyUlgt0RJEtgMj2uYfYj/pXE2zZuL3x8+55cIxixD016EBS+djuPDWn0Oe
-	qxIC0BBHgMsH/ojCFKHFokpI4Eg2iacXHqRqTl7lpqh1prL6bUkCcO5Y0LLFJLUGZnIsINoxZWo
-	eg8uAsiPsvo4VimjjHNGduNzDJ+lTLlhHHAFQ=
-X-Gm-Gg: ASbGncv/GXOftXyzqHwVqYA0BDxpV6TWzbVcM8ZUiNNJS6sg1Fhvgu9x4Z/l5+5pq3f
-	7YSjsr9F4G3unXVshj6PjQNCOF9bmT6QlZGmFObgLbEfOHja4ws9S/XXAFcQulLpGQdIMFJIKFr
-	N3ueQ/TVCS9lWrn/i7daF4sQynrVlk7GghrAgXC+dcfb3QqajxIJbJqZ97Ezgmr+m33RjU2DkgV
-	rVXvBGucu7Kq4f8QxUefddt7XtOK1EZElM9aZwyqpfrbFibJlA0sktIbEXrg5cX0l7TWGwlNxOJ
-	kGryfg==
-X-Received: by 2002:a05:6000:4025:b0:3a3:6481:1ca4 with SMTP id ffacd0b85a97d-3a4cb4834a6mr2045477f8f.43.1748084844502;
-        Sat, 24 May 2025 04:07:24 -0700 (PDT)
-X-Received: by 2002:a05:6000:4025:b0:3a3:6481:1ca4 with SMTP id ffacd0b85a97d-3a4cb4834a6mr2045434f8f.43.1748084844069;
-        Sat, 24 May 2025 04:07:24 -0700 (PDT)
-Return-Path: <mst@redhat.com>
-Received: from redhat.com ([2a0d:6fc0:1517:1000:ea83:8e5f:3302:3575])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a35ca5a841sm29916764f8f.34.2025.05.24.04.07.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 24 May 2025 04:07:23 -0700 (PDT)
-Date: Sat, 24 May 2025 07:07:20 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	John Snow <jsnow@redhat.com>, Fabiano Rosas <farosas@suse.de>,
-	Peter Xu <peterx@redhat.com>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
-	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
-	Gustavo Romero <gustavo.romero@linaro.org>
-Subject: Re: [PATCH v3 10/20] MAINTAINERS: add Akihiko and Dmitry as reviewers
-Message-ID: <20250524070711-mutt-send-email-mst@kernel.org>
-References: <20250521164250.135776-1-alex.bennee@linaro.org>
- <20250521164250.135776-11-alex.bennee@linaro.org>
+        Sat, 24 May 2025 08:38:21 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id D30D75F782;
+	Sat, 24 May 2025 16:38:20 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Gustavo Romero <gustavo.romero@linaro.org>
+Cc: qemu-devel@nongnu.org,  thuth@redhat.com,  berrange@redhat.com,
+  eric.auger@redhat.com,  philmd@linaro.org,  peter.maydell@linaro.org,
+  qemu-arm@nongnu.org
+Subject: Re: [PATCH v4] tests/functional: Add PCI hotplug test for aarch64
+In-Reply-To: <20250512144629.182340-1-gustavo.romero@linaro.org> (Gustavo
+	Romero's message of "Mon, 12 May 2025 15:45:45 +0100")
+References: <20250512144629.182340-1-gustavo.romero@linaro.org>
+User-Agent: mu4e 1.12.11; emacs 30.1
+Date: Sat, 24 May 2025 16:38:20 +0100
+Message-ID: <87a57210k3.fsf@draig.linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20250521164250.135776-11-alex.bennee@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 9LNSyurXGvYDCBO5_3owHArSbwdvxICQqpT7yMkl6uY_1748084845
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-X-TUID: E8rjlrYmiGbv
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: xRrYDvo6Yvj4
 
-On Wed, May 21, 2025 at 05:42:40PM +0100, Alex Bennée wrote:
-> Thanks for volunteering to help.
-> 
-> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
-> Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Gustavo Romero <gustavo.romero@linaro.org> writes:
 
-
-Great!
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-
+> Add a functional test, aarch64_hotplug_pci, to exercise PCI hotplug and
+> hot-unplug on arm64.
+>
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+> Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
 > ---
->  MAINTAINERS | 2 ++
->  1 file changed, 2 insertions(+)
-> 
+>  MAINTAINERS                                  |  5 ++
+>  tests/functional/meson.build                 |  1 +
+>  tests/functional/test_aarch64_hotplug_pci.py | 74 ++++++++++++++++++++
+>  3 files changed, 80 insertions(+)
+>  create mode 100755 tests/functional/test_aarch64_hotplug_pci.py
+>
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 8dfb393c06..a14e2796e0 100644
+> index 23174b4ca7..9ebb768214 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -2674,6 +2674,8 @@ F: include/hw/display/ramfb.h
->  
->  virtio-gpu
->  M: Alex Bennée <alex.bennee@linaro.org>
-> +R: Akihiko Odaki <akihiko.odaki@daynix.com>
-> +R: Dmitry Osipenko <dmitry.osipenko@collabora.com>
->  S: Odd Fixes
->  F: hw/display/virtio-gpu*
->  F: hw/display/virtio-vga.*
-> -- 
-> 2.39.5
+> @@ -2065,6 +2065,11 @@ S: Supported
+>  F: include/hw/pci/pcie_doe.h
+>  F: hw/pci/pcie_doe.c
+>=20=20
+> +ARM PCI Hotplug
+> +M: Gustavo Romero <gustavo.romero@linaro.org>
+> +S: Supported
+> +F: tests/functional/test_aarch64_hotplug_pci.py
+> +
+>  ACPI/SMBIOS
+>  M: Michael S. Tsirkin <mst@redhat.com>
+>  M: Igor Mammedov <imammedo@redhat.com>
+> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+> index 52b4706cfe..2d68840fa2 100644
+> --- a/tests/functional/meson.build
+> +++ b/tests/functional/meson.build
+> @@ -83,6 +83,7 @@ tests_aarch64_system_quick =3D [
+>  tests_aarch64_system_thorough =3D [
+>    'aarch64_aspeed_ast2700',
+>    'aarch64_aspeed_ast2700fc',
+> +  'aarch64_hotplug_pci',
+>    'aarch64_imx8mp_evk',
+>    'aarch64_raspi3',
+>    'aarch64_raspi4',
+> diff --git a/tests/functional/test_aarch64_hotplug_pci.py b/tests/functio=
+nal/test_aarch64_hotplug_pci.py
+> new file mode 100755
+> index 0000000000..fa1bb62c8f
+> --- /dev/null
+> +++ b/tests/functional/test_aarch64_hotplug_pci.py
+> @@ -0,0 +1,74 @@
+> +#!/usr/bin/env python3
+> +#
+> +# SPDX-License-Identifier: GPL-2.0-or-later
+> +#
+> +# The test hotplugs a PCI device and checks it on a Linux guest.
+> +#
+> +# Copyright (c) 2025 Linaro Ltd.
+> +#
+> +# Author:
+> +#  Gustavo Romero <gustavo.romero@linaro.org>
+> +#
+> +# This work is licensed under the terms of the GNU GPL, version 2 or
+> +# later.  See the COPYING file in the top-level directory.
+> +
+> +from qemu_test import LinuxKernelTest, Asset, exec_command_and_wait_for_=
+pattern
+> +from qemu_test import BUILD_DIR
+> +
+> +class HotplugPCI(LinuxKernelTest):
+> +
+> +    ASSET_KERNEL =3D Asset(
+> +        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm6=
+4/'
+> +         'current/images/netboot/debian-installer/arm64/linux'),
+> +        '3821d4db56d42c6a4eac62f31846e35465940afd87746b4cfcdf5c9eca3117b=
+2')
+> +
+> +    ASSET_INITRD =3D Asset(
+> +        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm6=
+4/'
+> +         'current/images/netboot/debian-installer/arm64/initrd.gz'),
+> +
+> '2583ec22b45265ad69e82f198674f53d4cd85be124fe012eedc2fd91156bc4b4')
+
+Hmm do we need to specify a checksum type now?
+
+  TAP version 13
+  not ok 1 test_aarch64_hotplug_pci.HotplugPCI.test_hotplug_pci
+  1..1
+  ----------------------------------- stderr ------------------------------=
+-----
+  Traceback (most recent call last):
+    File "/home/alex/lsrc/qemu.git/tests/functional/test_aarch64_hotplug_pc=
+i.py", line 44, in test_hotplug_pci
+      self.launch_kernel(self.ASSET_KERNEL.fetch(),
+                         ~~~~~~~~~~~~~~~~~~~~~~~^^
+    File "/home/alex/lsrc/qemu.git/tests/functional/qemu_test/asset.py", li=
+ne 189, in fetch
+      raise AssetError(self, "Hash does not match %s" % self.hash)
+  qemu_test.asset.AssetError: https://ftp.debian.org/debian/dists/stable/ma=
+in/installer-arm64/current/images/netboot/debian-installer/arm64/linux: Has=
+h does not match 3821d4db56d42c6a4eac62f31846e35465940afd87746b4cfcdf5c9eca=
+3117b2
+
+  More information on test_aarch64_hotplug_pci.HotplugPCI.test_hotplug_pci =
+could be found here:
+   /home/alex/lsrc/qemu.git/builds/all/tests/functional/aarch64/test_aarch6=
+4_hotplug_pci.HotplugPCI.test_hotplug_pci/base.log
+   /home/alex/lsrc/qemu.git/builds/all/tests/functional/aarch64/test_aarch6=
+4_hotplug_pci.HotplugPCI.test_hotplug_pci/console.log
+
+  (test program exited with status code 1)
+  =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D
+
+In fact could we use the existing tuxrun images instead of relying on
+debian stable not changing?
+
+<snip>
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

@@ -1,91 +1,91 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp3727988njc;
-        Sun, 25 May 2025 08:20:39 -0700 (PDT)
-X-Received: by 2002:a05:600c:6285:b0:43c:ea1a:720c with SMTP id 5b1f17b1804b1-44c91dd127bmr54336615e9.18.1748186439304;
-        Sun, 25 May 2025 08:20:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748186439; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp3730040njc;
+        Sun, 25 May 2025 08:25:52 -0700 (PDT)
+X-Received: by 2002:a05:6000:26c9:b0:3a3:75fa:a0d5 with SMTP id ffacd0b85a97d-3a4cb49b20emr4780566f8f.38.1748186752706;
+        Sun, 25 May 2025 08:25:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748186752; cv=none;
         d=google.com; s=arc-20240605;
-        b=jJ/DNAUeywJwarh1TFA67rqNqRVZFj5CNCATyi7KAgnHPrVT7a391b81VOtKT9IOG1
-         Z9j25hT+Bmhj2aw3gae65j9tb7iIe7UIrKJHvdT9fnJVnKPQ2PdTGE1uzo4RlHlh2z60
-         +pA5SUUnKQIcc/ykF6+zWnyZuLFKTK/Yd9jXf0qotR352cxB84f+LSIqrWUwnWzjABDy
-         w00fNDpUjUpZJlojrirMZJalZJuJ1r7tJMvtdyx2bSZWKLrU5nX2s7RroLmo/OlwVOkL
-         c7dzyvkvqfy3fncWfJIlPz2DciNZ2i+b3Wmsp4waAz3Abr4SrpNX8/imJsoZnepTPm5T
-         18Qg==
+        b=JNrLqO5OX1CqJw8yeLHeyk0CyNss0VEs6arUccGqyqoNxUWjAYiSO3qc8Mj1L4sLGU
+         EztBTBDs7PTTHSj3cGIXcK4TIcLF2bapd8OQqo3Vlx8fiI9XqSxlHyYlnpKqgVRf3KZL
+         884sSbaOHeJiT8W704FZcO+yjHYM50H553evqNruxTVo7Ro7nkejcZNJzLFxa0w0T/lt
+         ulxfkDw+gslLh/i0zb2dhqPj/SzqKHwf1g/ZL1U4IOzRQ61VjSuHMC/aTtyextyqwBib
+         A5WLNxrP1E6lTsPl56adE+73/cteDlmZPR9lCOGroWq9pR+ToddUBy1mpi+ykxLhzG1t
+         mFWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=oNEB9gZX/6wELzfei30Cpb8j4aVTnTQZ1fn639Eezfs=;
-        fh=Z84gGed82Fjjw6HsLhLn1R1lgjhWPHasSMI3KCUuewU=;
-        b=BvICynfUeAV/iEhs4ZQ3vMAfonafyHAewTe+lGIUyIg4/mvJiAYneaO8Vw4ru17bvv
-         Yq9pJ3Q+bpMejVPklAjtppMNea29FS6FMtPa5tD4mvcdOs6NJxr3zPrexivvMJu3oQlj
-         KyjtybHyOlflo8tFB6arhwuvJO6fy9kTHIM5WRObRW9cUmr0Utq+tMLIrL+NQ1M4Hrty
-         UguBLITibirqLpak4ZwlTZqoZFspbkJfSZ6jr7U59UER6Jut7xfeyN7bx1Bce66lTO7U
-         Fl6aoIfRLxt33t/xD2HkwCy8GFxPwPAbGcMpQn6UJ5MqL62SMQq8JmSoHRUofkSffuVM
-         kzpw==;
+        bh=8EsB4KKwhn+6yAx76oOErDAK4JdgouXBDYZw6xCXzeg=;
+        fh=N62IQikGiF2BMpey1ihzlbKZ7kCt1T5I8KVf+K2RViM=;
+        b=a0r3pqIgrhsEZWBccCUebIMtGAxEHTlaFByS72Ct2AkVO3Mpb6fws/l1PyfNfnQhR1
+         RJ5l4Beskjx1waVtVMIfTwEnGfyNG9vTY96TJESnzr6/J856kR6KNQkjWu93MKpm+oSy
+         3GI7fhobcrGfJsvrS1iYT7tlyIo5lY3EzJMTWRPvikivbi8lW5NKAwCN5PfAF8sUHNv+
+         W31xFUgReCz9gVB8ND9tBUfzumburVm3na5050x8GTlfSl2E8q3+VpwZdeIPqHGh+a/s
+         FxXsNfFJf4Rn2CGiaBElgnf3WZAGsIhnVNXznka0GsZ2fmnTb1FnTC6QNtQk1igspYQp
+         1j0w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nJ1DDI7o;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZnBZKdql;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-3a35ca5ab20sor8609796f8f.3.2025.05.25.08.20.39
+        by mx.google.com with SMTPS id ffacd0b85a97d-3a35ca1e576sor6485205f8f.0.2025.05.25.08.25.52
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 25 May 2025 08:20:39 -0700 (PDT)
+        Sun, 25 May 2025 08:25:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nJ1DDI7o;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZnBZKdql;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1748186438; x=1748791238; darn=linaro.org;
+        d=linaro.org; s=google; t=1748186752; x=1748791552; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=oNEB9gZX/6wELzfei30Cpb8j4aVTnTQZ1fn639Eezfs=;
-        b=nJ1DDI7os4ixp41I/ayyB8bYJhr94XYASY+iQxuW8vviSAY0DWIKZI+ZQPmtdcI/fq
-         +H6N5HNA92SH0s7hPRQXpMsHJ5/q/F4ldvfMXe7DtuhvuSpqab6iBnox10W9GjCjyVpT
-         2/va8Stl4WSakI8jf2Or0LUejy6cPRrWWILT3klpI91QMqfE713hHYnfsfuapWb6s8I9
-         mt5eUfVSvwJ8B1x1PDJVUH4y6FbVgSOgXLf0M6UmgWfmRIHVhSq33SBY1+cCDV7pwfxS
-         OYBRWMhO8xLHH1jt8+g24MgJCO9EX3hakTUzsWBRetixm/kszhMdchMmQDModYZKxWuM
-         sJkA==
+        bh=8EsB4KKwhn+6yAx76oOErDAK4JdgouXBDYZw6xCXzeg=;
+        b=ZnBZKdqll4Ot62JdENORc23RpAuCKysyF4/nQ/+2qa4wg5TSRnqxjCR8YdyyupLps3
+         vKcl8W1nz3tioTcL2UoUEx4+CkiAVlC7gPykHbah65NEkwI4Ht7hXYzGEew16Xf4C94G
+         vu8HmYThvExwcTIZ19godV8Ja3T0HN5egjFbqGqf6j8JfW9oG6jf0HmfJqIBfPepSTMr
+         L9bph2lBKY2pRI/7dzxhzo2H59fzF3nZF+V02FQsQpoE4kh/km3pJDG8MrTheMVjRjL7
+         VBfu7uGsnyuUMy2sb5UDClNQmfRqTUYWF9Kdii4xDoFTubsqKcvE3MYckjhYD9l/E0mP
+         C+0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748186438; x=1748791238;
+        d=1e100.net; s=20230601; t=1748186752; x=1748791552;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=oNEB9gZX/6wELzfei30Cpb8j4aVTnTQZ1fn639Eezfs=;
-        b=LkbW/3xvoIMDJdBvLjUstScJktHgtZebZ6+Gdg1sBNRWDR/KdybE0sYy4ZN3EEpJDU
-         VfpmCXenoRs0aJJXaerzKpBIMpo5OSEppkmyR8ce7xVfgpvzJ9yWj6DSu5e2zUtCR75c
-         2HqbvBkw3w3k2+xh3DvdNtiXnsTRopZ7Swd7newU9UmqXToprg95HJGUz62EPB2x8MCa
-         HOt2+AB3bcQAQtqxu9xRBu7LdSH4HuRw9ci0VV7/PhkoXRca3NX5KBO+EtYjEBPCPqMv
-         u2eR+QzSeQHBn8O53LhJA4tA+Ko7SkirBd+44T/jeQR9py76jNV2oprEUAz789ZQW4bG
-         pRuw==
-X-Gm-Message-State: AOJu0Yw4qEk5Ra9AlXS7iqtdIqCbSlsma1zZyo7kcBNuLReSCSP8cAiW
-	0IuXpe1DQ/JLeJrrGN5IsEAPBG+qlP4uHeFHklb2cqfNk1Xd4pAgoX4IQiRMEle3oBmCqHgAqMX
-	TQf9ibwI=
-X-Gm-Gg: ASbGncuQuYYfD3fsFFGAnbosiFnVoJiah38ncftn9c6G65a8IAsBzRkFw3bP07x26PQ
-	vzEjc5O5F5A14MLcjV2SaGOmxK9Jy4M6gF3/W1zhvBNeO26tHGPzGz43ftGouqqF4iTn+/ag1Vf
-	lIToAjFmcxP27ze2I9t9Knv9n/ELZ6p5Mcs8EP4GrbCA16RpZzK/YjNoM2IwDGWakZ4tYJv313t
-	1JEgBE5jBhGswj3OsraCxbLdrMbgZLxCBCAMsbjxBPuH7F6NGKnpzhrRX/sfYIErHSQxC8bjh6d
-	lJjYgBbd24WjpzSEmrJMj1cAaZ7m1RMnCyHjhfk0b/PKB+ogEnihISOnQPPJHPvNAS7ZMyhlPJ9
-	Keq/V/p2JelRdKthpauDCvT8UQuS44R7onrATyA==
-X-Google-Smtp-Source: AGHT+IG4Wjf4B+T8GA7G5iTswRP4iu+XbUeXyjXrs5Vx7OW0g0gQAJM9tRUCQI0JPtVya3qcxHo1pA==
-X-Received: by 2002:a05:6000:4203:b0:3a4:79e8:d1d8 with SMTP id ffacd0b85a97d-3a4cb0eaf18mr4734066f8f.0.1748186438452;
-        Sun, 25 May 2025 08:20:38 -0700 (PDT)
+        bh=8EsB4KKwhn+6yAx76oOErDAK4JdgouXBDYZw6xCXzeg=;
+        b=Znfl9KRc39qxLktnYTMCWniRonzMLh4sjZgPIMNJobpQ7dUAW/ryZRJCdCQC7b8MEv
+         tuCq3f6+tUgf7aRca54cU0xdds33xYBNGHPmY050EihJCut6reXMhROw/B66FHfyyCPq
+         wNCfzxCEbpZG70ymeHVfYFOy4aLbS43VQdp0tt1gox1T86gFqZrlkFVmdpoysjfkbomM
+         7MNYPeGx5fV+GZVfYC3Ngri4MWKcv/2iIq7Al0Mt2COHa3ZaykU6QhiIAm4NSBV53wVz
+         2PqHWaH+Oo8lvjXRGaA5sB6/Mbmvt7/MhIQ8WMh9YLrdHv39+6PvgzSRmhAFU7tss6/D
+         uuzA==
+X-Gm-Message-State: AOJu0YzHDGveEkDTpGmu+7HZ7owQbWYzlIg06dAghGQ2NU6Nss86J0ND
+	BzGD2ehua29nuf9b4+M5Hza2s+DGMv1IkalZssEF79dPVV5B1IdzolMh4dwO4Uoj/1xMrq4ULs6
+	wq+Mn70k=
+X-Gm-Gg: ASbGncs0ZuWgGmmGdxithieS+a9y3vVCCLJswida/pZTx6n3a8XN4UMCmSG332I1dz+
+	Or03l8LG3Eil+twhN8yaZd2NvNCq+m+y/dwUY4XJs7yxCLnPuv8ihDJmSLwCn5qUhG/a3CsBzXc
+	8bHuDvIKrgbD8ReHHp1SoYuTH0uJISs/rju57fIxkVJDOSDcZ6d3UXhQPGzPHmFy5+D3eR8qpmB
+	aiSEeJwLgjj+gTVl/OpIq2v5auzDWwQNXPfAE8VPrOc/naiYHad7Nf22k3ifJenSkJy480OvNFy
+	fWvmuJ2B+DJ79WMAtBUsytjMHZZ2cmaZQj1LzIrDlc9blW29R6Zjec9V3vOcllXcGpLYFqYsNe4
+	JF63Et2nYdkP/7MYH43nifXUUuUw=
+X-Google-Smtp-Source: AGHT+IFsOS88kQlU14Pm7ldF6CT5PMpUZVS7c5u/xFuefZKk9eMiOixR9+YAX4YqEkTGlcIuX516gg==
+X-Received: by 2002:adf:f7d2:0:b0:3a4:cefe:4193 with SMTP id ffacd0b85a97d-3a4cefe4dbfmr3349399f8f.58.1748186751714;
+        Sun, 25 May 2025 08:25:51 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [10.132.0.213] (17.red-95-127-33.staticip.rima-tde.net. [95.127.33.17])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a4cfa20c03sm3986417f8f.7.2025.05.25.08.20.35
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a4cd0cf5c0sm4927892f8f.12.2025.05.25.08.25.48
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 25 May 2025 08:20:37 -0700 (PDT)
-Message-ID: <45b2ad25-2307-4fa9-97cc-057666627f1b@linaro.org>
-Date: Sun, 25 May 2025 17:20:34 +0200
+        Sun, 25 May 2025 08:25:51 -0700 (PDT)
+Message-ID: <b916fe83-180b-48d6-815f-da556b8e42fd@linaro.org>
+Date: Sun, 25 May 2025 17:25:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 10/20] MAINTAINERS: add Akihiko and Dmitry as reviewers
+Subject: Re: [PATCH v3 19/20] gdbstub: Implement qGDBServerVersion packet
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
@@ -101,24 +101,71 @@ Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
  Dmitry Osipenko <dmitry.osipenko@collabora.com>,
  Gustavo Romero <gustavo.romero@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>,
+ Patryk 'patryk4815' Sondej <patryk.sondej@gmail.com>
 References: <20250521164250.135776-1-alex.bennee@linaro.org>
- <20250521164250.135776-11-alex.bennee@linaro.org>
+ <20250521164250.135776-20-alex.bennee@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250521164250.135776-11-alex.bennee@linaro.org>
+In-Reply-To: <20250521164250.135776-20-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: j7as2u9W4bK3
+X-TUID: 8OKDta0VLMb2
 
 On 21/5/25 17:42, Alex Bennée wrote:
-> Thanks for volunteering to help.
+> From: Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>
 > 
-> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
-> Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> This commit adds support for the `qGDBServerVersion` packet to the qemu
+> gdbstub  which could be used by clients to detect the QEMU version
+> (and, e.g., use a workaround for known bugs).
+> 
+> This packet is not documented/standarized by GDB but it was implemented
+> by LLDB gdbstub [0] and is helpful for projects like Pwndbg [1].
+> 
+> This has been implemented by Patryk, who I included in Co-authored-by
+> and who asked me to send the patch.
+> 
+> [0] https://lldb.llvm.org/resources/lldbgdbremote.html#qgdbserverversion
+> [1] https://github.com/pwndbg/pwndbg/issues/2648
+> 
+> Co-authored-by: Patryk 'patryk4815' Sondej <patryk.sondej@gmail.com>
+> Signed-off-by: Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>
+> Message-Id: <20250403191340.53343-1-dominik.b.czarnota@gmail.com>
+> [AJB: fix include, checkpatch linewrap]
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->   MAINTAINERS | 2 ++
->   1 file changed, 2 insertions(+)
+>   gdbstub/gdbstub.c | 17 +++++++++++++++++
+>   1 file changed, 17 insertions(+)
+> 
+> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+> index 6023c80d25..def0b7e877 100644
+> --- a/gdbstub/gdbstub.c
+> +++ b/gdbstub/gdbstub.c
+> @@ -28,6 +28,7 @@
+>   #include "qemu/cutils.h"
+>   #include "qemu/module.h"
+>   #include "qemu/error-report.h"
+> +#include "qemu/target-info.h"
+>   #include "trace.h"
+>   #include "exec/gdbstub.h"
+>   #include "gdbstub/commands.h"
+> @@ -1597,6 +1598,18 @@ static void handle_query_threads(GArray *params, void *user_ctx)
+>       gdbserver_state.query_cpu = gdb_next_attached_cpu(gdbserver_state.query_cpu);
+>   }
+>   
+> +static void handle_query_gdb_server_version(GArray *params, void *user_ctx)
+> +{
+> +#if defined(CONFIG_USER_ONLY)
+> +    g_string_printf(gdbserver_state.str_buf, "name:qemu-%s;version:%s;",
+> +                    target_name(), QEMU_VERSION);
+> +#else
+> +    g_string_printf(gdbserver_state.str_buf, "name:qemu-system-%s;version:%s;",
+> +                    target_name(), QEMU_VERSION);
+> +#endif
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+g_string_printf() isn't really justified, we usually call
+g_string_append().
+
+> +    gdb_put_strbuf();
+> +}

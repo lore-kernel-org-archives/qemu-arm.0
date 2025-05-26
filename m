@@ -1,376 +1,169 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4072498njc;
-        Mon, 26 May 2025 02:17:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUMnbhwVzRs6gdL5pRAwDtZhucy6QhA0Hne/sslYX6OKS5gNlPBZPGGONYcV3l27ir5pA1bV5+0D7GLEQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGcfy8E9tDEtwDY4gVs7mVLR9RErQvNmjKhYZeNSGJB0nPtV+Vo+GWF3lv9Z/QENhjgvsgN
-X-Received: by 2002:a05:6602:488c:b0:85d:b054:6eb9 with SMTP id ca18e2360f4ac-86cbb8b38d5mr801245039f.14.1748251035039;
-        Mon, 26 May 2025 02:17:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748251035; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4081846njc;
+        Mon, 26 May 2025 02:41:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVdKEN0NlzNcV8cee852x28yrKIW9DKciXZ1LrVPTqBhyzXztkvQjPuRwHF+Mb7TL129B6xNkYTJ+4xCA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHSFtRsdbAILPx9k2PVpNMXwXhzMD222N8AXnW8zk0A9lL4YZGu3WR5If1EI3VcnzGglab8
+X-Received: by 2002:a05:620a:bd5:b0:7c5:6dc7:7e7c with SMTP id af79cd13be357-7ceecbe705amr1137611485a.26.1748252502566;
+        Mon, 26 May 2025 02:41:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748252502; cv=none;
         d=google.com; s=arc-20240605;
-        b=bGYQQCFebYhjIgIBymSFpVBuzBlpO3Ua5pYtnlvu4HVG9PAC45m8GQjXYNKUweERdS
-         L7rcj/u3I5CZXLMFg3jEBs2xrCcNmL+xELsxC6J8Hqx5HMn4a0v2YoEKOrR71wH/sdBz
-         i0bkz6rtRRl3E87U4UXZUDmdVR8p5+fmWVWjsiLSQ6drwsDY5Q04+tz1PIsOtaOLubFu
-         qKZzY9TYwGcBKphPszzQPFh3quB8MhBzThPvJ/IQg5AJakYdCM5QDy/X56JItOs8+/DQ
-         2kOFQ1MdB9u/fEXCGqg/EE2fdR7CCysooFH+JWLvaESjhWfg/HcBOz3XWBRAnc5gd/vC
-         +QJQ==
+        b=KEFw7KXkI/5P8acrLcKOMPs0gxLiyL+NM3NxG6KSO58ec8tWpW+vI/G9t+9b299N+j
+         o8VTN/P5sOc7lD4Pqdb6TDWo4HjyCwn+fhCIERQNAhBmcEhnbmMGz+a695wFOsE93MIp
+         bzXFiy8dl9/AUXbq2rRKsYYzGz4ENvzNqce2X4W+Wua27xshhgoAlabmFASe1YeclCw3
+         qKQlFt5N0ntqlBSgKV0OeRuxKpVfZ+2qeEmkIo9lYSyOwo/FLWr/lRNSnYFFCqRvfxBl
+         SisIhkzwk5PrN3AzC54k0iVrMqNfLpH4K1FvosNSVAQCOXBdbMmk3KR8fBQRqTgDo90p
+         Qc4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=zWQPGw3QlEEL0XhFMkrjuRafcGeI0NPRzn9xf+0xTD8=;
-        fh=ONsmOY7C5AzIHAM7x2hetOEdnQ+VbINNzbiQuvZLHgs=;
-        b=ZtFzLEjii/7Z5ErZhSvY75Uqdy8UmRYX+hGmvGJkI3kYc3Uq91GMskm4m5jnHkMpRh
-         gXudRSZ/R359KS458oUOqKUh/2c3MoeTkso4ta8waWCdAW27lapRwDso/JjA0IS4im40
-         AaG6n/nMFDbvSXwIZvZE0uT8CY+cceKS0Lw9DibBDvXGQlPIa+QFZG7wa90EENj3ocwI
-         2q+Vl5VDwOGK1gK3QXYSjzMQnq6PkZ2ssnsIESlsv/xuK4fdIObnajRu1ieXvwgxK5kU
-         RbqIK/f7nZdnVavFZnyRWXb0qKRy8N2KmQG618y08igiFrH8/J5cHhj8RfJ7sqrOMDAH
-         9/cA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=o/3OyUiRP3KARuilfO7gfosU/5cLNdYR8AB7wqy3SX8=;
+        fh=zEcev5E5e9bVvXudYswPKnK9xAQ+I1x7YYqbhOfbOx8=;
+        b=bJoExjUfNmvzEe9EKgd+urYwLXliOq3XkH+VszbeQXK3c6KiX3yPsdxr58t+XlKUKy
+         JTZM8qaPJYfhVksw9cU5qdizX9YZDzjOKR4HWJV9fuLKD9tipUCSUqLm78iWFwLYxyaZ
+         OO60v1UMvisDFGhov4Wong2zVYZdZY4CuIXc6W7o+msxG21aQtA94LoP5n/b1dFcO2Kl
+         9zZlQwsfNI38v92BpoX/FHj0/flFyoMKTAKIwFNqmTuxyLxfMfuc8U3UL0tUPP/fFTHX
+         wXsGJP2FWmpWrn6E0O5dxeW2tD7YZ1QVTDTt1oNxLKaYYkvBTv4cjK2aJA607HN7mV5T
+         EtqQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P3Fkdadx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vx3pHdD1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ca18e2360f4ac-86a23736837si1313137439f.102.2025.05.26.02.17.14
+        by mx.google.com with ESMTPS id af79cd13be357-7cd467e93f6si2585269685a.195.2025.05.26.02.41.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 May 2025 02:17:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 26 May 2025 02:41:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P3Fkdadx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vx3pHdD1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uJTxB-0007gV-Bk; Mon, 26 May 2025 05:17:05 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uJUKY-0001q2-8t; Mon, 26 May 2025 05:41:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uJTwk-0007Zq-CU
- for qemu-devel@nongnu.org; Mon, 26 May 2025 05:16:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uJTwi-0002A4-5Q
- for qemu-devel@nongnu.org; Mon, 26 May 2025 05:16:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1748250995;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zWQPGw3QlEEL0XhFMkrjuRafcGeI0NPRzn9xf+0xTD8=;
- b=P3FkdadxGNcDSbvPHwmW7bvzAnwLOhXWtPc3sNeDLMd69MGcSuQLEoiH/S+CUndIbY/v/a
- BsESOriBXgcTcZto3f4x00/wdbnBGUfJxcwKd2w6CBauq9nNPTr23tgElKVo4D5gzzwZYF
- jNwK/5eFtGfyoe7OTaAmyALKpi8Wexs=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-549-qY9RvoKgNNi9sXamOIZZKQ-1; Mon, 26 May 2025 05:16:33 -0400
-X-MC-Unique: qY9RvoKgNNi9sXamOIZZKQ-1
-X-Mimecast-MFC-AGG-ID: qY9RvoKgNNi9sXamOIZZKQ_1748250992
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-3a4d00e44fdso562085f8f.1
- for <qemu-devel@nongnu.org>; Mon, 26 May 2025 02:16:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uJUKP-0001pT-Pq
+ for qemu-arm@nongnu.org; Mon, 26 May 2025 05:41:07 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uJUKL-0005uC-5N
+ for qemu-arm@nongnu.org; Mon, 26 May 2025 05:41:04 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-43cfa7e7f54so15140585e9.1
+ for <qemu-arm@nongnu.org>; Mon, 26 May 2025 02:40:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1748252458; x=1748857258; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=o/3OyUiRP3KARuilfO7gfosU/5cLNdYR8AB7wqy3SX8=;
+ b=Vx3pHdD1ulAckp3lEs05E/L9tcEij2BciLJhFGdZHcjTqde3LZNQ1+f+jCQkFU2iB0
+ 3mTAvG5zxpJj+Hazvp1PqWXCVLS1StH40L22B/icRr8o0PWvJnmE3ZnLgGVwyZv1g1WO
+ 1Tn/6UiyCXY9bCBoRz2iR7pJIznGjsGQB64VNNcA6tqG7mw2jA6/nsjykHX0YSBfm+15
+ 17rJJRG9rxGxFMXmayj73zz01smVcOM9PUh1VLz9B7+c/oMYT67A12hZQ2u6SaHUAUkO
+ AbwjyuKO5B8LlSsf408NDaZPeDp25FLqWV6acDwAOFzx9qrLhqQvqt6TyN3cmg6KUIVr
+ x8rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1748250992; x=1748855792;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=zWQPGw3QlEEL0XhFMkrjuRafcGeI0NPRzn9xf+0xTD8=;
- b=MNLplEOSH88C6St9X8LJ/aZkeT3YxnTf5NRkjwvxKFS7UeiqI9jy1qa+QJ+i4JY1ex
- NhC21sCIGwonzMre+6ZtGiVRj2a4CzNc6S7AGiK5f0otYQScN+Owe5wSxBk0h4zdhwSO
- sElFvhPihpnK3uZowsT7E03VveZ+oNQ3SlNWkIv2Bil4Qi+HOYDqUBDo3aN8SsVvfx+A
- XMTop2il7KGU+OSxQr5uXOpOV/BfoKyEw5V52cIcUnXoOaBPPoVo6pgQX6aNXcQtH+xJ
- /cH66WHtTyM7YaENuP4NM3GP9TTOJhM5RnnFfF/Vk0Ve9TWFoeB+mOirIi+A/xJQFoJo
- 9l/A==
+ d=1e100.net; s=20230601; t=1748252458; x=1748857258;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=o/3OyUiRP3KARuilfO7gfosU/5cLNdYR8AB7wqy3SX8=;
+ b=Ol0iu2akvBER4XwOL7AN5JCnxysIjaUr2zerVxtBUDEmq/0najSwwlU7r4rqGP5yRh
+ WUUhdrqg+8psBd0qxODi2c5o0/+zrYDudShGWhXlOSDaw9N2p5ln9HIllU2xrrPzmAao
+ XeW6D6va+AwZkSlUUo3KrdlkghiqR2fz9zZ4FgNnkDj7+yYpOBbHuTYm3iKsxjUfuArB
+ 3Qldov6YLtoPDcdngNxiEQrOUd/G96FVhfh1OljCufxOtdwBnGZ8cTGAvHPQBDnmUZXJ
+ YCDHTWjV0fYoE0FMTrqq21FitSZD5u0JZvXojMwdBO6msmht9W0rwXx8Z0/kudTYZFXn
+ zFhg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVdVKCvoQSXRazeUKOKSLRjd48sCdCu/hoTt3KXE8u4B4LebMf5moX6VwTpzUBjBtCE7+bEBMjzLQpD@nongnu.org
-X-Gm-Message-State: AOJu0Yx92vBUJrTyjyvK2jPdgrr/p+9z+LL2FHnzzWnMX33r40PE+6JN
- DfwQKDYsT7EFZARiUNbU/qkT9yVdrAuAMw8+lgzRB23Qot09HMc9UnoCpcxkygkWJqgYW3Zw9MQ
- nkCzqP2hv3OJPmVgvmcaPdl+dbAFw2eGxLZeAHZ8LzGgYxVzeNWNMAG1v
-X-Gm-Gg: ASbGncs7IGhtoKnA6AK48MzEprU1XHg054tDDc3sujl8/ciMTDdj88w+skGMGU6DVB8
- 7oFk94NwPMPiA2enmhpK17mjrb+ox42x/mj46l7lzmdGW20WgBsXW62qEDopyBmuVa+BDgfWk4G
- YLOwHvmFPBuqPxR17L+qQOmVil8c1BGqLHupuAPKFCpUuBKQNIbPcfLtxgT2n18EeZSbnNdERlP
- n4QYPu1rCQsdU8TRaLZEFD3c8Pj+/ZLsjCrNw3WVsHptWToYHoFBRun7am8sfje8xDBcqdGnlV4
- FKCP6Rn3Im4Hkoo+3qtVcLvbKNBcIRKIgBtci/4PpMCp2O0+8pOhRcJPCIo=
-X-Received: by 2002:a5d:5848:0:b0:3a4:de27:e00f with SMTP id
- ffacd0b85a97d-3a4de27e06emr555057f8f.7.1748250992036; 
- Mon, 26 May 2025 02:16:32 -0700 (PDT)
-X-Received: by 2002:a5d:5848:0:b0:3a4:de27:e00f with SMTP id
- ffacd0b85a97d-3a4de27e06emr555020f8f.7.1748250991499; 
- Mon, 26 May 2025 02:16:31 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a4d17266d5sm5082921f8f.68.2025.05.26.02.16.29
+ AJvYcCUu+XvWnd+hl/cs+ObqvRjN+I1KIDSEJqM475oclQoeJipxxEL2HanVUDe4jv/ZvhFl2WrL/XBGVw==@nongnu.org
+X-Gm-Message-State: AOJu0Yz0ntUgQL8fYMpJH7FBBzSa9v7GBvEfdZz+4Wlxg2WO7jvAD/q2
+ 6Sg4eBzwjiQO/nDdTUeK0mdzONJdCXVwi39QB6901Kz+HOF4zOIaQyfAoJxtarSCSv0=
+X-Gm-Gg: ASbGncuOv/p1KMllhhEOUJJ+7i+PUTfXaa5w94ALed/MHdTcC2RdaBvJ4z+97gTBV9t
+ ko8bdPri/vJPWYjkBnSPFLrG43u0lsYNcKc4eFhUKJfoAQPq9lPTaZgU94kx0beuWDXRVob9+Xl
+ KTc7p2IcFRaqHyRkToZnd2vru/CCdyExmFfH+BJjNM0AF+kWo8OQoOf80kk76QOEKMfPOVdJm8s
+ SDcmWxVGx7GUIdOAl63upl0mhyLiqW3GJRtLz8YneEYzOycAe35MdIUNRipPaqvu+tUeel79sUy
+ grJSTRH2NbZbhMhfSGfAVw1Mll5P0+d6i08bs1Pw9E1QMOe3KqSILt2wIr4KaGMmH5VupK4SAAd
+ Zcn/y7bdQ+2CrEJfGa7rCIg0G
+X-Received: by 2002:a05:600c:3208:b0:441:bbe5:f562 with SMTP id
+ 5b1f17b1804b1-44b53991a34mr82242695e9.16.1748252458311; 
+ Mon, 26 May 2025 02:40:58 -0700 (PDT)
+Received: from [192.168.69.138] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3a4d37498e8sm4522577f8f.16.2025.05.26.02.40.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 26 May 2025 02:16:29 -0700 (PDT)
-Message-ID: <ea5945cc-318b-478f-bf96-294b1bf110d2@redhat.com>
-Date: Mon, 26 May 2025 11:16:21 +0200
+ Mon, 26 May 2025 02:40:57 -0700 (PDT)
+Message-ID: <267060e4-f7e0-4540-b701-11d1d650ec25@linaro.org>
+Date: Mon, 26 May 2025 11:40:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/22] hw/pci-host/gpex-acpi: Use
- build_pci_host_bridge_osc_method
+Subject: Re: [PATCH] hw/block: Drop unused nand.c
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org
+References: <20250522142859.3122389-1-peter.maydell@linaro.org>
 Content-Language: en-US
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Gustavo Romero <gustavo.romero@linaro.org>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- imammedo@redhat.com, anisinha@redhat.com, shannon.zhaosl@gmail.com,
- pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org
-References: <20250514170431.2786231-1-eric.auger@redhat.com>
- <20250514170431.2786231-9-eric.auger@redhat.com>
- <e1ec0e15-ad26-456b-a8d7-16f683290651@linaro.org>
- <ed823ddc-6faa-42dc-bae5-c765d21c3cca@redhat.com>
- <20250524065230-mutt-send-email-mst@kernel.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250524065230-mutt-send-email-mst@kernel.org>
-Content-Type: text/plain; charset=UTF-8
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250522142859.3122389-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -59
-X-Spam_score: -6.0
-X-Spam_bar: ------
-X-Spam_report: (-6.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.904,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gdLLPL+2ZRBa
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5Ng2oC+cwSX1
 
-Hi Michael, Gustavo,
+On 22/5/25 16:28, Peter Maydell wrote:
+> The nand.c device (TYPE_NAND) is an emulation of a NAND flash memory
+> chip which was used by the old OMAP boards.  No current QEMU board
+> uses it, and although techically "-device nand,chip-id=0x6b" doesn't
+> error out, it's not possible to usefully use it from the command
+> line because the only interface it has is via calling C functions
+> like nand_setpins() and nand_setio().
+> 
+> The "config OMAP" stanza (used only by the SX1 board) is the only
+> thing that does "select NAND" to compile in this code, but the SX1
+> board doesn't actually use the NAND device.
+> 
+> Remove the NAND device code entirely; this is effectively leftover
+> cleanup from when we dropped the PXA boards and the OMAP boards
+> other than the sx1.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   include/hw/block/flash.h |  18 -
+>   hw/block/nand.c          | 835 ---------------------------------------
+>   hw/arm/Kconfig           |   1 -
+>   hw/block/Kconfig         |   3 -
+>   hw/block/meson.build     |   1 -
+>   5 files changed, 858 deletions(-)
+>   delete mode 100644 hw/block/nand.c
 
-On 5/24/25 12:54 PM, Michael S. Tsirkin wrote:
-> On Wed, May 21, 2025 at 06:12:34PM +0200, Eric Auger wrote:
->> Hi Gustavo,
->>
->> On 5/20/25 4:09 PM, Gustavo Romero wrote:
->>> Hi Eric,
->>>
->>> On 5/14/25 14:00, Eric Auger wrote:
->>>> gpex build_host_bridge_osc() and x86 originated
->>>> build_pci_host_bridge_osc_method() are mostly identical.
->>>>
->>>> In GPEX, SUPP is set to CDW2 but is not further used. CTRL
->>>> is same as Local0.
->>>>
->>>> So let gpex code reuse build_pci_host_bridge_osc_method()
->>>> and remove build_host_bridge_osc().
->>>>
->>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>>
->>>> ---
->>>>
->>>> The DSDT diff  is given below:
->>>> diff --git a/dsdt.dsl_before b/dsdt.dsl_after_osc_change
->>>> index 3224a56..fa7558e 100644
->>>> --- a/dsdt.dsl_before
->>>> +++ b/dsdt.dsl_after_osc_change
->>>> @@ -5,13 +5,13 @@
->>>>    *
->>>>    * Disassembling to symbolic ASL+ operators
->>>>    *
->>>> - * Disassembly of dsdt.dat, Mon Apr  7 05:33:06 2025
->>>> + * Disassembly of dsdt.dat, Mon Apr  7 05:37:20 2025
->>>>    *
->>>>    * Original Table Header:
->>>>    *     Signature        "DSDT"
->>>> - *     Length           0x00001A4F (6735)
->>>> + *     Length           0x00001A35 (6709)
->>>>    *     Revision         0x02
->>>> - *     Checksum         0xBF
->>>> + *     Checksum         0xDD
->>>>    *     OEM ID           "BOCHS "
->>>>    *     OEM Table ID     "BXPC    "
->>>>    *     OEM Revision     0x00000001 (1)
->>>> @@ -1849,27 +1849,26 @@ DefinitionBlock ("", "DSDT", 2, "BOCHS ",
->>>> "BXPC    ", 0x00000001)
->>>>                   {
->>>>                       CreateDWordField (Arg3, 0x04, CDW2)
->>>>                       CreateDWordField (Arg3, 0x08, CDW3)
->>>> -                    SUPP = CDW2 /* \_SB_.PCI0._OSC.CDW2 */
->>>> -                    CTRL = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
->>>> -                    CTRL &= 0x1F
->>>> +                    Local0 = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
->>>> +                    Local0 &= 0x1F
->>>>                       If ((Arg1 != One))
->>>>                       {
->>>>                           CDW1 |= 0x08
->>>>                       }
->>>>
->>>> -                    If ((CDW3 != CTRL))
->>>> +                    If ((CDW3 != Local0))
->>>>                       {
->>>>                           CDW1 |= 0x10
->>>>                       }
->>>>
->>>> -                    CDW3 = CTRL /* \_SB_.PCI0.CTRL */
->>>> -                    Return (Arg3)
->>>> +                    CDW3 = Local0
->>>>                   }
->>>>                   Else
->>>>                   {
->>>>                       CDW1 |= 0x04
->>>> -                    Return (Arg3)
->>>>                   }
->>>> +
->>>> +                Return (Arg3)
->>>>               }
->>>>
->>>>               Method (_DSM, 4, NotSerialized)  // _DSM:
->>>> Device-Specific Method
->>> The problem I face with diffs in the commit body is that tools like
->>> b4, which are
->>> based on git am, get very confused on how to handle it. I'm surprised
->>> nobody ever
->>> complained about it. I'm wondering if there is any catch on it,
->>> because I have to
->>> edit commits like this manually, removing the diff, to make it finally
->>> apply to
->>> the series. Anyways, do you mind at least removing the valid diff
->>> header, like:
->>>
->>>> diff --git a/dsdt.dsl_before b/dsdt.dsl_after_osc_change
->>>> index 3224a56..fa7558e 100644
->>>> --- a/dsdt.dsl_before
->>>> +++ b/dsdt.dsl_after_osc_change
->>> from the commit message so it doesn't confuse b4?
->> Thank you for reporting the issue. in tests/qtest/bios-tables-test.c it
->> is written at the top that we shall put the diffs in disasembled ACPI
->> content in the commit msg. I will look for previously landed patches and
->> see whether the current layout can be fixed.
->>
->> Cheers
->>
->> Eric
->
-> Eric, to clarify, the diff is supposed to go into commit log,
-> not after ---.
-> This will make it apply cleanly.
-> Also, removing the "index" line as well as date diff at least is a good
-> idea: the diff should be clean, not include irrelevant information.
->
-> Pls feel free to clarify the text in tests/qtest/bios-tables-test.c
-
-Of thanks. I applied your suggestions.
-
-Eric
->
->
->
->>>
->>>> ---
->>>>   hw/pci-host/gpex-acpi.c | 60 +++--------------------------------------
->>>>   1 file changed, 4 insertions(+), 56 deletions(-)
->>>>
->>>> diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
->>>> index f1ab30f3d5..98c9868c3f 100644
->>>> --- a/hw/pci-host/gpex-acpi.c
->>>> +++ b/hw/pci-host/gpex-acpi.c
->>>> @@ -50,60 +50,7 @@ static void acpi_dsdt_add_pci_route_table(Aml
->>>> *dev, uint32_t irq,
->>>>       }
->>>>   }
->>>>   -static Aml *build_host_bridge_osc(bool enable_native_pcie_hotplug)
->>>> -{
->>>> -    Aml *method, *UUID, *ifctx, *ifctx1, *elsectx;
->>>> -
->>>> -    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
->>>> -    aml_append(method,
->>>> -        aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
->>>> -
->>>> -    /* PCI Firmware Specification 3.0
->>>> -     * 4.5.1. _OSC Interface for PCI Host Bridge Devices
->>>> -     * The _OSC interface for a PCI/PCI-X/PCI Express hierarchy is
->>>> -     * identified by the Universal Unique IDentifier (UUID)
->>>> -     * 33DB4D5B-1FF7-401C-9657-7441C03DD766
->>>> -     */
->>>> -    UUID = aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766");
->>>> -    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
->>>> -    aml_append(ifctx,
->>>> -        aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
->>>> -    aml_append(ifctx,
->>>> -        aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
->>>> -    aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
->>>> -    aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
->>>> -
->>>> -    /*
->>>> -     * Allow OS control for SHPCHotplug, PME, AER, PCIeCapability,
->>>> -     * and PCIeHotplug depending on enable_native_pcie_hotplug
->>>> -     */
->>>> -    aml_append(ifctx, aml_and(aml_name("CTRL"),
->>>> -               aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 :
->>>> 0x0)),
->>>> -               aml_name("CTRL")));
->>>> -
->>>> -    ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
->>>> -    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
->>>> -                              aml_name("CDW1")));
->>>> -    aml_append(ifctx, ifctx1);
->>>> -
->>>> -    ifctx1 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"),
->>>> aml_name("CTRL"))));
->>>> -    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x10),
->>>> -                              aml_name("CDW1")));
->>>> -    aml_append(ifctx, ifctx1);
->>>> -
->>>> -    aml_append(ifctx, aml_store(aml_name("CTRL"), aml_name("CDW3")));
->>>> -    aml_append(ifctx, aml_return(aml_arg(3)));
->>>> -    aml_append(method, ifctx);
->>>> -
->>>> -    elsectx = aml_else();
->>>> -    aml_append(elsectx, aml_or(aml_name("CDW1"), aml_int(4),
->>>> -                               aml_name("CDW1")));
->>>> -    aml_append(elsectx, aml_return(aml_arg(3)));
->>>> -    aml_append(method, elsectx);
->>>> -    return method;
->>>> -}
->>>> -
->>>> -static Aml *build_host_bridge_dsm(void)
->>>> +static Aml *build_pci_host_bridge_dsm_method(void)
->>>>   {
->>>>       Aml *method = aml_method("_DSM", 4, AML_NOTSERIALIZED);
->>>>       Aml *UUID, *ifctx, *ifctx1, *buf;
->>>> @@ -134,8 +81,9 @@ static void acpi_dsdt_add_host_bridge_methods(Aml
->>>> *dev,
->>>>       aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
->>>>       aml_append(dev, aml_name_decl("CTRL", aml_int(0)));
->>>>       /* Declare an _OSC (OS Control Handoff) method */
->>>> -    aml_append(dev, build_host_bridge_osc(enable_native_pcie_hotplug));
->>>> -    aml_append(dev, build_host_bridge_dsm());
->>>> +    aml_append(dev,
->>>> +              
->>>> build_pci_host_bridge_osc_method(enable_native_pcie_hotplug));
->>>> +    aml_append(dev, build_pci_host_bridge_dsm_method());
->>>>   }
->>>>     void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
->>> Otherwise:
->>>
->>> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
->>>
->>>
->>> Cheers,
->>> Gustavo
->>>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

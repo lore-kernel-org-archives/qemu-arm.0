@@ -1,86 +1,86 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp3992526njc;
-        Sun, 25 May 2025 22:32:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWlqbRt6plXi7WCkWNJvgVjLLKkfOG8mREx8oNKl+eeMdbzgD2gmzz91rvD9y59ATjQldI1zbqAFy/c7g==@linaro.org
-X-Received: by 2002:a05:6102:943:b0:4df:93e0:fb8 with SMTP id ada2fe7eead31-4e4241f7e59mr5036893137.24.1748237523813;
-        Sun, 25 May 2025 22:32:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748237523; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp3992542njc;
+        Sun, 25 May 2025 22:32:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXVEqpT24v9NzfJaaes28XFSblVM0NhjkYLRf+xHG9rgOO3L68mQbohLpZ/okoRqfw5JEUZPGWry0jlZA==@linaro.org
+X-Received: by 2002:a05:6102:3f45:b0:4c3:6393:83f4 with SMTP id ada2fe7eead31-4e4240a8ee3mr5557365137.2.1748237527030;
+        Sun, 25 May 2025 22:32:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748237527; cv=none;
         d=google.com; s=arc-20240605;
-        b=ThlB95KXwNiYKtVb6Ksyhg8Hf4ZmmpN5QQGTwerbCnwwRn905BGjuyreOB2fQfSlvV
-         MnSJhaqFiGBnBP4wDxZYaXUg28d3FIYJ/iWllDe1LqrmgPh6L2yIttHko7ITEfx0rh9B
-         k/EY+6g5A6eWUBHdz/sqAg9W1kSiy97U0zdaBR3asrN57SWQM3r/4SpJZUTDyUwh5h+Q
-         KSctcj/TB98nHJQicN8aP1okiO0U96mDVPGVCi8wGac98exKk/U9jW4JjrbIZKYUEPQW
-         3vP9IcVZTcpSm+74IHrwSkMQnVtviBzoLjXWVSgI00mH46Sq9UI2CwGbNe0VfoId4UTH
-         2l7A==
+        b=A+do+/sKEuLdRDgpqcFl9u/UiCJvvd0IPeJesnoTNqM/TlAm1EYvexfBxJZNhJlWVG
+         4c7OIch8UKc0dyPA6qYPIrfIemU1/f9cAzK1b9wsuOcYEikfUJV1ayyGky8HhwKmo5GT
+         tF5sFQVnRlT8NvNaNpIkrd+MhMTtuP2c4KaIzQ9JMRRgsiNKjBLjL3jjDLNcLpcC1Q+V
+         YV8mFwZGGC+QxwkNt/U6k+SzA8YL9fYkioqNABgCAabb762rNlTHVQt9YNlT7DD4sT5x
+         42VK89iYOVNB3NzHFuL6T+hR0BagoddOiyM/Iw0fOTTdo9sEh2xBW5KoYzsOG2k69n99
+         R1Dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8BICU4b7QLdbhUSoTdVeRR8JtDxyaYap4Oi2QriTbDw=;
-        fh=dz1v+RkPiL8F9qPlPL0Y4OBEeneUsheCnK/P2/IhF24=;
-        b=UnzjarJ4JPAYx2O0LDxASmGzRuyyfkrFSo/9hYlcDPhy2zXrqNmXgF8KG2lMTJwHjZ
-         QhMhIS6AKbjwUBwuEK33v2Pv82cq+toZDObEZpLnprseal1jewDOfrzxDidIMCLT9fWH
-         kvJsR6fVdBmzRpaFAiPcSClTYZFVU+tfwS1KDaJXqeHJeEp4Db5SRozqx5Lu53SBxOAd
-         IyybXlQveUHs9SSbNOjJhue+vJTbkCwRdARquxloYRc64oLPS23828OMq8Naa3lqbaTZ
-         23r2NXSw96XUYstnuQEfTwElwHtBDe8KTEvRX/kmKOWX0Fh3mAPeBGKQYiOoi1Nu/BXp
-         2ETA==;
+        bh=jU5MgyvbkVOqi7hQ3tmKxY48Fkr8UfgknyiBYdR8Jdg=;
+        fh=PlYhNlamhgn9Zs2HWFiZNPHjYLV/1uyieTZ3ldJzHX4=;
+        b=haa+xgeCX84cyJ0hDtYm7wo+oxjn8VVQb83OFIHSlUKSxooEh1tYRvD4IF4Y3Snsiu
+         jOQOHnlpg4SVIA9wjHKmp7sPAhL6icnuE9QYPtFp0SzwcIXMSEq808JJnhBR3GTn/IJ8
+         1COrj2iUZUoJdjfXmsNDlRVG2JP4F1e7G9JmT3S7n1TyqZlf3fhyNKUJPSoaErz85jvk
+         n5HTziDFtTRHpqjEKxPluyRHjr/oU7j1IlKG/Fn23hAv2XmmJG4K9Z3y5Mv6nFaF7Vqo
+         aGIkExqScbbY2m9Widd53/OOYhnRfst8Kz95MFQSHMcAsZeZUZxSt54EJA+qUT2D2YnT
+         TUEg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kvhjHVJr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xUmUELRB;
        spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <gustavo.romero@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ada2fe7eead31-4e458279a0bsor87693137.2.2025.05.25.22.32.03
+        by mx.google.com with SMTPS id ada2fe7eead31-4e45d16e385sor87744137.12.2025.05.25.22.32.06
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 25 May 2025 22:32:03 -0700 (PDT)
+        Sun, 25 May 2025 22:32:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kvhjHVJr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xUmUELRB;
        spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1748237523; x=1748842323; darn=linaro.org;
+        d=linaro.org; s=google; t=1748237526; x=1748842326; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=8BICU4b7QLdbhUSoTdVeRR8JtDxyaYap4Oi2QriTbDw=;
-        b=kvhjHVJriO05UgW1hKg86y1cxtuxy2eupnbOlZwqNQDsChwSmRdp4/DeD5QaEnbZAV
-         OhQgYYUf2pdHAKzK5kkG6hf3p29qo7vN7f0vXW5Ffd1V833T5ImdxKgyGt74ovELFcJK
-         KXvfjREBNfRomzyKSf24x5hJXclbxrnjdbiijEPr1iZchD1OKylVFA8p/XKPmhqTDBZb
-         RVgEo8ibquScL9osMl+6D2+cDf1cNY0zPBssIw6H2yx95rxvciAxtj1RxOBj+x8vXSvx
-         OHs2YYHrUEIfwne3wzvZ6UNg2jRS3knUvpYBs6OsamJQlBzRjbtDAQrK69GkTbwNuaJ4
-         hexA==
+        bh=jU5MgyvbkVOqi7hQ3tmKxY48Fkr8UfgknyiBYdR8Jdg=;
+        b=xUmUELRBl2czbW9VUkQQpwvpUs+vrjQDURFHWWvQTd/iOzjj+x6F2EbUCn5FySVeGS
+         zzj+oB4xECPxTDf3k0FzaD7IUDddi0IbGfvanIz4EImj3BWvw5c/wouVDKIV8BIJ+ztU
+         55SU2IgFUQRXU2M7O8Vigh4xtEdeFukiIXfBrSqTABxB1ePfKoCZK0+1hLRRHfut/lkw
+         3WML9+zqt9EyJwh+c9M+VmWRSs9vJ6EJwYb7FFPHNVpKXdUuEJjpTDzWfidCVmABq9Zt
+         ANE2Se0RbInoqioOSE5I70JUlanYtvnWUkcoHFe/VOJR2kUaRpc3o99UVDgsQgpypMhk
+         hFpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748237523; x=1748842323;
+        d=1e100.net; s=20230601; t=1748237526; x=1748842326;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=8BICU4b7QLdbhUSoTdVeRR8JtDxyaYap4Oi2QriTbDw=;
-        b=WLazYw/L9yawZFzupSQE9vrvbn+rsu2mfJbXEAa3EUG0Daxngs4euwuUdpDOG0MGl5
-         KH+B0quQPIaCDK179ymTMyVKMKgnPKFGfcR7oIXhETO/4fLa4ukEWD1/eDzFo+8isKUw
-         DJjJEVA96+CKGJZ5iMODI4MhZEl2+LalcQHv6SFIOl4ZVLATzY8iNV0u+IC/Jdr1y4hS
-         MJmcAz/rzCAqgOJaY8AXqFVC2585H8EUVpWgl4jvG+2srnubXF7Otns/ZuuSzBFH+rMX
-         9Rr6OpqB8mVZy2ibFwbykC9kqWT1RNClY2aJlElYyFDc/vcQBdots/MD/uKWzV9xkC0K
-         aHnA==
-X-Forwarded-Encrypted: i=1; AJvYcCUKwgpWT61+MGGWNj5hiScCcr6+0+MippdErz4cRs1SSbD/4UNbvYNu4JneRXmypYgfvCYRJquPrOxHBw==@linaro.org
-X-Gm-Message-State: AOJu0Yz9LOICRvqFBHIPDYJqRkOJ3v06zjpkIAjz9m/qIdw0zShB4OsC
-	1dFW7pSDGRrzIj/AxDIYl+AJg13trHLTQtDBo5QTTLFRIpEzQTCInUJc5dhbfGmkliIgNw==
-X-Gm-Gg: ASbGnctkyL67v9UAUG6zBfgOOJA9E71V+RfahrWuAxqCNy5vRQjQ+X44A8v7sh9cvXJ
-	KAjvdrEu9Qk/H6sLB2Od/rwpysOaPy3zvS9yXzNkw1DWc/ObeXzLYGHtm1W4EVOCqL/h5nJhkaa
-	JW+PWCQKWfdn09ZKw5i8ZefPGGFeqymnDsY01YyE4ehTlvSKGSWxd+sMh7ESeI4b8TokX9xZlTw
-	W82QXedTqzPYdpUXCmi1Xff63klO3EYhsjbRhwyBalpEarGVHRs3T7AQT6z8gGmbibJA1EIuOdK
-	F5H1rWs1IRGYiebnix9J8jpcg9p7JDBTVPy6rLu4kR4S+5HSYjxdd7ahAUY18Tv0rxuhjMeSjHz
-	yJ1z6U06bG+gbirIX9OQ9zIYBokFFLyiG
-X-Google-Smtp-Source: AGHT+IFLT89ZZ/LgA2ugxIyY2m5X3Ne9b8navUdNxLGD0pktr2W0XQyI8xR/4omQb//PVn07GRQrfw==
-X-Received: by 2002:a05:6102:6c4:b0:4bb:d45c:7f4b with SMTP id ada2fe7eead31-4e4240f9b9amr5989646137.11.1748237523455;
-        Sun, 25 May 2025 22:32:03 -0700 (PDT)
+        bh=jU5MgyvbkVOqi7hQ3tmKxY48Fkr8UfgknyiBYdR8Jdg=;
+        b=nasLQydBSkbidcOcywSXYTim4YSK0qjGrAeq4dAOHdVAMkL5ypXhA2Zq1rD3hNfgHj
+         IclgXWhfxiQk1rqJsimAeBaS7SFP3q+bTRS+EOT+8Zl9R8WdGxWdfapX/hzIvJ2ONkPX
+         rcuChnrgf1I2+F314Q10+S0oHedTVbi1TARVtZzBYDEU/YHW1dGLrVrMiOILDDJELT4V
+         o6jntZyafEvDyIv3S+NjM7kS4zaoyTgfWCmhU6VghUuqrL6KdW/4BPl02xHj1mQj1Znn
+         ga199xwQswgsZtpqXfTF+g24sp4Hqi/1BuM1f6ADQtnYH92G4mPCCTdxiu6bdKdr8ybK
+         r14Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVVE5Y2TXdmbxRg2johkmYnlcok2nJ/Pnsjf0RbYNTRWXP2N6dEY7RjnDft9OpJIHuQec0sLpTrcmMmAA==@linaro.org
+X-Gm-Message-State: AOJu0Yws6/QSJz3G+20ph4ZbxcuQUiy/LaO9ZscEy5cyqaSrGaR4qu4q
+	9CZ81wGTjexHKLXPTJN8nVetblN4t+9oYzwY17Ew2U/MPAb29MHoCrJUOtRm4zqvKEzpoA==
+X-Gm-Gg: ASbGnctzZlUiGXRFqxX55EeqnbJyLu+tRC1Yp1OAjDcTXfdSnyFtWBMjCHV7FHjGnWl
+	sYTzyNwp+9jnehUBeXAIAqBHSE1i3mX0r+rZx5HvNPp1e1dHxZWBYJyNfcIDLdCk+F9cy5mJPH9
+	KOp0mKSAT1uSSWQHx0N+oZKhIfe08ykEwB2ZdhRGpjjN5h+ZfKftTb8li0bKzIhWIp/UKMrkAtv
+	lodtx9pghigEa1XKfgdOlKHtbm3z0I3Et1e9Rdilt6wT4nHJ45fgrGXe1VSTX9dTmAtkjbE+AQK
+	MTA4pYDglRZ45bJrKYowEWJT8dQg8fxmQE8aUhhu2bw4ZOLL0+IrTUVO+EtBk8u25vpLyA4VBvu
+	KqcYs01YLqAb8n0Nx6c5BTNa74+La4NCG
+X-Google-Smtp-Source: AGHT+IEVUDKs7I1Balg8c9FvQt+6lgKA6srxt+Gl9JUizg139pKAUhrlqHWspjdzgZw9syZ/a/lUcg==
+X-Received: by 2002:a05:6102:6c4:b0:4bb:d45c:7f4b with SMTP id ada2fe7eead31-4e4240f9b9amr5989675137.11.1748237526611;
+        Sun, 25 May 2025 22:32:06 -0700 (PDT)
 Return-Path: <gustavo.romero@linaro.org>
 Received: from gromero0.. (200-100-75-183.dial-up.telesp.net.br. [200.100.75.183])
-        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4e454da4378sm784310137.17.2025.05.25.22.32.00
+        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4e454da4378sm784310137.17.2025.05.25.22.32.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 25 May 2025 22:32:02 -0700 (PDT)
+        Sun, 25 May 2025 22:32:05 -0700 (PDT)
 From: Gustavo Romero <gustavo.romero@linaro.org>
 To: qemu-devel@nongnu.org,
 	eric.auger@redhat.com
@@ -90,82 +90,216 @@ Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	mst@redhat.com,
 	imammedo@redhat.com
-Subject: [PATCH 2/5] tests/qtest/bios-tables-test: Keep ACPI PCI hotplug off
-Date: Mon, 26 May 2025 05:31:20 +0000
-Message-Id: <20250526053123.1434204-3-gustavo.romero@linaro.org>
+Subject: [PATCH 3/5] tests/qtest/bios-tables-test: Update changed ACPI blobs
+Date: Mon, 26 May 2025 05:31:21 +0000
+Message-Id: <20250526053123.1434204-4-gustavo.romero@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250526053123.1434204-1-gustavo.romero@linaro.org>
 References: <20250526053123.1434204-1-gustavo.romero@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: bJzM4NTpwoDH
+X-TUID: 0HD5JGGgTSfs
 
-ACPI PCI hotplug is now turned on by default so we need to change the
-existing tests to keep it off. However, even setting the ACPI PCI
-hotplug off in the existing tests, there will be changes in the ACPI
-tables because the _OSC method was modified, hence in the next patch of
-this series the blobs are updated accordingly.
+Update the aarch64 'virt' base blob and all of its variants. All of them
+have the same diff, so only one is shown below. The essential changes is
+in the AML code of the _OSC (OS Capabilities) method, (variable name
+from 'CTRL' to 'Local0') and the scope for GED device.
+
+DSDT table diff:
+
+ DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
+ {
+     Scope (\_SB)
+     {
+         Device (C000)
+         {
+             Name (_HID, "ACPI0007" /* Processor Device */)  // _HID: Hardware ID
+             Name (_UID, Zero)  // _UID: Unique ID
+         }
+
+@@ -1794,53 +1794,52 @@
+                     0x0000000000000000, // Granularity
+                     0x0000008000000000, // Range Minimum
+                     0x000000FFFFFFFFFF, // Range Maximum
+                     0x0000000000000000, // Translation Offset
+                     0x0000008000000000, // Length
+                     ,, , AddressRangeMemory, TypeStatic)
+             })
+             Name (SUPP, Zero)
+             Name (CTRL, Zero)
+             Method (_OSC, 4, NotSerialized)  // _OSC: Operating System Capabilities
+             {
+                 CreateDWordField (Arg3, Zero, CDW1)
+                 If ((Arg0 == ToUUID ("33db4d5b-1ff7-401c-9657-7441c03dd766") /* PCI Host Bridge Device */))
+                 {
+                     CreateDWordField (Arg3, 0x04, CDW2)
+                     CreateDWordField (Arg3, 0x08, CDW3)
+-                    SUPP = CDW2 /* \_SB_.PCI0._OSC.CDW2 */
+-                    CTRL = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
+-                    CTRL &= 0x1F
++                    Local0 = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
++                    Local0 &= 0x1F
+                     If ((Arg1 != One))
+                     {
+                         CDW1 |= 0x08
+                     }
+
+-                    If ((CDW3 != CTRL))
++                    If ((CDW3 != Local0))
+                     {
+                         CDW1 |= 0x10
+                     }
+
+-                    CDW3 = CTRL /* \_SB_.PCI0.CTRL */
+-                    Return (Arg3)
++                    CDW3 = Local0
+                 }
+                 Else
+                 {
+                     CDW1 |= 0x04
+-                    Return (Arg3)
+                 }
++
++                Return (Arg3)
+             }
+
+             Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
+             {
+                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+                 {
+                     If ((Arg2 == Zero))
+                     {
+                         Return (Buffer (One)
+                         {
+                              0x01                                             // .
+                         })
+                     }
+                 }
+
+                 Return (Buffer (One)
+@@ -1851,33 +1850,36 @@
+
+             Device (RES0)
+             {
+                 Name (_HID, "PNP0C02" /* PNP Motherboard Resources */)  // _HID: Hardware ID
+                 Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+                 {
+                     QWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
+                         0x0000000000000000, // Granularity
+                         0x0000004010000000, // Range Minimum
+                         0x000000401FFFFFFF, // Range Maximum
+                         0x0000000000000000, // Translation Offset
+                         0x0000000010000000, // Length
+                         ,, , AddressRangeMemory, TypeStatic)
+                 })
+             }
+         }
++    }
+
++    Scope (\_SB)
++    {
+         Device (\_SB.GED)
+         {
+             Name (_HID, "ACPI0013" /* Generic Event Device */)  // _HID: Hardware ID
+             Name (_UID, "GED")  // _UID: Unique ID
+             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+             {
+                 Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, )
+                 {
+                     0x00000029,
+                 }
+             })
+             OperationRegion (EREG, SystemMemory, 0x09080000, 0x04)
+             Field (EREG, DWordAcc, NoLock, WriteAsZeros)
+             {
+                 ESEL,   32
+             }
 
 Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 ---
- tests/qtest/bios-tables-test.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ tests/data/acpi/aarch64/virt/DSDT             | Bin 5196 -> 5178 bytes
+ .../data/acpi/aarch64/virt/DSDT.acpihmatvirt  | Bin 5282 -> 5264 bytes
+ tests/data/acpi/aarch64/virt/DSDT.memhp       | Bin 6557 -> 6539 bytes
+ tests/data/acpi/aarch64/virt/DSDT.pxb         | Bin 7679 -> 7635 bytes
+ tests/data/acpi/aarch64/virt/DSDT.topology    | Bin 5398 -> 5380 bytes
+ tests/qtest/bios-tables-test-allowed-diff.h   |   5 -----
+ 6 files changed, 5 deletions(-)
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index 0a333ec435..216941dbb5 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -1626,7 +1626,7 @@ static void test_acpi_aarch64_virt_tcg_memhp(void)
-     };
- 
-     data.variant = ".memhp";
--    test_acpi_one(" -machine nvdimm=on"
-+    test_acpi_one(" -machine nvdimm=on,acpi-pcihp=off"
-                   " -cpu cortex-a57"
-                   " -m 256M,slots=3,maxmem=1G"
-                   " -object memory-backend-ram,id=ram0,size=128M"
-@@ -1775,7 +1775,8 @@ static void test_acpi_aarch64_virt_tcg_pxb(void)
-      * to solve the conflicts.
-      */
-     data.variant = ".pxb";
--    test_acpi_one(" -device pcie-root-port,chassis=1,id=pci.1"
-+    test_acpi_one(" -machine acpi-pcihp=off"
-+                  " -device pcie-root-port,chassis=1,id=pci.1"
-                   " -device virtio-scsi-pci,id=scsi0,bus=pci.1"
-                   " -drive file="
-                   "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2,"
-@@ -1846,7 +1847,7 @@ static void test_acpi_aarch64_virt_tcg_acpi_hmat(void)
- 
-     data.variant = ".acpihmatvirt";
- 
--    test_acpi_one(" -machine hmat=on"
-+    test_acpi_one(" -machine hmat=on,acpi-pcihp=off"
-                   " -cpu cortex-a57"
-                   " -smp 4,sockets=2"
-                   " -m 384M"
-@@ -2123,6 +2124,7 @@ static void test_acpi_aarch64_virt_tcg(void)
-     data.smbios_cpu_max_speed = 2900;
-     data.smbios_cpu_curr_speed = 2700;
-     test_acpi_one("-cpu cortex-a57 "
-+                  "-machine acpi-pcihp=off "
-                   "-smbios type=4,max-speed=2900,current-speed=2700", &data);
-     free_test_data(&data);
- }
-@@ -2142,6 +2144,7 @@ static void test_acpi_aarch64_virt_tcg_topology(void)
-     };
- 
-     test_acpi_one("-cpu cortex-a57 "
-+                  "-machine acpi-pcihp=off "
-                   "-smp sockets=1,clusters=2,cores=2,threads=2", &data);
-     free_test_data(&data);
- }
-@@ -2227,6 +2230,7 @@ static void test_acpi_aarch64_virt_viot(void)
-     };
- 
-     test_acpi_one("-cpu cortex-a57 "
-+                  "-machine acpi-pcihp=off "
-                   "-device virtio-iommu-pci", &data);
-     free_test_data(&data);
- }
+diff --git a/tests/data/acpi/aarch64/virt/DSDT b/tests/data/acpi/aarch64/virt/DSDT
+index 36d3e5d5a5e47359b6dcb3706f98b4f225677591..5c73e64e0c29d3cea5299929afd00e9a1238e559 100644
+GIT binary patch
+delta 125
+zcmX@3u}g!?CD<jzN`!%dNoFFKG*h4XMs+tXCb!9(^SP`!1bx`!{ezuZy0RIZUBV3)
+z__0pjEu>{)oKT&>C7-ZBVAAAF##)dJ7YA5gc+zAbZJYoR699=7B!EN~@=P`s?&1(|
+P<BW+9c8Z_8SGXSlZJ{Hk
+
+delta 142
+zcmdm`aYlp7CD<jzM}&caNqQoeG*i3NMs+tXCWon;^SP`!1l>5}{ezuZy0RIZUBV3)
+zc(702Eu`gV6dW25PyiG$b`A;hsRj{T@*r}7z@*8UjI|)OTpVB>Vv{Dr)Io#=K*9we
+U#USw|*$eq5OA2>QUM<`Y00vhni~s-t
+
+diff --git a/tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt b/tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt
+index e6154d0355f84fdcc51387b4db8f9ee63acae4e9..b0a875d8da3592b5927095304ca31ceb001b2fdf 100644
+GIT binary patch
+delta 125
+zcmZ3aIYE=lCD<iof(Qcx(~F5*(o8M38`bA<F}Y3Ne3Z+YL(qpk-apuxr7N4k*(Ka?
+zfgkH+L18Tu<Amx2F8PE70+S|ZGS-4*xH!P_!jmQgY2yTlm;gwuAOR$@kY{qIa2JPw
+P8)r;>uv7eGVUd0S*;^zc
+
+delta 142
+zcmbQBxk!`CCD<iokq83=(~XH-(oDVX8`bA<F*!`#e3Z+YL(q*g-apuxr7N4k*(Ka?
+zfd~6!L18UFqu|hhfC8Y1v2#d}Pc?|(k_V9s1SU<+WUK|L<>CPA5Sug^rVb)301_?$
+UDF%rz$zI4eIbXPIGNVX80DOQd2mk;8
+
+diff --git a/tests/data/acpi/aarch64/virt/DSDT.memhp b/tests/data/acpi/aarch64/virt/DSDT.memhp
+index 33f011d6b635035a04c0b39ce9b4e219f7ae74b7..21a6b086cbf72298d125d8bfc4c4b7ec9315267b 100644
+GIT binary patch
+delta 126
+zcmbPh+-=O|66_MvEy=*ZWIK^dnyJrxqq-XxliTFY`CQf<f<El={=v>HUD*uIF5!j?
+z{8%UN7Sb{?PN+`cl22G5FllloV=YLAivuh#JZUnJHco(u34p{35<nsgc_teRcX0@~
+Q$Hl}4JH>C_EBt^J0I0kqp#T5?
+
+delta 143
+zcmeA+o@>nI66_K(SCWB&$z~##G*id)jp}Y(Ob$~w=W|(e2)c2``v*I-bY(L*yM!Aq
+z@L-?3TS&{#C^$4Apa3Xh>>Lv0Qw<`x<U!;Dfk~4y8EZjmxj4W&#3oIKse=d$fP@P`
+Vib3K_vKR7AmK5&Vyju7HD*$j8Du)07
+
+diff --git a/tests/data/acpi/aarch64/virt/DSDT.pxb b/tests/data/acpi/aarch64/virt/DSDT.pxb
+index c0fdc6e9c1396cc2259dc4bc665ba023adcf4c9b..c8548a5e5d41a843142c7bbe64580025e006445d 100644
+GIT binary patch
+delta 217
+zcmexwec77JCD<k8vMd7w)AEU2(oF3aH>$gFF?qIa&ga_8F6hG^?;q^U(v{8N>=JIc
+zz>jruo{W}>aYA(hmwdtkfk~4y8EZi@TpVC|;YpK$v~dDNOaLTSkN^@{$TRtwjP2%6
+gLVAo$Zj(1FiCA+`*X%A10XNQ=_+Y2_$py0g04PO4(EtDd
+
+delta 260
+zcmca?{ok6)CD<k8zbpd-Q^!OuX{N5b8`a&on4CK{=X3347j)x{_YZbv>B?qsb_q9J
+z;K4rGR!GawC^$4Apa3Xh>>Lv0Qw<`x<U!;Dfk~4y8EZjmxj4W&#3oIKse=d$fP@P`
+oib3K_vKR7go-LHk$mB3}Glz&Z2VHEOJX^?i@_QNI$u6?}0Luzao&W#<
+
+diff --git a/tests/data/acpi/aarch64/virt/DSDT.topology b/tests/data/acpi/aarch64/virt/DSDT.topology
+index 029d03eecc4efddc001e5377e85ac8e831294362..73aa833317627204aef7ac858d178445bcd37a54 100644
+GIT binary patch
+delta 125
+zcmbQH)uP4a66_MfBFezPBruUnnyJHOqq+b$liTFYmfY4Hf<El={=v>HUD*uIF5!j?
+z{8%Tq3Tv4dCsZeJ$tNrjm^3+)u@)r5#Q~NVo-`Rq8z(@-1VCa12_TV$Jd^(lcX0@~
+PamK_4JH=0K7wHE8^splO
+
+delta 142
+zcmZqCnx@6&66_KpCd$CT#6OWsnyJx$qq+b$lf%@_mfY4Hf^MAg{=v>HUD*uIF5!j?
+zJlH3<3Tycp1&0O%6aYnxokN0rszC&oJcwK%FllloV=YK67YA5}*rdrYbr4|zkZ=J=
+UF-Uw#_CmhNkA=G?mx}ZQ0C4*#-~a#s
+
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index abe00ad4ee..dfb8523c8b 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1,6 +1 @@
+ /* List of comma-separated changed AML files to ignore */
+-"tests/data/acpi/aarch64/virt/DSDT",
+-"tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt",
+-"tests/data/acpi/aarch64/virt/DSDT.memhp",
+-"tests/data/acpi/aarch64/virt/DSDT.pxb",
+-"tests/data/acpi/aarch64/virt/DSDT.topology",
 -- 
 2.34.1

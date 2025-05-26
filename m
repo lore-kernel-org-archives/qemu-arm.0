@@ -1,173 +1,348 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4063866njc;
-        Mon, 26 May 2025 01:58:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXjE1sVV7GqmNcGMB+agHeVFRWUpX8CYEupx3YFsiE2fNRqSMmOiWCVvuxFyUFtZUtbGPnizD8FlSkL4g==@linaro.org
-X-Google-Smtp-Source: AGHT+IGSGCCUfR00zVnp4NhK7d54URmipPmR49pt2nXDO547EfkaRMSFgrLIC6CHUGTVOiGxw/wt
-X-Received: by 2002:a17:90b:3d82:b0:2ee:ee77:2263 with SMTP id 98e67ed59e1d1-3110f0c7411mr13174637a91.7.1748249917319;
-        Mon, 26 May 2025 01:58:37 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1748249917; cv=pass;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4072418njc;
+        Mon, 26 May 2025 02:16:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWVshqEgaPElzVhidsgEA/pWMRNpx6eUmsZa4WbuuTC0eSHrA/7tbM2u8qfkBFyQyUWB5lBtTsQmisAOA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGUJbx14GxPeduGKpFE4v3QkfXiMoRNudoKjq85Wzc9iuo0sVGUSjjU8QSHnZvSNJZHC+8Q
+X-Received: by 2002:a05:6602:6e03:b0:86c:bbde:83bb with SMTP id ca18e2360f4ac-86cbbde83ddmr567600839f.0.1748251018304;
+        Mon, 26 May 2025 02:16:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748251018; cv=none;
         d=google.com; s=arc-20240605;
-        b=WZ31nMVzYo9GplsaAtsAxHl2Rv03B5ZPyEn7ghmYIGICAkmosjW37XKMgFYycJrKh1
-         BgYRxwFa4xJr8u7t6q2YfUq5TFzBbzeTcCn02A26czRXlhFk1N3XBKZ93cRL1+5a97c9
-         ffN3Di8ristG0alv7V1ibj2AxJK8YcuaNsafu1PQng47DYBac9ORCIysCLiE/BpYHBWJ
-         H+tIj6+f8NUg4wUZcOb+skK2+r+1K/Cv0+ZEur800STH1dwiO90H3BDYESgmH/MXqDSF
-         uLwYI6xNcjy5GfhJqOshNk1L8sdt1+yqJIDKGXkOfJsXNYGbVTW0sbWblx2N3x7WPcdj
-         wBcw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :user-agent:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature;
-        bh=jzzd0Z2q7oavj1TygOVzuj6Z/b/VFUvuYV5UB2zwGk4=;
-        fh=cwUEZrVCNSyL8NEWYGN+hx3DpiU7VesRpJ7zFuuTHx0=;
-        b=lG2sQ5DIAysk5IU4+QCEqj3aNdtkBXHv9CaYlngVwXGgzjbbz0+G7gr7zfH30j+ozI
-         JpmqUw8WtWEKZRaqQyEE2O+ORRPHUJr+n2wGKTiQ5vhYOOWt0IX5eZRUs7z6Uivw+0Ww
-         gBoxPqkXNP2B3zLkFtmaI475R0AK76U7I2GuYy/1AEBal6cAQ1xWUD1G71La/4BjTIJX
-         PQC4tGyxUlxLZYnBy69o5SHF1WQeFHpQ77H1WJud/knUsVG+lSauFfZuV7dkWB3SHY+N
-         UMFxt3ve4HAgl84aDwD0jY306k8F0E7Kt+8RWrwUav/0YmZ3RQ9mArBVTkXb/X3weVOT
-         7DBA==;
+        b=fBxEwDo77ZSSM535m7VXCIS5i+26jq3eXcMS1Jz1DgGRSTAeOKufDdsfsdK8tcvQQh
+         Gdi8ej8EkYs/RZipCb3/dlWiNgmefE0qe7qHytb804uSWVm8fRpoGuyw88InUzVOJ4FS
+         Dt9usQH5MhMgn4eYejisYt+2zDOpRIEM/mI+bBJXTqh9H9FNNyUVjnzixKNBeNVhfVxz
+         8+BDJ4rjhyl5tqjTNWHc6J1he2nBZRL5kwy0nrPTC2XOeGGI5KLK7bI2atwo+9OcyiEO
+         oGg/MD2AHN58EMOE5ZeQHQzE7l2aMIYH6UgkChFTL6476sygw4BhqJidA1tCfY2t5Rz/
+         ygZA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=gP7bhR/Bz7+K4YlN9kdxnUmT0MNeXQaa2VG/VtrbHus=;
+        fh=qqBcMWpNUe+gcmCOs5/bYVuzGUlDiyh4YBTrPe1lOE0=;
+        b=av2HvLAg5cWakvrEx1j9HBZiWQP8tusli0XpPTn4GEwP0qAYhIg9scz51X1hbwpunG
+         /YslMUoZpuXGbmigIUN6o4pHHyOzsPFSZXUTizCB97RB6xsS40dEnKEPBPO3es1rvzE6
+         bXH69hMx55sdWropH6vR5wnoOFzFy7knot8sg1WjMZfLxVzZw5ZmS/CK/lJs1qa37KUa
+         ctogDJzwQfV8ecVndOoxOHJ+WPqEQEhQnNeqCH6pfXiIP8yEy1fZNgQYzlN8rjdWIYfF
+         2pIepwSMfNkxYoK6ukE50VAArotEOj+2YalN4zXIuRUgR+/SOU0J3tEA8amRCJaDQyu8
+         GnIg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XAQvMSDH;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-47686-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-47686-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RGLY75op;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-47686-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id 98e67ed59e1d1-311162c573dsi6095899a91.61.2025.05.26.01.58.37
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ca18e2360f4ac-86a236f9e11si2212700239f.86.2025.05.26.02.16.58
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 May 2025 01:58:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-47686-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 26 May 2025 02:16:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XAQvMSDH;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-47686-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-47686-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RGLY75op;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id D65623A4794
-	for <alex.bennee@linaro.org>; Mon, 26 May 2025 08:58:16 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 36C7B1E47A8;
-	Mon, 26 May 2025 08:58:34 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="XAQvMSDH"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C5F212AEFE
-	for <kvm@vger.kernel.org>; Mon, 26 May 2025 08:58:31 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1748249914; cv=none; b=a1GQwW/6VfEMpnBU4JBdVg12R0ALUSCoKm5QtL+gH1HmulrL1FzTzCCtxutX7MsdZ3BVx3KlA0w+RgNx0j73IYamWXpppDrJlLzsmEisMpA3rJ3FOfsA2a2usrIRbRd72iet5uHlF3KL/C0WuXXbUmZ1ySKRfKKk6ygjbIFBclU=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1748249914; c=relaxed/simple;
-	bh=aJXOIB3PXjfdQVTBSrdtBYKMKi5Eb/XdWBg0BVS4qug=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=gHOWGK72//ItSxeu4k/iyt0N+pAF138VospTQsOr4rvLmmMG5WotrbILD8kXy1w4NcctHmDgFHMY7YhG8YLoRYPww5wY33MUWb8shN10aFWEYeyrl88TGWa4sbHb8KHdGfXkyQ/09NdgQV84XBTGOSeovZoH26stHcvuEhv7LYM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=XAQvMSDH; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uJTwo-0007Zx-3i; Mon, 26 May 2025 05:16:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uJTwi-0007ZX-Dm
+ for qemu-arm@nongnu.org; Mon, 26 May 2025 05:16:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uJTwg-00029M-Dc
+ for qemu-arm@nongnu.org; Mon, 26 May 2025 05:16:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1748249910;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=jzzd0Z2q7oavj1TygOVzuj6Z/b/VFUvuYV5UB2zwGk4=;
-	b=XAQvMSDHXO8JgseeO9xPAV1I+hl5FXoOvKMX/zlp8KgxGm2HFmlGFYSIFveyQsT96jwMW9
-	p9pMq+fYHj90/qaJb29B4rFmNM8n1Hrsopqbpriw2qYTJ9gBAMUCedBxDdx9yMqohW3w5l
-	1qYjBDNKIBrGXmG1h//BpyXKOiskUAw=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-78-gabRBkCUN3ihfu9bwQcvGg-1; Mon,
- 26 May 2025 04:58:28 -0400
-X-MC-Unique: gabRBkCUN3ihfu9bwQcvGg-1
-X-Mimecast-MFC-AGG-ID: gabRBkCUN3ihfu9bwQcvGg_1748249905
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 19EB81956095;
-	Mon, 26 May 2025 08:58:24 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.2])
-	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 4244F1956095;
-	Mon, 26 May 2025 08:58:22 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id CA91B21E66C3; Mon, 26 May 2025 10:58:19 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: Mark Cave-Ayland <mark.caveayland@nutanix.com>,  Daniel P. =?utf-8?Q?B?=
- =?utf-8?Q?errang=C3=A9?=
- <berrange@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  Thomas
- Huth <thuth@redhat.com>,  Zhao Liu <zhao1.liu@intel.com>,  Xiaoyao Li
- <xiaoyao.li@intel.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,
-  Paolo Bonzini <pbonzini@redhat.com>,  qemu-devel@nongnu.org,  Richard
- Henderson <richard.henderson@linaro.org>,  kvm@vger.kernel.org,  Gerd
- Hoffmann <kraxel@redhat.com>,  Laurent Vivier <lvivier@redhat.com>,
-  Jiaxun Yang <jiaxun.yang@flygoat.com>,  Yi Liu <yi.l.liu@intel.com>,
-  "Michael S. Tsirkin" <mst@redhat.com>,  Eduardo Habkost
- <eduardo@habkost.net>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-  Alistair Francis <alistair.francis@wdc.com>,  Daniel Henrique Barboza
- <dbarboza@ventanamicro.com>,  Marcelo Tosatti <mtosatti@redhat.com>,
-  qemu-riscv@nongnu.org,  Weiwei Li <liwei1518@gmail.com>,  Amit Shah
- <amit@kernel.org>,  Yanan Wang <wangyanan55@huawei.com>,  Helge Deller
- <deller@gmx.de>,  Palmer Dabbelt <palmer@dabbelt.com>,  Ani Sinha
- <anisinha@redhat.com>,  Igor Mammedov <imammedo@redhat.com>,  Fabiano
- Rosas <farosas@suse.de>,  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-  =?utf-8?Q?Cl=C3=A9ment?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
-  qemu-arm@nongnu.org,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,
-  Huacai Chen <chenhuacai@kernel.org>,  Jason Wang <jasowang@redhat.com>
-Subject: Re: How to mark internal properties
-In-Reply-To: <60cd3ba8-2ab1-74ac-54ea-5e3b309788a1@eik.bme.hu> (BALATON
-	Zoltan's message of "Tue, 13 May 2025 11:26:31 +0200 (CEST)")
-References: <20250508133550.81391-1-philmd@linaro.org>
-	<20250508133550.81391-13-philmd@linaro.org>
-	<23260c74-01ba-45bc-bf2f-b3e19c28ec8a@intel.com>
-	<aB2vjuT07EuO6JSQ@intel.com>
-	<2f526570-7ab0-479c-967c-b3f95f9f19e3@redhat.com>
-	<CAFEAcA-kuHvxjuV_cMh-Px3C-k2Gd51jFqhwndO52vm++M_jAA@mail.gmail.com>
-	<aCG6MuDLrQpoTqpg@redhat.com> <87jz6mqeu5.fsf@pond.sub.org>
-	<eedd1fa2-5856-41b8-8e6b-38bd5c98ce8f@nutanix.com>
-	<87ecwshqj4.fsf@pond.sub.org>
-	<60cd3ba8-2ab1-74ac-54ea-5e3b309788a1@eik.bme.hu>
-Date: Mon, 26 May 2025 10:58:19 +0200
-Message-ID: <874ix792ac.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ s=mimecast20190719; t=1748250992;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gP7bhR/Bz7+K4YlN9kdxnUmT0MNeXQaa2VG/VtrbHus=;
+ b=RGLY75opSSprcAubJlpBpXniwTuhoK0hW/XdiD0AHlRGiXzDxq9uzv2Muw20UD486eP+Br
+ Y5xhgt/8+ryk9OGps8MS79wt95qe8SUuPGmT1YHY2cD11hMPth0b5SPeiy4Tqg7Wqvj2uC
+ l/mDIReKAWDh7Q/Z2Sk7vpbb1kLXik0=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-528-5SCLSV2oNEu0tm_jtUy0Kw-1; Mon, 26 May 2025 05:16:30 -0400
+X-MC-Unique: 5SCLSV2oNEu0tm_jtUy0Kw-1
+X-Mimecast-MFC-AGG-ID: 5SCLSV2oNEu0tm_jtUy0Kw_1748250990
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-43f251dc364so11353235e9.2
+ for <qemu-arm@nongnu.org>; Mon, 26 May 2025 02:16:30 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1748250989; x=1748855789;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=gP7bhR/Bz7+K4YlN9kdxnUmT0MNeXQaa2VG/VtrbHus=;
+ b=A6m5eZqjRfjVphuMKO2pfJoxwunekeplG0ajM3SllTWiv1OhbQsnVo3y91ijIu12TF
+ 1Vk4zboaOPoLrBfV3UFxDKlP3oCjvypwPtNrFgM9m0KAVbdLr5BIiInyGc0vaJk9VSem
+ hEVMwe/b9PViSnMheYUUXgqiTl2eHh6Mc+jC9YHg3zDCJHnjFV7HkLwmwQa0VehMBhXh
+ OKORHCJ2oGDuFF0gZSp2DLJyPitN4yUOk8iBDcJiXK8o7U334xCKKvygpYQzp8ojZujv
+ ocRpNMcuD+uQGfrx9uODFGt5Ollp552SeGpiLeWtVUUtQbgRhev3cK6eriWKNvzz21oG
+ w1Ug==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV7TVGUSCrPtgkwas0xxxctlwyUIHqXcRWlKv68m0JhCSB5gC6M/TaFRINe46Ou7KQGqLc2ou+L6Q==@nongnu.org
+X-Gm-Message-State: AOJu0YxfTNoUrfaB+QlNogxAaKVdVmevWIroiyxaMcBUhEIjmLlEyA6w
+ NAO9vkK0APoxVb38IfQp2eWJ1eFfjD6Hw8S+Qlg5t19n6t1GmcLM1zJ7heoFuQufndCrQuqLS5/
+ OxJk+q03g4wns3EU1kU5Z7UXjk0c2XqYjyr6w7X4AaYByDu3lr5qfRw==
+X-Gm-Gg: ASbGncupsaZujrtYLf4A/IkViShs3hC4Hbf19m0Ah6/y4hAFV91WECwtCufee3oQd46
+ x/sfDgOuCKLsaOaosMjnXkqVMANiWNLy7Ex7R37n2wrhzuVgRRws36lX5/xnMKjFZzLH0Q2gnT6
+ cnV9vgM0mwg8yRvwnflmLZHQMX+kGXlHmYHWK7kc9mCij3srxg9aHtuGTYYm7DeQ4GQv3eMqjbh
+ dHxfJbErI9FgUnBZhjAQka1seItkgknXxmljMXa3fV7Hfvznc16+aon6soO/cN2HL+K10dkGRKB
+ OxfeQUAJmRssYHgOvWHfdIUy4BhijLkueUY35U8rpLuB7DSOJI0rSbiK1Zw=
+X-Received: by 2002:a05:600c:511d:b0:442:cab1:e092 with SMTP id
+ 5b1f17b1804b1-44c91cc5591mr65988385e9.11.1748250989460; 
+ Mon, 26 May 2025 02:16:29 -0700 (PDT)
+X-Received: by 2002:a05:600c:511d:b0:442:cab1:e092 with SMTP id
+ 5b1f17b1804b1-44c91cc5591mr65988065e9.11.1748250989063; 
+ Mon, 26 May 2025 02:16:29 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3a4d17266d5sm5082921f8f.68.2025.05.26.02.16.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 26 May 2025 02:16:28 -0700 (PDT)
+Message-ID: <299fa5d3-7e05-4151-ab90-84447b3339cd@redhat.com>
+Date: Mon, 26 May 2025 11:16:19 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-X-TUID: XCst0QOeUIDJ
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 13/22] hw/i386/acpi-build: Introduce and use
+ acpi_get_pci_host
+To: Gustavo Romero <gustavo.romero@linaro.org>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ imammedo@redhat.com, anisinha@redhat.com, mst@redhat.com,
+ shannon.zhaosl@gmail.com
+Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org
+References: <20250514170431.2786231-1-eric.auger@redhat.com>
+ <20250514170431.2786231-14-eric.auger@redhat.com>
+ <9b996b3a-cc60-499e-a8a6-028f16156180@linaro.org>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <9b996b3a-cc60-499e-a8a6-028f16156180@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: W2hndVgoV4O7ifB9yJ-oCCgMsQq8BX8vrC6fNVlBqiM_1748250990
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -59
+X-Spam_score: -6.0
+X-Spam_bar: ------
+X-Spam_report: (-6.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.904,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iJCWqYIfHlnV
 
-BALATON Zoltan <balaton@eik.bme.hu> writes:
 
-> On Tue, 13 May 2025, Markus Armbruster wrote:
->> Mark Cave-Ayland <mark.caveayland@nutanix.com> writes:
->>> On a related note this also brings us back to the discussion as to the relationship between qdev and QOM: at one point I was under the impression that qdev properties were simply QOM properties that were exposed externally, i.e on the commmand line for use with -device.
->>>
->>> Can you provide an update on what the current thinking is in this area, in particular re: scoping of qdev vs QOM properties?
->>
->> qdev is a leaky layer above QOM.
->>
->> qdev properties are also QOM properties.
->>
->> All device properties are exposed externally.
+
+On 5/20/25 10:00 PM, Gustavo Romero wrote:
+> Hi Eric,
 >
-> That was clear but the question was if QOM properties (that are not qdev properties) exist and if so are they also exposed? If not exposed it may be used for internal properties (where simpler solutions aren't convenient) but maybe qdev also adds easier definition of properties that's why they used instead of QOM properties?
+> On 5/14/25 14:01, Eric Auger wrote:
+>> pcihp acpi_set_pci_info() generic code currently uses
+>> acpi_get_i386_pci_host() to retrieve the pci host bridge.
+>>
+>> Let's rename acpi_get_i386_pci_host into acpi_get_pci_host and
+>> move it in pci generic code.
+>>
+>> The helper is augmented with the support of ARM GPEX.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>>   include/hw/acpi/pci.h |  2 ++
+>>   hw/acpi/pci.c         | 20 ++++++++++++++++++++
+>>   hw/acpi/pcihp.c       |  3 ++-
+>>   hw/i386/acpi-build.c  | 24 ++++--------------------
+>>   4 files changed, 28 insertions(+), 21 deletions(-)
+>>
+>> diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
+>> index 4dca22c0e2..310cbd02db 100644
+>> --- a/include/hw/acpi/pci.h
+>> +++ b/include/hw/acpi/pci.h
+>> @@ -41,4 +41,6 @@ void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml
+>> *scope);
+>>     void build_srat_generic_affinity_structures(GArray *table_data);
+>>   +Object *acpi_get_pci_host(void);
+>> +
+>>   #endif
+>> diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
+>> index d511a85029..4191886ebe 100644
+>> --- a/hw/acpi/pci.c
+>> +++ b/hw/acpi/pci.c
+>> @@ -26,6 +26,7 @@
+>>   #include "qemu/osdep.h"
+>>   #include "qemu/error-report.h"
+>>   #include "qom/object_interfaces.h"
+>> +#include "qom/object.h"
+>>   #include "qapi/error.h"
+>>   #include "hw/boards.h"
+>>   #include "hw/acpi/aml-build.h"
+>> @@ -33,6 +34,9 @@
+>>   #include "hw/pci/pci_bridge.h"
+>>   #include "hw/pci/pci_device.h"
+>>   #include "hw/pci/pcie_host.h"
+>> +#include "hw/pci-host/i440fx.h"
+>> +#include "hw/pci-host/q35.h"
+>> +#include "hw/pci-host/gpex.h"
+>>     /*
+>>    * PCI Firmware Specification, Revision 3.0
+>> @@ -301,3 +305,19 @@ void
+>> build_srat_generic_affinity_structures(GArray *table_data)
+>>       object_child_foreach_recursive(object_get_root(),
+>> build_acpi_generic_port,
+>>                                      table_data);
+>>   }
+>> +
+>> +Object *acpi_get_pci_host(void)
+>> +{
+>> +    Object *host;
+>> +
+>> +    host =
+>> object_resolve_type_unambiguous(TYPE_I440FX_PCI_HOST_BRIDGE, NULL);
+>> +    if (host) {
+>> +        return host;
+>> +    }
+>> +    host = object_resolve_type_unambiguous(TYPE_Q35_HOST_DEVICE, NULL);
+>> +    if (host) {
+>> +        return host;
+>> +    }
+>> +    host = object_resolve_type_unambiguous(TYPE_GPEX_HOST, NULL);
+>> +    return host;
+>> +}
+>> diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
+>> index 942669ea89..d800371ddc 100644
+>> --- a/hw/acpi/pcihp.c
+>> +++ b/hw/acpi/pcihp.c
+>> @@ -36,6 +36,7 @@
+>>   #include "hw/pci-bridge/xio3130_downstream.h"
+>>   #include "hw/i386/acpi-build.h"
+>>   #include "hw/acpi/acpi.h"
+>> +#include "hw/acpi/pci.h"
+>>   #include "hw/pci/pci_bus.h"
+>>   #include "migration/vmstate.h"
+>>   #include "qapi/error.h"
+>> @@ -102,7 +103,7 @@ static void *acpi_set_bsel(PCIBus *bus, void
+>> *opaque)
+>>   static void acpi_set_pci_info(bool has_bridge_hotplug)
+>>   {
+>>       static bool bsel_is_set;
+>> -    Object *host = acpi_get_i386_pci_host();
+>> +    Object *host = acpi_get_pci_host();
+>>       PCIBus *bus;
+>>       BSELInfo info = { .bsel_alloc = ACPI_PCIHP_BSEL_DEFAULT,
+>>                         .has_bridge_hotplug = has_bridge_hotplug };
+>> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+>> index 06b4b8eed4..bcfba2ccb3 100644
+>> --- a/hw/i386/acpi-build.c
+>> +++ b/hw/i386/acpi-build.c
+>> @@ -269,27 +269,11 @@ static void acpi_get_misc_info(AcpiMiscInfo *info)
+>>   #endif
+>>   }
+>>   -/*
+>> - * Because of the PXB hosts we cannot simply query
+>> TYPE_PCI_HOST_BRIDGE.
+>> - * On i386 arch we only have two pci hosts, so we can look only for
+>> them.
+>> - */
+>> -Object *acpi_get_i386_pci_host(void)
+>> -{
+>> -    PCIHostState *host;
+>> -
+>> -    host = PCI_HOST_BRIDGE(object_resolve_path("/machine/i440fx",
+>> NULL));
+>> -    if (!host) {
+>> -        host = PCI_HOST_BRIDGE(object_resolve_path("/machine/q35",
+>> NULL));
+>> -    }
+>> -
+>> -    return OBJECT(host);
+>> -}
+>> -
+>
+> It's also possible to add a child prop to the TYPE_GPEX_HOST in
+> create_pcie, like:
+>
+> @@ -1510,6 +1510,7 @@ static void create_pcie(VirtMachineState *vms)
+>      MachineClass *mc = MACHINE_GET_CLASS(ms);
+>  
+>      dev = qdev_new(TYPE_GPEX_HOST);
+> +    object_property_add_child(OBJECT(vms), "gpex", OBJECT(dev));
+>
+> then follow to logic in acpi_get_i386_pci_host via:
+>
+> PCI_HOST_BRIDGE(object_resolve_path("/machine/gpex", NULL))
+indeed
+>
+> but I like better your solution of using the final class types, so:
+>
+> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
 
-I'm afraid we haven't answered your question clearly, yet.  The answer
-is yes, QOM properties that are not qdev properties do exist.  The first
-one that comes along: ich9_pm_add_properties() adds a bunch to device
-ICH9-LPC.  They are exposted externally.  To see them, try
+OK thanks! I described that change in the commit msg because it was
+effectively not properly described.
 
-    $ qemu-system-x86_64 -device ICH9-LPC,help
+Cheers
 
-[...]
+Eric
+>
+>
+> Cheers,
+> Gustavo
+>
+>>   static void acpi_get_pci_holes(Range *hole, Range *hole64)
+>>   {
+>>       Object *pci_host;
+>>   -    pci_host = acpi_get_i386_pci_host();
+>> +    pci_host = acpi_get_pci_host();
+>>         if (!pci_host) {
+>>           return;
+>> @@ -1245,7 +1229,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>>         sb_scope = aml_scope("\\_SB");
+>>       {
+>> -        Object *pci_host = acpi_get_i386_pci_host();
+>> +        Object *pci_host = acpi_get_pci_host();
+>>             if (pci_host) {
+>>               PCIBus *pbus = PCI_HOST_BRIDGE(pci_host)->bus;
+>> @@ -1306,7 +1290,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>>       if (pm->pcihp_bridge_en || pm->pcihp_root_en) {
+>>           bool has_pcnt;
+>>   -        Object *pci_host = acpi_get_i386_pci_host();
+>> +        Object *pci_host = acpi_get_pci_host();
+>>           PCIBus *b = PCI_HOST_BRIDGE(pci_host)->bus;
+>>             scope = aml_scope("\\_SB.PCI0");
+>> @@ -1946,7 +1930,7 @@ static bool acpi_get_mcfg(AcpiMcfgInfo *mcfg)
+>>       Object *pci_host;
+>>       QObject *o;
+>>   -    pci_host = acpi_get_i386_pci_host();
+>> +    pci_host = acpi_get_pci_host();
+>>       if (!pci_host) {
+>>           return false;
+>>       }
+>
 

@@ -1,110 +1,125 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4046199njc;
-        Mon, 26 May 2025 01:08:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUBPRYM0I8uWUA5uCTK+X7uMnyKdB7exxPO2vm0jkyX5j3O40jJ8P/TQhW6YSm8COahMDEPx26hEobznA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFHBwRA3Tz+nSOwuYtkpfmeu75NN0BHExmFdmidL6HSkvgSraqAaBiBFQsENJdtg9c3i6ec
-X-Received: by 2002:a05:620a:2b99:b0:7c8:c97:627f with SMTP id af79cd13be357-7ceecc0b81bmr1265870485a.46.1748246891316;
-        Mon, 26 May 2025 01:08:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748246891; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4062979njc;
+        Mon, 26 May 2025 01:55:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWlgYHPQvbPIJE63C4Fj8vLawsleC+Rnv9xIjnTE0XaFDzl1e8Wln0FTjDB4Q37kcdPA+3aisKDZIyNOQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHp1FvVPKcy9XSG4qAGyPP3ZCa2di4Yky7wr5L9gt4Jz5zLNWh0TO4JrXd3d++4iKLW/PTW
+X-Received: by 2002:ac8:6908:0:b0:490:8cc3:d111 with SMTP id d75a77b69052e-49f4713decemr144081341cf.27.1748249744292;
+        Mon, 26 May 2025 01:55:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748249744; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZkoWzP2VCkdWafuQbi4ivN/VjKDFWxgxF/7p2nDaTlA8LRlqmNk5yHB1L+Tppf7cyG
-         kNBU+ivQNSHBbPVMvdda9adprM5i9xFS+rYK3U7qpB20LDINKH7uAYg4s3WrpFt9i3Zo
-         9InL7R4eIUI1KNO5Vr8SYYdMsjbb46lGzf8/k/K5UaxkM3XG7Ht0O0OSH/kDyfar7VSI
-         L2PJRT3PG57CMxnQC2gD+iW2qmi8ZuRFyRsGMnapBaz5v0AmqdEaYRDsGWevx5axENCV
-         bbAvMUqvFsz7VC9UEmoOUJpUue4fyfMt7eZg6x7PkfYfc7dWDhNjKKYktle/RPq/360b
-         J05w==
+        b=dDrfShcl4LkLMeKRwadUL3akPfLiFbZKzEyi8LYFKDf5PHwx/2UHmjSOQylXI2fXSY
+         cEfoFswU6BoR6N3LS/LzXDEqgNtQD5efqGHKwVoz7kodGDddvabckuN7DqIUcwfXCxB+
+         VZhbvS1Rru4v+tGicjdcIUHGrssHXWicW03uH44/Zf97umzbxZHcLg736QcmUAeVK/Fp
+         XGyV7Knj6/ydvCud4EYKpferdSfgQHXMl3q9dYoDNrXfE/tLraushbfPrq9Z8oQSNqKP
+         TCduwv8EvlAievNxoe8kuB7V1lUDGPkqLn0EHryMCrkTq/SuzZqK4QJl84joQx89geEC
+         RcFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=NFM3ac5ImFtUc6fx8a1PKAPoMcRah1NDak8tF9I7FxQ=;
-        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=PEgU+U0LVyOCJdibywINAYlXnAspWKtz3jA9Mc1HN5RUotSnRPDcL2WbxY2Mbx+jKg
-         RuDHJ2QBuQGIdArdJBHezV74u8q71xd1a7QlTWUE8Moy8nNpwqlCAbXmjji42NUUE14Z
-         cjPBpWaS08M64P2qXofnU3XrGqIRo2HTMlKhRwt6BcHO6ywdsS7wmxyYsM/MQ6mHD4RJ
-         mJBLg33WOMxihAEBOEKB0pQnVcmosKbvl/XZhXHAKNN63xtadNkJbpS2/jCsGq8AhDL+
-         CJU9OUOXeVs8UqpSCd9t/XgMiRmL/7V7sZ2me3jzz5DhEqaDPmi2Pu5Oufx4Ts21JTGm
-         DCbg==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=h/Kh0vlsUmDeZGS0m/0HStbc4MTMQHVDFXchMhdkFP4=;
+        fh=ZZwLt5H82yHLOWpnvJwJfXwO1u4fGNY7kNtWC/UDUJc=;
+        b=gCPoeEZM5Z/GYqfNwliMaItm96F6t7QC8yFwhZXTPVfIw1ZfYMEFKHfO/o/3XGQmL6
+         tlfm0gC7Tvv7Yiy4gti01GVSvKZ25VKLkTRNLCnFVDIT5+D/d9R0hCjJw8/KNFH+B9Hn
+         7Ca8aegbjtjk3vl0x6uiVkZ8/6QeHt8pttA6/H6ohMOy19uog6ihQrz8/zY6ha333DVl
+         FX6ZsIjN4OR8SdoRBXmw96I9QXTug2H4TpmH0dwtNQdhKn65vEIvbXmEb+hQjH53FYDD
+         7XLnd3JrBk3eSk5B5tt2cxgoYuJj0lsJzcB8QmKDwOnXJWEZYFYH/9ubXZHMZWobQkno
+         RQAw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DH0CrK35;
+       dkim=pass header.i=@adacore.com header.s=google header.b=Wabx1IH+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=adacore.com;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ced7cfce1fsi1112814285a.170.2025.05.26.01.08.11
+        by mx.google.com with ESMTPS id d75a77b69052e-494ae5aa1ecsi253882411cf.614.2025.05.26.01.55.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 May 2025 01:08:11 -0700 (PDT)
+        Mon, 26 May 2025 01:55:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DH0CrK35;
+       dkim=pass header.i=@adacore.com header.s=google header.b=Wabx1IH+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=adacore.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uJSqX-0004oq-GD; Mon, 26 May 2025 04:06:09 -0400
+	id 1uJTcQ-0004TS-FJ; Mon, 26 May 2025 04:55:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uJSqH-0004Pk-48
- for qemu-arm@nongnu.org; Mon, 26 May 2025 04:05:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uJSqC-0002GK-7s
- for qemu-arm@nongnu.org; Mon, 26 May 2025 04:05:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1748246746;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NFM3ac5ImFtUc6fx8a1PKAPoMcRah1NDak8tF9I7FxQ=;
- b=DH0CrK35USRo7HibGpoFPu/GY6/HfcWJbt94m1ErjVXUciozHhdkO1JK+bAp6CFQWn6e7N
- /7978jDaqfKzOEI5FY6LKzVVV0FeDYnA0QI8w5ZreNoQyt8QZaa4w2n/2QbByekE4Goj+G
- JOy41A9MH7COhvzjULTfwq63aie2Q/s=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-640-7dvZkHhTOv-3qSeZLSfcTQ-1; Mon,
- 26 May 2025 04:05:40 -0400
-X-MC-Unique: 7dvZkHhTOv-3qSeZLSfcTQ-1
-X-Mimecast-MFC-AGG-ID: 7dvZkHhTOv-3qSeZLSfcTQ_1748246739
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 591BD1956062; Mon, 26 May 2025 08:05:39 +0000 (UTC)
-Received: from corto.redhat.com (unknown [10.45.224.49])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B31031800ECA; Mon, 26 May 2025 08:05:37 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 06/39] hw/misc/aspeed_hace: Extract direct mode hash buffer
- setup into helper function
-Date: Mon, 26 May 2025 10:04:39 +0200
-Message-ID: <20250526080512.1697528-7-clg@redhat.com>
-In-Reply-To: <20250526080512.1697528-1-clg@redhat.com>
-References: <20250526080512.1697528-1-clg@redhat.com>
+ (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
+ id 1uJTcK-0004RW-SK
+ for qemu-arm@nongnu.org; Mon, 26 May 2025 04:55:33 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
+ id 1uJTcH-00082U-RE
+ for qemu-arm@nongnu.org; Mon, 26 May 2025 04:55:32 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-441d1ed82faso15269365e9.0
+ for <qemu-arm@nongnu.org>; Mon, 26 May 2025 01:55:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=adacore.com; s=google; t=1748249726; x=1748854526; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=h/Kh0vlsUmDeZGS0m/0HStbc4MTMQHVDFXchMhdkFP4=;
+ b=Wabx1IH+vgxVqzHDXiaMdOlXdKWVC8jk0ZfLPXlsI5l5RVVBaYxjnCDXdoxQvy2HeT
+ KYBu4D+C9oys0UvyfuG+6qSFJ700PYtNYB0DGdN+GpZR8c9iw2m7BNlXgViv2P5OmikI
+ ZSi9lNvDmlW0EeOtCSUChAXqD0N6chNopFsYxF7C+kHl2PK/0mHLWemfHjp7jklVYHiI
+ Jnd8GONxcSDRyTH1qXwMQYneJCmUcJgSAAfx/cBthyuIgraGTfauFCJMUVWoyxcyURJ1
+ m1zY2yFowI240MozfVBJTnQPexo4/+OIe8/kzme8hAaKhAGV3kkcGtuey/z8Dl6Si+5u
+ 6AdQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1748249726; x=1748854526;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=h/Kh0vlsUmDeZGS0m/0HStbc4MTMQHVDFXchMhdkFP4=;
+ b=wE1XEvf42VGFVJVxzuzf3U34tymsstfrH2LLmdromQsyrbz7VioVOaXbnVPkp3mdGw
+ Bx8b0Nlg/0KGvF4bfJPJONKT9dt/B1cfzlYBr/qBcJEQEITMqIkoyUDdK9YFm+bE1cB5
+ xPQzXlQwYnyHJfMtPVerAiXMA9BeSqBBv7y7c7IbQ/liXW/aaObjwYlXSW4lSJdGOVGO
+ UTlJ9M3IsDmGRxZzbncph7ajAvYJ1eTHfVu1kiu3gec3paqHFC9ZXjR90/qdjvG4sAGV
+ 1P/oBd24t49s5ZGLr8p7OYMXa7uPtvcgiOUVCYT881KEkByQM5hs5d4BZWW1MaQ/2zly
+ SiCQ==
+X-Gm-Message-State: AOJu0YzljB5ZaeozSJYmSaubEyDRGCoZsOP42U5xPIRsT6H/XEaQjp5A
+ 67+EKdCP1XEb1RCoQ1H4QDWVMRMpwE2PVdu+2eVjezFmRGGtshfi2S/dyi4yLMtKeA==
+X-Gm-Gg: ASbGncuJSI2lffknsaaa+PfkgmyuNR1dGgJtKUWpS3CP2cVJYxjLoUJouc7NFIV9qxe
+ ZQDeTMsSkGV8DKmX3IN1D0PKDApjT2sXXmg1BDnzDxOpdGQ2SuXSSvPBd0jE2MsDGF8buxh35lb
+ CNiWzuS25zljSi6BHTAE1h1Pv8jx3999MGO86yKvHWUGx80G9/bofiOwuElGGxjvQu80lsFJDJa
+ rQ5PP4Fw4eutUjcYQ8f6AKWsE9bv1KRqUx1QoaOmFTwqcqgWHLthYqnlE2caa2yOhZ8mw6cPgIn
+ YnyHCqkViIUs14NK09PNRcS1f2wEE4l+plxiQ41sg5MTL6Y7OxicrfCgNT749ZWG+GsO5fn2r2y
+ tjRpEOJKQ/xMt6l6Qn36Fc+4bbkY+3mnZVXHblW6H+oT/1m6g
+X-Received: by 2002:a05:600c:3c84:b0:442:d9f2:c6ef with SMTP id
+ 5b1f17b1804b1-44c9301660cmr84939245e9.2.1748249726089; 
+ Mon, 26 May 2025 01:55:26 -0700 (PDT)
+Received: from chigot-Dell.telnowedge.local
+ (lmontsouris-659-1-24-67.w81-250.abo.wanadoo.fr. [81.250.175.67])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-447f23bfd54sm238911675e9.17.2025.05.26.01.55.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 26 May 2025 01:55:25 -0700 (PDT)
+From: =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, edgar.iglesias@gmail.com,
+ alistair@alistair23.me,
+ =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>
+Subject: [PATCH v2 0/4] xlnx-zynqmp: add support to boot on RPUs
+Date: Mon, 26 May 2025 10:55:19 +0200
+Message-Id: <20250526085523.809003-1-chigot@adacore.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -59
-X-Spam_score: -6.0
-X-Spam_bar: ------
-X-Spam_report: (-6.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.904,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=chigot@adacore.com; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,93 +134,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: melgLuh5d5Nq
+X-TUID: 06KVtLH8nC3P
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+This series enhances Xilinx ZynqMP support to allow booting on RPUs and
+ease gdb connections to them.
 
-To improve code readability and maintainability of do_hash_operation(), this
-commit introduces a new helper function: hash_prepare_direct_iov().
-This function encapsulates the logic for setting up the I/O vector (iov)
-in direct mode (non-scatter-gather).
+It was validated with home-made binaries. FreeRTOS was tested but without
+success: outputs/IRQ seems broken. AFAICT, FreeRTOS is expecting Xilinx's
+QEMU thus I didn't investigate further, but I'd still like advice
+on the 3rd patch ("wire a second GIC") since it could be related to it.
 
-No functional changes are introduced.
+Changes since v1:
+ - add doc for "first-cpu-index" new property in arm_gic.h.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250515081008.583578-5-jamin_lin@aspeedtech.com
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
----
- hw/misc/aspeed_hace.c | 42 ++++++++++++++++++++++++++++++++----------
- 1 file changed, 32 insertions(+), 10 deletions(-)
+Clément Chigot (2):
+  hw/arm: make cpu targeted by arm_load_kernel the primary CPU.
+  hw/arm/xlnx-zynqmp: adapt cluster-id based on the boot cpu
 
-diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index 1256926d2276..42c6f29f8262 100644
---- a/hw/misc/aspeed_hace.c
-+++ b/hw/misc/aspeed_hace.c
-@@ -142,6 +142,31 @@ static bool has_padding(AspeedHACEState *s, struct iovec *iov,
-     return false;
- }
- 
-+static int hash_prepare_direct_iov(AspeedHACEState *s, struct iovec *iov)
-+{
-+    uint32_t src;
-+    void *haddr;
-+    hwaddr plen;
-+    int iov_idx;
-+
-+    plen = s->regs[R_HASH_SRC_LEN];
-+    src = s->regs[R_HASH_SRC];
-+    haddr = address_space_map(&s->dram_as, src, &plen, false,
-+                              MEMTXATTRS_UNSPECIFIED);
-+    if (haddr == NULL) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Unable to map address, addr=0x%x, "
-+                      "plen=0x%" HWADDR_PRIx "\n",
-+                      __func__, src, plen);
-+        return -1;
-+    }
-+
-+    iov[0].iov_base = haddr;
-+    iov[0].iov_len = plen;
-+    iov_idx = 1;
-+
-+    return iov_idx;
-+}
- static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
-                               bool acc_mode)
- {
-@@ -169,6 +194,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
-         }
-     }
- 
-+    /* Prepares the iov for hashing operations based on the selected mode */
-     if (sg_mode) {
-         for (iov_idx = 0; !(len & SG_LIST_LEN_LAST); iov_idx++) {
-             if (iov_idx == ASPEED_HACE_MAX_SG) {
-@@ -211,17 +237,13 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
-             }
-         }
-     } else {
--        plen = s->regs[R_HASH_SRC_LEN];
-+        iov_idx = hash_prepare_direct_iov(s, iov);
-+    }
- 
--        haddr = address_space_map(&s->dram_as, s->regs[R_HASH_SRC],
--                                  &plen, false, MEMTXATTRS_UNSPECIFIED);
--        if (haddr == NULL) {
--            qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
--            return;
--        }
--        iov[0].iov_base = haddr;
--        iov[0].iov_len = plen;
--        iov_idx = 1;
-+    if (iov_idx <= 0) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Failed to prepare iov\n", __func__);
-+         return;
-     }
- 
-     if (acc_mode) {
+Frederic Konrad (2):
+  hw/intc/arm_gic: introduce a first-cpu-index property
+  hw/arm/xlnx-zynqmp: wire a second GIC for the Cortex-R5
+
+ hw/arm/boot.c                    |  15 +++--
+ hw/arm/xlnx-zynqmp.c             | 104 ++++++++++++++++++++++++++++---
+ hw/intc/arm_gic.c                |   2 +-
+ hw/intc/arm_gic_common.c         |   1 +
+ include/hw/arm/boot.h            |   3 +
+ include/hw/arm/xlnx-zynqmp.h     |   6 ++
+ include/hw/intc/arm_gic.h        |   2 +
+ include/hw/intc/arm_gic_common.h |   2 +
+ 8 files changed, 117 insertions(+), 18 deletions(-)
+
 -- 
-2.49.0
+2.34.1
 

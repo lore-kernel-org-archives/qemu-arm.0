@@ -1,201 +1,231 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4620327njc;
-        Mon, 26 May 2025 23:28:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX9mWHK16RXVP+fFpA/8pu8VsiiuxmeLYQV/YdcQsvUOvD+8vqv9TqLvFAjRsHTExyyAyL0Wagb1wjq4Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IHPXyBSlHW8Mqlmk9Omh/ge2WR9PNQ5UemTlIkApAwq89a1N/RTctDYadEh5Anhk/ENfA6I
-X-Received: by 2002:a05:6214:5197:b0:6fa:aaf1:7abb with SMTP id 6a1803df08f44-6faaaf17d48mr88363216d6.40.1748327291529;
-        Mon, 26 May 2025 23:28:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748327291; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4626045njc;
+        Mon, 26 May 2025 23:46:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWkzNMqSP1XjyKUTUkaYGoqn4gTLlEbFzJUtDeFf6IlnbYZKR3dAt2u+oMIUThYRyJ5BO7Bh7uKArAv6Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHj2nMXlIlQmK0Mfhj0g2ScR3JXTGqSWJS+J8sMA+L0p1MSHwR3pYp8dVKZdF4aOapimSjQ
+X-Received: by 2002:a05:620a:2892:b0:7ce:bb07:9de2 with SMTP id af79cd13be357-7ceecaaa3admr1356891785a.0.1748328413315;
+        Mon, 26 May 2025 23:46:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748328413; cv=none;
         d=google.com; s=arc-20240605;
-        b=R6giotUIKYuSD03TRX/jigPYMM0Pa5YG9HhaDnRoONeD2dlCOUYKkLF9EEwzdgbRvy
-         g2J7NUD9xdAsP7piouivZGVWl/QijwG9K9i6WYMmdUbmyVqEuNrZdOAgEl9bB0xmWbHb
-         aK7PQ7NdlCAN98+KfNsY0W3w8ijC3nti3HAXxwZ+ufh2Y95c19lHng/rifEG+wv4hb38
-         JQG4QXWjayD5ENYwFoeeLFsHSZKU9GzUYB/YK2xzbnnoZ8hlVUFRRmw9tCCd2NgJMxVt
-         szSwzQ2h+xnj8rS4CMmljVrdMcRbXXSlRg+QVBdtSOC6J2Gz8YXlENU2yu/OYGgX0QD5
-         pa4A==
+        b=goJPatieSwYYH6u2RH2TXnU3zvvCht2bUmWIN3agt+PQ6oHX/1yGFUhuI6ZbpH7+xR
+         eE/R49/esFrhy40S7efVxTxd6cOLrWnvhV0lE4xUruz7S4e6Ho4THnQ1xwM3WK0stDkn
+         dUQoalWyWnwHZLe5LvbU9mUPXBk2lnMOAnAwTN/0GxU+ullHlnPxMa/BddfQ8eT04ec0
+         Hu5ntLqg60wdmJ2MICVyhR+rPEEiCDUpciYrHgoBgcU/IgwQgVLuduaMTgRwLyMN9R+I
+         WBjTFs32uzmUbWbxO5OSiEljTUP8a9PG6zW/yNzocfiP1hzbkCUbtiqm2Gk95G7PcNzE
+         Hr1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=7biXynXJooGp+5MWmEyJRwOvi5dscqnql4xqKIvELt4=;
-        fh=+QYT5ic2V0JVqAzRbmJQwTxDwhWoCj38euddbeXj624=;
-        b=TifP6VLNMYb61k9sC8DtPDkKsY5EAqo+rdMid8GjvZX8KEbNmm+VMoP8LZOwS+Ik9C
-         RfR9h6RjXxigQfPnitXoAeKXqclc9lraNLLTR/dR1cjuDgvn1zLc0PsUpSJfnyAyPsVD
-         gNrH/FhJ4d3oawtJcNZ9bpyXVph4yLwUCbLc4BteGqL6UA5Ncux9j2UuOUfzj64HptBL
-         9aNKDs7D26F2rvpo5osSkUSv4d1nEPCfbI7U91JDOHsbQNXyZRNRSrEvoZrI6UZoZof5
-         yB/e+qNnIrZP17NJfiokAwdsJAGcXnapnAomhLgUidwk6ko2TBt5qBGBvqgigjiPKJtZ
-         izsg==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=ZKcUKj/LlKENAraKAjOyxIlLxLJFH0ua2ybc/69QUec=;
+        fh=IwWCiAWxT+ro7OfIDM6U+AsRcOJuT9+kWSfV903DrG0=;
+        b=DsfHs2wGu5yKqqdrWdPhdwkQ6LTg9bQ58kn+JYtnL8C9fw6UXTsPeujj9pXYZ6tWpC
+         /fO50ptRipAztJVGngSRA7PJP0Z+2JUx904AC9CJD00AL6CkMQBUpTtxENcSA6tP/sST
+         l9KWGOIWdvrEtFCw5Ed/cwI1lhLClJJbWnPGuLwwAr4rhAp9gNlZMzozDwAaTjC0vZRt
+         tvPvdAdVXMFigrVBV48IpT7to/WQ8lRjBRozpUw25g2GyZ5ngFNxqFKi5z73Vbkfz9Mb
+         fgXb6cci8D3YrUZihDmH49buINUgSLqH3CcgRZsyCGRKeUuGtBR2vMYlU02051GzTymG
+         to4A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SsfprkJH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d0T3xGPM;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6faa5b5c487si52648566d6.6.2025.05.26.23.28.11
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7ced964528csi1235071685a.552.2025.05.26.23.46.53
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 May 2025 23:28:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 May 2025 23:46:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SsfprkJH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d0T3xGPM;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uJnlI-0008V5-6p; Tue, 27 May 2025 02:26:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uJnl9-0008U1-GB
- for qemu-devel@nongnu.org; Tue, 27 May 2025 02:25:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uJnl5-0005m9-O0
- for qemu-devel@nongnu.org; Tue, 27 May 2025 02:25:57 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1748327151;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7biXynXJooGp+5MWmEyJRwOvi5dscqnql4xqKIvELt4=;
- b=SsfprkJHSxokm32j86K9TjaieMKKzc0hOxf24++EYyGJo4vgQFJ5d2QnmNO7eLRCAKbkwR
- 7T+BEWU0L72N8FhaIBLXXLO+a+9xty+1ZYJSLv0f1V94IMiVAkSJtxihnxbeR+1Z3T9bLm
- L0RDtxIyq2RqZXHeXRYDs79mleo1gtU=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-253-3Ug3cMD1MDu5Q9fBBjFkCA-1; Tue,
- 27 May 2025 02:25:48 -0400
-X-MC-Unique: 3Ug3cMD1MDu5Q9fBBjFkCA-1
-X-Mimecast-MFC-AGG-ID: 3Ug3cMD1MDu5Q9fBBjFkCA_1748327146
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 415C91800447; Tue, 27 May 2025 06:25:46 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.45.224.201])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BCD07195608D; Tue, 27 May 2025 06:25:42 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, miguel.luis@oracle.com, peter.maydell@linaro.org,
- richard.henderson@linaro.org, maz@kernel.org,
- gkulkarni@amperecomputing.com, gankulkarni@os.amperecomputing.com
-Subject: [PATCH v5 1/5] linux-headers: Update against kvm/next
-Date: Tue, 27 May 2025 08:24:33 +0200
-Message-ID: <20250527062534.1186004-2-eric.auger@redhat.com>
-In-Reply-To: <20250527062534.1186004-1-eric.auger@redhat.com>
-References: <20250527062534.1186004-1-eric.auger@redhat.com>
+	s=mimecast20190719; t=1748328413;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ZKcUKj/LlKENAraKAjOyxIlLxLJFH0ua2ybc/69QUec=;
+	b=d0T3xGPMX7FWrV0Ei2C1Iqu5/ftBc91Vb5GlsyH20jXqGugjwv3SGSvosVh1ySFdl6Rpmo
+	oUZoY8atSsU3Ysk4nZKSESvzpzS7N6GAysG70E8dJToSR7TD8w+wA4MdXkeNy2PsurmF8u
+	dNMLTwA8CQwwIsf20SDiqAMnnoALKnI=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-673-JHyiFoU4O_6zsAMMywmPBw-1; Tue, 27 May 2025 02:46:49 -0400
+X-MC-Unique: JHyiFoU4O_6zsAMMywmPBw-1
+X-Mimecast-MFC-AGG-ID: JHyiFoU4O_6zsAMMywmPBw_1748328409
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-43d5ca7c86aso17359245e9.0
+        for <alex.bennee@linaro.org>; Mon, 26 May 2025 23:46:49 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748328409; x=1748933209;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZKcUKj/LlKENAraKAjOyxIlLxLJFH0ua2ybc/69QUec=;
+        b=Zx6lUwe+ABmCcuTsayAWkCuxCzLwjRaWnMhly5SOHFZgdVGvO2j1gywOVoBpIIDCuw
+         EGhSQeCcnXbRJX/E+YmfGQ0EwchzPKTi3n5oX7XvfBkWT5zbbH3lx6LZRyHRNkzmsDTU
+         VmKcMvLO2fFGy/yGbDDmYz/igGbczUIIfT5JeV8sTJvNlZgd07jWf9vfiqGSyJ8cxL3r
+         8PFe2o4V/aVHCyAiG1hjLhbrpPaX/IYHnrB1dKvCCEoiN2yzb05XOCtBx6JbdDUJmaCj
+         qfdCCMDG+bbrBGQXTvE7ezOGFSX5xa2HhfL2xxbyrY3Q2KhRXCPss4LSEOQ4Gj5+524+
+         4jGw==
+X-Forwarded-Encrypted: i=1; AJvYcCXCjNKjHQvyf3CXRXX+kMDMvzNFacov3V1kTOcuPtYjAePE4GzzsFUTlATxACcCZ1/AMcnAT8rlFnL3rQ==@linaro.org
+X-Gm-Message-State: AOJu0YxccuuyRkV3JqUW9D44s0AWz6sl1Z9NiDzHfhw6C0d4o1cJZW8f
+	EI/cA2PDT3W00blbJ3NRv2cxOcj2OG/LdOlV0VxXw2zJtby1pHGeliNCAZTzsaK3XD/HVuYtlMg
+	KDugh8sAYjpnhPm6H33XtMcz+uxQay0yOYweHSmsCTI9ACBzzZN71ZpYN2A==
+X-Gm-Gg: ASbGncvvCAyrK3DsBH5+evg+URZROBBTsk6kiDeprNUb0zK0AnUHCkeT+2MG9THQnhu
+	25GX5Vm7vStyi7AwNK0Ov8tVxR5L82Ot5HWux3CF+9hRZSJxs5TqVc8fbXPc0rrlCcw/0yziqZt
+	VcAvzAcaVRYiZrALGlaNoOnLoBLKjiycyxYmTPdxRLK/ys1pWAGaPVFXnXWMOY4bk+eXmcxd07R
+	qJX/4JkD3701IV5fyBIRws9AZhdV1PtoaqCw8GyMh7WJCRCcPhuyjtTjowTcG8YP+ID63DLS0Sk
+	Q9wJ/kxk97/okSU6yQCPkN6nEhMFd/Kag4CeziFXYY9RRPLFHUZRFjyCI4Y=
+X-Received: by 2002:a05:600c:4fc9:b0:43c:ec4c:25b4 with SMTP id 5b1f17b1804b1-44c91ad70d0mr133060645e9.10.1748328408740;
+        Mon, 26 May 2025 23:46:48 -0700 (PDT)
+X-Received: by 2002:a05:600c:4fc9:b0:43c:ec4c:25b4 with SMTP id 5b1f17b1804b1-44c91ad70d0mr133060355e9.10.1748328408358;
+        Mon, 26 May 2025 23:46:48 -0700 (PDT)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-447f6f0552esm255876705e9.11.2025.05.26.23.46.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 26 May 2025 23:46:47 -0700 (PDT)
+Message-ID: <cdf2bcaa-ca41-4af2-9eaa-408f81f891fd@redhat.com>
+Date: Tue, 27 May 2025 08:46:46 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Reply-To: eric.auger@redhat.com
+Subject: Re: [PATCH 2/5] tests/qtest/bios-tables-test: Keep ACPI PCI hotplug
+ off
+To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, thuth@redhat.com, alex.bennee@linaro.org,
+ mst@redhat.com, imammedo@redhat.com
+References: <20250526053123.1434204-1-gustavo.romero@linaro.org>
+ <20250526053123.1434204-3-gustavo.romero@linaro.org>
+ <a9a8d55f-7409-4dd6-97f6-a373de9870df@redhat.com>
+ <d86cd26f-c43d-4a99-bd9e-573d3d7cf8bd@linaro.org>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <d86cd26f-c43d-4a99-bd9e-573d3d7cf8bd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: q6rIMhoPyARWU0M8slf5WvjJB5BEQF_bA8DOvDByRNg_1748328409
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -49
-X-Spam_score: -5.0
-X-Spam_bar: -----
-X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.903,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zJ60LgNjTWDV
+X-TUID: btGGYrHtp86+
 
-This is a linux header update against kvm/next (e9f17038d814)
+Hi Gustavo,
 
-especially targeted to get nested virt enablement.
+On 5/26/25 6:09 PM, Gustavo Romero wrote:
+> Hi Eric,
+>
+> On 5/26/25 12:28, Eric Auger wrote:
+>> Hi Gustavo,
+>>
+>> On 5/26/25 7:31 AM, Gustavo Romero wrote:
+>>> ACPI PCI hotplug is now turned on by default so we need to change the
+>>> existing tests to keep it off. However, even setting the ACPI PCI
+>>> hotplug off in the existing tests, there will be changes in the ACPI
+>>> tables because the _OSC method was modified, hence in the next patch of
+>>> this series the blobs are updated accordingly.
+>>>
+>>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+>>> ---
+>>>   tests/qtest/bios-tables-test.c | 10 +++++++---
+>>>   1 file changed, 7 insertions(+), 3 deletions(-)
+>>>
+>>> diff --git a/tests/qtest/bios-tables-test.c
+>>> b/tests/qtest/bios-tables-test.c
+>>> index 0a333ec435..216941dbb5 100644
+>>> --- a/tests/qtest/bios-tables-test.c
+>>> +++ b/tests/qtest/bios-tables-test.c
+>>> @@ -1626,7 +1626,7 @@ static void
+>>> test_acpi_aarch64_virt_tcg_memhp(void)
+>>>       };
+>>>         data.variant = ".memhp";
+>>> -    test_acpi_one(" -machine nvdimm=on"
+>>> +    test_acpi_one(" -machine nvdimm=on,acpi-pcihp=off"
+>>>                     " -cpu cortex-a57"
+>>>                     " -m 256M,slots=3,maxmem=1G"
+>>>                     " -object memory-backend-ram,id=ram0,size=128M"
+>>> @@ -1775,7 +1775,8 @@ static void test_acpi_aarch64_virt_tcg_pxb(void)
+>>>        * to solve the conflicts.
+>>>        */
+>>>       data.variant = ".pxb";
+>>> -    test_acpi_one(" -device pcie-root-port,chassis=1,id=pci.1"
+>>> +    test_acpi_one(" -machine acpi-pcihp=off"
+>>> +                  " -device pcie-root-port,chassis=1,id=pci.1"
+>>>                     " -device virtio-scsi-pci,id=scsi0,bus=pci.1"
+>>>                     " -drive file="
+>>>                    
+>>> "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2,"
+>>> @@ -1846,7 +1847,7 @@ static void
+>>> test_acpi_aarch64_virt_tcg_acpi_hmat(void)
+>>>         data.variant = ".acpihmatvirt";
+>>>   -    test_acpi_one(" -machine hmat=on"
+>>> +    test_acpi_one(" -machine hmat=on,acpi-pcihp=off"
+>>>                     " -cpu cortex-a57"
+>>>                     " -smp 4,sockets=2"
+>>>                     " -m 384M"
+>>> @@ -2123,6 +2124,7 @@ static void test_acpi_aarch64_virt_tcg(void)
+>>>       data.smbios_cpu_max_speed = 2900;
+>>>       data.smbios_cpu_curr_speed = 2700;
+>>>       test_acpi_one("-cpu cortex-a57 "
+>>> +                  "-machine acpi-pcihp=off "
+>>>                     "-smbios
+>>> type=4,max-speed=2900,current-speed=2700", &data);
+>>>       free_test_data(&data);
+>> On my end I also need to add -machine acpi-pcihp=off in
+>> test_acpi_aarch64_virt_tcg_numamem
+>
+> Yeah, by reading the code I'm pretty sure this is required by the
+> numamem variant
+> as well but I don't see a failure here :( I have _no clue_ why the
+> failure doesn't
+> happen on my env. Are you running simply "make check V=2"? arm64 host?
+on my end I am running on x86 host with TCG aarch64 configured qemu
+make -j 128 tests/qtest/bios-tables-test
+cd build
+QTEST_QEMU_BINARY=./qemu-system-aarch64 tests/qtest/bios-tables-test
+>
+>
+>> with that fixed,
+>>
+>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>
+> Thanks for the review! I'm sending a v2 with numamem variant fixed.
+>
+> BTW, I'm sending soon also a functional test variant for acpi-pcihp=off.
+OK thanks!
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- include/standard-headers/linux/virtio_pci.h | 1 +
- linux-headers/asm-arm64/kvm.h               | 9 +++++----
- linux-headers/linux/kvm.h                   | 3 +++
- linux-headers/linux/vhost.h                 | 4 ++--
- 4 files changed, 11 insertions(+), 6 deletions(-)
+Cheers
 
-diff --git a/include/standard-headers/linux/virtio_pci.h b/include/standard-headers/linux/virtio_pci.h
-index 91fec6f502..09e964e6ee 100644
---- a/include/standard-headers/linux/virtio_pci.h
-+++ b/include/standard-headers/linux/virtio_pci.h
-@@ -246,6 +246,7 @@ struct virtio_pci_cfg_cap {
- #define VIRTIO_ADMIN_CMD_LIST_USE	0x1
- 
- /* Admin command group type. */
-+#define VIRTIO_ADMIN_GROUP_TYPE_SELF	0x0
- #define VIRTIO_ADMIN_GROUP_TYPE_SRIOV	0x1
- 
- /* Transitional device admin command. */
-diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.h
-index 4e6aff08df..f4d9baafa1 100644
---- a/linux-headers/asm-arm64/kvm.h
-+++ b/linux-headers/asm-arm64/kvm.h
-@@ -419,10 +419,11 @@ enum {
- 
- /* Device Control API on vcpu fd */
- #define KVM_ARM_VCPU_PMU_V3_CTRL	0
--#define   KVM_ARM_VCPU_PMU_V3_IRQ	0
--#define   KVM_ARM_VCPU_PMU_V3_INIT	1
--#define   KVM_ARM_VCPU_PMU_V3_FILTER	2
--#define   KVM_ARM_VCPU_PMU_V3_SET_PMU	3
-+#define   KVM_ARM_VCPU_PMU_V3_IRQ		0
-+#define   KVM_ARM_VCPU_PMU_V3_INIT		1
-+#define   KVM_ARM_VCPU_PMU_V3_FILTER		2
-+#define   KVM_ARM_VCPU_PMU_V3_SET_PMU		3
-+#define   KVM_ARM_VCPU_PMU_V3_SET_NR_COUNTERS	4
- #define KVM_ARM_VCPU_TIMER_CTRL		1
- #define   KVM_ARM_VCPU_TIMER_IRQ_VTIMER		0
- #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER		1
-diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-index 99cc82a275..e50334fc52 100644
---- a/linux-headers/linux/kvm.h
-+++ b/linux-headers/linux/kvm.h
-@@ -923,6 +923,9 @@ struct kvm_enable_cap {
- #define KVM_CAP_X86_APIC_BUS_CYCLES_NS 237
- #define KVM_CAP_X86_GUEST_MODE 238
- #define KVM_CAP_ARM_WRITABLE_IMP_ID_REGS 239
-+#define KVM_CAP_ARM_EL2 240
-+#define KVM_CAP_ARM_EL2_E2H0 241
-+#define KVM_CAP_RISCV_MP_STATE_RESET 242
- 
- struct kvm_irq_routing_irqchip {
- 	__u32 irqchip;
-diff --git a/linux-headers/linux/vhost.h b/linux-headers/linux/vhost.h
-index b95dd84eef..d4b3e2ae13 100644
---- a/linux-headers/linux/vhost.h
-+++ b/linux-headers/linux/vhost.h
-@@ -28,10 +28,10 @@
- 
- /* Set current process as the (exclusive) owner of this file descriptor.  This
-  * must be called before any other vhost command.  Further calls to
-- * VHOST_OWNER_SET fail until VHOST_OWNER_RESET is called. */
-+ * VHOST_SET_OWNER fail until VHOST_RESET_OWNER is called. */
- #define VHOST_SET_OWNER _IO(VHOST_VIRTIO, 0x01)
- /* Give up ownership, and reset the device to default values.
-- * Allows subsequent call to VHOST_OWNER_SET to succeed. */
-+ * Allows subsequent call to VHOST_SET_OWNER to succeed. */
- #define VHOST_RESET_OWNER _IO(VHOST_VIRTIO, 0x02)
- 
- /* Set up/modify memory layout */
--- 
-2.49.0
-
+Eric
+>
+>
+> Cheers,
+> Gustavo
+>  
+>>
+>> Thanks
+>>
+>> Eric
+>>>   }
+>>> @@ -2142,6 +2144,7 @@ static void
+>>> test_acpi_aarch64_virt_tcg_topology(void)
+>>>       };
+>>>         test_acpi_one("-cpu cortex-a57 "
+>>> +                  "-machine acpi-pcihp=off "
+>>>                     "-smp sockets=1,clusters=2,cores=2,threads=2",
+>>> &data);
+>>>       free_test_data(&data);
+>>>   }
+>>> @@ -2227,6 +2230,7 @@ static void test_acpi_aarch64_virt_viot(void)
+>>>       };
+>>>         test_acpi_one("-cpu cortex-a57 "
+>>> +                  "-machine acpi-pcihp=off "
+>>>                     "-device virtio-iommu-pci", &data);
+>>>       free_test_data(&data);
+>>>   }
+>>
+>

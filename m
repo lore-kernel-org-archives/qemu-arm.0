@@ -1,70 +1,70 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4648273njc;
-        Tue, 27 May 2025 00:44:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVc+J1C2nhqYfY2I119ux1RlFq5J32rOyEh6dUUNcZXWnAEKx1gqfsQJWj4dbFCgN6KXL7ZR+VikO7VfA==@linaro.org
-X-Google-Smtp-Source: AGHT+IF1/Kg2xK7CtbfCQwKUL+JOXCwa87Mg4qBn4kkAwVp9uqJS2HgYaHcxpetqGVhzB2GRECGy
-X-Received: by 2002:ac8:5c95:0:b0:494:a436:e610 with SMTP id d75a77b69052e-49f46d3188amr223563581cf.13.1748331880223;
-        Tue, 27 May 2025 00:44:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748331880; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4648303njc;
+        Tue, 27 May 2025 00:44:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW3SJ2Oiic8vCqfmLwU8NGPs8zZ3Vf1LCdhKc39tSEK+nHn6xDP0OdYVX5I0Mq5CY4g+fm+s7sD0IIb7g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHA/PYJB/xIyDKIuiIsJ8s+7k7CWPM1zqDo5L8QeBKx9tPmj5nV72nH06rl+HMMsLWlnMzC
+X-Received: by 2002:a05:6a00:3a0b:b0:736:9e40:13b1 with SMTP id d2e1a72fcca58-745fe079f2cmr19719679b3a.23.1748331885597;
+        Tue, 27 May 2025 00:44:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748331885; cv=none;
         d=google.com; s=arc-20240605;
-        b=VszIbwAHQc9N3vS/xmmi3S7Mv9JGK4FFqoWXLKvyS1eCMxEBDeroNL5vWhMQZysOF6
-         ILwCJK0m9NpyAVABDjU39EHFuHwSABX5D/EQ4DF3WMv/0ls4kz36V/REr6tIXnUFZ2YA
-         AWPgdMyAZ2G0fSwnhQbHSAlQomKJW/K8ooMBteqFWkDgIGcC7GQMbjz9DAqgmwALoOzP
-         vl0aosQXjRBWYvhxegId4WBxbybf0SQP/P/+PMt/fxESkkOk9rVrmOUrw93o2BQ2YLKb
-         JHUxvVsg87oW244cpVVbJQVjhtT5BedWBflK4+BEyTpatw06z7wGVFNNOF7WD29nHE6S
-         mNsw==
+        b=Tn7osEPLh2eplba/lxPi7U94rznr4L1J23/oE3bUmyYA7uD5sQrCB5rWrlEUQfhBJz
+         8RUVcKlfx/poBHtegHaNPvNokaECXMuYPyixdDWuT/yzha9kuzKrhA5Mn2v4WQ8qw/lg
+         mN/Y1pVj/m1JcGfLfMfNv9CRkm9vzMfYjKlSSf+SMtdrvrIaTPzZHLbOTnyrgU1ziSPA
+         LNCLtb8PgF6AwasxH/6vLdB4dVZFEvCYbJAVMbJgRwhZLXFN2LtRLr4OGYzV0Ep3iDUQ
+         7atRrxS7CuFVteUv+g3yyf7IMH+8/P1TaftX4vfmbqb6boMxK02/4lG1lOkhZ2kwzrbw
+         wYKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=NjrLUtJ/wTeOeGDQFHs3hbhXToVFKVogEjfIEHIOlwI=;
+        bh=3t3U2LOaBy/tiJj8bvCKrzHqShBPoDyX9s6oNrgHj58=;
         fh=3+/pQVIKD31FE8qJaDVh0A7e2m9TMoY7e0VvIw0mRHw=;
-        b=W6n2/MDTlvQ9dYntBGnnOEc2UJLpURtwlA1O9eWL75koQ2I3tYmnsS3zIJjZv2fJVI
-         PLng9U6kXFQDuw4xXz9MhwmlxAHjOVRoN3zY0OHtML5QhQoyoq0k/Fq05HGpJrPHBJWE
-         wCzYrz0ukPsITCBoKfEm+zJJ500v7opllVJStrFjC34dvcxUC3YzzFf3TG75VsFmMVdM
-         F2KHTMPez2EuFpsGwGGPVP6TdAU5fF8tMAuPkLIHO9kSnH3hvfVSBDwYmQAXoHMfsYya
-         ij5bgwwMWbCo8BT6NHPcLNtAiWTnZnoulSb7bPJo0oVYp4SRPVkVekdQlgJNReElc3YU
-         4uvw==;
+        b=C97RgwDe0CMjRCBb7FXP6o19PkfBpuwUdFrDD/XhM7XH2PxHAMH0leXVeD+mfJnmMy
+         a6fkhNMPf+AkrHJpr17rW8Zgu2vAi0vPpSmRHW5G7zZN2rzeGQH+qaMN4jPpSS9pHu6x
+         YF8zLtGBDCWhrMhbgIDF9CW0/6FCdgFjvCiQyF3ioF8L3n26p2HCYmAf+s6s9VQh13Cd
+         2abFXfUOruB2nKVH+6R+THSJFa8fguGymoD9RL1s0JR9TuP6DCrVF7KCvLoZ5ODqgErJ
+         sz9g28pWnKDoQXfNYOJRXt5+VgZD7MliHCldoBlxNchVpi4j/gHaQzBo+6f5qtMimHOI
+         lDjQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GE6NCWei;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S+uAOQX0;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <eric.auger@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-494ae57c10bsi255151951cf.442.2025.05.27.00.44.40
+        by mx.google.com with ESMTPS id d2e1a72fcca58-742a97f49a7si30687410b3a.237.2025.05.27.00.44.45
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 May 2025 00:44:40 -0700 (PDT)
+        Tue, 27 May 2025 00:44:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GE6NCWei;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S+uAOQX0;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1748331879;
+	s=mimecast20190719; t=1748331884;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=NjrLUtJ/wTeOeGDQFHs3hbhXToVFKVogEjfIEHIOlwI=;
-	b=GE6NCWeiv4xFtXeMInkLJcUiAq8FE+eOjPtOdOVMcEQ9MKn0awYVVOXX10i1wjuG1FYlUd
-	DAOsNicD/pctomKHVSrbWvFo0BN+ojOFb2DjROK6UqPd5pOB0NBIbX3m0Qc/z8weRVK+5I
-	o1j8mzscC5bcT6dv1ezKn7z5gII1w7M=
+	bh=3t3U2LOaBy/tiJj8bvCKrzHqShBPoDyX9s6oNrgHj58=;
+	b=S+uAOQX0jOXImsoUt+BA3rXTQqD6taa881/ykQAbhv+hhSOcqpfcWjkoe8NZWgggaWPTBN
+	UX468om5fhA5M3BBrHBdqVuMoHRKrkU1PnBWr6ywiubm/d4RudEl0csC62Q84P4SUpG1x0
+	O/YaFI0h15S3nbqyPoJUI7Og+sKiRA8=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-166-sZS2cBcbO5mCSNgA5ZM2Ug-1; Tue,
- 27 May 2025 03:44:36 -0400
-X-MC-Unique: sZS2cBcbO5mCSNgA5ZM2Ug-1
-X-Mimecast-MFC-AGG-ID: sZS2cBcbO5mCSNgA5ZM2Ug_1748331874
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-324-CWJUZvRlO8OvJ3Yiv9hSOA-1; Tue,
+ 27 May 2025 03:44:41 -0400
+X-MC-Unique: CWJUZvRlO8OvJ3Yiv9hSOA-1
+X-Mimecast-MFC-AGG-ID: CWJUZvRlO8OvJ3Yiv9hSOA_1748331879
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 9618D1800115;
-	Tue, 27 May 2025 07:44:34 +0000 (UTC)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 85E1218003FC;
+	Tue, 27 May 2025 07:44:39 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.45.224.201])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 3C91019560AA;
-	Tue, 27 May 2025 07:44:29 +0000 (UTC)
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 239641944A89;
+	Tue, 27 May 2025 07:44:34 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com,
 	eric.auger@redhat.com,
@@ -80,99 +80,38 @@ Cc: pbonzini@redhat.com,
 	Jonathan.Cameron@huawei.com,
 	philmd@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v2 24/25] tests/qtest/bios-tables-test: Keep ACPI PCI hotplug off
-Date: Tue, 27 May 2025 09:40:26 +0200
-Message-ID: <20250527074224.1197793-25-eric.auger@redhat.com>
+Subject: [PATCH v2 25/25] hw/arm/virt: Use ACPI PCI hotplug by default
+Date: Tue, 27 May 2025 09:40:27 +0200
+Message-ID: <20250527074224.1197793-26-eric.auger@redhat.com>
 In-Reply-To: <20250527074224.1197793-1-eric.auger@redhat.com>
 References: <20250527074224.1197793-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: KxGi/S/YJolv
+X-TUID: QfIpBcR1jjhU
 
-From: Gustavo Romero <gustavo.romero@linaro.org>
+Now all the enablers are there for ACPI PCI hotplug support,
+let's use it by default for 10.1 virt machine onwards.
 
-ACPI PCI hotplug is now turned on by default so we need to change the
-existing tests to keep it off. However, even setting the ACPI PCI
-hotplug off in the existing tests, there will be changes in the ACPI
-tables because the _OSC method was modified, hence in the next patch of
-this series the blobs are updated accordingly.
-
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
 ---
+ hw/arm/virt.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-[Eric] also added acpi-pcihp=off to test_acpi_aarch64_virt_tcg_numamem
----
- tests/qtest/bios-tables-test.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
-
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index 0a333ec435..6379dba714 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -1626,7 +1626,7 @@ static void test_acpi_aarch64_virt_tcg_memhp(void)
-     };
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index adb9422e14..f9ab6e2a90 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -3432,8 +3432,8 @@ static void virt_instance_init(Object *obj)
+         vms->tcg_its = true;
+     }
  
-     data.variant = ".memhp";
--    test_acpi_one(" -machine nvdimm=on"
-+    test_acpi_one(" -machine nvdimm=on,acpi-pcihp=off"
-                   " -cpu cortex-a57"
-                   " -m 256M,slots=3,maxmem=1G"
-                   " -object memory-backend-ram,id=ram0,size=128M"
-@@ -1747,7 +1747,8 @@ static void test_acpi_aarch64_virt_tcg_numamem(void)
-     };
+-    /* default disallows ACPI PCI hotplug */
+-    vms->acpi_pcihp = false;
++    /* default allows ACPI PCI hotplug */
++    vms->acpi_pcihp = true;
  
-     data.variant = ".numamem";
--    test_acpi_one(" -cpu cortex-a57"
-+    test_acpi_one(" -machine acpi-pcihp=off"
-+                  " -cpu cortex-a57"
-                   " -object memory-backend-ram,id=ram0,size=128M"
-                   " -numa node,memdev=ram0",
-                   &data);
-@@ -1775,7 +1776,8 @@ static void test_acpi_aarch64_virt_tcg_pxb(void)
-      * to solve the conflicts.
-      */
-     data.variant = ".pxb";
--    test_acpi_one(" -device pcie-root-port,chassis=1,id=pci.1"
-+    test_acpi_one(" -machine acpi-pcihp=off"
-+                  " -device pcie-root-port,chassis=1,id=pci.1"
-                   " -device virtio-scsi-pci,id=scsi0,bus=pci.1"
-                   " -drive file="
-                   "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2,"
-@@ -1846,7 +1848,7 @@ static void test_acpi_aarch64_virt_tcg_acpi_hmat(void)
- 
-     data.variant = ".acpihmatvirt";
- 
--    test_acpi_one(" -machine hmat=on"
-+    test_acpi_one(" -machine hmat=on,acpi-pcihp=off"
-                   " -cpu cortex-a57"
-                   " -smp 4,sockets=2"
-                   " -m 384M"
-@@ -2123,6 +2125,7 @@ static void test_acpi_aarch64_virt_tcg(void)
-     data.smbios_cpu_max_speed = 2900;
-     data.smbios_cpu_curr_speed = 2700;
-     test_acpi_one("-cpu cortex-a57 "
-+                  "-machine acpi-pcihp=off "
-                   "-smbios type=4,max-speed=2900,current-speed=2700", &data);
-     free_test_data(&data);
- }
-@@ -2142,6 +2145,7 @@ static void test_acpi_aarch64_virt_tcg_topology(void)
-     };
- 
-     test_acpi_one("-cpu cortex-a57 "
-+                  "-machine acpi-pcihp=off "
-                   "-smp sockets=1,clusters=2,cores=2,threads=2", &data);
-     free_test_data(&data);
- }
-@@ -2227,6 +2231,7 @@ static void test_acpi_aarch64_virt_viot(void)
-     };
- 
-     test_acpi_one("-cpu cortex-a57 "
-+                  "-machine acpi-pcihp=off "
-                   "-device virtio-iommu-pci", &data);
-     free_test_data(&data);
- }
+     /* Default disallows iommu instantiation */
+     vms->iommu = VIRT_IOMMU_NONE;
 -- 
 2.49.0

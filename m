@@ -1,302 +1,255 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4730573njc;
-        Tue, 27 May 2025 04:03:09 -0700 (PDT)
-X-Received: by 2002:a05:6a21:3a89:b0:218:59b:b2f4 with SMTP id adf61e73a8af0-2188c3c66d0mr18445614637.42.1748343788996;
-        Tue, 27 May 2025 04:03:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748343788; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4758377njc;
+        Tue, 27 May 2025 04:58:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUcWg+fAE+gGo0qo8s3TuUC2b71nparAm7Y1VJmpqkhdn0P7Y07xNt7NCNN7vifI46g4nbIFBW0Suippw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGgC47hg8UX5vWDDBbElNrKDQo3Ac8ieZghCudjcaGQrl7CJdvNjcNsBJAeDolkWTFNQ+Zv
+X-Received: by 2002:a05:6214:246a:b0:6f8:a7c6:22ca with SMTP id 6a1803df08f44-6fa9d02b558mr178171366d6.16.1748347099238;
+        Tue, 27 May 2025 04:58:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748347099; cv=none;
         d=google.com; s=arc-20240605;
-        b=j6JDbNkeQNjBfGchwqVG5bA0zeT3Qv1IxgMAESsv6uj6B6Po2WA+8qxw0FUe2P6dP0
-         AwQUO0YsnS7/oIto4ZNc+lBk+bDqU99gkFlpHY2PeJ7kGglWaCsomvzr6QIEJahUn++C
-         fzCgpBc7omXooUTjgFzeNA25Og9s9RmMqoK5M00gDBhGx0AcEn4X5o2Y3Ll40DYSwf2j
-         Ma6ScS+32TMlpZzO+3NoxCCxiwgR5BG7QhnGPZx8Sgw/79cbitWn59Cn9dN1hnCzc6qQ
-         dh5ULzvf91+ZETBGeEKAMzJWOABBxufEl1ou4uvfLaceujzxhyPLk58swzngHDh4YGrB
-         FabQ==
+        b=Ajvd1BFGLeupZ64lSOfeTYQwSnE+XeUXNq05w1DjvEEGcaDR/U8LfRAz5iQ51PEKQz
+         DsAo83W14qU+KdlVmuCZJDo4qtyl4E0FxXgSn3RmNM/pyEsbXhijetTDez404kxqpWVk
+         cCPn1oDSwsgdlPg33/xACeC2I0HzKyoMN1mcnUl6nEJj8KTJZFCNEv4S8msrYXa+34dV
+         m2Jr1CMw/TW5Zgeb93J/frrImNsVTWtumrIV7kFxx9NB+BnqSoFurIyCgNkjPzaaOQre
+         XIzb5f0Zx2CP/SO40O1316pjuZXSq74JT0hqn8SVWOoYG8EFTThLcTkkNLvZtFPeJ8S/
+         6vuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=dhBAGDy5ge1xAxqK0/JlkV+qIGKgfocICelKGqAniqY=;
-        fh=vz/Wu4DZUmj/fvUnyKW4Lbak49ERl7A7MmX3qqu4zJY=;
-        b=AkET5rBP+HDB6F5gsW+9Yt9GByrBzLk2yFqJK5iha+JzZqwmUrBFwgCqN203zrkM5W
-         2uByNe1u1lSFvcnLOJCECZsQYiWZnnG+LvXBfpIrZM1Y2XF8i/ee/bHhUiTOsee/TSfG
-         sk3OkCotPwYbZhvZq4ijaIOoMee8uJqgrnOD24hYL1IkjmPxN+dm01KVIKbRhpabAG9l
-         rlyIiUko9XO6VyXLiNzh07GK30d+CP4faipqzq035vNvBHn9/PwcDpi09Edj4CLoFVAE
-         ydY7dn6yPE7sKJyqYLRxeU0JUQ0CzS+UtzSX5RcnPj2uWa/foReTngQlV7OacnyH+4uA
-         ia3A==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=dHqXEgaQTrxB4IKRGQZjKBkcdlkshcKYt4h4/GTe1W4=;
+        fh=DALqqOCQ47UeCbJp2ZwcYwoFiCzdsY1x6SHOz270VVM=;
+        b=c4DTWdP+K9bbqHPfe6lFCO72D6CpvEnum4IxWxpk5wTp/gTP02HW6aZjdlCOaeRqzP
+         is8zz6nN9j7QOUg5ziZtTQ1s1rvur/9w49IOcR6gEbs4wQJb3r5Bw8B9q0XCs89kG40x
+         Od1C4fgyUxZ3USNAmEg5NCO7VklxSJ25Up7Pb7wVsIjfmYW9C3IVvwNls7lRh2cXDYvL
+         Jmc2oTblrw6di4tyTIFhoS5yDdIczKqqFa5VhXUd8YhS2LRuDboFNVeVQJczcCCEYS+8
+         9x/HLEYG2s8tif6h406BSPHEkb3XHuST3fVxSpfnRhwmWLz+eoLEeM1mKdaXhCndEJpg
+         3oyw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=guY9ep1E;
-       spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-742a97f2b6fsor18239176b3a.6.2025.05.27.04.03.08
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=I4BjtTBh;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6f8b09acaf4si259903776d6.275.2025.05.27.04.58.19
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 27 May 2025 04:03:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 May 2025 04:58:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=guY9ep1E;
-       spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1748343788; x=1748948588; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=dhBAGDy5ge1xAxqK0/JlkV+qIGKgfocICelKGqAniqY=;
-        b=guY9ep1EwXYAup17OVtF+dLpHhdhq/uLX9KhcH6xjiTLGBm1f99k3y1Y6Kns3DYfvw
-         vNRHbddGqwYghEXV4BZAoy9rb1IN4kKq4IHeGpspl+zEeB3UPoEd67bdGM4o+eB76NQh
-         sx1xVd0eywPKW1+HkIw1fEPMVEO0H8jNzBlP6c0vxBj3CdSvONMQ+HLuZvPc+EK0Hc2P
-         maxT59Cc40lhpAqaDVyBh8TbLCdhVmh8JDkf65denvrqVVI+VO0T5voSI1QTMFSyg29z
-         YvC6Us7DF+bFGMQBH4BYWByHItF1E1WtVyN599t8LgAYolszS+M15S6+jBqEjHi8FkLa
-         xWRQ==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=I4BjtTBh;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1748347098;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=dHqXEgaQTrxB4IKRGQZjKBkcdlkshcKYt4h4/GTe1W4=;
+	b=I4BjtTBhgjZkjJxj60It07LyKY/geY67Pm4BWk6DlT6EIvJ3PI8fJpJ6soIZDUrSMrR3wo
+	lYQIsO7bprgRQv1dM0b5pBU9BDLDJzijcarK+QSlJrU0lJiYXssM1SdI54FLCqLjXMUcf2
+	Ih9LeisD/W+pUViEJTMecV46DvUXzn0=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-314-ddb_BS5oPlyTXhYc1SvGcg-1; Tue, 27 May 2025 07:58:17 -0400
+X-MC-Unique: ddb_BS5oPlyTXhYc1SvGcg-1
+X-Mimecast-MFC-AGG-ID: ddb_BS5oPlyTXhYc1SvGcg_1748347096
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3a375938404so2190131f8f.0
+        for <alex.bennee@linaro.org>; Tue, 27 May 2025 04:58:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748343788; x=1748948588;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=dhBAGDy5ge1xAxqK0/JlkV+qIGKgfocICelKGqAniqY=;
-        b=Vk1mlPrTwV20iKUZfnmF/zo2Nun4i1oMZVn8eoX+NPaU0D+aqP2up7OghFvsIC8L5l
-         Zf38AHKzar6fiS+TON/c8yNEBuQFoLC6wqr2cEuVXipG0SfUPaA0yf3J+GxbTfYPW7jP
-         ySGeh8hX+fR+mUzABgY3qUjq+asRZsLo6SlK7q0kW0gGD5Wh0ZE221j64f4qv5ZLbeDw
-         kJG3+TWOgDd77FWcxsXZM615lvuipubwvcAm/5MiOqTIH2IvHtRqkBxVNPmHHdlrNx11
-         8ubGQiRTNKRKRbDGUNyCkM7qV91JWR3bFKd7xmfndr8aVMyoN2274cz9cvfzN0KY5gse
-         uMag==
-X-Gm-Message-State: AOJu0YyROm7G73wykokMiG323qUjhjYHTf4lI8uKhl+c00H6lT2ZyZvk
-	RTkNjuYtSBghBMuyrHc3XTO/q2Qfy0kEi09Bfc5bKHuJzh90jFMfNPNJk2cJwzk4wW3aFyp0cXI
-	2x/B6
-X-Gm-Gg: ASbGncvbS/3mNWIExQRTN+WgWBU9lTs049KZ5WNbQIQMjsG7UX4aRWnWT7lYoV4EILP
-	BjspzxU6Y2ZK8ai0Ql88H+C1plmIn4PtdHV43duJP8kTV08LqyLl+J21PNt0IUyQrIS+E8Hb4uV
-	xcNjJxmbWdeiQNjH02zht1H6HW8fbCxWkGhJhANsHCpML5cjI/FEEOEC/uYPozh6KWvO1hU5NQN
-	CrAqw5vpksg5gMAT65tbFhftCVb5AHTTfVx1LL/WYSloONsVjRBH3aZ+ndgkjRYzPGEv4lBSKuD
-	bXk3FNJqx/iM0ySDa/j45QEk9YfR/wuZ0BwScHkCYkuSDsn3M1fSBKFl3pjSTin/yLsuN1tWZZ6
-	d0/jKSJDaaLhX7lmdpUGr5FsABcx3gA==
-X-Google-Smtp-Source: AGHT+IHs5Us98HvdCfta1J00ev5HbDgyhC3CIgEoXZgBQq+zJM0yMXjmnz92SvIF/1THi05DsRUk6Q==
-X-Received: by 2002:a05:6a00:21c2:b0:73e:5aa:4f64 with SMTP id d2e1a72fcca58-745fde9f3b7mr17828762b3a.10.1748343788221;
-        Tue, 27 May 2025 04:03:08 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from ?IPV6:2400:4050:b783:b00:4952:3c52:120a:27e9? ([2400:4050:b783:b00:4952:3c52:120a:27e9])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b2c47f887efsm581227a12.47.2025.05.27.04.03.04
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 27 May 2025 04:03:07 -0700 (PDT)
-Message-ID: <e9285843-0487-4754-a348-34f1a852b24c@daynix.com>
-Date: Tue, 27 May 2025 20:03:03 +0900
+        d=1e100.net; s=20230601; t=1748347096; x=1748951896;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=dHqXEgaQTrxB4IKRGQZjKBkcdlkshcKYt4h4/GTe1W4=;
+        b=ljo7s9ipyGuJBNzsS7V3vYCjzEAvLU+nTXstGTyNDirHxIgT+9YOoYOf+1Hb1I9MqL
+         4RRYkFlaMWHvBeWcQLcQAdDU28qn1DofD6MgHi20cdx+ww+nlL7017qSWeuWVSmvzxMl
+         4IFVy+fSIr7z1AZYNGQAKseGCdBm2hUQVQfuS+4q9zT+ht3czNDBy0Xq6bBZe1xpPXYq
+         dqgg5AfzyEpwibNXFdjA86GtG8xexiWVoqvm2nLszL8ekHEFdTibcgGszuv6J/uQ3ozX
+         rQCEwj886otcaGVIYNgLcnVphBCW39etyP8lRBVhrdxoyg6CS8pwWNf7kGkZyO3Ot5Qg
+         ojKg==
+X-Forwarded-Encrypted: i=1; AJvYcCXzk+47hLZgcMBuK1Mr03h2/hxoe21zYUtb/MQKkFCAlU5cfvtyl1kLihnHJ+mEPAH+dmoImgN+Mfcgvg==@linaro.org
+X-Gm-Message-State: AOJu0Yxycmav5sc69GS+jQZdTr98hDMn39UG9yYMTHbwUcW9LxonMT9H
+	Qcje1IWO1wAcuLa1Q1tMISMQmIMk+P0Oz4ftE186DOUp+SA4uIkGiRkgAICASJMESDAXjZcMnQL
+	YjwW1F5iR/2ovKq+XXVs20rBiv1gHnVXSOCmE/gxjZQHcPbOISjSTHIxDZw==
+X-Gm-Gg: ASbGnctcEXFGBmQinry/ZqTojwZ7FhvnfryuUhfBSsL32z8r2WLo6lVX5vhqZgVqbIv
+	Xngv/ohtlu3mWtVhLED/RbReKW8oXT2Ie4vXU5pP9vxjaHaGJc9f/eZsUqNIPtItBRk38USsOKj
+	yc25geHpxEPtB2hWVPZga4D5w7mRwn5KjuUp+j/yfblA/q3qILCFIa53qGjmm4kNyJrZ6qH34iU
+	npqSDatggESypCUk5yUSjpgVET5De8B8HauyCRiNNxKIi4DFDRVBeRws7ti9BC+p/iczuGLCKjk
+	Ntf7YNmcNngU26svdSqeI2Wow79ejEz8
+X-Received: by 2002:a05:6000:26c9:b0:3a4:de02:208 with SMTP id ffacd0b85a97d-3a4de0204a6mr3238321f8f.25.1748347096454;
+        Tue, 27 May 2025 04:58:16 -0700 (PDT)
+X-Received: by 2002:a05:6000:26c9:b0:3a4:de02:208 with SMTP id ffacd0b85a97d-3a4de0204a6mr3238291f8f.25.1748347096010;
+        Tue, 27 May 2025 04:58:16 -0700 (PDT)
+Return-Path: <imammedo@redhat.com>
+Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a4d6c9faffsm6715489f8f.74.2025.05.27.04.58.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 May 2025 04:58:15 -0700 (PDT)
+Date: Tue, 27 May 2025 13:58:13 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
+ mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
+ Jonathan.Cameron@huawei.com, philmd@linaro.org, alex.bennee@linaro.org
+Subject: Re: [PATCH v2 02/25] hw/arm/virt: Introduce machine state acpi
+ pcihp flags and props
+Message-ID: <20250527135813.2d6cde91@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250527074224.1197793-3-eric.auger@redhat.com>
+References: <20250527074224.1197793-1-eric.auger@redhat.com>
+	<20250527074224.1197793-3-eric.auger@redhat.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 12/20] virtio-gpu: fix hang under TCG when unmapping
- blob
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- qemu-devel@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- John Snow <jsnow@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
- <marcandre.lureau@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>,
- Markus Armbruster <armbru@redhat.com>, David Hildenbrand <david@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Mahmoud Mandour <ma.mandourr@gmail.com>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- Gustavo Romero <gustavo.romero@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-stable@nongnu.org
-References: <20250521164250.135776-1-alex.bennee@linaro.org>
- <20250521164250.135776-13-alex.bennee@linaro.org>
- <4d300cca-3ac2-4072-a35c-0b6aef970b26@daynix.com>
- <87bjrl87p5.fsf@draig.linaro.org>
- <83945c43-bfb2-4469-90bd-e3a7c2ca5d89@daynix.com>
- <CAAjaMXZ8acKBSGHvcQOcOnzBDCjFU1SOjse7pHtHWxNeREc2gg@mail.gmail.com>
- <199e7486-7d05-459b-ad51-cb9b130f299f@daynix.com>
- <875xht805w.fsf@draig.linaro.org>
- <d5c429eb-d583-4b9d-85c1-b0636e789e9c@daynix.com>
- <871psanzbl.fsf@draig.linaro.org>
-Content-Language: en-US
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <871psanzbl.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: o6Qy5d6kn1Db
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 0HdV3DkA4Pxd8U-HSMCHMz3uyLub1L_BoFtCK0vTzNg_1748347096
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: GSAFyV6NyJkL
 
-On 2025/05/27 19:05, Alex Bennée wrote:
-> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
-> 
->> On 2025/05/22 18:28, Alex Bennée wrote:
->>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>
->>>> On 2025/05/22 16:31, Manos Pitsidianakis wrote:
->>>>> On Thu, May 22, 2025 at 10:03 AM Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
->>>>>>
->>>>>> On 2025/05/22 15:45, Alex Bennée wrote:
->>>>>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>>>>>
->>>>>>>> On 2025/05/22 1:42, Alex Bennée wrote:
->>>>>>>>> From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-> <snip>
->>>>>> In such a case, a bug should be fixed minimizing the regression and the
->>>>>> documentation of the regression should be left in the code.
->>>>>>
->>>>>> In particular, this patch can cause use-after-free whether TCG is used
->>>>>> or not. Instead, I suggest to avoid freeing memory regions at all on
->>>>>> TCG. It will surely leak memory, but won't result in use-after-free at
->>>>>> least and the other accelerators will be unaffected.
->>>>>>
->>>>>> Regards,
->>>>>> Akihiko Odaki
->>>>> We tested this fix with ASAN and didn't see anything. Do you have a
->>>>> test case in mind that can reproduce this use-after-free? It'd help
->>>>> make a certain decision on whether to drop this patch or not. I'm not
->>>>> doubting that this can cause a use-after-free by the way, it's just
->>>>> that it is hypothetical only. If it causes a use-after-free for sure
->>>>> we should definitely drop it.
->>>>
->>>> No, I don't have a test case and it should rarely occur. More
->>>> concretely, a UAF occurs if the guest accesses the memory region while
->>>> trying to unmap it. It is just a theory indeed, but the theory says
->>>> the UAF is possible.
->>> I have a test case this fixes which I think trumps a theoretical UAF
->>> without a test case.
->>> Why would the guest attempt to access after triggering the free
->>> itself?
->>> Wouldn't it be correct to fault the guest for violating its own memory
->>> safety rules?
->>
->> docs/devel/secure-coding-practices.rst says "Unexpected accesses must
->> not cause memory corruption or leaks in QEMU".
-> 
-> Agreed.
-> 
->> I'm not completely sure whether it is safe without concurrent accesses
->> either. In particular, KVM does not immediately update the guest
->> memory mapping, so it may result in a time window where the guest
->> memory is mapped to an unmapped host memory region, and I suspect that
->> could cause a problem. That also motivates limiting the scope of the
->> change to TCG.
-> 
-> Surely it does:
-> 
->          memory_region_set_enabled(mr, false);
->          memory_region_del_subregion(&b->hostmem, mr);
-> 
-> will trigger a rebuilding of the flatview - so after the memory region
-> is deleted any guest access should trigger a fault to the guest. Only
-> then do we unparent the memory region and finish the clean-up.
+On Tue, 27 May 2025 09:40:04 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
 
-I wrongly assumed it waits for RCU, but I found it is not true.
+> acpi_pcihp VirtMachineClass state flag will allow
+> to opt in for acpi pci hotplug. This is guarded by a
 
-It is still not true that any guest access will trigger a fault to the 
-guest. QEMU's internal AddressSpace keeps the old FlatView until the RCU 
-changes, and some device may still have a DMA mapping.
+> class no_acpi_pcihp flag to manage compats (<= 10.0
+> machine types will not support ACPI PCI hotplug).
+
+there is no reason to put an effort in force disabling it
+on old machines, as long as code works when explicitly
+enabled property on CLI.
+
+See comment below on how to deal with it 
 
 > 
-> I don't think we want to have different paths for KVM and TCG here as it
-> will further complicate already complicated code.
+> Machine state acpi_pcihp flag must be set before the creation
+> of the GED device which will use it.
+> 
+> Currently the ACPI PCI HP is turned off by default. This will
+> change later on for 10.1 machine type.
 
-Complexity is not a problem here. Any concurrent code has complexity 
-needed for correctness and reliability. We should add complexity if 
-needed for reliablity; otherwise, we should remove it (even if it's 
-already simple).
+one thing to note, is that turning it on by default might
+cause change of NIC naming in guest as this brings in
+new "_Sxx" slot naming. /so configs tied to nic  go down the drain/
+
+Naming, we have, also happens to be broken wrt spec
+(it should be unique system wide, there was a gitlab issue for that,
+there is no easy fix that though)
+
+So I'd leave it disabled by default and let users to turn
+it on explicitly when needed. 
 
 > 
->>>>>> Instead, I suggest to avoid freeing memory regions at all on
->>>>>> TCG. It will surely leak memory, but won't result in use-after-free at
->>>>>> least and the other accelerators will be unaffected.
->>>>> Leaking memory for blob objects is also not ideal, since they are
->>>>> frequently allocated. It's memory-safe but the leak can accumulate
->>>>> over time.
->>>>>
->>>>
->>>> Memory safety and leak free cannot be compatible unless RCU is fixed.
->>>> We need to choose either of them.
->>> How can the guest access something that is now unmapped? The RCU
->>> should
->>> only run after the flatview has been updated.
->>
->> This patch bypasses RCU. That's why it solves the hang even though the
->> RCU itself is not fixed.
->>
->> Let me summarize the theory and the actual behavior below:
->>
->> The theory is that RCU satisfies the common requirement of concurrent
->> algorithms. More concretely:
->> 1) It is race-free; for RCU, it means it prevents use-after-free.
->> 2) It does not prevent forward progress.
->>
->> The patch message suggests 2) is not satisfied. A proper fix would be
->> to change RCU to satisfy 2).
+> We also introduce properties to allow disabling it.
 > 
-> Its mutually incompatible with virglrenderer - we have to block all
-> commands until the virgl resource is freed and we can't do that until
-> the memory region is unplugged.
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+> ---
+>  include/hw/arm/virt.h |  2 ++
+>  hw/arm/virt.c         | 27 +++++++++++++++++++++++++++
+>  2 files changed, 29 insertions(+)
 > 
-> So yes we do bypass RCU for this but by explicitly un-parenting the
-> resource once the mapping has been removed.
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 9a1b0f53d2..10ea581f06 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -129,6 +129,7 @@ struct VirtMachineClass {
+>      bool no_tcg_lpa2;
+>      bool no_ns_el2_virt_timer_irq;
+>      bool no_nested_smmu;
+> +    bool no_acpi_pcihp;
+>  };
+>  
+>  struct VirtMachineState {
+> @@ -150,6 +151,7 @@ struct VirtMachineState {
+>      bool mte;
+>      bool dtb_randomness;
+>      bool second_ns_uart_present;
+> +    bool acpi_pcihp;
+>      OnOffAuto acpi;
+>      VirtGICType gic_version;
+>      VirtIOMMUType iommu;
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 9a6cd085a3..a0deeaf2b3 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2397,8 +2397,10 @@ static void machvirt_init(MachineState *machine)
+>      create_pcie(vms);
+>  
+>      if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
+> +        vms->acpi_pcihp &= !vmc->no_acpi_pcihp;
 
-The problem is that RCU doesn't free the memory region when all commands 
-are blocked.
+I don't particularly like no_foo naming as it makes code harder to read
+and combined with 'duplicated' field in machine state it make even things worse.
+(if I recall right Philippe was cleaning mess similar flags usage
+have introduced with ITS)
 
-If we fix RCU, RCU will free the memory region, the virgl resource will 
-be freed then, and the commands will be unblocked.
+instead of adding machine property (both class and state),
+I'd suggest adding the only property to GPE device (akin to what we have in x86 world)
+And then one can meddle with defaults using hw_compat_xxx
 
-> 
->> However, this patch workarounds the problem by circumventing RCU,
->> which solves 2) but it regresses 1).
-> 
-> I'm still not seeing how this happens and without a test case to
-> demonstrate it happening I can't hold this patch in limbo forever.
 
-Not a test case that runs on the guest, but adding the following change 
-to QEMU will demonstrate the issue:
-
-diff --git a/hw/display/virtio-gpu-virgl.c b/hw/display/virtio-gpu-virgl.c
-index 145a0b387956..c97cd2dfd7b3 100644
---- a/hw/display/virtio-gpu-virgl.c
-+++ b/hw/display/virtio-gpu-virgl.c
-@@ -182,7 +182,11 @@ virtio_gpu_virgl_unmap_resource_blob(VirtIOGPU *g,
-          /* memory region owns self res->mr object and frees it by 
-itself */
-          memory_region_set_enabled(mr, false);
-          memory_region_del_subregion(&b->hostmem, mr);
-+        memory_region_ref(OBJECT(mr));
-+        int k = b->renderer_blocked;
-          object_unparent(OBJECT(mr));
-+        assert(k == b->renderer_blocked);
-+        memory_region_unref(OBJECT(mr));
-      }
-
-      return 0;
-
-memory_region_ref() and memory_region_unref() emulates the begin and end 
-of a DMA operation on mr, respectively. In a real world scenario, 
-address_space_map() and address_space_unmap() call these functions.
-
-If the code is correct, object_unparent() should not free the memory 
-region while the DMA operation is ongoing, so the renderer will be kept 
-blocked. assert(k == b->renderer_blocked) checks that.
-
-My proposal is to limit the impact of the regression as possible as we 
-can and to document it, not to postpone the solution until figuring out 
-the problem in RCU.
-
-> 
->> My suggestion is to document and to limit the impact of 1) by:
->> a) Limiting the scope of the change to TCG.
->> b) Not freeing memory regions, which will prevent use-after-free while
->> leaking memory.
->>
->> Manos said b) can be problematic because mappings are frequently
->> created. Whether b) makes sense or not depends on the probability and
->> impact of UAF and memory leak
-> 
-> Not freeing memory regions would lead to a DoS attack instead. I don't
-> think we can just accumulate region like that.
-
-UAF also results in DoS, and it can have a bigger consequence due to 
-memory corruption. Memory leak is usually safer than UAF.
-
-The question is whether memory leak causes a practical problem; it makes 
-sense to opt to UAF if the accumulation happens too quickly; we at least 
-know that UAF is rare.
-
-Regards,
-Akihiko Odaki
+>          vms->acpi_dev = create_acpi_ged(vms);
+>      } else {
+> +        vms->acpi_pcihp = false;
+>          create_gpio_devices(vms, VIRT_GPIO, sysmem);
+>      }
+>  
+> @@ -2593,6 +2595,20 @@ static void virt_set_its(Object *obj, bool value, Error **errp)
+>      vms->its = value;
+>  }
+>  
+> +static bool virt_get_acpi_pcihp(Object *obj, Error **errp)
+> +{
+> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+> +
+> +    return vms->acpi_pcihp;
+> +}
+> +
+> +static void virt_set_acpi_pcihp(Object *obj, bool value, Error **errp)
+> +{
+> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+> +
+> +    vms->acpi_pcihp = value;
+> +}
+> +
+>  static bool virt_get_dtb_randomness(Object *obj, Error **errp)
+>  {
+>      VirtMachineState *vms = VIRT_MACHINE(obj);
+> @@ -3310,6 +3326,10 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+>                                            "in ACPI table header."
+>                                            "The string may be up to 8 bytes in size");
+>  
+> +    object_class_property_add_bool(oc, "acpi-pcihp",
+> +                                   virt_get_acpi_pcihp, virt_set_acpi_pcihp);
+> +    object_class_property_set_description(oc, "acpi-pcihp",
+> +                                          "Force ACPI PCI hotplug");
+>  }
+>  
+>  static void virt_instance_init(Object *obj)
+> @@ -3344,6 +3364,9 @@ static void virt_instance_init(Object *obj)
+>          vms->tcg_its = true;
+>      }
+>  
+> +    /* default disallows ACPI PCI hotplug */
+> +    vms->acpi_pcihp = false;
+> +
+>      /* Default disallows iommu instantiation */
+>      vms->iommu = VIRT_IOMMU_NONE;
+>  
+> @@ -3394,8 +3417,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(10, 1)
+>  
+>  static void virt_machine_10_0_options(MachineClass *mc)
+>  {
+> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+> +
+>      virt_machine_10_1_options(mc);
+>      compat_props_add(mc->compat_props, hw_compat_10_0, hw_compat_10_0_len);
+> +    /* 10.0 and earlier do not support ACPI PCI hotplug */
+> +    vmc->no_acpi_pcihp = true;
+>  }
+>  DEFINE_VIRT_MACHINE(10, 0)
+>  

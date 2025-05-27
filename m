@@ -1,70 +1,70 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4647957njc;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4647958njc;
         Tue, 27 May 2025 00:43:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXQXiZmWYMDOjuDNCVRda8Vr5k6iEw1vFX83v+2ANHSXLl/KchCfPHjDee02RNZRN5zncajVvaV5u0PvA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHUw4pLbTJooSSIj2WcmYgSW/b1g7WJ2PAHnqB6hQ8p73XyPrxQQ2S0IFp9sFWCoBB1fqdA
-X-Received: by 2002:a05:620a:4608:b0:7c5:4cb7:ac97 with SMTP id af79cd13be357-7ceecbad4famr1556936685a.1.1748331814467;
-        Tue, 27 May 2025 00:43:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748331814; cv=none;
+X-Forwarded-Encrypted: i=2; AJvYcCXukVwUcf478IPnNj9JhrYuNd/h58W254L6/R1Tq5M744RJZbzYkk6ilsu8zeMf46L1ZU6Fhibu5o1PlA==@linaro.org
+X-Google-Smtp-Source: AGHT+IH/4utJ/xOLZp1Gb34x5S2a7ItKMcp5fAUNGXIWGhWNAzinqI/EjvgfLuVw57UP4IU07Fq9
+X-Received: by 2002:a17:902:da8b:b0:22e:61b2:5eb6 with SMTP id d9443c01a7336-23414f4b45amr188482905ad.15.1748331825173;
+        Tue, 27 May 2025 00:43:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748331825; cv=none;
         d=google.com; s=arc-20240605;
-        b=VWr2/+cAEJ0AOW8CvaGZ2hoq/kIY//n4mL+FwT6kUQgBNHS0k8p7Q16LPdI6AfbVzj
-         CzB/DuLegJYzq7/ZJrtmuuDLGUPfVx/BmDjU7nmE5ceJm+Zs5mJizulYBVmdZJFLUuvY
-         IIIwLrmwTFCv9PaRDzdMSGLkaiuw2Bp6/Yxi2qsPUGv0CR5tJ5b67wamPIW/iqlRSYyW
-         HXgd/vcdmI9mKfYg228niNnvThYZvkxi687qyJPJm9z87dUCRrC0m0SbFtQbOV/nml60
-         1Qicxcn6g0OESIUPfg615IFXmdrICnCYeXdKO1hc4m5VZEXbCKt7rA+W91o0if6MsnA2
-         nztg==
+        b=b8fL9+p3Y0a1GHdgHAMLaCw/y1z7cSGE2jN3Up65dVT7KG8jKYKCpmQ4hucKvx+hxk
+         FzVId+9f9t63FoXa6BAaq+dWmbcKRchGMlRptupnGYCKPR5CuAcUdX77oS27fz7YhtiN
+         ndiWGz3AVckg2k6Z4teQDZ+GeSDItVKMLz/xPBiO1kiSfxM+P284PbZ64FAuS49QmTWk
+         KQLZdn0dtvghrbvE3I+sB9zxoK2Q1nzXbFjOqBQ4pTsIATNMJHhSHuX9DVEnv/uAVcGT
+         ff7ellthdFd/TlKTnstWGlsU6J2ePbbSCj7443UyRCNlKL1/IxPVSvF13MORdvNiEI+H
+         L1hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=X8Mj7MYJB8/MBONKbNj0hDVBsT2BlLCyjWkBG0D62Kg=;
+        bh=NtzwfZV6ubGJIGvLjQqqNWbKsryBptzmb7Y7G8bi7t8=;
         fh=3+/pQVIKD31FE8qJaDVh0A7e2m9TMoY7e0VvIw0mRHw=;
-        b=dcfdjXxjVpTTJKh5jqHoMYGoupvPHeA4/ChxkUpDReSCJdG8m9sDHFRhf6IiZDnSQT
-         pI9zp8D23iZbPBdcj6AsH1edeofb4hiMW17B2AwjTg7uPj94XvBo8QNXDqd2A3DlN6bM
-         kj+GYdx11a5K2fqueltWh7QAI+sjMjTih2IMScOlR/xouCHeF2eciRoPJDpMrp3KtYkd
-         Q6sWlI1FFOl8az3Wqg1wyhMGsIXOz38fqkaBonJ4xLlwHqmPVTTYVMdaePHnig7LKuMn
-         17IAYt9oJfAo0jJJJJYdLc1mUbmfvBacxpdmcR9fIdQHgRZt0+2WIVD7wWRe2TDASQmP
-         jBHA==;
+        b=KNQiiFbjKJX8kpBEER14hAgqpHE9AjWDDkIfxeuOWOCqrgWLDC1WWR+EZNm6pxSV7E
+         kYGUKWIcaIf7kyGviiDCJtBaaqGiYknYxLR6CeKe0BVc+7FWOplm0gdSkwu9JOjWWE+0
+         308RxHDzKGtyG4Bwq0xZcedmnufxmSHkUKlSjdnQBLaEmXUUMUJAHImq42KLBxu0VCfO
+         0UCaJ4HzLH3cAYV3jalSHNEN3LYhs2qYgonkX5y39lgJaVIcBC5Qg6c3Q3uabj7BZN06
+         5kTJ2Q2Lg9rnG1OwDbYVgd6KMkRtpjSOPAAHI2RfJgQa26dmFmmvHSvzvMVYVQ7jUlYu
+         r1NA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gYkYRCWn;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jEGxrsCn;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd467cf095si2587193785a.101.2025.05.27.00.43.34
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id d9443c01a7336-2346b4ffbc8si51779745ad.151.2025.05.27.00.43.44
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 May 2025 00:43:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Tue, 27 May 2025 00:43:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gYkYRCWn;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jEGxrsCn;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1748331814;
+	s=mimecast20190719; t=1748331824;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=X8Mj7MYJB8/MBONKbNj0hDVBsT2BlLCyjWkBG0D62Kg=;
-	b=gYkYRCWnd7OfNByFfDvJmO6cZ6LPmEvfUGUdSAqa7f46BRX7bsg/nWX/IA4EvgunRIe1OB
-	tluhZeoim6az8Ny7/JkajbHxbCWa8sLN3eG4ynf5Lo2r8BSLyJ3ZMtroewOCcEKXVxl711
-	nRIeqPdQwfUmdmEDh5bJE9awBzyPEKs=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+	bh=NtzwfZV6ubGJIGvLjQqqNWbKsryBptzmb7Y7G8bi7t8=;
+	b=jEGxrsCnD1o2uJdWRMNVUGKFLGhPKKiaD/qXJ3/uwfIireTJvcQwFdWWW9/Ccq+/uOO4xF
+	Tc7rcHSsH6tpctwBxPT1+cdDuJoi6iBmwPjTEumf00sJfDqHX578S5POFocd61jhiVyN27
+	uL5sbnALc4qYzLe4m7azk9EY49O44as=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-121-jMiYvdYgNu2yHd33eTGYyg-1; Tue,
- 27 May 2025 03:43:30 -0400
-X-MC-Unique: jMiYvdYgNu2yHd33eTGYyg-1
-X-Mimecast-MFC-AGG-ID: jMiYvdYgNu2yHd33eTGYyg_1748331809
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-636-CJOGke09M1O9xDZxIop69w-1; Tue,
+ 27 May 2025 03:43:40 -0400
+X-MC-Unique: CJOGke09M1O9xDZxIop69w-1
+X-Mimecast-MFC-AGG-ID: CJOGke09M1O9xDZxIop69w_1748331819
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 1F3091955E79;
-	Tue, 27 May 2025 07:43:29 +0000 (UTC)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 075CA180034E;
+	Tue, 27 May 2025 07:43:39 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.45.224.201])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id AF7E719560AA;
-	Tue, 27 May 2025 07:43:24 +0000 (UTC)
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id A12E91944A8F;
+	Tue, 27 May 2025 07:43:34 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com,
 	eric.auger@redhat.com,
@@ -80,97 +80,185 @@ Cc: pbonzini@redhat.com,
 	Jonathan.Cameron@huawei.com,
 	philmd@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v2 11/25] hw/i386/acpi-build: Introduce build_append_pcihp_resources() helper
-Date: Tue, 27 May 2025 09:40:13 +0200
-Message-ID: <20250527074224.1197793-12-eric.auger@redhat.com>
+Subject: [PATCH v2 13/25] hw/i386/acpi-build: Move build_append_notification_callback to pcihp
+Date: Tue, 27 May 2025 09:40:15 +0200
+Message-ID: <20250527074224.1197793-14-eric.auger@redhat.com>
 In-Reply-To: <20250527074224.1197793-1-eric.auger@redhat.com>
 References: <20250527074224.1197793-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: kQ7aDknMY5Kp
+X-TUID: SBZTC7wyvK5k
 
-Extract the code that reserves resources for ACPI PCI hotplug
-into a new helper named build_append_pcihp_resources() and
-move it to pcihp.c. We will reuse it on ARM.
+We plan to reuse build_append_notification_callback() on ARM
+so let's move it to pcihp.c.
+
+No functional change intended.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
 ---
- include/hw/acpi/pcihp.h |  2 ++
- hw/acpi/pcihp.c         | 20 ++++++++++++++++++++
- hw/i386/acpi-build.c    | 15 ++-------------
- 3 files changed, 24 insertions(+), 13 deletions(-)
+ include/hw/acpi/pcihp.h |  1 +
+ hw/acpi/pcihp.c         | 58 +++++++++++++++++++++++++++++++++++++++++
+ hw/i386/acpi-build.c    | 58 -----------------------------------------
+ 3 files changed, 59 insertions(+), 58 deletions(-)
 
 diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
-index 971451e8ea..8a46a414cc 100644
+index 253ac6e483..f4fd44cb32 100644
 --- a/include/hw/acpi/pcihp.h
 +++ b/include/hw/acpi/pcihp.h
-@@ -75,6 +75,8 @@ void acpi_pcihp_device_unplug_request_cb(HotplugHandler *hotplug_dev,
- 
- void build_acpi_pci_hotplug(Aml *table, uint64_t pcihp_addr);
+@@ -78,6 +78,7 @@ void build_acpi_pci_hotplug(Aml *table, AmlRegionSpace rs, uint64_t pcihp_addr);
  void build_append_pci_dsm_func0_common(Aml *ctx, Aml *retvar);
-+void build_append_pcihp_resources(Aml *table,
-+                                  uint64_t io_addr, uint64_t io_len);
+ void build_append_pcihp_resources(Aml *table,
+                                   uint64_t io_addr, uint64_t io_len);
++bool build_append_notification_callback(Aml *parent_scope, const PCIBus *bus);
  
  /* Called on reset */
  void acpi_pcihp_reset(AcpiPciHpState *s);
 diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-index e0260f67e6..fb54c31f77 100644
+index 310a5c54bd..907a08ac7f 100644
 --- a/hw/acpi/pcihp.c
 +++ b/hw/acpi/pcihp.c
-@@ -685,6 +685,26 @@ void build_acpi_pci_hotplug(Aml *table, uint64_t pcihp_addr)
-     aml_append(table, scope);
+@@ -39,6 +39,7 @@
+ #include "migration/vmstate.h"
+ #include "qapi/error.h"
+ #include "qom/qom-qobject.h"
++#include "qobject/qnum.h"
+ #include "trace.h"
+ 
+ #define ACPI_PCIHP_SIZE 0x0018
+@@ -705,6 +706,63 @@ void build_append_pcihp_resources(Aml *scope /* \\_SB.PCI0 */,
+     aml_append(scope, dev);
  }
  
-+/* Reserve PCIHP resources */
-+void build_append_pcihp_resources(Aml *scope /* \\_SB.PCI0 */,
-+                                  uint64_t io_addr, uint64_t io_len)
++bool build_append_notification_callback(Aml *parent_scope, const PCIBus *bus)
 +{
-+    Aml *dev, *crs;
++    Aml *method;
++    PCIBus *sec;
++    QObject *bsel;
++    int nr_notifiers = 0;
++    GQueue *pcnt_bus_list = g_queue_new();
 +
-+    dev = aml_device("PHPR");
-+    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0A06")));
-+    aml_append(dev,
-+               aml_name_decl("_UID", aml_string("PCI Hotplug resources")));
-+    /* device present, functioning, decoding, not shown in UI */
-+    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
-+    crs = aml_resource_template();
-+    aml_append(crs,
-+        aml_io(AML_DECODE16, io_addr, io_addr, 1, io_len)
-+    );
-+    aml_append(dev, aml_name_decl("_CRS", crs));
-+    aml_append(scope, dev);
++    QLIST_FOREACH(sec, &bus->child, sibling) {
++        Aml *br_scope = aml_scope("S%.02X", sec->parent_dev->devfn);
++        if (pci_bus_is_root(sec)) {
++            continue;
++        }
++        nr_notifiers = nr_notifiers +
++                       build_append_notification_callback(br_scope, sec);
++        /*
++         * add new child scope to parent
++         * and keep track of bus that have PCNT,
++         * bus list is used later to call children PCNTs from this level PCNT
++         */
++        if (nr_notifiers) {
++            g_queue_push_tail(pcnt_bus_list, sec);
++            aml_append(parent_scope, br_scope);
++        }
++    }
++
++    /*
++     * Append PCNT method to notify about events on local and child buses.
++     * ps: hostbridge might not have hotplug (bsel) enabled but might have
++     * child bridges that do have bsel.
++     */
++    method = aml_method("PCNT", 0, AML_NOTSERIALIZED);
++
++    /* If bus supports hotplug select it and notify about local events */
++    bsel = object_property_get_qobject(OBJECT(bus), ACPI_PCIHP_PROP_BSEL, NULL);
++    if (bsel) {
++        uint64_t bsel_val = qnum_get_uint(qobject_to(QNum, bsel));
++
++        aml_append(method, aml_store(aml_int(bsel_val), aml_name("BNUM")));
++        aml_append(method, aml_call2("DVNT", aml_name("PCIU"),
++                                     aml_int(1))); /* Device Check */
++        aml_append(method, aml_call2("DVNT", aml_name("PCID"),
++                                     aml_int(3))); /* Eject Request */
++        nr_notifiers++;
++    }
++
++    /* Notify about child bus events in any case */
++    while ((sec = g_queue_pop_head(pcnt_bus_list))) {
++        aml_append(method, aml_name("^S%.02X.PCNT", sec->parent_dev->devfn));
++    }
++
++    aml_append(parent_scope, method);
++    qobject_unref(bsel);
++    g_queue_free(pcnt_bus_list);
++    return !!nr_notifiers;
 +}
 +
  const VMStateDescription vmstate_acpi_pcihp_pci_status = {
      .name = "acpi_pcihp_pci_status",
      .version_id = 1,
 diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 91945f716c..52cef834ed 100644
+index 6ca2b34ef8..3275675e60 100644
 --- a/hw/i386/acpi-build.c
 +++ b/hw/i386/acpi-build.c
-@@ -1432,19 +1432,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
- 
-     /* reserve PCIHP resources */
-     if (pm->pcihp_io_len && (pm->pcihp_bridge_en || pm->pcihp_root_en)) {
--        dev = aml_device("PHPR");
--        aml_append(dev, aml_name_decl("_HID", aml_string("PNP0A06")));
--        aml_append(dev,
--            aml_name_decl("_UID", aml_string("PCI Hotplug resources")));
--        /* device present, functioning, decoding, not shown in UI */
--        aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
--        crs = aml_resource_template();
--        aml_append(crs,
--            aml_io(AML_DECODE16, pm->pcihp_io_base, pm->pcihp_io_base, 1,
--                   pm->pcihp_io_len)
--        );
--        aml_append(dev, aml_name_decl("_CRS", crs));
--        aml_append(scope, dev);
-+        build_append_pcihp_resources(scope,
-+                                      pm->pcihp_io_base, pm->pcihp_io_len);
+@@ -563,64 +563,6 @@ void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus)
      }
-     aml_append(dsdt, scope);
+ }
  
+-static bool build_append_notification_callback(Aml *parent_scope,
+-                                               const PCIBus *bus)
+-{
+-    Aml *method;
+-    PCIBus *sec;
+-    QObject *bsel;
+-    int nr_notifiers = 0;
+-    GQueue *pcnt_bus_list = g_queue_new();
+-
+-    QLIST_FOREACH(sec, &bus->child, sibling) {
+-        Aml *br_scope = aml_scope("S%.02X", sec->parent_dev->devfn);
+-        if (pci_bus_is_root(sec)) {
+-            continue;
+-        }
+-        nr_notifiers = nr_notifiers +
+-                       build_append_notification_callback(br_scope, sec);
+-        /*
+-         * add new child scope to parent
+-         * and keep track of bus that have PCNT,
+-         * bus list is used later to call children PCNTs from this level PCNT
+-         */
+-        if (nr_notifiers) {
+-            g_queue_push_tail(pcnt_bus_list, sec);
+-            aml_append(parent_scope, br_scope);
+-        }
+-    }
+-
+-    /*
+-     * Append PCNT method to notify about events on local and child buses.
+-     * ps: hostbridge might not have hotplug (bsel) enabled but might have
+-     * child bridges that do have bsel.
+-     */
+-    method = aml_method("PCNT", 0, AML_NOTSERIALIZED);
+-
+-    /* If bus supports hotplug select it and notify about local events */
+-    bsel = object_property_get_qobject(OBJECT(bus), ACPI_PCIHP_PROP_BSEL, NULL);
+-    if (bsel) {
+-        uint64_t bsel_val = qnum_get_uint(qobject_to(QNum, bsel));
+-
+-        aml_append(method, aml_store(aml_int(bsel_val), aml_name("BNUM")));
+-        aml_append(method, aml_call2("DVNT", aml_name("PCIU"),
+-                                     aml_int(1))); /* Device Check */
+-        aml_append(method, aml_call2("DVNT", aml_name("PCID"),
+-                                     aml_int(3))); /* Eject Request */
+-        nr_notifiers++;
+-    }
+-
+-    /* Notify about child bus events in any case */
+-    while ((sec = g_queue_pop_head(pcnt_bus_list))) {
+-        aml_append(method, aml_name("^S%.02X.PCNT", sec->parent_dev->devfn));
+-    }
+-
+-    aml_append(parent_scope, method);
+-    qobject_unref(bsel);
+-    g_queue_free(pcnt_bus_list);
+-    return !!nr_notifiers;
+-}
+-
+ /*
+  * build_prt - Define interrupt routing rules
+  *
 -- 
 2.49.0

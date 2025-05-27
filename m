@@ -1,324 +1,536 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5036768njc;
-        Tue, 27 May 2025 12:16:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVE1ED4Vu0qy7Ody4npv7JMX8uGurcVabWjK60jRqvsmrVG55tcGz7utwiWbRCqbAP4A49ggPn1/uYGqQ==@linaro.org
-X-Received: by 2002:a05:6122:62e9:b0:526:23d2:6ecd with SMTP id 71dfb90a1353d-5305fdfa549mr1947743e0c.6.1748373413560;
-        Tue, 27 May 2025 12:16:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748373413; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5045502njc;
+        Tue, 27 May 2025 12:34:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXxPF5qOq6eYSHnD4kpqqb5jbVDqkZzgC4nPiv4rfDfHEzdSSUXAaN0H8Jd4wJfgNERxoslYrRqnpaEwQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHYeYW1+n9RNKbn30YMUNhE02WSmRxaIyfDGHIj1I5HaX3MVg1jOQOhITSjhdYhiy4qO7sz
+X-Received: by 2002:a05:620a:43a8:b0:7c5:588a:5c1e with SMTP id af79cd13be357-7ceecbd814cmr2003658285a.30.1748374491432;
+        Tue, 27 May 2025 12:34:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748374491; cv=none;
         d=google.com; s=arc-20240605;
-        b=PlJRrOAG9ke6gaACYJCCsb2jY7dsk//01lPEclYT5jd8Gaou38eYhWTcmHdIArN5Si
-         +n45LkGpQEHMuT9uRUMC+wOL5VKrJLlApiukSv0AtP3N7b+9WFOKO/Xfl+0wZEgbhnsm
-         H4E6fZN6Q8g0DaZ/+Ie3VXdLKA+dUOuEtPr0b/J9LXbdEmOB4NXkJE9mCXH3NGpq/um5
-         HTHRikaNaA+Zvb4eAqY8pJmAg4J07x097amW/oZC81KkRO0gyo8+/EaiPmbvUCXuB0td
-         yryKKYAmyF01hXa+OIE5Sn1jmFSNJ+SEZX60HQ1U2VojD6Exg+ZtyO/wF3O4gBGmqL2+
-         SvWg==
+        b=CLrBaz+omroE+c1/16gsYe6OJnSIuROWwKPWvufvCecUbdEVkgGqk4MkQI9o4j7qe2
+         MYGD7h1+qCJ9UeTtU4lX0ZlJUFJqpXLDAdKGDFfrRoSY2pEbqIzVJNNdoySeKDK97kFD
+         BCgzB6uqY2AaELoYYusnsbP2y0KC7sXQO3mdFyKWJl/28nkLZYQmUbtQkQ59AwxWB7b4
+         aykPGiuwt/iUW1MAVpZLrOrxMFwpJJST5SPCBF325M3lpie5dSSI4oOIYVlMvUVM1Mw1
+         2Q4fHDbklS0Hl6SADMPcpYHdSrNwquomBuqw381LJ2w+IStDwZcGT4Nh98sEqI2PZxYN
+         ms9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=IAsDWGx8Uo9EscDRhlxrXFB/Hp9p99WkK4bk9lATPmA=;
-        fh=SOmwYr31kschGeNmXV9HGsjsMzsMhf0UoiN/J/9QMGo=;
-        b=BSAGFwE5GsOUfMzl/JdqxYz3PzSF2GeVzNtV93jZa85Qvf6KUOEgD8q/s3yaSr7CH+
-         96Ud551izpD3zkLtpiWfFpERCmlqb5EgRzFTp+8weaOvpJzV1nKLDAwql0C9BNAqDPfv
-         Xu8rL/judzFOIe96RDHern6n3y64cN+aTZQk7b5e3WGw/QvZxHq6SapAn2m7YdPax525
-         1Zh/zvNNBc/3PZjCxy7TMFoijMe1tNoL2mKXQYqZvNux+rY2B0xtuv4I9QOAw+4ozI9r
-         B0oyPPdeJAMKHhqdwdZ+mxK+4gWetNBmqkzyYR7U0lxHASo/99gPDZeLY/e+wcW1Gs3S
-         Q4HQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=9jWIROm8RTitpuU8pAEdyjf0Vz8p6L6T62GjaidCFCA=;
+        fh=BWO0xgRCN8PEvF8LoYAZjKIk9h4av4AFTK1/Y/tE4Z0=;
+        b=RA0V5Z8uT90ZujRSAh/tOiE32/rwTppjo/ZwXNOM5r7Lcf3Boz+xwZas6/8iUk7xeA
+         RaSDHf0+a1e6fAFYa/exFgW6aK4akUUtRQ/eO7SuKQ5Fe818pWF0YZ40KhxQuerBu7R0
+         kuPbkb8ppEWfg7BRSVO6HWpOIhHh8T9YHhdHW6Fo6JUYUrhA5x5bb+d/8uUntNVc3GeN
+         DicGVlWYvy3mtDd7+xE1WPJF/BJYr6wC7hkoLwD4+kfOcohvnP0D3bgQooGqeY1ftAYa
+         RZa1WsZJniCCXKiYdJIuXAGsk46w+N6lQFZIClWyTIDIXsG4GGdyfisBvyIk1e3lNA8C
+         DiRw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GqSFhb05;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dGFhdDST;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 71dfb90a1353d-5305b549340sor553440e0c.1.2025.05.27.12.16.53
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a2f9388f74si521131cf.374.2025.05.27.12.34.51
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 27 May 2025 12:16:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 27 May 2025 12:34:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GqSFhb05;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dGFhdDST;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uK04J-0001Zx-Sg; Tue, 27 May 2025 15:34:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1uK04H-0001ZR-AA
+ for qemu-arm@nongnu.org; Tue, 27 May 2025 15:34:34 -0400
+Received: from mail-vk1-xa33.google.com ([2607:f8b0:4864:20::a33])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1uK04D-0004Fm-Kf
+ for qemu-arm@nongnu.org; Tue, 27 May 2025 15:34:32 -0400
+Received: by mail-vk1-xa33.google.com with SMTP id
+ 71dfb90a1353d-52f22008b6aso1144957e0c.1
+ for <qemu-arm@nongnu.org>; Tue, 27 May 2025 12:34:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1748373413; x=1748978213; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=IAsDWGx8Uo9EscDRhlxrXFB/Hp9p99WkK4bk9lATPmA=;
-        b=GqSFhb05k5PsFxRdK5164Q1IG3pUAkK/q1Legu1F8bSGQz5t6iHoa4+j6YPMsT0pcS
-         1bMNle5m8Ub5oPoStS+g6hCg7tqHniQzO2eB6U/8xzchyUym0WzqsG8hJkqrnjOdz28T
-         FMPRBF1HCU3fPB1XNXETkqrlbnWOh4cwanzpSocNFuWmYWqHffUAhgN79VvUq4IGPzVP
-         KMHmdH8VSHEvWDUgUiosBg3zstfG7Ph9nvr3bykr1FqmLV8KrpC3Bp4lpyAT0a5pkqp4
-         xFO1lovAku2VanLUUbYfjLOt3cWc0+zPSap0PbQvfonoNGfsAPf4xJ8ChLYufoKcPGMO
-         18oA==
+ d=linaro.org; s=google; t=1748374466; x=1748979266; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=9jWIROm8RTitpuU8pAEdyjf0Vz8p6L6T62GjaidCFCA=;
+ b=dGFhdDSTkVQEYXVitvJvTaOmHwYG2mCpDAA7nxmDTjKvAPJHhufSr1se7HDULkrgwF
+ kO68T1Smom2GcZ/XRH74nUvUcWtQSAoxH6I5a8GxTU9KvCaXR1VpIvgrqp5hh9DgUX3m
+ rdFktTUIZ3/jHGgDIVd3Aun/6pTU53YZSoVgJb8fM1o6UtFUgW8IVMo5V5Um0Z5h6YDG
+ Zrknjr9sARkDScA26rRWIDXNB0PL5LqZ+OBGRoZeLWJwqR4LRFrNhnoWiIUDAlbqDOrI
+ aZQ1pSUGj9mZ7JvNMjrjeI2ES3Uqd+dpxtkr9lzHc/2iZtvSnyHP5YxlWB6x2Qukp/sJ
+ 2euQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748373413; x=1748978213;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=IAsDWGx8Uo9EscDRhlxrXFB/Hp9p99WkK4bk9lATPmA=;
-        b=RVB2cC3ZeZzR1ZPx6ut5uUnHwGXGKK/ak9vIQf7jGkNNomg6TOnRLbM0SKr/C5er1o
-         Du8asdt3Q7an9mx1FPbhOQbnJEzYunQZIubnX/8vUzbx4LBOv2Q8ZnC2rX/6IhH+0Tge
-         my4V28rIT2aICR/cfjYoiyCIgzWXJp3I0/abQjs3zPmMJ4ni3JiUOBYL8LPVPHFSMbQi
-         t9EsyqTks7CYf6FIjiPEqL5NCKdZjdHajlNpx0rbzLrKEyanUbBeH8jiEWZK+3X+Xso3
-         4ySgMnId/6lPMmRSP1jzkWC2ow1h/wcUJcNk2NGvogtLeqTUkbYWKbNGAMbGwK3YoaE2
-         fWHg==
-X-Forwarded-Encrypted: i=1; AJvYcCUazYa0LrZZU7y6SqVDK+/nyx4FJPA7nJvLW12s8upIaijRGpC0CtthPgGydUNvwyCGP9nY4PshuKf8jQ==@linaro.org
-X-Gm-Message-State: AOJu0Yy6yD8auF4bSrn+PXR8fnjQz8iI14A2dRRR9TQK3jWjU/U1hKIP
-	Ds1YB5jMiMNuR0tIiA8mmDBcjJmRuuDnw6s6tXGSAoGFUfsy/nqYCjiXzc0JyNBaLT+V3A==
-X-Gm-Gg: ASbGncs0849yReMmiM0TUz62XOfoA1jRYIQng76LxwOaWAsQciV1fKl/EKg/KXJHn1e
-	BmymH9+2bIQC0s6xGE7UfTc+B7s0xheI3Uxxnbgnc7H2e9YlKnlNEOZnrgq5cLLR3JV8XJlEJ0Z
-	pePbWA1qBOKQC62JdwM6rLNDR/ppZlTO7a4aGNQd9/GhhV/GsCOp4kq+qIls2IDnKMd6S8pHPIv
-	Piu3ittmZxzXJRb8Z/beYIz9N9RfBT1qZsSEHW4yvETn28VzJZ9r41c5MEDh/dTliuuhEMenAek
-	hch0T22TdBkwTW3uChWtyfHuMZHI6Dwj3tdw/mTAZOJ1PebZqrt5VJzSAH4gWh0YN5wy66CXnxg
-	xg8S6LKZKc1THaJZjmJPSwu7ZwSZHHw==
-X-Google-Smtp-Source: AGHT+IEDsBo4x6SURdUzmQi6TIN3SQXrxD2ldezqbYa060W7TF7WT49djWBNdn27V12vFhi7ptL7xg==
-X-Received: by 2002:a05:6122:3d15:b0:520:4806:a422 with SMTP id 71dfb90a1353d-5305fdd335bmr2336966e0c.3.1748373412987;
-        Tue, 27 May 2025 12:16:52 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from ?IPV6:2804:7f0:b402:6ba2:2066:dacd:9134:8586? ([2804:7f0:b402:6ba2:2066:dacd:9134:8586])
-        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-52dbab6b42esm20112458e0c.40.2025.05.27.12.16.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 27 May 2025 12:16:51 -0700 (PDT)
-Message-ID: <8b27d199-7bfa-48f2-b534-42a3a975fbf3@linaro.org>
-Date: Tue, 27 May 2025 16:16:48 -0300
+ d=1e100.net; s=20230601; t=1748374466; x=1748979266;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=9jWIROm8RTitpuU8pAEdyjf0Vz8p6L6T62GjaidCFCA=;
+ b=X2XoPgw2S7b92ZNjYg/rybH+jkZ52JUo2LPKSuLEy9aXKLtdzo5mZNSyHmnzaTzgD3
+ vo/FVBOf4LQ2aDMS0u6Ou3pO+JdnFCdzMjk/2YzYnsz1oiLWMhrR+JAcpDeHM2zJCAuh
+ nGOlSQ60CarqNyK/CCO7SWULOP+GrkKomt179pQCmHPGaVAGTv+GaNk3golNN11y41Jw
+ 6MPxr8m4tpLpzppgRyXrkPky8JnXIvV37mBuLjrdRc4LwnXkyG3I8nmj2RF/vQH0Fr4h
+ XmOfAnUmWLx+/PcPHRFBdkxUtpRnf1fl3xTRXwEW/tEmAuaE9A8INN0q6IRE2RIHw4p4
+ io8w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW//Vve4MyEMjuBbDF4QwEkFV9Yr3eO2J3LttzXwzlptY8IBgGUSkz5WpeUsIYl3szYl0KDl/ND0Q==@nongnu.org
+X-Gm-Message-State: AOJu0YywbrSUG5lerPcPLAcZ9yg2VfY7NK+UV7Jql196tRmYL6durMXs
+ sFVlprhV0SJdYSDLTOc9UZIgWfKfe3iZPeYMki4Dtjl1h4Q3lPK8BGuJ8ypOVRDsazC4EX+LBPe
+ 6LicV
+X-Gm-Gg: ASbGncucz5eugpEJU4q0dZkC2TmGnTx6Kt2Oq8IPzj5+1FN1atCmHMObl/vc6PDJChk
+ 9V8ScXAoLX6ZPVnN2iv63Je3CtSwXpDzKgVM66LjeHGTNbsvokMtBpmOaX9HdGEYBLNft6fOJak
+ RJ1nr9GZSZsRA013pZEG3wAVk/4qAHKzYZXp//u/QQ5zQOR6vYX3vbzotoNPMGCnclGTtK9poqD
+ gY1iKiK6/e04+uRd73MRnf2D7gxNPrwJXy/LO3nRWPzBuNhNm7+J7XCddE8rBzX0RRoRagqcBy2
+ qeDcTtD02IuKP8TQKlRRkiwKKSsR07j7U0AjuDG+cQ3ekel1aje6wnH2vXnQ9d6XqHVNw/S0uPT
+ Ne9cz5Hw6LCvMwXMFwblN13L++YVtOw==
+X-Received: by 2002:a05:6122:1d9e:b0:52a:79fd:d05e with SMTP id
+ 71dfb90a1353d-52f2c4a8cd0mr12398945e0c.2.1748374466405; 
+ Tue, 27 May 2025 12:34:26 -0700 (PDT)
+Received: from ?IPV6:2804:7f0:b402:6ba2:2066:dacd:9134:8586?
+ ([2804:7f0:b402:6ba2:2066:dacd:9134:8586])
+ by smtp.gmail.com with ESMTPSA id
+ 71dfb90a1353d-52dbab4e96bsm20122089e0c.29.2025.05.27.12.34.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 27 May 2025 12:34:25 -0700 (PDT)
+Message-ID: <37fbdb85-fa16-4e09-a033-5a0ae5bdbb18@linaro.org>
+Date: Tue, 27 May 2025 16:34:22 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 22/25] hw/arm/virt: Let virt support pci hotplug/unplug
- GED event
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: Igor Mammedov <imammedo@redhat.com>, Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, anisinha@redhat.com, mst@redhat.com,
- shannon.zhaosl@gmail.com, pbonzini@redhat.com, Jonathan.Cameron@huawei.com,
- philmd@linaro.org, alex.bennee@linaro.org
-References: <20250527074224.1197793-1-eric.auger@redhat.com>
- <20250527074224.1197793-23-eric.auger@redhat.com>
- <20250527175649.5d276bc8@imammedo.users.ipa.redhat.com>
- <363b7862-84b3-4bd1-85d6-781eb9ecf161@linaro.org>
+Subject: Re: [PATCH 14/22] hw/i386/acpi-build: Move aml_pci_edsm to a generic
+ place
+To: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
+ anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
+Cc: pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org
+References: <20250514170431.2786231-1-eric.auger@redhat.com>
+ <20250514170431.2786231-15-eric.auger@redhat.com>
+ <ad7c7b84-9f12-4767-a349-df47c489c726@linaro.org>
+ <2f1d15ea-82fe-4633-9791-ef9a3721b87d@redhat.com>
+ <95bff50a-4da9-4abe-b596-95c64ab85231@linaro.org>
+ <55ef40d6-f940-4e53-b591-2a1df5f5b5e1@linaro.org>
+ <51fd4295-cf41-4b39-b678-692a558f0967@redhat.com>
 Content-Language: en-US
-In-Reply-To: <363b7862-84b3-4bd1-85d6-781eb9ecf161@linaro.org>
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <51fd4295-cf41-4b39-b678-692a558f0967@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: Oqk7HOVDp7Cm
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a33;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-vk1-xa33.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2Y8xzfzLpD2/
 
+Hi Eric,
 
-
-On 5/27/25 13:44, Gustavo Romero wrote:
-> Hi folks,
+On 5/27/25 04:18, Eric Auger wrote:
 > 
-> On 5/27/25 12:56, Igor Mammedov wrote:
->> On Tue, 27 May 2025 09:40:24 +0200
->> Eric Auger <eric.auger@redhat.com> wrote:
+> 
+> On 5/21/25 10:19 PM, Gustavo Romero wrote:
+>> Hi Eric,
 >>
->>> Set up the IO registers used to communicate between QEMU
->>> and ACPI.
->>
->>
->>
->>> Move the create_pcie() call after the creation of the acpi
->>> ged device since hotplug callbacks will soon be called on gpex
->>> realize and will require the acpi pcihp state to be initialized.
+>> On 5/21/25 13:24, Gustavo Romero wrote:
+>>> Hi Eric,
 >>>
->>> The hacky thing is the root bus has not yet been created on
->>> acpi_pcihp_init() call so it is set later after the gpex realize.
+>>> On 5/21/25 12:56, Eric Auger wrote:
+>>>> Hi Gustavo,
+>>>>
+>>>> On 5/21/25 5:26 PM, Gustavo Romero wrote:
+>>>>> Hi Eric,
+>>>>>
+>>>>> On 5/14/25 14:01, Eric Auger wrote:
+>>>>>> Move aml_pci_edsm to pcihp since we want to reuse that for
+>>>>>> ARM and acpi-index support.
+>>>>>>
+>>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>>>> ---
+>>>>>>     include/hw/acpi/pcihp.h |  2 ++
+>>>>>>     hw/acpi/pcihp.c         | 53
+>>>>>> +++++++++++++++++++++++++++++++++++++++++
+>>>>>>     hw/i386/acpi-build.c    | 53
+>>>>>> -----------------------------------------
+>>>>>>     3 files changed, 55 insertions(+), 53 deletions(-)
+>>>>>>
+>>>>>> diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
+>>>>>> index 4d820b4baf..bc31dbff39 100644
+>>>>>> --- a/include/hw/acpi/pcihp.h
+>>>>>> +++ b/include/hw/acpi/pcihp.h
+>>>>>> @@ -82,6 +82,8 @@ bool build_append_notification_callback(Aml
+>>>>>> *parent_scope, const PCIBus *bus);
+>>>>>>       void build_append_pci_bus_devices(Aml *parent_scope, PCIBus
+>>>>>> *bus);
+>>>>>>     +Aml *aml_pci_edsm(void);
+>>>>>> +
+>>>>>>     /* Called on reset */
+>>>>>>     void acpi_pcihp_reset(AcpiPciHpState *s);
+>>>>>>     diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
+>>>>>> index d800371ddc..57fe8938b1 100644
+>>>>>> --- a/hw/acpi/pcihp.c
+>>>>>> +++ b/hw/acpi/pcihp.c
+>>>>>> @@ -937,6 +937,59 @@ void build_append_pci_bus_devices(Aml
+>>>>>> *parent_scope, PCIBus *bus)
+>>>>>>         }
+>>>>>>     }
+>>>>>>     +Aml *aml_pci_edsm(void)
+>>>>>> +{
+>>>>>> +    Aml *method, *ifctx;
+>>>>>> +    Aml *zero = aml_int(0);
+>>>>>> +    Aml *func = aml_arg(2);
+>>>>>> +    Aml *ret = aml_local(0);
+>>>>>> +    Aml *aidx = aml_local(1);
+>>>>>> +    Aml *params = aml_arg(4);
+>>>>>> +
+>>>>>> +    method = aml_method("EDSM", 5, AML_SERIALIZED);
+>>>>>> +
+>>>>>> +    /* get supported functions */
+>>>>>> +    ifctx = aml_if(aml_equal(func, zero));
+>>>>>> +    {
+>>>>>> +        /* 1: have supported functions */
+>>>>>> +        /* 7: support for function 7 */
+>>>>>> +        const uint8_t caps = 1 | BIT(7);
+>>>>>> +        build_append_pci_dsm_func0_common(ifctx, ret);
+>>>>>> +        aml_append(ifctx, aml_store(aml_int(caps), aml_index(ret,
+>>>>>> zero)));
+>>>>>> +        aml_append(ifctx, aml_return(ret));
+>>>>>> +    }
+>>>>>> +    aml_append(method, ifctx);
+>>>>>> +
+>>>>>> +    /* handle specific functions requests */
+>>>>>> +    /*
+>>>>>> +     * PCI Firmware Specification 3.1
+>>>>>> +     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
+>>>>>> +     *        Operating Systems
+>>>>>> +     */
+>>>>>> +    ifctx = aml_if(aml_equal(func, aml_int(7)));
+>>>>>> +    {
+>>>>>> +       Aml *pkg = aml_package(2);
+>>>>>> +       aml_append(pkg, zero);
+>>>>>> +       /* optional, if not impl. should return null string */
+>>>>>> +       aml_append(pkg, aml_string("%s", ""));
+>>>>>> +       aml_append(ifctx, aml_store(pkg, ret));
+>>>>>> +
+>>>>>> +       /*
+>>>>>> +        * IASL is fine when initializing Package with computational
+>>>>>> data,
+>>>>>> +        * however it makes guest unhappy /it fails to process such
+>>>>>> AML/.
+>>>>>> +        * So use runtime assignment to set acpi-index after
+>>>>>> initializer
+>>>>>> +        * to make OSPM happy.
+>>>>>> +        */
+>>>>>> +       aml_append(ifctx,
+>>>>>> +           aml_store(aml_derefof(aml_index(params, aml_int(0))),
+>>>>>> aidx));
+>>>>>> +       aml_append(ifctx, aml_store(aidx, aml_index(ret, zero)));
+>>>>>> +       aml_append(ifctx, aml_return(ret));
+>>>>>> +    }
+>>>>>> +    aml_append(method, ifctx);
+>>>>>> +
+>>>>>> +    return method;
+>>>>>> +}
+>>>>>> +
+>>>>>>     const VMStateDescription vmstate_acpi_pcihp_pci_status = {
+>>>>>>         .name = "acpi_pcihp_pci_status",
+>>>>>>         .version_id = 1,
+>>>>>> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+>>>>>> index bcfba2ccb3..385e75d061 100644
+>>>>>> --- a/hw/i386/acpi-build.c
+>>>>>> +++ b/hw/i386/acpi-build.c
+>>>>>> @@ -322,59 +322,6 @@ build_facs(GArray *table_data)
+>>>>>>         g_array_append_vals(table_data, reserved, 40); /* Reserved */
+>>>>>>     }
+>>>>>>     -static Aml *aml_pci_edsm(void)
+>>>>>> -{
+>>>>>> -    Aml *method, *ifctx;
+>>>>>> -    Aml *zero = aml_int(0);
+>>>>>> -    Aml *func = aml_arg(2);
+>>>>>> -    Aml *ret = aml_local(0);
+>>>>>> -    Aml *aidx = aml_local(1);
+>>>>>> -    Aml *params = aml_arg(4);
+>>>>>> -
+>>>>>> -    method = aml_method("EDSM", 5, AML_SERIALIZED);
+>>>>>> -
+>>>>>> -    /* get supported functions */
+>>>>>> -    ifctx = aml_if(aml_equal(func, zero));
+>>>>>> -    {
+>>>>>> -        /* 1: have supported functions */
+>>>>>> -        /* 7: support for function 7 */
+>>>>>> -        const uint8_t caps = 1 | BIT(7);
+>>>>>> -        build_append_pci_dsm_func0_common(ifctx, ret);
+>>>>>> -        aml_append(ifctx, aml_store(aml_int(caps), aml_index(ret,
+>>>>>> zero)));
+>>>>>> -        aml_append(ifctx, aml_return(ret));
+>>>>>> -    }
+>>>>>> -    aml_append(method, ifctx);
+>>>>>> -
+>>>>>> -    /* handle specific functions requests */
+>>>>>> -    /*
+>>>>>> -     * PCI Firmware Specification 3.1
+>>>>>> -     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
+>>>>>> -     *        Operating Systems
+>>>>>> -     */
+>>>>>> -    ifctx = aml_if(aml_equal(func, aml_int(7)));
+>>>>>> -    {
+>>>>>> -       Aml *pkg = aml_package(2);
+>>>>>> -       aml_append(pkg, zero);
+>>>>>> -       /* optional, if not impl. should return null string */
+>>>>>> -       aml_append(pkg, aml_string("%s", ""));
+>>>>>> -       aml_append(ifctx, aml_store(pkg, ret));
+>>>>>> -
+>>>>>> -       /*
+>>>>>> -        * IASL is fine when initializing Package with computational
+>>>>>> data,
+>>>>>> -        * however it makes guest unhappy /it fails to process such
+>>>>>> AML/.
+>>>>>> -        * So use runtime assignment to set acpi-index after
+>>>>>> initializer
+>>>>>> -        * to make OSPM happy.
+>>>>>> -        */
+>>>>>> -       aml_append(ifctx,
+>>>>>> -           aml_store(aml_derefof(aml_index(params, aml_int(0))),
+>>>>>> aidx));
+>>>>>> -       aml_append(ifctx, aml_store(aidx, aml_index(ret, zero)));
+>>>>>> -       aml_append(ifctx, aml_return(ret));
+>>>>>> -    }
+>>>>>> -    aml_append(method, ifctx);
+>>>>>> -
+>>>>>> -    return method;
+>>>>>> -}
+>>>>>> -
+>>>>>>     /*
+>>>>>>      * build_prt - Define interrupt routing rules
+>>>>>>      *
+>>>>>
+>>>>> EDSM is not called from anywhere. _DSM method actually calls the PDSM,
+>>>>> already defined
+>>>>> in pcihp.c and generated by aml_pci_pdsm(). build_acpi_pci_hotplug(),
+>>>>> which calls
+>>>>> aml_pci_pdsm(), properly creates the PDSM method. Then in
+>>>>> build_append_pcihp_slots()
+>>>>> the a _DSM is defined per slot and inside it there is a call to PDSM,
+>>>>> so I understand
+>>>>> we should actually stick to the PDSM in pcihp.c instead of EDSM.
+>>>>
+>>>> I see build_append_pci_bus_devices -> aml_pci_static_endpoint_dsm
+>>>> adds a _DSM method which eventually calls EDSM.
+>>>
+>>> Yes, but I meant in the final generated ACPI AML code.
+>>>
+>>>
+>>>> aml_pci_device_dsm builds another _DSM implementation which calls PDSM.
+>>>>
+>>>> As we use build_append_pci_bus_devices and we are likely to have a _DSM
+>>>> implementation that calls EDSM method, I think we shall have it in the
+>>>> aml. What do I miss?
+>>>
+>>> Maybe some condition in build_append_pci_bus_devices() of:
+>>>
+>>>           if (pdev->acpi_index &&
+>>>               !object_property_get_bool(OBJECT(pdev), "hotpluggable",
+>>>                                         &error_abort)) { ... }
+>>>
+>>>
+>>> is not met?
+>>>
+>>> Does your _DSM method in the machine's ACPI has a call to EDSM? I don't
+>>> see it. In my case it's the PDSM that is being called:
+>>>
+>>> gromero@xps13:/tmp$ grep -n PDSM dsdt.dsl
+>>> 1910:        Method (PDSM, 5, Serialized)
+>>> 2047:                    Return (PDSM (Arg0, Arg1, Arg2, Arg3, Local0))
+>>> gromero@xps13:/tmp$ grep -n EDSM dsdt.dsl
+>>> 1959:        Method (EDSM, 5, Serialized)
+>>> gromero@xps13:/tmp$
+>>>
+>>> I also confirmed that PDSM is what is being used by reverting this
+>>> patch and
+>>> dropping the aml_append(pci0_scope, aml_pci_edsm()); in 15/22.
+>>>
+>>> But also, why shouldn't we use the PDSM defined already in pcihp.c?
+>>> This is
+>>> indeed crafted for the acpi-pcihp-hotplug device as I understand it.
 >>
->> can you elaborate on this, preferably with call expected call flows?
+>> Sorry, I see now, the EDSM is actually only for static endpoint PCI
+>> devices,
+>> i.e. non-hotpluggable, I see. So PDSM and EDSM serve different
+>> purposes, although
+>> similar.
+>>
+>> So, my point in the end is (and the one that confused me too) that
+>> EDSM can be
+>> present even if it will never be used by any static device, working
+>> pretty much
+>> like an ACPI deadcode. Could we avoid this? For instance, just emit
+>> EDSM if
+>> a _DSM that relies on it is emitted, like:
 > 
-> The way I'm understanding it is: because the GED and GPEX are created
-> in virt.c, so at the machine "level" (and so a machine hotplug handler is
-> used instead of a device hotplug handler, like it's done in PIIX4 and ICH9
-> controller in the x86 machines), and they need to be created in that
-> order because of dependecy of GPEX of GED, the flow is:
+> I see your point and it's true that for some PCIe configs the code can
+> be there while not used. However it looks it is done the same way on x86
+> and I would tend to be not more popish than the pope ;-)
 > 
-> 1) create_acpi_ged() -> calls acpi_pcihp_init(), which by its turn will inspect the root bus to generate the ACPI code
-> 2) create_pcie() -> just in realize the root bus will be created
+> Maybe this can be a patch sent afterwards that would also address the
+> x86 case then.
+
+Got it. Well, I think it's just a matter of making build_append_pci_bus_devices()
+tell if any static endpoint is added and just call aml_pci_edsm() to emit EDSM if
+there is any, like in my diff:
+
++        /* Generate tables for static endpoints. */
++        if (build_append_pci_bus_devices(pci0_scope, vms->bus)) {
++            /* Has a _DSM method that requires a EDSM method. */
++            aml_append(pci0_scope, aml_pci_edsm());
++        }
+
+But I'm not really the maintainer or the official reviewer for this part of
+the code, and you certainly have more karma than I do in this area, so it's
+up to you, of course. I just think ACPI code is tricky enough to review,
+and having dead code makes it a tad more daunting :)
+
+
+>>
+>> diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
+>> index e87846a1fa..4d6dd3dd96 100644
+>> --- a/hw/acpi/pcihp.c
+>> +++ b/hw/acpi/pcihp.c
+>> @@ -905,8 +905,9 @@ void build_append_pcihp_slots(Aml *parent_scope,
+>> PCIBus *bus)
+>>       aml_append(parent_scope, notify_method);
+>>   }
+>>   
+>> -void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus)
+>> +bool build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus)
+>>   {
+>> +    bool has_dsm = false;
+>>       int devfn;
+>>       Aml *dev;
+>>   
+>> @@ -929,11 +930,14 @@ void build_append_pci_bus_devices(Aml
+>> *parent_scope, PCIBus *bus)
+>>               !object_property_get_bool(OBJECT(pdev), "hotpluggable",
+>>                                         &error_abort)) {
+>>               aml_append(dev, aml_pci_static_endpoint_dsm(pdev));
+>> +            has_dsm = true;
+>>           }
+>>   
+>>           /* device descriptor has been composed, add it into parent
+>> context */
+>>           aml_append(parent_scope, dev);
+>>       }
+>> +
+>> +    return has_dsm;
+>>   }
+>>   
+>>   Aml *aml_pci_edsm(void)
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index 05a754d368..e4788c03ed 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -844,15 +844,22 @@ build_dsdt(GArray *table_data, BIOSLinker
+>> *linker, VirtMachineState *vms)
+>>       if (vms->acpi_pcihp) {
+>>           Aml *pci0_scope = aml_scope("\\_SB.PCI0");
+>>   
+>> -        aml_append(pci0_scope, aml_pci_edsm());
+>>           build_acpi_pci_hotplug(dsdt, AML_SYSTEM_MEMORY,
+>>                                  memmap[VIRT_ACPI_PCIHP].base);
+>>           build_append_pcihp_resources(pci0_scope,
+>>                                        memmap[VIRT_ACPI_PCIHP].base,
+>>                                        memmap[VIRT_ACPI_PCIHP].size);
+>>   
+>> -        /* Scan all PCI buses. Generate tables to support hotplug. */
+>> -        build_append_pci_bus_devices(pci0_scope, vms->bus);
+>> +        /*
+>> +         * Scan all PCI buses and devices. Generate tables to support
+>> static
+>> +         * endpoint devices and hotplug.
+>> +         */
+>> +        /* Generate tables for static endpoints. */
+>> +        if (build_append_pci_bus_devices(pci0_scope, vms->bus)) {
+>> +            /* Has a _DSM method that requires a EDSM method. */
+>> +            aml_append(pci0_scope, aml_pci_edsm());
+>> +        }
+>> +        /* Generate tables for PCI buses/slots/ */
+>>           if (object_property_find(OBJECT(vms->bus),
+>> ACPI_PCIHP_PROP_BSEL)) {
+>>               build_append_pcihp_slots(pci0_scope, vms->bus);
+>>           }
+>> diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
+>> index bda5ea24b5..25cc39f4ab 100644
+>> --- a/include/hw/acpi/pcihp.h
+>> +++ b/include/hw/acpi/pcihp.h
+>> @@ -82,7 +82,7 @@ void build_append_pcihp_resources(Aml *table,
+>>                                     uint64_t io_addr, uint64_t io_len);
+>>   bool build_append_notification_callback(Aml *parent_scope, const
+>> PCIBus *bus);
+>>   
+>> -void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus);
+>> +bool build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus);
+>>   
+>>   Aml *aml_pci_edsm(void);
+>>
+>>
+>> Another question that I have is: could you please share a QEMU command
+>> line option
+>> that generates a static endpoint PCI device that matches the criteria
+>> for the emission
+>> of the _DSM method accordingly to build_append_pci_bus_devices()?
+> You can instantiate a virtio-net-pci device on pci.0 and with acpi-index
+> set.
 > 
-> and the sequence has to be 1 -> 2, because GED will be used in the GPEX callbacks on hotplug.
+> -device
+> virtio-net-pci,bus=pcie.0,netdev=nic0,mac=6a:f5:10:b1:3d:d2,acpi-index=12
 > 
-> So here we're following a different design from the current one in x86,
-> which handles the hotplug at the PCI controller "level".
+> In that case EDSM is being called:
+> 
+>          Device (S08)
+>          {
+>              Name (_ADR, 0x00010000)  // _ADR: Address
+>              Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
+>              {
+>                  Local0 = Package (0x01)
+>                      {
+>                          0x0C
+>                      }
+>                  Return (EDSM (Arg0, Arg1, Arg2, Arg3, Local0))
+>              }
+>          }
+> 
+> Putting it on a root port will let the EDSM unused.
 
-... where this chicken & egg doesn't exist, I meant.
-
-So one option would be follow the ICH9 design, i.e.,
-the call to acpi_pcihp_init() would be from a gpex_root_class_realize() (to be created)
-and set in gpex_root_class_init(), like  k->realize = gpex_root_class_realize.
-AcpiPciHpState would then be part of GPEXRootState struct. TYPE_GPEX_ROOT_DEVICE would
-also define the interfaces TYPE_HOTPLUG_HANDLER and TYPE_ACPI_DEVICE_IF, and
-gpex_root_class_init() will set callbacks on these interfaces, for instance:
-
-hc->pre_plug = gpex_device_pre_plug_cb;
-hc->plug = gpex_device_plug_cb;
-hc->unplug_request = gpex_device_unplug_request_cb;
-hc->unplug = gpex_device_unplug_cb;
-hc->is_hotpluggable_bus = gpex_is_hotpluggable_bus;
-
-adevc->send_event = gpex_root_acpi_send_event;
+Thanks for the example. Would it be correct to say so that EDSM is part of
+the coldplug and so could be left for another series, so out of scope for
+hotpluging?
 
 
 Cheers,
 Gustavo
-
-> 
-> Cheers,
-> Gustavo
-> 
->>> How to fix this chicken & egg issue?
->>>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>
->>> ---
->>>
->>> v1 -> v2:
->>> - use ACPI_PCIHP_REGION_NAME
->>> ---
->>>   include/hw/arm/virt.h    |  1 +
->>>   hw/arm/virt-acpi-build.c |  1 +
->>>   hw/arm/virt.c            | 42 +++++++++++++++++++++++++++++++++++-----
->>>   3 files changed, 39 insertions(+), 5 deletions(-)
->>>
->>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
->>> index 1b2e2e1284..a4c4e3a67a 100644
->>> --- a/include/hw/arm/virt.h
->>> +++ b/include/hw/arm/virt.h
->>> @@ -35,6 +35,7 @@
->>>   #include "hw/boards.h"
->>>   #include "hw/arm/boot.h"
->>>   #include "hw/arm/bsa.h"
->>> +#include "hw/acpi/pcihp.h"
->>>   #include "hw/block/flash.h"
->>>   #include "system/kvm.h"
->>>   #include "hw/intc/arm_gicv3_common.h"
->>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->>> index 9d88ffc318..cd49f67d60 100644
->>> --- a/hw/arm/virt-acpi-build.c
->>> +++ b/hw/arm/virt-acpi-build.c
->>> @@ -44,6 +44,7 @@
->>>   #include "hw/acpi/generic_event_device.h"
->>>   #include "hw/acpi/tpm.h"
->>>   #include "hw/acpi/hmat.h"
->>> +#include "hw/acpi/pcihp.h"
->>>   #include "hw/pci/pcie_host.h"
->>>   #include "hw/pci/pci.h"
->>>   #include "hw/pci/pci_bus.h"
->>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>> index 4aa40c8e8b..cdcff0a984 100644
->>> --- a/hw/arm/virt.c
->>> +++ b/hw/arm/virt.c
->>> @@ -682,6 +682,8 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
->>>   {
->>>       DeviceState *dev;
->>>       MachineState *ms = MACHINE(vms);
->>> +    SysBusDevice *sbdev;
->>> +
->>>       int irq = vms->irqmap[VIRT_ACPI_GED];
->>>       uint32_t event = ACPI_GED_PWR_DOWN_EVT;
->>> @@ -693,12 +695,28 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
->>>           event |= ACPI_GED_NVDIMM_HOTPLUG_EVT;
->>>       }
->>> +    if (vms->acpi_pcihp) {
->>> +        event |= ACPI_GED_PCI_HOTPLUG_EVT;
->>> +    }
->>> +
->>>       dev = qdev_new(TYPE_ACPI_GED);
->>>       qdev_prop_set_uint32(dev, "ged-event", event);
->>> -    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->>> +    sbdev = SYS_BUS_DEVICE(dev);
->>> +    sysbus_realize_and_unref(sbdev, &error_fatal);
->>> -    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_ACPI_GED].base);
->>> -    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 1, vms->memmap[VIRT_PCDIMM_ACPI].base);
->>> +    sysbus_mmio_map(sbdev, 0, vms->memmap[VIRT_ACPI_GED].base);
->>> +    sysbus_mmio_map(sbdev, 1, vms->memmap[VIRT_PCDIMM_ACPI].base);
->>
->>
->> Perhaps move out sbdev renaming into a separate patch, as it's not really related.
->>
->>> +    if (vms->acpi_pcihp) {
->>> +        AcpiGedState *acpi_ged_state = ACPI_GED(dev);
->>> +        int i;
->>> +
->>> +        i = sysbus_mmio_map_name(sbdev, ACPI_PCIHP_REGION_NAME,
->>> +                                 vms->memmap[VIRT_ACPI_PCIHP].base);
->>
->> I don't like mix of old way (index based) above and new name based mapping,
->> can we use the same, please?
->>
->>> +        assert(i >= 0);
->> g_assert(sysbus_mmio_map_name...) to get more meaning-full crash
->> that is not compiled out.
->>
->>> +        acpi_pcihp_init(OBJECT(dev), &acpi_ged_state->pcihp_state,
->>> +                        vms->bus, sysbus_mmio_get_region(sbdev, i), 0);
->>
->> hmm, looks broken..
->>   region mapping must happen after acpi_pcihp_init().
->>
->> if we after making sysbus_mmio_map() sane and easier to use
->> (which is a bit on tangent to this series).
->> We could feed sysbus owner device a memory map (ex: name based),
->> and then use [pre_]plug handlers on sysbus to map children
->> automatically.
->> That will alleviate need to do all mapping manually in every board.
->> (frankly speaking it deserves its own series, with tree wide cleanup).
->>
->> As it is I'd use old index based approach like the rest.
->> (unless you feel adventurous about sysbus refactoring)
->>
->>
->>> +        acpi_ged_state->pcihp_state.use_acpi_hotplug_bridge = true;
->>> +    }
->>>       sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(vms->gic, irq));
->>>       return dev;
->>> @@ -1758,6 +1776,13 @@ void virt_machine_done(Notifier *notifier, void *data)
->>>       pci_bus_add_fw_cfg_extra_pci_roots(vms->fw_cfg, vms->bus,
->>>                                          &error_abort);
->>
->>
->>> +
->>> +    if (vms->acpi_pcihp) {
->>> +        AcpiGedState *acpi_ged_state = ACPI_GED(vms->acpi_dev);
->>> +
->>> +        acpi_pcihp_reset(&acpi_ged_state->pcihp_state);
->>> +    }
->>> +
->>>       virt_acpi_setup(vms);
->>>       virt_build_smbios(vms);
->>>   }
->>> @@ -2395,8 +2420,6 @@ static void machvirt_init(MachineState *machine)
->>>       create_rtc(vms);
->>> -    create_pcie(vms);
->>> -
->>>       if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
->>>           vms->acpi_pcihp &= !vmc->no_acpi_pcihp;
->>>           vms->acpi_dev = create_acpi_ged(vms);
->>> @@ -2405,6 +2428,15 @@ static void machvirt_init(MachineState *machine)
->>>           create_gpio_devices(vms, VIRT_GPIO, sysmem);
->>>       }
->>> +    create_pcie(vms);
->>> +
->>> +    if (vms->acpi_dev) {
->>> +        AcpiGedState *acpi_ged_state = ACPI_GED(vms->acpi_dev);
->>> +
->>> +        acpi_ged_state = ACPI_GED(vms->acpi_dev);
->>> +        acpi_ged_state->pcihp_state.root = vms->bus;
->>> +    }
->>> +
->>>       if (vms->secure && !vmc->no_secure_gpio) {
->>>           create_gpio_devices(vms, VIRT_SECURE_GPIO, secure_sysmem);
->>>       }
->>
->> I don't like pulling acpi_pcihp_init()/reset (and issues it causes) into board code,
->> on x86 it's a part of host bridge device model.
->> The same should apply to GED device.
->>
->> The only thing board has to do is map regions into IO space like we do
->> everywhere else.
->>
->> with current code, may be add link<pci_bus> property to GED,
->> and set it before GED realize in create_acpi_ged(),
->> then just follow existing sysbus_mmio_map() pattern.
->>
-> 

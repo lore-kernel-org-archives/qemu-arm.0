@@ -1,210 +1,204 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4844964njc;
-        Tue, 27 May 2025 07:12:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXSifOs48OGJxFR7bMqXf/LalzTKuk4txP41s5atfUmNrXS6to2nw2ZG/vJK3TOjEsz2dA2zM69zWY1Ag==@linaro.org
-X-Google-Smtp-Source: AGHT+IFxwKUILABurhb4/yA2yBYmj5/gLTtQ75w2V+A+XgLBNxjZlJWgKeZ+w1xVZtJdqCC2TPsK
-X-Received: by 2002:a05:6102:604a:b0:4e4:f503:666b with SMTP id ada2fe7eead31-4e4f512b789mr3925255137.3.1748355160644;
-        Tue, 27 May 2025 07:12:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748355160; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4847510njc;
+        Tue, 27 May 2025 07:16:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVGbvCj6FDNxG8AF3zsTVXM5YlGD7607QeCLfDqpTMckEMiV2GnJ00Pck8kk0WgnYp0ZoU3vNh20hM8mg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHxaLltgvVNFnJNZfBsKqt3JY2Z+v8LjsF/XOxaV0Z1/ZtH6J1iWVuottMnF1ExaxPIzzww
+X-Received: by 2002:a05:6000:4313:b0:3a4:deb9:8964 with SMTP id ffacd0b85a97d-3a4deb98b8dmr4505553f8f.17.1748355373164;
+        Tue, 27 May 2025 07:16:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748355373; cv=none;
         d=google.com; s=arc-20240605;
-        b=byPGF0ou87gvHum1TH7Z3qx61ebtYUoprQJqEjxv8mPRGIYBaGqPzz4HSsuXHhRMRx
-         4FGEC6ggDzIiBI3ui823rTkhY52+JWYNUghQMQrbqztH/r0bWzfUUK1G+31VhN4w+LlK
-         H+3rkezF3VvjW/w/sKjs5RZFqOw0VQ0jfenwgFUYFrybkdRdn3ducLeX8CFmiTCw/WdT
-         TiDhJT4Dt3mWikQsAqFahwfMgG74iwgxk3wlX/iR8VMgzhd3s4P1CuCAmA2Sa1sEt6Eq
-         HdLsn2egK3idMkMdXujVTMQ21XkzFyHTZeUbcM/aH9gyMshUD83sSxYkb7Utd+7VcAGQ
-         my5A==
+        b=jVqSvI52Rjob8qHoQdqcUVP7/YdPPK55fUu82Pe/L/C/hUi41MXf3XoFcmDrpk5fg4
+         k7uvD3lwgEbiwa+Fgk8Lec8FV6Ml1PMOR1dReVZuLH2xrSHjazw6o4HUyhouen6PToc3
+         CjSmE0iBoHWvB9tz7MH62x4Clu01m7dfe/rvTsXpapGe2rzpNbRLshMDVOSmuRpUrPDG
+         UB8pZPtd6eTVX5d8gXkZKMq50Rj1LPDG3ByzNl7CR76UBTXqN/WvYJBor5SnTeeNA5UM
+         R0SZu4MfYZqMTFcTcMqMWjnXIGZXnbHcWsloD48F9C5n2guODOmKMTMMVl0/I7Gux0g5
+         UVYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=xAlxIcXP/BPxHINkqh6XmD3LEC+ii4sHOM9gVyEVcs0=;
-        fh=FruvtV3eJRKEPwZmPUtZTAwNEfQCogDaBii3NcwQa9o=;
-        b=BG0cnBv5uL1NpY9cDu1YN7rbCr8p0CEh6ER0suLRtNleBaGMJaEbp3JoONddQM7lWz
-         6+3wG2Ea+TvDoZyj/Sb9wm44fuFz+ifwpCgnz3/4VCy+GYB04uLfZRgwbuX8XQDViG3L
-         hzm17XJfi6VPRcYUuk0wmpAymf0HDMwOFw7O7FozKN4cOI9I2yMMEaIV8afJt/h4KrNp
-         cdlBzY4VnI6csllbe4pvDZL6bVqr/V8hEeuTj7BB8kOFzMoxVzAj47YeA1mnqKw77Imb
-         8qivGOzoKB6floYZHj6aQ/iovtun4CDScIYUkJ2ntMwISePhDKxmX+lBUBoBcJxz4m97
-         V5SQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:references:in-reply-to:subject:cc:to:from
+         :message-id:date:dkim-signature;
+        bh=p9oqlxAEWGiWUwj25MeX0f+/XosxzUap75HxpCJbGQ0=;
+        fh=XVW79qqm87p8dJcoZBNzW8O1gbJbPBwfskISvYfEJ2E=;
+        b=WZFMe9u4HXGKJNgdY3vQfx/7iXgWa5HaBu/mq4u2BQ8CoTg9vBURIc3EES8OKsnbT4
+         2Q3gD5Pwhrtxn20n5G3c0/2lFy34nBtSop2yggupEXT8tQ9VAkJ80+xPhOzMkGSUyffF
+         FkcSlVYOYdoKaTJP/OvrKWDYDvBhCprGmXMCQQqELSksvOfMgG+kLTkfT1q5Aq3NQTio
+         W9nsXZIYjJBm/p6u+S7fcr3oFd9i3GVGTietsc+Qpidno02icBJtHzB8HdK6JqAPCkRV
+         ZywBxzuZgJyAWrWraZr5B6kmF+AGp+ZZLPfzvfM0+fm5fQhamUGt8VagVEJfNDNd78R2
+         RbOw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZJuVDK9E;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4e594f84d55si205078137.229.2025.05.27.07.12.40
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Q3j0sxot;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a4cb5f2b9dsi5964463f8f.421.2025.05.27.07.16.12
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 May 2025 07:12:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 27 May 2025 07:16:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZJuVDK9E;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1748355160;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xAlxIcXP/BPxHINkqh6XmD3LEC+ii4sHOM9gVyEVcs0=;
-	b=ZJuVDK9EmrAkI4Dm8JwS4QsXeEdO2QsrZ7CavljRkxU0NmZJobw3izjyLB68s4yOtz0trL
-	mQIP74zHH36SiSWeawCDG4AUoh/I/AGXyuDnejt3GqPiRsz+uNSHCZCZ1QSyGHFkViBV2s
-	1NbFTeZxJj1SFNaVQAQcPCkt0R0eGIY=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-410-7btD600TPFCynsh10CXgPg-1; Tue, 27 May 2025 10:12:38 -0400
-X-MC-Unique: 7btD600TPFCynsh10CXgPg-1
-X-Mimecast-MFC-AGG-ID: 7btD600TPFCynsh10CXgPg_1748355158
-Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-3a4e1c6c68bso620810f8f.0
-        for <alex.bennee@linaro.org>; Tue, 27 May 2025 07:12:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748355157; x=1748959957;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xAlxIcXP/BPxHINkqh6XmD3LEC+ii4sHOM9gVyEVcs0=;
-        b=hhKrEnVz0CmgAsR4s+MiI4XfH0oCQWtnrYqQwuB8UdvnDz4nFdHAzXH1LRfL3+fUOZ
-         KAvaiOVNlDBotfu2i/hVucCGkLwTHXOkr1xWw3cxJpHSuSD1MF/CaEe+yd5tBiMSmp0b
-         hBqjrUt8I+pLWApFT/D14WQL36XOzp0comcmLJFDeUMfhBvmlkLQO205RUo1MyLe4mz0
-         K/a/J35Zn9s0932rldryUQlwmP2dNLkAcX8cxLagjnUPQZsP2VyX+MR/OqfDHYOlJX89
-         8z6seMkqTOTAJLv6nO5mySeSIczpJDAGEe+p7Gclxo7P1YymRMM/nBOdSt3xgBDgmicb
-         gCuA==
-X-Forwarded-Encrypted: i=1; AJvYcCUea0W1CwsGA2bbSWXPNHQzmrh+YFntFUcJDJamXcYNuWOuEId7fTx79MB2hdJtjjZ/jrOo6QL3ubB1Dg==@linaro.org
-X-Gm-Message-State: AOJu0Yx92zfeZaG5bz9G1n6bK9CI3hSMhN2WV3yaB5jvEidOSPoflFCh
-	RsNlyLoo3cgIKN16AA2TUKTHKByz5urn56rIlTTM0Y00HebkGfZ9d0DW6KSi1RnbP67LFhwsIkO
-	22xw7tkvUsP7PSn9sQ0grVCOxPLTdGxlldlb5Tldv8VrfkgncrOUUERSbow==
-X-Gm-Gg: ASbGnctU9on40drwVCQOXlYTKTBiDvwL16xmiJPsJl8wx6I69TlZSCZsM5olEgSCmab
-	50D47eeOmJsyjSZ2+GjX+hOxAimGIS2RzEEaPQ0ZAE3oCh9zV26SEwxLuNyNW27ZQgtzvGsTF4E
-	SQnlwSI2Vlk1TEeeUTf0+xf3ADlAJiQwDEHocQWHuRhHjEKWFDfnuQnmqZDcTDatW1MDNqKjlP1
-	KAHya9+cFyAf5n6U/ZrnJu0/BtCruhh8h7eJbriiNNhh92dkcLUa0cvXwjVXz96zEcHGn+6DXTT
-	HC5hZ3ww8a7YPIUSvk7tOyLjLSoDoCx8
-X-Received: by 2002:a05:6000:2911:b0:3a4:e65d:5d8c with SMTP id ffacd0b85a97d-3a4e65d5d9emr483373f8f.40.1748355157550;
-        Tue, 27 May 2025 07:12:37 -0700 (PDT)
-X-Received: by 2002:a05:6000:2911:b0:3a4:e65d:5d8c with SMTP id ffacd0b85a97d-3a4e65d5d9emr483333f8f.40.1748355157167;
-        Tue, 27 May 2025 07:12:37 -0700 (PDT)
-Return-Path: <imammedo@redhat.com>
-Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a4e425f25csm1200290f8f.70.2025.05.27.07.12.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 May 2025 07:12:36 -0700 (PDT)
-Date: Tue, 27 May 2025 16:12:35 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
- mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
- Jonathan.Cameron@huawei.com, philmd@linaro.org, alex.bennee@linaro.org
-Subject: Re: [PATCH v2 17/25] hw/arm/virt-acpi-build: Modify the DSDT ACPI
- table to enable ACPI PCI hotplug
-Message-ID: <20250527161235.068bf64b@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20250527074224.1197793-18-eric.auger@redhat.com>
-References: <20250527074224.1197793-1-eric.auger@redhat.com>
-	<20250527074224.1197793-18-eric.auger@redhat.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: qt0W8j9ecq6HZgAqnGuux9cbhgqZ8K7nRIiDur_RcUg_1748355158
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: Ui3sMpmuxO1B
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Q3j0sxot;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uJv5c-0000Y2-5T; Tue, 27 May 2025 10:15:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1uJv5T-0000Wg-MW; Tue, 27 May 2025 10:15:29 -0400
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1uJv5N-00087r-GI; Tue, 27 May 2025 10:15:27 -0400
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 52E3B5C1D0A;
+ Tue, 27 May 2025 14:12:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 03B02C4CEE9;
+ Tue, 27 May 2025 14:15:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1748355312;
+ bh=g1k9FRzqLORXJS5ACE8FbcuyWdMPc4sfhJTsJPJL9pQ=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=Q3j0sxotIDFaWBH7OOm8LzulaiGjoGSiB5eTzamONotcD8SuZo/dgw5Lc2HmuPfwV
+ AHTZKZQiISaNniK6HucF+Tg4gG3DCEYOzvH2Z4ZmRm+Ty5DmSgPrGwN510PwEvqTeV
+ QFQpJGJ40eyUw53pgFDFiAmR5qrgN9LJiIF8BmPaxfM1gg8vQSbHBHX4anS9ASfQK8
+ uPGj7+lNO/NB9XklOGzyp/dDnukaO4KgZSZuTTpC+ESM28EBZhEr90tDTt5njdddsu
+ Z/Vnq5c5mpw+z4c/81xr2dEZLxca5o7TtH3ESPUi9yPIzcfq78pa/82MCTEVhkjwki
+ /R4PylvWeuhmA==
+Received: from sofa.misterjones.org ([185.219.108.64]
+ helo=goblin-girl.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
+ (envelope-from <maz@kernel.org>) id 1uJv5B-000tyG-9j;
+ Tue, 27 May 2025 15:15:09 +0100
+Date: Tue, 27 May 2025 15:15:08 +0100
+Message-ID: <86h616dtsj.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: eric.auger@redhat.com
+Cc: Miguel Luis <miguel.luis@oracle.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "gkulkarni@amperecomputing.com" <gkulkarni@amperecomputing.com>,
+ "gankulkarni@os.amperecomputing.com" <gankulkarni@os.amperecomputing.com>
+Subject: Re: [PATCH v5 0/5] ARM Nested Virt Support
+In-Reply-To: <ee464d7c-9b77-4aa7-9afa-627e497c7581@redhat.com>
+References: <20250527062534.1186004-1-eric.auger@redhat.com>
+ <C10D9293-32F7-4834-9CEE-6AFD4BDBC30E@oracle.com>
+ <86ldqidzyl.wl-maz@kernel.org>
+ <822E77EF-9802-4F16-B8D4-A48F3A624151@oracle.com>
+ <ee464d7c-9b77-4aa7-9afa-627e497c7581@redhat.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/30.1
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: eric.auger@redhat.com, miguel.luis@oracle.com,
+ eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, richard.henderson@linaro.org,
+ gkulkarni@amperecomputing.com, gankulkarni@os.amperecomputing.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
+Received-SPF: pass client-ip=2604:1380:4641:c500::1;
+ envelope-from=maz@kernel.org; helo=dfw.source.kernel.org
+X-Spam_score_int: -49
+X-Spam_score: -5.0
+X-Spam_bar: -----
+X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.907,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: o0Ywie/Xmw88
 
-On Tue, 27 May 2025 09:40:19 +0200
+On Tue, 27 May 2025 14:11:41 +0100,
 Eric Auger <eric.auger@redhat.com> wrote:
+>=20
+> Hi Miguel, Marc,
+>=20
+> On 5/27/25 2:54 PM, Miguel Luis wrote:
+> >
+> >> On 27 May 2025, at 12:01, Marc Zyngier <maz@kernel.org> wrote:
+> >>
+> >> On Tue, 27 May 2025 12:33:23 +0100,
+> >> Miguel Luis <miguel.luis@oracle.com> wrote:
+> >>> Hi Eric,
+> >>>
+> >>>> On 27 May 2025, at 06:24, Eric Auger <eric.auger@redhat.com> wrote:
+> >>>>
+> >>>> Now that ARM nested virt has landed in kvm/next, let's turn the seri=
+es
+> >>>> into a PATCH series. The linux header update was made against kvm/ne=
+xt.
+> >>>>
+> >>>> For gaining virt functionality in KVM accelerated L1, The host needs=
+ to
+> >>>> be booted with "kvm-arm.mode=3Dnested" option and qemu needs to be i=
+nvoked
+> >>>> with: -machine virt,virtualization=3Don.
+> >>> For the current kvmarm/next the guest also needs
+> >>> =E2=80=9Ckvm-arm.mode=3Dnested=E2=80=9D I believe.
+> >> No, unless you want the guest itself to be NV-capable.
+> Effectively you don't need "kvm-arm.mode=3Dnested" except if you want want
+> multiple level of nesting.
 
-> Modify the DSDT ACPI table to enable ACPI PCI hotplug.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  include/hw/arm/virt.h    |  1 +
->  hw/arm/virt-acpi-build.c | 21 +++++++++++++++++++++
->  hw/arm/virt.c            |  1 +
->  hw/arm/Kconfig           |  2 ++
->  4 files changed, 25 insertions(+)
-> 
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 10ea581f06..1b2e2e1284 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -79,6 +79,7 @@ enum {
->      VIRT_ACPI_GED,
->      VIRT_NVDIMM_ACPI,
->      VIRT_PVTIME,
-> +    VIRT_ACPI_PCIHP,
->      VIRT_LOWMEMMAP_LAST,
->  };
->  
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index be5e00a56e..9d88ffc318 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -34,6 +34,7 @@
->  #include "hw/core/cpu.h"
->  #include "hw/acpi/acpi-defs.h"
->  #include "hw/acpi/acpi.h"
-> +#include "hw/acpi/pcihp.h"
->  #include "hw/nvram/fw_cfg_acpi.h"
->  #include "hw/acpi/bios-linker-loader.h"
->  #include "hw/acpi/aml-build.h"
-> @@ -836,6 +837,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->                           (irqmap[VIRT_MMIO] + ARM_SPI_BASE),
->                           0, NUM_VIRTIO_TRANSPORTS);
->      acpi_dsdt_add_pci(scope, memmap, irqmap[VIRT_PCIE] + ARM_SPI_BASE, vms);
-> +
->      if (vms->acpi_dev) {
->          build_ged_aml(scope, "\\_SB."GED_DEVICE,
->                        HOTPLUG_HANDLER(vms->acpi_dev),
-> @@ -864,6 +866,25 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  
->      aml_append(dsdt, scope);
->  
-> +    if (vms->acpi_pcihp) {
-> +        Aml *pci0_scope = aml_scope("\\_SB.PCI0");
-> +
-> +        aml_append(pci0_scope, aml_pci_edsm());
-> +        build_acpi_pci_hotplug(dsdt, AML_SYSTEM_MEMORY,
-> +                               memmap[VIRT_ACPI_PCIHP].base);
-> +        build_append_pcihp_resources(pci0_scope,
-> +                                     memmap[VIRT_ACPI_PCIHP].base,
-> +                                     memmap[VIRT_ACPI_PCIHP].size);
-> +
-> +        /* Scan all PCI buses. Generate tables to support hotplug. */
-> +        build_append_pci_bus_devices(pci0_scope, vms->bus);
-> +        if (object_property_find(OBJECT(vms->bus), ACPI_PCIHP_PROP_BSEL)) {
-> +            build_append_pcihp_slots(pci0_scope, vms->bus);
-> +        }
-> +        build_append_notification_callback(pci0_scope, vms->bus);
-> +        aml_append(dsdt, pci0_scope);
-> +    }
-> +
->      /* copy AML table into ACPI tables blob */
->      g_array_append_vals(table_data, dsdt->buf->data, dsdt->buf->len);
->  
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index a0deeaf2b3..4aa40c8e8b 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -183,6 +183,7 @@ static const MemMapEntry base_memmap[] = {
->      [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
->      [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
->      [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
-> +    [VIRT_ACPI_PCIHP] =         { 0x090c0000, 0x00001000 },
-                                                  ^^^^^
-why not use actual len define here?
-                                             
->      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
->      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
->      [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index a55b44d7bd..572b4dabd5 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -34,6 +34,8 @@ config ARM_VIRT
->      select ACPI_HW_REDUCED
->      select ACPI_APEI
->      select ACPI_VIOT
-> +    select ACPI_PCIHP
-> +    select ACPI_PCI_BRIDGE
->      select VIRTIO_MEM_SUPPORTED
->      select ACPI_CXL
->      select ACPI_HMAT
+You need kvm-arm.mode=3Dnested on the command-line of a kernel that acts
+as a host exposing KVM_CAP_ARM_EL2. This is obviously a recursive
+property, but that's for the user to decide if they want it or not.
+
+> > Correct, I got carried away with some mode combinations. Maybe we shoul=
+d depict
+> > here more broadly how NV might be used with different mode combinations=
+. I'll
+> > think about this further ahead.
+> >
+> > As far this series go I couldn't found any issue booting a L1 guest with
+> > virtualization=3Don and a L2 guest with virtualization=3Doff.
+>=20
+> on my end I tested with various untouched L2 guests (debian, fed, rhel)
+> in 4kB/4kB/4KB page size mode (host, L1, L2). Those configs were successf=
+ul.
+
+I'm doing 4/4/4 (x1e) and 16/16/4 (m2). I'm also doing 4/4/4/4/4, but
+that's not very reliable yet,
+
+> with 64kB/64kB/64kB configs I am less lucky atm. One one machine I
+> cannot boot L1 with virtualization=3Don. On the other I can boot L1 but
+> cannot boot L2.
+
+I think x1e supports 64k pages, but I'd need to try. Not exactly the
+highest priority on my list of things to debug.
+
+> Trying my best to debug a little bit further with my setup. Anyway if
+> somebody else can try 64kB configs, it would help to confirm whether
+> there are pending issues. I don't think they are related to this qemu
+> integration series though.
+
+Yeah, definitely a kernel issue IMO.
+
+Thanks,
+
+	M.
+
+--=20
+Without deviation from the norm, progress is not possible.

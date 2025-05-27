@@ -1,175 +1,280 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4780060njc;
-        Tue, 27 May 2025 05:33:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVU2WbuvxqkcSBpy6C6Ye/ujtL4as4r2gCVZwj6ENzGzT6+OnwcI6TwdBPlJqOdPzxqHsUnseQK0msYVQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEdP0zqs93z5AnstswcWCLGmhBpQL2mT4HRKFJnsg6CT/hEuqjnha0AMunjh07ftweqvE+N
-X-Received: by 2002:a05:6a00:2287:b0:73f:f623:55f8 with SMTP id d2e1a72fcca58-745fde779e7mr17355725b3a.5.1748349187417;
-        Tue, 27 May 2025 05:33:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748349187; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4781425njc;
+        Tue, 27 May 2025 05:35:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX/RoKQ2uo8z6jCTrNHHd/JMG4yH0iq+DW0MVs2Tnre/Zl5GDP0wGYGrPGk5ej8/Mgv88Ssc7nqjhvTvA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFq55c9MyVKWWDhKQG45oBL25s/8wQ4x1S0DY69WTwQ00UBmrysiU7pkDuahtMETTbtpr9V
+X-Received: by 2002:a05:622a:5e12:b0:494:57af:bf9a with SMTP id d75a77b69052e-49f480c8e6dmr231659561cf.50.1748349326107;
+        Tue, 27 May 2025 05:35:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748349326; cv=none;
         d=google.com; s=arc-20240605;
-        b=JrLNyi3arLVmj1X+onV/7PUEWci3Ng3M4eVTlGkJB443FT9uBhlJGMdgCg8zbZh5Wp
-         ufZhufG/JLER0CBMmFRZPcsOQ1Q8iBrhMS2tRXVgmwfXNPysBX5j7l2mbyaAiYBRBRnT
-         a0IWDzm1io2TK/2NkCItEDHn2JyFzkLyS85bbxp9mMd7nmZyaXYkFfoeBLipw3Y0ttvR
-         OyGnj0jgtG44f0g/nHYjQGdxj+cWrdcitUuVm2brtA0Afh3C6eO5pQBhY749o2e4hXTG
-         zwg83CL3zOkux3jilGtOtmmWxnRH6o27DheruTbWkPQy8XVlV/o+5Bq6jt5jMBhNUcfr
-         y7sw==
+        b=SOUHcjGTTcO5PqviGByZQOYTAUEayvWGcG5mn1iWtAcMoLKfREe84xSpi3SRafZNXS
+         h5ISWz4XnsAuHvTQ2VI74pOlAe4ThpP3aoa07KYfFMyNOWnk/GlDq18vT4NyH24rQLAE
+         ettCZm/fuFAQ6jHDh5Y371kyMGvMflFfhWSTjl/CyAM3+n+Odjll/Ls0ZxNBO8H/J3Wb
+         QBf3s3S1bws0doA2rSiY/Mn0iWVz3ZvMMkuu5mrimGuDqjlsW+DL9q6MstPK4LNNi0it
+         XFIIiuOX/KBQVfGzQuqujdJ16SaNUgoHxE1eC5ljhX3wTQyA05/pEhQDS2IiVMWNtdwB
+         T7Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=JSyA17JcwDw+hVT8HzCGm3EhKp0MKE0IgjhRLkchdwk=;
-        fh=tMMRipF0rkwklIGA5FNcgow4eDf8f6ouXaHJbhvjy2c=;
-        b=Rt00WmmESEWAUtIQ+EOF2pZp23YWiYpJVYCKGxO2Y28/SJ2Guva/kTt3/9LKjZeufo
-         BoTli5tVeAAemqgKAaKuNweYInxF+ey+GGzXp7io1SM3LHcvuk4mz/c/ROjgHvcMfOlL
-         u9dDoD/n9y6wcq7vHEp1cnN88Q34ZakLCjYMEk4x+kwxpGKm4qk6OKLBdbNH/EobWpfM
-         Y9xoMiE790DyZ47wvZz9hKe2iX9+s38lMSuSFiL0D/lobm5WBHPS3ma3Y3Dxt1fpp4sd
-         d8h+rO386KN0SiVA4fkOdbKgTRkdMb89i/wD9lE+QtXZMC6n+XFNOQP6xrUmqBPPv1kK
-         /BMQ==;
+        bh=dcGyCCr0YdUesOdX9vj/ueLKGtD9L/19RsFWfNjZGPw=;
+        fh=gFtZvIIXcc94q9jZh4NY7yVWMvRoCEz2GNkddHL5/TQ=;
+        b=kLDCuZ8f6+W9z8fpXDvPQzGSj+vJxIYGXjGz2FiSJiB1ajGW+wuzcN1zjA1rGGnwn2
+         xH9q/Hd8RqhT1NJqKub6ciGMtrThdN9KiCV/MYzDhmc91JGVKPL4ryJS6sV11sAHPL9O
+         /4/L9ZMhCbNkM2yAuUSK7Yz2unq+EVmxg1KZTi0f45SAb4BrRjIRnemm4wAQPmiNaGNS
+         w1VHQoErJnE2RUlBeJPS8mIZnphOBiFPRYV9ogCVP6ZqDHrPSya+4mSx/cZfYNpOeJvG
+         fhayxtNt948DXu9WmEYnI7j4R71+7r2j6Ale7D5AaKjsZTonO3sT8BBXR7J823zQ44aN
+         j+Vw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G59XgEby;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H5wga9Fb;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-74625217ac1si2402409b3a.125.2025.05.27.05.33.07
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fa99d22082si96603076d6.359.2025.05.27.05.35.25
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 May 2025 05:33:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Tue, 27 May 2025 05:35:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G59XgEby;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H5wga9Fb;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1748349186;
+	s=mimecast20190719; t=1748349325;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=JSyA17JcwDw+hVT8HzCGm3EhKp0MKE0IgjhRLkchdwk=;
-	b=G59XgEby6qrGU/zP54zD6zO8Iy8pA2yoRDTR9IxV8oGmUmOd4vE+76PCRULfvCdIOxGsZL
-	nvhG5nnxwYdQPuPHNaDgn4n+UHYuIYS2WZv+p6vu59YZ6wD4iw0mzm2T3B/10BCaDX/NZv
-	nd6bqpYyEHA5AWb4WacNDg4nlrODa9E=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=dcGyCCr0YdUesOdX9vj/ueLKGtD9L/19RsFWfNjZGPw=;
+	b=H5wga9Fb9jhHwI22VvN+hMO9X8SpEHeUzwOQHA3maFFdRPGVwtT2O7j8Hb3+7nC6lEViqI
+	kBMWynq1w7V/NqrWeRP/6/p+lX3trM3Z8qky/7EfzGEp0d+NI7IIFCG4xphI6lsAfKYlML
+	Ra8s92lOC4FlykbEgh0aB6NmS7psnu4=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-22-Kym7SOFePQCpBu_y3hzFoQ-1; Tue, 27 May 2025 08:33:05 -0400
-X-MC-Unique: Kym7SOFePQCpBu_y3hzFoQ-1
-X-Mimecast-MFC-AGG-ID: Kym7SOFePQCpBu_y3hzFoQ_1748349184
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-442ffaa7dbeso24806555e9.3
-        for <alex.bennee@linaro.org>; Tue, 27 May 2025 05:33:04 -0700 (PDT)
+ us-mta-317-SALP2iauNZmI_40mjZ1Fww-1; Tue, 27 May 2025 08:35:24 -0400
+X-MC-Unique: SALP2iauNZmI_40mjZ1Fww-1
+X-Mimecast-MFC-AGG-ID: SALP2iauNZmI_40mjZ1Fww_1748349323
+Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-3a37a0d1005so1878472f8f.3
+        for <alex.bennee@linaro.org>; Tue, 27 May 2025 05:35:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748349184; x=1748953984;
+        d=1e100.net; s=20230601; t=1748349323; x=1748954123;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=JSyA17JcwDw+hVT8HzCGm3EhKp0MKE0IgjhRLkchdwk=;
-        b=UROYfv1hRUUB6LWe1KEl6TXlwvM+kjTArtO+/STSsYFaSCyK7adkJGqlI4EtKdnpqf
-         uoPP6RZi3CTqilOqYhjexRGNyQHSoHijx3hW1VDpOqBsocBI7lFH9N+2boSE8Iqmr1DZ
-         xqGo49Naqp7ddafrZtMnKRaC/ZuhBQ/1jIZc5dvtE9fnGPq5Hk8M+ytL7JlCO39AjM1Q
-         OWQXxg8GmUPBIMK562KAddJHiU0tvbaG0wkWe9lDEVynW2HFh1KUx1c1RKCTY6nQS0kK
-         kTu0GVjEqA/ZVYkpEQlb2bWbYlr/pjrlzBv9lScFO1apXEBSKdA5wGI8GtWlg/dC6DhC
-         A2UQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUX11yXFHp0uPK5hemG0SoW3qUKKmZZFvvxkhNsSsbMa4MFDk/5NyfBn6+8huh54rQHQxqGoJsCGMOigQ==@linaro.org
-X-Gm-Message-State: AOJu0YwvjurI0gX563pmXf5Z8NdVl5Xr5b9rn9MKW0i1qR8EpVKjPV3z
-	YnhRiW/MfcWI5BW+dYgSPPQiHGoIJbhmAeStFY01z6j4Wiufl3NLEjg6214Sir80KwehX/CrNmt
-	BmJuJfIWI5Mzz+fXTy5LbBDeqv8S7tRH0ZxGo3RFLiT4eSC0AF0pVQOCZrA==
-X-Gm-Gg: ASbGncvwfYG4I7xk4EQre2ICAb7JY3tymaQxkgVVCi2oMSmBROEGymn9KIzAnKWK9fh
-	DKG3m3fXI9KaWXpATrMFuna0igkB6tw5XmUqZiXaVUV4kRPe5OlouK3I0KZqmIiL3Ru0pBzYO/6
-	5uLBbdn8nNV0fp1BCNetB5pmt+UL0tgct0tiWDVVozxPxyiZ2qNbcFNDWPuyQtVQ7BUdfsFuGro
-	XW3V1/79DVgEyf/BtF7UgV6AiFN2XWq/vXJLoJ8hj8cgDWPvqvgOgyTiLi7VqmheU3Vs5k1FPfY
-	M8T7xG6qKqOErcARGsTgh+edZeznBwDx
-X-Received: by 2002:a05:600c:a13:b0:43d:160:cd9e with SMTP id 5b1f17b1804b1-44c91fbb448mr122826955e9.17.1748349183863;
-        Tue, 27 May 2025 05:33:03 -0700 (PDT)
-X-Received: by 2002:a05:600c:a13:b0:43d:160:cd9e with SMTP id 5b1f17b1804b1-44c91fbb448mr122826535e9.17.1748349183416;
-        Tue, 27 May 2025 05:33:03 -0700 (PDT)
+        bh=dcGyCCr0YdUesOdX9vj/ueLKGtD9L/19RsFWfNjZGPw=;
+        b=HHVSR08WghgN2S4LEJtC44u/qt4ipyFL1UBLWXIhg635En0JS/13igjQCvpaGR5sK+
+         gaK+AQO4/YZAZP++6kV/Pqy1FOHIIgJQ+Td0lVBx/X0q3RjpxMv4FVHt5rfqTdtIzq5v
+         9vdV4bsIm7bqEeA3Ukb5dm4KTX3xCu2xtrjuryV9gYZxwp6u2WX3geusm9f/PoAdU4mA
+         qdoFSwgJgsv++Z79SLrdqjK7ahLmV92/0n8c9QYoyyEbtnKnXmghXHTDNNpk7lYxaSLN
+         9z7YD+WxSlIyHSkeN900c2T0i+OaFO8VkbKrrsNCg5vvWv8jrftcTS7be/wt29MtJmZB
+         ZmvA==
+X-Forwarded-Encrypted: i=1; AJvYcCXdknM4zRIQaORi5/3skI8DhOO9qgWHsosMZCpZUC5Jt0EMoT3oW7iod8ZT6e41GkrQ8/eljmHWj8C0qg==@linaro.org
+X-Gm-Message-State: AOJu0YxSYDHmKd7p5yNJFbmCBaTfZ+f7dy+1ZXH9uikaMn/NWtsPnx+r
+	SVSevDrrnJBBMK70WKlZm34tvly/PQ9VbQzHNX5cCfiar66eUWFxxB2FWf5BQQtY6hHYjDLEkWa
+	Qpf7mntLiyBI/hVUpSRWjtiutEEZeMDIr8G/8hGUeeygE3l+37DpRlx21qQ==
+X-Gm-Gg: ASbGnctXHQQ93n6cv+20pUqhrbybctmTfS1Vow1nyHYVv9FM22TPISoeuojnaKXp0OA
+	lJVDj0hh2w6xa5ZQK3QzVpO4XZ963gjQeijM6j6UUzTtx+n4DqKPa3l6cPoVvbFMKBjZlduYSpJ
+	vOttnqq2daFREaibjdMDOHQ1Nd7lD4Q605mM5UY3AEs0ImenMCzGcegzSSaiYXNT4/xCh2I5zj1
+	/YEj1lchv3CWkp/zcTdfsRPjrbQTh4nzPfiScid4G4hAG4Nphu77t2GL2Gu7KQOqbLMAD92wsoN
+	hGxjOgm24VH9vj8C/QPg3w8RK/lw2xZR
+X-Received: by 2002:a05:6000:288e:b0:3a3:652d:1640 with SMTP id ffacd0b85a97d-3a4cb461598mr10329056f8f.2.1748349323093;
+        Tue, 27 May 2025 05:35:23 -0700 (PDT)
+X-Received: by 2002:a05:6000:288e:b0:3a3:652d:1640 with SMTP id ffacd0b85a97d-3a4cb461598mr10329027f8f.2.1748349322661;
+        Tue, 27 May 2025 05:35:22 -0700 (PDT)
 Return-Path: <imammedo@redhat.com>
 Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-447f6b29619sm280797635e9.7.2025.05.27.05.33.01
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a4cfed7257sm9238318f8f.49.2025.05.27.05.35.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 May 2025 05:33:03 -0700 (PDT)
-Date: Tue, 27 May 2025 14:33:01 +0200
+        Tue, 27 May 2025 05:35:22 -0700 (PDT)
+Date: Tue, 27 May 2025 14:35:21 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Eric Auger <eric.auger@redhat.com>
 Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
  mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
  Jonathan.Cameron@huawei.com, philmd@linaro.org, alex.bennee@linaro.org
-Subject: Re: [PATCH v2 06/25] hw/pci-host/gpex-acpi: Propagate hotplug type
- info from virt machine downto gpex
-Message-ID: <20250527143301.77f5bfd1@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20250527074224.1197793-7-eric.auger@redhat.com>
+Subject: Re: [PATCH v2 07/25] hw/i386/acpi-build: Turn build_q35_osc_method
+ into a generic method
+Message-ID: <20250527143521.0dcd8f8a@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250527074224.1197793-8-eric.auger@redhat.com>
 References: <20250527074224.1197793-1-eric.auger@redhat.com>
-	<20250527074224.1197793-7-eric.auger@redhat.com>
+	<20250527074224.1197793-8-eric.auger@redhat.com>
 X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: bKLxKJSTwh57fEZ7hCuiASHrhRqkuBOLVMMRBN88yG0_1748349184
+X-Mimecast-MFC-PROC-ID: P4Af3uE_D3omIeYhCRoQTY_Ni-8LNrdwX6D53dwW6vE_1748349323
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TUID: lvQ+r1N4GH3A
+X-TUID: xGNpQkWrsMPq
 
-On Tue, 27 May 2025 09:40:08 +0200
+On Tue, 27 May 2025 09:40:09 +0200
 Eric Auger <eric.auger@redhat.com> wrote:
 
-> Propagate the type of pci hotplug mode downto the gpex
-> acpi code. In case machine acpi_pcihp is unset we configure
-> pci native hotplug on pci0. For expander bridges we keep
-> legacy pci native hotplug, as done on x86 q35.
-
-this is not needed if done as suggested in 2/25
-
+> GPEX acpi_dsdt_add_pci_osc() does basically the same as
+> build_q35_osc_method().
+> 
+> Rename build_q35_osc_method() into build_pci_host_bridge_osc_method()
+> and move it into hw/acpi/aml-build.c. In a subsequent patch we will
+> use this later in place of acpi_dsdt_add_pci_osc().
 > 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
 > ---
->  include/hw/pci-host/gpex.h | 1 +
->  hw/arm/virt-acpi-build.c   | 1 +
->  hw/pci-host/gpex-acpi.c    | 3 ++-
->  3 files changed, 4 insertions(+), 1 deletion(-)
+>  include/hw/acpi/aml-build.h |  2 ++
+>  hw/acpi/aml-build.c         | 50 ++++++++++++++++++++++++++++++++++
+>  hw/i386/acpi-build.c        | 54 ++-----------------------------------
+>  3 files changed, 54 insertions(+), 52 deletions(-)
 > 
-> diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
-> index 84471533af..feaf827474 100644
-> --- a/include/hw/pci-host/gpex.h
-> +++ b/include/hw/pci-host/gpex.h
-> @@ -45,6 +45,7 @@ struct GPEXConfig {
->      MemMapEntry pio;
->      int         irq;
->      PCIBus      *bus;
-> +    bool        pci_native_hotplug;
->  };
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index c18f681342..177d60b414 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -508,4 +508,6 @@ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
+>  void build_spcr(GArray *table_data, BIOSLinker *linker,
+>                  const AcpiSpcrData *f, const uint8_t rev,
+>                  const char *oem_id, const char *oem_table_id, const char *name);
+> +
+> +Aml *build_pci_host_bridge_osc_method(bool enable_native_pcie_hotplug);
+>  #endif
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+
+I'd suggest to use hw/acpi/pci.c for PCI stuff instead of generic aml-build.c
+
+> index f8f93a9f66..ba1dfe0b52 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -2614,3 +2614,53 @@ Aml *aml_i2c_serial_bus_device(uint16_t address, const char *resource_source)
 >  
->  typedef struct GPEXIrq GPEXIrq;
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 7e8e0f0298..be5e00a56e 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -129,6 +129,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
->          .ecam   = memmap[ecam_id],
->          .irq    = irq,
->          .bus    = vms->bus,
-> +        .pci_native_hotplug = !vms->acpi_pcihp,
->      };
+>      return var;
+>  }
+> +
+> +Aml *build_pci_host_bridge_osc_method(bool enable_native_pcie_hotplug)
+> +{
+> +    Aml *if_ctx;
+> +    Aml *if_ctx2;
+> +    Aml *else_ctx;
+> +    Aml *method;
+> +    Aml *a_cwd1 = aml_name("CDW1");
+> +    Aml *a_ctrl = aml_local(0);
+> +
+> +    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
+> +    aml_append(method, aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
+> +
+> +    if_ctx = aml_if(aml_equal(
+> +        aml_arg(0), aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766")));
+> +    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
+> +    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
+> +
+> +    aml_append(if_ctx, aml_store(aml_name("CDW3"), a_ctrl));
+> +
+> +    /*
+> +     * Always allow native PME, AER (no dependencies)
+> +     * Allow SHPC (PCI bridges can have SHPC controller)
+> +     * Disable PCIe Native Hot-plug if ACPI PCI Hot-plug is enabled.
+> +     */
+> +    aml_append(if_ctx, aml_and(a_ctrl,
+> +        aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)), a_ctrl));
+> +
+> +    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(1))));
+> +    /* Unknown revision */
+> +    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x08), a_cwd1));
+> +    aml_append(if_ctx, if_ctx2);
+> +
+> +    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), a_ctrl)));
+> +    /* Capabilities bits were masked */
+> +    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x10), a_cwd1));
+> +    aml_append(if_ctx, if_ctx2);
+> +
+> +    /* Update DWORD3 in the buffer */
+> +    aml_append(if_ctx, aml_store(a_ctrl, aml_name("CDW3")));
+> +    aml_append(method, if_ctx);
+> +
+> +    else_ctx = aml_else();
+> +    /* Unrecognized UUID */
+> +    aml_append(else_ctx, aml_or(a_cwd1, aml_int(4), a_cwd1));
+> +    aml_append(method, else_ctx);
+> +
+> +    aml_append(method, aml_return(aml_arg(3)));
+> +    return method;
+> +}
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 4f8572eebe..91945f716c 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -1111,56 +1111,6 @@ static Aml *build_q35_dram_controller(const AcpiMcfgInfo *mcfg)
+>      return dev;
+>  }
 >  
->      if (vms->highmem_mmio) {
-> diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
-> index 1aa2d12026..f1ab30f3d5 100644
-> --- a/hw/pci-host/gpex-acpi.c
-> +++ b/hw/pci-host/gpex-acpi.c
-> @@ -204,6 +204,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
->              if (is_cxl) {
->                  build_cxl_osc_method(dev);
+> -static Aml *build_q35_osc_method(bool enable_native_pcie_hotplug)
+> -{
+> -    Aml *if_ctx;
+> -    Aml *if_ctx2;
+> -    Aml *else_ctx;
+> -    Aml *method;
+> -    Aml *a_cwd1 = aml_name("CDW1");
+> -    Aml *a_ctrl = aml_local(0);
+> -
+> -    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
+> -    aml_append(method, aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
+> -
+> -    if_ctx = aml_if(aml_equal(
+> -        aml_arg(0), aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766")));
+> -    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
+> -    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
+> -
+> -    aml_append(if_ctx, aml_store(aml_name("CDW3"), a_ctrl));
+> -
+> -    /*
+> -     * Always allow native PME, AER (no dependencies)
+> -     * Allow SHPC (PCI bridges can have SHPC controller)
+> -     * Disable PCIe Native Hot-plug if ACPI PCI Hot-plug is enabled.
+> -     */
+> -    aml_append(if_ctx, aml_and(a_ctrl,
+> -        aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)), a_ctrl));
+> -
+> -    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(1))));
+> -    /* Unknown revision */
+> -    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x08), a_cwd1));
+> -    aml_append(if_ctx, if_ctx2);
+> -
+> -    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), a_ctrl)));
+> -    /* Capabilities bits were masked */
+> -    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x10), a_cwd1));
+> -    aml_append(if_ctx, if_ctx2);
+> -
+> -    /* Update DWORD3 in the buffer */
+> -    aml_append(if_ctx, aml_store(a_ctrl, aml_name("CDW3")));
+> -    aml_append(method, if_ctx);
+> -
+> -    else_ctx = aml_else();
+> -    /* Unrecognized UUID */
+> -    aml_append(else_ctx, aml_or(a_cwd1, aml_int(4), a_cwd1));
+> -    aml_append(method, else_ctx);
+> -
+> -    aml_append(method, aml_return(aml_arg(3)));
+> -    return method;
+> -}
+> -
+>  static void build_acpi0017(Aml *table)
+>  {
+>      Aml *dev, *scope, *method;
+> @@ -1231,7 +1181,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>          aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A08")));
+>          aml_append(dev, aml_name_decl("_CID", aml_eisaid("PNP0A03")));
+>          aml_append(dev, aml_name_decl("_UID", aml_int(pcmc->pci_root_uid)));
+> -        aml_append(dev, build_q35_osc_method(!pm->pcihp_bridge_en));
+> +        aml_append(dev, build_pci_host_bridge_osc_method(!pm->pcihp_bridge_en));
+>          aml_append(dev, aml_pci_edsm());
+>          aml_append(sb_scope, dev);
+>          if (mcfg_valid) {
+> @@ -1353,7 +1303,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>                  aml_append(dev, aml_name_decl("_CID", aml_eisaid("PNP0A03")));
+>  
+>                  /* Expander bridges do not have ACPI PCI Hot-plug enabled */
+> -                aml_append(dev, build_q35_osc_method(true));
+> +                aml_append(dev, build_pci_host_bridge_osc_method(true));
 >              } else {
-> +                /* pxb bridges do not have ACPI PCI Hot-plug enabled */
->                  acpi_dsdt_add_host_bridge_methods(dev, true);
+>                  aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A03")));
 >              }
->  
-> @@ -279,7 +280,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
->      }
->      aml_append(dev, aml_name_decl("_CRS", rbuf));
->  
-> -    acpi_dsdt_add_host_bridge_methods(dev, true);
-> +    acpi_dsdt_add_host_bridge_methods(dev, cfg->pci_native_hotplug);
->  
->      Aml *dev_res0 = aml_device("%s", "RES0");
->      aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));

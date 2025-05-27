@@ -1,264 +1,324 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4949750njc;
-        Tue, 27 May 2025 09:53:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXphVAjQE14l5M4cZkAF05k/mzp+869722q7ZXFvBnxgb4JfyCDDMzs3FNF4p+hYPV9RxQ0Fm2qeDbPEg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGvrOEFFh1mpD7tFtYReGXCiH2N+6zJkKGEr7+P2YhVW8XOeZkHT8t6ucy/PuDRea83/JxX
-X-Received: by 2002:a05:620a:40ce:b0:7ce:e916:c953 with SMTP id af79cd13be357-7cf06d186fdmr198443185a.5.1748364801896;
-        Tue, 27 May 2025 09:53:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748364801; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5036768njc;
+        Tue, 27 May 2025 12:16:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVE1ED4Vu0qy7Ody4npv7JMX8uGurcVabWjK60jRqvsmrVG55tcGz7utwiWbRCqbAP4A49ggPn1/uYGqQ==@linaro.org
+X-Received: by 2002:a05:6122:62e9:b0:526:23d2:6ecd with SMTP id 71dfb90a1353d-5305fdfa549mr1947743e0c.6.1748373413560;
+        Tue, 27 May 2025 12:16:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748373413; cv=none;
         d=google.com; s=arc-20240605;
-        b=IwfWxmwN7JeSa3FXqhEvzL1MmWy3/sN1h1I3lYRyebXjl7wqjweO6M3anl5V4flwVs
-         VRNdfif9YT2EeuZ+9quR2NgBsku3toH0rzTOBx4v52ggmfVN2rP/0YW8x44n+8I96U6A
-         1ZUS/i8v8pNplFOvm9I4CXEf8aB0K8+U13XfFg+bLKuLJVdxCfiW9Gtkx9yt7SkTvjB7
-         nd/RYctyWPiuoxGGTvoBIzZ51eK090HiYc2iGzyQOhAS8ZNFyBkQ3KEt/17t18c9pWzW
-         Rdd0pkYrk3xcAf/NBw0ck1IU8lW0yhbUt0wRV0w6BPmtYahVpK/fvMdbPEE3yR8bWNsM
-         en1Q==
+        b=PlJRrOAG9ke6gaACYJCCsb2jY7dsk//01lPEclYT5jd8Gaou38eYhWTcmHdIArN5Si
+         +n45LkGpQEHMuT9uRUMC+wOL5VKrJLlApiukSv0AtP3N7b+9WFOKO/Xfl+0wZEgbhnsm
+         H4E6fZN6Q8g0DaZ/+Ie3VXdLKA+dUOuEtPr0b/J9LXbdEmOB4NXkJE9mCXH3NGpq/um5
+         HTHRikaNaA+Zvb4eAqY8pJmAg4J07x097amW/oZC81KkRO0gyo8+/EaiPmbvUCXuB0td
+         yryKKYAmyF01hXa+OIE5Sn1jmFSNJ+SEZX60HQ1U2VojD6Exg+ZtyO/wF3O4gBGmqL2+
+         SvWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:references:in-reply-to:subject:cc:to:from
-         :message-id:date:dkim-signature;
-        bh=qDFuVubLDsJCI03SdwPYDBSSddHqsa5Y1bMb3gGJr9M=;
-        fh=YSzsmHBVxrdPESpPegyfn1EKuQwVqHEVQP/gDhdU2pE=;
-        b=Ow8/eorkKl+Qsc3r2IKKzT2d9lx/6njTrqVcGEoXKVBPxbEqhhFGAkd1mTQK5L79mo
-         8R3Gl8qt+llSWHpfGBMzViGgGUYxIBveqz6VBPOcnRdMXmC/pL/2VUerEHINnNcqESFF
-         OHpvoKLEMN8nbL5Dy0hy6QtjuwOtcA7PF0w9XOsJqCobBbus+MGEeN3bPJfsN0qEL51l
-         3kFw+6wRhuerTqqK7y1t5w185SISflUGuUsH0p6SIr1he7ONUpmfjYHd9OLIwLf8IF8r
-         3jZLBUgvstwQdoX1de5p52I6LWYO66hYcE9gKSqTDrvlH9nQLi/5vOMucubrxJhOOt2Q
-         Bqsw==;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=IAsDWGx8Uo9EscDRhlxrXFB/Hp9p99WkK4bk9lATPmA=;
+        fh=SOmwYr31kschGeNmXV9HGsjsMzsMhf0UoiN/J/9QMGo=;
+        b=BSAGFwE5GsOUfMzl/JdqxYz3PzSF2GeVzNtV93jZa85Qvf6KUOEgD8q/s3yaSr7CH+
+         96Ud551izpD3zkLtpiWfFpERCmlqb5EgRzFTp+8weaOvpJzV1nKLDAwql0C9BNAqDPfv
+         Xu8rL/judzFOIe96RDHern6n3y64cN+aTZQk7b5e3WGw/QvZxHq6SapAn2m7YdPax525
+         1Zh/zvNNBc/3PZjCxy7TMFoijMe1tNoL2mKXQYqZvNux+rY2B0xtuv4I9QOAw+4ozI9r
+         B0oyPPdeJAMKHhqdwdZ+mxK+4gWetNBmqkzyYR7U0lxHASo/99gPDZeLY/e+wcW1Gs3S
+         Q4HQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=XjQmzOvu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cd468f310csi2251104185a.644.2025.05.27.09.53.21
+       dkim=pass header.i=@linaro.org header.s=google header.b=GqSFhb05;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 71dfb90a1353d-5305b549340sor553440e0c.1.2025.05.27.12.16.53
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 May 2025 09:53:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 27 May 2025 12:16:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=XjQmzOvu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uJxXp-00011i-ET; Tue, 27 May 2025 12:52:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maz@kernel.org>)
- id 1uJxXl-0000yf-F6; Tue, 27 May 2025 12:52:49 -0400
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maz@kernel.org>)
- id 1uJxXi-0004wd-SR; Tue, 27 May 2025 12:52:49 -0400
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 4CDE6614BF;
- Tue, 27 May 2025 16:52:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 025AFC4CEE9;
- Tue, 27 May 2025 16:52:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1748364764;
- bh=Bt4JVL3Ubk1mgBtVSBYDxQXRmjiIs5L9++W1pZpayhk=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=XjQmzOvuQHmuPS8iC69A6FwUqcD/9aIP3CYmVPfFs/sqPUoZsl2MvvcwM0AqANqpz
- Eo15s15z4A/ETEbnqX+hUyldI47pMYeS+MCtR+VS5ASndQS8B/mMzjGatfL/rPuOaf
- ySIvxwPkfj1OL3LESs5mpgAFMTp6d8TnDbeQovCD8iacRnSWGlhmrM+Pb9AZEP8MHN
- zqJho4bGibnInfN5Hif8fdVIqFVOPu/LkIbbi7PTefEgSerRZOKHyiE+REEn/IDEnP
- uowoHumPCLNps3henuTCNdffLipgsbHwHXxyolxesxZoIPRPrGDGzqzr9khnQ43pC+
- sqNIKd2YXzTmw==
-Received: from sofa.misterjones.org ([185.219.108.64]
- helo=goblin-girl.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <maz@kernel.org>) id 1uJxXd-000wKE-RG;
- Tue, 27 May 2025 17:52:41 +0100
-Date: Tue, 27 May 2025 17:52:41 +0100
-Message-ID: <86frgqdmhy.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Miguel Luis <miguel.luis@oracle.com>
-Cc: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
- <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "richard.henderson@linaro.org"
- <richard.henderson@linaro.org>, "gkulkarni@amperecomputing.com"
- <gkulkarni@amperecomputing.com>, "gankulkarni@os.amperecomputing.com"
- <gankulkarni@os.amperecomputing.com>
-Subject: Re: [PATCH v5 0/5] ARM Nested Virt Support
-In-Reply-To: <A3872288-67B7-4C99-84F0-19812758FCF0@oracle.com>
-References: <20250527062534.1186004-1-eric.auger@redhat.com>
- <86msayec3a.wl-maz@kernel.org>
- <63FE2592-DF4D-4CCF-BC76-D8656C9EFA0A@oracle.com>
- <86jz62dzxa.wl-maz@kernel.org>
- <A5135210-4984-4532-B0AF-9CDC8255CBD0@oracle.com>
- <86iklmdv4d.wl-maz@kernel.org>
- <A3872288-67B7-4C99-84F0-19812758FCF0@oracle.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/30.1
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: miguel.luis@oracle.com, eric.auger@redhat.com,
- eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, richard.henderson@linaro.org,
- gkulkarni@amperecomputing.com, gankulkarni@os.amperecomputing.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
-Received-SPF: pass client-ip=2600:3c04:e001:324:0:1991:8:25;
- envelope-from=maz@kernel.org; helo=tor.source.kernel.org
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) DKIMWL_WL_HIGH=-2.907, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YGlJ4m7VT/5S
+       dkim=pass header.i=@linaro.org header.s=google header.b=GqSFhb05;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1748373413; x=1748978213; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=IAsDWGx8Uo9EscDRhlxrXFB/Hp9p99WkK4bk9lATPmA=;
+        b=GqSFhb05k5PsFxRdK5164Q1IG3pUAkK/q1Legu1F8bSGQz5t6iHoa4+j6YPMsT0pcS
+         1bMNle5m8Ub5oPoStS+g6hCg7tqHniQzO2eB6U/8xzchyUym0WzqsG8hJkqrnjOdz28T
+         FMPRBF1HCU3fPB1XNXETkqrlbnWOh4cwanzpSocNFuWmYWqHffUAhgN79VvUq4IGPzVP
+         KMHmdH8VSHEvWDUgUiosBg3zstfG7Ph9nvr3bykr1FqmLV8KrpC3Bp4lpyAT0a5pkqp4
+         xFO1lovAku2VanLUUbYfjLOt3cWc0+zPSap0PbQvfonoNGfsAPf4xJ8ChLYufoKcPGMO
+         18oA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748373413; x=1748978213;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=IAsDWGx8Uo9EscDRhlxrXFB/Hp9p99WkK4bk9lATPmA=;
+        b=RVB2cC3ZeZzR1ZPx6ut5uUnHwGXGKK/ak9vIQf7jGkNNomg6TOnRLbM0SKr/C5er1o
+         Du8asdt3Q7an9mx1FPbhOQbnJEzYunQZIubnX/8vUzbx4LBOv2Q8ZnC2rX/6IhH+0Tge
+         my4V28rIT2aICR/cfjYoiyCIgzWXJp3I0/abQjs3zPmMJ4ni3JiUOBYL8LPVPHFSMbQi
+         t9EsyqTks7CYf6FIjiPEqL5NCKdZjdHajlNpx0rbzLrKEyanUbBeH8jiEWZK+3X+Xso3
+         4ySgMnId/6lPMmRSP1jzkWC2ow1h/wcUJcNk2NGvogtLeqTUkbYWKbNGAMbGwK3YoaE2
+         fWHg==
+X-Forwarded-Encrypted: i=1; AJvYcCUazYa0LrZZU7y6SqVDK+/nyx4FJPA7nJvLW12s8upIaijRGpC0CtthPgGydUNvwyCGP9nY4PshuKf8jQ==@linaro.org
+X-Gm-Message-State: AOJu0Yy6yD8auF4bSrn+PXR8fnjQz8iI14A2dRRR9TQK3jWjU/U1hKIP
+	Ds1YB5jMiMNuR0tIiA8mmDBcjJmRuuDnw6s6tXGSAoGFUfsy/nqYCjiXzc0JyNBaLT+V3A==
+X-Gm-Gg: ASbGncs0849yReMmiM0TUz62XOfoA1jRYIQng76LxwOaWAsQciV1fKl/EKg/KXJHn1e
+	BmymH9+2bIQC0s6xGE7UfTc+B7s0xheI3Uxxnbgnc7H2e9YlKnlNEOZnrgq5cLLR3JV8XJlEJ0Z
+	pePbWA1qBOKQC62JdwM6rLNDR/ppZlTO7a4aGNQd9/GhhV/GsCOp4kq+qIls2IDnKMd6S8pHPIv
+	Piu3ittmZxzXJRb8Z/beYIz9N9RfBT1qZsSEHW4yvETn28VzJZ9r41c5MEDh/dTliuuhEMenAek
+	hch0T22TdBkwTW3uChWtyfHuMZHI6Dwj3tdw/mTAZOJ1PebZqrt5VJzSAH4gWh0YN5wy66CXnxg
+	xg8S6LKZKc1THaJZjmJPSwu7ZwSZHHw==
+X-Google-Smtp-Source: AGHT+IEDsBo4x6SURdUzmQi6TIN3SQXrxD2ldezqbYa060W7TF7WT49djWBNdn27V12vFhi7ptL7xg==
+X-Received: by 2002:a05:6122:3d15:b0:520:4806:a422 with SMTP id 71dfb90a1353d-5305fdd335bmr2336966e0c.3.1748373412987;
+        Tue, 27 May 2025 12:16:52 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from ?IPV6:2804:7f0:b402:6ba2:2066:dacd:9134:8586? ([2804:7f0:b402:6ba2:2066:dacd:9134:8586])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-52dbab6b42esm20112458e0c.40.2025.05.27.12.16.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 27 May 2025 12:16:51 -0700 (PDT)
+Message-ID: <8b27d199-7bfa-48f2-b534-42a3a975fbf3@linaro.org>
+Date: Tue, 27 May 2025 16:16:48 -0300
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 22/25] hw/arm/virt: Let virt support pci hotplug/unplug
+ GED event
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: Igor Mammedov <imammedo@redhat.com>, Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, anisinha@redhat.com, mst@redhat.com,
+ shannon.zhaosl@gmail.com, pbonzini@redhat.com, Jonathan.Cameron@huawei.com,
+ philmd@linaro.org, alex.bennee@linaro.org
+References: <20250527074224.1197793-1-eric.auger@redhat.com>
+ <20250527074224.1197793-23-eric.auger@redhat.com>
+ <20250527175649.5d276bc8@imammedo.users.ipa.redhat.com>
+ <363b7862-84b3-4bd1-85d6-781eb9ecf161@linaro.org>
+Content-Language: en-US
+In-Reply-To: <363b7862-84b3-4bd1-85d6-781eb9ecf161@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: Oqk7HOVDp7Cm
 
-On Tue, 27 May 2025 16:55:32 +0100,
-Miguel Luis <miguel.luis@oracle.com> wrote:
->=20
-> Hi Marc,
->=20
-> > On 27 May 2025, at 13:46, Marc Zyngier <maz@kernel.org> wrote:
-> >=20
-> > On Tue, 27 May 2025 14:24:31 +0100,
-> > Miguel Luis <miguel.luis@oracle.com> wrote:
-> >>=20
-> >>=20
-> >>=20
-> >>> On 27 May 2025, at 12:02, Marc Zyngier <maz@kernel.org> wrote:
-> >>>=20
-> >>> On Tue, 27 May 2025 12:40:35 +0100,
-> >>> Miguel Luis <miguel.luis@oracle.com> wrote:
-> >>>>=20
-> >>>> Hi Marc,
-> >>>>=20
-> >>>>> On 27 May 2025, at 07:39, Marc Zyngier <maz@kernel.org> wrote:
-> >>>>>=20
-> >>>>> Hi Eric,
-> >>>>>=20
-> >>>>> On Tue, 27 May 2025 07:24:32 +0100,
-> >>>>> Eric Auger <eric.auger@redhat.com> wrote:
-> >>>>>>=20
-> >>>>>> Now that ARM nested virt has landed in kvm/next, let's turn the se=
-ries
-> >>>>>> into a PATCH series. The linux header update was made against kvm/=
-next.
-> >>>>>>=20
-> >>>>>> For gaining virt functionality in KVM accelerated L1, The host nee=
-ds to
-> >>>>>> be booted with "kvm-arm.mode=3Dnested" option and qemu needs to be=
- invoked
-> >>>>>> with: -machine virt,virtualization=3Don.
-> >>>>>=20
-> >>>>> Thanks for respinning this series.
-> >>>>>=20
-> >>>>> Do you have any plan to support the non-VHE version of the NV suppo=
-rt
-> >>>>> (as advertised by KVM_CAP_ARM_EL2_E2H0)? It would allow running les=
-ser
-> >>>>> hypervisors (such as *cough* Xen *cough*), which completely rely on
-> >>>>> HCR_EL2.E2H being 0?
-> >>>>>=20
-> >>>>=20
-> >>>> Something that pops up is early_kvm_mode_cfg trying to handle nested=
- mode
-> >>>> while KVM_ARM_VCPU_HAS_EL2_E2H0 is set.
-> >>>=20
-> >>> Care to elaborate?
-> >>>=20
-> >>=20
-> >> Say host is booted in nested mode (kvm-arm.mode=3Dnested) and host's K=
-VM supports
-> >> both KVM_CAP_ARM_EL2 and KVM_CAP_ARM_E2H0.
-> >>=20
-> >> A L1 guest boots setting both KVM_ARM_VCPU_HAS_EL2 and
-> >> KVM_ARM_VCPU_HAS_EL2_E2H0 and guest kernel's command line state
-> >> kvm-arm.mode=3Dnested.
-> >>=20
-> >> This splats the kernel from early_kvm_mode_cfg along a malformed early=
- option
-> >> message.
-> >=20
-> > BEBKAC. You are asking for nested on a (virtual) machine that doesn't
-> > support it, and the kernel tells you so with a warning. Try the same
-> > thing on a physical machine that doesn't have NV, and observe the
-> > result.
-> >=20
->=20
-> Ack.
->=20
-> I find trying them a great way to improve resilience.
-> I=E2=80=99ve tried the scenarios below which have similar results on the =
-guest:
->=20
-> 1.
-> Host: kvm-arm.mode=3Dnested
->=20
-> L1 Guest: kvm-arm.mode=3Dnvhe setting both
-> KVM_ARM_VCPU_HAS_EL2 and KVM_ARM_VCPU_HAS_EL2_E2H0
->=20
-> Result on the guest: No early_kvm_mode_cfg splat, boot proceeds, ends up =
-in a hard lockup splat.
 
-Setting kvm-arm.mode=3Dnvhe when KVM_ARM_VCPU_HAS_EL2_E2H0 is set is a
-tautology. The very definition of nVHE is that HCR_EL2.E2H=3D0.
 
->
-> 2.
-> Host: kvm-arm.mode=3Dnested
->=20
-> L1 Guest: kvm-arm.mode=3Dnested setting both
-> KVM_ARM_VCPU_HAS_EL2 and KVM_ARM_VCPU_HAS_EL2_E2H0
->=20
-> Result on the guest: Splat at early_kvm_mode_cfg, boot proceeds, ends up =
-in hard lockup splat.
+On 5/27/25 13:44, Gustavo Romero wrote:
+> Hi folks,
+> 
+> On 5/27/25 12:56, Igor Mammedov wrote:
+>> On Tue, 27 May 2025 09:40:24 +0200
+>> Eric Auger <eric.auger@redhat.com> wrote:
+>>
+>>> Set up the IO registers used to communicate between QEMU
+>>> and ACPI.
+>>
+>>
+>>
+>>> Move the create_pcie() call after the creation of the acpi
+>>> ged device since hotplug callbacks will soon be called on gpex
+>>> realize and will require the acpi pcihp state to be initialized.
+>>>
+>>> The hacky thing is the root bus has not yet been created on
+>>> acpi_pcihp_init() call so it is set later after the gpex realize.
+>>
+>> can you elaborate on this, preferably with call expected call flows?
+> 
+> The way I'm understanding it is: because the GED and GPEX are created
+> in virt.c, so at the machine "level" (and so a machine hotplug handler is
+> used instead of a device hotplug handler, like it's done in PIIX4 and ICH9
+> controller in the x86 machines), and they need to be created in that
+> order because of dependecy of GPEX of GED, the flow is:
+> 
+> 1) create_acpi_ged() -> calls acpi_pcihp_init(), which by its turn will inspect the root bus to generate the ACPI code
+> 2) create_pcie() -> just in realize the root bus will be created
+> 
+> and the sequence has to be 1 -> 2, because GED will be used in the GPEX callbacks on hotplug.
+> 
+> So here we're following a different design from the current one in x86,
+> which handles the hotplug at the PCI controller "level".
 
-I don't see any of these lockups with kvmtool. See this:
+... where this chicken & egg doesn't exist, I meant.
 
-	https://pastebin.com/uyYzsBHc
+So one option would be follow the ICH9 design, i.e.,
+the call to acpi_pcihp_init() would be from a gpex_root_class_realize() (to be created)
+and set in gpex_root_class_init(), like  k->realize = gpex_root_class_realize.
+AcpiPciHpState would then be part of GPEXRootState struct. TYPE_GPEX_ROOT_DEVICE would
+also define the interfaces TYPE_HOTPLUG_HANDLER and TYPE_ACPI_DEVICE_IF, and
+gpex_root_class_init() will set callbacks on these interfaces, for instance:
 
-for an example of a boot with both capabilities set and the nonsense
-"nested" on the command-line (your #2).
+hc->pre_plug = gpex_device_pre_plug_cb;
+hc->plug = gpex_device_plug_cb;
+hc->unplug_request = gpex_device_unplug_request_cb;
+hc->unplug = gpex_device_unplug_cb;
+hc->is_hotpluggable_bus = gpex_is_hotpluggable_bus;
 
-> Does this means there=E2=80=99s a default fallback mode in which nv gets =
-on when=20
-> kvm-arm.mode fed to the guest kernel cmdline differs from the expected?
+adevc->send_event = gpex_root_acpi_send_event;
 
-I don't understand your question. We have two modes of operation:
 
-- HAS_EL2 enables NV on the host, and additionally enables recursive
-  NV. As a consequence, HCR_EL2.E2H is RES1. This is how NV will be
-  supported long term.
+Cheers,
+Gustavo
 
-- HAS_EL2_E2H0 restricts the above by not exposing NV to the guest,
-  and enforcing HCR_EL2.E2H to be RES0. I expect this to gradually be
-  removed from implementations, and eventually disappear.
-
-As you can see, there is no "fallback mode". You pick the mode you
-want based on the guest you want to run and the capabilities of the
-hardware.
-
-	M.
-
---=20
-Without deviation from the norm, progress is not possible.
+> 
+> Cheers,
+> Gustavo
+> 
+>>> How to fix this chicken & egg issue?
+>>>
+>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>
+>>> ---
+>>>
+>>> v1 -> v2:
+>>> - use ACPI_PCIHP_REGION_NAME
+>>> ---
+>>>   include/hw/arm/virt.h    |  1 +
+>>>   hw/arm/virt-acpi-build.c |  1 +
+>>>   hw/arm/virt.c            | 42 +++++++++++++++++++++++++++++++++++-----
+>>>   3 files changed, 39 insertions(+), 5 deletions(-)
+>>>
+>>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+>>> index 1b2e2e1284..a4c4e3a67a 100644
+>>> --- a/include/hw/arm/virt.h
+>>> +++ b/include/hw/arm/virt.h
+>>> @@ -35,6 +35,7 @@
+>>>   #include "hw/boards.h"
+>>>   #include "hw/arm/boot.h"
+>>>   #include "hw/arm/bsa.h"
+>>> +#include "hw/acpi/pcihp.h"
+>>>   #include "hw/block/flash.h"
+>>>   #include "system/kvm.h"
+>>>   #include "hw/intc/arm_gicv3_common.h"
+>>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>>> index 9d88ffc318..cd49f67d60 100644
+>>> --- a/hw/arm/virt-acpi-build.c
+>>> +++ b/hw/arm/virt-acpi-build.c
+>>> @@ -44,6 +44,7 @@
+>>>   #include "hw/acpi/generic_event_device.h"
+>>>   #include "hw/acpi/tpm.h"
+>>>   #include "hw/acpi/hmat.h"
+>>> +#include "hw/acpi/pcihp.h"
+>>>   #include "hw/pci/pcie_host.h"
+>>>   #include "hw/pci/pci.h"
+>>>   #include "hw/pci/pci_bus.h"
+>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>> index 4aa40c8e8b..cdcff0a984 100644
+>>> --- a/hw/arm/virt.c
+>>> +++ b/hw/arm/virt.c
+>>> @@ -682,6 +682,8 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+>>>   {
+>>>       DeviceState *dev;
+>>>       MachineState *ms = MACHINE(vms);
+>>> +    SysBusDevice *sbdev;
+>>> +
+>>>       int irq = vms->irqmap[VIRT_ACPI_GED];
+>>>       uint32_t event = ACPI_GED_PWR_DOWN_EVT;
+>>> @@ -693,12 +695,28 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+>>>           event |= ACPI_GED_NVDIMM_HOTPLUG_EVT;
+>>>       }
+>>> +    if (vms->acpi_pcihp) {
+>>> +        event |= ACPI_GED_PCI_HOTPLUG_EVT;
+>>> +    }
+>>> +
+>>>       dev = qdev_new(TYPE_ACPI_GED);
+>>>       qdev_prop_set_uint32(dev, "ged-event", event);
+>>> -    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+>>> +    sbdev = SYS_BUS_DEVICE(dev);
+>>> +    sysbus_realize_and_unref(sbdev, &error_fatal);
+>>> -    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_ACPI_GED].base);
+>>> -    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 1, vms->memmap[VIRT_PCDIMM_ACPI].base);
+>>> +    sysbus_mmio_map(sbdev, 0, vms->memmap[VIRT_ACPI_GED].base);
+>>> +    sysbus_mmio_map(sbdev, 1, vms->memmap[VIRT_PCDIMM_ACPI].base);
+>>
+>>
+>> Perhaps move out sbdev renaming into a separate patch, as it's not really related.
+>>
+>>> +    if (vms->acpi_pcihp) {
+>>> +        AcpiGedState *acpi_ged_state = ACPI_GED(dev);
+>>> +        int i;
+>>> +
+>>> +        i = sysbus_mmio_map_name(sbdev, ACPI_PCIHP_REGION_NAME,
+>>> +                                 vms->memmap[VIRT_ACPI_PCIHP].base);
+>>
+>> I don't like mix of old way (index based) above and new name based mapping,
+>> can we use the same, please?
+>>
+>>> +        assert(i >= 0);
+>> g_assert(sysbus_mmio_map_name...) to get more meaning-full crash
+>> that is not compiled out.
+>>
+>>> +        acpi_pcihp_init(OBJECT(dev), &acpi_ged_state->pcihp_state,
+>>> +                        vms->bus, sysbus_mmio_get_region(sbdev, i), 0);
+>>
+>> hmm, looks broken..
+>>   region mapping must happen after acpi_pcihp_init().
+>>
+>> if we after making sysbus_mmio_map() sane and easier to use
+>> (which is a bit on tangent to this series).
+>> We could feed sysbus owner device a memory map (ex: name based),
+>> and then use [pre_]plug handlers on sysbus to map children
+>> automatically.
+>> That will alleviate need to do all mapping manually in every board.
+>> (frankly speaking it deserves its own series, with tree wide cleanup).
+>>
+>> As it is I'd use old index based approach like the rest.
+>> (unless you feel adventurous about sysbus refactoring)
+>>
+>>
+>>> +        acpi_ged_state->pcihp_state.use_acpi_hotplug_bridge = true;
+>>> +    }
+>>>       sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(vms->gic, irq));
+>>>       return dev;
+>>> @@ -1758,6 +1776,13 @@ void virt_machine_done(Notifier *notifier, void *data)
+>>>       pci_bus_add_fw_cfg_extra_pci_roots(vms->fw_cfg, vms->bus,
+>>>                                          &error_abort);
+>>
+>>
+>>> +
+>>> +    if (vms->acpi_pcihp) {
+>>> +        AcpiGedState *acpi_ged_state = ACPI_GED(vms->acpi_dev);
+>>> +
+>>> +        acpi_pcihp_reset(&acpi_ged_state->pcihp_state);
+>>> +    }
+>>> +
+>>>       virt_acpi_setup(vms);
+>>>       virt_build_smbios(vms);
+>>>   }
+>>> @@ -2395,8 +2420,6 @@ static void machvirt_init(MachineState *machine)
+>>>       create_rtc(vms);
+>>> -    create_pcie(vms);
+>>> -
+>>>       if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
+>>>           vms->acpi_pcihp &= !vmc->no_acpi_pcihp;
+>>>           vms->acpi_dev = create_acpi_ged(vms);
+>>> @@ -2405,6 +2428,15 @@ static void machvirt_init(MachineState *machine)
+>>>           create_gpio_devices(vms, VIRT_GPIO, sysmem);
+>>>       }
+>>> +    create_pcie(vms);
+>>> +
+>>> +    if (vms->acpi_dev) {
+>>> +        AcpiGedState *acpi_ged_state = ACPI_GED(vms->acpi_dev);
+>>> +
+>>> +        acpi_ged_state = ACPI_GED(vms->acpi_dev);
+>>> +        acpi_ged_state->pcihp_state.root = vms->bus;
+>>> +    }
+>>> +
+>>>       if (vms->secure && !vmc->no_secure_gpio) {
+>>>           create_gpio_devices(vms, VIRT_SECURE_GPIO, secure_sysmem);
+>>>       }
+>>
+>> I don't like pulling acpi_pcihp_init()/reset (and issues it causes) into board code,
+>> on x86 it's a part of host bridge device model.
+>> The same should apply to GED device.
+>>
+>> The only thing board has to do is map regions into IO space like we do
+>> everywhere else.
+>>
+>> with current code, may be add link<pci_bus> property to GED,
+>> and set it before GED realize in create_acpi_ged(),
+>> then just follow existing sysbus_mmio_map() pattern.
+>>
+> 

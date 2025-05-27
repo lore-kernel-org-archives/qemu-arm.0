@@ -1,136 +1,146 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4659047njc;
-        Tue, 27 May 2025 01:12:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWeWsruWHNfLlrUq7cU5UOnyZdsbTCtTlWwBdVzMXVVDkn2ODErYg77NM8lO1MQsnVLr//kOEgF5BWmSw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHYph0MdsqrYmwXPXGnPO0Myhvtq+vi6CD3+a3u+0yofz9b8vOQxMbQUF8hSnuHOj27HyuH
-X-Received: by 2002:a05:6214:154c:b0:6fa:9d7b:d763 with SMTP id 6a1803df08f44-6fa9d7bd7c6mr140838436d6.29.1748333534920;
-        Tue, 27 May 2025 01:12:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748333534; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4679582njc;
+        Tue, 27 May 2025 02:06:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVBt593kZvfhSIzfze69+zGaz2ViQDab06gzlRRk5V+Zrc5IB2K7l17qh9QezmBwfhp+M/6pkuBI/Gk4g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFik9NYrgYof+Bw5+arbOBdLGUEBivH6DGK3xNDycExjX4p22pjkvP6l3HPjp//OH2TsCKU
+X-Received: by 2002:ad4:5eca:0:b0:6fa:a672:951d with SMTP id 6a1803df08f44-6faa6729a52mr134504406d6.23.1748336761129;
+        Tue, 27 May 2025 02:06:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748336761; cv=none;
         d=google.com; s=arc-20240605;
-        b=SPuJZKbkBCdO1jbV7UWI8ibFq9J5hiFSqJSwoJG7F1IPwlkZmKaknyJCCPV+fwdtzk
-         PB9acBSxKQ7joScmzgaXRpY51GF7bZBMAE0aTre7XslnDHMVk4s/X9wXGyeHUtCmzyHD
-         Lox7zmTRnA0ilIZzwAFaIPvsbFKJy5mTmXUT95iOoNV/P5kW790NVZ1ggxFvzZeO7S3X
-         YjKhHRknz/F59DnobTNLQ2yMGcvVfdzUSXLH51/yMCYb5/BTvPeAjO//o7LJOxA4oRNo
-         IeLfaHU+YhKyRBP3SFTGWea/P7jWM4KdASNfK3vA7EAIsJoPO/cocp7YTgE/4RGKEx+Q
-         /pTg==
+        b=jXESn8p7P24m8yC9gnEc5DMaxrUhK+JxZ3NCymE0Lzk2HlA13zeSHdALYjcbCWyAB6
+         49RTjBAyxPsCXOvMMsNwvhWPXx6F/ftvN1TLyGKJImVYEpaxgI87IgWUo9h9q3pUYUUk
+         A61d9RJZ13STzbWZZTPUvg1WUWGpg2StfKEuEYcH9jGnyA1byWJSn3YTVns4HTpSV0KO
+         0XsQsI14qlub62b61rETbMKd5c1H27Lc4HzHV1FxUKaKvASGf9poEPOf9Xm437b9TPsm
+         +KG92OM0FtzaSddhY9g+KnxEHqppq0WC7OlhKT2Uq9AK3v6gJhzVNG46o1Ho/ta3u6NU
+         qfxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=AshkUFKpRvToBd8Li1hi/HfaGtUcTu7Bx86CG29PHYM=;
-        fh=R0c0yB/lExKARN8+ZHY9nltsW9/furMBdAT2nVS52P0=;
-        b=DN7sGh/QlEwzxSseSeo3pfsxYQ4TRMSlBlqSTc8JojCln3oUdJ18ZE1gHdbd45CVD/
-         UUV5/Mo6pwzl+CkGmgefkHJ5zlq7zurpfHBbBiFS4GtWqtToGf5RIuHqBHgNL1U+i+34
-         EJq7Dapv+USfJzHNEzSsylHp/wxYA56aGx36BJpwkap2lX5/90S9NBnDTrLwnDIzksgq
-         Jkcc678KNq6dbYGXtly4pGdf9oLQeoncusxYGEL11JP+vIm8TICGMInSjDOCT1+lwp5y
-         OtDUZKAjEOgIrPbz7KAI9O34tNYGFP0dUcAavL5TuVCxJHIKWIZarlmqrJmChKX0DMU4
-         XxUg==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=avtNuWizimssGLsvXQTc/zqNpEmAnzHUinX40RmTmSU=;
+        fh=x24OgjmIRm11PZwaVW5XsAkaw6MdGp4kTqkA4efWaq4=;
+        b=bPTjraBNUfZIR5y6BywgAVTy3lLzdE7/DWAEzXqkrQXEcLGqFjYQSyGIueThqGN0Sn
+         xZMzsF8gsuVK8fKTPx0aJRTUin0HIkTnZCmkKShiTACsCeeMjngxuUxlvs8tYcHI+vTM
+         pn7jaApMf1NVdgUE01eScOZMyriMcNXxO3Y9tZkjnwBCHE/hppU5Fk2pBTrSuAIYJh4N
+         UhHlSGeOZ4DplaS+URo2/twMdIcrkCfXTQlnU+G5ZS6gKkz+o+bE1v0bBem69urZQvKT
+         0rzbpEUoJIQ/8AuYKrFPQZzJVwUzD13GMPpfn1AjJNhrnnVuWuuXcBWFvtJ+Rv6gGizB
+         CkWw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="TjCnNh/y";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6faa35d0cbfsi63331126d6.323.2025.05.27.01.12.14
+        by mx.google.com with ESMTPS id 6a1803df08f44-6faa9e799desi44439116d6.377.2025.05.27.02.06.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 May 2025 01:12:14 -0700 (PDT)
+        Tue, 27 May 2025 02:06:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="TjCnNh/y";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uJpPm-0003p7-E6; Tue, 27 May 2025 04:12:02 -0400
+	id 1uJqFq-0003Mm-59; Tue, 27 May 2025 05:05:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=kr5U=YL=kaod.org=clg@ozlabs.org>)
- id 1uJpPk-0003os-PO; Tue, 27 May 2025 04:12:00 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uJqFO-0003J9-JA
+ for qemu-arm@nongnu.org; Tue, 27 May 2025 05:05:22 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=kr5U=YL=kaod.org=clg@ozlabs.org>)
- id 1uJpPh-0004EE-BJ; Tue, 27 May 2025 04:12:00 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4b65272n4mz4x1t;
- Tue, 27 May 2025 18:11:43 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4b65236ybmz4wcD;
- Tue, 27 May 2025 18:11:39 +1000 (AEST)
-Message-ID: <05a02b39-a76a-4f1c-8562-cc93ff0c21c8@kaod.org>
-Date: Tue, 27 May 2025 10:11:36 +0200
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uJqFH-0003eE-MK
+ for qemu-arm@nongnu.org; Tue, 27 May 2025 05:05:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1748336713;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=avtNuWizimssGLsvXQTc/zqNpEmAnzHUinX40RmTmSU=;
+ b=TjCnNh/y8bDf4Mlz1BK1ZBtIMc3bnt/EhmPuPMSPObCbI5yt2z9V9MZ01aaWTs/5EqTAGv
+ nfQCjhnUHHuxBJUI44oJGMclSptb5RusEF64VuLekGC/Pkr7g4RC0vSRkqeOJrMr4iRwcm
+ gfe9XQF+0uulWxfzim3Lzf6iauJlJLA=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-177-Xw6O3h6FOLa54r4X8F_m7w-1; Tue, 27 May 2025 05:05:11 -0400
+X-MC-Unique: Xw6O3h6FOLa54r4X8F_m7w-1
+X-Mimecast-MFC-AGG-ID: Xw6O3h6FOLa54r4X8F_m7w_1748336710
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-3a4d6453521so1044354f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 27 May 2025 02:05:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1748336709; x=1748941509;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=avtNuWizimssGLsvXQTc/zqNpEmAnzHUinX40RmTmSU=;
+ b=YhGSVG6B/yH3BHBgbCgq1Mq5z3m4KJmW3PyF/7gCISY9GpqTIMPvIia/uapS/WNmJ9
+ p+jXyuoeuPpJ7PUxHgZmYerHZYn8SZ57QuKw6jJwMkIdph6m9VPj3LnczseH374mFC9A
+ QuqqvvnZ1ZYXww+K8//BOAOYrElMXZN6H2RYCISCkMwUQnYYTV5onhXTcikwoyMKtTR7
+ JCxX2+pvUeMJ01xb77bsqRn08MmU8YM0eCa9tfDhbPKv4zu0dAfqs8oZnFxFnpiXmdBO
+ 5i6rDQSds0ZZIY1Dnd9/zqZTBRkgv1nTyyxCTYoBbW6uOKkMmtX6l14QoEAM5jwqIFKz
+ 4ixQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXYNPufXsOF4deNjG6Efy5mkVbKsGuxDCMUjcXs4uPard35NUzmsUMcW8o/Pqcty7CBUvdKU/bApQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yxl2uNhL2KWCHBBTVS0WzhJMh+wHfL2iT0BuYS2BShGmVWOQB7B
+ cu/Q7yKKG7U+Ga32UQzf2v5RDTmEm7Rm3vE/rWzSVB7LR8LSx28/QqghVCW2k0UMlQQwz2XFo48
+ NhW9jau2vbUY+YNM8cL+cH2dbl5pyoEL7qNhhuIYbG7r7xQscW8mcJTDYONCtXQ==
+X-Gm-Gg: ASbGncu1xRxPv4ua5WcxhewCe1gTUOJo/q9vsnV2FUxZ8ZOVgelOMOHeToR1H06oAIW
+ 5dfec4y+3v1JOqcR5TpHaCGkS/DzA8UvAQE1PRkDeu+016aNw+NEszUKv+jBo7du4GtJ7d4SgTN
+ FykVklHfvNemdpAPJPjd7SRrR2d599JOgk0Jj6nXtJNUxHKPCwcctotHlQj5axplru3TXQn5l4Z
+ mVOz2b4yEQ/zZ2QwIFWzELeC4PgwKkAuUUCAjJRrNHtv/62m/G/9GpmKTSo7SbZeqJQ+/xXVy5K
+ cfbW7yRfP//s1kPaewk39MVuR6GIgTK/VUDHBz3qVl2kHXbjr7AuorCzBH4=
+X-Received: by 2002:a05:6000:178b:b0:3a4:dfaa:df8f with SMTP id
+ ffacd0b85a97d-3a4dfaae1e8mr2437503f8f.16.1748336709290; 
+ Tue, 27 May 2025 02:05:09 -0700 (PDT)
+X-Received: by 2002:a05:6000:178b:b0:3a4:dfaa:df8f with SMTP id
+ ffacd0b85a97d-3a4dfaae1e8mr2437465f8f.16.1748336708921; 
+ Tue, 27 May 2025 02:05:08 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3a4d74843b2sm6217927f8f.53.2025.05.27.02.05.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 27 May 2025 02:05:07 -0700 (PDT)
+Message-ID: <e3863726-6662-417e-ab7d-005c5ff9af69@redhat.com>
+Date: Tue, 27 May 2025 11:05:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/3] hw/misc/aspeed_sbc: Connect ASPEED OTP memory
- device to SBC controller
-To: Kane Chen <kane_chen@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20250512091014.3454083-1-kane_chen@aspeedtech.com>
- <20250512091014.3454083-3-kane_chen@aspeedtech.com>
- <67ced980-d6d8-4a2d-85ba-c918298ecf8b@kaod.org>
- <SI6PR06MB7631337C549FA649031173DFF764A@SI6PR06MB7631.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <SI6PR06MB7631337C549FA649031173DFF764A@SI6PR06MB7631.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=kr5U=YL=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Subject: Re: [PATCH v5 0/5] ARM Nested Virt Support
+To: Marc Zyngier <maz@kernel.org>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ miguel.luis@oracle.com, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, gkulkarni@amperecomputing.com,
+ gankulkarni@os.amperecomputing.com
+References: <20250527062534.1186004-1-eric.auger@redhat.com>
+ <86msayec3a.wl-maz@kernel.org>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <86msayec3a.wl-maz@kernel.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: anV8dgy9sjwm_ehxCH6q_mZvK18hRsBiaZiq75qSsXQ_1748336710
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -49
+X-Spam_score: -5.0
+X-Spam_bar: -----
+X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.903,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,159 +153,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hosUiH69L98Z
+X-TUID: L9WdMdUsYqD6
 
-On 5/27/25 09:46, Kane Chen wrote:
-> Hi Cédric,
-> 
->> -----Original Message-----
->> From: Cédric Le Goater <clg@kaod.org>
->> Sent: Tuesday, May 27, 2025 3:02 PM
->> To: Kane Chen <kane_chen@aspeedtech.com>; Peter Maydell
->> <peter.maydell@linaro.org>; Steven Lee <steven_lee@aspeedtech.com>; Troy
->> Lee <leetroy@gmail.com>; Jamin Lin <jamin_lin@aspeedtech.com>; Andrew
->> Jeffery <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>; open
->> list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC here
->> <qemu-devel@nongnu.org>
->> Cc: Troy Lee <troy_lee@aspeedtech.com>
->> Subject: Re: [PATCH v4 2/3] hw/misc/aspeed_sbc: Connect ASPEED OTP
->> memory device to SBC controller
+Hi Marc,
+
+On 5/27/25 9:39 AM, Marc Zyngier wrote:
+> Hi Eric,
+>
+> On Tue, 27 May 2025 07:24:32 +0100,
+> Eric Auger <eric.auger@redhat.com> wrote:
+>> Now that ARM nested virt has landed in kvm/next, let's turn the series
+>> into a PATCH series. The linux header update was made against kvm/next.
 >>
->> On 5/12/25 11:10, Kane Chen wrote:
->>> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
->>>
->>> Integrate the aspeed.otpmem backend with the ASPEED Secure Boot
->>> Controller (SBC).
->>>
->>> This patch adds command handling support in the SBC to read and
->>> program the connected OTP memory using READ, WRITE, and PROG
->> commands.
->>> It enables basic interaction with OTP content for secure boot or fuse
->> modeling logic.
->>>
->>> Tracepoints are used to monitor command activity and unsupported paths.
->>>
->>> The following QOM hierarchy illustrates how OTP is connected:
->>>
->>>     /machine (ast1030-evb-machine)
->>>       /soc (ast1030-a1)
->>>         /sbc (aspeed.sbc-ast10X0)
->>>           /aspeed.sbc[0] (memory-region)
->>>           /otpmem (aspeed.otpmem)
->>>             /aspeed.otpmem.backend[0] (memory-region)
->>>
->>> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
->>> ---
->>>    hw/misc/aspeed_sbc.c         | 179
->> +++++++++++++++++++++++++++++++++++
->>>    hw/misc/trace-events         |   5 +
->>>    include/hw/misc/aspeed_sbc.h |   5 +
->>>    3 files changed, 189 insertions(+)
->>>
->>> diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c index
->>> a7d101ba71..237a8499d9 100644
->>> --- a/hw/misc/aspeed_sbc.c
->>> +++ b/hw/misc/aspeed_sbc.c
->>> @@ -15,9 +15,14 @@
->>>    #include "hw/misc/aspeed_sbc.h"
->>>    #include "qapi/error.h"
->>>    #include "migration/vmstate.h"
->>> +#include "trace.h"
->>>
->>>    #define R_PROT          (0x000 / 4)
->>> +#define R_CMD           (0x004 / 4)
->>> +#define R_ADDR          (0x010 / 4)
->>>    #define R_STATUS        (0x014 / 4)
->>> +#define R_CAMP1         (0x020 / 4)
->>> +#define R_CAMP2         (0x024 / 4)
->>>    #define R_QSR           (0x040 / 4)
->>>
->>>    /* R_STATUS */
->>> @@ -41,6 +46,19 @@
->>>    #define QSR_RSA_MASK           (0x3 << 12)
->>>    #define QSR_HASH_MASK          (0x3 << 10)
->>>
->>> +typedef enum {
->>> +    SBC_OTP_CMD_READ = 0x23b1e361,
->>> +    SBC_OTP_CMD_WRITE = 0x23b1e362,
->>> +    SBC_OTP_CMD_PROG = 0x23b1e364,
->>> +} SBC_OTP_Command;
->>> +
->>> +#define OTP_DATA_DWORD_COUNT        (0x800)
->>> +#define OTP_TOTAL_DWORD_COUNT       (0x1000)
->>> +
->>> +#define MODE_REGISTER               (0x1000)
->>> +#define MODE_REGISTER_A             (0x3000)
->>> +#define MODE_REGISTER_B             (0x5000)
->>> +
->>>    static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int
->> size)
->>>    {
->>>        AspeedSBCState *s = ASPEED_SBC(opaque); @@ -57,6 +75,143 @@
->>> static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int
->> size)
->>>        return s->regs[addr];
->>>    }
->>>
->>> +static bool aspeed_sbc_otpmem_read(AspeedSBCState *s,
->>> +                                   uint32_t otp_addr, Error **errp)
->> {
->>> +    uint32_t data = 0, otp_offset;
->>> +    bool is_data = false;
->>> +    AspeedSBCClass *sc = ASPEED_SBC_GET_CLASS(s);
->>> +    const AspeedOTPMemOps *otp_ops;
->>> +
->>> +    if (sc->has_otpmem == false) {
->>> +        trace_aspeed_sbc_otpmem_state("disabled");
->>> +        return true;
->>> +    }
->>> +
->>> +    otp_ops = aspeed_otpmem_get_ops(&s->otpmem);
->>> +
->>> +    if (otp_addr < OTP_DATA_DWORD_COUNT) {
->>> +        is_data = true;
->>> +    } else if (otp_addr >= OTP_TOTAL_DWORD_COUNT) {
->>> +        error_setg(errp, "Invalid OTP addr 0x%x", otp_addr);
->>> +        return false;
->>> +    }
->>> +    otp_offset = otp_addr << 2;
->>> +
->>> +    data = otp_ops->read(&s->otpmem, otp_offset, errp);
->>
->>
->> why not call directly :
->>
->>       ret = address_space_read(&s->otpmem.as, addr,
->> MEMTXATTRS_UNSPECIFIED,
->>                                (uint8_t *)&val, sizeof(val));
->>       if (ret != MEMTX_OK) {
->>           error_setg(errp, "Failed to read data from 0x%x", addr);
->>           return OTPMEM_ERR_MAGIC;
->>       }
->>
->> The otp_ops business looks useless to me. Same for the write and prog
->> handlers.
-> 
-> The OTP memory has some regions that are protected from guest access,
-> so I use a custom read function to handle that behavior.
+>> For gaining virt functionality in KVM accelerated L1, The host needs to
+>> be booted with "kvm-arm.mode=nested" option and qemu needs to be invoked
+>> with: -machine virt,virtualization=on.
+> Thanks for respinning this series.
+>
+> Do you have any plan to support the non-VHE version of the NV support
+> (as advertised by KVM_CAP_ARM_EL2_E2H0)? It would allow running lesser
+> hypervisors (such as *cough* Xen *cough*), which completely rely on
+> HCR_EL2.E2H being 0?
 
-Why not fail the transaction on the address_space then ?
+yes I can definitively extend the series to support
+KVM_ARM_VCPU_HAS_EL2_E2H0.
 
-> The write path
-> also has some special handling (see aspeed_otpmem_prog in patch 1),
-> which is why I'm using AspeedOTPMemOps for both. If you have concerns
-> or comments about this implementation, please let me know.
-If you want to keep routine program_otpmem_data at a low level,
-under the AspeedOTPMem model, it could be implemented using the
-drive backend directly instead of doing address_space transactions.
-You could also move all the code from aspeed_otpmem_prog() code in
-aspeed_sbc_otpmem_prog(). As you wish.
+Eric
 
-I don't see any reason to keep AspeedOTPMemOps.
 
-Thanks,
-
-C.
+>
+>
+> Thanks,
+>
+> 	M.
+>
 

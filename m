@@ -1,157 +1,162 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4876940njc;
-        Tue, 27 May 2025 08:03:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVCErddc/sY/MDfymh87Wm2CBCyK2oK52AWn1yOSu8lCrOrVLLC4YLYQsEbS6q6WSk0i+gwb3nZyC5hHA==@linaro.org
-X-Received: by 2002:a05:620a:254c:b0:7cd:4b5b:a210 with SMTP id af79cd13be357-7ceecc3a7e2mr1994314885a.47.1748358172964;
-        Tue, 27 May 2025 08:02:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748358172; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4886418njc;
+        Tue, 27 May 2025 08:14:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX0LdeW3umVyFYvGsGLEzCoKiZEidJ3qwQPQfVwOaeRwMUAOcHowaL+GxsCu11SmeF98X3vxmnsXFb88w==@linaro.org
+X-Google-Smtp-Source: AGHT+IH+gGLDxfNSbmIF93BU04IxtUb07eulPb20fCvzRTnaME7dsQS/8SL4Ne3/Dgt/ZABEk6TS
+X-Received: by 2002:a05:6102:3f49:b0:4df:9635:210d with SMTP id ada2fe7eead31-4e42418db0cmr10953813137.23.1748358853732;
+        Tue, 27 May 2025 08:14:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748358853; cv=none;
         d=google.com; s=arc-20240605;
-        b=YaaUXTJSynQYUMyESRM1dDE9tQ2a+YdyniNWXQCCx+NYRPA6L29YFsDz3U6TOI5pRJ
-         Kr53fu6Q1CUm4Ro/6ZfbGX2nIVbFStna2kBJfHM+xLJktlVBxwqbYFRBWBt58jNUQEHo
-         CdCiICSdbKsETmV8nBUL8YYgT3y7iy0Ir5ZgGKb+lfYzKmQbo1mKesC8RYaMcc7s/zKX
-         hEKtNqolBeGifd2ZZ1Ngr1jvch5Ao0PLa9Wv1pB8wwm395vzse5Z5aZGptEooFVaa/co
-         9ax3hnrq+jpajf3ZBlZak1tFyFKAH58tszpVOpv36Yarjra1OF5m2fL+3CVjb2/gndDw
-         oE2g==
+        b=E67py99EfpGgVwfjg0IFye1HuGWBIsyPM775rDm1e+NfG4z+CRp9JwHZs045zDimLr
+         OZ7ceFspc0rpnleKkyP0FwP+ypniNZZRpn/nI5vC1Bvpk0oswBmH5FlZaD5Yra+JwZ/e
+         2n3R1gFcbtEQ4OEW1Ue5OWCm4SSAWnzSliMqX3K5JnPBRnm2NL54hQm5va5kdjZFXqUd
+         FL9iK0wEBsZw8RiEIidisz2yGRrGkKxHd6QNTvRWzchHMbaRZyTOBmdfLiueojXbIUwv
+         DP9NCq+ojOP3w2sZCbT78QLBtfRCgDyFenYf7Z2jJHcKxSMio4vG4x8hf68T260Tpy80
+         2Ewg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=RniEF1mf7TN4jF60DdYm0zWLKlVKKpJMW1uo5Rs5HEQ=;
-        fh=qRCZztVsXnkcseW3WNLBWvDe4W7DLOj5OyPpkLOsYFk=;
-        b=KqWpsryu4heNLexuZhaJNilDJMZ6uKzXZSjySRElgzS1KE0Mkwx/w8IMMwYZawvx9K
-         dh8uNDDwSEHIxXd/w5l5wO6wOscZV6JeETfsjmoaxlX2Ov6Z3V9ZonR0XQZzdsI5w8T2
-         kdX9tT97ROPMii0CzhrfOlTT0bjxW3sn8ETTxmrzHuEKSAqlEYOnANwh/gFA9oJ7kR6w
-         NevwLyUMkH8E+ku8cxfkiR4jEl+nO95RVLPIvZd9DeJ0QvgpSthnoiGCao5VtfTX09KD
-         SOuEIm3zTMc3zMEWYuQz6nPhfbn2Y2pHP2aZ5+Q90H1G7k9grVtntWmqR3+jCs3PlEKz
-         vHGg==;
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=8apzc3hKBADlByrGAcTgFkrtIBoYZ8sDMVLHX0c8uCA=;
+        fh=/ttYUcxX8eHM5Yk1bkAh97DHD+Oh9Mc9pA7621YtjX0=;
+        b=P+DXJRcZvVAZektpHdCKCXsqp+smUKPhu1tzWZtd6xTqXqJx+KsQ58bFwYKPxmURaE
+         MvC5MPDKsog1tTIk0BTRkjsGIuXoO6/R+rqjLhFYAnIYkqQu3CSNM8gvm0towMFNs8iZ
+         Ngryf1i3bsEHNXxeQhtYaaAallT63W35KkSmhBNlIob+YSdv6OIw7jkrD7dN419eR7WA
+         A0SFUKmbXTwlJoVe7Pkezp+8Mg93CpeWHcnJzaZ5Ob/d+V0MmzC5Fni1uNjdrRUfoBvj
+         uJs6irgFiAOW2qjxI4AgpPstgEg2bKzEYZQpez99pEY0A76XyH4R8zU9IUAS+tJXnfOr
+         HmFw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=u8UaCOxE;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a1e0cc1a2514c-87df12cd60asor567353241.8.2025.05.27.08.02.52
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FQVpr+YE;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4e598003891si203823137.195.2025.05.27.08.14.13
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 27 May 2025 08:02:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=u8UaCOxE;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1748358172; x=1748962972; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=RniEF1mf7TN4jF60DdYm0zWLKlVKKpJMW1uo5Rs5HEQ=;
-        b=u8UaCOxE2O8ilPXLOH5qi4JC56TFdXRgGJShnRv5kDJrqifC4zxQKj0//yYY3u6fJG
-         Q7W6WrHhXgCowo6nB1GKYeG/ImofsO568uYf2to7x77Dqx+W99fx4t+s+ktPs6hH0sgZ
-         kMGUp1dMQbxxCW+I2d41QAoNO2XbL0yyghXcYqaeyl3BjuwZ8+ARSiGCRi3LtSg2m8Fm
-         LLjILn82YIZNxi1wV/gv2iHnJEFBqUSeshmq/Dswe0KCWvcCp2q3x1adAkiM5fwzZD0T
-         TW7GtV0EUfa+1z1NqwT6fDDcuMb4XEvuhp2qwtL1Gzn0wm17vcvroj70C2Xxk0rLFunD
-         J0hA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748358172; x=1748962972;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=RniEF1mf7TN4jF60DdYm0zWLKlVKKpJMW1uo5Rs5HEQ=;
-        b=q5PUATOWUXyU74HjjZdOaK0Dbd/lqUes4/4OCEgJswld+KGoJ9Bw+cJM2FREhPqESU
-         HVdq+5qABYUrUwEH/GYjx8a9Kfcz6sm+0aTIiBhGBWh2WDeR7JNqOmUDVRreRFcxG7l/
-         yPxjflq0T5kMYoW53Q5Q9myhoEXUv6Xxw31WsBcy//+nOO5j/B0RqxZGVxNvaMUcGQkB
-         PqZJu3rBTu1IGhvczP7jrktAbo5zWYH7gpQVHaHNsYKguAJi9VBjkjjS8whdpuPjygw1
-         xnI7H1nzlm1Rb7fNnSPeYyNUa9xIlPW0K+EaojEAYV4XYa8bLQlpI6KY0MuhpDFQi18j
-         JD0A==
-X-Forwarded-Encrypted: i=1; AJvYcCXHmUsCDM/mHOwSZt9FVKv5MZHrXTEgmm3w4pQ3+9+6W/QXHubJkZkHDO4RfYpZJ0MWzAZ799sN95n+6g==@linaro.org
-X-Gm-Message-State: AOJu0YwQJJSxJd/6I8uuc7HbIU35NLQWwaV4asmJn6Qj7gg5jfJzdx2D
-	qJHn8+8Uwqo7F1mG0tOFsznaublUYeQXFrDyluzWlfqJNnMa9n/NyzdBSjyCCJZTWq63o/ZgYOE
-	8bz1DGtNsGg==
-X-Gm-Gg: ASbGncszohXC2amUW4ztpk5KXrQwlWZ41gGAewMbZwRhGiR9wkZxGFRmW0XEI7312CN
-	agB9gcy3w3P2QDC9MBwO0ERgFXPQxzefmKMXFwcyNOzdaeWspB6u61QZnRhZa3T0MjVYJzK0zoH
-	Gkv2TtG0qcV5G10QpcK/sXW4gTCNdXR/qW29JyHmeQqmgaKmEezqTj0r++JUlOf8q7VsAoyBFlv
-	8p2CKZz+T0jJAAGv1Aubbv/vqc/n7peTv6+9y+4tQn4Lh9W0eJyqa91dA+f0Raj+NxO7flXKPY3
-	Da0cig+oiMus1mBaILW9fkZOMMMnGi/mLCx7NO9bGzc1cdcJe3aqBmTYQVEPvvOfQnE82zFioJS
-	yAiE1aYoRDzfnhRAAHD0UJg==
-X-Google-Smtp-Source: AGHT+IEamKsspQzXxNvrx0hfrbFiwI9Yy1dIhoMMXDOZHKjNKDNxlne+0y+H39wK8Qh/YB1E5p1ejQ==
-X-Received: by 2002:a05:6102:3590:b0:4cb:5d6c:9946 with SMTP id ada2fe7eead31-4e4240a654cmr10360291137.10.1748358172339;
-        Tue, 27 May 2025 08:02:52 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from gromero0.. (200-100-75-183.dial-up.telesp.net.br. [200.100.75.183])
-        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4e51e94c9c2sm2189649137.23.2025.05.27.08.02.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 May 2025 08:02:51 -0700 (PDT)
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: qemu-devel@nongnu.org,
-	eric.auger@redhat.com
-Cc: qemu-arm@nongnu.org,
-	thuth@redhat.com,
-	gustavo.romero@linaro.org,
-	alex.bennee@linaro.org
-Subject: [PATCH 2/2] tests/functional/test_aarch64_hotplug_pci: Add test for ACPI PCI hotplug
-Date: Tue, 27 May 2025 15:02:29 +0000
-Message-Id: <20250527150229.1617074-3-gustavo.romero@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250527150229.1617074-1-gustavo.romero@linaro.org>
-References: <20250527150229.1617074-1-gustavo.romero@linaro.org>
+        Tue, 27 May 2025 08:14:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FQVpr+YE;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1748358853;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=8apzc3hKBADlByrGAcTgFkrtIBoYZ8sDMVLHX0c8uCA=;
+	b=FQVpr+YEOT+87Ow/jMckYwyGml1TonIgqirv3VJoRW3TzpB4WeaBogso76fsKdDZV+j/lW
+	G6dGHOMhtkp/xdMkp+dCSM42qeZSLc2V1n3eEIFY55EXmLdjxSUOTMq1kEzzEKFDADZc9L
+	sxjuaitoyynaBJcjcoRzPGHUEfztFns=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-166-Lb-mwlgTNaOWFQSa4H84xQ-1; Tue, 27 May 2025 11:14:12 -0400
+X-MC-Unique: Lb-mwlgTNaOWFQSa4H84xQ-1
+X-Mimecast-MFC-AGG-ID: Lb-mwlgTNaOWFQSa4H84xQ_1748358851
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3a34f19c977so1681087f8f.0
+        for <alex.bennee@linaro.org>; Tue, 27 May 2025 08:14:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748358851; x=1748963651;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=8apzc3hKBADlByrGAcTgFkrtIBoYZ8sDMVLHX0c8uCA=;
+        b=GBMSpjyQpD3HWp+6h9LmQyv+x6SorS+3PBXpFrQPFUX1lah4V8vFUsIZ3TPqKpCTWB
+         esfXKpGRKCNiH/1paHW/xYivFRts8euH+U17FcdxYy92iV2j/+T7mi71YWqNQrO+t/XN
+         T1TQW4+hkrmERuB48abKsyitca5pNVmMEwItg+7n8X4fxbzSgfcTUwBpf1Y5CnoFfswc
+         AOYtlqncKPbPjpf3SovhdgWIwsWaSZ7WXpUGTF7gBawIlH3g7TTQ2HkwGwOoxTHRLKOy
+         aWI11DK+55e0fVWP0tmBAF18ECugjDwqF58CZMZtYCcYBweYYEw5ECtfLcN2Ny8NZWOC
+         3Jng==
+X-Forwarded-Encrypted: i=1; AJvYcCVp1hUYQITChU1XwoxPnlKNrT2vmB9H6QBOEwLBWnQiweuxURyvs8liGXmyBcJXjARRvnV2fqgkbw6AfQ==@linaro.org
+X-Gm-Message-State: AOJu0YzBgzKm0Y8dGCaao+AnTHohkuiEWUhNBXqsUtCHVWNp+kIJQaW9
+	I6EvtAm3aukH9oI5plx2u0/uNVG0LXvQytc74K5VDbfIEYbisM04ZandFTwseJfnrS6cy7HgFv+
+	ixWEFRjle5rv0UR/IR0jPf1gQuN4hgcH6k+dMg4cD7Y7k7rsLqIXYc1l1MA==
+X-Gm-Gg: ASbGncuVjHXEmj2pVR77nJaH3roV/1oifmWXsH7gp8AcaQimJhqplNdOEk0vAxAXTsi
+	Didg4icrmtzXNZvuU23b7xy+GtPFJpczg2W8xVkGmUOvvfea/HcpwELnWg/gjLVjnATWRCXOcwV
+	Ca5F9PbOwgSMJ1zpGwjUrMAfnfY5y8FJw6omzGgi6ui3j2w7elk5TDjbs0TdtE2bkB5iKENS2xP
+	i42oD5GbxyFAibmeKVb8Qkq77QkydYEJX/NrHqRujaBw2qDZZvBrDYxSiciyr6oEZX1z4wO5S+y
+	JYWxqYCW8Hk1oPkrmCuLiQUSdImALmyH
+X-Received: by 2002:a05:6000:4006:b0:3a3:7816:3e17 with SMTP id ffacd0b85a97d-3a4e5e8f81emr995578f8f.8.1748358850689;
+        Tue, 27 May 2025 08:14:10 -0700 (PDT)
+X-Received: by 2002:a05:6000:4006:b0:3a3:7816:3e17 with SMTP id ffacd0b85a97d-3a4e5e8f81emr995545f8f.8.1748358850337;
+        Tue, 27 May 2025 08:14:10 -0700 (PDT)
+Return-Path: <imammedo@redhat.com>
+Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a4d5deae4dsm7410998f8f.2.2025.05.27.08.14.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 May 2025 08:14:09 -0700 (PDT)
+Date: Tue, 27 May 2025 17:14:07 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
+ mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
+ Jonathan.Cameron@huawei.com, philmd@linaro.org, alex.bennee@linaro.org
+Subject: Re: [PATCH v2 20/25] hw/acpi/ged: Support migration of
+ AcpiPciHpState
+Message-ID: <20250527171407.364f68ff@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250527074224.1197793-21-eric.auger@redhat.com>
+References: <20250527074224.1197793-1-eric.auger@redhat.com>
+	<20250527074224.1197793-21-eric.auger@redhat.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: HRh47LrsL84T
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: lCAAizwh70sbELjWY9ADYsCTN1cvLMPf2U4EK3i2474_1748358851
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: OBUDg/T3nks0
 
-Currently, test_aarch64_hotplug_pci only tests PCI hotplug using the
-native PCI hotplug mechanism. Now that aarch64 supports PCI hotplug via
-the ACPI mechanism it's time to support it in the test as well.
+On Tue, 27 May 2025 09:40:22 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
 
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
----
- tests/functional/test_aarch64_hotplug_pci.py | 24 +++++++++++++++++++-
- 1 file changed, 23 insertions(+), 1 deletion(-)
+> Add a subsection to migrate the AcpiPciHpState state.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-diff --git a/tests/functional/test_aarch64_hotplug_pci.py b/tests/functional/test_aarch64_hotplug_pci.py
-index bb2c121503..862bb6746b 100755
---- a/tests/functional/test_aarch64_hotplug_pci.py
-+++ b/tests/functional/test_aarch64_hotplug_pci.py
-@@ -27,11 +27,26 @@ class HotplugPCI(LinuxKernelTest):
-          'current/images/netboot/debian-installer/arm64/initrd.gz'),
-         '9f817f76951f3237bca8216bee35267bfb826815687f4b2fcdd5e6c2a917790c')
- 
--    def test_hotplug_pci(self):
-+    def run_vm_and_test_hotplug_pci(self, use_acpi_pci_hotplug=False):
-+        """
-+        Run an aarch64 VM and test the PCI hotplug mechanism by plugging and
-+        unplugging a PCI network adapter to the VM. Proper plug and unplug of
-+        the adapter is verified by checking if the network device is correctly
-+        added and removed in Linux.
-+
-+        Parameters
-+        ----------
-+        use_acpi_pci_hotplug : bool
-+            If true the ACPI PCI hotplug mechanim is used, otherwise the
-+            Native PCIe Hotplug mechanism is used.
-+        """
-+
-+        acpi_pci_hotplug = "on" if use_acpi_pci_hotplug else "off"
- 
-         self.set_machine('virt')
-         self.vm.add_args('-m', '512M')
-         self.vm.add_args('-cpu', 'cortex-a57')
-+        self.vm.add_args('-machine', f"acpi-pcihp={acpi_pci_hotplug}")
-         self.vm.add_args('-append',
-                          'console=ttyAMA0,115200 init=/bin/sh')
-         self.vm.add_args('-device',
-@@ -70,5 +85,12 @@ def test_hotplug_pci(self):
-                                           'ls -l /sys/class/net | wc -l',
-                                           '2')
- 
-+    def test_native_pci_hotplug(self):
-+        self.run_vm_and_test_hotplug_pci(use_acpi_pci_hotplug=False)
-+
-+    def test_acpi_pci_hotplug(self):
-+        self.run_vm_and_test_hotplug_pci(use_acpi_pci_hotplug=True)
-+
-+
- if __name__ == '__main__':
-     LinuxKernelTest.main()
--- 
-2.34.1
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
+> ---
+>  hw/acpi/generic_event_device.c | 20 ++++++++++++++++++++
+>  1 file changed, 20 insertions(+)
+> 
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+> index c0dbf9b358..9334249cf5 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -415,6 +415,25 @@ static const VMStateDescription vmstate_ghes_state = {
+>      }
+>  };
+>  
+> +static bool pcihp_needed(void *opaque)
+> +{
+> +    AcpiGedState *s = opaque;
+> +    return s->pcihp_state.use_acpi_hotplug_bridge;
+> +}
+> +
+> +static const VMStateDescription vmstate_pcihp_state = {
+> +    .name = "acpi-ged/pcihp",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .needed = pcihp_needed,
+> +    .fields = (const VMStateField[]) {
+> +        VMSTATE_PCI_HOTPLUG(pcihp_state,
+> +                            AcpiGedState,
+> +                            NULL, NULL),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+>  static const VMStateDescription vmstate_acpi_ged = {
+>      .name = "acpi-ged",
+>      .version_id = 1,
+> @@ -427,6 +446,7 @@ static const VMStateDescription vmstate_acpi_ged = {
+>          &vmstate_memhp_state,
+>          &vmstate_cpuhp_state,
+>          &vmstate_ghes_state,
+> +        &vmstate_pcihp_state,
+>          NULL
+>      }
+>  };

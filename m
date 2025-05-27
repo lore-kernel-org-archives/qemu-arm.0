@@ -1,200 +1,221 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4802527njc;
-        Tue, 27 May 2025 06:10:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUj0LeILt8VeZonk7lse0i8kmr0BUAjBTVIBPDVaqZAtxM11fikGWqL4x2WPDRe8Ve57chL+NU0l/a4VA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFm1hf9aNRnt9HOKnr/fzVIl/TAefhYUt5qhgQ4muD+kUl1aYg56HOwzPUexEvRqMIhsjSt
-X-Received: by 2002:a05:6870:ae96:b0:2d4:dc79:b92 with SMTP id 586e51a60fabf-2e8d1219f5bmr268690fac.6.1748351400625;
-        Tue, 27 May 2025 06:10:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748351400; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4804281njc;
+        Tue, 27 May 2025 06:12:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUJH2Q09tb+uWdzRajT8SVSj+qv+iSCGQVUBAAgWyTXDC1PQxtFGy5xXL9zb5b92RomZ14AM6CIWoI8rQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGcBB3oou0KKy6Ut+ozMTxDXtE5ZiB/8TidFHKO/MNNfa2xur7/SrAfxeayOoPOc+7AENIA
+X-Received: by 2002:a05:6102:3f0d:b0:4e2:c6e4:ab1e with SMTP id ada2fe7eead31-4e42408cc55mr9162693137.7.1748351554275;
+        Tue, 27 May 2025 06:12:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748351554; cv=none;
         d=google.com; s=arc-20240605;
-        b=QVuxNZ+1HztxDKRCx0dTK1q5WQ8z2DZ7est6PssvOuPSh0HDpttdgzPN8pY7COsxEs
-         L8fO9s27k8CiKd8hWPUg/cPM+ge32vtzZdiz7ilMsPBpFZ0iTLkyQGcHm1b2pZgrhspJ
-         C/05QqrVDqkWZllrB0efQXhuvfvQOlT7YjFECoxT3YcxP+u4qB6kEwrwGKhtpf49g1Tk
-         cvPI98txHzan7trMeNsPifCMqnPjYE72TEyE0vZR0ggF5OgjIMnyrcDDrYCnkff0hbif
-         Hqey6GBOs08aODYZ61Xcfo0RKx2cfKTvUU4nOZlHFy5g4xyPyV+/l5xlg/I3terCHLIA
-         C3CA==
+        b=ayHYW/e2iSch/TIkY4Y7v2kjtFyt4XCrjPgJJqoyMRI4514GFcZi6jNutYnh+vABwq
+         p4qDzuFpBMHLx2Xdmde699bLa+hN4ynK6siOaquTPl9Jvu/vCtbgC2jHbdii7Urt8X6x
+         QZPe0oe4UTU4ANxKS4nBdwXtedDCYRA6teJnHRgdNJMT1gJAVqRiD+NlX8/E4WqRHiUc
+         5RsWTEwu94f9VhKLSDv5f6GS6zY6g4U7HYVbku1J8rc79uqk8vRex8Yo2G9/dSEM64W7
+         rqWbj13QTrQWlxOwpTOMKzCwnPr0UkCIWK7o5DHEkKBn/9WulTHMdtK7lBFextAVKs24
+         OD5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=6SORohSuXJ/bg9jDlHgEDEDaVO+N78BynoBi5RubMzc=;
-        fh=zO8BjiRCYdc5WQQvQUrJID36bE6oC8s7RdPabnPo0P0=;
-        b=Mld+QmkmnxnRM3O13OwAPf3nXECmEFWSFPIPRoMLo4g8bkcMRES5Vdiwwu1Ti48SKa
-         QEiv+b/8YE/3bULKjhlCwMskL0WpEKL9sSOKKe4Eju06LC46JwGUzsH9sNWKAnYqzw9i
-         5QkzxH+N35MMBTwnHPeiFTTUT/EAQIWYwQYBbjMXjwN6Xfmcnq76hSqKwdTujKE42A/I
-         0yZnei8/xxRirc0a+NDChvGXYp2w/T9dj6ZgEMit3t3D3pDAiR0A1x03qhGY6+249hk/
-         6/N3dltq6MILRsEPzvNexWxTm9CexXahBtl8qfaD2XB+KoyA2J3YEH6YNvX3UKA7nICM
-         Gajg==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=NHKxc5nfasUEG2+1eqnzlUAnWhZUtYise2kTgHplEI0=;
+        fh=zOn7j9CaEO3+z6PUyEsUeZF+e9Em8fx1YLpdA2eGV5A=;
+        b=IH6ZRvTLrZJNBqR/2aMh2uRelbVKAsSDsxZWcTKfWI2cZw8vEneSdo/7S1d1lM1Wpe
+         mSmkrHKHFL2HIX2C5Qd/IYxxen7NCVfuFkhLp2sFHzLrJk7ap3OMF1qKHKhZ4y4S2mZq
+         U9K9aNcDHwihg9387Eu5f7p8lmNOsDTwjSJPZ5I9E1wLKA0e/hoXInPduqRkBYkdslso
+         MRT6RxsDoqOeUHVm5YN9zsHNtcKTviBoDC3z1soMhl7hBquiYpZu/euBUnvRRiwasbkg
+         H0UJWhR3S6hWoTizW8lT2tsJso9EsoHDHyzumnimBRPK08O2StnHVMgESRU2jnlSZmBe
+         kntw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K6KMRxtJ;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Uq3Z0OSn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 586e51a60fabf-2e3c0b94d56si3885646fac.245.2025.05.27.06.10.00
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4dfa68745f3si9222853137.483.2025.05.27.06.12.34
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 May 2025 06:10:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 27 May 2025 06:12:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K6KMRxtJ;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Uq3Z0OSn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uJu6E-0001Gb-D5; Tue, 27 May 2025 09:12:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uJu6D-0001Fl-0s
+ for qemu-arm@nongnu.org; Tue, 27 May 2025 09:12:09 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uJu67-0006MB-Pr
+ for qemu-arm@nongnu.org; Tue, 27 May 2025 09:12:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1748351399;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=6SORohSuXJ/bg9jDlHgEDEDaVO+N78BynoBi5RubMzc=;
-	b=K6KMRxtJOw7K0HZ0OmJ7vaBwghPqTBbg+ig7GmGdlGHrQIFuy3T8e7kStVNEPARWcjVEiB
-	HUdBoU+KKaHzFw1F/Ew9vAvYtBYi4yeWyjfAt7prQwLn+AjF+A+G6GOx4+U8o4QnlWJjHC
-	5PwQePvCf67FmIdrFGtjqtUXquH9AsM=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1748351521;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NHKxc5nfasUEG2+1eqnzlUAnWhZUtYise2kTgHplEI0=;
+ b=Uq3Z0OSnXLt1TiT6OJF7xi0oEG4wgBYNI1rsvqn08TL5nPCrQKXqhLuJORbm/hYhvpBLtM
+ C64Lu5j0RrPcJh+3eZBwDYySkvfqrYTh9M8ZY02psFq65Bh+rMwf2V6CT9pwXTdQ3q0JSA
+ w9WmqKKJdDbeRewWj0GygeBfzLlINsM=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-140-1GI9xH4JOBGDS8aijlbBGg-1; Tue, 27 May 2025 09:09:57 -0400
-X-MC-Unique: 1GI9xH4JOBGDS8aijlbBGg-1
-X-Mimecast-MFC-AGG-ID: 1GI9xH4JOBGDS8aijlbBGg_1748351396
-Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-3a3683aa00eso1597127f8f.1
-        for <alex.bennee@linaro.org>; Tue, 27 May 2025 06:09:57 -0700 (PDT)
+ us-mta-626-d_sCchKsPdCJ5haMSOIIaw-1; Tue, 27 May 2025 09:12:00 -0400
+X-MC-Unique: d_sCchKsPdCJ5haMSOIIaw-1
+X-Mimecast-MFC-AGG-ID: d_sCchKsPdCJ5haMSOIIaw_1748351519
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-3a4e1c6c68bso565922f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 27 May 2025 06:11:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748351396; x=1748956196;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=6SORohSuXJ/bg9jDlHgEDEDaVO+N78BynoBi5RubMzc=;
-        b=CAg9jUbQclsm8RtBd6ZAffqsDmUQ0emjU05Hz2O8PuATMqzmbC5BXzPLlQz0ieSybN
-         +JM2iEJ6NvJRa4AeWqHA4o5Bh/abZa/PAxoECVlth9hC8daoQrlJSsS4G7hEn/Pe5zLV
-         mRS0KoUBRUTm2KUDMiV0yIalrhb1+MjpVGKdcYGOIZqghzU+SQJgBjRjeGiwVN9cI2Mc
-         7xkK6FZrkFLttY9egkAXvoi4EZkRkmpN9S0C12CwqSXP8ibvWXOoiqfltUqMCMp4lVp8
-         6yD5m7Arf2Uvzd0RJFaHApC8SyMPPgmGiuxa2CoTSEsyVU3sg5JaO49StDniLnlpAFkd
-         k6Zw==
-X-Forwarded-Encrypted: i=1; AJvYcCW1iDwbMV3I4s2dL1i3vp7+rpXkw7uV4JSJbuVK2CbkCjl3iXFWqptlPmJIPTPa3OmYtfAROPSL4LnfDQ==@linaro.org
-X-Gm-Message-State: AOJu0YxLvyLAPaAkuK4GZ+fF/KYfLToeZU0xN6+Q3xYbg7DhT2ogbDOl
-	1kGLrPSy2E2+ku37QDu30WXT1hvl2Prkn41sHZSZlA0W43o5FldXjyfkz3UG9ZlBkN17Yof+Grt
-	OeLfUQNusih1Xb+pF0JYIvus/yWQB+n7REySCgXPKEIoithpDZD9htqkuGeHWorkE/FLw
-X-Gm-Gg: ASbGncsIuOKUVn6M/T7xobbf8kF10Bjohn2+7fnJ2jCvoYfp/uAt6aEn1XOKs9YsiCK
-	NUEYr4Rl7HqcxfwmXhl6Sx6JkBJWIL13NDExvYs0GYuqW1UQmU8ZOiv4kSSbro6sqld4yGdLM0s
-	ZM0dNqd0DrtMwR1R3L9Yqj6C/lAWDFu8ePedKJPTLwu+Hz5wPjm+eUq6G/DcCySU3Y69sFfzIQO
-	i01wauZYFb1yF1LXU+DCKXH+0vk9JfK3rNperYFYSACUkyMmo5vd6BGcFwp7HTzxEWoSn87HZ8x
-	fXlUV+bQmu1PwMvXpg+NaL3wcPCfO+Ky
-X-Received: by 2002:a05:6000:1789:b0:3a4:d719:5be0 with SMTP id ffacd0b85a97d-3a4e5e37ff3mr551655f8f.2.1748351396030;
-        Tue, 27 May 2025 06:09:56 -0700 (PDT)
-X-Received: by 2002:a05:6000:1789:b0:3a4:d719:5be0 with SMTP id ffacd0b85a97d-3a4e5e37ff3mr551621f8f.2.1748351395614;
-        Tue, 27 May 2025 06:09:55 -0700 (PDT)
-Return-Path: <imammedo@redhat.com>
-Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a4d2a7a317sm8217352f8f.24.2025.05.27.06.09.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 May 2025 06:09:55 -0700 (PDT)
-Date: Tue, 27 May 2025 15:09:54 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
- mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
- Jonathan.Cameron@huawei.com, philmd@linaro.org, alex.bennee@linaro.org
-Subject: Re: [PATCH v2 11/25] hw/i386/acpi-build: Introduce
- build_append_pcihp_resources() helper
-Message-ID: <20250527150954.13d08fa9@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20250527074224.1197793-12-eric.auger@redhat.com>
-References: <20250527074224.1197793-1-eric.auger@redhat.com>
-	<20250527074224.1197793-12-eric.auger@redhat.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
+ d=1e100.net; s=20230601; t=1748351516; x=1748956316;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=NHKxc5nfasUEG2+1eqnzlUAnWhZUtYise2kTgHplEI0=;
+ b=WkPCGaG7z0LImNFzwxeT3f1jMNu23PjjIlo9D53IKuxJDNE3ydYmUKGK/o0waQQOZi
+ Gb6fuXd5sjlQmk6FNK0lkUtitUDa1RybkTB8h6XBi69RQgD0m8fDE/kEoU2q0eD6z5pa
+ R7NcFOUcZsqmRf95bhHfjfjmSYSiTfU/4z82g/b1KGKZX6aNj2CG1BZaXIpl7ls8nNOn
+ E5CEvgZREz3YO5MGF8D9+gji/1t69v4adz+gIlCI4CmbYZNYDlsonGYSePTUEhKoN8gL
+ 6d9R6SX9f9EG1Zjt+jFFOZlRa9moecFt/jlpD+/urecJie2qftBMNhUp/HRKO/LKNbmZ
+ W4sg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVas+0OKn3a57rzvVyl2ey7zvsREmFp2N08eSifAz/7aZcLdQnF0xAG+PJ4PkjawUlaMe5sPu2fEw==@nongnu.org
+X-Gm-Message-State: AOJu0YyRDAC6WhFOMTbjcoWWoPqLZcvSYIDXeiYz4sfwHYuyhafmQ7OZ
+ FV0L1TNgy8gTxWjc4NxnNBDA90UV3R/xa20+yB3uBPXeNkQjR+M5QgMnR3BEZKIDyPNlvI9+osH
+ 5leGI7shJJsRXTkfXeXmKItEZsl2T76pfsV3+jSy4vOFV8L9m0WnMYUy3jKB8OA==
+X-Gm-Gg: ASbGnctLApjeZOucLWm4zfmz6GCF74JJVq9Z3mXwixNuxkFfbiyTgmqgVRZnzwih98k
+ G4LAkvri9H0NSKk3k3s4Fiw0okpm16G3GXeb2UQuTsex7Q6DYbCB6HRtSN4up7wfkfJc4VThziU
+ x00t0xq6dhHRG2h0E9OkzvWAwv36vqOe2LFNKpku3+/KwgZEiX7DfnKB0LVqZCDjlMR9XzxFsee
+ /lJ5b7E+9iZJqSh2fY/L0y+0lvrF6QIRCZKmmQX9a6nxN7QSSsX1jR8afLxA3JVh8B7QuRUmAml
+ zUZGcB59wqRCGDMQjoSOUvKRIrCtaE7FNSzFF+dcTR0z4M09T7eh8o5/KPw=
+X-Received: by 2002:a05:6000:26d0:b0:3a4:e502:81b8 with SMTP id
+ ffacd0b85a97d-3a4e5028508mr835896f8f.43.1748351515494; 
+ Tue, 27 May 2025 06:11:55 -0700 (PDT)
+X-Received: by 2002:a17:907:9706:b0:ad2:3d34:e2a4 with SMTP id
+ a640c23a62f3a-ad85b1ce8d4mr1153657466b.30.1748351504011; 
+ Tue, 27 May 2025 06:11:44 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-447f1fe4fa6sm263863135e9.16.2025.05.27.06.11.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 27 May 2025 06:11:43 -0700 (PDT)
+Message-ID: <ee464d7c-9b77-4aa7-9afa-627e497c7581@redhat.com>
+Date: Tue, 27 May 2025 15:11:41 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 0/5] ARM Nested Virt Support
+To: Miguel Luis <miguel.luis@oracle.com>, Marc Zyngier <maz@kernel.org>
+Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "gkulkarni@amperecomputing.com" <gkulkarni@amperecomputing.com>,
+ "gankulkarni@os.amperecomputing.com" <gankulkarni@os.amperecomputing.com>
+References: <20250527062534.1186004-1-eric.auger@redhat.com>
+ <C10D9293-32F7-4834-9CEE-6AFD4BDBC30E@oracle.com>
+ <86ldqidzyl.wl-maz@kernel.org>
+ <822E77EF-9802-4F16-B8D4-A48F3A624151@oracle.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <822E77EF-9802-4F16-B8D4-A48F3A624151@oracle.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: EMxMLdJxTpr2wfYuE75-n20o4WaAsSH7lFfRxtbwCQg_1748351396
+X-Mimecast-MFC-PROC-ID: LACHDaYXqCnmIp52t82f5rNffeKNf7aAgzPmYE_wOHc_1748351519
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: 94zMOvzuLnEp
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -49
+X-Spam_score: -5.0
+X-Spam_bar: -----
+X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.907,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5i0pZTrYuaHI
 
-On Tue, 27 May 2025 09:40:13 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
+Hi Miguel, Marc,
 
-> Extract the code that reserves resources for ACPI PCI hotplug
-> into a new helper named build_append_pcihp_resources() and
-> move it to pcihp.c. We will reuse it on ARM.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+On 5/27/25 2:54 PM, Miguel Luis wrote:
+>
+>> On 27 May 2025, at 12:01, Marc Zyngier <maz@kernel.org> wrote:
+>>
+>> On Tue, 27 May 2025 12:33:23 +0100,
+>> Miguel Luis <miguel.luis@oracle.com> wrote:
+>>> Hi Eric,
+>>>
+>>>> On 27 May 2025, at 06:24, Eric Auger <eric.auger@redhat.com> wrote:
+>>>>
+>>>> Now that ARM nested virt has landed in kvm/next, let's turn the series
+>>>> into a PATCH series. The linux header update was made against kvm/next.
+>>>>
+>>>> For gaining virt functionality in KVM accelerated L1, The host needs to
+>>>> be booted with "kvm-arm.mode=nested" option and qemu needs to be invoked
+>>>> with: -machine virt,virtualization=on.
+>>> For the current kvmarm/next the guest also needs
+>>> “kvm-arm.mode=nested” I believe.
+>> No, unless you want the guest itself to be NV-capable.
+Effectively you don't need "kvm-arm.mode=nested" except if you want want
+multiple level of nesting.
+>>
+> Correct, I got carried away with some mode combinations. Maybe we should depict
+> here more broadly how NV might be used with different mode combinations. I'll
+> think about this further ahead.
+>
+> As far this series go I couldn't found any issue booting a L1 guest with
+> virtualization=on and a L2 guest with virtualization=off.
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+on my end I tested with various untouched L2 guests (debian, fed, rhel)
+in 4kB/4kB/4KB page size mode (host, L1, L2). Those configs were successful.
 
+with 64kB/64kB/64kB configs I am less lucky atm. One one machine I
+cannot boot L1 with virtualization=on. On the other I can boot L1 but
+cannot boot L2.
 
-> ---
->  include/hw/acpi/pcihp.h |  2 ++
->  hw/acpi/pcihp.c         | 20 ++++++++++++++++++++
->  hw/i386/acpi-build.c    | 15 ++-------------
->  3 files changed, 24 insertions(+), 13 deletions(-)
-> 
-> diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
-> index 971451e8ea..8a46a414cc 100644
-> --- a/include/hw/acpi/pcihp.h
-> +++ b/include/hw/acpi/pcihp.h
-> @@ -75,6 +75,8 @@ void acpi_pcihp_device_unplug_request_cb(HotplugHandler *hotplug_dev,
->  
->  void build_acpi_pci_hotplug(Aml *table, uint64_t pcihp_addr);
->  void build_append_pci_dsm_func0_common(Aml *ctx, Aml *retvar);
-> +void build_append_pcihp_resources(Aml *table,
-> +                                  uint64_t io_addr, uint64_t io_len);
->  
->  /* Called on reset */
->  void acpi_pcihp_reset(AcpiPciHpState *s);
-> diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-> index e0260f67e6..fb54c31f77 100644
-> --- a/hw/acpi/pcihp.c
-> +++ b/hw/acpi/pcihp.c
-> @@ -685,6 +685,26 @@ void build_acpi_pci_hotplug(Aml *table, uint64_t pcihp_addr)
->      aml_append(table, scope);
->  }
->  
-> +/* Reserve PCIHP resources */
-> +void build_append_pcihp_resources(Aml *scope /* \\_SB.PCI0 */,
-> +                                  uint64_t io_addr, uint64_t io_len)
-> +{
-> +    Aml *dev, *crs;
-> +
-> +    dev = aml_device("PHPR");
-> +    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0A06")));
-> +    aml_append(dev,
-> +               aml_name_decl("_UID", aml_string("PCI Hotplug resources")));
-> +    /* device present, functioning, decoding, not shown in UI */
-> +    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
-> +    crs = aml_resource_template();
-> +    aml_append(crs,
-> +        aml_io(AML_DECODE16, io_addr, io_addr, 1, io_len)
-> +    );
-> +    aml_append(dev, aml_name_decl("_CRS", crs));
-> +    aml_append(scope, dev);
-> +}
-> +
->  const VMStateDescription vmstate_acpi_pcihp_pci_status = {
->      .name = "acpi_pcihp_pci_status",
->      .version_id = 1,
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 91945f716c..52cef834ed 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -1432,19 +1432,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->  
->      /* reserve PCIHP resources */
->      if (pm->pcihp_io_len && (pm->pcihp_bridge_en || pm->pcihp_root_en)) {
-> -        dev = aml_device("PHPR");
-> -        aml_append(dev, aml_name_decl("_HID", aml_string("PNP0A06")));
-> -        aml_append(dev,
-> -            aml_name_decl("_UID", aml_string("PCI Hotplug resources")));
-> -        /* device present, functioning, decoding, not shown in UI */
-> -        aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
-> -        crs = aml_resource_template();
-> -        aml_append(crs,
-> -            aml_io(AML_DECODE16, pm->pcihp_io_base, pm->pcihp_io_base, 1,
-> -                   pm->pcihp_io_len)
-> -        );
-> -        aml_append(dev, aml_name_decl("_CRS", crs));
-> -        aml_append(scope, dev);
-> +        build_append_pcihp_resources(scope,
-> +                                      pm->pcihp_io_base, pm->pcihp_io_len);
->      }
->      aml_append(dsdt, scope);
->  
+Trying my best to debug a little bit further with my setup. Anyway if
+somebody else can try 64kB configs, it would help to confirm whether
+there are pending issues. I don't think they are related to this qemu
+integration series though.
+
+Thanks
+
+Eric
+>
+> Miguel
+>
+>> M.
+>>
+>> -- 
+>> Without deviation from the norm, progress is not possible.
+>
+

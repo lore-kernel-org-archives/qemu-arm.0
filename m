@@ -1,86 +1,87 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4876748njc;
-        Tue, 27 May 2025 08:02:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWuojvDnDGZZsnc6qs2Wp3Q8dHgXm9HxUwWPGzFAOMPV5zOoO4vgUx4YaP68A73DgZ9HggMIld992lROA==@linaro.org
-X-Received: by 2002:a05:620a:f13:b0:7cd:565b:dbd6 with SMTP id af79cd13be357-7ceecbd6c54mr2117801685a.25.1748358170496;
-        Tue, 27 May 2025 08:02:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748358170; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp4876940njc;
+        Tue, 27 May 2025 08:03:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVCErddc/sY/MDfymh87Wm2CBCyK2oK52AWn1yOSu8lCrOrVLLC4YLYQsEbS6q6WSk0i+gwb3nZyC5hHA==@linaro.org
+X-Received: by 2002:a05:620a:254c:b0:7cd:4b5b:a210 with SMTP id af79cd13be357-7ceecc3a7e2mr1994314885a.47.1748358172964;
+        Tue, 27 May 2025 08:02:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748358172; cv=none;
         d=google.com; s=arc-20240605;
-        b=Fn0pUyzWiAC4T0uuRQtoiPlsVDorjNxGus8Bekk/tfyBnI9Y+pW4Y9W66bbkicnPBB
-         IoHlqAJ6ot+XRbvimWvHsgvb5WbnWFgwfh1DHRXe3zWbCUs079Erf/LEie9Q7SI9Cnp2
-         zJGg2B40T//rerUuQJeZ+wuNeXCGTf6S77CinxJgljHZYJdvhtWg93rGDCZY0JK0ceT7
-         LqcyklVTqOyk3lf2JfZxhZvfEl0z3SbFFy9X1dv4tyxIjQ2UvY9fm1/AFkk5e5lt7tnf
-         yQbVwXFDJY4L/6WKC1BK3VFgrgmdhtkl/7R6KodjP4sC9ueD+RYtoxCE25rQZu3OQJgj
-         DTsA==
+        b=YaaUXTJSynQYUMyESRM1dDE9tQ2a+YdyniNWXQCCx+NYRPA6L29YFsDz3U6TOI5pRJ
+         Kr53fu6Q1CUm4Ro/6ZfbGX2nIVbFStna2kBJfHM+xLJktlVBxwqbYFRBWBt58jNUQEHo
+         CdCiICSdbKsETmV8nBUL8YYgT3y7iy0Ir5ZgGKb+lfYzKmQbo1mKesC8RYaMcc7s/zKX
+         hEKtNqolBeGifd2ZZ1Ngr1jvch5Ao0PLa9Wv1pB8wwm395vzse5Z5aZGptEooFVaa/co
+         9ax3hnrq+jpajf3ZBlZak1tFyFKAH58tszpVOpv36Yarjra1OF5m2fL+3CVjb2/gndDw
+         oE2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=agFWYYCKCVq6mVFbehNZ8ax/fZ1A0ibvbnP/23upHzI=;
-        fh=AVlUxirwdCQX7HpgphAotxL62VYbAsE2q0XEmOBmlSQ=;
-        b=IjhQ7FNicX5gKEXs+M072eUJZ2/Ml5II5FGDR7EdjKEdTd6Mlog5QmY54t0Q4LTShM
-         bppGvQ5mjc3AH0EVj+zZXW4t3umBB79yAxuWVgtNehBZqFU8iE6WvqhZoH/ZKywiQe07
-         wHzcMkCQFUVctQESPfks+X8rEvbbhWoUBeqYqI9a0oRpm0LVZtpy08EK3c8ZxiDXUmvv
-         icpYzQ9gm8AGCbUXbw88TEdK7KpQzRbLZ5/2Ibq3/ttLfHMyff95OeEKfeQlc14Rq1Uh
-         XhyMTTZjnC/ugFpugaNQ/6bjrwgWoaIkn2XWAoB5yH8+fZVr6ETnKVln859qoP834RmM
-         WeKA==;
+        bh=RniEF1mf7TN4jF60DdYm0zWLKlVKKpJMW1uo5Rs5HEQ=;
+        fh=qRCZztVsXnkcseW3WNLBWvDe4W7DLOj5OyPpkLOsYFk=;
+        b=KqWpsryu4heNLexuZhaJNilDJMZ6uKzXZSjySRElgzS1KE0Mkwx/w8IMMwYZawvx9K
+         dh8uNDDwSEHIxXd/w5l5wO6wOscZV6JeETfsjmoaxlX2Ov6Z3V9ZonR0XQZzdsI5w8T2
+         kdX9tT97ROPMii0CzhrfOlTT0bjxW3sn8ETTxmrzHuEKSAqlEYOnANwh/gFA9oJ7kR6w
+         NevwLyUMkH8E+ku8cxfkiR4jEl+nO95RVLPIvZd9DeJ0QvgpSthnoiGCao5VtfTX09KD
+         SOuEIm3zTMc3zMEWYuQz6nPhfbn2Y2pHP2aZ5+Q90H1G7k9grVtntWmqR3+jCs3PlEKz
+         vHGg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SVrDU6tQ;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=u8UaCOxE;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id ada2fe7eead31-4e459f8b622sor546976137.13.2025.05.27.08.02.50
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a1e0cc1a2514c-87df12cd60asor567353241.8.2025.05.27.08.02.52
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 27 May 2025 08:02:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Tue, 27 May 2025 08:02:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SVrDU6tQ;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=u8UaCOxE;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1748358170; x=1748962970; darn=linaro.org;
+        d=linaro.org; s=google; t=1748358172; x=1748962972; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=agFWYYCKCVq6mVFbehNZ8ax/fZ1A0ibvbnP/23upHzI=;
-        b=SVrDU6tQxU9hgpFu9FYhIwkZCkad+7uV7FRC4mkmsiaohEyegPYzTGgepe8P0tpV1Q
-         WOYIrGMMRy0RH2mhKox4nHWWkbcC9mUZiMIV/trfSQtHgs+OFqQURNg94W0w6ajUJm6H
-         B/z7NgiTeMfKD9o7FKXAJjW/ZHTRwS/1v2hfAQM8EGnxmZnnWNkkhOlgtdXisiMLg9GS
-         m/LXNUPfxmmx2c5AHl7V8/b0v3OG3JVOIAlO636lDeDltstP9f6OeSnBpgRqY8HJmSDO
-         Dk6PrHMibPCDsCWMD11UOAZbOFMBzDQd0O5Cug6eUrBRRvJduK2Firck7RVQvD+bJ1jj
-         lglA==
+        bh=RniEF1mf7TN4jF60DdYm0zWLKlVKKpJMW1uo5Rs5HEQ=;
+        b=u8UaCOxE2O8ilPXLOH5qi4JC56TFdXRgGJShnRv5kDJrqifC4zxQKj0//yYY3u6fJG
+         Q7W6WrHhXgCowo6nB1GKYeG/ImofsO568uYf2to7x77Dqx+W99fx4t+s+ktPs6hH0sgZ
+         kMGUp1dMQbxxCW+I2d41QAoNO2XbL0yyghXcYqaeyl3BjuwZ8+ARSiGCRi3LtSg2m8Fm
+         LLjILn82YIZNxi1wV/gv2iHnJEFBqUSeshmq/Dswe0KCWvcCp2q3x1adAkiM5fwzZD0T
+         TW7GtV0EUfa+1z1NqwT6fDDcuMb4XEvuhp2qwtL1Gzn0wm17vcvroj70C2Xxk0rLFunD
+         J0hA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748358170; x=1748962970;
+        d=1e100.net; s=20230601; t=1748358172; x=1748962972;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=agFWYYCKCVq6mVFbehNZ8ax/fZ1A0ibvbnP/23upHzI=;
-        b=iVNYX+6DeQRuH8Tmf8PzlldRXL2mB+29dCV8ILP3DgAKx/aLkuMhfS/wwmGlwc2wSB
-         szTh9Hdc93lu+YrmgG5Lk/IEihRquV5wgn0wk3Np1sJKIg366dz9Su+zwu72GZirGIUB
-         2OdFGHTsAgfU3MoOc7y80cdgsbJ3hr8Xo+TwP4OOCI0sBcAQ5NU3USv+/XicEBe/vpdr
-         6sUCBqHF3PGcuwzYV2g4ioHys5UG1BKpMM2ME8R4syasKW3ExxSa2yv6j07UeXECEi5a
-         43/jHrOlUcrwB7L8plIqBR/Lg1uiu4yXI7Ot2eWComWFymqJf6N9QxeiyyCv3LPbFEur
-         pIpA==
-X-Forwarded-Encrypted: i=1; AJvYcCW327HuknzFR6gJDlUQEyIHx311qE2EyaNAdPILLdabhAop+u1g/Q32zz9gsHfjX3pNozEWp4HwBjc1VA==@linaro.org
-X-Gm-Message-State: AOJu0YxxF8Dj2DAWlHxwr/llqxL29783vddnGaVs5Arb6gTCpxfJIME5
-	H9l7ga7qNMWX3T9ZdhCR7QCtoDac214MF2Om9y6Nr9QB1eut34b5LRQ60WzsRtSiacFcDQ==
-X-Gm-Gg: ASbGncuPwmdD5rUy6NRUAgt+7mQ9fsKJr3SZCwQJrdAp9sWywblOLO65kwBnm3VQuS8
-	WN3OKR//DEzgyX5JRny8ArTVVWmmXySdYR3T6PEeSSdlTNRqL7YgXhZfZVmaWmsUSk61K7FP+yy
-	2dNLLiUQs0OqRtollw/B8MInuTWJkCdXMvyYjf9tZuxnsxGr2vWhJkO0KC5FFbF4ev3nzIB3MzQ
-	WzbMU+HuifBTtYtJgXDg8m2s4e4sD0ayRFGYeqdJyFfh49BBQTZ4LX7F50a2HitmEMzaCopdfin
-	R3uU4Rsf8Y859d25LBu3YoY5FOj35JxE956Sp1mc6jYX/7lBJ8jLT8H/yup8WZ7RNFAHJBFqyrl
-	k8KkyW2yPM4Awb7QdjsTZag==
-X-Google-Smtp-Source: AGHT+IFZ72oGyj6zqgb1m6S3CDOn0dykaUi1s3nbhFSi839o4SCP7fdLWsZJM+ZNdDJjfzgl9obcHg==
-X-Received: by 2002:a05:6102:370b:b0:4af:c519:4e7f with SMTP id ada2fe7eead31-4e4241af472mr9779721137.18.1748358169635;
-        Tue, 27 May 2025 08:02:49 -0700 (PDT)
+        bh=RniEF1mf7TN4jF60DdYm0zWLKlVKKpJMW1uo5Rs5HEQ=;
+        b=q5PUATOWUXyU74HjjZdOaK0Dbd/lqUes4/4OCEgJswld+KGoJ9Bw+cJM2FREhPqESU
+         HVdq+5qABYUrUwEH/GYjx8a9Kfcz6sm+0aTIiBhGBWh2WDeR7JNqOmUDVRreRFcxG7l/
+         yPxjflq0T5kMYoW53Q5Q9myhoEXUv6Xxw31WsBcy//+nOO5j/B0RqxZGVxNvaMUcGQkB
+         PqZJu3rBTu1IGhvczP7jrktAbo5zWYH7gpQVHaHNsYKguAJi9VBjkjjS8whdpuPjygw1
+         xnI7H1nzlm1Rb7fNnSPeYyNUa9xIlPW0K+EaojEAYV4XYa8bLQlpI6KY0MuhpDFQi18j
+         JD0A==
+X-Forwarded-Encrypted: i=1; AJvYcCXHmUsCDM/mHOwSZt9FVKv5MZHrXTEgmm3w4pQ3+9+6W/QXHubJkZkHDO4RfYpZJ0MWzAZ799sN95n+6g==@linaro.org
+X-Gm-Message-State: AOJu0YwQJJSxJd/6I8uuc7HbIU35NLQWwaV4asmJn6Qj7gg5jfJzdx2D
+	qJHn8+8Uwqo7F1mG0tOFsznaublUYeQXFrDyluzWlfqJNnMa9n/NyzdBSjyCCJZTWq63o/ZgYOE
+	8bz1DGtNsGg==
+X-Gm-Gg: ASbGncszohXC2amUW4ztpk5KXrQwlWZ41gGAewMbZwRhGiR9wkZxGFRmW0XEI7312CN
+	agB9gcy3w3P2QDC9MBwO0ERgFXPQxzefmKMXFwcyNOzdaeWspB6u61QZnRhZa3T0MjVYJzK0zoH
+	Gkv2TtG0qcV5G10QpcK/sXW4gTCNdXR/qW29JyHmeQqmgaKmEezqTj0r++JUlOf8q7VsAoyBFlv
+	8p2CKZz+T0jJAAGv1Aubbv/vqc/n7peTv6+9y+4tQn4Lh9W0eJyqa91dA+f0Raj+NxO7flXKPY3
+	Da0cig+oiMus1mBaILW9fkZOMMMnGi/mLCx7NO9bGzc1cdcJe3aqBmTYQVEPvvOfQnE82zFioJS
+	yAiE1aYoRDzfnhRAAHD0UJg==
+X-Google-Smtp-Source: AGHT+IEamKsspQzXxNvrx0hfrbFiwI9Yy1dIhoMMXDOZHKjNKDNxlne+0y+H39wK8Qh/YB1E5p1ejQ==
+X-Received: by 2002:a05:6102:3590:b0:4cb:5d6c:9946 with SMTP id ada2fe7eead31-4e4240a654cmr10360291137.10.1748358172339;
+        Tue, 27 May 2025 08:02:52 -0700 (PDT)
 Return-Path: <gustavo.romero@linaro.org>
 Received: from gromero0.. (200-100-75-183.dial-up.telesp.net.br. [200.100.75.183])
-        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4e51e94c9c2sm2189649137.23.2025.05.27.08.02.47
+        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4e51e94c9c2sm2189649137.23.2025.05.27.08.02.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 May 2025 08:02:48 -0700 (PDT)
+        Tue, 27 May 2025 08:02:51 -0700 (PDT)
 From: Gustavo Romero <gustavo.romero@linaro.org>
 To: qemu-devel@nongnu.org,
 	eric.auger@redhat.com
@@ -88,41 +89,69 @@ Cc: qemu-arm@nongnu.org,
 	thuth@redhat.com,
 	gustavo.romero@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH 1/2] tests/functional/test_aarch64_hotplug_pci: Update SHA
-Date: Tue, 27 May 2025 15:02:28 +0000
-Message-Id: <20250527150229.1617074-2-gustavo.romero@linaro.org>
+Subject: [PATCH 2/2] tests/functional/test_aarch64_hotplug_pci: Add test for ACPI PCI hotplug
+Date: Tue, 27 May 2025 15:02:29 +0000
+Message-Id: <20250527150229.1617074-3-gustavo.romero@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250527150229.1617074-1-gustavo.romero@linaro.org>
 References: <20250527150229.1617074-1-gustavo.romero@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: z05cfiSI/9x0
+X-TUID: HRh47LrsL84T
 
-Update SHA for 'linux' and 'initrd.gz' images.
+Currently, test_aarch64_hotplug_pci only tests PCI hotplug using the
+native PCI hotplug mechanism. Now that aarch64 supports PCI hotplug via
+the ACPI mechanism it's time to support it in the test as well.
 
 Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 ---
- tests/functional/test_aarch64_hotplug_pci.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/functional/test_aarch64_hotplug_pci.py | 24 +++++++++++++++++++-
+ 1 file changed, 23 insertions(+), 1 deletion(-)
 
 diff --git a/tests/functional/test_aarch64_hotplug_pci.py b/tests/functional/test_aarch64_hotplug_pci.py
-index fa1bb62c8f..bb2c121503 100755
+index bb2c121503..862bb6746b 100755
 --- a/tests/functional/test_aarch64_hotplug_pci.py
 +++ b/tests/functional/test_aarch64_hotplug_pci.py
-@@ -20,12 +20,12 @@ class HotplugPCI(LinuxKernelTest):
-     ASSET_KERNEL = Asset(
-         ('https://ftp.debian.org/debian/dists/stable/main/installer-arm64/'
-          'current/images/netboot/debian-installer/arm64/linux'),
--        '3821d4db56d42c6a4eac62f31846e35465940afd87746b4cfcdf5c9eca3117b2')
-+         'd92a60392ce1e379ca198a1a820899f8f0d39a62d047c41ab79492f81541a9d9')
- 
-     ASSET_INITRD = Asset(
-         ('https://ftp.debian.org/debian/dists/stable/main/installer-arm64/'
+@@ -27,11 +27,26 @@ class HotplugPCI(LinuxKernelTest):
           'current/images/netboot/debian-installer/arm64/initrd.gz'),
--        '2583ec22b45265ad69e82f198674f53d4cd85be124fe012eedc2fd91156bc4b4')
-+        '9f817f76951f3237bca8216bee35267bfb826815687f4b2fcdd5e6c2a917790c')
+         '9f817f76951f3237bca8216bee35267bfb826815687f4b2fcdd5e6c2a917790c')
  
-     def test_hotplug_pci(self):
+-    def test_hotplug_pci(self):
++    def run_vm_and_test_hotplug_pci(self, use_acpi_pci_hotplug=False):
++        """
++        Run an aarch64 VM and test the PCI hotplug mechanism by plugging and
++        unplugging a PCI network adapter to the VM. Proper plug and unplug of
++        the adapter is verified by checking if the network device is correctly
++        added and removed in Linux.
++
++        Parameters
++        ----------
++        use_acpi_pci_hotplug : bool
++            If true the ACPI PCI hotplug mechanim is used, otherwise the
++            Native PCIe Hotplug mechanism is used.
++        """
++
++        acpi_pci_hotplug = "on" if use_acpi_pci_hotplug else "off"
  
+         self.set_machine('virt')
+         self.vm.add_args('-m', '512M')
+         self.vm.add_args('-cpu', 'cortex-a57')
++        self.vm.add_args('-machine', f"acpi-pcihp={acpi_pci_hotplug}")
+         self.vm.add_args('-append',
+                          'console=ttyAMA0,115200 init=/bin/sh')
+         self.vm.add_args('-device',
+@@ -70,5 +85,12 @@ def test_hotplug_pci(self):
+                                           'ls -l /sys/class/net | wc -l',
+                                           '2')
+ 
++    def test_native_pci_hotplug(self):
++        self.run_vm_and_test_hotplug_pci(use_acpi_pci_hotplug=False)
++
++    def test_acpi_pci_hotplug(self):
++        self.run_vm_and_test_hotplug_pci(use_acpi_pci_hotplug=True)
++
++
+ if __name__ == '__main__':
+     LinuxKernelTest.main()
 -- 
 2.34.1

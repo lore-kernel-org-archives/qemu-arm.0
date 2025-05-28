@@ -1,203 +1,223 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5324477njc;
-        Wed, 28 May 2025 01:16:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU1L86iqhIl9Fb0sIivZt3ACbElWsoXiP3dCanD4QBOW593mfaS8lAhu7C0/I8YxBMJnYa/yYdYmvtJZQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IH2pTB2crkMWFgkRtjiVXzROLV3mE+/0pStxEWVTQw4Q0ZiqvK82K+hWHxL/SoD2LY3uUec
-X-Received: by 2002:a05:620a:1aa2:b0:7c9:6531:53c1 with SMTP id af79cd13be357-7cfc5d496e4mr151976885a.26.1748420190287;
-        Wed, 28 May 2025 01:16:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748420190; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp70911njh;
+        Wed, 28 May 2025 13:31:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWWz0R2AiIzCQerWrM3oVPvGS00WLp3EwXXCSZ+kDrN9juLvnFSLt3pbHFNHOJjvC9cf/f7bmSsAC1VSA==@linaro.org
+X-Received: by 2002:a05:6122:848e:b0:530:5226:a59e with SMTP id 71dfb90a1353d-5305226a64emr6035058e0c.6.1748464316155;
+        Wed, 28 May 2025 13:31:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748464316; cv=none;
         d=google.com; s=arc-20240605;
-        b=cbBg4Edtjde6uh5kwDIbUjEK5CMVG3S55AZJ5kCK6Xqzn0YacPVeNCzwQAErfcvrfB
-         /cUTjbqxnUiDV8TAfbxrhZ7HmN950ct7CQHYlvAeVNwySSkZ9vMnRFae+QwQ5ir360L9
-         C2CYLdG4l4/msXa1RukZ16new0hGr/KGZfLmXjhsA7XJ3l7N88213Sv4K+lxUO2ZJIz+
-         hVUfR4RkocS2Ga4EdA7nbUr2irfJhoPEIV9ZOfdbN6m5PUOtQUZsmmNfXWgBChhlEghW
-         k/gNPTFEJjbJTEHyXOTVpOBjy4jYqXmGh+/5unoHhwjg4+duoNZn8ObnIWVQUTm3oMVx
-         f+QA==
+        b=gDSqI51Gds6NzceQC0km8F2jZ6NT5+BdoQ6ieXFYAGQ/O991o4pudLRR1TH7wR5TXY
+         UcD4HXSCTHKi9wusj60O2M0XIS1gMJ9NnhBCTHedHQKqAJ1CILdcBcmSCtFCoDb6WXnp
+         BB+gB15d/9/Ob4qHEp1KrMM7es2nmVxbFT0/Y2CuPKPnWKf+VwDPlUBTC+geu3Y5c9MG
+         MmjnTQc8zCVRZWHR7c2aKrtISnoUobpJerG0DWvMlEAU5WCoNmzN1LvFOdtiKt/yQWMp
+         g26Ly90tJuNB/yyHvNnHN7vDX4PWYglfhdP4V51JiDpmQpwyDz4otG8MbUvCZrbm4tQL
+         d4eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Ax++RLEDlRrY1JJjLtw31k8EuTvopwPDgXmRKqROuTI=;
-        fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=Lbh3ey+0h17otrwbZtIEsiukyFTXZK3NGCzYnV7Gcel/Ynit73wXIEtcqwIcu1cv49
-         7EXKROyFmzbUecOz1fy/CURGIFkt1ahNCAI2t5jLIKGf+CJ/g9LJnDGaIWwlghOyfDOZ
-         yhJDI8WGDeKrUWEi7dKcuX+RsT3LPuxNCwjNmvEDKzzzKnxuxNQfOfRfiNTe7hMCLU7H
-         uJY81DW+I0PPCjS/qnKKIhRjRHJCRHX1yqYz+M/V5ghurix92TNdyL1zZLCntr88ItbE
-         dO7pr79+hGLx6Uol/Gk2zDwDNN/5tPAXckQRTAPvjINUHxy8qHx4Rd94VM+xDnuwi+7F
-         8k8g==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=jXTDwR7pk9WsuiUd+vIU5n7dRKgQi6hQX7UWMGnJ2vY=;
+        fh=e797D6GYGUmdXNdzzeolZjTw+G1qIYLKkca6WfpH6SI=;
+        b=V4f9cPuxHRfiEdn/XKp9rDErdGidOLh0BJ0pRwsZCyUk1UJ5lsRR1X346oKzd0uNSl
+         Q+R0jGWkIuiAB/4Xc7xYrC4kw84DSqSQOa3uRipl7FHf5wGu9bmHnYPS4dmA+Dmui3/l
+         PaAEVW/mpDUAupoMLtaYFnYOw475Tbmf7t/6Oi2jufzmtZHwtXSlAiaxPtc4gcu3D3V0
+         J2IBu0IPYuujzkIwcc7GVJmJFvD6WehOnZ7Uhwv5zXJHiLk6vVUT0sGmBClVsQkkRFKT
+         FZUhj0s7yEtY7JIrorjf6jGwBh87tv/ZLWXipZfrzgVrLx+eqTOjPX1vyggsZDMt0A0D
+         MUFg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CqMzu0b+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=O2dVeNzb;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cfc5d62fe6si83965285a.355.2025.05.28.01.16.30
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 71dfb90a1353d-5306cf7aa0csor222273e0c.2.2025.05.28.13.31.56
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 May 2025 01:16:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 28 May 2025 13:31:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CqMzu0b+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=O2dVeNzb;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uKBwz-0000WT-92; Wed, 28 May 2025 04:15:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uKBwF-0008Aq-0M
- for qemu-devel@nongnu.org; Wed, 28 May 2025 04:15:03 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uKBvw-0005Hi-9K
- for qemu-devel@nongnu.org; Wed, 28 May 2025 04:15:00 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-442ccf0e1b3so54554035e9.3
- for <qemu-devel@nongnu.org>; Wed, 28 May 2025 01:14:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1748420080; x=1749024880; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Ax++RLEDlRrY1JJjLtw31k8EuTvopwPDgXmRKqROuTI=;
- b=CqMzu0b+DaVmgylJZgizMflka3+gdP+BWu5PajuTwgK6BUyXxqw9noG9RJjB3Ra4aq
- 5QC4YFxaBxL98RDD4UIAiyiVhz46q/OnwyvVgauwObra7tZkC/HkURESGKPd+/+5HoNY
- 2h1lKbxopkxA4tD6qZKVp+8+bqyfSVKx6mpINFA4suoaW3jxTNtdK+3LA3xSKAW+3Wjh
- 3er7VJDB191V5xNBHPsjPTV3rwtoT2pltdhBQj4wcfqkg+ZxKZaZ9TqOlFx9RRvOrN1P
- mu56OB1ZKXxARn7FJ9NtoJJCOQelX2OAG9CU7HeTqDT+WJtc6zml2dlHTscJCM1JJN9X
- j6gw==
+        d=linaro.org; s=google; t=1748464315; x=1749069115; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=jXTDwR7pk9WsuiUd+vIU5n7dRKgQi6hQX7UWMGnJ2vY=;
+        b=O2dVeNzbYPHxKyOMmNu7XusBdoTpULuDmEIfD4RuP/PAeERCpzT5XFnKc3QXy0548A
+         6mWVHZ3PgRUdnzDC69uHuflRL/DxI3M7q+IWLEuOl+5oAdRasAwA0A+rV/8YkvPhEiBd
+         Ifq9fibTVJItUquzvgkQ+PzSATWBdCu8F8GUsLKSJHKEcUun7GPnYc+cMwEapz751pFX
+         lRnq52hmw3ik0L6D1ur1kiqgmrUMlm+BmTUAgS1p5vw5UpCH0ar9FVCXIXlWf7NN2Axx
+         4e4XXGCH6CayRgz/PDHs5ar5d+hs54oxWBqSjSTjQwtIM0CGr0pUsVJc+9V28fwzNS6v
+         scmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1748420080; x=1749024880;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Ax++RLEDlRrY1JJjLtw31k8EuTvopwPDgXmRKqROuTI=;
- b=BrAvVdKanQFVnuXMUwO+fw2HYDS22MEz12iNJa4KmgM+weEWOpSWDbdWTM8ld1xkCR
- R+OnsHFhWrJb/rJScR42i+/hi6rTNCW4ZRzKJMsbch4uKZXm8UY6KUyf8z/xFux7nm8i
- Uo0TLBOBZTUTHOA1yN74AfLmnybIdCW1jFQfQ/AGCMg0JcBu3miqr1PuM8igz7XBLxMJ
- r2bqK8igeqv/gsaj0cWNF56lB6VZHz+2IMMVnnX/tqXKpKT4SeOkQ6ij0CC6FIoJMd+M
- l/1vDyZForz0z7SR2A1mIxbltW1shmZXepixg1y95XsJspM80NydsQTMzhTQ1EAmD1l2
- QbbA==
-X-Gm-Message-State: AOJu0Yw/+w5s8Qt819Mmx/uHg6ymNlHg0AnWPHvSu4CzphpLfIHbbx6B
- Saa9zDNmWDJC4fgHUyUnCkGo59SO/JDyhfAYsQ8yYxvFrxOURErDPRahm6xQyHSdNL7CfKR7kbi
- A83SxYa0UNg==
-X-Gm-Gg: ASbGncvG0XAcFvm4B5qlau4v71tPJHlIOBRiZrk/TJ15K2ruRARGiSD89C0PmLYuoyH
- HePgEt944T9hWBHHX511ESSx+km2dYhF9AjYeboR+jy1HxtjHVPCgrjB9DfGzzWnBaW8KjDRdzu
- TWSleUt94xkGEjIjrCCN6UL7NKH9qhH6Sn7gQJMEMtuf7U6EjwEdqX+dLM6P6DZDZt/TYNHkRtj
- AzrXnRYp4hpu8+/24Yb7dnRBYE+acX1msnMgovA9MKn3AmiUgjlVJGOMmUXyR0mCF5B4t66dxxg
- b3fbAtCyMl4AAHi2dCR27AfRFKnQQqRsUccqylJ6tNY6V0pHt0/pObDz
-X-Received: by 2002:a05:600c:6285:b0:43c:ea1a:720c with SMTP id
- 5b1f17b1804b1-44c91dd127bmr146750765e9.18.1748420079588; 
- Wed, 28 May 2025 01:14:39 -0700 (PDT)
-Received: from stoup.. ([195.53.115.74]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4500e1d85b5sm13178645e9.32.2025.05.28.01.14.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 May 2025 01:14:39 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PULL 20/28] target/arm: Fill in TCGCPUOps.pointer_wrap
-Date: Wed, 28 May 2025 09:14:02 +0100
-Message-ID: <20250528081410.157251-21-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250528081410.157251-1-richard.henderson@linaro.org>
-References: <20250528081410.157251-1-richard.henderson@linaro.org>
+        d=1e100.net; s=20230601; t=1748464315; x=1749069115;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=jXTDwR7pk9WsuiUd+vIU5n7dRKgQi6hQX7UWMGnJ2vY=;
+        b=kaky1dDt6IFMEml4G1FGIHFlK0RPRFYls1EUZPEFa4+pJpd2cwzgS52zfXgtBQ5BYC
+         dQfER0VpT6rWPoVpvWT1mruT8e572xVIvVaKHhHVbUR58EzuTpFG2b+RhbQAIJC+ymKk
+         g+XZL6eGY+wXPIsF1myUSNnKIJ1kCVb7kug/gauIAURO7E5ZAtjWizz8x2HczB3RhxbS
+         owbkS525BosERVRmfRwgd7vr6YArahpL6EdJT7dC/xFwkRxLhvmbC9KGsmogwuBINbQX
+         M6bEZu0LF01+Ew6gwfzKBB3d5Pz3563o/gWpHKTUG4W/eiND3ck5HB7aSFhHCw6S8y4m
+         h8cQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXffksJxSMXZSg5pR0OZcEofUxz9gfNW/EW8F8j1mmJqL5R6MRBb3eKd/aK2lk2JfNqkf6AwbjVtL+Jxw==@linaro.org
+X-Gm-Message-State: AOJu0Yzg7ihoAZsbLBnJ1TwAvMCG4VP7TLgL+cVeWFzPV8O8I4VPFGg3
+	5US4m4ae0UOjrJ2xbqOtyrmEmkgjT+ztkUCY3U0GNYT+J3ltu76UeEZ6+ZvAfXieWoqZTg==
+X-Gm-Gg: ASbGncsZ+SSP7pkTNplVeE3T80C+bejnZZm70ESUHp774HfF3aa9NZdHZ/NNB0grPgL
+	XeOueQaGxufUDwyrRW3Gz33npbFI2I/KZb/h5X4nVN4rmchIyynzlVQNDchRAWI5NozZ1uXCCAm
+	C4z+qONO3uy/PSrWXpzQxXSjvZHYI5nsZQMBqwADzksyehfomxgVzWbSmx3cnwJ+4q3jGuBvHse
+	mO5P2Ctvjx1oJMtCUURtUbjIsvkbdvgd1ZbWfCplH49cpRqpSRr97PfPQu0xifZZsDj2+WJ+olF
+	WmvYMA5osfI18arz5Cv7NoRiIIg7qQVPxI5Hla+1K+RDXhYHD6l4GKoar/6b7rI0F3WiQ9xF0yG
+	yAOI8LBicjuGJpt9JHZpcBf0ZbOwtLz4B
+X-Google-Smtp-Source: AGHT+IH7+pdPVUVbM+DljZpA4XTau9zkPij4FNcTrJoI3xLHYDK2UX4Sn8A6fU+T0yZ4xBnk6pYiGA==
+X-Received: by 2002:a05:6122:a23:b0:520:3536:feb5 with SMTP id 71dfb90a1353d-52f2c5ab85emr15703239e0c.11.1748464315489;
+        Wed, 28 May 2025 13:31:55 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from gromero0.. (200-100-75-183.dial-up.telesp.net.br. [200.100.75.183])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-53066864d8esm1773050e0c.20.2025.05.28.13.31.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 28 May 2025 13:31:54 -0700 (PDT)
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: qemu-devel@nongnu.org,
+	alex.bennee@linaro.org
+Cc: qemu-arm@nongnu.org,
+	thuth@redhat.com,
+	gustavo.romero@linaro.org,
+	eric.auger@redhat.com,
+	berrange@redhat.com
+Subject: [PATCH v5] tests/functional: Add PCI hotplug test for aarch64
+Date: Wed, 28 May 2025 20:31:37 +0000
+Message-Id: <20250528203137.1654964-1-gustavo.romero@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MlVkH8pizzNk
+X-TUID: cClIb1KAs/Is
 
-For a-profile, check A32 vs A64 state.
-For m-profile, use cpu_pointer_wrap_uint32.
+Add a functional test, aarch64_hotplug_pci, to exercise PCI hotplug and
+hot-unplug on arm64.
 
-Cc: qemu-arm@nongnu.org
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Acked-by: Thomas Huth <thuth@redhat.com>
 ---
- target/arm/cpu.c         | 24 ++++++++++++++++++++++++
- target/arm/tcg/cpu-v7m.c |  1 +
- 2 files changed, 25 insertions(+)
+ MAINTAINERS                                  |  6 ++
+ tests/functional/meson.build                 |  1 +
+ tests/functional/test_aarch64_hotplug_pci.py | 74 ++++++++++++++++++++
+ 3 files changed, 81 insertions(+)
+ create mode 100755 tests/functional/test_aarch64_hotplug_pci.py
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index ca5ed7892e..e025e241ed 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2703,6 +2703,29 @@ static const struct SysemuCPUOps arm_sysemu_ops = {
- #endif
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 7060cf49b9..818d7b9d5f 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2078,6 +2078,12 @@ S: Supported
+ F: include/hw/pci/pcie_doe.h
+ F: hw/pci/pcie_doe.c
  
- #ifdef CONFIG_TCG
-+#ifndef CONFIG_USER_ONLY
-+static vaddr aprofile_pointer_wrap(CPUState *cs, int mmu_idx,
-+                                   vaddr result, vaddr base)
-+{
-+    /*
-+     * The Stage2 and Phys indexes are only used for ptw on arm32,
-+     * and all pte's are aligned, so we never produce a wrap for these.
-+     * Double check that we're not truncating a 40-bit physical address.
-+     */
-+    assert((unsigned)mmu_idx < (ARMMMUIdx_Stage2_S & ARM_MMU_IDX_COREIDX_MASK));
++ARM PCI Hotplug
++M: Gustavo Romero <gustavo.romero@linaro.org>
++L: qemu-arm@nongnu.org
++S: Supported
++F: tests/functional/test_aarch64_hotplug_pci.py
 +
-+    if (!is_a64(cpu_env(cs))) {
-+        return (uint32_t)result;
-+    }
+ ACPI/SMBIOS
+ M: Michael S. Tsirkin <mst@redhat.com>
+ M: Igor Mammedov <imammedo@redhat.com>
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 52b4706cfe..2d68840fa2 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -83,6 +83,7 @@ tests_aarch64_system_quick = [
+ tests_aarch64_system_thorough = [
+   'aarch64_aspeed_ast2700',
+   'aarch64_aspeed_ast2700fc',
++  'aarch64_hotplug_pci',
+   'aarch64_imx8mp_evk',
+   'aarch64_raspi3',
+   'aarch64_raspi4',
+diff --git a/tests/functional/test_aarch64_hotplug_pci.py b/tests/functional/test_aarch64_hotplug_pci.py
+new file mode 100755
+index 0000000000..2cf5c28b9f
+--- /dev/null
++++ b/tests/functional/test_aarch64_hotplug_pci.py
+@@ -0,0 +1,74 @@
++#!/usr/bin/env python3
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++#
++# The test hotplugs a PCI device and checks it on a Linux guest.
++#
++# Copyright (c) 2025 Linaro Ltd.
++#
++# Author:
++#  Gustavo Romero <gustavo.romero@linaro.org>
++#
++# This work is licensed under the terms of the GNU GPL, version 2 or
++# later.  See the COPYING file in the top-level directory.
 +
-+    /*
-+     * TODO: For FEAT_CPA2, decide how to we want to resolve
-+     * Unpredictable_CPACHECK in AddressIncrement.
-+     */
-+    return result;
-+}
-+#endif /* !CONFIG_USER_ONLY */
++from qemu_test import LinuxKernelTest, Asset, exec_command_and_wait_for_pattern
++from qemu_test import BUILD_DIR
 +
- static const TCGCPUOps arm_tcg_ops = {
-     .mttcg_supported = true,
-     /* ARM processors have a weak memory model */
-@@ -2722,6 +2745,7 @@ static const TCGCPUOps arm_tcg_ops = {
-     .untagged_addr = aarch64_untagged_addr,
- #else
-     .tlb_fill_align = arm_cpu_tlb_fill_align,
-+    .pointer_wrap = aprofile_pointer_wrap,
-     .cpu_exec_interrupt = arm_cpu_exec_interrupt,
-     .cpu_exec_halt = arm_cpu_exec_halt,
-     .cpu_exec_reset = cpu_reset,
-diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
-index 95b23d9b55..8e1a083b91 100644
---- a/target/arm/tcg/cpu-v7m.c
-+++ b/target/arm/tcg/cpu-v7m.c
-@@ -249,6 +249,7 @@ static const TCGCPUOps arm_v7m_tcg_ops = {
-     .record_sigbus = arm_cpu_record_sigbus,
- #else
-     .tlb_fill_align = arm_cpu_tlb_fill_align,
-+    .pointer_wrap = cpu_pointer_wrap_uint32,
-     .cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt,
-     .cpu_exec_halt = arm_cpu_exec_halt,
-     .cpu_exec_reset = cpu_reset,
++class HotplugPCI(LinuxKernelTest):
++
++    ASSET_KERNEL = Asset(
++        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm64/'
++         '20230607+deb12u11/images/netboot/debian-installer/arm64/linux'),
++         'd92a60392ce1e379ca198a1a820899f8f0d39a62d047c41ab79492f81541a9d9')
++
++    ASSET_INITRD = Asset(
++        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm64/'
++         '20230607+deb12u11/images/netboot/debian-installer/arm64/initrd.gz'),
++         '9f817f76951f3237bca8216bee35267bfb826815687f4b2fcdd5e6c2a917790c')
++
++    def test_hotplug_pci(self):
++
++        self.set_machine('virt')
++        self.vm.add_args('-m', '512M')
++        self.vm.add_args('-cpu', 'cortex-a57')
++        self.vm.add_args('-append',
++                         'console=ttyAMA0,115200 init=/bin/sh')
++        self.vm.add_args('-device',
++                         'pcie-root-port,bus=pcie.0,chassis=1,slot=1,id=pcie.1')
++        self.vm.add_args('-bios', self.build_file('pc-bios',
++                                                  'edk2-aarch64-code.fd'))
++
++        # BusyBox prompt
++        prompt = "~ #"
++        self.launch_kernel(self.ASSET_KERNEL.fetch(),
++                           self.ASSET_INITRD.fetch(),
++                           wait_for=prompt)
++
++        # Check for initial state: 2 network adapters, lo and enp0s1.
++        exec_command_and_wait_for_pattern(self,
++                                          'ls -l /sys/class/net | wc -l',
++                                          '2')
++
++        # Hotplug one network adapter to the root port, i.e. pcie.1 bus.
++        self.vm.cmd('device_add',
++                    driver='virtio-net-pci',
++                    bus='pcie.1',
++                    addr=0,
++                    id='na')
++        # Wait for the kernel to recognize the new device.
++        self.wait_for_console_pattern('virtio-pci')
++        self.wait_for_console_pattern('virtio_net')
++
++        # Check if there is a new network adapter.
++        exec_command_and_wait_for_pattern(self,
++                                          'ls -l /sys/class/net | wc -l',
++                                          '3')
++
++        self.vm.cmd('device_del', id='na')
++        exec_command_and_wait_for_pattern(self,
++                                          'ls -l /sys/class/net | wc -l',
++                                          '2')
++
++if __name__ == '__main__':
++    LinuxKernelTest.main()
 -- 
-2.43.0
-
+2.34.1

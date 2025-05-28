@@ -1,94 +1,94 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5367427njc;
-        Wed, 28 May 2025 03:02:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVdlbYBYXqSozPRBCnDnt2v5tLGHWRYqcfTlbBILJRvpRyukH/QysFMUnYzhJU5en714vPg4GaCrat5RA==@linaro.org
-X-Google-Smtp-Source: AGHT+IE5iJojWRTvnsJsxG8zBiB6dbt2J18k7cC0JFmBdPcw21dre6TsfkqfNaZOzQWgFeABrOVo
-X-Received: by 2002:a05:6214:1943:b0:6fa:c3c8:d3d9 with SMTP id 6a1803df08f44-6fac3c8d5f4mr4321556d6.0.1748426569970;
-        Wed, 28 May 2025 03:02:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748426569; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5367903njc;
+        Wed, 28 May 2025 03:03:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW+t4A9mzZL0bN/0FUgMRGE/tqEHP6m1Ic536X8WNivfstPmVAtAse3aO2KZRaqQmLsC8iyG8f8Ir2SIQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHVTG0a6nO+O/bwPAGOmtkLrKoULPIf2AmnsBnrfY0ar4PxPGvObHvf6QlAaKbUPZfHukz6
+X-Received: by 2002:a05:6102:4b1c:b0:4bb:e5bf:9c79 with SMTP id ada2fe7eead31-4e42418db3bmr14182984137.22.1748426604794;
+        Wed, 28 May 2025 03:03:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748426604; cv=none;
         d=google.com; s=arc-20240605;
-        b=gcepvAU+v3kxq2B2y0Nr5PIIiI2WdAzKItlddYguLDWpIJgInpsNUkL3pOy6/lrM4C
-         GR1ztLZGWmapXpuNk8z0M4VC65H+KmY9XzwFRf/3usU0MtGrgqZHINkzO3RN/g7lgi57
-         TKRL1o4u4f4qcmL5HI0dLPSn0owFN3mkvrhK/0x4DWkjkWCVKdpYF6tr6w5i2eEEQlfT
-         UGrt6dOEcsf28BDZFRrPy217eEOwvxPX0WBarEQDqSJ3Gktb+S7T+zDvt/JOiqID4ka9
-         Z8VK+OywsMKrIEpoNCLfOg/hgRFs5Z2JCkLFXZLK0Z+ospvlNiTEYi2Z0Uy92ikQfukX
-         foTw==
+        b=fILXD6o657nBHQPLq8X4H8ndO5XnsaImvQ6fvm3JvsyoKBHHxWwXS7vPFCKARoZZ85
+         TjC0gpTvh3IXzQZLWTu1Xb8lDpMPq3Jz865e+Bwh/TMh60qupxbMjLh16DGfXyP++4Aj
+         5fLZovG/VawiMLkpZYvdxEdfeKscRBN/qgUVcUBePanpqwNnTPoxFfA7MtksZeSy37LV
+         utyxrCZKGweCNWIC4yAJMbuv/PSEbfdWBmNi2vkJNOl/HsUysPpwOqbQgV6Q5ZFyKDEQ
+         mL8VTV2ez03s4ckZUGLb7YQoGq6L/yN1j9yLS3kUQ2L8LhXIAHjOt65djz/mLCZ1DDwc
+         jvkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=GK3hRc9GBMOqhjsdAbUrX1Yr4I1KvmG37SPK6bbu+FM=;
+        bh=Dxkn4qLxCfduF+Ckn9JcjV37FeKi59jt7wAnZKjHoMM=;
         fh=fWw9l+Tqx6SppQIssOIDge+vOObRQF8eTjVKG6g5YgE=;
-        b=AjUhBINGb/IJzh7ZY2eu/K0kp1g9u3F+Rg7qg+gUe4lGHdFZQAjPhwKGfpmyeQXiSa
-         rLFaBNpyvKQsiIF9fpcKBHQYAQCkcQRgCBPRDmqOng7miFSuqBiqiHUzpb9sW4fluxFG
-         f4l95xTdCuRjgnt11d+ePWVuU4FlDFtse+yYxJsnmMG9CcrXbiECPqbOj8zbUsBkgqWq
-         Chml0nELPDJEqC7jSbPgE2NRr7jSyWeUNNT8FJx9nCbdrgsDrl/oGclIuBgNVuod4q+d
-         V/4bp5/PoBW6SgykJSctfaodhuPAqagqt84czYJte+l/1XB/9hzH5VbCEDXt3qqPXi+b
-         Rndw==;
+        b=geyF2a8o3GRr6c6pOmTTssIT6icFngjEDNaGrfzghGA0hQV5Ls3lXCqO19I/6ywuJr
+         QBKjlMgjTEjpato4jnK6LYlFj77uB0Pm8hcQc4sjED+xvSMwr/7wxvvYuGL8n/Y7iDzZ
+         JVJAMqcsjQMBHTrp+pcpD6rcQV7I2RgA+F/SfpbnWy4YT5YglItJvnavBnwrBa8I63+L
+         qVNpvVsb0HotIbuDG8vKSXGc2Bg1AvMXfrVMJFvCJcUtVS7QgG6heDVXs1gfRvhL1fzs
+         BfJQXhU/ZwcZfVkxLOOLJq3famqf13nb04vv7G8raXgy7XpwsC8UFbdkIy5zUNAzaYv0
+         AS4Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K2B0iNRy;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="J/zThksU";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fac0bca400si9353426d6.443.2025.05.28.03.02.49
+        by mx.google.com with ESMTPS id 71dfb90a1353d-5306683f7e3si212500e0c.37.2025.05.28.03.03.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 May 2025 03:02:49 -0700 (PDT)
+        Wed, 28 May 2025 03:03:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K2B0iNRy;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="J/zThksU";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uKDcG-0007x3-CB; Wed, 28 May 2025 06:02:32 -0400
+	id 1uKDcW-0008Iz-UT; Wed, 28 May 2025 06:02:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1uKDax-0007Y7-UO
- for qemu-arm@nongnu.org; Wed, 28 May 2025 06:01:17 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1uKDcO-0008Dp-RW
+ for qemu-arm@nongnu.org; Wed, 28 May 2025 06:02:40 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1uKDav-0006Rv-9I
- for qemu-arm@nongnu.org; Wed, 28 May 2025 06:01:11 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1uKDcL-0006Y0-Ii
+ for qemu-arm@nongnu.org; Wed, 28 May 2025 06:02:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1748426468;
+ s=mimecast20190719; t=1748426556;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=GK3hRc9GBMOqhjsdAbUrX1Yr4I1KvmG37SPK6bbu+FM=;
- b=K2B0iNRybCMqGettSbc8rD9z4cZ7TRuNayEQnb7Cg8MPxIf4/cV0NXqCP+ZmPdWGq3jU3L
- RjlLNEOPaP0k3JBYQAHq8sNIK+06hnPyI7wYFchWNFEIed+xGOeJScQ7DCRvnS6yBV3+px
- A2FsKRAaa1BefRKDpx3XUKmfOnZt9QY=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=Dxkn4qLxCfduF+Ckn9JcjV37FeKi59jt7wAnZKjHoMM=;
+ b=J/zThksUllm0SNZEBV5Lire9abyZ06gVewTWtsNCBrGiHu7Jc//y81dm/CjEHVnX4SlvRG
+ 2M7bcJzP3PgENyTMPbxy2r6eZH5p19C/tM7BfIeD3py4QfaXeOry4dB2FCPZShtWgK4enQ
+ JZ374T/Hw7Q8wXe03A8Do7ACw4Aa96M=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-7-LSt9u0TQMPOiqRG5txazQw-1; Wed,
- 28 May 2025 06:01:04 -0400
-X-MC-Unique: LSt9u0TQMPOiqRG5txazQw-1
-X-Mimecast-MFC-AGG-ID: LSt9u0TQMPOiqRG5txazQw_1748426461
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-441-2Zthm1B9P2OxX2rA2hXFdQ-1; Wed,
+ 28 May 2025 06:01:08 -0400
+X-MC-Unique: 2Zthm1B9P2OxX2rA2hXFdQ-1
+X-Mimecast-MFC-AGG-ID: 2Zthm1B9P2OxX2rA2hXFdQ_1748426467
 Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0FC0C1945114; Wed, 28 May 2025 10:01:01 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3ECA4180098D; Wed, 28 May 2025 10:01:07 +0000 (UTC)
 Received: from gshan-thinkpadx1nanogen2.rmtau.csb (unknown [10.64.136.65])
  by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A55E619560AF; Wed, 28 May 2025 10:00:55 +0000 (UTC)
+ id C873919560AF; Wed, 28 May 2025 10:01:01 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, Jonathan.Cameron@huawei.com,
  mchehab+huawei@kernel.org, mst@redhat.com, imammedo@redhat.com,
  anisinha@redhat.com, gengdongjiu1@gmail.com, peter.maydell@linaro.org,
  pbonzini@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v2 2/3] kvm/arm/kvm: Introduce helper push_ghes_memory_errors()
-Date: Wed, 28 May 2025 20:00:32 +1000
-Message-ID: <20250528100033.159576-3-gshan@redhat.com>
+Subject: [PATCH v2 3/3] target/arm/kvm: Support multiple memory CPERs injection
+Date: Wed, 28 May 2025 20:00:33 +1000
+Message-ID: <20250528100033.159576-4-gshan@redhat.com>
 In-Reply-To: <20250528100033.159576-1-gshan@redhat.com>
 References: <20250528100033.159576-1-gshan@redhat.com>
 MIME-Version: 1.0
@@ -119,89 +119,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2izwHvSHsrVW
+X-TUID: W309aCc4h4GE
 
-Introduce helper push_ghes_memory_errors(), which sends ACPI GHES memory
-errors, injects SEA exception or aborts on errors. This function will
-be extended to support multiple ACPI GHES memory errors in the next
-path.
+In the combination of 64KB host and 4KB guest, a problematic host page
+affects 16x guest pages. In this specific case, it's reasonable to
+push 16 consecutive memory CPERs. Otherwise, QEMU can run into core
+dump due to the current error can't be delivered as the previous error
+isn't acknoledges. It's caused by the nature the host page can be
+accessed in parallel due to the mismatched host and guest page sizes.
 
-No functional changes intended.
+Imporve push_ghes_memory_errors() to push 16x consecutive memory CPERs
+for this specific case. The maximal error block size is bumped to 4KB,
+providing enough storage space for those 16x memory CPERs.
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- target/arm/kvm.c | 36 ++++++++++++++++++++++++------------
- 1 file changed, 24 insertions(+), 12 deletions(-)
+ hw/acpi/ghes.c   |  2 +-
+ target/arm/kvm.c | 46 +++++++++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 46 insertions(+), 2 deletions(-)
 
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index 34ff682048..43d52f5e2e 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -33,7 +33,7 @@
+ #define ACPI_HEST_ADDR_FW_CFG_FILE          "etc/acpi_table_hest_addr"
+ 
+ /* The max size in bytes for one error block */
+-#define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
++#define ACPI_GHES_MAX_RAW_DATA_LENGTH   (4 * KiB)
+ 
+ /* Generic Hardware Error Source version 2 */
+ #define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
 diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 97c1bce692..e31fcde797 100644
+index e31fcde797..c346bd7b49 100644
 --- a/target/arm/kvm.c
 +++ b/target/arm/kvm.c
-@@ -2333,12 +2333,34 @@ int kvm_arch_get_registers(CPUState *cs, Error **errp)
-     return ret;
- }
+@@ -11,6 +11,7 @@
+  */
  
-+static void push_ghes_memory_errors(CPUState *c, AcpiGhesState *ags,
-+                                    uint64_t paddr)
-+{
-+    GArray *addresses = g_array_new(false, false, sizeof(paddr));
-+    int ret;
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include <sys/ioctl.h>
+ 
+ #include <linux/kvm.h>
+@@ -2337,10 +2338,53 @@ static void push_ghes_memory_errors(CPUState *c, AcpiGhesState *ags,
+                                     uint64_t paddr)
+ {
+     GArray *addresses = g_array_new(false, false, sizeof(paddr));
++    uint64_t val, start, end, guest_pgsz, host_pgsz;
+     int ret;
+ 
+     kvm_cpu_synchronize_state(c);
+-    g_array_append_vals(addresses, &paddr, 1);
 +
-+    kvm_cpu_synchronize_state(c);
-+    g_array_append_vals(addresses, &paddr, 1);
-+    ret = acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC, addresses);
++    /*
++     * Sort out the guest page size from TCR_EL1, which can be modified
++     * by the guest from time to time. So we have to sort it out dynamically.
++     */
++    ret = read_sys_reg64(c->kvm_fd, &val, ARM64_SYS_REG(3, 0, 2, 0, 2));
 +    if (ret) {
 +        goto error;
 +    }
 +
-+    kvm_inject_arm_sea(c);
++    switch (extract64(val, 14, 2)) {
++    case 0:
++        guest_pgsz = 4 * KiB;
++        break;
++    case 1:
++        guest_pgsz = 64 * KiB;
++        break;
++    case 2:
++        guest_pgsz = 16 * KiB;
++        break;
++    default:
++        error_report("unknown page size from TCR_EL1 (0x%" PRIx64 ")", val);
++        goto error;
++    }
 +
-+    g_array_free(addresses, true);
++    host_pgsz = qemu_real_host_page_size();
++    start = paddr & ~(host_pgsz - 1);
++    end = start + host_pgsz;
++    while (start < end) {
++        /*
++         * The precise physical address is provided for the affected
++         * guest page that contains @paddr. Otherwise, the starting
++         * address of the guest page is provided.
++         */
++        if (paddr >= start && paddr < (start + guest_pgsz)) {
++            g_array_append_vals(addresses, &paddr, 1);
++        } else {
++            g_array_append_vals(addresses, &start, 1);
++        }
 +
-+    return;
-+error:
-+    error_report("failed to record the error");
-+    abort();
-+}
++        start += guest_pgsz;
++    }
 +
- void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
- {
-     ram_addr_t ram_addr;
-     hwaddr paddr;
-     AcpiGhesState *ags;
--    GArray *addresses;
- 
-     assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
- 
-@@ -2347,7 +2369,6 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-         ram_addr = qemu_ram_addr_from_host(addr);
-         if (ram_addr != RAM_ADDR_INVALID &&
-             kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
--            addresses = g_array_new(false, false, sizeof(paddr));
-             kvm_hwpoison_page_add(ram_addr);
-             /*
-              * If this is a BUS_MCEERR_AR, we know we have been called
-@@ -2360,19 +2381,10 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-              * later from the main thread, so doing the injection of
-              * the error would be more complicated.
-              */
--            g_array_append_vals(addresses, &paddr, 1);
-             if (code == BUS_MCEERR_AR) {
--                kvm_cpu_synchronize_state(c);
--                if (!acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC,
--                                             addresses)) {
--                    kvm_inject_arm_sea(c);
--                } else {
--                    error_report("failed to record the error");
--                    abort();
--                }
-+                push_ghes_memory_errors(c, ags, paddr);
-             }
- 
--            g_array_free(addresses, true);
-             return;
-         }
-         if (code == BUS_MCEERR_AO) {
+     ret = acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC, addresses);
+     if (ret) {
+         goto error;
 -- 
 2.49.0
 

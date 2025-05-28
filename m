@@ -1,116 +1,104 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5362317njc;
-        Wed, 28 May 2025 02:51:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVOd3QnnTgu54ZgpfZGMzN/sDa0tYl/LtwhngIutOVUUl2oI6RrnZHv9d9lZeTzmYJEMSeigPtntbSzOQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFgB1GLV88uVEKahCIlnpDbaKEDMBwkUbK+4heEqL1SNR+W009E9kEzpei3NBO0b3DSeizj
-X-Received: by 2002:a05:620a:2682:b0:7ca:cb02:7942 with SMTP id af79cd13be357-7ceecba4556mr2223070185a.1.1748425871277;
-        Wed, 28 May 2025 02:51:11 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1748425871; cv=pass;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5367251njc;
+        Wed, 28 May 2025 03:02:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX62LXrGOyJ+Kl+JF5KfAZ3sYBTyOBdxbU7UdmRuxaZJSbB4Bj7KTK0GZ+Lim4mNGkO1vTagsaAlmL6lQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IG+bG6yz3rU6dztJBDkMiqdiwGfbL7UXoBYtml6XGhIsL0uiD+9yn2YdAnB/P3zkg7GJDRP
+X-Received: by 2002:a05:6102:3046:b0:4e2:872a:857a with SMTP id ada2fe7eead31-4e42406aa53mr12609897137.1.1748426541256;
+        Wed, 28 May 2025 03:02:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748426541; cv=none;
         d=google.com; s=arc-20240605;
-        b=K92sIliHBhVc/2LFEpnHWr9MrPJO4zNzlEKuT7F8N0jK1UUgWYQQ+L7n7Ybqtdhxlo
-         eUarI0yRPvcNGc5xJKKIzEj28rYCyQ6zXFfIXsVwe1s1Ws8Q5TFWM6nwQyErrCmLtJmj
-         cfqiUvOJ80CElZeVMhG7MeTHW9Rt/blVOJrkXAzXrcRnNCeiEc7JOLspD8OKmVSFGcJe
-         2CPahr5OQobCmIsbWYsYws2BWEzgHoc6OUOCLIXshLxrZ55zxmMe49VXv6EddcrRkVE6
-         xiDWNzxkt0NJlP8hP4JesfRAymRLEFK7hv2L3Ql5vkfz3t6MWI/pQyK1mKNkdcq5w5l5
-         ccuw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=PLb9mj2pM15zTua/wI0jM+3vFkHSCGoW0fwbsouehFPUs8GSKfF5q0oADGnbYplJ7z
+         jZwmV9caJ+K+HOH6PkTb7YcRsbwJCD8uSFDDXPHNodzx6G9oOv8gAdBZQyxVJRdGccYJ
+         tzMbOVzq0UPZXXxIxZZf/SEld2t+dFAvo85/xBEmmrHeRr1EuGx2eJUvZasmTvqkzmfc
+         XYXyU6kxeGORV8IOCN5v3M0AViY9m6Et3DM0zh1xahtAwTL4/bQ114evt1SZ7K+0h/5E
+         iUQPKYaxoVc0jV2w7z1aXcj2Tjb27jjkT7qKI1Fzfvkul5yFEV18Ow0oPXR5l2z5onqy
+         6dTg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:importance
-         :content-transfer-encoding:mime-version:subject:references
-         :in-reply-to:message-id:to:from:date:dkim-signature;
-        bh=pcnvZ6DV6S9UHv4gn1yNVYVdMQwWiU6SOJcaofoRUK8=;
-        fh=Nq3CWqx8qPpGTkSwI23TL+rxFVgYssPFAaD5ARyklcQ=;
-        b=SJchDbuCZbVnsWbEiJdAOR1neyc+U8ELNne86k8LzKbck5/PZi7xTc0PF41yj6WnS+
-         4g1gp4C0kFBzmh/TBKKesHjqlZsZYH1kYeZi+AD3uJcytUM2lFbCDuDHrjpIVFOdUGO1
-         BgEo+qX6LIb4aVHGwTxhqFqQBPyJghQvRCwOR/siq0pgMQItUVEjkRs9qhXuDu01JdPo
-         x3uevzTxC0tkEdSN0Wnn/yPVvruSKdDsG1+u32Q+PgYw5tcmGRJfflY15vlpWKWQyyQ9
-         IPnGMVQboDHow9W9dnkwyHXjYgB+eYW/quikKXjmk9INgFZ9jqWjh0wbshjkFfgpJMxn
-         H5Qw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=IKS720o6LaVSFba8mr/Z9NGBLNLXtNlFvNJUbpX6Di4=;
+        fh=fWw9l+Tqx6SppQIssOIDge+vOObRQF8eTjVKG6g5YgE=;
+        b=Cw90fI4rwUPDbJYgbn/oaGgLd4wl6ROclCNxzX0Y0WHZy39Y88H2D4pIvJeO85Y/a/
+         VvDxG7cHezrRpK0TsVA1zgTm2RjQYd1dBK6dzkT+w37bKdnI99JajQtPax+/DRLA3gMI
+         KRQq3eHkgJw7U1QN2U0aeUjxAXam5gRF1P3McqtbWVEW6D8bNTE3MkcidrIRYZBsjkM1
+         uZop+XtT1mLdlVGp0GdfdPD1nI7jP9cxXGTqsl8Y4yMedX7IJqERxqnDUjm460DNYOHt
+         ZYNuV8Vv4t6c+yJXp80hAig4PglCZVZkjjfF/HhIT9WZZK3fnEUXvaytd+YVvoN+yQxu
+         CUfQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linux.beauty header.s=zmail header.b=V4eLZVQG;
-       arc=pass (i=1 spf=pass spfdomain=linux.beauty dkim=pass dkdomain=linux.beauty dmarc=pass fromdomain=linux.beauty>);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=e1pX2btH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cfb81f7a90si97677285a.50.2025.05.28.02.51.11
+        by mx.google.com with ESMTPS id ada2fe7eead31-4e5a081a2a9si171504137.640.2025.05.28.03.02.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 May 2025 02:51:11 -0700 (PDT)
+        Wed, 28 May 2025 03:02:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.beauty header.s=zmail header.b=V4eLZVQG;
-       arc=pass (i=1 spf=pass spfdomain=linux.beauty dkim=pass dkdomain=linux.beauty dmarc=pass fromdomain=linux.beauty>);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=e1pX2btH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uKDQn-0002aZ-81; Wed, 28 May 2025 05:50:41 -0400
+	id 1uKDbR-0007dc-Pu; Wed, 28 May 2025 06:01:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@linux.beauty>)
- id 1uKDQl-0002Zp-Tu; Wed, 28 May 2025 05:50:39 -0400
-Received: from sender4-op-o15.zoho.com ([136.143.188.15])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1uKDaj-0007TE-JS
+ for qemu-arm@nongnu.org; Wed, 28 May 2025 06:01:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@linux.beauty>)
- id 1uKDQj-0004u2-UQ; Wed, 28 May 2025 05:50:39 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1748425803; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=JYV+J/UBxJb79t6mIF20Ab0yeUnnP+SPcUKbLktZHuqb1gAhvy50EGbrmUgumq8BlcLOU/mXD8EFo9KaYGpM8/Cy2/QlX7cpIZvvPTstkAEExC1/4S8DtMMPF9/1OSYGIqsRlj0IlS9IM44B0A7fiHOVHtb6GAYBM6pMjzMUUzA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1748425803;
- h=Content-Type:Content-Transfer-Encoding:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To:Cc;
- bh=pcnvZ6DV6S9UHv4gn1yNVYVdMQwWiU6SOJcaofoRUK8=; 
- b=hFNjEiiLSgtA5zFySbTSVOOw1BxA/5BdiuWak0rvqk4jgyNuwXU+ZH8fHEiiXuqMQpZdwBswa9XHipEgV+d5GlNiaMYbGyQwCbnfk2/rbwbkiM1OrKg0s5ULMq4L3qYghe9CxIrbkwMg0rIEvfVcUrAnuU2QYUPP5/sj+v/r+XQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=linux.beauty;
- spf=pass  smtp.mailfrom=me@linux.beauty;
- dmarc=pass header.from=<me@linux.beauty>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1748425803; 
- s=zmail; d=linux.beauty; i=me@linux.beauty;
- h=Date:Date:From:From:To:To:Message-ID:In-Reply-To:References:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
- bh=pcnvZ6DV6S9UHv4gn1yNVYVdMQwWiU6SOJcaofoRUK8=;
- b=V4eLZVQGJWH9Mh+UQyL41l3JBpYZqDORuRm5q90zZuSU2d62mlNu8OYt953LKCbU
- fhDjm69ZjyPLGfwiz3smEFoiMFtiJqqqNJuA4FJVQGPV6v8IrPMI0cQZ7FaPCowqWK4
- eN6OFdCNL3GJxa8JUBDtQJgEP1UyA6b3XPDMD7jI=
-Received: from mail.zoho.com by mx.zohomail.com
- with SMTP id 1748425801779461.16107543205385;
- Wed, 28 May 2025 02:50:01 -0700 (PDT)
-Date: Wed, 28 May 2025 17:50:01 +0800
-From: Li Chen <me@linux.beauty>
-To: "Peter Maydell" <peter.maydell@linaro.org>,
- "Shannon Zhao" <shannon.zhaosl@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- "Igor Mammedov" <imammedo@redhat.com>, "Ani Sinha" <anisinha@redhat.com>,
- "Eduardo Habkost" <eduardo@habkost.net>,
- "Marcel Apfelbaum" <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?=22Philippe_Mathieu-Daud=C3=A9=22?= <philmd@linaro.org>,
- "Yanan Wang" <wangyanan55@huawei.com>,
- "Zhao Liu" <zhao1.liu@intel.com>, "Song Gao" <gaosong@loongson.cn>,
- "Jiaxun Yang" <jiaxun.yang@flygoat.com>,
- "Sunil V L" <sunilvl@ventanamicro.com>,
- "Palmer Dabbelt" <palmer@dabbelt.com>,
- "Alistair Francis" <alistair.francis@wdc.com>,
- "Weiwei Li" <liwei1518@gmail.com>, "qemu-arm" <qemu-arm@nongnu.org>,
- "qemu-devel" <qemu-devel@nongnu.org>,
- "qemu-riscv""" <qemu-riscv@nongnu.org>
-Message-ID: <197164c8016.ca5cc4652902988.7034689946931257388@linux.beauty>
-In-Reply-To: <20250528080950.443075-1-me@linux.beauty>
-References: <20250528080950.443075-1-me@linux.beauty>
-Subject: Re: [PATCH v4 0/4] acpi: Add machine option to disable SPCR table
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1uKDah-0006Px-U1
+ for qemu-arm@nongnu.org; Wed, 28 May 2025 06:00:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1748426453;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=IKS720o6LaVSFba8mr/Z9NGBLNLXtNlFvNJUbpX6Di4=;
+ b=e1pX2btHJ07Cb4TIL0oEuD8wvvmIiPiOGbBVyTeYhQ8E4B91L0nGg+6lcxY4oOfmUF959n
+ HuwKk+sibeMqf6f8sWecjctAXdg5etvtyCXdrQi02h1Wtq2E5pVlBIfos/4upEkS7ycKv6
+ hnnpGbFWrewkJdpAwMcgjVVYFmcXDc4=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-663-2GrdDLOqPCyKFeIdbKlBrA-1; Wed,
+ 28 May 2025 06:00:50 -0400
+X-MC-Unique: 2GrdDLOqPCyKFeIdbKlBrA-1
+X-Mimecast-MFC-AGG-ID: 2GrdDLOqPCyKFeIdbKlBrA_1748426449
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E6755180034A; Wed, 28 May 2025 10:00:48 +0000 (UTC)
+Received: from gshan-thinkpadx1nanogen2.rmtau.csb (unknown [10.64.136.65])
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8FEC419560AF; Wed, 28 May 2025 10:00:43 +0000 (UTC)
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, Jonathan.Cameron@huawei.com,
+ mchehab+huawei@kernel.org, mst@redhat.com, imammedo@redhat.com,
+ anisinha@redhat.com, gengdongjiu1@gmail.com, peter.maydell@linaro.org,
+ pbonzini@redhat.com, shan.gavin@gmail.com
+Subject: [PATCH v2 0/3] target/arm/kvm: Improve memory error handling
+Date: Wed, 28 May 2025 20:00:30 +1000
+Message-ID: <20250528100033.159576-1-gshan@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Importance: Medium
-User-Agent: Zoho Mail
-X-Mailer: Zoho Mail
-Received-SPF: pass client-ip=136.143.188.15; envelope-from=me@linux.beauty;
- helo=sender4-op-o15.zoho.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) DKIMWL_WL_HIGH=-2.907, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -127,69 +115,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: q66BG7Vzbct4
+X-TUID: HzqHXQGY6fr9
 
-This series failed to send to qemu-devel/qemu-arm/qemu-riscv. I have reques=
-ted assistance via this thread:=20
-https://lore.kernel.org/qemu-devel/1971648603b.dce1f5d22901195.670202534654=
-7333607@linux.beauty/T/#u
+Currently, there is only one CPER buffer (entry) can be delivered and
+acknoledged at once. This conflicts to the scenario where the host and
+guest has 64KB and 4KB page size. In this specific scenario, a problematic
+host page can affect 16x guest pages, resulting in 16x memory errors
+in the worst case. Unfortunately, qemu runs to core dump at (a) because
+the previous error isn't acknoledged and current error is no way to be
+delivered, shown in the following call trace
 
- ---- On Wed, 28 May 2025 16:09:36 +0800  Li Chen <me@linux.beauty> wrote -=
---=20
- > From: Li Chen <chenl311@chinatelecom.cn>
- >=20
- > This series introduces a new machine option, spcr=3Don|off, allowing use=
-rs
- > to disable the ACPI SPCR (Serial Port Console Redirection) table.
- > By default, SPCR is enabled. Disabling it can help ensure that the guest=
-'s
- > console behavior is determined solely by kernel command-line parameters
- > on arch like arm64, avoiding unintended serial console configurations im=
-posed
- > by firmware.
- >=20
- > Also add tests on AArch64 and RISC-V virt machines using TCG and UEFI bo=
-ot.
- >=20
- > Changes since v3:=20
- > - Add Reviewed-by from  Sunil V L <sunilvl@ventanamicro.com> for patch 1=
-, 3, and 4.
- > - rename enable_spcr to acpi_spcr_enabled as suggested by Philippe Mathi=
-eu-Daud=C3=A9.
- > Changes since v2:
- > - Omit UART device from DSDT and SPCR construction if no serial device i=
-s present,
- > as suggested by Philippe Mathieu-Daud=C3=A9.
- > - Add Reviewed-by from Gavin Shan <gshan@redhat.com> for the first patch=
- and fix style issue.
- >=20
- > Changes since v1:
- > - Add bios-tables-test for RISC-V and ARM as suggested by
- > - Add Acked-by from Michael S. Tsirkin for the first patch
- > - Add Reviewed-by from Bibo Mao for the first patch
- >=20
- > Li Chen (4):
- >   acpi: Add machine option to disable SPCR table
- >   tests/qtest/bios-tables-test: Add test for disabling SPCR on AArch64
- >   tests/qtest/bios-tables-test: Add test for disabling SPCR on RISC-V
- >   acpi/virt: suppress UART device & SPCR when guest has no serial
- >     hardware
- >=20
- >  hw/arm/virt-acpi-build.c       | 18 ++++++++-----
- >  hw/core/machine.c              | 22 ++++++++++++++++
- >  hw/loongarch/virt-acpi-build.c |  4 ++-
- >  hw/riscv/virt-acpi-build.c     | 10 ++++++--
- >  include/hw/boards.h            |  1 +
- >  include/system/system.h        |  2 ++
- >  qemu-options.hx                |  5 ++++
- >  system/vl.c                    |  5 ++++
- >  tests/qtest/bios-tables-test.c | 47 ++++++++++++++++++++++++++++++++--
- >  9 files changed, 103 insertions(+), 11 deletions(-)
- >=20
- > --=20
- > 2.49.0
- >=20
- >=20
+  kvm_vcpu_thread_fn
+    kvm_cpu_exec
+      kvm_arch_on_sigbus_vcpu
+        kvm_cpu_synchronize_state
+        acpi_ghes_memory_errors         (a)
+        kvm_inject_arm_sea | abort
 
-Regards,
-Li
+Fix the issue by sending 16x consecutive memory CPER entries for this
+specific case in one shot. With the series applied on top of Mauro's
+(v9) series [1], no qemu core dump is observed in the test where guest
+memory access is triggered by 'victimd' and the recoverable memory error
+is injected from the host.
+
+[1] [PATCH v9 00/20] Change ghes to use HEST-based offsets and add support for error inject
+    (https://lists.nongnu.org/archive/html/qemu-arm/2025-05/msg01104.html)
+
+Changelog
+=========
+v2:
+  * v1: https://lists.nongnu.org/archive/html/qemu-arm/2025-02/msg00897.html
+  * Send 16x memory errors for the specific case                 (Jonathan)
+
+Gavin Shan (3):
+  acpi/ghes: Extend acpi_ghes_memory_errors() to support multiple CPERs
+  kvm/arm/kvm: Introduce helper push_ghes_memory_errors()
+  target/arm/kvm: Support multiple memory CPERs injection
+
+ hw/acpi/ghes-stub.c    |  2 +-
+ hw/acpi/ghes.c         | 29 ++++++++--------
+ include/hw/acpi/ghes.h |  2 +-
+ target/arm/kvm.c       | 77 +++++++++++++++++++++++++++++++++++++-----
+ 4 files changed, 86 insertions(+), 24 deletions(-)
+
+-- 
+2.49.0
+

@@ -1,116 +1,93 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5392661njc;
-        Wed, 28 May 2025 03:59:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVYP0/nqNSOLgB+k2xxkVDXYRbOyx3XGnjNoSCFl50jXD46xwnQR02bZUQ7HQqkQ71wBNrnl0Xe/rv1qQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE2MNrrEcN7EoLejB2mSxnJLAU7gKtFSdmKcRShu7h0qJHg5hBRHyJgpixtXCMcDxicnyGZ
-X-Received: by 2002:a05:620a:a114:b0:7d0:294a:523c with SMTP id af79cd13be357-7d0294a5414mr147025985a.41.1748429965349;
-        Wed, 28 May 2025 03:59:25 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1748429965; cv=pass;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5398112njc;
+        Wed, 28 May 2025 04:07:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXAdq3YnTY/YSwAAz9LDliRtJIGn6p9ndmy2A+WJl/lp4sNtheEaOAN+EhEiMTrJssTT6rXD3wRAftO7Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IFuX3CHbHjcfLdcI5bypvi7FkUxamq+8FpPiL52HAABETryj8QXWWzQJ8vnwoQj0+ll3zHH
+X-Received: by 2002:a05:622a:4d46:b0:494:a1cd:57f7 with SMTP id d75a77b69052e-49f480c9155mr304177561cf.44.1748430475961;
+        Wed, 28 May 2025 04:07:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748430475; cv=none;
         d=google.com; s=arc-20240605;
-        b=LLlcar+z1Y6weAwU3cBzAb8D3BbXIiM+HgbiOgY7GQBako/jkSQ8vdfh9cxB5z+NRx
-         cXVBd73ymu/Q/QsWm1RFQ3W1153j2NMPQEUsINbXDB6bsxhhiDcJJ28khzSOlETP5nr9
-         yiTykjhuerawoYbLYPm3LY0w0xpv/GapSBzzLS2ZQ4AIDqSR8lyRwvGsjDiZmc0oICPP
-         7rVceuk5gWCQuRW+G+SzNVxioPube8rMaydIEAQ1SKNuCqrw+vjQ/pQcuecqtsyqK0Fu
-         i5bWhT8eazzHPEONX857XzzJY0VP8qdUfK03ysTnlg3Qu7277lejSBvO5+yqmwb+fVC4
-         36eQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=QieK8ummDzYSt1d8R3ZdIk/G5jCHT48ZJ1lngca8f9o=;
-        fh=9Ao6jpMk2Jd0hXa5Ydg+eCtDk8miDbM2r+QXkjtqA5E=;
-        b=MettnMtC46KRkjGxVXppfypN6oEqlI2KpYlLMkM90ORO/u+0QJB2FeWVntvBg5mHv8
-         VX6413ENWwHlpJlJksmc74Ebj28pbUhgXGMY4TBZENX7fkSAjVaXL+I1QSK0KWGjkLMl
-         kYLmoOFc0cMkjXSU5Vy+fdUd3eQlVGDqw3FptunnKMbm4Q6SrE281XXOxg92YGgFEui2
-         uM+PMHpVSVtSTzeVHzofHlJCrH5v1AkRF0fgNtN6pHH2k/VssKw3T5X2YjRVzFH2fAD1
-         Bk/7Li5v6zzx6Q9ocV7AtQzfje6tl/uTMD8PVs8KdMQnJ/wUpEV073yQlHab3GuYQ3sB
-         gujA==;
+        b=VhL+/8yvG0iiNJXPBYbAcoUeo36oNYPn9nos1AtoSd4cLN77JgSgVtyfynDgV3/JFf
+         fbrsY0a9DLLvXGhyQgdeE3HzRCZf5ioLkiBd3xJBA5ZELwAbkQiq7lefTMUJjgaRMHdJ
+         QQv97n+q+YJYXjGp+Nns9yAZYO7Fr2C4ZqVVbHKh/2RHNZL134maJ1sdVL1TcEeJcL3e
+         /FT9YN6By1d1ztpFyBt2safN0bbpe8GdEgFMc7sNUnxsa0Q+qLwvWjEsB4tI91OsOQQ6
+         zmidLjC1sAz0nFB1fexlOJbN8Xp2wsIxqNSG3ey+CQNUCfAyIaQOQY0U6JTJPRtBeX9a
+         /WiA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=5EcUZt8VpBn1tyroKYe+Gxfygw8AJd1qot1tPh/N83A=;
+        fh=H37qvzHAaAe7l3BRWZdk0sK/1JhKDdxSaMzp99skKNM=;
+        b=JzLFxn2xzprZLIv2fGUtcfN9Xs9T8uXk+ZSC08F7yz/NJ6q1GcJaJr89Q66kLq0hO9
+         /g1MT2W3ci0oE/3laPQPP4AuC1MpDSfe8vkLmgpzJ4OD4nof/mqw0HK6PhMqKEVl32g3
+         lOaYMDOeAb1HB0/KmyIKGPica4bkzu2202lszkrveTvQOl/wHgGRS1E/JKSra7bJl2xs
+         Mbft0SQJLB4q2hLN1cZTqyyqzShwGP82zdAZHgOi/WanrtslH0bb0cD5w7+48U4AnDoi
+         7sgGLVp71YAzaAE6HHYR3H20loihe+OwROFbApIuTToBcf8hGMcq/ZH9fKm4JCe+AuE6
+         aCNQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linux.beauty header.s=zmail header.b=ks1Rg9j6;
-       arc=pass (i=1 spf=pass spfdomain=linux.beauty dkim=pass dkdomain=linux.beauty dmarc=pass fromdomain=linux.beauty>);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7cfb81f7bf1si112474285a.98.2025.05.28.03.59.25
+        by mx.google.com with ESMTPS id d75a77b69052e-4a3cff0714asi9994191cf.566.2025.05.28.04.07.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 May 2025 03:59:25 -0700 (PDT)
+        Wed, 28 May 2025 04:07:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.beauty header.s=zmail header.b=ks1Rg9j6;
-       arc=pass (i=1 spf=pass spfdomain=linux.beauty dkim=pass dkdomain=linux.beauty dmarc=pass fromdomain=linux.beauty>);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uKEVA-0000mB-BJ; Wed, 28 May 2025 06:59:16 -0400
+	id 1uKEdQ-0003qH-Gt; Wed, 28 May 2025 07:07:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@linux.beauty>)
- id 1uKEV8-0000hX-Og; Wed, 28 May 2025 06:59:15 -0400
-Received: from sender4-op-o15.zoho.com ([136.143.188.15])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uKEdN-0003pX-0h; Wed, 28 May 2025 07:07:45 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@linux.beauty>)
- id 1uKEV6-00081a-Nb; Wed, 28 May 2025 06:59:14 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1748429686; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=UE+TB4jHcUlvosDMs8f3decNIk1hBhBc/1P7uAL1phTTqbvFbM8b5wjt9NHAvbwnZ0SCS7tjBWElgXo3UJ2MWDT+Js6Bc2y2dk9uwmaO8AuzvdaECcs6N1a1ddW3deS7/D3glrlRfxe+Gp/aoCseAaNtbSCQb2kx+xXdggXMf5U=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1748429686;
- h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To;
- bh=QieK8ummDzYSt1d8R3ZdIk/G5jCHT48ZJ1lngca8f9o=; 
- b=MxDHEIjDYvRRRJ1BmLI4fauex03bTHc6zc4/tkXjYq6A+T2mueUA5AQfEXPCsZkorodM7SjPCJboCQFr1yT/pTVORmdSlQ2gk5QOyva1L4uF87tAa021/tDlQqoN9C/RYGRmAI3ghvanNhphVDBisEuYgWHdE1kCpGh+UXatMgs=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=linux.beauty;
- spf=pass  smtp.mailfrom=me@linux.beauty;
- dmarc=pass header.from=<me@linux.beauty>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1748429686; 
- s=zmail; d=linux.beauty; i=me@linux.beauty;
- h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
- bh=QieK8ummDzYSt1d8R3ZdIk/G5jCHT48ZJ1lngca8f9o=;
- b=ks1Rg9j6TiuitsJxmDpQSOy+2u1SpNhbimuVWyb0MF08vloewPCPdENKgLpYS0W0
- F0OBzalltA7jc+GovLrl3ur1UDX19kSwSEsbHk0zeEvddCEE0Oad8QJupWaKYn0mlD0
- 1DAj0H57mgg5ggUZE4r/sI4XL+A+8Ena6lxHK3x4=
-Received: by mx.zohomail.com with SMTPS id 1748429685035790.013264683852;
- Wed, 28 May 2025 03:54:45 -0700 (PDT)
-From: Li Chen <me@linux.beauty>
-To: "Peter Maydell" <peter.maydell@linaro.org>,
- "Shannon Zhao" <shannon.zhaosl@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- "Igor Mammedov" <imammedo@redhat.com>, "Ani Sinha" <anisinha@redhat.com>,
- "Eduardo Habkost" <eduardo@habkost.net>,
- "Marcel Apfelbaum" <marcel.apfelbaum@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Yanan Wang" <wangyanan55@huawei.com>, "Zhao Liu" <zhao1.liu@intel.com>,
- "Song Gao" <gaosong@loongson.cn>, "Jiaxun Yang" <jiaxun.yang@flygoat.com>,
- "Sunil V L" <sunilvl@ventanamicro.com>,
- "Palmer Dabbelt" <palmer@dabbelt.com>,
- "Alistair Francis" <alistair.francis@wdc.com>,
- "Weiwei Li" <liwei1518@gmail.com>, "qemu-arm" <qemu-arm@nongnu.org>,
- "qemu-devel" <qemu-devel@nongnu.org>, "qemu-riscv" <qemu-riscv@nongnu.org>
-Cc: Li Chen <chenl311@chinatelecom.cn>
-Subject: [PATCH REPOST v4 4/4] acpi/virt: suppress UART device & SPCR when
- guest has no serial hardware
-Date: Wed, 28 May 2025 18:53:38 +0800
-Message-ID: <20250528105404.457729-5-me@linux.beauty>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250528105404.457729-1-me@linux.beauty>
-References: <20250528105404.457729-1-me@linux.beauty>
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uKEdJ-0001QT-Cp; Wed, 28 May 2025 07:07:44 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4b6ms32hZ1z6L4xp;
+ Wed, 28 May 2025 19:06:15 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id D7DAD1402F5;
+ Wed, 28 May 2025 19:07:27 +0800 (CST)
+Received: from SecurePC-101-06.china.huawei.com (10.122.19.247) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Wed, 28 May 2025 13:07:27 +0200
+To: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
+ <peter.maydell@linaro.org>, <mst@redhat.com>
+CC: <linuxarm@huawei.com>, <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>, 
+ Yuquan Wang <wangyuquan1236@phytium.com.cn>, Itaru Kitayama
+ <itaru.kitayama@linux.dev>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Alireza Sanaee <alireza.sanaee@huawei.com>
+Subject: [PATCH v14 0/5] arm/virt: CXL support via pxb_cxl
+Date: Wed, 28 May 2025 12:07:21 +0100
+Message-ID: <20250528110726.226389-1-Jonathan.Cameron@huawei.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.15; envelope-from=me@linux.beauty;
- helo=sender4-op-o15.zoho.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.122.19.247]
+X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,173 +100,123 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: He8U0l/s7hst
+X-TUID: zwnV3g7HnNJ9
 
-From: Li Chen <chenl311@chinatelecom.cn>
+v14: Simplifications suggeseted by Itaru (and some extra simplifications
+     that became apparent) and gather tags.
+     See individual patches for more information.
 
-The virt machines always instantiate a PL011/16550 at UART0 and
-describe it in ACPI (DSDT device node plus optional SPCR table).  When
-the command line contains “-serial none” there is no backend attached to
-that UART, yet the guest still discovers it via ACPI and may try to use
-it as a console, causing unexpected results.
+Updated cover letter
 
-And also explicitly add "-serial stdio" in bios-tables-test.c to allow
-serial device creation, otherwise DSDT assert would get failure because
-"-nodefaults" will not create uart device by default:
+Richard Henderson has posted a pull request with a fix for the TCG TLB
+issue which will hopefully merge shortly (Thanks Richard!).
 
-```
-stderr:
-acpi-test: Warning! DSDT binary file mismatch. Actual [aml:/tmp/aml-BMOL72], Expected [aml:tests/data/acpi/aarch64/virt/DSDT].
-See source file tests/qtest/bios-tables-test.c for instructions on how to update expected files.
-acpi-test: Warning! DSDT mismatch. Actual [asl:/tmp/asl-RNOL72.dsl, aml:/tmp/aml-BMOL72], Expected [asl:/tmp/asl-ZVQL72.dsl, aml:tests/data/acpi/aarch64/virt/DS
-DT].
-```
+Back in 2022, this series stalled on the absence of a solution to device
+tree support for PCI Expander Bridges (PXB) and we ended up only having
+x86 support upstream. I've been carrying the arm64 support out of tree
+since then, with occasional nasty surprises (e.g. UNIMP + DT issue seen
+a few weeks ago) and a fair number of fiddly rebases.
+gitlab.com/jic23/qemu cxl-<latest date>.  Will update shortly with this
+series.
 
-Suggested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Li Chen <chenl311@chinatelecom.cn>
-Reviewed-by: Sunil V L <sunilvl@ventanamicro.com>
----
+A recent discussion with Peter Maydell indicated that there are various
+other ACPI only features now, so in general he might be more relaxed
+about DT support being necessary. The upcoming vSMMUv3 support would
+run into this problem as well.
 
-Notes:
-    Changes since v3: 1. Add Reviewed-by from Sunil V L <sunilvl@ventanamicro.com>
-                      2. Explicitly add "-serial stdio" to pass DSDT assert
+I presented the background to the PXB issue at Linaro connect 2022. In
+short the issue is that PXBs steal MMIO space from the main PCI root
+bridge. The challenge is knowing how much to steal.
 
- hw/arm/virt-acpi-build.c       | 15 +++++++++------
- hw/riscv/virt-acpi-build.c     |  7 +++++--
- include/system/system.h        |  2 ++
- system/vl.c                    |  5 +++++
- tests/qtest/bios-tables-test.c |  5 +++--
- 5 files changed, 24 insertions(+), 10 deletions(-)
+On ACPI platforms, we can rely on EDK2 to perform an enumeration and
+configuration of the PCI topology and QEMU can update the ACPI tables
+after EDK2 has done this when it can simply read the space used by the
+root ports. On device tree, there is no entity to figure out that
+enumeration so we don't know how to size the stolen region.
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index d77d16cbd3..c26aedb1b1 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -59,6 +59,7 @@
- #include "hw/acpi/viot.h"
- #include "hw/virtio/virtio-acpi.h"
- #include "target/arm/multiprocessing.h"
-+#include "system/system.h"
- 
- #define ARM_SPI_BASE 32
- 
-@@ -821,11 +822,13 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-      */
-     scope = aml_scope("\\_SB");
-     acpi_dsdt_add_cpus(scope, vms);
--    acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0],
--                       (irqmap[VIRT_UART0] + ARM_SPI_BASE), 0);
--    if (vms->second_ns_uart_present) {
--        acpi_dsdt_add_uart(scope, &memmap[VIRT_UART1],
--                           (irqmap[VIRT_UART1] + ARM_SPI_BASE), 1);
-+    if (serial_exist()) {
-+        acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0],
-+                           (irqmap[VIRT_UART0] + ARM_SPI_BASE), 0);
-+        if (vms->second_ns_uart_present) {
-+            acpi_dsdt_add_uart(scope, &memmap[VIRT_UART1],
-+                               (irqmap[VIRT_UART1] + ARM_SPI_BASE), 1);
-+        }
-     }
-     if (vmc->acpi_expose_flash) {
-         acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
-@@ -937,7 +940,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
- 
-     acpi_add_table(table_offsets, tables_blob);
- 
--    if (ms->acpi_spcr_enabled) {
-+    if (ms->acpi_spcr_enabled && serial_exist()) {
-         spcr_setup(tables_blob, tables->linker, vms);
-     }
- 
-diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-index ee1416d264..80bf3c3cec 100644
---- a/hw/riscv/virt-acpi-build.c
-+++ b/hw/riscv/virt-acpi-build.c
-@@ -39,6 +39,7 @@
- #include "qapi/error.h"
- #include "qemu/error-report.h"
- #include "system/reset.h"
-+#include "system/system.h"
- 
- #define ACPI_BUILD_TABLE_SIZE             0x20000
- #define ACPI_BUILD_INTC_ID(socket, index) ((socket << 24) | (index))
-@@ -474,7 +475,9 @@ static void build_dsdt(GArray *table_data,
-                                  memmap[VIRT_APLIC_S].size, "RSCV0002");
-     }
- 
--    acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0], UART0_IRQ);
-+    if (serial_exist())
-+        acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0], UART0_IRQ);
-+
-     if (virt_is_iommu_sys_enabled(s)) {
-         acpi_dsdt_add_iommu_sys(scope, &memmap[VIRT_IOMMU_SYS], IOMMU_SYS_IRQ);
-     }
-@@ -895,7 +898,7 @@ static void virt_acpi_build(RISCVVirtState *s, AcpiBuildTables *tables)
- 
-     acpi_add_table(table_offsets, tables_blob);
- 
--    if (ms->acpi_spcr_enabled) {
-+    if (ms->acpi_spcr_enabled && serial_exist()) {
-         spcr_setup(tables_blob, tables->linker, s);
-     }
- 
-diff --git a/include/system/system.h b/include/system/system.h
-index a7effe7dfd..ca1af38432 100644
---- a/include/system/system.h
-+++ b/include/system/system.h
-@@ -75,6 +75,8 @@ extern unsigned int nb_prom_envs;
- /* Return the Chardev for serial port i, or NULL if none */
- Chardev *serial_hd(int i);
- 
-+bool serial_exist(void);
-+
- /* parallel ports */
- 
- #define MAX_PARALLEL_PORTS 3
-diff --git a/system/vl.c b/system/vl.c
-index fd402b8ff8..e340ee3a95 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -1485,6 +1485,11 @@ Chardev *serial_hd(int i)
-     return NULL;
- }
- 
-+bool serial_exist(void)
-+{
-+    return serial_hd(0) ? true : false;
-+}
-+
- static bool parallel_parse(const char *devname, Error **errp)
- {
-     static int index = 0;
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index 44de152a36..452566fa86 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -824,10 +824,11 @@ static char *test_acpi_create_args(test_data *data, const char *params)
-         /*
-          * TODO: convert '-drive if=pflash' to new syntax (see e33763be7cd3)
-          * when arm/virt boad starts to support it.
-+         * NOTE: Explicitly add "-serial stdio" to enable uart in DSDT.
-          */
-         if (data->cd) {
-             args = g_strdup_printf("-machine %s%s %s -accel tcg "
--                "-nodefaults -nographic "
-+                "-nodefaults -serial stdio -nographic "
-                 "-drive if=pflash,format=raw,file=%s,readonly=on "
-                 "-drive if=pflash,format=raw,file=%s,snapshot=on -cdrom %s %s",
-                 data->machine, data->machine_param ?: "",
-@@ -835,7 +836,7 @@ static char *test_acpi_create_args(test_data *data, const char *params)
-                 data->uefi_fl1, data->uefi_fl2, data->cd, params ? params : "");
-         } else {
-             args = g_strdup_printf("-machine %s%s %s -accel tcg "
--                "-nodefaults -nographic "
-+                "-nodefaults -serial stdio -nographic "
-                 "-drive if=pflash,format=raw,file=%s,readonly=on "
-                 "-drive if=pflash,format=raw,file=%s,snapshot=on %s",
-                 data->machine, data->machine_param ?: "",
+Three approaches were discussed:
+1) Enumerating in QEMU. Horribly complex and the last thing we want is a
+   3rd enumeration implementation that ends up out of sync with EDK2 and
+   the kernel (there are frequent issues because of how those existing
+   implementations differ.
+2) Figure out how to enumerate in kernel. I never put a huge amount of work
+   into this, but it seemed likely to involve a nasty dance with similar
+   very specific code to that EDK2 is carrying and would very challenging
+   to upstream (given the lack of clarity on real use cases for PXBs and
+   DT).
+3) Hack it based on the control we have which is bus numbers.
+   No one liked this but it worked :)
+
+The other little wrinkle would be the need to define full bindings for CXL
+on DT + implement a fairly complex kernel stack as equivalent in ACPI
+involves a static table, CEDT, new runtime queries via _DSM and a description
+of various components. Doable, but so far there is no interest on physical
+platforms. Worth noting that for now, the QEMU CXL emulation is all about
+testing and developing the OS stack, not about virtualization (performance
+is terrible except in some very contrived situations!)
+
+There is only a very simple test in here, because my intent is not to
+duplicate what we have on x86, but just to do a smoke test that everything
+is hooked up.  In general we need much more comprehensive end to end CXL
+tests but that requires a reaonsably stable guest software stack. A few
+people have expressed interest in working on that, but we aren't there yet.
+
+Note that this series has a very different use case to that in the proposed
+SBSA-ref support:
+https://lore.kernel.org/qemu-devel/20250117034343.26356-1-wangyuquan1236@phytium.com.cn/
+
+SBSA-ref is a good choice if you want a relatively simple mostly fixed
+configuration.  That works well with the limited host system
+discoverability etc as EDK2 can be build against a known configuration.
+
+My interest with this support in arm/virt is support host software stack
+development (we have a wide range of contributors, most of whom are working
+on emulation + the kernel support). I care about the weird corners. As such
+I need to be able to bring up variable numbers of host bridges, multiple CXL
+Fixed Memory Windows with varying characteristics (interleave etc), complex
+NUMA topologies with wierd performance characteristics etc. We can do that
+on x86 upstream today, or my gitlab tree. Note that we need arm support
+for some arch specific features in the near future (cache flushing).
+Doing kernel development with this need for flexibility on SBSA-ref is not
+currently practical. SBSA-ref CXL support is an excellent thing, just
+not much use to me for this work.
+
+Also, we are kicking off some work on DCD virtualization, particularly to
+support inter-host shared memory being presented up into a VM. That
+will need upstream support on arm64 as it is built on top of the existing
+CXL emulation to avoid the need for a separate guest software stack.
+
+Note this is TCG only - it is possible to support limited use with KVM but
+that needs additional patches not yet ready for upstream.  The challenge
+is interleave - and the solution is don't interleave if you want to run
+with KVM.
+
+Jonathan Cameron (5):
+  hw/cxl-host: Add an index field to CXLFixedMemoryWindow
+  hw/cxl: Make the CXL fixed memory windows devices.
+  hw/cxl-host: Allow split of establishing memory address and mmio
+    setup.
+  hw/arm/virt: Basic CXL enablement on pci_expander_bridge instances
+    pxb-cxl
+  qtest/cxl: Add aarch64 virt test for CXL
+
+ include/hw/arm/virt.h     |   4 +
+ include/hw/cxl/cxl.h      |   4 +
+ include/hw/cxl/cxl_host.h |   6 +-
+ hw/acpi/cxl.c             |  76 +++++++--------
+ hw/arm/virt-acpi-build.c  |  34 +++++++
+ hw/arm/virt.c             |  29 ++++++
+ hw/cxl/cxl-host-stubs.c   |   8 +-
+ hw/cxl/cxl-host.c         | 190 ++++++++++++++++++++++++++++++++------
+ hw/i386/pc.c              |  51 +++++-----
+ tests/qtest/cxl-test.c    |  59 +++++++++---
+ tests/qtest/meson.build   |   1 +
+ 11 files changed, 353 insertions(+), 109 deletions(-)
+
 -- 
-2.49.0
+2.48.1
 

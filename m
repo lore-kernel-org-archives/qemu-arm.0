@@ -1,189 +1,202 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5346699njc;
-        Wed, 28 May 2025 02:12:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVB+x6HPUAEz4vVrHkLJEbZqApZXY/l/NroUIYxwmSwh3LyOmJ5jHXYOytNM/SeZR54kOmyejfs7QxpTA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHq+fEwvMN7SQgFp3+KsjDmXDHu8bicT8pKNYd08MjqjkPkTguDK2zQqau4GCZMbHKAC24m
-X-Received: by 2002:a05:622a:59c8:b0:480:7147:1998 with SMTP id d75a77b69052e-49f4674dce1mr239994841cf.22.1748423544113;
-        Wed, 28 May 2025 02:12:24 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1748423544; cv=pass;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5357412njc;
+        Wed, 28 May 2025 02:38:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV5ovi8ioUMowZ6EC4CBWmiD0kkCYhY7+/+foFvhfna728yEBV/dayphXbletmnAnE76BPoX9X4h2gqIA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEJ0iShMT25S7gybXzZAFOy3CgQnCF3t8uSIhQwakLa7MN0lPfgrSvsCdfRdz5qQSkNCDbJ
+X-Received: by 2002:a17:90b:1b51:b0:30e:840a:92ed with SMTP id 98e67ed59e1d1-311106abc11mr21826214a91.31.1748425100955;
+        Wed, 28 May 2025 02:38:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748425100; cv=none;
         d=google.com; s=arc-20240605;
-        b=AwxeDAIgtkYblaByRIHeF9bmqfB6U7g4Zc78hr2YmXXBYF8f5bX85SeEfjDuKzLp24
-         QZH6qMGe2fxKTp8ePVIzDMhDSUWLxACUxts5SRK3tgIW7rrLXM2EZVaUbLljYJueo4NG
-         918x7SpROlljYE8H2Vn/UwYMO0BDizei2/Q8ffO7o42JJjhuDQRUGWAyDscq9MEHDL2f
-         b4Om2vDA4PwUtGzfqBJMmccMCutmAvNjDFNtJsgrU/uBf0jWzbDdQznyoMQZ+Kxx1hFm
-         SBuBBmSrQYb57rGZYbNMPPyZvQm12wvni6GoC9JbNtMWld/QlNBDt6FLK1AEiqsdjevs
-         Grjw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:importance
-         :content-transfer-encoding:mime-version:subject:references
-         :in-reply-to:message-id:cc:to:from:date:dkim-signature;
-        bh=REdgpME5NVjjTg0yulNaYNQiNqkO0DVBlnGxD93ndHE=;
-        fh=vZgF9rKmjVrTnWsHUHJI6UW+ni1k+xhqtIZDjiVW/0c=;
-        b=HSpBoQA+ULJet4UAhRh8/xRBjbiXrFSJRaDiYXyFK00uh2bzys0wmYVJXcqpObyGH7
-         oHsWqw+cpKPjoIz5rKYiHhGdtb83Q+JFkGtMo4xJdPk8xxuHT9JFkRlYMn5SJjaS8KhF
-         E0+LEfFcd8BLMY9dr2+lP55OuERkSvguT5zMqsHlqGDpvABFx8DfckP0k86CGNcWRtjy
-         iy5l5maG1YfilZ1TNIR6dIllTQmF0983NSgdgjKc1uNjafBdzIZsp3KTcZ9tnYJ+CDhx
-         157ee9jqEvBGhpGPvV7wdj5ZRMN8yBDvgcyek1G7iNMw/EilCWelwwZPoJmfi+nYXJZ0
-         Dpag==;
+        b=i8l15DRPjLq9sZ+Ls7bsEv8gfmwyPjCtoX8WA06WKrdfzeoCYyL0EJ6NlNIs1mvbiL
+         R2oOCbR0help2R+Gy1ownyyixLYd160mw8Il4KTM59fD26LEt5lYGxmV+BiPIAEYCF+m
+         g3ef2Lr/pzR6k5uJvY1t9FKYQpjLRfe9MW/0D5kwYVhSRHcDEF/x6Bt985qxvHt2tAW9
+         10d6+APeCTjQcrsL8mLGK0DWkTnyi5Kf5WZAciLo12n1PzRaMe8RRMTPnEYhoOvoEtR7
+         HhfJgTj21z9z7h/t9BpEwo0TPrIcYYj5KxmSp1oeJLURVDvL934Q8LdAZCFmcLpf3N9+
+         C0ZQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=krFMIC+eTZXcDknndge0Xr7QUcgAcGAFRiTpmtefKt0=;
+        fh=75QPwHgVwPURdrVQYNurDLFxqXLCpIXzUhRYmSLo65g=;
+        b=gHFqW/Q3pee1P/toB1O7urJK21+D4fRD7SFsyOeF5haIa5HM+OXcNxMgWkBoCMiFXb
+         jOnQDeOEfsVBzveC0saLh7GxYtZoUIlJ9gGI7bOvAAZVhHjr2Fz1ZtyW6ZJLlcyaj/CB
+         0Exc5x581TOiCxzgfkjgosmC+ZD3yHzcG+Tn2UKgg6X8hSqs8vTXfVg/Gelg3xZ4T7mY
+         At5laMUQaqitBsN6a4pkFzu2S0+yhG0VLNgzUJy61Yu2OZLb3Z4BED1Qq6TfIr6N9Fc8
+         maDXCbS9haLko9XqisdqmlBov2GdixTjP2cp6ui/APoLk+ySx7KyZVvdALUU/6s4ASs2
+         TZnQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linux.beauty header.s=zmail header.b=GpEFs1Xa;
-       arc=pass (i=1 spf=pass spfdomain=linux.beauty dkim=pass dkdomain=linux.beauty dmarc=pass fromdomain=linux.beauty>);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a3cfeeec36si8200771cf.469.2025.05.28.02.12.24
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QOtedN8u;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-311e3dadabdsi1514146a91.75.2025.05.28.02.38.20
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 May 2025 02:12:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 28 May 2025 02:38:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.beauty header.s=zmail header.b=GpEFs1Xa;
-       arc=pass (i=1 spf=pass spfdomain=linux.beauty dkim=pass dkdomain=linux.beauty dmarc=pass fromdomain=linux.beauty>);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uKCpL-0002jl-Dr; Wed, 28 May 2025 05:11:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@linux.beauty>) id 1uKCpJ-0002gl-8e
- for qemu-arm@nongnu.org; Wed, 28 May 2025 05:11:57 -0400
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@linux.beauty>) id 1uKCpG-0006eF-RF
- for qemu-arm@nongnu.org; Wed, 28 May 2025 05:11:57 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1748423472; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=lHL1m++Pka3pTtvLLt1O0cs/SnCxOPwx0a07sQl3L82Khsk6CoAIu9kkEUiy4IABjT5onX9vJJc+q4tQzT1MKlI5iFGsDoPVz6SZxnmvDgQb0lAJ9woQVVsOoqwhPaf6JO/gCdQecdpecsqB/JDlA+5lrYG0Z/z0Jq1BumZ24Gg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1748423472;
- h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To;
- bh=REdgpME5NVjjTg0yulNaYNQiNqkO0DVBlnGxD93ndHE=; 
- b=ije4vvNWIRg+0M6sNqJxOV1I+MmIEBGxfToTLWPAOci8YTU2g/PqevLF1m1eVPFzJGtqfTmFj6+/bMyQSG6vtT2ghHNJ/aHFDTsYfrF9iOgHXvBC0yrXD2fkOH1EYBSv1+EFpwrlKWx5tMuB3Yd1IQPhK1R+WA5M1qprI/Rd9M0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=linux.beauty;
- spf=pass  smtp.mailfrom=me@linux.beauty;
- dmarc=pass header.from=<me@linux.beauty>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1748423472; 
- s=zmail; d=linux.beauty; i=me@linux.beauty;
- h=Date:Date:From:From:To:To:Cc:Cc:Message-ID:In-Reply-To:References:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
- bh=REdgpME5NVjjTg0yulNaYNQiNqkO0DVBlnGxD93ndHE=;
- b=GpEFs1Xa0VndtcziYI3lB89G/vMxgKdXbH0fUxJoCx6rB0VAMbL2ZrN3ZwDNsDRp
- iI7g1tVqqzFRrT8qSiN7Yscz/ZAyDpzsYf24vnkvIVSstrByETq4BjnaEACf4xOgHNd
- 1oDko0GuCL19sm9k3uwPc+d+zd+4oVoe2vYw9hbk=
-Received: from mail.zoho.com by mx.zohomail.com
- with SMTP id 174842344914184.75137743719858;
- Wed, 28 May 2025 02:10:49 -0700 (PDT)
-Date: Wed, 28 May 2025 17:10:49 +0800
-From: Li Chen <me@linux.beauty>
-To: =?UTF-8?Q?=22Philippe_Mathieu-Daud=C3=A9=22?= <philmd@linaro.org>
-Cc: "Peter Maydell" <peter.maydell@linaro.org>,
- "Shannon Zhao" <shannon.zhaosl@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- "Igor Mammedov" <imammedo@redhat.com>, "Ani Sinha" <anisinha@redhat.com>,
- "Eduardo Habkost" <eduardo@habkost.net>,
- "Marcel Apfelbaum" <marcel.apfelbaum@gmail.com>,
- "Yanan Wang" <wangyanan55@huawei.com>,
- "Zhao Liu" <zhao1.liu@intel.com>, "Song Gao" <gaosong@loongson.cn>,
- "Jiaxun Yang" <jiaxun.yang@flygoat.com>,
- "Sunil V L" <sunilvl@ventanamicro.com>,
- "Palmer Dabbelt" <palmer@dabbelt.com>,
- "Alistair Francis" <alistair.francis@wdc.com>,
- "Weiwei Li" <liwei1518@gmail.com>, "qemu-arm" <qemu-arm@nongnu.org>,
- "qemu-devel" <qemu-devel@nongnu.org>, "qemu-riscv" <qemu-riscv@nongnu.org>
-Message-ID: <19716289a19.118e5995d2887663.8392966219912427610@linux.beauty>
-In-Reply-To: <be8c1d4d-b68e-42b1-9466-3698ded1be10@linaro.org>
-References: <87msberqzi.wl-me@linux.beauty> <87ldqyrqqo.wl-me@linux.beauty>
- <be8c1d4d-b68e-42b1-9466-3698ded1be10@linaro.org>
-Subject: Re: [PATCH V3 1/4] acpi: Add machine option to disable SPCR table
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QOtedN8u;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1748425099;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=krFMIC+eTZXcDknndge0Xr7QUcgAcGAFRiTpmtefKt0=;
+	b=QOtedN8uNMKTq6qYIERnV0x9df5e6DXZMvvfjvrYmoa2S2X8wLhL6o5XUNle1k2Yndol8E
+	XY8yifcF2s/i3WTOPFrBA+/cC7HcW1096uGC0Kug6UQOXJPhwQzsqolCrlulp6G2S3YjdW
+	BwLe3lppINV1UU3+Uya57By2mjoquEg=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-298-bqwJZz9tMdOj52aYgrrHiA-1; Wed, 28 May 2025 05:38:16 -0400
+X-MC-Unique: bqwJZz9tMdOj52aYgrrHiA-1
+X-Mimecast-MFC-AGG-ID: bqwJZz9tMdOj52aYgrrHiA_1748425095
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-43cf44b66f7so25557405e9.1
+        for <alex.bennee@linaro.org>; Wed, 28 May 2025 02:38:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748425095; x=1749029895;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=krFMIC+eTZXcDknndge0Xr7QUcgAcGAFRiTpmtefKt0=;
+        b=w2JXgckUvCrj0ewRxZBIO5/HK61ufpfYkeKdcOViqsJ3cPHbjHe+DldS24ROpziE03
+         YxelXH+QxQ2eHcdLCR6PdZl32oQNMDsg7/pi4RlcXWxL8wAjgjaIWWoTHTxL6Ha6qiNd
+         TcYBoFIBtHxt+Q/VyG2yJFpsBqHegbjATSKCX1SyZt8xrODJjwdJZ5bXQqODeAUSB8N+
+         5kQACC7afPqnaDlqu73OBwXOaXcvu6iEtLMb6hVLdDi+f5gOcQT0ZNSZXR8Td96P091M
+         ZzO5DZhfTcey32GlmDeLmm3KZho/6yUvb0MRTwqdvqtJR12gRc25+UHZE/gtB4c2Ylvh
+         bBRQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWu6I8bhCe5ZCGXQn7Ev1V6Ob2PkVJqv8UxjcwSddES3fIO5dqzOMm/SWTKytRhKrtJXluw41DCICv5uQ==@linaro.org
+X-Gm-Message-State: AOJu0YyUXrz1cMu5ObQ04jnCrleqElfSOoO0OwrD9J2DQruYt5Bq8lpa
+	ewk39zFLX44WNLDej+n4ZwxUNFktTVNpz7f+4yOgqHnZdORH0Ta1XTYzbJb16werAIiL0P0SW5q
+	r4MJw0kbuUnn/vYIx1nAytN56lU7aSA9zNJq5TSdSlFNghJKQWtHs8mLD3Q==
+X-Gm-Gg: ASbGncvqOdZaQ4oa1sijXDMeGLmnoP2IOUCnDvzUZDWqf53PmN08noAxG8f+4DHidRk
+	pjuE2Nu0esKfAWxdhnSbTRByT1fxVrotP74E9qFUKgbSHoeCOuxx8tiAjZCP+GrcEJHnSom+F6y
+	wxilpy+ioejkr7k3CE92qwpOoA9qAb8Vajl9OemHIdhPcXw8h+4M48xCPpp+fbeMZQSf/xM3PbL
+	J1a0g1B55fugDzHNcj/zvjESOobgvOdVRpsuiP1Tjwpf1B+wYT4YhCpF4XzpimBS5OJ3RhbcY1m
+	09oAV3wGAOtWXDhCCrYP+loJhNCpiR3V
+X-Received: by 2002:a05:600c:46c3:b0:441:d4e8:76c6 with SMTP id 5b1f17b1804b1-44c9301912cmr162783225e9.30.1748425095469;
+        Wed, 28 May 2025 02:38:15 -0700 (PDT)
+X-Received: by 2002:a05:600c:46c3:b0:441:d4e8:76c6 with SMTP id 5b1f17b1804b1-44c9301912cmr162783005e9.30.1748425095057;
+        Wed, 28 May 2025 02:38:15 -0700 (PDT)
+Return-Path: <imammedo@redhat.com>
+Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4500e1d3c6asm15262575e9.26.2025.05.28.02.38.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 28 May 2025 02:38:14 -0700 (PDT)
+Date: Wed, 28 May 2025 11:38:13 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
+ mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
+ Jonathan.Cameron@huawei.com, philmd@linaro.org, alex.bennee@linaro.org
+Subject: Re: [PATCH v2 24/25] tests/qtest/bios-tables-test: Keep ACPI PCI
+ hotplug off
+Message-ID: <20250528113813.47086516@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250527074224.1197793-25-eric.auger@redhat.com>
+References: <20250527074224.1197793-1-eric.auger@redhat.com>
+	<20250527074224.1197793-25-eric.auger@redhat.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Importance: Medium
-User-Agent: Zoho Mail
-X-Mailer: Zoho Mail
-Received-SPF: pass client-ip=136.143.188.12; envelope-from=me@linux.beauty;
- helo=sender4-op-o12.zoho.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R3lUztWIbHs+
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 9DoelII2ibe7h3VlEg1Nk5hgiJr6qVb1GgBa2xBk5uQ_1748425095
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: KFRBsqK8IQ2G
 
-Hi Philippe,
+On Tue, 27 May 2025 09:40:26 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
 
- ---- On Mon, 26 May 2025 18:07:16 +0800  Philippe Mathieu-Daud=C3=A9 <phil=
-md@linaro.org> wrote ---=20
- > Hi Li,
- >=20
- > On 15/5/25 14:41, Li Chen wrote:
- > > From: Li Chen <chenl311@chinatelecom.cn>
- > >=20
- > > The ACPI SPCR (Serial Port Console Redirection) table allows firmware
- > > to specify a preferred serial console device to the operating system.
- > > On ARM64 systems, Linux by default respects this table: even if the
- > > kernel command line does not include a hardware serial console (e.g.,
- > > "console=3DttyAMA0"), the kernel still register the serial device
- > > referenced by SPCR as a printk console.
- > >=20
- > > While this behavior is standard-compliant, it can lead to situations
- > > where guest console behavior is influenced by platform firmware rather
- > > than user-specified configuration. To make guest console behavior more
- > > predictable and under user control, this patch introduces a machine
- > > option to explicitly disable SPCR table exposure:
- > >=20
- > >      -machine spcr=3Doff
- > >=20
- > > By default, the option is enabled (spcr=3Don), preserving existing
- > > behavior. When disabled, QEMU will omit the SPCR table from the guest'=
-s
- > > ACPI namespace, ensuring that only consoles explicitly declared in the
- > > kernel command line are registered.
- > >=20
- > > Signed-off-by: Li Chen <chenl311@chinatelecom.cn>
- > > Reviewed-by: Bibo Mao <maobibo@loongson.cn>
- > > Acked-by: Michael S. Tsirkin <mst@redhat.com>
- > > Reviewed-by: Gavin Shan <gshan@redhat.com>
- > > ---
- >=20
- >=20
- > > diff --git a/include/hw/boards.h b/include/hw/boards.h
- > > index 765dc8dd35..089104d54b 100644
- > > --- a/include/hw/boards.h
- > > +++ b/include/hw/boards.h
- > > @@ -444,6 +444,7 @@ struct MachineState {
- > >       SmpCache smp_cache;
- > >       struct NVDIMMState *nvdimms_state;
- > >       struct NumaState *numa_state;
- > > +    bool enable_spcr;
- >=20
- > This structure is used by all machines. Can we be more
- > descriptive, maybe naming as "acpi_spcr_enabled"?
+> From: Gustavo Romero <gustavo.romero@linaro.org>
+> 
+> ACPI PCI hotplug is now turned on by default so we need to change the
+> existing tests to keep it off. However, even setting the ACPI PCI
+> hotplug off in the existing tests, there will be changes in the ACPI
+> tables because the _OSC method was modified, hence in the next patch of
+> this series the blobs are updated accordingly.
+> 
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-Make sense to me, updated in v4, thanks!
-(But I'm not sure why v4 failed to send to qemu-devel/qemu-arm/qemu-riscv a=
-nd report
- "Message headers fail syntax check" error).
+it would be better to test whatever default we end up with.
+(like x86)
 
-Regards,
-Li
-
+> 
+> ---
+> 
+> [Eric] also added acpi-pcihp=off to test_acpi_aarch64_virt_tcg_numamem
+> ---
+>  tests/qtest/bios-tables-test.c | 13 +++++++++----
+>  1 file changed, 9 insertions(+), 4 deletions(-)
+> 
+> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+> index 0a333ec435..6379dba714 100644
+> --- a/tests/qtest/bios-tables-test.c
+> +++ b/tests/qtest/bios-tables-test.c
+> @@ -1626,7 +1626,7 @@ static void test_acpi_aarch64_virt_tcg_memhp(void)
+>      };
+>  
+>      data.variant = ".memhp";
+> -    test_acpi_one(" -machine nvdimm=on"
+> +    test_acpi_one(" -machine nvdimm=on,acpi-pcihp=off"
+>                    " -cpu cortex-a57"
+>                    " -m 256M,slots=3,maxmem=1G"
+>                    " -object memory-backend-ram,id=ram0,size=128M"
+> @@ -1747,7 +1747,8 @@ static void test_acpi_aarch64_virt_tcg_numamem(void)
+>      };
+>  
+>      data.variant = ".numamem";
+> -    test_acpi_one(" -cpu cortex-a57"
+> +    test_acpi_one(" -machine acpi-pcihp=off"
+> +                  " -cpu cortex-a57"
+>                    " -object memory-backend-ram,id=ram0,size=128M"
+>                    " -numa node,memdev=ram0",
+>                    &data);
+> @@ -1775,7 +1776,8 @@ static void test_acpi_aarch64_virt_tcg_pxb(void)
+>       * to solve the conflicts.
+>       */
+>      data.variant = ".pxb";
+> -    test_acpi_one(" -device pcie-root-port,chassis=1,id=pci.1"
+> +    test_acpi_one(" -machine acpi-pcihp=off"
+> +                  " -device pcie-root-port,chassis=1,id=pci.1"
+>                    " -device virtio-scsi-pci,id=scsi0,bus=pci.1"
+>                    " -drive file="
+>                    "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2,"
+> @@ -1846,7 +1848,7 @@ static void test_acpi_aarch64_virt_tcg_acpi_hmat(void)
+>  
+>      data.variant = ".acpihmatvirt";
+>  
+> -    test_acpi_one(" -machine hmat=on"
+> +    test_acpi_one(" -machine hmat=on,acpi-pcihp=off"
+>                    " -cpu cortex-a57"
+>                    " -smp 4,sockets=2"
+>                    " -m 384M"
+> @@ -2123,6 +2125,7 @@ static void test_acpi_aarch64_virt_tcg(void)
+>      data.smbios_cpu_max_speed = 2900;
+>      data.smbios_cpu_curr_speed = 2700;
+>      test_acpi_one("-cpu cortex-a57 "
+> +                  "-machine acpi-pcihp=off "
+>                    "-smbios type=4,max-speed=2900,current-speed=2700", &data);
+>      free_test_data(&data);
+>  }
+> @@ -2142,6 +2145,7 @@ static void test_acpi_aarch64_virt_tcg_topology(void)
+>      };
+>  
+>      test_acpi_one("-cpu cortex-a57 "
+> +                  "-machine acpi-pcihp=off "
+>                    "-smp sockets=1,clusters=2,cores=2,threads=2", &data);
+>      free_test_data(&data);
+>  }
+> @@ -2227,6 +2231,7 @@ static void test_acpi_aarch64_virt_viot(void)
+>      };
+>  
+>      test_acpi_one("-cpu cortex-a57 "
+> +                  "-machine acpi-pcihp=off "
+>                    "-device virtio-iommu-pci", &data);
+>      free_test_data(&data);
+>  }

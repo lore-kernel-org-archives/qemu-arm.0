@@ -1,275 +1,257 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5544458njc;
-        Wed, 28 May 2025 08:04:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXdLlP8vQNF7LW/uADt2GaKURpqDStucsSQVrO9+VYvWcw9V15WM73xBxR0ZkQ2tgcnnXsxLPzEXwrDFQ==@linaro.org
-X-Received: by 2002:a05:6830:4890:b0:72c:3235:557d with SMTP id 46e09a7af769-7355d069e74mr11148243a34.13.1748444684915;
-        Wed, 28 May 2025 08:04:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748444684; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5571883njc;
+        Wed, 28 May 2025 08:42:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUXLNlyD8vGnwVa3e50FCPJkOC26MmTYbEwFrX1F7NGv8bjRpXgiX9KBcxvylnz95AktOVVCyvzNP+U+Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHdwbiYZbmGUaUDrIZKLmzBai6Cc8s4qHI6yYcV5nyGqtASsZ0lGke7qiDerRbLSd/sbn3Y
+X-Received: by 2002:a05:6214:b6b:b0:6f5:436:9e46 with SMTP id 6a1803df08f44-6fa9d01d7e5mr285364746d6.15.1748446946610;
+        Wed, 28 May 2025 08:42:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748446946; cv=none;
         d=google.com; s=arc-20240605;
-        b=HwQbsgSA/6ie3leJgIYWNK9pxaApGauThkizcxwDzuCjEA5OeCX8nXSdEF/bcLoyL6
-         UqErd2p3hfb4onDyJ7LKRQ1rqKGCsc3Jz5Sx9GhI6eZScHAP963+Yt83j9Gj7MKzvgaj
-         XSHdUBpjaFmoaNZB8rUxu1p8EdOB8dgW9Q/RADx6dTTPaWqJIq4lRQS40QPwXnEk9bxn
-         rvFJKWqCZLDgIkKJWq6/mCDGzOFbNPJlWPdv0RzROfHGIG0yHORDtOjl62AL8gp5t1GE
-         Xbcy8agJ1RXLOg59CXeWjEGwT+dtLiPwhBICS7kHHyXas2gloJl0JTAFg6nWcTffyBnK
-         ADGw==
+        b=gN5X4cB/6CqyFm2TKGPSLrzGT2dNxRhqw43if2LA1ODMtjbAlTwUuVWiDeVNAXr66u
+         SFLNJ+yrnbBRFyeTBNmF9azF+G72GkMhuJyCqgu0xElHeAsBJOWufi9xs3EOD8f7JV9M
+         9Du7ZMVqa2u3orA/eniNHiIMYJpRKXuqPZ6277kfbugHv6tW/1dpMY1xUbZ9bylmX7Us
+         T4lJPBi36cs401gzo5urNhXghYEhtylbsO/jm6S6wkPKcpM+PMS45VKSdUcIGLdGPNab
+         Xb477vIFccwtmP/+4GC4btPrXrWcJjjYVAlhbsSmhkVMKGviL3ZBc8lPZPZ7ueJraLTS
+         lBQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=tSPH3X0vf+RTEfgVAMQBy9/4Ydp7t2pTvizUr5Yr/nw=;
-        fh=ZWA85sE1HIOthsWb5C+H6+62Pi+PTQ0QV0gK42aIPL4=;
-        b=f1bNX8zJn1zDjMyEBX7foJdRjMbm2I4i7/XcboJSPp+FTOzqD9f0TM9tFyzBy0WmEl
-         RgauD9rtSo4j2zj9ccUBQUdWm+4yCCTaHKQWwQ9mVXwmLdnU/q0OFT7U74Q1aN9Dmcdf
-         HXgZlCRI1YQjUq6XSgH75FbnT45ucbkxIwoE1VkcundHN8/fUF0nPuff4EihCqUUO1IY
-         te/U6rPunQ9NY2QDrURV/6VP2W+rPsXd2Iyzhyx85o3Amf2rTWAB2qyR/oJa2jJ9RJis
-         vgE4JqoeJNV5J/glaydI3vzkdR7iGTRRSofq+YHPeknAnAeycXFXYQ6mvlUwnrMOSZsr
-         5RpA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=JkVFHjCN69rMIYnSueLHuwO87ncH71LzvKdYlcB5jDE=;
+        fh=py9nGToNxMaaWW5je+4J7K2faFFRTnrQTcy4tNgAoio=;
+        b=WS4pMhXqTCFETXDFGVKwNohOHlyS8ubXm55Q7mi6kFYWeKb+brY2KmepvZV5wDJAgy
+         ZYohp5oileeGW6nKv1FhmUuSWQtdMKC1+f/eGg0XzzB4nV+0gu8uc75OWyNEUKUFb8zC
+         xXc2LN/Dv8wp+hwAtNB+HnTsfxHWZXtXL8v6al0nA1mWGvEBpPip3j33d9M3fA4XB7Mm
+         nrpExTBAs/CqTTv8KbSw7FyKqgBfciGZ+upDStMdmQ3eWYbDouwgBQjr1jhZ9iHTnhi8
+         ngTCTfLJA+koVhbBZ04r39RSu24Dgq14KlwegRdcTnKg3dp1y1Rml9HCahRnTYECgzzW
+         qMXw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=znvGp3PE;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 46e09a7af769-734f6b2b25csor9538085a34.11.2025.05.28.08.04.44
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Sf1/vDLj";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fac0bddb08si14262576d6.469.2025.05.28.08.42.26
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 28 May 2025 08:04:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 28 May 2025 08:42:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=znvGp3PE;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1748444684; x=1749049484; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=tSPH3X0vf+RTEfgVAMQBy9/4Ydp7t2pTvizUr5Yr/nw=;
-        b=znvGp3PEp5XZeKbxso4jrLkOgcQSr8kCgrMvIv9dzSe5KDiYpedctXeWvKeqZsO3x+
-         TpsZJEipPrgiHaC0amsTPmhh2oR9Qb/h2ktQ3Q9SW/xedRTLdC3YaHvzDwnbaZUpEKit
-         E7A9USCAZNGo4NWWqI3z7HPOAHVE38PcBI1uM6akitF1KM695RWjCnheM7ku3VPLjP7Z
-         Sr6SjookRNXng0c59hNTEyF04y2MVVjE32LffhsXAP3auJtXOTjHC9nNZM0t3s/vcEQ0
-         dnDrVvt1uabbuc/MTlFP5Hc8PvQq2qQm4qaEI9ba2+3D4vGeYuKAO6Y0/S+bQ8BID3UT
-         1+2Q==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Sf1/vDLj";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uKIv7-0001a2-Ii; Wed, 28 May 2025 11:42:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1uKIv5-0001Zu-Vs
+ for qemu-arm@nongnu.org; Wed, 28 May 2025 11:42:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1uKIv4-00079u-6m
+ for qemu-arm@nongnu.org; Wed, 28 May 2025 11:42:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1748446937;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JkVFHjCN69rMIYnSueLHuwO87ncH71LzvKdYlcB5jDE=;
+ b=Sf1/vDLjLg4Sase7XL4gN093yGfnrycbrpKCnFICRavytGBtk3eXXzad/x3trZNuPslhaO
+ FS/Rdo4zX1qRUs3z/Fj0kSJpa0x4Gd0+ObxJmfucE8QCXr3Bb6fj/5n0xXU1nwvGc+lzd9
+ sJ/lYSiZk8H6+OMy65ErEVnkOMi9ogE=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-461-x86RYHFNPkSocdpNk9Pexg-1; Wed, 28 May 2025 11:42:16 -0400
+X-MC-Unique: x86RYHFNPkSocdpNk9Pexg-1
+X-Mimecast-MFC-AGG-ID: x86RYHFNPkSocdpNk9Pexg_1748446935
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-43efa869b19so30756035e9.2
+ for <qemu-arm@nongnu.org>; Wed, 28 May 2025 08:42:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748444684; x=1749049484;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=tSPH3X0vf+RTEfgVAMQBy9/4Ydp7t2pTvizUr5Yr/nw=;
-        b=ZzIFbyOv6CEjRgzuURXgO1u9ToqredEtJQH0Bbsr/e77270ca6MQ87D4qlJ45IzIh6
-         S4Mgr/cP3YDCL59wD/WQHejFVD8JIKJCNBXwJl1pqPBNv7qTlTpOx9YN2ZgxBdwyrnNE
-         1hGk02oU1HMapq0wV55QakwPMWdgCeEBXOYIQ1UiAaslrNT3+TlSs6JjF7oat7Rka1h/
-         IMc2vB+0RtD2ap6rEvE10HaW4DoXuK7vfkj3XvmHqIKUv3o2Vck/85K+cQiM1l9MfdDr
-         jF7AxzHLxfLdDRlmp2xwfwLs2DIiLfmIeiogilW9XU/YLiyNdoou+5O8dW8yTeBPgv95
-         wBRw==
-X-Forwarded-Encrypted: i=1; AJvYcCXD5mOyhJcoJjYBTrtTQN0wLl42Xo24/gYlB5AU65xgTCp2p97fMWT/aBkiFGeVnlL3cYBjG1bZm0IzAQ==@linaro.org
-X-Gm-Message-State: AOJu0YxpKSm7nd07gbDe7mm8rDvR5Mx4Mg00J6o1bCAQDkpfjarxhnHn
-	U3JO8PL78RTHlmdwjNJNfEcAyQSXgzEutIx1BhBcae06f36GzK2jpNQxlknbXhg221zD2SbwptL
-	9Mm9Yqlk=
-X-Gm-Gg: ASbGncso+5Tf6P8NypSL8CkDr4L61L9z8bDENfaK9M4JrtE0vtXcQ/PHWEl5D903MQ6
-	x4bxigK+oQ96dOi0wkhuFslMGtVRFGEz66/HzazHhZKgfRlDlfsYY5cob2RpFfBx+wHGro2HPG2
-	r/fO8Vl0q47y8bPoRGoksg9uzCDnRyl6ZtP11MjYtfRMpQ3XZpPzdygZCEUFsbgzF9/QPHM45cY
-	/5+zZRSv0X+ut3xzH1vWpjMeyBlXwUsVw8xRM7KbveNMtZYWq/iqBb439n24+IkZFJW37HIQ3pC
-	Tl+7whudX9WCkHoRUilARGswyzjitc3/+vj6B8MYgtsU5JvPenyxOs4b1csGjMoJB4zX2vsh3DE
-	bBlWu1lVIK0vkCh5iGDGDECammSbSYA==
-X-Google-Smtp-Source: AGHT+IEB5FH9tG+PeTsf6ApJKcqIhzRGl03jk0Fxn6jR3QM1XYWKe4Khms9TW7eiat9qsaUbHUu3lA==
-X-Received: by 2002:a05:6870:8dc9:b0:2c1:ac88:4a8d with SMTP id 586e51a60fabf-2e8620d0871mr8874628fac.30.1748444673333;
-        Wed, 28 May 2025 08:04:33 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from ?IPV6:2804:7f0:b402:6ba2:c792:c8df:e54f:dec7? ([2804:7f0:b402:6ba2:c792:c8df:e54f:dec7])
-        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-87e1f03f933sm962585241.15.2025.05.28.08.04.28
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 28 May 2025 08:04:32 -0700 (PDT)
-Message-ID: <6a5776b4-73ef-427b-b4e4-b25031b0ce53@linaro.org>
-Date: Wed, 28 May 2025 12:04:26 -0300
+ d=1e100.net; s=20230601; t=1748446935; x=1749051735;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=JkVFHjCN69rMIYnSueLHuwO87ncH71LzvKdYlcB5jDE=;
+ b=sUbq+C0NanS04vteq/dQSW+2wnCUZwTM/RQC7UOzxQv0DqZsjKbqqIfhmjsLLagsds
+ SzBZ3ciu+5Jf2Bg/d/b3exuyYwDynMGf9KQ0lfTSu01fdEKShgA3446/NmMx2dMDfR9i
+ dvuuyykklAj5VkQEqD0p7OJT9UcuOxfWruzZCkllMqjuFOl8ChbXM+cOaYzddN+L2ZNC
+ Xv71Yl8870VsKCVbskFh+gyez/dR7Ox9nY11Kh5a75b5uKKHcJGjxblxtZ5hbgvIfcXr
+ n7goNvVCO1nxW0ty0dar8tU5NV4Qj7hT/mZPMQJ9IfKjep4wus3oeOtaa4evmEu6AEAF
+ EWXg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUufXuAz3Vd8CZCZ3I/ZrEE23OAomi521oHEoAz8gNGO4Ob9VKR1Ux1b4txfssbnZyjufm4FsCcMg==@nongnu.org
+X-Gm-Message-State: AOJu0YxNVy67bPms+wOOxv07d5q/ZreD5OgIVwqhGchovILJz9wSbBj4
+ 2eTPtRYVCKqmMrNlo4SS7XHTf/PLi8hFUO2FSneiK1wPb6to+iYukNpZ2PPiLL8DcGKubgZwns+
+ WAf8vSwTHQfMts8+9oNCoBHBwoQ/VY4WB0+2SDe9w92Lg5eSbIY84tg==
+X-Gm-Gg: ASbGncui3x3SQ9Icl14YQzjn6J2po5Z311J7lorjB44jHRHxZJH+JQhFh6YWCemcdAs
+ DqPOjVg/lwn8/kIGZBhl7XbG/BTk2Ru0UGGJHUz0GrjbmrrR0CgrDs5Xh5Y4i5DYxyfYQ5OYcgf
+ TRITCwTyhmvtTGGYB1sw08LEzg/8PV1I0R3ahkwxhhMjqx3pFZuKgrt1KOY491d/bGuVxqSoz2j
+ wo9NyMFb9wpDtyvHPTf6nqWi4p8Am2U6RKhiB0aob4oV163BMv9o4zTgNvCantZGNdbP0OoCrqP
+ jsD2+Jzj8FGnDQh1joJFouIEsvcc6Y39
+X-Received: by 2002:a05:600c:4ecc:b0:43c:ec28:d31b with SMTP id
+ 5b1f17b1804b1-44c941880cbmr198078675e9.10.1748446934769; 
+ Wed, 28 May 2025 08:42:14 -0700 (PDT)
+X-Received: by 2002:a05:600c:4ecc:b0:43c:ec28:d31b with SMTP id
+ 5b1f17b1804b1-44c941880cbmr198078455e9.10.1748446934380; 
+ Wed, 28 May 2025 08:42:14 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4500e1dd785sm25901345e9.39.2025.05.28.08.42.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 28 May 2025 08:42:13 -0700 (PDT)
+Date: Wed, 28 May 2025 17:42:12 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Philippe =?UTF-8?B?TWF0aGll?=
+ =?UTF-8?B?dS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
+ <anisinha@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>, Yanan
+ Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v9 12/20] acpi/generic_event_device: add logic to detect
+ if HEST addr is available
+Message-ID: <20250528174212.2823d3de@imammedo.users.ipa.redhat.com>
+In-Reply-To: <aa74b756f633dbee5442cf4baa2c1d81a669d2f9.1747722973.git.mchehab+huawei@kernel.org>
+References: <cover.1747722973.git.mchehab+huawei@kernel.org>
+ <aa74b756f633dbee5442cf4baa2c1d81a669d2f9.1747722973.git.mchehab+huawei@kernel.org>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 24/25] tests/qtest/bios-tables-test: Keep ACPI PCI
- hotplug off
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com,
- pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org,
- alex.bennee@linaro.org
-References: <20250527074224.1197793-1-eric.auger@redhat.com>
- <20250527074224.1197793-25-eric.auger@redhat.com>
- <20250528113813.47086516@imammedo.users.ipa.redhat.com>
- <375cfbd6-e585-4b6d-bf10-6571aa40370e@linaro.org>
- <20250528150239.5f6b63d0@imammedo.users.ipa.redhat.com>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20250528150239.5f6b63d0@imammedo.users.ipa.redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: RAiD5W1Hz2C5
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: RV0_f8qoqk9472BIM-uQ7qUk0CelTqIf24kjyC21iWM_1748446935
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -49
+X-Spam_score: -5.0
+X-Spam_bar: -----
+X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.904,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rms5SaIOXuJC
 
-Hi Igor,
+On Tue, 20 May 2025 08:41:31 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-On 5/28/25 10:02, Igor Mammedov wrote:
-> On Wed, 28 May 2025 09:41:15 -0300
-> Gustavo Romero <gustavo.romero@linaro.org> wrote:
+> Create a new property (x-has-hest-addr) and use it to detect if
+> the GHES table offsets can be calculated from the HEST address
+> (qemu 10.0 and upper) or via the legacy way via an offset obtained
+> from the hardware_errors firmware file.
+
+
+it doesn't apply to current master anymore
+
+
 > 
->> Hi Igor,
->>
->> On 5/28/25 06:38, Igor Mammedov wrote:
->>> On Tue, 27 May 2025 09:40:26 +0200
->>> Eric Auger <eric.auger@redhat.com> wrote:
->>>    
->>>> From: Gustavo Romero <gustavo.romero@linaro.org>
->>>>
->>>> ACPI PCI hotplug is now turned on by default so we need to change the
->>>> existing tests to keep it off. However, even setting the ACPI PCI
->>>> hotplug off in the existing tests, there will be changes in the ACPI
->>>> tables because the _OSC method was modified, hence in the next patch of
->>>> this series the blobs are updated accordingly.
->>>>
->>>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
->>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>
->>> it would be better to test whatever default we end up with.
->>> (like x86)
->>
->> hmm maybe there is a confusion here, Igor. We are actually planning what you
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+>  hw/acpi/generic_event_device.c |  2 ++
+>  hw/arm/virt-acpi-build.c       | 18 ++++++++++++++++--
+>  hw/core/machine.c              |  5 ++++-
+>  3 files changed, 22 insertions(+), 3 deletions(-)
 > 
-> perhaps, see my reply to Eric about my expectations wrt tests.
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+> index d292f61b4e41..3cf9dab0d01a 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -318,6 +318,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+>  
+>  static const Property acpi_ged_properties[] = {
+>      DEFINE_PROP_UINT32("ged-event", AcpiGedState, ged_event_bitmap, 0),
+> +    DEFINE_PROP_BOOL("x-has-hest-addr", AcpiGedState,
+> +                     ghes_state.use_hest_addr, false),
+>  };
+>  
+>  static const VMStateDescription vmstate_memhp_state = {
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index da3ebf403ef9..3126234e657d 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -893,6 +893,10 @@ static const AcpiNotificationSourceId hest_ghes_notify[] = {
+>      { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
+>  };
+>  
+> +static const AcpiNotificationSourceId hest_ghes_notify_10_0[] = {
+> +    { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
+> +};
+> +
+>  static
+>  void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>  {
+> @@ -947,15 +951,25 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>  
+>      if (vms->ras) {
+>          AcpiGedState *acpi_ged_state;
+> +        static const AcpiNotificationSourceId *notify;
+> +        unsigned int notify_sz;
+>          AcpiGhesState *ags;
+>  
+>          acpi_ged_state = ACPI_GED(vms->acpi_dev);
+>          ags = &acpi_ged_state->ghes_state;
+>          if (ags) {
+>              acpi_add_table(table_offsets, tables_blob);
+> +
+> +            if (!ags->use_hest_addr) {
+> +                notify = hest_ghes_notify_10_0;
+> +                notify_sz = ARRAY_SIZE(hest_ghes_notify_10_0);
+> +            } else {
+> +                notify = hest_ghes_notify;
+> +                notify_sz = ARRAY_SIZE(hest_ghes_notify);
+> +            }
+> +
+>              acpi_build_hest(ags, tables_blob, tables->hardware_errors,
+> -                            tables->linker, hest_ghes_notify,
+> -                            ARRAY_SIZE(hest_ghes_notify),
+> +                            tables->linker, notify, notify_sz,
+>                              vms->oem_id, vms->oem_table_id);
+>          }
+>      }
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index b8ae155dfa11..dfd36cf063c7 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -35,9 +35,12 @@
+>  #include "hw/virtio/virtio-pci.h"
+>  #include "hw/virtio/virtio-net.h"
+>  #include "hw/virtio/virtio-iommu.h"
+> +#include "hw/acpi/generic_event_device.h"
+>  #include "audio/audio.h"
+>  
+> -GlobalProperty hw_compat_10_0[] = {};
+> +GlobalProperty hw_compat_10_0[] = {
+> +    { TYPE_ACPI_GED, "x-has-hest-addr", "false" },
+> +};
+>  const size_t hw_compat_10_0_len = G_N_ELEMENTS(hw_compat_10_0);
+>  
+>  GlobalProperty hw_compat_9_2[] = {
 
-Yip, I read it before my reply here.
-
-
-> (i.e. default tests shouldn't have any explicit CLI options,
-> instead it should follow whitelist blobs/set new default patch/update blobs pattern)
-
-I see. I agree with that. But this patch is not about the new test. The new test is
-_not_ in this series. Patches 8/25, 10/25, and 24/25 are _not_ about the new test but
-about adapting the _legacy tests_ (native acpi) to the situation when ACPI HP becomes
-the default, because this series makes acpi-pcihp=on the default, hence the CLI option
-"acpi-pcihp=off" added to them. An update to the blobs are also necessary because of the
-change in _OSC method, even when acpi-pcihp=off.
-
-
->> said. This patch and the other two in this series related to the bios-tables-test
->> (i.e., patches 8/25 and 10/25) are for actually making the current (legacy) test pass,
->> since the new default as per this series will be acpi-pcihp=on. That's why here we're
->> adapting the current test here to have acpi-pcihp=off.
->>
->> The new test that will test for acpi-pcihp=on (the new default) is not in this series
->> and we decided to merge it separate. It's in the patch 4/5 and 5/5 of the follow series:
-
-We're doing the "blobs/set new default patch/update blobs pattern" in the new test, which
-we can merge later, once this series is merged, no? The step "set new default" then will
-not be necessary because the new test will be merged separate, after this series, so when
-acpi-pcihp=on is already the default.
-
-Please note that although we're using acpi-pcihp=on in the new test, it's not necessary,
-we can dropped this option, making it implicit as you say, and it will work. This is the
-new test:
-
->> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05828.html 4/5
->> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05827.html 5/5
-
-
-Thus, there are to "acts" of modifying the bios-tables-test:
-
-1) Adapt the current tests to when acpi-pcihp=on becomes the default (hence the addition
-    to them of "acpi-pcihp=off". There is also the need to update the blobs, but it's because
-    of the _OSC method change in DSDT table, which will change anyways, even with "acpi-pcihp=off¨,
-    hence the need for patch 10/25 in this series. This is _done is this series_.
-
-
-2) Add a new test for testing the default (i.e. acpi-pcihp-on). It follows what you're
-    saying above: "follow whitelist blobs/set new default patch/update blobs pattern",
-    because we can drop the acpi-pcihp-on option from the CLI in this test without any
-    prejudice to test. While the step "set new default patch" was actually done in 1).
-
-
-Cheers,
-Gustavo
-
->> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05828.html 4/5
->> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05827.html 5/5
->>
->>
->> Cheers,
->> Gustavo
->>
->>>>
->>>> ---
->>>>
->>>> [Eric] also added acpi-pcihp=off to test_acpi_aarch64_virt_tcg_numamem
->>>> ---
->>>>    tests/qtest/bios-tables-test.c | 13 +++++++++----
->>>>    1 file changed, 9 insertions(+), 4 deletions(-)
->>>>
->>>> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
->>>> index 0a333ec435..6379dba714 100644
->>>> --- a/tests/qtest/bios-tables-test.c
->>>> +++ b/tests/qtest/bios-tables-test.c
->>>> @@ -1626,7 +1626,7 @@ static void test_acpi_aarch64_virt_tcg_memhp(void)
->>>>        };
->>>>    
->>>>        data.variant = ".memhp";
->>>> -    test_acpi_one(" -machine nvdimm=on"
->>>> +    test_acpi_one(" -machine nvdimm=on,acpi-pcihp=off"
->>>>                      " -cpu cortex-a57"
->>>>                      " -m 256M,slots=3,maxmem=1G"
->>>>                      " -object memory-backend-ram,id=ram0,size=128M"
->>>> @@ -1747,7 +1747,8 @@ static void test_acpi_aarch64_virt_tcg_numamem(void)
->>>>        };
->>>>    
->>>>        data.variant = ".numamem";
->>>> -    test_acpi_one(" -cpu cortex-a57"
->>>> +    test_acpi_one(" -machine acpi-pcihp=off"
->>>> +                  " -cpu cortex-a57"
->>>>                      " -object memory-backend-ram,id=ram0,size=128M"
->>>>                      " -numa node,memdev=ram0",
->>>>                      &data);
->>>> @@ -1775,7 +1776,8 @@ static void test_acpi_aarch64_virt_tcg_pxb(void)
->>>>         * to solve the conflicts.
->>>>         */
->>>>        data.variant = ".pxb";
->>>> -    test_acpi_one(" -device pcie-root-port,chassis=1,id=pci.1"
->>>> +    test_acpi_one(" -machine acpi-pcihp=off"
->>>> +                  " -device pcie-root-port,chassis=1,id=pci.1"
->>>>                      " -device virtio-scsi-pci,id=scsi0,bus=pci.1"
->>>>                      " -drive file="
->>>>                      "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2,"
->>>> @@ -1846,7 +1848,7 @@ static void test_acpi_aarch64_virt_tcg_acpi_hmat(void)
->>>>    
->>>>        data.variant = ".acpihmatvirt";
->>>>    
->>>> -    test_acpi_one(" -machine hmat=on"
->>>> +    test_acpi_one(" -machine hmat=on,acpi-pcihp=off"
->>>>                      " -cpu cortex-a57"
->>>>                      " -smp 4,sockets=2"
->>>>                      " -m 384M"
->>>> @@ -2123,6 +2125,7 @@ static void test_acpi_aarch64_virt_tcg(void)
->>>>        data.smbios_cpu_max_speed = 2900;
->>>>        data.smbios_cpu_curr_speed = 2700;
->>>>        test_acpi_one("-cpu cortex-a57 "
->>>> +                  "-machine acpi-pcihp=off "
->>>>                      "-smbios type=4,max-speed=2900,current-speed=2700", &data);
->>>>        free_test_data(&data);
->>>>    }
->>>> @@ -2142,6 +2145,7 @@ static void test_acpi_aarch64_virt_tcg_topology(void)
->>>>        };
->>>>    
->>>>        test_acpi_one("-cpu cortex-a57 "
->>>> +                  "-machine acpi-pcihp=off "
->>>>                      "-smp sockets=1,clusters=2,cores=2,threads=2", &data);
->>>>        free_test_data(&data);
->>>>    }
->>>> @@ -2227,6 +2231,7 @@ static void test_acpi_aarch64_virt_viot(void)
->>>>        };
->>>>    
->>>>        test_acpi_one("-cpu cortex-a57 "
->>>> +                  "-machine acpi-pcihp=off "
->>>>                      "-device virtio-iommu-pci", &data);
->>>>        free_test_data(&data);
->>>>    }
->>>    
->>
-> 

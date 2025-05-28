@@ -1,76 +1,76 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5399020njc;
-        Wed, 28 May 2025 04:09:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVXmD8TkFcg8RK2FleEJhdohhtq/aHIXZl1UK9SuuQKfwjEOc26d+kPr/mdSL3mbguIt9zZxWKs+JJ4mw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHeeMPVGVYjboy+cmC9mPcdLZWk2KczgdnFejqVwPRHUxVWsnfIr3HE4CKN2dehJP1OvP5W
-X-Received: by 2002:a05:6214:764:b0:6f2:aefb:948d with SMTP id 6a1803df08f44-6fa9d16bee6mr267699746d6.15.1748430574839;
-        Wed, 28 May 2025 04:09:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748430574; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5399200njc;
+        Wed, 28 May 2025 04:09:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU4Rh4jJoPqhkZYJIZHNDl25oyJoUATmqkn98k1CYxHSc9XJl9dLX4tfCAXsxCeaiC2jtdPNb8b80jE4A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHle/r6Ru7FsXhSn8WVZAODOC+DiYoWirWNmx5tFLcHsRnx1Ed5msP9gOUg/LCXS4eDRVs5
+X-Received: by 2002:a05:622a:1dc9:b0:4a4:22a1:dab8 with SMTP id d75a77b69052e-4a422a1dcd0mr19519811cf.11.1748430590431;
+        Wed, 28 May 2025 04:09:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748430590; cv=none;
         d=google.com; s=arc-20240605;
-        b=itVZRQXjPxODBSJKh08eaaTfH0ukJ78/y8SHb79jIMuZta8fWEkHgl5w5THIcjwkXd
-         GGkZP4pmtcwSsj4JMAAzVHCcdIO1CnfA5px9Jd6hniLIawhoO252aVelWT1LqG6ldHKp
-         /+aISH+5nIIaKf8U5DYxqAT1062h0hgX9XijYHqzOgomcoYMUM1cztoC/wFW8pOhx1sX
-         CTi8BRjhjozI2g1DmdzM9iH8LSSzKxHyKv+6u+gQzxNHwG5iPBSUlpG60uv3rb15XYlS
-         qm1JV5knYDBsjnN8u70lwsABLM6WSGm5iMUAFZgwXVKnKnRNXcV9vsOr8/+oinUtuOhw
-         nApQ==
+        b=XrzLUXQBrJeba47tT1lI14ooByF+TMB1agYFXJhy+xUJjzgzR/OBTE9T94BEJXeWka
+         DGpTjCRiQpf6mXsqO0OLo7txOAPFQJVAEPFGfZMKxT44j7eGIbU+um3t5bE5130CraaV
+         mASR0thG/ivBwSKvFWMS5PXUXIHSbyywpOLbAfEgSmniHXiyiUPpKxyNhrlQeB+dAKyE
+         5AGk4A7vy+MbMQ4u3jHCDk3NETPQ73bUYPrBK27v7vdUNNvEQiHXa4OY+XDyFJ67kSYA
+         6YBkUQV+g1O13rhae6ORxsT9sV/rLn2Y+Bm/KRU9BWOuOKbsPZ8uQlLR9zHchCcD+yMw
+         cw1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=cgOl71680Xojc5Eopuv8FJklsF3nu5m1aQfGWKZ3l+M=;
+        bh=QfvOiSs4xZBlZ6SW0kWbAqCZ0Mw8DN9eFURXnI8Ja1M=;
         fh=H37qvzHAaAe7l3BRWZdk0sK/1JhKDdxSaMzp99skKNM=;
-        b=C7sbCiZowVid4yotzDM4v0dQP8Avg/dhuZiF/Q/t1tMHeAv4NQ442Cp7IyifzQko2W
-         cEGWKnEe7EGx4Nqf/lhBWixAxYpsnN1iY8PskY4SUUgRsYdCb0sZhM9rB27FiG/cTLmy
-         iazF/EpQxvVEIr4ZQgvz2xBvAeD7zCnjITNwMuK8h6+DWNztfMUE0ekXNdeq5o26N7Jj
-         W5PnO5HKR2b7/yLovSI1CDViGxC/VCxINdpf5+uMIuixuMu3dREXNKlWWqkSyGSpMmq1
-         9OyyPiGDmb1+MaQV1VR1WKk/ZNtRnbotpt98cj4jYIzRLe8LDXb3W5fGYVKtG8TL9lEJ
-         k93w==;
+        b=TTd57kdPYZGSRUDYl6R+oYG/gyAwAB0bzTh0nzYOn0N0vjuI98xRRPIpwcg+c4vYkp
+         rO3h3BcA+7mLVuKBtfmnaxCKQlz8veRqk17+b3ZR+Arid0qLSW6+cg5ZnZgEiz55yOBj
+         gPLEwHqg32H3Ihy8VP9TuNP9H1rTuYhNeOg63+oAraxY4ynbS4REvkbQHuQ9biJWrYSX
+         zpOSQhCgAkx9mHAGDtBKXF3GCGZzUTXGcgOgxq/xM3t5yPji5PQiylruv+EOANaMXRzz
+         IsI6+M/y33GusyDnH0DCVTSrA60MgCCfMEV31ZLAlNTp4L2cWTR0zXMtP2U0dZsSVKpQ
+         ellg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fac0b2960asi10316236d6.128.2025.05.28.04.09.34
+        by mx.google.com with ESMTPS id d75a77b69052e-4a3c792259bsi10663601cf.153.2025.05.28.04.09.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 May 2025 04:09:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 28 May 2025 04:09:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uKEeo-0004w6-SF; Wed, 28 May 2025 07:09:14 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uKEfJ-0005jB-VB; Wed, 28 May 2025 07:09:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uKEej-0004kf-3X; Wed, 28 May 2025 07:09:09 -0400
+ id 1uKEfD-0005be-1i; Wed, 28 May 2025 07:09:40 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uKEeg-0001cQ-Ba; Wed, 28 May 2025 07:09:08 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4b6mwB5C5Fz6M4sd;
- Wed, 28 May 2025 19:08:58 +0800 (CST)
+ id 1uKEfA-0001ef-WD; Wed, 28 May 2025 07:09:38 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4b6mrl0bQQz6L5Dr;
+ Wed, 28 May 2025 19:05:59 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 3CD2214034D;
- Wed, 28 May 2025 19:09:01 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 4EFA7140AF0;
+ Wed, 28 May 2025 19:09:32 +0800 (CST)
 Received: from SecurePC-101-06.china.huawei.com (10.122.19.247) by
  frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 28 May 2025 13:09:00 +0200
+ 15.1.2507.39; Wed, 28 May 2025 13:09:31 +0200
 To: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
  <peter.maydell@linaro.org>, <mst@redhat.com>
 CC: <linuxarm@huawei.com>, <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>, 
  Yuquan Wang <wangyuquan1236@phytium.com.cn>, Itaru Kitayama
  <itaru.kitayama@linux.dev>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
  <philmd@linaro.org>, Alireza Sanaee <alireza.sanaee@huawei.com>
-Subject: [PATCH v14 3/5] hw/cxl-host: Allow split of establishing memory
- address and mmio setup.
-Date: Wed, 28 May 2025 12:07:24 +0100
-Message-ID: <20250528110726.226389-4-Jonathan.Cameron@huawei.com>
+Subject: [PATCH v14 4/5] hw/arm/virt: Basic CXL enablement on
+ pci_expander_bridge instances pxb-cxl
+Date: Wed, 28 May 2025 12:07:25 +0100
+Message-ID: <20250528110726.226389-5-Jonathan.Cameron@huawei.com>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250528110726.226389-1-Jonathan.Cameron@huawei.com>
 References: <20250528110726.226389-1-Jonathan.Cameron@huawei.com>
@@ -92,139 +92,250 @@ X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zVoOxnUrwTJ8
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Rbx6bzErJKFK
 
-On arm/virt the memory map is set up before any devices are brought
-up.  To enable this provide split functions to establish the fw->base
-and later to actually map it.
+Code based on i386/pc enablement.
+The memory layout places space for 16 host bridge register regions after
+the GIC_REDIST2 in the extended memmap.
+The CFMWs are placed above the extended memmap.
+
+Only create the CEDT table if cxl=on set for the machine.
 
 Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 ---
-v14: Update wrt to changes in previous patch.
-     Add a do_cfwms_set_memmap_and_update_mmio() utility function
-     to reduce code duplication. (Zhijian)
----
- include/hw/cxl/cxl_host.h |  2 ++
- hw/cxl/cxl-host-stubs.c   |  2 ++
- hw/cxl/cxl-host.c         | 43 +++++++++++++++++++++++++++++++++++----
- 3 files changed, 43 insertions(+), 4 deletions(-)
+ include/hw/arm/virt.h    |  4 ++++
+ hw/arm/virt-acpi-build.c | 34 ++++++++++++++++++++++++++++++++++
+ hw/arm/virt.c            | 29 +++++++++++++++++++++++++++++
+ 3 files changed, 67 insertions(+)
 
-diff --git a/include/hw/cxl/cxl_host.h b/include/hw/cxl/cxl_host.h
-index 6dce2cde07..aee9d573d6 100644
---- a/include/hw/cxl/cxl_host.h
-+++ b/include/hw/cxl/cxl_host.h
-@@ -16,6 +16,8 @@
- void cxl_machine_init(Object *obj, CXLState *state);
- void cxl_fmws_link_targets(Error **errp);
- void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp);
-+hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr);
-+void cxl_fmws_update_mmio(void);
- hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr);
- GSList *cxl_fmws_get_all_sorted(void);
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 9a1b0f53d2..4375819ea0 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -36,6 +36,7 @@
+ #include "hw/arm/boot.h"
+ #include "hw/arm/bsa.h"
+ #include "hw/block/flash.h"
++#include "hw/cxl/cxl.h"
+ #include "system/kvm.h"
+ #include "hw/intc/arm_gicv3_common.h"
+ #include "qom/object.h"
+@@ -85,6 +86,7 @@ enum {
+ /* indices of IO regions located after the RAM */
+ enum {
+     VIRT_HIGH_GIC_REDIST2 =  VIRT_LOWMEMMAP_LAST,
++    VIRT_CXL_HOST,
+     VIRT_HIGH_PCIE_ECAM,
+     VIRT_HIGH_PCIE_MMIO,
+ };
+@@ -140,6 +142,7 @@ struct VirtMachineState {
+     bool secure;
+     bool highmem;
+     bool highmem_compact;
++    bool highmem_cxl;
+     bool highmem_ecam;
+     bool highmem_mmio;
+     bool highmem_redists;
+@@ -174,6 +177,7 @@ struct VirtMachineState {
+     char *oem_id;
+     char *oem_table_id;
+     bool ns_el2_virt_timer_irq;
++    CXLState cxl_devices_state;
+ };
  
-diff --git a/hw/cxl/cxl-host-stubs.c b/hw/cxl/cxl-host-stubs.c
-index 13eb6bf6a4..d9e38618d6 100644
---- a/hw/cxl/cxl-host-stubs.c
-+++ b/hw/cxl/cxl-host-stubs.c
-@@ -11,6 +11,8 @@
- void cxl_fmws_link_targets(Error **errp) {};
- void cxl_machine_init(Object *obj, CXLState *state) {};
- void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp) {};
-+hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr) { return base; };
-+void cxl_fmws_update_mmio(void) {};
- hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
- {
-     return base;
-diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
-index 016a4fdc6a..a1b9980035 100644
---- a/hw/cxl/cxl-host.c
-+++ b/hw/cxl/cxl-host.c
-@@ -378,11 +378,14 @@ void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp)
-     }
+ #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 7e8e0f0298..589e221b89 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -39,10 +39,12 @@
+ #include "hw/acpi/aml-build.h"
+ #include "hw/acpi/utils.h"
+ #include "hw/acpi/pci.h"
++#include "hw/acpi/cxl.h"
+ #include "hw/acpi/memory_hotplug.h"
+ #include "hw/acpi/generic_event_device.h"
+ #include "hw/acpi/tpm.h"
+ #include "hw/acpi/hmat.h"
++#include "hw/cxl/cxl.h"
+ #include "hw/pci/pcie_host.h"
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pci_bus.h"
+@@ -119,10 +121,29 @@ static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_memmap)
+     aml_append(scope, dev);
  }
  
--static void cxl_fmws_update(CXLFixedWindow *fw, hwaddr *base, hwaddr max_addr)
-+static void cxl_fmws_update(CXLFixedWindow *fw, hwaddr *base, hwaddr max_addr,
-+                            bool update_mmio)
++static void build_acpi0017(Aml *table)
++{
++    Aml *dev, *scope, *method;
++
++    scope =  aml_scope("_SB");
++    dev = aml_device("CXLM");
++    aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0017")));
++
++    method = aml_method("_STA", 0, AML_NOTSERIALIZED);
++    aml_append(method, aml_return(aml_int(0x0B)));
++    aml_append(dev, method);
++    build_cxl_dsm_method(dev);
++
++    aml_append(scope, dev);
++    aml_append(table, scope);
++}
++
+ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+                               uint32_t irq, VirtMachineState *vms)
  {
-     if (*base + fw->size <= max_addr) {
-         fw->base = *base;
--        sysbus_mmio_map(SYS_BUS_DEVICE(fw), 0, fw->base);
-+        if (update_mmio) {
-+            sysbus_mmio_map(SYS_BUS_DEVICE(fw), 0, fw->base);
+     int ecam_id = VIRT_ECAM_ID(vms->highmem_ecam);
++    bool cxl_present = false;
++    PCIBus *bus = vms->bus;
+     struct GPEXConfig cfg = {
+         .mmio32 = memmap[VIRT_PCIE_MMIO],
+         .pio    = memmap[VIRT_PCIE_PIO],
+@@ -136,6 +157,14 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+     }
+ 
+     acpi_dsdt_add_gpex(scope, &cfg);
++    QLIST_FOREACH(bus, &vms->bus->child, sibling) {
++        if (pci_bus_is_cxl(bus)) {
++            cxl_present = true;
 +        }
-         *base += fw->size;
-     }
- }
-@@ -421,19 +424,51 @@ GSList *cxl_fmws_get_all_sorted(void)
-     return g_slist_sort_with_data(cxl_fmws_get_all(), cfmws_cmp, NULL);
- }
- 
--hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
-+static hwaddr do_cxl_fmws_set_memmap_and_update_mmio(hwaddr base,
-+                                                     hwaddr max_addr,
-+                                                     bool update_mmio)
- {
-     GSList *cfmws_list, *iter;
- 
-     cfmws_list = cxl_fmws_get_all_sorted();
-     for (iter = cfmws_list; iter; iter = iter->next) {
--        cxl_fmws_update(CXL_FMW(iter->data), &base, max_addr);
-+        cxl_fmws_update(CXL_FMW(iter->data), &base, max_addr, update_mmio);
-     }
-     g_slist_free(cfmws_list);
- 
-     return base;
- }
- 
-+hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
-+{
-+    return do_cxl_fmws_set_memmap_and_update_mmio(base, max_addr, false);
-+}
-+
-+hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
-+{
-+    return do_cxl_fmws_set_memmap_and_update_mmio(base, max_addr, true);
-+}
-+
-+static int cxl_fmws_mmio_map(Object *obj, void *opaque)
-+{
-+    struct CXLFixedWindow *fw;
-+
-+    if (!object_dynamic_cast(obj, TYPE_CXL_FMW)) {
-+        return 0;
 +    }
-+    fw = CXL_FMW(obj);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(fw), 0, fw->base);
++    if (cxl_present) {
++        build_acpi0017(scope);
++    }
+ }
+ 
+ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+@@ -963,6 +992,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+         }
+     }
+ 
++    if (vms->cxl_devices_state.is_enabled) {
++        cxl_build_cedt(table_offsets, tables_blob, tables->linker,
++                       vms->oem_id, vms->oem_table_id, &vms->cxl_devices_state);
++    }
 +
-+    return 0;
-+}
-+
-+void cxl_fmws_update_mmio(void)
+     if (ms->nvdimms_state->is_enabled) {
+         nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
+                           ms->nvdimms_state, ms->ram_slots, vms->oem_id,
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 9a6cd085a3..e06d293edc 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -57,6 +57,7 @@
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
+ #include "hw/pci-host/gpex.h"
++#include "hw/pci-bridge/pci_expander_bridge.h"
+ #include "hw/virtio/virtio-pci.h"
+ #include "hw/core/sysbus-fdt.h"
+ #include "hw/platform-bus.h"
+@@ -86,6 +87,8 @@
+ #include "hw/virtio/virtio-md-pci.h"
+ #include "hw/virtio/virtio-iommu.h"
+ #include "hw/char/pl011.h"
++#include "hw/cxl/cxl.h"
++#include "hw/cxl/cxl_host.h"
+ #include "qemu/guest-random.h"
+ 
+ static GlobalProperty arm_virt_compat[] = {
+@@ -220,6 +223,7 @@ static const MemMapEntry base_memmap[] = {
+ static MemMapEntry extended_memmap[] = {
+     /* Additional 64 MB redist region (can contain up to 512 redistributors) */
+     [VIRT_HIGH_GIC_REDIST2] =   { 0x0, 64 * MiB },
++    [VIRT_CXL_HOST] =           { 0x0, 64 * KiB * 16 }, /* 16 UID */
+     [VIRT_HIGH_PCIE_ECAM] =     { 0x0, 256 * MiB },
+     /* Second PCIe window */
+     [VIRT_HIGH_PCIE_MMIO] =     { 0x0, DEFAULT_HIGH_PCIE_MMIO_SIZE },
+@@ -1621,6 +1625,17 @@ static void create_pcie(VirtMachineState *vms)
+     }
+ }
+ 
++static void create_cxl_host_reg_region(VirtMachineState *vms)
 +{
-+    /* Ordering is not required for this */
-+    object_child_foreach_recursive(object_get_root(), cxl_fmws_mmio_map,
-+                                   NULL);
++    MemoryRegion *sysmem = get_system_memory();
++    MemoryRegion *mr = &vms->cxl_devices_state.host_mr;
++
++    memory_region_init(mr, OBJECT(vms), "cxl_host_reg",
++                       vms->memmap[VIRT_CXL_HOST].size);
++    memory_region_add_subregion(sysmem, vms->memmap[VIRT_CXL_HOST].base, mr);
++    vms->highmem_cxl = true;
 +}
 +
- static void cxl_fmw_realize(DeviceState *dev, Error **errp)
+ static void create_platform_bus(VirtMachineState *vms)
  {
-     CXLFixedWindow *fw = CXL_FMW(dev);
+     DeviceState *dev;
+@@ -1737,6 +1752,12 @@ void virt_machine_done(Notifier *notifier, void *data)
+     struct arm_boot_info *info = &vms->bootinfo;
+     AddressSpace *as = arm_boot_address_space(cpu, info);
+ 
++    cxl_hook_up_pxb_registers(vms->bus, &vms->cxl_devices_state,
++                              &error_fatal);
++
++    if (vms->cxl_devices_state.is_enabled) {
++        cxl_fmws_link_targets(&error_fatal);
++    }
+     /*
+      * If the user provided a dtb, we assume the dynamic sysbus nodes
+      * already are integrated there. This corresponds to a use case where
+@@ -1783,6 +1804,7 @@ static inline bool *virt_get_high_memmap_enabled(VirtMachineState *vms,
+ {
+     bool *enabled_array[] = {
+         &vms->highmem_redists,
++        &vms->highmem_cxl,
+         &vms->highmem_ecam,
+         &vms->highmem_mmio,
+     };
+@@ -1890,6 +1912,9 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+     if (device_memory_size > 0) {
+         machine_memory_devices_init(ms, device_memory_base, device_memory_size);
+     }
++
++    cxl_fmws_set_memmap(ROUND_UP(vms->highest_gpa + 1, 256 * MiB),
++                        BIT_ULL(pa_bits));
+ }
+ 
+ static VirtGICType finalize_gic_version_do(const char *accel_name,
+@@ -2340,6 +2365,8 @@ static void machvirt_init(MachineState *machine)
+     memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base,
+                                 machine->ram);
+ 
++    cxl_fmws_update_mmio();
++
+     virt_flash_fdt(vms, sysmem, secure_sysmem ?: sysmem);
+ 
+     create_gic(vms, sysmem);
+@@ -2395,6 +2422,7 @@ static void machvirt_init(MachineState *machine)
+     create_rtc(vms);
+ 
+     create_pcie(vms);
++    create_cxl_host_reg_region(vms);
+ 
+     if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
+         vms->acpi_dev = create_acpi_ged(vms);
+@@ -3365,6 +3393,7 @@ static void virt_instance_init(Object *obj)
+ 
+     vms->oem_id = g_strndup(ACPI_BUILD_APPNAME6, 6);
+     vms->oem_table_id = g_strndup(ACPI_BUILD_APPNAME8, 8);
++    cxl_machine_init(obj, &vms->cxl_devices_state);
+ }
+ 
+ static const TypeInfo virt_machine_info = {
 -- 
 2.48.1
 

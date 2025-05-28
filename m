@@ -1,223 +1,142 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5399460njc;
-        Wed, 28 May 2025 04:10:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU1uNUG5RhJws5VkiczJcZFsgG5OMwZ70rJCmzlCHZCq39JkP+YLKWBdWTkxP0aKrQx1GG8fsyK2y6bkg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHDE9egBALHJPd2LD63MUxTZ67lWmAEm3BpbsW5cbWl7W+vO62TTMVazQL8ISw/DO2KbiFB
-X-Received: by 2002:ac8:6f17:0:b0:494:7347:d73f with SMTP id d75a77b69052e-4a2f51fa4d9mr63608681cf.11.1748430616151;
-        Wed, 28 May 2025 04:10:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748430616; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5432331njc;
+        Wed, 28 May 2025 05:11:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWh7+CKC1V/8vAIky2NMHXnefYkY6+9fw8HiaHglwmBmr4I2ZtYT7n40ipTPhv2yhLq/uPqaDPNDagNGg==@linaro.org
+X-Received: by 2002:a05:620a:268c:b0:7ca:f028:2e36 with SMTP id af79cd13be357-7ceecb821f0mr2339168685a.20.1748434281484;
+        Wed, 28 May 2025 05:11:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748434281; cv=none;
         d=google.com; s=arc-20240605;
-        b=M+gL3PlBzn8+pVDl4AkrbGD6jLwIfutxzikmIgRO36c43hQogm4nPwI379MxIgYQ8f
-         RHJbkBkRWadHj7O22A8QicNhOfK0kSLLEhTCeFw1K3bNHObQWZ635Q4URdA8oR8tA7w6
-         s/tGuFPD9qzRdL8WBmtXIdD6AHq802whh/7pRJaTAod7worBl+c4I845ZUdIfN5DGZgP
-         AJGtDmYv2Lc6udQJhsUiHj65ClvTkogT5TXbPx3pY2PHZuiSGw3Awqlt82Ww9pZ3LV/N
-         sThXi9mC6ckyI6V6/jsRNbEpm5SWH8p1LwVpGKomfUoXi6KbQhboh0AiraomV0ZUNn3F
-         FTZw==
+        b=ZxfIta0uP118nlC6ZPkoyz668tb5ZdmfRr0cEmtvMv7tk+mFFTyKkOE1u/o/CFNxQ5
+         l0PVP9ij6uZkDUQukTiUM/IiNRbXRO9H7kVV6d/hlEH7L8JDPjg2vMSa+iG2JPsUxjDz
+         lOPWpifrb6qfnsgvOrG64oldaNJ1Rhk1LPmaTMgDQeevnLk3jLChClUV6NsxV6HE1rwc
+         U10BLz5McApB4tOgu/c4NeO1SpWfyEsbrQ63sGwQVssAmfyKuvxMTB9s89nKHhbLm7C3
+         EXgonDRU2qSO3V5P6DtcJHUqbdhGPVSYi8xZQXZB3c/0JT4W9HgmIEiqhdj+SOE1SJRJ
+         HBtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=mv99Eq3+YPG7aqwbWlXoluazt0lC70V11nHTXrFKvUY=;
-        fh=H37qvzHAaAe7l3BRWZdk0sK/1JhKDdxSaMzp99skKNM=;
-        b=O5uZAW2ycDwUx1FDiaJrHD/RlMPxVq60yjg1sAS9GMlEZa7DCU77rLOzEZbWtEful0
-         OHNvZTi6xwZFxTQAomDmGfncLnUbMUdwD5bg3v1/yDAEmpHRaQG+qx65NMGgfZqHGlJ0
-         1iaJO3hUfzBAdsONCw5pQXySej6vxTbN52doYa/xW1CdJgtlwl60c7WhjuFExINo7oCJ
-         vgnsQ2orWLJ5V8XkYKR8nneB/AcKK2y4GTP045yuGVK2keHeYXWGuc3G0pL0rvN0ixBC
-         xSXx56mZdbxjeVttLzhqQbCGRLbucGUv3bLqXJQpGCIn6iQuLH3YEz2sPbNT8IAGrgCN
-         aK8w==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=yAcKUHr6qVW7V44eLRkOBhoHjhAe62jvGATf6TS1gTs=;
+        fh=9I9nJ05cx3mRVLzOsIGnumfZUcGyFHrPSNvAe9N5ogs=;
+        b=bdTSk03k/Lb7Wt1t0w5vhY/QMmwmuA1ZBKNIrrPrq/3KUrf4XdhdiKyS21yB0NybBG
+         +ZTPezzF2DeAkTwoPVlOI6VcAaCKFzfp3x7/BeyeWQYcPOZgZiojXWH0ABa4PVN7MXen
+         gwGxpORcgSVSBoAaNLv/zmw+PS33Lyy1fRJPqkN3oqtcmZpfwZro7LrgLicbcJN/s59K
+         Ej4cjE9Y6KOff+Juc6nquHuuJWbhSzv1lgeCdOmvjUmHJiXU3Emi7GWU4aNilm6jtmid
+         iuYZlljDNzGzrY2cIGCpM/2u8AxXRFyAgko/p+wSP+nwbnTaCUY6V+QwPkYHEhj1YtCM
+         9Sig==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a3cff0082fsi10420781cf.532.2025.05.28.04.10.16
+       dkim=pass header.i=@linaro.org header.s=google header.b=Oqf9Wo8r;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id af79cd13be357-7cd468bb53asor2064010185a.11.2025.05.28.05.11.21
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 May 2025 04:10:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 28 May 2025 05:11:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uKEfk-00073e-BV; Wed, 28 May 2025 07:10:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uKEfi-00071r-Pk; Wed, 28 May 2025 07:10:11 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uKEff-0001nw-Cp; Wed, 28 May 2025 07:10:09 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4b6msL0ZN6z6L5Fw;
- Wed, 28 May 2025 19:06:30 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 530DD14034D;
- Wed, 28 May 2025 19:10:03 +0800 (CST)
-Received: from SecurePC-101-06.china.huawei.com (10.122.19.247) by
- frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 28 May 2025 13:10:02 +0200
-To: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
- <peter.maydell@linaro.org>, <mst@redhat.com>
-CC: <linuxarm@huawei.com>, <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>, 
- Yuquan Wang <wangyuquan1236@phytium.com.cn>, Itaru Kitayama
- <itaru.kitayama@linux.dev>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Alireza Sanaee <alireza.sanaee@huawei.com>
-Subject: [PATCH v14 5/5] qtest/cxl: Add aarch64 virt test for CXL
-Date: Wed, 28 May 2025 12:07:26 +0100
-Message-ID: <20250528110726.226389-6-Jonathan.Cameron@huawei.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250528110726.226389-1-Jonathan.Cameron@huawei.com>
-References: <20250528110726.226389-1-Jonathan.Cameron@huawei.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Oqf9Wo8r;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1748434281; x=1749039081; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=yAcKUHr6qVW7V44eLRkOBhoHjhAe62jvGATf6TS1gTs=;
+        b=Oqf9Wo8rU6qm1SuXzKAICUwbJdiqI7OpEoR/MeEoLKZ04ktGLLv77Pm7v4omq5HxUU
+         R9HtvaX3wvmLcBgQKqp7CcVqK0Pu/khnGeoyCW/jFsfguDsR9fEzw1csKEM+zOlz1riR
+         e7NikCbLp5uKYE/p4PlWSfjQtHLd2KDrdJe2S18yqHJWNKZJLcMydhoYD5cwD+nKY1j2
+         Wvn7d6YNGbkDiCSJkfptwEZbOZsSCiejUqGmPJHTt+vN8pRn7DGYRtaLncNL1T+1P7yl
+         7ugCmFMk1fAtTSCJr4ufEuYpM3wIcogCta2843NzBsy6GhCJOHxFLvwQ1NvX6oOxqNmu
+         e2WQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748434281; x=1749039081;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=yAcKUHr6qVW7V44eLRkOBhoHjhAe62jvGATf6TS1gTs=;
+        b=K2FKPv+me/tJnSUCggB+CHG367cJIjcJneUbV3NE3oXZtFKq/KMPX9XfYEHpLhKaUH
+         gVAa17s09lapC0NR2v2/qz8IMJPNUcG5/RpEZX2C4k76b4by5eXcDXRd/msexTE/clQo
+         XycFLkI7qlWiDN+tK/imSn2Ly4cKpQFXEoSG9qNxG5bsqlt1YHGrMmIxAVpA2pfggVCY
+         STsoi+hkfL39A3FLTM3AVM/T2QkIZqfVSH3PMwxWqHHZ+nN/p3CjWaQkiFKCij3HSa4A
+         oRtUmt3mTG4XLeEIfNequP1fQ3T5MeoJ/S0njdYRn8FxL2abuFjyMCA0/XW0lJK6sN6l
+         1i3g==
+X-Forwarded-Encrypted: i=1; AJvYcCX+KaGG/tlD4N9dogiblzZI2p2roKBgdfTyLcEDOEYILV9wvDDODeoisxfI1gHIitq172rUrqGA/XYilw==@linaro.org
+X-Gm-Message-State: AOJu0YxNR16QgUbJt/GCKfxpPqJRhkbpMPoMd8jOGJUhGGX0m2+mf0cK
+	na6+g3p09pqMpJ+mapDkbUPOwWlkDvROn6NRyXhhS/YD26PvRGLkK9iswwNG92P0k91W7JfcAp+
+	/vz93QG0=
+X-Gm-Gg: ASbGnct/NAKx1/BRn4JFJ8G3UPG8zngcL/KKBfpTXejxpQYq1Zy3SJN3JF7BCGmL1KB
+	gOtc1d3LmeW1BVliYEiaY2kPZO5uBF1X/Hwbg62tOG0vXh/ME0TpQxbuoQbG3RhXuIokuNN68e7
+	UalmDwGcizYIkIA0vSlESiTSey98e/AC8dCcVbExYWUUbaXLspn3ENLTme114ufdEr/EfWYSP7D
+	r2mxBtdrlzyd6z9zyeulaKs29OekN0xWhFKPLuoV3Gls2vP7LHcghllK5n5fYr6+nHBCenULkuE
+	3lICWFoU1xVJ++CHLaY6ovtTYYStR/oouS/c7YiXOQD/FgtXJYnlsu8oPXe259H2ttbZrvKAwr2
+	vyGNmT8vEelxSd7IkPzeA6ahL4/DWqVUhVfIUNx9T
+X-Google-Smtp-Source: AGHT+IG/Xd5z05bOgFrW3EwBMvIoR1oDtRcyzrVgncLV0KoRBIbudByLNoa0KrmmZlfuYZcoC/rTuw==
+X-Received: by 2002:a05:6214:aca:b0:6f8:a978:d46 with SMTP id 6a1803df08f44-6fa9d131167mr276698426d6.19.1748434280926;
+        Wed, 28 May 2025 05:11:20 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from ?IPV6:2804:7f0:b402:6ba2:2066:dacd:9134:8586? ([2804:7f0:b402:6ba2:2066:dacd:9134:8586])
+        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-87e1efd0edcsm722433241.2.2025.05.28.05.11.18
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 May 2025 05:11:20 -0700 (PDT)
+Message-ID: <7e019a90-8715-46ce-9bae-50b070d4904d@linaro.org>
+Date: Wed, 28 May 2025 09:11:17 -0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] tests/functional/test_aarch64_hotplug_pci: Update images
+To: Thomas Huth <thuth@redhat.com>, alex.bennee@linaro.org
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20250528014737.1630668-1-gustavo.romero@linaro.org>
+ <f79878fc-b5d3-4b5c-a717-0173f9c50056@redhat.com>
+Content-Language: en-US
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <f79878fc-b5d3-4b5c-a717-0173f9c50056@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.122.19.247]
-X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AOLaTro7Jzpw
+X-TUID: hb/VY/g1IIX3
 
-Add a single complex case for aarch64 virt machine.
-Given existing much more comprehensive tests for x86 cover the
-common functionality, a single test should be enough to verify
-that the aarch64 part continue to work.
+Hi Thomas,
 
-Tested-by: Itaru Kitayama <itaru.kitayama@fujitsu.com>
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+On 5/28/25 04:57, Thomas Huth wrote:
+> On 28/05/2025 03.47, Gustavo Romero wrote:
+>> The current links for the Linux and initrd.gz images are not truly
+>> immutable, so let's change them to point to immutable versions, to avoid
+>> having to keep updating their SHAs.
+>>
+>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+>> ---
+>>   tests/functional/test_aarch64_hotplug_pci.py | 8 ++++----
+>>   1 file changed, 4 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/tests/functional/test_aarch64_hotplug_pci.py b/tests/functional/test_aarch64_hotplug_pci.py
+>> index fa1bb62c8f..2cf5c28b9f 100755
+>> --- a/tests/functional/test_aarch64_hotplug_pci.py
+>> +++ b/tests/functional/test_aarch64_hotplug_pci.py
+>> @@ -19,13 +19,13 @@ class HotplugPCI(LinuxKernelTest):
+>>       ASSET_KERNEL = Asset(
+>>           ('https://ftp.debian.org/debian/dists/stable/main/installer-arm64/'
+>> -         'current/images/netboot/debian-installer/arm64/linux'),
+>> -        '3821d4db56d42c6a4eac62f31846e35465940afd87746b4cfcdf5c9eca3117b2')
+>> +         '20230607+deb12u11/images/netboot/debian-installer/arm64/linux'),
+>> +         'd92a60392ce1e379ca198a1a820899f8f0d39a62d047c41ab79492f81541a9d9')
+>>       ASSET_INITRD = Asset(
+>>           ('https://ftp.debian.org/debian/dists/stable/main/installer-arm64/'
+>> -         'current/images/netboot/debian-installer/arm64/initrd.gz'),
+>> -        '2583ec22b45265ad69e82f198674f53d4cd85be124fe012eedc2fd91156bc4b4')
+>> +         '20230607+deb12u11/images/netboot/debian-installer/arm64/initrd.gz'),
+>> +         '9f817f76951f3237bca8216bee35267bfb826815687f4b2fcdd5e6c2a917790c')
+>>       def test_hotplug_pci(self):
+> 
+> Acked-by: Thomas Huth <thuth@redhat.com>
+> 
+> Since the original patch is still sitting in Alex' queue, I assume that he'll squash it into that original patch before it gets upstream?
 
----
-v14: Tags only.
----
- tests/qtest/cxl-test.c  | 59 ++++++++++++++++++++++++++++++++---------
- tests/qtest/meson.build |  1 +
- 2 files changed, 47 insertions(+), 13 deletions(-)
+Exactly. I have a meeting with him in a couple of hours and will ask him to queue it.
 
-diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
-index a600331843..c7189d6222 100644
---- a/tests/qtest/cxl-test.c
-+++ b/tests/qtest/cxl-test.c
-@@ -19,6 +19,12 @@
-     "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
-     "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
- 
-+#define QEMU_VIRT_2PXB_CMD \
-+    "-machine virt,cxl=on -cpu max " \
-+    "-device pxb-cxl,id=cxl.0,bus=pcie.0,bus_nr=52 " \
-+    "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
-+    "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
-+
- #define QEMU_RP \
-     "-device cxl-rp,id=rp0,bus=cxl.0,chassis=0,slot=0 "
- 
-@@ -197,25 +203,52 @@ static void cxl_2pxb_4rp_4t3d(void)
-     qtest_end();
-     rmdir(tmpfs);
- }
-+
-+static void cxl_virt_2pxb_4rp_4t3d(void)
-+{
-+    g_autoptr(GString) cmdline = g_string_new(NULL);
-+    char template[] = "/tmp/cxl-test-XXXXXX";
-+    const char *tmpfs;
-+
-+    tmpfs = mkdtemp(template);
-+
-+    g_string_printf(cmdline, QEMU_VIRT_2PXB_CMD QEMU_4RP QEMU_4T3D,
-+                    tmpfs, tmpfs, tmpfs, tmpfs, tmpfs, tmpfs,
-+                    tmpfs, tmpfs);
-+
-+    qtest_start(cmdline->str);
-+    qtest_end();
-+    rmdir(tmpfs);
-+}
- #endif /* CONFIG_POSIX */
- 
- int main(int argc, char **argv)
- {
--    g_test_init(&argc, &argv, NULL);
-+    const char *arch = qtest_get_arch();
- 
--    qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
--    qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
--    qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
--    qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
--    qtest_add_func("/pci/cxl/rp", cxl_root_port);
--    qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
-+    g_test_init(&argc, &argv, NULL);
-+    if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
-+        qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
-+        qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
-+        qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
-+        qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
-+        qtest_add_func("/pci/cxl/rp", cxl_root_port);
-+        qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
- #ifdef CONFIG_POSIX
--    qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
--    qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
--    qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
--    qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
--    qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
--    qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4", cxl_2pxb_4rp_4t3d);
-+        qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
-+        qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
-+        qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
-+        qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
-+        qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
-+        qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4",
-+                       cxl_2pxb_4rp_4t3d);
- #endif
-+    } else if (strcmp(arch, "aarch64") == 0) {
-+#ifdef CONFIG_POSIX
-+        qtest_add_func("/pci/cxl/virt/pxb_x2_root_port_x4_type3_x4",
-+                       cxl_virt_2pxb_4rp_4t3d);
-+#endif
-+    }
-+
-     return g_test_run();
- }
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 43e5a86699..3145c7b5fb 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -259,6 +259,7 @@ qtests_aarch64 = \
-   (config_all_accel.has_key('CONFIG_TCG') and                                            \
-    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
-+  qtests_cxl +                                                                                  \
-   ['arm-cpu-features',
-    'numa-test',
-    'boot-serial-test',
--- 
-2.48.1
 
+Cheers,
+Gustavo

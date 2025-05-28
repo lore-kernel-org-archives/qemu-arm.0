@@ -1,169 +1,203 @@
-Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5206626njc;
-        Tue, 27 May 2025 19:13:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWVsHfkfLIBn0BxBc/y4yl2zbtJeSEYmSyVpYsAuHmsKmUUe+IK3HFg30AWJy0ncGfTbtC0w76KQhz9uQ==@linaro.org
-X-Received: by 2002:a05:6122:1d9e:b0:52a:79fd:d05e with SMTP id 71dfb90a1353d-52f2c4a8cd0mr13166563e0c.2.1748398426067;
-        Tue, 27 May 2025 19:13:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748398426; cv=none;
+Received: by 2002:a17:505:a38d:b0:1be9:327d:8ee3 with SMTP id rs13csp5324477njc;
+        Wed, 28 May 2025 01:16:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU1L86iqhIl9Fb0sIivZt3ACbElWsoXiP3dCanD4QBOW593mfaS8lAhu7C0/I8YxBMJnYa/yYdYmvtJZQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH2pTB2crkMWFgkRtjiVXzROLV3mE+/0pStxEWVTQw4Q0ZiqvK82K+hWHxL/SoD2LY3uUec
+X-Received: by 2002:a05:620a:1aa2:b0:7c9:6531:53c1 with SMTP id af79cd13be357-7cfc5d496e4mr151976885a.26.1748420190287;
+        Wed, 28 May 2025 01:16:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748420190; cv=none;
         d=google.com; s=arc-20240605;
-        b=VkmnV/agCQRp0Zwhnk7bss1KgS1oIpEtpnGVLH+0IABuA/ByLANw8954micUen5z0B
-         N5HqtQYUggJ1aeFthfREhWEnJLJonUGjiP9bMdh6ku2F+fAZ9ri3lLwzmitbnS52UvPp
-         Bww7Q000IwIgdhLGavcjlXebiLKiXZPcSsjkJxxxYCMjkWsJ9g5tyoK6LtFiMJuq/1Ey
-         DNO+uU6VGfQyffml0I4s/EahaZyd2GLlQU6ZIwBgB+LSJAR8JPxOeP1o/li4XzvuZf6W
-         RGGO5fX2VaNz8kohJGmAKAgp+mINjAfyqWyG7qW+SwemytPZmHN1aUKgQd4m9HrX3RPB
-         6ypw==
+        b=cbBg4Edtjde6uh5kwDIbUjEK5CMVG3S55AZJ5kCK6Xqzn0YacPVeNCzwQAErfcvrfB
+         /cUTjbqxnUiDV8TAfbxrhZ7HmN950ct7CQHYlvAeVNwySSkZ9vMnRFae+QwQ5ir360L9
+         C2CYLdG4l4/msXa1RukZ16new0hGr/KGZfLmXjhsA7XJ3l7N88213Sv4K+lxUO2ZJIz+
+         hVUfR4RkocS2Ga4EdA7nbUr2irfJhoPEIV9ZOfdbN6m5PUOtQUZsmmNfXWgBChhlEghW
+         k/gNPTFEJjbJTEHyXOTVpOBjy4jYqXmGh+/5unoHhwjg4+duoNZn8ObnIWVQUTm3oMVx
+         f+QA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=z5Oxj3vlg74NXclXNNPUdD/eVWdV1JzWwV2IMntEOZo=;
-        fh=p1w0Ax44zLAF0jNeuxZsHZI9zlW0WFJgC8nHQxYzaDA=;
-        b=RS3lWSEdKFackr9tc593kbIRrc+Dz9AqmB+lE2BQUbdroLX620iOYWoTox2hum8qDv
-         a+9WtuW1CScD6Yw6m62uLlM40DckhcX0p/ChoztLAHkICWX+pF3OpWjOJUsTQ51cDxJB
-         ouLcHmmiaZ+J06tNZe6JxYTp1qiqQAGHvIKxRl0+kHDlz40ovDfHrFAsoNQqSSMI7xi0
-         Oyqb4ZyM9Ypg69pVAoPA8rWFM1jQt97qIHoZs7hUgM16OF6FtttIB4Qhdqa3GNqFMKAc
-         b2kqeUxNnPUcZziH4Lom4+k+NZfJ94jjhbUtc1nthXclZyRzodFgb+QejGNMVS3775E+
-         DqFA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Ax++RLEDlRrY1JJjLtw31k8EuTvopwPDgXmRKqROuTI=;
+        fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
+        b=Lbh3ey+0h17otrwbZtIEsiukyFTXZK3NGCzYnV7Gcel/Ynit73wXIEtcqwIcu1cv49
+         7EXKROyFmzbUecOz1fy/CURGIFkt1ahNCAI2t5jLIKGf+CJ/g9LJnDGaIWwlghOyfDOZ
+         yhJDI8WGDeKrUWEi7dKcuX+RsT3LPuxNCwjNmvEDKzzzKnxuxNQfOfRfiNTe7hMCLU7H
+         uJY81DW+I0PPCjS/qnKKIhRjRHJCRHX1yqYz+M/V5ghurix92TNdyL1zZLCntr88ItbE
+         dO7pr79+hGLx6Uol/Gk2zDwDNN/5tPAXckQRTAPvjINUHxy8qHx4Rd94VM+xDnuwi+7F
+         8k8g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qRh9Ayw2;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CqMzu0b+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 71dfb90a1353d-5300878a3d6sor881557e0c.3.2025.05.27.19.13.45
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7cfc5d62fe6si83965285a.355.2025.05.28.01.16.30
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 27 May 2025 19:13:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 28 May 2025 01:16:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qRh9Ayw2;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CqMzu0b+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uKBwz-0000WT-92; Wed, 28 May 2025 04:15:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uKBwF-0008Aq-0M
+ for qemu-devel@nongnu.org; Wed, 28 May 2025 04:15:03 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uKBvw-0005Hi-9K
+ for qemu-devel@nongnu.org; Wed, 28 May 2025 04:15:00 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-442ccf0e1b3so54554035e9.3
+ for <qemu-devel@nongnu.org>; Wed, 28 May 2025 01:14:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1748398425; x=1749003225; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=z5Oxj3vlg74NXclXNNPUdD/eVWdV1JzWwV2IMntEOZo=;
-        b=qRh9Ayw2BVIuwgzzbmzUImqtoDnya8D88HZS4g1Jf2teKeFdNhCVFTVvt2vItpXpqe
-         QYv7ka6EX0NPb5O9rBV5MhPDgx7vUzzYfhwvpLGtnEgiYmKeyp1+sQhqTIG77Ovq721O
-         Mhd7XASc4UXX3e3oj3a9eORzEPhEwZO5MZlSCz+9ooYLOmZGJYo1P0VpPMo3CgECxpa7
-         501NdrddTY3OWSbIYpgmzjzlq8lC61Z19fjIMKw70eSwwgNefQ+8bBuiRll+z2JHbaZ9
-         ZHDTPjM/WgDxp7YoC2J22exuHTsU68rWxotEqG+P5oewrkl2kkVnijMEGuYqA+76HJ8Y
-         zabQ==
+ d=linaro.org; s=google; t=1748420080; x=1749024880; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Ax++RLEDlRrY1JJjLtw31k8EuTvopwPDgXmRKqROuTI=;
+ b=CqMzu0b+DaVmgylJZgizMflka3+gdP+BWu5PajuTwgK6BUyXxqw9noG9RJjB3Ra4aq
+ 5QC4YFxaBxL98RDD4UIAiyiVhz46q/OnwyvVgauwObra7tZkC/HkURESGKPd+/+5HoNY
+ 2h1lKbxopkxA4tD6qZKVp+8+bqyfSVKx6mpINFA4suoaW3jxTNtdK+3LA3xSKAW+3Wjh
+ 3er7VJDB191V5xNBHPsjPTV3rwtoT2pltdhBQj4wcfqkg+ZxKZaZ9TqOlFx9RRvOrN1P
+ mu56OB1ZKXxARn7FJ9NtoJJCOQelX2OAG9CU7HeTqDT+WJtc6zml2dlHTscJCM1JJN9X
+ j6gw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748398425; x=1749003225;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=z5Oxj3vlg74NXclXNNPUdD/eVWdV1JzWwV2IMntEOZo=;
-        b=RKaAeutgSPAlH/pWjHqnHuJ1qM1V+IYvzc1ID6XyQrNVgNBLIc5DOpQbIphM7aXNDT
-         OXquV0RSUqt/+wc18dyPCsmWF+FMiLbnaHEhqa8TG56w7xldS3VWC/gTu1Skrv2mAdBZ
-         VHjhIA8xhQjhjUF3Rj1CTK/VQZZe4Km7Gtr9eUVYuXRssQUi1DHA44JkF1wOEnrOO5Dg
-         B3N4IZ2qBnMFaDO9JsqWAS+PUwfitAArQuOXqkY2BA6r2g+GtviSMeq3fR66H2oZcUOs
-         TOuFUxyI3Rs5lZCOMamHU1jz+xGoJodUqR4ILmNihHgy3H61d27JFTRPK5Uwa5paoCA7
-         dE2Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVZOWQcBfzNhD5uzS3ierci42+eyxjLoC2eOsvGmjELUcJqyZpn6M1WtvS67qrAkhaIPv/8kd0qK0mCzg==@linaro.org
-X-Gm-Message-State: AOJu0YwQeZveGGb638FbyOhZFzLnHvsmudCf3H2mYYMrdgduE1t6VHF4
-	VQ7DB7xEQBSovFLlrO1s7v2NgepPcVwSmZyM/afXI76tTp4BexuV80edZC/5EYBeAuha7sahI90
-	X7jTN3Mk=
-X-Gm-Gg: ASbGncsPwfaKMAxDzkk3VO/m/DAIGmsAq6r4j+gbea2X1gGCzjeqjBzFKs+7W9DOSLy
-	Z83YUON27QFzGXJ6z6dlrnWoC8TGghO44yFTEEIFUknT0OBTmW7+BXW08qVCeKUQ4B+ZpzulMo2
-	09ZNFu565Xs4EEmZDMSmDr8EbrPT+fOL2KZa4L3NQiSBS075AtrroXAVmanYqKKgzZBiopmnRlQ
-	rzG4QWuxWcUngdKm0DwrB+nT7BFyb274ztQCqWvlO13wn9Ni3PZ2+zgW+CaAdbzgaeZnNOYAWcN
-	Ewr2xa0eDazywrv+r7hg99zxl3KkstouIultJGgE+U6GoHdEA8Y5jb4cuI2lFXHvmkiHSIkfB8V
-	+sPexQoGrB4D+U+mlPUZNhs5IqSsAY+XH6QCwYYb0
-X-Google-Smtp-Source: AGHT+IEXHC8zBStbvtUE7ChtTV9sGiqjBzk5X3C7KCIDaeDqq9XlWqKgGunnJkKSnBBmGl8puAhspg==
-X-Received: by 2002:a05:6122:1d9e:b0:52a:79fd:d05e with SMTP id 71dfb90a1353d-52f2c4a8cd0mr13166552e0c.2.1748398425584;
-        Tue, 27 May 2025 19:13:45 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from ?IPV6:2804:7f0:b402:6ba2:2066:dacd:9134:8586? ([2804:7f0:b402:6ba2:2066:dacd:9134:8586])
-        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-53066944109sm177520e0c.32.2025.05.27.19.13.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 27 May 2025 19:13:45 -0700 (PDT)
-Message-ID: <67a82638-b4b7-43e3-8108-42f1a18a0162@linaro.org>
-Date: Tue, 27 May 2025 23:13:42 -0300
+ d=1e100.net; s=20230601; t=1748420080; x=1749024880;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Ax++RLEDlRrY1JJjLtw31k8EuTvopwPDgXmRKqROuTI=;
+ b=BrAvVdKanQFVnuXMUwO+fw2HYDS22MEz12iNJa4KmgM+weEWOpSWDbdWTM8ld1xkCR
+ R+OnsHFhWrJb/rJScR42i+/hi6rTNCW4ZRzKJMsbch4uKZXm8UY6KUyf8z/xFux7nm8i
+ Uo0TLBOBZTUTHOA1yN74AfLmnybIdCW1jFQfQ/AGCMg0JcBu3miqr1PuM8igz7XBLxMJ
+ r2bqK8igeqv/gsaj0cWNF56lB6VZHz+2IMMVnnX/tqXKpKT4SeOkQ6ij0CC6FIoJMd+M
+ l/1vDyZForz0z7SR2A1mIxbltW1shmZXepixg1y95XsJspM80NydsQTMzhTQ1EAmD1l2
+ QbbA==
+X-Gm-Message-State: AOJu0Yw/+w5s8Qt819Mmx/uHg6ymNlHg0AnWPHvSu4CzphpLfIHbbx6B
+ Saa9zDNmWDJC4fgHUyUnCkGo59SO/JDyhfAYsQ8yYxvFrxOURErDPRahm6xQyHSdNL7CfKR7kbi
+ A83SxYa0UNg==
+X-Gm-Gg: ASbGncvG0XAcFvm4B5qlau4v71tPJHlIOBRiZrk/TJ15K2ruRARGiSD89C0PmLYuoyH
+ HePgEt944T9hWBHHX511ESSx+km2dYhF9AjYeboR+jy1HxtjHVPCgrjB9DfGzzWnBaW8KjDRdzu
+ TWSleUt94xkGEjIjrCCN6UL7NKH9qhH6Sn7gQJMEMtuf7U6EjwEdqX+dLM6P6DZDZt/TYNHkRtj
+ AzrXnRYp4hpu8+/24Yb7dnRBYE+acX1msnMgovA9MKn3AmiUgjlVJGOMmUXyR0mCF5B4t66dxxg
+ b3fbAtCyMl4AAHi2dCR27AfRFKnQQqRsUccqylJ6tNY6V0pHt0/pObDz
+X-Received: by 2002:a05:600c:6285:b0:43c:ea1a:720c with SMTP id
+ 5b1f17b1804b1-44c91dd127bmr146750765e9.18.1748420079588; 
+ Wed, 28 May 2025 01:14:39 -0700 (PDT)
+Received: from stoup.. ([195.53.115.74]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4500e1d85b5sm13178645e9.32.2025.05.28.01.14.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 28 May 2025 01:14:39 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PULL 20/28] target/arm: Fill in TCGCPUOps.pointer_wrap
+Date: Wed, 28 May 2025 09:14:02 +0100
+Message-ID: <20250528081410.157251-21-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250528081410.157251-1-richard.henderson@linaro.org>
+References: <20250528081410.157251-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] tests/functional/test_aarch64_hotplug_pci: Add test
- for ACPI PCI hotplug
-To: qemu-devel@nongnu.org, eric.auger@redhat.com
-Cc: qemu-arm@nongnu.org, thuth@redhat.com, alex.bennee@linaro.org
-References: <20250527150229.1617074-1-gustavo.romero@linaro.org>
- <20250527150229.1617074-3-gustavo.romero@linaro.org>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20250527150229.1617074-3-gustavo.romero@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: 1rTWWjLEqCyP
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -1
+X-Spam_score: -0.2
+X-Spam_bar: /
+X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MlVkH8pizzNk
 
+For a-profile, check A32 vs A64 state.
+For m-profile, use cpu_pointer_wrap_uint32.
 
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.c         | 24 ++++++++++++++++++++++++
+ target/arm/tcg/cpu-v7m.c |  1 +
+ 2 files changed, 25 insertions(+)
 
-On 5/27/25 12:02, Gustavo Romero wrote:
-> Currently, test_aarch64_hotplug_pci only tests PCI hotplug using the
-> native PCI hotplug mechanism. Now that aarch64 supports PCI hotplug via
-> the ACPI mechanism it's time to support it in the test as well.
-> 
-> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-> ---
->   tests/functional/test_aarch64_hotplug_pci.py | 24 +++++++++++++++++++-
->   1 file changed, 23 insertions(+), 1 deletion(-)
-> 
-> diff --git a/tests/functional/test_aarch64_hotplug_pci.py b/tests/functional/test_aarch64_hotplug_pci.py
-> index bb2c121503..862bb6746b 100755
-> --- a/tests/functional/test_aarch64_hotplug_pci.py
-> +++ b/tests/functional/test_aarch64_hotplug_pci.py
-> @@ -27,11 +27,26 @@ class HotplugPCI(LinuxKernelTest):
->            'current/images/netboot/debian-installer/arm64/initrd.gz'),
->           '9f817f76951f3237bca8216bee35267bfb826815687f4b2fcdd5e6c2a917790c')
->   
-> -    def test_hotplug_pci(self):
-> +    def run_vm_and_test_hotplug_pci(self, use_acpi_pci_hotplug=False):
-> +        """
-> +        Run an aarch64 VM and test the PCI hotplug mechanism by plugging and
-> +        unplugging a PCI network adapter to the VM. Proper plug and unplug of
-> +        the adapter is verified by checking if the network device is correctly
-> +        added and removed in Linux.
-> +
-> +        Parameters
-> +        ----------
-> +        use_acpi_pci_hotplug : bool
-> +            If true the ACPI PCI hotplug mechanim is used, otherwise the
-> +            Native PCIe Hotplug mechanism is used.
-> +        """
-> +
-> +        acpi_pci_hotplug = "on" if use_acpi_pci_hotplug else "off"
->   
->           self.set_machine('virt')
->           self.vm.add_args('-m', '512M')
->           self.vm.add_args('-cpu', 'cortex-a57')
-> +        self.vm.add_args('-machine', f"acpi-pcihp={acpi_pci_hotplug}")
->           self.vm.add_args('-append',
->                            'console=ttyAMA0,115200 init=/bin/sh')
->           self.vm.add_args('-device',
-> @@ -70,5 +85,12 @@ def test_hotplug_pci(self):
->                                             'ls -l /sys/class/net | wc -l',
->                                             '2')
->   
-> +    def test_native_pci_hotplug(self):
-> +        self.run_vm_and_test_hotplug_pci(use_acpi_pci_hotplug=False)
-> +
-> +    def test_acpi_pci_hotplug(self):
-> +        self.run_vm_and_test_hotplug_pci(use_acpi_pci_hotplug=True)
-> +
-> +
->   if __name__ == '__main__':
->       LinuxKernelTest.main()
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index ca5ed7892e..e025e241ed 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2703,6 +2703,29 @@ static const struct SysemuCPUOps arm_sysemu_ops = {
+ #endif
+ 
+ #ifdef CONFIG_TCG
++#ifndef CONFIG_USER_ONLY
++static vaddr aprofile_pointer_wrap(CPUState *cs, int mmu_idx,
++                                   vaddr result, vaddr base)
++{
++    /*
++     * The Stage2 and Phys indexes are only used for ptw on arm32,
++     * and all pte's are aligned, so we never produce a wrap for these.
++     * Double check that we're not truncating a 40-bit physical address.
++     */
++    assert((unsigned)mmu_idx < (ARMMMUIdx_Stage2_S & ARM_MMU_IDX_COREIDX_MASK));
++
++    if (!is_a64(cpu_env(cs))) {
++        return (uint32_t)result;
++    }
++
++    /*
++     * TODO: For FEAT_CPA2, decide how to we want to resolve
++     * Unpredictable_CPACHECK in AddressIncrement.
++     */
++    return result;
++}
++#endif /* !CONFIG_USER_ONLY */
++
+ static const TCGCPUOps arm_tcg_ops = {
+     .mttcg_supported = true,
+     /* ARM processors have a weak memory model */
+@@ -2722,6 +2745,7 @@ static const TCGCPUOps arm_tcg_ops = {
+     .untagged_addr = aarch64_untagged_addr,
+ #else
+     .tlb_fill_align = arm_cpu_tlb_fill_align,
++    .pointer_wrap = aprofile_pointer_wrap,
+     .cpu_exec_interrupt = arm_cpu_exec_interrupt,
+     .cpu_exec_halt = arm_cpu_exec_halt,
+     .cpu_exec_reset = cpu_reset,
+diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
+index 95b23d9b55..8e1a083b91 100644
+--- a/target/arm/tcg/cpu-v7m.c
++++ b/target/arm/tcg/cpu-v7m.c
+@@ -249,6 +249,7 @@ static const TCGCPUOps arm_v7m_tcg_ops = {
+     .record_sigbus = arm_cpu_record_sigbus,
+ #else
+     .tlb_fill_align = arm_cpu_tlb_fill_align,
++    .pointer_wrap = cpu_pointer_wrap_uint32,
+     .cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt,
+     .cpu_exec_halt = arm_cpu_exec_halt,
+     .cpu_exec_reset = cpu_reset,
+-- 
+2.43.0
 
-Re-posted here as a single patch:
-
-https://lists.nongnu.org/archive/html/qemu-devel/2025-05/msg06332.html
-
-I missed the Based-on: 20250527074224.1197793-1-eric.auger@redhat.com tag :-/
-
-
-Cheers,
-Gustavo

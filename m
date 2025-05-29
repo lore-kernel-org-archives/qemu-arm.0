@@ -1,138 +1,97 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp434304njh;
-        Thu, 29 May 2025 05:17:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVEt1BgqOFhzQEMTHmhBcZt+BgEDotyyg3RXKOgmJnUW9iinmhcEz6hs4R8OKKH7LBMPZDNwN6qwZ0E5g==@linaro.org
-X-Google-Smtp-Source: AGHT+IH0e9GcSl+itcnbNk8gQbivlJN24am59A4Cvsq4lM13SGM4/YlBznh93U2AFVY9QAZSYYg9
-X-Received: by 2002:a05:620a:63c6:b0:7c5:4c6d:7f95 with SMTP id af79cd13be357-7d09aba8ecemr298885585a.48.1748521077107;
-        Thu, 29 May 2025 05:17:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748521077; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp343937njh;
+        Thu, 29 May 2025 02:09:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXPd4dnefiNpu4SBvm39pylxZumKbkffqzZKvKnpOt8YHN7RVuk1RdErEdoWt2wCtXv+wc/tWq5Zsi18A==@linaro.org
+X-Google-Smtp-Source: AGHT+IFlUvX/LTlUwoznWGwSm+h2hKgwraziQJF3iWX+AsHrJoG1a22QCU3IMCP/vciXrrO0hh1c
+X-Received: by 2002:a05:6214:5c91:b0:6fa:9b06:99e7 with SMTP id 6a1803df08f44-6fac5d653aamr42112826d6.21.1748509764858;
+        Thu, 29 May 2025 02:09:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748509764; cv=none;
         d=google.com; s=arc-20240605;
-        b=GC/f7pOR0sl/6lxjDJwREeej7Td+Dk+F9wwFnyLrVBaWXHyenmo40sgiQRVPnnZzkL
-         5ZPfe93rMtZcWqIYk+zp2HJ3soppDKVmTXqNAZ/+sBJxXC3JSEyM601Z7AqrAotNXP9j
-         LA4zrtlMROxYf+VKKFUB1l4gU/iclu/GDCuB0aLgsoJVnrFwCPB7E1GOVpwe95p/s9DX
-         51IQYp/oiwET0PU0+GCaezB5dDa6xqtGYShRwGbhRwfajXwbHZgXOpg9Ndo+exKiHNy4
-         NaHljxtnzrQp0Rn0xJrO/4Tx8rXctpFilg+fHVkAjPlJxAR1ArDWasdTVsUOrJ3KAuuq
-         96wg==
+        b=NoPJMhz4z2I0NASibBCdqVFeBkrS5Fg30801ZeFe8bwzrg+VFLGFTua7U9CaPB6ovg
+         RHQ3BW3gR8t1GZHkqapJXEk68wKcnKNxVIuGYgGSYJrWutQ30eig3zo+LATmgosuLYuK
+         O7DERmm2KEt62LPXz7Y36QSCENTU0ggvjymPDI3cJgDvLkBg7Y8D8NLaNeGzq3s9Kgqq
+         9LU6eHmsWHGfiswNqcHK1XXeah2xkqAqJFQCw3crlxTVZU3zWTs2KvxFvMCgT7sdGc+S
+         ahfaDuO9Sw3Lpq766hhIQbQ5BnYH1L53fJYINKO+iUbgAbRUR8nUinaO3+73BLROkGGl
+         q1rQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=vziT4tq6k2FK/5tcxX37GQ1w6LEi+KSigdd0XLa6m6E=;
-        fh=kcwDCAjK01AoNC3Dsuow4hKXYtD3vpwo6A3Ve20h+PA=;
-        b=bWA1Z+B+UuIHqUXIzAKKWgSHR3xlb1UfjP0TGVpuJwEMU5Yh4FaOOTPhAANaAFYVXx
-         OEIqjby65zbz2lxmZHJHrpTYFanjet0BCOaCIskf+40Mss+xEC6qxJE8dzzmf3Y2j59z
-         VSSx7TieH6Wj2XkCfXIZqoeSMxIt7r76OHkWZaLxznQrCVdbJ6dGSOrxPjMcoMBULm4E
-         X896E9C/NcPclMZuhmNT3xAycTWVYLJoeZfFVIqwGPueM7dsRvE9ztCwd/snUY6T03VK
-         bGHykMrHs/RQUz4j63rcVctIqhY/ABswOV0rAzFWgv42oMgzG4FpWusxIxffM9+PPgUN
-         azdA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:date;
+        bh=ikpFP0kNfu8f+6JvPWtl4VlPyCRYnkeLedPq9gSpVcM=;
+        fh=trG48bPpIUh9CMxo/rFkIkh389GNejH1IZHhi8iicSw=;
+        b=CfE47N3FUFlqKBKauQ6axNqePUmA1sZOyFhQ37fa/+MIKllGhZ5RyqwB3zRunWYbnk
+         iEba+N3cIYSOZWbPShVzqynL/9K4pFHprvWuqPj2LVVF2S8+IiuGM0qd/GT0s0gQt1Nz
+         BeyQN6OVC9Fw/MRJVjoL2PR6gteZCBq+rnOcMg679ufwNQ6nU8uCIxta8mCBnd4N3rXq
+         E+aBpMRBTffyOE1YQ2tZlzhk+yKJPH5kfujJQX0gOW41Fqk0QhHS2YIvEGL6tHPh1H7M
+         qtoviP17UIih6RTJMQO7x7uSv9dRmHjNkbkbsoeisci2ZVriRqlePcOl/CPJu1+yFhbi
+         dSIA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d09a1142c4si148168185a.70.2025.05.29.05.17.57
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fac6ec7e42si11899766d6.401.2025.05.29.02.09.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 May 2025 05:17:57 -0700 (PDT)
+        Thu, 29 May 2025 02:09:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uKcCS-0004YV-Ra; Thu, 29 May 2025 08:17:33 -0400
+	id 1uKZGD-0000aZ-Da; Thu, 29 May 2025 05:09:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=uImW=YN=kaod.org=clg@ozlabs.org>)
- id 1uKcCQ-0004YB-6i; Thu, 29 May 2025 08:17:30 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uKZG9-0000aE-UH; Thu, 29 May 2025 05:09:09 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=uImW=YN=kaod.org=clg@ozlabs.org>)
- id 1uKcCN-0005dT-Bi; Thu, 29 May 2025 08:17:29 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4b7QNd71VVz4x5c;
- Thu, 29 May 2025 22:17:21 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4b7QNX0bbXz4wxx;
- Thu, 29 May 2025 22:17:14 +1000 (AEST)
-Message-ID: <e1b0a8ba-06e7-44ea-82ff-e5c2e8025548@kaod.org>
-Date: Thu, 29 May 2025 14:17:11 +0200
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uKZG5-0008Sp-2V; Thu, 29 May 2025 05:09:09 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4b7L744C7kz6L5Zt;
+ Thu, 29 May 2025 17:05:20 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id EB21B14022E;
+ Thu, 29 May 2025 17:08:54 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 29 May
+ 2025 11:08:54 +0200
+Date: Thu, 29 May 2025 10:08:53 +0100
+To: Itaru Kitayama <itaru.kitayama@linux.dev>
+CC: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
+ <peter.maydell@linaro.org>, <mst@redhat.com>, <linuxarm@huawei.com>,
+ <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>, Yuquan Wang
+ <wangyuquan1236@phytium.com.cn>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
+ <philmd@linaro.org>, Alireza Sanaee <alireza.sanaee@huawei.com>, "Zhijian Li
+ (Fujitsu)" <lizhijian@fujitsu.com>
+Subject: Re: [PATCH v14 0/5] arm/virt: CXL support via pxb_cxl
+Message-ID: <20250529100853.00000a0d@huawei.com>
+In-Reply-To: <aDeGyRM7qVYkHZrl@vm4>
+References: <20250528110726.226389-1-Jonathan.Cameron@huawei.com>
+ <aDeGyRM7qVYkHZrl@vm4>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 00/28] Fix incorrect hash results on AST2700
-To: Michael Tokarev <mjt@tls.msk.ru>, Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20250515081008.583578-1-jamin_lin@aspeedtech.com>
- <6e6f3084-3ee4-4498-aea6-77b2d2c1bce7@tls.msk.ru>
- <b0e01786-2f70-4331-b5c5-fb979f7e088c@kaod.org>
- <SI2PR06MB5041C06629D643329DB6A5C0FC66A@SI2PR06MB5041.apcprd06.prod.outlook.com>
- <6fae9cac-2ecd-42ab-b328-97820b865b4a@tls.msk.ru>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <6fae9cac-2ecd-42ab-b328-97820b865b4a@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=uImW=YN=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100009.china.huawei.com (7.191.174.83) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,41 +104,148 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3mfxMV1lXSvJ
+X-TUID: nvAfMB5fKmJc
 
-On 5/29/25 09:45, Michael Tokarev wrote:
-> On 29.05.2025 10:40, Jamin Lin wrote:
-> ..
->>>> Is there anything here which is worth to apply to qemu-stable (10.0.x
->>>> is supposed to be LTS series)?
->>>
->>> The candidates would be these two :
->>>
->>>     hw/misc/aspeed_hace: Ensure HASH_IRQ is always set to
->>>     hw/arm/aspeed_ast27x0: Fix RAM size detection failure on
->>>
->>> Jamin,
->>>
->>> Do you agree ?
->>>
->>
->> Agree
->> Thanks-Jamin
+On Thu, 29 May 2025 06:57:29 +0900
+Itaru Kitayama <itaru.kitayama@linux.dev> wrote:
+
+> Hi Jonathan,
 > 
-> That's what I picked up too, yes.
+> On Wed, May 28, 2025 at 12:07:21PM +0100, Jonathan Cameron wrote:
+> > v14: Simplifications suggeseted by Itaru (and some extra simplifications
+> >      that became apparent) and gather tags.
+> >      See individual patches for more information.  
 > 
-> Thank you!
+> I think the suggestion was made by Zhi jian or Fan? who enaged in the
+> rewview of your proposed series v13.
+
+Ah. You are absolutely correct!  It was Zhijian Li (with some additional
+comments on the comments from Fan)
+
+Sorry about that and thanks for pointing out my mistake.
+
+I also failed to +CC Zhijian. Again my apologies. 
+
+Jonathan
+
+
 > 
-> Please keep Cc: qemu-stable@ for anything else which is worth fixing :)
+> Itaru.
 > 
-Yeah. My patch flow is still a bit manual for fixes. I should probably
-add a 'Cc: qemu-stable@' trailer to patches before sending a PR.
-
-
-Thanks,
-
-C.
-
+> > 
+> > Updated cover letter
+> > 
+> > Richard Henderson has posted a pull request with a fix for the TCG TLB
+> > issue which will hopefully merge shortly (Thanks Richard!).
+> > 
+> > Back in 2022, this series stalled on the absence of a solution to device
+> > tree support for PCI Expander Bridges (PXB) and we ended up only having
+> > x86 support upstream. I've been carrying the arm64 support out of tree
+> > since then, with occasional nasty surprises (e.g. UNIMP + DT issue seen
+> > a few weeks ago) and a fair number of fiddly rebases.
+> > gitlab.com/jic23/qemu cxl-<latest date>.  Will update shortly with this
+> > series.
+> > 
+> > A recent discussion with Peter Maydell indicated that there are various
+> > other ACPI only features now, so in general he might be more relaxed
+> > about DT support being necessary. The upcoming vSMMUv3 support would
+> > run into this problem as well.
+> > 
+> > I presented the background to the PXB issue at Linaro connect 2022. In
+> > short the issue is that PXBs steal MMIO space from the main PCI root
+> > bridge. The challenge is knowing how much to steal.
+> > 
+> > On ACPI platforms, we can rely on EDK2 to perform an enumeration and
+> > configuration of the PCI topology and QEMU can update the ACPI tables
+> > after EDK2 has done this when it can simply read the space used by the
+> > root ports. On device tree, there is no entity to figure out that
+> > enumeration so we don't know how to size the stolen region.
+> > 
+> > Three approaches were discussed:
+> > 1) Enumerating in QEMU. Horribly complex and the last thing we want is a
+> >    3rd enumeration implementation that ends up out of sync with EDK2 and
+> >    the kernel (there are frequent issues because of how those existing
+> >    implementations differ.
+> > 2) Figure out how to enumerate in kernel. I never put a huge amount of work
+> >    into this, but it seemed likely to involve a nasty dance with similar
+> >    very specific code to that EDK2 is carrying and would very challenging
+> >    to upstream (given the lack of clarity on real use cases for PXBs and
+> >    DT).
+> > 3) Hack it based on the control we have which is bus numbers.
+> >    No one liked this but it worked :)
+> > 
+> > The other little wrinkle would be the need to define full bindings for CXL
+> > on DT + implement a fairly complex kernel stack as equivalent in ACPI
+> > involves a static table, CEDT, new runtime queries via _DSM and a description
+> > of various components. Doable, but so far there is no interest on physical
+> > platforms. Worth noting that for now, the QEMU CXL emulation is all about
+> > testing and developing the OS stack, not about virtualization (performance
+> > is terrible except in some very contrived situations!)
+> > 
+> > There is only a very simple test in here, because my intent is not to
+> > duplicate what we have on x86, but just to do a smoke test that everything
+> > is hooked up.  In general we need much more comprehensive end to end CXL
+> > tests but that requires a reaonsably stable guest software stack. A few
+> > people have expressed interest in working on that, but we aren't there yet.
+> > 
+> > Note that this series has a very different use case to that in the proposed
+> > SBSA-ref support:
+> > https://lore.kernel.org/qemu-devel/20250117034343.26356-1-wangyuquan1236@phytium.com.cn/
+> > 
+> > SBSA-ref is a good choice if you want a relatively simple mostly fixed
+> > configuration.  That works well with the limited host system
+> > discoverability etc as EDK2 can be build against a known configuration.
+> > 
+> > My interest with this support in arm/virt is support host software stack
+> > development (we have a wide range of contributors, most of whom are working
+> > on emulation + the kernel support). I care about the weird corners. As such
+> > I need to be able to bring up variable numbers of host bridges, multiple CXL
+> > Fixed Memory Windows with varying characteristics (interleave etc), complex
+> > NUMA topologies with wierd performance characteristics etc. We can do that
+> > on x86 upstream today, or my gitlab tree. Note that we need arm support
+> > for some arch specific features in the near future (cache flushing).
+> > Doing kernel development with this need for flexibility on SBSA-ref is not
+> > currently practical. SBSA-ref CXL support is an excellent thing, just
+> > not much use to me for this work.
+> > 
+> > Also, we are kicking off some work on DCD virtualization, particularly to
+> > support inter-host shared memory being presented up into a VM. That
+> > will need upstream support on arm64 as it is built on top of the existing
+> > CXL emulation to avoid the need for a separate guest software stack.
+> > 
+> > Note this is TCG only - it is possible to support limited use with KVM but
+> > that needs additional patches not yet ready for upstream.  The challenge
+> > is interleave - and the solution is don't interleave if you want to run
+> > with KVM.
+> > 
+> > Jonathan Cameron (5):
+> >   hw/cxl-host: Add an index field to CXLFixedMemoryWindow
+> >   hw/cxl: Make the CXL fixed memory windows devices.
+> >   hw/cxl-host: Allow split of establishing memory address and mmio
+> >     setup.
+> >   hw/arm/virt: Basic CXL enablement on pci_expander_bridge instances
+> >     pxb-cxl
+> >   qtest/cxl: Add aarch64 virt test for CXL
+> > 
+> >  include/hw/arm/virt.h     |   4 +
+> >  include/hw/cxl/cxl.h      |   4 +
+> >  include/hw/cxl/cxl_host.h |   6 +-
+> >  hw/acpi/cxl.c             |  76 +++++++--------
+> >  hw/arm/virt-acpi-build.c  |  34 +++++++
+> >  hw/arm/virt.c             |  29 ++++++
+> >  hw/cxl/cxl-host-stubs.c   |   8 +-
+> >  hw/cxl/cxl-host.c         | 190 ++++++++++++++++++++++++++++++++------
+> >  hw/i386/pc.c              |  51 +++++-----
+> >  tests/qtest/cxl-test.c    |  59 +++++++++---
+> >  tests/qtest/meson.build   |   1 +
+> >  11 files changed, 353 insertions(+), 109 deletions(-)
+> > 
+> > -- 
+> > 2.48.1
+> > 
+> >   
 

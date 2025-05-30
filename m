@@ -1,213 +1,197 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp1091332njh;
-        Fri, 30 May 2025 05:11:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUoD3w7crwudc4e2qzSp9+3Bg8ydJoQNaPcYzPErOU0hHgnxd0W+KqJa18Opbkku9rFowggDYzx/VtsBg==@linaro.org
-X-Google-Smtp-Source: AGHT+IH/8ixJW31rLQ7TYdHcPlbPXnRpwnMNgrfQHWqSTgV1A3RAj/r2qHdO55WOIsjjDco7JBwb
-X-Received: by 2002:a05:622a:4011:b0:4a4:3c3e:5754 with SMTP id d75a77b69052e-4a443ef6eb5mr34976321cf.32.1748607096719;
-        Fri, 30 May 2025 05:11:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748607096; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp1091363njh;
+        Fri, 30 May 2025 05:11:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVwgLoIweaUUH02DbkDAUmz/a5sIBrF+vAFaXDpSk/tvytfeUKBMINldSguGxhB8EU3touvYYpmQ+qeow==@linaro.org
+X-Google-Smtp-Source: AGHT+IE69J7HKvUcu9JTEIiTJVMZDLWxS+RZDGWg66auXqSQYourV2W0mTQ9ltZ3LRADx2eMeNhZ
+X-Received: by 2002:a05:622a:229f:b0:4a4:3414:3f72 with SMTP id d75a77b69052e-4a443c71ac4mr34123271cf.13.1748607109937;
+        Fri, 30 May 2025 05:11:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748607109; cv=none;
         d=google.com; s=arc-20240605;
-        b=buUO5YFpxcQl6TM6yQLVKTqi4aAPGlJM/auv0Xr/w3sht3ErLigKodHgrtZTYC3vRY
-         sjTjEQtqEeLniR63XYpkf7agKJyZN//kAG8LU1xw+Jlf+GMlz/IrH2oiZ98Z0QVlksFP
-         71xbJ0zOu1/3qMncCqI9hk4x3ypV1Ber564Qu94pwI4T8Hz1cFq0BxeeNHubLtnnaMP5
-         Jfu5FAHwg/OTfIzaW/eifMj5kazxU57FXzmN00hCph5xNcd1TzBsrpfM8gUXheF9hFHA
-         jeJevcSIw5naH9iyoJhfHj6xQn949bYPvtB/FqEOiX0d8DsP+fc7rDzOV1Tv5pflavNY
-         7psg==
+        b=QP17gGBuR/PIjHtnvdvAusnhUPuTBq45uAVPPidR0TW/2boWc4SggtGnNWWOrdU6Vb
+         dmoAkYvlPXfUwxY26HzXuit0uD88jOvTBbbsryo035XcMRgmVCn2wZ8uLqMuxrM8aYJ9
+         35K+uzdZcrvTCV1E52FsD3cwoEfOGzrsJCqYeOYdeGfk1PoMhjdBCgkg6Su1H+1U8kRK
+         COQ5RFP6r3HAtNHcTntahgj7dEZLEozzG+Puvz0PtBL2TU3CbEVcNBB/OzQtzMJ2ouCK
+         JrO9K6BF1HyiY6tm1Z9bOXKDm6fCZUS50D3QFPlWUi7Et0hUzgxY+O7OpWWdEy5AVpW1
+         Q45g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=56Obo1kAqckMoE+zmxTq8NB/uf8Zra/91iFs6e+CSNk=;
-        fh=JYoOqrEPOfYbL22MZAslprOvWev7/qEKRGWAF0t5oAs=;
-        b=HeGlpIY4Y7IoLcWlvj3S+/DCCSnJOGBDxyBQnSNJwcqCfWyIQ3sGj3Jeq0EzYdvzVq
-         rLggcIueMJzuI8iDNNTurQo2YodtadO/sliVCg+x6zzJsU6/g4+3arhlNm15xq7R80Qu
-         DlUXetgaRZF23kwC8O4cV++O4+REhOkKJqBu4Y2YWxypzzQeMM37vhFLp9xfn8Hdf6jI
-         XMUYT9EmZMk+kMsVoSmJ4Dl7F7Y+V48D72uOYaIdRfBkPHLKgZqos6wVYOLMpR62Iesj
-         AvnzVlH+aNSrVDTegTKGMgk5SJAzebVIjZXS37XF2aT+QhhLI5eL8b8MjHjyjLnwSEQw
-         rqfg==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=TOXFNxEr+Ox+OIhSNnPCM7SMU40zVSyxunLTDAFk2og=;
+        fh=MgB3k1yyP43Mnsc/NAdk7pY9hIF8DZLBSnPj+D1yBQs=;
+        b=jh3JhW9SUUYK72fK/3yypm4CJfYQGDCNTtQnhTgBlrPalOh1rwJX7uMbO23NzkFgS4
+         VQ7KdRdb56nrG6msE7S6+Urbbrgi/mFGmoeuD+i6ndeSdgjkBp7XXIvhQCruGrnWPMCm
+         GJld0ueApY8cRKN36AW728D6SUDeE9d2RCBnoOYcykr6yEpmTpqJWrqZZ1v7oUZmTboa
+         N9I4oUwjvcHc7vmxBWw3EAdBqeVA9mBvtMk5OWNVSQJ7MjEB1dCvxmAsZJUu0JcFdMCN
+         z37Xkclsp2C6zhKILqdcSUdcdC/4OxgwDf1yV/En1so7qg28U7KS9xl88xgBMjRsHAdE
+         p/JQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=egH9ZraK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZlcauAgF;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fac6ee2e4asi37404456d6.487.2025.05.30.05.11.36
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a435880bbbsi35850191cf.126.2025.05.30.05.11.49
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 May 2025 05:11:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 30 May 2025 05:11:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=egH9ZraK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZlcauAgF;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uKyZl-00018H-Mu; Fri, 30 May 2025 08:11:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1uKyZk-00017T-6I
- for qemu-arm@nongnu.org; Fri, 30 May 2025 08:11:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1uKyZg-0005F5-Ix
- for qemu-arm@nongnu.org; Fri, 30 May 2025 08:11:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1748607059;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=56Obo1kAqckMoE+zmxTq8NB/uf8Zra/91iFs6e+CSNk=;
- b=egH9ZraKToyVyk/zkc6KeH9EfMlAQbyvWNSQWdl/ICD+0OsV2aaUpGYIYaN1jEgbrpzSZr
- WAYP/LlV48I8KlXiOG7ify4Wr47HjaMLSmIWdz/4HFr2H7oyyIqx1NoYuuNj3r2bQvd9+k
- V+p/IRZgola3IyXGWHmvaqekdN8/R9A=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+	s=mimecast20190719; t=1748607109;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=TOXFNxEr+Ox+OIhSNnPCM7SMU40zVSyxunLTDAFk2og=;
+	b=ZlcauAgFgpfVynb7FryfpVnxKgfJa5iUs4O/t7G/RG23eD6jl+QWRhfz6xea3Qkc3WbkrA
+	CPombOxaSuXIyeccNISs9gaNTEIMJRGG2IfqlPqHNd8EFM2sq7zgekTmx16eVQRWUrq0gu
+	GJA6tOv/jx2x+SvzusTnp6w7OrJGjp4=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-672-Xat0Jf-mNp2yp0CCrNIWmQ-1; Fri, 30 May 2025 08:10:58 -0400
-X-MC-Unique: Xat0Jf-mNp2yp0CCrNIWmQ-1
-X-Mimecast-MFC-AGG-ID: Xat0Jf-mNp2yp0CCrNIWmQ_1748607057
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-442f4a3851fso16704205e9.1
- for <qemu-arm@nongnu.org>; Fri, 30 May 2025 05:10:58 -0700 (PDT)
+ us-mta-13-nA4lQe_ZP0uPKABfwM2okw-1; Fri, 30 May 2025 08:11:46 -0400
+X-MC-Unique: nA4lQe_ZP0uPKABfwM2okw-1
+X-Mimecast-MFC-AGG-ID: nA4lQe_ZP0uPKABfwM2okw_1748607105
+Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-3a1f6c5f4f2so807088f8f.2
+        for <alex.bennee@linaro.org>; Fri, 30 May 2025 05:11:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1748607057; x=1749211857;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=56Obo1kAqckMoE+zmxTq8NB/uf8Zra/91iFs6e+CSNk=;
- b=cPZdXBFXu7H9Lk2tCXmba6TMgmY5Gqu6A2Pnj+3m4ZqfOEVnkxg+hq0Qt5IxuNdXlY
- juMqTDMX/54R6T+prdUo9TXADGNEJ+Cpw+HV5JWAMVdPCw07o2o6kYXpJkD+Vm8iuIN8
- /amhnbE9lLXjsQHE7JN439lZyKPPOqyzQkdPzJxAknIysqXo7h6R/+EP8PyAb1Z43dzf
- 8VRn0dJbCG1JgxlNFFKShbp6Pde3JoIwQ2ZIQtW4bRIh5VCWCq45Q4unQGkYxzTF0si3
- Jic2awSqaAzNKOn1Loz9uWteACtZDQpNlFwgoL1XJOAHoLz31Ej14tF4bJyD4Mq2TUzI
- qmlw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV5l7JjNRz6wgo/ZGxGSNRIP9tifbATQip5krsjlCvLCuoYezQhnYdjGfH9I3NAvZ2xAoBIRpIXkQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxUc5inhQYdHjv2SFoQRC4jicsQ71sB/Yz/3ovC/B+p48IwH8uM
- m/t+eBr0O/clmkdtSPWb9a++ZWn3fvZSEzjwdDGGTN7qtDPS5TqDEN+6Jeg6mK6ZnFnlm2O0c6b
- t3choXxoPIqHLIz7uj3UDc6JrVKwJIjkWT5vRysJWTdd8efL4dU13TA==
-X-Gm-Gg: ASbGncvyoAoSMRsX4QLwdxHWdFntmk69qaPZiWK0GS3J0OCJvORKO+BphhxYv0JWZoD
- a46Bh+eSws0QKWXkJuVNzvW00HfzfjUUkjP9iiVZJqoVMXUcXV3z5eHZvZbMfbgQbGUXrI6cwL5
- eV47usIh4n9QyEF6ouU8p6u9obmCQjenHnkRd2e/4grRVYHPHyh4HZ2bxTIYTgLos2Ng/+x6qNK
- AzEUrrkXLbY26XNYzDCW+POhskT5Rhx/7OyF8rg9cYZFli7HZRZD7kkGotkCe4eY1FOiSanB24C
- MIEH0Q==
-X-Received: by 2002:a05:600c:3147:b0:43d:b85:1831 with SMTP id
- 5b1f17b1804b1-450d8757eb5mr22549895e9.0.1748607057056; 
- Fri, 30 May 2025 05:10:57 -0700 (PDT)
-X-Received: by 2002:a05:600c:3147:b0:43d:b85:1831 with SMTP id
- 5b1f17b1804b1-450d8757eb5mr22549375e9.0.1748607056632; 
- Fri, 30 May 2025 05:10:56 -0700 (PDT)
-Received: from redhat.com ([2a0d:6fc0:1517:1000:ea83:8e5f:3302:3575])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-450d7fb00ccsm16526085e9.17.2025.05.30.05.10.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 May 2025 05:10:55 -0700 (PDT)
-Date: Fri, 30 May 2025 08:10:52 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Li Chen <me@linux.beauty>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- Song Gao <gaosong@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Sunil V L <sunilvl@ventanamicro.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-devel <qemu-devel@nongnu.org>, qemu-riscv <qemu-riscv@nongnu.org>,
- Li Chen <chenl311@chinatelecom.cn>
-Subject: Re: [PATCH REPOST v4 0/4] acpi: Add machine option to disable SPCR
- table
-Message-ID: <20250530081034-mutt-send-email-mst@kernel.org>
-References: <20250528105404.457729-1-me@linux.beauty>
+        d=1e100.net; s=20230601; t=1748607105; x=1749211905;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=TOXFNxEr+Ox+OIhSNnPCM7SMU40zVSyxunLTDAFk2og=;
+        b=UlHOPjQBQckYilCHRTvU60CjwVLVHjlXIeOWjrEtLzxdKZY1ZgHtlckOeVErZzKYB/
+         rZWz8Ez1bWQ4k+jLweX4YbksLKNGARTRo9vDmgS1K7vMOdyqC8Z6s3MeaFT1Jom+/Snf
+         5Y3WpCwnjwJR5v7Z+yHMLlqf2brDtJX8jZvM7QhMMCrTa29wEdDqePnt22svAsSLvSl4
+         GUIe6d+cIgawUDoy4nPw9SL3p9kyjItxpLwOTPvG6M6N9odjNwCjy1vDTFPUXurJPScw
+         7ryzYSznLCYEZgoPOeBc+f/c2k0YjJrRLmNjTXa+t3ovxqIaRDG4zxwRhlIfShFB1AKT
+         Jp9g==
+X-Forwarded-Encrypted: i=1; AJvYcCWsrWyUcHDacBxeByBbozit5T2Lr/SoMMBxo2GM40RAH632kBygCU7s31+RLEbB6O1cAjjIJcGkuVhVVg==@linaro.org
+X-Gm-Message-State: AOJu0YzaDclBVTpUgA/uy5CP53RGmBYjw+GvoN2gWXWs2usyXCVjcumY
+	ZQDnDK/g/aR82NVEMFPWGvDMSH3LH/VsKkwCz76kCj7WRadTVShIbzZAdi07VcJT2QqlXH4QIlH
+	CIPcTJg0ylsK+MzShhsdBmnNnE9nkzqjClMo596KemfWavgw8hol5mnkGNg==
+X-Gm-Gg: ASbGncv59zxjMkdPFEbF9koawETb5jXX+7I3984RvgVRiHTyEN6k2vbRoBUoxrbbPG1
+	bIU9e3aYGKSpKE8e/frgedlZ10nyqwnjVHRaE+ey7dNPuL1daSp6AnD10oOLLeC34fcrUHZf5V3
+	zHgNZ4FzDvkWJz/7gctK6Q1qOZ1DLxyAv8XNEoxZJT6fhwjNz4kp5O+FlGTu7IyG8me99n1t8i3
+	pZ4SCUbI7Zem/jo6UpOb89M+4uZWHCdCqtJEDMkULC0DzfGUO1zm1hkklQNK8zfiq4uTNanlFaO
+	NoRU2+9CxsV5ba7ceu71twfcB/IyKJSH
+X-Received: by 2002:a05:600c:3b0f:b0:440:6a37:be0d with SMTP id 5b1f17b1804b1-450d884c411mr19886605e9.15.1748607105303;
+        Fri, 30 May 2025 05:11:45 -0700 (PDT)
+X-Received: by 2002:a05:600c:3b0f:b0:440:6a37:be0d with SMTP id 5b1f17b1804b1-450d884c411mr19886335e9.15.1748607104885;
+        Fri, 30 May 2025 05:11:44 -0700 (PDT)
+Return-Path: <imammedo@redhat.com>
+Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-450d8000e3esm16552325e9.22.2025.05.30.05.11.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 30 May 2025 05:11:44 -0700 (PDT)
+Date: Fri, 30 May 2025 14:11:43 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>,
+ <gustavo.romero@linaro.org>, <anisinha@redhat.com>, <mst@redhat.com>,
+ <shannon.zhaosl@gmail.com>, <pbonzini@redhat.com>, <philmd@linaro.org>,
+ <alex.bennee@linaro.org>
+Subject: Re: [PATCH v2 06/25] hw/pci-host/gpex-acpi: Propagate hotplug type
+ info from virt machine downto gpex
+Message-ID: <20250530141143.6b13376b@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250530111413.00003c66@huawei.com>
+References: <20250527074224.1197793-1-eric.auger@redhat.com>
+	<20250527074224.1197793-7-eric.auger@redhat.com>
+	<20250530111413.00003c66@huawei.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <20250528105404.457729-1-me@linux.beauty>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: YcOity5EknWzdkVB-6BKCP4wMu3LnO0fl2lm2su8zMI_1748607057
+X-Mimecast-MFC-PROC-ID: yX65W5NS1CaEJ3X_DpHLlim5A-Seo89VRZ5tKYPNaSc_1748607105
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -49
-X-Spam_score: -5.0
-X-Spam_bar: -----
-X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.907,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XweoOpgCrWMx
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: 5tDG3KDSVZ2z
 
-On Wed, May 28, 2025 at 06:53:34PM +0800, Li Chen wrote:
-> From: Li Chen <chenl311@chinatelecom.cn>
-> 
-> (REPOST because the previous post failed to send to qemu-devel/qemu-riscv/qemu-arm,
->  see https://lore.kernel.org/qemu-devel/1971648603b.dce1f5d22901195.6702025346547333607@linux.beauty/T/#u)
-> 
-> This series introduces a new machine option, spcr=on|off, allowing users
-> to disable the ACPI SPCR (Serial Port Console Redirection) table.
-> By default, SPCR is enabled. Disabling it can help ensure that the guest's
-> console behavior is determined solely by kernel command-line parameters
-> on arch like arm64, avoiding unintended serial console configurations imposed
-> by firmware.
-> 
-> Also add tests on AArch64 and RISC-V virt machines using TCG and UEFI boot.
-> 
-> Changes since v3:
-> - Add Reviewed-by from Sunil V L <sunilvl@ventanamicro.com> for patch 1, 3, and 4.
-> - rename enable_spcr to acpi_spcr_enabled as suggested by Philippe Mathieu-Daudé.
-> Changes since v2:
-> - Omit UART device from DSDT and SPCR construction if no serial device is present,
-> as suggested by Philippe Mathieu-Daudé.
-> - Add Reviewed-by from Gavin Shan <gshan@redhat.com> for the first patch and fix style issue.
-> 
-> Changes since v1:
-> - Add bios-tables-test for RISC-V and ARM as suggested by
-> - Add Acked-by from Michael S. Tsirkin for the first patch
-> - Add Reviewed-by from Bibo Mao for the first patch
-> 
-> Li Chen (4):
->   acpi: Add machine option to disable SPCR table
->   tests/qtest/bios-tables-test: Add test for disabling SPCR on AArch64
->   tests/qtest/bios-tables-test: Add test for disabling SPCR on RISC-V
->   acpi/virt: suppress UART device & SPCR when guest has no serial
->     hardware
+On Fri, 30 May 2025 11:14:13 +0100
+Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
 
-Who's merging this?
-
-
->  hw/arm/virt-acpi-build.c       | 18 ++++++++-----
->  hw/core/machine.c              | 22 ++++++++++++++++
->  hw/loongarch/virt-acpi-build.c |  4 ++-
->  hw/riscv/virt-acpi-build.c     | 10 ++++++--
->  include/hw/boards.h            |  1 +
->  include/system/system.h        |  2 ++
->  qemu-options.hx                |  5 ++++
->  system/vl.c                    |  5 ++++
->  tests/qtest/bios-tables-test.c | 47 ++++++++++++++++++++++++++++++++--
->  9 files changed, 103 insertions(+), 11 deletions(-)
+> On Tue, 27 May 2025 09:40:08 +0200
+> Eric Auger <eric.auger@redhat.com> wrote:
 > 
-> -- 
-> 2.49.0
+> > Propagate the type of pci hotplug mode downto the gpex
+> > acpi code. In case machine acpi_pcihp is unset we configure
+> > pci native hotplug on pci0. For expander bridges we keep
+> > legacy pci native hotplug, as done on x86 q35.
+> > 
+> > Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> > Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+> > ---
+> >  include/hw/pci-host/gpex.h | 1 +
+> >  hw/arm/virt-acpi-build.c   | 1 +
+> >  hw/pci-host/gpex-acpi.c    | 3 ++-
+> >  3 files changed, 4 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
+> > index 84471533af..feaf827474 100644
+> > --- a/include/hw/pci-host/gpex.h
+> > +++ b/include/hw/pci-host/gpex.h
+> > @@ -45,6 +45,7 @@ struct GPEXConfig {
+> >      MemMapEntry pio;
+> >      int         irq;
+> >      PCIBus      *bus;
+> > +    bool        pci_native_hotplug;
+> >  };
+> >  
+> >  typedef struct GPEXIrq GPEXIrq;
+> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > index 7e8e0f0298..be5e00a56e 100644
+> > --- a/hw/arm/virt-acpi-build.c
+> > +++ b/hw/arm/virt-acpi-build.c
+> > @@ -129,6 +129,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+> >          .ecam   = memmap[ecam_id],
+> >          .irq    = irq,
+> >          .bus    = vms->bus,
+> > +        .pci_native_hotplug = !vms->acpi_pcihp,
+> >      };
+> >  
+> >      if (vms->highmem_mmio) {
+> > diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+> > index 1aa2d12026..f1ab30f3d5 100644
+> > --- a/hw/pci-host/gpex-acpi.c
+> > +++ b/hw/pci-host/gpex-acpi.c
+> > @@ -204,6 +204,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+> >              if (is_cxl) {
+> >                  build_cxl_osc_method(dev);
+> >              } else {
+> > +                /* pxb bridges do not have ACPI PCI Hot-plug enabled */
+> >                  acpi_dsdt_add_host_bridge_methods(dev, true);  
+> 
+> This is awkward but explains why my CXL cases weren't causing trouble.
+> A mixed config is counter to the recommendation in the PCI firmware spec
+> 
+> "It is recommended that a machine with multiple host bridge devices should
+> report the same capabilities for all host bridges of the same type and also
+> negotiate control of the features described in the Control Field in the
+> same way for all host bridges of the same type"
+> 
+> I guess if any OS isn't coping with the mix then they can request native
+> hotplug.
 
+guest should be able to cope with mixed configs,
+ACPI pcihp is a crutch and works only for coldplugged bridges,
+while hotplugged bridges are handled by native hotplug.
+
+> 
+> 
+> 
+> >              }
+> >  
+> > @@ -279,7 +280,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+> >      }
+> >      aml_append(dev, aml_name_decl("_CRS", rbuf));
+> >  
+> > -    acpi_dsdt_add_host_bridge_methods(dev, true);
+> > +    acpi_dsdt_add_host_bridge_methods(dev, cfg->pci_native_hotplug);
+> >  
+> >      Aml *dev_res0 = aml_device("%s", "RES0");
+> >      aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));  
+> 

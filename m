@@ -1,148 +1,114 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp586927njh;
-        Thu, 29 May 2025 09:12:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXrQ8BMkpTGQBSqxE/BTY/Oc0IjG/+MpfcgLaxWEc0IMEjLufkiEMNOkC6Za+WJoso03TXgZ+IUmQBMHQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGgMvaRUpO9zI3P4SR8TnJoz4QdHxFLqCN2hJoCNtgaMuoEc2qAdlibgS5Nm7JCGLOqLXy7
-X-Received: by 2002:a05:6000:2409:b0:3a4:e4ee:4ca9 with SMTP id ffacd0b85a97d-3a4e9449a7amr6374282f8f.23.1748535128279;
-        Thu, 29 May 2025 09:12:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748535128; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp993070njh;
+        Fri, 30 May 2025 01:40:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVL1N1d5MU/PMoOeO8K3kPw5Hp3N12rcKvEfauOV4h4o8bdVATkZTudw3wT6RhCL9EBi0IkEUlY0lMcdA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGedP34nVnjT8CReCwDqgNuSGMkhcCHcSCmvvB/AARFK76ww595wAIyojWov1kTqGOfcmfa
+X-Received: by 2002:a05:620a:6183:b0:7d0:9726:5b91 with SMTP id af79cd13be357-7d0a2052b89mr381748085a.56.1748594436821;
+        Fri, 30 May 2025 01:40:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748594436; cv=none;
         d=google.com; s=arc-20240605;
-        b=XpRUpWwjLi9ozhM6G3wtZNb+fcCl3KcNytoXDxQ2XSj2yyYuDwpFxq2CL4ISdBEF1H
-         PllpKMeugCA6fI8abTBMXAyWJoZEDqFsG3ggNKXkjlQ5MXz1Wx+HsWAV0Qyd2htUYRr/
-         +h0LbgeF2leOBT35wbqov/tzuKmH32u5iW1CmEO8s5eVlFaYzdIJKp1j70RUJEVp8PDR
-         Oh34aQpZBlb3xiZsp9dKVmgE6+5tpBSQWnjjMKVHltkj5l9gZYyfnun4Gn6/VUTvkLZ2
-         hvgsTHBd+guzBZF8mTB/oNsi6khwcGem8e8vh0C/TXiX1R8lq4BiEqyHe4xlnXKDa9Lx
-         Vc0w==
+        b=GmKGL8rdajDUeu3u3nsb2c0fL7o3hqNQJMxIKcxZtUVNqm7DxWDsK40xkXxb+vlXIr
+         QrOG2eCuCq0DMCnkQzkjpM2ZDVgTVZaEsTlFQEG0ay35rZpSntWocYG51Z0Fj/eZXFsy
+         UjZWvVIB7yFdqtHLHWEK0OOG74vXni0qGlNPDTJfIiEbyBb1y6YNvpRxvGJpPOBK5mIo
+         G+v9yZ/6HjlXyq7VIUjrhLAq58xY7TIaEYfAkjF/edwjIbXy0Zrd9UaqgvbZeTVe1cNZ
+         EHAUnwdKtYnat+KLkxxV/iE9l4hxa12ZPtL15dStgZnD8d2YxnPbVd5Ia8lAJYKqiyH2
+         f0FQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=+mel1eN+tm8poZ5dlpP/RdF9Erss8TOllz28gw93WIY=;
-        fh=wasvv0eGVZBy3gZNxaXj31ITBGw/CpGxqjprmPadPm0=;
-        b=OZ+LHMZ5lILxYc0atOE45pClyXEa+hxj/Qcy41hQ7UVj50s6Ugycv8QHSzaDLvLZNH
-         OytMS7Fh+JNssEQRwjOyghIfa9yq87AQQEupAboJGpBLrnNjmpBkNQFKdKejNGTw0pSz
-         qMp7ghpceMti5Ik6m6pbJXAQHtslMYOHnoOKXNJHxh1olrrfxAR+c8bX+Bm6v5wcQfm1
-         LvjMNXsAM53+yc65NNv/YVuSRV6ps07w3js1AKMWrntzpgbPJQfayzUgNG9aYaT/8FA2
-         fwKGCFtDwkQuOza8cnuiiygXpvXxwK+gvsU8LT5y6vd/IUg3nLRhSLJZHvcLLAJlANx0
-         C2hg==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date;
+        bh=2C6wI3MAkp5ieEqWazX8lu2/dCW6uYLt5/+tEtvZU88=;
+        fh=De5j/+RFiHp5oysg/kfBHcT9O0ASuV5hpNukEk4skqM=;
+        b=KqR5vnCFBwKo9HuEOucALjIKKLUIV6/JJz/N3Pzz//MS3inPk0foPKBH5VbxDQ+PTq
+         bfqMwqqvap8E18hD7czLLPMBypXzl+jHnv8OT70XeeFr9hpxD24Can8zNNEUXn6wey+D
+         AMHkmPutNK/7T9eYP4USK7qvja4Hj7eX4Kh87LXZdvpXTpxwC5oRcXcMP1sc1ErFr4rA
+         WSbQXYDxvPSkuPW8FrB5znfL12DZgYmZaz5NPe/irVGE/8adbBUKrypl5J61paVIvMpJ
+         lMmtbQNeTtKSY3ccHF2szYvHtq7EH1FT+wbDeNDBpVvpEONXnnugGTFV4DE+EM1hpsWD
+         u5hQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aeAst65W;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a4f008bda5si1299318f8f.605.2025.05.29.09.12.08
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 May 2025 09:12:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id af79cd13be357-7d09a1e080bsi338288285a.278.2025.05.30.01.40.36
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 30 May 2025 01:40:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aeAst65W;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uKfrJ-0005HL-Up; Thu, 29 May 2025 12:11:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uKfrI-0005Gd-6C
- for qemu-arm@nongnu.org; Thu, 29 May 2025 12:11:56 -0400
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uKfrG-0002j3-Q6
- for qemu-arm@nongnu.org; Thu, 29 May 2025 12:11:55 -0400
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-70e3e0415a7so11054797b3.0
- for <qemu-arm@nongnu.org>; Thu, 29 May 2025 09:11:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1748535113; x=1749139913; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=+mel1eN+tm8poZ5dlpP/RdF9Erss8TOllz28gw93WIY=;
- b=aeAst65WrlGF36xFQkSth5kZUxoQ5WS0bpofWJnKn+W+0gM5nGVBQ1LyuKpSsM0hMD
- CC8YSGNyfz87w46yfeoo+u3iDgNlDa/gidGqfmEcy2b1uEg6jx7VJBZdQ2Hx6D8FIPyq
- UXdcMiipmnFoGxdZs19XSHl6y1PCvrYRFdDoHMv7XWUlbiWHp33EkzFLENuyxTv3lgEm
- 0mcI6OqESaIQhDHpdrgfiFfg9pbk5C46Gq5NkciVPW5ufpoEoEdthSqbE9uew8eCX49S
- wXyToNsy25Ap7YveCjYy1tLPtfqwlWPhopf91V0sE+vsBSP56iGvtzDDU96DUnVsB0Il
- P+Cg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1748535113; x=1749139913;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=+mel1eN+tm8poZ5dlpP/RdF9Erss8TOllz28gw93WIY=;
- b=NN8LDqJ1MzckOBkJajKMjo2jWwjIbHHwedpBNnyQZUFYIF0V3SXbSDzwaqavcb01Zy
- U9TKmWuIW9quCom2XCdefSfSPnFnBzrvemJxkLQ3G3jZ6htqvEEA/w18j0bBIpZ7jUOw
- 7ylWr9rZs10qaCpcimRT7SBt32K42Pg231vylTjQrpZG7GMEmU9Ki4Q6MYIqJUsUSrnN
- UjFmLqejGtlzKvkKsVVFZhNLjys3eFHA5/FUA4yyCW8TingV2KZLsSMeNw0pf4i6p9eo
- ewc7BCBP7tczCD8C8Zj6Rwsmt1JAV2MPUZ3FFmTlQbZWCSMUKd+jZYp5aBgBFw6IuTRt
- W3yA==
-X-Gm-Message-State: AOJu0Ywj1gO8axp+tQ/RRoixhD2ilOcMh1OIdlddMqWBbji0iHJDZnMp
- PUxh6n/1RtySGc0RF17NTadv4vxNBh6OzznamOZjYKu7Qth9JhwTdBiEYTx4z+FP8YI4nY8hK9L
- 05J/sdpaT4fdBZtM1/NFZTncU+TF2uSDemGHZU1CbWw==
-X-Gm-Gg: ASbGnctgI19ZSu5RmNgmJgzdGtkOK5wloU+b/H9Nr8OcbxXYF2c2yd5RehL4iglrl+7
- /lOLMcTUC46Y18A0RWuC337KG0RktgPczxE5JW4gXbh6DP5Qc0Vo3xsF/D7b39UMyv+v7tKPZ4X
- 7oI6zWYONKwIqYKWIMOI55BV2LjdRL+Qy6VA==
-X-Received: by 2002:a05:690c:6403:b0:70e:7158:6fda with SMTP id
- 00721157ae682-70f877a3b54mr70879897b3.9.1748535113595; Thu, 29 May 2025
- 09:11:53 -0700 (PDT)
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4b7xVY3WZpz6L52c;
+	Fri, 30 May 2025 16:39:17 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+	by mail.maildlp.com (Postfix) with ESMTPS id 5EEAA1402FF;
+	Fri, 30 May 2025 16:40:35 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 30 May
+ 2025 10:40:34 +0200
+Date: Fri, 30 May 2025 09:40:33 +0100
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+To: Eric Auger <eric.auger@redhat.com>
+CC: <eric.auger.pro@gmail.com>, <qemu-devel@nongnu.org>,
+	<qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <imammedo@redhat.com>,
+	<gustavo.romero@linaro.org>, <anisinha@redhat.com>, <mst@redhat.com>,
+	<shannon.zhaosl@gmail.com>, <pbonzini@redhat.com>, <philmd@linaro.org>,
+	<alex.bennee@linaro.org>
+Subject: Re: [PATCH v2 01/25] hw/i386/acpi-build: Make aml_pci_device_dsm()
+ static
+Message-ID: <20250530094033.000076ec@huawei.com>
+In-Reply-To: <20250527074224.1197793-2-eric.auger@redhat.com>
+References: <20250527074224.1197793-1-eric.auger@redhat.com>
+	<20250527074224.1197793-2-eric.auger@redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-References: <20250519170242.520805-1-thuth@redhat.com>
-In-Reply-To: <20250519170242.520805-1-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 29 May 2025 17:11:41 +0100
-X-Gm-Features: AX0GCFul07BWFixlJlKTdh5b25Rd47Gx0rGyLrnsCOW2cDgehhk5PtEtFmQU9Ag
-Message-ID: <CAFEAcA8hYOpx+Nxp=ZN2hprb1rPujc54Hh0X7iSn8-30rkn_=g@mail.gmail.com>
-Subject: Re: [PATCH] tests/functional: Add a test for the Stellaris arm
- machines
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uTxv9/wov/ms
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100012.china.huawei.com (7.191.174.184) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-TUID: bft9scoR1oM0
 
-On Mon, 19 May 2025 at 18:02, Thomas Huth <thuth@redhat.com> wrote:
->
-> From: Thomas Huth <thuth@redhat.com>
->
-> The 2023 edition of the QEMU advent calendar featured an image
-> that we can use to test whether the lm3s6965evb machine is basically
-> still working.
->
-> And for the lm3s811evb there is a small test kernel on github
-> which can be used to check its UART.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On Tue, 27 May 2025 09:40:03 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
 
+> No need to export aml_pci_device_dsm() as it is only used
+> in hw/i386/acpi-build.c.
+>=20
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@linaro.org>
 
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 
-Applied to target-arm.next, thanks.
-
--- PMM
+> ---
+>  include/hw/acpi/pci.h | 1 -
+>  hw/i386/acpi-build.c  | 2 +-
+>  2 files changed, 1 insertion(+), 2 deletions(-)
+>=20
+> diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
+> index 6359d574fd..ab0187a894 100644
+> --- a/include/hw/acpi/pci.h
+> +++ b/include/hw/acpi/pci.h
+> @@ -36,7 +36,6 @@ typedef struct AcpiMcfgInfo {
+> =20
+>  void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *in=
+fo,
+>                  const char *oem_id, const char *oem_table_id);
+> -Aml *aml_pci_device_dsm(void);
+> =20
+>  void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus);
+>  void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope);
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 61851cc840..f59026524f 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -338,7 +338,7 @@ build_facs(GArray *table_data)
+>      g_array_append_vals(table_data, reserved, 40); /* Reserved */
+>  }
+> =20
+> -Aml *aml_pci_device_dsm(void)
+> +static Aml *aml_pci_device_dsm(void)
+>  {
+>      Aml *method;
+> =20

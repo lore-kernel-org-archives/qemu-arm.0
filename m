@@ -1,512 +1,200 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp1036944njh;
-        Fri, 30 May 2025 03:24:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXJ9lNPgMZ1d4gntjeU817KDgcm41xBAtGMbjF0EV4EJKwv5SOUhOREDodbf9LC3tdhFcFfyftG934p9A==@linaro.org
-X-Google-Smtp-Source: AGHT+IHzQjt4cofkKOjG/MDTH46dXBvxj8Gb6cP7DjkPsn7RNIMrng1/WdkU4O5LC4+h4a4Tc+LL
-X-Received: by 2002:a05:6000:250d:b0:3a4:ec23:dba5 with SMTP id ffacd0b85a97d-3a4f7a3e96cmr1936384f8f.5.1748600665453;
-        Fri, 30 May 2025 03:24:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748600665; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp1070979njh;
+        Fri, 30 May 2025 04:35:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCX6wCdMCYvu8Rpp51BuB0+pv24HeXbfOqraZGsfmEBjZ0UGwyUtzpMcjgS1Wtn79KTMsERfc8gp3aWVfQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHkkdDKf29pmjZ4X1DRocPQUY5IvWFIj7A7jsi5zExg5p6exgveeoC/SlZMBew7F3m3KHep
+X-Received: by 2002:a05:6214:4017:b0:6fa:bd16:8c6c with SMTP id 6a1803df08f44-6faceb618b1mr59072866d6.7.1748604953534;
+        Fri, 30 May 2025 04:35:53 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1748604953; cv=pass;
         d=google.com; s=arc-20240605;
-        b=Tj2LO/nn7Zez9ByDSaUBLoQHNRHBMtjgcVxTi5HkagpwZ27PIkDbDnB65aDrNHGY4f
-         yCcQo2Y3gIJuYR77Ns77Lq6yzGWGA7Q9KhSWJltmaaAoCptZzmavm2fxf4Mzw4JjetAC
-         njDzIi4WaAX08ECTdVOxG7t+LPrSzFhg7l0KBuS3DxNv9mYI3n8jZS2HOMmHHpwS4s/J
-         qns7NYYB1TNbFkYjgrkO7m6lDoJkHmxu8NjvCEVu7DQTG/qyUxQNAaVtvv72VIzZFZj3
-         A0ULF8yghv10QLvCsebL2WUDvf/dx9Mgyh4+Pd5RM1sac5nIxTwjIrcbYtY0HhP24ZKc
-         Gfgg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date;
-        bh=e1OUmWL23AisSsks9erPcFWBfWV4ZRkRMATvyg1YyG4=;
-        fh=De5j/+RFiHp5oysg/kfBHcT9O0ASuV5hpNukEk4skqM=;
-        b=fu58nQkGjvjGtGswjx0oOvJQ5GE1HUuTVk38VN/cVhAgQ9XkkNqHwaPWL5TYXnDdb+
-         1HlTbb2QrHlZIJ2dN3Yvg3Jr8mIuGu9bP3yXHzBVxEwzHhdneerHnkzyrIS2b30bjkgJ
-         f20yPxwdxgdHuhkw4dGxxnBIRgdhLAv5GlKeBbNnF3kzCkAPxOVU4DZjiVWt/wxCrSaT
-         axY4duwhy62217ErXC+cIsKXnX6JG22t9VwGK2h2iXCj+Kk8NrapHxZMGlMFCq+RmYkg
-         pF98lz1hFcg1aAacRWLkLX1GxLlj28rrmlHNh7/5tYdwNqTo/C5LSvyYyydq56K8gCBs
-         11wg==;
+        b=SADSipCUpDcpdWi3XGKajnCj+a/++fhnZ4fnPpm7pY0xSr84hVa1m5LSRt0YyAJCNh
+         3S/yZ6l8AR3/iHtvBLBBSWDzAzDwGLTOQhibC6+VJrtMojVMnZcpoyfBu+LqlcvOeE2l
+         /pzlhb/NSpWFtyvJljMix4qzH9krQYhZ1GTW5J+Dw6J7udL2W7tCEvldf0s2DrJOmFS5
+         7/8pZL3QgP6br5DaPhd374rC4z6xo08SMszB0mJAZ4y4SUcHksF9gEqR2DVEXZ8GNJ+4
+         XpxAOd9CQW42elYDFP8XiqO4ysBb9SHh8usu+DHoI6MGS7OJtcB4P0Lg+4POmnOjd4Bz
+         IQRg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=SmjtuBgro1iLL+lQ7PfSG+YZIWnOMKtg8axX21EwLnc=;
+        fh=liPv1yFrpMgww6kIBsv+XIrvDcBvSFDjSkEQFCd7BNw=;
+        b=Mp1g4WYVktSBPH2wULMmHg1WvpTcYyG55UMtPh+ZyhsHn0fK9JzzfjpFu1hH/FocBc
+         k7OCyNxslSZASPCVah8RfzdY+CnODuzzjHhwvp4lcwWclTCv9hobiT2ajpqrRQDJEZSE
+         mHCnICq1OteHe3R7T31s1fgulhCHBbiNXawOsKIUDCufULTnaqb5GRV26fIXjMyvX5s3
+         5jv7TcoPhprlg2I0YKUNUY+VakUAgzXu92gW6CE5ki2eviumbIzHiQT79lFdxOy40dAQ
+         Q2L9JRM7TVaHs74UikQyHVnnbtenMrwWpUdDU9LG0QiT6lFdDei1I1d5bB/RwBpC1xFo
+         aTMQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a4efe5be89si2531429f8f.217.2025.05.30.03.24.25
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 May 2025 03:24:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IKPLte22;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-48098-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-48098-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-48098-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id af79cd13be357-7d09a3067c8si377232985a.554.2025.05.30.04.35.53
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 30 May 2025 04:35:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-48098-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4b7zql1rTKz6GFKD;
-	Fri, 30 May 2025 18:24:19 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id AA5C51400C8;
-	Fri, 30 May 2025 18:24:24 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 30 May
- 2025 12:24:23 +0200
-Date: Fri, 30 May 2025 11:24:22 +0100
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: Eric Auger <eric.auger@redhat.com>
-CC: <eric.auger.pro@gmail.com>, <qemu-devel@nongnu.org>,
-	<qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <imammedo@redhat.com>,
-	<gustavo.romero@linaro.org>, <anisinha@redhat.com>, <mst@redhat.com>,
-	<shannon.zhaosl@gmail.com>, <pbonzini@redhat.com>, <philmd@linaro.org>,
-	<alex.bennee@linaro.org>
-Subject: Re: [PATCH v2 14/25] hw/i386/acpi-build: Move
- build_append_pci_bus_devices/pcihp_slots to pcihp
-Message-ID: <20250530112422.0000376e@huawei.com>
-In-Reply-To: <20250527074224.1197793-15-eric.auger@redhat.com>
-References: <20250527074224.1197793-1-eric.auger@redhat.com>
-	<20250527074224.1197793-15-eric.auger@redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IKPLte22;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-48098-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-48098-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id D9C101682CA
+	for <alex.bennee@linaro.org>; Fri, 30 May 2025 11:35:54 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 11B7D2222C0;
+	Fri, 30 May 2025 11:35:49 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="IKPLte22"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4508C1D47B4
+	for <kvm@vger.kernel.org>; Fri, 30 May 2025 11:35:47 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1748604948; cv=none; b=mCsyN42pcz3A8q9dzn+r2c5k1mOolSoIbJ+db//1Iu96UYlbgKnKj4r/aeNaLeVP24idjWJOd5Dcb9+WVPuCdDH5bt7YjWPs5ybGsw3b7k2vY/olRhUzCO3KLuLIUQvh4lk1XK2EcuIOl/2vbnqk5+pyTWDDx8CDpfSgCSj/dh4=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1748604948; c=relaxed/simple;
+	bh=gkPB2JXcf/REB1n6rNxjG3Nmd2uXI152jyLmRY3Uk+U=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=pG5V4FB/ZVwuUSM+NY5ISnmYhp4+XD5zJOlq38M0/Q7kp8enRr426Q4yoKAPE2ZSepVXkh6v0h6lnmy0wY9DRE0Y1A6ktaFOiDUH3OljU1L/C13mXEGBfaPnD5qpwNER1iLbkHCx0xDceWO/eTYWoi9kCFNrN0wgUR31ieDkxSo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=IKPLte22; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1748604946;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=SmjtuBgro1iLL+lQ7PfSG+YZIWnOMKtg8axX21EwLnc=;
+	b=IKPLte22/jDaZTNU80JviScGwXA7JRhQBJNl+N2uiPmgrUBrsGYQRLJDk8y4ZRAUv4WTcv
+	gvHoTKo+ij/BS0akmEoKE0tI1MjiiLZ3Be/eTyJjClQ+sTdF5nCioGQSLL6lCnkqLDmjpA
+	R7Mi7AGkzGjG9XzHgn5WW4qrDzgHS+o=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-299-FusCVeXBN1GNPjYGn-qzCw-1; Fri, 30 May 2025 07:35:44 -0400
+X-MC-Unique: FusCVeXBN1GNPjYGn-qzCw-1
+X-Mimecast-MFC-AGG-ID: FusCVeXBN1GNPjYGn-qzCw_1748604944
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-450d8cee684so2416115e9.1
+        for <kvm@vger.kernel.org>; Fri, 30 May 2025 04:35:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748604944; x=1749209744;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=SmjtuBgro1iLL+lQ7PfSG+YZIWnOMKtg8axX21EwLnc=;
+        b=LNpND6ZNC1N6U5xsn0GecRCq7svf3xyjDhNT6UZVgyO+bYvynlYtkvNm0KvvxdDb8e
+         pxotPfpt+IaWs2rgvTKpDbHLiWk/7gKHYkbcoiZmsSWF+awy4/XpzRB1aWHaV3JF9PcZ
+         2cTlXTAwqyaI7dAJSWDtS5210j7O/YTHon9oTA7SShjgHmmb8kWTHlgumZf1uam+fDv4
+         RQMWobzgKk6p/1lqniERorkq5hJlOo0Es4muMGVFVsQJPeBZvIc3dwSOpaPE0rXoNcrz
+         wel8wi1MJLLxSl083sgIpeuVXJosTnBsR8l+dddDbxg9dYa/2Dk9xmHqXKW6o9z7e0mI
+         qxGA==
+X-Forwarded-Encrypted: i=1; AJvYcCU4SXG9GJCD1Bjb8angfjX3zO6px/Z5Br3PqKuCYOVNdVg83mISLA54RpOoI8tI0tE1eT8=@vger.kernel.org
+X-Gm-Message-State: AOJu0Yx/db9s4arllHkPFIAIA2oziQkGg+L2C0b0/G4m7OH6QqqvhZix
+	CrZR2Brei0dHE75PyNoUF9+M0RJvg4JZ8VWKdrUblwzvGMYZE9uet9DJAQMIIHOZl9xpvrQLJMA
+	KDMRSD5VbQOBH/NOL4nMiuX4tZ/Wc16QQ36IGHFk8wOfVuUV9BbYW4w==
+X-Gm-Gg: ASbGncsgIl4KQX/7fgfqyAKcZiSAgekPZnhuxVjzlSWDwU3bVtf5HfUcrllenJfHJM1
+	1AJCuvcBHbo1vCZMuO2TJlO94348QxzWBHJDMAPlTEVTE2EJcsdLnvURslqlqbI3Goc7qhid6wA
+	5TPQpd8vJBqZelk61P9p9fIYO1eJEfvMTlbcL2Ec9+ge+qkI4j/GvCOeE7ozc7IpNJaHwTr52/N
+	V2bXUydrZoam3QLxQfIg6qWaGK0S0TbwTe7la6yYFoEMzDMWTsW63z0+1yND9EMdvl3PS+0Hw1g
+	2Uh+ww==
+X-Received: by 2002:a05:600c:4fc3:b0:43d:174:2668 with SMTP id 5b1f17b1804b1-450ce684b14mr56796875e9.0.1748604943675;
+        Fri, 30 May 2025 04:35:43 -0700 (PDT)
+X-Received: by 2002:a05:600c:4fc3:b0:43d:174:2668 with SMTP id 5b1f17b1804b1-450ce684b14mr56796445e9.0.1748604943253;
+        Fri, 30 May 2025 04:35:43 -0700 (PDT)
+Received: from redhat.com ([2a0d:6fc0:1517:1000:ea83:8e5f:3302:3575])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-450d7fc1b60sm15903185e9.34.2025.05.30.04.35.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 30 May 2025 04:35:42 -0700 (PDT)
+Date: Fri, 30 May 2025 07:35:38 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	qemu-devel@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	kvm@vger.kernel.org, Sergio Lopez <slp@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu <yi.l.liu@intel.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org,
+	Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
+	Zhao Liu <zhao1.liu@intel.com>, Yanan Wang <wangyanan55@huawei.com>,
+	Helge Deller <deller@gmx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
+	Ani Sinha <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	=?iso-8859-1?Q?Cl=E9ment?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
+	qemu-arm@nongnu.org,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Jason Wang <jasowang@redhat.com>, devel@lists.libvirt.org
+Subject: Re: [PATCH v4 00/27] hw/i386/pc: Remove deprecated 2.6 and 2.7 PC
+ machines
+Message-ID: <20250530073524-mutt-send-email-mst@kernel.org>
+References: <20250508133550.81391-1-philmd@linaro.org>
+ <20250513132338.4089736b@imammedo.users.ipa.redhat.com>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: 6E4KdHj9xwZ2
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250513132338.4089736b@imammedo.users.ipa.redhat.com>
+X-TUID: ZYauzlgYPRsT
 
-On Tue, 27 May 2025 09:40:16 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
-
-> We intend to reuse build_append_pci_bus_devices and
-> build_append_pcihp_slots on ARM. So let's move them to
-> hw/acpi/pcihp.c as well as all static helpers they
-> use.
-Oddly short wrap.   I guess it kind of looks prettier than ...
-
-We intend to reuse build_append_pci_bus_devices and
-build_append_pcihp_slots on ARM. So let's move them to hw/acpi/pcihp.c as 
-well as all static helpers they use.
-
-
-... so I'm not that fussed.
-
-I don't really mind, but maybe a short statement of why you
-put the functions in a different order in the destination
-would be a good thing to add to this description?
-
-Either way
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-
+On Tue, May 13, 2025 at 01:23:38PM +0200, Igor Mammedov wrote:
+> On Thu,  8 May 2025 15:35:23 +0200
+> Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
 > 
-> No functional change intended.
+> > Since v3:
+> > - Addressed Thomas and Zhao review comments
+> > - Rename fw_cfg_init_mem_[no]dma() helpers
+> > - Remove unused CPU properties
+> > - Remove {multi,linux}boot.bin
+> > - Added R-b tags
+> > 
+> > Since v2:
+> > - Addressed Mark review comments and added his R-b tags
+> > 
+> > The versioned 'pc' and 'q35' machines up to 2.12 been marked
+> > as deprecated two releases ago, and are older than 6 years,
+> > so according to our support policy we can remove them.
+> > 
+> > This series only includes the 2.6 and 2.7 machines removal,
+> > as it is a big enough number of LoC removed. Rest will
+> > follow.
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
-> ---
->  include/hw/acpi/pci.h   |   1 -
->  include/hw/acpi/pcihp.h |   2 +
->  hw/acpi/pcihp.c         | 173 ++++++++++++++++++++++++++++++++++++++++
->  hw/i386/acpi-build.c    | 172 ---------------------------------------
->  4 files changed, 175 insertions(+), 173 deletions(-)
+> CCing libvirt folks
 > 
-> diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
-> index ab0187a894..4dca22c0e2 100644
-> --- a/include/hw/acpi/pci.h
-> +++ b/include/hw/acpi/pci.h
-> @@ -37,7 +37,6 @@ typedef struct AcpiMcfgInfo {
->  void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info,
->                  const char *oem_id, const char *oem_table_id);
->  
-> -void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus);
->  void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope);
->  
->  void build_srat_generic_affinity_structures(GArray *table_data);
-> diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
-> index f4fd44cb32..5506a58862 100644
-> --- a/include/hw/acpi/pcihp.h
-> +++ b/include/hw/acpi/pcihp.h
-> @@ -80,6 +80,8 @@ void build_append_pcihp_resources(Aml *table,
->                                    uint64_t io_addr, uint64_t io_len);
->  bool build_append_notification_callback(Aml *parent_scope, const PCIBus *bus);
->  
-> +void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus);
-> +
->  /* Called on reset */
->  void acpi_pcihp_reset(AcpiPciHpState *s);
->  
-> diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-> index 907a08ac7f..942669ea89 100644
-> --- a/hw/acpi/pcihp.c
-> +++ b/hw/acpi/pcihp.c
-> @@ -27,6 +27,7 @@
->  #include "qemu/osdep.h"
->  #include "hw/acpi/pcihp.h"
->  #include "hw/acpi/aml-build.h"
-> +#include "hw/acpi/acpi_aml_interface.h"
->  #include "hw/pci-host/i440fx.h"
->  #include "hw/pci/pci.h"
->  #include "hw/pci/pci_bridge.h"
-> @@ -763,6 +764,178 @@ bool build_append_notification_callback(Aml *parent_scope, const PCIBus *bus)
->      return !!nr_notifiers;
->  }
->  
-> +static void build_append_pcihp_notify_entry(Aml *method, int slot)
-> +{
-> +    Aml *if_ctx;
-> +    int32_t devfn = PCI_DEVFN(slot, 0);
-> +
-> +    if_ctx = aml_if(aml_and(aml_arg(0), aml_int(0x1U << slot), NULL));
-> +    aml_append(if_ctx, aml_notify(aml_name("S%.02X", devfn), aml_arg(1)));
-> +    aml_append(method, if_ctx);
-> +}
-> +
-> +static bool is_devfn_ignored_generic(const int devfn, const PCIBus *bus)
-> +{
-> +    const PCIDevice *pdev = bus->devices[devfn];
-> +
-> +    if (PCI_FUNC(devfn)) {
-> +        if (IS_PCI_BRIDGE(pdev)) {
-> +            /*
-> +             * Ignore only hotplugged PCI bridges on !0 functions, but
-> +             * allow describing cold plugged bridges on all functions
-> +             */
-> +            if (DEVICE(pdev)->hotplugged) {
-> +                return true;
-> +            }
-> +        }
-> +    }
-> +    return false;
-> +}
-> +
-> +static bool is_devfn_ignored_hotplug(const int devfn, const PCIBus *bus)
-> +{
-> +    PCIDevice *pdev = bus->devices[devfn];
-> +    if (pdev) {
-> +        return is_devfn_ignored_generic(devfn, bus) ||
-> +               !DEVICE_GET_CLASS(pdev)->hotpluggable ||
-> +               /* Cold plugged bridges aren't themselves hot-pluggable */
-> +               (IS_PCI_BRIDGE(pdev) && !DEVICE(pdev)->hotplugged);
-> +    } else { /* non populated slots */
-> +         /*
-> +          * hotplug is supported only for non-multifunction device
-> +          * so generate device description only for function 0
-> +          */
-> +        if (PCI_FUNC(devfn) ||
-> +            (pci_bus_is_express(bus) && PCI_SLOT(devfn) > 0)) {
-> +            return true;
-> +        }
-> +    }
-> +    return false;
-> +}
-> +
-> +static Aml *aml_pci_static_endpoint_dsm(PCIDevice *pdev)
-> +{
-> +    Aml *method;
-> +
-> +    g_assert(pdev->acpi_index != 0);
-> +    method = aml_method("_DSM", 4, AML_SERIALIZED);
-> +    {
-> +        Aml *params = aml_local(0);
-> +        Aml *pkg = aml_package(1);
-> +        aml_append(pkg, aml_int(pdev->acpi_index));
-> +        aml_append(method, aml_store(pkg, params));
-> +        aml_append(method,
-> +            aml_return(aml_call5("EDSM", aml_arg(0), aml_arg(1),
-> +                                 aml_arg(2), aml_arg(3), params))
-> +        );
-> +    }
-> +    return method;
-> +}
-> +
-> +static Aml *aml_pci_device_dsm(void)
-> +{
-> +    Aml *method;
-> +
-> +    method = aml_method("_DSM", 4, AML_SERIALIZED);
-> +    {
-> +        Aml *params = aml_local(0);
-> +        Aml *pkg = aml_package(2);
-> +        aml_append(pkg, aml_int(0));
-> +        aml_append(pkg, aml_int(0));
-> +        aml_append(method, aml_store(pkg, params));
-> +        aml_append(method,
-> +            aml_store(aml_name("BSEL"), aml_index(params, aml_int(0))));
-> +        aml_append(method,
-> +            aml_store(aml_name("ASUN"), aml_index(params, aml_int(1))));
-> +        aml_append(method,
-> +            aml_return(aml_call5("PDSM", aml_arg(0), aml_arg(1),
-> +                                 aml_arg(2), aml_arg(3), params))
-> +        );
-> +    }
-> +    return method;
-> +}
-> +
-> +void build_append_pcihp_slots(Aml *parent_scope, PCIBus *bus)
-> +{
-> +    int devfn;
-> +    Aml *dev, *notify_method = NULL, *method;
-> +    QObject *bsel = object_property_get_qobject(OBJECT(bus),
-> +                        ACPI_PCIHP_PROP_BSEL, NULL);
-> +    uint64_t bsel_val = qnum_get_uint(qobject_to(QNum, bsel));
-> +    qobject_unref(bsel);
-> +
-> +    aml_append(parent_scope, aml_name_decl("BSEL", aml_int(bsel_val)));
-> +    notify_method = aml_method("DVNT", 2, AML_NOTSERIALIZED);
-> +
-> +    for (devfn = 0; devfn < ARRAY_SIZE(bus->devices); devfn++) {
-> +        int slot = PCI_SLOT(devfn);
-> +        int adr = slot << 16 | PCI_FUNC(devfn);
-> +
-> +        if (is_devfn_ignored_hotplug(devfn, bus)) {
-> +            continue;
-> +        }
-> +
-> +        if (bus->devices[devfn]) {
-> +            dev = aml_scope("S%.02X", devfn);
-> +        } else {
-> +            dev = aml_device("S%.02X", devfn);
-> +            aml_append(dev, aml_name_decl("_ADR", aml_int(adr)));
-> +        }
-> +
-> +        /*
-> +         * Can't declare _SUN here for every device as it changes 'slot'
-> +         * enumeration order in linux kernel, so use another variable for it
-> +         */
-> +        aml_append(dev, aml_name_decl("ASUN", aml_int(slot)));
-> +        aml_append(dev, aml_pci_device_dsm());
-> +
-> +        aml_append(dev, aml_name_decl("_SUN", aml_int(slot)));
-> +        /* add _EJ0 to make slot hotpluggable  */
-> +        method = aml_method("_EJ0", 1, AML_NOTSERIALIZED);
-> +        aml_append(method,
-> +            aml_call2("PCEJ", aml_name("BSEL"), aml_name("_SUN"))
-> +        );
-> +        aml_append(dev, method);
-> +
-> +        build_append_pcihp_notify_entry(notify_method, slot);
-> +
-> +        /* device descriptor has been composed, add it into parent context */
-> +        aml_append(parent_scope, dev);
-> +    }
-> +    aml_append(parent_scope, notify_method);
-> +}
-> +
-> +void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus)
-> +{
-> +    int devfn;
-> +    Aml *dev;
-> +
-> +    for (devfn = 0; devfn < ARRAY_SIZE(bus->devices); devfn++) {
-> +        /* ACPI spec: 1.0b: Table 6-2 _ADR Object Bus Types, PCI type */
-> +        int adr = PCI_SLOT(devfn) << 16 | PCI_FUNC(devfn);
-> +        PCIDevice *pdev = bus->devices[devfn];
-> +
-> +        if (!pdev || is_devfn_ignored_generic(devfn, bus)) {
-> +            continue;
-> +        }
-> +
-> +        /* start to compose PCI device descriptor */
-> +        dev = aml_device("S%.02X", devfn);
-> +        aml_append(dev, aml_name_decl("_ADR", aml_int(adr)));
-> +
-> +        call_dev_aml_func(DEVICE(bus->devices[devfn]), dev);
-> +        /* add _DSM if device has acpi-index set */
-> +        if (pdev->acpi_index &&
-> +            !object_property_get_bool(OBJECT(pdev), "hotpluggable",
-> +                                      &error_abort)) {
-> +            aml_append(dev, aml_pci_static_endpoint_dsm(pdev));
-> +        }
-> +
-> +        /* device descriptor has been composed, add it into parent context */
-> +        aml_append(parent_scope, dev);
-> +    }
-> +}
-> +
->  const VMStateDescription vmstate_acpi_pcihp_pci_status = {
->      .name = "acpi_pcihp_pci_status",
->      .version_id = 1,
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 3275675e60..fe8bc62c03 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -338,29 +338,6 @@ build_facs(GArray *table_data)
->      g_array_append_vals(table_data, reserved, 40); /* Reserved */
->  }
->  
-> -static Aml *aml_pci_device_dsm(void)
-> -{
-> -    Aml *method;
-> -
-> -    method = aml_method("_DSM", 4, AML_SERIALIZED);
-> -    {
-> -        Aml *params = aml_local(0);
-> -        Aml *pkg = aml_package(2);
-> -        aml_append(pkg, aml_int(0));
-> -        aml_append(pkg, aml_int(0));
-> -        aml_append(method, aml_store(pkg, params));
-> -        aml_append(method,
-> -            aml_store(aml_name("BSEL"), aml_index(params, aml_int(0))));
-> -        aml_append(method,
-> -            aml_store(aml_name("ASUN"), aml_index(params, aml_int(1))));
-> -        aml_append(method,
-> -            aml_return(aml_call5("PDSM", aml_arg(0), aml_arg(1),
-> -                                 aml_arg(2), aml_arg(3), params))
-> -        );
-> -    }
-> -    return method;
-> -}
-> -
->  static Aml *aml_pci_edsm(void)
->  {
->      Aml *method, *ifctx;
-> @@ -414,155 +391,6 @@ static Aml *aml_pci_edsm(void)
->      return method;
->  }
->  
-> -static Aml *aml_pci_static_endpoint_dsm(PCIDevice *pdev)
-> -{
-> -    Aml *method;
-> -
-> -    g_assert(pdev->acpi_index != 0);
-> -    method = aml_method("_DSM", 4, AML_SERIALIZED);
-> -    {
-> -        Aml *params = aml_local(0);
-> -        Aml *pkg = aml_package(1);
-> -        aml_append(pkg, aml_int(pdev->acpi_index));
-> -        aml_append(method, aml_store(pkg, params));
-> -        aml_append(method,
-> -            aml_return(aml_call5("EDSM", aml_arg(0), aml_arg(1),
-> -                                 aml_arg(2), aml_arg(3), params))
-> -        );
-> -    }
-> -    return method;
-> -}
-> -
-> -static void build_append_pcihp_notify_entry(Aml *method, int slot)
-> -{
-> -    Aml *if_ctx;
-> -    int32_t devfn = PCI_DEVFN(slot, 0);
-> -
-> -    if_ctx = aml_if(aml_and(aml_arg(0), aml_int(0x1U << slot), NULL));
-> -    aml_append(if_ctx, aml_notify(aml_name("S%.02X", devfn), aml_arg(1)));
-> -    aml_append(method, if_ctx);
-> -}
-> -
-> -static bool is_devfn_ignored_generic(const int devfn, const PCIBus *bus)
-> -{
-> -    const PCIDevice *pdev = bus->devices[devfn];
-> -
-> -    if (PCI_FUNC(devfn)) {
-> -        if (IS_PCI_BRIDGE(pdev)) {
-> -            /*
-> -             * Ignore only hotplugged PCI bridges on !0 functions, but
-> -             * allow describing cold plugged bridges on all functions
-> -             */
-> -            if (DEVICE(pdev)->hotplugged) {
-> -                return true;
-> -            }
-> -        }
-> -    }
-> -    return false;
-> -}
-> -
-> -static bool is_devfn_ignored_hotplug(const int devfn, const PCIBus *bus)
-> -{
-> -    PCIDevice *pdev = bus->devices[devfn];
-> -    if (pdev) {
-> -        return is_devfn_ignored_generic(devfn, bus) ||
-> -               !DEVICE_GET_CLASS(pdev)->hotpluggable ||
-> -               /* Cold plugged bridges aren't themselves hot-pluggable */
-> -               (IS_PCI_BRIDGE(pdev) && !DEVICE(pdev)->hotplugged);
-> -    } else { /* non populated slots */
-> -         /*
-> -         * hotplug is supported only for non-multifunction device
-> -         * so generate device description only for function 0
-> -         */
-> -        if (PCI_FUNC(devfn) ||
-> -            (pci_bus_is_express(bus) && PCI_SLOT(devfn) > 0)) {
-> -            return true;
-> -        }
-> -    }
-> -    return false;
-> -}
-> -
-> -void build_append_pcihp_slots(Aml *parent_scope, PCIBus *bus)
-> -{
-> -    int devfn;
-> -    Aml *dev, *notify_method = NULL, *method;
-> -    QObject *bsel = object_property_get_qobject(OBJECT(bus),
-> -                        ACPI_PCIHP_PROP_BSEL, NULL);
-> -    uint64_t bsel_val = qnum_get_uint(qobject_to(QNum, bsel));
-> -    qobject_unref(bsel);
-> -
-> -    aml_append(parent_scope, aml_name_decl("BSEL", aml_int(bsel_val)));
-> -    notify_method = aml_method("DVNT", 2, AML_NOTSERIALIZED);
-> -
-> -    for (devfn = 0; devfn < ARRAY_SIZE(bus->devices); devfn++) {
-> -        int slot = PCI_SLOT(devfn);
-> -        int adr = slot << 16 | PCI_FUNC(devfn);
-> -
-> -        if (is_devfn_ignored_hotplug(devfn, bus)) {
-> -            continue;
-> -        }
-> -
-> -        if (bus->devices[devfn]) {
-> -            dev = aml_scope("S%.02X", devfn);
-> -        } else {
-> -            dev = aml_device("S%.02X", devfn);
-> -            aml_append(dev, aml_name_decl("_ADR", aml_int(adr)));
-> -        }
-> -
-> -        /*
-> -         * Can't declare _SUN here for every device as it changes 'slot'
-> -         * enumeration order in linux kernel, so use another variable for it
-> -         */
-> -        aml_append(dev, aml_name_decl("ASUN", aml_int(slot)));
-> -        aml_append(dev, aml_pci_device_dsm());
-> -
-> -        aml_append(dev, aml_name_decl("_SUN", aml_int(slot)));
-> -        /* add _EJ0 to make slot hotpluggable  */
-> -        method = aml_method("_EJ0", 1, AML_NOTSERIALIZED);
-> -        aml_append(method,
-> -            aml_call2("PCEJ", aml_name("BSEL"), aml_name("_SUN"))
-> -        );
-> -        aml_append(dev, method);
-> -
-> -        build_append_pcihp_notify_entry(notify_method, slot);
-> -
-> -        /* device descriptor has been composed, add it into parent context */
-> -        aml_append(parent_scope, dev);
-> -    }
-> -    aml_append(parent_scope, notify_method);
-> -}
-> -
-> -void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus)
-> -{
-> -    int devfn;
-> -    Aml *dev;
-> -
-> -    for (devfn = 0; devfn < ARRAY_SIZE(bus->devices); devfn++) {
-> -        /* ACPI spec: 1.0b: Table 6-2 _ADR Object Bus Types, PCI type */
-> -        int adr = PCI_SLOT(devfn) << 16 | PCI_FUNC(devfn);
-> -        PCIDevice *pdev = bus->devices[devfn];
-> -
-> -        if (!pdev || is_devfn_ignored_generic(devfn, bus)) {
-> -            continue;
-> -        }
-> -
-> -        /* start to compose PCI device descriptor */
-> -        dev = aml_device("S%.02X", devfn);
-> -        aml_append(dev, aml_name_decl("_ADR", aml_int(adr)));
-> -
-> -        call_dev_aml_func(DEVICE(bus->devices[devfn]), dev);
-> -        /* add _DSM if device has acpi-index set */
-> -        if (pdev->acpi_index &&
-> -            !object_property_get_bool(OBJECT(pdev), "hotpluggable",
-> -                                      &error_abort)) {
-> -            aml_append(dev, aml_pci_static_endpoint_dsm(pdev));
-> -        }
-> -
-> -        /* device descriptor has been composed, add it into parent context */
-> -        aml_append(parent_scope, dev);
-> -    }
-> -}
-> -
->  /*
->   * build_prt - Define interrupt routing rules
->   *
+> series removes some properties that has been used as compat
+> knobs with 2.6/2.7 machine types that are being removed.
+> 
+> However libvirt might still use them,
+> please check if being removed properties are safe to remove
+> as is | should be deprecated 1st | should be left alone
+> from an immediate user perspective.
+
+Anyone on libvirt side can confirm please?
+
+> > 
+> > Based-on: <20250506143905.4961-1-philmd@linaro.org>
+> > 
+> [...]
+

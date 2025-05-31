@@ -1,199 +1,224 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp1178804njh;
-        Fri, 30 May 2025 07:24:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVzdRxF0TD9Bs33PzVGXzHeFNu7hKNpyfzT9n8qRNJVn7eIqJ1KOPnqcu04FpEffnIirlvE+5v6OMY2Lw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGEaPBRK+fck919v3TwLRdiCrTQVxElrDPgk1n8EmhPZEo+7Bv0aldyuGy2kcjWvRyibShM
-X-Received: by 2002:a05:620a:190c:b0:7d0:9da7:6941 with SMTP id af79cd13be357-7d0a201df56mr566175085a.37.1748615053030;
-        Fri, 30 May 2025 07:24:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748615053; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp1724651njh;
+        Sat, 31 May 2025 06:11:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX2oepUXEHl+F40NMxzcqdGH8AOq0WVTiVLU7AbVD9Me6zo/R51fsDglTChdIwKIaoL7SQ+Eyl2XevlZg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEbhvg8GnbNXkfODycfHITJmNuknz1A+bD6xN6RaCLhFylMPzOTq7tfRLyqwaHDljKIFBE1
+X-Received: by 2002:a05:620a:4898:b0:7c7:766d:9b00 with SMTP id af79cd13be357-7d0eacafd71mr360959885a.36.1748697080504;
+        Sat, 31 May 2025 06:11:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748697080; cv=none;
         d=google.com; s=arc-20240605;
-        b=fMQ6tIEApToaHHWOhLAn1Bp6EIR465qZgbHzZsXB361qj+NaqFhWJxwcwXv3z1Gv8R
-         KFT1wiFrstwBu5aA6UoKnFGKBurI9gILseWrvcqKJyZ/QtHPsYTF+RTIv3+A7pfHMiaB
-         qzhv2rCGaWOxA2UOYVIEzRtA5J70K7E2jaKTjBa4Jyx5WjZVYbt9UQHqzhVP+RZ894tE
-         HiFCEzx1eC3uWvSy8lGOGGF+s6Wl4Ha17La2jWTDDpN2q8YqdGfgpYmv/r+GBbufZuiQ
-         rW5ZruwSejCiH+zfY4gnH9ro47oUArzuOiuoi3Eobyq/rl9FFPv/8nUjhLxfliugOZwN
-         NL4Q==
+        b=UvNFWqETgwU5EB7kfcG2IYBkSdgVh5JkCvEJ3ljW6wt9fdw8m2cMDuONEc4BmprmDU
+         R4XsiU5/crN9mgaaWews0e76eRv+5Veu62Rso6rmCEgT85a70Q+oSWONWbCz2ZJbNPt8
+         lFLwUEkiFYT3PxXzze4DwP7hr7OlwHhK6UuQzJDfXg+lbxnZMFfgQKI4ivPqt6wKcBI0
+         o15tcaKvE3/MYsj5s//y1P0Y8J6T6TH8+FQZsFzueyVGdPT4JjPAbQmOZgWozGjMfHBg
+         WPMfbUcxNIPZU9ksfctiX2UeivM/hGxEb/VNaE8mVEyW006yEjyvu6E9LtcOpUDXtNva
+         OINg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:autocrypt:subject:cc:to:from:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=Fa/E/pz8FKK/+GUwHeYAbpPT7qBTqflw2mrY6516cxc=;
-        fh=nB9fZQ5cJRfOSOOowxgQm4Qu8VbRRdmRLvZcRADuEqU=;
-        b=Ep1EYwC/V2jdAmIscD/KgopHEe1rR+Mk0k4qicDzUIU6/3TtHk9ruxA0JBcm0l4tNq
-         5nU+HEsRelRezvOsk5rcZYTcgG2nJPFg7q9a6V00kVY+Ofor3Pwbp2AahoPjjFA/61GU
-         CivrFVF+K9fDd140Z1UDdstGvwcERg5JRacTNwxLikfEVgAVJbKdqVspWuLBJckCsC/M
-         xMjyZrKUTEY4gajA+LzcI6kSCxO5hDHhPl5LFxOQE5q3pVrKb/kBjvMcTJ6VieP10PFf
-         Dww6JhUU0YNkFF85k6Lr5QCq/TtXwvtYVjier8XiIrfsmp3fCoU/hng977EOuUc4+wnj
-         yUew==;
+         :list-unsubscribe:list-id:precedence:cc:to:message-id
+         :content-transfer-encoding:mime-version:subject:date:from
+         :dkim-signature;
+        bh=Es7Tjqzu7RyuSHrhGOvYTa49Aort7jgOaa4SZsM6B4E=;
+        fh=UuSj5SvVDmLv41wRu0drVvS/rXwvsPVip1yvI2O0tCQ=;
+        b=E9lYn1phKz85axsXdl+zE3C7e5QoX/Y3rOnFBQ/hjykKY0gBIunjvpzCkMHqnbgAeO
+         XGJecym7HV4XXP0/iEyHQDaLSq6XgwnZl2kYgqaIhlvg5RVNDjyYsXADsO3w2uqFfLVj
+         aACXTKLHlPVTQEBEzErSKr+QCgnuXAyLZJEDyeJmroT7WN4iDee63oEYTd35t5u1hMyG
+         A0GXGPVa/byOgS5J5g4VTA4P8Ur3+oXxzD8EeX5RrrBv8y0IofevvklMHLo2F//mtjFl
+         oipLPpsbLg6KuE6z1sVRWS0R5O38wtUP0TpYE+w5HDAakE6aKIcMiriFxodSm0ipnlXH
+         b3CA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MtND2TNb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=f5Kkv+0X;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-87e2a3a1695si1143797241.73.2025.05.30.07.24.12
+        by mx.google.com with ESMTPS id af79cd13be357-7d09a304a33si598118585a.474.2025.05.31.06.11.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 May 2025 07:24:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 31 May 2025 06:11:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MtND2TNb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=f5Kkv+0X;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uL0e8-0007rL-Ub; Fri, 30 May 2025 10:23:44 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uLLz4-0006cn-CI; Sat, 31 May 2025 09:10:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uL0e7-0007qz-KT
- for qemu-arm@nongnu.org; Fri, 30 May 2025 10:23:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1uLL3n-00065Y-9K; Sat, 31 May 2025 08:11:35 -0400
+Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uL0e5-0005DK-Oi
- for qemu-arm@nongnu.org; Fri, 30 May 2025 10:23:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1748615020;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:autocrypt:autocrypt;
- bh=Fa/E/pz8FKK/+GUwHeYAbpPT7qBTqflw2mrY6516cxc=;
- b=MtND2TNbZx8JVl5IStggOUout/sEQ83KR6y+5ElMNQXhUlY/jwB4kkviVlTDA2WbOMSdad
- orzEagPkQAxTYA0DkgjbvYd6oac3/GwaDmxgBsClgDX8RxBa3dsGXZQhaG6FC93vxtVPs/
- UAaVjzBPzZWfqGkk3IemYRwLQvt6bI8=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-670-PZq50uwrM6qg-K_GG8p8hQ-1; Fri, 30 May 2025 10:23:37 -0400
-X-MC-Unique: PZq50uwrM6qg-K_GG8p8hQ-1
-X-Mimecast-MFC-AGG-ID: PZq50uwrM6qg-K_GG8p8hQ_1748615016
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-3a3683aa00eso1029847f8f.1
- for <qemu-arm@nongnu.org>; Fri, 30 May 2025 07:23:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1748615016; x=1749219816;
- h=content-transfer-encoding:autocrypt:subject:cc:to:content-language
- :from:user-agent:mime-version:date:message-id:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Fa/E/pz8FKK/+GUwHeYAbpPT7qBTqflw2mrY6516cxc=;
- b=VrmGfoyRDlaHH8LBPwr8Qzb0sWsCvndGrq7xCnmVWHipw+mCD31Xae1OcZL7bbw1t7
- gO160lziyMDstAzi4HGm9FSkFAjQEEnZ6fG/dsjBh8lLembjCpOv1xZZksr7jbl5rF4l
- VEbHdXsFzstMXM3LSNByzwznK5nmT2ypx4yKgaKVWpKIGaTyB+4FlRGQM8TkjeOXG17e
- KqH/cxqGTdCHkhWjxUHg/q8yrZrhHtnUAMXDq/xFeDIphsq4UTXqrEuAx8N2DzNNRT9z
- fEN1Sn6uP1d1ed04ZEtqeG6nrtTSdo5g7F2aeipWiCShkB23HPsmAfaHt7vb+TxfQlYN
- 0kow==
-X-Gm-Message-State: AOJu0YzoI5B2aWNH3PJZ8cbMEkkXax6WC80f82dnOvC5CrZNSpYh3TDd
- gNmSBQ6U3YDnNf4c4j11eM3mQUcaMdlG5uO4XkPP7+qYjm+p0Eb+weybUhK4tvAnV43vj96d04Z
- 8/GftUwn9VlLaXMZxv/Z+f750UZiqi0R260GIEze2cyzb8OHZZpGIRg==
-X-Gm-Gg: ASbGncvYno3xLVKTtwfOSwNk48zFpWTxzZbBqjvJGxtpqyX6uPl59RDONqtCIozElDj
- I1ZBGD7kI4Umz6GMPy0AIuQ6S2viZT1PtpBSkc782r2p/BnvSrb8Elfd1YE5J0b9HKWjVz/afj7
- +UW2SFEZxlBWlMPKXpNzASFkwZwofhJD8Yl7+mXXFXWn11gdEwXiz+uRUpVS4OOE1M5iZJ7KiIs
- uHljrtqN/1HRQFqT5TTeB76cmM7jZFY8NqfU0A9JsZY30l5x1BbMCq5qXxSJEhv7iBeN1s/aLX6
- qXdygqGczb4KVRJsYXYDhkBEULZBYqg5mtkmyDmQSFxEP5/K6QhhPZaYTMq30dI=
-X-Received: by 2002:adf:e745:0:b0:3a4:da0e:5170 with SMTP id
- ffacd0b85a97d-3a4eedcd099mr5409336f8f.27.1748615015840; 
- Fri, 30 May 2025 07:23:35 -0700 (PDT)
-X-Received: by 2002:adf:e745:0:b0:3a4:da0e:5170 with SMTP id
- ffacd0b85a97d-3a4eedcd099mr5409320f8f.27.1748615015446; 
- Fri, 30 May 2025 07:23:35 -0700 (PDT)
-Received: from [192.168.0.7] (ltea-047-064-112-237.pools.arcor-ip.net.
- [47.64.112.237]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-450d7fa21e4sm19716805e9.11.2025.05.30.07.23.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 30 May 2025 07:23:35 -0700 (PDT)
-Message-ID: <7aae8238-f7f4-4f3a-9a7e-e9afc99d1d0c@redhat.com>
-Date: Fri, 30 May 2025 16:23:33 +0200
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1uLL3j-0003Iz-UA; Sat, 31 May 2025 08:11:35 -0400
+Received: from [192.168.10.111] (p865013-ipoe.ipoe.ocn.ne.jp [153.242.222.12])
+ (authenticated bits=0)
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 54VCB66G028914
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Sat, 31 May 2025 21:11:21 +0900 (JST)
+ (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=Es7Tjqzu7RyuSHrhGOvYTa49Aort7jgOaa4SZsM6B4E=; 
+ c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+ h=From:Date:Subject:Message-Id:To;
+ s=rs20250326; t=1748693481; v=1;
+ b=f5Kkv+0X93U0JobzEkl9n43dldqUGLTRZy/IjpU5OCvb5ZH4zP3Vw0MRU1i2yx4S
+ JxKCFVKaUIhlaJWWHM4To+XjApN8GhDlDRXYGqPauzGay6LBY/7eoi2gZPai/cPH
+ 4XGMfH21ppEI+Z1F3zr0No/8ATI4rnQxW3nfUncm9hZL4O0haewoHGgBbMRhsDKq
+ V0X6jhGfh64HV87EK3niy+JZLeplN1rgXZdaISQHmyEg4hPLJlbyVEvz8K9WmPzF
+ Qx/56UbzvmUAVNlB/U9j099hO2MutP1FixRmbjvMjjzO+fRNaIO3gjBILKmPVHX1
+ hJCZ7bcfaAfBBgJc0PBHqQ==
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Date: Sat, 31 May 2025 21:11:06 +0900
+Subject: [PATCH v3] target/arm: Define raw write for PMU CLR registers
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Thomas Huth <thuth@redhat.com>
-To: Guenter Roeck <linux@roeck-us.net>, QEMU Developers <qemu-devel@nongnu.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: Is anybody still using the "highbank" or "midway" QEMU machines?
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: SkzKs0D7TvDH97_YDggIKqMdNU6X92ez_M_ZxgNHfws_1748615016
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -49
-X-Spam_score: -5.0
-X-Spam_bar: -----
-X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.907,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Message-Id: <20250531-clr-v3-1-377f9bf1746d@rsg.ci.i.u-tokyo.ac.jp>
+X-B4-Tracking: v=1; b=H4sIANnxOmgC/1WMQQ6CMBBFr0JmbU07rRRceQ/jAocikyg1rWkgh
+ LtbcCPL9/PfmyG6wC7CuZghuMSR/ZBBHwqgvhkeTnCbGVDiSWqlBT2DKBttKq1KrO4W8vMdXMf
+ jVrneMvccPz5MWzSpdd37SQklkMjUbWdk5+pL20wDj0fyL1gDCf8l85MwS5YsoiRlLe2lZVm+x
+ uiJLswAAAA=
+X-Change-ID: 20250313-clr-6a34831628b7
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ devel@daynix.com, Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+X-Mailer: b4 0.15-dev-edae6
+Received-SPF: pass client-ip=49.212.243.89;
+ envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Approved-At: Sat, 31 May 2025 09:10:43 -0400
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LGM27NtBKn+P
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: w6M12uFxTW6X
 
+Raw writes to PMCNTENCLR and PMCNTENCLR_EL0 incorrectly used their
+default write function, which clears written bits instead of writes the
+raw value.
 
-  Hi Guenter et al.,
+PMINTENCLR and PMINTENCLR_EL1 are similar registers, but they instead
+had ARM_CP_NO_RAW. Commit 7a0e58fa6487 ("target-arm: Split NO_MIGRATE
+into ALIAS and NO_RAW") sugguests ARM_CP_ALIAS should be used instead of
+ARM_CP_NO_RAW in such a case:
 
-I was trying to create a functional test for the "highbank" and "midway" arm 
-machines of QEMU, and only succeeded after lots of trial and error to boot 
-something on the "highbank" machine. Peter mentioned on IRC that he also 
-does not test these machines by default, so we started wondering whether 
-anybody is still using these machines? If not, we should maybe start the 
-deprecation process for those instead?
+> We currently mark ARM coprocessor/system register definitions with
+> the flag ARM_CP_NO_MIGRATE for two different reasons:
+> 1) register is an alias on to state that's also visible via
+>    some other register, and that other register is the one
+>    responsible for migrating the state
+> 2) register is not actually state at all (for instance the TLB
+>    or cache maintenance operation "registers") and it makes no
+>    sense to attempt to migrate it or otherwise access the raw state
+>
+> This works fine for identifying which registers should be ignored
+> when performing migration, but we also use the same functions for
+> synchronizing system register state between QEMU and the kernel
+> when using KVM. In this case we don't want to try to sync state
+> into registers in category 2, but we do want to sync into registers
+> in category 1, because the kernel might have picked a different
+> one of the aliases as its choice for which one to expose for
+> migration.
 
-  Thomas
+These registers fall in category 1 (ARM_CP_ALIAS), not category 2
+(ARM_CP_NO_RAW).
+
+ARM_CP_NO_RAW also has another undesired side effect that hides
+registers from GDB.
+
+Properly set raw write functions and drop the ARM_CP_NO_RAW flag from
+PMINTENCLR and PMINTENCLR_EL1; this fixes GDB/KVM state synchronization
+of PMCNTENCLR and PMCNTENCLR_EL0, and exposes all these four registers
+to GDB.
+
+It is not necessary to add ARM_CP_ALIAS to these registers because the
+flag is already set.
+
+Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+---
+Supersedes: <20250317-raw-v1-0-09e2dfff0e90@daynix.com>
+("[PATCH 0/4] target/arm: Flag PMCNTENCLR with ARM_CP_NO_RAW")
+---
+Changes in v3:
+- Added a reference to commit 7a0e58fa6487
+  ("target-arm: Split NO_MIGRATE into ALIAS and NO_RAW")
+- Link to v2: https://lore.kernel.org/qemu-devel/20250314-clr-v2-1-7c7220c177c9@daynix.com
+
+Changes in v2:
+- Added raw write functions to PMCNTENCLR and PMINTENCLR.
+- Dropped the ARM_CP_NO_RAW flag from PMINTENCLR and PMINTENCLR_EL1.
+- Link to v1: https://lore.kernel.org/qemu-devel/20250313-clr-v1-1-2cc49df40fe9@daynix.com
+---
+ target/arm/helper.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 76312102879b..889d30880794 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -1904,7 +1904,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+       .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmcnten),
+       .accessfn = pmreg_access,
+       .fgt = FGT_PMCNTEN,
+-      .writefn = pmcntenclr_write,
++      .writefn = pmcntenclr_write, .raw_writefn = raw_write,
+       .type = ARM_CP_ALIAS | ARM_CP_IO },
+     { .name = "PMCNTENCLR_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 2,
+@@ -1912,7 +1912,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+       .fgt = FGT_PMCNTEN,
+       .type = ARM_CP_ALIAS | ARM_CP_IO,
+       .fieldoffset = offsetof(CPUARMState, cp15.c9_pmcnten),
+-      .writefn = pmcntenclr_write },
++      .writefn = pmcntenclr_write, .raw_writefn = raw_write },
+     { .name = "PMOVSR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 3,
+       .access = PL0_RW, .type = ARM_CP_IO,
+       .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmovsr),
+@@ -2029,16 +2029,16 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+     { .name = "PMINTENCLR", .cp = 15, .crn = 9, .crm = 14, .opc1 = 0, .opc2 = 2,
+       .access = PL1_RW, .accessfn = access_tpm,
+       .fgt = FGT_PMINTEN,
+-      .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_NO_RAW,
++      .type = ARM_CP_ALIAS | ARM_CP_IO,
+       .fieldoffset = offsetof(CPUARMState, cp15.c9_pminten),
+-      .writefn = pmintenclr_write, },
++      .writefn = pmintenclr_write, .raw_writefn = raw_write },
+     { .name = "PMINTENCLR_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 2,
+       .access = PL1_RW, .accessfn = access_tpm,
+       .fgt = FGT_PMINTEN,
+-      .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_NO_RAW,
++      .type = ARM_CP_ALIAS | ARM_CP_IO,
+       .fieldoffset = offsetof(CPUARMState, cp15.c9_pminten),
+-      .writefn = pmintenclr_write },
++      .writefn = pmintenclr_write, .raw_writefn = raw_write },
+     { .name = "CCSIDR", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .crn = 0, .crm = 0, .opc1 = 1, .opc2 = 0,
+       .access = PL1_R,
+
+---
+base-commit: f0737158b483e7ec2b2512145aeab888b85cc1f7
+change-id: 20250313-clr-6a34831628b7
+
+Best regards,
+-- 
+Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 

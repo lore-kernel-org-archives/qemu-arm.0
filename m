@@ -1,358 +1,226 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp2551180njh;
-        Sun, 1 Jun 2025 23:06:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUoXBqBRv/N5RFdV7e18Zez6/W7YY+s4Jbvxj9+T43rDhzS00uT9NmBwzncDw6xL5ANj2LNQLUK8sXWIw==@linaro.org
-X-Received: by 2002:a17:902:e849:b0:234:b123:b4ff with SMTP id d9443c01a7336-2355f7832e1mr111087365ad.21.1748844405628;
-        Sun, 01 Jun 2025 23:06:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748844405; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp2553551njh;
+        Sun, 1 Jun 2025 23:13:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWN2PdLn2M38VlvRQdR+c3BG8+qrU8ZxkHFFIvkICp/kQgCthNcBgJP/Vpl14KygIdvjRJDjHNxXkfCqw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGm9GrUeqXHSagF/AsUsxuTQYWHxn6vUtVupugJ3lH/JxSQL0JjYPx+l3w6GYZb+EOIGo7v
+X-Received: by 2002:a05:620a:4586:b0:7ce:eacf:2de2 with SMTP id af79cd13be357-7d0987d6325mr2326102285a.18.1748844803502;
+        Sun, 01 Jun 2025 23:13:23 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1748844803; cv=pass;
         d=google.com; s=arc-20240605;
-        b=bSu99I5YJ7h+qnWSyDgXW9c/GrAzeB1ksT9YK1lEDTV5Yttn8FRplSW235aOQq0mX8
-         ckxoBx3aWXQE+EhubXQMmcWvquaf736xS3/K3NBMzFKb4k9tkV7XADEaI+tmPU4MINNx
-         2bCF9k1dsKTAYolUVgGAFcqC+4WfvF59BqnPbtS9+R1XBpR5nR3xF3VVSU+yyUsYg1By
-         b0p+j1lPfdaWWDjsl+A6unT5T176831777X4+WmgoMPzRNBScz21hjaXDZQcUC96xuo4
-         Pp6InYUTOp/ruWmSSRHHnZCgU1NRmPCkm+iTw1nBd1o0EvP7IGbkZEqRv/lWokZZPRzJ
-         CAMg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        b=cxp8K6sZ3Eds0gEuEDJD6RFsIN6YS9gMqeY8eTcDFAWBHSYZstBc6eK1mDse/dJFAA
+         eoNrKoTFV2v6fpfIufQq29vs5hOIvr1EhZRhkRH5Ls6YwXL1KWdPdgmzLF1tM6FPNbn3
+         m7AM5X+UleNTlKGQE2vgq9agZX9ivFRBe3TkqkWVbwmZXhjwTjgOfDfKzCHAZIVo5tDJ
+         ppfhlBzVdJ+X+mXepAT0bGqR3JnmPaOu/Ef+oLqYvPxKzbNtfJG+oBJ/tkxkmZ65q9Ah
+         OoJ+liqHETCOd0kYJ/u+XAwS2M4UxhCX0MjBmpwDViRqNSu6hrAgWnDTcxUSlDqz29gx
+         2uEg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version
+         :list-unsubscribe:list-subscribe:list-id:precedence:date:message-id
          :dkim-signature;
-        bh=aHTXPgGA2wdX75p9zmNZ2DjomHcJ6l/Odzw5Xjzr2XE=;
-        fh=8rk9nsXnNpnKqm2ECWXa6mmW3VCRHDOZvHLL1gVWq4Y=;
-        b=kikZK06+W1WAtnX4Sp+QOmghOetYJKkcNzu9mXNZC9QJYDAvFFmTUy3uhOYE9hWvab
-         zfCM7QUA3RdqfPBKuUctP9WxzVulXwgl6AbG1+mVvLwGhTQAyP6vLBGHPkaMGyGt0f9M
-         2J61Z34xinGwIRCa0rt9fGK9ziFuDSKJqgjZrWl4My9b4uAvVDuN8Z+JsEDx26tsSQv+
-         zowlShYkOqTROiLh9MUUyXfTSVItLtj7oWM8HvFLmsO5m/T7+tYot+qVPiimthMGlSlS
-         1gpq5RNvTRNCW0a4YTAvlwzo5XuPols8C34vWlE4uf1FO40M6wLnqbmTFnVA7cKMBvoB
-         5eUw==;
+        bh=L7z/Vson2+vm5SuDJMltMJCFrsEVrDfsRIHMTfqIJtk=;
+        fh=v+oeu8cdx8hKqBjJXbFm73KxKKhHZsh67h+x4Bx+Jt8=;
+        b=MEtjucs9OHrbfDqIwqMIA5jstLwqM//ymvUYQhCY578nJxDXHD3T3kzdDjR8lWm1LS
+         Py++G4RqkVACE3SrUlQ59j2TSFRqbqUb50PqLs07lwRwLUFXN9lo0WVreLvY/d4SCIRk
+         HGE8t9c33XiWTzOZKWKNXyQjK6UB0xOwIFNE5+DP5n/CxrAZ3rZUdNARtpULj/3C2pwZ
+         S2TjaI7mPIyAWGEb/dprL8VOALQQx2qsDylzpC5IE7QrD5/owHrkF7BibtEGIrh3vWYt
+         EYSBcpA9jt9Cn15C8Wrd5X4j0n4YQ7836ypBFcxVWPiMYjKqLoKps8RPX8j/ogONQTF7
+         Ji3A==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VxtGJxli;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-23506c031a6sor65553055ad.10.2025.06.01.23.06.45
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LFchXKqS;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-48152-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-48152-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-48152-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id af79cd13be357-7d09a1dfa8bsi968499685a.214.2025.06.01.23.13.23
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sun, 01 Jun 2025 23:06:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 01 Jun 2025 23:13:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-48152-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VxtGJxli;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1748844405; x=1749449205; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=aHTXPgGA2wdX75p9zmNZ2DjomHcJ6l/Odzw5Xjzr2XE=;
-        b=VxtGJxlivUW23bZPuVFR/KxuQKZkQo4rFJyZei/HMj4jxvOTDKnKCg4LllurM24ALq
-         qMBVP5UOBZVhW4/ZLzR0U2PbWZdW0wxiAQsSQRGEKF8xodohWmDlaxnVyfGtqR7J7mCI
-         HxigSPZ7w66udDqGDrzS53g4URcIME1USvBQ4bHNxWL5I4B4iTDmx3Adb2zfcoGGEx2k
-         JOxEWpnvKU8dekaUo42ttghPd/0Wo/MUnWNchf+olzm+Zh3ruQgCXtwYP69actoPDCbH
-         Xp0IATrXoG5vWh58205fn8ME7bHPFZ8oZz9HEYvYgcT5ersHSaU4OzHvY/Mmwml6BEJl
-         qwbg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LFchXKqS;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-48152-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-48152-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id B45711785FC
+	for <alex.bennee@linaro.org>; Mon,  2 Jun 2025 06:13:24 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 20FBA156F4A;
+	Mon,  2 Jun 2025 06:13:19 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="LFchXKqS"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D447317A303
+	for <kvm@vger.kernel.org>; Mon,  2 Jun 2025 06:13:16 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1748844798; cv=none; b=Ov2Dig/u3j6K3P79JdAjfGBt2tneLtBpCTd5d9If+S0937JhHA5ncf1Ppa3j3xmTM6BsFBDirEQgClmRgI63r5HESKYeVk7LZVuucWflKJWdRvfrlzIeMD7ngIAxkiqjWRCdKGpojikeCKVpi9WeEMSKo5xwt+eSKtD0PAd+LjI=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1748844798; c=relaxed/simple;
+	bh=+DdImxtgbvGyy6AztvO2xh9B/UD4LpZSgsZG8BQ/0s4=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=gaUADsT5QmgTd8d4BT2r4MHHIYJ5t1skgUvHGc77msqCVCCJ5fLzjkXHRRO833vAZwgVxSHUdFWH43O0TDb6k6SiwkRpWzfqxbmgbFtQHY25c0VgGSR9FZ9LFB3LFzJ9BEzxCSv21sq7+hJS/BpWWUFf5GuPLLfKS01FYXgyhjs=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=LFchXKqS; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1748844795;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=L7z/Vson2+vm5SuDJMltMJCFrsEVrDfsRIHMTfqIJtk=;
+	b=LFchXKqSmuMyZa5g387fajbLAMfw/rWf6Y7/CyMkb95RlqOXhZXv6DD/Hk2yr16y1dVNT6
+	fAOOqVR5bjrClNTCq3xGGSZqlAElXgKXr6UIhgMKun66mVgpe9dUopH12ZHGPVVLGmuHLA
+	/9eLKacd2h6+7JlncTZGgDWckUd2U1k=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-558--w5ORIotO-av8TtyjJ9S_g-1; Mon, 02 Jun 2025 02:13:11 -0400
+X-MC-Unique: -w5ORIotO-av8TtyjJ9S_g-1
+X-Mimecast-MFC-AGG-ID: -w5ORIotO-av8TtyjJ9S_g_1748844790
+Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-450db029f2aso10721085e9.3
+        for <kvm@vger.kernel.org>; Sun, 01 Jun 2025 23:13:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748844405; x=1749449205;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=aHTXPgGA2wdX75p9zmNZ2DjomHcJ6l/Odzw5Xjzr2XE=;
-        b=DRGjotEX7QcmSgOBdjAtI+gTp23gw4DUMpwVz3fYnWF3z+73vyQZOsDNYDA51XoB+O
-         HE25lm09HhZfA1mDW1fJo0sljQQkUa0124nsssqTbtrfF+MDNsqh80m0axDgPsssBavt
-         9Yn5QKe68YA6vDGzBKxXadCDgY9hn8BuC1CiCHL92I3wZ43ky+TUVFOT0UGaH1L0bqRG
-         CnyCNEPZl6M7MSX4dd7R/wqaRu8i5JSaMCawYUc9RxRO47xfkmmcFd7rN8B01FpnNbns
-         OENe07oYy8rnRXo/+M/2Xao42H+8EwI2v1CkrolonjanLA3XwAbhF81VulL2Wnw6Cc+V
-         peQw==
-X-Forwarded-Encrypted: i=1; AJvYcCUF4AXGJc42VfTgffpJ4JJmBF7yvMP5e76Jzdq6faxXp/H7XC+EaSnxZe1rIh07u/6G7qbWZip7eajJHA==@linaro.org
-X-Gm-Message-State: AOJu0YyyC9OdoYLn2dlgRAiT0I4thg0ZSy7PQfFGj/8jkBxX2TKSHno6
-	/s7xmkT+/cG+e2oXqmvXTdo/2PF+SISJnq6TZTXP2F/sS3750VR+3BYNBr93NEd+ii0cJg==
-X-Gm-Gg: ASbGncuf/5arfwBmtW9TcAWS29F4L/HrNq7fvHGa0OKYWflQy+RCMU+kp6HZ5YKmkWB
-	Wqg4L2lIueTmVA4Zoa8+Hd86lLt1/xIu/VoV1zEcob62vxF/wh4Dm1FPMPnEYYxKpgMs/UymwZ1
-	rrCOoL7HgjHPhen2ajpGNPhFBHQyo/CpOVNE+fko0xO+B4lyxFUTuG/yAvwh5gWlBWqO65XSY1G
-	vXNrT44iNGJWfZlsOHgXGt8eCSBphSTzkD6zvsfSbMU3vRCm37J8gyMsTyN7HsAvj9qYin6G1Dq
-	T7q9tpN7pxCY1XCY3jBqEkNklVIOhUiX2wsdXYKzjNPQb6+r4illa+wtPza0HU8D1g==
-X-Google-Smtp-Source: AGHT+IHWUk0o0pKbZyfVxstlnev21S1gv4U7dOIdpKLtQp67t5byhlEL6GTnvsGaJO9+Ek2FpIuDrQ==
-X-Received: by 2002:a17:903:41d0:b0:234:d292:be83 with SMTP id d9443c01a7336-2355f766d59mr113903425ad.10.1748844405057;
-        Sun, 01 Jun 2025 23:06:45 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from [192.168.0.102] ([179.180.194.137])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-23506cf5411sm63730525ad.188.2025.06.01.23.06.41
+        d=1e100.net; s=20230601; t=1748844790; x=1749449590;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=L7z/Vson2+vm5SuDJMltMJCFrsEVrDfsRIHMTfqIJtk=;
+        b=xO0ReidpilbZqsSpbArMdhOE8/hyc1qhPtj+6DrN/OOP5jHJyyEp3LDV0kc53uezxR
+         H9/WVA321FZUEzRdJQ/0R66hV743RwK09RbGt8iRUmC5PO1C2K9+uurgQH2VKvIYBWDd
+         K93IDhJiaxgmc6rtOjDLHOe5yqxyJwOk2NP1kT7thW+WmomZ+1IiUYKpuy23mj7rU1rO
+         uK7bHNJLOgwWIRM4SgwR9TrXkVnjRsY/KjlcNnWCwFTgi3W4tyn0T+LMXaDvDKV/k+h0
+         c8+6o7S3eWVaTBysCcZhjwT8NU2HR5pqfO7R2ARD4Z3OW0RiiJ9ElW798WQh3Y5SI/0v
+         8Pwg==
+X-Forwarded-Encrypted: i=1; AJvYcCVgdLxvT32AxikE8/4ecfKJLOlqmcql4qtZziKK2yFgWODzOjYqva9ugg3aWWfYg841ym0=@vger.kernel.org
+X-Gm-Message-State: AOJu0YxHIo0yE7hWNpZiTmhP0IWj0fZu2A33ceHMkLHReHq8wHQJZ85I
+	m8wRoAQ1l3rzCYo7fRcWfHMf/kBDAepORmkmBDertXhB4LHjc03eNdfz6jtwi9YDRy8Ae2S8bjI
+	j3Y25SSzNs18HxtCpJHPHbE1ynZvXKftTDiMpBus30fhgqiae4RTV8w==
+X-Gm-Gg: ASbGncsRi1wDaFspbTGp5CVJfGjcREQq7bA9QC4IH0aFCpLXW3avZd5/mXcaLehOfhZ
+	eHU0sB7KCQKd2ifJTvKJOf/jD7FcSW9ztKWi1RqJ5ARqvKrNzJfMnLOBG8ikQLI5zmS5FD/Vrs0
+	Hb8N8i/oGlwZ/Bh70eG5vo7AbEfbehf0i/2WDuM60W3PXD7xepmxmpb1DMbqdDRtLVMUsFW2H9N
+	Z7wg9RlCZkwtPSs1T4ZknHpozdh9DmHwsGlIQ1/bA9vKVnWrHF4Z+KoI168djP/E6bGdkHbWSVb
+	t8khSwjMYiz7qI/9lN4YigkmnW01Aa2tIgpglDYiVC7oz3pZxf42
+X-Received: by 2002:a05:6000:220b:b0:3a4:d3ff:cef2 with SMTP id ffacd0b85a97d-3a4f89dddd5mr8407308f8f.27.1748844790148;
+        Sun, 01 Jun 2025 23:13:10 -0700 (PDT)
+X-Received: by 2002:a05:6000:220b:b0:3a4:d3ff:cef2 with SMTP id ffacd0b85a97d-3a4f89dddd5mr8407268f8f.27.1748844789702;
+        Sun, 01 Jun 2025 23:13:09 -0700 (PDT)
+Received: from [192.168.0.7] (ltea-047-064-112-237.pools.arcor-ip.net. [47.64.112.237])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-450d7fb80e9sm107138185e9.27.2025.06.01.23.13.07
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 01 Jun 2025 23:06:44 -0700 (PDT)
-Message-ID: <bcc200fb-fa45-44ac-9e36-4c829becbf1c@linaro.org>
-Date: Mon, 2 Jun 2025 03:06:45 -0300
+        Sun, 01 Jun 2025 23:13:09 -0700 (PDT)
+Message-ID: <91c4bf9f-3079-4e2f-9fbb-e1a2a9c56c7b@redhat.com>
+Date: Mon, 2 Jun 2025 08:13:06 +0200
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 24/25] tests/qtest/bios-tables-test: Keep ACPI PCI
- hotplug off
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com,
- pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org,
- alex.bennee@linaro.org
-References: <20250527074224.1197793-1-eric.auger@redhat.com>
- <20250527074224.1197793-25-eric.auger@redhat.com>
- <20250528113813.47086516@imammedo.users.ipa.redhat.com>
- <375cfbd6-e585-4b6d-bf10-6571aa40370e@linaro.org>
- <20250528150239.5f6b63d0@imammedo.users.ipa.redhat.com>
- <6a5776b4-73ef-427b-b4e4-b25031b0ce53@linaro.org>
- <20250530135103.09030cf0@imammedo.users.ipa.redhat.com>
+Subject: Re: [PATCH v4 01/27] hw/i386/pc: Remove deprecated pc-q35-2.6 and
+ pc-i440fx-2.6 machines
+To: Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ kvm@vger.kernel.org, Sergio Lopez <slp@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Yi Liu <yi.l.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org,
+ Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
+ Zhao Liu <zhao1.liu@intel.com>, Yanan Wang <wangyanan55@huawei.com>,
+ Helge Deller <deller@gmx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Ani Sinha <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
+ Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>
+References: <20250508133550.81391-1-philmd@linaro.org>
+ <20250508133550.81391-2-philmd@linaro.org>
+ <20250509172336.6e73884f@imammedo.users.ipa.redhat.com>
+From: Thomas Huth <thuth@redhat.com>
 Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20250530135103.09030cf0@imammedo.users.ipa.redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20250509172336.6e73884f@imammedo.users.ipa.redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: bl6HE/wlF69T
+X-TUID: e3/s3A/gdVN3
 
-Hi Igor and Eric,
-
-I'm sending again this to the mailing list since it seems the first one
-got lost... I can't find it either in qemu-devel@ or in qemu-arm@ :(
-
-On 5/30/25 08:51, Igor Mammedov wrote:
-> On Wed, 28 May 2025 12:04:26 -0300
-> Gustavo Romero <gustavo.romero@linaro.org> wrote:
+On 09/05/2025 17.23, Igor Mammedov wrote:
+> On Thu,  8 May 2025 15:35:24 +0200
+> Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
 > 
->> Hi Igor,
->>
->> On 5/28/25 10:02, Igor Mammedov wrote:
->>> On Wed, 28 May 2025 09:41:15 -0300
->>> Gustavo Romero <gustavo.romero@linaro.org> wrote:
->>>    
->>>> Hi Igor,
->>>>
->>>> On 5/28/25 06:38, Igor Mammedov wrote:
->>>>> On Tue, 27 May 2025 09:40:26 +0200
->>>>> Eric Auger <eric.auger@redhat.com> wrote:
->>>>>       
->>>>>> From: Gustavo Romero <gustavo.romero@linaro.org>
->>>>>>
->>>>>> ACPI PCI hotplug is now turned on by default so we need to change the
->>>>>> existing tests to keep it off. However, even setting the ACPI PCI
->>>>>> hotplug off in the existing tests, there will be changes in the ACPI
->>>>>> tables because the _OSC method was modified, hence in the next patch of
->>>>>> this series the blobs are updated accordingly.
->>>>>>
->>>>>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
->>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>>>
->>>>> it would be better to test whatever default we end up with.
->>>>> (like x86)
->>>>
->>>> hmm maybe there is a confusion here, Igor. We are actually planning what you
->>>
->>> perhaps, see my reply to Eric about my expectations wrt tests.
->>
->> Yip, I read it before my reply here.
->>
->>
->>> (i.e. default tests shouldn't have any explicit CLI options,
->>> instead it should follow whitelist blobs/set new default patch/update blobs pattern)
->>
->> I see. I agree with that. But this patch is not about the new test. The new test is
->> _not_ in this series. Patches 8/25, 10/25, and 24/25 are _not_ about the new test but
->> about adapting the _legacy tests_ (native acpi) to the situation when ACPI HP becomes
->> the default, because this series makes acpi-pcihp=on the default, hence the CLI option
->> "acpi-pcihp=off" added to them. An update to the blobs are also necessary because of the
->> change in _OSC method, even when acpi-pcihp=off.
->>
->>
->>>> said. This patch and the other two in this series related to the bios-tables-test
->>>> (i.e., patches 8/25 and 10/25) are for actually making the current (legacy) test pass,
->>>> since the new default as per this series will be acpi-pcihp=on. That's why here we're
->>>> adapting the current test here to have acpi-pcihp=off.
->>>>
->>>> The new test that will test for acpi-pcihp=on (the new default) is not in this series
->>>> and we decided to merge it separate. It's in the patch 4/5 and 5/5 of the follow series:
->>
->> We're doing the "blobs/set new default patch/update blobs pattern" in the new test, which
->> we can merge later, once this series is merged, no? The step "set new default" then will
->> not be necessary because the new test will be merged separate, after this series, so when
->> acpi-pcihp=on is already the default.
->>
->> Please note that although we're using acpi-pcihp=on in the new test, it's not necessary,
->> we can dropped this option, making it implicit as you say, and it will work. This is the
->> new test:
->>
->>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05828.html 4/5
->>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05827.html 5/5
->>
->>
->> Thus, there are to "acts" of modifying the bios-tables-test:
->>
->> 1) Adapt the current tests to when acpi-pcihp=on becomes the default (hence the addition
->>      to them of "acpi-pcihp=off".
+>> These machines has been supported for a period of more than 6 years.
+>> According to our versioned machine support policy (see commit
+>> ce80c4fa6ff "docs: document special exception for machine type
+>> deprecation & removal") they can now be removed.
 > 
-> 
-> that's what I disagree with.
-> 
-> 1) Instead adapting majority of tests to legacy before switching defaults,
-> just do whitelist/modify default/update so all of tests run with new default.
-> 
-> and then
-> 
->> There is also the need to update the blobs, but it's because
->>      of the _OSC method change in DSDT table, which will change anyways, even with "acpi-pcihp=off¨,
->>      hence the need for patch 10/25 in this series. This is _done is this series_.
-> 
-> 
->   
->> 2) Add a new test for testing the default (i.e. acpi-pcihp-on). It follows what you're
->>      saying above: "follow whitelist blobs/set new default patch/update blobs pattern",
->>      because we can drop the acpi-pcihp-on option from the CLI in this test without any
->>      prejudice to test. While the step "set new default patch" was actually done in 1).
-> 
-> 2) add a separate test case for native pcie hoplug (preferably within this series)
-> 
-> 3) even better would be to add #2 before #1 (right after 10/25),
-> this way will guarantee that old native hotplug tables stay
-> the same regardless of followup patches that add ACPI pcihp aml.
+> if these machine types are the last users of compat arrays,
+> it's better to remove array at the same time, aka squash
+> those patches later in series into this one.
+> That leaves no illusion that compats could be used in the later patches.
 
-Got it now, hopefully... 🙂
+IMHO the generic hw_compat array should be treated separately since this is 
+independent from x86. So in case someone ever needs to backport these 
+patches to an older branch, they can decide more easily whether they want to 
+apply the generic hw_compat part or only the x86-specific part of this series.
 
-OK, I'm trying to follow what you recommended in 3). I've pushed a series to:
+  Thomas
 
-https://github.com/gromero/qemu/commits/v2_20250527_eric_auger_redhat_com/
-
-So, I understand we will need to add/update the blobs at three times,
-2 times because of the changes in the DSDT generation (_OSC changes and when
-acpi-pci=on) and an additional one because of the new PCIe native hotplug test.
-
-I dropped this patch (Patch 24/25) from the series.
-
-So the overview of the organization would be the following:
-
-
-3c302f7222 tests/qtest/bios-tables-test: Update DSDT blobs                                   #1c (update blob)    \
-671f15f470 hw/arm/virt: Use ACPI PCI hotplug by default                                      #1b (modify default) |--- acpi-pcihp=on
-9468f730e1 tests/qtest/bios-tables-test: Prepare for changes in the DSDT table               #1a (whitelist)      /
-c9ec0e0226 hw/arm/virt: Plug pcihp hotplug/hotunplug callbacks
-dc44749a34 hw/arm/virt: Let virt support pci hotplug/unplug GED event
-f667079260 hw/core/sysbus: Introduce sysbus_mmio_map_name() helper
-46731e563b hw/acpi/ged: Support migration of AcpiPciHpState
-4fa7b0e0f6 hw/acpi/ged: Call pcihp plug callbacks in hotplug handler implementation
-587b001876 hw/acpi/ged: Prepare the device to react to PCI hotplug events
-b55183d128 hw/arm/virt-acpi-build: Modify the DSDT ACPI table to enable ACPI PCI hotplug
-fe4c96b384 hw/i386/acpi-build: Move aml_pci_edsm to a generic place
-010c50dbc7 hw/i386/acpi-build: Introduce and use acpi_get_pci_host
-5a1be727e6 hw/i386/acpi-build: Move build_append_pci_bus_devices/pcihp_slots to pcihp
-14a172e192 hw/i386/acpi-build: Move build_append_notification_callback to pcihp
-5110ae8874 hw/acpi/pcihp: Add an AmlRegionSpace arg to build_acpi_pci_hotplug
-82c2aef672 hw/i386/acpi-build: Introduce build_append_pcihp_resources() helper
-6372fe7eef qtest/bios-tables-test: Update DSDT 'noacpipcihp' variant blob                    #2 (blob update for test), part 2 of 2 (update blob)  ]--- New PCIe native test
-6fb29ba18d tests/qtest/bios-tables-test: Add aarch64 PCIe native hotplug test                #2 (pcie native hp test), part 1 of 2 (whitelist)     /
-12c63a505e tests/qtest/bios-tables-test: Update DSDT blobs after GPEX _OSC change            Patch 10/25 in this series (update blob)    \
-779bd47749 hw/pci-host/gpex-acpi: Use build_pci_host_bridge_osc_method                       Patch  9/25 in this series (modify default) |--- _OSC change
-f260fd59c1 tests/qtest/bios-tables-test: Prepare for changes in the DSDT table               Patch  8/25 in this series (whitelist)      /
-b000677fd9 hw/i386/acpi-build: Turn build_q35_osc_method into a generic method
-a72f87b634 hw/pci-host/gpex-acpi: Propagate hotplug type info from virt machine downto gpex
-77a87b6ba3 hw/pci-host/gpex-acpi: Split host bridge OSC and DSM generation
-67e4dc2e7b hw/pci-host/gpex-acpi: Add native_pci_hotplug arg to acpi_dsdt_add_pci_osc
-b89e69da54 hw/acpi: Rename and move build_x86_acpi_pci_hotplug to pcihp
-74f1080a74 hw/arm/virt: Introduce machine state acpi pcihp flags and props
-1048082f33 hw/i386/acpi-build: Make aml_pci_device_dsm() static
-
-See notes on the right for when the blobs are updated or added in the
-series. The new test for PCIe native hotplug (I prefer not calling it legacy,
-since it's not really legacy; it's just an alternative better in some scenarios,
-specially in virtualization) is now in the series (#2), "right after 10/25".
-
-Is something like that that you want?
-
-
-Cheers,
-Gustavo
-
-> 
->> Cheers,
->> Gustavo
->>
->>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05828.html 4/5
->>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05827.html 5/5
->>>>
->>>>
->>>> Cheers,
->>>> Gustavo
->>>>   
->>>>>>
->>>>>> ---
->>>>>>
->>>>>> [Eric] also added acpi-pcihp=off to test_acpi_aarch64_virt_tcg_numamem
->>>>>> ---
->>>>>>     tests/qtest/bios-tables-test.c | 13 +++++++++----
->>>>>>     1 file changed, 9 insertions(+), 4 deletions(-)
->>>>>>
->>>>>> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
->>>>>> index 0a333ec435..6379dba714 100644
->>>>>> --- a/tests/qtest/bios-tables-test.c
->>>>>> +++ b/tests/qtest/bios-tables-test.c
->>>>>> @@ -1626,7 +1626,7 @@ static void test_acpi_aarch64_virt_tcg_memhp(void)
->>>>>>         };
->>>>>>     
->>>>>>         data.variant = ".memhp";
->>>>>> -    test_acpi_one(" -machine nvdimm=on"
->>>>>> +    test_acpi_one(" -machine nvdimm=on,acpi-pcihp=off"
->>>>>>                       " -cpu cortex-a57"
->>>>>>                       " -m 256M,slots=3,maxmem=1G"
->>>>>>                       " -object memory-backend-ram,id=ram0,size=128M"
->>>>>> @@ -1747,7 +1747,8 @@ static void test_acpi_aarch64_virt_tcg_numamem(void)
->>>>>>         };
->>>>>>     
->>>>>>         data.variant = ".numamem";
->>>>>> -    test_acpi_one(" -cpu cortex-a57"
->>>>>> +    test_acpi_one(" -machine acpi-pcihp=off"
->>>>>> +                  " -cpu cortex-a57"
->>>>>>                       " -object memory-backend-ram,id=ram0,size=128M"
->>>>>>                       " -numa node,memdev=ram0",
->>>>>>                       &data);
->>>>>> @@ -1775,7 +1776,8 @@ static void test_acpi_aarch64_virt_tcg_pxb(void)
->>>>>>          * to solve the conflicts.
->>>>>>          */
->>>>>>         data.variant = ".pxb";
->>>>>> -    test_acpi_one(" -device pcie-root-port,chassis=1,id=pci.1"
->>>>>> +    test_acpi_one(" -machine acpi-pcihp=off"
->>>>>> +                  " -device pcie-root-port,chassis=1,id=pci.1"
->>>>>>                       " -device virtio-scsi-pci,id=scsi0,bus=pci.1"
->>>>>>                       " -drive file="
->>>>>>                       "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2,"
->>>>>> @@ -1846,7 +1848,7 @@ static void test_acpi_aarch64_virt_tcg_acpi_hmat(void)
->>>>>>     
->>>>>>         data.variant = ".acpihmatvirt";
->>>>>>     
->>>>>> -    test_acpi_one(" -machine hmat=on"
->>>>>> +    test_acpi_one(" -machine hmat=on,acpi-pcihp=off"
->>>>>>                       " -cpu cortex-a57"
->>>>>>                       " -smp 4,sockets=2"
->>>>>>                       " -m 384M"
->>>>>> @@ -2123,6 +2125,7 @@ static void test_acpi_aarch64_virt_tcg(void)
->>>>>>         data.smbios_cpu_max_speed = 2900;
->>>>>>         data.smbios_cpu_curr_speed = 2700;
->>>>>>         test_acpi_one("-cpu cortex-a57 "
->>>>>> +                  "-machine acpi-pcihp=off "
->>>>>>                       "-smbios type=4,max-speed=2900,current-speed=2700", &data);
->>>>>>         free_test_data(&data);
->>>>>>     }
->>>>>> @@ -2142,6 +2145,7 @@ static void test_acpi_aarch64_virt_tcg_topology(void)
->>>>>>         };
->>>>>>     
->>>>>>         test_acpi_one("-cpu cortex-a57 "
->>>>>> +                  "-machine acpi-pcihp=off "
->>>>>>                       "-smp sockets=1,clusters=2,cores=2,threads=2", &data);
->>>>>>         free_test_data(&data);
->>>>>>     }
->>>>>> @@ -2227,6 +2231,7 @@ static void test_acpi_aarch64_virt_viot(void)
->>>>>>         };
->>>>>>     
->>>>>>         test_acpi_one("-cpu cortex-a57 "
->>>>>> +                  "-machine acpi-pcihp=off "
->>>>>>                       "-device virtio-iommu-pci", &data);
->>>>>>         free_test_data(&data);
->>>>>>     }
->>>>>       
->>>>   
->>>    
->>
-> 

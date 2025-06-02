@@ -1,193 +1,218 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp2649130njh;
-        Mon, 2 Jun 2025 03:26:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUYWJztIbiGqT1gfSRSNVfMGz/9h1ZGbh8aYmUx7ENsu+vuthF7TazX3zXtZJlO2W4Fuiv17ikGkgYxMg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG+5G5cO+UJNiJncnNXOyZj/uzW3wmsPzC8pmw2yhXNlRUmmcVP2tK3eY/veH9OSEFB9LHe
-X-Received: by 2002:a17:907:3fa1:b0:ad8:8efe:3205 with SMTP id a640c23a62f3a-adb36c28fccmr1120594366b.55.1748860002560;
-        Mon, 02 Jun 2025 03:26:42 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1748860002; cv=pass;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp2647476njh;
+        Mon, 2 Jun 2025 03:22:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCV/qDRItBGtTxGyyI4c7g3wA1WrIs2Tx2qTIsuHfm2bVCnzqV9qSUdbW4mdr3tswxogpL9y+Rn2c792Uw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHWkkdYxlCokg+yM3lTjeZ3t6WCoWNnxEJXT9q/xNKuFAhzmAX19iXMxAHRN9u6Kt8bUBxi
+X-Received: by 2002:a17:90b:5344:b0:301:9f62:a944 with SMTP id 98e67ed59e1d1-31241e9846dmr20011340a91.33.1748859772664;
+        Mon, 02 Jun 2025 03:22:52 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1748859772; cv=pass;
         d=google.com; s=arc-20240605;
-        b=Qv45mE8VgyyasnPTq83md9jp6nvoE5JKETOTt+NZlHhk5qhnFDcN+T9TrpLpHZfyVu
-         LSGliAWBichcRcLCDLYH1r900/0ou0Qr+lB/lT84xbOh7fVc8jEpTBq5R11RgeCASj0A
-         +9w4ku9/Nst43m6T/kxHIjH+Sq1gR3ZDFozjz7xaB7HlyBmcVRsO8z4A6cfo7okHyEzI
-         BBH2zNGC6uHswRRAepuKmJ40E1RsGfJkcOEPC11nN/s6UWBUNP8ySzWbjkT4ipAa9roA
-         /fi+VjX5451aDTRy98/zKiLWBMCcr6Gs4rtGSWRkx0tLyLRgbLSogeEZkZYwZG56CSZP
-         VdJg==
+        b=A/UYCMVOZIfscgHNuBm+UDjYoFlv6eg/1Fje6S7el05+S1Od+FmBzxZVuA9/CkXmyA
+         OfS+ubYCaWfFYhPtR0BHtB/qBMipaUtR3UHmGDJrnwNFAZpF/OcwvItbf8z34HtmqJsF
+         A4LsN/tsjQe/uJip8ojZSjPG3Vjxfp59djKiOzsAiWj2idJJb2GggE3QT3FylqTUn/T8
+         HaKEu8fcYA02/UVqt3hxBguu2qAz7pdgMq5FkFkgd2dOZX0zosycHF+1kHk+7xtzEnWC
+         p3aEmL0E2orDucHkujbRWFGoi/vX5/03wqn46U/9Ca42StB8z0zD7h9XLP8lAtvx2vWo
+         IACQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=hjUTSvOng+W7JEAyCf/KH/itZzV9YwnTBi8GIOhN5NY=;
-        fh=zN4ZfK355VKxP7sCQthZC04WMOCKzQt6l1e7KFbb3h0=;
-        b=V5WLwuTtX8DtTkSGO9Yom9qmO6IuezdfI6NDtlOboP1bCediWZrM7iDs4NAIK0d/gY
-         59Q1r+u8gli6t7wnmSudoGlQAZZtQy/l7iZ1oEugCOgGRdb/L0vLIqqCf5xDzwHzafmH
-         QWeLty2rLiYfouKpzIe52G9jNcMxAIexyR0K59GoI2uBGtMiunNDdNKlvAa9BBhk7aUE
-         yhB1kV7Jcm0Na3CIMeucLyCJ3Wnh8alc+oJFsbl47A4T2SNpCDISFmZw8Frv7Hx7XOv7
-         W0Se/ed4ZEPN72w9LNssfjZ8ncZPeKaJA2sTyajYgzZa1CshxGnEhFqvQsdn9t97GRlW
-         Q76w==;
+        bh=CKMj/dmcZFnIoX+/jXJwdMyeYm/ORc0hdxg4CxCECwk=;
+        fh=2c9RE8dZcdWnzcFREFq4+dA5YIGFdnTXGy937ffEWAQ=;
+        b=BgXwHzoaQlGrtQqaV1IABeoSxoWskLz237s8xR2ArXX99b6EqRhU3GmTEATZhCdHol
+         +0OZ37Lwn5d+DJhz+duKL7p5fGMTedV07NziyMk7M0Z2cG2czMOZdilNHOIqFxOga9xM
+         FwnITl0AUnSTXcBMgicBNKQBPfa0GREGlGyCFsRAAavcOTeYNsutvfTSD7xqFpaPNoBI
+         sZGZ+ABbX+PLNCiQ17J9KN82DTEV0+PiWnLQSJ9VUSpWJk3lgk5pKdLGhuE4RGRQwJKa
+         kr4pBEU+qCQg8NTtloeAwlqYQF9qUzIWO/LIUA12oKl78DV2b0Ct94ukdnrvNGl+jK+Y
+         ScaQ==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=M5KUVgCd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q0QXgeEH;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-48163-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-48163-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-670307-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-670307-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-48163-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id a640c23a62f3a-ada6ad4e5f3si703359266b.635.2025.06.02.03.26.42
+Return-Path: <linux-kernel+bounces-670307-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-3123b67917asi10919186a91.154.2025.06.02.03.22.52
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Jun 2025 03:26:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-48163-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        Mon, 02 Jun 2025 03:22:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-670307-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=M5KUVgCd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q0QXgeEH;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-48163-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-48163-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-670307-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-670307-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 8F6F2189E82B
-	for <alex.bennee@linaro.org>; Mon,  2 Jun 2025 10:26:56 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 2F7CD3AB4A5
+	for <alex.bennee@linaro.org>; Mon,  2 Jun 2025 10:22:31 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 964091DED64;
-	Mon,  2 Jun 2025 10:26:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 681771E3DEF;
+	Mon,  2 Jun 2025 10:22:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="M5KUVgCd"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Q0QXgeEH"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BD5E51474DA
-	for <kvm@vger.kernel.org>; Mon,  2 Jun 2025 10:26:35 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 877FA1758B
+	for <linux-kernel@vger.kernel.org>; Mon,  2 Jun 2025 10:22:49 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1748859997; cv=none; b=t0L3AYdUtrxWEUo8VOI49r20Fv1lmUIKC0Chwmdj5iA3o4XnTyboENG/gWpQ+3VI7/wW8iELlO3Ilhv44Ei00kwmrZ8osdSf2YDnWim2UQLs39uuf0MqFGkMFsvxfglhGy35YCcQSb+6Gw4TqFJxdhcRtRgsqMIyOJY++KY1TmA=
+	t=1748859771; cv=none; b=SC9M56MZvPqBws8oW53YLlUp3x0KxxB7N5IyJQx9d9OY0jA+xNR39N0ZVifEayR7Jv2EVqBTpntPbgtnmzSNla/GaAXRi2FR0zyMrz8uhYjUmSvZqXZZN1VoTfsZkM3rYB+ntgtaGTfsiXyMIWv8MqSYdYOgNx0mHJ8y91UWGtM=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1748859997; c=relaxed/simple;
-	bh=hjUTSvOng+W7JEAyCf/KH/itZzV9YwnTBi8GIOhN5NY=;
+	s=arc-20240116; t=1748859771; c=relaxed/simple;
+	bh=C9pmjVW0KhwAcy61epjvYTBa4pXDQwO2yV+k8s/fuC4=;
 	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=f2ksKtD9KyR2Ojm9t+X9rB6MRqYkNPSoeU2EmIM1R289D5Vj9cIJsAdoMXw29Pg4XelGRaFNSLjMcvaX79KUu1DeNt3SknvbAmSsQP4QYUdokcGzTH0ZsPRBVDzmvaVdID4BZdxnJuFcnAw2hEF7GOnNlaQaNg1KOCo8Roln+/s=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=M5KUVgCd; arc=none smtp.client-ip=170.10.133.124
+	 MIME-Version:Content-Type; b=s0kSPWv3h/ac51WB4h++nAzcxmtlLrh90gMyPclLSebK79DzmBXS4AXpZKNcyFNyTJ1Wd0qS/H5wU82noomHXrk5BxiSCt/fNF7wf/gsuwkssAPnCYfkmbROkwE66vuKVcTHv9w8Y5jIRSYyRv8Nkm+IiENbR42XfadqsqD547U=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Q0QXgeEH; arc=none smtp.client-ip=170.10.129.124
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1748859994;
+	s=mimecast20190719; t=1748859768;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=hjUTSvOng+W7JEAyCf/KH/itZzV9YwnTBi8GIOhN5NY=;
-	b=M5KUVgCdWzAck43fBaNG4UDBqKWEVrwUOfcK2kg6R2ZMVhrcO3B8F5BjhVar5MxjZA9p4V
-	/YgJbavJlAVlgHbE1jqIGb6jbc7zK2hyF5cQNnZhIMi6gSbG7x2ca0rLvQlua5ovTFOgkW
-	Bw+hoT6L+unBtBSw+uQiRLU33WjwJEs=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=CKMj/dmcZFnIoX+/jXJwdMyeYm/ORc0hdxg4CxCECwk=;
+	b=Q0QXgeEHE8JrwbFxBCIH2P+xB/V/6ht8I78e6IoB03ZVh9k99z+qasneDXwSkG8HsKDQHP
+	jFTDZeS2UIJvQ1F0QyW/SupSHCzEcvl9GJlBBrCOf+t70vzoFnGItp9mmpVCdGpV053WDH
+	cCbO5J4RxW6s85uyML6N+ULhg1uTOyc=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-118-vkNrHj-HNGG9n1b1vb69Tg-1; Mon, 02 Jun 2025 06:26:33 -0400
-X-MC-Unique: vkNrHj-HNGG9n1b1vb69Tg-1
-X-Mimecast-MFC-AGG-ID: vkNrHj-HNGG9n1b1vb69Tg_1748859992
-Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3a4eeed54c2so2743118f8f.3
-        for <kvm@vger.kernel.org>; Mon, 02 Jun 2025 03:26:33 -0700 (PDT)
+ us-mta-195-2hfh_mI2PPmC-y9yYQxzNA-1; Mon, 02 Jun 2025 06:22:47 -0400
+X-MC-Unique: 2hfh_mI2PPmC-y9yYQxzNA-1
+X-Mimecast-MFC-AGG-ID: 2hfh_mI2PPmC-y9yYQxzNA_1748859766
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-442e0e6eb84so26122365e9.0
+        for <linux-kernel@vger.kernel.org>; Mon, 02 Jun 2025 03:22:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748859992; x=1749464792;
+        d=1e100.net; s=20230601; t=1748859766; x=1749464566;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=hjUTSvOng+W7JEAyCf/KH/itZzV9YwnTBi8GIOhN5NY=;
-        b=kDKYIrNG+fYJYD98biyM4qq5zM3dbSXGaHFJl2QYfAI5fQEzIlPQWuMov77nHlfIJf
-         8hLWTsY4qPFDr2CWZi/q8tT1FJW6CQwau+DB00gBhTdBdX3Q3sZMqbfqR8a9PFeKRuyD
-         pcExXQ+q7tFDaTFAFakEQJ1k0QE2QTXZlI6xBenVNX7MXH8+PcI8xqvxAM/CoTgLG7Q4
-         sNhQzIEeIbzRI3WlaJqACtS2RBCwoThhQepSk6N51RhbHeG2KG1Lax7bcxxSOVhTio/z
-         RbWldYpt2g6QUEzdpdd4dWtIU54oo7uvO+8Urfk7TPZRH+4xiR0LgfQnUPJZYRRMf2hY
-         DXJA==
-X-Forwarded-Encrypted: i=1; AJvYcCUZA/rV4/snEUTSKOfeUeiA+X4ISNTh6H7WIO9VTS/KSrW0h4eqhmyvPZi20kFRCZc6sQ8=@vger.kernel.org
-X-Gm-Message-State: AOJu0YyahozPin90dlSvIghEoGRA7Rr6g5CCnqgwnUuYtuUkF9kHLjYF
-	+5bKqQVKXP9asWrqP8CP3Be+IOhtiTeOgMiJM14jJLwWQ9blwsXmBoqciYrmu1Urz0ri1+jXWOr
-	Vr4aKlVDogyyZHq2eSK1wKPslaVZ59MgmYJBhH9FerYpE7dtUSsV7aw==
-X-Gm-Gg: ASbGncuynmeui4IUDDVSTbXHKzuIPvxqfqTN4gNng91FM94mV7pw4ji/OC/Cro7Wt8c
-	7lxc9PJHzAPUCmQqvhMSmrv9N5YW/IL9AA1ECA8q77iy0MEDzWAmzzPeEEU+LBBvYpo+ilCpG5y
-	Tb4Ind/sx4eidztpHAktei1hOMs+Lurf23FHTcsEgeXXYzLJf0BFpKZkttCNdTChLQxCh9YcbhI
-	Y8ubTSxWptbmbgcYjszEZyAV0RO4yERI74YUDipoDPuYhtxw1BAQ193gK5xB5at9q7cEuHoA417
-	KlbTbDAY7CtuuPlIHQwQX4W8lvncx2Fb
-X-Received: by 2002:adf:eed2:0:b0:3a4:efbb:6df3 with SMTP id ffacd0b85a97d-3a4f89a47dfmr7990730f8f.10.1748859992271;
-        Mon, 02 Jun 2025 03:26:32 -0700 (PDT)
-X-Received: by 2002:adf:eed2:0:b0:3a4:efbb:6df3 with SMTP id ffacd0b85a97d-3a4f89a47dfmr7990708f8f.10.1748859991844;
-        Mon, 02 Jun 2025 03:26:31 -0700 (PDT)
+        bh=CKMj/dmcZFnIoX+/jXJwdMyeYm/ORc0hdxg4CxCECwk=;
+        b=IiX29bVe7amGhRvlHZ4C+GTsZC3mTExg0cVxToRxwtCOhOpZ1x4FLSwJqyIsQypWKt
+         l+NBN89kHqQ5FKmH9juB0s2spNpwkD2gKPmfSChnehpxoVOK03NL+bVmDGMqz+HUzmHz
+         CbRZyN4XVMG7i0j9VPQabF2SqFs8kjhyoaJhJRVAmJdf+4H+/GIUqTSrpd5BsLIEOO/y
+         Oyl/CjSrv7V4rQ+h/pIFtU8rk0BFi/xY4+QAX5ABxHrdR/qrg1s+tUbioogVqXG3SncT
+         knbx/S7TkNJYSWUOm2F/ZryXGe9qw8o8EsbH+E83xGP+emI6cwrVJTn0Qbxv7rVgerlm
+         HoYA==
+X-Forwarded-Encrypted: i=1; AJvYcCUtKbseB4K6OCtnZah6+/vaK6khG+lGjb2wZy5ZSCMXcpnXhzi3BJbHA2pF7qRd0+b5AjPpCCuVevHCrRs=@vger.kernel.org
+X-Gm-Message-State: AOJu0YxYRTIi8vFSa1ZzF1unadJPq6GGC0dSrSLD+phwTcRol00huH9g
+	8cXROxz59T0JVaXCJbvKOCvp6TpiBtfOhea+UTurRw2zEt2SuJiBCdaWs41IQKhFitK7MX7a653
+	Cg5ksFpzqyYbBOkLGpDenQOFS8npElmKW6Du2Atoqaic9vKbyAXmFz0WUf2QPWZ9kGA==
+X-Gm-Gg: ASbGncvwm4BX1dUgpTmZFMgarztHSU7EPFTTMzPPoilDygDn6x82kANnrtYawmXY9pD
+	XhfGduggLwKMc0lN1pvxVaU4HLTPvhyL3KDab9Xjr+ALCSOb7ZUPkZhTH4N6qlC3C+J4Xrdxk6H
+	kw3l5jS8L1SG6m3TUgH9Dy2bqbIy4zAfwmTTGXb2Q4SaF+kb/RVUN7EBS8Q1lcFB0XoZWZhEpYp
+	f38wyH8efjon3Z8WRVvfgpehmy3cWX2PbVoilZQvnP/jTrfOMuLOo3GqvlBsKQVwzaoxw7WNcDD
+	fPb5dxM/ptrBE5OpN8fouOTo+hx1Hd6k
+X-Received: by 2002:a05:600c:1c08:b0:43c:ec0a:ddfd with SMTP id 5b1f17b1804b1-450d64e2cedmr95031995e9.6.1748859765976;
+        Mon, 02 Jun 2025 03:22:45 -0700 (PDT)
+X-Received: by 2002:a05:600c:1c08:b0:43c:ec0a:ddfd with SMTP id 5b1f17b1804b1-450d64e2cedmr95031585e9.6.1748859765515;
+        Mon, 02 Jun 2025 03:22:45 -0700 (PDT)
 Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-450d8006ff8sm116094735e9.34.2025.06.02.03.26.30
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-450d7fb80f6sm115820455e9.28.2025.06.02.03.22.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Jun 2025 03:26:31 -0700 (PDT)
-Date: Mon, 2 Jun 2025 12:26:30 +0200
+        Mon, 02 Jun 2025 03:22:45 -0700 (PDT)
+Date: Mon, 2 Jun 2025 12:22:44 +0200
 From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, Richard Henderson
- <richard.henderson@linaro.org>, kvm@vger.kernel.org, Sergio Lopez
- <slp@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Laurent Vivier <lvivier@redhat.com>, Jiaxun
- Yang <jiaxun.yang@flygoat.com>, Yi Liu <yi.l.liu@intel.com>, "Michael S.
- Tsirkin" <mst@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Marcel
- Apfelbaum <marcel.apfelbaum@gmail.com>, Alistair Francis
- <alistair.francis@wdc.com>, Daniel Henrique Barboza
- <dbarboza@ventanamicro.com>, Marcelo Tosatti <mtosatti@redhat.com>,
- qemu-riscv@nongnu.org, Weiwei Li <liwei1518@gmail.com>, Amit Shah
- <amit@kernel.org>, Zhao Liu <zhao1.liu@intel.com>, Yanan Wang
- <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>, Palmer Dabbelt
- <palmer@dabbelt.com>, Ani Sinha <anisinha@redhat.com>, Fabiano Rosas
- <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>, Liu Zhiwei
- <zhiwei_liu@linux.alibaba.com>, =?UTF-8?B?Q2zDqW1lbnQ=?= Mathieu--Drif
- <clement.mathieu--drif@eviden.com>, qemu-arm@nongnu.org, =?UTF-8?B?TWFy?=
- =?UTF-8?B?Yy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>, Huacai Chen
- <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>, Mark Cave-Ayland
- <mark.caveayland@nutanix.com>
-Subject: Re: [PATCH v4 01/27] hw/i386/pc: Remove deprecated pc-q35-2.6 and
- pc-i440fx-2.6 machines
-Message-ID: <20250602122630.2d28a9b8@imammedo.users.ipa.redhat.com>
-In-Reply-To: <c2999ee1-c0a1-4a09-85f8-6c10ede14584@linaro.org>
-References: <20250508133550.81391-1-philmd@linaro.org>
-	<20250508133550.81391-2-philmd@linaro.org>
-	<20250509172336.6e73884f@imammedo.users.ipa.redhat.com>
-	<91c4bf9f-3079-4e2f-9fbb-e1a2a9c56c7b@redhat.com>
-	<c2999ee1-c0a1-4a09-85f8-6c10ede14584@linaro.org>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Philippe =?UTF-8?B?TWF0aGll?=
+ =?UTF-8?B?dS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
+ <anisinha@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>, Yanan
+ Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v9 12/20] acpi/generic_event_device: add logic to detect
+ if HEST addr is available
+Message-ID: <20250602122244.081a1960@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250530221810.694ce02e@foz.lan>
+References: <cover.1747722973.git.mchehab+huawei@kernel.org>
+	<aa74b756f633dbee5442cf4baa2c1d81a669d2f9.1747722973.git.mchehab+huawei@kernel.org>
+	<20250528174212.2823d3de@imammedo.users.ipa.redhat.com>
+	<20250530080120-mutt-send-email-mst@kernel.org>
+	<20250530164903.0f9f8444@imammedo.users.ipa.redhat.com>
+	<20250530221810.694ce02e@foz.lan>
 X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: Chmc4L/0SvzS
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: eZMJZa/nU794
 
-On Mon, 2 Jun 2025 10:53:19 +0200
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
+On Fri, 30 May 2025 22:18:10 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> On 2/6/25 08:13, Thomas Huth wrote:
-> > On 09/05/2025 17.23, Igor Mammedov wrote: =20
-> >> On Thu,=C2=A0 8 May 2025 15:35:24 +0200
-> >> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
-> >> =20
-> >>> These machines has been supported for a period of more than 6 years.
-> >>> According to our versioned machine support policy (see commit
-> >>> ce80c4fa6ff "docs: document special exception for machine type
-> >>> deprecation & removal") they can now be removed. =20
-> >>
-> >> if these machine types are the last users of compat arrays,
-> >> it's better to remove array at the same time, aka squash
-> >> those patches later in series into this one.
-> >> That leaves no illusion that compats could be used in the later patche=
-s. =20
-> >=20
-> > IMHO the generic hw_compat array should be treated separately since thi=
-s=20
-> > is independent from x86. So in case someone ever needs to backport thes=
-e=20
-> > patches to an older branch, they can decide more easily whether they=20
-> > want to apply the generic hw_compat part or only the x86-specific part=
-=20
-> > of this series. =20
->=20
-> Yes, it is clearer this way than squashed.
+> Em Fri, 30 May 2025 16:49:03 +0200
+> Igor Mammedov <imammedo@redhat.com> escreveu:
+> 
+> > On Fri, 30 May 2025 08:01:28 -0400
+> > "Michael S. Tsirkin" <mst@redhat.com> wrote:
+> >   
+> > > On Wed, May 28, 2025 at 05:42:12PM +0200, Igor Mammedov wrote:    
+> > > > On Tue, 20 May 2025 08:41:31 +0200
+> > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> > > >       
+> > > > > Create a new property (x-has-hest-addr) and use it to detect if
+> > > > > the GHES table offsets can be calculated from the HEST address
+> > > > > (qemu 10.0 and upper) or via the legacy way via an offset obtained
+> > > > > from the hardware_errors firmware file.      
+> > > > 
+> > > > 
+> > > > it doesn't apply to current master anymore      
+> > > 
+> > > indeed. Mauro?    
+> > 
+> > Michael,
+> > it's trivial conflict in machine compat,
+> > could you fix it up while applying?  
+> 
+> IMHO, that's the best. The thing is, as code gets merged upstream with
+> backports, conflicts happen.
+> 
+> I can re-send the series, if you prefer, as I'm keeping it rebasing it
+> from time to time at:
+> 	https://gitlab.com/mchehab_kernel/qemu/-/tree/qemu_submitted?ref_type=heads
+> 
+> (it is on the top of upstream/master)
+> 
+> But even that might have conflicts on your test tree if you pick
+> other patches touching this backport table:
+> 
+> > -GlobalProperty hw_compat_10_0[] = {};
+> > +GlobalProperty hw_compat_10_0[] = {
+> > +    { TYPE_ACPI_GED, "x-has-hest-addr", "false" },
+> > +};  
+> 
+> (this was the code when I sent the PR. When applying upstream,
+> such hunk is now(*):
+> 
+>  GlobalProperty hw_compat_10_0[] = {
+>      { "scsi-hd", "dpofua", "off" },
+> +    { TYPE_ACPI_GED, "x-has-hest-addr", "false" },
+>  };
+> 
+> 
+> (*) https://gitlab.com/mchehab_kernel/qemu/-/commit/08c4859f8c6f36d7dccf2b773be88847e5d1fe0c
+> 
+> If you still prefer that I resubmit the entire PR, let me know.
 
-ok, let's leave it as is.
+If it's the only patch that needs rebase and doesn't affect the rest,
+I'd say there is no need to spam the list with whole series respin, 
+just post rebased v10 12/20 as reply here
 
->=20
+If it's more than that, respin series.
+
+> 
+> Regards,
+> Mauro
+> 
 

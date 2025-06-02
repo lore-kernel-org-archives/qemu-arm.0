@@ -1,120 +1,94 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp2834514njh;
-        Mon, 2 Jun 2025 08:32:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW56exYOZyj5hJx8uaIekuI3ShaYgapMg15RxR7HQNLXwHCS2tmHXTegjkKgUUJTFxyeOO4INL2wSjRjA==@linaro.org
-X-Google-Smtp-Source: AGHT+IE0nNWj5GieROcRACL4rfMeqKZbJ1Dkxd6LDe8Y2qcVPWGdsSsrTJmw25O5DRbqVx8BePZK
-X-Received: by 2002:a05:620a:618a:b0:7cd:3a:f2d8 with SMTP id af79cd13be357-7d0eac654a9mr1268518185a.24.1748878337107;
-        Mon, 02 Jun 2025 08:32:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748878337; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp2840637njh;
+        Mon, 2 Jun 2025 08:42:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUed61AtZaDvSQ3f4VKTFaUzwBGwL2zaqi2OUuiJMgQ56v00iJSPxNaoHke50xKsj/KR07wvixjuAL0ng==@linaro.org
+X-Google-Smtp-Source: AGHT+IEmHRwIzvM6q0hkJHIHYr11os31vT+FxkzBQ0vpHEunT13l5S2oZkdtoWSeV3lllpVeZkCs
+X-Received: by 2002:ad4:5bc4:0:b0:6fa:9a9d:fe93 with SMTP id 6a1803df08f44-6facf506a53mr221699276d6.21.1748878956588;
+        Mon, 02 Jun 2025 08:42:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748878956; cv=none;
         d=google.com; s=arc-20240605;
-        b=Tcxjqq0UU5PHyWd8EZIuCgZlagWVZloGOwSYIS/66vb9x/LuXf+sVxSn0lrF6lGexP
-         FZ7WZID+XGRSUCKcZDSf0PtVK/wkTirLqoOJTxeYtGRfsaffF9VTjiyTbNWc4LbG2fcy
-         LyOiSvQtmBA49Y0nVHkyOMS5BIdHzbVLgcf5HVYOuDHhIQHQ9eSTdPxU8UHi6SBNNorJ
-         HLK0nJCXLOhn9hbBkA02QmxG9V3VbboEBVoQQtXdyqY0iTUjgS8CfptmqjH8qjPonf1T
-         0A8LT5BXRWb/p618g/dk6Anu1HonSYbszNTLOeatJd+2fAjTpGr3Yn4TGXgyunel0mX6
-         6sMQ==
+        b=RACVlG2p9Nb9pv18YXqGvdgk5cw47i7Q4zRekjLyrYn6pF97lz1flRA8XZTHYfoZmP
+         KuzHFZ4fE2WSgLwTHmwRuaJMh7KK6C0NFebBhHnZgATH/Cjm9PMop3Jqf8pqT+n9sBxu
+         bbcRl+DzCRwZX69XnlCSlS7eW1jbSH5AUIksH8wMAvsWeVOqCCk50YIuZ4+aizpBIDDe
+         JCMULKGEoEJkn98fIOQxIyKiFOC93mUfxtPdvG9XPA7p74vpdKqnJ6w5ZjX7vwYS/oYR
+         r7D0pRswL0SMVn0dhn2h0ldjAkhBw/KJ0+xOqPlrVDe0F2a5ZBHXiT306lkz/yqGwrsd
+         KegA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=GGEoK/+QIc+qTv25wns84dfmjQtAMU4zYUFc0evEeBY=;
-        fh=uVutygXwdfk1JYbIKokRyycrHjkg04KZN3hWLUSa9sM=;
-        b=Y0rD/a9lG/jVqPGVdtX4WU2rqEPXpLVsF5g7HS7GnAL4kbbiEU1DqIBYbdYbZoU+Cx
-         ydBmbhuwsxED2HrjhdeZOtVfPGQI9mfJ1DVYUFoKiyq3HUSOWcjtp3HlsPkAF/Spy8ru
-         8bhr4096q+raJOvdBPVgo58X65jaDNnVhKYY409pX3TQ5UndDxEjNqfiVU+RSSfFj3y8
-         NIKExhSuQtBfmzqdtNYmJHYNMUpWK93MjcadhALPUnD3EAsGJZv2+ZIEnnyNZu8/Kqbn
-         Ht+VFjsUb5cz8ZchwLFBRtpoylKHbipfM7z2OgAzo7IfrZGQQjKT+YYfD01npytvzqpi
-         98hA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :references:in-reply-to:message-id:date:subject:cc:to;
+        bh=ckw8CXQULUSZ3qiI/INg/rbtUjwDTPrQ/I4GH6b6Fso=;
+        fh=PnSw404jJ+s1m+rSaKsD+X9lt69JOcV3ATg/BWbrXZg=;
+        b=cOY9M8JUC8WK/8TXciQuS386xHT+V42vMVJEjE3cuvDHi4dZTiH60veCNg4xI41ovf
+         CHfbu4dUXolPcd52gZbVTLnlMAI3Fxh1+GHuQnAocJlf0pl11T3Pek2wfvRtjwxb+6+5
+         0quskwNGKm0dlVyKU49ltTozBUGdX1/bcVqhG5OfSblIbmkATmi9evtYOUPq8nKfu4qz
+         IOKVn0e4+VR9eBRhQePDmjgm1ao+/oOS+xdZIhUV951KKLobvnsiEMvgttcgKfJ/GJlD
+         Y3jf7MpUdBotTKpXV0ksSqz20TD9+wQIoewn3ws08H2eN3aOQ4bb5L0NzO0NGBz2vukp
+         Zwvw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=q6208Fxy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-87e2a3bf52csi2795427241.86.2025.06.02.08.32.16
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fac6e8d891si102003626d6.291.2025.06.02.08.42.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Jun 2025 08:32:17 -0700 (PDT)
+        Mon, 02 Jun 2025 08:42:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=q6208Fxy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uM78k-0000Su-Ki; Mon, 02 Jun 2025 11:31:54 -0400
+	id 1uM7Ii-0002sh-Kn; Mon, 02 Jun 2025 11:42:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uM78j-0000Si-FC
- for qemu-arm@nongnu.org; Mon, 02 Jun 2025 11:31:53 -0400
-Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uM78h-0001XK-UQ
- for qemu-arm@nongnu.org; Mon, 02 Jun 2025 11:31:53 -0400
-Received: by mail-ot1-x32d.google.com with SMTP id
- 46e09a7af769-7300069c447so3034752a34.2
- for <qemu-arm@nongnu.org>; Mon, 02 Jun 2025 08:31:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1748878310; x=1749483110; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=GGEoK/+QIc+qTv25wns84dfmjQtAMU4zYUFc0evEeBY=;
- b=q6208Fxy027GWpisv3Ujd/9uvMjUQOLjDjMIU4nmG9AzKOho+2gVCb6Ns+4A482f4M
- 4uGgPaXlP1NduB93SLjPfbg99B98z8/ohsc74XHMMm7b9YKuuaJX3RuGkLnSS49dnBYi
- tXYmHbioVTbQCdcvBzZ4J4jeYtdMQKXnrOB8r3d3Y/HZZ2IneJYSZAJZV9VrCnDsMcMl
- qutWLa8u0+OYapI1oxiQGVRXWBO2M6XyiaNv4wZVTeeka4Z1xMPr8jDZwngruOiqhcGo
- 8YI+X61zqbdXgbJseJxSD4Kf/YMh1O8m6AfDi2SbpvS/+DDlRzfETyKCyO4Vfmf6gGNC
- UOgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1748878310; x=1749483110;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=GGEoK/+QIc+qTv25wns84dfmjQtAMU4zYUFc0evEeBY=;
- b=aEURusJQVmwcvz4rLgucBf9U16EIa6kaP6BrmGJwHlYbY7aJ7RJ3FQIUzCb/kcZiGr
- FL7QX9zlMlIzVDeAQwtt1TKwXHM3c0i5FK8sv52pyEtieS9hrYkS5OHD7F8kELVI5YUw
- uZu20yFNATeMHcd3nPfcKHVUs1sVkwaNMcFSNbTFcqSmQFSvIMjTrNq0GfUxEFJAwLZc
- 0ZVW9mmgmUpVWoBceea5BVgwQw8GJWmKeKXdkWa0WhzpkSYge0Mz4ZMM9N1BvYoJ0xcj
- Dz7L5xwa0XQ4okFLntNBpW1iQdnrmNLquFvDklK+K3PdekTd4/cVrmbi26fUF089BgYs
- 0P+g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUc20gi20yVnCU48Z/mBDy0yMbAJ/L138GlsKsg+Ln3Sov0ZBU/wzB3iuv+BylEjOsMq2AuFU0OFg==@nongnu.org
-X-Gm-Message-State: AOJu0YwrEbUD3QWdWIZu64lA2wcXIxqH0F84pC2kxSFC4PyHSbYpP7On
- T4mBf65uzqXczr9V8bCAWWhZySDGPvT3VJodQqtJesfmw4mSTXnpLRWZ1asY8j879BPiUebNhbs
- JXUEmprZkezlhbdetL+/z38oHUvC4YrVRQ9UWkYuzmhAt45wMs+y3
-X-Gm-Gg: ASbGncsjPwyTy8vmSF0HEjkiPUBhaLMaH0tB6R0on5SeS6Drxvu4b8emOFivpaUPZbX
- vGgp84jtJrN4b5ajqf8TH4Pyb9Xk5h+LxrUPUZKpUgqOZGUP1H85VL6AJovfnsUdyH2ood9pLI8
- 8Z7NKTBz2Fs1QQ//WjvguXQ8iNMBNzeCRFGA==
-X-Received: by 2002:a05:690c:6382:b0:70c:c013:f26 with SMTP id
- 00721157ae682-71097e62258mr110272497b3.33.1748878299704; Mon, 02 Jun 2025
- 08:31:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uM7Id-0002sL-WC; Mon, 02 Jun 2025 11:42:08 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uM7Ic-0003Gx-Hm; Mon, 02 Jun 2025 11:42:07 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4b9yj82G4yz6HJcD;
+ Mon,  2 Jun 2025 23:40:28 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id E63341402CB;
+ Mon,  2 Jun 2025 23:41:55 +0800 (CST)
+Received: from A2303104131.china.huawei.com (10.203.177.241) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 2 Jun 2025 17:41:48 +0200
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
+ <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
+ <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
+ <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
+Subject: [PATCH v3 1/6] hw/arm/smmuv3: Check SMMUv3 has PCIe Root Complex
+ association
+Date: Mon, 2 Jun 2025 16:41:05 +0100
+Message-ID: <20250602154110.48392-2-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
+In-Reply-To: <20250602154110.48392-1-shameerali.kolothum.thodi@huawei.com>
+References: <20250602154110.48392-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-References: <7aae8238-f7f4-4f3a-9a7e-e9afc99d1d0c@redhat.com>
- <1301bf7e-0e52-43c0-9910-55ea34647a34@roeck-us.net>
-In-Reply-To: <1301bf7e-0e52-43c0-9910-55ea34647a34@roeck-us.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 2 Jun 2025 16:31:27 +0100
-X-Gm-Features: AX0GCFsaNcY7-pGXClrTdQHe0n1lU-lWjnYgeC8uCJzVPJcDZO5vXsu6B4FR8O8
-Message-ID: <CAFEAcA_0Hu8+G50sy0FJ2rX-=cNymLddDdrS2nN5ZY-doKiT8w@mail.gmail.com>
-Subject: Re: Is anybody still using the "highbank" or "midway" QEMU machines?
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x32d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.203.177.241]
+X-ClientProxiedBy: kwepems500002.china.huawei.com (7.221.188.17) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -128,54 +102,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DMvFE3l9lo9q
+X-TUID: zp+YbLMIMSpX
 
-On Mon, 2 Jun 2025 at 15:24, Guenter Roeck <linux@roeck-us.net> wrote:
-> On 5/30/25 07:23, Thomas Huth wrote:
-> > I was trying to create a functional test for the "highbank" and
-> > "midway" arm machines of QEMU, and only succeeded after lots of
-> > trial and error to boot something on the "highbank" machine.
-> > Peter mentioned on IRC that he also does not test these machines
-> > by default, so we started wondering whether anybody is still
-> > using these machines? If not, we should maybe start the
-> > deprecation process for those instead?
+Although this change does not affect functionality at present, it is
+required when we add support for user-creatable SMMUv3 devices in
+future patches.
 
-> I don't try to boot midway anymore. Commit log shows:
->
->      midway only works with an antique version of qemu. Stop testing it.
->
-> That was back in 2021. The log shows that it needs qemu v3.0.
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+---
+ hw/arm/smmuv3.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-Might have been fixed by QEMU commit 61b82973e in 2022, which says
-# This change fixes in passing booting on the 'midway' board model,
-# which has been completely broken since we added support for Hyp
-# mode to the Cortex-A15 CPU
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index ab67972353..7e934336c2 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -24,6 +24,7 @@
+ #include "hw/qdev-properties.h"
+ #include "hw/qdev-core.h"
+ #include "hw/pci/pci.h"
++#include "hw/pci/pci_bridge.h"
+ #include "cpu.h"
+ #include "exec/target_page.h"
+ #include "trace.h"
+@@ -1881,6 +1882,13 @@ static void smmu_realize(DeviceState *d, Error **errp)
+     SMMUv3Class *c = ARM_SMMUV3_GET_CLASS(s);
+     SysBusDevice *dev = SYS_BUS_DEVICE(d);
+     Error *local_err = NULL;
++    Object *bus;
++
++    bus = object_property_get_link(OBJECT(d), "primary-bus", &error_abort);
++    if (!bus || !object_dynamic_cast(bus->parent, TYPE_PCI_HOST_BRIDGE)) {
++        error_setg(errp, "SMMUv3 is not attached to any PCIe Root Complex!");
++        return;
++    }
+ 
+     c->parent_realize(d, &local_err);
+     if (local_err) {
+-- 
+2.34.1
 
-> I only test highbank manually (not in automated tests). I have this in my code:
->
->      # highbank boots with updated (local version of) qemu,
->      # but generates warnings to the console due to ignored SMC calls.
->
-> I have not run the manual test for ages, so I have no idea if it still works.
-> It also looks like I removed the local changes. Those were needed to enable basic
-> SMC support for highbank; maybe similar code is now upstream.
-
-> Ok for me to remove both. Not worth the trouble.
-
-Cool. I don't think these machine types provide anything to
-users that is particularly interesting (if you just want
-"boot an A15 or A9 Linux" then the virt board will do fine,
-and the original "test system software for this hardware"
-use case is long dead). So I'm in favour of deprecating
-these (and eventually dropping them).
-
-There's not actually a lot of highbank/midway specific code
-here (no complex SoC modelling, lots of stock Arm peripheral
-devices, so just 400 lines in hw/arm/highbank.c, plus another
-450 in hw/net/xgmac.c for the ethernet controller), but
-if nobody's using it then there's no point keeping it around.
-
-thanks
--- PMM

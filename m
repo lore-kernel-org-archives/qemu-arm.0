@@ -1,218 +1,204 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp2727095njh;
-        Mon, 2 Jun 2025 05:58:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXQypSIgFzTWYo9L3+ltd9Y+vCbvzJ46TAFTa14mtoRmIShgY2RlVnIIxbC1qtc4OJ7AugUWdu22Rr5WQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFNVEtJ+jnZ7W6cvwxFE/h+snVgEWutHfaFp+sVT8+LEcOuEhrM8w+LIjGn383RlwvmYc5y
-X-Received: by 2002:a05:622a:59cf:b0:494:7a16:18e3 with SMTP id d75a77b69052e-4a443fa19c1mr227382301cf.29.1748869130742;
-        Mon, 02 Jun 2025 05:58:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748869130; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp3026415njh;
+        Mon, 2 Jun 2025 14:06:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVYpk9zeJ7r7af09H/cqrzTkleTcJoy67Dh/nbE1TmJSBzBwxW0Vw68FUFj26bUaWoW6PUgC8fW9zA2iA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGN+IEKzLLiLrzfn+MRvB3zUCRBLCwGjfO+jgyL61ipMqzkwVd185aLan/35ygr//N5q83K
+X-Received: by 2002:a05:620a:240f:b0:7c5:f696:f8e5 with SMTP id af79cd13be357-7d0a1fa820amr2091908485a.14.1748898390441;
+        Mon, 02 Jun 2025 14:06:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748898390; cv=none;
         d=google.com; s=arc-20240605;
-        b=IlcmT2tAyKPwFL6tTwJtrKTzAmo+dUOYxYKOKbBHEurnyTy7sYWpI+qdTPUZXVkLrZ
-         edN53I6HfArAvm4jYMMQZHuZIWKMLLfo5KvPmeuF2iz7uknwOYAzoXo+BDwJUYTDZNMq
-         6CYclR7QUtbrexoVjdEXkEgbv6wKXT35x28nYj3a2BQOXb7tahL9O8v5Yta9jb/bI7DF
-         Mw7VeMjyYXSEAnTHHBzaZb6sc/jTiA/lvc1FYXLrvf8CX8M3CjR2VzuT5/KJZYmJWSdX
-         dGbGSINLk/Z7L/dOjqb8vigLmC4dl0tvl6lUkJqZhpYLwt3h7SAuPLi2+IdZ5pjcA2yZ
-         pCXQ==
+        b=cnJcT0Y+5tlVuYiZGO46LI/7b3X+HRkkdEfMBTgN+boXMpyWg0wpwnVfKDGkktRYe+
+         bgQmnuHuRoWeOJD/Gmkqu60Z6Db2eBCPi8EKk75co1RaO20T3v5Ldc5RRbKnyjB1wOkh
+         boV1vsRt0xRozKA0xjvSr2Szwhz9PskOlx8YhgbDnsMQeFwBQKnqnHqBEVfuDOz7frb9
+         EjGslPRiwDska51gnMB5rISH9EiYGnXjbmll/UxpaLgB29QfClT99mUR5Kf73EGbY0Gw
+         3gAr3LidJeATfleN19B5NwHQKXql2W93cc++kyX9vf6LASu6iWX/CYeZNvb0eddxGoFd
+         MjHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:date:subject:cc:to:from
-         :dkim-signature:message-id;
-        bh=ZXfAmqtTAlzt1iBj+v4Ovr6eGsXrBq9r+O0CNqa/1x8=;
-        fh=DHdByYTgC/foY7OnbddFKZbKoFJ6/yoOas4Te19gHEc=;
-        b=dyhTfYEkIOejvke+OkHyTz97LZZ6rf4LHbL4XIH+hg2Hi+xvhLmn+7yq3ryOoQL2To
-         +Hg6zfneeW3NAhXYmsy4nFFSK2nf60T4lrOM/yCtusfXn2fuWik0vZ+wRsKn4XwUY84A
-         jTf+xn3iYT9eQ89g8wsE2/BAVmjR8UQCurMQjEZfIezqNu5ipQ08cNUEwj9pzPmqik5j
-         q+7DbKFYBXwz4JyY1IVRRwHl9A1UpuOBC+qo61LKRdsYr/XKThPY0d6unkpg+s2XqYRO
-         AQCBJfK5Wmfaypa+XCJTirCN2rxX7uLwz/+WJKIMoV4Ohdr04XFJmpsW+vufwOE6v1lf
-         4JzA==;
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=TPAOzMw4ShRFf2PjoWUiz74Bhb/cLQB/tGLlUw7Kpr8=;
+        fh=EUEQeQcUuIvl+SrKfRFHYwuxlvYlIH8HQ6SK2sFaDv0=;
+        b=bElDQFpz354fMiCEVXVooIvawAohi+RUEd8ztPZQnL/vRCyybIBJWc8nNNdNjgX1LV
+         nzeERqf29uUoazgXkHckP19cVnxQ68YnqQcubuTf+gtHg5js3Qqn6cww2cXKaq32HBkg
+         Fc7lo6WjqAWjjXtPNGEiYjeunwEIvmn+FYw2BsMNuiVFQxxt+Gz992Z6chQDc+AFFEUJ
+         Ih4c6D/W44V2EcdyraG8NyeB1AVl5VlkOVcdedxOjkYZ0bU4XaMEu+1wrHS2gG+0jxnr
+         gePViQWxRMq6/JdiXbv9uzI3LN6N8pNYsfhz78C0G95mxDIUvIBFh8tu9HBRXXJoFuG1
+         7hYA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=u8HhRNzr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="K+Vv2C/g";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a435880690si102780481cf.103.2025.06.02.05.58.50
+        by mx.google.com with ESMTPS id af79cd13be357-7d09a1e04a8si1080812185a.211.2025.06.02.14.06.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Jun 2025 05:58:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 02 Jun 2025 14:06:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=u8HhRNzr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Message-ID: <683da00a.c80a0220.368e1.8102SMTPIN_ADDED_BROKEN@mx.google.com>
-X-Google-Original-Message-ID: <20250602122244.081a1960@imammedo.users.ipa.redhat.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="K+Vv2C/g";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uM4k5-000440-Ef; Mon, 02 Jun 2025 08:58:17 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uMCMD-0007uk-DC; Mon, 02 Jun 2025 17:06:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1uM4k3-000433-96; Mon, 02 Jun 2025 08:58:15 -0400
-Received: from nyc.source.kernel.org ([147.75.193.91])
+ (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
+ id 1uMCMB-0007u4-Sk
+ for qemu-arm@nongnu.org; Mon, 02 Jun 2025 17:06:07 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1uM4k1-0000F6-Lx; Mon, 02 Jun 2025 08:58:15 -0400
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id 3B8DFA4FFAD;
- Mon,  2 Jun 2025 12:58:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D77FFC4CEEB;
- Mon,  2 Jun 2025 12:58:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1748869091;
- bh=UGpf4ScskYQqBIauC9Wo+ugO/mp6oc4eJcEYr5RIoR0=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=u8HhRNzrCqHQLjErCeTW1ab/J/WOyCqQ4162WtH2eKR1PymS4yPY6Ly2akh9ieK4C
- +mjQnJhhT5NdJf9n2AdRXyEspFZIXMlTfHhUPgZ02+hRDIlQJFh5yVEJsHAtF7FGHu
- gAWbVC+dxfIhrp32HBUAOjKUUkhcbTDjhL5GETxUOwEwvg/PjcR61cfP9FJRT+i/p9
- i5If//kwZA7DkPz0K13JfvFBcYpCz0GU7uS+MBmlVPAhaxjR7SjujtA6VMQelcaaJw
- DUTl63rJg6DoO2/sPTXEmhEqed0N7Q40LzRiojUy8aJhfX9wrOF03xJih9g/mf8p0J
- SzO9y7fGtFF6A==
-Received: from mchehab by mail.kernel.org with local (Exim 4.98.2)
- (envelope-from <mchehab+huawei@kernel.org>)
- id 1uM4jx-000000008oD-3sD1; Mon, 02 Jun 2025 14:58:09 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Ani Sinha <anisinha@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v10 12/20 RESEND] acpi/generic_event_device: add logic to
- detect if HEST addr is available
-Date: Mon,  2 Jun 2025 14:57:12 +0200
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250530221810.694ce02e@foz.lan>
-References: <20250530221810.694ce02e@foz.lan>
+ (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
+ id 1uMCMA-0003qE-By
+ for qemu-arm@nongnu.org; Mon, 02 Jun 2025 17:06:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1748898364;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=TPAOzMw4ShRFf2PjoWUiz74Bhb/cLQB/tGLlUw7Kpr8=;
+ b=K+Vv2C/gv/nqN1bVZa/fZvN6rgg0lqG9upJqbIxX3dNpL7jZtGAOTlWTGLVUr3ItT6X/N6
+ y3W42hWh7exMxqO2oDoFx4BJJJ0Ljl8dYnnSpvHWciOOLGDcIem1yocHNr97s12+yX4FHa
+ /RdCx1mgonxe9V02jrdR9BfgpvxKdZ4=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-624-orXol2XRM8WyniH1nbENGA-1; Mon, 02 Jun 2025 17:06:03 -0400
+X-MC-Unique: orXol2XRM8WyniH1nbENGA-1
+X-Mimecast-MFC-AGG-ID: orXol2XRM8WyniH1nbENGA_1748898363
+Received: by mail-qk1-f198.google.com with SMTP id
+ af79cd13be357-7d09ed509aaso698193785a.3
+ for <qemu-arm@nongnu.org>; Mon, 02 Jun 2025 14:06:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1748898363; x=1749503163;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=TPAOzMw4ShRFf2PjoWUiz74Bhb/cLQB/tGLlUw7Kpr8=;
+ b=hi+nGN0jSbH616WPyJAM6fyZqBOmcaL9hfigfIbvwOZ4CIWNyX9onCu6CrQpFKZhB/
+ ySg06eReSAMBy9gUfloi2ceocyMGev1XG3w+uyTDse+u0aNcprvE/dW1eDIF91czNZkb
+ ZF3m5jdSlUW+yubiewHS9SJyPmHjqvqfRZwIel8MV43DooRP0Ez7JqSFSFgdm+NvmC3u
+ +8vTRfzTjeEwiGJJ72FCfFdhqJs01fDvtutQdb0/BJk3iWMzUbzMfLx7bOXBaLdA5XyJ
+ ZZ6CX30OCwxZEP0K8frKM1dnDfHYRX5mTGAFoQhOqtiz59r2aaYRg3ci+eyM+X9/fU7M
+ oO8g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV/9EvbkXsNWQVCaU7JjokjX0ekwouGn6C+89lEOuKoSGJ92//A5QHKk+V2E3GSVtrR9x98c9/B2A==@nongnu.org
+X-Gm-Message-State: AOJu0Ywi3MiwiFLdbr7TgOcAXcto1Z9ZslHtVLghsMvi8XteISWvFgz3
+ Pcr9r6iRe8XYmlzP1ZG/nT09T1oao3hzRr4vbVfaOGsQzr8Sh9pxdWt3Qk2JQDZmiMOPhFXWSWU
+ 2jDqlFv5hQx2cznGfck5Ol77gmAk2bxTwf89lJXESuFfRuUHPX9+eCQ==
+X-Gm-Gg: ASbGncs91KWPkAu5FDfe6d7hYVFWVqwkkeoF6vipJWhsJ4lASqwDRI85ARy+W2LDe2X
+ Qu8EMcOzJeT8Wb2i0bYJIMVA9XgnVawuHjtEKbGBn49cdqEkhE58W7UM7T8FGmAOepXucfs+Y8W
+ NqfN43vltkCjukJ7jvAz0rOq7ZQ8dannHjU2V7MC8Yd/SjXh5KCHdib8vdPp2NMj+LuyLW0/EcV
+ dma5cw3jej6+aLRNCtta0rhjnIAr4an4YumybklgsPaROZ/xGKOpuuLIxAYrlxThmTfsVugsyaT
+ 2Pbs6unBIuK/
+X-Received: by 2002:a05:620a:1a26:b0:7c5:a29e:3477 with SMTP id
+ af79cd13be357-7d0a20343e0mr2405041185a.53.1748898362576; 
+ Mon, 02 Jun 2025 14:06:02 -0700 (PDT)
+X-Received: by 2002:a05:620a:1a26:b0:7c5:a29e:3477 with SMTP id
+ af79cd13be357-7d0a20343e0mr2405037985a.53.1748898362300; 
+ Mon, 02 Jun 2025 14:06:02 -0700 (PDT)
+Received: from [192.168.40.164] ([70.105.235.240])
+ by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-7d09a1bb27fsm689205185a.116.2025.06.02.14.06.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Jun 2025 14:06:01 -0700 (PDT)
+Message-ID: <30b4030e-fb0b-4254-9b43-8f89fe66bfe0@redhat.com>
+Date: Mon, 2 Jun 2025 17:05:32 -0400
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=147.75.193.91;
- envelope-from=mchehab+huawei@kernel.org; helo=nyc.source.kernel.org
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.015,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/arm/virt: Check bypass iommu is not set for iommu-map
+ DT property
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: eric.auger@redhat.com, peter.maydell@linaro.org, nicolinc@nvidia.com,
+ linuxarm@huawei.com
+References: <20250602114655.42920-1-shameerali.kolothum.thodi@huawei.com>
+From: Donald Dutile <ddutile@redhat.com>
+In-Reply-To: <20250602114655.42920-1-shameerali.kolothum.thodi@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: RThbFVg49PWVdUANtU-46eXLX3UMneRynIYDbpIDscg_1748898363
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=ddutile@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.015,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- INVALID_MSGID=0.568, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KTB/RaKUdNPP
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fhE6u9CMaOxg
 
-Create a new property (x-has-hest-addr) and use it to detect if
-the GHES table offsets can be calculated from the HEST address
-(qemu 10.0 and upper) or via the legacy way via an offset obtained
-from the hardware_errors firmware file.
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
----
-PS.: patch resent as the previous version was "12/26" instead
-of "12/20"
 
-v10:
-- rebased on the top of upstream
+On 6/2/25 7:46 AM, Shameer Kolothum wrote:
+> default_bus_bypass_iommu tells us whether the bypass_iommu is set
+> for the default PCIe root bus. Make sure we check that before adding
+> the "iommu-map" DT property.
+> 
+> Fixes: 6d7a85483a06 ("hw/arm/virt: Add default_bus_bypass_iommu machine option")
+> Suggested-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+>   hw/arm/virt.c | 15 ++++++++++-----
+>   1 file changed, 10 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 9a6cd085a3..99fde5836c 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1487,9 +1487,12 @@ static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
+>       qemu_fdt_setprop_cell(ms->fdt, node, "phandle", vms->iommu_phandle);
+>       g_free(node);
+>   
+> -    qemu_fdt_setprop_cells(ms->fdt, vms->pciehb_nodename, "iommu-map",
+> -                           0x0, vms->iommu_phandle, 0x0, bdf,
+> -                           bdf + 1, vms->iommu_phandle, bdf + 1, 0xffff - bdf);
+> +    if (!vms->default_bus_bypass_iommu) {
+> +        qemu_fdt_setprop_cells(ms->fdt, vms->pciehb_nodename, "iommu-map",
+> +                               0x0, vms->iommu_phandle, 0x0, bdf,
+> +                               bdf + 1, vms->iommu_phandle, bdf + 1,
+> +                               0xffff - bdf);
+> +    }
+>   }
+>   
+>   static void create_pcie(VirtMachineState *vms)
+> @@ -1612,8 +1615,10 @@ static void create_pcie(VirtMachineState *vms)
+>           switch (vms->iommu) {
+>           case VIRT_IOMMU_SMMUV3:
+>               create_smmu(vms, vms->bus);
+> -            qemu_fdt_setprop_cells(ms->fdt, nodename, "iommu-map",
+> -                                   0x0, vms->iommu_phandle, 0x0, 0x10000);
+> +            if (!vms->default_bus_bypass_iommu) {
+> +                qemu_fdt_setprop_cells(ms->fdt, nodename, "iommu-map",
+> +                                       0x0, vms->iommu_phandle, 0x0, 0x10000);
+> +            }
+>               break;
+>           default:
+>               g_assert_not_reached();
 
- hw/acpi/generic_event_device.c |  2 ++
- hw/arm/virt-acpi-build.c       | 18 ++++++++++++++++--
- hw/core/machine.c              |  2 ++
- 3 files changed, 20 insertions(+), 2 deletions(-)
-
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index d292f61b4e41..3cf9dab0d01a 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -318,6 +318,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
- 
- static const Property acpi_ged_properties[] = {
-     DEFINE_PROP_UINT32("ged-event", AcpiGedState, ged_event_bitmap, 0),
-+    DEFINE_PROP_BOOL("x-has-hest-addr", AcpiGedState,
-+                     ghes_state.use_hest_addr, false),
- };
- 
- static const VMStateDescription vmstate_memhp_state = {
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index da3ebf403ef9..3126234e657d 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -893,6 +893,10 @@ static const AcpiNotificationSourceId hest_ghes_notify[] = {
-     { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
- };
- 
-+static const AcpiNotificationSourceId hest_ghes_notify_10_0[] = {
-+    { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
-+};
-+
- static
- void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
- {
-@@ -947,15 +951,25 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
- 
-     if (vms->ras) {
-         AcpiGedState *acpi_ged_state;
-+        static const AcpiNotificationSourceId *notify;
-+        unsigned int notify_sz;
-         AcpiGhesState *ags;
- 
-         acpi_ged_state = ACPI_GED(vms->acpi_dev);
-         ags = &acpi_ged_state->ghes_state;
-         if (ags) {
-             acpi_add_table(table_offsets, tables_blob);
-+
-+            if (!ags->use_hest_addr) {
-+                notify = hest_ghes_notify_10_0;
-+                notify_sz = ARRAY_SIZE(hest_ghes_notify_10_0);
-+            } else {
-+                notify = hest_ghes_notify;
-+                notify_sz = ARRAY_SIZE(hest_ghes_notify);
-+            }
-+
-             acpi_build_hest(ags, tables_blob, tables->hardware_errors,
--                            tables->linker, hest_ghes_notify,
--                            ARRAY_SIZE(hest_ghes_notify),
-+                            tables->linker, notify, notify_sz,
-                             vms->oem_id, vms->oem_table_id);
-         }
-     }
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index c3f3a5020d0b..aa90a83d8c23 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -35,10 +35,12 @@
- #include "hw/virtio/virtio-pci.h"
- #include "hw/virtio/virtio-net.h"
- #include "hw/virtio/virtio-iommu.h"
-+#include "hw/acpi/generic_event_device.h"
- #include "audio/audio.h"
- 
- GlobalProperty hw_compat_10_0[] = {
-     { "scsi-hd", "dpofua", "off" },
-+    { TYPE_ACPI_GED, "x-has-hest-addr", "false" },
- };
- const size_t hw_compat_10_0_len = G_N_ELEMENTS(hw_compat_10_0);
- 
--- 
-2.49.0
+Reviewed-by: Donald Dutile <ddutile@redhat.com>
 

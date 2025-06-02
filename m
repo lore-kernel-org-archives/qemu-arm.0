@@ -1,206 +1,355 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp1754713njh;
-        Sat, 31 May 2025 07:13:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXvdRDVRAihWZFSMcMgCRP9Gow82l3rMCw20Z4fmv/Z668SqMas2ZqBBpwXHR204z/+OdUR49vCF1AMYQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IH4+5LhI5JHpZYWjkgX6yXsALTjmVbQzp+WLMHW7hz1okOAZoAnXOKDhnszFZR++X8IiwH1
-X-Received: by 2002:a05:6214:20a4:b0:6f8:e66b:578e with SMTP id 6a1803df08f44-6facebe802cmr128846346d6.32.1748700822199;
-        Sat, 31 May 2025 07:13:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748700822; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp2542118njh;
+        Sun, 1 Jun 2025 22:35:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVHu03svXj+37lB7LqkAVZZDKgWDeJGcxEY4Knz7MDvP2OqukO6SLdXnC/w70ldBWYwjJJuQtznrrLe5Q==@linaro.org
+X-Received: by 2002:a05:6122:3c93:b0:52a:ee1a:4249 with SMTP id 71dfb90a1353d-530810a4c4dmr9673658e0c.7.1748842554275;
+        Sun, 01 Jun 2025 22:35:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748842554; cv=none;
         d=google.com; s=arc-20240605;
-        b=Bp9WHVZsl2t4qf3BzctSMz42OP9DOh0/8cWgtaWFlPMw57jbm6BCJZ3gTmY47BIN3Y
-         jBtoeaQ2eGKvFzHR9YkXy5N6z/cWGgRwAlUAHmxAybUMmiu79Fu5fKkwYeFCd2KWHOoq
-         DEYLX2J/LdMzuzBaspzAmUJ/wKdQQ1aiS0H0bJlQnlAV6bjSzthqJQHpgo2AWVcQMPF5
-         yWtmr+dAokY73jlfR6MU8r7yTlvYbPI7qsDGu9OIWOR9XyMPGMIHBGdtMURyVYi8wdov
-         n6iW6KKTfQt4+XzruA5w33ntp1HZ5qEbsxvtKona8azjiMFs4QCMAoYP7OE3RMq90j4z
-         NkVw==
+        b=O9K8MCbPghJ1otFZzdVQCcueQV+IuPHkDqzS/FbbPCoe9/JY83GYH+NNgP7izRuVj6
+         qlYj8mWRa1qnwJcl6rzLEesfbCwGF08eLRl/muAYvnojgwA6Ypo8AQ6XiW9fDtye9KBt
+         RsT4a+lD+zV9wLF9BAgr74/Xp0EajMXrnCELxZZcmULsHbfee0otLRydYSIKJbF7loWm
+         kksrLw+zmQAeGxHEXyGk4BE8JMXyewTFSuwopw0Dil65N13LP8epGBDtfpGLR4YwPiXQ
+         3/3Dw1tcBdU51XenNNw8nFPUOKjb1PoTbPDSwW8tBusFu1PS5AP4PWJwmItJWLvlokMi
+         4sfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:message-id
-         :content-transfer-encoding:mime-version:subject:date:from
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=UkwKDJFg/2nSSMYcw1889kv5A0ScloG0EqY5LY7JDfs=;
-        fh=oXro1vD6i+RAhaQoOJlw+9dR+c9rw+hr3wedGJnsU7s=;
-        b=dRl/uE/QGac73l/GmkYQScH0f2zgF9DzmYdDOSCqzq35ej8+MLqgebsavWrR3d5zh3
-         Ew3TW1JOhxVLpsh+JRzrGVtt/jAhV7MFIF3IyoH89so64fAfi+OHbLH8jzMDTVUBI+m8
-         Ifa6ZxqZi1LsrbVCZsS5AoNsOMTV5QTs0C83RPQ0VMO6eWC/hb6/ep5S81hU25hADFPm
-         J5yNwewg2Jqo3bEiuarVYN22IdO96ZaeQaXQYDEeKUsQ52onK1roCy3wCD0UZi19YgGm
-         lLvPQZXFMJVq3MDDbAwGBRrALkJ5gxduTfsyiEsNTGPU/3KezTjbTMasdFOtLrPlGAuc
-         iBvA==;
+        bh=C1S/0fOd3Ua61BjaNhpLqiG5aY32cQFtFDl5eGP+t9A=;
+        fh=ErS193q2rckfdAuDclYt1AVLLBZ3uLTZqmwzpdgYQzQ=;
+        b=FEwZJLLcEYyMGJ1qHts32n+9Iz4wnwwNpYMrvwg6KoXh/IYRjRFSJ7B1IJHrtUWzaZ
+         3V5Qmxhwd1yB6s9Sg66pZ3uKBaAMBSceXEjk+ASI3++/o1szRU7UGSDu4lqmt42ySmAw
+         oplgqfLtm7BKTXtPgBa7YZlgawW3zoBR4KMoyiYruNnmTLtXfyzHf0OhZnhJIPoToZJf
+         esMqF8wikvpmUQnZpZBrBdvg3qYeiym662r57h8isQKT65vwKUXvhsh+Ypq2juCHAue3
+         NQCB9sBi1+LETHoXiCK+MfPn7mQkEuJUcmiu4tef1FvOyspNkFrVdUmY0hXjRAyAJbxx
+         wv3g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=ltwYBkG0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fac6e860f8si61842926d6.272.2025.05.31.07.13.41
+       dkim=pass header.i=@linaro.org header.s=google header.b=O0wfvcsI;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 71dfb90a1353d-53076042fa3sor903026e0c.1.2025.06.01.22.35.54
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 31 May 2025 07:13:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sun, 01 Jun 2025 22:35:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=ltwYBkG0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uLMxl-0008Il-WC; Sat, 31 May 2025 10:13:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uLMxj-0008IS-H8; Sat, 31 May 2025 10:13:27 -0400
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uLMxg-0006Hj-54; Sat, 31 May 2025 10:13:27 -0400
-Received: from [192.168.10.111] (p865013-ipoe.ipoe.ocn.ne.jp [153.242.222.12])
- (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 54VED0ol067517
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Sat, 31 May 2025 23:13:07 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=UkwKDJFg/2nSSMYcw1889kv5A0ScloG0EqY5LY7JDfs=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=From:Date:Subject:Message-Id:To;
- s=rs20250326; t=1748700787; v=1;
- b=ltwYBkG0Qc8Sl2niNXO+7jf7CRes01PkK8BZctGJy4pRV1TPwfF8izuB5ImDRB0Z
- fYsciEZfW9BlltCyZFPYBb07JC0FxTL9lcH3ECYXBj80l6/VjV5hfKScGt/p/yUt
- +eZ7dKyKuqdAT1GMlvjzR+ubDa2Tq40KoGG8/1dH5qhDW6o3jsFOJYgQYSZBECuz
- XSc2qBuvUiO6ymWTPjLUZ86PL/vTLXOh4UNFSTgSySH5acBdCTTR5uYl7bMLoEw9
- gObkoFiJuoBAKEW5Mee7HaZ1C0U3Ok+f2mGXScwk8uHaFtTTyGDCfUuX//YYO/Ib
- EFXuC4b+/ONRVgvj0dOWIQ==
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Sat, 31 May 2025 23:12:56 +0900
-Subject: [PATCH v6] target/arm: Always add pmu property for host
+       dkim=pass header.i=@linaro.org header.s=google header.b=O0wfvcsI;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1748842554; x=1749447354; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=C1S/0fOd3Ua61BjaNhpLqiG5aY32cQFtFDl5eGP+t9A=;
+        b=O0wfvcsI+PrVX5Bli9liVcNjuOyFRUZMxoFopYK3PF5pmLDojMSaVgWb+jyDPxlaB0
+         6eArDNqOTaDZovBdVu0b9Pl7p82mC4LaNAZWAXl37QCKAyOYXzu7UCoAhQ2sJDY4/Kiu
+         idiUonpULmEOYaTECvqyL32vwjh3Prb/BvFSX1nMXMP5oRwCYbyTSD+DuA0Sv3HaG5C6
+         cpXxbTcPNGobEQdfpO2nDEld0a9mJo7UEcVNyFAeGED/HVsDBDXfHzQhNVZWV4jBLRsu
+         9W68S1XI4FT7ez7b1FACeTy7sSugsa5YFB43VjQ0LMI1Tw6zqNI99qmlIQND6QqbQ7Bh
+         QBYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748842554; x=1749447354;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=C1S/0fOd3Ua61BjaNhpLqiG5aY32cQFtFDl5eGP+t9A=;
+        b=UUSWHnaM+bHlEwdLX+2/+l9aZQvOHSNJrC/D7CGAIZfxvVqJ9OwtNraSApOAYqkt8Y
+         3eXT/VOc01c4HAfNn/tJPGJfGCpxI856uXYV6bx43Hr7HyUfavrOM3dwUWVqsGInEmSE
+         l6CSnybw89RjyPclsBEc37k26x9KW/BvBC7eNQl1sfGGq2WOXeFdimVsvB9MSc3H7sZh
+         XOt+aJ8ShEXWk9ZVdz7a65GucT5TrwWXEe8L2W3dm+KYWDavvHuCPTcu8rZYk6DVpsKx
+         P+9yQiIKtVi9W3DXf4pAJkhZaY8yxLGBYSXXZIn9KPgokhOrV10jWFYgUkdiFOLjUmA0
+         J9jA==
+X-Forwarded-Encrypted: i=1; AJvYcCVWRybB3RWZBKGO09Wlxk2k6/Y6hOHTSH3bX78djuctungGqybqIttfroOC6mEjl/dWH5k14GprvTcjbA==@linaro.org
+X-Gm-Message-State: AOJu0YwOh7MnR2+4HABMr/T1pYPGLcenSSxTSQHZ54+ctUEkp8TBiHkK
+	ctKY4MMVDcS5Z9z4I4sy+UtZWH86dpBYMfXvKvkt3Pw0Q0a3Y9t1JCqUTwkJ+k/ioWuyqg==
+X-Gm-Gg: ASbGnct9C7G9JHgQ38y40LWynV0X9435waAoo3CVsk7NggwrIESzuY38Eyhudsc8ZTM
+	MJDeM1XQBT3lYese5J9I4txK0sCm67QwrZDT3xUBsN8MeqtuDZu3MalTDyjpZvIAvZzLuatflDC
+	boXGnuRHtjix9vh97eOdQwpQJN+DCCu7dZH0HpdBRaSKp9m84t5DOnumx7+U4Zvlr/0ub0dWB5U
+	q9TOi8Q9nI20HU3XYrF/FNOqcQW39lvK+gt0MlC8g2gUAlw/Q9UCVoIiI92ZzRNRCZlMRvUgh/t
+	hoJNF8Pg4L9h724lt/ULWRWCGQ5ss3uXSxLsDOdo5wFYqBATsyjcQcnSnMbfkOftMA==
+X-Google-Smtp-Source: AGHT+IHgrMZYqPtdotygkP0NHs7OLI1mMRROu42ciHffjOiejGaqv5UflpVp3mNFK2xImt6XPBJreQ==
+X-Received: by 2002:a05:6122:790:b0:52a:7787:53d7 with SMTP id 71dfb90a1353d-5308109f849mr9736745e0c.6.1748842553629;
+        Sun, 01 Jun 2025 22:35:53 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from [192.168.0.102] ([179.180.194.137])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-53074c31c38sm6942465e0c.40.2025.06.01.22.35.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 01 Jun 2025 22:35:52 -0700 (PDT)
+Message-ID: <a60b8909-1519-4de7-9aa1-3802065f5bb5@linaro.org>
+Date: Mon, 2 Jun 2025 02:35:52 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250531-pmu-v6-1-2bb6c828ade3@rsg.ci.i.u-tokyo.ac.jp>
-X-B4-Tracking: v=1; b=H4sIAGcOO2gC/23My07DMBCF4VepvMbIHl9mwor3qLrwZUy9aFIlE
- LWq8u64jRBUYXlG8/03MfFYeRJvu5sYea5THfo2/MtOpGPoP1jW3LYABVZ56OT59CVDdsUjQ3J
- ZifZ5HrnUy6OyP7R9rNPnMF4f0Vnfr89+1lJJBN9pMJEo2Pccrn29vKbhJO6BGX4Rar8iaKgYN
- mwjZJPdBpl/kGmIEiZNjgIAbpD9g0CtyDYEASJQ8VFR2SD3g5zSyq7ISS0jd4kQMSH5J7Qsyzc
- Aqv+XawEAAA==
-X-Change-ID: 20240629-pmu-ad5f67e2c5d0
-To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
- Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Cornelia Huck <cohuck@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
- devel@daynix.com, Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-X-Mailer: b4 0.15-dev-edae6
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yU8m252ItKsF
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 24/25] tests/qtest/bios-tables-test: Keep ACPI PCI
+ hotplug off
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com,
+ pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org,
+ alex.bennee@linaro.org
+References: <20250527074224.1197793-1-eric.auger@redhat.com>
+ <20250527074224.1197793-25-eric.auger@redhat.com>
+ <20250528113813.47086516@imammedo.users.ipa.redhat.com>
+ <375cfbd6-e585-4b6d-bf10-6571aa40370e@linaro.org>
+ <20250528150239.5f6b63d0@imammedo.users.ipa.redhat.com>
+ <6a5776b4-73ef-427b-b4e4-b25031b0ce53@linaro.org>
+ <20250530135103.09030cf0@imammedo.users.ipa.redhat.com>
+Content-Language: en-US
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <20250530135103.09030cf0@imammedo.users.ipa.redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: 2k++xPxksgqn
 
-kvm-steal-time and sve properties are added for KVM even if the
-corresponding features are not available. Always add pmu property for
-"host".
+Hi Igor and Eric,
 
-Note that we still don't add the property for other CPUs that lack PMU.
-This is because we do not know what a PMU version should be enabled
-when the user sets the property to true while it is defined as an
-an error for the "host" CPU when the host doesn't have a PMU.
+On 5/30/25 08:51, Igor Mammedov wrote:
+> On Wed, 28 May 2025 12:04:26 -0300
+> Gustavo Romero <gustavo.romero@linaro.org> wrote:
+> 
+>> Hi Igor,
+>>
+>> On 5/28/25 10:02, Igor Mammedov wrote:
+>>> On Wed, 28 May 2025 09:41:15 -0300
+>>> Gustavo Romero <gustavo.romero@linaro.org> wrote:
+>>>    
+>>>> Hi Igor,
+>>>>
+>>>> On 5/28/25 06:38, Igor Mammedov wrote:
+>>>>> On Tue, 27 May 2025 09:40:26 +0200
+>>>>> Eric Auger <eric.auger@redhat.com> wrote:
+>>>>>       
+>>>>>> From: Gustavo Romero <gustavo.romero@linaro.org>
+>>>>>>
+>>>>>> ACPI PCI hotplug is now turned on by default so we need to change the
+>>>>>> existing tests to keep it off. However, even setting the ACPI PCI
+>>>>>> hotplug off in the existing tests, there will be changes in the ACPI
+>>>>>> tables because the _OSC method was modified, hence in the next patch of
+>>>>>> this series the blobs are updated accordingly.
+>>>>>>
+>>>>>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+>>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>>>
+>>>>> it would be better to test whatever default we end up with.
+>>>>> (like x86)
+>>>>
+>>>> hmm maybe there is a confusion here, Igor. We are actually planning what you
+>>>
+>>> perhaps, see my reply to Eric about my expectations wrt tests.
+>>
+>> Yip, I read it before my reply here.
+>>
+>>
+>>> (i.e. default tests shouldn't have any explicit CLI options,
+>>> instead it should follow whitelist blobs/set new default patch/update blobs pattern)
+>>
+>> I see. I agree with that. But this patch is not about the new test. The new test is
+>> _not_ in this series. Patches 8/25, 10/25, and 24/25 are _not_ about the new test but
+>> about adapting the _legacy tests_ (native acpi) to the situation when ACPI HP becomes
+>> the default, because this series makes acpi-pcihp=on the default, hence the CLI option
+>> "acpi-pcihp=off" added to them. An update to the blobs are also necessary because of the
+>> change in _OSC method, even when acpi-pcihp=off.
+>>
+>>
+>>>> said. This patch and the other two in this series related to the bios-tables-test
+>>>> (i.e., patches 8/25 and 10/25) are for actually making the current (legacy) test pass,
+>>>> since the new default as per this series will be acpi-pcihp=on. That's why here we're
+>>>> adapting the current test here to have acpi-pcihp=off.
+>>>>
+>>>> The new test that will test for acpi-pcihp=on (the new default) is not in this series
+>>>> and we decided to merge it separate. It's in the patch 4/5 and 5/5 of the follow series:
+>>
+>> We're doing the "blobs/set new default patch/update blobs pattern" in the new test, which
+>> we can merge later, once this series is merged, no? The step "set new default" then will
+>> not be necessary because the new test will be merged separate, after this series, so when
+>> acpi-pcihp=on is already the default.
+>>
+>> Please note that although we're using acpi-pcihp=on in the new test, it's not necessary,
+>> we can dropped this option, making it implicit as you say, and it will work. This is the
+>> new test:
+>>
+>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05828.html 4/5
+>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05827.html 5/5
+>>
+>>
+>> Thus, there are to "acts" of modifying the bios-tables-test:
+>>
+>> 1) Adapt the current tests to when acpi-pcihp=on becomes the default (hence the addition
+>>      to them of "acpi-pcihp=off".
+> 
+> 
+> that's what I disagree with.
+> 
+> 1) Instead adapting majority of tests to legacy before switching defaults,
+> just do whitelist/modify default/update so all of tests run with new default.
+> 
+> and then
+> 
+>> There is also the need to update the blobs, but it's because
+>>      of the _OSC method change in DSDT table, which will change anyways, even with "acpi-pcihp=off¨,
+>>      hence the need for patch 10/25 in this series. This is _done is this series_.
+> 
+> 
+>   
+>> 2) Add a new test for testing the default (i.e. acpi-pcihp-on). It follows what you're
+>>      saying above: "follow whitelist blobs/set new default patch/update blobs pattern",
+>>      because we can drop the acpi-pcihp-on option from the CLI in this test without any
+>>      prejudice to test. While the step "set new default patch" was actually done in 1).
+> 
+> 2) add a separate test case for native pcie hoplug (preferably within this series)
+> 
+> 3) even better would be to add #2 before #1 (right after 10/25),
+> this way will guarantee that old native hotplug tables stay
+> the same regardless of followup patches that add ACPI pcihp aml.
 
-This fixes qtest-aarch64/arm-cpu-features on the hosts that supports
-KVM but doesn't support PMU emulation.
+Got it now, hopefully... :)
 
-Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
----
-kvm-steal-time and sve properties are added for KVM even if the
-corresponding features are not available. Always add pmu property for
-"host".
+OK, I'm trying to follow what you recommended in 3). I've pushed a series to:
 
-Note that we still don't add the property for other CPUs that lack PMU.
-This is because we do not know what a PMU version should be enabled
-when the user sets the property to true while it is defined as an
-an error for the "host" CPU when the host doesn't have a PMU.
----
-Changes in v6:
-- Limited the scope of the change to the "host" CPU.
-- Link to v5: https://lore.kernel.org/r/20250104-pmu-v5-1-be9c8777c786@daynix.com
+https://github.com/gromero/qemu/commits/v2_20250527_eric_auger_redhat_com/
 
-Changes in v5:
-- Rebased.
-- Link to v4: https://lore.kernel.org/r/20240720-pmu-v4-0-2a2b28f6b08f@daynix.com
+So, I understand we will need to add/update the blobs at three times,
+2 times because of the changes in the DSDT generation (_OSC changes and when
+acpi-pci=on) and an additional one because of the new PCIe native hotplug test.
 
-Changes in v4:
-- Split patch "target/arm/kvm: Fix PMU feature bit early" into
-  "target/arm/kvm: Set PMU for host only when available" and
-  "target/arm/kvm: Do not silently remove PMU".
-- Changed to define PMU also for Armv7.
-- Changed not to define PMU for M.
-- Extracted patch "hvf: arm: Raise an exception for sysreg by default"
-  from "hvf: arm: Properly disable PMU".
-- Rebased.
-- Link to v3: https://lore.kernel.org/r/20240716-pmu-v3-0-8c7c1858a227@daynix.com
+I dropped this patch (Patch 24/25) from the series.
 
-Changes in v3:
-- Dropped patch "target/arm: Do not allow setting 'pmu' for hvf".
-- Dropped patch "target/arm: Allow setting 'pmu' only for host and max".
-- Dropped patch "target/arm/kvm: Report PMU unavailability".
-- Added patch "target/arm/kvm: Fix PMU feature bit early".
-- Added patch "hvf: arm: Do not advance PC when raising an exception".
-- Added patch "hvf: arm: Properly disable PMU".
-- Changed to check for Armv8 before adding PMU property.
-- Link to v2: https://lore.kernel.org/r/20240716-pmu-v2-0-f3e3e4b2d3d5@daynix.com
+So the overview of the organization would be the following:
 
-Changes in v2:
-- Restricted writes to 'pmu' to host and max.
-- Prohibited writes to 'pmu' for hvf.
-- Link to v1: https://lore.kernel.org/r/20240629-pmu-v1-0-7269123b88a4@daynix.com
----
- target/arm/cpu.c | 4 ++++
- 1 file changed, 4 insertions(+)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index ca5ed7892e4e..c99d65e9bf05 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1716,6 +1716,7 @@ static void arm_cpu_propagate_feature_implications(ARMCPU *cpu)
- void arm_cpu_post_init(Object *obj)
- {
-     ARMCPU *cpu = ARM_CPU(obj);
-+    ARMCPUClass *acc = ARM_CPU_GET_CLASS(obj);
- 
-     /*
-      * Some features imply others. Figure this out now, because we
-@@ -1767,6 +1768,9 @@ void arm_cpu_post_init(Object *obj)
- 
-     if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
-         cpu->has_pmu = true;
-+    }
-+
-+    if (cpu->has_pmu || !strcmp(acc->info->name, "host")) {
-         object_property_add_bool(obj, "pmu", arm_get_pmu, arm_set_pmu);
-     }
- 
+3c302f7222 tests/qtest/bios-tables-test: Update DSDT blobs                                   #1c (update blob)    \
+671f15f470 hw/arm/virt: Use ACPI PCI hotplug by default                                      #1b (modify default) |--- acpi-pcihp=on
+9468f730e1 tests/qtest/bios-tables-test: Prepare for changes in the DSDT table               #1a (whitelist)      /
+c9ec0e0226 hw/arm/virt: Plug pcihp hotplug/hotunplug callbacks
+dc44749a34 hw/arm/virt: Let virt support pci hotplug/unplug GED event
+f667079260 hw/core/sysbus: Introduce sysbus_mmio_map_name() helper
+46731e563b hw/acpi/ged: Support migration of AcpiPciHpState
+4fa7b0e0f6 hw/acpi/ged: Call pcihp plug callbacks in hotplug handler implementation
+587b001876 hw/acpi/ged: Prepare the device to react to PCI hotplug events
+b55183d128 hw/arm/virt-acpi-build: Modify the DSDT ACPI table to enable ACPI PCI hotplug
+fe4c96b384 hw/i386/acpi-build: Move aml_pci_edsm to a generic place
+010c50dbc7 hw/i386/acpi-build: Introduce and use acpi_get_pci_host
+5a1be727e6 hw/i386/acpi-build: Move build_append_pci_bus_devices/pcihp_slots to pcihp
+14a172e192 hw/i386/acpi-build: Move build_append_notification_callback to pcihp
+5110ae8874 hw/acpi/pcihp: Add an AmlRegionSpace arg to build_acpi_pci_hotplug
+82c2aef672 hw/i386/acpi-build: Introduce build_append_pcihp_resources() helper
+6372fe7eef qtest/bios-tables-test: Update DSDT 'noacpipcihp' variant blob                    #2 (blob update for test), part 2 of 2 (update blob)  ]--- New PCIe native test
+6fb29ba18d tests/qtest/bios-tables-test: Add aarch64 PCIe native hotplug test                #2 (pcie native hp test), part 1 of 2 (whitelist)     /
+12c63a505e tests/qtest/bios-tables-test: Update DSDT blobs after GPEX _OSC change            Patch 10/25 in this series (update blob)    \
+779bd47749 hw/pci-host/gpex-acpi: Use build_pci_host_bridge_osc_method                       Patch  9/25 in this series (modify default) |--- _OSC change
+f260fd59c1 tests/qtest/bios-tables-test: Prepare for changes in the DSDT table               Patch  8/25 in this series (whitelist)      /
+b000677fd9 hw/i386/acpi-build: Turn build_q35_osc_method into a generic method
+a72f87b634 hw/pci-host/gpex-acpi: Propagate hotplug type info from virt machine downto gpex
+77a87b6ba3 hw/pci-host/gpex-acpi: Split host bridge OSC and DSM generation
+67e4dc2e7b hw/pci-host/gpex-acpi: Add native_pci_hotplug arg to acpi_dsdt_add_pci_osc
+b89e69da54 hw/acpi: Rename and move build_x86_acpi_pci_hotplug to pcihp
+74f1080a74 hw/arm/virt: Introduce machine state acpi pcihp flags and props
+1048082f33 hw/i386/acpi-build: Make aml_pci_device_dsm() static
 
----
-base-commit: f0737158b483e7ec2b2512145aeab888b85cc1f7
-change-id: 20240629-pmu-ad5f67e2c5d0
+See notes on the right for when the blobs are updated or added in the
+series. The new test for PCIe native hotplug (I prefer not calling it legacy,
+since it's not really legacy; it's just an alternative better in some scenarios,
+specially in virtualization) is now in the series (#2), "right after 10/25".
 
-Best regards,
--- 
-Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Is something like that that you want?
 
+
+Cheers,
+Gustavo
+
+> 
+>> Cheers,
+>> Gustavo
+>>
+>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05828.html 4/5
+>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05827.html 5/5
+>>>>
+>>>>
+>>>> Cheers,
+>>>> Gustavo
+>>>>   
+>>>>>>
+>>>>>> ---
+>>>>>>
+>>>>>> [Eric] also added acpi-pcihp=off to test_acpi_aarch64_virt_tcg_numamem
+>>>>>> ---
+>>>>>>     tests/qtest/bios-tables-test.c | 13 +++++++++----
+>>>>>>     1 file changed, 9 insertions(+), 4 deletions(-)
+>>>>>>
+>>>>>> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+>>>>>> index 0a333ec435..6379dba714 100644
+>>>>>> --- a/tests/qtest/bios-tables-test.c
+>>>>>> +++ b/tests/qtest/bios-tables-test.c
+>>>>>> @@ -1626,7 +1626,7 @@ static void test_acpi_aarch64_virt_tcg_memhp(void)
+>>>>>>         };
+>>>>>>     
+>>>>>>         data.variant = ".memhp";
+>>>>>> -    test_acpi_one(" -machine nvdimm=on"
+>>>>>> +    test_acpi_one(" -machine nvdimm=on,acpi-pcihp=off"
+>>>>>>                       " -cpu cortex-a57"
+>>>>>>                       " -m 256M,slots=3,maxmem=1G"
+>>>>>>                       " -object memory-backend-ram,id=ram0,size=128M"
+>>>>>> @@ -1747,7 +1747,8 @@ static void test_acpi_aarch64_virt_tcg_numamem(void)
+>>>>>>         };
+>>>>>>     
+>>>>>>         data.variant = ".numamem";
+>>>>>> -    test_acpi_one(" -cpu cortex-a57"
+>>>>>> +    test_acpi_one(" -machine acpi-pcihp=off"
+>>>>>> +                  " -cpu cortex-a57"
+>>>>>>                       " -object memory-backend-ram,id=ram0,size=128M"
+>>>>>>                       " -numa node,memdev=ram0",
+>>>>>>                       &data);
+>>>>>> @@ -1775,7 +1776,8 @@ static void test_acpi_aarch64_virt_tcg_pxb(void)
+>>>>>>          * to solve the conflicts.
+>>>>>>          */
+>>>>>>         data.variant = ".pxb";
+>>>>>> -    test_acpi_one(" -device pcie-root-port,chassis=1,id=pci.1"
+>>>>>> +    test_acpi_one(" -machine acpi-pcihp=off"
+>>>>>> +                  " -device pcie-root-port,chassis=1,id=pci.1"
+>>>>>>                       " -device virtio-scsi-pci,id=scsi0,bus=pci.1"
+>>>>>>                       " -drive file="
+>>>>>>                       "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2,"
+>>>>>> @@ -1846,7 +1848,7 @@ static void test_acpi_aarch64_virt_tcg_acpi_hmat(void)
+>>>>>>     
+>>>>>>         data.variant = ".acpihmatvirt";
+>>>>>>     
+>>>>>> -    test_acpi_one(" -machine hmat=on"
+>>>>>> +    test_acpi_one(" -machine hmat=on,acpi-pcihp=off"
+>>>>>>                       " -cpu cortex-a57"
+>>>>>>                       " -smp 4,sockets=2"
+>>>>>>                       " -m 384M"
+>>>>>> @@ -2123,6 +2125,7 @@ static void test_acpi_aarch64_virt_tcg(void)
+>>>>>>         data.smbios_cpu_max_speed = 2900;
+>>>>>>         data.smbios_cpu_curr_speed = 2700;
+>>>>>>         test_acpi_one("-cpu cortex-a57 "
+>>>>>> +                  "-machine acpi-pcihp=off "
+>>>>>>                       "-smbios type=4,max-speed=2900,current-speed=2700", &data);
+>>>>>>         free_test_data(&data);
+>>>>>>     }
+>>>>>> @@ -2142,6 +2145,7 @@ static void test_acpi_aarch64_virt_tcg_topology(void)
+>>>>>>         };
+>>>>>>     
+>>>>>>         test_acpi_one("-cpu cortex-a57 "
+>>>>>> +                  "-machine acpi-pcihp=off "
+>>>>>>                       "-smp sockets=1,clusters=2,cores=2,threads=2", &data);
+>>>>>>         free_test_data(&data);
+>>>>>>     }
+>>>>>> @@ -2227,6 +2231,7 @@ static void test_acpi_aarch64_virt_viot(void)
+>>>>>>         };
+>>>>>>     
+>>>>>>         test_acpi_one("-cpu cortex-a57 "
+>>>>>> +                  "-machine acpi-pcihp=off "
+>>>>>>                       "-device virtio-iommu-pci", &data);
+>>>>>>         free_test_data(&data);
+>>>>>>     }
+>>>>>       
+>>>>   
+>>>    
+>>
+> 

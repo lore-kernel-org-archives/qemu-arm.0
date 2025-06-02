@@ -1,215 +1,193 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp2645509njh;
-        Mon, 2 Jun 2025 03:18:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU1ngWy/CBjH3/qIcjFlTnMPL7HZK8h3/Y4GoLsyfwH2wnFfzQWefwadX7ZqWWLmOcrv1hNXHU8IJkWcA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGN8iKJ3bK6yi5uUwFfdIjSmRN2ph3B+NN/UILqlbd1eZ02nhbEB2DzHgOthsi5rkCUy4kH
-X-Received: by 2002:a05:6214:f0b:b0:6fa:cce8:3bdd with SMTP id 6a1803df08f44-6fad1967231mr229672446d6.36.1748859498008;
-        Mon, 02 Jun 2025 03:18:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748859497; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp2649130njh;
+        Mon, 2 Jun 2025 03:26:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUYWJztIbiGqT1gfSRSNVfMGz/9h1ZGbh8aYmUx7ENsu+vuthF7TazX3zXtZJlO2W4Fuiv17ikGkgYxMg==@linaro.org
+X-Google-Smtp-Source: AGHT+IG+5G5cO+UJNiJncnNXOyZj/uzW3wmsPzC8pmw2yhXNlRUmmcVP2tK3eY/veH9OSEFB9LHe
+X-Received: by 2002:a17:907:3fa1:b0:ad8:8efe:3205 with SMTP id a640c23a62f3a-adb36c28fccmr1120594366b.55.1748860002560;
+        Mon, 02 Jun 2025 03:26:42 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1748860002; cv=pass;
         d=google.com; s=arc-20240605;
-        b=dO88+tdy5cR3JBVXIGi1qS3EIeq8loKNVmVV0ZrYY22SBT12tuDdAMcIoD3EZeEzfi
-         zmSQw/GwVJX4Iv/96EnhJJKzjwkUbPu0DPGeo0enF9CXn9o0vOGExViSCNbY4MZLs/ig
-         4koqE9KjiqAF2pSCEoZYg7r0Hj62vdYmSzpiDRblYLYXIOI4Depwhtk49jbyA51ryT/8
-         Ss4fDSNAyJzqsvcxQuq536sWAfgweoMArE/NT4bZxtqbITM+bxzz7maPLgBNavsxjYoB
-         qnHwXuR6O74I1RF58IBIlNi7IcuC+dkG+ThAp37wnMMCBPmluGNN9IaYW/ksI64gFNXZ
-         NGYw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=MelZ/UKf7Sf6tZkePSBf9ugkdI2MHE2OHWmwLvm1iwI=;
-        fh=MW3p3mNE2XqixaZhlpnIkGWnu5xBh9ITDGnyPgOFpOE=;
-        b=DYAFR5pBDnwGSL712N1Zv2TYUEs5QyfGuOon5iShtLtA8hMjfHMVLMMHSW6a+uBPPz
-         5F0GpuC9DLHsI4BQYG6+bRki6ywyCGuyAa+0k6bG6R33LssWRj90AnTKHVI7SAX0BV5O
-         XAQhxyGf8tU5CgvlaTgx4M1SLfBIBJyxEgci8naOgEgqjUaBEt860rffY+ExX6mk4gDC
-         8gpdKQJYYaDpKDSSWqXy7MsMdKM7u845u8nU9V0bvRcoKzbxvugBA7paXrhbGydP48oO
-         kxhloGWGCy5yy+etmSoOfGQ5c2nfsCTuPJ4DnyUSEMBObCaDdmqQcm6b0lq6Fc//oI18
-         Is6Q==;
+        b=Qv45mE8VgyyasnPTq83md9jp6nvoE5JKETOTt+NZlHhk5qhnFDcN+T9TrpLpHZfyVu
+         LSGliAWBichcRcLCDLYH1r900/0ou0Qr+lB/lT84xbOh7fVc8jEpTBq5R11RgeCASj0A
+         +9w4ku9/Nst43m6T/kxHIjH+Sq1gR3ZDFozjz7xaB7HlyBmcVRsO8z4A6cfo7okHyEzI
+         BBH2zNGC6uHswRRAepuKmJ40E1RsGfJkcOEPC11nN/s6UWBUNP8ySzWbjkT4ipAa9roA
+         /fi+VjX5451aDTRy98/zKiLWBMCcr6Gs4rtGSWRkx0tLyLRgbLSogeEZkZYwZG56CSZP
+         VdJg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=hjUTSvOng+W7JEAyCf/KH/itZzV9YwnTBi8GIOhN5NY=;
+        fh=zN4ZfK355VKxP7sCQthZC04WMOCKzQt6l1e7KFbb3h0=;
+        b=V5WLwuTtX8DtTkSGO9Yom9qmO6IuezdfI6NDtlOboP1bCediWZrM7iDs4NAIK0d/gY
+         59Q1r+u8gli6t7wnmSudoGlQAZZtQy/l7iZ1oEugCOgGRdb/L0vLIqqCf5xDzwHzafmH
+         QWeLty2rLiYfouKpzIe52G9jNcMxAIexyR0K59GoI2uBGtMiunNDdNKlvAa9BBhk7aUE
+         yhB1kV7Jcm0Na3CIMeucLyCJ3Wnh8alc+oJFsbl47A4T2SNpCDISFmZw8Frv7Hx7XOv7
+         W0Se/ed4ZEPN72w9LNssfjZ8ncZPeKaJA2sTyajYgzZa1CshxGnEhFqvQsdn9t97GRlW
+         Q76w==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AO1vG6fC;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=M5KUVgCd;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-48163-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-48163-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fac6e59979si100354576d6.180.2025.06.02.03.18.17
+Return-Path: <kvm+bounces-48163-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
+        by mx.google.com with ESMTPS id a640c23a62f3a-ada6ad4e5f3si703359266b.635.2025.06.02.03.26.42
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Jun 2025 03:18:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Mon, 02 Jun 2025 03:26:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-48163-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AO1vG6fC;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=M5KUVgCd;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-48163-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-48163-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 8F6F2189E82B
+	for <alex.bennee@linaro.org>; Mon,  2 Jun 2025 10:26:56 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 964091DED64;
+	Mon,  2 Jun 2025 10:26:37 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="M5KUVgCd"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BD5E51474DA
+	for <kvm@vger.kernel.org>; Mon,  2 Jun 2025 10:26:35 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1748859997; cv=none; b=t0L3AYdUtrxWEUo8VOI49r20Fv1lmUIKC0Chwmdj5iA3o4XnTyboENG/gWpQ+3VI7/wW8iELlO3Ilhv44Ei00kwmrZ8osdSf2YDnWim2UQLs39uuf0MqFGkMFsvxfglhGy35YCcQSb+6Gw4TqFJxdhcRtRgsqMIyOJY++KY1TmA=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1748859997; c=relaxed/simple;
+	bh=hjUTSvOng+W7JEAyCf/KH/itZzV9YwnTBi8GIOhN5NY=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=f2ksKtD9KyR2Ojm9t+X9rB6MRqYkNPSoeU2EmIM1R289D5Vj9cIJsAdoMXw29Pg4XelGRaFNSLjMcvaX79KUu1DeNt3SknvbAmSsQP4QYUdokcGzTH0ZsPRBVDzmvaVdID4BZdxnJuFcnAw2hEF7GOnNlaQaNg1KOCo8Roln+/s=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=M5KUVgCd; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1748859497;
+	s=mimecast20190719; t=1748859994;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=MelZ/UKf7Sf6tZkePSBf9ugkdI2MHE2OHWmwLvm1iwI=;
-	b=AO1vG6fC+aMWhdCnDjWgLC5QoEj+L4FdkQT7ixgJ04K1pRYLHDH3CbrTSuumARNOUNgIvK
-	IQbcbhlvJcxfsP6elDK8xi9l1EmhTizoF04iYkcK7xslkM3KneuhDa8UrGBtF//sVjiSJj
-	PgeZua7du++raSD6w7WiF/9uURyEGY0=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=hjUTSvOng+W7JEAyCf/KH/itZzV9YwnTBi8GIOhN5NY=;
+	b=M5KUVgCdWzAck43fBaNG4UDBqKWEVrwUOfcK2kg6R2ZMVhrcO3B8F5BjhVar5MxjZA9p4V
+	/YgJbavJlAVlgHbE1jqIGb6jbc7zK2hyF5cQNnZhIMi6gSbG7x2ca0rLvQlua5ovTFOgkW
+	Bw+hoT6L+unBtBSw+uQiRLU33WjwJEs=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-583-CmNvB6ryMluF0SLHyt4lTg-1; Mon, 02 Jun 2025 06:18:16 -0400
-X-MC-Unique: CmNvB6ryMluF0SLHyt4lTg-1
-X-Mimecast-MFC-AGG-ID: CmNvB6ryMluF0SLHyt4lTg_1748859495
-Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-3a4f55ea44dso1849755f8f.1
-        for <alex.bennee@linaro.org>; Mon, 02 Jun 2025 03:18:16 -0700 (PDT)
+ us-mta-118-vkNrHj-HNGG9n1b1vb69Tg-1; Mon, 02 Jun 2025 06:26:33 -0400
+X-MC-Unique: vkNrHj-HNGG9n1b1vb69Tg-1
+X-Mimecast-MFC-AGG-ID: vkNrHj-HNGG9n1b1vb69Tg_1748859992
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3a4eeed54c2so2743118f8f.3
+        for <kvm@vger.kernel.org>; Mon, 02 Jun 2025 03:26:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748859495; x=1749464295;
+        d=1e100.net; s=20230601; t=1748859992; x=1749464792;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=MelZ/UKf7Sf6tZkePSBf9ugkdI2MHE2OHWmwLvm1iwI=;
-        b=OgXBkZIkjX1RHYQHH4NOab3y1u9XTDSG0SMpz3Hm0/XK2aPuR3FJ/KqfXiHcUMMXFw
-         /HGh9aIuQBrp5vijBM4BL1k2mwrMSOTQRkzzMzbiTidjyNXlpZTBH2b6Rx6j2jTjZiWc
-         8J1mrTZctFM/yAfcNoqMO/7oToyVj8QR9fluj0DAUtKfdSIJYmTb/MZOJyGMeZqYc6rn
-         qUZeNInV1RAaLLCocJwVcWVoUuVenId9700BRLpQ/xv+oK8cKGT5KJGgrhYkZRBAqIN4
-         +QQ3pVab3nqph6NYj485OOQZ6p55o2HmlWgwmYz4WahViM21lXfN2HbwLVo6L4fA4jNC
-         iTWQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU4v6mCHQXrne4mPoe9SypETvzT0eM7DXpX+GWCk2E7Z9TLYp0rjBo9NN7g8FWsvybsXeV2e415EOLssA==@linaro.org
-X-Gm-Message-State: AOJu0Yz9X+crWhXtMK9n2/NGYuPHkWEXjV2EF0Mx9xuethpuv02torlA
-	8+qqHClAVG96pjFLoS980qpfQKR1lN8gv+QfSYeUhYQh4fzMLOFUS56huKnovvUuzLXs8KKy/2y
-	k8jYJMknCDG2MYwLvPjxHFz75s4UuTd4lcX4Ar/kY7xQMdxdUFk+uVRSw9g==
-X-Gm-Gg: ASbGncuNAl0Msx1aEOa6TNrxOCCvYNbOg0gNPd9MvnZg7/hxNLLuFhD/ady3BSIrnJf
-	qUZsBahLkIlpNk/DdH+QG8FuAvWUopM4VOq8UW6ghSIRqo9KuuDp3idhPjxqfhbItlw5I++G6pR
-	9NtChX2Yi27LLYiOcAgivRzkcy24QJwMB5/aFyXD0sGS6zEAfMMOCRaMoFe6rnej+LqmGhcuQ/9
-	oF930kUBCcNfaGakuOa4WuA3lMKootK2rDdnMJmbX0lHl6d7MrhrFf186Enls3wlaUcrT1oN1on
-	QqXkXtNNldMf/54pOHpaInfj31JP/5lb
-X-Received: by 2002:a05:6000:250e:b0:3a3:7cbd:39b1 with SMTP id ffacd0b85a97d-3a4fe17c35emr6329272f8f.24.1748859495321;
-        Mon, 02 Jun 2025 03:18:15 -0700 (PDT)
-X-Received: by 2002:a05:6000:250e:b0:3a3:7cbd:39b1 with SMTP id ffacd0b85a97d-3a4fe17c35emr6329239f8f.24.1748859494824;
-        Mon, 02 Jun 2025 03:18:14 -0700 (PDT)
-Return-Path: <imammedo@redhat.com>
+        bh=hjUTSvOng+W7JEAyCf/KH/itZzV9YwnTBi8GIOhN5NY=;
+        b=kDKYIrNG+fYJYD98biyM4qq5zM3dbSXGaHFJl2QYfAI5fQEzIlPQWuMov77nHlfIJf
+         8hLWTsY4qPFDr2CWZi/q8tT1FJW6CQwau+DB00gBhTdBdX3Q3sZMqbfqR8a9PFeKRuyD
+         pcExXQ+q7tFDaTFAFakEQJ1k0QE2QTXZlI6xBenVNX7MXH8+PcI8xqvxAM/CoTgLG7Q4
+         sNhQzIEeIbzRI3WlaJqACtS2RBCwoThhQepSk6N51RhbHeG2KG1Lax7bcxxSOVhTio/z
+         RbWldYpt2g6QUEzdpdd4dWtIU54oo7uvO+8Urfk7TPZRH+4xiR0LgfQnUPJZYRRMf2hY
+         DXJA==
+X-Forwarded-Encrypted: i=1; AJvYcCUZA/rV4/snEUTSKOfeUeiA+X4ISNTh6H7WIO9VTS/KSrW0h4eqhmyvPZi20kFRCZc6sQ8=@vger.kernel.org
+X-Gm-Message-State: AOJu0YyahozPin90dlSvIghEoGRA7Rr6g5CCnqgwnUuYtuUkF9kHLjYF
+	+5bKqQVKXP9asWrqP8CP3Be+IOhtiTeOgMiJM14jJLwWQ9blwsXmBoqciYrmu1Urz0ri1+jXWOr
+	Vr4aKlVDogyyZHq2eSK1wKPslaVZ59MgmYJBhH9FerYpE7dtUSsV7aw==
+X-Gm-Gg: ASbGncuynmeui4IUDDVSTbXHKzuIPvxqfqTN4gNng91FM94mV7pw4ji/OC/Cro7Wt8c
+	7lxc9PJHzAPUCmQqvhMSmrv9N5YW/IL9AA1ECA8q77iy0MEDzWAmzzPeEEU+LBBvYpo+ilCpG5y
+	Tb4Ind/sx4eidztpHAktei1hOMs+Lurf23FHTcsEgeXXYzLJf0BFpKZkttCNdTChLQxCh9YcbhI
+	Y8ubTSxWptbmbgcYjszEZyAV0RO4yERI74YUDipoDPuYhtxw1BAQ193gK5xB5at9q7cEuHoA417
+	KlbTbDAY7CtuuPlIHQwQX4W8lvncx2Fb
+X-Received: by 2002:adf:eed2:0:b0:3a4:efbb:6df3 with SMTP id ffacd0b85a97d-3a4f89a47dfmr7990730f8f.10.1748859992271;
+        Mon, 02 Jun 2025 03:26:32 -0700 (PDT)
+X-Received: by 2002:adf:eed2:0:b0:3a4:efbb:6df3 with SMTP id ffacd0b85a97d-3a4f89a47dfmr7990708f8f.10.1748859991844;
+        Mon, 02 Jun 2025 03:26:31 -0700 (PDT)
 Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a4f009ff11sm14127324f8f.86.2025.06.02.03.18.13
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-450d8006ff8sm116094735e9.34.2025.06.02.03.26.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Jun 2025 03:18:14 -0700 (PDT)
-Date: Mon, 2 Jun 2025 12:18:10 +0200
+        Mon, 02 Jun 2025 03:26:31 -0700 (PDT)
+Date: Mon, 2 Jun 2025 12:26:30 +0200
 From: Igor Mammedov <imammedo@redhat.com>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>,
- <gustavo.romero@linaro.org>, <anisinha@redhat.com>, <mst@redhat.com>,
- <shannon.zhaosl@gmail.com>, <pbonzini@redhat.com>, <philmd@linaro.org>,
- <alex.bennee@linaro.org>
-Subject: Re: [PATCH v2 05/25] hw/pci-host/gpex-acpi: Split host bridge OSC
- and DSM generation
-Message-ID: <20250602121810.649d82ce@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20250530160019.000061d1@huawei.com>
-References: <20250527074224.1197793-1-eric.auger@redhat.com>
-	<20250527074224.1197793-6-eric.auger@redhat.com>
-	<20250530110227.00003341@huawei.com>
-	<20250530140516.35db4d52@imammedo.users.ipa.redhat.com>
-	<20250530160019.000061d1@huawei.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, Richard Henderson
+ <richard.henderson@linaro.org>, kvm@vger.kernel.org, Sergio Lopez
+ <slp@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Laurent Vivier <lvivier@redhat.com>, Jiaxun
+ Yang <jiaxun.yang@flygoat.com>, Yi Liu <yi.l.liu@intel.com>, "Michael S.
+ Tsirkin" <mst@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>, Alistair Francis
+ <alistair.francis@wdc.com>, Daniel Henrique Barboza
+ <dbarboza@ventanamicro.com>, Marcelo Tosatti <mtosatti@redhat.com>,
+ qemu-riscv@nongnu.org, Weiwei Li <liwei1518@gmail.com>, Amit Shah
+ <amit@kernel.org>, Zhao Liu <zhao1.liu@intel.com>, Yanan Wang
+ <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>, Palmer Dabbelt
+ <palmer@dabbelt.com>, Ani Sinha <anisinha@redhat.com>, Fabiano Rosas
+ <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>, Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>, =?UTF-8?B?Q2zDqW1lbnQ=?= Mathieu--Drif
+ <clement.mathieu--drif@eviden.com>, qemu-arm@nongnu.org, =?UTF-8?B?TWFy?=
+ =?UTF-8?B?Yy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>, Huacai Chen
+ <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>, Mark Cave-Ayland
+ <mark.caveayland@nutanix.com>
+Subject: Re: [PATCH v4 01/27] hw/i386/pc: Remove deprecated pc-q35-2.6 and
+ pc-i440fx-2.6 machines
+Message-ID: <20250602122630.2d28a9b8@imammedo.users.ipa.redhat.com>
+In-Reply-To: <c2999ee1-c0a1-4a09-85f8-6c10ede14584@linaro.org>
+References: <20250508133550.81391-1-philmd@linaro.org>
+	<20250508133550.81391-2-philmd@linaro.org>
+	<20250509172336.6e73884f@imammedo.users.ipa.redhat.com>
+	<91c4bf9f-3079-4e2f-9fbb-e1a2a9c56c7b@redhat.com>
+	<c2999ee1-c0a1-4a09-85f8-6c10ede14584@linaro.org>
 X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 4vsPh_4MxqyK7IeOv0klWTWAgSZTMOEuW1kDVVFxuck_1748859495
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: N0YuZjFt/COS
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: Chmc4L/0SvzS
 
-On Fri, 30 May 2025 16:00:19 +0100
-Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+On Mon, 2 Jun 2025 10:53:19 +0200
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
 
-> On Fri, 30 May 2025 14:05:16 +0200
-> Igor Mammedov <imammedo@redhat.com> wrote:
-> 
-> > On Fri, 30 May 2025 11:02:27 +0100
-> > Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
-> >   
-> > > On Tue, 27 May 2025 09:40:07 +0200
-> > > Eric Auger <eric.auger@redhat.com> wrote:
-> > >     
-> > > > acpi_dsdt_add_pci_osc() name is confusing as it gives the impression
-> > > > it appends the _OSC method but in fact it also appends the _DSM method
-> > > > for the host bridge. Let's split the function into two separate ones
-> > > > and let them return the method Aml pointer instead. This matches the
-> > > > way it is done on x86 (build_q35_osc_method). In a subsequent patch
-> > > > we will replace the gpex method by the q35 implementation that will
-> > > > become shared between ARM and x86.
-> > > > 
-> > > > acpi_dsdt_add_host_bridge_methods is a new top helper that generates
-> > > > both the _OSC and _DSM methods.
-> > > > 
-> > > > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> > > > Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>      
-> > > 
-> > > Makes complete sense. I've had local equivalent of this on the CXL
-> > > tree for a while as without it we don't register the _DSM for the
-> > > CXL path (and we should).  However, can you modify it a little to
-> > > make that easier for me?  Basically make sure the _DSM is registered
-> > > for the CXL path as well.
-> > >     
-> > [...]
-> > unless CXL is root host bridge, current _DSM shouldn't be added to it.
-> > read on comment below.  
-> 
-> I'm not clear how this is different from pxb-pcie where we do have
-> the _DSM. Both are pretending to be real host bridges.
+> On 2/6/25 08:13, Thomas Huth wrote:
+> > On 09/05/2025 17.23, Igor Mammedov wrote: =20
+> >> On Thu,=C2=A0 8 May 2025 15:35:24 +0200
+> >> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
+> >> =20
+> >>> These machines has been supported for a period of more than 6 years.
+> >>> According to our versioned machine support policy (see commit
+> >>> ce80c4fa6ff "docs: document special exception for machine type
+> >>> deprecation & removal") they can now be removed. =20
+> >>
+> >> if these machine types are the last users of compat arrays,
+> >> it's better to remove array at the same time, aka squash
+> >> those patches later in series into this one.
+> >> That leaves no illusion that compats could be used in the later patche=
+s. =20
+> >=20
+> > IMHO the generic hw_compat array should be treated separately since thi=
+s=20
+> > is independent from x86. So in case someone ever needs to backport thes=
+e=20
+> > patches to an older branch, they can decide more easily whether they=20
+> > want to apply the generic hw_compat part or only the x86-specific part=
+=20
+> > of this series. =20
+>=20
+> Yes, it is clearer this way than squashed.
 
-there is some space for _OSC consolidation, but it's not realy related to pcihp,
-so I'd rather do it as a separate series on top. 
+ok, let's leave it as is.
 
-current PCI _DSM and _CXL one (build_cxl_dsm_method) are implementing
-different namespaces, there is not much to consolidate there.
+>=20
 
-If later on CXL would need E5C937D0-3553-4D7A-9117-EA4D19C3434D,
-then, I'd say do it at that time and use that moment as an opportunity
-to consolidate.
-
-> >   
-> > > > @@ -124,7 +125,17 @@ static void acpi_dsdt_add_pci_osc(Aml *dev, bool enable_native_pcie_hotplug)
-> > > >      byte_list[0] = 0;
-> > > >      buf = aml_buffer(1, byte_list);
-> > > >      aml_append(method, aml_return(buf));
-> > > > -    aml_append(dev, method);
-> > > > +    return method;
-> > > > +}
-> > > > +
-> > > > +static void acpi_dsdt_add_host_bridge_methods(Aml *dev,
-> > > > +                                              bool enable_native_pcie_hotplug)
-> > > > +{
-> > > > +    aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
-> > > > +    aml_append(dev, aml_name_decl("CTRL", aml_int(0)));      
-> > > 
-> > > These two declarations seem to be very much part of the _OSC build though not
-> > > within the the method.  I 'think' you get left with them later with no users.
-> > > So move them into the osc build here and they will naturally go away when
-> > > you move to the generic code.
-> > > 
-> > > They end up unused in the DSDT at the end of the series.
-> > > 
-> > > I ran a quick GPEX + pxb-pcie test and we do get the odd mix that the OSC for
-> > > the GPEX say no native hotplug but the OSC for the PXB allows it.    
-> > 
-> > It's fine for each PXB to have it's own _OSC.
-> > Also current incarnation of ACPI pcihp doesn't support PXBs at all,
-> > it would be wrong to enable the on PXBs.
-> > 
-> > Thus I'd avoid touching CXL related code paths from this series.
-> > 
-> > I'm working on extending ACPI pcihp to PXBs
-> > (for the same reason as Eric does for arm/virt, i.e. enable acpi-index support there).
-> > I can add CXL bits then if there is a need/demand for that in CXL land.  
-> 
-> Ok.  My original motivation for _DSM on CXL was function 5 to stop Linux messing up
-> the reenumeration which I know has been rejected upstream for a bunch of
-> compatibility reasons.  Anyhow, that's a future problem.
-
-yep, let's worry about merging _DSMs when that future comes.
-
-> 
-> Thanks,
-> 
-> Jonathan
-> 
-> > 
-> > [...]
-> > 
-> >   
-> 

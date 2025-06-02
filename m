@@ -1,125 +1,121 @@
-Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp679764njc;
-        Wed, 22 Jan 2025 02:32:50 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWIkmiv5aXCMvMM1Jyjh0Fix3/u7nhJAGFJAg9E8qxtkNdMdAc1oYf1SfIrQb0Uf/e4J76rwT3vjjnjMA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEd0e6vHdomvNz369jCLmX/e8S6Vh5e9/tEWzcEOUbvpNJR8F1q3jFaYqHMfsA0GCsUEJdH
-X-Received: by 2002:a05:6214:1308:b0:6d4:1680:612d with SMTP id 6a1803df08f44-6e1b19dee5dmr318992066d6.0.1737541970724;
-        Wed, 22 Jan 2025 02:32:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737541970; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp2834514njh;
+        Mon, 2 Jun 2025 08:32:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW56exYOZyj5hJx8uaIekuI3ShaYgapMg15RxR7HQNLXwHCS2tmHXTegjkKgUUJTFxyeOO4INL2wSjRjA==@linaro.org
+X-Google-Smtp-Source: AGHT+IE0nNWj5GieROcRACL4rfMeqKZbJ1Dkxd6LDe8Y2qcVPWGdsSsrTJmw25O5DRbqVx8BePZK
+X-Received: by 2002:a05:620a:618a:b0:7cd:3a:f2d8 with SMTP id af79cd13be357-7d0eac654a9mr1268518185a.24.1748878337107;
+        Mon, 02 Jun 2025 08:32:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748878337; cv=none;
         d=google.com; s=arc-20240605;
-        b=GqSL26DVyAMxdTlh5ro7jtxaxbk0RcTKKo4nsgzKp7OsQkno6LR/BH4YLExqHVFf+u
-         IK0rIZN5gjk7EdXk93+54IdRckwVxEDfJo1BhxmoMnadXGk9PWD5SGPg1G7A4PZN4HEO
-         5UU9P+JKvcaKifqXEoqOu0lE4EvFRMVsGJwcJzS2SkudE4ZwXDY6HWXaewTtaYfbRDPk
-         sY8+i/UhgTY+8/fTsfkDVv1clfDsuYRofWcjamR7sMw7wRKujqBtiVgmFmOrub1kTKW7
-         wbHoCvrlUtdmC7C3gqDwW73RhHO3MFam4bPGiaQQFjhx52wumSpQ5NJ28ylAKmiZiqxS
-         dFJg==
+        b=Tcxjqq0UU5PHyWd8EZIuCgZlagWVZloGOwSYIS/66vb9x/LuXf+sVxSn0lrF6lGexP
+         FZ7WZID+XGRSUCKcZDSf0PtVK/wkTirLqoOJTxeYtGRfsaffF9VTjiyTbNWc4LbG2fcy
+         LyOiSvQtmBA49Y0nVHkyOMS5BIdHzbVLgcf5HVYOuDHhIQHQ9eSTdPxU8UHi6SBNNorJ
+         HLK0nJCXLOhn9hbBkA02QmxG9V3VbboEBVoQQtXdyqY0iTUjgS8CfptmqjH8qjPonf1T
+         0A8LT5BXRWb/p618g/dk6Anu1HonSYbszNTLOeatJd+2fAjTpGr3Yn4TGXgyunel0mX6
+         6sMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Lc+q3saCS/w7IN/a5U6g/SgFDPz1VJaUexU4WrTXhAE=;
-        fh=0grDJEfR9Nn0D5JtKWoVjK4lW3Non2EOUgqKj8s9+Q8=;
-        b=Aw1sE7GsgKCNFkry2BcV6b+0F7qEFoJ1O88XBaDj46AsN8+4UhDpPSsX5AohyI0X/W
-         2SbCze1IqR+ATf81uyqQYRlG8fdt6Ir3tIhbOAvPGWzCfUNF+vH4pCQOFPRktvWyEp2i
-         RG2pOT8WzuVCC5xU4BJrzIKofYhTfPXkGyFMNypZuxXv0lgOgQfHjOBhaUnP6jpEEq3V
-         YLfPbFhX2n2xyouG1A/B7lDweanCvvT1t+yjLvvT/pJtRSYVoTBd+WkKnByfgvbWPErf
-         pGYPElDY0VsOaYpnodKxmMDX+biXGVSd92g66VCUxbTla1Li3tBx/Hrkr5VlJrJAlYFR
-         wH4A==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=GGEoK/+QIc+qTv25wns84dfmjQtAMU4zYUFc0evEeBY=;
+        fh=uVutygXwdfk1JYbIKokRyycrHjkg04KZN3hWLUSa9sM=;
+        b=Y0rD/a9lG/jVqPGVdtX4WU2rqEPXpLVsF5g7HS7GnAL4kbbiEU1DqIBYbdYbZoU+Cx
+         ydBmbhuwsxED2HrjhdeZOtVfPGQI9mfJ1DVYUFoKiyq3HUSOWcjtp3HlsPkAF/Spy8ru
+         8bhr4096q+raJOvdBPVgo58X65jaDNnVhKYY409pX3TQ5UndDxEjNqfiVU+RSSfFj3y8
+         NIKExhSuQtBfmzqdtNYmJHYNMUpWK93MjcadhALPUnD3EAsGJZv2+ZIEnnyNZu8/Kqbn
+         Ht+VFjsUb5cz8ZchwLFBRtpoylKHbipfM7z2OgAzo7IfrZGQQjKT+YYfD01npytvzqpi
+         98hA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iZeOb+zd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=q6208Fxy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e1afcd94cdsi148264356d6.245.2025.01.22.02.32.50
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-87e2a3bf52csi2795427241.86.2025.06.02.08.32.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jan 2025 02:32:50 -0800 (PST)
+        Mon, 02 Jun 2025 08:32:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iZeOb+zd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=q6208Fxy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1taY2E-0002J8-CN; Wed, 22 Jan 2025 05:32:34 -0500
+	id 1uM78k-0000Su-Ki; Mon, 02 Jun 2025 11:31:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1taY2B-0002HN-2N
- for qemu-arm@nongnu.org; Wed, 22 Jan 2025 05:32:31 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uM78j-0000Si-FC
+ for qemu-arm@nongnu.org; Mon, 02 Jun 2025 11:31:53 -0400
+Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1taY28-0005u6-MS
- for qemu-arm@nongnu.org; Wed, 22 Jan 2025 05:32:30 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-4361b6f9faeso4470225e9.1
- for <qemu-arm@nongnu.org>; Wed, 22 Jan 2025 02:32:26 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uM78h-0001XK-UQ
+ for qemu-arm@nongnu.org; Mon, 02 Jun 2025 11:31:53 -0400
+Received: by mail-ot1-x32d.google.com with SMTP id
+ 46e09a7af769-7300069c447so3034752a34.2
+ for <qemu-arm@nongnu.org>; Mon, 02 Jun 2025 08:31:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1737541945; x=1738146745; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=Lc+q3saCS/w7IN/a5U6g/SgFDPz1VJaUexU4WrTXhAE=;
- b=iZeOb+zdYrtcbQfZJHlBUpZMTTQx/N1i/i4se2XXvd7dhTC1bqBvTMZmT6oqz1dhC9
- oO2954iCb8Cmcug9QlxGn64RR5SU5odBkeU/BEbqy/SvJlsvfm5kVwBsGoL946VtFEFp
- HI89arFKBJ85WR3BGFuAn0SWuUe4DNJuW+oopnV2NMPqJQ/uC/tnZihZODAeAP07DlyK
- nQtUr6eP1WtzqBBQ6Kyyqj4n44ttkm23IEjjPr1Tac17F4nn8HRxhuWhZpOeDnXAAebJ
- 3wcpeYhuaqF8Og6Mlh6BMCdwGr61VEHojY1urNpsrm/w6Dp4g2cm1sj5aab5eymiwNI9
- Ec9Q==
+ d=linaro.org; s=google; t=1748878310; x=1749483110; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=GGEoK/+QIc+qTv25wns84dfmjQtAMU4zYUFc0evEeBY=;
+ b=q6208Fxy027GWpisv3Ujd/9uvMjUQOLjDjMIU4nmG9AzKOho+2gVCb6Ns+4A482f4M
+ 4uGgPaXlP1NduB93SLjPfbg99B98z8/ohsc74XHMMm7b9YKuuaJX3RuGkLnSS49dnBYi
+ tXYmHbioVTbQCdcvBzZ4J4jeYtdMQKXnrOB8r3d3Y/HZZ2IneJYSZAJZV9VrCnDsMcMl
+ qutWLa8u0+OYapI1oxiQGVRXWBO2M6XyiaNv4wZVTeeka4Z1xMPr8jDZwngruOiqhcGo
+ 8YI+X61zqbdXgbJseJxSD4Kf/YMh1O8m6AfDi2SbpvS/+DDlRzfETyKCyO4Vfmf6gGNC
+ UOgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737541945; x=1738146745;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1748878310; x=1749483110;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Lc+q3saCS/w7IN/a5U6g/SgFDPz1VJaUexU4WrTXhAE=;
- b=WaHgOdgdKnpBkXZ9r3/VCOOj7lSp9LszcQCJF5tvb4z/GxHkRQWBsS11Rpd8xHVub7
- 7aCVxxzK4PFiaY0MVN08zRBqGidL6wkkF43QaiU+TPJLnU+T1qNLjdnLQao+unHa992X
- fZ9hJlx70f5eTQgy6hAsZKux6UapKtWuM9OTj8XfdZ8vrHVWKiIOgwfF0sSrF+wijGiE
- 5iNb2o3RHIghC0P2AczJw5ue5e8kd7op1BhM0mOYeeXOkr0Qi97hCPSzZwO56pI1edql
- FKI0DJ2+T91ulfDtyaIu3Irrvr04Jq2xpuEAppmp9wS/OeveLXtIVN7CfBRMEND3DQyM
- wEZw==
+ bh=GGEoK/+QIc+qTv25wns84dfmjQtAMU4zYUFc0evEeBY=;
+ b=aEURusJQVmwcvz4rLgucBf9U16EIa6kaP6BrmGJwHlYbY7aJ7RJ3FQIUzCb/kcZiGr
+ FL7QX9zlMlIzVDeAQwtt1TKwXHM3c0i5FK8sv52pyEtieS9hrYkS5OHD7F8kELVI5YUw
+ uZu20yFNATeMHcd3nPfcKHVUs1sVkwaNMcFSNbTFcqSmQFSvIMjTrNq0GfUxEFJAwLZc
+ 0ZVW9mmgmUpVWoBceea5BVgwQw8GJWmKeKXdkWa0WhzpkSYge0Mz4ZMM9N1BvYoJ0xcj
+ Dz7L5xwa0XQ4okFLntNBpW1iQdnrmNLquFvDklK+K3PdekTd4/cVrmbi26fUF089BgYs
+ 0P+g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWjaEkfDytJ0ccZF4gV+kEXMZU+fnbTUOM+EYrvNvBKdM8YUJC7IFnT3uhB4HWlOkqx/S+7oKjcTA==@nongnu.org
-X-Gm-Message-State: AOJu0YyXvexScZou7u5hTxGXTplkoFQoocHNFe5+tEWVDPspprbC0ArK
- tMOmjZ4TyqG26g+E5URf7znm1lQYl6nHMjxxuyXOwzCwANfnekFzONenTBEUbUw=
-X-Gm-Gg: ASbGnctaF/kNGV4bVVLd458WCzqRhszDKEB1JRGAs9Puqs/5ZuxpwYHV0TDupOAC5D+
- aV7ybCDp3FdtbOCosAVw9P2c/XYe45aouT2t5XlEqk9+OUhQrwhEuTvs6YJ+kryp9A64ApraWdJ
- g5rOAsrHzSQeAJ4ahsaMuk3HP7u3oeqrn9gMqzGv/RlNN6s1i5Gtt/xuqnTKxRmQxd5E9o8lj1P
- q08QXKeq2LomFHwAhltt6mvSA90vHSSSMYxS+9D/QLy0GfAEgJTSio4NvIxurIMgEA94QdR+Hsf
- JA5taVhJPYgzVKvv7POQFEXelQNrnvf9btUJq+EwRmr3
-X-Received: by 2002:a05:600c:218e:b0:434:e65e:457b with SMTP id
- 5b1f17b1804b1-437c6ae9bdcmr261448295e9.3.1737541945115; 
- Wed, 22 Jan 2025 02:32:25 -0800 (PST)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438b31adbd7sm19630075e9.17.2025.01.22.02.32.24
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 22 Jan 2025 02:32:24 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-riscv@nongnu.org,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH] hw/boards: Convert MachineClass bitfields to boolean
-Date: Wed, 22 Jan 2025 11:32:23 +0100
-Message-ID: <20250122103223.55523-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
+ AJvYcCUc20gi20yVnCU48Z/mBDy0yMbAJ/L138GlsKsg+Ln3Sov0ZBU/wzB3iuv+BylEjOsMq2AuFU0OFg==@nongnu.org
+X-Gm-Message-State: AOJu0YwrEbUD3QWdWIZu64lA2wcXIxqH0F84pC2kxSFC4PyHSbYpP7On
+ T4mBf65uzqXczr9V8bCAWWhZySDGPvT3VJodQqtJesfmw4mSTXnpLRWZ1asY8j879BPiUebNhbs
+ JXUEmprZkezlhbdetL+/z38oHUvC4YrVRQ9UWkYuzmhAt45wMs+y3
+X-Gm-Gg: ASbGncsjPwyTy8vmSF0HEjkiPUBhaLMaH0tB6R0on5SeS6Drxvu4b8emOFivpaUPZbX
+ vGgp84jtJrN4b5ajqf8TH4Pyb9Xk5h+LxrUPUZKpUgqOZGUP1H85VL6AJovfnsUdyH2ood9pLI8
+ 8Z7NKTBz2Fs1QQ//WjvguXQ8iNMBNzeCRFGA==
+X-Received: by 2002:a05:690c:6382:b0:70c:c013:f26 with SMTP id
+ 00721157ae682-71097e62258mr110272497b3.33.1748878299704; Mon, 02 Jun 2025
+ 08:31:39 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+References: <7aae8238-f7f4-4f3a-9a7e-e9afc99d1d0c@redhat.com>
+ <1301bf7e-0e52-43c0-9910-55ea34647a34@roeck-us.net>
+In-Reply-To: <1301bf7e-0e52-43c0-9910-55ea34647a34@roeck-us.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 2 Jun 2025 16:31:27 +0100
+X-Gm-Features: AX0GCFsaNcY7-pGXClrTdQHe0n1lU-lWjnYgeC8uCJzVPJcDZO5vXsu6B4FR8O8
+Message-ID: <CAFEAcA_0Hu8+G50sy0FJ2rX-=cNymLddDdrS2nN5ZY-doKiT8w@mail.gmail.com>
+Subject: Re: Is anybody still using the "highbank" or "midway" QEMU machines?
+To: Guenter Roeck <linux@roeck-us.net>
+Cc: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,360 +130,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R070tQ2Esye8
+X-TUID: DMvFE3l9lo9q
 
-As Daniel mentioned:
+On Mon, 2 Jun 2025 at 15:24, Guenter Roeck <linux@roeck-us.net> wrote:
+> On 5/30/25 07:23, Thomas Huth wrote:
+> > I was trying to create a functional test for the "highbank" and
+> > "midway" arm machines of QEMU, and only succeeded after lots of
+> > trial and error to boot something on the "highbank" machine.
+> > Peter mentioned on IRC that he also does not test these machines
+> > by default, so we started wondering whether anybody is still
+> > using these machines? If not, we should maybe start the
+> > deprecation process for those instead?
 
- "The number of instances of MachineClass is not large enough
-  that we save a useful amount of memory through bitfields."
+> I don't try to boot midway anymore. Commit log shows:
+>
+>      midway only works with an antique version of qemu. Stop testing it.
+>
+> That was back in 2021. The log shows that it needs qemu v3.0.
 
-Also, see recent commit ecbf3567e21 ("docs/devel/style: add a
-section about bitfield, and disallow them for packed structures").
+Might have been fixed by QEMU commit 61b82973e in 2022, which says
+# This change fixes in passing booting on the 'midway' board model,
+# which has been completely broken since we added support for Hyp
+# mode to the Cortex-A15 CPU
 
-Convert the MachineClass bitfields used as boolean as real ones.
+> I only test highbank manually (not in automated tests). I have this in my code:
+>
+>      # highbank boots with updated (local version of) qemu,
+>      # but generates warnings to the console due to ignored SMC calls.
+>
+> I have not run the manual test for ages, so I have no idea if it still works.
+> It also looks like I removed the local changes. Those were needed to enable basic
+> SMC support for highbank; maybe similar code is now upstream.
 
-Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/hw/boards.h        | 14 +++++++-------
- hw/arm/aspeed.c            |  6 +++---
- hw/arm/fby35.c             |  4 ++--
- hw/arm/npcm7xx_boards.c    |  6 +++---
- hw/arm/raspi.c             |  6 +++---
- hw/arm/sbsa-ref.c          |  2 +-
- hw/arm/virt.c              |  2 +-
- hw/arm/xilinx_zynq.c       |  2 +-
- hw/avr/arduino.c           |  6 +++---
- hw/core/null-machine.c     | 10 +++++-----
- hw/i386/microvm.c          |  2 +-
- hw/i386/pc_piix.c          |  2 +-
- hw/i386/pc_q35.c           |  4 ++--
- hw/loongarch/virt.c        |  2 +-
- hw/m68k/virt.c             |  6 +++---
- hw/ppc/pnv.c               |  2 +-
- hw/ppc/spapr.c             |  2 +-
- hw/riscv/virt.c            |  2 +-
- hw/s390x/s390-virtio-ccw.c |  8 ++++----
- hw/xtensa/sim.c            |  2 +-
- 20 files changed, 45 insertions(+), 45 deletions(-)
+> Ok for me to remove both. Not worth the trouble.
 
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 2ad711e56db..ff5904d6fd8 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -279,13 +279,13 @@ struct MachineClass {
-     int max_cpus;
-     int min_cpus;
-     int default_cpus;
--    unsigned int no_serial:1,
--        no_parallel:1,
--        no_floppy:1,
--        no_cdrom:1,
--        no_sdcard:1,
--        pci_allow_0_address:1,
--        legacy_fw_cfg_order:1;
-+    bool no_serial;
-+    bool no_parallel;
-+    bool no_floppy;
-+    bool no_cdrom;
-+    bool no_sdcard;
-+    bool pci_allow_0_address;
-+    bool legacy_fw_cfg_order;
-     bool is_default;
-     const char *default_machine_opts;
-     const char *default_boot_order;
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index a18d4ed1fb1..dc91052e94d 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1225,9 +1225,9 @@ static void aspeed_machine_class_init(ObjectClass *oc, void *data)
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
- 
-     mc->init = aspeed_machine_init;
--    mc->no_floppy = 1;
--    mc->no_cdrom = 1;
--    mc->no_parallel = 1;
-+    mc->no_floppy = true;
-+    mc->no_cdrom = true;
-+    mc->no_parallel = true;
-     mc->default_ram_id = "ram";
-     amc->macs_mask = ASPEED_MAC0_ON;
-     amc->uart_default = ASPEED_DEV_UART5;
-diff --git a/hw/arm/fby35.c b/hw/arm/fby35.c
-index 83d08e578b7..04d0eb9b0c1 100644
---- a/hw/arm/fby35.c
-+++ b/hw/arm/fby35.c
-@@ -168,8 +168,8 @@ static void fby35_class_init(ObjectClass *oc, void *data)
- 
-     mc->desc = "Meta Platforms fby35";
-     mc->init = fby35_init;
--    mc->no_floppy = 1;
--    mc->no_cdrom = 1;
-+    mc->no_floppy = true;
-+    mc->no_cdrom = true;
-     mc->min_cpus = mc->max_cpus = mc->default_cpus = 3;
- 
-     object_class_property_add_bool(oc, "execute-in-place",
-diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-index 7727e0dc4bb..c9735b357cd 100644
---- a/hw/arm/npcm7xx_boards.c
-+++ b/hw/arm/npcm7xx_boards.c
-@@ -461,9 +461,9 @@ static void npcm7xx_machine_class_init(ObjectClass *oc, void *data)
-         NULL
-     };
- 
--    mc->no_floppy = 1;
--    mc->no_cdrom = 1;
--    mc->no_parallel = 1;
-+    mc->no_floppy = true;
-+    mc->no_cdrom = true;
-+    mc->no_parallel = true;
-     mc->default_ram_id = "ram";
-     mc->valid_cpu_types = valid_cpu_types;
- }
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index a7a662f40db..665ccd9b50b 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -322,9 +322,9 @@ void raspi_machine_class_common_init(MachineClass *mc,
-                                board_type(board_rev),
-                                FIELD_EX32(board_rev, REV_CODE, REVISION));
-     mc->block_default_type = IF_SD;
--    mc->no_parallel = 1;
--    mc->no_floppy = 1;
--    mc->no_cdrom = 1;
-+    mc->no_parallel = true;
-+    mc->no_floppy = true;
-+    mc->no_cdrom = true;
-     mc->default_cpus = mc->min_cpus = mc->max_cpus = cores_count(board_rev);
-     mc->default_ram_size = board_ram_size(board_rev);
-     mc->default_ram_id = "ram";
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 6183111f2de..33c6b9ea3ec 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -899,7 +899,7 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
-     mc->pci_allow_0_address = true;
-     mc->minimum_page_bits = 12;
-     mc->block_default_type = IF_IDE;
--    mc->no_cdrom = 1;
-+    mc->no_cdrom = true;
-     mc->default_nic = "e1000e";
-     mc->default_ram_size = 1 * GiB;
-     mc->default_ram_id = "sbsa-ref.ram";
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 99e0a68b6c5..8de57be1d1c 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3124,7 +3124,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
- #endif
-     mc->block_default_type = IF_VIRTIO;
--    mc->no_cdrom = 1;
-+    mc->no_cdrom = true;
-     mc->pci_allow_0_address = true;
-     /* We know we will never create a pre-ARMv7 CPU which needs 1K pages */
-     mc->minimum_page_bits = 12;
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 8477b828745..ac51fb512db 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -463,7 +463,7 @@ static void zynq_machine_class_init(ObjectClass *oc, void *data)
-     mc->desc = "Xilinx Zynq Platform Baseboard for Cortex-A9";
-     mc->init = zynq_init;
-     mc->max_cpus = ZYNQ_MAX_CPUS;
--    mc->no_sdcard = 1;
-+    mc->no_sdcard = true;
-     mc->ignore_memory_transaction_failures = true;
-     mc->valid_cpu_types = valid_cpu_types;
-     mc->default_ram_id = "zynq.ext_ram";
-diff --git a/hw/avr/arduino.c b/hw/avr/arduino.c
-index 48ef478346e..a7229da38aa 100644
---- a/hw/avr/arduino.c
-+++ b/hw/avr/arduino.c
-@@ -64,9 +64,9 @@ static void arduino_machine_class_init(ObjectClass *oc, void *data)
-     mc->default_cpus = 1;
-     mc->min_cpus = mc->default_cpus;
-     mc->max_cpus = mc->default_cpus;
--    mc->no_floppy = 1;
--    mc->no_cdrom = 1;
--    mc->no_parallel = 1;
-+    mc->no_floppy = true;
-+    mc->no_cdrom = true;
-+    mc->no_parallel = true;
- }
- 
- static void arduino_duemilanove_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/core/null-machine.c b/hw/core/null-machine.c
-index f586a4bef54..0655343ff59 100644
---- a/hw/core/null-machine.c
-+++ b/hw/core/null-machine.c
-@@ -49,11 +49,11 @@ static void machine_none_machine_init(MachineClass *mc)
-     mc->max_cpus = 1;
-     mc->default_ram_size = 0;
-     mc->default_ram_id = "ram";
--    mc->no_serial = 1;
--    mc->no_parallel = 1;
--    mc->no_floppy = 1;
--    mc->no_cdrom = 1;
--    mc->no_sdcard = 1;
-+    mc->no_serial = true;
-+    mc->no_parallel = true;
-+    mc->no_floppy = true;
-+    mc->no_cdrom = true;
-+    mc->no_sdcard = true;
- }
- 
- DEFINE_MACHINE("none", machine_none_machine_init)
-diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-index a8d354aabe5..c804a39debe 100644
---- a/hw/i386/microvm.c
-+++ b/hw/i386/microvm.c
-@@ -649,7 +649,7 @@ static void microvm_class_init(ObjectClass *oc, void *data)
-     mc->family = "microvm_i386";
-     mc->desc = "microvm (i386)";
-     mc->units_per_default_bus = 1;
--    mc->no_floppy = 1;
-+    mc->no_floppy = true;
-     mc->max_cpus = 288;
-     mc->has_hotpluggable_cpus = false;
-     mc->auto_enable_numa_with_memhp = false;
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 04d2957adcd..0eda900b036 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -773,7 +773,7 @@ static void pc_i440fx_machine_2_5_options(MachineClass *m)
- 
-     pc_i440fx_machine_2_6_options(m);
-     x86mc->save_tsc_khz = false;
--    m->legacy_fw_cfg_order = 1;
-+    m->legacy_fw_cfg_order = true;
-     compat_props_add(m->compat_props, hw_compat_2_5, hw_compat_2_5_len);
-     compat_props_add(m->compat_props, pc_compat_2_5, pc_compat_2_5_len);
- }
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 77536dd697f..444c8c5f0f6 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -348,7 +348,7 @@ static void pc_q35_machine_options(MachineClass *m)
-     m->default_display = "std";
-     m->default_nic = "e1000e";
-     m->default_kernel_irqchip_split = false;
--    m->no_floppy = 1;
-+    m->no_floppy = true;
-     m->max_cpus = 4096;
-     m->no_parallel = !module_object_class_by_name(TYPE_ISA_PARALLEL);
-     machine_class_allow_dynamic_sysbus_dev(m, TYPE_AMD_IOMMU_DEVICE);
-@@ -668,7 +668,7 @@ static void pc_q35_machine_2_5_options(MachineClass *m)
- 
-     pc_q35_machine_2_6_options(m);
-     x86mc->save_tsc_khz = false;
--    m->legacy_fw_cfg_order = 1;
-+    m->legacy_fw_cfg_order = true;
-     compat_props_add(m->compat_props, hw_compat_2_5, hw_compat_2_5_len);
-     compat_props_add(m->compat_props, pc_compat_2_5, pc_compat_2_5_len);
- }
-diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-index 63fa0f4e32a..0077c22962b 100644
---- a/hw/loongarch/virt.c
-+++ b/hw/loongarch/virt.c
-@@ -1470,7 +1470,7 @@ static void virt_class_init(ObjectClass *oc, void *data)
-     mc->default_kernel_irqchip_split = false;
-     mc->block_default_type = IF_VIRTIO;
-     mc->default_boot_order = "c";
--    mc->no_cdrom = 1;
-+    mc->no_cdrom = true;
-     mc->possible_cpu_arch_ids = virt_possible_cpu_arch_ids;
-     mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
-     mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
-diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
-index 87ec39eeae1..09fde6cfebd 100644
---- a/hw/m68k/virt.c
-+++ b/hw/m68k/virt.c
-@@ -315,9 +315,9 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     mc->desc = "QEMU M68K Virtual Machine";
-     mc->init = virt_init;
-     mc->default_cpu_type = M68K_CPU_TYPE_NAME("m68040");
--    mc->max_cpus = 1;
--    mc->no_floppy = 1;
--    mc->no_parallel = 1;
-+    mc->max_cpus = true;
-+    mc->no_floppy = true;
-+    mc->no_parallel = true;
-     mc->default_ram_id = "m68k_virt.ram";
- }
- 
-diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-index 11fd477b71b..4897a711259 100644
---- a/hw/ppc/pnv.c
-+++ b/hw/ppc/pnv.c
-@@ -2877,7 +2877,7 @@ static void pnv_machine_class_init(ObjectClass *oc, void *data)
-     mc->max_cpus = MAX_CPUS;
-     /* Pnv provides a AHCI device for storage */
-     mc->block_default_type = IF_IDE;
--    mc->no_parallel = 1;
-+    mc->no_parallel = true;
-     mc->default_boot_order = NULL;
-     /*
-      * RAM defaults to less than 2048 for 32-bit hosts, and large
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 623842f8064..5bbab1d470f 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -4593,7 +4593,7 @@ static void spapr_machine_class_init(ObjectClass *oc, void *data)
-      */
-     mc->max_cpus = SPAPR_IRQ_NR_IPIS;
- 
--    mc->no_parallel = 1;
-+    mc->no_parallel = true;
-     mc->default_boot_order = "";
-     mc->default_ram_size = 512 * MiB;
-     mc->default_ram_id = "ppc_spapr.ram";
-diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-index 241389d72f8..88612429cb3 100644
---- a/hw/riscv/virt.c
-+++ b/hw/riscv/virt.c
-@@ -1917,7 +1917,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     mc->max_cpus = VIRT_CPUS_MAX;
-     mc->default_cpu_type = TYPE_RISCV_CPU_BASE;
-     mc->block_default_type = IF_VIRTIO;
--    mc->no_cdrom = 1;
-+    mc->no_cdrom = true;
-     mc->pci_allow_0_address = true;
-     mc->possible_cpu_arch_ids = riscv_numa_possible_cpu_arch_ids;
-     mc->cpu_index_to_instance_props = riscv_numa_cpu_index_to_props;
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index 38aeba14eeb..af150cf6155 100644
---- a/hw/s390x/s390-virtio-ccw.c
-+++ b/hw/s390x/s390-virtio-ccw.c
-@@ -785,10 +785,10 @@ static void ccw_machine_class_init(ObjectClass *oc, void *data)
-     mc->init = ccw_init;
-     mc->reset = s390_machine_reset;
-     mc->block_default_type = IF_VIRTIO;
--    mc->no_cdrom = 1;
--    mc->no_floppy = 1;
--    mc->no_parallel = 1;
--    mc->no_sdcard = 1;
-+    mc->no_cdrom = true;
-+    mc->no_floppy = true;
-+    mc->no_parallel = true;
-+    mc->no_sdcard = true;
-     mc->max_cpus = S390_MAX_CPUS;
-     mc->has_hotpluggable_cpus = true;
-     mc->smp_props.books_supported = true;
-diff --git a/hw/xtensa/sim.c b/hw/xtensa/sim.c
-index 0a1fd900376..e06a8c1813c 100644
---- a/hw/xtensa/sim.c
-+++ b/hw/xtensa/sim.c
-@@ -122,7 +122,7 @@ static void xtensa_sim_machine_init(MachineClass *mc)
-     mc->is_default = true;
-     mc->init = xtensa_sim_init;
-     mc->max_cpus = 4;
--    mc->no_serial = 1;
-+    mc->no_serial = true;
-     mc->default_cpu_type = XTENSA_DEFAULT_CPU_TYPE;
- }
- 
--- 
-2.47.1
+Cool. I don't think these machine types provide anything to
+users that is particularly interesting (if you just want
+"boot an A15 or A9 Linux" then the virt board will do fine,
+and the original "test system software for this hardware"
+use case is long dead). So I'm in favour of deprecating
+these (and eventually dropping them).
 
+There's not actually a lot of highbank/midway specific code
+here (no complex SoC modelling, lots of stock Arm peripheral
+devices, so just 400 lines in hw/arm/highbank.c, plus another
+450 in hw/net/xgmac.c for the ethernet controller), but
+if nobody's using it then there's no point keeping it around.
+
+thanks
+-- PMM

@@ -1,116 +1,172 @@
-Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp685074njc;
-        Wed, 22 Jan 2025 02:46:51 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVTWiy8Nh6Dj3sCovxeY0S/GFHQylkBF7oN/ZK1HejlMh5yiF9d6ewI1jlTjhEnlA8H25vLubsAwBwuNw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGMej41AI6jgRHSVuxminID/MGTaewgNHYxKHJfbAqJ8PGA8PWRAWh3D5BYELNFmmjkQtmy
-X-Received: by 2002:a05:6214:5b09:b0:6d8:8a0b:db25 with SMTP id 6a1803df08f44-6e1b27a47d5mr345344356d6.21.1737542811445;
-        Wed, 22 Jan 2025 02:46:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737542811; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp2789105njh;
+        Mon, 2 Jun 2025 07:25:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXOIEcDB0J50QV2qqSsZqGoQyNMYtl8EaI3xaoGIjNtWY84moDwsrWDU4jVPYDmqugVx281k/CeYqpRjw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFQC+iDjjXfFEq+4e8GdADNW6+uM7o7f2AA2MDSZNZ6kZ8FpXlgN3pU3f6CSazTsPuP+8xF
+X-Received: by 2002:a05:6214:20e2:b0:6f4:cfb3:9df9 with SMTP id 6a1803df08f44-6fad19671e4mr205520496d6.33.1748874320521;
+        Mon, 02 Jun 2025 07:25:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748874320; cv=none;
         d=google.com; s=arc-20240605;
-        b=Kz95ZZysTXRqe1yduWUQ3rTOAqZCOQHQAhj2sqwEzchTY6k+FcdwHXzzG5E62YgAJi
-         Q6eCD1GsjlTn7r/X1IzapVIODwMSYGgoCtG3rXAOBFR4PIN8H5+fX8YBeA5G/ptvXDJJ
-         bwCqd41Zipd6i/dGb/pbeGV4RCiNg5u5+TjAcw+OVJ6xo2cvRKjKBj5tAz6AVTVkA3yk
-         Zia+OW/ccxAdbYRJvHhCqN8ugpGcGLPV/jEMiS+aYZKHqd64QLUqh8+FptsJazJk40pm
-         OetqXCtwx+cvhwRAgaJfIyxr2f2L/AUmnGfcSKGSofOKiCUk1afijazF2Sb9Gh/nRLbX
-         30Kw==
+        b=FWlLikZH2TwdRHm1QQ2NK8qamirffKxljfTnQM7Di8Jv/tak3vW2J+YxzEe43LCJL0
+         teRuVqZvXUT1TYqw55PU7gqjc7XRISVcEE8pDJQoPpussM5grlhZcaZPSwWS8E6RYr6F
+         2Pc4aVUKekrQOT55OvjGlGjJumfYBy5y04iXoskLRwn7bZ/gJlX5+gHVd7s0UVi3IvXH
+         1qBEzr1kT3THXXWHDEvV5NDOqH2H6juV7y2dd7BC05D27ClfBL467NyfAf16WRUTNa82
+         9FgazSExSs+yM5rVMENHMOoHz75tF/YGiPYi8MJ7oVPi3xjYRUsKbRsuzgDubfQEMsCN
+         HPjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=H0ezmLNRc+dY13l3WQ1ASeSxqFaS+7aY1B9Ht/jPH1o=;
-        fh=XJ1nhQYnJ+u8WXbMsAFWtHloCKcjOQL3O4ly6FwgOt0=;
-        b=Ye9fRe1hSoHGrQ/cGhikGagKgmLloO7d3aVmoTOZowvLjmtzJiv09qVJrLUy7bAwT2
-         4ASrvD7oOGymnrbX2QfT3ZVdVERNdhZPLBhbUzCHdkXIeaWkNXfW7ui4oMds2K6dN/83
-         XdtilbUODZo1e08KeEV8F9BVSrsl86oQjnO8l7dWqb+WAa9/OJ200UdeKvW+Hjofo3xu
-         0PQzRRarmfZ70nin+IY2bp+ikqzgwat/PVV/xoIhq4k5QvDah8oixXPStqvVal0fOcG0
-         gKNHG3dXCAqHg02Ep5MJQR5bOJUwx18M8M1o40P9me77dYYntjOWNRImFUJG7jUy0BdF
-         ZfiA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=VAraLD0O99qqVbCM0WzQeauqLQGFXXrsIpxYuOivrn8=;
+        fh=By2ZyVGcoTK3q87CWVo0M9x17pIEWcCseJBUqvqnqxg=;
+        b=Um7DeJEy5qEmybchrws0qXWrcmCEQfu5AquRDoXjr1okQrmObhKN2n83uvZBSCYyn4
+         z9Z6eo/N4/G5juuZ7KJ3QYxfJaLb1TizmFvuNyOWXyp9ahM2u3DXFE9TMP9LbSmprC3A
+         /x9T3SaT5ep9tjxo+jRfHGdLoGLkmeNoZJQwIkmTL3YvLOHvVPVxN9+lN1pIAHRBnt/A
+         SGNr82yTNHV3m1D5HrGMupn89JJ4HwyUlwTPAeEuEal50TSMYOe+3CADCdYLsIpI6OwN
+         rDSF5bjR6qSDbqkOfDMCDJw93fKAD/hNoN2PL3XwxclaXN/n+8qoHon0CRebKDtzRQAX
+         6hCA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E8qHCBOr;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=JMN00tUs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dara=fail header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e1afbfb3a5si142443676d6.97.2025.01.22.02.46.51
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fac6dab53esi108298816d6.73.2025.06.02.07.25.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jan 2025 02:46:51 -0800 (PST)
+        Mon, 02 Jun 2025 07:25:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E8qHCBOr;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=JMN00tUs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dara=fail header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1taYFK-0006AH-RU; Wed, 22 Jan 2025 05:46:06 -0500
+	id 1uM65x-0004vX-2Y; Mon, 02 Jun 2025 10:24:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1taYFA-00068e-KW
- for qemu-arm@nongnu.org; Wed, 22 Jan 2025 05:46:02 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1taYF6-00038C-6I
- for qemu-arm@nongnu.org; Wed, 22 Jan 2025 05:45:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1737542751;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=H0ezmLNRc+dY13l3WQ1ASeSxqFaS+7aY1B9Ht/jPH1o=;
- b=E8qHCBOrdv8hCfXXj5OTCy9JRQr+NHJ3RcmOmcQb3hg7VNMgPa5d3bPSAPWrJYbnRO8Ar6
- FJXSuHQNUxI7g/MpUHSEWv1izaYIbReMPjFtlstrmnmL8Muw6SY/nXg+pzgjaZcb5Idyh2
- UjT/WvB4ysL/Gu42T4t9u20qNmGkQMQ=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-686--Nls20rgMRuffKSpAerpVw-1; Wed,
- 22 Jan 2025 05:45:45 -0500
-X-MC-Unique: -Nls20rgMRuffKSpAerpVw-1
-X-Mimecast-MFC-AGG-ID: -Nls20rgMRuffKSpAerpVw
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0E8CF19560A2; Wed, 22 Jan 2025 10:45:44 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.43])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C5593195608E; Wed, 22 Jan 2025 10:45:40 +0000 (UTC)
-Date: Wed, 22 Jan 2025 10:45:37 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- qemu-riscv@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH] hw/boards: Convert MachineClass bitfields to boolean
-Message-ID: <Z5DMUVoEcaO4Mzp2@redhat.com>
-References: <20250122103223.55523-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1uM65u-0004v6-Nx; Mon, 02 Jun 2025 10:24:54 -0400
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1uM65q-0002X7-Gl; Mon, 02 Jun 2025 10:24:53 -0400
+Received: by mail-pl1-x62f.google.com with SMTP id
+ d9443c01a7336-23228b9d684so47307815ad.1; 
+ Mon, 02 Jun 2025 07:24:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1748874287; x=1749479087; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
+ bh=VAraLD0O99qqVbCM0WzQeauqLQGFXXrsIpxYuOivrn8=;
+ b=JMN00tUsZboUg7e0SgbAmPGVB6+5KmXxOKlB1DlDHB2pmPJVtyVgcQWpmiUkD+s0XW
+ VHoFcG+/rKA3Qgz4/BNxivImJEYQJz6SCjmB3yI/vASgNlg2hybJR57UESsK0vmBXKNT
+ bGZl2WJdrtPlt9P51zaqMpsTECBreOgYu6y/A8A3g65/4ex96h6o3MGHitZFCjSheHvQ
+ GiYFvxfG/+JBLAgLNla8F4FTNJqCqXd6fr4aEH0QVfFjpXIeprkvCvBB+6WjdcdjtR/e
+ csKQ4oN8biDX1CAy4276KWX1/4Saf4ZGkq7t2u0rJ29EExmm43kaStU9OwPmecU8T7kn
+ FA4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1748874287; x=1749479087;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=VAraLD0O99qqVbCM0WzQeauqLQGFXXrsIpxYuOivrn8=;
+ b=UED5rC/gFbN4SyXGx10tnpxd9OztKZRF4uCI+vBVNzB0OqYN3PyqBhZ78APaUKuUSs
+ ALPJGbbje0ME4eXzZNSr7F9uWwDjue18z561gNszOGr+sSxH94RSztmVittUGH3umDM8
+ IPcmyHbhyAP+/4zRccrINv1AddQXiTHyZCeH3stykgLJShyBj+kvJifvKJV6HJpaIWUm
+ Vcwj+k914/BYB2IkmJMeUrag3Muj7z6uDUvJVFvl1o/nHjeMJhqfsEr48KqonO48WkHm
+ fiwq7MEFa01so5NGvaRSXjH0g7/4Fu9XfFr3iXUOWIXJRB8qfRFIZnSyxQf9FXLtqPfM
+ Sgwg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU19eTL4mfjYrPjVP1ZlKkq+l1CIIQUo9r5MadU0oL+6qRCy4gCmyistkYD+UyN5hPyLuWWIracwXEp@nongnu.org
+X-Gm-Message-State: AOJu0YyPz4lgy3C46A/OIwNoN6Ff5Xkgh8c1DCEVGMzxnDhd2jneb40b
+ ayLHN5NlUkLMpwLOm81mz/xmXimI+5wEwHsd4zcxJ5QWZmsnVsRbs3uebwuX04Ad
+X-Gm-Gg: ASbGncvgFy+uhfYvfNOsCa5UDacCLpJhoSjmr76YUJJDAhjBMAleRJorWtlpZSIb7W3
+ KwjD6OMxLGAPm3uAec79vwaEEv/Nn8IN5meFqKTXbsdTZxqqBYyS3ayQXX4KQJCJQ7GgdBmm6Lr
+ sLfOp+c8sXTrvhN7cKx4ztNowv3Il0Jp7UouMGEhzbSt+tkg6WI5gDpci/PXK2+koa0JeAAS/H7
+ Aueju2IdQN7cUDWT2G3oIcx/nvri0f4eD6TZp9UVaoxH8Pgm1/GG3TWQlDh7NmSzgvNOcQ5YW5F
+ V2QLHjcrlr8jJ9k4TavV6960Bc2z6zbk4DY+uZbBheoCunB1AYGfw4OBSJQB2EBWeTxMAdxRko5
+ pEkNP76vnpxXQR0EVtr8r5ozb
+X-Received: by 2002:a17:902:ea0f:b0:234:df51:d16c with SMTP id
+ d9443c01a7336-2353961befdmr178747995ad.45.1748874287545; 
+ Mon, 02 Jun 2025 07:24:47 -0700 (PDT)
+Received: from ?IPV6:2600:1700:e321:62f0:da43:aeff:fecc:bfd5?
+ ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-23506cd8f9esm71080525ad.142.2025.06.02.07.24.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Jun 2025 07:24:46 -0700 (PDT)
+Message-ID: <1301bf7e-0e52-43c0-9910-55ea34647a34@roeck-us.net>
+Date: Mon, 2 Jun 2025 07:24:45 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: Is anybody still using the "highbank" or "midway" QEMU machines?
+To: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+References: <7aae8238-f7f4-4f3a-9a7e-e9afc99d1d0c@redhat.com>
+Content-Language: en-US
+From: Guenter Roeck <linux@roeck-us.net>
+Autocrypt: addr=linux@roeck-us.net; keydata=
+ xsFNBE6H1WcBEACu6jIcw5kZ5dGeJ7E7B2uweQR/4FGxH10/H1O1+ApmcQ9i87XdZQiB9cpN
+ RYHA7RCEK2dh6dDccykQk3bC90xXMPg+O3R+C/SkwcnUak1UZaeK/SwQbq/t0tkMzYDRxfJ7
+ nyFiKxUehbNF3r9qlJgPqONwX5vJy4/GvDHdddSCxV41P/ejsZ8PykxyJs98UWhF54tGRWFl
+ 7i1xvaDB9lN5WTLRKSO7wICuLiSz5WZHXMkyF4d+/O5ll7yz/o/JxK5vO/sduYDIlFTvBZDh
+ gzaEtNf5tQjsjG4io8E0Yq0ViobLkS2RTNZT8ICq/Jmvl0SpbHRvYwa2DhNsK0YjHFQBB0FX
+ IdhdUEzNefcNcYvqigJpdICoP2e4yJSyflHFO4dr0OrdnGLe1Zi/8Xo/2+M1dSSEt196rXaC
+ kwu2KgIgmkRBb3cp2vIBBIIowU8W3qC1+w+RdMUrZxKGWJ3juwcgveJlzMpMZNyM1jobSXZ0
+ VHGMNJ3MwXlrEFPXaYJgibcg6brM6wGfX/LBvc/haWw4yO24lT5eitm4UBdIy9pKkKmHHh7s
+ jfZJkB5fWKVdoCv/omy6UyH6ykLOPFugl+hVL2Prf8xrXuZe1CMS7ID9Lc8FaL1ROIN/W8Vk
+ BIsJMaWOhks//7d92Uf3EArDlDShwR2+D+AMon8NULuLBHiEUQARAQABzTJHdWVudGVyIFJv
+ ZWNrIChMaW51eCBhY2NvdW50KSA8bGludXhAcm9lY2stdXMubmV0PsLBgQQTAQIAKwIbAwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4ACGQEFAmgrMyQFCSbODQkACgkQyx8mb86fmYGcWRAA
+ oRwrk7V8fULqnGGpBIjp7pvR187Yzx+lhMGUHuM5H56TFEqeVwCMLWB2x1YRolYbY4MEFlQg
+ VUFcfeW0OknSr1s6wtrtQm0gdkolM8OcCL9ptTHOg1mmXa4YpW8QJiL0AVtbpE9BroeWGl9v
+ 2TGILPm9mVp+GmMQgkNeCS7Jonq5f5pDUGumAMguWzMFEg+Imt9wr2YA7aGen7KPSqJeQPpj
+ onPKhu7O/KJKkuC50ylxizHzmGx+IUSmOZxN950pZUFvVZH9CwhAAl+NYUtcF5ry/uSYG2U7
+ DCvpzqOryJRemKN63qt1bjF6cltsXwxjKOw6CvdjJYA3n6xCWLuJ6yk6CAy1Ukh545NhgBAs
+ rGGVkl6TUBi0ixL3EF3RWLa9IMDcHN32r7OBhw6vbul8HqyTFZWY2ksTvlTl+qG3zV6AJuzT
+ WdXmbcKN+TdhO5XlxVlbZoCm7ViBj1+PvIFQZCnLAhqSd/DJlhaq8fFXx1dCUPgQDcD+wo65
+ qulV/NijfU8bzFfEPgYP/3LP+BSAyFs33y/mdP8kbMxSCjnLEhimQMrSSo/To1Gxp5C97fw5
+ 3m1CaMILGKCmfI1B8iA8zd8ib7t1Rg0qCwcAnvsM36SkrID32GfFbv873bNskJCHAISK3Xkz
+ qo7IYZmjk/IJGbsiGzxUhvicwkgKE9r7a1rOwU0ETofVZwEQALlLbQeBDTDbwQYrj0gbx3bq
+ 7kpKABxN2MqeuqGr02DpS9883d/t7ontxasXoEz2GTioevvRmllJlPQERVxM8gQoNg22twF7
+ pB/zsrIjxkE9heE4wYfN1AyzT+AxgYN6f8hVQ7Nrc9XgZZe+8IkuW/Nf64KzNJXnSH4u6nJM
+ J2+Dt274YoFcXR1nG76Q259mKwzbCukKbd6piL+VsT/qBrLhZe9Ivbjq5WMdkQKnP7gYKCAi
+ pNVJC4enWfivZsYupMd9qn7Uv/oCZDYoBTdMSBUblaLMwlcjnPpOYK5rfHvC4opxl+P/Vzyz
+ 6WC2TLkPtKvYvXmdsI6rnEI4Uucg0Au/Ulg7aqqKhzGPIbVaL+U0Wk82nz6hz+WP2ggTrY1w
+ ZlPlRt8WM9w6WfLf2j+PuGklj37m+KvaOEfLsF1v464dSpy1tQVHhhp8LFTxh/6RWkRIR2uF
+ I4v3Xu/k5D0LhaZHpQ4C+xKsQxpTGuYh2tnRaRL14YMW1dlI3HfeB2gj7Yc8XdHh9vkpPyuT
+ nY/ZsFbnvBtiw7GchKKri2gDhRb2QNNDyBnQn5mRFw7CyuFclAksOdV/sdpQnYlYcRQWOUGY
+ HhQ5eqTRZjm9z+qQe/T0HQpmiPTqQcIaG/edgKVTUjITfA7AJMKLQHgp04Vylb+G6jocnQQX
+ JqvvP09whbqrABEBAAHCwWUEGAECAA8CGwwFAmgrMyQFCSbODQkACgkQyx8mb86fmYHlgg/9
+ H5JeDmB4jsreE9Bn621wZk7NMzxy9STxiVKSh8Mq4pb+IDu1RU2iLyetCY1TiJlcxnE362kj
+ njrfAdqyPteHM+LU59NtEbGwrfcXdQoh4XdMuPA5ADetPLma3YiRa3VsVkLwpnR7ilgwQw6u
+ dycEaOxQ7LUXCs0JaGVVP25Z2hMkHBwx6BlW6EZLNgzGI2rswSZ7SKcsBd1IRHVf0miwIFYy
+ j/UEfAFNW+tbtKPNn3xZTLs3quQN7GdYLh+J0XxITpBZaFOpwEKV+VS36pSLnNl0T5wm0E/y
+ scPJ0OVY7ly5Vm1nnoH4licaU5Y1nSkFR/j2douI5P7Cj687WuNMC6CcFd6j72kRfxklOqXw
+ zvy+2NEcXyziiLXp84130yxAKXfluax9sZhhrhKT6VrD45S6N3HxJpXQ/RY/EX35neH2/F7B
+ RgSloce2+zWfpELyS1qRkCUTt1tlGV2p+y2BPfXzrHn2vxvbhEn1QpQ6t+85FKN8YEhJEygJ
+ F0WaMvQMNrk9UAUziVcUkLU52NS9SXqpVg8vgrO0JKx97IXFPcNh0DWsSj/0Y8HO/RDkGXYn
+ FDMj7fZSPKyPQPmEHg+W/KzxSSfdgWIHF2QaQ0b2q1wOSec4Rti52ohmNSY+KNIW/zODhugJ
+ np3900V20aS7eD9K8GTU0TGC1pyz6IVJwIE=
+In-Reply-To: <7aae8238-f7f4-4f3a-9a7e-e9afc99d1d0c@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250122103223.55523-1-philmd@linaro.org>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -51
-X-Spam_score: -5.2
-X-Spam_bar: -----
-X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.086,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=groeck7@gmail.com; helo=mail-pl1-x62f.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,64 +179,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FlNyOR1oAIkg
+X-TUID: U8sf3CaFF3c4
 
-On Wed, Jan 22, 2025 at 11:32:23AM +0100, Philippe Mathieu-Daudé wrote:
-> As Daniel mentioned:
+On 5/30/25 07:23, Thomas Huth wrote:
 > 
->  "The number of instances of MachineClass is not large enough
->   that we save a useful amount of memory through bitfields."
+>   Hi Guenter et al.,
 > 
-> Also, see recent commit ecbf3567e21 ("docs/devel/style: add a
-> section about bitfield, and disallow them for packed structures").
-
-Also developers incorrectly think these are already booleans:
-
-$ git grep  -E '\b(no_parallel|no_serial|no_floppy|no_cdrom|no_sdcard|pci_allow_0_address|legacy_fw_cfg_order)\b' | grep -E '(true|false)'
-hw/arm/sbsa-ref.c:    mc->pci_allow_0_address = true;
-hw/arm/virt.c:    mc->pci_allow_0_address = true;
-hw/arm/xlnx-versal-virt.c:    mc->no_cdrom = true;
-hw/m68k/next-cube.c:    mc->no_cdrom = true;
-hw/ppc/spapr.c:    mc->pci_allow_0_address = true;
-hw/riscv/virt.c:    mc->pci_allow_0_address = true;
-
+> I was trying to create a functional test for the "highbank" and "midway" arm machines of QEMU, and only succeeded after lots of trial and error to boot something on the "highbank" machine. Peter mentioned on IRC that he also does not test these machines by default, so we started wondering whether anybody is still using these machines? If not, we should maybe start the deprecation process for those instead?
 > 
-> Convert the MachineClass bitfields used as boolean as real ones.
+>   Thomas
 > 
-> Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  include/hw/boards.h        | 14 +++++++-------
->  hw/arm/aspeed.c            |  6 +++---
->  hw/arm/fby35.c             |  4 ++--
->  hw/arm/npcm7xx_boards.c    |  6 +++---
->  hw/arm/raspi.c             |  6 +++---
->  hw/arm/sbsa-ref.c          |  2 +-
->  hw/arm/virt.c              |  2 +-
->  hw/arm/xilinx_zynq.c       |  2 +-
->  hw/avr/arduino.c           |  6 +++---
->  hw/core/null-machine.c     | 10 +++++-----
->  hw/i386/microvm.c          |  2 +-
->  hw/i386/pc_piix.c          |  2 +-
->  hw/i386/pc_q35.c           |  4 ++--
->  hw/loongarch/virt.c        |  2 +-
->  hw/m68k/virt.c             |  6 +++---
->  hw/ppc/pnv.c               |  2 +-
->  hw/ppc/spapr.c             |  2 +-
->  hw/riscv/virt.c            |  2 +-
->  hw/s390x/s390-virtio-ccw.c |  8 ++++----
->  hw/xtensa/sim.c            |  2 +-
->  20 files changed, 45 insertions(+), 45 deletions(-)
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+I don't try to boot midway anymore. Commit log shows:
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+     midway only works with an antique version of qemu. Stop testing it.
+
+That was back in 2021. The log shows that it needs qemu v3.0.
+
+I only test highbank manually (not in automated tests). I have this in my code:
+
+     # highbank boots with updated (local version of) qemu,
+     # but generates warnings to the console due to ignored SMC calls.
+
+I have not run the manual test for ages, so I have no idea if it still works.
+It also looks like I removed the local changes. Those were needed to enable basic
+SMC support for highbank; maybe similar code is now upstream.
+
+Ok for me to remove both. Not worth the trouble.
+
+Guenter
 

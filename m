@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.19])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-adb35af4456sm733280266b.182.2025.06.03.04.02.05
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-606b128c0acsm826516a12.1.2025.06.03.04.02.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 03 Jun 2025 04:02:05 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id EC66B5F9CC;
-	Tue, 03 Jun 2025 12:02:04 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 0F9D85F9CD;
+	Tue, 03 Jun 2025 12:02:05 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
@@ -30,68 +30,40 @@ Cc: Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>
-Subject: [PATCH v4 01/17] tests/docker: expose $HOME/.cache/qemu as docker volume
-Date: Tue,  3 Jun 2025 12:01:48 +0100
-Message-ID: <20250603110204.838117-2-alex.bennee@linaro.org>
+Subject: [PATCH v4 02/17] gitlab: disable debug info on CI builds
+Date: Tue,  3 Jun 2025 12:01:49 +0100
+Message-ID: <20250603110204.838117-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250603110204.838117-1-alex.bennee@linaro.org>
 References: <20250603110204.838117-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: y5l+c1fDvhcN
+X-TUID: BspIZE0f5QXC
 
-If you want to run functional tests we should share .cache/qemu so we
-don't force containers to continually re-download images. We also move
-ccache to use this shared area.
+Our default build enables debug info which adds hugely to the size of
+the builds as well as the size of cached objects. Disable debug info
+across the board to save space and reduce pressure on the CI system.
+We still have a number of builds which explicitly enable debug and
+related extra asserts like --enable-debug-tcg.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-
 ---
-v3
-  - mention ccache
-v2
-  - Share a whole .cache/qemu path.
----
- tests/docker/Makefile.include | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ .gitlab-ci.d/buildtest-template.yml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-index fa1cbb6726..3959d8a028 100644
---- a/tests/docker/Makefile.include
-+++ b/tests/docker/Makefile.include
-@@ -185,8 +185,10 @@ docker:
- 
- docker-help: docker
- 
-+# Where QEMU caches build artefacts
-+DOCKER_QEMU_CACHE_DIR := $$HOME/.cache/qemu
- # Use a global constant ccache directory to speed up repetitive builds
--DOCKER_CCACHE_DIR := $$HOME/.cache/qemu-docker-ccache
-+DOCKER_QEMU_CCACHE_DIR := DOCKER_QEMU_CACHE_DIR/docker-ccache
- 
- # This rule if for directly running against an arbitrary docker target.
- # It is called by the expanded docker targets (e.g. make
-@@ -195,7 +197,7 @@ DOCKER_CCACHE_DIR := $$HOME/.cache/qemu-docker-ccache
- # For example: make docker-run TEST="test-quick" IMAGE="debian:arm64" EXECUTABLE=./aarch64-linux-user/qemu-aarch64
- #
- docker-run: docker-qemu-src
--	@mkdir -p "$(DOCKER_CCACHE_DIR)"
-+	@mkdir -p "$(DOCKER_QEMU_CCACHE_DIR)"
- 	@if test -z "$(IMAGE)" || test -z "$(TEST)"; \
- 		then echo "Invalid target $(IMAGE)/$(TEST)"; exit 1; \
- 	fi
-@@ -222,8 +224,8 @@ docker-run: docker-qemu-src
- 			-e V=$V -e J=$J -e DEBUG=$(DEBUG)		\
- 			-e SHOW_ENV=$(SHOW_ENV) 			\
- 			$(if $(NOUSER),,				\
--				-e CCACHE_DIR=/var/tmp/ccache 		\
--				-v $(DOCKER_CCACHE_DIR):/var/tmp/ccache:z \
-+				-v $(DOCKER_QEMU_CACHE_DIR):$(DOCKER_QEMU_CACHE_DIR) 	\
-+				-e CCACHE_DIR=$(DOCKER_QEMU_CCACHE_DIR)	\
- 			)						\
- 			-v $$(readlink -e $(DOCKER_SRC_COPY)):/var/tmp/qemu:z$(COMMA)ro \
- 			$(IMAGE) 					\
+diff --git a/.gitlab-ci.d/buildtest-template.yml b/.gitlab-ci.d/buildtest-template.yml
+index 118371e377..19663126ca 100644
+--- a/.gitlab-ci.d/buildtest-template.yml
++++ b/.gitlab-ci.d/buildtest-template.yml
+@@ -24,6 +24,7 @@
+     - ccache --zero-stats
+     - section_start configure "Running configure"
+     - ../configure --enable-werror --disable-docs --enable-fdt=system
++          --disable-debug-info
+           ${TARGETS:+--target-list="$TARGETS"}
+           $CONFIGURE_ARGS ||
+       { cat config.log meson-logs/meson-log.txt && exit 1; }
 -- 
 2.47.2

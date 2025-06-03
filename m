@@ -1,137 +1,96 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp3300741njh;
-        Tue, 3 Jun 2025 02:50:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWCDhJTgPoeLubBP7b6TRCs9DDlQkdUWZ+jnlX032x1FDgQlOIYaKRxFUHCT7Z0854ZsPpeE3AXti0GeA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEsTXEIUSPcUcKMlCOdmKaxrM5kDFxz3TUzYexIzeuQ19hR7zrlZXsolcNuJh17J/Y/L6cv
-X-Received: by 2002:a05:620a:4103:b0:7c7:a736:b698 with SMTP id af79cd13be357-7d0eaccc359mr1849990585a.40.1748944252925;
-        Tue, 03 Jun 2025 02:50:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748944252; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp3313103njh;
+        Tue, 3 Jun 2025 03:16:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUvZ3FeIvqmvggvQ+9kkg3DpVFj3Q8MmH7/9Bb9N9IImUbh9Une2ArJ80KD0y6bnlrQTd/Sp9O/7P3n9g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHkZR+SE1sKF9wm9zdBkOa5AtaYnfwCvREPrCZf11BYTxdoUWYpCaYoX8VzVhMd9S+7vkHa
+X-Received: by 2002:a05:622a:410f:b0:4a2:719b:122e with SMTP id d75a77b69052e-4a443ef403cmr252363661cf.18.1748945774397;
+        Tue, 03 Jun 2025 03:16:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748945774; cv=none;
         d=google.com; s=arc-20240605;
-        b=Onk+ZLHoQlXo2tnVjs6AsSmu0YvPe614j5J/g6gKSIRktrJUS7m/bNthfMgLJ5Nl3w
-         idkUTiOIj6GzUNd0Ip0X1ik4/YjLIdP4i0tfZNIzqzCKzr4mD+2+Egqawb/juBDjP9sC
-         biecbgfYwjtcWd5Nm4se5iOcerYxdmSYhqL83psA7Xegs2BCf8SGIWPo7NdLFD6W4CxU
-         Be9r2YVCmAKxPDHcdrJL7AQ38hCCbNQ8AFHcBsUMgK3jh1rfsarUjsr67I6Fio9Lr4eQ
-         ++akmSvWhmq0cPNE09YsyjJmgbUw+pl1tjNpKv+0r983aWTyUbILMKshK9uegl5J1BfH
-         +kBw==
+        b=l0otfpbVI+Ie3ePrO1IsDQhiwUuXMUJV+GgmvouAsSqN+gVRC79qUTsrCxKwwM2ZS1
+         vbzRElUxRUwqH/G44OVhFo9HZ5rOIAv35L3wb1bkyDySSj4oQGpox+KqbURLBBdfefnq
+         dOCfeU9L+JS4r8QrggM6HUcctkJeFtGt4eCGPEwe3sywj0HjusehirXpjhuwWar5dHM8
+         7hZEuUbMjxzHQfMywW6ZHdaHyWFnk6lwBt5l8PRInkJr8tgTNH7PGhnM9VJM5JdX403L
+         F9/xMIv1rW5fMGdrcDsHHvz3Q0pGopr6Yuyye2IdXHNzl+K7heGU24vJVJE2IBrww4NL
+         BbSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=mv58T/W6RsypO84fxS5nOpnQQLugeAy7hvEtVnn7U8M=;
-        fh=XlmNSU9PxGWyH7nBq1MynnSNVEQuwrHjCq4mEY+J144=;
-        b=eEu198gCHsmI3IX64nvBZtxfyWqdrCovzp/qTiFyolmZA0aCJWtKrja2i432ZyApC5
-         2dsD9FId7+KzKRaZsUE0McHcJCk27zjXiY/0GZwANpMhLPqjlueFAySqRDEP+ygKbROP
-         7jTtpijjgBmeBL0vOw92kud0RDUjurISQM4g4maS/E3Vkr+XdFFN/Y1nQskyFBrxNOyf
-         OsTcAkDvPCMhR1H0DiVpIcW434zeb6PuhHPd45FIYT1Wp1Qn4zA01Uj7ph4E30YYxs5A
-         lGTByAzYvXfz5TVpT/2gIp/Xz+t0CHDAgkm5Xw9GhvP6+ajMmLv7ptNsSa6KpYgosRtR
-         ZAuA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=V6UyugGoJ5KQ0WbdVMn8DUL7G+nKcpnfRgoxGN1aZtk=;
+        fh=4NJrHZ6uIiC4/czr48SnT9axGZ4obZmaxNWhbc8xZJo=;
+        b=VGO7w6ot/ieGwNO3O9pfF6OolpWZe4qDkxrHIfIL0yn3r2yMGLHT0zzXUyOY0MQS3D
+         NqUlulLgTvXXu4m9AN/y4kaiNxZccNQM4X62GOEw0GsN9fRTpr+8YyZD+4CfzZGKf1vQ
+         qz/0Hx0FnhsBkxX/YCyJnt5Zkc05A/ndO9woksVfAh2slQBIwpSC2sVMWG++K2EY9BX7
+         zvCCIbvZ3wBuqQqq6rq2RS2Xu2/rsGZvg/Xd1IjWkUNT5Oo33QmvStH9WPO1gstCUuNX
+         zou6g5/2Qw9bZDLDU0ykG70t1BBoitmFPBiOiFnqNJ6buDLT1GoEvKxuMSCirASLVBMn
+         +ZVQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Fc/Fi4X5";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Tq+aJ7oh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d09a1e23a9si1207025985a.220.2025.06.03.02.50.52
+        by mx.google.com with ESMTPS id d75a77b69052e-4a4359f2845si124118461cf.321.2025.06.03.03.16.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Jun 2025 02:50:52 -0700 (PDT)
+        Tue, 03 Jun 2025 03:16:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Fc/Fi4X5";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Tq+aJ7oh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uMOHz-0008EI-Ch; Tue, 03 Jun 2025 05:50:35 -0400
+	id 1uMOgR-0005dH-Kc; Tue, 03 Jun 2025 06:15:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uMOHw-0008Du-3x
- for qemu-arm@nongnu.org; Tue, 03 Jun 2025 05:50:32 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uMOgQ-0005cX-0i
+ for qemu-arm@nongnu.org; Tue, 03 Jun 2025 06:15:50 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uMOHt-0002EO-Ua
- for qemu-arm@nongnu.org; Tue, 03 Jun 2025 05:50:31 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uMOgO-00054t-4r
+ for qemu-arm@nongnu.org; Tue, 03 Jun 2025 06:15:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1748944226;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=mv58T/W6RsypO84fxS5nOpnQQLugeAy7hvEtVnn7U8M=;
- b=Fc/Fi4X5nO94gCGENJBQPmJ2d7exFJIsjz/uHFfuTTpXS3X+7tpRHQZof4UI9Vj4W2iyyL
- pDENBcQER2BkBcvAwqqIN7d6vmLSPdYQmXQlZALIL7kyW7WA55TDDeMBj6gIrCcAtsv6Vv
- OatyGJshHWvmciC0yOnpwDbA28GNH6w=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-66-iTwUsujvPEiO1foSEIIj3Q-1; Tue, 03 Jun 2025 05:50:25 -0400
-X-MC-Unique: iTwUsujvPEiO1foSEIIj3Q-1
-X-Mimecast-MFC-AGG-ID: iTwUsujvPEiO1foSEIIj3Q_1748944224
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-451d30992bcso20416475e9.2
- for <qemu-arm@nongnu.org>; Tue, 03 Jun 2025 02:50:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1748944224; x=1749549024;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=mv58T/W6RsypO84fxS5nOpnQQLugeAy7hvEtVnn7U8M=;
- b=HNseEkpVk0jaWocVpah7Vnxn7mX9KAP4Y0hANKaoJMEn3INcqDDe3eZ75pIepyMZwp
- TELTVXqMjjEMwS9vtvhwgwe21gdDNaep3jzirNVm8FOH0UOnLwMql94r438pFIQ/eJ++
- QWK2ztk9PqI4VE1aCiBo/Xl9fC/6jpOcaAQzwER+Y6ti6GPWQ+zFyACRMOmYd5Xu3Dne
- klAdjL4rumB2s9gndfbkG0qZxOTMKKiOYc2DYVMO/MuZEoBIEk66CkaaD+Nwra8QCh1P
- +TT6js83Tq/aTDx1U0GWejv5gVC5k55L+Bl9L0ZLgGRaAl9gqHN3bzr0DMHAP/sUzuHs
- kgdQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVUfwm7uDxf3XDtqmuAJU2xC5l7+zD5JJa3KDly9dwgfMZVrOdhwHK7APkUzccEzQ1Elwzgv9fBQA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz9dAgbhmKIm3fNxxQZvWtr6NSsXY3z3qebOrtIkga9gchAkigQ
- jN6wJrzpC06cGOYCMTyAAMDVpMBN1CS/y171gvk25z98uto0nZ/pYCrnmefkJyWdJywAbZzLPwM
- Ufxc4fgnY5IZHBcbKaTakJz4pB/8mRIqo+2zDmsb0+Pw1gjaH9bvfWA==
-X-Gm-Gg: ASbGncuqanPXKDB4aHmDTuA90wuQOifvjS5T3SWoURojww2FLq/jEsyww4Ft+wzRzx3
- 3iTyKIDNsvKPdZw1ipuSrz032+sGClndbQ1HiINIsXFy+o8Ou7YWeo/PqyiMqNpsMAVnV5aD4cP
- fJyuSAaFKeICmyJF/V0kZFGg+pAtPe6VsSidKM3s7Ovs8Xg1Cjkij8zTfn+o1hwtlmfT95i5JNv
- s9ifULkPdc3XWyyBjJMPB30tS/ziDokNTVCYz/LhcBZ5M5cqVlqMlK6S22cAfKoKg+nSffQR06+
- DK5uXEmf2ERrjdNvhNByqaHzrI04Gxx6uoywvORo4ymbggzx6aouqodqtMI=
-X-Received: by 2002:a05:600c:6488:b0:442:f4a3:9338 with SMTP id
- 5b1f17b1804b1-4511ee1215emr95955595e9.21.1748944223761; 
- Tue, 03 Jun 2025 02:50:23 -0700 (PDT)
-X-Received: by 2002:a05:600c:6488:b0:442:f4a3:9338 with SMTP id
- 5b1f17b1804b1-4511ee1215emr95955345e9.21.1748944223420; 
- Tue, 03 Jun 2025 02:50:23 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-450d7fb0467sm155256605e9.19.2025.06.03.02.50.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Jun 2025 02:50:22 -0700 (PDT)
-Message-ID: <ba4ac9e4-f8ca-4885-b2ab-6acdca51175b@redhat.com>
-Date: Tue, 3 Jun 2025 11:50:21 +0200
+ s=mimecast20190719; t=1748945744;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=V6UyugGoJ5KQ0WbdVMn8DUL7G+nKcpnfRgoxGN1aZtk=;
+ b=Tq+aJ7oh4HJwq5NC22hrEfUzIMZyXoEgDl8TTnbQ/GuZDH13rP676jLDdlsNbvq9VUd5Iq
+ c/ypHI58fmeXAJAxIFOFS2hcSspNhrt2mbAClCDi5+5ErXNwm8c35fcIWU947lWLFcX2G/
+ SGB9Z6k2uufpo/tqgLvQceSF3YvkDKg=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-422-wQskYtlNMxiu2l8qbg6Qtg-1; Tue,
+ 03 Jun 2025 06:15:42 -0400
+X-MC-Unique: wQskYtlNMxiu2l8qbg6Qtg-1
+X-Mimecast-MFC-AGG-ID: wQskYtlNMxiu2l8qbg6Qtg_1748945741
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 691FF1800261; Tue,  3 Jun 2025 10:15:41 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.45.226.8])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id DF3CF30002C2; Tue,  3 Jun 2025 10:15:38 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org
+Subject: [PATCH] tests/functional: Add a test for the realview-eb-mpcore
+ machine
+Date: Tue,  3 Jun 2025 12:15:26 +0200
+Message-ID: <20250603101526.21217-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm/virt: Check bypass iommu is not set for iommu-map
- DT property
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, nicolinc@nvidia.com, ddutile@redhat.com,
- linuxarm@huawei.com
-References: <20250602114655.42920-1-shameerali.kolothum.thodi@huawei.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250602114655.42920-1-shameerali.kolothum.thodi@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: bgYFJ5rKff6vDJShwXi8R3AowOlFMp_z312mr4sf2cA_1748944224
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -152,61 +111,100 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: I4XQk2KFmalw
+X-TUID: McUXEKI/MsxK
 
-Hi Shameer,
+From: Thomas Huth <thuth@redhat.com>
 
-On 6/2/25 1:46 PM, Shameer Kolothum wrote:
-> default_bus_bypass_iommu tells us whether the bypass_iommu is set
-> for the default PCIe root bus. Make sure we check that before adding
-> the "iommu-map" DT property.
->
-> Fixes: 6d7a85483a06 ("hw/arm/virt: Add default_bus_bypass_iommu machine option")
-> Suggested-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Check that we can boot a Linux kernel here and that we can at
+least send one ping network packet.
 
-Thanks!
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ MAINTAINERS                           |  1 +
+ tests/functional/meson.build          |  1 +
+ tests/functional/test_arm_realview.py | 47 +++++++++++++++++++++++++++
+ 3 files changed, 49 insertions(+)
+ create mode 100755 tests/functional/test_arm_realview.py
 
-Eric
-> ---
->  hw/arm/virt.c | 15 ++++++++++-----
->  1 file changed, 10 insertions(+), 5 deletions(-)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 9a6cd085a3..99fde5836c 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1487,9 +1487,12 @@ static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
->      qemu_fdt_setprop_cell(ms->fdt, node, "phandle", vms->iommu_phandle);
->      g_free(node);
->  
-> -    qemu_fdt_setprop_cells(ms->fdt, vms->pciehb_nodename, "iommu-map",
-> -                           0x0, vms->iommu_phandle, 0x0, bdf,
-> -                           bdf + 1, vms->iommu_phandle, bdf + 1, 0xffff - bdf);
-> +    if (!vms->default_bus_bypass_iommu) {
-> +        qemu_fdt_setprop_cells(ms->fdt, vms->pciehb_nodename, "iommu-map",
-> +                               0x0, vms->iommu_phandle, 0x0, bdf,
-> +                               bdf + 1, vms->iommu_phandle, bdf + 1,
-> +                               0xffff - bdf);
-> +    }
->  }
->  
->  static void create_pcie(VirtMachineState *vms)
-> @@ -1612,8 +1615,10 @@ static void create_pcie(VirtMachineState *vms)
->          switch (vms->iommu) {
->          case VIRT_IOMMU_SMMUV3:
->              create_smmu(vms, vms->bus);
-> -            qemu_fdt_setprop_cells(ms->fdt, nodename, "iommu-map",
-> -                                   0x0, vms->iommu_phandle, 0x0, 0x10000);
-> +            if (!vms->default_bus_bypass_iommu) {
-> +                qemu_fdt_setprop_cells(ms->fdt, nodename, "iommu-map",
-> +                                       0x0, vms->iommu_phandle, 0x0, 0x10000);
-> +            }
->              break;
->          default:
->              g_assert_not_reached();
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 16af37986a4..0d1023635ee 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -954,6 +954,7 @@ F: hw/cpu/realview_mpcore.c
+ F: hw/intc/realview_gic.c
+ F: include/hw/intc/realview_gic.h
+ F: docs/system/arm/realview.rst
++F: tests/functional/test_arm_realview.py
+ 
+ SABRELITE / i.MX6
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 557d59ddf4d..0de1caa0f72 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -135,6 +135,7 @@ tests_arm_system_thorough = [
+   'arm_orangepi',
+   'arm_quanta_gsj',
+   'arm_raspi2',
++  'arm_realview',
+   'arm_replay',
+   'arm_smdkc210',
+   'arm_stellaris',
+diff --git a/tests/functional/test_arm_realview.py b/tests/functional/test_arm_realview.py
+new file mode 100755
+index 00000000000..82cc964333e
+--- /dev/null
++++ b/tests/functional/test_arm_realview.py
+@@ -0,0 +1,47 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots a Linux kernel on a realview arm machine
++# and checks the console
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import LinuxKernelTest, exec_command_and_wait_for_pattern
++from qemu_test import Asset
++
++
++class RealviewMachine(LinuxKernelTest):
++
++    ASSET_REALVIEW_MPCORE = Asset(
++        ('https://archive.openwrt.org/chaos_calmer/15.05.1/realview/generic/'
++         'openwrt-15.05.1-realview-vmlinux-initramfs.elf'),
++        'd3a01037f33e7512d46d50975588d5c3a0e0cbf25f37afab44775c2a2be523e6')
++
++    def test_realview_ep_mpcore(self):
++        self.require_netdev('user')
++        self.set_machine('realview-eb-mpcore')
++        kernel_path = self.ASSET_REALVIEW_MPCORE.fetch()
++        self.vm.set_console()
++        kernel_param = 'console=ttyAMA0 mem=128M quiet'
++        self.vm.add_args('-kernel', kernel_path,
++                         '-append', kernel_param)
++        self.vm.launch()
++        self.wait_for_console_pattern('Please press Enter to activate')
++        prompt = ':/#'
++        exec_command_and_wait_for_pattern(self, '', prompt)
++        exec_command_and_wait_for_pattern(self, 'dmesg', kernel_param)
++        self.wait_for_console_pattern(prompt)
++        exec_command_and_wait_for_pattern(self,
++                ('while ! dmesg | grep "br-lan: port 1(eth0) entered" ;'
++                 ' do sleep 1 ; done'),
++                'entered forwarding state')
++        self.wait_for_console_pattern(prompt)
++        exec_command_and_wait_for_pattern(self,
++                'while ! ifconfig | grep "10.0.2.15" ; do sleep 1 ; done',
++                'addr:10.0.2.15')
++        self.wait_for_console_pattern(prompt)
++        exec_command_and_wait_for_pattern(self, 'ping -c 1 10.0.2.2',
++                                          '1 packets received, 0% packet loss')
++
++
++if __name__ == '__main__':
++    LinuxKernelTest.main()
+-- 
+2.49.0
 

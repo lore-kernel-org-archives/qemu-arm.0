@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.19])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ada5dd043a9sm930549066b.89.2025.06.03.04.02.06
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-60566c2b301sm7537548a12.15.2025.06.03.04.02.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Jun 2025 04:02:08 -0700 (PDT)
+        Tue, 03 Jun 2025 04:02:13 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id A27CD5F9E1;
-	Tue, 03 Jun 2025 12:02:05 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 20A075F9EC;
+	Tue, 03 Jun 2025 12:02:06 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
@@ -29,42 +29,50 @@ Cc: Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>
-Subject: [PATCH v4 08/17] MAINTAINERS: add Akihiko and Dmitry as reviewers
-Date: Tue,  3 Jun 2025 12:01:55 +0100
-Message-ID: <20250603110204.838117-9-alex.bennee@linaro.org>
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v4 13/17] include/exec: fix assert in size_memop
+Date: Tue,  3 Jun 2025 12:02:00 +0100
+Message-ID: <20250603110204.838117-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250603110204.838117-1-alex.bennee@linaro.org>
 References: <20250603110204.838117-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 0IjxKCwyDmNz
+X-TUID: 0E+pbcU36hJq
 
-Thanks for volunteering to help.
+We can handle larger sized memops now, expand the range of the assert.
 
-Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Fixes: 4b473e0c60 (tcg: Expand MO_SIZE to 3 bits)
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
----
- MAINTAINERS | 2 ++
- 1 file changed, 2 insertions(+)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 7718199979..79b1d5c0b3 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2669,6 +2669,8 @@ F: include/hw/display/ramfb.h
- 
- virtio-gpu
- M: Alex Bennée <alex.bennee@linaro.org>
-+R: Akihiko Odaki <akihiko.odaki@daynix.com>
-+R: Dmitry Osipenko <dmitry.osipenko@collabora.com>
- S: Odd Fixes
- F: hw/display/virtio-gpu*
- F: hw/display/virtio-vga.*
+---
+v2
+  - instead of 128 use 1 << MO_SIZE for future proofing
+v3
+  - fix comment, 1 << MO_SIZE goes to 1024
+v4
+  - assert is_power_of_2()
+---
+ include/exec/memop.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/exec/memop.h b/include/exec/memop.h
+index 407a47d82c..cf7da3362e 100644
+--- a/include/exec/memop.h
++++ b/include/exec/memop.h
+@@ -162,8 +162,8 @@ static inline unsigned memop_size(MemOp op)
+ static inline MemOp size_memop(unsigned size)
+ {
+ #ifdef CONFIG_DEBUG_TCG
+-    /* Power of 2 up to 8.  */
+-    assert((size & (size - 1)) == 0 && size >= 1 && size <= 8);
++    /* Power of 2 up to 1024 */
++    assert(is_power_of_2(size) && size >= 1 && size <= (1 << MO_SIZE));
+ #endif
+     return (MemOp)ctz32(size);
+ }
 -- 
 2.47.2

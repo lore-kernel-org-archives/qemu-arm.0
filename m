@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.19])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-adde6f4b548sm81837766b.67.2025.06.03.04.02.07
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ada5e2bf051sm929136666b.122.2025.06.03.04.02.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 03 Jun 2025 04:02:08 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id EB69C5F9EA;
+	by draig.lan (Postfix) with ESMTP id D41875F9E7;
 	Tue, 03 Jun 2025 12:02:05 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -30,54 +30,87 @@ Cc: Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Dongwon Kim <dongwon.kim@intel.com>,
-	Vivek Kasireddy <vivek.kasireddy@intel.com>
-Subject: [PATCH v4 11/17] ui/gtk-gl-area: Remove extra draw call in refresh
-Date: Tue,  3 Jun 2025 12:01:58 +0100
-Message-ID: <20250603110204.838117-12-alex.bennee@linaro.org>
+	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+	qemu-stable@nongnu.org
+Subject: [PATCH v4 10/17] virtio-gpu: refactor async blob unmapping
+Date: Tue,  3 Jun 2025 12:01:57 +0100
+Message-ID: <20250603110204.838117-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250603110204.838117-1-alex.bennee@linaro.org>
 References: <20250603110204.838117-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: oCR91r8NTRqI
+X-TUID: dG8zacdXSFNT
 
-From: Dongwon Kim <dongwon.kim@intel.com>
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
-This partially reverts commit 77bf310084dad38b3a2badf01766c659056f1cf2
-which causes some guest display corruption when gtk-gl-area
-is used for GTK rendering (e.g. Wayland Compositor) possibly due to
-simulataneous accesses on the guest frame buffer by host compositor
-and the guest.
+Change the 3 part async cleanup of a blob memory mapping to check if the
+unmapping has finished already after deleting the subregion; this
+condition allows us to skip suspending the command and responding to the
+guest right away.
 
-Fixes: 77bf310084 ("ui/gtk: Draw guest frame at refresh cycle")
-Reported-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Reported-by: Alex Bennée <alex.bennee@linaro.org>
-Tested-by: Alex Bennée <alex.bennee@linaro.org>
-Tested-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Cc: Marc-André Lureau <marcandre.lureau@redhat.com>
-Cc: Vivek Kasireddy <vivek.kasireddy@intel.com>
-Signed-off-by: Dongwon Kim <dongwon.kim@intel.com>
-Message-Id: <20250214170813.2234754-1-dongwon.kim@intel.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20250410122643.1747913-4-manos.pitsidianakis@linaro.org>
+Cc: qemu-stable@nongnu.org
 ---
- ui/gtk-gl-area.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/display/virtio-gpu-virgl.c | 35 +++++++++++++++++++++++++----------
+ 1 file changed, 25 insertions(+), 10 deletions(-)
 
-diff --git a/ui/gtk-gl-area.c b/ui/gtk-gl-area.c
-index 8151cc413c..429ba914e0 100644
---- a/ui/gtk-gl-area.c
-+++ b/ui/gtk-gl-area.c
-@@ -168,7 +168,6 @@ void gd_gl_area_refresh(DisplayChangeListener *dcl)
+diff --git a/hw/display/virtio-gpu-virgl.c b/hw/display/virtio-gpu-virgl.c
+index 71a7500de9..b4aa8abb96 100644
+--- a/hw/display/virtio-gpu-virgl.c
++++ b/hw/display/virtio-gpu-virgl.c
+@@ -155,7 +155,32 @@ virtio_gpu_virgl_unmap_resource_blob(VirtIOGPU *g,
+      *    asynchronously by virtio_gpu_virgl_hostmem_region_free().
+      * 3. Finish the unmapping with final virgl_renderer_resource_unmap().
+      */
++
++    /* 1. Check if we should start unmapping now */
++    if (!vmr->finish_unmapping) {
++        /* begin async unmapping. render will be unblocked once MR is freed */
++        b->renderer_blocked++;
++
++        memory_region_set_enabled(mr, false);
++        memory_region_del_subregion(&b->hostmem, mr);
++        object_unparent(OBJECT(mr));
++        /*
++         * The unmapping might have already finished at this point if no one
++         * else held a reference to the MR; if yes, we can skip suspending the
++         * command and unmap the resource right away.
++         */
++        *cmd_suspended = !vmr->finish_unmapping;
++    }
++
++    /*
++     * 2. if virtio_gpu_virgl_hostmem_region_free hasn't been executed yet, we
++     * have marked the command to be re-processed later by setting
++     * cmd_suspended to true. The freeing callback will be called from RCU
++     * context later.
++     */
++
+     if (vmr->finish_unmapping) {
++        /* 3. MemoryRegion has been freed, so finish unmapping */
+         res->mr = NULL;
+         g_free(vmr);
  
-     if (vc->gfx.guest_fb.dmabuf &&
-         qemu_dmabuf_get_draw_submitted(vc->gfx.guest_fb.dmabuf)) {
--        gd_gl_area_draw(vc);
-         return;
+@@ -166,16 +191,6 @@ virtio_gpu_virgl_unmap_resource_blob(VirtIOGPU *g,
+                           __func__, strerror(-ret));
+             return ret;
+         }
+-    } else {
+-        *cmd_suspended = true;
+-
+-        /* render will be unblocked once MR is freed */
+-        b->renderer_blocked++;
+-
+-        /* memory region owns self res->mr object and frees it by itself */
+-        memory_region_set_enabled(mr, false);
+-        memory_region_del_subregion(&b->hostmem, mr);
+-        object_unparent(OBJECT(mr));
      }
  
+     return 0;
 -- 
 2.47.2

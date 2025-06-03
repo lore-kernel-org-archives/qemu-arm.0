@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.19])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-605671437e0sm7347925a12.52.2025.06.03.04.02.05
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ada5d7ff0dfsm946656466b.13.2025.06.03.04.02.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Jun 2025 04:02:05 -0700 (PDT)
+        Tue, 03 Jun 2025 04:02:08 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id D5B715F839;
-	Tue, 03 Jun 2025 12:02:04 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id BCFD75F9E3;
+	Tue, 03 Jun 2025 12:02:05 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
@@ -29,92 +29,132 @@ Cc: Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>
-Subject: [PATCH v4 00/17] Maintainer updates for May (testing, plugins, virtio-gpu) - pre-PR
-Date: Tue,  3 Jun 2025 12:01:47 +0100
-Message-ID: <20250603110204.838117-1-alex.bennee@linaro.org>
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+	qemu-stable@nongnu.org
+Subject: [PATCH v4 09/17] hw/display: re-arrange memory region tracking
+Date: Tue,  3 Jun 2025 12:01:56 +0100
+Message-ID: <20250603110204.838117-10-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250603110204.838117-1-alex.bennee@linaro.org>
+References: <20250603110204.838117-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: jlQK9W2dX/pq
+X-TUID: 8uB25spH9tSD
 
-Now the tree is open here is the state of my current maintainer
-queues. I've tagged the virtio-gpu changes as Cc: qemu-stable but
-given how close to release we were it didn't seem worth rushing them
-in for 10.0. I've included a MAINTAINERS patch just to make sure I can
-route any more fixes until a more full time maintainer volunteers.
+QOM objects can be embedded in other QOM objects and managed as part
+of their lifetime but this isn't the case for
+virtio_gpu_virgl_hostmem_region. However before we can split it out we
+need some other way of associating the wider data structure with the
+memory region.
 
-As there is still controversy about a theoretical UAF in virtio-gpu
-I've dropped that patch for now. There were a number of other review
-comments addressed so I'm re-sending the pre-PR so I can roll the PR
-later this week.
+Fortunately MemoryRegion has an opaque pointer. This is passed down to
+MemoryRegionOps for device type regions but is unused in the
+memory_region_init_ram_ptr() case. Use the opaque to carry the
+reference and allow the final MemoryRegion object to be reaped when
+its reference count is cleared.
 
-For v4
-  - more review comments
-  - made boot.S error handling more robust
-  - dropped virtio-gpu hang fix for TCG
-  - dropped test-plugins fix for Makefile
+Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20250410122643.1747913-2-manos.pitsidianakis@linaro.org>
+Cc: qemu-stable@nongnu.org
+---
+ include/system/memory.h       |  1 +
+ hw/display/virtio-gpu-virgl.c | 23 ++++++++---------------
+ 2 files changed, 9 insertions(+), 15 deletions(-)
 
-For v3
-  - addressed review comments
-  - included gdb/next patches
-
-For v2
-  - addressed various comments (see bellow --- in commits)
-  - added Akihiko/Dmitry as virtio-gpu reviewers
-
-The following still need review:
-
-  tests/tcg: make aarch64 boot.S handle different starting modes
-
-Alex.
-
-Alex Bennée (11):
-  tests/docker: expose $HOME/.cache/qemu as docker volume
-  gitlab: disable debug info on CI builds
-  tests/tcg: make aarch64 boot.S handle different starting modes
-  contrib/plugins: add a scaling factor to the ips arg
-  contrib/plugins: allow setting of instructions per quantum
-  MAINTAINERS: add myself to virtio-gpu for Odd Fixes
-  MAINTAINERS: add Akihiko and Dmitry as reviewers
-  hw/display: re-arrange memory region tracking
-  include/exec: fix assert in size_memop
-  include/gdbstub: fix include guard in commands.h
-  gdbstub: assert earlier in handle_read_all_regs
-
-Dominik 'Disconnect3d' Czarnota (1):
-  gdbstub: Implement qGDBServerVersion packet
-
-Dongwon Kim (1):
-  ui/gtk-gl-area: Remove extra draw call in refresh
-
-Manos Pitsidianakis (2):
-  virtio-gpu: refactor async blob unmapping
-  gdbstub: update aarch64-core.xml
-
-Nabih Estefan (1):
-  tests/qtest: Avoid unaligned access in IGB test
-
-Yiwei Zhang (1):
-  virtio-gpu: support context init multiple timeline
-
- MAINTAINERS                               |   5 +-
- docs/about/emulation.rst                  |   4 +
- include/exec/memop.h                      |   4 +-
- include/gdbstub/commands.h                |   2 +-
- include/system/memory.h                   |   1 +
- contrib/plugins/ips.c                     |  49 +++++-
- gdbstub/gdbstub.c                         |  19 ++-
- hw/display/virtio-gpu-virgl.c             | 102 +++++++++----
- tests/qtest/libqos/igb.c                  |   4 +-
- ui/gtk-gl-area.c                          |   1 -
- .gitlab-ci.d/buildtest-template.yml       |   1 +
- gdb-xml/aarch64-core.xml                  |  52 ++++++-
- tests/docker/Makefile.include             |  10 +-
- tests/tcg/aarch64/Makefile.softmmu-target |   3 +-
- tests/tcg/aarch64/system/boot.S           | 172 +++++++++++++++++++++-
- 15 files changed, 382 insertions(+), 47 deletions(-)
-
+diff --git a/include/system/memory.h b/include/system/memory.h
+index fc35a0dcad..90715ff44a 100644
+--- a/include/system/memory.h
++++ b/include/system/memory.h
+@@ -784,6 +784,7 @@ struct MemoryRegion {
+     DeviceState *dev;
+ 
+     const MemoryRegionOps *ops;
++    /* opaque data, used by backends like @ops */
+     void *opaque;
+     MemoryRegion *container;
+     int mapped_via_alias; /* Mapped via an alias, container might be NULL */
+diff --git a/hw/display/virtio-gpu-virgl.c b/hw/display/virtio-gpu-virgl.c
+index 145a0b3879..71a7500de9 100644
+--- a/hw/display/virtio-gpu-virgl.c
++++ b/hw/display/virtio-gpu-virgl.c
+@@ -52,17 +52,11 @@ virgl_get_egl_display(G_GNUC_UNUSED void *cookie)
+ 
+ #if VIRGL_VERSION_MAJOR >= 1
+ struct virtio_gpu_virgl_hostmem_region {
+-    MemoryRegion mr;
++    MemoryRegion *mr;
+     struct VirtIOGPU *g;
+     bool finish_unmapping;
+ };
+ 
+-static struct virtio_gpu_virgl_hostmem_region *
+-to_hostmem_region(MemoryRegion *mr)
+-{
+-    return container_of(mr, struct virtio_gpu_virgl_hostmem_region, mr);
+-}
+-
+ static void virtio_gpu_virgl_resume_cmdq_bh(void *opaque)
+ {
+     VirtIOGPU *g = opaque;
+@@ -73,14 +67,12 @@ static void virtio_gpu_virgl_resume_cmdq_bh(void *opaque)
+ static void virtio_gpu_virgl_hostmem_region_free(void *obj)
+ {
+     MemoryRegion *mr = MEMORY_REGION(obj);
+-    struct virtio_gpu_virgl_hostmem_region *vmr;
++    struct virtio_gpu_virgl_hostmem_region *vmr = mr->opaque;
+     VirtIOGPUBase *b;
+     VirtIOGPUGL *gl;
+ 
+-    vmr = to_hostmem_region(mr);
+-    vmr->finish_unmapping = true;
+-
+     b = VIRTIO_GPU_BASE(vmr->g);
++    vmr->finish_unmapping = true;
+     b->renderer_blocked--;
+ 
+     /*
+@@ -118,8 +110,8 @@ virtio_gpu_virgl_map_resource_blob(VirtIOGPU *g,
+ 
+     vmr = g_new0(struct virtio_gpu_virgl_hostmem_region, 1);
+     vmr->g = g;
++    mr = g_new0(MemoryRegion, 1);
+ 
+-    mr = &vmr->mr;
+     memory_region_init_ram_ptr(mr, OBJECT(mr), "blob", size, data);
+     memory_region_add_subregion(&b->hostmem, offset, mr);
+     memory_region_set_enabled(mr, true);
+@@ -131,7 +123,9 @@ virtio_gpu_virgl_map_resource_blob(VirtIOGPU *g,
+      * command processing until MR is fully unreferenced and freed.
+      */
+     OBJECT(mr)->free = virtio_gpu_virgl_hostmem_region_free;
++    mr->opaque = vmr;
+ 
++    vmr->mr = mr;
+     res->mr = mr;
+ 
+     return 0;
+@@ -142,16 +136,15 @@ virtio_gpu_virgl_unmap_resource_blob(VirtIOGPU *g,
+                                      struct virtio_gpu_virgl_resource *res,
+                                      bool *cmd_suspended)
+ {
+-    struct virtio_gpu_virgl_hostmem_region *vmr;
+     VirtIOGPUBase *b = VIRTIO_GPU_BASE(g);
+     MemoryRegion *mr = res->mr;
++    struct virtio_gpu_virgl_hostmem_region *vmr;
+     int ret;
+ 
+     if (!mr) {
+         return 0;
+     }
+-
+-    vmr = to_hostmem_region(res->mr);
++    vmr = mr->opaque;
+ 
+     /*
+      * Perform async unmapping in 3 steps:
 -- 
 2.47.2

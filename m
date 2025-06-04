@@ -1,181 +1,202 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp4039478njh;
-        Wed, 4 Jun 2025 05:04:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUiTWFCPNBZlbI+SGhCDIAAUqEYWLIesidCufV4YORKuTqJ/gFGqWE4zTBVpx5FGCGZ6Jwfejato5CH1A==@linaro.org
-X-Google-Smtp-Source: AGHT+IHflmK+jOL4cnsGfJ21s4zT1lpKN2f2TzNjjgz68tk5Sy2mikrhoHkAGHEd/PoOiOH4VOLy
-X-Received: by 2002:a05:6000:2512:b0:3a4:d274:1d9b with SMTP id ffacd0b85a97d-3a51d92f84amr1957213f8f.25.1749038679121;
-        Wed, 04 Jun 2025 05:04:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749038679; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp4059015njh;
+        Wed, 4 Jun 2025 05:36:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU+fHQ9sS+G4KM450Y9yDly3OxoBr5dgb8pO24daAdwzDjus9oUbpuhLi5OjQrwPdOKjEB1gD98IhAneA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGByPLYvB3IZLd1oK8IE2JuoSLm/BbEC/vOEVdxViyASy16TpmBo/LvPmUMkaJurllPKQH3
+X-Received: by 2002:a05:620a:4694:b0:7c5:431f:f5e6 with SMTP id af79cd13be357-7d2198bb175mr398383785a.33.1749040567757;
+        Wed, 04 Jun 2025 05:36:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749040567; cv=none;
         d=google.com; s=arc-20240605;
-        b=EeZmN4/3lwYJkXDq8jW7sy58eLLcJw5q/rrw/r4gv+gQdnTV9+2nZ6nd2Mi8SqbHFN
-         eTcEnFdp50xhsrT+ZLJ0WAKfZULadfHHCm1QvqAdhgF3vVg5FZ5rdKAVn58zrMjTaO1s
-         9Y2bjJY39RaeJPqcj/9TthejnHTD3kIc8n9Zwt7u49ZyDb75EX3ILZ6bYfXqWJiZi5it
-         u8STuauNOIP660YkzgeAYoHzssL9wwvrssqMQAUmPqgfHUcUZeIDynSheHWVfKUo7uVE
-         QtvpagsZ4DcaVR21c6sqsyD3ollaeMJo9bCGTZx23kp2OthxOpZGrsIVbhznRFjqmo/J
-         zXqQ==
+        b=ebhcUh7Sv+8n6SHT9plEUTMQ+F1D/gAD2mD+TR/zl5/VTceMgcnRcMRWXxCapQ7qE+
+         nGkhCqYB7/BVxrTIj4VM6vC8TUOAZstKsUjM8Lc5U/OGxXjbRxqQXrcW1rENo/NnhZyt
+         w1ZyWdAueoh3HjBHH4q3WZ/m0juC6lmqYczdoH3gfIW684zZnT3Q14jUDe4O5E0grl1e
+         XwDdKuaXasV4iBdDgHvR7wfz9X41LQO3yel1qRDFgkANj/4B9wrg9rp9BEKpnrsvxY7s
+         EYkdTDYYe/QyP0FFHZLJaAHyju/geJ/ArIPUX2QQdVyNi4T9g2zGsIviKI4Xne1X8mSr
+         M+zQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=22Ga2wa8izSzOBx82UAOuHEAnm1LjZL7MtSh5NkUbZ4=;
-        fh=xdImq04xZp/36RmKL4R8yGPpdftvYCnXXs64rgOpils=;
-        b=fwV4fV7N4MA/sLgqF2PfuqhKpP3XrPNCdLmMeJVUUItTnB8Y6SaRfH9cAX+V/zbygC
-         fWuoqzz+dK6l2zJtxKqCjPIHbIpNbsv2ei05B/TlusGDMP/TztKdbe3/NC20//pF3Aa+
-         3R8zBm07IY0MPImaxnxmS9kbcWChDxGrPcZH1WR77a+T9O5s+QixKDI62kZfSUtm2fR8
-         Enj8UflAtndOIWLkh1QsfRxnl1zNRdnNX4CIrDKY2WtSZozq2fQl9NRVhHXI+r+Ps0D7
-         1NvsxVXUgtlu1GlUOieDVCxg/veesVq5DCKaiiPkjOlbLjUb5Fn3V+Y6G9V4FEj3JZxr
-         jK6g==;
+        h=mime-version:message-id:date:user-agent:references:organization
+         :in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=V7C5kjSSLR6kXHw8Neep/dRsgyz0D4mmfyIVXbIvnZE=;
+        fh=uUgmBcpPiEzoB3irIM2kUq+agorKl8/NGcKuh2OB9CY=;
+        b=hNeiFDNTARrEKqqaWJcn0wWM7RTidEM0ylNkQETgfaLPsbpHdLFOfAr9fTh/E+IvmX
+         V5gjaVNM5IZYDD/87EWCTOb8xidqVFDZ7FyATb4UNoQ/xkisuUXrTWxMUQKmBdfeIB+b
+         TU2Rg/QkcuuKS3uUN37BXpqtF+J6cHmuyp4D4Y73vNU6/o3wVva/Hgvp9mmpBCrbBtlj
+         DdcdmUXpoTFKGOcQ7wvU5UTt4k5AykBA1DcE31zc+3u8BEywQKMmrXO8iFnuJ91ZP4gQ
+         O1YhFcDp2HgM64zHYsgoAsAWk22iSxHf2m4iz+RcEAT0FXVKmLI7Y2Tppgg+MJylIcUs
+         dd+Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-450d63fa3f1si96270805e9.114.2025.06.04.05.04.38
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XJqrXnPd;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fac6e8d54esi154871346d6.344.2025.06.04.05.36.07
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Jun 2025 05:04:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Jun 2025 05:36:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uMmqZ-0002Pp-HC; Wed, 04 Jun 2025 08:03:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=WXta=YT=kaod.org=clg@ozlabs.org>)
- id 1uMmqU-0002Ob-6Y; Wed, 04 Jun 2025 08:03:50 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=WXta=YT=kaod.org=clg@ozlabs.org>)
- id 1uMmqQ-0001nF-LZ; Wed, 04 Jun 2025 08:03:49 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bC5p03FVCz4x8S;
- Wed,  4 Jun 2025 22:03:36 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bC5nw167mz4wcg;
- Wed,  4 Jun 2025 22:03:31 +1000 (AEST)
-Message-ID: <59acd382-726b-4ef5-b5da-0c1600098e07@kaod.org>
-Date: Wed, 4 Jun 2025 14:03:21 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XJqrXnPd;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1749040567;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=V7C5kjSSLR6kXHw8Neep/dRsgyz0D4mmfyIVXbIvnZE=;
+	b=XJqrXnPdsz0/jFOufYNtkFgLDr3u/hM1nKvE3Tfefiiw23NFmgk4qwejqYorDup3JqAtTN
+	OpfNEjaMrZb9wZfluqQCx9kW8iZmzT0iknVxlbmDvPaiPnjKrb2WWM/TxxpS/OkJHFKHn3
+	ecB0Sbf3/kBbai91efiG8VWYA+YuniI=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-116-77akjX-INpioeYjyf73qAw-1; Wed,
+ 04 Jun 2025 08:36:04 -0400
+X-MC-Unique: 77akjX-INpioeYjyf73qAw-1
+X-Mimecast-MFC-AGG-ID: 77akjX-INpioeYjyf73qAw_1749040562
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id AB5E01801A22;
+	Wed,  4 Jun 2025 12:36:01 +0000 (UTC)
+Received: from localhost (dhcp-192-216.str.redhat.com [10.33.192.216])
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 5684719560AD;
+	Wed,  4 Jun 2025 12:35:59 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "alex.bennee@linaro.org" <alex.bennee@linaro.org>, "maz@kernel.org"
+ <maz@kernel.org>, "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "sebott@redhat.com" <sebott@redhat.com>, "armbru@redhat.com"
+ <armbru@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
+ "abologna@redhat.com" <abologna@redhat.com>, "jdenemar@redhat.com"
+ <jdenemar@redhat.com>
+Cc: "agraf@csgraf.de" <agraf@csgraf.de>, "shahuang@redhat.com"
+ <shahuang@redhat.com>, "mark.rutland@arm.com" <mark.rutland@arm.com>,
+ "philmd@linaro.org" <philmd@linaro.org>, "pbonzini@redhat.com"
+ <pbonzini@redhat.com>
+Subject: RE: [PATCH v3 00/10] kvm/arm: Introduce a customizable aarch64 KVM
+ host model
+In-Reply-To: <f11e5fbddf634bbc88ba4c07bafe3f26@huawei.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Michael O'Neill, Amy
+ Ross"
+References: <20250414163849.321857-1-cohuck@redhat.com>
+ <de7db6bc22ad4f0a8ac1fac718c810a1@huawei.com> <87bjrfbkyz.fsf@redhat.com>
+ <878qmibc5a.fsf@redhat.com> <87tt4wamcp.fsf@redhat.com>
+ <f11e5fbddf634bbc88ba4c07bafe3f26@huawei.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Wed, 04 Jun 2025 14:35:57 +0200
+Message-ID: <87o6v3adle.fsf@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/5] hw/gpio/aspeed: Fix definition of AspeedGPIOClass
-To: Zhenzhong Duan <zhenzhong.duan@intel.com>, qemu-devel@nongnu.org
-Cc: chao.p.peng@intel.com, david@redhat.com,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-References: <20250604115400.98905-1-zhenzhong.duan@intel.com>
- <20250604115400.98905-4-zhenzhong.duan@intel.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250604115400.98905-4-zhenzhong.duan@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=WXta=YT=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4rLCgoEvQ1l4
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+X-TUID: 20OGdbozFivC
 
-On 6/4/25 13:53, Zhenzhong Duan wrote:
-> AspeedGPIOClass's parent is SysBusDeviceClass rather than SysBusDevice.
-> 
-> Fixes: 4b7f956862dc ("hw/gpio: Add basic Aspeed GPIO model for AST2400 and AST2500")
-> Suggested-by: David Hildenbrand <david@redhat.com>
-> Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+On Wed, Jun 04 2025, Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
 
-omg. This is super old ... version 4.2.
+>> -----Original Message-----
+>> From: Cornelia Huck <cohuck@redhat.com>
+>> Sent: Tuesday, June 3, 2025 4:15 PM
+>> To: Shameerali Kolothum Thodi
+>> <shameerali.kolothum.thodi@huawei.com>; eric.auger.pro@gmail.com;
+>> eric.auger@redhat.com; qemu-devel@nongnu.org; qemu-arm@nongnu.org;
+>> kvmarm@lists.linux.dev; peter.maydell@linaro.org;
+>> richard.henderson@linaro.org; alex.bennee@linaro.org; maz@kernel.org;
+>> oliver.upton@linux.dev; sebott@redhat.com; armbru@redhat.com;
+>> berrange@redhat.com; abologna@redhat.com; jdenemar@redhat.com
+>> Cc: agraf@csgraf.de; shahuang@redhat.com; mark.rutland@arm.com;
+>> philmd@linaro.org; pbonzini@redhat.com
+>> Subject: RE: [PATCH v3 00/10] kvm/arm: Introduce a customizable aarch64
+>> KVM host model
+>> 
+>> On Tue, May 27 2025, Cornelia Huck <cohuck@redhat.com> wrote:
+>> > The conversion functions are not at fault here, but we're missing
+>> > registers. If we have MIDR and friends writable, they show up in the
+>> > masks returned by the kernel, but they are not present in the kernel's
+>> > sysreg file where we generate our definitions from, and
+>> > kvm_idx_to_idregs_idx() asserts instead of returning an error, which
+>> > is kind of suboptimal...
+>> >
+>> > So I see two possible ways to fix this:
+>> > - add MIDR and friends to the kernel's sysreg file
+>> > - add MIDR and friends in QEMU's cpu-sysregs.h.inc file, and only append
+>> >   generated definitions there
+>> >
+>> > First option means one more round trip, second options has more
+>> > potential for messing things up if we keep stuff local to QEMU.
+>> 
+>> With the patch below, things work for me with a 6.15+ kernel. It's a bit
+>
+> Yes works for me too now. Thanks.
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Thanks for checking.
 
-Thanks,
+>
+>> messy, though, and raises questions (how do we want to handle those regs
+>> across accelerators, for example, or how we can make sure that the code is
+>> more robust when registers are added.)
+>> 
+>> My biggest question, however, is how this interacts with the framework to
+>> provide lists of MIDR/REVIDR/AIDR for errata management. The hack below
+>> adds properties to configure those regs, I guess we'd want to suppress
+>> adding the props in order to avoid conflicts.
+>
+> Not sure how this impacts the errata management though. My initial take on
+> this was, user will provide a list of target CPU ids through command line and
+> that will be used to set the target CPUs for errata management(if kernel
+> supports it).
+>
+> Eg:
+> -machine virt,.., x-target-impl-cpus=0xMIDR1:0xREVIDR1-0xMIDR2:REVIDR2
 
-C.
+I'm a bit confused by the range, I'd rather expect a list of tuples,
+e.g. <midr>:<revidr>,<midr>:<revidr>, ...
 
+>
+> And these will be stored in,
+>
+> #define MAX_TARGET_IMPL_CPUS    4
+> typedef struct TargetImplCpu {
+>      uint32_t midr;
+>      uint32_t revidr;
 
+Isn't revidr a 64 bit value?
 
-> ---
->   include/hw/gpio/aspeed_gpio.h | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
-> index e1e6c54333..e6b2fe71b5 100644
-> --- a/include/hw/gpio/aspeed_gpio.h
-> +++ b/include/hw/gpio/aspeed_gpio.h
-> @@ -70,7 +70,7 @@ typedef struct AspeedGPIOReg {
->   } AspeedGPIOReg;
->   
->   struct AspeedGPIOClass {
-> -    SysBusDevice parent_obj;
-> +    SysBusDeviceClass parent_class;
->       const GPIOSetProperties *props;
->       uint32_t nr_gpio_pins;
->       uint32_t nr_gpio_sets;
+> } TargetImplCpu;
+>
+>
+> Please see the initial (a hack for testing kernel) implementation here,
+> https://github.com/hisilicon/qemu/commit/a393c1180274c73d34f32eaab66764a874a9ad31
+>
+> Please let me know if there is a better/preferred way of obtaining this
+> target CPU list from user.
 
+I'm mostly wondering about conflicting values between "we make MIDR et
+al. writable, so we have a value different from what the host sees" and
+"we provide a list of possible values to the guest, so it can prepare
+for running on those hosts". Do we want to be able to provide a common
+set to the guest, and then enlighten it with the list of systems that it
+actually *might* run on? A benefit would be that it could always observe
+the same (configured) register entries, regardless where it runs (needs
+more plumbing in QEMU, I think.) We'd also need to be clear about what
+we'd require (i.e. do we expect that both the real host values and the
+configured values are present in the list?)
+
+Not sure if the machine level is the right place to configure this, or
+if it needs to go to the cpu options. While it is a machine-wide
+configuration, it also means that we configure some cpu features in two
+different places (even if they serve a different purpose.)
+
+We could also choose to not expose properties for MIDR and friends at
+all, even if they are writable.

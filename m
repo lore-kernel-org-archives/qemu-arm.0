@@ -1,222 +1,150 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp4002215njh;
-        Wed, 4 Jun 2025 03:58:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWcwl1odp2kSKncbXm1DcBkNAwLek2Z12u0JSq4xDWAjhj/arNbhpF1+5sThWAd3/KrrWF3Ew6QgNMA3g==@linaro.org
-X-Google-Smtp-Source: AGHT+IHVWHXUdAMxgvqseytrz+86cnLHgKMkUo5XU3aupnGBFLWMCxbFatxkiyDs6EwrLgXnhmC6
-X-Received: by 2002:a05:600c:c83:b0:450:c9e3:995c with SMTP id 5b1f17b1804b1-451f0aa1493mr21996205e9.12.1749034737088;
-        Wed, 04 Jun 2025 03:58:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749034737; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp4034910njh;
+        Wed, 4 Jun 2025 04:58:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXUwnpPTBqbLqmYuNhFoQE49CTmMHk1uBqOpVApl/kL5y4zTaY5qJNx+YcS/GwSWax9EItQ/Mb355+1Ag==@linaro.org
+X-Google-Smtp-Source: AGHT+IH1b2SSpisDknBxtPNqq2HBmE+XkSCUDVepky50q6qOdL5arbhdUoFgP3YHk2Ing1IqXck3
+X-Received: by 2002:a05:622a:5a93:b0:4a4:2d6d:80a0 with SMTP id d75a77b69052e-4a59ae18427mr110426511cf.10.1749038337290;
+        Wed, 04 Jun 2025 04:58:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749038337; cv=none;
         d=google.com; s=arc-20240605;
-        b=iEzJArFf0Bbit5tbPk18ebzLeQ/qhg5upCHZcqXNKcTl5tL+dJt6P+INa81M6dA/Dx
-         NRcHpahxeT1tkPNr8B0y/nveUZGj024FDGJdQ1zAJsQPtzOJp3mTRnIIriEsHJa6ZNuJ
-         SHyyzTWNW1S+7h6xK+x48SNvoB2CU+S92XQp33W+o1/S7x0TNh7K2kS74zMQowf2Be1+
-         3r5BTnoABe8cJXpmWR7CXmDNAid09fEKkFC0Vqdeg8WL4dunzuHaYRQydWMaLSNKac4t
-         B9qKegVC2AH1RkbME31d6/YtRBsYNrdj95WGCLXHaYmguGWv/r4zse0hi7ZIuxZzBvRv
-         NvsQ==
+        b=kU3nN97N/DYwZmTx2yE4d4g5zg7P8J3ZG4KtDBDz2XzRMT5C5sKNKoQ2Bzchvacj8g
+         gDiCeq6q9NEEAND3JNuCa4qatpG3LgWDQHqEt9Fewk6RfoW4f9bX8eFPsYpPc9Z3XUl1
+         +oKYCSffBhafoe8yB3jrFKVOX7dXPdhpkSjvQ3bPjtpbRbNmKe+Vi1x6r+82Ej63eG9x
+         yakpts6x8OutdyQCYtZaS8oFpKdNsfYOYKTEODHXg/H/mEgwrespMR/N10DV1zBmmBaz
+         s2ePB2HaRROGySu9rNVTIj/0AHPoO/omLxE5dr7y4PkxuIs5hcJ01daodbK/uulsh5++
+         59+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=qx3GPJvieZNYPVCLWcCWY1Zr7/FVYA82B/e08TkWTa4=;
-        fh=rx6U8xDRIQCLCYSEaMUM6JxzflCE8tIJYYv5Xp9MH70=;
-        b=DKk3Qvl3NQ4pFL0iIpc1P44XQ22+ZoSbTXXlffVKccDf8Whls0BSmiQNEawytYX5CH
-         7/OY5sdd6cKfo4XN+vnv1vBQG5tBevn2tqaXmL3oP+ZulPgI0fINDoB3a5ZOd6xHa7uO
-         3K3a2KUEXi6Oe0TUsgJE6V1SU08wZbYmETEZWrs6WqOIu5Fvj0Vk/AVeUrljN9PfnGCk
-         qdF4udu5z7N4j4FtPOjjMLwZ56ggkCgULFEcK/E4/KrRNZmrpXrJeaqMEweeRl+ZLL3a
-         OAyS5J2Yhp2D4f8+IHLA9o1HDGA0cRgw+1NMMrYeYrpgMIj36ID3UlYzSJcPKURi1KGy
-         WLhw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=XNzJRorWiGwhPlzTHnODNzD2KpueHVGPXCDSVt1VsY0=;
+        fh=n02WTADBUgImAGbr9pBdDpQy3cqJJIg+0ctmg4+ENqw=;
+        b=dIpb58rB+VWXWpXpbaamxsYzAqlTdkSRyYL8OZvw9O4nGrXUZXopVax+oZsFmM0D0w
+         dMtTEjRHB69B8iACt0XpNbn4fJlxx9GEB+sHP3ywO6EAhOMb04tTH8ThbDYyrrIb6atc
+         aGX3EsXkDcVUAtCAI96z/sTnn/kcXl6BkMJGhqCY0yUoK7l210xDlh+RPrRkkJXq4ava
+         eeWtW5geBp9peOCDEqItWpM9P43wJ8dCgcRbYNqR1fJ67ZrmEN/WSy3aUGkU9mFlm84D
+         ru/839K31ipQRn8ouY4tOPO1w+l22IY9xcQY1u9efgEcVzR9cnVqmiayX+XJ6gzgtq0G
+         XhnQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=shameerali.kolothum.thodi@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <shameerali.kolothum.thodi@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a4f008b496si10769801f8f.455.2025.06.04.03.58.56
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Jun 2025 03:58:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@intel.com header.s=Intel header.b="VCUMfYB/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a435a91c9esi148573531cf.599.2025.06.04.04.58.57
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 04 Jun 2025 04:58:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=shameerali.kolothum.thodi@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bC4M71BPpz6K92t;
-	Wed,  4 Jun 2025 18:58:43 +0800 (CST)
-Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
-	by mail.maildlp.com (Postfix) with ESMTPS id 3193D1402CB;
-	Wed,  4 Jun 2025 18:58:56 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 4 Jun 2025 12:58:55 +0200
-Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
- frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Wed, 4 Jun 2025 12:58:55 +0200
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Cornelia Huck <cohuck@redhat.com>, "eric.auger.pro@gmail.com"
-	<eric.auger.pro@gmail.com>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "maz@kernel.org"
-	<maz@kernel.org>, "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
-	"sebott@redhat.com" <sebott@redhat.com>, "armbru@redhat.com"
-	<armbru@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
-	"abologna@redhat.com" <abologna@redhat.com>, "jdenemar@redhat.com"
-	<jdenemar@redhat.com>
-CC: "agraf@csgraf.de" <agraf@csgraf.de>, "shahuang@redhat.com"
-	<shahuang@redhat.com>, "mark.rutland@arm.com" <mark.rutland@arm.com>,
-	"philmd@linaro.org" <philmd@linaro.org>, "pbonzini@redhat.com"
-	<pbonzini@redhat.com>
-Subject: RE: [PATCH v3 00/10] kvm/arm: Introduce a customizable aarch64 KVM
- host model
-Thread-Topic: [PATCH v3 00/10] kvm/arm: Introduce a customizable aarch64 KVM
- host model
-Thread-Index: AQHbrVvRKlWe4qTsaku+jGkyYZoxlrPgb1/QgASMGwCAAWZvgIALVkAAgAFowxA=
-Date: Wed, 4 Jun 2025 10:58:55 +0000
-Message-ID: <f11e5fbddf634bbc88ba4c07bafe3f26@huawei.com>
-References: <20250414163849.321857-1-cohuck@redhat.com>
-	<de7db6bc22ad4f0a8ac1fac718c810a1@huawei.com> <87bjrfbkyz.fsf@redhat.com>
-	<878qmibc5a.fsf@redhat.com> <87tt4wamcp.fsf@redhat.com>
-In-Reply-To: <87tt4wamcp.fsf@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.203.177.241]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@intel.com header.s=Intel header.b="VCUMfYB/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uMmkr-0005D3-Lb; Wed, 04 Jun 2025 07:58:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1uMmkq-0005Cl-N8; Wed, 04 Jun 2025 07:58:00 -0400
+Received: from mgamail.intel.com ([198.175.65.14])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1uMmko-0000nv-Pp; Wed, 04 Jun 2025 07:58:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1749038279; x=1780574279;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=IjSCOf7F/bOSAtnrMFcFxs/bciMfBh4IH76ect/nfBs=;
+ b=VCUMfYB/eZ35ySCWAXYCTqemqOhDZpDOyCRrcNYCCgMLH4WC067au2Ll
+ Z+GdznJcVNTHV6aU+L20lEe6NXYyYInrEfUWpw13oqKDIKe55aqk4Zw5u
+ B1NqIHD+mL/UyRX0otvd1H8jiSSOeS6ReznISiSNQ7zYfGhIdZdGif4nH
+ F421UWWic2RDVkskbpgtm0g4Ji0Zr6Q6LbYwik+MRoZiAvpw85+hoD9rc
+ o5vl9239vEORz9M7YPmTvkK/ZHiA0MIul8QwxiDTI6YN7yBQ9ihfhjDqA
+ O56Us9V4/6/y1AfqwFCFpobKeHtW5AxpUbM7OguIGs8xsht/HnJTALQaP g==;
+X-CSE-ConnectionGUID: iqWeSYXGQlCXBVIozUAjoA==
+X-CSE-MsgGUID: Lhwj6X2mRu6+gTRbaZJSXA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11454"; a="54915371"
+X-IronPort-AV: E=Sophos;i="6.16,209,1744095600"; d="scan'208";a="54915371"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Jun 2025 04:57:56 -0700
+X-CSE-ConnectionGUID: jfduiF5jR6S5bzOkGEIZEQ==
+X-CSE-MsgGUID: xIsgy2K3TUGO776OgypQ8g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,209,1744095600"; d="scan'208";a="150048307"
+Received: from spr-s2600bt.bj.intel.com ([10.240.192.127])
+ by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Jun 2025 04:57:53 -0700
+From: Zhenzhong Duan <zhenzhong.duan@intel.com>
+To: qemu-devel@nongnu.org
+Cc: chao.p.peng@intel.com, david@redhat.com,
+ Zhenzhong Duan <zhenzhong.duan@intel.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org (open list:ASPEED BMCs)
+Subject: [PATCH v2 3/5] hw/gpio/aspeed: Fix definition of AspeedGPIOClass
+Date: Wed,  4 Jun 2025 19:53:58 +0800
+Message-Id: <20250604115400.98905-4-zhenzhong.duan@intel.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250604115400.98905-1-zhenzhong.duan@intel.com>
+References: <20250604115400.98905-1-zhenzhong.duan@intel.com>
 MIME-Version: 1.0
-X-TUID: xIAnpwC06LrB
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=198.175.65.14;
+ envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.128,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GkyU0Kt5FAiQ
 
+AspeedGPIOClass's parent is SysBusDeviceClass rather than SysBusDevice.
 
+Fixes: 4b7f956862dc ("hw/gpio: Add basic Aspeed GPIO model for AST2400 and AST2500")
+Suggested-by: David Hildenbrand <david@redhat.com>
+Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+---
+ include/hw/gpio/aspeed_gpio.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> -----Original Message-----
-> From: Cornelia Huck <cohuck@redhat.com>
-> Sent: Tuesday, June 3, 2025 4:15 PM
-> To: Shameerali Kolothum Thodi
-> <shameerali.kolothum.thodi@huawei.com>; eric.auger.pro@gmail.com;
-> eric.auger@redhat.com; qemu-devel@nongnu.org; qemu-arm@nongnu.org;
-> kvmarm@lists.linux.dev; peter.maydell@linaro.org;
-> richard.henderson@linaro.org; alex.bennee@linaro.org; maz@kernel.org;
-> oliver.upton@linux.dev; sebott@redhat.com; armbru@redhat.com;
-> berrange@redhat.com; abologna@redhat.com; jdenemar@redhat.com
-> Cc: agraf@csgraf.de; shahuang@redhat.com; mark.rutland@arm.com;
-> philmd@linaro.org; pbonzini@redhat.com
-> Subject: RE: [PATCH v3 00/10] kvm/arm: Introduce a customizable aarch64
-> KVM host model
->=20
-> On Tue, May 27 2025, Cornelia Huck <cohuck@redhat.com> wrote:
->=20
-> > On Mon, May 26 2025, Cornelia Huck <cohuck@redhat.com> wrote:
-> >
-> >> On Fri, May 23 2025, Shameerali Kolothum Thodi
-> <shameerali.kolothum.thodi@huawei.com> wrote:
-> >>
-> >>> Hi,
-> >>>
-> >>>> -----Original Message-----
-> >>>> From: Cornelia Huck <cohuck@redhat.com>
-> >>>> Sent: Monday, April 14, 2025 5:39 PM
-> >>>> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
-> >>>> devel@nongnu.org; qemu-arm@nongnu.org; kvmarm@lists.linux.dev;
-> >>>> peter.maydell@linaro.org; richard.henderson@linaro.org;
-> >>>> alex.bennee@linaro.org; maz@kernel.org; oliver.upton@linux.dev;
-> >>>> sebott@redhat.com; Shameerali Kolothum Thodi
-> >>>> <shameerali.kolothum.thodi@huawei.com>; armbru@redhat.com;
-> >>>> berrange@redhat.com; abologna@redhat.com;
-> jdenemar@redhat.com
-> >>>> Cc: agraf@csgraf.de; shahuang@redhat.com; mark.rutland@arm.com;
-> >>>> philmd@linaro.org; pbonzini@redhat.com; Cornelia Huck
-> >>>> <cohuck@redhat.com>
-> >>>> Subject: [PATCH v3 00/10] kvm/arm: Introduce a customizable aarch64
-> >>>> KVM host model
-> >>>
-> >>> [..]
-> >>>
-> >>> )
-> >>>>
-> >>>> Code also available at
-> >>>> https://gitlab.com/cohuck/qemu/-/tree/arm-cpu-model-
-> >>>> rfcv3?ref_type=3Dheads
-> >>>
-> >>> I had a spin with the above branch, but Qemu boot fails,
-> >>>
-> >>> ERROR:../target/arm/cpu64.c:57:get_sysreg_idx: code should not be
-> >>> reached Bail out! ERROR:../target/arm/cpu64.c:57:get_sysreg_idx:
-> >>> code should not be reached
-> >>>
-> >>> From a quick debug, it looks like the below path results in an invali=
-d ID
-> idx.
-> >>>
-> >>> kvm_arm_expose_idreg_properties()
-> >>>  kvm_idx_to_idregs_idx(0)
-> >>>   get_sysreg_idx(0xc000)  --> id_register seems to start at 0xc008
-> >>>
-> >>> Haven't debugged further.
-> >>>
-> >>> I am running against a 6.15-rc1 kernel after updating the Qemu
-> >>> branch by, ./update-aarch64-sysreg-code.sh  path_to_6.15-rc1
-> >>>
-> >>> Not sure I am  missing anything. Please check and let me know.
-> >>
-> >> Thanks for trying this out; I'll try to re-create this here.
-> >> (I think I've messed up those conversion functions often enough...)
-> >
-> > The conversion functions are not at fault here, but we're missing
-> > registers. If we have MIDR and friends writable, they show up in the
-> > masks returned by the kernel, but they are not present in the kernel's
-> > sysreg file where we generate our definitions from, and
-> > kvm_idx_to_idregs_idx() asserts instead of returning an error, which
-> > is kind of suboptimal...
-> >
-> > So I see two possible ways to fix this:
-> > - add MIDR and friends to the kernel's sysreg file
-> > - add MIDR and friends in QEMU's cpu-sysregs.h.inc file, and only appen=
-d
-> >   generated definitions there
-> >
-> > First option means one more round trip, second options has more
-> > potential for messing things up if we keep stuff local to QEMU.
->=20
-> With the patch below, things work for me with a 6.15+ kernel. It's a bit
+diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
+index e1e6c54333..e6b2fe71b5 100644
+--- a/include/hw/gpio/aspeed_gpio.h
++++ b/include/hw/gpio/aspeed_gpio.h
+@@ -70,7 +70,7 @@ typedef struct AspeedGPIOReg {
+ } AspeedGPIOReg;
+ 
+ struct AspeedGPIOClass {
+-    SysBusDevice parent_obj;
++    SysBusDeviceClass parent_class;
+     const GPIOSetProperties *props;
+     uint32_t nr_gpio_pins;
+     uint32_t nr_gpio_sets;
+-- 
+2.34.1
 
-Yes works for me too now. Thanks.
-
-> messy, though, and raises questions (how do we want to handle those regs
-> across accelerators, for example, or how we can make sure that the code i=
-s
-> more robust when registers are added.)
->=20
-> My biggest question, however, is how this interacts with the framework to
-> provide lists of MIDR/REVIDR/AIDR for errata management. The hack below
-> adds properties to configure those regs, I guess we'd want to suppress
-> adding the props in order to avoid conflicts.
-
-Not sure how this impacts the errata management though. My initial take on
-this was, user will provide a list of target CPU ids through command line a=
-nd
-that will be used to set the target CPUs for errata management(if kernel
-supports it).
-
-Eg:
--machine virt,.., x-target-impl-cpus=3D0xMIDR1:0xREVIDR1-0xMIDR2:REVIDR2
-
-And these will be stored in,
-
-#define MAX_TARGET_IMPL_CPUS    4
-typedef struct TargetImplCpu {
-     uint32_t midr;
-     uint32_t revidr;
-} TargetImplCpu;
-
-
-Please see the initial (a hack for testing kernel) implementation here,
-https://github.com/hisilicon/qemu/commit/a393c1180274c73d34f32eaab66764a874=
-a9ad31
-
-Please let me know if there is a better/preferred way of obtaining this
-target CPU list from user.
-
-Thanks,
-Shameer

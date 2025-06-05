@@ -1,89 +1,89 @@
-Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp88148njc;
-        Thu, 5 Jun 2025 01:29:23 -0700 (PDT)
-X-Received: by 2002:a17:902:d550:b0:224:1af1:87f4 with SMTP id d9443c01a7336-235e14bc5d2mr95657175ad.22.1749112162808;
-        Thu, 05 Jun 2025 01:29:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749112162; cv=none;
+Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp90406njc;
+        Thu, 5 Jun 2025 01:34:09 -0700 (PDT)
+X-Received: by 2002:a05:6a00:3d10:b0:73e:2d76:9eb1 with SMTP id d2e1a72fcca58-7480cf3af9emr6249032b3a.10.1749112449631;
+        Thu, 05 Jun 2025 01:34:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749112449; cv=none;
         d=google.com; s=arc-20240605;
-        b=j/qWUZXGxDPzqAPP7nzVRmkXoPpUXH5oNzwsX4biFg/9epgan7KGxjpog28aondSLi
-         bvDk3QJsH5d3cZm01mfk9iBbZmuKK34JboY9nC0FpGzif1U7LGmes3/Ad1GEyRdciul8
-         ZeMJq+A1um95/XII5Xh1CvwwFNwfiFDaX6QpsEYiDNAnme7l6iMLogVCv75qxAB7uEX4
-         UnjZUwUWqZxgZaQ510FoLwV0g3+ReM4MooJeSAxKiR/BNuLt0gUP+tLupRBqlYHZRygU
-         8UxHXa69KrfGFTVNohAFWkjBHNfrcD1quABajZGxf832XLvwCZwrp22Cy5RLDXyPqGZq
-         6KnQ==
+        b=OgYB3cIYWRMSJdqM6+AgGPsy4kyZohcQiQ8K8af1oKvazXxRxUGX8FVhQn378x76pK
+         S+0eBAkWMY4G1r12Rumc4XJ1H7y7vdyaYgdXhmWiwE+KQqXwZeRjWm3UPHE83KMtfJXJ
+         BBxWFSMXc4E9YzutEnmm5FSfRn134Awq3MCM+MahAh8QO8VXsdfUVPlodX7gyNMliy4F
+         rJIETZQCOGCVOLgRx6otQfp1WlIIm7Q2pRRzHS1EDMQVTZk9WHd18sohdjeBgDfc3sfk
+         fuf6Hgwg5TL7IRG/L/6c9bBARKSdn3VzUyN1WcNV8dS2xoYu/gry24P8YOoSsA2D6f4n
+         EWZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=86WiDhquQRMwpYHU14pt/RjTs5B29pGNwoiv5JY9e80=;
-        fh=sNXjGpGN9hiMZFxde/KaUV0eeYMwHjz/aMEkCtYf0lc=;
-        b=YP9GIuLmdYM94qYmVWf3PwnFbN3CHYfXlt+uYvM5i4jugc+LBTgTg4hJU0EMdNOqQI
-         iRxN0B5jcLPxhPFh7Fl6vgL9kaoFa956lmpJf8U4K6C+BP5vgYhAbrEavIGgPA9UrHUP
-         d87cqye/XZc6rlgItSmnoFd6qj76dPjd+Is2tAvo9DXYQWsCat91vGt3xID5JAV2F3ZR
-         a4H2Nw8Q6a6oejIuMlG3tydERQ3Sdv4lG1Pt/bCNb0dEj8zAhHauNcI04l9ExXAeP8Vk
-         /Iesxzun9jfnU4hgAmFfr579BwED3RpsEFtKdrBRewA7WILQ7WlfPupr/GKDXuYmMS10
-         +2qg==;
+        bh=tMOHrZzVrUi2/6e4m1AAupXpv/NaqEkKjQB9KOeRi1A=;
+        fh=f8+9SBMIS5nlfk/aBISynqOLVKqzmF/Xjd0hECl1/y8=;
+        b=g3qFmPkjuLu3toXakpXhDE77v1fB+7P/U6tipS3lJJ8h4dX/nGSnVRbo1W1OkCwvoV
+         OcMe+KUDtMDtwrInHQI2QPwJqpb2o89SG7ohLQd9Ze28474DvaAqBy+Uo2qya/TioQd6
+         kfsRFyG0OknUvzlRMivlzNsmIlZX/DLcEV0CV9+5WBjVv0pqQeXqOP2APz0VwP5xRuZB
+         IsIhd+VKHbD3ix3Rq+DZCgF6m0LIKbf2U6gwOINNQQOKLdHqDDw0gfPTh4tQBJSoyO3a
+         bkFpNR3Tmgmobxq9s1mRhLQZ6Jfv0luzuX80biPmvcyTSnbHA+hDxtB/DtoCbMhLhSxU
+         1Uuw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=3B2y4kWg;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=hcisjSS2;
        spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-23506ccda69sor109429065ad.16.2025.06.05.01.29.22
+        by mx.google.com with SMTPS id 41be03b00d2f7-b2ecebbcbb3sor8498657a12.7.2025.06.05.01.34.09
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 05 Jun 2025 01:29:22 -0700 (PDT)
+        Thu, 05 Jun 2025 01:34:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=3B2y4kWg;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=hcisjSS2;
        spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1749112162; x=1749716962; darn=linaro.org;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1749112449; x=1749717249; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=86WiDhquQRMwpYHU14pt/RjTs5B29pGNwoiv5JY9e80=;
-        b=3B2y4kWgtnCnwe6RkN1nMRilB9WPsCEsnf7d6S342xHs+Jxhbv/5HKwCb+6ob5qgPD
-         jpK2U7a6147m30/L6CPuqXbuQ94Gkqn3QqdTX8VZpD/R8bpSzufwSqCbEVbkcMc6Isge
-         OwIeSaPtC1AEKyYP4Km1+/45oPaC5sdNTSpjqnPN26iz+mKyWdQMvHqO1IzikKaz3yqg
-         F87dpU6cQkrqB6gjoYDd6E7/n8+4AVzh6XX/fQextG0/tqHzZLjigCaQGs+blw4YyjFC
-         Qdu0b211LhXAVt/uN9wyqjsoImeoxnKIPVkEfv9Y5ruY7Vqmxb09277OALvDV5cWvi+X
-         E6Fg==
+        bh=tMOHrZzVrUi2/6e4m1AAupXpv/NaqEkKjQB9KOeRi1A=;
+        b=hcisjSS2YVyI2iJOKkKES1iFDb0ypVpdu6vHuikQaHLJjZgXLzYSd86Qz8AFkO/LSZ
+         lwwHe90RMx3VSex6uy/H7Av9Sd/rpmTfAhObgeqW4E19iezSvOwTBOWbS2YDKzdI3VcE
+         iQSHmOm+9v5YI1qjRFiPY4g0B6EItYDpyMehi1IrHMaYMYSETunIq2fFCySa17mRk3QF
+         alLnw+n1PrFDAy6zpQ4lJMH9T3C7vUAfBn472fs+59E6hfuzdPWjSUZwNjff8QXejvKo
+         QyO2jl++gAUMifgwzLKz0lGX3A52sQB4ztYt0IezSyzt/tP5echVfEojei4BeGbT+yUJ
+         wzng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749112162; x=1749716962;
+        d=1e100.net; s=20230601; t=1749112449; x=1749717249;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=86WiDhquQRMwpYHU14pt/RjTs5B29pGNwoiv5JY9e80=;
-        b=vAxhG2pC8KAugR5I/fzNIAajYM+M6HDKtyEI85LJZ4Vpqs9CSm9RFqCqPwjxjl0UON
-         s4UCPCiz5Ikv39lYs4BnwxA5x0NUQN2iLcscRWjVpi/OJPbz1BONVuyr056AB3nPYv0+
-         j1V+en/5kxl37LNM7XxDfL3bjFI7Se5WSLerXs5v5CpcIKaLWUaa1Ks1b4S5MuAy55JO
-         F7H6oS4vYSCm0mPpdYHJ2kKohz4tdBkjiZg3oi3yBtE1IuwddepEf+PFeOkWwCp9koMw
-         es08FeRvNLth70e5NYp2fcgxDlfuH4ySk5nFgEEVJIiLAVVhOxXh6Zqylaz/5DBRk9gw
-         4QSQ==
-X-Gm-Message-State: AOJu0YwP5szG6y6FpjjO06uzf00uxOlhx53fapYr9whK/EckEx5EiG+w
-	75Dpdacwsd9gmMsIEUbD/u5CeAspErIqDMSiKL1pSGxQY0NkTbnvZjk5iOw0cXMPTZGRMqYcUzZ
-	U0yAG
-X-Gm-Gg: ASbGncs2FyogGjfQKkWvjeDN4gXu/p1DbmQkbcxzZJd/5Br9n4yNTALHbzxNHRGNEsE
-	/+cK75avN9rxVp6SoUmfiBQCn9Yph4hfjv0BlyDpgNs3VOmGHhx0n4bVS4m99VFltPo9/eVNRna
-	SZd/sbizAPC74EXyQXISojYblnv0fqg11bHJSXN7kk9SUQV+/fEq2h9vD2Ko2FJ7xnRxWGMQtuM
-	H/N1gnEdbUW1G2ZmXfS2dy1VgPV9EzZ0fiz/2Wm7lKpMobbDdb+7q1muNhBn8aFI/7qezPpyp2n
-	uJgd/2D6nDZF4dVYN6rxsOQSCiTww8tUftQWxuC1yvMg7Q2fQ57ieQqct1KaQUOs
-X-Google-Smtp-Source: AGHT+IF3WGEuOr8FqFHnlqOciWbwF9oSAST8ulaaZHrcR49NKtY0RvaM4ZE9dmWGOjLKIawjBBZNtQ==
-X-Received: by 2002:a05:6a21:99a7:b0:21d:2244:7c5c with SMTP id adf61e73a8af0-21d247620bfmr7713655637.26.1749112162131;
-        Thu, 05 Jun 2025 01:29:22 -0700 (PDT)
+        bh=tMOHrZzVrUi2/6e4m1AAupXpv/NaqEkKjQB9KOeRi1A=;
+        b=BIoKDZpcP8UehIx7RffBIOFNjzFwMA+r2Tx0B3YDeDTHsT/wQ1BGwQIrkRc0dtH38D
+         qfInk880xU2d8BVWJhIVUXLlVjsuLQJcfzhVQjanhmiB+vinM58NGCf5e4c3XyJUjg6r
+         OUjMQJ1vCjoth4ERRa3YPbtc21XAOfbpQ8Erz7bS46ZCQlVnNfl8/KHyaF8Ctc+DPlSn
+         1N8Q5O0jGhVKjs/bwoeA11OC7bKp5GfiEbbABIl+Fehef/ihGz1r53p9IHxyj2YedNFy
+         QlVbr8WaMgY0RM8gjriMZsqjmf3196xdIzRp0tP8u0rUvvK76Y21IC9yDqtqvOitK6o/
+         nbyQ==
+X-Gm-Message-State: AOJu0YyTY5xmmIpeHaPD9OaaiYTjK2txtOay8dboAzSaSgkZNbbBLzo0
+	9KnCOcb8gbc44nxZQ+KvLpG5pCFyt5NlcStSUyPVPeVL576mDDDL9OSj0d6nVWFDg3sNtL9hHX3
+	HiZ06
+X-Gm-Gg: ASbGncu0mHaPggWo/FM/rT0p1msVUGTjTw2Pt3FgrP4FPl6NAxDn7Xw6eof5KNdGl1U
+	jrGrNY1t20gA/smHimzQJhSgrGD2DQIUCe0x4tm5M94IVyGAZNyHQybzrIPHwiRW9ysGtEKkeqM
+	/Q+0DZvNEmQ7mLiPNGUUmt2OvFmqAXOMYb3hCW7HkjdA7HlPixnHOaaSqDXPNSKbWgmSkT3XLyM
+	j1Of7YPNKrHPKaB+And7G4aGQ+rjhjTb7p8EVQw7qaMRgWqL3i/T3AcgROH4pjMQ9q/44hSfAk0
+	vjHz4ThOvkOXtBBSLbFnG1ccXmCJ/B7dUumCnnhY8N2vPL3F7aHvnYni+bBxWw4mnxQoMhn59Hn
+	/TnOfRtBRUA==
+X-Google-Smtp-Source: AGHT+IGqeYx3+8JeKcdJXqGq7bE+FRenx1qtz0UucT0C/Q7fc5XqK5vOMmMJ6CCApw3GTNNxFQzQeQ==
+X-Received: by 2002:a17:90b:1e07:b0:2fe:e9c6:689e with SMTP id 98e67ed59e1d1-31310fff2d3mr7436095a91.8.1749112448977;
+        Thu, 05 Jun 2025 01:34:08 -0700 (PDT)
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from [157.82.203.223] ([157.82.203.223])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b2eceb28bbfsm9851400a12.20.2025.06.05.01.29.17
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-313318e68f6sm762612a91.2.2025.06.05.01.34.04
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 05 Jun 2025 01:29:21 -0700 (PDT)
-Message-ID: <e037e38c-dd8d-4f65-b2d5-2629be5f6740@daynix.com>
-Date: Thu, 5 Jun 2025 17:29:16 +0900
+        Thu, 05 Jun 2025 01:34:08 -0700 (PDT)
+Message-ID: <1a86b86d-145a-44fc-9f87-2804767fb109@daynix.com>
+Date: Thu, 5 Jun 2025 17:34:03 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 03/17] tests/tcg: make aarch64 boot.S handle different
- starting modes
+Subject: Re: [PATCH v4 09/17] hw/display: re-arrange memory region tracking
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
@@ -101,312 +101,135 @@ Cc: Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
  Laurent Vivier <lvivier@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Mahmoud Mandour <ma.mandourr@gmail.com>,
- Julian Armistead <julian.armistead@linaro.org>,
- Jim MacArthur <jim.macarthur@linaro.org>
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-stable@nongnu.org
 References: <20250603110204.838117-1-alex.bennee@linaro.org>
- <20250603110204.838117-4-alex.bennee@linaro.org>
+ <20250603110204.838117-10-alex.bennee@linaro.org>
 Content-Language: en-US
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <20250603110204.838117-4-alex.bennee@linaro.org>
+In-Reply-To: <20250603110204.838117-10-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 35fS9hF5IqOG
+X-TUID: SjG+XImjPe/i
 
 On 2025/06/03 20:01, Alex Bennée wrote:
-> Currently the boot.S code assumes everything starts at EL1. This will
-> break things like the memory test which will barf on unaligned memory
-> access when run at a higher level.
+> QOM objects can be embedded in other QOM objects and managed as part
+> of their lifetime but this isn't the case for
+> virtio_gpu_virgl_hostmem_region. However before we can split it out we
+> need some other way of associating the wider data structure with the
+> memory region.
 > 
-> Adapt the boot code to do some basic verification of the starting mode
-> and the minimal configuration to move to the lower exception levels.
-> With this we can run the memory test with:
+> Fortunately MemoryRegion has an opaque pointer. This is passed down to
+> MemoryRegionOps for device type regions but is unused in the
+> memory_region_init_ram_ptr() case. Use the opaque to carry the
+> reference and allow the final MemoryRegion object to be reaped when
+> its reference count is cleared.
 > 
->    -M virt,secure=on
->    -M virt,secure=on,virtualization=on
->    -M virt,virtualisation=on
-> 
-> If a test needs to be at a particular EL it can use the semihosting
-> command line to indicate the level we should execute in.
-> 
-> Cc: Julian Armistead <julian.armistead@linaro.org>
-> Cc: Jim MacArthur <jim.macarthur@linaro.org>
+> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> 
+> Message-Id: <20250410122643.1747913-2-manos.pitsidianakis@linaro.org>
+> Cc: qemu-stable@nongnu.org
 > ---
-> v4
->    - drop post eret nops
->    - proper error string for EL0 error case
->    - clamp any invalid target EL value to 1
-> v3
->    - create system stack so we _exit cleanly
->    - normalise EL string before compares
->    - catch when we start in a lower EL than we asked for
->    - default to EL1 when arg unclear
-> v2
->    - allow tests to control the final EL we end up at
->    - use tabs consistently
->    - validate command line arg is between 1 and 3
-> ---
->   tests/tcg/aarch64/Makefile.softmmu-target |   3 +-
->   tests/tcg/aarch64/system/boot.S           | 172 +++++++++++++++++++++-
->   2 files changed, 169 insertions(+), 6 deletions(-)
+>   include/system/memory.h       |  1 +
+>   hw/display/virtio-gpu-virgl.c | 23 ++++++++---------------
+>   2 files changed, 9 insertions(+), 15 deletions(-)
 > 
-> diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-> index 9c52475b7a..f7a7d2b800 100644
-> --- a/tests/tcg/aarch64/Makefile.softmmu-target
-> +++ b/tests/tcg/aarch64/Makefile.softmmu-target
-> @@ -68,7 +68,8 @@ run-plugin-semiconsole-with-%: semiconsole
+> diff --git a/include/system/memory.h b/include/system/memory.h
+> index fc35a0dcad..90715ff44a 100644
+> --- a/include/system/memory.h
+> +++ b/include/system/memory.h
+> @@ -784,6 +784,7 @@ struct MemoryRegion {
+>       DeviceState *dev;
 >   
->   # vtimer test needs EL2
->   QEMU_EL2_MACHINE=-machine virt,virtualization=on,gic-version=2 -cpu cortex-a57 -smp 4
-> -run-vtimer: QEMU_OPTS=$(QEMU_EL2_MACHINE) $(QEMU_BASE_ARGS) -kernel
-> +QEMU_EL2_BASE_ARGS=-semihosting-config enable=on,target=native,chardev=output,arg="2"
-> +run-vtimer: QEMU_OPTS=$(QEMU_EL2_MACHINE) $(QEMU_EL2_BASE_ARGS) -kernel
+>       const MemoryRegionOps *ops;
+> +    /* opaque data, used by backends like @ops */
+>       void *opaque;
+>       MemoryRegion *container;
+>       int mapped_via_alias; /* Mapped via an alias, container might be NULL */
+> diff --git a/hw/display/virtio-gpu-virgl.c b/hw/display/virtio-gpu-virgl.c
+> index 145a0b3879..71a7500de9 100644
+> --- a/hw/display/virtio-gpu-virgl.c
+> +++ b/hw/display/virtio-gpu-virgl.c
+> @@ -52,17 +52,11 @@ virgl_get_egl_display(G_GNUC_UNUSED void *cookie)
 >   
->   # Simple Record/Replay Test
->   .PHONY: memory-record
-> diff --git a/tests/tcg/aarch64/system/boot.S b/tests/tcg/aarch64/system/boot.S
-> index a5df9c173d..8bfa4e4efc 100644
-> --- a/tests/tcg/aarch64/system/boot.S
-> +++ b/tests/tcg/aarch64/system/boot.S
-> @@ -16,6 +16,7 @@
->   #define semihosting_call hlt 0xf000
->   #define SYS_WRITEC	0x03	/* character to debug channel */
->   #define SYS_WRITE0	0x04	/* string to debug channel */
-> +#define SYS_GET_CMDLINE 0x15	/* get command line */
->   #define SYS_EXIT	0x18
+>   #if VIRGL_VERSION_MAJOR >= 1
+>   struct virtio_gpu_virgl_hostmem_region {
+> -    MemoryRegion mr;
+> +    MemoryRegion *mr;
+>       struct VirtIOGPU *g;
+>       bool finish_unmapping;
+>   };
 >   
->   	.align	12
-> @@ -70,21 +71,172 @@ lower_a32_sync:
->   lower_a32_irq:
->   lower_a32_fiq:
->   lower_a32_serror:
-> +	adr	x1, .unexp_excp
-> +exit_msg:
->   	mov	x0, SYS_WRITE0
-> -	adr	x1, .error
->   	semihosting_call
->   	mov	x0, 1 /* EXIT_FAILURE */
->   	bl 	_exit
->   	/* never returns */
+> -static struct virtio_gpu_virgl_hostmem_region *
+> -to_hostmem_region(MemoryRegion *mr)
+> -{
+> -    return container_of(mr, struct virtio_gpu_virgl_hostmem_region, mr);
+> -}
+> -
+>   static void virtio_gpu_virgl_resume_cmdq_bh(void *opaque)
+>   {
+>       VirtIOGPU *g = opaque;
+> @@ -73,14 +67,12 @@ static void virtio_gpu_virgl_resume_cmdq_bh(void *opaque)
+>   static void virtio_gpu_virgl_hostmem_region_free(void *obj)
+>   {
+>       MemoryRegion *mr = MEMORY_REGION(obj);
+> -    struct virtio_gpu_virgl_hostmem_region *vmr;
+> +    struct virtio_gpu_virgl_hostmem_region *vmr = mr->opaque;
+>       VirtIOGPUBase *b;
+>       VirtIOGPUGL *gl;
 >   
->   	.section .rodata
-> -.error:
-> -	.string "Terminated by exception.\n"
-> +.unexp_excp:
-> +	.string "Unexpected exception.\n"
-> +.high_el_msg:
-> +	.string "Started in lower EL than requested.\n"
-> +.unexp_el0:
-> +	.string "Started in invalid EL.\n"
-> +
-> +	.align 8
-> +.get_cmd:
+> -    vmr = to_hostmem_region(mr);
+> -    vmr->finish_unmapping = true;
+> -
+>       b = VIRTIO_GPU_BASE(vmr->g);
+> +    vmr->finish_unmapping = true;
+>       b->renderer_blocked--;
+>   
+>       /*
+> @@ -118,8 +110,8 @@ virtio_gpu_virgl_map_resource_blob(VirtIOGPU *g,
+>   
+>       vmr = g_new0(struct virtio_gpu_virgl_hostmem_region, 1);
+>       vmr->g = g;
+> +    mr = g_new0(MemoryRegion, 1);
 
-Please do not send a new version without addressing all comments for the 
-previous versions or at least noting there are unaddressed comments:
-https://lore.kernel.org/qemu-devel/7a76e746-9022-48cf-8216-775071e6d631@daynix.com
-
-Following the best practices in docs/devel/submitting-a-patch.rst will 
-ensure a smoother patch review. It is fine for me if you submit a new 
-version noting unaddressed comments, but some may disagree.
-
-The same goes "[PATCH v4 11/17] ui/gtk-gl-area: Remove extra draw call 
-in refresh".
+This patch does nothing more than adding a separate allocation for 
+MemoryRegion. Besides there is no corresponding g_free(). This patch can 
+be simply dropped.
 
 Regards,
 Akihiko Odaki
 
-> +	.quad	cmdline
-> +	.quad	128
 >   
->   	.text
->   	.align 4
->   	.global __start
->   __start:
-> +	/*
-> +         * Initialise the stack for whatever EL we are in before
-> +	 * anything else, we need it to be able to _exit cleanly.
-> +	 * It's smaller than the stack we pass to the C code but we
-> +	 * don't need much.
-> +	 */
-> +	adrp	x0, system_stack_end
-> +	add	x0, x0, :lo12:system_stack_end
-> +	mov	sp, x0
-> +
-> +	/*
-> +	 * The test can set the semihosting command line to the target
-> +	 * EL needed for the test. However if no semihosting args are set we will
-> +	 * end up with -kernel/-append data (see semihosting_arg_fallback).
-> +	 * Keep the normalised target in w11.
-> +	 */
-> +	mov	x0, SYS_GET_CMDLINE
-> +	adr	x1, .get_cmd
-> +	semihosting_call
-> +	adrp	x10, cmdline
-> +	add	x10, x10, :lo12:cmdline
-> +	ldrb	w11, [x10]
-> +
-> +	/* sanity check, normalise char to EL, clamp to 1 if outside range */
-> +	subs w11, w11, #'0'
-> +	b.lt el_default
-> +	cmp  w11, #3
-> +	b.gt el_default
-> +	b 1f
-> +
-> +el_high:
-> +	adr	x1, .high_el_msg
-> +	b	exit_msg
-> +
-> +el_default:
-> +	mov	w11, #1
-> +
-> +1:
-> +	/* Determine current Exception Level */
-> +	mrs	x0, CurrentEL
-> +	lsr	x0, x0, #2	  /* CurrentEL[3:2] contains the current EL */
-> +
-> +	/* Are we already in a lower EL than we want? */
-> +	cmp	w11, w0
-> +	bgt	el_high
-> +
-> +	/* Branch based on current EL */
-> +	cmp	x0, #3
-> +	b.eq	setup_el3
-> +	cmp	x0, #2
-> +	b.eq	setup_el2
-> +	cmp	x0, #1
-> +	b.eq	at_testel	     /* Already at EL1, skip transition */
-> +
-> +	/* Should not be at EL0 - error out */
-> +	adr 	x1, .unexp_el0
-> +	b	exit_msg
-> +
-> +setup_el3:
-> +	/* Ensure we trap if we get anything wrong */
-> +	adr	x0, vector_table
-> +	msr	vbar_el3, x0
-> +
-> +	/* Does the test want to be at EL3? */
-> +	cmp	w11, #3
-> +	beq	at_testel
-> +
-> +	/* Configure EL3 to for lower states (EL2 or EL1) */
-> +	mrs	x0, scr_el3
-> +	orr	x0, x0, #(1 << 10)    /* RW = 1: EL2/EL1 execution state is AArch64 */
-> +	orr	x0, x0, #(1 << 0)     /* NS = 1: Non-secure state */
-> +	msr	scr_el3, x0
-> +
-> +	/*
-> +	 * We need to check if EL2 is actually enabled via ID_AA64PFR0_EL1,
-> +	 * otherwise we should just jump straight to EL1.
-> +	 */
-> +	mrs	x0, id_aa64pfr0_el1
-> +	ubfx	x0, x0, #8, #4	      /* Extract EL2 field (bits 11:8) */
-> +	cbz	x0, el2_not_present   /* If field is 0 no EL2 */
-> +
-> +
-> +	/* Prepare SPSR for exception return to EL2 */
-> +	mov	x0, #0x3c9	      /* DAIF bits and EL2h mode (9) */
-> +	msr	spsr_el3, x0
-> +
-> +	/* Set EL2 entry point */
-> +	adr	x0, setup_el2
-> +	msr	elr_el3, x0
-> +
-> +	/* Return to EL2 */
-> +	eret
-> +
-> +el2_not_present:
-> +	/* Initialize SCTLR_EL1 with reset value */
-> +	msr	sctlr_el1, xzr
-> +
-> +	/* Set EL1 entry point */
-> +	adr	x0, at_testel
-> +	msr	elr_el3, x0
-> +
-> +	/* Prepare SPSR for exception return to EL1h with interrupts masked */
-> +	mov	x0, #0x3c5	      /* DAIF bits and EL1h mode (5) */
-> +	msr	spsr_el3, x0
-> +
-> +	isb			      /* Synchronization barrier */
-> +	eret			      /* Jump to EL1 */
-> +
-> +setup_el2:
-> +	/* Ensure we trap if we get anything wrong */
-> +	adr	x0, vector_table
-> +	msr	vbar_el2, x0
-> +
-> +	/* Does the test want to be at EL2? */
-> +	cmp	w11, #2
-> +	beq	at_testel
-> +
-> +	/* Configure EL2 to allow transition to EL1 */
-> +	mrs	x0, hcr_el2
-> +	orr	x0, x0, #(1 << 31)    /* RW = 1: EL1 execution state is AArch64 */
-> +	msr	hcr_el2, x0
-> +
-> +	/* Initialize SCTLR_EL1 with reset value */
-> +	msr	sctlr_el1, xzr
-> +
-> +	/* Set EL1 entry point */
-> +	adr	x0, at_testel
-> +	msr	elr_el2, x0
-> +
-> +	/* Prepare SPSR for exception return to EL1 */
-> +	mov	x0, #(0x5 << 0)	      /* EL1h (SPx), with interrupts disabled */
-> +	msr	spsr_el2, x0
-> +
-> +	/* Return to EL1 */
-> +	eret
-> +
-> +	/*
-> +	 * At the target EL for the test, usually EL1. Note we still
-> +	 * set everything up as if we were at EL1.
-> +	 */
-> +at_testel:
->   	/* Installs a table of exception vectors to catch and handle all
->   	   exceptions by terminating the process with a diagnostic.  */
->   	adr	x0, vector_table
-> @@ -100,7 +252,7 @@ __start:
->   	 * maps RAM to the first Gb. The stage2 tables have two 2mb
->   	 * translation block entries covering a series of adjacent
->   	 * 4k pages.
-> -	*/
-> +	 */
+> -    mr = &vmr->mr;
+>       memory_region_init_ram_ptr(mr, OBJECT(mr), "blob", size, data);
+>       memory_region_add_subregion(&b->hostmem, offset, mr);
+>       memory_region_set_enabled(mr, true);
+> @@ -131,7 +123,9 @@ virtio_gpu_virgl_map_resource_blob(VirtIOGPU *g,
+>        * command processing until MR is fully unreferenced and freed.
+>        */
+>       OBJECT(mr)->free = virtio_gpu_virgl_hostmem_region_free;
+> +    mr->opaque = vmr;
 >   
->   	/* Stage 1 entry: indexed by IA[38:30] */
->   	adr	x1, .				/* phys address */
-> @@ -198,7 +350,8 @@ __start:
->   	orr	x0, x0, #(3 << 16)
->   	msr	cpacr_el1, x0
+> +    vmr->mr = mr;
+>       res->mr = mr;
 >   
-> -	/* Setup some stack space and enter the test code.
-> +	/*
-> +	 * Setup some stack space before we enter the test code.
->   	 * Assume everything except the return value is garbage when we
->   	 * return, we won't need it.
->   	 */
-> @@ -233,6 +386,11 @@ __sys_outc:
->   	ret
+>       return 0;
+> @@ -142,16 +136,15 @@ virtio_gpu_virgl_unmap_resource_blob(VirtIOGPU *g,
+>                                        struct virtio_gpu_virgl_resource *res,
+>                                        bool *cmd_suspended)
+>   {
+> -    struct virtio_gpu_virgl_hostmem_region *vmr;
+>       VirtIOGPUBase *b = VIRTIO_GPU_BASE(g);
+>       MemoryRegion *mr = res->mr;
+> +    struct virtio_gpu_virgl_hostmem_region *vmr;
+>       int ret;
 >   
->   	.data
-> +
-> +	.align 8
-> +cmdline:
-> +	.space 128, 0
-> +
->   	.align	12
+>       if (!mr) {
+>           return 0;
+>       }
+> -
+> -    vmr = to_hostmem_region(res->mr);
+> +    vmr = mr->opaque;
 >   
->   	/* Translation table
-> @@ -246,6 +404,10 @@ ttb_stage2:
->   	.space	4096, 0
->   
->   	.align	12
-> +system_stack:
-> +	.space 4096, 0
-> +system_stack_end:
-> +
->   stack:
->   	.space 65536, 0
->   stack_end:
+>       /*
+>        * Perform async unmapping in 3 steps:

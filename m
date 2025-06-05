@@ -1,113 +1,145 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp4262583njh;
-        Wed, 4 Jun 2025 10:38:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUEmWaF00S4UNR+fpyf9IuxCSjXLO8c0FPaL4i6KNEtqSjJoNJF/8LqntmTV9ceVF+Bg2jjtgabNfZizw==@linaro.org
-X-Google-Smtp-Source: AGHT+IG9Z4gJUZOVEXS8nEXgeAnm3ajS6xrEAtEfP3RoBgLk+b2uwUgCUzEbvBPN0Xps5XN2lp/Q
-X-Received: by 2002:a05:622a:4109:b0:477:c04:b512 with SMTP id d75a77b69052e-4a5a576ec0emr65508651cf.16.1749058686986;
-        Wed, 04 Jun 2025 10:38:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749058686; cv=none;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp4492461njh;
+        Wed, 4 Jun 2025 19:36:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW0WrDVf7AqixrtuS0tq1mVQY2oEqMSFDyoUX1TyMhvqVIw72nBOCQObgpPlE0AZf0W8rLZYZRzQDJpJw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFfE3KbP8wtFh0PGbGeLkH0DOWrgZOW6JoZ4F+KLq9ivSdOTr6p029sbgq7F1M/FmdHe1LP
+X-Received: by 2002:a05:6214:a10:b0:6fb:3c9:2d65 with SMTP id 6a1803df08f44-6fb03c9321dmr2774486d6.2.1749090976034;
+        Wed, 04 Jun 2025 19:36:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749090976; cv=none;
         d=google.com; s=arc-20240605;
-        b=HC50ruq8KYw6Fu/LF4uxS1eIrEvS/gNXAvhKduUOwE7d7NIlu4PQHe6guqM4cuGqdw
-         8IEr9bIBg/725WPSidNFYajxSleziBKr6EahDe7RrUZfV0vn/wv0Gm3GfDEuaDsF3MHR
-         qPgTVdCtr6PZ6e9VmKKojqItWrsqVRRTw/piaIRS1yx+7ecagRNy9WomgLH/iUlYrG/B
-         O7AFY2qVueTinBY5kXPlEgDP9CXZJdPalAiiRS+t+MwAvzYGxIBZktwY+nt2JdNhZX5w
-         +iL6mgRQL6thugzyujGI17zHI/ig8Kv5H6KRh6FijSb4U5BEnwEj1Fg/UQIUJJgOefgi
-         Ta8Q==
+        b=bpb7G+DKla30iWCqDGONiVQ6gjinTvVz+bcGQDtPw3XbdNO8fv7LqjQgYq5rVVORJ8
+         kYsNHApxYoXETUkjVUrUz2nhJc9oZ7PPxf2yp9DRCPob2gOIl/HERwgX682WobhBwOi0
+         6YE9Bhf0hBKD0kgbHfr2cWHVVtltZ3qvB0dUnta40gTFAbjx6Ok0eoncjEE5JW4b7b9V
+         v24xBme8Nj1tTB9oxNEIZ9uwB4z6G1wDq63mVyGztN9bBHcehRi3JXv3ZULRSkKNZaOr
+         l+KKHM7T05OzW5OVTwD7qTknrNTB8/Ctnjvh50qqitk+pmdftSbfkTKieo9jCiZga8OP
+         ft3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=Fw9sDrI+ehvF9ezi0jNsttWWSTwhQzTXSsdjQJY/UXc=;
-        fh=DBwo5oYV+Zl89FPcGyBzo6mnqwnGCoM6YpiQGc4/RNc=;
-        b=IU3CS/eu3ZuhjQn8+P644oF8nq2W+oZanvQbyGNqOF+xJynYL2Vo5j9nswmwkS6oN8
-         PLuyFLUubAw4yo6tDo00k5nRb8/HaM34ZTXBSem5/HxgnXbkCsCpdHfazJ9zpSAVrQ27
-         qTf4c1N51JKX/IN7w5Na/ubJfRS+aGnPwd48EQaDwtm9gJ8r7/zOe+bUAl4DRQa2Gqoi
-         bWKr7dFO3NFfYgyjWjuiT0Se1sl3GzEAb+YoYVJX/HnkBvsF5xgs9n3Aj9GeBGD10aid
-         1ZUN/kc9BgU3+K7JkyhQGZoMtJLGgOZ5DtoHG5m/1Zh2nLm/bR1191Vheo/8mCZI0SKj
-         67KQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=EBC+N6dEH6cT5Fa6oWKe/1vnsNcoKLAGwdbtl/+9jMc=;
+        fh=g7xlmi+fPqD9LIoys2SZi6h5XTVR16PfYSuFcHAcero=;
+        b=Jk9k0ewCNLfIQXacjevuaHjs0f8UcG8H5rmr4eBJtVJE5noWlWLy+aCXkWT6Vnyfkz
+         iT+B4B4316tcIEe9gKcEtDjtWcAkQpsHPrsPTe2UMNTHX3NnWci8xMZVFNYGKcDmJEUz
+         TEh4izdbFt2Kl4NRtO2M0uyDUDW149OXUC2+wK9k56BkZGTCopv73zoA/Mr3hBWHUfkm
+         wecH1r+N9RgM/88YN0lIoNFOImdqA+tQNzxibK8uoYKTA4eDujqC7ePut/RygPBcvO8c
+         u9qhbCNw3JpHk0QsEe+RGbRbvvuJsjJyaAeARdQVK/A8CjBcrKbtRgf8SG81wT2EAFj1
+         7v4A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="j7/zqjOb";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KMub8ozm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a435a4adf6si164996571cf.438.2025.06.04.10.38.06
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fac6e90245si158471176d6.303.2025.06.04.19.36.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Jun 2025 10:38:06 -0700 (PDT)
+        Wed, 04 Jun 2025 19:36:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="j7/zqjOb";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KMub8ozm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uMs3l-0000GQ-S3; Wed, 04 Jun 2025 13:37:54 -0400
+	id 1uN0SE-0000ph-Mj; Wed, 04 Jun 2025 22:35:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cocotroupe20@gmail.com>)
- id 1uMs3b-0000Fz-Dy
- for qemu-arm@nongnu.org; Wed, 04 Jun 2025 13:37:44 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cocotroupe20@gmail.com>)
- id 1uMs3Z-00030c-M9
- for qemu-arm@nongnu.org; Wed, 04 Jun 2025 13:37:43 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-450dd065828so335015e9.2
- for <qemu-arm@nongnu.org>; Wed, 04 Jun 2025 10:37:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1749058658; x=1749663458; darn=nongnu.org;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=Fw9sDrI+ehvF9ezi0jNsttWWSTwhQzTXSsdjQJY/UXc=;
- b=j7/zqjObdu0rv5rMuxkqQ54MDfBxopFidKaQSBfKwga3phF89M2uBNZpSgVdzu4Lta
- DG5i7pe801aHNCwq4OnuSXuV3qOZ0zz/oDs7VerVkiGOKa57mj4a1QmbPKuKQ3/XJw2/
- pzzcbB5IX8ornKs1M7ekuqo3IdhYnKvJJ0f8UZHUQiatnlExm24d3/kEFEoLcBjYBFDQ
- FJTu8Z/6COXluuN6sQAE6cNStp63eGAY1p+UERB8/2Uu921IvPXtn4UEpioQce/kDUiY
- 4uKsZ4Qn/LZkIWlnbtedB1gyfzH0Nr6TRYeFqxIFAMunmiNIXIvKBFZMcvIxGFksuNX2
- 8M5Q==
+ (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
+ id 1uN0SC-0000ov-Ip
+ for qemu-arm@nongnu.org; Wed, 04 Jun 2025 22:35:40 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
+ id 1uN0SA-0003M3-Ea
+ for qemu-arm@nongnu.org; Wed, 04 Jun 2025 22:35:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1749090936;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=EBC+N6dEH6cT5Fa6oWKe/1vnsNcoKLAGwdbtl/+9jMc=;
+ b=KMub8ozmg01vkVlwKuyK11J+B8z9dJpIXed8N5RNNA9fcBQOEdCZYpX34fGd2BPSSi7dL+
+ fRMtRgDjBHyTGRZbyKeT9GFV8tsGc8Xu65cqRbsPmHxaRLfZ5jiPo7nxIKE6PC6/IpK9Ad
+ 8nQW+iyYjJtVQo1zwoL6rc6nIkv1xec=
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-612-jiOVxwVPO7WCEOjHtRhKmg-1; Wed, 04 Jun 2025 22:35:35 -0400
+X-MC-Unique: jiOVxwVPO7WCEOjHtRhKmg-1
+X-Mimecast-MFC-AGG-ID: jiOVxwVPO7WCEOjHtRhKmg_1749090934
+Received: by mail-qk1-f200.google.com with SMTP id
+ af79cd13be357-7c955be751aso86833285a.2
+ for <qemu-arm@nongnu.org>; Wed, 04 Jun 2025 19:35:35 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749058658; x=1749663458;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Fw9sDrI+ehvF9ezi0jNsttWWSTwhQzTXSsdjQJY/UXc=;
- b=K+k1GudH/xkERrJvrMKQIxTVTSm3Ccj9pu5J8fMHLfME2JwZ5Hkh3rp0nBMLQj1QrE
- mPKZMd59yNh/BPz2Yp7J88mKL/S8DkTVMcTX3zkcOnVkGhXwW0maTI9swNI/QJgIHQo/
- i1GpLwpepLIaC4QtsvHajEt1z32/AZdPB1ygnU2QablXdRePhmyFSbURcnFGRMQS325x
- aG99PdiYFOzpoxcizJ7jFcJFIdguz9w2AZFhjWvxaHIDcTP7VKKDrC619AOYy0oOu8HZ
- m6itYUbW3KspXAtd4HUC9nZo8vMQUe0J65UIkVHVvcjU7YF0+gkQw1fLcVFAdAO0b8ES
- 0Myg==
-X-Gm-Message-State: AOJu0YweYOurq13L5X7l6mTV+B9EG27FNL4gmvFRUHWICt/2acgBjqyN
- XG90plN5zbhdDfGvnCxRHZlbzmINux2Q54sXeBKtsx3qTvd7iVBuruugGC5Y+nUuuJa5H0G55h1
- 1mePa7oefyYKu1MGF6+050MwqCPhpVhT5sCzP
-X-Gm-Gg: ASbGnctBLNZzIivNnvJqTXNVN+9f1ff6Gm7Kf8ctuNRSfOCi7iB/KRFH1Mbr4PWNUGA
- OOCErR5TWof7S1mE8dikzC5c98N6a/YGyVWpkNbIJCDCvNTiuCX8BC1PzpASlzl6zkaS2yJ/GOv
- 3l1RdjnhpjrpNkS3LRf8010vT5jGN+AFzQBdZme70BetP6+hLv0TcFHe05hXdx+/WavN8=
-X-Received: by 2002:a05:600c:1993:b0:442:e9eb:1b48 with SMTP id
- 5b1f17b1804b1-451f0b277e1mr32554105e9.24.1749058658094; Wed, 04 Jun 2025
- 10:37:38 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1749090934; x=1749695734;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=EBC+N6dEH6cT5Fa6oWKe/1vnsNcoKLAGwdbtl/+9jMc=;
+ b=OhrbnliG46WW0lqR5BWOsHCVHn7eNOkVfUKDQdtH+Wu7YJztqRijaVWMOxwFy47rBS
+ ZW1CmP1lsadzzdHqTUIbrrtqhGIuZej4tbCf4igKX1lQvEhG6z+H53idD8vym3zANcsm
+ nf6VwsMSNGaPzOBkno5aO8mSG8kTkFzNuKKlSB/mjGVYxm20jEShwpf8fScqf7PxY9fo
+ pXMKKC/GzbZZA0t4MjsGoTgluL6v33PRpNYlLrDNp/Ju4u30raBQ6pAy05CM0dpPgkRq
+ 28vcwasQ5jnG6wchxu63jx46kj7Icc6/+aYx2ahA3tyH5kGlVTdihNPgcwzOhV2EsjP6
+ A2JA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVUsX4fE4K2c1v0nMhq1Ja2phCelO8JNtfwsZ74sHBu815DIcQtj1fXUoNiqimJhT28zzHImu+Mkw==@nongnu.org
+X-Gm-Message-State: AOJu0YyrBqhDaWfhZB7vEUydJrUFz94QOZl9xXKTvvb9zePWC6d3hsr5
+ QH7MsyBgdOa+EcbT1AsdP7jd6p6CvCBlmqI2ulCdzg64OIjftukC4TXjIYASZXs84JCa+WFIwea
+ h9KaJdetdii5EXWuekjtxiPRjMOkBYqKgeMmhxtHap9DAdcGUoUhEJQ==
+X-Gm-Gg: ASbGncvXGIdljzDkky6awvP8hS/eNk+VlP5yHlmA9y2HSmaREcrWMpKTlAdTDxqC4uO
+ jHGriIqDUdIZisIwnrP89eO296fUnk5s9WwIs8U70ihP2aYmelVUhMBuJUt80yBOF8M2UCEd1oz
+ bZwaz/nc1m+QoMxgHMyw47SbHuQRvZvZVaRlO+Zf5A93w1A4lS5bkeRG0yJmwUOc29xoD4tGs5d
+ 2WKvLKzIoBk8PhzkvSGgv5Toa0sfiXxFzXzPwj9ZlLYs9SqcprQQx7Dwijwf9xsc1W+meD90OaV
+ jSUsOOOzoibr
+X-Received: by 2002:a05:620a:394c:b0:7d0:9e4a:e42f with SMTP id
+ af79cd13be357-7d21a8cd3b8mr786388785a.43.1749090934489; 
+ Wed, 04 Jun 2025 19:35:34 -0700 (PDT)
+X-Received: by 2002:a05:620a:394c:b0:7d0:9e4a:e42f with SMTP id
+ af79cd13be357-7d21a8cd3b8mr786386885a.43.1749090934191; 
+ Wed, 04 Jun 2025 19:35:34 -0700 (PDT)
+Received: from [192.168.40.164] ([70.105.235.240])
+ by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-7d09a1a7579sm1157074585a.106.2025.06.04.19.35.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 04 Jun 2025 19:35:33 -0700 (PDT)
+Message-ID: <ce8a82c0-e8d9-447f-89ae-45fcafdd92e5@redhat.com>
+Date: Wed, 4 Jun 2025 22:34:57 -0400
 MIME-Version: 1.0
-From: Corentin GENDRE <cocotroupe20@gmail.com>
-Date: Wed, 4 Jun 2025 19:37:26 +0200
-X-Gm-Features: AX0GCFucdna23j8W5rKOIzWrU0NDoIhdfR8zmaHl83uzI2D29hnoxf2jjfl_H1A
-Message-ID: <CAPwCrcOwX3Atxwzrk=Rtpya_i_STv9+Gi8uY6ryJigPvhk5+DQ@mail.gmail.com>
-Subject: Inquiry About MPU Region Limit for Cortex-M7 in QEMU
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000001d1130636c27450"
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=cocotroupe20@gmail.com; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 0/6] hw/arm/virt: Add support for user creatable SMMUv3
+ device
+To: Nathan Chen <nathanc@nvidia.com>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: eric.auger@redhat.com, peter.maydell@linaro.org, jgg@nvidia.com,
+ nicolinc@nvidia.com, berrange@redhat.com, mochs@nvidia.com,
+ smostafa@google.com, linuxarm@huawei.com, wangzhou1@hisilicon.com,
+ jiangkunkun@huawei.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
+References: <20250602154110.48392-1-shameerali.kolothum.thodi@huawei.com>
+ <74d9f7a2-dbf4-48d5-bda8-847d1fc73e38@nvidia.com>
+From: Donald Dutile <ddutile@redhat.com>
+In-Reply-To: <74d9f7a2-dbf4-48d5-bda8-847d1fc73e38@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: nujJHvQSVzqvvPFv8iwNUNG_ehwMEc3LChsZvCOPwt0_1749090934
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=ddutile@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.128,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,49 +154,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rVceAJceiaeD
+X-TUID: SEXhTcBq3Z7D
 
---00000000000001d1130636c27450
-Content-Type: text/plain; charset="UTF-8"
 
-Dear QEMU Support Team,
 
-I hope this message finds you well.
+On 6/4/25 10:02 PM, Nathan Chen wrote:
+> On 6/2/2025 8:41 AM, Shameer Kolothum wrote:
+>> This patch series introduces support for a user-creatable SMMUv3 device
+>> (-device arm-smmuv3) in QEMU.
+> 
+> Tested-by: Nathan Chen <nathanc@nvidia.com>
+> 
+> I am able to create 16 SMMUv3 devices in a qemu VM with emulated devices properly associated with the guest SMMUs in guest sysfs - verified with some guest SMMUs having two or three emulated NICs assigned to them while other guest SMMUs have a minimum of one assigned.
+> 
+> Thanks,
+> Nathan
+> 
+Nathan,
+Great test!
+Can you share the xml &/or qemu cmdline, to demonstrate this broad capability?
+Also would be a good reference when (we know it isn't 'if') a new/different config
+that wasn't tested shows a bug, and we'll have more info to work with.
+Thanks,
+  Don
 
-I am currently working with the emulation of a Cortex-M7 target using QEMU
-and have encountered a limitation regarding the Memory Protection Unit
-(MPU). According to the ARM Cortex-M7 (and the MPS2-AN500) technical
-reference manual, the MPU should support up to 16 memory regions. However,
-in the current QEMU implementation, I noticed that only 12 MPU regions
-appear to be emulated.
-
-Could you please confirm whether this limitation is intentional or if there
-is a way to modify the number of MPU regions supported by QEMU for the
-Cortex-M7? If this parameter can be adjusted, I would greatly appreciate
-any guidance or documentation on how to do so.
-
-Thank you in advance for your help and for your continued work on QEMU.
-
-Best regards,
-
---00000000000001d1130636c27450
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><p>Dear QEMU Support Team,</p>
-<p>I hope this message finds you well.</p>
-<p>I am currently working with the emulation of a Cortex-M7 target using QE=
-MU and have encountered a limitation regarding the Memory Protection Unit (=
-MPU). According to the ARM Cortex-M7 (and the MPS2-AN500) technical referen=
-ce manual, the MPU should support up to 16 memory regions. However, in the =
-current QEMU implementation, I noticed that only 12 MPU regions appear to b=
-e emulated.</p>
-<p>Could you please confirm whether this limitation is intentional or if th=
-ere is a way to modify the number of MPU regions supported by QEMU for the =
-Cortex-M7? If this parameter can be adjusted, I would greatly appreciate an=
-y guidance or documentation on how to do so.</p>
-<p>Thank you in advance for your help and for your continued work on QEMU.<=
-/p>
-<p>Best regards,</p></div>
-
---00000000000001d1130636c27450--

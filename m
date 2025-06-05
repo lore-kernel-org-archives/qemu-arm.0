@@ -1,89 +1,88 @@
-Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp90406njc;
-        Thu, 5 Jun 2025 01:34:09 -0700 (PDT)
-X-Received: by 2002:a05:6a00:3d10:b0:73e:2d76:9eb1 with SMTP id d2e1a72fcca58-7480cf3af9emr6249032b3a.10.1749112449631;
-        Thu, 05 Jun 2025 01:34:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749112449; cv=none;
+Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp90947njc;
+        Thu, 5 Jun 2025 01:35:29 -0700 (PDT)
+X-Received: by 2002:a17:902:dad0:b0:234:e655:a618 with SMTP id d9443c01a7336-235e11cb8f1mr83121265ad.25.1749112529114;
+        Thu, 05 Jun 2025 01:35:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749112529; cv=none;
         d=google.com; s=arc-20240605;
-        b=OgYB3cIYWRMSJdqM6+AgGPsy4kyZohcQiQ8K8af1oKvazXxRxUGX8FVhQn378x76pK
-         S+0eBAkWMY4G1r12Rumc4XJ1H7y7vdyaYgdXhmWiwE+KQqXwZeRjWm3UPHE83KMtfJXJ
-         BBxWFSMXc4E9YzutEnmm5FSfRn134Awq3MCM+MahAh8QO8VXsdfUVPlodX7gyNMliy4F
-         rJIETZQCOGCVOLgRx6otQfp1WlIIm7Q2pRRzHS1EDMQVTZk9WHd18sohdjeBgDfc3sfk
-         fuf6Hgwg5TL7IRG/L/6c9bBARKSdn3VzUyN1WcNV8dS2xoYu/gry24P8YOoSsA2D6f4n
-         EWZA==
+        b=RpPNZKeHIZiCNrspTCAJOnUfiY2/E6O9kIHrDsukMi1V/HFGQqNJnrFs2L/avMcpEf
+         IDF6Lpjt+D6P4EkacmgOaHOnz9M0zKf3Qp5HsY6dNmUpGze7SNrM3ESTygtofSWAwTJ9
+         kJsYVrMIEPv3FFpbCzllIW11BN3EPZ5VIPzQ9HmRZ6qpXE3XAtq0xXFUSogHzGyNSrGK
+         KxyRDxZnYaqMbPaSCzms3rlwIN4hAmJKwsTuntRSmq9waDoEx/9suBtyc5eWCJjL6G2L
+         zVEQMqIESFyhsay5Eyp5z5kNww8sNb6ht0Ji9H8/SW7eOjRdqUpYL81lbR//EhX4e6QG
+         wUMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=tMOHrZzVrUi2/6e4m1AAupXpv/NaqEkKjQB9KOeRi1A=;
-        fh=f8+9SBMIS5nlfk/aBISynqOLVKqzmF/Xjd0hECl1/y8=;
-        b=g3qFmPkjuLu3toXakpXhDE77v1fB+7P/U6tipS3lJJ8h4dX/nGSnVRbo1W1OkCwvoV
-         OcMe+KUDtMDtwrInHQI2QPwJqpb2o89SG7ohLQd9Ze28474DvaAqBy+Uo2qya/TioQd6
-         kfsRFyG0OknUvzlRMivlzNsmIlZX/DLcEV0CV9+5WBjVv0pqQeXqOP2APz0VwP5xRuZB
-         IsIhd+VKHbD3ix3Rq+DZCgF6m0LIKbf2U6gwOINNQQOKLdHqDDw0gfPTh4tQBJSoyO3a
-         bkFpNR3Tmgmobxq9s1mRhLQZ6Jfv0luzuX80biPmvcyTSnbHA+hDxtB/DtoCbMhLhSxU
-         1Uuw==;
+        bh=0u3uA5JSpAEXaIO1NqCEQjYLy9eO7xSUc0BO/e3CoiU=;
+        fh=0zSasVjjJnj/Tf1YsNX5nWMUOlPhbxkd5Tnm4FFCxoQ=;
+        b=eok6pLxPCDfdQxlyY1F1tjAtxzxj5tsIxLEvAgx3C/hPbH0WSZaxXLN32Avf4NviH8
+         DIVTGEO/7DgbwTJ2yUOljbqW8ROWCTTdt5GaCwoqPGe9UWE2VooCisIRmEb48bMpecwJ
+         RihNS6CWbpv+1ngr3zlwZDt+ja2tSh85d0AE+k8ORM4NkQW+SAr90kNbSttzfshkDTh4
+         jQrG8YQamXcwbkP5tkBQUZCEZZAkOxramUJwNCe4gbULEUqKCVHUpqcN1LMzr1PSj/SP
+         qFzfTIWSLJDUQBCMmT305P8Ejz16YUnD1u8mXb6sqs8BbUaNsIDycEIWx7+f12td0eeQ
+         iXLg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=hcisjSS2;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=mHgdnqOO;
        spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 41be03b00d2f7-b2ecebbcbb3sor8498657a12.7.2025.06.05.01.34.09
+        by mx.google.com with SMTPS id d9443c01a7336-235c93c4640sor41644685ad.12.2025.06.05.01.35.29
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 05 Jun 2025 01:34:09 -0700 (PDT)
+        Thu, 05 Jun 2025 01:35:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=hcisjSS2;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=mHgdnqOO;
        spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1749112449; x=1749717249; darn=linaro.org;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1749112528; x=1749717328; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=tMOHrZzVrUi2/6e4m1AAupXpv/NaqEkKjQB9KOeRi1A=;
-        b=hcisjSS2YVyI2iJOKkKES1iFDb0ypVpdu6vHuikQaHLJjZgXLzYSd86Qz8AFkO/LSZ
-         lwwHe90RMx3VSex6uy/H7Av9Sd/rpmTfAhObgeqW4E19iezSvOwTBOWbS2YDKzdI3VcE
-         iQSHmOm+9v5YI1qjRFiPY4g0B6EItYDpyMehi1IrHMaYMYSETunIq2fFCySa17mRk3QF
-         alLnw+n1PrFDAy6zpQ4lJMH9T3C7vUAfBn472fs+59E6hfuzdPWjSUZwNjff8QXejvKo
-         QyO2jl++gAUMifgwzLKz0lGX3A52sQB4ztYt0IezSyzt/tP5echVfEojei4BeGbT+yUJ
-         wzng==
+        bh=0u3uA5JSpAEXaIO1NqCEQjYLy9eO7xSUc0BO/e3CoiU=;
+        b=mHgdnqOONZ4WIqt7IQ6EE5ktVrAues5yKX1r1TUdE6y5DzgglqPCTRv5IdRhZD6+nV
+         bZoX3fSvDLm7IxBodIyvk597txQsARz2eB7/Zytx0ikBnAuuJnEnxNRn1o7mbAi1DbIt
+         ByTBBKgSBo3WtzHdFJ7QgkQCV/0+4JcZRGVgn3uJ023+zAGlTNj3idPl9aaOvVGSIY7F
+         AbWlHCbv0X7+/qKnGS9quW6Es2lkVue+owBgOCS4KjWP5NYo5V6cJeyFobnven1ZcuvP
+         h1ynJX7Sk8ABWNWsODCHuwWYue0ROKO/4Aa8v5rtG3T+y8Dp5zUbKucavJ9m+6Qd8x+J
+         rrtA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749112449; x=1749717249;
+        d=1e100.net; s=20230601; t=1749112528; x=1749717328;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=tMOHrZzVrUi2/6e4m1AAupXpv/NaqEkKjQB9KOeRi1A=;
-        b=BIoKDZpcP8UehIx7RffBIOFNjzFwMA+r2Tx0B3YDeDTHsT/wQ1BGwQIrkRc0dtH38D
-         qfInk880xU2d8BVWJhIVUXLlVjsuLQJcfzhVQjanhmiB+vinM58NGCf5e4c3XyJUjg6r
-         OUjMQJ1vCjoth4ERRa3YPbtc21XAOfbpQ8Erz7bS46ZCQlVnNfl8/KHyaF8Ctc+DPlSn
-         1N8Q5O0jGhVKjs/bwoeA11OC7bKp5GfiEbbABIl+Fehef/ihGz1r53p9IHxyj2YedNFy
-         QlVbr8WaMgY0RM8gjriMZsqjmf3196xdIzRp0tP8u0rUvvK76Y21IC9yDqtqvOitK6o/
-         nbyQ==
-X-Gm-Message-State: AOJu0YyTY5xmmIpeHaPD9OaaiYTjK2txtOay8dboAzSaSgkZNbbBLzo0
-	9KnCOcb8gbc44nxZQ+KvLpG5pCFyt5NlcStSUyPVPeVL576mDDDL9OSj0d6nVWFDg3sNtL9hHX3
-	HiZ06
-X-Gm-Gg: ASbGncu0mHaPggWo/FM/rT0p1msVUGTjTw2Pt3FgrP4FPl6NAxDn7Xw6eof5KNdGl1U
-	jrGrNY1t20gA/smHimzQJhSgrGD2DQIUCe0x4tm5M94IVyGAZNyHQybzrIPHwiRW9ysGtEKkeqM
-	/Q+0DZvNEmQ7mLiPNGUUmt2OvFmqAXOMYb3hCW7HkjdA7HlPixnHOaaSqDXPNSKbWgmSkT3XLyM
-	j1Of7YPNKrHPKaB+And7G4aGQ+rjhjTb7p8EVQw7qaMRgWqL3i/T3AcgROH4pjMQ9q/44hSfAk0
-	vjHz4ThOvkOXtBBSLbFnG1ccXmCJ/B7dUumCnnhY8N2vPL3F7aHvnYni+bBxWw4mnxQoMhn59Hn
-	/TnOfRtBRUA==
-X-Google-Smtp-Source: AGHT+IGqeYx3+8JeKcdJXqGq7bE+FRenx1qtz0UucT0C/Q7fc5XqK5vOMmMJ6CCApw3GTNNxFQzQeQ==
-X-Received: by 2002:a17:90b:1e07:b0:2fe:e9c6:689e with SMTP id 98e67ed59e1d1-31310fff2d3mr7436095a91.8.1749112448977;
-        Thu, 05 Jun 2025 01:34:08 -0700 (PDT)
+        bh=0u3uA5JSpAEXaIO1NqCEQjYLy9eO7xSUc0BO/e3CoiU=;
+        b=a05lME56vpVUO130F9tErdX7gxf4olMlaBw8Wh/Ms67vq6d+t4mTVBOYjOENQ7bcLI
+         W628L4nDH5NB6NmzjA0ExWd0RogtbcjwFDXWr5dIScxKBQOpNiNbqP2a+Yox1meghRi4
+         U7blRpJqBLsq/j9DwdFxD8pDIA1CKqio8tPHe6GXscRFLbnPY7vgZAZn7Zw+v5Brnv2m
+         74uWKlt/yyq4nOcWJYKsdyhwKv2fycnfiJ0e5nXJP2tGbMig4IIytV9Uq6s8LtJcf3PX
+         cNDYY72au0E4X45P2kkXqRd08CzmOCnDyCvpb7IFTyBcNCFzJ4QstejbUWXB4FRzJbu7
+         XwgQ==
+X-Gm-Message-State: AOJu0Yy32ORNYMBckK2xZf5gHz6iRE31VOo1uurlyShbuCnU/ebiMsiI
+	ywJUpanEJvgAEoVojjfF5e+sxk/GzTpCxhlM9pbYwT/3d5Zcn53RrWw0YMu8iIxVOzEYxEvh2qn
+	6dsGb
+X-Gm-Gg: ASbGnctCV9pGpeAPUw/oy5X2Zu21rBx9X4W8J60Jc76Yws3b2vikKaU4/JjvtlVxu6+
+	84K6vX298Dtat+orZMNU8rCfSFKbcHo1c/5EFoFsr8JlIBDe7KABOy59LveEbX6lvfFGgCTFAo5
+	YC2dZTvQ8z8BfUKgzPcFmqH0cLeNom4Z72TtwRHBbBTYXdb4GfB37g5DToZrLV/aM4GqubrWTFp
+	tRwdbXII0r5BIrApdDULuADtR6e5kpNdsLojVVtoLPHhGV4HTnDemSzL7TTPv5bU1FCzseMtFRL
+	1opAOwnCRcYIhQDVZB7ZaVrdYpcSzyZRi6VGCHmBkeLWn3uAArW8I3qoodL6ptH0
+X-Google-Smtp-Source: AGHT+IGjp6Pm19QxT9iOLUpHQ8WVqM7TqpwHB8wLa/3Zj4KSKc2MQp/mN1JvyfH6aMJJyPjNJivX7g==
+X-Received: by 2002:a17:902:d488:b0:234:f182:a735 with SMTP id d9443c01a7336-235e11e5ef3mr88171765ad.34.1749112528438;
+        Thu, 05 Jun 2025 01:35:28 -0700 (PDT)
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from [157.82.203.223] ([157.82.203.223])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-313318e68f6sm762612a91.2.2025.06.05.01.34.04
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-23506cd3438sm114946755ad.136.2025.06.05.01.35.24
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 05 Jun 2025 01:34:08 -0700 (PDT)
-Message-ID: <1a86b86d-145a-44fc-9f87-2804767fb109@daynix.com>
-Date: Thu, 5 Jun 2025 17:34:03 +0900
+        Thu, 05 Jun 2025 01:35:28 -0700 (PDT)
+Message-ID: <e8b93b0b-461b-4029-9ed2-939ae51e3f81@daynix.com>
+Date: Thu, 5 Jun 2025 17:35:23 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 09/17] hw/display: re-arrange memory region tracking
+Subject: Re: [PATCH v4 08/17] MAINTAINERS: add Akihiko and Dmitry as reviewers
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
@@ -100,136 +99,43 @@ Cc: Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Laurent Vivier <lvivier@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-stable@nongnu.org
+ Mahmoud Mandour <ma.mandourr@gmail.com>
 References: <20250603110204.838117-1-alex.bennee@linaro.org>
- <20250603110204.838117-10-alex.bennee@linaro.org>
+ <20250603110204.838117-9-alex.bennee@linaro.org>
 Content-Language: en-US
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <20250603110204.838117-10-alex.bennee@linaro.org>
+In-Reply-To: <20250603110204.838117-9-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: SjG+XImjPe/i
+X-TUID: n2WuWaaJzJQB
 
 On 2025/06/03 20:01, Alex Bennée wrote:
-> QOM objects can be embedded in other QOM objects and managed as part
-> of their lifetime but this isn't the case for
-> virtio_gpu_virgl_hostmem_region. However before we can split it out we
-> need some other way of associating the wider data structure with the
-> memory region.
+> Thanks for volunteering to help.
 > 
-> Fortunately MemoryRegion has an opaque pointer. This is passed down to
-> MemoryRegionOps for device type regions but is unused in the
-> memory_region_init_ram_ptr() case. Use the opaque to carry the
-> reference and allow the final MemoryRegion object to be reaped when
-> its reference count is cleared.
-> 
-> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
+> Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
 > Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Message-Id: <20250410122643.1747913-2-manos.pitsidianakis@linaro.org>
-> Cc: qemu-stable@nongnu.org
+> Acked-by: Michael S. Tsirkin <mst@redhat.com>
 > ---
->   include/system/memory.h       |  1 +
->   hw/display/virtio-gpu-virgl.c | 23 ++++++++---------------
->   2 files changed, 9 insertions(+), 15 deletions(-)
+>   MAINTAINERS | 2 ++
+>   1 file changed, 2 insertions(+)
 > 
-> diff --git a/include/system/memory.h b/include/system/memory.h
-> index fc35a0dcad..90715ff44a 100644
-> --- a/include/system/memory.h
-> +++ b/include/system/memory.h
-> @@ -784,6 +784,7 @@ struct MemoryRegion {
->       DeviceState *dev;
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 7718199979..79b1d5c0b3 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -2669,6 +2669,8 @@ F: include/hw/display/ramfb.h
 >   
->       const MemoryRegionOps *ops;
-> +    /* opaque data, used by backends like @ops */
->       void *opaque;
->       MemoryRegion *container;
->       int mapped_via_alias; /* Mapped via an alias, container might be NULL */
-> diff --git a/hw/display/virtio-gpu-virgl.c b/hw/display/virtio-gpu-virgl.c
-> index 145a0b3879..71a7500de9 100644
-> --- a/hw/display/virtio-gpu-virgl.c
-> +++ b/hw/display/virtio-gpu-virgl.c
-> @@ -52,17 +52,11 @@ virgl_get_egl_display(G_GNUC_UNUSED void *cookie)
->   
->   #if VIRGL_VERSION_MAJOR >= 1
->   struct virtio_gpu_virgl_hostmem_region {
-> -    MemoryRegion mr;
-> +    MemoryRegion *mr;
->       struct VirtIOGPU *g;
->       bool finish_unmapping;
->   };
->   
-> -static struct virtio_gpu_virgl_hostmem_region *
-> -to_hostmem_region(MemoryRegion *mr)
-> -{
-> -    return container_of(mr, struct virtio_gpu_virgl_hostmem_region, mr);
-> -}
-> -
->   static void virtio_gpu_virgl_resume_cmdq_bh(void *opaque)
->   {
->       VirtIOGPU *g = opaque;
-> @@ -73,14 +67,12 @@ static void virtio_gpu_virgl_resume_cmdq_bh(void *opaque)
->   static void virtio_gpu_virgl_hostmem_region_free(void *obj)
->   {
->       MemoryRegion *mr = MEMORY_REGION(obj);
-> -    struct virtio_gpu_virgl_hostmem_region *vmr;
-> +    struct virtio_gpu_virgl_hostmem_region *vmr = mr->opaque;
->       VirtIOGPUBase *b;
->       VirtIOGPUGL *gl;
->   
-> -    vmr = to_hostmem_region(mr);
-> -    vmr->finish_unmapping = true;
-> -
->       b = VIRTIO_GPU_BASE(vmr->g);
-> +    vmr->finish_unmapping = true;
->       b->renderer_blocked--;
->   
->       /*
-> @@ -118,8 +110,8 @@ virtio_gpu_virgl_map_resource_blob(VirtIOGPU *g,
->   
->       vmr = g_new0(struct virtio_gpu_virgl_hostmem_region, 1);
->       vmr->g = g;
-> +    mr = g_new0(MemoryRegion, 1);
+>   virtio-gpu
+>   M: Alex Bennée <alex.bennee@linaro.org>
+> +R: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-This patch does nothing more than adding a separate allocation for 
-MemoryRegion. Besides there is no corresponding g_free(). This patch can 
-be simply dropped.
+Please update my email address according to:
+https://lore.kernel.org/qemu-devel/20250531-rsg-v1-1-e0bae1e1d90e@rsg.ci.i.u-tokyo.ac.jp/
 
-Regards,
-Akihiko Odaki
-
->   
-> -    mr = &vmr->mr;
->       memory_region_init_ram_ptr(mr, OBJECT(mr), "blob", size, data);
->       memory_region_add_subregion(&b->hostmem, offset, mr);
->       memory_region_set_enabled(mr, true);
-> @@ -131,7 +123,9 @@ virtio_gpu_virgl_map_resource_blob(VirtIOGPU *g,
->        * command processing until MR is fully unreferenced and freed.
->        */
->       OBJECT(mr)->free = virtio_gpu_virgl_hostmem_region_free;
-> +    mr->opaque = vmr;
->   
-> +    vmr->mr = mr;
->       res->mr = mr;
->   
->       return 0;
-> @@ -142,16 +136,15 @@ virtio_gpu_virgl_unmap_resource_blob(VirtIOGPU *g,
->                                        struct virtio_gpu_virgl_resource *res,
->                                        bool *cmd_suspended)
->   {
-> -    struct virtio_gpu_virgl_hostmem_region *vmr;
->       VirtIOGPUBase *b = VIRTIO_GPU_BASE(g);
->       MemoryRegion *mr = res->mr;
-> +    struct virtio_gpu_virgl_hostmem_region *vmr;
->       int ret;
->   
->       if (!mr) {
->           return 0;
->       }
-> -
-> -    vmr = to_hostmem_region(res->mr);
-> +    vmr = mr->opaque;
->   
->       /*
->        * Perform async unmapping in 3 steps:
+> +R: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+>   S: Odd Fixes
+>   F: hw/display/virtio-gpu*
+>   F: hw/display/virtio-vga.*

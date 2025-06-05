@@ -1,118 +1,189 @@
-Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp284032njc;
-        Thu, 5 Jun 2025 07:22:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXZd+j/NZ2IDqPmpMuzhcl0TRp7e8NBvLen+/QuVCCO8SLn/kfh/FY4WGLL95d0q/V42j2Iey+CJBPrsQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFMa534l9crAUj1GKFnxs3YQh9KYWKsDQ1Wn6HN9Mtdcjfv2JOs1zLPm5cDRKxkB3gxQ4qA
-X-Received: by 2002:a05:622a:4ac6:b0:4a4:3086:2ac6 with SMTP id d75a77b69052e-4a5a582e026mr113408391cf.52.1749133349043;
-        Thu, 05 Jun 2025 07:22:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749133349; cv=none;
+Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp285472njc;
+        Thu, 5 Jun 2025 07:24:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXaLI0UYs64aTLgZX81YNAt94J/bI94vLIRlzmCH3BCZCtFIMbw1FxsTt9Bm8Usc+Gtk8Xbh1Myq8CnCA==@linaro.org
+X-Google-Smtp-Source: AGHT+IES6rPtIgdxF8qHKwSq5GJ6T0Uqtg5TeGUBDGXPRk+D/p9xo1/B3UXk4Q+3sqYMuhVsnhiX
+X-Received: by 2002:a05:620a:4409:b0:7c5:57b1:1fd1 with SMTP id af79cd13be357-7d219909b28mr1346714385a.47.1749133486629;
+        Thu, 05 Jun 2025 07:24:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749133486; cv=none;
         d=google.com; s=arc-20240605;
-        b=KlaytsOr1OOjArVEhP7ZdrwfuDTMWSuFq0AFMgRXpGydwXVjnq+2ori75fUV/e4KZP
-         QiJiCzryn6RRj+g4nZx+ePyrQNeu49/zDvMerArlxviwFWAZnkbWTrWpFidCbvLTMmR2
-         c75KmyjxoclhPp/1x7VAgVK8LHDB5RyNVHlWWwWYdyiKRAsszPMez1tlFKr1nvzJYJxA
-         R8s5jxmcuQSrnU8rVVK6knuxDyiqqAiMsENb4NYI+bRWKFMWG3HFd2YCjGMlt2/GRcqP
-         sDucChvw7VyOAo9zz8eZGZ2V1eCxrYFSUeQ5tXm7B1Yackx7UoyO2g/nXrPE1KwkFmBl
-         rTNQ==
+        b=TMMRg9O4+EMrC3ScpLIP9Qmim5A4ozNr9vNlffpbuQ+2Hx39QE+SMYaCdZliYWr0qV
+         oNr1EG/ZRK0T9+SqrZYSS7u6HYLod9+tWAq+YTRiLUAJ7G6RmB54IjDw+tYuuKrfXjH1
+         VuaOZ7yaE2R0umw6H8UEv33iKZPU/5aOR05ECM3qBS2dPS9zwxvgixgFM4k2f+DelbJf
+         2ofe/zqdYIO8pHDrwP+wEoHROfSYr5+5eVw42Eu+zflFtngj8WVbO7QCEVBmPyfKb1Oo
+         cTWiIAbLyI7t7uJbCJo70kXTAPjvfmnCy4unQUdLghCnVYt0abd75FS2bVJGhzxGefOr
+         Rwag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=SRdzD7ZQN8BMWfgAisKzDMkuBRwVVn5vbPGVFjaxMSo=;
-        fh=W+9lqOwYKkeDrPoFWlFMGBkKiRi71vwD43j9ZyNwpms=;
-        b=e27sUYfmDSfX+Z0rJnuCM3VSYVsuxQ0ReTwh8XtXp0QmTND0UQqbHQL7zyzSk6tFle
-         +h5pAI8L7xPe6ScIxxhuT8TvZCtFkrFrpb5kNIvU3eV62+lLW367a8jPaycpVx3DTGVu
-         /b81lP/w2tRbNRUkrBrlVTlfwkhaj9eseq9ITAvedN1AJU4tbL3TMJW3HWFRiOe+vT5a
-         l9tT4bjnm8Px7IwVlcFAu0hw2WuWm5tByEuxT+R607M2efeaEPdOxRBX+6JiaO81kTxD
-         RpNil09VoXj0QyL1uTVOvMx27zJxY/ydw6AtQI8Vc4YtDzq5MfKAkyBxqCdQ0KM5w7Ap
-         2mcQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=f855TIziVmCXvNE138r+Ybnl0nkQZNKWUJYDAoHnybs=;
+        fh=eDqwk9IZwo1H4BTBs/dD9uB3Hr51SEmK03UWuti1p7g=;
+        b=M2tSXW3w3l1tC0Oty9UOddAgjN/irYN8W8dA4Oih0pUfuF3JnL0EHCz7k38pOaF2U/
+         j9XvfEUcEBK8rzqy8HPvLxLFI749wB4fSTOHpj4O+C/nZep3XhI3z1iyrg9ua1XkqGuP
+         DwsoNAaWEFCTxpFgA80qvhVIUdzMcEr6teJ6QbQSyoZYc1P8832gYF5TsZTUsTKNpIXU
+         BY3qd3cU0FreIlT8h/rEQN3nmKy9B3SQtJkQwpuic77dfKHk921DhnaPGkJWEMCMfyJu
+         N3Jk3qpsZ3bP0i4pOEKG2b0Krj56VZ1c77Y89XD2aezOP/clmDhMEnCB8t6ZEa6mWeMF
+         xgdQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="lJpkoCE/";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c4xxrA6f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a581f72e74si131048991cf.356.2025.06.05.07.22.28
+        by mx.google.com with ESMTPS id af79cd13be357-7d0a52b7c3esi1523674485a.192.2025.06.05.07.24.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Jun 2025 07:22:29 -0700 (PDT)
+        Thu, 05 Jun 2025 07:24:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="lJpkoCE/";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c4xxrA6f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uNBU9-0006pY-5a; Thu, 05 Jun 2025 10:22:25 -0400
+	id 1uNBW8-00005d-A7; Thu, 05 Jun 2025 10:24:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cocotroupe20@gmail.com>)
- id 1uNBU2-0006of-0L
- for qemu-arm@nongnu.org; Thu, 05 Jun 2025 10:22:18 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cocotroupe20@gmail.com>)
- id 1uNBTp-0001fz-VG
- for qemu-arm@nongnu.org; Thu, 05 Jun 2025 10:22:17 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-450ce3a2dd5so9218415e9.3
- for <qemu-arm@nongnu.org>; Thu, 05 Jun 2025 07:21:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1749133317; x=1749738117; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=SRdzD7ZQN8BMWfgAisKzDMkuBRwVVn5vbPGVFjaxMSo=;
- b=lJpkoCE/BJDvDLRwZbK6PdBnl+Nr6qUXRHmOVss/7k5BPqYKpoItqXKgsC5iTKLHNX
- tEwrLckFV9eyPfFE9mgQeUTSASA4bw2hzzki6l8CDqS515TZzndhFfLQ7DvEU0LEpvq2
- 7B7jq1wrs/Qzc5aGOd+6H4iY601JoSulq4OXRizj7fE7GD5lfxCZ8zMpvj2SAVLl6t9n
- v9WDyVjzu6SAULqncma7MeNh1XO2ALnDeXfNmG4dHqIHtf8+ovD8MAIpEB3CeX8Stf/C
- Yf75tKTbobrh7j+kueUnc4u027EAhnbbOb33V9pIE8GWXd4nXL/44RVpajJm2m/LBr8C
- l+Bw==
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uNBW2-0008VL-4X
+ for qemu-arm@nongnu.org; Thu, 05 Jun 2025 10:24:22 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uNBVz-0001sl-0t
+ for qemu-arm@nongnu.org; Thu, 05 Jun 2025 10:24:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1749133456;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=f855TIziVmCXvNE138r+Ybnl0nkQZNKWUJYDAoHnybs=;
+ b=c4xxrA6fp4M9LURaPCZMcNslfR5L1L7caqqq8JQgBoB3Em54w4pCFlLlZI8Ptk1LfFcxw8
+ GbhyTrHRh3XYvufff8BZhoPySx+zDvL6bXvbi91ytB+ruaZVx8ZVdHX0U3dXhgjkLYP1Uv
+ WmapMtIBs3KsEmQVF5Qp9q9pXXHUiwQ=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-620-Iw8MkvikNlmqtLWRpwFqZQ-1; Thu, 05 Jun 2025 10:24:15 -0400
+X-MC-Unique: Iw8MkvikNlmqtLWRpwFqZQ-1
+X-Mimecast-MFC-AGG-ID: Iw8MkvikNlmqtLWRpwFqZQ_1749133454
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-450787c8626so5834545e9.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Jun 2025 07:24:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749133317; x=1749738117;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=SRdzD7ZQN8BMWfgAisKzDMkuBRwVVn5vbPGVFjaxMSo=;
- b=tviPt8yrZuucvdr1Lc4SJGxrfXnJOtvzOqreHF6kFifABAT+oET0pa0KDxvyL5VnI/
- Jpt+yjemdnzH5JGWf1uHwdxsrsexzkxHBfyhbBRoSH5OaRHffJ5/rt+8jCmKB8iM739S
- EeHUPa9UsBCN5etjifDt8SfgAGx9NzrwYpg9nL7qJyX2qINJmav52OJmCs/e4KvDXdrx
- LQtT4BU6xaFU/kSxtITMDHx9ncsRb8AgBQXQJXcnkc9YVRO2+8soz6xk4ogSMRCHvXZh
- FVupRuSSjvdltx1Snh+s/UWn/34rYNRUAcqSoBX4YMXCedNyVpmPEbUKv7+UkGeQ2+vZ
- M4TQ==
-X-Gm-Message-State: AOJu0YzlG+WqCpMWVWYeNU8mahVIWvUhTQFgSj2nHcokrn1yRaltNkji
- vYqR4GEaLQAbw2zlxHGrmHevWUjlvmnqpiDjdIzYuCfwAlR7Ut/w0Wz3PR8AN0GFWKk+qWsMUgE
- l3rUpkn/Cbd5t3ewFFUg0kNbiWUpvSqo=
-X-Gm-Gg: ASbGncsVU1wBgwyrToMGNXlfwdnjQva7St260hf7i2NjhXP/KULq8EdWZauyHvN4bgj
- T1FqZrRCA+5l0pXJ7xAnINGURXbGaJLFefbv/atUXLcKqlZwzPiTNz952qd9U0j+P17L1mXcPHd
- Xx8dcqLk7UaYLr7KVJeBmKF68+rhbVeya0Rkm/8aHZR14J
-X-Received: by 2002:a5d:5885:0:b0:3a3:5f36:33ee with SMTP id
- ffacd0b85a97d-3a51d970a2emr5705000f8f.32.1749133317100; Thu, 05 Jun 2025
- 07:21:57 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1749133454; x=1749738254;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=f855TIziVmCXvNE138r+Ybnl0nkQZNKWUJYDAoHnybs=;
+ b=f8KOtdUIARHLdAEHri13Lrgp/bgaBoOTlhYRuXz6s3IqOXBOx30CyrIH28baSmItLZ
+ ze/jk8cueHzZBI5aVneip3zoHR9VUF4UBt8wPWkLI/stPmDNvjFriReK6jBAYsPHlLXI
+ hr6e7PFX7GtYT52NXe3DqgJvKvitwblez+SNDtv/cHtRLBPpAvzwQBkX9JiX94KSPiYQ
+ 1OhIb89pIcNOYbH/mErfE9qO/mFM0oWufMdgVoc85fAB/50BqDSxEJZXjYxCt5kWkCUg
+ kg55ekv5liXd5cU2crg4Zo/aESXoXBniDrcjXeKDTfikxa4nEQLUtZ7B7x6qTsoFW7om
+ 2C/g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWihk9JOitSmP1fJPJWB6zgxubHoB2QOBSyz7b+CpbAq2tq/SeRjY0DtBdB9pSnIxXvzCH+hgl0Ew==@nongnu.org
+X-Gm-Message-State: AOJu0Yzxfx6sd2YRkhYlnXjn4acoVD2EUTyOCEcPaCEENoksavtWdk6w
+ qJHi3Hw9wASBthF7CAChXgkom7n8VmCgNKoljKyjK8Jr/wkeu7euc1km17tq/HqY18Mw6WwzdxS
+ dC7i9cWJR2IZx7rFLAEfIE4dCG39JEGNy+R1U3HvNFPQNQZ2G/fjEoA==
+X-Gm-Gg: ASbGncu83FbevMPhEcqezqtVudbYxI2l0jDMdpPBIyPpCs4sKpasHejfhl4mw7OQW9I
+ ypNhQDHSAXcN3L8E62evpDDXdW6G25ee1ZIln3vXwKDuY9efB6DdgTvwVdHiyV9jA7OoAovuOm0
+ /kRp0nCwUozLeE3W85W27UfWVo+1JTEnn1OtE0+5mrphP78Yqe1XWtVTEEfUg5ffxN8jFrkFFTX
+ NuaCbiCxagGCH3XtFX+2CvItX4sMlXCzrYCy+zQ0afhzYVRGVkJWRewzo+Si7v4OzTYYMv3qQ1v
+ 81WKWEFJt4ZFZmUIlpZp3yV9V5/Rg45FP0sSozWWsh0IVdTJg5wrRxBSKi6wYOqqHPM4ye6eR7u
+ 9oh0tYhGXpZy7iwkQrsH6zJwzHM9MRRoBWis=
+X-Received: by 2002:a5d:5f46:0:b0:3a4:eef9:818a with SMTP id
+ ffacd0b85a97d-3a51d966588mr6199882f8f.27.1749133453588; 
+ Thu, 05 Jun 2025 07:24:13 -0700 (PDT)
+X-Received: by 2002:a5d:5f46:0:b0:3a4:eef9:818a with SMTP id
+ ffacd0b85a97d-3a51d966588mr6199855f8f.27.1749133453195; 
+ Thu, 05 Jun 2025 07:24:13 -0700 (PDT)
+Received: from ?IPV6:2a01:cb01:54:3894:a12c:7ed9:4ede:d4f5?
+ (2a01cb0100543894a12c7ed94eded4f5.ipv6.abo.wanadoo.fr.
+ [2a01:cb01:54:3894:a12c:7ed9:4ede:d4f5])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3a5247363a9sm3566830f8f.24.2025.06.05.07.24.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 05 Jun 2025 07:24:12 -0700 (PDT)
+Message-ID: <2030db73-4f1e-46ed-98ea-c469e8b0ecea@redhat.com>
+Date: Thu, 5 Jun 2025 16:24:07 +0200
 MIME-Version: 1.0
-References: <CAPwCrcOwX3Atxwzrk=Rtpya_i_STv9+Gi8uY6ryJigPvhk5+DQ@mail.gmail.com>
- <CAFEAcA9y0P9KEQnv7fPxc8k5paCZQoQc2CqaVHTLFWm6+Aau5A@mail.gmail.com>
-In-Reply-To: <CAFEAcA9y0P9KEQnv7fPxc8k5paCZQoQc2CqaVHTLFWm6+Aau5A@mail.gmail.com>
-From: Corentin GENDRE <cocotroupe20@gmail.com>
-Date: Thu, 5 Jun 2025 16:21:45 +0200
-X-Gm-Features: AX0GCFs3wGvInWTLbmIFh8unAc8_oZsz1yGmSNOUXZdvHb8lRO58I7953NWDSxc
-Message-ID: <CAPwCrcMHJxQW002RPxUS2aO=4BpNYCZzGSPw_JkcVn8gVAcQ-g@mail.gmail.com>
-Subject: Re: Inquiry About MPU Region Limit for Cortex-M7 in QEMU
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000007da2d0636d3d6c6"
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=cocotroupe20@gmail.com; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] ramfb: Add property to control if load the romfile
+To: Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Shaoqin Huang <shahuang@redhat.com>, qemu-arm@nongnu.org,
+ Eric Auger <eauger@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Alex Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org
+References: <20250605030351.2056571-1-shahuang@redhat.com>
+ <746b078e-bd06-4361-aec7-2301412abb18@linaro.org>
+ <kep5frpl24d74evoyf367pqkyoj6xez2pirk7xlzcoompyzq4c@ouxab77sdm55>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
+ 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
+ yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
+ 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
+ ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
+ RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
+ gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
+ 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
+ Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
+ tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSJDw6lkcmljIExl
+ IEdvYXRlciA8Y2xnQHJlZGhhdC5jb20+wsGRBBMBCAA7FiEEoPZlSPBIlev+awtgUaNDx8/7
+ 7KEFAmTLlVECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AACgkQUaNDx8/77KG0eg//
+ S0zIzTcxkrwJ/9XgdcvVTnXLVF9V4/tZPfB7sCp8rpDCEseU6O0TkOVFoGWM39sEMiQBSvyY
+ lHrP7p7E/JYQNNLh441MfaX8RJ5Ul3btluLapm8oHp/vbHKV2IhLcpNCfAqaQKdfk8yazYhh
+ EdxTBlzxPcu+78uE5fF4wusmtutK0JG0sAgq0mHFZX7qKG6LIbdLdaQalZ8CCFMKUhLptW71
+ xe+aNrn7hScBoOj2kTDRgf9CE7svmjGToJzUxgeh9mIkxAxTu7XU+8lmL28j2L5uNuDOq9vl
+ hM30OT+pfHmyPLtLK8+GXfFDxjea5hZLF+2yolE/ATQFt9AmOmXC+YayrcO2ZvdnKExZS1o8
+ VUKpZgRnkwMUUReaF/mTauRQGLuS4lDcI4DrARPyLGNbvYlpmJWnGRWCDguQ/LBPpbG7djoy
+ k3NlvoeA757c4DgCzggViqLm0Bae320qEc6z9o0X0ePqSU2f7vcuWN49Uhox5kM5L86DzjEQ
+ RHXndoJkeL8LmHx8DM+kx4aZt0zVfCHwmKTkSTQoAQakLpLte7tWXIio9ZKhUGPv/eHxXEoS
+ 0rOOAZ6np1U/xNR82QbF9qr9TrTVI3GtVe7Vxmff+qoSAxJiZQCo5kt0YlWwti2fFI4xvkOi
+ V7lyhOA3+/3oRKpZYQ86Frlo61HU3r6d9wzOwU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhW
+ pOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNLSoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZ
+ KXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVUcP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwp
+ bV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6
+ TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFU
+ CSLB2AE4wXQkJbApye48qnZ09zc929df5gU6hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iS
+ YBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616dtb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6g
+ LxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7
+ JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1cOY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0Sdu
+ jWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/Jx
+ IqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k
+ 8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoXywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjK
+ yKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9j
+ hQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Tad2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yop
+ s302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it+OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/p
+ LHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1nHzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBU
+ wYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVISl73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lU
+ XOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfA
+ HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
+ izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <kep5frpl24d74evoyf367pqkyoj6xez2pirk7xlzcoompyzq4c@ouxab77sdm55>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: TT-wTboiUCO-T-nUEtlJF7DWcKgxUzvIYmg247MvL7Y_1749133454
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.132,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,190 +198,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fK6oZOVcz0FF
+X-TUID: 0qKlnbCUHHwv
 
---00000000000007da2d0636d3d6c6
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 6/5/25 14:21, Gerd Hoffmann wrote:
+>    Hi,
+> 
+>>> Now the ramfb will load the vgabios-ramfb.bin unconditionally, but only
+>>> the x86 need the vgabios-ramfb.bin, this can cause that when use the
+>>> release package on arm64 it can't find the vgabios-ramfb.bin.
+> 
+>> Simpler to directly pass the ROM path instead of using a boolean,
+>> so board (or CLI) could pass path to non-x86 rom.
+> 
+> The rom is loaded into a fw_cfg file which only seabios will look at.
+> So this rom logic is x86-specific.
+> 
+> edk2 ships an EFI driver for ramfb, that is how ramfb is used on !x86
+> platforms today, and I don't expect that to change.
 
-Thank you for your answer.
+Should we also set the vfio-pci::ramfb-romfile property to false in
+a compat property for ARM machines then ? I don't know for RISC-V and
+PPC.
 
-Le jeu. 5 juin 2025 =C3=A0 15:49, Peter Maydell <peter.maydell@linaro.org> =
-a
-=C3=A9crit :
 
-> On Wed, 4 Jun 2025 at 18:38, Corentin GENDRE <cocotroupe20@gmail.com>
-> wrote:
-> > Dear QEMU Support Team,
->
-> There is no QEMU Support Team: just people who use it and
-> who work on it :-)
->
-> > I am currently working with the emulation of a Cortex-M7 target using
-> QEMU and have encountered a limitation regarding the Memory Protection Un=
-it
-> (MPU). According to the ARM Cortex-M7 (and the MPS2-AN500) technical
-> reference manual, the MPU should support up to 16 memory regions. However=
-,
-> in the current QEMU implementation, I noticed that only 12 MPU regions
-> appear to be emulated.
-> >
-> > Could you please confirm whether this limitation is intentional or if
-> there is a way to modify the number of MPU regions supported by QEMU for
-> the Cortex-M7? If this parameter can be adjusted, I would greatly
-> appreciate any guidance or documentation on how to do so.
->
-> This is a bug, but I don't think we are setting up 12 MPU
-> regions; we default to 8 for the Cortex-M7 and we aren't
-> overriding this for the mps2-an500 board. (This is because
-> this board shares code with the AN385, AN386 and AN511:
-> those are all Cortex-M3 and -M4, which don't have a configurable
-> number of MPU regions, so always have 8. The M7 does have a
-> config knob for this (you can select "no MPU", 8 regions, or 16)
-> but we missed setting it correctly when we added the AN500 handling.)
->
-> This (only very lightly tested) patch ought to fix it; I'll
-> send that to qemu-devel in a bit. Let me know if it works for you.
->
-> Author: Peter Maydell <peter.maydell@linaro.org>
-> Date:   Thu Jun 5 14:36:16 2025 +0100
->
->     hw/arm/mps2: Configure the AN500 CPU with 16 MPU regions
->
->     The AN500 application note documents that it configures the Cortex-M7
->     CPU to have 16 MPU regions. We weren't doing this in our emulation,
->     so the CPU had only the default 8 MPU regions. Set the mpu-ns-regions
->     property to 16 for this board.
->
->     This bug doesn't affect any of the other board types we model in
->     this source file, because they all use either the Cortex-M3 or
->     Cortex-M4. Those CPUs do not have an RTL configurable number of
->     MPU regions, and always provide 8 regions if the MPU is built in.
->
->     Cc: qemu-stable@nongnu.org
->     Reported-by: Corentin GENDRE <cocotroupe20@gmail.com>
->     Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->
-> diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-> index 58efb41e6db..50e1a1c1c80 100644
-> --- a/hw/arm/mps2.c
-> +++ b/hw/arm/mps2.c
-> @@ -224,7 +224,11 @@ static void mps2_common_init(MachineState *machine)
->      switch (mmc->fpga_type) {
->      case FPGA_AN385:
->      case FPGA_AN386:
-> +        qdev_prop_set_uint32(armv7m, "num-irq", 32);
-> +        break;
->      case FPGA_AN500:
-> +        /* The AN500 configures its Cortex-M7 with 16 MPU regions */
-> +        qdev_prop_set_uint32(armv7m, "mpu-ns-dregions", 16);
->          qdev_prop_set_uint32(armv7m, "num-irq", 32);
->          break;
->      case FPGA_AN511:
->
->
-> thanks
-> -- PMM
->
+C.
+  
+> IMHO a bool is perfectly fine here, I don't think we will ever need the
+> flexibility to specify some other rom here.
+> > take care,
+>    Gerd
+> 
 
---00000000000007da2d0636d3d6c6
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">Thank you for your answer.=C2=A0<br></div=
-><br><div class=3D"gmail_quote gmail_quote_container"><div dir=3D"ltr" clas=
-s=3D"gmail_attr">Le=C2=A0jeu. 5 juin 2025 =C3=A0=C2=A015:49, Peter Maydell =
-&lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a=
->&gt; a =C3=A9crit=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">On Wed, 4 Jun 2025 at 18:38, Corentin GENDRE &lt;<a href=3D"mail=
-to:cocotroupe20@gmail.com" target=3D"_blank">cocotroupe20@gmail.com</a>&gt;=
- wrote:<br>
-&gt; Dear QEMU Support Team,<br>
-<br>
-There is no QEMU Support Team: just people who use it and<br>
-who work on it :-)<br>
-<br>
-&gt; I am currently working with the emulation of a Cortex-M7 target using =
-QEMU and have encountered a limitation regarding the Memory Protection Unit=
- (MPU). According to the ARM Cortex-M7 (and the MPS2-AN500) technical refer=
-ence manual, the MPU should support up to 16 memory regions. However, in th=
-e current QEMU implementation, I noticed that only 12 MPU regions appear to=
- be emulated.<br>
-&gt;<br>
-&gt; Could you please confirm whether this limitation is intentional or if =
-there is a way to modify the number of MPU regions supported by QEMU for th=
-e Cortex-M7? If this parameter can be adjusted, I would greatly appreciate =
-any guidance or documentation on how to do so.<br>
-<br>
-This is a bug, but I don&#39;t think we are setting up 12 MPU<br>
-regions; we default to 8 for the Cortex-M7 and we aren&#39;t<br>
-overriding this for the mps2-an500 board. (This is because<br>
-this board shares code with the AN385, AN386 and AN511:<br>
-those are all Cortex-M3 and -M4, which don&#39;t have a configurable<br>
-number of MPU regions, so always have 8. The M7 does have a<br>
-config knob for this (you can select &quot;no MPU&quot;, 8 regions, or 16)<=
-br>
-but we missed setting it correctly when we added the AN500 handling.)<br>
-<br>
-This (only very lightly tested) patch ought to fix it; I&#39;ll<br>
-send that to qemu-devel in a bit. Let me know if it works for you.<br>
-<br>
-Author: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" targe=
-t=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-Date:=C2=A0 =C2=A0Thu Jun 5 14:36:16 2025 +0100<br>
-<br>
-=C2=A0 =C2=A0 hw/arm/mps2: Configure the AN500 CPU with 16 MPU regions<br>
-<br>
-=C2=A0 =C2=A0 The AN500 application note documents that it configures the C=
-ortex-M7<br>
-=C2=A0 =C2=A0 CPU to have 16 MPU regions. We weren&#39;t doing this in our =
-emulation,<br>
-=C2=A0 =C2=A0 so the CPU had only the default 8 MPU regions. Set the mpu-ns=
--regions<br>
-=C2=A0 =C2=A0 property to 16 for this board.<br>
-<br>
-=C2=A0 =C2=A0 This bug doesn&#39;t affect any of the other board types we m=
-odel in<br>
-=C2=A0 =C2=A0 this source file, because they all use either the Cortex-M3 o=
-r<br>
-=C2=A0 =C2=A0 Cortex-M4. Those CPUs do not have an RTL configurable number =
-of<br>
-=C2=A0 =C2=A0 MPU regions, and always provide 8 regions if the MPU is built=
- in.<br>
-<br>
-=C2=A0 =C2=A0 Cc: <a href=3D"mailto:qemu-stable@nongnu.org" target=3D"_blan=
-k">qemu-stable@nongnu.org</a><br>
-=C2=A0 =C2=A0 Reported-by: Corentin GENDRE &lt;<a href=3D"mailto:cocotroupe=
-20@gmail.com" target=3D"_blank">cocotroupe20@gmail.com</a>&gt;<br>
-=C2=A0 =C2=A0 Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.mayd=
-ell@linaro.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-<br>
-diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c<br>
-index 58efb41e6db..50e1a1c1c80 100644<br>
---- a/hw/arm/mps2.c<br>
-+++ b/hw/arm/mps2.c<br>
-@@ -224,7 +224,11 @@ static void mps2_common_init(MachineState *machine)<br=
->
-=C2=A0 =C2=A0 =C2=A0switch (mmc-&gt;fpga_type) {<br>
-=C2=A0 =C2=A0 =C2=A0case FPGA_AN385:<br>
-=C2=A0 =C2=A0 =C2=A0case FPGA_AN386:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_uint32(armv7m, &quot;num-irq&quo=
-t;, 32);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-=C2=A0 =C2=A0 =C2=A0case FPGA_AN500:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* The AN500 configures its Cortex-M7 with 16 =
-MPU regions */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_uint32(armv7m, &quot;mpu-ns-dreg=
-ions&quot;, 16);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_prop_set_uint32(armv7m, &quot;num-ir=
-q&quot;, 32);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
-=C2=A0 =C2=A0 =C2=A0case FPGA_AN511:<br>
-<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div></div>
-
---00000000000007da2d0636d3d6c6--

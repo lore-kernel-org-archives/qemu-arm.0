@@ -1,85 +1,85 @@
-Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp112122njc;
-        Thu, 5 Jun 2025 02:24:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUn/K+TBVcBgvLo/IMCEKGUe88ouIUUfQy3uyMQG+IHD0HAo1YB9NTq6B9+2lgg1Pt00XE9HJj9D3DT9w==@linaro.org
-X-Google-Smtp-Source: AGHT+IHvlCnyecWjlIJ6SeCIwAvLC43IvB/3gsgLTBUaySufX3zQjhl2YgTp1haYez6aGDP1YJvm
-X-Received: by 2002:a05:622a:5984:b0:4a4:3b41:9170 with SMTP id d75a77b69052e-4a5a587c5dcmr78816421cf.24.1749115458264;
-        Thu, 05 Jun 2025 02:24:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749115458; cv=none;
+Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp112747njc;
+        Thu, 5 Jun 2025 02:25:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXYgtOPP9ULu4TM0bIDOy2OwlJdr7YYx62RdEhnThXAJKETndx1qMOInmBSmC4i12fzhqcm3qzszHkFKw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFZENvk749Xu3fxXwy6NmQPCape4OAWxiHFjO815ctcN1U+eilSR04ynOkRDTG57ZO9vaxv
+X-Received: by 2002:ad4:5c4d:0:b0:6fa:b1bb:8315 with SMTP id 6a1803df08f44-6faf71588d1mr83200006d6.6.1749115544828;
+        Thu, 05 Jun 2025 02:25:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749115544; cv=none;
         d=google.com; s=arc-20240605;
-        b=lpB9wYdbAL3MBSVdDw86MUkH/dtrbezHliJHatF3kzlpLwbC+m81LxI7R2HzcmCJpP
-         WyxcyY8PaZ6iEf61kVW+/ws+UmjeKkD+bJ2EOvHNaSmRKCnJBJMxBeC4M3xZa9o7L8Sr
-         ime+JYhhAt4fVGuy8EjgRiOr/DaFbgpPjJASHS3q57Udf+xWmH0nJJ+5bK2CjuXhCXwp
-         sUWrCCZl4b9p82WqyCFoePA71DV2L0+sdXuJVvjV9uOfla79K8L8nAK6SlC8hhm5IdI4
-         9zYykrjNccxKW8wiWJWLGL0cJTa2tLpxdUBjV0jOjw8YtFmhezjc1YazzfntGER+5e9H
-         qyCw==
+        b=IauMsSEaMSd4A+RNpq80zSNI7tooh9Pa34/2C0c+0ScdjF7btr6JlaOJ3pwmrx1BrD
+         iu6VChN6jOOZFKCB8cD3My4+c8gbGruXgvDA80c0Z0ml5lTqBJp4HAhRrLSw0T6cKoRB
+         nmapyJDPq+WwO3jfosozZ7GiIfx85wBrIhfrE+m8Fls+o2QZXMyYjvJayQlfhJMtm6ie
+         VHDFeS5wMtami4K7VG/eGV9umss9holRuN2i3yQWFodBR2sOJGwb1Jhu9xroFKGRUg22
+         qUSPDnkMNgnNPFoGvnidVqHE9WuelhSHHXt08GuyJWPR5ieMB/dD+yh3PLRtUPK/tL/w
+         5yHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=+ntYL7Gqca9eRIklX44QU4sSelLInX+LascDeLmyHbA=;
+        bh=rtwBl6ckqGOT2L7KrpZukkBQx5K35irLgC1kBZHOfac=;
         fh=gQMqy/FcPgSOZmc5x7cIp5JX66uYCqJ8rNRxizObvcQ=;
-        b=EWmCJnIKU2o8Kxqc1uvh+v5GBDh3tv+5aYb1+L6tkXASBA5kuSKStFBYwrDxvf6YgH
-         ohsKwBpnv/kEI3apGaTH85VLJX1x2orF/1gJ4ZCm3T2USCzCAAOWLirv7AOBDRD9RKLb
-         cTUQnF2echgfMXnDJFK6uQLw6hKH0UAWRslSrCioxdcTLNg0pqRC1fx2F3PUHehPOgGb
-         yG6Y5K1NO7q5BdivC7QDvl9YaG/A4Fgb8FXfTwGVYBgo2hsoViOhqiYzxS/JOYXZQE2W
-         faKb3l3jIiHGPtQI0IiSIhHQn8cecVLJFcMZnGYgfi+nL+pR46FiBoE5kzFz/y0WBehn
-         aDCw==;
+        b=a2ocAHy4UTDuQ5hp/Mck1kdFj14Uwj/BHuPwhDazYCpt65B9SO/Wmfs8pc9bDH9hMQ
+         1rtrPrZlORGB+Y64o/QzghETmO1FYhSeQh3c+JIsfXoNiJWQo+1XqDZ2UW4jVdwta1P7
+         IXzqXX46OD168YZl08Rt1NIbVNv5/Y3PG4R6qaEGZ6WFhbw4+p0llUavyYqZEh1uqQzl
+         5AWOmAVGYCO5DrQBdMtkzXLPQUMwnJrARFaSn8RZhz8+uXRxBwHaurm8bE+HE7AfOe4V
+         Y+XNAC2GktPE/O7GrujGLBh1KgxWcgToRjYO/BVTZDbE/mmDDerznZW3wIEZpOaAQqoW
+         Cf4g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="Mk/cHu/d";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=fRLoEj9u;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a4359f8c9fsi166285331cf.247.2025.06.05.02.24.18
+        by mx.google.com with ESMTPS id af79cd13be357-7d09a31a35bsi1671603885a.630.2025.06.05.02.25.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Jun 2025 02:24:18 -0700 (PDT)
+        Thu, 05 Jun 2025 02:25:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="Mk/cHu/d";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=fRLoEj9u;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uN6pJ-0000uX-8s; Thu, 05 Jun 2025 05:23:57 -0400
+	id 1uN6qz-00021E-15; Thu, 05 Jun 2025 05:25:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uN6pD-0000tn-H2; Thu, 05 Jun 2025 05:23:51 -0400
-Received: from mgamail.intel.com ([192.198.163.17])
+ id 1uN6qv-0001yo-3A; Thu, 05 Jun 2025 05:25:37 -0400
+Received: from mgamail.intel.com ([192.198.163.18])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uN6pA-0002rc-1b; Thu, 05 Jun 2025 05:23:50 -0400
+ id 1uN6qt-0003Bk-8G; Thu, 05 Jun 2025 05:25:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1749115428; x=1780651428;
+ t=1749115535; x=1780651535;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=fs8GZxcpGH1OvN0sSfD/neWbbxp/8uG4eQd0WdAblHw=;
- b=Mk/cHu/d9NL6HsrB+4/v/Il+3mDwZr6KcGzO4rfElSg+0k4/fFYQJaIE
- QEWBLpaH2XzIS9b9mlUrpooWWluwXZu55CldW2N62AOeT44fJIezsiFYV
- WhDzbPIKdj4gbiUi/Zfq32tRKk8muNSeEwFE2OQk+4+3kS09snwwWl4cH
- 9TtTZVeQc7VcApiQvtilXBhe7SDY8O/LEJGJvbv+ungJEgaQbdAiqYGPv
- dyFR/GLW6D2BDQDmVEzYgtsTCYGIrtYa+TvBQPz29j0lIHmyYv1v1Sip4
- /CO0YWO63FkRMYDsSKH3di9CprvQVc+LvGLrTkX3E9tkOiU52zQpCb5x2 Q==;
-X-CSE-ConnectionGUID: 0RHgX4YbT3qS2TxPzioV0A==
-X-CSE-MsgGUID: EiFhj0zRSbKtoH27CN0mKQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11454"; a="51141681"
-X-IronPort-AV: E=Sophos;i="6.16,211,1744095600"; d="scan'208";a="51141681"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jun 2025 02:23:44 -0700
-X-CSE-ConnectionGUID: F49XkvY8ROi4JvrcHwCIGg==
-X-CSE-MsgGUID: 3iyVGxBtRqCO/RVYVy1ilw==
+ bh=6gcqC2RNFKk8w35jVZyxPY8r9CAuU5Rebn8W7k05UwU=;
+ b=fRLoEj9u1RFdR/vA7RFYyyzmX7ZZCdQ675BZ0fJESzjjmr+uaxG9DlO1
+ pibl6OQeOXmKigWd3Z9Rzw8f4/mgN+0ReXhul9DbbP4RLH3IlI6vFPv9r
+ TlQpYBzKT2xGJawE6FqUFSqwHzmVs4WvJCs2Cj4PZ2nDqs4nSYG+knDGi
+ eQN+kAFickhGE/uZyOm9cHnIW8TXiPLFW5sWlSW51+3nwqq4xSp9G/WVs
+ P3Sg+HKR85Q2fwwUm+IbVbW5mh9gR0aeDp7XMbQhixAAEqCsgKXdPj6IF
+ edSo6MZJUMZ2TZY+0M7UOaiznMUp4TCQfv5LFYLshsCpz5c5nXCgNemq6 w==;
+X-CSE-ConnectionGUID: 9ERmceTZR8aqFngDzQg+5w==
+X-CSE-MsgGUID: ojPv6zgBQ+e9zR91IOCF4g==
+X-IronPort-AV: E=McAfee;i="6800,10657,11454"; a="50464009"
+X-IronPort-AV: E=Sophos;i="6.16,211,1744095600"; d="scan'208";a="50464009"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Jun 2025 02:25:32 -0700
+X-CSE-ConnectionGUID: IYhamantQ56dn2/LnifzdA==
+X-CSE-MsgGUID: eF6omVKUTCSLIo68uDvO0g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,211,1744095600"; d="scan'208";a="176318547"
+X-IronPort-AV: E=Sophos;i="6.16,211,1744095600"; d="scan'208";a="182663019"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.39])
- by fmviesa001.fm.intel.com with ESMTP; 05 Jun 2025 02:23:40 -0700
-Date: Thu, 5 Jun 2025 17:44:52 +0800
+ by orviesa001.jf.intel.com with ESMTP; 05 Jun 2025 02:25:28 -0700
+Date: Thu, 5 Jun 2025 17:46:40 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Alireza Sanaee <alireza.sanaee@huawei.com>
 Cc: mst@redhat.com, anisinha@redhat.com, armbru@redhat.com,
@@ -91,15 +91,16 @@ Cc: mst@redhat.com, anisinha@redhat.com, armbru@redhat.com,
  philmd@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  richard.henderson@linaro.org, shameerali.kolothum.thodi@huawei.com,
  shannon.zhaosl@gmail.com, yangyicong@hisilicon.com, maobibo@loongson.cn
-Subject: Re: [PATCH v12 2/6] arm/virt.c: add cache hierarchy to device tree
-Message-ID: <aEFnFI+wglkmLD5G@intel.com>
+Subject: Re: [PATCH v12 5/6] tests/qtest/bios-table-test: testing new ARM
+ ACPI PPTT topology
+Message-ID: <aEFngNQBQlfyfkci@intel.com>
 References: <20250604133439.1592-1-alireza.sanaee@huawei.com>
- <20250604133439.1592-3-alireza.sanaee@huawei.com>
+ <20250604133439.1592-6-alireza.sanaee@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250604133439.1592-3-alireza.sanaee@huawei.com>
-Received-SPF: pass client-ip=192.198.163.17; envelope-from=zhao1.liu@intel.com;
+In-Reply-To: <20250604133439.1592-6-alireza.sanaee@huawei.com>
+Received-SPF: pass client-ip=192.198.163.18; envelope-from=zhao1.liu@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -44
 X-Spam_score: -4.5
@@ -123,211 +124,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fmzNLRhqhQ9l
+X-TUID: CnBZNZZAZEzn
 
-Hi Ali,
+On Wed, Jun 04, 2025 at 02:34:38PM +0100, Alireza Sanaee wrote:
+> Date: Wed, 4 Jun 2025 14:34:38 +0100
+> From: Alireza Sanaee <alireza.sanaee@huawei.com>
+> Subject: [PATCH v12 5/6] tests/qtest/bios-table-test: testing new ARM ACPI
+>  PPTT topology
+> X-Mailer: git-send-email 2.34.1
+> 
+> Test new PPTT topolopy with cache representation.
+> 
+> Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> ---
+>  tests/qtest/bios-tables-test.c | 4 ++++
+>  1 file changed, 4 insertions(+)> 
 
-I'm very sorry to bother you with some comments after so many versions.
-
-> diff --git a/hw/cpu/core.c b/hw/cpu/core.c
-> index 5cb2e9a7f5..7339782663 100644
-> --- a/hw/cpu/core.c
-> +++ b/hw/cpu/core.c
-
-core.c is not the right place. It just contains the "cpu-core"
-abstraction. So we need to move the following functions to other files.
-
-> @@ -102,4 +102,96 @@ static void cpu_core_register_types(void)
->      type_register_static(&cpu_core_type_info);
->  }
->  
-> +bool cache_described_at(const MachineState *ms, CpuTopologyLevel level)
-
-It's better to add the comment about what this function did. (its name
-doesn't reflect it wants to check the coresponding CPU topology level.)
-
-I also feel it's not a good name, what about "machine_check_cache_at_topo_level"?
-
-Furthermore, we can move this one to hw/core/machine-smp.c, as it is
-about with machine's smp_cache.
-
-> +{
-> +    if (machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L3) == level ||
-> +        machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L2) == level ||
-> +        machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L1I) == level ||
-> +        machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L1D) == level) {
-> +        return true;
-> +    }
-> +    return false;
-> +}
-> +
-> +int partial_cache_description(const MachineState *ms, CPUCorePPTTCaches *caches,
-> +                              int num_caches)
-
-Because I'll suggest to move CPUCorePPTTCaches to include/hw/acpi/cpu.h
-later, and this function accepts CPUCorePPTTCaches as the argument, so
-I think we could move this function to hw/acpi/cpu.c (if Michael and
-Igor don't object).
-
-> +{
-> +    int level, c;
-> +
-> +    for (level = 1; level < num_caches; level++) {
-> +        for (c = 0; c < num_caches; c++) {
-> +            if (caches[c].level != level) {
-> +                continue;
-> +            }
-> +
-> +            switch (level) {
-> +            case 1:
-> +                /*
-> +                 * L1 cache is assumed to have both L1I and L1D available.
-> +                 * Technically both need to be checked.
-> +                 */
-> +                if (machine_get_cache_topo_level(ms,
-> +                                                 CACHE_LEVEL_AND_TYPE_L1I) ==
-> +                    CPU_TOPOLOGY_LEVEL_DEFAULT) {
-> +                    return level;
-> +                }
-> +                break;
-> +            case 2:
-> +                if (machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L2) ==
-> +                    CPU_TOPOLOGY_LEVEL_DEFAULT) {
-> +                    return level;
-> +                }
-> +                break;
-> +            case 3:
-> +                if (machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L3) ==
-> +                    CPU_TOPOLOGY_LEVEL_DEFAULT) {
-> +                    return level;
-> +                }
-> +                break;
-> +            }
-> +        }
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +/*
-> + * This function assumes l3 and l2 have unified cache and l1 is split l1d
-> + * and l1i, and further prepares the lowest cache level for a topology
-> + * level.  The info will be fed to build_caches to create caches at the
-> + * right level.
-> + */
-> +bool find_the_lowest_level_cache_defined_at_level(const MachineState *ms,
-> +                                                  int *level_found,
-> +                                                  CpuTopologyLevel topo_level) {
-
-This is a very long name :-).
-
-Maybe we can rename it like:
-
-machine_find_lowest_level_cache_at_topo_level,
-
-(sorry this name doesn't shorten the length but align the naming style
-in machine-smp.c)
-
-and explain the arguments in the comment.
-
-Furthermore, we can move this one to hw/core/machine-smp.c, too.
-
-> +    CpuTopologyLevel level;
-> +
-> +    level = machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L1I);
-> +    if (level == topo_level) {
-> +        *level_found = 1;
-> +        return true;
-> +    }
-> +
-> +    level = machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L1D);
-> +    if (level == topo_level) {
-> +        *level_found = 1;
-> +        return true;
-> +    }
-> +
-> +    level = machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L2);
-> +    if (level == topo_level) {
-> +        *level_found = 2;
-> +        return true;
-> +    }
-> +
-> +    level = machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L3);
-> +    if (level == topo_level) {
-> +        *level_found = 3;
-> +        return true;
-> +    }
-> +
-> +    return false;
-> +}
-> +
->  type_init(cpu_core_register_types)
-
-...
-
-> diff --git a/include/hw/cpu/core.h b/include/hw/cpu/core.h
-> index 98ab91647e..0f7bf8bc28 100644
-> --- a/include/hw/cpu/core.h
-> +++ b/include/hw/cpu/core.h
-> @@ -11,6 +11,7 @@
->  
->  #include "hw/qdev-core.h"
->  #include "qom/object.h"
-> +#include "qapi/qapi-types-machine-common.h"
->  
->  #define TYPE_CPU_CORE "cpu-core"
->  
-> @@ -25,6 +26,32 @@ struct CPUCore {
->      int nr_threads;
->  };
->  
-> +typedef enum CPUCacheType {
-> +    CPU_CORE_DATA,
-> +    CPU_CORE_INSTRUCTION,
-> +    CPU_CORE_UNIFIED,
-> +} CPUCoreCacheType;
-
-This is a complete duplicate of the x86's CPUCaches (target/i386/cpu.h).
-
-I think we can move x86's CPUCaches to include/hw/core/cpu.h.
-
-> +typedef struct CPUPPTTCaches {
-> +    CPUCoreCacheType type;
-> +    uint32_t pptt_id;
-> +    uint32_t sets;
-> +    uint32_t size;
-> +    uint32_t level;
-> +    uint16_t linesize;
-> +    uint8_t attributes; /* write policy: 0x0 write back, 0x1 write through */
-> +    uint8_t associativity;
-> +} CPUCorePPTTCaches;
-
-x86 doesn't use PPTT to describe cache so it's not necessary to reuse
-CPUCacheInfo (target/i386/cpu.h) for PPTT.
-
-But I understand it's better to place this sturct in include/hw/acpi/cpu.h,
-since it is part of the ACPI PPTT table.
-
-> +int partial_cache_description(const MachineState *ms, CPUCorePPTTCaches *caches,
-> +                              int num_caches);
-
-Could move to include/hw/acpi/cpu.h, too.
-
-> +bool cache_described_at(const MachineState *ms, CpuTopologyLevel level);
-> +
-> +bool find_the_lowest_level_cache_defined_at_level(const MachineState *ms,
-> +                                                  int *level_found,
-> +                                                  CpuTopologyLevel topo_level);
-> +
-
-Because these 2 functions' definitions would be moved to
-hw/core/machine-smp.c, then we need to move their declarations to
-include/hw/boards.h.
-
-
-Except the above nits, the general part is fine for me.
-
-Thanks,
-Zhao
-
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 

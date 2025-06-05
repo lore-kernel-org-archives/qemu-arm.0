@@ -1,156 +1,205 @@
-Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp141005njc;
-        Thu, 5 Jun 2025 03:28:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVgGB/HCcfUpLpb4ARNuGE+l4Xi0xuRoZfGigJL+i2+tQF48rfAs4qiDRSRNOsmOVWBC7yt4GW9BYtpiw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGDwSoFz+GEO9K35bJx6iOXIp+JkL1/GoclGBGSd7hEpAx6PAEPo6uZkWlLySOi5fXpWGS9
-X-Received: by 2002:a05:620a:2724:b0:7d0:a1b1:cb0c with SMTP id af79cd13be357-7d2199a6d70mr899667985a.29.1749119300496;
-        Thu, 05 Jun 2025 03:28:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749119300; cv=none;
+Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp153301njc;
+        Thu, 5 Jun 2025 03:56:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX8qJIp2xZHVE2N4O3OPTrvCwngzVSx5A0iDtveD4KJcJuWBLw4ERZNfuqJ/FybCBL4zB2CymU81EZtOA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGWbIqgC9ry3IVSxsGgHktBGlZRaFPXiy2yDxGbR0AXxXI7AnfqH90A4a8rJ/EwlI8LFRlU
+X-Received: by 2002:a05:622a:1249:b0:494:b2ac:781a with SMTP id d75a77b69052e-4a5a5765179mr102870781cf.2.1749120963712;
+        Thu, 05 Jun 2025 03:56:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749120963; cv=none;
         d=google.com; s=arc-20240605;
-        b=M+zQ9CKlYq5ntrfjRnJpj2EGHlU0kv4JNC7QxdzTl8xdURJLh8d4ButVFPVkoO4nuQ
-         l/jHJibDNbC029H3pIsU2OTnJXdrOUrgaHOkfeQeoQKjtZieymMrMLt/zqKFg583Zt6v
-         9KDq49R9TVEt7al+twPXy4SD2doJiJKqLHuGqXktRp98Vvb8vDz3yEo0XlkQfgTErBXi
-         x78/6oxK75bX3dh7bcBP5ZHpKP3k9GUT6W3BOCWZgfw7Mxcz1AgOx8+ohPg0jcVsJdG4
-         bAwaHk/tqebDPu3aiXMNjwshUQGlBxw8MGsIoN+a+ypB3vfXtTdHy/OO8osycAOt7SR2
-         S95A==
+        b=eyGQ6mpuokFCPSk3wU+BRSs0WmrIlKd+SVfOjukvFXh5IXCM23amJRocvXNwQWxs7j
+         zR4o0c3TeIsLuo1Qo/cSjjOzNLAluaEOLiPjs5OEjv+LGmCJKU/ZsmJ+wmeG+AwnIbay
+         sLCbJ+kNJaTnJAVELAykWd3EIqoaqUpd1Y9g6bZA7XfaRKa0pU7Lvn0NIBVytAcXdAw8
+         iOVOGaFbGHAUqg7W1//0tjwWAvRxfNdQ8kwSPFgi3L22G7tn3JqWNaMeBne3FFBkoVvt
+         ixARlYxuYD7O/dShcdLH0OpX78XejbchjFLGnMe+mWb27ojnlc9IiKT4IvPGoRfOcQm3
+         n7tQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=ZfJxbdduxQdGwhLHpnHdVLqaRYOLMlkE/M1F7Y6IfO8=;
-        fh=MioZsWtN3QkKZrxfgm4O7JlhTkq896zsTDkBuQtF/04=;
-        b=k2u7HJTieheAVzKDJ1QJD/ocLSXcTfh081n3t/y+KDgkKLgGwHtlhiHVOTxbQxSUKR
-         soVzk928jKxT0u7+jLvrBMvEKx+SYF2I+wI6yTH8wTAGDRAwFs/TF+mHlgcMFAob2fD2
-         0ycr9OpqI7QtSYd5YHLOxS5X2U1RRIoH7L3UJXSiQvm3ZnVGbIkdhLNO/aE8WvJmRfta
-         AGtEkMwRDBb0d/7kG5APM9ByCzUyVQEqZBNwSyzp8etIK5e2vxWzXDbowQf18GPAp2X6
-         E8ajo7YlqYSr04W6uje5zBZnNZ8AqaOnJZLmKe8mJvlZp88Uq8zULi5bHZ6ZdjvD2XnY
-         Ud4A==;
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=sWe/II1jYF8dDFyyN4/C5OjrhZ31snk7yFE94qDZKKw=;
+        fh=uQC/EhY4ok3Wg543Qyp6LdsK7XbMr7lSAnH6l83WZcM=;
+        b=A48ueJt/sAxsU5N5G/SWwqUOkt5wfNODvHGW6ReGUf36ng7RhbdEeuVWLtmlMiyCZa
+         jFcRmjFEfYFO4CHzYRYxg/DsWuyyLPkepQz3hnl3kBpqZKs2ChYN0nB2/UXV0RbC0WEC
+         5fAuObli8hkIgfr2h1s3S4ziqr7HEYvqP4U3PBipWT4+o/1gZRfFelVmr1sLZFi+Lku6
+         eDmOx95RONG+QCwqlpTs0JViSodLKCUEXgaiTDB3aANORJ1Ifn/NsOZqy/jgydKZICYs
+         ZErPePydcf9VqmO/Tm3RmgyHdwbyFrNXwWMo52MN1EGX1O7FdCgCWXsD6ueKqP8advGa
+         7bjw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=CkqQBFD9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iAFrb1B6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d09a3076e2si1690564985a.585.2025.06.05.03.28.20
+        by mx.google.com with ESMTPS id d75a77b69052e-4a4359fb3f0si176553261cf.326.2025.06.05.03.56.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Jun 2025 03:28:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 05 Jun 2025 03:56:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=CkqQBFD9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iAFrb1B6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uN7os-0001fw-IS; Thu, 05 Jun 2025 06:27:36 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uN8G0-00053W-G7; Thu, 05 Jun 2025 06:55:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1uN7oW-0001d6-Q5; Thu, 05 Jun 2025 06:27:15 -0400
-Received: from mgamail.intel.com ([192.198.163.14])
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1uN8Fs-000533-59
+ for qemu-devel@nongnu.org; Thu, 05 Jun 2025 06:55:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1uN7oT-00053b-18; Thu, 05 Jun 2025 06:27:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1749119229; x=1780655229;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=D2RgcNAyh8Op42/U8+549t8dUWlkwCOU4kvS+cCnxN4=;
- b=CkqQBFD9za19PgTbLRwvvhgofVkpLSo3/hUK9yq6gfItL4z3IT0bYYos
- foFkD8uQ6wsPEab2GuvgMZUcCt/NWKT9NnrroijhSqsoW8uAqObEl+MyL
- aMYuBnTOPn1bnWTEvfKSQxiWg6U6DVBQd4nBax3eGLsiAWSvCxfMNhMpo
- 1uRchmUtLhta3DJEKLiQoekslTWLzb9HwNdny2hzvZO5W7Jp1Q3OMCWtz
- JPS+lxFU+U9KYE9+ATgoxKgPiLMVDQY+VwDAFbzzEBM+NVvqBTHlc6USE
- Xg0vt57ouS/CYWvhjT2p/2evvgXxZkxnAuM0bNmYPHDe0Y9b7yl//EkQg A==;
-X-CSE-ConnectionGUID: dVCHt0yJTTu+96wTwuUORQ==
-X-CSE-MsgGUID: 8W9Zt1/mT7mzv93CoxjNkw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11454"; a="51325319"
-X-IronPort-AV: E=Sophos;i="6.16,211,1744095600"; d="scan'208";a="51325319"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jun 2025 03:27:07 -0700
-X-CSE-ConnectionGUID: opKeQOCYSiuKI8tnfqbg4Q==
-X-CSE-MsgGUID: 5WniYFFbQIKhRFw/j9kFXg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,211,1744095600"; d="scan'208";a="145808659"
-Received: from spr-s2600bt.bj.intel.com ([10.240.192.127])
- by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jun 2025 03:27:03 -0700
-From: Zhenzhong Duan <zhenzhong.duan@intel.com>
-To: qemu-devel@nongnu.org
-Cc: chao.p.peng@intel.com, david@redhat.com,
- Zhenzhong Duan <zhenzhong.duan@intel.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org (open list:ASPEED BMCs)
-Subject: [PATCH v3 3/5] hw/gpio/aspeed: Fix definition of AspeedGPIOClass
-Date: Thu,  5 Jun 2025 18:23:09 +0800
-Message-Id: <20250605102311.148171-4-zhenzhong.duan@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250605102311.148171-1-zhenzhong.duan@intel.com>
-References: <20250605102311.148171-1-zhenzhong.duan@intel.com>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1uN8Fq-0005KY-Hc
+ for qemu-devel@nongnu.org; Thu, 05 Jun 2025 06:55:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1749120924;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=sWe/II1jYF8dDFyyN4/C5OjrhZ31snk7yFE94qDZKKw=;
+ b=iAFrb1B6HM5MSKw8oQADKLBhOtWcM+V135xdQr/pIqj5ye3045U5SzqQjfvHQusoa5y9AO
+ BSSrez2eSKr7wF212VWIG/ugMpxOhc4PgquC1ssOemOhp2MZbq25gIdZ9x08rcyNZ7ro43
+ UTYskbxy1TjdLNn7kzfi++cPj79daGE=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-516-RqE8M95PO2ieMhApf4vzeQ-1; Thu, 05 Jun 2025 06:55:23 -0400
+X-MC-Unique: RqE8M95PO2ieMhApf4vzeQ-1
+X-Mimecast-MFC-AGG-ID: RqE8M95PO2ieMhApf4vzeQ_1749120922
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-3a50049f8eeso530734f8f.3
+ for <qemu-devel@nongnu.org>; Thu, 05 Jun 2025 03:55:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1749120922; x=1749725722;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=sWe/II1jYF8dDFyyN4/C5OjrhZ31snk7yFE94qDZKKw=;
+ b=mxVZBQY59UYE1OZKq0OTb7rqooTNVg4HgT/pDfke+QRDPhQcO7aMeTkfxsrQxYs7/E
+ n+ceg29rBFqemekLFZDiOvNNx6jgtoKKQ9/qYnOAYGYZwXUTZhEMIRuF2Rr1DUm7i5tP
+ 7mPhZ5uQT4YkiaeW8wkexZ+FlWNnrw3RWQ+tnpXUTbtSMgCLXmMKO+GakCkYuKmMyz2x
+ V4Ozg9Dpk1ZgebdRziGz0EydHpx4kmgOIny2GFZlQlIVAMnoD7Nq0dziUPczyLLHvhtB
+ 7zhEjrj1yzwcdErLaoDFK6QB9j7oDHhltFShpqnoikhPCjhO6oiBkAdzeMqW400wRABe
+ P8Qw==
+X-Gm-Message-State: AOJu0Yztn7FZNPRv1i8y9RgEYIOFpfe8WkeguvfVO1gJBjTnrhx123Dx
+ DqEmHgSkiiyHJ/we0OaJK1NS5OcOQIZYR3T7YyQia2zYB/7PPeX5ehcHnm7837U3yVsSItIPQAe
+ 6Brn/1Rtpa+p7Ym2IDOLMEhthPgYiQyYCgKQoqVFtpzbkVZy3t4xA69mJ49m2GWUY62jGbNHFX9
+ PIZWEdzR4y0pQQnWZAxQe/Ze8Qtjxsq5ebpaPzgYekKOs=
+X-Gm-Gg: ASbGnctLpUdzqX8A935mGlMgnEMPq+yHCbtKKTzCrpvDmb62fdbhg2o/C0rY8yasWW/
+ gS8NUACUuV50Z3dNgOOwlCVced+uB+G+NSh8DtlXwtC4kQf3mBaLFW8g/0c2dojzmEbHnsscIXl
+ s1nm2Rk+kUtNw+Xje2vDq7dqNELh99vqL3nVtD+vdmz2lY33CEy8zTvUQ7B4DW+96HR0xfQa4pL
+ 0hlOsgm9rdsNtxj9jrWgFVWGjyf/x8bVn4JcAr5kQumnUIgR6fQ9uh6PouU0GTZ/3BdQW0a9Ot1
+ 4s60dwyESvQSN0yMMXb5vXljipD73CJ3
+X-Received: by 2002:a05:6000:240b:b0:3a4:fc75:d017 with SMTP id
+ ffacd0b85a97d-3a51d92fd37mr5504314f8f.26.1749120921866; 
+ Thu, 05 Jun 2025 03:55:21 -0700 (PDT)
+X-Received: by 2002:a05:6000:240b:b0:3a4:fc75:d017 with SMTP id
+ ffacd0b85a97d-3a51d92fd37mr5504272f8f.26.1749120921349; 
+ Thu, 05 Jun 2025 03:55:21 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3a526ddb8afsm2070206f8f.0.2025.06.05.03.55.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Jun 2025 03:55:20 -0700 (PDT)
+Date: Thu, 5 Jun 2025 12:55:18 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameer Kolothum via <qemu-devel@nongnu.org>
+Cc: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ <qemu-arm@nongnu.org>, <eric.auger@redhat.com>, <peter.maydell@linaro.org>,
+ <jgg@nvidia.com>, <nicolinc@nvidia.com>, <ddutile@redhat.com>,
+ <berrange@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <smostafa@google.com>, <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>,
+ <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
+ <zhangfei.gao@linaro.org>
+Subject: Re: [PATCH v3 1/6] hw/arm/smmuv3: Check SMMUv3 has PCIe Root
+ Complex association
+Message-ID: <20250605125518.138f5172@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20250602154110.48392-2-shameerali.kolothum.thodi@huawei.com>
+References: <20250602154110.48392-1-shameerali.kolothum.thodi@huawei.com>
+ <20250602154110.48392-2-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=192.198.163.14;
- envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.128,
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.128,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QMVLUctqvlUo
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: S2sEt6AnwYBl
 
-AspeedGPIOClass's parent is SysBusDeviceClass rather than SysBusDevice.
+On Mon, 2 Jun 2025 16:41:05 +0100
+Shameer Kolothum via <qemu-devel@nongnu.org> wrote:
 
-Fixes: 4b7f956862dc ("hw/gpio: Add basic Aspeed GPIO model for AST2400 and AST2500")
-Closes: https://lists.gnu.org/archive/html/qemu-devel/2025-06/msg00586.html
-Suggested-by: David Hildenbrand <david@redhat.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
----
- include/hw/gpio/aspeed_gpio.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Although this change does not affect functionality at present, it is
+> required when we add support for user-creatable SMMUv3 devices in
+> future patches.
+> 
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+>  hw/arm/smmuv3.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index ab67972353..7e934336c2 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -24,6 +24,7 @@
+>  #include "hw/qdev-properties.h"
+>  #include "hw/qdev-core.h"
+>  #include "hw/pci/pci.h"
+> +#include "hw/pci/pci_bridge.h"
+>  #include "cpu.h"
+>  #include "exec/target_page.h"
+>  #include "trace.h"
+> @@ -1881,6 +1882,13 @@ static void smmu_realize(DeviceState *d, Error **errp)
+>      SMMUv3Class *c = ARM_SMMUV3_GET_CLASS(s);
+>      SysBusDevice *dev = SYS_BUS_DEVICE(d);
+>      Error *local_err = NULL;
+> +    Object *bus;
+> +
+> +    bus = object_property_get_link(OBJECT(d), "primary-bus", &error_abort);
+I'd replace this with direct field access like in smmu_base_realize
 
-diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
-index e1e6c54333..e6b2fe71b5 100644
---- a/include/hw/gpio/aspeed_gpio.h
-+++ b/include/hw/gpio/aspeed_gpio.h
-@@ -70,7 +70,7 @@ typedef struct AspeedGPIOReg {
- } AspeedGPIOReg;
- 
- struct AspeedGPIOClass {
--    SysBusDevice parent_obj;
-+    SysBusDeviceClass parent_class;
-     const GPIOSetProperties *props;
-     uint32_t nr_gpio_pins;
-     uint32_t nr_gpio_sets;
--- 
-2.34.1
+in QEMU with PCI, usually we specify bus to attach to with 'bus' property,
+wouldn't it better to rename "primary-bus" to 'bus' to be consistent with
+the rest of PCI code (and before "primary-bus" shows up as a CLI option,
+so far (before this series) it looks like it's an internal property)?
+
+> +    if (!bus || !object_dynamic_cast(bus->parent, TYPE_PCI_HOST_BRIDGE)) {
+Also looking at smmu_base_realize, it has NULL pointer check already.
+Which also rises question, shouldn't smmu_base_realize check for
+TYPE_PCI_HOST_BRIDGE as well (aka can smmu be attached to anything else but a host bridge)?
+
+
+> +        error_setg(errp, "SMMUv3 is not attached to any PCIe Root Complex!");
+> +        return;
+> +    }
+>  
+>      c->parent_realize(d, &local_err);
+>      if (local_err) {
 

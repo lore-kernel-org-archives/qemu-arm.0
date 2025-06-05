@@ -1,124 +1,124 @@
-Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp233722njc;
-        Thu, 5 Jun 2025 06:12:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXEgqkMVRh3B43m2SL897L1sMbTB4lATvB7z4DV53in1qijwqkhHinF1V2inbYu72rFv3pOqq4GoCuGwg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEOuoaeJvl+mnPDjbYJw+RvZbepnz9yQOU1ENrBAvS3qftos+xm/Z7U/MtBxQuMieshU9hO
-X-Received: by 2002:a05:6102:f09:b0:4df:8f03:12ca with SMTP id ada2fe7eead31-4e746e0f15emr5469228137.21.1749129119779;
-        Thu, 05 Jun 2025 06:11:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749129119; cv=none;
+Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp281375njc;
+        Thu, 5 Jun 2025 07:19:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXfiOexf57YI1HEmedCw3MFOWenQaLH5hpamxwCxwheRANdq9ESWw4Ky6Hryk7MjC2IqIgWYaBJP9YBsA==@linaro.org
+X-Google-Smtp-Source: AGHT+IG1XUA7gy6XR/ATidMvj0vZDNuQ+al0rZPCQr71b1NbcEy4D0EJwZ/5ShFehGXCXK6JAshk
+X-Received: by 2002:a05:6122:2505:b0:52a:9178:d281 with SMTP id 71dfb90a1353d-530c72bf537mr6759418e0c.2.1749133143697;
+        Thu, 05 Jun 2025 07:19:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749133143; cv=none;
         d=google.com; s=arc-20240605;
-        b=j5RZH4Rx6xOIGm3LZIaATRpFDHWIU4tL5bb4BhwHdUstlmUa+IYgV6XFbBREAyyT0A
-         wARPgwGBl8viH87aaYf3ZNd369f/0SuOMLimgFOoeHeqwXjB9RuA5JJQLbZrS/G7P1Yp
-         J+JUyue/4g2BpT+iuo/9pmkNZ6HnhkGO5A4sO3RALVaiE9WGhioJIKniXtRg1YESDa+N
-         ZG3vgWH52aKnJVh1ENyly4KqMRIRCIxM6X1q3ypLrZAO5bH1XIGxt8Df6ZP4Jh2RGL7h
-         yk5N2pE1OTYBDHPHJdvbwrM0hrlf4MoGV8RV1zGTn+PLvop0IfQY+DhfUoXelpE5NBH9
-         8lbQ==
+        b=kN8/btV/e0vkP9ty9bOaS9+JWf7y8+R0z3xF73YJNXODPsKefQl4b3/YtRBNSSDlyA
+         PsUi0gW2XApdkCpvKN2WeZp7vLx5WsIIvsi5+pm4YUAcJbTlVCKO0VqWOREqMermMpWf
+         fFgphfIK74pZCFgdJ42uweFyV/CwVmWiS5kCr1gCBFmadSjzuqbNQBgR7O6Jc1KuNnAW
+         Q6UP6pHhIV5JaMREFZJ6NRoYwXb7nd2OhdoCU8xfZuefN+6rbNwAhZxH6S26Pj9KcK6u
+         AQlyK+tnpICkGYLBunOx+ZC3NfJ2AoEn1O1uFzhkuUSXL+53tli8+6ePQdCXUWI9vWFL
+         gCZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=K75aSCyzs9q5zyzmveX5d6CIqDix0KE2if+KVjMGA+I=;
-        fh=YU1cbT3qMDVX5SqeUI1a8IK8OiVGYfDJO93uZsIhlYI=;
-        b=io5jVCT7QI9zmmx+HWpryMDhOE/WtFjlPOxq3tQXT4WavE4sVeqJcZoqG4vBbX4ZAk
-         cJPbesBKSofOmb2NZ2cC0sXXuGkuBDaQDqBbo8qAzP3/dI68GOOhS5ttwZLbhGItSxMs
-         QWqKpbqawOmOUBj00DdD7I5KtQHjMX8TwuLcMMSA4skEKoBZZ3l6k7uGjjnzOHkunZEw
-         bl3AaqHHSjy3fg3nPaO9AHADOLaAflVuP8G1ZNVqGpWR22G+xbt/rD7AUMzGjiN+NnBe
-         bavDLOpt+m1qFBCC0/MKrGdDRAg+5WBzoiU+3yOXHoXMWbFGD6Fw/eCoCIf4NfoTzqZ6
-         bX7w==;
+        bh=UzSqdQKz9aJ2vSPHh9ioBp0u/bmrqqTbXn12Ae53pTU=;
+        fh=2ljJL1lgX8cYiuiOSYusr4vj8d7SYztKp8wCaawyIAQ=;
+        b=WXHIMeuy1EsyWL/CIqV8KGIO8Zxhaww5zeR1uUJTLILti8wPqlWir3Dmj/ZO/bPeZh
+         /g7jEj88bXwlVqkHsG2Vd6Obxc2R7Wre2f//o8/XfnyAtdhszMxEjF0xnv8+Xdz+3y0O
+         Y9di0Stdbzdd/lHB6ZmPO03+CH5zKo9RBzyBUDD2rnRGBSX1voYw0dskNgh1bSNyZra4
+         AA27Vt388sedzodsngFPZZDJPdJvkXKPwxbQmnfkJk2FeFq1D4GOUfe/QxQ4WhpFU7mM
+         kq21lie+AmUjzBofJYn7HfYDNULzpHgVsbwCLXqDue9/rIptC1L47iGUKmM7cNNlm9M+
+         oZjg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TBUG62Kg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YiAioirb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4e75a73b391si496950137.487.2025.06.05.06.11.59
+        by mx.google.com with ESMTPS id 71dfb90a1353d-53074ba68b3si5597358e0c.159.2025.06.05.07.19.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Jun 2025 06:11:59 -0700 (PDT)
+        Thu, 05 Jun 2025 07:19:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TBUG62Kg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YiAioirb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uNANm-0002Ci-C5; Thu, 05 Jun 2025 09:11:46 -0400
+	id 1uNBQ6-0005Gw-6X; Thu, 05 Jun 2025 10:18:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <taotang2025@gmail.com>)
- id 1uN0Jh-00089x-62; Wed, 04 Jun 2025 22:26:53 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uNBQ2-0005GL-3f
+ for qemu-arm@nongnu.org; Thu, 05 Jun 2025 10:18:10 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <taotang2025@gmail.com>)
- id 1uN0Jf-0008MP-N6; Wed, 04 Jun 2025 22:26:52 -0400
-Received: by mail-pl1-x643.google.com with SMTP id
- d9443c01a7336-235ea292956so4950065ad.1; 
- Wed, 04 Jun 2025 19:26:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uNBPy-000186-BK
+ for qemu-arm@nongnu.org; Thu, 05 Jun 2025 10:18:09 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-442f9043f56so5581425e9.0
+ for <qemu-arm@nongnu.org>; Thu, 05 Jun 2025 07:18:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1749090409; x=1749695209; darn=nongnu.org;
+ d=linaro.org; s=google; t=1749133084; x=1749737884; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=K75aSCyzs9q5zyzmveX5d6CIqDix0KE2if+KVjMGA+I=;
- b=TBUG62KgYIZAUk08SXzF3Y9ycrEZ+2mvnxRzv4Y3Si2L4M0RCCpD8XzzWSjHxZ0qRd
- fvya5iGFx4Fm85VJP3InDNA5lq1BRi5awN527L2BC/y4w6W30rh9CssQPybAyHJxVx7U
- y9Pz2k81AJlw8m8POsnzPIY1xWAy1/wDtkpsAMYzE2rw0eJgph8crtsqGVLOqoojNvWA
- pacNd10oSSEHm7ZVbKLpv4J0MAtKYEJuzH9gEPq5SnYU4f9M3IMROzSUXdRiuh4qxGBO
- AYrvVcOPvrDSUaaRVx/4XM3g9KV/YCP2eQ9vUyRVk1LURc3cgR53t7+uagj45JLXBIvL
- 7jdw==
+ bh=UzSqdQKz9aJ2vSPHh9ioBp0u/bmrqqTbXn12Ae53pTU=;
+ b=YiAioirbqDV+UauyiB+5521GHs+QBPL0jFNLJ1gcaFl6/uerwd7u9ORyw55lhzaVNI
+ npywytcgJy2zYe0g4sP9OPHpqV+Du1uMH041Twgb0xs+m9znzu8vCHjkx37ZzzNgQhg7
+ CmgvVIFGYoDj016Eb7/oLxobtRpkVxaK92TKYQD5tJHDSR0N8pjccEDtn8MFj1gIplRW
+ HajYaSI6Q5zSFPxJHSfp3b1hhnESGWeQ+yUOC5sKM/nbQ1EeXrP00w3tF+6NQ9mIuwZ8
+ YOQRjC9MNAvjdAD0joHRxeEJir1CE445aNZf30kHXcuSNwvVW2iGqUeiXPZKDhWh1MaJ
+ eoxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749090409; x=1749695209;
+ d=1e100.net; s=20230601; t=1749133084; x=1749737884;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=K75aSCyzs9q5zyzmveX5d6CIqDix0KE2if+KVjMGA+I=;
- b=scIDbeNbQdAtQP2Kcd7O/INIOCkW9wL7/mqmSh+VFrJc0oN1mba5x+FvLeq/QqJKCa
- gMOXBYklK8YBHO00lZxGdBW48wx9Wdxb//2THjlD/hWinaB8s606DwFYI5L4aVBIah8g
- 1zO3ZHNb8KGfgPO0z//JsuPp3SoaXWd1R+m85YpzrQrGrIfvVZGegyhewdmjN8vmmlfh
- bBkTSijt6OzO/hFsoFmYDtNrLeuRrId3KNP0yARmRYvvrdAZnESp2/pyxPm3NBGodoZO
- 7VfCPAeMTzbtSCNB2l/tRppHPeYSV7FiPuX1qg/Y6fcR/EmkTzNPXy1m6fFtrSdGhO9g
- S7gA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWjDGtK7q8CNbOnz76IvIruULp3Trpqjzql7oAdxD6usac/o984rgD7P6sn1RDC2E87eqVi49QpbQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwII+hrcO5RK3rsrrqVbnvYRTESqffoix1pxX+tvrlRUI+3kSz0
- SNM9xCSLzu3k2CZG0xjUu1U7i7WVtqGZhehodfg9aH+M/t0iKYKpl/oDK3svuc/prpc1Bg==
-X-Gm-Gg: ASbGncsLIilEHkpQJCEl3X3J9FuJok+w0YNfstoWidQ1f9Fdsa+hJy/yy2v3s5PkTCq
- MX/ISvMQv17YUmB4+xQSF5JgyBF9/K0qpBpTFtp6J9P4JEpsX9G00KqzT8K2JKXUE92flDQLhWu
- ZE2xD9KblIFv7hPnDxLCm/HnwtJVYIZHFEoQV9YiOWcYs6urIIwPMLtahqXiQxCJT1nlT1RQmF2
- Fz/FW8V91Yd8hHUDnE/J722LDZWyjr7dvjm9gCtqBGE5q94VYqZGeiyp//eeSFnddD3KyZPNEmG
- D6TB4Q3BEob8JJJ/xxt6lUkQGBOFt6ysOG9+jBFRmQcI0+lljH4z2L2gr/A=
-X-Received: by 2002:a17:902:c94d:b0:234:9cdd:ffd5 with SMTP id
- d9443c01a7336-235e11e5c3amr65613585ad.25.1749090409026; 
- Wed, 04 Jun 2025 19:26:49 -0700 (PDT)
-Received: from huawei.. ([218.76.62.144]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23506cd3506sm110296125ad.156.2025.06.04.19.26.46
+ bh=UzSqdQKz9aJ2vSPHh9ioBp0u/bmrqqTbXn12Ae53pTU=;
+ b=MEaTD4vFyTDFyBPOigEh/1apL7ZtluwLEWGY7pTmxhATsHHGP9xe2TpUH0M9tfgnEp
+ j46XLVojWrSz7ps0izxovoUgniHCrCwyt5J6kZYXOEs6cozYaz0iG2lyrtTTTEpMQjBB
+ fBx38C9ii49alg19DtTQn6YerTTHrv83K9XKQU37R+dcYrx+F7rwyhdhUpHOnVeX4lgn
+ xlpXc4s2eiRp4Fmy+zkMnXDKznTIRe4fDHm4NQJdX8TEOebNUVSVLTb6q8HJ4PX14Bc4
+ hpYoC1kyFxg5ssW4RfhNOGZ4RGZOf99fa8akUKAE4lC0y5UUSFVTG+bNRFkHsoqmsQje
+ jMzA==
+X-Gm-Message-State: AOJu0YxXi5teLpa7vIIn175Nd8P+JVNxq8GE2UkWrotwh9O+xuX3+7Of
+ wruKkvNydedx9PUIAXsj0k0pwoE90PUh4+VbPAuSwHxzUxn0K8YddST6cJ/fmElJnsK3Vuv6Ub7
+ 6mNSp
+X-Gm-Gg: ASbGncsJqcYeq+bPNE29jK73yT4XxLj8f1/jsxjsMegouoHmNn7bEkZ8DclQ97TpWwK
+ tyVQ+ItnXYIuqQ5pg/tfRaUAR7zACfeue33tLZQqr9pWAr8GWhoU+aSYl3vY3aSUkIAH/mJBee1
+ luiuqvDNgGJXAnQvADI8M4J86/97La7dS1NK5O/lS9dBQOSZ6q/NxBAsg/LXNYdPeFxFukBiH2R
+ pbAQh0iWOBFYS6nhmd15Ywo2qk2TcBSv4ypuQyktB0EPV2M2fQR5Dq5gekqg15SQ7IWAeB0iZf/
+ edb/V8NvhGkP9unLjMi02epk5Rylm8uhmrbatQe7qYfLotYRXrIHl/GH/g==
+X-Received: by 2002:a05:600c:1548:b0:43c:f8fc:f697 with SMTP id
+ 5b1f17b1804b1-451f0a72bf1mr74933005e9.9.1749133083780; 
+ Thu, 05 Jun 2025 07:18:03 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-451fb2213c1sm19756095e9.34.2025.06.05.07.18.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Jun 2025 19:26:48 -0700 (PDT)
-From: taotang2025@gmail.com
-To: qemu-devel@nongnu.org
-Cc: eric.auger@redhat.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- Tao Tang <taotang2025@gmail.com>
-Subject: [PATCH] hw/arm/smmuv3: Fix incorrect reserved mask for SMMU CR0
- register
-Date: Thu,  5 Jun 2025 10:26:40 +0800
-Message-Id: <20250605022640.598308-1-taotang2025@gmail.com>
-X-Mailer: git-send-email 2.34.1
+ Thu, 05 Jun 2025 07:18:02 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org,
+	Corentin GENDRE <cocotroupe20@gmail.com>
+Subject: [PATCH] hw/arm/mps2: Configure the AN500 CPU with 16 MPU regions
+Date: Thu,  5 Jun 2025 15:18:01 +0100
+Message-ID: <20250605141801.1083266-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
- envelope-from=taotang2025@gmail.com; helo=mail-pl1-x643.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 05 Jun 2025 09:11:44 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -132,44 +132,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zyy0dza3/4Zq
+X-TUID: gtUDnpzWi3Uj
 
-From: Tao Tang <taotang2025@gmail.com>
+The AN500 application note documents that it configures the Cortex-M7
+CPU to have 16 MPU regions. We weren't doing this in our emulation,
+so the CPU had only the default 8 MPU regions. Set the mpu-ns-regions
+property to 16 for this board.
 
-The current definition of the SMMU_CR0_RESERVED mask is incorrect.
-It mistakenly treats bit 10 (DPT_WALK_EN) as a reserved bit while
-treating bit 9 (RES0) as an implemented bit.
+This bug doesn't affect any of the other board types we model in
+this source file, because they all use either the Cortex-M3 or
+Cortex-M4. Those CPUs do not have an RTL configurable number of
+MPU regions, and always provide 8 regions if the MPU is built in.
 
-According to the SMMU architecture specification, the layout for CR0 is:
-| 31:11| RES0           |
-| 10   | DPT_WALK_EN    |
-| 9    | RES0           |
-| 8:6  | VMW            |
-| 5    | RES0           |
-| 4    | ATSCHK         |
-| 3    | CMDQEN         |
-| 2    | EVENTQEN       |
-| 1    | PRIQEN         |
-| 0    | SMMUEN         |
-
-Signed-off-by: Tao Tang <taotang2025@gmail.com>
+Cc: qemu-stable@nongnu.org
+Reported-by: Corentin GENDRE <cocotroupe20@gmail.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/smmuv3-internal.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/mps2.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index b6b7399347..42ac77e654 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -120,7 +120,7 @@ REG32(CR0,                 0x20)
-     FIELD(CR0, EVENTQEN,      2, 1)
-     FIELD(CR0, CMDQEN,        3, 1)
- 
--#define SMMU_CR0_RESERVED 0xFFFFFC20
-+#define SMMU_CR0_RESERVED 0xFFFFFA20
- 
- REG32(CR0ACK,              0x24)
- REG32(CR1,                 0x28)
+diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+index 58efb41e6db..50e1a1c1c80 100644
+--- a/hw/arm/mps2.c
++++ b/hw/arm/mps2.c
+@@ -224,7 +224,11 @@ static void mps2_common_init(MachineState *machine)
+     switch (mmc->fpga_type) {
+     case FPGA_AN385:
+     case FPGA_AN386:
++        qdev_prop_set_uint32(armv7m, "num-irq", 32);
++        break;
+     case FPGA_AN500:
++        /* The AN500 configures its Cortex-M7 with 16 MPU regions */
++        qdev_prop_set_uint32(armv7m, "mpu-ns-dregions", 16);
+         qdev_prop_set_uint32(armv7m, "num-irq", 32);
+         break;
+     case FPGA_AN511:
 -- 
-2.34.1
+2.43.0
 

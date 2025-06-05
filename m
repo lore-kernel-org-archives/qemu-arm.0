@@ -1,208 +1,111 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp4482997njh;
-        Wed, 4 Jun 2025 19:03:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXc7goR58zDGjQqmFl/SSOZiaD6zJ1pNWw0K9Bbk+W6jhEHEWRjzdZ5k79wSGLPI8xW8ItCHVib33Vnlw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGnOyv2RAmBsSA99uSxH4D06KOHlY9JF9kaFvmjPtHVawmbuRKDguM3HYO24/1FBDhvFVLG
-X-Received: by 2002:a05:6214:1d21:b0:6fa:cdc9:8b09 with SMTP id 6a1803df08f44-6faf6fd5c0emr72558056d6.6.1749089016593;
-        Wed, 04 Jun 2025 19:03:36 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1749089016; cv=pass;
+Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp4501878njh;
+        Wed, 4 Jun 2025 20:07:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXMPjryOLu8e+CgvLIKdcN1mGusTgnN+INY0ma+8WbKE5aRtlBrAuuTvts3dHIFFut6TxVMKmJNbNCfVA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFZzN+vG2DgTRMSHzx/xu4tg+8SfuigHvr7M7xiKo05jsMnQdaie5y0zBqhse9qCboDx8B5
+X-Received: by 2002:a05:622a:1b22:b0:4a4:41c0:b256 with SMTP id d75a77b69052e-4a5a5806c0amr93419761cf.11.1749092844971;
+        Wed, 04 Jun 2025 20:07:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749092844; cv=none;
         d=google.com; s=arc-20240605;
-        b=amUME+XxbvLO/CkCD8JoII/qUUpahhUeCFIYc5XYmhnXf7QLYb96yBs9AdXOrOGMm/
-         xNKXrPBmmHBcFzGaFJVIm/WpbXLXn5MlvsSlFgLhTHAqWQZtRkZzhdX3vak3LG8SOZTw
-         fayj0NsXtc6WGO77sLnhvdONmTfW/psU4D4I0Mq64xaAXnMhO0cKQ+I7nUFw/7z+7O5m
-         Sv/CRsu8Lw2ZnLURAeet3ocrg2VjoLhYozTbq5IU6u0ScTAL+LNM/qsHTWXyaodACmpc
-         QpO5zBPhjF1HIo88Zp2c5JfloXlyDdGCZE+8iLM3Ptu8gK+soGqtD+F9r8fHUvmayp0u
-         LZ9g==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=Fq3GcwdgVhlaKn1u75VccIzw6B5nKPWwAlozr8EMWxKiKbUge4UHY6gfDYXhJFcRIk
+         +oH4AIFkKbDDT/bwqArRdA1ak+parIeoCA3NWBaz81XFgxjYoaYoWyUxxX1Jb0MHj/r2
+         TUac+UU+jorY+cfPJHdVh58UQw23BTEi+tU3yUEk9Jn+7rigm9yuFw9d+w2yghJBq6ap
+         eSWsK6wrtdDA8MZHJ0tGi7Dir8dzT6fo/YEMPsbFtVBEh2SsAV96OKSojgva4s6wemOr
+         9Dl4vjwQ2lBRybGsxNa4Nd6EQ8UD5tTFEgPDohTMnjGPJUHx2lJ+Wu5EfZGlkbIrfrNk
+         TpYg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:date:message-id:dkim-signature;
-        bh=rOxdMYpr2PmLCowa7hgbXUqMafxQmcCWg/JXrHamyUs=;
-        fh=5iFOKLD8n0H9VJkXC8oOD+g7venqpIpx8w50rNx4HwQ=;
-        b=keEceutBsoI5ug3mniLiAlp+rlHODS4AGrmKTAzhKET1JaHaHg9nvWtRjIDAAO7rN1
-         TCvyDyhTejAvSs99/b54D2cDlHyY7DQ7EyJyCWF5m6cp8zQRvvKsVmA98uCo8DuZDpl6
-         bGqz1DJWIHs1PXrMq1EYjY0zGLwJOMLybZ6CAFvPuM1bEQcD1InI50zm4tX+tyoZ0vJt
-         bvJh3BqxEHxm740TddYXEjjm/O32pXYYjEJu6cd8HZU+xbCUMkwAIJWajv7C8RgCy/Y2
-         YmSxwHIzm8Q0mbPsY791VG4OdsRCcutSTlE1KhahpF1tDki4f6TGJULuIj374GAut3dr
-         FWng==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=CQ6CaHOIvSVXqKfZ75w5fVWGcjD6yjEH0bz8R+yGGXc=;
+        fh=HLSIHnrnX9KoFZTWemcUGdr3VIefJD10Y6cjfatKJvE=;
+        b=MhMxT/yFtceH0OaNSJwTRImrGmDgq91hGIpG7sbmpVojPE160GsmDI53zjtBDA8f3t
+         3CDbGOObMcrAYMwR9vKVwJVdBBH17Vd5VwPVcDC+7f4Kby7p/eIASUAzBzX7ZQyE75di
+         4V8PXd8ZwO9FfZCfyG969RSYE6YjKkkQwi7y343U3/OVwKaGOOHZJcQb7nSotdpmeVGT
+         gqafWWIyWv6idzEJ3itMPfQt/yW8/wV6KjZcjTTVdVI0y24z/jCDhuZc71y/3EiE2Mb+
+         +m2IFIzsJBy65+dmFPZH43JlqHKskjwTtxpKdfwtpemFVpG6J4z77VYXfRWvqQQs0n8C
+         23vg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=K9h5xmmu;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FROviaUX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fac6ee2f58si161041976d6.477.2025.06.04.19.03.36
+        by mx.google.com with ESMTPS id d75a77b69052e-4a435a9c18bsi164419151cf.621.2025.06.04.20.07.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Jun 2025 19:03:36 -0700 (PDT)
+        Wed, 04 Jun 2025 20:07:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=K9h5xmmu;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FROviaUX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uMzwg-0004Wq-TV; Wed, 04 Jun 2025 22:03:06 -0400
+	id 1uN0wf-0007la-8G; Wed, 04 Jun 2025 23:07:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
- id 1uMzwd-0004WS-V6; Wed, 04 Jun 2025 22:03:03 -0400
-Received: from mail-dm6nam11on2060f.outbound.protection.outlook.com
- ([2a01:111:f403:2415::60f]
- helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
+ id 1uN0wd-0007l4-2P
+ for qemu-arm@nongnu.org; Wed, 04 Jun 2025 23:07:07 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
- id 1uMzwb-00013Z-W1; Wed, 04 Jun 2025 22:03:03 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=ySTIjveI+7YtBRHdWvJLtGIfo6hW4A6BuOQVzc3QieGUDnbAH2Kuuc8siTkvg/uGFCUiCZZYFiRfpP42Fy9IqB109R6kpEh2liUTWl2l8/lBv3/zI6Um3QjYrmgK52dVotzFkaCDWUY+EI5YIzmOrDG38qaTuuD1s9blgE9xzZWnrqi+tS5JOOv4cGj8ltwmgesJv+bgOboDP+QrnuOtO46+YA2uS62oSdVkuSmEmz42Z+2jT0lv+/svwPZvC3jZ+C7u8NlrVyRjaHkrRfHXZs6WD5UpKNNfnP5y1O3IdeNqFW416fQD33au99+dWMgf8v1OOxg4CwrrBPnqiTJdxw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=rOxdMYpr2PmLCowa7hgbXUqMafxQmcCWg/JXrHamyUs=;
- b=xjeI1yMh6ci+EDgeKjh0vNcay+2dONF/ifhJwYeZ6XOTTD7G6iHA4zQGm1ODj8MWP8+LoNpKBmy0i2tgy1wJ3fwlkCO8EFWDxR1vI17xup/FK7+h6IpYo3TmBvh2kGcKZEqbyHS+y+TNRaKI3ffhE/YT5ghxYGcyMNOaOYYPgMKQxalM9yWflreebr56nFBA2kSzktsw8qJ4c1cG2+niY5d2KQzNJjp0cnRqMuCprUC4RACyBCy6f8y+WwvKqwVkiRqjvofbWV9rD4Rno1nc6bBbLLYVRPEAH24/yIEB84bMC9oWs2Z3bIRwoyTKqc1RhA0JEX9hBfE4JomJOfyPAA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rOxdMYpr2PmLCowa7hgbXUqMafxQmcCWg/JXrHamyUs=;
- b=K9h5xmmuQfSL2RZmOw+u2XjNH1A3LVBARuMvQlfS+xOpm9EAreRx6gAV4RP+YsZxFJT4Js7jhVyph0tegHJKnG9cTGvB5ZssLcyjGtXGtesQ3GRXQDnNE8NPkNWQgmfU9SKiA9jravi9mJ5RL3Cfm2pYdhyutDa/eyJm5254u0x8mJcXtIxYayAt94P7kITVGO8a4iVxuQEc30rLQJTE5IRkW8asb42Js+u8ocPnm8fnyf9OGaroWGdFXEvN5csGJFdOrhXqBO57pkP5CpZGkufF3WboFG4X+FTFy5O9UzxNjxm/2+hUvBzS8qo3jqqbVTGdo6Okay15IqtETee56w==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from SN7PR12MB6838.namprd12.prod.outlook.com (2603:10b6:806:266::18)
- by CYYPR12MB9015.namprd12.prod.outlook.com (2603:10b6:930:c8::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8769.36; Thu, 5 Jun
- 2025 02:02:53 +0000
-Received: from SN7PR12MB6838.namprd12.prod.outlook.com
- ([fe80::529d:478:bc5d:b400]) by SN7PR12MB6838.namprd12.prod.outlook.com
- ([fe80::529d:478:bc5d:b400%3]) with mapi id 15.20.8769.037; Thu, 5 Jun 2025
- 02:02:53 +0000
-Message-ID: <74d9f7a2-dbf4-48d5-bda8-847d1fc73e38@nvidia.com>
-Date: Wed, 4 Jun 2025 19:02:50 -0700
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/6] hw/arm/virt: Add support for user creatable SMMUv3
- device
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: eric.auger@redhat.com, peter.maydell@linaro.org, jgg@nvidia.com,
- nicolinc@nvidia.com, ddutile@redhat.com, berrange@redhat.com,
- mochs@nvidia.com, smostafa@google.com, linuxarm@huawei.com,
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
-References: <20250602154110.48392-1-shameerali.kolothum.thodi@huawei.com>
-Content-Language: en-US
-From: Nathan Chen <nathanc@nvidia.com>
-In-Reply-To: <20250602154110.48392-1-shameerali.kolothum.thodi@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: BYAPR05CA0099.namprd05.prod.outlook.com
- (2603:10b6:a03:e0::40) To SN7PR12MB6838.namprd12.prod.outlook.com
- (2603:10b6:806:266::18)
+ (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
+ id 1uN0wa-000629-Ti
+ for qemu-arm@nongnu.org; Wed, 04 Jun 2025 23:07:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1749092823;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=CQ6CaHOIvSVXqKfZ75w5fVWGcjD6yjEH0bz8R+yGGXc=;
+ b=FROviaUXd85wkchbn0/J/z7FTujUlyLKqkMBX5NkRafl5l3z5pevizMPDP/eUTZIlQSJAA
+ P6zl1KlV5PZSk/J6nHjCy4JcSCquv53bK7qYhI8IW4Xw6oN0WfY+cQAOp5k73Q20/f07cz
+ jrjg1+a98CuqbCap0SVXG9+XeYAgI98=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-9-tn_opOLSO8edff2BH7IY-g-1; Wed,
+ 04 Jun 2025 23:05:46 -0400
+X-MC-Unique: tn_opOLSO8edff2BH7IY-g-1
+X-Mimecast-MFC-AGG-ID: tn_opOLSO8edff2BH7IY-g_1749092745
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D9DB51956089; Thu,  5 Jun 2025 03:05:44 +0000 (UTC)
+Received: from virt-mtcollins-01.lab.eng.rdu2.redhat.com
+ (virt-mtcollins-01.lab.eng.rdu2.redhat.com [10.8.1.196])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 995DB1954185; Thu,  5 Jun 2025 03:05:42 +0000 (UTC)
+From: Shaoqin Huang <shahuang@redhat.com>
+To: qemu-arm@nongnu.org
+Cc: Eric Auger <eauger@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Shaoqin Huang <shahuang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ qemu-devel@nongnu.org
+Subject: [PATCH v1] ramfb: Add property to control if load the romfile
+Date: Wed,  4 Jun 2025 23:03:51 -0400
+Message-Id: <20250605030351.2056571-1-shahuang@redhat.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SN7PR12MB6838:EE_|CYYPR12MB9015:EE_
-X-MS-Office365-Filtering-Correlation-Id: 08fdc3ba-0dfa-4f8c-e457-08dda3d514f1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|376014|1800799024;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?ZGlmeUFEZmJGRjBlZzRQT0NxanRYMVV6aTR2YmxSTitVL2VQR1dxYlN6S3lZ?=
- =?utf-8?B?TkNwUXp1N1F0OHFTQWpLcUZXSDNncmRVcmtWaEovZ2g4ajlCVGpOaEFCcm4x?=
- =?utf-8?B?MFdBeE83RUNXRGFHZ095OHZoOVZBNkk1Qk4rRDhPcG1ocGZ0a2hsQnJtWGNF?=
- =?utf-8?B?T244ZzhNM3Z0bzVyck9MS1BjQTlQeWxRallSL3lwcVNJN3piZS9yZUFOQk12?=
- =?utf-8?B?dTVkdlJ1UGVVWnk3STVoREFkY3lIc2d1WTB6TVpLcVhFRklSY0h2Ny9hdUNZ?=
- =?utf-8?B?S1JnZmpVTTVOWEd1dHlvU1pwVlRBVnJ3clM4NnE2VGhENEhOeGFmTEZLT1Iw?=
- =?utf-8?B?Mllsc2R1M1EvT1hCWnl2UmtMS2RSMitRV0V3cFNCYUNVNHg0d3I1NUo5dHdF?=
- =?utf-8?B?REFnU0ZRb0RmYVlheG5pT2hnTHE1aVVjMGtsUFNVb3lUanVBRmY4ZHEzcC9x?=
- =?utf-8?B?WFBKWXpqMEJlYjljeDNGZk1iTlRycy9MSW1VTm9NMHdZWWQ1ZVpDdm5POWUz?=
- =?utf-8?B?K0JVczdRbUMzM0I5QzVQWmYxZ2pSRStUTlgwQW40clVPNFpyMlZjV09vc0xl?=
- =?utf-8?B?Lyt1U1BZa2ora1A2QnhlN3JHbjZwSndXU2NZTitpazkvaEVIZUtYRUZobnJ0?=
- =?utf-8?B?Z1pHRGpDcktRN2Q0Nkp3SnFEL056RWpvbWlCbktJNnZCeUVKMytUVDFQT040?=
- =?utf-8?B?L2hQd204UTRsNWtja25POVdybkwrTzI4VmR3STFZTXQ0OUZQdGlQSVlBWjBj?=
- =?utf-8?B?UDkwZkpIWWt5OEM3clNOZmdQMVgwckxoSFVaeExMYnZpK3M4anpzdXRkQVFu?=
- =?utf-8?B?Um12QTBZTlcyK0ROb0lzUVMzL2c1cVpUdkw4ai82ZEMwUEZFOWhNT21qZHph?=
- =?utf-8?B?YllQekEyeVRsSldWRFA4ZU5aYmk0QWNEellwMFpid2haNkVhaVNySGd0cXdh?=
- =?utf-8?B?ckFBdUxkYTMwSlIvVC9ZSmoweThpbldoNGRQSmhFYjQ2Z2tybnBIYTZ4RTQ2?=
- =?utf-8?B?YVB6bHlrZElabi90dzM5T0FYVlpQUjgrRUFMWWpXMmZ4bHR0bjd5TWt2TXE0?=
- =?utf-8?B?aUlVb2FEWTV5Q2RZbUcrUGdaRGtCRlJkckhXbDlIMEhGaDB4UDZmYWNLRTJD?=
- =?utf-8?B?RlMzRUxXVEpuRDBYMHRjWWZMeVhFSDFGeVR6Q0dLL0NmbG9CYmFuT3ZRYW1o?=
- =?utf-8?B?OGNveFJwR2w0YW9PZ3IrOGRhZ01Rd0IzN1hqb1Ewbk1uMG15YXN0TUlVT3Yx?=
- =?utf-8?B?azgzMkc2UW1oMElVcWZFSXBmWHZydzVXOFVwSTI1WmVmKzFTaHVESFRDb0Iw?=
- =?utf-8?B?Q2hDMStFcTRFLzhrK0pwb3hKRnV2VUtLNU5lTWljWjBRd1VtMit5R3kvVlFa?=
- =?utf-8?B?UnJ5VHoxdCtqdHoyR2tZQ3pDTG90T2RIL3IzNG1FdkUxQ3VCVFFUdWxjLzNL?=
- =?utf-8?B?ejZ0VmExekFGRk8yZzlPK2YvSjA4R0VPNFZCT09XUGZWS1dRVnpRUXVQTU9q?=
- =?utf-8?B?dW9nMFZCbERBU0Qvd29EVWRQQW5Jb2pDOUR4SS9salE2NnBUMzJSQnFabHVp?=
- =?utf-8?B?TjJjTWh0aDNFcVhEMExNVmF4eEc3SkxCdkZXU2xxM0RhbGFkaUhRUGMxVnpR?=
- =?utf-8?B?VmtlTjAyaFJwSWJYc01hQUNTeEYreDJ1MVd5VVlBSnVQTTFDQm1jTFdDUmlq?=
- =?utf-8?B?eC9lTzlpYm81cFdaWGFUeE1JU2R3V0tEakVoeXZCUXhSSzN6L1RlanhHdGRJ?=
- =?utf-8?B?Ry8zSERDSG9ScjNtdnFibjZ1OVhUcTZUTHplSEZLdVV2SVJ5TXZwVG94d0JR?=
- =?utf-8?B?WXFuYXFMczV1UmQ0RTdVVWlhcDdreFV0R0FZcm5ZRHZIMlN4UVVtNjBxZFpj?=
- =?utf-8?B?d0pIRW5sb29RZVpBaUp5QlpaTFVEQ0NWY05rQXVBb1lpTFZGc0YzOHFIZXlD?=
- =?utf-8?Q?Hsz8uvWBT/I=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN7PR12MB6838.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(7416014)(376014)(1800799024); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?T2VTQTZQVE1OdEpqVHlkT1E3L043SzFxNVFjeGFJOUpkR3NBTmYyME5CV0VE?=
- =?utf-8?B?QW1QWWZVaXEwaU9hSTN6WmJodlN1aWhQTWkvaGtaQzdGZGpmUStVN1pDaXNF?=
- =?utf-8?B?Q3RGeE1zRU4wb3diQUw1eGRaQnhHUXNZWXRDaWNJS2V0dWQ4N0FGZDRpQ2lV?=
- =?utf-8?B?VkR1czM3ZzlnSFFoVFNnZlk4VEdwNGhEbWVuYnpsSVRjaEFiazliZms2SWdU?=
- =?utf-8?B?b2M5ZEhPMU9vQlk4Y1FlcU5Ta28rdUp2MkMrMG5IZXJCM3RvekFkQjQyR3NQ?=
- =?utf-8?B?RXp3Qm5GRnFLeUJtWU5JUnRxYUQ0N1JmT0tpbWNtYmlvaVVGUWYybUFxWlRH?=
- =?utf-8?B?L2NFNUtXNG44L2FoQSt3QkRuYm02U3FYdGJFa1NRNWdoNzVKVVVxQzByMkx6?=
- =?utf-8?B?ZjJCbGtzQzRJYmQ4aEtQTGlFWmdLbVZuTWJFR05LY0htLzJvR1A1KzRla0ky?=
- =?utf-8?B?aTJMU0RNTzZUQ0RtU2RNMlFzL0RKcjlDZkkrTFhmR0JXRUt5dHMxa2pHTlhX?=
- =?utf-8?B?ZldDQno5WW9IRVYySXVMYkoxcmE0dEd5NFBrTnNvRzMrMWJBQnB6WFFPbVZG?=
- =?utf-8?B?dGhsOHNyT0xpZFBiOVU3Q3diaGR6eUpOa1Q1Wjg1U0hUbklRVVUyUktQUVpT?=
- =?utf-8?B?MUxWbTl3b0FnMXB6MmFVdytDOVl3NjRLdHhFWDk2OTRhN1NqTVhSUkFGa1JE?=
- =?utf-8?B?dEV6L2lybmxsQlpsVDdHd3ZYMXB2U3FmTDE3Slhxd0owYjVqeHViaThqUEl4?=
- =?utf-8?B?aXQ1a2FpeHhySzJmQ09LcDNNUHdFRVdKUjdLWVdwVm1KUE5SSHN4aE5jbGZY?=
- =?utf-8?B?eDNYR2RhSytEM2RwZVFqN0t2d0UzMTdPeVN3V0l1QnlNQk84TGZkYW9Xa3Ar?=
- =?utf-8?B?eFh1UWh2eXpxL01CNUZWNm1LVllOc0Yya2tpazFnb1lwUm40eCtWQnVqWGc3?=
- =?utf-8?B?NUd4bDFCdElGbmNOREJrUmZkTHd6N0x3UXkyRS8vSUFGSHpySzdiWVowbStN?=
- =?utf-8?B?dVAwVFJzRUdtUEVFWC9SZ05WK1JtZEJpVDlSR2RrWmdHUldDcHZtTFRTMHJN?=
- =?utf-8?B?RFpDQ1o5YWZsRTZIbnBPaUZBNmh0dkFEZnZlTndUV0dBbGpjaUd5OGtlQlBu?=
- =?utf-8?B?ZlBIS0xuelorT0lFeXZWTkNmZDBLVEQ2RGk1b1pUZjZ3dXdXRkcvSVpTdzdJ?=
- =?utf-8?B?Vjh1V00xOEY5c1BaWlg3V254M3RpT0JteHA5dUJBWGJ1NnFqQUs0WXJ0SytO?=
- =?utf-8?B?aGlMQlQ0RXVnVEJ4VUhLZWlLTVJqSzVvNnRhNGliNm1wdk1jQjExTlFVUUJE?=
- =?utf-8?B?MWlGQjc3MVhObllBbkRGbXAxaHMvZmpnR0xuelhLdjdkODBsK1l1TysxL09s?=
- =?utf-8?B?NmUyTFV4b21XVVRmT0U2d1NibmtoSEx1cFFkcHhqblhZTnZwQnA4ZThCcEh3?=
- =?utf-8?B?WEI1Q2pScmZMWTUvcUJSSW00alpLVnBTTUliTHR5UW8rZS80dWo2VUY0RVE4?=
- =?utf-8?B?a1dyblBmeEZ0cVl1TnRINCsvT1I5akhnNWhIQlNvcTgyaXJMWUowcmJjZ3Rt?=
- =?utf-8?B?ZkQzcnJTbGlHbmpuRmd3OE1IZ0xKVVVNSGt4eDlKeGoxOHlBMzJhQlAzOXRv?=
- =?utf-8?B?OEJodm9MT2JWbDR3L3djb2s3MDNidEpRZy8xbWNQL1lzL1JVUWZpZzExSTVK?=
- =?utf-8?B?T3ltaGZsZFRCTUhYdjBrUHFFajBVNENLUnhKcHgrRk9jQjdrVTB0QzRmZitM?=
- =?utf-8?B?M1FuM2xoYnh1dnNKalBPd1ZxM3FWcWZEQWN2M0orK3RwaHc4TndheDFLQk1w?=
- =?utf-8?B?RlY5c2dONzQwSVJjYUl2VjJmL3JyeDdaZllFS3FqZlFJZ0ozSFVENDU3R2Zw?=
- =?utf-8?B?Wkp2d1pqN1VSVXBMcTBoaU5PRWxldkZOdnd3Sm1XYVlGODNmaUM2c081M25h?=
- =?utf-8?B?dzhwdk5LOFE4YTJLSFlvRGRnTDV2TVFPYzdwRnY3bU1Gem12a1plQ0hPRGdU?=
- =?utf-8?B?bUtYV1BTUUN0anMxZmNQN05YUHlsa1R5b0FqN3JiemVYdnR5N3ZscS9BUXpS?=
- =?utf-8?B?aDNtdmRKWlhqeXdaL0tJbXowbkNsL1NwV3FnWEhGZjF2djdyR1VLb2JsUm9G?=
- =?utf-8?Q?r6zIbjOY9eX0ahBQ331pV2jnE?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 08fdc3ba-0dfa-4f8c-e457-08dda3d514f1
-X-MS-Exchange-CrossTenant-AuthSource: SN7PR12MB6838.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jun 2025 02:02:53.3100 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 2i62tUbJkueUhO9coCj5ZnyWgyzDicvASIW+YeVOA6NGAQsG7Jo4ZoSmNbLuur1y+Lz4UsKfUOyHflyLKZxHTA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CYYPR12MB9015
-Received-SPF: permerror client-ip=2a01:111:f403:2415::60f;
- envelope-from=nathanc@nvidia.com;
- helo=NAM11-DM6-obe.outbound.protection.outlook.com
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=shahuang@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.128,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -217,18 +120,155 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PUU2gE8moXWF
+X-TUID: dtNwi2qiOWQl
 
-On 6/2/2025 8:41 AM, Shameer Kolothum wrote:
-> This patch series introduces support for a user-creatable SMMUv3 device
-> (-device arm-smmuv3) in QEMU.
+Now the ramfb will load the vgabios-ramfb.bin unconditionally, but only
+the x86 need the vgabios-ramfb.bin, this can cause that when use the
+release package on arm64 it can't find the vgabios-ramfb.bin.
 
-Tested-by: Nathan Chen <nathanc@nvidia.com>
+So add a new property ramfb-romfile in both ramfb and vfio_pci device,
+because the vfio display also use the ramfb_setup() to load the
+vgabios-ramfb.bin file.
 
-I am able to create 16 SMMUv3 devices in a qemu VM with emulated devices 
-properly associated with the guest SMMUs in guest sysfs - verified with 
-some guest SMMUs having two or three emulated NICs assigned to them 
-while other guest SMMUs have a minimum of one assigned.
+After have this property, the machine type can set the compatibility to
+not load the vgabios-ramfb.bin if the arch doesn't need it.
 
-Thanks,
-Nathan
+Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
+---
+ hw/display/ramfb-standalone.c | 4 +++-
+ hw/display/ramfb-stubs.c      | 2 +-
+ hw/display/ramfb.c            | 6 ++++--
+ hw/vfio/display.c             | 4 ++--
+ hw/vfio/pci.c                 | 1 +
+ hw/vfio/pci.h                 | 1 +
+ include/hw/display/ramfb.h    | 2 +-
+ 7 files changed, 13 insertions(+), 7 deletions(-)
+
+diff --git a/hw/display/ramfb-standalone.c b/hw/display/ramfb-standalone.c
+index 1be106b57f..2b96a49baa 100644
+--- a/hw/display/ramfb-standalone.c
++++ b/hw/display/ramfb-standalone.c
+@@ -17,6 +17,7 @@ struct RAMFBStandaloneState {
+     QemuConsole *con;
+     RAMFBState *state;
+     bool migrate;
++    bool ramfb_romfile;
+ };
+ 
+ static void display_update_wrapper(void *dev)
+@@ -39,7 +40,7 @@ static void ramfb_realizefn(DeviceState *dev, Error **errp)
+     RAMFBStandaloneState *ramfb = RAMFB(dev);
+ 
+     ramfb->con = graphic_console_init(dev, 0, &wrapper_ops, dev);
+-    ramfb->state = ramfb_setup(errp);
++    ramfb->state = ramfb_setup(ramfb->ramfb_romfile, errp);
+ }
+ 
+ static bool migrate_needed(void *opaque)
+@@ -62,6 +63,7 @@ static const VMStateDescription ramfb_dev_vmstate = {
+ 
+ static const Property ramfb_properties[] = {
+     DEFINE_PROP_BOOL("x-migrate", RAMFBStandaloneState, migrate,  true),
++    DEFINE_PROP_BOOL("ramfb-romfile", RAMFBStandaloneState, ramfb_romfile, true),
+ };
+ 
+ static void ramfb_class_initfn(ObjectClass *klass, void *data)
+diff --git a/hw/display/ramfb-stubs.c b/hw/display/ramfb-stubs.c
+index cf64733b10..b83551357b 100644
+--- a/hw/display/ramfb-stubs.c
++++ b/hw/display/ramfb-stubs.c
+@@ -8,7 +8,7 @@ void ramfb_display_update(QemuConsole *con, RAMFBState *s)
+ {
+ }
+ 
+-RAMFBState *ramfb_setup(Error **errp)
++RAMFBState *ramfb_setup(bool romfile, Error **errp)
+ {
+     error_setg(errp, "ramfb support not available");
+     return NULL;
+diff --git a/hw/display/ramfb.c b/hw/display/ramfb.c
+index 8c0f907673..9a17d97d07 100644
+--- a/hw/display/ramfb.c
++++ b/hw/display/ramfb.c
+@@ -135,7 +135,7 @@ const VMStateDescription ramfb_vmstate = {
+     }
+ };
+ 
+-RAMFBState *ramfb_setup(Error **errp)
++RAMFBState *ramfb_setup(bool romfile, Error **errp)
+ {
+     FWCfgState *fw_cfg = fw_cfg_find();
+     RAMFBState *s;
+@@ -147,7 +147,9 @@ RAMFBState *ramfb_setup(Error **errp)
+ 
+     s = g_new0(RAMFBState, 1);
+ 
+-    rom_add_vga("vgabios-ramfb.bin");
++    if (romfile) {
++        rom_add_vga("vgabios-ramfb.bin");
++    }
+     fw_cfg_add_file_callback(fw_cfg, "etc/ramfb",
+                              NULL, ramfb_fw_cfg_write, s,
+                              &s->cfg, sizeof(s->cfg), false);
+diff --git a/hw/vfio/display.c b/hw/vfio/display.c
+index ea87830fe0..56f10564f9 100644
+--- a/hw/vfio/display.c
++++ b/hw/vfio/display.c
+@@ -365,7 +365,7 @@ static bool vfio_display_dmabuf_init(VFIOPCIDevice *vdev, Error **errp)
+                                           &vfio_display_dmabuf_ops,
+                                           vdev);
+     if (vdev->enable_ramfb) {
+-        vdev->dpy->ramfb = ramfb_setup(errp);
++        vdev->dpy->ramfb = ramfb_setup(vdev->ramfb_romfile, errp);
+         if (!vdev->dpy->ramfb) {
+             return false;
+         }
+@@ -494,7 +494,7 @@ static bool vfio_display_region_init(VFIOPCIDevice *vdev, Error **errp)
+                                           &vfio_display_region_ops,
+                                           vdev);
+     if (vdev->enable_ramfb) {
+-        vdev->dpy->ramfb = ramfb_setup(errp);
++        vdev->dpy->ramfb = ramfb_setup(vdev->ramfb_romfile, errp);
+         if (!vdev->dpy->ramfb) {
+             return false;
+         }
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index 7f1532fbed..bfdf365978 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -3564,6 +3564,7 @@ static const TypeInfo vfio_pci_dev_info = {
+ 
+ static const Property vfio_pci_dev_nohotplug_properties[] = {
+     DEFINE_PROP_BOOL("ramfb", VFIOPCIDevice, enable_ramfb, false),
++    DEFINE_PROP_BOOL("ramfb-romfile", VFIOPCIDevice, ramfb_romfile, true),
+     DEFINE_PROP_ON_OFF_AUTO("x-ramfb-migrate", VFIOPCIDevice, ramfb_migrate,
+                             ON_OFF_AUTO_AUTO),
+ };
+diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
+index d94ecaba68..d567de8f10 100644
+--- a/hw/vfio/pci.h
++++ b/hw/vfio/pci.h
+@@ -177,6 +177,7 @@ struct VFIOPCIDevice {
+     bool no_kvm_ioeventfd;
+     bool no_vfio_ioeventfd;
+     bool enable_ramfb;
++    bool ramfb_romfile;
+     OnOffAuto ramfb_migrate;
+     bool defer_kvm_irq_routing;
+     bool clear_parent_atomics_on_exit;
+diff --git a/include/hw/display/ramfb.h b/include/hw/display/ramfb.h
+index a7e0019144..172aa6dc89 100644
+--- a/include/hw/display/ramfb.h
++++ b/include/hw/display/ramfb.h
+@@ -6,7 +6,7 @@
+ /* ramfb.c */
+ typedef struct RAMFBState RAMFBState;
+ void ramfb_display_update(QemuConsole *con, RAMFBState *s);
+-RAMFBState *ramfb_setup(Error **errp);
++RAMFBState *ramfb_setup(bool romfile, Error **errp);
+ 
+ extern const VMStateDescription ramfb_vmstate;
+ 
+-- 
+2.40.1
+

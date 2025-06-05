@@ -1,146 +1,412 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([185.126.160.19])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-60727b8bdf5sm750673a12.66.2025.06.05.01.51.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Jun 2025 01:51:01 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 869985F7E4;
-	Thu, 05 Jun 2025 09:51:00 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: qemu-devel@nongnu.org,  Sriram Yagnaraman
- <sriram.yagnaraman@ericsson.com>,  "Michael S. Tsirkin" <mst@redhat.com>,
-  Dmitry Osipenko <dmitry.osipenko@collabora.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  John
- Snow <jsnow@redhat.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,
-  Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Peter Xu
- <peterx@redhat.com>,  Fabiano Rosas <farosas@suse.de>,
-  qemu-arm@nongnu.org,  Thomas Huth <thuth@redhat.com>,  Alexandre Iooss
- <erdnaxe@crans.org>,  Gustavo Romero <gustavo.romero@linaro.org>,  Markus
- Armbruster <armbru@redhat.com>,  David Hildenbrand <david@redhat.com>,
-  Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Laurent Vivier
- <lvivier@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,
-  Mahmoud Mandour <ma.mandourr@gmail.com>,  Julian Armistead
- <julian.armistead@linaro.org>,  Jim MacArthur <jim.macarthur@linaro.org>
-Subject: Re: [PATCH v4 03/17] tests/tcg: make aarch64 boot.S handle
- different starting modes
-In-Reply-To: <e037e38c-dd8d-4f65-b2d5-2629be5f6740@daynix.com> (Akihiko
-	Odaki's message of "Thu, 5 Jun 2025 17:29:16 +0900")
-References: <20250603110204.838117-1-alex.bennee@linaro.org>
-	<20250603110204.838117-4-alex.bennee@linaro.org>
-	<e037e38c-dd8d-4f65-b2d5-2629be5f6740@daynix.com>
-User-Agent: mu4e 1.12.11; emacs 30.1
-Date: Thu, 05 Jun 2025 09:51:00 +0100
-Message-ID: <874iwu372j.fsf@draig.linaro.org>
+Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp88148njc;
+        Thu, 5 Jun 2025 01:29:23 -0700 (PDT)
+X-Received: by 2002:a17:902:d550:b0:224:1af1:87f4 with SMTP id d9443c01a7336-235e14bc5d2mr95657175ad.22.1749112162808;
+        Thu, 05 Jun 2025 01:29:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749112162; cv=none;
+        d=google.com; s=arc-20240605;
+        b=j/qWUZXGxDPzqAPP7nzVRmkXoPpUXH5oNzwsX4biFg/9epgan7KGxjpog28aondSLi
+         bvDk3QJsH5d3cZm01mfk9iBbZmuKK34JboY9nC0FpGzif1U7LGmes3/Ad1GEyRdciul8
+         ZeMJq+A1um95/XII5Xh1CvwwFNwfiFDaX6QpsEYiDNAnme7l6iMLogVCv75qxAB7uEX4
+         UnjZUwUWqZxgZaQ510FoLwV0g3+ReM4MooJeSAxKiR/BNuLt0gUP+tLupRBqlYHZRygU
+         8UxHXa69KrfGFTVNohAFWkjBHNfrcD1quABajZGxf832XLvwCZwrp22Cy5RLDXyPqGZq
+         6KnQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=86WiDhquQRMwpYHU14pt/RjTs5B29pGNwoiv5JY9e80=;
+        fh=sNXjGpGN9hiMZFxde/KaUV0eeYMwHjz/aMEkCtYf0lc=;
+        b=YP9GIuLmdYM94qYmVWf3PwnFbN3CHYfXlt+uYvM5i4jugc+LBTgTg4hJU0EMdNOqQI
+         iRxN0B5jcLPxhPFh7Fl6vgL9kaoFa956lmpJf8U4K6C+BP5vgYhAbrEavIGgPA9UrHUP
+         d87cqye/XZc6rlgItSmnoFd6qj76dPjd+Is2tAvo9DXYQWsCat91vGt3xID5JAV2F3ZR
+         a4H2Nw8Q6a6oejIuMlG3tydERQ3Sdv4lG1Pt/bCNb0dEj8zAhHauNcI04l9ExXAeP8Vk
+         /Iesxzun9jfnU4hgAmFfr579BwED3RpsEFtKdrBRewA7WILQ7WlfPupr/GKDXuYmMS10
+         +2qg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=3B2y4kWg;
+       spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-23506ccda69sor109429065ad.16.2025.06.05.01.29.22
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 05 Jun 2025 01:29:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=3B2y4kWg;
+       spf=pass (google.com: domain of akihiko.odaki@daynix.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=akihiko.odaki@daynix.com;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1749112162; x=1749716962; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=86WiDhquQRMwpYHU14pt/RjTs5B29pGNwoiv5JY9e80=;
+        b=3B2y4kWgtnCnwe6RkN1nMRilB9WPsCEsnf7d6S342xHs+Jxhbv/5HKwCb+6ob5qgPD
+         jpK2U7a6147m30/L6CPuqXbuQ94Gkqn3QqdTX8VZpD/R8bpSzufwSqCbEVbkcMc6Isge
+         OwIeSaPtC1AEKyYP4Km1+/45oPaC5sdNTSpjqnPN26iz+mKyWdQMvHqO1IzikKaz3yqg
+         F87dpU6cQkrqB6gjoYDd6E7/n8+4AVzh6XX/fQextG0/tqHzZLjigCaQGs+blw4YyjFC
+         Qdu0b211LhXAVt/uN9wyqjsoImeoxnKIPVkEfv9Y5ruY7Vqmxb09277OALvDV5cWvi+X
+         E6Fg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749112162; x=1749716962;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=86WiDhquQRMwpYHU14pt/RjTs5B29pGNwoiv5JY9e80=;
+        b=vAxhG2pC8KAugR5I/fzNIAajYM+M6HDKtyEI85LJZ4Vpqs9CSm9RFqCqPwjxjl0UON
+         s4UCPCiz5Ikv39lYs4BnwxA5x0NUQN2iLcscRWjVpi/OJPbz1BONVuyr056AB3nPYv0+
+         j1V+en/5kxl37LNM7XxDfL3bjFI7Se5WSLerXs5v5CpcIKaLWUaa1Ks1b4S5MuAy55JO
+         F7H6oS4vYSCm0mPpdYHJ2kKohz4tdBkjiZg3oi3yBtE1IuwddepEf+PFeOkWwCp9koMw
+         es08FeRvNLth70e5NYp2fcgxDlfuH4ySk5nFgEEVJIiLAVVhOxXh6Zqylaz/5DBRk9gw
+         4QSQ==
+X-Gm-Message-State: AOJu0YwP5szG6y6FpjjO06uzf00uxOlhx53fapYr9whK/EckEx5EiG+w
+	75Dpdacwsd9gmMsIEUbD/u5CeAspErIqDMSiKL1pSGxQY0NkTbnvZjk5iOw0cXMPTZGRMqYcUzZ
+	U0yAG
+X-Gm-Gg: ASbGncs2FyogGjfQKkWvjeDN4gXu/p1DbmQkbcxzZJd/5Br9n4yNTALHbzxNHRGNEsE
+	/+cK75avN9rxVp6SoUmfiBQCn9Yph4hfjv0BlyDpgNs3VOmGHhx0n4bVS4m99VFltPo9/eVNRna
+	SZd/sbizAPC74EXyQXISojYblnv0fqg11bHJSXN7kk9SUQV+/fEq2h9vD2Ko2FJ7xnRxWGMQtuM
+	H/N1gnEdbUW1G2ZmXfS2dy1VgPV9EzZ0fiz/2Wm7lKpMobbDdb+7q1muNhBn8aFI/7qezPpyp2n
+	uJgd/2D6nDZF4dVYN6rxsOQSCiTww8tUftQWxuC1yvMg7Q2fQ57ieQqct1KaQUOs
+X-Google-Smtp-Source: AGHT+IF3WGEuOr8FqFHnlqOciWbwF9oSAST8ulaaZHrcR49NKtY0RvaM4ZE9dmWGOjLKIawjBBZNtQ==
+X-Received: by 2002:a05:6a21:99a7:b0:21d:2244:7c5c with SMTP id adf61e73a8af0-21d247620bfmr7713655637.26.1749112162131;
+        Thu, 05 Jun 2025 01:29:22 -0700 (PDT)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from [157.82.203.223] ([157.82.203.223])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b2eceb28bbfsm9851400a12.20.2025.06.05.01.29.17
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 05 Jun 2025 01:29:21 -0700 (PDT)
+Message-ID: <e037e38c-dd8d-4f65-b2d5-2629be5f6740@daynix.com>
+Date: Thu, 5 Jun 2025 17:29:16 +0900
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 5PUuG7IDOyGn
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 03/17] tests/tcg: make aarch64 boot.S handle different
+ starting modes
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, John Snow <jsnow@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, Peter Xu
+ <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, qemu-arm@nongnu.org,
+ Thomas Huth <thuth@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>,
+ Gustavo Romero <gustavo.romero@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, David Hildenbrand <david@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Julian Armistead <julian.armistead@linaro.org>,
+ Jim MacArthur <jim.macarthur@linaro.org>
+References: <20250603110204.838117-1-alex.bennee@linaro.org>
+ <20250603110204.838117-4-alex.bennee@linaro.org>
+Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <20250603110204.838117-4-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: 35fS9hF5IqOG
 
-Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+On 2025/06/03 20:01, Alex Bennée wrote:
+> Currently the boot.S code assumes everything starts at EL1. This will
+> break things like the memory test which will barf on unaligned memory
+> access when run at a higher level.
+> 
+> Adapt the boot code to do some basic verification of the starting mode
+> and the minimal configuration to move to the lower exception levels.
+> With this we can run the memory test with:
+> 
+>    -M virt,secure=on
+>    -M virt,secure=on,virtualization=on
+>    -M virt,virtualisation=on
+> 
+> If a test needs to be at a particular EL it can use the semihosting
+> command line to indicate the level we should execute in.
+> 
+> Cc: Julian Armistead <julian.armistead@linaro.org>
+> Cc: Jim MacArthur <jim.macarthur@linaro.org>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> 
+> ---
+> v4
+>    - drop post eret nops
+>    - proper error string for EL0 error case
+>    - clamp any invalid target EL value to 1
+> v3
+>    - create system stack so we _exit cleanly
+>    - normalise EL string before compares
+>    - catch when we start in a lower EL than we asked for
+>    - default to EL1 when arg unclear
+> v2
+>    - allow tests to control the final EL we end up at
+>    - use tabs consistently
+>    - validate command line arg is between 1 and 3
+> ---
+>   tests/tcg/aarch64/Makefile.softmmu-target |   3 +-
+>   tests/tcg/aarch64/system/boot.S           | 172 +++++++++++++++++++++-
+>   2 files changed, 169 insertions(+), 6 deletions(-)
+> 
+> diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+> index 9c52475b7a..f7a7d2b800 100644
+> --- a/tests/tcg/aarch64/Makefile.softmmu-target
+> +++ b/tests/tcg/aarch64/Makefile.softmmu-target
+> @@ -68,7 +68,8 @@ run-plugin-semiconsole-with-%: semiconsole
+>   
+>   # vtimer test needs EL2
+>   QEMU_EL2_MACHINE=-machine virt,virtualization=on,gic-version=2 -cpu cortex-a57 -smp 4
+> -run-vtimer: QEMU_OPTS=$(QEMU_EL2_MACHINE) $(QEMU_BASE_ARGS) -kernel
+> +QEMU_EL2_BASE_ARGS=-semihosting-config enable=on,target=native,chardev=output,arg="2"
+> +run-vtimer: QEMU_OPTS=$(QEMU_EL2_MACHINE) $(QEMU_EL2_BASE_ARGS) -kernel
+>   
+>   # Simple Record/Replay Test
+>   .PHONY: memory-record
+> diff --git a/tests/tcg/aarch64/system/boot.S b/tests/tcg/aarch64/system/boot.S
+> index a5df9c173d..8bfa4e4efc 100644
+> --- a/tests/tcg/aarch64/system/boot.S
+> +++ b/tests/tcg/aarch64/system/boot.S
+> @@ -16,6 +16,7 @@
+>   #define semihosting_call hlt 0xf000
+>   #define SYS_WRITEC	0x03	/* character to debug channel */
+>   #define SYS_WRITE0	0x04	/* string to debug channel */
+> +#define SYS_GET_CMDLINE 0x15	/* get command line */
+>   #define SYS_EXIT	0x18
+>   
+>   	.align	12
+> @@ -70,21 +71,172 @@ lower_a32_sync:
+>   lower_a32_irq:
+>   lower_a32_fiq:
+>   lower_a32_serror:
+> +	adr	x1, .unexp_excp
+> +exit_msg:
+>   	mov	x0, SYS_WRITE0
+> -	adr	x1, .error
+>   	semihosting_call
+>   	mov	x0, 1 /* EXIT_FAILURE */
+>   	bl 	_exit
+>   	/* never returns */
+>   
+>   	.section .rodata
+> -.error:
+> -	.string "Terminated by exception.\n"
+> +.unexp_excp:
+> +	.string "Unexpected exception.\n"
+> +.high_el_msg:
+> +	.string "Started in lower EL than requested.\n"
+> +.unexp_el0:
+> +	.string "Started in invalid EL.\n"
+> +
+> +	.align 8
+> +.get_cmd:
 
-> On 2025/06/03 20:01, Alex Benn=C3=A9e wrote:
->> Currently the boot.S code assumes everything starts at EL1. This will
->> break things like the memory test which will barf on unaligned memory
->> access when run at a higher level.
->> Adapt the boot code to do some basic verification of the starting
->> mode
->> and the minimal configuration to move to the lower exception levels.
->> With this we can run the memory test with:
->>    -M virt,secure=3Don
->>    -M virt,secure=3Don,virtualization=3Don
->>    -M virt,virtualisation=3Don
->> If a test needs to be at a particular EL it can use the semihosting
->> command line to indicate the level we should execute in.
->> Cc: Julian Armistead <julian.armistead@linaro.org>
->> Cc: Jim MacArthur <jim.macarthur@linaro.org>
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> ---
->> v4
->>    - drop post eret nops
->>    - proper error string for EL0 error case
->>    - clamp any invalid target EL value to 1
->> v3
->>    - create system stack so we _exit cleanly
->>    - normalise EL string before compares
->>    - catch when we start in a lower EL than we asked for
->>    - default to EL1 when arg unclear
->> v2
->>    - allow tests to control the final EL we end up at
->>    - use tabs consistently
->>    - validate command line arg is between 1 and 3
->> ---
->>   tests/tcg/aarch64/Makefile.softmmu-target |   3 +-
->>   tests/tcg/aarch64/system/boot.S           | 172 +++++++++++++++++++++-
->>   2 files changed, 169 insertions(+), 6 deletions(-)
->> diff --git a/tests/tcg/aarch64/Makefile.softmmu-target
->> b/tests/tcg/aarch64/Makefile.softmmu-target
->> index 9c52475b7a..f7a7d2b800 100644
->> --- a/tests/tcg/aarch64/Makefile.softmmu-target
->> +++ b/tests/tcg/aarch64/Makefile.softmmu-target
->> @@ -68,7 +68,8 @@ run-plugin-semiconsole-with-%: semiconsole
->>     # vtimer test needs EL2
->>   QEMU_EL2_MACHINE=3D-machine virt,virtualization=3Don,gic-version=3D2 -=
-cpu cortex-a57 -smp 4
->> -run-vtimer: QEMU_OPTS=3D$(QEMU_EL2_MACHINE) $(QEMU_BASE_ARGS) -kernel
->> +QEMU_EL2_BASE_ARGS=3D-semihosting-config enable=3Don,target=3Dnative,ch=
-ardev=3Doutput,arg=3D"2"
->> +run-vtimer: QEMU_OPTS=3D$(QEMU_EL2_MACHINE) $(QEMU_EL2_BASE_ARGS) -kern=
-el
->>     # Simple Record/Replay Test
->>   .PHONY: memory-record
->> diff --git a/tests/tcg/aarch64/system/boot.S b/tests/tcg/aarch64/system/=
-boot.S
->> index a5df9c173d..8bfa4e4efc 100644
->> --- a/tests/tcg/aarch64/system/boot.S
->> +++ b/tests/tcg/aarch64/system/boot.S
->> @@ -16,6 +16,7 @@
->>   #define semihosting_call hlt 0xf000
->>   #define SYS_WRITEC	0x03	/* character to debug channel */
->>   #define SYS_WRITE0	0x04	/* string to debug channel */
->> +#define SYS_GET_CMDLINE 0x15	/* get command line */
->>   #define SYS_EXIT	0x18
->>     	.align	12
->> @@ -70,21 +71,172 @@ lower_a32_sync:
->>   lower_a32_irq:
->>   lower_a32_fiq:
->>   lower_a32_serror:
->> +	adr	x1, .unexp_excp
->> +exit_msg:
->>   	mov	x0, SYS_WRITE0
->> -	adr	x1, .error
->>   	semihosting_call
->>   	mov	x0, 1 /* EXIT_FAILURE */
->>   	bl 	_exit
->>   	/* never returns */
->>     	.section .rodata
->> -.error:
->> -	.string "Terminated by exception.\n"
->> +.unexp_excp:
->> +	.string "Unexpected exception.\n"
->> +.high_el_msg:
->> +	.string "Started in lower EL than requested.\n"
->> +.unexp_el0:
->> +	.string "Started in invalid EL.\n"
->> +
->> +	.align 8
->> +.get_cmd:
->
-> Please do not send a new version without addressing all comments for
-> the previous versions or at least noting there are unaddressed
-> comments:
-> https://lore.kernel.org/qemu-devel/7a76e746-9022-48cf-8216-775071e6d631@d=
-aynix.com
->
-> Following the best practices in docs/devel/submitting-a-patch.rst will
-> ensure a smoother patch review. It is fine for me if you submit a new
-> version noting unaddressed comments, but some may disagree.
+Please do not send a new version without addressing all comments for the 
+previous versions or at least noting there are unaddressed comments:
+https://lore.kernel.org/qemu-devel/7a76e746-9022-48cf-8216-775071e6d631@daynix.com
 
-There is no style guide for assembler. I have made the strings
-consistently use the . prefix.
+Following the best practices in docs/devel/submitting-a-patch.rst will 
+ensure a smoother patch review. It is fine for me if you submit a new 
+version noting unaddressed comments, but some may disagree.
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+The same goes "[PATCH v4 11/17] ui/gtk-gl-area: Remove extra draw call 
+in refresh".
+
+Regards,
+Akihiko Odaki
+
+> +	.quad	cmdline
+> +	.quad	128
+>   
+>   	.text
+>   	.align 4
+>   	.global __start
+>   __start:
+> +	/*
+> +         * Initialise the stack for whatever EL we are in before
+> +	 * anything else, we need it to be able to _exit cleanly.
+> +	 * It's smaller than the stack we pass to the C code but we
+> +	 * don't need much.
+> +	 */
+> +	adrp	x0, system_stack_end
+> +	add	x0, x0, :lo12:system_stack_end
+> +	mov	sp, x0
+> +
+> +	/*
+> +	 * The test can set the semihosting command line to the target
+> +	 * EL needed for the test. However if no semihosting args are set we will
+> +	 * end up with -kernel/-append data (see semihosting_arg_fallback).
+> +	 * Keep the normalised target in w11.
+> +	 */
+> +	mov	x0, SYS_GET_CMDLINE
+> +	adr	x1, .get_cmd
+> +	semihosting_call
+> +	adrp	x10, cmdline
+> +	add	x10, x10, :lo12:cmdline
+> +	ldrb	w11, [x10]
+> +
+> +	/* sanity check, normalise char to EL, clamp to 1 if outside range */
+> +	subs w11, w11, #'0'
+> +	b.lt el_default
+> +	cmp  w11, #3
+> +	b.gt el_default
+> +	b 1f
+> +
+> +el_high:
+> +	adr	x1, .high_el_msg
+> +	b	exit_msg
+> +
+> +el_default:
+> +	mov	w11, #1
+> +
+> +1:
+> +	/* Determine current Exception Level */
+> +	mrs	x0, CurrentEL
+> +	lsr	x0, x0, #2	  /* CurrentEL[3:2] contains the current EL */
+> +
+> +	/* Are we already in a lower EL than we want? */
+> +	cmp	w11, w0
+> +	bgt	el_high
+> +
+> +	/* Branch based on current EL */
+> +	cmp	x0, #3
+> +	b.eq	setup_el3
+> +	cmp	x0, #2
+> +	b.eq	setup_el2
+> +	cmp	x0, #1
+> +	b.eq	at_testel	     /* Already at EL1, skip transition */
+> +
+> +	/* Should not be at EL0 - error out */
+> +	adr 	x1, .unexp_el0
+> +	b	exit_msg
+> +
+> +setup_el3:
+> +	/* Ensure we trap if we get anything wrong */
+> +	adr	x0, vector_table
+> +	msr	vbar_el3, x0
+> +
+> +	/* Does the test want to be at EL3? */
+> +	cmp	w11, #3
+> +	beq	at_testel
+> +
+> +	/* Configure EL3 to for lower states (EL2 or EL1) */
+> +	mrs	x0, scr_el3
+> +	orr	x0, x0, #(1 << 10)    /* RW = 1: EL2/EL1 execution state is AArch64 */
+> +	orr	x0, x0, #(1 << 0)     /* NS = 1: Non-secure state */
+> +	msr	scr_el3, x0
+> +
+> +	/*
+> +	 * We need to check if EL2 is actually enabled via ID_AA64PFR0_EL1,
+> +	 * otherwise we should just jump straight to EL1.
+> +	 */
+> +	mrs	x0, id_aa64pfr0_el1
+> +	ubfx	x0, x0, #8, #4	      /* Extract EL2 field (bits 11:8) */
+> +	cbz	x0, el2_not_present   /* If field is 0 no EL2 */
+> +
+> +
+> +	/* Prepare SPSR for exception return to EL2 */
+> +	mov	x0, #0x3c9	      /* DAIF bits and EL2h mode (9) */
+> +	msr	spsr_el3, x0
+> +
+> +	/* Set EL2 entry point */
+> +	adr	x0, setup_el2
+> +	msr	elr_el3, x0
+> +
+> +	/* Return to EL2 */
+> +	eret
+> +
+> +el2_not_present:
+> +	/* Initialize SCTLR_EL1 with reset value */
+> +	msr	sctlr_el1, xzr
+> +
+> +	/* Set EL1 entry point */
+> +	adr	x0, at_testel
+> +	msr	elr_el3, x0
+> +
+> +	/* Prepare SPSR for exception return to EL1h with interrupts masked */
+> +	mov	x0, #0x3c5	      /* DAIF bits and EL1h mode (5) */
+> +	msr	spsr_el3, x0
+> +
+> +	isb			      /* Synchronization barrier */
+> +	eret			      /* Jump to EL1 */
+> +
+> +setup_el2:
+> +	/* Ensure we trap if we get anything wrong */
+> +	adr	x0, vector_table
+> +	msr	vbar_el2, x0
+> +
+> +	/* Does the test want to be at EL2? */
+> +	cmp	w11, #2
+> +	beq	at_testel
+> +
+> +	/* Configure EL2 to allow transition to EL1 */
+> +	mrs	x0, hcr_el2
+> +	orr	x0, x0, #(1 << 31)    /* RW = 1: EL1 execution state is AArch64 */
+> +	msr	hcr_el2, x0
+> +
+> +	/* Initialize SCTLR_EL1 with reset value */
+> +	msr	sctlr_el1, xzr
+> +
+> +	/* Set EL1 entry point */
+> +	adr	x0, at_testel
+> +	msr	elr_el2, x0
+> +
+> +	/* Prepare SPSR for exception return to EL1 */
+> +	mov	x0, #(0x5 << 0)	      /* EL1h (SPx), with interrupts disabled */
+> +	msr	spsr_el2, x0
+> +
+> +	/* Return to EL1 */
+> +	eret
+> +
+> +	/*
+> +	 * At the target EL for the test, usually EL1. Note we still
+> +	 * set everything up as if we were at EL1.
+> +	 */
+> +at_testel:
+>   	/* Installs a table of exception vectors to catch and handle all
+>   	   exceptions by terminating the process with a diagnostic.  */
+>   	adr	x0, vector_table
+> @@ -100,7 +252,7 @@ __start:
+>   	 * maps RAM to the first Gb. The stage2 tables have two 2mb
+>   	 * translation block entries covering a series of adjacent
+>   	 * 4k pages.
+> -	*/
+> +	 */
+>   
+>   	/* Stage 1 entry: indexed by IA[38:30] */
+>   	adr	x1, .				/* phys address */
+> @@ -198,7 +350,8 @@ __start:
+>   	orr	x0, x0, #(3 << 16)
+>   	msr	cpacr_el1, x0
+>   
+> -	/* Setup some stack space and enter the test code.
+> +	/*
+> +	 * Setup some stack space before we enter the test code.
+>   	 * Assume everything except the return value is garbage when we
+>   	 * return, we won't need it.
+>   	 */
+> @@ -233,6 +386,11 @@ __sys_outc:
+>   	ret
+>   
+>   	.data
+> +
+> +	.align 8
+> +cmdline:
+> +	.space 128, 0
+> +
+>   	.align	12
+>   
+>   	/* Translation table
+> @@ -246,6 +404,10 @@ ttb_stage2:
+>   	.space	4096, 0
+>   
+>   	.align	12
+> +system_stack:
+> +	.space 4096, 0
+> +system_stack_end:
+> +
+>   stack:
+>   	.space 65536, 0
+>   stack_end:

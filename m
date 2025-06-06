@@ -1,125 +1,118 @@
-Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp787791njc;
-        Fri, 6 Jun 2025 02:05:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUK31qpKfPfnUg4BMhUp6ckKNOdRNn+XRI1VX/ODCjjytRfypcijLI/70uuHc5vX+zjWAbBUUdyq16x5A==@linaro.org
-X-Google-Smtp-Source: AGHT+IFsndrx3d3ZAIvPOzA64GczB6NO0qLGEAELVY2lXBAPgaS+KGaZv/lKBkvkGXhHyROpVdbr
-X-Received: by 2002:a05:622a:4a86:b0:4a4:2e32:5a25 with SMTP id d75a77b69052e-4a5b9d327c2mr39953101cf.24.1749200725531;
-        Fri, 06 Jun 2025 02:05:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749200725; cv=none;
+Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp945146njc;
+        Fri, 6 Jun 2025 07:04:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX5fqCTL/3qKTDR+PfO0tS5tHD3vtx5EoNYf0DurZTFdpzAOkoYZu2yYqoQRduHwmIn/oVEzNv6szHXgA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGC0hN2skM+PQx/X6nPlvKH3a6dGpnbLJlttI86a16q0dscPtaLd5WoTdWvWgEQPdQXvdM9
+X-Received: by 2002:a05:600c:8b46:b0:450:c9e3:995c with SMTP id 5b1f17b1804b1-45201360ee1mr40021045e9.12.1749218645733;
+        Fri, 06 Jun 2025 07:04:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749218645; cv=none;
         d=google.com; s=arc-20240605;
-        b=YLUUxOJ3TYmxUtrzjYX2eEfvjOFBxqx9YYEGWn9+rJ3RuQByPQo45UNAtJY1X4UOOy
-         mrQlKBZlmXMxCt2XzT+7kV5FSP3EhoDCYH4Cq4CqqO/q8wG3/etQ1CFOnASeC4xuHe7a
-         neonemgXBmQN0oH2hOAD8C9NM3hiXzE/qjOAU9G7aadnmvSeUlJBW7XVJGsL+sxTX1eO
-         7RXiyU7CCiuIWqtgPuYjClk/VJphmrH+vOHlaO8nEXQFBBIX+kLukpcaN1gwVyY5gRaf
-         y8n1A+WAqK/Wckgs8cTw0owvl7pjeb6cr/k6ONVcFj4Y9G1d6Not2IC3jPZN8otVrzVw
-         yrwg==
+        b=bSjSCd4FUZrtCcMIUiWUe6AcLBtsl8sgjSRpm4320pZkUkzfj7StgFy5JNrM7aFP+0
+         WOtV7q6umeeuT8DUp8gq1PQFowPJsjMy2JLDM7P2Nrkut6my6rsdFoW77UmfcqJizmwL
+         3MXrUbIpr8RKmAJ8ARmK1WUDTqHpTBzQpoV9jyf4CKZT5aENxzoR1hMrEihvxIaVOVVR
+         JjnGiBjb2d0t0qdTuoQy5pz9PXKFdiG5lzEiNpHssb7rMDlttv6Ub73LPFIgx2I+MfMK
+         ZBeDeiLj8kNn3Dnd8N5n8HGhsjidmOcnumE/NSQHI9LROZey8piW59zBIrRj9pnKJUcN
+         FIcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=6hhGXg+T7BYRALCHwSeXr/D+ieUg7pS/EFy6Sw/FrVo=;
-        fh=NPolXyqSm7GpYLVfHxdOulIFqa+P8U0481DSrC7fjz8=;
-        b=fN9WCDVbB9LVtjFsqgXG5JQaZWLN0hjidmzDS7dIiet5oMx5YcbaZOdE5xRWiznXNY
-         PPcRohjEO3IxaSQWjv7vye6WE3IirY+eJEQ9gz0anPWlGPftZ8LW6BOVKuH1zNwJVBV5
-         TYnWjgiYietjcKYGTUDmat34TzhS9Mj+JKgXyVjQKsBxFpvvDNRTcqkebQUCK//2/y0E
-         UAvcggNpOX8CkznPw4a/QBCYvpuXdGCiLX7Tqv/a+ioLqM0gWNPNDC3GVHQRsGq2nLQ5
-         z7l7g3EUHshxLcSfOkukEtjpN3F6XKpdr8Zb/ANr7M+fZ9YEtEmL6Ruvc/lwV/AgSvIm
-         3DkQ==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=E4Dx7676jG+vk71RZAOcqaNYjWAoli2CcW2FAti80KI=;
+        fh=7KwVmSG0dzN9UpGcRtMFF1QBeF6pUxQ8AcJGzKxhUyI=;
+        b=NsRxHMxKroeR/d+Lb7Skp1jQbM1qo025TJGm+SPNyWDAlRZL7o4URDxAuqabY1LVq7
+         DQG7AkLtIWIHJhFY72ahbKqDUwKRGlmh4JZT0584a0u8b4SWjaffrdftpHRVnbJqI9K7
+         N0AUwQzzdnK8y2EidgnuNzeAs/mekIBptJx6/fySQYSU9WlMbelKLkud745De9zhCdRz
+         eS3sZ5B3gkkRPkQNXWT9h00HUjib1G4y7pL7Ga9e8WbTPjewUtkrBr/fyy7Rtr9WEEwx
+         bQ61Rj3Qp/ptVuwjG/pBYG9S6mYTNsTM2W15++1TlzQ84Roh4I5n8J+m11CGXkjwfgsA
+         OcLg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FyWmtQU0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="P5RI//wk";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a6198a6e3csi11929001cf.450.2025.06.06.02.05.25
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a5324a56f2si1426907f8f.808.2025.06.06.07.04.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Jun 2025 02:05:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 06 Jun 2025 07:04:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FyWmtQU0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="P5RI//wk";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uNT0M-0007k7-Rr; Fri, 06 Jun 2025 05:04:50 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uNXfa-0001M3-AI; Fri, 06 Jun 2025 10:03:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uNT0E-0007jQ-Hw
- for qemu-arm@nongnu.org; Fri, 06 Jun 2025 05:04:45 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uNXfX-0001L1-7V
+ for qemu-devel@nongnu.org; Fri, 06 Jun 2025 10:03:39 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uNT0A-0005VE-25
- for qemu-arm@nongnu.org; Fri, 06 Jun 2025 05:04:40 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-450cd6b511cso12535985e9.2
- for <qemu-arm@nongnu.org>; Fri, 06 Jun 2025 02:04:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uNXfR-0007hE-13
+ for qemu-devel@nongnu.org; Fri, 06 Jun 2025 10:03:35 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-450cf0120cdso20503885e9.2
+ for <qemu-devel@nongnu.org>; Fri, 06 Jun 2025 07:03:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1749200676; x=1749805476; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=6hhGXg+T7BYRALCHwSeXr/D+ieUg7pS/EFy6Sw/FrVo=;
- b=FyWmtQU0oE4kgyLRFaxAXseZmAVHIrMhCGXduBY5fRgVvbtuXavUTvGS8hsERrV8Dn
- Z0edIpaattKrekygbTKoc42yBqHNSocCngvLWayll1dlZQgRaQ/Myy9YBmilhp4gyLRk
- 4oK3OC3pT7hBIgdKHGO30uClZCS0UpYSTNHp6YWGI1lQk4J3KifrqAXUbs7POkjRAtky
- OKJfRtvL7W79lbkcH5ViNR5kd91BNr27SLJL029Qh7RR5nrGshATbFYdOqWcO1lAIF5A
- RFmKRjhFHIuNfCRdAEvpWXuV0JQEMDZOe4sA6cm1VMM0H6TwnOXMCaC/oj/Yu0D66wN9
- 3KIQ==
+ d=linaro.org; s=google; t=1749218610; x=1749823410; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=E4Dx7676jG+vk71RZAOcqaNYjWAoli2CcW2FAti80KI=;
+ b=P5RI//wkgCeDAYop3APp7lTVL/zpRk1PX36UP6As+B2XRqb1RcrXlkL3afT0PQRjZU
+ 6qNnmiWQELIsln6XRJSrUFl09ie+k/vAjhzoOP1hy9FuPNVfJM0DIiGQxn8lUujVXZgM
+ V5SJRnEuZwxX7FPp8hbTE41L+WRIHpTN5jHBFyqTcUzRu//zMlFB2PUWOWDHBSxvMRGA
+ L6bQmlo4bbscUc64xVkC/qsPijLEPklZh6bInVptpXLbDh20glEhUmaz4rFzXwwqppmw
+ rnQWgPBjhPHBqsh4PIv45AR0puBUPlV5i5YOS3GEukj47ayS58O5XJbzoEPE5NrJcG7C
+ K8Og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749200676; x=1749805476;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=6hhGXg+T7BYRALCHwSeXr/D+ieUg7pS/EFy6Sw/FrVo=;
- b=RG1fuN0MSzAm56tAaSJ53JZ264ScH9ns8sYBTROms8dwproHYcWxvA3KWxeW+gp8JO
- y/L9tOjkdwXNdKVwu9MBZGHuhcIyEJrYsQu/3zCL13+3WcQ8ZhM88ZNvUGy1tIxhxiro
- A7wF/uq0FflJ9Z4i1CFtzp+rlrYfFyiRn6NCllxw7MTsCyWRxmGFvqaqQyr5Vq9vn4mP
- bjV0bONeTJYZJ8bpHakPSphf790bYhXP2CRosxLPk/twxWazaaDCM3x21JGj0bqjsVSu
- FJcHD6XEDqixL6Mtf9raMe3tqfVMRsSulo4CUY5eHQLPEVLZVygejrtyQP82xwtfdFst
- ZIow==
-X-Gm-Message-State: AOJu0YwG5CI803M+BnenT6V5kvRdq4LxK8lF8M9hw5n7i0brs2l0wi8Q
- HwN601Q9Alc203Ry2VNq6KSsnLsIGQDDiaEY+VH5xVVjInc6op2NGKe04Wlfauyf0bEyJ1lY67u
- a7lbY0ng=
-X-Gm-Gg: ASbGncs2sCI1INzCjW5KPJ9GKzeoNp321AWnRXKrfb6K87XINv2MduxmmQQPNxXwaIg
- YCq1d65xj/J6FZaZl1qRUrBnPWSsizpvIiTaMQ5qlDbukSIwN91DUoyOVjgVOCBlbczqcIy3epK
- u/mCCZwQA4srXpJasYChSnrhycXF+0RymcmIqMxHNw+BsOH7pR+LhZcFOtA8t/Qe7CXc7ySzJAL
- FjWIkGQZZb9nIFARGN1AqBXo50/e8YvlDrZXZHQc94xdHc9IuOJWC/8IdhfPiMYWETwE2GKgdEB
- 9anKkrIzklbyxS/GdrLcZl9P5dMQYDGVIiWAB1mwmdNQTZlCmBj4EVvj8+9DcMP50rfTeMM9SqM
- ZelCqRpyZEz76AzdPKKE=
-X-Received: by 2002:a05:6000:1a8f:b0:3a4:cfbf:51a0 with SMTP id
- ffacd0b85a97d-3a53189bc76mr2501402f8f.21.1749200675779; 
- Fri, 06 Jun 2025 02:04:35 -0700 (PDT)
-Received: from [192.168.69.138] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-451f8f12e16sm30616305e9.1.2025.06.06.02.04.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Jun 2025 02:04:35 -0700 (PDT)
-Message-ID: <9b083ae2-3afb-43f4-8929-fc693b581a0d@linaro.org>
-Date: Fri, 6 Jun 2025 11:04:34 +0200
+ d=1e100.net; s=20230601; t=1749218610; x=1749823410;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=E4Dx7676jG+vk71RZAOcqaNYjWAoli2CcW2FAti80KI=;
+ b=qmBKkd0E+F8ZZfW4RCdZAxSNC40N0RRDp4MP4aqkZ+Q6AgMNcjSxow4iC6zNgfV1No
+ jnpDANUzJvS1V0Cn25sQj+6etLzdoQ/sob4GDTXdA3QY1khKhFDYzbFI9bDU0Ce8KVow
+ hHCpm0VLNWWasnDlkI61NLTL29mBa8es1Uz1GeuCpnhji9W96IdOZrQAaV6xShrxtcXu
+ BfK8LZKGIVDjGPu2mCQWwH+Hwl6OpAEYXpB3+tCHf1u+sGwa/8waI+XYyD/3lTLwcesp
+ s4ypXOK41Rz2TvfcmCgf1fNxdMLyp1slipP5AH8UuAwAAxYcU4pGaJU6ooFzZ54sY+d+
+ 0n2w==
+X-Gm-Message-State: AOJu0YwNNeKIwFiHwQ2sP4YVD68oq5UMWOtctPxYRqUGAmXSWi4XL/6o
+ s4DS71soqApDmmMzWBVYJz4ynjj1ZldIr6R7A7lQJ6mp5CdrJHQlTqmn+bfhxALh1etOFK92PBx
+ ny3kv
+X-Gm-Gg: ASbGnctRiBvGyvedkWfA17v2hfZybAESfAN+gX9dtrIuV7yTo7sC1DdTvMUcWknrqo7
+ iveE0kcM8T32A0i6nUQfKt+lWuebgFz4aWKyrpdjx2V1nkI/cN6utirmA3njBc2VwzHlLIyidV6
+ 61UR3xtiOu8CMarYYyv5po5f1RdPT/F3hX9PPXe4anJL56+Fp5i0Xux6aDDF4MYatd6oc/BYTqM
+ jwWRxyJw+G1+7/pMTFaOTabaJAWSV6JNDMMyPupgvQcuJBl0XWi+imKp7guQGQJlXpVLWP+Ff7w
+ 9YashHvNDUTuvXELq+KmVACNmEQphg246V7rc8HdRq3m6Mw1BhwcN5Ypv3ZWLihjiojX
+X-Received: by 2002:a05:6000:420c:b0:3a4:f6ba:51c8 with SMTP id
+ ffacd0b85a97d-3a531ca732bmr2953716f8f.14.1749218609987; 
+ Fri, 06 Jun 2025 07:03:29 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3a5324364f1sm2030346f8f.58.2025.06.06.07.03.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 06 Jun 2025 07:03:29 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>
+Subject: [PATCH] hw/core: Permit devices to define an array of link properties
+Date: Fri,  6 Jun 2025 15:03:27 +0100
+Message-ID: <20250606140327.1289993-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] ramfb: Add property to control if load the romfile
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Shaoqin Huang <shahuang@redhat.com>
-Cc: qemu-arm@nongnu.org, Eric Auger <eauger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-devel@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-References: <20250606070234.2063451-1-shahuang@redhat.com>
- <aEKeNSc8mAZ8vhGj@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <aEKeNSc8mAZ8vhGj@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,131 +121,356 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wgHJaQ0YgZO5
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4C4E4N7Zwx3f
 
-On 6/6/25 09:52, Daniel P. Berrangé wrote:
-> On Fri, Jun 06, 2025 at 03:02:34AM -0400, Shaoqin Huang wrote:
->> Now the ramfb will load the vgabios-ramfb.bin unconditionally, but only
->> the x86 need the vgabios-ramfb.bin, this can cause that when use the
->> release package on arm64 it can't find the vgabios-ramfb.bin.
->>
->> Because only seabios will use the vgabios-ramfb.bin, load the rom logic
->> is x86-specific. For other !x86 platforms, the edk2 ships an EFI driver
->> for ramfb, so they don't need to load the romfile.
->>
->> So add a new property use_legacy_x86_rom in both ramfb and vfio_pci
->> device, because the vfio display also use the ramfb_setup() to load
->> the vgabios-ramfb.bin file.
->>
->> After have this property, the machine type can set the compatibility to
->> not load the vgabios-ramfb.bin if the arch doesn't need it.
-> 
-> Can you make this a series, with an additional patch that updates the
-> current in-dev machine types to use this new property, so we're clear
-> about the proposed usage.
-> 
->>
->> Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
->> ---
->>   hw/display/ramfb-standalone.c | 4 +++-
->>   hw/display/ramfb-stubs.c      | 2 +-
->>   hw/display/ramfb.c            | 6 ++++--
->>   hw/vfio/display.c             | 4 ++--
->>   hw/vfio/pci.c                 | 1 +
->>   hw/vfio/pci.h                 | 1 +
->>   include/hw/display/ramfb.h    | 2 +-
->>   7 files changed, 13 insertions(+), 7 deletions(-)
+Currently we allow devices to define "link properties" with
+DEFINE_PROP_LINK(): these are a way to give a device a pointer to
+another QOM object.  (Under the hood this is done by handing it the
+canonical QOM path for the object.)
 
+We also allow devices to define "array properties" with
+DEFINE_PROP_ARRAY(): these are a way to give a device a
+variable-length array of properties.
 
->> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
->> index 7f1532fbed..4e4759c954 100644
->> --- a/hw/vfio/pci.c
->> +++ b/hw/vfio/pci.c
->> @@ -3564,6 +3564,7 @@ static const TypeInfo vfio_pci_dev_info = {
->>   
->>   static const Property vfio_pci_dev_nohotplug_properties[] = {
->>       DEFINE_PROP_BOOL("ramfb", VFIOPCIDevice, enable_ramfb, false),
->> +    DEFINE_PROP_BOOL("use_legacy_x86_rom", VFIOPCIDevice, use_legacy_x86_rom, true),
->>       DEFINE_PROP_ON_OFF_AUTO("x-ramfb-migrate", VFIOPCIDevice, ramfb_migrate,
->>                               ON_OFF_AUTO_AUTO),
->>   };
+However, there is no way to define an array of link properties.  If
+you try to do it by passing qdev_prop_link as the arrayprop argument
+to DEFINE_PROP_ARRAY() you will get a crash because qdev_prop_link
+does not provide the .set and .get methods in its PropertyInfo
+struct.
 
-Alternatively with target-info API:
+This patch implements a new DEFINE_PROP_LINK_ARRAY(). In
+a device you can use it like this:
 
--- >8 --
-diff --git a/hw/display/ramfb.c b/hw/display/ramfb.c
-index 8c0f907673d..689f10625f8 100644
---- a/hw/display/ramfb.c
-+++ b/hw/display/ramfb.c
-@@ -12,6 +12,7 @@
-   */
+struct MyDevice {
+    ...
+    uint32_t num_cpus;
+    ARMCPU **cpus;
+}
 
-  #include "qemu/osdep.h"
-+#include "qemu/target-info.h"
-  #include "qapi/error.h"
-  #include "hw/loader.h"
-  #include "hw/display/ramfb.h"
-@@ -147,7 +148,15 @@ RAMFBState *ramfb_setup(Error **errp)
+and in your Property array:
+    DEFINE_PROP_LINK_ARRAY("cpus", MyDevice, num_cpus, cpus,
+                           TYPE_ARM_CPU, ARMCPU *),
 
-      s = g_new0(RAMFBState, 1);
+The array property code will fill in s->num_cpus, allocate memory in
+s->cpus, and populate it with pointers.
 
--    rom_add_vga("vgabios-ramfb.bin");
-+    switch (target_system_arch()) {
-+    case SYS_EMU_TARGET_I386:
-+    case SYS_EMU_TARGET_X86_64:
-+        rom_add_vga("vgabios-ramfb.bin");
-+        break;
-+    default:
-+        break;
+On the device-creation side you set the property in the same way as
+the existing array properties, using the new qlist_append_link()
+function to append to the QList:
+
+    QList *cpulist = qlist_new();
+    for (int i = 0; i < cpus; i++) {
+        qlist_append_link(cpulist, OBJECT(cpu[i]));
+    }
+    qdev_prop_set_array(mydev, "cpus", cpulist);
+
+The implementation is mostly in the provision of the .set and
+.get methods to the qdev_prop_link PropertyInfo struct. The
+code of these methods parallels the code in
+object_set_link_property() and object_get_link_property().  We can't
+completely share the code with those functions because of differences
+in where we get the information like the target QOM type, but I have
+pulled out a new function object_resolve_and_typecheck() for the
+shared "given a QOM path and a type, give me the object or an error"
+code.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+I want this specifically for the GICv5 interrupt controller device
+I'm working on.  I'd like to be able to pass in links to the CPUs
+connected to the GIC, so that we don't have to have the code assume
+that it's connected to CPU numbers 0,1,2... the way the current
+GICv3 code does.
+
+I think Phil also had a proposed series a while back that wanted
+to do something similar with one of the existing devices.
+
+I figured I'd post this early for review, though obviously it's a
+little unmotivated until I have my new GICv5 code into enough shape
+to submit. This is tested, but with my work-in-progress code.
+---
+ include/hw/qdev-properties.h | 40 ++++++++++++++++++
+ include/qom/object.h         | 19 +++++++++
+ hw/core/qdev-properties.c    | 80 ++++++++++++++++++++++++++++++++++++
+ qom/object.c                 | 42 +++++++++++--------
+ 4 files changed, 163 insertions(+), 18 deletions(-)
+
+diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
+index 2c99856caac..8be8ca293fe 100644
+--- a/include/hw/qdev-properties.h
++++ b/include/hw/qdev-properties.h
+@@ -150,6 +150,31 @@ extern const PropertyInfo qdev_prop_link;
+     DEFINE_PROP(_name, _state, _field, qdev_prop_link, _ptr_type,     \
+                 .link_type  = _type)
+ 
++/**
++ * DEFINE_PROP_LINK_ARRAY:
++ * @_name: name of the array
++ * @_state: name of the device state structure type
++ * @_field: uint32_t field in @_state to hold the array length
++ * @_arrayfield: field in @_state (of type '@_arraytype *') which
++ *               will point to the array
++ * @_linktype: QOM type name of the link type
++ * @_arraytype: C type of the array elements
++ *
++ * Define device properties for a variable-length array _name of links
++ * (i.e. this is the array version of DEFINE_PROP_LINK).
++ * The array is represented as a list of QStrings in the visitor interface,
++ * where each string is the QOM path of the object to be linked.
++ */
++#define DEFINE_PROP_LINK_ARRAY(_name, _state, _field, _arrayfield,      \
++                               _linktype, _arraytype)                   \
++    DEFINE_PROP(_name, _state, _field, qdev_prop_array, uint32_t,       \
++                .set_default = true,                                    \
++                .defval.u = 0,                                          \
++                .arrayinfo = &qdev_prop_link,                           \
++                .arrayfieldsize = sizeof(_arraytype),                   \
++                .arrayoffset = offsetof(_state, _arrayfield),           \
++                .link_type = _linktype)
++
+ #define DEFINE_PROP_UINT8(_n, _s, _f, _d)                       \
+     DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint8, uint8_t)
+ #define DEFINE_PROP_UINT16(_n, _s, _f, _d)                      \
+@@ -201,6 +226,21 @@ void qdev_prop_set_enum(DeviceState *dev, const char *name, int value);
+ /* Takes ownership of @values */
+ void qdev_prop_set_array(DeviceState *dev, const char *name, QList *values);
+ 
++/**
++ * qlist_append_link: Add a QOM object to a QList of link properties
++ * @qlist: list to append to
++ * @obj: object to append
++ *
++ * This is a helper function for constructing a QList to pass to
++ * qdev_prop_set_array() when the qdev property array is an array of link
++ * properties (i.e. one defined with DEFINE_PROP_LINK_ARRAY).
++ *
++ * The object is encoded into the list as a QString which is the
++ * canonical path of the object; this is the same encoding that
++ * object_set_link_property() and object_get_link_property() use.
++ */
++void qlist_append_link(QList *qlist, Object *obj);
++
+ void *object_field_prop_ptr(Object *obj, const Property *prop);
+ 
+ void qdev_prop_register_global(GlobalProperty *prop);
+diff --git a/include/qom/object.h b/include/qom/object.h
+index 26df6137b91..48fdbf353ee 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -1750,6 +1750,25 @@ ObjectProperty *object_class_property_add_link(ObjectClass *oc,
+                                             Object *val, Error **errp),
+                               ObjectPropertyLinkFlags flags);
+ 
++
++/**
++ * object_resolve_and_typecheck:
++ * @path: path to look up
++ * @name: name of property we are resolving for (used only in error messages)
++ * @target_type: QOM type we expect @path to resolve to
++ * @errp: error
++ *
++ * Look up the object at @path and return it. If it does not have
++ * the correct type @target_type, return NULL and set @errp.
++ *
++ * This is similar to object_resolve_path_type(), but it insists on
++ * a non-ambiguous path and it produces error messages that are specialised
++ * to the use case of setting a link property on an object.
++ */
++Object *object_resolve_and_typecheck(const char *path,
++                                     const char *name,
++                                     const char *target_type, Error **errp);
++
+ /**
+  * object_property_add_str:
+  * @obj: the object to add a property to
+diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+index 147b3ffd16e..47142769179 100644
+--- a/hw/core/qdev-properties.c
++++ b/hw/core/qdev-properties.c
+@@ -601,6 +601,7 @@ static Property array_elem_prop(Object *obj, const Property *parent_prop,
+          * being inside the device struct.
+          */
+         .offset = (uintptr_t)elem - (uintptr_t)obj,
++        .link_type = parent_prop->link_type,
+     };
+ }
+ 
+@@ -883,6 +884,12 @@ void qdev_prop_set_array(DeviceState *dev, const char *name, QList *values)
+     qobject_unref(values);
+ }
+ 
++void qlist_append_link(QList *qlist, Object *obj)
++{
++    g_autofree char *path = object_get_canonical_path(obj);
++    qlist_append_str(qlist, path);
++}
++
+ static GPtrArray *global_props(void)
+ {
+     static GPtrArray *gp;
+@@ -992,9 +999,82 @@ static ObjectProperty *create_link_property(ObjectClass *oc, const char *name,
+                                           OBJ_PROP_LINK_STRONG);
+ }
+ 
++/*
++ * The logic in these get_link() and set_link() functions is similar
++ * to that used for single-element link properties in the
++ * object_get_link_property() and object_set_link_property() functions.
++ * The difference is largely in how we get the expected type of the
++ * link: for us it is in the Property struct, and for a single link
++ * property it is part of the property name on the object.
++ */
++static void get_link(Object *obj, Visitor *v, const char *name, void *opaque,
++                     Error **errp)
++{
++    const Property *prop = opaque;
++    Object **targetp = object_field_prop_ptr(obj, prop);
++    g_autofree char *path = NULL;
++
++    if (*targetp) {
++        path = object_get_canonical_path(*targetp);
++        visit_type_str(v, name, &path, errp);
++    } else {
++        path = g_strdup("");
++        visit_type_str(v, name, &path, errp);
++    }
++}
++
++static void set_link(Object *obj, Visitor *v, const char *name, void *opaque,
++                     Error **errp)
++{
++    const Property *prop = opaque;
++    Object **targetp = object_field_prop_ptr(obj, prop);
++    g_autofree char *path = NULL;
++    Object *new_target, *old_target = *targetp;
++
++    ERRP_GUARD();
++
++    /* Get the path to the object we want to set the link to */
++    if (!visit_type_str(v, name, &path, errp)) {
++        return;
++    }
++    printf("got path %s ptr %p\n", path, targetp);
++
++    /* Now get the pointer to the actual object */
++    if (*path) {
++        new_target = object_resolve_and_typecheck(path, prop->name,
++                                                  prop->link_type, errp);
++        if (!new_target) {
++            return;
++        }
++    } else {
++        new_target = NULL;
++    }
++    printf("got new_target %p\n", new_target);
++
++    /*
++     * Our link properties are always OBJ_PROP_LINK_STRONG and
++     * have the allow_set_link_before_realize check.
++     */
++    qdev_prop_allow_set_link_before_realize(obj, prop->name, new_target, errp);
++    if (*errp) {
++        return;
 +    }
 +
-      fw_cfg_add_file_callback(fw_cfg, "etc/ramfb",
-                               NULL, ramfb_fw_cfg_write, s,
-                               &s->cfg, sizeof(s->cfg), false);
----
-
-Recent work event introduces target_base_FOO() so that'd be:
-
--- >8 --
-diff --git a/hw/display/ramfb.c b/hw/display/ramfb.c
-index 8c0f907673d..2aa3b309010 100644
---- a/hw/display/ramfb.c
-+++ b/hw/display/ramfb.c
-@@ -12,6 +12,7 @@
-   */
-
-  #include "qemu/osdep.h"
-+#include "qemu/target-info.h"
-  #include "qapi/error.h"
-  #include "hw/loader.h"
-  #include "hw/display/ramfb.h"
-@@ -147,7 +148,10 @@ RAMFBState *ramfb_setup(Error **errp)
-
-      s = g_new0(RAMFBState, 1);
-
--    rom_add_vga("vgabios-ramfb.bin");
-+    if (target_base_x86()) {
-+        rom_add_vga("vgabios-ramfb.bin");
-+    }
++    *targetp = new_target;
++    object_ref(new_target);
++    object_unref(old_target);
++}
 +
-      fw_cfg_add_file_callback(fw_cfg, "etc/ramfb",
-                               NULL, ramfb_fw_cfg_write, s,
-                               &s->cfg, sizeof(s->cfg), false);
----
+ const PropertyInfo qdev_prop_link = {
+     .type = "link",
+     .create = create_link_property,
++    /*
++     * Since we have a create method, the get and set are used
++     * only in get_prop_array() and set_prop_array() for the case
++     * where we have an array of link properties.
++     */
++    .get = get_link,
++    .set = set_link,
+ };
+ 
+ void qdev_property_add_static(DeviceState *dev, const Property *prop)
+diff --git a/qom/object.c b/qom/object.c
+index 1856bb36c74..6490548bcb1 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -1894,26 +1894,13 @@ static void object_get_link_property(Object *obj, Visitor *v,
+     }
+ }
+ 
+-/*
+- * object_resolve_link:
+- *
+- * Lookup an object and ensure its type matches the link property type.  This
+- * is similar to object_resolve_path() except type verification against the
+- * link property is performed.
+- *
+- * Returns: The matched object or NULL on path lookup failures.
+- */
+-static Object *object_resolve_link(Object *obj, const char *name,
+-                                   const char *path, Error **errp)
++Object *object_resolve_and_typecheck(const char *path,
++                                     const char *name,
++                                     const char *target_type, Error **errp)
+ {
+-    const char *type;
+-    char *target_type;
+     bool ambiguous = false;
+     Object *target;
+ 
+-    /* Go from link<FOO> to FOO.  */
+-    type = object_property_get_type(obj, name, NULL);
+-    target_type = g_strndup(&type[5], strlen(type) - 6);
+     target = object_resolve_path_type(path, target_type, &ambiguous);
+ 
+     if (ambiguous) {
+@@ -1930,11 +1917,30 @@ static Object *object_resolve_link(Object *obj, const char *name,
+         }
+         target = NULL;
+     }
+-    g_free(target_type);
+-
+     return target;
+ }
+ 
++/*
++ * object_resolve_link:
++ *
++ * Lookup an object and ensure its type matches the link property type.  This
++ * is similar to object_resolve_path() except type verification against the
++ * link property is performed.
++ *
++ * Returns: The matched object or NULL on path lookup failures.
++ */
++static Object *object_resolve_link(Object *obj, const char *name,
++                                   const char *path, Error **errp)
++{
++    const char *type;
++    g_autofree char *target_type = NULL;
++
++    /* Go from link<FOO> to FOO.  */
++    type = object_property_get_type(obj, name, NULL);
++    target_type = g_strndup(&type[5], strlen(type) - 6);
++    return object_resolve_and_typecheck(path, name, target_type, errp);
++}
++
+ static void object_set_link_property(Object *obj, Visitor *v,
+                                      const char *name, void *opaque,
+                                      Error **errp)
+-- 
+2.43.0
 
-Unfortunately I had to focus on more urgent stuff so this isn't
-merged yet (besides I hurt a finger yesterday and am now typing
-slower). I hope I'd be able to respin that next week.

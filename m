@@ -1,197 +1,213 @@
-Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp529756njc;
-        Thu, 5 Jun 2025 14:04:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXmMY947fOpoegRGSC/5fkv8aqfw8fdMzyk2QZ3hwihelAG37X76q6xchmnYjb7RsNSDYuk55PxbUYW3w==@linaro.org
-X-Google-Smtp-Source: AGHT+IF3DRA0oJjDyoPbTw2zhO/7xL8/5of13GSH8kgiWYN0Z4/oHHO4DjqZFDQBMCG0DabGGdr9
-X-Received: by 2002:a05:622a:2606:b0:476:8cad:72e0 with SMTP id d75a77b69052e-4a5b9a277b5mr19660181cf.15.1749157469379;
-        Thu, 05 Jun 2025 14:04:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749157469; cv=none;
+Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp721652njc;
+        Thu, 5 Jun 2025 23:10:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX9BGsA74prtuk82gBuP2zwKsMTjEddIZWFTu5/unhYF5Mlljh7PpVRuls5j04KCvRAGxOGy6Si6BAtzw==@linaro.org
+X-Google-Smtp-Source: AGHT+IE6N7QwBH5vuiCTuuZF+U6faRComtlpcSnz4hgg04GnqRB/hugHCehk1zn3oaawz0l+NV73
+X-Received: by 2002:a05:622a:4d4f:b0:4a4:30e7:776 with SMTP id d75a77b69052e-4a5b9e1ff52mr37468171cf.14.1749190212412;
+        Thu, 05 Jun 2025 23:10:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749190212; cv=none;
         d=google.com; s=arc-20240605;
-        b=HQSZzU4hlfZ7PU3k6kWVK2eMO4eNfvVAfGOL8dvxmn8aAt/tTIHeN/9JXkAZKfH8AW
-         tAg/k1t5Ff4pp/g7CpTYVmLNl2cD6n6Hk9Zovy7TaQaFz+wLKNsBo1eKzk82B5f4VkUf
-         oreiiiySFlSVbMxXcbH337A1zxwkXW6BRpg8r4fMlvd/hFtBGGT/Den47ximfgOpP7Pm
-         qtuR++/4mfGtgixXZBtEUHT0pBMQdMCK7ax+RVjD44e4bnpZl7F1CDoAXLeScMl3ikd7
-         u85D/IAvX3HbEkr0BQatKf0tOZfrJ0bn97WMDkVvjtre/GgubuZ7z47yW4M32aMHnx6I
-         Cotw==
+        b=CKYZzLRKyCF9bMi3pYM6tx2G1B0cRrgiUhEJjClBItL9hAOLvuVm7aW9XAphoxmi42
+         milXX7s7Z5YHnsVzFyiGSLaM7Z9Q+Xm9oZ/1Of1LFM15tPtrqtCOShm/jStW3pUjLnIk
+         V+2cf+tmZum9P5VT02XGHWYE99pLSPp6AtNqWrRNj8+0O/xcWe/Glqkq9QSAZf9RdY4H
+         dh1kUspTQVzYA4N7WPVUIRK67cfvhkqQ7ydSLWq2SUt6IHhQDbAHu4TSZ1p2UJf/Cnxk
+         1APwhEtxBeHIIcD02chTLHMNeQUSbQhrUz6wk05oX7hV9YfR/CrsBsCsUApFppqz7eH2
+         Gvbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
-        bh=puzd1kd0yklIvH57H9PNpehaBQCRawidCxxa8GuPr80=;
-        fh=uFI2bwNAMp4gpme8HhkpaBUVTX37jnSENv0uaOAkpoc=;
-        b=BWbXQ2puYRPzMqLjTnjiBIFTmHx693NVRKOGTXtN8ebiJU94ke99lSWsTx+OkmiIpO
-         IVTv3Yy9rdP8HT3wji1mIAeBTT3AYNehzh1GVFuJ0J4fNa0i5uPhwfHJIguhFXO64ZWh
-         B7wDgqOSdS3wO6JxhIpS9gOGvW2b/OvptfKGLuaEv9ORhgIG0omb/qbtDUYnoTdUXsc6
-         sUfhOjK1JDOoPdqWq9iHQ40fG6KqDp6kqJcqS4Dh0dyW8iJW87cmFW7aFEdWcuoYadr3
-         IU02ASVcRFy96q+YSbgIREJmJZoBaRBMML3PqqfSmcgoapXir/ouVvAyuPG/0cRpt2mZ
-         52Gw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=cByiSStoffS6mXs4MY0CM6SaegGyJSJRDeB/IrgUMGc=;
+        fh=gKF2qVr/W5ewrctc+2p/I9QMv5PmU8ewqmt7CriEJi0=;
+        b=VpTCIJE/vDLbNvbyFXv9AaSeRG0K2b7NBek8MZEYl0MhK4ljq6Ql3b5Dner2wDVCfv
+         owZCus2EFtc4CbZAbHdawWImbKsb++uMzAmqQIGHqFVA4ttUpc/gaM1+P/JaPn3U7886
+         pJ13qamHmGQCBI7nfMLnYYa/Yhu+7/CsKSkRHwPuqAtB9yAUc97M+VV+BXtm79mgDI45
+         KnmqHF4UYNSZIR0JAUGuddT7YTUPNSZhlVDGlRmPs4Xco+km06ue7NcS+iNBOl9ZbV/F
+         VteBoNUGpstKhtpikaULQ0LYNuvd7qwVEPv708VP1PNBOJZf3nlWSs6EDtuGGoPN0r4j
+         3M6w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=dOZwRIyw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=XCPJS7pv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a61985f153si1794081cf.225.2025.06.05.14.04.29
+        by mx.google.com with ESMTPS id d75a77b69052e-4a6198cec9esi9566921cf.670.2025.06.05.23.10.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Jun 2025 14:04:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 05 Jun 2025 23:10:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=dOZwRIyw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=XCPJS7pv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uNHkW-0002dR-TZ; Thu, 05 Jun 2025 17:03:44 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uNQGd-0007Kv-Ca; Fri, 06 Jun 2025 02:09:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1uNHkS-0002c6-Qo; Thu, 05 Jun 2025 17:03:40 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1uNHkQ-0003GL-JN; Thu, 05 Jun 2025 17:03:40 -0400
-Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 555Er86v022794;
- Thu, 5 Jun 2025 21:03:33 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:reply-to:subject:to; s=pp1;
- bh=puzd1kd0yklIvH57H9PNpehaBQCRawidCxxa8GuPr80=; b=dOZwRIywgCN6
- 9YMe6WOM/pafvbeHN4zjFmmOSpeReUjXtE1AMUyh5ypgKgZ35eSZFBWGrfFWBOCg
- 63nCa7Qchwz8HQomAjX0aPV62NxgHyM1j2HCSkbObPe9FluWf+aOFDpJ/TdkEBwY
- p0QP6FKVRRy4XX6ncatyWYmng2RZON5E1Wl4hzbU2B1v5oqHozBbFyIoqJz9G0v9
- 652HZkr3sFGGrWAIH0hOsh3ZHDxmENrDNKdt2jGZVuDEM+rRgyyeKfB0liKL1tuz
- It+DIN9ayuIIxy4lyWu9dfzRTrY7fFR/hLxEsN6KQouiOqQJZTp6jFv4LQDrRb0B
- E8OHoVhdag==
-Received: from ppma22.wdc07v.mail.ibm.com
- (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 471gf034dx-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 05 Jun 2025 21:03:32 +0000 (GMT)
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma22.wdc07v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 555H4GMW031650;
- Thu, 5 Jun 2025 21:03:31 GMT
-Received: from smtprelay02.dal12v.mail.ibm.com ([172.16.1.4])
- by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 470cg06ntk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 05 Jun 2025 21:03:31 +0000
-Received: from smtpav06.dal12v.mail.ibm.com (smtpav06.dal12v.mail.ibm.com
- [10.241.53.105])
- by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 555L3VSx28836406
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 5 Jun 2025 21:03:31 GMT
-Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id F0D9B58059;
- Thu,  5 Jun 2025 21:03:30 +0000 (GMT)
-Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 762C75805E;
- Thu,  5 Jun 2025 21:03:30 +0000 (GMT)
-Received: from mambor8.rchland.ibm.com (unknown [9.10.239.198])
- by smtpav06.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Thu,  5 Jun 2025 21:03:30 +0000 (GMT)
-Message-ID: <09c3fae7563bb32237862a71414a14f725d052e4.camel@linux.ibm.com>
-Subject: Re: [PATCH 1/4] hw/gpio/pca9552: Avoid using g_newa()
-From: Miles Glenn <milesg@linux.ibm.com>
-To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uNQGZ-0007HG-Se
+ for qemu-arm@nongnu.org; Fri, 06 Jun 2025 02:09:24 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uNQGX-00042p-Sd
+ for qemu-arm@nongnu.org; Fri, 06 Jun 2025 02:09:23 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-451e2f0d9c2so14041245e9.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Jun 2025 23:09:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1749190159; x=1749794959; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=cByiSStoffS6mXs4MY0CM6SaegGyJSJRDeB/IrgUMGc=;
+ b=XCPJS7pvwrfzEcOI5zOmWGeHepeJQfCkz9thbL3TOz28vUy/ZgEhmRNEprHoLzEz6z
+ SoJBWuQQS1/58FlwjwPtxlYmBOJvQC/0cVYFrDn0wrHp/05L9MgE+evwDnSpaYI2ixGQ
+ jAEpeqgzwsJ8CvW4hTXa4VYXkw/QCGEydj4mdpODQ+/K2LVUjCZCf9V+YCUZd8eikVqO
+ sR7fe6ZnruBh7323TbdDlFmDDA3Rdv5TIwhZd/y8kW39TELtIAlTQXRBAhwrv5uXSAhx
+ 6rucZRRo38Fdw9GdCK6BIc20iRRlGr0d+8kkDhF7r5p1mNo0vxsALmXMSyqpS1ZPj4ir
+ Trjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1749190159; x=1749794959;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=cByiSStoffS6mXs4MY0CM6SaegGyJSJRDeB/IrgUMGc=;
+ b=fu+2qgvZ/lAZltDHHPPcrlS2uRchW2U+nwRA4mYx59/WxyvxOz7xzubT77fNvnL7sl
+ pOr6vFBXzV6hYVKeb1Kauk8aw/5B5i+e1P3tz3q5AFgr+T69ZptLHc4emfnds7Po5WJ8
+ jIFm0l40Tqzy7GLN6y+R7wl0D7T1fiHkFh0IJaq4Id9k45pS14ykLiCGsZQjC76BLcaP
+ Dvc+31hWkOPqkBuqSIQROtCsGni/rMiOLFIorUh15KUQ4aAk8m1IswBs/o5l3aGPpuAG
+ Srk+NjiUz0djKQVic71NqULw9FJlX4ZB2eVwmidGa4xEVKEIWU7wiL879C+yF5GvhCCk
+ jGhw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWzUw713G1JLiYAhm9SqGIEZ/Ku84dslMJQOUx0BYTQezb89FmuwusCCy4kxWVlu/cO1lH7S895eA==@nongnu.org
+X-Gm-Message-State: AOJu0YwcEp1e7a0LZb4G9lPGDNFI/QRTcWKxvBo3PSebOLFWzJ1CQmNu
+ DCmjZP+msAuC0K8NV3yXPnNRaiLJn/Bq9r2NyhZ4GbFVQyrApfOOjXWEawe7SX0MVBE=
+X-Gm-Gg: ASbGncvX2AKkzx07fzAjBD8ukDWhTPmk18MKQrtnwEQB9e+FAOnYSUXrLCZzYXP9PYS
+ ezFr+unPRV5svJRayXLeh+cYVhnhm3KdZa72S6Z3Z2bqTD7adXuUdTBkeQoAX/88VBPK7oe0nVm
+ L+KtuUoJbhvFQe+EjbKrmaTV2OQEN9KB2rAQh13q99RhJ2DS06LHXp9biJBIWiYIwR4VJJxPHwF
+ E0PZZVSHR3vxLSHmI/K+M3nASTEvAX4+3s+oFfxjDSwQ6YDnm98XYL6lf2FRcmN9GNzo1B6eaIr
+ KL6dDmeNatoSlp6mt/nLr56DPgA9ej9W3Oa6aZyukLxcYo7qkz0IgntWno7IODTOga0/Hjn4+iy
+ DAW1T5nWqrJFjTc9qfmc=
+X-Received: by 2002:a05:600c:1c99:b0:439:4b23:9e8e with SMTP id
+ 5b1f17b1804b1-452014ea237mr19528365e9.3.1749190159484; 
+ Thu, 05 Jun 2025 23:09:19 -0700 (PDT)
+Received: from [192.168.69.138] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3a53229e0dcsm972282f8f.15.2025.06.05.23.09.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 05 Jun 2025 23:09:18 -0700 (PDT)
+Message-ID: <0f7673d9-31f4-495b-a118-f53ed6c6fc37@linaro.org>
+Date: Fri, 6 Jun 2025 08:09:17 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/4] tests/unit/test-char: Avoid using g_alloca()
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, =?ISO-8859-1?Q?Marc-Andr=E9?= Lureau
- <marcandre.lureau@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Stefan Hajnoczi <stefanha@redhat.com>, Stefan Berger
- <stefanb@linux.vnet.ibm.com>, "Daniel P ." =?ISO-8859-1?Q?Berrang=E9?=
- <berrange@redhat.com>
-Date: Thu, 05 Jun 2025 16:03:30 -0500
-In-Reply-To: <20250605193540.59874-2-philmd@linaro.org>
+ qemu-arm@nongnu.org, Glenn Miles <milesg@linux.ibm.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>
 References: <20250605193540.59874-1-philmd@linaro.org>
- <20250605193540.59874-2-philmd@linaro.org>
-Organization: IBM
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-27.el8_10) 
-Mime-Version: 1.0
+ <20250605193540.59874-4-philmd@linaro.org>
+ <7832d31a-2707-4cc4-9838-f2ea4b6b2cea@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <7832d31a-2707-4cc4-9838-f2ea4b6b2cea@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Authority-Analysis: v=2.4 cv=Pq2TbxM3 c=1 sm=1 tr=0 ts=68420625 cx=c_pps
- a=5BHTudwdYE3Te8bg5FgnPg==:117 a=5BHTudwdYE3Te8bg5FgnPg==:17
- a=IkcTkHD0fZMA:10 a=6IFa9wvqVegA:10 a=VnNF1IyMAAAA:8 a=KKAkSRfTAAAA:8
- a=BRqcx2DXgZmGtgVnd2oA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNjA1MDE5MCBTYWx0ZWRfX2K77JXVYCiUO
- 7Hai/4mzTVOTcJ2fDmKHk2kNZfZMQlnQhIYJHJV6KxRBoGSaapWPmWZSLixWASM5dsKQxFn19ki
- hWwVf/oCXqoWZGb1yQ5/cEWhLVtkKsWwXukPi095/SBv2IJjdh4VXeKloRPUIEod3ml+cPAqSgM
- IpKJ43W5K//OHk3GowwmT2qze/zy94G+jZrEScIxeBjDtNePtKVbCOkDJaSql5s+nXpSd7cBQVC
- els0E5kNiijlQAUA96VxfRkFJD8i2Nb2f1BG5XksehABJJb8mw2b9iBUCvifQDRaCXgOGj23Eqy
- LBWb7G5LT331SgKqoCkVZZwjvbgPBKoUaqmn3yobdDOwP/hQx1kf9Tfx6jZiql3EyGoJ6W3qc89
- Ax0itbUQ4lc34atQyHKNWSSWcFrKthcgQ+chtqZ8/hySmYHdNg6U9Uk5mq7dCho6bktaNRJy
-X-Proofpoint-GUID: bppj7D4z7TJLtO-TdKDTmwUe2OOYyzcE
-X-Proofpoint-ORIG-GUID: bppj7D4z7TJLtO-TdKDTmwUe2OOYyzcE
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
- definitions=2025-06-05_06,2025-06-05_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0
- lowpriorityscore=0 clxscore=1011 malwarescore=0 mlxlogscore=884
- phishscore=0 bulkscore=0 spamscore=0 suspectscore=0 priorityscore=1501
- mlxscore=0 adultscore=0 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
- definitions=main-2506050190
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=milesg@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: milesg@linux.ibm.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zw9EsbCEMFJ0
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lyCZn9+YOX6W
 
-Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
-
-Thanks!
-
-Glenn
-
-On Thu, 2025-06-05 at 21:35 +0200, Philippe Mathieu-Daudé wrote:
-> We have pin_count <= PCA955X_PIN_COUNT_MAX. Having
-> PCA955X_PIN_COUNT_MAX = 16, it is safe to explicitly
-> allocate the char buffer on the stack, without g_newa().
+On 5/6/25 22:53, Pierrick Bouvier wrote:
+> On 6/5/25 12:35 PM, Philippe Mathieu-Daudé wrote:
+>> Do not use g_alloca(), simply allocate the CharBackend
+>> structure on the stack.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   tests/unit/test-char.c | 3 +--
+>>   1 file changed, 1 insertion(+), 2 deletions(-)
+>>
+>> diff --git a/tests/unit/test-char.c b/tests/unit/test-char.c
+>> index 60a843b79d9..f30a39f61ff 100644
+>> --- a/tests/unit/test-char.c
+>> +++ b/tests/unit/test-char.c
+>> @@ -993,7 +993,7 @@ static void char_udp_test_internal(Chardev 
+>> *reuse_chr, int sock)
+>>       struct sockaddr_in other;
+>>       SocketIdleData d = { 0, };
+>>       Chardev *chr;
+>> -    CharBackend *be;
+>> +    CharBackend stack_be, *be = &stack_be;
+>>       socklen_t alen = sizeof(other);
+>>       int ret;
+>>       char buf[10];
+>> @@ -1009,7 +1009,6 @@ static void char_udp_test_internal(Chardev 
+>> *reuse_chr, int sock)
+>>           chr = qemu_chr_new("client", tmp, NULL);
+>>           g_assert_nonnull(chr);
+>> -        be = g_alloca(sizeof(CharBackend));
+>>           qemu_chr_fe_init(be, chr, &error_abort);
+>>       }
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  hw/gpio/pca9552.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
-> index d65c0a2e90f..1e10238b2e0 100644
-> --- a/hw/gpio/pca9552.c
-> +++ b/hw/gpio/pca9552.c
-> @@ -76,7 +76,7 @@ static void pca955x_display_pins_status(PCA955xState *s,
->          return;
->      }
->      if (trace_event_get_state_backends(TRACE_PCA955X_GPIO_STATUS)) {
-> -        char *buf = g_newa(char, k->pin_count + 1);
-> +        char buf[PCA955X_PIN_COUNT_MAX + 1];
->  
->          for (i = 0; i < k->pin_count; i++) {
->              if (extract32(pins_status, i, 1)) {
+> Would that be more simple to declare the variable, and use &be in the 
+> function code?
 
+More context (see reuse_chr ladder):
+
+-- >8 --
+@@ -991,45 +991,44 @@ static int make_udp_socket(int *port)
+  static void char_udp_test_internal(Chardev *reuse_chr, int sock)
+  {
+      struct sockaddr_in other;
+      SocketIdleData d = { 0, };
+      Chardev *chr;
+-    CharBackend *be;
++    CharBackend stack_be, *be = &stack_be;
+      socklen_t alen = sizeof(other);
+      int ret;
+      char buf[10];
+      char *tmp = NULL;
+
+      if (reuse_chr) {
+          chr = reuse_chr;
+          be = chr->be;
+      } else {
+          int port;
+          sock = make_udp_socket(&port);
+          tmp = g_strdup_printf("udp:127.0.0.1:%d", port);
+          chr = qemu_chr_new("client", tmp, NULL);
+          g_assert_nonnull(chr);
+
+-        be = g_alloca(sizeof(CharBackend));
+          qemu_chr_fe_init(be, chr, &error_abort);
+      }
+---

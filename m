@@ -1,251 +1,151 @@
-Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp806985njc;
-        Fri, 6 Jun 2025 02:53:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUET+eZU+TzgXSZlH2oZfQ/XZoja4iJ+cKQXz4R+DGtAAoXGBcb4g939gT7pDGjr68j1WcctFKrIgziuw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEBg+CmGxKl4MX5d5mhAz+/uaQCT7brI3OqvgPGKbZxX7w+ziBxCqypp9T4UmsFFFEEZUbs
-X-Received: by 2002:a05:622a:4006:b0:4a4:2d64:a7e4 with SMTP id d75a77b69052e-4a5b9d9386cmr44991401cf.35.1749203605879;
-        Fri, 06 Jun 2025 02:53:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749203605; cv=none;
-        d=google.com; s=arc-20240605;
-        b=eEjW0mes81RWXkuVyAwT/kVhnDMvvDy0Of7btra3ga6FEMcSrFglD+x/5V1bo4qUyL
-         mxQuCjqeFD+pJXwOs2OhFp8HJbiqe7VbpNAVJSnba8l1ZVbi53PrMOUmAJt6i28NsG30
-         QrHgps9Tvj6rPMiYYKka+Q2rIDqTiI0ZEMM8FLvMOQGXkY3TxUuU34q9RfXVVvwronnz
-         WtQdBCjwFr2dMu8yr+aA/oAUr31/9JpoVbV4atNZPUMqsxyyont6HSlskTRLrLOogujj
-         JZwEn20KHMtYLSY6xuNPh1RWyZL7lug9d0XrCla8caefrH0wTyB5bpi44r/g7MxE+xmj
-         Vqcw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:message-id:date:user-agent:references:organization
-         :in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=587k/XgzXZDVRc17FBl8LYWYXXgKDx/cGubX/1kvN5I=;
-        fh=wICZTdRVE8hcXpDo2ZiTXxCMq4RcRFA5Y76mB+7LaeM=;
-        b=Ubz5KvitcGLK3kdnbpMDmH7wrYeqoIiKp+pRXHS6JQWU4FrUOiy8f5xRpimEIc370p
-         4CYQjNduo3aj9Tz4KUv5VnmUr7V5W59G/wUBddQBJoFIHymLzMi9/75EaW8Hc36n/ihw
-         6pN8IxmmV5jED/MGstJg82In9DgXJVPFU89LyceW6If+eyu7NNlBUpLORsERPF5Z0rqX
-         QsD5U38CrVF9dL830AIgFSbTH7HKOQ74kFvOuUjdm0hgvyJQylO1MonIvUp6pfVCm+v6
-         dh5XMQQl5P7cN3XFroBF2ZVOkCKRaXnC+K/xG+6Gp9ftaM20zagksXIU6QlgGV55KQ9p
-         5IyQ==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MzpeKnZH;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a61985cb51si15142271cf.248.2025.06.06.02.53.25
-        for <alex.bennee@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([185.126.160.19])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ade1dc7b202sm91694966b.161.2025.06.06.03.16.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Jun 2025 02:53:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MzpeKnZH;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1749203605;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=587k/XgzXZDVRc17FBl8LYWYXXgKDx/cGubX/1kvN5I=;
-	b=MzpeKnZHmDHhQiwpsM1nWuVCcQ3AW4RbXouIGxDKXvMoXKcjIhW8O23ji5Qbw+XYFUCR23
-	qidWd8JF5id7fCo40Ra+IQ/O0RxJvBjZWMkxDF5BmH3sHtsR+z4MeH6PqO9xhck+avuF71
-	TPkc9HyA3DV5wYVp6dQG1AIso2elXHM=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-460-35AzavJdMMC8zE3OqGrBDA-1; Fri,
- 06 Jun 2025 05:53:22 -0400
-X-MC-Unique: 35AzavJdMMC8zE3OqGrBDA-1
-X-Mimecast-MFC-AGG-ID: 35AzavJdMMC8zE3OqGrBDA_1749203600
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 935931956080;
-	Fri,  6 Jun 2025 09:53:19 +0000 (UTC)
-Received: from localhost (dhcp-192-175.str.redhat.com [10.33.192.175])
-	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id DEF23180035E;
-	Fri,  6 Jun 2025 09:53:17 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
- richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
- oliver.upton@linux.dev, sebott@redhat.com,
- shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
- agraf@csgraf.de
-Cc: shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
- pbonzini@redhat.com
-Subject: Re: [PATCH v7 00/14] arm: rework id register storage
-In-Reply-To: <20250515153907.151174-1-cohuck@redhat.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Michael O'Neill, Amy
- Ross"
-References: <20250515153907.151174-1-cohuck@redhat.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Fri, 06 Jun 2025 11:53:15 +0200
-Message-ID: <87ikl99oxg.fsf@redhat.com>
+        Fri, 06 Jun 2025 03:16:37 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 6905C5F7E1;
+	Fri, 06 Jun 2025 11:16:36 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: qemu-devel@nongnu.org,  Sriram Yagnaraman
+ <sriram.yagnaraman@ericsson.com>,  "Michael S. Tsirkin" <mst@redhat.com>,
+  Dmitry Osipenko <dmitry.osipenko@collabora.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  John
+ Snow <jsnow@redhat.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,
+  Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Peter Xu
+ <peterx@redhat.com>,  Fabiano Rosas <farosas@suse.de>,
+  qemu-arm@nongnu.org,  Thomas Huth <thuth@redhat.com>,  Alexandre Iooss
+ <erdnaxe@crans.org>,  Gustavo Romero <gustavo.romero@linaro.org>,  Markus
+ Armbruster <armbru@redhat.com>,  David Hildenbrand <david@redhat.com>,
+  Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Laurent Vivier
+ <lvivier@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,
+  Mahmoud Mandour <ma.mandourr@gmail.com>,  Manos Pitsidianakis
+ <manos.pitsidianakis@linaro.org>,  qemu-stable@nongnu.org
+Subject: Re: [PATCH v4 09/17] hw/display: re-arrange memory region tracking
+In-Reply-To: <5f91c8a2-06ce-45f8-97bd-0602a52e0d21@daynix.com> (Akihiko
+	Odaki's message of "Fri, 6 Jun 2025 18:40:06 +0900")
+References: <20250603110204.838117-1-alex.bennee@linaro.org>
+	<20250603110204.838117-10-alex.bennee@linaro.org>
+	<1a86b86d-145a-44fc-9f87-2804767fb109@daynix.com>
+	<87o6v2764e.fsf@draig.linaro.org>
+	<5f91c8a2-06ce-45f8-97bd-0602a52e0d21@daynix.com>
+User-Agent: mu4e 1.12.11; emacs 30.1
+Date: Fri, 06 Jun 2025 11:16:36 +0100
+Message-ID: <87tt4t41kr.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-TUID: hDQkkG3qrhII
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: cVqSWJyz04QB
 
-Friendly ping... anything else that needs to happen here?
+Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 
-On Thu, May 15 2025, Cornelia Huck <cohuck@redhat.com> wrote:
+> On 2025/06/05 20:57, Alex Benn=C3=A9e wrote:
+>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+>>=20
+>>> On 2025/06/03 20:01, Alex Benn=C3=A9e wrote:
+>>>> QOM objects can be embedded in other QOM objects and managed as part
+>>>> of their lifetime but this isn't the case for
+>>>> virtio_gpu_virgl_hostmem_region. However before we can split it out we
+>>>> need some other way of associating the wider data structure with the
+>>>> memory region.
+>>>> Fortunately MemoryRegion has an opaque pointer. This is passed down
+>>>> to
+>>>> MemoryRegionOps for device type regions but is unused in the
+>>>> memory_region_init_ram_ptr() case. Use the opaque to carry the
+>>>> reference and allow the final MemoryRegion object to be reaped when
+>>>> its reference count is cleared.
+>>>> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+>>>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>>>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>>>> Message-Id: <20250410122643.1747913-2-manos.pitsidianakis@linaro.org>
+>>>> Cc: qemu-stable@nongnu.org
+>>>> ---
+>>>>    include/system/memory.h       |  1 +
+>>>>    hw/display/virtio-gpu-virgl.c | 23 ++++++++---------------
+>>>>    2 files changed, 9 insertions(+), 15 deletions(-)
+>>>> diff --git a/include/system/memory.h b/include/system/memory.h
+>>>> index fc35a0dcad..90715ff44a 100644
+>>>> --- a/include/system/memory.h
+>>>> +++ b/include/system/memory.h
+>>>> @@ -784,6 +784,7 @@ struct MemoryRegion {
+>>>>        DeviceState *dev;
+>>>>          const MemoryRegionOps *ops;
+>>>> +    /* opaque data, used by backends like @ops */
+>>>>        void *opaque;
+>>>>        MemoryRegion *container;
+>>>>        int mapped_via_alias; /* Mapped via an alias, container might b=
+e NULL */
+>>>> diff --git a/hw/display/virtio-gpu-virgl.c b/hw/display/virtio-gpu-vir=
+gl.c
+>>>> index 145a0b3879..71a7500de9 100644
+>>>> --- a/hw/display/virtio-gpu-virgl.c
+>>>> +++ b/hw/display/virtio-gpu-virgl.c
+>>>> @@ -52,17 +52,11 @@ virgl_get_egl_display(G_GNUC_UNUSED void *cookie)
+>>>>      #if VIRGL_VERSION_MAJOR >=3D 1
+>>>>    struct virtio_gpu_virgl_hostmem_region {
+>>>> -    MemoryRegion mr;
+>>>> +    MemoryRegion *mr;
+>>>>        struct VirtIOGPU *g;
+>>>>        bool finish_unmapping;
+>>>>    };
+>>>>    -static struct virtio_gpu_virgl_hostmem_region *
+>>>> -to_hostmem_region(MemoryRegion *mr)
+>>>> -{
+>>>> -    return container_of(mr, struct virtio_gpu_virgl_hostmem_region, m=
+r);
+>>>> -}
+>>>> -
+>>>>    static void virtio_gpu_virgl_resume_cmdq_bh(void *opaque)
+>>>>    {
+>>>>        VirtIOGPU *g =3D opaque;
+>>>> @@ -73,14 +67,12 @@ static void virtio_gpu_virgl_resume_cmdq_bh(void *=
+opaque)
+>>>>    static void virtio_gpu_virgl_hostmem_region_free(void *obj)
+>>>>    {
+>>>>        MemoryRegion *mr =3D MEMORY_REGION(obj);
+>>>> -    struct virtio_gpu_virgl_hostmem_region *vmr;
+>>>> +    struct virtio_gpu_virgl_hostmem_region *vmr =3D mr->opaque;
+>>>>        VirtIOGPUBase *b;
+>>>>        VirtIOGPUGL *gl;
+>>>>    -    vmr =3D to_hostmem_region(mr);
+>>>> -    vmr->finish_unmapping =3D true;
+>>>> -
+>>>>        b =3D VIRTIO_GPU_BASE(vmr->g);
+>>>> +    vmr->finish_unmapping =3D true;
+>>>>        b->renderer_blocked--;
+>>>>          /*
+>>>> @@ -118,8 +110,8 @@ virtio_gpu_virgl_map_resource_blob(VirtIOGPU *g,
+>>>>          vmr =3D g_new0(struct virtio_gpu_virgl_hostmem_region, 1);
+>>>>        vmr->g =3D g;
+>>>> +    mr =3D g_new0(MemoryRegion, 1);
+>>>
+>>> This patch does nothing more than adding a separate allocation for
+>>> MemoryRegion. Besides there is no corresponding g_free(). This patch
+>>> can be simply dropped.
+>> As the patch says the MemoryRegion is now free'd when it is
+>> de-referenced. Do you have a test case showing it leaking?
+>
+> "De-referenced" is confusing and sounds like pointer dereferencing.
+>
+> OBJECT(mr)->free, which has virtio_gpu_virgl_hostmem_region_free() as
+> its value, will be called to free mr when the references of mr are
+> removed. This patch however does not add a corresponding g_free() call
+> to virtio_gpu_virgl_hostmem_region_free(), leaking mr.
+>
+> AddressSanitizer will catch the memory leak.
 
-> Some small fixes, including fixing up/adding SPDX identifiers, keeping the
-> series bisectable, and updating MAINTAINERS (please check if that's ok.)
+Example invocation?
+
+I ran the AddressSantizier against all the virtio-gpu tests yesterday
+and it did not complain.
+
 >
-> Also available at
-> https://gitlab.com/cohuck/qemu/-/commits/arm-rework-idreg-storage-v7
->
-> <v6 cover letter>
-> Just some small changes:
-> - fixed up some botched conversions noted by Eric (thanks!)
-> - rebased to current master
-> - new patch with a small cleanup suggested by Eric
->
-> <v5 cover letter>
-> Just a quick respin to fix a missed conversion in hvf.c.
->
-> <v4 cover letter>
-> Next iteration of the id register patches; only small changes.
->
-> Changed from v3:
-> - added R-bs (thanks!)
-> - added missing SPDX header
-> - merged patch introducing accessors for kvm to the first user
-> - skip over sysregs outside of the id register range when generating
->   register definitions again
->
-> Also available at
-> https://gitlab.com/cohuck/qemu/-/commits/arm-rework-idreg-storage-v4
->
-> <v3 cover letter>
-> Yet another update of the id register series, less changes this time
-> around.
->
-> Changed from v2:
-> - changed generation of the various register defines via the "DEF"
->   magic suggested by Richard
-> - some kvm-only code moved to kvm.c; some code potentially useful to
->   non-kvm code stayed out of there (the cpu model code will make use
->   of it, and that one should be extendable outside of kvm -- a
->   revised version of those patches is still in the works, but I'll be
->   off for a few days and rather wanted to get this one out first)
->
-> Also available at
-> https://gitlab.com/cohuck/qemu/-/commits/arm-rework-idreg-storage-v3
->
-> <v2 cover letter>
->
-> Changed from v1:
-> - Noticed that we missed the hvf code. Converted, compiled, but not tested
->   as I'm lacking an environment for testing.
-> - Hopefully incorporated most of the suggested changes -- if I missed
->   something, it was unintentional unless mentioned below.
->   - fixed repeated inclusion of definitions
->   - hopefully made macros more robust
->   - removed distinction between reading 32/64 values, which was mostly
->     adding churn for little value
->   - postponed generating property definitions to the cpu model patches,
->     where they are actually used
->   - juggled hunks and moved them to the right patches
->   - fixed some typos
-> - rebased to a more recent code base
->
-> NOT changed from v1:
-> - definitions are still generated from the Linux sysregs file
->   - I still think updating the generated files on demand (so that we can
->     double check the result) is the right thing to do
->   - I'm open to changing the source of the definitions from the sysregs
->     file to the JSON definitions published by Arm; however, I first wanted
->     to get the code using it right -- we can switch out the code generating
->     the file to use a different source easily later on, and I'd also like
->     to steal parts of the script from Linux once integrated (which I think
->     hasn't happened yet?)
->
-> <v1 cover letter>
->
-> [Note: I've kept the cc list from the last round of cpu model patches;
-> so if you're confused as to why you're cc:ed here, take it as a
-> heads-up that a new cpu model series will come along soon]
->
-> This patch series contains patches extracted from the larger cpu model
-> series (RFC v2 last posted at
-> https://lore.kernel.org/qemu-devel/20241206112213.88394-1-cohuck@redhat.com/)
-> and aims at providing a base upon which we can continue with building
-> support for cpu models, but which is hopefully already an improvement
-> on its own.
->
-> Main changes from the patches in that series include:
-> - post-pone the changes to handle KVM writable ID registers for cpu models
->   (I have a series including that on top of this one)
-> - change how we store the list of ID registers, and access them
->   basically, use an enum for indexing, and an enum doing encodings in a
->   pattern similar to cpregs
-> - move some hunks to different patches
-> - update the scripts to generate the register descriptions, and run
->   them against a recent Linux sysregs file
->
-> What I've kept:
-> - generating the register descriptions from the Linux sysregs file
->   I think that file is still our best bet to generate the descriptions
->   easily, and updating the definitions is a manual step that can be checked
->   for unintended changes
-> - most of the hard work that Eric had been doing; all new bugs in there
->   are my own :)
->
-> </v1 cover letter>
-> </v2 cover letter>
-> </v3 cover letter>
-> </v4 cover letter>
-> </v5 cover letter>
-> </v6 cover letter>
->
-> Cornelia Huck (2):
->   arm/cpu: switch to a generated cpu-sysregs.h.inc
->   arm/kvm: use fd instead of fdarray[2]
->
-> Eric Auger (12):
->   arm/cpu: Add sysreg definitions in cpu-sysregs.h
->   arm/cpu: Store aa64isar0/aa64zfr0 into the idregs arrays
->   arm/cpu: Store aa64isar1/2 into the idregs array
->   arm/cpu: Store aa64pfr0/1 into the idregs array
->   arm/cpu: Store aa64mmfr0-3 into the idregs array
->   arm/cpu: Store aa64dfr0/1 into the idregs array
->   arm/cpu: Store aa64smfr0 into the idregs array
->   arm/cpu: Store id_isar0-7 into the idregs array
->   arm/cpu: Store id_pfr0/1/2 into the idregs array
->   arm/cpu: Store id_dfr0/1 into the idregs array
->   arm/cpu: Store id_mmfr0-5 into the idregs array
->   arm/cpu: Add sysreg generation scripts
->
->  MAINTAINERS                           |   1 +
->  hw/intc/armv7m_nvic.c                 |  27 +-
->  scripts/gen-cpu-sysregs-header.awk    |  35 ++
->  scripts/update-aarch64-sysreg-code.sh |  26 ++
->  target/arm/cpu-features.h             | 317 +++++++++---------
->  target/arm/cpu-sysregs.h              |  42 +++
->  target/arm/cpu-sysregs.h.inc          |  52 +++
->  target/arm/cpu.c                      | 111 +++----
->  target/arm/cpu.h                      |  80 +++--
->  target/arm/cpu64.c                    | 128 +++----
->  target/arm/helper.c                   |  68 ++--
->  target/arm/hvf/hvf.c                  |  39 ++-
->  target/arm/internals.h                |   6 +-
->  target/arm/kvm.c                      | 139 ++++----
->  target/arm/ptw.c                      |   6 +-
->  target/arm/tcg/cpu-v7m.c              | 174 +++++-----
->  target/arm/tcg/cpu32.c                | 320 +++++++++---------
->  target/arm/tcg/cpu64.c                | 459 +++++++++++++-------------
->  18 files changed, 1105 insertions(+), 925 deletions(-)
->  create mode 100755 scripts/gen-cpu-sysregs-header.awk
->  create mode 100755 scripts/update-aarch64-sysreg-code.sh
->  create mode 100644 target/arm/cpu-sysregs.h
->  create mode 100644 target/arm/cpu-sysregs.h.inc
->
-> -- 
-> 2.49.0
+> Regards,
+> Akihiko Odaki
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

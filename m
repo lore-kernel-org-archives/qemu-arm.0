@@ -1,147 +1,133 @@
-Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp526832njc;
-        Thu, 5 Jun 2025 14:00:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVn98zgCZNDXZMLFWQecVRAGuSeZjAx37tNpcQ1wa84A3i8k0JRxFblw9/TviMdSY+BVUHOZiHHm0+4Nw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHoXg9DelmZdDTh6o2lLVoMwssYAkLzoQTpVaprYb2Rr74sglwQKsAbBKfoCdb+UT327F4f
-X-Received: by 2002:a05:622a:1b29:b0:494:b914:d140 with SMTP id d75a77b69052e-4a5b9dacac1mr20522601cf.43.1749157201165;
-        Thu, 05 Jun 2025 14:00:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749157201; cv=none;
+Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp731393njc;
+        Thu, 5 Jun 2025 23:37:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWTk4aeFM0DhWvq923tYdmaI+JzLb1TWQtOGA0mPzQthBb14SvTq34fj2+7B1tPVtWVE7xmm5Zkmx8qmA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEnOJq3S8qoL6YfiMHLvlhZYC3nh+07p5yp8qvMiJIFV5lPrf5ulyY1qsR+MbQlqCdUBnFP
+X-Received: by 2002:a05:622a:4006:b0:4a4:2d64:a7e4 with SMTP id d75a77b69052e-4a5b9d9386cmr38885781cf.35.1749191836825;
+        Thu, 05 Jun 2025 23:37:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749191836; cv=none;
         d=google.com; s=arc-20240605;
-        b=icSdCYzSky1W0kwL3RRJ1EwHks1UCTwJNfAMs2cMmTRAMcJ+UebfWmAmqRonrmQeEm
-         1XIRs+9URFmNvOMdVTckIN2a6yElA1sdREne2E7iIWPbnn7iiarYpPgZDJkLCUXUxOA2
-         U9XCUPZxN/iInw1MP5eTYcfcY+uoMz1Aj+7gOYMvgIcKCjJ8yLYl6jyjYE+4J2i0z5pz
-         HwPukAFbFQ460/CL3enDHSUnue3qcvsSbsN0yYfJLLNYE1Cl++1WtsoRKLmuDv7GkP0o
-         oECtu3O3f/K3UEgqIlPa42HIlWGJ7tA8AKWm74Q6oBQzX3sbe45+Xv1LfMW+t9B0ex/h
-         E7xQ==
+        b=aFNWXjJd6O/loAlnuYZF9xKcFbuAKU0zYbPhX2HFQ+91X/+vUT1cqLNGHrZLETmNyj
+         I/myWBAe43BigtItodiRaKL9sQRjVytzlHMc3UogT5vYfFRuApkZiYFFCrQSITyMeK+S
+         8e7G9T8dPi8s4QV2i79M0FK7ni/pqPIrbgWs/vHlASpRtft7AI7jlJ91P9BSUVDePnFY
+         yligjxljb/SBHV8ISmfS0ThhhbyQ4mgMo9sBisstJKG1g7pyRjtKjF8IPAgi2DMRv0uU
+         aX4yoSRSyFU1BdSGxP8cOUL8U+hae95K7aY4QiWJsqhFD0eGu0Ty8MUITdldltBVBb5G
+         bDnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
+         :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=dlt55m+BE8wpU7qvxWT58xuqpz72+kc7VfaxJ6SMsG8=;
-        fh=jw1/ISsXJIapWW1MCmgx2VZB6UXhUm7Z1rvHKckSgpg=;
-        b=EaiMSOHv7TJgomO5Lx9rXV8OJn+LCqWillNWWgRR89p3QUsaSjoN+y4XX+x0mRdTMl
-         oAIVM0UHZq9+47lADkiSrGodqPRhoNfGMHar+WEnnQ5uyNr6fz0GPeru4iHG7v7ICCw8
-         8V9vqEmTl6a4OdsfVJuh6xkmSm/StDYK47nIxccqfp2xP+yAbQX6+tAAZ6HtVqmH3cxh
-         QKu7zQDF2nM0i4PlzrzM5ZxEQ++5TuBlMsqlRPRDc6uFunxArGzl63PZBgdhIzqt8t1l
-         /4D7NHcIZ7fK0wTKGnkX7R6TWOVzb26S2U3DzdThYipa/tPJal6H6T2awuCtcw8Up54w
-         sC2w==;
+        bh=EclWRtcrb0Q+hON4p4OsPSgCqUPpnAb49ByzGYVoxKM=;
+        fh=6qiprCOVLyD4dYBc0u+4b+tihsd2EvPlrWCuUu3Fqpw=;
+        b=ajis96V1JnfOkcWHS0VaYyaYwSVvI5/uCdFhjDDdNe6kOhg34IRoY/djD0jXv4LqCt
+         jaFztohlRLCTGwEGHuzVn/4psto0/wpfw8h3ae+ulkuRVITgfMstDlKUwgWp7GCDCVuL
+         UEC1xyWWGzEyq7APuI1Otf11Uv0PbY+/UFk8vmxtxLJMH/0lJQlZGSt6F/fW8o03Qh7U
+         23JbZm1Cx8E/olTySGtYwMWI/OiV0QQqVU/d5Q2rHycSQXLl6uUWmlExL5aKLCoJEcyG
+         1vdeHovs9eVrz+UNtzYf61YbOTNmHjk/UKnWtCjqIgcGd9nr8J41O+0YMD3olMuR5BdJ
+         c0pA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="df/7lD6q";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fI+Ukaj+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a61116b0bfsi1805961cf.22.2025.06.05.14.00.01
+        by mx.google.com with ESMTPS id d75a77b69052e-4a6111686f9si11396961cf.119.2025.06.05.23.37.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Jun 2025 14:00:01 -0700 (PDT)
+        Thu, 05 Jun 2025 23:37:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="df/7lD6q";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fI+Ukaj+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uNHga-0000v5-OP; Thu, 05 Jun 2025 16:59:40 -0400
+	id 1uNQhF-0006mA-QC; Fri, 06 Jun 2025 02:36:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
- id 1uNHgZ-0000tp-1T
- for qemu-arm@nongnu.org; Thu, 05 Jun 2025 16:59:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
- id 1uNHgW-0002kB-Qk
- for qemu-arm@nongnu.org; Thu, 05 Jun 2025 16:59:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749157175;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dlt55m+BE8wpU7qvxWT58xuqpz72+kc7VfaxJ6SMsG8=;
- b=df/7lD6qKFvJzBcgOUdLbtdXZ4KXoZECjiehvwcCv8xoJUwxfP0WJh3ToaVh0/Y108thyU
- oTQcJL5o3UCOB7nKNkuottNiakSttju+JkTkjhy2aEDElyoWE/tBJv/uW0qyKML8t2BTZz
- yQIEsT8la22FXd6Py9TjrPJFloBPEXA=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-628-kM5nvJq5PfCvZ5X2JfFnCQ-1; Thu, 05 Jun 2025 16:59:34 -0400
-X-MC-Unique: kM5nvJq5PfCvZ5X2JfFnCQ-1
-X-Mimecast-MFC-AGG-ID: kM5nvJq5PfCvZ5X2JfFnCQ_1749157174
-Received: by mail-qt1-f198.google.com with SMTP id
- d75a77b69052e-4a5882b7339so15086111cf.2
- for <qemu-arm@nongnu.org>; Thu, 05 Jun 2025 13:59:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uNQh0-0006im-9s
+ for qemu-arm@nongnu.org; Fri, 06 Jun 2025 02:36:42 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uNQgy-0008L7-7U
+ for qemu-arm@nongnu.org; Fri, 06 Jun 2025 02:36:41 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-450cfb6a794so11747745e9.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Jun 2025 23:36:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1749191798; x=1749796598; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=EclWRtcrb0Q+hON4p4OsPSgCqUPpnAb49ByzGYVoxKM=;
+ b=fI+Ukaj+cDEFr7WgNtR35DjDcUv1v+vGXleyezekobRnYzGPPDFkl9R+OsUACg4LZv
+ wMAtbs3DE84MrSMIWkqdbThw8Qdpr/O76V6pCrjD8XdeVPRXJ1HzewXSPeNLH7xuTU3B
+ xAoeebhTA9MGuCTI9RC6cFDK6t4mOqksQPOf4R0hsZz/7R9GH74FxhmVoxpG5OapbQtM
+ tiL1+h4jwYgt0QD4/T38RSijbVpR+MGqCdd6EhggtDTTO6F5htvxCCkvNCXc9tvbagps
+ eKC0A6zkDuW3ZFjXjl9P39XvRjSroZIbnzZhsi1ElComufrUyVB8EvBf8j07bd0pACE/
+ 6Czw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749157174; x=1749761974;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1749191798; x=1749796598;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=dlt55m+BE8wpU7qvxWT58xuqpz72+kc7VfaxJ6SMsG8=;
- b=HlZvaSrJGBqF/3aQ0qatEzmU7gnhJ/Ls24AEtU5htYrxdyhAuUwWUOadVprVLGx/rx
- SbLjSSsLf39TYujeakzbtRhxL6xiujIM8smFCCmQ/g7E5Zk+laipdR69UNkMLBRQ23WS
- qXU4kV2VXo3b19te5heXuhYsYUnk52VCIUYDEKinUkPKIRFN6fZoHqbMziTibUvwRIc8
- 1Y96Jzidwg29N+tgf/g0tAp82TGfyzyp5gdkWQBKQeZI7Hlz3aufQn66QVTvAT5HtwxT
- N4op/8pBo60KfLnInocqytC4VB5cPh8OIyhYvfpO6+eZ2Z4Uc6YK/bPFgDU3a6zCunnS
- fI2A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVxH/BSu2kp27FXV6pZo88onVpmw+m2Uef6DTuFw6Nopb7t6pikglRoggo9afAQQGMKd/SsQMxLwg==@nongnu.org
-X-Gm-Message-State: AOJu0YzRNJeVkYG77mPqmrjsZKZFtAfE0DU1r4zjQPz3zqP5WU9lj4/L
- /IFnaFOpjcH1g2zWPflV+7NR0iKShtY4spcL7fPmMxgsYqolNjsGOhUSJCx34dobH7QDlr35Qq7
- DHsPu7otR03/8SZQLr5b/jHL7t8b310l54rXYm9suBU0fUeI7E/p0sA==
-X-Gm-Gg: ASbGnctM30SZHRe4k+ufNvkcYGiixwL2krgYkesb0HpF2qKpYR3w5dN6NWuLRSv+Ajv
- FeNiJgRd+LMEOLXP8i3+x0LsRxsnZ8ETcFQzKFYVPyt8xu7qBKNMmlwcYU8UFDx0CmAWjuIcUnH
- gHqHq9rpTXKETWiPlS7HLW1gYhT01uWyC/s6JWrwLFUDmFXjX8NVii4q/w6C+aVyoQFoYtjEHAH
- b8SQWc2Out2i56KpGj9kMoaVLdHxCLfdPCzgPhz7OZSgmCEh/mjh9tWg1HaleSL8kJGyjo6rRfz
- NE/usNlVL6tMMvIuLkZT7eQ=
-X-Received: by 2002:a05:622a:4d8f:b0:476:8cad:72d9 with SMTP id
- d75a77b69052e-4a5b9d92adamr21127911cf.33.1749157173946; 
- Thu, 05 Jun 2025 13:59:33 -0700 (PDT)
-X-Received: by 2002:a05:622a:4d8f:b0:476:8cad:72d9 with SMTP id
- d75a77b69052e-4a5b9d92adamr21127321cf.33.1749157173360; 
- Thu, 05 Jun 2025 13:59:33 -0700 (PDT)
-Received: from [192.168.40.164] ([70.105.235.240])
- by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-4a61116b825sm1225991cf.25.2025.06.05.13.59.30
+ bh=EclWRtcrb0Q+hON4p4OsPSgCqUPpnAb49ByzGYVoxKM=;
+ b=bvPPJnPyU4KhTI5BJeUF10E7enNwh3k7OVtAovNBfkxXCSmVBpjQZ8bBNVLWrW38KW
+ xkJZf5G0aq+n5UistEX1gKTlCDpePuWldh8kS9FqjgOuoo4jHbpAYqWser3pjRbU1nQq
+ FXbQlGOAQwB1GL57CdIa+YmGiXmTvV+kIHiv+IgWUNS/iFW75FqpgH/+VAcNB1+GoM7s
+ 2SE9IFMo4BvLmqlMhEhl/ZEIrO6A9f/tXOYAI4kUD/I0B2vKmhi6s+v2hJGq2ll1i5Ak
+ kr810EFvQnM0r51cBlWtI283xInAHmDaP4/Lw4ZZTpRJCIS4GFnfbStKo4ZvQSE5+mIt
+ 1YtQ==
+X-Gm-Message-State: AOJu0YwfQDm363Hdnn7mP75YKUZi5zTh/f1EDmaZl8Z5r9ZCMepqIuIj
+ Nq0sdw2OAoyNDMAMbmmEH1b5zmqT4q2qM11ktGzxQg0RktcbAzwVAeTvKz17XH6pNg8=
+X-Gm-Gg: ASbGncvCVRIiS6yCJ6IcQbVH+2eOk9ZqiOVJskdud00o0vXQXnGxCNN9IzT2PjoSQ65
+ haSgF0kZ1uf9/JFN23z9nogyYS69Kd9PdvGgB1r5WYt2LbjeI/ldsUnSJ3hBrgeWDy6UeaC1csj
+ iQ+q+4RBZBJCeYeHEXqKbjNBiBndOqSb1yUvTD8v3DMM8h+cyVsAXvVhA1OoeB86UCVVC5gMV7c
+ yuieSNGHFSnYQrITxkM5gnAUCQFFN5FUjwVej205Yk8+E6F2oKPEsiCRVFCo0aeCygPM0cAgokV
+ zHyQQqNnwW4gL3/dTaBG2IuhnG10sHeNrvDSkTujZ40dv+rhBFoIjS23KzoYbZjHw025WzN+CmU
+ xO6BO7kE72BuPOzDpAZTii/n3QX91DA==
+X-Received: by 2002:a05:600c:3e85:b0:43c:e467:d6ce with SMTP id
+ 5b1f17b1804b1-45201337374mr26827435e9.4.1749191797787; 
+ Thu, 05 Jun 2025 23:36:37 -0700 (PDT)
+Received: from [192.168.69.138] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-45209ce17f9sm14152595e9.11.2025.06.05.23.36.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Jun 2025 13:59:32 -0700 (PDT)
-Message-ID: <3d003b4c-5efa-487f-9156-9344613ead55@redhat.com>
-Date: Thu, 5 Jun 2025 16:58:54 -0400
+ Thu, 05 Jun 2025 23:36:37 -0700 (PDT)
+Message-ID: <7439ff0a-7e38-4b26-ba15-3770148f0694@linaro.org>
+Date: Fri, 6 Jun 2025 08:36:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/6] hw/arm/virt: Add support for user creatable SMMUv3
- device
-To: Nathan Chen <nathanc@nvidia.com>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: eric.auger@redhat.com, peter.maydell@linaro.org, jgg@nvidia.com,
- nicolinc@nvidia.com, berrange@redhat.com, mochs@nvidia.com,
- smostafa@google.com, linuxarm@huawei.com, wangzhou1@hisilicon.com,
- jiangkunkun@huawei.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
-References: <20250602154110.48392-1-shameerali.kolothum.thodi@huawei.com>
- <74d9f7a2-dbf4-48d5-bda8-847d1fc73e38@nvidia.com>
- <ce8a82c0-e8d9-447f-89ae-45fcafdd92e5@redhat.com>
- <90957693-dc12-4731-960f-0ee295d297ec@nvidia.com>
-From: Donald Dutile <ddutile@redhat.com>
-In-Reply-To: <90957693-dc12-4731-960f-0ee295d297ec@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: V8lq_y_JH3NVAvasECGoEHXJn-wcxAGPVKxYbiXz4bg_1749157174
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v1] ramfb: Add property to control if load the romfile
+To: Shaoqin Huang <shahuang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-arm@nongnu.org, Eric Auger <eauger@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-devel@nongnu.org
+References: <20250605030351.2056571-1-shahuang@redhat.com>
+ <746b078e-bd06-4361-aec7-2301412abb18@linaro.org>
+ <kep5frpl24d74evoyf367pqkyoj6xez2pirk7xlzcoompyzq4c@ouxab77sdm55>
+ <68f4f244-db07-4f65-9ca5-3cb9b70c9e61@linaro.org>
+ <27ea9c1e-61eb-4ea4-b3e4-e9d06b4b4ce5@redhat.com>
 Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <27ea9c1e-61eb-4ea4-b3e4-e9d06b4b4ce5@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=ddutile@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.132,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -156,178 +142,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Y7TE4PD5Mbbl
+X-TUID: NCKZI0hb+gd2
 
+On 6/6/25 05:20, Shaoqin Huang wrote:
+> Hi, guys
+> 
+> Thanks for all of your suggestions.
+> 
+> On 6/5/25 11:11 PM, Philippe Mathieu-Daudé wrote:
+>> On 5/6/25 14:21, Gerd Hoffmann wrote:
+>>>    Hi,
+>>>
+>>>>> Now the ramfb will load the vgabios-ramfb.bin unconditionally, but 
+>>>>> only
+>>>>> the x86 need the vgabios-ramfb.bin, this can cause that when use the
+>>>>> release package on arm64 it can't find the vgabios-ramfb.bin.
+>>>
+>>>> Simpler to directly pass the ROM path instead of using a boolean,
+>>>> so board (or CLI) could pass path to non-x86 rom.
+>>>
+>>> The rom is loaded into a fw_cfg file which only seabios will look at.
+>>> So this rom logic is x86-specific.
+>>>
+>>> edk2 ships an EFI driver for ramfb, that is how ramfb is used on !x86
+>>> platforms today, and I don't expect that to change.
+>>>
+>>> IMHO a bool is perfectly fine here, I don't think we will ever need the
+>>> flexibility to specify some other rom here.
+>>
+>> Understood, better then! Maybe name the boolean "use_legacy_x86_rom" and
+>> add a comment explaining EFI driver is expected on !x86?
+> 
+> I think the "use_legacy_x86_rom" is good, I will change the name to it. 
+> And I will add a comment to explain it.
 
-
-On 6/5/25 1:58 PM, Nathan Chen wrote:
-> 
-> 
-> On 6/4/2025 7:34 PM, Donald Dutile wrote:
->> On 6/4/25 10:02 PM, Nathan Chen wrote:
->>> On 6/2/2025 8:41 AM, Shameer Kolothum wrote:
->>>> This patch series introduces support for a user-creatable SMMUv3 device
->>>> (-device arm-smmuv3) in QEMU.
->>>
->>> Tested-by: Nathan Chen <nathanc@nvidia.com>
->>>
->>> I am able to create 16 SMMUv3 devices in a qemu VM with emulated devices properly associated with the guest SMMUs in guest sysfs - verified with some guest SMMUs having two or three emulated NICs assigned to them while other guest SMMUs have a minimum of one assigned.
->>>
->>> Thanks,
->>> Nathan
->>>
->> Nathan,
->> Great test!
->> Can you share the xml &/or qemu cmdline, to demonstrate this broad capability?
->> Also would be a good reference when (we know it isn't 'if') a new/ different config
->> that wasn't tested shows a bug, and we'll have more info to work with.
-> 
-> Yes, here is the qemu command line I used. smmuv3.15 is associated with two devices, smmuv3.0 is associated with two devices, and smmuv3.1 is associated with three devices:
-> 
-> qemu-system-aarch64 \
->          -machine hmat=on -machine virt,accel=kvm,gic-version=3,ras=on \
->          -cpu host -smp cpus=4 -m size=16G,slots=4,maxmem=32G -nographic \
->          -bios /usr/share/AAVMF/AAVMF_CODE.fd \
->          -device nvme,drive=nvme0,serial=deadbeaf1,bus=pcie.0 \
->          -drive file=/home/nvidia/nathanc/noble-server-cloudimg-arm64.qcow2,index=0,media=disk,format=qcow2,if=none,id=nvme0 \
->          -device e1000,romfile=/root/nathanc/efi-e1000.rom,netdev=net0,bus=pcie.0 \
->          -netdev user,id=net0,hostfwd=tcp::5558-:22,hostfwd=tcp::5586-:5586 \
->          -netdev user,id=net1 \
->          -netdev user,id=net2 \
->          -netdev user,id=net3 \
->          -netdev user,id=net4 \
->          -netdev user,id=net5 \
->          -netdev user,id=net6 \
->          -netdev user,id=net7 \
->          -netdev user,id=net8 \
->          -netdev user,id=net9 \
->          -netdev user,id=net10 \
->          -netdev user,id=net11 \
->          -netdev user,id=net12 \
->          -netdev user,id=net13 \
->          -netdev user,id=net14 \
->          -netdev user,id=net15 \
->          -netdev user,id=net16 \
->          -netdev user,id=net17 \
->          -netdev user,id=net18 \
->          -netdev user,id=net19 \
->          -netdev user,id=net20 \
->          -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0 \
->          -device virtio-net-pci,bus=pcie.0,netdev=net1 \
->          -device virtio-net-pci,bus=pcie.0,netdev=net20 \
->          -device pxb-pcie,id=pcie.1,bus_nr=200,bus=pcie.0 \
->          -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.1 \
->          -device pcie-root-port,id=pcie.port1,bus=pcie.1,slot=1,chassis=1 \
->          -device virtio-net-pci,bus=pcie.port1,netdev=net2 \
->          -device pcie-root-port,id=pcie.port17,bus=pcie.1,slot=17,chassis=17 \
->          -device virtio-net-pci,bus=pcie.port17,netdev=net18 \
->          -device pcie-root-port,id=pcie.port18,bus=pcie.1,slot=18,chassis=18 \
->          -device virtio-net-pci,bus=pcie.port18,netdev=net19 \
->          -device pxb-pcie,id=pcie.2,bus_nr=196,bus=pcie.0 \
->          -device arm-smmuv3,primary-bus=pcie.2,id=smmuv3.2 \
->          -device pcie-root-port,id=pcie.port2,bus=pcie.2,slot=2,chassis=2 \
->          -device virtio-net-pci,bus=pcie.port2,netdev=net3 \
->          -device pxb-pcie,id=pcie.3,bus_nr=192,bus=pcie.0 \
->          -device arm-smmuv3,primary-bus=pcie.3,id=smmuv3.3 \
->          -device pcie-root-port,id=pcie.port3,bus=pcie.3,slot=3,chassis=3 \
->          -device virtio-net-pci,bus=pcie.port3,netdev=net4 \
->          -device pxb-pcie,id=pcie.4,bus_nr=188,bus=pcie.0 \
->          -device arm-smmuv3,primary-bus=pcie.4,id=smmuv3.4 \
->          -device pcie-root-port,id=pcie.port4,bus=pcie.4,slot=4,chassis=4 \
->          -device virtio-net-pci,bus=pcie.port4,netdev=net5 \
->          -device pxb-pcie,id=pcie.5,bus_nr=184,bus=pcie.0 \
->          -device arm-smmuv3,primary-bus=pcie.5,id=smmuv3.5 \
->          -device pcie-root-port,id=pcie.port5,bus=pcie.5,slot=5,chassis=5 \
->          -device virtio-net-pci,bus=pcie.port5,netdev=net6 \
->          -device pxb-pcie,id=pcie.6,bus_nr=180,bus=pcie.0 \
->          -device arm-smmuv3,primary-bus=pcie.6,id=smmuv3.6 \
->          -device pcie-root-port,id=pcie.port6,bus=pcie.6,slot=6,chassis=6 \
->          -device virtio-net-pci,bus=pcie.port6,netdev=net7 \
->          -device pxb-pcie,id=pcie.7,bus_nr=176,bus=pcie.0 \
->          -device arm-smmuv3,primary-bus=pcie.7,id=smmuv3.7 \
->          -device pcie-root-port,id=pcie.port7,bus=pcie.7,slot=7,chassis=7 \
->          -device virtio-net-pci,bus=pcie.port7,netdev=net8 \
->          -device pxb-pcie,id=pcie.8,bus_nr=172,bus=pcie.0 \
->          -device arm-smmuv3,primary-bus=pcie.8,id=smmuv3.8 \
->          -device pcie-root-port,id=pcie.port8,bus=pcie.8,slot=8,chassis=8 \
->          -device virtio-net-pci,bus=pcie.port8,netdev=net9 \
->          -device pxb-pcie,id=pcie.9,bus_nr=168,bus=pcie.0 \
->          -device arm-smmuv3,primary-bus=pcie.9,id=smmuv3.9 \
->          -device pcie-root-port,id=pcie.port9,bus=pcie.9,slot=9,chassis=9 \
->          -device virtio-net-pci,bus=pcie.port9,netdev=net10 \
->          -device pxb-pcie,id=pcie.10,bus_nr=164,bus=pcie.0 \
->          -device arm-smmuv3,primary-bus=pcie.10,id=smmuv3.10 \
->          -device pcie-root-port,id=pcie.port10,bus=pcie.10,slot=10,chassis=10 \
->          -device virtio-net-pci,bus=pcie.port10,netdev=net11 \
->          -device pxb-pcie,id=pcie.11,bus_nr=160,bus=pcie.0 \
->          -device arm-smmuv3,primary-bus=pcie.11,id=smmuv3.11 \
->          -device pcie-root-port,id=pcie.port11,bus=pcie.11,slot=11,chassis=11 \
->          -device virtio-net-pci,bus=pcie.port11,netdev=net12 \
->          -device pxb-pcie,id=pcie.12,bus_nr=156,bus=pcie.0 \
->          -device arm-smmuv3,primary-bus=pcie.12,id=smmuv3.12 \
->          -device pcie-root-port,id=pcie.port12,bus=pcie.12,slot=12,chassis=12 \
->          -device virtio-net-pci,bus=pcie.port12,netdev=net13 \
->          -device pxb-pcie,id=pcie.13,bus_nr=152,bus=pcie.0 \
->          -device arm-smmuv3,primary-bus=pcie.13,id=smmuv3.13 \
->          -device pcie-root-port,id=pcie.port13,bus=pcie.13,slot=13,chassis=13 \
->          -device virtio-net-pci,bus=pcie.port13,netdev=net14 \
->          -device pxb-pcie,id=pcie.14,bus_nr=148,bus=pcie.0 \
->          -device arm-smmuv3,primary-bus=pcie.14,id=smmuv3.14 \
->          -device pcie-root-port,id=pcie.port14,bus=pcie.14,slot=14,chassis=14 \
->          -device virtio-net-pci,bus=pcie.port14,netdev=net15 \
->          -device pxb-pcie,id=pcie.15,bus_nr=144,bus=pcie.0 \
->          -device arm-smmuv3,primary-bus=pcie.15,id=smmuv3.15 \
->          -device pcie-root-port,id=pcie.port15,bus=pcie.15,slot=15,chassis=15 \
->          -device virtio-net-pci,bus=pcie.port15,netdev=net16 \
->          -device pcie-root-port,id=pcie.port16,bus=pcie.15,slot=16,chassis=16 \
->          -device virtio-net-pci,bus=pcie.port16,netdev=net17
-> 
-> Here is the guest topology:
-> 
-> $ lspci -tv
-> -+-[0000:00]-+-00.0  Red Hat, Inc. QEMU PCIe Host bridge
->   |           +-01.0  Red Hat, Inc. QEMU NVM Express Controller
->   |           +-02.0  Intel Corporation 82540EM Gigabit Ethernet Controller
->   |           +-03.0  Red Hat, Inc. Virtio network device
->   |           +-04.0  Red Hat, Inc. Virtio network device
->   |           +-05.0  Red Hat, Inc. QEMU PCIe Expander bridge
->   |           +-06.0  Red Hat, Inc. QEMU PCIe Expander bridge
->   |           +-07.0  Red Hat, Inc. QEMU PCIe Expander bridge
->   |           +-08.0  Red Hat, Inc. QEMU PCIe Expander bridge
->   |           +-09.0  Red Hat, Inc. QEMU PCIe Expander bridge
->   |           +-0a.0  Red Hat, Inc. QEMU PCIe Expander bridge
->   |           +-0b.0  Red Hat, Inc. QEMU PCIe Expander bridge
->   |           +-0c.0  Red Hat, Inc. QEMU PCIe Expander bridge
->   |           +-0d.0  Red Hat, Inc. QEMU PCIe Expander bridge
->   |           +-0e.0  Red Hat, Inc. QEMU PCIe Expander bridge
->   |           +-0f.0  Red Hat, Inc. QEMU PCIe Expander bridge
->   |           +-10.0  Red Hat, Inc. QEMU PCIe Expander bridge
->   |           +-11.0  Red Hat, Inc. QEMU PCIe Expander bridge
->   |           +-12.0  Red Hat, Inc. QEMU PCIe Expander bridge
->   |           \-13.0  Red Hat, Inc. QEMU PCIe Expander bridge
->   +-[0000:90]-+-00.0-[91]----00.0  Red Hat, Inc. Virtio 1.0 network device
->   |           \-01.0-[92]----00.0  Red Hat, Inc. Virtio 1.0 network device
->   +-[0000:94]---00.0-[95]----00.0  Red Hat, Inc. Virtio 1.0 network device
->   +-[0000:98]---00.0-[99]----00.0  Red Hat, Inc. Virtio 1.0 network device
->   +-[0000:9c]---00.0-[9d]----00.0  Red Hat, Inc. Virtio 1.0 network device
->   +-[0000:a0]---00.0-[a1]----00.0  Red Hat, Inc. Virtio 1.0 network device
->   +-[0000:a4]---00.0-[a5]----00.0  Red Hat, Inc. Virtio 1.0 network device
->   +-[0000:a8]---00.0-[a9]----00.0  Red Hat, Inc. Virtio 1.0 network device
->   +-[0000:ac]---00.0-[ad]----00.0  Red Hat, Inc. Virtio 1.0 network device
->   +-[0000:b0]---00.0-[b1]----00.0  Red Hat, Inc. Virtio 1.0 network device
->   +-[0000:b4]---00.0-[b5]----00.0  Red Hat, Inc. Virtio 1.0 network device
->   +-[0000:b8]---00.0-[b9]----00.0  Red Hat, Inc. Virtio 1.0 network device
->   +-[0000:bc]---00.0-[bd]----00.0  Red Hat, Inc. Virtio 1.0 network device
->   +-[0000:c0]---00.0-[c1]----00.0  Red Hat, Inc. Virtio 1.0 network device
->   +-[0000:c4]---00.0-[c5]----00.0  Red Hat, Inc. Virtio 1.0 network device
->   \-[0000:c8]-+-00.0-[c9]----00.0  Red Hat, Inc. Virtio 1.0 network device
->               +-01.0-[ca]----00.0  Red Hat, Inc. Virtio 1.0 network device
->               \-02.0-[cb]----00.0  Red Hat, Inc. Virtio 1.0 network device
-> 
-> Thanks,
-> Nathan
-> 
-Needs a device-assigned NVIDIA GPU! ;-)
-Thanks for the config!
-- Don
-
+Maybe even better could be to only register (expose) this property for
+x86 machines. We'll discuss that on your v2, no need to hold.

@@ -1,115 +1,116 @@
-Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp765335njc;
-        Fri, 6 Jun 2025 01:07:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWGp2PQONyRTXZgEKVW+nxmmnCJXqWAzS+4x/EuvnSO1ja5XgJbC94t9eYNMR/lqhLtJhB6gxovTjPJGQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IG7re99HK4FqbwIJZCOeDrZQshpU6xLQt9zVcrHYE6iDDdUhtCKNm3C7uD3QtFgP8Z6blvI
-X-Received: by 2002:a05:622a:4c05:b0:4a3:fcc7:c73c with SMTP id d75a77b69052e-4a5b9a04187mr44502691cf.8.1749197226537;
-        Fri, 06 Jun 2025 01:07:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749197226; cv=none;
+Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp765869njc;
+        Fri, 6 Jun 2025 01:08:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWr6PSiL9JBHxztsPKDX3wnmUfaiBl/ld0hNSln6fcbxDBsNA3I/ltCg+Bsb4nI079mOGJY1d1OLXsQlQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHHQXD+3GeS6VS7wbMvM9WumcFgZlrNl3ZwoNhZfgMqYpEuXSYwGG1cHQFkIWZfGuJdd0tC
+X-Received: by 2002:a05:620a:2a13:b0:7ca:cd16:b433 with SMTP id af79cd13be357-7d2298966bdmr387719885a.31.1749197305818;
+        Fri, 06 Jun 2025 01:08:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749197305; cv=none;
         d=google.com; s=arc-20240605;
-        b=M4GkOILYiVbyEj0KsRS1o0UeJiLCpilll384TWoVn1AHn86aUHBz27e+eVwieE18wz
-         ujeZJWpY0VK/YR8rTgAat7bSmKsxAcL/HVDts9LBwePvkG6DucUXtcI6yfQ2BtP/274b
-         bqrtewWVmIbcDv71PhffNcVvvsjLAElUbeID/ciZ1MiiV7SGrM5TooDiVbjZFGqPN2oS
-         a5SQs3EOKVf2/bXezYOSHDdszfFkwEWeI81UGu3R+cy2vSylVa9XLqUVxO0cdb1w0Yf4
-         u1cdVPXe1g9Fg37Nn+uTI1KFcFaC0+lUXBM4JGxqL6FWeNnvKmZRTmuiQqDMywlKbVzR
-         s6Dg==
+        b=NnjtmZMstul8eRI8Lls8uv7Oy4CwCbyofJDKHXGjD9B5nFwAT3rhg7Qdb6xeU8jZbU
+         l7vIuJ6xlmHGn0Pxmkq5bX45gTmres2eaQYiT/sHWfm/BLngIbrqzxDc/FKbDAv81fjc
+         mJ9HHJ8WFZDHCg2OXPSZNXEP3dlqDGILGYKt20eMz73H/LN3q5iidMg3ISWS93raaGmy
+         XY56CvqS/bKnM4pIWhR5/eVI+9rk7dlAfG8+Q/8mPS3YtWtDW2O4nuyowsLB2KNoZCJ4
+         RCtymQ62GCx7ydXqJGAR3AyYuOqQMP/NkeWZY6QEh7XUp6eYkwT8zaeyjWoAMYS43i8Y
+         F77Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :content-language:in-reply-to:autocrypt:references:cc:to:from
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=W/k3GfmdiWOW6nGw3logUEsxs0tADPWnI5BWXYdRa68=;
+        bh=9fmzYjKqR6+8EbYEeV/irp7fd7mrp+KmEPT6BuDbM1M=;
         fh=ydyNT9E2q23kV4kSXEevumSPKVP9MJ6Vptmf/0Nib/Q=;
-        b=UYF0vl5XcraufF7U8IB/kvKp9bmCtZjWoReCgDEc/HU8f+He0IMQALrk08L5WEOpeM
-         NrT6bnX6EyGhFCp1ZPOB0oBWNx/TizKSsN7N11sur+NXlJCfLQG72ytzelEbYn/XRrXK
-         YGGyK/nKotnOaEY3mLh858anGIQRdFuX5HS5P+Pqi09Ay2J96x1HEJBhSt1zWSb6JDkP
-         PqutpzU4/rLdDnp5b1PEPeAXd7YPgrg5wHB1XWhIhi0wLXMzOCwxv6ZncT7xVOLLTEwU
-         ar3LePYi5N+osRcUXWQlFj6H84rEowpBRlZwc3ofMJiahswFaNhexzHragUTDlGZ+7mD
-         Jweg==;
+        b=g0p+DEdrrowpRxjDEwj2MXnqoctbitOHL1qBTkgSCDlKLcTQJ8JWnKQGbhLEQv5qgk
+         Xk8JKNBaPIrUfF4byRFZUHIlkbGMORsqT2eWwMV2zCFuW3bIz9u61BZ5BgRukeoohGCN
+         wMuZfVX3nTWSYxrzi0z64rgre23EdXTuDRfFrHRDcCibCw1anQntfJzCBJas4IyWWMgf
+         jhyjiKpDmsy+sRp265IXmVm40f2uozd1kb945VnUiqnGv2zT4yAMIS9wWb2u4lkja15j
+         efWSClv4n2R05E/rSYzTq921mQo2grlrsejQ2l84WIijz9wWcoE7f3GhAdke3rSzo2Vq
+         lz8g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GbGvIMUK;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JMKZu0y7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a611169a74si12157941cf.55.2025.06.06.01.07.06
+        by mx.google.com with ESMTPS id af79cd13be357-7d25e60f205si123755085a.533.2025.06.06.01.08.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Jun 2025 01:07:06 -0700 (PDT)
+        Fri, 06 Jun 2025 01:08:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GbGvIMUK;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JMKZu0y7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uNS68-0000VH-NK; Fri, 06 Jun 2025 04:06:44 -0400
+	id 1uNS7Y-0001TE-Mb; Fri, 06 Jun 2025 04:08:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uNS64-0000Tt-OX
- for qemu-arm@nongnu.org; Fri, 06 Jun 2025 04:06:41 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uNS7S-0001RL-0q
+ for qemu-arm@nongnu.org; Fri, 06 Jun 2025 04:08:07 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uNS63-0005rA-4b
- for qemu-arm@nongnu.org; Fri, 06 Jun 2025 04:06:40 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uNS7P-0005xG-0q
+ for qemu-arm@nongnu.org; Fri, 06 Jun 2025 04:08:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749197196;
+ s=mimecast20190719; t=1749197281;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=W/k3GfmdiWOW6nGw3logUEsxs0tADPWnI5BWXYdRa68=;
- b=GbGvIMUKoKxLNcK4zWfqU+DWoQM28Ml1SZDaORTjDBKeEBszTI6kp4NbZbsyEhslBwIouy
- kSuNlamIpbtUsJAxbS7O6dcHELkm11hdXMNacrMuRRhnsJvZuAMZDhGw1QEZszC3qK5qQ3
- XdNHIt6Gcg5Rih+KAtJELb6Ayp8Ve2Q=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=9fmzYjKqR6+8EbYEeV/irp7fd7mrp+KmEPT6BuDbM1M=;
+ b=JMKZu0y7cnd3rRmBHGKIr5CEgCNnq2DXwADiQ714pyAPwjvOsdHlzAtJGrHTU4kI0vQ1a5
+ A+2CckvCWAMVAt2AjOvnZoNgZr+YosWuRpjijXsuIVKmNV/9672JPwmRab7wV+fr5nSv3r
+ djEYsVQfV5YW0qolfysL2/I7UM4rKD0=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-171-w4uC4pO4PMOxNUPmn7nClw-1; Fri, 06 Jun 2025 04:06:35 -0400
-X-MC-Unique: w4uC4pO4PMOxNUPmn7nClw-1
-X-Mimecast-MFC-AGG-ID: w4uC4pO4PMOxNUPmn7nClw_1749197194
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-450d021b9b1so8151385e9.0
- for <qemu-arm@nongnu.org>; Fri, 06 Jun 2025 01:06:35 -0700 (PDT)
+ us-mta-479-D6bDZR4GPBea0evXz1aFzA-1; Fri, 06 Jun 2025 04:08:00 -0400
+X-MC-Unique: D6bDZR4GPBea0evXz1aFzA-1
+X-Mimecast-MFC-AGG-ID: D6bDZR4GPBea0evXz1aFzA_1749197279
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-39ee4b91d1cso1461151f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 06 Jun 2025 01:08:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749197194; x=1749801994;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=W/k3GfmdiWOW6nGw3logUEsxs0tADPWnI5BWXYdRa68=;
- b=gwJcSOaDOtOKuXUIFaH3zJ2i6+kkewcptrWkLtm0QAPAMLQlVJFznNgsaY4rQggY7n
- t/TeITKL+QvHnWKh0fLIFp8sJu5dUWtS0XWFRH3cE+kWT0o3Cig72m8gNtPjbArssDJd
- XbIfwB/xo7veS7dYUfbh/GS4FPLg1UfozlBL1cb+FIun93ZnCD+/tR6/2o/B6mz3qnrG
- aUUOXRSopUbtU7VybSJS9y4ePoQCQzfoAfiIPJzRICj0deCQmgnND9apB87bUBlfcxkC
- wlk1i3wyp5kw/wracbyVDynstrwBI4KYmLd89OEh1vhOpk3sJcHipJBdbhkIMldEqkZH
- ubOw==
-X-Gm-Message-State: AOJu0Yzr02bbsQfM9gYtcy/V668GcnIb4BIaKjpocGs09n+ZY+1VSPMF
- jMKYMUyk3xU/L1wqsXx7bnFYWGMo+8iCHu/tHTtF44w9zhbC7mfyokMLJLG3aS124I1AWZ9aZiE
- o1Udm1tnK6JaPYZ4r5pUM1jlBvQE4lQ3EL6xru9ABWVForMbLqi4fAg==
-X-Gm-Gg: ASbGncvKQVgPK2x1cDYUh7Iy0uXZbDIys6Hx/O2t7sVltEtmeLX3tVrnOQ1JSJRcx8E
- MVNDswlxsyu/o+LeyaEWnIPr+UeQ+3CuF4yvuviQpU1oCMirspyhrLrVwac/Z4IwDLgUPYF2moV
- CvRt7gLWQ+MqF/TcKYU3R/RUfnwlRVH3kJ1vtDtmmnbdHMxScaMgbAK7tY7fXfEP4Z5pfMh9oTp
- fJ7AnvoPkJgz/MOqSs67faWECOrs/VvEZOsTaS9I+cABp2UfIuWQxi40J7A/2X20r5HMtOQbuNX
- FsWMTI3iua3qLNa7noKhKSytaGk6P69X2ttbZTkY3H0MLaeJac+89pV4XpGC
-X-Received: by 2002:a05:600c:3b10:b0:450:cd25:e69c with SMTP id
- 5b1f17b1804b1-452013d1f6bmr22918625e9.21.1749197194345; 
- Fri, 06 Jun 2025 01:06:34 -0700 (PDT)
-X-Received: by 2002:a05:600c:3b10:b0:450:cd25:e69c with SMTP id
- 5b1f17b1804b1-452013d1f6bmr22918365e9.21.1749197193962; 
- Fri, 06 Jun 2025 01:06:33 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1749197279; x=1749802079;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :references:cc:to:from:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=9fmzYjKqR6+8EbYEeV/irp7fd7mrp+KmEPT6BuDbM1M=;
+ b=ZB9lRyN5aLXT4FAT9CnLoagTL0XZHJnBKAFc47VGYBN2vcP+THmP1Du3SXliks4CXG
+ rGXn73Oj3m5PUGXVWdQ38wwKa5kTpPXJigYDgvfREmWBp6eL+X2gojEDx6gHy6cIQgPD
+ gldNGcvcOlIGaN07QAi+7ApurvtqdF1UUl5cGwsFCkgUH5Zj19zZdvEvjIPyGzr+ZTdB
+ 3ZnHHJV1JkmGEBnCAq1peOABzv71pLkoNNaUTNfRa6FNZbtp8l8CC/EVpqeF0deNlV8d
+ TGsEGmoilFvOxKj9b87Z1kfsM1p1TUZlrQlv/gAZwLFNJaTTyGx+1q2V/SFNBAzRDZJN
+ yNbA==
+X-Gm-Message-State: AOJu0Yw3Z1Egngkb3UVCc1578ajYZMifDHOXd9vWXzFgqx3dKH8VpVlL
+ TwZcI1IQN8scfqIUH2/JyiX0w/101c5gbUtrNT3dFpOSJoLIaqlYu2u7OlRgx9LR7X/DxfHb5YN
+ +j/GAz3+ywLcUZ699jIjusK3O2o3QEQBkMXPK/JY85G29AJy4K2PINw==
+X-Gm-Gg: ASbGnctKpjWnQE3ZwGpczhNmpNDOQzHShgW5V3Q0xf9rx41LUZDIBiBcUdA4qHAqarK
+ BtDB9r8cq1tv2aZlDQGT9Wn7BK4p6zUQnduvC3aHXkgPWzIYcLKDokg288W1eE/HB0BSwO7s5kj
+ s7Owa3vxdw5gWgTJF7J/j1XIn8JXKq3GkWva3K2jP7936FeZnP0zqeI7ySJabMB0flCFKQNakwV
+ Bm8SymBzAczgiak1zNV+MXl+KOu41vmnXGW5gYUeSVzhOlIHJSYuwJvC4+7kJlSvzNaVSBL9pcN
+ yqYfxwEnPM1xyzCFuPAne2hZLTC4h4J1J5sFTRXy8InIwyJ8KA==
+X-Received: by 2002:a05:6000:40e1:b0:3a4:e238:6496 with SMTP id
+ ffacd0b85a97d-3a526e0cc1dmr6169365f8f.18.1749197279206; 
+ Fri, 06 Jun 2025 01:07:59 -0700 (PDT)
+X-Received: by 2002:a05:6000:40e1:b0:3a4:e238:6496 with SMTP id
+ ffacd0b85a97d-3a526e0cc1dmr6169334f8f.18.1749197278795; 
+ Fri, 06 Jun 2025 01:07:58 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
  ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-452137290b9sm15529725e9.34.2025.06.06.01.06.32
+ 5b1f17b1804b1-4521375a392sm15432825e9.36.2025.06.06.01.07.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Jun 2025 01:06:32 -0700 (PDT)
-Message-ID: <cf34f5b2-d422-453f-85d4-15938ae59e9f@redhat.com>
-Date: Fri, 6 Jun 2025 10:06:32 +0200
+ Fri, 06 Jun 2025 01:07:58 -0700 (PDT)
+Message-ID: <c373ee81-d094-4b40-93c9-5ece6e24e520@redhat.com>
+Date: Fri, 6 Jun 2025 10:07:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2] ramfb: Add property to control if load the romfile
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Shaoqin Huang <shahuang@redhat.com>
 Cc: qemu-arm@nongnu.org, Eric Auger <eauger@redhat.com>,
@@ -117,7 +118,7 @@ Cc: qemu-arm@nongnu.org, Eric Auger <eauger@redhat.com>,
  Alex Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org
 References: <20250606070234.2063451-1-shahuang@redhat.com>
  <aEKeNSc8mAZ8vhGj@redhat.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+ <cf34f5b2-d422-453f-85d4-15938ae59e9f@redhat.com>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
  8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
@@ -161,9 +162,9 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <aEKeNSc8mAZ8vhGj@redhat.com>
+In-Reply-To: <cf34f5b2-d422-453f-85d4-15938ae59e9f@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: t9MM6iNPtCfLD4XFUzeppjEKtJ0WjF823hyf5PHO-Cg_1749197194
+X-Mimecast-MFC-PROC-ID: yhQJf0M_G2vXPOGp7bvwWiHYvT3VQ2fPfkG8TfzpvBY_1749197279
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -192,30 +193,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RbAvnnHNRP0h
+X-TUID: aHUgTqnT3v0A
 
-On 6/6/25 09:52, Daniel P. Berrangé wrote:
-> On Fri, Jun 06, 2025 at 03:02:34AM -0400, Shaoqin Huang wrote:
->> Now the ramfb will load the vgabios-ramfb.bin unconditionally, but only
->> the x86 need the vgabios-ramfb.bin, this can cause that when use the
->> release package on arm64 it can't find the vgabios-ramfb.bin.
+On 6/6/25 10:06, Cédric Le Goater wrote:
+> On 6/6/25 09:52, Daniel P. Berrangé wrote:
+>> On Fri, Jun 06, 2025 at 03:02:34AM -0400, Shaoqin Huang wrote:
+>>> Now the ramfb will load the vgabios-ramfb.bin unconditionally, but only
+>>> the x86 need the vgabios-ramfb.bin, this can cause that when use the
+>>> release package on arm64 it can't find the vgabios-ramfb.bin.
+>>>
+>>> Because only seabios will use the vgabios-ramfb.bin, load the rom logic
+>>> is x86-specific. For other !x86 platforms, the edk2 ships an EFI driver
+>>> for ramfb, so they don't need to load the romfile.
+>>>
+>>> So add a new property use_legacy_x86_rom in both ramfb and vfio_pci
+>>> device, because the vfio display also use the ramfb_setup() to load
+>>> the vgabios-ramfb.bin file.
+>>>
+>>> After have this property, the machine type can set the compatibility to
+>>> not load the vgabios-ramfb.bin if the arch doesn't need it.
 >>
->> Because only seabios will use the vgabios-ramfb.bin, load the rom logic
->> is x86-specific. For other !x86 platforms, the edk2 ships an EFI driver
->> for ramfb, so they don't need to load the romfile.
->>
->> So add a new property use_legacy_x86_rom in both ramfb and vfio_pci
->> device, because the vfio display also use the ramfb_setup() to load
->> the vgabios-ramfb.bin file.
->>
->> After have this property, the machine type can set the compatibility to
->> not load the vgabios-ramfb.bin if the arch doesn't need it.
+>> Can you make this a series, with an additional patch that updates the
+>> current in-dev machine types to use this new property, so we're clear
+>> about the proposed usage.
 > 
-> Can you make this a series, with an additional patch that updates the
-> current in-dev machine types to use this new property, so we're clear
-> about the proposed usage.
+> yes. And please change the vfio-pci property name to use underscores.
 
-yes. And please change the vfio-pci property name to use underscores.
+Sorry, to *not* use underscores : use-legacy-x86-rom
+
+
+Thanks,
 
 C.
+
 

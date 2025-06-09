@@ -1,121 +1,115 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp1085598njc;
-        Mon, 9 Jun 2025 03:42:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVDED3f2Y/Tm18NEM4O/17OMeDXS29UJGcCSsqJpsHKt2GcG+g/cGvXURgE9KS9TdwRHtFfUv33LEnomQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFP3/XcWIp4ul2snXXj03OTM2AmNsGsq4H14+LHfALmOieIVbLIKYQPYzhhQVheT5Dii4Fu
-X-Received: by 2002:a05:6214:29ef:b0:6fa:fea5:4d7c with SMTP id 6a1803df08f44-6fb09057dbcmr168222406d6.40.1749465734636;
-        Mon, 09 Jun 2025 03:42:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749465734; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp1131202njc;
+        Mon, 9 Jun 2025 06:47:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXGzlCO7y+3+kVGSog26nFjLPrcYO1c3Z6J1P2Lpiih87gct6CaOq/ZbJtw9qhbL/7XP4WNtGU+W5bp2A==@linaro.org
+X-Google-Smtp-Source: AGHT+IE5Mefy8ynv21anVFpaYom46OEKyFYUs/6Q+Fnrf3+3KNQbKxGrsuBLhNMk6ovJVduT3Nql
+X-Received: by 2002:a05:620a:4892:b0:7d2:107c:4228 with SMTP id af79cd13be357-7d22988df55mr2179617385a.18.1749476845855;
+        Mon, 09 Jun 2025 06:47:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749476845; cv=none;
         d=google.com; s=arc-20240605;
-        b=RtVwJukGJIjhWWDhGsGYPjXCxl0tCutUHFsNLoQ0LWN4BhldoTB1NGaiwxkkGADPik
-         baNUnQwAHdtl7SfyOt8v+g9ThQcMmcSBqgsEvtOuPZuz+y6+DrbAG668i9PZr+iDOS0V
-         b8QGVi6cOsbdi76AFMoHeGLtwH1vF6QLOFI+2yeIp5fyp4uzjnZPZDBVNLrY7RiF0gns
-         DC62uw4U7txlZt41BXg5R4SjuQH/gj09obsy4XiT1HzmxR8s8zvkVU9+zsU+rEQvE3E0
-         cbFXioBAMqTkLV+ccpIslj7ko6OBal9TfFauuPyscLu21iBVgkxdujQ4VPdKzFbmW+58
-         bEvg==
+        b=MYy7+Qn+uAOoJhHNUSNjFePHxTA7e94W6BDswHgZjNASGxtGK9UmazDf5GCMlgVi6L
+         TN9qzLEffNqVTUoiP1USQVkkUE86krZkFgzMB4GG4b3ar4I+/7m0cNaL53pRNO5tUmxJ
+         XNpc7RsxcifgMXv+oEBn7v/BV12uQG97Pk5RWdUuJWuHsD/gqduFZgF4qDdDdLmMTgmL
+         yPkbiyI2ctAvBg27l0tEnCK9PVkUN0da9KCNF8CRMg9UT0d+JgHfdwAw8TLYHw1Av/DU
+         RNib5cKnn9FmkIb5aFpLzQP/x+BgFY1OXSEo6AZ7zcCo84aSTuMIPInH++37/+hQbBSL
+         vfrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=4Q/Ogs+91df7JDSU2cLauherZ26laONYOWUSDnOEinc=;
-        fh=JhEIk2fLPl4G1DQLTYyyYhhoFUaQ3IqyFOlIrnJqLgk=;
-        b=SPOwxPG6jZzfYLIVIKaLOB0hJkyBAfKvCJB92VRfooOcdTKRpI5JfwKg9I60h64m3Y
-         U1diFxpbmsK6IbnQJEve8GlWVSTXir7J+waZAKlD4C/uIejSpoIHm1pfEnb1qap47rYU
-         5ZnemgVU363LhuIpialSzofltUAP69pGrbmYpW+oKhbJYU8FvxP2L9fxMnNGmpDOwugb
-         JLZ8FktbbbxQKzTumQlo6SQ5EnlxsKPx5LMDeXsPNsVuD3HZVPPeZmTms5vTAmjLe+F6
-         /2Y9tbOsAHR8J6cMb5idfHwNYhnFWBV3CHtbsMgwVroiqL4ZggZ8DQ/pToXDDbeD1hOp
-         ouVw==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=hV9+Ya9sSZryZs9SUEawYWiw5YKPD16P2itO83LznZ8=;
+        fh=adZX6PSdafTcVAaoK1nGpSxKPpTJl86q08rne1PUwao=;
+        b=hX1eJEMLc9bjRrkHOxx/1SHtevA69mwGPFzuj5j733vyJ9PbpY/HLaF6hchU8jIknF
+         6Yg3iI7BEGz7kvspHGfVAGCS0zqD0dsFajXLe5lJMlaY6xyaAW6lSCgmUhGfAWKkiGKZ
+         xRt7I6Vhn3vOL8Gz/JFL/BaV5lz6wyG+T4+8ezvEX4vwSiBXuKlOAECaMobW66Tlm0hq
+         IlX73zf53AUiOr4f22PMqxrRTxWpCLZetK3pWNhXZ90pvfJrP0hm1A1Bjwtf4te/jh+F
+         f+ROPcvIp0AiSLiTBg7O3WSBmVJrc7fa8r21zQ8CqReBqsIBUd913sESJ6i11Du/HJIE
+         P2tw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=reFaDTG8;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Bmje/FVb";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fb09b2f3b8si74605296d6.375.2025.06.09.03.42.14
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fb09ab08a7si77618116d6.73.2025.06.09.06.47.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Jun 2025 03:42:14 -0700 (PDT)
+        Mon, 09 Jun 2025 06:47:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=reFaDTG8;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Bmje/FVb";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uOZww-0004eh-OD; Mon, 09 Jun 2025 06:41:54 -0400
+	id 1uOcqA-0002vc-Kn; Mon, 09 Jun 2025 09:47:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uOZwu-0004bx-H0
- for qemu-devel@nongnu.org; Mon, 09 Jun 2025 06:41:52 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uOZws-0003XI-I5
- for qemu-devel@nongnu.org; Mon, 09 Jun 2025 06:41:52 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-3a376ba6f08so2268957f8f.1
- for <qemu-devel@nongnu.org>; Mon, 09 Jun 2025 03:41:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1749465708; x=1750070508; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=4Q/Ogs+91df7JDSU2cLauherZ26laONYOWUSDnOEinc=;
- b=reFaDTG8oNT9cmEh5OxJvhV5KtTeqoenCO5vmr1Mzg5n/ErOYLOVigWlmyyEzJ0NXP
- 7vEziqINr5VFHu+qfNagWJBHXASf8C0yuwDH+w+09PX0YP+Q3q2CTYWebRaVwVc/hpoj
- 7mo2pbAG5IPR5IAq7ESdoPLO4ehqKx6qb7KKi7GEZCben1mshDcEMCafrVz+z5MCxXxv
- sJFXxYIlICbflf4c/+EUexo70Cs9JTTM6LFJr/g1pzhdJxKR4ulNdCpVe2zT5CGCfl+K
- ZHn7uZsrHEF53VaUmKuTQudvYfOUQkJREV0uV/IJoK3Fa1g3iaZE1T4A61vDbMh7UdVq
- PpCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749465708; x=1750070508;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4Q/Ogs+91df7JDSU2cLauherZ26laONYOWUSDnOEinc=;
- b=Is0QIwIBc7njvUDzKl1bzrxFilqzMtNyHbGMOu+En/osaNEopDQo0kdKrQY3WnzXTr
- 2PP0xLeOuKRCHrQaFYX+NTUx/Hzy0zVUiTsbPxrXAItVHhqz6tK6vIjkZ3sV+KCjvgdB
- Ex3PTDrI4wE3Lf9fn7qlBgfv/b3GtS/wY/K42pETvuklr7D5G77N30SO9/tUDgvC2WJg
- PYStbC/0xiauRVTnvrUEsLsESCqplUuTNawH8Yi0xad+OhtIkbunkqKGXbFgEogBgeUT
- raVLQ3iCdB4cfMAX5bRfVRBRkYLirEqlHW2LTgytJldCkmKo8IJ+gRVjOS/q44YCRSIf
- 5SvA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU6aybypFuQiBo01MUSDYR/K2RkoLhs5ZNi6KYJH2vxhwBfVAgs9ijGvpwZQFojL6O0RdN5BfSlXChg@nongnu.org
-X-Gm-Message-State: AOJu0Yw39FYaIVs+9fkaKAmSEiNzXwi/3yGFYCAgaE3/QozG+IEgzqc/
- ioIIL1YjCUNTs/2QfpBzc08rNJvtsPVsflNJYrjAYErACn2tuR0Vt2IOkRu9ngcJrzk=
-X-Gm-Gg: ASbGncvXY0i62BffJAr+H2EeohjCoO093m6xVyMhR+4oUzxXHV7FJaBJJau+3lyClyB
- NH9dkujd+YqUyRIOimVBP8ICmyOltROxDnHdW1nSgIPKocHBKepuN6IeVgQPscNxskKnTx/SSIK
- pys3+pHm3DAWgHAOaHI31FTc2Ak6x0KgROFV1t8w+LSDhjXDTS/9wWICLrJ689rl2oDfVrulelO
- n1alVBSQ891T/5OkQf6MUllJtmPt4dk6Pd7T2A0iL5km0L3TrGpdHsXa+wCWbxx+7ZhG/9hx9+G
- tzf30HiU1e3y36VzIxL7HEEC7+YbEKC4wImOZTyaejCEVe22fseTTKJaqQ==
-X-Received: by 2002:a05:6000:1a85:b0:3a2:ffbe:3676 with SMTP id
- ffacd0b85a97d-3a5319b4571mr10389158f8f.49.1749465708346; 
- Mon, 09 Jun 2025 03:41:48 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a5324361ffsm9098991f8f.47.2025.06.09.03.41.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Jun 2025 03:41:47 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 0/2] target/arm: Implement ID_AA64PFR2_EL1
-Date: Mon,  9 Jun 2025 11:41:44 +0100
-Message-ID: <20250609104146.1547437-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1uOcq3-0002tR-WE
+ for qemu-devel@nongnu.org; Mon, 09 Jun 2025 09:47:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1uOcq1-0001vI-6A
+ for qemu-devel@nongnu.org; Mon, 09 Jun 2025 09:46:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1749476814;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=hV9+Ya9sSZryZs9SUEawYWiw5YKPD16P2itO83LznZ8=;
+ b=Bmje/FVbRITH2rajybUCzp0Owa2SgSSfg4UWnYuCpics6icLDCx2DcjkVhtdVF6rkQvct4
+ Tkep12RAdkndihbJ6/QCaMfeIoXOJOQ5i69LyA4uMFDuzn3yN9z4dd5GFf4EHjNmCjJ9kc
+ 5GvwTLWqMi5C7uIDVsk2hLCoB1XiFKY=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-390-DWTrbm0aMq6ksFdAwLPGTA-1; Mon,
+ 09 Jun 2025 09:46:50 -0400
+X-MC-Unique: DWTrbm0aMq6ksFdAwLPGTA-1
+X-Mimecast-MFC-AGG-ID: DWTrbm0aMq6ksFdAwLPGTA_1749476808
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 51EB41809C88; Mon,  9 Jun 2025 13:46:48 +0000 (UTC)
+Received: from localhost (unknown [10.2.16.92])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 391B5195608D; Mon,  9 Jun 2025 13:46:46 +0000 (UTC)
+Date: Mon, 9 Jun 2025 09:46:45 -0400
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Glenn Miles <milesg@linux.ibm.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>
+Subject: Re: [PATCH 0/4] system: Forbid alloca()
+Message-ID: <20250609134645.GA29452@fedora>
+References: <20250605193540.59874-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature"; boundary="JazMeH5Ktse/7gSQ"
+Content-Disposition: inline
+In-Reply-To: <20250605193540.59874-1-philmd@linaro.org>
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,44 +124,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4XlcdZTUfqBt
+X-TUID: 8Wztksth3CfQ
 
-The ID register ID_AA64PFR2_EL1 is in the space previously reserved
-in the system register ID space, but recent versions of the
-architecture have started to define fields in it to advertise the
-presence of new architectural features. We don't implement any
-of those new features yet, but will need to do so at some point.
-(Notably, the GICv5 beta spec defines a field in this register
-to advertise the GICv5 CPU interface.)
 
-This patchset gives ID_AA64PFR2_EL1 a backing field in the CPU
-ID regs struct, defines the field names, and reads it from KVM if
-it's present there. The only visible behaviour change is the
-name we present to the user via the gdbstub.
+--JazMeH5Ktse/7gSQ
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Commit 1 is a code movement one to clear some more stuff out
-of cpu.h that doesn't need to be there; it's mostly because of that
-that I'm sending this patchset rather than holding on to it until
-I have some GICv5 patches ready to send.
+On Thu, Jun 05, 2025 at 09:35:36PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> Eradicate alloca() uses on system code, then enable
+> -Walloca to prevent new ones to creep back in.
+>=20
+> Philippe Mathieu-Daud=E9 (4):
+>   hw/gpio/pca9552: Avoid using g_newa()
+>   backends/tpmL Avoid using g_alloca()
+>   tests/unit/test-char: Avoid using g_alloca()
+>   buildsys: Prohibit alloca() use on system code
+>=20
+>  meson.build                 | 4 ++++
+>  backends/tpm/tpm_emulator.c | 4 ++--
+>  hw/gpio/pca9552.c           | 2 +-
+>  tests/unit/test-char.c      | 3 +--
+>  4 files changed, 8 insertions(+), 5 deletions(-)
 
-(Compare commit f7ddd7b6a1f90c from last year which added the
-ID_AA64MMFR3_EL1 register.)
+Modulo the comments that have already been discussed:
 
-thanks
--- PMM
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-Peter Maydell (2):
-  target/arm: Move ID register field defs to cpu-features.h
-  target/arm: Implement ID_AA64PFR2_EL1
+--JazMeH5Ktse/7gSQ
+Content-Type: application/pgp-signature; name=signature.asc
 
- linux-user/arm/target_proc.h |   2 +
- target/arm/cpu-features.h    | 414 +++++++++++++++++++++++++++++++++++
- target/arm/cpu.h             | 410 +---------------------------------
- target/arm/helper.c          |   6 +-
- target/arm/hvf/hvf.c         |   2 +
- target/arm/kvm.c             |   2 +
- 6 files changed, 425 insertions(+), 411 deletions(-)
+-----BEGIN PGP SIGNATURE-----
 
--- 
-2.43.0
+iQEzBAEBCgAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmhG5cQACgkQnKSrs4Gr
+c8hkUggAgeVKubOsPeGI4LdB0ueNexdgP9rvelpyaSbbhdghxylxc0bYfBITDM55
+qH4+0Gfya7e98jEu+DCBvNm57oFEGO32Yk3VVZBcrZaQco1FQ7D9bxsM61COowmO
+WYXdP8B5x5rUnVbakULqr1d8uUKffDMlHpphp8lQMyOIuFZ8Q/jKjU85tP3MqMHD
+trOcz4Ekii8OVWeamufvByOrL+9w2uVD/xPbemCiQsoz8yeIZWO4YVj0qu0q7dN1
+CHZpzrFHnxCzuuB80ssPkHPz3es7/X0pD4ExHnRXUf+YYtinlLuBneljglc6ETKv
+/UlLFKwoqodCsvcfMNGQCFsJGpf+Tw==
+=qCY4
+-----END PGP SIGNATURE-----
+
+--JazMeH5Ktse/7gSQ--
 

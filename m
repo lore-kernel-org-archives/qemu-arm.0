@@ -1,250 +1,266 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp1085630njc;
-        Mon, 9 Jun 2025 03:42:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUzVU/0owMF/4VN6H7COP7iTg1psDlV8l2Iy4gxsDlo3f9AZC+5Q79Wqz//npgjuUdHEH/8h3NfvCzgOQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEum3beROY5Yo/UVMGK/MvJsaNO15afYboyb2LXcqT3qm7WnnwuEZhvuGICKrtkUAJNZSxu
-X-Received: by 2002:a05:6214:29e2:b0:6fa:8aa6:af93 with SMTP id 6a1803df08f44-6fb08fcd5famr206591376d6.45.1749465743594;
-        Mon, 09 Jun 2025 03:42:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749465743; cv=none;
+Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp1374067njc;
+        Mon, 9 Jun 2025 05:05:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXhwejECugc3vJxlGuBgBTBGx1nwmK3+/9741YgUJ2Ss1xBu5cbAq5m/R0vlkuprl+rOMLRHXUSuvjSHA==@linaro.org
+X-Google-Smtp-Source: AGHT+IG5QoQ4zGHbf9c7z7KHVSvwvysWXMDsV4H5zboQzPS4XA/Vc1e4npOgCxbKXpImx7YEKbhK
+X-Received: by 2002:a17:907:1c28:b0:ad8:976e:533e with SMTP id a640c23a62f3a-ade1a92cbd3mr1082949966b.34.1749470734993;
+        Mon, 09 Jun 2025 05:05:34 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1749470734; cv=pass;
         d=google.com; s=arc-20240605;
-        b=fKyR90MhaUAo4ajaKJlgeJmdTIzbmBibXzsSDpPXQsJhUyv52t+hU0yBW2Dr1yxYFO
-         skyGjkzU3nryMfSvEDs5y4WBH1hGUOTvsi6aoLD+AEuy0/u0CabemtkAf8e51vkP0pwj
-         1DtTklwlrcR3UwgZTZDePKR0LlC64+hnU7TTZYyLcwuZxAmFIxZtXyJXGxH7Fke5lomw
-         9erkvEQ3/WgPExVp579RgcZEFyr0cQcix/nqJ60TWhx1n1xKTvuqHZ8DSVbU9NFVit5U
-         SPSUb7MRSn/Lz5qrfE8tYtHY/r/HhD9wpaRL17N3A7mxYr017yZ90hc09DNNqT3n0uIN
-         Pdlw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=52gr5M5SFmOHw+i122yQNuFbbPQGmzrUxN40XN5i4Uw=;
-        fh=8VLacmHBIKMjIDTrdyPyHc1NjTrVmnSWlTHmW1fvfRA=;
-        b=NOXl9kpiFojKtEK14urRMPXaPkQLYXBrsz5CKrWHcx0XcuLO1Myux8PuwYlF8QMRMO
-         qQyBsbZjEMRD/xzKmLBURCey1DtijDxwxd7kv7wGx5rc4JBHNx5zggvW15+SdBprI0N2
-         V8wGZRpLhlUlE470j4RQKk4WVqMpEoWNKMcZXsDMDCerMq6U3dwxxjBE9FBEorEYaG0g
-         JFFjbMUJfMOp4/54kVPr2G8RTYVkR7bTl0R8uYhx72tofkgOseKTIEkHdN9RlC9Zq3++
-         iYX9OWjM8i0gfwAsBI3/PKRv6MQw8KynyBBjnOG10O72ctBbOUmrGu+7sfIXQZuamEjs
-         KbPA==;
+        b=IlJoMRS0A5MziitGPFCzkzloucN3DzG4L0ybTBKQUrEcsT4wnE5y7Gxh14PPFg7HQr
+         JJb2jQaRSVkvgL3rz7tpPdaE7gBs7K6PZ2NRGSpXYGDiDwzJ8+5uBwjBylvABCc2jDy9
+         OiG0m8QWdwWkzHj+tTpfMScHQv1kRnjVJm10exCW7cl6oyAP8KoucbGaf4qt/MR+ZKtO
+         aQND5osLl8ZtxEnosp4JSga+M5+KLABOxH2s+NqqFGLA2Nwv8azTX+Z+BIhiB4vwLxQx
+         pQzo2tQMt9bmJjxJdxz6n4FEwIJRbdViIJXlpHHZRQ9jG/sW4BjNfBFPwGVM8bDa9Q5d
+         4dhQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=ITfoPb1cST6LPzP/LitLMX3xSMkL/3yvHMA67TKGA3Q=;
+        fh=Z5gh/o5ZL3xRtUwccechZMEA5ciId+Hw9EA3V2rP7fg=;
+        b=YDFNzloB4Jtai+x/9rS/v5HIcFam8ASIZ+0oPjRNirczIrqOS7jkihTtRNY9Qdjk0c
+         1AvH0KjG5ijk4Icq798auVAmCRwfiT9zsyKhXswcvO/Nh0F4z35ikrBrRfRr9HYisaLU
+         41fl3aS9iAovoLWLZss+jw8reEW4UYdyELx3uxKzmjvQaN66s0Tgu2fnUl033gFqGlG0
+         QHwpXyCKjbdLFPgnwUDxHaUFIC6B047DqbUzIrO7zPHpV63DL0bwlLoXiF3JTIu0IWst
+         EMhBgO29G+zd8+cgXeaiTH2f5PgDCYqMp4Pb0fEf3t4grizlEwcHwQLeKYxGC/S8sRjW
+         zviA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AMxeBEHm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fb09b2fe25si75063886d6.437.2025.06.09.03.42.23
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=HL4QX6WU;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-48735-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-48735-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <kvm+bounces-48735-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
+        by mx.google.com with ESMTPS id a640c23a62f3a-ade2e456aeesi506589466b.779.2025.06.09.05.05.34
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Jun 2025 03:42:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Jun 2025 05:05:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-48735-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AMxeBEHm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uOZx0-0004hw-TJ; Mon, 09 Jun 2025 06:41:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uOZwz-0004gt-9K
- for qemu-devel@nongnu.org; Mon, 09 Jun 2025 06:41:57 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uOZwv-0003YW-6k
- for qemu-devel@nongnu.org; Mon, 09 Jun 2025 06:41:57 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-3a53ee6fcd5so899741f8f.1
- for <qemu-devel@nongnu.org>; Mon, 09 Jun 2025 03:41:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1749465711; x=1750070511; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=52gr5M5SFmOHw+i122yQNuFbbPQGmzrUxN40XN5i4Uw=;
- b=AMxeBEHmkItNg9REAtDl7e7fiP7jFRDBXWr6yLr2tIIx3sPJaSiR/SJqIzZcI98S7x
- ZGhpiQk5vcDhVef6wfuRq+aoaTBRAK6oprzhkVPOn9UkLdxfTP0h5EvD8Zh3PotUTXSD
- U+G+mI4pRcebAF15WhRbdZSSd+MVdTKfrAXAWaXZcCIfNaOArYU1vbAGrOtZGTd70Nzw
- 5i+qfUrpFTBRz3SxE9OIjVfjBIl9kMd0KOMLACk4Fel29RUaUP7Jx0G4QpnhwgixLQJO
- HAfOEBgObqS5jjCvAWnK6sGhJLoqsAqPbYzfVqHK02hP704YqXtAMC8KjSgPlHEcoJ+w
- vj5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749465711; x=1750070511;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=52gr5M5SFmOHw+i122yQNuFbbPQGmzrUxN40XN5i4Uw=;
- b=V2q5iBx8T1AEi19AGrZ2C2zd79t223iSn/idgpWVwm4VR+r7crkekBYEtbSedf+86T
- YVM642zV6vg3T23sxOZfw5j1WhP6hRK2ekZhq8+VnSe7/7nSe2OyYMShXll4VzetkTvu
- hH7tJ7DhZtsFGaumOPnGHNBEdaVzoaBMs762nXT5UXiVrJ7V2bmb9353BXj4CkX0OQxt
- vA+plM1mLwfSYqYoAPq7tte/mtFbjOXpg/RODl/GDR83xM3ZXWpwm5njI5PrB1E5anyv
- h6yeFZnU6ftsQc+2QGUaQR9YiOvlhv52EbTb/AZ3D3JSVxZWSVurCPwQSAm3JDw1+Kyg
- BZTg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV2Ut0eOGLQ6yY3M+sUgXrBJhUYabhDymJE67X/DoJyB56MtSxZmkGmYDtMkh7pQ+tUOgDvmI4/I0ol@nongnu.org
-X-Gm-Message-State: AOJu0Yy6928E1cIK3iDOVN5oIvqQvvFnytQLuodIAckjTTsnWOE88uzg
- 4Wrf6HewpPmEq7HAHbGayeotC5qZFbXqB2WMFMSHO04oIuQrYuXUtGWmyPm1GwTwLmw=
-X-Gm-Gg: ASbGncth0Ucsw19BbrUgtsjuAuM2MKWWKtk9hCv3dMNBFYptgGrtzC7SmyHTW6bQHx2
- tC33pT01mKMqrmvFd6uUEnxoPcgiIA37ZirwYtrcRD8oOAsuytqifUe2bWvaJhFH+45ooQdsG5A
- 6exPO0qKYs/+09B1wiJXhavqAy7HpETTwt2kMN8CHPUdU1+X/Qp4+bI0vqJWod5PdOl2rdVVxTD
- HgOMqkyES1ltsb4UPL8HtImAtDFCPl3coKknEuVr34nd3+naOXDBFE4B0ZezXihyULgm4961bdz
- E7dKWcdnh3Cb0b6vDLI1XsZ955eSRCorhMDbbl5iI4OhQy0g8IcIhLzing==
-X-Received: by 2002:a05:6000:18a2:b0:3a5:2208:41e3 with SMTP id
- ffacd0b85a97d-3a5319ba177mr8064150f8f.4.1749465711551; 
- Mon, 09 Jun 2025 03:41:51 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a5324361ffsm9098991f8f.47.2025.06.09.03.41.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Jun 2025 03:41:50 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 2/2] target/arm: Implement ID_AA64PFR2_EL1
-Date: Mon,  9 Jun 2025 11:41:46 +0100
-Message-ID: <20250609104146.1547437-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250609104146.1547437-1-peter.maydell@linaro.org>
-References: <20250609104146.1547437-1-peter.maydell@linaro.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=HL4QX6WU;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-48735-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-48735-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 55733188CA1C
+	for <alex.bennee@linaro.org>; Mon,  9 Jun 2025 12:05:49 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id C31E2254B09;
+	Mon,  9 Jun 2025 12:05:29 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="HL4QX6WU"
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5A0DF1E766F
+	for <kvm@vger.kernel.org>; Mon,  9 Jun 2025 12:05:27 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.15
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1749470729; cv=none; b=j6UYadh+jHWFU5uvF4ZB0I/FR714AQmuFt3cNXhbo/1H2rGd4bQHQrbu0+9O+gjxkz5JikVC2F/7tsnQj0Wu+6Do+mU1wZXKSgbsumNrEVy8kFQQXly1S5S8+iZ438Rah3fhs7G7q+z27XE7/pSZ5C9YCvISD1L8oNLQX5BfXIM=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1749470729; c=relaxed/simple;
+	bh=Ot80FdygVaU40feRZ301n0PWrVBN6sbOj4IHwArYDLM=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=mwJsNBH7vQmiYCSu+xohncdw9rG9mHAvZmW3mYQQxiNN9+D5EA0UgmdslNSg8FnmocgD9wHqrCOOkbTuZGwm6SVMFGkC/Vh0O19VuXHiFc3bvyEB51mccNx6SaPtxzQlotxYy0jTodU5gdsqeH27KHASxQEln/+JK20WYOS7HTw=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=HL4QX6WU; arc=none smtp.client-ip=198.175.65.15
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1749470727; x=1781006727;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Ot80FdygVaU40feRZ301n0PWrVBN6sbOj4IHwArYDLM=;
+  b=HL4QX6WUNTVhb4nVlWU175ITEJjlKJQ2k2gv3V6LDxwEMzELjzQw9CZt
+   YW0wZKuEHehC08QH93m8r32AfAVGOd37IZWUcQ/u31Fk393mFq2tGbhK3
+   Zee1SP3GLtdeHbtEgtXMb5hNN3pZ2Jj6D8gdwt4fvEagrZYujILlnFI2h
+   zHWps+Q2BBUNNC1bZ/Tsa/qmHFMxq2n5aC0/w/e/d0HkHrSVaCJGPVV1I
+   tUmHr7FXt/Bj8uQbDY7SShe0ssEbPdHTI753AnCFIpHR1VD2/RqWEk/Yq
+   9zWbP8Z2zyCV/YagxxI0CDKrKtiNlYDuyQzR93sfsPRf7tdwBzNXdagUo
+   Q==;
+X-CSE-ConnectionGUID: ZUn9naZcQqix/kBqMXOu/w==
+X-CSE-MsgGUID: kP2K3lgNSCCTmR80ga4TFA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11459"; a="55207665"
+X-IronPort-AV: E=Sophos;i="6.16,222,1744095600"; 
+   d="scan'208";a="55207665"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jun 2025 05:05:27 -0700
+X-CSE-ConnectionGUID: neqNMhuqTByEfy8638EDwQ==
+X-CSE-MsgGUID: Gb/B1zMdQ6GGp9Vb048ccQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,222,1744095600"; 
+   d="scan'208";a="169667573"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.39])
+  by fmviesa002.fm.intel.com with ESMTP; 09 Jun 2025 05:05:16 -0700
+Date: Mon, 9 Jun 2025 20:26:31 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Dongli Zhang <dongli.zhang@oracle.com>
+Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+	pbonzini@redhat.com, mtosatti@redhat.com, sandipan.das@amd.com,
+	babu.moger@amd.com, likexu@tencent.com, like.xu.linux@gmail.com,
+	groug@kaod.org, khorenko@virtuozzo.com,
+	alexander.ivanov@virtuozzo.com, den@virtuozzo.com,
+	davydov-max@yandex-team.ru, xiaoyao.li@intel.com,
+	dapeng1.mi@linux.intel.com, joe.jin@oracle.com,
+	peter.maydell@linaro.org, gaosong@loongson.cn,
+	chenhuacai@kernel.org, philmd@linaro.org, aurelien@aurel32.net,
+	jiaxun.yang@flygoat.com, arikalo@gmail.com, npiggin@gmail.com,
+	danielhb413@gmail.com, palmer@dabbelt.com, alistair.francis@wdc.com,
+	liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com,
+	pasic@linux.ibm.com, borntraeger@linux.ibm.com,
+	richard.henderson@linaro.org, david@redhat.com, iii@linux.ibm.com,
+	thuth@redhat.com, flavra@baylibre.com, ewanhai-oc@zhaoxin.com,
+	ewanhai@zhaoxin.com, cobechen@zhaoxin.com, louisqi@zhaoxin.com,
+	liamni@zhaoxin.com, frankzhu@zhaoxin.com, silviazhao@zhaoxin.com,
+	kraxel@redhat.com, berrange@redhat.com
+Subject: Re: [PATCH v5 00/10] target/i386/kvm/pmu: PMU Enhancement, Bugfix
+ and Cleanup
+Message-ID: <aEbS93r7YRcIadj0@intel.com>
+References: <20250425213037.8137-1-dongli.zhang@oracle.com>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wJtFdyxWOrCa
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250425213037.8137-1-dongli.zhang@oracle.com>
+X-TUID: a0fyF2A6XadC
 
-Currently we define the ID_AA64PFR2_EL1 encoding as reserved (with
-the required RAZ behaviour for unassigned system registers in the ID
-register encoding space).  Newer architecture versions start to
-define fields in this ID register, so define the appropriate
-constants and implement it as an ID register backed by a field in
-cpu->isar.  Since none of our CPUs set that isar field to non-zero,
-there is no behavioural change here (other than the name exposed to
-the user via the gdbstub), but this paves the way for implementing
-the new features that use fields in this register.
+Hi Dongli,
 
-The fields here are the ones documented in rev L.a of the Arm ARM.
+Since the patch 3 was merged. I think you can rebase this series.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/cpu-features.h | 5 +++++
- target/arm/cpu.h          | 1 +
- target/arm/helper.c       | 6 ++++--
- target/arm/hvf/hvf.c      | 2 ++
- target/arm/kvm.c          | 2 ++
- 5 files changed, 14 insertions(+), 2 deletions(-)
+Thanks,
+Zhao
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index db80ea1cc67..a8a94ee9d96 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -275,6 +275,11 @@ FIELD(ID_AA64PFR1, MTEX, 52, 4)
- FIELD(ID_AA64PFR1, DF2, 56, 4)
- FIELD(ID_AA64PFR1, PFAR, 60, 4)
- 
-+FIELD(ID_AA64PFR2, MTEPERM, 0, 4)
-+FIELD(ID_AA64PFR2, MTESTOREONLY, 4, 4)
-+FIELD(ID_AA64PFR2, MTEFAR, 8, 4)
-+FIELD(ID_AA64PFR2, FPMR, 32, 4)
-+
- FIELD(ID_AA64MMFR0, PARANGE, 0, 4)
- FIELD(ID_AA64MMFR0, ASIDBITS, 4, 4)
- FIELD(ID_AA64MMFR0, BIGEND, 8, 4)
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 9364d221744..93e055e34fd 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1031,6 +1031,7 @@ struct ArchCPU {
-         uint64_t id_aa64isar2;
-         uint64_t id_aa64pfr0;
-         uint64_t id_aa64pfr1;
-+        uint64_t id_aa64pfr2;
-         uint64_t id_aa64mmfr0;
-         uint64_t id_aa64mmfr1;
-         uint64_t id_aa64mmfr2;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 76312102879..31b667b7e05 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7927,11 +7927,11 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .access = PL1_R, .type = ARM_CP_CONST,
-               .accessfn = access_aa64_tid3,
-               .resetvalue = cpu->isar.id_aa64pfr1},
--            { .name = "ID_AA64PFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+            { .name = "ID_AA64PFR2_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 2,
-               .access = PL1_R, .type = ARM_CP_CONST,
-               .accessfn = access_aa64_tid3,
--              .resetvalue = 0 },
-+              .resetvalue = cpu->isar.id_aa64pfr2 },
-             { .name = "ID_AA64PFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 3,
-               .access = PL1_R, .type = ARM_CP_CONST,
-@@ -8179,6 +8179,8 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-                                R_ID_AA64PFR1_SSBS_MASK |
-                                R_ID_AA64PFR1_MTE_MASK |
-                                R_ID_AA64PFR1_SME_MASK },
-+            { .name = "ID_AA64PFR2_EL1",
-+              .exported_bits = 0 },
-             { .name = "ID_AA64PFR*_EL1_RESERVED",
-               .is_glob = true },
-             { .name = "ID_AA64ZFR0_EL1",
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 42258cc2d88..b4f2b743901 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -493,6 +493,7 @@ static struct hvf_sreg_match hvf_sreg_match[] = {
-     { HV_SYS_REG_ID_AA64PFR0_EL1, HVF_SYSREG(0, 4, 3, 0, 0) },
- #endif
-     { HV_SYS_REG_ID_AA64PFR1_EL1, HVF_SYSREG(0, 4, 3, 0, 1) },
-+    /* Add ID_AA64PFR2_EL1 here when HVF supports it */
-     { HV_SYS_REG_ID_AA64DFR0_EL1, HVF_SYSREG(0, 5, 3, 0, 0) },
-     { HV_SYS_REG_ID_AA64DFR1_EL1, HVF_SYSREG(0, 5, 3, 0, 1) },
-     { HV_SYS_REG_ID_AA64ISAR0_EL1, HVF_SYSREG(0, 6, 3, 0, 0) },
-@@ -864,6 +865,7 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     } regs[] = {
-         { HV_SYS_REG_ID_AA64PFR0_EL1, &host_isar.id_aa64pfr0 },
-         { HV_SYS_REG_ID_AA64PFR1_EL1, &host_isar.id_aa64pfr1 },
-+        /* Add ID_AA64PFR2_EL1 here when HVF supports it */
-         { HV_SYS_REG_ID_AA64DFR0_EL1, &host_isar.id_aa64dfr0 },
-         { HV_SYS_REG_ID_AA64DFR1_EL1, &host_isar.id_aa64dfr1 },
-         { HV_SYS_REG_ID_AA64ISAR0_EL1, &host_isar.id_aa64isar0 },
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 74fda8b8090..915fc04e54e 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -292,6 +292,8 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     } else {
-         err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64pfr1,
-                               ARM64_SYS_REG(3, 0, 0, 4, 1));
-+        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64pfr2,
-+                              ARM64_SYS_REG(3, 0, 0, 4, 2));
-         err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64smfr0,
-                               ARM64_SYS_REG(3, 0, 0, 4, 5));
-         err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64dfr0,
--- 
-2.43.0
-
+On Fri, Apr 25, 2025 at 02:29:57PM -0700, Dongli Zhang wrote:
+> Date: Fri, 25 Apr 2025 14:29:57 -0700
+> From: Dongli Zhang <dongli.zhang@oracle.com>
+> Subject: [PATCH v5 00/10] target/i386/kvm/pmu: PMU Enhancement, Bugfix and
+>  Cleanup
+> X-Mailer: git-send-email 2.43.5
+> 
+> This patchset addresses four bugs related to AMD PMU virtualization.
+> 
+> 1. The PerfMonV2 is still available if PERCORE if disabled via
+> "-cpu host,-perfctr-core".
+> 
+> 2. The VM 'cpuid' command still returns PERFCORE although "-pmu" is
+> configured.
+> 
+> 3. The third issue is that using "-cpu host,-pmu" does not disable AMD PMU
+> virtualization. When using "-cpu EPYC" or "-cpu host,-pmu", AMD PMU
+> virtualization remains enabled. On the VM's Linux side, you might still
+> see:
+> 
+> [    0.510611] Performance Events: Fam17h+ core perfctr, AMD PMU driver.
+> 
+> instead of:
+> 
+> [    0.596381] Performance Events: PMU not available due to virtualization, using software events only.
+> [    0.600972] NMI watchdog: Perf NMI watchdog permanently disabled
+> 
+> To address this, KVM_CAP_PMU_CAPABILITY is used to set KVM_PMU_CAP_DISABLE
+> when "-pmu" is configured.
+> 
+> 4. The fourth issue is that unreclaimed performance events (after a QEMU
+> system_reset) in KVM may cause random, unwanted, or unknown NMIs to be
+> injected into the VM.
+> 
+> The AMD PMU registers are not reset during QEMU system_reset.
+> 
+> (1) If the VM is reset (e.g., via QEMU system_reset or VM kdump/kexec) while
+> running "perf top", the PMU registers are not disabled properly.
+> 
+> (2) Despite x86_cpu_reset() resetting many registers to zero, kvm_put_msrs()
+> does not handle AMD PMU registers, causing some PMU events to remain
+> enabled in KVM.
+> 
+> (3) The KVM kvm_pmc_speculative_in_use() function consistently returns true,
+> preventing the reclamation of these events. Consequently, the
+> kvm_pmc->perf_event remains active.
+> 
+> (4) After a reboot, the VM kernel may report the following error:
+> 
+> [    0.092011] Performance Events: Fam17h+ core perfctr, Broken BIOS detected, complain to your hardware vendor.
+> [    0.092023] [Firmware Bug]: the BIOS has corrupted hw-PMU resources (MSR c0010200 is 530076)
+> 
+> (5) In the worst case, the active kvm_pmc->perf_event may inject unknown
+> NMIs randomly into the VM kernel:
+> 
+> [...] Uhhuh. NMI received for unknown reason 30 on CPU 0.
+> 
+> To resolve these issues, we propose resetting AMD PMU registers during the
+> VM reset process
+> 
+> 
+> Changed since v1:
+>   - Use feature_dependencies for CPUID_EXT3_PERFCORE and
+>     CPUID_8000_0022_EAX_PERFMON_V2.
+>   - Remove CPUID_EXT3_PERFCORE when !cpu->enable_pmu.
+>   - Pick kvm_arch_pre_create_vcpu() patch from Xiaoyao Li.
+>   - Use "-pmu" but not a global "pmu-cap-disabled" for KVM_PMU_CAP_DISABLE.
+>   - Also use sysfs kvm.enable_pmu=N to determine if PMU is supported.
+>   - Some changes to PMU register limit calculation.
+> Changed since v2:
+>   - Change has_pmu_cap to pmu_cap.
+>   - Use cpuid_find_entry() instead of cpu_x86_cpuid().
+>   - Rework the code flow of PATCH 07 related to kvm.enable_pmu=N following
+>     Zhao's suggestion.
+>   - Use object_property_get_int() to get CPU family.
+>   - Add support to Zhaoxin.
+> Changed since v3:
+>   - Re-base on top of Zhao's queued patch.
+>   - Use host_cpu_vendor_fms() from Zhao's patch.
+>   - Pick new version of kvm_arch_pre_create_vcpu() patch from Xiaoyao.
+>   - Re-split the cases into enable_pmu and !enable_pmu, following Zhao's
+>     suggestion.
+>   - Check AMD directly makes the "compat" rule clear.
+>   - Some changes on commit message and comment.
+>   - Bring back global static variable 'kvm_pmu_disabled' read from
+>     /sys/module/kvm/parameters/enable_pmu.
+> Changed since v4:
+>   - Re-base on top of most recent mainline QEMU.
+>   - Add more Reviewed-by.
+>   - All patches are reviewed.
+> 
+> 
+> Xiaoyao Li (1):
+>   kvm: Introduce kvm_arch_pre_create_vcpu()
+> 
+> Dongli Zhang (9):
+>   target/i386: disable PerfMonV2 when PERFCORE unavailable
+>   target/i386: disable PERFCORE when "-pmu" is configured
+>   target/i386/kvm: set KVM_PMU_CAP_DISABLE if "-pmu" is configured
+>   target/i386/kvm: extract unrelated code out of kvm_x86_build_cpuid()
+>   target/i386/kvm: rename architectural PMU variables
+>   target/i386/kvm: query kvm.enable_pmu parameter
+>   target/i386/kvm: reset AMD PMU registers during VM reset
+>   target/i386/kvm: support perfmon-v2 for reset
+>   target/i386/kvm: don't stop Intel PMU counters
+> 
+>  accel/kvm/kvm-all.c        |   5 +
+>  include/system/kvm.h       |   1 +
+>  target/arm/kvm.c           |   5 +
+>  target/i386/cpu.c          |   8 +
+>  target/i386/cpu.h          |  16 ++
+>  target/i386/kvm/kvm.c      | 360 ++++++++++++++++++++++++++++++++++------
+>  target/loongarch/kvm/kvm.c |   4 +
+>  target/mips/kvm.c          |   5 +
+>  target/ppc/kvm.c           |   5 +
+>  target/riscv/kvm/kvm-cpu.c |   5 +
+>  target/s390x/kvm/kvm.c     |   5 +
+>  11 files changed, 372 insertions(+), 47 deletions(-)
+> 
+> base-commit: 019fbfa4bcd2d3a835c241295e22ab2b5b56129b
+> 
+> Thank you very much!
+> 
+> Dongli Zhang
+> 

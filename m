@@ -1,124 +1,143 @@
-Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp1791716njc;
-        Mon, 9 Jun 2025 18:29:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVCSdn7cCAthqLKwak42/cdwO/gQ7jND+4u76P9hMYDJOAQvpATyHBrSMX8CAdpJoVshrCLiicHuFz8gg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGkKfKfR7sSbnTGJ2vCWS3BIP2Hov9pc+ZHIgrhXhb3o12lYLguHcbxuHNsoVwuo034OmMJ
-X-Received: by 2002:a05:620a:2a03:b0:7cd:3f01:7c83 with SMTP id af79cd13be357-7d2298d6eaemr2070348985a.39.1749518951377;
-        Mon, 09 Jun 2025 18:29:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749518951; cv=none;
+Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp1965001njc;
+        Tue, 10 Jun 2025 02:07:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUgd1IzNjLZP7qMT3N+k6PTStuWZteyQTdcK6ZfysaeKN7PCMFwJXs60n7YMasVyAInLCIYRQ2Qj5GJ9Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IFlGAg3ReJa+tFcp2QK10Dxzy3S3Nqc0bek2SKJrb58OAe9297AXQhk6bo/GUCOXw96a/zF
+X-Received: by 2002:a05:6214:29cb:b0:6ea:d6e1:f3f8 with SMTP id 6a1803df08f44-6fb08fbce91mr247644116d6.45.1749546423043;
+        Tue, 10 Jun 2025 02:07:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749546423; cv=none;
         d=google.com; s=arc-20240605;
-        b=GuHQqaa9urvfnKZByumkL0N2GaQR8Js9dZDBk5VOUNvfG+YGQ+9lvddI0GqzLeIr76
-         E/0HK1BMQ4J/drUSM13ch6pugoXch/ZBO1cNrDlA15ccic0znrDvi+EfHC3nYyB2M21K
-         DAQbllUdlpRbGiJypgspkIBRkG4yBn3AF8szNtjJZfuoZbcCrF0H6c16vJTrfNdvTwDK
-         FJIGPpN2M/CuUrNIRSD+aUP5hRDmASL1cW+ZeQS3g/jnc/vy8OdI3B314nVDO+RaHm80
-         GfJvUNJPzP1bhKJRwxdiSFD2tJii0zpWR4VTJvRfpztT2ysxkzzt4b/tCevB41t4G/OW
-         a2BA==
+        b=dz+v1096NMSu4jaj8tTLJlCNi/mmyaXrtwEDvhBzd0Djts3GINGF7LiRZiloaA/HWH
+         Ir1oPNchnxTKW3Ub070PNpFzQxKQFl9S2UMKQIJ6VUldLmVacS9H0SdzW+aXDAaln9B2
+         8boF1CBxZcqUJi/qNu9U+W5OfmKYrA2R5hZ0mAeSlfzwatmLx4nDBOreFLHIDvOEYaoo
+         xRVnn9IUSQ5bRw7Nb7R4axr2s4bflnFAUpbBJ3rNCwYuZlLotbpsstrRDpf+Z0vj1PBk
+         PlTD6esx53jK6DjohaGcHqn73bJHB5uvPrKjqEXQ6229Fr3BJONaFrTZQ4fGgg1rw5S0
+         2YDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=T9SthefEJFHd7s87DbKziowNRxFrFx5qSbcsBCc4yBk=;
-        fh=vB2/TSbSaf4Y3trPYbJb23l9wF4q4vAPedDZnVjctaQ=;
-        b=ab4KcfGu+WRp1mfnUU/ejhZMgXNFefBxkCcUNmV/T/HtQYfTN+WUuDnvz03FDaEGu2
-         3IlBvtYxVxh9/5Qr+fqrSDpTfqrMpOd3rKhlBx4UERzMQ0MivUDS3sRPqpIcOuM2pvAf
-         XGDZVlR4LEkBr+94qKExq18q8sUzRXtkBXfuaJTw4D5sAQN8l1bOOejEccPk3V4CUd/S
-         Z/0OrGS2gP+LTJox8tyVv/UBj2QY9V5TaBHBrdkedzWZAaxLT0ceJCKcQJeHGLUjUWe+
-         vfsFj9Wp1gJHgyPM/7+CTOYf84ltea3rVzlyuncadXyGl+2/4+gTE8k3XhIm4L19IFc5
-         DHcQ==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=JCNGUdt79UT3hUTrwvrn/b51y7GF2PbbICDInXcjiVY=;
+        fh=Wa4mMvB3gDlYFpI3OmxgJepRuA6tDiyrs8piC9UOncc=;
+        b=KUExi3LXY1UVj1aJlsXz2Py10HsIPMULArqk11FEuBbSVxbFrhan5GtWxCmDjTbE1L
+         WDwSKFhSdBWGKX+ZmD/TENf23jnuTwI05S2OejF23t+FZK4JvHz3Qe/5aOKyTMcdoVvF
+         LGA15XFzzRnRLU39G7eMOnv/4JzvM9lvtyntyb8SHJTZwfEjPivI6kq5qL5BVxpD4UJa
+         M9U2ZM2hcop8tsJJMV1cMe28n/3LpgSDowPK5CUVyk2vTBoh2NSPFPufNTm7x1rolQYt
+         z4FuN5Q8cbqdm+BOTQuTlYkBI0VkX1Wu5x4woxVY+9Zz8emnCAbpK7fIlVta9cJbOjFI
+         jVEg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b="GQaf67U/";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="aL2ErXQ/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d24b3cb159si903609685a.73.2025.06.09.18.29.10
+        by mx.google.com with ESMTPS id d75a77b69052e-4a6198ad36dsi97625321cf.461.2025.06.10.02.07.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Jun 2025 18:29:11 -0700 (PDT)
+        Tue, 10 Jun 2025 02:07:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b="GQaf67U/";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="aL2ErXQ/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uOnnS-0006IG-NE; Mon, 09 Jun 2025 21:29:02 -0400
+	id 1uOuwO-0002MW-SS; Tue, 10 Jun 2025 05:06:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1uOnnP-0006Hb-6F; Mon, 09 Jun 2025 21:28:59 -0400
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1uOnnN-0000vF-0N; Mon, 09 Jun 2025 21:28:58 -0400
-Received: by mail-pg1-x536.google.com with SMTP id
- 41be03b00d2f7-b1fde81de05so2517194a12.1; 
- Mon, 09 Jun 2025 18:28:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1749518934; x=1750123734; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:sender:from:to:cc:subject:date:message-id:reply-to;
- bh=T9SthefEJFHd7s87DbKziowNRxFrFx5qSbcsBCc4yBk=;
- b=GQaf67U/KXB1CYs9Sy5XQT2NbrXRVQThmNDuAv6ZwBhKyKVddXQUu4a9L3u5lmpihI
- lRimuANESdye3E3hL00NjPNq/G7k16SMKHN5GnAVPtXP0zlzVYcaZF61LmvQq/Tpoumx
- uW7B5Rm4+SAOqmvgTfhX+BGpBjdbAPRin3hnHoX1XCQx/3QegEISp+m5pTRvHnVt+m+n
- ZnD6OYOWnxXAaJlBucUT4wavj7C9E+Tpi9bwOuTOZHA6z+1RPZruIBjpeGhc0Qjno1Ee
- hlYtloIVFbaORHObmke/Kxtb3p+KL6Vl2ixyBZvTPYsdxaVF4Llw6z6WBHUsQGqQSxC0
- 1e/g==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uOuwM-0002L2-1d
+ for qemu-arm@nongnu.org; Tue, 10 Jun 2025 05:06:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uOuwG-00068c-0p
+ for qemu-arm@nongnu.org; Tue, 10 Jun 2025 05:06:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1749546392;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JCNGUdt79UT3hUTrwvrn/b51y7GF2PbbICDInXcjiVY=;
+ b=aL2ErXQ/KN+uPvnC0p341H/2SSW12wtJ20q13FzdGz4lLnhb1y4ccxjYV1becr7ffF/fgo
+ EOzE80/nYEwaacQg3v8jHVyUGntKWMWNo5teqcGpu7pERgrQrZJ4pirw9b9aqI9ZOyvFvX
+ 1aZtOfPotUfMaEN0fDE6GYcZgMhHLrU=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-76-RuuKvr-KOb2USFbl8DiVQQ-1; Tue, 10 Jun 2025 05:06:31 -0400
+X-MC-Unique: RuuKvr-KOb2USFbl8DiVQQ-1
+X-Mimecast-MFC-AGG-ID: RuuKvr-KOb2USFbl8DiVQQ_1749546390
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-3a4fac7fa27so2302272f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 10 Jun 2025 02:06:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749518934; x=1750123734;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:sender:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=T9SthefEJFHd7s87DbKziowNRxFrFx5qSbcsBCc4yBk=;
- b=Rxem4mR0fjx72xvGW8P9iXUG5ox+GX+RvMlT3yOjXcsvaoK7K7FRUD5oim/lhAnRvJ
- Vmmm44ZoDPHQVL2eRh2pFI+F6sLb2quX3Dzd2SyFlHEr38q5TIoB+Ktggvn2FRljmiWf
- qRzzquG6qqUPBqKp71M5nvOUUbt3qs/LxfMx9hdZb2iHq5NWJBlb3hGRs7xEsFpZ8MJB
- jvsPHCMxpBTZrgNEBzXM9+HyUoWz+qNK83iU5l4RGIBpQ5WfvqcfOpk0jD+Xx1Kgp9dU
- 1FzngpEubss8XpILzFmcBGa/51lgrebmrMII1RQA4+R1CWZrl07v+da1htXuAmi+bO+U
- Q3NA==
+ d=1e100.net; s=20230601; t=1749546390; x=1750151190;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=JCNGUdt79UT3hUTrwvrn/b51y7GF2PbbICDInXcjiVY=;
+ b=lYkb/YS2seZGjZAjsbvljzhtYAaLsgOuSwLw7pAWJ2s1Ysihm1b6d91kucK6EDFk8x
+ dIqz2QK4mkxYZBPImOSypsZ2G6gv1wLb5w1t7xZp2TcE17KmsXBHJfcLVWvIegfyEwda
+ FufXXsLL6c1rO+Sbo3DBeVLkkXyW/U/doNYXl5AxQOyhLhJyp9OS+c5X+ikgl8xpO+Z9
+ ezXR8I2sJo/vF3DQl4lVBWm0UIq/YiDbZyeVYuFPyeICvMxFP9pbRraJHe/wEcTaUieU
+ Ya1oakSENj6e2jypAD8s3TfjFoBj0KMmpGpz1ZjwPluBRhkwEKrtpcxZOMWNAU3flZFw
+ QySg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXSQDzmTV7KWklfbiY9Mtl3YR4kLB0b4BnJTHs/L6dat+jdhgfx00Ecz/gs0Dx6QWjcXSTRZIXF8w==@nongnu.org,
- AJvYcCXd5KGUlYl/CAdSWJtDeMYT3V+hT57La/lMsEssaLbDCS67cykTvKWd42TK3oQHD+TZX2BL4JosFzSVhw==@nongnu.org
-X-Gm-Message-State: AOJu0Ywu2tGF6Qa1hTXA8uFBK8TFllKPPMBiUZrwMn6UemLeb/fI72dU
- iGbeBkjNxlOtbUAIcwhWhJKuUiiIWBY4Un8+rVBX2gP3xGM0hpHKIgTI
-X-Gm-Gg: ASbGncsvyZq+pWTuE50dqpsHjOQ7wqKWOWP2lfCiW+ywFtYdSdaaIrJaa0RheCepwuK
- XJkoma23aUQg/nkB4D/uVV/6PAyn5bUHd+Lp3alkikHKrGlgPnc3UqGJ9jIpoz2+BCDdD0bxvCY
- HThkAY/AkEIaBVgwRGLRVDr10WE1QEbi8TrLaGEUcUaPoV9bA7TmFvORW0e1pgTvT++VpqZB18G
- Li6a87ubAlqLn14R0/PfL9rwBwk+P7gxpR2foiFkUdNvWSSmz654O/O/7psC/Xu+1PPQvb8hjYl
- zNgGvk2ImvyTEshlegmDDOue8ky9Nw0ykEdtlfZgKVtHXvNFS5BzLCdNxIKAveksGySx77227t4
- =
-X-Received: by 2002:a17:90b:5383:b0:313:220c:b63b with SMTP id
- 98e67ed59e1d1-3134769f727mr21043945a91.35.1749518934522; 
- Mon, 09 Jun 2025 18:28:54 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
+ AJvYcCXhTL2uSIV/75U4sy/PVz4XQMhi5hut1a05Odge5KVl2B6CSombPxad1aT9BN3F1USYfkR23j0CXw==@nongnu.org
+X-Gm-Message-State: AOJu0Yz4GhS6JyIK2/Fk7ByyIkpTDpmwOWUiFFr55VhNGXlRhnyxrumo
+ wNwOGGxa/1OfVlHpkngTRoHc/krhFGVi2gWs5qHj6Df48YvE1SL88pR7PWmcNKOiLiftJrODkEe
+ ZN2M8OgnTc58rBNufJHuOm2jPqe91FxTKMoaKzO9vjhxDhZ7HPBtSODl+T74bQg==
+X-Gm-Gg: ASbGncvgMvDR1TTH3uP7FSP7qRzYOu4gBnLFgu70ENILwsrOYlkYZ/mSOlGou0ybGBO
+ C6GfFGPPIHZb6Ae8R2d1PQ/TgNYDjeoUXrKUCWmQmybipM/VlIjGrc7KAoAJWpHy3bXEF7SmMeB
+ kXNocKloqUKJ3vPy2Lpy0xc8oHA/PWUJ5imVfxtyHe66vyzMWz/fXB6GNksbipMu6B1P9vZ3QgG
+ fCJ1QWGTcJwyfK9km2nvuwqI0PD7qbhD+p7RbDsQtIoqiCQSo6mcy6gYmF5kvwDcDHy0PX+3C87
+ GsjLNK9yJkkiMkETAqSp/NJD5U6HSmw5fCsnA6h1d9IokNy+KB6UuBLuOa61HA+xYAW5/Q==
+X-Received: by 2002:a05:6000:3106:b0:3a4:e6d7:6160 with SMTP id
+ ffacd0b85a97d-3a531684405mr11632876f8f.6.1749546389656; 
+ Tue, 10 Jun 2025 02:06:29 -0700 (PDT)
+X-Received: by 2002:a05:6000:3106:b0:3a4:e6d7:6160 with SMTP id
+ ffacd0b85a97d-3a531684405mr11632844f8f.6.1749546389205; 
+ Tue, 10 Jun 2025 02:06:29 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23603078007sm60998795ad.44.2025.06.09.18.28.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Jun 2025 18:28:53 -0700 (PDT)
-From: Guenter Roeck <linux@roeck-us.net>
-To: Tyrone Ting <kfting@nuvoton.com>
-Cc: Hao Wu <wuhaotsh@google.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Guenter Roeck <linux@roeck-us.net>
-Subject: [PATCH] hw/arm/npcm7xx_boards: Add support for specifying SPI flash
- model
-Date: Mon,  9 Jun 2025 18:28:51 -0700
-Message-ID: <20250610012851.1627715-1-linux@roeck-us.net>
-X-Mailer: git-send-email 2.45.2
+ ffacd0b85a97d-3a532464f20sm11746155f8f.98.2025.06.10.02.06.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 10 Jun 2025 02:06:28 -0700 (PDT)
+Message-ID: <865a5ec1-f445-45a0-8464-52374355e0a1@redhat.com>
+Date: Tue, 10 Jun 2025 11:06:27 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
- envelope-from=groeck7@gmail.com; helo=mail-pg1-x536.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.097, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] target/arm: Implement ID_AA64PFR2_EL1
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Cornelia Huck <cohuck@redhat.com>
+References: <20250609104146.1547437-1-peter.maydell@linaro.org>
+ <20250609104146.1547437-3-peter.maydell@linaro.org>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20250609104146.1547437-3-peter.maydell@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: L2Jt26BD-AsQz-Zy10ofIhdzdz2iiflML2_B6uCJ8RQ_1749546390
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,189 +150,132 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xgzll48TFaPZ
+X-TUID: nuccGj9X6snq
 
-In some situations it is desirable to be able to specify the flash type
-connected to a board. For example, the target operating system may not
-support the default flash type, its support may be broken, or the qemu
-emulation is insufficient and the default flash is not detected.
-On top of that, the ability to test various flash types improves
-testability since a single emulated board can be used to test a variety
-of flash chips with the controller supported by that board.
+Hi Peter,
 
-The aspeed emulation supports an option to specify the flash type. Use
-the same mechanism to configure the flash type for Nuvoton 7xx boards.
+On 6/9/25 12:41 PM, Peter Maydell wrote:
+> Currently we define the ID_AA64PFR2_EL1 encoding as reserved (with
+> the required RAZ behaviour for unassigned system registers in the ID
+> register encoding space).  Newer architecture versions start to
+> define fields in this ID register, so define the appropriate
+> constants and implement it as an ID register backed by a field in
+> cpu->isar.  Since none of our CPUs set that isar field to non-zero,
+> there is no behavioural change here (other than the name exposed to
+> the user via the gdbstub), but this paves the way for implementing
+> the new features that use fields in this register.
+>
+> The fields here are the ones documented in rev L.a of the Arm ARM.
 
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
----
-I don't know if there is interest in this, but I figured I should at least
-submit it. Background is that Macronix flash support is broken when running
-upstream Linux v6.16-rc1, thanks to upstream Linux commit 947c86e481a027e
-("mtd: spi-nor: macronix: Drop the redundant flash info fields"). I needed
-a workaround, and using a different flash model was the easiest solution. 
+this conflicts with
 
- hw/arm/npcm7xx_boards.c  | 49 +++++++++++++++++++++++++++++++++-------
- include/hw/arm/npcm7xx.h |  1 +
- 2 files changed, 42 insertions(+), 8 deletions(-)
+[PATCH v7 00/14] arm: rework id register storage <https://lore.kernel.org/all/87ikl99oxg.fsf@redhat.com/#r>
 
-diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-index 465a0e5ace..88b9aeddd4 100644
---- a/hw/arm/npcm7xx_boards.c
-+++ b/hw/arm/npcm7xx_boards.c
-@@ -363,6 +363,7 @@ static void kudo_bmc_i2c_init(NPCM7xxState *soc)
- 
- static void npcm750_evb_init(MachineState *machine)
- {
-+    NPCM7xxMachine *ms = NPCM7XX_MACHINE(machine);
-     NPCM7xxState *soc;
- 
-     soc = npcm7xx_create_soc(machine, NPCM750_EVB_POWER_ON_STRAPS);
-@@ -370,14 +371,16 @@ static void npcm750_evb_init(MachineState *machine)
-     qdev_realize(DEVICE(soc), NULL, &error_fatal);
- 
-     npcm7xx_load_bootrom(machine, soc);
--    npcm7xx_connect_flash(&soc->fiu[0], 0, "w25q256", drive_get(IF_MTD, 0, 0));
-+    npcm7xx_connect_flash(&soc->fiu[0], 0, ms->spi_model ? : "w25q256",
-+                          drive_get(IF_MTD, 0, 0));
-     npcm750_evb_i2c_init(soc);
--    npcm750_evb_fan_init(NPCM7XX_MACHINE(machine), soc);
-+    npcm750_evb_fan_init(ms, soc);
-     npcm7xx_load_kernel(machine, soc);
- }
- 
- static void quanta_gsj_init(MachineState *machine)
- {
-+    NPCM7xxMachine *ms = NPCM7XX_MACHINE(machine);
-     NPCM7xxState *soc;
- 
-     soc = npcm7xx_create_soc(machine, QUANTA_GSJ_POWER_ON_STRAPS);
-@@ -385,15 +388,16 @@ static void quanta_gsj_init(MachineState *machine)
-     qdev_realize(DEVICE(soc), NULL, &error_fatal);
- 
-     npcm7xx_load_bootrom(machine, soc);
--    npcm7xx_connect_flash(&soc->fiu[0], 0, "mx25l25635e",
-+    npcm7xx_connect_flash(&soc->fiu[0], 0, ms->spi_model ? : "mx25l25635e",
-                           drive_get(IF_MTD, 0, 0));
-     quanta_gsj_i2c_init(soc);
--    quanta_gsj_fan_init(NPCM7XX_MACHINE(machine), soc);
-+    quanta_gsj_fan_init(ms, soc);
-     npcm7xx_load_kernel(machine, soc);
- }
- 
- static void quanta_gbs_init(MachineState *machine)
- {
-+    NPCM7xxMachine *ms = NPCM7XX_MACHINE(machine);
-     NPCM7xxState *soc;
- 
-     soc = npcm7xx_create_soc(machine, QUANTA_GBS_POWER_ON_STRAPS);
-@@ -402,7 +406,7 @@ static void quanta_gbs_init(MachineState *machine)
- 
-     npcm7xx_load_bootrom(machine, soc);
- 
--    npcm7xx_connect_flash(&soc->fiu[0], 0, "mx66u51235f",
-+    npcm7xx_connect_flash(&soc->fiu[0], 0, ms->spi_model ? : "mx66u51235f",
-                           drive_get(IF_MTD, 0, 0));
- 
-     quanta_gbs_i2c_init(soc);
-@@ -412,6 +416,7 @@ static void quanta_gbs_init(MachineState *machine)
- 
- static void kudo_bmc_init(MachineState *machine)
- {
-+    NPCM7xxMachine *ms = NPCM7XX_MACHINE(machine);
-     NPCM7xxState *soc;
- 
-     soc = npcm7xx_create_soc(machine, KUDO_BMC_POWER_ON_STRAPS);
-@@ -419,9 +424,9 @@ static void kudo_bmc_init(MachineState *machine)
-     qdev_realize(DEVICE(soc), NULL, &error_fatal);
- 
-     npcm7xx_load_bootrom(machine, soc);
--    npcm7xx_connect_flash(&soc->fiu[0], 0, "mx66u51235f",
-+    npcm7xx_connect_flash(&soc->fiu[0], 0, ms->spi_model ? : "mx66u51235f",
-                           drive_get(IF_MTD, 0, 0));
--    npcm7xx_connect_flash(&soc->fiu[1], 0, "mx66u51235f",
-+    npcm7xx_connect_flash(&soc->fiu[1], 0, ms->spi_model ? : "mx66u51235f",
-                           drive_get(IF_MTD, 3, 0));
- 
-     kudo_bmc_i2c_init(soc);
-@@ -431,6 +436,7 @@ static void kudo_bmc_init(MachineState *machine)
- 
- static void mori_bmc_init(MachineState *machine)
- {
-+    NPCM7xxMachine *ms = NPCM7XX_MACHINE(machine);
-     NPCM7xxState *soc;
- 
-     soc = npcm7xx_create_soc(machine, MORI_BMC_POWER_ON_STRAPS);
-@@ -438,7 +444,7 @@ static void mori_bmc_init(MachineState *machine)
-     qdev_realize(DEVICE(soc), NULL, &error_fatal);
- 
-     npcm7xx_load_bootrom(machine, soc);
--    npcm7xx_connect_flash(&soc->fiu[1], 0, "mx66u51235f",
-+    npcm7xx_connect_flash(&soc->fiu[1], 0, ms->spi_model ? : "mx66u51235f",
-                           drive_get(IF_MTD, 3, 0));
- 
-     npcm7xx_load_kernel(machine, soc);
-@@ -453,6 +459,27 @@ static void npcm7xx_set_soc_type(NPCM7xxMachineClass *nmc, const char *type)
-     mc->default_cpus = mc->min_cpus = mc->max_cpus = sc->num_cpus;
- }
- 
-+static char *npcm7xx_get_spi_model(Object *obj, Error **errp)
-+ {
-+    NPCM7xxMachine *ms = NPCM7XX_MACHINE(obj);
-+    return g_strdup(ms->spi_model);
-+}
-+
-+static void npcm7xx_set_spi_model(Object *obj, const char *value, Error **errp)
-+{
-+    NPCM7xxMachine *ms = NPCM7XX_MACHINE(obj);
-+
-+    g_free(ms->spi_model);
-+    ms->spi_model = g_strdup(value);
-+}
-+
-+static void npcm7xx_machine_finalize(Object *obj)
-+{
-+    NPCM7xxMachine *ms = NPCM7XX_MACHINE(obj);
-+
-+    g_free(ms->spi_model);
-+}
-+
- static void npcm7xx_machine_class_init(ObjectClass *oc, const void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -466,6 +493,11 @@ static void npcm7xx_machine_class_init(ObjectClass *oc, const void *data)
-     mc->no_parallel = 1;
-     mc->default_ram_id = "ram";
-     mc->valid_cpu_types = valid_cpu_types;
-+
-+    object_class_property_add_str(oc, "spi-model", npcm7xx_get_spi_model,
-+                                  npcm7xx_set_spi_model);
-+    object_class_property_set_description(oc, "spi-model",
-+                                          "Change the SPI Flash model");
- }
- 
- /*
-@@ -542,6 +574,7 @@ static const TypeInfo npcm7xx_machine_types[] = {
-         .name           = TYPE_NPCM7XX_MACHINE,
-         .parent         = TYPE_MACHINE,
-         .instance_size  = sizeof(NPCM7xxMachine),
-+        .instance_finalize = npcm7xx_machine_finalize,
-         .class_size     = sizeof(NPCM7xxMachineClass),
-         .class_init     = npcm7xx_machine_class_init,
-         .abstract       = true,
-diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-index 56536565b7..e8844956db 100644
---- a/include/hw/arm/npcm7xx.h
-+++ b/include/hw/arm/npcm7xx.h
-@@ -62,6 +62,7 @@ struct NPCM7xxMachine {
-      */
-     SplitIRQ            fan_splitter[NPCM7XX_NR_PWM_MODULES *
-                                      NPCM7XX_PWM_PER_MODULE];
-+    char *spi_model;
- };
- 
- #define TYPE_NPCM7XX_MACHINE MACHINE_TYPE_NAME("npcm7xx")
--- 
-2.45.2
+on which Connie recently pinged and which sounded mostly ready, except of course if you have objections.
+
+Thanks
+
+Eric
+
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/cpu-features.h | 5 +++++
+>  target/arm/cpu.h          | 1 +
+>  target/arm/helper.c       | 6 ++++--
+>  target/arm/hvf/hvf.c      | 2 ++
+>  target/arm/kvm.c          | 2 ++
+>  5 files changed, 14 insertions(+), 2 deletions(-)
+>
+> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+> index db80ea1cc67..a8a94ee9d96 100644
+> --- a/target/arm/cpu-features.h
+> +++ b/target/arm/cpu-features.h
+> @@ -275,6 +275,11 @@ FIELD(ID_AA64PFR1, MTEX, 52, 4)
+>  FIELD(ID_AA64PFR1, DF2, 56, 4)
+>  FIELD(ID_AA64PFR1, PFAR, 60, 4)
+>  
+> +FIELD(ID_AA64PFR2, MTEPERM, 0, 4)
+> +FIELD(ID_AA64PFR2, MTESTOREONLY, 4, 4)
+> +FIELD(ID_AA64PFR2, MTEFAR, 8, 4)
+> +FIELD(ID_AA64PFR2, FPMR, 32, 4)
+> +
+>  FIELD(ID_AA64MMFR0, PARANGE, 0, 4)
+>  FIELD(ID_AA64MMFR0, ASIDBITS, 4, 4)
+>  FIELD(ID_AA64MMFR0, BIGEND, 8, 4)
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 9364d221744..93e055e34fd 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1031,6 +1031,7 @@ struct ArchCPU {
+>          uint64_t id_aa64isar2;
+>          uint64_t id_aa64pfr0;
+>          uint64_t id_aa64pfr1;
+> +        uint64_t id_aa64pfr2;
+>          uint64_t id_aa64mmfr0;
+>          uint64_t id_aa64mmfr1;
+>          uint64_t id_aa64mmfr2;
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 76312102879..31b667b7e05 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -7927,11 +7927,11 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>                .access = PL1_R, .type = ARM_CP_CONST,
+>                .accessfn = access_aa64_tid3,
+>                .resetvalue = cpu->isar.id_aa64pfr1},
+> -            { .name = "ID_AA64PFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
+> +            { .name = "ID_AA64PFR2_EL1", .state = ARM_CP_STATE_AA64,
+>                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 2,
+>                .access = PL1_R, .type = ARM_CP_CONST,
+>                .accessfn = access_aa64_tid3,
+> -              .resetvalue = 0 },
+> +              .resetvalue = cpu->isar.id_aa64pfr2 },
+>              { .name = "ID_AA64PFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
+>                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 3,
+>                .access = PL1_R, .type = ARM_CP_CONST,
+> @@ -8179,6 +8179,8 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>                                 R_ID_AA64PFR1_SSBS_MASK |
+>                                 R_ID_AA64PFR1_MTE_MASK |
+>                                 R_ID_AA64PFR1_SME_MASK },
+> +            { .name = "ID_AA64PFR2_EL1",
+> +              .exported_bits = 0 },
+>              { .name = "ID_AA64PFR*_EL1_RESERVED",
+>                .is_glob = true },
+>              { .name = "ID_AA64ZFR0_EL1",
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index 42258cc2d88..b4f2b743901 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -493,6 +493,7 @@ static struct hvf_sreg_match hvf_sreg_match[] = {
+>      { HV_SYS_REG_ID_AA64PFR0_EL1, HVF_SYSREG(0, 4, 3, 0, 0) },
+>  #endif
+>      { HV_SYS_REG_ID_AA64PFR1_EL1, HVF_SYSREG(0, 4, 3, 0, 1) },
+> +    /* Add ID_AA64PFR2_EL1 here when HVF supports it */
+>      { HV_SYS_REG_ID_AA64DFR0_EL1, HVF_SYSREG(0, 5, 3, 0, 0) },
+>      { HV_SYS_REG_ID_AA64DFR1_EL1, HVF_SYSREG(0, 5, 3, 0, 1) },
+>      { HV_SYS_REG_ID_AA64ISAR0_EL1, HVF_SYSREG(0, 6, 3, 0, 0) },
+> @@ -864,6 +865,7 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>      } regs[] = {
+>          { HV_SYS_REG_ID_AA64PFR0_EL1, &host_isar.id_aa64pfr0 },
+>          { HV_SYS_REG_ID_AA64PFR1_EL1, &host_isar.id_aa64pfr1 },
+> +        /* Add ID_AA64PFR2_EL1 here when HVF supports it */
+>          { HV_SYS_REG_ID_AA64DFR0_EL1, &host_isar.id_aa64dfr0 },
+>          { HV_SYS_REG_ID_AA64DFR1_EL1, &host_isar.id_aa64dfr1 },
+>          { HV_SYS_REG_ID_AA64ISAR0_EL1, &host_isar.id_aa64isar0 },
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 74fda8b8090..915fc04e54e 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -292,6 +292,8 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>      } else {
+>          err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64pfr1,
+>                                ARM64_SYS_REG(3, 0, 0, 4, 1));
+> +        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64pfr2,
+> +                              ARM64_SYS_REG(3, 0, 0, 4, 2));
+>          err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64smfr0,
+>                                ARM64_SYS_REG(3, 0, 0, 4, 5));
+>          err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64dfr0,
 

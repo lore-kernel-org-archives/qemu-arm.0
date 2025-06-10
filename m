@@ -1,359 +1,246 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp1533007njc;
-        Tue, 10 Jun 2025 07:29:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVCbyJICtImss2IBP056pjEJlLAPH+izvYFX9yG2QjqrnpudjyNUAdje+ywWweq/aKBIiS9avaU8TYQ0w==@linaro.org
-X-Received: by 2002:a05:620a:1a8c:b0:7d2:1158:6540 with SMTP id af79cd13be357-7d3a7dab7c2mr17165585a.21.1749565765060;
-        Tue, 10 Jun 2025 07:29:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749565765; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp1546666njc;
+        Tue, 10 Jun 2025 07:52:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUWuWQQk6oSZ+NS21piCoKhjQvJVU34jvUqwso/8QKtdWJNiw3SN6NrWLhFY/DpQDxvJ8Ah10xU4aUm4A==@linaro.org
+X-Google-Smtp-Source: AGHT+IF0rzyBPRDd/4bY8EL/DTMXlA+NOkSlYPJgRMdxiunM3i4jabA5CyzIzJ4pDOcUmFU3Xvvj
+X-Received: by 2002:a05:620a:2492:b0:7c5:65ab:5001 with SMTP id af79cd13be357-7d2299b19aemr2387429285a.39.1749567134509;
+        Tue, 10 Jun 2025 07:52:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749567134; cv=none;
         d=google.com; s=arc-20240605;
-        b=JifHN1EVxseFbd/ttonRLfPNn0SDumpnXsfQEfSphzNmxW2b4FcMGi18NXBZHLqyqk
-         MTDfEH5OJyQOKyjL+I0Y1mz6ZP4kOtkFQExOK7haujz7Ow+zFW3uSmLSdvqCE9WiiT5o
-         GRDTmgR3Xpzwo5zhOz3CXk766x7xktYrtg7t9UkQeNZuP3nXSkdnvZVeE0FWIV0nC9Tf
-         c7dd3WCXXC4RC/xMyXGGzzgaEbPLnPR7pUtXK9TeXhc3TIftqqwsaZNc5hiy0L8Ec4W8
-         i6MZTRmRL2XeCKwuA3NFJ09SNRRarnaZMc6UlFCZki3cpjI3zWh3KBoeORmAnrqvE2Zw
-         iDZg==
+        b=WoQ1iaGAoXuDxEghRSyGwsOfmH9ssUwTFdU0jpbceFPGzbjuqZd2X1i95fEsoRk3s4
+         5uzS6w2YMuXA/KSDqH+a+Lhttua5j6nuu+4UkV3Irbtvp50Bf0UZTJxooQlS4wYXdOrt
+         7NukjNl0TKVaFAAVmEn5nNMzAqaKmpehVGG8l+cJnqnugxcETzwLulbmdvJGgap0ecW7
+         xgjNZI9BmIal7wIQSUIEwK+oZRywNNTe+d9jfZodj7JeR5ZMFR5RDrWet/g7J7Qqrvdq
+         Da7L1N+I/zITBk4l40HMzF00qjBvGIqnfwZCrDjgx7nyeu76IWUKI/wi/1kMatJOYp33
+         ITAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=FW7Zeo4EP6vk3sUuv74aM33PkzoaPKyYhE0PO5b18Ps=;
-        fh=Zp+PBdHzR8K7IBXPWJ1LxCiG/21SqE0+LgjvV/LjT/M=;
-        b=igQkqwUU4Cb/VeB/dUUckv8hQkuA+zJ0nJj0wW2WV43qm7x73XnTU+AMrX792yEhuB
-         qOrxgKiGM5TwVB6KxThGsFagX81RVMscRtX8NWTtwKGAdkNA2/nJd+7r4jpOzFSEKk6P
-         fyNtBl1vjQ6PMDBGmHmZySPIt9u7O2wk7IlsS3l50wRMcITCVY4j5o977Fg6cb4Clzma
-         OVC5Zxg1Z/qgRU+NASroBavbeCH6tMEZ3pEnA/A0ztQK0W4xi4scdoI8ie9LeMOs/KRw
-         /OsgWdiGq7zP4jNkY/Ly+rwqtTIiQ/V4cRnf8FU9Kc849UuaE+Rg85REcHQUibz7oI9O
-         AuUA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Cart6UfqDj9LT/UlAicnGPC14gwi5qD74eD6K86z9MM=;
+        fh=3TKwySlx5bVDTfeT1TZSWChLkRkEcvqOq6Mq7+uoPHc=;
+        b=INH4711DfuCkI6vZAwQvynsyDO9O6OsJVN4kDA5wbvpUbIDZKi8wts9HjJH4e9UX9b
+         DlqSbKDkWbtJd9ErUHNFMCEadOoLObVvDaSrkdfSPN+2Wgd3tAeXeF5WrjvVabRlYprf
+         BMIxJh7nvyHaBm0FlB+OUPhiatOUDJCjb0Tff/yVvCk/PU6hQIhBAaEx+as1HzEEIRH2
+         yN2BCVmRVIQ6h36ovPXGQhcWbqPUd3alz1YtL5oXvEGkjcjynzYiFheidqEdlIrgyA6+
+         XboDIiSt1p6Pozw+x/nKmryye7aFIP7URWs0/WK8v1eyGd5pTBpjvzi2dECtNjJb+ZWG
+         eKDg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n4lCZZ+n;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id af79cd13be357-7d38beb2b49sor642243485a.0.2025.06.10.07.29.24
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=Y8xJ8V0o;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7d38c6e4dedsi745135485a.168.2025.06.10.07.52.14
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 10 Jun 2025 07:29:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 10 Jun 2025 07:52:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n4lCZZ+n;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=Y8xJ8V0o;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uP0KT-0005FR-Az; Tue, 10 Jun 2025 10:51:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1uP0Ir-00054R-AQ; Tue, 10 Jun 2025 10:50:17 -0400
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1uP0Io-00080Q-UO; Tue, 10 Jun 2025 10:50:17 -0400
+Received: by mail-pj1-x1035.google.com with SMTP id
+ 98e67ed59e1d1-3138d31e40aso1999916a91.1; 
+ Tue, 10 Jun 2025 07:50:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1749565764; x=1750170564; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=FW7Zeo4EP6vk3sUuv74aM33PkzoaPKyYhE0PO5b18Ps=;
-        b=n4lCZZ+nrmHiODdk6CYLegNgBLCHLGKog+T22JDmGl2Ge8Mqpq6+GlyNXLdKhS2dl5
-         s6R8YbW558cN38YRFC/CqSy4zaoeDCA9pG0W/Jswj+x/xX8isP/vt1w0Dlurd2HUdF8d
-         hqeCXZvuCvNqY67o154RMPYPpFuheB1af12QHfysGfc4v9iS6uQsWOKRYIDQffAUjcKv
-         NTV9tX/EtFdyVpF/yBoL9TkrBGSkBEUWrjlqZG9kiMgD0PoovnmeK6TB2OejiL7H0DxE
-         gGyH+pWXFDmxXNfl0VNtXKWoYOuDbzxHz5agUJTjfpEodGU6DT5bpUamjwVoKKu76Pil
-         WrJA==
+ d=gmail.com; s=20230601; t=1749567012; x=1750171812; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
+ bh=Cart6UfqDj9LT/UlAicnGPC14gwi5qD74eD6K86z9MM=;
+ b=Y8xJ8V0o4RZ0qrrGZ4/XVwJep4g+4cFVrVRSIlXwB73LTY7euGcx+y48Ci0hp2Ba1p
+ oP99L9GQh+NskklZn8WqquaPMlbGtJ5aLmHjv8hiNea+eWEZBo6hs2oENz/1SMTe/5YJ
+ ekRfpi+P1yfxOLGQmt5myE6/ST/BtRYkoTNhzkgSsHdPhglFeikebDx1u9TGe/Zhn1NQ
+ 8Rf2IaSzxeZk4V59j4yyASNQeat104zyKXQN+SgXJOoPtx07V+6kGP5+PC/FLJ3siQ/Y
+ rR0GctMHHd/OdQI52Xozf6KiGruY6R1bAIYKVEb4Qx8dKmRl9iWfuwvllJv17AGEggI/
+ PbAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749565764; x=1750170564;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=FW7Zeo4EP6vk3sUuv74aM33PkzoaPKyYhE0PO5b18Ps=;
-        b=SNEXjbyB3Uti5LZCIfHu/uUcLldP8bE4dsPvuPVTTXOiApC1sZJ4MrLPwDnPtpBuGz
-         rZR8qoZWeyJ2sqzJ2z+2N3Jc0rKFt2/3nki/omx3Kq1VOZW/KsFOCr0GYz09ODVm0iiF
-         EoqFWVjS7vaBNWxBrmwRwTZCXmwIoKaLtJejIAHKMDuvOTjOekSmdxc3tkPF2xszvZ55
-         CXFY/9IrpTcmdb3dyhHytNX8jUbivRGT8cDiU3zPW7SKHnrVk8ouNs9eC+ykzqnqysSZ
-         ahtjPGoZPeISwdLvtF+f8M78GjjVDJVQAJvFQbzPvGY9tN9DiBzpPlaOsoRRRKCX1hDD
-         2vAg==
-X-Forwarded-Encrypted: i=1; AJvYcCU43s+LGAGyjU8l61lEMlcm6IVi3wSWuwNPU6+Z+75jfv3p66flG1yh4gCNA+GisFBGiNH0AaeYi0lY0A==@linaro.org
-X-Gm-Message-State: AOJu0YzcanF467ihLtE0OQylVXpphcDV2aB/PmaXpOr10QNwDc+QcC3N
-	1b+wd/0+fSm2gHAXXff/veqSizcOd2rMm2QR68a5hUqnDxGXEVHEmsm+TbBAWqsI7a6KT2y8PbW
-	U+tkvByM=
-X-Gm-Gg: ASbGncuSxnm1q8ENrq41yyaHyz/Xm0kWh37cm7nNol4ybV+NMZvJoLUFwX4G+pYYvut
-	Kf/NP4/n+T+Vh8SGWiOB/4XzR+DYoNS/2e7eHx34ztDKwejB9PtubOeQbuU76s15u0qbm+fl3MB
-	WJdwakT71B6/cs4V4InzpD8Pw+5/U3tZMr8sDN6H0ZQHTGDypmwDzdbp1jJjGswusRAuAD2zFMQ
-	QYMvrjE3/R3xKBrDw/xpp60k/049GuTQ2E094ulL9R6iUIe7tEu2jHa6mMFhiF/v1YMTuiLpPY0
-	TIxTGDW5IxPS9er0/PaD8e/xhB64PqcRTrBCltlPmBNz3o+VcHJ2jxXGz/Wc5x1ygH7DKXp+5si
-	+yJWw122I+EacZyuXmhm5DC5ROdSnjZAWA7RAhe47zUqmDA==
-X-Google-Smtp-Source: AGHT+IE5GZ/+QusSvLb+rNpDzP0cOA2iy6jK8t8OOCEVO35HxgtJhSXwFbr8O7MudXoDetHScXtgSw==
-X-Received: by 2002:a05:6102:41a3:b0:4e5:9380:9c20 with SMTP id ada2fe7eead31-4e7a820194bmr2486527137.2.1749565752659;
-        Tue, 10 Jun 2025 07:29:12 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from [192.168.0.102] (200-162-224-156.static-corp.ajato.com.br. [200.162.224.156])
-        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-87eeaf5109dsm1275313241.23.2025.06.10.07.29.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 10 Jun 2025 07:29:11 -0700 (PDT)
-Message-ID: <e3bc87d8-5016-455e-933d-6cefae993c25@linaro.org>
-Date: Tue, 10 Jun 2025 11:29:02 -0300
+ d=1e100.net; s=20230601; t=1749567012; x=1750171812;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Cart6UfqDj9LT/UlAicnGPC14gwi5qD74eD6K86z9MM=;
+ b=hSN9+DwmieXH2FoPcYhW35xyVPntf7JPx76VHhe++8Rq+J7uilmTmnefYqJfk/LzMT
+ slthO7PSB5XRtKpNaQ+qokzewXunI2aXyWrO6sXEISXYx5pr29OKQARDfNJQeOldzsCq
+ Z/CRTQt0OiYiSgKqpuf4TV9BxGiz8xkLHa+jlPfnnCwZXqBY2YWXRvT+CI5s1JZIp7dd
+ 1VhYgX7mwUbCtNnaOmmH3lBmOj1h9Us7wW2fnFtoh2/jMTMIpMIpe19ULgwHDxZuOAC2
+ zXOpruAfcVqPgK7xz0se/D92XwOazPQFupeStEMDpULmHvvx25LlhDH2yBuDIzVqf/FI
+ x9sA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUa8XQUswivAGygyct5pOKgOztZI9z+PXRb2fCbqTvg3bLpQJiG5BCtJnTiawiaPUdDkBnechaFXw==@nongnu.org,
+ AJvYcCVVwTZaZEyg02tVdP5LGDTTI0IEnixOZjAwdsIjGkhGdd6b7p1J69xEr61TX2Z9KK6G460WP45zLBnfVw==@nongnu.org
+X-Gm-Message-State: AOJu0YymZMcdEANWkFQEtJRkyvdH+cl1Ok/YWtOthqUrqlYJGvdtypW4
+ M7akHoAOZ9NZitvZGtMReZG6gTOZtpE19PaExkjsGVWHJQYpbJWmgkw7
+X-Gm-Gg: ASbGncsVAH991nnFpVp5reuFTWPL/obAt3qxDsJ7pnYcWaAnI0aZCwGVSTSdgtsTp8g
+ Uwjih76zTPxQ2zQ1eqcU4KFwMhlP2E9ZwxwqWl0pcVjKwpbK4m3JUCyyErgYktew+i7215OjrsY
+ JWZNA6npfalIrN5U5O4bei+RDH9F4yLaVyuv0NLXwF0QEGUn3wj7h2NDL6lswGUJKtA45Gx0OLP
+ YRjR7gBcgaC/ShIb2/rXBNin+fajlsHWnCqzuC77UFwDsKjSWvcEuF5GALZwOuxE9GESBjZzyaF
+ jqFpz9ygD41sHEHoDUw+d0WJ58LWUE8tXk9RFezEemtKQ/luPLBuY6VDz1yj1s+dnHGX5QH+aY3
+ oYEm2oQRCsE+XgrUUY5Lwlkd0Z29zxnrjsLw=
+X-Received: by 2002:a17:90b:540f:b0:312:e731:5a66 with SMTP id
+ 98e67ed59e1d1-313472d087amr23379561a91.3.1749567012521; 
+ Tue, 10 Jun 2025 07:50:12 -0700 (PDT)
+Received: from ?IPV6:2600:1700:e321:62f0:da43:aeff:fecc:bfd5?
+ ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-313a688b304sm247140a91.1.2025.06.10.07.50.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 10 Jun 2025 07:50:11 -0700 (PDT)
+Message-ID: <538d51fd-29f9-4d4c-a23c-678434743f77@roeck-us.net>
+Date: Tue, 10 Jun 2025 07:50:10 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 24/25] tests/qtest/bios-tables-test: Keep ACPI PCI
- hotplug off
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com,
- pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org,
- alex.bennee@linaro.org
-References: <20250527074224.1197793-1-eric.auger@redhat.com>
- <20250527074224.1197793-25-eric.auger@redhat.com>
- <20250528113813.47086516@imammedo.users.ipa.redhat.com>
- <375cfbd6-e585-4b6d-bf10-6571aa40370e@linaro.org>
- <20250528150239.5f6b63d0@imammedo.users.ipa.redhat.com>
- <6a5776b4-73ef-427b-b4e4-b25031b0ce53@linaro.org>
- <20250530135103.09030cf0@imammedo.users.ipa.redhat.com>
- <bcc200fb-fa45-44ac-9e36-4c829becbf1c@linaro.org>
+Subject: Re: [PATCH] hw/arm/npcm7xx_boards: Add support for specifying SPI
+ flash model
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20250610012851.1627715-1-linux@roeck-us.net>
+ <CAFEAcA-aznHrcSk9xfmLHkpJTiabjd4oX2KnvC5TXkkLgW6n8A@mail.gmail.com>
+ <50464a50-1ddc-410b-bc5b-ec68b895b797@roeck-us.net>
+ <CAFEAcA9CWeEmrZ5vTr7M-UZfH3cp5Y9EZUeGPfc2s75Tz2-K9g@mail.gmail.com>
 Content-Language: en-US
-In-Reply-To: <bcc200fb-fa45-44ac-9e36-4c829becbf1c@linaro.org>
+From: Guenter Roeck <linux@roeck-us.net>
+Autocrypt: addr=linux@roeck-us.net; keydata=
+ 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
+ np3900V20aS7eD9K8GTU0TGC1pyz6IVJwIE=
+In-Reply-To: <CAFEAcA9CWeEmrZ5vTr7M-UZfH3cp5Y9EZUeGPfc2s75Tz2-K9g@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: 0gZhBVXdNDGz
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=groeck7@gmail.com; helo=mail-pj1-x1035.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.065, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0+yEyP0QqEaf
 
-Hi Igor,
+On 6/10/25 06:58, Peter Maydell wrote:
+> On Tue, 10 Jun 2025 at 14:31, Guenter Roeck <linux@roeck-us.net> wrote:
+>>
+>> On 6/10/25 01:42, Peter Maydell wrote:
+>>> I think the question I would have here is "is this the flash
+>>> device the hardware actually has?". If QEMU's using the wrong
+>>> flash type, we should fix that. If QEMU's modelling the right
+>>> flash type and the kernel doesn't implement it, then that's
+>>> a kernel bug and the right fix is to get the kernel to
+>>> handle that flash type.
+>>>
+>>
+>> That isn't the point.
+> 
+> It is the point from my perspective. This board type is
+> supposed to be modelling real hardware, and therefore in
+> determining how it should behave we start by saying "so
+> what does the real hardware do?". Adding extra behaviour
+> that the real hardware does not have is something that
+> has a tendency to lead into unspecified, untested and hard
+> to maintain complexity.
+> 
 
-On 6/2/25 03:06, Gustavo Romero wrote:
-> Hi Igor and Eric,
-> 
-> I'm sending again this to the mailing list since it seems the first one
-> got lost... I can't find it either in qemu-devel@ or in qemu-arm@ :(
-> 
-> On 5/30/25 08:51, Igor Mammedov wrote:
->> On Wed, 28 May 2025 12:04:26 -0300
->> Gustavo Romero <gustavo.romero@linaro.org> wrote:
->>
->>> Hi Igor,
->>>
->>> On 5/28/25 10:02, Igor Mammedov wrote:
->>>> On Wed, 28 May 2025 09:41:15 -0300
->>>> Gustavo Romero <gustavo.romero@linaro.org> wrote:
->>>>> Hi Igor,
->>>>>
->>>>> On 5/28/25 06:38, Igor Mammedov wrote:
->>>>>> On Tue, 27 May 2025 09:40:26 +0200
->>>>>> Eric Auger <eric.auger@redhat.com> wrote:
->>>>>>> From: Gustavo Romero <gustavo.romero@linaro.org>
->>>>>>>
->>>>>>> ACPI PCI hotplug is now turned on by default so we need to change the
->>>>>>> existing tests to keep it off. However, even setting the ACPI PCI
->>>>>>> hotplug off in the existing tests, there will be changes in the ACPI
->>>>>>> tables because the _OSC method was modified, hence in the next patch of
->>>>>>> this series the blobs are updated accordingly.
->>>>>>>
->>>>>>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
->>>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>>>>
->>>>>> it would be better to test whatever default we end up with.
->>>>>> (like x86)
->>>>>
->>>>> hmm maybe there is a confusion here, Igor. We are actually planning what you
->>>>
->>>> perhaps, see my reply to Eric about my expectations wrt tests.
->>>
->>> Yip, I read it before my reply here.
->>>
->>>
->>>> (i.e. default tests shouldn't have any explicit CLI options,
->>>> instead it should follow whitelist blobs/set new default patch/update blobs pattern)
->>>
->>> I see. I agree with that. But this patch is not about the new test. The new test is
->>> _not_ in this series. Patches 8/25, 10/25, and 24/25 are _not_ about the new test but
->>> about adapting the _legacy tests_ (native acpi) to the situation when ACPI HP becomes
->>> the default, because this series makes acpi-pcihp=on the default, hence the CLI option
->>> "acpi-pcihp=off" added to them. An update to the blobs are also necessary because of the
->>> change in _OSC method, even when acpi-pcihp=off.
->>>
->>>
->>>>> said. This patch and the other two in this series related to the bios-tables-test
->>>>> (i.e., patches 8/25 and 10/25) are for actually making the current (legacy) test pass,
->>>>> since the new default as per this series will be acpi-pcihp=on. That's why here we're
->>>>> adapting the current test here to have acpi-pcihp=off.
->>>>>
->>>>> The new test that will test for acpi-pcihp=on (the new default) is not in this series
->>>>> and we decided to merge it separate. It's in the patch 4/5 and 5/5 of the follow series:
->>>
->>> We're doing the "blobs/set new default patch/update blobs pattern" in the new test, which
->>> we can merge later, once this series is merged, no? The step "set new default" then will
->>> not be necessary because the new test will be merged separate, after this series, so when
->>> acpi-pcihp=on is already the default.
->>>
->>> Please note that although we're using acpi-pcihp=on in the new test, it's not necessary,
->>> we can dropped this option, making it implicit as you say, and it will work. This is the
->>> new test:
->>>
->>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05828.html 4/5
->>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05827.html 5/5
->>>
->>>
->>> Thus, there are to "acts" of modifying the bios-tables-test:
->>>
->>> 1) Adapt the current tests to when acpi-pcihp=on becomes the default (hence the addition
->>>      to them of "acpi-pcihp=off".
->>
->>
->> that's what I disagree with.
->>
->> 1) Instead adapting majority of tests to legacy before switching defaults,
->> just do whitelist/modify default/update so all of tests run with new default.
->>
->> and then
->>
->>> There is also the need to update the blobs, but it's because
->>>      of the _OSC method change in DSDT table, which will change anyways, even with "acpi-pcihp=off¨,
->>>      hence the need for patch 10/25 in this series. This is _done is this series_.
->>
->>
->>> 2) Add a new test for testing the default (i.e. acpi-pcihp-on). It follows what you're
->>>      saying above: "follow whitelist blobs/set new default patch/update blobs pattern",
->>>      because we can drop the acpi-pcihp-on option from the CLI in this test without any
->>>      prejudice to test. While the step "set new default patch" was actually done in 1).
->>
->> 2) add a separate test case for native pcie hoplug (preferably within this series)
->>
->> 3) even better would be to add #2 before #1 (right after 10/25),
->> this way will guarantee that old native hotplug tables stay
->> the same regardless of followup patches that add ACPI pcihp aml.
-> 
-> Got it now, hopefully... 🙂
-> 
-> OK, I'm trying to follow what you recommended in 3). I've pushed a series to:
-> 
-> https://github.com/gromero/qemu/commits/v2_20250527_eric_auger_redhat_com/
-> 
-> So, I understand we will need to add/update the blobs at three times,
-> 2 times because of the changes in the DSDT generation (_OSC changes and when
-> acpi-pci=on) and an additional one because of the new PCIe native hotplug test.
-> 
-> I dropped this patch (Patch 24/25) from the series.
-> 
-> So the overview of the organization would be the following:
-> 
-> 
-> 3c302f7222 tests/qtest/bios-tables-test: Update DSDT blobs                                   #1c (update blob)    \
-> 671f15f470 hw/arm/virt: Use ACPI PCI hotplug by default                                      #1b (modify default) |--- acpi-pcihp=on
-> 9468f730e1 tests/qtest/bios-tables-test: Prepare for changes in the DSDT table               #1a (whitelist)      /
-> c9ec0e0226 hw/arm/virt: Plug pcihp hotplug/hotunplug callbacks
-> dc44749a34 hw/arm/virt: Let virt support pci hotplug/unplug GED event
-> f667079260 hw/core/sysbus: Introduce sysbus_mmio_map_name() helper
-> 46731e563b hw/acpi/ged: Support migration of AcpiPciHpState
-> 4fa7b0e0f6 hw/acpi/ged: Call pcihp plug callbacks in hotplug handler implementation
-> 587b001876 hw/acpi/ged: Prepare the device to react to PCI hotplug events
-> b55183d128 hw/arm/virt-acpi-build: Modify the DSDT ACPI table to enable ACPI PCI hotplug
-> fe4c96b384 hw/i386/acpi-build: Move aml_pci_edsm to a generic place
-> 010c50dbc7 hw/i386/acpi-build: Introduce and use acpi_get_pci_host
-> 5a1be727e6 hw/i386/acpi-build: Move build_append_pci_bus_devices/pcihp_slots to pcihp
-> 14a172e192 hw/i386/acpi-build: Move build_append_notification_callback to pcihp
-> 5110ae8874 hw/acpi/pcihp: Add an AmlRegionSpace arg to build_acpi_pci_hotplug
-> 82c2aef672 hw/i386/acpi-build: Introduce build_append_pcihp_resources() helper
-> 6372fe7eef qtest/bios-tables-test: Update DSDT 'noacpipcihp' variant blob                    #2 (blob update for test), part 2 of 2 (update blob)  ]--- New PCIe native test
-> 6fb29ba18d tests/qtest/bios-tables-test: Add aarch64 PCIe native hotplug test                #2 (pcie native hp test), part 1 of 2 (whitelist)     /
-> 12c63a505e tests/qtest/bios-tables-test: Update DSDT blobs after GPEX _OSC change            Patch 10/25 in this series (update blob)    \
-> 779bd47749 hw/pci-host/gpex-acpi: Use build_pci_host_bridge_osc_method                       Patch  9/25 in this series (modify default) |--- _OSC change
-> f260fd59c1 tests/qtest/bios-tables-test: Prepare for changes in the DSDT table               Patch  8/25 in this series (whitelist)      /
-> b000677fd9 hw/i386/acpi-build: Turn build_q35_osc_method into a generic method
-> a72f87b634 hw/pci-host/gpex-acpi: Propagate hotplug type info from virt machine downto gpex
-> 77a87b6ba3 hw/pci-host/gpex-acpi: Split host bridge OSC and DSM generation
-> 67e4dc2e7b hw/pci-host/gpex-acpi: Add native_pci_hotplug arg to acpi_dsdt_add_pci_osc
-> b89e69da54 hw/acpi: Rename and move build_x86_acpi_pci_hotplug to pcihp
-> 74f1080a74 hw/arm/virt: Introduce machine state acpi pcihp flags and props
-> 1048082f33 hw/i386/acpi-build: Make aml_pci_device_dsm() static
-> 
-> See notes on the right for when the blobs are updated or added in the
-> series. The new test for PCIe native hotplug (I prefer not calling it legacy,
-> since it's not really legacy; it's just an alternative better in some scenarios,
-> specially in virtualization) is now in the series (#2), "right after 10/25".
-> 
-> Is something like that that you want?
+Depends. I would argue that the ability to easily test all
+supported flash types makes the code more robust, not less robust.
 
-Igor, just a friendly ping on it. It would be quite helpful for us if you could
-confirm I'm following what you recommended regarding the tests for this series.
+>> Yes, one is that qemu's emulation is broken, the other is
+>> that I wanted to be able to test with other flash types anyway. I understand
+>> that this 'violates' the idea of exactly emulating some hardware, but I want
+>> to be able to use qemu beyond that.
+> 
+> Why this machine type in particular, though? You say in the commit
+> message that aspeed lets you specify the flash type.
+> 
 
+Yes, the aspeed emulations let me provide spi-model= and fmc-model=
+board parameters which I use to work around the problem there. That is why
+I thought a similar solution might be acceptable for Nuvoton boards,
+but apparently I was wrong.
+
+>> Either case, I did some debugging: For flashes with sfdp data (mx25l25635e),
+>> qemu returns bad sfdp data (at least with quanta-gsj), causing the kernel
+>> (as of v6.16-rc1) to bail out. For other flashes (mx66u51235f) it returns
+>> no sfdp data, but the upstream kernel now depends on it.
+> 
+> That sounds like a bug we should fix. Would one of the Nuvoton
+> maintainers like to take a look?
+> 
+
+I don't think it is a Nuvoton specific problem. I see the same or similar
+problems with Aspeed boards. Besides, the lack of sfdp data for mx66u51235f
+is most definitely not Nuvoton specific.
 
 Thanks,
-Gustavo
-  
-> 
-> Cheers,
-> Gustavo
-> 
->>
->>> Cheers,
->>> Gustavo
->>>
->>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05828.html 4/5
->>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05827.html 5/5
->>>>>
->>>>>
->>>>> Cheers,
->>>>> Gustavo
->>>>>>>
->>>>>>> ---
->>>>>>>
->>>>>>> [Eric] also added acpi-pcihp=off to test_acpi_aarch64_virt_tcg_numamem
->>>>>>> ---
->>>>>>>     tests/qtest/bios-tables-test.c | 13 +++++++++----
->>>>>>>     1 file changed, 9 insertions(+), 4 deletions(-)
->>>>>>>
->>>>>>> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
->>>>>>> index 0a333ec435..6379dba714 100644
->>>>>>> --- a/tests/qtest/bios-tables-test.c
->>>>>>> +++ b/tests/qtest/bios-tables-test.c
->>>>>>> @@ -1626,7 +1626,7 @@ static void test_acpi_aarch64_virt_tcg_memhp(void)
->>>>>>>         };
->>>>>>>         data.variant = ".memhp";
->>>>>>> -    test_acpi_one(" -machine nvdimm=on"
->>>>>>> +    test_acpi_one(" -machine nvdimm=on,acpi-pcihp=off"
->>>>>>>                       " -cpu cortex-a57"
->>>>>>>                       " -m 256M,slots=3,maxmem=1G"
->>>>>>>                       " -object memory-backend-ram,id=ram0,size=128M"
->>>>>>> @@ -1747,7 +1747,8 @@ static void test_acpi_aarch64_virt_tcg_numamem(void)
->>>>>>>         };
->>>>>>>         data.variant = ".numamem";
->>>>>>> -    test_acpi_one(" -cpu cortex-a57"
->>>>>>> +    test_acpi_one(" -machine acpi-pcihp=off"
->>>>>>> +                  " -cpu cortex-a57"
->>>>>>>                       " -object memory-backend-ram,id=ram0,size=128M"
->>>>>>>                       " -numa node,memdev=ram0",
->>>>>>>                       &data);
->>>>>>> @@ -1775,7 +1776,8 @@ static void test_acpi_aarch64_virt_tcg_pxb(void)
->>>>>>>          * to solve the conflicts.
->>>>>>>          */
->>>>>>>         data.variant = ".pxb";
->>>>>>> -    test_acpi_one(" -device pcie-root-port,chassis=1,id=pci.1"
->>>>>>> +    test_acpi_one(" -machine acpi-pcihp=off"
->>>>>>> +                  " -device pcie-root-port,chassis=1,id=pci.1"
->>>>>>>                       " -device virtio-scsi-pci,id=scsi0,bus=pci.1"
->>>>>>>                       " -drive file="
->>>>>>>                       "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2,"
->>>>>>> @@ -1846,7 +1848,7 @@ static void test_acpi_aarch64_virt_tcg_acpi_hmat(void)
->>>>>>>         data.variant = ".acpihmatvirt";
->>>>>>> -    test_acpi_one(" -machine hmat=on"
->>>>>>> +    test_acpi_one(" -machine hmat=on,acpi-pcihp=off"
->>>>>>>                       " -cpu cortex-a57"
->>>>>>>                       " -smp 4,sockets=2"
->>>>>>>                       " -m 384M"
->>>>>>> @@ -2123,6 +2125,7 @@ static void test_acpi_aarch64_virt_tcg(void)
->>>>>>>         data.smbios_cpu_max_speed = 2900;
->>>>>>>         data.smbios_cpu_curr_speed = 2700;
->>>>>>>         test_acpi_one("-cpu cortex-a57 "
->>>>>>> +                  "-machine acpi-pcihp=off "
->>>>>>>                       "-smbios type=4,max-speed=2900,current-speed=2700", &data);
->>>>>>>         free_test_data(&data);
->>>>>>>     }
->>>>>>> @@ -2142,6 +2145,7 @@ static void test_acpi_aarch64_virt_tcg_topology(void)
->>>>>>>         };
->>>>>>>         test_acpi_one("-cpu cortex-a57 "
->>>>>>> +                  "-machine acpi-pcihp=off "
->>>>>>>                       "-smp sockets=1,clusters=2,cores=2,threads=2", &data);
->>>>>>>         free_test_data(&data);
->>>>>>>     }
->>>>>>> @@ -2227,6 +2231,7 @@ static void test_acpi_aarch64_virt_viot(void)
->>>>>>>         };
->>>>>>>         test_acpi_one("-cpu cortex-a57 "
->>>>>>> +                  "-machine acpi-pcihp=off "
->>>>>>>                       "-device virtio-iommu-pci", &data);
->>>>>>>         free_test_data(&data);
->>>>>>>     }
->>>
->>
-> 
+Guenter
+

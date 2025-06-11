@@ -1,187 +1,133 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp1666054njc;
-        Tue, 10 Jun 2025 13:43:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVinZHOvYALETQpj6gikrtgaVNkeqRryoTrBa3ZEqfxGqk/qgfp4dBcQaANv6hj/2oYJGL8aOoFfEffcw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGRPTYYGdz4ZLBxtEo2hT0q7wDhD0k1yp5WyIG2brePrdl0T/ilYdkV3vM0dnCQNdRsODU9
-X-Received: by 2002:a05:622a:1248:b0:4a4:33d8:5716 with SMTP id d75a77b69052e-4a713b9a573mr16601251cf.3.1749588192229;
-        Tue, 10 Jun 2025 13:43:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749588192; cv=none;
+Received: by 2002:a05:7022:658b:b0:a0:2f73:dc0d with SMTP id bd11csp2492327dlb;
+        Tue, 10 Jun 2025 17:37:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV+bos5Mxhr0+OkAs194nRH/1WkHM8ahKclSeDh0NJ8vEnxCkywdWdxz41glKeyO7Xb0Yksx+l+4iiLlg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGuo1qia9xCl35rvFPPd2FjTg9njQ/KaHRV6ZpE3AEXSHOq/r1PT50d7ZXNUsCRPdJ49QPH
+X-Received: by 2002:a05:620a:4150:b0:7d3:8626:c18e with SMTP id af79cd13be357-7d3a88088d5mr242666085a.11.1749602264412;
+        Tue, 10 Jun 2025 17:37:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749602264; cv=none;
         d=google.com; s=arc-20240605;
-        b=Hz4fVqKx40EO69jesxNwZAQ0M8/Amhqn++IT4PvIMZXLnKmPJH0txfpKorqSJxIsG1
-         tC7/9beYNXcQfUnRW+s1ao3rP5zJqnOCNdDOcU3N/TZOxAKOnFBF3IsEyh+qindWW6zr
-         tFfiP3a2Pke7aL1S5RbtLthCTFR5RP0G6JCCzU75fZG+Z8P0MoNfq2rQBpUDkwnirdWW
-         27GmHFgFFmmFwEUdSduFfXb2oOrv3usUvIDv9gpVhotNEd5w5nFOyWKmfajvkiqUPhhG
-         VeiN5xpu0XjMEO3UobcGX3mH4yA0Br5zypP8PpnHaE0RHPqMkjjhGvf4dV1/DUiZQ+2K
-         RQLg==
+        b=M7dzRuYfmJwl2PKHTQWjSA6AOynksMjvFEyEXiKvbG6NGEjWilXdSV8kF6/1243Mow
+         W40eD0hZlVG2apbHiKhpq7AS/TiS55Zajd/4q8PkBY2utMqhTArCwsAqHhPDd0Vs/m65
+         3K/tKaB8azZWY32koY1L6sSB8ulj8tPLgp9uk0p92JUrmldsvefvoZqAmFkLP9r9ujsB
+         hW6/yzZxbMcJ/HRqjQ+BBxdvsq8VEq5K/a//k259yMczZ3sL6B72NhK+sEeAqNoXILtp
+         EzCa+LCUybAF29HqeKe2D4bL6kYSN3ArOCYk11SsevT7WgKbEKNI2RKDk2XN/hRUiGGK
+         1XIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=shjFIoaQyra9yiwcwIYMAJApqIMBlEvH5T9r287lwOw=;
-        fh=nZViktVrW6iy3lAjcbniwkAAw9ckbHSuYqtsJjCbHCE=;
-        b=EF9Klvdp/4j7Knq7XZPrOfxmAgKq8j3RwB/grr9t+8cM9TvHdEux/RG5x8E4oGWsWO
-         7jZ5XzBPQP9cGHvrwofa7/bO7Tw3aTVXN+qWk02Yf1dC+kuhJ8TpyHgSLjvIdMw1a9Gx
-         Nnh24eIkNKg0npwzajUwUzEYTnVEJ/9RX9pDRtxCjjC7gtrrB/HtXdv3xN/B7ZxstnZc
-         XEEANdC5n4NkMPoa+Q0IBCzHlAsQ6UEXAs7cUjCFrA9tNiCp6UXczrTXoKUNn0BtRz64
-         ksV+IlRDE6SDkMBXRabp9P+XNfRCUy5I+C8Nvb3lbLxkp1Sj/iG4Qwwmdxb8l4bCeeTu
-         SApQ==;
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=ggKK9KDm0Fjiaw3YWMiODg60SjIF+rq6A2dfjW4x85Q=;
+        fh=nZigL1vnINBk1wk2sRJPJZYcIriOWv9eQrAXFoeWWQI=;
+        b=Jl1HPPzSADEYaX+W2HPDbB08uUbzyV94Zf8nJQA26ViHXoO5j3b8bY72djtpqQvcT4
+         FjHanDeTsgkOUBBnhlKvTtey+5c1eBtceKuRMCTbZueDZSBXctsExHtv8vlljm4v/t7+
+         RjQDJ7CgCQiSqYtVLoCCJpYjsvJxUXW2FA842ZzI4zti49dASFsuunMLM15c/wDJfWiM
+         ZRW8QKSyxjlDLH6Rz6g6Ey8Mnp5ws478czG+Bg/R0DOpYkywFuWUhTkrE6G/na899Du1
+         ilVpaNTPsXUdYy+N1Zwk6tglRxsD61Jz1GVTqPyBM88cmKn3q3uJewmzhX431glksaQN
+         72vw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=CRaP3zUc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a611169c10si109244271cf.114.2025.06.10.13.43.12
+        by mx.google.com with ESMTPS id af79cd13be357-7d25a626372si1179792985a.440.2025.06.10.17.37.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Jun 2025 13:43:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Jun 2025 17:37:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=CRaP3zUc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uP5n2-0005rQ-5S; Tue, 10 Jun 2025 16:41:48 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uP9TD-0002pw-UI; Tue, 10 Jun 2025 20:37:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1uP5my-0005oA-6d; Tue, 10 Jun 2025 16:41:44 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1uP5mw-0003R7-9e; Tue, 10 Jun 2025 16:41:43 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-606b6dbe316so6887301a12.3; 
- Tue, 10 Jun 2025 13:41:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1749588100; x=1750192900; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=shjFIoaQyra9yiwcwIYMAJApqIMBlEvH5T9r287lwOw=;
- b=CRaP3zUcFydxHzqqWcRLmunyxCht6/0C+Rv2CY9+sEPpSNUTvVlVUVi2/jfbksmf3R
- 1hoW3s4f1byF5b+xQyVtmfqxnlQe0rDq1HXMWPcvexC5MqDwWR8Tkt6TiDoknXXCyfAy
- omDSjYRAhVku/P1mtH1vJx+OSKczOZLBFLlFLfGyRAHxQDWeJlYt7wVfRvr1Gt3WKjbp
- el3c3iBHdwrUlPHLUN/uqsjwF/+0GRvyiZSUEoUWqH57+7p65tNUlLr0oOaUpAsMwPfH
- WYB85sSh9epHamTqTncszO9WB9r4XgbDXcaBMQ8ePrBwJKZ0WpJtEunJFnqSPdx1Mvi7
- A6MQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749588100; x=1750192900;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=shjFIoaQyra9yiwcwIYMAJApqIMBlEvH5T9r287lwOw=;
- b=TJUtOalK7m151lPYFl+7IsWf8jNxL4Vcod9Q/RTdhk02nSn4Gc9zrnHxT1RizcQGWk
- xlzbL1eElHh2xyiBMoiid56blXjB9loQf/bUD9JM8JAVIQRtQ5FPBWtWotHBwXPR7NA7
- xCWXdELdoLW2QxfRsPEDJ7Ofgtiss2VQ0YAycOTmipo3cVg9vZeiBKtItEbHwl36CA+H
- AyfhvN0o5jT31KCR4OJVkESvbHwH8GZh3OUCXdjYO8Tr4ZZCUmyNG3HzAXfePETXsZiN
- jBrOoMTFNpn+r52QuBz7rT/Fksr28OwjGsBT2H1v3a8cSN48wsdugBXQVSzR0Xfq49Kl
- QN0g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUJbGdIfXKBciMW6f4ze9pQwWYQaC8fGVo2Ul/qFjrtzroQQNax9MKWVFz/1ZFdqAs2+h7Wbr9zZw==@nongnu.org
-X-Gm-Message-State: AOJu0YxooM+JN/gjbrAi1zupQfp6OUJgT9VFS8dgVLmHz+thWz3jStRq
- spBTpUE4tM+llWp151lqlmldrm4ehU430/nUx4bAwWrIl520Kf7Fknu5EJTEDQ==
-X-Gm-Gg: ASbGncvB2Fe1k4qfcuTJf25P5dK0lXFLQSmcj6OreV3UgRpM+zObaPs0biuQ8qP67jS
- xSX5ete6CnpREyOsg1c+13ArPMiyP9xlYYgILaH4EB48/+57swruwd9TueHtUjjBYF7LLRrPUxo
- 9IGjhjFW8B3+pMIJZdMAZmc1rII968ebYV+rRy4dV7GFdMryEk1bRRZcD8Qy1ZnqlI/nMOm8yPk
- 5lmjmThaZHzwF20BV6KyR/Gv/ptVJhxcarbS3GfNKWNaxGxf4P0CuQG7G0DdIXeHqlwQpwfI6H7
- BLlPxVMt3PbwGAwNufv6Xczu/xQtSc0/S4eT/v9p3jJ4mPL2NgNycJ8lCHqie44J8XozWmJ2RBi
- /plvQCOoX+d+XhV6e2Dxk1fUSkk87+PhUhn/ln5nhUQisVBPFOr214m/lQsJW4cVSboBM4calgO
- uk8KwcLw==
-X-Received: by 2002:a05:6402:5cb:b0:607:5af9:19b6 with SMTP id
- 4fb4d7f45d1cf-60846875435mr528462a12.15.1749588099593; 
- Tue, 10 Jun 2025 13:41:39 -0700 (PDT)
-Received: from Provence.localdomain
- (dynamic-2a02-3100-2cbf-5d00-0219-99ff-feb2-2458.310.pool.telefonica.de.
- [2a02:3100:2cbf:5d00:219:99ff:feb2:2458])
- by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-607783de2bcsm6521847a12.68.2025.06.10.13.41.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Jun 2025 13:41:39 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Bernhard Beschow <shentey@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 1/5] hw: Fix type constant for DTB files
-Date: Tue, 10 Jun 2025 22:41:27 +0200
-Message-ID: <20250610204131.2862-2-shentey@gmail.com>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250610204131.2862-1-shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1uP9T9-0002ph-Bh; Tue, 10 Jun 2025 20:37:31 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1uP9T7-0007sT-Vx; Tue, 10 Jun 2025 20:37:31 -0400
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 31B1A55C1B9;
+ Wed, 11 Jun 2025 02:37:28 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id q54VDriHUkH2; Wed, 11 Jun 2025 02:37:26 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 4016D55C171; Wed, 11 Jun 2025 02:37:26 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 3E1B4745683;
+ Wed, 11 Jun 2025 02:37:26 +0200 (CEST)
+Date: Wed, 11 Jun 2025 02:37:26 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Bernhard Beschow <shentey@gmail.com>
+cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org, 
+ =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>, 
+ =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>
+Subject: Re: [PATCH 3/5] scripts/meson-buildoptions: Sort coroutine_backend
+ choices lexicographically
+In-Reply-To: <20250610204131.2862-4-shentey@gmail.com>
+Message-ID: <9c873c0c-67ba-7f47-b7eb-316a62b09f0f@eik.bme.hu>
 References: <20250610204131.2862-1-shentey@gmail.com>
+ <20250610204131.2862-4-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: S79JHmtNYBhu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tKJcS4/c3prX
 
-Commit fcb1ad456c58 ("system/datadir: Add new type constant for DTB files")
-introduced a new type constant for DTB files and converted the boards with
-bundled device trees to use it. Convert the other boards for consistency.
+On Tue, 10 Jun 2025, Bernhard Beschow wrote:
+> When changing meson_options.txt, this script gets updated automatically by QEMU
+> tooling which sorts the choices lexicographically. Fix this in preparation of
+> the ext patch.
 
-Fixes: fcb1ad456c58 ("system/datadir: Add new type constant for DTB files")
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/arm/boot.c | 2 +-
- hw/ppc/e500.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Typo: next patch
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 79afb51b8a..64040504a1 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -527,7 +527,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
- 
-     if (binfo->dtb_filename) {
-         char *filename;
--        filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, binfo->dtb_filename);
-+        filename = qemu_find_file(QEMU_FILE_TYPE_DTB, binfo->dtb_filename);
-         if (!filename) {
-             fprintf(stderr, "Couldn't open dtb file %s\n", binfo->dtb_filename);
-             goto fail;
-diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index 809078a2c3..69fe71ad39 100644
---- a/hw/ppc/e500.c
-+++ b/hw/ppc/e500.c
-@@ -411,7 +411,7 @@ static int ppce500_load_device_tree(PPCE500MachineState *pms,
- 
-     if (dtb_file) {
-         char *filename;
--        filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, dtb_file);
-+        filename = qemu_find_file(QEMU_FILE_TYPE_DTB, dtb_file);
-         if (!filename) {
-             goto out;
-         }
--- 
-2.49.0
-
+> Fixes: ccc403ed5844 ("meson: Add wasm build in build scripts")
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+> scripts/meson-buildoptions.sh | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
+> index f09ef9604f..73e0770f42 100644
+> --- a/scripts/meson-buildoptions.sh
+> +++ b/scripts/meson-buildoptions.sh
+> @@ -80,7 +80,7 @@ meson_options_help() {
+>   printf "%s\n" '  --tls-priority=VALUE     Default TLS protocol/cipher priority string'
+>   printf "%s\n" '                           [NORMAL]'
+>   printf "%s\n" '  --with-coroutine=CHOICE  coroutine backend to use (choices:'
+> -  printf "%s\n" '                           auto/sigaltstack/ucontext/windows/wasm)'
+> +  printf "%s\n" '                           auto/sigaltstack/ucontext/wasm/windows)'
+>   printf "%s\n" '  --with-pkgversion=VALUE  use specified string as sub-version of the'
+>   printf "%s\n" '                           package'
+>   printf "%s\n" '  --with-suffix=VALUE      Suffix for QEMU data/modules/config directories'
+>

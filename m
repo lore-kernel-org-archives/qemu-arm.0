@@ -1,87 +1,87 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2003129njc;
-        Wed, 11 Jun 2025 11:36:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUqyNL+YtgMQhzneTAXkSeMNV5BIEi40NkxsivYOYpZArAcnd0bz2tWCa65QG8fk9Z3UVulMF3jW4YGhA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFBQnu+gH5jcdlV+U9JBHstzxFyBcSkev6oWQJPdXU+7wY2GbaLmLfORL4ZHnso/Eph2I34
-X-Received: by 2002:a05:620a:2442:b0:7c5:562d:cd02 with SMTP id af79cd13be357-7d3a88f0e39mr677997985a.41.1749667003797;
-        Wed, 11 Jun 2025 11:36:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749667003; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2003194njc;
+        Wed, 11 Jun 2025 11:36:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXTEkjGSsOjuh1NqmAgtK09pWfOR6C8vPiqjjwVjypy3vIDn2epQOl8bKAOWClQlQfzW6fO+5nSmNNMhg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFzZ6sSpi+/79OJmSbW/TwhjM2t0KQ89p7pqxKqPsuPbaMoq66af9rUUa4041Gi+ggjebtu
+X-Received: by 2002:a05:620a:240b:b0:7d2:18ba:8700 with SMTP id af79cd13be357-7d3b2c95513mr76056385a.7.1749667011080;
+        Wed, 11 Jun 2025 11:36:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749667011; cv=none;
         d=google.com; s=arc-20240605;
-        b=fhTcXT/OcLbDDD/6u7EDi9OAvzB9YzR1TSc1XtSSiUghTHbxsO7+aBrEfxYEAeOANH
-         5Vzq6MEZ8hj5ulJE1HKList2B5qbe5ixTx9QknthoGZ3kg+GDdaSDlLlxF4nLK7oJCjf
-         jXleq0dUPNIxrmi6+CU05HMUSn/9x2d0buCotbB7ldoX5JIDBUQxIhSZQZl9RibKMrp8
-         znNl/rbXRAelMhOcSluSsL6HSxwHdtE4ZdGd5kJBkar2x3L/BgzSQ7s3NVHUry0q3cPX
-         VyyOIusWpnD1Wt/S1p2ZYlWpRkd0FxREm7SKNDXD7j37qZOvHj/9u+xOrMU38n3e5NkS
-         1lVg==
+        b=DNnVjf3Bs0HqoGiT52+ZRhl+rZMYrJ9ZqOirMWx5fqm2H4mk8DYjHA7XglDQjvyXKU
+         5V7r0KcSIlpmExbKbJ6CBMfM5qVJEsM/zP6ZMW26Hq6xukeBVZzFRxcyddzMiG7dOgZB
+         TAECp1T+UhQG/AD1+wobV6nVc9YZN8AIICZF1tOnc8kkjZsFtwMsD2LqPq4oWLUwA6Pl
+         MBSbLXaGlKBJHiXD9b4rs5T3JAxIoSUvN0wG/V4ZFhIiRaYIlD0oaJPrxfMyJjFQanHi
+         B59yM9Lr8Q4lw6wCX4dd0pFbANlc6rw9ldIrIrN3/RL74STO+1pBGBCYwmDLqt8B4DZT
+         LyPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=/2hmw26GO9MntDuKG4kx440hVC19OgahjebBBvbf2WA=;
-        fh=loh9k9y3S2mImjFs3v08l0zZWu2zKrkh48k9P3fQXm8=;
-        b=AjMsZpD26AkOCA2TAWyU9PSjqwQFpJk0gln2r/NoEcTalq9BFNU+TAssmTCfSkOjxu
-         0opi2nVnrZf5GZtkpmvCPDVK6L0iEw/HsibdXqvX7Es+PcJ9dvT/TSgBjPjndn0eeT5g
-         0j32/19XrdPxgL+PC6p7fHiSe9L+OYC2NsTLyBZT9j73W/5kDJUF06RE8m3KKwZJfBvj
-         ETG/42L2rAHc0q+fNC61zgGAhlRuV4H4rkmVbI3gazHKA9WZOIqoqxwOVBWQakXQbO7n
-         SruaSc7yRsEaXfkYHGs9NKEu1YfPcJ/X4/fYz5bCeUqh83+4qDqAqk+hx9+dC7RKLGNX
-         i19A==;
+        bh=lJ0vZgBOtVyV/kxbsVrweB7URiKy+WNZJU2nYcVkU88=;
+        fh=llWsnZZ16TEYjnayUds9QVVisxba1LyOA7TWHTWVEKk=;
+        b=SYY7wu2w4X265B+30LjULBxm//ulT6yWupJJOfDUflqAY9FshlmebsEh/15wdUcnEP
+         O4PdQXANwG03+JtbvOFetR+hJ3jyyK65F0GyUHn5n9EW937FCiyCkh3pSGhBRpMO4gJG
+         zJazNxmu8yfI3ist1dUF+CNa6ABkgL5c44jr1EDKWwAx83HdvZeI0FO+z+5XciI+ru0/
+         QJfYdgxyimb5z1TzSzdoBO8qfP0X3XsmK1V2mTPjezHraeaDB5OIUOZzLy7hddMYVLug
+         csALrmW0BIYgsS4U7ANW0lKYNteNfkTNSW7shYcCGps/TbFsbc1QHRbEE5xdoUdxn8yE
+         eYyQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D3XfTk6b;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ez+/NvcI";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d24b3d0197si1343916585a.71.2025.06.11.11.36.43
+        by mx.google.com with ESMTPS id af79cd13be357-7d38cdbc70asi1022583185a.342.2025.06.11.11.36.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Jun 2025 11:36:43 -0700 (PDT)
+        Wed, 11 Jun 2025 11:36:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D3XfTk6b;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ez+/NvcI";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uPQDO-0008RO-Ra; Wed, 11 Jun 2025 14:30:23 -0400
+	id 1uPQFB-0003uc-16; Wed, 11 Jun 2025 14:32:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAP-00022o-Bk
- for qemu-devel@nongnu.org; Wed, 11 Jun 2025 14:27:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1uPQAh-0002Zz-Vm
+ for qemu-devel@nongnu.org; Wed, 11 Jun 2025 14:27:36 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAJ-0001bS-O4
- for qemu-devel@nongnu.org; Wed, 11 Jun 2025 14:27:16 -0400
+ id 1uPQAc-0001mP-2X
+ for qemu-devel@nongnu.org; Wed, 11 Jun 2025 14:27:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666426;
+ s=mimecast20190719; t=1749666449;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/2hmw26GO9MntDuKG4kx440hVC19OgahjebBBvbf2WA=;
- b=D3XfTk6bv+9bjqVF+Px+PXwSz90+iY0oxLRAQ5/ItDHV3A9q/YcU3SsqMORMIeR1smeIux
- 4iBXkoAzyiy2Kc0VoJG0Uezti7JGiByHZK7/oNQlbhxBZaErt8Qte9F2jkbcz4G6XlpADo
- /A11wcDTy/ggm+AV37xyRiKUCvwJlgM=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ bh=lJ0vZgBOtVyV/kxbsVrweB7URiKy+WNZJU2nYcVkU88=;
+ b=ez+/NvcIRWouQudZdo+LWJb7nRNDp+yuZgM3n9SilMLzgrLwIK9h+EIxdRhSPIpTOzrN9d
+ Bfc4ZjA5qclGGtr+/gBj5OSZsbZOCH24moJ7h1B2VXwKWDQaga/Kw7asK46n3NOZvNNBpK
+ SidoUnWZNF6i4jUuekLND8+8JxWC0xg=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-43-xAiIjpovN3ysLpiLPWXrIA-1; Wed,
- 11 Jun 2025 14:27:04 -0400
-X-MC-Unique: xAiIjpovN3ysLpiLPWXrIA-1
-X-Mimecast-MFC-AGG-ID: xAiIjpovN3ysLpiLPWXrIA_1749666419
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-538-Q0_R4qAbOxyb2Wxe-FzFjA-1; Wed,
+ 11 Jun 2025 14:27:26 -0400
+X-MC-Unique: Q0_R4qAbOxyb2Wxe-FzFjA-1
+X-Mimecast-MFC-AGG-ID: Q0_R4qAbOxyb2Wxe-FzFjA_1749666442
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 839B419560AE; Wed, 11 Jun 2025 18:26:59 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id F403819560A7; Wed, 11 Jun 2025 18:27:21 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C808619560AF; Wed, 11 Jun 2025 18:26:57 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 3B0091956094; Wed, 11 Jun 2025 18:27:20 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -110,17 +110,18 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PULL 20/31] hw/net/tulip: skip automatic zero-init of large array
-Date: Wed, 11 Jun 2025 14:25:22 -0400
-Message-ID: <20250611182533.200590-21-stefanha@redhat.com>
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Klaus Jensen <k.jensen@samsung.com>
+Subject: [PULL 28/31] hw/scsi/megasas: skip automatic zero-init of large arrays
+Date: Wed, 11 Jun 2025 14:25:30 -0400
+Message-ID: <20250611182533.200590-29-stefanha@redhat.com>
 In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
 References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -144,38 +145,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Dc2xdX/ehBk1
+X-TUID: UCESxoJht+iE
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The 'tulip_setup_frame' method has a 4k byte array used for copynig
-DMA data from the device. Skip the automatic zero-init of this array
-to eliminate the performance overhead in the I/O hot path.
+The 'megasas_dcmd_pd_get_list' and 'megasas_dcmd_get_properties'
+methods have 4k structs used for copying data from the device.
+Skip the automatic zero-init of this array to eliminate the
+performance overhead in the I/O hot path.
 
-The 'buf' array will be fully initialized when reading data from the
-device.
+The 'info' structs are manually initialized with memset(). The
+compiler ought to be intelligent enough to turn the memset()
+into a static initialization operation, and thus not duplicate
+the automatic zero-init. Replacing memset() with '{}' makes it
+unambiguous that the arrays are statically initialized.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-id: 20250610123709.835102-21-berrange@redhat.com
+Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
+Reviewed-by: Harsh Prateek Bora <harshpb@linux.ibm.com>
+Message-id: 20250610123709.835102-29-berrange@redhat.com
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- hw/net/tulip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/scsi/megasas.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/hw/net/tulip.c b/hw/net/tulip.c
-index 63fe513458..319af906c8 100644
---- a/hw/net/tulip.c
-+++ b/hw/net/tulip.c
-@@ -629,7 +629,7 @@ static void tulip_setup_filter_addr(TULIPState *s, uint8_t *buf, int n)
- static void tulip_setup_frame(TULIPState *s,
-         struct tulip_descriptor *desc)
- {
--    uint8_t buf[4096];
-+    QEMU_UNINITIALIZED uint8_t buf[4096];
-     int len = (desc->control >> TDES1_BUF1_SIZE_SHIFT) & TDES1_BUF1_SIZE_MASK;
-     int i;
+diff --git a/hw/scsi/megasas.c b/hw/scsi/megasas.c
+index 55cd188bd5..844643d916 100644
+--- a/hw/scsi/megasas.c
++++ b/hw/scsi/megasas.c
+@@ -981,13 +981,11 @@ static int megasas_event_wait(MegasasState *s, MegasasCmd *cmd)
  
+ static int megasas_dcmd_pd_get_list(MegasasState *s, MegasasCmd *cmd)
+ {
+-    struct mfi_pd_list info;
+-    size_t dcmd_size = sizeof(info);
++    struct mfi_pd_list info = {};
+     BusChild *kid;
+     uint32_t offset, dcmd_limit, num_pd_disks = 0, max_pd_disks;
+     dma_addr_t residual;
+ 
+-    memset(&info, 0, dcmd_size);
+     offset = 8;
+     dcmd_limit = offset + sizeof(struct mfi_pd_address);
+     if (cmd->iov_size < dcmd_limit) {
+@@ -1429,11 +1427,10 @@ static int megasas_dcmd_cfg_read(MegasasState *s, MegasasCmd *cmd)
+ 
+ static int megasas_dcmd_get_properties(MegasasState *s, MegasasCmd *cmd)
+ {
+-    struct mfi_ctrl_props info;
++    struct mfi_ctrl_props info = {};
+     size_t dcmd_size = sizeof(info);
+     dma_addr_t residual;
+ 
+-    memset(&info, 0x0, dcmd_size);
+     if (cmd->iov_size < dcmd_size) {
+         trace_megasas_dcmd_invalid_xfer_len(cmd->index, cmd->iov_size,
+                                             dcmd_size);
 -- 
 2.49.0
 

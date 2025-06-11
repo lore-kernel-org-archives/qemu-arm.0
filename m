@@ -1,87 +1,87 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2002003njc;
-        Wed, 11 Jun 2025 11:34:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVQ4VsqwiVpKbqK890UJ0E2jTKPRIvstqUULpEeQrILeH9sx1UF86mPESiTAMTKNiCjZPRCn57LgIMHeg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHtsHFaFd7iVm1ceYFog/v5xTTES7ryOcqazdNGkxttz4eL7rIdin1ttVR1gTe1UPG7WCPu
-X-Received: by 2002:a05:620a:3197:b0:7ce:c471:2b8e with SMTP id af79cd13be357-7d3b29fff2emr80740985a.10.1749666876538;
-        Wed, 11 Jun 2025 11:34:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749666876; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2002079njc;
+        Wed, 11 Jun 2025 11:34:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVAhib3kR+d6BPNemxrrkYx0EI13vdjwGOjiyI/O/o9D2f+FqxDBRyMqpH1q6ELykQr70sau1oLzA16qw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHdu4gX1VoFY556h9yyv+WuBwrMj1I/c6hoi1FDJNpTyJP9q1eeUGt3P3GYByvaHcr2qMYJ
+X-Received: by 2002:a05:6214:e4b:b0:6fa:cdc9:8b02 with SMTP id 6a1803df08f44-6fb34d2a6c0mr3426956d6.16.1749666883054;
+        Wed, 11 Jun 2025 11:34:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749666883; cv=none;
         d=google.com; s=arc-20240605;
-        b=P2qQAwt078swkTpAgZH7djYdezI6Yk9fUD1rmBsjsookhU0N3Y1nGxFn8n0RWhP/aM
-         8a3A6p2E1xKYRhPMyPov6WdXB8WOjv0wAAv3Z4UJPdlSxZ3xvZ46sdMDR/JZxUGuzs0a
-         til8EVc96AYv5HnUxbeDVXwYkc6Pgr0DPS38/qi690yOn1LLu81EO2f4+1rOxcDhh37J
-         EhZlMeoTj1IRH6BR0sVDRQIMkRJ8QKv3SJm64rPb68MNXCqgnWnxq4cH9Ja/t90UCULP
-         pDmPeJV0a08rEmNORqbpTykroh6P/YgG3mxcDi226WbEy3LPbuFl0nHToBI/n9lewGBd
-         UuWw==
+        b=lv/znNaxGehgD1Vwpuy18TMmifJJ5NhspANJvfF/Um0ZTymGE8b5A4/aMWKopP8tv/
+         sSFy4UtsJalFrdvfuMl6F8gNTywdbFt/8e1uiZ9EH7tT98Sx+eZ3tkXVuZ4Qsis9joz7
+         Zu63HfdUdNC7IS2IMDXLlTXvRu4bk/Zu67zzwhSrAFnRdjPU4q03XOhbVc2U2l+eezmb
+         piaNrKgbpkUaPTfXwwtC/OOOvl9F+RU7W3bVo17t/Eb8LRPnSN+2sHKkhXvvLGLVmlwk
+         iBmrXf3uEO8bV0Lgxm2siU82qfeucizFqKWDvxPoB9RnwGC60qmyP1l2liJpb07YBoqc
+         Epjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=DA+s4Ip/ag7ChTelqOTkfJ0xAlR4kkpE9uIMvxvue8g=;
-        fh=loh9k9y3S2mImjFs3v08l0zZWu2zKrkh48k9P3fQXm8=;
-        b=I0r5b7F8PCfxgeEZ4/5y1g3fRvku10WD4hck5v/VYbtzpAPKpEHxNO1jZhD+JgXIVV
-         /L+C8eHA9raFBGWJUxpCNyaTA077k0elXupT63aX0D3vP6/xYBgB7bvhNuAUuyBnoZOg
-         8XBjY0gaZzVlzPXq4skGq2YIHQ8L4W4RZnOVLR2Z9mLBrONEB8k6YYKLpuDRib838e67
-         kPdSVMpWYytFmWHy9oPmXEC7L50fWsjmWvaFpDf3zpuzgbt+TCs/i6u5IJItRof3YznQ
-         MZQ0lPdsR/J4MHKYGrta7Vjiw4XGn4I4yuRuJjQkTBH7xnbM4KNqgvcqudGZ9FAGYuzA
-         sQcg==;
+        bh=GuZNk0F1bodSwirhOG/JBltWIHXjauSG+o14JA3+usQ=;
+        fh=llWsnZZ16TEYjnayUds9QVVisxba1LyOA7TWHTWVEKk=;
+        b=E+aQbGuiWWq3knqumgDjrJKE3+ya/MGnp6PNgyNW1ZFkhRnyAlyVCp7m4UzKyBQ28V
+         nD+1kqnH6enPPYYrqhjqBak7b+q6yV8Ds1ouu1KrGla7vATZxzXNEt/cga1FYXXD4wTh
+         L8vq1pkvNivyJJ6c9LUEahDw76FuPkk0Q4OGA8u3pLIutRL92FPEABzyXEZM7jrEKVti
+         pBafhm+DZwbg09cHjhJ24BAFmP97vPXqlvVmV61pWGfOMC7EkD/RiFMkt8idW33lkhIB
+         lMak5c68d4pcU1z8+qbn5tmdux0yf7AHtpzbPSCrou8MVd+9GwxFzGdyuouqba7MDuWe
+         riZQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ConDMXqy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EEFzaF2O;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d25a60ec3csi1273945885a.351.2025.06.11.11.34.36
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fb09ab0958si128453966d6.101.2025.06.11.11.34.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Jun 2025 11:34:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 11 Jun 2025 11:34:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ConDMXqy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EEFzaF2O;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uPQCr-00079Q-Iv; Wed, 11 Jun 2025 14:29:50 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uPQFq-0005j2-P2; Wed, 11 Jun 2025 14:32:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAN-00020R-H3
- for qemu-arm@nongnu.org; Wed, 11 Jun 2025 14:27:17 -0400
+ id 1uPQAo-0002rt-Nk
+ for qemu-devel@nongnu.org; Wed, 11 Jun 2025 14:27:43 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAJ-0001cK-M6
- for qemu-arm@nongnu.org; Wed, 11 Jun 2025 14:27:14 -0400
+ id 1uPQAl-0001rd-2u
+ for qemu-devel@nongnu.org; Wed, 11 Jun 2025 14:27:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666429;
+ s=mimecast20190719; t=1749666458;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DA+s4Ip/ag7ChTelqOTkfJ0xAlR4kkpE9uIMvxvue8g=;
- b=ConDMXqy6J+wVlzrsm+hjvtpuhxXw5SMgScgILl3/RIprdA5DTvui4uNHvRoE6iD2BWUcP
- /jQPhe/meLjnL1wxhcMSn8tex2vqZvSTuF2Mv51gNd7iP3DRHwJLcAlSVkSnEBIJPfSu7o
- /lo8nO3b7/AJPPAl3jL08f3/kQy6sWk=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=GuZNk0F1bodSwirhOG/JBltWIHXjauSG+o14JA3+usQ=;
+ b=EEFzaF2OYIthOClB3AUjp4CxcX8783PXf69ReNCXbwuEHYYJaKD3+ZacD8qONwAe0HhSO0
+ KXiLx4zhCB42bkUQkkH10tw6C8QnvcnkqvPZO/i/cjVXsPPuvJIdYXDdN+J6K/gz6XHytF
+ hQIkCsg28lxxxc0vubOru1ks7waN8AQ=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-421-KZTdJYYaNVyTK7d4JhVIcA-1; Wed,
- 11 Jun 2025 14:27:06 -0400
-X-MC-Unique: KZTdJYYaNVyTK7d4JhVIcA-1
-X-Mimecast-MFC-AGG-ID: KZTdJYYaNVyTK7d4JhVIcA_1749666422
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-119-IlUTyrPmOYmn9OcCGGCdvw-1; Wed,
+ 11 Jun 2025 14:27:33 -0400
+X-MC-Unique: IlUTyrPmOYmn9OcCGGCdvw-1
+X-Mimecast-MFC-AGG-ID: IlUTyrPmOYmn9OcCGGCdvw_1749666450
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C5F981956048; Wed, 11 Jun 2025 18:27:02 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id F35F919560B4; Wed, 11 Jun 2025 18:27:29 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id F07FC18003FC; Wed, 11 Jun 2025 18:27:00 +0000 (UTC)
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 964ED18003FC; Wed, 11 Jun 2025 18:27:27 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -110,17 +110,17 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PULL 21/31] hw/net/virtio-net: skip automatic zero-init of large
- arrays
-Date: Wed, 11 Jun 2025 14:25:23 -0400
-Message-ID: <20250611182533.200590-22-stefanha@redhat.com>
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Klaus Jensen <k.jensen@samsung.com>
+Subject: [PULL 31/31] net/stream: skip automatic zero-init of large array
+Date: Wed, 11 Jun 2025 14:25:33 -0400
+Message-ID: <20250611182533.200590-32-stefanha@redhat.com>
 In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
 References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -132,57 +132,53 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Zn6uG4nQwDKO
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ue6e7FuVij/u
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The 'virtio_net_receive_rcu' method has three arrays with
-VIRTQUEUE_MAX_SIZE elements, which are apprixmately 32k in
-size used for copying data between guest and host. Skip the
-automatic zero-init of these arrays to eliminate the
-performance overhead in the I/O hot path.
+The 'net_stream_send' method has a 68k byte array used for copying
+data between guest and host. Skip the automatic zero-init of this
+array to eliminate the performance overhead in the I/O hot path.
 
-The three arrays will be selectively initialized as required
-when processing network buffers.
+The 'buf1' array will be fully initialized when reading data off
+the network socket.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-id: 20250610123709.835102-22-berrange@redhat.com
+Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
+Reviewed-by: Harsh Prateek Bora <harshpb@linux.ibm.com>
+Message-id: 20250610123709.835102-32-berrange@redhat.com
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- hw/net/virtio-net.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ net/stream.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-index 221252e00a..eb93607b8c 100644
---- a/hw/net/virtio-net.c
-+++ b/hw/net/virtio-net.c
-@@ -1911,9 +1911,9 @@ static ssize_t virtio_net_receive_rcu(NetClientState *nc, const uint8_t *buf,
-     VirtIONet *n = qemu_get_nic_opaque(nc);
-     VirtIONetQueue *q;
-     VirtIODevice *vdev = VIRTIO_DEVICE(n);
--    VirtQueueElement *elems[VIRTQUEUE_MAX_SIZE];
--    size_t lens[VIRTQUEUE_MAX_SIZE];
--    struct iovec mhdr_sg[VIRTQUEUE_MAX_SIZE];
-+    QEMU_UNINITIALIZED VirtQueueElement *elems[VIRTQUEUE_MAX_SIZE];
-+    QEMU_UNINITIALIZED size_t lens[VIRTQUEUE_MAX_SIZE];
-+    QEMU_UNINITIALIZED struct iovec mhdr_sg[VIRTQUEUE_MAX_SIZE];
-     struct virtio_net_hdr_v1_hash extra_hdr;
-     unsigned mhdr_cnt = 0;
-     size_t offset, i, guest_offset, j;
+diff --git a/net/stream.c b/net/stream.c
+index 4de5613844..6152d2a05e 100644
+--- a/net/stream.c
++++ b/net/stream.c
+@@ -148,7 +148,7 @@ static gboolean net_stream_send(QIOChannel *ioc,
+     NetStreamState *s = data;
+     int size;
+     int ret;
+-    char buf1[NET_BUFSIZE];
++    QEMU_UNINITIALIZED char buf1[NET_BUFSIZE];
+     const char *buf;
+ 
+     size = qio_channel_read(s->ioc, buf1, sizeof(buf1), NULL);
 -- 
 2.49.0
 

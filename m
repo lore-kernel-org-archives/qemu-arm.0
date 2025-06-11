@@ -1,175 +1,218 @@
-Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp2755678njc;
-        Wed, 11 Jun 2025 04:46:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUAhEXOqu4svSbp7ghNuwwFa0GNjtMziMlOqfcxeSGLRlwPYqM9HDOQCASgiYija39Ju3IBdz+JL9mC4w==@linaro.org
-X-Google-Smtp-Source: AGHT+IG41+yhOcCRHcprXUymrQCHMAzYhLScuMsPTIjGkPW4/rSuubkOR8rZtE3rqv21iTwzFhhz
-X-Received: by 2002:a05:620a:4415:b0:7cd:47bf:cadc with SMTP id af79cd13be357-7d3a88920aamr495360985a.47.1749642383027;
-        Wed, 11 Jun 2025 04:46:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749642383; cv=none;
+Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp2767866njc;
+        Wed, 11 Jun 2025 05:05:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXRQqdhXFs3E6/5/36k0PEGxc1sN0hAGMm/FvSwlwnOgzb/T83957Dun+yeAAVYvpGCDHfz3saRJHlznQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGq+XkKHzvGAFF4wdqibCzxXu/w4nCjR9VkSnYQjhFFMok/TywLQAk0jrAVrXKhotx3rm1g
+X-Received: by 2002:a05:6000:400f:b0:3a4:fb33:85ce with SMTP id ffacd0b85a97d-3a558a31369mr1882176f8f.46.1749643507950;
+        Wed, 11 Jun 2025 05:05:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749643507; cv=none;
         d=google.com; s=arc-20240605;
-        b=WTvMKKSQQpKz/5xEhZ5zgoDDQvlpVxBXCth6bHLpzfidspYg3DoGtm+losHChvtszL
-         2Td8BAdUeDMBbECTl0Sw0aPTRvEDSrz8/VuzWHR0rY0F6RyNS4hyOn/WhmqLkT8Bowyb
-         +bayyaEIL1Fks++GPBI2mZ+t2PhlDPbv3Hy6EGDa+WmgywGoZzDbmMIbaHPip0RyJN+6
-         EEV89h6dhOrrv9dv3wYFimjp8WkM7CPPY/4/S64kKRf7pQkajKpnlqg9NT3C+8MAM2i7
-         cPWkXeY5n+Y4bKL3k3P1qz7kCMrJQ6L+OneKvOnxJfcRRxmTWGNMs9kavdJ+9xlbkODk
-         dLhg==
+        b=JRcmf+u9Q3UNG6+w8c38u1id9t74urf6cgY8AFG6Ogt73CwGEZBS380ates2GiH9Fo
+         7TnP0r65WGeLlrtScD6vZohIsDhbOXmTMLJy9qSVHtdktn9QXhe0Vuj0eTdcV456MPf4
+         1BnXteenUYl7kgCSZdwcxySmoHrcQQrjNVsVCMEYw0ICnuO2oWo0gFO+HnhRo1DDX+Zc
+         z56FZ1l3WM+iiM7kXnHw+/txv1wPmN5HAwfjuUjzsPAcXhjQkcYcpiwUoESV6JCQBL7n
+         nGo2xH+BY8lF8Xuj5JyU2OSWaqhNS5Adn/AiHfBDR9PH3U109HGmIiWdJyBA4bOjEBA0
+         hVVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=I+RjfvR29jVpx/RS9vvkEjWUqUTqCT4u04INfAC/UIk=;
-        fh=KcZF1R3FzP78LL03+MmPpA6sMKg5K5Gg1d1KOC4XeDc=;
-        b=COpBrT7zpDnJBZLVLneUR6H2380VnA3UM7vZe7BpvfKmVWjOHoK2+nCOB1zIWPuYrN
-         VORHKc3VJAy/gZnpKYq18ubfub39Z+WbDZ9lthkdO+EnMpfm43OeVrc9AsAo8ONNSL5o
-         OtpTqcESY04o9KED3ulo3SW1DKhNQGptkoxiKFZIE3UWUh99DIr3XWfO/wK6HQr6XXMX
-         ntImFWLrP/cmmvecezFqqhVaVZg6iMVLbG5/EfdRUjeXEoECWQVAZGwI/BGBn5yOKphH
-         ztxv+FJ1qpSKCOOgXW3m0BngrQ5M8ydaxOzSVOjUDHezXg7vUb4G2Qy/o70+TZAAT+qJ
-         Y80g==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=ZTOi8eNcnBD9S4r3sPmmoIhTe+QERnirZ7HtVLzvHGM=;
+        fh=hr6479CkBWxTh4ZZnvJFx8ZPKy6ZM49LHQc9XEDV6LA=;
+        b=HAz77CeDjfBaRCMbPcpdCNd6Ug7XQmVUPBBiN/3rLDv8ib8kOrCJgOd8dnx0xl1OxC
+         Q9iDKA93nRo7qaz3F0vy+SXk0eJA3vkQuaaGf7b6AAU/RWYVgpBFf6UQxv7/dgd3hQET
+         F8ZFuJ7NFEKMuwDtTzz8QhoGIsJxfGY50QrmEyGTxdf4zKmO/PHWNhbXXMkjNiKx/LLd
+         WFfBF43CYltLpnvgvk+GXxrUqfcIufabauBBDWFAJuY6zSua3LG9Np/EtjgxyaRZSMwC
+         QETfVqn3Ru9egJnznQZ11OFA24lQ+DGFw8iMgBWoheFoIi7MgZByydOezYqtUoqz5bwI
+         BCBA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d24b3cb7fdsi1327798685a.104.2025.06.11.04.46.22
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cNfrdKXO;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a5324a6a66si8967859f8f.813.2025.06.11.05.05.07
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Jun 2025 04:46:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Jun 2025 05:05:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uPJuK-0007rQ-Id; Wed, 11 Jun 2025 07:46:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1uPJuE-0007qT-DY; Wed, 11 Jun 2025 07:46:14 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1uPJuA-0002j9-RE; Wed, 11 Jun 2025 07:46:09 -0400
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 7585255C1BA;
- Wed, 11 Jun 2025 13:45:58 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id f_baXMbxMlG9; Wed, 11 Jun 2025 13:45:56 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 7DA2955C171; Wed, 11 Jun 2025 13:45:56 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 7B9A2745682;
- Wed, 11 Jun 2025 13:45:56 +0200 (CEST)
-Date: Wed, 11 Jun 2025 13:45:56 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>
-cc: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org, 
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org, 
- =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>
-Subject: Re: [PATCH 4/5] configure: Add dtc option
-In-Reply-To: <aElCJnmjrB-X9M-n@redhat.com>
-Message-ID: <6eb6aa79-33f8-57ea-5714-af264557f8c8@eik.bme.hu>
-References: <20250610204131.2862-1-shentey@gmail.com>
- <20250610204131.2862-5-shentey@gmail.com>
- <cdfc561e-23a9-607a-d9a8-70e07e73e0fd@eik.bme.hu>
- <aElCJnmjrB-X9M-n@redhat.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cNfrdKXO;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1749643506;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ZTOi8eNcnBD9S4r3sPmmoIhTe+QERnirZ7HtVLzvHGM=;
+	b=cNfrdKXO8YhGmfK56f7pNh0MeOrub6OJOGSusVN2wCpwGJZWoNjtjh4rxfKmUUPvaqg9uK
+	e3lUlIdLnAdRB2X1zXJMNQCGru8UrwZrn/qTh6JR8XxyUKZr4Be6W04U437LESDMziMNF5
+	o+b9b18H4lgYwJXRD8iONLfsLfmUdlg=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-267-9GTLgm-RPQelKKmBOjE1bA-1; Wed, 11 Jun 2025 08:05:05 -0400
+X-MC-Unique: 9GTLgm-RPQelKKmBOjE1bA-1
+X-Mimecast-MFC-AGG-ID: 9GTLgm-RPQelKKmBOjE1bA_1749643504
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-450d50eacafso37117495e9.3
+        for <alex.bennee@linaro.org>; Wed, 11 Jun 2025 05:05:05 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749643504; x=1750248304;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZTOi8eNcnBD9S4r3sPmmoIhTe+QERnirZ7HtVLzvHGM=;
+        b=uThOeotuFObmmVhJ4PSxRxSYJHuM2odSoptB1Yt+RHyo5jE86RWylHvfXaYeOfR7Cz
+         1vGMnzh3BiFMQ5wzRimTMy0g4Mf1d8idLKxre5Xu4Rz906SqtT6HABEbA9O3PQOd6k5w
+         UToSQ/96TFIuQcE9aALdmOQ9nIOOcTXVyMrq+X1+NxcPjWjvIajEMK1aMOwuKf3Cjt3d
+         P/n9JCsoa6Wd+217PMlDJ0+St+ZvTN2mF+iDzuNjHb7qKpHwLj+7+pr9VmOxdv8ClXfh
+         eP8xfBwWEEUfx+GCCXx8urF8670myni0xDN4RAvcgPBv4vvYHngOTIJHX9FKyVZ843+j
+         PzOA==
+X-Forwarded-Encrypted: i=1; AJvYcCXQ38fBw98WuoMPyBbVE4rie+ZqcXmw+Tt581bNXGA9fSNHUXNnqqYD/VA0Irq0bd6iTDX8Bo9foluAgg==@linaro.org
+X-Gm-Message-State: AOJu0YzwB0g6/5pUcCS4kKRoiliy3HbM0iwf4Lan/oU2we7eG0LyW5eX
+	cCoj1/e8TJfI5ygERSMqwE1x9pUfkDGcsK3wX0elrbL1yZSgdEVpchVFaR5+SjfyqA1gdDQmAoS
+	owhCTEg8r58vWMDMASeXcTgETSUs92Xf+Jspmtud+yzInLTZcmpoHHPQeMw==
+X-Gm-Gg: ASbGncuGMWZtz8Z6Tfc1yMVImFM5Ghw/p5VEWgVkBWJ+U+aTqvRnSiNYi7A/42hSOLT
+	30ZnB/UAye6aruSHW0FZ6V4LaL8jTdzxB00ExlEF/LemVhJIlc+mS4DG4J8RNRnV5JgYu/axQmt
+	bqaP8IgJ36pQA+sQB9lAxQtz+i4HTeKm95Q+8y5KiJ9M5MNc9/GgWep86tYXHzsqEbpSAL6lWqa
+	k77aNiz7mE47W/XE1P2HkBnLmcdw6BgQNVtnIFIAeIenp7H3xwaOQkknF1GHZHsmfyUs4T88npv
+	utWHb8wuPgMcRGvuL0m5dhsPdGIOGLUEn6tcHFhktn/LcdOK5hp05Jpt+AriBY7gut3k/w==
+X-Received: by 2002:a05:600c:3d13:b0:450:ddb7:ee4d with SMTP id 5b1f17b1804b1-453248cb4c2mr25727665e9.24.1749643504195;
+        Wed, 11 Jun 2025 05:05:04 -0700 (PDT)
+X-Received: by 2002:a05:600c:3d13:b0:450:ddb7:ee4d with SMTP id 5b1f17b1804b1-453248cb4c2mr25726945e9.24.1749643503404;
+        Wed, 11 Jun 2025 05:05:03 -0700 (PDT)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a53244f0cbsm14987328f8f.81.2025.06.11.05.05.01
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 11 Jun 2025 05:05:02 -0700 (PDT)
+Message-ID: <bc4fdea5-4e19-420e-a5a0-779ec5fbb6a2@redhat.com>
+Date: Wed, 11 Jun 2025 14:05:00 +0200
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-1454390608-1749642356=:93329"
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JqrrMXAnbVmH
+User-Agent: Mozilla Thunderbird
+Reply-To: eric.auger@redhat.com
+Subject: Re: [PATCH v2 04/25] hw/pci-host/gpex-acpi: Add native_pci_hotplug
+ arg to acpi_dsdt_add_pci_osc
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, imammedo@redhat.com, gustavo.romero@linaro.org,
+ anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com,
+ pbonzini@redhat.com, philmd@linaro.org, alex.bennee@linaro.org
+References: <20250527074224.1197793-1-eric.auger@redhat.com>
+ <20250527074224.1197793-5-eric.auger@redhat.com>
+ <20250530102711.000034eb@huawei.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20250530102711.000034eb@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: rZkq8zZfJA4720UylikZz5itNWm_dJBf7qkRGt6cNgs_1749643504
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-TUID: fLbcwXL2XfqL
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Hi Jonathan,
 
---3866299591-1454390608-1749642356=:93329
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8BIT
-
-On Wed, 11 Jun 2025, Daniel P. Berrangé wrote:
-> On Wed, Jun 11, 2025 at 02:37:08AM +0200, BALATON Zoltan wrote:
->> On Tue, 10 Jun 2025, Bernhard Beschow wrote:
->>> The next patch will make dtc mandatory for boards with a bundled DTB, causing
->>> these boards to be omitted when dtc is missing. Allow packagers to force the
->>> build of those boards by providing an option.
+On 5/30/25 11:27 AM, Jonathan Cameron wrote:
+> On Tue, 27 May 2025 09:40:06 +0200
+> Eric Auger <eric.auger@redhat.com> wrote:
+>
+>> Add a new argument to acpi_dsdt_add_pci_osc to be able to disable
+>> native pci hotplug.
 >>
->> I don't like this. This might result in some machines missing from some
->> distros if they don't notice this and forget to update their packages and
->> these are machines I care about.
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+> Hi Eric,
 >
-> "Someone might not notice & screw up" is pretty much an argument for
-> not doing anything at all. We publish release notes to alert distros
+> Makes me wonder what we should do for CXL - I was expecting
+> a very similar change.  Currently seems like those always
+> allow native hotplug (__build_cxl_osc_method()) on x86 and
+> arm64 (patches on list).
+>
+> Maybe that has only been working because the kernel is reading
+> the PCI _OSC first. Or it's always been doing native hotplug
+> an no one noticed.  A quick look at logs shows the kernel
+> first gets told no, then yes as it queries the two different
+> _OSC types. 
+>
+> Looks like I should fix that _OSC then it should be carried
+> over to this as well (or if you don't mind adding a trivial
+> patch to replicate this  patch for the CXL _OSC, even better!)
 
-More like "if it ain't broke don't fix it".
+If you don't mind I would prefer we carry out cxl changes separately as
+it may also require some test blob changes and I am not much
+knowledgable on CXL yet. I would prefer stabilizing this series before
+extending it.
 
-> to these kind of changes which is a reasonable effort on our part.
-> Distros need to play their part by reading them and adapting to the
-> changes. They can also compare the available options with new and
-> old QEMU to identify any new build features they need to handle when
-> updating.
->
->>                                  Also what guarantees that we don't get bugs
->> by compiling the device tree with different dtc versions which might
->> generate different binaries? The binaries we have now are known to work and
->> don't take much space so keeping them for convenience might be simpler. If
->> it worked so far why change it now?
->
-> Ultimately the DTC project has responsibility to not cause regressions
-> in new releases they issue, as is the case for any 3rd party dep that
-> we rely on.
->
-> We have CI jobs that can run on different distros. If we have coverage
-> of the boards in functional test suite that provides a way to validate the
-> operation with differing DTC versions as a sanity check.
->
-> Distributing pre-built binaries in source release tarballs is a long
-> standing issue with QEMU's releases. If we can eliminate the pre-bbuilt
-> DTB and only ship the source that is a good thing IMHO.
->
->> If this was using dtc from the submodule when not using system libfdt then
->> at least it would not result in dropped machines and we had a known working
->> dtc to compile with. Why isn't that used when we already have it for libfdt?
->
-> Are there any platforms that we target which still lack dtc ? The
-> submodule was there to plug gaps in distro support long ago, but
-> if every distro has dtc available the submodule is redundant.
+But sure if it is relevant we can then mimic that change on cxl path.
 
-OK, can we then make libfdt and dtc mandatory and not build at all instead 
-of disabling boards without it? I only care that my boards will be in 
-distro packages so users don't have to compile and I don't have to provide 
-binaries which would also be ensured if we require dtc, then the dtbs can 
-be dropped.
-
-There's still a potential issue that some of the dts files are old and may 
-not compile with newer dtc and changing them may upset the guest but 
-hopefully we won't get that.
-
-Regards,
-BALATON Zoltan
---3866299591-1454390608-1749642356=:93329--
+Eric
+>
+> Other than that, this patch looks fine to me though I do wonder
+> if we could unify this with build_q35_osc_method()?
+> I'm not the best at reading AML generation code but whilst
+> they are written quite differently they seem to be functionally
+> very similar, more so after this patch.
+>
+>> ---
+>>
+>> rfc -> v1:
+>> - updated the "Allow OS control for all 5 features" comment
+>> ---
+>>  hw/pci-host/gpex-acpi.c | 15 ++++++++-------
+>>  1 file changed, 8 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+>> index 0aba47c71c..f34b7cf25e 100644
+>> --- a/hw/pci-host/gpex-acpi.c
+>> +++ b/hw/pci-host/gpex-acpi.c
+>> @@ -50,7 +50,7 @@ static void acpi_dsdt_add_pci_route_table(Aml *dev, uint32_t irq,
+>>      }
+>>  }
+>>  
+>> -static void acpi_dsdt_add_pci_osc(Aml *dev)
+>> +static void acpi_dsdt_add_pci_osc(Aml *dev, bool enable_native_pcie_hotplug)
+>>  {
+>>      Aml *method, *UUID, *ifctx, *ifctx1, *elsectx, *buf;
+>>  
+>> @@ -77,11 +77,12 @@ static void acpi_dsdt_add_pci_osc(Aml *dev)
+>>      aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
+>>  
+>>      /*
+>> -     * Allow OS control for all 5 features:
+>> -     * PCIeHotplug SHPCHotplug PME AER PCIeCapability.
+>> +     * Allow OS control for SHPCHotplug, PME, AER, PCIeCapability,
+>> +     * and PCIeHotplug depending on enable_native_pcie_hotplug
+>>       */
+>> -    aml_append(ifctx, aml_and(aml_name("CTRL"), aml_int(0x1F),
+>> -                              aml_name("CTRL")));
+>> +    aml_append(ifctx, aml_and(aml_name("CTRL"),
+>> +               aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)),
+>> +               aml_name("CTRL")));
+>>  
+>>      ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
+>>      aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
+>> @@ -192,7 +193,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+>>              if (is_cxl) {
+>>                  build_cxl_osc_method(dev);
+> This was the path I was expecting to change as well.
+>
+>>              } else {
+>> -                acpi_dsdt_add_pci_osc(dev);
+>> +                acpi_dsdt_add_pci_osc(dev, true);
+>>              }
+>>  
+>>              aml_append(scope, dev);
+>> @@ -267,7 +268,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+>>      }
+>>      aml_append(dev, aml_name_decl("_CRS", rbuf));
+>>  
+>> -    acpi_dsdt_add_pci_osc(dev);
+>> +    acpi_dsdt_add_pci_osc(dev, true);
+>>  
+>>      Aml *dev_res0 = aml_device("%s", "RES0");
+>>      aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));

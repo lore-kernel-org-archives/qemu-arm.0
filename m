@@ -1,396 +1,268 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp1911583njc;
-        Wed, 11 Jun 2025 06:15:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWAhM1/7BUW4Z2FFMOAMrqp5wcekbPg9Pq79aFHLuS3f6yhSm6MsZjZY4eBTCc4/EoG2MvGdy1Y35KsZQ==@linaro.org
-X-Received: by 2002:a17:902:fc84:b0:235:eb71:a386 with SMTP id d9443c01a7336-23641b2620emr44220565ad.50.1749647707898;
-        Wed, 11 Jun 2025 06:15:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749647707; cv=none;
+Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp2930382njc;
+        Wed, 11 Jun 2025 08:57:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV8zfZruNKS2HV209KY9iGOL47Kz8JwtufbGOJwsBKt+zaSlAS2mrfFmotgE7bbvP/zKksjbUExEDJeNw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHk6tPdcgVMA7MRbwm5aD6BPFMe24pkLiiwVjJb2og2s6mUvhFWPYtWUzrP9LnL0MGbT6Sz
+X-Received: by 2002:a05:620a:288c:b0:7ce:bd8b:2d08 with SMTP id af79cd13be357-7d3b29d480amr11894685a.10.1749657442019;
+        Wed, 11 Jun 2025 08:57:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749657442; cv=none;
         d=google.com; s=arc-20240605;
-        b=OrU3k46QrCC9YqX/3KDfWRhLZOxn2b8ckltEv7/6V7lsTGa+aWxMhtCAEQdF7oo+U5
-         adewjxa/JKS8WlIXwzOOJP9hiJfTCF0hJsAwDsDLdypWnJqSpOvi/FOtw8c+0wO4hLHU
-         8RtuTfl/VHrZTcHSoPYvboN0Y8ziqC+V4/ycMu/1Tmg6d67ospP/gRc/+RnYMj3pGkVX
-         GDbXRQMaHgG/B70nVSHNoWbZWZaXY4b1JRh0j8DcEW1ouhlVdr2sjkaNa1OXJNBbLN9F
-         Ak2h6qpREitVqRVi8qiw6tHGp4Ix6w8eH9rs9wLXouguL+aOCc+XKGTKRi/3C6ON53wB
-         pS+Q==
+        b=U7FgDgc/UQ4BRmWWQbCRDQr9UJOW+H4XqBhJDQUVmk6S4ttlin7nOYkXPuIbtUY+AR
+         B5pTJtekxHfHvLo8+ui7ejlWDeCJTlRWbVPIvyyLc5w0yVNOz5lAOiqs5lQwnqaEW7Dq
+         LxOSteBmuQ7lTI78g4pWyeRtPEoj33YAMNoFBT4jFDN4DE8knUAvvxe2EenLjwLMhsVm
+         YRr37i06mDdEqpImy9oz+6cY25C7gwh+R10/GU6yf2eU4FAheB2TKT8LX2IubpSHNWWO
+         u4fKnEm55gGx/IpSg7wF9M1EwwIsG5lSu3H5O29wGAMEXA4L78pLvKLljQqGDBe0gR7L
+         JAxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=VqIGEOcDV2NrDDIyGDNi4yC42x12EluOFJPa5dLjvUw=;
-        fh=0R6J8zuAIBDZgqPu7NUEgJR9LynA4k6FUbLpqKD8ADk=;
-        b=XfkoSYpapI4GmrXajiBYIBQTmbLymFxWMVHpezFGO2exRo9D5mEw2o8tMibY1sSosH
-         dEO2+3KiNiXK7H1CkNMYbym4ldLUPDmqozEl/P+GmIDmEbPjK8/Q+wQ2aGqOZp1XiuGi
-         8SIRunF5lvfAS+3S5oJCw885/P8JmoRLBMXJh1tYuRBVdv7dgZNJrJrt/xsQMmG25j72
-         uthR45bXpf4yDfmffna+bWoSoHK/eSsz/RgK7YMKAmJcawetZdqlzK9TZ9UdcsG6+qPe
-         AiXJS6f7SMZg4e1AnnMJ5DEqT+JKIh7ik7/r5/P8tvGmkt0CR+AOO6dvY6RW3BRE/Vne
-         N+eg==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=Pd+D8J3C3epESCwmkWBDA9UNHK88pr5yCZNFxAdlzWo=;
+        fh=BSTR0mN5riEHgpfDGU+Y04a8hUWGOTfFmwR91Qdx2Nw=;
+        b=WDrYSDAunOckmYxwhXjJoO+85EvI3ciM9QyftV3AQ/VuuW8KFMt83VH7XwvYL8hjXg
+         LMy6S0XebH3q9HdpCvZZTsO4SUstUrzz6AdY6RLb+kwwIKH/fujyBFXoFknTeXPkMqjY
+         pRI9Bk8TOVWC9+0k7sy18pEU5OsiqRXP6eXF6wAO25MbWL6Q9+gG2h0bmqdh0bjY4z8p
+         7vchLxHTJlFGe5P87XaK/R83bh8mmCIVHu9K6lc2qPEV/nGZPKJc3o/gJcJpXl9ipxR6
+         VPss9roW7/jynLjqlIiMaB3ckBw83DPACNKXWUklrU2Oz4nUWfg/LUpKdCNnF9RMXIUt
+         IYwA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SFGcLVII;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-23603079f93sor69566375ad.2.2025.06.11.06.15.07
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7d24b3cb097si1354589585a.130.2025.06.11.08.57.21
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 11 Jun 2025 06:15:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 11 Jun 2025 08:57:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SFGcLVII;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1749647707; x=1750252507; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=VqIGEOcDV2NrDDIyGDNi4yC42x12EluOFJPa5dLjvUw=;
-        b=SFGcLVIIb2/AIFp63MTTodqIzK+0vTUXOz7k4mpE62niK0f82H8ib4yXhHokq54rKo
-         9n3+mTo+tH3aThaWLrPhEaBIaQuDzJAvLeFU/u3ArtBWGPQho4yzfveiOxvvJcfcEByF
-         IpLbVUHaFvUm+wSLNMGgWCOgPniwP1OUw6rYsuX37yCtONJPQXo55ictU/gQacxRtGvh
-         3kK9ph7VDdTrx22XGuhET7JAkd6Vzbd61lxg+Te6T4LG54R/J6BrY4zhi27HcTmsdO79
-         ish2fwq9bjbWnhys5GvlDBsw5IcL/JUJtp+0ko7JpkLQ3Q1qLhrJnt+FAWPDccOQ9hKv
-         94eg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749647707; x=1750252507;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=VqIGEOcDV2NrDDIyGDNi4yC42x12EluOFJPa5dLjvUw=;
-        b=DWrM8KO3G3xc8k7IL1eWVHJ9QsYcm+QDlCLD8+PKvG0hdxBzsrDAF1P8qGpVf6WV3Z
-         yh3AbgSxUnnP5qsamCJFX//MezxKFovAENPVrRN8l0m1TovxZiNDH2lO62Iu6T+W8WBD
-         V+j+ANxwxagZzvo4QSqELPkI15Qe6LuIZzhtNETJwhkB1+iZSxQdpUCXRrQK+s3yDY8e
-         e4+GNu0aSaXLglKFHlARw2X2cX8ykenkAKr5Qjus46ZAFjLebWfE/6aR0OgGjmxhp0Ol
-         /eM40NdlvNPxG+OE1Exe8SQ0v5t5oJC73c35GZWbaP7OeUARlGfdkvh6G4bz5oWNMgcl
-         s5Sw==
-X-Forwarded-Encrypted: i=1; AJvYcCWoRktnewqSbAoJ8FL46H67BdbncHaW44YZiIWUYwcv8z1NKrH1NRA/YxDym51sFCY5gxkKVywcqd35Ig==@linaro.org
-X-Gm-Message-State: AOJu0YzduUUMf78HvdxDO/bA/pM5TQrNeDXw9wa+l3P0ZyYsNuC2DrE+
-	bBKRcRfWaD7yBVh1dqEle26XDTM7XiZrwnsdx2eFvZNMQBZlg8xoCfpXAVs3s43ijSNcrr5fm7x
-	ZDus3S1c=
-X-Gm-Gg: ASbGncvW2JlMyHntk+CBYqCHazgUT9QdqX39A3kpG9lu040hBl+Yva/RHz9rwDlIdeR
-	apzofnaWrQVdYWzZPqFs0oabgKdtfDPaIqMn08QnPvrhhsYdhXYCE8i5Fcx7SFfN7psJpkxXm05
-	ma1llSrFaZRx3fEMEVeyjPwXkhy25DIlBWozkjT3BtUph1C1Nx+rv3t+Bmz1GYfNSn7B4lDz6bY
-	8Dgfi2vug3jwaCSP30sJ5BIKGmN9nxOQQf/llq4ssA++5KYyH8iWCRjD9wreXWXWBPPvTNMDNiu
-	tGxJBPMnFTNEQCPmAumnJVSexvDabhjeCMmSgmPf7mYJwVb4vEA2WZoZmmt0X9f70+9Idb4bHEa
-	Yd+H0LBhkVMbUK/bxD7PNtxIxChTnnPvvvbmiNS0tfsde9g==
-X-Google-Smtp-Source: AGHT+IEbyrepJ4ZWPpnVOLunUAT2Aytke5b/7mZTcD2XaPyeb9MvZL7PS6mRI5LoLBd6/7lnsbg0DA==
-X-Received: by 2002:a17:90b:2245:b0:311:b0ec:134b with SMTP id 98e67ed59e1d1-313af266ac9mr3770974a91.32.1749647707084;
-        Wed, 11 Jun 2025 06:15:07 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from [192.168.0.102] (200-162-224-156.static-corp.ajato.com.br. [200.162.224.156])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-236034056f8sm87134895ad.161.2025.06.11.06.15.02
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Jun 2025 06:15:06 -0700 (PDT)
-Message-ID: <848ad5cf-7e83-49bd-8547-ac757c918fdf@linaro.org>
-Date: Wed, 11 Jun 2025 10:14:55 -0300
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uPNoh-0000vA-Hb; Wed, 11 Jun 2025 11:56:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1uPNoc-0000uk-4w; Wed, 11 Jun 2025 11:56:38 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1uPNoY-0008Kp-VW; Wed, 11 Jun 2025 11:56:37 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bHVb76C19z6JB6M;
+ Wed, 11 Jun 2025 23:54:27 +0800 (CST)
+Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
+ by mail.maildlp.com (Postfix) with ESMTPS id CB6A2140144;
+ Wed, 11 Jun 2025 23:56:20 +0800 (CST)
+Received: from a2303103017.china.huawei.com (10.203.177.99) by
+ frapeml500003.china.huawei.com (7.182.85.28) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Wed, 11 Jun 2025 17:56:19 +0200
+To: <qemu-devel@nongnu.org>, <mst@redhat.com>
+CC: <anisinha@redhat.com>, <armbru@redhat.com>, <berrange@redhat.com>,
+ <dapeng1.mi@linux.intel.com>, <eric.auger@redhat.com>,
+ <farman@linux.ibm.com>, <gustavo.romero@linaro.org>, <imammedo@redhat.com>,
+ <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
+ <linuxarm@huawei.com>, <maobibo@loongson.cn>, <mtosatti@redhat.com>,
+ <peter.maydell@linaro.org>, <philmd@linaro.org>, <qemu-arm@nongnu.org>,
+ <richard.henderson@linaro.org>, <shameerali.kolothum.thodi@huawei.com>,
+ <shannon.zhaosl@gmail.com>, <yangyicong@hisilicon.com>, <zhao1.liu@intel.com>
+Subject: [PATCH v13 0/7] Specifying cache topology on ARM
+Date: Wed, 11 Jun 2025 16:56:11 +0100
+Message-ID: <20250611155618.351-1-alireza.sanaee@huawei.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 24/25] tests/qtest/bios-tables-test: Keep ACPI PCI
- hotplug off
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com,
- pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org,
- alex.bennee@linaro.org
-References: <20250527074224.1197793-1-eric.auger@redhat.com>
- <20250527074224.1197793-25-eric.auger@redhat.com>
- <20250528113813.47086516@imammedo.users.ipa.redhat.com>
- <375cfbd6-e585-4b6d-bf10-6571aa40370e@linaro.org>
- <20250528150239.5f6b63d0@imammedo.users.ipa.redhat.com>
- <6a5776b4-73ef-427b-b4e4-b25031b0ce53@linaro.org>
- <20250530135103.09030cf0@imammedo.users.ipa.redhat.com>
- <bcc200fb-fa45-44ac-9e36-4c829becbf1c@linaro.org>
- <e3bc87d8-5016-455e-933d-6cefae993c25@linaro.org>
- <20250611105437.5ecda7c9@imammedo.users.ipa.redhat.com>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20250611105437.5ecda7c9@imammedo.users.ipa.redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 8jlulaC77poH
+Content-Type: text/plain
+X-Originating-IP: [10.203.177.99]
+X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
+ frapeml500003.china.huawei.com (7.182.85.28)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
+From:  Alireza Sanaee via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3q6L2L2MLYq8
 
-Hi Igor,
+Specifying the cache layout in virtual machines is useful for
+applications and operating systems to fetch accurate information about
+the cache structure and make appropriate adjustments. Enforcing correct
+sharing information can lead to better optimizations. Patches that allow
+for an interface to express caches was landed in the prior cycles. This
+patchset uses the interface as a foundation.  Thus, the device tree and
+ACPI/PPTT table, and device tree are populated based on
+user-provided information and CPU topology.
 
-On 6/11/25 05:54, Igor Mammedov wrote:
-> On Tue, 10 Jun 2025 11:29:02 -0300
-> Gustavo Romero <gustavo.romero@linaro.org> wrote:
-> 
->> Hi Igor,
->>
->> On 6/2/25 03:06, Gustavo Romero wrote:
->>> Hi Igor and Eric,
->>>
->>> I'm sending again this to the mailing list since it seems the first one
->>> got lost... I can't find it either in qemu-devel@ or in qemu-arm@ :(
->>>
->>> On 5/30/25 08:51, Igor Mammedov wrote:
->>>> On Wed, 28 May 2025 12:04:26 -0300
->>>> Gustavo Romero <gustavo.romero@linaro.org> wrote:
->>>>   
->>>>> Hi Igor,
->>>>>
->>>>> On 5/28/25 10:02, Igor Mammedov wrote:
->>>>>> On Wed, 28 May 2025 09:41:15 -0300
->>>>>> Gustavo Romero <gustavo.romero@linaro.org> wrote:
->>>>>>> Hi Igor,
->>>>>>>
->>>>>>> On 5/28/25 06:38, Igor Mammedov wrote:
->>>>>>>> On Tue, 27 May 2025 09:40:26 +0200
->>>>>>>> Eric Auger <eric.auger@redhat.com> wrote:
->>>>>>>>> From: Gustavo Romero <gustavo.romero@linaro.org>
->>>>>>>>>
->>>>>>>>> ACPI PCI hotplug is now turned on by default so we need to change the
->>>>>>>>> existing tests to keep it off. However, even setting the ACPI PCI
->>>>>>>>> hotplug off in the existing tests, there will be changes in the ACPI
->>>>>>>>> tables because the _OSC method was modified, hence in the next patch of
->>>>>>>>> this series the blobs are updated accordingly.
->>>>>>>>>
->>>>>>>>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
->>>>>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>>>>>>
->>>>>>>> it would be better to test whatever default we end up with.
->>>>>>>> (like x86)
->>>>>>>
->>>>>>> hmm maybe there is a confusion here, Igor. We are actually planning what you
->>>>>>
->>>>>> perhaps, see my reply to Eric about my expectations wrt tests.
->>>>>
->>>>> Yip, I read it before my reply here.
->>>>>
->>>>>   
->>>>>> (i.e. default tests shouldn't have any explicit CLI options,
->>>>>> instead it should follow whitelist blobs/set new default patch/update blobs pattern)
->>>>>
->>>>> I see. I agree with that. But this patch is not about the new test. The new test is
->>>>> _not_ in this series. Patches 8/25, 10/25, and 24/25 are _not_ about the new test but
->>>>> about adapting the _legacy tests_ (native acpi) to the situation when ACPI HP becomes
->>>>> the default, because this series makes acpi-pcihp=on the default, hence the CLI option
->>>>> "acpi-pcihp=off" added to them. An update to the blobs are also necessary because of the
->>>>> change in _OSC method, even when acpi-pcihp=off.
->>>>>
->>>>>   
->>>>>>> said. This patch and the other two in this series related to the bios-tables-test
->>>>>>> (i.e., patches 8/25 and 10/25) are for actually making the current (legacy) test pass,
->>>>>>> since the new default as per this series will be acpi-pcihp=on. That's why here we're
->>>>>>> adapting the current test here to have acpi-pcihp=off.
->>>>>>>
->>>>>>> The new test that will test for acpi-pcihp=on (the new default) is not in this series
->>>>>>> and we decided to merge it separate. It's in the patch 4/5 and 5/5 of the follow series:
->>>>>
->>>>> We're doing the "blobs/set new default patch/update blobs pattern" in the new test, which
->>>>> we can merge later, once this series is merged, no? The step "set new default" then will
->>>>> not be necessary because the new test will be merged separate, after this series, so when
->>>>> acpi-pcihp=on is already the default.
->>>>>
->>>>> Please note that although we're using acpi-pcihp=on in the new test, it's not necessary,
->>>>> we can dropped this option, making it implicit as you say, and it will work. This is the
->>>>> new test:
->>>>>   
->>>>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05828.html 4/5
->>>>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05827.html 5/5
->>>>>
->>>>>
->>>>> Thus, there are to "acts" of modifying the bios-tables-test:
->>>>>
->>>>> 1) Adapt the current tests to when acpi-pcihp=on becomes the default (hence the addition
->>>>>       to them of "acpi-pcihp=off".
->>>>
->>>>
->>>> that's what I disagree with.
->>>>
->>>> 1) Instead adapting majority of tests to legacy before switching defaults,
->>>> just do whitelist/modify default/update so all of tests run with new default.
->>>>
->>>> and then
->>>>   
->>>>> There is also the need to update the blobs, but it's because
->>>>>       of the _OSC method change in DSDT table, which will change anyways, even with "acpi-pcihp=off¨,
->>>>>       hence the need for patch 10/25 in this series. This is _done is this series_.
->>>>
->>>>   
->>>>> 2) Add a new test for testing the default (i.e. acpi-pcihp-on). It follows what you're
->>>>>       saying above: "follow whitelist blobs/set new default patch/update blobs pattern",
->>>>>       because we can drop the acpi-pcihp-on option from the CLI in this test without any
->>>>>       prejudice to test. While the step "set new default patch" was actually done in 1).
->>>>
->>>> 2) add a separate test case for native pcie hoplug (preferably within this series)
->>>>
->>>> 3) even better would be to add #2 before #1 (right after 10/25),
->>>> this way will guarantee that old native hotplug tables stay
->>>> the same regardless of followup patches that add ACPI pcihp aml.
->>>
->>> Got it now, hopefully... 🙂
->>>
->>> OK, I'm trying to follow what you recommended in 3). I've pushed a series to:
->>>
->>> https://github.com/gromero/qemu/commits/v2_20250527_eric_auger_redhat_com/
->>>
->>> So, I understand we will need to add/update the blobs at three times,
->>> 2 times because of the changes in the DSDT generation (_OSC changes and when
->>> acpi-pci=on) and an additional one because of the new PCIe native hotplug test.
->>>
->>> I dropped this patch (Patch 24/25) from the series.
->>>
->>> So the overview of the organization would be the following:
->>>
->>>
->>> 3c302f7222 tests/qtest/bios-tables-test: Update DSDT blobs                                   #1c (update blob)    \
->>> 671f15f470 hw/arm/virt: Use ACPI PCI hotplug by default                                      #1b (modify default) |--- acpi-pcihp=on
->>> 9468f730e1 tests/qtest/bios-tables-test: Prepare for changes in the DSDT table               #1a (whitelist)      /
->>> c9ec0e0226 hw/arm/virt: Plug pcihp hotplug/hotunplug callbacks
->>> dc44749a34 hw/arm/virt: Let virt support pci hotplug/unplug GED event
->>> f667079260 hw/core/sysbus: Introduce sysbus_mmio_map_name() helper
->>> 46731e563b hw/acpi/ged: Support migration of AcpiPciHpState
->>> 4fa7b0e0f6 hw/acpi/ged: Call pcihp plug callbacks in hotplug handler implementation
->>> 587b001876 hw/acpi/ged: Prepare the device to react to PCI hotplug events
->>> b55183d128 hw/arm/virt-acpi-build: Modify the DSDT ACPI table to enable ACPI PCI hotplug
->>> fe4c96b384 hw/i386/acpi-build: Move aml_pci_edsm to a generic place
->>> 010c50dbc7 hw/i386/acpi-build: Introduce and use acpi_get_pci_host
->>> 5a1be727e6 hw/i386/acpi-build: Move build_append_pci_bus_devices/pcihp_slots to pcihp
->>> 14a172e192 hw/i386/acpi-build: Move build_append_notification_callback to pcihp
->>> 5110ae8874 hw/acpi/pcihp: Add an AmlRegionSpace arg to build_acpi_pci_hotplug
->>> 82c2aef672 hw/i386/acpi-build: Introduce build_append_pcihp_resources() helper
->>> 6372fe7eef qtest/bios-tables-test: Update DSDT 'noacpipcihp' variant blob                    #2 (blob update for test), part 2 of 2 (update blob)  ]--- New PCIe native test
->>> 6fb29ba18d tests/qtest/bios-tables-test: Add aarch64 PCIe native hotplug test                #2 (pcie native hp test), part 1 of 2 (whitelist)     /
->>> 12c63a505e tests/qtest/bios-tables-test: Update DSDT blobs after GPEX _OSC change            Patch 10/25 in this series (update blob)    \
->>> 779bd47749 hw/pci-host/gpex-acpi: Use build_pci_host_bridge_osc_method                       Patch  9/25 in this series (modify default) |--- _OSC change
->>> f260fd59c1 tests/qtest/bios-tables-test: Prepare for changes in the DSDT table               Patch  8/25 in this series (whitelist)      /
->>> b000677fd9 hw/i386/acpi-build: Turn build_q35_osc_method into a generic method
->>> a72f87b634 hw/pci-host/gpex-acpi: Propagate hotplug type info from virt machine downto gpex
->>> 77a87b6ba3 hw/pci-host/gpex-acpi: Split host bridge OSC and DSM generation
->>> 67e4dc2e7b hw/pci-host/gpex-acpi: Add native_pci_hotplug arg to acpi_dsdt_add_pci_osc
->>> b89e69da54 hw/acpi: Rename and move build_x86_acpi_pci_hotplug to pcihp
->>> 74f1080a74 hw/arm/virt: Introduce machine state acpi pcihp flags and props
->>> 1048082f33 hw/i386/acpi-build: Make aml_pci_device_dsm() static
->>>
->>> See notes on the right for when the blobs are updated or added in the
->>> series. The new test for PCIe native hotplug (I prefer not calling it legacy,
->>> since it's not really legacy; it's just an alternative better in some scenarios,
->>> specially in virtualization) is now in the series (#2), "right after 10/25".
->>>
->>> Is something like that that you want?
->>
->> Igor, just a friendly ping on it. It would be quite helpful for us if you could
->> confirm I'm following what you recommended regarding the tests for this series.
-> 
-> spirit of above looks fine,
-
-Thanks for confirming it.
+Example:
 
 
-> as for actual patches, it would depend on chosen default.
-> Lets' see what submitted v3 would look like.
++----------------+                            +----------------+
+|    Socket 0    |                            |    Socket 1    |
+|    (L3 Cache)  |                            |    (L3 Cache)  |
++--------+-------+                            +--------+-------+
+         |                                             |
++--------+--------+                            +--------+--------+
+|   Cluster 0     |                            |   Cluster 0     |
+|   (L2 Cache)    |                            |   (L2 Cache)    |
++--------+--------+                            +--------+--------+
+         |                                             |
++--------+--------+  +--------+--------+    +--------+--------+  +--------+----+
+|   Core 0         | |   Core 1        |    |   Core 0        |  |   Core 1    |
+|   (L1i, L1d)     | |   (L1i, L1d)    |    |   (L1i, L1d)    |  |   (L1i, L1d)|
++--------+--------+  +--------+--------+    +--------+--------+  +--------+----+
+         |                   |                       |                   |
++--------+              +--------+              +--------+          +--------+
+|Thread 0|              |Thread 1|              |Thread 1|          |Thread 0|
++--------+              +--------+              +--------+          +--------+
+|Thread 1|              |Thread 0|              |Thread 0|          |Thread 1|
++--------+              +--------+              +--------+          +--------+
 
-Agreed. Yep, I can adapt the tests the other way, depending on
-the final chosen default. Let's way v3 ;)
 
+The following command will represent the system relying on **ACPI PPTT tables**.
 
-BTW, why did we ultimately choose to commit blobs instead of the actual ACPI
-code (as generated by iasl)? I'm just wondering if we could avoid committing
-the blobs to 1) avoid committing binaries and 2) have the changes in the
-ACPI code in the same commit that changes the ACPI itself.
+./qemu-system-aarch64 \
+ -machine virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluseter,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+ -cpu max \
+ -m 2048 \
+ -smp sockets=2,clusters=1,cores=2,threads=2 \
+ -kernel ./Image.gz \
+ -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=force" \
+ -initrd rootfs.cpio.gz \
+ -bios ./edk2-aarch64-code.fd \
+ -nographic
 
-If that's only for historical reasons maybe I can improve the bios-tables-test.c
-to handle the ACPI code/struct in text format, avoiding the blobs, so I ask.
+The following command will represent the system relying on **the device tree**.
 
-Thanks!
+./qemu-system-aarch64 \
+ -machine virt,acpi=off,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluseter,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+ -cpu max \
+ -m 2048 \
+ -smp sockets=2,clusters=1,cores=2,threads=2 \
+ -kernel ./Image.gz \
+ -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=off" \
+ -initrd rootfs.cpio.gz \
+ -nographic
 
+Failure cases:
+    1) There are scenarios where caches exist in systems' registers but
+    left unspecified by users. In this case qemu returns failure.
 
-Cheers,
-Gustavo
+    2) SMT threads cannot share caches which is not very common. More
+    discussions here [1].
 
->>
->>
->> Thanks,
->> Gustavo
->>    
->>>
->>> Cheers,
->>> Gustavo
->>>    
->>>>   
->>>>> Cheers,
->>>>> Gustavo
->>>>>   
->>>>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05828.html 4/5
->>>>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05827.html 5/5
->>>>>>>
->>>>>>>
->>>>>>> Cheers,
->>>>>>> Gustavo
->>>>>>>>>
->>>>>>>>> ---
->>>>>>>>>
->>>>>>>>> [Eric] also added acpi-pcihp=off to test_acpi_aarch64_virt_tcg_numamem
->>>>>>>>> ---
->>>>>>>>>      tests/qtest/bios-tables-test.c | 13 +++++++++----
->>>>>>>>>      1 file changed, 9 insertions(+), 4 deletions(-)
->>>>>>>>>
->>>>>>>>> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
->>>>>>>>> index 0a333ec435..6379dba714 100644
->>>>>>>>> --- a/tests/qtest/bios-tables-test.c
->>>>>>>>> +++ b/tests/qtest/bios-tables-test.c
->>>>>>>>> @@ -1626,7 +1626,7 @@ static void test_acpi_aarch64_virt_tcg_memhp(void)
->>>>>>>>>          };
->>>>>>>>>          data.variant = ".memhp";
->>>>>>>>> -    test_acpi_one(" -machine nvdimm=on"
->>>>>>>>> +    test_acpi_one(" -machine nvdimm=on,acpi-pcihp=off"
->>>>>>>>>                        " -cpu cortex-a57"
->>>>>>>>>                        " -m 256M,slots=3,maxmem=1G"
->>>>>>>>>                        " -object memory-backend-ram,id=ram0,size=128M"
->>>>>>>>> @@ -1747,7 +1747,8 @@ static void test_acpi_aarch64_virt_tcg_numamem(void)
->>>>>>>>>          };
->>>>>>>>>          data.variant = ".numamem";
->>>>>>>>> -    test_acpi_one(" -cpu cortex-a57"
->>>>>>>>> +    test_acpi_one(" -machine acpi-pcihp=off"
->>>>>>>>> +                  " -cpu cortex-a57"
->>>>>>>>>                        " -object memory-backend-ram,id=ram0,size=128M"
->>>>>>>>>                        " -numa node,memdev=ram0",
->>>>>>>>>                        &data);
->>>>>>>>> @@ -1775,7 +1776,8 @@ static void test_acpi_aarch64_virt_tcg_pxb(void)
->>>>>>>>>           * to solve the conflicts.
->>>>>>>>>           */
->>>>>>>>>          data.variant = ".pxb";
->>>>>>>>> -    test_acpi_one(" -device pcie-root-port,chassis=1,id=pci.1"
->>>>>>>>> +    test_acpi_one(" -machine acpi-pcihp=off"
->>>>>>>>> +                  " -device pcie-root-port,chassis=1,id=pci.1"
->>>>>>>>>                        " -device virtio-scsi-pci,id=scsi0,bus=pci.1"
->>>>>>>>>                        " -drive file="
->>>>>>>>>                        "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2,"
->>>>>>>>> @@ -1846,7 +1848,7 @@ static void test_acpi_aarch64_virt_tcg_acpi_hmat(void)
->>>>>>>>>          data.variant = ".acpihmatvirt";
->>>>>>>>> -    test_acpi_one(" -machine hmat=on"
->>>>>>>>> +    test_acpi_one(" -machine hmat=on,acpi-pcihp=off"
->>>>>>>>>                        " -cpu cortex-a57"
->>>>>>>>>                        " -smp 4,sockets=2"
->>>>>>>>>                        " -m 384M"
->>>>>>>>> @@ -2123,6 +2125,7 @@ static void test_acpi_aarch64_virt_tcg(void)
->>>>>>>>>          data.smbios_cpu_max_speed = 2900;
->>>>>>>>>          data.smbios_cpu_curr_speed = 2700;
->>>>>>>>>          test_acpi_one("-cpu cortex-a57 "
->>>>>>>>> +                  "-machine acpi-pcihp=off "
->>>>>>>>>                        "-smbios type=4,max-speed=2900,current-speed=2700", &data);
->>>>>>>>>          free_test_data(&data);
->>>>>>>>>      }
->>>>>>>>> @@ -2142,6 +2145,7 @@ static void test_acpi_aarch64_virt_tcg_topology(void)
->>>>>>>>>          };
->>>>>>>>>          test_acpi_one("-cpu cortex-a57 "
->>>>>>>>> +                  "-machine acpi-pcihp=off "
->>>>>>>>>                        "-smp sockets=1,clusters=2,cores=2,threads=2", &data);
->>>>>>>>>          free_test_data(&data);
->>>>>>>>>      }
->>>>>>>>> @@ -2227,6 +2231,7 @@ static void test_acpi_aarch64_virt_viot(void)
->>>>>>>>>          };
->>>>>>>>>          test_acpi_one("-cpu cortex-a57 "
->>>>>>>>> +                  "-machine acpi-pcihp=off "
->>>>>>>>>                        "-device virtio-iommu-pci", &data);
->>>>>>>>>          free_test_data(&data);
->>>>>>>>>      }
->>>>>   
->>>>   
->>>    
->>
-> 
+Currently only three levels of caches are supported to be specified from
+the command line. However, increasing the value does not require
+significant changes. Further, this patch assumes l2 and l3 unified
+caches and does not allow l(2/3)(i/d). The level terminology is
+thread/core/cluster/socket right now. Hierarchy assumed in this patch:
+Socket level = Cluster level + 1 = Core level + 2 = Thread level + 3;
+
+TODO:
+  1) Making the code to work with arbitrary levels
+  2) Separated data and instruction cache at L2 and L3.
+  3) Additional cache controls.  e.g. size of L3 may not want to just
+  match the underlying system, because only some of the associated host
+  CPUs may be bound to this VM.
+
+[1] https://lore.kernel.org/devicetree-spec/20250203120527.3534-1-alireza.sanaee@huawei.com/
+
+Change Log:
+  v12->v13:
+   * Applied comments from Zhao.
+   * Introduced a new patch for machine specific cache topology functions.
+   * Base: bc98ffdc7577e55ab8373c579c28fe24d600c40f.
+
+  v11->v12:
+   * Patch #4 couldn't not merge properly as the main file diverged. Now it is fixed (hopefully).
+   * Loonarch build_pptt function updated.
+   * Rebased on 09be8a511a2e278b45729d7b065d30c68dd699d0.
+
+  v10->v11:
+   * Fix some coding style issues.
+   * Rename some variables.
+
+  v9->v10:
+   * PPTT rev down to 2.
+
+  v8->v9:
+   * rebase to 10
+   * Fixed a bug in device-tree generation related to a scenario when
+        caches are shared at core in higher levels than 1.
+  v7->v8:
+   * rebase: Merge tag 'pull-nbd-2024-08-26' of https://repo.or.cz/qemu/ericb into staging
+   * I mis-included a file in patch #4 and I removed it in this one.
+
+  v6->v7:
+   * Intel stuff got pulled up, so rebase.
+   * added some discussions on device tree.
+
+  v5->v6:
+   * Minor bug fix.
+   * rebase based on new Intel patchset.
+     - https://lore.kernel.org/qemu-devel/20250110145115.1574345-1-zhao1.liu@intel.com/
+
+  v4->v5:
+    * Added Reviewed-by tags.
+    * Applied some comments.
+
+  v3->v4:
+    * Device tree added.
+
+Depends-on: Building PPTT with root node and identical implementation flag
+Depends-on: Msg-id: <20250604115233.1234-1-alireza.sanaee@huawei.com>
+
+Depends-on: hw/core/cpu: Move CacheType to general cpu.h
+Depends-on: Msg-id: <20250605132722.3597593-1-zhao1.liu@intel.com>
+
+Alireza Sanaee (7):
+  target/arm/tcg: increase cache level for cpu=max
+  hw/core/machine: topology functions capabilities added
+  hw/arm/virt: add cache hierarchy to device tree
+  bios-tables-test: prepare to change ARM ACPI virt PPTT
+  hw/acpi: add cache hierarchy to pptt table
+  tests/qtest/bios-table-test: testing new ARM ACPI PPTT topology
+  Update the ACPI tables based on new aml-build.c
+
+ hw/acpi/aml-build.c                        | 229 +++++++++++-
+ hw/arm/virt-acpi-build.c                   |   8 +-
+ hw/arm/virt.c                              | 412 ++++++++++++++++++++-
+ hw/core/machine-smp.c                      |  52 +++
+ hw/loongarch/virt-acpi-build.c             |   2 +-
+ include/hw/acpi/aml-build.h                |   6 +-
+ include/hw/acpi/cpu.h                      |  13 +-
+ include/hw/arm/virt.h                      |   7 +-
+ include/hw/boards.h                        |   7 +
+ include/hw/cpu/core.h                      |   1 +
+ target/arm/tcg/cpu64.c                     |  13 +
+ tests/data/acpi/aarch64/virt/PPTT.topology | Bin 356 -> 540 bytes
+ tests/qtest/bios-tables-test.c             |   4 +
+ 13 files changed, 740 insertions(+), 14 deletions(-)
+
+-- 
+2.43.0
+

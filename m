@@ -1,227 +1,365 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp1902238njc;
-        Wed, 11 Jun 2025 03:41:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVjXkyaaxcZmxJlF19GChg+4EebCNOo9wo/CHnWnuZwc/aoQpDkNtGeR2SCQfe7bXnaiK2eEQGKY/MRhw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEGp+YNh4J1ffPfnZIQdHUahaTAoBYdpBy2nR/RVEtZf0vjcD9MmdzFTQn2LN6LRKl+qlCa
-X-Received: by 2002:a05:620a:4014:b0:7d3:8a6b:d24d with SMTP id af79cd13be357-7d3a883473dmr378222885a.24.1749638469737;
-        Wed, 11 Jun 2025 03:41:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749638469; cv=none;
+Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp2753687njc;
+        Wed, 11 Jun 2025 04:42:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXPd1cDTyPyip2Noo18aLWNIVHX8Sow2RGjfvc+jwHOO2Ul3uyZD0ybiOsp4nc/z6pF9Z44/mFrg1gPRQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGWOYqtdIs06+BdMFBMpKw/YMUnZtXtqN5APoXgAwYkknVt3JElL9qwOm1zXNrKF79aFT7T
+X-Received: by 2002:a05:622a:988:b0:4a6:ef77:3deb with SMTP id d75a77b69052e-4a713c5eb2bmr47772051cf.40.1749642140202;
+        Wed, 11 Jun 2025 04:42:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749642140; cv=none;
         d=google.com; s=arc-20240605;
-        b=NlbGYMhrLTlrRAfLmvls1eHgKqrWCADceBn/Bm3MiB37L4sK0xVaSeyV5cyqBh6Mjc
-         makaUfAUZIQ1cPWRKKrm6CgZc9h66zh7aI3MtJyuAMyPjQqlQwUIlWouH02Qqclq6asR
-         alijm/TPSIfWJVl7ZgDkCk3ReT9Glzyr23qlxnRGUYGGj77NlMOKeHLG7lNiFLxYFHfy
-         qOIeCYBhWVxemCeh5yONl6zJPI+6Nu2IUHBqrI9OjgyXBH6FlrcI+Sim127ANp/f+ilr
-         Q1JzVOhV8zDZvdO0YzsgJv8/XGU4cmLg+V7SnsFvuLkYo+bcgUqZ3TcQLrYWCBwsatGe
-         G8jw==
+        b=GtI4uAIDywzv6ZGdrx0pcES1QXQ+cYzYYoZaCy8QAeM0XjOeUMw70ijEawN14QLpXx
+         qhGixywqNNejyno87fsV8sTp/8TNwsgS3fDm63UEBO4X8RT0VFl1WcYI2xE47dc970em
+         SgHAo/61CL3RDCkhvgvjKssVJakfLZEmT7J7SsXeoGdoNCcesTkKCeACnr+Nn89KurSu
+         2nue9IqcAXno0pq6FTV0SqNsGxLYzVZprRuTWzjifTWT217ATZ2FHklINP8GdqEGZ9Hb
+         mxofMkTEXDQtjb4uq2SEmo/r8iH0mHin/XWFOA129wb8nXgoxrFeEKSRvMZgx68roYlI
+         ba4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:content-language:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Y8OLDsFuz63h7D55kQUDHu4Pj4NuMljC7Cl+c60TarA=;
-        fh=AN6RLRJcIcWtHSVRmBCzcsZTCZhRK0OvEUrA2bAcJ1k=;
-        b=Q7FljbIyDB5cOxuWdPzioO4GQrLbsW+2oX3FeqZ/ZSSvDbLK64fB87UDhMLO3beA7X
-         QFFcVetPKmp68kG9bG6rHZjlOz9NTTBkPin+aGZxh6iOxw02Bj4uKxuJOHIz/lpOFUXk
-         uGoe6y7Hpr8TlHsrT+TnLjuWLox7e9WSPDLP1Dh47/+rtAMhYafWgzxVBBjoPBWZkHG8
-         h9wVgyDlrSnr53t4zenZPWlKo0nf1WDUwtMEo/ny88CBiU+5fh5g/oE2Ilu1nTTXuobd
-         u9YJbbu80lQ46Hwyeiu4caM6Ek0WaETcL5b9775v1e31dQnCGdfS/0qVrUIsim1CeySz
-         NwzQ==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=MRQLF/EYYOjINjURi6CAojtP2dyodY3ukZld3rwi6KA=;
+        fh=YwBYsaHypxwrKhdDf2kZM2uQ8ERdBAWVIBgfscIqATo=;
+        b=FcTXFtyR2GWNeyy2wwnAu1Q0yi/Ijv0aWs8C/w7WJWFUT03WXt182kQsSzwT38KYzw
+         YrDuNiMmU2hVBahGl+qh21Snh3OhnHaqroR56sFiWuPqAtQxQ/Pte0vXKOtAL0Og3+V9
+         y0RB3Doniy5TRKuy9P8Zk93W5Cj74Awx9oa/p9/Um4VBmjBkMjRPbxRPja5bVDXUzNZg
+         6R+mxE0e+jtg0738wO0gJtQKUM+/0bOPfwguqeKlw2TMvK+FJFThwZ7fT6Wh06P7LrYU
+         0UrhCw1pc5S6V5Kwo7aUq3IqV1CTy1Nsm5rmk8ljVU1U4ydZpH/PerPrTUzTcQh1nALE
+         0niQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RpPhk8WP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d24b3cb21esi1207599285a.46.2025.06.11.03.41.09
+        by mx.google.com with ESMTPS id d75a77b69052e-4a611169a52si132851761cf.41.2025.06.11.04.42.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Jun 2025 03:41:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 11 Jun 2025 04:42:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RpPhk8WP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uPIt5-0000Pn-PI; Wed, 11 Jun 2025 06:40:55 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uPJpO-0005dN-VV; Wed, 11 Jun 2025 07:41:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uPIt4-0000PT-8D
- for qemu-devel@nongnu.org; Wed, 11 Jun 2025 06:40:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1uPJpM-0005cd-PC; Wed, 11 Jun 2025 07:41:08 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uPIt2-0001YO-Nj
- for qemu-devel@nongnu.org; Wed, 11 Jun 2025 06:40:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749638451;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=Y8OLDsFuz63h7D55kQUDHu4Pj4NuMljC7Cl+c60TarA=;
- b=RpPhk8WPxow8JtRm9wbAFu7mEbAuCBQjfTDYVE3TJloPotQaD6pqlPsToNQwmbNNn1lJ2/
- 21DmXtcXYirxni/WPwCVU1sZoWJ0/GsSgQpy4OXXXg6pKX2txHgvQj7RDiQktUho9UrXTX
- Re3I4DATrRpGoWd8nJ/rfReZ6qPFmFc=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-652-SUkdklCWMCOvCSAd-O2iXA-1; Wed, 11 Jun 2025 06:40:50 -0400
-X-MC-Unique: SUkdklCWMCOvCSAd-O2iXA-1
-X-Mimecast-MFC-AGG-ID: SUkdklCWMCOvCSAd-O2iXA_1749638449
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-3a4f7ebfd00so2640752f8f.2
- for <qemu-devel@nongnu.org>; Wed, 11 Jun 2025 03:40:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749638449; x=1750243249;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Y8OLDsFuz63h7D55kQUDHu4Pj4NuMljC7Cl+c60TarA=;
- b=uCVhfXd6fv1LDsLyrUpv0sonfB6CN1bY2AYIAdkqabFOJhQPcHpFIYqRDJHj1Wq3uS
- EiKiEJOHSP3RjeTYOezhNoMLSZkC+t+RoCoOr3I+Snh0k/QvHYIBDFSmYZW7elAJQGPG
- Fbd02cA3Xq+QnwexWT/a1aTHh7+2QGoBnKFvLqmk3IqKQL29WagE6tK/tKC0aQh8MMX8
- 6c4oVRggw3lBpuYVNhBVyHvmpKLiAnJhFxMZuj8Ip+jOE+3V7duQG6+qAoalaHs0NdfP
- iShQTjRoko2KFGfsPxyKufdTCIHlt/64g50b7056bbiTulxUi68uIEjkmSfCo++96s1j
- o38w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUpteJoMQAOSF43mC+TRSqiYxDShA5XeJ7Q3zomUB4cluhXSron7LMHhbVlWL6oclP7TwHFEWhzrtG1@nongnu.org
-X-Gm-Message-State: AOJu0YzfHgeAycQNrXLQlqM4WZ6J25DfKgGL1erNHeut+U2ZtbB0EOOL
- rDF3RKsqsL79QMY+ohRetD7itUT+vEZz+Jpo9iH4tdD32igbPNv3ShZNHZWORXrjyHj3lzUHHqZ
- xu7bJ8XeAkrWttq4Y3Gfe2k0mWW/pmLYc3ZXYoPSeLo1S9y/BD6GhimE7
-X-Gm-Gg: ASbGncu1QSPof7CMBpGM5xRtY5uaQsyfMeLampQF5KasdYjg3seAdprfd8jbvahqDqX
- sRJY6o999WAfpJtYk/FIzAR2HWuGQo7ElMuzdmK39DS991MmKIxN7JYSaS0kok18FIge5ZtJx5S
- zsUGpC+imdRfODkyHRzwK2udyjRuJKQHVt/boTH6K3Igaxk1hM3aIL50CjJojW+ueNct/hznqsT
- oiVm6ai2b4g6NgrsO9K9rynVxOQCfQ+9Yossj8lQW3pLF8+9GopGJqi7GB73bn0Vw9kuhbIpe96
- AwDsSJ+j1/1j1tLRgt9RtUAn5AhXqbOZP8DKg0MqA7r9CP/umUw8YjCFMBjjOA8=
-X-Received: by 2002:a05:6000:40ce:b0:3a4:dbdf:7154 with SMTP id
- ffacd0b85a97d-3a5586f3f09mr2097408f8f.54.1749638449179; 
- Wed, 11 Jun 2025 03:40:49 -0700 (PDT)
-X-Received: by 2002:a05:6000:40ce:b0:3a4:dbdf:7154 with SMTP id
- ffacd0b85a97d-3a5586f3f09mr2097383f8f.54.1749638448804; 
- Wed, 11 Jun 2025 03:40:48 -0700 (PDT)
-Received: from [192.168.0.4] (ltea-047-064-115-122.pools.arcor-ip.net.
- [47.64.115.122]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a532464575sm14990836f8f.97.2025.06.11.03.40.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 11 Jun 2025 03:40:48 -0700 (PDT)
-Message-ID: <32a05613-7606-495b-8b2b-fb64b31885c4@redhat.com>
-Date: Wed, 11 Jun 2025 12:40:47 +0200
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1uPJot-0001N1-LL; Wed, 11 Jun 2025 07:41:08 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bHNpW1L7fz6L616;
+ Wed, 11 Jun 2025 19:33:55 +0800 (CST)
+Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
+ by mail.maildlp.com (Postfix) with ESMTPS id 5C67A140275;
+ Wed, 11 Jun 2025 19:38:13 +0800 (CST)
+Received: from localhost (10.203.177.99) by frapeml500003.china.huawei.com
+ (7.182.85.28) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 11 Jun
+ 2025 13:38:12 +0200
+Date: Wed, 11 Jun 2025 12:38:06 +0100
+To: Zhao Liu <zhao1.liu@intel.com>
+CC: <mst@redhat.com>, <anisinha@redhat.com>, <armbru@redhat.com>,
+ <berrange@redhat.com>, <dapeng1.mi@linux.intel.com>, <eric.auger@redhat.com>, 
+ <farman@linux.ibm.com>, <gustavo.romero@linaro.org>, <imammedo@redhat.com>,
+ <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
+ <linuxarm@huawei.com>, <mtosatti@redhat.com>, <peter.maydell@linaro.org>,
+ <philmd@linaro.org>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
+ <richard.henderson@linaro.org>, <shameerali.kolothum.thodi@huawei.com>,
+ <shannon.zhaosl@gmail.com>, <yangyicong@hisilicon.com>, <maobibo@loongson.cn>
+Subject: Re: [PATCH v12 2/6] arm/virt.c: add cache hierarchy to device tree
+Message-ID: <20250611123806.00002a09.alireza.sanaee@huawei.com>
+In-Reply-To: <aEFnFI+wglkmLD5G@intel.com>
+References: <20250604133439.1592-1-alireza.sanaee@huawei.com>
+ <20250604133439.1592-3-alireza.sanaee@huawei.com>
+ <aEFnFI+wglkmLD5G@intel.com>
+Organization: Huawei
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/5] scripts/meson-buildoptions: Sort coroutine_backend
- choices lexicographically
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Kohei Tokunaga <ktokunaga.mail@gmail.com>
-References: <20250610204131.2862-1-shentey@gmail.com>
- <20250610204131.2862-4-shentey@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Content-Language: en-US
-Autocrypt: addr=thuth@redhat.com; keydata=
- xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
- yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
- 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
- tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
- 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
- O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
- 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
- gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
- 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
- zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzR5UaG9tYXMgSHV0
- aCA8dGh1dGhAcmVkaGF0LmNvbT7CwXgEEwECACIFAlVgX6oCGwMGCwkIBwMCBhUIAgkKCwQW
- AgMBAh4BAheAAAoJEC7Z13T+cC21EbIP/ii9cvT2HHGbFRl8HqGT6+7Wkb+XLMqJBMAIGiQK
- QIP3xk1HPTsLfVG0ao4hy/oYkGNOP8+ubLnZen6Yq3zAFiMhQ44lvgigDYJo3Ve59gfe99KX
- EbtB+X95ODARkq0McR6OAsPNJ7gpEUzfkQUUJTXRDQXfG/FX303Gvk+YU0spm2tsIKPl6AmV
- 1CegDljzjycyfJbk418MQmMu2T82kjrkEofUO2a24ed3VGC0/Uz//XCR2ZTo+vBoBUQl41BD
- eFFtoCSrzo3yPFS+w5fkH9NT8ChdpSlbNS32NhYQhJtr9zjWyFRf0Zk+T/1P7ECn6gTEkp5k
- ofFIA4MFBc/fXbaDRtBmPB0N9pqTFApIUI4vuFPPO0JDrII9dLwZ6lO9EKiwuVlvr1wwzsgq
- zJTPBU3qHaUO4d/8G+gD7AL/6T4zi8Jo/GmjBsnYaTzbm94lf0CjXjsOX3seMhaE6WAZOQQG
- tZHAO1kAPWpaxne+wtgMKthyPLNwelLf+xzGvrIKvLX6QuLoWMnWldu22z2ICVnLQChlR9d6
- WW8QFEpo/FK7omuS8KvvopFcOOdlbFMM8Y/8vBgVMSsK6fsYUhruny/PahprPbYGiNIhKqz7
- UvgyZVl4pBFjTaz/SbimTk210vIlkDyy1WuS8Zsn0htv4+jQPgo9rqFE4mipJjy/iboDzsFN
- BFH7eUwBEAC2nzfUeeI8dv0C4qrfCPze6NkryUflEut9WwHhfXCLjtvCjnoGqFelH/PE9NF4
- 4VPSCdvD1SSmFVzu6T9qWdcwMSaC+e7G/z0/AhBfqTeosAF5XvKQlAb9ZPkdDr7YN0a1XDfa
- +NgA+JZB4ROyBZFFAwNHT+HCnyzy0v9Sh3BgJJwfpXHH2l3LfncvV8rgFv0bvdr70U+On2XH
- 5bApOyW1WpIG5KPJlDdzcQTyptOJ1dnEHfwnABEfzI3dNf63rlxsGouX/NFRRRNqkdClQR3K
- gCwciaXfZ7ir7fF0u1N2UuLsWA8Ei1JrNypk+MRxhbvdQC4tyZCZ8mVDk+QOK6pyK2f4rMf/
- WmqxNTtAVmNuZIwnJdjRMMSs4W4w6N/bRvpqtykSqx7VXcgqtv6eqoDZrNuhGbekQA0sAnCJ
- VPArerAZGArm63o39me/bRUQeQVSxEBmg66yshF9HkcUPGVeC4B0TPwz+HFcVhheo6hoJjLq
- knFOPLRj+0h+ZL+D0GenyqD3CyuyeTT5dGcNU9qT74bdSr20k/CklvI7S9yoQje8BeQAHtdV
- cvO8XCLrpGuw9SgOS7OP5oI26a0548M4KldAY+kqX6XVphEw3/6U1KTf7WxW5zYLTtadjISB
- X9xsRWSU+Yqs3C7oN5TIPSoj9tXMoxZkCIHWvnqGwZ7JhwARAQABwsFfBBgBAgAJBQJR+3lM
- AhsMAAoJEC7Z13T+cC21hPAQAIsBL9MdGpdEpvXs9CYrBkd6tS9mbaSWj6XBDfA1AEdQkBOn
- ZH1Qt7HJesk+qNSnLv6+jP4VwqK5AFMrKJ6IjE7jqgzGxtcZnvSjeDGPF1h2CKZQPpTw890k
- fy18AvgFHkVk2Oylyexw3aOBsXg6ukN44vIFqPoc+YSU0+0QIdYJp/XFsgWxnFIMYwDpxSHS
- 5fdDxUjsk3UBHZx+IhFjs2siVZi5wnHIqM7eK9abr2cK2weInTBwXwqVWjsXZ4tq5+jQrwDK
- cvxIcwXdUTLGxc4/Z/VRH1PZSvfQxdxMGmNTGaXVNfdFZjm4fz0mz+OUi6AHC4CZpwnsliGV
- ODqwX8Y1zic9viSTbKS01ZNp175POyWViUk9qisPZB7ypfSIVSEULrL347qY/hm9ahhqmn17
- Ng255syASv3ehvX7iwWDfzXbA0/TVaqwa1YIkec+/8miicV0zMP9siRcYQkyTqSzaTFBBmqD
- oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
- IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
- yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250610204131.2862-4-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Originating-IP: [10.203.177.99]
+X-ClientProxiedBy: lhrpeml500001.china.huawei.com (7.191.163.213) To
+ frapeml500003.china.huawei.com (7.182.85.28)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1K0XkmdTvfBE
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
+From:  Alireza Sanaee via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: zvJKcIDERuyk
 
-On 10/06/2025 22.41, Bernhard Beschow wrote:
-> When changing meson_options.txt, this script gets updated automatically by QEMU
-> tooling which sorts the choices lexicographically. Fix this in preparation of
-> the ext patch.
+On Thu, 5 Jun 2025 17:44:52 +0800
+Zhao Liu <zhao1.liu@intel.com> wrote:
 
-s/ext/next/
-
-> Fixes: ccc403ed5844 ("meson: Add wasm build in build scripts")
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->   scripts/meson-buildoptions.sh | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> Hi Ali,
 > 
-> diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
-> index f09ef9604f..73e0770f42 100644
-> --- a/scripts/meson-buildoptions.sh
-> +++ b/scripts/meson-buildoptions.sh
-> @@ -80,7 +80,7 @@ meson_options_help() {
->     printf "%s\n" '  --tls-priority=VALUE     Default TLS protocol/cipher priority string'
->     printf "%s\n" '                           [NORMAL]'
->     printf "%s\n" '  --with-coroutine=CHOICE  coroutine backend to use (choices:'
-> -  printf "%s\n" '                           auto/sigaltstack/ucontext/windows/wasm)'
-> +  printf "%s\n" '                           auto/sigaltstack/ucontext/wasm/windows)'
->     printf "%s\n" '  --with-pkgversion=VALUE  use specified string as sub-version of the'
->     printf "%s\n" '                           package'
->     printf "%s\n" '  --with-suffix=VALUE      Suffix for QEMU data/modules/config directories'
+> I'm very sorry to bother you with some comments after so many
+> versions.
+> 
+> > diff --git a/hw/cpu/core.c b/hw/cpu/core.c
+> > index 5cb2e9a7f5..7339782663 100644
+> > --- a/hw/cpu/core.c
+> > +++ b/hw/cpu/core.c  
+> 
+> core.c is not the right place. It just contains the "cpu-core"
+> abstraction. So we need to move the following functions to other
+> files.
+> 
+> > @@ -102,4 +102,96 @@ static void cpu_core_register_types(void)
+> >      type_register_static(&cpu_core_type_info);
+> >  }
+> >  
+> > +bool cache_described_at(const MachineState *ms, CpuTopologyLevel
+> > level)  
+> 
+> It's better to add the comment about what this function did. (its name
+> doesn't reflect it wants to check the coresponding CPU topology
+> level.)
+> 
+> I also feel it's not a good name, what about
+> "machine_check_cache_at_topo_level"?
+> 
+> Furthermore, we can move this one to hw/core/machine-smp.c, as it is
+> about with machine's smp_cache.
+> 
+> > +{
+> > +    if (machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L3)
+> > == level ||
+> > +        machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L2)
+> > == level ||
+> > +        machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L1I)
+> > == level ||
+> > +        machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L1D)
+> > == level) {
+> > +        return true;
+> > +    }
+> > +    return false;
+> > +}
+> > +
+> > +int partial_cache_description(const MachineState *ms,
+> > CPUCorePPTTCaches *caches,
+> > +                              int num_caches)  
+> 
+> Because I'll suggest to move CPUCorePPTTCaches to
+> include/hw/acpi/cpu.h later, and this function accepts
+> CPUCorePPTTCaches as the argument, so I think we could move this
+> function to hw/acpi/cpu.c (if Michael and Igor don't object).
 
-Tested-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Hi Zhao
+
+partial_cache_description function has been used in both hw/arm/virt.c
+and hw/acpi/aml-build.c it feels like it neither for arm nor acpi.
+Where do you think it is better to be placed at? does it go to core
+maybe?
+
+Thanks
+Alirez
+> 
+> > +{
+> > +    int level, c;
+> > +
+> > +    for (level = 1; level < num_caches; level++) {
+> > +        for (c = 0; c < num_caches; c++) {
+> > +            if (caches[c].level != level) {
+> > +                continue;
+> > +            }
+> > +
+> > +            switch (level) {
+> > +            case 1:
+> > +                /*
+> > +                 * L1 cache is assumed to have both L1I and L1D
+> > available.
+> > +                 * Technically both need to be checked.
+> > +                 */
+> > +                if (machine_get_cache_topo_level(ms,
+> > +
+> > CACHE_LEVEL_AND_TYPE_L1I) ==
+> > +                    CPU_TOPOLOGY_LEVEL_DEFAULT) {
+> > +                    return level;
+> > +                }
+> > +                break;
+> > +            case 2:
+> > +                if (machine_get_cache_topo_level(ms,
+> > CACHE_LEVEL_AND_TYPE_L2) ==
+> > +                    CPU_TOPOLOGY_LEVEL_DEFAULT) {
+> > +                    return level;
+> > +                }
+> > +                break;
+> > +            case 3:
+> > +                if (machine_get_cache_topo_level(ms,
+> > CACHE_LEVEL_AND_TYPE_L3) ==
+> > +                    CPU_TOPOLOGY_LEVEL_DEFAULT) {
+> > +                    return level;
+> > +                }
+> > +                break;
+> > +            }
+> > +        }
+> > +    }
+> > +
+> > +    return 0;
+> > +}
+> > +
+> > +/*
+> > + * This function assumes l3 and l2 have unified cache and l1 is
+> > split l1d
+> > + * and l1i, and further prepares the lowest cache level for a
+> > topology
+> > + * level.  The info will be fed to build_caches to create caches
+> > at the
+> > + * right level.
+> > + */
+> > +bool find_the_lowest_level_cache_defined_at_level(const
+> > MachineState *ms,
+> > +                                                  int *level_found,
+> > +                                                  CpuTopologyLevel
+> > topo_level) {  
+> 
+> This is a very long name :-).
+> 
+> Maybe we can rename it like:
+> 
+> machine_find_lowest_level_cache_at_topo_level,
+> 
+> (sorry this name doesn't shorten the length but align the naming style
+> in machine-smp.c)
+> 
+> and explain the arguments in the comment.
+> 
+> Furthermore, we can move this one to hw/core/machine-smp.c, too.
+> 
+> > +    CpuTopologyLevel level;
+> > +
+> > +    level = machine_get_cache_topo_level(ms,
+> > CACHE_LEVEL_AND_TYPE_L1I);
+> > +    if (level == topo_level) {
+> > +        *level_found = 1;
+> > +        return true;
+> > +    }
+> > +
+> > +    level = machine_get_cache_topo_level(ms,
+> > CACHE_LEVEL_AND_TYPE_L1D);
+> > +    if (level == topo_level) {
+> > +        *level_found = 1;
+> > +        return true;
+> > +    }
+> > +
+> > +    level = machine_get_cache_topo_level(ms,
+> > CACHE_LEVEL_AND_TYPE_L2);
+> > +    if (level == topo_level) {
+> > +        *level_found = 2;
+> > +        return true;
+> > +    }
+> > +
+> > +    level = machine_get_cache_topo_level(ms,
+> > CACHE_LEVEL_AND_TYPE_L3);
+> > +    if (level == topo_level) {
+> > +        *level_found = 3;
+> > +        return true;
+> > +    }
+> > +
+> > +    return false;
+> > +}
+> > +
+> >  type_init(cpu_core_register_types)  
+> 
+> ...
+> 
+> > diff --git a/include/hw/cpu/core.h b/include/hw/cpu/core.h
+> > index 98ab91647e..0f7bf8bc28 100644
+> > --- a/include/hw/cpu/core.h
+> > +++ b/include/hw/cpu/core.h
+> > @@ -11,6 +11,7 @@
+> >  
+> >  #include "hw/qdev-core.h"
+> >  #include "qom/object.h"
+> > +#include "qapi/qapi-types-machine-common.h"
+> >  
+> >  #define TYPE_CPU_CORE "cpu-core"
+> >  
+> > @@ -25,6 +26,32 @@ struct CPUCore {
+> >      int nr_threads;
+> >  };
+> >  
+> > +typedef enum CPUCacheType {
+> > +    CPU_CORE_DATA,
+> > +    CPU_CORE_INSTRUCTION,
+> > +    CPU_CORE_UNIFIED,
+> > +} CPUCoreCacheType;  
+> 
+> This is a complete duplicate of the x86's CPUCaches
+> (target/i386/cpu.h).
+> 
+> I think we can move x86's CPUCaches to include/hw/core/cpu.h.
+> 
+> > +typedef struct CPUPPTTCaches {
+> > +    CPUCoreCacheType type;
+> > +    uint32_t pptt_id;
+> > +    uint32_t sets;
+> > +    uint32_t size;
+> > +    uint32_t level;
+> > +    uint16_t linesize;
+> > +    uint8_t attributes; /* write policy: 0x0 write back, 0x1 write
+> > through */
+> > +    uint8_t associativity;
+> > +} CPUCorePPTTCaches;  
+> 
+> x86 doesn't use PPTT to describe cache so it's not necessary to reuse
+> CPUCacheInfo (target/i386/cpu.h) for PPTT.
+> 
+> But I understand it's better to place this sturct in
+> include/hw/acpi/cpu.h, since it is part of the ACPI PPTT table.
+> 
+> > +int partial_cache_description(const MachineState *ms,
+> > CPUCorePPTTCaches *caches,
+> > +                              int num_caches);  
+> 
+> Could move to include/hw/acpi/cpu.h, too.
+> 
+> > +bool cache_described_at(const MachineState *ms, CpuTopologyLevel
+> > level); +
+> > +bool find_the_lowest_level_cache_defined_at_level(const
+> > MachineState *ms,
+> > +                                                  int *level_found,
+> > +                                                  CpuTopologyLevel
+> > topo_level);
+> > +  
+> 
+> Because these 2 functions' definitions would be moved to
+> hw/core/machine-smp.c, then we need to move their declarations to
+> include/hw/boards.h.
+> 
+> 
+> Except the above nits, the general part is fine for me.
+> 
+> Thanks,
+> Zhao
+> 
+> 
+> 
 

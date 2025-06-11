@@ -1,100 +1,93 @@
-Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp2753687njc;
-        Wed, 11 Jun 2025 04:42:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXPd1cDTyPyip2Noo18aLWNIVHX8Sow2RGjfvc+jwHOO2Ul3uyZD0ybiOsp4nc/z6pF9Z44/mFrg1gPRQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGWOYqtdIs06+BdMFBMpKw/YMUnZtXtqN5APoXgAwYkknVt3JElL9qwOm1zXNrKF79aFT7T
-X-Received: by 2002:a05:622a:988:b0:4a6:ef77:3deb with SMTP id d75a77b69052e-4a713c5eb2bmr47772051cf.40.1749642140202;
-        Wed, 11 Jun 2025 04:42:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749642140; cv=none;
+Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp2755678njc;
+        Wed, 11 Jun 2025 04:46:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUAhEXOqu4svSbp7ghNuwwFa0GNjtMziMlOqfcxeSGLRlwPYqM9HDOQCASgiYija39Ju3IBdz+JL9mC4w==@linaro.org
+X-Google-Smtp-Source: AGHT+IG41+yhOcCRHcprXUymrQCHMAzYhLScuMsPTIjGkPW4/rSuubkOR8rZtE3rqv21iTwzFhhz
+X-Received: by 2002:a05:620a:4415:b0:7cd:47bf:cadc with SMTP id af79cd13be357-7d3a88920aamr495360985a.47.1749642383027;
+        Wed, 11 Jun 2025 04:46:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749642383; cv=none;
         d=google.com; s=arc-20240605;
-        b=GtI4uAIDywzv6ZGdrx0pcES1QXQ+cYzYYoZaCy8QAeM0XjOeUMw70ijEawN14QLpXx
-         qhGixywqNNejyno87fsV8sTp/8TNwsgS3fDm63UEBO4X8RT0VFl1WcYI2xE47dc970em
-         SgHAo/61CL3RDCkhvgvjKssVJakfLZEmT7J7SsXeoGdoNCcesTkKCeACnr+Nn89KurSu
-         2nue9IqcAXno0pq6FTV0SqNsGxLYzVZprRuTWzjifTWT217ATZ2FHklINP8GdqEGZ9Hb
-         mxofMkTEXDQtjb4uq2SEmo/r8iH0mHin/XWFOA129wb8nXgoxrFeEKSRvMZgx68roYlI
-         ba4Q==
+        b=WTvMKKSQQpKz/5xEhZ5zgoDDQvlpVxBXCth6bHLpzfidspYg3DoGtm+losHChvtszL
+         2Td8BAdUeDMBbECTl0Sw0aPTRvEDSrz8/VuzWHR0rY0F6RyNS4hyOn/WhmqLkT8Bowyb
+         +bayyaEIL1Fks++GPBI2mZ+t2PhlDPbv3Hy6EGDa+WmgywGoZzDbmMIbaHPip0RyJN+6
+         EEV89h6dhOrrv9dv3wYFimjp8WkM7CPPY/4/S64kKRf7pQkajKpnlqg9NT3C+8MAM2i7
+         cPWkXeY5n+Y4bKL3k3P1qz7kCMrJQ6L+OneKvOnxJfcRRxmTWGNMs9kavdJ+9xlbkODk
+         dLhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=MRQLF/EYYOjINjURi6CAojtP2dyodY3ukZld3rwi6KA=;
-        fh=YwBYsaHypxwrKhdDf2kZM2uQ8ERdBAWVIBgfscIqATo=;
-        b=FcTXFtyR2GWNeyy2wwnAu1Q0yi/Ijv0aWs8C/w7WJWFUT03WXt182kQsSzwT38KYzw
-         YrDuNiMmU2hVBahGl+qh21Snh3OhnHaqroR56sFiWuPqAtQxQ/Pte0vXKOtAL0Og3+V9
-         y0RB3Doniy5TRKuy9P8Zk93W5Cj74Awx9oa/p9/Um4VBmjBkMjRPbxRPja5bVDXUzNZg
-         6R+mxE0e+jtg0738wO0gJtQKUM+/0bOPfwguqeKlw2TMvK+FJFThwZ7fT6Wh06P7LrYU
-         0UrhCw1pc5S6V5Kwo7aUq3IqV1CTy1Nsm5rmk8ljVU1U4ydZpH/PerPrTUzTcQh1nALE
-         0niQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=I+RjfvR29jVpx/RS9vvkEjWUqUTqCT4u04INfAC/UIk=;
+        fh=KcZF1R3FzP78LL03+MmPpA6sMKg5K5Gg1d1KOC4XeDc=;
+        b=COpBrT7zpDnJBZLVLneUR6H2380VnA3UM7vZe7BpvfKmVWjOHoK2+nCOB1zIWPuYrN
+         VORHKc3VJAy/gZnpKYq18ubfub39Z+WbDZ9lthkdO+EnMpfm43OeVrc9AsAo8ONNSL5o
+         OtpTqcESY04o9KED3ulo3SW1DKhNQGptkoxiKFZIE3UWUh99DIr3XWfO/wK6HQr6XXMX
+         ntImFWLrP/cmmvecezFqqhVaVZg6iMVLbG5/EfdRUjeXEoECWQVAZGwI/BGBn5yOKphH
+         ztxv+FJ1qpSKCOOgXW3m0BngrQ5M8ydaxOzSVOjUDHezXg7vUb4G2Qy/o70+TZAAT+qJ
+         Y80g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a611169a52si132851761cf.41.2025.06.11.04.42.19
+        by mx.google.com with ESMTPS id af79cd13be357-7d24b3cb7fdsi1327798685a.104.2025.06.11.04.46.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Jun 2025 04:42:20 -0700 (PDT)
+        Wed, 11 Jun 2025 04:46:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uPJpO-0005dN-VV; Wed, 11 Jun 2025 07:41:11 -0400
+	id 1uPJuK-0007rQ-Id; Wed, 11 Jun 2025 07:46:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1uPJpM-0005cd-PC; Wed, 11 Jun 2025 07:41:08 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1uPJuE-0007qT-DY; Wed, 11 Jun 2025 07:46:14 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1uPJot-0001N1-LL; Wed, 11 Jun 2025 07:41:08 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bHNpW1L7fz6L616;
- Wed, 11 Jun 2025 19:33:55 +0800 (CST)
-Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
- by mail.maildlp.com (Postfix) with ESMTPS id 5C67A140275;
- Wed, 11 Jun 2025 19:38:13 +0800 (CST)
-Received: from localhost (10.203.177.99) by frapeml500003.china.huawei.com
- (7.182.85.28) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 11 Jun
- 2025 13:38:12 +0200
-Date: Wed, 11 Jun 2025 12:38:06 +0100
-To: Zhao Liu <zhao1.liu@intel.com>
-CC: <mst@redhat.com>, <anisinha@redhat.com>, <armbru@redhat.com>,
- <berrange@redhat.com>, <dapeng1.mi@linux.intel.com>, <eric.auger@redhat.com>, 
- <farman@linux.ibm.com>, <gustavo.romero@linaro.org>, <imammedo@redhat.com>,
- <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
- <linuxarm@huawei.com>, <mtosatti@redhat.com>, <peter.maydell@linaro.org>,
- <philmd@linaro.org>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
- <richard.henderson@linaro.org>, <shameerali.kolothum.thodi@huawei.com>,
- <shannon.zhaosl@gmail.com>, <yangyicong@hisilicon.com>, <maobibo@loongson.cn>
-Subject: Re: [PATCH v12 2/6] arm/virt.c: add cache hierarchy to device tree
-Message-ID: <20250611123806.00002a09.alireza.sanaee@huawei.com>
-In-Reply-To: <aEFnFI+wglkmLD5G@intel.com>
-References: <20250604133439.1592-1-alireza.sanaee@huawei.com>
- <20250604133439.1592-3-alireza.sanaee@huawei.com>
- <aEFnFI+wglkmLD5G@intel.com>
-Organization: Huawei
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1uPJuA-0002j9-RE; Wed, 11 Jun 2025 07:46:09 -0400
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 7585255C1BA;
+ Wed, 11 Jun 2025 13:45:58 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id f_baXMbxMlG9; Wed, 11 Jun 2025 13:45:56 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 7DA2955C171; Wed, 11 Jun 2025 13:45:56 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 7B9A2745682;
+ Wed, 11 Jun 2025 13:45:56 +0200 (CEST)
+Date: Wed, 11 Jun 2025 13:45:56 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>
+cc: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org, 
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org, 
+ =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>
+Subject: Re: [PATCH 4/5] configure: Add dtc option
+In-Reply-To: <aElCJnmjrB-X9M-n@redhat.com>
+Message-ID: <6eb6aa79-33f8-57ea-5714-af264557f8c8@eik.bme.hu>
+References: <20250610204131.2862-1-shentey@gmail.com>
+ <20250610204131.2862-5-shentey@gmail.com>
+ <cdfc561e-23a9-607a-d9a8-70e07e73e0fd@eik.bme.hu>
+ <aElCJnmjrB-X9M-n@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.99]
-X-ClientProxiedBy: lhrpeml500001.china.huawei.com (7.191.163.213) To
- frapeml500003.china.huawei.com (7.182.85.28)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+Content-Type: multipart/mixed;
+ boundary="3866299591-1454390608-1749642356=:93329"
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -108,258 +101,75 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
-From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zvJKcIDERuyk
+X-TUID: JqrrMXAnbVmH
 
-On Thu, 5 Jun 2025 17:44:52 +0800
-Zhao Liu <zhao1.liu@intel.com> wrote:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-> Hi Ali,
-> 
-> I'm very sorry to bother you with some comments after so many
-> versions.
-> 
-> > diff --git a/hw/cpu/core.c b/hw/cpu/core.c
-> > index 5cb2e9a7f5..7339782663 100644
-> > --- a/hw/cpu/core.c
-> > +++ b/hw/cpu/core.c  
-> 
-> core.c is not the right place. It just contains the "cpu-core"
-> abstraction. So we need to move the following functions to other
-> files.
-> 
-> > @@ -102,4 +102,96 @@ static void cpu_core_register_types(void)
-> >      type_register_static(&cpu_core_type_info);
-> >  }
-> >  
-> > +bool cache_described_at(const MachineState *ms, CpuTopologyLevel
-> > level)  
-> 
-> It's better to add the comment about what this function did. (its name
-> doesn't reflect it wants to check the coresponding CPU topology
-> level.)
-> 
-> I also feel it's not a good name, what about
-> "machine_check_cache_at_topo_level"?
-> 
-> Furthermore, we can move this one to hw/core/machine-smp.c, as it is
-> about with machine's smp_cache.
-> 
-> > +{
-> > +    if (machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L3)
-> > == level ||
-> > +        machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L2)
-> > == level ||
-> > +        machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L1I)
-> > == level ||
-> > +        machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L1D)
-> > == level) {
-> > +        return true;
-> > +    }
-> > +    return false;
-> > +}
-> > +
-> > +int partial_cache_description(const MachineState *ms,
-> > CPUCorePPTTCaches *caches,
-> > +                              int num_caches)  
-> 
-> Because I'll suggest to move CPUCorePPTTCaches to
-> include/hw/acpi/cpu.h later, and this function accepts
-> CPUCorePPTTCaches as the argument, so I think we could move this
-> function to hw/acpi/cpu.c (if Michael and Igor don't object).
+--3866299591-1454390608-1749642356=:93329
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-Hi Zhao
+On Wed, 11 Jun 2025, Daniel P. Berrangé wrote:
+> On Wed, Jun 11, 2025 at 02:37:08AM +0200, BALATON Zoltan wrote:
+>> On Tue, 10 Jun 2025, Bernhard Beschow wrote:
+>>> The next patch will make dtc mandatory for boards with a bundled DTB, causing
+>>> these boards to be omitted when dtc is missing. Allow packagers to force the
+>>> build of those boards by providing an option.
+>>
+>> I don't like this. This might result in some machines missing from some
+>> distros if they don't notice this and forget to update their packages and
+>> these are machines I care about.
+>
+> "Someone might not notice & screw up" is pretty much an argument for
+> not doing anything at all. We publish release notes to alert distros
 
-partial_cache_description function has been used in both hw/arm/virt.c
-and hw/acpi/aml-build.c it feels like it neither for arm nor acpi.
-Where do you think it is better to be placed at? does it go to core
-maybe?
+More like "if it ain't broke don't fix it".
 
-Thanks
-Alirez
-> 
-> > +{
-> > +    int level, c;
-> > +
-> > +    for (level = 1; level < num_caches; level++) {
-> > +        for (c = 0; c < num_caches; c++) {
-> > +            if (caches[c].level != level) {
-> > +                continue;
-> > +            }
-> > +
-> > +            switch (level) {
-> > +            case 1:
-> > +                /*
-> > +                 * L1 cache is assumed to have both L1I and L1D
-> > available.
-> > +                 * Technically both need to be checked.
-> > +                 */
-> > +                if (machine_get_cache_topo_level(ms,
-> > +
-> > CACHE_LEVEL_AND_TYPE_L1I) ==
-> > +                    CPU_TOPOLOGY_LEVEL_DEFAULT) {
-> > +                    return level;
-> > +                }
-> > +                break;
-> > +            case 2:
-> > +                if (machine_get_cache_topo_level(ms,
-> > CACHE_LEVEL_AND_TYPE_L2) ==
-> > +                    CPU_TOPOLOGY_LEVEL_DEFAULT) {
-> > +                    return level;
-> > +                }
-> > +                break;
-> > +            case 3:
-> > +                if (machine_get_cache_topo_level(ms,
-> > CACHE_LEVEL_AND_TYPE_L3) ==
-> > +                    CPU_TOPOLOGY_LEVEL_DEFAULT) {
-> > +                    return level;
-> > +                }
-> > +                break;
-> > +            }
-> > +        }
-> > +    }
-> > +
-> > +    return 0;
-> > +}
-> > +
-> > +/*
-> > + * This function assumes l3 and l2 have unified cache and l1 is
-> > split l1d
-> > + * and l1i, and further prepares the lowest cache level for a
-> > topology
-> > + * level.  The info will be fed to build_caches to create caches
-> > at the
-> > + * right level.
-> > + */
-> > +bool find_the_lowest_level_cache_defined_at_level(const
-> > MachineState *ms,
-> > +                                                  int *level_found,
-> > +                                                  CpuTopologyLevel
-> > topo_level) {  
-> 
-> This is a very long name :-).
-> 
-> Maybe we can rename it like:
-> 
-> machine_find_lowest_level_cache_at_topo_level,
-> 
-> (sorry this name doesn't shorten the length but align the naming style
-> in machine-smp.c)
-> 
-> and explain the arguments in the comment.
-> 
-> Furthermore, we can move this one to hw/core/machine-smp.c, too.
-> 
-> > +    CpuTopologyLevel level;
-> > +
-> > +    level = machine_get_cache_topo_level(ms,
-> > CACHE_LEVEL_AND_TYPE_L1I);
-> > +    if (level == topo_level) {
-> > +        *level_found = 1;
-> > +        return true;
-> > +    }
-> > +
-> > +    level = machine_get_cache_topo_level(ms,
-> > CACHE_LEVEL_AND_TYPE_L1D);
-> > +    if (level == topo_level) {
-> > +        *level_found = 1;
-> > +        return true;
-> > +    }
-> > +
-> > +    level = machine_get_cache_topo_level(ms,
-> > CACHE_LEVEL_AND_TYPE_L2);
-> > +    if (level == topo_level) {
-> > +        *level_found = 2;
-> > +        return true;
-> > +    }
-> > +
-> > +    level = machine_get_cache_topo_level(ms,
-> > CACHE_LEVEL_AND_TYPE_L3);
-> > +    if (level == topo_level) {
-> > +        *level_found = 3;
-> > +        return true;
-> > +    }
-> > +
-> > +    return false;
-> > +}
-> > +
-> >  type_init(cpu_core_register_types)  
-> 
-> ...
-> 
-> > diff --git a/include/hw/cpu/core.h b/include/hw/cpu/core.h
-> > index 98ab91647e..0f7bf8bc28 100644
-> > --- a/include/hw/cpu/core.h
-> > +++ b/include/hw/cpu/core.h
-> > @@ -11,6 +11,7 @@
-> >  
-> >  #include "hw/qdev-core.h"
-> >  #include "qom/object.h"
-> > +#include "qapi/qapi-types-machine-common.h"
-> >  
-> >  #define TYPE_CPU_CORE "cpu-core"
-> >  
-> > @@ -25,6 +26,32 @@ struct CPUCore {
-> >      int nr_threads;
-> >  };
-> >  
-> > +typedef enum CPUCacheType {
-> > +    CPU_CORE_DATA,
-> > +    CPU_CORE_INSTRUCTION,
-> > +    CPU_CORE_UNIFIED,
-> > +} CPUCoreCacheType;  
-> 
-> This is a complete duplicate of the x86's CPUCaches
-> (target/i386/cpu.h).
-> 
-> I think we can move x86's CPUCaches to include/hw/core/cpu.h.
-> 
-> > +typedef struct CPUPPTTCaches {
-> > +    CPUCoreCacheType type;
-> > +    uint32_t pptt_id;
-> > +    uint32_t sets;
-> > +    uint32_t size;
-> > +    uint32_t level;
-> > +    uint16_t linesize;
-> > +    uint8_t attributes; /* write policy: 0x0 write back, 0x1 write
-> > through */
-> > +    uint8_t associativity;
-> > +} CPUCorePPTTCaches;  
-> 
-> x86 doesn't use PPTT to describe cache so it's not necessary to reuse
-> CPUCacheInfo (target/i386/cpu.h) for PPTT.
-> 
-> But I understand it's better to place this sturct in
-> include/hw/acpi/cpu.h, since it is part of the ACPI PPTT table.
-> 
-> > +int partial_cache_description(const MachineState *ms,
-> > CPUCorePPTTCaches *caches,
-> > +                              int num_caches);  
-> 
-> Could move to include/hw/acpi/cpu.h, too.
-> 
-> > +bool cache_described_at(const MachineState *ms, CpuTopologyLevel
-> > level); +
-> > +bool find_the_lowest_level_cache_defined_at_level(const
-> > MachineState *ms,
-> > +                                                  int *level_found,
-> > +                                                  CpuTopologyLevel
-> > topo_level);
-> > +  
-> 
-> Because these 2 functions' definitions would be moved to
-> hw/core/machine-smp.c, then we need to move their declarations to
-> include/hw/boards.h.
-> 
-> 
-> Except the above nits, the general part is fine for me.
-> 
-> Thanks,
-> Zhao
-> 
-> 
-> 
+> to these kind of changes which is a reasonable effort on our part.
+> Distros need to play their part by reading them and adapting to the
+> changes. They can also compare the available options with new and
+> old QEMU to identify any new build features they need to handle when
+> updating.
+>
+>>                                  Also what guarantees that we don't get bugs
+>> by compiling the device tree with different dtc versions which might
+>> generate different binaries? The binaries we have now are known to work and
+>> don't take much space so keeping them for convenience might be simpler. If
+>> it worked so far why change it now?
+>
+> Ultimately the DTC project has responsibility to not cause regressions
+> in new releases they issue, as is the case for any 3rd party dep that
+> we rely on.
+>
+> We have CI jobs that can run on different distros. If we have coverage
+> of the boards in functional test suite that provides a way to validate the
+> operation with differing DTC versions as a sanity check.
+>
+> Distributing pre-built binaries in source release tarballs is a long
+> standing issue with QEMU's releases. If we can eliminate the pre-bbuilt
+> DTB and only ship the source that is a good thing IMHO.
+>
+>> If this was using dtc from the submodule when not using system libfdt then
+>> at least it would not result in dropped machines and we had a known working
+>> dtc to compile with. Why isn't that used when we already have it for libfdt?
+>
+> Are there any platforms that we target which still lack dtc ? The
+> submodule was there to plug gaps in distro support long ago, but
+> if every distro has dtc available the submodule is redundant.
 
+OK, can we then make libfdt and dtc mandatory and not build at all instead 
+of disabling boards without it? I only care that my boards will be in 
+distro packages so users don't have to compile and I don't have to provide 
+binaries which would also be ensured if we require dtc, then the dtbs can 
+be dropped.
+
+There's still a potential issue that some of the dts files are old and may 
+not compile with newer dtc and changing them may upset the guest but 
+hopefully we won't get that.
+
+Regards,
+BALATON Zoltan
+--3866299591-1454390608-1749642356=:93329--

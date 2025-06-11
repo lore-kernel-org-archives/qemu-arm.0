@@ -1,85 +1,87 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp1997610njc;
-        Wed, 11 Jun 2025 11:26:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU4NcfaSw7/AEuy30cyZVGM9ORe11i89aQo+LGLh4tKcWqhbGm10bJzNnBTYESVEal9NdRzUxT8Th2Bbg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHQSOyAPz+7MnH+oiP45Vi1XmIYzMYhjsCAtKj5l+eTARuHlO7ohN6dMGpVBaZoXNci1G4P
-X-Received: by 2002:a05:620a:400d:b0:7d3:8ca0:65c0 with SMTP id af79cd13be357-7d3b367b4d7mr25051985a.32.1749666398250;
-        Wed, 11 Jun 2025 11:26:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749666398; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp1997714njc;
+        Wed, 11 Jun 2025 11:26:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXx0JARFmX2QLRjAU8F/XbLGe8kUs09EbBgOTNFibLsphru5/XM9bENQm+lOElCrxXXFuMnFl+CwbRxJg==@linaro.org
+X-Google-Smtp-Source: AGHT+IH7XTAwGrFtrONmFprf3LqYek/NBVremL4xLI7+E/kJvPM/NgOJ9k1d8hjfmMCETFdg7ILN
+X-Received: by 2002:a05:6214:d8f:b0:6fa:f94e:6e75 with SMTP id 6a1803df08f44-6fb34d99cdemr3091526d6.25.1749666410428;
+        Wed, 11 Jun 2025 11:26:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749666410; cv=none;
         d=google.com; s=arc-20240605;
-        b=XXyZ27Gx8/qe0sNkSTi4rsSALNeffogAY16/AtCyX9tUhcZmz3xZFsW+W69nOzztt+
-         E2SyLOwylLkwykYCEZsApQKb7VAcJEzIDhHn88blU/LrmEClj7/oQN3CwngjHLYI7Wl8
-         zGPRBGj2dzdfGRjgBxph+F2Fuvktx2OHGg9W7LygmINVP256/QHokmqgzhI3+2llNxMU
-         CV7Ugs+PBmygG4Bu8uudelapzu0nAEkitLHAiIUG+qhkx42HdX38+vn7kISdOjAwBFDM
-         clZmbTWXMGOu9aLcCmE6/8fZy1hErsXl7/Gd5j98rsboaCDhvPJcArHdYz0V5hQ6WL+g
-         PGqQ==
+        b=J5lGj+RQ1LRUrXtgkISHCq/W6P4FvcpceyrFTTD4wxJu5i+GRFqYXMd8kM986LfHmF
+         Jb995bCxanhhowFyYrUJN+t2jq7nvvbfyJ12YMQzlSRCisDrw5nfgjt6uVDQT2niwlZz
+         ugImVHo/SOOHLf2y07qDht/ikcFA9rj5LkzpuYi86ww25wT+K/e1tcpOpz85mS1jRDC2
+         ckJgY9zZujg5p8VU+hCM1J5Y96zJ4m/E2lwwrK36QlJ+ZPlLrqb3m4XC5S7rTpSsT8ND
+         GDOj/wnYmrY7fQJVHslp+/G/p9Cb/i7pE2f+K4rHnYIiAQBrUnOro8R4ZiaDzHiUdlh0
+         2oDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=mkg1+W8RvAcUUgL/WOeKMGXWZeEOTEr6LlHLyMUvJ7w=;
-        fh=DT3aAIaZ9iAvsdfexZ6RdDSuP95MOaOAstWKnrU7xEg=;
-        b=gSk6TdBzTkQBbwgbMC7huCrrGl5Ugyoz+BA1WnlUNthNtKy1otxX4TIlCNH2UZURbI
-         f9jWzjW+eMwjMxMV8HTz5rDgKARtEAu8jueiHC2tddT5xdPp7QNABrMprQcCaJItGLgG
-         SGlN8CxwjRZu+ZNNupUWt+42EvYkCY1LJ9OW/m3Zrx42vKcltVy5JwmO+hsLxe6D4Thp
-         XzVJb62UeZOClUMlPXCBJSijp2Ho/TwQMf0RmQcI/69PL7OZOfDnC94H8QZCYjCLFtcP
-         7lcpcGpa5MLkihhvoQdTU4gWh3/d9N+KMdFLhdPfYpLZjW5YkzqKMr41UNqwbbZg3fHp
-         kWvA==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=UQNXH4s6oZwiIt3/fk9WMce4UX8+i3+RrT8bw0pK+dY=;
+        fh=loh9k9y3S2mImjFs3v08l0zZWu2zKrkh48k9P3fQXm8=;
+        b=FHcguD8PTekKWc5dVlOPEt3xvSnecbejaKYLXDi8o5FJI/2KEjKu8utbgHvbTTqgwG
+         kVIaVQDceSsw0gLXwkbVrFzxrRWO+Ab3uW9SIbOfgumh3bqWClmON0kuZUTqDVDrWV06
+         r89Xl/4zAquH3ZusULq5Nbp6zK5C53LMU5gl5okPiqRZ5zn4j5BM3NOEo/+Cv3Z3SuPu
+         9a53r+zD7CR+SoZU3la+3KAX0+RuicRPmaT8lVpGBcBc1afZ902OjBDQSNPllo4dfczI
+         AkY61i8UyqqOEKGVeXQi4OgeEOrthXAPWAQaZj2n0BmAKxejBwQX75TL55fZ62q33X5k
+         ks6A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EGVh3SFy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aJPfENxZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d24b3cbb4csi1360216185a.103.2025.06.11.11.26.38
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fb09b2616fsi138068736d6.285.2025.06.11.11.26.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Jun 2025 11:26:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 11 Jun 2025 11:26:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EGVh3SFy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aJPfENxZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uPQ9i-0001Se-Pj; Wed, 11 Jun 2025 14:26:35 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uPQ9n-0001X2-3c; Wed, 11 Jun 2025 14:26:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQ9f-0001Qf-Dx
- for qemu-arm@nongnu.org; Wed, 11 Jun 2025 14:26:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1uPQ9f-0001Qg-FJ
+ for qemu-devel@nongnu.org; Wed, 11 Jun 2025 14:26:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQ9A-0001FE-Br
- for qemu-arm@nongnu.org; Wed, 11 Jun 2025 14:26:10 -0400
+ id 1uPQ9I-0001Fz-BC
+ for qemu-devel@nongnu.org; Wed, 11 Jun 2025 14:26:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666357;
+ s=mimecast20190719; t=1749666363;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=mkg1+W8RvAcUUgL/WOeKMGXWZeEOTEr6LlHLyMUvJ7w=;
- b=EGVh3SFyM5UWUpevtSyKVQUxMXurBUDkOix6EOka7ihrYcBT8Pa1/FFfgyYuu7jnJIXpYZ
- f/ci+WKhk52M9J1deJddkezHrL+YECW4U7iWkoCloj6pEWYIr/Bz1atCh8SUDoz/YKYN+Z
- 0J8sOLwczCpm0J+h/WyG/MmAQhMNfDI=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=UQNXH4s6oZwiIt3/fk9WMce4UX8+i3+RrT8bw0pK+dY=;
+ b=aJPfENxZNKAaHq5beoh9bxiw7rOLZAtJlwFmww9lvRbYymGQTL7qd5wR5yatuBr+lZfyBc
+ DobUYtI56mCuxnSlxsAt0vvGHyGf0joqkj9tnm53T3p8zZWdfdjeB46kLIbQBdN2EqYhWk
+ 2mWs9PR1VkaaWLmjpRsjSSSLI5Pm148=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-502-K1nQ5IFnPbKDwG6aJtt7cw-1; Wed,
- 11 Jun 2025 14:25:56 -0400
-X-MC-Unique: K1nQ5IFnPbKDwG6aJtt7cw-1
-X-Mimecast-MFC-AGG-ID: K1nQ5IFnPbKDwG6aJtt7cw_1749666352
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-479-FQt9AiT3P5azAo_his_eOA-1; Wed,
+ 11 Jun 2025 14:25:59 -0400
+X-MC-Unique: FQt9AiT3P5azAo_his_eOA-1
+X-Mimecast-MFC-AGG-ID: FQt9AiT3P5azAo_his_eOA_1749666356
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D6DE818002ED; Wed, 11 Jun 2025 18:25:48 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3AE341800283; Wed, 11 Jun 2025 18:25:54 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BA72619560AF; Wed, 11 Jun 2025 18:25:34 +0000 (UTC)
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 389FA18003FC; Wed, 11 Jun 2025 18:25:50 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -107,15 +109,19 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Rob Herring <robh@kernel.org>, Steven Lee <steven_lee@aspeedtech.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 00/31] Block patches
-Date: Wed, 11 Jun 2025 14:25:02 -0400
-Message-ID: <20250611182533.200590-1-stefanha@redhat.com>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PULL 01/31] include/qemu/compiler: add QEMU_UNINITIALIZED attribute
+ macro
+Date: Wed, 11 Jun 2025 14:25:03 -0400
+Message-ID: <20250611182533.200590-2-stefanha@redhat.com>
+In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
+References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -124,108 +130,79 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IP3sUm6b77PP
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: B4/fte0t9PBA
 
-The following changes since commit bc98ffdc7577e55ab8373c579c28fe24d600c40f:
+The QEMU_UNINITIALIZED macro is to be used to skip the default compiler
+variable initialization done by -ftrivial-auto-var-init=zero.
 
-  Merge tag 'pull-10.1-maintainer-may-2025-070625-1' of https://gitlab.com/stsquad/qemu into staging (2025-06-07 15:08:55 -0400)
+Use this in cases where there a method in the device I/O path (or other
+important hot paths), that has large variables on the stack. A rule of
+thumb is that "large" means a method with 4kb data in the local stack
+frame. Any variables which are KB in size, should be annotated with this
+attribute, to pre-emptively eliminate any potential overhead from the
+compiler zero'ing memory.
 
-are available in the Git repository at:
+Given that this turns off a security hardening feature, when using this
+to flag variables, it is important that the code is double-checked to
+ensure there is no possible use of uninitialized data in the method.
 
-  https://gitlab.com/stefanha/qemu.git tags/block-pull-request
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Message-id: 20250610123709.835102-2-berrange@redhat.com
+[DB: split off patch & rewrite guidance on when to use the annotation]
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+---
+ include/qemu/compiler.h | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-for you to fetch changes up to dc0dfd00f428f7aed17ce2fd01a156186d5f76a3:
-
-  net/stream: skip automatic zero-init of large array (2025-06-11 14:20:10 -0400)
-
-----------------------------------------------------------------
-Pull request
-
-----------------------------------------------------------------
-
-Daniel P. Berrangé (29):
-  block: skip automatic zero-init of large array in ioq_submit
-  chardev/char-fd: skip automatic zero-init of large array
-  chardev/char-pty: skip automatic zero-init of large array
-  chardev/char-socket: skip automatic zero-init of large array
-  hw/audio/ac97: skip automatic zero-init of large arrays
-  hw/audio/cs4231a: skip automatic zero-init of large arrays
-  hw/audio/es1370: skip automatic zero-init of large array
-  hw/audio/gus: skip automatic zero-init of large array
-  hw/audio/gus: skip automatic zero-init of large array
-  hw/audio/sb16: skip automatic zero-init of large array
-  hw/audio/via-ac97: skip automatic zero-init of large array
-  hw/char/sclpconsole-lm: skip automatic zero-init of large array
-  hw/dma/xlnx_csu_dma: skip automatic zero-init of large array
-  hw/display/vmware_vga: skip automatic zero-init of large struct
-  hw/hyperv/syndbg: skip automatic zero-init of large array
-  hw/misc/aspeed_hace: skip automatic zero-init of large array
-  hw/net/rtl8139: skip automatic zero-init of large array
-  hw/net/tulip: skip automatic zero-init of large array
-  hw/net/virtio-net: skip automatic zero-init of large arrays
-  hw/net/xgamc: skip automatic zero-init of large array
-  hw/nvme/ctrl: skip automatic zero-init of large arrays
-  hw/ppc/pnv_occ: skip automatic zero-init of large struct
-  hw/ppc/spapr_tpm_proxy: skip automatic zero-init of large arrays
-  hw/usb/hcd-ohci: skip automatic zero-init of large array
-  hw/scsi/lsi53c895a: skip automatic zero-init of large array
-  hw/scsi/megasas: skip automatic zero-init of large arrays
-  hw/ufs/lu: skip automatic zero-init of large array
-  net/socket: skip automatic zero-init of large array
-  net/stream: skip automatic zero-init of large array
-
-Stefan Hajnoczi (2):
-  include/qemu/compiler: add QEMU_UNINITIALIZED attribute macro
-  hw/virtio/virtio: avoid cost of -ftrivial-auto-var-init in hot path
-
- include/qemu/compiler.h    | 20 ++++++++++++++++++++
- block/linux-aio.c          |  2 +-
- chardev/char-fd.c          |  2 +-
- chardev/char-pty.c         |  2 +-
- chardev/char-socket.c      |  2 +-
- hw/audio/ac97.c            |  4 ++--
- hw/audio/cs4231a.c         |  4 ++--
- hw/audio/es1370.c          |  2 +-
- hw/audio/gus.c             |  2 +-
- hw/audio/marvell_88w8618.c |  2 +-
- hw/audio/sb16.c            |  2 +-
- hw/audio/via-ac97.c        |  2 +-
- hw/char/sclpconsole-lm.c   |  2 +-
- hw/display/vmware_vga.c    |  2 +-
- hw/dma/xlnx_csu_dma.c      |  2 +-
- hw/hyperv/syndbg.c         |  2 +-
- hw/misc/aspeed_hace.c      |  2 +-
- hw/net/rtl8139.c           |  2 +-
- hw/net/tulip.c             |  2 +-
- hw/net/virtio-net.c        |  6 +++---
- hw/net/xgmac.c             |  2 +-
- hw/nvme/ctrl.c             |  6 +++---
- hw/ppc/pnv_occ.c           |  2 +-
- hw/ppc/spapr_tpm_proxy.c   |  4 ++--
- hw/scsi/lsi53c895a.c       |  2 +-
- hw/scsi/megasas.c          |  7 ++-----
- hw/ufs/lu.c                |  2 +-
- hw/usb/hcd-ohci.c          |  2 +-
- hw/virtio/virtio.c         |  8 ++++----
- net/socket.c               |  2 +-
- net/stream.c               |  2 +-
- 31 files changed, 61 insertions(+), 44 deletions(-)
-
+diff --git a/include/qemu/compiler.h b/include/qemu/compiler.h
+index 496dac5ac1..65b89958d3 100644
+--- a/include/qemu/compiler.h
++++ b/include/qemu/compiler.h
+@@ -207,6 +207,26 @@
+ # define QEMU_USED
+ #endif
+ 
++/*
++ * Disable -ftrivial-auto-var-init on a local variable.
++ *
++ * Use this in cases where there a method in the device I/O path (or other
++ * important hot paths), that has large variables on the stack. A rule of
++ * thumb is that "large" means a method with 4kb data in the local stack
++ * frame. Any variables which are KB in size, should be annotated with this
++ * attribute, to pre-emptively eliminate any potential overhead from the
++ * compiler's implicit zero'ing of memory.
++ *
++ * Given that this turns off a security hardening feature, when using this
++ * to flag variables, it is important that the code is double-checked to
++ * ensure there is no possible use of uninitialized data in the method.
++ */
++#if __has_attribute(uninitialized)
++# define QEMU_UNINITIALIZED __attribute__((uninitialized))
++#else
++# define QEMU_UNINITIALIZED
++#endif
++
+ /*
+  * http://clang.llvm.org/docs/ThreadSafetyAnalysis.html
+  *
 -- 
 2.49.0
 

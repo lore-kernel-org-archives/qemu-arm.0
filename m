@@ -1,87 +1,87 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2000050njc;
-        Wed, 11 Jun 2025 11:31:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVjuhxjLeX7p8Q+jBaK0wG21FrwFkxJehCrkYPMzY+1L2Ic8tGQXzvlTPjgNFwrnIZ4sEiQn26K2MISxA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGGD4GHVJOIUbE6PUJdusyGy5ZZlthRoPj9MYbxdYK/VbIQPa95G8pertS611djgzjha2n9
-X-Received: by 2002:a05:620a:240e:b0:7c7:a614:7214 with SMTP id af79cd13be357-7d3b35c88e5mr30707485a.5.1749666662197;
-        Wed, 11 Jun 2025 11:31:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749666662; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2000301njc;
+        Wed, 11 Jun 2025 11:31:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVbqjcyMsqlF1GKVmcOzze79dYmk6KTMyk3eYf0CWo6+7e2kbmrL9McjPTSMK7NqB+MXy6L5tQks0fVbg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGRcDgkwtFao5Zf5EQRUMwlck2fw7UURdzaHey8chu8Ec+A9N69/Dvsu8CvQ3VYSlRd9S5i
+X-Received: by 2002:a05:620a:1a86:b0:7ce:f14b:d7d9 with SMTP id af79cd13be357-7d3a88441b7mr626814185a.22.1749666692044;
+        Wed, 11 Jun 2025 11:31:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749666692; cv=none;
         d=google.com; s=arc-20240605;
-        b=KEOLxTCKAjuQpKWKgc6iEAKBaet7gIXTPbLvm0nvu39VZdE36F6skt+G+Qr1dWcc9+
-         xPPC6+J41LLcbMwgrBmIMNZyZmEhEkiOmf1JHz3xvFxPoe80Q9HLGeYNHNy/QozfqX65
-         /YGcYm/v8uliGhT8nnkwHR7EHJ7I6Tv+UnMPTjTosSIDXQiImYDMr8TSrhZKfvkxgQoa
-         gnYtqLGh5LA9lQCKSV/eDIQL07pcUpDgi5pvo8RJLZllmK07xH2wqc2wVVrvCR57UsZ6
-         0joFN7AHGznj1BBHkrkoSYrIaMgRYSJPBsbgXkpfW9pZ5SwROcOxSfLB9buMQ4WQ0R4i
-         TuiQ==
+        b=IUGXRPx2njkMxH5hxem+HCAygf/8NxpVx6fuJ0ichHUFhvPhBZlKGmuClXXvDHyeqJ
+         cPdxpqczXY54YiGnJ4wcrdZqEUGHR87NemP7zyfTlba+SbLiPiA6SAyC7R1mLYvWl3He
+         rBkU6fL5jfdBAVQz7MghXhsQtGuad3otw5XS4O8LwoftA8wunStaIs9yCWvZ4r2GQ/Jf
+         msETHs8CfoQDJ+jZiEc0Wfjb/EW7WMfve3SJOtTkxfbD0ABHwDzkN70onPVXOWyk5Bvv
+         tU6LztI4JsRHYAcZotYeYIVPeed8OKSZRDeQbVzts1M2oEy/c9chT8834f4vIOC1KuYJ
+         xnqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=e+4l0naTET+aaMWzQ/pVz9X7Jz1w04ke4T2Xq1wrDPY=;
-        fh=llWsnZZ16TEYjnayUds9QVVisxba1LyOA7TWHTWVEKk=;
-        b=fmXOgOwhhMKLR62Zc1fkbECKUebDwN5T2EMAHZ6t1C06amJn2gcUrRSDUas+d7SdCJ
-         RuzqSh49dg98N/9f1YBkJiX/Hfj1QvzZTz2cQg4cQgf+4HEUBtUOBIVvNwDnB9APXKtH
-         eJ0i6StmicnWoShlVCD9Cj2OxhZQsQSAbzczkU48ZQ48/o8ZrRwJ07kDrERgAkFY+TYN
-         QePLviBa/Watn/SdWbkme7Hhz19XC0nKze0G/WKGV6IN5BzNtZjj+4teR5vMXd5/T4N2
-         kAzJR6R/mZywxcPLGyxGN9R4pHOdwhQ70ENpYGQ5gJCT107hY80KpVXAnFjs6Zic0vNe
-         LN+g==;
+        bh=1P7ALdUgUH3egQpJpZZh+seXhAmubgaRIgDOiJvBoJg=;
+        fh=loh9k9y3S2mImjFs3v08l0zZWu2zKrkh48k9P3fQXm8=;
+        b=DuyAc72wblM0xZJeDMAiGPDDZtBxAg39T3MYeB1vmqvN+imZxYA4/sz1X6FynKBi5Y
+         /R7D+WHQ07XsqI0/qIDbofRFUe/zLI+yM9imnTfa9Cw3cNDAOHbcHYLF8J5NbKVM+Ggx
+         z+xyuAGOyoDveIb347dId5aMRVpvS+dWfWLh8NXk1sbdjMfZrP5MRcCn98/jg+HCxeI5
+         9Msyj97yt9RYTDyUtG82hjn9VU42+rAJD5dZ08R9dweE3ya30r6o8ef5amL9csF3YsMl
+         l7OX6KtG9aJ3V8hPegrVLp8YVxKjZ/Mx5msVcx8GLk8OiNOGN/Bv9s0fe2I7sVOyBFuD
+         Kv3A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Tu/GLJAI";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gCuC4MET;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d25a5f8fb4si1313041185a.184.2025.06.11.11.31.02
+        by mx.google.com with ESMTPS id af79cd13be357-7d38e77a2aasi921939485a.363.2025.06.11.11.31.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Jun 2025 11:31:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 11 Jun 2025 11:31:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Tu/GLJAI";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gCuC4MET;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uPQDw-0001q0-IC; Wed, 11 Jun 2025 14:30:57 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uPQDB-0007c0-3f; Wed, 11 Jun 2025 14:30:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAa-0002Cs-G4
- for qemu-arm@nongnu.org; Wed, 11 Jun 2025 14:27:30 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1uPQAJ-0001xj-RM
+ for qemu-devel@nongnu.org; Wed, 11 Jun 2025 14:27:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAW-0001h9-Fz
- for qemu-arm@nongnu.org; Wed, 11 Jun 2025 14:27:26 -0400
+ id 1uPQAB-0001Zm-Ht
+ for qemu-devel@nongnu.org; Wed, 11 Jun 2025 14:27:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666439;
+ s=mimecast20190719; t=1749666422;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=e+4l0naTET+aaMWzQ/pVz9X7Jz1w04ke4T2Xq1wrDPY=;
- b=Tu/GLJAIJjcl7717MuVmuDTnagY1nhQFi/LykxluBxA6oL+dJNeTz9gtvuRre3XoPmmVQ5
- 2UaRwDPY5YZe2PQVznayJjbvsEQZlMTjRWCMCj22HQwnU1rAeV3s+6fIMyfDYFl2Aca//U
- azHC5SEkmz/cUCDz+/jSNP1mV01+vOM=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=1P7ALdUgUH3egQpJpZZh+seXhAmubgaRIgDOiJvBoJg=;
+ b=gCuC4METErBbRToif6dxPUVXA9XwDgDDsBQ6DGwuDQIm60A5m5j63L6McPWQ2XQpNnDc0f
+ SBocvd1kxQZ2GvPoJSmD+kTAea6SHObkbmfdCZwHsSS0ZV2xulMSEl/7xgwKaSbN4kHAC1
+ iOSmF2h70XgTkfcusncos7reDhEGcnI=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-78-yx9W_04IMmyJ0cqeGcc-ow-1; Wed,
- 11 Jun 2025 14:27:13 -0400
-X-MC-Unique: yx9W_04IMmyJ0cqeGcc-ow-1
-X-Mimecast-MFC-AGG-ID: yx9W_04IMmyJ0cqeGcc-ow_1749666428
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-257-Rbp6d6JYMo-D6lC9mV6ANw-1; Wed,
+ 11 Jun 2025 14:26:59 -0400
+X-MC-Unique: Rbp6d6JYMo-D6lC9mV6ANw-1
+X-Mimecast-MFC-AGG-ID: Rbp6d6JYMo-D6lC9mV6ANw_1749666414
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 770501955F69; Wed, 11 Jun 2025 18:27:08 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 697621801BD8; Wed, 11 Jun 2025 18:26:54 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
- by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4DB291956087; Wed, 11 Jun 2025 18:27:06 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id DBDD630002C3; Wed, 11 Jun 2025 18:26:52 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -110,18 +110,18 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Klaus Jensen <k.jensen@samsung.com>
-Subject: [PULL 23/31] hw/nvme/ctrl: skip automatic zero-init of large arrays
-Date: Wed, 11 Jun 2025 14:25:25 -0400
-Message-ID: <20250611182533.200590-24-stefanha@redhat.com>
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PULL 18/31] hw/misc/aspeed_hace: skip automatic zero-init of large
+ array
+Date: Wed, 11 Jun 2025 14:25:20 -0400
+Message-ID: <20250611182533.200590-19-stefanha@redhat.com>
 In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
 References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -132,76 +132,52 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aWmeejemZzl5
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: nfgUGYMWPKOK
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The 'nvme_map_sgl' method has a 256 element array used for copying
-data from the device. Skip the automatic zero-init of this array
-to eliminate the performance overhead in the I/O hot path.
+The 'do_hash_operation' method has a 256 element iovec array used for
+holding pointers to data that is to be hashed. Skip the automatic
+zero-init of this array to eliminate the performance overhead in the
+I/O hot path.
 
-The 'segment' array will be fully initialized when reading data from
-the device.
-
-The 'nme_changed_nslist' method has a 4k byte array that is manually
-initialized with memset(). The compiler ought to be intelligent
-enough to turn the memset() into a static initialization operation,
-and thus not duplicate the automatic zero-init. Replacing memset()
-with '{}' makes it unambiguous that the array is statically initialized.
+The 'iovec' array will be selectively initialized based on data that
+needs to be hashed.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
-Message-id: 20250610123709.835102-24-berrange@redhat.com
+Message-id: 20250610123709.835102-19-berrange@redhat.com
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- hw/nvme/ctrl.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/misc/aspeed_hace.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
-index fd935507bc..220002830d 100644
---- a/hw/nvme/ctrl.c
-+++ b/hw/nvme/ctrl.c
-@@ -1057,7 +1057,8 @@ static uint16_t nvme_map_sgl(NvmeCtrl *n, NvmeSg *sg, NvmeSglDescriptor sgl,
-      */
- #define SEG_CHUNK_SIZE 256
- 
--    NvmeSglDescriptor segment[SEG_CHUNK_SIZE], *sgld, *last_sgld;
-+    QEMU_UNINITIALIZED NvmeSglDescriptor segment[SEG_CHUNK_SIZE];
-+    NvmeSglDescriptor *sgld, *last_sgld;
-     uint64_t nsgld;
-     uint32_t seg_len;
-     uint16_t status;
-@@ -5128,7 +5129,7 @@ static uint16_t nvme_error_info(NvmeCtrl *n, uint8_t rae, uint32_t buf_len,
- static uint16_t nvme_changed_nslist(NvmeCtrl *n, uint8_t rae, uint32_t buf_len,
-                                     uint64_t off, NvmeRequest *req)
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+index 8924a30eff..726368fbbc 100644
+--- a/hw/misc/aspeed_hace.c
++++ b/hw/misc/aspeed_hace.c
+@@ -419,7 +419,7 @@ static void hash_execute_acc_mode(AspeedHACEState *s, int algo,
+ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+                               bool acc_mode)
  {
--    uint32_t nslist[1024];
-+    uint32_t nslist[1024] = {};
-     uint32_t trans_len;
-     int i = 0;
-     uint32_t nsid;
-@@ -5138,7 +5139,6 @@ static uint16_t nvme_changed_nslist(NvmeCtrl *n, uint8_t rae, uint32_t buf_len,
-         return NVME_INVALID_FIELD | NVME_DNR;
-     }
+-    struct iovec iov[ASPEED_HACE_MAX_SG];
++    QEMU_UNINITIALIZED struct iovec iov[ASPEED_HACE_MAX_SG];
+     bool acc_final_request = false;
+     int iov_idx = -1;
  
--    memset(nslist, 0x0, sizeof(nslist));
-     trans_len = MIN(sizeof(nslist) - off, buf_len);
- 
-     while ((nsid = find_first_bit(n->changed_nsids, NVME_CHANGED_NSID_SIZE)) !=
 -- 
 2.49.0
 

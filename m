@@ -1,317 +1,283 @@
-Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp3496726njc;
-        Thu, 12 Jun 2025 05:50:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXwC9MU3d8wW72cqnw3PNSv7yzQ0vwI5W8PizQTBtIvUSgwlcTWOs5bYqCdyJVmrXfg3g0nFa5OqaegCg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG5NMD/aloqzdhd2OfFXirHkB8o4N5xuOxLyOoI8BLCH//mZhmPwEnI6m6K/pZSk3gPe4ys
-X-Received: by 2002:a05:620a:3952:b0:7ce:c604:3f53 with SMTP id af79cd13be357-7d3b35edb8amr370658085a.24.1749732614758;
-        Thu, 12 Jun 2025 05:50:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749732614; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2367873njc;
+        Thu, 12 Jun 2025 05:52:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUznnKiPwLUWh5Ap+Si6ahItBOtxtb0Qpg/7zccU5u6dzzpZZEimyjD3VcFKhf1irmNZq8qwhwbXr8Lew==@linaro.org
+X-Google-Smtp-Source: AGHT+IET5otmkGqFT2qkzIJYyWnw28HLLOPw8RQ3t3yMFpaM0KkMTIimEu3qwgM1EVN9gJTCVSSm
+X-Received: by 2002:a05:620a:4509:b0:7c5:5a51:d2d1 with SMTP id af79cd13be357-7d3b36d4e76mr472943885a.55.1749732739541;
+        Thu, 12 Jun 2025 05:52:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749732739; cv=none;
         d=google.com; s=arc-20240605;
-        b=iwfj/yhemXwGXU+6l4D/rhLQ5pytm2HH1jpzgEjIJqKKxVZUWgg52dAfWa37Q95VBV
-         krxrNbD4nS5asWOz9WFnKdnsILGVUdF6eYeUGMgJdSOcwVI5YqYf08vOqQkcNPUgFTfN
-         ZOl4gCBCPCveEaN3YzZwdB7B93BoDKflwK8T65+MmRNk3YDsUEKBwzOBmO3y0ZZ1DrAP
-         WydSb90+hjkJotHmv9cfXWIubadP2bRizqeBw8GJKHD6reZFRgzmMjMMUjaWTE7VvTmO
-         MJqo+AMHJEobUnK1Rz9Hr/ggtJMS/70FAMrHLCKuI54UEvyvOlBGkZ1Gs51OsapWh0Sw
-         90uA==
+        b=b8+khofVfftTaK4Y+EZjby3Sq4d8X2bD8in6ZBT3Pqt3MYww4G8zjp/SRNBSkMgaAy
+         yPFKTufIDxGFQyN9n/uRaaiJcqeFP+nnwMLKz0fyGq4vLdXjlNSx6aDDdbIhylvaLTpa
+         PnJyPx/25LRl4aRQHhLaF36lTquNbAtF1vTIyqWme1yI7zxXsWZQwKGXN57XSSYxyO32
+         xp6WPjlg1gp4zK8v+8qjLQvWs/jjb0JBOfpA8i1xMjRLGEiyXbOLCM8G5sJTHY+jALbP
+         U5sh7m/TLodUuLCsytZSQx9VgOiV0BmWcGYLEr95gf8xylEFF44iVXjHiijv2zQX88Vn
+         2Nrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=5lFhxRtUAdJGBztxdsbcyW9odsc9OfWhuK0xDjPtH3o=;
-        fh=AN9oTro8XipZC1oH9iqMGwCeRuu5aCYXlxbgQmjQ2HU=;
-        b=bIca/cSoovBQMEDCaaYdWXq3JVgW+81422tsZzsYMapuAyKUB7Jd0pSi8O579NWc4v
-         SoDLjvHsRigwJUB1ndoSZrByrIIJkbMo2N3uOvVHieutuMEIsAPi0MsdFjGvsyQyaOeu
-         EGnWAgkeQneCYPcLhl+fPdBa6fn8yqRt511tPuJXCUK80HuwwrWCJu+inEYB179mi/Aa
-         xcXjB/zDuI97w57JzgO3aAOo9rRbIcBYuUMOukELgnV5fs/TJZ9XsHJX6kaHhOwGwAYs
-         cFrWXtS4xBSbuLGL6fpSN5+PYDadc+PQ1ekQAqE898AuulbrdgLRIh5HrEaGUmwQNRIa
-         XvyA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:date;
+        bh=5YoDas1krd9v+4Y01Ms1pBid6cR+stv4K+x2Oca9eGw=;
+        fh=GdDp15MoOd/UxRHTT1s5w1iDqkXcbKQ/gMloeKknh9M=;
+        b=CrtQl1HgN6TiCBTMrdz8HNwH7HNX1q4YNr9gH+wE+Blue2QOSV9zVr7SXijfSssx4g
+         7GItJCaFiQO7O1HQRnw42ZaV33xUOryhseGqe/dqLzVh5ep5gRpJFC58F1IFq8B8KBf6
+         VuOPa2vW/yOckVd3Bt0zdDsvToS1e2kfZJIHwVR6i5af2DIQcvERdGILK3HvHPUbuOfF
+         BYaGcIXQ/Cs6Urq2C835Ne3iKAXjFQusWuGYwV5GTM6Y674QOdA7zSLiOtn6rrr+soWn
+         mX/xDfHi9Rk/sofs39qSODF1XTZ2TZDZ4FsgUeAwEdh9Y9uDfCX4GCGIg8uthWPRo09K
+         IvBQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qs9StZMn;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3b8dff2aesi70506285a.135.2025.06.12.05.50.14
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8f285ebsi68430785a.505.2025.06.12.05.52.19
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Jun 2025 05:50:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 12 Jun 2025 05:52:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qs9StZMn;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1749732614;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5lFhxRtUAdJGBztxdsbcyW9odsc9OfWhuK0xDjPtH3o=;
-	b=Qs9StZMn3KiAfCxUxcSRaAdQktqYA87UIMQYzrK6abakyqmH/jJHSca+8T1/qPw7F9zcZS
-	t+dSOzi/WPeG6anNSa4Y5Tzclm/NaErxvmmgzekxgOsgRysL7x+6GWwpCDybzvetZ8vvjV
-	9KUmLsLOEjUv77ZnlPMXoZ+T/+TBnxU=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-526-8S2C--WUMjCBFG2kdaZw_g-1; Thu, 12 Jun 2025 08:50:13 -0400
-X-MC-Unique: 8S2C--WUMjCBFG2kdaZw_g-1
-X-Mimecast-MFC-AGG-ID: 8S2C--WUMjCBFG2kdaZw_g_1749732612
-Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-3a4ff581df3so432917f8f.1
-        for <alex.bennee@linaro.org>; Thu, 12 Jun 2025 05:50:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749732612; x=1750337412;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=5lFhxRtUAdJGBztxdsbcyW9odsc9OfWhuK0xDjPtH3o=;
-        b=v8cX/yqc74soURdrGE4F6vI06u2nZ8E9DjqSi2FxdBmfvpEiCFT0xDl1KTJMVHl+px
-         qTrqDApV0KqZ70qU6ahM5Vrgkg/6m6irCrHwq+tz3exeHUGerhJXWpeAcGI/7NZwTQHJ
-         1BWUJ7Q1RvRaZfViUhu/I4fd/QOWkkJLA0/16M4+Ey6gP4BGNThljtrAE/A8++dlylXz
-         pfaTEuXbgvUbxi65VZ3daon+hkz/hnHGu0p4CqLn9+BeRUhATE7/gtodNygSDAkASPtm
-         tRDWvYxtkfjBXy0MaER7xrsPwZEC+a1mrqfPVNG67Eg5KHMDA29h6bBoQ/jZv88ZIk4c
-         5twA==
-X-Forwarded-Encrypted: i=1; AJvYcCV2PFtSJsK3pFEQ2CMVLiODBp2ftEVXfZ2AlZd3sVRFGXsysC8/jsNdrFLbB5xQZH4GRh9l3cC7UHTSIw==@linaro.org
-X-Gm-Message-State: AOJu0YyZgUnpxPja4wV6uR5PpcPYO6sEdy+bKpKc9URmQKKrP3H67aHh
-	4rB10bLq9ZRM1UuFrUWp4+L6xD5Q4qV/9jjnN74PRi5oOQ2FZ1DAzZlElKZ9wMpRglmTC3DX+gL
-	uRYYHmTBIoiLejbr56YJCIj1Dsgp+pVHIi0TGWijOemZ+0mWgNHBqWmOKKA==
-X-Gm-Gg: ASbGnctkahgqO5IYKlfJ0fFDPubDxfst7PLk/R8Autkc9fe360a8UX5oxUko53fJ9JD
-	lvoHO/aCLREWKRKgAVIa5aQ42nPxVaW+EibzhXsyqzVIjDeTqdOVnSqPdy+liiWPZm71EX1KX4d
-	WMAUI4OTfPd8IgeY9gHO8gDirU9s8RTuiOKvJ075x/5POcriHkpR+wtV3eXFI4qlexNGII/bUyQ
-	2xZc3vFhdE/6t1R5Njkm7Q4oXf82qqisz6r3e9nlZk/uotKRkkP1wxP0xvtcAD/JFJAz5xkdwWY
-	8nNNX9rQEgDl2fD5RXt35i3hLytXbU7Xmx/gA2v0Gm4=
-X-Received: by 2002:a05:6000:40e1:b0:3a4:e238:6496 with SMTP id ffacd0b85a97d-3a5607fa69emr3046016f8f.18.1749732611903;
-        Thu, 12 Jun 2025 05:50:11 -0700 (PDT)
-X-Received: by 2002:a05:6000:40e1:b0:3a4:e238:6496 with SMTP id ffacd0b85a97d-3a5607fa69emr3045980f8f.18.1749732611447;
-        Thu, 12 Jun 2025 05:50:11 -0700 (PDT)
-Return-Path: <imammedo@redhat.com>
-Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4532e2522b1sm19433325e9.25.2025.06.12.05.50.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Jun 2025 05:50:11 -0700 (PDT)
-Date: Thu, 12 Jun 2025 14:50:09 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Gustavo Romero <gustavo.romero@linaro.org>
-Cc: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com,
- pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org,
- alex.bennee@linaro.org
-Subject: Re: [PATCH v2 24/25] tests/qtest/bios-tables-test: Keep ACPI PCI
- hotplug off
-Message-ID: <20250612145009.28d69876@imammedo.users.ipa.redhat.com>
-In-Reply-To: <848ad5cf-7e83-49bd-8547-ac757c918fdf@linaro.org>
-References: <20250527074224.1197793-1-eric.auger@redhat.com>
-	<20250527074224.1197793-25-eric.auger@redhat.com>
-	<20250528113813.47086516@imammedo.users.ipa.redhat.com>
-	<375cfbd6-e585-4b6d-bf10-6571aa40370e@linaro.org>
-	<20250528150239.5f6b63d0@imammedo.users.ipa.redhat.com>
-	<6a5776b4-73ef-427b-b4e4-b25031b0ce53@linaro.org>
-	<20250530135103.09030cf0@imammedo.users.ipa.redhat.com>
-	<bcc200fb-fa45-44ac-9e36-4c829becbf1c@linaro.org>
-	<e3bc87d8-5016-455e-933d-6cefae993c25@linaro.org>
-	<20250611105437.5ecda7c9@imammedo.users.ipa.redhat.com>
-	<848ad5cf-7e83-49bd-8547-ac757c918fdf@linaro.org>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uPhPd-0003Sp-CV; Thu, 12 Jun 2025 08:52:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uPhOx-0003Lh-3c; Thu, 12 Jun 2025 08:51:32 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uPhOq-0001u0-S8; Thu, 12 Jun 2025 08:51:25 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bJ2Mz5Ym1z6L53f;
+ Thu, 12 Jun 2025 20:46:39 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 4EF6F1402F3;
+ Thu, 12 Jun 2025 20:51:01 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 12 Jun
+ 2025 14:51:00 +0200
+Date: Thu, 12 Jun 2025 13:50:58 +0100
+To: "Zhijian Li (Fujitsu)" <lizhijian@fujitsu.com>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Fan Ni
+ <fan.ni@samsung.com>, Peter Maydell <peter.maydell@linaro.org>,
+ "mst@redhat.com" <mst@redhat.com>, "linuxarm@huawei.com"
+ <linuxarm@huawei.com>, "linux-cxl@vger.kernel.org"
+ <linux-cxl@vger.kernel.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Yuquan Wang <wangyuquan1236@phytium.com.cn>, Itaru Kitayama
+ <itaru.kitayama@linux.dev>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
+ <philmd@linaro.org>, Alireza Sanaee <alireza.sanaee@huawei.com>
+Subject: Re: [PATCH v14 3/5] hw/cxl-host: Allow split of establishing memory
+ address and mmio setup.
+Message-ID: <20250612135058.000047fe@huawei.com>
+In-Reply-To: <ce28ad6b-a76a-44d7-8135-9560e8e1d6f8@fujitsu.com>
+References: <20250528110726.226389-1-Jonathan.Cameron@huawei.com>
+ <20250528110726.226389-4-Jonathan.Cameron@huawei.com>
+ <ce28ad6b-a76a-44d7-8135-9560e8e1d6f8@fujitsu.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 2vRbvmipkdOr4KZS94WJI4IEq3GYMRMYghVCjChNefs_1749732612
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 8LVOwdxuIS4n
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cwy7qDIJR85v
 
-On Wed, 11 Jun 2025 10:14:55 -0300
-Gustavo Romero <gustavo.romero@linaro.org> wrote:
+On Mon, 9 Jun 2025 01:15:10 +0000
+"Zhijian Li (Fujitsu)" <lizhijian@fujitsu.com> wrote:
 
-> Hi Igor,
->=20
-> On 6/11/25 05:54, Igor Mammedov wrote:
-> > On Tue, 10 Jun 2025 11:29:02 -0300
-> > Gustavo Romero <gustavo.romero@linaro.org> wrote:
-[...]
->=20
->=20
-> BTW, why did we ultimately choose to commit blobs instead of the actual A=
-CPI
-> code (as generated by iasl)? I'm just wondering if we could avoid committ=
-ing
-> the blobs to 1) avoid committing binaries and 2) have the changes in the
-> ACPI code in the same commit that changes the ACPI itself.
->=20
-> If that's only for historical reasons maybe I can improve the bios-tables=
--test.c
-> to handle the ACPI code/struct in text format, avoiding the blobs, so I a=
-sk.
+> In patch 2/5, we introduced `cxl_fmws_set_memmap_and_update_mmio()`.
+> 
+> Initially, I assumed patch 3/5 would split `cxl_fmws_set_memmap_and_update_mmio()` into two steps:
+> 1. Traverse CXLFixedWindow and update `fw->base`.
+> 2. Call `sysbus_mmio_map(SYS_BUS_DEVICE(fw), 0, fw->base)`.
+> For example (my personal preference):
+> ```c
+> hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
+> {
+>      hwaddr end = cxl_fmws_set_memmap(base, max_addr);
+>      cxl_fmws_update_mmio();
+>      return end;
+> }
+> 
+> 
+> If we had implemented this design in patch 2/5, patch 3/5 might not be necessary.
+
+At the time of patch 2 we had no justification for the split as for x86 that would
+just look like a pointless double loop.
+
+However you are right that this is too complex given it's not a performance path
+and perhaps some commentary in the patch description will be enough that no
+one minds.
+
+I'll go a little further than you suggest and push the two calls in
+your cxl_fmws_set_memmap_and_mmio() into pc.c (patch 2) as that wrapper
+isn't adding much value.
+
+I think it is a big enough change that I'll drop tags given on patch 2.
+
+Thanks,
+
+Jonathan
 
 
-We've had this for binary blobs at the beginning, however iasl output was
-a moving target (whether it's ASL or AML) hence it proved to be unsuitable
-for testing infrastructure (and not only testing, I don't remember concrete=
- bugs though).
+> The only potential benefit I see in the current patch 3/5 is efficiency improvements
+> in cxl_fmws_set_memmap_and_update_mmio(), but since the function is typically
+> called only once and the GLib list (glist) is small, the practical impact should
+> be minimal.
+> 
+> I'm interested in others' perspectives on this.
+> 
+> Thanks
+> Zhijian
+> 
+> 
+> On 28/05/2025 19:07, Jonathan Cameron via wrote:
+> > On arm/virt the memory map is set up before any devices are brought
+> > up.  To enable this provide split functions to establish the fw->base
+> > and later to actually map it.
+> > 
+> > Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > ---
+> > v14: Update wrt to changes in previous patch.
+> >       Add a do_cfwms_set_memmap_and_update_mmio() utility function
+> >       to reduce code duplication. (Zhijian)
+> > ---
+> >   include/hw/cxl/cxl_host.h |  2 ++
+> >   hw/cxl/cxl-host-stubs.c   |  2 ++
+> >   hw/cxl/cxl-host.c         | 43 +++++++++++++++++++++++++++++++++++----
+> >   3 files changed, 43 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/include/hw/cxl/cxl_host.h b/include/hw/cxl/cxl_host.h
+> > index 6dce2cde07..aee9d573d6 100644
+> > --- a/include/hw/cxl/cxl_host.h
+> > +++ b/include/hw/cxl/cxl_host.h
+> > @@ -16,6 +16,8 @@
+> >   void cxl_machine_init(Object *obj, CXLState *state);
+> >   void cxl_fmws_link_targets(Error **errp);
+> >   void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp);
+> > +hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr);
+> > +void cxl_fmws_update_mmio(void);
+> >   hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr);
+> >   GSList *cxl_fmws_get_all_sorted(void);
+> >   
+> > diff --git a/hw/cxl/cxl-host-stubs.c b/hw/cxl/cxl-host-stubs.c
+> > index 13eb6bf6a4..d9e38618d6 100644
+> > --- a/hw/cxl/cxl-host-stubs.c
+> > +++ b/hw/cxl/cxl-host-stubs.c
+> > @@ -11,6 +11,8 @@
+> >   void cxl_fmws_link_targets(Error **errp) {};
+> >   void cxl_machine_init(Object *obj, CXLState *state) {};
+> >   void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp) {};
+> > +hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr) { return base; };
+> > +void cxl_fmws_update_mmio(void) {};
+> >   hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
+> >   {
+> >       return base;
+> > diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
+> > index 016a4fdc6a..a1b9980035 100644
+> > --- a/hw/cxl/cxl-host.c
+> > +++ b/hw/cxl/cxl-host.c
+> > @@ -378,11 +378,14 @@ void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp)
+> >       }
+> >   }
+> >   
+> > -static void cxl_fmws_update(CXLFixedWindow *fw, hwaddr *base, hwaddr max_addr)
+> > +static void cxl_fmws_update(CXLFixedWindow *fw, hwaddr *base, hwaddr max_addr,
+> > +                            bool update_mmio)
+> >   {
+> >       if (*base + fw->size <= max_addr) {
+> >           fw->base = *base;
+> > -        sysbus_mmio_map(SYS_BUS_DEVICE(fw), 0, fw->base);
+> > +        if (update_mmio) {
+> > +            sysbus_mmio_map(SYS_BUS_DEVICE(fw), 0, fw->base);
+> > +        }
+> >           *base += fw->size;
+> >       }
+> >   }
+> > @@ -421,19 +424,51 @@ GSList *cxl_fmws_get_all_sorted(void)
+> >       return g_slist_sort_with_data(cxl_fmws_get_all(), cfmws_cmp, NULL);
+> >   }
+> >   
+> > -hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
+> > +static hwaddr do_cxl_fmws_set_memmap_and_update_mmio(hwaddr base,
+> > +                                                     hwaddr max_addr,
+> > +                                                     bool update_mmio)
+> >   {
+> >       GSList *cfmws_list, *iter;
+> >   
+> >       cfmws_list = cxl_fmws_get_all_sorted();
+> >       for (iter = cfmws_list; iter; iter = iter->next) {
+> > -        cxl_fmws_update(CXL_FMW(iter->data), &base, max_addr);
+> > +        cxl_fmws_update(CXL_FMW(iter->data), &base, max_addr, update_mmio);
+> >       }
+> >       g_slist_free(cfmws_list);
+> >   
+> >       return base;
+> >   }
+> >   
+> > +hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
+> > +{
+> > +    return do_cxl_fmws_set_memmap_and_update_mmio(base, max_addr, false);
+> > +}
+> > +
+> > +hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
+> > +{
+> > +    return do_cxl_fmws_set_memmap_and_update_mmio(base, max_addr, true);
+> > +}
+> > +
+> > +static int cxl_fmws_mmio_map(Object *obj, void *opaque)
+> > +{
+> > +    struct CXLFixedWindow *fw;
+> > +
+> > +    if (!object_dynamic_cast(obj, TYPE_CXL_FMW)) {
+> > +        return 0;
+> > +    }
+> > +    fw = CXL_FMW(obj);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(fw), 0, fw->base);
+> > +
+> > +    return 0;
+> > +}
+> > +
+> > +void cxl_fmws_update_mmio(void)
+> > +{
+> > +    /* Ordering is not required for this */
+> > +    object_child_foreach_recursive(object_get_root(), cxl_fmws_mmio_map,
+> > +                                   NULL);
+> > +}
+> > +
+> >   static void cxl_fmw_realize(DeviceState *dev, Error **errp)
+> >   {
+> >       CXLFixedWindow *fw = CXL_FMW(dev)  
 
-As result, we've switched to custom AML generator (aml_foo() API) with
-blobs it has generated. ASL output by IASL in tests is used by maintaners
-for diagnostic (/documenting) purposes only.
-
-> Thanks!
->=20
->=20
-> Cheers,
-> Gustavo
->=20
-> >>
-> >>
-> >> Thanks,
-> >> Gustavo
-> >>     =20
-> >>>
-> >>> Cheers,
-> >>> Gustavo
-> >>>     =20
-> >>>>    =20
-> >>>>> Cheers,
-> >>>>> Gustavo
-> >>>>>    =20
-> >>>>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05828.htm=
-l 4/5
-> >>>>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05827.htm=
-l 5/5
-> >>>>>>>
-> >>>>>>>
-> >>>>>>> Cheers,
-> >>>>>>> Gustavo =20
-> >>>>>>>>>
-> >>>>>>>>> ---
-> >>>>>>>>>
-> >>>>>>>>> [Eric] also added acpi-pcihp=3Doff to test_acpi_aarch64_virt_tc=
-g_numamem
-> >>>>>>>>> ---
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0 tests/qtest/bios-tables-test.c | 13 +++++++=
-++----
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0 1 file changed, 9 insertions(+), 4 deletion=
-s(-)
-> >>>>>>>>>
-> >>>>>>>>> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-=
-tables-test.c
-> >>>>>>>>> index 0a333ec435..6379dba714 100644
-> >>>>>>>>> --- a/tests/qtest/bios-tables-test.c
-> >>>>>>>>> +++ b/tests/qtest/bios-tables-test.c
-> >>>>>>>>> @@ -1626,7 +1626,7 @@ static void test_acpi_aarch64_virt_tcg_me=
-mhp(void)
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 };
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 data.variant =3D ".=
-memhp";
-> >>>>>>>>> -=C2=A0=C2=A0=C2=A0 test_acpi_one(" -machine nvdimm=3Don"
-> >>>>>>>>> +=C2=A0=C2=A0=C2=A0 test_acpi_one(" -machine nvdimm=3Don,acpi-p=
-cihp=3Doff"
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -cpu c=
-ortex-a57"
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -m 256=
-M,slots=3D3,maxmem=3D1G"
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -objec=
-t memory-backend-ram,id=3Dram0,size=3D128M"
-> >>>>>>>>> @@ -1747,7 +1747,8 @@ static void test_acpi_aarch64_virt_tcg_nu=
-mamem(void)
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 };
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 data.variant =3D ".=
-numamem";
-> >>>>>>>>> -=C2=A0=C2=A0=C2=A0 test_acpi_one(" -cpu cortex-a57"
-> >>>>>>>>> +=C2=A0=C2=A0=C2=A0 test_acpi_one(" -machine acpi-pcihp=3Doff"
-> >>>>>>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -cpu cortex-a57"
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -objec=
-t memory-backend-ram,id=3Dram0,size=3D128M"
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -numa =
-node,memdev=3Dram0",
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 &data);
-> >>>>>>>>> @@ -1775,7 +1776,8 @@ static void test_acpi_aarch64_virt_tcg_px=
-b(void)
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * to solve th=
-e conflicts.
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 data.variant =3D ".=
-pxb";
-> >>>>>>>>> -=C2=A0=C2=A0=C2=A0 test_acpi_one(" -device pcie-root-port,chas=
-sis=3D1,id=3Dpci.1"
-> >>>>>>>>> +=C2=A0=C2=A0=C2=A0 test_acpi_one(" -machine acpi-pcihp=3Doff"
-> >>>>>>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -device pcie-root-port,chassis=
-=3D1,id=3Dpci.1"
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -devic=
-e virtio-scsi-pci,id=3Dscsi0,bus=3Dpci.1"
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -drive=
- file=3D"
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "tests/d=
-ata/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2,"
-> >>>>>>>>> @@ -1846,7 +1848,7 @@ static void test_acpi_aarch64_virt_tcg_ac=
-pi_hmat(void)
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 data.variant =3D ".=
-acpihmatvirt";
-> >>>>>>>>> -=C2=A0=C2=A0=C2=A0 test_acpi_one(" -machine hmat=3Don"
-> >>>>>>>>> +=C2=A0=C2=A0=C2=A0 test_acpi_one(" -machine hmat=3Don,acpi-pci=
-hp=3Doff"
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -cpu c=
-ortex-a57"
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -smp 4=
-,sockets=3D2"
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -m 384=
-M"
-> >>>>>>>>> @@ -2123,6 +2125,7 @@ static void test_acpi_aarch64_virt_tcg(vo=
-id)
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 data.smbios_cpu_max=
-_speed =3D 2900;
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 data.smbios_cpu_cur=
-r_speed =3D 2700;
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 test_acpi_one("-cpu=
- cortex-a57 "
-> >>>>>>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "-machine acpi-pcihp=3Doff "
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "-smbios=
- type=3D4,max-speed=3D2900,current-speed=3D2700", &data);
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 free_test_data(&dat=
-a);
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0 }
-> >>>>>>>>> @@ -2142,6 +2145,7 @@ static void test_acpi_aarch64_virt_tcg_to=
-pology(void)
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 };
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 test_acpi_one("-cpu=
- cortex-a57 "
-> >>>>>>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "-machine acpi-pcihp=3Doff "
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "-smp so=
-ckets=3D1,clusters=3D2,cores=3D2,threads=3D2", &data);
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 free_test_data(&dat=
-a);
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0 }
-> >>>>>>>>> @@ -2227,6 +2231,7 @@ static void test_acpi_aarch64_virt_viot(v=
-oid)
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 };
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 test_acpi_one("-cpu=
- cortex-a57 "
-> >>>>>>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "-machine acpi-pcihp=3Doff "
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "-device=
- virtio-iommu-pci", &data);
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 free_test_data(&dat=
-a);
-> >>>>>>>>>  =C2=A0=C2=A0=C2=A0 } =20
-> >>>>>    =20
-> >>>>    =20
-> >>>     =20
-> >> =20
-> >  =20
->=20

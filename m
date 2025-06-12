@@ -1,207 +1,317 @@
-Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp3491141njc;
-        Thu, 12 Jun 2025 05:40:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV2L/T698IwTm6DMJs/1NjmjaiquD9wPAxZq0a/vh606rdwlV6aSd4MNaeSFwr8m1gJ/BIDDwZcS2oNUg==@linaro.org
-X-Google-Smtp-Source: AGHT+IE1+Oh+hW6glSphmaeR8f3B67ClbKEfFuhciJ0dpzanQ72V4rcDTR4xn/Giub2g0CYWg3Lc
-X-Received: by 2002:a05:620a:1a26:b0:7c5:ad99:9e38 with SMTP id af79cd13be357-7d3b2a697cbmr520030385a.43.1749732021314;
-        Thu, 12 Jun 2025 05:40:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749732021; cv=none;
+Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp3496726njc;
+        Thu, 12 Jun 2025 05:50:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXwC9MU3d8wW72cqnw3PNSv7yzQ0vwI5W8PizQTBtIvUSgwlcTWOs5bYqCdyJVmrXfg3g0nFa5OqaegCg==@linaro.org
+X-Google-Smtp-Source: AGHT+IG5NMD/aloqzdhd2OfFXirHkB8o4N5xuOxLyOoI8BLCH//mZhmPwEnI6m6K/pZSk3gPe4ys
+X-Received: by 2002:a05:620a:3952:b0:7ce:c604:3f53 with SMTP id af79cd13be357-7d3b35edb8amr370658085a.24.1749732614758;
+        Thu, 12 Jun 2025 05:50:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749732614; cv=none;
         d=google.com; s=arc-20240605;
-        b=lV6mPamrO7CGamITsUIIV2BVpffMefpoSnBUGj8idhZmRFSRrwo2O4ePK/LmHUQx0i
-         WIelhelYuLR13zh7OzLR2aD0cH7Rx7vNO3mP8pWzRXfFeJOV3VhPkQUeW5JyRdRv04XD
-         3tq+HQgWWK81AqZHbuCjK+47B0zOo3kQEn7ukcSaQXiJUDMcphP7PBlVzn9ufQCbjXL/
-         Uckz4oG9tpn20W8XeTGcMGDfMZawWtcf45BaxXo2GP0GE8g06aVJlz8kkzJ0SmxVk0qD
-         xKDCpBtHNitLf7sjl7+u/vbBtYV238lq9jF+O/GV7jyTYUngd01+vByUi1exOQmiV3KP
-         MhSg==
+        b=iwfj/yhemXwGXU+6l4D/rhLQ5pytm2HH1jpzgEjIJqKKxVZUWgg52dAfWa37Q95VBV
+         krxrNbD4nS5asWOz9WFnKdnsILGVUdF6eYeUGMgJdSOcwVI5YqYf08vOqQkcNPUgFTfN
+         ZOl4gCBCPCveEaN3YzZwdB7B93BoDKflwK8T65+MmRNk3YDsUEKBwzOBmO3y0ZZ1DrAP
+         WydSb90+hjkJotHmv9cfXWIubadP2bRizqeBw8GJKHD6reZFRgzmMjMMUjaWTE7VvTmO
+         MJqo+AMHJEobUnK1Rz9Hr/ggtJMS/70FAMrHLCKuI54UEvyvOlBGkZ1Gs51OsapWh0Sw
+         90uA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=4BuTSjKnO3OaG5/9mm7aPc7phMnSQ+RtC4Fl9Lq8BP8=;
-        fh=Kp3mIewt2fJ0qTODSfaRaTrj866gflOZnmzxDaUGLy8=;
-        b=JD2PBokz5vsTK2YTWsEJLRa8+d/EkySR+zLgse7Q5ejJ+z/k15uA/zGgNqYDzRzDiV
-         333MA/zcaz5OpND6z1Q8GPs6QmVqMEEZy35ydgIVkvlCh1gT5PXq2UoVZUFWurLMLXYS
-         4J4tYbFXcbghPKQ6a6R7dmKLbjh46eBzlXqTgauIQsLsMaEQSi8wLpebNxaNe47jK2Br
-         P6pM88bY/0ezNke0VkUm8O+jlPAuzfRzJ22opy1mTQUcDmnmw5+I/WPDSVHdkaxQARfS
-         WcqG8M6nujnkmWR4aIiZtqNa3QX2nrI4aFoguwxT++pzMPi8C4370c9pZuLAhXJN3d2O
-         gYQw==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=5lFhxRtUAdJGBztxdsbcyW9odsc9OfWhuK0xDjPtH3o=;
+        fh=AN9oTro8XipZC1oH9iqMGwCeRuu5aCYXlxbgQmjQ2HU=;
+        b=bIca/cSoovBQMEDCaaYdWXq3JVgW+81422tsZzsYMapuAyKUB7Jd0pSi8O579NWc4v
+         SoDLjvHsRigwJUB1ndoSZrByrIIJkbMo2N3uOvVHieutuMEIsAPi0MsdFjGvsyQyaOeu
+         EGnWAgkeQneCYPcLhl+fPdBa6fn8yqRt511tPuJXCUK80HuwwrWCJu+inEYB179mi/Aa
+         xcXjB/zDuI97w57JzgO3aAOo9rRbIcBYuUMOukELgnV5fs/TJZ9XsHJX6kaHhOwGwAYs
+         cFrWXtS4xBSbuLGL6fpSN5+PYDadc+PQ1ekQAqE898AuulbrdgLRIh5HrEaGUmwQNRIa
+         XvyA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3b8f53803si65666685a.637.2025.06.12.05.40.21
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qs9StZMn;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8dff2aesi70506285a.135.2025.06.12.05.50.14
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Jun 2025 05:40:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Jun 2025 05:50:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uPhDo-0006va-4J; Thu, 12 Jun 2025 08:39:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1uPhDd-0006tc-Hn; Thu, 12 Jun 2025 08:39:50 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1uPhDW-0008T8-E1; Thu, 12 Jun 2025 08:39:42 -0400
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id ECA4255C16F;
- Thu, 12 Jun 2025 14:39:30 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id 8CG0zaX2-EOY; Thu, 12 Jun 2025 14:39:28 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id DDBED55C16E; Thu, 12 Jun 2025 14:39:28 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id DB3B3745682;
- Thu, 12 Jun 2025 14:39:28 +0200 (CEST)
-Date: Thu, 12 Jun 2025 14:39:28 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Paolo Bonzini <pbonzini@redhat.com>
-cc: =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
- Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org, 
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org, 
- =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>
-Subject: Re: [PATCH 4/5] configure: Add dtc option
-In-Reply-To: <c29386d1-1a4b-4f3b-a669-4206c366ad9e@redhat.com>
-Message-ID: <7a9f2ae7-93fb-8acd-34ca-0d5d71b80af5@eik.bme.hu>
-References: <20250610204131.2862-1-shentey@gmail.com>
- <20250610204131.2862-5-shentey@gmail.com>
- <cdfc561e-23a9-607a-d9a8-70e07e73e0fd@eik.bme.hu>
- <aElCJnmjrB-X9M-n@redhat.com>
- <6eb6aa79-33f8-57ea-5714-af264557f8c8@eik.bme.hu>
- <c29386d1-1a4b-4f3b-a669-4206c366ad9e@redhat.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qs9StZMn;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1749732614;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5lFhxRtUAdJGBztxdsbcyW9odsc9OfWhuK0xDjPtH3o=;
+	b=Qs9StZMn3KiAfCxUxcSRaAdQktqYA87UIMQYzrK6abakyqmH/jJHSca+8T1/qPw7F9zcZS
+	t+dSOzi/WPeG6anNSa4Y5Tzclm/NaErxvmmgzekxgOsgRysL7x+6GWwpCDybzvetZ8vvjV
+	9KUmLsLOEjUv77ZnlPMXoZ+T/+TBnxU=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-526-8S2C--WUMjCBFG2kdaZw_g-1; Thu, 12 Jun 2025 08:50:13 -0400
+X-MC-Unique: 8S2C--WUMjCBFG2kdaZw_g-1
+X-Mimecast-MFC-AGG-ID: 8S2C--WUMjCBFG2kdaZw_g_1749732612
+Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-3a4ff581df3so432917f8f.1
+        for <alex.bennee@linaro.org>; Thu, 12 Jun 2025 05:50:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749732612; x=1750337412;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=5lFhxRtUAdJGBztxdsbcyW9odsc9OfWhuK0xDjPtH3o=;
+        b=v8cX/yqc74soURdrGE4F6vI06u2nZ8E9DjqSi2FxdBmfvpEiCFT0xDl1KTJMVHl+px
+         qTrqDApV0KqZ70qU6ahM5Vrgkg/6m6irCrHwq+tz3exeHUGerhJXWpeAcGI/7NZwTQHJ
+         1BWUJ7Q1RvRaZfViUhu/I4fd/QOWkkJLA0/16M4+Ey6gP4BGNThljtrAE/A8++dlylXz
+         pfaTEuXbgvUbxi65VZ3daon+hkz/hnHGu0p4CqLn9+BeRUhATE7/gtodNygSDAkASPtm
+         tRDWvYxtkfjBXy0MaER7xrsPwZEC+a1mrqfPVNG67Eg5KHMDA29h6bBoQ/jZv88ZIk4c
+         5twA==
+X-Forwarded-Encrypted: i=1; AJvYcCV2PFtSJsK3pFEQ2CMVLiODBp2ftEVXfZ2AlZd3sVRFGXsysC8/jsNdrFLbB5xQZH4GRh9l3cC7UHTSIw==@linaro.org
+X-Gm-Message-State: AOJu0YyZgUnpxPja4wV6uR5PpcPYO6sEdy+bKpKc9URmQKKrP3H67aHh
+	4rB10bLq9ZRM1UuFrUWp4+L6xD5Q4qV/9jjnN74PRi5oOQ2FZ1DAzZlElKZ9wMpRglmTC3DX+gL
+	uRYYHmTBIoiLejbr56YJCIj1Dsgp+pVHIi0TGWijOemZ+0mWgNHBqWmOKKA==
+X-Gm-Gg: ASbGnctkahgqO5IYKlfJ0fFDPubDxfst7PLk/R8Autkc9fe360a8UX5oxUko53fJ9JD
+	lvoHO/aCLREWKRKgAVIa5aQ42nPxVaW+EibzhXsyqzVIjDeTqdOVnSqPdy+liiWPZm71EX1KX4d
+	WMAUI4OTfPd8IgeY9gHO8gDirU9s8RTuiOKvJ075x/5POcriHkpR+wtV3eXFI4qlexNGII/bUyQ
+	2xZc3vFhdE/6t1R5Njkm7Q4oXf82qqisz6r3e9nlZk/uotKRkkP1wxP0xvtcAD/JFJAz5xkdwWY
+	8nNNX9rQEgDl2fD5RXt35i3hLytXbU7Xmx/gA2v0Gm4=
+X-Received: by 2002:a05:6000:40e1:b0:3a4:e238:6496 with SMTP id ffacd0b85a97d-3a5607fa69emr3046016f8f.18.1749732611903;
+        Thu, 12 Jun 2025 05:50:11 -0700 (PDT)
+X-Received: by 2002:a05:6000:40e1:b0:3a4:e238:6496 with SMTP id ffacd0b85a97d-3a5607fa69emr3045980f8f.18.1749732611447;
+        Thu, 12 Jun 2025 05:50:11 -0700 (PDT)
+Return-Path: <imammedo@redhat.com>
+Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4532e2522b1sm19433325e9.25.2025.06.12.05.50.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Jun 2025 05:50:11 -0700 (PDT)
+Date: Thu, 12 Jun 2025 14:50:09 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Gustavo Romero <gustavo.romero@linaro.org>
+Cc: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com,
+ pbonzini@redhat.com, Jonathan.Cameron@huawei.com, philmd@linaro.org,
+ alex.bennee@linaro.org
+Subject: Re: [PATCH v2 24/25] tests/qtest/bios-tables-test: Keep ACPI PCI
+ hotplug off
+Message-ID: <20250612145009.28d69876@imammedo.users.ipa.redhat.com>
+In-Reply-To: <848ad5cf-7e83-49bd-8547-ac757c918fdf@linaro.org>
+References: <20250527074224.1197793-1-eric.auger@redhat.com>
+	<20250527074224.1197793-25-eric.auger@redhat.com>
+	<20250528113813.47086516@imammedo.users.ipa.redhat.com>
+	<375cfbd6-e585-4b6d-bf10-6571aa40370e@linaro.org>
+	<20250528150239.5f6b63d0@imammedo.users.ipa.redhat.com>
+	<6a5776b4-73ef-427b-b4e4-b25031b0ce53@linaro.org>
+	<20250530135103.09030cf0@imammedo.users.ipa.redhat.com>
+	<bcc200fb-fa45-44ac-9e36-4c829becbf1c@linaro.org>
+	<e3bc87d8-5016-455e-933d-6cefae993c25@linaro.org>
+	<20250611105437.5ecda7c9@imammedo.users.ipa.redhat.com>
+	<848ad5cf-7e83-49bd-8547-ac757c918fdf@linaro.org>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-479763625-1749731968=:67385"
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FdIOdxO2T+cW
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 2vRbvmipkdOr4KZS94WJI4IEq3GYMRMYghVCjChNefs_1749732612
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 8LVOwdxuIS4n
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On Wed, 11 Jun 2025 10:14:55 -0300
+Gustavo Romero <gustavo.romero@linaro.org> wrote:
 
---3866299591-479763625-1749731968=:67385
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+> Hi Igor,
+>=20
+> On 6/11/25 05:54, Igor Mammedov wrote:
+> > On Tue, 10 Jun 2025 11:29:02 -0300
+> > Gustavo Romero <gustavo.romero@linaro.org> wrote:
+[...]
+>=20
+>=20
+> BTW, why did we ultimately choose to commit blobs instead of the actual A=
+CPI
+> code (as generated by iasl)? I'm just wondering if we could avoid committ=
+ing
+> the blobs to 1) avoid committing binaries and 2) have the changes in the
+> ACPI code in the same commit that changes the ACPI itself.
+>=20
+> If that's only for historical reasons maybe I can improve the bios-tables=
+-test.c
+> to handle the ACPI code/struct in text format, avoiding the blobs, so I a=
+sk.
 
-On Thu, 12 Jun 2025, Paolo Bonzini wrote:
-> On 6/11/25 13:45, BALATON Zoltan wrote:
->> On Wed, 11 Jun 2025, Daniel P. Berrangé wrote:
->>> On Wed, Jun 11, 2025 at 02:37:08AM +0200, BALATON Zoltan wrote:
->>>> On Tue, 10 Jun 2025, Bernhard Beschow wrote:
->>>>> The next patch will make dtc mandatory for boards with a bundled DTB, 
->>>>> causing
->>>>> these boards to be omitted when dtc is missing. Allow packagers to force 
->>>>> the
->>>>> build of those boards by providing an option.
->>>> 
->>>> I don't like this. This might result in some machines missing from some
->>>> distros if they don't notice this and forget to update their packages and
->>>> these are machines I care about.
->>> 
->>> "Someone might not notice & screw up" is pretty much an argument for
->>> not doing anything at all. We publish release notes to alert distros
->> 
->> More like "if it ain't broke don't fix it".
->> 
->>> to these kind of changes which is a reasonable effort on our part.
->>> Distros need to play their part by reading them and adapting to the
->>> changes. They can also compare the available options with new and
->>> old QEMU to identify any new build features they need to handle when
->>> updating.
->>> 
->>>>                                  Also what guarantees that we don't get 
->>>> bugs
->>>> by compiling the device tree with different dtc versions which might
->>>> generate different binaries? The binaries we have now are known to work 
->>>> and
->>>> don't take much space so keeping them for convenience might be simpler. 
->>>> If
->>>> it worked so far why change it now?
->>> 
->>> Ultimately the DTC project has responsibility to not cause regressions
->>> in new releases they issue, as is the case for any 3rd party dep that
->>> we rely on.
->>> 
->>> We have CI jobs that can run on different distros. If we have coverage
->>> of the boards in functional test suite that provides a way to validate the
->>> operation with differing DTC versions as a sanity check.
->>> 
->>> Distributing pre-built binaries in source release tarballs is a long
->>> standing issue with QEMU's releases. If we can eliminate the pre-bbuilt
->>> DTB and only ship the source that is a good thing IMHO.
->>> 
->>>> If this was using dtc from the submodule when not using system libfdt 
->>>> then
->>>> at least it would not result in dropped machines and we had a known 
->>>> working
->>>> dtc to compile with. Why isn't that used when we already have it for 
->>>> libfdt?
->>> 
->>> Are there any platforms that we target which still lack dtc ? The
->>> submodule was there to plug gaps in distro support long ago, but
->>> if every distro has dtc available the submodule is redundant.
->> 
->> OK, can we then make libfdt and dtc mandatory and not build at all instead 
->> of disabling boards without it?
->
-> Disabling libfdt was done because of the x86 microvm board, which was adding 
-> a libfdt dependency to all of qemu-system-x86_64.
->
-> However, several targets still have a hard dependency on libfdt, plus libfdt 
-> is supported as a subproject and will be built together with the emulators. 
-> So the impact of the change was minimal, and limited only to people using 
-> --disable-libfdt or --disable-download on the configure command line.  This 
-> is not true of Bernard's proposal to use dtc.
->
-> For now, one possibility is just to make dtc mandatory whenever one of this 
-> boards is used; the best would be to be able to use the dtc that comes from 
-> the libfdt subproject.  This however requires patching dtc's meson.build so 
-> that it calls meson.override_find_program (and it could also use 
-> meson.override_dependency while you're at it).
->
-> I'll send a patch to the upstream dtc project and you can add it to QEMU via 
-> diff_files (see commit 64644bc4eab2f for an example).
 
-This seems getting too complicated just to get rid of some small binaries 
-so I'd just leave it as it is now but if Bernhard wants to make this 
-change I'm OK with it as long as my boards won't get disabled in configs 
-where now they are built I.e. if no system dtc is found now the dtbs are 
-installed; if this used dtc from submodule instead that would be OK but 
-dropping the board is not. I'm also OK with replacing the submodule with 
-always requiring system libfdt and dtc but that may be more work for 
-distros to update their package dependencies.
+We've had this for binary blobs at the beginning, however iasl output was
+a moving target (whether it's ASL or AML) hence it proved to be unsuitable
+for testing infrastructure (and not only testing, I don't remember concrete=
+ bugs though).
 
-Regards,
-BALATON Zoltan
---3866299591-479763625-1749731968=:67385--
+As result, we've switched to custom AML generator (aml_foo() API) with
+blobs it has generated. ASL output by IASL in tests is used by maintaners
+for diagnostic (/documenting) purposes only.
+
+> Thanks!
+>=20
+>=20
+> Cheers,
+> Gustavo
+>=20
+> >>
+> >>
+> >> Thanks,
+> >> Gustavo
+> >>     =20
+> >>>
+> >>> Cheers,
+> >>> Gustavo
+> >>>     =20
+> >>>>    =20
+> >>>>> Cheers,
+> >>>>> Gustavo
+> >>>>>    =20
+> >>>>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05828.htm=
+l 4/5
+> >>>>>>> https://mail.gnu.org/archive/html/qemu-devel/2025-05/msg05827.htm=
+l 5/5
+> >>>>>>>
+> >>>>>>>
+> >>>>>>> Cheers,
+> >>>>>>> Gustavo =20
+> >>>>>>>>>
+> >>>>>>>>> ---
+> >>>>>>>>>
+> >>>>>>>>> [Eric] also added acpi-pcihp=3Doff to test_acpi_aarch64_virt_tc=
+g_numamem
+> >>>>>>>>> ---
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0 tests/qtest/bios-tables-test.c | 13 +++++++=
+++----
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0 1 file changed, 9 insertions(+), 4 deletion=
+s(-)
+> >>>>>>>>>
+> >>>>>>>>> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-=
+tables-test.c
+> >>>>>>>>> index 0a333ec435..6379dba714 100644
+> >>>>>>>>> --- a/tests/qtest/bios-tables-test.c
+> >>>>>>>>> +++ b/tests/qtest/bios-tables-test.c
+> >>>>>>>>> @@ -1626,7 +1626,7 @@ static void test_acpi_aarch64_virt_tcg_me=
+mhp(void)
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 };
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 data.variant =3D ".=
+memhp";
+> >>>>>>>>> -=C2=A0=C2=A0=C2=A0 test_acpi_one(" -machine nvdimm=3Don"
+> >>>>>>>>> +=C2=A0=C2=A0=C2=A0 test_acpi_one(" -machine nvdimm=3Don,acpi-p=
+cihp=3Doff"
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -cpu c=
+ortex-a57"
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -m 256=
+M,slots=3D3,maxmem=3D1G"
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -objec=
+t memory-backend-ram,id=3Dram0,size=3D128M"
+> >>>>>>>>> @@ -1747,7 +1747,8 @@ static void test_acpi_aarch64_virt_tcg_nu=
+mamem(void)
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 };
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 data.variant =3D ".=
+numamem";
+> >>>>>>>>> -=C2=A0=C2=A0=C2=A0 test_acpi_one(" -cpu cortex-a57"
+> >>>>>>>>> +=C2=A0=C2=A0=C2=A0 test_acpi_one(" -machine acpi-pcihp=3Doff"
+> >>>>>>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -cpu cortex-a57"
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -objec=
+t memory-backend-ram,id=3Dram0,size=3D128M"
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -numa =
+node,memdev=3Dram0",
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 &data);
+> >>>>>>>>> @@ -1775,7 +1776,8 @@ static void test_acpi_aarch64_virt_tcg_px=
+b(void)
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * to solve th=
+e conflicts.
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 data.variant =3D ".=
+pxb";
+> >>>>>>>>> -=C2=A0=C2=A0=C2=A0 test_acpi_one(" -device pcie-root-port,chas=
+sis=3D1,id=3Dpci.1"
+> >>>>>>>>> +=C2=A0=C2=A0=C2=A0 test_acpi_one(" -machine acpi-pcihp=3Doff"
+> >>>>>>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -device pcie-root-port,chassis=
+=3D1,id=3Dpci.1"
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -devic=
+e virtio-scsi-pci,id=3Dscsi0,bus=3Dpci.1"
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -drive=
+ file=3D"
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "tests/d=
+ata/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2,"
+> >>>>>>>>> @@ -1846,7 +1848,7 @@ static void test_acpi_aarch64_virt_tcg_ac=
+pi_hmat(void)
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 data.variant =3D ".=
+acpihmatvirt";
+> >>>>>>>>> -=C2=A0=C2=A0=C2=A0 test_acpi_one(" -machine hmat=3Don"
+> >>>>>>>>> +=C2=A0=C2=A0=C2=A0 test_acpi_one(" -machine hmat=3Don,acpi-pci=
+hp=3Doff"
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -cpu c=
+ortex-a57"
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -smp 4=
+,sockets=3D2"
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 " -m 384=
+M"
+> >>>>>>>>> @@ -2123,6 +2125,7 @@ static void test_acpi_aarch64_virt_tcg(vo=
+id)
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 data.smbios_cpu_max=
+_speed =3D 2900;
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 data.smbios_cpu_cur=
+r_speed =3D 2700;
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 test_acpi_one("-cpu=
+ cortex-a57 "
+> >>>>>>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "-machine acpi-pcihp=3Doff "
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "-smbios=
+ type=3D4,max-speed=3D2900,current-speed=3D2700", &data);
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 free_test_data(&dat=
+a);
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0 }
+> >>>>>>>>> @@ -2142,6 +2145,7 @@ static void test_acpi_aarch64_virt_tcg_to=
+pology(void)
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 };
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 test_acpi_one("-cpu=
+ cortex-a57 "
+> >>>>>>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "-machine acpi-pcihp=3Doff "
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "-smp so=
+ckets=3D1,clusters=3D2,cores=3D2,threads=3D2", &data);
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 free_test_data(&dat=
+a);
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0 }
+> >>>>>>>>> @@ -2227,6 +2231,7 @@ static void test_acpi_aarch64_virt_viot(v=
+oid)
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 };
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 test_acpi_one("-cpu=
+ cortex-a57 "
+> >>>>>>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "-machine acpi-pcihp=3Doff "
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "-device=
+ virtio-iommu-pci", &data);
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 free_test_data(&dat=
+a);
+> >>>>>>>>>  =C2=A0=C2=A0=C2=A0 } =20
+> >>>>>    =20
+> >>>>    =20
+> >>>     =20
+> >> =20
+> >  =20
+>=20

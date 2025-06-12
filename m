@@ -1,162 +1,110 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2439268njc;
-        Thu, 12 Jun 2025 08:53:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVm6jdG3r29aOoniI7+EJOyQeo5U/BjG2crKj0q9OZ20wXF6kC/5uwJVRdGLyzT0s+D4au2BIDacNkEQw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEwASiSaRfp9acVwM9fcTdVlmOtn+MPCQvkjCtyQRT2ecnaUml+rWHLffUUjZL6jDCAUnqR
-X-Received: by 2002:a05:622a:1b15:b0:4a6:f9e1:a840 with SMTP id d75a77b69052e-4a722914855mr70630351cf.1.1749743598998;
-        Thu, 12 Jun 2025 08:53:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749743598; cv=none;
+Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp3660160njc;
+        Thu, 12 Jun 2025 09:34:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV1JGhlAc21bYpLlgH4MSraHya1aUROXh4BqWe8lX7DKlfxfNT1FCndx87yYWCYK+zY3OUk7v/eSr8Ldg==@linaro.org
+X-Google-Smtp-Source: AGHT+IE+AQnLVRgrS0uPfJ3NjvbDyIe9xAywNfzRc9FkCfR+ZAhfsocdVihga1kCvGx37BX6KtQ4
+X-Received: by 2002:a05:6000:2c0c:b0:3a5:2cb5:63f8 with SMTP id ffacd0b85a97d-3a5679e423dmr563210f8f.29.1749746040800;
+        Thu, 12 Jun 2025 09:34:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749746040; cv=none;
         d=google.com; s=arc-20240605;
-        b=W3mQlcBixwMzYawA5TynuLmBc8IgC6L/NFVz+yciODpIrCSTs8xr1qOBTt2WdmTSEQ
-         W58zSq38eG76ZYKjXqxSwSyIp2g14a51Ucpd9ScCravqmgL4YDuVw5BbH9fQ7hu7ayEP
-         Z7xvM0Tl+ilJi8u+tqxZ0UVt/AKBRfMtUydCewU2t+cjF2IFGrH0CuCJ5kgp6Ph3pXjP
-         vDm5D6pu60uFrFxy+ZMtBXP5kAQTo42PN5969kybi2UMibDKStuRkSuFO3gVqSx+hG7X
-         //gUGaFrUo67tLGsIkwOMcBCOEaYnI1Qy84k2DBkufXV1PxozPO5tNbVp75xDWJ/D/db
-         C6jg==
+        b=ffBaV/03gVKBOZBFsiO5KIXv36V3EkucatKHsJIae8LC9eSulu/uINWD5sEil37A7m
+         mdATv2sgyl3ZwxIjEPof0GxvIYrWn6TVluFOUbkAzkB2wAbqrbDuj9tjmcf0/mrdI6It
+         TB87zzMf7W562CMQrGtDVUJIZj5Ar7/kX7tgarcgKm6AJoKGpRo3NGMjBVyWqBliQVmH
+         +QOkpFeoCeHQHybdfScWoJ48er3QjdztpzchKPZQfJanInSj4LLqChego9SpUub4IYdd
+         nEyKOz+g1kJuRGxOtaDosS/RL8DPfw8sbHfKEm37V6xQ6gbYLU5gfzLPvxxUl8L84+Vw
+         xjSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:message-id:date:user-agent:references:organization
-         :in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=mUI+8vjhhSyqNoE3QrTGQqAzBmNIFi2uvoVlnXIO0eY=;
-        fh=3AH/4enSkYH+0gdMWbJY9r7skS1O9K2SeH+yRsCcYPI=;
-        b=TJo2Xaa0V2PfNGq0JxeAWOOUHLLmRvPenXliWZIaiHNx+UUD0TTzSzi7eWv45Q2i/f
-         rgiCHixbsxdoNXR5pdlItxy8MkBfmy/OAD6yJg/bvldPeC2MuMzd23bbdK45bRTwU9JP
-         w/aDzE3+McoUqG+iEceo12XWGxV02+cQ0B2QTLS7DC//hQtpDALbGYsUvrwMXoKoOYtI
-         wVnQaPhAR216aOn08ZDgNZvj9Yogmz4/CfHIpupy3myMiR90Sb4TCbY7KiRlZcF+MoQe
-         8KnjlUU25gq5Y11/pq3ASqLXkRlGkCtsPW+gUwhyDFFJHaUaph6Lh5EgVhjYqpffaAd6
-         ttDw==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date;
+        bh=dEvIZ3WzviwqOzkTjpOpCs5/WjFdz+xlUIILaYODMIg=;
+        fh=oDLjFSOamsMv4A51Yf2lSFFkJGeFX4zTdFZqA2DwPmw=;
+        b=Y0AbPmzt6fbqvPMgY3V3kXL2kAzu70s9tXrYxv8t1K0yTjEomsqwS3UB8nb5gArCMA
+         J/fUaODrkoNslWZ4nZEFrmmNyB7ecMqsMBOJkCA5T61w9joHd2IehZIUmL3wcFx0rgQ4
+         2bJSyc4GXRxsWDd8WGEwEHnehRITO8tGbud/zWw19v9eb65qcU8G/RhJh7RD01s/UZkz
+         EM0hd6n98w2oltfaV5PKgnbysvPPdYhmL32f2BtvPibZIZsEiOmtcaSaq9rL/A6OWLyp
+         n3QQe3XRZReY2+3m1GOpoIgagKMckDaOCpkUn/+3g4T0Y64mmywIfZhhAuKc2VjEdO7x
+         b88g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SnSWtPvA;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a72a47d8afsi9090421cf.286.2025.06.12.08.53.18
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Jun 2025 08:53:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-4532516028bsi37547335e9.48.2025.06.12.09.33.59
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Jun 2025 09:34:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SnSWtPvA;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1749743598;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=mUI+8vjhhSyqNoE3QrTGQqAzBmNIFi2uvoVlnXIO0eY=;
-	b=SnSWtPvAtdkpD1TDdcyn7ofhWcTK++7YgzFNpIXdm0M1YpqKnxlxfVha1EJyYc8H8DXUlG
-	sl4MibHhN4D3Yi5A3xpN9mcVJRDTlrJajx3KYeveISAQeBmscmSthG54j/dELVBx1b8FlG
-	iZZycncfTjH2UHWR4AHpCJqtta7tZnI=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-528-5BU_AqztPBOJLHDrdiDD7Q-1; Thu,
- 12 Jun 2025 11:53:15 -0400
-X-MC-Unique: 5BU_AqztPBOJLHDrdiDD7Q-1
-X-Mimecast-MFC-AGG-ID: 5BU_AqztPBOJLHDrdiDD7Q_1749743593
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B97CF1956089;
-	Thu, 12 Jun 2025 15:53:12 +0000 (UTC)
-Received: from localhost (unknown [10.45.224.54])
-	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 7EAD118003FC;
-	Thu, 12 Jun 2025 15:53:10 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bJ7Pn1zlTz6M52S;
+	Fri, 13 Jun 2025 00:33:33 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+	by mail.maildlp.com (Postfix) with ESMTPS id 4B09414038F;
+	Fri, 13 Jun 2025 00:33:59 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 12 Jun
+ 2025 18:33:58 +0200
+Date: Thu, 12 Jun 2025 17:33:57 +0100
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev, richard.henderson@linaro.org,
- alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
- armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
- jdenemar@redhat.com, agraf@csgraf.de, shahuang@redhat.com,
- mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
-Subject: Re: [PATCH v7 08/14] arm/cpu: Store id_isar0-7 into the idregs array
-In-Reply-To: <CAFEAcA-rYNaaZ3LFFkhek0duptPeMXUBbPbBnWa7teNPM+c6ug@mail.gmail.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Avril Crosse O'Flaherty"
-References: <20250515153907.151174-1-cohuck@redhat.com>
- <20250515153907.151174-9-cohuck@redhat.com>
- <CAFEAcA-c=EaE-Y4DMVz_meVd2cbxuCyFGFOXET-COOgMWHXWWA@mail.gmail.com>
- <87a56d9dlb.fsf@redhat.com>
- <CAFEAcA-rYNaaZ3LFFkhek0duptPeMXUBbPbBnWa7teNPM+c6ug@mail.gmail.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Thu, 12 Jun 2025 17:53:07 +0200
-Message-ID: <874iwl9ct8.fsf@redhat.com>
+CC: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, <mst@redhat.com>,
+	Zhijian Li <lizhijian@fujitsu.com>, Itaru Kitayama
+	<itaru.kitayama@linux.dev>, <linuxarm@huawei.com>,
+	<linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>, Yuquan Wang
+	<wangyuquan1236@phytium.com.cn>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
+	<philmd@linaro.org>, Alireza Sanaee <alireza.sanaee@huawei.com>, Alex
+ =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Subject: Re: [PATCH v15 0/4] arm/virt: CXL support via pxb_cxl
+Message-ID: <20250612173357.00002f31@huawei.com>
+In-Reply-To: <CAFEAcA9CuQWL2b63+XCe+vZCGR7hRSx8SkTR0LDa+Ra1Z5ur7w@mail.gmail.com>
+References: <20250612134338.1871023-1-Jonathan.Cameron@huawei.com>
+	<CAFEAcA9CuQWL2b63+XCe+vZCGR7hRSx8SkTR0LDa+Ra1Z5ur7w@mail.gmail.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-TUID: 2SMcci5SEDVh
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-TUID: 7hCoCo1aoPUG
 
-On Thu, Jun 12 2025, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Thu, 12 Jun 2025 17:04:32 +0100
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-> On Thu, 12 Jun 2025 at 16:36, Cornelia Huck <cohuck@redhat.com> wrote:
->>
->> On Thu, Jun 12 2025, Peter Maydell <peter.maydell@linaro.org> wrote:
->>
->> > On Thu, 15 May 2025 at 16:40, Cornelia Huck <cohuck@redhat.com> wrote:
->> >>
->> >> From: Eric Auger <eric.auger@redhat.com>
->> >>
->> >> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->> >> Reviewed-by: Sebastian Ott <sebott@redhat.com>
->> >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> >> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->> >> ---
->> >>  hw/intc/armv7m_nvic.c     |  12 ++--
->> >>  target/arm/cpu-features.h |  36 +++++-----
->> >>  target/arm/cpu.c          |  24 +++----
->> >>  target/arm/cpu.h          |   7 --
->> >>  target/arm/cpu64.c        |  28 ++++----
->> >>  target/arm/helper.c       |  14 ++--
->> >>  target/arm/kvm.c          |  21 ++----
->> >>  target/arm/tcg/cpu-v7m.c  |  90 +++++++++++++-----------
->> >>  target/arm/tcg/cpu32.c    | 144 +++++++++++++++++++++-----------------
->> >>  target/arm/tcg/cpu64.c    | 108 ++++++++++++++--------------
->> >>  10 files changed, 243 insertions(+), 241 deletions(-)
->> >
->> > This doesn't compile:
->> >
->> > ../../target/arm/tcg/cpu-v7m.c:70:5: error: incompatible pointer types
->> > initializing 'ARMISARe
->> > gisters *' (aka 'struct ARMISARegisters *') with an expression of type
->> > 'uint64_t *' (aka 'unsigned long *')
->> > [-Werror,-Wincompatible-pointer-types]
->> >    70 |     SET_IDREG(idregs, ID_ISAR0, 0x01141110);
->> >       |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> > ../../target/arm/cpu.h:875:26: note: expanded from macro 'SET_IDREG'
->> >   875 |         ARMISARegisters *i_ = (ISAR);
->> >          \
->> >       |                          ^    ~~~~~~
->> > ../../target/arm/tcg/cpu-v7m.c:71:5: error: incompatible pointer types
->> > initializing 'ARMISARegisters *' (aka 'struct ARMISARegisters *') with
->> > an expression of type 'uint64_t *' (aka 'unsigned long *')
->> > [-Werror,-Wincompatible-pointer-types]
->> >    71 |     SET_IDREG(idregs, ID_ISAR1, 0x02111000);
->> >       |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> > ../../target/arm/cpu.h:875:26: note: expanded from macro 'SET_IDREG'
->> >   875 |         ARMISARegisters *i_ = (ISAR);
->> >          \
->> >       |                          ^    ~~~~~~
->> >
->> > (and more similar errors until the compiler gives up).
->>
->> What configs/compiler are you using? I obviously would have fixed that
->> if I had hit it...
->
-> This is clang 18.1.3 (1ubuntu1) on x86-64 Linux, configured with
->
-> '../../configure' '--cc=clang' '--cxx=clang++' '--enable-ubsan'
-> '--target-list=arm-softmmu,arm-linux-user,aarch64-softmmu,aarch64-linux-user'
->
-> Whatever the problem is, it goes away on a later patch, so probably
-> it's just that some fragment in a later patch needs to move into
-> this one.
+> On Thu, 12 Jun 2025 at 14:43, Jonathan Cameron
+> <Jonathan.Cameron@huawei.com> wrote:
+> >
+> > v15:
+> >   - Split the address map calculations and mmio setup into separate
+> >     functions in patch 2, allowing v14 patch 3 to be dropped as not
+> >     x86 and arm make the same calls.  Note I felt this was a sufficient
+> >     change to trigger dropping tags. (Zhijian Li)
+> >   - A few other minor tweaks.
+> >   - TLB issue mentioned in v14 now fixed upstream so dropped reference
+> >     in this cover letter.
+> >
+> > Thanks to Itaru Kitayama and Zhijian Li for testing + reviews.  
+> 
+> Hi Jonathan -- I forget where we are on this. Do you think this
+> series is OK to go upstream at this point, or is there still
+> stuff you're iterating on here ?  (Put another way, should I
+> review it and consider queueing it?)
 
-Ok, I should do more automated builds after every patch, because I
-forget to do that too often. (I usually build with gcc.)
+Hi Peter,
+
+Please do review + consider queuing it.  The recent changes have
+just been tidying up based on reviews and before that it was just
+the switch over to sysbus devices for the CXL Fixed Memory Windows.
+That was mainly because I need that for other stuff and I think
+you suggested it a few years back so I thought it might make you
+happier with this :)
+
+Thanks,
+
+Jonathan
+
+> 
+> thanks
+> -- PMM

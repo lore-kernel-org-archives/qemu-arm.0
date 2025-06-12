@@ -1,177 +1,184 @@
-Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp3523808njc;
-        Thu, 12 Jun 2025 06:25:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXYcysja3FAcDzctvUOBPltQfo5VlGWQVz61Cp7zfMr6W7aitbEtTjP16TOLWugleiXRNTxLkEdKbMFxg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHNRN0R9CsytsAvPYmHKWvUN61vWvU6OcPYMCdtRdPGwVWXBKSYAGNP9lRaPxyE+pdtA/it
-X-Received: by 2002:a05:622a:598b:b0:4a5:882b:1681 with SMTP id d75a77b69052e-4a7228c36dbmr63285251cf.4.1749734738244;
-        Thu, 12 Jun 2025 06:25:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749734738; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2377888njc;
+        Thu, 12 Jun 2025 06:43:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVtX3IvR2ZRdkZVE4pqwIXTS/oblfa60imgG755CsW4z+Cor9vzoAoxALJ2KBGjIyNAFy8ps2yuXxptSQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGAhO+ylmbTVJzc7N6Z1c5eGoi9ge1bh3x+QSVTZ52SokmFnH5V9iiUNWIzBVTslbRJjT1Z
+X-Received: by 2002:a9d:605a:0:b0:72a:1d92:d968 with SMTP id 46e09a7af769-73a05cf932amr3446089a34.19.1749735822197;
+        Thu, 12 Jun 2025 06:43:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749735822; cv=none;
         d=google.com; s=arc-20240605;
-        b=fJ/JAZI1hTqXAJrmSnY+JaRWSjIiq5ZLRyrkUVN8xvHILzRA2IgGp8+G37Tzt9cEDN
-         7e4yeXhu/zbWE891D9u8jWVd7ykKV62DrHngmPFPMvrnkAe4rck6zktQuHEQxfMpujUa
-         0BCTec0e3VO0YP3jsMg3TzPUe6mwry+GIwiW0x/fxz0I6xzK3rQlhFb2oVUWYLg4SK+D
-         3MpMsdU4gPy9ugYM0FDIs4Zp6UjwktjjFT42MlSy12RHC43/zDmKheAaiQSran/We73x
-         iUY9ZOYNzpGwRBcX8JcoRD3B3rJ2Ycgg/Zr4w2P0l8hsalko5QEqpFY3RvLKgBwMqYNH
-         Vezg==
+        b=HMmlU/tE+U5v61+iHArJ74z6WzoWNqKyjL/oQ8M2L3sLXfme1k0lya+DrT4NnXzv/r
+         +Iukd2ZHbQfJx/aR4nGyx/91H5S4ROzqQln1yghDRDj3KSPj9swZC5wVSRFSEKl2I5o2
+         FdyfUzYC4lQLDUAa+wgjxT/3a3IDmndHvQ/b68ICwzrsBOddxSWsQ7DvA2FTSoeVEj3q
+         Jzf2sXmedV93OSSrrn2wSNVQvrkGzMmcZPEBNyv0VjUSpWqn4Budkqb48XaFx80vsen3
+         1N+j3fUq54wFXjC93VsA18AoEmOF86mAjyQOL15VdtMBzmLkbtACK4NQ7LqcVeBm1hj1
+         vFOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=zDyhqaDEF4FCd/hQmc+D77zq2ZaFHqRDVzl9hrHfjLY=;
-        fh=26iiJeMMewRrmKh6I1STVt+9kOcYRJpGEensehkt2Ic=;
-        b=Vm7Td48koaG9SoGwhvWIgfzsE+xP+hUgVf2wX81Rw1Y89DYzA0IOrfb7rlpOqJn169
-         Dy/kavFlKkS/AmJLz06mCrhbjIeQ3W9e53Gv3r0kWwBg7i8YsfucnFkXk6Qs6hQWXETT
-         i6VE4NUExzdt2jbHE6jQgXi1AzfuUQgpAlfPmxqoYmm7vq1SAqnGXToYasIu7NGVYLgn
-         E1wYlSUYK82xR4PinJBjPdwVXCgDrBZWgtBtwPGgZpXV+XvMMvl+AMkrZLmZF+KeHSzE
-         TeLiIJbCU5UnGNawJFIzGEx3bcsipH2cCUDV97IaJ8GcXs2KW49YU8SkHtXzWmzTLLCr
-         uZFQ==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=WXQLNnuIRSOnzCF2w78wdtmL3vhLK26HuQEPipA/ypY=;
+        fh=j5hUnuCKl+LEtbJKgnRKD4Q/IHAUrR7LU1LWM4QNBKo=;
+        b=X8ViOCaeamDY6tzTJ4l1EFmGdOa6Nz3RilN2Nvew39sWUJozuRqQDDsJ0EJN6k3W+l
+         /orENvwpBfvHtWJRdmo1dMN2tkvYSifmtfhAtDnxpSbvnw07jGbAMQce2e4k6yCX28JH
+         lFZdPm6JTr8toErbg5ftCl9SvNN/3K2eQYTtsebkepeZASDQoAi7Gx9MOjCEHMauh9Kl
+         lUG3tL6Xi3D0m/jQXPdx3b+5vas/zR+gXCcw3J2eAKOX1vf4xOlOfK1BQmeFDY5tARDi
+         jexRrgbaj4X8gvD8KXu9uLoSUrWwp6HmOT1ZuxW1LlvtUDgE1km06N3nP8PaIRyQ8s0x
+         IluQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FNC6fYuf;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a72a47d0f1si7365971cf.232.2025.06.12.06.25.38
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Jun 2025 06:25:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id 46e09a7af769-73a16e17633si937082a34.308.2025.06.12.06.43.41
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Jun 2025 06:43:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FNC6fYuf;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1749734737;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=zDyhqaDEF4FCd/hQmc+D77zq2ZaFHqRDVzl9hrHfjLY=;
-	b=FNC6fYufRYYBaEUaCLBWNk8JTo26q9Q2F2DAWt95rw2bQTypKreGoMnYWdzwGngMqfKNiF
-	WVX6wbqbhJz649Aan+ywLWlc3StAfw2Uvgp14hTxzAqITjJ7HcIrxu2rXKa65vjoklaya4
-	c2bWrKdzgL6MdwwuRsC4+tnwzRcqbQQ=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-22-cndyXnyBMhuGls7uFLiSFA-1; Thu, 12 Jun 2025 09:25:36 -0400
-X-MC-Unique: cndyXnyBMhuGls7uFLiSFA-1
-X-Mimecast-MFC-AGG-ID: cndyXnyBMhuGls7uFLiSFA_1749734735
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-451d5600a54so7826845e9.2
-        for <alex.bennee@linaro.org>; Thu, 12 Jun 2025 06:25:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749734735; x=1750339535;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=zDyhqaDEF4FCd/hQmc+D77zq2ZaFHqRDVzl9hrHfjLY=;
-        b=PPbnrEwac+ZButVBfQeh5jSiTK3hX0fRbFX9vVYNrXwFk0PVDck4Pf9ZOCvSg0XoQt
-         Meyr+0mehJzsmnY8vo95+t/RTeNZr9U/L3AZTCAnMzzr0zhjUCww0F19K/boJSbSmyRV
-         Bfw6tkYgq1eYkbUQS1ZVfOa1e/mIJwp4/p6H00jZupQOvjTQ+eIe6HCLEjx1wRiVJoOn
-         hm8jsoh0mX8t9eeOL/UaOn1q0u+BYVMdKpIjjhh7ZhUzQWlhdzUNxXgZjclF+ws+TP8s
-         qoYUnzPSQq6GG2EWVlisV4w5ho6+O8WSK2Xv9XmLODR5RcxTyHTiDViz0KW++1klGnOj
-         02ZA==
-X-Forwarded-Encrypted: i=1; AJvYcCV0bRs4EATncH+RC38SXCtFbiKo+Za3Tpr5DaMVFqL8QYV6DK5qm/l/z97zl4U8F4ezURMBhdF2enZjWQ==@linaro.org
-X-Gm-Message-State: AOJu0Yyw7HursIxBlP3M9yOySwu6VxIBQpNJvrw+mzEwT4gDT3G+WSEb
-	hb1Qeu46zWX5vVbS9wf9RuUualKB04FicRuvriuC1QUEWHqA8CV/ZLmT+Xgv0jSCGISHJw6zY/a
-	ia32TxSQCHSW8F/MENf925eEGLLYdh19wXmdRtulSFumYPHOhvNXevQMFzg==
-X-Gm-Gg: ASbGncsvsODbU/6U8etgiXxeD06i3jnYDlACuS3ZhqJwfa9w21S5DwLW1mLZlFELDXb
-	09KPl4eNxLPB5PDGedfVX82QpPh5r2GSQgBtXM4K6r4vHQKbfgocvbQYlNNuogG7WoeQfwaVnQG
-	4i1mW5ORK7dXs3nesAPzR3EUh/t1EEW/8Qa8iX61dsj3eG4q8QEauBY77N9w2hHEL+bV4wpRYBD
-	OwLSBs2Fe9FJglTaFE/sNYQEyHiY4MbZT1Q2hSEZ8TTKQSF+bbn7QqDmLZ8kOK3rIMnhBQ+lZ7W
-	2DDHBne6WNabGQUFswbNDmbDBIgjOgbBBGkV7LJQiRg=
-X-Received: by 2002:a05:600c:a49:b0:450:d614:cb with SMTP id 5b1f17b1804b1-453248e2952mr66081655e9.33.1749734735470;
-        Thu, 12 Jun 2025 06:25:35 -0700 (PDT)
-X-Received: by 2002:a05:600c:a49:b0:450:d614:cb with SMTP id 5b1f17b1804b1-453248e2952mr66081375e9.33.1749734734976;
-        Thu, 12 Jun 2025 06:25:34 -0700 (PDT)
-Return-Path: <imammedo@redhat.com>
-Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a561b4bb0bsm1953501f8f.77.2025.06.12.06.25.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Jun 2025 06:25:34 -0700 (PDT)
-Date: Thu, 12 Jun 2025 15:25:33 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
- mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
- Jonathan.Cameron@huawei.com, philmd@linaro.org, alex.bennee@linaro.org
-Subject: Re: [PATCH v2 06/25] hw/pci-host/gpex-acpi: Propagate hotplug type
- info from virt machine downto gpex
-Message-ID: <20250612152533.49fa5ab5@imammedo.users.ipa.redhat.com>
-In-Reply-To: <72c84565-3879-4c08-a73c-15bc5543ee2b@redhat.com>
-References: <20250527074224.1197793-1-eric.auger@redhat.com>
-	<20250527074224.1197793-7-eric.auger@redhat.com>
-	<20250527143301.77f5bfd1@imammedo.users.ipa.redhat.com>
-	<72c84565-3879-4c08-a73c-15bc5543ee2b@redhat.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bJ3dG2QBPz6M51h;
+	Thu, 12 Jun 2025 21:43:14 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+	by mail.maildlp.com (Postfix) with ESMTPS id 2F2341402EB;
+	Thu, 12 Jun 2025 21:43:40 +0800 (CST)
+Received: from SecurePC-101-06.china.huawei.com (10.122.19.247) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Thu, 12 Jun 2025 15:43:39 +0200
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+To: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
+	<peter.maydell@linaro.org>, <mst@redhat.com>, Zhijian Li
+	<lizhijian@fujitsu.com>, Itaru Kitayama <itaru.kitayama@linux.dev>
+CC: <linuxarm@huawei.com>, <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>,
+	Yuquan Wang <wangyuquan1236@phytium.com.cn>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Alireza Sanaee
+	<alireza.sanaee@huawei.com>, =?UTF-8?q?Alex=20Benn=C3=A9e?=
+	<alex.bennee@linaro.org>
+Subject: [PATCH v15 0/4] arm/virt: CXL support via pxb_cxl
+Date: Thu, 12 Jun 2025 14:43:34 +0100
+Message-ID: <20250612134338.1871023-1-Jonathan.Cameron@huawei.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: vWGKgAhHAeI2LegIcIcSAy8FpPJrldHeOs7lFZ_Db64_1749734735
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: fXaa15mz7aN2
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.122.19.247]
+X-ClientProxiedBy: lhrpeml500012.china.huawei.com (7.191.174.4) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-TUID: 0hyeTshA5IYa
 
-On Wed, 11 Jun 2025 11:00:02 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
+v15:
+  - Split the address map calculations and mmio setup into separate
+    functions in patch 2, allowing v14 patch 3 to be dropped as not
+    x86 and arm make the same calls.  Note I felt this was a sufficient
+    change to trigger dropping tags. (Zhijian Li)
+  - A few other minor tweaks.
+  - TLB issue mentioned in v14 now fixed upstream so dropped reference
+    in this cover letter.
 
-> Hi Igor,
-> 
-> On 5/27/25 2:33 PM, Igor Mammedov wrote:
-> > On Tue, 27 May 2025 09:40:08 +0200
-> > Eric Auger <eric.auger@redhat.com> wrote:
-> >  
-> >> Propagate the type of pci hotplug mode downto the gpex
-> >> acpi code. In case machine acpi_pcihp is unset we configure
-> >> pci native hotplug on pci0. For expander bridges we keep
-> >> legacy pci native hotplug, as done on x86 q35.  
-> > this is not needed if done as suggested in 2/25  
-> So since the property would be applied to the GED device we will still
-> need a patch that retrieves the GED setting and propagate it to the GPEX
-> device.
+Thanks to Itaru Kitayama and Zhijian Li for testing + reviews.
 
-I don't see a need for propagating it to GPEX device itself for ACPI sake.
+Updated cover letter
 
-For ACPI code, what we do in q35 case is fetching
-pm->pcihp_bridge_en from acpi_dev(whatever it is) and then
-passing it down trough call-chain
+Back in 2022, this series stalled on the absence of a solution to device
+tree support for PCI Expander Bridges (PXB) and we ended up only having
+x86 support upstream. I've been carrying the arm64 support out of tree
+since then, with occasional nasty surprises (e.g. UNIMP + DT issue seen
+a few weeks ago) and a fair number of fiddly rebases.
+gitlab.com/jic23/qemu cxl-<latest date>.  Will update shortly with this
+series.
 
-  build_dsdt->build_q35_osc_method
+A recent discussion with Peter Maydell indicated that there are various
+other ACPI only features now, so in general he might be more relaxed
+about DT support being necessary. The upcoming vSMMUv3 support would
+run into this problem as well.
 
-the only hack that touches GPEX device model, is the need to
-wire up root bus to GED, when GED is being created.
-So that GED would be able to swap hotplug handler on
-an acpi specific one when configured to do so.
+I presented the background to the PXB issue at Linaro connect 2022. In
+short the issue is that PXBs steal MMIO space from the main PCI root
+bridge. The challenge is knowing how much to steal.
 
+On ACPI platforms, we can rely on EDK2 to perform an enumeration and
+configuration of the PCI topology and QEMU can update the ACPI tables
+after EDK2 has done this when it can simply read the space used by the
+root ports. On device tree, there is no entity to figure out that
+enumeration so we don't know how to size the stolen region.
 
-> Thanks
-> 
-> Eric
-> >  
-> >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> >> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
-[...]
-> >> @@ -279,7 +280,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
-> >>      }
-> >>      aml_append(dev, aml_name_decl("_CRS", rbuf));
-> >>  
-> >> -    acpi_dsdt_add_host_bridge_methods(dev, true);
-> >> +    acpi_dsdt_add_host_bridge_methods(dev, cfg->pci_native_hotplug);
+Three approaches were discussed:
+1) Enumerating in QEMU. Horribly complex and the last thing we want is a
+   3rd enumeration implementation that ends up out of sync with EDK2 and
+   the kernel (there are frequent issues because of how those existing
+   implementations differ.
+2) Figure out how to enumerate in kernel. I never put a huge amount of work
+   into this, but it seemed likely to involve a nasty dance with similar
+   very specific code to that EDK2 is carrying and would very challenging
+   to upstream (given the lack of clarity on real use cases for PXBs and
+   DT).
+3) Hack it based on the control we have which is bus numbers.
+   No one liked this but it worked :)
 
-also, having sufficiently forgotten this series context.
-It might be better to abandon idea of consolidating osc and dsm methods
-in acpi_dsdt_add_host_bridge_methods().
+The other little wrinkle would be the need to define full bindings for CXL
+on DT + implement a fairly complex kernel stack as equivalent in ACPI
+involves a static table, CEDT, new runtime queries via _DSM and a description
+of various components. Doable, but so far there is no interest on physical
+platforms. Worth noting that for now, the QEMU CXL emulation is all about
+testing and developing the OS stack, not about virtualization (performance
+is terrible except in some very contrived situations!)
 
-Just looking at above is confusing and forces one to re-rear previous
-commits to figure out what acpi_dsdt_add_host_bridge_methods() is doing.
+There is only a very simple test in here, because my intent is not to
+duplicate what we have on x86, but just to do a smoke test that everything
+is hooked up.  In general we need much more comprehensive end to end CXL
+tests but that requires a reaonsably stable guest software stack. A few
+people have expressed interest in working on that, but we aren't there yet.
 
-having here separate sequence of
-  add_osc()
-  add_dsm()
-would be much more readable.
-Lets drop acpi_dsdt_add_host_bridge_methods() helper.
+Note that this series has a very different use case to that in the proposed
+SBSA-ref support:
+https://lore.kernel.org/qemu-devel/20250117034343.26356-1-wangyuquan1236@phytium.com.cn/
 
-> >>  
-> >>      Aml *dev_res0 = aml_device("%s", "RES0");
-> >>      aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));  
-> >  
-> 
+SBSA-ref is a good choice if you want a relatively simple mostly fixed
+configuration.  That works well with the limited host system
+discoverability etc as EDK2 can be build against a known configuration.
+
+My interest with this support in arm/virt is support host software stack
+development (we have a wide range of contributors, most of whom are working
+on emulation + the kernel support). I care about the weird corners. As such
+I need to be able to bring up variable numbers of host bridges, multiple CXL
+Fixed Memory Windows with varying characteristics (interleave etc), complex
+NUMA topologies with wierd performance characteristics etc. We can do that
+on x86 upstream today, or my gitlab tree. Note that we need arm support
+for some arch specific features in the near future (cache flushing).
+Doing kernel development with this need for flexibility on SBSA-ref is not
+currently practical. SBSA-ref CXL support is an excellent thing, just
+not much use to me for this work.
+
+Also, we are kicking off some work on DCD virtualization, particularly to
+support inter-host shared memory being presented up into a VM. That
+will need upstream support on arm64 as it is built on top of the existing
+CXL emulation to avoid the need for a separate guest software stack.
+
+Note this is TCG only - it is possible to support limited use with KVM but
+that needs additional patches not yet ready for upstream.  The challenge
+is interleave - and the solution is don't interleave if you want to run
+with KVM.
+
+Jonathan Cameron (4):
+  hw/cxl-host: Add an index field to CXLFixedMemoryWindow
+  hw/cxl: Make the CXL fixed memory windows devices.
+  hw/arm/virt: Basic CXL enablement on pci_expander_bridge instances
+    pxb-cxl
+  qtest/cxl: Add aarch64 virt test for CXL
+
+ include/hw/arm/virt.h     |   4 +
+ include/hw/cxl/cxl.h      |   5 +-
+ include/hw/cxl/cxl_host.h |   5 +-
+ hw/acpi/cxl.c             |  76 +++++++++--------
+ hw/arm/virt-acpi-build.c  |  34 ++++++++
+ hw/arm/virt.c             |  29 +++++++
+ hw/cxl/cxl-host-stubs.c   |   7 +-
+ hw/cxl/cxl-host.c         | 170 +++++++++++++++++++++++++++++++-------
+ hw/i386/pc.c              |  50 +++++------
+ tests/qtest/cxl-test.c    |  59 ++++++++++---
+ tests/qtest/meson.build   |   1 +
+ 11 files changed, 330 insertions(+), 110 deletions(-)
+
+-- 
+2.48.1

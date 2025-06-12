@@ -1,85 +1,87 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2509115njc;
-        Thu, 12 Jun 2025 10:49:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUxZGdNqo0Rm1onCYxevzTq6By1X1UXaH9EEmwtb0+ri2nPxkrl+g2aT6sXY4IPpMT+pTUYKpaD2WwyZg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFLov3zMiI1azRbNXXnww1pGnZHDMR9jmyXYjKnBcOFctJX4MjiJx00XXHDRMq13L89fIiM
-X-Received: by 2002:a05:622a:5807:b0:4a4:413c:7274 with SMTP id d75a77b69052e-4a7234f285fmr73201091cf.5.1749750566014;
-        Thu, 12 Jun 2025 10:49:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749750566; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2509837njc;
+        Thu, 12 Jun 2025 10:50:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU5rI5T+JiekiEipsJ7VkNvFXhdugNWQOlPn+ZreD11pJqmElI7lty95TM2YZ7dPwoBWFotDbnIE2f05Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IFY/gQQXtksoRu5r6IPIaSdI7wfSUpRXNE0bo/KqnzUm1O0DfAhek+WsJ2X1WRAmk/1ZMKq
+X-Received: by 2002:a05:620a:404d:b0:7ce:f5c6:e48 with SMTP id af79cd13be357-7d3bc3e4449mr29461485a.21.1749750653949;
+        Thu, 12 Jun 2025 10:50:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749750653; cv=none;
         d=google.com; s=arc-20240605;
-        b=bY9NXNqxPEot/lIVH+SvN1vQH1vgZBEK97LQzQc85sbpgFtyQu8oufacxF+nMOB0eu
-         Vfl9EKopPWHkGIoZe8m5+TGvTQjX8TXEBKWNvYWnucYV4onA4y7Q5WJzP8DXgfdSaXcS
-         f48AcxCkDhUl9OPo/CJ+vdB1yI9/FQBq4PzEQGGVzOnBSFmIVFj2FAPpUhzeH+MuTDqW
-         /41BJaAo2upSCYnIEjCC4a0OhVT0VzScMGzgPUeoLwnidU0Chyg/kZUGrVS3PbFQV52f
-         QIPYPCPOI3xdHR0gJUvL+4mABNUjsIR9YlwcU9VkMmIaDnvvMibCaiF+wHphtE4iEv62
-         yObw==
+        b=MPI8nO+9L0dcnfoTY992arZd+tzekt6aT/ZRkSHczUoCGmMYvc5c0r4LEUYJ9y9BIc
+         OVyAyW5S9vjikLXyLKWrAT8m96i3IR8rTS9ki38VqaaCefbV8UYSNO0zGGIrZOT6P3MZ
+         en200W6MT6nCviN3rxjXwfQozUcH/r7fe9D4qW6ZT2YA5hq1vmkoIBvXgRr0ODrfs+TY
+         fEGaPAEcp+SkrnGsjoAQ7mW1AbsCecfgJibBwv+CO400DX7suELORclSi7MGshLPPR1B
+         +3DHUQ9HUEvhYc2BK7E0esZ3rsLpxL5mcXKyCx6p5a3sXp2ZrvtnpVjqKw7fn7O+ZPyI
+         1+VA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=husIINa/3S6s1d1c9rmyrfo/j1Oza5AhITsqIX5kFHU=;
-        fh=GzbmSACDPU15YGLxfNhNBiYuRDvL96TWelSOoUmhQdw=;
-        b=WXm7Aly0D51dzDfKFx8tjhUMCsO1909r7HHIi5CeiNAhZOaG0u35ju/rcmq1mx2eUG
-         7HcUMM+RwJE4FxvNSGnedbOaje8wCEkn4OQVuvbM+ubIJnOyWCyULiNTkOS4LbYlr0K+
-         3KjyVaGLSt3xHaIPuF+U+dbRR9X1NYuMaIqH+NG5JlpV52FXsFjUj+e7d/h9jk8qIqBe
-         T4IUYGUBtkVgcLq2jpA+GP3JHgERWpDnCoo3F2/fFBH0G6X2lUGG4aOQW/7vcqEJP1Pd
-         xzBzRulLf9LowP8NAJsv0xdeCurfR3H9pqxhauriOi1GcfkFbJSbLjVoGdIh3VDl8Yl9
-         o5vA==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=6bQecbjwc79DIm5WiLI4eZ/uPMXFoQbP4oqqiq3Lujc=;
+        fh=nCo36o9gfWjbYkf8Rvtq02K03zSMECAaEugBysd/axg=;
+        b=ebsGp0q3tDH5fMxNFOsC8sILfvm2sDPo7tHAHZfd78wFp0Qf4m1MtGEC+vRwHq8eTD
+         mMGxHt9LUegL79hT5wUNlM5JZ3xHegoX3pOa3rOSqVH8tzMH7V06d0wmlgg8Qlxr13VR
+         OqEzYqnYRr2sGbTMUKqZnprFCo0+Cjkq+J9UuqHPiyodpQhjITt+5a7T2t6J1+QQJw+N
+         zjcqZmpu5s97xds03lB6KERnAUmgUDINs231LRYJR6YD44XQbtnQT8JwOVSStz04Y59p
+         aU7u/6yoGLrAgO8//J0hlVa+1/vSHZiDZbnFkaMgnKYMzwdPEmDJY4K0XDcfZ0kDgOtL
+         TmfA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i6DVwhf+;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OO6GzQA6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a72a4b1b1fsi11489461cf.317.2025.06.12.10.49.25
+        by mx.google.com with ESMTPS id d75a77b69052e-4a72a2b8bffsi12765451cf.20.2025.06.12.10.50.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Jun 2025 10:49:25 -0700 (PDT)
+        Thu, 12 Jun 2025 10:50:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i6DVwhf+;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OO6GzQA6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uPm3F-0008Lf-8H; Thu, 12 Jun 2025 13:49:21 -0400
+	id 1uPm3M-0008SF-AT; Thu, 12 Jun 2025 13:49:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPm3D-0008KJ-70
- for qemu-arm@nongnu.org; Thu, 12 Jun 2025 13:49:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1uPm3H-0008On-W8
+ for qemu-arm@nongnu.org; Thu, 12 Jun 2025 13:49:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPm3B-0001KB-C1
- for qemu-arm@nongnu.org; Thu, 12 Jun 2025 13:49:18 -0400
+ id 1uPm3F-0001Lv-BY
+ for qemu-arm@nongnu.org; Thu, 12 Jun 2025 13:49:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749750555;
+ s=mimecast20190719; t=1749750560;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=husIINa/3S6s1d1c9rmyrfo/j1Oza5AhITsqIX5kFHU=;
- b=i6DVwhf+NDlSC5XcX8ep4huoMeJ4akorgXOwBfVmJU72Zojb/05dssWasiAFin6ciXMQf7
- r4Al9dNfrEBqOssEEYXANBgBuZ/GDWqVIGPfKbuuDNYH28BOrMtO8RHnqsf7DDgNm1XR2h
- 7agPkCuuRQ0JUhwzq1SyQEgoOy0Hjhs=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=6bQecbjwc79DIm5WiLI4eZ/uPMXFoQbP4oqqiq3Lujc=;
+ b=OO6GzQA6Lf9CepJO7Rycd+bHdDFXgGwEEeT7B3fIN7v/lgNmljzOOe6O+LKEfQEv/pgoEL
+ CKuolpYJLBjt9K5UZsn2HiI7OaUWn2HChcZZ2WAMTS46bCVCrij6GJDsRo33vTun+xaUaj
+ HxJbMiH/h+OPo+bUkcQ6G1OO7UsxV8w=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-358-ca2RArhUOEaxtifIqEQfLw-1; Thu,
- 12 Jun 2025 13:49:13 -0400
-X-MC-Unique: ca2RArhUOEaxtifIqEQfLw-1
-X-Mimecast-MFC-AGG-ID: ca2RArhUOEaxtifIqEQfLw_1749750549
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-549-TrKyAINWPXWPRIaMqBuveQ-1; Thu,
+ 12 Jun 2025 13:49:16 -0400
+X-MC-Unique: TrKyAINWPXWPRIaMqBuveQ-1
+X-Mimecast-MFC-AGG-ID: TrKyAINWPXWPRIaMqBuveQ_1749750552
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9452A19560B6; Thu, 12 Jun 2025 17:49:06 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4EB1B1809C84; Thu, 12 Jun 2025 17:49:11 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.98])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3A12A1956050; Thu, 12 Jun 2025 17:48:56 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id E055D19560AF; Thu, 12 Jun 2025 17:49:07 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-ppc@nongnu.org,
@@ -107,15 +109,19 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-ppc@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Troy Lee <leetroy@gmail.com>, Joel Stanley <joel@jms.id.au>,
  Thomas Huth <thuth@redhat.com>, Hannes Reinecke <hare@suse.com>,
- Alistair Francis <alistair@alistair23.me>
-Subject: [PULL v2 00/31] Block patches
-Date: Thu, 12 Jun 2025 13:48:54 -0400
-Message-ID: <20250612174855.238493-1-stefanha@redhat.com>
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PULL v2 11/31] hw/audio/marvell_88w8618: skip automatic zero-init of
+ large array
+Date: Thu, 12 Jun 2025 13:48:55 -0400
+Message-ID: <20250612174855.238493-2-stefanha@redhat.com>
+In-Reply-To: <20250612174855.238493-1-stefanha@redhat.com>
+References: <20250612174855.238493-1-stefanha@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -124,7 +130,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,96 +145,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /1rkRuUE7fGo
+X-TUID: oVkAaVLPRyJv
 
-The following changes since commit d9ce74873a6a5a7c504379857461e4ae64fcf0cd:
+From: Daniel P. Berrangé <berrange@redhat.com>
 
-  Merge tag 'pull-vfio-20250611' of https://github.com/legoater/qemu into staging (2025-06-11 11:39:53 -0400)
+The 'mv88w8618_audio_callback' method has a 4k byte array used for
+copying data between the audio backend and device. Skip the automatic
+zero-init of this array to eliminate the performance overhead in
+the I/O hot path.
 
-are available in the Git repository at:
+The 'buf' array will be fully initialized when reading data from
+device memory.
 
-  https://gitlab.com/stefanha/qemu.git tags/block-pull-request
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Message-id: 20250610123709.835102-12-berrange@redhat.com
+[Fixed hw/audio/gus in commit message --Stefan]
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+---
+ hw/audio/marvell_88w8618.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-for you to fetch changes up to 837b87c4c5ba9ac7a255133c6642b8d578272a70:
-
-  net/stream: skip automatic zero-init of large array (2025-06-12 13:40:16 -0400)
-
-----------------------------------------------------------------
-Pull request
-
-v2:
-- Fix incorrect hw/audio/gus commit message
-
-----------------------------------------------------------------
-
-Daniel P. Berrangé (29):
-  block: skip automatic zero-init of large array in ioq_submit
-  chardev/char-fd: skip automatic zero-init of large array
-  chardev/char-pty: skip automatic zero-init of large array
-  chardev/char-socket: skip automatic zero-init of large array
-  hw/audio/ac97: skip automatic zero-init of large arrays
-  hw/audio/cs4231a: skip automatic zero-init of large arrays
-  hw/audio/es1370: skip automatic zero-init of large array
-  hw/audio/gus: skip automatic zero-init of large array
-  hw/audio/marvell_88w8618: skip automatic zero-init of large array
-  hw/audio/sb16: skip automatic zero-init of large array
-  hw/audio/via-ac97: skip automatic zero-init of large array
-  hw/char/sclpconsole-lm: skip automatic zero-init of large array
-  hw/dma/xlnx_csu_dma: skip automatic zero-init of large array
-  hw/display/vmware_vga: skip automatic zero-init of large struct
-  hw/hyperv/syndbg: skip automatic zero-init of large array
-  hw/misc/aspeed_hace: skip automatic zero-init of large array
-  hw/net/rtl8139: skip automatic zero-init of large array
-  hw/net/tulip: skip automatic zero-init of large array
-  hw/net/virtio-net: skip automatic zero-init of large arrays
-  hw/net/xgamc: skip automatic zero-init of large array
-  hw/nvme/ctrl: skip automatic zero-init of large arrays
-  hw/ppc/pnv_occ: skip automatic zero-init of large struct
-  hw/ppc/spapr_tpm_proxy: skip automatic zero-init of large arrays
-  hw/usb/hcd-ohci: skip automatic zero-init of large array
-  hw/scsi/lsi53c895a: skip automatic zero-init of large array
-  hw/scsi/megasas: skip automatic zero-init of large arrays
-  hw/ufs/lu: skip automatic zero-init of large array
-  net/socket: skip automatic zero-init of large array
-  net/stream: skip automatic zero-init of large array
-
-Stefan Hajnoczi (2):
-  include/qemu/compiler: add QEMU_UNINITIALIZED attribute macro
-  hw/virtio/virtio: avoid cost of -ftrivial-auto-var-init in hot path
-
- include/qemu/compiler.h    | 20 ++++++++++++++++++++
- block/linux-aio.c          |  2 +-
- chardev/char-fd.c          |  2 +-
- chardev/char-pty.c         |  2 +-
- chardev/char-socket.c      |  2 +-
- hw/audio/ac97.c            |  4 ++--
- hw/audio/cs4231a.c         |  4 ++--
- hw/audio/es1370.c          |  2 +-
- hw/audio/gus.c             |  2 +-
- hw/audio/marvell_88w8618.c |  2 +-
- hw/audio/sb16.c            |  2 +-
- hw/audio/via-ac97.c        |  2 +-
- hw/char/sclpconsole-lm.c   |  2 +-
- hw/display/vmware_vga.c    |  2 +-
- hw/dma/xlnx_csu_dma.c      |  2 +-
- hw/hyperv/syndbg.c         |  2 +-
- hw/misc/aspeed_hace.c      |  2 +-
- hw/net/rtl8139.c           |  2 +-
- hw/net/tulip.c             |  2 +-
- hw/net/virtio-net.c        |  6 +++---
- hw/net/xgmac.c             |  2 +-
- hw/nvme/ctrl.c             |  6 +++---
- hw/ppc/pnv_occ.c           |  2 +-
- hw/ppc/spapr_tpm_proxy.c   |  4 ++--
- hw/scsi/lsi53c895a.c       |  2 +-
- hw/scsi/megasas.c          |  7 ++-----
- hw/ufs/lu.c                |  2 +-
- hw/usb/hcd-ohci.c          |  2 +-
- hw/virtio/virtio.c         |  8 ++++----
- net/socket.c               |  2 +-
- net/stream.c               |  2 +-
- 31 files changed, 61 insertions(+), 44 deletions(-)
-
+diff --git a/hw/audio/marvell_88w8618.c b/hw/audio/marvell_88w8618.c
+index 6d3ebbb0c8..c5c79d083a 100644
+--- a/hw/audio/marvell_88w8618.c
++++ b/hw/audio/marvell_88w8618.c
+@@ -66,7 +66,7 @@ static void mv88w8618_audio_callback(void *opaque, int free_out, int free_in)
+ {
+     mv88w8618_audio_state *s = opaque;
+     int16_t *codec_buffer;
+-    int8_t buf[4096];
++    QEMU_UNINITIALIZED int8_t buf[4096];
+     int8_t *mem_buffer;
+     int pos, block_size;
+ 
 -- 
 2.49.0
 

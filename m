@@ -1,394 +1,212 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2421881njc;
-        Thu, 12 Jun 2025 08:19:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV6cUUccBvzm5BpTFcK1EYLJOWidk1S0ptqAcOZEmhf9uWr/aXSRwESMNxm+YucBhNsx5dYhPIFqux5vw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHGiyEpOAeSDwuLUJdU+8hIcbVM4kHpriFxTfWd4aVfsHUN7BPxY/1aNsZVJ0SYLowup6yv
-X-Received: by 2002:a05:622a:2304:b0:4a4:3d6e:57d4 with SMTP id d75a77b69052e-4a724386a5bmr58222611cf.46.1749741572279;
-        Thu, 12 Jun 2025 08:19:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749741572; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2421893njc;
+        Thu, 12 Jun 2025 08:19:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCU6cLgegCFPGxggzo1tSpS9c5fEipzBW3HXb5/qZGtl1sG2Lf6iJQcCEjU2CzQbLVS8RU8KcDOiAq8vrg==@linaro.org
+X-Google-Smtp-Source: AGHT+IECo46/MSOsMo2x8Y4zx5hb18FUVYAv3HvEvPbmRNvYYzW8OJO+3KScLgykhjSDSV/aooF6
+X-Received: by 2002:a17:90a:c2cc:b0:311:ff02:3fcb with SMTP id 98e67ed59e1d1-313bfc03a3amr5425169a91.28.1749741493372;
+        Thu, 12 Jun 2025 08:18:13 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1749741493; cv=pass;
         d=google.com; s=arc-20240605;
-        b=KldDzjy5wS8/Y35YBqAquyGQb5WiOc2RDX64nzDeFeesKuPubp6PbE5Tll1WOvsysS
-         dls/jH53m83JFWSiyD/ZRcdFzXKOXbeX4h3qCw6RW0JCFTQ4pDEt7kS3+CP+iTYo/F2O
-         j/AKjkibjTA1EPnXwHHau6q/dkZq92k4HUD1DpnxhRfUKMsdLPkTQeD7am65qE7LUwRy
-         EmDCfXgMcJMjiKeLJJMi7V8drGlw5He6zGy6JdXiXq0IBRWWh72NGewsODQzICzeaFXH
-         mndA87SzI0/sJGKUHZn5wyvzupuuyHxm5gcxuP2LqkkU3tKsyG17QBip2gg3v9Vtlqu7
-         +JIg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=EOk4q7I+jxTl2TQedY/0qtU7cp6rL2KOMypu/daENUY=;
+        b=jpFoml95m/w85UUY6z1OaM9SI7CCnklB7gXLyeTqXgXrJlgHSOWrzNadqBlF2WrNu4
+         FmDms7b5iRrN1jOIKGCTvk6HE3y28sQtv1i0hRcppzOCkS25Qh/5cj43x5ZipcU/18ve
+         SIlI4reKB4FB0uGS/Bs1zgnAID3fJNINX9B9BPciDDG1TTTYIp6eAwfPf/hZ0vofz0hz
+         vJs/QHWJVQHBBOd3RclCxoOVlYa7fNJwNxWLaRRIfWIpQNpByZB08RQA+uTD4SBDxb8/
+         AmR6muVSdlK/A0BM4ydx19DM8JjmB7Chv1gZzVpxqZicGJo6vTOw8Vw4uJkdH3DlRwV0
+         t7ng==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=qEcQpPok6KdwBcXMmE7FNWmpUp+RvtHBqJADTsW+0l0=;
         fh=hTLU5mNQKwnri22ef6rNORXQEnayYeGogGHi7V9gOk8=;
-        b=g+KoSlLPHXu5Ihnu1CJFSZCXRrK+cJSjf1txlGQA76n+qYcSgXm5T6M5wHgPkoK9RL
-         j2uMogi81gGWxIprpCp0BFoyKAgVnvxbWp39RqUz0M8lMTgj3osAXMhO1ZTyJfdQ7ynA
-         7QA1cIN/06vzTBJYmuIbUW+SdNEmDlo/1H3bBXGAs1uG70NWE7n/xL72h9FyWyi+GpDr
-         /1XCgns7WAfEk321ky5GARYMBU7STHUxfBOUtfx8wmPWIIxev7AIBSEL2IlnuFRrbuhL
-         rOwnVy0ZEVkflqAvJgqsQsDD1ESpQZSRj/1lUGt5nWyzWRcoRgGxbS5qT1tX2ioJ1KVj
-         fkQQ==;
+        b=G1+2cJEb0oBtvyriReScsv5FFoknj33TI8XGs+sjy66qSuA2SQ9DkVikyd9pget1RX
+         7g1tH2wuRLd7Vo4bLsfQBRq7LAh0Aorp4TFAxVUbtXCakAXkOouyRJxHLUFErzsnE8TI
+         tVFYY9ukpJD9A3820M7AY2bCHxdeX13hmxYVpR35mK7hb1mzmo0uoN2KurKvE7Koqnl4
+         DSmljZA8aGQy109ZPgxJOpyeVX4Hx8qJ+Cwq4+d7fHSj6rUhpu7gVzTJiuBLt1FWwKqQ
+         iMJ+COUdSQJvmAD3aTgj4qGExhZ4xjdLfu3KoCTbMpecpAV+WhZhPiM5Tz4dbyfsytNU
+         3ryw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=aObe6YwS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=q1SxZrup;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of kvm+bounces-49280-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-49280-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a72a4cd63csi9903931cf.368.2025.06.12.08.19.32
+Return-Path: <kvm+bounces-49280-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id d9443c01a7336-2364e719fecsi22753485ad.430.2025.06.12.08.18.13
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Jun 2025 08:19:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Jun 2025 08:18:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-49280-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=aObe6YwS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=q1SxZrup;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of kvm+bounces-49280-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-49280-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uPjgw-0003OM-JR; Thu, 12 Jun 2025 11:18:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1uPjgn-0002wH-OH; Thu, 12 Jun 2025 11:18:01 -0400
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1uPjgl-0006j4-8E; Thu, 12 Jun 2025 11:18:01 -0400
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id C54854A7CF;
- Thu, 12 Jun 2025 15:17:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D00CC4CEF6;
- Thu, 12 Jun 2025 15:17:49 +0000 (UTC)
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id AEAB43A6B37
+	for <alex.bennee@linaro.org>; Thu, 12 Jun 2025 15:17:50 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 3CC21298CCD;
+	Thu, 12 Jun 2025 15:17:49 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="q1SxZrup"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EACFA298990;
+	Thu, 12 Jun 2025 15:17:48 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1749741469; cv=none; b=JCSSg7hwJFwgIlG3lbYBA4yf/K3iuqjT06UX82pM8cosBeMX2HLDt4v2sqQzut3SIUW8K2b4rjzP8I4Vfolxgv7CCxbkaCyuoici1l7UwF4mkVgnvDs01EEvHDBKOxNNoHv/ynG0USJH/5nJ6tssruP4qMKlBDQnQdP1su+kN3c=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1749741469; c=relaxed/simple;
+	bh=1N6hea/7ukAd+5GaVGFyPu+VhER4xnCVrmTaiBTUYb0=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=cVSWcng+XnM+msm0rhStyVpmBfca9Yc6L1hLckin/NgTQPbxMXaVjz0Kltf6/l7QTK9eHeVlgccNIfrJFX0urcRbGOxGrMIbbmiztDe0SOOJrLmxVfqEIqomaAiOqjBlL1N38YHaKKWa+FyEcFONCOIdsxwlnsfsfHSykOvdgiA=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=q1SxZrup; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4755C4CEF7;
+	Thu, 12 Jun 2025 15:17:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1749741469;
- bh=QSQ8I+MJuHnMxD/IL7FRa/YTRRnQ0jt7QVJt7qURdjg=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=aObe6YwSVi6u6MGIxvokv3GroCc1JMpGIZw/QUAkLZ6YnEI0YGZe7KyV887TgxYlr
- GPkupsJG5AZxl15Ixj06SSObA/ZU6qMi9RFoI0Zo5tV5hdxgLmE2Jx8tV+RUmMYWYO
- p3GxpeBqIMqKwLfXrwhr+phVIIQgBQspnZtDZwSKIo8llisssDTLw9CXr7RV9Ou0/0
- HbLV8m5yLkqlCtg5iBf2xQzjXkzVWF9agYq0TuhvWF7XPFWNf+9AZ6np3GLtikTmOw
- WUp6P0mUAmDifQJN05yzZTtk9yQrEhyqBL4HlRDYh+qDUWmdTg5zjkdZopIoG+CHA/
- WA/CKTvvglipw==
+	s=k20201202; t=1749741468;
+	bh=1N6hea/7ukAd+5GaVGFyPu+VhER4xnCVrmTaiBTUYb0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=q1SxZruptAuOs12qvd0H6OJYiEgDdo1o9oOAmryeNL7p3uIJqa0mmYenyB3220wBq
+	 /HguqattQkj3gDxcd5lMFZ2mpZ6RcHP2tdK2vxbdqDinzO3csUKXz8qmVSRhj/rjhS
+	 PSv5CJVD/zN5vL3Tbjpw2Y8/lbjUnxocLgE0JDCNwR19z1D58hmc6lghZng5Kox2yU
+	 abEN+wEH5KYessJpqAI08GU7/Ff2RCMWIvY91DaH4U/1FFOriSbBB5x028O0TOR+zG
+	 F9rEgcO6gt9PSspNnYk0QfjvyA+pUESYYeGNiYEbbpeB2rxtxw4uTFnAiILVmFnYCa
+	 urGfR7oRvAl7w==
 Received: from mchehab by mail.kernel.org with local (Exim 4.98.2)
- (envelope-from <mchehab+huawei@kernel.org>)
- id 1uPjgZ-00000005EwI-2sMM; Thu, 12 Jun 2025 17:17:47 +0200
+	(envelope-from <mchehab+huawei@kernel.org>)
+	id 1uPjgZ-00000005Eva-08Z2;
+	Thu, 12 Jun 2025 17:17:47 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>
 Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- "Ani Sinha" <anisinha@redhat.com>, "Dongjiu Geng" <gengdongjiu1@gmail.com>,
- "Paolo Bonzini" <pbonzini@redhat.com>,
- "Peter Maydell" <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Shannon Zhao" <shannon.zhaosl@gmail.com>,
- "Yanan Wang" <wangyanan55@huawei.com>, "Zhao Liu" <zhao1.liu@intel.com>,
- kvm@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v10 (RESEND) 18/20] tests/acpi: virt: update HEST and DSDT
- tables
-Date: Thu, 12 Jun 2025 17:17:42 +0200
-Message-ID: <2d4a162ef43ffa49ec43f75679cb112bec6f8f33.1749741085.git.mchehab+huawei@kernel.org>
+	Shiju Jose <shiju.jose@huawei.com>,
+	qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+	"Ani Sinha" <anisinha@redhat.com>,
+	"Dongjiu Geng" <gengdongjiu1@gmail.com>,
+	"Paolo Bonzini" <pbonzini@redhat.com>,
+	"Peter Maydell" <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	"Shannon Zhao" <shannon.zhaosl@gmail.com>,
+	"Yanan Wang" <wangyanan55@huawei.com>,
+	"Zhao Liu" <zhao1.liu@intel.com>,
+	kvm@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v10 (RESEND) 07/20] acpi/ghes: add a firmware file with HEST address
+Date: Thu, 12 Jun 2025 17:17:31 +0200
+Message-ID: <31b533ac65fa4746ff3f21e74acf2ab1a78d8b7d.1749741085.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <cover.1749741085.git.mchehab+huawei@kernel.org>
 References: <cover.1749741085.git.mchehab+huawei@kernel.org>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2600:3c0a:e001:78e:0:1991:8:25;
- envelope-from=mchehab+huawei@kernel.org; helo=sea.source.kernel.org
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qJ9ieW4aDWHk
+Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+X-TUID: +FSLBiMDu7hG
 
-@@ -1,39 +1,39 @@
- /*
-  * Intel ACPI Component Architecture
-  * AML/ASL+ Disassembler version 20240322 (64-bit version)
-  * Copyright (c) 2000 - 2023 Intel Corporation
-  *
-- * Disassembly of tests/data/acpi/aarch64/virt/HEST
-+ * Disassembly of /tmp/aml-DMPE22
-  *
-  * ACPI Data Table [HEST]
-  *
-  * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue (in hex)
-  */
-
- [000h 0000 004h]                   Signature : "HEST"    [Hardware Error Source Table]
--[004h 0004 004h]                Table Length : 00000084
-+[004h 0004 004h]                Table Length : 000000E0
- [008h 0008 001h]                    Revision : 01
--[009h 0009 001h]                    Checksum : E2
-+[009h 0009 001h]                    Checksum : 6C
- [00Ah 0010 006h]                      Oem ID : "BOCHS "
- [010h 0016 008h]                Oem Table ID : "BXPC    "
- [018h 0024 004h]                Oem Revision : 00000001
- [01Ch 0028 004h]             Asl Compiler ID : "BXPC"
- [020h 0032 004h]       Asl Compiler Revision : 00000001
-
--[024h 0036 004h]          Error Source Count : 00000001
-+[024h 0036 004h]          Error Source Count : 00000002
-
- [028h 0040 002h]               Subtable Type : 000A [Generic Hardware Error Source V2]
- [02Ah 0042 002h]                   Source Id : 0000
- [02Ch 0044 002h]           Related Source Id : FFFF
- [02Eh 0046 001h]                    Reserved : 00
- [02Fh 0047 001h]                     Enabled : 01
- [030h 0048 004h]      Records To Preallocate : 00000001
- [034h 0052 004h]     Max Sections Per Record : 00000001
- [038h 0056 004h]         Max Raw Data Length : 00000400
-
- [03Ch 0060 00Ch]        Error Status Address : [Generic Address Structure]
- [03Ch 0060 001h]                    Space ID : 00 [SystemMemory]
- [03Dh 0061 001h]                   Bit Width : 40
- [03Eh 0062 001h]                  Bit Offset : 00
- [03Fh 0063 001h]        Encoded Access Width : 04 [QWord Access:64]
- [040h 0064 008h]                     Address : 0000000043DA0000
-@@ -42,32 +42,75 @@
- [048h 0072 001h]                 Notify Type : 08 [SEA]
- [049h 0073 001h]               Notify Length : 1C
- [04Ah 0074 002h]  Configuration Write Enable : 0000
- [04Ch 0076 004h]                PollInterval : 00000000
- [050h 0080 004h]                      Vector : 00000000
- [054h 0084 004h]     Polling Threshold Value : 00000000
- [058h 0088 004h]    Polling Threshold Window : 00000000
- [05Ch 0092 004h]       Error Threshold Value : 00000000
- [060h 0096 004h]      Error Threshold Window : 00000000
-
- [064h 0100 004h]   Error Status Block Length : 00000400
- [068h 0104 00Ch]           Read Ack Register : [Generic Address Structure]
- [068h 0104 001h]                    Space ID : 00 [SystemMemory]
- [069h 0105 001h]                   Bit Width : 40
- [06Ah 0106 001h]                  Bit Offset : 00
- [06Bh 0107 001h]        Encoded Access Width : 04 [QWord Access:64]
--[06Ch 0108 008h]                     Address : 0000000043DA0008
-+[06Ch 0108 008h]                     Address : 0000000043DA0010
-
- [074h 0116 008h]           Read Ack Preserve : FFFFFFFFFFFFFFFE
- [07Ch 0124 008h]              Read Ack Write : 0000000000000001
-
--Raw Table Data: Length 132 (0x84)
-+[084h 0132 002h]               Subtable Type : 000A [Generic Hardware Error Source V2]
-+[086h 0134 002h]                   Source Id : 0001
-+[088h 0136 002h]           Related Source Id : FFFF
-+[08Ah 0138 001h]                    Reserved : 00
-+[08Bh 0139 001h]                     Enabled : 01
-+[08Ch 0140 004h]      Records To Preallocate : 00000001
-+[090h 0144 004h]     Max Sections Per Record : 00000001
-+[094h 0148 004h]         Max Raw Data Length : 00000400
-+
-+[098h 0152 00Ch]        Error Status Address : [Generic Address Structure]
-+[098h 0152 001h]                    Space ID : 00 [SystemMemory]
-+[099h 0153 001h]                   Bit Width : 40
-+[09Ah 0154 001h]                  Bit Offset : 00
-+[09Bh 0155 001h]        Encoded Access Width : 04 [QWord Access:64]
-+[09Ch 0156 008h]                     Address : 0000000043DA0008
-+
-+[0A4h 0164 01Ch]                      Notify : [Hardware Error Notification Structure]
-+[0A4h 0164 001h]                 Notify Type : 07 [GPIO]
-+[0A5h 0165 001h]               Notify Length : 1C
-+[0A6h 0166 002h]  Configuration Write Enable : 0000
-+[0A8h 0168 004h]                PollInterval : 00000000
-+[0ACh 0172 004h]                      Vector : 00000000
-+[0B0h 0176 004h]     Polling Threshold Value : 00000000
-+[0B4h 0180 004h]    Polling Threshold Window : 00000000
-+[0B8h 0184 004h]       Error Threshold Value : 00000000
-+[0BCh 0188 004h]      Error Threshold Window : 00000000
-+
-+[0C0h 0192 004h]   Error Status Block Length : 00000400
-+[0C4h 0196 00Ch]           Read Ack Register : [Generic Address Structure]
-+[0C4h 0196 001h]                    Space ID : 00 [SystemMemory]
-+[0C5h 0197 001h]                   Bit Width : 40
-+[0C6h 0198 001h]                  Bit Offset : 00
-+[0C7h 0199 001h]        Encoded Access Width : 04 [QWord Access:64]
-+[0C8h 0200 008h]                     Address : 0000000043DA0018
-
--    0000: 48 45 53 54 84 00 00 00 01 E2 42 4F 43 48 53 20  // HEST......BOCHS
-+[0D0h 0208 008h]           Read Ack Preserve : FFFFFFFFFFFFFFFE
-+[0D8h 0216 008h]              Read Ack Write : 0000000000000001
-+
-+Raw Table Data: Length 224 (0xE0)
-+
-
-@@ -1,30 +1,30 @@
- /*
-  * Intel ACPI Component Architecture
-  * AML/ASL+ Disassembler version 20240322 (64-bit version)
-  * Copyright (c) 2000 - 2023 Intel Corporation
-  *
-  * Disassembling to symbolic ASL+ operators
-  *
-- * Disassembly of tests/data/acpi/aarch64/virt/DSDT
-+ * Disassembly of /tmp/aml-TNQ912
-  *
-  * Original Table Header:
-  *     Signature        "DSDT"
-- *     Length           0x0000144C (5196)
-+ *     Length           0x00001478 (5240)
-  *     Revision         0x02
-- *     Checksum         0x1B
-+ *     Checksum         0x04
-  *     OEM ID           "BOCHS "
-  *     OEM Table ID     "BXPC    "
-  *     OEM Revision     0x00000001 (1)
-  *     Compiler ID      "BXPC"
-  *     Compiler Version 0x00000001 (1)
-  */
- DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
- {
-     Scope (\_SB)
-     {
-         Device (C000)
-         {
-             Name (_HID, "ACPI0007" /* Processor Device */)  // _HID: Hardware ID
-             Name (_UID, Zero)  // _UID: Unique ID
-         }
-
-@@ -1876,27 +1876,38 @@
-                     0x00000029,
-                 }
-             })
-             OperationRegion (EREG, SystemMemory, 0x09080000, 0x04)
-             Field (EREG, DWordAcc, NoLock, WriteAsZeros)
-             {
-                 ESEL,   32
-             }
-
-             Method (_EVT, 1, Serialized)  // _EVT: Event
-             {
-                 Local0 = ESEL /* \_SB_.GED_.ESEL */
-                 If (((Local0 & 0x02) == 0x02))
-                 {
-                     Notify (PWRB, 0x80) // Status Change
-                 }
-+
-+                If (((Local0 & 0x10) == 0x10))
-+                {
-+                    Notify (GEDD, 0x80) // Status Change
-+                }
-             }
-         }
-
-         Device (PWRB)
-         {
-             Name (_HID, "PNP0C0C" /* Power Button Device */)  // _HID: Hardware ID
-             Name (_UID, Zero)  // _UID: Unique ID
-         }
-+
-+        Device (GEDD)
-+        {
-+            Name (_HID, "PNP0C33" /* Error Device */)  // _HID: Hardware ID
-+            Name (_UID, Zero)  // _UID: Unique ID
-+        }
-     }
- }
+Store HEST table address at GPA, placing its the start of the table at
+hest_addr_le variable.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Acked-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- tests/data/acpi/aarch64/virt/DSDT             | Bin 5196 -> 5240 bytes
- .../data/acpi/aarch64/virt/DSDT.acpihmatvirt  | Bin 5282 -> 5326 bytes
- tests/data/acpi/aarch64/virt/DSDT.memhp       | Bin 6557 -> 6601 bytes
- tests/data/acpi/aarch64/virt/DSDT.pxb         | Bin 7679 -> 7723 bytes
- tests/data/acpi/aarch64/virt/DSDT.topology    | Bin 5398 -> 5442 bytes
- tests/data/acpi/aarch64/virt/HEST             | Bin 132 -> 224 bytes
- tests/qtest/bios-tables-test-allowed-diff.h   |   6 ------
- 7 files changed, 6 deletions(-)
+ hw/acpi/ghes.c         | 22 ++++++++++++++++++++--
+ include/hw/acpi/ghes.h |  6 +++++-
+ 2 files changed, 25 insertions(+), 3 deletions(-)
 
-diff --git a/tests/data/acpi/aarch64/virt/DSDT b/tests/data/acpi/aarch64/virt/DSDT
-index 36d3e5d5a5e47359b6dcb3706f98b4f225677591..a182bd9d7182dccdf63c650d048c58f18505d001 100644
-GIT binary patch
-delta 109
-zcmX@3@k4{lCD<jTLWF^ViDe>}G*h$dM)euOOwJsW4+;nC=*7E+g>V+Q2D|zsED)Gn
-zoxsJ!z{S)S5FX^j)c_F?VBivHb9Z%dnXE4&D;?b=31V}^dw9C=2KWUSI2#)?aKwjt
-Hx-b9$X;vI^
-
-delta 64
-zcmeyNaYlp7CD<jzM}&caNqQoeG*i3NM)euOOit{R4+;lM%f`Egg>V+Q2D|zsED)Gn
-UoxsJ!z{S)S5FX?-*+E1W06%jPR{#J2
-
-diff --git a/tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt b/tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt
-index e6154d0355f84fdcc51387b4db8f9ee63acae4e9..af1f2b0eb0b77a80c5bd74f201d24f71e486627f 100644
-GIT binary patch
-delta 110
-zcmZ3ac}|ndCD<k8oCpI0)4_>c(oCIR8`a+lGdXii78eO-)SH|wBICY5U~+W=mjDBo
-yK%2X(iwjpnbdzL2c#soEyoaX?Z-8HbfwO@#14n$Qrwc=LlO#wDl9aJAR0;r(tsHj%
-
-delta 66
-zcmX@7xk!`CCD<iokq83=(~XH-(oDVX8`a+lGdZzO78eO-l%1R{A|oB$BpDDM<irv0
-W;pxH~;1^)vY~akm5g+R5!T<noi4jWx
-
-diff --git a/tests/data/acpi/aarch64/virt/DSDT.memhp b/tests/data/acpi/aarch64/virt/DSDT.memhp
-index 33f011d6b635035a04c0b39ce9b4e219f7ae74b7..10436ec87c4859fb84b3ecb7bba5788f38112e59 100644
-GIT binary patch
-delta 88
-zcmbPheA1Z9CD<k8q$C3algUIbX{MH08`WnBGdXcjJ}4Z_<jXo)OvH<SfxzVI1TFyv
-qE`c_8R~MJfaU%At($P(lAPz^oho=i~fM0-tv#~J)M|`NK3j+W#;TF9B
-
-delta 44
-zcmX?UJlB}ZCD<iot|S8klg&gfX{L_p8`WnBGdXfiJ}4Z_<ij#qOvGz*p@=Oj039?8
-AE&u=k
-
-diff --git a/tests/data/acpi/aarch64/virt/DSDT.pxb b/tests/data/acpi/aarch64/virt/DSDT.pxb
-index c0fdc6e9c1396cc2259dc4bc665ba023adcf4c9b..0524b3cbe00bfe552de824dd1090bd00a208c527 100644
-GIT binary patch
-delta 110
-zcmexwz1oJ$CD<iITaJN&sbC_PG*jDyjq2XAOwJsWOJsu?^(LQ?m2qDnFu6K`OMrn(
-ypv~RY#f7UOx=Au1JjjV7-ow*{H^48zz}di=fg?WD(}f|rNfM+6Ny^w5Dg^+WYaFrw
-
-delta 66
-zcmZ2&^WU1wCD<k8zbpd-Q^!OuX{N5b8`ZsKnVi@sm&gV)%1%BZD<d7<BpDDM<irv0
-W;pxH~;1^)vY~akm5g+R5!T<oNArgiF
-
-diff --git a/tests/data/acpi/aarch64/virt/DSDT.topology b/tests/data/acpi/aarch64/virt/DSDT.topology
-index 029d03eecc4efddc001e5377e85ac8e831294362..8c0423fe62d6950f9098983d86bfee256d7d003a 100644
-GIT binary patch
-delta 86
-zcmbQHbx4cLCD<jzNtA(s>E%Q&X{O%5jp|7vOwJsWyG4Q-^(NmJk>Ot;Fu6K`OMrn(
-opv~RY#bxqO5n1WzCP@&RBi_T)g*U)2z`)tqn1Lfc)YF9l01l28<p2Nx
-
-delta 42
-ycmX@4HBF1lCD<iIOq79viGL!OG*hGhM)f2SCMWjE-6Fw^vXk$N$V}!Dl?DLb(h64q
-
-diff --git a/tests/data/acpi/aarch64/virt/HEST b/tests/data/acpi/aarch64/virt/HEST
-index 4c5d8c5b5da5b3241f93cd0839e94272bf6b1486..674272922db7d48f7821aa7c83ec76bb3b556d2a 100644
-GIT binary patch
-delta 68
-zcmZo+e89-%;TjzBfPsO5F=rx|6eH6_Rd+^#iMisuTnvm1|Nk>EGJ@nLCJHmL%S;Ru
-WnV7)J#lXPAz`)?Zz#=g*R~!HcF%5eF
-
-delta 29
-lcmaFB*uu!=;Tjy$!oa}5_-G=R6eHtARriT=I3|_|004Ge2nqlI
-
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index 0a1a26543ba2..dfb8523c8bf4 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,7 +1 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/aarch64/virt/HEST",
--"tests/data/acpi/aarch64/virt/DSDT",
--"tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt",
--"tests/data/acpi/aarch64/virt/DSDT.memhp",
--"tests/data/acpi/aarch64/virt/DSDT.pxb",
--"tests/data/acpi/aarch64/virt/DSDT.topology",
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index 9243b5ad4acb..cbc96c1909f0 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -30,6 +30,7 @@
+ 
+ #define ACPI_HW_ERROR_FW_CFG_FILE           "etc/hardware_errors"
+ #define ACPI_HW_ERROR_ADDR_FW_CFG_FILE      "etc/hardware_errors_addr"
++#define ACPI_HEST_ADDR_FW_CFG_FILE          "etc/acpi_table_hest_addr"
+ 
+ /* The max size in bytes for one error block */
+ #define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
+@@ -341,6 +342,9 @@ void acpi_build_hest(AcpiGhesState *ags, GArray *table_data,
+ {
+     AcpiTable table = { .sig = "HEST", .rev = 1,
+                         .oem_id = oem_id, .oem_table_id = oem_table_id };
++    uint32_t hest_offset;
++
++    hest_offset = table_data->len;
+ 
+     build_ghes_error_table(ags, hardware_errors, linker);
+ 
+@@ -352,6 +356,17 @@ void acpi_build_hest(AcpiGhesState *ags, GArray *table_data,
+                   ACPI_GHES_NOTIFY_SEA, ACPI_HEST_SRC_ID_SEA);
+ 
+     acpi_table_end(linker, &table);
++
++    if (ags->use_hest_addr) {
++        /*
++         * Tell firmware to write into GPA the address of HEST via fw_cfg,
++         * once initialized.
++         */
++        bios_linker_loader_write_pointer(linker,
++                                         ACPI_HEST_ADDR_FW_CFG_FILE, 0,
++                                         sizeof(uint64_t),
++                                         ACPI_BUILD_TABLE_FILE, hest_offset);
++    }
+ }
+ 
+ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+@@ -361,7 +376,10 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+     fw_cfg_add_file(s, ACPI_HW_ERROR_FW_CFG_FILE, hardware_error->data,
+                     hardware_error->len);
+ 
+-    if (!ags->use_hest_addr) {
++    if (ags->use_hest_addr) {
++        fw_cfg_add_file_callback(s, ACPI_HEST_ADDR_FW_CFG_FILE, NULL, NULL,
++            NULL, &(ags->hest_addr_le), sizeof(ags->hest_addr_le), false);
++    } else {
+         /* Create a read-write fw_cfg file for Address */
+         fw_cfg_add_file_callback(s, ACPI_HW_ERROR_ADDR_FW_CFG_FILE, NULL, NULL,
+             NULL, &(ags->hw_error_le), sizeof(ags->hw_error_le), false);
+@@ -484,7 +502,7 @@ AcpiGhesState *acpi_ghes_get_state(void)
+     }
+     ags = &acpi_ged_state->ghes_state;
+ 
+-    if (!ags->hw_error_le) {
++    if (!ags->hw_error_le && !ags->hest_addr_le) {
+         return NULL;
+     }
+     return ags;
+diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+index 411f592662af..ea9baab764e2 100644
+--- a/include/hw/acpi/ghes.h
++++ b/include/hw/acpi/ghes.h
+@@ -70,9 +70,13 @@ enum {
+  * When use_hest_addr is false, the GPA of the etc/hardware_errors firmware
+  * is stored at hw_error_le. This is the default on QEMU 9.x.
+  *
+- * An GPA value equal to zero means that GHES is not present.
++ * When use_hest_addr is true, the GPA of the HEST table is stored at
++ * hest_addr_le. This is the default for QEMU 10.x and above.
++ *
++ * Whe both GPA values are equal to zero means that GHES is not present.
+  */
+ typedef struct AcpiGhesState {
++    uint64_t hest_addr_le;
+     uint64_t hw_error_le;
+     bool use_hest_addr;         /* Currently, always false */
+ } AcpiGhesState;
 -- 
 2.49.0
 

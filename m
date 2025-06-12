@@ -1,250 +1,207 @@
-Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp3514385njc;
-        Thu, 12 Jun 2025 06:14:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUvNO0ReMMrhqQl/KsDNQbd3MCt4kS2+fmK32ELvsUf00xmSnxR8CJqnRtrMzhvDqgPyrncwd7+1j+LPg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFV6DwiMT/0NnNn+bAIlgZ487SEXQ9T46UIN+0JYA6A4O7Ebx8M5TbhIY42lDFIVxQjFUaB
-X-Received: by 2002:a05:6000:178d:b0:3a5:2ec5:35a9 with SMTP id ffacd0b85a97d-3a5607486a3mr2947797f8f.3.1749734069816;
-        Thu, 12 Jun 2025 06:14:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749734069; cv=none;
+Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp3491141njc;
+        Thu, 12 Jun 2025 05:40:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV2L/T698IwTm6DMJs/1NjmjaiquD9wPAxZq0a/vh606rdwlV6aSd4MNaeSFwr8m1gJ/BIDDwZcS2oNUg==@linaro.org
+X-Google-Smtp-Source: AGHT+IE1+Oh+hW6glSphmaeR8f3B67ClbKEfFuhciJ0dpzanQ72V4rcDTR4xn/Giub2g0CYWg3Lc
+X-Received: by 2002:a05:620a:1a26:b0:7c5:ad99:9e38 with SMTP id af79cd13be357-7d3b2a697cbmr520030385a.43.1749732021314;
+        Thu, 12 Jun 2025 05:40:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749732021; cv=none;
         d=google.com; s=arc-20240605;
-        b=hIejHc/wxqmWhNN96qOElDRULOFBAsOhB1DREqvN2E6C3xzRHhgUzgfiOG28z8gYcR
-         xQP6ra6HVVItSFiE9tMq8JUWiipCHjscd/Mmv2w88VqTW8fvIH8AdTFGtODppURn5Uii
-         mz+NoZI90MyCN3K/A5gQEleTdfW0HKpJ3jwCG0e3tOgSMV88Nqrrokt/tnFpqI2gfPM/
-         qi5TskOGJRhueXxt0Bj2aIXNZifuxqb122enOzPEXN5T5Y57dC+G05m/cFqGc3DeZG6M
-         jmfV18QK8WkVsewToe/Omk3Axxuxi9VLsvWkQBLWdOxEnW0BcJ2eDL3Ai7yFHcnwcTSu
-         vCkw==
+        b=lV6mPamrO7CGamITsUIIV2BVpffMefpoSnBUGj8idhZmRFSRrwo2O4ePK/LmHUQx0i
+         WIelhelYuLR13zh7OzLR2aD0cH7Rx7vNO3mP8pWzRXfFeJOV3VhPkQUeW5JyRdRv04XD
+         3tq+HQgWWK81AqZHbuCjK+47B0zOo3kQEn7ukcSaQXiJUDMcphP7PBlVzn9ufQCbjXL/
+         Uckz4oG9tpn20W8XeTGcMGDfMZawWtcf45BaxXo2GP0GE8g06aVJlz8kkzJ0SmxVk0qD
+         xKDCpBtHNitLf7sjl7+u/vbBtYV238lq9jF+O/GV7jyTYUngd01+vByUi1exOQmiV3KP
+         MhSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:date;
-        bh=xNr3Mb3K2MPd8Ly4XNSEXFgngUkNXsKEuDf+7r6R8M4=;
-        fh=MTOuWDNIVZ1v9+DWyrogvuVgCj3virTl2rL+S57KbgM=;
-        b=B1DBvXAbZuUUfI2JN76/EpN1CkHeN8SBEUM1QJmrmz8jAz2/8IbbrRLAZFUeepe1U1
-         7eDZ7xZMeT8i6BjukS+LziwEmLZElokW2W/ANCHqdHIrN6Ps29huMv8SeddWlWy0Hh9Q
-         NmQrP+DbeRVifXNelEP2g/elP2xGi/TZzICH+rOL9hm452nXxXDMFWcrMQuBbg9dIW4C
-         jxOuu4el9orGQ8uofALQSw/PHdyCM1+PQZY91JF30wnv23qEi65f9/kWcK+aoNW5nF9k
-         NfeFPtsM+qS8mFoe7cTPGdZ6SPYdqi3Cr5rWLYkGPJWv8NOsUFsoon52Y69q/vY2320D
-         9B7A==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=4BuTSjKnO3OaG5/9mm7aPc7phMnSQ+RtC4Fl9Lq8BP8=;
+        fh=Kp3mIewt2fJ0qTODSfaRaTrj866gflOZnmzxDaUGLy8=;
+        b=JD2PBokz5vsTK2YTWsEJLRa8+d/EkySR+zLgse7Q5ejJ+z/k15uA/zGgNqYDzRzDiV
+         333MA/zcaz5OpND6z1Q8GPs6QmVqMEEZy35ydgIVkvlCh1gT5PXq2UoVZUFWurLMLXYS
+         4J4tYbFXcbghPKQ6a6R7dmKLbjh46eBzlXqTgauIQsLsMaEQSi8wLpebNxaNe47jK2Br
+         P6pM88bY/0ezNke0VkUm8O+jlPAuzfRzJ22opy1mTQUcDmnmw5+I/WPDSVHdkaxQARfS
+         WcqG8M6nujnkmWR4aIiZtqNa3QX2nrI4aFoguwxT++pzMPi8C4370c9pZuLAhXJN3d2O
+         gYQw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a561a0c04fsi1395304f8f.355.2025.06.12.06.14.29
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8f53803si65666685a.637.2025.06.12.05.40.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Jun 2025 06:14:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 12 Jun 2025 05:40:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uPhkj-0003RZ-I8; Thu, 12 Jun 2025 09:13:58 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uPhDo-0006va-4J; Thu, 12 Jun 2025 08:39:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uPhkc-0003RF-78; Thu, 12 Jun 2025 09:13:51 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1uPhDd-0006tc-Hn; Thu, 12 Jun 2025 08:39:50 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uPhkY-0004zN-Bw; Thu, 12 Jun 2025 09:13:49 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bJ2wr4D6hz6K8Rw;
- Thu, 12 Jun 2025 21:11:40 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 11C5F1400DC;
- Thu, 12 Jun 2025 21:13:36 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 12 Jun
- 2025 15:13:35 +0200
-Date: Thu, 12 Jun 2025 14:13:33 +0100
-To: Itaru Kitayama <itaru.kitayama@linux.dev>
-CC: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
- <peter.maydell@linaro.org>, <mst@redhat.com>, <linuxarm@huawei.com>,
- <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>, Yuquan Wang
- <wangyuquan1236@phytium.com.cn>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
- <philmd@linaro.org>, Alireza Sanaee <alireza.sanaee@huawei.com>
-Subject: Re: [PATCH v14 0/5] arm/virt: CXL support via pxb_cxl
-Message-ID: <20250612141333.00004bcc@huawei.com>
-In-Reply-To: <aDfs+gIkK5ekKBXx@vm4>
-References: <20250528110726.226389-1-Jonathan.Cameron@huawei.com>
- <aDfs+gIkK5ekKBXx@vm4>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1uPhDW-0008T8-E1; Thu, 12 Jun 2025 08:39:42 -0400
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id ECA4255C16F;
+ Thu, 12 Jun 2025 14:39:30 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id 8CG0zaX2-EOY; Thu, 12 Jun 2025 14:39:28 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id DDBED55C16E; Thu, 12 Jun 2025 14:39:28 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id DB3B3745682;
+ Thu, 12 Jun 2025 14:39:28 +0200 (CEST)
+Date: Thu, 12 Jun 2025 14:39:28 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Paolo Bonzini <pbonzini@redhat.com>
+cc: =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
+ Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org, 
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org, 
+ =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>
+Subject: Re: [PATCH 4/5] configure: Add dtc option
+In-Reply-To: <c29386d1-1a4b-4f3b-a669-4206c366ad9e@redhat.com>
+Message-ID: <7a9f2ae7-93fb-8acd-34ca-0d5d71b80af5@eik.bme.hu>
+References: <20250610204131.2862-1-shentey@gmail.com>
+ <20250610204131.2862-5-shentey@gmail.com>
+ <cdfc561e-23a9-607a-d9a8-70e07e73e0fd@eik.bme.hu>
+ <aElCJnmjrB-X9M-n@redhat.com>
+ <6eb6aa79-33f8-57ea-5714-af264557f8c8@eik.bme.hu>
+ <c29386d1-1a4b-4f3b-a669-4206c366ad9e@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+Content-Type: multipart/mixed;
+ boundary="3866299591-479763625-1749731968=:67385"
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EoqQRys+Fgk4
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: FdIOdxO2T+cW
 
-On Thu, 29 May 2025 14:13:30 +0900
-Itaru Kitayama <itaru.kitayama@linux.dev> wrote:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-> On Wed, May 28, 2025 at 12:07:21PM +0100, Jonathan Cameron wrote:
-> > v14: Simplifications suggeseted by Itaru (and some extra simplifications
-> >      that became apparent) and gather tags.
-> >      See individual patches for more information.
-> > 
-> > Updated cover letter
-> > 
-> > Richard Henderson has posted a pull request with a fix for the TCG TLB
-> > issue which will hopefully merge shortly (Thanks Richard!).
-> > 
-> > Back in 2022, this series stalled on the absence of a solution to device
-> > tree support for PCI Expander Bridges (PXB) and we ended up only having
-> > x86 support upstream. I've been carrying the arm64 support out of tree
-> > since then, with occasional nasty surprises (e.g. UNIMP + DT issue seen
-> > a few weeks ago) and a fair number of fiddly rebases.
-> > gitlab.com/jic23/qemu cxl-<latest date>.  Will update shortly with this
-> > series.
-> > 
-> > A recent discussion with Peter Maydell indicated that there are various
-> > other ACPI only features now, so in general he might be more relaxed
-> > about DT support being necessary. The upcoming vSMMUv3 support would
-> > run into this problem as well.
-> > 
-> > I presented the background to the PXB issue at Linaro connect 2022. In
-> > short the issue is that PXBs steal MMIO space from the main PCI root
-> > bridge. The challenge is knowing how much to steal.
-> > 
-> > On ACPI platforms, we can rely on EDK2 to perform an enumeration and
-> > configuration of the PCI topology and QEMU can update the ACPI tables
-> > after EDK2 has done this when it can simply read the space used by the
-> > root ports. On device tree, there is no entity to figure out that
-> > enumeration so we don't know how to size the stolen region.
-> > 
-> > Three approaches were discussed:
-> > 1) Enumerating in QEMU. Horribly complex and the last thing we want is a
-> >    3rd enumeration implementation that ends up out of sync with EDK2 and
-> >    the kernel (there are frequent issues because of how those existing
-> >    implementations differ.
-> > 2) Figure out how to enumerate in kernel. I never put a huge amount of work
-> >    into this, but it seemed likely to involve a nasty dance with similar
-> >    very specific code to that EDK2 is carrying and would very challenging
-> >    to upstream (given the lack of clarity on real use cases for PXBs and
-> >    DT).
-> > 3) Hack it based on the control we have which is bus numbers.
-> >    No one liked this but it worked :)
-> > 
-> > The other little wrinkle would be the need to define full bindings for CXL
-> > on DT + implement a fairly complex kernel stack as equivalent in ACPI
-> > involves a static table, CEDT, new runtime queries via _DSM and a description
-> > of various components. Doable, but so far there is no interest on physical
-> > platforms. Worth noting that for now, the QEMU CXL emulation is all about
-> > testing and developing the OS stack, not about virtualization (performance
-> > is terrible except in some very contrived situations!)
-> > 
-> > There is only a very simple test in here, because my intent is not to
-> > duplicate what we have on x86, but just to do a smoke test that everything
-> > is hooked up.  In general we need much more comprehensive end to end CXL
-> > tests but that requires a reaonsably stable guest software stack. A few
-> > people have expressed interest in working on that, but we aren't there yet.
-> > 
-> > Note that this series has a very different use case to that in the proposed
-> > SBSA-ref support:
-> > https://lore.kernel.org/qemu-devel/20250117034343.26356-1-wangyuquan1236@phytium.com.cn/
-> > 
-> > SBSA-ref is a good choice if you want a relatively simple mostly fixed
-> > configuration.  That works well with the limited host system
-> > discoverability etc as EDK2 can be build against a known configuration.
-> > 
-> > My interest with this support in arm/virt is support host software stack
-> > development (we have a wide range of contributors, most of whom are working
-> > on emulation + the kernel support). I care about the weird corners. As such
-> > I need to be able to bring up variable numbers of host bridges, multiple CXL
-> > Fixed Memory Windows with varying characteristics (interleave etc), complex
-> > NUMA topologies with wierd performance characteristics etc. We can do that
-> > on x86 upstream today, or my gitlab tree. Note that we need arm support
-> > for some arch specific features in the near future (cache flushing).
-> > Doing kernel development with this need for flexibility on SBSA-ref is not
-> > currently practical. SBSA-ref CXL support is an excellent thing, just
-> > not much use to me for this work.
-> > 
-> > Also, we are kicking off some work on DCD virtualization, particularly to
-> > support inter-host shared memory being presented up into a VM. That
-> > will need upstream support on arm64 as it is built on top of the existing
-> > CXL emulation to avoid the need for a separate guest software stack.
-> > 
-> > Note this is TCG only - it is possible to support limited use with KVM but
-> > that needs additional patches not yet ready for upstream.  The challenge
-> > is interleave - and the solution is don't interleave if you want to run
-> > with KVM.  
-> 
-> Series applied cleanly on top of today's QEMU. And I confirm that
-> qtest-aarch64/cxl-test passes the test as it should and ndctl cxl test
-> suite ran fine 11 out of 12 (1 SKIP) on this series again this time tracing
-> subsystem enabled as Alison suggested. Used the Intel folk cxl/next
-> kernel.
-> 
-> Tested-by: Itaru Kitayama <itaru.kitayama@fujitsu.com>
-Thanks Itaru.
+--3866299591-479763625-1749731968=:67385
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-I'm not going to pick this tag up purely because of the changes in patch
-2 and related dropping of patch 3.  Whilst not huge that is in fairly
-critical bit of the code, so feels inappropriate to carryn tags forwards.
+On Thu, 12 Jun 2025, Paolo Bonzini wrote:
+> On 6/11/25 13:45, BALATON Zoltan wrote:
+>> On Wed, 11 Jun 2025, Daniel P. Berrangé wrote:
+>>> On Wed, Jun 11, 2025 at 02:37:08AM +0200, BALATON Zoltan wrote:
+>>>> On Tue, 10 Jun 2025, Bernhard Beschow wrote:
+>>>>> The next patch will make dtc mandatory for boards with a bundled DTB, 
+>>>>> causing
+>>>>> these boards to be omitted when dtc is missing. Allow packagers to force 
+>>>>> the
+>>>>> build of those boards by providing an option.
+>>>> 
+>>>> I don't like this. This might result in some machines missing from some
+>>>> distros if they don't notice this and forget to update their packages and
+>>>> these are machines I care about.
+>>> 
+>>> "Someone might not notice & screw up" is pretty much an argument for
+>>> not doing anything at all. We publish release notes to alert distros
+>> 
+>> More like "if it ain't broke don't fix it".
+>> 
+>>> to these kind of changes which is a reasonable effort on our part.
+>>> Distros need to play their part by reading them and adapting to the
+>>> changes. They can also compare the available options with new and
+>>> old QEMU to identify any new build features they need to handle when
+>>> updating.
+>>> 
+>>>>                                  Also what guarantees that we don't get 
+>>>> bugs
+>>>> by compiling the device tree with different dtc versions which might
+>>>> generate different binaries? The binaries we have now are known to work 
+>>>> and
+>>>> don't take much space so keeping them for convenience might be simpler. 
+>>>> If
+>>>> it worked so far why change it now?
+>>> 
+>>> Ultimately the DTC project has responsibility to not cause regressions
+>>> in new releases they issue, as is the case for any 3rd party dep that
+>>> we rely on.
+>>> 
+>>> We have CI jobs that can run on different distros. If we have coverage
+>>> of the boards in functional test suite that provides a way to validate the
+>>> operation with differing DTC versions as a sanity check.
+>>> 
+>>> Distributing pre-built binaries in source release tarballs is a long
+>>> standing issue with QEMU's releases. If we can eliminate the pre-bbuilt
+>>> DTB and only ship the source that is a good thing IMHO.
+>>> 
+>>>> If this was using dtc from the submodule when not using system libfdt 
+>>>> then
+>>>> at least it would not result in dropped machines and we had a known 
+>>>> working
+>>>> dtc to compile with. Why isn't that used when we already have it for 
+>>>> libfdt?
+>>> 
+>>> Are there any platforms that we target which still lack dtc ? The
+>>> submodule was there to plug gaps in distro support long ago, but
+>>> if every distro has dtc available the submodule is redundant.
+>> 
+>> OK, can we then make libfdt and dtc mandatory and not build at all instead 
+>> of disabling boards without it?
+>
+> Disabling libfdt was done because of the x86 microvm board, which was adding 
+> a libfdt dependency to all of qemu-system-x86_64.
+>
+> However, several targets still have a hard dependency on libfdt, plus libfdt 
+> is supported as a subproject and will be built together with the emulators. 
+> So the impact of the change was minimal, and limited only to people using 
+> --disable-libfdt or --disable-download on the configure command line.  This 
+> is not true of Bernard's proposal to use dtc.
+>
+> For now, one possibility is just to make dtc mandatory whenever one of this 
+> boards is used; the best would be to be able to use the dtc that comes from 
+> the libfdt subproject.  This however requires patching dtc's meson.build so 
+> that it calls meson.override_find_program (and it could also use 
+> meson.override_dependency while you're at it).
+>
+> I'll send a patch to the upstream dtc project and you can add it to QEMU via 
+> diff_files (see commit 64644bc4eab2f for an example).
 
-Jonathan
+This seems getting too complicated just to get rid of some small binaries 
+so I'd just leave it as it is now but if Bernhard wants to make this 
+change I'm OK with it as long as my boards won't get disabled in configs 
+where now they are built I.e. if no system dtc is found now the dtbs are 
+installed; if this used dtc from submodule instead that would be OK but 
+dropping the board is not. I'm also OK with replacing the submodule with 
+always requiring system libfdt and dtc but that may be more work for 
+distros to update their package dependencies.
 
-> 
-> Thanks,
-> Itaru.
-> 
-> > 
-> > Jonathan Cameron (5):
-> >   hw/cxl-host: Add an index field to CXLFixedMemoryWindow
-> >   hw/cxl: Make the CXL fixed memory windows devices.
-> >   hw/cxl-host: Allow split of establishing memory address and mmio
-> >     setup.
-> >   hw/arm/virt: Basic CXL enablement on pci_expander_bridge instances
-> >     pxb-cxl
-> >   qtest/cxl: Add aarch64 virt test for CXL
-> > 
-> >  include/hw/arm/virt.h     |   4 +
-> >  include/hw/cxl/cxl.h      |   4 +
-> >  include/hw/cxl/cxl_host.h |   6 +-
-> >  hw/acpi/cxl.c             |  76 +++++++--------
-> >  hw/arm/virt-acpi-build.c  |  34 +++++++
-> >  hw/arm/virt.c             |  29 ++++++
-> >  hw/cxl/cxl-host-stubs.c   |   8 +-
-> >  hw/cxl/cxl-host.c         | 190 ++++++++++++++++++++++++++++++++------
-> >  hw/i386/pc.c              |  51 +++++-----
-> >  tests/qtest/cxl-test.c    |  59 +++++++++---
-> >  tests/qtest/meson.build   |   1 +
-> >  11 files changed, 353 insertions(+), 109 deletions(-)
-> > 
-> > -- 
-> > 2.48.1
-> >   
-
+Regards,
+BALATON Zoltan
+--3866299591-479763625-1749731968=:67385--

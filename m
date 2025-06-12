@@ -1,118 +1,119 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2228953njc;
-        Wed, 11 Jun 2025 22:13:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUKAczBrkNxZrFeSJdI5gH8NehydU+A/TTiLBgDR8ryECySoiCMpucjB6lJiQo8KWLy3lDfMRIFRa2muQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGWv5txGMq/S6O9rwuXCVEpR3KOIetKOliT2aCUppqWeSjEl4Ox+ajEk0zlN8y3Y0Y6Wr3d
-X-Received: by 2002:a05:6214:c2a:b0:6fb:3d7:71bb with SMTP id 6a1803df08f44-6fb2c320820mr93488636d6.1.1749705186587;
-        Wed, 11 Jun 2025 22:13:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749705186; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2238823njc;
+        Wed, 11 Jun 2025 22:46:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVIcYUcab7Q23eks4Dv2IwZcf69fTFDF5cgIroVk0CuC+I1UDyvL9CtNgRLT7wY1e6ZuWtXUAwcrhIRKQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGwaRKUVs8S6iKIQXOEVkv8i3GUcXH9E7K3+rSvr0ZmKyw/CBA8aD8USgQXED3NMnzoIAQ1
+X-Received: by 2002:ad4:5ccc:0:b0:6f5:1192:ccdf with SMTP id 6a1803df08f44-6fb34763015mr33773676d6.6.1749707192228;
+        Wed, 11 Jun 2025 22:46:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749707192; cv=none;
         d=google.com; s=arc-20240605;
-        b=E14snFgDV8STPGEyD5qzVEPhWcY5UDezhDYn6kQwOKpNQtSJB4FesyvzZyiR1PT26l
-         pUe7YGmjbEXA8TkGLZ+mvft96RqsOn+ZrYSzvXhZZ2AeQfc6wGp0dc/wXPXGTJWRDMbs
-         mAOVD+EDVOni/o7ROOSlGdORumVi6a9z6Q771O6t50gYHTGeyvgmvpqa/sYdZLgjp+lC
-         OZjYwaliWASpuRcKFOkpUAbvjGmMF6gTkplhUR9DoIvgSbNVQN3HdJlRC2GtGUYefww6
-         zZWbaQRWUHjwaEeGe3+A3VLYBXIzdLPEjj4bqOes/qu1eeegRQfGcqAbyHK1mg5fepjf
-         tEHw==
+        b=A/T72jrZQcRVrUt05DFaQxqqngB61+VPK4uQuu/BH/1l/ONVQ1dYyr10UhT8jEgwoj
+         8XFzaDEMvTiguP9L8cLoIEOd7Z5gQEzGYGSQJOVnpcyKSTw7mOqRNPoB2cEASnXsAuIf
+         T5jSFVT66YQViy1AocrIaC5o1himT3ke+FJYkv43VXXos5uwcBF7W0p120MOUod/eKSf
+         p8OMrdciLYkVI4RkIL2rc9tAL3qeb/txfuWlUS9ksAHeXWUbAwv8FbKoAxiPnHpXHklV
+         RfbDiZiZkruvd3hoO9HTn/2uHLQzi/YZv1B/hF1WHUk1GCI0+bV31IRWGfTsFCpPR3wu
+         XZcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :content-language:in-reply-to:autocrypt:references:cc:to:from
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=c+r1Aw78LMaAoIi8npdIYWeojNaOochN/eiG/UlZweQ=;
-        fh=9YFIep7NaotuXt9NiZncHM7Z8fWcmg5xAsHjtdEQzUs=;
-        b=U8IgA7wE9YVGuLpMIY0BKXqVI/N2ASec43SpGkf1lDD7PJIOPdDQeRxZ1dddQJQGTs
-         ZJCe7K2/Etr8ekyjHSUPdOaqFlLlSVySIUvYcu7YPBVvTM111vqpYn431LV9g2nuSMdf
-         ZYKEjpnan4HnLsOQ9xS3OgOQbWAVCeTNHQItBagWSwOVr3iZgZUl3/tdLKXtjqOsWuP7
-         9Qmkk2uDyCjHAgBBhUDkoIuuF4rZCDKd9a3eel9A7EcS/nEQ5ZdOtulUD9yQ4EcoUpo6
-         mHJo9qDDxxZg4mtfWvXxbPaozcytIQL3xdVlLILA6vHlx2nubea89KZjjI9Brapi3PTR
-         HCSQ==;
+        bh=uWtXl9tUGCTILZjTP+f50HFmNhKS7AiuhqytRSts3uM=;
+        fh=pEQP+W+VUiU2Been7/1v/MtIeLH9wQGraFp7ZOvFSjQ=;
+        b=S6ewBNTYvBg6yPFIzbjUOG9QEDaLd9pIxV66IClQk1S7Usowlc3qkhVd413ZGhQjG4
+         UftHm7EqDrNA7tvU3s0nLBxyNqxR/mDY0TdlFoIYWlZ46nLbUkH3LQ7HQ9MadB84EB92
+         BKWiHfhdfQ8aq3Vjzwxft2f+4JQgFnAwgf4QZpXK7AeEsqylRiUyO9qjVPbVTHj7mOZ8
+         HHZPmxoWw4t291Hq3A1wazoSIgf52wVJoDzaQMZl3rBQKgkk0HBby8NHs6cPHIbDQ+jV
+         HHzyFTW5mJqIlGW0aQs9rM20l/VlLkDReJ6eD+3YNScUqeVVx6nrFKBpyJjYTH6Y5R0I
+         935w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WzhFSFWE;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dX7kTEWb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fb35bdf143si8399006d6.223.2025.06.11.22.13.06
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fb35ae55fdsi8864696d6.118.2025.06.11.22.46.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Jun 2025 22:13:06 -0700 (PDT)
+        Wed, 11 Jun 2025 22:46:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WzhFSFWE;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dX7kTEWb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uPaF9-0000NJ-Vd; Thu, 12 Jun 2025 01:12:52 -0400
+	id 1uPalU-0006nk-Jv; Thu, 12 Jun 2025 01:46:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1uPaF2-0000K9-UJ
- for qemu-arm@nongnu.org; Thu, 12 Jun 2025 01:12:45 -0400
+ id 1uPalS-0006mo-7K
+ for qemu-arm@nongnu.org; Thu, 12 Jun 2025 01:46:14 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1uPaF0-0007F3-61
- for qemu-arm@nongnu.org; Thu, 12 Jun 2025 01:12:44 -0400
+ id 1uPalP-0002TP-1h
+ for qemu-arm@nongnu.org; Thu, 12 Jun 2025 01:46:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749705160;
+ s=mimecast20190719; t=1749707168;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=c+r1Aw78LMaAoIi8npdIYWeojNaOochN/eiG/UlZweQ=;
- b=WzhFSFWEqSIBvu3iRJ13uwnSAg5mX+kzD7vQyxTPOY41it5Euoc52CXfTktnXJKKrMT9/X
- V+WwOvX6WsuBv7/o50Lw3qu1nR++FmIhT1YXmGP2jTOQn6pddQQGnntOSpY1/4yNHg3D53
- AYe452+GidsF/OmG9fyA0PHKjDZga8c=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=uWtXl9tUGCTILZjTP+f50HFmNhKS7AiuhqytRSts3uM=;
+ b=dX7kTEWbsxvaBHi9WFxBrST+WTK1T/WCyTgAfKhgYUiGpb6HUPcMySY4BNX0cxV0Cpy3OU
+ gtKto9XamWHdB3U2uJOjh/L8vpGCt9NYVFZa0k/CiL97znqguW5+Npaw2pMTQ39v9i6Ljx
+ k/vXcjCRRxUZQlS0rDmX0CCBziLQZoo=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-81-G5JOpS02Nr2ne96UbRg1aA-1; Thu, 12 Jun 2025 01:12:37 -0400
-X-MC-Unique: G5JOpS02Nr2ne96UbRg1aA-1
-X-Mimecast-MFC-AGG-ID: G5JOpS02Nr2ne96UbRg1aA_1749705156
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-451dda846a0so3346075e9.2
- for <qemu-arm@nongnu.org>; Wed, 11 Jun 2025 22:12:36 -0700 (PDT)
+ us-mta-375-nCi0TYHjPEyS2khpBalmnQ-1; Thu, 12 Jun 2025 01:46:07 -0400
+X-MC-Unique: nCi0TYHjPEyS2khpBalmnQ-1
+X-Mimecast-MFC-AGG-ID: nCi0TYHjPEyS2khpBalmnQ_1749707166
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-3a4f55ea44dso245570f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 11 Jun 2025 22:46:06 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749705156; x=1750309956;
+ d=1e100.net; s=20230601; t=1749707166; x=1750311966;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
+ :references:cc:to:from:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=c+r1Aw78LMaAoIi8npdIYWeojNaOochN/eiG/UlZweQ=;
- b=pcIpc2DwstBUBsCQ643kXt50HINIV5zVIKis9/IN41FDE5v8nsloanPLf+NyIu9ttp
- Y5yB9kfBihRVxeTs6hEzJrLgLA7EpKwUQ4SamXJWEloMGqZJlqH8G5zuN2VBLo5DEkSi
- ysHqXrXILJdF5GMtJ7fNQBU5gHyj9zG+XkT5HG2Tv/Cjh4RPfDvV4FXV1gTohBTXgS5y
- grpIZ2cxClzAV20v8DXhGe1NtFiTx2YSnUFWc4kWVSzvDK1niCILCjADgt1EHcLpfVYs
- rAsBNhYhHDnNwJXD/eL6cBODI2rzsn8/zvXjz0fCDvUDxM1PWWBDgLcsJNIaEr8U+qmm
- 4lbA==
+ bh=uWtXl9tUGCTILZjTP+f50HFmNhKS7AiuhqytRSts3uM=;
+ b=XI1Ox8i5YUaV8OfyOwCYpNy+yIUYN3+kPN1WiOJUH6ouHpMS2sGisPptwnuD+RoqMW
+ e/xWmiP8OxuxMzVRqsckttc0GX+ZQW0xXdbogl8OKsvBqE46M9p/5KUCkQdRtwwFOFJy
+ hnxijHlXU+YKs3Tibf4led1Y9GzcwkRFixMh/T9VBWBac6mru3j1haHFW3jUq9iVA7LV
+ QoBZm/9rwVgErRreqlA4VkrS3/rK5wdnunHR22ZO6JAS9qfBv5YRJnMRrzl2EttWJpsG
+ NvVwiIjBPQ6JPW0xhdMnGR9Xpr4V/qrMQMxMjc8SqcvoVYziB2xJLfsadnInp5/s0qrG
+ 95RQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX2QEzKgaCPZ4Oje9iX+tX0vkkdpGhkkHMnj5zqNcDeK+VPtP3WIBpCC7U0GfP/3jipkJ8HZmj9yg==@nongnu.org
-X-Gm-Message-State: AOJu0Yzi8foGwY903LVUbWaY7BkNY30q+JzbiVsk6za2Zsz/PHPtry40
- z+3fMCq2TDvVIrmtA/KsT6uBtWKXNMH2Nd7S/JQ0YhGFdYa54PRvBoKOIcVkcslnNt63ym7rrlT
- cSjqtALFee5jDEu6wGu+WQ5L6dZKRtIrCZgcoLyD9HPzMSEg1nPPWWQ==
-X-Gm-Gg: ASbGncs/piGGNp7YbbYl3K8sWh0Kb4cjlb2l+OxeBWpGZ+TgeyMBvwzRkSA0rV8+8XC
- FSMfz4hwmkNLzXgFduMkny/+qkt9xSDygdTqppWPbLPuuqCSAtS0e+G9VY4kWtw9wnJOH5c82Vj
- 9TyZZAS5tKsDXIWjnQLNEutvGM4iMnOZCwsIAM6H4yp9QHAv8yiZnHHmftefOmBIIFKG5Bamk32
- xDd0fWmJX9hHgjV69FjCm3Udvo/IA2nvCnmasxcYBLH8tlJ4wnS80jKHIdelj2xMLcSel69TDgA
- KcY5tDDYV10zYrTFN2cGeFtr
-X-Received: by 2002:a05:6000:40d9:b0:3a4:f661:c3e0 with SMTP id
- ffacd0b85a97d-3a5614c3021mr955387f8f.45.1749705155802; 
- Wed, 11 Jun 2025 22:12:35 -0700 (PDT)
-X-Received: by 2002:a05:6000:40d9:b0:3a4:f661:c3e0 with SMTP id
- ffacd0b85a97d-3a5614c3021mr955370f8f.45.1749705155368; 
- Wed, 11 Jun 2025 22:12:35 -0700 (PDT)
+ AJvYcCXr1A0RLl3+5m06zV3lOQCIyObFFHPMh5Exvof30FVPmcpe6v+JHEwoVK8BCyk5bxkJec3xeJ/jmQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzTVta+8mBxrfrdW06lVyzcRb6e4J9K/8dsUJuFeTqbEhOqthDl
+ J3Ri2WHQA2RROdc+i4CApkFlSvwEswHbMihyLh+Gdy/6vY+1lX7AExDOg9oju+5Wk02vetgxG0B
+ UZ+N2wA33EDUgIHx1U7mIeUebrQB2Ryx0t0KnqQ8nlPNOoTR7fPH05g==
+X-Gm-Gg: ASbGncsANF1bha6wDDqyPRgWTyLVxoqQgz2tm+q1Rbn/0qVbJhgAdXRRpY4PdsIf8Zo
+ i6OfOanT0DhkNbdR+BOCLu8fCWjb6HJi8F0izscP5fdtcG4iXXGHUhRW8gXvtkLxR/CZAiznzzr
+ las9/eyT84jZEm5PD0sh2aEXXotwYnO1VxaAo7mEwOL54NR/al+3UGEuu03TvE2N0cjYCw4dlQr
+ Cpuvk3qdoGWyrnMCEbX4gbClN4ff1227c/DQ/NaRKNcBmtpOhWrWu6Ah2YLs48m9Ut4E0UxNl6O
+ G3KeaqgwDq6lciIeTgRlm7TB
+X-Received: by 2002:a05:6000:2408:b0:3a5:3a03:79c1 with SMTP id
+ ffacd0b85a97d-3a56138ae5amr1231528f8f.48.1749707165820; 
+ Wed, 11 Jun 2025 22:46:05 -0700 (PDT)
+X-Received: by 2002:a05:6000:2408:b0:3a5:3a03:79c1 with SMTP id
+ ffacd0b85a97d-3a56138ae5amr1231509f8f.48.1749707165471; 
+ Wed, 11 Jun 2025 22:46:05 -0700 (PDT)
 Received: from [192.168.10.48] ([151.49.64.79])
  by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-3a561b65c2fsm836966f8f.98.2025.06.11.22.12.34
+ ffacd0b85a97d-3a561a3cd54sm890590f8f.47.2025.06.11.22.46.04
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 11 Jun 2025 22:12:34 -0700 (PDT)
-Message-ID: <c29386d1-1a4b-4f3b-a669-4206c366ad9e@redhat.com>
-Date: Thu, 12 Jun 2025 07:12:33 +0200
+ Wed, 11 Jun 2025 22:46:04 -0700 (PDT)
+Message-ID: <d2860e38-241e-4778-ad9c-7042c73edfd9@redhat.com>
+Date: Thu, 12 Jun 2025 07:46:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 4/5] configure: Add dtc option
+From: Paolo Bonzini <pbonzini@redhat.com>
 To: BALATON Zoltan <balaton@eik.bme.hu>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
 Cc: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org,
@@ -125,7 +126,7 @@ References: <20250610204131.2862-1-shentey@gmail.com>
  <cdfc561e-23a9-607a-d9a8-70e07e73e0fd@eik.bme.hu>
  <aElCJnmjrB-X9M-n@redhat.com>
  <6eb6aa79-33f8-57ea-5714-af264557f8c8@eik.bme.hu>
-From: Paolo Bonzini <pbonzini@redhat.com>
+ <c29386d1-1a4b-4f3b-a669-4206c366ad9e@redhat.com>
 Autocrypt: addr=pbonzini@redhat.com; keydata=
  xsEhBFRCcBIBDqDGsz4K0zZun3jh+U6Z9wNGLKQ0kSFyjN38gMqU1SfP+TUNQepFHb/Gc0E2
  CxXPkIBTvYY+ZPkoTh5xF9oS1jqI8iRLzouzF8yXs3QjQIZ2SfuCxSVwlV65jotcjD2FTN04
@@ -161,13 +162,13 @@ Autocrypt: addr=pbonzini@redhat.com; keydata=
  JBrdmNZSQDz0iKmSrx8xkoXYfA3bgtFN8WJH2xgFL28XnqY4M6dLhJwV3z08tPSRqYFm4NMP
  dRsn0/7oymhneL8RthIvjDDQ5ktUjMe8LtHr70OZE/TT88qvEdhiIVUogHdo4qBrk41+gGQh
  b906Dudw5YhTJFU3nC6bbF2nrLlB4C/XSiH76ZvqzV0Z/cAMBo5NF/w=
-In-Reply-To: <6eb6aa79-33f8-57ea-5714-af264557f8c8@eik.bme.hu>
+In-Reply-To: <c29386d1-1a4b-4f3b-a669-4206c366ad9e@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 4nYWJq9aAAgVY5cTXfLq0OEFVh5n-pXnIacZOwFIqvM_1749705156
+X-Mimecast-MFC-PROC-ID: GyDkAMmRO4_dl9fr-GbBPc8sdeV7vtsKNj1DFiH-c8s_1749707166
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -177,7 +178,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -192,89 +193,122 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +JpKb9kfV7jR
+X-TUID: +qzMtC0aAzQq
 
-On 6/11/25 13:45, BALATON Zoltan wrote:
-> On Wed, 11 Jun 2025, Daniel P. Berrangé wrote:
->> On Wed, Jun 11, 2025 at 02:37:08AM +0200, BALATON Zoltan wrote:
->>> On Tue, 10 Jun 2025, Bernhard Beschow wrote:
->>>> The next patch will make dtc mandatory for boards with a bundled 
->>>> DTB, causing
->>>> these boards to be omitted when dtc is missing. Allow packagers to 
->>>> force the
->>>> build of those boards by providing an option.
->>>
->>> I don't like this. This might result in some machines missing from some
->>> distros if they don't notice this and forget to update their packages 
->>> and
->>> these are machines I care about.
->>
->> "Someone might not notice & screw up" is pretty much an argument for
->> not doing anything at all. We publish release notes to alert distros
-> 
-> More like "if it ain't broke don't fix it".
-> 
->> to these kind of changes which is a reasonable effort on our part.
->> Distros need to play their part by reading them and adapting to the
->> changes. They can also compare the available options with new and
->> old QEMU to identify any new build features they need to handle when
->> updating.
->>
->>>                                  Also what guarantees that we don't 
->>> get bugs
->>> by compiling the device tree with different dtc versions which might
->>> generate different binaries? The binaries we have now are known to 
->>> work and
->>> don't take much space so keeping them for convenience might be 
->>> simpler. If
->>> it worked so far why change it now?
->>
->> Ultimately the DTC project has responsibility to not cause regressions
->> in new releases they issue, as is the case for any 3rd party dep that
->> we rely on.
->>
->> We have CI jobs that can run on different distros. If we have coverage
->> of the boards in functional test suite that provides a way to validate 
->> the
->> operation with differing DTC versions as a sanity check.
->>
->> Distributing pre-built binaries in source release tarballs is a long
->> standing issue with QEMU's releases. If we can eliminate the pre-bbuilt
->> DTB and only ship the source that is a good thing IMHO.
->>
->>> If this was using dtc from the submodule when not using system libfdt 
->>> then
->>> at least it would not result in dropped machines and we had a known 
->>> working
->>> dtc to compile with. Why isn't that used when we already have it for 
->>> libfdt?
->>
->> Are there any platforms that we target which still lack dtc ? The
->> submodule was there to plug gaps in distro support long ago, but
->> if every distro has dtc available the submodule is redundant.
-> 
-> OK, can we then make libfdt and dtc mandatory and not build at all 
-> instead of disabling boards without it?
+On 6/12/25 07:12, Paolo Bonzini wrote:
+> I'll send a patch to the upstream dtc project and you can add it to QEMU 
+> via diff_files (see commit 64644bc4eab2f for an example).
+This is the patch, backported to QEMU's version of the dtc subproject:
 
-Disabling libfdt was done because of the x86 microvm board, which was 
-adding a libfdt dependency to all of qemu-system-x86_64.
+diff --git a/libfdt/meson.build b/libfdt/meson.build
+index 0307ffb..6581965 100644
+--- a/libfdt/meson.build
++++ b/libfdt/meson.build
+@@ -30,6 +30,7 @@ libfdt_dep = declare_dependency(
+    include_directories: libfdt_inc,
+    link_with: libfdt,
+  )
++meson.override_dependency('libfdt', libfdt_dep)
+  
+  install_headers(
+    files(
+diff --git a/meson.build b/meson.build
+index b23ea1b..7def0a6 100644
+--- a/meson.build
++++ b/meson.build
+@@ -54,6 +54,7 @@ version_gen_h = vcs_tag(
+  
+  subdir('libfdt')
+  
++dtc_tools = []
+  if get_option('tools')
+    flex = find_program('flex', required: true)
+    bison = find_program('bison', required: true)
+@@ -77,7 +78,7 @@ if get_option('tools')
+    )
+  
+    if cc.check_header('fnmatch.h')
+-    executable(
++    dtc_tools += executable(
+        'convert-dtsv0',
+        [
+          lgen.process('convert-dtsv0-lexer.l'),
+@@ -88,7 +89,7 @@ if get_option('tools')
+      )
+    endif
+  
+-  executable(
++  dtc_tools += executable(
+      'dtc',
+      [
+        lgen.process('dtc-lexer.l'),
+@@ -108,7 +109,7 @@ if get_option('tools')
+    )
+  
+    foreach e: ['fdtdump', 'fdtget', 'fdtput', 'fdtoverlay']
+-    executable(e, files(e + '.c'), dependencies: util_dep, install: true)
++    dtc_tools += executable(e, files(e + '.c'), dependencies: util_dep, install: true)
+    endforeach
+  
+    install_data(
+@@ -118,6 +119,10 @@ if get_option('tools')
+    )
+  endif
+  
++foreach e: dtc_tools
++  meson.override_find_program(e.name(), e)
++endforeach
++
+  if not meson.is_cross_build()
+    if py.found() and swig.found()
+      subdir('pylibfdt')
 
-However, several targets still have a hard dependency on libfdt, plus 
-libfdt is supported as a subproject and will be built together with the 
-emulators.  So the impact of the change was minimal, and limited only to 
-people using --disable-libfdt or --disable-download on the configure 
-command line.  This is not true of Bernard's proposal to use dtc.
 
-For now, one possibility is just to make dtc mandatory whenever one of 
-this boards is used; the best would be to be able to use the dtc that 
-comes from the libfdt subproject.  This however requires patching dtc's 
-meson.build so that it calls meson.override_find_program (and it could 
-also use meson.override_dependency while you're at it).
+and this is how you can then find dtc in QEMU's meson.build:
 
-I'll send a patch to the upstream dtc project and you can add it to QEMU 
-via diff_files (see commit 64644bc4eab2f for an example).
-
-Thanks,
-
-Paolo
+diff --git a/meson.build b/meson.build
+index 61595015802..831678b4580 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2121,13 +2121,15 @@ if numa.found() and not cc.links('''
+  endif
+  
+  fdt = not_found
++dtc = not_found
+  fdt_opt = get_option('fdt')
+  if fdt_opt == 'enabled' and get_option('wrap_mode') == 'nodownload'
+    fdt_opt = 'system'
+  endif
+  if fdt_opt in ['enabled', 'system'] or (fdt_opt == 'auto' and have_system)
+    fdt = cc.find_library('fdt', required: fdt_opt == 'system')
+-  if fdt.found() and cc.links('''
++  dtc = find_program('dtc', required: fdt_opt == 'system')
++  if dtc.found() and fdt.found() and cc.links('''
+       #include <libfdt.h>
+       #include <libfdt_env.h>
+       int main(void) { fdt_find_max_phandle(NULL, NULL); return 0; }''',
+@@ -2136,8 +2138,12 @@ if fdt_opt in ['enabled', 'system'] or (fdt_opt == 'auto' and have_system)
+    elif fdt_opt != 'system'
+      fdt_opt = get_option('wrap_mode') == 'nodownload' ? 'disabled' : 'internal'
+      fdt = not_found
++    dtc = not_found
+    else
+-    error('system libfdt is too old (1.5.1 or newer required)')
++    if dtc.found()
++      error('system libfdt is too old (1.5.1 or newer required)')
++    else
++      error('device tree compiler not found')
+    endif
+  endif
+  if fdt_opt == 'internal'
+@@ -2145,7 +2148,8 @@ if fdt_opt == 'internal'
+    libfdt_proj = subproject('dtc', required: true,
+                             default_options: ['tools=false',  'yaml=disabled',
+                                               'python=disabled', 'default_library=static'])
+-  fdt = libfdt_proj.get_variable('libfdt_dep')
++  fdt = dependency('libfdt', required: true)
++  dtc = find_program('dtc', required: true)
+  endif
+  
+  rdma = not_found
 

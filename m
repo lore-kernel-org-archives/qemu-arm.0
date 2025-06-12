@@ -1,125 +1,120 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2433274njc;
-        Thu, 12 Jun 2025 08:40:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV5zFDRk8YGtKQOfm660ChbX3xMz6sFWJuhAWNhoWtBUYKbEF4fUE/xEIRZ5lz4tR/9aGd521sreElTuA==@linaro.org
-X-Received: by 2002:a05:690c:690f:b0:70e:70de:6512 with SMTP id 00721157ae682-7114089f66cmr109873887b3.0.1749742803759;
-        Thu, 12 Jun 2025 08:40:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749742803; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2450570njc;
+        Thu, 12 Jun 2025 09:07:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXxbAScFft2nYteJ8Vf11BjiT5aiDGUmJQLDRfej7KZdKleR9SkbfwhyfG9z+qH/YD+1NIydqHzvctu3w==@linaro.org
+X-Google-Smtp-Source: AGHT+IH+i89AsBmgncj1lN/mAZiZimOEzDqiHN/iBBVQFVMUuHX0MZYZL7D6y7UcykMZWZOtH5Sd
+X-Received: by 2002:a05:600c:1d1f:b0:443:48:66d2 with SMTP id 5b1f17b1804b1-4533436530amr2781125e9.16.1749744470070;
+        Thu, 12 Jun 2025 09:07:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749744470; cv=none;
         d=google.com; s=arc-20240605;
-        b=HhOWDNgpXoAfxV0eZC+/QBErnbkROZJt9tjksxvLmAzpfu5grCNuj3+UUbcLtyB67g
-         ak7/7s/XmH28IchpQjqK0JxhDqWa2Lb4WgK8qZfLUfM5nHNPuKbEljmdraYyKKCTtrba
-         glqNjTh+737rSulYUqym2DB1WPGJ6ufJxbC66alko0YDnMrGHjivSZAdQV/gWlQt935L
-         4XahAl/kXhMYkymYpn8jIkbAw0Tfdy5tSKRThZj6PIOa1Lq7FQJSPu/YVQEBQWQjh3TM
-         YjmBk7IllcrAEHJLgp86jH0W6GXFwnVoHkPOZUOdbbTh4PBUQ7P2u0soTH2ChZSP4CxR
-         o2uQ==
+        b=k42R4TK2EnoLzo1Jk8vSvzdLeYMoJktQN4bOQSQHKNw8PG4myjzd2vhQY00U+rJlE6
+         8Vbrbo6sf2ERVZEFTVJthSrDviPsA03WT+a5mKwTfe54LE0OOIvD4ZJb6OMSWAxCIfoT
+         BH4TYpkdbjanDlOY11rEv38qqXIUiC1xzYBF6glFzZP/zU0OMu132tl4ry0mSCdETpvE
+         d6knUm3qr0suKDf2eSIP7dtTAfTBUKSh19Ori5ztOAGqvLFJvVii1s8AoFwk+Z8g9zUc
+         vgopBIkmGwC+vNHYLLCYzpycIW94Rjeh63tAJR/6kXGmuDjaDTxrzDgEytLyQEZXPSwE
+         nCcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=0GCneGgfExrxwfR8Ui0kwChdEvpsbQ0IMrzfOgR23iA=;
-        fh=tPktnzh5wkiKdbszhZI01DOGUeQG3H8OePpN9gpL3NE=;
-        b=ecWVn88uX285JpeCqkqENOuWdJSpewTS166e7KFw2RRM5BcmVNqz7f0qZNF7Rboo/D
-         z423gKYB3sI8iLoIf6glidnNsputC+QEz/Gjb8ZJHi8ZNHNaOK6DHmfTdYOW/eFsiq9Z
-         kD6MJ4mFAVPSt1+NtYmqzAOnLS9Qr/WHm4/QLxtSL/vm4M0TQ2jA0HZzs0CMq6+UCTky
-         s+LrZKZD1WgeA8XrEVDvBpYEhM1/UMZXgkSFVsQWvbrg3dmoJCj1I+EnkDCR4YjDVzyt
-         h1u3sn2/YqJW12aF0zBNyImf8SUN7sSqh6D3chcoMwrVctT/fyv1YUYSo96fup4ZnJWz
-         40IQ==;
+        h=mime-version:message-id:date:user-agent:references:organization
+         :in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=+uVuub5Ky1bzhq7P2Mnf0OieKw5ECMBGCTcKWAjvVoM=;
+        fh=3AH/4enSkYH+0gdMWbJY9r7skS1O9K2SeH+yRsCcYPI=;
+        b=b80eVeQ+V8tRFEZPzCxCJa6qb5+meAyY3EzkAh9VC6GK9jVYB8Cnhk2CrN7ERUPj/o
+         XsSaMY8o+LhSwBSnnaoDPgVoD7wotXHVAjFpfAY3eNXC+/5Bs9M/GgnLEFZcckhD/uQH
+         anbDOW9LRA72ZNyib4EzIQmazk4UjeJKTv+hsJE5XmBhdMlRAU0m9vLalz47ZBgpOKIk
+         WQA9FmujjXmIpjPpiL7MGPjV1RTpWLEGrJvLlh9b2+t5hs3B28pszxpDu6zWibKXImMr
+         ti6KVw/4VX2NnlvJolhwRqaMFJEKj0ynAz1ammtbP0VLchBlII+iKHb1K8dyg+DTdmPo
+         wR1Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QmHyI2yT;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-711518c52fesor12583127b3.11.2025.06.12.08.40.03
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jO0NsOjk;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-4532e093e04si17265695e9.40.2025.06.12.09.07.49
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 12 Jun 2025 08:40:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Jun 2025 09:07:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QmHyI2yT;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1749742803; x=1750347603; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=0GCneGgfExrxwfR8Ui0kwChdEvpsbQ0IMrzfOgR23iA=;
-        b=QmHyI2yTf0xI9FkPHO/gaLcqzV68fMnEDvwAaveLAfqkro2XvmTG1aN9c2W7Q/xif9
-         0+9c8W+XtY5RM//zEDlHOIL9krHWyqGlyKIaBnqCS+AxRofeCbnTAS0lUnoy2II0xA+C
-         laDX90bT1EJZdXBjzKfDVqCZ2Bj754VMuoHDPHfXtZqVWk60noW/PPyqBynZbEIA5BkF
-         cNS+mz7i4Phsc+S9ayGwnYwyc3cBiR5ye486y/UAZlRq5OwBEoRVm82kxxHoQx2otWZe
-         jZSzLk6gLsasaFImFdjhSk7MSOu1B6PasiyPvCJgEOjDuCczoSe/HgTCmQZaSfH9dPln
-         xzpg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749742803; x=1750347603;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=0GCneGgfExrxwfR8Ui0kwChdEvpsbQ0IMrzfOgR23iA=;
-        b=M+tKpvEbxU2lIpA/NCkMRiyZANZ0OS9rZZC+EeqpughRgOvu0Hg/s4o/oT8MRiaJm9
-         SKJeK6LfI4yTGrvVZf9iAmZsTvKYJuoKXUjr0WMmV9D+TT5uiz/fCGJCq22OmXpur/pJ
-         hh2C/e/PMY/8F9a9C55fgJsr3ymq0AzaxZWz3SmJai7NVOAJ9DANHrGmGlvesieKQ5O7
-         B0Q3gFUc9BvWLr3jO2I1ofk84Tic/70BIxXh9/5q1hXAOsvO4RO1DZBuB419dlmKqCKH
-         Rn7rlCyfrrki94uNdg9UPKKenNdTQEbHTV61BdDumeEIwDIXuXdQVH3ozlE2+POGH0oE
-         8bpA==
-X-Forwarded-Encrypted: i=1; AJvYcCX5fskT5YpDI0p46u/JxBZ7lc3Jy5rBnpnNjr/cz9uMj3XWH1cT2th2qKjlHdznwzniVXvx5KiwAAJPFQ==@linaro.org
-X-Gm-Message-State: AOJu0Yw5ga4xW7dfvZFxCqi17BKo5rmeeBbg3UPktFxNmBF29Na8av/l
-	EgoJ48vVtgE2B8AJBSJZX2vQlfZQF6VebsQa1O2hQF70K7nwx0xucl8mq//YQ2Wmruog69IRJl0
-	QqLHWZGGuEJA9io2lrpJsR2zFGQXSFG0lnsCFS6yIi/js
-X-Gm-Gg: ASbGncsBda+4xDzcE+tmszDHQq6U8FF8fhRsTf1ryFNFnJAayLw097VBPZUQMmBUrzR
-	iNj0cvkhs4O/2VlSeTn1XPdug3HOOS6PRguyohc1q9+ti/XA88iawtHTfwBc1oSg15hfKvVNKPt
-	6A+3oPnC7T5mrAT2mox3NwQs4sri4YentCcvJAJgpKq90OK1Ao+adWoxw=
-X-Google-Smtp-Source: AGHT+IHBHeJeONG3H7FZDZ2gzpluKSyc9U5d3tSDDj9TAvFgb1FASvHR12UGnIXjylLAo97HcqblKFJamwURpnJdu+I=
-X-Received: by 2002:a05:690c:3584:b0:70c:a57c:94ba with SMTP id
- 00721157ae682-71140ab7fe8mr120867917b3.17.1749742803370; Thu, 12 Jun 2025
- 08:40:03 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jO0NsOjk;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1749744468;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=+uVuub5Ky1bzhq7P2Mnf0OieKw5ECMBGCTcKWAjvVoM=;
+	b=jO0NsOjkkbHtjZ0x883JiSlhSTx4+MFDCAVoh5pE8mDEgfDTZ2cZTl7Ez3H6Kj8orC1Gp1
+	1L6MGIfGXYPwJBgbB4w0e98zX+HqwvsD7DEI/NLo/iGCi5zDBqjkq2k3LVuj1SkYEZTbGw
+	hBwXdJV34zavvOgjVkVVWuHmkBHqIEA=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-55-Uv3enwPvPyq8CXgvFQds9w-1; Thu,
+ 12 Jun 2025 12:07:47 -0400
+X-MC-Unique: Uv3enwPvPyq8CXgvFQds9w-1
+X-Mimecast-MFC-AGG-ID: Uv3enwPvPyq8CXgvFQds9w_1749744465
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 8D1B818001D1;
+	Thu, 12 Jun 2025 16:07:44 +0000 (UTC)
+Received: from localhost (unknown [10.45.224.54])
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id ED9A019560AF;
+	Thu, 12 Jun 2025 16:07:42 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, richard.henderson@linaro.org,
+ alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+ sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
+ armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
+ jdenemar@redhat.com, agraf@csgraf.de, shahuang@redhat.com,
+ mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [PATCH v7 13/14] arm/cpu: switch to a generated cpu-sysregs.h.inc
+In-Reply-To: <CAFEAcA_Ju4QBUwiOyt9thPxuAFMcm6jVTZHpE8FFJeed5cJgsg@mail.gmail.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Avril Crosse O'Flaherty"
+References: <20250515153907.151174-1-cohuck@redhat.com>
+ <20250515153907.151174-14-cohuck@redhat.com>
+ <CAFEAcA_Ju4QBUwiOyt9thPxuAFMcm6jVTZHpE8FFJeed5cJgsg@mail.gmail.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Thu, 12 Jun 2025 18:07:40 +0200
+Message-ID: <871prp9c4z.fsf@redhat.com>
 MIME-Version: 1.0
-References: <20250515153907.151174-1-cohuck@redhat.com> <20250515153907.151174-3-cohuck@redhat.com>
- <CAFEAcA8y_wwZPoqkyPrNscRNTEwiOQm5Or9C=aiSNMGcZmq8CQ@mail.gmail.com> <87cyb99doe.fsf@redhat.com>
-In-Reply-To: <87cyb99doe.fsf@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Jun 2025 16:39:51 +0100
-X-Gm-Features: AX0GCFsSzIs_NzMxA8HzPGOMVkRaS0W_5TAvxGj8ZsUFrqoq2Opm_C-WeWiw9RI
-Message-ID: <CAFEAcA9P9W3jVzX6T6X3CW0zVwDbxdo1aeiG4ogGzpnHmQ8xgQ@mail.gmail.com>
-Subject: Re: [PATCH v7 02/14] arm/cpu: Store aa64isar0/aa64zfr0 into the
- idregs arrays
-To: Cornelia Huck <cohuck@redhat.com>
-Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org, 
-	qemu-arm@nongnu.org, kvmarm@lists.linux.dev, richard.henderson@linaro.org, 
-	alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev, 
-	sebott@redhat.com, shameerali.kolothum.thodi@huawei.com, armbru@redhat.com, 
-	berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com, 
-	agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org, 
-	pbonzini@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: G/iXWhypXTm3
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-TUID: DTKd68VPogET
 
-On Thu, 12 Jun 2025 at 16:34, Cornelia Huck <cohuck@redhat.com> wrote:
+On Thu, Jun 12 2025, Peter Maydell <peter.maydell@linaro.org> wrote:
+
+> On Thu, 15 May 2025 at 16:40, Cornelia Huck <cohuck@redhat.com> wrote:
+>>
+>> Generated against Linux 6.14-rc1.
+>>
+>> Reviewed-by: Sebastian Ott <sebott@redhat.com>
+>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>> ---
 >
-> On Thu, Jun 12 2025, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> > On Thu, 15 May 2025 at 16:39, Cornelia Huck <cohuck@redhat.com> wrote:
-> >>
-> >> From: Eric Auger <eric.auger@redhat.com>
-> >>
-> >> Also add kvm accessors for storing host features into idregs.
-> >>
-> >> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> >> Reviewed-by: Sebastian Ott <sebott@redhat.com>
-> >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> >> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> >
-> >
-> >>      if (!cpu->has_neon && !cpu->has_vfp) {
-> >> -        uint64_t t;
-> >> +        unit64_t t;
-> >
-> > This doesn't compile :-)
+> Does it make sense to include all these extra registers?
+> Some of them are not simple ID registers at all,
+> for example ID_CCSIDR_EL1 is an array of registers, not
+> a single value (in QEMU, stored in cpu->ccsidr[]),
+> and CSSELR_EL1 is not an ID register at all, it's a
+> normal read/write sysreg.
 
-> Hum... weird that my compile didn't hit it.
+Oops, I think the generator needs to check for op1=={0,1,3} instead of
+including op1==2...
 
-Patch 3 changes it back to uint64_t, so unless you do a
-test build after each patch you won't see it.
-
--- PMM
+[Another issue that came up in recent discussions for the cpu model
+series is that recent kernels have made {MIDR,REVIDR,AIDR}_EL1 writable,
+but even though they are in the range the kernel reports writable
+registers in, the source sysreg file does not include them. I've changed
+the script to add them manually so far, but not sure if that is the
+best solution here.]

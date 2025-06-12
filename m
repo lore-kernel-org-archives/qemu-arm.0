@@ -1,70 +1,70 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2603258njc;
-        Thu, 12 Jun 2025 14:00:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV02KWArIcXpF1PXDtFIW1dKwYaUkVS2iXKqonsHfrKjUdMQZJXteYgvROGmZMmHmVe8vvGmNxw7yT8yw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHTEvGoOUEzw2wcZHbvsfbm8N1qFuYEmkZnFVejx5NFWJTG2gzExTB3y95IDsSjCrSbCMiV
-X-Received: by 2002:a05:622a:248e:b0:494:78d5:baea with SMTP id d75a77b69052e-4a72ff327cemr10711231cf.51.1749762037498;
-        Thu, 12 Jun 2025 14:00:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749762037; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2603645njc;
+        Thu, 12 Jun 2025 14:01:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCULz/1nnDT1Di9Ta/hbJRyEej8pnIRkxCvWm5UTXStFIYPyGJuOkoiiQXzW8PcJhk1n8JEyDzHM8qsV7g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFFesjxf5/ShsSnEDZ0z7M1eJu6QyROnfIs6Q8KVKmJqPwr2HMqeqn61KVG5fbOJ6U1vzmT
+X-Received: by 2002:a05:6102:2d03:b0:4e5:9149:7cb3 with SMTP id ada2fe7eead31-4e7e39ad9f5mr393549137.13.1749762068893;
+        Thu, 12 Jun 2025 14:01:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749762068; cv=none;
         d=google.com; s=arc-20240605;
-        b=Nva+tp7ckRlvFEGjQqwIQoNoYVC35jt8CLwFff/DZgyt32IaVES4BT12guUxAAZHiz
-         j/f+fvtknyD9SrtxkmjhKD4K2tUajFkRkfI/t4gJcU6KRmXf+0DV0SKkkrw+hWD9OOyD
-         mmAvx9IO2iT16tinoteR1D0egOlqZmvnxEfaLvoi0AOLkPCuqPXcWWwEZ7HLUa7n9rpv
-         hcoR1khcBpMRwkpxRZlsSOEvT0xd3u3zbD1fkIk4hQTSpRMlaYEWiq7i5eHb3RIfjgCx
-         y8LAjvKqh7vq5qCJpCqDuhMtOAjpdqTEb4YAduZLXY3HJEz4ZWDc+0w3tGyweJlK6qdu
-         Z2dA==
+        b=HhAI85x7jAnUIBbS1MTGfg2nzv799IvRoAwkw7GxLeALrV1Yt7aB8yE1sJWYEB0HWJ
+         cNlQLGzU42+p35NiTGo7wY0peU/7rXWMMOODjTAXtjU0bqap6NXXoWnfLU4h5TYsfnz7
+         SnwDWLg5CYhy/8eq/ilyWGzYXDEptTC7dXFVHUXJU47Efbf09XE0/AKzJCJ/5dRW/Gi9
+         C4Tv7Qq2DkceD4IGy83n2AUgPMqvqs6i2n9ipEbpp67KC+v9lOBgdKPhn2B1LtN+YigI
+         0XrsFqjZX5V6z0/cwox/3IbSJDT1qqTx1XE4NbznBMrZjeZMMpSYVp8gGef/DOhMeosc
+         IyqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=PBxHPU8F9xytU1WJw8ndoGxgIxFGcDQhUL4l1zUYAMc=;
+        bh=biVTVO6tTUZgXsk76i+pCkrq8Kzb2MvWdVTKKPUZZgI=;
         fh=Bqei7UspLQLDtJyhx8DFVPkwaTXoAlN/5Ng7ASZZYZk=;
-        b=YzA02XhF4k5c+ujKoJhEmzFNzm5hXoNrPOa1nlaqiWlB6QF45xhsA2krHEkzAKqfkX
-         4cOvR6Hbdte+wqb1nJlaoUrbKrVQ02WwvxZuMl+awvfDz0QPDkRpuRGts/hSx/d8QNR7
-         /VCrXpMKGr4RzDGKguEkIytyC7nZBBlGfT42sz/CLQTFKKcmdHv9ygBpSBlwY9d33Eei
-         f+8qo2Mx1Uk2PrpXjAF1NMgh+o/vjMBKOU/vofLy51p1tAPH3iSfAJU/1HK5SS2Yqpmw
-         EkgCk23FGJ6SB0sXFobwESxKrg0+kVnlgQT/IhjbfGnB//AajqHL9raMGqHrnv8Lig6T
-         yRrQ==;
+        b=DrcgX0/q6le446Uk3mWNliEGd9rv50GbDgZunvvrt9GNQOq2ZQswNkKvvfUR8IxWp8
+         Fcr0kQpf+TNZek0JOLV8sduhxCIP+5enIm+fKlKrqPGuTf+5BXhTRHLk8GMow9HCFto3
+         FNWPw1VuxeBtdONcS9sgRa8pcc9/oqxxgk6l/pFNS4pM6/CvPB0ly8HKqu1WEFbi84FQ
+         8dcnrTXL9IhmXRPGAc+T9VCIxKcC6562RP4ZbHXDAnozcL721834lTEDQp52s2GuZT6I
+         /0GdbH8NF7c4fFhsI550rQRoqpDnW5oMkiyRqVENa6YXUYV6cC91+YTzs1bhlKXMMX15
+         KVqg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LJlToFdn;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FRgv+KtQ;
        spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <jsnow@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a72a2b90a7si16049921cf.37.2025.06.12.14.00.37
+        by mx.google.com with ESMTPS id ada2fe7eead31-4e7e4ccbee3si26589137.514.2025.06.12.14.01.08
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Jun 2025 14:00:37 -0700 (PDT)
+        Thu, 12 Jun 2025 14:01:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LJlToFdn;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FRgv+KtQ;
        spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1749762037;
+	s=mimecast20190719; t=1749762068;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=PBxHPU8F9xytU1WJw8ndoGxgIxFGcDQhUL4l1zUYAMc=;
-	b=LJlToFdnuzFgxsblkK0o8s46IbZ2zVcl7YoYLycR2GuO0P3cTLvsm3mLjJdq8bzffA2Y1S
-	Ohve0uOw7F6NObr2DdUk/qGuo3uGa/+B8ZcYgd5o9StH9veIgk3fboYR+8q7SM1HiEywtj
-	ADz95fGNQTZfV2GfW9278OdfoULaCDY=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+	bh=biVTVO6tTUZgXsk76i+pCkrq8Kzb2MvWdVTKKPUZZgI=;
+	b=FRgv+KtQjsz2wmG7F3uy7Ga5yZ8MfBK459tf34X5Atpmpuwi/D2ya1RgUhcAFLAWRal/ET
+	/Kl40xgI9nmWavQ+EkHH7ck82Be6JKaT4fuZ99h5Pkh0wX7Iet9H9F1pn65WKOiC25c+sD
+	Nkn7XGOXwUf2Ny/T7m4VHGwoLut4AKI=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-362-GBjP-yf1OPaff_ObhgnFzg-1; Thu,
- 12 Jun 2025 17:00:33 -0400
-X-MC-Unique: GBjP-yf1OPaff_ObhgnFzg-1
-X-Mimecast-MFC-AGG-ID: GBjP-yf1OPaff_ObhgnFzg_1749762027
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-28-wemlQmxONXyQMS5eJZyeNw-1; Thu,
+ 12 Jun 2025 17:01:04 -0400
+X-MC-Unique: wemlQmxONXyQMS5eJZyeNw-1
+X-Mimecast-MFC-AGG-ID: wemlQmxONXyQMS5eJZyeNw_1749762059
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 287D519560AA;
-	Thu, 12 Jun 2025 21:00:26 +0000 (UTC)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 42867180029D;
+	Thu, 12 Jun 2025 21:00:58 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.80.54])
-	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id E49291956050;
-	Thu, 12 Jun 2025 20:59:55 +0000 (UTC)
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 8FB201955F57;
+	Thu, 12 Jun 2025 21:00:26 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Joel Stanley <joel@jms.id.au>,
@@ -177,86 +177,42 @@ Cc: Joel Stanley <joel@jms.id.au>,
 	Huacai Chen <chenhuacai@kernel.org>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Harsh Prateek Bora <harshpb@linux.ibm.com>
-Subject: [PATCH v2 09/12] python: update mkvenv to type-check under different python versions
-Date: Thu, 12 Jun 2025 16:54:47 -0400
-Message-ID: <20250612205451.1177751-10-jsnow@redhat.com>
+Subject: [PATCH v2 10/12] python: remove version restriction for mypy
+Date: Thu, 12 Jun 2025 16:54:48 -0400
+Message-ID: <20250612205451.1177751-11-jsnow@redhat.com>
 In-Reply-To: <20250612205451.1177751-1-jsnow@redhat.com>
 References: <20250612205451.1177751-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: b-bhJN-XS6-YURShlWK8F4BIZixxhXgq_ijH9O80Fws_1749762027
+X-Mimecast-MFC-PROC-ID: PPk5PTBW-PNtNnRdwcLHa2mnYl3DDYlcd3UYwmeOp2s_1749762059
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-X-TUID: 2HMLrJOymKTv
+X-TUID: LyNUVn0EGtW5
 
-Currently, we instruct mypy to pretend it is type checking under a
-specific version of python. For our case, where our scripts may in fact
-actually be executing under a number of different environments in the
-build system, we want mypy to remove this restriction.
-
-This patch adjusts some of the import logic in mkvenv.py to make it type
-check under a wider range of python versions. It's largely arbitrary, to
-work around some mypy fussiness.
+Removing this configuration line allows mypy to type check files from
+the context of whatever version of Python it happens to be running
+under, which is actually what we want here, so long as we do actually
+support running these scripts under multiple versions of Python, which
+we currently do.
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- python/scripts/mkvenv.py | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
+ python/setup.cfg | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/python/scripts/mkvenv.py b/python/scripts/mkvenv.py
-index 8026ca24861..b5d1edd3afa 100644
---- a/python/scripts/mkvenv.py
-+++ b/python/scripts/mkvenv.py
-@@ -99,16 +99,18 @@
-         HAVE_DISTLIB = False
+diff --git a/python/setup.cfg b/python/setup.cfg
+index 02cc076eaea..9b6dbc520aa 100644
+--- a/python/setup.cfg
++++ b/python/setup.cfg
+@@ -78,7 +78,6 @@ exclude = __pycache__,
  
- # Try to load tomllib, with a fallback to tomli.
--# HAVE_TOMLLIB is checked below, just-in-time, so that mkvenv does not fail
-+# TOML is checked below, just-in-time, so that mkvenv does not fail
- # outside the venv or before a potential call to ensurepip in checkpip().
--HAVE_TOMLLIB = True
-+TOML = None
- try:
-     import tomllib
-+    TOML = tomllib
- except ImportError:
-     try:
--        import tomli as tomllib
-+        import tomli
-+        TOML = tomli
-     except ImportError:
--        HAVE_TOMLLIB = False
-+        pass
+ [mypy]
+ strict = True
+-python_version = 3.9
+ namespace_packages = True
+ warn_unused_ignores = False
  
- # Do not add any mandatory dependencies from outside the stdlib:
- # This script *must* be usable standalone!
-@@ -194,6 +196,7 @@ def compute_venv_libpath(context: SimpleNamespace) -> str:
-         # Python 3.12+, not strictly necessary because it's documented
-         # to be the same as 3.10 code below:
-         if sys.version_info >= (3, 12):
-+            assert isinstance(context.lib_path, str)
-             return context.lib_path
- 
-         # Python 3.10+
-@@ -710,7 +713,7 @@ def _do_ensure(
- 
- 
- def _parse_groups(file: str) -> dict[str, dict[str, Any]]:
--    if not HAVE_TOMLLIB:
-+    if not TOML:
-         if sys.version_info < (3, 11):
-             raise Ouch("found no usable tomli, please install it")
- 
-@@ -722,7 +725,7 @@ def _parse_groups(file: str) -> dict[str, dict[str, Any]]:
-     # Debian bullseye-backports) and v2.0.x
-     with open(file, encoding="ascii") as depfile:
-         contents = depfile.read()
--        return tomllib.loads(contents)  # type: ignore
-+        return TOML.loads(contents)  # type: ignore
- 
- 
- def ensure_group(
 -- 
 2.48.1

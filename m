@@ -1,132 +1,96 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2263326njc;
-        Wed, 11 Jun 2025 23:58:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWsIbZCbImzOlIMvwTkAcBzLkgrDQJXJIYRX5tTFujs9dVZcfWMUi/MB7a8PqIetNMXRSc7KhIqEv+5fA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHvfB4sw167x8zOWFwyfyp7GCPlwHKWklpJpPSB4O/F6haQQjDXIQnLjThQ1NUDS0OMp9WN
-X-Received: by 2002:a05:622a:1e07:b0:4a4:3e89:d5c0 with SMTP id d75a77b69052e-4a7242584admr26379641cf.12.1749711534080;
-        Wed, 11 Jun 2025 23:58:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749711534; cv=none;
+Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp3514385njc;
+        Thu, 12 Jun 2025 06:14:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUvNO0ReMMrhqQl/KsDNQbd3MCt4kS2+fmK32ELvsUf00xmSnxR8CJqnRtrMzhvDqgPyrncwd7+1j+LPg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFV6DwiMT/0NnNn+bAIlgZ487SEXQ9T46UIN+0JYA6A4O7Ebx8M5TbhIY42lDFIVxQjFUaB
+X-Received: by 2002:a05:6000:178d:b0:3a5:2ec5:35a9 with SMTP id ffacd0b85a97d-3a5607486a3mr2947797f8f.3.1749734069816;
+        Thu, 12 Jun 2025 06:14:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749734069; cv=none;
         d=google.com; s=arc-20240605;
-        b=Yhie9I00JKIMDnjnARAUQXiSERs3n8q6ctnemTP1DIPldXA0cfisxAkuJ/G7FleCAL
-         M0tc+Y9VTc59KD96o844ioMEPWmCFvF0Ol5aqZeb+Ms8frcjh7aL1Zsds8vM2GzmGuKp
-         GckfHD2qCKr8+dAhOJJuI0TVz+Hlt0qHbNTYQtBaiu6Be5/fIeBD6clJhuBAvCBCDbaX
-         f6KT+e0C9DiSEhPdBiOGvUZ5MxtrtOSxU4PKQIbVIoW085imvZSCCg0pHz+9MG+gFVKr
-         tP6+p0OxClDOXZLxejvAO//YngbApQJXrFfIAsWuRi3ePSAqwWTkwiQxvB+rDFNBYX10
-         F1NQ==
+        b=hIejHc/wxqmWhNN96qOElDRULOFBAsOhB1DREqvN2E6C3xzRHhgUzgfiOG28z8gYcR
+         xQP6ra6HVVItSFiE9tMq8JUWiipCHjscd/Mmv2w88VqTW8fvIH8AdTFGtODppURn5Uii
+         mz+NoZI90MyCN3K/A5gQEleTdfW0HKpJ3jwCG0e3tOgSMV88Nqrrokt/tnFpqI2gfPM/
+         qi5TskOGJRhueXxt0Bj2aIXNZifuxqb122enOzPEXN5T5Y57dC+G05m/cFqGc3DeZG6M
+         jmfV18QK8WkVsewToe/Omk3Axxuxi9VLsvWkQBLWdOxEnW0BcJ2eDL3Ai7yFHcnwcTSu
+         vCkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=iw0P8zHP75kWsQuIl7abcNMAXly1mJlNqwpvWJfupVI=;
-        fh=6XPaMxRZ3L/ngtVzusotL8txm2TZqSp9e/qEQo056qU=;
-        b=OqMoqZds+T7O3gpwy9z4Ptdtl4zSNTay0Xg1CiHLxAlim2X2ym2Rkd//AEKM92PFDD
-         gTeO1fogx+LId7QNoMAqKXWosqjmO6xQE1Shs9p9acPG3oD9pNFUt9t4+9XmMpOG0QNv
-         Pkn1wyo4aPdwtQ9fBa/sm+2/18JLtjQz300T6A2P5wWG1MD0Uk0IGYRl42oXtXZ27r6S
-         oIZdgc7ULwfLjj0aVMjMZE8mXDVH7mEoC+VRtp6BREpyUJbz8bkTCSQfjSaxStmLdxID
-         HCK0UiNaz9eFsp0acCPa4OXvhUH+Ze0Pv3N5hl4fNDWLjNM3I1FcR+SVby+zMBoYnSFc
-         NNiA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:date;
+        bh=xNr3Mb3K2MPd8Ly4XNSEXFgngUkNXsKEuDf+7r6R8M4=;
+        fh=MTOuWDNIVZ1v9+DWyrogvuVgCj3virTl2rL+S57KbgM=;
+        b=B1DBvXAbZuUUfI2JN76/EpN1CkHeN8SBEUM1QJmrmz8jAz2/8IbbrRLAZFUeepe1U1
+         7eDZ7xZMeT8i6BjukS+LziwEmLZElokW2W/ANCHqdHIrN6Ps29huMv8SeddWlWy0Hh9Q
+         NmQrP+DbeRVifXNelEP2g/elP2xGi/TZzICH+rOL9hm452nXxXDMFWcrMQuBbg9dIW4C
+         jxOuu4el9orGQ8uofALQSw/PHdyCM1+PQZY91JF30wnv23qEi65f9/kWcK+aoNW5nF9k
+         NfeFPtsM+qS8mFoe7cTPGdZ6SPYdqi3Cr5rWLYkGPJWv8NOsUFsoon52Y69q/vY2320D
+         9B7A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a72a2e766asi1356591cf.165.2025.06.11.23.58.53
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a561a0c04fsi1395304f8f.355.2025.06.12.06.14.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Jun 2025 23:58:54 -0700 (PDT)
+        Thu, 12 Jun 2025 06:14:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uPbtg-0006Bc-He; Thu, 12 Jun 2025 02:58:48 -0400
+	id 1uPhkj-0003RZ-I8; Thu, 12 Jun 2025 09:13:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=iT1u=Y3=kaod.org=clg@ozlabs.org>)
- id 1uPbtY-000696-Lr; Thu, 12 Jun 2025 02:58:40 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uPhkc-0003RF-78; Thu, 12 Jun 2025 09:13:51 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=iT1u=Y3=kaod.org=clg@ozlabs.org>)
- id 1uPbtW-0001gn-AY; Thu, 12 Jun 2025 02:58:40 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bHtfF1v10z4wcZ;
- Thu, 12 Jun 2025 16:58:29 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bHtf85rcKz4w2S;
- Thu, 12 Jun 2025 16:58:24 +1000 (AEST)
-Message-ID: <418f66a3-f7de-45d1-a076-9f14447c6bd3@kaod.org>
-Date: Thu, 12 Jun 2025 08:58:21 +0200
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uPhkY-0004zN-Bw; Thu, 12 Jun 2025 09:13:49 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bJ2wr4D6hz6K8Rw;
+ Thu, 12 Jun 2025 21:11:40 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 11C5F1400DC;
+ Thu, 12 Jun 2025 21:13:36 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 12 Jun
+ 2025 15:13:35 +0200
+Date: Thu, 12 Jun 2025 14:13:33 +0100
+To: Itaru Kitayama <itaru.kitayama@linux.dev>
+CC: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
+ <peter.maydell@linaro.org>, <mst@redhat.com>, <linuxarm@huawei.com>,
+ <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>, Yuquan Wang
+ <wangyuquan1236@phytium.com.cn>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
+ <philmd@linaro.org>, Alireza Sanaee <alireza.sanaee@huawei.com>
+Subject: Re: [PATCH v14 0/5] arm/virt: CXL support via pxb_cxl
+Message-ID: <20250612141333.00004bcc@huawei.com>
+In-Reply-To: <aDfs+gIkK5ekKBXx@vm4>
+References: <20250528110726.226389-1-Jonathan.Cameron@huawei.com>
+ <aDfs+gIkK5ekKBXx@vm4>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/misc/aspeed_scu: Handle AST2600 protection key
- registers correctly
-To: Tan Siewert <tan@siewert.io>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- qemu-arm@nongnu.org
-References: <20250611234350.40507-1-tan@siewert.io>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250611234350.40507-1-tan@siewert.io>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=iT1u=Y3=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.097, RCVD_IN_DNSWL_MED=-2.3,
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,82 +103,148 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 74SGvOvY/Ofn
+X-TUID: EoqQRys+Fgk4
 
-On 6/12/25 01:43, Tan Siewert wrote:
-> The AST2600 SCU has two protection key registers (0x00 and 0x10) that
-> both need to be unlocked. Each must be unlocked individually, but
-> locking one will lock both.
+On Thu, 29 May 2025 14:13:30 +0900
+Itaru Kitayama <itaru.kitayama@linux.dev> wrote:
+
+> On Wed, May 28, 2025 at 12:07:21PM +0100, Jonathan Cameron wrote:
+> > v14: Simplifications suggeseted by Itaru (and some extra simplifications
+> >      that became apparent) and gather tags.
+> >      See individual patches for more information.
+> > 
+> > Updated cover letter
+> > 
+> > Richard Henderson has posted a pull request with a fix for the TCG TLB
+> > issue which will hopefully merge shortly (Thanks Richard!).
+> > 
+> > Back in 2022, this series stalled on the absence of a solution to device
+> > tree support for PCI Expander Bridges (PXB) and we ended up only having
+> > x86 support upstream. I've been carrying the arm64 support out of tree
+> > since then, with occasional nasty surprises (e.g. UNIMP + DT issue seen
+> > a few weeks ago) and a fair number of fiddly rebases.
+> > gitlab.com/jic23/qemu cxl-<latest date>.  Will update shortly with this
+> > series.
+> > 
+> > A recent discussion with Peter Maydell indicated that there are various
+> > other ACPI only features now, so in general he might be more relaxed
+> > about DT support being necessary. The upcoming vSMMUv3 support would
+> > run into this problem as well.
+> > 
+> > I presented the background to the PXB issue at Linaro connect 2022. In
+> > short the issue is that PXBs steal MMIO space from the main PCI root
+> > bridge. The challenge is knowing how much to steal.
+> > 
+> > On ACPI platforms, we can rely on EDK2 to perform an enumeration and
+> > configuration of the PCI topology and QEMU can update the ACPI tables
+> > after EDK2 has done this when it can simply read the space used by the
+> > root ports. On device tree, there is no entity to figure out that
+> > enumeration so we don't know how to size the stolen region.
+> > 
+> > Three approaches were discussed:
+> > 1) Enumerating in QEMU. Horribly complex and the last thing we want is a
+> >    3rd enumeration implementation that ends up out of sync with EDK2 and
+> >    the kernel (there are frequent issues because of how those existing
+> >    implementations differ.
+> > 2) Figure out how to enumerate in kernel. I never put a huge amount of work
+> >    into this, but it seemed likely to involve a nasty dance with similar
+> >    very specific code to that EDK2 is carrying and would very challenging
+> >    to upstream (given the lack of clarity on real use cases for PXBs and
+> >    DT).
+> > 3) Hack it based on the control we have which is bus numbers.
+> >    No one liked this but it worked :)
+> > 
+> > The other little wrinkle would be the need to define full bindings for CXL
+> > on DT + implement a fairly complex kernel stack as equivalent in ACPI
+> > involves a static table, CEDT, new runtime queries via _DSM and a description
+> > of various components. Doable, but so far there is no interest on physical
+> > platforms. Worth noting that for now, the QEMU CXL emulation is all about
+> > testing and developing the OS stack, not about virtualization (performance
+> > is terrible except in some very contrived situations!)
+> > 
+> > There is only a very simple test in here, because my intent is not to
+> > duplicate what we have on x86, but just to do a smoke test that everything
+> > is hooked up.  In general we need much more comprehensive end to end CXL
+> > tests but that requires a reaonsably stable guest software stack. A few
+> > people have expressed interest in working on that, but we aren't there yet.
+> > 
+> > Note that this series has a very different use case to that in the proposed
+> > SBSA-ref support:
+> > https://lore.kernel.org/qemu-devel/20250117034343.26356-1-wangyuquan1236@phytium.com.cn/
+> > 
+> > SBSA-ref is a good choice if you want a relatively simple mostly fixed
+> > configuration.  That works well with the limited host system
+> > discoverability etc as EDK2 can be build against a known configuration.
+> > 
+> > My interest with this support in arm/virt is support host software stack
+> > development (we have a wide range of contributors, most of whom are working
+> > on emulation + the kernel support). I care about the weird corners. As such
+> > I need to be able to bring up variable numbers of host bridges, multiple CXL
+> > Fixed Memory Windows with varying characteristics (interleave etc), complex
+> > NUMA topologies with wierd performance characteristics etc. We can do that
+> > on x86 upstream today, or my gitlab tree. Note that we need arm support
+> > for some arch specific features in the near future (cache flushing).
+> > Doing kernel development with this need for flexibility on SBSA-ref is not
+> > currently practical. SBSA-ref CXL support is an excellent thing, just
+> > not much use to me for this work.
+> > 
+> > Also, we are kicking off some work on DCD virtualization, particularly to
+> > support inter-host shared memory being presented up into a VM. That
+> > will need upstream support on arm64 as it is built on top of the existing
+> > CXL emulation to avoid the need for a separate guest software stack.
+> > 
+> > Note this is TCG only - it is possible to support limited use with KVM but
+> > that needs additional patches not yet ready for upstream.  The challenge
+> > is interleave - and the solution is don't interleave if you want to run
+> > with KVM.  
 > 
-> This commit updates the SCU write logic to reject writes unless both
-> protection key registers are unlocked, matching the behaviour of
-> real hardware.
+> Series applied cleanly on top of today's QEMU. And I confirm that
+> qtest-aarch64/cxl-test passes the test as it should and ndctl cxl test
+> suite ran fine 11 out of 12 (1 SKIP) on this series again this time tracing
+> subsystem enabled as Alison suggested. Used the Intel folk cxl/next
+> kernel.
 > 
-> Signed-off-by: Tan Siewert <tan@siewert.io>
+> Tested-by: Itaru Kitayama <itaru.kitayama@fujitsu.com>
+Thanks Itaru.
 
-LGTM,
+I'm not going to pick this tag up purely because of the changes in patch
+2 and related dropping of patch 3.  Whilst not huge that is in fairly
+critical bit of the code, so feels inappropriate to carryn tags forwards.
 
-Jamin, Steven, Troy ?
+Jonathan
 
-
-Thanks,
-
-C.
-
-
-> ---
->   hw/misc/aspeed_scu.c | 17 +++++++++++++++--
->   1 file changed, 15 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-> index 4930e00fed..8e9eac4629 100644
-> --- a/hw/misc/aspeed_scu.c
-> +++ b/hw/misc/aspeed_scu.c
-> @@ -91,6 +91,7 @@
->   #define BMC_DEV_ID           TO_REG(0x1A4)
->   
->   #define AST2600_PROT_KEY          TO_REG(0x00)
-> +#define AST2600_PROT_KEY2         TO_REG(0x10)
->   #define AST2600_SILICON_REV       TO_REG(0x04)
->   #define AST2600_SILICON_REV2      TO_REG(0x14)
->   #define AST2600_SYS_RST_CTRL      TO_REG(0x40)
-> @@ -722,6 +723,7 @@ static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
->       int reg = TO_REG(offset);
->       /* Truncate here so bitwise operations below behave as expected */
->       uint32_t data = data64;
-> +    bool unlocked = s->regs[AST2600_PROT_KEY] && s->regs[AST2600_PROT_KEY2];
->   
->       if (reg >= ASPEED_AST2600_SCU_NR_REGS) {
->           qemu_log_mask(LOG_GUEST_ERROR,
-> @@ -730,7 +732,7 @@ static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
->           return;
->       }
->   
-> -    if (reg > PROT_KEY && !s->regs[PROT_KEY]) {
-> +    if ((reg != AST2600_PROT_KEY && reg != AST2600_PROT_KEY2) && !unlocked) {
->           qemu_log_mask(LOG_GUEST_ERROR, "%s: SCU is locked!\n", __func__);
->       }
->   
-> @@ -738,7 +740,18 @@ static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
->   
->       switch (reg) {
->       case AST2600_PROT_KEY:
-> -        s->regs[reg] = (data == ASPEED_SCU_PROT_KEY) ? 1 : 0;
-> +    case AST2600_PROT_KEY2:
-> +        /*
-> +         * Writing a value other than the protection key will lock
-> +         * both protection registers, but unlocking must be done
-> +         * to each protection register individually.
-> +         */
-> +        if (data != ASPEED_SCU_PROT_KEY) {
-> +            s->regs[AST2600_PROT_KEY] = 0;
-> +            s->regs[AST2600_PROT_KEY2] = 0;
-> +        } else {
-> +            s->regs[reg] = (data == ASPEED_SCU_PROT_KEY) ? 1 : 0;
-> +        }
->           return;
->       case AST2600_HW_STRAP1:
->       case AST2600_HW_STRAP2:
+> Thanks,
+> Itaru.
+> 
+> > 
+> > Jonathan Cameron (5):
+> >   hw/cxl-host: Add an index field to CXLFixedMemoryWindow
+> >   hw/cxl: Make the CXL fixed memory windows devices.
+> >   hw/cxl-host: Allow split of establishing memory address and mmio
+> >     setup.
+> >   hw/arm/virt: Basic CXL enablement on pci_expander_bridge instances
+> >     pxb-cxl
+> >   qtest/cxl: Add aarch64 virt test for CXL
+> > 
+> >  include/hw/arm/virt.h     |   4 +
+> >  include/hw/cxl/cxl.h      |   4 +
+> >  include/hw/cxl/cxl_host.h |   6 +-
+> >  hw/acpi/cxl.c             |  76 +++++++--------
+> >  hw/arm/virt-acpi-build.c  |  34 +++++++
+> >  hw/arm/virt.c             |  29 ++++++
+> >  hw/cxl/cxl-host-stubs.c   |   8 +-
+> >  hw/cxl/cxl-host.c         | 190 ++++++++++++++++++++++++++++++++------
+> >  hw/i386/pc.c              |  51 +++++-----
+> >  tests/qtest/cxl-test.c    |  59 +++++++++---
+> >  tests/qtest/meson.build   |   1 +
+> >  11 files changed, 353 insertions(+), 109 deletions(-)
+> > 
+> > -- 
+> > 2.48.1
+> >   
 

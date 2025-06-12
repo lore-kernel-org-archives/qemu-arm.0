@@ -1,97 +1,70 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2601117njc;
-        Thu, 12 Jun 2025 13:55:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCV3oS976wd3BR0fwHSy2RdawW80qADUoaZHyJmSqrVXDweP6vIf2eTcItwb9IJ1Z5Gvmoi6eWNEMRC+rg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFxt4AIDd3hYNUo1EMWjhoWsrcxrL+UFlpXvf9sqoanUNq8bNKXiAvgr72t3mCNuuH/TjvG
-X-Received: by 2002:a17:907:980f:b0:ad5:59ef:7f56 with SMTP id a640c23a62f3a-adec5c3407amr69954866b.48.1749761758560;
-        Thu, 12 Jun 2025 13:55:58 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1749761758; cv=pass;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2601312njc;
+        Thu, 12 Jun 2025 13:56:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVELolobWqlP31QbKHUp8ZXBi3seAnA1va64U/UpeEC5oJU/2+1883cL6NPqOcqb5ajhMt5rq22z6dMRA==@linaro.org
+X-Google-Smtp-Source: AGHT+IF1qRb5hJmaK9B+Uajw0Q6OBJWeIgV+wbbxqwPiXOWxaShr84yeIzAk9dXdRSDo2MuV4kGT
+X-Received: by 2002:a05:620a:480b:b0:7c5:94b2:99da with SMTP id af79cd13be357-7d3bc42f21amr115234485a.28.1749761790277;
+        Thu, 12 Jun 2025 13:56:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749761790; cv=none;
         d=google.com; s=arc-20240605;
-        b=hVbZV2hLFV/THVvmv59o1KKTTkeBGb2Yg8Jskqbh09eLIWjtSKEI23lhfVclcexI1Z
-         PPmtLp95B8eeiBAPDs9D21EpLxZLXB4OJbVrLngzUWa9JJLYE+sRZedkhv4LQTxgTwCE
-         dGPotSSysIiKKN4z0u4Ie5gkqbNNQsAxpYSPHzuydknmr84ngsz7or7Z6rfacoHdbk1T
-         c8TFlwGk8HZ4yk2/KUcjSTv2CeOObHdjabKI2N2dnVnEsn2FTkKCCywZzb88sVtCay6J
-         9Lpz14sv+907+VuFOcQqUOh5OqlkE4qERiHJxUIAKbYf2CkZ+uONt05ZMBk80oyoQj1O
-         xnHg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=1FocXpixhNfGu39v6/cNellGNuGl2w0TLDZKjW+TAPA=;
+        b=Fi77V87dP0BEhTRLfrQf7u4eJVm+XTV4uCyHX/uZGwonp6dwW5lsYwSzXwAYUhKtpp
+         Ijs33ynwu1HbgXs78j2Exka6JcJVBfTcKB/x9vyM+1Yh0flHgv42rn+BD1qrfJ2k+TWA
+         8Ey8kQgmXhoHZjOM0oRK/gG9qlcT2ZnWO/IuV1hj74ywPQxQ9y8Jcrk3eP0uiJ+XHjUf
+         mOj5IFfqKjxLf2QJdXB28Pi5sCr6BZ9BtZPocShJ7TWyhtmx2CwsUXiIAywDmeP5mkZP
+         /pZ3RhFQqsZsSa4ijwP/gQwEDeItZjNHuRNIh/VraUdXzrkgsaI8dwat9YKtZQitE6xP
+         oHmw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=R+HVWn5ejM2NRJ2UzNsYUYT8arVp5yX8Fj0AdCrYiak=;
         fh=Bqei7UspLQLDtJyhx8DFVPkwaTXoAlN/5Ng7ASZZYZk=;
-        b=fYpoNaCypNcQQqq71TChD5YDYo+3Xrj8W2sFxgmX+kdN8cexPP6iErATFknGiUeYDm
-         6ezwvuqajeHBdGdpYX1yGaTPQFlePi+Hmwws5Iaqfp4N1qt3fQnMT/yifwah7HVz4zmh
-         Dlpl7kUgh7haNfy8L6BBZopPxcsSm8kCu0Uo7Pmm6CmgkBs/pavFSbQmmu6bAOBKO1Ue
-         iiJ3dDeC4fxTnP0gUbzLSqMKR8xWs4cJV64V8cWuZqn63hOMyvXbdFmcDWNsstKw8MCl
-         Egqq7pGIh9C/odcpVyvWjtoXECNf+GX+a5+Ka4p0F4y8fOsOcDjwQ5oeLKVEDxZbP39d
-         FX9w==;
+        b=kZGZIW6+25xMfJ5Q0ZTKWYq6rq96U1+vp0tY2gLgN58uh4VaEC+alOXFOokeotfE7B
+         6MkX/LMMaG4fYCVInWzqJs5VJCI2CU8VO9ZEAfHj0mTPvj0oAIyD9xqLewY4O5Wo7xfp
+         Cw4B6e3Eyu+/SX7RhHjSReu9pUKpmr/l74a3oSYRc2D/Uj0lUkMIgF1tnlxPy8GRJIdd
+         6DZaliyIc7I+YF6J0/5/G4tgrIuEzW+E0YCc97zYTLpYoFffhETw1Ddy8/ML03k2eaMt
+         727zkI5MbAgSTi9o+PAJ1528oMdpAcxwyWWoGNiaKq1tuQQxYZzu+w4UnYPj+06UhdEA
+         dqnw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R3rciVig;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-49309-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-49309-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ihEIveKl;
+       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-49309-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id a640c23a62f3a-adec8988361si19180766b.704.2025.06.12.13.55.58
+Return-Path: <jsnow@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8ed9ab9si156625885a.375.2025.06.12.13.56.30
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Jun 2025 13:55:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-49309-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        Thu, 12 Jun 2025 13:56:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R3rciVig;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-49309-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-49309-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ihEIveKl;
+       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 377211895CCA
-	for <alex.bennee@linaro.org>; Thu, 12 Jun 2025 20:56:13 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 936042D876E;
-	Thu, 12 Jun 2025 20:55:53 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="R3rciVig"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BC4BE2BE7D7
-	for <kvm@vger.kernel.org>; Thu, 12 Jun 2025 20:55:50 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1749761753; cv=none; b=ArKn/2bQMifCNGCT6ayF/r1sSSi5z0xm2Q66Q6FBhumzTcVKLQgKpeL4mtDQbtnSXSAgU8mJnxR3syKQOvyAYISpjtV14EVPIpaf5ukpCXTxQs4nBcJ41U9YNpu62xoQMCf/QX7ESxxNn9ZP471h695uF5REiv1pGvrU1zIGARE=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1749761753; c=relaxed/simple;
-	bh=Ix1VneO6BZt9n5Bcwm+7eonz+fOdiRor/9qIYDBo1mU=;
-	h=From:To:Cc:Subject:Date:Message-ID:Content-Type:MIME-Version; b=iKC+uyiU/dJ6dAzg+intHQr6/Fsa0QoeYPViCEPfF3/FKh5IkPtySAwaMhruDxHrMveIUlJ1gWBtoSL0SwphkteLcB6M33W8daXJfCk8h1to2hZ6BzumuBQ3uxwhc+MiwspNMifWQ5XcCkOQoc8QSqrM15inN2F/4eLW7Qosoz4=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=R3rciVig; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1749761749;
+	s=mimecast20190719; t=1749761789;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=1FocXpixhNfGu39v6/cNellGNuGl2w0TLDZKjW+TAPA=;
-	b=R3rciVigu5rJv15rJ45qqVZ7Etp3nJfFnwQZ6W8CIRCkpho2EN8lvojZ3eRM18DKCrjzyk
-	yElsZQMdXJsYmoGRWpCITmZwH0wkmGp8I+SKxZ4IISDi/qdewl9xiY75+DrDFjKjBvpvau
-	Tz9NxOGDJWZmnsOrv/oLNOr33An3tDM=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=R+HVWn5ejM2NRJ2UzNsYUYT8arVp5yX8Fj0AdCrYiak=;
+	b=ihEIveKlzQZx1a6MfKxXXSA3rQR+5OJLUPCcRbGUseBwX9QeRZ6kTaKNayfM5XbzFAJQCc
+	E2b3Rt55A1CKxaetH3PnNBJjVt8NCWVdZt6BGHOczO60eAp2SFXRzKEn3BdEkpJwIvk/dw
+	T81jE3gbHg1He4c4Y0/fwfanh4UfOM4=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-149-nLKtXSULOVO2NMNDAYlmyA-1; Thu,
- 12 Jun 2025 16:55:43 -0400
-X-MC-Unique: nLKtXSULOVO2NMNDAYlmyA-1
-X-Mimecast-MFC-AGG-ID: nLKtXSULOVO2NMNDAYlmyA_1749761738
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-261-3q7aSDHgO1GPtMVMnHw1xw-1; Thu,
+ 12 Jun 2025 16:56:25 -0400
+X-MC-Unique: 3q7aSDHgO1GPtMVMnHw1xw-1
+X-Mimecast-MFC-AGG-ID: 3q7aSDHgO1GPtMVMnHw1xw_1749761772
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 2055F195608B;
-	Thu, 12 Jun 2025 20:55:36 +0000 (UTC)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 41B7A19560AD;
+	Thu, 12 Jun 2025 20:56:10 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.80.54])
-	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id A830F1956050;
-	Thu, 12 Jun 2025 20:54:53 +0000 (UTC)
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 7ADA61955F4A;
+	Thu, 12 Jun 2025 20:55:36 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Joel Stanley <joel@jms.id.au>,
@@ -204,534 +177,229 @@ Cc: Joel Stanley <joel@jms.id.au>,
 	Huacai Chen <chenhuacai@kernel.org>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Harsh Prateek Bora <harshpb@linux.ibm.com>
-Subject: [PATCH v2 00/12] Python: Fix 'make check-dev' and modernize to 3.9+
-Date: Thu, 12 Jun 2025 16:54:38 -0400
-Message-ID: <20250612205451.1177751-1-jsnow@redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+Subject: [PATCH v2 01/12] python: convert packages to PEP517/pyproject.toml
+Date: Thu, 12 Jun 2025 16:54:39 -0400
+Message-ID: <20250612205451.1177751-2-jsnow@redhat.com>
+In-Reply-To: <20250612205451.1177751-1-jsnow@redhat.com>
+References: <20250612205451.1177751-1-jsnow@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-TUID: lSHjY7ATXJ3h
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: m1wnsGwDqt2oWnZC1h0pFQD7I_s7xQ33U1fz2I2AcGA_1749761772
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+X-TUID: MtDH2N5g1tCz
 
-This series does a couple things that I'll probably end up splitting out=0D
-into smaller series if history is any guide, but either way, here it=0D
-goes:=0D
-=0D
-A) Convert qemu.git/python/ to a PEP517/pyproject.toml=0D
-package. Ultimately this means deleting setup.py and fully migrating to=0D
-newer python infrastructure. I think this should be safe to do by now,=0D
-but admittedly I am not *confident* as it relies on setuptools versions=0D
-in the wild, not python versions. My motivation for trying it is to fix=0D
-"make check-dev", which has been broken for the last two Fedora releases=0D
-under newer setuptools which have started removing support for the=0D
-pre-PEP517 packaging formats, which will only continue to get worse from=0D
-here on out.=0D
-=0D
-B) Sync changes from the qemu.qmp package back over to qemu.git. I know=0D
-I need to decouple this badly, but in order to do so, I need to make=0D
-sure they're synchronized to be assured that the switch to the=0D
-standalone version won't break anything, so this is a necessary=0D
-step. It's happening here because of the 3.6+ compat crud we are still=0D
-carrying in qemu.git that has since been removed from the standalone=0D
-library.=0D
-=0D
-C) Move us to 3.9+ style type hints. They are deprecated in 3.9, and=0D
-*could* be removed at any time. I figured now was a good time as any to=0D
-get rid of them before they become a problem randomly some day in the=0D
-future.=0D
-=0D
-D) Update the mypy configuration to check under multiple Python versions=0D
-more effectively and thoroughly.=0D
-=0D
-Whew.=0D
-=0D
-v2:=0D
- - Perform the 3.9+ syntax conversion using automated tooling instead=0D
- - Correct illegal escape sequences (pyupgrade whines otherwise)=0D
- - Use the correct shebang for all python scripts in tree=0D
- - Remove asterisk imports from scripts/codeconverter=0D
- - rebased on origin/master=0D
-=0D
-John Snow (12):=0D
-  python: convert packages to PEP517/pyproject.toml=0D
-  python: update pylint ignores=0D
-  python: sync changes from external qemu.qmp package=0D
-  python: update shebangs to standard, using /usr/bin/env=0D
-  python: fix illegal escape sequences=0D
-  python: upgrade to python3.9+ syntax=0D
-  fixup=0D
-  python: further 3.9+ syntax upgrades=0D
-  python: update mkvenv to type-check under different python versions=0D
-  python: remove version restriction for mypy=0D
-  scripts/codeconverter: remove unused code=0D
-  scripts/codeconverter: remove * imports=0D
-=0D
- docs/conf.py                                  |  13 +-=0D
- docs/sphinx/compat.py                         |  12 +-=0D
- docs/sphinx/dbusdoc.py                        |  28 +-=0D
- docs/sphinx/dbusdomain.py                     |  39 +--=0D
- docs/sphinx/dbusparser.py                     |   4 +-=0D
- docs/sphinx/depfile.py                        |  11 +-=0D
- docs/sphinx/fakedbusdoc.py                    |   5 +-=0D
- docs/sphinx/hxtool.py                         |   7 +-=0D
- docs/sphinx/kerneldoc.py                      |   8 +-=0D
- docs/sphinx/qapi_domain.py                    |  81 +++---=0D
- docs/sphinx/qapidoc.py                        |  29 +-=0D
- docs/sphinx/qapidoc_legacy.py                 |   1 -=0D
- docs/sphinx/qmp_lexer.py                      |   7 +-=0D
- python/README.rst                             |  33 ++-=0D
- .gitlab-ci.d/check-dco.py                     |   9 +-=0D
- .gitlab-ci.d/check-patch.py                   |   7 +-=0D
- .gitlab-ci.d/check-units.py                   |   8 +-=0D
- python/Makefile                               |  18 +-=0D
- python/pyproject.toml                         |  10 +=0D
- python/qemu/machine/console_socket.py         |   6 +-=0D
- python/qemu/machine/machine.py                |  34 +--=0D
- python/qemu/machine/qtest.py                  |  13 +-=0D
- python/qemu/qmp/error.py                      |   7 +-=0D
- python/qemu/qmp/events.py                     |  72 +++--=0D
- python/qemu/qmp/legacy.py                     |  31 +-=0D
- python/qemu/qmp/message.py                    |  38 +--=0D
- python/qemu/qmp/models.py                     |  17 +-=0D
- python/qemu/qmp/protocol.py                   | 179 +++++++-----=0D
- python/qemu/qmp/qmp_client.py                 | 147 +++++++---=0D
- python/qemu/qmp/qmp_shell.py                  | 182 ++++++++----=0D
- python/qemu/qmp/qmp_tui.py                    |  55 ++--=0D
- python/qemu/qmp/util.py                       | 116 +-------=0D
- python/qemu/utils/accel.py                    |   6 +-=0D
- python/qemu/utils/qemu_ga_client.py           |  13 +-=0D
- python/qemu/utils/qom_common.py               |  15 +-=0D
- python/qemu/utils/qom_fuse.py                 |  12 +-=0D
- python/scripts/mkvenv.py                      |  40 ++-=0D
- python/setup.cfg                              |   6 +-=0D
- python/setup.py                               |  40 ---=0D
- python/tests/minreqs.txt                      |   2 +-=0D
- python/tests/protocol.py                      |  11 +-=0D
- roms/edk2-build.py                            |  19 +-=0D
- scripts/analyse-9p-simpletrace.py             |   2 +=0D
- scripts/analyse-locks-simpletrace.py          |   5 +-=0D
- scripts/analyze-migration.py                  |  48 ++--=0D
- scripts/block-coroutine-wrapper.py            |   4 +-=0D
- scripts/check_sparse.py                       |   9 +-=0D
- scripts/ci/gitlab-pipeline-status             |   4 +-=0D
- .../codeconverter/codeconverter/patching.py   |  76 ++---=0D
- .../codeconverter/codeconverter/qom_macros.py |  98 +++++--=0D
- .../codeconverter/qom_type_info.py            |  86 ++++--=0D
- .../codeconverter/codeconverter/regexps.py    |   5 +-=0D
- .../codeconverter/test_patching.py            |   6 +-=0D
- .../codeconverter/test_regexps.py             |  33 ++-=0D
- scripts/codeconverter/codeconverter/utils.py  |  10 +-=0D
- scripts/codeconverter/converter.py            |  16 +-=0D
- scripts/compare-machine-types.py              |  49 ++--=0D
- scripts/coverage/compare_gcov_json.py         |   7 +-=0D
- scripts/cpu-x86-uarch-abi.py                  |   6 +-=0D
- scripts/decodetree.py                         |  12 +-=0D
- scripts/device-crash-test                     |  18 +-=0D
- scripts/dump-guest-memory.py                  |   5 +-=0D
- scripts/feature_to_c.py                       |   7 +-=0D
- scripts/kvm/kvm_flightrecorder                |   7 +-=0D
- scripts/kvm/vmxcap                            |   6 +-=0D
- scripts/meson-buildoptions.py                 |   3 +-=0D
- scripts/minikconf.py                          |  13 +-=0D
- scripts/modinfo-collect.py                    |   7 +-=0D
- scripts/modinfo-generate.py                   |   4 +-=0D
- scripts/modules/module_block.py               |   5 +-=0D
- scripts/mtest2make.py                         |   8 +-=0D
- scripts/oss-fuzz/minimize_qtest_trace.py      |  18 +-=0D
- scripts/oss-fuzz/output_reproducer.py         |  18 +-=0D
- .../oss-fuzz/reorder_fuzzer_qtest_trace.py    |   6 +-=0D
- scripts/performance/dissect.py                |   2 +-=0D
- scripts/performance/topN_callgrind.py         |   2 +-=0D
- scripts/performance/topN_perf.py              |   2 +-=0D
- scripts/probe-gdb-support.py                  |   4 +-=0D
- scripts/python_qmp_updater.py                 |   1 +=0D
- scripts/qapi-gen.py                           |   1 +=0D
- scripts/qapi/commands.py                      |  13 +-=0D
- scripts/qapi/common.py                        |  61 ++--=0D
- scripts/qapi/error.py                         |   1 -=0D
- scripts/qapi/events.py                        |   8 +-=0D
- scripts/qapi/expr.py                          |  21 +-=0D
- scripts/qapi/features.py                      |   2 +-=0D
- scripts/qapi/gen.py                           |  14 +-=0D
- scripts/qapi/introspect.py                    |  42 ++-=0D
- scripts/qapi/parser.py                        |  44 ++-=0D
- scripts/qapi/schema.py                        | 271 +++++++++---------=0D
- scripts/qapi/source.py                        |  10 +-=0D
- scripts/qapi/types.py                         |  20 +-=0D
- scripts/qapi/visit.py                         |  14 +-=0D
- scripts/qcow2-to-stdout.py                    |   8 +-=0D
- scripts/qemu-gdb.py                           |  13 +-=0D
- scripts/qemu-plugin-symbols.py                |   4 +-=0D
- scripts/qemu-stamp.py                         |   1 +=0D
- scripts/qemu-trace-stap                       |   1 -=0D
- scripts/qemugdb/aio.py                        |   1 +=0D
- scripts/qemugdb/coroutine.py                  |   1 +=0D
- scripts/qemugdb/mtree.py                      |   1 +=0D
- scripts/qemugdb/tcg.py                        |   2 +-=0D
- scripts/qemugdb/timers.py                     |   2 +-=0D
- scripts/qmp/qemu-ga-client                    |   1 +=0D
- scripts/qmp/qmp                               |   1 +=0D
- scripts/qmp/qmp-shell                         |   1 +=0D
- scripts/qmp/qmp-shell-wrap                    |   1 +=0D
- scripts/qmp/qom-fuse                          |   1 +=0D
- scripts/qmp/qom-get                           |   1 +=0D
- scripts/qmp/qom-list                          |   1 +=0D
- scripts/qmp/qom-set                           |   1 +=0D
- scripts/qmp/qom-tree                          |   1 +=0D
- scripts/qom-cast-macro-clean-cocci-gen.py     |   3 +-=0D
- scripts/render_block_graph.py                 |  28 +-=0D
- scripts/replay-dump.py                        |  10 +-=0D
- scripts/rust/rustc_args.py                    |  10 +-=0D
- scripts/shaderinclude.py                      |   4 +-=0D
- scripts/signrom.py                            |   3 +-=0D
- scripts/simplebench/bench-backup.py           |   9 +-=0D
- scripts/simplebench/bench-example.py          |   4 +-=0D
- scripts/simplebench/bench_block_job.py        |   9 +-=0D
- scripts/simplebench/bench_prealloc.py         |  10 +-=0D
- scripts/simplebench/bench_write_req.py        |   5 +-=0D
- scripts/simplebench/img_bench_templater.py    |  10 +-=0D
- scripts/simplebench/results_to_text.py        |   4 +-=0D
- scripts/simplebench/simplebench.py            |   2 +-=0D
- scripts/simplebench/table_templater.py        |   4 +-=0D
- scripts/simpletrace.py                        |  16 +-=0D
- scripts/symlink-install-tree.py               |   3 +-=0D
- scripts/tracetool.py                          |   5 +-=0D
- scripts/tracetool/__init__.py                 |  11 +-=0D
- scripts/tracetool/backend/__init__.py         |   2 -=0D
- scripts/tracetool/backend/dtrace.py           |   2 -=0D
- scripts/tracetool/backend/ftrace.py           |   2 -=0D
- scripts/tracetool/backend/log.py              |   2 -=0D
- scripts/tracetool/backend/simple.py           |   2 -=0D
- scripts/tracetool/backend/syslog.py           |   2 -=0D
- scripts/tracetool/backend/ust.py              |   2 -=0D
- scripts/tracetool/format/__init__.py          |   2 -=0D
- scripts/tracetool/format/c.py                 |   2 -=0D
- scripts/tracetool/format/d.py                 |   5 +-=0D
- scripts/tracetool/format/h.py                 |   2 -=0D
- scripts/tracetool/format/log_stap.py          |   3 +-=0D
- scripts/tracetool/format/simpletrace_stap.py  |   3 +-=0D
- scripts/tracetool/format/stap.py              |   2 -=0D
- scripts/tracetool/format/ust_events_c.py      |   2 -=0D
- scripts/tracetool/format/ust_events_h.py      |   2 -=0D
- scripts/u2f-setup-gen.py                      |  15 +-=0D
- scripts/undefsym.py                           |   3 +-=0D
- scripts/userfaultfd-wrlat.py                  |  10 +-=0D
- scripts/vmstate-static-checker.py             |   1 +=0D
- scripts/xml-preprocess-test.py                |   3 +-=0D
- scripts/xml-preprocess.py                     |   4 +-=0D
- target/hexagon/gen_analyze_funcs.py           |   3 -=0D
- target/hexagon/gen_decodetree.py              |   9 +-=0D
- target/hexagon/gen_helper_funcs.py            |   3 -=0D
- target/hexagon/gen_helper_protos.py           |   4 +-=0D
- target/hexagon/gen_idef_parser_funcs.py       |   4 -=0D
- target/hexagon/gen_op_attribs.py              |   6 +-=0D
- target/hexagon/gen_opcodes_def.py             |   6 +-=0D
- target/hexagon/gen_printinsn.py               |   5 +-=0D
- target/hexagon/gen_tcg_func_table.py          |   6 +-=0D
- target/hexagon/gen_tcg_funcs.py               |   3 -=0D
- target/hexagon/gen_trans_funcs.py             |   8 +-=0D
- target/hexagon/hex_common.py                  |  15 +-=0D
- tests/docker/docker.py                        |  37 ++-=0D
- tests/functional/aspeed.py                    |   4 +-=0D
- tests/functional/qemu_test/__init__.py        |  30 +-=0D
- tests/functional/qemu_test/archive.py         |   2 +-=0D
- tests/functional/qemu_test/asset.py           |  10 +-=0D
- tests/functional/qemu_test/decorators.py      |   1 +=0D
- tests/functional/qemu_test/linuxkernel.py     |   5 +-=0D
- tests/functional/qemu_test/ports.py           |   3 +-=0D
- tests/functional/qemu_test/testcase.py        |   2 +-=0D
- tests/functional/qemu_test/tuxruntest.py      |  12 +-=0D
- tests/functional/qemu_test/uncompress.py      |   4 +-=0D
- tests/functional/replay_kernel.py             |   7 +-=0D
- tests/functional/reverse_debugging.py         |   5 +-=0D
- .../functional/test_aarch64_aspeed_ast2700.py |   9 +-=0D
- .../test_aarch64_aspeed_ast2700fc.py          |   9 +-=0D
- tests/functional/test_aarch64_imx8mp_evk.py   |   4 +-=0D
- tests/functional/test_aarch64_raspi3.py       |   2 +-=0D
- tests/functional/test_aarch64_raspi4.py       |   7 +-=0D
- tests/functional/test_aarch64_replay.py       |   4 +-=0D
- .../functional/test_aarch64_reverse_debug.py  |   2 +-=0D
- tests/functional/test_aarch64_rme_sbsaref.py  |   8 +-=0D
- tests/functional/test_aarch64_rme_virt.py     |  11 +-=0D
- tests/functional/test_aarch64_sbsaref.py      |   9 +-=0D
- .../functional/test_aarch64_sbsaref_alpine.py |   8 +-=0D
- .../test_aarch64_sbsaref_freebsd.py           |   8 +-=0D
- tests/functional/test_aarch64_smmu.py         |   8 +-=0D
- tests/functional/test_aarch64_tcg_plugins.py  |   4 +-=0D
- tests/functional/test_aarch64_tuxrun.py       |   1 +=0D
- tests/functional/test_aarch64_virt.py         |  11 +-=0D
- tests/functional/test_aarch64_virt_gpu.py     |   7 +-=0D
- tests/functional/test_aarch64_xlnx_versal.py  |   3 +-=0D
- tests/functional/test_acpi_bits.py            |  21 +-=0D
- tests/functional/test_alpha_clipper.py        |   2 +-=0D
- tests/functional/test_arm_aspeed_ast1030.py   |   7 +-=0D
- tests/functional/test_arm_aspeed_ast2500.py   |   2 +-=0D
- tests/functional/test_arm_aspeed_ast2600.py   |  11 +-=0D
- tests/functional/test_arm_aspeed_bletchley.py |   2 +-=0D
- tests/functional/test_arm_aspeed_palmetto.py  |   2 +-=0D
- tests/functional/test_arm_aspeed_rainier.py   |   3 +-=0D
- tests/functional/test_arm_aspeed_romulus.py   |   2 +-=0D
- .../functional/test_arm_aspeed_witherspoon.py |   2 +-=0D
- tests/functional/test_arm_bflt.py             |   8 +-=0D
- tests/functional/test_arm_bpim2u.py           |  10 +-=0D
- tests/functional/test_arm_canona1100.py       |   3 +-=0D
- tests/functional/test_arm_collie.py           |   2 +-=0D
- tests/functional/test_arm_cubieboard.py       |  10 +-=0D
- tests/functional/test_arm_emcraft_sf2.py      |   7 +-=0D
- tests/functional/test_arm_integratorcp.py     |  12 +-=0D
- tests/functional/test_arm_microbit.py         |   8 +-=0D
- tests/functional/test_arm_orangepi.py         |  11 +-=0D
- tests/functional/test_arm_quanta_gsj.py       |   9 +-=0D
- tests/functional/test_arm_raspi2.py           |   7 +-=0D
- tests/functional/test_arm_smdkc210.py         |   2 +-=0D
- tests/functional/test_arm_stellaris.py        |   8 +-=0D
- tests/functional/test_arm_sx1.py              |   2 +-=0D
- tests/functional/test_arm_tuxrun.py           |   1 +=0D
- tests/functional/test_arm_vexpress.py         |   2 +-=0D
- tests/functional/test_arm_virt.py             |   3 +-=0D
- tests/functional/test_avr_mega2560.py         |   2 +-=0D
- tests/functional/test_avr_uno.py              |   2 +-=0D
- tests/functional/test_cpu_queries.py          |   1 +=0D
- tests/functional/test_empty_cpu_model.py      |   1 +=0D
- tests/functional/test_hppa_seabios.py         |   4 +-=0D
- tests/functional/test_i386_tuxrun.py          |   1 +=0D
- tests/functional/test_intel_iommu.py          |   6 +-=0D
- tests/functional/test_linux_initrd.py         |   2 +-=0D
- tests/functional/test_loongarch64_virt.py     |  10 +-=0D
- tests/functional/test_m68k_mcf5208evb.py      |   2 +-=0D
- tests/functional/test_m68k_nextcube.py        |   8 +-=0D
- tests/functional/test_m68k_q800.py            |   3 +-=0D
- tests/functional/test_m68k_tuxrun.py          |   1 +=0D
- tests/functional/test_mem_addr_space.py       |   4 +-=0D
- tests/functional/test_memlock.py              |   9 +-=0D
- .../functional/test_microblaze_s3adsp1800.py  |   9 +-=0D
- tests/functional/test_mips64_malta.py         |   2 +-=0D
- tests/functional/test_mips64_tuxrun.py        |   1 +=0D
- tests/functional/test_mips64el_fuloong2e.py   |  11 +-=0D
- tests/functional/test_mips64el_loongson3v.py  |   8 +-=0D
- tests/functional/test_mips64el_malta.py       |  17 +-=0D
- tests/functional/test_mips64el_tuxrun.py      |   1 +=0D
- tests/functional/test_mips_malta.py           |   8 +-=0D
- tests/functional/test_mips_tuxrun.py          |   1 +=0D
- tests/functional/test_mipsel_malta.py         |  11 +-=0D
- tests/functional/test_mipsel_tuxrun.py        |   1 +=0D
- tests/functional/test_multiprocess.py         |  10 +-=0D
- tests/functional/test_netdev_ethtool.py       |   5 +-=0D
- tests/functional/test_or1k_sim.py             |   2 +-=0D
- tests/functional/test_pc_cpu_hotplug_props.py |   1 +=0D
- tests/functional/test_ppc64_e500.py           |   7 +-=0D
- tests/functional/test_ppc64_hv.py             |  16 +-=0D
- tests/functional/test_ppc64_mac99.py          |   8 +-=0D
- tests/functional/test_ppc64_powernv.py        |   4 +-=0D
- tests/functional/test_ppc64_pseries.py        |   4 +-=0D
- tests/functional/test_ppc64_reverse_debug.py  |   2 +-=0D
- tests/functional/test_ppc64_tuxrun.py         |   3 +-=0D
- tests/functional/test_ppc_40p.py              |  10 +-=0D
- tests/functional/test_ppc_74xx.py             |   4 +-=0D
- tests/functional/test_ppc_amiga.py            |   3 +-=0D
- tests/functional/test_ppc_bamboo.py           |   9 +-=0D
- tests/functional/test_ppc_mac.py              |   2 +-=0D
- tests/functional/test_ppc_mpc8544ds.py        |   3 +-=0D
- tests/functional/test_ppc_sam460ex.py         |   7 +-=0D
- tests/functional/test_ppc_tuxrun.py           |   1 +=0D
- tests/functional/test_ppc_virtex_ml507.py     |   3 +-=0D
- tests/functional/test_riscv32_tuxrun.py       |   1 +=0D
- tests/functional/test_riscv64_tuxrun.py       |   1 +=0D
- tests/functional/test_riscv_opensbi.py        |   4 +-=0D
- tests/functional/test_rx_gdbsim.py            |  10 +-=0D
- tests/functional/test_s390x_ccw_virtio.py     |   9 +-=0D
- tests/functional/test_s390x_topology.py       |  11 +-=0D
- tests/functional/test_s390x_tuxrun.py         |   1 +=0D
- tests/functional/test_sh4_r2d.py              |   2 +-=0D
- tests/functional/test_sh4_tuxrun.py           |   1 +=0D
- tests/functional/test_sh4eb_r2d.py            |   7 +-=0D
- tests/functional/test_sparc64_sun4u.py        |   3 +-=0D
- tests/functional/test_sparc64_tuxrun.py       |   1 +=0D
- tests/functional/test_sparc_sun4m.py          |   2 +-=0D
- tests/functional/test_virtio_balloon.py       |  10 +-=0D
- tests/functional/test_virtio_gpu.py           |  14 +-=0D
- tests/functional/test_virtio_version.py       |   1 +=0D
- tests/functional/test_x86_64_hotplug_blk.py   |   6 +-=0D
- tests/functional/test_x86_64_hotplug_cpu.py   |   6 +-=0D
- tests/functional/test_x86_64_kvm_xen.py       |   8 +-=0D
- tests/functional/test_x86_64_replay.py        |   4 +-=0D
- tests/functional/test_x86_64_reverse_debug.py |   2 +-=0D
- tests/functional/test_x86_64_tuxrun.py        |   1 +=0D
- .../functional/test_x86_cpu_model_versions.py |  13 +-=0D
- tests/functional/test_xtensa_lx60.py          |   2 +-=0D
- tests/guest-debug/run-test.py                 |   9 +-=0D
- tests/guest-debug/test_gdbstub.py             |  15 +-=0D
- tests/image-fuzzer/qcow2/fuzz.py              |   3 +-=0D
- tests/image-fuzzer/qcow2/layout.py            |  32 ++-=0D
- tests/image-fuzzer/runner.py                  |  19 +-=0D
- tests/lcitool/refresh                         |   6 +-=0D
- tests/migration-stress/guestperf-batch.py     |   1 +=0D
- tests/migration-stress/guestperf-plot.py      |   1 +=0D
- tests/migration-stress/guestperf.py           |   1 +=0D
- .../migration-stress/guestperf/comparison.py  |   3 +-=0D
- tests/migration-stress/guestperf/engine.py    |   8 +-=0D
- tests/migration-stress/guestperf/hardware.py  |   2 +-=0D
- tests/migration-stress/guestperf/plot.py      |   4 +-=0D
- tests/migration-stress/guestperf/progress.py  |   4 +-=0D
- tests/migration-stress/guestperf/report.py    |   9 +-=0D
- tests/migration-stress/guestperf/scenario.py  |   2 +-=0D
- tests/migration-stress/guestperf/shell.py     |  18 +-=0D
- tests/migration-stress/guestperf/timings.py   |   4 +-=0D
- tests/qapi-schema/test-qapi.py                |   2 +-=0D
- tests/qemu-iotests/030                        |   6 +-=0D
- tests/qemu-iotests/040                        |   6 +-=0D
- tests/qemu-iotests/041                        |   7 +-=0D
- tests/qemu-iotests/044                        |  11 +-=0D
- tests/qemu-iotests/045                        |  10 +-=0D
- tests/qemu-iotests/055                        |   4 +-=0D
- tests/qemu-iotests/056                        |   6 +-=0D
- tests/qemu-iotests/057                        |   5 +-=0D
- tests/qemu-iotests/065                        |  10 +-=0D
- tests/qemu-iotests/093                        |   9 +-=0D
- tests/qemu-iotests/096                        |   4 +-=0D
- tests/qemu-iotests/118                        |   4 +-=0D
- tests/qemu-iotests/124                        |   8 +-=0D
- tests/qemu-iotests/129                        |   2 +=0D
- tests/qemu-iotests/132                        |   3 +-=0D
- tests/qemu-iotests/136                        |   4 +-=0D
- tests/qemu-iotests/139                        |   3 +-=0D
- tests/qemu-iotests/141                        |   1 +=0D
- tests/qemu-iotests/147                        |  13 +-=0D
- tests/qemu-iotests/148                        |   2 +=0D
- tests/qemu-iotests/149                        |   7 +-=0D
- tests/qemu-iotests/151                        |   6 +-=0D
- tests/qemu-iotests/152                        |   2 +=0D
- tests/qemu-iotests/155                        |   2 +=0D
- tests/qemu-iotests/163                        |  11 +-=0D
- tests/qemu-iotests/165                        |   3 +-=0D
- tests/qemu-iotests/194                        |   7 +-=0D
- tests/qemu-iotests/196                        |   2 +=0D
- tests/qemu-iotests/202                        |   1 +=0D
- tests/qemu-iotests/203                        |   1 +=0D
- tests/qemu-iotests/205                        |  11 +-=0D
- tests/qemu-iotests/206                        |   1 +=0D
- tests/qemu-iotests/207                        |   6 +-=0D
- tests/qemu-iotests/208                        |   1 +=0D
- tests/qemu-iotests/209                        |  11 +-=0D
- tests/qemu-iotests/210                        |   1 +=0D
- tests/qemu-iotests/211                        |   1 +=0D
- tests/qemu-iotests/212                        |   1 +=0D
- tests/qemu-iotests/213                        |   1 +=0D
- tests/qemu-iotests/216                        |   1 +=0D
- tests/qemu-iotests/218                        |   1 +=0D
- tests/qemu-iotests/219                        |   1 +=0D
- tests/qemu-iotests/224                        |  13 +-=0D
- tests/qemu-iotests/228                        |  11 +-=0D
- tests/qemu-iotests/234                        |   4 +-=0D
- tests/qemu-iotests/235                        |  14 +-=0D
- tests/qemu-iotests/236                        |   1 +=0D
- tests/qemu-iotests/237                        |   2 +=0D
- tests/qemu-iotests/238                        |   3 +-=0D
- tests/qemu-iotests/240                        |   2 +-=0D
- tests/qemu-iotests/242                        |  23 +-=0D
- tests/qemu-iotests/245                        |   1 +=0D
- tests/qemu-iotests/246                        |   1 +=0D
- tests/qemu-iotests/248                        |  12 +-=0D
- tests/qemu-iotests/254                        |   3 +-=0D
- tests/qemu-iotests/255                        |   1 +=0D
- tests/qemu-iotests/256                        |   4 +-=0D
- tests/qemu-iotests/257                        |  28 +-=0D
- tests/qemu-iotests/258                        |  10 +-=0D
- tests/qemu-iotests/260                        |   8 +-=0D
- tests/qemu-iotests/262                        |   4 +-=0D
- tests/qemu-iotests/264                        |   7 +-=0D
- tests/qemu-iotests/274                        |   1 +=0D
- tests/qemu-iotests/277                        |  10 +-=0D
- tests/qemu-iotests/280                        |   2 +-=0D
- tests/qemu-iotests/281                        |   4 +-=0D
- tests/qemu-iotests/283                        |   1 +=0D
- tests/qemu-iotests/295                        |   6 +-=0D
- tests/qemu-iotests/296                        |   7 +-=0D
- tests/qemu-iotests/297                        |   8 +-=0D
- tests/qemu-iotests/298                        |   2 +=0D
- tests/qemu-iotests/299                        |   1 +=0D
- tests/qemu-iotests/300                        |  10 +-=0D
- tests/qemu-iotests/302                        |   4 +-=0D
- tests/qemu-iotests/303                        |  13 +-=0D
- tests/qemu-iotests/304                        |   3 +-=0D
- tests/qemu-iotests/307                        |   2 +-=0D
- tests/qemu-iotests/310                        |   1 +=0D
- tests/qemu-iotests/check                      |   7 +-=0D
- tests/qemu-iotests/fat16.py                   |  12 +-=0D
- tests/qemu-iotests/findtests.py               |  19 +-=0D
- tests/qemu-iotests/iotests.py                 |  70 +++--=0D
- tests/qemu-iotests/linters.py                 |   9 +-=0D
- tests/qemu-iotests/nbd-fault-injector.py      |  13 +-=0D
- tests/qemu-iotests/qcow2.py                   |   5 +-=0D
- tests/qemu-iotests/qcow2_format.py            |  14 +-=0D
- tests/qemu-iotests/qed.py                     |  10 +-=0D
- tests/qemu-iotests/testenv.py                 |  25 +-=0D
- tests/qemu-iotests/testrunner.py              |  32 +--=0D
- tests/qemu-iotests/tests/block-status-cache   |   1 +=0D
- .../tests/export-incoming-iothread            |   1 +=0D
- .../qemu-iotests/tests/graph-changes-while-io |  11 +-=0D
- tests/qemu-iotests/tests/image-fleecing       |   1 +=0D
- tests/qemu-iotests/tests/inactive-node-nbd    |   8 +-=0D
- .../tests/iothreads-commit-active             |   2 +=0D
- tests/qemu-iotests/tests/iothreads-create     |   2 +=0D
- tests/qemu-iotests/tests/iothreads-nbd-export |   3 +=0D
- tests/qemu-iotests/tests/iothreads-stream     |   2 +=0D
- tests/qemu-iotests/tests/luks-detached-header |   5 +-=0D
- .../tests/migrate-bitmaps-postcopy-test       |  10 +-=0D
- tests/qemu-iotests/tests/migrate-bitmaps-test |   2 +-=0D
- .../qemu-iotests/tests/migrate-during-backup  |   1 +=0D
- .../tests/mirror-change-copy-mode             |   3 +-=0D
- .../tests/mirror-ready-cancel-error           |   1 +=0D
- tests/qemu-iotests/tests/nbd-multiconn        |   2 +-=0D
- .../qemu-iotests/tests/nbd-reconnect-on-open  |  11 +-=0D
- .../qemu-iotests/tests/parallels-read-bitmap  |   8 +-=0D
- tests/qemu-iotests/tests/qsd-migrate          |   2 +-=0D
- .../tests/remove-bitmap-from-backing          |   8 +-=0D
- tests/qemu-iotests/tests/reopen-file          |   3 +-=0D
- .../qemu-iotests/tests/stream-error-on-reset  |   8 +-=0D
- .../tests/stream-unaligned-prefetch           |  13 +-=0D
- .../qemu-iotests/tests/stream-under-throttle  |   4 +-=0D
- tests/qemu-iotests/tests/vvfat                |   7 +-=0D
- tests/tcg/aarch64/gdbstub/test-mte.py         |   2 +-=0D
- tests/tcg/aarch64/gdbstub/test-sve-ioctl.py   |   4 +-=0D
- tests/tcg/aarch64/gdbstub/test-sve.py         |   2 +-=0D
- tests/tcg/i386/test-avx.py                    |  11 +-=0D
- tests/tcg/i386/test-mmx.py                    |   9 +-=0D
- tests/tcg/multiarch/gdbstub/catch-syscalls.py |   6 +-=0D
- .../gdbstub/follow-fork-mode-child.py         |   4 +-=0D
- .../gdbstub/follow-fork-mode-parent.py        |   2 +-=0D
- tests/tcg/multiarch/gdbstub/interrupt.py      |   1 -=0D
- tests/tcg/multiarch/gdbstub/late-attach.py    |   4 +-=0D
- tests/tcg/multiarch/gdbstub/memory.py         |   2 -=0D
- tests/tcg/multiarch/gdbstub/prot-none.py      |   5 +-=0D
- tests/tcg/multiarch/gdbstub/registers.py      |   3 +-=0D
- tests/tcg/multiarch/gdbstub/sha1.py           |   1 -=0D
- .../multiarch/gdbstub/test-proc-mappings.py   |   1 -=0D
- .../multiarch/gdbstub/test-qxfer-auxv-read.py |   1 -=0D
- .../gdbstub/test-qxfer-siginfo-read.py        |   2 +-=0D
- .../gdbstub/test-thread-breakpoint.py         |   1 -=0D
- .../system/validate-memory-counts.py          |   7 +-=0D
- tests/tcg/s390x/gdbstub/test-signals-s390x.py |   2 -=0D
- tests/tcg/s390x/gdbstub/test-svc.py           |   1 -=0D
- tests/vm/aarch64vm.py                         |  16 +-=0D
- tests/vm/basevm.py                            |  37 +--=0D
- tests/vm/centos.aarch64                       |  11 +-=0D
- tests/vm/freebsd                              |   7 +-=0D
- tests/vm/haiku.x86_64                         |   7 +-=0D
- tests/vm/netbsd                               |   5 +-=0D
- tests/vm/openbsd                              |   5 +-=0D
- tests/vm/ubuntu.aarch64                       |   6 +-=0D
- tests/vm/ubuntuvm.py                          |   6 +-=0D
- 456 files changed, 2624 insertions(+), 2058 deletions(-)=0D
- create mode 100644 python/pyproject.toml=0D
- delete mode 100755 python/setup.py=0D
-=0D
--- =0D
-2.48.1=0D
-=0D
+Newer versions of setuptools increasingly expect that packages are
+defined using the pyproject.toml/PEP517 packaging layout format. With
+3.9 as our minimum, I believe it's finally appropriate to make the shift
+away from the legacy packaging format.
 
+Update documentation and dependencies that change as a result of the
+different build/packaging/installation pathways.
+
+This change has the effect of fixing "make check-dev", which has been
+broken on newer versions of Fedora for a while, now.
+
+Signed-off-by: John Snow <jsnow@redhat.com>
+---
+ python/README.rst        | 33 ++++++++++++++++-----------------
+ python/Makefile          | 18 +++++++++---------
+ python/pyproject.toml    | 10 ++++++++++
+ python/setup.py          | 40 ----------------------------------------
+ python/tests/minreqs.txt |  2 +-
+ 5 files changed, 36 insertions(+), 67 deletions(-)
+ create mode 100644 python/pyproject.toml
+ delete mode 100755 python/setup.py
+
+diff --git a/python/README.rst b/python/README.rst
+index d62e71528d2..befa84e3261 100644
+--- a/python/README.rst
++++ b/python/README.rst
+@@ -5,24 +5,23 @@ This directory houses Python tooling used by the QEMU project to build,
+ configure, and test QEMU. It is organized by namespace (``qemu``), and
+ then by package (e.g. ``qemu/machine``, ``qemu/qmp``, etc).
+ 
+-``setup.py`` is used by ``pip`` to install this tooling to the current
+-environment. ``setup.cfg`` provides the packaging configuration used by
+-``setup.py``. You will generally invoke it by doing one of the following:
++``pyproject.toml`` and ``setup.cfg`` are used by ``pip`` to install this
++tooling to the current environment. ``setup.cfg`` provides the packaging
++configuration, while ``pyproject.toml`` describes the package build
++system requirements.
+ 
+-1. ``pip3 install .`` will install these packages to your current
+-   environment. If you are inside a virtual environment, they will
+-   install there. If you are not, it will attempt to install to the
+-   global environment, which is **not recommended**.
++You will generally install these packages by invoking ``pip3 install
++.``; which will install these packages to your current environment. If
++you are inside a virtual environment, they will install there. If you
++are not, modern versions of pip will attempt instead to install to your
++local user environment. Older versions of pip will attempt to install to
++the global environment, which is **not recommended**.
+ 
+-2. ``pip3 install --user .`` will install these packages to your user's
+-   local python packages. If you are inside of a virtual environment,
+-   this will fail; you want the first invocation above.
+-
+-If you append the ``--editable`` or ``-e`` argument to either invocation
+-above, pip will install in "editable" mode. This installs the package as
+-a forwarder ("qemu.egg-link") that points to the source tree. In so
+-doing, the installed package always reflects the latest version in your
+-source tree.
++If you append the ``--editable`` or ``-e`` argument to the above
++invocation, pip will install in "editable" mode. This installs the
++package as a "forwarder" that points to the source tree, so that the
++installed package always reflects the latest version in your source
++tree.
+ 
+ Installing ".[devel]" instead of "." will additionally pull in required
+ packages for testing this package. They are not runtime requirements,
+@@ -81,4 +80,4 @@ Files in this directory
+ - ``VERSION`` contains the PEP-440 compliant version used to describe
+   this package; it is referenced by ``setup.cfg``.
+ - ``setup.cfg`` houses setuptools package configuration.
+-- ``setup.py`` is the setuptools installer used by pip; See above.
++- ``pyproject.toml`` lists build system requirements for the Python packages.
+diff --git a/python/Makefile b/python/Makefile
+index 764b79ccb23..845fbb66cf4 100644
+--- a/python/Makefile
++++ b/python/Makefile
+@@ -15,8 +15,8 @@ help:
+ 	@echo "make check-tox:"
+ 	@echo "    Run tests against multiple python versions."
+ 	@echo "    These tests use the newest dependencies."
+-	@echo "    Requires: Python 3.9 - 3.11, and tox."
+-	@echo "    Hint (Fedora): 'sudo dnf install python3-tox python3.11'"
++	@echo "    Requires: Python 3.9 - 3.13, and tox."
++	@echo "    Hint (Fedora): 'sudo dnf install python3-tox python3.13'"
+ 	@echo "    The variable QEMU_TOX_EXTRA_ARGS can be use to pass extra"
+ 	@echo "    arguments to tox".
+ 	@echo ""
+@@ -63,12 +63,12 @@ $(QEMU_MINVENV_DIR) $(QEMU_MINVENV_DIR)/bin/activate: setup.cfg tests/minreqs.tx
+ 	@(								\
+ 		echo "ACTIVATE $(QEMU_MINVENV_DIR)";			\
+ 		. $(QEMU_MINVENV_DIR)/bin/activate;			\
+-		echo "INSTALL wheel $(QEMU_MINVENV_DIR)";               \
+-		$(PIP_INSTALL) wheel 1>/dev/null;		               \
++		echo "INSTALL wheel $(QEMU_MINVENV_DIR)";		\
++		$(PIP_INSTALL) wheel 1>/dev/null;			\
+ 		echo "INSTALL -r tests/minreqs.txt $(QEMU_MINVENV_DIR)";\
+ 		$(PIP_INSTALL) -r tests/minreqs.txt 1>/dev/null;	\
+ 		echo "INSTALL -e qemu $(QEMU_MINVENV_DIR)";		\
+-		$(PIP_INSTALL) -e . 1>/dev/null;			\
++		$(PIP_INSTALL) -e . --config-settings=editable_mode=compat 1>/dev/null;			\
+ 	)
+ 	@touch $(QEMU_MINVENV_DIR)
+ 
+@@ -103,7 +103,7 @@ check-dev: dev-venv
+ 
+ .PHONY: develop
+ develop:
+-	$(PIP_INSTALL) -e .[devel]
++	$(PIP_INSTALL) -e .[devel] --config-settings=editable_mode=compat
+ 
+ .PHONY: check
+ check:
+@@ -122,12 +122,12 @@ check-coverage:
+ 
+ .PHONY: clean
+ clean:
+-	python3 setup.py clean --all
+-	rm -f pyproject.toml
++	rm -rf build/
+ 
+ .PHONY: distclean
+ distclean: clean
+-	rm -rf qemu.egg-info/ .eggs/ dist/
++	rm -rf qemu.egg-info/
+ 	rm -rf $(QEMU_VENV_DIR) $(QEMU_MINVENV_DIR) .tox/
++	rm -rf .mypy_cache/
+ 	rm -f .coverage .coverage.*
+ 	rm -rf htmlcov/
+diff --git a/python/pyproject.toml b/python/pyproject.toml
+new file mode 100644
+index 00000000000..2de34bf4729
+--- /dev/null
++++ b/python/pyproject.toml
+@@ -0,0 +1,10 @@
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++[build-system]
++requires = [
++    "setuptools>=39.2",
++    "wheel",
++]
++build-backend = "setuptools.build_meta"
++
++[tool.setuptools_scm]
+diff --git a/python/setup.py b/python/setup.py
+deleted file mode 100755
+index c5bc45919a4..00000000000
+--- a/python/setup.py
++++ /dev/null
+@@ -1,40 +0,0 @@
+-#!/usr/bin/env python3
+-"""
+-QEMU tooling installer script
+-Copyright (c) 2020-2021 John Snow for Red Hat, Inc.
+-"""
+-
+-import setuptools
+-from setuptools.command import bdist_egg
+-import sys
+-import pkg_resources
+-
+-
+-class bdist_egg_guard(bdist_egg.bdist_egg):
+-    """
+-    Protect against bdist_egg from being executed
+-
+-    This prevents calling 'setup.py install' directly, as the 'install'
+-    CLI option will invoke the deprecated bdist_egg hook. "pip install"
+-    calls the more modern bdist_wheel hook, which is what we want.
+-    """
+-    def run(self):
+-        sys.exit(
+-            'Installation directly via setup.py is not supported.\n'
+-            'Please use `pip install .` instead.'
+-        )
+-
+-
+-def main():
+-    """
+-    QEMU tooling installer
+-    """
+-
+-    # https://medium.com/@daveshawley/safely-using-setup-cfg-for-metadata-1babbe54c108
+-    pkg_resources.require('setuptools>=39.2')
+-
+-    setuptools.setup(cmdclass={'bdist_egg': bdist_egg_guard})
+-
+-
+-if __name__ == '__main__':
+-    main()
+diff --git a/python/tests/minreqs.txt b/python/tests/minreqs.txt
+index cd2e2a81c3d..e9edfa55eb7 100644
+--- a/python/tests/minreqs.txt
++++ b/python/tests/minreqs.txt
+@@ -15,6 +15,7 @@
+ # also pin setuptools to version 70 or below. Otherwise, the
+ # installation of the QEMU package itself fails, failing to find
+ # setuptools.
++# Avocado also appears to require an older setuptools.
+ setuptools<=70
+ 
+ # Dependencies for qapidoc/qapi_domain et al
+@@ -55,7 +56,6 @@ astroid==2.15.4
+ dill==0.2
+ lazy-object-proxy==1.4.0
+ platformdirs==2.2.0
+-toml==0.10.0
+ tomlkit==0.10.1
+ wrapt==1.14.0
+ 
+-- 
+2.48.1

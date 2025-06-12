@@ -1,150 +1,115 @@
-Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp2930379njc;
-        Wed, 11 Jun 2025 08:57:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXltwNvrQU+zPytgsNp9nYxuGMArtp0YCe0breZORLyvblvUzvpUOP8FSoU9n+Ry4xdO1o7z2ibqbideQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGXxZWKb5Xio0oc0qcWx8oBbpcuKQ8zyXvxX+N5bXlGS/WmPvC3xTMDhikCqxDnxdTgFJXg
-X-Received: by 2002:a05:620a:f05:b0:7ca:f447:c676 with SMTP id af79cd13be357-7d3a887d47cmr583822885a.43.1749657441974;
-        Wed, 11 Jun 2025 08:57:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749657441; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2410299njc;
+        Thu, 12 Jun 2025 08:04:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU+Sz7H/JaVWhd08oJ4lLddx2YAwT6cdLsSZxOZGwFv3kqcIupO3y1lzh0KiSQtFBuD68fE1wybnCYW2A==@linaro.org
+X-Received: by 2002:a05:690c:4985:b0:710:e8a8:7768 with SMTP id 00721157ae682-7114eda1af3mr63761837b3.31.1749740663213;
+        Thu, 12 Jun 2025 08:04:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749740663; cv=none;
         d=google.com; s=arc-20240605;
-        b=F89S4VOgaGFOYsqEYj5m6EX/RTIo4dOxzyxdfmHkHQW4kaGSr4M3FP8PMBHOoLv8/V
-         76nE1oyzh+88NEQ10B45D4N43loEObNKYO6EEAHOXXWOI7dBflOPw784NUhwiwGpaf4i
-         R1uILUHfvs4N+ia8fuPUu7oy7ddoYXi7yqhmtGOiyAvEcoeUUN5EcdKXuvPLltlDKWVV
-         pLAmbBDXEQNp5OS0js+BXEtWavgtnkaanP26+tpZX41hbJqa0b8jUYIHoo+WJCevbsZZ
-         jDLPlTpnIPP0/V+bNh3xSEEFbFQx6nlDKWQ5YLUdC87EdgHaOQIZgYgE6VL3QE382xSV
-         ojvw==
+        b=i0hV1ibGydi0Gd+n/Z6W4muXVRZG/86xhv9nH2Gf8Ae3vIupLXOQUdseMoTwbch477
+         aUicayXcMHTGMw+anBAhSSY6QrBNYWJJH+iQOuOQYS6TAHNEORj46UkQ0yCjmYDCKzYB
+         IdYpOu/WB/oU9DK9vN/oge1bMLi6odcpJiRiU1PLq0WMbsJIuniwRzoppPvqvmIGbSGx
+         CKiHjQ6iv6OtpNHFjhr8WKcqQCgB/SatwlGGq5NmzQQd0d0k86OZ/mRaYWJy3h0/eAem
+         wK4+gxFJEpqIXttk+JDf68IpLirt1w5rsEyC/yBS0KVZUwPZdn9D/4yPB8e43HXx9ASF
+         UOtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=vbTxCAh8ATwZ09SuqvSm7aqGFIsjlIr0fZMTLhMztaA=;
-        fh=BSTR0mN5riEHgpfDGU+Y04a8hUWGOTfFmwR91Qdx2Nw=;
-        b=HDMlYCNqSPKUgQ3MUEseOzMqdPvQQeV6Dd8XMTW02D+SC866GCobsv611jNvdnPt5C
-         rXgfjBHRxSTkY3sLRjLA3lSjhJE0zEB9cleq8x7xgubBQMmsToZp+dK1cbBxnuaRfbHr
-         lPsRPIbdar+haLEXW253UpCQXXGn5UnZ/5S1NVX7HRe82RDU6luqluZDfwGe8WXMbBPs
-         J5uNnxJAwDSsY0PrCcG7CisAPT6eTmWNaARj8vOScjeu0S297rUYUC8yQKavx/jHxly1
-         jfRJbADgDb7sEAN+f2l9nsfsI7WcW4hEqD43LK916/8P2WAMawVmfDLdTE8posPoFX/g
-         CtoA==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=mwRohgyatrsnok8RQFXYdLlHld9AUTUpziIQUj48/Fk=;
+        fh=LpWYF1wefUCZEKZ8dEqoobClZoJ2qHnbhl50TElrZIg=;
+        b=PSGCCip+eo9VG2muJOCPfjWpPPfBaBBXPlirG67Y0506KCeClcVF1LjOEY1Zw71MyQ
+         2IEFqR+3je4EeXyNMGfk5b6iqjK+4x0+BHwcWRmgLVtn6xpmcTBsyYsmuYiAx2cMxNr0
+         Q9DfcoqfT9BvBLvLcAEqJk87LxeMmUMKFHBd4YMSO5gvIAxGiFGwRIbOPArBdAS3NUU0
+         bC0cZFFc6wnaDZep+R2lUoAIynvHejdnRZ6wMuCjWPe9mIkb+f9Gjexu0ysOnWUKqU+9
+         LRwNn3qjJLLHYJ3oi5mNGCyHXMeFgBwWT7oGmuuWzYzPeCkCFBuPXWFM7Ne0Vj3Q2FFJ
+         PjBw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d24b3cba56si1247355385a.82.2025.06.11.08.57.21
+       dkim=pass header.i=@linaro.org header.s=google header.b=Jnf7N18K;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 00721157ae682-711515ae636sor11442007b3.5.2025.06.12.08.04.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Jun 2025 08:57:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 12 Jun 2025 08:04:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uPNox-0000x5-DX; Wed, 11 Jun 2025 11:56:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1uPNov-0000wF-Fj; Wed, 11 Jun 2025 11:56:57 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1uPNot-0008On-Lf; Wed, 11 Jun 2025 11:56:57 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bHVXx5ZTbz6L5ZF;
- Wed, 11 Jun 2025 23:52:33 +0800 (CST)
-Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
- by mail.maildlp.com (Postfix) with ESMTPS id 8585B140370;
- Wed, 11 Jun 2025 23:56:52 +0800 (CST)
-Received: from a2303103017.china.huawei.com (10.203.177.99) by
- frapeml500003.china.huawei.com (7.182.85.28) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 11 Jun 2025 17:56:51 +0200
-To: <qemu-devel@nongnu.org>, <mst@redhat.com>
-CC: <anisinha@redhat.com>, <armbru@redhat.com>, <berrange@redhat.com>,
- <dapeng1.mi@linux.intel.com>, <eric.auger@redhat.com>,
- <farman@linux.ibm.com>, <gustavo.romero@linaro.org>, <imammedo@redhat.com>,
- <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
- <linuxarm@huawei.com>, <maobibo@loongson.cn>, <mtosatti@redhat.com>,
- <peter.maydell@linaro.org>, <philmd@linaro.org>, <qemu-arm@nongnu.org>,
- <richard.henderson@linaro.org>, <shameerali.kolothum.thodi@huawei.com>,
- <shannon.zhaosl@gmail.com>, <yangyicong@hisilicon.com>, <zhao1.liu@intel.com>
-Subject: [PATCH v13 1/7] target/arm/tcg: increase cache level for cpu=max
-Date: Wed, 11 Jun 2025 16:56:12 +0100
-Message-ID: <20250611155618.351-2-alireza.sanaee@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250611155618.351-1-alireza.sanaee@huawei.com>
-References: <20250611155618.351-1-alireza.sanaee@huawei.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Jnf7N18K;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1749740662; x=1750345462; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=mwRohgyatrsnok8RQFXYdLlHld9AUTUpziIQUj48/Fk=;
+        b=Jnf7N18K7RCj5UDqhYHHcQHI8q1vSEmXUJWSW92CMNeyHj5nz67YFoSTH9i06U+nt/
+         u6/PciFy00c6bJxH6RlohKPaz3Z/3yr3REapR5rXQlLOic+kGzZAX3DGtJ3KkGXhbkG+
+         rwYNhyHRSycdsGmRDbU4neu3lR0qJJDuUU6GJOprf96eb3hGDCnBNbOKAzjgNR7RM+wy
+         S7l5KtvN9PWC2CpAMAfl78DEHEgNE0q+yqjTKoB3nZvt4iUSvML+hc0iSmX/b/bKHM/7
+         6Fv1lNvI5MWbgLf4Lh6+UJ3Zv8tYT5MQZMckod7uEI6W4VjeOj0RgLfBh5Zk+sCNpM/k
+         6ScQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749740662; x=1750345462;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=mwRohgyatrsnok8RQFXYdLlHld9AUTUpziIQUj48/Fk=;
+        b=Zytjc4bAnd4akDa76n35WojrWuDkc1iniG/nkzSuRtqSdQTuWgBguqUFb4Q3FPCTyy
+         OqiyM0FtyjB9lxW66gPDrSX5mpuu15W61flLtVwaY5TxMt5iqsRX3TUoly8sd2hnShHg
+         /8pMF6YopfgHkAbYouSkxXwEYyk0PY5P62oTqNF4MyCZk1SzsUJahMPo15sYI6jVvbfQ
+         x8c9hPP2bfnmPYnAI75h/nb26kMcrvR5TRWNBeerC8SfIlXkZQ3IW/nYW974lYtkx2Sr
+         Ij36rePI3WU9Iu8GZjVp4uLNs7FTP/KhTgjw2/kpbHqV4TK+xDA3ikKy61oD/N6RV/Lr
+         lk9w==
+X-Forwarded-Encrypted: i=1; AJvYcCW7TPk6GSNg984HXtGTDyTqvlPw7FNxutZI6KVB5PQOw9dt107ZsxBp3mbff65/fEgp01J7zkHN3KVMiA==@linaro.org
+X-Gm-Message-State: AOJu0YzJXMRDcaxBRIDWb5TPnBa49hyPYaCGojXQB+D4tH7H1P4HZYwR
+	6CedpCCtPYTWFlYsy2esd5UymP1+O4t2R8AZz+0aAU1L7qfEB+ZClGMqDcuRWO4+yypV2d1qmoI
+	Z/Ts7avSv9WvpyrkSYf1qZa9Hc4N9Xy/CxEyG42TNLjn3
+X-Gm-Gg: ASbGnctcn3nmTPjn+S0LirFwAXVAmv8H0wyOw51eGkgmTXP61+J/e108UPvCkZ3k0vi
+	srlr38gyb80u1GEy513+8CCbuAV1ixoXeg+UUnq3MriYzNhl/R3hOjlzLmythv6ycwQ5IXePSgq
+	E984k/xJRtRrpIx9426SmLpwlg6OPylqqiK7BfBtV3839P
+X-Google-Smtp-Source: AGHT+IGkwf3AJrycbkaLsXCktxf09YCtxZ4zQIpiVu3XRTDHJMzFJzu0b0P9/VzPi89aVoUmCtZ/VVXUpqdEnylPPMc=
+X-Received: by 2002:a05:690c:498d:b0:710:f46d:cee0 with SMTP id
+ 00721157ae682-7114edcb04fmr56567777b3.33.1749740662363; Thu, 12 Jun 2025
+ 08:04:22 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.203.177.99]
-X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
- frapeml500003.china.huawei.com (7.182.85.28)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
-From:  Alireza Sanaee via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: M7jzwsXEtufK
+References: <20250515153907.151174-1-cohuck@redhat.com> <20250515153907.151174-3-cohuck@redhat.com>
+In-Reply-To: <20250515153907.151174-3-cohuck@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Jun 2025 16:04:09 +0100
+X-Gm-Features: AX0GCFtWVVUEsGciOpuhQYdpTNAk5ugyqKk3hjsV_bBetoONUXe_HXNhehSuotE
+Message-ID: <CAFEAcA8y_wwZPoqkyPrNscRNTEwiOQm5Or9C=aiSNMGcZmq8CQ@mail.gmail.com>
+Subject: Re: [PATCH v7 02/14] arm/cpu: Store aa64isar0/aa64zfr0 into the
+ idregs arrays
+To: Cornelia Huck <cohuck@redhat.com>
+Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org, 
+	qemu-arm@nongnu.org, kvmarm@lists.linux.dev, richard.henderson@linaro.org, 
+	alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev, 
+	sebott@redhat.com, shameerali.kolothum.thodi@huawei.com, armbru@redhat.com, 
+	berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com, 
+	agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org, 
+	pbonzini@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: 3eg25kfTIn4Y
 
-This patch addresses cache description in the `aarch64_max_tcg_initfn`
-function for cpu=max. It introduces three layers of caches and modifies
-the cache description registers accordingly.
+On Thu, 15 May 2025 at 16:39, Cornelia Huck <cohuck@redhat.com> wrote:
+>
+> From: Eric Auger <eric.auger@redhat.com>
+>
+> Also add kvm accessors for storing host features into idregs.
+>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Reviewed-by: Sebastian Ott <sebott@redhat.com>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
----
- target/arm/tcg/cpu64.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
 
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 5d8ed2794d..87e68b10c3 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1086,6 +1086,19 @@ void aarch64_max_tcg_initfn(Object *obj)
-     uint64_t t;
-     uint32_t u;
- 
-+    /*
-+     * Expanded cache set
-+     */
-+    cpu->clidr = 0x8200123; /* 4 4 3 in 3 bit fields */
-+    /* 64KB L1 dcache */
-+    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7);
-+    /* 64KB L1 icache */
-+    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2);
-+    /* 1MB L2 unified cache */
-+    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 1 * MiB, 7);
-+    /* 2MB L3 unified cache */
-+    cpu->ccsidr[4] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 2 * MiB, 7);
-+
-     /*
-      * Unset ARM_FEATURE_BACKCOMPAT_CNTFRQ, which we would otherwise default
-      * to because we started with aarch64_a57_initfn(). A 'max' CPU might
--- 
-2.43.0
+>      if (!cpu->has_neon && !cpu->has_vfp) {
+> -        uint64_t t;
+> +        unit64_t t;
 
+This doesn't compile :-)
+
+-- PMM

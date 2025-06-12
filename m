@@ -1,182 +1,303 @@
-Received: by 2002:a17:505:790d:b0:1cc9:4ad0:aa2 with SMTP id xu13csp3538883njc;
-        Thu, 12 Jun 2025 06:45:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXPJHUHrhKhHEfj6qQJLeEpvNUc2vQ2ToEMNmbsgHB4M0y9imMPqv3eZfJZtVkEh48rb1Gh/rdmzo4pYg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHvOkb0K3XgWI0eB4U0B8UpoUZVZWwQD3OdrobBPpIrk9yVzHYxozeLiolb9KxLkhl/Nwyl
-X-Received: by 2002:a05:600c:1c07:b0:43d:db5:7af8 with SMTP id 5b1f17b1804b1-4532d2f668bmr26628985e9.21.1749735946155;
-        Thu, 12 Jun 2025 06:45:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749735946; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2379793njc;
+        Thu, 12 Jun 2025 06:54:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVpOMaQR1Gtt2B0S+t9xgf0vFUJFg8iVNYOSLNGkH+ND+ZjkCLgVRAV2Vy1eUX6hZeMzE9xzn1O96tLfA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEVTIY2VLl7hQn/9X732/iLgznqEEoTF/tObCfpRWzmGql5gCCJp2xk/dv2OsPb3P1DNvnb
+X-Received: by 2002:a05:620a:c4f:b0:7d3:8864:d1a8 with SMTP id af79cd13be357-7d3a8820595mr1066277585a.18.1749736467829;
+        Thu, 12 Jun 2025 06:54:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749736467; cv=none;
         d=google.com; s=arc-20240605;
-        b=QuHM6dHXrUyoDUAI5XI6p+OQBJ2HtzcYYKP1rfuqg1hFS2gJ8ozLZeTX9B5maKOk1c
-         HbyJaVYb8nZwYnF7RIpSymfhWgXpYgL/m/ZOvIlXxS9b6hqJT6yojXjBS45BudIIFWJq
-         bcmPeHv578/P/HsruVueIAjSTKMXYm9H1ZHeBx+cavEi7jotedyyJlfB/FNnYPx3kMMd
-         MGXiZFdex4iPEGYyaglbWYNH38Q5itZjEeM7Kuk6Od/kUFE1v3WSNcxO39omqxWU/VRj
-         H3nQ2X9allwFmkdghXFJg9y/K5UYNNffnOOjqufzc5J317xwH0b0oBpn4ArNRCEnRQ0s
-         7cNg==
+        b=lZl6U+jTQcJwkNd224UQNISR45U1+yho7iSUD9KFsoKg+2xMOwcs9joasiNNkQ4NIx
+         L05TQRPrvNqqhxq4xUYgYiWpRlWVNA7FDnQYCBDYcR5vHmAVKJFcOAksnMXcbAUl3j7P
+         WvaT/R1glMCs5uMAN+aox97xkWvQhPUo9mO6/Ujae/C44ZG4XlAfj13bdk2mIFcIUzSP
+         h42pBYXfvQCinZ9ddlE6w6Ze6yNBXfTcehddlBqiW+uQL/jMvBnLn+Yu0bka14FB/7NM
+         BWQNMaKcvOnDm0jDHWvu6yh7rF8GI0NHVJN06739aRPi5KpEvuG+PQUKWXU8b0+50Z88
+         iAEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=oLixX3FA0+zY94b6eP9NBMnJlXcLDgdiAQo42m9yEHg=;
-        fh=j5hUnuCKl+LEtbJKgnRKD4Q/IHAUrR7LU1LWM4QNBKo=;
-        b=TYyyNNur6GNvEo0JSYroPAxS75rsUnoSCiJ/sOV7Jdzd5A5vrnciqtqe95KXGK6Cnq
-         TNMHQsmykanZZkNYhiqdqJ8A6xke9VtvUowT6oWhFXPOco2TzBQfIL47GR3Nd7wmTCWg
-         GJHPNYGt7Kfl041w3YOxK0LQnaNbbnfKZeu1otLl2qr/Jf0+SjnPTpDWTJviFZHoUZ8T
-         IOU05JQXJi0fH9tmf/Fmj9/noxLdh9FugwnW+88BsOHzKXLlQYlNjdFKvT10NCzWFI4W
-         iqWfBFLPdZ030jFWIQl3k87EuJbnkhSqC6FpEckumujJcsFQasytKLxtO1PoNDxO3d0q
-         tBhQ==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=Lu2mr4y8OdPui3AMYal/e+Sma5lEYyu6NBOk1XGioEc=;
+        fh=E2x4LzBso2JqSYDfKGILcA9eS+zwNWmKeyI2Xr+Evog=;
+        b=K+sg0XKr/McWiSumM9BXUnju3vhfwmkbv7x8OBGsFulVEYhLzNJikPpkVjDJjgkSea
+         Rqv+0tRavlKfkANE3uqfx8xyjBUN1wo512M1zfqoqqB3h5nznqX6YVnDRfRHhr+bpbN3
+         pP6Ut+AUwM89/owD/1BxpEuCyk7xRpNGIqQaggAKJL7LF4cj4u00wPQT817RFCMF62fs
+         lN60Ya20YiiQaXlbwW1hxX0R13Gf2lQMeSVJpnl99E2QZClZgpkx34jcTGu/CBmy9osu
+         JSdntRgf2jQe+W0KypymxPhWuCRjJG4CrJ1oNgRor/dzgSuOBFVHWmM5Eaumj5CBSxbg
+         wHtA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a561973541si1546982f8f.1.2025.06.12.06.45.45
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Jun 2025 06:45:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="df/K4QJ/";
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8ecc79bsi77160885a.310.2025.06.12.06.54.27
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Jun 2025 06:54:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bJ3gg3YMZz6M4ff;
-	Thu, 12 Jun 2025 21:45:19 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 56357140370;
-	Thu, 12 Jun 2025 21:45:45 +0800 (CST)
-Received: from SecurePC-101-06.china.huawei.com (10.122.19.247) by
- frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 12 Jun 2025 15:45:44 +0200
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
-	<peter.maydell@linaro.org>, <mst@redhat.com>, Zhijian Li
-	<lizhijian@fujitsu.com>, Itaru Kitayama <itaru.kitayama@linux.dev>
-CC: <linuxarm@huawei.com>, <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>,
-	Yuquan Wang <wangyuquan1236@phytium.com.cn>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Alireza Sanaee
-	<alireza.sanaee@huawei.com>, =?UTF-8?q?Alex=20Benn=C3=A9e?=
-	<alex.bennee@linaro.org>
-Subject: [PATCH v15 4/4] qtest/cxl: Add aarch64 virt test for CXL
-Date: Thu, 12 Jun 2025 14:43:38 +0100
-Message-ID: <20250612134338.1871023-5-Jonathan.Cameron@huawei.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250612134338.1871023-1-Jonathan.Cameron@huawei.com>
-References: <20250612134338.1871023-1-Jonathan.Cameron@huawei.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="df/K4QJ/";
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1749736467;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Lu2mr4y8OdPui3AMYal/e+Sma5lEYyu6NBOk1XGioEc=;
+	b=df/K4QJ/kbL1s6iKfgESxx7OAaHd2sz5CHKolFNFW3TkAb7ceYmSOqLlp6JMnbPgdb/wrc
+	WKbkOXFKTGwT1sn5TR6t5AvMXxMvPw9qZ3j3+L0asGdztGDG4afyE9D0LfOmlqLgh+Qoo/
+	ObBl416EI94VCJVwf6ZIafRaKztUCWI=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-339-d42x8HrSMBmIikxcuo_-Ug-1; Thu, 12 Jun 2025 09:54:26 -0400
+X-MC-Unique: d42x8HrSMBmIikxcuo_-Ug-1
+X-Mimecast-MFC-AGG-ID: d42x8HrSMBmIikxcuo_-Ug_1749736465
+Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-3a4ff581df3so471204f8f.1
+        for <alex.bennee@linaro.org>; Thu, 12 Jun 2025 06:54:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749736465; x=1750341265;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Lu2mr4y8OdPui3AMYal/e+Sma5lEYyu6NBOk1XGioEc=;
+        b=K7wSLiN+qAqJsKDCuCkfF0Z2B/4u5X2nJb/P49Su/b81UuP3PG0NvOP9fFxojVpK4u
+         RsUnTuhPlecakn/sTGnQJhjAtyEowXYIMpUInFPaDGoukeQU8lUOwOwqkZNyHn+TUrR8
+         oCW3TScAQzNKTtkO73qe1+zjGT711S84IKq4Ch2v36ahgR1EGKkX8OcI6Wcg/ZoXrIpZ
+         OwWgOE7WY/T1i2SkNBA2ZCWtuKAy2DsSUCGYvAGptiaiMLw+M/GkDWDQJPd6eu8jRVQW
+         fox4phtseLnh0s33LHijpxlWDN+QAEvzrY4Ma2mtrKTGpAGqJqIs5OZEfxbbrQ9Y23XE
+         VnfQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWvdVkC10/xQiuTZXbwLsfDgKp6143TtMCmOIvqDbPcENv+P/Jl8FIuAW/zxh9LRkuIeLnODs/sIxYq+Q==@linaro.org
+X-Gm-Message-State: AOJu0Yzf5Jfv/H3dy57mkeAV6bvpsXubvItN3dVasI94/zmZKDprXbYp
+	Rj+Rqlbh7W4nnn6f9l/XhwW/ghwqkyt6MF2CufZgpU/QZAWvyGvApnE2lSyM0lVMUUZnFXhMmdk
+	EHImUg3VP1Rs4Dg9hBgsmYU5QaRs3kNJ6avGRXzrcVAaENC5j3YdRX9/GvA==
+X-Gm-Gg: ASbGncv5UmZNgu++XNiZN+DvJ5tTG/8PkNU/58I47HCVyTj1dYh2+i/dHE1VP1B3cRc
+	ici9DEHNkG7gBx/uSoVS8exZSu3P3vFtfit314J3P1HgHnjzbbh8I6oiT8Yu+Ok/UqQ8JOnOtd2
+	qq/aVPPzsJHDQMq6p+eW5JfYkxoJ/2J35OTH3q1XvA1fYzTVDj/+LK3cY9L8TWK3PNUwDlnhAuc
+	aXBppr9LDOctovIbmY5qBy+MWxZG+//HN1ULsxTGb8BPwobdEWTePko88qTH5HTXn+ap7NSDJNc
+	9gF8O8izExUTnopb1JXXiuYyDMpBV/0Usd9pQPMC71ZeZ64Vx3hiYNAUObDY2pSFXYYb8A==
+X-Received: by 2002:a05:6000:2010:b0:3a4:eee4:cdec with SMTP id ffacd0b85a97d-3a56076f948mr3098100f8f.6.1749736465010;
+        Thu, 12 Jun 2025 06:54:25 -0700 (PDT)
+X-Received: by 2002:a05:6000:2010:b0:3a4:eee4:cdec with SMTP id ffacd0b85a97d-3a56076f948mr3098066f8f.6.1749736464405;
+        Thu, 12 Jun 2025 06:54:24 -0700 (PDT)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4532e232e0asm21153035e9.14.2025.06.12.06.54.23
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 12 Jun 2025 06:54:23 -0700 (PDT)
+Message-ID: <80b29f75-5992-4646-82e6-9a8bcf0c09e0@redhat.com>
+Date: Thu, 12 Jun 2025 15:54:22 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Reply-To: eric.auger@redhat.com
+Subject: Re: [PATCH v2 02/25] hw/arm/virt: Introduce machine state acpi pcihp
+ flags and props
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
+ mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
+ Jonathan.Cameron@huawei.com, philmd@linaro.org, alex.bennee@linaro.org
+References: <20250527074224.1197793-1-eric.auger@redhat.com>
+ <20250527074224.1197793-3-eric.auger@redhat.com>
+ <20250527135813.2d6cde91@imammedo.users.ipa.redhat.com>
+ <6374e8f1-8eee-49cb-9c7f-75aaed1a0f08@redhat.com>
+ <20250611104915.5a5a2bea@imammedo.users.ipa.redhat.com>
+ <b0be20a1-6b7f-4a0a-a228-b2f0eaca88e1@redhat.com>
+ <20250612150002.6bd9b330@imammedo.users.ipa.redhat.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20250612150002.6bd9b330@imammedo.users.ipa.redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: PzuWbPV7JaEgymDaf_aZXjqnDgLghKvJAK35P0prkqU_1749736465
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.122.19.247]
-X-ClientProxiedBy: lhrpeml500012.china.huawei.com (7.191.174.4) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: DItXNAHlDcyY
+X-TUID: 81qfH2IfGqkc
 
-Add a single complex case for aarch64 virt machine.
-Given existing much more comprehensive tests for x86 cover the
-common functionality, a single test should be enough to verify
-that the aarch64 part continue to work.
+Hi Igor,
+On 6/12/25 3:00 PM, Igor Mammedov wrote:
+> On Wed, 11 Jun 2025 10:56:36 +0200
+> Eric Auger <eric.auger@redhat.com> wrote:
+>
+>> On 6/11/25 10:49 AM, Igor Mammedov wrote:
+>>> On Wed, 11 Jun 2025 08:47:36 +0200
+>>> Eric Auger <eric.auger@redhat.com> wrote:
+>>>  
+>>>> Hi Igor,
+>>>>
+>>>> On 5/27/25 1:58 PM, Igor Mammedov wrote:  
+>>>>> On Tue, 27 May 2025 09:40:04 +0200
+>>>>> Eric Auger <eric.auger@redhat.com> wrote:
+>>>>>    
+>>>>>> acpi_pcihp VirtMachineClass state flag will allow
+>>>>>> to opt in for acpi pci hotplug. This is guarded by a
+>>>>>> class no_acpi_pcihp flag to manage compats (<= 10.0
+>>>>>> machine types will not support ACPI PCI hotplug).    
+>>>>> there is no reason to put an effort in force disabling it
+>>>>> on old machines, as long as code works when explicitly
+>>>>> enabled property on CLI.
+>>>>>
+>>>>> See comment below on how to deal with it 
+>>>>>    
+>>>>>> Machine state acpi_pcihp flag must be set before the creation
+>>>>>> of the GED device which will use it.
+>>>>>>
+>>>>>> Currently the ACPI PCI HP is turned off by default. This will
+>>>>>> change later on for 10.1 machine type.    
+>>>>> one thing to note, is that turning it on by default might
+>>>>> cause change of NIC naming in guest as this brings in
+>>>>> new "_Sxx" slot naming. /so configs tied to nic  go down the drain/
+>>>>>
+>>>>> Naming, we have, also happens to be broken wrt spec
+>>>>> (it should be unique system wide, there was a gitlab issue for that,
+>>>>> there is no easy fix that though)
+>>>>>
+>>>>> So I'd leave it disabled by default and let users to turn
+>>>>> it on explicitly when needed. 
+>>>>>    
+>>>>>> We also introduce properties to allow disabling it.
+>>>>>>
+>>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>>>> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+>>>>>> ---
+>>>>>>  include/hw/arm/virt.h |  2 ++
+>>>>>>  hw/arm/virt.c         | 27 +++++++++++++++++++++++++++
+>>>>>>  2 files changed, 29 insertions(+)
+>>>>>>
+>>>>>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+>>>>>> index 9a1b0f53d2..10ea581f06 100644
+>>>>>> --- a/include/hw/arm/virt.h
+>>>>>> +++ b/include/hw/arm/virt.h
+>>>>>> @@ -129,6 +129,7 @@ struct VirtMachineClass {
+>>>>>>      bool no_tcg_lpa2;
+>>>>>>      bool no_ns_el2_virt_timer_irq;
+>>>>>>      bool no_nested_smmu;
+>>>>>> +    bool no_acpi_pcihp;
+>>>>>>  };
+>>>>>>  
+>>>>>>  struct VirtMachineState {
+>>>>>> @@ -150,6 +151,7 @@ struct VirtMachineState {
+>>>>>>      bool mte;
+>>>>>>      bool dtb_randomness;
+>>>>>>      bool second_ns_uart_present;
+>>>>>> +    bool acpi_pcihp;
+>>>>>>      OnOffAuto acpi;
+>>>>>>      VirtGICType gic_version;
+>>>>>>      VirtIOMMUType iommu;
+>>>>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>>>>> index 9a6cd085a3..a0deeaf2b3 100644
+>>>>>> --- a/hw/arm/virt.c
+>>>>>> +++ b/hw/arm/virt.c
+>>>>>> @@ -2397,8 +2397,10 @@ static void machvirt_init(MachineState *machine)
+>>>>>>      create_pcie(vms);
+>>>>>>  
+>>>>>>      if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
+>>>>>> +        vms->acpi_pcihp &= !vmc->no_acpi_pcihp;    
+>>>>> I don't particularly like no_foo naming as it makes code harder to read
+>>>>> and combined with 'duplicated' field in machine state it make even things worse.
+>>>>> (if I recall right Philippe was cleaning mess similar flags usage
+>>>>> have introduced with ITS)
+>>>>>
+>>>>> instead of adding machine property (both class and state),
+>>>>> I'd suggest adding the only property to GPE device (akin to what we have in x86 world)
+>>>>> And then one can meddle with defaults using hw_compat_xxx    
+>>>> What I fail to understand is whether you want me to attach this property
+>>>> to the GPEX host bridge device or to the GED device. Comment on patch  
+>>> I'd say GED.
+>>>  
+>>>> 6/25 seems to indicate you expect it to be attached to the GPEX. I ask
+>>>> here because also the GED device will need to be configured depending on
+>>>> the hp setting. Maybe we can retrieve the info from the gpex at that
+>>>> time. on x86 it is attached to piix4 or ich9 I/O controller hub which do
+>>>> not have direct equivalent on ARM.  
+>>> for ARM, equivalent would be GED device which hosts our paravirt acpi registers.  
+>> OK thank you for the clarification. I will add a property to the GED device.
+>>
+>> As the GED device is directly instantiated by the virt machine code (not
+>> exposed to the end user CLI) I guess we still want a virt machine option
+>> that would allow to set the property explicitly from CLI?
+> Instead of machine option,
+> I'd go pc/q35 way (aka -global ged.acpi-pci-hotplug-with-bridges=on/off).
+> it's not as pretty as machine specific option but that would work just as well
+> and as bonus could be used for microvm in the same form.
 
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Ah OK. Then I need to rework it.
 
----
-v15: Dropped tags due to changes in patches 2 and 3.
----
- tests/qtest/cxl-test.c  | 59 ++++++++++++++++++++++++++++++++---------
- tests/qtest/meson.build |  1 +
- 2 files changed, 47 insertions(+), 13 deletions(-)
+Thanks!
 
-diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
-index a600331843..c7189d6222 100644
---- a/tests/qtest/cxl-test.c
-+++ b/tests/qtest/cxl-test.c
-@@ -19,6 +19,12 @@
-     "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
-     "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
- 
-+#define QEMU_VIRT_2PXB_CMD \
-+    "-machine virt,cxl=on -cpu max " \
-+    "-device pxb-cxl,id=cxl.0,bus=pcie.0,bus_nr=52 " \
-+    "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
-+    "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
-+
- #define QEMU_RP \
-     "-device cxl-rp,id=rp0,bus=cxl.0,chassis=0,slot=0 "
- 
-@@ -197,25 +203,52 @@ static void cxl_2pxb_4rp_4t3d(void)
-     qtest_end();
-     rmdir(tmpfs);
- }
-+
-+static void cxl_virt_2pxb_4rp_4t3d(void)
-+{
-+    g_autoptr(GString) cmdline = g_string_new(NULL);
-+    char template[] = "/tmp/cxl-test-XXXXXX";
-+    const char *tmpfs;
-+
-+    tmpfs = mkdtemp(template);
-+
-+    g_string_printf(cmdline, QEMU_VIRT_2PXB_CMD QEMU_4RP QEMU_4T3D,
-+                    tmpfs, tmpfs, tmpfs, tmpfs, tmpfs, tmpfs,
-+                    tmpfs, tmpfs);
-+
-+    qtest_start(cmdline->str);
-+    qtest_end();
-+    rmdir(tmpfs);
-+}
- #endif /* CONFIG_POSIX */
- 
- int main(int argc, char **argv)
- {
--    g_test_init(&argc, &argv, NULL);
-+    const char *arch = qtest_get_arch();
- 
--    qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
--    qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
--    qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
--    qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
--    qtest_add_func("/pci/cxl/rp", cxl_root_port);
--    qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
-+    g_test_init(&argc, &argv, NULL);
-+    if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
-+        qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
-+        qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
-+        qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
-+        qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
-+        qtest_add_func("/pci/cxl/rp", cxl_root_port);
-+        qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
- #ifdef CONFIG_POSIX
--    qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
--    qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
--    qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
--    qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
--    qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
--    qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4", cxl_2pxb_4rp_4t3d);
-+        qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
-+        qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
-+        qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
-+        qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
-+        qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
-+        qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4",
-+                       cxl_2pxb_4rp_4t3d);
- #endif
-+    } else if (strcmp(arch, "aarch64") == 0) {
-+#ifdef CONFIG_POSIX
-+        qtest_add_func("/pci/cxl/virt/pxb_x2_root_port_x4_type3_x4",
-+                       cxl_virt_2pxb_4rp_4t3d);
-+#endif
-+    }
-+
-     return g_test_run();
- }
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 8ad849054f..42e927b32a 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -261,6 +261,7 @@ qtests_aarch64 = \
-    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
-   (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : []) + \
-+  qtests_cxl +                                                                                  \
-   ['arm-cpu-features',
-    'numa-test',
-    'boot-serial-test',
--- 
-2.48.1
+Eric
+>
+>> Thanks
+>>
+>> Eric  
+>>>  
+>>>> Thanks
+>>>>
+>>>> Eric  
+>>>>>    
+>>>>>>          vms->acpi_dev = create_acpi_ged(vms);
+>>>>>>      } else {
+>>>>>> +        vms->acpi_pcihp = false;
+>>>>>>          create_gpio_devices(vms, VIRT_GPIO, sysmem);
+>>>>>>      }
+>>>>>>  
+>>>>>> @@ -2593,6 +2595,20 @@ static void virt_set_its(Object *obj, bool value, Error **errp)
+>>>>>>      vms->its = value;
+>>>>>>  }
+>>>>>>  
+>>>>>> +static bool virt_get_acpi_pcihp(Object *obj, Error **errp)
+>>>>>> +{
+>>>>>> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+>>>>>> +
+>>>>>> +    return vms->acpi_pcihp;
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void virt_set_acpi_pcihp(Object *obj, bool value, Error **errp)
+>>>>>> +{
+>>>>>> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+>>>>>> +
+>>>>>> +    vms->acpi_pcihp = value;
+>>>>>> +}
+>>>>>> +
+>>>>>>  static bool virt_get_dtb_randomness(Object *obj, Error **errp)
+>>>>>>  {
+>>>>>>      VirtMachineState *vms = VIRT_MACHINE(obj);
+>>>>>> @@ -3310,6 +3326,10 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+>>>>>>                                            "in ACPI table header."
+>>>>>>                                            "The string may be up to 8 bytes in size");
+>>>>>>  
+>>>>>> +    object_class_property_add_bool(oc, "acpi-pcihp",
+>>>>>> +                                   virt_get_acpi_pcihp, virt_set_acpi_pcihp);
+>>>>>> +    object_class_property_set_description(oc, "acpi-pcihp",
+>>>>>> +                                          "Force ACPI PCI hotplug");
+>>>>>>  }
+>>>>>>  
+>>>>>>  static void virt_instance_init(Object *obj)
+>>>>>> @@ -3344,6 +3364,9 @@ static void virt_instance_init(Object *obj)
+>>>>>>          vms->tcg_its = true;
+>>>>>>      }
+>>>>>>  
+>>>>>> +    /* default disallows ACPI PCI hotplug */
+>>>>>> +    vms->acpi_pcihp = false;
+>>>>>> +
+>>>>>>      /* Default disallows iommu instantiation */
+>>>>>>      vms->iommu = VIRT_IOMMU_NONE;
+>>>>>>  
+>>>>>> @@ -3394,8 +3417,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(10, 1)
+>>>>>>  
+>>>>>>  static void virt_machine_10_0_options(MachineClass *mc)
+>>>>>>  {
+>>>>>> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+>>>>>> +
+>>>>>>      virt_machine_10_1_options(mc);
+>>>>>>      compat_props_add(mc->compat_props, hw_compat_10_0, hw_compat_10_0_len);
+>>>>>> +    /* 10.0 and earlier do not support ACPI PCI hotplug */
+>>>>>> +    vmc->no_acpi_pcihp = true;
+>>>>>>  }
+>>>>>>  DEFINE_VIRT_MACHINE(10, 0)
+>>>>>>      

@@ -1,70 +1,70 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2601969njc;
-        Thu, 12 Jun 2025 13:58:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXZHLoIgoTbmyxr3DkAnPQ53/jWJJPU1VFWcjGnkpaJNCjm08ynbHVfzxTd/wGPvIl005ssoP5q+IF90g==@linaro.org
-X-Google-Smtp-Source: AGHT+IEHsdJn+rVzgcYEd6nP4tmLAhZEvaXIlE3b7824CUDZAXmSNiTLmOZwL1sIFNXHxYNX3lpI
-X-Received: by 2002:a05:620a:4449:b0:7d3:b093:b600 with SMTP id af79cd13be357-7d3bc4d3df5mr120006585a.43.1749761881036;
-        Thu, 12 Jun 2025 13:58:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749761881; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2602228njc;
+        Thu, 12 Jun 2025 13:58:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUx9xTKowG/kvX32xz6OyuzK3HUvXXGsm+ctRQIIPuK2d8VX6+2GN/HBe6LhFS1OcDf65M5OAFtxYDUqQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFJPcD9FJKBxvn92hHCOLGoUbDXX0QIlFLv25yQon1w/BNp6Rc8BmuF+7JyHMNipN6Qzd8H
+X-Received: by 2002:a05:6214:f29:b0:6fa:c634:dc01 with SMTP id 6a1803df08f44-6fb3e5a1a93mr6774516d6.16.1749761916043;
+        Thu, 12 Jun 2025 13:58:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749761916; cv=none;
         d=google.com; s=arc-20240605;
-        b=OdzrqYfXRpC8pcIYG+NLJfMyRof+zNgGKCWVtmuX0SelDlbcc7qUnPIPYf+8KR7H4t
-         FuDEkH4Dkkb9melNLxvq/08hCn/L5GUmpuJd0x/lBH8ELHLvUtaNgpT7yUXdTU2FgkCg
-         NTDLI7p/agU9xRVTXWPcImeaWumsU3Qg+zGhCTnp8UJtcKB2pU0pbKDYg6KEc0NkmKbU
-         QcfW9DSishihIg41CcZNShfMkrVcI+TmytklENnUPdBjtYlL5jlMsUARLi/m2l8rJ0An
-         Ed+8kfqiAHznPryxqxouMWybowO6ZBiEzR2Qfn40zW0O7xUjleUb4j/VJNZkpE/qhicp
-         0UZg==
+        b=ZdYL/uXrXdJxWxP0Y96dFEcxn5yYU7gWPrZClosPAtWTcIVoWhiWzp4W3shwSHddBL
+         KrjjEQCNLT5Bx3nwFRFWqNyIQhvwE4E/3OZ47//K6Yfw31T58xLT/64fe8dIWS5Mdo5O
+         Jvt3hfLENp3nXEY1rETbl7Yz6+hXhWQTnnWDzAa8mTq57HOIgGs74y59xHbfpTZ+A3IV
+         UokjXy0TzJE9gvvOrDS1pzlwV884gyPGbMZIQ/4S96WdbQBMc+Wsw5da4JCxRdA9rA/b
+         i8sTBrtF7mirWOkBBPNuk6vr6o4zNVZM9QTyDwYvJwYKG7X4GUmL/suJcseighuozhYP
+         XGhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=UMyq4IM8orE552UKyUH3BKbgGyjRLLE1wmihoPQ7GH0=;
+        bh=uCM/Luch++bkeRG2d0E9z2F9L/FoZdsWLzzalPuqzaM=;
         fh=Bqei7UspLQLDtJyhx8DFVPkwaTXoAlN/5Ng7ASZZYZk=;
-        b=blkrF6lThw0D9cbRIyAorwrSOSH5rFQFgBtgjww5ix5FhRvk1XGNotx41UDw3dYtMw
-         3FqCzvCjCc0nK2SyxETIhdpF+WEZ9XPXnlqpeB28TTbdG0MPJCG4HqJiuAKUmdlC4Wyq
-         ETBMFtOSQGhk1+sVmgQVkqkT0sjz4H+qkD30RNjpsTokuovEhQwV9KYkcizuUT6O6YMU
-         6seF+Cr7Ce1koS7Ms90l9ETDmtk+TmlcsI3kmwPPo5UPzR6p8SlWVfrxf6OsY0ag6OkS
-         yrmZ763OKIvDPKKrHlp8qt5PSAmzY2NFJlp8LYvlrMzb/V7fg9recic1Ei1JiPIgsFCO
-         1Rkw==;
+        b=NocPjfkJiyjc/aj1lUT5ryDN3Dkb8e9j/YzMWuNlszqzireiKdM07R0Gkq5AtVGlhZ
+         paMK3xy1ChWiAxp5CiHB32voepZoCEzBp7hBpqRk0JdqHpcatln8fjHPAlYlGdecH9jw
+         k+e0n/otVPmylJAT36Ur7/NrTkKN96nwpRRlYCtP2sDkAG/igcJANfdd8jannHH0JHgj
+         Q0+OA9Xm49natYk9GY4I1cWxVvX+dwiPhRduoNvNBqaTdGJqj8h3xzhcL1k3ZR8hCnEg
+         AZA/bJHEGBakpBuFGjQy6ny/BO2h5cTmWqem+qxYd1ZW6vF4n6WH3P2pm8aZCp5i99Pn
+         MNZQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fewae8Pj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GJ5ORW0C;
        spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <jsnow@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3b8efa71bsi150402585a.416.2025.06.12.13.58.00
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fb35ad9fbesi23927446d6.2.2025.06.12.13.58.35
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Jun 2025 13:58:01 -0700 (PDT)
+        Thu, 12 Jun 2025 13:58:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fewae8Pj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GJ5ORW0C;
        spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1749761880;
+	s=mimecast20190719; t=1749761915;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=UMyq4IM8orE552UKyUH3BKbgGyjRLLE1wmihoPQ7GH0=;
-	b=Fewae8PjgRjmDnjHc4lXXTkmiM2ITIiw7CWw1VyRrm5uZwb+6sZNCenbzPTL3E8/J3ys3/
-	xHRPEdENarQ3Xbb08jbE6+nvsSZxxzmRS/jGtWVcFU3sx9K57ulaEaImfhFDPmbg+4Jh+i
-	2lLSlUzCsEG2cTRjE7MhRwyHbnJaw94=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+	bh=uCM/Luch++bkeRG2d0E9z2F9L/FoZdsWLzzalPuqzaM=;
+	b=GJ5ORW0CJJVANY3RBi3l9Ey7hEauSYUHAgzp4uuAWUGKn51zFLTHr/GdeV6xgB+XFm4rgC
+	hFTY4Psu3TZ0wX349dSHTDtHdEEdacezKSUTr2RLxT8bIIpIrEOfQ9qBsvkvN6pfE5lkBe
+	WuGgKinUcAMFOrPk9i3SAuglCxyvwBo=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-47-ZcMIL-z4NoyuBLsiFCt1lw-1; Thu,
- 12 Jun 2025 16:57:58 -0400
-X-MC-Unique: ZcMIL-z4NoyuBLsiFCt1lw-1
-X-Mimecast-MFC-AGG-ID: ZcMIL-z4NoyuBLsiFCt1lw_1749761872
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-541-GNwgVadNNZupaEzSd1JQYA-1; Thu,
+ 12 Jun 2025 16:58:32 -0400
+X-MC-Unique: GNwgVadNNZupaEzSd1JQYA-1
+X-Mimecast-MFC-AGG-ID: GNwgVadNNZupaEzSd1JQYA_1749761907
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 021E819560BB;
-	Thu, 12 Jun 2025 20:57:51 +0000 (UTC)
+	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B6AFE18089B6;
+	Thu, 12 Jun 2025 20:58:26 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.80.54])
-	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id B5BBB1955F57;
-	Thu, 12 Jun 2025 20:57:18 +0000 (UTC)
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 709B21956050;
+	Thu, 12 Jun 2025 20:57:51 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Joel Stanley <joel@jms.id.au>,
@@ -177,63 +177,43 @@ Cc: Joel Stanley <joel@jms.id.au>,
 	Huacai Chen <chenhuacai@kernel.org>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Harsh Prateek Bora <harshpb@linux.ibm.com>
-Subject: [PATCH v2 04/12] python: update shebangs to standard, using /usr/bin/env
-Date: Thu, 12 Jun 2025 16:54:42 -0400
-Message-ID: <20250612205451.1177751-5-jsnow@redhat.com>
+Subject: [PATCH v2 05/12] python: fix illegal escape sequences
+Date: Thu, 12 Jun 2025 16:54:43 -0400
+Message-ID: <20250612205451.1177751-6-jsnow@redhat.com>
 In-Reply-To: <20250612205451.1177751-1-jsnow@redhat.com>
 References: <20250612205451.1177751-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: eqUNny0pRE3BZd_dZ8aEqY3FSdB5iwpSe9zXmJqM6Dg_1749761872
+X-Mimecast-MFC-PROC-ID: j4ju1n8yVN-nEkTUyRr9FhN1dxWAaxSfD9yoFtCzl88_1749761907
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-X-TUID: Vtjnnc7CI+UA
+X-TUID: y1Y5f7lkakcT
 
-This is the standard shebang we should always be using, as it plays
-nicely with virtual environments and our desire to always be using a
-specific python interpreter in our environments.
+\{ is an illegal escape sequence, to get a literal backslash we need to
+use \\.
 
-(It also makes sure I can find all of the python scripts in our tree
-easily.)
+This is being fixed because of an issue spotted when attempting to use
+the pyupgrade script.
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- roms/edk2-build.py           | 2 +-
- scripts/cpu-x86-uarch-abi.py | 2 +-
- scripts/userfaultfd-wrlat.py | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ scripts/feature_to_c.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/roms/edk2-build.py b/roms/edk2-build.py
-index e564765aaa7..8dc38700394 100755
---- a/roms/edk2-build.py
-+++ b/roms/edk2-build.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/python3
-+#!/usr/bin/env python3
- """
- build helper script for edk2, see
- https://gitlab.com/kraxel/edk2-build-config
-diff --git a/scripts/cpu-x86-uarch-abi.py b/scripts/cpu-x86-uarch-abi.py
-index 7360e55c6e0..5a052083eea 100644
---- a/scripts/cpu-x86-uarch-abi.py
-+++ b/scripts/cpu-x86-uarch-abi.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/python3
-+#!/usr/bin/env python3
- #
- # SPDX-License-Identifier: GPL-2.0-or-later
- #
-diff --git a/scripts/userfaultfd-wrlat.py b/scripts/userfaultfd-wrlat.py
-index 0684be4e044..5f36c7af565 100755
---- a/scripts/userfaultfd-wrlat.py
-+++ b/scripts/userfaultfd-wrlat.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/python3
-+#!/usr/bin/env python3
- #
- # userfaultfd-wrlat Summarize userfaultfd write fault latencies.
- #                   Events are continuously accumulated for the
+diff --git a/scripts/feature_to_c.py b/scripts/feature_to_c.py
+index 807af0e685c..5f8fa8ad5c6 100644
+--- a/scripts/feature_to_c.py
++++ b/scripts/feature_to_c.py
+@@ -25,7 +25,7 @@ def writeliteral(indent, bytes):
+         elif c >= 32 and c < 127:
+             sys.stdout.write(c.to_bytes(1, 'big').decode())
+         else:
+-            sys.stdout.write(f'\{c:03o}')
++            sys.stdout.write(f'\\{c:03o}')
+ 
+     if quoted:
+         sys.stdout.write('"')
 -- 
 2.48.1

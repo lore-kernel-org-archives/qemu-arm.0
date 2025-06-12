@@ -1,283 +1,343 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2367873njc;
-        Thu, 12 Jun 2025 05:52:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUznnKiPwLUWh5Ap+Si6ahItBOtxtb0Qpg/7zccU5u6dzzpZZEimyjD3VcFKhf1irmNZq8qwhwbXr8Lew==@linaro.org
-X-Google-Smtp-Source: AGHT+IET5otmkGqFT2qkzIJYyWnw28HLLOPw8RQ3t3yMFpaM0KkMTIimEu3qwgM1EVN9gJTCVSSm
-X-Received: by 2002:a05:620a:4509:b0:7c5:5a51:d2d1 with SMTP id af79cd13be357-7d3b36d4e76mr472943885a.55.1749732739541;
-        Thu, 12 Jun 2025 05:52:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749732739; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2369447njc;
+        Thu, 12 Jun 2025 05:55:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXqHjczzMi8riXqp3zVe2RrrK7WB1/Bv7LADNi9lLAck3ITgQwW0VQuEVtT35/7eJS9pIl5oqDqWxFemg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGDrBSHhh9t/j1FvEBOgqxzXXhB27CPNtzJb7daM5INhvwIZSb0RQnHHcxBDnCo4CuJZUrS
+X-Received: by 2002:a0c:e8c2:0:b0:6f8:af2b:8ba4 with SMTP id 6a1803df08f44-6fb2c3661b6mr91543986d6.21.1749732942558;
+        Thu, 12 Jun 2025 05:55:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749732942; cv=none;
         d=google.com; s=arc-20240605;
-        b=b8+khofVfftTaK4Y+EZjby3Sq4d8X2bD8in6ZBT3Pqt3MYww4G8zjp/SRNBSkMgaAy
-         yPFKTufIDxGFQyN9n/uRaaiJcqeFP+nnwMLKz0fyGq4vLdXjlNSx6aDDdbIhylvaLTpa
-         PnJyPx/25LRl4aRQHhLaF36lTquNbAtF1vTIyqWme1yI7zxXsWZQwKGXN57XSSYxyO32
-         xp6WPjlg1gp4zK8v+8qjLQvWs/jjb0JBOfpA8i1xMjRLGEiyXbOLCM8G5sJTHY+jALbP
-         U5sh7m/TLodUuLCsytZSQx9VgOiV0BmWcGYLEr95gf8xylEFF44iVXjHiijv2zQX88Vn
-         2Nrw==
+        b=BBA8y1fnMP41RCTyUTdWG+pjH9aIVLYFdQ2cloPUFaVCjp4XFvTbvgrq330o7UvjUi
+         y+TWWubIUKUtUSqA7jOLdb2QxZLyuS8IMWvhn1p8lWvygzhKjku5kjoweOugZ0YNb//w
+         qd103J9I3ywWS/dkfO18ihurcoHNVJOmqOZWe7OGXJ3ADWat6khYRNhJ2W/+Ze+Pus+O
+         YXJLyca4Mi8Ups7bMhHQ+752F7z8tMiijepFYHDm6y2B5ea9e1cPv4Y4FOqrxDNdOBxo
+         gCZkANLT6f+zWVaIp7KpzkgT435Gc3hs78RTgeP79025NxbZUdu81FnMoVmd6KE2HjnR
+         erSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:date;
-        bh=5YoDas1krd9v+4Y01Ms1pBid6cR+stv4K+x2Oca9eGw=;
-        fh=GdDp15MoOd/UxRHTT1s5w1iDqkXcbKQ/gMloeKknh9M=;
-        b=CrtQl1HgN6TiCBTMrdz8HNwH7HNX1q4YNr9gH+wE+Blue2QOSV9zVr7SXijfSssx4g
-         7GItJCaFiQO7O1HQRnw42ZaV33xUOryhseGqe/dqLzVh5ep5gRpJFC58F1IFq8B8KBf6
-         VuOPa2vW/yOckVd3Bt0zdDsvToS1e2kfZJIHwVR6i5af2DIQcvERdGILK3HvHPUbuOfF
-         BYaGcIXQ/Cs6Urq2C835Ne3iKAXjFQusWuGYwV5GTM6Y674QOdA7zSLiOtn6rrr+soWn
-         mX/xDfHi9Rk/sofs39qSODF1XTZ2TZDZ4FsgUeAwEdh9Y9uDfCX4GCGIg8uthWPRo09K
-         IvBQ==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=bKuxI3g3S4mxPFm1tdz4EAQU9fdobeVgH2EL/uTfTR8=;
+        fh=CRxtNv/o/KhIZzBzzQEqR1POhXKtyhL0/Qei/gVs4+o=;
+        b=biuNFqRlvgxn+DOzAV1TNyZZZiPYEcJgksaUCvLLagooykSR/ijaiaAGBCPXa7e6Tk
+         aAdD4+y+6TLhKyn7kiUc39z56MVGMzxzLc6D2Pnq8MClmxyUlmcHce5eSePmZgzN/IvW
+         rZJ3GlEYmzAnhF+pWZS3EGWeokp6bw+lHpY8c2LMdHyvaQr+Iyb41bRW6uYXfRIIrQY8
+         AZ35QOL3qOpe6flhReOEcLFAAR7wQDIdpjimU1ZnxHIzA7c6TswHX4HTI3GodUtvjs8L
+         t628Qq2mr4k+lkgzClg2mmzHcGQlXjl+DL4jduxZsFiwyMs0AxJIEE5qyirY50rxkHqw
+         quQg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3b8f285ebsi68430785a.505.2025.06.12.05.52.19
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JOPgRb5Z;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fb35c316fdsi15925856d6.439.2025.06.12.05.55.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Jun 2025 05:52:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Jun 2025 05:55:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uPhPd-0003Sp-CV; Thu, 12 Jun 2025 08:52:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uPhOx-0003Lh-3c; Thu, 12 Jun 2025 08:51:32 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uPhOq-0001u0-S8; Thu, 12 Jun 2025 08:51:25 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bJ2Mz5Ym1z6L53f;
- Thu, 12 Jun 2025 20:46:39 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 4EF6F1402F3;
- Thu, 12 Jun 2025 20:51:01 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 12 Jun
- 2025 14:51:00 +0200
-Date: Thu, 12 Jun 2025 13:50:58 +0100
-To: "Zhijian Li (Fujitsu)" <lizhijian@fujitsu.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Fan Ni
- <fan.ni@samsung.com>, Peter Maydell <peter.maydell@linaro.org>,
- "mst@redhat.com" <mst@redhat.com>, "linuxarm@huawei.com"
- <linuxarm@huawei.com>, "linux-cxl@vger.kernel.org"
- <linux-cxl@vger.kernel.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Yuquan Wang <wangyuquan1236@phytium.com.cn>, Itaru Kitayama
- <itaru.kitayama@linux.dev>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
- <philmd@linaro.org>, Alireza Sanaee <alireza.sanaee@huawei.com>
-Subject: Re: [PATCH v14 3/5] hw/cxl-host: Allow split of establishing memory
- address and mmio setup.
-Message-ID: <20250612135058.000047fe@huawei.com>
-In-Reply-To: <ce28ad6b-a76a-44d7-8135-9560e8e1d6f8@fujitsu.com>
-References: <20250528110726.226389-1-Jonathan.Cameron@huawei.com>
- <20250528110726.226389-4-Jonathan.Cameron@huawei.com>
- <ce28ad6b-a76a-44d7-8135-9560e8e1d6f8@fujitsu.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JOPgRb5Z;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1749732941;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=bKuxI3g3S4mxPFm1tdz4EAQU9fdobeVgH2EL/uTfTR8=;
+	b=JOPgRb5Z6mG/qPUngwPcgojakSgXV6fpYyrsDMuHvDpSa3JRKtyKSIG2fDVTYgEob1cQPH
+	1xgwLxxNe615f2zLJTWNCB28ZzjbICDNVn2rmjno+4nEORDih8CIQbciNX2k3j65FTWTmW
+	6/mRXFw1cGj2LKhclGE6vWLpBAMT390=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-425-IX79kiyAM_29eLxRCSF-Uw-1; Thu, 12 Jun 2025 08:55:40 -0400
+X-MC-Unique: IX79kiyAM_29eLxRCSF-Uw-1
+X-Mimecast-MFC-AGG-ID: IX79kiyAM_29eLxRCSF-Uw_1749732939
+Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-3a4f8192e2cso499803f8f.3
+        for <alex.bennee@linaro.org>; Thu, 12 Jun 2025 05:55:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749732939; x=1750337739;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=bKuxI3g3S4mxPFm1tdz4EAQU9fdobeVgH2EL/uTfTR8=;
+        b=bHp/6Ewu/caBIX8kZeAVPHGj3Xg6YpC1t95Vz7Yq5I1OXTPsUMRuaJq/Hlci2XMarL
+         QeDtbYgThq8TIRsxGz5I/R/fE++TsKY7kwJQ4/kicFC7EPUqGd5BLUKSHDSJ8KlOcyR8
+         vChjdINeXRUy8cuKrW8E31grSaAEo9gHfwhLAy2AYvP/Arh+u615+7ZXOUczbbmauq9X
+         NGAi9W/wUgTyFNbF9ExfX27w2GmIY6p8Le2wONz9uS6EXD5zjGt4hC0sL753ydz5mNGv
+         g9V3O06KfXsiPv7+NBJY9iTDq96IopsRLecqPXmYnUqfyqj9gz8Lp6PopVwStytmOs0j
+         ps9Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVoM8z40V47YS4BEbjAhG9adTUNWm+IN+K4nANh8AJ1yiF5SLaySF5tmttjyozTDUsRxKSFvbpII9JAMQ==@linaro.org
+X-Gm-Message-State: AOJu0YwYFuhAkgD0KtMjSpuD+ZVNZI8LGVCDVXGsTbKtinT3PS21lFAo
+	wx4lFSxfvLeM6JtPHI3bRrXIstNSnHCGI/g2Cq1Mi94vBJRwher2JOG08brhIyDX7N/i/lPArcs
+	6Q/PMbIl1JT33q4DlF9ZOpKPsRMhrvt9q1yLeRzUpG/3JuJ6hDE2PfATFOQ==
+X-Gm-Gg: ASbGncuHmo09Qkp/4OwS7uzPmzeKlZo7JycdKEx/ScGvYOXjy+HCB4B+lUop3qNv1Tp
+	psOvk7EdnK2YMCm0SVi1cReb6kwvusB4uGAn1/YUXcei7jTCYKiZJS0gQC8sjOtP3Ml7Hf1dh9Z
+	0PvQSmWTQXW0LXuH2Kh5xmAx5v87MV8/lsRGmbdIY+zon7qaqnIutNdfa/lAgjAmGwudwwg2jp3
+	omgzy6LFcOLccmCmrJq/xznMet8Tu5cmnKApZzFC5WVv/BDf+5Ik8AspQGWyRv1EYTn1FwY3iJI
+	H6Qtsrle489Wsw05QtaWbSZYijKeaCkQ4POnWPqcgtA=
+X-Received: by 2002:a05:6000:1787:b0:3a4:e706:52f5 with SMTP id ffacd0b85a97d-3a56133d9d0mr2602240f8f.13.1749732939329;
+        Thu, 12 Jun 2025 05:55:39 -0700 (PDT)
+X-Received: by 2002:a05:6000:1787:b0:3a4:e706:52f5 with SMTP id ffacd0b85a97d-3a56133d9d0mr2602217f8f.13.1749732938836;
+        Thu, 12 Jun 2025 05:55:38 -0700 (PDT)
+Return-Path: <imammedo@redhat.com>
+Received: from imammedo.users.ipa.redhat.com ([85.93.96.130])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a561b4baa8sm1926963f8f.72.2025.06.12.05.55.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Jun 2025 05:55:38 -0700 (PDT)
+Date: Thu, 12 Jun 2025 14:55:37 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
+ mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
+ Jonathan.Cameron@huawei.com, philmd@linaro.org, alex.bennee@linaro.org
+Subject: Re: [PATCH v2 02/25] hw/arm/virt: Introduce machine state acpi
+ pcihp flags and props
+Message-ID: <20250612145537.7dff93a8@imammedo.users.ipa.redhat.com>
+In-Reply-To: <05680827-85d9-4ebd-91a7-93e262da52f5@redhat.com>
+References: <20250527074224.1197793-1-eric.auger@redhat.com>
+	<20250527074224.1197793-3-eric.auger@redhat.com>
+	<20250527135813.2d6cde91@imammedo.users.ipa.redhat.com>
+	<d6bd4794-bcee-4701-8e63-4adee91120d9@redhat.com>
+	<20250528123325.750529a4@imammedo.users.ipa.redhat.com>
+	<13792b72-d336-41b8-8ac7-8790e10f833c@redhat.com>
+	<20250611104511.55152616@imammedo.users.ipa.redhat.com>
+	<05680827-85d9-4ebd-91a7-93e262da52f5@redhat.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: U846mjP30UTsBHaNwFOgMJEpFvb2UAz7nYdpXs33Ct0_1749732939
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cwy7qDIJR85v
+X-TUID: PwgNwD8qLcrt
 
-On Mon, 9 Jun 2025 01:15:10 +0000
-"Zhijian Li (Fujitsu)" <lizhijian@fujitsu.com> wrote:
+On Wed, 11 Jun 2025 10:50:04 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
 
-> In patch 2/5, we introduced `cxl_fmws_set_memmap_and_update_mmio()`.
+> Hi Igor,
+> On 6/11/25 10:45 AM, Igor Mammedov wrote:
+> > On Wed, 11 Jun 2025 08:53:28 +0200
+> > Eric Auger <eric.auger@redhat.com> wrote:
+> >  
+> >> Hi Gustavo, Alex,
+> >>
+> >> On 5/28/25 12:33 PM, Igor Mammedov wrote:  
+> >>> On Tue, 27 May 2025 15:54:15 +0200
+> >>> Eric Auger <eric.auger@redhat.com> wrote:
+> >>>    
+> >>>> Hi Igor,
+> >>>>
+> >>>> On 5/27/25 1:58 PM, Igor Mammedov wrote:    
+> >>>>> On Tue, 27 May 2025 09:40:04 +0200
+> >>>>> Eric Auger <eric.auger@redhat.com> wrote:
+> >>>>>      
+> >>>>>> acpi_pcihp VirtMachineClass state flag will allow
+> >>>>>> to opt in for acpi pci hotplug. This is guarded by a
+> >>>>>> class no_acpi_pcihp flag to manage compats (<= 10.0
+> >>>>>> machine types will not support ACPI PCI hotplug).      
+> >>>>> there is no reason to put an effort in force disabling it
+> >>>>> on old machines, as long as code works when explicitly
+> >>>>> enabled property on CLI.
+> >>>>>
+> >>>>> See comment below on how to deal with it 
+> >>>>>      
+> >>>>>> Machine state acpi_pcihp flag must be set before the creation
+> >>>>>> of the GED device which will use it.
+> >>>>>>
+> >>>>>> Currently the ACPI PCI HP is turned off by default. This will
+> >>>>>> change later on for 10.1 machine type.      
+> >>>>> one thing to note, is that turning it on by default might
+> >>>>> cause change of NIC naming in guest as this brings in
+> >>>>> new "_Sxx" slot naming. /so configs tied to nic  go down the drain/
+> >>>>>
+> >>>>> Naming, we have, also happens to be broken wrt spec
+> >>>>> (it should be unique system wide, there was a gitlab issue for that,
+> >>>>> there is no easy fix that though)
+> >>>>>
+> >>>>> So I'd leave it disabled by default and let users to turn
+> >>>>> it on explicitly when needed.       
+> >>>> what is the status on q35, isn't it enabled by default? If so why
+> >>>> wouldn't we want the same setting on ARM? Is that because of the known
+> >>>> issue you report above?    
+> >>> Above issue is not a blocker (for thae lack of a good way to fix it)
+> >>>
+> >>> on q35 we have had a few complains and fixes, after pcihp was promoted
+> >>> to default (so hopefully that won't happen on with ARM). Also given
+> >>> that ARM VM is less popular like hood breaking someone setup is even less.
+> >>>
+> >>> That said I'd be cautions keep native hotplug as default,
+> >>> and only ones who need ACPI one, could turn it on explicitly.
+> >>>
+> >>> But well it's policies, so it's up to you ARM folks to decide what
+> >>> virt board should look like.    
+> >> What is your preference? Do you prefer enabling ACPI PCI HP by default
+> >> or the opposite.  
+> > I'd prefer native PCIe hotplug being default,
+> > that way we have less chance of causing regressions not to mention
+> > less complexity (as acpi pcihp adds up quite a bit of it).
+> >
+> > And ones who want/need acpi-pcihp/acpi-index can enable it explicitly,
+> > to play with.  
 > 
-> Initially, I assumed patch 3/5 would split `cxl_fmws_set_memmap_and_update_mmio()` into two steps:
-> 1. Traverse CXLFixedWindow and update `fw->base`.
-> 2. Call `sysbus_mmio_map(SYS_BUS_DEVICE(fw), 0, fw->base)`.
-> For example (my personal preference):
-> ```c
-> hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
-> {
->      hwaddr end = cxl_fmws_set_memmap(base, max_addr);
->      cxl_fmws_update_mmio();
->      return end;
-> }
+> OK I will follow your suggestion. You have definitively more expertise
+> than me here ! ;-)
+
+So far what I suggest looks like better option compared to multiple machine knobs
+fiddling. But I can easily change my mind once I see respin, if experiment
+with compat props is not coming well together.
+
 > 
+> Thanks!
 > 
-> If we had implemented this design in patch 2/5, patch 3/5 might not be necessary.
-
-At the time of patch 2 we had no justification for the split as for x86 that would
-just look like a pointless double loop.
-
-However you are right that this is too complex given it's not a performance path
-and perhaps some commentary in the patch description will be enough that no
-one minds.
-
-I'll go a little further than you suggest and push the two calls in
-your cxl_fmws_set_memmap_and_mmio() into pc.c (patch 2) as that wrapper
-isn't adding much value.
-
-I think it is a big enough change that I'll drop tags given on patch 2.
-
-Thanks,
-
-Jonathan
-
-
-> The only potential benefit I see in the current patch 3/5 is efficiency improvements
-> in cxl_fmws_set_memmap_and_update_mmio(), but since the function is typically
-> called only once and the GLib list (glist) is small, the practical impact should
-> be minimal.
+> Eric
+> >  
+> >> Anybody else?
+> >>
+> >> On my end I think I would prefer to have the same default setting than
+> >> on x86 (ie. ACPI PCI hotplug set by default) but I have no strong
+> >> opinion either.
+> >>
+> >> Thanks
+> >>
+> >> Eric  
+> >>>    
+> >>>> The no_foo compat stuff was especially introduced to avoid breaking the
+> >>>> guest ABI for old machine types (like the NIC naming alternation you evoke).    
+> >>> no_foo is just another way to handle compat stuff,
+> >>> and when it's more than one knob per feature it gets ugly really fast.
+> >>> Hence, I'd prefer pcihp done in x86 way aka:
+> >>>    hw_compat_OLD(ged.use_acpi_hotplug_bridge, false|true)
+> >>> to manage presence of ACPI hotplug on desired machine version.
+> >>> Side benefit it's consistent with how pcihp works on x86
+> >>>    
+> >>>>>      
+> >>>>>> We also introduce properties to allow disabling it.
+> >>>>>>
+> >>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> >>>>>> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+> >>>>>> ---
+> >>>>>>  include/hw/arm/virt.h |  2 ++
+> >>>>>>  hw/arm/virt.c         | 27 +++++++++++++++++++++++++++
+> >>>>>>  2 files changed, 29 insertions(+)
+> >>>>>>
+> >>>>>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> >>>>>> index 9a1b0f53d2..10ea581f06 100644
+> >>>>>> --- a/include/hw/arm/virt.h
+> >>>>>> +++ b/include/hw/arm/virt.h
+> >>>>>> @@ -129,6 +129,7 @@ struct VirtMachineClass {
+> >>>>>>      bool no_tcg_lpa2;
+> >>>>>>      bool no_ns_el2_virt_timer_irq;
+> >>>>>>      bool no_nested_smmu;
+> >>>>>> +    bool no_acpi_pcihp;
+> >>>>>>  };
+> >>>>>>  
+> >>>>>>  struct VirtMachineState {
+> >>>>>> @@ -150,6 +151,7 @@ struct VirtMachineState {
+> >>>>>>      bool mte;
+> >>>>>>      bool dtb_randomness;
+> >>>>>>      bool second_ns_uart_present;
+> >>>>>> +    bool acpi_pcihp;
+> >>>>>>      OnOffAuto acpi;
+> >>>>>>      VirtGICType gic_version;
+> >>>>>>      VirtIOMMUType iommu;
+> >>>>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> >>>>>> index 9a6cd085a3..a0deeaf2b3 100644
+> >>>>>> --- a/hw/arm/virt.c
+> >>>>>> +++ b/hw/arm/virt.c
+> >>>>>> @@ -2397,8 +2397,10 @@ static void machvirt_init(MachineState *machine)
+> >>>>>>      create_pcie(vms);
+> >>>>>>  
+> >>>>>>      if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
+> >>>>>> +        vms->acpi_pcihp &= !vmc->no_acpi_pcihp;      
+> >>>>> I don't particularly like no_foo naming as it makes code harder to read
+> >>>>> and combined with 'duplicated' field in machine state it make even things worse.
+> >>>>> (if I recall right Philippe was cleaning mess similar flags usage
+> >>>>> have introduced with ITS)
+> >>>>>
+> >>>>> instead of adding machine property (both class and state),
+> >>>>> I'd suggest adding the only property to GPE device (akin to what we have in x86 world)
+> >>>>> And then one can meddle with defaults using hw_compat_xxx      
+> >>>> no_foo still is a largely used pattern in arm virt: no_ged,
+> >>>> kvm_no_adjvtime, no_kvm_steal_time, no_tcg_lpa2, ../.. There are plenty
+> >>>> of them and I am not under the impression this is going to be changed.
+> >>>>
+> >>>> If you refer to 8d23b1df7212 ("hw/arm/virt: Remove
+> >>>> VirtMachineClass::no_its field") I think the no_its was removed because
+> >>>> the machine it applied was removed.
+> >>>>
+> >>>> If I understand correctly you would like the prop to be attached to the
+> >>>> GED device. However the GED device is internally created by the virt
+> >>>> machine code and not passed through a "-device" CLI option. So how would
+> >>>> you pass the option on the cmd line if you don't want it to be set by
+> >>>> default per machine type?
+> >>>>
+> >>>> Thanks
+> >>>>
+> >>>> Eric    
+> >>>>>      
+> >>>>>>          vms->acpi_dev = create_acpi_ged(vms);
+> >>>>>>      } else {
+> >>>>>> +        vms->acpi_pcihp = false;
+> >>>>>>          create_gpio_devices(vms, VIRT_GPIO, sysmem);
+> >>>>>>      }
+> >>>>>>  
+> >>>>>> @@ -2593,6 +2595,20 @@ static void virt_set_its(Object *obj, bool value, Error **errp)
+> >>>>>>      vms->its = value;
+> >>>>>>  }
+> >>>>>>  
+> >>>>>> +static bool virt_get_acpi_pcihp(Object *obj, Error **errp)
+> >>>>>> +{
+> >>>>>> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+> >>>>>> +
+> >>>>>> +    return vms->acpi_pcihp;
+> >>>>>> +}
+> >>>>>> +
+> >>>>>> +static void virt_set_acpi_pcihp(Object *obj, bool value, Error **errp)
+> >>>>>> +{
+> >>>>>> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+> >>>>>> +
+> >>>>>> +    vms->acpi_pcihp = value;
+> >>>>>> +}
+> >>>>>> +
+> >>>>>>  static bool virt_get_dtb_randomness(Object *obj, Error **errp)
+> >>>>>>  {
+> >>>>>>      VirtMachineState *vms = VIRT_MACHINE(obj);
+> >>>>>> @@ -3310,6 +3326,10 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+> >>>>>>                                            "in ACPI table header."
+> >>>>>>                                            "The string may be up to 8 bytes in size");
+> >>>>>>  
+> >>>>>> +    object_class_property_add_bool(oc, "acpi-pcihp",
+> >>>>>> +                                   virt_get_acpi_pcihp, virt_set_acpi_pcihp);
+> >>>>>> +    object_class_property_set_description(oc, "acpi-pcihp",
+> >>>>>> +                                          "Force ACPI PCI hotplug");
+> >>>>>>  }
+> >>>>>>  
+> >>>>>>  static void virt_instance_init(Object *obj)
+> >>>>>> @@ -3344,6 +3364,9 @@ static void virt_instance_init(Object *obj)
+> >>>>>>          vms->tcg_its = true;
+> >>>>>>      }
+> >>>>>>  
+> >>>>>> +    /* default disallows ACPI PCI hotplug */
+> >>>>>> +    vms->acpi_pcihp = false;
+> >>>>>> +
+> >>>>>>      /* Default disallows iommu instantiation */
+> >>>>>>      vms->iommu = VIRT_IOMMU_NONE;
+> >>>>>>  
+> >>>>>> @@ -3394,8 +3417,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(10, 1)
+> >>>>>>  
+> >>>>>>  static void virt_machine_10_0_options(MachineClass *mc)
+> >>>>>>  {
+> >>>>>> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+> >>>>>> +
+> >>>>>>      virt_machine_10_1_options(mc);
+> >>>>>>      compat_props_add(mc->compat_props, hw_compat_10_0, hw_compat_10_0_len);
+> >>>>>> +    /* 10.0 and earlier do not support ACPI PCI hotplug */
+> >>>>>> +    vmc->no_acpi_pcihp = true;
+> >>>>>>  }
+> >>>>>>  DEFINE_VIRT_MACHINE(10, 0)
+> >>>>>>        
 > 
-> I'm interested in others' perspectives on this.
-> 
-> Thanks
-> Zhijian
-> 
-> 
-> On 28/05/2025 19:07, Jonathan Cameron via wrote:
-> > On arm/virt the memory map is set up before any devices are brought
-> > up.  To enable this provide split functions to establish the fw->base
-> > and later to actually map it.
-> > 
-> > Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > ---
-> > v14: Update wrt to changes in previous patch.
-> >       Add a do_cfwms_set_memmap_and_update_mmio() utility function
-> >       to reduce code duplication. (Zhijian)
-> > ---
-> >   include/hw/cxl/cxl_host.h |  2 ++
-> >   hw/cxl/cxl-host-stubs.c   |  2 ++
-> >   hw/cxl/cxl-host.c         | 43 +++++++++++++++++++++++++++++++++++----
-> >   3 files changed, 43 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/include/hw/cxl/cxl_host.h b/include/hw/cxl/cxl_host.h
-> > index 6dce2cde07..aee9d573d6 100644
-> > --- a/include/hw/cxl/cxl_host.h
-> > +++ b/include/hw/cxl/cxl_host.h
-> > @@ -16,6 +16,8 @@
-> >   void cxl_machine_init(Object *obj, CXLState *state);
-> >   void cxl_fmws_link_targets(Error **errp);
-> >   void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp);
-> > +hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr);
-> > +void cxl_fmws_update_mmio(void);
-> >   hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr);
-> >   GSList *cxl_fmws_get_all_sorted(void);
-> >   
-> > diff --git a/hw/cxl/cxl-host-stubs.c b/hw/cxl/cxl-host-stubs.c
-> > index 13eb6bf6a4..d9e38618d6 100644
-> > --- a/hw/cxl/cxl-host-stubs.c
-> > +++ b/hw/cxl/cxl-host-stubs.c
-> > @@ -11,6 +11,8 @@
-> >   void cxl_fmws_link_targets(Error **errp) {};
-> >   void cxl_machine_init(Object *obj, CXLState *state) {};
-> >   void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp) {};
-> > +hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr) { return base; };
-> > +void cxl_fmws_update_mmio(void) {};
-> >   hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
-> >   {
-> >       return base;
-> > diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
-> > index 016a4fdc6a..a1b9980035 100644
-> > --- a/hw/cxl/cxl-host.c
-> > +++ b/hw/cxl/cxl-host.c
-> > @@ -378,11 +378,14 @@ void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp)
-> >       }
-> >   }
-> >   
-> > -static void cxl_fmws_update(CXLFixedWindow *fw, hwaddr *base, hwaddr max_addr)
-> > +static void cxl_fmws_update(CXLFixedWindow *fw, hwaddr *base, hwaddr max_addr,
-> > +                            bool update_mmio)
-> >   {
-> >       if (*base + fw->size <= max_addr) {
-> >           fw->base = *base;
-> > -        sysbus_mmio_map(SYS_BUS_DEVICE(fw), 0, fw->base);
-> > +        if (update_mmio) {
-> > +            sysbus_mmio_map(SYS_BUS_DEVICE(fw), 0, fw->base);
-> > +        }
-> >           *base += fw->size;
-> >       }
-> >   }
-> > @@ -421,19 +424,51 @@ GSList *cxl_fmws_get_all_sorted(void)
-> >       return g_slist_sort_with_data(cxl_fmws_get_all(), cfmws_cmp, NULL);
-> >   }
-> >   
-> > -hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
-> > +static hwaddr do_cxl_fmws_set_memmap_and_update_mmio(hwaddr base,
-> > +                                                     hwaddr max_addr,
-> > +                                                     bool update_mmio)
-> >   {
-> >       GSList *cfmws_list, *iter;
-> >   
-> >       cfmws_list = cxl_fmws_get_all_sorted();
-> >       for (iter = cfmws_list; iter; iter = iter->next) {
-> > -        cxl_fmws_update(CXL_FMW(iter->data), &base, max_addr);
-> > +        cxl_fmws_update(CXL_FMW(iter->data), &base, max_addr, update_mmio);
-> >       }
-> >       g_slist_free(cfmws_list);
-> >   
-> >       return base;
-> >   }
-> >   
-> > +hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
-> > +{
-> > +    return do_cxl_fmws_set_memmap_and_update_mmio(base, max_addr, false);
-> > +}
-> > +
-> > +hwaddr cxl_fmws_set_memmap_and_update_mmio(hwaddr base, hwaddr max_addr)
-> > +{
-> > +    return do_cxl_fmws_set_memmap_and_update_mmio(base, max_addr, true);
-> > +}
-> > +
-> > +static int cxl_fmws_mmio_map(Object *obj, void *opaque)
-> > +{
-> > +    struct CXLFixedWindow *fw;
-> > +
-> > +    if (!object_dynamic_cast(obj, TYPE_CXL_FMW)) {
-> > +        return 0;
-> > +    }
-> > +    fw = CXL_FMW(obj);
-> > +    sysbus_mmio_map(SYS_BUS_DEVICE(fw), 0, fw->base);
-> > +
-> > +    return 0;
-> > +}
-> > +
-> > +void cxl_fmws_update_mmio(void)
-> > +{
-> > +    /* Ordering is not required for this */
-> > +    object_child_foreach_recursive(object_get_root(), cxl_fmws_mmio_map,
-> > +                                   NULL);
-> > +}
-> > +
-> >   static void cxl_fmw_realize(DeviceState *dev, Error **errp)
-> >   {
-> >       CXLFixedWindow *fw = CXL_FMW(dev)  
-

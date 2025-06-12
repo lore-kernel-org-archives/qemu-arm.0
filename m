@@ -1,70 +1,70 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2602952njc;
-        Thu, 12 Jun 2025 14:00:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXERWvu21VFrqzEJ9LOI6vdITvx9+ffSNwwIWkc4QUNk8gTqNs4jg2WpgrwndhGJGdj+Cw0mNiT/Xndow==@linaro.org
-X-Google-Smtp-Source: AGHT+IEp41JlKiZXduf2r/I9fOnaEMzg1Gup4xRkvqkn2G7TsPnjKHJTpay7sclwAr5Un+pxX5KF
-X-Received: by 2002:a05:6214:19c9:b0:6fb:23:4812 with SMTP id 6a1803df08f44-6fb3e671282mr4543626d6.26.1749762011343;
-        Thu, 12 Jun 2025 14:00:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749762011; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2603258njc;
+        Thu, 12 Jun 2025 14:00:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV02KWArIcXpF1PXDtFIW1dKwYaUkVS2iXKqonsHfrKjUdMQZJXteYgvROGmZMmHmVe8vvGmNxw7yT8yw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHTEvGoOUEzw2wcZHbvsfbm8N1qFuYEmkZnFVejx5NFWJTG2gzExTB3y95IDsSjCrSbCMiV
+X-Received: by 2002:a05:622a:248e:b0:494:78d5:baea with SMTP id d75a77b69052e-4a72ff327cemr10711231cf.51.1749762037498;
+        Thu, 12 Jun 2025 14:00:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749762037; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZTNEtFjjCkDEz13A5lwRMmTxPXg56ea7JRaKuKZXtMpKYodY1nTqau4lQoXJKdb6f6
-         QMJV5Dp8C2idpfkjbdjvyG847J9Dy76Cfj/DltEQH20vV9E7691RTMxmw2CLSbK9b+uZ
-         4RBalsRuts7UhciT9XNdqTDWZgpcMPFh7Jtf+4VDQJe0mMXwj/koUcDSzu/9xipy+s9r
-         bB3tIAB2Yelh3wUWU0L5Z9nxv5uyOW3ldoOprxgng+dpT67MGdUnC3Za5SwMBPPxTu9J
-         /W5kOj8lOj9jBvBt0eM6NeeFR+ENBkZWjopTRsa+qbY3KbJqVv/iiOAxgC6GlRl0vZ+G
-         brSA==
+        b=Nva+tp7ckRlvFEGjQqwIQoNoYVC35jt8CLwFff/DZgyt32IaVES4BT12guUxAAZHiz
+         j/f+fvtknyD9SrtxkmjhKD4K2tUajFkRkfI/t4gJcU6KRmXf+0DV0SKkkrw+hWD9OOyD
+         mmAvx9IO2iT16tinoteR1D0egOlqZmvnxEfaLvoi0AOLkPCuqPXcWWwEZ7HLUa7n9rpv
+         hcoR1khcBpMRwkpxRZlsSOEvT0xd3u3zbD1fkIk4hQTSpRMlaYEWiq7i5eHb3RIfjgCx
+         y8LAjvKqh7vq5qCJpCqDuhMtOAjpdqTEb4YAduZLXY3HJEz4ZWDc+0w3tGyweJlK6qdu
+         Z2dA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=emNV1/voq8vLNxrXGL0MQiHgqI8v5/GVX6i/w8ik8zI=;
+        bh=PBxHPU8F9xytU1WJw8ndoGxgIxFGcDQhUL4l1zUYAMc=;
         fh=Bqei7UspLQLDtJyhx8DFVPkwaTXoAlN/5Ng7ASZZYZk=;
-        b=QjzvqAZmIBi0csnorqOsmwMeOBpF+dKQT8sk1xGbUxuYZcJIdGGgzngLEt+P4QPUrg
-         t5las7R170loTO93nSnEUckCitriOUsFtAa7MJk/5NyTyNwKm9ZQm3VzrPyaqYxwVOq/
-         e6p/0XhDRUDtF3k8jYzcIfxFUwAzL1FUw6z6pXZ9I4TF4Hdhg83oUf4f+joIUA0sCDKM
-         1erFvF5E//9J39sowd3zIqTHJgUNTGo+VtiQ4C/aMX0Srfh5YKeahpiBQWWx82XsC0YL
-         iMdg3JU6YX4Qe4keO0rc0kkl99oQA1RWRWTTxHeuuUOeKvY8JUEKwWB2rbZzE2OMxv3i
-         6yiA==;
+        b=YzA02XhF4k5c+ujKoJhEmzFNzm5hXoNrPOa1nlaqiWlB6QF45xhsA2krHEkzAKqfkX
+         4cOvR6Hbdte+wqb1nJlaoUrbKrVQ02WwvxZuMl+awvfDz0QPDkRpuRGts/hSx/d8QNR7
+         /VCrXpMKGr4RzDGKguEkIytyC7nZBBlGfT42sz/CLQTFKKcmdHv9ygBpSBlwY9d33Eei
+         f+8qo2Mx1Uk2PrpXjAF1NMgh+o/vjMBKOU/vofLy51p1tAPH3iSfAJU/1HK5SS2Yqpmw
+         EkgCk23FGJ6SB0sXFobwESxKrg0+kVnlgQT/IhjbfGnB//AajqHL9raMGqHrnv8Lig6T
+         yRrQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CYF5dQIv;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LJlToFdn;
        spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <jsnow@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a72a47e51esi15571251cf.274.2025.06.12.14.00.11
+        by mx.google.com with ESMTPS id d75a77b69052e-4a72a2b90a7si16049921cf.37.2025.06.12.14.00.37
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Jun 2025 14:00:11 -0700 (PDT)
+        Thu, 12 Jun 2025 14:00:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CYF5dQIv;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LJlToFdn;
        spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1749762011;
+	s=mimecast20190719; t=1749762037;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=emNV1/voq8vLNxrXGL0MQiHgqI8v5/GVX6i/w8ik8zI=;
-	b=CYF5dQIv6r21kDWH+tQ34dvcAKaC22MOPYRfw9Xuh//690zEX4DATUF5Cl1E1H+p320akA
-	U4NBTOE+e5x/l6ArAIutDyGsk8zKvkDFFnJy36vebOVuFlgCG+vfCD2VSZFxapQUZC/IDu
-	uwQEACdmybHnZbjw0drpZw+NnPlgK5A=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+	bh=PBxHPU8F9xytU1WJw8ndoGxgIxFGcDQhUL4l1zUYAMc=;
+	b=LJlToFdnuzFgxsblkK0o8s46IbZ2zVcl7YoYLycR2GuO0P3cTLvsm3mLjJdq8bzffA2Y1S
+	Ohve0uOw7F6NObr2DdUk/qGuo3uGa/+B8ZcYgd5o9StH9veIgk3fboYR+8q7SM1HiEywtj
+	ADz95fGNQTZfV2GfW9278OdfoULaCDY=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-682-aaf5Wg7eMmKEsGD1mqLkww-1; Thu,
- 12 Jun 2025 17:00:03 -0400
-X-MC-Unique: aaf5Wg7eMmKEsGD1mqLkww-1
-X-Mimecast-MFC-AGG-ID: aaf5Wg7eMmKEsGD1mqLkww_1749761998
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-362-GBjP-yf1OPaff_ObhgnFzg-1; Thu,
+ 12 Jun 2025 17:00:33 -0400
+X-MC-Unique: GBjP-yf1OPaff_ObhgnFzg-1
+X-Mimecast-MFC-AGG-ID: GBjP-yf1OPaff_ObhgnFzg_1749762027
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id A4AB71800282;
-	Thu, 12 Jun 2025 20:59:55 +0000 (UTC)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 287D519560AA;
+	Thu, 12 Jun 2025 21:00:26 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.80.54])
-	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id A265C1955F4A;
-	Thu, 12 Jun 2025 20:59:26 +0000 (UTC)
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id E49291956050;
+	Thu, 12 Jun 2025 20:59:55 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Joel Stanley <joel@jms.id.au>,
@@ -177,202 +177,86 @@ Cc: Joel Stanley <joel@jms.id.au>,
 	Huacai Chen <chenhuacai@kernel.org>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Harsh Prateek Bora <harshpb@linux.ibm.com>
-Subject: [PATCH v2 08/12] python: further 3.9+ syntax upgrades
-Date: Thu, 12 Jun 2025 16:54:46 -0400
-Message-ID: <20250612205451.1177751-9-jsnow@redhat.com>
+Subject: [PATCH v2 09/12] python: update mkvenv to type-check under different python versions
+Date: Thu, 12 Jun 2025 16:54:47 -0400
+Message-ID: <20250612205451.1177751-10-jsnow@redhat.com>
 In-Reply-To: <20250612205451.1177751-1-jsnow@redhat.com>
 References: <20250612205451.1177751-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: NvYrqC3B4LEes6H0dD38BNPJ2BVAU4SboynAKdAPQog_1749761998
+X-Mimecast-MFC-PROC-ID: b-bhJN-XS6-YURShlWK8F4BIZixxhXgq_ijH9O80Fws_1749762027
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-X-TUID: kWmTv/Ppr2ri
+X-TUID: 2HMLrJOymKTv
 
-pyupgrade does not catch absolutely everything - there are still a few
-deprecated type aliases we need to shift away from using.
+Currently, we instruct mypy to pretend it is type checking under a
+specific version of python. For our case, where our scripts may in fact
+actually be executing under a number of different environments in the
+build system, we want mypy to remove this restriction.
+
+This patch adjusts some of the import logic in mkvenv.py to make it type
+check under a wider range of python versions. It's largely arbitrary, to
+work around some mypy fussiness.
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- docs/sphinx/compat.py                 | 8 ++------
- docs/sphinx/qapi_domain.py            | 6 +++---
- python/qemu/machine/console_socket.py | 4 ++--
- python/qemu/qmp/events.py             | 9 +++++++--
- python/qemu/qmp/protocol.py           | 3 +--
- python/qemu/utils/qemu_ga_client.py   | 4 ++--
- tests/qemu-iotests/fat16.py           | 3 ++-
- tests/qemu-iotests/iotests.py         | 8 ++++++--
- 8 files changed, 25 insertions(+), 20 deletions(-)
+ python/scripts/mkvenv.py | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/docs/sphinx/compat.py b/docs/sphinx/compat.py
-index 2a93687cb3e..1eb1a49d976 100644
---- a/docs/sphinx/compat.py
-+++ b/docs/sphinx/compat.py
-@@ -2,13 +2,9 @@
- Sphinx cross-version compatibility goop
- """
+diff --git a/python/scripts/mkvenv.py b/python/scripts/mkvenv.py
+index 8026ca24861..b5d1edd3afa 100644
+--- a/python/scripts/mkvenv.py
++++ b/python/scripts/mkvenv.py
+@@ -99,16 +99,18 @@
+         HAVE_DISTLIB = False
  
-+from collections.abc import Callable
- import re
--from typing import (
--    TYPE_CHECKING,
--    Any,
--    Callable,
--    Optional,
--)
-+from typing import TYPE_CHECKING, Any, Optional
+ # Try to load tomllib, with a fallback to tomli.
+-# HAVE_TOMLLIB is checked below, just-in-time, so that mkvenv does not fail
++# TOML is checked below, just-in-time, so that mkvenv does not fail
+ # outside the venv or before a potential call to ensurepip in checkpip().
+-HAVE_TOMLLIB = True
++TOML = None
+ try:
+     import tomllib
++    TOML = tomllib
+ except ImportError:
+     try:
+-        import tomli as tomllib
++        import tomli
++        TOML = tomli
+     except ImportError:
+-        HAVE_TOMLLIB = False
++        pass
  
- from docutils import nodes
- from docutils.nodes import Element, Node, Text
-diff --git a/docs/sphinx/qapi_domain.py b/docs/sphinx/qapi_domain.py
-index cb6104922b5..7673eaed6d5 100644
---- a/docs/sphinx/qapi_domain.py
-+++ b/docs/sphinx/qapi_domain.py
-@@ -39,8 +39,8 @@
+ # Do not add any mandatory dependencies from outside the stdlib:
+ # This script *must* be usable standalone!
+@@ -194,6 +196,7 @@ def compute_venv_libpath(context: SimpleNamespace) -> str:
+         # Python 3.12+, not strictly necessary because it's documented
+         # to be the same as 3.10 code below:
+         if sys.version_info >= (3, 12):
++            assert isinstance(context.lib_path, str)
+             return context.lib_path
  
- 
- if TYPE_CHECKING:
--    from collections.abc import Iterable
--    from typing import AbstractSet, Any
-+    from collections.abc import Iterable, Set
-+    from typing import Any
- 
-     from docutils.nodes import Element, Node
-     from sphinx.addnodes import desc_signature, pending_xref
-@@ -825,7 +825,7 @@ def clear_doc(self, docname: str) -> None:
-                 del self.objects[fullname]
- 
-     def merge_domaindata(
--        self, docnames: AbstractSet[str], otherdata: dict[str, Any]
-+        self, docnames: Set[str], otherdata: dict[str, Any]
-     ) -> None:
-         for fullname, obj in otherdata["objects"].items():
-             if obj.docname in docnames:
-diff --git a/python/qemu/machine/console_socket.py b/python/qemu/machine/console_socket.py
-index 0754f340310..bcd27017fc9 100644
---- a/python/qemu/machine/console_socket.py
-+++ b/python/qemu/machine/console_socket.py
-@@ -17,7 +17,7 @@
- import socket
- import threading
- import time
--from typing import Deque, Optional
-+from typing import Optional
+         # Python 3.10+
+@@ -710,7 +713,7 @@ def _do_ensure(
  
  
- class ConsoleSocket(socket.socket):
-@@ -43,7 +43,7 @@ def __init__(self,
+ def _parse_groups(file: str) -> dict[str, dict[str, Any]]:
+-    if not HAVE_TOMLLIB:
++    if not TOML:
+         if sys.version_info < (3, 11):
+             raise Ouch("found no usable tomli, please install it")
  
-         self._recv_timeout_sec = 300.0
-         self._sleep_time = 0.5
--        self._buffer: Deque[int] = deque()
-+        self._buffer: deque[int] = deque()
-         if address is not None:
-             socket.socket.__init__(self, socket.AF_UNIX, socket.SOCK_STREAM)
-             self.connect(address)
-diff --git a/python/qemu/qmp/events.py b/python/qemu/qmp/events.py
-index e444d9334ec..33a9317e4d4 100644
---- a/python/qemu/qmp/events.py
-+++ b/python/qemu/qmp/events.py
-@@ -448,10 +448,15 @@ def accept(self, event) -> bool:
- """
- 
- import asyncio
--from collections.abc import AsyncIterator, Iterable, Iterator
-+from collections.abc import (
-+    AsyncIterator,
-+    Callable,
-+    Iterable,
-+    Iterator,
-+)
- from contextlib import contextmanager
- import logging
--from typing import Callable, Optional, Union
-+from typing import Optional, Union
- 
- from .error import QMPError
- from .message import Message
-diff --git a/python/qemu/qmp/protocol.py b/python/qemu/qmp/protocol.py
-index 4ec9564c4b3..683df61f55e 100644
---- a/python/qemu/qmp/protocol.py
-+++ b/python/qemu/qmp/protocol.py
-@@ -15,7 +15,7 @@
- 
- import asyncio
- from asyncio import StreamReader, StreamWriter
--from collections.abc import AsyncGenerator, Awaitable
-+from collections.abc import AsyncGenerator, Awaitable, Callable
- from contextlib import asynccontextmanager
- from enum import Enum
- from functools import wraps
-@@ -25,7 +25,6 @@
- from ssl import SSLContext
- from typing import (
-     Any,
--    Callable,
-     Generic,
-     Optional,
-     TypeVar,
-diff --git a/python/qemu/utils/qemu_ga_client.py b/python/qemu/utils/qemu_ga_client.py
-index a653c234c4b..d15848667b1 100644
---- a/python/qemu/utils/qemu_ga_client.py
-+++ b/python/qemu/utils/qemu_ga_client.py
-@@ -39,11 +39,11 @@
- import argparse
- import asyncio
- import base64
--from collections.abc import Sequence
-+from collections.abc import Callable, Sequence
- import os
- import random
- import sys
--from typing import Any, Callable, Optional
-+from typing import Any, Optional
- 
- from qemu.qmp import ConnectError, SocketAddrT
- from qemu.qmp.legacy import QEMUMonitorProtocol
-diff --git a/tests/qemu-iotests/fat16.py b/tests/qemu-iotests/fat16.py
-index 88c3d56c662..ec4bc980725 100644
---- a/tests/qemu-iotests/fat16.py
-+++ b/tests/qemu-iotests/fat16.py
-@@ -15,8 +15,9 @@
- # You should have received a copy of the GNU General Public License
- # along with this program.  If not, see <http://www.gnu.org/licenses/>.
- 
-+from collections.abc import Callable
- import string
--from typing import Callable, Optional, Protocol
-+from typing import Optional, Protocol
+@@ -722,7 +725,7 @@ def _parse_groups(file: str) -> dict[str, dict[str, Any]]:
+     # Debian bullseye-backports) and v2.0.x
+     with open(file, encoding="ascii") as depfile:
+         contents = depfile.read()
+-        return tomllib.loads(contents)  # type: ignore
++        return TOML.loads(contents)  # type: ignore
  
  
- SECTOR_SIZE = 512
-diff --git a/tests/qemu-iotests/iotests.py b/tests/qemu-iotests/iotests.py
-index 104a61058fa..b69895cd117 100644
---- a/tests/qemu-iotests/iotests.py
-+++ b/tests/qemu-iotests/iotests.py
-@@ -20,7 +20,12 @@
- import atexit
- import bz2
- from collections import OrderedDict
--from collections.abc import Iterable, Iterator, Sequence
-+from collections.abc import (
-+    Callable,
-+    Iterable,
-+    Iterator,
-+    Sequence,
-+)
- from contextlib import contextmanager
- import faulthandler
- import json
-@@ -35,7 +40,6 @@
- import time
- from typing import (
-     Any,
--    Callable,
-     Optional,
-     TextIO,
-     TypeVar,
+ def ensure_group(
 -- 
 2.48.1

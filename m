@@ -1,115 +1,231 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2410299njc;
-        Thu, 12 Jun 2025 08:04:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU+Sz7H/JaVWhd08oJ4lLddx2YAwT6cdLsSZxOZGwFv3kqcIupO3y1lzh0KiSQtFBuD68fE1wybnCYW2A==@linaro.org
-X-Received: by 2002:a05:690c:4985:b0:710:e8a8:7768 with SMTP id 00721157ae682-7114eda1af3mr63761837b3.31.1749740663213;
-        Thu, 12 Jun 2025 08:04:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749740663; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2433766njc;
+        Thu, 12 Jun 2025 08:43:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXHT5DsJ2Y38sp18RNaN2g7JGt6cUi/lt/nHFXSjz3KXUff1JRSKwBi0fKBK70cieBFAeWTCt2cd/bawg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHgQB4dCq1PoLy2FJSA5E2TBan/hpnOFX+/puhl5ZoTfOEbamdbqzfBVdoVFVAbHiAwGenm
+X-Received: by 2002:a05:620a:24c1:b0:7d2:27ff:2133 with SMTP id af79cd13be357-7d3bbd44f38mr25482285a.1.1749742991538;
+        Thu, 12 Jun 2025 08:43:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749742991; cv=none;
         d=google.com; s=arc-20240605;
-        b=i0hV1ibGydi0Gd+n/Z6W4muXVRZG/86xhv9nH2Gf8Ae3vIupLXOQUdseMoTwbch477
-         aUicayXcMHTGMw+anBAhSSY6QrBNYWJJH+iQOuOQYS6TAHNEORj46UkQ0yCjmYDCKzYB
-         IdYpOu/WB/oU9DK9vN/oge1bMLi6odcpJiRiU1PLq0WMbsJIuniwRzoppPvqvmIGbSGx
-         CKiHjQ6iv6OtpNHFjhr8WKcqQCgB/SatwlGGq5NmzQQd0d0k86OZ/mRaYWJy3h0/eAem
-         wK4+gxFJEpqIXttk+JDf68IpLirt1w5rsEyC/yBS0KVZUwPZdn9D/4yPB8e43HXx9ASF
-         UOtw==
+        b=PXXqs/rwa/Xz1TfJKME+79TG66pIMF9cbHfYhqLCjZWk/nQsWji9k3Wbd3ysm+Zayc
+         GIO0dIJL+x9fGVfdiqilWXQ2RS6l5e8fcC2KZ4Uk22+ZtD7XQNTm3bgmeCSvEFvPL+i4
+         3IKpcs7yN2C9+wdnSqvYDoZ09cdHRrbzrDCjogYX5eHXryBoDXpRPnqNKJsGy7c0Frjw
+         khj+nw32HB3ONiMTKSnPOUcMfg1QWa4z4LlrpVgx68JT/D+5FvDQ4cI4QEnImLS1zyc4
+         gKB0OjJIWBbn6pJMMpBYU86j65UYqP/mPLjTMVst07CtUoeTXidmSTORx1vEbMwRhJOQ
+         +XxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=mwRohgyatrsnok8RQFXYdLlHld9AUTUpziIQUj48/Fk=;
-        fh=LpWYF1wefUCZEKZ8dEqoobClZoJ2qHnbhl50TElrZIg=;
-        b=PSGCCip+eo9VG2muJOCPfjWpPPfBaBBXPlirG67Y0506KCeClcVF1LjOEY1Zw71MyQ
-         2IEFqR+3je4EeXyNMGfk5b6iqjK+4x0+BHwcWRmgLVtn6xpmcTBsyYsmuYiAx2cMxNr0
-         Q9DfcoqfT9BvBLvLcAEqJk87LxeMmUMKFHBd4YMSO5gvIAxGiFGwRIbOPArBdAS3NUU0
-         bC0cZFFc6wnaDZep+R2lUoAIynvHejdnRZ6wMuCjWPe9mIkb+f9Gjexu0ysOnWUKqU+9
-         LRwNn3qjJLLHYJ3oi5mNGCyHXMeFgBwWT7oGmuuWzYzPeCkCFBuPXWFM7Ne0Vj3Q2FFJ
-         PjBw==;
+        h=mime-version:message-id:date:user-agent:references:organization
+         :in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=R8VS4oBc5qIirjsbvzZp2wjtV3fOLfCci7p603pObEE=;
+        fh=3AH/4enSkYH+0gdMWbJY9r7skS1O9K2SeH+yRsCcYPI=;
+        b=K9ex2qB7TGdmSrUfsKqnrJsewjwgVDM0M4ZRlggEMHr+FYIQPV9irC5sBZ0oQV4eUj
+         K7+KblL3q3Ol6AY/ZlP6YLeOWPXdBJ4g7xAxWYlENzDfC09J606czOLNVt3Q3R0SjK0M
+         p6ARamQm61MVEehmk+AfrIsuRAHyQsCp2zxb3GWP+Qa6y4tVwk7bkdlbPhjewLp84h4a
+         KGM7KOd0SoFfnGrY/x47Zaz8HO+vL4t6lrUI9em7CM9zgVZnPNERnp4ceraFyV/M4zs+
+         yV3d2rB7/tR1PvzZgNmBZxTMyxu6Hvgv1ReFDmkC4JYgFto9nUeGV6J6/2AlXeYqQsHl
+         0qpQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Jnf7N18K;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-711515ae636sor11442007b3.5.2025.06.12.08.04.22
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gVz+Oy3o;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8f1389bsi92575385a.470.2025.06.12.08.43.11
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 12 Jun 2025 08:04:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Jun 2025 08:43:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Jnf7N18K;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1749740662; x=1750345462; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=mwRohgyatrsnok8RQFXYdLlHld9AUTUpziIQUj48/Fk=;
-        b=Jnf7N18K7RCj5UDqhYHHcQHI8q1vSEmXUJWSW92CMNeyHj5nz67YFoSTH9i06U+nt/
-         u6/PciFy00c6bJxH6RlohKPaz3Z/3yr3REapR5rXQlLOic+kGzZAX3DGtJ3KkGXhbkG+
-         rwYNhyHRSycdsGmRDbU4neu3lR0qJJDuUU6GJOprf96eb3hGDCnBNbOKAzjgNR7RM+wy
-         S7l5KtvN9PWC2CpAMAfl78DEHEgNE0q+yqjTKoB3nZvt4iUSvML+hc0iSmX/b/bKHM/7
-         6Fv1lNvI5MWbgLf4Lh6+UJ3Zv8tYT5MQZMckod7uEI6W4VjeOj0RgLfBh5Zk+sCNpM/k
-         6ScQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749740662; x=1750345462;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=mwRohgyatrsnok8RQFXYdLlHld9AUTUpziIQUj48/Fk=;
-        b=Zytjc4bAnd4akDa76n35WojrWuDkc1iniG/nkzSuRtqSdQTuWgBguqUFb4Q3FPCTyy
-         OqiyM0FtyjB9lxW66gPDrSX5mpuu15W61flLtVwaY5TxMt5iqsRX3TUoly8sd2hnShHg
-         /8pMF6YopfgHkAbYouSkxXwEYyk0PY5P62oTqNF4MyCZk1SzsUJahMPo15sYI6jVvbfQ
-         x8c9hPP2bfnmPYnAI75h/nb26kMcrvR5TRWNBeerC8SfIlXkZQ3IW/nYW974lYtkx2Sr
-         Ij36rePI3WU9Iu8GZjVp4uLNs7FTP/KhTgjw2/kpbHqV4TK+xDA3ikKy61oD/N6RV/Lr
-         lk9w==
-X-Forwarded-Encrypted: i=1; AJvYcCW7TPk6GSNg984HXtGTDyTqvlPw7FNxutZI6KVB5PQOw9dt107ZsxBp3mbff65/fEgp01J7zkHN3KVMiA==@linaro.org
-X-Gm-Message-State: AOJu0YzJXMRDcaxBRIDWb5TPnBa49hyPYaCGojXQB+D4tH7H1P4HZYwR
-	6CedpCCtPYTWFlYsy2esd5UymP1+O4t2R8AZz+0aAU1L7qfEB+ZClGMqDcuRWO4+yypV2d1qmoI
-	Z/Ts7avSv9WvpyrkSYf1qZa9Hc4N9Xy/CxEyG42TNLjn3
-X-Gm-Gg: ASbGnctcn3nmTPjn+S0LirFwAXVAmv8H0wyOw51eGkgmTXP61+J/e108UPvCkZ3k0vi
-	srlr38gyb80u1GEy513+8CCbuAV1ixoXeg+UUnq3MriYzNhl/R3hOjlzLmythv6ycwQ5IXePSgq
-	E984k/xJRtRrpIx9426SmLpwlg6OPylqqiK7BfBtV3839P
-X-Google-Smtp-Source: AGHT+IGkwf3AJrycbkaLsXCktxf09YCtxZ4zQIpiVu3XRTDHJMzFJzu0b0P9/VzPi89aVoUmCtZ/VVXUpqdEnylPPMc=
-X-Received: by 2002:a05:690c:498d:b0:710:f46d:cee0 with SMTP id
- 00721157ae682-7114edcb04fmr56567777b3.33.1749740662363; Thu, 12 Jun 2025
- 08:04:22 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gVz+Oy3o;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1749742991;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=R8VS4oBc5qIirjsbvzZp2wjtV3fOLfCci7p603pObEE=;
+	b=gVz+Oy3otNXictsd9+XJoWdYOmF1Y/XkX8Swa4Hr/UdQA/ghs3jtCTIZCe8+LeshBgyUhs
+	Y0oXtLZHacpUbaTx8Oye+G8eXghZIU9HfLELBvqSNWbRbUkNs0IFG57qAXsLmG9UdVa7ZQ
+	9yjAoxX1U4evGtgN9g/ORZ8+jOUEe2s=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-588-CLqA-YKjNrKkic6JNGzYtw-1; Thu,
+ 12 Jun 2025 11:43:05 -0400
+X-MC-Unique: CLqA-YKjNrKkic6JNGzYtw-1
+X-Mimecast-MFC-AGG-ID: CLqA-YKjNrKkic6JNGzYtw_1749742983
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id F03531809CBB;
+	Thu, 12 Jun 2025 15:43:02 +0000 (UTC)
+Received: from localhost (unknown [10.45.224.54])
+	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 09D95180045B;
+	Thu, 12 Jun 2025 15:43:00 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, richard.henderson@linaro.org,
+ alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+ sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
+ armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
+ jdenemar@redhat.com, agraf@csgraf.de, shahuang@redhat.com,
+ mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [PATCH v7 12/14] arm/cpu: Add sysreg generation scripts
+In-Reply-To: <CAFEAcA-xDxoRLWZCMrAEeSb3NvyyOPzYgFQbbEzGALujOOG-3g@mail.gmail.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Avril Crosse O'Flaherty"
+References: <20250515153907.151174-1-cohuck@redhat.com>
+ <20250515153907.151174-13-cohuck@redhat.com>
+ <CAFEAcA-xDxoRLWZCMrAEeSb3NvyyOPzYgFQbbEzGALujOOG-3g@mail.gmail.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Thu, 12 Jun 2025 17:42:58 +0200
+Message-ID: <877c1h9da5.fsf@redhat.com>
 MIME-Version: 1.0
-References: <20250515153907.151174-1-cohuck@redhat.com> <20250515153907.151174-3-cohuck@redhat.com>
-In-Reply-To: <20250515153907.151174-3-cohuck@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Jun 2025 16:04:09 +0100
-X-Gm-Features: AX0GCFtWVVUEsGciOpuhQYdpTNAk5ugyqKk3hjsV_bBetoONUXe_HXNhehSuotE
-Message-ID: <CAFEAcA8y_wwZPoqkyPrNscRNTEwiOQm5Or9C=aiSNMGcZmq8CQ@mail.gmail.com>
-Subject: Re: [PATCH v7 02/14] arm/cpu: Store aa64isar0/aa64zfr0 into the
- idregs arrays
-To: Cornelia Huck <cohuck@redhat.com>
-Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org, 
-	qemu-arm@nongnu.org, kvmarm@lists.linux.dev, richard.henderson@linaro.org, 
-	alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev, 
-	sebott@redhat.com, shameerali.kolothum.thodi@huawei.com, armbru@redhat.com, 
-	berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com, 
-	agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org, 
-	pbonzini@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: 3eg25kfTIn4Y
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-TUID: n7yudMVCeZyg
 
-On Thu, 15 May 2025 at 16:39, Cornelia Huck <cohuck@redhat.com> wrote:
+On Thu, Jun 12 2025, Peter Maydell <peter.maydell@linaro.org> wrote:
+
+> On Thu, 15 May 2025 at 16:40, Cornelia Huck <cohuck@redhat.com> wrote:
+>>
+>> From: Eric Auger <eric.auger@redhat.com>
+>>
+>> Introduce scripts that automate the generation of system register
+>> definitions from a given linux source tree arch/arm64/tools/sysreg.
+>>
+>> Invocation of
+>> ./update-aarch64-sysreg-code.sh $PATH_TO_LINUX_SOURCE_TREE
+>> in scripts directory generates target/arm/cpu-sysregs.h.inc
+>> containing defines for all system registers.
+>>
+>> [CH: update to handle current kernel sysregs structure, and to emit
+>>      the re-worked register structures; cpu properties will be added
+>>      later]
+>> Reviewed-by: Sebastian Ott <sebott@redhat.com>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>> ---
 >
-> From: Eric Auger <eric.auger@redhat.com>
+>> diff --git a/scripts/gen-cpu-sysregs-header.awk b/scripts/gen-cpu-sysregs-header.awk
+>> new file mode 100755
+>> index 000000000000..452e51035d52
+>> --- /dev/null
+>> +++ b/scripts/gen-cpu-sysregs-header.awk
 >
-> Also add kvm accessors for storing host features into idregs.
+> This should probably have 'arm' in the filename somewhere, unless
+> it's really architecture-agnostic, which I don't think it is.
+
+Nod.
+
 >
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Reviewed-by: Sebastian Ott <sebott@redhat.com>
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>> @@ -0,0 +1,35 @@
+>> +#!/bin/awk -f
+>
+> Does this really need to be in awk? Our standard scripting
+> language is python. This isn't run at build time so there's
+> no "extra dependency" issue, but we currently use awk only
+> minimally and almost always for trivial stuff.
 
+Much of this originally was inspired by the equivalent tooling in Linux
+that creates definitions from the same sysreg file. (There's another,
+more complicated awk script in the cpu model series that creates
+definitions for the individual fields.) I can try to rewrite that in
+python, but I think awk is actually not a bad tool to use here.
 
->      if (!cpu->has_neon && !cpu->has_vfp) {
-> -        uint64_t t;
-> +        unit64_t t;
+>
+>> +# SPDX-License-Identifier: GPL-2.0-or-later
+>> +# gen-cpu-sysregs-header.awk: arm64 sysreg header include generator
+>> +#
+>> +# Usage: awk -f gen-cpu-sysregs-header.awk $LINUX_PATH/arch/arm64/tools/sysreg
+>> +
+>> +BEGIN {
+>> +    print ""
+>> +} END {
+>> +    print ""
+>> +}
+>> +
+>> +# skip blank lines and comment lines
+>> +/^$/ { next }
+>> +/^[\t ]*#/ { next }
+>> +
+>> +/^Sysreg\t/ || /^Sysreg /{
+>> +
+>> +       reg = $2
+>> +       op0 = $3
+>> +       op1 = $4
+>> +       crn = $5
+>> +       crm = $6
+>> +       op2 = $7
+>> +
+>> +       if (op0 == 3 && (op1>=0 && op1<=3) && crn==0 && (crm>=0 && crm<=7) && (op2>=0 && op2<=7)) {
+>> +           print "DEF("reg", "op0", "op1", "crn", "crm", "op2")"
+>> +       }
+>> +       next
+>> +}
+>> +
+>> +{
+>> +       /* skip all other lines */
+>> +       next
+>> +}
+>
+> Generated source files should have a comment at the top
+> noting that they're autogenerated and how to regenerate
+> them, please.
 
-This doesn't compile :-)
+ok
 
--- PMM
+>
+>> diff --git a/scripts/update-aarch64-sysreg-code.sh b/scripts/update-aarch64-sysreg-code.sh
+>> new file mode 100755
+>> index 000000000000..e34538887dd8
+>> --- /dev/null
+>> +++ b/scripts/update-aarch64-sysreg-code.sh
+>> @@ -0,0 +1,26 @@
+>> +#!/bin/sh -e
+>> +#
+>> +# SPDX-License-Identifier: GPL-2.0-or-later
+>> +# Update target/arm/cpu-sysregs.h
+>> +# from a linux source tree (arch/arm64/tools/sysreg)
+>> +#
+>> +# Copyright Red Hat, Inc. 2024
+>> +#
+>> +# Authors:
+>> +#          Eric Auger <eric.auger@redhat.com>
+>> +#
+>> +
+>> +linux="$1"
+>> +output="$PWD"
+>
+> We seem to set this but then not use it.
+
+ok
+
+>
+>> +
+>> +if [ -z "$linux" ] || ! [ -d "$linux" ]; then
+>> +    cat << EOF
+>> +usage: update-aarch64-sysreg-code.sh LINUX_PATH
+>> +
+>> +LINUX_PATH      Linux kernel directory to obtain the headers from
+>> +EOF
+>> +    exit 1
+>> +fi
+>> +
+>> +awk -f gen-cpu-sysregs-header.awk \
+>> +    $linux/arch/arm64/tools/sysreg > ../target/arm/cpu-sysregs.h.inc
+>
+> This looks like it is assuming that the user runs the script
+> from within the scripts/ directory ?
+>
+> Following the same command line conventions as our existing
+> scripts/update-linux-headers.sh is probably the least
+> surprising thing.
+
+Ok, will do.

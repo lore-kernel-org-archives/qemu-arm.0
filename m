@@ -1,114 +1,195 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2734401njc;
-        Thu, 12 Jun 2025 19:51:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUy0zsAUWZJSUhBN1g/lKT10b2Oo5fPO5iiIF/90ODKe7LfWLDe6/tOQ3+HCSVphmCngMOPDQdceJMjHw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFfHPsNDfmAfyC2Y6nJySfpSstM75nfWXTMpmOjtgnXfCadaHj5b7PWQR4kIMaN7WhzwmWL
-X-Received: by 2002:a05:622a:4d91:b0:4a7:1460:33e9 with SMTP id d75a77b69052e-4a72ff9e72fmr25645171cf.51.1749783062616;
-        Thu, 12 Jun 2025 19:51:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749783062; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2735572njc;
+        Thu, 12 Jun 2025 19:55:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWqXUx10cLe+ctoAgC2NFmc9kElsGKFUcp6jwCU7jLqO37T0/7L36UYYFt1BJ/EayYadt+CgTmoZzwrGQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGBA/eS3Pf71UMtv6zGKL1uNvf0aQM2phf35aWCR6FJiJQ+KkjKtjK8iAYjYYKqxTIwioSr
+X-Received: by 2002:a05:620a:14b3:b0:7d3:90e4:157d with SMTP id af79cd13be357-7d3bc4d579amr247775285a.54.1749783333502;
+        Thu, 12 Jun 2025 19:55:33 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1749783333; cv=pass;
         d=google.com; s=arc-20240605;
-        b=b2ivr680SA6bRTitSrqHTnDzudk5sxTIj+JSG6Y7ABNx/byHJPj3TaP63LgONT9o8H
-         r3tCPC6mf8FOyF47NWYLwqMwOeGjObaK5KpitOH/SpuOi8qPH/OgKajjMyeePuiOOB2w
-         AOqrQx9Ttzwx+t6b582CzoV1pzBJtZ8+FgHNX5YMYB4F3KJgxZg7RgCXj9OLOAXt8fJs
-         U7nKmOXtCS1Viomk1jgkZLL1ls5tKX18ybMPKua4HHFp1w1aYI5DiO+gf5BcN4JUUQm6
-         /hPhaOCw6JY6WfEum/rcu7ZYsJp18ItAl9+PLTvCbb7uPrDrKFLW884rdAXR8IyIkdN5
-         iibg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=PF4Ew9k1qONFwBdFgJ9cvdi1LxuJqqhbNENScdOoUh2x8ttgntW7bXay6dELz9dm6i
+         64wk99zFoUpXlcHHhuHCyvNvSdFIDLQ1ZmwStrkZgB0xuOUAJlG3Bn3pr0r4nZaWVGfx
+         seNvubfEmTy+H6IIKnOiJd6080seOk/M5oF0A2sK2UiR6+K+TbbNSuzBgz1EDUPBqPYn
+         84JZxSfQUXhvJqYdSEMHLwwdSXupin9CuFLkVqR2OBmb+4KjYXfnFVJsS4yMvFKJZ3Z8
+         NCphfBOyKAisM6FKm76vZMVutqhpa3PeeNL9J2AjyZ4y3e35xRslupF2FDuYUj/kLnvR
+         p5BA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=KJr2Otr6xucnRpFEJDSsUwm7JAueJuX96bOTBmqV28Y=;
-        fh=W0RCrwxIV2qEPUbFBzPmF8r8Un1MfskqRp2zlMBbEuA=;
-        b=dm9u5HdFQWkmAFHPl3yRo4y7FSDUYIcwWi5avJjGhXnKuzKNPazyMICU5zGpC9HRo9
-         KKwt4K53QSsya8b0GjHoAePl/gwsOtYUiz91B9FEzOhjcDkipl2J3NKqzqCNWqe1Liu4
-         RRkqvNjX3bCttllU8uY0yOxixNcaOODE1EkxhXu2Wb9cQY7Fv6x1r8BkMUDNZEh99PjE
-         org8ATlLNHAm0rg28F0TXYN2mTuNV+ztUbKq/BMWXp+wtulXg393xcH1gfoHc4oEz3WH
-         TUn4f9umF5qbylQaAFn8fU/MUhAGvrt9ohnKi9NjgL5ytiG10YHCqpM29Nkr8tqK4Ee0
-         ugSQ==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=DgbMODNQ2BDFhwcJYlbaO/WcmddV9gQYEliQaaxFw+Y=;
+        fh=3VePJe33GLqsWvKM4VMUYd86V50Na3/V6e/KLcWuHhI=;
+        b=dzky+iXVudVG53WciABH6dN7vEWb/2JP4dJalDo8laGYmWMaVyS4SaCMSWiEUyaNyh
+         dCqNndnOrO7HRl0YzFiNZivmx41L+Ib9tSTxPJYt1VSZRbZDhBmnbRWMyqltyUc2m16i
+         992B74pEmYdomEyqy5cupUX/kq72AzewiPkuIP4xq8R3KwBChKKGYg/tCQ6GLLmyp+l9
+         MwVIWyiw2jkI/1pe/tGQF76drFEgBTMUOJb67DKE4nDXXgKDbtFmp3RoSYVEHTeflq9G
+         eYgfWEgX90ZxN80wam59MKqai2TB7Xi3iF+CHCeGzl44sHnS0fZCheA7oOcF5gxeKhFz
+         w3hQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=f3qzy3m8;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=FJYw6Rld;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a72a2b8f61si22621931cf.102.2025.06.12.19.51.02
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8ea722dsi203462585a.162.2025.06.12.19.55.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Jun 2025 19:51:02 -0700 (PDT)
+        Thu, 12 Jun 2025 19:55:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=f3qzy3m8;
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=FJYw6Rld;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uPuV9-0000vI-Hu; Thu, 12 Jun 2025 22:50:43 -0400
+	id 1uPuZh-0002uI-6F; Thu, 12 Jun 2025 22:55:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uPuV6-0000uQ-5J; Thu, 12 Jun 2025 22:50:40 -0400
-Received: from mgamail.intel.com ([198.175.65.15])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1uPuZU-0002do-F2; Thu, 12 Jun 2025 22:55:12 -0400
+Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
+ ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uPuV3-00079F-TH; Thu, 12 Jun 2025 22:50:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1749783038; x=1781319038;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=5ME7Rr8GvHZ6NDCucaH5UuynuC83NzCm9tbVAL5cvlc=;
- b=f3qzy3m8YV3gReciIqLdOSVKMDwM5q+9QLApSXhtuUTV4DzRjO1NfxFe
- Ktlt0kTcQZ/LZu7EHWz9RaA+DIEViDRPJPc2Rd+XZYVeW/CVMY4MdyPo6
- /xY9Xavs3WoRT3CpNvFaNloGvgTJEMlsWFCyeFXlBgAYz+JrVSb5N3Uqz
- 3zcD+UXnGjLwiLHlBCJX2NQzDh+AT5S+23ijyRoHu06h/BLIwSrz2XBpe
- MLm2PKEj/pMleSuVvwrpiyYWB7IjulZjSrYJurIPYU4Gk387B4HapoFSb
- Q3veENW1cjpMhrrTaW3vIx3hrf1Y+IjN9rYCTaqhleKduuervFqu8M9BV Q==;
-X-CSE-ConnectionGUID: Yvdg6JxsSm+rgJ4zI6VaFg==
-X-CSE-MsgGUID: UxqcDA3TR4aqqyQSxQuk2w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11462"; a="55660093"
-X-IronPort-AV: E=Sophos;i="6.16,232,1744095600"; d="scan'208";a="55660093"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Jun 2025 19:50:34 -0700
-X-CSE-ConnectionGUID: ppVKj6rnRjiRlVBMbUpxew==
-X-CSE-MsgGUID: YqCXiCPBRUepAG6sEQhETg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,232,1744095600"; d="scan'208";a="148063587"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by fmviesa008.fm.intel.com with ESMTP; 12 Jun 2025 19:50:28 -0700
-Date: Fri, 13 Jun 2025 11:11:46 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Alireza Sanaee <alireza.sanaee@huawei.com>
-Cc: qemu-devel@nongnu.org, mst@redhat.com, anisinha@redhat.com,
- armbru@redhat.com, berrange@redhat.com, dapeng1.mi@linux.intel.com,
- eric.auger@redhat.com, farman@linux.ibm.com,
- gustavo.romero@linaro.org, imammedo@redhat.com,
- jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
- linuxarm@huawei.com, maobibo@loongson.cn, mtosatti@redhat.com,
- peter.maydell@linaro.org, philmd@linaro.org, qemu-arm@nongnu.org,
- richard.henderson@linaro.org, shameerali.kolothum.thodi@huawei.com,
- shannon.zhaosl@gmail.com, yangyicong@hisilicon.com
-Subject: Re: [PATCH v13 2/7] hw/core/machine: topology functions capabilities
- added
-Message-ID: <aEuW8qIlDwJi44t6@intel.com>
-References: <20250611155618.351-1-alireza.sanaee@huawei.com>
- <20250611155618.351-3-alireza.sanaee@huawei.com>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1uPuZR-0007W3-5K; Thu, 12 Jun 2025 22:55:12 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=N4Qp6GpE5bMHyYtmJulHb6NfdCc+OHU5ltdh4edG5Bq4T8/NiZwC1kfYf5LQhjXYDK2e2CbD8gWml8iCobN445ucc61g9N0FRMIBGodk9Br3jfc9auKHr5pjGmGXHfpHLr4RQ3Zn4shYcpg18k7FA7ru3p97gWveSnUrBN+sntzDs0bLYC6YksNsHu7AFlgD9coZmFudV85JqSw87IZrzqy24479MOqTknTnh9PBwrNbQceTAJ/VdtPNyY46WQdywEFdySmT/5WV774rVk40chboFaPzReBg2DzH20LE6GY12C7PdFC+/+zK+C0F9k//m2Xd3MChA3XioorV7xTbgQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=DgbMODNQ2BDFhwcJYlbaO/WcmddV9gQYEliQaaxFw+Y=;
+ b=c96BHH27X21XbBsF1m89eBJWbaBTDV9Cfkh+9zNLTKBJ/tEUQwVtB6AqMKl20mE5aTmEu2duOpFK0AbpCfKg9eLGgz1InRP/v6KDOwOv4sNjK5RIdlKOAdM+H0DAcMpd0ioSNoOqURbm5FFkl1g31GAdOag5F4BDPcUwScaq3Jby0nUslwQBUM2uLP3FkC/sCmSRzZGV/7MpjdBG9f3cHlU15B/hbBQc8Ib71GTyVFQ4IIdnsr/mvJKEdSMgB6+MXDI/LMM91HdAb75jRWQyOGNeqQONi9qg8suqJO5Es28XuIOMYxaZindmWBJwLsRTO5qUeutAksZnfhBo89Z/nw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DgbMODNQ2BDFhwcJYlbaO/WcmddV9gQYEliQaaxFw+Y=;
+ b=FJYw6RldY3sB5UU/gotsKHJKv0YnOVCvaV8VxFU6YNJvSYAAXJn7JbrjremUGnQ3ptOBJX51pmKhrZ1gBLsZjFfWN5VD8yVDUeYpbmimzhtvziYaV3qp2MPfcRj3Gm30umXQ/h/+2KMNAO/pcYx+3CJ5tlAu9rPxNU4lcTiXOhZE6JYocPyn2F2hLnD+jZnWhSx7e+Vgcgi+EKaL35ThJGJu1owusuPzBmLH3Z5Y5UpGjOZnr7PspGH55ZzLFzcVBLZ6lcvcdPvGYhcafUeMMpgjwbeRrgRWOmhXo6T1vcJ+WYg4CwxJ1ievRIukTYQMiC9kMetg8ZxmEqy74ecOog==
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
+ KL1PR06MB6961.apcprd06.prod.outlook.com (2603:1096:820:120::8) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8835.22; Fri, 13 Jun 2025 02:54:57 +0000
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::705a:352a:7564:8e56]) by SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::705a:352a:7564:8e56%4]) with mapi id 15.20.8813.024; Fri, 13 Jun 2025
+ 02:54:57 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: Tan Siewert <tan@siewert.io>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+CC: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
+ Stanley <joel@jms.id.au>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Subject: RE: [PATCH v2] hw/misc/aspeed_scu: Handle AST2600 protection key
+ registers correctly
+Thread-Topic: [PATCH v2] hw/misc/aspeed_scu: Handle AST2600 protection key
+ registers correctly
+Thread-Index: AQHb26gO6SN3HcnSYUqhj+VKKkWvBrQAZASg
+Date: Fri, 13 Jun 2025 02:54:57 +0000
+Message-ID: <SI2PR06MB5041DE20EB548C3137045975FC77A@SI2PR06MB5041.apcprd06.prod.outlook.com>
+References: <20250612144052.22478-1-tan@siewert.io>
+In-Reply-To: <20250612144052.22478-1-tan@siewert.io>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|KL1PR06MB6961:EE_
+x-ms-office365-filtering-correlation-id: a33e25cd-0908-4656-1abb-08ddaa25ae5f
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|366016|1800799024|376014|38070700018;
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?C0492gCYkxKgggJE/Qcc5XAdeugTsfbeBSlmXwkdzQfsPfI36LDN0LG/RY?=
+ =?iso-8859-1?Q?zaVUWJKm6AEwgZFG4IYNz/RyEplbEn8D9Xo2Y7zGDiD49ffWVR0eQLTIiZ?=
+ =?iso-8859-1?Q?OMxCRSlLr3Zr7cWRk2cJde5AI31mETeoIf9Sz945ZiyNcf5mfu+OQxZKo3?=
+ =?iso-8859-1?Q?gyLH2wj+1PhAmQjH48s+b/XLS40xaVwVFAOj89QnrX/fC60bTfGe6BllRO?=
+ =?iso-8859-1?Q?Cs9tdrbdsF4MwBOXVEpvTXvqgHL2bkPdYBbALgnFFLr+rOO5MX4q1tKgKy?=
+ =?iso-8859-1?Q?h6n9MDYG8n2DRuDQceoia5oi5UB9aKQvgonBSxXB13wm+CK3oa1CLTIv5K?=
+ =?iso-8859-1?Q?hFsy7fv6g+XPiyyZPXixCMvLs0ZOAsNUg8KZo670X5Rlmd7IHTsd4rFgFT?=
+ =?iso-8859-1?Q?pdGuEHe1M6o/0uRAgcAGwWii33Thz/uhaZHqVFvJdBt8sWjukE8L/AjTO1?=
+ =?iso-8859-1?Q?2N2CYSnAoqOaaiHbYlI/PrbMRWmQDmYeLxSQe/QfAwDvB9wfQnl6eYA6+J?=
+ =?iso-8859-1?Q?LMeK3nU5WIyCMNqpN8YHQLar3f2Pscm815UOsZovnlB0j4+DLZo1FP7Pn2?=
+ =?iso-8859-1?Q?ItJI/JrIUXSLOskqKtrULB8dXcsPyC6Hoh0rfWQ+c6Y8R/Nr2P2VCVjWTy?=
+ =?iso-8859-1?Q?7gXf0tnv5VbW+KeDDe0ErCGVOhAXr25hbbvYWTwsLgAiExN0Se1UICbIuY?=
+ =?iso-8859-1?Q?f2x7M3qaJqC5viKUGou+uE2tuFJeeyBxW4xtb8CkXcYyo1qe+ENvmD607n?=
+ =?iso-8859-1?Q?dD2sW0fRvTQZiwz+lTaX3o3JLDghFljJFI90Uhrj9aYiuAWlhjyDckdxkW?=
+ =?iso-8859-1?Q?JVxIxk5s+sfIbUhuq+/btZBhmwSycSY6VfA4P7MHd+gj5M/kK2zeyonVXH?=
+ =?iso-8859-1?Q?TVidQ5xxgfyXsOW8nMvjq1EIfjabB8QT24ygjw7/8pSqKVwSTuH2tWNBCZ?=
+ =?iso-8859-1?Q?encfrz6DyOglbm2x04yf9myNNHwUSLyvU0vHNTKS+kFEIZ7SSSaawTAVAY?=
+ =?iso-8859-1?Q?QIZo9gp+fFidP1y/1bWbp50Xq5e4rsv0COmiZm3vMQSYgA3SlMXt/HvyV6?=
+ =?iso-8859-1?Q?ovpYzjR3weWyWvGe+6vF3eqDzsOHXhdHVzrRQqQoGJvkAwtGvggBG7DxLB?=
+ =?iso-8859-1?Q?ChXlA6DfTlDYyXtH7tRaI5oPdT8+4ya0UXG2QBxzw8RPEo8T4nhXStnryA?=
+ =?iso-8859-1?Q?FAqzHhHbHBBPDBOUuZe/3v9Hedq0r3pkTqsIHltMe9yQOBdmxK3ZhA/Jvn?=
+ =?iso-8859-1?Q?J8xVLP6HJjwuKkdoFooGko8vrnOg1DEgNAcNuMZML67SWTE23L4JFGHozQ?=
+ =?iso-8859-1?Q?6nYyKgHXW+UoJYP9Ecl1m59cTs/4yoz28f+TUnHrS8a+i58XVOB1kR8I2q?=
+ =?iso-8859-1?Q?3D63PD5uTIeg/eDEIqO5v3E+EWkWk7AAgrd50ZRJJpbOErtWT2ecOfxBWN?=
+ =?iso-8859-1?Q?0v2ThdV3p2v+YYMK0ptxygZwOX5DiYuWxIA8Hu7BOwTyQ145RoL2mL2yKC?=
+ =?iso-8859-1?Q?6iEsN8mOJmoBQoeU0YbLijQNVPpCdr185soBkesr65YDHU+fusSY2blULQ?=
+ =?iso-8859-1?Q?BKd/Lok=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE; SFS:(13230040)(366016)(1800799024)(376014)(38070700018); DIR:OUT;
+ SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?jLsGzF4YCnRXhs5a6rhm3AneN5N53PrqokvYh9SyzG54gm7inmkfknDsm9?=
+ =?iso-8859-1?Q?ubOkRcXv44XvPw7yZVj6QG6z5GbXasDKCCYuhHqShfTh4oef56Fvb64205?=
+ =?iso-8859-1?Q?95zxbujNeeAwuQ6NB8Saw5gFNNa8D65HA/FNgkKy2muxDY7qsBZQDgveqH?=
+ =?iso-8859-1?Q?WdRJ+AtriwpTCdEXhp3lqkxFThfGq/fg4WZN/A2s5PN6ALqB0UNmyiwzwI?=
+ =?iso-8859-1?Q?RwEVwjyLjLJwQEWqfHWAkE/b8bf3UMY1NWK4jXs6rAxGmzkHoNYCoMTCKF?=
+ =?iso-8859-1?Q?d8NfwBpKuvpSOWM0xvLl/y7wNZctwvmn7kiiDtBxDhGnAyZknJqIgzsy9K?=
+ =?iso-8859-1?Q?Sm6s8fedf9t3BsjwsFw+ZCxAuYIHLIgpljdNR8wwrp6cVSfFSZXu6cDQas?=
+ =?iso-8859-1?Q?ws/IDIllvrBCkhlsdCwcKpynB9BtR8ol+xItZNk+XzTDEWgPiCcCIWm+Hq?=
+ =?iso-8859-1?Q?xKzmipHOJVBer53Fd6BumNr0D4U8dwLrEtLQDVH6+cdWdQGmlnW8BZD+QZ?=
+ =?iso-8859-1?Q?H+uSdTzJgtxaLVRZ7T0cqN08aYlciN4PvnmacFZeHKk4oNNLuQE9wBcWrh?=
+ =?iso-8859-1?Q?3Y4HsNKAnbzF65RUlPYtX9YuEa2+JSL6sPizbBc40Dq9qDvpzApHt+pJBQ?=
+ =?iso-8859-1?Q?YEtQYnJsbIdeUpcNjwr0yyBmdPmaDdhisM6wA4GOxB/gIPU6rekix8XEyb?=
+ =?iso-8859-1?Q?p/UBWNUynfxS0Kuxm6sPMAKSlLx0wWjQqrEHXJXAnZQdyCV69ZQelTaZ23?=
+ =?iso-8859-1?Q?d19J0z4JieSMnLAIUgLcgvXsNDfOh8gB6c+ZeCi3sW3Y/1ndOi1rpSFsv1?=
+ =?iso-8859-1?Q?EpbujBsAn7ZJyY/JRmvH0D9TbX06x9BvMjNrJPWCw97BVv24ignMWU6oOc?=
+ =?iso-8859-1?Q?9q3kTLV5tHPodzMYL0K7LgSDJ+AwO1Y2/IDPiYzJEVzvT/64DTJvDlrbrc?=
+ =?iso-8859-1?Q?bv3/Y3+hITKSNEpLWuelchAMZpDMymv6BB2VFafPf9sjfDPPsSHjzqCEGU?=
+ =?iso-8859-1?Q?V3WgX4Qp3aN9IjLFN4EJCzZAo16DOjIydTRCOyXXGOQZY161vaLXlTkxpy?=
+ =?iso-8859-1?Q?MWetCOa1lzrfZPniCUCaLu5J69m3Kao/GQC9mY/j6HeYj1phNsv7D1+RY2?=
+ =?iso-8859-1?Q?4QfZzde8t5XMY8cRYf2RFK+OD0xA50LO2aq/o55X7cHkvQPSQ2d3OQ5qDH?=
+ =?iso-8859-1?Q?ypIEOknFddHi/0q3e7n5zopnXZkse9VmewbrHJnxGQq4MRPLTWDgzRQLZW?=
+ =?iso-8859-1?Q?uP2FprztnUW+zbed+O411r99sTdYAXwSkLbI/MNvsyj3wL4FnVCp4p5h64?=
+ =?iso-8859-1?Q?iEAQtp81yNHGeprC0OllrWv9ABteQaFTjaYLH+90s7BovFFqstFqeuLito?=
+ =?iso-8859-1?Q?BUqqjM56bwoHgIVhqwFNLoZAnm+lfqf2mwKnvVO/sxc06TJLH3E0C7ggvU?=
+ =?iso-8859-1?Q?cQbv7JsDTiReMmHwCxQAblS5dH5RazVv7sbv4NfmbI0/qu//VQAejzLj1d?=
+ =?iso-8859-1?Q?YZM8P02XSmIlphmsfRD6orbi062XpiQlDq7itNwHgFXtw79EcOAiEfzlSG?=
+ =?iso-8859-1?Q?8JR/wUQSBCZwe2pRNl6nsJcqeZVvA4sSz15yFQYdCfzZBCkvZcnsEhzfVY?=
+ =?iso-8859-1?Q?IIKNe+m96JMjqa6b9XB5QeBlWUy9P2JnWM?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250611155618.351-3-alireza.sanaee@huawei.com>
-Received-SPF: pass client-ip=198.175.65.15; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a33e25cd-0908-4656-1abb-08ddaa25ae5f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Jun 2025 02:54:57.2156 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: VPy7ZVZpK2dp/0D8/0/g4RBHRBE850Q4oxnxMJ5lUBqxgbHUtlt2F2f4A3cN85N454CY7MGk5W/0ELFDrkGcfXAILYtYDfkQ20qL57uHWIE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR06MB6961
+Received-SPF: pass client-ip=2a01:111:f403:c406::3;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=OS8PR02CU002.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -124,24 +205,149 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mBO0bsNmvWB+
+X-TUID: F8u64XIl6s1P
 
-On Wed, Jun 11, 2025 at 04:56:13PM +0100, Alireza Sanaee wrote:
-> Date: Wed, 11 Jun 2025 16:56:13 +0100
-> From: Alireza Sanaee <alireza.sanaee@huawei.com>
-> Subject: [PATCH v13 2/7] hw/core/machine: topology functions capabilities
->  added
-> X-Mailer: git-send-email 2.34.1
-> 
-> Add two functions one of which finds the lowest level cache defined in
-> the cache description input, and the other checks if caches are defined
-> at a particular level.
-> 
-> Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
+Hi Tan,
+
+> Subject: [PATCH v2] hw/misc/aspeed_scu: Handle AST2600 protection key
+> registers correctly
+>=20
+> The AST2600 SCU has two protection key registers (0x00 and 0x10) that bot=
+h
+> need to be unlocked. Each must be unlocked individually, but locking one =
+will
+> lock both.
+>=20
+> This commit updates the SCU write logic to reject writes unless both prot=
+ection
+> key registers are unlocked, matching the behaviour of real hardware.
+>=20
+> Signed-off-by: Tan Siewert <tan@siewert.io>
 > ---
->  hw/core/machine-smp.c | 52 +++++++++++++++++++++++++++++++++++++++++++
->  include/hw/boards.h   |  7 ++++++
->  2 files changed, 59 insertions(+)
+> V2:
+>   - Fix protection key register check to be an OR instead of AND
+>   - Add missing return if SCU is locked (like for AST2500)
+>=20
+>  hw/misc/aspeed_scu.c | 18 ++++++++++++++++--
+>  1 file changed, 16 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c index
+> 4930e00fed..4dcfe8f7b4 100644
+> --- a/hw/misc/aspeed_scu.c
+> +++ b/hw/misc/aspeed_scu.c
+> @@ -91,6 +91,7 @@
+>  #define BMC_DEV_ID           TO_REG(0x1A4)
+>=20
+>  #define AST2600_PROT_KEY          TO_REG(0x00)
+> +#define AST2600_PROT_KEY2         TO_REG(0x10)
+>  #define AST2600_SILICON_REV       TO_REG(0x04)
+>  #define AST2600_SILICON_REV2      TO_REG(0x14)
+>  #define AST2600_SYS_RST_CTRL      TO_REG(0x40)
+> @@ -722,6 +723,7 @@ static void aspeed_ast2600_scu_write(void *opaque,
+> hwaddr offset,
+>      int reg =3D TO_REG(offset);
+>      /* Truncate here so bitwise operations below behave as expected */
+>      uint32_t data =3D data64;
+> +    bool unlocked =3D s->regs[AST2600_PROT_KEY] &&
+> + s->regs[AST2600_PROT_KEY2];
+>=20
+>      if (reg >=3D ASPEED_AST2600_SCU_NR_REGS) {
+>          qemu_log_mask(LOG_GUEST_ERROR,
+> @@ -730,15 +732,27 @@ static void aspeed_ast2600_scu_write(void *opaque,
+> hwaddr offset,
+>          return;
+>      }
+>=20
+> -    if (reg > PROT_KEY && !s->regs[PROT_KEY]) {
+> +    if ((reg !=3D AST2600_PROT_KEY || reg !=3D AST2600_PROT_KEY2) &&
+> + !unlocked) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "%s: SCU is locked!\n",
+> __func__);
+> +        return;
+>      }
+>=20
+>      trace_aspeed_scu_write(offset, size, data);
+>=20
+>      switch (reg) {
+>      case AST2600_PROT_KEY:
+> -        s->regs[reg] =3D (data =3D=3D ASPEED_SCU_PROT_KEY) ? 1 : 0;
+> +    case AST2600_PROT_KEY2:
+> +        /*
+> +         * Writing a value other than the protection key will lock
+> +         * both protection registers, but unlocking must be done
+> +         * to each protection register individually.
+> +         */
+> +        if (data !=3D ASPEED_SCU_PROT_KEY) {
+> +            s->regs[AST2600_PROT_KEY] =3D 0;
+> +            s->regs[AST2600_PROT_KEY2] =3D 0;
+> +        } else {
+> +            s->regs[reg] =3D (data =3D=3D ASPEED_SCU_PROT_KEY) ? 1 : 0;
+               It can set 1 directly.
+               s->regs[reg] =3D 1;
+> +        }
+>          return;
+According to the datasheet description: it seems your changes do not match =
+the actual hardware behavior.
+Protection Key
+This register is designed to protect SCU registers from unpredictable updat=
+es,
+especially when ARM CPU is out of control.
+The password of the protection key is 0x1688A8A8.
+Unlock SCU registers: Write 0x1688A8A8 to this register
+Lock SCU registers: Write others value to this register
+Only firmware can lock the SCU registers, other softwares (ex. system
+BIOS/driver) can not do this to prevent disturbing the operation of firmwar=
+e.
+When this register is unlocked, the read back value of this register is 0x0=
+0000001.
+When this register is locked, the read back value of this register is 0x000=
+00000.
+Writing to SCU000 can be seen on both SCU000 and SCU010.
+Writing to SCU010 is only on SCU010 itself. SCU000 does not change.
 
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+I The following results were tested on the AST2600 EVB.
+Could you please verify the QEMU behavior?
+
+Writing to SCU000 can be seen on both SCU000 and SCU010.
+Writing to SCU010 is only on SCU010 itself. SCU000 does not change.
+
+1. locked status
+ast# md 1e6e2000
+1e6e2000: 00000000                               ....
+ast# md 1e6e2010
+1e6e2010: 00000000
+
+unlocked protection key
+mw 1e6e2000 1688A8A8
+
+both key and key1 unlock
+ast# md 1e6e2000
+1e6e2000: 00000001                               ....
+ast# md 1e6e2010
+1e6e2010: 0000000
+
+lock protection key
+ast# mw 1e6e2000 abcd
+
+both key and key1 unlock
+ast# md 1e6e2000
+1e6e2000: 00000000                               ....
+ast# md 1e6e2010
+1e6e2010: 00000000
+
+unlocked protection key1
+ast# mw 1e6e2010 1688A8A8
+ast# md 1e6e2000
+
+Only protection key 1 unlock
+1e6e2000: 00000000                               ....
+ast# md 1e6e2010
+1e6e2010: 00000001
+
+Thanks-Jamin
+
+>      case AST2600_HW_STRAP1:
+>      case AST2600_HW_STRAP2:
+> --
+> 2.49.0
 

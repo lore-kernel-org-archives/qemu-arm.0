@@ -1,200 +1,124 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp176876njc;
-        Fri, 13 Jun 2025 04:14:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWiVTTDh4iSsyOOClNeMV1hpSJohbyMphbJLK/3DnQXTtrnHSeLKwJ7GQPvdU6nYJ17oL9LzLMJJx3NAQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHioyZecXappNw7q0tvVxruPNSYeexmlnDdbUL6wt8NaK6P6KUFtjtZ+4o6l21Kn0Kqp56g
-X-Received: by 2002:a05:620a:4594:b0:7d2:3db:6816 with SMTP id af79cd13be357-7d3bc4b8d16mr497873485a.47.1749813260659;
-        Fri, 13 Jun 2025 04:14:20 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1749813260; cv=pass;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp197869njc;
+        Fri, 13 Jun 2025 04:57:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWKmC2oVKs/jltaUgwoe4CNEMjoco//1WXTNuqMnf1JGs3IguYlKm9dwwwttOqEMP0wFzEmOjlC8Nxb9g==@linaro.org
+X-Google-Smtp-Source: AGHT+IG0t8pjhopBdmhE6Bf9p7fErvDaYDS8bvaHQAni/2Qxk3Zj2XASzMcGBk/LLOO/V32vRivf
+X-Received: by 2002:a05:620a:c4b:b0:7d0:a1b1:cb0c with SMTP id af79cd13be357-7d3bc47ddc0mr376048685a.29.1749815847655;
+        Fri, 13 Jun 2025 04:57:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749815847; cv=none;
         d=google.com; s=arc-20240605;
-        b=XEEpKhBe7OEsKNaZvtjaQpDotBcUVq+epraxYMmorzwIE/AObekjma87SdQko7y7LR
-         nAI8oDiI4nDMdEACJi3Guvy7TiqpBc0yhmQzqyb27/vHuxL3ugplCCVWoGmAQ5EKda3o
-         ryIjNRy/J+HRpa22ATsYhXdrijcehQXl1yx/nTWwGBJUtZJtlEPCDxMrzlf1JkowneO8
-         Rxviaa0FK9d0t8ou8fSSI7+AUytbnPCb69dSnRdxRnCng/w1IuvQazGsinrkkXbGL9Ir
-         itlH3tBnFUTnIB3oCl89/+qD5jinjkn3bl1K3be5Bq4i5+xvUbdxDlDdiX45/qvXSalJ
-         dJ/A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=Oxvcb0qHSA1QqY/jr8V1epFTzXw8lmsUwQrt/+Gl4CmJ2WHJicZHV3ZdGaxK+gZ9IR
+         33139nErwy1f/x51+19FGgtKXda7XuQ5QPVCC821+K8nBKEC3rIff0m9QBoWfcm0IMCI
+         zdRHhVTaE/XAsBqFVQKsTgdDpdgy5zdYfqZAljx/emjbpsrFxbMSd0wpa8/XL9AxtG9F
+         HI0ZZV/Ft5TrpUtMYH9WADbdODk+uVcuFH1wnDbji3QnAgWT+QeL8q3lmZdW74bTMYDq
+         f9jrCgQODh7JrhSOrw5RrwWQUNwWMfxcLrv6dAD1w79PXUp+9zQynqQOGeOq3z+ak6f5
+         wCCQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:date:message-id;
-        bh=VN6+Ao1S2pHA2Dq4PdyZtJlWT7HPXQj63AQ2kYm+szY=;
-        fh=gdvd2YjlLAIHIdTAzfzMneKjey9WgsiqiwW2JXgraQk=;
-        b=ha+X3uAYktX4ah+TFcTIJMXaOTrydOv4n14MFmOuSc/HJTOpXbU25tbkHKOp7k54Ln
-         6ujJx46epT/lMREwHpRSPURilaQ2d8NCLK9xNijX2tWNgkgDhfm39gd0zIlG+6Jk/lwv
-         agDP+8e+eHsHziuXWUFQC+IukjchdmD2Rp+ur36wkdPMa4NIv8g8XiohAiNL/Z7iDQjg
-         pEv0/z+fbpYE1gUlv/xE1Z923hH2d/sJ+IIWu1xWGMks57aneJ5iCoK++ZnTrZqP3+ux
-         P1bmNDprdRW6dKFFC+rXvvf1Zp4ytYffSgcWFXDUmTAO4vQurykpfeYZX9XF4gDT32wg
-         PP8A==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=6vzaVIA9d+9s2Fziqj284tT6vvw/UIzD8MC8G8RTWz4=;
+        fh=4M3RddSsO8ZHeTbj3Fx4V7nwdwJxWkQQh4305hOJaIA=;
+        b=P2P7KGkMKCCw0GMatIjw79jEP6ltJIpBZHN/FJUAvCF67SWl9enfWT5oRUiXKF3iMv
+         RqBHLkfw/uXktDJch55bicazd5qvqoTkD1deyJ/5EHZNMLv/cccU4ABHfQJBomHLmAss
+         FKNs/Q+Mgc1CKMrxNJQCLbNQOXon5l9P92q3uxN0fS61LrWpmpiYV26t2DuIoGJDIMq4
+         3OykSQ0cZl4q9e4He3XMDWAMud0f/kLTyds2sP0ymGOsvXDpI/S6zUwdBQpfR36ZT95S
+         w82UanQMP4+5rfHIBH5CutpTY44ZzJispDRpsE4J4rWe1yUB5KulAujG+7XkcTdr2rry
+         xfFg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=siewert.io dkim=pass dkdomain=siewert.io dmarc=pass fromdomain=siewert.io);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Yq/IObmI";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3b8ea7fbesi280598585a.219.2025.06.13.04.14.20
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8ef84bdsi285824985a.408.2025.06.13.04.57.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Jun 2025 04:14:20 -0700 (PDT)
+        Fri, 13 Jun 2025 04:57:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=siewert.io dkim=pass dkdomain=siewert.io dmarc=pass fromdomain=siewert.io);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b="Yq/IObmI";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uQ2MD-0005Aw-Di; Fri, 13 Jun 2025 07:14:01 -0400
+	id 1uQ321-0005L7-JT; Fri, 13 Jun 2025 07:57:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tan@siewert.io>)
- id 1uQ2MB-0005AF-Hn; Fri, 13 Jun 2025 07:13:59 -0400
-Received: from
- mail-germanywestcentralazlp170100001.outbound.protection.outlook.com
- ([2a01:111:f403:c20c::1] helo=FR6P281CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tan@siewert.io>)
- id 1uQ2MA-0007nN-17; Fri, 13 Jun 2025 07:13:59 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=qeztKOKy1fjudfiOUnTFtJjSkEuY2fLEeNUMa+vzlBt2nOtyf4b3Q6Tzl9wkpsMaDWGm+ipE5ORRHzQMSyuOCXtFBx8l+EbKynysjUZqIpZiVMz6ko7SgWSCbz7cxQR/KvnAXgGSg30OT6D9o0Zo5MaOqhtKPRrqUpSIdCI5RdH3H115YFzw6Dw0PVYYnYVy+I0V1lcQlwn8woHOmEFtRQcz39ydVJmFkGtwzguDeudKdaawgaTC1IpUdhXMhoZv/15JW2Cilnv9D6xnBM29YP0q1t8XXI/13BpORU/Tq8vqZrVoqDZwWLdNCB2Lr7feIZsH1Mkzpl2FfqQ3+a8aqQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VN6+Ao1S2pHA2Dq4PdyZtJlWT7HPXQj63AQ2kYm+szY=;
- b=bwjBBj3UcG1BkQ7pj7xqLAePqgkL9iDVD/d+FDxnxY1qKi5KK5IjJuPzOiwIuTy/MB5Nr9tg9YG1pWw41yHmnRnOEiuXswUPhCsICyzDyFcJtn2fwBqnJW35z5FPHJpWhE+lYsJ0J0mKWU9MOX/ILVlvFTEFJIqoHHi6WlQxht6s9rkQwinK37u+LfJhQA2ertvJIEbmk6aw5pJVB0Ht83hw2DXsxsi7JQ5CpJIu1zCG50MCXRnUeuaXVQv67fD9YAT8Q0XJ0w1l7v/hz2PfWehj5eWRAd7uyMV32CtQKMRtGYNxYaRCtB6PAbEUp1kSlS+au2hc53DYJ1TmJcPTNQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=siewert.io; dmarc=pass action=none header.from=siewert.io;
- dkim=pass header.d=siewert.io; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=siewert.io;
-Received: from FR3PPFB3D0CF1D2.DEUP281.PROD.OUTLOOK.COM (2603:10a6:d18:2::182)
- by FRYP281MB2940.DEUP281.PROD.OUTLOOK.COM (2603:10a6:d10:71::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8835.26; Fri, 13 Jun
- 2025 11:13:51 +0000
-Received: from FR3PPFB3D0CF1D2.DEUP281.PROD.OUTLOOK.COM
- ([fe80::6ec7:ece3:1787:5e48]) by FR3PPFB3D0CF1D2.DEUP281.PROD.OUTLOOK.COM
- ([fe80::6ec7:ece3:1787:5e48%6]) with mapi id 15.20.8835.019; Fri, 13 Jun 2025
- 11:13:50 +0000
-Message-ID: <e9622a66-e9d6-46ba-aaed-57de592f5959@siewert.io>
-Date: Fri, 13 Jun 2025 13:13:49 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] hw/misc/aspeed_scu: Handle AST2600 protection key
- registers correctly
-Content-Language: en-GB
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-References: <20250612144052.22478-1-tan@siewert.io>
- <SI2PR06MB5041DE20EB548C3137045975FC77A@SI2PR06MB5041.apcprd06.prod.outlook.com>
- <SI2PR06MB504192DDAD5ED2325B9AC0EFFC77A@SI2PR06MB5041.apcprd06.prod.outlook.com>
-From: Tan Siewert <tan@siewert.io>
-In-Reply-To: <SI2PR06MB504192DDAD5ED2325B9AC0EFFC77A@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: FR4P281CA0298.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:e7::7) To FR3PPFB3D0CF1D2.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d18:2::182)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uQ31s-0005Ic-Ia
+ for qemu-arm@nongnu.org; Fri, 13 Jun 2025 07:57:05 -0400
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uQ31n-0006mS-ML
+ for qemu-arm@nongnu.org; Fri, 13 Jun 2025 07:57:04 -0400
+Received: by mail-yw1-x1131.google.com with SMTP id
+ 00721157ae682-70e5599b795so19341887b3.3
+ for <qemu-arm@nongnu.org>; Fri, 13 Jun 2025 04:56:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1749815816; x=1750420616; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=6vzaVIA9d+9s2Fziqj284tT6vvw/UIzD8MC8G8RTWz4=;
+ b=Yq/IObmIahVO5N0QfCZGyjmvLXelc/bl+mALdwYAIYIQCa4/TYB0OitxMtdGXhX693
+ /EMGLdS1GPyH7iKykHwsybxl46j6zxxqDoToQkj3QubE89trk3zEPxC4cysVIOWR1I/2
+ D4AGOh28xzOL5aNwoqUzbfMkFptPj4jpfNPtOi98S20f0z8qO1+yULEKqiGp7ZmK1+BC
+ q4ClELrTUYAhhYKFnESzrJqqpOMXFGdXMzBWZpTCnDFS0qNpE4b+NIJ6+rh6Uh6p0SV7
+ KGCdaLogpAeRyoMz/HAx4D9fNeR28IIu7K28d8V3752gGtk8UtXp6ePLEn2HCDBnokXv
+ LTlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1749815816; x=1750420616;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=6vzaVIA9d+9s2Fziqj284tT6vvw/UIzD8MC8G8RTWz4=;
+ b=JWIR8XO74658GNo7os5vRBgc1fEMCQjybZuKqHdUWvvjST6WYwZMgWC7yfVY1G1trM
+ QqzxrvCnBZwQAoqU1SyI5l8AFC+AAfEg4/v6ZE66VUedYPAPEmNLmzWxIvlQQcl1tunW
+ 8rlyWScFjR5GYcTayoQG2u6+qG1uAVdUrd5/O7U9u6l+seRRZXVuNpv/vPdsFO7Yy1RS
+ 65zxdu1XVLLPyUaoGUhipZT6eiTmyunHObJSbnE/mEqNjFRzzdhKHwvji2J2FJLdAb+g
+ ZBYuJtqWjBlOg3xiPrwXSF0ZToKITdCc43xjD61K6mbKP4wOdvTbMZUVW8/vt8vRMvpb
+ XE2w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXY8caWqD9aWmpg3XTNi53YyPmQVpR9VG+enBLP3jPu1oyg5c9d5f7XDqGHXW3oU651VTs7StW0oA==@nongnu.org
+X-Gm-Message-State: AOJu0YxpjnL/HNNWB9klFuOXcoET2YOtinNTO/h2plR2Hk3EqD6AUS6o
+ xBpv3mHFj2suyPxrQ+QkLd7xlElgk8G6XdPWHe72Z2gT451Kpm+ccQGdYAsAAfki/cdmqEwf3Jz
+ a22dMvq500VNlLNZJbi9Fo9ofa58A24nIUwU7IAME6A==
+X-Gm-Gg: ASbGncsGxSajrpi+XeznGHFWBZwah+61LHyaB0V6w35ss6bOH7zx8kFzgn+pFxUZwmG
+ jAH1Mm7fc/c5hMfgzsddHBZbG2VoSmXbzzbwDJl6DDRze/KC9fuBjGxLDqh+3tXBqQS7TYc41Sl
+ vDR9XckGEz8q/HDdSe9VlKrMMvhSYhIQQSshbeZQC/GQC3
+X-Received: by 2002:a05:690c:9684:b0:70f:8835:b767 with SMTP id
+ 00721157ae682-711636073femr36791167b3.5.1749815815922; Fri, 13 Jun 2025
+ 04:56:55 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: FR3PPFB3D0CF1D2:EE_|FRYP281MB2940:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4716f3d0-fadc-421d-0c48-08ddaa6b5fdc
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|1800799024;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?QTM3R25RTUFLY3Q1M25VNkp5dStLUkZ4cDVuOVRqSVg5ekRnNmtHL041YUJs?=
- =?utf-8?B?eTRIaU11elNkTzUyeXpsTmhlZDBld0t1TkJaeEJsWURoR09IMndib3Nicncx?=
- =?utf-8?B?TkdDaE82RG5XU0hpMTB5SGc3TnI3azdHSHZMNEpweCs0aHJydFc1Ry9jd2Rv?=
- =?utf-8?B?eUlSWXVEK3hSTzJpdC8zbFN4ZlQydWNrR0s1c3B0K2c2bXUxYld1VVRNbmNT?=
- =?utf-8?B?Y3RDdzNwdjVMTktaZ3E2a0tSeEMrazA2ZU5VdnpkaytyTW5yRnVhZENPTkZz?=
- =?utf-8?B?T3dGWElwNDdxV0ZqZk96WjVDd1JsUE1lcW1mMnRqZUdSTXBSK01MUCtTU0lL?=
- =?utf-8?B?ejF5WVRwYXBURkgrUkN2dHhnNnYxMkVXclBKVy9YYk9aSkdEbnJjU1NHb2Mw?=
- =?utf-8?B?VTZCZmt5eXFlQ05mblRWV3YwZTVaU3VLU0svUU92R3dibGU1NEllRmxPbEQ3?=
- =?utf-8?B?aWZOVHZNMXd2N3ZUM0JUTEs4QWg4ajdETi9TRmtIK0xrdDJCVDFBdGtBeGJU?=
- =?utf-8?B?dmNPT2RWTDdpWHFKeklMRCt5TGpkZGxjRE9yQVZYMHUxNDBULzFXZlNJRmRB?=
- =?utf-8?B?RkJtVVBRYU5SZitUNmtxRnFieHRiRXpKanpyOWVjMURrQ3QyOWgzZnFlanBL?=
- =?utf-8?B?d3NkalNyK0RqSmZFVGxObG9LOEFDL3J5QjNqbGJUY0N2eUpOVTN2WWNrQk12?=
- =?utf-8?B?ZytiL3Y0WGpzSGlvTDRyVncrTGY3M3Rwdi9kVmVHYVd5WFpudnJQUjNDYUlN?=
- =?utf-8?B?S3A0aTZsQ0NPWXJla24rcE8wOXllVjBGdUdVVkRFazMrTmh2L1U0dllhUURT?=
- =?utf-8?B?elRzZVJyaUg2MmJFeTdwTE5EeTQ5ZHZUOExSYXB0MHZwTVZrVFFiR0ZscE50?=
- =?utf-8?B?LzRyQjErOVhvOEhEeDh5Sm4xdnR5N01DQVBLSVQ4ZDVaWlBzeHk3WEswS29B?=
- =?utf-8?B?TWxMQXVVWnlwelBMMmxTd1prMU1TeU5oSzlLVjZqNWFzbU1BdWhDdEMvWDhR?=
- =?utf-8?B?b3QzQ2dON1Z5MTRjdzZHUDJMSHhWc1ZjTFhaZ29PUlAzekFsWXZUSWtJeHM4?=
- =?utf-8?B?MkJxYU5yQ3F4UmpHNWtncTRSeStWVFhIQk93OFJ2bEREd3pWeGZnaVF3aGlI?=
- =?utf-8?B?R3dQaDZKbWhaVHp4MUlCU1U1ZDA0VW45MHk2SnVmeS82Z2JFS3oxd2lnL0F6?=
- =?utf-8?B?UWZ6alZIbXplMUFsL0Z4RXdua2paMGNVMUhIMXp5SzV0c1FZTEhhKzdnUStZ?=
- =?utf-8?B?UitEZXR0TmVEY25aV0Z2V2cyN1Ixd0VMRHg5TVVRczM5cGQ1d3lhWXJvZnZK?=
- =?utf-8?B?Z2lHc0lmNkphN3hTeElxb0d6NVkxQnpWK1dYMjdtbFQzdGNiOGxvSE9NZVor?=
- =?utf-8?B?bmdtVENaSEhyL2FvWCtnOWw3VkZUR2Mwd1IxTjRoelJiTTVZNi9HWCtrY09y?=
- =?utf-8?B?N0c3YkNxaEh2QjlkRFQ5Q0U3Vk9iOFU2TjJ4UHd1aG5hYm1DOWMyK1RiNFdJ?=
- =?utf-8?B?SmxFWVZDVlBNWFBxaXlDc0VVT1FMa0puMXBBL3ZYTDc3a0MxajNtM0tzTGYw?=
- =?utf-8?B?VDIzQmRXZldyQnFDSDFGOWs3eTNqRXFkWTVFd1FHN1hnRXBqWldYdE1tVFBQ?=
- =?utf-8?B?bitSSXJadUdKdHBITDhDSlFRM3lMSlRUanlDVDNHSGEwTG5lSEF5T29sZ3Ev?=
- =?utf-8?B?TWQzSFNoSUJXM09DOVFEOVAveDNraDdnanNQbkJtMEhLeVEwcWdja0QyRm5O?=
- =?utf-8?B?TXlrejU4WG56SE1lMm5INjBoeEkvYTBtYjBHaURjQk1leEJLUHd4U2ptV2No?=
- =?utf-8?B?Q0VHUTRFcmdLL1lwRzdGV3dDWmJIbnExcllMcVJMOVVZTjgxL25sUlBqSGs1?=
- =?utf-8?B?UnpySzA0OGlKRnBFZFdnREU5Y2MxLzdMK0EvbTZaaG9hT2pyQndJOGFYRWdn?=
- =?utf-8?Q?cI16Rb9o2fo=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:FR3PPFB3D0CF1D2.DEUP281.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(1800799024); DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?a0xnOC9FUWxFVDdCalowZ1pEcVR2Ynl3MHBjVnozUDJUK05KR1RXMzE3dmZx?=
- =?utf-8?B?QlgyT0R3NTBqd2xNMGVwN3lHMDF3WEZoQTBFWWhxMk9VZUtoYUFab2ZwYnR3?=
- =?utf-8?B?ODVzZlc4L1JTMHE0TUtzVWVtSDNodHJhTDlvQTBybDZpMTlEeXBqOS9hMHcv?=
- =?utf-8?B?dHAycWNmS25JTnBxWnNJWHZtQ3dmYmZ4dmpJeVBQeTFnNkV6QTJOVUFmVEVH?=
- =?utf-8?B?VHVYZUVzRkNhQzlQWmxiblBJN3plNVFkcHNBb0N6VGtzN3pLdWEvOTJIQ3E1?=
- =?utf-8?B?am8vZnppNjJmaU9ZTTdyRkswVUIxRHE0RHJoRld5MlJZU1FGZGhzOG1QU2NG?=
- =?utf-8?B?MDhPQTlkeWp1aFNuT2FpUnMxek1hcVBBZ1JJR2gvaUs2and1Z2lCU25jWm82?=
- =?utf-8?B?eFl4SE5yQnVXd2x0TWdKN2hPQWJSTE1wVXFFYUxhRXBJMWFjVy9Zd3dUaWk3?=
- =?utf-8?B?aXdFb0FSQzhjQlRvWmp2akE4VkRJWVNzdmNOeTBnUGdxMFgxY2poZ2lDTExG?=
- =?utf-8?B?cHRaOXd1dWw1eTJBVEZKMU5zRi95bE8xeDI0Yi82MTAzVUcvd0p5VFl1REx4?=
- =?utf-8?B?dEpGMXQwNXNlZEtPTFlBdUIwaGFKdDJhVy9CVkRSTVZWRXdQTXZUQVpUOGxX?=
- =?utf-8?B?cGZoSG9SMkNOUVEzdjhmNGxUWnRTQzhNL0VzeXd1MklnaVN6WlVwYlYvYnRZ?=
- =?utf-8?B?WEVzYTBvU3dGeGNjVWZBUytqbjFFQnBadlZUY0g3Wmh5VHM3Y1IyQzlwNTdH?=
- =?utf-8?B?eWpWdm9GTlJLT2MwMkJZN3ovdGdEUEVMSzlaK1ZuazB0RFNPcVl2TlFJcFUv?=
- =?utf-8?B?SnZWaWdIL1ZUVUd2czRweTZoZmFSd1FCYU02TGJhSWhtNWdmUjBiUkVFa3pz?=
- =?utf-8?B?ditvalNYbWgyby9RQjVYT3YvRlhiV3pMQUFuUDRHZzZhcjZEdkIzZitteUZ2?=
- =?utf-8?B?SGdsM3owQmF0VjduSSsyVXVVYUNJbjZTc0Jub3FhM0R2NzFDYkFOUWJ0NUFq?=
- =?utf-8?B?RUpWVjhyd2U4WEJzc1owSkU0alZqWVRzYi9pR0JjYXZrRkg1WGxPb0s3RmxD?=
- =?utf-8?B?RDladHVPaFVlM3JYZ1pjOEdrb0JFM0ZzakFLbUN4VUFNeG1FZGRvZnk4M0gy?=
- =?utf-8?B?M2JkNXFUL0RvOVFqcVhZSHZaUGQ2SDJmS1lpQ25ia2dSRGVIeXpGdlZPVjNO?=
- =?utf-8?B?MkFkV3hXMVVLRGJvZVBoMU42RXQ4ZHpyRmZVaGJBUW9LZVlTa2cwUExjNlg2?=
- =?utf-8?B?YUJNam8vLy9DWFZYNWhvTFBZeDRxdC81aXlqbXZDL2k0QU5xanFvK2dqWnVT?=
- =?utf-8?B?R29uRnJpRDJRQmpqUElYOTJ1RDdKMlhQVGVJbGpqZjUzMkRoOEQ3YUdWZDln?=
- =?utf-8?B?SkpHSXgxNjJqUVNWa2kweE9xeEQwWEJVYVhOaG8xMHhHdVI3UzIyckFSb0dz?=
- =?utf-8?B?RDl5aStOYTZjM282ZG5HemZBRG5lUGRuakZBNVZuc1BKSFIva3V0aVFmbGVF?=
- =?utf-8?B?YWJZdDZCZEZ5TXdUMUZVdENCVTRJMEZPbDdlRWI1RzE0MmRIck9RRFhXempZ?=
- =?utf-8?B?TWd3SnRUZG9ZZ21lbkk4dW9ncDJPb2dzLy9vNUtQbVBwci93UittN05BelRm?=
- =?utf-8?B?eEMxSkcxMFdkeVFHc2I1YWVTZXFCMGdvWEZuTWNFQ3dPLzJSRG1FQXdYMWpx?=
- =?utf-8?B?QjhUblV1N1ZrQjlWL2tHcERmRnV1UFN0QzVSbjVEbTdYNmg4VVFnd0tRNFJT?=
- =?utf-8?B?NnFVbjh5L1NCVU10NjVrcVN3OEZ3TVI0TjM4c0pzNTZjaGdSOEpBU2pIdVRR?=
- =?utf-8?B?c0I3ODdBY3diWDZHS3M0dklTcmcyK1FIMkdpSlBrSDdaY2tFaWVkOTdLcVdY?=
- =?utf-8?B?MG1MT3JEMDNtODdFNWJRdytQSWFHZlZQWnZRMkV2SFJIUUNqZjBjc2pmZHds?=
- =?utf-8?B?aXpYZWllbENac0JTc2dwc3pBOGpNUVFqcG9MYUZYT204WDVwNmR6YXhKajJR?=
- =?utf-8?B?a0ZHaVRqZS9MRnNESjJBQS9aL1N5NFJBbGQyTWxtZzRVSmtJaStNS0EyK0ln?=
- =?utf-8?B?b2dsRXhjYUhIWDZEOEV0a0dsUzNFb1dIWjNLcVJXSmIrdHNrSGFWN0VaeTR3?=
- =?utf-8?Q?lzb0=3D?=
-X-OriginatorOrg: siewert.io
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4716f3d0-fadc-421d-0c48-08ddaa6b5fdc
-X-MS-Exchange-CrossTenant-AuthSource: FR3PPFB3D0CF1D2.DEUP281.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jun 2025 11:13:50.7613 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e8b4abbe-444b-4835-b8fd-87ac97451a7e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Gklom8p8QJHSNI85EJFR9bEyiNGhXZXN40P7YmsB8F5maVbEKsVdxjyMaDluuVdc
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: FRYP281MB2940
-Received-SPF: pass client-ip=2a01:111:f403:c20c::1;
- envelope-from=tan@siewert.io;
- helo=FR6P281CU001.outbound.protection.outlook.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20250526085523.809003-1-chigot@adacore.com>
+ <20250526085523.809003-4-chigot@adacore.com>
+In-Reply-To: <20250526085523.809003-4-chigot@adacore.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 13 Jun 2025 12:56:44 +0100
+X-Gm-Features: AX0GCFubLDIpLL61bX_PZfKCL9rvgqpfC95cCKckZ_c2I88PqVyQH_kvIBGcSVs
+Message-ID: <CAFEAcA_OLNWNMVe8wxCkg4JUkEvNP3ga_YpSnhYXHkD-criYEg@mail.gmail.com>
+Subject: Re: [PATCH v2 3/4] hw/arm/xlnx-zynqmp: wire a second GIC for the
+ Cortex-R5
+To: =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, edgar.iglesias@gmail.com, 
+ alistair@alistair23.me, Frederic Konrad <konrad.frederic@yahoo.fr>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -209,40 +133,191 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vhVYQUXk5Cfy
+X-TUID: KEt3FSTSYWmT
 
-Many Thanks for your review, Jamin!
+On Mon, 26 May 2025 at 09:55, Cl=C3=A9ment Chigot <chigot@adacore.com> wrot=
+e:
+>
+> From: Frederic Konrad <konrad.frederic@yahoo.fr>
+>
+> This wires a second GIC for the Cortex-R5, all the IRQs are split when th=
+ere
+> is an RPU instanciated.
+>
+> Signed-off-by: Cl=C3=A9ment Chigot <chigot@adacore.com>
 
-On 13.06.25 05:01, Jamin Lin wrote:
->> According to the datasheet description: it seems your changes do not match
->> the actual hardware behavior.
->> Protection Key
->> This register is designed to protect SCU registers from unpredictable updates,
->> especially when ARM CPU is out of control.
->> The password of the protection key is 0x1688A8A8.
->> Unlock SCU registers: Write 0x1688A8A8 to this register Lock SCU registers:
->> Write others value to this register Only firmware can lock the SCU registers,
->> other softwares (ex. system
->> BIOS/driver) can not do this to prevent disturbing the operation of firmware.
->> When this register is unlocked, the read back value of this register is
->> 0x00000001.
->> When this register is locked, the read back value of this register is 0x00000000.
->> Writing to SCU000 can be seen on both SCU000 and SCU010.
->> Writing to SCU010 is only on SCU010 itself. SCU000 does not change.
->>
+Some review of this from the Xilinx folks would be helpful.
 
-Interesting. I tried something similar but apparently did not enough 
-research on my AST2600-A3 card (or messed smth else up during research).
+> ---
+>  hw/arm/xlnx-zynqmp.c         | 88 +++++++++++++++++++++++++++++++++---
+>  include/hw/arm/xlnx-zynqmp.h |  6 +++
+>  2 files changed, 87 insertions(+), 7 deletions(-)
+>
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index ec96a46eec..be33669f87 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -26,8 +26,6 @@
+>  #include "target/arm/cpu-qom.h"
+>  #include "target/arm/gtimer.h"
+>
+> -#define GIC_NUM_SPI_INTR 160
+> -
+>  #define ARM_PHYS_TIMER_PPI  30
+>  #define ARM_VIRT_TIMER_PPI  27
+>  #define ARM_HYP_TIMER_PPI   26
+> @@ -206,7 +204,7 @@ static const XlnxZynqMPGICRegion xlnx_zynqmp_gic_regi=
+ons[] =3D {
+>
+>  static inline int arm_gic_ppi_index(int cpu_nr, int ppi_index)
+>  {
+> -    return GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_index;
+> +    return XLXN_ZYNQMP_GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_in=
+dex;
 
-You're right, (un-)locking SCU000 will (un-)lock SCU010 too, but not 
-vice versa.
+Typo in your new constant name: should be XLNX_.
 
->> Could you please verify the QEMU behavior?
+>  }
+>
+>  static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
+> @@ -377,6 +375,8 @@ static void xlnx_zynqmp_init(Object *obj)
+>      XlnxZynqMPState *s =3D XLNX_ZYNQMP(obj);
+>      int i;
+>      int num_apus =3D MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
+> +    int num_rpus =3D MIN((int)(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS),
+> +                       XLNX_ZYNQMP_NUM_RPU_CPUS);
 
-Right now, locking either SCU000 or SCU010 will be reflected on both 
-registers, and unlocking must be always done separately.
+This is kind of a complicated expression that we use twice, and
+I think it would be worth abstracting out into a function.
 
-I guess it's time for a v3 then.
+>      object_initialize_child(obj, "apu-cluster", &s->apu_cluster,
+>                              TYPE_CPU_CLUSTER);
+> @@ -390,6 +390,12 @@ static void xlnx_zynqmp_init(Object *obj)
+>
+>      object_initialize_child(obj, "gic", &s->gic, gic_class_name());
+>
+> +    if (num_rpus > 0) {
+> +        /* Do not create the rpu_gic in case we don't have rpus..  */
 
-Cheers,
-Tan
+stray ".." at end. Also I would say "if", rather than "in case".
+
+> +        object_initialize_child(obj, "rpu_gic", &s->rpu_gic,
+> +                                gic_class_name());
+> +    }
+> +
+>      for (i =3D 0; i < XLNX_ZYNQMP_NUM_GEMS; i++) {
+>          object_initialize_child(obj, "gem[*]", &s->gem[i], TYPE_CADENCE_=
+GEM);
+>          object_initialize_child(obj, "gem-irq-orgate[*]",
+> @@ -439,6 +445,13 @@ static void xlnx_zynqmp_init(Object *obj)
+>      object_initialize_child(obj, "qspi-irq-orgate",
+>                              &s->qspi_irq_orgate, TYPE_OR_IRQ);
+>
+> +    for (i =3D 0; i < ARRAY_SIZE(s->splitter); i++) {
+> +        g_autofree char *name =3D g_strdup_printf("irq-splitter%d", i);
+> +        object_initialize_child(obj, name, &s->splitter[i], TYPE_SPLIT_I=
+RQ);
+> +    }
+
+We don't need the splitters unless num_rpus > 0, so I think
+it would be neater not to create/realize/use them.
+
+> +
+> +
+> +
+>      for (i =3D 0; i < XLNX_ZYNQMP_NUM_USB; i++) {
+>          object_initialize_child(obj, "usb[*]", &s->usb[i], TYPE_USB_DWC3=
+);
+>      }
+> @@ -452,10 +465,13 @@ static void xlnx_zynqmp_realize(DeviceState *dev, E=
+rror **errp)
+>      uint8_t i;
+>      uint64_t ram_size;
+>      int num_apus =3D MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
+> +    int num_rpus =3D MIN((int)(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS),
+> +                       XLNX_ZYNQMP_NUM_RPU_CPUS);
+>      const char *boot_cpu =3D s->boot_cpu ? s->boot_cpu : "apu-cpu[0]";
+>      ram_addr_t ddr_low_size, ddr_high_size;
+> -    qemu_irq gic_spi[GIC_NUM_SPI_INTR];
+> +    qemu_irq gic_spi[XLXN_ZYNQMP_GIC_NUM_SPI_INTR];
+>      Error *err =3D NULL;
+> +    DeviceState *splitter;
+
+I think you can put this variable declaration inside the
+loop where it is used, so it has a much smaller scope.
+
+>      ram_size =3D memory_region_size(s->ddr_ram);
+>
+> @@ -502,13 +518,21 @@ static void xlnx_zynqmp_realize(DeviceState *dev, E=
+rror **errp)
+>          g_free(ocm_name);
+>      }
+>
+> -    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", GIC_NUM_SPI_INTR + =
+32);
+> +    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", XLXN_ZYNQMP_GIC_NUM=
+_SPI_INTR + 32);
+>      qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
+>      qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", num_apus);
+>      qdev_prop_set_bit(DEVICE(&s->gic), "has-security-extensions", s->sec=
+ure);
+>      qdev_prop_set_bit(DEVICE(&s->gic),
+>                        "has-virtualization-extensions", s->virt);
+>
+> +    if (num_rpus > 0) {
+> +        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "num-irq",
+> +                             XLXN_ZYNQMP_GIC_NUM_SPI_INTR + 32);
+> +        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "revision", 1);
+> +        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "num-cpu", num_rpus);
+> +        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "first-cpu-index", 4);
+> +    }
+> +
+>      qdev_realize(DEVICE(&s->apu_cluster), NULL, &error_fatal);
+>
+>      /* Realize APUs before realizing the GIC. KVM requires this.  */
+
+> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+> index c137ac59e8..a69953650d 100644
+> --- a/include/hw/arm/xlnx-zynqmp.h
+> +++ b/include/hw/arm/xlnx-zynqmp.h
+> @@ -42,6 +42,7 @@
+>  #include "hw/misc/xlnx-zynqmp-crf.h"
+>  #include "hw/timer/cadence_ttc.h"
+>  #include "hw/usb/hcd-dwc3.h"
+> +#include "hw/core/split-irq.h"
+>
+>  #define TYPE_XLNX_ZYNQMP "xlnx-zynqmp"
+>  OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
+> @@ -87,12 +88,14 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQ=
+MP)
+>                                    XLNX_ZYNQMP_MAX_HIGH_RAM_SIZE)
+>
+>  #define XLNX_ZYNQMP_NUM_TTC 4
+> +#define XLXN_ZYNQMP_GIC_NUM_SPI_INTR 160
+>
+>  /*
+>   * Unimplemented mmio regions needed to boot some images.
+>   */
+>  #define XLNX_ZYNQMP_NUM_UNIMP_AREAS 1
+>
+> +
+
+Stray extra whitespace change.
+
+>  struct XlnxZynqMPState {
+>      /*< private >*/
+>      DeviceState parent_obj;
+> @@ -105,6 +108,9 @@ struct XlnxZynqMPState {
+>      GICState gic;
+>      MemoryRegion gic_mr[XLNX_ZYNQMP_GIC_REGIONS][XLNX_ZYNQMP_GIC_ALIASES=
+];
+>
+> +    GICState rpu_gic;
+> +    SplitIRQ splitter[XLXN_ZYNQMP_GIC_NUM_SPI_INTR];
+> +
+>      MemoryRegion ocm_ram[XLNX_ZYNQMP_NUM_OCM_BANKS];
+>
+>      MemoryRegion *ddr_ram;
+
+thanks
+-- PMM

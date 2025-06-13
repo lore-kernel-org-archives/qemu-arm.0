@@ -1,65 +1,65 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp308055njc;
-        Fri, 13 Jun 2025 07:48:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWdWRpwaTUbGfCFeoINQOI4Y3aG94PrFB0URns/jPmIkJUBxdC8H97YKNRKWYwqcKQI52Fln4QdqHTo2g==@linaro.org
-X-Google-Smtp-Source: AGHT+IF9WbDq5fzzNogSAibewY4kpTsywH+xrdkUH3Cfa0R5EBCd5C9hXAWBRg5LShjhleOp/GDi
-X-Received: by 2002:a05:622a:5988:b0:4a4:3186:5682 with SMTP id d75a77b69052e-4a72fe5999amr57008491cf.5.1749826124204;
-        Fri, 13 Jun 2025 07:48:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749826124; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp308195njc;
+        Fri, 13 Jun 2025 07:49:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVldvZuN7sYexIgnan7c/rekWtKduhFPe2SfLQaRr0172u5KGQB9xBgiCFXtmNF55EqJvPHfBo7sAFNeA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFgsqfUWBWs7m3oEWwdw81n6P/5GTTfLmpB0f7G2OFck4ZLAQxO1hQgAWkSeIB/TXj9g2wq
+X-Received: by 2002:a05:620a:3908:b0:7d3:9218:6d1b with SMTP id af79cd13be357-7d3bc3acaf8mr587665685a.25.1749826140286;
+        Fri, 13 Jun 2025 07:49:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749826140; cv=none;
         d=google.com; s=arc-20240605;
-        b=OGD77u+0qjWy9QnQb1W2D6dZEtk2m5dKhhDtiOhMLV4TZbQUebFdCzoNKsYrZeekZ0
-         6PIGnG6q2XScpd2VGHRAhFRKsjtg1IvlgpiEihZTQttXHzNNLaBOIwI0rCBra5lhQc8M
-         /7l7pBl5KRRXLNwzY1iIK2AxibKjHo8UE8dzFORyZ/1ZXhwc2TPJZVdNKm4c9/dDKXRJ
-         TA8DKXG3/Y25gKW/PVZbZab/hugE0LnFNElNC4fDGnOqy90OwUfibiQcEAHJNwAFtgy8
-         XEcHxLpzg4xTbqWlvShqI0RXF2/6uEIuEHalcWZHmSKpla2a5ZcLnhvjcC63BnQvIU9R
-         5ZAg==
+        b=FZoHqG54IbqjBxzQxcUVUCwuoaJLDQIZu5UdiOUnTnZ+K/JKKXMFnSdE6NORITK8LT
+         8jmg+PgbVpMT9Nv1IcRDchbXAZig09EsstmxAbbC2189uMRTUbrAZ8QI09RiDmhijLkr
+         AJiK5qSViv4/YTwMdBNNC5xuxGteBg0H4+wOedWazx1GyClzzSKaYQ40lhdWq3c+m6ck
+         Hzsq1Eb2RQSkYr4wPgwGIdUT5tWihKGw5/i+cVs2VTp4QbrbHvt6ScwcLD1sYbR9Un4u
+         x+do5OMHNc0PYTgi4KdIrCp9wgAHNYyirWGYgKtjItoODNCR5fweMNlbElhaNlP5zazx
+         FLeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to;
-        bh=F8qlzuYIW3FehOA2i906cr0iQyN35Rs4kT4E2uV/u3o=;
+        bh=d7BjYQt7mMucYSMbTkLm7oLJgmaRGMseVeHttrUXhsQ=;
         fh=12ij1D0xizeHJ+1WEqwo/9QFN2xwslWS8h/2oI6OPA8=;
-        b=c9KOVs/iqP9qZNFMu2Q9tfWei94NwdpmBxCYyvTGW+X9BGEcz3epg8dYWgzYPYlPcq
-         0T7rtpUrILLUmL0Suk2+kZ9e4rPB2J/g2g+uCmVUjXqbjZtsfrAtD8BbIdNiq8g+G3OE
-         Fpi0UsRCaxCsn4R9RSLnZWeBsmyp/NxSyKA1bsfDLXVR45Sx/Lji0l3vWQZz4BCazXOL
-         2OZ3OCZxn9yoPmR5amVP8hETDoFYan26VOZ42H1t1XFd2eZ+XXiXx1ZJ9eViNImBhL4+
-         LqZwQ45BPtrzy09PBBThFweqNu7qZNNe+UoIj85j1WbxQZK/7bQDWLxMe6okYdDrpVRk
-         za5A==;
+        b=IwwK4Nvj4USJMyJ3w+K+PGWB+dd+uyYG9vz3a9nyoGwEShJI7dMMc/xfli0xVQK24h
+         g88nYA5TC3vKwcB0xJ6pheiTa0W+BD7oO3+8o+4+4cMvXwR85GT/6mOLq6hj3hC20XQc
+         k7ks6qFTvTLdzcSNRTqa6wtL+VBVVbRGhW+UQgMAVCpSMbhAroLdJOteB6MIV4YbkLUj
+         gMUFh42eHBAArgh2ig0EkCW1kEo7tjlyWhXUNQr/2R82b3eFFSycA5a7PPk4Z6ngXBKD
+         HmegNovU9P7joNL2yO7xbL/RyS+jA00wZb4D79Rq7bBLPL9rbJuLh68UPwvzPogBqYXm
+         ap8w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a72a4b1c91si32261511cf.334.2025.06.13.07.48.44
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8dc32a8si322722385a.51.2025.06.13.07.49.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Jun 2025 07:48:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Jun 2025 07:49:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uQ5gi-0008LR-Ja; Fri, 13 Jun 2025 10:47:24 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uQ5fl-0007mR-QP; Fri, 13 Jun 2025 10:46:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1uQ5gg-0008Kv-Hn; Fri, 13 Jun 2025 10:47:22 -0400
+ id 1uQ5fj-0007l7-7N; Fri, 13 Jun 2025 10:46:23 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1uQ5ge-0006mr-Ou; Fri, 13 Jun 2025 10:47:22 -0400
+ id 1uQ5fh-0006eT-Es; Fri, 13 Jun 2025 10:46:22 -0400
 Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bJj0B32hlz6M4h6;
- Fri, 13 Jun 2025 22:46:50 +0800 (CST)
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bJhyx6F54z6M4jb;
+ Fri, 13 Jun 2025 22:45:45 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id CB45B14033C;
- Fri, 13 Jun 2025 22:47:17 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 44271140393;
+ Fri, 13 Jun 2025 22:46:13 +0800 (CST)
 Received: from A2303104131.china.huawei.com (10.203.177.241) by
  frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Fri, 13 Jun 2025 16:47:09 +0200
+ 15.1.2507.39; Fri, 13 Jun 2025 16:46:05 +0200
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
@@ -67,9 +67,10 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <smostafa@google.com>, <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>,
  <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
  <zhangfei.gao@linaro.org>
-Subject: [PATCH v4 7/7] qemu-options.hx: Document the arm-smmuv3 device
-Date: Fri, 13 Jun 2025 15:44:49 +0100
-Message-ID: <20250613144449.60156-8-shameerali.kolothum.thodi@huawei.com>
+Subject: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe Root Complex
+ association
+Date: Fri, 13 Jun 2025 15:44:43 +0100
+Message-ID: <20250613144449.60156-2-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com>
 References: <20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com>
@@ -91,47 +92,55 @@ X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-From:  Shameer Kolothum via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZsNDzHSeZV1a
+From:  Shameer Kolothum via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rml/lLV1ZXhC
 
-Now that arm,virt can have user-creatable smmuv3 devices, document it.
+Although this change does not affect functionality at present, it is
+required when we add support for user-creatable SMMUv3 devices in
+future patches.
 
+Tested-by: Nathan Chen <nathanc@nvidia.com>
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- qemu-options.hx | 6 ++++++
- 1 file changed, 6 insertions(+)
+ hw/arm/smmu-common.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 7eb8e02b4b..3edbde45bb 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -1226,6 +1226,12 @@ SRST
-     ``aw-bits=val`` (val between 32 and 64, default depends on machine)
-         This decides the address width of the IOVA address space.
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index f39b99e526..7890aa12c1 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -20,6 +20,7 @@
+ #include "trace.h"
+ #include "exec/target_page.h"
+ #include "hw/core/cpu.h"
++#include "hw/pci/pci_bridge.h"
+ #include "hw/qdev-properties.h"
+ #include "qapi/error.h"
+ #include "qemu/jhash.h"
+@@ -937,7 +938,8 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
+                                      g_free, g_free);
+     s->smmu_pcibus_by_busptr = g_hash_table_new(NULL, NULL);
  
-+``-device arm-smmuv3,primary-bus=id``
-+    This is only supported by ``-machine virt`` (ARM).
-+
-+    ``primary-bus=id``
-+        The PCIe Root Complex to be associated with.
-+
- ERST
- 
- DEF("name", HAS_ARG, QEMU_OPTION_name,
+-    if (s->primary_bus) {
++    if (s->primary_bus && object_dynamic_cast(OBJECT(s->primary_bus)->parent,
++                                              TYPE_PCI_HOST_BRIDGE)) {
+         pci_setup_iommu(s->primary_bus, &smmu_ops, s);
+     } else {
+         error_setg(errp, "SMMU is not attached to any PCI bus!");
 -- 
 2.47.0
 

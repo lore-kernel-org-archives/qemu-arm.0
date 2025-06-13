@@ -1,100 +1,99 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp107914njc;
-        Fri, 13 Jun 2025 01:36:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXJl476S1y6dgGpSiden+mqLyU2fNNLoPZUseKf0cWzYoWe+ydpkTiEvudli/NEFvwSv4Vc8Mv13lHK0Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IEe80AfWB0v7s7s6TtRLbw1wbuUuelYRE/fzOyGrWQnGiu3/zlGbf0Lk6n4uy9a+HPq5qA1
-X-Received: by 2002:a05:6214:27cc:b0:6fa:fe02:8219 with SMTP id 6a1803df08f44-6fb3e57c9ffmr32157386d6.7.1749803792077;
-        Fri, 13 Jun 2025 01:36:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749803792; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp150826njc;
+        Fri, 13 Jun 2025 03:18:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVoaIIsgsA148frBlAnDP2lG1MDK47y4WtjOybQ9tEpVqWhinck5jOtlDAaF+sNiELO4xSuqe60iXRJEQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHmDSNddjcYcMPJlzKg1OxuMqPpp9dZM1eP7ATq6kgBvKmTXWomj23Mo3I3fuZzuM1hCfVG
+X-Received: by 2002:a05:620a:3944:b0:7d3:8566:e9ad with SMTP id af79cd13be357-7d3bc447b50mr344115285a.34.1749809895516;
+        Fri, 13 Jun 2025 03:18:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749809895; cv=none;
         d=google.com; s=arc-20240605;
-        b=WBPiUuHIqz4yjPGsPjre7715GOh/S5wJE1vv6HeyVBp4K7VwNs8ZTI/hh1aTWvnPiC
-         Rpgj07ggeev+hUCAZWszXpGjtvskebWrk0aVYSc23WQY7zDXgFGVMrp4wlASIU/trfN+
-         gc9J73szr+XPIjYFlAsw7aIWJLoYvrm6+v9Kbtb/QLB2IG/oaurXJ8XiVBV5H6zWZZzA
-         skQ1zPA0dxR292FCA8Xq4rxipGLSNA9b+z5EwTPtuLx8RA8Gs4VzXixy8XZGBhg9PtQe
-         oFQr+mBUNDsijYptmlLBpudd7Jpew70EQ1jT1JnpHFvkozo4pA7QxbqQt4e/H6Et5aQL
-         0bHA==
+        b=MhYB6iiDP11u9VGbR9zXVHaPP5cpxR6SM0Qv+BvOfLlZMwKGnNqXd4m5OUCI0yWAhU
+         qp3lanm9NKltsElZcsyvBPyxHu8kZkqk1/d7ogRsSi5HnLfZ675wxa+0zeLEGbflsL0g
+         0mQ7DnMDiLYMivd8bgfTaWfWcWjbyiKZEkGaxkPZY99YGQSieCE4qYjAYQgf3WkGnQXE
+         QFBrL/rIwFzvAEOACaJuzxahjyJ0fWUBLoVgTRWE5akxB+pXh62ZlGj3+vOmbRfUAXM/
+         plbf/gr6TYa80v/x0XGcE41SlqEeJu7xcikSjQ/5Y/6eF8YObLeoZwB6x85bpz1rGwYu
+         v8mA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:content-language:in-reply-to:autocrypt
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=/I6+d9Yd3eLTkCHtR7fFtt05vaPNjoHu7+WkpC52NnU=;
-        fh=sNJLqsEOa2NoJjWo++TWwJEsM2GpzElEP0K0btXHaQY=;
-        b=k6xARHcAiD7cB+eT5fq9Mn1vdBkKkTOldvvEEfNY2UYsus8MgkwklJNLUntd+WHand
-         27dS32BFG/ta2hmLgXlU00Ysx+uYac66/eGn0LLZSKLFSAHn2D7/NSx/0vgAM+GqL4kV
-         vyjxiIzH4Yw5zcz8mPtxzmWV5BcMv7BGyRUWVOcX0VswOgwrC/M1z4D/Rh/9Ig8I8Nd6
-         39N2aRSYwwEkuNIcOUDUNS5Lkwb1ubdVydvZkGxaLfXyKl6SScWdO8WfSpqEQh4Y6Mgr
-         40l5ToBaI/EwCnBAUgi6CG73ueDWXmeaL1ZmBjnX2gy9oV7z4J6vsj2nf7Pp+1ALqUeh
-         KHsA==;
+        bh=9Gppa7BAPiTJbTtafNpUQg+an3/WD3nhPG5Bw17Zkcg=;
+        fh=Us5tVY8socVXVZo5TmC54qIfAVH0+Jek0S15ADmYO90=;
+        b=JHrQus0JfcRQREtlZPlRyL5auk5joKh+XHeyXUFsM73eARgK/zlGyL5hfDmd9pI+Xp
+         q/rEpi4XrjrC+Q3Oe5IYBHmaslHoBcbQvvRPtR9muwJoqT2lOtczdz1b8VqARKU02nAh
+         MDgzV2FvQjlQRCHrFzOaUepwfozT+rPmBQHk7Q2LPvHTRvIn7dMaBte6uDnjy6MSy19t
+         KyUUIxIu2ndHuliVtBYAiVDwDkPiMsksposfgjzQpMX8Eov4Sn1zGyrjhHdK/RieBXAh
+         vs6Ssg3oGemnP0BKcWxmszDS07p41gQgPPM02D6q32F/i2Ncq10K3CDMY4AwuJiJaB1O
+         fTzw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f866kL+d;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Da7CkhRc;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fb35c1aff1si35106246d6.395.2025.06.13.01.36.31
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8ee0caesi282567985a.384.2025.06.13.03.18.15
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Jun 2025 01:36:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Fri, 13 Jun 2025 03:18:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f866kL+d;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Da7CkhRc;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1749803791;
+	s=mimecast20190719; t=1749809895;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=/I6+d9Yd3eLTkCHtR7fFtt05vaPNjoHu7+WkpC52NnU=;
-	b=f866kL+d89iVL4Z8N9tTK9I2QrsOcJhc7nkr9IsADw5vD3R8gMFlZpLOr7xPM2K0Lqt+1S
-	Qr98/GzgB9wYyEhYUC/LHtQhIgnKMXtY4bKptR88Xe/3DqTFCvtm4sowYZihICVOOrm7V7
-	ydCWVv/ksJOcFsR90tFJ0cC6aCRyy70=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=9Gppa7BAPiTJbTtafNpUQg+an3/WD3nhPG5Bw17Zkcg=;
+	b=Da7CkhRcNnHZP5DIGN5dMbsvTilqQ4lyvaR7gG/8EB4WmcULs6KUz2dQV+7ZL2M1EMd1tw
+	JeolluDPnhd1yoBy7SIKc9oibkgx+zBaKXbOcLOJrWX+fHySgreeJCQnHMMu51A4fBeU0z
+	7aNGIwIacUzj3k3NWxw+e61c1KNveVQ=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-605-h87zie06N12oLF-xyCVALQ-1; Fri, 13 Jun 2025 04:36:28 -0400
-X-MC-Unique: h87zie06N12oLF-xyCVALQ-1
-X-Mimecast-MFC-AGG-ID: h87zie06N12oLF-xyCVALQ_1749803787
-Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3a4f858bc5eso1308329f8f.0
-        for <alex.bennee@linaro.org>; Fri, 13 Jun 2025 01:36:28 -0700 (PDT)
+ us-mta-372-h0ZGwBWjPZK4UYmdwsVIKg-1; Fri, 13 Jun 2025 06:18:12 -0400
+X-MC-Unique: h0ZGwBWjPZK4UYmdwsVIKg-1
+X-Mimecast-MFC-AGG-ID: h0ZGwBWjPZK4UYmdwsVIKg_1749809891
+Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-3a50816ccc6so1012472f8f.1
+        for <alex.bennee@linaro.org>; Fri, 13 Jun 2025 03:18:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749803787; x=1750408587;
+        d=1e100.net; s=20230601; t=1749809891; x=1750414691;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=/I6+d9Yd3eLTkCHtR7fFtt05vaPNjoHu7+WkpC52NnU=;
-        b=nZJEZUWdllIkz8dVWYhuSWXpXpaRFf6YE7kciaAu9ErM9cZ9NXq9DhW2B5ObZYOEg4
-         X/uwiiVcdobXLsIKmQKAMP5cSXd/+H8Ntb8zVozFBzbOWBC+hXql3UNj+kcVUoQ1ofjJ
-         Q9cFYNRo5BdHi9TDj3lKP1SoL9WNMs9T1nu3C6QYAr/M25Itrodgk2oWk/oBPbmY09Ar
-         DlKa51vVGS8l7cqKv5pbzjYwCWfbfcBXdwFgBT8G8alK9pLKhS2ebM64QAbYAnbqqcSN
-         HNAf6w748RASou0T4hN6DfhE6gTO9MxJSAkCfCfvZKjl41dF2UkLZA8qh7Sx5TSG46N5
-         licA==
-X-Forwarded-Encrypted: i=1; AJvYcCWmSlnAkcRs0CfgaTkj3nDZL8x/Fzlzv91bSDexllOWW7AG4PwTgXpNlU617MABo4Toisg9rbhm08EiVQ==@linaro.org
-X-Gm-Message-State: AOJu0YyewCdsJ9QcH9C+qKEPXZqb8FeGawfujPPij2izxNikb+uwLJl+
-	Uu3hURlKS7nmkCkvR6Fsj1orbRhxQwEqA8liuM9Tlikjp2v7aqxTKL7So/yNE52sNcBqiqsCw8W
-	VcXCOooKmk/KduHyn4Elc/gMF1fA6BoDVC4QZuwOYxlhMVOvlvEiqV7RqaA==
-X-Gm-Gg: ASbGnctY1230gUHXUovFQR0nonwRZwY/d60m86kiuKwydiu0z3DAVrzeJQ04YfX/4BQ
-	PCSclEqNVmhCdfmLLLvSx63yWBBQB9joDFnk7g41n+JsTJQ5zA1bla4jJw14e3jbeU+8alhfSep
-	zYj25ONC0HmWKK2stZwoaKuKY0wo/dKNq2eaDSklFbD/4Ql1XgXGOuo7Lrr1u/HTVNWZS05DgCR
-	BMlf4+360Bm4h/d1PZhFkqXmOziGuwiXRgMR4U8kWC+fGDsqo3qIAXIvq1EoAG4JaFsWHhVsqtQ
-	CPGy4t436e9ip9PgnKMhOILmUis5HBI/8ZL7I7L5ALtlvDVxfI5DbSzGvmb+tQ==
-X-Received: by 2002:a05:6000:1a88:b0:3a4:ec32:e4f3 with SMTP id ffacd0b85a97d-3a5686bca97mr2034707f8f.17.1749803786938;
-        Fri, 13 Jun 2025 01:36:26 -0700 (PDT)
-X-Received: by 2002:a05:6000:1a88:b0:3a4:ec32:e4f3 with SMTP id ffacd0b85a97d-3a5686bca97mr2034642f8f.17.1749803786353;
-        Fri, 13 Jun 2025 01:36:26 -0700 (PDT)
+        bh=9Gppa7BAPiTJbTtafNpUQg+an3/WD3nhPG5Bw17Zkcg=;
+        b=tiRMZ+abHsKpQJg6oPF+O8fhfrMDVZ7fPr20YAdn1sbezXXSmWESZYw3q0XXeHqTHK
+         bLcF3LlmZUKyki/Tial6NnxCOnfwpBp7rEUDSFNg0CrHy1LRu15r+if2A1YmnG5ELAey
+         x6dThgbVo/K6n6e8jV1YE6IPALjGwlGh+gHzQzx45nR0r93CwP8qI5ER+dBAAdcfQ+F7
+         xP+wOtu5WzkkOqQd5Tg+vJA9JIT55wbDaijyKAlUCs6w6GL8nT7DNV+5MJe2puEUgpXB
+         ORd/ssuy15VyxqJqOBS+mEz9Z/evuI7uC8v0qj4JCdR/Tz1Ro3P5iiy9X7ZvlgXZ/lCk
+         RgTw==
+X-Forwarded-Encrypted: i=1; AJvYcCWHQpErZMqC6f9bB4wDDLLsgRsKWmX7m3L745TiSlKjUtQ99UMEV83e2UkdKQIwHdIubR0WgzY9NuiotQ==@linaro.org
+X-Gm-Message-State: AOJu0YzqFQur31eXzdAKO4Nv1Bit9DLx/l61IPhBmDljclZ+R6dscr0T
+	Ll/QBzYqGtrJmqeNSc+0y8Z1ol+hIut5R6XJ7jCaYYhiJ2Pu61JKxzqR7jFJznuE1pPeFEV7u3S
+	LwaCa+PGRCO2AgDJ2x2mYW8bR8bs+uY6BndiVwf3UCdqwleY/UC7NNSr2wQ==
+X-Gm-Gg: ASbGncs1gmi2FQfF2b4MJdZuNCkTMJR3JRSDkqMqGi0SFeEFr2ud/L5gzx0GKw4ROVl
+	eY6gtRp6u5FYYrK55GoqfgCnpcRD1n+cUu91ipwa56DaJJgJfIywrRFS0JFzDTcj6BTDEZ1Ps39
+	EZf+3gbnyZZO8sRhoEXg7zrCvSON9kiywnQM6mlf6KLOxb9VILrka3KB64sa0UZnXW0n+/ztqU7
+	9rCmRhUvRbOkSAASno9Fl5y1PoheSbL5ZWmYmpSFiqaXNN9purhsu01jIbvBQdDHN/RTqxz2Uh1
+	QPIe7bDDNGAkQkGEEL578tvis0kvd+QbVxHi/Wb2tMp0VPOw3/+0OigTOrvaCw==
+X-Received: by 2002:a05:6000:240d:b0:3a4:f7df:baf5 with SMTP id ffacd0b85a97d-3a56850045amr2490682f8f.0.1749809890601;
+        Fri, 13 Jun 2025 03:18:10 -0700 (PDT)
+X-Received: by 2002:a05:6000:240d:b0:3a4:f7df:baf5 with SMTP id ffacd0b85a97d-3a56850045amr2490620f8f.0.1749809889999;
+        Fri, 13 Jun 2025 03:18:09 -0700 (PDT)
 Return-Path: <thuth@redhat.com>
 Received: from [192.168.0.4] (ltea-047-064-114-027.pools.arcor-ip.net. [47.64.114.27])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a568a72cd3sm1675721f8f.32.2025.06.13.01.36.22
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a568b089d8sm1923446f8f.57.2025.06.13.03.18.05
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Jun 2025 01:36:25 -0700 (PDT)
-Message-ID: <7e66e758-da47-47eb-9114-22f07e1ffdc9@redhat.com>
-Date: Fri, 13 Jun 2025 10:36:21 +0200
+        Fri, 13 Jun 2025 03:18:09 -0700 (PDT)
+Message-ID: <3797652b-86a5-4abf-becb-de62dfebccd4@redhat.com>
+Date: Fri, 13 Jun 2025 12:18:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 01/12] python: convert packages to
- PEP517/pyproject.toml
+Subject: Re: [PATCH v2 02/12] python: update pylint ignores
 To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org
 Cc: Joel Stanley <joel@jms.id.au>, Yi Liu <yi.l.liu@intel.com>,
  =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -104,22 +103,20 @@ Cc: Joel Stanley <joel@jms.id.au>, Yi Liu <yi.l.liu@intel.com>,
  Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  Ed Maste <emaste@freebsd.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Warner Losh <imp@bsdimp.com>, Tyrone Ting <kfting@nuvoton.com>,
- Eric Blake <eblake@redhat.com>, Troy Lee <leetroy@gmail.com>,
+ Warner Losh <imp@bsdimp.com>, Kevin Wolf <kwolf@redhat.com>,
+ Tyrone Ting <kfting@nuvoton.com>, Eric Blake <eblake@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Troy Lee <leetroy@gmail.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
  Michael Roth <michael.roth@amd.com>, Laurent Vivier <laurent@vivier.eu>,
  Ani Sinha <anisinha@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
  Eric Farman <farman@linux.ibm.com>, Steven Lee <steven_lee@aspeedtech.com>,
  Brian Cain <brian.cain@oss.qualcomm.com>, Li-Wen Hsu <lwhsu@freebsd.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- qemu-block@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, qemu-block@nongnu.org,
+ Bernhard Beschow <shentey@gmail.com>,
  =?UTF-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
  Maksim Davydov <davydov-max@yandex-team.ru>,
  Niek Linnenbank <nieklinnenbank@gmail.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Paul Durrant <paul@xen.org>,
  Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  Jagannathan Raman <jag.raman@oracle.com>,
  Igor Mitsyanko <i.mitsyanko@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
@@ -137,20 +134,21 @@ Cc: Joel Stanley <joel@jms.id.au>, Yi Liu <yi.l.liu@intel.com>,
  Antony Pavlov <antonynpavlov@gmail.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Hanna Reitz <hreitz@redhat.com>,
  Ilya Leoshkevich <iii@linux.ibm.com>, Marcelo Tosatti <mtosatti@redhat.com>,
- Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
  Qiuhao Li <Qiuhao.Li@outlook.com>, Hyman Huang <yong.huang@smartx.com>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-rust@nongnu.org, Bandan Das <bsd@redhat.com>,
+ Bandan Das <bsd@redhat.com>,
  Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  kvm@vger.kernel.org, Fam Zheng <fam@euphon.net>, Jia Liu <proljc@gmail.com>,
  =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, Kyle Evans <kevans@freebsd.org>,
- Alexandre Iooss <erdnaxe@crans.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Kyle Evans <kevans@freebsd.org>,
+ Song Gao <gaosong@loongson.cn>, Alexandre Iooss <erdnaxe@crans.org>,
+ Aurelien Jarno <aurelien@aurel32.net>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Peter Xu <peterx@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
  Elena Ufimtseva <elena.ufimtseva@oracle.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  =?UTF-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?= <fbarrat@linux.ibm.com>,
@@ -159,10 +157,10 @@ Cc: Joel Stanley <joel@jms.id.au>, Yi Liu <yi.l.liu@intel.com>,
  <david@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
  David Woodhouse <dwmw2@infradead.org>, Eduardo Habkost
  <eduardo@habkost.net>, Ahmed Karaman <ahmedkhaledkaraman@gmail.com>,
- Huacai Chen <chenhuacai@kernel.org>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>
+ Huacai Chen <chenhuacai@kernel.org>, Mahmoud Mandour
+ <ma.mandourr@gmail.com>, Harsh Prateek Bora <harshpb@linux.ibm.com>
 References: <20250612205451.1177751-1-jsnow@redhat.com>
- <20250612205451.1177751-2-jsnow@redhat.com>
+ <20250612205451.1177751-3-jsnow@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -206,36 +204,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250612205451.1177751-2-jsnow@redhat.com>
+In-Reply-To: <20250612205451.1177751-3-jsnow@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: eANrPiv3xyVavDS7R36Wziigh2wvRWzjHGv9Jxzfhro_1749803787
+X-Mimecast-MFC-PROC-ID: qY0qFm5ZCS3QZILCGDcN4of3TjJxckylv6KJfHCIj28_1749809891
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: Kq9CaM/m+1ht
+X-TUID: sLum293LMPnz
 
 On 12/06/2025 22.54, John Snow wrote:
-> Newer versions of setuptools increasingly expect that packages are
-> defined using the pyproject.toml/PEP517 packaging layout format. With
-> 3.9 as our minimum, I believe it's finally appropriate to make the shift
-> away from the legacy packaging format.
-> 
-> Update documentation and dependencies that change as a result of the
-> different build/packaging/installation pathways.
-> 
-> This change has the effect of fixing "make check-dev", which has been
-> broken on newer versions of Fedora for a while, now.
+> The next patch will synchronize the qemu.qmp library with the external,
+> standalone version. That synchronization will require an extra ignore
+> for pylint, so do that now.
 > 
 > Signed-off-by: John Snow <jsnow@redhat.com>
 > ---
->   python/README.rst        | 33 ++++++++++++++++-----------------
->   python/Makefile          | 18 +++++++++---------
->   python/pyproject.toml    | 10 ++++++++++
->   python/setup.py          | 40 ----------------------------------------
->   python/tests/minreqs.txt |  2 +-
->   5 files changed, 36 insertions(+), 67 deletions(-)
->   create mode 100644 python/pyproject.toml
->   delete mode 100755 python/setup.py
+>   python/setup.cfg | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>

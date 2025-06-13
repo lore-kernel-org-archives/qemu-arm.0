@@ -1,330 +1,241 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp31501njc;
-        Thu, 12 Jun 2025 22:07:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWxa9OIeEaBrPHSFyXpTVZ05JyuqsOEzfwyf7VolRKwJHo+lCZj5fanG7YvXV2MhBk2wU/y+oTfQrpnFw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFVFdJ16T2fW5zLRnJsoHdw9PVBQQAGyJgyhTUcFN6UshNs/CTBa3ClcIMC249HZcGv7Vcn
-X-Received: by 2002:a05:6000:2586:b0:3a3:648e:1b74 with SMTP id ffacd0b85a97d-3a5686e41bbmr1119351f8f.6.1749791273556;
-        Thu, 12 Jun 2025 22:07:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749791273; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp107914njc;
+        Fri, 13 Jun 2025 01:36:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXJl476S1y6dgGpSiden+mqLyU2fNNLoPZUseKf0cWzYoWe+ydpkTiEvudli/NEFvwSv4Vc8Mv13lHK0Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IEe80AfWB0v7s7s6TtRLbw1wbuUuelYRE/fzOyGrWQnGiu3/zlGbf0Lk6n4uy9a+HPq5qA1
+X-Received: by 2002:a05:6214:27cc:b0:6fa:fe02:8219 with SMTP id 6a1803df08f44-6fb3e57c9ffmr32157386d6.7.1749803792077;
+        Fri, 13 Jun 2025 01:36:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749803792; cv=none;
         d=google.com; s=arc-20240605;
-        b=EnoVWcr6I65fy5tmyeoL1SAJ/6OcJp7KgD2Tiph0qaxoV4fqR0Dm8HR5+B8OiL1vcl
-         uz1sWV9sQYUgw2pmbKhUBpZfYZ18JUzlj7LZi5cyibD+ehrBsFgrwleH7scdOaFyDe1K
-         2j9j4vKcBK5qy1TMCe4NXbGkI8wGzdcPtlMPPaRhYAwb13QxRKAxvKb7t0VoENeui6Cd
-         lZrXSW/4jfrnWGAsXkawTcrZlTZiiTToZBNaKaT2GWfnoS8Fb849EU0CsSdpe6aiFaOa
-         +oFHaYg4DggVnwOOy0pmkgWP7SWtDIrci8n4+de9dBgnMcN6V8UKSRit4o9ishlbZUNd
-         JMOQ==
+        b=WBPiUuHIqz4yjPGsPjre7715GOh/S5wJE1vv6HeyVBp4K7VwNs8ZTI/hh1aTWvnPiC
+         Rpgj07ggeev+hUCAZWszXpGjtvskebWrk0aVYSc23WQY7zDXgFGVMrp4wlASIU/trfN+
+         gc9J73szr+XPIjYFlAsw7aIWJLoYvrm6+v9Kbtb/QLB2IG/oaurXJ8XiVBV5H6zWZZzA
+         skQ1zPA0dxR292FCA8Xq4rxipGLSNA9b+z5EwTPtuLx8RA8Gs4VzXixy8XZGBhg9PtQe
+         oFQr+mBUNDsijYptmlLBpudd7Jpew70EQ1jT1JnpHFvkozo4pA7QxbqQt4e/H6Et5aQL
+         0bHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:dkim-signature:date;
-        bh=GkvK5CwdgTfzVehhlYR/22C54raijMQHPJxq6LFqbdk=;
-        fh=DlJwmdym3I0/Q4B6C1e6VCySG9F6VCg86l6y5nvKLDA=;
-        b=dJkj1sfpllgcEWOE3rg0yjAVQqULmJ5kfGGgg3rVBJFHDZKfFK8iMnfj++A+fmK/ns
-         llYprsAULekNTrx8RryLfZ6Y2EDVfejw80cbrx+RjqOcHgOXtwP4+IGo6p9fKO5Isq4J
-         Jr7AID9Nle+ZjOf9oZd0FWNH0lmh+HzDWAlB5gfGdYFp+VccJW/2WNnCT+59ScKA00pV
-         r0jlQOGkOjHqrt7rFd54fKrNw/7SUFKihi9ber+ibous6fzHkuTs4E99QHWdggZOIR0l
-         2yx00BPR6orBYNKxjKHy83lAr6jbaXIKl8tjdlh7hW2XHOs0JFgVNd51Ivg+hWGpYadL
-         CMaQ==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=/I6+d9Yd3eLTkCHtR7fFtt05vaPNjoHu7+WkpC52NnU=;
+        fh=sNJLqsEOa2NoJjWo++TWwJEsM2GpzElEP0K0btXHaQY=;
+        b=k6xARHcAiD7cB+eT5fq9Mn1vdBkKkTOldvvEEfNY2UYsus8MgkwklJNLUntd+WHand
+         27dS32BFG/ta2hmLgXlU00Ysx+uYac66/eGn0LLZSKLFSAHn2D7/NSx/0vgAM+GqL4kV
+         vyjxiIzH4Yw5zcz8mPtxzmWV5BcMv7BGyRUWVOcX0VswOgwrC/M1z4D/Rh/9Ig8I8Nd6
+         39N2aRSYwwEkuNIcOUDUNS5Lkwb1ubdVydvZkGxaLfXyKl6SScWdO8WfSpqEQh4Y6Mgr
+         40l5ToBaI/EwCnBAUgi6CG73ueDWXmeaL1ZmBjnX2gy9oV7z4J6vsj2nf7Pp+1ALqUeh
+         KHsA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.dev header.s=key1 header.b=owWRlRIk;
-       spf=pass (google.com: domain of itaru.kitayama@linux.dev designates 95.215.58.171 as permitted sender) smtp.mailfrom=itaru.kitayama@linux.dev;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
-Return-Path: <itaru.kitayama@linux.dev>
-Received: from out-171.mta1.migadu.com (out-171.mta1.migadu.com. [95.215.58.171])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a568a60605si771708f8f.196.2025.06.12.22.07.53
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f866kL+d;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fb35c1aff1si35106246d6.395.2025.06.13.01.36.31
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Jun 2025 22:07:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of itaru.kitayama@linux.dev designates 95.215.58.171 as permitted sender) client-ip=95.215.58.171;
+        Fri, 13 Jun 2025 01:36:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.dev header.s=key1 header.b=owWRlRIk;
-       spf=pass (google.com: domain of itaru.kitayama@linux.dev designates 95.215.58.171 as permitted sender) smtp.mailfrom=itaru.kitayama@linux.dev;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
-Date: Fri, 13 Jun 2025 14:07:32 +0900
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1749791263;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f866kL+d;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1749803791;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=GkvK5CwdgTfzVehhlYR/22C54raijMQHPJxq6LFqbdk=;
-	b=owWRlRIkBTst+zGWjbylA7nMnpcr5DxGdKnE/gq+3A2S0wPMxh7SZEB40s2AOFKDCKD3Fk
-	4gEtN4oOPkXfSrNGA/tHbpKutatyo7qk4IcAKU3S70H2/ruK/NJ6M4D4yzUBZWHt38Iztp
-	XMpzVwtdqiaKEcK7SiBhdCJmNksm9kQ=
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Itaru Kitayama <itaru.kitayama@linux.dev>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: qemu-devel@nongnu.org, Fan Ni <fan.ni@samsung.com>,
-	Peter Maydell <peter.maydell@linaro.org>, mst@redhat.com,
-	Zhijian Li <lizhijian@fujitsu.com>, linuxarm@huawei.com,
-	linux-cxl@vger.kernel.org, qemu-arm@nongnu.org,
-	Yuquan Wang <wangyuquan1236@phytium.com.cn>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	Alireza Sanaee <alireza.sanaee@huawei.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH v15 0/4] arm/virt: CXL support via pxb_cxl
-Message-ID: <aEuyFHlk7t7wiLvU@vm4>
-References: <20250612134338.1871023-1-Jonathan.Cameron@huawei.com>
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=/I6+d9Yd3eLTkCHtR7fFtt05vaPNjoHu7+WkpC52NnU=;
+	b=f866kL+d89iVL4Z8N9tTK9I2QrsOcJhc7nkr9IsADw5vD3R8gMFlZpLOr7xPM2K0Lqt+1S
+	Qr98/GzgB9wYyEhYUC/LHtQhIgnKMXtY4bKptR88Xe/3DqTFCvtm4sowYZihICVOOrm7V7
+	ydCWVv/ksJOcFsR90tFJ0cC6aCRyy70=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-605-h87zie06N12oLF-xyCVALQ-1; Fri, 13 Jun 2025 04:36:28 -0400
+X-MC-Unique: h87zie06N12oLF-xyCVALQ-1
+X-Mimecast-MFC-AGG-ID: h87zie06N12oLF-xyCVALQ_1749803787
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3a4f858bc5eso1308329f8f.0
+        for <alex.bennee@linaro.org>; Fri, 13 Jun 2025 01:36:28 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749803787; x=1750408587;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=/I6+d9Yd3eLTkCHtR7fFtt05vaPNjoHu7+WkpC52NnU=;
+        b=nZJEZUWdllIkz8dVWYhuSWXpXpaRFf6YE7kciaAu9ErM9cZ9NXq9DhW2B5ObZYOEg4
+         X/uwiiVcdobXLsIKmQKAMP5cSXd/+H8Ntb8zVozFBzbOWBC+hXql3UNj+kcVUoQ1ofjJ
+         Q9cFYNRo5BdHi9TDj3lKP1SoL9WNMs9T1nu3C6QYAr/M25Itrodgk2oWk/oBPbmY09Ar
+         DlKa51vVGS8l7cqKv5pbzjYwCWfbfcBXdwFgBT8G8alK9pLKhS2ebM64QAbYAnbqqcSN
+         HNAf6w748RASou0T4hN6DfhE6gTO9MxJSAkCfCfvZKjl41dF2UkLZA8qh7Sx5TSG46N5
+         licA==
+X-Forwarded-Encrypted: i=1; AJvYcCWmSlnAkcRs0CfgaTkj3nDZL8x/Fzlzv91bSDexllOWW7AG4PwTgXpNlU617MABo4Toisg9rbhm08EiVQ==@linaro.org
+X-Gm-Message-State: AOJu0YyewCdsJ9QcH9C+qKEPXZqb8FeGawfujPPij2izxNikb+uwLJl+
+	Uu3hURlKS7nmkCkvR6Fsj1orbRhxQwEqA8liuM9Tlikjp2v7aqxTKL7So/yNE52sNcBqiqsCw8W
+	VcXCOooKmk/KduHyn4Elc/gMF1fA6BoDVC4QZuwOYxlhMVOvlvEiqV7RqaA==
+X-Gm-Gg: ASbGnctY1230gUHXUovFQR0nonwRZwY/d60m86kiuKwydiu0z3DAVrzeJQ04YfX/4BQ
+	PCSclEqNVmhCdfmLLLvSx63yWBBQB9joDFnk7g41n+JsTJQ5zA1bla4jJw14e3jbeU+8alhfSep
+	zYj25ONC0HmWKK2stZwoaKuKY0wo/dKNq2eaDSklFbD/4Ql1XgXGOuo7Lrr1u/HTVNWZS05DgCR
+	BMlf4+360Bm4h/d1PZhFkqXmOziGuwiXRgMR4U8kWC+fGDsqo3qIAXIvq1EoAG4JaFsWHhVsqtQ
+	CPGy4t436e9ip9PgnKMhOILmUis5HBI/8ZL7I7L5ALtlvDVxfI5DbSzGvmb+tQ==
+X-Received: by 2002:a05:6000:1a88:b0:3a4:ec32:e4f3 with SMTP id ffacd0b85a97d-3a5686bca97mr2034707f8f.17.1749803786938;
+        Fri, 13 Jun 2025 01:36:26 -0700 (PDT)
+X-Received: by 2002:a05:6000:1a88:b0:3a4:ec32:e4f3 with SMTP id ffacd0b85a97d-3a5686bca97mr2034642f8f.17.1749803786353;
+        Fri, 13 Jun 2025 01:36:26 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.4] (ltea-047-064-114-027.pools.arcor-ip.net. [47.64.114.27])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a568a72cd3sm1675721f8f.32.2025.06.13.01.36.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 13 Jun 2025 01:36:25 -0700 (PDT)
+Message-ID: <7e66e758-da47-47eb-9114-22f07e1ffdc9@redhat.com>
+Date: Fri, 13 Jun 2025 10:36:21 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250612134338.1871023-1-Jonathan.Cameron@huawei.com>
-X-Migadu-Flow: FLOW_OUT
-X-TUID: CPr2HncasmAg
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 01/12] python: convert packages to
+ PEP517/pyproject.toml
+To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org
+Cc: Joel Stanley <joel@jms.id.au>, Yi Liu <yi.l.liu@intel.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Helge Deller <deller@gmx.de>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Fabiano Rosas <farosas@suse.de>, Alexander Bulekov <alxndr@bu.edu>,
+ Darren Kenny <darren.kenny@oracle.com>,
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Ed Maste <emaste@freebsd.org>, Gerd Hoffmann <kraxel@redhat.com>,
+ Warner Losh <imp@bsdimp.com>, Tyrone Ting <kfting@nuvoton.com>,
+ Eric Blake <eblake@redhat.com>, Troy Lee <leetroy@gmail.com>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Michael Roth <michael.roth@amd.com>, Laurent Vivier <laurent@vivier.eu>,
+ Ani Sinha <anisinha@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
+ Eric Farman <farman@linux.ibm.com>, Steven Lee <steven_lee@aspeedtech.com>,
+ Brian Cain <brian.cain@oss.qualcomm.com>, Li-Wen Hsu <lwhsu@freebsd.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ qemu-block@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
+ =?UTF-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
+ Maksim Davydov <davydov-max@yandex-team.ru>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Paul Durrant <paul@xen.org>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Jagannathan Raman <jag.raman@oracle.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Anton Johansson <anjo@rev.ng>,
+ Peter Maydell <peter.maydell@linaro.org>, Eric Auger
+ <eric.auger@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
+ qemu-arm@nongnu.org, Hao Wu <wuhaotsh@google.com>,
+ Mads Ynddal <mads@ynddal.dk>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>, qemu-riscv@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Nicholas Piggin <npiggin@gmail.com>, Michael Rolnik <mrolnik@gmail.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Alessandro Di Federico <ale@rev.ng>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Hanna Reitz <hreitz@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Marcelo Tosatti <mtosatti@redhat.com>,
+ Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Qiuhao Li <Qiuhao.Li@outlook.com>, Hyman Huang <yong.huang@smartx.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-rust@nongnu.org, Bandan Das <bsd@redhat.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ kvm@vger.kernel.org, Fam Zheng <fam@euphon.net>, Jia Liu <proljc@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Kyle Evans <kevans@freebsd.org>,
+ Alexandre Iooss <erdnaxe@crans.org>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Peter Xu <peterx@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?= <fbarrat@linux.ibm.com>,
+ qemu-ppc@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, David Hildenbrand
+ <david@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
+ David Woodhouse <dwmw2@infradead.org>, Eduardo Habkost
+ <eduardo@habkost.net>, Ahmed Karaman <ahmedkhaledkaraman@gmail.com>,
+ Huacai Chen <chenhuacai@kernel.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>
+References: <20250612205451.1177751-1-jsnow@redhat.com>
+ <20250612205451.1177751-2-jsnow@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20250612205451.1177751-2-jsnow@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: eANrPiv3xyVavDS7R36Wziigh2wvRWzjHGv9Jxzfhro_1749803787
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: Kq9CaM/m+1ht
 
-On Thu, Jun 12, 2025 at 02:43:34PM +0100, Jonathan Cameron wrote:
-> v15:
->   - Split the address map calculations and mmio setup into separate
->     functions in patch 2, allowing v14 patch 3 to be dropped as not
->     x86 and arm make the same calls.  Note I felt this was a sufficient
->     change to trigger dropping tags. (Zhijian Li)
->   - A few other minor tweaks.
->   - TLB issue mentioned in v14 now fixed upstream so dropped reference
->     in this cover letter.
+On 12/06/2025 22.54, John Snow wrote:
+> Newer versions of setuptools increasingly expect that packages are
+> defined using the pyproject.toml/PEP517 packaging layout format. With
+> 3.9 as our minimum, I believe it's finally appropriate to make the shift
+> away from the legacy packaging format.
 > 
-> Thanks to Itaru Kitayama and Zhijian Li for testing + reviews.
+> Update documentation and dependencies that change as a result of the
+> different build/packaging/installation pathways.
 > 
-> Updated cover letter
+> This change has the effect of fixing "make check-dev", which has been
+> broken on newer versions of Fedora for a while, now.
 > 
-> Back in 2022, this series stalled on the absence of a solution to device
-> tree support for PCI Expander Bridges (PXB) and we ended up only having
-> x86 support upstream. I've been carrying the arm64 support out of tree
-> since then, with occasional nasty surprises (e.g. UNIMP + DT issue seen
-> a few weeks ago) and a fair number of fiddly rebases.
-> gitlab.com/jic23/qemu cxl-<latest date>.  Will update shortly with this
-> series.
-> 
-> A recent discussion with Peter Maydell indicated that there are various
-> other ACPI only features now, so in general he might be more relaxed
-> about DT support being necessary. The upcoming vSMMUv3 support would
-> run into this problem as well.
-> 
-> I presented the background to the PXB issue at Linaro connect 2022. In
-> short the issue is that PXBs steal MMIO space from the main PCI root
-> bridge. The challenge is knowing how much to steal.
-> 
-> On ACPI platforms, we can rely on EDK2 to perform an enumeration and
-> configuration of the PCI topology and QEMU can update the ACPI tables
-> after EDK2 has done this when it can simply read the space used by the
-> root ports. On device tree, there is no entity to figure out that
-> enumeration so we don't know how to size the stolen region.
-> 
-> Three approaches were discussed:
-> 1) Enumerating in QEMU. Horribly complex and the last thing we want is a
->    3rd enumeration implementation that ends up out of sync with EDK2 and
->    the kernel (there are frequent issues because of how those existing
->    implementations differ.
-> 2) Figure out how to enumerate in kernel. I never put a huge amount of work
->    into this, but it seemed likely to involve a nasty dance with similar
->    very specific code to that EDK2 is carrying and would very challenging
->    to upstream (given the lack of clarity on real use cases for PXBs and
->    DT).
-> 3) Hack it based on the control we have which is bus numbers.
->    No one liked this but it worked :)
-> 
-> The other little wrinkle would be the need to define full bindings for CXL
-> on DT + implement a fairly complex kernel stack as equivalent in ACPI
-> involves a static table, CEDT, new runtime queries via _DSM and a description
-> of various components. Doable, but so far there is no interest on physical
-> platforms. Worth noting that for now, the QEMU CXL emulation is all about
-> testing and developing the OS stack, not about virtualization (performance
-> is terrible except in some very contrived situations!)
-> 
-> There is only a very simple test in here, because my intent is not to
-> duplicate what we have on x86, but just to do a smoke test that everything
-> is hooked up.  In general we need much more comprehensive end to end CXL
-> tests but that requires a reaonsably stable guest software stack. A few
-> people have expressed interest in working on that, but we aren't there yet.
-> 
-> Note that this series has a very different use case to that in the proposed
-> SBSA-ref support:
-> https://lore.kernel.org/qemu-devel/20250117034343.26356-1-wangyuquan1236@phytium.com.cn/
-> 
-> SBSA-ref is a good choice if you want a relatively simple mostly fixed
-> configuration.  That works well with the limited host system
-> discoverability etc as EDK2 can be build against a known configuration.
-> 
-> My interest with this support in arm/virt is support host software stack
-> development (we have a wide range of contributors, most of whom are working
-> on emulation + the kernel support). I care about the weird corners. As such
-> I need to be able to bring up variable numbers of host bridges, multiple CXL
-> Fixed Memory Windows with varying characteristics (interleave etc), complex
-> NUMA topologies with wierd performance characteristics etc. We can do that
-> on x86 upstream today, or my gitlab tree. Note that we need arm support
-> for some arch specific features in the near future (cache flushing).
-> Doing kernel development with this need for flexibility on SBSA-ref is not
-> currently practical. SBSA-ref CXL support is an excellent thing, just
-> not much use to me for this work.
-> 
-> Also, we are kicking off some work on DCD virtualization, particularly to
-> support inter-host shared memory being presented up into a VM. That
-> will need upstream support on arm64 as it is built on top of the existing
-> CXL emulation to avoid the need for a separate guest software stack.
-> 
-> Note this is TCG only - it is possible to support limited use with KVM but
-> that needs additional patches not yet ready for upstream.  The challenge
-> is interleave - and the solution is don't interleave if you want to run
-> with KVM.
+> Signed-off-by: John Snow <jsnow@redhat.com>
+> ---
+>   python/README.rst        | 33 ++++++++++++++++-----------------
+>   python/Makefile          | 18 +++++++++---------
+>   python/pyproject.toml    | 10 ++++++++++
+>   python/setup.py          | 40 ----------------------------------------
+>   python/tests/minreqs.txt |  2 +-
+>   5 files changed, 36 insertions(+), 67 deletions(-)
+>   create mode 100644 python/pyproject.toml
+>   delete mode 100755 python/setup.py
 
-One of the ndctl:cxl tests fails (other tests ran ok):
-
-# meson test cxl-region-sysfs.sh
-ninja: Entering directory `/root/ndctl/build'
-[1/55] Generating version.h with a custom command
-[  706.564783][ T2080] calling  cxl_port_init+0x0/0xfe0 [cxl_port] @ 2080
-[  706.566861][ T2080] initcall cxl_port_init+0x0/0xfe0 [cxl_port] returned 0 after 1735 usecs
-[  706.586457][ T2080] calling  cxl_acpi_init+0x0/0xfe0 [cxl_acpi] @ 2080
-[  706.625690][ T2080] probe of port1 returned 0 after 25381 usecs
-[  706.626634][ T2080]  pci0000:bf: host supports CXL
-[  706.653573][ T2080] probe of port2 returned 0 after 25631 usecs
-[  706.655164][ T2080]  pci0000:35: host supports CXL
-[  706.662409][ T2080] probe of ACPI0017:00 returned 0 after 74464 usecs
-[  706.663150][ T2080] initcall cxl_acpi_init+0x0/0xfe0 [cxl_acpi] returned 0 after 76306 usecs
-[  706.690482][ T2080] calling  cxl_pmem_init+0x0/0xfd0 [cxl_pmem] @ 2080
-[  706.695324][ T2080] probe of ndbus0 returned 0 after 1496 usecs
-[  706.699217][ T2080] probe of nvdimm-bridge0 returned 0 after 6705 usecs
-[  706.702372][ T2080] initcall cxl_pmem_init+0x0/0xfd0 [cxl_pmem] returned 0 after 11576 usecs
-[  706.717668][ T2080] calling  cxl_mem_driver_init+0x0/0xfe0 [cxl_mem] @ 2080
-[  706.758561][ T2080] probe of port3 returned 0 after 34188 usecs
-[  706.767080][ T2080] cxl_nvdimm pmem11: GPF: could not set dirty shutdown state
-[  706.779392][ T2080] probe of nmem0 returned 0 after 1083 usecs
-[  706.782181][ T2080] probe of pmem11 returned 0 after 15516 usecs
-[  706.826941][ T2080] probe of endpoint4 returned 0 after 42630 usecs
-[  706.827987][ T2080] probe of mem11 returned 0 after 108475 usecs
-[  706.878052][ T2080] probe of port5 returned 0 after 41354 usecs
-[  706.938260][ T2080] probe of endpoint6 returned 0 after 46831 usecs
-[  706.939223][ T2080] probe of mem12 returned 0 after 105104 usecs
-[  706.994611][ T2080] probe of endpoint7 returned 0 after 49337 usecs
-[  706.995790][ T2080] probe of mem13 returned 0 after 53632 usecs
-[  707.004334][ T2080] cxl_nvdimm pmem14: GPF: could not set dirty shutdown state
-[  707.017782][ T2080] probe of nmem1 returned 0 after 1115 usecs
-[  707.019324][ T2080] probe of pmem14 returned 0 after 14920 usecs
-[  707.072148][ T2080] probe of endpoint8 returned 0 after 50887 usecs
-[  707.073367][ T2080] probe of mem14 returned 0 after 71279 usecs
-[  707.079062][ T2080] initcall cxl_mem_driver_init+0x0/0xfe0 [cxl_mem] returned 0 after 361073 usecs
-[  707.111533][ T2080] calling  cxl_test_init+0x0/0xc88 [cxl_test] @ 2080
-[  708.001403][ T2080] platform cxl_host_bridge.0: Unsupported platform config, mixed Virtual Host and Restricted CXL Host hierarchy.
-[  708.002032][ T2080] platform cxl_host_bridge.1: Unsupported platform config, mixed Virtual Host and Restricted CXL Host hierarchy.
-[  708.010988][ T2080] platform cxl_host_bridge.2: Unsupported platform config, mixed Virtual Host and Restricted CXL Host hierarchy.
-[  708.011963][ T2080] platform cxl_host_bridge.3: Unsupported platform config, mixed Virtual Host and Restricted CXL Host hierarchy.
-[  708.034604][ T2080] platform cxl_host_bridge.0: Unsupported platform config, mixed Virtual Host and Restricted CXL Host hierarchy.
-[  708.056775][ T2080] probe of port10 returned 0 after 20555 usecs
-[  708.057814][ T2080] platform cxl_host_bridge.0: host supports CXL
-[  708.062226][ T2080] platform cxl_host_bridge.1: Unsupported platform config, mixed Virtual Host and Restricted CXL Host hierarchy.
-[  708.081857][ T2080] probe of port11 returned 0 after 18696 usecs
-[  708.085821][ T2080] platform cxl_host_bridge.1: host supports CXL
-[  708.086496][ T2080] platform cxl_host_bridge.2: Unsupported platform config, mixed Virtual Host and Restricted CXL Host hierarchy.
-[  708.538268][ T2080] probe of port12 returned 0 after 450064 usecs
-[  708.563248][ T2080] platform cxl_host_bridge.2: host supports CXL
-[  708.563875][ T2080] platform cxl_host_bridge.3: host supports CXL (restricted)
-[  708.803640][ T2080] probe of ndbus1 returned 0 after 87373 usecs
-[  708.817241][ T2080] probe of nvdimm-bridge1 returned 0 after 182992 usecs
-[  708.839172][ T2080] probe of cxl_acpi.0 returned 0 after 843615 usecs
-[  709.026867][  T503] cxl_mock_mem cxl_mem.0: CXL MCE unsupported
-[  709.240435][  T502] cxl_mock_mem cxl_mem.1: CXL MCE unsupported
-[  709.263055][  T499] cxl_mock_mem cxl_mem.2: CXL MCE unsupported
-[  709.317257][  T503] probe of port13 returned 0 after 57147 usecs
-[  709.442524][  T498] cxl_mock_mem cxl_mem.3: CXL MCE unsupported
-[  709.495789][  T499] probe of port15 returned 0 after 57022 usecs
-[  709.538513][ T1514] cxl_mock_mem cxl_mem.5: CXL MCE unsupported
-[  709.553021][  T503] probe of nmem3 returned 0 after 12329 usecs
-[  709.555876][  T503] probe of pmem0 returned 0 after 54954 usecs
-[  709.567823][  T499] probe of nmem2 returned 0 after 27577 usecs
-[  709.569359][  T499] probe of pmem2 returned 0 after 64505 usecs
-[  709.603845][  T497] cxl_mock_mem cxl_mem.4: CXL MCE unsupported
-[  709.626487][   T12] cxl_mock_mem cxl_mem.6: CXL MCE unsupported
-[  709.639194][  T502] probe of port14 returned 0 after 255539 usecs
-[  709.662671][  T503] probe of region2 returned 6 after 421 usecs
-[  709.664855][  T503] cxl_mock_mem cxl_mem.0: Extended linear cache calculation failed rc:-2
-[  709.694975][  T503] probe of endpoint16 returned 0 after 100427 usecs
-[  709.698678][  T503] probe of mem0 returned 0 after 516964 usecs
-[  709.752821][   T49] cxl_mock_mem cxl_mem.7: CXL MCE unsupported
-[  709.782050][  T499] probe of endpoint17 returned 0 after 102692 usecs
-[  709.814422][  T499] probe of mem2 returned 0 after 539843 usecs
-[  709.859496][  T497] probe of nmem4 returned 0 after 74368 usecs
-[  709.860064][  T497] probe of pmem5 returned 0 after 120134 usecs
-[  709.862431][  T499] probe of cxl_mem.2 returned 0 after 686512 usecs
-[  709.863290][  T503] probe of cxl_mem.0 returned 0 after 892734 usecs
-[  709.870924][   T30] cxl_mock_mem cxl_mem.9: CXL MCE unsupported
-[  709.876631][ T2080] initcall cxl_test_init+0x0/0xc88 [cxl_test] returned 0 after 2764528 usecs
-[  709.886776][  T498] probe of port18 returned 0 after 168122 usecs
-[  709.900934][  T500] cxl_mock_mem cxl_mem.8: CXL MCE unsupported
-[  709.946498][ T1514] probe of nmem5 returned 0 after 9462 usecs
-[  709.947381][ T1514] probe of pmem4 returned 0 after 14445 usecs
-[  709.970022][   T12] probe of nmem6 returned 0 after 32603 usecs
-[  709.978337][  T498] probe of nmem7 returned 0 after 35875 usecs
-[  709.986071][  T498] probe of pmem3 returned 0 after 46583 usecs
-[  710.010717][   T12] probe of pmem6 returned 0 after 75369 usecs
-[  710.014337][  T501] cxl_mock_mem cxl_rcd.10: CXL MCE unsupported
-[  710.040337][  T502] probe of nmem8 returned 0 after 29862 usecs
-[  710.059653][  T502] probe of pmem1 returned 0 after 88935 usecs
-[  710.079573][   T12] probe of endpoint23 returned 0 after 49198 usecs
-[  710.097280][   T30] probe of port21 returned 0 after 120461 usecs
-[  710.097393][   T49] probe of nmem9 returned 0 after 26437 usecs
-[  710.101820][   T49] probe of pmem7 returned 0 after 36944 usecs
-[  710.106202][   T12] probe of mem6 returned 0 after 452293 usecs
-[  710.130816][   T12] probe of cxl_mem.6 returned 0 after 669975 usecs
-[  710.133959][  T500] probe of nmem10 returned 0 after 12351 usecs
-[  710.170179][  T500] probe of pmem9 returned 0 after 50316 usecs
-[  710.183178][  T498] probe of endpoint22 returned 0 after 160579 usecs
-[  710.208790][  T498] probe of mem3 returned 0 after 760551 usecs
-[  710.212463][  T501] probe of endpoint24 returned 0 after 149792 usecs
-[  710.236975][  T497] probe of dax2.0 returned 0 after 118646 usecs
-[  710.240952][  T497] probe of dax_region2 returned 0 after 166940 usecs
-[  710.242545][  T498] probe of cxl_mem.3 returned 0 after 917362 usecs
-[  710.256278][   T30] probe of nmem11 returned 0 after 45572 usecs
-[  710.257079][   T30] probe of pmem8 returned 0 after 105691 usecs
-[  710.259332][  T501] probe of mem10 returned 0 after 218194 usecs
-[  710.265545][  T497] probe of region2 returned 0 after 225563 usecs
-[  710.269232][ T1514] probe of endpoint20 returned 0 after 320269 usecs
-[  710.282299][  T497] probe of endpoint19 returned 0 after 421116 usecs
-[  710.283234][  T497] probe of mem5 returned 0 after 642268 usecs
-[  710.304734][ T1514] probe of mem4 returned 0 after 762768 usecs
-[  710.322940][   T49] probe of endpoint26 returned 0 after 117975 usecs
-[  710.324643][   T49] probe of mem7 returned 0 after 558032 usecs
-[  710.336434][  T501] probe of cxl_rcd.10 returned 0 after 414904 usecs
-[  710.339624][  T497] probe of cxl_mem.4 returned 0 after 957535 usecs
-[  710.400496][ T1514] probe of cxl_mem.5 returned 0 after 996364 usecs
-[  710.450320][   T49] probe of cxl_mem.7 returned 0 after 842769 usecs
-[  710.648851][  T500] probe of endpoint25 returned 0 after 477479 usecs
-[  710.659334][  T500] probe of mem9 returned 0 after 690185 usecs
-[  710.706030][  T500] probe of cxl_mem.8 returned 0 after 917194 usecs
-[  711.162896][   T30] probe of endpoint28 returned 0 after 493899 usecs
-[  711.227336][   T30] probe of mem8 returned 0 after 1278462 usecs
-[  711.325568][  T502] probe of endpoint27 returned 0 after 929403 usecs
-[  711.356687][  T502] probe of mem1 returned 0 after 2101415 usecs
-[  711.531055][   T30] probe of cxl_mem.9 returned 0 after 1707787 usecs
-[  711.554073][  T502] probe of cxl_mem.1 returned 0 after 2425696 usecs
-[  724.421245][ T2077] probe of region5 returned 6 after 262 usecs
-1/1 ndctl:cxl / cxl-region-sysfs.sh        FAIL            18.22s   exit status 1
->>> TEST_PATH=/root/ndctl/build/test ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 LD_LIBRARY_PATH=/root/ndctl/build/daxctl/lib:/root/ndctl/build/cxl/lib:/root/ndctl/build/ndctl/lib DAXCTL=/root/ndctl/build/daxctl/daxctl DATA_PATH=/root/ndctl/test NDCTL=/root/ndctl/build/ndctl/ndctl MESON_TEST_ITERATION=1 UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 MALLOC_PERTURB_=123 /bin/bash /root/ndctl/test/cxl-region-sysfs.sh
-
-The kernel (the cxl_test kernel module) is built off of cxl/next which
-has Jonathan's fix to the cxl_test seen on arm64.
-Could the experts take a look at this issue?
-
-Thanks,
-Itaru.
-
-> 
-> Jonathan Cameron (4):
->   hw/cxl-host: Add an index field to CXLFixedMemoryWindow
->   hw/cxl: Make the CXL fixed memory windows devices.
->   hw/arm/virt: Basic CXL enablement on pci_expander_bridge instances
->     pxb-cxl
->   qtest/cxl: Add aarch64 virt test for CXL
-> 
->  include/hw/arm/virt.h     |   4 +
->  include/hw/cxl/cxl.h      |   5 +-
->  include/hw/cxl/cxl_host.h |   5 +-
->  hw/acpi/cxl.c             |  76 +++++++++--------
->  hw/arm/virt-acpi-build.c  |  34 ++++++++
->  hw/arm/virt.c             |  29 +++++++
->  hw/cxl/cxl-host-stubs.c   |   7 +-
->  hw/cxl/cxl-host.c         | 170 +++++++++++++++++++++++++++++++-------
->  hw/i386/pc.c              |  50 +++++------
->  tests/qtest/cxl-test.c    |  59 ++++++++++---
->  tests/qtest/meson.build   |   1 +
->  11 files changed, 330 insertions(+), 110 deletions(-)
-> 
-> -- 
-> 2.48.1
-> 
+Reviewed-by: Thomas Huth <thuth@redhat.com>

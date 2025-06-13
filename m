@@ -1,146 +1,427 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp308195njc;
-        Fri, 13 Jun 2025 07:49:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVldvZuN7sYexIgnan7c/rekWtKduhFPe2SfLQaRr0172u5KGQB9xBgiCFXtmNF55EqJvPHfBo7sAFNeA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFgsqfUWBWs7m3oEWwdw81n6P/5GTTfLmpB0f7G2OFck4ZLAQxO1hQgAWkSeIB/TXj9g2wq
-X-Received: by 2002:a05:620a:3908:b0:7d3:9218:6d1b with SMTP id af79cd13be357-7d3bc3acaf8mr587665685a.25.1749826140286;
-        Fri, 13 Jun 2025 07:49:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749826140; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp330727njc;
+        Fri, 13 Jun 2025 08:20:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUdyxtQKt2RhbwnZMGdbmZiF45hvjoAFQNQoONhKpei1xwhecXTGtvPUZ8eFFDoJBwwdeURsElXDPl4PA==@linaro.org
+X-Google-Smtp-Source: AGHT+IF2NNIniMbDWofIltgw8ZTUpwPO7Ul5q9okJaD1zaqP+eOd4QRnnslvo1Uv0/wtSKwTOqxU
+X-Received: by 2002:a05:6000:4911:b0:3a5:39a8:6615 with SMTP id ffacd0b85a97d-3a572367951mr121466f8f.11.1749828057169;
+        Fri, 13 Jun 2025 08:20:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749828057; cv=none;
         d=google.com; s=arc-20240605;
-        b=FZoHqG54IbqjBxzQxcUVUCwuoaJLDQIZu5UdiOUnTnZ+K/JKKXMFnSdE6NORITK8LT
-         8jmg+PgbVpMT9Nv1IcRDchbXAZig09EsstmxAbbC2189uMRTUbrAZ8QI09RiDmhijLkr
-         AJiK5qSViv4/YTwMdBNNC5xuxGteBg0H4+wOedWazx1GyClzzSKaYQ40lhdWq3c+m6ck
-         Hzsq1Eb2RQSkYr4wPgwGIdUT5tWihKGw5/i+cVs2VTp4QbrbHvt6ScwcLD1sYbR9Un4u
-         x+do5OMHNc0PYTgi4KdIrCp9wgAHNYyirWGYgKtjItoODNCR5fweMNlbElhaNlP5zazx
-         FLeQ==
+        b=QE0YI6QyOqCyryxjFlYi99yccVsa9kygU4o8M2Zy6kM7d+ouiUKDSIWbFMgbK0xs0I
+         wQvxoknFxnb0pmWMCfEyG9l9uJyiTkkRza9cWsbJrfJ9Qpl2ctT/4nQ0CMdwQpnYI+51
+         XvDojron2EOSG3OnQJBkMCyewusGq0gjLPjzH8UEPpZPAPO2iQDHP4wDQaPh8nbarxlb
+         abzTjX9E9Ggr9TXziSvi+OsGdo902SAlECk3/MWcA23gsktTPt8UMwVeObU0/HZMEk3q
+         PlYaqNuSa8U7cQGlsN8xv12PxDJ9pA3JlveiCWlvVYJkoIon5KLJ4vOyNBcT1SXuNRjO
+         x2vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to;
-        bh=d7BjYQt7mMucYSMbTkLm7oLJgmaRGMseVeHttrUXhsQ=;
-        fh=12ij1D0xizeHJ+1WEqwo/9QFN2xwslWS8h/2oI6OPA8=;
-        b=IwwK4Nvj4USJMyJ3w+K+PGWB+dd+uyYG9vz3a9nyoGwEShJI7dMMc/xfli0xVQK24h
-         g88nYA5TC3vKwcB0xJ6pheiTa0W+BD7oO3+8o+4+4cMvXwR85GT/6mOLq6hj3hC20XQc
-         k7ks6qFTvTLdzcSNRTqa6wtL+VBVVbRGhW+UQgMAVCpSMbhAroLdJOteB6MIV4YbkLUj
-         gMUFh42eHBAArgh2ig0EkCW1kEo7tjlyWhXUNQr/2R82b3eFFSycA5a7PPk4Z6ngXBKD
-         HmegNovU9P7joNL2yO7xbL/RyS+jA00wZb4D79Rq7bBLPL9rbJuLh68UPwvzPogBqYXm
-         ap8w==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date;
+        bh=VHsqzEkPRTg1B93zDbu+iFKkb9avqO1ByvI3ib0RRfo=;
+        fh=oDLjFSOamsMv4A51Yf2lSFFkJGeFX4zTdFZqA2DwPmw=;
+        b=TrmsesrQasZn4ECvkMFDZW1DoCp7Af7A3MysbYSl7Q6R/QX8XZuQnA/6pz9Xuus9Bq
+         bree2ZNYBmiDfuVRNx+tKyQVSH2W3auwuBXsrCAXA6ra5uZGmjnXcjUBeuNPRrMQvfpZ
+         44wfvQgy/e0wWlyPn0ovWwc3OC0NDhfiXfpfwOKCD5AGg+kuCfIrhb+Mi5A56YIT7fU5
+         E3CAy0qa6w7IGPLihgzRrd1mQT/0Hoi2ivAYzFA6NZVkmCETDyeT3mXkkPeb3m++Gcpf
+         XUleAzTB8S4rpBNQO/MjFzO7zn8RYKvUlRdaJ3c8ws+wxNZnX9vDkp8FSoB32VVymgzz
+         KSJw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3b8dc32a8si322722385a.51.2025.06.13.07.49.00
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Jun 2025 07:49:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a568b9e84dsi1625520f8f.787.2025.06.13.08.20.56
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 13 Jun 2025 08:20:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uQ5fl-0007mR-QP; Fri, 13 Jun 2025 10:46:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1uQ5fj-0007l7-7N; Fri, 13 Jun 2025 10:46:23 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1uQ5fh-0006eT-Es; Fri, 13 Jun 2025 10:46:22 -0400
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bJhyx6F54z6M4jb;
- Fri, 13 Jun 2025 22:45:45 +0800 (CST)
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bJjfR2Fhbz6L5DD;
+	Fri, 13 Jun 2025 23:16:31 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 44271140393;
- Fri, 13 Jun 2025 22:46:13 +0800 (CST)
-Received: from A2303104131.china.huawei.com (10.203.177.241) by
- frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Fri, 13 Jun 2025 16:46:05 +0200
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
- <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
- <imammedo@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
- <smostafa@google.com>, <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>,
- <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
- <zhangfei.gao@linaro.org>
-Subject: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe Root Complex
- association
-Date: Fri, 13 Jun 2025 15:44:43 +0100
-Message-ID: <20250613144449.60156-2-shameerali.kolothum.thodi@huawei.com>
-X-Mailer: git-send-email 2.12.0.windows.1
-In-Reply-To: <20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com>
-References: <20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com>
+	by mail.maildlp.com (Postfix) with ESMTPS id 5A821140393;
+	Fri, 13 Jun 2025 23:20:56 +0800 (CST)
+Received: from localhost (10.122.19.247) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 13 Jun
+ 2025 17:20:55 +0200
+Date: Fri, 13 Jun 2025 16:20:54 +0100
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, <mst@redhat.com>,
+	Zhijian Li <lizhijian@fujitsu.com>, Itaru Kitayama
+	<itaru.kitayama@linux.dev>, <linuxarm@huawei.com>,
+	<linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>, Yuquan Wang
+	<wangyuquan1236@phytium.com.cn>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
+	<philmd@linaro.org>, Alireza Sanaee <alireza.sanaee@huawei.com>, Alex
+ =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Subject: Re: [PATCH v15 3/4] hw/arm/virt: Basic CXL enablement on
+ pci_expander_bridge instances pxb-cxl
+Message-ID: <20250613162054.000003cf@huawei.com>
+In-Reply-To: <CAFEAcA-J+vAGfEV67PezA72rUiqpuqTBT=8hJLc1sw+xo3XHWQ@mail.gmail.com>
+References: <20250612134338.1871023-1-Jonathan.Cameron@huawei.com>
+	<20250612134338.1871023-4-Jonathan.Cameron@huawei.com>
+	<CAFEAcA-J+vAGfEV67PezA72rUiqpuqTBT=8hJLc1sw+xo3XHWQ@mail.gmail.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.203.177.241]
-X-ClientProxiedBy: kwepems100002.china.huawei.com (7.221.188.206) To
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.122.19.247]
+X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
  frapeml500008.china.huawei.com (7.182.85.71)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-From:  Shameer Kolothum via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rml/lLV1ZXhC
+X-TUID: myR9BNSTAvxg
 
-Although this change does not affect functionality at present, it is
-required when we add support for user-creatable SMMUv3 devices in
-future patches.
+On Fri, 13 Jun 2025 13:57:39 +0100
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-Tested-by: Nathan Chen <nathanc@nvidia.com>
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
----
- hw/arm/smmu-common.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+> On Thu, 12 Jun 2025 at 14:45, Jonathan Cameron
+> <Jonathan.Cameron@huawei.com> wrote:
+> >
+> > Code based on i386/pc enablement. The memory layout places space for 16
+> > host bridge register regions after the GIC_REDIST2 in the extended memm=
+ap.
+> > The CFMWs are placed above the extended memmap.
+> >
+> > Only create the CEDT table if cxl=3Don set for the machine.
+> >
+> > Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> >
+> > ---
+> > v15: No changes.
+> > ---
+> >  include/hw/arm/virt.h    |  4 ++++
+> >  hw/arm/virt-acpi-build.c | 34 ++++++++++++++++++++++++++++++++++
+> >  hw/arm/virt.c            | 29 +++++++++++++++++++++++++++++
+> >  3 files changed, 67 insertions(+) =20
+>=20
+Hi Peter,
 
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index f39b99e526..7890aa12c1 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -20,6 +20,7 @@
- #include "trace.h"
- #include "exec/target_page.h"
- #include "hw/core/cpu.h"
-+#include "hw/pci/pci_bridge.h"
- #include "hw/qdev-properties.h"
- #include "qapi/error.h"
- #include "qemu/jhash.h"
-@@ -937,7 +938,8 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
-                                      g_free, g_free);
-     s->smmu_pcibus_by_busptr = g_hash_table_new(NULL, NULL);
- 
--    if (s->primary_bus) {
-+    if (s->primary_bus && object_dynamic_cast(OBJECT(s->primary_bus)->parent,
-+                                              TYPE_PCI_HOST_BRIDGE)) {
-         pci_setup_iommu(s->primary_bus, &smmu_ops, s);
-     } else {
-         error_setg(errp, "SMMU is not attached to any PCI bus!");
--- 
-2.47.0
+Thanks for reviewing.
 
+> Can we have some user-facing documentation, please?
+> (docs/system/arm/virt.rst -- can just be a brief mention
+> and link to docs/system/devices/cxl.rst if you want to put the
+> examples of aarch64 use in there.)
+
+Given the examples should look exactly like those for x86/pc, do we need
+extra examples in cxl.rst? I guess I can add one simple arm/virt example
+in a follow up patch without bloating that file too badly..
+
+Is the following sufficient for the board specific docs?
+
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 6a719b9586..10cbffc8a7 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -31,6 +31,7 @@ Supported devices
+ The virt board supports:
+
+ - PCI/PCIe devices
++- CXL Fixed memory windows, root bridges and devices.
+ - Flash memory
+ - Either one or two PL011 UARTs for the NonSecure World
+ - An RTC
+@@ -189,6 +190,14 @@ ras
+ acpi
+   Set ``on``/``off``/``auto`` to enable/disable ACPI.
+
++cxl
++  Set  ``on``/``off`` to enable/disable CXL. More details in
++  :doc:`../devices/cxl`. The default is off.
++
++cxl-fmw
++  Array of CXL fixed memory windows describing fixed address routing to
++  target CXL host bridges. See :doc:`../devices/cxl`.
++
+ dtb-randomness
+   Set ``on``/``off`` to pass random seeds via the guest DTB
+   rng-seed and kaslr-seed nodes (in both "/chosen" and
+
+>=20
+> > @@ -220,6 +223,7 @@ static const MemMapEntry base_memmap[] =3D {
+> >  static MemMapEntry extended_memmap[] =3D {
+> >      /* Additional 64 MB redist region (can contain up to 512 redistrib=
+utors) */
+> >      [VIRT_HIGH_GIC_REDIST2] =3D   { 0x0, 64 * MiB },
+> > +    [VIRT_CXL_HOST] =3D           { 0x0, 64 * KiB * 16 }, /* 16 UID */=
+ =20
+>=20
+> This is going to shuffle the memory map around, even if CXL
+> isn't enabled, which will break migration compatibility.
+> You need to do something to ensure that the CXL region isn't
+> included in the calculations of the base addresses for these
+> regions if CXL isn't enabled.
+>=20
+
+It doesn't move any existing stuff because these are naturally aligned
+regions so this is in a gap before the PCIE ECAM region.
+
+> >      [VIRT_HIGH_PCIE_ECAM] =3D     { 0x0, 256 * MiB },
+> >      /* Second PCIe window */
+> >      [VIRT_HIGH_PCIE_MMIO] =3D     { 0x0, DEFAULT_HIGH_PCIE_MMIO_SIZE }=
+, =20
+>=20
+> If you're OK with having the CXL host region at the end of the
+> list then that's a simpler way to avoid its presence disturbing
+> the layout of the existing regions, but you might not like it
+> being at such a high physaddr.
+
+=46rom what I recall a higher address isn't a problem I just wanted to not wa=
+ste any
+PA space at all so used the gap.
+
+Chunk of /proc/iomem with a random test case (in first case with the cxl bi=
+ts
+removed as obvious that doesn't start until this patch is in place).
+Need more than 123 cpus to make the second gicv3 redist appear
+(I've no idea why that number I just printed the threshold where
+it was calculated to find out what I needed to wait for boot on).
+
+before this patch.
+
+13ffe0000-13fffffff : System RAM
+  13ffe0000-13ffe1fff : reserved
+  13ffe2000-13ffe2fff : reserved
+  13ffe3000-13fffffff : reserved
+4000000000-4003ffffff : GICR
+4010000000-401fffffff : PCI ECAM
+8000000000-ffffffffff : PCI Bus 0000:00
+  8000000000-80001fffff : PCI Bus 0000:01
+  8000200000-8000203fff : 0000:00:02.0
+    8000200000-8000203fff : virtio-pci-modern
+  8000204000-8000207fff : 0000:00:03.0
+    8000204000-8000207fff : virtio-pci-modern
+
+after:
+
+13ffe0000-13fffffff : System RAM
+  13ffe0000-13ffe2fff : reserved
+  13ffe3000-13fff3fff : reserved
+  13fff4000-13fffffff : reserved
+4000000000-4003ffffff : GICR
+4004001128-40040011b7 : port1
+4010000000-4010bfffff : PCI ECAM
+4010c00000-4010efffff : PCI ECAM
+8000000000-80000fffff : PCI Bus 0000:00
+  8000000000-8000003fff : 0000:00:02.0
+    8000000000-8000003fff : virtio-pci-modern
+  8000004000-8000007fff : 0000:00:03.0
+    8000004000-8000007fff : virtio-pci-modern
+
+The extra ECAM is the PXB stuff kicking in and stealing part of the ECAM
+region of the main host bridge.
+
+The CXL bit we care about here is port1. Despite the name which is
+an artifact of how linux represents the topology, that is
+the registers for the CXL PXB root bridge.
+
+
+>=20
+> > @@ -1621,6 +1625,17 @@ static void create_pcie(VirtMachineState *vms)
+> >      }
+> >  }
+> >
+> > +static void create_cxl_host_reg_region(VirtMachineState *vms)
+> > +{
+> > +    MemoryRegion *sysmem =3D get_system_memory();
+> > +    MemoryRegion *mr =3D &vms->cxl_devices_state.host_mr; =20
+>=20
+> This looks odd -- why are we reaching directly into the cxl_devices_state
+> to fish out a MemoryRegion and init it?
+
+cxl_devices_state state is really just grouping the CXL host stuff that
+every cxl host needs so this perhaps looks like more than it actually is.
+Maybe that needs a rename. It does less than used to after patch 2 took
+some of the Fixed memory stuff out of there.
+
+typedef struct CXLState {
+    bool is_enabled;
+    MemoryRegion host_mr;
+    unsigned int next_mr_idx;
+    CXLFixedMemoryWindowOptionsList *cfmw_list;
+} CXLState;
+
+It has two purposes.  The cfmw_list and is_enabled are so that
+we can use cxl_host_init() to unify setting up the CXL specific machine
+properties.
+
+host_mr and next_mr_idx are for a very simple fixed chunk address space
+allocator for the PXB-CXL base registers. This is a little bit nasty but
+it allows the PXBs to be initialized with -device and yet have mmio
+address ranges. Bit similar to the runtime instantiation of SMMUs
+problem Shameer was running into, but a simpler one.  I couldn't
+find a way to use sysbus or similar here because we also need this
+PXB device to exist on the main PCI bus like any other PCI expander bridge
+- it just needs these extra registers in the main memory map that are then
+pointed to by ACPI table entries. These are what is known as RCRB in PCI
+terms (Root complex register base).
+
+See implementation of pxb_cxl_hook_up_registers() call in
+virt_machine_done() that stitches this together once we know what
+pxb-cxl devices are present and maps sub regions into this container.
+
+I'd be happy to have suggestions on how to do this better as I've never
+been fond of this bit.
+
+One option might be to just make this more explicit by putting host_mr and
+next_mr_idx directly in the virt machine state and passing them
+as separate parameters to pxb_cxl_hook_up_registers(). I'm not sure
+that gains much though.  Another path would be to wrap the region init
+and add subregion up in a helper function called from here and i386/pc.c
+That would mean the name at least was explicitly shared. Not sure it would
+bring much other benefit.
+
+
+>=20
+> > +    memory_region_init(mr, OBJECT(vms), "cxl_host_reg",
+> > +                       vms->memmap[VIRT_CXL_HOST].size);
+> > +    memory_region_add_subregion(sysmem, vms->memmap[VIRT_CXL_HOST].bas=
+e, mr);
+> > +    vms->highmem_cxl =3D true;
+> > +}
+> > +
+> >  static void create_platform_bus(VirtMachineState *vms)
+> >  {
+> >      DeviceState *dev;
+> > @@ -1737,6 +1752,12 @@ void virt_machine_done(Notifier *notifier, void =
+*data)
+> >      struct arm_boot_info *info =3D &vms->bootinfo;
+> >      AddressSpace *as =3D arm_boot_address_space(cpu, info);
+> >
+> > +    cxl_hook_up_pxb_registers(vms->bus, &vms->cxl_devices_state,
+> > +                              &error_fatal);
+> > +
+> > +    if (vms->cxl_devices_state.is_enabled) {
+> > +        cxl_fmws_link_targets(&error_fatal);
+> > +    }
+> >      /*
+> >       * If the user provided a dtb, we assume the dynamic sysbus nodes
+> >       * already are integrated there. This corresponds to a use case wh=
+ere
+> > @@ -1783,6 +1804,7 @@ static inline bool *virt_get_high_memmap_enabled(=
+VirtMachineState *vms,
+> >  {
+> >      bool *enabled_array[] =3D {
+> >          &vms->highmem_redists,
+> > +        &vms->highmem_cxl,
+> >          &vms->highmem_ecam,
+> >          &vms->highmem_mmio,
+> >      };
+> > @@ -1890,6 +1912,9 @@ static void virt_set_memmap(VirtMachineState *vms=
+, int pa_bits)
+> >      if (device_memory_size > 0) {
+> >          machine_memory_devices_init(ms, device_memory_base, device_mem=
+ory_size);
+> >      }
+> > +
+> > +    cxl_fmws_set_memmap(ROUND_UP(vms->highest_gpa + 1, 256 * MiB),
+> > +                        BIT_ULL(pa_bits)); =20
+>=20
+> Isn't this stomping over the HIGH_PCIE memory window (or
+> whatever else happens to be at the top end of memory) ?
+
+I'll admit the way that these address maps are calculated has caused
+me several headaches.  The intention was to go above everything so as to
+avoid any changes to the existing map.
+
+>=20
+> Also taking highest_gpa and then rounding it up looks suspicious:
+> if it's the highest GPA then anything larger than that is off
+> the end of the physical address space.
+>=20
+> Plus cxl_fmws_set_memmap() names its arguments base, max_addr:
+> "highest gpa, rounded up" doesn't sound like a base address.
+>=20
+> (Looking at our current code that sets and adjusts highest_gpa,
+> it looks a bit weird: maybe we're setting it to values that aren't
+> what the variable name claims it's doing, and that's why this
+> code happens to work ?)
+
+I think highest_gpa is a running value of how high we have allocated
+to something, not a maximum that is supported.  E.g. what is going on
+in virt_set_high_memmap()
+
+I guess I should update vms->highest_gpa.  I think nothing uses it after th=
+is
+but they might in future.
+
++    vms->highest_gpa =3D cxl_fmws_set_memmap(ROUND_UP(vms->highest_gpa + 1=
+, 256 * MiB),
++                                           BIT_ULL(pa_bits)) - 1;
+
+should update it correctly. In i386/pc.c we already updated the memory map =
+top address
+tracking so that function already returns the start of the next region (hen=
+ce the - 1
+is needed - that is similar to the call for virt_set_high_memmap() a few li=
+nes up.
+
+I think that will also result in more elegant failure on CPUs with limited
+address space than we had before as that is checked in virt_cpu_post_init()
+
+Using an a55 for instance fails (Fujitsu folk ran into this a while back)
+as we need more than 40 bits.
+
+Just for reference here's the relevant bit of /proc/iomem
+for a test setup intended to poke some of these corners.
+
+8000000000-80000fffff : PCI Bus 0000:00
+  8000000000-8000003fff : 0000:00:02.0
+    8000000000-8000003fff : virtio-pci-modern
+  8000004000-8000007fff : 0000:00:03.0
+    8000004000-8000007fff : virtio-pci-modern
+8000100000-800011ffff : PCI Bus 0000:0c
+  8000100000-800010ffff : 0000:0c:00.0
+    8000101080-80001010d7 : mem0
+  8000110000-800011ffff : 0000:0c:01.0
+    8000111080-80001110d7 : mem1
+8000120000-ffffffffff : PCI Bus 0000:00
+  8000200000-80003fffff : PCI Bus 0000:01
+10000000000-101ffffffff : CXL Window 0
+  10000000000-1000fffffff : region0
+    10000000000-1000fffffff : dax0.0
+      10000000000-1000fffffff : System RAM (kmem)
+
+So the windows sits above the PCI region.
+
+>=20
+> >  }
+> >
+> >  static VirtGICType finalize_gic_version_do(const char *accel_name,
+> > @@ -2340,6 +2365,8 @@ static void machvirt_init(MachineState *machine)
+> >      memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base,
+> >                                  machine->ram);
+> >
+> > +    cxl_fmws_update_mmio();
+> > +
+> >      virt_flash_fdt(vms, sysmem, secure_sysmem ?: sysmem);
+> >
+> >      create_gic(vms, sysmem);
+> > @@ -2395,6 +2422,7 @@ static void machvirt_init(MachineState *machine)
+> >      create_rtc(vms);
+> >
+> >      create_pcie(vms);
+> > +    create_cxl_host_reg_region(vms);
+> >
+> >      if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(=
+vms)) {
+> >          vms->acpi_dev =3D create_acpi_ged(vms);
+> > @@ -3365,6 +3393,7 @@ static void virt_instance_init(Object *obj)
+> >
+> >      vms->oem_id =3D g_strndup(ACPI_BUILD_APPNAME6, 6);
+> >      vms->oem_table_id =3D g_strndup(ACPI_BUILD_APPNAME8, 8);
+> > +    cxl_machine_init(obj, &vms->cxl_devices_state);
+> >  } =20
+>=20
+> cxl defaults to disabled, right? (i.e. we don't need the
+> machine-version specific stuff to keep it from being enabled
+> on old versioned machine types).
+
+It is indeed defaulting to disabled.
+
+J
+
+>=20
+> thanks
+> -- PMM

@@ -1,105 +1,105 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2680977njc;
-        Thu, 12 Jun 2025 17:07:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU/UGffKvRMbleQ9bHKG8jnygDqouCs97KDlh8S8ki4vez81GN3zbNWMeTmpNXslIqDWFv0uujjMbB/7A==@linaro.org
-X-Google-Smtp-Source: AGHT+IF4E5yRC/DaKK/3g+LKBCCkhNB40AnLqVFRPz92XZ5r0Kwvu7XNeN2A2m/75o4YOpzTx7s9
-X-Received: by 2002:ad4:5be5:0:b0:6fa:fe02:81ff with SMTP id 6a1803df08f44-6fb3e58ae7bmr13724296d6.3.1749773224397;
-        Thu, 12 Jun 2025 17:07:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749773224; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2681084njc;
+        Thu, 12 Jun 2025 17:07:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVe913foVyrsb6+1xwOLZpR6knm2KBtlEvsAVfSpP+vend6OBrnszdOqTlK/j2YS5vFYWsIBp1D50HeZA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGwUhoiNfDFx9angVlE7A8Ou4pIwy33TJU6y3HRLG9tdlsrvBdK8z1ApAqUopyFkt5sVJQM
+X-Received: by 2002:a05:622a:1b02:b0:4a4:41d5:2a03 with SMTP id d75a77b69052e-4a72fe632e4mr21106201cf.4.1749773237551;
+        Thu, 12 Jun 2025 17:07:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749773237; cv=none;
         d=google.com; s=arc-20240605;
-        b=lYCQcpw3l0jSw11m2bsd7lEjoEPZeoBPI7lz9Cz9mlC8jyI5SoSkTAz05BGkJNGE8V
-         OKCe1dRXx0DH8yI+y6X/niYrwGrMXEhf50bisQt+e6LdzSVPociEKS+V78wuVOsQ85qk
-         HPYcQ7dcTmeflH8RjrATJkL0+e/83WukIq/XJL0dj+Tl+Wt0lMqSd3OBC5DOdjv4zGgy
-         i24r2aFbvgNniT+/puvi/Os3Ivwgnk8yVQtMmthnLlLHU6xbU73kSaoScX0o20exH+5e
-         hk7R2lWS6wTBWaCmM8yAT5F6NrmLvvH8Nf6a2Xim0qK3FfmMfbI3nOKqhJlu5dqmc/3z
-         IBwg==
+        b=X3CHGjDddpmkEtWMBUfaImm14IFTEsjmYqcyPOwagWbF5okjvDo+cBbownDM80vym5
+         fE5zwBQhHJaq1KcUIAYQMHLHRQ02GcX81lb0tQsuJpFYM7lWh+7q7nyUJY35S0BnsN/X
+         9xoUX+zPwhiH/JAlHPzRakEqCn0Nf9wcxxX5r4/8t3Izs2f8mEIqAJwk1q2cRjy6V5QO
+         7VHZkPdYLtA0n9WWtc1rm79rbH3TmGIyR1Dgw1K1dhYumlq1yO+WX/l4I2ke00gAhQ08
+         frGYe2WeK+eishY6uAFyhvBtJ0ssKNYIg/yDBh/rZ/9YZH5XCZil9jsS5nRm2KPk/GJE
+         bgVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=+3D32wRripWDGh37R/51W0a4xFipOjv3ijoy2qH+SOM=;
-        fh=1b6F2JOO+lGG64QddKi9UPiY2aOM6XvoBH2yuEmOp3U=;
-        b=hya+GovyQv4D+zpiivK+hdw4vHKw2nTBSSNvCE2MyXhfDfigdffEb8qxyWT3CVcLto
-         HX2jf5Kcg1aIhy4nT1D2xfdlxkU0Vd5DidTYS/lRZtHMPgDB7IiWm5/R0aXfGE2ZY4dK
-         0GGfKfem9CBKdjeoBbLIffMWXcD46PT9vds9vcZ1d/01s0gEf+NvprYDQfZNS/upCcJz
-         FiA4S2OXqc3J8ZHSk7YpEhkc6gyxS7tDpo4rUzC3GDk8X4+pEwdlvHNiO27bKemIC84M
-         c0KwmmgPiWld+uk4weSfX4AHkwZknDJWkLcuFqRtQ7NoSpYNc0rdM/QgyugSPgTGKNjV
-         4diQ==;
+        bh=d0QgfeILdUyMD1NSsyF9wqtByo57i/HsEw7CLoZHHwQ=;
+        fh=jmB336zVDilutUuU09TXLNZ6TFwRas8MQn/v9+Y+T0w=;
+        b=ewBMHk5+vq7WD28Trzm2d6jMJz2Sz/XkkKPWWhhUcrKgDruZPT26oV9xr4XdIEE9tI
+         UnApGmac+lazUsCeJ/jn2lxznN98kS/+8C9muyMtiFDMSNf10UbbxxdXPCpoS66WL3N/
+         QRF9UvbjiqTFAbdwEJRv97jJjpkWShGbl6faDEQg/Zlu5t+IkGbMPyezhoue8hOuii5A
+         B3wHSuuNBcFTsCGXWZCO6G5uhHdH7WUXHYwEj4VQ0xjXdggP0qU9cyHMaSq8zFNfof0+
+         1tyikGQELLJe3UxxIaa1YUs0PDjGDeeUmKGwfPmjHGGZ+R36eLFpyc2sIShGW3SrNg2K
+         5cng==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=U9+wVJUn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b="TWyNMfq/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a730da3785si4662501cf.524.2025.06.12.17.07.04
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fb35bddfc2si26487486d6.211.2025.06.12.17.07.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Jun 2025 17:07:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 12 Jun 2025 17:07:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=U9+wVJUn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b="TWyNMfq/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uPruR-0005s0-ID; Thu, 12 Jun 2025 20:04:45 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uPru7-0005lm-Tb; Thu, 12 Jun 2025 20:04:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3BGtLaAcKCFE37547w1z77z4x.v759x5D-tA5676z6D.7Az@flex--komlodi.bounces.google.com>)
- id 1uPruC-0005os-Gj
- for qemu-arm@nongnu.org; Thu, 12 Jun 2025 20:04:24 -0400
+ <3_WpLaAcKCkow0yx0pus00sxq.o0y2qy6-pq7qxz0zsz6.03s@flex--komlodi.bounces.google.com>)
+ id 1uPru6-0005kz-A0
+ for qemu-devel@nongnu.org; Thu, 12 Jun 2025 20:04:18 -0400
 Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3BGtLaAcKCFE37547w1z77z4x.v759x5D-tA5676z6D.7Az@flex--komlodi.bounces.google.com>)
- id 1uPruB-0000Y2-25
- for qemu-arm@nongnu.org; Thu, 12 Jun 2025 20:04:24 -0400
+ <3_WpLaAcKCkow0yx0pus00sxq.o0y2qy6-pq7qxz0zsz6.03s@flex--komlodi.bounces.google.com>)
+ id 1uPru4-0000WN-0x
+ for qemu-devel@nongnu.org; Thu, 12 Jun 2025 20:04:18 -0400
 Received: by mail-pg1-x549.google.com with SMTP id
- 41be03b00d2f7-b2c00e965d0so938007a12.2
- for <qemu-arm@nongnu.org>; Thu, 12 Jun 2025 17:04:21 -0700 (PDT)
+ 41be03b00d2f7-b2f103f6074so945371a12.3
+ for <qemu-devel@nongnu.org>; Thu, 12 Jun 2025 17:04:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1749773061; x=1750377861; darn=nongnu.org;
+ d=google.com; s=20230601; t=1749773054; x=1750377854; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=+3D32wRripWDGh37R/51W0a4xFipOjv3ijoy2qH+SOM=;
- b=U9+wVJUn3EXHBhrOR7Qsxnmy9VL3KdOa8UCfJB0Btl16YxtcT9n4keRXA2BQ7ImlDQ
- WI84BvyvpQmw3ywtsmyvYDRLzxCiMMiTLWJp+7FCqobSJ26XkZ+VzgSFN7JqzV5e2wZw
- S1qFqmufdFpoKy8EgJpDxq/IYE934yILnlJLSx7OOfYVFwhmFpy1udfZoABr30RGaB9g
- l/l9Rlb0UX1fM9IJlWb17WsU3R9i2sLI7I1kvC8fBeyk0uEZ7qDh3Y0wAP/WOQa+Pxie
- sz2eKEVrA4saEEdmu+VcA3ApRWCs++cirKF6gHWDwz6tuyfnd2M5N0vlsHU8qh5Vz3t8
- 56FA==
+ bh=d0QgfeILdUyMD1NSsyF9wqtByo57i/HsEw7CLoZHHwQ=;
+ b=TWyNMfq/1D69OsTULtleaNAwWsYolubi5a914+SG7TjW4wh9edEf+nnkPLWknk3nzs
+ tIWKUYOIKXGqWaE5nO+Ef8c58hFaIEqBk2olpxU67jjxLUwwfzfFC9FmlLpZOBXH1CNQ
+ MMs4pFbSuN695SFvAHqEnzfsMwbEgtCur4p+qZk+EnTt2+rkW6wczhSlpH9s9I6rDAJq
+ h4Afod+4t/+NE9oS0TH3pg6dpgbeFBtolgeSbdjFl67Qt+PpCp8g/7Ef8oiMRi5Nhplu
+ GclNFWIWrq/hAV0oWQgKnv4YDZIg8hw7XGSsj4x1PY/JwKd3oxT4ckUGl4w8bqsWeGgd
+ YB+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749773061; x=1750377861;
+ d=1e100.net; s=20230601; t=1749773054; x=1750377854;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=+3D32wRripWDGh37R/51W0a4xFipOjv3ijoy2qH+SOM=;
- b=k1P7jkwob6uNYPYoyYrwBrLO1TZVo+rCanad+D/eACaRJkn5veo8z7kajvlYx3eVVM
- 4V0QfTXtCP9laJaBA5LM8Qho7Hva+4li1L0tvYdnEcR5f7AtUQya0UTQMvmtby8dgjnn
- dI+3cmtbBOEovvuKyhok6JZKAOT/qwd15jz0B7Jkbk+jcPmrW1SfK2d+mxSu5p/CcDzI
- RwStUAtyybQu52/03OPaLO7ZtmjR86HlvQbHV2ipkT/ILlcv+LP5lTJ969PGvWKNqtpr
- rUxeHtVLry7YxthiBbEokxr3J98SMvNvumfeTV5fA7NrflpZXiq9gmnd8aFj7CUuHh5t
- Q2YQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVr8+1o+uSEKtDrFYIu7sBOgXJRhujDuEJN8A7mk7EtLUGINiBa8MF6a6A04hCpY2lK51RK42lebg==@nongnu.org
-X-Gm-Message-State: AOJu0YzzBw9qnEjI1tDkyC+rS64cPdoObJaV+Wv9/AXpMhWbdHX9WkFG
- DCPFVfXjRIfggjCkMii9K7aK0548Zrl2NbzN00vgWZEFxqxtKzveXsag6NszLsIq86ldEluuYoz
- KtnGRh42aBg==
-X-Received: from pgah7.prod.google.com ([2002:a05:6a02:4e87:b0:b2e:b684:1f9e])
+ bh=d0QgfeILdUyMD1NSsyF9wqtByo57i/HsEw7CLoZHHwQ=;
+ b=XPnpRsAqdO2e7sTQYOp9MEIMWDl4gJj6ujHEWf8XH27B8vXWe3Hr0dZ0PcSuvEiYiM
+ P1cmXv3kTKFuk5LywN1DH9HZjy93Cr82g4s2FUaPCQPeSVzrJOm35FIspupzwIIk8qlo
+ 2sT5IFrla7kT0tdXJwsAVJ2vQ5UcLhBDz/dfvCoxs/cA9rEYIDu5iJwqqLKLhfFFmAIW
+ ijPGA/cm07lnpRmJl5fqKzcnpn/0zrPdaEpJdG7b0g9BUdtKyBOfEN3AA4Ah9jTlTDfA
+ PufBH7Q1Q+ExTXeF0Sd8tdzTGneKpoSQa47KjVJElyAdDbiVwYZb5DpTF6EYo1AxuR3f
+ JlhQ==
+X-Gm-Message-State: AOJu0YwFHmaMo9mqKm/eO8gYG7wMIwyTnOxH8VkekvglCcslaiOtUGgJ
+ aqz409TH52vLdLgQav2LFTj2O9zhJvElQLMzcfJ+YX6NmchIp/0VdmjTyjaPA6T5ebMUEUwENno
+ b+oaJ2PNTbUEdxOW2/h2Y910u+K2oCcAHf/tjQnUE+bSoy+tlhddEDF1MV9kNNt77RFIEe1WGYf
+ iG74hv+wieLo2WH6QrhoQGaNv5HFa/BRVYM/r4jJZT
+X-Received: from pgbfy15.prod.google.com
+ ([2002:a05:6a02:2a8f:b0:b2e:c15e:3eb7])
  (user=komlodi job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:6a20:6a25:b0:218:96ad:720d
- with SMTP id adf61e73a8af0-21facbba984mr1179219637.1.1749773060836; Thu, 12
- Jun 2025 17:04:20 -0700 (PDT)
-Date: Fri, 13 Jun 2025 00:03:58 +0000
+ 2002:a05:6a20:394a:b0:21c:fa68:c33a
+ with SMTP id adf61e73a8af0-21facc8e6f5mr1222482637.23.1749773053909; Thu, 12
+ Jun 2025 17:04:13 -0700 (PDT)
+Date: Fri, 13 Jun 2025 00:03:53 +0000
 In-Reply-To: <20250613000411.1516521-1-komlodi@google.com>
 Mime-Version: 1.0
 References: <20250613000411.1516521-1-komlodi@google.com>
 X-Mailer: git-send-email 2.50.0.rc1.591.g9c95f17f64-goog
-Message-ID: <20250613000411.1516521-7-komlodi@google.com>
-Subject: [PATCH 06/19] hw/i3c/dw-i3c: Add more reset values
+Message-ID: <20250613000411.1516521-2-komlodi@google.com>
+Subject: [PATCH 01/19] hw/misc/aspeed_i3c: Move to i3c directory
 From: Joe Komlodi <komlodi@google.com>
 To: qemu-devel@nongnu.org
 Cc: venture@google.com, komlodi@google.com, clg@kaod.org, 
@@ -108,7 +108,7 @@ Cc: venture@google.com, komlodi@google.com, clg@kaod.org,
  qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
- envelope-from=3BGtLaAcKCFE37547w1z77z4x.v759x5D-tA5676z6D.7Az@flex--komlodi.bounces.google.com;
+ envelope-from=3_WpLaAcKCkow0yx0pus00sxq.o0y2qy6-pq7qxz0zsz6.03s@flex--komlodi.bounces.google.com;
  helo=mail-pg1-x549.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
@@ -116,70 +116,200 @@ X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Yogwd5IWkXpA
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6+xEpVhls97T
 
-Adds reset values for the new registers added.
+Moves the Aspeed I3C model and traces into hw/i3c and creates I3C build
+files.
 
 Signed-off-by: Joe Komlodi <komlodi@google.com>
 
 Reviewed-by: Patrick Venture <venture@google.com>
+Reviewed-by: Titus Rwantare <titusr@google.com>
 ---
- hw/i3c/dw-i3c.c | 20 +++++++++++++++++++-
- 1 file changed, 19 insertions(+), 1 deletion(-)
+ hw/Kconfig                            | 1 +
+ hw/arm/Kconfig                        | 1 +
+ hw/i3c/Kconfig                        | 2 ++
+ hw/{misc => i3c}/aspeed_i3c.c         | 2 +-
+ hw/i3c/meson.build                    | 3 +++
+ hw/i3c/trace-events                   | 7 +++++++
+ hw/i3c/trace.h                        | 2 ++
+ hw/meson.build                        | 1 +
+ hw/misc/meson.build                   | 1 -
+ hw/misc/trace-events                  | 6 ------
+ include/hw/arm/aspeed_soc.h           | 2 +-
+ include/hw/{misc => i3c}/aspeed_i3c.h | 0
+ meson.build                           | 1 +
+ 13 files changed, 20 insertions(+), 9 deletions(-)
+ create mode 100644 hw/i3c/Kconfig
+ rename hw/{misc => i3c}/aspeed_i3c.c (99%)
+ create mode 100644 hw/i3c/meson.build
+ create mode 100644 hw/i3c/trace-events
+ create mode 100644 hw/i3c/trace.h
+ rename include/hw/{misc => i3c}/aspeed_i3c.h (100%)
 
-diff --git a/hw/i3c/dw-i3c.c b/hw/i3c/dw-i3c.c
-index b252903ea4..845fbd5efd 100644
---- a/hw/i3c/dw-i3c.c
-+++ b/hw/i3c/dw-i3c.c
-@@ -285,14 +285,32 @@ REG32(DEVICE_ADDR_TABLE_LOC1, 0x280)
-     FIELD(DEVICE_ADDR_TABLE_LOC1, LEGACY_I2C_DEVICE, 31, 1)
+diff --git a/hw/Kconfig b/hw/Kconfig
+index 9a86a6a28a..61b8b2a142 100644
+--- a/hw/Kconfig
++++ b/hw/Kconfig
+@@ -13,6 +13,7 @@ source fsi/Kconfig
+ source gpio/Kconfig
+ source hyperv/Kconfig
+ source i2c/Kconfig
++source i3c/Kconfig
+ source ide/Kconfig
+ source input/Kconfig
+ source intc/Kconfig
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index f543d944c3..427d0f0271 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -530,6 +530,7 @@ config ASPEED_SOC
+     select DS1338
+     select FTGMAC100
+     select I2C
++    select I3C
+     select DPS310
+     select PCA9552
+     select SERIAL_MM
+diff --git a/hw/i3c/Kconfig b/hw/i3c/Kconfig
+new file mode 100644
+index 0000000000..e07fe445c6
+--- /dev/null
++++ b/hw/i3c/Kconfig
+@@ -0,0 +1,2 @@
++config I3C
++    bool
+diff --git a/hw/misc/aspeed_i3c.c b/hw/i3c/aspeed_i3c.c
+similarity index 99%
+rename from hw/misc/aspeed_i3c.c
+rename to hw/i3c/aspeed_i3c.c
+index 3bef1c84dd..e56822f928 100644
+--- a/hw/misc/aspeed_i3c.c
++++ b/hw/i3c/aspeed_i3c.c
+@@ -10,7 +10,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+ #include "qemu/error-report.h"
+-#include "hw/misc/aspeed_i3c.h"
++#include "hw/i3c/aspeed_i3c.h"
+ #include "hw/registerfields.h"
+ #include "hw/qdev-properties.h"
+ #include "qapi/error.h"
+diff --git a/hw/i3c/meson.build b/hw/i3c/meson.build
+new file mode 100644
+index 0000000000..ebf20325cb
+--- /dev/null
++++ b/hw/i3c/meson.build
+@@ -0,0 +1,3 @@
++i3c_ss = ss.source_set()
++i3c_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_i3c.c'))
++system_ss.add_all(when: 'CONFIG_I3C', if_true: i3c_ss)
+diff --git a/hw/i3c/trace-events b/hw/i3c/trace-events
+new file mode 100644
+index 0000000000..3ead84eb45
+--- /dev/null
++++ b/hw/i3c/trace-events
+@@ -0,0 +1,7 @@
++# See docs/devel/tracing.rst for syntax documentation.
++
++# aspeed_i3c.c
++aspeed_i3c_read(uint64_t offset, uint64_t data) "I3C read: offset 0x%" PRIx64 " data 0x%" PRIx64
++aspeed_i3c_write(uint64_t offset, uint64_t data) "I3C write: offset 0x%" PRIx64 " data 0x%" PRIx64
++aspeed_i3c_device_read(uint32_t deviceid, uint64_t offset, uint64_t data) "I3C Dev[%u] read: offset 0x%" PRIx64 " data 0x%" PRIx64
++aspeed_i3c_device_write(uint32_t deviceid, uint64_t offset, uint64_t data) "I3C Dev[%u] write: offset 0x%" PRIx64 " data 0x%" PRIx64
+diff --git a/hw/i3c/trace.h b/hw/i3c/trace.h
+new file mode 100644
+index 0000000000..1e0c4eadf0
+--- /dev/null
++++ b/hw/i3c/trace.h
+@@ -0,0 +1,2 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++#include "trace/trace-hw_i3c.h"
+diff --git a/hw/meson.build b/hw/meson.build
+index b91f761fe0..31786f03d0 100644
+--- a/hw/meson.build
++++ b/hw/meson.build
+@@ -12,6 +12,7 @@ subdir('dma')
+ subdir('gpio')
+ subdir('hyperv')
+ subdir('i2c')
++subdir('i3c')
+ subdir('ide')
+ subdir('input')
+ subdir('intc')
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 6d47de482c..4a41716625 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -130,7 +130,6 @@ system_ss.add(when: 'CONFIG_PVPANIC_MMIO', if_true: files('pvpanic-mmio.c'))
+ system_ss.add(when: 'CONFIG_AUX', if_true: files('auxbus.c'))
+ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_hace.c',
+-  'aspeed_i3c.c',
+   'aspeed_lpc.c',
+   'aspeed_scu.c',
+   'aspeed_sbc.c',
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index e3f64c0ff6..f70459b3b7 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -287,12 +287,6 @@ armsse_mhu_write(uint64_t offset, uint64_t data, unsigned size) "SSE-200 MHU wri
+ # aspeed_xdma.c
+ aspeed_xdma_write(uint64_t offset, uint64_t data) "XDMA write: offset 0x%" PRIx64 " data 0x%" PRIx64
  
- static const uint32_t dw_i3c_resets[DW_I3C_NR_REGS] = {
--    [R_HW_CAPABILITY]               = 0x000e00bf,
-+    /* Target mode is not supported, don't advertise it for now. */
-+    [R_HW_CAPABILITY]               = 0x000e00b9,
-     [R_QUEUE_THLD_CTRL]             = 0x01000101,
-+    [R_DATA_BUFFER_THLD_CTRL]       = 0x01010100,
-+    [R_SLV_EVENT_CTRL]              = 0x0000000b,
-+    [R_QUEUE_STATUS_LEVEL]          = 0x00000002,
-+    [R_DATA_BUFFER_STATUS_LEVEL]    = 0x00000010,
-+    [R_PRESENT_STATE]               = 0x00000003,
-     [R_I3C_VER_ID]                  = 0x3130302a,
-     [R_I3C_VER_TYPE]                = 0x6c633033,
-     [R_DEVICE_ADDR_TABLE_POINTER]   = 0x00080280,
-     [R_DEV_CHAR_TABLE_POINTER]      = 0x00020200,
-+    [R_SLV_CHAR_CTRL]               = 0x00010000,
-     [A_VENDOR_SPECIFIC_REG_POINTER] = 0x000000b0,
-     [R_SLV_MAX_LEN]                 = 0x00ff00ff,
-+    [R_SLV_TSX_SYMBL_TIMING]        = 0x0000003f,
-+    [R_SCL_I3C_OD_TIMING]           = 0x000a0010,
-+    [R_SCL_I3C_PP_TIMING]           = 0x000a000a,
-+    [R_SCL_I2C_FM_TIMING]           = 0x00100010,
-+    [R_SCL_I2C_FMP_TIMING]          = 0x00100010,
-+    [R_SCL_EXT_LCNT_TIMING]         = 0x20202020,
-+    [R_SCL_EXT_TERMN_LCNT_TIMING]   = 0x00300000,
-+    [R_BUS_FREE_TIMING]             = 0x00200020,
-+    [R_BUS_IDLE_TIMING]             = 0x00000020,
-+    [R_EXTENDED_CAPABILITY]         = 0x00000239,
-+    [R_SLAVE_CONFIG]                = 0x00000023,
- };
- 
- static uint64_t dw_i3c_read(void *opaque, hwaddr offset, unsigned size)
+-# aspeed_i3c.c
+-aspeed_i3c_read(uint64_t offset, uint64_t data) "I3C read: offset 0x%" PRIx64 " data 0x%" PRIx64
+-aspeed_i3c_write(uint64_t offset, uint64_t data) "I3C write: offset 0x%" PRIx64 " data 0x%" PRIx64
+-aspeed_i3c_device_read(uint32_t deviceid, uint64_t offset, uint64_t data) "I3C Dev[%u] read: offset 0x%" PRIx64 " data 0x%" PRIx64
+-aspeed_i3c_device_write(uint32_t deviceid, uint64_t offset, uint64_t data) "I3C Dev[%u] write: offset 0x%" PRIx64 " data 0x%" PRIx64
+-
+ # aspeed_sdmc.c
+ aspeed_sdmc_write(uint64_t reg, uint64_t data) "reg @0x%" PRIx64 " data: 0x%" PRIx64
+ aspeed_sdmc_read(uint64_t reg, uint64_t data) "reg @0x%" PRIx64 " data: 0x%" PRIx64
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 217ef0eafd..07265f26cf 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -23,7 +23,7 @@
+ #include "hw/timer/aspeed_timer.h"
+ #include "hw/rtc/aspeed_rtc.h"
+ #include "hw/i2c/aspeed_i2c.h"
+-#include "hw/misc/aspeed_i3c.h"
++#include "hw/i3c/aspeed_i3c.h"
+ #include "hw/ssi/aspeed_smc.h"
+ #include "hw/misc/aspeed_hace.h"
+ #include "hw/misc/aspeed_sbc.h"
+diff --git a/include/hw/misc/aspeed_i3c.h b/include/hw/i3c/aspeed_i3c.h
+similarity index 100%
+rename from include/hw/misc/aspeed_i3c.h
+rename to include/hw/i3c/aspeed_i3c.h
+diff --git a/meson.build b/meson.build
+index 34729c2a3d..186effb84f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3651,6 +3651,7 @@ if have_system
+     'hw/fsi',
+     'hw/hyperv',
+     'hw/i2c',
++    'hw/i3c',
+     'hw/i386',
+     'hw/i386/xen',
+     'hw/i386/kvm',
 -- 
 2.50.0.rc1.591.g9c95f17f64-goog
 

@@ -1,140 +1,121 @@
-Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2617203njc;
-        Thu, 12 Jun 2025 14:28:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXPj1+IXA9JLwYkH+fThy3HgmRjIVaMnMAI2J51VIcc8zLh6+rH+swdPXO4N0Z7e2GPRN72YoS/Q8i49A==@linaro.org
-X-Google-Smtp-Source: AGHT+IEIKQxtPH1Epnjd9LhyR5ArZNnKGBRoLLM08CNAMe9Dgr76SC4csYbbeoZBGpLsSMzkNStK
-X-Received: by 2002:a05:620a:1713:b0:7c5:3e89:c6df with SMTP id af79cd13be357-7d3bc37342emr125920385a.12.1749763695566;
-        Thu, 12 Jun 2025 14:28:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749763695; cv=none;
+Received: by 2002:a17:505:ba85:b0:1be9:327d:8ee3 with SMTP id zs5csp2682199njc;
+        Thu, 12 Jun 2025 17:09:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWWkzofC2dGeiDJbt9U+l0pmu+V08Oi/QHvGh92jt9TnTMu9DwR7Q1SysH3yL2s2qekvNC77E5k4yiaYg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFBAkuhIFZbVa1cXAVR1+9t3URYFimNH4wbG+MYw/zzswwnjg9QBVP64BegEKp9X651InGR
+X-Received: by 2002:a05:622a:480d:b0:494:a30b:e27c with SMTP id d75a77b69052e-4a72ff18014mr19864151cf.39.1749773391048;
+        Thu, 12 Jun 2025 17:09:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749773391; cv=none;
         d=google.com; s=arc-20240605;
-        b=Lgb3dcnh5hEQEv/hR7p85yCd3/QakxYsgoQLMhwDr+9E9aQIscCqe/WP0ycglxFKwJ
-         66Pz1CJFSsYTRrXXavpb+TYObWW3Ect2iAWVyvmVGr//32Np6EAlaZF1PFkeqJHoa5AZ
-         8pQuee1qj7c/HweA+0BcBSz683+n7pT1mdpzWt6oQDWdE6e9QlW+JlQS/btBxj0oTHZr
-         QkcLZbN1BMes0tLNlmUvCBmwWVuxE4Uu5mlCZq2VmVJmxoiPwgsMX+fgQrS99LGLHqVe
-         YUhq3Y8JgLBY15CHOXyxZjr12fYheQY5Wb9OXnqkdOAWi+4lWUzzZFb+NZmvXX7JpMi5
-         fxmw==
+        b=HHHji9Lg64gx2kpdeQFIP/oRReeAs2B2aHc3iKFCW29iGf7TQhoaKSXflE2bW9oAXO
+         t24RO/v47PxMuCMXCwsPeRgEM6hEC2CrRSKU3JOrAbzwtlwcjP5xk3ANNWBHudV3zhbW
+         KEEiIHQ7NAZSbZMHgPyGqas4+637C+4m1bU4ezFWhgjrH3nbhR5Di86EcAK/tpCop4Fo
+         lF5rojEoEMsZBsC4MN9d2dFuY8vsnCw6wD+B5IKkHDvuFXiEiXoUtM1nASyhGi5SzIVj
+         NVRq9+W4LqNUrVKcFcUxPyVcXu2jLb3kAaGpB1JScGaBrB0L4nHsStMBSeYTY0Ipou2r
+         HkEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=UGZv2VAG09mDiRoHHEgf2+bwUAgRb+R+CKa75tyGlTk=;
-        fh=1FbNxcJTDRloqzq6GBeRHjKWxMPk3glJOoiZQZsYJmA=;
-        b=X+uxhgtph5R/SAHz8DtuYTysc+RvegWhk8Oe8G0PQjjKX68IzahKxx5LrNkH7Wqm3g
-         ctzTunexsajaggZ81eRwC6aw/5fDOWvIx2GPMyjeazQL6j6fg8ZYrtwqqf6SXCAxeecV
-         vnmJ5ycfmv9GpYaP7zQQ4VnvbqbRqhuW9osWI85wlvg6TR+k/tz5T5jej5+bmTpeVUUg
-         Yk55vt/szY5OpiFfBtVocnI9zmqTnBl+GL7s7wxjgn6I9S8l40b+v6SDHxUyjfwA1a3C
-         tv8zibr004kCBPpgm71GcN41qkn106WmNNmYbdMttj2o/rhJTrw8DPv9ypuIDPVtDV5R
-         KMmg==;
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :references:mime-version:in-reply-to:date:dkim-signature;
+        bh=pN6ktvXR5IcGeRx1cB4+P3xO5YRnqgnQGID5P3shDMc=;
+        fh=jmB336zVDilutUuU09TXLNZ6TFwRas8MQn/v9+Y+T0w=;
+        b=gpsfDfFU83iqUTi5wQFprlzDyb6WZtH4W43vCuRSUtrd6qYfsnnMCobUV4gL8GeX0P
+         JSjhrA7+z0+uuFl9Hqf2D17W5on2swL2Z9uZsDva2iOCE+1/wMe0NyHSRsgNyo0UlzVw
+         4z/EtK4NcMnFr3274cQnP8hZYxbPfovKKsC28KlxE+TF7gVkfyek6qyH7ta2IDBaougp
+         s8fErDKSeyhAgBV6StALEAiOK+kf7kGNT3QbaRwyf1OvM+837uO2ojX5SQExJxX4iLbY
+         sqg//qxW4kUQe9VkkZY73c1yDPqbc/9S8kw1cRQNtKiJK8ibYkCdNMvx2Ce7kSiC42Xj
+         TtDw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ladChdKV;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=Wf5dAC8H;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3b8dc725esi152871885a.84.2025.06.12.14.28.15
+        by mx.google.com with ESMTPS id d75a77b69052e-4a72a531d25si17272231cf.591.2025.06.12.17.09.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Jun 2025 14:28:15 -0700 (PDT)
+        Thu, 12 Jun 2025 17:09:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ladChdKV;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=Wf5dAC8H;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uPpSJ-0005Td-1y; Thu, 12 Jun 2025 17:27:27 -0400
+	id 1uPrxJ-00016l-92; Thu, 12 Jun 2025 20:07:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1uPpSH-0005Sr-CV; Thu, 12 Jun 2025 17:27:25 -0400
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ (Exim 4.90_1) (envelope-from
+ <3E2tLaAcKCmAIMKJMBGEMMEJC.AMKOCKS-BCTCJLMLELS.MPE@flex--komlodi.bounces.google.com>)
+ id 1uPrud-0005tU-7e
+ for qemu-devel@nongnu.org; Thu, 12 Jun 2025 20:04:55 -0400
+Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1uPpSF-0005FB-Nv; Thu, 12 Jun 2025 17:27:25 -0400
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-ad8826c05f2so270253766b.3; 
- Thu, 12 Jun 2025 14:27:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from
+ <3E2tLaAcKCmAIMKJMBGEMMEJC.AMKOCKS-BCTCJLMLELS.MPE@flex--komlodi.bounces.google.com>)
+ id 1uPruZ-0000bl-Cs
+ for qemu-devel@nongnu.org; Thu, 12 Jun 2025 20:04:50 -0400
+Received: by mail-pg1-x549.google.com with SMTP id
+ 41be03b00d2f7-b26e73d375aso1444230a12.2
+ for <qemu-devel@nongnu.org>; Thu, 12 Jun 2025 17:04:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1749763641; x=1750368441; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=UGZv2VAG09mDiRoHHEgf2+bwUAgRb+R+CKa75tyGlTk=;
- b=ladChdKVgCUQmMK8OwrZ0xSw6eNEVduFh2a4d4xIJIHVmi4MjHKJU1bZMo2OFzuSEw
- v5agt1tS4EBTNVgnSZLshLYYv1xbpsm1JOwaI5p6FiXwMJ4/V9MHuVWn/Ehk7kdbOW8a
- h2rG22Ji/zfmOkZltbS9sW9i6qthoZCa9kleaIgzgBe8OkIEJa84GkLDhyngLHVA05Hh
- yiDxlG4uc0QsIBqvPNuSn6XgBFgQR8VDlX+eXCHnoQ176rl8Tf3uE2AiLrs+HE7rr1VT
- RsjOUxxPG81xpLCyy9NWdT1AD2VnX8MXPjMKnlGW5TQJX3vTK9ocPkRtPjUusSh2mWCh
- sjxA==
+ d=google.com; s=20230601; t=1749773075; x=1750377875; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=pN6ktvXR5IcGeRx1cB4+P3xO5YRnqgnQGID5P3shDMc=;
+ b=Wf5dAC8H5WjOjLP93XhN+dXmA8WPzwWgZWssReTjF0rbutcJ+pW3xClVeCHEYZy4R9
+ HtNK3rWxO9gDC/kxKoi6dQOvoznGC35JVkDxz9IVkqA4/yKgRujStIQPoVNbLUK6VieL
+ oo5KAkhjnv8MwdzkSemrD4JtJ1A6qjXRxbx4Ep4y/97VVYDvevUCTKIa0xqyXNps7Bpr
+ 9jaRSz919knoPh7SHKAf66SqU0ue9c4LVxoNo52lSsMJ6vo02GaF6xN1IrF7prZk8sWz
+ f/9TT94zF6JQXaM4fpPY2pW12Kwru9xvz7bwSNcfPvY65U9NvLr14745oivOeqSoYHqJ
+ cDyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749763641; x=1750368441;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=UGZv2VAG09mDiRoHHEgf2+bwUAgRb+R+CKa75tyGlTk=;
- b=RMA6UXtCPItBvyhumb0rToHu3K32JmOnQaVN/6gNxg08BERIZJVaYOjynpuZKgYtKt
- OaKbNJ6DXUzb1AMXU1I/Xt3N4M81DIdIWDjIMETTucpdOQOnk3fdBaHunEtKAQKuFo6e
- 2OzXd0vL9XpCnx5R+o0f9wyrH5VMuhBW+pFk216gkFojHCUOmSgEcvR+hLGssIOjJDR4
- s6Mi4dk3Zv8yNN2yZ6IG6+ryfp3SV2gQ0fV6ZxbShSboS5X+zakfLvnXyGQxrnoDaJ+2
- rxVTwPjKe0BrrvwoiVBUarc37Re0NLpdVoTEPQMS/OE48iYDhUwcHHUbDbstlaVrO8ye
- PUqA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV2Edy1RuW5qmNHm12nLqUZ4BpCqCAd+Rp03gT1ixcobsgXoBMrN+iSxne4b8vaZtp2ZLSD6syVz6o=@nongnu.org,
- AJvYcCXMGenmL4Xa9pckjwaTiACwvzkKWxqd9+oB6aJpvV14VbQHtPVglFFNgHah/CyQzqTm/+JsKekO6Q==@nongnu.org
-X-Gm-Message-State: AOJu0YzEgAsJ5bf9Kc6hsTASgKGLxfS6R8cZGzBYnU3oRn9w0sdmhURW
- /msfehu8pkpgQp5VB9n3YlpjPXYmHroMpph4teBjTfU+x/XmK/2efokb
-X-Gm-Gg: ASbGncvYS1txDVArFd/+AmkERgjhuNZH0KId03X50EH0NTayAVnvdZ4ao/92aYuFZtX
- cSbmJV7lWjtVaatN7hK4jqiQyJCiMmYXIF9mAe1lOWUdJCJFedtwKLPNVtOaOHNs0n7RI4p2ope
- 62jBUciMGioWhGHa3RIJyVknsiP4C3z554s7koxeufwQ1k3gd4VLLdGflXXgpLO7Jn8FpG78QhA
- KJymif9SlA2I5O/cJXXociz5lbwz6fvLreCb7pIXx/ks7pUtpCFA4OFmY7QYsewsY3lzHKoVOks
- ys/qcyUfaZS2yLVF5yx/iY4Lc1xf4PxFRLgOkq5KF2kOUAkUTQY19NAVGltcmKeLknmXhzUX24q
- eeBoZ69S0HnuqSYG9MAGvTH9waZfkZcwmeF7BtSyjCcREs9dU7r56C72jEVfSmNuvyANBmA==
-X-Received: by 2002:a17:907:3f9e:b0:ace:cc7f:8abe with SMTP id
- a640c23a62f3a-adec5cb1aa7mr68440666b.31.1749763641233; 
- Thu, 12 Jun 2025 14:27:21 -0700 (PDT)
-Received: from ?IPv6:::1?
- (dynamic-2a02-3100-2ff0-9b00-bd73-623e-7632-a2ac.310.pool.telefonica.de.
- [2a02:3100:2ff0:9b00:bd73:623e:7632:a2ac])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-adec81bfd69sm23672266b.51.2025.06.12.14.27.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 Jun 2025 14:27:20 -0700 (PDT)
-Date: Thu, 12 Jun 2025 21:27:18 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>, 
- =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>
-CC: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org,
- =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>
-Subject: Re: [PATCH 4/5] configure: Add dtc option
-In-Reply-To: <d2860e38-241e-4778-ad9c-7042c73edfd9@redhat.com>
-References: <20250610204131.2862-1-shentey@gmail.com>
- <20250610204131.2862-5-shentey@gmail.com>
- <cdfc561e-23a9-607a-d9a8-70e07e73e0fd@eik.bme.hu>
- <aElCJnmjrB-X9M-n@redhat.com>
- <6eb6aa79-33f8-57ea-5714-af264557f8c8@eik.bme.hu>
- <c29386d1-1a4b-4f3b-a669-4206c366ad9e@redhat.com>
- <d2860e38-241e-4778-ad9c-7042c73edfd9@redhat.com>
-Message-ID: <B55C341F-5BDE-45B5-B3F5-2F730EF4586D@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x630.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ d=1e100.net; s=20230601; t=1749773075; x=1750377875;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=pN6ktvXR5IcGeRx1cB4+P3xO5YRnqgnQGID5P3shDMc=;
+ b=ZZ2c7HqAKtb78lV40ZHyo30yCBgKlB+bi92ZWg1Qi+7Y3QBCZUN7tYzpxQuYgvKwjB
+ tLtC2j3Fs96Y9JSq7c4QOMOT4/dfbjODumoHrDDtVhFow9347uYsPRh127qlTw6Ldk4s
+ VXjv/QsXv4qgHUE5YNr+NiULMPB9Pw/RRGUb8upKgD2pXtfX2oCIQz4Wrfp3oUS4wTjS
+ FJQagDHMHg+fNWBm57Z84eTC7nwF1C709AiiA40D7TjPqp5wvzktw2ectJH8ph0rpO0T
+ +5XCUIBQW8ORjCjYpcraWxdD6Y8Zivgz4wb8lYX38PVHPMebr2k9WMVwEnwPfkoIT3hN
+ waRQ==
+X-Gm-Message-State: AOJu0YzL4U6mx/RQMA/f/U3QeWXpkE2gHpQXASmNi1mbXjP4XJw6ZR6L
+ I8zzHe0UJ6RGtXO3EzedU5OtKtF9zgcfR/qpYmri8ZRBcj9976KVz76W0Ma8bOL4vRqDBh8mvh9
+ 2knLukNj/yM+yqlBMA6rGO950CbA6wkfKw1KYQJE/9ea7p2K5VQl7QyJioAdpKovckoNKZRJuni
+ lnA0xn9KEFvZgEj8o4ab79fVjqTsKM4lGMVBvUzleo
+X-Received: from pgac23.prod.google.com ([2002:a05:6a02:2957:b0:b2e:b47d:8dc])
+ (user=komlodi job=prod-delivery.src-stubby-dispatcher) by
+ 2002:a05:6a20:244b:b0:21f:4f34:6b1
+ with SMTP id adf61e73a8af0-21facb2719dmr1204032637.14.1749773075301; Thu, 12
+ Jun 2025 17:04:35 -0700 (PDT)
+Date: Fri, 13 Jun 2025 00:04:08 +0000
+In-Reply-To: <20250613000411.1516521-1-komlodi@google.com>
+Mime-Version: 1.0
+References: <20250613000411.1516521-1-komlodi@google.com>
+X-Mailer: git-send-email 2.50.0.rc1.591.g9c95f17f64-goog
+Message-ID: <20250613000411.1516521-17-komlodi@google.com>
+Subject: [PATCH 16/19] hw/i3c/aspeed: Add I3C bus get function
+From: Joe Komlodi <komlodi@google.com>
+To: qemu-devel@nongnu.org
+Cc: venture@google.com, komlodi@google.com, clg@kaod.org, 
+ peter.maydell@linaro.org, steven_lee@aspeedtech.com, leetroy@gmail.com, 
+ jamin_lin@aspeedtech.com, andrew@codeconstruct.com.au, joel@jms.id.au, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
+ envelope-from=3E2tLaAcKCmAIMKJMBGEMMEJC.AMKOCKS-BCTCJLMLELS.MPE@flex--komlodi.bounces.google.com;
+ helo=mail-pg1-x549.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -149,129 +130,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: F/rQD5KlTM2A
+X-TUID: mtYXZ2ozB9rK
 
+To retrieve the I3C bus object normally, the order is Aspeed I3C -> DW
+I3C[n] -> bus object, so make a nice wrapper for people to use.
 
+Signed-off-by: Joe Komlodi <komlodi@google.com>
+---
+ hw/i3c/aspeed_i3c.c         | 9 +++++++++
+ include/hw/i3c/aspeed_i3c.h | 2 ++
+ 2 files changed, 11 insertions(+)
 
-Am 12=2E Juni 2025 05:46:03 UTC schrieb Paolo Bonzini <pbonzini@redhat=2Ec=
-om>:
->On 6/12/25 07:12, Paolo Bonzini wrote:
->> I'll send a patch to the upstream dtc project and you can add it to QEM=
-U via diff_files (see commit 64644bc4eab2f for an example)=2E
->This is the patch, backported to QEMU's version of the dtc subproject:
->
->diff --git a/libfdt/meson=2Ebuild b/libfdt/meson=2Ebuild
->index 0307ffb=2E=2E6581965 100644
->--- a/libfdt/meson=2Ebuild
->+++ b/libfdt/meson=2Ebuild
->@@ -30,6 +30,7 @@ libfdt_dep =3D declare_dependency(
->   include_directories: libfdt_inc,
->   link_with: libfdt,
-> )
->+meson=2Eoverride_dependency('libfdt', libfdt_dep)
->  install_headers(
->   files(
->diff --git a/meson=2Ebuild b/meson=2Ebuild
->index b23ea1b=2E=2E7def0a6 100644
->--- a/meson=2Ebuild
->+++ b/meson=2Ebuild
->@@ -54,6 +54,7 @@ version_gen_h =3D vcs_tag(
->  subdir('libfdt')
-> +dtc_tools =3D []
-> if get_option('tools')
->   flex =3D find_program('flex', required: true)
->   bison =3D find_program('bison', required: true)
->@@ -77,7 +78,7 @@ if get_option('tools')
->   )
->    if cc=2Echeck_header('fnmatch=2Eh')
->-    executable(
->+    dtc_tools +=3D executable(
->       'convert-dtsv0',
->       [
->         lgen=2Eprocess('convert-dtsv0-lexer=2El'),
->@@ -88,7 +89,7 @@ if get_option('tools')
->     )
->   endif
-> -  executable(
->+  dtc_tools +=3D executable(
->     'dtc',
->     [
->       lgen=2Eprocess('dtc-lexer=2El'),
->@@ -108,7 +109,7 @@ if get_option('tools')
->   )
->    foreach e: ['fdtdump', 'fdtget', 'fdtput', 'fdtoverlay']
->-    executable(e, files(e + '=2Ec'), dependencies: util_dep, install: tr=
-ue)
->+    dtc_tools +=3D executable(e, files(e + '=2Ec'), dependencies: util_d=
-ep, install: true)
->   endforeach
->    install_data(
->@@ -118,6 +119,10 @@ if get_option('tools')
->   )
-> endif
-> +foreach e: dtc_tools
->+  meson=2Eoverride_find_program(e=2Ename(), e)
->+endforeach
->+
-> if not meson=2Eis_cross_build()
->   if py=2Efound() and swig=2Efound()
->     subdir('pylibfdt')
->
->
->and this is how you can then find dtc in QEMU's meson=2Ebuild:
->
->diff --git a/meson=2Ebuild b/meson=2Ebuild
->index 61595015802=2E=2E831678b4580 100644
->--- a/meson=2Ebuild
->+++ b/meson=2Ebuild
->@@ -2121,13 +2121,15 @@ if numa=2Efound() and not cc=2Elinks('''
-> endif
->  fdt =3D not_found
->+dtc =3D not_found
-> fdt_opt =3D get_option('fdt')
-> if fdt_opt =3D=3D 'enabled' and get_option('wrap_mode') =3D=3D 'nodownlo=
-ad'
->   fdt_opt =3D 'system'
-> endif
-> if fdt_opt in ['enabled', 'system'] or (fdt_opt =3D=3D 'auto' and have_s=
-ystem)
->   fdt =3D cc=2Efind_library('fdt', required: fdt_opt =3D=3D 'system')
->-  if fdt=2Efound() and cc=2Elinks('''
->+  dtc =3D find_program('dtc', required: fdt_opt =3D=3D 'system')
->+  if dtc=2Efound() and fdt=2Efound() and cc=2Elinks('''
->      #include <libfdt=2Eh>
->      #include <libfdt_env=2Eh>
->      int main(void) { fdt_find_max_phandle(NULL, NULL); return 0; }''',
->@@ -2136,8 +2138,12 @@ if fdt_opt in ['enabled', 'system'] or (fdt_opt =
-=3D=3D 'auto' and have_system)
->   elif fdt_opt !=3D 'system'
->     fdt_opt =3D get_option('wrap_mode') =3D=3D 'nodownload' ? 'disabled'=
- : 'internal'
->     fdt =3D not_found
->+    dtc =3D not_found
->   else
->-    error('system libfdt is too old (1=2E5=2E1 or newer required)')
->+    if dtc=2Efound()
->+      error('system libfdt is too old (1=2E5=2E1 or newer required)')
->+    else
->+      error('device tree compiler not found')
->   endif
-> endif
-> if fdt_opt =3D=3D 'internal'
->@@ -2145,7 +2148,8 @@ if fdt_opt =3D=3D 'internal'
->   libfdt_proj =3D subproject('dtc', required: true,
->                            default_options: ['tools=3Dfalse',  'yaml=3Dd=
-isabled',
->                                              'python=3Ddisabled', 'defau=
-lt_library=3Dstatic'])
->-  fdt =3D libfdt_proj=2Eget_variable('libfdt_dep')
->+  fdt =3D dependency('libfdt', required: true)
->+  dtc =3D find_program('dtc', required: true)
-> endif
->  rdma =3D not_found
->
+diff --git a/hw/i3c/aspeed_i3c.c b/hw/i3c/aspeed_i3c.c
+index 1ad25e5a00..af1ff5bc12 100644
+--- a/hw/i3c/aspeed_i3c.c
++++ b/hw/i3c/aspeed_i3c.c
+@@ -153,6 +153,15 @@ static const MemoryRegionOps aspeed_i3c_ops = {
+     }
+ };
+ 
++I3CBus *aspeed_i3c_get_bus(AspeedI3CState *s, uint8_t bus_num)
++{
++    if (bus_num < ARRAY_SIZE(s->devices)) {
++        return s->devices[bus_num].bus;
++    }
++    /* Developer error, fail fast. */
++    g_assert_not_reached();
++}
++
+ static void aspeed_i3c_reset(DeviceState *dev)
+ {
+     AspeedI3CState *s = ASPEED_I3C(dev);
+diff --git a/include/hw/i3c/aspeed_i3c.h b/include/hw/i3c/aspeed_i3c.h
+index 9833292ec0..b3e4d1055c 100644
+--- a/include/hw/i3c/aspeed_i3c.h
++++ b/include/hw/i3c/aspeed_i3c.h
+@@ -34,3 +34,5 @@ typedef struct AspeedI3CState {
+     uint8_t id;
+ } AspeedI3CState;
+ #endif /* ASPEED_I3C_H */
++
++I3CBus *aspeed_i3c_get_bus(AspeedI3CState *s, uint8_t bus_num);
+-- 
+2.50.0.rc1.591.g9c95f17f64-goog
 
-Thanks Paolo, I'll send a v2=2E
-
-Best regards,
-Bernhard

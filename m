@@ -1,193 +1,240 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1697186njc;
-        Mon, 16 Jun 2025 00:56:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUgOu6q40X1lC3ir/R60iMdS2MWX0oRsXu7SGN2uP4fk1EDVkwF2Y9widT7IdHJObrUfO8kBeVQDKQvpg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHoAirUHmI/oqq5KgpvWACmtZSkRob/oNYCSnlPpsYDiDjyI7nNTpMz5A3SP2Qt/t6BiuJG
-X-Received: by 2002:ad4:5aa2:0:b0:6fb:35fa:7802 with SMTP id 6a1803df08f44-6fb47801141mr124522446d6.36.1750060575895;
-        Mon, 16 Jun 2025 00:56:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750060568; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1721868njc;
+        Mon, 16 Jun 2025 02:02:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWOHHsA3sxRDez3zz/xXvwABjizWceT9f1XzVxOhVHFiN/Eaqk521Vx77yrbNyJx+/LgldtOVV7fhhF1w==@linaro.org
+X-Google-Smtp-Source: AGHT+IHND4oc2Nt0CnJ31yWK8uVPVU0LPs9mrkAYwrX6E7wsBiB5+wiOtBY/yltX/cQJiK7DqHob
+X-Received: by 2002:a05:6a00:2181:b0:746:2ae9:fc42 with SMTP id d2e1a72fcca58-7489cfc37a3mr11688019b3a.19.1750064524355;
+        Mon, 16 Jun 2025 02:02:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750064524; cv=none;
         d=google.com; s=arc-20240605;
-        b=l3DnL+xbIVZYKmBZ2GzVd3pjq/2dPaU+jqp7oxUPG7dNcAl9WOWmpu2cCkUM5C3jIp
-         2JTlLxrlp0EX6xb8HKHOcz27o6gHng5ShRjpxv8bdP3eBa2aD37URa7OhdGzK6W05sjq
-         kDh7CpyQeoPaZE/x0ubiExIvjlyi2blbSNm+sHeGkPIy3AvC6WkVXJ2rAeb19or7QZJm
-         TxTsduh0yTH/moVGZPQM7BFTisKwVmZlb5d+yITu11Nlbn9zBERB3EDWYF6Ae3JOLB8b
-         2A19wJdL6W90g3XgeyaWorLxLVYZxWFBbKbwK1S8FjfWpmbAZV7QoILFiLd4GF8nJIHp
-         Ym8A==
+        b=gNiUUauxnyx0yIa4fFSDWv4e3GmS7XXXNl/0CjaCdVhdiRbAh1NareHjvukKWBWhg5
+         QFgTHPMW0S+HCOX6WqxSa6PciPrhJV9+6hQnK11+jAx08ULZoDoBXPBf+1HVgSxa3hix
+         W8BumZwal9BdJZO43owuhhqYG6FkX76BnqgZIFCNSBTzG7o3avuYKfUeQqLba5OizBit
+         of23NHW9Vp7xYplw+iFVaxXmFObHg7kcxsWvZDmO6XqScb6I36JdsDeY/IuWgQ4+3W3w
+         0LaYKYO9/3q9MLLe+1WRVMr45L+Ag7kEkA0kcb3hDayY8t+VDFM5/VbnYX46qFJPBRIa
+         vENA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=OIB7jghG2vMEbdjsvXLJzUELN4sFHnh2MPdOcqhyoUg=;
-        fh=M8mEhNhd9RXTLBEY589YUiKCR9ecvpNP7UIzbHRe5gQ=;
-        b=ODW42tBwvqNpdqZQowMQOQZWhpSJw+jyC1HnjxAtUIApRnX7RAPRblvwqo64F+IguB
-         1utRbhwGyPXxMyfPj9GMJ7B5eVzRswlzGOF0CbAzr3T0zaSld5av6NVaD7l4VfMrGig1
-         rNM7H0QljR0Az/SwknTrPJjNel24GQQQEC0aB3ITe5K7yCv3NmTiLKKgQYPqm+LGIiLJ
-         yZuTP8M6pyJGVVX0yCpG9yYMzsV2dImrxFZTVQGwltpFTDIHln8gFHm4JTIyQPYdu8AV
-         fcAZwZJEQrk3lmS6NpCSH4C6AiTZ2E+gDV8jvj37Mu/zRcAVxGl4HLsDEzdFmOz+M/s3
-         NkhQ==;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=KScVJRjX5qHx2qPV2Idy8E22L/QoVbymW4s2ZmhlRqk=;
+        fh=RvH3M8XebZfaMMw+1IHIU6D6fajZyB6RagMQLzVoZgI=;
+        b=B+3+XWzcfR/mNrO2cGaTSds9Z4F02dK97g3R/h70UKWeyOnZS3FaR+vrFArQu2f3FV
+         0940akmNJrerRJdkb1jzDFqJNXmcOZ7EUCpTxOJolfh9OM46epndFhUdMxlxCJJw78ZK
+         d8Rn+RsOOmU6ibRleUIjebltO76P8LCDvAb9TTJUw2SNllljfXkXzPWJD08MfgNfZj56
+         UpksjA+ydSv+3b5Z/VF1b8o0OyveXDXML9x+fQWEcFAcyI7Cb5zO0pWNXG6Mf4Joqrq1
+         +lfoPfyGpc7xmlF68fRSNX99CfVlI0HJ5czn5+wOOFzarz+YOpHAmCUUmqFUS7aDDQjQ
+         JaEQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fb35ada26dsi104141126d6.101.2025.06.16.00.56.08
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Jun 2025 00:56:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=u8P2EHe+;
+       spf=pass (google.com: domain of odaki@rsg.ci.i.u-tokyo.ac.jp designates 49.212.243.89 as permitted sender) smtp.mailfrom=odaki@rsg.ci.i.u-tokyo.ac.jp;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp
+Return-Path: <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Received: from www3579.sakura.ne.jp (www3579.sakura.ne.jp. [49.212.243.89])
+        by mx.google.com with ESMTPS id d2e1a72fcca58-7489010df7bsi9685111b3a.282.2025.06.16.02.02.03
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 16 Jun 2025 02:02:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of odaki@rsg.ci.i.u-tokyo.ac.jp designates 49.212.243.89 as permitted sender) client-ip=49.212.243.89;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uR4hF-0005eJ-6y; Mon, 16 Jun 2025 03:56:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=g70R=Y7=kaod.org=clg@ozlabs.org>)
- id 1uR4gY-0005WE-Nt; Mon, 16 Jun 2025 03:55:21 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=g70R=Y7=kaod.org=clg@ozlabs.org>)
- id 1uR4gW-0005la-0v; Mon, 16 Jun 2025 03:55:18 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bLMjn4mS7z4wcm;
- Mon, 16 Jun 2025 17:55:09 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bLMjj2yBKz4wbd;
- Mon, 16 Jun 2025 17:55:05 +1000 (AEST)
-Message-ID: <63d1cb84-7e65-4c60-a718-92a2807e53ea@kaod.org>
-Date: Mon, 16 Jun 2025 09:55:03 +0200
+       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=u8P2EHe+;
+       spf=pass (google.com: domain of odaki@rsg.ci.i.u-tokyo.ac.jp designates 49.212.243.89 as permitted sender) smtp.mailfrom=odaki@rsg.ci.i.u-tokyo.ac.jp;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp
+Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
+	(authenticated bits=0)
+	by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 55G8rZGk082978
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+	Mon, 16 Jun 2025 17:53:35 +0900 (JST)
+	(envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=KScVJRjX5qHx2qPV2Idy8E22L/QoVbymW4s2ZmhlRqk=;
+        c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+        h=Message-ID:Date:From:Subject:To;
+        s=rs20250326; t=1750064017; v=1;
+        b=u8P2EHe+1Y+3zACB4AUA3bkn/KAg15g60iwqmmx8tIcExa0kj2B3qDQM0W6d7OY+
+         VSnFJGbZc2rJgdN5gK8R7ctygc0RUk3VAF7yFGFwbbQEaW7nx/1j99kraEJM522U
+         880sw6x8Y0OFe7fe1iLwC4VUTiJZfCP2sX7s/EF+VrmF7u3x2fGeDYlp2LNKYWbj
+         EIMlWMtydWaTXPmIe6mZv1bmhCS9fwPPGINHFbhzxcqIJs4ukEN6xFpliyxAsq4l
+         kdwV17yNkvKZujSwi0NB3erFgwCY1Bv8y8tlCJDE9A/q9Fru+iBod8QBtDaFASvS
+         xtUzTYDCN4eH5DW21FDDYg==
+Message-ID: <ffdab955-0255-4781-8bcf-909dcc195a01@rsg.ci.i.u-tokyo.ac.jp>
+Date: Mon, 16 Jun 2025 17:53:35 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/12] include/hw: replace FSF postal address with
- licenses URL
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Sean Wei <me@sean.taipei>, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-References: <20250613.qemu.patch@sean.taipei>
- <20250613.qemu.patch.05@sean.taipei>
- <3aa8de03-911e-4906-a0c5-5b8ea269ad28@kaod.org> <aE_D5zVzf3qHRP-2@redhat.com>
- <accf0fab-782d-4e0a-9f13-f6a940fc86a1@kaod.org> <aE_ML3jtVgweJMid@redhat.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
- 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
- yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
- 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
- ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
- RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
- gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
- 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
- Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
- tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
- IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
- BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
- M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
- 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
- jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
- TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
- neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
- VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
- QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
- ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
- WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
- wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
- SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
- cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
- S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
- 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
- hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
- tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
- t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
- OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
- KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
- o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
- ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
- IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
- d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
- +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
- HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
- l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
- 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
- ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
- KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <aE_ML3jtVgweJMid@redhat.com>
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Subject: Re: [PATCH v2 00/12] Python: Fix 'make check-dev' and modernize to
+ 3.9+
+To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org
+Cc: Joel Stanley <joel@jms.id.au>, Yi Liu <yi.l.liu@intel.com>,
+        =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        Helge Deller <deller@gmx.de>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Andrew Jeffery <andrew@codeconstruct.com.au>,
+        Fabiano Rosas
+ <farosas@suse.de>, Alexander Bulekov <alxndr@bu.edu>,
+        Darren Kenny <darren.kenny@oracle.com>,
+        Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+        =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+        Ed Maste <emaste@freebsd.org>, Gerd Hoffmann <kraxel@redhat.com>,
+        Warner Losh <imp@bsdimp.com>, Kevin Wolf <kwolf@redhat.com>,
+        Tyrone Ting <kfting@nuvoton.com>, Eric Blake <eblake@redhat.com>,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        Yoshinori Sato <ysato@users.sourceforge.jp>,
+        Troy Lee <leetroy@gmail.com>, Halil Pasic <pasic@linux.ibm.com>,
+        Michael Roth <michael.roth@amd.com>,
+        Laurent Vivier <laurent@vivier.eu>, Ani Sinha <anisinha@redhat.com>,
+        Weiwei Li <liwei1518@gmail.com>, Eric Farman <farman@linux.ibm.com>,
+        Steven Lee <steven_lee@aspeedtech.com>,
+        Brian Cain <brian.cain@oss.qualcomm.com>,
+        Li-Wen Hsu <lwhsu@freebsd.org>, Jamin Lin <jamin_lin@aspeedtech.com>,
+        qemu-s390x@nongnu.org,
+        Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+        qemu-block@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
+        =?UTF-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
+        Maksim Davydov <davydov-max@yandex-team.ru>,
+        Niek Linnenbank <nieklinnenbank@gmail.com>,
+        =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+        Christian Borntraeger <borntraeger@linux.ibm.com>,
+        Paul Durrant <paul@xen.org>,
+        Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+        Jagannathan Raman <jag.raman@oracle.com>,
+        Igor Mitsyanko <i.mitsyanko@gmail.com>,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        Markus Armbruster <armbru@redhat.com>,
+        Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+        "Michael S. Tsirkin" <mst@redhat.com>, Anton Johansson <anjo@rev.ng>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Cleber Rosa <crosa@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+        Yanan Wang <wangyanan55@huawei.com>, qemu-arm@nongnu.org,
+        Hao Wu <wuhaotsh@google.com>, Mads Ynddal <mads@ynddal.dk>,
+        Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+        qemu-riscv@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+        Jason Wang <jasowang@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+        Michael Rolnik <mrolnik@gmail.com>, Zhao Liu <zhao1.liu@intel.com>,
+        Alessandro Di Federico <ale@rev.ng>, Thomas Huth <thuth@redhat.com>,
+        Antony Pavlov <antonynpavlov@gmail.com>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>, Hanna Reitz <hreitz@redhat.com>,
+        Ilya Leoshkevich <iii@linux.ibm.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+        Daniel Henrique Barboza <danielhb413@gmail.com>,
+        Qiuhao Li <Qiuhao.Li@outlook.com>, Hyman Huang <yong.huang@smartx.com>,
+        =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+        Magnus Damm <magnus.damm@gmail.com>, qemu-rust@nongnu.org,
+        Bandan Das <bsd@redhat.com>,
+        Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+        kvm@vger.kernel.org, Fam Zheng <fam@euphon.net>,
+        Jia Liu <proljc@gmail.com>,
+        =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+        Alistair Francis <alistair@alistair23.me>,
+        Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+        Kyle Evans <kevans@freebsd.org>, Song Gao <gaosong@loongson.cn>,
+        Alexandre Iooss <erdnaxe@crans.org>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+        Peter Xu <peterx@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+        BALATON Zoltan <balaton@eik.bme.hu>,
+        Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        =?UTF-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?= <fbarrat@linux.ibm.com>,
+        qemu-ppc@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>,
+        Beniamino Galvani <b.galvani@gmail.com>,
+        David Hildenbrand
+ <david@redhat.com>,
+        Richard Henderson <richard.henderson@linaro.org>,
+        David Woodhouse <dwmw2@infradead.org>,
+        Eduardo Habkost
+ <eduardo@habkost.net>,
+        Ahmed Karaman <ahmedkhaledkaraman@gmail.com>,
+        Huacai Chen <chenhuacai@kernel.org>,
+        Mahmoud Mandour
+ <ma.mandourr@gmail.com>,
+        Harsh Prateek Bora <harshpb@linux.ibm.com>
+References: <20250612205451.1177751-1-jsnow@redhat.com>
+Content-Language: en-US
+In-Reply-To: <20250612205451.1177751-1-jsnow@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=g70R=Y7=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.097, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KB9ZC2EBrjZx
+X-TUID: CJbMNuyOoGB1
 
-On 6/16/25 09:47, Daniel P. Berrangé wrote:
-> On Mon, Jun 16, 2025 at 09:29:35AM +0200, Cédric Le Goater wrote:
->> On 6/16/25 09:13, Daniel P. Berrangé wrote:
->>> On Sat, Jun 14, 2025 at 07:29:09AM +0200, Cédric Le Goater wrote:
->>>> Hello Sean,
->>>>
->>>> On 6/13/25 18:44, Sean Wei wrote:
->>>>> Some of the GPLv2 boiler-plate still contained the
->>>>> obsolete "51 Franklin Street" postal address.
->>>>>
->>>>> Replace it with the canonical GNU licenses URL recommended by the FSF:
->>>>> https://www.gnu.org/licenses/
->>>>>
->>>>> Signed-off-by: Sean Wei <me@sean.taipei>
->>>>
->>>> Instead,  I would remove the license boiler plate and add :
->>>>
->>>>     SPDX-License-Identifier: GPL-2.0-or-later
->>>
->>> This is *NOT* something we are doing for existing code sources,
->>> unless the person removing it is the exclusive copyright
->>> holder on the file.
->> Ah. So I misunderstood.
->>
->> How is license boiler plate different from the SPDX identifier tag ?
+On 2025/06/13 5:54, John Snow wrote:
+> This series does a couple things that I'll probably end up splitting out
+> into smaller series if history is any guide, but either way, here it
+> goes:
+
+I'm surprised with the large number of Ccs. I suggest splitting the 
+series with subsystem boundaries to reduce the number of Ccs for each 
+split series.
+
 > 
-> It achieves the same aims, but notice GPL clause 1
-> 
->    "keep intact all the notices that refer to this License and
->     to the absence of any warranty;"
-> 
-> and yes, some projects have none the less done a wholesale replacement of
-> boilerplate. I don't know how they rationalized ignoring this license
-> requirement. It is simpler to just preserve boilerplate as-is that to
-> debate the legal nuances of this.
-OK. Then, let's forget about this replacement.
+> A) Convert qemu.git/python/ to a PEP517/pyproject.toml
+> package. Ultimately this means deleting setup.py and fully migrating to
+> newer python infrastructure. I think this should be safe to do by now,
+> but admittedly I am not *confident* as it relies on setuptools versions
+> in the wild, not python versions. My motivation for trying it is to fix
+> "make check-dev", which has been broken for the last two Fedora releases
+> under newer setuptools which have started removing support for the
+> pre-PEP517 packaging formats, which will only continue to get worse from
+> here on out.
 
-Thanks,
+I'm afraid this change may not be safe.
 
-C.
+The documentation of setuptools says pyproject.toml is supported since 
+61.0.0:
+https://setuptools.pypa.io/en/stable/userguide/pyproject_config.html
 
+Looking at Repology as suggested in docs/about/build-platforms.rst, the 
+following distributions have older setuptools, unfortunately:
+CentOS Stream 9: 53.0.0
+Debian 11: 44.1.1
+Ubuntu 22.04: 44.1.1
 
+docs/about/build-platforms.rst also says:
+ > Optional build dependencies
+ >   Build components whose absence does not affect the ability to build
+ >   QEMU may not be available in distros, or may be too old for our
+ >   requirements. Many of these, such as additional modules for the
+ >   functional testing framework or various linters, are written in
+ >   Python and therefore can also be installed using ``pip``.
+
+In my understanding, QEMU Python Tooling is an optional component so 
+dropping the support of old Linux distribution is tolerated according to 
+the documentation. But I think we still need to assess the potential 
+impact on the usability to justify that.
+
+A possible option is to fetch a new version of setuptools version when 
+necessary. The same documentation says:
+ > Python build dependencies
+ >   Some of QEMU's build dependencies are written in Python.  Usually
+ >   these are only packaged by distributions for the default Python
+ >   runtime.
+ >   If QEMU bumps its minimum Python version and a non-default runtime
+ >   is required, it may be necessary to fetch python modules from the
+ >   Python Package Index (PyPI) via ``pip``, in order to build QEMU.
+
+Automatically fetching a compatible version of setuptools as described 
+here will reduce the adverse effect of the change.
+
+The documentation page of setuptools I mentioned earlier has the 
+following note:
+ > If compatibility with legacy builds or versions of tools that don’t
+ > support certain packaging standards (e.g. PEP 517 or PEP 660), a
+ > simple setup.py script can be added to your project [1] (while keeping
+ > the configuration in pyproject.toml):
+ >
+ > from setuptools import setup
+ >
+ > setup()
+
+I have no idea what it means though. (Will it automatically fetch new 
+setuptools to parse pyproject.toml or something?)
+
+> C) Move us to 3.9+ style type hints. They are deprecated in 3.9, and
+> *could* be removed at any time. I figured now was a good time as any to
+> get rid of them before they become a problem randomly some day in the
+> future.
+
+I guess you meant that the old style type hints are deprecated.
+
+Regards,
+Akihiko Odaki

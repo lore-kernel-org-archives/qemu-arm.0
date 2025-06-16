@@ -1,141 +1,131 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1657110njc;
-        Sun, 15 Jun 2025 22:54:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUNNV4ZWHxfiwsqqoDRKljZh6F4jKzEyMErzQ5xbat8vK3UHfcbYEnGmZ8l/L2e8hbGkeMjWsbm68be0w==@linaro.org
-X-Google-Smtp-Source: AGHT+IFPWHHyPVeV1YfeP4u25rEpscDeZay6EJ8JU1qd9TRXaxKsZr7HXpAOEyy0C0wgMABjEPAd
-X-Received: by 2002:ac8:59cc:0:b0:494:b148:930e with SMTP id d75a77b69052e-4a73c5d1580mr139616731cf.49.1750053283966;
-        Sun, 15 Jun 2025 22:54:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750053283; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1665814njc;
+        Sun, 15 Jun 2025 23:19:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUCYnoASqRqOvLYoers1rE/2MFCEK9npFNDmFwuOcWMIN0vephA1YV+lb1llsaGh6OK4NW+Rz9EZ5pYPw==@linaro.org
+X-Google-Smtp-Source: AGHT+IG3xvY+SQIwXoC+T+VFM4qhICHMvfILQebUVpiCCJvxL3DfS9igbeI7/rQbHqG5X9sPz/yB
+X-Received: by 2002:a05:6214:f67:b0:6e8:fa72:be4c with SMTP id 6a1803df08f44-6fb47773489mr135868406d6.1.1750054788457;
+        Sun, 15 Jun 2025 23:19:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750054788; cv=none;
         d=google.com; s=arc-20240605;
-        b=dNbpU3/Yf+g5ZvezA7ZpE/vXNPndTuedzC6MP2PqwKmp+D4e/dZoNDR289lIbd8X8b
-         5rNuzO0MbLu6wLguuVdNhbQ2UnSRGwYxgg/oA6Ad5qsSU8kOXjU/al4HdFPlCkuKZdF7
-         yPffIqAUF9r1GUiAXdHm3Epigh1EvTiBOPAOQdvyvr8/+1fvOsKImrLCyxpImJKw57qA
-         toMbgtk15jPOolLIbvSWBl9Sv62RXWbc64SN5Xj8YmGdkWIYijMPIIFYb4seVghBMC58
-         eGEQLQk7mRODo19D6+ScQG7drhYJ3ItIq2S3lWPLS4bPJFbfGqJEMBSIvFa4Wn4dkbCD
-         C3Bw==
+        b=NaVItlQFP4j/p96dH9dMEJsYjgTh37ZF1kdDyjZDqkjCEA3RE//0489qDW6Z8pzeJ5
+         y4ve6etQWLM0RaFiFqvAKYDyQ8hwWvzVH9r6kU1v+2En17GwOLbbU/dA9bkt4y5VHkte
+         5rRbO27r3BeSLw0DO33ZHNM2IgXaADtnl9SMcSrV48NK/2kR8dmLJAfOwo5DuRtSuGkW
+         ISp0LeeReN2r00LCjXGGMMfzVnljGAIb7ZsucFZGuL2dtjeFh2W6k4qPnxLeBvALfNOO
+         JCwaQmVj9bZWo+33O0zhTwMj7rHgcyXb8j9cYnBiEELId2RCETjrOjkZSR8TlulMtW8p
+         FreQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=kMfRDTTd+z5rrx4+j/hPhKppRd2jNHrTWcCtgthdrCg=;
-        fh=1u2ZyF1Ze6UKS8kQZ9b6yElmvsXYwW3TEsYs55zKbss=;
-        b=O1oP3nAn14Dg1+0Nj+wEObsTlLs6c7+V7pQXMA3uD6tvTKyMQqnJWgWFlcF9SN3Bni
-         MCWC6e/NFG/LlR3qjcr0wgcszsDH/MPlC8+JiXlnYobCQFbcIqNuL+p4OnnIppzllBZZ
-         mRGz3LuLO2stIk3vPjmxgLBiLQK4Tt1cJEPYTfUoDKZXsTc53gOIoROlsj3FXzWpBnWq
-         F3QRAROB9fvurIxhM/5LoPdyr1dl+j8MDyFNVdLEngzg/JPnBTbBfFkgofRYlfk9ZdJK
-         Q9Tcs9qEQ8+uVVNuUs8ECjaXQcz44LtNWqV9EcwFH/YhBxeh0CFyk4M0E7pAjRBh3zCH
-         TiaQ==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=5M5ML9B5ybonuAnl/YeCdH6LX4IwCujTVZKyGd6ZCsw=;
+        fh=6XPaMxRZ3L/ngtVzusotL8txm2TZqSp9e/qEQo056qU=;
+        b=RNlrADlWoX0RpWG1jwyQED/n9olAOEVe58dupLxEyCH1/+Ot0iAHPm2LUslugHyS6d
+         cYz0+/XMJ9uqDOKB2PNAoULQyOdpt7VoGC/OqDIAcc5/GNvmbX4xpbqlMQV1dd2TS+0r
+         WDynzJW2pLzx/4vRDKqhksbP5vEdomOiX/DhVs19U4StkpGnX4/9TnnkePdY+lWHY+FO
+         Iavh9KmFD6yI8F2zW8W1yZfTGnTqaAOzZzDoAvsqovB/cvrZuEUa5L07ZKuQ14+8c5LD
+         RniKZy5ELKqqyUluFAaz1KM7kfUUPSDmixXlCSYMOwqJZp1Qj+qOL2EL8MCNQOrzVh3J
+         A8aQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YD9A2lNa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a72a47d9c9si91311811cf.192.2025.06.15.22.54.43
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fb35c2c218si98055846d6.413.2025.06.15.23.19.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 15 Jun 2025 22:54:43 -0700 (PDT)
+        Sun, 15 Jun 2025 23:19:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YD9A2lNa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uR2nX-0004j9-Te; Mon, 16 Jun 2025 01:54:23 -0400
+	id 1uR3Bo-0005Am-Vi; Mon, 16 Jun 2025 02:19:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uR2nI-0004hH-DE
- for qemu-arm@nongnu.org; Mon, 16 Jun 2025 01:54:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <SRS0=g70R=Y7=kaod.org=clg@ozlabs.org>)
+ id 1uR3BD-0004x4-8Y; Mon, 16 Jun 2025 02:18:52 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uR2nG-0000F7-Q4
- for qemu-arm@nongnu.org; Mon, 16 Jun 2025 01:54:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1750053245;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=kMfRDTTd+z5rrx4+j/hPhKppRd2jNHrTWcCtgthdrCg=;
- b=YD9A2lNacBzROCpTE5X3Y87yLc7FXaXRBvVdXrEo6iLUkOX0/PvvEkiVHQH3aZKtgP/qlX
- cCI+TFw8yfz7c4070od1V8jV6kCRqZ8kV4LCp7Bg6j6sP/lB4xm1DSZ44lTJcic+Dx2qcm
- qC0iW6nY8rqL8mPy6TRQ5QawR8XZWAw=
-Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com
- [209.85.215.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-586-Yk3afi80MD6h494B_t1fPA-1; Mon, 16 Jun 2025 01:54:04 -0400
-X-MC-Unique: Yk3afi80MD6h494B_t1fPA-1
-X-Mimecast-MFC-AGG-ID: Yk3afi80MD6h494B_t1fPA_1750053243
-Received: by mail-pg1-f198.google.com with SMTP id
- 41be03b00d2f7-b2c38df7ed2so2956505a12.3
- for <qemu-arm@nongnu.org>; Sun, 15 Jun 2025 22:54:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1750053243; x=1750658043;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=kMfRDTTd+z5rrx4+j/hPhKppRd2jNHrTWcCtgthdrCg=;
- b=UGNQJ38ILBWmIqYnQ6YYqSBSZMxxyKqHhZLrNGgcHsuQ0Bc14y7Csk++hnfLCjXKmx
- 0Fe7tM7SrcY64RfTpgp3bUwenBpFhbrZ5C2T4TWuBYzMnXF9sTFuQrreDGpw3H8KdgbJ
- ZYYdMgWcafSTpX6qOzLbWB8pWcFxNsvhKiQpbGc7Ab4W4b7eDNcq//MbQTqY70BgViy4
- gbR6tPHwMbVHQJI+M0WnMcF090AP/COwZxe1CPe+aF/rUY0vnTlu6WJSWkYVu6q7651j
- O6QdFCqpKZAlXtX4xCKKNOBdX6Fi7KJaBhTaw10UToUs6FY0Wx+3RATrohCUICblKBk+
- jrsQ==
-X-Gm-Message-State: AOJu0YxvwZvJqnK86LlOjAj9ZftW+IJ6CTSb+uOMrQqaPLFRjLSNDLAM
- QqeqDBkX9S0XPjltluTxyM/vju4c9WaCN/CE5rxeJHNNJ70DD4nbpAnM9dvGjk7UiOg6FRnEP3D
- XhpMrPnK/wg3cjSmOufStngq+Npi8m0b65GkRUgVehY2lEyGpiCSdLw==
-X-Gm-Gg: ASbGnctLO9OEGuPSFXV6keUxFQ05AK/YnLwMeUrt3NTp03Y/fWeInTO8ttzJBTaW04N
- B5JVq8QFVbZakR5EpbCX1tL1PlF2Oj7m/EynPdb2eWIWVv9SY+HhRNflanp3QbKF3Z8LOB3d3ua
- iErHSAgTkrW1LVdquybaaV0kUJQ2TkpdUe5brH9iI/SWY0Z3ImPfDpYIeE8GD6IHAY5Q04IDQVy
- eQCrF6KeKba5usbtwY6sssxPf+2ezcDVDDUyd828H81hQcA977pQKAreiO4IGKGMlu5aenRKxbX
- W8+v0TbJUCOXqod6TeNXDAgg3A==
-X-Received: by 2002:a17:90b:5150:b0:312:1143:cf8c with SMTP id
- 98e67ed59e1d1-313f1cafae6mr13251689a91.16.1750053243387; 
- Sun, 15 Jun 2025 22:54:03 -0700 (PDT)
-X-Received: by 2002:a17:90b:5150:b0:312:1143:cf8c with SMTP id
- 98e67ed59e1d1-313f1cafae6mr13251667a91.16.1750053243010; 
- Sun, 15 Jun 2025 22:54:03 -0700 (PDT)
-Received: from [10.72.116.52] ([209.132.188.88])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-313c1bcbb39sm7714920a91.8.2025.06.15.22.54.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 15 Jun 2025 22:54:02 -0700 (PDT)
-Message-ID: <2daf32b5-1279-444f-89fe-65633c1ec9f7@redhat.com>
-Date: Mon, 16 Jun 2025 13:53:59 +0800
+ (Exim 4.90_1) (envelope-from <SRS0=g70R=Y7=kaod.org=clg@ozlabs.org>)
+ id 1uR3B8-0003Af-Th; Mon, 16 Jun 2025 02:18:50 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bLKZN10ljz4wcm;
+ Mon, 16 Jun 2025 16:18:36 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bLKZJ28hwz4wb0;
+ Mon, 16 Jun 2025 16:18:31 +1000 (AEST)
+Message-ID: <157ec442-1d6e-42b2-aa0d-56a2d6f11414@kaod.org>
+Date: Mon, 16 Jun 2025 08:18:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/2] hw/arm: Add the romfile compatatibility
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- Eric Auger <eauger@redhat.com>, qemu-devel@nongnu.org
-References: <20250609073408.2083831-1-shahuang@redhat.com>
- <20250609073408.2083831-3-shahuang@redhat.com>
- <CAFEAcA8eA2wX1oQeNJfNBYq1NhHgoemYJ-ybOYAgBq2-t9ZPzw@mail.gmail.com>
- <aEak8utPPkHepVfR@redhat.com>
-From: Shaoqin Huang <shahuang@redhat.com>
-In-Reply-To: <aEak8utPPkHepVfR@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: MrC7U6PospExFnk3eVAqqVfRLC_doB4jk5S_aJt3E1o_1750053243
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+Subject: Re: [PATCH v3] hw/misc/aspeed_scu: Handle AST2600 protection key
+ registers correctly
+To: Tan Siewert <tan@siewert.io>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org
+References: <20250613181906.50078-1-tan@siewert.io>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250613181906.50078-1-tan@siewert.io>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=shahuang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=g70R=Y7=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.097, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -150,68 +140,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: duey3pU1Ex5Z
+X-TUID: kJ53dSN2eKC3
 
-
-
-On 6/9/25 5:10 PM, Daniel P. Berrangé wrote:
-> On Mon, Jun 09, 2025 at 09:48:36AM +0100, Peter Maydell wrote:
->> On Mon, 9 Jun 2025 at 08:34, Shaoqin Huang <shahuang@redhat.com> wrote:
->>>
->>> On arm64, it doesn't use the vgabios-ramfb.bin, so set the property
->>> "use-legacy-x86-rom" to false, thus the ramfb won't load the
->>> vgabios-ramfb.bin.
->>>
->>> This can mitigate the problem that on release version the qemu can't
->>> find the vgabios-ramfb.bin if it use the ramfb.
->>>
->>> Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
->>> ---
->>>   hw/arm/virt.c | 3 +++
->>>   1 file changed, 3 insertions(+)
->>>
->>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>> index a96452f17a..5f94f7a2ca 100644
->>> --- a/hw/arm/virt.c
->>> +++ b/hw/arm/virt.c
->>> @@ -38,6 +38,7 @@
->>>   #include "hw/arm/primecell.h"
->>>   #include "hw/arm/virt.h"
->>>   #include "hw/block/flash.h"
->>> +#include "hw/vfio/pci.h"
->>>   #include "hw/vfio/vfio-calxeda-xgmac.h"
->>>   #include "hw/vfio/vfio-amd-xgbe.h"
->>>   #include "hw/display/ramfb.h"
->>> @@ -90,6 +91,8 @@
->>>
->>>   static GlobalProperty arm_virt_compat[] = {
->>>       { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
->>> +    { TYPE_RAMFB_DEVICE, "use-legacy-x86-rom", "false" },
->>> +    { TYPE_VFIO_PCI, "use-legacy-x86-rom", "false" },
->>
->> I think we should find a way to make this default to "false"
->> and only be set "true" for x86. Otherwise every single non-x86
->> board that ever adds support for ramfb and virtio will have
->> to add these two lines, which is a source of future bugs.
->> (Whereas if you forget to mark a new x86 board as needing
->> the legacy rom you'll find out about it pretty quickly.)
+On 6/13/25 20:19, Tan Siewert wrote:
+> The AST2600 SCU has two protection key registers (0x00 and 0x10) that
+> both need to be unlocked. (Un-)locking 0x00 modifies both protection key
+> registers, while modifying 0x10 only modifies itself.
 > 
-> Yes, going forward we this to default to true only on x86.
+> This commit updates the SCU write logic to reject writes unless both
+> protection key registers are unlocked, matching the behaviour of
+> real hardware.
 > 
-> For non-x86, historical versioned machine types will need
-> likely it set to true, in order to avoid the memory layout
-> being changed IIUC.
+> Signed-off-by: Tan Siewert <tan@siewert.io>
+> ---
+> V3:
+>    - Change logic to unlock both registers on 0x00 write, while writing
+>      to 0x10 only modifies itself. [Jamin]
+> 
+>   hw/misc/aspeed_scu.c | 16 ++++++++++++++--
+>   1 file changed, 14 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+> index 4930e00fed..993cb800a8 100644
+> --- a/hw/misc/aspeed_scu.c
+> +++ b/hw/misc/aspeed_scu.c
+> @@ -91,6 +91,7 @@
+>   #define BMC_DEV_ID           TO_REG(0x1A4)
+>   
+>   #define AST2600_PROT_KEY          TO_REG(0x00)
+> +#define AST2600_PROT_KEY2         TO_REG(0x10)
+>   #define AST2600_SILICON_REV       TO_REG(0x04)
+>   #define AST2600_SILICON_REV2      TO_REG(0x14)
+>   #define AST2600_SYS_RST_CTRL      TO_REG(0x40)
+> @@ -722,6 +723,7 @@ static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
+>       int reg = TO_REG(offset);
+>       /* Truncate here so bitwise operations below behave as expected */
+>       uint32_t data = data64;
+> +    bool unlocked = s->regs[AST2600_PROT_KEY] && s->regs[AST2600_PROT_KEY2];
+>   
+>       if (reg >= ASPEED_AST2600_SCU_NR_REGS) {
+>           qemu_log_mask(LOG_GUEST_ERROR,
+> @@ -730,15 +732,25 @@ static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
+>           return;
+>       }
+>   
+> -    if (reg > PROT_KEY && !s->regs[PROT_KEY]) {
+> +    if ((reg != AST2600_PROT_KEY || reg != AST2600_PROT_KEY2) && !unlocked) {
+>           qemu_log_mask(LOG_GUEST_ERROR, "%s: SCU is locked!\n", __func__);
+> +        return;
+>       }
+>   
+>       trace_aspeed_scu_write(offset, size, data);
+>   
+>       switch (reg) {
+>       case AST2600_PROT_KEY:
+> -        s->regs[reg] = (data == ASPEED_SCU_PROT_KEY) ? 1 : 0;
+> +        /*
+> +         * Writing a value to SCU000 will modify both protection
+> +         * registers to each protection register individually.
+> +         */
+> +        u32 value = (data == ASPEED_SCU_PROT_KEY) ? 1 : 0;
 
-Ok, I will set this to be true by default only on x86.
+u32 -> uint32_t and it is best to declare variables at the top
+of the function.
 
 Thanks,
-Shaoqin
 
-> 
-> 
-> With regards,
-> Daniel
+C.
 
--- 
-Shaoqin
+
+
+> +        s->regs[AST2600_PROT_KEY] = value;
+> +        s->regs[AST2600_PROT_KEY2] = value;
+> +        return;
+> +    case AST2600_PROT_KEY2:
+> +        s->regs[AST2600_PROT_KEY2] = (data == ASPEED_SCU_PROT_KEY) ? 1 : 0;
+>           return;
+>       case AST2600_HW_STRAP1:
+>       case AST2600_HW_STRAP2:
 

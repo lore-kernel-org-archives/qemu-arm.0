@@ -1,221 +1,167 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1786759njc;
-        Mon, 16 Jun 2025 04:27:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUTkvmU5AR0wQWeEgO5HNaP+7fARoqvTUirTXSv87dWyI1fsU/J6A9vVsaOMUI0LH03AEVAMGc3L8PnUw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHNtiY5H6yR3gIC6YJ99MbMrYIWq2Ql9ANXWVEnSKmqtxxjY8D6rr+gcoshSwMGok6Va32e
-X-Received: by 2002:a05:620a:bd5:b0:7d0:ab76:8e2d with SMTP id af79cd13be357-7d3c6d02ce7mr1422500785a.51.1750073228935;
-        Mon, 16 Jun 2025 04:27:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750073228; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1808545njc;
+        Mon, 16 Jun 2025 05:08:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUfjOY3aPmBmiaEc9r2A0bV3DIF53grIteEH/oFJBQbPrARF1g/kXyBQOjc1vlhvmkiNcu5EKzbw4ZdZQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFzoK/gUXOn1V1ssxnJLm/4dFqbmsBU7tL8ULkJT7Ej+SivMMIubbPCcO92/GQOls+IbG8P
+X-Received: by 2002:a17:902:ea03:b0:235:e71e:a396 with SMTP id d9443c01a7336-2366b14d2f4mr122810465ad.51.1750075690244;
+        Mon, 16 Jun 2025 05:08:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750075690; cv=none;
         d=google.com; s=arc-20240605;
-        b=I6ik7doK9TPd7YDdMPD6Mpl8gvfv58jUts2dggz93nR3L1poD6gRv8PrOH5fajnkTH
-         7TgSGLvCpB7RDgzELIhAMwo/RQIYHkyYWTBdwbyuKtMKjzQ2pniQWDVmRPPrC7CNDVyY
-         tWc773cmsDgrhHNT7C2SrApX/1Bq2SoMUe7eQSPd51v090t5fpRPp/LANP5uF4uPkEbq
-         ek1xdFDJzIQe7HSFDsNEopdzgTi03Eh4ZM+f2RNdGac7FmPJICkOxcBJKcDa7GZ0UUh6
-         X1nS8cZ4dqen0bx8DBWTy86outj0snXXgXuyW33Bk2ngqy5TfhIAAzWra9khDBR8eHkz
-         MgAg==
+        b=IH7X8issreRvD1QicmSyjxKU/b5SjVnVdrczWdsjtrjrjG2bUqu/tQId2CMYnq5Lsf
+         oD3coQeV8As07we14PKj9mKorPyPhxlBEXEL3EEIu91PMrkFzdXPI6pCZJWlSao72NuF
+         A8ZgLlkbgoLKgjaIlORk1jLHY0ItmfNgIhv1WvRU8apoVvOs8RTXOSU5v2RycDmqkMif
+         FxT1vZWo4wL/+UqSyU+vRbA9pseaRRHO7rQbINSto8lOkXEOTJWjcPS6omlzgZ0U8vFA
+         rIQJjzDIjC/1cO4MrWhV7af2cfFmHh5crQuDrlpylrm0BGOLBeP/84ABkcxFfYdiQpNk
+         KVvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to;
-        bh=5Zk/wwuLcRzKJPbyV+030KVrblntggf9bUPrKhLgl9c=;
-        fh=M+FVb7brxN1+lXD0/JCk6BEPvLdfCowl9TrFyc8YJkQ=;
-        b=YGh2E2avrzl0KuAn6DCWqLon/icMVJwYboT20x6vDJexSQEdw8FtrHgJ9jQPoPFOvp
-         v/KyQDY4VDvliD4rOVCJr+dzEzPjXI5XV+S61PYwIJFc7F2lWaCpgBnxQOO+hnEhSXXY
-         fdVRLDHJ0/me0lkc6GVhjbAXVCQupP5KrU8u6h5/FirAcM+8XObR3JqN+TnbS+HwiXv1
-         +yZbsYrp5PNVIVSGC+bbcnwGAg5ofwicXlFor79MjSynNI0xof2kJwHYFldbickfqfRU
-         jigrask1U43hs45RJkaa6OAL5j0pOKRWWVSZSLlcDONwKJ6hU+ZmG1DDl1SKI3TERAqq
-         W0qg==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=ued+FNLco7H3M7eWjlnqd/mRkFKELch/S6J+7qUNeug=;
+        fh=RvH3M8XebZfaMMw+1IHIU6D6fajZyB6RagMQLzVoZgI=;
+        b=CTL8MjPKEGcI3ZVTm0MG6EzKa1i2wERgDJ4WqOnWj1muPRbqt0jHdH+KMBs2afUKMf
+         d9V00v/eM0f4BPBhtrxVWjqdkoSaEnqtntzMmc40RJ+ejk5WFK2G9TV6c+fm2Z+fZcnP
+         xNGs6zj88qagZKC1Lo3aEGIlKx2AOmSmsx2vuSR3c4MWndjgBZh8qXbPjH+QiWeVqpKs
+         b15q8vEQgsO/fRp29QUcE1PthzqctXmFQuhkQExWYoXElmMV4CSb9PjEKmMaCB7YUoiG
+         h4COyBERljmFzvzTu4S6wdwRLSVHdIiCdc0dvzVHss8q4JemXCEIlK5NTpGGlbdc3nQS
+         GLLA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3b8ee3e62si959548585a.390.2025.06.16.04.27.08
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Jun 2025 04:27:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=ojXlCOq1;
+       spf=pass (google.com: domain of odaki@rsg.ci.i.u-tokyo.ac.jp designates 49.212.243.89 as permitted sender) smtp.mailfrom=odaki@rsg.ci.i.u-tokyo.ac.jp;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp
+Return-Path: <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Received: from www3579.sakura.ne.jp (www3579.sakura.ne.jp. [49.212.243.89])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-b2fe1688a93si9768944a12.360.2025.06.16.05.08.09
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 16 Jun 2025 05:08:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of odaki@rsg.ci.i.u-tokyo.ac.jp designates 49.212.243.89 as permitted sender) client-ip=49.212.243.89;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uR7zG-0008DV-3r; Mon, 16 Jun 2025 07:26:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1uR7zE-0008D3-Vg; Mon, 16 Jun 2025 07:26:48 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1uR7zC-0005rd-Vj; Mon, 16 Jun 2025 07:26:48 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bLSMS2sz7z6L5Nt;
- Mon, 16 Jun 2025 19:24:36 +0800 (CST)
-Received: from frapeml500005.china.huawei.com (unknown [7.182.85.13])
- by mail.maildlp.com (Postfix) with ESMTPS id 79232140157;
- Mon, 16 Jun 2025 19:26:43 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml500005.china.huawei.com (7.182.85.13) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 16 Jun 2025 13:26:42 +0200
-Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
- frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Mon, 16 Jun 2025 13:26:42 +0200
-To: Jonathan Cameron <jonathan.cameron@huawei.com>, Linuxarm
- <linuxarm@huawei.com>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
- <jgg@nvidia.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>, "berrange@redhat.com"
- <berrange@redhat.com>, "imammedo@redhat.com" <imammedo@redhat.com>,
- "nathanc@nvidia.com" <nathanc@nvidia.com>, "mochs@nvidia.com"
- <mochs@nvidia.com>, "smostafa@google.com" <smostafa@google.com>, "Wangzhou
- (B)" <wangzhou1@hisilicon.com>, jiangkunkun <jiangkunkun@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
-Subject: RE: [PATCH v4 5/7] hw/arm/virt: Add an SMMU_IO_LEN macro
-Thread-Topic: [PATCH v4 5/7] hw/arm/virt: Add an SMMU_IO_LEN macro
-Thread-Index: AQHb3HJKBKJjlZ2qAUSTWYf2oX1kIrQFgcmAgAAn6KA=
-Date: Mon, 16 Jun 2025 11:26:42 +0000
-Message-ID: <b126700ed2374bdb8c436ce3671425d0@huawei.com>
-References: <20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com>
- <20250613144449.60156-6-shameerali.kolothum.thodi@huawei.com>
- <20250616120209.00004015@huawei.com>
-In-Reply-To: <20250616120209.00004015@huawei.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.203.177.241]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=ojXlCOq1;
+       spf=pass (google.com: domain of odaki@rsg.ci.i.u-tokyo.ac.jp designates 49.212.243.89 as permitted sender) smtp.mailfrom=odaki@rsg.ci.i.u-tokyo.ac.jp;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp
+Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
+	(authenticated bits=0)
+	by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 55GC5CYt045357
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+	Mon, 16 Jun 2025 21:05:12 +0900 (JST)
+	(envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=ued+FNLco7H3M7eWjlnqd/mRkFKELch/S6J+7qUNeug=;
+        c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+        h=Message-ID:Date:Subject:To:From;
+        s=rs20250326; t=1750075514; v=1;
+        b=ojXlCOq1RciJ2fdqnbl0b58/xEt3z34Gtmypg6Zu3hIPBlB8cgvJk51vp0i1M5p7
+         n7dS8l2WWoU9OS/+C0h1nDsaD1kJzkeoB4JhUTy1ouT/QD8ef9e7ySK8GZhtrFpj
+         jRIIG+b83Qk6+gc8F9Lzj1F05D4RptL8UYEdQ0P/soe2JdZ4PcIteWfNR/I9WKMk
+         yKBqb/fTVIRiG7Z0upwN4l+sVhwD4ERg9azQp0uN9y5et8L8fA9ffXj8WdjVotie
+         3FM+JNaaEJnHXTPMss/XdAMtzqI6cGPVGl1XNA3FhL7cai2eNz3yLWndfYRgtnaG
+         MJWCImLpqoHqvMut4bISmQ==
+Message-ID: <a0652351-8443-492d-96dc-9772bf08341d@rsg.ci.i.u-tokyo.ac.jp>
+Date: Mon, 16 Jun 2025 21:05:11 +0900
 MIME-Version: 1.0
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YNXS6tgwWpWk
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 02/12] python: update pylint ignores
+To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org
+Cc: Joel Stanley <joel@jms.id.au>, Yi Liu <yi.l.liu@intel.com>,
+        =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        Helge Deller <deller@gmx.de>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Andrew Jeffery <andrew@codeconstruct.com.au>,
+        Fabiano Rosas
+ <farosas@suse.de>, Alexander Bulekov <alxndr@bu.edu>,
+        Darren Kenny <darren.kenny@oracle.com>,
+        Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+        =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+        Ed Maste <emaste@freebsd.org>, Gerd Hoffmann <kraxel@redhat.com>,
+        Warner Losh <imp@bsdimp.com>, Kevin Wolf <kwolf@redhat.com>,
+        Tyrone Ting <kfting@nuvoton.com>, Eric Blake <eblake@redhat.com>,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        Yoshinori Sato <ysato@users.sourceforge.jp>,
+        Troy Lee <leetroy@gmail.com>, Halil Pasic <pasic@linux.ibm.com>,
+        Michael Roth <michael.roth@amd.com>,
+        Laurent Vivier <laurent@vivier.eu>, Ani Sinha <anisinha@redhat.com>,
+        Weiwei Li <liwei1518@gmail.com>, Eric Farman <farman@linux.ibm.com>,
+        Steven Lee <steven_lee@aspeedtech.com>,
+        Brian Cain <brian.cain@oss.qualcomm.com>,
+        Li-Wen Hsu <lwhsu@freebsd.org>, Jamin Lin <jamin_lin@aspeedtech.com>,
+        qemu-s390x@nongnu.org,
+        Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+        qemu-block@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
+        =?UTF-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
+        Maksim Davydov <davydov-max@yandex-team.ru>,
+        Niek Linnenbank <nieklinnenbank@gmail.com>,
+        =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+        Christian Borntraeger <borntraeger@linux.ibm.com>,
+        Paul Durrant <paul@xen.org>,
+        Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+        Jagannathan Raman <jag.raman@oracle.com>,
+        Igor Mitsyanko <i.mitsyanko@gmail.com>,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        Markus Armbruster <armbru@redhat.com>,
+        Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+        "Michael S. Tsirkin" <mst@redhat.com>, Anton Johansson <anjo@rev.ng>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Cleber Rosa <crosa@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+        Yanan Wang <wangyanan55@huawei.com>, qemu-arm@nongnu.org,
+        Hao Wu <wuhaotsh@google.com>, Mads Ynddal <mads@ynddal.dk>,
+        Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+        qemu-riscv@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+        Jason Wang <jasowang@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+        Michael Rolnik <mrolnik@gmail.com>, Zhao Liu <zhao1.liu@intel.com>,
+        Alessandro Di Federico <ale@rev.ng>, Thomas Huth <thuth@redhat.com>,
+        Antony Pavlov <antonynpavlov@gmail.com>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>, Hanna Reitz <hreitz@redhat.com>,
+        Ilya Leoshkevich <iii@linux.ibm.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+        Daniel Henrique Barboza <danielhb413@gmail.com>,
+        Qiuhao Li <Qiuhao.Li@outlook.com>, Hyman Huang <yong.huang@smartx.com>,
+        =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+        Magnus Damm <magnus.damm@gmail.com>, qemu-rust@nongnu.org,
+        Bandan Das <bsd@redhat.com>,
+        Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+        kvm@vger.kernel.org, Fam Zheng <fam@euphon.net>,
+        Jia Liu <proljc@gmail.com>,
+        =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+        Alistair Francis <alistair@alistair23.me>,
+        Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+        Kyle Evans <kevans@freebsd.org>, Song Gao <gaosong@loongson.cn>,
+        Alexandre Iooss <erdnaxe@crans.org>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+        Peter Xu <peterx@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+        BALATON Zoltan <balaton@eik.bme.hu>,
+        Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        =?UTF-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?= <fbarrat@linux.ibm.com>,
+        qemu-ppc@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>,
+        Beniamino Galvani <b.galvani@gmail.com>,
+        David Hildenbrand
+ <david@redhat.com>,
+        Richard Henderson <richard.henderson@linaro.org>,
+        David Woodhouse <dwmw2@infradead.org>,
+        Eduardo Habkost
+ <eduardo@habkost.net>,
+        Ahmed Karaman <ahmedkhaledkaraman@gmail.com>,
+        Huacai Chen <chenhuacai@kernel.org>,
+        Mahmoud Mandour
+ <ma.mandourr@gmail.com>,
+        Harsh Prateek Bora <harshpb@linux.ibm.com>
+References: <20250612205451.1177751-1-jsnow@redhat.com>
+ <20250612205451.1177751-3-jsnow@redhat.com>
+Content-Language: en-US
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+In-Reply-To: <20250612205451.1177751-3-jsnow@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: Aj+kZKIZmYmR
 
+On 2025/06/13 5:54, John Snow wrote:
+> The next patch will synchronize the qemu.qmp library with the external,
+> standalone version. That synchronization will require an extra ignore
+> for pylint, so do that now.
+> 
+> Signed-off-by: John Snow <jsnow@redhat.com>
 
-
-> -----Original Message-----
-> From: Jonathan Cameron <jonathan.cameron@huawei.com>
-> Sent: Monday, June 16, 2025 12:02 PM
-> To: Shameerali Kolothum Thodi
-> <shameerali.kolothum.thodi@huawei.com>; Linuxarm
-> <linuxarm@huawei.com>
-> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
-> eric.auger@redhat.com; peter.maydell@linaro.org; jgg@nvidia.com;
-> nicolinc@nvidia.com; ddutile@redhat.com; berrange@redhat.com;
-> imammedo@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
-> smostafa@google.com; Wangzhou (B) <wangzhou1@hisilicon.com>;
-> jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
-> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
-> Subject: Re: [PATCH v4 5/7] hw/arm/virt: Add an SMMU_IO_LEN macro
->=20
-> On Fri, 13 Jun 2025 15:44:47 +0100
-> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
->=20
-> > From: Nicolin Chen <nicolinc@nvidia.com>
-> >
-> > This is useful as the subsequent support for new SMMUv3 dev will also
-> > use the same.
-> >
-> > Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> > Reviewed-by: Donald Dutile <ddutile@redhat.com>
-> > Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> > Tested-by: Nathan Chen <nathanc@nvidia.com>
-> > Signed-off-by: Shameer Kolothum
-> <shameerali.kolothum.thodi@huawei.com>
-> > ---
-> >  hw/arm/virt.c | 8 +++++---
-> >  1 file changed, 5 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 71b923f786..eeace4754d 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -146,6 +146,9 @@ static void arm_virt_compat_set(MachineClass
-> *mc)
-> >  #define LEGACY_RAMLIMIT_GB 255
-> >  #define LEGACY_RAMLIMIT_BYTES (LEGACY_RAMLIMIT_GB * GiB)
-> >
-> > +/* MMIO region size for SMMUv3 */
-> > +#define SMMU_IO_LEN 0x20000
-> > +
-> >  /* Addresses and sizes of our components.
-> >   * 0..128MB is space for a flash device so we can run bootrom code suc=
-h
-> as UEFI.
-> >   * 128MB..256MB is used for miscellaneous device I/O.
-> > @@ -177,7 +180,7 @@ static const MemMapEntry base_memmap[] =3D {
-> >      [VIRT_FW_CFG] =3D             { 0x09020000, 0x00000018 },
-> >      [VIRT_GPIO] =3D               { 0x09030000, 0x00001000 },
-> >      [VIRT_UART1] =3D              { 0x09040000, 0x00001000 },
-> > -    [VIRT_SMMU] =3D               { 0x09050000, 0x00020000 },
-> > +    [VIRT_SMMU] =3D               { 0x09050000, SMMU_IO_LEN },
->=20
-> This bit is fine.
->=20
-> >      [VIRT_PCDIMM_ACPI] =3D        { 0x09070000, MEMORY_HOTPLUG_IO_LEN
-> },
-> >      [VIRT_ACPI_GED] =3D           { 0x09080000, ACPI_GED_EVT_SEL_LEN }=
-,
-> >      [VIRT_NVDIMM_ACPI] =3D        { 0x09090000, NVDIMM_ACPI_IO_LEN},
-> > @@ -1447,7 +1450,6 @@ static void create_smmu(const
-> VirtMachineState *vms,
-> >      int irq =3D  vms->irqmap[VIRT_SMMU];
-> >      int i;
-> >      hwaddr base =3D vms->memmap[VIRT_SMMU].base;
-> > -    hwaddr size =3D vms->memmap[VIRT_SMMU].size;
-> >      DeviceState *dev;
-> >
-> >      if (vms->iommu !=3D VIRT_IOMMU_SMMUV3 || !vms->iommu_phandle) {
-> > @@ -1467,7 +1469,7 @@ static void create_smmu(const
-> VirtMachineState *vms,
-> >          sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-> >                             qdev_get_gpio_in(vms->gic, irq + i));
-> >      }
-> > -    create_smmuv3_dt_bindings(vms, base, size, irq);
-> > +    create_smmuv3_dt_bindings(vms, base, SMMU_IO_LEN, irq);
->=20
-> This seems a little odd.  I guess it may make sense later, but for all ot=
-her
-> cases we only use the macros to define the base_memmap.
->=20
-> Perhaps delay this change until it is more obvious why?
-
-Right, looking at this patch now, I think it is not necessary at the moment
-to introduce this macro now. I will take another look and discard this
-if it doesn't make sense.
-
-Thanks,
-Shameer
+Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>

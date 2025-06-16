@@ -1,240 +1,157 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1721868njc;
-        Mon, 16 Jun 2025 02:02:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWOHHsA3sxRDez3zz/xXvwABjizWceT9f1XzVxOhVHFiN/Eaqk521Vx77yrbNyJx+/LgldtOVV7fhhF1w==@linaro.org
-X-Google-Smtp-Source: AGHT+IHND4oc2Nt0CnJ31yWK8uVPVU0LPs9mrkAYwrX6E7wsBiB5+wiOtBY/yltX/cQJiK7DqHob
-X-Received: by 2002:a05:6a00:2181:b0:746:2ae9:fc42 with SMTP id d2e1a72fcca58-7489cfc37a3mr11688019b3a.19.1750064524355;
-        Mon, 16 Jun 2025 02:02:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750064524; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1755397njc;
+        Mon, 16 Jun 2025 03:21:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX28E2e35R+yDqOZ19OBCmvIFNo6edAIbLFewEN0hoFx6BCj9mo9/b/wVgOXskMxmSas8NNENPxlBTTgg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHoxcg1+NR9Bz8EYJsiUtmp7iuQwm3TpDNLSLlhKD95v3rXEIub5ySaMqh5DZwhpLnfrzep
+X-Received: by 2002:a05:620a:4594:b0:7cd:b58:f4b0 with SMTP id af79cd13be357-7d3c6c2094cmr1187953885a.16.1750069278651;
+        Mon, 16 Jun 2025 03:21:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750069278; cv=none;
         d=google.com; s=arc-20240605;
-        b=gNiUUauxnyx0yIa4fFSDWv4e3GmS7XXXNl/0CjaCdVhdiRbAh1NareHjvukKWBWhg5
-         QFgTHPMW0S+HCOX6WqxSa6PciPrhJV9+6hQnK11+jAx08ULZoDoBXPBf+1HVgSxa3hix
-         W8BumZwal9BdJZO43owuhhqYG6FkX76BnqgZIFCNSBTzG7o3avuYKfUeQqLba5OizBit
-         of23NHW9Vp7xYplw+iFVaxXmFObHg7kcxsWvZDmO6XqScb6I36JdsDeY/IuWgQ4+3W3w
-         0LaYKYO9/3q9MLLe+1WRVMr45L+Ag7kEkA0kcb3hDayY8t+VDFM5/VbnYX46qFJPBRIa
-         vENA==
+        b=UNiZz5oUN6bkXOccTWRVybPeEzL36+nKh1SLHoXllpBKGcEhIKfmlLAyS30iA/ynbc
+         IOHC/KqMJ5T7M3C6NQgigwCtfpSy8SgMQUI11NXgM6thvKlw1rbturPrISTN8jtjM3nw
+         98iAD9HFNiUZp+69qPrgwCMklf+4ZbWabHz8l0U1wsC1l2VEM7bRMxK7q2O/hea/zt2J
+         C8LEUGWy+O6vmOi4GMF5XdTwp+qe/WolfLBZ+TPdu3q6LqSdM9Nk3Hl1JNprLJwL9ZsR
+         yX2OYaZVEPAmAL4Af60o9enW3H8ChC3HKZVfiQd1q6n1/r4Kqm5XTAc+6M5GgMnFjLNX
+         YkKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=KScVJRjX5qHx2qPV2Idy8E22L/QoVbymW4s2ZmhlRqk=;
-        fh=RvH3M8XebZfaMMw+1IHIU6D6fajZyB6RagMQLzVoZgI=;
-        b=B+3+XWzcfR/mNrO2cGaTSds9Z4F02dK97g3R/h70UKWeyOnZS3FaR+vrFArQu2f3FV
-         0940akmNJrerRJdkb1jzDFqJNXmcOZ7EUCpTxOJolfh9OM46epndFhUdMxlxCJJw78ZK
-         d8Rn+RsOOmU6ibRleUIjebltO76P8LCDvAb9TTJUw2SNllljfXkXzPWJD08MfgNfZj56
-         UpksjA+ydSv+3b5Z/VF1b8o0OyveXDXML9x+fQWEcFAcyI7Cb5zO0pWNXG6Mf4Joqrq1
-         +lfoPfyGpc7xmlF68fRSNX99CfVlI0HJ5czn5+wOOFzarz+YOpHAmCUUmqFUS7aDDQjQ
-         JaEQ==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:date;
+        bh=X7LlBO1lKid2BQ/d0vTvV4lqgIEsWu/+ONCXzn/QOko=;
+        fh=aA8gsM5QP8IJIk1ptJlCXNxyLIMaAhKHt/Cf0Wq9DRk=;
+        b=h+9JMj6wA0WVHrGTBghdWrYlp4gpQmq+EAOKGHUMe71mxVRY9bp147sc2AMAUGIMrg
+         r/xhPxTDS+P4GAMiP9AL9zfGFHcM3io0GXDuRiD+/FuGvSfc7074m4wiv2FWQwEqAj7z
+         oKsiwPUEjdH7LP5+/GN76YGiuqWHCksQgppe4kB5gHX0Jt2ZiukIPCWSu2Q5baf0icCb
+         Pyb/NYMv1fuyYL+LXJcl/9hj8hOEyfYhwhnofB8LFiYrySOOrdFolU2oz5HZFtG/wAiA
+         4t/+YU2i7qJ5pQx+KYvfxoeYd56Bu0fu0/gs0tkDfZgvc4BYbjPIyEzP3DIN0nMoDLCZ
+         luBg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=u8P2EHe+;
-       spf=pass (google.com: domain of odaki@rsg.ci.i.u-tokyo.ac.jp designates 49.212.243.89 as permitted sender) smtp.mailfrom=odaki@rsg.ci.i.u-tokyo.ac.jp;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp
-Return-Path: <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Received: from www3579.sakura.ne.jp (www3579.sakura.ne.jp. [49.212.243.89])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-7489010df7bsi9685111b3a.282.2025.06.16.02.02.03
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Jun 2025 02:02:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of odaki@rsg.ci.i.u-tokyo.ac.jp designates 49.212.243.89 as permitted sender) client-ip=49.212.243.89;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8ece81fsi992704485a.339.2025.06.16.03.21.18
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 16 Jun 2025 03:21:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=u8P2EHe+;
-       spf=pass (google.com: domain of odaki@rsg.ci.i.u-tokyo.ac.jp designates 49.212.243.89 as permitted sender) smtp.mailfrom=odaki@rsg.ci.i.u-tokyo.ac.jp;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp
-Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
-	(authenticated bits=0)
-	by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 55G8rZGk082978
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Mon, 16 Jun 2025 17:53:35 +0900 (JST)
-	(envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=KScVJRjX5qHx2qPV2Idy8E22L/QoVbymW4s2ZmhlRqk=;
-        c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
-        h=Message-ID:Date:From:Subject:To;
-        s=rs20250326; t=1750064017; v=1;
-        b=u8P2EHe+1Y+3zACB4AUA3bkn/KAg15g60iwqmmx8tIcExa0kj2B3qDQM0W6d7OY+
-         VSnFJGbZc2rJgdN5gK8R7ctygc0RUk3VAF7yFGFwbbQEaW7nx/1j99kraEJM522U
-         880sw6x8Y0OFe7fe1iLwC4VUTiJZfCP2sX7s/EF+VrmF7u3x2fGeDYlp2LNKYWbj
-         EIMlWMtydWaTXPmIe6mZv1bmhCS9fwPPGINHFbhzxcqIJs4ukEN6xFpliyxAsq4l
-         kdwV17yNkvKZujSwi0NB3erFgwCY1Bv8y8tlCJDE9A/q9Fru+iBod8QBtDaFASvS
-         xtUzTYDCN4eH5DW21FDDYg==
-Message-ID: <ffdab955-0255-4781-8bcf-909dcc195a01@rsg.ci.i.u-tokyo.ac.jp>
-Date: Mon, 16 Jun 2025 17:53:35 +0900
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uR6xU-0004vj-Dw; Mon, 16 Jun 2025 06:20:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uR6xO-0004vA-Rf; Mon, 16 Jun 2025 06:20:50 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uR6xL-00062i-Or; Mon, 16 Jun 2025 06:20:50 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bLQwj6yLWz6M53g;
+ Mon, 16 Jun 2025 18:19:49 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id E89AF1402F7;
+ Mon, 16 Jun 2025 18:20:21 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 16 Jun
+ 2025 12:20:21 +0200
+Date: Mon, 16 Jun 2025 11:20:19 +0100
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ <linuxarm@huawei.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>, <jgg@nvidia.com>, <nicolinc@nvidia.com>,
+ <ddutile@redhat.com>, <berrange@redhat.com>, <imammedo@redhat.com>,
+ <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
+ <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
+Subject: Re: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe Root
+ Complex association
+Message-ID: <20250616112019.00003bce@huawei.com>
+In-Reply-To: <20250613144449.60156-2-shameerali.kolothum.thodi@huawei.com>
+References: <20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com>
+ <20250613144449.60156-2-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Subject: Re: [PATCH v2 00/12] Python: Fix 'make check-dev' and modernize to
- 3.9+
-To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org
-Cc: Joel Stanley <joel@jms.id.au>, Yi Liu <yi.l.liu@intel.com>,
-        =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
-        Helge Deller <deller@gmx.de>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        Andrew Jeffery <andrew@codeconstruct.com.au>,
-        Fabiano Rosas
- <farosas@suse.de>, Alexander Bulekov <alxndr@bu.edu>,
-        Darren Kenny <darren.kenny@oracle.com>,
-        Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
-        =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
-        Ed Maste <emaste@freebsd.org>, Gerd Hoffmann <kraxel@redhat.com>,
-        Warner Losh <imp@bsdimp.com>, Kevin Wolf <kwolf@redhat.com>,
-        Tyrone Ting <kfting@nuvoton.com>, Eric Blake <eblake@redhat.com>,
-        Palmer Dabbelt <palmer@dabbelt.com>,
-        Yoshinori Sato <ysato@users.sourceforge.jp>,
-        Troy Lee <leetroy@gmail.com>, Halil Pasic <pasic@linux.ibm.com>,
-        Michael Roth <michael.roth@amd.com>,
-        Laurent Vivier <laurent@vivier.eu>, Ani Sinha <anisinha@redhat.com>,
-        Weiwei Li <liwei1518@gmail.com>, Eric Farman <farman@linux.ibm.com>,
-        Steven Lee <steven_lee@aspeedtech.com>,
-        Brian Cain <brian.cain@oss.qualcomm.com>,
-        Li-Wen Hsu <lwhsu@freebsd.org>, Jamin Lin <jamin_lin@aspeedtech.com>,
-        qemu-s390x@nongnu.org,
-        Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-        qemu-block@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
-        =?UTF-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
-        Maksim Davydov <davydov-max@yandex-team.ru>,
-        Niek Linnenbank <nieklinnenbank@gmail.com>,
-        =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
-        Christian Borntraeger <borntraeger@linux.ibm.com>,
-        Paul Durrant <paul@xen.org>,
-        Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
-        Jagannathan Raman <jag.raman@oracle.com>,
-        Igor Mitsyanko <i.mitsyanko@gmail.com>,
-        Max Filippov <jcmvbkbc@gmail.com>,
-        Markus Armbruster <armbru@redhat.com>,
-        Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-        "Michael S. Tsirkin" <mst@redhat.com>, Anton Johansson <anjo@rev.ng>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Cleber Rosa <crosa@redhat.com>, Eric Auger <eric.auger@redhat.com>,
-        Yanan Wang <wangyanan55@huawei.com>, qemu-arm@nongnu.org,
-        Hao Wu <wuhaotsh@google.com>, Mads Ynddal <mads@ynddal.dk>,
-        Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
-        qemu-riscv@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-        Jason Wang <jasowang@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
-        Michael Rolnik <mrolnik@gmail.com>, Zhao Liu <zhao1.liu@intel.com>,
-        Alessandro Di Federico <ale@rev.ng>, Thomas Huth <thuth@redhat.com>,
-        Antony Pavlov <antonynpavlov@gmail.com>,
-        Jiaxun Yang <jiaxun.yang@flygoat.com>, Hanna Reitz <hreitz@redhat.com>,
-        Ilya Leoshkevich <iii@linux.ibm.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
-        Daniel Henrique Barboza <danielhb413@gmail.com>,
-        Qiuhao Li <Qiuhao.Li@outlook.com>, Hyman Huang <yong.huang@smartx.com>,
-        =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
-        Magnus Damm <magnus.damm@gmail.com>, qemu-rust@nongnu.org,
-        Bandan Das <bsd@redhat.com>,
-        Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
-        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-        =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-        kvm@vger.kernel.org, Fam Zheng <fam@euphon.net>,
-        Jia Liu <proljc@gmail.com>,
-        =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
-        Alistair Francis <alistair@alistair23.me>,
-        Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-        Kyle Evans <kevans@freebsd.org>, Song Gao <gaosong@loongson.cn>,
-        Alexandre Iooss <erdnaxe@crans.org>,
-        Aurelien Jarno <aurelien@aurel32.net>,
-        Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-        Peter Xu <peterx@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
-        BALATON Zoltan <balaton@eik.bme.hu>,
-        Elena Ufimtseva <elena.ufimtseva@oracle.com>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        =?UTF-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?= <fbarrat@linux.ibm.com>,
-        qemu-ppc@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>,
-        Beniamino Galvani <b.galvani@gmail.com>,
-        David Hildenbrand
- <david@redhat.com>,
-        Richard Henderson <richard.henderson@linaro.org>,
-        David Woodhouse <dwmw2@infradead.org>,
-        Eduardo Habkost
- <eduardo@habkost.net>,
-        Ahmed Karaman <ahmedkhaledkaraman@gmail.com>,
-        Huacai Chen <chenhuacai@kernel.org>,
-        Mahmoud Mandour
- <ma.mandourr@gmail.com>,
-        Harsh Prateek Bora <harshpb@linux.ibm.com>
-References: <20250612205451.1177751-1-jsnow@redhat.com>
-Content-Language: en-US
-In-Reply-To: <20250612205451.1177751-1-jsnow@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: CJbMNuyOoGB1
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100011.china.huawei.com (7.191.174.247) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ryC0aMmruwyx
 
-On 2025/06/13 5:54, John Snow wrote:
-> This series does a couple things that I'll probably end up splitting out
-> into smaller series if history is any guide, but either way, here it
-> goes:
+On Fri, 13 Jun 2025 15:44:43 +0100
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-I'm surprised with the large number of Ccs. I suggest splitting the 
-series with subsystem boundaries to reduce the number of Ccs for each 
-split series.
+> Although this change does not affect functionality at present, it is
 
+Patch title says PCIe.  This check is vs PCI host bridge.
+
+No idea which one you wanted, but if it is PCIe needs to be
+TYPC_PCIE_HOST_BRIDGE from pcie_host.h not the pci_host.h one
+I think.
+
+> required when we add support for user-creatable SMMUv3 devices in
+> future patches.
 > 
-> A) Convert qemu.git/python/ to a PEP517/pyproject.toml
-> package. Ultimately this means deleting setup.py and fully migrating to
-> newer python infrastructure. I think this should be safe to do by now,
-> but admittedly I am not *confident* as it relies on setuptools versions
-> in the wild, not python versions. My motivation for trying it is to fix
-> "make check-dev", which has been broken for the last two Fedora releases
-> under newer setuptools which have started removing support for the
-> pre-PEP517 packaging formats, which will only continue to get worse from
-> here on out.
+> Tested-by: Nathan Chen <nathanc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+>  hw/arm/smmu-common.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index f39b99e526..7890aa12c1 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -20,6 +20,7 @@
+>  #include "trace.h"
+>  #include "exec/target_page.h"
+>  #include "hw/core/cpu.h"
+> +#include "hw/pci/pci_bridge.h"
+>  #include "hw/qdev-properties.h"
+>  #include "qapi/error.h"
+>  #include "qemu/jhash.h"
+> @@ -937,7 +938,8 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
+>                                       g_free, g_free);
+>      s->smmu_pcibus_by_busptr = g_hash_table_new(NULL, NULL);
+>  
+> -    if (s->primary_bus) {
+> +    if (s->primary_bus && object_dynamic_cast(OBJECT(s->primary_bus)->parent,
+> +                                              TYPE_PCI_HOST_BRIDGE)) {
+>          pci_setup_iommu(s->primary_bus, &smmu_ops, s);
+>      } else {
+>          error_setg(errp, "SMMU is not attached to any PCI bus!");
 
-I'm afraid this change may not be safe.
-
-The documentation of setuptools says pyproject.toml is supported since 
-61.0.0:
-https://setuptools.pypa.io/en/stable/userguide/pyproject_config.html
-
-Looking at Repology as suggested in docs/about/build-platforms.rst, the 
-following distributions have older setuptools, unfortunately:
-CentOS Stream 9: 53.0.0
-Debian 11: 44.1.1
-Ubuntu 22.04: 44.1.1
-
-docs/about/build-platforms.rst also says:
- > Optional build dependencies
- >   Build components whose absence does not affect the ability to build
- >   QEMU may not be available in distros, or may be too old for our
- >   requirements. Many of these, such as additional modules for the
- >   functional testing framework or various linters, are written in
- >   Python and therefore can also be installed using ``pip``.
-
-In my understanding, QEMU Python Tooling is an optional component so 
-dropping the support of old Linux distribution is tolerated according to 
-the documentation. But I think we still need to assess the potential 
-impact on the usability to justify that.
-
-A possible option is to fetch a new version of setuptools version when 
-necessary. The same documentation says:
- > Python build dependencies
- >   Some of QEMU's build dependencies are written in Python.  Usually
- >   these are only packaged by distributions for the default Python
- >   runtime.
- >   If QEMU bumps its minimum Python version and a non-default runtime
- >   is required, it may be necessary to fetch python modules from the
- >   Python Package Index (PyPI) via ``pip``, in order to build QEMU.
-
-Automatically fetching a compatible version of setuptools as described 
-here will reduce the adverse effect of the change.
-
-The documentation page of setuptools I mentioned earlier has the 
-following note:
- > If compatibility with legacy builds or versions of tools that don’t
- > support certain packaging standards (e.g. PEP 517 or PEP 660), a
- > simple setup.py script can be added to your project [1] (while keeping
- > the configuration in pyproject.toml):
- >
- > from setuptools import setup
- >
- > setup()
-
-I have no idea what it means though. (Will it automatically fetch new 
-setuptools to parse pyproject.toml or something?)
-
-> C) Move us to 3.9+ style type hints. They are deprecated in 3.9, and
-> *could* be removed at any time. I figured now was a good time as any to
-> get rid of them before they become a problem randomly some day in the
-> future.
-
-I guess you meant that the old style type hints are deprecated.
-
-Regards,
-Akihiko Odaki

@@ -1,152 +1,171 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1830908njc;
-        Mon, 16 Jun 2025 05:48:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUOg0jNUQtv2chdtbje43Fs9LAgzn9LygfbA3nnnvvVKz5c0JCGjV0tU6hlXeBxQH9Yo2AZtZwgukadaQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFbJ7JZ2yGXiP1s8PgcKXtyem8y1ltpBhfTe3T49qM8UUV228RGw7E87bJ9Y0lcH90zFWOO
-X-Received: by 2002:a05:620a:1a2a:b0:7c5:dcaa:d799 with SMTP id af79cd13be357-7d3c6cec2d1mr1343003885a.39.1750078132829;
-        Mon, 16 Jun 2025 05:48:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750078132; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1812721njc;
+        Mon, 16 Jun 2025 05:15:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXFVwSaBGdoW9DTln4MwLnxrD/PoEJtW5fXLLiJ9r+oFKomdqb6L7ckK3EvP3CHAGUgSo976Wx/+KK29Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IG6kvzmEcIPT/0kYyGzuhJ8LHYua27UluDHwjahUl2K3TPQ6JGzyLSIOPXnw++YLF5YU/jo
+X-Received: by 2002:a17:90b:1ccc:b0:312:e731:5a6b with SMTP id 98e67ed59e1d1-313f1dcfa1bmr11472093a91.32.1750076104656;
+        Mon, 16 Jun 2025 05:15:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750076104; cv=none;
         d=google.com; s=arc-20240605;
-        b=erhviXSmQrx1yWyTt8Ref38dL5FRiD7vZNxjbgSyMRn0EfD33Xwl8SspvG3UrE2nsw
-         icXpUWn2MiwVPFzuLCItsaTfhJry7z1+WYII/UuTHwAxC728rqOIg3ZxrYGnXvksLZsw
-         bPzGe1mThzms5pIbIXv5tdlpxyTTid5F/Ous7uvEHlN/Sb0yLZNSYkfobfbhCp19t4CT
-         9eFwiC2TtUL8BCpFu0G+0ekrhAiGd4pNxGqEw37RS4DXka1nnS6cYA6lGMxUxGh/uWYl
-         LIYhFAbcIz4EaV44I/nTzjYTdGG1okLQOS50W7LzB/iM6i84BdfMWg+tyfn87o6hHT0o
-         Wzdw==
+        b=f+fCzhqQkN1FnEGPsn/H6/dZeBr2lYwA94qJyCIh5dRwQUgtseLJS2bMC/aHLYkuCu
+         /ZT6hOK87rtNuXsmd4FoAhrEUV5IAXaVf93Fe1YCMhBiIk2OTjJV2NXy3OXQt3/2tVW/
+         ghDGA2sKUkJJKxQrq9iQjdE8KGk/XrRIo8DgZ7VlqdNEeKlZbTny8y241z+h78AP760b
+         ZkGvNxqXAu3mqPVq+FNMoBgWarQYzo+52N0OpK1ySHHu5fBb19xXJf5uEvariW5UKzt7
+         dl7o6dbw6Wv2ERGTnRXPzyZqbTWoju+VST1F8ninxL7CFx7gYIWpI5nszyzBp9ZWqTfg
+         vm0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:date;
-        bh=SToNXkmXkjN8h29heaOt21TQKmoZKXKujC/lnqpdZhY=;
-        fh=xX1PfcJgFxz17JvLQ3am5Rp9wh4oXpv+OjagWgW5VKQ=;
-        b=CYo1pXPWmVOsEJrkxKVSXbEP8n4W3g8nK4AnECoTOdoTFEYEMBE9rupo1e7hOi1G4s
-         6pSQByryBwRlGkUgt9A9xk0tgPRDpGDw/foyYOIpZHc7Pgv+aruFzuQn3waqZgDKiLIA
-         0rwNseHPAebyhyAR/FLbkJmxE8cvSCZO2uApZ11stPrYOoLQ8H6gzREbsfY8PxsEMe1V
-         o5rURMHcyLK1L434tFLsbs5zNDUkUTzlrNpxtrwrYSmso3ckz1/HV4YCwF1bcuKb5oYg
-         vpbFJB0s0xmYNY4VZRNzZbZT2e05JK6QLJpvfZ/bJieDI2HQTrOv3lMbQK2nW8SdZVmL
-         CzdA==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=4JSHX6X6s+w1UYxLKUROnDTVSl6teX25I2C+LjCWQpE=;
+        fh=RvH3M8XebZfaMMw+1IHIU6D6fajZyB6RagMQLzVoZgI=;
+        b=C5I7uIatCDagUGiEVGQ+OxWz34yKC2U56fRFfSqGWpfEEg2hz+4Kom7GWG27zx0YuZ
+         kaSci3v4ajkctuCXWrz9ANhakOC09bEX4X24Od94DRVk3nXXdNNGtuV+m860YYJI8hVJ
+         BQkf8ZWIY+Kbi6g08lgJNS8A1wq2uBzn/UsV7FR/6aAZ63Hnco1zliESXdeEBlRAfT5q
+         a+2FX9cTlVZMCKjqEspFerp3RdLQBhWyrDpt7Iqj2BzWLD+ciaMpjeAKMDk9V9Vax2jT
+         vP6/kNotdqAzzagFXNPp8mIVhcIGBZ2iIUMes6eBC3Z3XfWD316N6deRPjyrS0EKdNp3
+         unng==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3b8f3e3c4si963584385a.578.2025.06.16.05.48.52
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Jun 2025 05:48:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=VPH1kh91;
+       spf=pass (google.com: domain of odaki@rsg.ci.i.u-tokyo.ac.jp designates 49.212.243.89 as permitted sender) smtp.mailfrom=odaki@rsg.ci.i.u-tokyo.ac.jp;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp
+Return-Path: <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Received: from www3579.sakura.ne.jp (www3579.sakura.ne.jp. [49.212.243.89])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-313b2139d8bsi15719379a91.146.2025.06.16.05.15.04
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 16 Jun 2025 05:15:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of odaki@rsg.ci.i.u-tokyo.ac.jp designates 49.212.243.89 as permitted sender) client-ip=49.212.243.89;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uR9G9-0006Dh-N6; Mon, 16 Jun 2025 08:48:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uR9G6-0006Cz-O2; Mon, 16 Jun 2025 08:48:18 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uR9G3-0000hn-PY; Mon, 16 Jun 2025 08:48:18 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bLVC14X0Pz6M567;
- Mon, 16 Jun 2025 20:47:25 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id C40E41402FF;
- Mon, 16 Jun 2025 20:47:57 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 16 Jun
- 2025 14:47:56 +0200
-Date: Mon, 16 Jun 2025 13:47:54 +0100
-To: Alireza Sanaee <alireza.sanaee@huawei.com>
-CC: <qemu-devel@nongnu.org>, <mst@redhat.com>, <anisinha@redhat.com>,
- <armbru@redhat.com>, <berrange@redhat.com>, <dapeng1.mi@linux.intel.com>,
- <eric.auger@redhat.com>, <farman@linux.ibm.com>, <gustavo.romero@linaro.org>, 
- <imammedo@redhat.com>, <jiangkunkun@huawei.com>, <linuxarm@huawei.com>,
- <maobibo@loongson.cn>, <mtosatti@redhat.com>, <peter.maydell@linaro.org>,
- <philmd@linaro.org>, <qemu-arm@nongnu.org>, <richard.henderson@linaro.org>,
- <shameerali.kolothum.thodi@huawei.com>, <shannon.zhaosl@gmail.com>,
- <yangyicong@hisilicon.com>, <zhao1.liu@intel.com>
-Subject: Re: [PATCH v13 2/7] hw/core/machine: topology functions
- capabilities added
-Message-ID: <20250616134754.00004530@huawei.com>
-In-Reply-To: <20250611155618.351-3-alireza.sanaee@huawei.com>
-References: <20250611155618.351-1-alireza.sanaee@huawei.com>
- <20250611155618.351-3-alireza.sanaee@huawei.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=VPH1kh91;
+       spf=pass (google.com: domain of odaki@rsg.ci.i.u-tokyo.ac.jp designates 49.212.243.89 as permitted sender) smtp.mailfrom=odaki@rsg.ci.i.u-tokyo.ac.jp;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp
+Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
+	(authenticated bits=0)
+	by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 55GCCw8j047515
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+	Mon, 16 Jun 2025 21:12:58 +0900 (JST)
+	(envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=4JSHX6X6s+w1UYxLKUROnDTVSl6teX25I2C+LjCWQpE=;
+        c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+        h=Message-ID:Date:Subject:To:From;
+        s=rs20250326; t=1750075980; v=1;
+        b=VPH1kh91xsU4KYEmFTpfwP/D+AZzIwCs40gBdNlxOoWfXZv1L0PUrW5tSwSdfLsS
+         fN2bLWTG/atuD6c/gWQ+ujbBiUnJ0oCsG0hV6aqYDCEUZoi4+DwdrRTCOIubbeB6
+         g5qExqA5Y+6maQTTffkKeGa6UOTusx7tEPnUHqU1qJ8dmEdQDnXbVAMJcIZuJm5Y
+         Z9lZg9EvURWFzmpyNI8QJ17K17bfxNWx0tjhM2gGB+5Sv6Pa2qyCVo12FjdPePcm
+         iFQPDsr8hlHZUjEnTXeLC15qmVJhENJYrNFHQQ/c8T1VqJuphu5zUex8WCJfHBQH
+         VXUeVy6t93xuvn/pUEHB4Q==
+Message-ID: <3c349b4d-1cb5-41f3-a64d-e8455b4c88b5@rsg.ci.i.u-tokyo.ac.jp>
+Date: Mon, 16 Jun 2025 21:12:58 +0900
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 04/12] python: update shebangs to standard, using
+ /usr/bin/env
+To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org
+Cc: Joel Stanley <joel@jms.id.au>, Yi Liu <yi.l.liu@intel.com>,
+        =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        Helge Deller <deller@gmx.de>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Andrew Jeffery <andrew@codeconstruct.com.au>,
+        Fabiano Rosas
+ <farosas@suse.de>, Alexander Bulekov <alxndr@bu.edu>,
+        Darren Kenny <darren.kenny@oracle.com>,
+        Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+        =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+        Ed Maste <emaste@freebsd.org>, Gerd Hoffmann <kraxel@redhat.com>,
+        Warner Losh <imp@bsdimp.com>, Kevin Wolf <kwolf@redhat.com>,
+        Tyrone Ting <kfting@nuvoton.com>, Eric Blake <eblake@redhat.com>,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        Yoshinori Sato <ysato@users.sourceforge.jp>,
+        Troy Lee <leetroy@gmail.com>, Halil Pasic <pasic@linux.ibm.com>,
+        Michael Roth <michael.roth@amd.com>,
+        Laurent Vivier <laurent@vivier.eu>, Ani Sinha <anisinha@redhat.com>,
+        Weiwei Li <liwei1518@gmail.com>, Eric Farman <farman@linux.ibm.com>,
+        Steven Lee <steven_lee@aspeedtech.com>,
+        Brian Cain <brian.cain@oss.qualcomm.com>,
+        Li-Wen Hsu <lwhsu@freebsd.org>, Jamin Lin <jamin_lin@aspeedtech.com>,
+        qemu-s390x@nongnu.org,
+        Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+        qemu-block@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
+        =?UTF-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
+        Maksim Davydov <davydov-max@yandex-team.ru>,
+        Niek Linnenbank <nieklinnenbank@gmail.com>,
+        =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+        Christian Borntraeger <borntraeger@linux.ibm.com>,
+        Paul Durrant <paul@xen.org>,
+        Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+        Jagannathan Raman <jag.raman@oracle.com>,
+        Igor Mitsyanko <i.mitsyanko@gmail.com>,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        Markus Armbruster <armbru@redhat.com>,
+        Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+        "Michael S. Tsirkin" <mst@redhat.com>, Anton Johansson <anjo@rev.ng>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Cleber Rosa <crosa@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+        Yanan Wang <wangyanan55@huawei.com>, qemu-arm@nongnu.org,
+        Hao Wu <wuhaotsh@google.com>, Mads Ynddal <mads@ynddal.dk>,
+        Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+        qemu-riscv@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+        Jason Wang <jasowang@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+        Michael Rolnik <mrolnik@gmail.com>, Zhao Liu <zhao1.liu@intel.com>,
+        Alessandro Di Federico <ale@rev.ng>, Thomas Huth <thuth@redhat.com>,
+        Antony Pavlov <antonynpavlov@gmail.com>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>, Hanna Reitz <hreitz@redhat.com>,
+        Ilya Leoshkevich <iii@linux.ibm.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+        Daniel Henrique Barboza <danielhb413@gmail.com>,
+        Qiuhao Li <Qiuhao.Li@outlook.com>, Hyman Huang <yong.huang@smartx.com>,
+        =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+        Magnus Damm <magnus.damm@gmail.com>, qemu-rust@nongnu.org,
+        Bandan Das <bsd@redhat.com>,
+        Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+        kvm@vger.kernel.org, Fam Zheng <fam@euphon.net>,
+        Jia Liu <proljc@gmail.com>,
+        =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+        Alistair Francis <alistair@alistair23.me>,
+        Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+        Kyle Evans <kevans@freebsd.org>, Song Gao <gaosong@loongson.cn>,
+        Alexandre Iooss <erdnaxe@crans.org>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+        Peter Xu <peterx@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+        BALATON Zoltan <balaton@eik.bme.hu>,
+        Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        =?UTF-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?= <fbarrat@linux.ibm.com>,
+        qemu-ppc@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>,
+        Beniamino Galvani <b.galvani@gmail.com>,
+        David Hildenbrand
+ <david@redhat.com>,
+        Richard Henderson <richard.henderson@linaro.org>,
+        David Woodhouse <dwmw2@infradead.org>,
+        Eduardo Habkost
+ <eduardo@habkost.net>,
+        Ahmed Karaman <ahmedkhaledkaraman@gmail.com>,
+        Huacai Chen <chenhuacai@kernel.org>,
+        Mahmoud Mandour
+ <ma.mandourr@gmail.com>,
+        Harsh Prateek Bora <harshpb@linux.ibm.com>
+References: <20250612205451.1177751-1-jsnow@redhat.com>
+ <20250612205451.1177751-5-jsnow@redhat.com>
+Content-Language: en-US
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+In-Reply-To: <20250612205451.1177751-5-jsnow@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml500009.china.huawei.com (7.191.174.84) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Vvy/YZs3fxRt
+X-TUID: a3jEiqNiCofQ
 
-On Wed, 11 Jun 2025 16:56:13 +0100
-Alireza Sanaee <alireza.sanaee@huawei.com> wrote:
-
-> Add two functions one of which finds the lowest level cache defined in
-> the cache description input, and the other checks if caches are defined
-> at a particular level.
+On 2025/06/13 5:54, John Snow wrote:
+> This is the standard shebang we should always be using, as it plays
+> nicely with virtual environments and our desire to always be using a
+> specific python interpreter in our environments.
 > 
-> Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
-> ---
->  hw/core/machine-smp.c | 52 +++++++++++++++++++++++++++++++++++++++++++
->  include/hw/boards.h   |  7 ++++++
->  2 files changed, 59 insertions(+)
+> (It also makes sure I can find all of the python scripts in our tree
+> easily.)
 > 
-> diff --git a/hw/core/machine-smp.c b/hw/core/machine-smp.c
-> index 0be0ac044c..a4d79e0aa4 100644
-> --- a/hw/core/machine-smp.c
-> +++ b/hw/core/machine-smp.c
+> Signed-off-by: John Snow <jsnow@redhat.com>
 
-> +
-> +bool machine_check_cache_at_topo_level(const MachineState *ms,
-
-Maybe avoid machine_check naming. It has too many other meanings!
-
-machine_is_cache_at_topo_level() perhaps?
-
-> +                                       CpuTopologyLevel level)
-> +{
-> +    if (machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L3) == level ||
-> +        machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L2) == level ||
-> +        machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L1I) == level ||
-> +        machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L1D) == level) {
-> +        return true;
-> +    }
-> +    return false;
-> +}
-
-
+Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>

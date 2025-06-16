@@ -1,65 +1,65 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1688790njc;
-        Mon, 16 Jun 2025 00:30:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV5axIwx7owJpdcFHGedBibgsDcGkPXmWZyZwqAUltIzTBQTidcQcPNJOVMdJD/QAh7HA6xUzlOa3k1xg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFfDcXHaXRSJS48tB/BC3jaOO4mwTCTJTiTfHcvYoBQJ/AhjZNRUC0rilB0SJSZoG2VFPlZ
-X-Received: by 2002:a05:620a:44c1:b0:7ca:f039:d471 with SMTP id af79cd13be357-7d3c6cf91b6mr1307245885a.52.1750059010799;
-        Mon, 16 Jun 2025 00:30:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750059010; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1697186njc;
+        Mon, 16 Jun 2025 00:56:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUgOu6q40X1lC3ir/R60iMdS2MWX0oRsXu7SGN2uP4fk1EDVkwF2Y9widT7IdHJObrUfO8kBeVQDKQvpg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHoAirUHmI/oqq5KgpvWACmtZSkRob/oNYCSnlPpsYDiDjyI7nNTpMz5A3SP2Qt/t6BiuJG
+X-Received: by 2002:ad4:5aa2:0:b0:6fb:35fa:7802 with SMTP id 6a1803df08f44-6fb47801141mr124522446d6.36.1750060575895;
+        Mon, 16 Jun 2025 00:56:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750060568; cv=none;
         d=google.com; s=arc-20240605;
-        b=D+MqhWQgjURA30eejkxuliHRN0eFxTo/UoEaxjFxygxSXK7/Xg/ikhygNW68P+P6CI
-         tyzIVAreE2ujhmLPFVsm6JXbCaA5SV+sgjHz/9AV9VgFEX/if5A+2aMnDONVJIy+5/7J
-         X4aMBvhAoZ1S3+Z2qslyK1YcmhtK0yX5ls0T88bCjx0uP/OptZqcQsDea2Uqc+PqdojQ
-         b0PDHZUtxY5LlnaEgBB/DJFuewJJ/3YZs3b7zN1JntlVlyP5BmP83ca3CaBEzBdBwk7e
-         WYZEXDsrMaBnqIvRR0JFm+Z/HX3iQcLB0pQgQ3pU73nzeUUsXwZCFcCi0ybraQJ03uYN
-         M6YA==
+        b=l3DnL+xbIVZYKmBZ2GzVd3pjq/2dPaU+jqp7oxUPG7dNcAl9WOWmpu2cCkUM5C3jIp
+         2JTlLxrlp0EX6xb8HKHOcz27o6gHng5ShRjpxv8bdP3eBa2aD37URa7OhdGzK6W05sjq
+         kDh7CpyQeoPaZE/x0ubiExIvjlyi2blbSNm+sHeGkPIy3AvC6WkVXJ2rAeb19or7QZJm
+         TxTsduh0yTH/moVGZPQM7BFTisKwVmZlb5d+yITu11Nlbn9zBERB3EDWYF6Ae3JOLB8b
+         2A19wJdL6W90g3XgeyaWorLxLVYZxWFBbKbwK1S8FjfWpmbAZV7QoILFiLd4GF8nJIHp
+         Ym8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=Gtd/ICCzmYXIDLWMaQE//O8M0lBHAJPeg6H7KW5NfpE=;
+        bh=OIB7jghG2vMEbdjsvXLJzUELN4sFHnh2MPdOcqhyoUg=;
         fh=M8mEhNhd9RXTLBEY589YUiKCR9ecvpNP7UIzbHRe5gQ=;
-        b=N/QduhVYDoj/Yd3OFONOaBDOOp8QOdoQZWEkOaXq7F23J+F3lTL/j2Ia0qTaWLeFeE
-         tH1J79Y2araGLTHZ0ujLEgPPlKsq83sBsPNMUotyWudrL+KgxRxUa77bHtsKwnBAf341
-         TE1ZnjuBRXmVIFmmc1lw1pp4FqHmFLP94KK1ZwG6RfTo0kTBQDRndPLXqrAJQqDZ6Ae5
-         ay04KEy4DhW3XCUpALAOK15tw7hr0Mapa4jm+w9RWWGYy+wd5VtzVECO0j9q8h7z1+7X
-         cIQFEsOuPFKIpKG8RdFT6fg8KRlUK+Gknt/p1MajjAZ8iBplauekwRLVOeZCoLGV/pT3
-         KsOw==;
+        b=ODW42tBwvqNpdqZQowMQOQZWhpSJw+jyC1HnjxAtUIApRnX7RAPRblvwqo64F+IguB
+         1utRbhwGyPXxMyfPj9GMJ7B5eVzRswlzGOF0CbAzr3T0zaSld5av6NVaD7l4VfMrGig1
+         rNM7H0QljR0Az/SwknTrPJjNel24GQQQEC0aB3ITe5K7yCv3NmTiLKKgQYPqm+LGIiLJ
+         yZuTP8M6pyJGVVX0yCpG9yYMzsV2dImrxFZTVQGwltpFTDIHln8gFHm4JTIyQPYdu8AV
+         fcAZwZJEQrk3lmS6NpCSH4C6AiTZ2E+gDV8jvj37Mu/zRcAVxGl4HLsDEzdFmOz+M/s3
+         NkhQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3b8f212a7si928990485a.496.2025.06.16.00.30.10
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fb35ada26dsi104141126d6.101.2025.06.16.00.56.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Jun 2025 00:30:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 16 Jun 2025 00:56:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uR4Hw-0008A0-Gb; Mon, 16 Jun 2025 03:29:52 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uR4hF-0005eJ-6y; Mon, 16 Jun 2025 03:56:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=g70R=Y7=kaod.org=clg@ozlabs.org>)
- id 1uR4Hv-00089m-3i; Mon, 16 Jun 2025 03:29:51 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ id 1uR4gY-0005WE-Nt; Mon, 16 Jun 2025 03:55:21 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=g70R=Y7=kaod.org=clg@ozlabs.org>)
- id 1uR4Hs-0002dc-NT; Mon, 16 Jun 2025 03:29:50 -0400
+ id 1uR4gW-0005la-0v; Mon, 16 Jun 2025 03:55:18 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bLM8R0WdKz4wbd;
- Mon, 16 Jun 2025 17:29:43 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bLMjn4mS7z4wcm;
+ Mon, 16 Jun 2025 17:55:09 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bLM8L5gtVz4wbX;
- Mon, 16 Jun 2025 17:29:38 +1000 (AEST)
-Message-ID: <accf0fab-782d-4e0a-9f13-f6a940fc86a1@kaod.org>
-Date: Mon, 16 Jun 2025 09:29:35 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bLMjj2yBKz4wbd;
+ Mon, 16 Jun 2025 17:55:05 +1000 (AEST)
+Message-ID: <63d1cb84-7e65-4c60-a718-92a2807e53ea@kaod.org>
+Date: Mon, 16 Jun 2025 09:55:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 05/12] include/hw: replace FSF postal address with
@@ -76,6 +76,7 @@ Cc: Sean Wei <me@sean.taipei>, qemu-devel@nongnu.org,
 References: <20250613.qemu.patch@sean.taipei>
  <20250613.qemu.patch.05@sean.taipei>
  <3aa8de03-911e-4906-a0c5-5b8ea269ad28@kaod.org> <aE_D5zVzf3qHRP-2@redhat.com>
+ <accf0fab-782d-4e0a-9f13-f6a940fc86a1@kaod.org> <aE_ML3jtVgweJMid@redhat.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -120,56 +121,70 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <aE_D5zVzf3qHRP-2@redhat.com>
+In-Reply-To: <aE_ML3jtVgweJMid@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=g70R=Y7=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -40
 X-Spam_score: -4.1
 X-Spam_bar: ----
 X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.097, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wvbZMJdHjuPN
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KB9ZC2EBrjZx
 
-On 6/16/25 09:13, Daniel P. Berrangé wrote:
-> On Sat, Jun 14, 2025 at 07:29:09AM +0200, Cédric Le Goater wrote:
->> Hello Sean,
->>
->> On 6/13/25 18:44, Sean Wei wrote:
->>> Some of the GPLv2 boiler-plate still contained the
->>> obsolete "51 Franklin Street" postal address.
+On 6/16/25 09:47, Daniel P. Berrangé wrote:
+> On Mon, Jun 16, 2025 at 09:29:35AM +0200, Cédric Le Goater wrote:
+>> On 6/16/25 09:13, Daniel P. Berrangé wrote:
+>>> On Sat, Jun 14, 2025 at 07:29:09AM +0200, Cédric Le Goater wrote:
+>>>> Hello Sean,
+>>>>
+>>>> On 6/13/25 18:44, Sean Wei wrote:
+>>>>> Some of the GPLv2 boiler-plate still contained the
+>>>>> obsolete "51 Franklin Street" postal address.
+>>>>>
+>>>>> Replace it with the canonical GNU licenses URL recommended by the FSF:
+>>>>> https://www.gnu.org/licenses/
+>>>>>
+>>>>> Signed-off-by: Sean Wei <me@sean.taipei>
+>>>>
+>>>> Instead,  I would remove the license boiler plate and add :
+>>>>
+>>>>     SPDX-License-Identifier: GPL-2.0-or-later
 >>>
->>> Replace it with the canonical GNU licenses URL recommended by the FSF:
->>> https://www.gnu.org/licenses/
->>>
->>> Signed-off-by: Sean Wei <me@sean.taipei>
+>>> This is *NOT* something we are doing for existing code sources,
+>>> unless the person removing it is the exclusive copyright
+>>> holder on the file.
+>> Ah. So I misunderstood.
 >>
->> Instead,  I would remove the license boiler plate and add :
->>
->>    SPDX-License-Identifier: GPL-2.0-or-later
+>> How is license boiler plate different from the SPDX identifier tag ?
 > 
-> This is *NOT* something we are doing for existing code sources,
-> unless the person removing it is the exclusive copyright
-> holder on the file.
-Ah. So I misunderstood.
-
-How is license boiler plate different from the SPDX identifier tag ?
+> It achieves the same aims, but notice GPL clause 1
+> 
+>    "keep intact all the notices that refer to this License and
+>     to the absence of any warranty;"
+> 
+> and yes, some projects have none the less done a wholesale replacement of
+> boilerplate. I don't know how they rationalized ignoring this license
+> requirement. It is simpler to just preserve boilerplate as-is that to
+> debate the legal nuances of this.
+OK. Then, let's forget about this replacement.
 
 Thanks,
 

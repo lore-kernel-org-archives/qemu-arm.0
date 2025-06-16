@@ -1,133 +1,132 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1656796njc;
-        Sun, 15 Jun 2025 22:53:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXLHioHlvNzcPTpuAI05kV7H1LQPo8FMGYo4pl/yPMV82uQGQXs6thvsoRUpb+M837k+A5goyexbrTqVw==@linaro.org
-X-Google-Smtp-Source: AGHT+IF3XbZI6MpZl971vqJQVcK4edGKiMeAWN5UG8q5dIGUCl+GJ7G+ybccCNV4Nl5PuQ72BlvQ
-X-Received: by 2002:a05:6214:5014:b0:6fa:fddf:7343 with SMTP id 6a1803df08f44-6fb477784fbmr125079636d6.23.1750053203097;
-        Sun, 15 Jun 2025 22:53:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750053203; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1657110njc;
+        Sun, 15 Jun 2025 22:54:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUNNV4ZWHxfiwsqqoDRKljZh6F4jKzEyMErzQ5xbat8vK3UHfcbYEnGmZ8l/L2e8hbGkeMjWsbm68be0w==@linaro.org
+X-Google-Smtp-Source: AGHT+IFPWHHyPVeV1YfeP4u25rEpscDeZay6EJ8JU1qd9TRXaxKsZr7HXpAOEyy0C0wgMABjEPAd
+X-Received: by 2002:ac8:59cc:0:b0:494:b148:930e with SMTP id d75a77b69052e-4a73c5d1580mr139616731cf.49.1750053283966;
+        Sun, 15 Jun 2025 22:54:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750053283; cv=none;
         d=google.com; s=arc-20240605;
-        b=hbJuqFdrZFV31gnd59bnPG4tOjh2qJRWot1909sEBMv62bEFCDrxr/+ImPOAZEZ+Xp
-         jrPhfPs2kayuqK1n25Ryo7MDqJ6K58dnHijuKmwgtBE7Q3MTYSV2nBjoQxG4JVnZ+WA9
-         9DIZpBqB6x5fqJNNOUIfRlMzcO/OaW678dHDvU3TtFsGFtrQOx/a3YrECUa8dfiGDrYo
-         +JgOM2MsEX1k0qhoswJXeLwAuAqkhsvJeSoFcSw0q1jLJS6vdQ6ehoMaYhFfwNJJZNKZ
-         VhiSrZOFTZAOsXs/6oByjfj7dRh5U0y2+lIYw3rvTu+WE/GRqjNbTAo04UhhFJe4C+yS
-         7pUg==
+        b=dNbpU3/Yf+g5ZvezA7ZpE/vXNPndTuedzC6MP2PqwKmp+D4e/dZoNDR289lIbd8X8b
+         5rNuzO0MbLu6wLguuVdNhbQ2UnSRGwYxgg/oA6Ad5qsSU8kOXjU/al4HdFPlCkuKZdF7
+         yPffIqAUF9r1GUiAXdHm3Epigh1EvTiBOPAOQdvyvr8/+1fvOsKImrLCyxpImJKw57qA
+         toMbgtk15jPOolLIbvSWBl9Sv62RXWbc64SN5Xj8YmGdkWIYijMPIIFYb4seVghBMC58
+         eGEQLQk7mRODo19D6+ScQG7drhYJ3ItIq2S3lWPLS4bPJFbfGqJEMBSIvFa4Wn4dkbCD
+         C3Bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:from:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=UOfaEfhJ/48hisRsb95ucnEsFMeLGglLJnApf87mZaY=;
-        fh=ETSlHPkD28Q0/yCHSvIuK9dS4YAkL/CGdlSntGp0qKs=;
-        b=eOLKP1NH74JqfKa5/oCljkrBbQJuazZa38DsWnyZB9taX0TwZOB6hpvxH5R1QcTqe/
-         DZNHtmCDDi15jlRxI96ghm1jzS+8lDgWHbwXcWj7TMeYF/t6oOQMcX2Y9e4zXQx9gZlo
-         p3WbKBklxAK/chKLvHmFuFv21+Ibj0c86W97q5P1Nm6G/Ekxl1NSEnnNljDMFfagRMOy
-         3bm2jwQRZIynunBzicKZ/q72efPjz2/LMW0K6OGWPP3tGlJzLCCPAxZMMee2dddX25b4
-         NoKtKIj2CTRotYWvuzRKCzAsDQ9LZdaf2mzChYYolu7HYFf3aj01iz4gbHW3Bgn8RRUw
-         TgCQ==;
+        bh=kMfRDTTd+z5rrx4+j/hPhKppRd2jNHrTWcCtgthdrCg=;
+        fh=1u2ZyF1Ze6UKS8kQZ9b6yElmvsXYwW3TEsYs55zKbss=;
+        b=O1oP3nAn14Dg1+0Nj+wEObsTlLs6c7+V7pQXMA3uD6tvTKyMQqnJWgWFlcF9SN3Bni
+         MCWC6e/NFG/LlR3qjcr0wgcszsDH/MPlC8+JiXlnYobCQFbcIqNuL+p4OnnIppzllBZZ
+         mRGz3LuLO2stIk3vPjmxgLBiLQK4Tt1cJEPYTfUoDKZXsTc53gOIoROlsj3FXzWpBnWq
+         F3QRAROB9fvurIxhM/5LoPdyr1dl+j8MDyFNVdLEngzg/JPnBTbBfFkgofRYlfk9ZdJK
+         Q9Tcs9qEQ8+uVVNuUs8ECjaXQcz44LtNWqV9EcwFH/YhBxeh0CFyk4M0E7pAjRBh3zCH
+         TiaQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f5nTJGee;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YD9A2lNa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fb4fe7bad4si39694056d6.439.2025.06.15.22.53.22
+        by mx.google.com with ESMTPS id d75a77b69052e-4a72a47d9c9si91311811cf.192.2025.06.15.22.54.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 15 Jun 2025 22:53:23 -0700 (PDT)
+        Sun, 15 Jun 2025 22:54:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f5nTJGee;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YD9A2lNa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uR2m5-0003yS-0w; Mon, 16 Jun 2025 01:52:53 -0400
+	id 1uR2nX-0004j9-Te; Mon, 16 Jun 2025 01:54:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uR2m0-0003y0-GG
- for qemu-arm@nongnu.org; Mon, 16 Jun 2025 01:52:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1uR2nI-0004hH-DE
+ for qemu-arm@nongnu.org; Mon, 16 Jun 2025 01:54:08 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uR2ly-00005A-RA
- for qemu-arm@nongnu.org; Mon, 16 Jun 2025 01:52:48 -0400
+ id 1uR2nG-0000F7-Q4
+ for qemu-arm@nongnu.org; Mon, 16 Jun 2025 01:54:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1750053166;
+ s=mimecast20190719; t=1750053245;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UOfaEfhJ/48hisRsb95ucnEsFMeLGglLJnApf87mZaY=;
- b=f5nTJGeeejnhsOHgOJyj3Gq5c3uQmSr27/BWNJ1JkVACwE1/JdKpxpzKAP8kRwqsJQMSS5
- EqaKcyKvu7/S5FA7a0oxfwz2BHzZMqtW7IxGRJRdqvTbq51ijqmEXGRu3KS+cI8+yVmaab
- jOB4pUHTOx3G/AjR0HzxzcwXNxfAu5s=
-Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
- [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=kMfRDTTd+z5rrx4+j/hPhKppRd2jNHrTWcCtgthdrCg=;
+ b=YD9A2lNacBzROCpTE5X3Y87yLc7FXaXRBvVdXrEo6iLUkOX0/PvvEkiVHQH3aZKtgP/qlX
+ cCI+TFw8yfz7c4070od1V8jV6kCRqZ8kV4LCp7Bg6j6sP/lB4xm1DSZ44lTJcic+Dx2qcm
+ qC0iW6nY8rqL8mPy6TRQ5QawR8XZWAw=
+Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com
+ [209.85.215.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-501--DAnAFRqOwyHJV6xYXFK3w-1; Mon, 16 Jun 2025 01:52:42 -0400
-X-MC-Unique: -DAnAFRqOwyHJV6xYXFK3w-1
-X-Mimecast-MFC-AGG-ID: -DAnAFRqOwyHJV6xYXFK3w_1750053161
-Received: by mail-pl1-f199.google.com with SMTP id
- d9443c01a7336-234fedd3e51so37175715ad.1
- for <qemu-arm@nongnu.org>; Sun, 15 Jun 2025 22:52:41 -0700 (PDT)
+ us-mta-586-Yk3afi80MD6h494B_t1fPA-1; Mon, 16 Jun 2025 01:54:04 -0400
+X-MC-Unique: Yk3afi80MD6h494B_t1fPA-1
+X-Mimecast-MFC-AGG-ID: Yk3afi80MD6h494B_t1fPA_1750053243
+Received: by mail-pg1-f198.google.com with SMTP id
+ 41be03b00d2f7-b2c38df7ed2so2956505a12.3
+ for <qemu-arm@nongnu.org>; Sun, 15 Jun 2025 22:54:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1750053161; x=1750657961;
+ d=1e100.net; s=20230601; t=1750053243; x=1750658043;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=UOfaEfhJ/48hisRsb95ucnEsFMeLGglLJnApf87mZaY=;
- b=gRyim8dAy0/PEmYfAo44dI+DybRnnNcOfvAwQZslqIH7ntJXv+k6ZVctUc15ABvr6A
- ZnpJb/3NYZdxPby8v87u6EhSngkemwZM5via/B//h7fLeEV9rs/HS1VF+sIuiKtSjlKM
- rovlRkZr4P31YdTCR3pAaKOPSpqLMEKVaZiQksDiCT9W2VUWkHmENyXT3kfFlktfvLBA
- 2cNLz7OLg+cOV8sttzjEzBsUnZVdsu5R+suTbASQ+/3L3fOJLSTim3YX4PWc5bqx6i7G
- E5g3o1KXRPf+wVwncHzSHDRf2MTWT4j7Mwvp/ewdIHjqOWdUqd8qehGN1lZ/TNq1oQLm
- xWog==
-X-Gm-Message-State: AOJu0YzSFkrmRzY0f5rQZh5tWBd7tOMKr7YIH6KdfInJDl2jEqBPREVm
- EJPsLiP0zNXSUwjVoIIs/aLqzVZeVzZhGzIe3mxsE/QXyWJWW76/ygXkURg8A14t6OKwQCOi6fW
- wq8GvgsCmtrGGOMVNaQszZI/DBVUbzHf7sPpBPf78hB8yiC9/O0UYE78UM0Bdog==
-X-Gm-Gg: ASbGnctbKpmGPGvMYMZoO0e98yUk3dKi8ViEMJyU8kug2QO6axUsaWT4aatIm6V2UyQ
- jihzbEmx2gAPxYkeempyaiUhMCc/oFp2/xZMsbNNYYtC0yNo3tiYQStyjuhdLRtPbH233/alvNM
- 8ble6a9Z+xfUY0Og81d/2qvWgoFdyohHFD80E7rL1I0tn2PhDgZpLjx9+wiaiPYDu0H9LA4xHoC
- ywZtJgKPOCnL/t8RzMC4ce88dFBfU4QzQ0kFiix4PUxz2eDho/OU5AsORHPPdzyfTeOX9AX8lKJ
- btiB80mCciy7MN6JEeoMm+efSw==
-X-Received: by 2002:a17:902:e745:b0:235:27b6:a897 with SMTP id
- d9443c01a7336-2366b3c5ad3mr119165485ad.34.1750053160725; 
- Sun, 15 Jun 2025 22:52:40 -0700 (PDT)
-X-Received: by 2002:a17:902:e745:b0:235:27b6:a897 with SMTP id
- d9443c01a7336-2366b3c5ad3mr119165265ad.34.1750053160305; 
- Sun, 15 Jun 2025 22:52:40 -0700 (PDT)
+ bh=kMfRDTTd+z5rrx4+j/hPhKppRd2jNHrTWcCtgthdrCg=;
+ b=UGNQJ38ILBWmIqYnQ6YYqSBSZMxxyKqHhZLrNGgcHsuQ0Bc14y7Csk++hnfLCjXKmx
+ 0Fe7tM7SrcY64RfTpgp3bUwenBpFhbrZ5C2T4TWuBYzMnXF9sTFuQrreDGpw3H8KdgbJ
+ ZYYdMgWcafSTpX6qOzLbWB8pWcFxNsvhKiQpbGc7Ab4W4b7eDNcq//MbQTqY70BgViy4
+ gbR6tPHwMbVHQJI+M0WnMcF090AP/COwZxe1CPe+aF/rUY0vnTlu6WJSWkYVu6q7651j
+ O6QdFCqpKZAlXtX4xCKKNOBdX6Fi7KJaBhTaw10UToUs6FY0Wx+3RATrohCUICblKBk+
+ jrsQ==
+X-Gm-Message-State: AOJu0YxvwZvJqnK86LlOjAj9ZftW+IJ6CTSb+uOMrQqaPLFRjLSNDLAM
+ QqeqDBkX9S0XPjltluTxyM/vju4c9WaCN/CE5rxeJHNNJ70DD4nbpAnM9dvGjk7UiOg6FRnEP3D
+ XhpMrPnK/wg3cjSmOufStngq+Npi8m0b65GkRUgVehY2lEyGpiCSdLw==
+X-Gm-Gg: ASbGnctLO9OEGuPSFXV6keUxFQ05AK/YnLwMeUrt3NTp03Y/fWeInTO8ttzJBTaW04N
+ B5JVq8QFVbZakR5EpbCX1tL1PlF2Oj7m/EynPdb2eWIWVv9SY+HhRNflanp3QbKF3Z8LOB3d3ua
+ iErHSAgTkrW1LVdquybaaV0kUJQ2TkpdUe5brH9iI/SWY0Z3ImPfDpYIeE8GD6IHAY5Q04IDQVy
+ eQCrF6KeKba5usbtwY6sssxPf+2ezcDVDDUyd828H81hQcA977pQKAreiO4IGKGMlu5aenRKxbX
+ W8+v0TbJUCOXqod6TeNXDAgg3A==
+X-Received: by 2002:a17:90b:5150:b0:312:1143:cf8c with SMTP id
+ 98e67ed59e1d1-313f1cafae6mr13251689a91.16.1750053243387; 
+ Sun, 15 Jun 2025 22:54:03 -0700 (PDT)
+X-Received: by 2002:a17:90b:5150:b0:312:1143:cf8c with SMTP id
+ 98e67ed59e1d1-313f1cafae6mr13251667a91.16.1750053243010; 
+ Sun, 15 Jun 2025 22:54:03 -0700 (PDT)
 Received: from [10.72.116.52] ([209.132.188.88])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-313c1b6d56bsm8722799a91.46.2025.06.15.22.52.36
+ 98e67ed59e1d1-313c1bcbb39sm7714920a91.8.2025.06.15.22.54.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 15 Jun 2025 22:52:39 -0700 (PDT)
-Message-ID: <d3674d9d-b147-4094-b2aa-27d73d237907@redhat.com>
-Date: Mon, 16 Jun 2025 13:52:34 +0800
+ Sun, 15 Jun 2025 22:54:02 -0700 (PDT)
+Message-ID: <2daf32b5-1279-444f-89fe-65633c1ec9f7@redhat.com>
+Date: Mon, 16 Jun 2025 13:53:59 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/2] ramfb: Add property to control if load the romfile
-To: Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Eric Auger <eauger@redhat.com>, Alex Williamson
- <alex.williamson@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@redhat.com>, qemu-devel@nongnu.org
+Subject: Re: [PATCH v3 2/2] hw/arm: Add the romfile compatatibility
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Eric Auger <eauger@redhat.com>, qemu-devel@nongnu.org
 References: <20250609073408.2083831-1-shahuang@redhat.com>
- <20250609073408.2083831-2-shahuang@redhat.com> <aEakP3rDTyBqDXA5@redhat.com>
- <dli36wx3pe5we6xg5w7c3vyxifnfctovurucrci75kec3qk2y2@2dweacwekfcl>
+ <20250609073408.2083831-3-shahuang@redhat.com>
+ <CAFEAcA8eA2wX1oQeNJfNBYq1NhHgoemYJ-ybOYAgBq2-t9ZPzw@mail.gmail.com>
+ <aEak8utPPkHepVfR@redhat.com>
 From: Shaoqin Huang <shahuang@redhat.com>
-In-Reply-To: <dli36wx3pe5we6xg5w7c3vyxifnfctovurucrci75kec3qk2y2@2dweacwekfcl>
+In-Reply-To: <aEak8utPPkHepVfR@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ggvukzs1fEBKHVuQfA7aIwcftXI68ClBRw165vRvxNA_1750053161
+X-Mimecast-MFC-PROC-ID: MrC7U6PospExFnk3eVAqqVfRLC_doB4jk5S_aJt3E1o_1750053243
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=shahuang@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=shahuang@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -151,61 +150,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d+IlZvfSnAel
+X-TUID: duey3pU1Ex5Z
 
-Hi Gerd, Daniel,
 
-Sorry for the late reply.
 
-On 6/10/25 2:47 PM, Gerd Hoffmann wrote:
->    Hi,
-> 
->> $ qemu-system-aarch64  -machine virt -cpu max -device ati-vga
->> qemu-system-aarch64: -device ati-vga: failed to find romfile "vgabios-ati.bin"
->> $ qemu-system-aarch64  -machine virt -cpu max -device cirrus-vga
->> qemu-system-aarch64: -device cirrus-vga: failed to find romfile "vgabios-cirrus.bin"
->> $ qemu-system-aarch64  -machine virt -cpu max -device VGA
->> qemu-system-aarch64: -device VGA: failed to find romfile "vgabios-stdvga.bin"
+On 6/9/25 5:10 PM, Daniel P. Berrangé wrote:
+> On Mon, Jun 09, 2025 at 09:48:36AM +0100, Peter Maydell wrote:
+>> On Mon, 9 Jun 2025 at 08:34, Shaoqin Huang <shahuang@redhat.com> wrote:
+>>>
+>>> On arm64, it doesn't use the vgabios-ramfb.bin, so set the property
+>>> "use-legacy-x86-rom" to false, thus the ramfb won't load the
+>>> vgabios-ramfb.bin.
+>>>
+>>> This can mitigate the problem that on release version the qemu can't
+>>> find the vgabios-ramfb.bin if it use the ramfb.
+>>>
+>>> Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
+>>> ---
+>>>   hw/arm/virt.c | 3 +++
+>>>   1 file changed, 3 insertions(+)
+>>>
+>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>> index a96452f17a..5f94f7a2ca 100644
+>>> --- a/hw/arm/virt.c
+>>> +++ b/hw/arm/virt.c
+>>> @@ -38,6 +38,7 @@
+>>>   #include "hw/arm/primecell.h"
+>>>   #include "hw/arm/virt.h"
+>>>   #include "hw/block/flash.h"
+>>> +#include "hw/vfio/pci.h"
+>>>   #include "hw/vfio/vfio-calxeda-xgmac.h"
+>>>   #include "hw/vfio/vfio-amd-xgbe.h"
+>>>   #include "hw/display/ramfb.h"
+>>> @@ -90,6 +91,8 @@
+>>>
+>>>   static GlobalProperty arm_virt_compat[] = {
+>>>       { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
+>>> +    { TYPE_RAMFB_DEVICE, "use-legacy-x86-rom", "false" },
+>>> +    { TYPE_VFIO_PCI, "use-legacy-x86-rom", "false" },
 >>
->> Perhaps some of these devices are non-functional for other
->> reasons ?
+>> I think we should find a way to make this default to "false"
+>> and only be set "true" for x86. Otherwise every single non-x86
+>> board that ever adds support for ramfb and virtio will have
+>> to add these two lines, which is a source of future bugs.
+>> (Whereas if you forget to mark a new x86 board as needing
+>> the legacy rom you'll find out about it pretty quickly.)
 > 
-> Anything with pci memory bars is problematic on arm (which is one of the
-> reasons why ramfb exists in the first place).
+> Yes, going forward we this to default to true only on x86.
 > 
->> None the less if the device is built for non-x86 targets, and
->> the ROM files contain x86-only code that is to be executed by
->> SeaBIOS only, then conceptually this fix should apply to all
->> devices use a VGA BIOS ROM, not just ramfb.
-> 
-> Note that non-x86 drivers for some of these devices exist, we have at
-> least roms/QemuMacDrivers which includes a driver for (IIRC) stdvga.
-> 
-> The ipxe roms are x86-only too btw.  We could make them multi-arch at
-> least for EFI platforms, but given that edk2 ships a virtio-net driver
-> and the recently added EFI archs (aarch64, riscv64, loongarch64) are all
-> younger than virtio-net there is little reason to do so.
-> 
->> If we're introducing a property to control this usage, then
->> we should fix all devices at once, so we don't need to add
->> separate properties for other devices in future.
-> 
-> All pci devices already have a romfile property.  So for most devices
-> this is a matter of setting this property via machine compat properties.
-> 
-> ramfb is a bit different here because it is not a PCI device, so we
-> can't control things with the existing property and need a new one.
+> For non-x86, historical versioned machine types will need
+> likely it set to true, in order to avoid the memory layout
+> being changed IIUC.
 
-So I guess I don't need to add property to all these devices and keep 
-the current code is fine?
+Ok, I will set this to be true by default only on x86.
 
 Thanks,
 Shaoqin
 
 > 
-> take care,
->    Gerd
 > 
+> With regards,
+> Daniel
 
 -- 
 Shaoqin

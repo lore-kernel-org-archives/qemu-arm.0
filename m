@@ -1,76 +1,84 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1665814njc;
-        Sun, 15 Jun 2025 23:19:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUCYnoASqRqOvLYoers1rE/2MFCEK9npFNDmFwuOcWMIN0vephA1YV+lb1llsaGh6OK4NW+Rz9EZ5pYPw==@linaro.org
-X-Google-Smtp-Source: AGHT+IG3xvY+SQIwXoC+T+VFM4qhICHMvfILQebUVpiCCJvxL3DfS9igbeI7/rQbHqG5X9sPz/yB
-X-Received: by 2002:a05:6214:f67:b0:6e8:fa72:be4c with SMTP id 6a1803df08f44-6fb47773489mr135868406d6.1.1750054788457;
-        Sun, 15 Jun 2025 23:19:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750054788; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1669453njc;
+        Sun, 15 Jun 2025 23:32:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWqM+feHj13ObEjIl3f0vNdiLxtXB9iwaln3NjmNW4R5bhc5UaiAhNJqHhbDbbNt+g6wrrVsK7GIX09KQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGZDGrlvK0evMnohF53tjw6tGwDR156CtR4FX+kBzJ2JQt76ZtQaqfJ+zBEe2gWsmI8SqVG
+X-Received: by 2002:a05:620a:800e:b0:7d0:a2c1:975b with SMTP id af79cd13be357-7d3c6841d0amr1424800985a.14.1750055554923;
+        Sun, 15 Jun 2025 23:32:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750055554; cv=none;
         d=google.com; s=arc-20240605;
-        b=NaVItlQFP4j/p96dH9dMEJsYjgTh37ZF1kdDyjZDqkjCEA3RE//0489qDW6Z8pzeJ5
-         y4ve6etQWLM0RaFiFqvAKYDyQ8hwWvzVH9r6kU1v+2En17GwOLbbU/dA9bkt4y5VHkte
-         5rRbO27r3BeSLw0DO33ZHNM2IgXaADtnl9SMcSrV48NK/2kR8dmLJAfOwo5DuRtSuGkW
-         ISp0LeeReN2r00LCjXGGMMfzVnljGAIb7ZsucFZGuL2dtjeFh2W6k4qPnxLeBvALfNOO
-         JCwaQmVj9bZWo+33O0zhTwMj7rHgcyXb8j9cYnBiEELId2RCETjrOjkZSR8TlulMtW8p
-         FreQ==
+        b=G6l7fdlkLzX3uSwAhzO0fspsg0huBDNBNQ4P22/vkYe1Oo7NYrtZXAmeB+vtSBOemH
+         MATVACsTuUVw25meiMZV2CSet6MPCaRdFkuf7HYWkK1IBckPEvc6t7lpqcQJtvLs/fI3
+         ID/gi3K8P+sgLuobihmsApnccjoju/UnTCsMghD02Ysalben3hGEz9QOlZTgct7X+cOd
+         LBUa5tLdegNdrzfrHJxDCJfxuqSLftb7V6rzL+uX1wGwD9CoVyqaltSDf90l/0Z4d85i
+         H34iS69pBDjs9aQ/LceSkUGwQ3BPHnvB7PfFS2n7310+u6Tw7HWUBNuXfNZ+mnuJpXDW
+         6Xig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=5M5ML9B5ybonuAnl/YeCdH6LX4IwCujTVZKyGd6ZCsw=;
-        fh=6XPaMxRZ3L/ngtVzusotL8txm2TZqSp9e/qEQo056qU=;
-        b=RNlrADlWoX0RpWG1jwyQED/n9olAOEVe58dupLxEyCH1/+Ot0iAHPm2LUslugHyS6d
-         cYz0+/XMJ9uqDOKB2PNAoULQyOdpt7VoGC/OqDIAcc5/GNvmbX4xpbqlMQV1dd2TS+0r
-         WDynzJW2pLzx/4vRDKqhksbP5vEdomOiX/DhVs19U4StkpGnX4/9TnnkePdY+lWHY+FO
-         Iavh9KmFD6yI8F2zW8W1yZfTGnTqaAOzZzDoAvsqovB/cvrZuEUa5L07ZKuQ14+8c5LD
-         RniKZy5ELKqqyUluFAaz1KM7kfUUPSDmixXlCSYMOwqJZp1Qj+qOL2EL8MCNQOrzVh3J
-         A8aQ==;
+        bh=EWS/ayckvuJd2YTsdAqRwRM+HBdDmvSCHngknMqBwLc=;
+        fh=pm+rAz+0tEzemFBa9sx08pti2vLCFPRV50nas2wRq7A=;
+        b=i5hQ+QmYvvFuCIng/KTgq4EKV3x7Qv0M99vw5/K2niJPzPMi7bM07gW/0KLZLARvMm
+         oLPHgoKq7HbIRJKxvCTyRFtevosbUVWwCl1iAQwH/avUOwX+uF2rHoMSTq3lK5Z1muGF
+         EySJIaYtpk4DZtNlqNTL7ubcj63cVs9GKhoCApIbHWj1fhaimCwDvmyVpcryHsVdPvIB
+         n8F32h55yVMDxVKQdGkZzkuWGbbBMN22Yj76/us1oW5TiRRr2H0lzIkzsc/fmwW8+2nr
+         ORB3KIEaqIqKeS5WQdoJvE0G/78cIIc9AwJMPOxuVAXf1TRyrNCpeIDDriqt2qO4nH2b
+         6omQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fb35c2c218si98055846d6.413.2025.06.15.23.19.48
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8ea7403si873269185a.289.2025.06.15.23.32.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 15 Jun 2025 23:19:48 -0700 (PDT)
+        Sun, 15 Jun 2025 23:32:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uR3Bo-0005Am-Vi; Mon, 16 Jun 2025 02:19:29 -0400
+	id 1uR3O5-0000mA-Rw; Mon, 16 Jun 2025 02:32:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=g70R=Y7=kaod.org=clg@ozlabs.org>)
- id 1uR3BD-0004x4-8Y; Mon, 16 Jun 2025 02:18:52 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ id 1uR3NJ-0000gI-ES; Mon, 16 Jun 2025 02:31:22 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=g70R=Y7=kaod.org=clg@ozlabs.org>)
- id 1uR3B8-0003Af-Th; Mon, 16 Jun 2025 02:18:50 -0400
+ id 1uR3NG-0004kD-V8; Mon, 16 Jun 2025 02:31:20 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bLKZN10ljz4wcm;
- Mon, 16 Jun 2025 16:18:36 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bLKry319Xz4wbn;
+ Mon, 16 Jun 2025 16:31:14 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bLKZJ28hwz4wb0;
- Mon, 16 Jun 2025 16:18:31 +1000 (AEST)
-Message-ID: <157ec442-1d6e-42b2-aa0d-56a2d6f11414@kaod.org>
-Date: Mon, 16 Jun 2025 08:18:28 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bLKrt2f1bz4wb0;
+ Mon, 16 Jun 2025 16:31:10 +1000 (AEST)
+Message-ID: <4dec0b7e-d7a1-4a0f-aca1-4d5c0ef23e98@kaod.org>
+Date: Mon, 16 Jun 2025 08:31:07 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] hw/misc/aspeed_scu: Handle AST2600 protection key
- registers correctly
-To: Tan Siewert <tan@siewert.io>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+Subject: Re: [PATCH 05/12] include/hw: replace FSF postal address with
+ licenses URL
+To: Sean Wei <me@sean.taipei>
+Cc: qemu-devel@nongnu.org, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "Daniel P . Berrange" <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- qemu-arm@nongnu.org
-References: <20250613181906.50078-1-tan@siewert.io>
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+References: <20250613.qemu.patch@sean.taipei>
+ <20250613.qemu.patch.05@sean.taipei>
+ <3aa8de03-911e-4906-a0c5-5b8ea269ad28@kaod.org>
+ <CAGvOXg_VK0+DA_OHy0oWGC4QuL6icFd7yabLKeRzQMc8OpU-rA@mail.gmail.com>
+ <66a0c462-deb3-46c9-bcd1-1395137dc108@kaod.org>
+ <3f4e8f04-c785-4374-913f-2dc200d1ea1e@sean.taipei>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -115,16 +123,17 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250613181906.50078-1-tan@siewert.io>
+In-Reply-To: <3f4e8f04-c785-4374-913f-2dc200d1ea1e@sean.taipei>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=g70R=Y7=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -40
 X-Spam_score: -4.1
 X-Spam_bar: ----
 X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.097, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -140,82 +149,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kJ53dSN2eKC3
+X-TUID: Et3cS0nqI8IY
 
-On 6/13/25 20:19, Tan Siewert wrote:
-> The AST2600 SCU has two protection key registers (0x00 and 0x10) that
-> both need to be unlocked. (Un-)locking 0x00 modifies both protection key
-> registers, while modifying 0x10 only modifies itself.
-> 
-> This commit updates the SCU write logic to reject writes unless both
-> protection key registers are unlocked, matching the behaviour of
-> real hardware.
-> 
-> Signed-off-by: Tan Siewert <tan@siewert.io>
-> ---
-> V3:
->    - Change logic to unlock both registers on 0x00 write, while writing
->      to 0x10 only modifies itself. [Jamin]
-> 
->   hw/misc/aspeed_scu.c | 16 ++++++++++++++--
->   1 file changed, 14 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-> index 4930e00fed..993cb800a8 100644
-> --- a/hw/misc/aspeed_scu.c
-> +++ b/hw/misc/aspeed_scu.c
-> @@ -91,6 +91,7 @@
->   #define BMC_DEV_ID           TO_REG(0x1A4)
->   
->   #define AST2600_PROT_KEY          TO_REG(0x00)
-> +#define AST2600_PROT_KEY2         TO_REG(0x10)
->   #define AST2600_SILICON_REV       TO_REG(0x04)
->   #define AST2600_SILICON_REV2      TO_REG(0x14)
->   #define AST2600_SYS_RST_CTRL      TO_REG(0x40)
-> @@ -722,6 +723,7 @@ static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
->       int reg = TO_REG(offset);
->       /* Truncate here so bitwise operations below behave as expected */
->       uint32_t data = data64;
-> +    bool unlocked = s->regs[AST2600_PROT_KEY] && s->regs[AST2600_PROT_KEY2];
->   
->       if (reg >= ASPEED_AST2600_SCU_NR_REGS) {
->           qemu_log_mask(LOG_GUEST_ERROR,
-> @@ -730,15 +732,25 @@ static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
->           return;
->       }
->   
-> -    if (reg > PROT_KEY && !s->regs[PROT_KEY]) {
-> +    if ((reg != AST2600_PROT_KEY || reg != AST2600_PROT_KEY2) && !unlocked) {
->           qemu_log_mask(LOG_GUEST_ERROR, "%s: SCU is locked!\n", __func__);
-> +        return;
->       }
->   
->       trace_aspeed_scu_write(offset, size, data);
->   
->       switch (reg) {
->       case AST2600_PROT_KEY:
-> -        s->regs[reg] = (data == ASPEED_SCU_PROT_KEY) ? 1 : 0;
-> +        /*
-> +         * Writing a value to SCU000 will modify both protection
-> +         * registers to each protection register individually.
-> +         */
-> +        u32 value = (data == ASPEED_SCU_PROT_KEY) ? 1 : 0;
+Hello Sean
 
-u32 -> uint32_t and it is best to declare variables at the top
-of the function.
+On 6/14/25 22:22, Sean Wei wrote:
+> Hi Cédric,
+> 
+> Thanks for pointing me to the earlier thread, moving to
+> the `SPDX-License-Identifier` tags is the better long-term fix.
+> 
+> 
+>  > I think you can convert all QEMU files while at it.
+> 
+> To keep traffic on qemu-devel@ manageable, I'd like to work
+> subtree by subtree, following the sections in MAINTAINERS.
+> 
+> 
+>  > Are there any MIT-licensed files?
+> 
+> Just a handful in the ASPEED code base using MIT:
+> 
+>      hw/ssi/aspeed_smc.c
+>      include/hw/ssi/aspeed_smc.h
+>      tests/qtest/aspeed_gpio-test.c
+>      tests/qtest/aspeed_smc-test.c
+>      tests/qtest/aspeed-smc-utils.c
+>      tests/qtest/aspeed-smc-utils.h
+
+Oh and I am the one that did that 9y ago. I think I was inspired by
+the PPC series source files I was working on at the time.
+
+> 
+> ## Proposed steps
+> 
+> 1. Start with the ASPEED BMC subtree.
+> 
+> 2. Split commits by path and header style.
+>     path: hw/, include/hw/, tests/
+>     license: GPL-2.0-or-later, GPL-2.0-only, MIT
+>     style: boiler plate, see COPYING
+> > 3. Drop the boiler-plate, replace with the correct
+>     SPDX-License-Identifier, without changing code.
+> 
+> Does this approach sound reasonable for you?
+
+LGTM. I will merge these changes through the aspeed tree.
 
 Thanks,
 
 C.
-
-
-
-> +        s->regs[AST2600_PROT_KEY] = value;
-> +        s->regs[AST2600_PROT_KEY2] = value;
-> +        return;
-> +    case AST2600_PROT_KEY2:
-> +        s->regs[AST2600_PROT_KEY2] = (data == ASPEED_SCU_PROT_KEY) ? 1 : 0;
->           return;
->       case AST2600_HW_STRAP1:
->       case AST2600_HW_STRAP2:
 

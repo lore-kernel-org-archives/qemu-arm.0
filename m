@@ -1,119 +1,101 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1950720njc;
-        Mon, 16 Jun 2025 08:52:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCULITGOTm/lpN7QTQvaIab2KyxADEo3pWmReQCVWqZH76i/T1gsSxyqaqn/rRi6L9rGUwxD/KFuAG2woA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGBm6VJcq6aTVZrK69Qca5jLCKgIerIauRFBEQJRWThNKSLeeS4Zgdfs585l98Cjaj5ETNU
-X-Received: by 2002:a5d:5f4e:0:b0:3a4:f893:3f03 with SMTP id ffacd0b85a97d-3a572e79692mr6992083f8f.45.1750089173710;
-        Mon, 16 Jun 2025 08:52:53 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1750089173; cv=pass;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2011559njc;
+        Mon, 16 Jun 2025 10:26:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW3PPccC+tKIKMQPYRbpEAPgkSirFX7GjyTBB1XQEMLIitvSGIxxNCXvM/TFdqY3YvkUAv9SxrWrC/hog==@linaro.org
+X-Google-Smtp-Source: AGHT+IGTwkV32aQ9TuWmlhAmhMJzJCLN8BU8sOPX44QIS1e+6HGOPoBEUTgcTbX7j/ksEvblzY43
+X-Received: by 2002:a05:6214:d4a:b0:6f8:a978:d46 with SMTP id 6a1803df08f44-6fb47740adamr161245616d6.19.1750094791046;
+        Mon, 16 Jun 2025 10:26:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750094791; cv=none;
         d=google.com; s=arc-20240605;
-        b=Rs9hH4cNHkRXl4C4IWQzIi2z1Q0rDABPlNyz7bB2jIAoMtl9mMYE9Y+IC0jQxAPPEB
-         l9U/NcOt17HLGh6r9k7736naT/OFt100qTCSgguqAeyEnOTW7GiL1el7TlMzoYiIrdcs
-         J4pwGf7Ffk+zkiLwzG6sIpWbCvOkZ1krGuP/b3q3XJv1anlB1outQVvm3OM1IX7IdroY
-         kkhg5WEJLmJ9sIoVwXmNZEajRnBs1U/b3MGT13hAw1ToA0oVxMQ5pduGy4RP96trw/Xk
-         Ko5uMiE/RVNfqd/1JItaBAKYowHWl/iLvMhvLonuIBf2HVZkKCmDBP//enoPut2rE+/m
-         NxGA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=g4exgKCPERZc5k0g6n4leoJmALiySXb8D0ZNF82QxQXaWOarHNzGo6QZ91H+tOFxBE
+         CtHqTxFHSknw2EOU9H/3PXjbyFoOp4IT+SySPyx7aEaFOQXgQIzoPeKHDvpOKPTIHac4
+         0kZfZS1OiEiiGnF8buJ0lXNpsW8ivvd5Kadzq+MmjbDlNpkjDkd6O0LF/jsMdceJfjn1
+         ghfpBV0x79E27KyjcwrSiWlsHJPGojciKUdgQSvISCmv5fa0vqq7Y1egn5skrc0Z0H9t
+         qnjrxHC8uKQDpqFHjvBMCQILm3pMDxjhMsNQ9FVro70J2glre015RpWanpio/Y3MRTv2
+         lt9w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:arc-filter;
-        bh=vUgFWK27h7+QzB2tPNFSekmWswMsNRaZj07x9fPU7Xo=;
-        fh=k7QEiNZfr1ScQsNOT11oMF1qoGKc91uRRDJBZaz6hH0=;
-        b=IPzo//qT1SFcLj5fhqxTxnojd2WtlChOOY5HfyErfVO0c6XuMeepyyqGKtEmg63a7k
-         dRxDW6mMvU4YEUX/4eDVZQDF4/B2edMACh6nW+XHlTkmLeurohWmii7b0ijO2Fi0dUTS
-         rPHCQmnCKB5rk7mt8TBGEGZ83Aq7qj0E9Rc8DbAEFiN9+j0v3WhtfgWP2BPhs8AcbiFF
-         NA7R1dH36T61t70HcfkOt6Cxin1Kx4TG2To+Ri6LWWGnhHPkCNJc6K7ng9fRLJBUJ4/I
-         yR1p37aJ1rhzDZrYbmIZ+xHQKBME2GEk+VRzLIRnEKCojIngOHhEnrZ0kQT9G2gB9so1
-         rStA==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=evBOl5rbfEcn1En9csBiLwPoXAIPY0sQhp6r0d0a+mY=;
+        fh=YSS6IwOZbmqAaNk1mB0bKhZZ6/1NuqKuBkRACaI5c/4=;
+        b=L3sYBPt4diMr71pm4Pa7MAye54Ox2Se4nUuNvr1aUqedj36jkIwsrcf3BPqq3APkdW
+         vHZPQeoHlQuu+eQ5Cy9r5Gb2AyyVCyc+N6lQKrDgs2vHLIzXVUZkC4i09LPgNtYcq5ns
+         x2cicNkY5iErkASyrruGSNbFDKabPTObgvZK9x2Q5oFxnQf5xrt0Ud4dNRHkjJM02ciM
+         vkCdonAluQkIO+qFHXnw1+8JwY0M6yA0W5QzCwH2t5+mqytAvVJKRfiwFn3YLN9P73Pw
+         X7emyO7x9Woa/srtXBXTB2ErlbiLS2xJKTnVBhylAaRi7IKu5hvmqAaofJLTy6mUJt72
+         foFw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@sean.taipei header.s=2021Q3 header.b=UB32phdY;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=sean.taipei
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@wjsota.com header.s=sig1 header.b=PAcNiDeq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a568a541ccsi6327570f8f.164.2025.06.16.08.52.53
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fb5218a71asi41919066d6.186.2025.06.16.10.26.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Jun 2025 08:52:53 -0700 (PDT)
+        Mon, 16 Jun 2025 10:26:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sean.taipei header.s=2021Q3 header.b=UB32phdY;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=sean.taipei
+       dkim=pass header.i=@wjsota.com header.s=sig1 header.b=PAcNiDeq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uRC8c-0002Uc-V0; Mon, 16 Jun 2025 11:52:46 -0400
+	id 1uRDb4-00060z-Ry; Mon, 16 Jun 2025 13:26:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@sean.taipei>)
- id 1uRC8V-0002OC-QN; Mon, 16 Jun 2025 11:52:39 -0400
-Received: from mail.sean.taipei ([128.199.207.102] helo=sean.taipei)
+ (Exim 4.90_1) (envelope-from <root@wjsota.com>) id 1uRDRF-0002P3-QD
+ for qemu-arm@nongnu.org; Mon, 16 Jun 2025 13:16:06 -0400
+Received: from p-west1-cluster3-host8-snip4-3.eps.apple.com ([57.103.66.56]
+ helo=outbound.pv.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@sean.taipei>)
- id 1uRC8S-00044M-9K; Mon, 16 Jun 2025 11:52:39 -0400
-Authentication-Results: sean.taipei; dmarc=fail (p=quarantine dis=none)
- header.from=sean.taipei
-ARC-Filter: OpenARC Filter v0.1.0 sean.taipei B20C17389
-ARC-Seal: i=1; a=rsa-sha256; d=sean.taipei; s=arc-2024Q2; t=1750089120;
- cv=none;
- b=AsG7YFQQWVqR6a2Uc5LrKDmiiLeOS+Xo3D5TvWdAsFTJ/Z/O9qkRIQ8e37DlVJaZynsHqekehc0ZXD/QJDjXBwk+VilWM7SeBN4VOg8V409nYkOpZviSj4K1crXxYkVDoBbhVXip4Xdk7kVNW2Pupdz4rs2Hphy8A7VhOG+7ZL/RZXjBeOY29jCpUNfkvV8tBbiXVzm3NKvbPLpawQUAaVcdTm3JxurmBgngmH+FGYXyVrBddOwfDNryf/sKJ9zlbiG+h+IUIUNljrZqmKxpF8Ta7J2wP/Mr1lXp+TzvJMqrj3j3ny5RjcMU1vTS6XoHsN/+UD6VXhr6oIonEWUkfg==
-ARC-Message-Signature: i=1; a=rsa-sha256; d=sean.taipei; s=arc-2024Q2;
- t=1750089120; c=relaxed/simple;
- bh=xwjkPl8NeSHmZR6/B86A6bnYGCIQGsZXeJmjL1O1fWw=;
- h=DKIM-Signature:From:To:Cc:Subject:Date:Message-ID:References:
- MIME-Version;
- b=rl1eDOiOJov0p8fEBfVun2ynnI1G/K2sDxJgQlMYUx7x85IRT6ln7gdD4WykS+ifVx1hWjUnMT/48dXvP3zIzGuObSl8FwKL2y2Upts0M5ab3TpYxMC1YRiUzPiqscCco+tSKyfbxWZkXNbZgHsJ3HXJDChOfcO0JwURqETITw0IGg04gA8zDyI+KTLETbIWFucn8W1lANziGmHQCJAd4J/GQ2jqzCBEUI0+SQu0ah9EKaN9dN8fRrwOU/HdQUQnl0wZeplbqCzEr09BDOsM6XNHfPEZJcXZfkfKH/cty69Vu5UI0xi9RuG21vwWKc8h3kYOUxKtkpKFIlIqk8cB0w==
-ARC-Authentication-Results: i=1; sean.taipei;
- dmarc=fail (p=quarantine dis=none)
- header.from=sean.taipei
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=sean.taipei;
- s=2021Q3; t=1750089119;
- bh=xwjkPl8NeSHmZR6/B86A6bnYGCIQGsZXeJmjL1O1fWw=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=UB32phdYayN4xdsvinvny+ll6lGzs/Mre+6v5ZjTIPNBFx5P8oBtDZMYjsDU8Q2B9
- gK+jjkZ5XJvEPUkgFOJ6knfqyrydw0MStoigOaXYFwCcX68RzoO31bYDaIw9hKpUGl
- W5uXhZ3As0ExsBNarmNPJVd+aVNomd6a8efe8EDYW5tLZmMHGv/Lbam9wq93xhKLtt
- ptPJCXgvDkw7zVHvTHdW6OFwoW0kikJU9fMHN5gmmX7lbo4h/CJuFMU4tNEZ2vyfAB
- AZQwOTh1KcS9ZCyMZ/nLh5yvEJrnxXLEtdrX3q/MjaqV8wrfXXgBsA04nJ/QvH3SuQ
- t1x2Xjqc5mLVg==
-Received: from localhost.localdomain (unknown [23.170.80.102])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by sean.taipei (Postfix) with ESMTPSA id B20C17389;
- Mon, 16 Jun 2025 23:51:55 +0800 (CST)
-From: Sean Wei <me@sean.taipei>
-To: qemu-devel@nongnu.org
-Cc: Sean Wei <me@sean.taipei>, Keith Busch <kbusch@kernel.org>,
- Klaus Jensen <its@irrelevant.dk>, Jesper Devantier <foss@defmacro.it>,
- Peter Maydell <peter.maydell@linaro.org>, Song Gao <gaosong@loongson.cn>,
- qemu-block@nongnu.org (open list:nvme),
- qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH 6/6] treewide: fix paths for relocated files in comments
-Date: Mon, 16 Jun 2025 11:51:30 -0400
-Message-ID: <20250616.qemu.relocated.06@sean.taipei>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250616.qemu.relocated@sean.taipei>
-References: <20250616.qemu.relocated@sean.taipei>
+ (Exim 4.90_1) (envelope-from <root@wjsota.com>) id 1uRDRA-0000ho-6j
+ for qemu-arm@nongnu.org; Mon, 16 Jun 2025 13:16:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wjsota.com; s=sig1;
+ bh=evBOl5rbfEcn1En9csBiLwPoXAIPY0sQhp6r0d0a+mY=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=PAcNiDeqDVxQwbss0cDDfUxhyRsyJ0iWIfZfpxotD21zgzI0CLO7LXKPPy5q8gfpD
+ 0mZgO4rQXubVVZ3FoAb/21Kgxn+oF9IJhn9tif63goD70TbwEEbKx/2EHObenH5X1I
+ zdeMtyTaNNcmpzQxEucrPyz/Z9U+CVHmQzbAGuPwGydvLWIgrGr2BykB/6nrtBZbwB
+ f3WLqwDZbPtweYGw/uubgA1M/8q0ODwSQWIAdgajmOtGVqfBECipYwDjqujl1FPW1f
+ 9yT5Bk+qL4iPnYqSN29iPzcRZFcZKcYWjcLl2LS7KbVW+I2ZPOBJh0VDLPPh7m4B4o
+ QMnjBcugJYV0Q==
+Received: from outbound.pv.icloud.com (localhost [127.0.0.1])
+ by outbound.pv.icloud.com (Postfix) with ESMTPS id 7F601180030C;
+ Mon, 16 Jun 2025 17:15:54 +0000 (UTC)
+Received: from dell-op7020.. (pv-asmtp-me-k8s.p00.prod.me.com [17.56.9.36])
+ by outbound.pv.icloud.com (Postfix) with ESMTPSA id 3286D1800B55;
+ Mon, 16 Jun 2025 17:15:53 +0000 (UTC)
+From: Solomon Tan <root@wjsota.com>
+To: 
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Solomon Tan <root@wjsota.com>
+Subject: [PATCH] target/arm: Make RETA[AB] UNDEF when pauth is not implemented
+Date: Tue, 17 Jun 2025 01:15:46 +0800
+Message-ID: <20250616171549.59190-1-root@wjsota.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Spam-Score: -1  ALL_TRUSTED
-X-Powered-By: Sean <postmaster@sean.taipei>
-X-Scanned-By: MIMEDefang 3.3 on 104.21.5.93
-Received-SPF: pass client-ip=128.199.207.102; envelope-from=me@sean.taipei;
- helo=sean.taipei
+X-Proofpoint-GUID: jyJRFDUagL06QZIPT0DSlFADjHdhK3qA
+X-Proofpoint-ORIG-GUID: jyJRFDUagL06QZIPT0DSlFADjHdhK3qA
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
+ definitions=2025-06-16_08,2025-06-13_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=1
+ clxscore=1030 malwarescore=0 mlxlogscore=734 mlxscore=0 phishscore=0
+ suspectscore=0 bulkscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.22.0-2503310001 definitions=main-2506160115
+Received-SPF: pass client-ip=57.103.66.56; envelope-from=root@wjsota.com;
+ helo=outbound.pv.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 16 Jun 2025 13:26:02 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -127,101 +109,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EixshXkdOiC+
+X-TUID: e1SKG91XMFF2
 
-After the docs directory restructuring, several comments
-refer to paths that no longer exist.
+According to the Arm A-profile A64 Instruction Set Architecture,
+RETA[AB] should be decoded as UNDEF if the pauth feature is not
+implemented.
 
-Replace these references to the current file locations
-so readers can find the correct files.
-
-Related commits
----------------
-
-  189c099f75f (Jul 2021)
-    docs: collect the disparate device emulation docs into one section
-    Rename  docs/system/{ => devices}/nvme.rst
-
-  5f4c96b779f (Feb 2023)
-    docs/system/loongarch: update loongson3.rst and rename it to virt.rst
-    Rename  docs/system/loongarch/{loongson3.rst => virt.rst}
-
-  fe0007f3c1d (Sep 2023)
-    exec: Rename cpu.c -> cpu-target.c
-    Rename  cpus-common.c => cpu-common.c
-
-  42fa9665e59 (Apr 2025)
-    exec: Restrict 'cpu_ldst.h' to accel/tcg/
-    Rename  include/{exec/cpu_ldst.h => accel/tcg/cpu-ldst.h}
-
-Signed-off-by: Sean Wei <me@sean.taipei>
+Fixes: 0ebbe9021254f ("target/arm: Convert BRA[AB]Z, BLR[AB]Z, RETA[AB] to decodetree")
+Signed-off-by: Solomon Tan <root@wjsota.com>
 ---
- docs/spin/tcg-exclusive.promela | 4 ++--
- hw/nvme/ctrl.c                  | 2 +-
- target/arm/cpu.c                | 2 +-
- target/loongarch/README         | 2 +-
- 4 files changed, 5 insertions(+), 5 deletions(-)
+ target/arm/tcg/translate-a64.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/docs/spin/tcg-exclusive.promela b/docs/spin/tcg-exclusive.promela
-index c91cfca9f7..1d03af850b 100644
---- a/docs/spin/tcg-exclusive.promela
-+++ b/docs/spin/tcg-exclusive.promela
-@@ -1,6 +1,6 @@
- /*
-  * This model describes the implementation of exclusive sections in
-- * cpus-common.c (start_exclusive, end_exclusive, cpu_exec_start,
-+ * cpu-common.c (start_exclusive, end_exclusive, cpu_exec_start,
-  * cpu_exec_end).
-  *
-  * Author: Paolo Bonzini <pbonzini@redhat.com>
-@@ -65,7 +65,7 @@
-                              }
- #define COND_BROADCAST(c)    c++
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index ac80f572a2..d0719b5665 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -1816,6 +1816,10 @@ static bool trans_RETA(DisasContext *s, arg_reta *a)
+ {
+     TCGv_i64 dst;
  
--// this is the logic from cpus-common.c
-+// this is the logic from cpu-common.c
- 
- mutex_t mutex;
- cond_t exclusive_cond;
-diff --git a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
-index fd935507bc..5810bfbe7a 100644
---- a/hw/nvme/ctrl.c
-+++ b/hw/nvme/ctrl.c
-@@ -22,7 +22,7 @@
-  *
-  * Usage
-  * -----
-- * See docs/system/nvme.rst for extensive documentation.
-+ * See docs/system/devices/nvme.rst for extensive documentation.
-  *
-  * Add options:
-  *      -drive file=<file>,if=none,id=<drive_id>
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index e025e241ed..90cf924938 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2672,7 +2672,7 @@ static const char *arm_gdb_get_core_xml_file(CPUState *cs)
-  * linux syscall TIF_TAGGED_ADDR setting, not TBI in general.
-  *
-  * There should be a better place to put this, but we need this in
-- * include/exec/cpu_ldst.h, and not some place linux-user specific.
-+ * include/accel/tcg/cpu-ldst.h, and not some place linux-user specific.
-  *
-  * Note that arm-*-user will never set tagged_addr_enable.
-  */
-diff --git a/target/loongarch/README b/target/loongarch/README
-index 0b9dc0d40a..1ffd3422d2 100644
---- a/target/loongarch/README
-+++ b/target/loongarch/README
-@@ -11,7 +11,7 @@
- 
- - System emulation
- 
--  You can reference docs/system/loongarch/loongson3.rst to get the information about system emulation of LoongArch.
-+  You can reference docs/system/loongarch/virt.rst to get the information about system emulation of LoongArch.
- 
- - Linux-user emulation
- 
++    if (!dc_isar_feature(aa64_pauth, s)) {
++        return false;
++    }
++
+     dst = auth_branch_target(s, cpu_reg(s, 30), cpu_X[31], !a->m);
+     gen_a64_set_pc(s, dst);
+     s->base.is_jmp = DISAS_JUMP;
 -- 
-2.49.0
+2.48.1
 

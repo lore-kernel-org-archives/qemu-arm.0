@@ -1,213 +1,201 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1864300njc;
-        Mon, 16 Jun 2025 06:40:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVD2vd5Eno762STTe3/OvEKWwH1kdhr/j1+jghNIe29u4c55o7qhl+Oz44q79ZHBN0+lsddbdOsltQasQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEDd8yxdpfw4SBbX8ghcOXiPOG8lFxrF2r6sBkveJsnNsT5ZowqwV7jHnNpkuRla++b179X
-X-Received: by 2002:a05:6214:2e84:b0:6fb:1c3:f529 with SMTP id 6a1803df08f44-6fb5787b832mr21801546d6.6.1750081246973;
-        Mon, 16 Jun 2025 06:40:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750081246; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2013746njc;
+        Mon, 16 Jun 2025 10:30:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWrRXyD8c/fEw1XpGMIqIZZQ8AodjzS+NF0ivEmCza4+cyp41gcpgP/e86rsewSJmNpOffnaPZLnH5Ylg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFui/PlWRAqL33zR+CjSg//sst4goJOVP8q0fMmVgP16Kq+B5zGQozRRUuqeYOSGI/8BcTE
+X-Received: by 2002:ac8:7d55:0:b0:4a4:41a1:b944 with SMTP id d75a77b69052e-4a73c51f7b3mr167185421cf.1.1750095013878;
+        Mon, 16 Jun 2025 10:30:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750095013; cv=none;
         d=google.com; s=arc-20240605;
-        b=SmXeuM6V/k9qhIB19VmmCCkJZhtMxTUPkFFKBmC1z4eU3T4UIDJJ62D0BknaDho4nI
-         zFe8hEVetuufispwsbHABAGsmGnEmGb0H9Ch0ENtyOIc2tJ1xQiNJjgXUdIT9SfUyPtE
-         2s5VkXeL8aTaXB/B8Vz31NJnBdQb/DNNab7bVxli6cHtTSlgbcRwn9jy4ha3fAlWKRAU
-         TJOfBtvyx7t+U4HVVrGVbDzqhExPohfeOIZOCt6IyPfz+Igrru72yDvViHsDSTrrBzq2
-         4YRNzAPvLN4Dtmpt9B+LwE/WX2AF+bmww0Yl+CIaPdh/a0Hgr1ZyzvQuXLYbhOPJTBNE
-         dilQ==
+        b=jnRCZ4pbt39ooHDFV8mnjfXD5rPFeTTP+DpNaofgsG16g/LUfuTEAL3yQ/LGiIjmPE
+         olTh7u3kbiD2k3JBmLAb0Ka1rC9RO5YUFlaagIPGT/n8+0m2mvn7gdoSom3/EvHzl0LQ
+         3vsnrF4cl/F3YKWkvUsVPqA9s67ycmW4FPRLkUUkv+Q+60iE9eHzmrK8xlhzWjgm33Y1
+         dK3NTolGg4prIYGesAkxSgYmMOYXGq66jq+G7uTuW/OZQPBoxud66GsFaIkRPaTOYoYI
+         M1Migy+lKgrM01jwkChIt4loBARs/B7sgvjgGAPolvuDYD+/4y30KdmI5E4TQc2fbm0z
+         IhEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=/JxWBQwMGESCvY7U06VYGHZQ4aHAxOfQb8Vo1ThJTrQ=;
-        fh=B7mlmFCKLR8OMScXX1cPhTh1ZhvEGVIxtlNAwinfGrE=;
-        b=THM1hSCra71LmQdNjID084jsegZ7b5GT0hA/W63tFzI9wnJ8H9Y69ffjShXkAjphK8
-         EyhD6LDrAUozcN4IWTpBLTzetckjphJR2qVm7+iKuIZ2HcJYXp9pXq8QNIM0IZLZvxGW
-         Z2JUTjJGFRqrtqa5H4lJs+0GCJNeDASBaKazG0ad4CC6BiQ5h7TdcOTtzgqouQPTCAcG
-         JEdUElpG++cqTg1Ut4PAXO/HdQJ4lrzt9AQiGLcS4SYngXVNBds3n/wV2jsqGuCdwxue
-         tZ3KvOWiI5YOzB07E5xThbjWVhb5HCMk01uLt7AghABXuQI7O7oMmvYojS/WtM4v5x9A
-         X8aQ==;
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=ihjeWi/0gcPpegSQ04JiCzsJbM1MCOCfpX5SzthJRl4=;
+        fh=3AW6bAMqMUhV8jC+xGRMRxTOEzRFuGFdXRRjoKeytY0=;
+        b=O95FxU4c/uxJmmHvyFJQgV588UXmtwoEFfB2t1Ws+RaRB9NDWUj370p/LyK+Qif8Nn
+         3CEkcKe1LaUbEhbALR//1JdyovaeLaQ4CzKIpwG1LtIu+MaZTRIszNwSCJ+yjdZJToOj
+         Ox5KWrQy4j3c/FNqleZd/8WmwORE9DAq0RkDjGnHHDQmZNdO71pRRMTcV9MgQIqKJYXu
+         in3yIoGRvHZGhXzFLNIQDXCkZ0M+gVQkwjp4w8oaJOOAyNe1rBRkQaPHI2J87cygto3b
+         0A0hKiUrpz6EiweF/4kz+q0ZmqoHLlRqk7D9JxDa0uNJQaoron5mS0WOPwLknk+mKoao
+         I5Yg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PTfqURgp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fb53905aa6si31745056d6.68.2025.06.16.06.40.46
+        by mx.google.com with ESMTPS id d75a77b69052e-4a72a4c812esi103497981cf.357.2025.06.16.10.30.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Jun 2025 06:40:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 16 Jun 2025 10:30:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PTfqURgp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uRA4S-0006HF-RI; Mon, 16 Jun 2025 09:40:21 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uRDeW-0007aM-TH; Mon, 16 Jun 2025 13:29:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=g70R=Y7=kaod.org=clg@ozlabs.org>)
- id 1uRA4O-0006EM-E7; Mon, 16 Jun 2025 09:40:16 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
+ id 1uRDeV-0007a6-Ay
+ for qemu-arm@nongnu.org; Mon, 16 Jun 2025 13:29:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=g70R=Y7=kaod.org=clg@ozlabs.org>)
- id 1uRA4L-00009L-WB; Mon, 16 Jun 2025 09:40:16 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bLWMl4M3Jz4x3d;
- Mon, 16 Jun 2025 23:40:03 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bLWMg5WV7z4x07;
- Mon, 16 Jun 2025 23:39:59 +1000 (AEST)
-Message-ID: <475ff262-2fba-4291-b0c1-1c96d0da4052@kaod.org>
-Date: Mon, 16 Jun 2025 15:39:57 +0200
+ (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
+ id 1uRDeO-0003NH-6J
+ for qemu-arm@nongnu.org; Mon, 16 Jun 2025 13:29:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1750094973;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ihjeWi/0gcPpegSQ04JiCzsJbM1MCOCfpX5SzthJRl4=;
+ b=PTfqURgprQ8mZMwRIOK75/fqgoOKx4RD1HmXczK7xdOoOcXTxDqZnkLo1kNP3Vv3BZRNyU
+ 2GeHtFQ8qulVEKXqNV3qQY6ZDbByy3HRjhdrdj28XnraVllx6/ennTZ4vKtAOJYHxj47HG
+ PSmcm4wKNLX2L/sMhJF/LOvVzxz57Z8=
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
+ [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-228-FSs2VEpEOSOl_stz3ZBQ_w-1; Mon, 16 Jun 2025 13:29:32 -0400
+X-MC-Unique: FSs2VEpEOSOl_stz3ZBQ_w-1
+X-Mimecast-MFC-AGG-ID: FSs2VEpEOSOl_stz3ZBQ_w_1750094971
+Received: by mail-qt1-f198.google.com with SMTP id
+ d75a77b69052e-4a6f64eebecso91853621cf.2
+ for <qemu-arm@nongnu.org>; Mon, 16 Jun 2025 10:29:31 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1750094971; x=1750699771;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ihjeWi/0gcPpegSQ04JiCzsJbM1MCOCfpX5SzthJRl4=;
+ b=aJ4Gnkz92gtMB63FkwkDCxV9y9T6URyF7RhDnF3JYunJ189x25FOzecxlZsgJCuiQ4
+ HZ/f3B6Rr64pjcPKc0NA4yp9t5vZujnv5z3gZcJUzr2oGmqrAvZfPQvrIyJUlAp8hOfT
+ BvHcAbQER+oORPk4cApLwqRR/H9QYzH0w8jmbMTAyvI+0fqlDjc7JvuXZOKzZ4jt88y/
+ tn6lnZkEdB7zpocz/jViOPaZlCEpQgMcIITmNNueWyrilq1z5/ZcENNTGI7uj6x2WW57
+ KaumIXwJBkEgDQCvtKuJqKGE8g7lEzdb5+JyKQ8g2JQ86gdT6AgpbGJWYrLvVfHEJCRt
+ tqRA==
+X-Gm-Message-State: AOJu0YwFIooeZGitcMG/JxuOMqv92IKECXwlCAqa9ZnAQwuA7cJ4ubmc
+ mMEWoQsZ33HaZzhDZLiURrXF0NzNx2mfEKaUAUNfFPeULIGZKPTaGIERs8Yjf/kyy7/IffR1j52
+ 6I3xVLaZBRQMbScEXjltEHNTF6sYOAl7EvofPbgVaR4ASPlOVBMFthg==
+X-Gm-Gg: ASbGncs2MubwSdr+vZYVYTP7pguETENMwwlyczMjf5VzOLN8fe5a0EGJrDxlwAJ8mEY
+ IpyPBPcZbOW5te765ceJAepMpKiR6AJvrhUxQl+miaveydSlQQK3B9in1SBjPvJepPm2V7ET20a
+ Z8aeTF1WVLLJPFWCbhlQJDke/Eu/4JuJYHDP7/bRgec5CZTgh7Equn0WUntN6/mwUxJR+FXZAu7
+ io8uRAtydfqrD9OEwXC+bBD7IMkzH4Ac8kss+pnV0agpXz0PtbA4ehhkL3gFtk13l86OjuxmYNw
+ /usMwI9qf8HKpsQ8ASqZmUY=
+X-Received: by 2002:ac8:5acb:0:b0:4a6:f518:6b19 with SMTP id
+ d75a77b69052e-4a73c5faebemr158210171cf.28.1750094971344; 
+ Mon, 16 Jun 2025 10:29:31 -0700 (PDT)
+X-Received: by 2002:ac8:5acb:0:b0:4a6:f518:6b19 with SMTP id
+ d75a77b69052e-4a73c5faebemr158209631cf.28.1750094970803; 
+ Mon, 16 Jun 2025 10:29:30 -0700 (PDT)
+Received: from [192.168.40.164] ([70.105.235.240])
+ by smtp.gmail.com with ESMTPSA id
+ d75a77b69052e-4a72a3103a5sm51516451cf.30.2025.06.16.10.29.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 16 Jun 2025 10:29:30 -0700 (PDT)
+Message-ID: <bee0abcd-2cf5-4640-a3a5-92955bac6976@redhat.com>
+Date: Mon, 16 Jun 2025 13:28:26 -0400
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/12] include/hw: replace FSF postal address with
- licenses URL
-To: Sean Wei <me@sean.taipei>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-References: <20250613.qemu.patch@sean.taipei>
- <20250613.qemu.patch.05@sean.taipei>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250613.qemu.patch.05@sean.taipei>
+Subject: Re: [PATCH v4 7/7] qemu-options.hx: Document the arm-smmuv3 device
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>, linuxarm@huawei.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
+ peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
+ berrange@redhat.com, imammedo@redhat.com, nathanc@nvidia.com,
+ mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
+ jiangkunkun@huawei.com, zhangfei.gao@linaro.org
+References: <20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com>
+ <20250613144449.60156-8-shameerali.kolothum.thodi@huawei.com>
+ <20250616121245.00005b4b@huawei.com>
+From: Donald Dutile <ddutile@redhat.com>
+In-Reply-To: <20250616121245.00005b4b@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: swztsmajWQZ5F8_PP57hwKTTjK_PY8i941FxilvNPt0_1750094971
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=g70R=Y7=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -40
-X-Spam_score: -4.1
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=ddutile@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -39
+X-Spam_score: -4.0
 X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.056, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.892,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qgih+VUcVwEA
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: zxzGn2j9Xhl3
 
-On 6/13/25 18:44, Sean Wei wrote:
-> Some of the GPLv2 boiler-plate still contained the
-> obsolete "51 Franklin Street" postal address.
+
+
+On 6/16/25 7:12 AM, Jonathan Cameron wrote:
+> On Fri, 13 Jun 2025 15:44:49 +0100
+> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 > 
-> Replace it with the canonical GNU licenses URL recommended by the FSF:
-> https://www.gnu.org/licenses/
+>> Now that arm,virt can have user-creatable smmuv3 devices, document it.
+>>
+>> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+>> ---
+>>   qemu-options.hx | 6 ++++++
+>>   1 file changed, 6 insertions(+)
+>>
+>> diff --git a/qemu-options.hx b/qemu-options.hx
+>> index 7eb8e02b4b..3edbde45bb 100644
+>> --- a/qemu-options.hx
+>> +++ b/qemu-options.hx
+>> @@ -1226,6 +1226,12 @@ SRST
+>>       ``aw-bits=val`` (val between 32 and 64, default depends on machine)
+>>           This decides the address width of the IOVA address space.
+>>   
+>> +``-device arm-smmuv3,primary-bus=id``
+>> +    This is only supported by ``-machine virt`` (ARM).
+>> +
+>> +    ``primary-bus=id``
+>> +        The PCIe Root Complex to be associated with.
 > 
-> Signed-off-by: Sean Wei <me@sean.taipei>
-> ---
->   include/hw/i2c/aspeed_i2c.h     | 3 +--
->   include/hw/pci/pci_bridge.h     | 4 ++--
->   include/hw/timer/aspeed_timer.h | 3 +--
->   3 files changed, 4 insertions(+), 6 deletions(-)
+> Hmm.  Root complex or host bridge?
+> I think an RC is allowed to have multiple heirarchy and hence multiple
+> host bridges. Figure 1.2 in the PCI spec. So my gut feeling is this
+> should be host bridge.
 > 
-> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-> index 2c4c81bd20..2daacc10ce 100644
-> --- a/include/hw/i2c/aspeed_i2c.h
-> +++ b/include/hw/i2c/aspeed_i2c.h
-> @@ -14,8 +14,7 @@
->    *  GNU General Public License for more details.
->    *
->    *  You should have received a copy of the GNU General Public License along
-> - *  with this program; if not, write to the Free Software Foundation, Inc.,
-> - *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-> + *  with this program; if not, see <https://www.gnu.org/licenses/>.
->    */
->   
->   #ifndef ASPEED_I2C_H
-> diff --git a/include/hw/pci/pci_bridge.h b/include/hw/pci/pci_bridge.h
-> index b0f5204d80..8cdacbc4e1 100644
-> --- a/include/hw/pci/pci_bridge.h
-> +++ b/include/hw/pci/pci_bridge.h
-> @@ -14,8 +14,8 @@
->    * GNU General Public License for more details.
->    *
->    * You should have received a copy of the GNU General Public License
-> - * along with this program; if not, write to the Free Software
-> - * Foundation, 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-> + * along with this program; if not, see
-> + * <https://www.gnu.org/licenses/>.
->    *
->    * split out pci bus specific stuff from pci.[hc] to pci_bridge.[hc]
->    * Copyright (c) 2009 Isaku Yamahata <yamahata at valinux co jp>
-> diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_timer.h
-> index 767cae4b05..a850625a05 100644
-> --- a/include/hw/timer/aspeed_timer.h
-> +++ b/include/hw/timer/aspeed_timer.h
-> @@ -16,8 +16,7 @@
->    *  GNU General Public License for more details.
->    *
->    *  You should have received a copy of the GNU General Public License along
-> - *  with this program; if not, write to the Free Software Foundation, Inc.,
-> - *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-> + *  with this program; if not, see <https://www.gnu.org/licenses/>.
->    */
->   #ifndef ASPEED_TIMER_H
->   #define ASPEED_TIMER_H
++1.
+the key word-hint: 'complex' -- a RP (a Root *Port*) can only host a single PCI(e) (sub-)tree,
+but a RC can have multiple PCI domains, not to mention a bunch of platform-level,
+acpi-defined PCI(e) devices.
 
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
-
+> 
+>> +
+>>   ERST
+>>   
+>>   DEF("name", HAS_ARG, QEMU_OPTION_name,
+> 
 

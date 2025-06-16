@@ -1,41 +1,40 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1783246njc;
-        Mon, 16 Jun 2025 04:20:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUmxGW/N0ByzPHBiMzQvXmSQMxULfGIiCBfuXqTm4tsLBp66W+SJo6QQV8r3cMUjIc/G2EUUW0qYUI5iQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE0iOT/bm/dCAwz4XFd5fL1iqX+TL9crpe409bLhPRdX2TVVzyHSdr436JeMPHUS8eDV9R0
-X-Received: by 2002:a05:622a:64a:b0:4a4:3798:3276 with SMTP id d75a77b69052e-4a73c60a0a5mr135899001cf.45.1750072847464;
-        Mon, 16 Jun 2025 04:20:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750072847; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1773269njc;
+        Mon, 16 Jun 2025 04:02:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWonqwxALQNlFDnTROOeJYIq5U9/PC9DU0LWJadGNuw2BoZDSZYENYWuk4YQTofNzF4LH9QUvTxzHATWA==@linaro.org
+X-Google-Smtp-Source: AGHT+IENgZ1nj7oEl/DvQHQM1tTkLdBNC9ZoUKgRRHqpCMGMx4VdcfnFL+YXFVmNg8XX1fuozwhB
+X-Received: by 2002:a05:620a:40d6:b0:7c5:3cf6:7838 with SMTP id af79cd13be357-7d3c6cfc909mr1366723185a.49.1750071777015;
+        Mon, 16 Jun 2025 04:02:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750071777; cv=none;
         d=google.com; s=arc-20240605;
-        b=E5JpTwjGS3Md5sy3dCk/ELuh3OxgWS0L4ppuOPAdQaDj7oQCtwlG/4Lz41O9Vq1vkO
-         JKg6yk+ACSSavWQ8q4xEPSMAxMoQL23TsEzY2c8n+GFKlxJ5FOuqC5T7uExxGyAsfslx
-         NtGpXnVngFkEcFZbDK5n46qyHHv4QmTDthReUJfMmC8xYCeuIEwLCzvsavrRRUKF/Tp4
-         /PnhDsxnvQaTQL42R2+LJFkGajDg5ac8nzAMaSrdY2FEErk7oRkOD3EKgs3ftRx3NbeY
-         YXTduapBDOsTn6DP1qZeSFP8p2ygvYo7jzPoLyvKBXgAmvkEVo/SNph7PoAIOgIvo8k1
-         xBmA==
+        b=F0xNhA1g5Z3ZDi575M73qAa4rTCsvk+uc8T5I/KxRZCmOEcZ9adbjWnTHjEwdH79F9
+         a633SRhMU4Z9Ru9Kg+L9fmUWg8uj33OyWuVH4vNA7oKH3f9iBn2mKejnw4i0k1DsPXLv
+         LGKRsjXvEWKp6IRHOQpzhxwBPnCNUp8YSdOTx0v4a+DmylSuJwlIin+fpi0g310KmWjS
+         Av7JTeVeywIPnICg0j1dv20N1+1sfuYLd/mGzp+rg+7lHf6kybn1VLAK+HQlzPc0qmhF
+         80IINzHo7xgxVau2xwFsZhBsqFHNQz6vJIgKUBvojVuYsvdzvYYSuGob1o8nxS4WLLRe
+         qReg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to;
-        bh=yaZ7qRAWEJWcv54gGgyj1HtyjV+AuTR8G0gF/yfO8uE=;
-        fh=M+FVb7brxN1+lXD0/JCk6BEPvLdfCowl9TrFyc8YJkQ=;
-        b=Ls9bt92LwINVHekUwnxUPBzpgb9OxpBxDgo8GAQQ9vdPQWI3kfRH01Lww7ZIYPg4v1
-         cigpfdGe+vIpm3HjSiNB14bFrLbVrxE0UA0SHqPOVkrxElV3CYfw51UUH0mLRLF+eK/B
-         8/sXXRmWGD8+A0f1476nUVXRO7mY3d2ChazdKXBpL1dL9enKE5XZaAr3mLyr8YOM7/K6
-         iGiCm0U4DPSzfm3eJBY7v7if4mIX2UYQdiR0c/wvw6qiNj+Puwr12RcgNZFGgvE8ElAS
-         zZC3nEiLzxnb7shQx3qDap+mIGQK0InB85sSDOJesABjk8EUXgVDiNDwM49VRzJnfR/T
-         7rdA==;
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:date;
+        bh=kZRUYKnrGjvjZNpcJa/jIzWFKPciRDD3p0nNGOhY7hk=;
+        fh=aA8gsM5QP8IJIk1ptJlCXNxyLIMaAhKHt/Cf0Wq9DRk=;
+        b=holZuiG6eyIs54tBVnsrlFJF0liDSFwFf7vp9kp0wYzJR3IrFE0sgzcWIc8SMh3iSN
+         LfXW8mBhImQ9LVaMV+PK93aGd2+mh1GKTMpbMrY8rsY1qL0GqEvF+f8C+y9rSjhLXAc6
+         RQ9vguX39P/3OD2RU6ohbGeeyogZY8kR0NsOpAZYwKTW+oO0B7mGjeGsAQ/twZeiPD23
+         4VYGh8dmMmhObhV48iMoiBScxBTU01OO3jpQoKp2h62L7Wu9de6Dz78Os2UenmEMZ1tE
+         XQ+oqlnLzxSAzA6WansrbhVTeOV1jkgkDhVTbAUpONLePOO1F+fOErE2Z08iEh+qym88
+         mivQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a72a2b9d0fsi96108551cf.21.2025.06.16.04.20.47
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8f3e1f0si964816285a.577.2025.06.16.04.02.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Jun 2025 04:20:47 -0700 (PDT)
+        Mon, 16 Jun 2025 04:02:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -43,63 +42,49 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uR7tG-0005Tq-PK; Mon, 16 Jun 2025 07:20:39 -0400
+	id 1uR7ba-0005S5-2G; Mon, 16 Jun 2025 07:02:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1uR7tD-0005TW-V9; Mon, 16 Jun 2025 07:20:36 -0400
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uR7bW-0005RP-MN; Mon, 16 Jun 2025 07:02:20 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1uR7t7-00059S-0w; Mon, 16 Jun 2025 07:20:34 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bLSFl5FlRz6M54K;
- Mon, 16 Jun 2025 19:19:39 +0800 (CST)
-Received: from frapeml500005.china.huawei.com (unknown [7.182.85.13])
- by mail.maildlp.com (Postfix) with ESMTPS id C819C140119;
- Mon, 16 Jun 2025 19:20:11 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml500005.china.huawei.com (7.182.85.13) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 16 Jun 2025 13:20:11 +0200
-Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
- frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Mon, 16 Jun 2025 13:20:11 +0200
-To: Jonathan Cameron <jonathan.cameron@huawei.com>, Linuxarm
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uR7bU-0002NL-UI; Mon, 16 Jun 2025 07:02:18 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bLRrz6NfNz6M4bK;
+ Mon, 16 Jun 2025 19:01:39 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id EAFF71402F5;
+ Mon, 16 Jun 2025 19:02:11 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 16 Jun
+ 2025 13:02:11 +0200
+Date: Mon, 16 Jun 2025 12:02:09 +0100
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
  <linuxarm@huawei.com>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
- <jgg@nvidia.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>, "berrange@redhat.com"
- <berrange@redhat.com>, "imammedo@redhat.com" <imammedo@redhat.com>,
- "nathanc@nvidia.com" <nathanc@nvidia.com>, "mochs@nvidia.com"
- <mochs@nvidia.com>, "smostafa@google.com" <smostafa@google.com>, "Wangzhou
- (B)" <wangzhou1@hisilicon.com>, jiangkunkun <jiangkunkun@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
-Subject: RE: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe Root
- Complex association
-Thread-Topic: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe Root
- Complex association
-Thread-Index: AQHb3HJK5cxfqqKOvUqssRJx2PlFXrQFdhmAgAAxU/A=
-Date: Mon, 16 Jun 2025 11:20:11 +0000
-Message-ID: <5c8491549a844014b363ed3ba9fd5956@huawei.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>, <jgg@nvidia.com>, <nicolinc@nvidia.com>,
+ <ddutile@redhat.com>, <berrange@redhat.com>, <imammedo@redhat.com>,
+ <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
+ <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
+Subject: Re: [PATCH v4 5/7] hw/arm/virt: Add an SMMU_IO_LEN macro
+Message-ID: <20250616120209.00004015@huawei.com>
+In-Reply-To: <20250613144449.60156-6-shameerali.kolothum.thodi@huawei.com>
 References: <20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com>
- <20250613144449.60156-2-shameerali.kolothum.thodi@huawei.com>
- <20250616112019.00003bce@huawei.com>
-In-Reply-To: <20250616112019.00003bce@huawei.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.203.177.241]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ <20250613144449.60156-6-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
+ frapeml500008.china.huawei.com (7.182.85.71)
 X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
 Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
 X-Spam_score_int: -33
 X-Spam_score: -3.4
 X-Spam_bar: ---
@@ -120,81 +105,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vet8ESdrraa8
+X-TUID: h1rQTxL3/S+O
+
+On Fri, 13 Jun 2025 15:44:47 +0100
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+
+> From: Nicolin Chen <nicolinc@nvidia.com>
+> 
+> This is useful as the subsequent support for new SMMUv3 dev will also
+> use the same.
+> 
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Reviewed-by: Donald Dutile <ddutile@redhat.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Tested-by: Nathan Chen <nathanc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+>  hw/arm/virt.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 71b923f786..eeace4754d 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -146,6 +146,9 @@ static void arm_virt_compat_set(MachineClass *mc)
+>  #define LEGACY_RAMLIMIT_GB 255
+>  #define LEGACY_RAMLIMIT_BYTES (LEGACY_RAMLIMIT_GB * GiB)
+>  
+> +/* MMIO region size for SMMUv3 */
+> +#define SMMU_IO_LEN 0x20000
+> +
+>  /* Addresses and sizes of our components.
+>   * 0..128MB is space for a flash device so we can run bootrom code such as UEFI.
+>   * 128MB..256MB is used for miscellaneous device I/O.
+> @@ -177,7 +180,7 @@ static const MemMapEntry base_memmap[] = {
+>      [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
+>      [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+>      [VIRT_UART1] =              { 0x09040000, 0x00001000 },
+> -    [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
+> +    [VIRT_SMMU] =               { 0x09050000, SMMU_IO_LEN },
+
+This bit is fine.
+
+>      [VIRT_PCDIMM_ACPI] =        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
+>      [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
+>      [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
+> @@ -1447,7 +1450,6 @@ static void create_smmu(const VirtMachineState *vms,
+>      int irq =  vms->irqmap[VIRT_SMMU];
+>      int i;
+>      hwaddr base = vms->memmap[VIRT_SMMU].base;
+> -    hwaddr size = vms->memmap[VIRT_SMMU].size;
+>      DeviceState *dev;
+>  
+>      if (vms->iommu != VIRT_IOMMU_SMMUV3 || !vms->iommu_phandle) {
+> @@ -1467,7 +1469,7 @@ static void create_smmu(const VirtMachineState *vms,
+>          sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+>                             qdev_get_gpio_in(vms->gic, irq + i));
+>      }
+> -    create_smmuv3_dt_bindings(vms, base, size, irq);
+> +    create_smmuv3_dt_bindings(vms, base, SMMU_IO_LEN, irq);
+
+This seems a little odd.  I guess it may make sense later, but for all other
+cases we only use the macros to define the base_memmap.
+
+Perhaps delay this change until it is more obvious why?
 
 
-
-> -----Original Message-----
-> From: Jonathan Cameron <jonathan.cameron@huawei.com>
-> Sent: Monday, June 16, 2025 11:20 AM
-> To: Shameerali Kolothum Thodi
-> <shameerali.kolothum.thodi@huawei.com>; Linuxarm
-> <linuxarm@huawei.com>
-> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
-> eric.auger@redhat.com; peter.maydell@linaro.org; jgg@nvidia.com;
-> nicolinc@nvidia.com; ddutile@redhat.com; berrange@redhat.com;
-> imammedo@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
-> smostafa@google.com; Wangzhou (B) <wangzhou1@hisilicon.com>;
-> jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
-> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
-> Subject: Re: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe
-> Root Complex association
->=20
-> On Fri, 13 Jun 2025 15:44:43 +0100
-> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
->=20
-> > Although this change does not affect functionality at present, it is
->=20
-> Patch title says PCIe.  This check is vs PCI host bridge.
->=20
-> No idea which one you wanted, but if it is PCIe needs to be
-> TYPC_PCIE_HOST_BRIDGE from pcie_host.h not the pci_host.h one
-> I think.
-
-Looking at the code in virt.c and virt-acpi-build.c , this should be=20
-TYPE_PCI_HOST_BRIDGE. I will change the documentation to=20
-refer to PCI host bridge.
-
-Thanks,
-Shameer
-
->=20
-> > required when we add support for user-creatable SMMUv3 devices in
-> > future patches.
-> >
-> > Tested-by: Nathan Chen <nathanc@nvidia.com>
-> > Signed-off-by: Shameer Kolothum
-> <shameerali.kolothum.thodi@huawei.com>
-> > ---
-> >  hw/arm/smmu-common.c | 4 +++-
-> >  1 file changed, 3 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> > index f39b99e526..7890aa12c1 100644
-> > --- a/hw/arm/smmu-common.c
-> > +++ b/hw/arm/smmu-common.c
-> > @@ -20,6 +20,7 @@
-> >  #include "trace.h"
-> >  #include "exec/target_page.h"
-> >  #include "hw/core/cpu.h"
-> > +#include "hw/pci/pci_bridge.h"
-> >  #include "hw/qdev-properties.h"
-> >  #include "qapi/error.h"
-> >  #include "qemu/jhash.h"
-> > @@ -937,7 +938,8 @@ static void smmu_base_realize(DeviceState *dev,
-> Error **errp)
-> >                                       g_free, g_free);
-> >      s->smmu_pcibus_by_busptr =3D g_hash_table_new(NULL, NULL);
-> >
-> > -    if (s->primary_bus) {
-> > +    if (s->primary_bus && object_dynamic_cast(OBJECT(s->primary_bus)-
-> >parent,
-> > +                                              TYPE_PCI_HOST_BRIDGE)) {
-> >          pci_setup_iommu(s->primary_bus, &smmu_ops, s);
-> >      } else {
-> >          error_setg(errp, "SMMU is not attached to any PCI bus!");
+>  }
+>  
+>  static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
 

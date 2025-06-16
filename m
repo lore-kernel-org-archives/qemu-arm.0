@@ -1,65 +1,66 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1808545njc;
-        Mon, 16 Jun 2025 05:08:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUfjOY3aPmBmiaEc9r2A0bV3DIF53grIteEH/oFJBQbPrARF1g/kXyBQOjc1vlhvmkiNcu5EKzbw4ZdZQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFzoK/gUXOn1V1ssxnJLm/4dFqbmsBU7tL8ULkJT7Ej+SivMMIubbPCcO92/GQOls+IbG8P
-X-Received: by 2002:a17:902:ea03:b0:235:e71e:a396 with SMTP id d9443c01a7336-2366b14d2f4mr122810465ad.51.1750075690244;
-        Mon, 16 Jun 2025 05:08:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750075690; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1812526njc;
+        Mon, 16 Jun 2025 05:14:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUnw6XPucxw/G8gsTDlutHlfr1vzC6UN5CGBR628Bh3Wt1DqunjahQKsqxozNgmwTgWwWnzOpHfxzpTeg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHjSZcYDuv8hjuD2aO+i4WKKDKjpcn1uq9rwNdF9Oy+9/gAja7oG8hFW+Q5dTx/NRBOG/uV
+X-Received: by 2002:a17:902:ebd1:b0:234:d7c5:a0ea with SMTP id d9443c01a7336-2366b12212cmr158496695ad.24.1750076087175;
+        Mon, 16 Jun 2025 05:14:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750076087; cv=none;
         d=google.com; s=arc-20240605;
-        b=IH7X8issreRvD1QicmSyjxKU/b5SjVnVdrczWdsjtrjrjG2bUqu/tQId2CMYnq5Lsf
-         oD3coQeV8As07we14PKj9mKorPyPhxlBEXEL3EEIu91PMrkFzdXPI6pCZJWlSao72NuF
-         A8ZgLlkbgoLKgjaIlORk1jLHY0ItmfNgIhv1WvRU8apoVvOs8RTXOSU5v2RycDmqkMif
-         FxT1vZWo4wL/+UqSyU+vRbA9pseaRRHO7rQbINSto8lOkXEOTJWjcPS6omlzgZ0U8vFA
-         rIQJjzDIjC/1cO4MrWhV7af2cfFmHh5crQuDrlpylrm0BGOLBeP/84ABkcxFfYdiQpNk
-         KVvg==
+        b=lQ6T0PyMkt/aOTlpMooofvKwjqO40ViKJ1NX1GQJO4W77bMiIA6D0FCz0rTzNQBQcF
+         HBYFJWOu14jHTYYPBqCg1qljnO0WivMEA4gzdJiqXEGGY7z00en96bN5SbKfUyHmOH/u
+         j4zLmoWuHHLAs9r6ZdXErR2pIa8460SPdhgpDCpf15FUfA17a60jjuJixvJ070oPjRiN
+         sLMJWpty56UXJXIiA7ifwK6/IIUnRmyuX1E3r9q/0Z1Xwh1t/Ihg6PQAIrMHpiKy5jTp
+         gvX8AyPCWgVNHMdoiyvJxT0DmLSswrXSqRGADd5FSXZSIcmu3aV4LVADD8s905mlZLnO
+         W3hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=ued+FNLco7H3M7eWjlnqd/mRkFKELch/S6J+7qUNeug=;
+        bh=Jns4YUkWleKTus56PdGOGCjWkNbvBqyrqgM+AwVIKyk=;
         fh=RvH3M8XebZfaMMw+1IHIU6D6fajZyB6RagMQLzVoZgI=;
-        b=CTL8MjPKEGcI3ZVTm0MG6EzKa1i2wERgDJ4WqOnWj1muPRbqt0jHdH+KMBs2afUKMf
-         d9V00v/eM0f4BPBhtrxVWjqdkoSaEnqtntzMmc40RJ+ejk5WFK2G9TV6c+fm2Z+fZcnP
-         xNGs6zj88qagZKC1Lo3aEGIlKx2AOmSmsx2vuSR3c4MWndjgBZh8qXbPjH+QiWeVqpKs
-         b15q8vEQgsO/fRp29QUcE1PthzqctXmFQuhkQExWYoXElmMV4CSb9PjEKmMaCB7YUoiG
-         h4COyBERljmFzvzTu4S6wdwRLSVHdIiCdc0dvzVHss8q4JemXCEIlK5NTpGGlbdc3nQS
-         GLLA==;
+        b=lRB4IaVRVR8Vo7Xe8clfRR+v1cGogcwcnJDkayO4UWbV9mgaacf+pwuulDXIGjkvmn
+         NAn0D5SSQAWSoZnMyZGXEO+vNuxPH8qV5pGZ9m4ZWf1vaBPrgXcta1+gjJ20rUNowmDw
+         cvWlSAC7XpegnA5mAdXAfyIZkm/tCJx7nU/drra+E1AiuqMTE9pXlRs1s17k5z22cd4P
+         hl8gc7VheJ8zbAWhOtftIw5nooytkubCL2E/QS1rdY526KXDn+MmkeimEb6Qqm7lTZD9
+         dw80DVRQi+jKLg+jF+dd7yECENSRQxDZafBM9p6dUpvvYOGjE0xxKAqSAQ5m/Q6Z7sqV
+         ntmA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=ojXlCOq1;
+       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=mZqaBz0o;
        spf=pass (google.com: domain of odaki@rsg.ci.i.u-tokyo.ac.jp designates 49.212.243.89 as permitted sender) smtp.mailfrom=odaki@rsg.ci.i.u-tokyo.ac.jp;
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp
 Return-Path: <odaki@rsg.ci.i.u-tokyo.ac.jp>
 Received: from www3579.sakura.ne.jp (www3579.sakura.ne.jp. [49.212.243.89])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-b2fe1688a93si9768944a12.360.2025.06.16.05.08.09
+        by mx.google.com with ESMTPS id d9443c01a7336-2365de63619si98728015ad.174.2025.06.16.05.14.46
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Jun 2025 05:08:10 -0700 (PDT)
+        Mon, 16 Jun 2025 05:14:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of odaki@rsg.ci.i.u-tokyo.ac.jp designates 49.212.243.89 as permitted sender) client-ip=49.212.243.89;
 Authentication-Results: mx.google.com;
-       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=ojXlCOq1;
+       dkim=permerror (no key for signature) header.i=@rsg.ci.i.u-tokyo.ac.jp header.s=rs20250326 header.b=mZqaBz0o;
        spf=pass (google.com: domain of odaki@rsg.ci.i.u-tokyo.ac.jp designates 49.212.243.89 as permitted sender) smtp.mailfrom=odaki@rsg.ci.i.u-tokyo.ac.jp;
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp
 Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
 	(authenticated bits=0)
-	by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 55GC5CYt045357
+	by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 55GCCXHI047420
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Mon, 16 Jun 2025 21:05:12 +0900 (JST)
+	Mon, 16 Jun 2025 21:12:33 +0900 (JST)
 	(envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=ued+FNLco7H3M7eWjlnqd/mRkFKELch/S6J+7qUNeug=;
+DKIM-Signature: a=rsa-sha256; bh=Jns4YUkWleKTus56PdGOGCjWkNbvBqyrqgM+AwVIKyk=;
         c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
         h=Message-ID:Date:Subject:To:From;
-        s=rs20250326; t=1750075514; v=1;
-        b=ojXlCOq1RciJ2fdqnbl0b58/xEt3z34Gtmypg6Zu3hIPBlB8cgvJk51vp0i1M5p7
-         n7dS8l2WWoU9OS/+C0h1nDsaD1kJzkeoB4JhUTy1ouT/QD8ef9e7ySK8GZhtrFpj
-         jRIIG+b83Qk6+gc8F9Lzj1F05D4RptL8UYEdQ0P/soe2JdZ4PcIteWfNR/I9WKMk
-         yKBqb/fTVIRiG7Z0upwN4l+sVhwD4ERg9azQp0uN9y5et8L8fA9ffXj8WdjVotie
-         3FM+JNaaEJnHXTPMss/XdAMtzqI6cGPVGl1XNA3FhL7cai2eNz3yLWndfYRgtnaG
-         MJWCImLpqoHqvMut4bISmQ==
-Message-ID: <a0652351-8443-492d-96dc-9772bf08341d@rsg.ci.i.u-tokyo.ac.jp>
-Date: Mon, 16 Jun 2025 21:05:11 +0900
+        s=rs20250326; t=1750075955; v=1;
+        b=mZqaBz0oU0offbwtymE8Sm//X09ELO0dFO0tfbHgApWLR9Q4Bknj/QaUyYiuJydA
+         yyJYNJ+VCOp90XsEUDR0yGsVHlYEMqJ0RZmCQh0nzWDw3F4Y8e7zHygfqO9slX9w
+         dx+0envOgqaHrRtWY9squzB2pe8ehuUitPIaaDlhK9IUdWnQkwiu57scCt9m8zKf
+         WxmP6PJz17dN1WkFyyavtGgaKiu5DwiETb5RmsOffPpvrzv4Um1YCsypFoXUiRU0
+         9Pa7pLZ/B0IfZ7Wv3l1YGEJhpzuwTOfrodCMZfU5KaBz2QcSCMYkYr5HAhG7dtt7
+         4kAKq7hnUOMzcum+Ld6hLg==
+Message-ID: <f943a1b0-3da5-49d4-948d-fd3863c69ff0@rsg.ci.i.u-tokyo.ac.jp>
+Date: Mon, 16 Jun 2025 21:12:33 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 02/12] python: update pylint ignores
+Subject: Re: [PATCH v2 03/12] python: sync changes from external qemu.qmp
+ package
 To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org
 Cc: Joel Stanley <joel@jms.id.au>, Yi Liu <yi.l.liu@intel.com>,
         =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -149,18 +150,26 @@ Cc: Joel Stanley <joel@jms.id.au>, Yi Liu <yi.l.liu@intel.com>,
  <ma.mandourr@gmail.com>,
         Harsh Prateek Bora <harshpb@linux.ibm.com>
 References: <20250612205451.1177751-1-jsnow@redhat.com>
- <20250612205451.1177751-3-jsnow@redhat.com>
+ <20250612205451.1177751-4-jsnow@redhat.com>
 Content-Language: en-US
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20250612205451.1177751-3-jsnow@redhat.com>
+In-Reply-To: <20250612205451.1177751-4-jsnow@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: Aj+kZKIZmYmR
+X-TUID: PRScaA7mWqti
 
 On 2025/06/13 5:54, John Snow wrote:
-> The next patch will synchronize the qemu.qmp library with the external,
-> standalone version. That synchronization will require an extra ignore
-> for pylint, so do that now.
+> Synchronize changes from the standalone python-qemu-qmp repository for
+> the primary purpose of removing some pre-3.9 compatibility crud that we
+> no longer need or want.
+> 
+> My plan for this release cycle is to finally eliminate this duplication
+> so this type of patch will no longer be necessary -- but for now, it is.
+> 
+> NB: A few changes are not synchronized; mostly license and documentation
+> strings. Everything functional is fully copied verbatim. The license
+> strings are not sync'd only because they point to different LICENSE
+> filenames for the different repositories.
 > 
 > Signed-off-by: John Snow <jsnow@redhat.com>
 

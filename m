@@ -1,70 +1,70 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1741504njc;
-        Mon, 16 Jun 2025 02:51:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVJrkLxtTYe6Ed70mhJMg8CCKdszJ5SEIoC0/OJNVEEtjKVIvC5SX2GqfzMuF08yEfeZ2G6ZhZCJdn33Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IFJYGs/oifdqhwc3OxsAjrHiOCIAZZaxYirUWkHQIBFtcezTtxnuAjY9lYShqSj3vvvj6o2
-X-Received: by 2002:a05:620a:2a03:b0:7d3:8df8:cc04 with SMTP id af79cd13be357-7d3c6cc98efmr1351732185a.35.1750067492957;
-        Mon, 16 Jun 2025 02:51:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750067492; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1741541njc;
+        Mon, 16 Jun 2025 02:51:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUvucm57SW8nwkF2/Vb0zYqx/aU3ZHSSZF7RO6caIizZmSFIeIf/HOhiSuyBmsfWUF9Vvnicfic8jMV7w==@linaro.org
+X-Google-Smtp-Source: AGHT+IH9eqf1SRqqrJ0YAnJcuj6U23HYXrzyr731rYtWFiKX5VyisBjW3yfthSceM6hzQP7XAgfI
+X-Received: by 2002:a05:622a:180b:b0:4a7:1402:3b0 with SMTP id d75a77b69052e-4a73c484a1cmr144315081cf.1.1750067498813;
+        Mon, 16 Jun 2025 02:51:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750067498; cv=none;
         d=google.com; s=arc-20240605;
-        b=hVSoDbIzVDJFBU5GdTxFfaJsSUIZVDoP41he5UyB2m7JBZtMieCQu3aplP/iDu0xff
-         kxLJ3o4fgQOH98hz62YsSn+jmNIq4wk7PrcoFk71wPOAsEnw+W6jsAtbEUkjdqgxFPXy
-         M2r/SmtuAWwlvzEPI/bvrS6iSJTdioVu36ij+C9K9uMfoFmqV5Uc8YM3YHN9seQxJJ2+
-         /s7CDmhbIW15uT/cEnB6rmGHlHGCYgYTavuxbtsRmUsVqfX07YdKE89d3uOBnPP3Lti7
-         vVmFtl66D4Uq2GdzE4ofBJAiNzj6yrUnfY0NfR2r0hetS0TFDctuXZxQYQAhdEA4qJW4
-         6gZg==
+        b=NG3QxGQ0o9reGrEpOGYv999tyR/i1MZHLEtzMS59kLBNs9jCmzaUH4UEVL7Vnr6Tl/
+         S8aRKCDzPSdtAGkzb2Z82Sw2F2RV85+3q7VPCJUWZP9XB0kKLDGhsfRqGBkdm4Abb9Hr
+         R/eS8MWmxph5N+kdIe+yQGLSg/7+sQxxuakUA8QxSAGiZKNiXjAOMtBrzkL84QfVkV+1
+         AJivtVhwAj2RX3qOIYVhRm2vs4Fk/eNvUxg0B417dDvis/PwSlAykBkRNMVWfTiFBxte
+         GrhgWYVDG3M0rNGp6UW997Jflvgx7pKRWc4595CLi3SlzKrC79DU5GjajkGSELgGMpYq
+         EVqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=EgusPM07kBAeHWD5Y+8x0seUuXzRUdXP54zjL+CPYiQ=;
+        bh=dGYAmK9CoBY9STCFmQcTFqo2Pa+hCuB3YNHCOpaO8mI=;
         fh=3+/pQVIKD31FE8qJaDVh0A7e2m9TMoY7e0VvIw0mRHw=;
-        b=BLU4hKIDs38B8rdEW65GO2fGRy/uWYp3m+qOvGBzMQIvYpQJPKWOapj7wRZbfGOiDN
-         R5tcAgpV+543YtTLsIGhUtbJFLMTlKc7rVUbqXXPq62N+tdhLzxjq+LBmTZfkMaFX8r3
-         k4BphxFgpRMLO9W9czHV8JRoX7ZfyTJZcV1HoqPJPdlwNjPME621zqnNbdJNb/k7yBAK
-         GiajKYPeXAsAExr+rTNUgXASDzk9rBkJVbl3aZe9FWDpt1GZCyjzVK191cKBSVuO0iOz
-         qzvNnRxLAUxkdXBTqrkfOcQj4g4kHC8rhnZdQw7UpIx5goj+SkDAnnBU5awxWcam6s1n
-         33WA==;
+        b=Mpe3JzKQpzn+Dea/fikDKqECagIyoipGnw6PmMvB7D04N8+xkRdvhvnH3jcaBrLdJU
+         5ZHTMrHUrYnDtMFvl1TTfxMMwIr94e3kSbG2/kbH343pPPEjj2dZOe61cMNhPDTsE+rj
+         SdUMINrpAUQJTAqwCQ1jVmvg2sh3corGauNRIjNU+BqbA8XiAxirx1CByOh2v3YSxHC0
+         y+9Yo2duKvpiVSDbRVBq1IHMYOgj753/SvVlhl17BWnNc/IkuNh7hspEwoLIBJ/BCM9X
+         DQVoBg6ufe3Un9Rr9RYTCIWSjOtgtezVVAPdljnSgxsiX91tfYEeb/5bFtvDBZ23xYte
+         s1nA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NuNCwo8l;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bLSF+ZBa;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <eric.auger@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3b8ef5349si947698285a.395.2025.06.16.02.51.32
+        by mx.google.com with ESMTPS id d75a77b69052e-4a72a2b8f90si98215731cf.124.2025.06.16.02.51.38
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Jun 2025 02:51:32 -0700 (PDT)
+        Mon, 16 Jun 2025 02:51:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NuNCwo8l;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bLSF+ZBa;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1750067492;
+	s=mimecast20190719; t=1750067498;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=EgusPM07kBAeHWD5Y+8x0seUuXzRUdXP54zjL+CPYiQ=;
-	b=NuNCwo8l8SMS6uBdUZAbiBANSJGPIBWbWGHyGwwCXVtrqSy6hvEOwQb76H8B2qem0Zpfab
-	AgyI6oA62c3e0cN5ViTVAnf6qkm2w4HZ7WnvYhZluyvCCUGR1ToBK6dx2/4ibJgNhUDTnQ
-	sS60gWLKq6dCxJACrEyZsQtepMmafDI=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+	bh=dGYAmK9CoBY9STCFmQcTFqo2Pa+hCuB3YNHCOpaO8mI=;
+	b=bLSF+ZBajqoFdcGGHig8S0k4Em4xJVq+rS3h0OLEDeinRsjXAPyl1+AUFj+65RHBCL8+Vp
+	cZ/BcDMkbRj/Kw9kmVD5vIVrGOAzsCZA0wJoSA6JnTKtdKQivIdjlzJzdpt74a3uJnw2Dv
+	BKkUo413SeCWQu6t5tCTm7JBr1ZvrYE=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-49-FPMA6zpvO2q2B5DDV8wauA-1; Mon,
- 16 Jun 2025 05:51:31 -0400
-X-MC-Unique: FPMA6zpvO2q2B5DDV8wauA-1
-X-Mimecast-MFC-AGG-ID: FPMA6zpvO2q2B5DDV8wauA_1750067490
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-589-EroQ7FfvNqSDD9JaE9GuRQ-1; Mon,
+ 16 Jun 2025 05:51:36 -0400
+X-MC-Unique: EroQ7FfvNqSDD9JaE9GuRQ-1
+X-Mimecast-MFC-AGG-ID: EroQ7FfvNqSDD9JaE9GuRQ_1750067495
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id EEACD1809C81;
-	Mon, 16 Jun 2025 09:51:29 +0000 (UTC)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D941819560A3;
+	Mon, 16 Jun 2025 09:51:34 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.45.224.77])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 9852B19560A7;
-	Mon, 16 Jun 2025 09:51:25 +0000 (UTC)
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 78D4F19560A3;
+	Mon, 16 Jun 2025 09:51:30 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com,
 	eric.auger@redhat.com,
@@ -80,156 +80,40 @@ Cc: pbonzini@redhat.com,
 	Jonathan.Cameron@huawei.com,
 	philmd@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v3 26/29] hw/arm/virt: Plug pcihp hotplug/hotunplug callbacks
-Date: Mon, 16 Jun 2025 11:46:55 +0200
-Message-ID: <20250616094903.885753-27-eric.auger@redhat.com>
+Subject: [PATCH v3 27/29] tests/qtest/bios-tables-test: Prepare for addition of acpi pci hp tests
+Date: Mon, 16 Jun 2025 11:46:56 +0200
+Message-ID: <20250616094903.885753-28-eric.auger@redhat.com>
 In-Reply-To: <20250616094903.885753-1-eric.auger@redhat.com>
 References: <20250616094903.885753-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: SgtmAgIyShBe
+X-TUID: T7e9a2Tmyc8C
+
+From: Gustavo Romero <gustavo.romero@linaro.org>
+
+Soon we will introduce a new test related to ACPI PCI hotplug that
+will use a new reference blob:
+
+tests/data/acpi/aarch64/virt/DSDT.acpipcihp
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 ---
-v2 -> v3:
-- fix cohabitation with virtio-mem-pci device and tested
-  hotplug/unplug of this latter (Igor)
----
- hw/arm/virt.c | 72 ++++++++++++++++++++++++++++++++++++++++++++++++---
- 1 file changed, 69 insertions(+), 3 deletions(-)
+ tests/qtest/bios-tables-test-allowed-diff.h | 1 +
+ tests/data/acpi/aarch64/virt/DSDT.acpipcihp | 0
+ 2 files changed, 1 insertion(+)
+ create mode 100644 tests/data/acpi/aarch64/virt/DSDT.acpipcihp
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 8c882e0794..06b87e1050 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1747,6 +1747,22 @@ static void virt_build_smbios(VirtMachineState *vms)
-     }
- }
- 
-+static AcpiPciHpState *get_acpi_pcihp_state(VirtMachineState *vms)
-+{
-+    AcpiGedState *acpi_ged_state;
-+    AcpiPciHpState *pcihp_state;
-+
-+    if (!vms->acpi_dev) {
-+        return NULL;
-+    }
-+    acpi_ged_state = ACPI_GED(vms->acpi_dev);
-+    pcihp_state = &acpi_ged_state->pcihp_state;
-+    if (pcihp_state->use_acpi_hotplug_bridge) {
-+        return pcihp_state;
-+    }
-+    return NULL;
-+}
-+
- static
- void virt_machine_done(Notifier *notifier, void *data)
- {
-@@ -2907,6 +2923,13 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
- {
-     VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
- 
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        if (get_acpi_pcihp_state(vms)) {
-+            acpi_pcihp_device_pre_plug_cb(HOTPLUG_HANDLER(vms->acpi_dev),
-+                                          dev, errp);
-+        }
-+    }
-+
-     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-         virt_memory_pre_plug(hotplug_dev, dev, errp);
-     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
-@@ -2961,6 +2984,15 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
-         }
-     }
- 
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        AcpiPciHpState *pcihp_state = get_acpi_pcihp_state(vms);
-+
-+        if (pcihp_state) {
-+            acpi_pcihp_device_plug_cb(HOTPLUG_HANDLER(vms->acpi_dev),
-+                                      pcihp_state, dev, errp);
-+        }
-+    }
-+
-     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-         virt_memory_plug(hotplug_dev, dev, errp);
-     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
-@@ -3017,12 +3049,27 @@ out:
- static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
-                                           DeviceState *dev, Error **errp)
- {
-+    bool supported = false;
-+
-     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-         virt_dimm_unplug_request(hotplug_dev, dev, errp);
-+        supported = true;
-     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
-         virtio_md_pci_unplug_request(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev),
-                                      errp);
--    } else {
-+        supported = true;
-+    }
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-+        AcpiPciHpState *pcihp_state = get_acpi_pcihp_state(vms);
-+
-+        if (pcihp_state) {
-+            acpi_pcihp_device_unplug_request_cb(HOTPLUG_HANDLER(vms->acpi_dev),
-+                                                pcihp_state, dev, errp);
-+            supported = true;
-+        }
-+    }
-+    if (!supported) {
-         error_setg(errp, "device unplug request for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-     }
-@@ -3031,11 +3078,27 @@ static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
- static void virt_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
-                                           DeviceState *dev, Error **errp)
- {
-+    bool supported = false;
-+
-     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-         virt_dimm_unplug(hotplug_dev, dev, errp);
-+        supported = true;
-     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
-         virtio_md_pci_unplug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev), errp);
--    } else {
-+        supported = true;
-+    }
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-+
-+        AcpiPciHpState *pcihp_state = get_acpi_pcihp_state(vms);
-+
-+        if (pcihp_state) {
-+            acpi_pcihp_device_unplug_cb(HOTPLUG_HANDLER(vms->acpi_dev),
-+                                        pcihp_state, dev, errp);
-+            supported = true;
-+        }
-+    }
-+    if (!supported) {
-         error_setg(errp, "virt: device unplug for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-     }
-@@ -3045,11 +3108,14 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
-                                                         DeviceState *dev)
- {
-     MachineClass *mc = MACHINE_GET_CLASS(machine);
-+    VirtMachineState *vms = VIRT_MACHINE(machine);
- 
-     if (device_is_dynamic_sysbus(mc, dev) ||
-         object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) ||
-         object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI) ||
--        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
-+        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI) ||
-+        (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE) &&
-+                             get_acpi_pcihp_state(vms))) {
-         return HOTPLUG_HANDLER(machine);
-     }
-     return NULL;
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8b..dc3ab24d05 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,2 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/aarch64/virt/DSDT.acpipcihp",
+diff --git a/tests/data/acpi/aarch64/virt/DSDT.acpipcihp b/tests/data/acpi/aarch64/virt/DSDT.acpipcihp
+new file mode 100644
+index 0000000000..e69de29bb2
 -- 
 2.49.0

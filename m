@@ -1,248 +1,192 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1949080njc;
-        Mon, 16 Jun 2025 08:49:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUc1W2CSw3Jntu9RxZwxyoeZwhYcUZIf0aUqWgUs2OIxnSazfNjyDcKPmdWhxt6FYdEmFsaiguU0P2kcQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGTkiilX6sTTWygSDRPZoTY7ZByayaLh9LkGbQAQTefqijYtXKu24K/3Na9ZRgxGFyBQaDq
-X-Received: by 2002:a05:6000:250d:b0:3a4:f744:e013 with SMTP id ffacd0b85a97d-3a572e7a111mr7389496f8f.30.1750088997310;
-        Mon, 16 Jun 2025 08:49:57 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1750088997; cv=pass;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1873865njc;
+        Mon, 16 Jun 2025 06:58:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUDx+5J3OJlOYKjJprhI4YyjsySCXhN558IiPbMwGhEWUUNMExsarGlBAq8aEcseWmI5NQbGbm7Yhk4lA==@linaro.org
+X-Received: by 2002:a05:6a20:7d9e:b0:201:85f4:ade6 with SMTP id adf61e73a8af0-21fbd65e19cmr14662281637.27.1750082293338;
+        Mon, 16 Jun 2025 06:58:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750082293; cv=none;
         d=google.com; s=arc-20240605;
-        b=VZZWqW66srn7ofUM99TfqtxkqHr0RTrnB692iyDSpGZX68XP1VDW/cVOmkbHywbUYc
-         8fWfFxJN4zG6xJxruXK4bqZ0T0em7Owxheqs5leDIh27CTH5b96vTp5e4bB8oKGovPry
-         lIopgOrFa0bhRM/Xdbro56dMDjao0suAaOluxC0SYHTOu3H4oaTz2rCkkRUvB1uQuCwh
-         6Nm24RkA00nij3TI3M5eesEcpLx2N+qkrWXdkSZcTKqzciDWLHjybz+byKDnHz/kgLoI
-         x6azh8XrdxvRh/FNRRXSlXPkUyYwoOfE/dxfCId9z+ODqancAGkmt09YyhCPNCSRs9zg
-         3HVg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:arc-filter;
-        bh=dkfuALPRYgThaO8OJwo7XKXwqv5zgI4F8/X1JSqG3iI=;
-        fh=M4k59Ayj18+7D2/nF+AxRxub9+boXJda9R00ZUghCSw=;
-        b=QN7oQClYcCDAKvaXpgs+ChnJ4pgvwVZHcHgg9oMh78X8JN9qqht/s3oSZ+JvzPwVph
-         9DlBKFHJMvNDK/aQzyhhGrzzs/XW7OAEKoaYf6CXkk3elnvrqcxHGYlFHU5AfJqTiGY8
-         j0FQSMIq3xR46IhiEwKcFEPz8ETsfLvzI7tiIfrYS+WWE9P23OH+BWX2TQ0jQjgSFZDO
-         NTIWmtVPfEfTT+y52ih+KIbcdTjXvOoWp1T4cJ6C23gET0kmxMCsbKXuNUDL7M0Zo+BB
-         HmWNf2tonxPqYgsqwkbOKFjY3WFIJp6VL3NX7S9iZIRgaTPUhwSzIitfInqlFpHJyEZ+
-         pESw==;
+        b=abpLAxZnCWqbGPt3igWU9aZYIEn7FWJClGmRkg/7bBZ0s4jhwTsYAM1VpNYy82xSIu
+         YbrPsxz6Zvd8Rkf0w12ySc1yU9Wj6GM4vWqbtQWqwgW6QwgeudZ72C/Iibesb9zY9TXG
+         ycunnprJsUtwbIzL+0sEWyh89hxuvIVLG0tsb068dnNRoZTavX/w4Gt59iWIGGm36jce
+         rCjO3XtYK6+2yvmGqKapCS85Z3me1VcJ0emmNwEsqyYerfwz8cdGJLPFneZN6UJVkTgh
+         yS+kycV/42hUtEAMEypvYm82vJchW2S5jJclMzZhpAygaIXWzKqkenqPAotl/ZfUdyUA
+         cy+w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=w8YHxwMmQT2dMZDk/cIISk6jqJUWgkRqW39sQK3NAAw=;
+        fh=iqDsCFB4Gvfj2FttzUdCAbZcosvUlg6hFkVoJNr/9ro=;
+        b=K2uGVPA6P+kEi3HRE4dFO/DZkYPBS5XvDHuKd1uEcdhepEhgs+279LXIKTEakKz6Mq
+         8lz+z3Fw4wQ0r2gz7urgo2Kt7q+G4VefRkoFjPLbFmIHrCjeWRlSG/UYnvRC72VtEfyU
+         nHF9uUPF2SZDOwQiownK2u+CWPSMZvpnsz78Y6OAnOBYJhholx5c9MZP0bOMOXwlqiOF
+         q101MzwV2hdePhvW4eqpPaQjoNwgX0uCpyCJFUPI1zz7XpovKAjrjok5dNAIVSd3DS6n
+         77gyXYDhGR+rHKzT0BktJiif5A6FbXbhRPC7TXG6KXgdqFY02Po4EqWw50M+rMxCztPB
+         zlFw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@sean.taipei header.s=2021Q3 header.b=p6bmoSjm;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=sean.taipei
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a568bb57b1si6303058f8f.854.2025.06.16.08.49.57
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FUeER7IP;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-b2fd5e8fc72sor6863365a12.0.2025.06.16.06.58.13
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Jun 2025 08:49:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 16 Jun 2025 06:58:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sean.taipei header.s=2021Q3 header.b=p6bmoSjm;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=sean.taipei
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uRC5V-00088X-GR; Mon, 16 Jun 2025 11:49:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@sean.taipei>)
- id 1uRC5S-00087b-2l; Mon, 16 Jun 2025 11:49:30 -0400
-Received: from mail.sean.taipei ([128.199.207.102] helo=sean.taipei)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@sean.taipei>)
- id 1uRC5P-0003E4-OM; Mon, 16 Jun 2025 11:49:29 -0400
-Authentication-Results: sean.taipei; dmarc=fail (p=quarantine dis=none)
- header.from=sean.taipei
-ARC-Filter: OpenARC Filter v0.1.0 sean.taipei A9E86737C
-ARC-Seal: i=1; a=rsa-sha256; d=sean.taipei; s=arc-2024Q2; t=1750088934;
- cv=none;
- b=EsndBWjnfNAy91qG3IOcy5qqZceA3UIia6rJaJsywa1R9+b5Np59BOvMSj45UWMWi0S1msaU7w/d/hMrS4l5acxgb/CdBPrK+Hpw8e5yQf5S778S4el3T+FYF8lJlvAmiC2tFNvRS9Q6vlo6TeL7wB8GI1YNHJO0b1vFpeLVl94AqciKgxgpoJkSXGLjHzPry1fDAgQDibIdouT7QlZ7DWu+aOR9MzlC0hblKYgR6tC6G05JRPNH2Pso1riRuJlpvGCkleZnYq4YflBVQ+B+d6q5orUDjs7lq1ZJaIhzkAUcLM/ynZ0y0yjQq7J3zSErtVX/pUoVme1Rlvjya0CC2Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; d=sean.taipei; s=arc-2024Q2;
- t=1750088934; c=relaxed/simple;
- bh=TzOP3c4SD9Aw5fC96ocSZykbTKAK4gpli+pUnnod8U0=;
- h=DKIM-Signature:From:To:Cc:Subject:Date:Message-ID:References:
- MIME-Version;
- b=CekFJ+oopLOPSZzHS8sPhbfx+TLYDhEy6trr50XIANB9Jm9w5ek1JYeMFWm2CyT+I2D8DFgI9iwyTaQ4VAZY8/ALvmMQFISDJBKSw0Ty8SawGGOI0Nh1+Lw4unE7wJ2zIweg1tH72xBiJGdCfRabSPPldYz4d/s6WKuQNpjcrtrXlEb5k4Iu2p3matF8oh5ssXFtc9/WieR2yGRJgzUN2F818KzwLI9K9UOCpS4fEWDU/3UOCmdoxiqC4yfn7bpLONoCmQQsynTT26JOyclbYxClDuT1zvdVPJkkHy0Ov0u0dUm1/8y+0FSXbGw/cPVNDhhG3yTG5Tew3OC3snl68A==
-ARC-Authentication-Results: i=1; sean.taipei;
- dmarc=fail (p=quarantine dis=none)
- header.from=sean.taipei
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=sean.taipei;
- s=2021Q3; t=1750088933;
- bh=TzOP3c4SD9Aw5fC96ocSZykbTKAK4gpli+pUnnod8U0=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=p6bmoSjmdsA5Kay/GuxCJ3axmPkwU6ma0D9Pc0QT/EgiZpWkgEW25G68WgaXy4hV6
- JuIGMly5SH4EoP8e3slnZZIOdLpVWWS7UTixRB3dNMSBNSIm/a0M+2jwPlukqQqoBt
- D7d4SNgfVqiEpLPU0uuEz9RGafjwvHLBK+nimt5sl892W0GvRQbg+4+fhIN+5Dj+cm
- 2TmcehtdAO9jmfEKafOSEL1n/hTdTO1i9H3U5iXnqrkXHDbsPmL2LuvsEtCjk+/P1f
- EKO6MHUdU2v8t6OcnPpnw87QKOT90NzXlNf0rRe6NmQuWOBU3Egsix6W2C/IgB14ca
- TeYYiWy4iZTqw==
-Received: from localhost.localdomain (unknown [23.170.80.102])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by sean.taipei (Postfix) with ESMTPSA id A9E86737C;
- Mon, 16 Jun 2025 23:48:48 +0800 (CST)
-From: Sean Wei <me@sean.taipei>
-To: qemu-devel@nongnu.org
-Cc: Sean Wei <me@sean.taipei>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Jason Wang <jasowang@redhat.com>,
- David Hildenbrand <david@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "Dr . David Alan Gilbert" <dave@treblig.org>
-Subject: [PATCH 2/6] MAINTAINERS: fix paths for relocated files
-Date: Mon, 16 Jun 2025 11:48:20 -0400
-Message-ID: <20250616.qemu.relocated.02@sean.taipei>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250616.qemu.relocated@sean.taipei>
-References: <20250616.qemu.relocated@sean.taipei>
+       dkim=pass header.i=@linaro.org header.s=google header.b=FUeER7IP;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1750082293; x=1750687093; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=w8YHxwMmQT2dMZDk/cIISk6jqJUWgkRqW39sQK3NAAw=;
+        b=FUeER7IPy12M38vY4GedyHcKS5bw8MBJaQPr1agRaZ9CM8Y68Gy/IRrOyMJEOCvCI/
+         OvNwrAWUWZ+m6CCiJJnaMLEQIxYcZxNz7J19ywIyLT/4He0nX3eZe2prF90vZQSDn0cB
+         jIWT0Z07o36/p25qISXigujbynVDDmhz06eZ7aEAFt6DqrSz8/g5LdLxCVB9Hor2Q5Vq
+         VzmRl9IKjDe9VL4VHDv/xjgNDHkQPQWTrHAiQeD7c56IFP71HPCdQ8UtBiteBaKTRj+E
+         G3vX+oV9LJVfYNLfMm10EEyFcJjiuF2k0rsVuUzYhDZipyLFh/VPiZ8XHKMbOER1G3k5
+         IAeQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750082293; x=1750687093;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=w8YHxwMmQT2dMZDk/cIISk6jqJUWgkRqW39sQK3NAAw=;
+        b=QX9gEg7YRcudqHvry3F8FgtZHnZjMO2UXnxQxKttRicDXIOgpU3HBuULlOHbYqxDSt
+         NQq3y5Ed4/PkegS/G85m7ubmsYxGb0IAns9V8VwJhshInfiBmYoTF2XcdwVVcqiI/pfU
+         u5XDCUyNX32V57OD4VjiTGuRup6EtMCIhQAd/hZojB9QLGr/rshFiNSoSVtpbaCWyGp1
+         WqPsANPSYoW5l1pxZeCdUgf8jPrCQ5VijhS1ihnuSTsqLq2OiSrBVSQjHDX6p+9a8Yz0
+         8SKwiEtbbrPpljYO1ftgrwoMst0Lfm2nkYv1K6fwQv0erUbFigE//fII80U/92mkV/XA
+         znmw==
+X-Forwarded-Encrypted: i=1; AJvYcCXF59EPt7b7+zwhIF/SjIUywn2vAiYz62Jyd/4C8T7aqU5cMvPB7VVh4xD085gWGwTXC9E3ebfTupvJog==@linaro.org
+X-Gm-Message-State: AOJu0YxxJEKkMmh35LKq3+UBoK3d4xFFlmGIEf6/SX3C3+gCD49uIKkO
+	CklINC+oevIAr1mWi7uaV72j8HE7jwDm7lkv3XPDlWNqoEdVegiD7T6Vlu2ucupx3BEZag==
+X-Gm-Gg: ASbGncsey4yxikGMCP9Furl8pV+GE2M+eW8fDLkNzy1llvtsgXbAnYo7vWhaDIbOX/1
+	fIGphodar6Ns5Gx32QoTBqjTyNMSOublj2KgGbMQ7fhyKKk41/y7SVwHGtDUWt6eiyUxPIrkOPH
+	GZ8NiKoWd9I3pDKGfCfGUvXAzoU1Hn74G3sVoe/SDc21QtdG2VjEZf3n9aUyIBHfck9xQrbk74d
+	wtODLPJEbFAyz4aWSXaLh++EShnX0xhITnbe1Z50MGNIlqSncJ6KJ0CnTbrZRFnV6p9FPGvybUM
+	r+vQgImYRa7k+EmS5tpKb0aajKDElZTaO/1TagfHlAP/dnVk25IpezQSLUYegPgv+TDfbFMiFw=
+	=
+X-Google-Smtp-Source: AGHT+IHEQ71sYRD9lXreOK86iZrdzV+jd04+z28rTqgrMo/3stsd6RGkCd/0GYHKK067LwLQAn3M7w==
+X-Received: by 2002:a05:6a21:9210:b0:1f5:931d:ca6d with SMTP id adf61e73a8af0-21fbd54a6eemr12568905637.1.1750082292789;
+        Mon, 16 Jun 2025 06:58:12 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from [192.168.0.102] ([186.215.60.20])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-748900cc047sm7072670b3a.147.2025.06.16.06.58.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 16 Jun 2025 06:58:12 -0700 (PDT)
+Message-ID: <09652baa-2f0f-4fee-82ba-35847461242d@linaro.org>
+Date: Mon, 16 Jun 2025 10:57:56 -0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/8] hw/intc/gicv3_its: Do not check its_class_name()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, eric.auger@redhat.com, mst@redhat.com
+Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, udo@hypervisor.org,
+ ajones@ventanamicro.com, peter.maydell@linaro.org, imammedo@redhat.com,
+ anisinha@redhat.com, Richard Henderson <richard.henderson@linaro.org>
+References: <20250616131824.425315-1-gustavo.romero@linaro.org>
+ <20250616131824.425315-2-gustavo.romero@linaro.org>
+ <70853fdc-ef08-40ad-85a9-5cb02146cf23@linaro.org>
+Content-Language: en-US
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <70853fdc-ef08-40ad-85a9-5cb02146cf23@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Spam-Score: -1  ALL_TRUSTED
-X-Powered-By: Sean <postmaster@sean.taipei>
-X-Scanned-By: MIMEDefang 3.3 on 104.21.5.93
-Received-SPF: pass client-ip=128.199.207.102; envelope-from=me@sean.taipei;
- helo=sean.taipei
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pKj/h7TZnfaR
+X-TUID: GR/TSgWjpZfW
 
-Several files were renamed in previous commits, causing their entries
-in MAINTAINERS to reference outdated paths.
-This prevents scripts/get_maintainer.pl from correctly matching
-these files to their maintainers.
+Hi Phil,
 
-Update the filenames to reflect their current locations so that
-maintainer lookup works properly.
+On 6/16/25 10:33, Philippe Mathieu-Daudé wrote:
+> Hi Gustavo, why reset authorship?
 
-Related commits
----------------
+It was not intentional. hmm maybe it changed because I tweaked
+the commit message and the code due to rebasing as well? Do you
+know how to restore it?
 
-  c45460decbd (Oct 2023)
-    hw/input/stellaris_input: Rename to stellaris_gamepad
-    Rename  include/hw/input/{gamepad.h => stellaris_gamepad.h}
 
-  4faf359accb (Nov 2020)
-    docs: Move virtio-net-failover.rst into the system manual
-    Rename  docs/{ => system}/virtio-net-failover.rst
+Cheers,
+Gustavo
 
-  89857312f32 (Apr 2024)
-    hw/usb: move stubs out of stubs/
-    Rename  stubs/usb-dev-stub.c => hw/usb/bus-stub.c
-
-  f2604d8508a (Apr 2024)
-    hw/virtio: move stubs out of stubs/
-    Rename  stubs/virtio-md-pci.c => hw/virtio/virtio-md-stubs.c
-
-  2c888febdfa (Apr 2024)
-    memory-device: move stubs out of stubs/
-    Rename  stubs/memory_device.c => hw/mem/memory-device-stubs.c
-
-  d481cec7565 (Oct 2024)
-    migration: Move cpu-throttle.c from system to migration
-    Rename  {system => migration}/cpu-throttle.c
-
-  864a3fa4392 (Jan 2023)
-    monitor: Rename misc.c to hmp-target.c
-    Rename  monitor/{misc.c => hmp-target.c}
-
-Signed-off-by: Sean Wei <me@sean.taipei>
----
- MAINTAINERS | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index fed8619874..0477e124d1 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1002,7 +1002,7 @@ L: qemu-arm@nongnu.org
- S: Odd Fixes
- F: hw/*/stellaris*
- F: hw/display/ssd03*
--F: include/hw/input/gamepad.h
-+F: include/hw/input/stellaris_gamepad.h
- F: include/hw/timer/stellaris-gptm.h
- F: docs/system/arm/stellaris.rst
- F: tests/functional/test_arm_stellaris.py
-@@ -2163,7 +2163,7 @@ F: hw/net/
- F: include/hw/net/
- F: tests/qtest/virtio-net-test.c
- F: tests/functional/test_info_usernet.py
--F: docs/virtio-net-failover.rst
-+F: docs/system/virtio-net-failover.rst
- T: git https://github.com/jasowang/qemu.git net
- 
- Parallel NOR Flash devices
-@@ -2214,7 +2214,7 @@ F: tests/qtest/sdhci-test.c
- USB
- S: Orphan
- F: hw/usb/*
--F: stubs/usb-dev-stub.c
-+F: hw/usb/bus-stub.c
- F: tests/qtest/usb-*-test.c
- F: docs/system/devices/usb.rst
- F: include/hw/usb.h
-@@ -2469,7 +2469,7 @@ F: hw/s390x/virtio-ccw-md.h
- F: hw/s390x/virtio-ccw-md-stubs.c
- F: hw/virtio/virtio-md-pci.c
- F: include/hw/virtio/virtio-md-pci.h
--F: stubs/virtio-md-pci.c
-+F: hw/virtio/virtio-md-stubs.c
- 
- virtio-mem
- M: David Hildenbrand <david@redhat.com>
-@@ -3187,7 +3187,7 @@ F: hw/mem/pc-dimm.c
- F: include/hw/mem/memory-device.h
- F: include/hw/mem/nvdimm.h
- F: include/hw/mem/pc-dimm.h
--F: stubs/memory_device.c
-+F: hw/mem/memory-device-stubs.c
- F: docs/nvdimm.txt
- 
- SPICE
-@@ -3228,9 +3228,9 @@ F: util/qemu-timer*.c
- F: system/vl.c
- F: system/main.c
- F: system/cpus.c
--F: system/cpu-throttle.c
- F: system/cpu-timers.c
- F: system/runstate*
-+F: migration/cpu-throttle.c
- F: qapi/run-state.json
- 
- Read, Copy, Update (RCU)
-@@ -3249,7 +3249,7 @@ Human Monitor (HMP)
- M: Dr. David Alan Gilbert <dave@treblig.org>
- S: Maintained
- F: monitor/monitor-internal.h
--F: monitor/misc.c
-+F: monitor/hmp-target.c
- F: monitor/monitor.c
- F: monitor/hmp*
- F: hmp.h
--- 
-2.49.0
-
+> On 16/6/25 15:18, Gustavo Romero wrote:
+>> Since commit cc5e719e2c8 ("kvm: require KVM_CAP_SIGNAL_MSI"), the single
+>> implementation of its_class_name() no longer returns NULL (it now always
+>> returns a valid char pointer). Hence, update the prototype docstring and
+>> remove the tautological checks that use the its_class_name() returned
+>> value.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>>   hw/arm/virt-acpi-build.c               | 32 +++++++++++---------------
+>>   include/hw/intc/arm_gicv3_its_common.h |  2 +-
+>>   2 files changed, 15 insertions(+), 19 deletions(-)
+>>
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index 7e8e0f0298..9eee284c80 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -737,20 +737,18 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>                                             memmap[VIRT_HIGH_GIC_REDIST2].size);
+>>           }
+>> -        if (its_class_name()) {
+>> -            /*
+>> -             * ACPI spec, Revision 6.0 Errata A
+>> -             * (original 6.0 definition has invalid Length)
+>> -             * 5.2.12.18 GIC ITS Structure
+>> -             */
+>> -            build_append_int_noprefix(table_data, 0xF, 1);  /* Type */
+>> -            build_append_int_noprefix(table_data, 20, 1);   /* Length */
+>> -            build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
+>> -            build_append_int_noprefix(table_data, 0, 4);    /* GIC ITS ID */
+>> -            /* Physical Base Address */
+>> -            build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
+>> -            build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
+>> -        }
+>> +        /*
+>> +         * ACPI spec, Revision 6.0 Errata A
+>> +         * (original 6.0 definition has invalid Length)
+>> +         * 5.2.12.18 GIC ITS Structure
+>> +         */
+>> +        build_append_int_noprefix(table_data, 0xF, 1);  /* Type */
+>> +        build_append_int_noprefix(table_data, 20, 1);   /* Length */
+>> +        build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
+>> +        build_append_int_noprefix(table_data, 0, 4);    /* GIC ITS ID */
+>> +        /* Physical Base Address */
+>> +        build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
+>> +        build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
+>>       } else {
+>>           const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE;
+>> @@ -969,10 +967,8 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>>                             vms->oem_table_id);
+>>       }
+>> -    if (its_class_name()) {
+>> -        acpi_add_table(table_offsets, tables_blob);
+>> -        build_iort(tables_blob, tables->linker, vms);
+>> -    }
+>> +    acpi_add_table(table_offsets, tables_blob);
+>> +    build_iort(tables_blob, tables->linker, vms);
+>>   #ifdef CONFIG_TPM
+>>       if (tpm_get_version(tpm_find()) == TPM_VERSION_2_0) {
+>> diff --git a/include/hw/intc/arm_gicv3_its_common.h b/include/hw/intc/arm_gicv3_its_common.h
+>> index 7dc712b38d..3c7b543b01 100644
+>> --- a/include/hw/intc/arm_gicv3_its_common.h
+>> +++ b/include/hw/intc/arm_gicv3_its_common.h
+>> @@ -128,7 +128,7 @@ struct GICv3ITSCommonClass {
+>>    * Return the ITS class name to use depending on whether KVM acceleration
+>>    * and KVM CAP_SIGNAL_MSI are supported
+>>    *
+>> - * Returns: class name to use or NULL
+>> + * Returns: class name to use
+>>    */
+>>   const char *its_class_name(void);
+> 

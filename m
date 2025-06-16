@@ -1,331 +1,212 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1851690njc;
-        Mon, 16 Jun 2025 06:20:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUkVltxTf0XzKRd+bRksH3GZghjn1uSYk9xsJt8U6ErZaZhoi7beoT+lJ0+IYzSlicMEE5mZSSItYoHHQ==@linaro.org
-X-Received: by 2002:a17:90b:288e:b0:312:e76f:5213 with SMTP id 98e67ed59e1d1-313f1dd3b02mr15772463a91.28.1750080037868;
-        Mon, 16 Jun 2025 06:20:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750080037; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1863240njc;
+        Mon, 16 Jun 2025 06:39:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXENfNLc70lPLlZsIqdrBYCwbhqoQKODpHp34WyeOYNQYcMaYioN+W61b1z5zCauKnXakCDf+CIDLNSgA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEJLclIISYoAPpIyRrdFihpwx313pr6LtvlIEGhKhzhoP1XyzPG6qgwH+XOwVXYJAid9gnM
+X-Received: by 2002:a05:620a:199e:b0:7c5:5cd6:5cf2 with SMTP id af79cd13be357-7d3c6c1ee66mr1325640085a.17.1750081144377;
+        Mon, 16 Jun 2025 06:39:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750081144; cv=none;
         d=google.com; s=arc-20240605;
-        b=STEEsYJDUl+D6jYGPOiKnGm/eCiMqYkaajqx/PWf+lskhIvZn1CuVQXbsgemZ3YR1t
-         dNjp0Yz9mgLcCjNz3XIObscZyqYiu7Q9urMMHNYiDGUPf9hBf/7w1QeXIKJdsRLjdUHY
-         GBRzlGVjR0xfL/F8wKJkbDwa9Gg6lwsHMSQK+R5Fp6AAnjp6rWxX0tNnOhSJwzPeZ7ZQ
-         g4G3XLI1fhsei+aS0cSFUW1c9cJkNEpQIsg1V0sC3V1fg92lAXF9ClUdsRxmuWSQc0AV
-         GxZuUqwXB4ej01ueGjYJCSmmMHQmDTHHzwXyRM1mXvI6GCp4V3rgcYuvx98iZrq2n+Rp
-         nKGg==
+        b=U59JmeUvhyWb7xXpS03k7ZqUMscztYAb+DqDQsDBiS1dAY5F9Fd80n1EFH8YcGqyXN
+         4ueJdhEK+F7UPUmwK5gAs/njEpicgEZ/mtoVLgA2rPxe2XaCrwOUsAhmL8cG1WotcIfN
+         1VMu+q9uSBSVKb/qt21jNQTkppK87MjD2+BFeEIm1esn1tp+u43u6BPqYd9GwOizk6X3
+         6ioUMXRLuQLgvMBatzkxDVae5+VWXFz0wjH/oPfiHfn1wy6WuBz6eL/MupizD2TXlpPb
+         B+Rklvb2yaYoNn1fC4HBed+7i9JNrAo0EU8AcInjuPGfNNLdsIZ06FvZjD0EqMZt2CUu
+         ZK/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=p0/yq+vfIvmjKZWamcj479Q+dBed8z1l1/92Ss/Ji20=;
-        fh=fBPbb0Ab9H31x+CuvT2qB3T7b6Xd7jVgAMFtM4CIyyA=;
-        b=jzKy4wrLxlX5i/X8gKS6IxEChsU6ubKT0FcDKaF6NxZoXvv2dCC8y3XaB2NMi7Swuo
-         RvgjgenadEWXs7AYDIwVEFGlFkoXtTX4AxjN5WjsZJjUAc9xJ4e1A2Mt27yV5TIaZ/uj
-         G9NNtHVvVGaHRC6miQnEfPIt55xNz9jcUE139odHxQNbgYZf7y5hHFNhhWN6PZUgDv4L
-         zsOSBHpyJxajzyF9VAJPEH+erFhaAJYNl0urKQX8813QS0YXN/nu7lTontaCIVKK+kJH
-         0yOtx3t48gd+VsU8ik0sAIOag48RtV91RjxHeq8J1vcQT/iu0vo3L3DSRq0YnBEUGjwd
-         UkiA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=U+VXGy4lNl70kL2WfCsK8HdIbHKqfU4scx7537EbVWY=;
+        fh=B5fYWftYhIk8QHSo0Sc6bAD7or1GAsKxNuvF5AKR5wE=;
+        b=dPBHymKPQ0HLWajMAPw7cQPTqdTbUJMc6jXu9brQ2N9/CfeDUK0TXycJh3hxIhFLpv
+         JWdH7io/gIqnN5AkmLZeImq4NL4CDn9f2YX8f9AVRlxdw3h2N8wHIEfArpkm4ZsHqbiX
+         X1V3KJqIYDgQ09cG3rQSVum6N25FRik9kIlEryPyBNJGQlQTif1vZh3vkAvNfctXmPHu
+         q8fRqP54WuBPWWk4/p0FSMeDtq/YvdvPTF/6+2v0yPnSVOk1bPF36Q73fSJ75fMxyrEu
+         +ASL03QPGtpDJX69ZKvtbZ10G17n7XPYTxHKW0WAMKIaBpAyCMkI5QzUlduh2i8qV+Sa
+         N30w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Jk1bE6k/";
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 98e67ed59e1d1-313dc9ac11fsor4074785a91.8.2025.06.16.06.20.37
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8f5fc43si938239585a.641.2025.06.16.06.39.04
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 16 Jun 2025 06:20:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 16 Jun 2025 06:39:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Jk1bE6k/";
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750080037; x=1750684837; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=p0/yq+vfIvmjKZWamcj479Q+dBed8z1l1/92Ss/Ji20=;
-        b=Jk1bE6k/Jf/XheUTd9otGRCrg71NDyQDEaUmao7b9rdr15QJ6kWqaHpmNKqcIVKey7
-         qkYMXy/hKJl9y8pdp4Y0KUSoohBJ/MXvJbmVcoxkYdkCyT8Ev/Gs0NRVkcf5NCY8s2gs
-         g5Fcro52hQG8SvfQixwQUbdwlswDPNaIM2+wFOSiIga6w+pv+GbBZwAHahxnq0p5QJch
-         bIdbeWivxfDFWF2DB0GH/G+9+6Y5cF2niYNf3bO4Vb1Sj010cOJB5BZlaOG7GM2rwCtw
-         HfUx+vCPPbWtmYXaNVJ6bIV4+uHm7fx7qwAcJxTaTyvV5KKUHxse6K3gCO093QDSc9uM
-         +3wg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750080037; x=1750684837;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=p0/yq+vfIvmjKZWamcj479Q+dBed8z1l1/92Ss/Ji20=;
-        b=LBQOZwvLVGVVV2EdOuTpTGXhvFAmo4C4PuKjw/2kiyl3EiuN7YWJBJhhUp53+QUE6M
-         tg/9Z3aZ4xXFFnOLjO9ZNhYBRkN0J6e7SPSl5Hh32pV6Ns3bf8sjhSzFtpBQBmumJqRK
-         9x3Be5q1Oz1baCGohE6dClXni4ega2wsbj9Z4aai7sDRG/UuevzK75CvadGQsxxxxbao
-         CoV/gJo1898Dl+BNo5lx6xtwuMRk13r22o7/uRzTZlbjheL37HUA+RuR3qCzVASpwsp2
-         rywIupoWaEKqDmTsT4AE5Z1PDK5K4idtsiIyw1vMkVFfNGyBdGQPotloOC2dKrWEmbOX
-         7fWw==
-X-Forwarded-Encrypted: i=1; AJvYcCUBHn8q5ykdSV1yg6CgX5wNaxWS7/own89v6RPzEbgYUwclqJFiSEvSVvzGL/QtdLE9Ybco5VuOTkPFIQ==@linaro.org
-X-Gm-Message-State: AOJu0YwyXELJrj92ps7BojSG6PAGu2yasr1MgewUXecKxWP5WGwvGAoo
-	59NYOzMuRH7zUnc1P59ThTj4kVw94PWI+krDaOo9+di3wDB3y1GapGjpku88nl0cjM1aD3r0WxE
-	B6ZIiV5M=
-X-Gm-Gg: ASbGnctYqfALs+ObwBkRE3H91d3EXhbLcRuOeRngkdq7V3uGR1HEin89p9qg/EbhNeF
-	mSbaz2whKmM5oyfur63IU9+/d4GUHPtxwSBEYc8spmVtWKMwRyTkWk2lF+N/AxS0OE6HaMy7+Y2
-	Z0DepcpX0WrvmA5a0Nf9EsCe6MmP6VRg/locgEfWuDUtBPziVlf19RW6R+9TIXnduwWrofeOnsp
-	iMcjDGSmUWMbMU4OkfTAgAgxMCo2zu/o+sy8T6xIo/4pBBKy7K3dj7YhziYNSJNEHUkck1e1qn1
-	Hfy+JZpteB188SHwHghrlT/kAja/fxYGu1sHIgubg1Rkx9qb1HzgIisTAsVDYWXT2LxQ7MjcBoQ
-	+rQ==
-X-Google-Smtp-Source: AGHT+IEZzX0Pe2Eb/U8H5UHU1TGS6bLwQV81VaWOCYzCfrZpluH8IGcwsqM3JLpEtLjKStcZoUgAgg==
-X-Received: by 2002:a17:90b:586b:b0:2fc:3264:3666 with SMTP id 98e67ed59e1d1-313f1e129cdmr13114935a91.30.1750080037177;
-        Mon, 16 Jun 2025 06:20:37 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from gromero0.. ([186.215.60.20])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2365de781dfsm60848405ad.131.2025.06.16.06.20.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Jun 2025 06:20:36 -0700 (PDT)
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: qemu-devel@nongnu.org,
-	eric.auger@redhat.com,
-	philmd@linaro.org,
-	mst@redhat.com
-Cc: qemu-arm@nongnu.org,
-	alex.bennee@linaro.org,
-	gustavo.romero@linaro.org,
-	udo@hypervisor.org,
-	ajones@ventanamicro.com,
-	peter.maydell@linaro.org,
-	imammedo@redhat.com,
-	anisinha@redhat.com
-Subject: [PATCH v4 8/8] qtest/bios-tables-test: Update blobs for its=off test on aarch64
-Date: Mon, 16 Jun 2025 13:18:24 +0000
-Message-Id: <20250616131824.425315-9-gustavo.romero@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250616131824.425315-1-gustavo.romero@linaro.org>
-References: <20250616131824.425315-1-gustavo.romero@linaro.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uRA2z-0005C0-K0; Mon, 16 Jun 2025 09:38:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=g70R=Y7=kaod.org=clg@ozlabs.org>)
+ id 1uRA2x-0005AS-S9; Mon, 16 Jun 2025 09:38:47 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=g70R=Y7=kaod.org=clg@ozlabs.org>)
+ id 1uRA2t-0008EI-R3; Mon, 16 Jun 2025 09:38:47 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bLWL61BlGz4wyV;
+ Mon, 16 Jun 2025 23:38:38 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bLWKz3QLSz4wbv;
+ Mon, 16 Jun 2025 23:38:31 +1000 (AEST)
+Message-ID: <b5245811-8a3c-47d2-8e83-e686d55e8d23@kaod.org>
+Date: Mon, 16 Jun 2025 15:38:27 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 05/12] include/hw: replace FSF postal address with
+ licenses URL
+To: Sean Wei <me@sean.taipei>
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+References: <20250613.qemu.patch@sean.taipei>
+ <20250613.qemu.patch.05@sean.taipei>
+ <3aa8de03-911e-4906-a0c5-5b8ea269ad28@kaod.org> <aE_D5zVzf3qHRP-2@redhat.com>
+ <accf0fab-782d-4e0a-9f13-f6a940fc86a1@kaod.org> <aE_ML3jtVgweJMid@redhat.com>
+ <63d1cb84-7e65-4c60-a718-92a2807e53ea@kaod.org>
+ <4b381b19-0cd2-4036-b9bc-6954869eca28@sean.taipei>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <4b381b19-0cd2-4036-b9bc-6954869eca28@sean.taipei>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: iHRNhF225qp3
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=g70R=Y7=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.056, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: OE4KGZKQA9K1
 
-Update blobs for the its=off test on aarch64 after fix.
+On 6/16/25 14:49, Sean Wei wrote:
+> Hi Cédric & Daniel,
+> 
+> On 2025/6/16 3:55 AM, Cédric Le Goater wrote:
+>> On 6/16/25 09:47, Daniel P. Berrangé wrote:
+>>> On Mon, Jun 16, 2025 at 09:29:35AM +0200, Cédric Le Goater wrote:
+>>>> On 6/16/25 09:13, Daniel P. Berrangé wrote:
+>>>>> On Sat, Jun 14, 2025 at 07:29:09AM +0200, Cédric Le Goater wrote:
+>>>>>> Hello Sean,
+>>>>>>
+>>>>>> On 6/13/25 18:44, Sean Wei wrote:
+>>>>>>> Some of the GPLv2 boiler-plate still contained the
+>>>>>>> obsolete "51 Franklin Street" postal address.
+>>>>>>>
+>>>>>>> Replace it with the canonical GNU licenses URL recommended by the FSF:
+>>>>>>> https://www.gnu.org/licenses/
+>>>>>>>
+>>>>>>> Signed-off-by: Sean Wei <me@sean.taipei>
+>>>>>>
+>>>>>> Instead,  I would remove the license boiler plate and add :
+>>>>>>
+>>>>>>     SPDX-License-Identifier: GPL-2.0-or-later
+>>>>>
+>>>>> This is *NOT* something we are doing for existing code sources,
+>>>>> unless the person removing it is the exclusive copyright
+>>>>> holder on the file.
+>>>> Ah. So I misunderstood.
+>>>>
+>>>> How is license boiler plate different from the SPDX identifier tag ?
+>>>
+>>> It achieves the same aims, but notice GPL clause 1
+>>>
+>>>    "keep intact all the notices that refer to this License and
+>>>     to the absence of any warranty;"
+>>>
+>>> and yes, some projects have none the less done a wholesale replacement of
+>>> boilerplate. I don't know how they rationalized ignoring this license
+>>> requirement. It is simpler to just preserve boilerplate as-is that to
+>>> debate the legal nuances of this.
+>> OK. Then, let's forget about this replacement.
+>>
+>> Thanks,
+>>
+>> C.
+>>
+> 
+> Thank you both for the clarification! To avoid any controversy, I will keep the patch in its original form, only replacing the deprecated FSF address with the canonical GNU licenses URL.
 
-Basically, all structs related to ITS are gone in MADT and IORT
-tables after the fix (previously ITS was not properly disabled
-when "its=off" option was passed to the machine).
+yep.
 
-MADT diff:
+> Cédric, could you please take another look and let me know if everything looks good? If so, I'd be grateful if you could add a Reviewed-by tag. Thanks!
 
- [000h 0000   4]                    Signature : "APIC"    [Multiple APIC Description Table (MADT)]
--[004h 0004   4]                 Table Length : 000000B8
-+[004h 0004   4]                 Table Length : 000000A4
- [008h 0008   1]                     Revision : 04
--[009h 0009   1]                     Checksum : C1
-+[009h 0009   1]                     Checksum : 08
- [00Ah 0010   6]                       Oem ID : "BOCHS "
- [010h 0016   8]                 Oem Table ID : "BXPC    "
- [018h 0024   4]                 Oem Revision : 00000001
- [01Ch 0028   4]              Asl Compiler ID : "BXPC"
- [020h 0032   4]        Asl Compiler Revision : 00000001
+sure.
 
- [024h 0036   4]           Local Apic Address : 00000000
- [028h 0040   4]        Flags (decoded below) : 00000000
-                          PC-AT Compatibility : 0
 
- [02Ch 0044   1]                Subtable Type : 0C [Generic Interrupt Distributor]
- [02Dh 0045   1]                       Length : 18
- [02Eh 0046   2]                     Reserved : 0000
- [030h 0048   4]        Local GIC Hardware ID : 00000000
- [034h 0052   8]                 Base Address : 0000000008000000
- [03Ch 0060   4]               Interrupt Base : 00000000
-@@ -48,37 +48,29 @@
- [064h 0100   8]                 Base Address : 0000000000000000
- [06Ch 0108   8]     Virtual GIC Base Address : 0000000000000000
- [074h 0116   8]  Hypervisor GIC Base Address : 0000000000000000
- [07Ch 0124   4]        Virtual GIC Interrupt : 00000000
- [080h 0128   8]   Redistributor Base Address : 0000000000000000
- [088h 0136   8]                    ARM MPIDR : 0000000000000000
- [090h 0144   1]             Efficiency Class : 00
- [091h 0145   1]                     Reserved : 00
- [092h 0146   2]       SPE Overflow Interrupt : 0000
+Thanks,
 
- [094h 0148   1]                Subtable Type : 0E [Generic Interrupt Redistributor]
- [095h 0149   1]                       Length : 10
- [096h 0150   2]                     Reserved : 0000
- [098h 0152   8]                 Base Address : 00000000080A0000
- [0A0h 0160   4]                       Length : 00F60000
+C.
 
--[0A4h 0164   1]                Subtable Type : 0F [Generic Interrupt Translator]
--[0A5h 0165   1]                       Length : 14
--[0A6h 0166   2]                     Reserved : 0000
--[0A8h 0168   4]               Translation ID : 00000000
--[0ACh 0172   8]                 Base Address : 0000000008080000
--[0B4h 0180   4]                     Reserved : 00000000
-
-IORT diff:
-
- [000h 0000   4]                    Signature : "IORT"    [IO Remapping Table]
--[004h 0004   4]                 Table Length : 000000EC
-+[004h 0004   4]                 Table Length : 000000AC
- [008h 0008   1]                     Revision : 03
--[009h 0009   1]                     Checksum : 57
-+[009h 0009   1]                     Checksum : 97
- [00Ah 0010   6]                       Oem ID : "BOCHS "
- [010h 0016   8]                 Oem Table ID : "BXPC    "
- [018h 0024   4]                 Oem Revision : 00000001
- [01Ch 0028   4]              Asl Compiler ID : "BXPC"
- [020h 0032   4]        Asl Compiler Revision : 00000001
-
--[024h 0036   4]                   Node Count : 00000003
-+[024h 0036   4]                   Node Count : 00000002
- [028h 0040   4]                  Node Offset : 00000030
- [02Ch 0044   4]                     Reserved : 00000000
-
--[030h 0048   1]                         Type : 00
--[031h 0049   2]                       Length : 0018
--[033h 0051   1]                     Revision : 01
-+[030h 0048   1]                         Type : 04
-+[031h 0049   2]                       Length : 0044
-+[033h 0051   1]                     Revision : 04
- [034h 0052   4]                     Reserved : 00000000
- [038h 0056   4]                Mapping Count : 00000000
- [03Ch 0060   4]               Mapping Offset : 00000000
-
--[040h 0064   4]                     ItsCount : 00000001
--[044h 0068   4]                  Identifiers : 00000000
--
--[048h 0072   1]                         Type : 04
--[049h 0073   2]                       Length : 0058
--[04Bh 0075   1]                     Revision : 04
--[04Ch 0076   4]                     Reserved : 00000001
--[050h 0080   4]                Mapping Count : 00000001
--[054h 0084   4]               Mapping Offset : 00000044
--
--[058h 0088   8]                 Base Address : 0000000009050000
--[060h 0096   4]        Flags (decoded below) : 00000001
-+[040h 0064   8]                 Base Address : 0000000009050000
-+[048h 0072   4]        Flags (decoded below) : 00000001
-                              COHACC Override : 1
-                                HTTU Override : 0
-                       Proximity Domain Valid : 0
--[064h 0100   4]                     Reserved : 00000000
--[068h 0104   8]                VATOS Address : 0000000000000000
--[070h 0112   4]                        Model : 00000000
--[074h 0116   4]                   Event GSIV : 0000006A
--[078h 0120   4]                     PRI GSIV : 0000006B
--[07Ch 0124   4]                    GERR GSIV : 0000006D
--[080h 0128   4]                    Sync GSIV : 0000006C
--[084h 0132   4]             Proximity Domain : 00000000
--[088h 0136   4]      Device ID Mapping Index : 00000000
--
--[08Ch 0140   4]                   Input base : 00000000
--[090h 0144   4]                     ID Count : 0000FFFF
--[094h 0148   4]                  Output Base : 00000000
--[098h 0152   4]             Output Reference : 00000030
--[09Ch 0156   4]        Flags (decoded below) : 00000000
--                              Single Mapping : 0
--
--[0A0h 0160   1]                         Type : 02
--[0A1h 0161   2]                       Length : 004C
--[0A3h 0163   1]                     Revision : 03
--[0A4h 0164   4]                     Reserved : 00000002
--[0A8h 0168   4]                Mapping Count : 00000002
--[0ACh 0172   4]               Mapping Offset : 00000024
--
--[0B0h 0176   8]            Memory Properties : [IORT Memory Access Properties]
--[0B0h 0176   4]              Cache Coherency : 00000001
--[0B4h 0180   1]        Hints (decoded below) : 00
-+[04Ch 0076   4]                     Reserved : 00000000
-+[050h 0080   8]                VATOS Address : 0000000000000000
-+[058h 0088   4]                        Model : 00000000
-+[05Ch 0092   4]                   Event GSIV : 0000006A
-+[060h 0096   4]                     PRI GSIV : 0000006B
-+[064h 0100   4]                    GERR GSIV : 0000006D
-+[068h 0104   4]                    Sync GSIV : 0000006C
-+[06Ch 0108   4]             Proximity Domain : 00000000
-+[070h 0112   4]      Device ID Mapping Index : 00000000
-+
-+[074h 0116   1]                         Type : 02
-+[075h 0117   2]                       Length : 0038
-+[077h 0119   1]                     Revision : 03
-+[078h 0120   4]                     Reserved : 00000001
-+[07Ch 0124   4]                Mapping Count : 00000001
-+[080h 0128   4]               Mapping Offset : 00000024
-+
-+[084h 0132   8]            Memory Properties : [IORT Memory Access Properties]
-+[084h 0132   4]              Cache Coherency : 00000001
-+[088h 0136   1]        Hints (decoded below) : 00
-                                    Transient : 0
-                               Write Allocate : 0
-                                Read Allocate : 0
-                                     Override : 0
--[0B5h 0181   2]                     Reserved : 0000
--[0B7h 0183   1] Memory Flags (decoded below) : 03
-+[089h 0137   2]                     Reserved : 0000
-+[08Bh 0139   1] Memory Flags (decoded below) : 03
-                                    Coherency : 1
-                             Device Attribute : 1
--[0B8h 0184   4]                ATS Attribute : 00000000
--[0BCh 0188   4]           PCI Segment Number : 00000000
--[0C0h 0192   1]            Memory Size Limit : 40
--[0C1h 0193   3]                     Reserved : 000000
--
--[0C4h 0196   4]                   Input base : 00000000
--[0C8h 0200   4]                     ID Count : 000000FF
--[0CCh 0204   4]                  Output Base : 00000000
--[0D0h 0208   4]             Output Reference : 00000048
--[0D4h 0212   4]        Flags (decoded below) : 00000000
--                              Single Mapping : 0
--
--[0D8h 0216   4]                   Input base : 00000100
--[0DCh 0220   4]                     ID Count : 0000FEFF
--[0E0h 0224   4]                  Output Base : 00000100
--[0E4h 0228   4]             Output Reference : 00000030
--[0E8h 0232   4]        Flags (decoded below) : 00000000
-+[08Ch 0140   4]                ATS Attribute : 00000000
-+[090h 0144   4]           PCI Segment Number : 00000000
-+[094h 0148   1]            Memory Size Limit : 40
-+[095h 0149   3]                     Reserved : 000000
-+
-+[098h 0152   4]                   Input base : 00000000
-+[09Ch 0156   4]                     ID Count : 000000FF
-+[0A0h 0160   4]                  Output Base : 00000000
-+[0A4h 0164   4]             Output Reference : 00000030
-+[0A8h 0168   4]        Flags (decoded below) : 00000000
-                               Single Mapping : 0
-
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
----
- tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 184 -> 164 bytes
- tests/data/acpi/aarch64/virt/IORT.its_off   | Bin 236 -> 172 bytes
- tests/qtest/bios-tables-test-allowed-diff.h |   2 --
- 3 files changed, 2 deletions(-)
-
-diff --git a/tests/data/acpi/aarch64/virt/APIC.its_off b/tests/data/acpi/aarch64/virt/APIC.its_off
-index 37d82e970b1331cb5b259f0bd2d3654bacb2d623..6130cb7d07103b326feb4dcd7034f85808bebadf 100644
-GIT binary patch
-delta 18
-ZcmdnNxP+0*F~HM#2?GNI3&%vRSpY2+1Zw~Q
-
-delta 39
-jcmZ3&xPy_)F~HM#2Ll5G%fX3UvqbnsfJ`vp;DE6JqX7kf
-
-diff --git a/tests/data/acpi/aarch64/virt/IORT.its_off b/tests/data/acpi/aarch64/virt/IORT.its_off
-index 0fceb820d509e852ca0849baf568a8e93e426738..c10da4e61dd00e7eb062558a2735d49ca0b20620 100644
-GIT binary patch
-delta 69
-zcmaFExQ3C-(?2L=4FdxM^Yn>aQj$zSmH`lh0E-I)3xowECx)7HGFdP%GXmL+6IZHp
-Hz*GSMclZc%
-
-literal 236
-zcmebD4+?q1z`(#9?&R<65v<@85#X!<1dKp25F11@1F-=RgMkDCNC*yK9F_<M77!bR
-zUBI%eoFED&4;F$FSwK1)h;xBB2Py`m{{M%tVD>TjFfcO#g+N#Zh@s|zoCF3AP#UU@
-R!2`+%Dg6Hr$N|zYvjDIZ5CH%H
-
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index a88198d5c2..dfb8523c8b 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,3 +1 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/aarch64/virt/APIC.its_off",
--"tests/data/acpi/aarch64/virt/IORT.its_off",
--- 
-2.34.1

@@ -1,67 +1,67 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1775747njc;
-        Mon, 16 Jun 2025 04:06:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWwOa2qkZ861yRq030o73B8hFSVsqXjrogU2Sx59+3eKxnRG4VF77BlSpVkaAsfSwAYzZckrb0CtmCszQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFToeBJ0dQuKi5TPpVkeYATV0ibN9L+GvSkjuPPw1/XGtn1RRxS5TCI8g+6AZvx40TZjFuC
-X-Received: by 2002:a05:6122:80b2:b0:531:3a03:1122 with SMTP id 71dfb90a1353d-53144e1d283mr6661094e0c.2.1750071998699;
-        Mon, 16 Jun 2025 04:06:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750071998; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1779570njc;
+        Mon, 16 Jun 2025 04:13:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWHKvmNvAL2671j+PAIoI2KFOVctzK9QtYtdqo0JDNB+/JLwXuR71bTar/lKsfSntnrOWYQNFaFlOnbDg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFFmamN2U2Em/Pm9e0/D3Fiy/+WbOrdVn6I+ISLEfgy0eXz3vtSU+KAic2melGNmkimlgcV
+X-Received: by 2002:a05:622a:120b:b0:4a5:880d:ee6 with SMTP id d75a77b69052e-4a73c4fcebfmr157241851cf.3.1750072420202;
+        Mon, 16 Jun 2025 04:13:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750072420; cv=none;
         d=google.com; s=arc-20240605;
-        b=WNpfU4WkSN/zsMTSlnZ+WVLxAbx6gfkQlcYxTIiJEhNdwE7dKVfp4As96ngi41ReyJ
-         7zR/QAjRjbKD1GQKlZ64F2e2iD16ZNxszvkTyDkfaq5w17pTduWuIveNqOZLEqZjyyD8
-         FMMtGmI2aviZSlaSkJXkp+Si8ubY7FUZOiLInktQD76gQe3l1S0aOLeemOhCfmmewwk8
-         AHMhjjEtGniNetWLcnkoDBPl2Z3awguq724b1QmM1FQMgiPJlaEcU5Mh6W3WyveS27b7
-         sCuUkJqfCwVr9E1b0JrP1jpKgMMUCI/5OFuu130HAGX3gJstaV5E0HYWNyRcfJhKWG0N
-         7xgQ==
+        b=jMY3Sz47UUUcz9Z2eaUnx6SVAmGgWNPDHxv3pGRStnGUSxUYuRB+fOESPCOTKuqRIp
+         rocC/xrFoX6pWKpI6W59uhTFAuCbWcxEwwnY14TgQKc3ERyW7H4r/IRkENPybEJwOzzD
+         bKVHGDmCEv4W29krNPXf87jdn9KzsS2lNiP2C90vhTX+xrNKb5juH7xx8rRtDt0wNdxx
+         BkCRGRvugn+ulpFc2Y3T8/uGLAgUIy6vvfEwgFSiUCEr48ZIuLtEKsahsdUfx/Lsrzn6
+         hsMz9E6u66LXZbY1pLjHeV1n6N3a4yjygPqQSeTDiv+F4WaEl2AmA8CDyUJRBEfOL9Pd
+         ji5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:date;
-        bh=7zLWovXqo2mkZ2s9fKWRbK3CCwHa1Xf7vZq4/xgrVzs=;
+        bh=UefArCooobiw5sa3sFR45Wbn5DLMuarv/c3Bz/Y4tEU=;
         fh=aA8gsM5QP8IJIk1ptJlCXNxyLIMaAhKHt/Cf0Wq9DRk=;
-        b=TuDnKOj8gYWKjBS6C7OvLqmGg0GDExgX7sL7kfyjqJRiFFGEIY/GPzkJQyYfpGghHx
-         HdTxVxe+HE0KBHSBcOOlSZuLIBxCCNE7H7hYPqB2WaVQWf+PiYu8O0JMev4M6Sh2MWm7
-         1TH5FMLfQOH8ttpP9Jel5pYxUMXe1xHGYP0o8DTX74OXFBLrfOyczwKUOq1cOB5fcvRj
-         GTNnGelJ4gXgdfjl0GeRXuY651Qf2HHBX8ipJcIz6zJ+Po87cOpLiMB1GR2ybPKkzozd
-         pE42uMd//wZDFQZQOowsD4Av8FI3ICvU+aZuYq2HsUMCHqnkZdSoU9YhUFVe7wDCYJOT
-         P0VA==;
+        b=Nm1GJpiNJhOqus4ocy+H3TdJTeUY44wdu66bNavMaMyzLtMpLiDqn523KUZ0EAW59f
+         jLXCwCHOyrJKr/a3Biql38zhtea96Od5pEh1WvBE9iXYd0R8SredzFs/s6vfnHZjNeIP
+         ndcpMTmq0UfrAF7ku91unUx88YzJ3jQ3gPEt6xnv1j4dso9hi997mqeTcNLVPzOEkFfz
+         LtUq6ER5A6m6IZIKkRpEpoNPh/1RgvrAQTR2leJfiXJIZg1NZfTGJTlHyeIOstwf5EHf
+         D1W7w8JLUvh21/SVpLejTWftyAy8QuRc6kNXbe9kJ2/K/S+7kUPATuW21wlUTOrVo10t
+         vCkw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-87f1ec1a2bcsi889026241.77.2025.06.16.04.06.38
+        by mx.google.com with ESMTPS id d75a77b69052e-4a72a47d883si95904441cf.197.2025.06.16.04.13.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Jun 2025 04:06:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 16 Jun 2025 04:13:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uR7fI-00074j-RG; Mon, 16 Jun 2025 07:06:16 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uR7m6-0003Qe-KF; Mon, 16 Jun 2025 07:13:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uR7fG-00073p-CW; Mon, 16 Jun 2025 07:06:10 -0400
+ id 1uR7lv-0003Nm-Qq; Mon, 16 Jun 2025 07:13:04 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uR7fD-00036N-Bo; Mon, 16 Jun 2025 07:06:10 -0400
+ id 1uR7lq-0004Ga-Gg; Mon, 16 Jun 2025 07:13:03 -0400
 Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bLRvb4Csfz6L5NM;
- Mon, 16 Jun 2025 19:03:55 +0800 (CST)
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bLS5D2PsHz6M56J;
+ Mon, 16 Jun 2025 19:12:16 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 9C9FA140447;
- Mon, 16 Jun 2025 19:06:02 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 654A8140119;
+ Mon, 16 Jun 2025 19:12:48 +0800 (CST)
 Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
  (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 16 Jun
- 2025 13:06:01 +0200
-Date: Mon, 16 Jun 2025 12:05:59 +0100
+ 2025 13:12:47 +0200
+Date: Mon, 16 Jun 2025 12:12:45 +0100
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
  <linuxarm@huawei.com>
 CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
@@ -70,12 +70,11 @@ CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
  <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
  <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
  <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
-Subject: Re: [PATCH v4 6/7] hw/arm/virt: Allow user-creatable SMMUv3 dev
- instantiation
-Message-ID: <20250616120545.000017d5@huawei.com>
-In-Reply-To: <20250613144449.60156-7-shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH v4 7/7] qemu-options.hx: Document the arm-smmuv3 device
+Message-ID: <20250616121245.00005b4b@huawei.com>
+In-Reply-To: <20250613144449.60156-8-shameerali.kolothum.thodi@huawei.com>
 References: <20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com>
- <20250613144449.60156-7-shameerali.kolothum.thodi@huawei.com>
+ <20250613144449.60156-8-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
@@ -86,139 +85,63 @@ X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
 X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
 Received-SPF: pass client-ip=185.176.79.56;
  envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XidxT3Oo+dcq
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: PBOsxnigbVqr
 
-On Fri, 13 Jun 2025 15:44:48 +0100
+On Fri, 13 Jun 2025 15:44:49 +0100
 Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-> Allow cold-plug of smmuv3 device to virt if there is no machine
-> wide legacy smmuv3 or a virtio-iommu is specified.
+> Now that arm,virt can have user-creatable smmuv3 devices, document it.
 > 
-> Device tree support for new smmuv3 dev is limited to the case where
-> it is associated with the default pcie.0 RC.
-> 
-> Tested-by: Nathan Chen <nathanc@nvidia.com>
 > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-
-Looks good to me. 
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-
 > ---
->  hw/arm/smmuv3.c      |  2 ++
->  hw/arm/virt.c        | 47 ++++++++++++++++++++++++++++++++++++++++++++
->  hw/core/sysbus-fdt.c |  3 +++
->  3 files changed, 52 insertions(+)
+>  qemu-options.hx | 6 ++++++
+>  1 file changed, 6 insertions(+)
 > 
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index ab67972353..bcf8af8dc7 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1996,6 +1996,8 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
->      device_class_set_parent_realize(dc, smmu_realize,
->                                      &c->parent_realize);
->      device_class_set_props(dc, smmuv3_properties);
-> +    dc->hotpluggable = false;
-> +    dc->user_creatable = true;
->  }
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 7eb8e02b4b..3edbde45bb 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -1226,6 +1226,12 @@ SRST
+>      ``aw-bits=val`` (val between 32 and 64, default depends on machine)
+>          This decides the address width of the IOVA address space.
 >  
->  static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index eeace4754d..3be007d87c 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -56,6 +56,7 @@
->  #include "qemu/cutils.h"
->  #include "qemu/error-report.h"
->  #include "qemu/module.h"
-> +#include "hw/pci/pci_bus.h"
->  #include "hw/pci-host/gpex.h"
->  #include "hw/virtio/virtio-pci.h"
->  #include "hw/core/sysbus-fdt.h"
-> @@ -1443,6 +1444,28 @@ static void create_smmuv3_dt_bindings(const VirtMachineState *vms, hwaddr base,
->      g_free(node);
->  }
+> +``-device arm-smmuv3,primary-bus=id``
+> +    This is only supported by ``-machine virt`` (ARM).
+> +
+> +    ``primary-bus=id``
+> +        The PCIe Root Complex to be associated with.
+
+Hmm.  Root complex or host bridge?
+I think an RC is allowed to have multiple heirarchy and hence multiple
+host bridges. Figure 1.2 in the PCI spec. So my gut feeling is this
+should be host bridge. 
+
+
+> +
+>  ERST
 >  
-> +static void create_smmuv3_dev_dtb(VirtMachineState *vms,
-> +                                  DeviceState *dev, PCIBus *bus)
-> +{
-> +    PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
-> +    SysBusDevice *sbdev = SYS_BUS_DEVICE(dev);
-> +    int irq = platform_bus_get_irqn(pbus, sbdev, 0);
-> +    hwaddr base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
-> +    MachineState *ms = MACHINE(vms);
-> +
-> +    if (strcmp("pcie.0", bus->qbus.name)) {
-> +        warn_report("SMMUv3 device only supported with pcie.0 for DT");
-> +        return;
-> +    }
-> +    base += vms->memmap[VIRT_PLATFORM_BUS].base;
-> +    irq += vms->irqmap[VIRT_PLATFORM_BUS];
-> +
-> +    vms->iommu_phandle = qemu_fdt_alloc_phandle(ms->fdt);
-> +    create_smmuv3_dt_bindings(vms, base, SMMU_IO_LEN, irq);
-> +    qemu_fdt_setprop_cells(ms->fdt, vms->pciehb_nodename, "iommu-map",
-> +                           0x0, vms->iommu_phandle, 0x0, 0x10000);
-> +}
-> +
->  static void create_smmu(const VirtMachineState *vms,
->                          PCIBus *bus)
->  {
-> @@ -2931,6 +2954,13 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->          qlist_append_str(reserved_regions, resv_prop_str);
->          qdev_prop_set_array(dev, "reserved-regions", reserved_regions);
->          g_free(resv_prop_str);
-> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3)) {
-> +        if (vms->legacy_smmuv3_present || vms->iommu == VIRT_IOMMU_VIRTIO) {
-> +            error_setg(errp, "virt machine already has %s set. "
-> +                       "Doesn't support incompatible iommus",
-> +                       (vms->legacy_smmuv3_present) ?
-> +                       "iommu=smmuv3" : "virtio-iommu");
-> +        }
->      }
->  }
->  
-> @@ -2954,6 +2984,22 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
->          virtio_md_pci_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev), errp);
->      }
->  
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3)) {
-> +        if (!vms->legacy_smmuv3_present && vms->platform_bus_dev) {
-> +            PCIBus *bus;
-> +
-> +            bus = PCI_BUS(object_property_get_link(OBJECT(dev), "primary-bus",
-> +                                                   &error_abort));
-> +            if (pci_bus_bypass_iommu(bus)) {
-> +                error_setg(errp, "Bypass option cannot be set for SMMUv3 "
-> +                           "associated PCIe RC");
-> +                return;
-> +            }
-> +
-> +            create_smmuv3_dev_dtb(vms, dev, bus);
-> +        }
-> +    }
-> +
+>  DEF("name", HAS_ARG, QEMU_OPTION_name,
 

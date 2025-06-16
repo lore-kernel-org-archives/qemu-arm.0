@@ -1,84 +1,74 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1669453njc;
-        Sun, 15 Jun 2025 23:32:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWqM+feHj13ObEjIl3f0vNdiLxtXB9iwaln3NjmNW4R5bhc5UaiAhNJqHhbDbbNt+g6wrrVsK7GIX09KQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGZDGrlvK0evMnohF53tjw6tGwDR156CtR4FX+kBzJ2JQt76ZtQaqfJ+zBEe2gWsmI8SqVG
-X-Received: by 2002:a05:620a:800e:b0:7d0:a2c1:975b with SMTP id af79cd13be357-7d3c6841d0amr1424800985a.14.1750055554923;
-        Sun, 15 Jun 2025 23:32:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750055554; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp1672553njc;
+        Sun, 15 Jun 2025 23:42:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXbv8fP3DucaBa7B5QUIDxM8sEczKKbPy7bLAfEg9u2NauETh4uwx04lyM4T0FHJ5F+L0QPpIj6Cr8ypQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IETIvCiGl9NgmzkZG5tUHc6R9lQEEw3hmz99t7DnbdG/lZ2dQM1YsvybIP8PJGbeGcBq+Bh
+X-Received: by 2002:a05:6214:624:b0:6fa:9ca1:c520 with SMTP id 6a1803df08f44-6fb46deff44mr127328976d6.16.1750056178777;
+        Sun, 15 Jun 2025 23:42:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750056178; cv=none;
         d=google.com; s=arc-20240605;
-        b=G6l7fdlkLzX3uSwAhzO0fspsg0huBDNBNQ4P22/vkYe1Oo7NYrtZXAmeB+vtSBOemH
-         MATVACsTuUVw25meiMZV2CSet6MPCaRdFkuf7HYWkK1IBckPEvc6t7lpqcQJtvLs/fI3
-         ID/gi3K8P+sgLuobihmsApnccjoju/UnTCsMghD02Ysalben3hGEz9QOlZTgct7X+cOd
-         LBUa5tLdegNdrzfrHJxDCJfxuqSLftb7V6rzL+uX1wGwD9CoVyqaltSDf90l/0Z4d85i
-         H34iS69pBDjs9aQ/LceSkUGwQ3BPHnvB7PfFS2n7310+u6Tw7HWUBNuXfNZ+mnuJpXDW
-         6Xig==
+        b=HvD6msbeWP1mR+MgvOzwr7amuQ3kexwJM4G//l1/io9bZXI12fdhHrjtAfR2BBor40
+         oyRShksw9tt4Z0vChLM/kQNaqXjAV0vLuOA23qsy/AzhMa7G24vEK21uxkYhip6ulO3r
+         hEBDTeeFy/OKHBPhp5dxgAMDwjVD+rlmZXMBxSVOxACQpQ0+DUOSGLNG7r7c39wJM8xI
+         48FAX2J/T/a+GLasJsMYrCcsrgqxalOLuRxpfDu3wpWzWhEvh2ep+u/M9wONNYMI5zOT
+         c3gJ3xpIPnWmf790tawD0FCuDHxpO7jhxOmDiXndqs2ei5q501BdBUw19u25GsyhFogA
+         yK4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=EWS/ayckvuJd2YTsdAqRwRM+HBdDmvSCHngknMqBwLc=;
-        fh=pm+rAz+0tEzemFBa9sx08pti2vLCFPRV50nas2wRq7A=;
-        b=i5hQ+QmYvvFuCIng/KTgq4EKV3x7Qv0M99vw5/K2niJPzPMi7bM07gW/0KLZLARvMm
-         oLPHgoKq7HbIRJKxvCTyRFtevosbUVWwCl1iAQwH/avUOwX+uF2rHoMSTq3lK5Z1muGF
-         EySJIaYtpk4DZtNlqNTL7ubcj63cVs9GKhoCApIbHWj1fhaimCwDvmyVpcryHsVdPvIB
-         n8F32h55yVMDxVKQdGkZzkuWGbbBMN22Yj76/us1oW5TiRRr2H0lzIkzsc/fmwW8+2nr
-         ORB3KIEaqIqKeS5WQdoJvE0G/78cIIc9AwJMPOxuVAXf1TRyrNCpeIDDriqt2qO4nH2b
-         6omQ==;
+        bh=jHnwUGSLRIO/XIOMAwMg/cFSRYABdPLGpP60Giiebvo=;
+        fh=oPKMOpUFcVmI7ee5t9JY12RmJrDyiO+PfEhkNDei6SQ=;
+        b=SaOgeoQ0Nfo2VCq1cEdXye/t4JrZtcDl0qLtIqC6I1f/vMejyIpsMqZTDr6KIsLxlB
+         eha+70wOuJo0pEebK3zpAJIGGX4G5izvPSc1BqJRQfMcnDIx7/gw9IfBWw/KfYt6Fu2E
+         /hawWAPeNjFCvMr5P9h7tS9FsRz3VPrTIedqVkbaC/xAPXLA6GZOTiSJ29GRwg8amZpz
+         +wOxNMo7/lf8bPDwjiN3YUxMAw2It35KQ3Emc+BWAEXjLr7i/NabfGnLsIOAVGUU+v6l
+         yL1uO/G8U0TrtfMDCMjeobpE2JjqCq/oJ71Yj0g3L/4lJkrWHDefXX9gaGKMOVI9pj0U
+         blBg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3b8ea7403si873269185a.289.2025.06.15.23.32.34
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fb527a3e33si29886356d6.343.2025.06.15.23.42.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 15 Jun 2025 23:32:34 -0700 (PDT)
+        Sun, 15 Jun 2025 23:42:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uR3O5-0000mA-Rw; Mon, 16 Jun 2025 02:32:13 -0400
+	id 1uR3YR-0003YC-Rd; Mon, 16 Jun 2025 02:42:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=g70R=Y7=kaod.org=clg@ozlabs.org>)
- id 1uR3NJ-0000gI-ES; Mon, 16 Jun 2025 02:31:22 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ id 1uR3Y0-0003RA-TH; Mon, 16 Jun 2025 02:42:24 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=g70R=Y7=kaod.org=clg@ozlabs.org>)
- id 1uR3NG-0004kD-V8; Mon, 16 Jun 2025 02:31:20 -0400
+ id 1uR3Xx-0005jL-Ph; Mon, 16 Jun 2025 02:42:24 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bLKry319Xz4wbn;
- Mon, 16 Jun 2025 16:31:14 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bLL5g4MqTz4wxx;
+ Mon, 16 Jun 2025 16:42:15 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bLKrt2f1bz4wb0;
- Mon, 16 Jun 2025 16:31:10 +1000 (AEST)
-Message-ID: <4dec0b7e-d7a1-4a0f-aca1-4d5c0ef23e98@kaod.org>
-Date: Mon, 16 Jun 2025 08:31:07 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bLL5c1Q5Qz4wbd;
+ Mon, 16 Jun 2025 16:42:11 +1000 (AEST)
+Message-ID: <ab6caa9e-5017-4bf1-a50e-9337cda92959@kaod.org>
+Date: Mon, 16 Jun 2025 08:42:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/12] include/hw: replace FSF postal address with
- licenses URL
-To: Sean Wei <me@sean.taipei>
-Cc: qemu-devel@nongnu.org, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "Daniel P . Berrange" <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-References: <20250613.qemu.patch@sean.taipei>
- <20250613.qemu.patch.05@sean.taipei>
- <3aa8de03-911e-4906-a0c5-5b8ea269ad28@kaod.org>
- <CAGvOXg_VK0+DA_OHy0oWGC4QuL6icFd7yabLKeRzQMc8OpU-rA@mail.gmail.com>
- <66a0c462-deb3-46c9-bcd1-1395137dc108@kaod.org>
- <3f4e8f04-c785-4374-913f-2dc200d1ea1e@sean.taipei>
+Subject: Re: [PATCH 01/19] hw/misc/aspeed_i3c: Move to i3c directory
+To: Joe Komlodi <komlodi@google.com>, qemu-devel@nongnu.org
+Cc: venture@google.com, peter.maydell@linaro.org, steven_lee@aspeedtech.com,
+ leetroy@gmail.com, jamin_lin@aspeedtech.com, andrew@codeconstruct.com.au,
+ joel@jms.id.au, qemu-arm@nongnu.org
+References: <20250613000411.1516521-1-komlodi@google.com>
+ <20250613000411.1516521-2-komlodi@google.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -123,17 +113,16 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <3f4e8f04-c785-4374-913f-2dc200d1ea1e@sean.taipei>
+In-Reply-To: <20250613000411.1516521-2-komlodi@google.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=g70R=Y7=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -40
 X-Spam_score: -4.1
 X-Spam_bar: ----
 X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.097, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -149,54 +138,199 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Et3cS0nqI8IY
+X-TUID: Xf5iO631BhSR
 
-Hello Sean
+On 6/13/25 02:03, Joe Komlodi wrote:
+> Moves the Aspeed I3C model and traces into hw/i3c and creates I3C build
+> files.
+> 
+> Signed-off-by: Joe Komlodi <komlodi@google.com>
 
-On 6/14/25 22:22, Sean Wei wrote:
-> Hi Cédric,
-> 
-> Thanks for pointing me to the earlier thread, moving to
-> the `SPDX-License-Identifier` tags is the better long-term fix.
-> 
-> 
->  > I think you can convert all QEMU files while at it.
-> 
-> To keep traffic on qemu-devel@ manageable, I'd like to work
-> subtree by subtree, following the sections in MAINTAINERS.
-> 
-> 
->  > Are there any MIT-licensed files?
-> 
-> Just a handful in the ASPEED code base using MIT:
-> 
->      hw/ssi/aspeed_smc.c
->      include/hw/ssi/aspeed_smc.h
->      tests/qtest/aspeed_gpio-test.c
->      tests/qtest/aspeed_smc-test.c
->      tests/qtest/aspeed-smc-utils.c
->      tests/qtest/aspeed-smc-utils.h
 
-Oh and I am the one that did that 9y ago. I think I was inspired by
-the PPC series source files I was working on at the time.
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
-> 
-> ## Proposed steps
-> 
-> 1. Start with the ASPEED BMC subtree.
-> 
-> 2. Split commits by path and header style.
->     path: hw/, include/hw/, tests/
->     license: GPL-2.0-or-later, GPL-2.0-only, MIT
->     style: boiler plate, see COPYING
-> > 3. Drop the boiler-plate, replace with the correct
->     SPDX-License-Identifier, without changing code.
-> 
-> Does this approach sound reasonable for you?
+> Reviewed-by: Patrick Venture <venture@google.com>
+> Reviewed-by: Titus Rwantare <titusr@google.com>
 
-LGTM. I will merge these changes through the aspeed tree.
+Internal reviews are not of much value. It's better to send without
+these tags and restart the assessment on the public mailing lists.
+
 
 Thanks,
 
 C.
+
+
+
+
+> ---
+>   hw/Kconfig                            | 1 +
+>   hw/arm/Kconfig                        | 1 +
+>   hw/i3c/Kconfig                        | 2 ++
+>   hw/{misc => i3c}/aspeed_i3c.c         | 2 +-
+>   hw/i3c/meson.build                    | 3 +++
+>   hw/i3c/trace-events                   | 7 +++++++
+>   hw/i3c/trace.h                        | 2 ++
+>   hw/meson.build                        | 1 +
+>   hw/misc/meson.build                   | 1 -
+>   hw/misc/trace-events                  | 6 ------
+>   include/hw/arm/aspeed_soc.h           | 2 +-
+>   include/hw/{misc => i3c}/aspeed_i3c.h | 0
+>   meson.build                           | 1 +
+>   13 files changed, 20 insertions(+), 9 deletions(-)
+>   create mode 100644 hw/i3c/Kconfig
+>   rename hw/{misc => i3c}/aspeed_i3c.c (99%)
+>   create mode 100644 hw/i3c/meson.build
+>   create mode 100644 hw/i3c/trace-events
+>   create mode 100644 hw/i3c/trace.h
+>   rename include/hw/{misc => i3c}/aspeed_i3c.h (100%)
+> 
+> diff --git a/hw/Kconfig b/hw/Kconfig
+> index 9a86a6a28a..61b8b2a142 100644
+> --- a/hw/Kconfig
+> +++ b/hw/Kconfig
+> @@ -13,6 +13,7 @@ source fsi/Kconfig
+>   source gpio/Kconfig
+>   source hyperv/Kconfig
+>   source i2c/Kconfig
+> +source i3c/Kconfig
+>   source ide/Kconfig
+>   source input/Kconfig
+>   source intc/Kconfig
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index f543d944c3..427d0f0271 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -530,6 +530,7 @@ config ASPEED_SOC
+>       select DS1338
+>       select FTGMAC100
+>       select I2C
+> +    select I3C
+>       select DPS310
+>       select PCA9552
+>       select SERIAL_MM
+> diff --git a/hw/i3c/Kconfig b/hw/i3c/Kconfig
+> new file mode 100644
+> index 0000000000..e07fe445c6
+> --- /dev/null
+> +++ b/hw/i3c/Kconfig
+> @@ -0,0 +1,2 @@
+> +config I3C
+> +    bool
+> diff --git a/hw/misc/aspeed_i3c.c b/hw/i3c/aspeed_i3c.c
+> similarity index 99%
+> rename from hw/misc/aspeed_i3c.c
+> rename to hw/i3c/aspeed_i3c.c
+> index 3bef1c84dd..e56822f928 100644
+> --- a/hw/misc/aspeed_i3c.c
+> +++ b/hw/i3c/aspeed_i3c.c
+> @@ -10,7 +10,7 @@
+>   #include "qemu/osdep.h"
+>   #include "qemu/log.h"
+>   #include "qemu/error-report.h"
+> -#include "hw/misc/aspeed_i3c.h"
+> +#include "hw/i3c/aspeed_i3c.h"
+>   #include "hw/registerfields.h"
+>   #include "hw/qdev-properties.h"
+>   #include "qapi/error.h"
+> diff --git a/hw/i3c/meson.build b/hw/i3c/meson.build
+> new file mode 100644
+> index 0000000000..ebf20325cb
+> --- /dev/null
+> +++ b/hw/i3c/meson.build
+> @@ -0,0 +1,3 @@
+> +i3c_ss = ss.source_set()
+> +i3c_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_i3c.c'))
+> +system_ss.add_all(when: 'CONFIG_I3C', if_true: i3c_ss)
+> diff --git a/hw/i3c/trace-events b/hw/i3c/trace-events
+> new file mode 100644
+> index 0000000000..3ead84eb45
+> --- /dev/null
+> +++ b/hw/i3c/trace-events
+> @@ -0,0 +1,7 @@
+> +# See docs/devel/tracing.rst for syntax documentation.
+> +
+> +# aspeed_i3c.c
+> +aspeed_i3c_read(uint64_t offset, uint64_t data) "I3C read: offset 0x%" PRIx64 " data 0x%" PRIx64
+> +aspeed_i3c_write(uint64_t offset, uint64_t data) "I3C write: offset 0x%" PRIx64 " data 0x%" PRIx64
+> +aspeed_i3c_device_read(uint32_t deviceid, uint64_t offset, uint64_t data) "I3C Dev[%u] read: offset 0x%" PRIx64 " data 0x%" PRIx64
+> +aspeed_i3c_device_write(uint32_t deviceid, uint64_t offset, uint64_t data) "I3C Dev[%u] write: offset 0x%" PRIx64 " data 0x%" PRIx64
+> diff --git a/hw/i3c/trace.h b/hw/i3c/trace.h
+> new file mode 100644
+> index 0000000000..1e0c4eadf0
+> --- /dev/null
+> +++ b/hw/i3c/trace.h
+> @@ -0,0 +1,2 @@
+> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> +#include "trace/trace-hw_i3c.h"
+> diff --git a/hw/meson.build b/hw/meson.build
+> index b91f761fe0..31786f03d0 100644
+> --- a/hw/meson.build
+> +++ b/hw/meson.build
+> @@ -12,6 +12,7 @@ subdir('dma')
+>   subdir('gpio')
+>   subdir('hyperv')
+>   subdir('i2c')
+> +subdir('i3c')
+>   subdir('ide')
+>   subdir('input')
+>   subdir('intc')
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index 6d47de482c..4a41716625 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -130,7 +130,6 @@ system_ss.add(when: 'CONFIG_PVPANIC_MMIO', if_true: files('pvpanic-mmio.c'))
+>   system_ss.add(when: 'CONFIG_AUX', if_true: files('auxbus.c'))
+>   system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+>     'aspeed_hace.c',
+> -  'aspeed_i3c.c',
+>     'aspeed_lpc.c',
+>     'aspeed_scu.c',
+>     'aspeed_sbc.c',
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index e3f64c0ff6..f70459b3b7 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -287,12 +287,6 @@ armsse_mhu_write(uint64_t offset, uint64_t data, unsigned size) "SSE-200 MHU wri
+>   # aspeed_xdma.c
+>   aspeed_xdma_write(uint64_t offset, uint64_t data) "XDMA write: offset 0x%" PRIx64 " data 0x%" PRIx64
+>   
+> -# aspeed_i3c.c
+> -aspeed_i3c_read(uint64_t offset, uint64_t data) "I3C read: offset 0x%" PRIx64 " data 0x%" PRIx64
+> -aspeed_i3c_write(uint64_t offset, uint64_t data) "I3C write: offset 0x%" PRIx64 " data 0x%" PRIx64
+> -aspeed_i3c_device_read(uint32_t deviceid, uint64_t offset, uint64_t data) "I3C Dev[%u] read: offset 0x%" PRIx64 " data 0x%" PRIx64
+> -aspeed_i3c_device_write(uint32_t deviceid, uint64_t offset, uint64_t data) "I3C Dev[%u] write: offset 0x%" PRIx64 " data 0x%" PRIx64
+> -
+>   # aspeed_sdmc.c
+>   aspeed_sdmc_write(uint64_t reg, uint64_t data) "reg @0x%" PRIx64 " data: 0x%" PRIx64
+>   aspeed_sdmc_read(uint64_t reg, uint64_t data) "reg @0x%" PRIx64 " data: 0x%" PRIx64
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index 217ef0eafd..07265f26cf 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -23,7 +23,7 @@
+>   #include "hw/timer/aspeed_timer.h"
+>   #include "hw/rtc/aspeed_rtc.h"
+>   #include "hw/i2c/aspeed_i2c.h"
+> -#include "hw/misc/aspeed_i3c.h"
+> +#include "hw/i3c/aspeed_i3c.h"
+>   #include "hw/ssi/aspeed_smc.h"
+>   #include "hw/misc/aspeed_hace.h"
+>   #include "hw/misc/aspeed_sbc.h"
+> diff --git a/include/hw/misc/aspeed_i3c.h b/include/hw/i3c/aspeed_i3c.h
+> similarity index 100%
+> rename from include/hw/misc/aspeed_i3c.h
+> rename to include/hw/i3c/aspeed_i3c.h
+> diff --git a/meson.build b/meson.build
+> index 34729c2a3d..186effb84f 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -3651,6 +3651,7 @@ if have_system
+>       'hw/fsi',
+>       'hw/hyperv',
+>       'hw/i2c',
+> +    'hw/i3c',
+>       'hw/i386',
+>       'hw/i386/xen',
+>       'hw/i386/kvm',
 

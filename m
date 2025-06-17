@@ -1,401 +1,276 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2377924njc;
-        Tue, 17 Jun 2025 02:10:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWNUq6u9vGewchlsnjFX/7W2Q/aeyZXhHRv0tEEizKG08+Q4TrQab1GbJ0u+SZ3Riu9s9M905z43E2mdQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IECqd0UMPKusgvbypLZy+Cyx9Cij89/JJcUq4iDGBVWiYFD9wyA7qMN0fjbzUxlDx57ikmF
-X-Received: by 2002:a05:620a:46a5:b0:7c3:d5a4:3df3 with SMTP id af79cd13be357-7d3c6ccb1d2mr1774672985a.34.1750151422885;
-        Tue, 17 Jun 2025 02:10:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750151422; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2380665njc;
+        Tue, 17 Jun 2025 02:16:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVEjxuHQe5PVWZjMzQykp8gznfAVrR5Nb2i4AHeoyJ9QU9K9r39HmezYnivDcpq1RkbbBAqrxENRZUZ4A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHIwWUB9M6xCjwTTaD5O7cpZ/uyQVzIy1PSiiTBohBytH5MEyekYE42dnqPEtinpDGewZUI
+X-Received: by 2002:a05:622a:1346:b0:4a4:3fb2:113c with SMTP id d75a77b69052e-4a73c628b97mr185450091cf.45.1750151781816;
+        Tue, 17 Jun 2025 02:16:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750151781; cv=none;
         d=google.com; s=arc-20240605;
-        b=VsPQuSzzKwgrU9QdZUNHAcvCD1HyMBlH+3NXnu9uhXnxlM2yqR8tje2vKk/3VBngeD
-         Za1mnMBbs8p4iMnYk97Jr/6DIQ8CNAy5cwwBxU8Dw6rE/Jo3mAiPC8h4Br9r8BMCuuyE
-         i9YCTcOtfahypDmCccl1rO448AyemKK3fhYwR0eoTCB98rIB0mBgdtIHuybUdkq1eN90
-         Wq9z0RbzlsN+wOI6TI42Mm/F8TcxfdSJK0Vck3mbXvY91qYZkUOAqyoDSyExmkeoU6UZ
-         wnWSI4vID5KzsegEe5RqejtdmBrzvZrkZP+6+aPxSY6mwNVroaaak20XrflBgvxSbXPN
-         6IeA==
+        b=IVasVHWJV/MEZyNejzuvKIEytwZYSd/4HrWRJ+TWBWXUx8o/tw44ISiuu/okUi8yzz
+         EHL0PeqxC2X6sIrohq6UhBAsjhS66vYOUh5qENo9jgHs+8TtR/hDxUssMkZN9T8EPwQQ
+         hlssIovJ/MHjHzJ3gKx8vObAuXZeesaZjObSXbXEIpx6WcZ0+Xm4O5lIWvfJgXBrFxKa
+         N2UrVzJLbsPIWtf5QMJbghfMe1HSRfIqsLmDPGWC3nEnkLPrF7ErOcHgF/f66w9Vrhc1
+         P6hUnWhGSvpjWxTjIILZZ3hs2BjbpXicfLhxf8xpCU/SrsyR6D/phw1OqN+FUo/oa32t
+         9XHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=3Ka2d6yyIR4QD4xNYIKOCLEon67TvTFN3oRVCwQ5nFU=;
-        fh=+Y/TyTWku45dYaW/pB725TpG9gVlFB8FokkIwOAyQxU=;
-        b=MG+2xce1nVpF9QRRKRAUTVdYz+cua8ToJrxMLBgDaRGSaonMnrA3PCZKhZX4RMeCME
-         KVvA71nQZYCK0u97k5U/snRMpwHh9vcj3H5RNU3zJwIs/OW7YAlZlEjRtfltO9+q0P3G
-         qbFW0ryI67ZMFuTD6qBsVAWySG8LdneEx4hM7UZ0R3Zwymn4g2TifLwt6jGqMdfTql1A
-         jwwyRoCyLrrKU148o5eVjQd8MeDKXXJdwjLOsNIVjH0OOOTHDrzUqpf493mh6p0LC7QY
-         8GGcJfN1tAOuMGvk6SoWpdgfyNvy43wPrqunzpQ64vhn/wP6q9qlxxFpqOd/Dicb7t8s
-         h2Sg==;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:dkim-signature;
+        bh=F2Lk87g/ffbwU6AtjA/WqgttL7/b0yIw5RLWx7pPGH8=;
+        fh=AKtc0CCYGDQSuHIvgZUtfKg9HcnLUIZwGCAhLIhjN24=;
+        b=QMuMMjESEK0kzJikqulRqi1A8qxRvhC15uueLvsBXgXgqjsJwPFNnudCkKSBsYu/Kc
+         TcFTouXOnTnSxn8HohNDyL49gHGu05f3cUfAmYkWVdXEjzaytnrJCyG+Yuhm8Mk08oSg
+         Zgoi/M8Ia8ZS22Hats6S+9PE2fNGw8JqtqtcmegKQVQ+aYuxzMnBAyuj3W7X8FDdxgCD
+         YVDnSik/o2DVj6YwThXc/ex+Wk89pH3eB+9+YqgNlcWg0UH8RFllO4r88PfCYbOr5fVo
+         krvEyvRa+reYke2cAnPuSSDhNf1R9a9Fxy++B26RVDXyla8Elrc1wTYE0h37i04Cln6i
+         eUOA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JR5vRpNt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3b8f470b3si1109820885a.609.2025.06.17.02.10.22
+       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b="t/ebtiKW";
+       spf=pass (google.com: domain of mads@ynddal.dk designates 57.103.87.90 as permitted sender) smtp.mailfrom=mads@ynddal.dk
+Return-Path: <mads@ynddal.dk>
+Received: from outbound.qs.icloud.com (p-east3-cluster1-host9-snip4-7.eps.apple.com. [57.103.87.90])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a72a4f3ff8si124899981cf.470.2025.06.17.02.16.21
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Jun 2025 02:10:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Jun 2025 02:16:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mads@ynddal.dk designates 57.103.87.90 as permitted sender) client-ip=57.103.87.90;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JR5vRpNt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uRSKZ-0007Yz-Ki; Tue, 17 Jun 2025 05:10:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uRSKX-0007XW-0F
- for qemu-arm@nongnu.org; Tue, 17 Jun 2025 05:10:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uRSKT-0004m3-F6
- for qemu-arm@nongnu.org; Tue, 17 Jun 2025 05:10:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1750151404;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3Ka2d6yyIR4QD4xNYIKOCLEon67TvTFN3oRVCwQ5nFU=;
- b=JR5vRpNt1UaZx1pAjLi8w3GpgvzRoPFdL9XoA+AY+BJahQZsdmi7B2bPRwgI2o02jGZ7X3
- 9IcdcuDx1/yrBB6qY8eCZDtihn3Ms1eWx9wjkaNytjUdp5n4UjvIJHseijJogqt2FX2Juy
- LMxc8jXtrYb1gXLx3l3CebgYMrHN6Eo=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-206-utiqUFr0OPekP4aNEwu0fA-1; Tue, 17 Jun 2025 05:10:03 -0400
-X-MC-Unique: utiqUFr0OPekP4aNEwu0fA-1
-X-Mimecast-MFC-AGG-ID: utiqUFr0OPekP4aNEwu0fA_1750151397
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-3a50049f8eeso2227029f8f.3
- for <qemu-arm@nongnu.org>; Tue, 17 Jun 2025 02:09:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1750151397; x=1750756197;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=3Ka2d6yyIR4QD4xNYIKOCLEon67TvTFN3oRVCwQ5nFU=;
- b=kL6N9odaQD4pE9FEvEHaiKkno85TwNMTKBqXqv+gcPitCPvUt24jJfwCvt8pqpQUqB
- 3tR5z8+P3bw1wdWui5cM2mPHmDDgZ+/NhQhiD9HMP7nuZ/VMxXy8uMuhXLTIYCY44g5P
- lHjETWKMaun9MNbwf7Yl7KQ/vkLeRYFQIB7zolHsjK+wIlQ1InXKWmJ8Vn6Wo3Ew6kmW
- kN+SvVTJIqf9+1zho842TFC5M8QWrXmxeLLIhHPEkK5RozE/4Eyw/+Jmw5Hy5T9SgbrT
- O0j9QECpqv+O1oXSA9sSKUwdYzT295ID5lHhEG2kvubZNJ4pRkrpd6Oj9/mGKAuFajoJ
- kyEQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXC7XM3sok7/3EaaQAUjii+7etYEW8Kc06aRPS2eDz5h5zdeVa0MnLz4HFm6yhA2+NaoKz4wW82tw==@nongnu.org
-X-Gm-Message-State: AOJu0Yy1IOl9BVTi+OYshzxQI2P75FSK7H+F/8ANmynxLydaYcH39Enb
- RtUDdna5Nki0VsXcrKqLEqeyDrw+5TTmsnGfOxJJ913OdmDC4ChNNK9IcfdgAzuCxWJo73wElYo
- HVKk+2EcZFqVud8zEdHfjC0OSWCZ3l2VE5cFr1Nw1JItOnc5JH+Emzg==
-X-Gm-Gg: ASbGncsfU92EjcTdBOcyobAGY/HmcBAVCPDD5rpm5QQ9zMLa8eKPnm5PpDFILmiMl9B
- rJfdqQkz6wuYOKdhsg/5c3sBmFqxst6PifE/gtiFsJmFcvkNJZjUbfUF0LPQPlbcEmMGu7K7kX7
- gTY7erx/HvSxsQxDf1SSwG54EAFqoJ1Yfm35MGxcHFpTiu6hehA8uUYltRwY4pA2jMHt/Cykmmg
- ZO8HNQfBxw8qpkCj72wPymVvp1mywjY94lgBrB5o1b+ftu14AMYwX1DTGjhMS7V8Z/bmHUMfCKq
- icTzE4IdHJSg5oDLA/iTaW/LiNRLQd/tzTbs5hUOEm7bobCkGMyjBVX6Q7C0cj2c1b0H5Q==
-X-Received: by 2002:a5d:64c9:0:b0:3a4:dde7:ee12 with SMTP id
- ffacd0b85a97d-3a572e9e01cmr11147986f8f.53.1750151397120; 
- Tue, 17 Jun 2025 02:09:57 -0700 (PDT)
-X-Received: by 2002:a5d:64c9:0:b0:3a4:dde7:ee12 with SMTP id
- ffacd0b85a97d-3a572e9e01cmr11147955f8f.53.1750151396673; 
- Tue, 17 Jun 2025 02:09:56 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a568b087f8sm13583424f8f.53.2025.06.17.02.09.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Jun 2025 02:09:55 -0700 (PDT)
-Message-ID: <7670ee11-3ee4-4de4-9c84-2a48b9276dce@redhat.com>
-Date: Tue, 17 Jun 2025 11:09:54 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/7] hw/arm/virt-acpi-build: Re-arrange SMMUv3 IORT
- build
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, berrange@redhat.com, imammedo@redhat.com,
- nathanc@nvidia.com, mochs@nvidia.com, smostafa@google.com,
- linuxarm@huawei.com, wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
-References: <20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com>
- <20250613144449.60156-3-shameerali.kolothum.thodi@huawei.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250613144449.60156-3-shameerali.kolothum.thodi@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 8M_3LhoJFaOCedtb8u_QP9WWo6BDSCwp2Lpxbb5ELh8_1750151397
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.892,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: n6e+tsiyVMkl
+       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b="t/ebtiKW";
+       spf=pass (google.com: domain of mads@ynddal.dk designates 57.103.87.90 as permitted sender) smtp.mailfrom=mads@ynddal.dk
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
+	bh=F2Lk87g/ffbwU6AtjA/WqgttL7/b0yIw5RLWx7pPGH8=;
+	h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+	b=t/ebtiKWDY2QkbdzHbQ8JHAQfW1irYE31MIXq5FeLuQBVi2srySC4AW71wet8gKuQ
+	 NlCtlcJtugl2N8OExL2XPUcYb01vz9cJeaP4XAHUNki1VR/W0mWuIgJx8RWVrvaWRH
+	 Byaa4t7oX7MCpWsgwXdEpyufTUl6xr1VGUemjO2LowKLdrX8vshUlah0LMXLG0/Otn
+	 DqAICXcAFc5hhPAYSdZkfGlEh+oBwZSg/5iGUd51B84db5dd/YZZ76xa8b442qkjH0
+	 ayL40utni9I3IDatF919KJrglGL7z8PuqtzAFeSjhXkTD/GNBcY1MXtOOq2jDTx/F/
+	 PhTKUTD3kuRQA==
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+	by outbound.qs.icloud.com (Postfix) with ESMTPS id 2FDF5180120B;
+	Tue, 17 Jun 2025 09:16:15 +0000 (UTC)
+Received: from smtpclient.apple (qs-asmtp-me-k8s.p00.prod.me.com [17.57.155.37])
+	by outbound.qs.icloud.com (Postfix) with ESMTPSA id 9338118011E4;
+	Tue, 17 Jun 2025 09:16:04 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.600.51.1.1\))
+Subject: Re: [PATCH v2 06/12] python: upgrade to python3.9+ syntax
+From: Mads Ynddal <mads@ynddal.dk>
+In-Reply-To: <20250612205451.1177751-7-jsnow@redhat.com>
+Date: Tue, 17 Jun 2025 11:15:53 +0200
+Cc: qemu-devel@nongnu.org,
+ Joel Stanley <joel@jms.id.au>,
+ Yi Liu <yi.l.liu@intel.com>,
+ =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Helge Deller <deller@gmx.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Fabiano Rosas <farosas@suse.de>,
+ Alexander Bulekov <alxndr@bu.edu>,
+ Darren Kenny <darren.kenny@oracle.com>,
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+ =?utf-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Ed Maste <emaste@freebsd.org>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Warner Losh <imp@bsdimp.com>,
+ Kevin Wolf <kwolf@redhat.com>,
+ Tyrone Ting <kfting@nuvoton.com>,
+ Eric Blake <eblake@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Troy Lee <leetroy@gmail.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Michael Roth <michael.roth@amd.com>,
+ Laurent Vivier <laurent@vivier.eu>,
+ Ani Sinha <anisinha@redhat.com>,
+ Weiwei Li <liwei1518@gmail.com>,
+ Eric Farman <farman@linux.ibm.com>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Li-Wen Hsu <lwhsu@freebsd.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ qemu-s390x@nongnu.org,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ qemu-block@nongnu.org,
+ Bernhard Beschow <shentey@gmail.com>,
+ =?utf-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
+ Maksim Davydov <davydov-max@yandex-team.ru>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ =?utf-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Paul Durrant <paul@xen.org>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Jagannathan Raman <jag.raman@oracle.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Anton Johansson <anjo@rev.ng>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Cleber Rosa <crosa@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ qemu-arm@nongnu.org,
+ Hao Wu <wuhaotsh@google.com>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+ qemu-riscv@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Jason Wang <jasowang@redhat.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Michael Rolnik <mrolnik@gmail.com>,
+ Zhao Liu <zhao1.liu@intel.com>,
+ Alessandro Di Federico <ale@rev.ng>,
+ Thomas Huth <thuth@redhat.com>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Hanna Reitz <hreitz@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>,
+ Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Qiuhao Li <Qiuhao.Li@outlook.com>,
+ Hyman Huang <yong.huang@smartx.com>,
+ =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ qemu-rust@nongnu.org,
+ Bandan Das <bsd@redhat.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ kvm@vger.kernel.org,
+ Fam Zheng <fam@euphon.net>,
+ Jia Liu <proljc@gmail.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Kyle Evans <kevans@freebsd.org>,
+ Song Gao <gaosong@loongson.cn>,
+ Alexandre Iooss <erdnaxe@crans.org>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Peter Xu <peterx@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?utf-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?= <fbarrat@linux.ibm.com>,
+ qemu-ppc@nongnu.org,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ David Hildenbrand <david@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ David Woodhouse <dwmw2@infradead.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Ahmed Karaman <ahmedkhaledkaraman@gmail.com>,
+ Huacai Chen <chenhuacai@kernel.org>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <9C057F25-8BE4-45FC-9332-99F24440DB92@ynddal.dk>
+References: <20250612205451.1177751-1-jsnow@redhat.com>
+ <20250612205451.1177751-7-jsnow@redhat.com>
+To: John Snow <jsnow@redhat.com>
+X-Mailer: Apple Mail (2.3826.600.51.1.1)
+X-Proofpoint-ORIG-GUID: IweXgYkE3E1R4VKwqx9qMGv7w_Y-E-Wb
+X-Proofpoint-GUID: IweXgYkE3E1R4VKwqx9qMGv7w_Y-E-Wb
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
+ definitions=2025-06-17_04,2025-06-13_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=893
+ mlxscore=0 adultscore=0 bulkscore=0 phishscore=0 clxscore=1030 spamscore=0
+ malwarescore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.22.0-2503310001 definitions=main-2506170075
+X-TUID: ECTQr2pa9yYN
 
-Hi Shameer,
 
-Some cosmetic comments below.
+> diff --git a/scripts/simpletrace.py b/scripts/simpletrace.py
+> index cef81b0707f..a013e4402de 100755
+> --- a/scripts/simpletrace.py
+> +++ b/scripts/simpletrace.py
+> @@ -9,13 +9,15 @@
+> #
+> # For help see docs/devel/tracing.rst
+>=20
+> -import sys
+> -import struct
+> import inspect
+> +import struct
+> +import sys
+> import warnings
+> -from tracetool import read_events, Event
+> +
+> +from tracetool import Event, read_events
+> from tracetool.backend.simple import is_string
+>=20
+> +
+> __all__ =3D ['Analyzer', 'Analyzer2', 'process', 'run']
+>=20
+> # This is the binary format that the QEMU "simple" trace backend
+> @@ -166,11 +168,9 @@ def runstate_set(self, timestamp, pid, =
+new_state):
+>=20
+>     def begin(self):
+>         """Called at the start of the trace."""
+> -        pass
+>=20
+>     def catchall(self, event, rec):
+>         """Called if no specific method for processing a trace event =
+has been found."""
+> -        pass
+>=20
+>     def _build_fn(self, event):
+>         fn =3D getattr(self, event.name, None)
+> @@ -208,7 +208,6 @@ def _process_event(self, rec_args, *, event, =
+event_id, timestamp_ns, pid, **kwar
+>=20
+>     def end(self):
+>         """Called at the end of the trace."""
+> -        pass
+>=20
+>     def __enter__(self):
+>         self.begin()
+> @@ -263,7 +262,6 @@ def runstate_set(self, new_state, *, timestamp_ns, =
+pid, **kwargs):
+>=20
+>     def catchall(self, *rec_args, event, timestamp_ns, pid, event_id, =
+**kwargs):
+>         """Called if no specific method for processing a trace event =
+has been found."""
+> -        pass
+>=20
+>     def _process_event(self, rec_args, *, event, **kwargs):
+>         fn =3D getattr(self, event.name, self.catchall)
+> @@ -279,7 +277,7 @@ def process(events, log, analyzer, =
+read_header=3DTrue):
+>     """
+>=20
+>     if isinstance(events, str):
+> -        with open(events, 'r') as f:
+> +        with open(events) as f:
+>             events_list =3D read_events(f, events)
+>     elif isinstance(events, list):
+>         # Treat as a list of events already produced by =
+tracetool.read_events
+> @@ -332,7 +330,7 @@ def run(analyzer):
+>     except (AssertionError, ValueError):
+>         raise SimpleException(f'usage: {sys.argv[0]} [--no-header] =
+<trace-events> <trace-file>\n')
+>=20
+> -    with open(trace_event_path, 'r') as events_fobj, =
+open(trace_file_path, 'rb') as log_fobj:
+> +    with open(trace_event_path) as events_fobj, open(trace_file_path, =
+'rb') as log_fobj:
+>         process(events_fobj, log_fobj, analyzer, read_header=3Dnot =
+no_header)
+>=20
+> if __name__ =3D=3D '__main__':
 
-On 6/13/25 4:44 PM, Shameer Kolothum wrote:
-> Introduces a new struct AcpiIortSMMUv3Dev to hold all the information
-Introduce
-> required for SMMUv3 IORT node and use that for populating the node.
->
-> The current machine wide SMMUv3 is named as legacy SMMUv3 as we will
-> soon add support for user-creatable SMMUv3 devices. These changes will
-> be useful to have common code paths when we add that support.
->
-> Tested-by: Nathan Chen <nathanc@nvidia.com>
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
->  hw/arm/virt-acpi-build.c | 111 +++++++++++++++++++++++++++------------
->  hw/arm/virt.c            |   1 +
->  include/hw/arm/virt.h    |   1 +
->  3 files changed, 79 insertions(+), 34 deletions(-)
->
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 7e8e0f0298..d39506179a 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -266,6 +266,36 @@ static int iort_idmap_compare(gconstpointer a, gconstpointer b)
->      return idmap_a->input_base - idmap_b->input_base;
->  }
->  
-> +struct AcpiIortSMMUv3Dev {
-> +    int irq;
-> +    hwaddr base;
-> +    GArray *idmaps;
-> +    /* Offset of the SMMUv3 IORT Node relative to the start of the IORT. */
-remove "."?
-> +    size_t offset;
-> +};
-> +typedef struct AcpiIortSMMUv3Dev AcpiIortSMMUv3Dev;
-> +
-> +static void
-> +populate_smmuv3_legacy_dev(GArray *sdev_blob)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(qdev_get_machine());
-> +    AcpiIortSMMUv3Dev sdev;
-> +
-> +    sdev.idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
-> +    object_child_foreach_recursive(object_get_root(),
-> +                                   iort_host_bridges, sdev.idmaps);
-> +
-> +    /*
-> +     * There will be only one legacy SMMUv3 as it is a machine wide one.
-there can be only one "legacy" machine wide SMMUv3?
-> +     * And since it covers all the PCIe RCs in the machine, may have
-nit: Remove And. I would slighly rephrase into
-"Since it may cover several PCIe RCs ..."
-Some may be bypassed.
-> +     * multiple SMMUv3 idmaps. Sort it by input_base.
-> +     */
-> +    g_array_sort(sdev.idmaps, iort_idmap_compare);
-> +    sdev.base = vms->memmap[VIRT_SMMU].base;
-> +    sdev.irq = vms->irqmap[VIRT_SMMU] + ARM_SPI_BASE;
-> +    g_array_append_val(sdev_blob, sdev);
-> +}
-> +
->  /*
->   * Input Output Remapping Table (IORT)
->   * Conforms to "IO Remapping Table System Software on ARM Platforms",
-> @@ -274,11 +304,12 @@ static int iort_idmap_compare(gconstpointer a, gconstpointer b)
->  static void
->  build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  {
-> -    int i, nb_nodes, rc_mapping_count;
-> -    size_t node_size, smmu_offset = 0;
-> -    AcpiIortIdMapping *idmap;
-> +    int i, j, nb_nodes, rc_mapping_count;
-> +    AcpiIortSMMUv3Dev *sdev;
-> +    size_t node_size;
-> +    int num_smmus = 0;
->      uint32_t id = 0;
-> -    GArray *smmu_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
-> +    GArray *smmuv3_devs = g_array_new(false, true, sizeof(AcpiIortSMMUv3Dev));
->      GArray *its_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
->  
->      AcpiTable table = { .sig = "IORT", .rev = 3, .oem_id = vms->oem_id,
-> @@ -286,28 +317,32 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      /* Table 2 The IORT */
->      acpi_table_begin(&table, table_data);
->  
-> -    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
-> -        AcpiIortIdMapping next_range = {0};
-> -
-> -        object_child_foreach_recursive(object_get_root(),
-> -                                       iort_host_bridges, smmu_idmaps);
-> -
-> -        /* Sort the smmu idmap by input_base */
-> -        g_array_sort(smmu_idmaps, iort_idmap_compare);
-> +    nb_nodes = 2; /* RC, ITS */
-> +    if (vms->legacy_smmuv3_present) {
-> +        populate_smmuv3_legacy_dev(smmuv3_devs);
-> +    }
->  
-> +    num_smmus = smmuv3_devs->len;
-> +    if (num_smmus) {
-> +        AcpiIortIdMapping next_range = {0};
-> +        int smmu_map_cnt = 0;
->          /*
->           * Split the whole RIDs by mapping from RC to SMMU,
->           * build the ID mapping from RC to ITS directly.
->           */
-> -        for (i = 0; i < smmu_idmaps->len; i++) {
-> -            idmap = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
-> -
-> -            if (next_range.input_base < idmap->input_base) {
-> -                next_range.id_count = idmap->input_base - next_range.input_base;
-> -                g_array_append_val(its_idmaps, next_range);
-> +        for (i = 0; i < num_smmus; i++) {
-> +            sdev = &g_array_index(smmuv3_devs, AcpiIortSMMUv3Dev, i);
-> +            for (j = 0; j < sdev->idmaps->len; j++) {
-> +                AcpiIortIdMapping *idmap = &g_array_index(sdev->idmaps,
-> +                                                          AcpiIortIdMapping, j);
-> +                if (next_range.input_base < idmap->input_base) {
-> +                    next_range.id_count = idmap->input_base -
-> +                                          next_range.input_base;
-> +                    g_array_append_val(its_idmaps, next_range);
-> +                }
-> +                next_range.input_base = idmap->input_base + idmap->id_count;
-> +                smmu_map_cnt++;
->              }
-> -
-> -            next_range.input_base = idmap->input_base + idmap->id_count;
->          }
->  
->          /* Append the last RC -> ITS ID mapping */
-> @@ -316,10 +351,9 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->              g_array_append_val(its_idmaps, next_range);
->          }
->  
-> -        nb_nodes = 3; /* RC, ITS, SMMUv3 */
-> -        rc_mapping_count = smmu_idmaps->len + its_idmaps->len;
-> +        nb_nodes += num_smmus;
-> +        rc_mapping_count = smmu_map_cnt + its_idmaps->len;
->      } else {
-> -        nb_nodes = 2; /* RC, ITS */
->          rc_mapping_count = 1;
->      }
->      /* Number of IORT Nodes */
-> @@ -341,10 +375,11 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      /* GIC ITS Identifier Array */
->      build_append_int_noprefix(table_data, 0 /* MADT translation_id */, 4);
->  
-> -    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
-> -        int irq =  vms->irqmap[VIRT_SMMU] + ARM_SPI_BASE;
-> +    for (i = 0; i < num_smmus; i++) {
-> +        sdev = &g_array_index(smmuv3_devs, AcpiIortSMMUv3Dev, i);
-> +        int irq = sdev->irq;
->  
-> -        smmu_offset = table_data->len - table.table_offset;
-> +        sdev->offset = table_data->len - table.table_offset;
->          /* Table 9 SMMUv3 Format */
->          build_append_int_noprefix(table_data, 4 /* SMMUv3 */, 1); /* Type */
->          node_size =  SMMU_V3_ENTRY_SIZE + ID_MAPPING_ENTRY_SIZE;
-> @@ -355,7 +390,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          /* Reference to ID Array */
->          build_append_int_noprefix(table_data, SMMU_V3_ENTRY_SIZE, 4);
->          /* Base address */
-> -        build_append_int_noprefix(table_data, vms->memmap[VIRT_SMMU].base, 8);
-> +        build_append_int_noprefix(table_data, sdev->base, 8);
->          /* Flags */
->          build_append_int_noprefix(table_data, 1 /* COHACC Override */, 4);
->          build_append_int_noprefix(table_data, 0, 4); /* Reserved */
-> @@ -404,15 +439,19 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      build_append_int_noprefix(table_data, 0, 3); /* Reserved */
->  
->      /* Output Reference */
-> -    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
-> +    if (num_smmus) {
->          AcpiIortIdMapping *range;
->  
->          /* translated RIDs connect to SMMUv3 node: RC -> SMMUv3 -> ITS */
-> -        for (i = 0; i < smmu_idmaps->len; i++) {
-> -            range = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
-> -            /* output IORT node is the smmuv3 node */
-> -            build_iort_id_mapping(table_data, range->input_base,
-> -                                  range->id_count, smmu_offset);
-> +        for (i = 0; i < num_smmus; i++) {
-> +            sdev = &g_array_index(smmuv3_devs, AcpiIortSMMUv3Dev, i);
-> +
-> +            for (j = 0; j < sdev->idmaps->len; j++) {
-> +                range = &g_array_index(sdev->idmaps, AcpiIortIdMapping, j);
-> +                /* output IORT node is the smmuv3 node */
-> +                build_iort_id_mapping(table_data, range->input_base,
-> +                                      range->id_count, sdev->offset);
-> +            }
->          }
->  
->          /* bypassed RIDs connect to ITS group node directly: RC -> ITS */
-> @@ -428,8 +467,12 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      }
->  
->      acpi_table_end(linker, &table);
-> -    g_array_free(smmu_idmaps, true);
->      g_array_free(its_idmaps, true);
-> +    for (i = 0; i < num_smmus; i++) {
-> +        sdev = &g_array_index(smmuv3_devs, AcpiIortSMMUv3Dev, i);
-> +        g_array_free(sdev->idmaps, true);
-> +    }
-> +    g_array_free(smmuv3_devs, true);
->  }
->  
->  /*
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 9a6cd085a3..73bd2bd5f2 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1614,6 +1614,7 @@ static void create_pcie(VirtMachineState *vms)
->              create_smmu(vms, vms->bus);
->              qemu_fdt_setprop_cells(ms->fdt, nodename, "iommu-map",
->                                     0x0, vms->iommu_phandle, 0x0, 0x10000);
-> +            vms->legacy_smmuv3_present = true;
->              break;
->          default:
->              g_assert_not_reached();
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 9a1b0f53d2..8b1404b5f6 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -174,6 +174,7 @@ struct VirtMachineState {
->      char *oem_id;
->      char *oem_table_id;
->      bool ns_el2_virt_timer_irq;
-> +    bool legacy_smmuv3_present;
->  };
->  
->  #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
-Thanks
+I'm not really a fan of the implicit default arguments, but I guess the =
+rest is fine. If this is the way everyone else wants to go, I won't =
+stand in the way.
 
-Eric
-
+=E2=80=94
+Mads Ynddal

@@ -1,121 +1,122 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2597358njc;
-        Tue, 17 Jun 2025 08:33:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVbWBmuT1husGhImn9zpxoRpSV3Fiycja+Tdp+5J+qLKXiNbf605iAiloqsVZRdSytLjXaay3zcdQm3Gw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFDvua1d91ndavbAtEeMNQ/0JaYH//Ro9FoI3RtBzI6BlD68iGVuZNUU3KAZy/k/r/gZQcb
-X-Received: by 2002:a05:6214:f0a:b0:6fb:17a:c428 with SMTP id 6a1803df08f44-6fb47791754mr224125056d6.16.1750174380784;
-        Tue, 17 Jun 2025 08:33:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750174380; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2600599njc;
+        Tue, 17 Jun 2025 08:38:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWYz8gzDtq1PCtuflvIHYsA/QpV8FqaOiG+IZz6xXOdfvCOZ+tYBZoQhYbFyRFS/HiOykPfJRWaFFPKCQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEgxyosOi2PQa6Pit4eQCp6AWUx2EDZbTBTgjbePOtNDxEme2iRuoVU8FnyyGrTVYlawxQ5
+X-Received: by 2002:a05:6102:2d07:b0:4e7:dfc6:5cd8 with SMTP id ada2fe7eead31-4e977acc263mr2503446137.8.1750174680132;
+        Tue, 17 Jun 2025 08:38:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750174680; cv=none;
         d=google.com; s=arc-20240605;
-        b=hEhXG8bXlQS1FYOoHWvsbuVg1/wNB7U4xaf9KNXa/u1BK4ILde50DJPnlQrV6FnzhU
-         wGYSlSsrfbbH7NgoolS2KjxmxQ2eTKdgKPnJ+ZgqYePaUzJ0aWfyz5Tr47V9BIrwXTeF
-         vdvoFKj/P0Fr8DaKWoYDFqeGdSENJNQy7cho53XwnNrq+4x8SQANchnUA8dtXfnKxJ6x
-         SZ4RyqICSWt4DSv4VtXQdQlYLVxJwmZ+6bodtDDBbtftd3dtQkOnVp8mzjz65ZWRxGp4
-         xYBedYkrcfpfkdVauh3rAe5TKq0BBOLbiZ/M7GbXEDKprk0rAlkl+GIuPh/1p5uJzGKA
-         O2fg==
+        b=iMFw4YvYwZK05PLpiipRM8SfvWXp4z//o2ofcaxsl6FPIz5+dfWBSdEweFPjR/kHqC
+         wJxxZBdc+2c2UHApjbZ1dbAwNO0uf/qF5hippiobnxpH+b1fPcblyJqxa0jLhn1yFr23
+         7xn2rnSZnr27oA6/qbJ/GQaNLY/+san24tGhVRzCwsO0WpmEPi3f70ItRa4faUYC+GWh
+         9NIyZWi/Nnp0Vii2/PEUp1p9qp+s3OTv0bbIwq+k9TFHnLM2dNdrdMpOBIqsW5eqwz8c
+         yb421vWZUl2EmqjPq5N2m745TCkyuKa4VtCJNDDzx/hARwYOulpUY5/0lMJEIS/DAxma
+         jmCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:to:subject:user-agent:mime-version:date:message-id
+         :content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=ssC0ToNZSsFUgX/YNPCV7KnTvzwfgw9hctupgvZqXoM=;
-        fh=5QoqfpWykYMBNN49kUFe+IXy3tOOtv/k3DJ0Fe6TugI=;
-        b=ajnENryLGJhJ/FookQBNCEUojzyCcVdgHsTI2obyjePix0ZWc+Drb7FnumiEY6oO+R
-         TyC3WRj/IEpAK+i6wH2fJtinFFoKe/8Q5+aeLcHQcutcSmEMyifwAA8njQp4mflY+jOa
-         WZa4tIosDwifmfGHBKnxtT0rr0b6UQG8OHglanI4dfGwgK+OlA/+UK+r0JVcHDbJrgKL
-         Gk/4Hp0MwdsCurK1iY81FNCZUHpPADZ0SfWBS/rwEW5//+Pw5ju1niCD/INlC9O9lj1K
-         0AKfvH8NqPwATTevALCytDvk7HKPtSQ6ARK5lR1GIyNIQOFBauN+yQPbMcMsaJx+lsaE
-         f11g==;
+        bh=/vvdbIrIYuE0AqpfkcU+eN1rb+0uJtRv0SRE3RdgRVE=;
+        fh=c/Q8C/FP7jL/UglvpzzkrKvaHshTo93LUlVGglPSDPY=;
+        b=boPgF+sz+SUFWp0qZEkQi27DNyKlMxvNjeugIUGwv+QAPwPj6KN6itTOpXQRs13a1U
+         SrBP5SA4DLrMvTAM9rky0w7HGPJZivP4+FFqyo2WoWU4Lh6QBRIaUZPn/T4c5TzNzUJ7
+         hI0RiFnaY2e+5NzjXZqwlsvTfN7Au6UYRfEvXqcsRa7acKnH2+yFXEykDuXhVPDKUXsh
+         PHLcQkKyysC1emKFg55r13ToE7x4rLTIRY1id71jj/XJB6uyewUQz1v/O6DUrzjpxRh4
+         YxX487/dnf4nVgGkj5T+r5xaC9oiU1HQvZ4/7FkqDaqi4jrOI/yUergC6szQsrkioqqM
+         3lGg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LKDMo+XK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TNoMJAKR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fb35c2f62bsi129604276d6.425.2025.06.17.08.33.00
+        by mx.google.com with ESMTPS id ada2fe7eead31-4e8164b4626si1185870137.417.2025.06.17.08.38.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Jun 2025 08:33:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Jun 2025 08:38:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LKDMo+XK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TNoMJAKR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uRYIv-0002GQ-VK; Tue, 17 Jun 2025 11:32:54 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uRYJG-00031g-28; Tue, 17 Jun 2025 11:33:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uRYI6-00015x-N4
- for qemu-arm@nongnu.org; Tue, 17 Jun 2025 11:32:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1uRYID-0001Fx-VH
+ for qemu-devel@nongnu.org; Tue, 17 Jun 2025 11:32:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uRXxS-0008JH-Sk
- for qemu-arm@nongnu.org; Tue, 17 Jun 2025 11:10:44 -0400
+ id 1uRXgN-0004VA-UT
+ for qemu-devel@nongnu.org; Tue, 17 Jun 2025 10:53:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1750173041;
+ s=mimecast20190719; t=1750171981;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ssC0ToNZSsFUgX/YNPCV7KnTvzwfgw9hctupgvZqXoM=;
- b=LKDMo+XKVLcMzUydU/xMCQZ4dwQIzI89YvYpQIBVSXW1ghVnZdh8d0R0s9mzoY7QhC0z1U
- An1UCdTVzd9vBmFEaizlg7tlOa9idJ8Mku534lTI8I8rY3Uas4BctqEpkJt/5Vt68639/K
- w0atb6WofJ38sNEqc+1nqrZET0lxuhk=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=/vvdbIrIYuE0AqpfkcU+eN1rb+0uJtRv0SRE3RdgRVE=;
+ b=TNoMJAKRfe1BxMDJvlL/8W2jGJQwiQv4JCFkthJU0ZK5zc8JZyhk+ArOM6eVOXUvTVwqSL
+ wqsMq0N+YyDowCSQLh9eyw//kczZkYyQdrdU4fFIWkchtzVaoVSB7uV89eIv6KYtecGaJG
+ P7+GtdPmCxJtBFfZTK42fq8Djdsd/wk=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-602-heFs-RDnNoq8j3BbL1SaSQ-1; Tue, 17 Jun 2025 11:10:39 -0400
-X-MC-Unique: heFs-RDnNoq8j3BbL1SaSQ-1
-X-Mimecast-MFC-AGG-ID: heFs-RDnNoq8j3BbL1SaSQ_1750173038
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-3a578958000so1161157f8f.3
- for <qemu-arm@nongnu.org>; Tue, 17 Jun 2025 08:10:39 -0700 (PDT)
+ us-mta-441-x0u6e5-PN8CI4lMCQbRKVw-1; Tue, 17 Jun 2025 10:52:59 -0400
+X-MC-Unique: x0u6e5-PN8CI4lMCQbRKVw-1
+X-Mimecast-MFC-AGG-ID: x0u6e5-PN8CI4lMCQbRKVw_1750171978
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-450d290d542so35388645e9.1
+ for <qemu-devel@nongnu.org>; Tue, 17 Jun 2025 07:52:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1750173038; x=1750777838;
+ d=1e100.net; s=20230601; t=1750171978; x=1750776778;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=ssC0ToNZSsFUgX/YNPCV7KnTvzwfgw9hctupgvZqXoM=;
- b=areSKF9MgZULXaoeZjru9S04TdMMD452438m1N3RDjrM0yt1GdNluoU1TjKE+GgBR6
- r1/oHQFUMTYeP9b7B/RtfMpzMnOis69WBmT/I689mVc1Ach71QwMkj1cefdy+7lk7931
- y/ki7ZItMlWvjEY7S/4Ok8c9rQiuf3aoYS+POsBJgKEtQHvbyO1aYO2PhPGy5KAnsuU1
- VNIUr75hG7Ncu3LC3PTBOsQXnZd7j557MXgu5gBeos36xKSQJMGV2nnVViAhouY7miXY
- scZzlu3b8xSHUwlmfD+kva+X/6t71hdZzxGidLPLozoYShl3NzvtcGaa65RzCoXGqoIt
- 09pQ==
+ bh=/vvdbIrIYuE0AqpfkcU+eN1rb+0uJtRv0SRE3RdgRVE=;
+ b=YuABcFNSu0FMjMySyj97WRKBp4Uq+2RZJHdQ5IujlyYzKDWKS06Ofw0DQUe256QBEA
+ fXL6XvnmYsAK8jZiAlQX18njvAnFc4fH/E9xkjxWE7HhO7Dv2tArgTVSdhyxuyG/jpdJ
+ AM2v9c0zU+VhJ4qx8w/CWJuSMxAI6+BS8lwI8LArZO4TEu662hzePv1E89KxtZqreNMU
+ VMBvHYsm3u2dFLAxTswpqmbGGL3eWrZkOQgY4nID+WX0rzPdIeL3uGw0qRbn2ylwxqu1
+ M7bpJ4wAtDxsrKXRwoeYJmr3koOM+Gzx9QPC+gQCMxKIq3dz0YPub9SFGLCI5pUPL6kb
+ AxYA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXUVgVvE8K4Xr55SFrP022lcOG3W306I/h06EiQvYkGdMxclMi4se1Nsa7VOGcb9j5RwgRjV+BzBQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwkLzNN9nTfbWv8DZh3FKzfOHnkhEwoZwbbgHej7BcuEt8xXUZe
- ddcG6tcAroQs/8lwHe7r0ckYiYkhADuVx34lGZqYtkgMGglPPBBs9alyBMUyE+oXbNnyHtdkpQz
- iKE1q4paTyrfPjTeRBWl12NjsHFwOzG1Y/UcUgnanMYiIzZEEMRQHJw==
-X-Gm-Gg: ASbGnctmj5CVbZNMSRgj0yrLu4Qd43GsDEt03RN6+Ja6N3Zv15DRlrrLLZxe5m7M8lp
- uO512/z8hH9fsOzr9XGjindtUndcHiHdW49+mgqBoKv0tnIL2djRdcdXL5l89jVxyESoT2fFH+5
- fxRB22/Ot4H9jzHHPwbhjj3/9vJNC55GtBBjDmmGqOxxpSZwR2pugA28hZUpA5ge0QfRRBwDFq1
- pOS5BRLCuaH3GK9YgtvJ32aU+sA/gdOfORRbvqk2tKqceNptS1i1f5LgOAccxGveUxsB03TLcX3
- g7xwVePy5768FqQn7Rv4xf6RCMv4hWd2zAYvA2cgorqAayhg1jjEmAjFROg24f2isDvTdw==
-X-Received: by 2002:a5d:64ce:0:b0:3a3:6b07:20a1 with SMTP id
- ffacd0b85a97d-3a572e8c1dfmr9690424f8f.40.1750173038341; 
- Tue, 17 Jun 2025 08:10:38 -0700 (PDT)
-X-Received: by 2002:a5d:64ce:0:b0:3a3:6b07:20a1 with SMTP id
- ffacd0b85a97d-3a572e8c1dfmr9690384f8f.40.1750173037881; 
- Tue, 17 Jun 2025 08:10:37 -0700 (PDT)
+ AJvYcCWTvuJJOo+bODGKlzUxKiZD8wdjqkjmGSO73wJ1TYVcJA3T3ivVc2qoblQjUyQ/9BXULLexxKwWRE08@nongnu.org
+X-Gm-Message-State: AOJu0Yxgvxos6aUVVLuD7hQpHyP6c/xctEHxphQMdzJuQeF7wJ+3YRMl
+ eT1wRgoJBMgrp5mc42ZAI93EJfDt9ItpjSOHCYEF31GfkzRdBVyedAg3NZmT4Pw44UEyhjgawwF
+ Zc5CPOUNrEw8c+XEd6ExoxgR/5tVffvb2+j89tCs+XmCJgZLMil86fWV/
+X-Gm-Gg: ASbGncspwuj2FZ18HTa/kbQY7SqMciJVqcpeNd+cY+URYAL5NFXcl67SW64kXHuRJww
+ L2Ou3ra//Gn8pWSCHHEy9SYmTaCtWi+S0lkUEpkzDuBy+OOFxcwyq1tP2I5QgWFJML0Btm/h3do
+ UnW0DR94TrZMVHFglIW3wY1VKzWpitopaRkj2kkNF8x/HJV51j1myiFZHLBtW+wPkb0XZN0nlto
+ razrF7yAVUnT4etPBNCXWgRUIisHKgomdwJrfjZkBI6E8mZmwaDQM1E0fY9wTGJqUvrBiurpHiQ
+ 4UK80ca4303RwIBiohT8VrHmAJB9ecjMYFVy4Ih2RuhT+bdsjO32f48+mYl2s5G5F746bw==
+X-Received: by 2002:a5d:5849:0:b0:3a4:dfc2:2a3e with SMTP id
+ ffacd0b85a97d-3a5723aeb2cmr11568588f8f.39.1750171978386; 
+ Tue, 17 Jun 2025 07:52:58 -0700 (PDT)
+X-Received: by 2002:a5d:5849:0:b0:3a4:dfc2:2a3e with SMTP id
+ ffacd0b85a97d-3a5723aeb2cmr11568559f8f.39.1750171977970; 
+ Tue, 17 Jun 2025 07:52:57 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a568a54af6sm14125442f8f.6.2025.06.17.08.10.36
+ 5b1f17b1804b1-4532e224956sm180681045e9.4.2025.06.17.07.52.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Jun 2025 08:10:37 -0700 (PDT)
-Message-ID: <8c4a62d2-6590-4177-8ccd-7e3520611fe7@redhat.com>
-Date: Tue, 17 Jun 2025 17:10:36 +0200
+ Tue, 17 Jun 2025 07:52:57 -0700 (PDT)
+Message-ID: <6debc836-c55d-406f-a74d-8ea5070b7fba@redhat.com>
+Date: Tue, 17 Jun 2025 16:52:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v5 5/5] hw/arm/virt: Allow virt extensions with KVM
+Content-Language: en-US
 To: Alyssa Ross <hi@alyssa.is>, eric.auger.pro@gmail.com,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, miguel.luis@oracle.com,
  peter.maydell@linaro.org, richard.henderson@linaro.org, maz@kernel.org,
@@ -124,13 +125,9 @@ References: <20250527062534.1186004-1-eric.auger@redhat.com>
  <20250527062534.1186004-6-eric.auger@redhat.com> <875xgutpuh.fsf@alyssa.is>
 From: Eric Auger <eric.auger@redhat.com>
 In-Reply-To: <875xgutpuh.fsf@alyssa.is>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: aBg81aAvsNu1Tcdqj6Y7UMQ_n0Vl0ds53ctcxuxEZHg_1750173038
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -39
 X-Spam_score: -4.0
@@ -141,24 +138,23 @@ X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.89,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oRqs/+Gl1Siv
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: pOJAvbZOOG+o
 
 Hi Alyssa,
-
 On 6/17/25 4:17 PM, Alyssa Ross wrote:
 > Eric Auger <eric.auger@redhat.com> writes:
 >
@@ -176,18 +172,18 @@ On 6/17/25 4:17 PM, Alyssa Ross wrote:
 > Hi!  From what I can tell, this will produce an error on hosts that
 > don't support nested virtualization when QEMU is invoked with -accel
 > kvm:tcg -machine virtualization=on, but I don't think that's the ideal
+Thanks for reporting this issue. This is not an expected behavior. I
+will respin hopefully this week so I will have give it a try.
+
+What kind of error msg do you get?
+
+Thanks
+
+Eric
 > behaviour.  It would make more sense for it to fall back to the first
 > permitted accel option that does support running the machine as
 > configured, so if hardware nested virtualization is not supported, it
 > should fall back to TCG.
-
-Hum I think I misundertood your point.
-I guess you meant you get "qemu-system-aarch64: mach-virt: KVM does not
-support providing Virtualization extensions to the guest CPU" which
-sounds the usual behavior of qemu in case we attempt to run a feature on
-a host that does not support it.
-
-
 >
 > I maintain an OS development environment that includes scripts for
 > running images in QEMU, where running KVM on those images is a
@@ -197,11 +193,4 @@ a host that does not support it.
 > in a much better position to determine this and fall back to TCG if it's
 > unsupported, like how the -accel option with multiple values usually
 > works.
-Switching to another accel mode is a policy that is not implemented by
-qemu. There is no such situation where qemu would switch from kvm accel
-mode to TCG. You need to implement this policy in your test env I think
-
-Thanks
-
-Eric
 

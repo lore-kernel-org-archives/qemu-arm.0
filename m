@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.19])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a568b798d3sm14364723f8f.100.2025.06.17.09.33.52
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4532e268de2sm181468295e9.40.2025.06.17.09.33.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 17 Jun 2025 09:33:52 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id F3F655F845;
-	Tue, 17 Jun 2025 17:33:51 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 15EEF5F873;
+	Tue, 17 Jun 2025 17:33:52 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Cornelia Huck <cohuck@redhat.com>,
@@ -18,88 +18,57 @@ Cc: Cornelia Huck <cohuck@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 01/11] target/arm: allow gdb to read ARM_CP_NORAW regs (!upstream)
-Date: Tue, 17 Jun 2025 17:33:41 +0100
-Message-ID: <20250617163351.2640572-2-alex.bennee@linaro.org>
+Subject: [RFC PATCH 02/11] target/arm: re-arrange debug_cp_reginfo
+Date: Tue, 17 Jun 2025 17:33:42 +0100
+Message-ID: <20250617163351.2640572-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250617163351.2640572-1-alex.bennee@linaro.org>
 References: <20250617163351.2640572-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: LBdSH9UhreZQ
+X-TUID: heu0hgjJGAjf
 
-Before this we suppress all ARM_CP_NORAW registers being listed under
-GDB. This includes useful registers like CurrentEL which gets tagged
-as ARM_CP_NO_RAW because it is one of the ARM_CP_SPECIAL_MASK
-registers. These are registers TCG can directly compute because we
-have the information at compile time but until now with no readfn.
-
-Add a .readfn to return the CurrentEL and then loosen the restrictions
-in arm_register_sysreg_for_feature to allow ARM_CP_NORAW registers to
-be read if there is a readfn available.
+Although we are using structure initialisation the order of the
+op[012]/cr[nm] fields don't match the rest of the code base.
+Re-organise to be consistent and help the poor engineer who is
+grepping for system registers.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-ID: <20250507165840.401623-1-alex.bennee@linaro.org>
-
 ---
-vRFC
-  - this is a useful debugging aid but a bit haphazard for
-    up-streaming. See thread comments for details.
----
- target/arm/gdbstub.c |  6 +++++-
- target/arm/helper.c  | 15 ++++++++++++++-
- 2 files changed, 19 insertions(+), 2 deletions(-)
+ target/arm/debug_helper.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index ce4497ad7c..029678ac9a 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -282,7 +282,11 @@ static void arm_register_sysreg_for_feature(gpointer key, gpointer value,
-     CPUARMState *env = &cpu->env;
-     DynamicGDBFeatureInfo *dyn_feature = &cpu->dyn_sysreg_feature;
- 
--    if (!(ri->type & (ARM_CP_NO_RAW | ARM_CP_NO_GDB))) {
-+    if (!(ri->type & ARM_CP_NO_GDB)) {
-+        /* skip ARM_CP_NO_RAW if there are no helper functions */
-+        if ((ri->type & ARM_CP_NO_RAW) && !ri->readfn) {
-+            return;
-+        }
-         if (arm_feature(env, ARM_FEATURE_AARCH64)) {
-             if (ri->state == ARM_CP_STATE_AA64) {
-                 arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 7631210287..8501c06b93 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -4996,6 +4996,17 @@ static void ic_ivau_write(CPUARMState *env, const ARMCPRegInfo *ri,
- }
- #endif
- 
-+/*
-+ * Normally the current_el is known at translation time and we can
-+ * emit the result directly in TCG code. However this helper exists
-+ * only so we can also expose CURRENTEL to gdb.
-+ */
-+static uint64_t aa64_currentel_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    int el = arm_current_el(env);
-+    return el;
-+}
-+
- static const ARMCPRegInfo v8_cp_reginfo[] = {
-     /*
-      * Minimal set of EL0-visible registers. This will need to be expanded
-@@ -5034,7 +5045,9 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-     },
-     { .name = "CURRENTEL", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .opc2 = 2, .crn = 4, .crm = 2,
--      .access = PL1_R, .type = ARM_CP_CURRENTEL },
-+      .access = PL1_R, .type = ARM_CP_CURRENTEL,
-+      .readfn = aa64_currentel_read
-+    },
-     /*
-      * Instruction cache ops. All of these except `IC IVAU` NOP because we
-      * don't emulate caches.
+diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
+index 69fb1d0d9f..8130ff78de 100644
+--- a/target/arm/debug_helper.c
++++ b/target/arm/debug_helper.c
+@@ -948,19 +948,21 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
+      * DBGDSAR is deprecated and must RAZ from v8 anyway, so it has no AArch64
+      * accessor.
+      */
+-    { .name = "DBGDRAR", .cp = 14, .crn = 1, .crm = 0, .opc1 = 0, .opc2 = 0,
++    { .name = "DBGDRAR", .cp = 14,
++      .opc0 = 0, .crn = 1, .crm = 0, .opc1 = 0, .opc2 = 0,
+       .access = PL0_R, .accessfn = access_tdra,
+       .type = ARM_CP_CONST | ARM_CP_NO_GDB, .resetvalue = 0 },
+     { .name = "MDRAR_EL1", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 2, .opc1 = 0, .crn = 1, .crm = 0, .opc2 = 0,
++      .opc0 = 2, .crn = 1, .crm = 0, .opc1 = 0, .opc2 = 0,
+       .access = PL1_R, .accessfn = access_tdra,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+-    { .name = "DBGDSAR", .cp = 14, .crn = 2, .crm = 0, .opc1 = 0, .opc2 = 0,
++    { .name = "DBGDSAR", .cp = 14,
++      .opc0 = 0, .opc1 = 0, .crn = 2, .crm = 0,.opc2 = 0,
+       .access = PL0_R, .accessfn = access_tdra,
+       .type = ARM_CP_CONST | ARM_CP_NO_GDB, .resetvalue = 0 },
+     /* Monitor debug system control register; the 32-bit alias is DBGDSCRext. */
+-    { .name = "MDSCR_EL1", .state = ARM_CP_STATE_BOTH,
+-      .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 2,
++    { .name = "MDSCR_EL1", .state = ARM_CP_STATE_BOTH, .cp = 14,
++      .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 2,
+       .access = PL1_RW, .accessfn = access_tda,
+       .fgt = FGT_MDSCR_EL1,
+       .nv2_redirect_offset = 0x158,
 -- 
 2.47.2

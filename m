@@ -1,180 +1,130 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2602579njc;
-        Tue, 17 Jun 2025 08:41:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXnS/uY9z459aoC1IP1pV7FSGnkl+Y+UNS65yBMYBDz9VTVXTzZ00BE7Ql6RF2WoaLeEPpx2848ynfd5w==@linaro.org
-X-Google-Smtp-Source: AGHT+IEYGakRxtYszGgMaADRvyJ9/xpsrbXKXkKup9mhvHQ5YIMcLHWR2qMBaOEOz2174zHXlB3G
-X-Received: by 2002:a05:6122:4f87:b0:531:2906:752d with SMTP id 71dfb90a1353d-53149914bb1mr10906482e0c.11.1750174872811;
-        Tue, 17 Jun 2025 08:41:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750174872; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2605193njc;
+        Tue, 17 Jun 2025 08:45:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXtR3Fvy8QD3Fz9a16BVLDsxMBLoTIEvJ6sxpv33/etNCe/041U/zviaje5/lkMkfMBd3EazDzQyQudkw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFFhz3VApTWZjJJe9nUgWkIYBvB5HkTbmJYt8j0rPwWwfBdfYoQmYQ6owmXBfYOY4pi2NRq
+X-Received: by 2002:a05:6a00:b8b:b0:748:6a12:1b47 with SMTP id d2e1a72fcca58-7489c47e470mr18065396b3a.10.1750175135448;
+        Tue, 17 Jun 2025 08:45:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750175135; cv=none;
         d=google.com; s=arc-20240605;
-        b=IjjR+PEnLCTd1U6ukrVaI5o+YkeWD7cKZngGQapQOdNTK08M3ty6WHU9FbHKWVkb7O
-         Zn/h4XpSwyb17NO03MELEvIvcm+S1IQVKDgxOkszpkCr0WtZtVUXnZH6plCBXtC3LeMN
-         3fmmlH9Tgb1iEKq2EZHIDvPpYkD8i7kaqxBzqqeKoLBQy4bJWtOZg9XTDojf5xo6Hw7p
-         7Xef2XMdULF3lx1oHuY2diRbwYDwh81QpKK0sXsMD1rfmo8b4e8VBumqP2OGPgNwuQC8
-         pE5BwSXfcxulD5iVOS/ri92xtdfLHTQjSfVX9HPTpuQ3Nlo1VpXQDPikaZAOBigDKj4u
-         cXwA==
+        b=aSOLErF5vqGY+zKfyb0ZiT0SL/uQJCrxJy2Lefbl0NhVw4GVZALaNFGYYLNQ7s1t4E
+         honUK82QguIuPJ1IQniZNCYmmvTNA63bEbstGjHOD83dE45WIgPh28mURLVlq4e9ehEp
+         dVOsx41SY1fNHCALALnPs8+7SetPg21lcQwPV0IaQS/e92CRIV5dhpqUEpWvAam88hw2
+         TmbSdlzwREv5npJsx16q3ztPhMc9+B9AkDYkcuKZHul3JpYQhdWaHYs6w3XhoQCgQryM
+         RnZGhUUJa3S9758MWK6rP6h7wZ1nrEi0xowdpTdcms/bE3w7zJXyfN6oJhyaoLmE6Q6q
+         U1xQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=pbxMR4zpyo3J6LniePBWyJnj/wYIipfJzeHg05b32x8=;
-        fh=zInp4xe4IkcRrNM2aFMptin5JRRr9I02FEAKlsM82YU=;
-        b=aYCoIinl4lUT9uV5v3DgQWn0GpmbplWiHoDv4GuFjqWTmcM9hFdLQKtMiu6yy6JRe/
-         wwzuI9Xa16AXyz0bkzzVWlmuqVNBI54WIhnSAxFM3siu4TMhRLiLNbXTqHByUkH9aZUT
-         NfFBxx/JYfjE/8iiO/U8pBWqqYqa3hJafL61nmCWrQwnvmqZP0D0VUEDJNQgEUEEdFbc
-         Q/5s0rZpB0reoDUeO1Di0sgcaTQKTTp7hdUHFxullKc9SfPqekSZi7NSRg+og4oVOJDf
-         wR5AwMiqk7C4O9mZQPzOUp9himqg1AqkQpoVlKTZzHsO1OPeL7MsDCmd+DmHveS37/Di
-         gPHQ==;
+        h=mime-version:message-id:date:user-agent:references:organization
+         :in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=pimc7ToHXzj5NjsL3cnFa44sV45BUXzhB1gmiO8PNfc=;
+        fh=wICZTdRVE8hcXpDo2ZiTXxCMq4RcRFA5Y76mB+7LaeM=;
+        b=BMWvIVuDEKniibFkRiKXzEoZxynNvsGiNn+U2oER7gy2cXLGdHO9Rup8iEjhJ2r1Dt
+         n2+e9af/Cq71BVQTdlVN6nC2mfrFM2ZX+QfeEqZ19J3hhIgoWSjkdmEYrT39+cgjLyva
+         71QtYFo6vVjz0CwNizO0uaDt33pLeEAGnoZo+hqScj2L1w1RhtCRaP5S2Mor562GzZCt
+         qlhpHo9IcteRGJgNqHvZA5TiE7/1RGkciuQgcKrPmovlr4stwmEOFcsvZFp0Q0FvwIdf
+         Jo9LzKTUShLbw2IuP19TJBn2ynnMcXZgkYpORRgB/Al4U8GGzxG92WQJo7WUpXA+TnH0
+         FKrg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bEeC3+Xs;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Viho6jcx;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5313de024c0si2597825e0c.60.2025.06.17.08.41.12
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id d2e1a72fcca58-748900e2aa0si13692910b3a.137.2025.06.17.08.45.35
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Jun 2025 08:41:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Tue, 17 Jun 2025 08:45:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bEeC3+Xs;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Viho6jcx;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1750174872;
+	s=mimecast20190719; t=1750175134;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=pbxMR4zpyo3J6LniePBWyJnj/wYIipfJzeHg05b32x8=;
-	b=bEeC3+XsqVVJ+DWqQ5u5Nhr7HcHm6PFBv09qdigkmBLwbNpHDS4p+diBOmGkFKYYh6UcVr
-	Z0kqTtsECdk1zKeIEHIIHibYRJ5fU7bJCjuS5i21QeBnMBdl5N9uljiSHZ400JHtrqjY/4
-	uBD3yk5RJPGwBHLpPLcx1+4x1GYUh+Y=
+	bh=pimc7ToHXzj5NjsL3cnFa44sV45BUXzhB1gmiO8PNfc=;
+	b=Viho6jcxsh6TlbNIamcLzT2LFJZMf7S9yCEXczgurpIFY1RBdJ9EOtXK+8GntwFAFLGILK
+	KKLt4SStK4VJepOwatw2Zkxz67UDZZPvYatTxb/hsPmM2Mw1y+WQiIFLrY6le6a5vgZZla
+	wA22FshIUn5VJOzt7Vm4NOJtzWcP/qw=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-631-FaV9E22xOnSpzilSqE6qkw-1; Tue,
- 17 Jun 2025 11:41:08 -0400
-X-MC-Unique: FaV9E22xOnSpzilSqE6qkw-1
-X-Mimecast-MFC-AGG-ID: FaV9E22xOnSpzilSqE6qkw_1750174866
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-642-KFe1QetPPQC4DZGrfoLaKw-1; Tue,
+ 17 Jun 2025 11:45:27 -0400
+X-MC-Unique: KFe1QetPPQC4DZGrfoLaKw-1
+X-Mimecast-MFC-AGG-ID: KFe1QetPPQC4DZGrfoLaKw_1750175119
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 234ED1828AC6;
-	Tue, 17 Jun 2025 15:41:06 +0000 (UTC)
-Received: from gondolin.str.redhat.com (pixel-6a.str.redhat.com [10.33.192.205])
-	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 4739E180035C;
-	Tue, 17 Jun 2025 15:41:00 +0000 (UTC)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 37CE81800284;
+	Tue, 17 Jun 2025 15:45:19 +0000 (UTC)
+Received: from localhost (pixel-6a.str.redhat.com [10.33.192.205])
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 257B130001B1;
+	Tue, 17 Jun 2025 15:45:17 +0000 (UTC)
 From: Cornelia Huck <cohuck@redhat.com>
-To: eric.auger.pro@gmail.com,
-	eric.auger@redhat.com,
-	qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	kvmarm@lists.linux.dev,
-	peter.maydell@linaro.org,
-	richard.henderson@linaro.org,
-	alex.bennee@linaro.org,
-	maz@kernel.org,
-	oliver.upton@linux.dev,
-	sebott@redhat.com,
-	shameerali.kolothum.thodi@huawei.com,
-	armbru@redhat.com,
-	berrange@redhat.com,
-	abologna@redhat.com,
-	jdenemar@redhat.com,
-	agraf@csgraf.de
-Cc: shahuang@redhat.com,
-	mark.rutland@arm.com,
-	philmd@linaro.org,
-	pbonzini@redhat.com,
-	Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH v8 13/14] arm/cpu: switch to a generated cpu-sysregs.h.inc
-Date: Tue, 17 Jun 2025 17:39:30 +0200
-Message-ID: <20250617153931.1330449-14-cohuck@redhat.com>
-In-Reply-To: <20250617153931.1330449-1-cohuck@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
+ oliver.upton@linux.dev, sebott@redhat.com,
+ shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
+ berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
+ agraf@csgraf.de
+Cc: shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
+ pbonzini@redhat.com
+Subject: Re: [PATCH v8 12/14] arm/cpu: Add sysreg generation scripts
+In-Reply-To: <20250617153931.1330449-13-cohuck@redhat.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Avril Crosse O'Flaherty"
 References: <20250617153931.1330449-1-cohuck@redhat.com>
+ <20250617153931.1330449-13-cohuck@redhat.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Tue, 17 Jun 2025 17:45:15 +0200
+Message-ID: <87h60e1ies.fsf@redhat.com>
 MIME-Version: 1.0
-Content-type: text/plain
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-TUID: BHwkbfMOD721
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: SLnPxe7HWJyw
 
-Generated against Linux 6.15.
+On Tue, Jun 17 2025, Cornelia Huck <cohuck@redhat.com> wrote:
 
-Reviewed-by: Sebastian Ott <sebott@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
----
- target/arm/cpu-sysregs.h.inc | 43 +++++++++++++++++++++++++-----------
- 1 file changed, 30 insertions(+), 13 deletions(-)
+> diff --git a/scripts/arm-gen-cpu-sysregs-header.awk b/scripts/arm-gen-cpu-sysregs-header.awk
+> new file mode 100755
+> index 000000000000..f92bbbafa727
+> --- /dev/null
+> +++ b/scripts/arm-gen-cpu-sysregs-header.awk
+> @@ -0,0 +1,37 @@
+> +#!/bin/awk -f
+> +# SPDX-License-Identifier: GPL-2.0-or-later
+> +# arm-gen-cpu-sysregs-header.awk: arm64 sysreg header include generator
+> +#
+> +# Usage: awk -f arm-gen-cpu-sysregs-header.awk $LINUX_PATH/arch/arm64/tools/sysreg
+> +
+> +BEGIN {
+> +    print "/* SPDX-License-Identifier: GPL-2.0-or-later */"
 
-diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
-index cb99286f7048..1dddd3d357eb 100644
---- a/target/arm/cpu-sysregs.h.inc
-+++ b/target/arm/cpu-sysregs.h.inc
-@@ -1,19 +1,10 @@
- /* SPDX-License-Identifier: GPL-2.0-or-later */
--DEF(ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
--DEF(ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
--DEF(ID_AA64SMFR0_EL1, 3, 0, 0, 4, 5)
--DEF(ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
--DEF(ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
--DEF(ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
--DEF(ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
--DEF(ID_AA64ISAR2_EL1, 3, 0, 0, 6, 2)
--DEF(ID_AA64MMFR0_EL1, 3, 0, 0, 7, 0)
--DEF(ID_AA64MMFR1_EL1, 3, 0, 0, 7, 1)
--DEF(ID_AA64MMFR2_EL1, 3, 0, 0, 7, 2)
--DEF(ID_AA64MMFR3_EL1, 3, 0, 0, 7, 3)
-+/* GENERATED FILE, DO NOT EDIT */
-+/* use arm-gen-cpu-sysregs-header.awk to regenerate */
- DEF(ID_PFR0_EL1, 3, 0, 0, 1, 0)
- DEF(ID_PFR1_EL1, 3, 0, 0, 1, 1)
- DEF(ID_DFR0_EL1, 3, 0, 0, 1, 2)
-+DEF(ID_AFR0_EL1, 3, 0, 0, 1, 3)
- DEF(ID_MMFR0_EL1, 3, 0, 0, 1, 4)
- DEF(ID_MMFR1_EL1, 3, 0, 0, 1, 5)
- DEF(ID_MMFR2_EL1, 3, 0, 0, 1, 6)
-@@ -24,13 +15,39 @@ DEF(ID_ISAR2_EL1, 3, 0, 0, 2, 2)
- DEF(ID_ISAR3_EL1, 3, 0, 0, 2, 3)
- DEF(ID_ISAR4_EL1, 3, 0, 0, 2, 4)
- DEF(ID_ISAR5_EL1, 3, 0, 0, 2, 5)
--DEF(ID_MMFR4_EL1, 3, 0, 0, 2, 6)
- DEF(ID_ISAR6_EL1, 3, 0, 0, 2, 7)
-+DEF(ID_MMFR4_EL1, 3, 0, 0, 2, 6)
- DEF(MVFR0_EL1, 3, 0, 0, 3, 0)
- DEF(MVFR1_EL1, 3, 0, 0, 3, 1)
- DEF(MVFR2_EL1, 3, 0, 0, 3, 2)
- DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
- DEF(ID_DFR1_EL1, 3, 0, 0, 3, 5)
- DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
-+DEF(ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
-+DEF(ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
-+DEF(ID_AA64PFR2_EL1, 3, 0, 0, 4, 2)
- DEF(ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
-+DEF(ID_AA64SMFR0_EL1, 3, 0, 0, 4, 5)
-+DEF(ID_AA64FPFR0_EL1, 3, 0, 0, 4, 7)
-+DEF(ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
-+DEF(ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
-+DEF(ID_AA64DFR2_EL1, 3, 0, 0, 5, 2)
-+DEF(ID_AA64AFR0_EL1, 3, 0, 0, 5, 4)
-+DEF(ID_AA64AFR1_EL1, 3, 0, 0, 5, 5)
-+DEF(ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
-+DEF(ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
-+DEF(ID_AA64ISAR2_EL1, 3, 0, 0, 6, 2)
-+DEF(ID_AA64ISAR3_EL1, 3, 0, 0, 6, 3)
-+DEF(ID_AA64MMFR0_EL1, 3, 0, 0, 7, 0)
-+DEF(ID_AA64MMFR1_EL1, 3, 0, 0, 7, 1)
-+DEF(ID_AA64MMFR2_EL1, 3, 0, 0, 7, 2)
-+DEF(ID_AA64MMFR3_EL1, 3, 0, 0, 7, 3)
-+DEF(ID_AA64MMFR4_EL1, 3, 0, 0, 7, 4)
-+DEF(CCSIDR_EL1, 3, 1, 0, 0, 0)
-+DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
-+DEF(CCSIDR2_EL1, 3, 1, 0, 0, 2)
-+DEF(GMID_EL1, 3, 1, 0, 0, 4)
-+DEF(SMIDR_EL1, 3, 1, 0, 0, 6)
- DEF(CTR_EL0, 3, 3, 0, 0, 1)
-+DEF(DCZID_EL0, 3, 3, 0, 0, 7)
-+
--- 
-2.49.0
+FWIW, checkpatch.pl chokes on this:
+
+^* matches null string many times in regex; marked by <-- HERE in m/^* <-- HERE /"$/ at scripts/checkpatch.pl line 1389.
+ERROR: Saw unacceptable licenses '*/"', valid choices for QEMU are:
+GPL-2.0-or-later
+GPL-2.0-only
+LGPL-2.1-only
+LGPL-2.1-or-later
+BSD-2-Clause
+BSD-3-Clause
+MIT
+total: 1 errors, 0 warnings, 76 lines checked
+
+
+> +    print "/* GENERATED FILE, DO NOT EDIT */"
+> +    print "/* use arm-gen-cpu-sysregs-header.awk to regenerate */"
+> +} END {
+> +    print ""
+> +}
+> +

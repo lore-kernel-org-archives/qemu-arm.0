@@ -1,90 +1,89 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2614999njc;
-        Tue, 17 Jun 2025 09:02:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXzDo9NImKcl96QTjxRVCQOiWXf0mJL7dUysHY9mT+Frwf9l0YSHh1T/BFofNVTel0XwU+DGodry7HU2w==@linaro.org
-X-Received: by 2002:a05:6a00:178e:b0:742:ae7e:7da8 with SMTP id d2e1a72fcca58-7489ce45893mr22863175b3a.8.1750176135373;
-        Tue, 17 Jun 2025 09:02:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750176135; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2619580njc;
+        Tue, 17 Jun 2025 09:07:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCViCaoe85YPCLUfEB0wrhpzsJUq7JKBW4A9aRhTSRFK77PlOTQNf7PxR+cCz48vyWibBgk3yDIQbjkGwg==@linaro.org
+X-Received: by 2002:a17:90a:d605:b0:313:f83a:e473 with SMTP id 98e67ed59e1d1-313f83ae5abmr21230762a91.15.1750176429596;
+        Tue, 17 Jun 2025 09:07:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750176429; cv=none;
         d=google.com; s=arc-20240605;
-        b=DLC/eCdEijXlUVuv2DA9Z4KQiWDpTNlXQvuZNk37ZGZri0mBHr5SmBVMgxa7X0CA4k
-         66m86So26mlH9pFhBtUJOtnBc9pQ9dfK3wBa7PMuw+8wW/LcGld5JlWg0nWjxAzFZ4wN
-         +Rx8se7wV1g9rapCqRu3B6y9j53ax/NrieWf8ILOZ0fDhWgfmueTkTArLuu7b2N6kQcs
-         GtQg4TXu9meISwOzX8wRhr2TXoJZEg/l9IRbCMXZuH0Hp5fpQe9bEQaB4avIF9aZgwno
-         KVTeG9jh8+rcGVcgapICrYyoJSHKGHTfEs/lyBVQMnP+fyrHivBP8KH/YugtQc1YXrpK
-         yCvQ==
+        b=YYbP6gGyU8NaQMS20UAbrXB2BWBqo7VREFrZtfNmSwGODqBI+G6rNHkG1zI60PPu36
+         jrfp7qsQcvhfS2jdwRh72ajgvYOgeVX8lWZfMb684lrr30MnrQqpiuGBr9trcFGIikXP
+         s5WCgQImN0Zu+v8o/fB4cNknNfehZZxoSvMtxWZADkkwmUXStllX+sSfM8eLvWAOAq/u
+         W0jzuEQc69Vjr1PaG691Q3dUvmPyIIc+ch3TSrgt1oJGDaYkZ4rrUd5UJK/2xCc0pnIX
+         9mhNzdCueeKkr3hPO3tQIvo23oVnIbj/xkWeKr1wsDvUYZdPXFWNfCEFtf5B4j/wTklV
+         ippA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=o6n9QnxZQEp3aVXoKzmKc1ufO76DC8Dyqg4znXD0ODE=;
-        fh=z3av2fFldwZvIiwxylgLZjuwXp4nZxz9wwJDUjRTeG4=;
-        b=ANIoET5eWjbPccoXDL/U5AcjcySSYBva+BuGdcFMCk3oZEMOBLOaY/jQ8bUKokVUQ8
-         TmbLvi3Wtd+q6aYiI+X2/F5kSmLTZJFrcY5PpdceGAuFdwAE3M/nbv0CikUIxwNv4mVs
-         3rihdJ+uNBDL+DVY34Qft0uyxHOAvKsuOCqUYG/0a5N4hmst7ltCjMyhtGqfmPpnt6yh
-         bX4jq9ViFKVjFj61OB+Jz0hBbPmo7nBp/IHpl9hg96kzc7mUwo1WOIc4Cdptk4I62yNx
-         +kxA+s5W7fFPUNFv9S8yjiUBjkWOxlpW06j1SK0via85LNSDpt5QHp50P0ZayrHGnksh
-         +69A==;
+        bh=dPooGodvHOd25Hd926Qo9oypTPkB595thoSSxi84ong=;
+        fh=tazL26JcMj/ORkkBll4R4v6AVmtW6fAvw3E+DKm74YE=;
+        b=ECP8IXShvvypy0GDG6oeXTwzY3jCE6okze2JifieQTZkWsq9XVE64oee1wrUJN1v5V
+         Bm/RFX7bl+lcpyRyn9/Q8iOU7i/ByBO1sGXpJieS5Q63TQetTD9z/HU7s22nXyS2IB1d
+         BTV0+GInlxrMkDf9KmK8nQcNkA8WsU0tLU3VOHt+LxTwzkDftW8lRbtSzXByEACxZaDk
+         XHFPWWTtb4KwR72zObjh9kc/XC3GSHYNHjudYwJpsPMjdxfMgMPef/2CPOjShQTh8L8i
+         ObGPILU/ahLc4sxieJ24HXlvCwjT3x7mdq0siCKP5uW0Jh5aYvfNeucE9/LwUwz6zO7f
+         S3Lw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bCkvH01I;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PSBztPty;
        spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <gustavo.romero@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-7488093e977sor6680232b3a.8.2025.06.17.09.02.15
+        by mx.google.com with SMTPS id 98e67ed59e1d1-313c0eb348esor9561298a91.0.2025.06.17.09.07.09
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 17 Jun 2025 09:02:15 -0700 (PDT)
+        Tue, 17 Jun 2025 09:07:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bCkvH01I;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PSBztPty;
        spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750176135; x=1750780935; darn=linaro.org;
+        d=linaro.org; s=google; t=1750176429; x=1750781229; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=o6n9QnxZQEp3aVXoKzmKc1ufO76DC8Dyqg4znXD0ODE=;
-        b=bCkvH01IOVkQLAOXO378Md1yq8YFtoPlBWzayzr8UEWuQp3VYy51o40Z2IfFgwrqQi
-         /9p1y+Qwf1RKKxLmj3evKo/6SiVLd4ghg+R4qdfrNWoibADsEzFLY8I8PGjbYGUtJCVz
-         rLwOOzlS93fdk204zK9E38QXlxzQ9oXS+7YdplKuAA/yuiP8w5l/1AxFO15KhNcU1EsM
-         ewSme1oIlJRQDGjNJ5Lkj9AltPI4NSZwcPjb8T6+x0scgVTFdEg+4rxMzd7VLGOE7ByO
-         sAY9uMVQOtIBni3WhtcKKyNNSy9N3wfqoZihsJV+BsjumNY52+1KOcuhL3bAZy61WQPM
-         F7Nw==
+        bh=dPooGodvHOd25Hd926Qo9oypTPkB595thoSSxi84ong=;
+        b=PSBztPty/slRrGZCc+FU/muRE1YaI7EiZBfhP7d3t9pLOW0VhcBKZ4wk7R0UxbPxA4
+         xYMT6SYXHylC+M3Z5P46k4/c/svDw2N4bFYJ+bUae61IfGNJythUuEkQ6aaucVWeLiFS
+         lD40XvLf1HR8dBCccw+HklZe7dtcgah8pveUwX9FexA1VCBu0agTMMF1hrPtY/9k79wW
+         AtCy5y/fDkTuRUJPAc3fyV3SonYKH1nO9anFqu2BFzYliv+99vtGEUbe4qJ979rwgq+T
+         DSnG3bK2nShlaZJhTcxerhw/RQYy7XcdobJ6b+afZdq4CTdbqniK0w7EodfSQB5zVsnn
+         hDwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750176135; x=1750780935;
+        d=1e100.net; s=20230601; t=1750176429; x=1750781229;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=o6n9QnxZQEp3aVXoKzmKc1ufO76DC8Dyqg4znXD0ODE=;
-        b=W8vFMnJTaD5WGMssDRyLLcKUFZ5lO5sc2SECgcE0fH/Uo7q0+8etYqL3sZ2vuq9O9X
-         jHQ2PHGy2b0HjXEe4mtXAjYDAgKnY/X4QUVNYRPLhTa6uY5Cw5XgK9Q7apdmW4bRuPWZ
-         N3PXnKaCnCjcAwc5U+JxB1szsln7kv1xn1YVoj4SAuFXvLN9o525BM6VStYq7dtcQHk6
-         U3k9JlEJKzVdYXvyd/zyZYkE7vpe4clRQ5rWyrnYUJr7gI9EdynUGpwqwwy/AY7ZTdbu
-         tI4wI3i7N1Up/Rl6v9BMx2A2f62eG90uxmSy4oP+a9fd541QgqsB5HMOKS7tZQRyEAqI
-         m8wg==
-X-Forwarded-Encrypted: i=1; AJvYcCU0uUwLmJbpX1M1RI6O3h2PZjoIirIKdOJmUl1/NylUCsZ6RIwzbV4Ib7pHvqj9c10Y0/rxWWUBHCBiNQ==@linaro.org
-X-Gm-Message-State: AOJu0YyUVmiymEn7T4RWRqWvkXLJNhMPv74RTtmmDPlrq5Ls7LWK6h6w
-	MZFGNNWviMUyw1t7izOBEX4dLAPzPrwM2QYhZCKYzVKBSkjrCOURaVyC1RpqCplklZwh2i4qCFU
-	Zp28vGBQ=
-X-Gm-Gg: ASbGnctEblGeBo/w3xq+06ClraN0YCqqpkjk6lxaY+LjaKH8Ghgoe/8p39jke9G6xor
-	IJIsBRgGoDvZiGFtdGCAeQwSGeNnUXJWNANOa465JygHegIJp4t1UzaGot/denBouA7z8/pcZ3E
-	tHM3z9VTmPPEvrcJIfJRBY3nq7ie7ZkxS4cyRQv+xWU9pOkVJP3MPDlOydCj+0/XWgXU9rkhnAA
-	GWRA0k5g4mpdRYHCc+G4Cr7ydH4DTab/gSzG3FhAGZX7/Hh5CP17V1uciFHZ3dpXUTjwytxn23d
-	G5KbC7lNFeDXCvQ5/sJP0m8DsdzxhDk9f9deqY4J5oLz5U/ci+LUOs2ZQYKAceIsEzriV7YGiw=
+        bh=dPooGodvHOd25Hd926Qo9oypTPkB595thoSSxi84ong=;
+        b=M7bEeK/uoJ5WPEwvn6FjxpQpLSuPbM1u0Tk0IAKCvBP3i3ge07eN6GitjNeq01JJkE
+         bXGp742pv6nyR7rjQLJ42Xhwt8zfsedoNihEcAZLNdQhWXVPgrrSFmtf07qRzc11e1Lk
+         tsiWHrGYA4HCOBQltFJoagNfFWR8D3Qw0YgF/lvwew9fJHwhUoe4BN8vvaJUFt0esGJC
+         qv3Xh7odp1/ZZA4WtU6JjQjQMe6rCd8awiW9gCTYCOqd/QIJrlhp8qKrCVJLj3j6cYuw
+         NT5OO8a3Pl++Q8CrOv5Z1dRGNma7F+8bHftzrxXeJfWH5a0VuQqP9KAYWAH47CsZ6B3O
+         /wZQ==
+X-Forwarded-Encrypted: i=1; AJvYcCW2rJy1j3nhNtWBdYqClXLeYtXiLdAfX7rhI0w1FQdC9YP3mqwkPXvZPYNgbuMbjueEAZBNYBRF2Ora4g==@linaro.org
+X-Gm-Message-State: AOJu0YxD6HXH9S7ve4F/8GPRzWp/OrAvBxlpIEcO29VlbWp65oAH8LcF
+	+5UQIRUZa7RmyqTde29OfDe9IrcLfos3pn3JRsRWichepO0kKIVBgVvhSPiaAPCnOncyUQ==
+X-Gm-Gg: ASbGncswUW55A095lI0ad68XIU2Q8kIpPN6x0884LXjYjjdaiKXF5OPyOPO94gn5088
+	0LD1vDV+mIWofizS/3GNgpo8dWrUZ4D+12YRvrLQVylBNlPTBQBj7Anr4mNsY0gO2y80RYJDt/L
+	pwn+M4knBar/mSIKzreW5FCZ/JKSt5Iugx5bsH8CiW8vxmLeorAH7m+GuxXyjvhe0/ao5HYlTrw
+	SwvfmANw/pXkK7C96ULJ8Mnxg53kmzBI1sQcDZebvGqT+IaNRc3hOL6ctvFeW964K4EY6lU7s9F
+	bf5Mc9t2G9T+fqQG4tD1JAjqrfEmdJ/47taxUkE9XJPKxgvRLddn9WFXcsq2cIgSI9IQGDyJnQ=
 	=
-X-Google-Smtp-Source: AGHT+IG7ORcj7hGyKP+K1856xWSJPgMTHtIdaYK3iwTAMrhn3+7Xef4Xwk08qX2sE5VKyVHzwCuMWA==
-X-Received: by 2002:a05:6a00:4f82:b0:748:2ebf:7418 with SMTP id d2e1a72fcca58-7489d00e68bmr21133244b3a.24.1750176134470;
-        Tue, 17 Jun 2025 09:02:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFtFXA0xCexhG7ezEYeGusVFz2h2wR9DiTKZsUvW4VMIi55VULTSoUi9FXA306bINke54IKhg==
+X-Received: by 2002:a17:90b:35cc:b0:30e:3718:e9d with SMTP id 98e67ed59e1d1-313f1d5077fmr21766876a91.35.1750176428956;
+        Tue, 17 Jun 2025 09:07:08 -0700 (PDT)
 Return-Path: <gustavo.romero@linaro.org>
 Received: from [192.168.0.102] ([186.215.60.20])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-74890005f47sm9406061b3a.51.2025.06.17.09.02.11
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-313c1b2b545sm10805794a91.0.2025.06.17.09.07.05
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 17 Jun 2025 09:02:14 -0700 (PDT)
-Message-ID: <e1c05a4c-ead6-437e-9287-84b77fcc9df4@linaro.org>
-Date: Tue, 17 Jun 2025 13:01:58 -0300
+        Tue, 17 Jun 2025 09:07:08 -0700 (PDT)
+Message-ID: <825d1a10-0e47-4a73-a274-a01380785ec4@linaro.org>
+Date: Tue, 17 Jun 2025 13:06:53 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v4 5/8] qtest/bios-tables-test: Add test for when ITS is
@@ -104,7 +103,7 @@ From: Gustavo Romero <gustavo.romero@linaro.org>
 In-Reply-To: <74c1948a-3c90-431b-805f-b5a4238beecb@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: a3KAXPM9rhOO
+X-TUID: w+yTmQTlB/91
 
 Hi Eric,
 
@@ -140,16 +139,7 @@ On 6/17/25 12:51, Eric Auger wrote:
 >> a DeviceID, hence say "while the RID and StreamID". Does it make sense?
 > I think I won't bother and would simply talk about "ID mappings" which
 > is the generic term used in the IORT spec.
-
-But I just dove into it because you suggested to use "RID" (aka ReqID, aka
-Requestor ID, ah, I "love" these variations in specs), so I thought, well
-RIDs are related to RC and StreamIDs related to SMMU, so, actually, you meant
-"while the ID mappings from" instead of "while the RID mappings"?
-
-
-Cheers,
-Gustavo
-
+>>
 >>
 >>>> nodes to the ITS Group nodes are described in the IORT table.
 >>>>
@@ -247,7 +237,19 @@ Gustavo
 > points out infractions to bios-tables-test.c rules!). Since it results
 > in less patches I think it is better. May be worth to clarify that
 > directly in bios-tables-test.c though.
-> 
+
+oh I didn't know it! wow, glad Option B passes the checkpatch scrutinity heh
+
+Yes I think I can update the doc now I confirmed with Igor the details.
+
+I'll cc Igor and you when submitting the doc improvement.
+
+Thanks.
+
+
+Cheers,
+Gustavo
+
 > Cheers
 > 
 > Eric

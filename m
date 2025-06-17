@@ -1,196 +1,262 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2600599njc;
-        Tue, 17 Jun 2025 08:38:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWYz8gzDtq1PCtuflvIHYsA/QpV8FqaOiG+IZz6xXOdfvCOZ+tYBZoQhYbFyRFS/HiOykPfJRWaFFPKCQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEgxyosOi2PQa6Pit4eQCp6AWUx2EDZbTBTgjbePOtNDxEme2iRuoVU8FnyyGrTVYlawxQ5
-X-Received: by 2002:a05:6102:2d07:b0:4e7:dfc6:5cd8 with SMTP id ada2fe7eead31-4e977acc263mr2503446137.8.1750174680132;
-        Tue, 17 Jun 2025 08:38:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750174680; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2601779njc;
+        Tue, 17 Jun 2025 08:39:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVR+qzPiC+TjzfIF6vljPyKYDwRh9CaTs/RQXuaYsROaWrRodFl4pwSIBNtvrBACX3Ug5JNvGdGyQ8E3A==@linaro.org
+X-Google-Smtp-Source: AGHT+IEEB2oEjGmiZxme8dW1c88YozkwcxgAvpzRnOQQqLjD7dppf0vgoKPz/zEp6UkcldVzSFde
+X-Received: by 2002:a05:6102:5488:b0:4e5:f673:7da4 with SMTP id ada2fe7eead31-4e7f61629b4mr9838984137.8.1750174791119;
+        Tue, 17 Jun 2025 08:39:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750174791; cv=none;
         d=google.com; s=arc-20240605;
-        b=iMFw4YvYwZK05PLpiipRM8SfvWXp4z//o2ofcaxsl6FPIz5+dfWBSdEweFPjR/kHqC
-         wJxxZBdc+2c2UHApjbZ1dbAwNO0uf/qF5hippiobnxpH+b1fPcblyJqxa0jLhn1yFr23
-         7xn2rnSZnr27oA6/qbJ/GQaNLY/+san24tGhVRzCwsO0WpmEPi3f70ItRa4faUYC+GWh
-         9NIyZWi/Nnp0Vii2/PEUp1p9qp+s3OTv0bbIwq+k9TFHnLM2dNdrdMpOBIqsW5eqwz8c
-         yb421vWZUl2EmqjPq5N2m745TCkyuKa4VtCJNDDzx/hARwYOulpUY5/0lMJEIS/DAxma
-         jmCg==
+        b=F0KR6ner1IPgSV9xz8zS4oWIYOEVw33IFoAGrMvHWdMx/uPeaRH1/EAvAXvXpsofFA
+         w535BjFmccooBSxjpsZg6Yel4jx6RtLSZQZ7mpbpegyhlTdZ7ndqrgB53oyZVa67Iflo
+         bPBcJ/YRk0nB3RTccqiLD/EucwB885Gbfy8ll2vhcO4wTfwAwr280s2HSrIni20r9dL9
+         CHMuLAI1ADMGHFB+XFcYnFazijJAXwYCakzep0Qc6eLwJsyu1/uEPPQ6q02U8C5CZ8oP
+         69dsWDuogKVV+HAqjqlKNc29ssTBA8Tj9LgTTdoBiLkqAJnw/am5XTNyKT31JRUBsuIt
+         lsPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=/vvdbIrIYuE0AqpfkcU+eN1rb+0uJtRv0SRE3RdgRVE=;
-        fh=c/Q8C/FP7jL/UglvpzzkrKvaHshTo93LUlVGglPSDPY=;
-        b=boPgF+sz+SUFWp0qZEkQi27DNyKlMxvNjeugIUGwv+QAPwPj6KN6itTOpXQRs13a1U
-         SrBP5SA4DLrMvTAM9rky0w7HGPJZivP4+FFqyo2WoWU4Lh6QBRIaUZPn/T4c5TzNzUJ7
-         hI0RiFnaY2e+5NzjXZqwlsvTfN7Au6UYRfEvXqcsRa7acKnH2+yFXEykDuXhVPDKUXsh
-         PHLcQkKyysC1emKFg55r13ToE7x4rLTIRY1id71jj/XJB6uyewUQz1v/O6DUrzjpxRh4
-         YxX487/dnf4nVgGkj5T+r5xaC9oiU1HQvZ4/7FkqDaqi4jrOI/yUergC6szQsrkioqqM
-         3lGg==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=snIE0Kxo+Asc1ZpCPVz5i7efIGpQ1hiprvFRa3bQLZQ=;
+        fh=zInp4xe4IkcRrNM2aFMptin5JRRr9I02FEAKlsM82YU=;
+        b=Dry6R8p0NY/6pSO72bHWld1Yy3bmMoJfEVHIcamG5Y6QF4vJ5AsfwAonsD7jsr8/RW
+         Rvz3OFHmW5g8Vwuh1hI0QZ8IPcuzBuuXANds9ldNCZvzsrIGeufPmauPfxEJzn1oyaAq
+         b1zdG8wuDJX466lDdx1Q6SlO0c4ogfYbpndiHaSemDY6hcTvNaULacjvM56GVxkh42pI
+         mkHzagOK42tc8DBVYgbP0mOUNRDdWgL/LklU4e47zHmJHhmDV7hmeExUcMUeVRLjJaLU
+         5Kfue0jWUIHQs95ogx6CBuAvNQI1BUoZ4uw6Rq4eMprzZFSrt0bde8x7Anh1WvizNqcF
+         7tcQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TNoMJAKR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aWYcdGTh;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4e8164b4626si1185870137.417.2025.06.17.08.38.00
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4e7e6e26a81si2517668137.47.2025.06.17.08.39.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Jun 2025 08:38:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Jun 2025 08:39:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TNoMJAKR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aWYcdGTh;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uRYJG-00031g-28; Tue, 17 Jun 2025 11:33:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uRYID-0001Fx-VH
- for qemu-devel@nongnu.org; Tue, 17 Jun 2025 11:32:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uRXgN-0004VA-UT
- for qemu-devel@nongnu.org; Tue, 17 Jun 2025 10:53:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1750171981;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/vvdbIrIYuE0AqpfkcU+eN1rb+0uJtRv0SRE3RdgRVE=;
- b=TNoMJAKRfe1BxMDJvlL/8W2jGJQwiQv4JCFkthJU0ZK5zc8JZyhk+ArOM6eVOXUvTVwqSL
- wqsMq0N+YyDowCSQLh9eyw//kczZkYyQdrdU4fFIWkchtzVaoVSB7uV89eIv6KYtecGaJG
- P7+GtdPmCxJtBFfZTK42fq8Djdsd/wk=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-441-x0u6e5-PN8CI4lMCQbRKVw-1; Tue, 17 Jun 2025 10:52:59 -0400
-X-MC-Unique: x0u6e5-PN8CI4lMCQbRKVw-1
-X-Mimecast-MFC-AGG-ID: x0u6e5-PN8CI4lMCQbRKVw_1750171978
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-450d290d542so35388645e9.1
- for <qemu-devel@nongnu.org>; Tue, 17 Jun 2025 07:52:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1750171978; x=1750776778;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=/vvdbIrIYuE0AqpfkcU+eN1rb+0uJtRv0SRE3RdgRVE=;
- b=YuABcFNSu0FMjMySyj97WRKBp4Uq+2RZJHdQ5IujlyYzKDWKS06Ofw0DQUe256QBEA
- fXL6XvnmYsAK8jZiAlQX18njvAnFc4fH/E9xkjxWE7HhO7Dv2tArgTVSdhyxuyG/jpdJ
- AM2v9c0zU+VhJ4qx8w/CWJuSMxAI6+BS8lwI8LArZO4TEu662hzePv1E89KxtZqreNMU
- VMBvHYsm3u2dFLAxTswpqmbGGL3eWrZkOQgY4nID+WX0rzPdIeL3uGw0qRbn2ylwxqu1
- M7bpJ4wAtDxsrKXRwoeYJmr3koOM+Gzx9QPC+gQCMxKIq3dz0YPub9SFGLCI5pUPL6kb
- AxYA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWTvuJJOo+bODGKlzUxKiZD8wdjqkjmGSO73wJ1TYVcJA3T3ivVc2qoblQjUyQ/9BXULLexxKwWRE08@nongnu.org
-X-Gm-Message-State: AOJu0Yxgvxos6aUVVLuD7hQpHyP6c/xctEHxphQMdzJuQeF7wJ+3YRMl
- eT1wRgoJBMgrp5mc42ZAI93EJfDt9ItpjSOHCYEF31GfkzRdBVyedAg3NZmT4Pw44UEyhjgawwF
- Zc5CPOUNrEw8c+XEd6ExoxgR/5tVffvb2+j89tCs+XmCJgZLMil86fWV/
-X-Gm-Gg: ASbGncspwuj2FZ18HTa/kbQY7SqMciJVqcpeNd+cY+URYAL5NFXcl67SW64kXHuRJww
- L2Ou3ra//Gn8pWSCHHEy9SYmTaCtWi+S0lkUEpkzDuBy+OOFxcwyq1tP2I5QgWFJML0Btm/h3do
- UnW0DR94TrZMVHFglIW3wY1VKzWpitopaRkj2kkNF8x/HJV51j1myiFZHLBtW+wPkb0XZN0nlto
- razrF7yAVUnT4etPBNCXWgRUIisHKgomdwJrfjZkBI6E8mZmwaDQM1E0fY9wTGJqUvrBiurpHiQ
- 4UK80ca4303RwIBiohT8VrHmAJB9ecjMYFVy4Ih2RuhT+bdsjO32f48+mYl2s5G5F746bw==
-X-Received: by 2002:a5d:5849:0:b0:3a4:dfc2:2a3e with SMTP id
- ffacd0b85a97d-3a5723aeb2cmr11568588f8f.39.1750171978386; 
- Tue, 17 Jun 2025 07:52:58 -0700 (PDT)
-X-Received: by 2002:a5d:5849:0:b0:3a4:dfc2:2a3e with SMTP id
- ffacd0b85a97d-3a5723aeb2cmr11568559f8f.39.1750171977970; 
- Tue, 17 Jun 2025 07:52:57 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4532e224956sm180681045e9.4.2025.06.17.07.52.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Jun 2025 07:52:57 -0700 (PDT)
-Message-ID: <6debc836-c55d-406f-a74d-8ea5070b7fba@redhat.com>
-Date: Tue, 17 Jun 2025 16:52:55 +0200
+	s=mimecast20190719; t=1750174790;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=snIE0Kxo+Asc1ZpCPVz5i7efIGpQ1hiprvFRa3bQLZQ=;
+	b=aWYcdGThQs0AbPnAlF9Jgg2bERYKmJ9TvORtZSFenXN1Lh+sl4O8nzInVasK2oOtKLPF9p
+	Ou5Z/EAV5pTPpzqgyA7V8qJ94y/ao2eO0DbjAo+6jbE4HuW9CReSNcWgq+D7zU8YOW2q2A
+	/EShMqd6Z2oZ4ObydMq14VEhyb7ru3o=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-502-OoLk3BFyOeepgyAsjOnptA-1; Tue,
+ 17 Jun 2025 11:39:47 -0400
+X-MC-Unique: OoLk3BFyOeepgyAsjOnptA-1
+X-Mimecast-MFC-AGG-ID: OoLk3BFyOeepgyAsjOnptA_1750174785
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B67861956046;
+	Tue, 17 Jun 2025 15:39:43 +0000 (UTC)
+Received: from gondolin.str.redhat.com (pixel-6a.str.redhat.com [10.33.192.205])
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 6EC8C180035C;
+	Tue, 17 Jun 2025 15:39:36 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: eric.auger.pro@gmail.com,
+	eric.auger@redhat.com,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	kvmarm@lists.linux.dev,
+	peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	maz@kernel.org,
+	oliver.upton@linux.dev,
+	sebott@redhat.com,
+	shameerali.kolothum.thodi@huawei.com,
+	armbru@redhat.com,
+	berrange@redhat.com,
+	abologna@redhat.com,
+	jdenemar@redhat.com,
+	agraf@csgraf.de
+Cc: shahuang@redhat.com,
+	mark.rutland@arm.com,
+	philmd@linaro.org,
+	pbonzini@redhat.com,
+	Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH v8 00/14] arm: rework id register storage
+Date: Tue, 17 Jun 2025 17:39:17 +0200
+Message-ID: <20250617153931.1330449-1-cohuck@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 5/5] hw/arm/virt: Allow virt extensions with KVM
-Content-Language: en-US
-To: Alyssa Ross <hi@alyssa.is>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, miguel.luis@oracle.com,
- peter.maydell@linaro.org, richard.henderson@linaro.org, maz@kernel.org,
- gkulkarni@amperecomputing.com, gankulkarni@os.amperecomputing.com
-References: <20250527062534.1186004-1-eric.auger@redhat.com>
- <20250527062534.1186004-6-eric.auger@redhat.com> <875xgutpuh.fsf@alyssa.is>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <875xgutpuh.fsf@alyssa.is>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.89,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pOJAvbZOOG+o
+Content-type: text/plain
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-TUID: H7FoYQFrPDL3
 
-Hi Alyssa,
-On 6/17/25 4:17 PM, Alyssa Ross wrote:
-> Eric Auger <eric.auger@redhat.com> writes:
->
->> From: Haibo Xu <haibo.xu@linaro.org>
->>
->> Up to now virt support on guest has been only supported with TCG.
->> Now it becomes feasible to use it with KVM acceleration.
->>
->> Also check only in-kernel GICv3 is used along with KVM EL2.
->>
->> Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
->> Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Hi!  From what I can tell, this will produce an error on hosts that
-> don't support nested virtualization when QEMU is invoked with -accel
-> kvm:tcg -machine virtualization=on, but I don't think that's the ideal
-Thanks for reporting this issue. This is not an expected behavior. I
-will respin hopefully this week so I will have give it a try.
+Mostly addressed Peter's feedback:
+- make sure every inbetween stage compiles (also fixed some bonus issues)
+- try to make the scripts more robust, add a note the generated file,
+  and make sure to grab only registers we actually want
+  - I did a half-hearted attempt to use python instead of awk, but I'm
+    out of my depth, especially with the script that will be used for
+    the register fields in the cpu models series
 
-What kind of error msg do you get?
+Also available at
+https://gitlab.com/cohuck/qemu/-/commits/arm-rework-idreg-storage-v8
 
-Thanks
+<v7 cover letter>
+Some small fixes, including fixing up/adding SPDX identifiers, keeping the
+series bisectable, and updating MAINTAINERS (please check if that's ok.)
 
-Eric
-> behaviour.  It would make more sense for it to fall back to the first
-> permitted accel option that does support running the machine as
-> configured, so if hardware nested virtualization is not supported, it
-> should fall back to TCG.
->
-> I maintain an OS development environment that includes scripts for
-> running images in QEMU, where running KVM on those images is a
-> requirement.  Currently, those scripts simply force TCG on aarch64.
-> With this change, to take advantage of KVM NV support, I'd have to try
-> to identify in the script whether NV would be supported.  QEMU would be
-> in a much better position to determine this and fall back to TCG if it's
-> unsupported, like how the -accel option with multiple values usually
-> works.
+<v6 cover letter>
+Just some small changes:
+- fixed up some botched conversions noted by Eric (thanks!)
+- rebased to current master
+- new patch with a small cleanup suggested by Eric
 
+<v5 cover letter>
+Just a quick respin to fix a missed conversion in hvf.c.
+
+<v4 cover letter>
+Next iteration of the id register patches; only small changes.
+
+Changed from v3:
+- added R-bs (thanks!)
+- added missing SPDX header
+- merged patch introducing accessors for kvm to the first user
+- skip over sysregs outside of the id register range when generating
+  register definitions again
+
+Also available at
+https://gitlab.com/cohuck/qemu/-/commits/arm-rework-idreg-storage-v4
+
+<v3 cover letter>
+Yet another update of the id register series, less changes this time
+around.
+
+Changed from v2:
+- changed generation of the various register defines via the "DEF"
+  magic suggested by Richard
+- some kvm-only code moved to kvm.c; some code potentially useful to
+  non-kvm code stayed out of there (the cpu model code will make use
+  of it, and that one should be extendable outside of kvm -- a
+  revised version of those patches is still in the works, but I'll be
+  off for a few days and rather wanted to get this one out first)
+
+Also available at
+https://gitlab.com/cohuck/qemu/-/commits/arm-rework-idreg-storage-v3
+
+<v2 cover letter>
+
+Changed from v1:
+- Noticed that we missed the hvf code. Converted, compiled, but not tested
+  as I'm lacking an environment for testing.
+- Hopefully incorporated most of the suggested changes -- if I missed
+  something, it was unintentional unless mentioned below.
+  - fixed repeated inclusion of definitions
+  - hopefully made macros more robust
+  - removed distinction between reading 32/64 values, which was mostly
+    adding churn for little value
+  - postponed generating property definitions to the cpu model patches,
+    where they are actually used
+  - juggled hunks and moved them to the right patches
+  - fixed some typos
+- rebased to a more recent code base
+
+NOT changed from v1:
+- definitions are still generated from the Linux sysregs file
+  - I still think updating the generated files on demand (so that we can
+    double check the result) is the right thing to do
+  - I'm open to changing the source of the definitions from the sysregs
+    file to the JSON definitions published by Arm; however, I first wanted
+    to get the code using it right -- we can switch out the code generating
+    the file to use a different source easily later on, and I'd also like
+    to steal parts of the script from Linux once integrated (which I think
+    hasn't happened yet?)
+
+<v1 cover letter>
+
+[Note: I've kept the cc list from the last round of cpu model patches;
+so if you're confused as to why you're cc:ed here, take it as a
+heads-up that a new cpu model series will come along soon]
+
+This patch series contains patches extracted from the larger cpu model
+series (RFC v2 last posted at
+https://lore.kernel.org/qemu-devel/20241206112213.88394-1-cohuck@redhat.com/)
+and aims at providing a base upon which we can continue with building
+support for cpu models, but which is hopefully already an improvement
+on its own.
+
+Main changes from the patches in that series include:
+- post-pone the changes to handle KVM writable ID registers for cpu models
+  (I have a series including that on top of this one)
+- change how we store the list of ID registers, and access them
+  basically, use an enum for indexing, and an enum doing encodings in a
+  pattern similar to cpregs
+- move some hunks to different patches
+- update the scripts to generate the register descriptions, and run
+  them against a recent Linux sysregs file
+
+What I've kept:
+- generating the register descriptions from the Linux sysregs file
+  I think that file is still our best bet to generate the descriptions
+  easily, and updating the definitions is a manual step that can be checked
+  for unintended changes
+- most of the hard work that Eric had been doing; all new bugs in there
+  are my own :)
+
+</v1 cover letter>
+</v2 cover letter>
+</v3 cover letter>
+</v4 cover letter>
+</v5 cover letter>
+</v6 cover letter>
+</v7 cover letter>
+
+Cornelia Huck (2):
+  arm/cpu: switch to a generated cpu-sysregs.h.inc
+  arm/kvm: use fd instead of fdarray[2]
+
+Eric Auger (12):
+  arm/cpu: Add sysreg definitions in cpu-sysregs.h
+  arm/cpu: Store aa64isar0/aa64zfr0 into the idregs arrays
+  arm/cpu: Store aa64isar1/2 into the idregs array
+  arm/cpu: Store aa64pfr0/1 into the idregs array
+  arm/cpu: Store aa64mmfr0-3 into the idregs array
+  arm/cpu: Store aa64dfr0/1 into the idregs array
+  arm/cpu: Store aa64smfr0 into the idregs array
+  arm/cpu: Store id_isar0-7 into the idregs array
+  arm/cpu: Store id_pfr0/1/2 into the idregs array
+  arm/cpu: Store id_dfr0/1 into the idregs array
+  arm/cpu: Store id_mmfr0-5 into the idregs array
+  arm/cpu: Add sysreg generation scripts
+
+ MAINTAINERS                            |   1 +
+ hw/intc/armv7m_nvic.c                  |  27 +-
+ scripts/arm-gen-cpu-sysregs-header.awk |  37 ++
+ scripts/update-aarch64-sysreg-code.sh  |  32 ++
+ target/arm/cpu-features.h              | 317 ++++++++---------
+ target/arm/cpu-sysregs.h               |  42 +++
+ target/arm/cpu-sysregs.h.inc           |  53 +++
+ target/arm/cpu.c                       | 111 +++---
+ target/arm/cpu.h                       |  80 +++--
+ target/arm/cpu64.c                     | 128 ++++---
+ target/arm/helper.c                    |  68 ++--
+ target/arm/hvf/hvf.c                   |  39 ++-
+ target/arm/internals.h                 |   6 +-
+ target/arm/kvm.c                       | 139 ++++----
+ target/arm/ptw.c                       |   6 +-
+ target/arm/tcg/cpu-v7m.c               | 174 +++++-----
+ target/arm/tcg/cpu32.c                 | 320 ++++++++---------
+ target/arm/tcg/cpu64.c                 | 459 +++++++++++++------------
+ 18 files changed, 1114 insertions(+), 925 deletions(-)
+ create mode 100755 scripts/arm-gen-cpu-sysregs-header.awk
+ create mode 100755 scripts/update-aarch64-sysreg-code.sh
+ create mode 100644 target/arm/cpu-sysregs.h
+ create mode 100644 target/arm/cpu-sysregs.h.inc
+
+-- 
+2.49.0

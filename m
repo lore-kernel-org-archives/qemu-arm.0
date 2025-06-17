@@ -1,114 +1,167 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2480575njc;
-        Tue, 17 Jun 2025 05:38:04 -0700 (PDT)
-X-Received: by 2002:a17:902:c94a:b0:235:779:edfe with SMTP id d9443c01a7336-2366b3f84ffmr192940235ad.43.1750163884071;
-        Tue, 17 Jun 2025 05:38:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750163884; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2493514njc;
+        Tue, 17 Jun 2025 06:02:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX80S8kD9EwPCwnCfmB6/of1xUz679Ye6+yE/dTj81HbNOZM0ldZVO+4cmHpiP9gbZJ0RvyN6CXoTQI8w==@linaro.org
+X-Received: by 2002:a05:6a00:4f95:b0:747:accb:773c with SMTP id d2e1a72fcca58-7489cfff3a7mr17795770b3a.13.1750165329692;
+        Tue, 17 Jun 2025 06:02:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750165329; cv=none;
         d=google.com; s=arc-20240605;
-        b=j6Jb+C8doJfPXH4riE46oE0tR81EWPAHEx6vHToaZ4/Oq65g2jgQykPW6iV75HQNAd
-         brIu3RXgHaNANtJMrSimTBztY4lAB2pX6zvquz93Be/qSWlhPX1OemPuCUZJ+vG/GxIk
-         Zc4Ig/XH9GJw14em7wDmS4fqt9SmlxqeMb8Tn9hJTqnaQpu/6iqHrEdY1xPZFJsUbL59
-         9NnVV+FHEZApKB9i+/0FHahw91tTk3GMvop5vayDbzqQ5O+YxT2NmEfj7oJ1+x+hV0C0
-         vS7cBi1jQvpHDgOpcsgweIb+vLf+xY1B0fQvE0jl988JJxgBN2lmg6SbJxL+x2dDbrHP
-         SYaA==
+        b=ODk0UWkJfHr1h7nFlCFO+vwWtzYM4+Bhw/Q07ahIku5T6t2jTmhD5RzdYw1XxkOlIq
+         5qXkqWHrBU+WS6bvn7/I2snznvbKZjmKWxmHhmQJEbi7n1s/fBqhY5GjLRyFjnJ52W8y
+         fNUMDKQLBaM9xMwnvTAbpQBgEFmQctkkFDabUSqisdF+5Jc8XO9DHVA3qoY2Bto8lLwQ
+         9hyCREbFABWVy7XeyRYDPUHTpKyzidEFiB7WuHetU0X/GaG342BLtVw+KAa682WT7Pgk
+         Hrpli7oi4IAh5tghNXHx1s+RhAwrxfIDMlXqxZrshNg0WCYBrjKBdLxowp1qWPJ7sGQa
+         Mt6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=9uKzW3H/dOr6s+S6VOJ2FYNtxIwtCXlSB+0Kwmd0Wjw=;
-        fh=3sDOnQepqc1o4V3gWIZUKw5UQ7JAQPDJdfS/VKBdsdY=;
-        b=OeFk1xpi0Lc0Swrknf/3xXZy5UvbcNXDqa5hanaue2dmiYNen30kp5xN+mHnc+noiG
-         zg5gqhdcof3oU9wtTFwa+zAFjNaGF/059f+Gx3/rsAxzTqu+FJ5OlDM+4pu8/RcGmLL1
-         EBHL4cLbVnxy/gyBnBKloAXllilVx8oOCrZ8cZ2JeTQLCMFtEpOWvb/wv/kTaW6F+019
-         dYisJyte5iog7hVJg/h3M5+IOmSLuYLp4mbAHUEza++OB7RXw/aYl9bAjuGLBD/UH3Lp
-         LccRAVwYnGlRGaZT1KWEiMi+e27jtR8sTavG4WLKAw7pOv0pX5HmyufmktcsKVHQwtv1
-         sPuw==;
+        bh=iDry9tfFvZbE7BA/ZG2VctmEiKG5/hgVcCbfAt73fD0=;
+        fh=fw51T38XGHPnbm7Zx1DV0+D8RzGWHnzzS3qD+ecJWnM=;
+        b=k5e7G7XmMFC2IX1tpVA9COHGx8iOnRTuT1euC1R3oKuCbN69rpFkch6azObt0zutaB
+         TKz2TxUf/kM9bG/34JSS6dKZcsliahjox79S70s+ui3iOycJ22kn6lLHDr23M2chTMhI
+         Gf1m1pKaxdcfS/NmL4h/ckB+cgZHKrJzyQK0EcZYodMVea3CMnEkypQPbcRlHUPOGBuc
+         UjVSdosQClBgBGl37pvNcMLrDyoWPjcBpYEDC1dd0hjx146pOklx6BvOmrdF94RpSZCX
+         EbT4HQ58zJjjXDNPZ+CSeM0JBiRZV9yBI1jGdVZ/MDSvqvBgm13NTcIh/3jNaOg93h1t
+         snuw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vZ2OKSAe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NcU2WklZ;
        spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <gustavo.romero@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 41be03b00d2f7-b31bc05d2acsor688276a12.8.2025.06.17.05.38.03
+        by mx.google.com with SMTPS id d2e1a72fcca58-74880963225sor7679329b3a.5.2025.06.17.06.02.08
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 17 Jun 2025 05:38:04 -0700 (PDT)
+        Tue, 17 Jun 2025 06:02:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vZ2OKSAe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NcU2WklZ;
        spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750163883; x=1750768683; darn=linaro.org;
+        d=linaro.org; s=google; t=1750165328; x=1750770128; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=9uKzW3H/dOr6s+S6VOJ2FYNtxIwtCXlSB+0Kwmd0Wjw=;
-        b=vZ2OKSAeKxahz2dpgquRD1nQRrm8qm8xwwwaQ1sPl/QuI4m5aWf5IhQ6G0d2gDpUp1
-         qLHoRo4opHE/ugJggzV93lKrUy84EuN/5cDCjf11Ma2XfAwqLHG9EIInwd6/xkYUy/Lq
-         GgKxANTQE9hkNoDbSgjQoXC4Av83+B1jm6F3NkQU7eMqXIxWYoG4T0z9+vArb/k2U4RU
-         0MVfjq1YyGE01TtqELoM2tmADO2Ib6XjO5ghxI4loB+0xL5PyeUN7ilkMJWKrX9X6lD+
-         N/3usXpS6l159O2AqIWNJvs+igMxLPA/cvdY7bzPg8fQ+s+lrGTGottMoCfvz4EqKsdO
-         oc2g==
+        bh=iDry9tfFvZbE7BA/ZG2VctmEiKG5/hgVcCbfAt73fD0=;
+        b=NcU2WklZXTP8C4s6KivCzkC9ic8gdfCNugkhX7hAC8aEgJ0i0Z0pQSUqQFLsvn9ea6
+         qS2QAIJ340wrv/WmrzPPFOElotgA6q2rwl00nmtEDq9rXyrYpc1L9ggC/hk5y6W2/dVZ
+         hO0lQ9MKw533yBdJxF+GF7RhdrtffRrbMpxfQmLKFarN5LhgnM7TJMvY8aC8R+qhzGpa
+         M3e6Tdmrwel/LHLHgsYsc7yWZHXFTt8DPat1rkmspt69Jwlvf2RpeUpzpqsIjy3Cly02
+         jWMj772b7zjnsH1d9C1Qlu9QiOhPrkYzYpYcJEqa1i2+ZRhwxtK8bN3XN+tgz1UZ39Ko
+         5HNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750163883; x=1750768683;
+        d=1e100.net; s=20230601; t=1750165328; x=1750770128;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=9uKzW3H/dOr6s+S6VOJ2FYNtxIwtCXlSB+0Kwmd0Wjw=;
-        b=fUmRWv0yqGP3gbhs7WwCO1qbsxTs0KXTF9rN/zD16NvWntNmUTOLCw5pplMLnXFYY1
-         mx5LPokT+eifE+cEMA8JMkoyKmBjrndjDmSyGuiBModfawnft5fRKXzwbuljhlhPPEJW
-         ASmQ/sfJADBawvGF6SGFBW/BBwboC9LjLiLzkrnu21HkHbDeDD0CYZSFnZ7HbCxJ8jPd
-         vqfzjpneb/L4l/n/Jhh+vljpAyYRYtGOYi6om+v85waWlRQDg9ZTelf3xc7RDy07B7Nm
-         GRLkHQjQJgTh1S1bUXRmvjSdBIbJN5nguSQ/ofU8VlofmeSaXGVXlM3cBEy02lxRq5n6
-         OkFQ==
-X-Gm-Message-State: AOJu0YyW6XM5EbRFMf/nUtV4FrKE1N6Xr+Z9XMrTT6+cO9LnAn0N/ELf
-	0ISxacBTp5Vd3F1OH+wjTDeHUMsAABvQONZtAm+Agu6FFkT6VRaEyAR9hIPqY3LYa6tWVhkeGuL
-	zEfTcXHg=
-X-Gm-Gg: ASbGncveBQg705VWFCKX7AF25mGwApYnd7/SIU4kO5WDVttv9SOA0dvxkQB2Fwpf/84
-	853XovkKGIIN1ppS5ygS5rCFoLZDTzFcnnAWvZ/fVEM9UBOd41++5lURi8JnMXeL6QpDL9Q5OtC
-	FY+lWx1YWKyiW6y46cegwryNRNUYGRDzC11w6zBewvK6liEmRp7c+zZPqRQIe91umV2qmk3yuD4
-	pLe1z2YvB84SgtswsIUgEvdsj03QwAfJWisDu3w/k0NCmltSm2W9SntsvT9nR27MQfsMhT6Ze0r
-	mTqpEKLHyGAmbdEvonl95WOn2DqHI4Ys5keoJHzpPqMI/UT73ti8ph+t0s1L5g7/Ylu22jiaA9U
-	VjPOwtXG/
-X-Google-Smtp-Source: AGHT+IGC6RdtkCaWoXRvoNEfspcD7NZpIqPCHsc0FaiMQf5DkPfr9+V3eIMMeGn+yh1WyjRj9mKPxw==
-X-Received: by 2002:a05:6a21:328c:b0:21f:7430:148a with SMTP id adf61e73a8af0-21fbd57d24amr20201895637.28.1750163883360;
-        Tue, 17 Jun 2025 05:38:03 -0700 (PDT)
+        bh=iDry9tfFvZbE7BA/ZG2VctmEiKG5/hgVcCbfAt73fD0=;
+        b=p4raVKWK5IHAadYswZHwECjnvE+yPdo2HX78ul0cVpQcxVWNIJSSYJoF8/kg85CK0z
+         81eTn/o5g7tCOzacESl7XL5/2QFTsAtRPjj53LrId7WJFdfFdgIaCWajOktgu47iTaYL
+         LqobW5G+I8PkZlaN7f8B7vGuT+fsIcPVm9Kw6RkYddQuavEAeZY4qL7AL6EVDWj4JN5n
+         IGosxZILAvEaLzG0WdlpyZvMOWwdM1P/s6G1pIWo2Nck+VUNzs2nLoOm4K03jU6qZ+97
+         E4bHskgL9r71zxij3JXA5UDzmIv8WCreDfmUjKi8kkqMbHwroaAnlQbmWo2gJJoacXXy
+         58BA==
+X-Forwarded-Encrypted: i=1; AJvYcCVbvemDrC27d+FtoSIgC46v9gXdATx8TfCWwiZPhRE/40PszQflMMLq3cRjAXJ8l9metKdWKfYsavIs9w==@linaro.org
+X-Gm-Message-State: AOJu0YxWFzlAHD2P0vWa/nX8KC1IF4tvS1QoNjAR4NDgWcCCX/JNh0B+
+	9+97Vjh8RyR9QIedIa2C0PvCRcRKdiyF0RXp8PPuV+sqjvS6TAjYtva7CsYZ3vdK8PtpHQ==
+X-Gm-Gg: ASbGncu+Uf34e+FvZ+VwA8AkroJGnJc45jXb7PsgtzHGWxf1qJXP2BZ9sAw+ZeebtNP
+	7bvoakXPwBVSLZ9CHZXIAiteMXI1pTw8GiGUX74PCfvMcY2NYI0NqFKa0mh1i736P9nlRpBTRho
+	11G1o28wtknWRMIEMQuTghhq8Kkw+VQJ6RnSPO5odJKBwzDHPxMFJtaWoEelMwJkwfA/wVwIqki
+	MbOFFK/FjD82UnhvwgrR9t9gk2eyX+e4K/y+OcDMorNS2nrxbWtjyqUqYJi1pFded/ChRJkHDr8
+	nG5TgkJGCFSRFmTTOkvS42AQh/nk0SKaXEhtjNs3Hq3QF77tfUQRUNSBKd3TDWRd4gUjrqH7Ckc
+	jvh9GGG1s
+X-Google-Smtp-Source: AGHT+IEECWLcg4ihqU92Kn6lt/pjagA8DA6HvuiYyIMlm3A6pg+NKAIywgS+4TjCW0KifbgQH4L/BA==
+X-Received: by 2002:a05:6a00:1255:b0:748:33f3:8da3 with SMTP id d2e1a72fcca58-7489d0335f6mr17300209b3a.19.1750165327753;
+        Tue, 17 Jun 2025 06:02:07 -0700 (PDT)
 Return-Path: <gustavo.romero@linaro.org>
 Received: from [192.168.0.102] ([186.215.60.20])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b2fe1680408sm8773000a12.39.2025.06.17.05.38.01
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-748ded10691sm499372b3a.60.2025.06.17.06.02.04
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 17 Jun 2025 05:38:02 -0700 (PDT)
-Message-ID: <bbffdac9-a957-41d9-b1f8-3824e794831c@linaro.org>
-Date: Tue, 17 Jun 2025 09:37:47 -0300
+        Tue, 17 Jun 2025 06:02:07 -0700 (PDT)
+Message-ID: <36ac7f90-d946-439f-ab20-123f542291b6@linaro.org>
+Date: Tue, 17 Jun 2025 10:01:50 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5] tests/functional: Add PCI hotplug test for aarch64
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, thuth@redhat.com,
- eric.auger@redhat.com, berrange@redhat.com
-References: <20250528203137.1654964-1-gustavo.romero@linaro.org>
- <87msa6vgsu.fsf@draig.linaro.org>
+Subject: Re: [PATCH-for-10.1 v4 0/8] hw/arm: GIC 'its=off' ACPI table fixes
+To: eric.auger@redhat.com, qemu-devel@nongnu.org, philmd@linaro.org,
+ mst@redhat.com,
+ Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, udo@hypervisor.org,
+ ajones@ventanamicro.com, peter.maydell@linaro.org, imammedo@redhat.com,
+ anisinha@redhat.com
+References: <20250616131824.425315-1-gustavo.romero@linaro.org>
+ <5b0f2250-e521-4172-870c-0384c5ef2382@redhat.com>
 Content-Language: en-US
 From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <87msa6vgsu.fsf@draig.linaro.org>
+In-Reply-To: <5b0f2250-e521-4172-870c-0384c5ef2382@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: 8ixocOaaYvN1
+Content-Transfer-Encoding: 7bit
+X-TUID: NDwvzeWcYoFQ
 
-Hi Alex,
+Hi Eric,
 
-On 6/17/25 06:49, Alex Bennée wrote:
-> Gustavo Romero <gustavo.romero@linaro.org> writes:
+Thanks a lot for doing a first pass on this series!
+
+On 6/17/25 06:35, Eric Auger wrote:
+> Hi Gustavo,
 > 
->> Add a functional test, aarch64_hotplug_pci, to exercise PCI hotplug and
->> hot-unplug on arm64.
+> On 6/16/25 3:18 PM, Gustavo Romero wrote:
+>> Since v2:
+>> - Fixed no_tcg_its inverted logic (rth)
+>>
+>> Since v3:
+>> - Fixed remappings in the IORT table when ITS is no present
+>> - Rebased on master and resoled conflics, like no more "no_its"
+>>    flag in VirtMachineClass
+>> - Dropped patch 1/9 because we actually want the instance flags,
+>>    not only the class flags, and the instance flags are the ones
+>>    to be used often when deciding about the presence/absence of a
+>>    machine feature, instead of the negated class flags ("no_*")
+>> - Adapted the other patches that depended on 1/9
+>> - Dropped patch 4/9 in favor of using the instance flag for
+>>    checking if ITS is on or off
+>> - Simplified VM options for the new "its=off" test
+>>
+>> v1: https://lists.gnu.org/archive/html/qemu-devel/2025-03/msg07080.html
+>> v2: https://lists.gnu.org/archive/html/qemu-devel/2025-04/msg00495.html (Patches 6/14 -> 14/14 in the series)
+>> v3: https://lists.gnu.org/archive/html/qemu-devel/2025-04/msg00567.html
+>>
+>> Fix ACPI tables for '-M its=off' CLI option and resolve the issue:
+>>
+>> https://gitlab.com/qemu-project/qemu/-/issues/2886
 > 
-> Queued to testing/next, thanks.
+> One first comment is that this series will collide with Shameer's SMMU
+> multi instance series which has been lunder review for quite some time
+> (adding him in TO):
+> 
+> I think it may be more future proof if you could rebase on it - I know
+> it is a pain ;-( -. Or if sbdy objects for Shameer's series please raise
+> your voice now.
+> 
+> [PATCH v4 0/7] hw/arm/virt: Add support for user creatable SMMUv3 device <https://lore.kernel.org/all/20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com/#r>
+> 
+> https://lore.kernel.org/all/20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com/
 
-Thanks a lot!
+ayayay, life is never that easy! :)
+
+Thanks for point that out. Sure, I can rebase it on Shameer's series, but also
+I'd like to have this ITS fix for 10.1, so I think it's a matter of understanding
+if Shameer's series will make the 10.1 release (thanks for asking the reviewers if they
+have any current objection so we have an idea if it's close to get accepted
+or not)?
+
+Meanwhile, I'm pretty keen on if I'm correctly generating the IORT table pruned from ITS
+(patch 7/8 in this series), like, are the remappings for the RC and SMMU nodes correct? That
+would make me more comfortable to start working on a rebase.
+
+
+> Also I understood Shameer intended to write some new bios-tables-test.
+
+I see.
 
 
 Cheers,

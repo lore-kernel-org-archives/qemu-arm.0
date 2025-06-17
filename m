@@ -1,66 +1,344 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([185.126.160.19])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a568a53f79sm14266546f8f.4.2025.06.17.09.33.53
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2652936njc;
+        Tue, 17 Jun 2025 10:01:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVP8dxLYL7vZZu9gUY/SiL2Bm2DJCo/QGPAfOwQyoHmFSFFj8CzA4ECm6mZOyiKzr4K2nLDXfXpM/254Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHv+IeAWpUTd3c9ckXQZXxVsu8p/g0EzWrWVdAlbSPY0Ql/V5mXy/b7yMKeQ/KWgf1kio3N
+X-Received: by 2002:a05:6000:2404:b0:3a4:eecd:f4d2 with SMTP id ffacd0b85a97d-3a572e821efmr11712402f8f.38.1750179700485;
+        Tue, 17 Jun 2025 10:01:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750179700; cv=none;
+        d=google.com; s=arc-20240605;
+        b=fkNyl3DzB+HLo7NqNsb4VDw1FHM2vi9GUdcZ1lbaYL0XB10GFdKOWqY4TK8O5JfXAR
+         B9CHW+iRO92KCJPOB9G5jHBO8iNg3PruGeNJp31yb/b64QraF7907cXTIoT6hiNBsLY1
+         26HOtdjq5o6z5/f4g36KWTqLJUQgTbb+RgU07kL/CqyDL3iFZi7kjPIViTWwpNqYZXUN
+         XZkdGYfpJajND8LxZeLR3Gc5YB8puxNkGhOTkSUkeDA+5oD0VBz+X4q3Yh/QY7PcMAKw
+         pCwFd10hZ0ELB9Ibfrbl9Xrf5vUYK9ueaFZ83j623JiLXkQzxQDxG6RzSkYACiFmzA5j
+         DHaw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=LaMKvH58Hm/XAUBbAWYf0p8rTkd3zwOJrBXUyRUG8fc=;
+        fh=6Nz66s7EvgTKwULulmvbHcX4Bd4exYuD8+J+xpsYpak=;
+        b=A5ZDxSLad039fVF0nxhLuxHbP/DKFq1kRHK3ApUMh7JwTvJWwtzaeTKo9V5hqtjehI
+         PhMV5Cf2ibMStDWtQct+NysyrA2u45OJsTaYx4JVDXAaIPxD+ngEiI/5uDLQbR7u+tPQ
+         MVnMGkN86OsangB9IYfnkFT237yKe8/25FDqm9qOdTrI50qIdgui4CTTHKh1azVHm/I+
+         K/8VW8FditKQtE56toaa56QAwCPcBbtNqqxYxHyIVcne9S6oM45HEICNxFFxWdLla8hT
+         ESrJ51ewOUHlkc26dcJTqiAOmjQlOZdUKytglZ4wLwqrBHLsxxNiTo1P+XL3FtQ0xOX2
+         bMLg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LkahUzfy;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a568b0b572si7945745f8f.279.2025.06.17.10.01.38
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Jun 2025 09:33:55 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 91A355F90D;
-	Tue, 17 Jun 2025 17:33:52 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Cornelia Huck <cohuck@redhat.com>,
-	qemu-arm@nongnu.org,
-	Mark Burton <mburton@qti.qualcomm.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Alexander Graf <graf@amazon.com>,
-	kvm@vger.kernel.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 07/11] target/arm: clamp value on icc_bpr_write to account for RES0 fields
-Date: Tue, 17 Jun 2025 17:33:47 +0100
-Message-ID: <20250617163351.2640572-8-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250617163351.2640572-1-alex.bennee@linaro.org>
-References: <20250617163351.2640572-1-alex.bennee@linaro.org>
+        Tue, 17 Jun 2025 10:01:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LkahUzfy;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1750179697;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=LaMKvH58Hm/XAUBbAWYf0p8rTkd3zwOJrBXUyRUG8fc=;
+	b=LkahUzfyj1TRCg1h0z3ZHrjizpXWcODGKAoflIAfugVX9HuK6vFRGNrJNVC+iA6UyFUzAV
+	B4Y+96SWdTF1zSJutr8m0enztgeaH3wySml0Zvl8MpDXPsHrLLKSRrVs629FVaHEKk96Rx
+	TlLxm44DsozjumpSCaBNhNMIKaNYI/c=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-356-mXjli81cOna6LSihazQJQg-1; Tue, 17 Jun 2025 13:01:35 -0400
+X-MC-Unique: mXjli81cOna6LSihazQJQg-1
+X-Mimecast-MFC-AGG-ID: mXjli81cOna6LSihazQJQg_1750179694
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-451d7de4ae3so39195905e9.2
+        for <alex.bennee@linaro.org>; Tue, 17 Jun 2025 10:01:34 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750179693; x=1750784493;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=LaMKvH58Hm/XAUBbAWYf0p8rTkd3zwOJrBXUyRUG8fc=;
+        b=oKMD7iizkibfBjuSJLg19FiQ240ReF9utxFXkN828y+4+dClefOuysQRIv9Id6Cbhg
+         b4SHQUg5JXB2FTR/kyW4clYQz5TTkFYysiYRpQ+Ti/nh9wJOFXnCvTOYdwoKmGYa+l4n
+         ELCBAbPp816giSre5sjqX3oWk0DKi8TUL1NqQW29j1HTeuZZf0kTyr4hLx2UwjLyQZwl
+         soDXLTizIzN3oMseZiNE+MuDDTYmFHUozsg7L8PjhvfH6TaMAUJJWCiCvlqqIU3tdX6q
+         YJojW6fp1pYGnGZb9QaYurl4PjjxEq0lMzQDgX7QmH7kmtf8h6gFcL6H1F0ChevEOOx5
+         9EwA==
+X-Forwarded-Encrypted: i=1; AJvYcCX5LMuM6XgrO76kL9lW6zTbcYAdQsCtDryEI7Hp/eR2LjVfYYRf9SzPtXnYemGAGeeJit9S05fzRzm/Fw==@linaro.org
+X-Gm-Message-State: AOJu0YxVIg9+PNY3SRqIhxJX1xyyy6bq0HmobZszN4aCa0cVo8r4uKmq
+	QBc9qVPiTo2J9c6cCGwYHV9p0Gr3aq3IfK5bj03HhgFjA0EwvXM6Rl3stla7W/zpEa0aJQyWDhk
+	Uv6GHMRwBMdF5S+MI0xGKarAIB5HmdNDuiidpEncmGnPBhj/KJjGT7eH2Eg==
+X-Gm-Gg: ASbGncvjkorpqNeLiD+lKobrk1/5T1Oz+5U7LCWqiNixJc6U1ynTmGX/bmZdX5Q3NIw
+	jZJ7O8ASulC3W0uYauqUz4ubdJ/dzLwLPh9N1H/BfsAzJguOdDVzxItZBfpLsGtBx80AdY1iYYP
+	iq+NSk3uxBamuhoxyUyk0gLvwKoatQ7fllycMh2o3aNqH82vqqIt4sptp//IL62Q8LmG9ZnHSoP
+	kwlwvnYyBoIA4wBGTtJm/D4Z7lOEJKsXdW4qO2PBg8P4AhLz3Ahwrlfn2eG4QCNAYI6YY94ayX3
+	gxVs+ColZy6rzGCAb6j8ehXtfIBMISlX9JupXt7JrKbvX9LvGI+2AZJD3mFUpdsW2fQyHw==
+X-Received: by 2002:a05:600c:6095:b0:43c:fffc:7886 with SMTP id 5b1f17b1804b1-4535627dbe5mr20746975e9.8.1750179693169;
+        Tue, 17 Jun 2025 10:01:33 -0700 (PDT)
+X-Received: by 2002:a05:600c:6095:b0:43c:fffc:7886 with SMTP id 5b1f17b1804b1-4535627dbe5mr20745125e9.8.1750179691389;
+        Tue, 17 Jun 2025 10:01:31 -0700 (PDT)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a568b18f96sm14621701f8f.66.2025.06.17.10.01.29
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 17 Jun 2025 10:01:30 -0700 (PDT)
+Message-ID: <80ef1248-4fb1-48d8-9c11-f42d08641e9d@redhat.com>
+Date: Tue, 17 Jun 2025 19:01:28 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Reply-To: eric.auger@redhat.com
+Subject: Re: [PATCH v4 5/8] qtest/bios-tables-test: Add test for when ITS is
+ off on aarch64
+To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
+ philmd@linaro.org, mst@redhat.com
+Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, udo@hypervisor.org,
+ ajones@ventanamicro.com, peter.maydell@linaro.org, imammedo@redhat.com,
+ anisinha@redhat.com
+References: <20250616131824.425315-1-gustavo.romero@linaro.org>
+ <20250616131824.425315-6-gustavo.romero@linaro.org>
+ <fe166574-9e53-4e27-9c12-c91f3fc774c7@redhat.com>
+ <3881403f-c618-47d1-afec-27592bd7be99@linaro.org>
+ <74c1948a-3c90-431b-805f-b5a4238beecb@redhat.com>
+ <e1c05a4c-ead6-437e-9287-84b77fcc9df4@linaro.org>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <e1c05a4c-ead6-437e-9287-84b77fcc9df4@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: LWVZpQ9-uOQNvqXPgfW8jns6_0z468_yO9HEVRlfAic_1750179694
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: DFReqV+BbqMb
+X-TUID: qeRbKrGZAhGj
 
-If the user writes a large value to the register but with the bottom
-bits unset we could end up with something illegal. By clamping ahead
-of the check we at least assure we won't assert(bpr > 0) later in the
-GIC interface code.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- hw/intc/arm_gicv3_cpuif.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index 4b4cf09157..165f7e9c2f 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -1797,6 +1797,9 @@ static void icc_bpr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     trace_gicv3_icc_bpr_write(ri->crm == 8 ? 0 : 1,
-                               gicv3_redist_affid(cs), value);
- 
-+    /* clamp the value to 2:0, the rest os RES0 */
-+    value = deposit64(0, 0, 3, value);
-+
-     if (grp == GICV3_G1 && gicv3_use_ns_bank(env)) {
-         grp = GICV3_G1NS;
-     }
-@@ -1820,7 +1823,7 @@ static void icc_bpr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-         value = minval;
-     }
- 
--    cs->icc_bpr[grp] = value & 7;
-+    cs->icc_bpr[grp] = value;
-     gicv3_cpuif_update(cs);
- }
- 
--- 
-2.47.2
+On 6/17/25 6:01 PM, Gustavo Romero wrote:
+> Hi Eric,
+>
+> On 6/17/25 12:51, Eric Auger wrote:
+>>
+>>
+>> On 6/17/25 5:12 PM, Gustavo Romero wrote:
+>>> Hi Eric,
+>>>
+>>> On 6/17/25 10:34, Eric Auger wrote:
+>>>> Hi Gustavo,
+>>>>
+>>>> On 6/16/25 3:18 PM, Gustavo Romero wrote:
+>>>>> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>>>>
+>>>>> Arm64 GIC ITS (Interrupt Translation Service) is an optional piece of
+>>>>> hardware introduced in GICv3 and, being optional, it can be disabled
+>>>>> in QEMU aarch64 VMs that support it using machine option "its=off",
+>>>>> like, for instance: "-M virt,its=off".
+>>>>>
+>>>>> In ACPI, the ITS is advertised, if present, in the MADT (aka APIC)
+>>>>> table and the remappings from the Root Complex (RC) and from the SMMU
+>>>> I would rephrase "and the remappings" by "while the RID mappings from
+>>>> ..."
+>>>
+>>> hmm true. Do you think it would be even better to say something like:
+>>>
+>>> "while the RID and StreamID mappings from the RC and from the SMMU
+>>> nodes
+>>> to the ITS Group nodes are described in the IORT table."?
+>>>
+>>> I'm saying that because I understand the map from RC to ITS is from
+>>> a RID to a DeviceID, while map from the SMMU to ITS is from a
+>>> StreamID to
+>>> a DeviceID, hence say "while the RID and StreamID". Does it make sense?
+>> I think I won't bother and would simply talk about "ID mappings" which
+>> is the generic term used in the IORT spec.
+>
+> But I just dove into it because you suggested to use "RID" (aka ReqID,
+> aka
+> Requestor ID, ah, I "love" these variations in specs), so I thought, well
+> RIDs are related to RC and StreamIDs related to SMMU, so, actually,
+> you meant
+> "while the ID mappings from" instead of "while the RID mappings"?
+Yes I meant "while the ID mappings from". sorry for the misunderstanding.
+
+Eric
+>
+>
+> Cheers,
+> Gustavo
+>
+>>>
+>>>>> nodes to the ITS Group nodes are described in the IORT table.
+>>>>>
+>>>>> This new test verifies that when the "its=off" option is passed to
+>>>>> the
+>>>>> machine the ITS-related data is correctly pruned from the ACPI
+>>>>> tables.
+>>>>>
+>>>>> The new blobs for this test will be added in a following commit.
+>>>>>
+>>>>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+>>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>>>> ---
+>>>>>    tests/qtest/bios-tables-test-allowed-diff.h |  2 ++
+>>>>>    tests/qtest/bios-tables-test.c              | 21
+>>>>> +++++++++++++++++++++
+>>>>>    2 files changed, 23 insertions(+)
+>>>>>
+>>>>> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h
+>>>>> b/tests/qtest/bios-tables-test-allowed-diff.h
+>>>>> index dfb8523c8b..a88198d5c2 100644
+>>>>> --- a/tests/qtest/bios-tables-test-allowed-diff.h
+>>>>> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+>>>> I still fail to understand whether empty tables + update if the
+>>>>
+>>>> bios-tables-test-allowed-diff.h need to be done prior to adding the
+>>>> new test.
+>>>>
+>>>>    * How to add or update the tests or commit changes that affect ACPI
+>>>> tables:
+>>>>    * Contributor:
+>>>>    * 1. add empty files for new tables, if any, under tests/data/acpi
+>>>>    * 2. list any changed files in
+>>>> tests/qtest/bios-tables-test-allowed-diff.h
+>>>>    * 3. commit the above *before* making changes that affect the
+>>>> tables
+>>>
+>>> I think the best reference I have to it is the reply from Igor to me
+>>> here:
+>>>
+>>> https://lore.kernel.org/qemu-devel/20250506173640.5ed03a16@imammedo.users.ipa.redhat.com/
+>>>
+>>>
+>>>
+>>> I understand there are two possibilities when adding a new test:
+>>>
+>>> 1) Like in the steps above, 1., 2., and 3., which are taken from the
+>>> bios-tables-test.c.
+>>>
+>>> That gives option A:
+>>>
+>>> A Patch 1: New empty files uuder tests/data/acpi + list of them in
+>>> tests/qtest/bios-tables-test-allowed-diff.h
+>>> A Patch 2: New test (since the blobs are wrong but we added them in
+>>> Patch 1 to allow list, there is no fail in test
+>>> A Patch 3: Update blobs (actually you are adding the real blobs, or
+>>> updating from empty to real one)
+>>>
+>>> or (what I'm doing here), option B:
+>>>
+>>> B Patch 1: (A Patch 1) + (A Patch 2)
+>>> B Patch 2: Like (A Patch 3), i.e., just update the blobs (add the real
+>>> ones)
+>>>
+>>> This is the sequence Igor confirmed it's ok:
+>>>
+>>>> - Patch 1     : Add the new test, add the empty blobs *.suffix files,
+>>>> whitelist such a blobs
+>>>> - Patch 2     : Update the blobs in Patch 1 with the ones that make
+>>>> the new test pass and remove them from the whitelist
+>>>
+>>> Also, Igor says it's ok to add to the allow list the blobs that change
+>>> at the same time
+>>> we add test that changes the very same blobs even when updating an
+>>> existing test (not adding a
+>>> new one, which is slight variation):
+>>>
+>>>> - Patch 3     : Add the APIC.suffix blob to the whitelist (the table
+>>>> that changes due to the fix)
+>>>> - Patch 4 - n : Fix(es)
+>>>
+>>> "3 is not binary so it can be folded into 4 or be a separate patch
+>>> (either way works for me)"
+>>>   The important thingy is to follow the rules:
+>>>
+>>> 1) Don't make a commit which fails the tests
+>>> 2) Don't fold a blob with the commit that changes the blob
+>>>
+>>> That's my current understanding about it.
+>>>
+>>> Let me know if that makes sense to you. We need to reach a consensus
+>>> on this, confusing as
+>>> these acrobatics may be! :)
+>>
+>> Actually I checked your patch and effectively it does not produce any
+>> checkpatch error related to bios-tables-test rules so your patch is OK
+>> (yesterday I discovered with the ACPI PCI HP series that checkpatch
+>> points out infractions to bios-tables-test.c rules!). Since it results
+>> in less patches I think it is better. May be worth to clarify that
+>> directly in bios-tables-test.c though.
+>>
+>> Cheers
+>>
+>> Eric
+>>>
+>>>
+>>> Cheers,
+>>> Gustavo
+>>>
+>>>>> @@ -1 +1,3 @@
+>>>>>    /* List of comma-separated changed AML files to ignore */
+>>>>> +"tests/data/acpi/aarch64/virt/APIC.its_off",
+>>>>> +"tests/data/acpi/aarch64/virt/IORT.its_off",
+>>>>> diff --git a/tests/qtest/bios-tables-test.c
+>>>>> b/tests/qtest/bios-tables-test.c
+>>>>> index 0b2bdf9d0d..4201ec1131 100644
+>>>>> --- a/tests/qtest/bios-tables-test.c
+>>>>> +++ b/tests/qtest/bios-tables-test.c
+>>>>> @@ -2146,6 +2146,25 @@ static void
+>>>>> test_acpi_aarch64_virt_tcg_topology(void)
+>>>>>        free_test_data(&data);
+>>>>>    }
+>>>>>    +static void test_acpi_aarch64_virt_tcg_its_off(void)
+>>>>> +{
+>>>>> +    test_data data = {
+>>>>> +        .machine = "virt",
+>>>>> +        .arch = "aarch64",
+>>>>> +        .variant =".its_off",
+>>>> you have a checkpatch error here.
+>>>
+>>> ouch, thanks, will fix in v5.
+>>>
+>>>
+>>> Cheers,
+>>> Gustavo
+>>>
+>>>>> +        .tcg_only = true,
+>>>>> +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
+>>>>> +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
+>>>>> +        .cd =
+>>>>> "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
+>>>>> +        .ram_start = 0x40000000ULL,
+>>>>> +        .scan_len = 128ULL * 1024 * 1024,
+>>>>> +    };
+>>>>> +
+>>>>> +    test_acpi_one("-cpu cortex-a57 "
+>>>>> +                  "-M gic-version=3,iommu=smmuv3,its=off", &data);
+>>>>> +    free_test_data(&data);
+>>>>> +}
+>>>>> +
+>>>>>    static void test_acpi_q35_viot(void)
+>>>>>    {
+>>>>>        test_data data = {
+>>>>> @@ -2577,6 +2596,8 @@ int main(int argc, char *argv[])
+>>>>>                               test_acpi_aarch64_virt_tcg_acpi_hmat);
+>>>>>                qtest_add_func("acpi/virt/topology",
+>>>>>                               test_acpi_aarch64_virt_tcg_topology);
+>>>>> +            qtest_add_func("acpi/virt/its_off",
+>>>>> +                           test_acpi_aarch64_virt_tcg_its_off);
+>>>>>                qtest_add_func("acpi/virt/numamem",
+>>>>>                               test_acpi_aarch64_virt_tcg_numamem);
+>>>>>                qtest_add_func("acpi/virt/memhp",
+>>>>> test_acpi_aarch64_virt_tcg_memhp);
+>>>> Thanks
+>>>>
+>>>> Eric
+>>>>
+>>>
+>>
+>

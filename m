@@ -1,140 +1,128 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2609258njc;
-        Tue, 17 Jun 2025 08:53:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWM+5oGitIMwJ/6s8+ut+pX7WRpwOwUp7X/x2EAJULnGZXzNnMIg3BieVEE7zwUUwS4ltGOom3pp6G7fg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG/f2QIsf7ra0iH3qaOEQniaDRGSOh3bOZZ9MUgEVTcbEKBAC0aFCgp0WbjasLUuBFvMUhY
-X-Received: by 2002:a05:620a:29c8:b0:7d3:a5f4:c560 with SMTP id af79cd13be357-7d3c6c1ee84mr1832667685a.16.1750175593945;
-        Tue, 17 Jun 2025 08:53:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750175593; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2609661njc;
+        Tue, 17 Jun 2025 08:54:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVV/urRcwn2mhjdxsRtZHFYzE/gicXYAy2ZZ2seklrUFPcwAzcbogrjOlwxW5CvsBwHedK4mBs7ZUoL6g==@linaro.org
+X-Google-Smtp-Source: AGHT+IGfgwWKVnniH2UOiM1K/qIqUsGULaD8hxe6zJak7FowBIpc0hQAS2xBIzaFFBjOlKJunKwu
+X-Received: by 2002:a05:620a:3953:b0:7d0:294a:523b with SMTP id af79cd13be357-7d3c6c0b30fmr2085010385a.3.1750175641066;
+        Tue, 17 Jun 2025 08:54:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750175641; cv=none;
         d=google.com; s=arc-20240605;
-        b=AbNa13uXZeWgaIvQCl8tCgKexv0S7tbVm0JUogVTPU8fUQDUz8ntLTRNN/4fKwivFR
-         wTGzud8v3XLnByEUjQ911touf6zqYY1A+1UVlMqX6+vaI1c5Ca42ua+iHSz0jRE2PvL5
-         iPs+8pcgDwGIvzJxR2EJHqkrvAqw94ZGPmED5M8px3KEhJPtKdaCVSe5HDUoMZXluSf9
-         QcExXyESNpky9ZsXQ01LqZgBVsOQN6FSfzMBEiY7FnNqlQFF4K0WPaS7ZBygzMRYH2mj
-         W5VcXtI44oivLfbiQSgB83hDQ8pfwsjmTZIFZUF/qMadOQjOyo642oOPhsijnTWSqzyA
-         c4yA==
+        b=SHjt+hh9eK4oVg3DscNQZT/fMHwbI8LB9G9d8Wqv2sHaSUGwFbE0UD1ey0STyt/aWN
+         y2/c0perSNGk45N3P8elhVatbSisvOOm/VYtE3mvG7MwPRKXKDjSs3WZypqhDVK+nJDi
+         wAsN5APJQJqIXHrqTazOrpzqEG/ur8WA/Nf4VdovF5PifdwildZhb6NEdjLeXGCWwEvA
+         vCJSZsrb+YHXmEDIWEcubKDPEaWAezuCu2oQiw1y0nLNzXkyAeG9Sw0VVhfyZWtNaE1h
+         mJLxqt5xw81MWoJAlTA1mReTxgGZ1N++H9D91DOlrHc0cSZn+6RqfgEjNdaHo5OajzUs
+         qoWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=daHsNykC+60PUSpDLO+SebjuEw5ukuCfdxPUHgekuac=;
-        fh=1IXVBpS6Txfb/yBm5qFnmtsnmovWYSx2Tq3+Dkk5QhI=;
-        b=I9kOqNQcsX3rF7S2hUgxvKdLKx/pe+NXbGmN/4bHr+7OFilIkV0kH4MDmKh+fXruDQ
-         z0+2hOd4ZLoe9Rd0INhrCu1OoOGYfmRK098jD9TMZAYV7HRVDMBoJtmL3TKONyiyd3ad
-         p68Ud5a6F6uCMOkzd+XEk8bj2cRkadOaS1jz93O4rIDvunxJWduooXK9wfIl1baXBfla
-         lCCeu2og/C8ugiJ79D9B8ascx/Ia9RHcNk9HBWgwPyy8YDOcplDF4iBRTDJfnac4+P9/
-         Kw8KMQ9PwngK7rkQx+8u0uX2Or4uM7Gdvk3ByBJOZ/i1AfUKg0TdLJIcEG1D4RRoFtr4
-         dRqA==;
+        bh=TmX6nmEvI7Ms4bUVabaXQ6EWUDSQ7Lp0GXusiqhJNjI=;
+        fh=mOpgb7VvgtqIkq8XrEepy+CaMoN+h244sbiayl3mpS8=;
+        b=XNlykztLwKVY6o09o2KuKSAl9FpZJu2VjxT/NcDwVwk9mE+LscuCFOM9N/B3LzXTTr
+         nz8IAhWES6pOs5mwW8IxXXOAJVKDmvPQKMh4m/CHXt2ceyQwlbLvyEgxu+PK7Z0GY6Oj
+         BCYYmfy+15mlnDzESDk2JJrDs/MhsFAK6/xklMQvwdKmUhdDQOA0VYNXzs56zpo6PriP
+         HzYteHQMQnsER89euUn5LsOJwn2fFcS/CAWLWFmkwewiosGoiZrXfjIi4MUfTxCxA7KC
+         XowLXpPvGVGc64vQMZ8rlAdlyofwHUxKKKSxZmrRndJko7ZVXCugx9mrkWBU1Sxal4Za
+         IG2Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P3DLpNXL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c4bcNAp8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3b8ea7da6si1186824585a.242.2025.06.17.08.53.13
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8eceac0si1209399285a.344.2025.06.17.08.54.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Jun 2025 08:53:13 -0700 (PDT)
+        Tue, 17 Jun 2025 08:54:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P3DLpNXL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c4bcNAp8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uRYc6-00047u-3r; Tue, 17 Jun 2025 11:52:42 -0400
+	id 1uRYdD-0005ne-0I; Tue, 17 Jun 2025 11:53:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uRYRq-0007Hl-D7
- for qemu-devel@nongnu.org; Tue, 17 Jun 2025 11:42:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1uRYL0-0002qa-WD
+ for qemu-devel@nongnu.org; Tue, 17 Jun 2025 11:35:03 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uRYRl-0005rn-47
- for qemu-devel@nongnu.org; Tue, 17 Jun 2025 11:42:05 -0400
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1uRW6R-0006Ll-Pp
+ for qemu-devel@nongnu.org; Tue, 17 Jun 2025 09:11:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1750174920;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
+ s=mimecast20190719; t=1750165910;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=daHsNykC+60PUSpDLO+SebjuEw5ukuCfdxPUHgekuac=;
- b=P3DLpNXL8Ro14D+GvW+X+uLT7LvwEH5WQGCDB02NYgyz5EqR0vnbdykjKxGO5EjenYWzUW
- PHO2+ZdfUNwWkMaMksLfub5Ng900u5j7QlKLEXMqGr6JGNyGe135mEa7+xsJNcWDQNYp03
- 4yuq3uqhBQmhfJ+VTx5a5ub5aBjmysg=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-620-7Qz2L-mGOpye0Wa_RfZ7yg-1; Tue, 17 Jun 2025 11:41:58 -0400
-X-MC-Unique: 7Qz2L-mGOpye0Wa_RfZ7yg-1
-X-Mimecast-MFC-AGG-ID: 7Qz2L-mGOpye0Wa_RfZ7yg_1750174917
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-453080e4741so48123635e9.0
- for <qemu-devel@nongnu.org>; Tue, 17 Jun 2025 08:41:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1750174917; x=1750779717;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=daHsNykC+60PUSpDLO+SebjuEw5ukuCfdxPUHgekuac=;
- b=DwJBunV+pmCC5I9I0tXwWrIgxTd2WK7Q2X0EJ5EmqwwLDvE45oik0pLK0ZR2DmHxQl
- /qQxo8VafDzmqu1aZyMlZ+twdZUaaALbrg+A+oPKQO4Y0wimPTk1avBoOEOt2U13vseG
- uhhwwA77a4Fa9+MZVm27u1zfKkWBNe3LOh97ybQoQkocs+6+bz3OFQWOAWGWEpSrBX4U
- mIkgbWtb0LdKLMRLG2RXWqLdFLlu0VTV0p2Tv5m/s1tC0ugOACCN+wvOOrcn7VtM3dmC
- nPtkxxsM5z1HdppAk2PPLxFbDC8UrjJ7JdnCjgkMiERJgZxxQjXxSDLqJb6rGRHVVSWl
- 0d2w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVcSGwWTyQGywc/qCEqWKzJg/fXhsReVWfUr78nd0x38R71YUrWyt5B4PuRP39/NOGNKKyu+edgZ3rH@nongnu.org
-X-Gm-Message-State: AOJu0YzG22wV8OfANAOUhVBaIdUI2MxnBhXHE0kzaAOeJlwynw3xmVtO
- Kt5LT6iiYkNB50JLZZEDLiNuNo8IQR93k4qbKF2rLp3CUZYgLrX0XKnBMWtKN4wyz6b9M6jbGFW
- jejpoR+Sr5MHVoT7z91MJp+pa6eybs0mJWOOQEIZUry5jyVRxDVNNU5t6
-X-Gm-Gg: ASbGnct2CBA4ft0yDgl7If50ubclLnnULiizXj7pqbTWjkvIUnOMSjI8n/Hek0FpW8l
- 4hFmbxAOpzOUn85Y07InCZHJhIEMS/Ak+vGcD+j2dOL41IpLdOzVgCz/dtHXIegbRSa7PijgA83
- H3CJgL4B1//8rRxrKIwJnwsRnxZp1amx2pr9D2vpBw7i31xPQnnVfNpJsPKctmKvix36uwXN2Ns
- tH01jAUI6vAPdluGgIDpte9KFvwYEIhxQ82gO072PBvtR+qVCReXoFucVsPt8SYFi9PjIUImH4V
- aG5GYVlU1Hzz/uX2E5TQbdB8Yszo4n2Dt726LTyeItssDDBou13OOhMC9oWK0XT8kIqHLA==
-X-Received: by 2002:a05:6000:290b:b0:3a4:dcb0:a4c with SMTP id
- ffacd0b85a97d-3a57238b8e6mr11142645f8f.12.1750174916962; 
- Tue, 17 Jun 2025 08:41:56 -0700 (PDT)
-X-Received: by 2002:a05:6000:290b:b0:3a4:dcb0:a4c with SMTP id
- ffacd0b85a97d-3a57238b8e6mr11142606f8f.12.1750174916421; 
- Tue, 17 Jun 2025 08:41:56 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a568a54af6sm14195960f8f.6.2025.06.17.08.41.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Jun 2025 08:41:55 -0700 (PDT)
-Message-ID: <efd4cb44-3d63-43b5-9568-1263ccf7566a@redhat.com>
-Date: Tue, 17 Jun 2025 17:41:54 +0200
+ bh=TmX6nmEvI7Ms4bUVabaXQ6EWUDSQ7Lp0GXusiqhJNjI=;
+ b=c4bcNAp8a/cr9Jh634HIC2+X7r2azltea0FXsJTtxJ0JlXLTv2n6sy8Gx/rtG+k8z7+bZd
+ 4FD1GkeEGcnmrzunE74Rd98201zZwzK2g/+R8oC3zzG3EzDBi6utyi/dcVQP3jjO1s2Uma
+ BkEvNlvZWE8HjVd6/VYqDH73rDdCsvc=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-587-5F87UhBxPMiBsk_vpAj8_Q-1; Tue,
+ 17 Jun 2025 09:11:46 -0400
+X-MC-Unique: 5F87UhBxPMiBsk_vpAj8_Q-1
+X-Mimecast-MFC-AGG-ID: 5F87UhBxPMiBsk_vpAj8_Q_1750165902
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BC34D18001D6; Tue, 17 Jun 2025 13:11:39 +0000 (UTC)
+Received: from localhost (unknown [10.2.16.91])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 2EA7B180045B; Tue, 17 Jun 2025 13:11:33 +0000 (UTC)
+Date: Tue, 17 Jun 2025 09:11:32 -0400
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>
+Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Fam Zheng <fam@euphon.net>, Laurent Vivier <laurent@vivier.eu>,
+ Hanna Reitz <hreitz@redhat.com>, Keith Busch <kbusch@kernel.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, qemu-arm@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, qemu-block@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ =?iso-8859-1?Q?Fr=E9d=E9ric?= Barrat <fbarrat@linux.ibm.com>,
+ Rob Herring <robh@kernel.org>, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, qemu-s390x@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Kevin Wolf <kwolf@redhat.com>,
+ Jason Wang <jasowang@redhat.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Klaus Jensen <its@irrelevant.dk>, Jeuk Kim <jeuk20.kim@samsung.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Jesper Devantier <foss@defmacro.it>, qemu-trivial@nongnu.org,
+ Sven Schnelle <svens@stackframe.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Troy Lee <leetroy@gmail.com>, Joel Stanley <joel@jms.id.au>,
+ Thomas Huth <thuth@redhat.com>, Hannes Reinecke <hare@suse.com>,
+ Alistair Francis <alistair@alistair23.me>
+Subject: Re: [PULL v2 00/31] Block patches
+Message-ID: <20250617131132.GA115124@fedora>
+References: <20250612174855.238493-1-stefanha@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 5/5] hw/arm/virt: Allow virt extensions with KVM
-Content-Language: en-US
-To: Miguel Luis <miguel.luis@oracle.com>, Alyssa Ross <hi@alyssa.is>
-Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "maz@kernel.org" <maz@kernel.org>,
- "gkulkarni@amperecomputing.com" <gkulkarni@amperecomputing.com>,
- "gankulkarni@os.amperecomputing.com" <gankulkarni@os.amperecomputing.com>
-References: <20250527062534.1186004-1-eric.auger@redhat.com>
- <20250527062534.1186004-6-eric.auger@redhat.com> <875xgutpuh.fsf@alyssa.is>
- <D3582F3A-B07A-4F05-827C-B030617B77EA@oracle.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <D3582F3A-B07A-4F05-827C-B030617B77EA@oracle.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature"; boundary="UnC7cfz1zSY4rnPy"
+Content-Disposition: inline
+In-Reply-To: <20250612174855.238493-1-stefanha@redhat.com>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -39
 X-Spam_score: -4.0
 X-Spam_bar: ----
@@ -142,8 +130,7 @@ X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.89,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -156,63 +143,33 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fZfVOvdWmJy9
+X-TUID: gsw1A43lZbEX
 
 
+--UnC7cfz1zSY4rnPy
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On 6/17/25 5:23 PM, Miguel Luis wrote:
-> Hi Alyssa,
->
->> On 17 Jun 2025, at 14:17, Alyssa Ross <hi@alyssa.is> wrote:
->>
->> Eric Auger <eric.auger@redhat.com> writes:
->>
->>> From: Haibo Xu <haibo.xu@linaro.org>
->>>
->>> Up to now virt support on guest has been only supported with TCG.
->>> Now it becomes feasible to use it with KVM acceleration.
->>>
->>> Also check only in-kernel GICv3 is used along with KVM EL2.
->>>
->>> Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
->>> Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->> Hi!  From what I can tell, this will produce an error on hosts that
->> don't support nested virtualization when QEMU is invoked with -accel
->> kvm:tcg
-> I didn’t know '-acell kvm:tcg’ could be used as a fallback mechanism between
-> acceleration modes. May I ask whether do you manage the ‘-cpu’ type for ‘-accel
-> kvm:tcg’ with cpu ‘max’ ?
-Does it exist?
-qemu-system-aarch64: -accel kvm:tcg: invalid accelerator kvm:tcg
+Applied, thanks.
 
-Alyssa, didn't you mean -accel kvm or --accel tcg
->
-> But more importantly, is this what you’re referring to?
->
-> Although,
->
->> -machine virtualization=on,
-> should work for both '-accel kvm’ and ‘-accel tcg’.
->
->> but I don't think that's the ideal
->> behaviour.  It would make more sense for it to fall back to the first
->> permitted accel option that does support running the machine as
->> configured, so if hardware nested virtualization is not supported, it
->> should fall back to TCG.
->>
->> I maintain an OS development environment that includes scripts for
->> running images in QEMU, where running KVM on those images is a
->> requirement.  Currently, those scripts simply force TCG on aarch64.
->> With this change, to take advantage of KVM NV support, I'd have to try
->> to identify in the script whether NV would be supported.  QEMU would be
->> in a much better position to determine this and fall back to TCG if it's
->> unsupported, like how the -accel option with multiple values usually
->> works.
-> Thanks,
-> Miguel
+Please update the changelog at https://wiki.qemu.org/ChangeLog/10.1 for any user-visible changes.
+
+--UnC7cfz1zSY4rnPy
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCgAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmhRaYQACgkQnKSrs4Gr
+c8hNdQf9EYHh872rurOBpw4KzZKK3ONgdH2SzUIUadGN0zwxCJYpHsOPbofxnV9c
+UE44CCvAubzLy/oM+IlcVxEI2qALscoZpihh+nqoClbIoRdtwZWEuZmfbTQm3rIQ
+OZ3pqupgr4empImY5EirdAp3jv/EfwTxp29BWyrJMHP0is4JjyioSi+9RuWKUPCW
+YxR7wkxlUIIhCz8DOpgN32cBpFIta2n28EJMoW7RWIR5zIhs6pr7WjOw8rGTaqF9
+XqnREHypwUNZU2LCYIRDceFCRdIFGOBBitvcaxnc+2ENN02bZTm3LppGsnDWEQwP
+jC9u2Gt6qMN4EU+j/FRY/ejgYOI9xQ==
+=kvUW
+-----END PGP SIGNATURE-----
+
+--UnC7cfz1zSY4rnPy--
 

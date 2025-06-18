@@ -1,76 +1,78 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp3163255njc;
-        Wed, 18 Jun 2025 05:57:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVbXCThCbXRsbG73rG2R/Kx8T8zhwljP+uKDstm0GwQP8LulCcXgKxXm+LV4R+Sq49gLb2x/EDUyIWb8Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IGvjSHImr38IVEpHpJCoHWSSz8RzDSGcsV9/PlyImvGAe55BYroe4kgiowGn+L4Ho+ZtKzj
-X-Received: by 2002:a05:620a:240d:b0:7d3:8fa7:8885 with SMTP id af79cd13be357-7d3c6c1f5b8mr2727056685a.22.1750251428144;
-        Wed, 18 Jun 2025 05:57:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750251428; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp3249715njc;
+        Wed, 18 Jun 2025 08:04:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVQlvZ4Lj6FjFl036G/f+X53jGZ5heJLG5Vgcy+GZHuoSfu14s1jv9koI7LNnwW6dQXpIAbF3Wj+YiADw==@linaro.org
+X-Google-Smtp-Source: AGHT+IF3Qhow5wDfxzHY/UbE4c22yRSsZsG12EtjxnlGLhJdM7tIUrg8ePGEL+P3o63zVKBnw2dJ
+X-Received: by 2002:ac8:5a0f:0:b0:476:ff0d:ed6c with SMTP id d75a77b69052e-4a73c5a5ae7mr274320131cf.40.1750259084452;
+        Wed, 18 Jun 2025 08:04:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750259084; cv=none;
         d=google.com; s=arc-20240605;
-        b=Uz5mzJkrHZ87eI7g1kV9ll1PSIwBzpeFnhJYkMfg7ci2G2YH9L2WxTomfIaJX2AJ7o
-         /oMHfcjXKAQFlm3gB6H80JKhkjT1dQQXocx+7vHhtlStuzyRnOYjgwj/iJBSCLgJFmHj
-         +ZCDhOnbwjACxfe+aLmEPFlUGsrFgpDY1/kO9qxeYdKlQxE74eY2/zPz8M7CZ7uJkZLr
-         MK2g/ImB0PT+viCoeOoJk50I4wbrW7HJvtOMar5y9bAfGsopQT/ArCj0JNyVqba4tP12
-         jzPA1zaomaAakMLEmLPccOZI+F/pDNg+ENevBKktZVh9fE8EzHj0N4HVs32XcgifqWRw
-         //UA==
+        b=YJEiI5vjgSIQHAmDU6e84z7yk5D9e2lFTk9CUC778kpoe3QSbd8jc3VjBuqRIeViZF
+         9znIYzLVoXIe3omGReIMwhjUrUwQf00bPjjy1gwdmrwX6KUkYQWleuPEFWFHlxlkcrLR
+         ALVV8a555RsYAoY1eCmRM8gyMI6AyigxCm3nSred7iwiwfcAZk9WaGAm18/2g6/4idXl
+         TMP1dxyy/Q2Jueltb+SXdlaSfAfpXpouf+55YuvCkboeYYJ3Un2UWstr+BDGHTmCkf1e
+         vCXuHVkaXMm2KAv8CpNjHrUFYUaU6tU6Hxq4L4BPS8eBhkFAqsOAu9lhFxL2GjlyaQSW
+         kuoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=iVT4CYTrRbwDFpdRJZ8i0vYNlEKNMmrFceOEDqWMH+g=;
-        fh=snf0JAjI+djCtGPc5LFAhbEOndbZ/93YR4Dd8rkCxGg=;
-        b=TXAYinU8+n3U2zy+KxP5G0Ep/jYQQskRzi+hDIid0v7H+Ar/T7kSbpmLtu9bFOYAw1
-         +uyL3BIt8gxuE/0Ihsj/hwEpMe2kER3f2o6dcqjsvMfWNuZEtq5qCdWjGnhZh3qVDsFY
-         aRmOzkoDsJgnv0TMRcsL0SOsQ5ELR9bwPweZ99dgxonGAc8pnYyObkOlWL56BsoNd73s
-         TpNi+qhybhfVWK0rITUYU3JPJ3UaXCg7xLBKyELyIg6kq5aMd00ZcASK6ctlul+hH3mx
-         vJ/XQnlyJHxBv3BlpVzw/O6MhKApkI7yvsJlHxe+uQqvWsK3I/rpAp1gx6lUfh/hnThC
-         BNrA==;
+        bh=zw2N7rO8IZbrSIwZgUJX2kZ91Aia55esppxXkIyfR/w=;
+        fh=Z2qDztSV8CWVU0ChRWBZcc7s5uQfKpc4TkuCRqvdIcI=;
+        b=e6XnPspjVe+Lxk6+TMBswtyeIJ0UoFa/QncTCSdALt8ka3YGuVFQ6QEJAxZTaDHt2d
+         Z6wM6QJs/pfXBh0cBgadfOlnRXsXGhnR1brSSS+LSBDFQNT7MHVEJ1LESQjRn1Gj7xET
+         l2ty03Wu4csy1pMAWJ+wAKnwu9pddiDL1Ta6MnFoqdFE4OcHXiWEv54U/PWqWlYpygrN
+         ApoIkTdCuQeejUNSWKuBZt3fGe22KJLIiQlrhyTTg2D8aUdMSZ5HSRE8/RIczT27aXPY
+         lwoa4r9jmdUpGcXdLf78+IJVor4GtyI+VHDFOI6mm49ZviXPpGVsotgPhJDDMhJ0kUTR
+         y01Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3e7eb2976si180524785a.35.2025.06.18.05.57.08
+        by mx.google.com with ESMTPS id d75a77b69052e-4a761fbafa1si23842731cf.318.2025.06.18.08.04.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Jun 2025 05:57:08 -0700 (PDT)
+        Wed, 18 Jun 2025 08:04:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uRsLE-0000r4-4h; Wed, 18 Jun 2025 08:56:36 -0400
+	id 1uRuKw-0008HY-Po; Wed, 18 Jun 2025 11:04:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=zn5s=ZB=kaod.org=clg@ozlabs.org>)
- id 1uRsLC-0000ql-0P; Wed, 18 Jun 2025 08:56:34 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ id 1uRuKu-0008H7-SH; Wed, 18 Jun 2025 11:04:25 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=zn5s=ZB=kaod.org=clg@ozlabs.org>)
- id 1uRsL4-0007b0-1O; Wed, 18 Jun 2025 08:56:33 -0400
+ id 1uRuKs-0007Dq-Dt; Wed, 18 Jun 2025 11:04:24 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bMkJG1BT8z4x8y;
- Wed, 18 Jun 2025 22:56:14 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bMn833m91z4x5k;
+ Thu, 19 Jun 2025 01:04:19 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bMkJ95TKrz4x3S;
- Wed, 18 Jun 2025 22:56:09 +1000 (AEST)
-Message-ID: <75103d3d-1cee-4531-8d8b-ed98eba36fcb@kaod.org>
-Date: Wed, 18 Jun 2025 14:56:05 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bMn802yt8z4x11;
+ Thu, 19 Jun 2025 01:04:16 +1000 (AEST)
+Message-ID: <0e4c20ad-8271-4122-ae32-4b8e9419228f@kaod.org>
+Date: Wed, 18 Jun 2025 17:04:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/19] i3c: aspeed: Add I3C support
-To: Joe Komlodi <komlodi@google.com>
-Cc: qemu-devel@nongnu.org, venture@google.com, peter.maydell@linaro.org,
- steven_lee@aspeedtech.com, leetroy@gmail.com, jamin_lin@aspeedtech.com,
- andrew@codeconstruct.com.au, joel@jms.id.au, qemu-arm@nongnu.org,
- Jeremy Kerr <jk@codeconstruct.com.au>
-References: <20250613000411.1516521-1-komlodi@google.com>
- <23deafc7-d832-470b-8d8e-aea0125d756f@kaod.org>
- <CAGDLtxti58hRfOjtr5RJuQE93+UWMOLhfM+YivwU4UZdgXRJfg@mail.gmail.com>
+Subject: Re: [PATCH v1 2/2] hw/misc/aspeed_scu: Support the Frequency Counter
+ Control register for AST2700
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com
+References: <20250618080006.846355-1-jamin_lin@aspeedtech.com>
+ <20250618080006.846355-3-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -115,16 +117,17 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <CAGDLtxti58hRfOjtr5RJuQE93+UWMOLhfM+YivwU4UZdgXRJfg@mail.gmail.com>
+In-Reply-To: <20250618080006.846355-3-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=zn5s=ZB=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -40
 X-Spam_score: -4.1
 X-Spam_bar: ----
 X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.067, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -140,42 +143,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +zetYm5yrMfv
+X-TUID: yxqxbvL9wCao
 
-Hi,
-
->> This lacks a MAINTAINER.
+On 6/18/25 10:00, Jamin Lin wrote:
+> According to the datasheet:
+> BIT[1] (SCU_FREQ_OSC_EN) enables the oscillator frequency measurement counter.
+> BIT[6] (SCU_FREQ_DONE) indicates the measurement is finished.
+> Firmware polls BIT[6] to determine when measurement is complete.
+> The flag can be cleared by writing BIT[1] to 0.
 > 
-> Ah, right. I can add that in v2. I can add myself to it, is there
-> anyone else who should be on it?
-
-Would any of your colleagues be interested too ?
-
->> Could you please provide functional tests ? some with a standard I2C
->> device attached to an I3C legacy bus too.
+> To simulate this hardware behavior in QEMU:
+> If BIT[1] is set to 1, BIT[6] is immediately set to 1 to avoid
+> firmware hanging during polling.
+> If BIT[1] is cleared to 0, BIT[6] is also cleared to 0 to match
+> hardware semantics.
 > 
-> I can work on that, probably v2 or v3 depending on how long it takes.
+> The initial value of this register is initialized to 0x80, reflecting the
+> default value confirmed from an EVB register dump.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
-It can come later.
 
->> Are there any other stakeholders interested in the I3C to get feedback ?
->>
->> Have there been any changes since:
->>
->>     https://lore.kernel.org/qemu-devel/20230331010131.1412571-1-komlodi@google.com/
->>
-> Nothing too substantial. I decided not to upstream remote I3C since
-> it's unlikely it would be useful upstream.
->
-> I think there might be a couple bugfixes in the DwC controller as
-> well, but I don't remember off-hand what they were. If there were any,
-> they were all minor.
-The code looks code AFAICT but we need someone with a minimum I3C
-knowledge to take a look. Could the Linux maintainers help review
-this series ?
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
 C.
 
+
+> ---
+>   hw/misc/aspeed_scu.c | 6 ++++++
+>   1 file changed, 6 insertions(+)
+> 
+> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+> index 4930e00fed..11d0739108 100644
+> --- a/hw/misc/aspeed_scu.c
+> +++ b/hw/misc/aspeed_scu.c
+> @@ -176,6 +176,7 @@
+>   #define AST2700_SCUIO_UARTCLK_GEN       TO_REG(0x330)
+>   #define AST2700_SCUIO_HUARTCLK_GEN      TO_REG(0x334)
+>   #define AST2700_SCUIO_CLK_DUTY_MEAS_RST TO_REG(0x388)
+> +#define AST2700_SCUIO_FREQ_CNT_CTL      TO_REG(0x3A0)
+>   
+>   #define SCU_IO_REGION_SIZE 0x1000
+>   
+> @@ -1022,6 +1023,10 @@ static void aspeed_ast2700_scuio_write(void *opaque, hwaddr offset,
+>           s->regs[reg - 1] ^= data;
+>           updated = true;
+>           break;
+> +    case AST2700_SCUIO_FREQ_CNT_CTL:
+> +        s->regs[reg] = deposit32(s->regs[reg], 6, 1, !!(data & BIT(1)));
+> +        updated = true;
+> +        break;
+>       default:
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "%s: Unhandled write at offset 0x%" HWADDR_PRIx "\n",
+> @@ -1066,6 +1071,7 @@ static const uint32_t ast2700_a0_resets_io[ASPEED_AST2700_SCU_NR_REGS] = {
+>       [AST2700_SCUIO_UARTCLK_GEN]         = 0x00014506,
+>       [AST2700_SCUIO_HUARTCLK_GEN]        = 0x000145c0,
+>       [AST2700_SCUIO_CLK_DUTY_MEAS_RST]   = 0x0c9100d2,
+> +    [AST2700_SCUIO_FREQ_CNT_CTL]        = 0x00000080,
+>   };
+>   
+>   static void aspeed_2700_scuio_class_init(ObjectClass *klass, const void *data)
 

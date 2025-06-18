@@ -1,344 +1,197 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2652936njc;
-        Tue, 17 Jun 2025 10:01:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVP8dxLYL7vZZu9gUY/SiL2Bm2DJCo/QGPAfOwQyoHmFSFFj8CzA4ECm6mZOyiKzr4K2nLDXfXpM/254Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IHv+IeAWpUTd3c9ckXQZXxVsu8p/g0EzWrWVdAlbSPY0Ql/V5mXy/b7yMKeQ/KWgf1kio3N
-X-Received: by 2002:a05:6000:2404:b0:3a4:eecd:f4d2 with SMTP id ffacd0b85a97d-3a572e821efmr11712402f8f.38.1750179700485;
-        Tue, 17 Jun 2025 10:01:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750179700; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2895045njc;
+        Tue, 17 Jun 2025 18:44:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXLcxhLxQxvydQtAMjh1NOyYCvJXTMxMrXVdaOvRA5Z9JuWX3FNiw9jR8xtEjcXIfRE6Mi3nigizO+SMA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEMNJ3emQ3nHmxiM4wBdLd7CaX+EK776WX101X7IHhSrMqNPDgkqkNY3WPuhBDriBN6Xr42
+X-Received: by 2002:a05:620a:199e:b0:7c5:5cd6:5cf2 with SMTP id af79cd13be357-7d3c6c1ee66mr2195063785a.17.1750211087832;
+        Tue, 17 Jun 2025 18:44:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750211087; cv=none;
         d=google.com; s=arc-20240605;
-        b=fkNyl3DzB+HLo7NqNsb4VDw1FHM2vi9GUdcZ1lbaYL0XB10GFdKOWqY4TK8O5JfXAR
-         B9CHW+iRO92KCJPOB9G5jHBO8iNg3PruGeNJp31yb/b64QraF7907cXTIoT6hiNBsLY1
-         26HOtdjq5o6z5/f4g36KWTqLJUQgTbb+RgU07kL/CqyDL3iFZi7kjPIViTWwpNqYZXUN
-         XZkdGYfpJajND8LxZeLR3Gc5YB8puxNkGhOTkSUkeDA+5oD0VBz+X4q3Yh/QY7PcMAKw
-         pCwFd10hZ0ELB9Ibfrbl9Xrf5vUYK9ueaFZ83j623JiLXkQzxQDxG6RzSkYACiFmzA5j
-         DHaw==
+        b=URC4XfApp/9PEC8VFufnbyIXAxBSgIcdW7ZDCJQaOiFl75T/pR2YYAUy4AVuAlp7YD
+         v5tGYTUnevV+VjBa4WZEKB0dYi8S19B2rUrI1MHPQDjxOwOpVynydMYmAlVw7v46KoEq
+         ECtJv0M3fcfJ53PphA+KZCFkNLXieNLLwBMj//GjNNCDgDFbHL+3pp2GKGsn1WXNDVVA
+         niIuv3/WcPHiVgfJsgVnUZOurfEX7w4JRIBOPZp5lg7AG2z3TlQCCUbyJUmFSAXEJTzK
+         DHx2NxVu+vW+OIhHmaJI6jMrzBElyG0xyaS0GpRUu0v9mt2qONRkYI4DISiFNXjRnwO4
+         EhwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=LaMKvH58Hm/XAUBbAWYf0p8rTkd3zwOJrBXUyRUG8fc=;
-        fh=6Nz66s7EvgTKwULulmvbHcX4Bd4exYuD8+J+xpsYpak=;
-        b=A5ZDxSLad039fVF0nxhLuxHbP/DKFq1kRHK3ApUMh7JwTvJWwtzaeTKo9V5hqtjehI
-         PhMV5Cf2ibMStDWtQct+NysyrA2u45OJsTaYx4JVDXAaIPxD+ngEiI/5uDLQbR7u+tPQ
-         MVnMGkN86OsangB9IYfnkFT237yKe8/25FDqm9qOdTrI50qIdgui4CTTHKh1azVHm/I+
-         K/8VW8FditKQtE56toaa56QAwCPcBbtNqqxYxHyIVcne9S6oM45HEICNxFFxWdLla8hT
-         ESrJ51ewOUHlkc26dcJTqiAOmjQlOZdUKytglZ4wLwqrBHLsxxNiTo1P+XL3FtQ0xOX2
-         bMLg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=RX+3aU0eDanYb6DkwNX/vUApo5z9SdgWf84aaYJNi0E=;
+        fh=lCcDh4eGOiXHSn/Qw6cbEAFDVC4JBLKOi3hHkkhbP6k=;
+        b=hmVw+2c0cRLZ/0+oDZNpbJeJxT6YGZIGdqIoQTIEhnzRtaOxyOGOR+QcDmdJhDmquy
+         ZUOFYw8PwGuB4p9KsITXi8BGzf9DtGXYldHrs2ZvKfIHwC1KcJ/R+Dexr5LXf9O9+3Gg
+         n/zUXe9taK1MEuRfIsn0Vu4S9sYygclsitcQ8MFHccZpqQsqS4Y6CLjNwmlLaX3de9NI
+         WccckMLZbqCg2tc+4ilPA9h83DuFEPSHMkHZQ5lRPUnlCkt7Zyi66IHQcU3eaCBjhjJ0
+         /wD1TPLTGr+6NgVS9bCDAwytyUBQLhfpeQ8YDEHENHdSNi+Ixeo4y2CzuWi2lmOOLEj7
+         2s1g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LkahUzfy;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a568b0b572si7945745f8f.279.2025.06.17.10.01.38
+       dkim=pass header.i=@linaro.org header.s=google header.b=scFKVGWz;
+       spf=pass (google.com: domain of qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8f30639si1296756985a.521.2025.06.17.18.44.47
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Jun 2025 10:01:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 17 Jun 2025 18:44:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LkahUzfy;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1750179697;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=LaMKvH58Hm/XAUBbAWYf0p8rTkd3zwOJrBXUyRUG8fc=;
-	b=LkahUzfyj1TRCg1h0z3ZHrjizpXWcODGKAoflIAfugVX9HuK6vFRGNrJNVC+iA6UyFUzAV
-	B4Y+96SWdTF1zSJutr8m0enztgeaH3wySml0Zvl8MpDXPsHrLLKSRrVs629FVaHEKk96Rx
-	TlLxm44DsozjumpSCaBNhNMIKaNYI/c=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-356-mXjli81cOna6LSihazQJQg-1; Tue, 17 Jun 2025 13:01:35 -0400
-X-MC-Unique: mXjli81cOna6LSihazQJQg-1
-X-Mimecast-MFC-AGG-ID: mXjli81cOna6LSihazQJQg_1750179694
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-451d7de4ae3so39195905e9.2
-        for <alex.bennee@linaro.org>; Tue, 17 Jun 2025 10:01:34 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=scFKVGWz;
+       spf=pass (google.com: domain of qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-discuss-bounces@nongnu.org>)
+	id 1uRhqY-0003I7-49; Tue, 17 Jun 2025 21:44:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uRhqW-0003HD-FJ
+ for qemu-discuss@nongnu.org; Tue, 17 Jun 2025 21:44:12 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uRhqT-0003ct-HV
+ for qemu-discuss@nongnu.org; Tue, 17 Jun 2025 21:44:12 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-313f928718eso3061434a91.0
+ for <qemu-discuss@nongnu.org>; Tue, 17 Jun 2025 18:44:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1750211047; x=1750815847; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=RX+3aU0eDanYb6DkwNX/vUApo5z9SdgWf84aaYJNi0E=;
+ b=scFKVGWzDSfFRwPVm2vDRBJAlyjNMUPUJGprTotuEkShXe3a2AEucX49MR13An9Zey
+ vgCGvsMkDAFAG2POx0cXWD/EAQwZZ1Nuw+JIgXy4wpD7YE7gOsp9J9FwONVUU2ME532u
+ N3saX1dA9RYA4WOemUPVNG8ctpDlPq0iV1E6bLfDK46/lfATuA6J3AY3UxeXP/Uc78b1
+ oWn5GFepcCkJNhvUi+/YN3krgpsgULz5YadlJYcml6yrQE3j1j0WMOtuQMXKCwOPLyd+
+ MNz5/cFgrYXS61VeFwRieXSY4zOZeA9B25F8SDFBlLX+0QVePcH89UP6lJf8RqhE/DJk
+ n3TQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750179693; x=1750784493;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=LaMKvH58Hm/XAUBbAWYf0p8rTkd3zwOJrBXUyRUG8fc=;
-        b=oKMD7iizkibfBjuSJLg19FiQ240ReF9utxFXkN828y+4+dClefOuysQRIv9Id6Cbhg
-         b4SHQUg5JXB2FTR/kyW4clYQz5TTkFYysiYRpQ+Ti/nh9wJOFXnCvTOYdwoKmGYa+l4n
-         ELCBAbPp816giSre5sjqX3oWk0DKi8TUL1NqQW29j1HTeuZZf0kTyr4hLx2UwjLyQZwl
-         soDXLTizIzN3oMseZiNE+MuDDTYmFHUozsg7L8PjhvfH6TaMAUJJWCiCvlqqIU3tdX6q
-         YJojW6fp1pYGnGZb9QaYurl4PjjxEq0lMzQDgX7QmH7kmtf8h6gFcL6H1F0ChevEOOx5
-         9EwA==
-X-Forwarded-Encrypted: i=1; AJvYcCX5LMuM6XgrO76kL9lW6zTbcYAdQsCtDryEI7Hp/eR2LjVfYYRf9SzPtXnYemGAGeeJit9S05fzRzm/Fw==@linaro.org
-X-Gm-Message-State: AOJu0YxVIg9+PNY3SRqIhxJX1xyyy6bq0HmobZszN4aCa0cVo8r4uKmq
-	QBc9qVPiTo2J9c6cCGwYHV9p0Gr3aq3IfK5bj03HhgFjA0EwvXM6Rl3stla7W/zpEa0aJQyWDhk
-	Uv6GHMRwBMdF5S+MI0xGKarAIB5HmdNDuiidpEncmGnPBhj/KJjGT7eH2Eg==
-X-Gm-Gg: ASbGncvjkorpqNeLiD+lKobrk1/5T1Oz+5U7LCWqiNixJc6U1ynTmGX/bmZdX5Q3NIw
-	jZJ7O8ASulC3W0uYauqUz4ubdJ/dzLwLPh9N1H/BfsAzJguOdDVzxItZBfpLsGtBx80AdY1iYYP
-	iq+NSk3uxBamuhoxyUyk0gLvwKoatQ7fllycMh2o3aNqH82vqqIt4sptp//IL62Q8LmG9ZnHSoP
-	kwlwvnYyBoIA4wBGTtJm/D4Z7lOEJKsXdW4qO2PBg8P4AhLz3Ahwrlfn2eG4QCNAYI6YY94ayX3
-	gxVs+ColZy6rzGCAb6j8ehXtfIBMISlX9JupXt7JrKbvX9LvGI+2AZJD3mFUpdsW2fQyHw==
-X-Received: by 2002:a05:600c:6095:b0:43c:fffc:7886 with SMTP id 5b1f17b1804b1-4535627dbe5mr20746975e9.8.1750179693169;
-        Tue, 17 Jun 2025 10:01:33 -0700 (PDT)
-X-Received: by 2002:a05:600c:6095:b0:43c:fffc:7886 with SMTP id 5b1f17b1804b1-4535627dbe5mr20745125e9.8.1750179691389;
-        Tue, 17 Jun 2025 10:01:31 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a568b18f96sm14621701f8f.66.2025.06.17.10.01.29
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 17 Jun 2025 10:01:30 -0700 (PDT)
-Message-ID: <80ef1248-4fb1-48d8-9c11-f42d08641e9d@redhat.com>
-Date: Tue, 17 Jun 2025 19:01:28 +0200
+ d=1e100.net; s=20230601; t=1750211047; x=1750815847;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=RX+3aU0eDanYb6DkwNX/vUApo5z9SdgWf84aaYJNi0E=;
+ b=M7p3mKo3cVZpSHfv06HzX7Zn33PCDm4uCZ+goVPRSOA6wu8I6EGPlknaHMN38MrpiJ
+ BHqB6u2RvXRj53p5KNTVkKC1SO8ju+0tOfSAb2oM9QUS0MJFnpwYD7xbOhoZQL4VYQWL
+ h5dGjM5SakFIRNemLVs+lEGZKzPqIToLum3xXqjMMsHmTzk1x+vEa6Hz7dkehu5b3/hq
+ 0pZRMtaqhzrGsvbU9QbEBPHW8OiJJh6yFv00iqZWtkrux9YWHATI41c+0s/bRPD2GYs1
+ U/cQDvitCYCnPgw/uHf7dgxH3+a6vZPj+2v2uMHKIiISFDGZwkuQCPEfP+iJhSxk0Ttb
+ RKUg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVpCYNMZ2MgFgOgCtA4431JSidCBe5w7iRy/9NmRqYqnp6pSHQcAavESOouu/csMWv/0FgINeUkG2FnMFc=@nongnu.org
+X-Gm-Message-State: AOJu0YxqYpHrAUkMa+BTdEJzKfVyo599RsywRL6rysqJbwTcfwufMFrk
+ bsV6whwMYA79no8d9VpImeFTbNNXeWwFd+VeD6YWLInZIupRukIL05Hx1j3EXRk4hKA=
+X-Gm-Gg: ASbGncul9+jK8AVs9E64WKeFnE8H+bCF2skZKAc9jgZ91IH4i/SV+YoH987y2iUYfYe
+ LKF1FlJemu8czjLTFgBiOR3TgmPZrIlAKwzorzRkOE8Sq1SnXc8S12DtQhV96p5WPJ4KWN0mrmd
+ qY0iHFXL/QpR717S+Sr8Jv5xUHy0lueWS1zK6V7JJDuaM1/NELryjNMK6E7Jt4Fbf2tYXM/PcPt
+ h0KIdWgZnwPyD371xDJcUWdmEXKYseRIN8x9T4r13jT4QVzqPkXcXOGkiPdJH7I5iEWJVDtRtol
+ +PAHTeYLdcdSBR3b+tXS+GdRrtFlzls+X6EUU6AXImKaUeo1Jwv2fOTiVwx7ShiXHHTaPFjRqWP
+ U3KZM8PTXBFEWjVtLeNLKLa829Spb
+X-Received: by 2002:a17:90b:1e07:b0:311:f99e:7f4e with SMTP id
+ 98e67ed59e1d1-313f1cae835mr26944248a91.16.1750211047370; 
+ Tue, 17 Jun 2025 18:44:07 -0700 (PDT)
+Received: from [192.168.0.4] (71-212-47-143.tukw.qwest.net. [71.212.47.143])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2365e0cffe6sm87274865ad.245.2025.06.17.18.44.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 17 Jun 2025 18:44:06 -0700 (PDT)
+Message-ID: <3e1e6a7f-18d4-4667-b1a7-6857bdc3de66@linaro.org>
+Date: Tue, 17 Jun 2025 18:44:05 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH v4 5/8] qtest/bios-tables-test: Add test for when ITS is
- off on aarch64
-To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
- philmd@linaro.org, mst@redhat.com
-Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, udo@hypervisor.org,
- ajones@ventanamicro.com, peter.maydell@linaro.org, imammedo@redhat.com,
- anisinha@redhat.com
-References: <20250616131824.425315-1-gustavo.romero@linaro.org>
- <20250616131824.425315-6-gustavo.romero@linaro.org>
- <fe166574-9e53-4e27-9c12-c91f3fc774c7@redhat.com>
- <3881403f-c618-47d1-afec-27592bd7be99@linaro.org>
- <74c1948a-3c90-431b-805f-b5a4238beecb@redhat.com>
- <e1c05a4c-ead6-437e-9287-84b77fcc9df4@linaro.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <e1c05a4c-ead6-437e-9287-84b77fcc9df4@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: LWVZpQ9-uOQNvqXPgfW8jns6_0z468_yO9HEVRlfAic_1750179694
-X-Mimecast-Originator: redhat.com
+Subject: Re: QEMU emulating ARM Neoverse N1 unexpectectly emulates `retaa`
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ root@wjsota.com, qemu-discuss@nongnu.org
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+References: <1235E663-AD2F-499E-8CF9-16E54A1C01DD@wjsota.com>
+ <7d1ddf7e-b16c-4820-958c-0d03bf8479d1@linaro.org>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <7d1ddf7e-b16c-4820-958c-0d03bf8479d1@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: qeRbKrGZAhGj
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-discuss@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-discuss.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-discuss>,
+ <mailto:qemu-discuss-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-discuss>
+List-Post: <mailto:qemu-discuss@nongnu.org>
+List-Help: <mailto:qemu-discuss-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-discuss>,
+ <mailto:qemu-discuss-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: z8g6Tu/YeZT2
+
+On 6/15/25 22:09, Philippe Mathieu-Daudé wrote:
+> Hi Solomon,
+> 
+> Cc'ing the qemu-arm@ list.
+> 
+> On 14/6/25 06:51, root@wjsota.com wrote:
+>> Hi!
+>>
+>> Is `qemu-aarch64 -cpu neoverse-n1` supposed to emulate the `retaa` instruction?
+>>
+>> I have a binary called `main_pac` compiled from https://learn.arm.com/learning-paths/ 
+>> servers-and-cloud-computing/pac/example/ .
+>>
+>> The compiling command is `aarch64-linux-gnu-gcc -march=armv8.5-a -fPIC -pedantic -Wall - 
+>> Wextra -ggdb3 -O0 -mbranch-protection=standard -fno-stack-protector -fPIE -static main.c 
+>> -o main_pac`. The binary includes the `paciasp` and `retaa` instructions associated with 
+>> ARM PAC.
+>>
+>> ```
+>> (gdb) disas main
+>> Dump of assembler code for function main:
+>>     0x0000000000400858 <+0>:    paciasp
+>>     0x000000000040085c <+4>:    stp    x29, x30, [sp, #-32]!
+>>     […]
+>>     0x0000000000400898 <+64>:    ldp    x29, x30, [sp], #32
+>>     0x000000000040089c <+68>:    retaa
+>> End of assembler dump.
+>> (gdb) quit
+>> ```
+>>
+>> When emulated using `qemu-aarch64 -cpu neoverse-n1` , the program completes without issues.
+>> ```
+>> user@dell-op7020:~/learning/arm_learning_path_pac$ qemu-aarch64 -cpu neoverse-n1 
+>> main_pac test
+>> Hello World!
+>> user@dell-op7020:~/learning/arm_learning_path_pac$
+>> ```
+>>
+>> This is the case for two versions I tested:
+>> - v9.2.1 (Debian 1:9.2.1+ds-1ubuntu5)
+>> - v10.0.50 (v10.0.0-1610-gd9ce74873a)
+>>
+>>
+>> The expected behavior is for an Illegal Instruction exception to occur. Citing the Arm 
+>> A-profile A64 Instruction Set Architect Version 2025-03, the `retaa` instruction should 
+>> return an Undefined Instruction error when the PAC feature is not implemented.
+>> ```
+>> if !IsFeatureImplemented(FEAT_PAuth) then EndOfDecode(Decode_UNDEF);
+
+Yes, trans_RETA() is missing the pauth check.
 
 
-
-On 6/17/25 6:01 PM, Gustavo Romero wrote:
-> Hi Eric,
->
-> On 6/17/25 12:51, Eric Auger wrote:
->>
->>
->> On 6/17/25 5:12 PM, Gustavo Romero wrote:
->>> Hi Eric,
->>>
->>> On 6/17/25 10:34, Eric Auger wrote:
->>>> Hi Gustavo,
->>>>
->>>> On 6/16/25 3:18 PM, Gustavo Romero wrote:
->>>>> From: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>>>
->>>>> Arm64 GIC ITS (Interrupt Translation Service) is an optional piece of
->>>>> hardware introduced in GICv3 and, being optional, it can be disabled
->>>>> in QEMU aarch64 VMs that support it using machine option "its=off",
->>>>> like, for instance: "-M virt,its=off".
->>>>>
->>>>> In ACPI, the ITS is advertised, if present, in the MADT (aka APIC)
->>>>> table and the remappings from the Root Complex (RC) and from the SMMU
->>>> I would rephrase "and the remappings" by "while the RID mappings from
->>>> ..."
->>>
->>> hmm true. Do you think it would be even better to say something like:
->>>
->>> "while the RID and StreamID mappings from the RC and from the SMMU
->>> nodes
->>> to the ITS Group nodes are described in the IORT table."?
->>>
->>> I'm saying that because I understand the map from RC to ITS is from
->>> a RID to a DeviceID, while map from the SMMU to ITS is from a
->>> StreamID to
->>> a DeviceID, hence say "while the RID and StreamID". Does it make sense?
->> I think I won't bother and would simply talk about "ID mappings" which
->> is the generic term used in the IORT spec.
->
-> But I just dove into it because you suggested to use "RID" (aka ReqID,
-> aka
-> Requestor ID, ah, I "love" these variations in specs), so I thought, well
-> RIDs are related to RC and StreamIDs related to SMMU, so, actually,
-> you meant
-> "while the ID mappings from" instead of "while the RID mappings"?
-Yes I meant "while the ID mappings from". sorry for the misunderstanding.
-
-Eric
->
->
-> Cheers,
-> Gustavo
->
->>>
->>>>> nodes to the ITS Group nodes are described in the IORT table.
->>>>>
->>>>> This new test verifies that when the "its=off" option is passed to
->>>>> the
->>>>> machine the ITS-related data is correctly pruned from the ACPI
->>>>> tables.
->>>>>
->>>>> The new blobs for this test will be added in a following commit.
->>>>>
->>>>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
->>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>>> ---
->>>>>    tests/qtest/bios-tables-test-allowed-diff.h |  2 ++
->>>>>    tests/qtest/bios-tables-test.c              | 21
->>>>> +++++++++++++++++++++
->>>>>    2 files changed, 23 insertions(+)
->>>>>
->>>>> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h
->>>>> b/tests/qtest/bios-tables-test-allowed-diff.h
->>>>> index dfb8523c8b..a88198d5c2 100644
->>>>> --- a/tests/qtest/bios-tables-test-allowed-diff.h
->>>>> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
->>>> I still fail to understand whether empty tables + update if the
->>>>
->>>> bios-tables-test-allowed-diff.h need to be done prior to adding the
->>>> new test.
->>>>
->>>>    * How to add or update the tests or commit changes that affect ACPI
->>>> tables:
->>>>    * Contributor:
->>>>    * 1. add empty files for new tables, if any, under tests/data/acpi
->>>>    * 2. list any changed files in
->>>> tests/qtest/bios-tables-test-allowed-diff.h
->>>>    * 3. commit the above *before* making changes that affect the
->>>> tables
->>>
->>> I think the best reference I have to it is the reply from Igor to me
->>> here:
->>>
->>> https://lore.kernel.org/qemu-devel/20250506173640.5ed03a16@imammedo.users.ipa.redhat.com/
->>>
->>>
->>>
->>> I understand there are two possibilities when adding a new test:
->>>
->>> 1) Like in the steps above, 1., 2., and 3., which are taken from the
->>> bios-tables-test.c.
->>>
->>> That gives option A:
->>>
->>> A Patch 1: New empty files uuder tests/data/acpi + list of them in
->>> tests/qtest/bios-tables-test-allowed-diff.h
->>> A Patch 2: New test (since the blobs are wrong but we added them in
->>> Patch 1 to allow list, there is no fail in test
->>> A Patch 3: Update blobs (actually you are adding the real blobs, or
->>> updating from empty to real one)
->>>
->>> or (what I'm doing here), option B:
->>>
->>> B Patch 1: (A Patch 1) + (A Patch 2)
->>> B Patch 2: Like (A Patch 3), i.e., just update the blobs (add the real
->>> ones)
->>>
->>> This is the sequence Igor confirmed it's ok:
->>>
->>>> - Patch 1     : Add the new test, add the empty blobs *.suffix files,
->>>> whitelist such a blobs
->>>> - Patch 2     : Update the blobs in Patch 1 with the ones that make
->>>> the new test pass and remove them from the whitelist
->>>
->>> Also, Igor says it's ok to add to the allow list the blobs that change
->>> at the same time
->>> we add test that changes the very same blobs even when updating an
->>> existing test (not adding a
->>> new one, which is slight variation):
->>>
->>>> - Patch 3     : Add the APIC.suffix blob to the whitelist (the table
->>>> that changes due to the fix)
->>>> - Patch 4 - n : Fix(es)
->>>
->>> "3 is not binary so it can be folded into 4 or be a separate patch
->>> (either way works for me)"
->>>   The important thingy is to follow the rules:
->>>
->>> 1) Don't make a commit which fails the tests
->>> 2) Don't fold a blob with the commit that changes the blob
->>>
->>> That's my current understanding about it.
->>>
->>> Let me know if that makes sense to you. We need to reach a consensus
->>> on this, confusing as
->>> these acrobatics may be! :)
->>
->> Actually I checked your patch and effectively it does not produce any
->> checkpatch error related to bios-tables-test rules so your patch is OK
->> (yesterday I discovered with the ACPI PCI HP series that checkpatch
->> points out infractions to bios-tables-test.c rules!). Since it results
->> in less patches I think it is better. May be worth to clarify that
->> directly in bios-tables-test.c though.
->>
->> Cheers
->>
->> Eric
->>>
->>>
->>> Cheers,
->>> Gustavo
->>>
->>>>> @@ -1 +1,3 @@
->>>>>    /* List of comma-separated changed AML files to ignore */
->>>>> +"tests/data/acpi/aarch64/virt/APIC.its_off",
->>>>> +"tests/data/acpi/aarch64/virt/IORT.its_off",
->>>>> diff --git a/tests/qtest/bios-tables-test.c
->>>>> b/tests/qtest/bios-tables-test.c
->>>>> index 0b2bdf9d0d..4201ec1131 100644
->>>>> --- a/tests/qtest/bios-tables-test.c
->>>>> +++ b/tests/qtest/bios-tables-test.c
->>>>> @@ -2146,6 +2146,25 @@ static void
->>>>> test_acpi_aarch64_virt_tcg_topology(void)
->>>>>        free_test_data(&data);
->>>>>    }
->>>>>    +static void test_acpi_aarch64_virt_tcg_its_off(void)
->>>>> +{
->>>>> +    test_data data = {
->>>>> +        .machine = "virt",
->>>>> +        .arch = "aarch64",
->>>>> +        .variant =".its_off",
->>>> you have a checkpatch error here.
->>>
->>> ouch, thanks, will fix in v5.
->>>
->>>
->>> Cheers,
->>> Gustavo
->>>
->>>>> +        .tcg_only = true,
->>>>> +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
->>>>> +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
->>>>> +        .cd =
->>>>> "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
->>>>> +        .ram_start = 0x40000000ULL,
->>>>> +        .scan_len = 128ULL * 1024 * 1024,
->>>>> +    };
->>>>> +
->>>>> +    test_acpi_one("-cpu cortex-a57 "
->>>>> +                  "-M gic-version=3,iommu=smmuv3,its=off", &data);
->>>>> +    free_test_data(&data);
->>>>> +}
->>>>> +
->>>>>    static void test_acpi_q35_viot(void)
->>>>>    {
->>>>>        test_data data = {
->>>>> @@ -2577,6 +2596,8 @@ int main(int argc, char *argv[])
->>>>>                               test_acpi_aarch64_virt_tcg_acpi_hmat);
->>>>>                qtest_add_func("acpi/virt/topology",
->>>>>                               test_acpi_aarch64_virt_tcg_topology);
->>>>> +            qtest_add_func("acpi/virt/its_off",
->>>>> +                           test_acpi_aarch64_virt_tcg_its_off);
->>>>>                qtest_add_func("acpi/virt/numamem",
->>>>>                               test_acpi_aarch64_virt_tcg_numamem);
->>>>>                qtest_add_func("acpi/virt/memhp",
->>>>> test_acpi_aarch64_virt_tcg_memhp);
->>>> Thanks
->>>>
->>>> Eric
->>>>
->>>
->>
->
+r~

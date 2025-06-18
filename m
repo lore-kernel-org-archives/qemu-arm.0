@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp3249715njc;
-        Wed, 18 Jun 2025 08:04:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVQlvZ4Lj6FjFl036G/f+X53jGZ5heJLG5Vgcy+GZHuoSfu14s1jv9koI7LNnwW6dQXpIAbF3Wj+YiADw==@linaro.org
-X-Google-Smtp-Source: AGHT+IF3Qhow5wDfxzHY/UbE4c22yRSsZsG12EtjxnlGLhJdM7tIUrg8ePGEL+P3o63zVKBnw2dJ
-X-Received: by 2002:ac8:5a0f:0:b0:476:ff0d:ed6c with SMTP id d75a77b69052e-4a73c5a5ae7mr274320131cf.40.1750259084452;
-        Wed, 18 Jun 2025 08:04:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750259084; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp3249786njc;
+        Wed, 18 Jun 2025 08:04:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUEPSRByZFtJsg2rjFqFaiQDPaFKl7dtE4rFSn2dRY/nIHEURiwePebWGQRgB5BIR8JHZEFqbOLJNMqpA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFiBRRBiIoxp0R6s2eaVOSBuQnQh7hPWte6M6yuo1Bc7ZgkPxPJZ5lwNfB9rIcex1Pqyuqs
+X-Received: by 2002:a05:620a:3725:b0:7ce:f58e:7e9c with SMTP id af79cd13be357-7d3c6c0c72bmr3166208185a.7.1750259090139;
+        Wed, 18 Jun 2025 08:04:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750259090; cv=none;
         d=google.com; s=arc-20240605;
-        b=YJEiI5vjgSIQHAmDU6e84z7yk5D9e2lFTk9CUC778kpoe3QSbd8jc3VjBuqRIeViZF
-         9znIYzLVoXIe3omGReIMwhjUrUwQf00bPjjy1gwdmrwX6KUkYQWleuPEFWFHlxlkcrLR
-         ALVV8a555RsYAoY1eCmRM8gyMI6AyigxCm3nSred7iwiwfcAZk9WaGAm18/2g6/4idXl
-         TMP1dxyy/Q2Jueltb+SXdlaSfAfpXpouf+55YuvCkboeYYJ3Un2UWstr+BDGHTmCkf1e
-         vCXuHVkaXMm2KAv8CpNjHrUFYUaU6tU6Hxq4L4BPS8eBhkFAqsOAu9lhFxL2GjlyaQSW
-         kuoA==
+        b=gNfRAhbcVHhzO/m8oeV776raRcNyn1gTYIGxalDMIPH5vd8xjX+qpoxrr41Wq/Ulsv
+         KPhgoxb0AM1QdafYvDMJOZ3GmttVKgdUq1XQ2Zs5NC2n50AMirG9XlsfKjDqtGn2vi1i
+         7LVowzmXCfKZgZcGGqHLv5YV+1Y0GlwLamLTX+T81Fmcl43upRGqIeKLnb2W6gH6IiOd
+         Q/jb65QmdkbEdXNNjXNgjZwviEzD6o/3hu0EtIvhip29ibhtz856sYKKwY4UEFB99JZk
+         MdKz1PcL1A7mEj8OfWiAVXO8+So+swXdA2j3Yya4sW7nUusD5ghzpJj5zNW2RFKO6uZB
+         xDtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=zw2N7rO8IZbrSIwZgUJX2kZ91Aia55esppxXkIyfR/w=;
+        bh=JM5LjQjyW/7L4efrPMTzq1fX3dopY3mK48+OvbKBBmU=;
         fh=Z2qDztSV8CWVU0ChRWBZcc7s5uQfKpc4TkuCRqvdIcI=;
-        b=e6XnPspjVe+Lxk6+TMBswtyeIJ0UoFa/QncTCSdALt8ka3YGuVFQ6QEJAxZTaDHt2d
-         Z6wM6QJs/pfXBh0cBgadfOlnRXsXGhnR1brSSS+LSBDFQNT7MHVEJ1LESQjRn1Gj7xET
-         l2ty03Wu4csy1pMAWJ+wAKnwu9pddiDL1Ta6MnFoqdFE4OcHXiWEv54U/PWqWlYpygrN
-         ApoIkTdCuQeejUNSWKuBZt3fGe22KJLIiQlrhyTTg2D8aUdMSZ5HSRE8/RIczT27aXPY
-         lwoa4r9jmdUpGcXdLf78+IJVor4GtyI+VHDFOI6mm49ZviXPpGVsotgPhJDDMhJ0kUTR
-         y01Q==;
+        b=db9xunLwgyT29a+uSPWSzCT+KmHBftXZGBT7vZp1VewuDskpYsw6W4Hic5Q+xtYg7a
+         fQBufs/kN26DQvgP2ym3D3RreSvodXwGmE9+ZhfZ4NY7eoXgGHBqjGafD6gX150L1BvC
+         TFakpHgkcMkhUu+A2xzWhBz2mKwNtsH0ThblDpzCcNcz+AMUS54EAdfSboeOGU6bHRyH
+         48Hf6gsbf+/pzWzvpud5hrQ6/n8KLUZygTm2FnFFSIFBwfbaXd2uEZEiJwply4oK6VbR
+         AWsZ3mcdsr3DeTyFKOGZLzAfmmmQ2Uu/1udNJbITWE7PUIUYwFd7wd3o+3EE2dseFCQo
+         Y4zw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a761fbafa1si23842731cf.318.2025.06.18.08.04.44
+        by mx.google.com with ESMTPS id af79cd13be357-7d3f114b31bsi4547685a.148.2025.06.18.08.04.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Jun 2025 08:04:44 -0700 (PDT)
+        Wed, 18 Jun 2025 08:04:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uRuKw-0008HY-Po; Wed, 18 Jun 2025 11:04:26 -0400
+	id 1uRuKf-0008FA-AE; Wed, 18 Jun 2025 11:04:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=zn5s=ZB=kaod.org=clg@ozlabs.org>)
- id 1uRuKu-0008H7-SH; Wed, 18 Jun 2025 11:04:25 -0400
+ id 1uRuKY-0008EL-7N; Wed, 18 Jun 2025 11:04:02 -0400
 Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=zn5s=ZB=kaod.org=clg@ozlabs.org>)
- id 1uRuKs-0007Dq-Dt; Wed, 18 Jun 2025 11:04:24 -0400
+ id 1uRuKU-0007Av-T3; Wed, 18 Jun 2025 11:04:01 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bMn833m91z4x5k;
- Thu, 19 Jun 2025 01:04:19 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bMn7Y2fxFz4x8X;
+ Thu, 19 Jun 2025 01:03:53 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bMn802yt8z4x11;
- Thu, 19 Jun 2025 01:04:16 +1000 (AEST)
-Message-ID: <0e4c20ad-8271-4122-ae32-4b8e9419228f@kaod.org>
-Date: Wed, 18 Jun 2025 17:04:14 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bMn7T6dJxz4wcQ;
+ Thu, 19 Jun 2025 01:03:49 +1000 (AEST)
+Message-ID: <bb1e4fc8-756d-42ae-b6b2-ed5d2814bef9@kaod.org>
+Date: Wed, 18 Jun 2025 17:03:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/2] hw/misc/aspeed_scu: Support the Frequency Counter
- Control register for AST2700
+Subject: Re: [PATCH v1 1/2] hw/misc/aspeed_sdmc: Skipping dram_init in u-boot
+ for AST2700
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -72,7 +72,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com
 References: <20250618080006.846355-1-jamin_lin@aspeedtech.com>
- <20250618080006.846355-3-jamin_lin@aspeedtech.com>
+ <20250618080006.846355-2-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -117,7 +117,7 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250618080006.846355-3-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250618080006.846355-2-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=150.107.74.76;
@@ -143,23 +143,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yxqxbvL9wCao
+X-TUID: fT5AMux6dzVC
 
 On 6/18/25 10:00, Jamin Lin wrote:
-> According to the datasheet:
-> BIT[1] (SCU_FREQ_OSC_EN) enables the oscillator frequency measurement counter.
-> BIT[6] (SCU_FREQ_DONE) indicates the measurement is finished.
-> Firmware polls BIT[6] to determine when measurement is complete.
-> The flag can be cleared by writing BIT[1] to 0.
+> On AST2700 SoC, QEMU now sets BIT6 in VGA0 SCRATCH register to indicate
+> that DDR training has completed, thus skipping the dram_init().
 > 
-> To simulate this hardware behavior in QEMU:
-> If BIT[1] is set to 1, BIT[6] is immediately set to 1 to avoid
-> firmware hanging during polling.
-> If BIT[1] is cleared to 0, BIT[6] is also cleared to 0 to match
-> hardware semantics.
+> To align with the recent U-Boot changes, where the Main Control Register's
+> BIT16 is checked to skip the dram_init() process, this patch sets BIT16 in
+> the SDMC Main Control Register at reset time.
 > 
-> The initial value of this register is initialized to 0x80, reflecting the
-> default value confirmed from an EVB register dump.
+> This allows both the main U-Boot stage to correctly detect and bypass DRAM
+> initialization when running under QEMU.
+> 
+> Reference:
+> - QEMU: https://github.com/qemu/qemu/commit/2d082fea485ee455a70ed3e963cdf9a70f34858a
+> - U-Boot: https://github.com/AspeedTech-BMC/u-boot/commit/94e5435504fb0d8888f5c1bfd3fa284cdd6aaf9b
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
@@ -172,38 +171,21 @@ C.
 
 
 > ---
->   hw/misc/aspeed_scu.c | 6 ++++++
->   1 file changed, 6 insertions(+)
+>   hw/misc/aspeed_sdmc.c | 3 +++
+>   1 file changed, 3 insertions(+)
 > 
-> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-> index 4930e00fed..11d0739108 100644
-> --- a/hw/misc/aspeed_scu.c
-> +++ b/hw/misc/aspeed_scu.c
-> @@ -176,6 +176,7 @@
->   #define AST2700_SCUIO_UARTCLK_GEN       TO_REG(0x330)
->   #define AST2700_SCUIO_HUARTCLK_GEN      TO_REG(0x334)
->   #define AST2700_SCUIO_CLK_DUTY_MEAS_RST TO_REG(0x388)
-> +#define AST2700_SCUIO_FREQ_CNT_CTL      TO_REG(0x3A0)
+> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+> index f04d9930dd..dff7cc362d 100644
+> --- a/hw/misc/aspeed_sdmc.c
+> +++ b/hw/misc/aspeed_sdmc.c
+> @@ -570,6 +570,9 @@ static void aspeed_2700_sdmc_reset(DeviceState *dev)
+>       /* Set ram size bit and defaults values */
+>       s->regs[R_MAIN_CONF] = asc->compute_conf(s, 0);
 >   
->   #define SCU_IO_REGION_SIZE 0x1000
->   
-> @@ -1022,6 +1023,10 @@ static void aspeed_ast2700_scuio_write(void *opaque, hwaddr offset,
->           s->regs[reg - 1] ^= data;
->           updated = true;
->           break;
-> +    case AST2700_SCUIO_FREQ_CNT_CTL:
-> +        s->regs[reg] = deposit32(s->regs[reg], 6, 1, !!(data & BIT(1)));
-> +        updated = true;
-> +        break;
->       default:
->           qemu_log_mask(LOG_GUEST_ERROR,
->                         "%s: Unhandled write at offset 0x%" HWADDR_PRIx "\n",
-> @@ -1066,6 +1071,7 @@ static const uint32_t ast2700_a0_resets_io[ASPEED_AST2700_SCU_NR_REGS] = {
->       [AST2700_SCUIO_UARTCLK_GEN]         = 0x00014506,
->       [AST2700_SCUIO_HUARTCLK_GEN]        = 0x000145c0,
->       [AST2700_SCUIO_CLK_DUTY_MEAS_RST]   = 0x0c9100d2,
-> +    [AST2700_SCUIO_FREQ_CNT_CTL]        = 0x00000080,
->   };
->   
->   static void aspeed_2700_scuio_class_init(ObjectClass *klass, const void *data)
+> +    /* Skipping dram init */
+> +    s->regs[R_MAIN_CONTROL] = BIT(16);
+> +
+>       if (s->unlocked) {
+>           s->regs[R_2700_PROT] = PROT_UNLOCKED;
+>       }
 

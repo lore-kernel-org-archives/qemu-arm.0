@@ -1,126 +1,107 @@
-Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp2888953njc;
-        Tue, 17 Jun 2025 18:26:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX0TDuG5gyLHwOyc69Z9etwA2A3lKA7eDO4gaLEcEL8tPmqPlvy5jwkE/xwKk8KaZcYSN0eSrv2pfAE4g==@linaro.org
-X-Google-Smtp-Source: AGHT+IHZvk6/El28z9/bE6HKErjXa0RMo8jZotuciu9RNSe4MdGGEoxPIS5+Uqftsp/4QQq2bU/A
-X-Received: by 2002:ac8:5f8e:0:b0:4a4:2f42:a668 with SMTP id d75a77b69052e-4a73c5951a3mr263277491cf.31.1750209961060;
-        Tue, 17 Jun 2025 18:26:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750209961; cv=none;
+Received: by 2002:a17:504:5d2c:b0:1be9:327d:8ee3 with SMTP id et12csp3087668njc;
+        Wed, 18 Jun 2025 03:38:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVYPsdV7hdYmSfU0kadfjYN4obizMFOM1z37D7hyzHpbthbNQlGs1pGUsCP4M30ij56qRpfSlh5+/qPow==@linaro.org
+X-Google-Smtp-Source: AGHT+IEpbEnL2CW6Kjr+mKeDs93Gh43kzXbsSPi7HPEiB7wnQAmkuJnHaZgK4sHgeVHDhmC29GHv
+X-Received: by 2002:ac8:5d09:0:b0:4a5:a7a8:fd83 with SMTP id d75a77b69052e-4a73c616f37mr264815251cf.44.1750243129455;
+        Wed, 18 Jun 2025 03:38:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750243129; cv=none;
         d=google.com; s=arc-20240605;
-        b=K5HwjugAEBMKsyjGn0ZllqbQ0qGQapsguqpwm3WJhblMk3IIG5SP8jgxhLSUvt6C97
-         O8zPblycUtkCIDRMbWClSTsMsELFu0Wbxm2ropIg5dQo2EFqCkaeLAo0rNXGIXkoMxlI
-         AcFf3r+cb79x3Fv2dp/NiKrWHDF7cyLtlm8q+E2QVAFNjKtCNvTd9pDlcz5ZlRFSCKS1
-         9qxFqyhzhWnvHnXwyPqxat6GP7xONpeFxFJmp1canK0bRhzWp+5wOHEjY+MPlFLFsReZ
-         KeNpa72JIGKlnO9zT7tRKrUD1WKkpaZdp7umCxHTGnuzpTe73dHH/0xExVCwJAWSfVye
-         btGQ==
+        b=QHcs6U5ERVT4BpB+I8HpsAMHTJkAMay/lHfJ0umEyfYSetycOVEXNon2ywIWU1ecN8
+         Xo04G5ALIpOr8EYSE9vMbBSlf7d6VUbDVsWip3NLIIy/SQKfqfmj1yNsmkYGSx4njhOK
+         VrIxZ7tDo2DRWpaTbULqcVC2wFunN1QWvyRxVgk4+KfGn+RBZYuwm4kkp7L+/0cUsELb
+         YZiet1FCdDwMSfbqXW34a7cjsyVGO3jtO7mgHXrurLF+aXb33ncJ9nKEvTU7B+CUdB17
+         2HP6Pqln8wuE5RCHudRZCljmVxrK4+TkYIMNqYU+Ml7GmuGotp6TSsKP+WXUJXnStQ/d
+         w6rQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=IcKJlxotYYNzqhm17rsomT0rEkiw74pK5ylA3za2Brc=;
-        fh=aaHT7MQyfwgi484CEZUv0GE37UqOEjFI0WT+FdQ8dto=;
-        b=fwFE1nmV6niH9cs3HDAmL0CLQGkGtFuuxPnZLclbZAM7u8o6GZK8IjYt0YbbXXjNLY
-         hItobt8mYpzhVYHuPXUfsY8SDt+MmhflHZKPmNddWE1iWlyFsZJIYGZ4RHUHGW48tdzT
-         Es2lG32F2WtsyaEdCEzIRmaSgbZm5VU4klK+XAF6Sf1VBfoenszUKy3FOEjMYhuEWBJW
-         HsEzCfc8Kd4ex+xEne4HFAyYpONT5t1k55nt6VwYBmf5M4a9ZcsKrcmnuVsH88MlsufX
-         QnL5BL2qfgx9k+p6NFZ4GsIVIkLU6v4rshJl2OToS1Ph2/lfv/judCe0rlilaZFPi+ek
-         hiOg==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:date;
+        bh=8r7BOO6LQtTJj0e3LGr1W05rvI+utiCDTHoKhi+1Hnw=;
+        fh=n3GNNqGd4Pj4HPQoVPDFNwOHQEbjrUCJD74czssDJzA=;
+        b=VcIJaseRbAMHMBHUxw4wDdddOx8ZRyZZcv0xcKbsQUeehyBhH0ghOgl70qmoyn5wpo
+         73oiHdvmcV0ce3HGYUWkt9MKWmqhT4Y6v1onUdv60q8/StKIpuOoz/IfuTCAqVxKWeLr
+         vqCsRQG2EFOfTpKnMbdHoZjdODyLUNM7XsCtlynyzgAHDh+eEC64aTlHHfJ0/As1rDYK
+         bzhfRlQeYa8fUaeo7kPKW2mBNJyvmHkNzMapdZE7tCZHIisxCJvQY0/Y8urj7M6ZNEE3
+         61fbcRIRzFPDnXttYC7KeF9kelWrpL77D0aCdwXLGbS2ASPf6TMDNvjWDjGoFg8XZs3N
+         Vknw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=hRKdtrvq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a72a47d4f7si141831751cf.262.2025.06.17.18.26.00
+        by mx.google.com with ESMTPS id d75a77b69052e-4a72a518bcasi140163351cf.534.2025.06.18.03.38.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Jun 2025 18:26:01 -0700 (PDT)
+        Wed, 18 Jun 2025 03:38:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=hRKdtrvq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uRhYT-0007R0-Sj; Tue, 17 Jun 2025 21:25:34 -0400
+	id 1uRqBg-0006Eo-T6; Wed, 18 Jun 2025 06:38:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <komlodi@google.com>)
- id 1uRhYL-0007Po-4T
- for qemu-arm@nongnu.org; Tue, 17 Jun 2025 21:25:26 -0400
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <komlodi@google.com>)
- id 1uRhYG-00051N-VI
- for qemu-arm@nongnu.org; Tue, 17 Jun 2025 21:25:24 -0400
-Received: by mail-pj1-x1032.google.com with SMTP id
- 98e67ed59e1d1-3138e64b3fcso5625190a91.2
- for <qemu-arm@nongnu.org>; Tue, 17 Jun 2025 18:25:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1750209917; x=1750814717; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=IcKJlxotYYNzqhm17rsomT0rEkiw74pK5ylA3za2Brc=;
- b=hRKdtrvq4/OtKLS9u+PjY2gENLLUr6DL+h/A+ChlQdahVFkQZ91fUWhsafKHg7Sftw
- CbHEOwdp9tbf73RUnjCcOHxM3VT8aJrq+WlRPiIv/eyWRTalsJCeFXNwPPSRdsqBVBK7
- ZMhWclA/0iNPnbyfBKabHZOJOgPk6WnW2WihrbNeCt1zuhSO8cLa6dMQG/Y3MfiTOe3q
- 2JueIuXphqWtcuIKLDqpMxsT9yTvw2HsT2KtV/F53yQZvwy28N+atdepzV7zuPE33+vY
- I8cgu5qxfVftQh2bwkke/Pn/fF/VZ+Y6wDaIfmRoFY37VbK0b+N001SdOabcxFO2zzIm
- EezA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1750209917; x=1750814717;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=IcKJlxotYYNzqhm17rsomT0rEkiw74pK5ylA3za2Brc=;
- b=GfJFUGiCch+FpGe1IqbNBtwfGTSFf5KCOr6tgJFhmLTmH6+XWf5xncNVe4/cHVPxaF
- ECsdbe+DQkn6oje9UbM+MLNOlxJ7A/gP8MntpLtNME1nX1P+ClUzyLZucWOp1ZxrS+FC
- knyugSo1eU4asXZ808pW79WO1lvunGzrfBgkI06/sYf9jDpJvZIp5r+cAELHkLgjgDQo
- uUpwOK7wP+S1013n5EQ6bMTmap9yvbbqIzXt54HLhGExPuCecEWW7VUqEe9+MOVpQsEq
- 4K6N+ZP7cvajBvQGhbEPDA0FrCj4zlDvPiKy5jx2Bqhr5VQbFQ7ui6eTwLhm1gy2bt4c
- hVmg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU4iAympzuFfmWt9qOlqU2WcZn1EV6HjVJug/3KPrgY45sUjGsP8/w4hxiRK8IdpjGmu1j8lL4Fww==@nongnu.org
-X-Gm-Message-State: AOJu0YyiqGHiAkzUqvsP5JW+wQLq3SCuagCFTVUWDmxa7Ohp7IMRXjH5
- KnVHpeVG1y73hzCNwXIWoJkrmyP5hrFQMW4U6WEeTfZXlrSR93njBy4LoDNkhOReA/xvyUAbqZk
- 6U8szEFHo+AqcRlqN6HkztMHUcgYhI5zjp4hFigFg
-X-Gm-Gg: ASbGncukRI94amS+xGE50f/Pdbp4XCH1jDv7eemXBIkuFrGQrgFe2qwpu112at0r+aA
- +2RFuogj13OjzrYo1rKg1npXXFbG6oq/SV7lF2N7uvSV3xz61J9/AF2wehQOOMUjoegW/llDVT6
- Q6TDd4fJO3wER9St4jo7L/OlplHF06zktJQP8BKBgcjEk4UUGLyi9lu0DgE3zLjCHCwSUBNHrO
-X-Received: by 2002:a17:90b:1f92:b0:311:e8cc:424e with SMTP id
- 98e67ed59e1d1-313f1ce543dmr21814795a91.24.1750209916647; Tue, 17 Jun 2025
- 18:25:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uRqBd-0006EZ-6P; Wed, 18 Jun 2025 06:38:33 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uRqBa-0001Xz-2v; Wed, 18 Jun 2025 06:38:32 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bMgBd1f9wz6K7kc;
+ Wed, 18 Jun 2025 18:36:09 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id DF06A140119;
+ Wed, 18 Jun 2025 18:38:21 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 18 Jun
+ 2025 12:38:21 +0200
+Date: Wed, 18 Jun 2025 11:38:19 +0100
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+CC: Eric Auger <eric.auger@redhat.com>, Linuxarm <linuxarm@huawei.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "jgg@nvidia.com" <jgg@nvidia.com>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "ddutile@redhat.com"
+ <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
+ "imammedo@redhat.com" <imammedo@redhat.com>, "nathanc@nvidia.com"
+ <nathanc@nvidia.com>, "mochs@nvidia.com" <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, "Wangzhou (B)"
+ <wangzhou1@hisilicon.com>, jiangkunkun <jiangkunkun@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+Subject: Re: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe Root
+ Complex association
+Message-ID: <20250618113819.0000054b@huawei.com>
+In-Reply-To: <49d4c4b73e9a44a783332ddfe9a2fbdf@huawei.com>
+References: <20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com>
+ <20250613144449.60156-2-shameerali.kolothum.thodi@huawei.com>
+ <20250616112019.00003bce@huawei.com>
+ <fcd05844-d2d9-450e-b962-59b0f3964185@redhat.com>
+ <20250617175247.00007d43@huawei.com>
+ <49d4c4b73e9a44a783332ddfe9a2fbdf@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-References: <20250613000411.1516521-1-komlodi@google.com>
- <23deafc7-d832-470b-8d8e-aea0125d756f@kaod.org>
-In-Reply-To: <23deafc7-d832-470b-8d8e-aea0125d756f@kaod.org>
-From: Joe Komlodi <komlodi@google.com>
-Date: Tue, 17 Jun 2025 18:25:04 -0700
-X-Gm-Features: AX0GCFvq4VR_hFdnvIwoJysTOSa7grY78aoZUC42NOj6kk5zX4qiTtCwvnI5G2c
-Message-ID: <CAGDLtxti58hRfOjtr5RJuQE93+UWMOLhfM+YivwU4UZdgXRJfg@mail.gmail.com>
-Subject: Re: [PATCH 00/19] i3c: aspeed: Add I3C support
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: qemu-devel@nongnu.org, venture@google.com, peter.maydell@linaro.org, 
- steven_lee@aspeedtech.com, leetroy@gmail.com, jamin_lin@aspeedtech.com, 
- andrew@codeconstruct.com.au, joel@jms.id.au, qemu-arm@nongnu.org, 
- Jeremy Kerr <jk@codeconstruct.com.au>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=komlodi@google.com; helo=mail-pj1-x1032.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml500003.china.huawei.com (7.191.162.67) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,140 +114,110 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9fU+yMDYODjc
+X-TUID: VVo95X8AAuql
 
-Hi,
+On Wed, 18 Jun 2025 09:35:35 +0100
+Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
 
-On Sun, Jun 15, 2025 at 11:49=E2=80=AFPM C=C3=A9dric Le Goater <clg@kaod.or=
-g> wrote:
->
-> Hi
->
-> + Jeremy
->
-> On 6/13/25 02:03, Joe Komlodi wrote:
-> > Hi all,
-> >
-> > This series adds I3C bus support to QEMU and adds more functionality to=
- the
-> > Aspeed I3C controller.
-> >
-> > This implementation is a basic implementation that introduces IBIs
-> > (including hot-join), CCCs, and SDR data transfer. As-is, it doesn't su=
-pport
-> > multi-controller buses or HDR transfers.
-> >
-> > First we add the I3C bus and controller model. With that added we exten=
-d
-> > the functionality of the Aspeed I3C controller so it can do transfers
-> > and handle IBIs.
-> >
-> > Next, we add a mock I3C target. It's intended to be a very simple targe=
-t
-> > just to verify that I3C is working on the guest. Internally, we've used=
- it
-> > on Linux to verify that i3C devices can be probed and can send/receive =
-data
-> > and IBIs.
-> > This target is sort of like an EEPROM, and it can also send IBIs upon
-> > reception of a user-defined magic number.>
-> > Lastly we add  hotplugging support. The hotplugging doesn't do anything=
- too
-> > complicated, it just adds the device attempting to hotplug to the bus. =
-It
-> > is the device's responsibility to hot-join and go through the DAA proce=
-ss
-> > to participate on the bus.
-> >
-> > Thanks,
-> > Joe
-> >
-> > Joe Komlodi (19):
-> >    hw/misc/aspeed_i3c: Move to i3c directory
-> >    hw/i3c: Add bus support
-> >    hw/i3c: Split DesignWare I3C out of Aspeed I3C
-> >    hw/i3c/dw-i3c: Add more register fields
-> >    hw/i3c/aspeed_i3c: Add more register fields
-> >    hw/i3c/dw-i3c: Add more reset values
-> >    hw/i3c/aspeed_i3c: Add register RO field masks
-> >    hw/i3c/dw-i3c: Add register RO field masks
-> >    hw/i3c/dw-i3c: Treat more registers as read-as-zero
-> >    hw/i3c/dw-i3c: Use 32 bits on MMIO writes
-> >    hw/i3c/dw-i3c: Add IRQ MMIO behavior
-> >    hw/i3c/dw-i3c: Add data TX and RX
-> >    hw/i3c/dw-i3c: Add IBI handling
-> >    hw/i3c/dw-i3c: Add ctrl MMIO handling
-> >    hw/i3c/dw-i3c: Add controller resets
-> >    hw/i3c/aspeed: Add I3C bus get function
-> >    hw/i3c: Add Mock target
-> >    hw/arm/aspeed: Build with I3C_DEVICES
-> >    hw/i3c: Add hotplug support
-> >
-> >   hw/Kconfig                            |    1 +
-> >   hw/arm/Kconfig                        |    3 +
-> >   hw/i3c/Kconfig                        |   15 +
-> >   hw/i3c/aspeed_i3c.c                   |  261 ++++
-> >   hw/i3c/core.c                         |  669 +++++++++
-> >   hw/i3c/dw-i3c.c                       | 1881 ++++++++++++++++++++++++=
-+
-> >   hw/i3c/meson.build                    |    6 +
-> >   hw/i3c/mock-i3c-target.c              |  311 ++++
-> >   hw/i3c/trace-events                   |   47 +
-> >   hw/i3c/trace.h                        |    2 +
-> >   hw/meson.build                        |    1 +
-> >   hw/misc/aspeed_i3c.c                  |  383 -----
-> >   hw/misc/meson.build                   |    1 -
-> >   hw/misc/trace-events                  |    6 -
-> >   include/hw/arm/aspeed_soc.h           |    2 +-
-> >   include/hw/{misc =3D> i3c}/aspeed_i3c.h |   22 +-
-> >   include/hw/i3c/dw-i3c.h               |  201 +++
-> >   include/hw/i3c/i3c.h                  |  277 ++++
-> >   include/hw/i3c/mock-i3c-target.h      |   52 +
-> >   meson.build                           |    1 +
-> >   20 files changed, 3735 insertions(+), 407 deletions(-)
-> >   create mode 100644 hw/i3c/Kconfig
-> >   create mode 100644 hw/i3c/aspeed_i3c.c
-> >   create mode 100644 hw/i3c/core.c
-> >   create mode 100644 hw/i3c/dw-i3c.c
-> >   create mode 100644 hw/i3c/meson.build
-> >   create mode 100644 hw/i3c/mock-i3c-target.c
-> >   create mode 100644 hw/i3c/trace-events
-> >   create mode 100644 hw/i3c/trace.h
-> >   delete mode 100644 hw/misc/aspeed_i3c.c
-> >   rename include/hw/{misc =3D> i3c}/aspeed_i3c.h (63%)
-> >   create mode 100644 include/hw/i3c/dw-i3c.h
-> >   create mode 100644 include/hw/i3c/i3c.h
-> >   create mode 100644 include/hw/i3c/mock-i3c-target.h
-> >
->
-> This lacks a MAINTAINER.
+> > -----Original Message-----
+> > From: Jonathan Cameron <jonathan.cameron@huawei.com>
+> > Sent: Tuesday, June 17, 2025 5:53 PM
+> > To: Eric Auger <eric.auger@redhat.com>
+> > Cc: Shameerali Kolothum Thodi
+> > <shameerali.kolothum.thodi@huawei.com>; Linuxarm
+> > <linuxarm@huawei.com>; qemu-arm@nongnu.org; qemu-
+> > devel@nongnu.org; peter.maydell@linaro.org; jgg@nvidia.com;
+> > nicolinc@nvidia.com; ddutile@redhat.com; berrange@redhat.com;
+> > imammedo@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
+> > smostafa@google.com; Wangzhou (B) <wangzhou1@hisilicon.com>;
+> > jiangkunkun <jiangkunkun@huawei.com>; zhangfei.gao@linaro.org
+> > Subject: Re: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe
+> > Root Complex association
+> >=20
+> > On Tue, 17 Jun 2025 09:49:54 +0200
+> > Eric Auger <eric.auger@redhat.com> wrote:
+> >  =20
+> > > On 6/16/25 12:20 PM, Jonathan Cameron wrote: =20
+> > > > On Fri, 13 Jun 2025 15:44:43 +0100
+> > > > Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+> > > > =20
+> > > >> Although this change does not affect functionality at present, it =
+is =20
+> > > > Patch title says PCIe.  This check is vs PCI host bridge.
+> > > >
+> > > > No idea which one you wanted, but if it is PCIe needs to be
+> > > > TYPC_PCIE_HOST_BRIDGE from pcie_host.h not the pci_host.h one
+> > > > I think. =20
+> > > I think we need TYPE_PCI_HOST_BRIDGE as we want to check against pxb
+> > >
+> > > pci-bridge/pci_expander_bridge.c:=A0=A0=A0 .parent=A0=A0=A0=A0=A0=A0=
+=A0 =3D =20
+> > TYPE_PCI_HOST_BRIDGE,
+> >=20
+> > Hmm. That's awkward and I'd forgotten that wrinkle.
+> > Need a stronger test but which one?  The PXB root bus has a parent of
+> > TYPE_PCIE_BUS.  Maybe we can check that? =20
+>=20
+> Ok. How about we do something like below?
+>=20
+>=20
+> @@ -925,6 +926,7 @@ static void smmu_base_realize(DeviceState *dev,
+> Error **errp)
+>  {
+>      SMMUState *s =3D ARM_SMMU(dev);
+>      SMMUBaseClass *sbc =3D ARM_SMMU_GET_CLASS(dev);
+> +    PCIBus *pci_bus =3D s->primary_bus;
+>      Error *local_err =3D NULL;
+>=20
+>      sbc->parent_realize(dev, &local_err);
+> @@ -937,10 +939,31 @@ static void smmu_base_realize(DeviceState *dev,
+> Error **errp)
+>                                       g_free, g_free);
+>      s->smmu_pcibus_by_busptr =3D g_hash_table_new(NULL, NULL);
+>=20
+> -    if (s->primary_bus) {
+> -        pci_setup_iommu(s->primary_bus, &smmu_ops, s);
+> -    } else {
+> +    if (!pci_bus) {
+>          error_setg(errp, "SMMU is not attached to any PCI bus!");
+> +        return;
+> +    }
+> +
+> +    /*
+> +     * We only allow default PCIe Root Complex(pcie.0) or pxb-pcie based=
+ extra
+> +     * root complexes to be associated with SMMU.
+> +     */
+> +    if (pci_bus_is_express(pci_bus) && pci_bus_is_root(pci_bus) &&
+> +        object_dynamic_cast(OBJECT(pci_bus)->parent, TYPE_PCI_HOST_BRIDG=
+E)) {
+> +        /*
+> +         * For pxb-pcie, parent_dev will be set. Make sure it is
+> +         * pxb-pcie indeed.
+> +         */
+> +        if (pci_bus->parent_dev) {
+> +            if (!object_dynamic_cast(OBJECT(pci_bus), "pxb-pcie-bus")) {
+> +                error_setg(errp, "SMMU is not attached to pxb-pcie bus!"=
+);
+> +                return;
+> +            }
+> +        }
+> +        pci_setup_iommu(pci_bus, &smmu_ops, s);
+> +    } else {
+> +       error_setg(errp, "SMMU should be attached to a default PCIe
+> root complex"
+> +                  "(pcie.0) or a pxb-pcie based root complex");
+>      }
+>  }
+>=20
+> Please let me know if this is good enough or not.
+LGTM
 
-Ah, right. I can add that in v2. I can add myself to it, is there
-anyone else who should be on it?
->
-> Could you please provide functional tests ? some with a standard I2C
-> device attached to an I3C legacy bus too.
-
-I can work on that, probably v2 or v3 depending on how long it takes.
->
-> Are there any other stakeholders interested in the I3C to get feedback ?
->
-> Have there been any changes since:
->
->    https://lore.kernel.org/qemu-devel/20230331010131.1412571-1-komlodi@go=
-ogle.com/
->
-Nothing too substantial. I decided not to upstream remote I3C since
-it's unlikely it would be useful upstream.
-I think there might be a couple bugfixes in the DwC controller as
-well, but I don't remember off-hand what they were. If there were any,
-they were all minor.
-
-Thanks,
-Joe
-
+>=20
 > Thanks,
->
-> C.
+> Shameer
+

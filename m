@@ -1,96 +1,99 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp313423njc;
-        Thu, 19 Jun 2025 07:51:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXN+23gepzGzXeCBbYD1MRPldC5QFkHkvo3Fp3sFJ8B/1y07BcqM1Bh4bVmYlz8/e8aetMxu0pIxJQldg==@linaro.org
-X-Google-Smtp-Source: AGHT+IF14N70T+bwrzMd4XmcPadOuijxiMDyupDkAa+NmKXQ7hmZG69AF5PZYpQ2p4eIbpEd3C7F
-X-Received: by 2002:a05:6214:2427:b0:6fa:c625:7de5 with SMTP id 6a1803df08f44-6fb477e7eadmr411509006d6.32.1750344706968;
-        Thu, 19 Jun 2025 07:51:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750344706; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp313474njc;
+        Thu, 19 Jun 2025 07:51:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX1Sdz7tFqco2/UpS2F1og/zxXx9f9gr/hxwYgjkgLOjcZIQKxDJnJGx0DrLY+8MobhxUvRFg2X+Kt6qQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFPVgWyVyRdK/3XYUExiORmAWEcf25u/r82V4lVmzRBZegHodEMM3IyIKA/+8xNHi0FmgOR
+X-Received: by 2002:a05:620a:414f:b0:7d3:f3a5:71d7 with SMTP id af79cd13be357-7d3f3a5766cmr348547985a.40.1750344714985;
+        Thu, 19 Jun 2025 07:51:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750344714; cv=none;
         d=google.com; s=arc-20240605;
-        b=EgFkTAHBKxRgKgBTnNIkpSr9CooJnmNboZU424wtD3atGam47jtU4xw5ciJ8ZVjeyc
-         yn89dnHr58da+cLFEAbfMoRWYPIoF2pIsUDjRVWiphgci+whjTSylTPBt/K+mPklkm78
-         fXWlFyjmw87sLLaYviOtFsCb+En8uaDai/RPRlbKbbVj8rwEOLo82n/OXTuWQDFv1Uuc
-         QvlKsOZ/5j3bcs0ousX4GtLwAa2M7UYzXdrUTrUJybyjN6shSzcjMClCeL/NUdzrsFW+
-         38VCh89J/xinQgjxGL7XfJZm0RmMG16WJe1XjW8CgRcIl0JS85A1aLvaBSAdFksvFyU+
-         igRA==
+        b=HYmXQvi4mPg3sCLD3CRRVxgy0FefIDcygnuh+RVQTr/66XP7oI51uPbCdACRt2kLts
+         m2+gUMHAAIIlYcHGD4vdWTuKM8T6O8nkUNN2Jal4fvpo6cn6v9JFWHJa4pFxksGtgtNN
+         LHfeLnLCN6h2VukLTEnmArT0kagG9P88oQ8y3PVPhq3Sqb4hHGRHTjsEXsNZdzru81r7
+         nvT4VHVUvqDQEZX3TW29d1F+2NUuY7vThgD4BQHmEtXdJ1f2+HHIcFqX6cgBQLoApvs9
+         3gO5Ld6aiR9a+s+L/FnSLmwZ+/457BuZO8TtoX4Fp4u3xhQB4xi/xDwblyoJLVy78Q37
+         qhCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=iVl6U9JUH3ddI0q7EbKabXr6EFNpnLzEnpeABfPqZjY=;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=iyPSuBBKR+sBLpCHjVwNwxmG/nXUJfLaihNyY3W3ZhA=;
         fh=UVrGBnfE9R8/5nTz0HPCluylUu4vXq1b0MPFtmDhPnc=;
-        b=CAGFmGqJaRU8UZTXnhAteTBdQqznX5H8Ab37p0iaCqEi5hC75wsf1q2jjwBW8fjsZ6
-         nF+tHHiVbCGr0YtSAp47YKF5idE+0IJayEn7BH+6GS46ayfEVZlnlHnF3e5anj72Lvy2
-         LJBrVlD3cNSFM80CeCvZWI7MiqlWKsxDt+dGGHWEQlu2mtxu71V9g9vHkMpkznQOn8vU
-         7YEH83t1Rg+KTh4O9TJSVEu01aTeNR0c0d/+r3P/z94LOlSI1+C7G35K1vLN9G6oI+3R
-         G/yvdDjzx43fLBvXqoAHsATmPBSg9j795V3kMspSXuuti+B1O/+SocLBLKQ0iKBZdgUX
-         KPDg==;
+        b=dv4mSY80DQCi8wMsC1uoCA7XSxne0hSxlgUAx9yUu5L7PrZj9X9m/GgpCCjm7g/vdr
+         kxXLaU359wEf/eMACEcpvytkShNggadOGp8S7CxifpMD9rrTi8FMbbWsg7mWP7No7pOH
+         VtX/kg1Qtakeev8cAHZ6wV4aiIfNMs5WE3C34My7cCkon6FkPMhavgn3s3R1WYsMNszk
+         /JeNmcQu2rhhFNbG/CIKchW3RZVDVhd7GWL80Hvq6Hcb3KL0vrgH2YM6tqeRlLPVaLtk
+         /yXmzF/tUqeyHi3+6xMzco4nbDuyYI5yg+NFkblfrZn6Tg7urXrVXdwZc596Y8q2Ar9h
+         DUCg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bVpomwMF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jCByWYvF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd095304b1si740236d6.202.2025.06.19.07.51.46
+        by mx.google.com with ESMTPS id af79cd13be357-7d3f8f01c0csi5582685a.638.2025.06.19.07.51.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jun 2025 07:51:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Jun 2025 07:51:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bVpomwMF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jCByWYvF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uSGbq-00008h-RY; Thu, 19 Jun 2025 10:51:23 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uSGcC-0000Cd-9G; Thu, 19 Jun 2025 10:51:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uSGbe-000073-Kx
- for qemu-devel@nongnu.org; Thu, 19 Jun 2025 10:51:14 -0400
+ id 1uSGc9-0000Bd-5N
+ for qemu-arm@nongnu.org; Thu, 19 Jun 2025 10:51:41 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uSGbb-0006Qy-EN
- for qemu-devel@nongnu.org; Thu, 19 Jun 2025 10:51:09 -0400
+ id 1uSGbj-0006Rm-Ef
+ for qemu-arm@nongnu.org; Thu, 19 Jun 2025 10:51:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1750344666;
+ s=mimecast20190719; t=1750344673;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=iVl6U9JUH3ddI0q7EbKabXr6EFNpnLzEnpeABfPqZjY=;
- b=bVpomwMFWoFaQ6yIXQL17HrYD1KGWkYa6S9u9UvqxZV8/PU3aJQujm02le6rQcoOvw8Lgu
- 4azG520ZJTh9TU7TmukoQMKmNJsz9S1OlR7HAHFZx2Hdu3FiYiGEAbeGLh4C10Ps3GVy2l
- 4VNifjcVwQsp20I2PEFlxj+++xqvYZ0=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=iyPSuBBKR+sBLpCHjVwNwxmG/nXUJfLaihNyY3W3ZhA=;
+ b=jCByWYvF6SXugxcxYV9Wg+uJYJgRrwyOvZuzq/1Z5SvFvGmDz3eikDmpDoN60marNFV+dd
+ v+fbYrZW34F84NLRKOfkw4ARqPMVP7shUOFTWu0oiWxafwSlg3DR3ixtlo6fWEZ2UadZEm
+ 0SeyHot+rbLvLbEmHzBaAgb2WFyuaL8=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-617-CxMJNFEZNfeeLs8dpS7obA-1; Thu,
- 19 Jun 2025 10:51:01 -0400
-X-MC-Unique: CxMJNFEZNfeeLs8dpS7obA-1
-X-Mimecast-MFC-AGG-ID: CxMJNFEZNfeeLs8dpS7obA_1750344659
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-515-KucPCsYtPcC9tZ5X6vLcSw-1; Thu,
+ 19 Jun 2025 10:51:10 -0400
+X-MC-Unique: KucPCsYtPcC9tZ5X6vLcSw-1
+X-Mimecast-MFC-AGG-ID: KucPCsYtPcC9tZ5X6vLcSw_1750344668
 Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A2A17180028F; Thu, 19 Jun 2025 14:50:58 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id EDDF919560B6; Thu, 19 Jun 2025 14:51:07 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.45.224.77])
  by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4AEA219560A3; Thu, 19 Jun 2025 14:50:54 +0000 (UTC)
+ id CA0251956066; Thu, 19 Jun 2025 14:51:03 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, miguel.luis@oracle.com, peter.maydell@linaro.org,
  richard.henderson@linaro.org, maz@kernel.org,
  gkulkarni@amperecomputing.com, gankulkarni@os.amperecomputing.com
 Cc: hi@alyssa.is
-Subject: [PATCH v6 0/5] ARM Nested Virt Support
-Date: Thu, 19 Jun 2025 16:49:58 +0200
-Message-ID: <20250619145047.1669471-1-eric.auger@redhat.com>
+Subject: [PATCH v6 2/5] hw/arm: Allow setting KVM vGIC maintenance IRQ
+Date: Thu, 19 Jun 2025 16:50:00 +0200
+Message-ID: <20250619145047.1669471-3-eric.auger@redhat.com>
+In-Reply-To: <20250619145047.1669471-1-eric.auger@redhat.com>
+References: <20250619145047.1669471-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
 Received-SPF: pass client-ip=170.10.129.124;
@@ -104,88 +107,132 @@ X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.897,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dOnMN/MKCfsR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hsIyODVLogY4
 
-The only change compared to v5 is the linux header update against
-kvm main branch. As discussed on the mailing list, KVM_ARM_VCPU_EL2_E2H0
-(non VHE version of the NV support) will be dealt with in a separate
-add-on series. Also the fallback to TCG does not apply if the host
-does not support nested and virtualization=on (which is aligned
-with the behavior along with other arm virt machine properties such as
-secure, mte, ...).
+From: Haibo Xu <haibo.xu@linaro.org>
 
-For gaining virt functionality in KVM accelerated L1, The host needs to
-be booted with "kvm-arm.mode=nested" option and qemu needs to be invoked
-with: -machine virt,virtualization=on.
+Allow virt arm machine to set the interrupt ID for the KVM
+GIC maintenance interrupt.
 
-This series can be found at:
-https://github.com/eauger/qemu/tree/v10.0.0-nv-v6
+This setting must be done before the KVM_DEV_ARM_VGIC_CTRL_INIT
+hence the choice to perform the setting in the GICv3 realize
+instead of proceeding the same way as kvm_arm_pmu_set_irq().
 
-Original version from Miguel:
-[1] https://lore.kernel.org/all/20230227163718.62003-1-miguel.luis@oracle.com/
-version from Haibo:
-[2] https://lore.kernel.org/qemu-devel/cover.1617281290.git.haibo.xu@linaro.org/
+Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-History:
-v5 -> v6:
-- linux header update against v6.16-rc2
-
-v4 -> v5:
-- rebase on top of v10.0.0
+---
 
 v3 -> v4:
-- fix: only set maint_irq if vms->virt
+- only set maint_irq if vms->virt
 
 v2 -> v3:
-- KVM EL2 only is set if virtualization option is set
-- fixes regression with virtualization=off
-- Add checks against unsupported GIC configs until the kernel does
+- tweak the commit message and explain why we do not proceed
+  the same way as kvm_arm_pmu_set_irq (Peter)
 
+v1 -> v2:
+- [Miguel] replaced the has_virt_extensions by the maintenance irq
+  intid property. [Eric] restored kvm_device_check_attr and
+  kvm_device_access standard usage and conditionally call those
+  if the prop is set.
+---
+ include/hw/intc/arm_gicv3_common.h |  1 +
+ hw/arm/virt.c                      |  3 +++
+ hw/intc/arm_gicv3_common.c         |  1 +
+ hw/intc/arm_gicv3_kvm.c            | 21 +++++++++++++++++++++
+ 4 files changed, 26 insertions(+)
 
-Eric Auger (1):
-  linux-headers: Update against  v6.16-rc2
-
-Haibo Xu (4):
-  hw/arm: Allow setting KVM vGIC maintenance IRQ
-  target/arm/kvm: Add helper to detect EL2 when using KVM
-  target/arm: Enable feature ARM_FEATURE_EL2 if EL2 is supported
-  hw/arm/virt: Allow virt extensions with KVM
-
- include/hw/intc/arm_gicv3_common.h            |   1 +
- include/standard-headers/asm-x86/setup_data.h |  13 +-
- include/standard-headers/drm/drm_fourcc.h     |  45 +++++++
- include/standard-headers/linux/ethtool.h      | 124 +++++++++---------
- include/standard-headers/linux/fuse.h         |   6 +-
- .../linux/input-event-codes.h                 |   3 +-
- include/standard-headers/linux/pci_regs.h     |  12 +-
- include/standard-headers/linux/virtio_gpu.h   |   3 +-
- include/standard-headers/linux/virtio_pci.h   |   1 +
- linux-headers/asm-arm64/kvm.h                 |   9 +-
- linux-headers/asm-x86/kvm.h                   |   1 +
- linux-headers/linux/bits.h                    |   4 +-
- linux-headers/linux/kvm.h                     |   3 +
- linux-headers/linux/vhost.h                   |   4 +-
- target/arm/kvm_arm.h                          |   7 +
- hw/arm/virt.c                                 |  13 +-
- hw/intc/arm_gicv3_common.c                    |   1 +
- hw/intc/arm_gicv3_kvm.c                       |  21 +++
- target/arm/kvm-stub.c                         |   5 +
- target/arm/kvm.c                              |  21 +++
- 20 files changed, 223 insertions(+), 74 deletions(-)
-
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index a3d6a0e507..c18503869f 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -231,6 +231,7 @@ struct GICv3State {
+     uint32_t num_cpu;
+     uint32_t num_irq;
+     uint32_t revision;
++    uint32_t maint_irq;
+     bool lpi_enable;
+     bool nmi_support;
+     bool security_extn;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 9a6cd085a3..675ddeec14 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -831,6 +831,9 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+                                          OBJECT(mem), &error_fatal);
+                 qdev_prop_set_bit(vms->gic, "has-lpi", true);
+             }
++        } else if (vms->virt) {
++            qdev_prop_set_uint32(vms->gic, "maintenance-interrupt-id",
++                                 ARCH_GIC_MAINT_IRQ);
+         }
+     } else {
+         if (!kvm_irqchip_in_kernel()) {
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index 1cee68193c..e438d8c042 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -612,6 +612,7 @@ static const Property arm_gicv3_common_properties[] = {
+     DEFINE_PROP_BOOL("has-lpi", GICv3State, lpi_enable, 0),
+     DEFINE_PROP_BOOL("has-nmi", GICv3State, nmi_support, 0),
+     DEFINE_PROP_BOOL("has-security-extensions", GICv3State, security_extn, 0),
++    DEFINE_PROP_UINT32("maintenance-interrupt-id", GICv3State, maint_irq, 0),
+     /*
+      * Compatibility property: force 8 bits of physical priority, even
+      * if the CPU being emulated should have fewer.
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index 3be3bf6c28..b30aac7aee 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -22,6 +22,7 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "hw/intc/arm_gicv3_common.h"
++#include "hw/arm/virt.h"
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
+ #include "system/kvm.h"
+@@ -825,6 +826,26 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    if (s->maint_irq) {
++        int ret;
++
++        ret = kvm_device_check_attr(s->dev_fd,
++                                    KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ, 0);
++        if (!ret) {
++            error_setg_errno(errp, errno,
++                             "VGICv3 setting maintenance IRQ is not "
++                             "supported by this host kernel");
++            return;
++        }
++
++        ret = kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ, 0,
++                                &s->maint_irq, true, errp);
++        if (ret) {
++            error_setg_errno(errp, errno, "Failed to set VGIC maintenance IRQ");
++            return;
++       }
++    }
++
+     multiple_redist_region_allowed =
+         kvm_device_check_attr(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ADDR,
+                               KVM_VGIC_V3_ADDR_TYPE_REDIST_REGION);
 -- 
 2.49.0
 

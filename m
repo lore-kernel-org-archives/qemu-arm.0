@@ -1,86 +1,86 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp252988njc;
-        Thu, 19 Jun 2025 06:14:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWhgo227S/cKekkdth+OEBqlMP76TNSGkgoAOpGkDY6EF+qiuQZ5JemxNWwa97/PW1DAQoXN4cmoEHhKQ==@linaro.org
-X-Received: by 2002:a5d:64ee:0:b0:3a4:f744:e00c with SMTP id ffacd0b85a97d-3a5723a2dafmr16024452f8f.29.1750338861910;
-        Thu, 19 Jun 2025 06:14:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750338861; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp253163njc;
+        Thu, 19 Jun 2025 06:14:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX52/RZI0FqvxVkLxwRa/7Dw83xKpzXHYJiTgnc2YDPcCzeyFEJWe8jkQUHzBjwFFo4K5JR7QeisbJ8/A==@linaro.org
+X-Received: by 2002:a05:6000:26cc:b0:3a3:7cbd:39b1 with SMTP id ffacd0b85a97d-3a57237d963mr16638306f8f.24.1750338877573;
+        Thu, 19 Jun 2025 06:14:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750338877; cv=none;
         d=google.com; s=arc-20240605;
-        b=GQ8tbqsiNGWFATUdioa0NRUcerYxuWchlSkcuBih/JVeEDl0+Jo0H+ywWpuHrow/nj
-         0lyNNqrzfv0br204dcU0WM5UU/e4EjpGCdiBs7GBs5qpbLbMY5lDa4xc/MITEqSGfNCc
-         v64FmRoOUoSeLhgwtdvCJctiUCNlAhnKW0Gz13jgtmlRjkw/OPzAtXmp2hKgxDzFm988
-         uStgU0oG95TI83LFgM9B1XPjwNf47sRL9PPT8k+TXnrjOzJsfGq0IqvG301mJKowp85I
-         Czyc+VSabpMGVW6ipimRrathFGOLxINAAWZ/I1qfP1Ezhs2SGBqe4lnV+KtwcN34cggj
-         yU8w==
+        b=hT+IQEv0bz6L++nbu83r6+i5FOL2U3jBuBvo1ovjyOY+xsw4uW2kESwEDhsb6YZ5w/
+         rwDdWkzRZLtHA2QjhSyxbJuqCjqBHKNDpQfyD1TUxQGKe2e4zFLqXVif1Qdxp6K/CMk7
+         czrT6YZZGapCkzzaWaAfgyn7iHIfZFb1gC64Qc8xS3a2AKqWAUbZjeoBZexM9vQuPcfq
+         ntBUcYa1BuRp29QZwNodO/OXClHHHhMShgAwRlcMFwHZjkELI+B5XnwXzx9ysZO8n3ou
+         ad2RRoN8oeWGWxzsZNEAOpNwkOvFZP4mHLfi2188yYnONEGUDbt+yIr/cy9lReOz1ANz
+         4aSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=MgE23ZXjPhbz5eEFEhot27ybZ4s2rDCHGkAaeKo3otQ=;
-        fh=GxI5QdFXae1RNx52KG4V3TWrr0oopr4rbP7rbQWW/7A=;
-        b=cID04q00pTFII49vxZk54lMCqKNdWRjvAL7sIm/AJxUe4XAfqDgUsGD/eh9v2arF7G
-         YZ2xOafxfEMPlVoAVb9opcY16iHdA5lJQsAr7kWG4ur4puHa1WSdYPX+BvKIbDI5dYwp
-         yiJz4UyGs50P/tTkAb4p74t9PbcMXqZ/mGnJ1yDuFXTfCvSnybsNDb+il8Qw7Jt1tuc6
-         Ay+eltk0EsYAUBRKamTGCCCxAQRb1oJRdiuskOxtWaHq1mQ5iHrjcUDglo08IA+a9TsI
-         WVBf/aTqiaB6juZuNfQToAVfLcDw0sDIWKsOXAFOjq3MswFC4mY+lGRww0zOtXQbx3QL
-         LZaw==;
+        bh=vBwegXGmW2xI9QNEHAmJjIKzsQveZBksCJkfDcZvi14=;
+        fh=4gyyHNaW5QdDInz+5ykGICePb39pfMlG0klt+SugyOQ=;
+        b=PXgDx90VIf0eSc2FN4qpPAcMqLTy8UOkiL7dMOJql+fvzAsMsiNVhL2+l1Sxkzo/Vn
+         sUkDuxF+MQTNpcnQEZjxY5ZcDM7Jzs+wFZggaMFaTrB+BIVs5KBFjVfVVpglOTnYzQm+
+         wtz1ON3pjWRNVMgI1RAVW9elED93chumSB4goNV/vD84Wv4RPrx+oUukkKDFpF1fPfn/
+         if3mNor7UvagU4toQhRLI6SFWfC0k3uASZt2rLn51lhxSWeX0hC1GLdhYvZre+IeIRGD
+         zEdhCb2HXqLk4DpzuMK0QW3hPAw5yB8B6ARdMba7JLYU+xG0gUzpqYneiXvV3L7y0dU1
+         YqqQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xvpdnTJm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CoCPgCIS;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-3a5619f7f55sor5218584f8f.8.2025.06.19.06.14.21
+        by mx.google.com with SMTPS id ffacd0b85a97d-3a5618d51e0sor4840961f8f.0.2025.06.19.06.14.37
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 19 Jun 2025 06:14:21 -0700 (PDT)
+        Thu, 19 Jun 2025 06:14:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xvpdnTJm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CoCPgCIS;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750338861; x=1750943661; darn=linaro.org;
+        d=linaro.org; s=google; t=1750338877; x=1750943677; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=MgE23ZXjPhbz5eEFEhot27ybZ4s2rDCHGkAaeKo3otQ=;
-        b=xvpdnTJmMgRYwHQ3uFcEkAYZagLwRW30B+gjzE9VxCSuYnl3bGtOd42qrArIUPf1+s
-         ndc+xU6K7y4HxKkzpIw1/DYWyhpwMA/xHIvf+Qh8raFlqJhohQo9au7apDjHUDxEEEDE
-         x09QA4GnuDyZnLGaJpvOwrvBQlYkQyuPiVqv5k2EVEwXqoFvg+yYpkRIrLtaFWnk1ZG6
-         LlcEl9SssiH3X+QAIzDVa1xXS+9TDziLlVZhRuCLdy5UneY6BweQNPU1dzPLCTqQOFkZ
-         g9OO+7tiudCucI+7iyZzCMWQpuvCvmZsXuCelh8qAxxWwVGcZJiLsk3RbMa2WqYqvLrI
-         Jelw==
+        bh=vBwegXGmW2xI9QNEHAmJjIKzsQveZBksCJkfDcZvi14=;
+        b=CoCPgCIS6+8P8j33r8F0Ev0Tem/Htz6G7kXOpRBZAvK8XVk2jIXCgSTUnF02wsZebN
+         kP/DE/h+QCIT6fqNW4yun4aM2Qzslb+luqUOxmhMtnZakQoW+XaD8R09yOcNnnAN1rAw
+         REcv7j5DII9818o0FntYeHyLjdyMDnT4Ddj/A57AkNZ3ApEdwU2gN0KRJFDG+dqXFHLF
+         nxa/pwz4D/tG7h6pXe7NPzXVNnoXXtmgYfVG0Aj29wIMCkManIFdvyoeI2zIa+HNJNoL
+         7PhEONyg2SMe5XjW2GFH3HikBTRgTRSkP4AuynRMy/q3K0W/T7tTj1ctRDLISTh5SXzO
+         OgFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750338861; x=1750943661;
+        d=1e100.net; s=20230601; t=1750338877; x=1750943677;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=MgE23ZXjPhbz5eEFEhot27ybZ4s2rDCHGkAaeKo3otQ=;
-        b=e309VyVXG9DNQqLtNTAUWGp7bSmIl2jgZLEISYAB6wHOkHrEnjn06MtkSTxI6EQPcW
-         /RfoXtTKvOH2yihq7aBw0MPHfvaF4W6JktnSLWEzro+uFXSUIXnWBDkdDkObdhVk5VrE
-         g7JOUp2koZlUllA+Quz7P6jyvEB4rRyRFfL9UPncYmf0O5QNmPSurgdlvjUxGRrgr5oS
-         V3W7pkgsp26C7gXFDUo8X2origUY/s9awklvpAu0rszk+lmkOW1XDqQ/cNVQtLA/A/yb
-         cbuKJL3ATdjCnEoegRfuXQet02EzKEIG3NzE5aGcA7JYidjgzjuCNowioH9NbD5qPGUK
-         PUhw==
-X-Forwarded-Encrypted: i=1; AJvYcCW7QVq4JrI61CZXARzEq5gzhpNeGNMlsRP3eNLKaEWGjTBB3r9kf6JmbLgN3j1STb8RzRudxqqSFez9qg==@linaro.org
-X-Gm-Message-State: AOJu0YwNpzAF88Ypv6j0I1dWA1YZ61y+kp3TLX9fvad62GyqUpJRudzs
-	vTcou6z0Uf7jOTRwRERKo/lD5IoRNG6U2cg5KtbpXrytbdIznfm5owNpAQvJjeN2xXWluQ==
-X-Gm-Gg: ASbGncvN52y5/vMQzURSi8bn4yS4lvVTgHBOIOYGCV04C+8/ZgYsn71mWIHsAPPykXb
-	ChmC7eXwOZ2M6UfEJtw9NO7HQAPyZ60jt4jmQtCAdig+cgXqe6Yi6rFIXzIHc8XRAQHbL0jna++
-	W+pFEkQvCJHYIVr5gTNxVckDIrKQq+wnQJECJdzV6W4haQ7hZzeIYLKuU01MBA2AFPONMsMQPFY
-	OHbZol/QwJD5OxHM8uCW14E6OAjHOpDGmGMTaUY51hF7d1825Nc2GBlQ6VJFtpfobqArwmQ0ON/
-	mA6VwlssO28ETHzRkQFu3nip9tgR2/InsG15hUqZOSYq54Yga+CUm0do1fzjgSDn8oyQB0cvVb3
-	g/LjGbg7nF95L67C3uKwYEcnvbPpeHP3qRXfM
-X-Google-Smtp-Source: AGHT+IG/UYI2TYIa9RXcwUa0fUfFK7JoPAY2HMaE1zI4A9LwhSOJHHI/mUd44vJwEgaSqgrYnYu8MA==
-X-Received: by 2002:a05:6000:4021:b0:3a4:f5f6:b4ab with SMTP id ffacd0b85a97d-3a5723a2e2bmr16674306f8f.30.1750338861305;
-        Thu, 19 Jun 2025 06:14:21 -0700 (PDT)
+        bh=vBwegXGmW2xI9QNEHAmJjIKzsQveZBksCJkfDcZvi14=;
+        b=Ktcy0XC7qYl9ytAQqYigzOgfOTgAU2jrJd5ciB5Ew5y11FTdP5lJUfSVG2d0kZmKiV
+         aFzkQjpKO3h6qjQ3UgWroXbiMVHLZJNryHeMiR51wHCG9gqyHeea4CYaTyl2T84u31gl
+         Yr+gPFuc4oNAKrvDViqXxJnV3sR4JmoJSm1QU9mesj5ulSJbWqRArsjj0Q2xCP9hhYmn
+         pc0F21z4i4U2P9rLHSlKBnffR5r0dJLYkLFpzUxUYGKWeigGFSxwpq7M6Em9tNKyO3OJ
+         oru1WNa92LNglGmuYT0xzGG8GYmYA60cQ2kFfQnOvx9uync7+vwNXCqJkfwG7uVB2T+5
+         cvCQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU9n063oT+U3iCslabQRckjuq0ymojz0RpGBmqZGwp2DVIkUvVauxoqlpBFW2B7DGUWgE3shsS+ZQZwTw==@linaro.org
+X-Gm-Message-State: AOJu0YxErBaeUG4dE1ef136ZlPGci6TxHWLa0ckKjBKRdYFEAWysWglX
+	QCoKswuMrdr4PkHGlNBcA5A0iWZ7FyWtLm4WYR9dkADxghzuSvmMSToOVrkAYqWbFGrfMQ==
+X-Gm-Gg: ASbGncvndhmpx45Uy6efov9JwrUnS6QKs1H/PmKm8Rz1d7kMITA2SrnmY0LtLQBTT6D
+	LSnzoc4RddDCL8JYt+ich5E4Iw37oKYZIkDUvt8OZ76aBnMWQFpyRrergrzuIWfeF7NFTbXfpjQ
+	7wx4wxPm9/kgQEX9QMJDqV9OlsNt3LNW/oLmReqmS6D0XN+yoyBNptiw2kOnBwJeDGfVo4O9/KA
+	NR/nEeTvE6H6WKtHHVirV0Z49WZGHM/emyqqxXYY5yMDDuzihNOoPF5UrABELqYie8idZbOe251
+	SgutLI5RewGzjwR9jQLPiL2MPKcKd6GsqvGldI15Ihiz+sNsjgI5X22LYSlpTRzpH2kOYzrmiIf
+	KBy9PX0NiUICtvoqWMqaRJFAY/ld6NS9ZTxv5
+X-Google-Smtp-Source: AGHT+IGphVnwIkNy8mgxx1bMSCUP1PYKYP3HE8EUL+SUsHxrYE2Vhs26H5k6O4fJy9ktfqkBuAu1MA==
+X-Received: by 2002:a5d:64ee:0:b0:3a4:f744:e00c with SMTP id ffacd0b85a97d-3a5723a2dafmr16025163f8f.29.1750338876992;
+        Thu, 19 Jun 2025 06:14:36 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4535b683b49sm29415425e9.1.2025.06.19.06.14.20
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a568b7741bsm19777232f8f.98.2025.06.19.06.14.35
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 19 Jun 2025 06:14:20 -0700 (PDT)
+        Thu, 19 Jun 2025 06:14:36 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Cameron Esfahani <dirty@apple.com>,
@@ -99,115 +99,86 @@ Cc: Cameron Esfahani <dirty@apple.com>,
 	qemu-arm@nongnu.org,
 	Roman Bolshakov <rbolshakov@ddn.com>,
 	Alexander Graf <agraf@csgraf.de>
-Subject: [PATCH 11/20] target/arm: Create GTimers *after* features finalized / accel realized
-Date: Thu, 19 Jun 2025 15:13:10 +0200
-Message-ID: <20250619131319.47301-12-philmd@linaro.org>
+Subject: [PATCH 14/20] accel/hvf: Add hvf_arch_cpu_realize() stubs
+Date: Thu, 19 Jun 2025 15:13:13 +0200
+Message-ID: <20250619131319.47301-15-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250619131319.47301-1-philmd@linaro.org>
 References: <20250619131319.47301-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: r+yM7MIUPYeo
+X-TUID: 7WMp0A/KiuEz
 
-Call generic (including accelerator) cpu_realize() handlers
-*before* setting @gt_cntfrq_hz default
+Implement HVF AccelOpsClass::cpu_target_realize() hook as
+empty stubs. Target implementations will come separately.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/cpu.c | 65 ++++++++++++++++++++++++------------------------
- 1 file changed, 33 insertions(+), 32 deletions(-)
+ include/system/hvf.h      | 3 +++
+ accel/hvf/hvf-accel-ops.c | 2 ++
+ target/arm/hvf/hvf.c      | 5 +++++
+ target/i386/hvf/hvf.c     | 5 +++++
+ 4 files changed, 15 insertions(+)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index c99981d88f8..102f45442a9 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1986,26 +1986,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         return;
-     }
- 
--    if (!cpu->gt_cntfrq_hz) {
--        /*
--         * 0 means "the board didn't set a value, use the default". (We also
--         * get here for the CONFIG_USER_ONLY case.)
--         * ARMv8.6 and later CPUs architecturally must use a 1GHz timer; before
--         * that it was an IMPDEF choice, and QEMU initially picked 62.5MHz,
--         * which gives a 16ns tick period.
--         *
--         * We will use the back-compat value:
--         *  - for QEMU CPU types added before we standardized on 1GHz
--         *  - for versioned machine types with a version of 9.0 or earlier
--         */
--        if (arm_feature(env, ARM_FEATURE_BACKCOMPAT_CNTFRQ) ||
--            cpu->backcompat_cntfrq) {
--            cpu->gt_cntfrq_hz = GTIMER_BACKCOMPAT_HZ;
--        } else {
--            cpu->gt_cntfrq_hz = GTIMER_DEFAULT_HZ;
--        }
--    }
--
- #ifndef CONFIG_USER_ONLY
-     /* The NVIC and M-profile CPU are two halves of a single piece of
-      * hardware; trying to use one without the other is a command line
-@@ -2052,7 +2032,40 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-             return;
-         }
-     }
-+#endif
- 
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
+diff --git a/include/system/hvf.h b/include/system/hvf.h
+index a9a502f0c8f..8c4409a13f1 100644
+--- a/include/system/hvf.h
++++ b/include/system/hvf.h
+@@ -72,6 +72,9 @@ void hvf_arch_update_guest_debug(CPUState *cpu);
+  * Return whether the guest supports debugging.
+  */
+ bool hvf_arch_supports_guest_debug(void);
 +
-+    arm_cpu_finalize_features(cpu, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
++bool hvf_arch_cpu_realize(CPUState *cpu, Error **errp);
 +
-+#ifndef CONFIG_USER_ONLY
-+    if (!cpu->gt_cntfrq_hz) {
-+        /*
-+         * 0 means "the board didn't set a value, use the default". (We also
-+         * get here for the CONFIG_USER_ONLY case.)
-+         * ARMv8.6 and later CPUs architecturally must use a 1GHz timer; before
-+         * that it was an IMPDEF choice, and QEMU initially picked 62.5MHz,
-+         * which gives a 16ns tick period.
-+         *
-+         * We will use the back-compat value:
-+         *  - for QEMU CPU types added before we standardized on 1GHz
-+         *  - for versioned machine types with a version of 9.0 or earlier
-+         */
-+        if (arm_feature(env, ARM_FEATURE_BACKCOMPAT_CNTFRQ) ||
-+            cpu->backcompat_cntfrq) {
-+            cpu->gt_cntfrq_hz = GTIMER_BACKCOMPAT_HZ;
-+        } else {
-+            cpu->gt_cntfrq_hz = GTIMER_DEFAULT_HZ;
-+        }
-+    }
-     {
-         uint64_t scale = gt_cntfrq_period_ns(cpu);
+ #endif /* COMPILING_PER_TARGET */
  
-@@ -2073,18 +2086,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     }
  #endif
+diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+index b38977207d2..b9511103a75 100644
+--- a/accel/hvf/hvf-accel-ops.c
++++ b/accel/hvf/hvf-accel-ops.c
+@@ -588,6 +588,8 @@ static void hvf_accel_ops_class_init(ObjectClass *oc, const void *data)
+ {
+     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
  
--    cpu_exec_realizefn(cs, &local_err);
--    if (local_err != NULL) {
--        error_propagate(errp, local_err);
--        return;
--    }
--
--    arm_cpu_finalize_features(cpu, &local_err);
--    if (local_err != NULL) {
--        error_propagate(errp, local_err);
--        return;
--    }
--
- #ifdef CONFIG_USER_ONLY
-     /*
-      * User mode relies on IC IVAU instructions to catch modification of
++    ops->cpu_target_realize = hvf_arch_cpu_realize;
++
+     ops->create_vcpu_thread = hvf_start_vcpu_thread;
+     ops->kick_vcpu_thread = hvf_kick_vcpu_thread;
+ 
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 1fbfdaed59f..632751d1eab 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1078,6 +1078,11 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+     return 0;
+ }
+ 
++bool hvf_arch_cpu_realize(CPUState *cs, Error **errp)
++{
++    return true;
++}
++
+ void hvf_kick_vcpu_thread(CPUState *cpu)
+ {
+     cpus_kick_thread(cpu);
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 99e37a33e50..28484496710 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -367,6 +367,11 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+     return 0;
+ }
+ 
++bool hvf_arch_cpu_realize(CPUState *cs, Error **errp)
++{
++    return true;
++}
++
+ static void hvf_store_events(CPUState *cpu, uint32_t ins_len, uint64_t idtvec_info)
+ {
+     X86CPU *x86_cpu = X86_CPU(cpu);
 -- 
 2.49.0

@@ -1,86 +1,86 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp252522njc;
-        Thu, 19 Jun 2025 06:13:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXEXMz+Fmlc5e9sakmPSxA2xL9qQCfLGonLJm58ET7Sp4O+zixzrurr/D81EG2CydVeVDaL4EkfVFzVFA==@linaro.org
-X-Received: by 2002:a05:600c:444f:b0:43c:fe5e:f03b with SMTP id 5b1f17b1804b1-45345f1cf67mr178332795e9.30.1750338814446;
-        Thu, 19 Jun 2025 06:13:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750338814; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp252839njc;
+        Thu, 19 Jun 2025 06:14:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXEuhzSCRKfGba0UrFw0WpW2cyKZ8HV0uTPT0gKMeO9QRurNV7thWZHICC2BOxv9x0bME0UkZzR8Cqypw==@linaro.org
+X-Received: by 2002:a05:600c:1ca1:b0:450:d3c6:84d8 with SMTP id 5b1f17b1804b1-4533ca837cdmr197912195e9.14.1750338846080;
+        Thu, 19 Jun 2025 06:14:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750338846; cv=none;
         d=google.com; s=arc-20240605;
-        b=NACXardUV7m2pk5Y7UyR+jj36wyXRhPZvHr+IkLNNskN79ftRFtoxN6+dALDtK0WdF
-         N4XHIrEqV28QNgAh3va+vxMlw2Lhnd5g8ZVyj3Y6ZjSUUB1u3OFlAZNge/04BlUb8Ljg
-         KDsSXyhB9h6nxGi5lLC/fQYw6LK/YreRT2/Hxz8/krV4telSWXPNT/LHLaMdYQPJGu4J
-         hVVJ14XdLdMEnGF5fIt6XR1+uTOcILY7V9Z6Mq4med+RlShKHY+puW+9agZw/6Pi15at
-         hYC9H3gxD8DpvFxDzw1PYKOJ8/mEo4qwWyQ/JZEpBRsD9+nhGLVE+z9ddK4uTvHfWsPF
-         XlRQ==
+        b=e4C6vg+uSBr/RVG8tFBGx+c6nCDI0EoqQpY5+BBvCPeBx1ubpmaPhhjLuKNrxBgHCo
+         9KvRbcCMSPz/+Ddx1Aa8qcrOabsfY+63/Dmarg71Y4kyMGVDuGmwgSI9Ylhu4eAgN3If
+         JWXFmLhfVsjbRMv6nrM6OgYx46/xuo5WUqoE7yGV+NiQaYbynFlFZBnaV+uLCwyx9A7+
+         hrRKrNH5WXpiDEctcuTnCDRWHuNk1wCMTifo0x28euRwi0fHGZOZwHJwa1K/Iy8FzFy4
+         5u/SPNcSg24UOpOJid6kK/UmRqXjigEhdu8xLLrg5I63Yh9A2RhzXXU7+WjeEzYTyqWA
+         D2Bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=njVumrb22osQKhmYAguxSrlkLoqT+wPkHlSnrsTIoAI=;
-        fh=Z58bF/y0hntKG4ckcNeYmQK+RqNDlLZ4YOBESQTWz78=;
-        b=XSCupoga6obwBk7LHd5cJkjD5w143Waueqk2bEVpu6VhrGMkFGjnxlbv4dDjC/07BV
-         TGi2gxKcrsUvhXhQ304WCVjpulIltflx6RE+C/b3hKZHc72F6qp8iqFe4FfiDMLVJLzI
-         gW1yogbckwFa9EExGo5qGcBIeMyA1BcMBMXovRPicAK6FsQEyf3VzXQ4Bjc6LAs6ovpp
-         edLkY4zY+SXyzed18ZoU3wTNpVKfWBTCPmQMkXjrZK/+pm1rSmROd3345X+QQ2/PNn9v
-         n/F+uJfmV6lvJgai6s6J/xHSW/A8t71qodRopG56NtMa+kn+hk3nGBC5oMe8wyKzzIQC
-         oP1A==;
+        bh=V3vxCB8AF1OexrFi26RMBcdit/f0pHUtl0WDW3lo3q4=;
+        fh=txJSs1rlYnGPOGU+zd8sEG0GrnThEkl85TVbtQFuOoc=;
+        b=hZ2QU8RxV6OuK7X4wOPxek69CuxkOJ8IctPqctRczeH9ejkzzc4sbWjs7/ahIobdZp
+         NjF0OAux8c0QC65mx8034nV8Z8lS+hS32zwX2IjmSEECnzcQYGr7Yt2RFrfmyBnGg+jM
+         EWiXPAVxI0ej+IZ+oLq+zlf5F1DQmfS0KmGE5YSMWDSEzhDXfaUd/wTox0aJzT8D2Hy7
+         uPzQFWLWRIs7BNDhrqWUymiUOdXOFK13HT07od40abB+jq+5TDDj4P72pWur2O5Xp+p4
+         G0eGPYuolfvQVw+Ca/8/NpaVEuVbyTR3RuLXXCbV4sx2genb5JD+55waHGb0S/LVL4/F
+         pCkw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uXE9+74v;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GUSoz6w8;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-3a5619d9df9sor6089527f8f.4.2025.06.19.06.13.34
+        by mx.google.com with SMTPS id 5b1f17b1804b1-4532dbb539dsor69490675e9.10.2025.06.19.06.14.05
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 19 Jun 2025 06:13:34 -0700 (PDT)
+        Thu, 19 Jun 2025 06:14:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uXE9+74v;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GUSoz6w8;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750338814; x=1750943614; darn=linaro.org;
+        d=linaro.org; s=google; t=1750338845; x=1750943645; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=njVumrb22osQKhmYAguxSrlkLoqT+wPkHlSnrsTIoAI=;
-        b=uXE9+74vqgmnzf0UNVl1PH3Hu2gYrHbY4ENe5+xxV/Y8415Hv13aTVvp9Ik0YDNYEA
-         SMtcES32jMQouXMi0AulYpKSw9vPnJg19P4yryxuWSxtfIORH5nGDvqcXVkgy3kDoWL9
-         SmYmE5wTwklq5NSMTf8TZaElwfW5D9vjb/UyBUsKnteK0M4JkAlVXIK4CVCD3TYNGZzg
-         onsfG83cVw1JaFvci2Ryi/Z6iDMfYaINBns0MV/qynfTONJT5JfF0s/o1Z/VKNklPTgf
-         mdkBcTTimKvGxK0aq/mmGKNosnC0KMZJ/mrlY8HUqwGM8SeD85Gyp/FgIs2ZcDNMemuK
-         yFNg==
+        bh=V3vxCB8AF1OexrFi26RMBcdit/f0pHUtl0WDW3lo3q4=;
+        b=GUSoz6w86yWOUtrq7Fesu+3h+BapNLSl5D3k13727rm33RMpgLV+4ZzFpuF/Bv7lOu
+         MYeFhBjxaSM1zmMT6rFRM0YWNuBgjlAitEO9IlDZz1Te1by5oslcSeopfIX/JjYJ7hY1
+         6avfNYurawUwx7Lgn+fSzG0WSfyR9lqw7qRp1F/7SotbagAwFlHy2egixR07DP4ImtIO
+         ieE4hMgEF8vxXrsiHdUoqqNMei8XVn8Q72UaYueMqxG0dOBXdWu9IiYwtCVyIDOuKpgY
+         L+5WYQbsSONJGoFNCqNnh/gygvWfw4UOpUKvSSKXYDYh8zbPURZbKjL0l2y6uqivPW7l
+         MWSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750338814; x=1750943614;
+        d=1e100.net; s=20230601; t=1750338845; x=1750943645;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=njVumrb22osQKhmYAguxSrlkLoqT+wPkHlSnrsTIoAI=;
-        b=aH10hNIkl07hwdKd0oCzWjrJNUgUo7cIG/eJk7gtdqgydbrTbvQtYulmElB6ik1rVi
-         l+P+ofJeygJx5qk/Q/YhUc8I6EoeVQPyo5LpHi2HDt9s9zbbigq5RDwWrn5v5gHIp0oC
-         KqjCwauMfmzq6by5qDf+ytHUt2UONt0QYKMf/FsFqWa4dMqo/MslzrYSPaFBvVurrvat
-         eaBmvcWwtCRXnMzIQUqWlfp4pW6zLwV1BmqgCNA3wX6CONcKA8re25xS5vwNoSoC6cF6
-         UTVYHOIOUJ7DB/9YPJ0zw70jRZH+npW+2VBLTyl4gtVYHNqRZwUG9QsHILhcQrQBMt1k
-         3tYg==
-X-Forwarded-Encrypted: i=1; AJvYcCWhz2hOCln8lNvFRenQvM7sSFPwOHKKJ1jle+OL39NGVPYOF4hINOtkPrYmd+UUwGCeHvGFgtqWw4e+fg==@linaro.org
-X-Gm-Message-State: AOJu0YwQmosDzaZQ5PzTwuSupT8xnwqy5BUy5YtXsrQfe7HpcynXpg9A
-	oHlCxoANqwpTRiP82sqZLv/lMB8G/NvGB/gKI6KbXkuTIkFGpOkUYnFhD3mYkmKEtKVLAw==
-X-Gm-Gg: ASbGncspO49uJHq8N4NL8B4uNckBZn4RgCHKK9IOQb/tAg52j8wIu926zN9OaKiamCu
-	DDYryieTdo0Ks8nixcLPMWOhYFos70WAvGJGfrWvMInC7EC7Rj/83086V5bsBZTKP+weK+m3NOp
-	Q8fGcH+dim7Elcw4sg4hIv0mnLfTGGS1hdkP8WRlXpyuKMEOtHbvXd82T5r/Ku2brpkoJFCy0zK
-	jssxbY3JClViHwv+YgCd18HaBa04Ji/sP4WhQjyqR5s0inXbYnJEwIhYBNxfDKlHtEUmbn7Ft27
-	PRqgxEq0HrvXi8TQb8Adlf4xL+72ebODc1yo0thO3Ow2F+lpkZse93Xo1Zqkyco8qORAG2pJzSO
-	LkCKHqZ3MfFkH4DpBnpykAFm270x/mN7YmGJm
-X-Google-Smtp-Source: AGHT+IGHJFjSXSFKOe1Y20YU1PJNu67FjETa65TJxweZU1CKSra6h9mGTRAvKIyXP6ctcKvZdSxHTA==
-X-Received: by 2002:a05:6000:3112:b0:3a4:e480:b5df with SMTP id ffacd0b85a97d-3a572e79749mr18776507f8f.44.1750338813836;
-        Thu, 19 Jun 2025 06:13:33 -0700 (PDT)
+        bh=V3vxCB8AF1OexrFi26RMBcdit/f0pHUtl0WDW3lo3q4=;
+        b=u2LDlEiqI72SQJL+clmC7GxgJ/qECSlUPDH/XLrI08NYxvQtUiaHMytqeQiceqTYLj
+         Mkfph4e54MrKik7Nb9njkGwR4D9XC2Bhpp+j9rUp0h7q2V4aBlolED/0BPBWhfOajakl
+         luH2NCtqv90/7T0hPGT3OIIK3Qyq1lXRVDzjAiBRROghuH9m+do7ImIy6NJrj2DUn31/
+         BHo5+y62IYSrLKaHbjT1PrC794QyiV4/1lQVtvtGGR5YOQMj42mLgM6G9hgTt3pPictw
+         pNl9DkXMPge4AsfshqD0YmsOcDF7lZnbM6avTEywJ3lCsaR4FDWLgVZcyeEnGYhLqZyM
+         fr8A==
+X-Forwarded-Encrypted: i=1; AJvYcCXJFFovEw/ZMLl/lrDxEWIIpmtHBX0vP7y1kCub4OurXPVlfiqsTggktIutId1as6rnXnqsNRhSwfiC/A==@linaro.org
+X-Gm-Message-State: AOJu0YxUwquGBMZAqPKybAF1KemLiRpVl1agt2gNYAvaEUW4Kf3O2pEZ
+	KLRasvMhALKG5SM21faKew0tOvJMFSbO7Le99y5H77lncFE+DwUHV3ATOBFUADUhGXZ6Dg==
+X-Gm-Gg: ASbGncsYQe8/4W4cOlwg48g3BwrhT09xOOSG1NQS3puVUdaUADGfixkj2mCC75XCsd0
+	U4uQ9/ZKnikQ3zVf87U0+KSjYwX+/jtASnYtwD/ODUG+q4ilkfgR6JArZSzQ2ujc37QixjHoaip
+	hN5G1hhr+pWvZ1eSlUATRqVFPAcchTSBHiaLX05GieDNYgXn+BmLL5Ie8Ir6AsODt5V05ZXv7LS
+	6eWo54TcrS6BGCXxHlolWi0y44r7fWu256Z81VXLOv+CaffAcpjpakL95SDmsoDRZHSOKayWTPb
+	sAtK5gM8pqtvtrT6h7pabEqqHvBdB/qTqyNynP5cM2Q1xgf68xuBk//m8y8Xx19Xp9JdZ6Wi7Y7
+	da6T0NW8HGjQ0GuxbRBKWOa7ANdQsoogrSnV/
+X-Google-Smtp-Source: AGHT+IHelkidw/tQQ9RKP0VDtKPsH2g6yNSOnkNt0atUABraIjdPtrs1NJAkAu3tXReVPLd5lAEiMA==
+X-Received: by 2002:a05:600c:1e1d:b0:453:b44:eb69 with SMTP id 5b1f17b1804b1-4533ca7518dmr224054745e9.13.1750338845548;
+        Thu, 19 Jun 2025 06:14:05 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4536366326fsm2312615e9.38.2025.06.19.06.13.32
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4535e97ac4asm28331335e9.3.2025.06.19.06.14.04
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 19 Jun 2025 06:13:33 -0700 (PDT)
+        Thu, 19 Jun 2025 06:14:05 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Cameron Esfahani <dirty@apple.com>,
@@ -99,50 +99,57 @@ Cc: Cameron Esfahani <dirty@apple.com>,
 	qemu-arm@nongnu.org,
 	Roman Bolshakov <rbolshakov@ddn.com>,
 	Alexander Graf <agraf@csgraf.de>
-Subject: [PATCH 02/20] target/arm: Reduce arm_cpu_post_init() declaration scope
-Date: Thu, 19 Jun 2025 15:13:01 +0200
-Message-ID: <20250619131319.47301-3-philmd@linaro.org>
+Subject: [PATCH 08/20] target/arm/hvf: Log $pc in hvf_unknown_hvc() trace event
+Date: Thu, 19 Jun 2025 15:13:07 +0200
+Message-ID: <20250619131319.47301-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250619131319.47301-1-philmd@linaro.org>
 References: <20250619131319.47301-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: GBGQmkeBqdCI
+X-TUID: ilYA6BtFH3mZ
 
-arm_cpu_post_init() is only used within the same file unit.
+Tracing $PC for unknown HVC instructions to not have to
+look at the disassembled flow of instructions.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/cpu.h | 2 --
- target/arm/cpu.c | 2 +-
- 2 files changed, 1 insertion(+), 3 deletions(-)
+ target/arm/hvf/hvf.c        | 4 ++--
+ target/arm/hvf/trace-events | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 302c24e2324..c31f69912b8 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1150,8 +1150,6 @@ void arm_gt_sel2vtimer_cb(void *opaque);
- unsigned int gt_cntfrq_period_ns(ARMCPU *cpu);
- void gt_rme_post_el_change(ARMCPU *cpu, void *opaque);
- 
--void arm_cpu_post_init(Object *obj);
--
- #define ARM_AFF0_SHIFT 0
- #define ARM_AFF0_MASK  (0xFFULL << ARM_AFF0_SHIFT)
- #define ARM_AFF1_SHIFT 8
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index e025e241eda..eb0639de719 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1713,7 +1713,7 @@ static void arm_cpu_propagate_feature_implications(ARMCPU *cpu)
-     }
- }
- 
--void arm_cpu_post_init(Object *obj)
-+static void arm_cpu_post_init(Object *obj)
- {
-     ARMCPU *cpu = ARM_CPU(obj);
- 
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 1ff3ff7b91a..ccdadce4766 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -2069,12 +2069,12 @@ int hvf_vcpu_exec(CPUState *cpu)
+         cpu_synchronize_state(cpu);
+         if (arm_cpu->psci_conduit == QEMU_PSCI_CONDUIT_HVC) {
+             if (!hvf_handle_psci_call(cpu)) {
+-                trace_hvf_unknown_hvc(env->xregs[0]);
++                trace_hvf_unknown_hvc(env->pc, env->xregs[0]);
+                 /* SMCCC 1.3 section 5.2 says every unknown SMCCC call returns -1 */
+                 env->xregs[0] = -1;
+             }
+         } else {
+-            trace_hvf_unknown_hvc(env->xregs[0]);
++            trace_hvf_unknown_hvc(env->pc, env->xregs[0]);
+             hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
+         }
+         break;
+diff --git a/target/arm/hvf/trace-events b/target/arm/hvf/trace-events
+index a4870e0a5c4..245338c5bf4 100644
+--- a/target/arm/hvf/trace-events
++++ b/target/arm/hvf/trace-events
+@@ -5,7 +5,7 @@ hvf_inject_irq(void) "injecting IRQ"
+ hvf_data_abort(uint64_t pc, uint64_t va, uint64_t pa, bool isv, bool iswrite, bool s1ptw, uint32_t len, uint32_t srt) "data abort: [pc=0x%"PRIx64" va=0x%016"PRIx64" pa=0x%016"PRIx64" isv=%d iswrite=%d s1ptw=%d len=%d srt=%d]"
+ hvf_sysreg_read(uint32_t reg, uint32_t op0, uint32_t op1, uint32_t crn, uint32_t crm, uint32_t op2, uint64_t val) "sysreg read 0x%08x (op0=%d op1=%d crn=%d crm=%d op2=%d) = 0x%016"PRIx64
+ hvf_sysreg_write(uint32_t reg, uint32_t op0, uint32_t op1, uint32_t crn, uint32_t crm, uint32_t op2, uint64_t val) "sysreg write 0x%08x (op0=%d op1=%d crn=%d crm=%d op2=%d, val=0x%016"PRIx64")"
+-hvf_unknown_hvc(uint64_t x0) "unknown HVC! 0x%016"PRIx64
++hvf_unknown_hvc(uint64_t pc, uint64_t x0) "pc=0x%"PRIx64" unknown HVC! 0x%016"PRIx64
+ hvf_unknown_smc(uint64_t x0) "unknown SMC! 0x%016"PRIx64
+ hvf_exit(uint64_t syndrome, uint32_t ec, uint64_t pc) "exit: 0x%"PRIx64" [ec=0x%x pc=0x%"PRIx64"]"
+ hvf_psci_call(uint64_t x0, uint64_t x1, uint64_t x2, uint64_t x3, uint32_t cpuid) "PSCI Call x0=0x%016"PRIx64" x1=0x%016"PRIx64" x2=0x%016"PRIx64" x3=0x%016"PRIx64" cpu=0x%x"
 -- 
 2.49.0

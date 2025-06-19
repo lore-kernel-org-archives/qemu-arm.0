@@ -1,154 +1,191 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp258880njc;
-        Thu, 19 Jun 2025 06:23:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX8m2KUZWBjicKogm3fgqFuEBScrD7a/AsfogNSKVejbNwqr9ABtvh86r1eWfl1ihpBJWheqybk2arvKQ==@linaro.org
-X-Received: by 2002:a05:6e02:1b03:b0:3dd:d90a:af30 with SMTP id e9e14a558f8ab-3de07d68529mr225506005ab.10.1750339404900;
-        Thu, 19 Jun 2025 06:23:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750339404; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp266648njc;
+        Thu, 19 Jun 2025 06:36:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVOoQp/5ITSn7Tl/Gsf0v6JyAlseF9utQNju9D8O68tTe7W64OXCZ7iHuuss8ATEk2kNIW6nFBtHiSH4Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IGHonld2tpd4Bu1Wr8ShUWIZhlG6InTs0HiN6DOQ1xdN+9CtCIi2jqtQBW2UV/hANj5FhNo
+X-Received: by 2002:a05:690c:25c9:b0:710:e966:bf96 with SMTP id 00721157ae682-7117544ca55mr313752437b3.27.1750340218248;
+        Thu, 19 Jun 2025 06:36:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750340218; cv=none;
         d=google.com; s=arc-20240605;
-        b=TskOqq7pT1VZb+BXV3Xuo7fR/XULDQ95U4V0C1n2wP20efo3/d6H2YsxprGU6jGplE
-         ZCgYUk1XakmyOzKFaHFpLK9lNNVdxjHnjgIEpJ8SdsmpASDqKYb0baOZPk6cLPY2dkXq
-         u9ctwzE0AxbbGrMXt5WpuwnJoyvDxfuyLqsbBuKhUhbQeE+Mo0AD+RCIkQtgGOgzAatT
-         tgSWUwd5Buo9tHmA9T3NtYyCG43dbGBkHrVkC/LjJEu7ViepWxncNMjf1FRMa5/I1316
-         mlqIwe9q/y+hoFpOY0ct5yYmZ7w7/M9PMvISGtgMSYHE9Xxz10QlkB7jC0b4S8uSsPeB
-         Nz0Q==
+        b=B4WxT3acJq72T39wLIdcooeLwqchR5Nyr56D5n1yLpPkE6oGkcnBS8A3o0iDFR3qit
+         KvyFQaqHfSLHTsuZmtneJp6zOSDwgBbrQ7IR55TXZPxji8xJgn/3F2vpNU2qeuLCIiCd
+         5cIrfKigheRDLf9J36oHvMiK8F80Tlw6VAOW2iRTUYtYcMTZbxqyh5gZi+T4PWx0Kmfj
+         5o+OzKTs7SIgx/EIbI+cz8lpZIRc5XdKek7TZGvfoM0Rx/1k6EGKHv8R/LlWYKgBjAvF
+         KniMycEMJfdD5O0VUKoK7GHZAGtDy8sNxFq2eCqXx+40JNxpwCwDyhUIJG5guNe1nDAf
+         VXTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=Z81gzf00YTkY/fBeXVt0/DuwssyllLL3hRkGPpJeRNY=;
-        fh=qGJXn42yD/B7h9+DcKDCjgrffJyAU7Xi53tdROKrt5w=;
-        b=EhhxbpeR8Pge8LkUQZGpyIHjRCPfp4KaLzXtf3BNEyZbAQJYE71p53RAPKylohNKxn
-         rhmWG4lAul8AHq7tOwZfqbO3VReC2L7NKU46r26tftWaPNjmjgALU6C8Nkm8cJfMtzUD
-         G9ZDJ7g65o5MPyOZ0erLAX2RpUWYLxHOMuH6/9EMBnsM2SDxngXsy3B49dxseeTZRoka
-         EvjkyIq5qH0ORB/UVbVFFSOxabxGUWuKy9K0d2APz5RbEkm9HLbmLCy7sWyZp1o0LNxn
-         vRiDfMfHvyEGDaknmaWWswiLhzxikXZ5vSLsLkohPdbROHbqQC+R3pztzLoPvYD8S2Os
-         WjOA==;
+        bh=8Yw0pCK+yjsFyWICsC6tO8VSFWY/4YZhCmU+/h/OTjc=;
+        fh=4eMjDrMS7j7XyHs4jCkr1TKCO9vbur0tLUs6r5r5L0Y=;
+        b=kUNvwyJc+JTJKsiqZA2LuG493eFvtbWmKxfEHMFk6oX0hY+gB5rOUf3cU3GbQOyCGr
+         6IufHUphBpUOOWgI0/poQ07pEpvj4kCek101eHS9XlnsN3utMGQt69cH3pOEjWjZEtd0
+         /UoI2kdw1Hs0FHCu6yOvXYoc8oQXGaHygfR9z0cfSYTIKoLJkNQH2VeuEFFX0TMbitdm
+         s3q+OE4sRW+ev6RCQW1XQYpW+L34gHx6OIbF5XUFctX8ajTyDFasJfXhlGFc/4ZMGXgX
+         v5IveGhgZ1l8zs953Pni0NeFU97Ir38sgzQCCAG1g02S3qNMEKvS4ux85GmhVIlg9jIM
+         t5sw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gh9RMpcb;
-       spf=pass (google.com: domain of philippe.mathieu-daude@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu-daude@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philippe.mathieu-daude@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e9e14a558f8ab-3de326f9e89sor3998895ab.10.2025.06.19.06.23.24
+       dkim=pass header.i=@qualcomm.com header.s=qcppdkim1 header.b=l2vxXWjh;
+       spf=pass (google.com: domain of leif.lindholm@oss.qualcomm.com designates 205.220.180.131 as permitted sender) smtp.mailfrom=leif.lindholm@oss.qualcomm.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=qualcomm.com
+Return-Path: <leif.lindholm@oss.qualcomm.com>
+Received: from mx0b-0031df01.pphosted.com (mx0b-0031df01.pphosted.com. [205.220.180.131])
+        by mx.google.com with ESMTPS id 00721157ae682-712c3d531c9si12047b3.181.2025.06.19.06.36.58
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 19 Jun 2025 06:23:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu-daude@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 19 Jun 2025 06:36:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of leif.lindholm@oss.qualcomm.com designates 205.220.180.131 as permitted sender) client-ip=205.220.180.131;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gh9RMpcb;
-       spf=pass (google.com: domain of philippe.mathieu-daude@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu-daude@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750339404; x=1750944204; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Z81gzf00YTkY/fBeXVt0/DuwssyllLL3hRkGPpJeRNY=;
-        b=gh9RMpcb1AGSNz+e5IG9GL0KMjHwHgFd3vVEIkg7n9eTHRs3lNV734Fl/i1mSgJ80A
-         1SzmL42BSSP+naDHTUmIBeAg4lzVAkaqgDGVdkVU3k1QCTGbw6/G58al/4BXAo0iSJMI
-         JeyKNdEAZKujDz9mHITQ29jgJmWObOKBclVabU0sRs8UUswx5zCFurNgnP39NOouc8QC
-         8Bn0vmUs7mvaZ4FokaohDgAC8VsEK2mZ7U8z9G7mslljPL8csn8xoFLgf/fTIcKy9fCw
-         6qn5DaB+VMYYxMnJ50n9KFMkaP+gYpMCBEGNa1zTadBj5wHvkTurTA37M97bhEmd7mn6
-         QTCg==
+       dkim=pass header.i=@qualcomm.com header.s=qcppdkim1 header.b=l2vxXWjh;
+       spf=pass (google.com: domain of leif.lindholm@oss.qualcomm.com designates 205.220.180.131 as permitted sender) smtp.mailfrom=leif.lindholm@oss.qualcomm.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=qualcomm.com
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 55J6E6iH028912
+	for <alex.bennee@linaro.org>; Thu, 19 Jun 2025 13:36:57 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	8Yw0pCK+yjsFyWICsC6tO8VSFWY/4YZhCmU+/h/OTjc=; b=l2vxXWjh02LBbxtO
+	JGjaBro0ebbmcFV2TDr+Os2O1DI6HDj1iul82sq0ngHusUXcLbro/i63M+TSFDlL
+	ODsBCXZYPWb/uktjcFyg+E6fAjaDk0IwIcmvb6sTLiyfWE/qMUpPwvFazJNWuQ3z
+	HDuvBhi1kybjr1ftV0fdcVU+/15CXpVrpcprFZv12elSazl9qEmzGllv9svX7Zdl
+	sUmtb9FF9fR/aTKSpkxjjKmeF+2BD3FkpPf4dHtdFCBetnpm57zR3CcPH5vHwkjW
+	7+TR8XLcYsCSJXnehMMPf/l/cxDEqATkOdeWT2pzqdMqyp6mKChOq1WZi0Aw35pA
+	kEmafQ==
+Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com [209.85.216.70])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4791h9g309-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <alex.bennee@linaro.org>; Thu, 19 Jun 2025 13:36:57 +0000 (GMT)
+Received: by mail-pj1-f70.google.com with SMTP id 98e67ed59e1d1-311a6b43ed7so692078a91.1
+        for <alex.bennee@linaro.org>; Thu, 19 Jun 2025 06:36:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750339404; x=1750944204;
+        d=1e100.net; s=20230601; t=1750340216; x=1750945016;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Z81gzf00YTkY/fBeXVt0/DuwssyllLL3hRkGPpJeRNY=;
-        b=GD16aoxoJEoJJHlMNjSIsg8i1bOtRv6D9r/3pj8crbxYT0wlUhGlYoMit9dS3lUdKW
-         K6iUPJ8NLENyLHRABN1XpeA2oUrmcd0W3b1tOuyFDvKhZJkjQNK52JEt1Fh3ygDCLCAh
-         +zFxydgKJZ1o/tKmvQ6hW9d1bb4m2SIO4XQ8GVYoYz0uX09XiJ+KVVPtqPfzTc0PV3LI
-         LFJeTRz4S99qxCj+Jl9eTnhHO0JR7T75QcgzqDxWoi7y1gjwOh7aLYXJ4BUKMcegkVFl
-         rxBapaGf7IHyQ7T8FtDjQpKtIedY3hMYl0sWBzIMxDjW0AEEmCt69L4y8+/p04Wh55Yk
-         jtUQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV6yIHXooJlPkpuRxlSFfHzMglxuVPQM5L9/4jCqSLjoggnvkJD1w9d2ZLHpnEpeRJ1UDL1hQI5ZdDlQQ==@linaro.org
-X-Gm-Message-State: AOJu0YwnTDyrKHPkM0FaABs/6xYuRyGlhClunltMujbSm2/rQ3RjpOHV
-	TUmAXoUw7231f4rW0c23N11Rk+fHMQ38aBu6u5d/5Nv7qaiQ+tVWEans5ZNjymbze40UrzE5z46
-	xl0ichI988ApeMmf3w8fqGX+RJul27dJPc3onTvBLccV+ygqgxIxzlKNOGQ9q
-X-Gm-Gg: ASbGncss6ckicgCEYBbwCJZeBj/vj5TjYZkfOI4mlCjoe2ZJdeZC7HuXJwqGGXdiJYZ
-	twRP8O9M0UZW1elt60l6DGHC+S3wfa5Z6GnUDZqXE1CmeNh//wzWud0PR0XNkEx6fTRGoitoLen
-	2u7uFr+qrQb1tSeGyosQ8xpqMfX9iV5c7s4q2QswyZYdU=
-X-Google-Smtp-Source: AGHT+IHQux5BONbs+biKWvdH17zMCmnmXk/I0BfEe5F7pA7ZT7bha/W1MD5B0EJhN7nBoWpSXTZ2SAgZoBHpYqMNd34=
-X-Received: by 2002:a05:6e02:3304:b0:3dd:cc4f:d85a with SMTP id
- e9e14a558f8ab-3de07d12d0bmr241002825ab.6.1750339404384; Thu, 19 Jun 2025
- 06:23:24 -0700 (PDT)
+        bh=8Yw0pCK+yjsFyWICsC6tO8VSFWY/4YZhCmU+/h/OTjc=;
+        b=xITl8hURo0FRcBteuakC4WzuTPAXFi3PHtpmtSJvNJWIHq//+SxsYPD1mjDUYg/waw
+         Y861h/S4Q55xZw+FhXUG75sfU2iSutlKYgXcqqhPQn7L9lIvcVLAQSttA7BV7wu5q6Ij
+         jay4cOhA58RkrnGjI9vgPY4MDDQUUdQRff1Mgebl1cJ1puO3lzRCRP/eOEuBe9vSdZMQ
+         HOGRuoFA2+aiDK7a7GrnSsvafkb+gS5IhqwN4HNwAgj9+YlgHVdHilBQYykJqzXT51gY
+         +OAYbM61/nq05D2h1H62XrOZhUDjXSLjbZ6orWlYwKiLIRmK+b1MtcAZ0Xm2D2C+Z6W+
+         aJyA==
+X-Forwarded-Encrypted: i=1; AJvYcCV8Ytv1Kvh3VRaQ04TFvg+v4GnnXMfH+ffr8dRUUd/c7kYIjlLdtJVrXZQZrTP5AYBYny9/rZbZA9JySw==@linaro.org
+X-Gm-Message-State: AOJu0YwiQ92sV5SOdNLBA6CEisbKkhvLXZ1V+bJWmEA0sFVhHJVg/N1D
+	hr9Q7uA1s+dgMtQRUCiw7CyPgCj8wd0Hb4nF1axkDDJdkCuRipVGQwsQkE7266s+qVS4JQisez8
+	8f9GCIaFWVtL/qnpfN/7jZGD6eTnOjo2byrNEveXDwM51AzZKkhuBgicPOWgybP/jn9Hsw5w9rd
+	h1fm18HJkocggnC7AZSpDAnGaYUz7cBw+wYA==
+X-Gm-Gg: ASbGnctKJsCpqVLzgRaKty4+BvH6E1hdGTQMiXC8dAKDUSwuzXuWuB8b7bRr9ENDLDv
+	oqf+u1cx3YFgd63QtPeSimmzz7iJ+R0BsAZYZkZMFo7nvcWvoCzTLh1X3t1rRofbwrSUB2Zt9UA
+	oysB85zIDhzpSW7+P/GfQoGHgk6hHo/fvrzOrZ
+X-Received: by 2002:a17:90b:3e43:b0:312:1d2d:18e1 with SMTP id 98e67ed59e1d1-313f1d52d85mr28143302a91.22.1750340216462;
+        Thu, 19 Jun 2025 06:36:56 -0700 (PDT)
+X-Received: by 2002:a17:90b:3e43:b0:312:1d2d:18e1 with SMTP id
+ 98e67ed59e1d1-313f1d52d85mr28143274a91.22.1750340216029; Thu, 19 Jun 2025
+ 06:36:56 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250619131319.47301-1-philmd@linaro.org> <20250619131319.47301-21-philmd@linaro.org>
-In-Reply-To: <20250619131319.47301-21-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Date: Thu, 19 Jun 2025 15:23:13 +0200
-X-Gm-Features: AX0GCFtmRRy5I91doA1D2ea5i25Q9Xlua4nOtMjG5qC8LQzhcPW_VnpruYxsqJk
-Message-ID: <CAPMQPEJTTa4NiEvj9pmrubyn3dTB=13PW6scive=nfAGVtqMHw@mail.gmail.com>
-Subject: Re: [PATCH 20/20] tests/functional/sbsa-ref: Move where machine type
- is set
-To: qemu-devel@nongnu.org
-Cc: Cameron Esfahani <dirty@apple.com>, Julian Armistead <julian.armistead@linaro.org>, 
-	Radoslaw Biernacki <rad@semihalf.com>, =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	Phil Dennis-Jordan <phil@philjordan.eu>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
-	Leif Lindholm <leif.lindholm@oss.qualcomm.com>, 
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
-	Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>
+References: <20250619131319.47301-1-philmd@linaro.org> <20250619131319.47301-20-philmd@linaro.org>
+In-Reply-To: <20250619131319.47301-20-philmd@linaro.org>
+From: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
+Date: Thu, 19 Jun 2025 14:36:43 +0100
+X-Gm-Features: AX0GCFsnBB6aVSiaBdg8ecDaocgSDD4NQoJgBj-uckYPnF8vAxEIpm4PkwkAxgs
+Message-ID: <CAD=n3R2GC0vFxkpzwiieVGSptPYdAEz++d34Z5Qwmn=mKDdwGg@mail.gmail.com>
+Subject: Re: [PATCH 19/20] hw/arm/sbsa-ref: Tidy up use of RAMLIMIT_GB definition
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>,
+        Julian Armistead <julian.armistead@linaro.org>,
+        Radoslaw Biernacki <rad@semihalf.com>,
+        =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+        Phil Dennis-Jordan <phil@philjordan.eu>,
+        =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>,
+        =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+        Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+        Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: a5kyFB7rEwJz
+X-Proofpoint-ORIG-GUID: nIR5hF7lGSbf0HLNrLzueHClL1op-w3o
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNjE5MDExMyBTYWx0ZWRfXz6fNlQlzrjc5
+ ruP94E6LJJb2J89nUgwu+M/EDP5ZC7yMdNHgIar/vYG8h1g38KNYApzv3Dw30plOeXN20ylHLJH
+ 6CMzz9zLvhWAUtwFcbVjsN8k/nca4cldcx7aim3fZSpVIfS5tvbWCqSPbq50JQ2Tij2KbdNvleL
+ oEqbyhFBj1BIb2zpLa1ZZ0Jf7TqcQlrgteL1MUMSiVDT1iphNCQUXL2j11b3FyZ6+loyouMhk9c
+ 2z0tYBdVDlH+wEKiiUr3dlT0MnRvYkcaFaLHSJveExvEXMRjClKrK362k83l2HzuI48cG03mGsW
+ ms2cdd7OvTztFuOGTpXa207RhDOwmV6EKN41j7ik6+xE9GvK0103GU7VmNBsFgS+jNcEI+AKFvg
+ aDVRdQ3gATlB/dBIl+smj3CKFVR1oCvmEuUA75yVZXLON+Ibx/J3mHq6eVCV9ZcqEXzCq3yq
+X-Authority-Analysis: v=2.4 cv=UL/dHDfy c=1 sm=1 tr=0 ts=68541279 cx=c_pps
+ a=0uOsjrqzRL749jD1oC5vDA==:117 a=IkcTkHD0fZMA:10 a=6IFa9wvqVegA:10
+ a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=_k9n5H8yiGyBNqQC-Y4A:9 a=QEXdDO2ut3YA:10
+ a=mQ_c8vxmzFEMiUWkPHU9:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: nIR5hF7lGSbf0HLNrLzueHClL1op-w3o
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
+ definitions=2025-06-19_05,2025-06-18_03,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 clxscore=1011 suspectscore=0 priorityscore=1501 adultscore=0
+ lowpriorityscore=0 bulkscore=0 spamscore=0 phishscore=0 mlxlogscore=967
+ malwarescore=0 impostorscore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
+ definitions=main-2506190113
+X-TUID: eBDAWufrYfJ5
 
-On Thu, 19 Jun 2025 at 15:15, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+On Thu, 19 Jun 2025 at 14:15, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
 g> wrote:
 >
-> fetch_firmware() is only about fetching firmware.
-> Set the machine type in test_sbsaref_edk2_firmware().
+> Define RAMLIMIT_BYTES using the TiB definition and display
+> the error parsed with size_to_str():
+>
+>   $ qemu-system-aarch64-unsigned -M sbsa-ref -m 9T
+>   qemu-system-aarch64-unsigned: sbsa-ref: cannot model more than 8 TiB of=
+ RAM
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+
+Reviewed-by: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
+
+/
+    Leif
+
 > ---
->  tests/functional/test_aarch64_sbsaref.py | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/arm/sbsa-ref.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
 >
-> diff --git a/tests/functional/test_aarch64_sbsaref.py b/tests/functional/=
-test_aarch64_sbsaref.py
-> index e6a55aecfac..5536ec622e6 100755
-> --- a/tests/functional/test_aarch64_sbsaref.py
-> +++ b/tests/functional/test_aarch64_sbsaref.py
-> @@ -40,7 +40,6 @@ def fetch_firmware(test):
->          with open(path, "ab+") as fd:
->              fd.truncate(256 << 20)  # Expand volumes to 256MiB
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index deae5cf9861..3b7d4e7bf1d 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -19,6 +19,7 @@
+>   */
 >
-> -    test.set_machine('sbsa-ref')
->      test.vm.set_console()
->      test.vm.add_args(
->          "-drive", f"if=3Dpflash,file=3D{fs0_path},format=3Draw",
-> @@ -70,6 +69,7 @@ def test_sbsaref_edk2_firmware(self):
+>  #include "qemu/osdep.h"
+> +#include "qemu/cutils.h"
+>  #include "qemu/datadir.h"
+>  #include "qapi/error.h"
+>  #include "qemu/error-report.h"
+> @@ -53,8 +54,7 @@
+>  #include "target/arm/cpu-qom.h"
+>  #include "target/arm/gtimer.h"
 >
->          fetch_firmware(self)
+> -#define RAMLIMIT_GB 8192
+> -#define RAMLIMIT_BYTES (RAMLIMIT_GB * GiB)
+> +#define RAMLIMIT_BYTES (8 * TiB)
 >
-> +        self.set_machine('sbsa-ref')
->          self.vm.add_args('-cpu', 'cortex-a57')
->          self.vm.launch()
-
-Sorry, last patch, I forgot to squash:
-
--- >8 --
-diff --git a/tests/functional/test_aarch64_sbsaref_alpine.py
-b/tests/functional/test_aarch64_sbsaref_alpine.py
-index 6108ec65a54..98762eedb67 100755
---- a/tests/functional/test_aarch64_sbsaref_alpine.py
-+++ b/tests/functional/test_aarch64_sbsaref_alpine.py
-@@ -32,2 +32,3 @@ def boot_alpine_linux(self, cpu=3DNone):
-
-+        self.set_machine('sbsa-ref')
-         self.vm.set_console()
-diff --git a/tests/functional/test_aarch64_sbsaref_freebsd.py
-b/tests/functional/test_aarch64_sbsaref_freebsd.py
-index 26dfc5878bb..1c243d0d459 100755
---- a/tests/functional/test_aarch64_sbsaref_freebsd.py
-+++ b/tests/functional/test_aarch64_sbsaref_freebsd.py
-@@ -32,2 +32,3 @@ def boot_freebsd14(self, cpu=3DNone):
-
-+        self.set_machine('sbsa-ref')
-         self.vm.set_console()
----
+>  #define NUM_IRQS        256
+>  #define NUM_SMMU_IRQS   4
+> @@ -756,7 +756,9 @@ static void sbsa_ref_init(MachineState *machine)
+>      sms->smp_cpus =3D smp_cpus;
+>
+>      if (machine->ram_size > sbsa_ref_memmap[SBSA_MEM].size) {
+> -        error_report("sbsa-ref: cannot model more than %dGB RAM", RAMLIM=
+IT_GB);
+> +        g_autofree char *size_str =3D size_to_str(RAMLIMIT_BYTES);
+> +
+> +        error_report("sbsa-ref: cannot model more than %s of RAM", size_=
+str);
+>          exit(1);
+>      }
+>
+> --
+> 2.49.0
+>

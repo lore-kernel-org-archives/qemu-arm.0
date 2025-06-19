@@ -1,137 +1,89 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp98009njc;
-        Thu, 19 Jun 2025 00:41:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWcDFYD8YxpMKLnjmGSLBWo4DYNGfJa6b1eW9hc8aUfLVKIXW+ZoU9qqYqF2kaWW1OrMs7kWGZTHwfUcg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHiSoNZOe80fT4JISGb9c71OZqIgNmB9++vuFsifFFkr5omF/K+b/p9fmrClQY7K/fVqD9L
-X-Received: by 2002:a05:620a:3184:b0:7cd:1d87:6c79 with SMTP id af79cd13be357-7d3c6d02f09mr3069317685a.53.1750318917174;
-        Thu, 19 Jun 2025 00:41:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750318917; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp107318njc;
+        Thu, 19 Jun 2025 01:05:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW0Usu3AwbNDrsk29fVS6PCicfVJ0zNWT5EA28wmj3ps4BRdyBqkmAL9YQilLbK74zduY3vGn0MP2QQGw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHNwWQB/Oqst90z1RgCR3TIxKGXhh1wESyJWl9Uw/fgJZ7RRRCWijuIMifulwdLzwXmELwm
+X-Received: by 2002:a05:620a:1aa8:b0:7d2:28c7:7795 with SMTP id af79cd13be357-7d3c6cd9eb0mr3134291385a.35.1750320344540;
+        Thu, 19 Jun 2025 01:05:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750320344; cv=none;
         d=google.com; s=arc-20240605;
-        b=IikHiDAi1GeueJeSD0dJbHJUZP+yN4GDp4V3Pp8WQ8mtR/uaBCIlFhMqjzkY3m3vyM
-         83r2m0+lrHgJlDu2PSKOLmxCTsrzd6ofhwcxgcnUBsSwro1T457KaF2jOg7FDVJntbJb
-         IbD/eHTuOUvaANE1u8Th6CFbW/TAkV2DH5pV7PNMAEL4ImcMqgutcLmJ1Yr/oLWhcETe
-         1donQt3xFpXfT2UJWMEqWNwDrOkBTlp9t/R82kIMqQY30qYa3hslZLIUgsejG54qCoYU
-         T+md4Lxy5Zr/Dit1TNl5RuOFK8vCV90XbyL9xV65pFw3oTEfELVqttmTDAiBcSEXjWtD
-         8HQg==
+        b=KrC/6NcsMceVFPSiRn48dku2T4CZpnjR9bvsFN5DsX0eNlnUYh99EAQhbvpGGgPzML
+         cjH3pzLx5VoWTpckLKYKZDYwA9SXM/ptWsS81MoaHXfQrAYvqWVbhc9oA/en1rAGqYjl
+         Vcb5ysLIhid09J6hx3NdycfszUFVyETv2oRZ7JIeYpZGVRrduEz5haE9DIhAp18993SV
+         5SI/ivGFcnCEcTcDMG6TnfqrKz0nVk8rSlWOhJ1Xa0nsiMgR75h1a+7gWcYfrNVYSUMQ
+         CgRqTnDq6q8Wz+8k82evKJpZyHDwnVrPWkHkUOa4DCqNJW9F4RRhXsI+cbi9BpNlQgtV
+         ZHcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=1RXw5WAipzgSzJAGJtmmeerI5f0Igq6B+23qbh53Zcg=;
-        fh=7wzr66SzaNe2Sn2cXAg9APoF9h97mOVxuPjCyYOCBcA=;
-        b=BV/AjelGypbcmxejf5NLayhPQzieddq7FBw/3invtqfHYxT9C+yc9mRNG7qsnIbG1h
-         cL+AcDQ2IDSIOdy7Xxby3gvKy6kvvw+72bv2RbYsAHmXTLIROQ/+lqGX5a3UWQTsNUE6
-         //iNtkmWP+lLNEhmM/SjxodUFBpC27J5bbArsNFopMxyfcSn+na8zMet+vRWPn6ZDE6D
-         oOaFTdhUcWq5hug4ViGdmSAbD26bl/Ej4YcuNUD9+fcg7jVb2PO5rLsBMP11WiQxHiC8
-         2QVfZFduCfu+ugn+nVpWm8MolS8xQTvhe5zsFq9EFCy5EMuFsRWxNiddeZB1z/F4HCQX
-         VEqw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to;
+        bh=szeXowfCU2jS0wl3cr1c3FpvxFXKnMAF11pbqFdK/XY=;
+        fh=f8RUa2mEygJItZzaeBuIFuIzmMU8UYZj2jJMeAwDCdQ=;
+        b=MAExkbzDvGtPMANxbVimxUpelRGNV6J/cxPLEhEZJ4mQ9+7F+7Rtc3MedNLHiuc3P5
+         dNjL7kKCoIfSMonSi0gDWdxBQDFLDShRtmgYAdPuOqQkKO+jw0TGMOBwwtqFHsxDTB8L
+         mcv1+XGACrGmsp56RxnHDfVWe5PBr5enZqI3gDer0FDksIFrJy5Pu5xnrTr1VTMRDHaz
+         zCox5gokQthMTKSpa1zfFC0ER9b/WZewhDFNIjC2BVaoFCTk1s5qV3TGni8pW1ipat0X
+         KKCEuwjaD+QdptWG3SlnSTmVF35UgJwRZKsUN06gDSsbwqzFE3+6hQlYNdL6iXc0B/LX
+         pM0A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WFBYOh+j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd015fffedsi9530016d6.436.2025.06.19.00.41.57
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8e01d9csi1655681485a.157.2025.06.19.01.05.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jun 2025 00:41:57 -0700 (PDT)
+        Thu, 19 Jun 2025 01:05:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WFBYOh+j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uS9tn-0001gA-Dl; Thu, 19 Jun 2025 03:41:27 -0400
+	id 1uSAH0-0001ht-PZ; Thu, 19 Jun 2025 04:05:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uS9tg-0001fe-Oh
- for qemu-arm@nongnu.org; Thu, 19 Jun 2025 03:41:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uSAGu-0001fh-CS; Thu, 19 Jun 2025 04:05:20 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uS9te-0005UC-2O
- for qemu-arm@nongnu.org; Thu, 19 Jun 2025 03:41:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1750318875;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1RXw5WAipzgSzJAGJtmmeerI5f0Igq6B+23qbh53Zcg=;
- b=WFBYOh+jNIxUSK3JmluYZGks00k6u8zaHUlvhUVfxE01KKqrsJqADDuOF+GUOGVTfj+o6+
- xg5azOE+siw8WbjhGvtnb2jEdySqsdw5+v1hR9A30Mcn3KTrQZBWiE+f+tP3G+T9Hp501K
- LmlT/e2a4hq8tjxSuR4+Cac+/27cdU8=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-619-SwjUwLayNqyMhQl6VAgdcA-1; Thu, 19 Jun 2025 03:41:13 -0400
-X-MC-Unique: SwjUwLayNqyMhQl6VAgdcA-1
-X-Mimecast-MFC-AGG-ID: SwjUwLayNqyMhQl6VAgdcA_1750318873
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-453080e4741so3728905e9.0
- for <qemu-arm@nongnu.org>; Thu, 19 Jun 2025 00:41:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1750318872; x=1750923672;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=1RXw5WAipzgSzJAGJtmmeerI5f0Igq6B+23qbh53Zcg=;
- b=e2f+DBsjovIDeoYYgnm9mGQksvGHmd6e9vE3sO3aeJYoVsRRLlhzdq9jvk1Kz+96jt
- lzRWgtk88WpX8z4HMWEHH5OkQJkgjoWE0oe4UnXLUNhaX2a8yqsrCCDof3pMr0MOVkvU
- TDfHL0uXl8PWYhLoeVYvQkTd+ktg0zKppkAYqfsI525Kv3cV9f4QIowfk2pu4lFVzDrS
- wN9YNnlC26YSEWBssNXe8jDadpErz8dMivUfIksEKNb4INqITtgtLuyuBaoBfHXt2KSK
- y1Nad7So1VYYzSkEbGoLdygjegB6J49sq+gdmPUAlrJ6JvwN7FT0hJcQb97Za911tW3e
- ZgwA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWrNgOIj65m3jJ5/WjhGKBCm3XORbXhRR9pEHCGA0aaHuRzey72TRoOkJfrYra47Mbe4OiHZXJrkg==@nongnu.org
-X-Gm-Message-State: AOJu0Yy4RCctCs+Y/kxtLEhvfNkYN6YAtQq3/+k9u1TvXpm4n61yp5xV
- pi/4urOCchi2lRilK4k80YjfvPqsKtEiCz+ssAMiQTd5dT+rxp1x+Ux3jhxMcB9SVNF1/uSXm2l
- fbiUUmbTSu50k5GFBEqXUpz/abUht2zI8uWF8HvhEPMMRSu2hnkntNg==
-X-Gm-Gg: ASbGncvSg/8gKq2j+HpXxpnS1GZQBIaCg7eGN8WV5tH06+WStBvc3e0MnMnEqd119os
- 6+HVkKQ/7ljZRmOma8OM5PzI4ABFXH2QwocAfWGIjQbQjvS5/SOwIZjcR7ZhMAJJfgRuYmyEycb
- OeF0I6iH0ql5ksQdC19Mz3SNUqRicm8kuTt7aWmo6HoWHhaP0JbrJZkmkHTqLfcBewaF0MemYTP
- +PpPlswTNqA7ptXysxE90nfpEXdOYZAyKk0zzE1gD0GjlnO4KKNbyPMx6otzYkd+2WtI9Nb31oN
- 2000OEK0f0irfTZyFYic9eZhWWQZOPyTONNt5QtlM3632yNbyWatuz3KffWPNLP0YzPazw==
-X-Received: by 2002:a05:600c:444f:b0:43c:fe5e:f03b with SMTP id
- 5b1f17b1804b1-45345f1cf67mr165849895e9.30.1750318872519; 
- Thu, 19 Jun 2025 00:41:12 -0700 (PDT)
-X-Received: by 2002:a05:600c:444f:b0:43c:fe5e:f03b with SMTP id
- 5b1f17b1804b1-45345f1cf67mr165849625e9.30.1750318872091; 
- Thu, 19 Jun 2025 00:41:12 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4535eac8edbsm19853075e9.24.2025.06.19.00.41.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Jun 2025 00:41:11 -0700 (PDT)
-Message-ID: <6e180d39-b1eb-4935-98b0-3ac73766e8aa@redhat.com>
-Date: Thu, 19 Jun 2025 09:41:09 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe Root
- Complex association
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>
-Cc: Linuxarm <linuxarm@huawei.com>, "qemu-arm@nongnu.org"
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uSAGq-00023t-Gq; Thu, 19 Jun 2025 04:05:19 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bNClJ6bjJz6L4yr;
+ Thu, 19 Jun 2025 16:02:52 +0800 (CST)
+Received: from frapeml100007.china.huawei.com (unknown [7.182.85.133])
+ by mail.maildlp.com (Postfix) with ESMTPS id 245501404C4;
+ Thu, 19 Jun 2025 16:05:08 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml100007.china.huawei.com (7.182.85.133) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Thu, 19 Jun 2025 10:05:07 +0200
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Thu, 19 Jun 2025 10:05:07 +0200
+To: "eric.auger@redhat.com" <eric.auger@redhat.com>, Jonathan Cameron
+ <jonathan.cameron@huawei.com>
+CC: Linuxarm <linuxarm@huawei.com>, "qemu-arm@nongnu.org"
  <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "jgg@nvidia.com" <jgg@nvidia.com>, "nicolinc@nvidia.com"
- <nicolinc@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "imammedo@redhat.com" <imammedo@redhat.com>,
- "nathanc@nvidia.com" <nathanc@nvidia.com>,
- "mochs@nvidia.com" <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>,
- "Wangzhou (B)" <wangzhou1@hisilicon.com>,
- jiangkunkun <jiangkunkun@huawei.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
+ <jgg@nvidia.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "ddutile@redhat.com" <ddutile@redhat.com>, "berrange@redhat.com"
+ <berrange@redhat.com>, "imammedo@redhat.com" <imammedo@redhat.com>,
+ "nathanc@nvidia.com" <nathanc@nvidia.com>, "mochs@nvidia.com"
+ <mochs@nvidia.com>, "smostafa@google.com" <smostafa@google.com>, "Wangzhou
+ (B)" <wangzhou1@hisilicon.com>, jiangkunkun <jiangkunkun@huawei.com>,
  "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+Subject: RE: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe Root
+ Complex association
+Thread-Topic: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe Root
+ Complex association
+Thread-Index: AQHb3HJK5cxfqqKOvUqssRJx2PlFXrQFdhmAgAFoTgCAAJeugIABKGfwgABr7ICAARD04P//5UOAgAAjYGA=
+Date: Thu, 19 Jun 2025 08:05:07 +0000
+Message-ID: <5fd7717fcd7e45d9aaff3e293cf63683@huawei.com>
 References: <20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com>
  <20250613144449.60156-2-shameerali.kolothum.thodi@huawei.com>
  <20250616112019.00003bce@huawei.com>
@@ -140,24 +92,28 @@ References: <20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com>
  <49d4c4b73e9a44a783332ddfe9a2fbdf@huawei.com>
  <327b5515-467c-4666-86d6-fb2a99925a8c@redhat.com>
  <e4879b1e26f941b5baa419824e4c928c@huawei.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <e4879b1e26f941b5baa419824e4c928c@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: mbLQZ7DkkTtZPsE2fbErJWkhCrZdbjxSIrIRN_C5hY4_1750318873
-X-Mimecast-Originator: redhat.com
+ <6e180d39-b1eb-4935-98b0-3ac73766e8aa@redhat.com>
+In-Reply-To: <6e180d39-b1eb-4935-98b0-3ac73766e8aa@redhat.com>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.895,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.203.177.241]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -170,87 +126,86 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
+Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nr8vCNRnG8BT
+X-TUID: rcUKHRuWtBRy
 
-Hi Shameer,
-
-On 6/19/25 9:24 AM, Shameerali Kolothum Thodi wrote:
-> Hi Eric,
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: Wednesday, June 18, 2025 6:00 PM
->> To: Shameerali Kolothum Thodi
->> <shameerali.kolothum.thodi@huawei.com>; Jonathan Cameron
->> <jonathan.cameron@huawei.com>
->> Cc: Linuxarm <linuxarm@huawei.com>; qemu-arm@nongnu.org; qemu-
->> devel@nongnu.org; peter.maydell@linaro.org; jgg@nvidia.com;
->> nicolinc@nvidia.com; ddutile@redhat.com; berrange@redhat.com;
->> imammedo@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
->> smostafa@google.com; Wangzhou (B) <wangzhou1@hisilicon.com>;
->> jiangkunkun <jiangkunkun@huawei.com>; zhangfei.gao@linaro.org
->> Subject: Re: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe
->> Root Complex association
->>
->> Hi Shameer, Jonathan,
->>
->> On 6/18/25 10:35 AM, Shameerali Kolothum Thodi wrote:
->>>> -----Original Message-----
->>>> From: Jonathan Cameron <jonathan.cameron@huawei.com>
->>>> Sent: Tuesday, June 17, 2025 5:53 PM
->>>> To: Eric Auger <eric.auger@redhat.com>
->>>> Cc: Shameerali Kolothum Thodi
->>>> <shameerali.kolothum.thodi@huawei.com>; Linuxarm
->>>> <linuxarm@huawei.com>; qemu-arm@nongnu.org; qemu-
->>>> devel@nongnu.org; peter.maydell@linaro.org; jgg@nvidia.com;
->>>> nicolinc@nvidia.com; ddutile@redhat.com; berrange@redhat.com;
->>>> imammedo@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
->>>> smostafa@google.com; Wangzhou (B) <wangzhou1@hisilicon.com>;
->>>> jiangkunkun <jiangkunkun@huawei.com>; zhangfei.gao@linaro.org
->>>> Subject: Re: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has
->> PCIe
->>>> Root Complex association
->>>>
->>>> On Tue, 17 Jun 2025 09:49:54 +0200
->>>> Eric Auger <eric.auger@redhat.com> wrote:
->>>>
->>>>> On 6/16/25 12:20 PM, Jonathan Cameron wrote:
->>>>>> On Fri, 13 Jun 2025 15:44:43 +0100
->>>>>> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
->>>>>>
->>>>>>> Although this change does not affect functionality at present, it is
->>>>>> Patch title says PCIe.  This check is vs PCI host bridge.
->>>>>>
->>>>>> No idea which one you wanted, but if it is PCIe needs to be
->>>>>> TYPC_PCIE_HOST_BRIDGE from pcie_host.h not the pci_host.h one
->>>>>> I think.
->>>>> I think we need TYPE_PCI_HOST_BRIDGE as we want to check against
->> pxb
->>>>> pci-bridge/pci_expander_bridge.c:    .parent        =
->>>> TYPE_PCI_HOST_BRIDGE,
->> sorry but I still fail to understand why we can't just check against
->>
->> TYPE_PCI_HOST_BRIDGE for making sure the SMMU is attached to PXB or
->> GPEX. What does it fail to check? Why shall we care about PCI vs PCIe?
-> I think the concern is  getting any other TYPE_PCI_HOST_BRIDGE types attached
-> to SMMUv3 other than pxb-pcie or GPEX. For example you could do,
->
-> -device pxb-cxl,bus_nr=12,bus=pcie.0,id=cxl.1 \
-> -device arm-smmuv3,primary-bus=cxl.1,id=smmuv3.1 \
->
-> as pxb-cxl is of type TYPE_PCI_HOST_BRIDGE. I don't know if there are any other
-> ones similar to this out there.
->
-> So the aim is to make the checking more specific to PXB.
-
-thank you for the clarification. Is it invalid to have the SMMU
-protecting RIDs comming from the pxb-cxl hierarchy?
-
-Eric
->
-> Thanks,
-> Shameer
-
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRXJpYyBBdWdlciA8ZXJp
+Yy5hdWdlckByZWRoYXQuY29tPg0KPiBTZW50OiBUaHVyc2RheSwgSnVuZSAxOSwgMjAyNSA4OjQx
+IEFNDQo+IFRvOiBTaGFtZWVyYWxpIEtvbG90aHVtIFRob2RpDQo+IDxzaGFtZWVyYWxpLmtvbG90
+aHVtLnRob2RpQGh1YXdlaS5jb20+OyBKb25hdGhhbiBDYW1lcm9uDQo+IDxqb25hdGhhbi5jYW1l
+cm9uQGh1YXdlaS5jb20+DQo+IENjOiBMaW51eGFybSA8bGludXhhcm1AaHVhd2VpLmNvbT47IHFl
+bXUtYXJtQG5vbmdudS5vcmc7IHFlbXUtDQo+IGRldmVsQG5vbmdudS5vcmc7IHBldGVyLm1heWRl
+bGxAbGluYXJvLm9yZzsgamdnQG52aWRpYS5jb207DQo+IG5pY29saW5jQG52aWRpYS5jb207IGRk
+dXRpbGVAcmVkaGF0LmNvbTsgYmVycmFuZ2VAcmVkaGF0LmNvbTsNCj4gaW1hbW1lZG9AcmVkaGF0
+LmNvbTsgbmF0aGFuY0BudmlkaWEuY29tOyBtb2Noc0BudmlkaWEuY29tOw0KPiBzbW9zdGFmYUBn
+b29nbGUuY29tOyBXYW5nemhvdSAoQikgPHdhbmd6aG91MUBoaXNpbGljb24uY29tPjsNCj4gamlh
+bmdrdW5rdW4gPGppYW5na3Vua3VuQGh1YXdlaS5jb20+OyB6aGFuZ2ZlaS5nYW9AbGluYXJvLm9y
+Zw0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHY0IDEvN10gaHcvYXJtL3NtbXUtY29tbW9uOiBDaGVj
+ayBTTU1VIGhhcyBQQ0llDQo+IFJvb3QgQ29tcGxleCBhc3NvY2lhdGlvbg0KPiANCj4gSGkgU2hh
+bWVlciwNCj4gDQo+IE9uIDYvMTkvMjUgOToyNCBBTSwgU2hhbWVlcmFsaSBLb2xvdGh1bSBUaG9k
+aSB3cm90ZToNCj4gPiBIaSBFcmljLA0KPiA+DQo+ID4+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0t
+LS0tDQo+ID4+IEZyb206IEVyaWMgQXVnZXIgPGVyaWMuYXVnZXJAcmVkaGF0LmNvbT4NCj4gPj4g
+U2VudDogV2VkbmVzZGF5LCBKdW5lIDE4LCAyMDI1IDY6MDAgUE0NCj4gPj4gVG86IFNoYW1lZXJh
+bGkgS29sb3RodW0gVGhvZGkNCj4gPj4gPHNoYW1lZXJhbGkua29sb3RodW0udGhvZGlAaHVhd2Vp
+LmNvbT47IEpvbmF0aGFuIENhbWVyb24NCj4gPj4gPGpvbmF0aGFuLmNhbWVyb25AaHVhd2VpLmNv
+bT4NCj4gPj4gQ2M6IExpbnV4YXJtIDxsaW51eGFybUBodWF3ZWkuY29tPjsgcWVtdS1hcm1Abm9u
+Z251Lm9yZzsgcWVtdS0NCj4gPj4gZGV2ZWxAbm9uZ251Lm9yZzsgcGV0ZXIubWF5ZGVsbEBsaW5h
+cm8ub3JnOyBqZ2dAbnZpZGlhLmNvbTsNCj4gPj4gbmljb2xpbmNAbnZpZGlhLmNvbTsgZGR1dGls
+ZUByZWRoYXQuY29tOyBiZXJyYW5nZUByZWRoYXQuY29tOw0KPiA+PiBpbWFtbWVkb0ByZWRoYXQu
+Y29tOyBuYXRoYW5jQG52aWRpYS5jb207IG1vY2hzQG52aWRpYS5jb207DQo+ID4+IHNtb3N0YWZh
+QGdvb2dsZS5jb207IFdhbmd6aG91IChCKSA8d2FuZ3pob3UxQGhpc2lsaWNvbi5jb20+Ow0KPiA+
+PiBqaWFuZ2t1bmt1biA8amlhbmdrdW5rdW5AaHVhd2VpLmNvbT47IHpoYW5nZmVpLmdhb0BsaW5h
+cm8ub3JnDQo+ID4+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjQgMS83XSBody9hcm0vc21tdS1jb21t
+b246IENoZWNrIFNNTVUgaGFzDQo+IFBDSWUNCj4gPj4gUm9vdCBDb21wbGV4IGFzc29jaWF0aW9u
+DQo+ID4+DQo+ID4+IEhpIFNoYW1lZXIsIEpvbmF0aGFuLA0KPiA+Pg0KPiA+PiBPbiA2LzE4LzI1
+IDEwOjM1IEFNLCBTaGFtZWVyYWxpIEtvbG90aHVtIFRob2RpIHdyb3RlOg0KPiA+Pj4+IC0tLS0t
+T3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+ID4+Pj4gRnJvbTogSm9uYXRoYW4gQ2FtZXJvbiA8am9u
+YXRoYW4uY2FtZXJvbkBodWF3ZWkuY29tPg0KPiA+Pj4+IFNlbnQ6IFR1ZXNkYXksIEp1bmUgMTcs
+IDIwMjUgNTo1MyBQTQ0KPiA+Pj4+IFRvOiBFcmljIEF1Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5j
+b20+DQo+ID4+Pj4gQ2M6IFNoYW1lZXJhbGkgS29sb3RodW0gVGhvZGkNCj4gPj4+PiA8c2hhbWVl
+cmFsaS5rb2xvdGh1bS50aG9kaUBodWF3ZWkuY29tPjsgTGludXhhcm0NCj4gPj4+PiA8bGludXhh
+cm1AaHVhd2VpLmNvbT47IHFlbXUtYXJtQG5vbmdudS5vcmc7IHFlbXUtDQo+ID4+Pj4gZGV2ZWxA
+bm9uZ251Lm9yZzsgcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBqZ2dAbnZpZGlhLmNvbTsNCj4g
+Pj4+PiBuaWNvbGluY0BudmlkaWEuY29tOyBkZHV0aWxlQHJlZGhhdC5jb207IGJlcnJhbmdlQHJl
+ZGhhdC5jb207DQo+ID4+Pj4gaW1hbW1lZG9AcmVkaGF0LmNvbTsgbmF0aGFuY0BudmlkaWEuY29t
+OyBtb2Noc0BudmlkaWEuY29tOw0KPiA+Pj4+IHNtb3N0YWZhQGdvb2dsZS5jb207IFdhbmd6aG91
+IChCKSA8d2FuZ3pob3UxQGhpc2lsaWNvbi5jb20+Ow0KPiA+Pj4+IGppYW5na3Vua3VuIDxqaWFu
+Z2t1bmt1bkBodWF3ZWkuY29tPjsgemhhbmdmZWkuZ2FvQGxpbmFyby5vcmcNCj4gPj4+PiBTdWJq
+ZWN0OiBSZTogW1BBVENIIHY0IDEvN10gaHcvYXJtL3NtbXUtY29tbW9uOiBDaGVjayBTTU1VIGhh
+cw0KPiA+PiBQQ0llDQo+ID4+Pj4gUm9vdCBDb21wbGV4IGFzc29jaWF0aW9uDQo+ID4+Pj4NCj4g
+Pj4+PiBPbiBUdWUsIDE3IEp1biAyMDI1IDA5OjQ5OjU0ICswMjAwDQo+ID4+Pj4gRXJpYyBBdWdl
+ciA8ZXJpYy5hdWdlckByZWRoYXQuY29tPiB3cm90ZToNCj4gPj4+Pg0KPiA+Pj4+PiBPbiA2LzE2
+LzI1IDEyOjIwIFBNLCBKb25hdGhhbiBDYW1lcm9uIHdyb3RlOg0KPiA+Pj4+Pj4gT24gRnJpLCAx
+MyBKdW4gMjAyNSAxNTo0NDo0MyArMDEwMA0KPiA+Pj4+Pj4gU2hhbWVlciBLb2xvdGh1bSA8c2hh
+bWVlcmFsaS5rb2xvdGh1bS50aG9kaUBodWF3ZWkuY29tPg0KPiB3cm90ZToNCj4gPj4+Pj4+DQo+
+ID4+Pj4+Pj4gQWx0aG91Z2ggdGhpcyBjaGFuZ2UgZG9lcyBub3QgYWZmZWN0IGZ1bmN0aW9uYWxp
+dHkgYXQgcHJlc2VudCwgaXQgaXMNCj4gPj4+Pj4+IFBhdGNoIHRpdGxlIHNheXMgUENJZS4gIFRo
+aXMgY2hlY2sgaXMgdnMgUENJIGhvc3QgYnJpZGdlLg0KPiA+Pj4+Pj4NCj4gPj4+Pj4+IE5vIGlk
+ZWEgd2hpY2ggb25lIHlvdSB3YW50ZWQsIGJ1dCBpZiBpdCBpcyBQQ0llIG5lZWRzIHRvIGJlDQo+
+ID4+Pj4+PiBUWVBDX1BDSUVfSE9TVF9CUklER0UgZnJvbSBwY2llX2hvc3QuaCBub3QgdGhlIHBj
+aV9ob3N0Lmggb25lDQo+ID4+Pj4+PiBJIHRoaW5rLg0KPiA+Pj4+PiBJIHRoaW5rIHdlIG5lZWQg
+VFlQRV9QQ0lfSE9TVF9CUklER0UgYXMgd2Ugd2FudCB0byBjaGVjayBhZ2FpbnN0DQo+ID4+IHB4
+Yg0KPiA+Pj4+PiBwY2ktYnJpZGdlL3BjaV9leHBhbmRlcl9icmlkZ2UuYzrCoMKgwqAgLnBhcmVu
+dMKgwqDCoMKgwqDCoMKgID0NCj4gPj4+PiBUWVBFX1BDSV9IT1NUX0JSSURHRSwNCj4gPj4gc29y
+cnkgYnV0IEkgc3RpbGwgZmFpbCB0byB1bmRlcnN0YW5kIHdoeSB3ZSBjYW4ndCBqdXN0IGNoZWNr
+IGFnYWluc3QNCj4gPj4NCj4gPj4gVFlQRV9QQ0lfSE9TVF9CUklER0UgZm9yIG1ha2luZyBzdXJl
+IHRoZSBTTU1VIGlzIGF0dGFjaGVkIHRvIFBYQiBvcg0KPiA+PiBHUEVYLiBXaGF0IGRvZXMgaXQg
+ZmFpbCB0byBjaGVjaz8gV2h5IHNoYWxsIHdlIGNhcmUgYWJvdXQgUENJIHZzIFBDSWU/DQo+ID4g
+SSB0aGluayB0aGUgY29uY2VybiBpcyAgZ2V0dGluZyBhbnkgb3RoZXIgVFlQRV9QQ0lfSE9TVF9C
+UklER0UgdHlwZXMNCj4gYXR0YWNoZWQNCj4gPiB0byBTTU1VdjMgb3RoZXIgdGhhbiBweGItcGNp
+ZSBvciBHUEVYLiBGb3IgZXhhbXBsZSB5b3UgY291bGQgZG8sDQo+ID4NCj4gPiAtZGV2aWNlIHB4
+Yi1jeGwsYnVzX25yPTEyLGJ1cz1wY2llLjAsaWQ9Y3hsLjEgXA0KPiA+IC1kZXZpY2UgYXJtLXNt
+bXV2MyxwcmltYXJ5LWJ1cz1jeGwuMSxpZD1zbW11djMuMSBcDQo+ID4NCj4gPiBhcyBweGItY3hs
+IGlzIG9mIHR5cGUgVFlQRV9QQ0lfSE9TVF9CUklER0UuIEkgZG9uJ3Qga25vdyBpZiB0aGVyZSBh
+cmUgYW55DQo+IG90aGVyDQo+ID4gb25lcyBzaW1pbGFyIHRvIHRoaXMgb3V0IHRoZXJlLg0KPiA+
+DQo+ID4gU28gdGhlIGFpbSBpcyB0byBtYWtlIHRoZSBjaGVja2luZyBtb3JlIHNwZWNpZmljIHRv
+IFBYQi4NCj4gDQo+IHRoYW5rIHlvdSBmb3IgdGhlIGNsYXJpZmljYXRpb24uIElzIGl0IGludmFs
+aWQgdG8gaGF2ZSB0aGUgU01NVQ0KPiBwcm90ZWN0aW5nIFJJRHMgY29tbWluZyBmcm9tIHRoZSBw
+eGItY3hsIGhpZXJhcmNoeT8NCg0KVGhhdOKAmXMgYSBnb29kIHF1ZXN0aW9uLiBJIGRvbid0IGtu
+b3cgdGhhdCBmb3Igc3VyZS4NCkFueXdheSBjdXJyZW50bHkgdGhlIGZ1bGwgc3VwcG9ydCBmb3Ig
+Q1hMIG9uIHZpcnQgaXMgaW4gcHJvZ3Jlc3MgaGVyZSwNCmh0dHBzOi8vbG9yZS5rZXJuZWwub3Jn
+L3FlbXUtZGV2ZWwvMjAyNTA2MTIxMzQzMzguMTg3MTAyMy0xLUpvbmF0aGFuLkNhbWVyb25AaHVh
+d2VpLmNvbS8NCg0KSm9uYXRoYW4/DQoNClRoYW5rcywNClNoYW1lZXINCg0KPiANCg0K

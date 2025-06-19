@@ -1,180 +1,111 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp125642njc;
-        Thu, 19 Jun 2025 01:54:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCW2MMNdNWxGGr6QpZnvXxOjVTn88RDiLdD6M7xumg8xZekzxb7mwi8Mc0sx7+P5WNTZbnRn5FpYt9sq9g==@linaro.org
-X-Google-Smtp-Source: AGHT+IHBXNiYJWEDObcTPUV2aKxUM+50BZi0o+JtQ/gUW/L2OdLNAwg5rPnHf2+Wp61vDUOBUSWl
-X-Received: by 2002:a05:622a:d1:b0:4a3:4d46:c2a6 with SMTP id d75a77b69052e-4a73c51f790mr274118061cf.7.1750323240638;
-        Thu, 19 Jun 2025 01:54:00 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1750323240; cv=pass;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp141449njc;
+        Thu, 19 Jun 2025 02:31:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVx03/twrNXAqHlvcWPFncsv8oLc+XH4ea9EzdsbcAEylzXREWW9/GMSDLhE5zsbwPAF0pGO8O5s100Cw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFVaQCzxdQ958HO1GEazExjED7V9VXMUneJZxyOP5ASEpFs8wSBzwpqPf4Tv1CnPWPGe7VR
+X-Received: by 2002:a05:6214:54ca:b0:6fd:79d:c77b with SMTP id 6a1803df08f44-6fd079dc7d3mr1108016d6.10.1750325519019;
+        Thu, 19 Jun 2025 02:31:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750325519; cv=none;
         d=google.com; s=arc-20240605;
-        b=lLSE23jup3ZlQY3xQHgembRqkD3a/CqYeIZwTUh+arIbNMV1tNCFf7LWVtVGd8/Mgl
-         vxkD+zISiAjz8p/Gl3Y4iLVCeMouLUUSnvkMgQtY5uAHm14qviwspJoE+tSuCTXb12yQ
-         dHbWo/9H+49prnjj9aDIySdw/utEsiY+wVzDsNfIQVIEoc8ZPuRR5JUdjaiyK5lRPO25
-         cl3s5hrzbYahiY9SsDrT5YY88n11U1a9U8X9cv6SsZGTC8vqc+PzoOwwzpjeLD1j6naH
-         rCM8FhO8YJbSx+3wrkO2sPuD1c/d0CEc6S0KANOK9CBwJww9RrVvfJVtQyOc+mCBuLzd
-         HNCA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:message-id:date:subject:cc:to:from;
-        bh=pJzJn4jm2xy9XTzvHex4H4aNNxduruxz0PuGDv8dR1s=;
-        fh=TF7NaC9w9VKGKG2AcPuY+HAVjSR9BO5BwwLlhaXFIno=;
-        b=AO3MRfUo0SO67+K6N6fGTNn5zEuBnfRv7oqazi0UyEyu9ErzgmpKH+ARs3FfVOQBCO
-         z+Bj/qovEhJ7C6j5Yh5zDFrUg28fabB6L4BE9wANjwaGHxvEb9T4RruRUSTaMwde8vRV
-         OegiJNn18tFqDgzEofBZitxg2DyFfHitYU0ZqxzbL89XhLdJ9c8MA+dLm/OfU+49eyKJ
-         HD9LLkJZzfYAJnYZvoIee+CtSyqMlDmQsiRnKysp68ToIPk00V8ILFpL1GTnZKOHPFnK
-         Kv6C3lKggyIhsZj9alJ75N8wIJ4FY4SOOOjxJALU35XahSe9f32SDJrh8eO2teL5LTnw
-         glug==;
+        b=Y6JRCGtuhNmM9LK6ARsd30BoXH108spLReKwCeX3hr5cPzr+g1W5EeeDA/zc9RyHx/
+         YyDzHiEU7M7h2d/oC4UYwcvJyhQml65NipJiQIUELagKcNKlpB2e+i7X+q0Jy2pqO0ft
+         1nM47PYy4ZQC14GWrV/yoCZqiY4gFjPu5jkghfRYjf4kJOa5qrqUnwTAi+qf9LDwRZfL
+         FZWRpV81Z4q6JKYnTEiMgiI6+dEMfd7KfvmMGz3inV3c4lWOqZJferoUQEL5SgyGCUNE
+         bV7vZegiwTtG0CKkzowRjSfS6Qk+rZ/vVIzgMzE4OzqmXQ9RpHxCP9aHJTZy9CoCpNf5
+         GFQw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:date;
+        bh=q7XTY1vg4lowgNYZb6L7ziWrVWdA3519Iscbp01YMW8=;
+        fh=GE2Qfcnmb+jiMDIBn/MB0bQnTdZ0RBdqza4se49ifp8=;
+        b=ShoSA1Hss24McaAokOo9K90J03/73mwTUZHJZY1/ECY5jnuBpwtPT+6Z0QcVTVHYkB
+         1Xilrdgc5uofyxUJ8+IXQWnKEaiYY2lltNZ0c6vimMTmH1/igq6SwfAN0S6idDfJ7p+h
+         dKkz06GPG9okwWFemHnrdW6+VvFT1BLIowA06s8ZS1IxUGe78QhcT55Uo+fnx6VOXngQ
+         0mvOuPpDiDz0p5xJkBR8VezpGscmMJf06oJPeOPagH9dCBG4Rjcaf5M1xjbVcy8WCOWl
+         YdxOgeG0uV0NimSYoWFxtdNjxF3dMJfAC6Ev5+Zafhr1Vitwitqf3eCn6SUYpnD+bAb6
+         eDSw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=siewert.io dkim=pass dkdomain=siewert.io dmarc=pass fromdomain=siewert.io);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a72a47d25esi171477051cf.279.2025.06.19.01.54.00
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd015e812asi10942236d6.264.2025.06.19.02.31.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jun 2025 01:54:00 -0700 (PDT)
+        Thu, 19 Jun 2025 02:31:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=siewert.io dkim=pass dkdomain=siewert.io dmarc=pass fromdomain=siewert.io);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uSB1r-0000up-8p; Thu, 19 Jun 2025 04:53:51 -0400
+	id 1uSBcE-00084A-QZ; Thu, 19 Jun 2025 05:31:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tan@siewert.io>)
- id 1uSB1j-0000kk-Ct; Thu, 19 Jun 2025 04:53:45 -0400
-Received: from mail-germanynorthazlp170100001.outbound.protection.outlook.com
- ([2a01:111:f403:c20b::1] helo=BEUP281CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uSBbm-0007u9-2p; Thu, 19 Jun 2025 05:31:01 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tan@siewert.io>)
- id 1uSB1h-0003AT-Mh; Thu, 19 Jun 2025 04:53:43 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=KenZMLB/N3sXg1XTrF0a8Nnr0bRz4N0RgZm3mTVPFTYWlFUbxViaOzCt7jXGHdCZys9NLvXC04ZqC/gMi9wjMU58U6xBdhmVNn3PvAOMbn/wpojwv1aag4mXCMSkvWdN09Nupng0iVSNy6st0RylpNY67m4uOAzgiDImuO8ZOY424/IvLuY73icmMjuOOBXdkupephBE05NzC6OfHd6bGAYHe0UTXaIU8hVmNPDGa5ebuFsPSvJhmI9RBSXku79cLC+POTBRD4du/gFKvVLb+Vec8xjLRQaRzpgTJeTVfocrK7f2/Wb5QK5tY+x2FdPUGLZhz0+0zSsla0hrSgP2Dw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=pJzJn4jm2xy9XTzvHex4H4aNNxduruxz0PuGDv8dR1s=;
- b=mYunMbBTy0Y/hHM8A6RuHk+CDX1kVTwZCCQAenDEfq9A1h//PoE/Yd4v7wkuzFZkkeqWvALXCzS9713nESSZXi70HkgCmZJkuKyFXbSpdN12+NzQn8meM2jpmrxfO7StbV7g7nDhbbtClcVN4StQQPloona/Vf6FZDmx5tvlkk/wCUpyoL323IUEx8gbvSD08G/9ykYtZt1uBZTD+yeGIaZD5qQOX/ZQNB1Tv998ql7Ye17rp5Lkcjt9NzQwXWZCJrlYi6xoTRUXeJ73drcLtEZbUXjT+DwQdENFN9MnlF6TaqF3VtJZo3LutxaDjECfkRzvaIWQaeYQK/Ra1HjXwA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=siewert.io; dmarc=pass action=none header.from=siewert.io;
- dkim=pass header.d=siewert.io; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=siewert.io;
-Received: from FR3PPFB3D0CF1D2.DEUP281.PROD.OUTLOOK.COM (2603:10a6:d18:2::182)
- by FR0P281MB2447.DEUP281.PROD.OUTLOOK.COM (2603:10a6:d10:27::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8857.23; Thu, 19 Jun
- 2025 08:53:34 +0000
-Received: from FR3PPFB3D0CF1D2.DEUP281.PROD.OUTLOOK.COM
- ([fe80::6ec7:ece3:1787:5e48]) by FR3PPFB3D0CF1D2.DEUP281.PROD.OUTLOOK.COM
- ([fe80::6ec7:ece3:1787:5e48%7]) with mapi id 15.20.8857.016; Thu, 19 Jun 2025
- 08:53:34 +0000
-From: Tan Siewert <tan@siewert.io>
-To: qemu-devel@nongnu.org
-Cc: Tan Siewert <tan@siewert.io>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org
-Subject: [PATCH v4] hw/misc/aspeed_scu: Handle AST2600 protection key
- registers correctly
-Date: Thu, 19 Jun 2025 10:53:27 +0200
-Message-ID: <20250619085329.42125-1-tan@siewert.io>
-X-Mailer: git-send-email 2.49.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: MA3P292CA0041.ESPP292.PROD.OUTLOOK.COM
- (2603:10a6:250:46::16) To FR3PPFB3D0CF1D2.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d18:2::182)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uSBbe-0002Pv-Hm; Thu, 19 Jun 2025 05:30:57 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bNFgl14Gnz6M56S;
+ Thu, 19 Jun 2025 17:29:55 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 8F2751404C4;
+ Thu, 19 Jun 2025 17:30:31 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 19 Jun
+ 2025 11:30:30 +0200
+Date: Thu, 19 Jun 2025 10:30:28 +0100
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+CC: "eric.auger@redhat.com" <eric.auger@redhat.com>, Linuxarm
+ <linuxarm@huawei.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "jgg@nvidia.com" <jgg@nvidia.com>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "ddutile@redhat.com"
+ <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
+ "imammedo@redhat.com" <imammedo@redhat.com>, "nathanc@nvidia.com"
+ <nathanc@nvidia.com>, "mochs@nvidia.com" <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, "Wangzhou (B)"
+ <wangzhou1@hisilicon.com>, jiangkunkun <jiangkunkun@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+Subject: Re: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe Root
+ Complex association
+Message-ID: <20250619103028.00000277@huawei.com>
+In-Reply-To: <5fd7717fcd7e45d9aaff3e293cf63683@huawei.com>
+References: <20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com>
+ <20250613144449.60156-2-shameerali.kolothum.thodi@huawei.com>
+ <20250616112019.00003bce@huawei.com>
+ <fcd05844-d2d9-450e-b962-59b0f3964185@redhat.com>
+ <20250617175247.00007d43@huawei.com>
+ <49d4c4b73e9a44a783332ddfe9a2fbdf@huawei.com>
+ <327b5515-467c-4666-86d6-fb2a99925a8c@redhat.com>
+ <e4879b1e26f941b5baa419824e4c928c@huawei.com>
+ <6e180d39-b1eb-4935-98b0-3ac73766e8aa@redhat.com>
+ <5fd7717fcd7e45d9aaff3e293cf63683@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: FR3PPFB3D0CF1D2:EE_|FR0P281MB2447:EE_
-X-MS-Office365-Filtering-Correlation-Id: 875ddce6-7b77-4cbf-ae8c-08ddaf0ec5a0
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|52116014|376014|1800799024|366016|10070799003; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?JrtsTvjLnu523SNSUH8OZzpmPTShp0T1bYJ7WVQ+qcMdTvT1kcwx/HEQcOlb?=
- =?us-ascii?Q?7UIBjIODRMsJPGxJtt6sY7JY3Ysj76tXtE7YGTgjzF0uMJSwSX8n7kJJqLfS?=
- =?us-ascii?Q?Bc+FpEPKyTACxeoL8aV94PARURYmdv/hHIvKnAP+ObDn0cql41FP5eawTTYt?=
- =?us-ascii?Q?tSHj9aVn6U/SYMMEBNWrNRhYv/H+6g9sJb1gzbwIvVySeAJhrPcIyWeU1VEa?=
- =?us-ascii?Q?27m5xEqb+lFHNGxu72YCWv3XcvBPLDmKSsZR57hbhg4JPJV7NPA3iOWqnR9h?=
- =?us-ascii?Q?oZifxDUR+L96GMM7JNOxYbV+dDhvIdPlWYI0g/SK8dNOE1xOVD2UrPnGSAkB?=
- =?us-ascii?Q?4yTkbEzVQ/g4sbSRgeyt5UuK/l0MkRJyCzcVXGba8cztgmTsrrpo3U3FRiPF?=
- =?us-ascii?Q?HQtn08/XUyi7iF7KbF0dQyExi1/udwYhN0TLMbYAEvTSVi0ufjh5ATSl/cgB?=
- =?us-ascii?Q?bMsrRmsR72j3mdVFvnIbXupNrFJMFsTtSqd5x+6SD6O+8rfHC9KWtMCYupao?=
- =?us-ascii?Q?kbP/UQdLbnR0fLWlwV4DLQidQJ1lwJEASSVylE6AmtTjYCwoD/8kpvHW26m3?=
- =?us-ascii?Q?x1ISaK2bL2vkZRBNYmfSG4RI5bEfqoBz300RHnn4h8QpoOqyINPY3AolDl9E?=
- =?us-ascii?Q?icYHCoWHRcytj9VfaPL7rA34/pBUic7c6IJ/HkCEStZ6umxdF+NyAom1+xKe?=
- =?us-ascii?Q?Krac759a4vCs9pMyrTwqTw54cTi5GAksjuCxJtLUKO4cccFTlSQd174G3Mqx?=
- =?us-ascii?Q?UirToMlbZErrZxGfFbMcCCytSqfFZxf7YRJ9vPUtz19IpIxaIHTyzyI9qt9m?=
- =?us-ascii?Q?n5sxtNgbHF7X36F9UsE+rojkkFYXxsa5qrRw6bVZj910rA2zTuDE+es5RY+q?=
- =?us-ascii?Q?Mja61hTsB+RAfl7d1GtfC6aZyqu7YNKMQHtrbYymJt6DfRO660ircKNj7tSt?=
- =?us-ascii?Q?bPKsb6J2u9QRT9d5mu6lmCmmugWcU7GuIEZQFK1kif28V34uema5JDYqOjFO?=
- =?us-ascii?Q?lCc49Db+wxr2HG+W+M2FUQ2uuWFLNJhB0FgJqjD0NdG+RCx48w2ZWs+6Mi6u?=
- =?us-ascii?Q?WO0/MVopdmOlKmqURKCytzXBTjW/KG0VJm6u25Do6Marr8ppzJt8F8dhv7lE?=
- =?us-ascii?Q?c73qgV0gtELa7mGtK8FGy4o166EmLL/e/KyR6Y4eM0GQjOJ7rFpgVJRW7ljt?=
- =?us-ascii?Q?y5o+L8Zzj3Dq9Zzz0jifqbNnJI9KpT5/seWzDCEtT8mDxoYQot0OpC2n27h0?=
- =?us-ascii?Q?NjBX8SNe6eC/9j6eKn2LBRnEedB30Ep8d4jpQkueDthARYKcbyb/6kSY6/13?=
- =?us-ascii?Q?a95paHIn3+tNzLzHECZoaTc4v91eMjpMaLi7vAwogNAbnXbX0v17oFJYfAen?=
- =?us-ascii?Q?gfEO3keNTo15yE4XlPWNPML/G5vUp2SNWPLQpb63oynk6rCMnaju2X1fDc0c?=
- =?us-ascii?Q?kEey2t7hdjo=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:FR3PPFB3D0CF1D2.DEUP281.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
- SFS:(13230040)(52116014)(376014)(1800799024)(366016)(10070799003); DIR:OUT;
- SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?5x6xu9/od9QwEWUaiPn0ZshyN6AOWZ9jPTVSndvkBh/0BhYQeO+/NyAh3MDy?=
- =?us-ascii?Q?zytJlQzKjro4RaAqpldHCgfwuJPGKzv2b729alI4shsEG3Jv/aWuoYEj2P6u?=
- =?us-ascii?Q?n3mgA4q4qe1rEuSsKKODN4NSoGKCPmbS8P6PQhaN8aY0wsWny4tfcOoEobCT?=
- =?us-ascii?Q?wDo0ft8oKJI+NLJ23hFJ8C6byWsXKmIheYoK/FN1VpeE6VdDpvZL5Xr7tN+H?=
- =?us-ascii?Q?t2a+BWzER0RyDVLyGONfqVezSq+JX4857isVKuESjQx5Cqyn1JhKQnkVfUWr?=
- =?us-ascii?Q?T+e+REWEaQUEFieIzY3LDi74GhxRx/MNOnq1f6zumF6rfsTcGDBYSK7YQ4kx?=
- =?us-ascii?Q?CkWbRwvpgM7GcXT25l+1eDliHKrpAJOGdD3RjKrvLBBzCyXoFrrYUsIcl7jI?=
- =?us-ascii?Q?nrDpmve9RWmPw1JVTfo0uSG4n8EwQqxVD3OP5GUjfR3LRyK4JKDQHaUFNBNb?=
- =?us-ascii?Q?i4WOeTysERruDuY5vUn9ugyMafwIxoFKHXX0gLcjGfznKNysC3gXo2qjPATv?=
- =?us-ascii?Q?atcqeQZgOFeu+2vy81q3tG5OkSyybgeo+cdbt6EoD5XLB+VU9tf+QKc9yntr?=
- =?us-ascii?Q?PvvThSddV+CEQ443VXPoO7VBfhFBhtmm3QxK6CcfddR4Yeq/D3/m5T3Dw0wb?=
- =?us-ascii?Q?LyhYBxF5VwFjYSIdJv0h50YoljpKCDAGsIuh4FUzBcJIXJwQuL7uQWK5dPpc?=
- =?us-ascii?Q?oeeIuoSazVagOW1MaxJeMS11TGH+B1wtGUARXkFZ2IDnzfqyfNKJlqeh2Yde?=
- =?us-ascii?Q?8VSLcDwsZMsa+go6dzALicCNZfIlO+x14Rs25QCvvE7uej5cm5wQLDxCNoHs?=
- =?us-ascii?Q?m0Vc8GsiYBMO2pFYJ4mqiAt3LFGZxE7DIxSdxmynNDDvfHSK6JTQTNeO8gG8?=
- =?us-ascii?Q?XcRVWD2bJJOQSrbDmJAWmAP8+/UXsC0+RUc0WbWoYgY4StVfp0nIn+sa461Z?=
- =?us-ascii?Q?Nko+UDEuO1p736FJxF5E0NbteW2BvKb/cKn6osh/IZ76M7GSAzbbCAxz25qO?=
- =?us-ascii?Q?qEEjjOwvBdh3bsOJcJ0gglGyUIBPXRWd/T2l3Ks5BP/aNp2+rZw2CQuCF8wW?=
- =?us-ascii?Q?lS/WSX0+++IfCC4Hoxl/WI42YDuxc3wdIkdRVsIYV3FGxa0X+7owyC6M4FWc?=
- =?us-ascii?Q?OMxCTGHueYO0sZ2cFC3GPPunYdfGdiRykdY6xNKHFv/zc8H9yZ3rsGFETFiX?=
- =?us-ascii?Q?lHH3jYgzZYdOuHzeSRElvPVRw/DVRNxt6UngdABpa6iLqdYunp35QzgHcg9Z?=
- =?us-ascii?Q?J7c0Lgh90/u4qlzdKoxHKDwT0KMTeOxDvwwEzetb5kWLd/f9cG0szqfTiR0q?=
- =?us-ascii?Q?Us4AK5lx02zzrCbgn0KBV1mM1Vo7kGCNFweRt3RRT4tmCoE46RbfRwQNbWMh?=
- =?us-ascii?Q?kjJwF2seKvXAnmqLB12wBUXMOUFm0dHx80leauwcB3+8VufKKWPEjweoi5px?=
- =?us-ascii?Q?yMddaPqAejLqAaTNnWhJDpE1VO8lMReM9iIVTb4hcy4CMtjskrVZL4WQTaTs?=
- =?us-ascii?Q?FzIvh+Bp6iDlndraJjDR2U8gb1BYL4IopaxI8j+pfDkv3aPMzo2Q/0YoJj7w?=
- =?us-ascii?Q?Ym3m68yPy5/fKvDeZDklKRZKuxIVxqzdp7dD5ttvEF85l2vsTSm9+4jyiugx?=
- =?us-ascii?Q?aehE8Nh1NV8rFfw/4FJt61c=3D?=
-X-OriginatorOrg: siewert.io
-X-MS-Exchange-CrossTenant-Network-Message-Id: 875ddce6-7b77-4cbf-ae8c-08ddaf0ec5a0
-X-MS-Exchange-CrossTenant-AuthSource: FR3PPFB3D0CF1D2.DEUP281.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Jun 2025 08:53:33.9702 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e8b4abbe-444b-4835-b8fd-87ac97451a7e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: NSP/fmLlnnNJkunbZqVQuVhS1rDgpIx+et/uwDkwUuHn65Vk8WpInvUJhLdEqrdi
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: FR0P281MB2447
-Received-SPF: pass client-ip=2a01:111:f403:c20b::1;
- envelope-from=tan@siewert.io;
- helo=BEUP281CU002.outbound.protection.outlook.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -187,76 +118,135 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U7UPKXtlJ41M
+X-TUID: nqQf+AKi1uUA
 
-The AST2600 SCU has two protection key registers (0x00 and 0x10) that
-both need to be unlocked. (Un-)locking 0x00 modifies both protection key
-registers, while modifying 0x10 only modifies itself.
+On Thu, 19 Jun 2025 09:05:07 +0100
+Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
 
-This commit updates the SCU write logic to reject writes unless both
-protection key registers are unlocked, matching the behaviour of
-real hardware.
+> > -----Original Message-----
+> > From: Eric Auger <eric.auger@redhat.com>
+> > Sent: Thursday, June 19, 2025 8:41 AM
+> > To: Shameerali Kolothum Thodi
+> > <shameerali.kolothum.thodi@huawei.com>; Jonathan Cameron
+> > <jonathan.cameron@huawei.com>
+> > Cc: Linuxarm <linuxarm@huawei.com>; qemu-arm@nongnu.org; qemu-
+> > devel@nongnu.org; peter.maydell@linaro.org; jgg@nvidia.com;
+> > nicolinc@nvidia.com; ddutile@redhat.com; berrange@redhat.com;
+> > imammedo@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
+> > smostafa@google.com; Wangzhou (B) <wangzhou1@hisilicon.com>;
+> > jiangkunkun <jiangkunkun@huawei.com>; zhangfei.gao@linaro.org
+> > Subject: Re: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe
+> > Root Complex association
+> >=20
+> > Hi Shameer,
+> >=20
+> > On 6/19/25 9:24 AM, Shameerali Kolothum Thodi wrote: =20
+> > > Hi Eric,
+> > > =20
+> > >> -----Original Message-----
+> > >> From: Eric Auger <eric.auger@redhat.com>
+> > >> Sent: Wednesday, June 18, 2025 6:00 PM
+> > >> To: Shameerali Kolothum Thodi
+> > >> <shameerali.kolothum.thodi@huawei.com>; Jonathan Cameron
+> > >> <jonathan.cameron@huawei.com>
+> > >> Cc: Linuxarm <linuxarm@huawei.com>; qemu-arm@nongnu.org; qemu-
+> > >> devel@nongnu.org; peter.maydell@linaro.org; jgg@nvidia.com;
+> > >> nicolinc@nvidia.com; ddutile@redhat.com; berrange@redhat.com;
+> > >> imammedo@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
+> > >> smostafa@google.com; Wangzhou (B) <wangzhou1@hisilicon.com>;
+> > >> jiangkunkun <jiangkunkun@huawei.com>; zhangfei.gao@linaro.org
+> > >> Subject: Re: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has =20
+> > PCIe =20
+> > >> Root Complex association
+> > >>
+> > >> Hi Shameer, Jonathan,
+> > >>
+> > >> On 6/18/25 10:35 AM, Shameerali Kolothum Thodi wrote: =20
+> > >>>> -----Original Message-----
+> > >>>> From: Jonathan Cameron <jonathan.cameron@huawei.com>
+> > >>>> Sent: Tuesday, June 17, 2025 5:53 PM
+> > >>>> To: Eric Auger <eric.auger@redhat.com>
+> > >>>> Cc: Shameerali Kolothum Thodi
+> > >>>> <shameerali.kolothum.thodi@huawei.com>; Linuxarm
+> > >>>> <linuxarm@huawei.com>; qemu-arm@nongnu.org; qemu-
+> > >>>> devel@nongnu.org; peter.maydell@linaro.org; jgg@nvidia.com;
+> > >>>> nicolinc@nvidia.com; ddutile@redhat.com; berrange@redhat.com;
+> > >>>> imammedo@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
+> > >>>> smostafa@google.com; Wangzhou (B) <wangzhou1@hisilicon.com>;
+> > >>>> jiangkunkun <jiangkunkun@huawei.com>; zhangfei.gao@linaro.org
+> > >>>> Subject: Re: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has =20
+> > >> PCIe =20
+> > >>>> Root Complex association
+> > >>>>
+> > >>>> On Tue, 17 Jun 2025 09:49:54 +0200
+> > >>>> Eric Auger <eric.auger@redhat.com> wrote:
+> > >>>> =20
+> > >>>>> On 6/16/25 12:20 PM, Jonathan Cameron wrote: =20
+> > >>>>>> On Fri, 13 Jun 2025 15:44:43 +0100
+> > >>>>>> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> =20
+> > wrote: =20
+> > >>>>>> =20
+> > >>>>>>> Although this change does not affect functionality at present, =
+it is =20
+> > >>>>>> Patch title says PCIe.  This check is vs PCI host bridge.
+> > >>>>>>
+> > >>>>>> No idea which one you wanted, but if it is PCIe needs to be
+> > >>>>>> TYPC_PCIE_HOST_BRIDGE from pcie_host.h not the pci_host.h one
+> > >>>>>> I think. =20
+> > >>>>> I think we need TYPE_PCI_HOST_BRIDGE as we want to check against =
+=20
+> > >> pxb =20
+> > >>>>> pci-bridge/pci_expander_bridge.c:=C2=A0=C2=A0=C2=A0 .parent=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =3D =20
+> > >>>> TYPE_PCI_HOST_BRIDGE, =20
+> > >> sorry but I still fail to understand why we can't just check against
+> > >>
+> > >> TYPE_PCI_HOST_BRIDGE for making sure the SMMU is attached to PXB or
+> > >> GPEX. What does it fail to check? Why shall we care about PCI vs PCI=
+e? =20
+> > > I think the concern is  getting any other TYPE_PCI_HOST_BRIDGE types =
+=20
+> > attached =20
+> > > to SMMUv3 other than pxb-pcie or GPEX. For example you could do,
+> > >
+> > > -device pxb-cxl,bus_nr=3D12,bus=3Dpcie.0,id=3Dcxl.1 \
+> > > -device arm-smmuv3,primary-bus=3Dcxl.1,id=3Dsmmuv3.1 \
+> > >
+> > > as pxb-cxl is of type TYPE_PCI_HOST_BRIDGE. I don't know if there are=
+ any =20
+> > other =20
+> > > ones similar to this out there.
+> > >
+> > > So the aim is to make the checking more specific to PXB. =20
+> >=20
+> > thank you for the clarification. Is it invalid to have the SMMU
+> > protecting RIDs comming from the pxb-cxl hierarchy? =20
+>=20
+> That=E2=80=99s a good question. I don't know that for sure.
 
-Signed-off-by: Tan Siewert <tan@siewert.io>
----
-V4:
-  - Fix mis-understanding of or operator in lock check [Tan]
-  - Move SCU protection data variable outside of switch case [Cedric]
-  - Fix u32 -> uint32_t mistake (now bool as same result) [Cedric]
+It should be fine to support CXL for this but we can work that out later.
 
- hw/misc/aspeed_scu.c | 16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
+For now limited use cases as there is no CXL VFIO support and the only thing
+emulated devices do that the SMMU might influence is MSIX.
 
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 4930e00fed..39832cd861 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -91,6 +91,7 @@
- #define BMC_DEV_ID           TO_REG(0x1A4)
- 
- #define AST2600_PROT_KEY          TO_REG(0x00)
-+#define AST2600_PROT_KEY2         TO_REG(0x10)
- #define AST2600_SILICON_REV       TO_REG(0x04)
- #define AST2600_SILICON_REV2      TO_REG(0x14)
- #define AST2600_SYS_RST_CTRL      TO_REG(0x40)
-@@ -722,6 +723,8 @@ static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
-     int reg = TO_REG(offset);
-     /* Truncate here so bitwise operations below behave as expected */
-     uint32_t data = data64;
-+    bool prot_data_state = data == ASPEED_SCU_PROT_KEY;
-+    bool unlocked = s->regs[AST2600_PROT_KEY] && s->regs[AST2600_PROT_KEY2];
- 
-     if (reg >= ASPEED_AST2600_SCU_NR_REGS) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-@@ -730,15 +733,24 @@ static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
-         return;
-     }
- 
--    if (reg > PROT_KEY && !s->regs[PROT_KEY]) {
-+    if ((reg != AST2600_PROT_KEY && reg != AST2600_PROT_KEY2) && !unlocked) {
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: SCU is locked!\n", __func__);
-+        return;
-     }
- 
-     trace_aspeed_scu_write(offset, size, data);
- 
-     switch (reg) {
-     case AST2600_PROT_KEY:
--        s->regs[reg] = (data == ASPEED_SCU_PROT_KEY) ? 1 : 0;
-+        /*
-+         * Writing a value to SCU000 will modify both protection
-+         * registers to each protection register individually.
-+         */
-+        s->regs[AST2600_PROT_KEY] = prot_data_state;
-+        s->regs[AST2600_PROT_KEY2] = prot_data_state;
-+        return;
-+    case AST2600_PROT_KEY2:
-+        s->regs[AST2600_PROT_KEY2] = prot_data_state;
-         return;
-     case AST2600_HW_STRAP1:
-     case AST2600_HW_STRAP2:
--- 
-2.49.0
+The one that concerned me is pxb-pci if we only care about pcie.
+I'm not sure if we need to make that distinction or not. =20
+
+Jonathan
+
+> Anyway currently the full support for CXL on virt is in progress here,
+> https://lore.kernel.org/qemu-devel/20250612134338.1871023-1-Jonathan.Came=
+ron@huawei.com/
+>=20
+> Jonathan?
+>=20
+> Thanks,
+> Shameer
+>=20
+> >  =20
+>=20
 

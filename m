@@ -1,141 +1,198 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp742526njc;
-        Fri, 20 Jun 2025 01:45:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVKFIeU9RYY9EJKqDqNhaUdR6/kq9oFO19cSMYpkgpATcOKDO4pAdqoMGq82j42DUmKIGJPBPu984VL9Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IHWiGi/70WA4fhoqzCJ+rATGIXm+T1br3rxWrL0sbydUqcahJOSL9o0+GmhFO1iE8f4pcP/
-X-Received: by 2002:a5d:588d:0:b0:3a4:f936:7882 with SMTP id ffacd0b85a97d-3a6d12e8531mr1453609f8f.55.1750409120135;
-        Fri, 20 Jun 2025 01:45:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750409120; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp542444njc;
+        Thu, 19 Jun 2025 15:41:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCViCm6I3BNNQTh6/9E3BtBqTy8bPyR4alnRQrtIFORqCozMDyMCLLL4aaIJ3KNWOW6vU/z3BOYWT5xLIA==@linaro.org
+X-Received: by 2002:a05:600c:871b:b0:453:ec2:c7b2 with SMTP id 5b1f17b1804b1-45365e3dfc0mr910815e9.7.1750372894057;
+        Thu, 19 Jun 2025 15:41:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750372894; cv=none;
         d=google.com; s=arc-20240605;
-        b=WHIKZeepsEsjg2fYXsrAJt4FCTO5hDVb/sL1SmRT5deCuGNgcJG+GbxE34ofBdPrUT
-         yxEphAMbQfJo5+xVKkCGjy0huIHfCZYsU3oxh97PAxzY2OXAnLMPP2hFAfm65wXuiHvu
-         UQqsCgOMZ7Sh2jwo7xLxV6oemGkP3zoOI8vgQEhOMOSJxI6CrcKPl3389hqzKg68hFxE
-         WbRC2iuIQlO5lZLXACpqhAqlJ2p8NoFnXSBuexcHu3Tv7B9wDPsg9o8W0bxuu0Ufrizu
-         g0/gSKf+mo2FTwAA50GwEoJiCLOeW/9o9TVg9kIacUFrPEik1dTrX8lU9gbVH2jBzZnn
-         05nw==
+        b=CwisLRh67p66qBVrNF2A0YAaXKVl+6xo342L3dt5i8WJrwGN68590Eel/xepbE7qRc
+         +ycG00WqkqECK2TdBmFvbSuXAqAz4kv7qZpFGzj8EdduZRIV3tIWrRZhZHgRnpG3KsSw
+         b7CqViX4rG+gHX5wqF8axo+APIg0QONZkDJuRBUSjfVr/cfOz+ogy2WIdcIyAUi/QC9T
+         sH+ApfNnyFk6CLOmCSA5YyWVJSlN+Ax3YKC2lVoO5mTGvPfE2EJimpjT/V3P+uWAC0N0
+         jz0ZuUxJhlbieew2X1PI5K59KgWaQu8TWUwr2S6SGezh9FKLhWEI+UtotC+JXMPWO13S
+         CO2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date;
-        bh=tjofRoQPNZ6DG7m5o4IhowfnXNS2YFcrRjiSa1PV6A0=;
-        fh=De5j/+RFiHp5oysg/kfBHcT9O0ASuV5hpNukEk4skqM=;
-        b=BvnH0+y9VkV8kTOq0B4TsCUmQBwymAcTAZZ3H+aG8n69bKjp6z9HyTxhz0ZJKhQyL5
-         FF2gjXwSgImxovh+mdt04wXjRrmrL7BtZASR6U6AyExsb+cuVo/hxrwbRlQas7JqLmgd
-         5vSAIDC3yeuyvKw/HZe84v3pJrKRwTGy0BFe4M0bjaG0r9o0baCB128ksj2HRwZ/M87h
-         05pZMEpKDmMFVQk1V7l0xLPS0SLDA9W49OOgJkDiPKvtGcy9n4DKX8l3oePqS7/vCCj7
-         v1FM5fKr4YvmVw6NlVujkZsGwYFDaVZ62VIsmyIZfKuqwXIqKUO9MhmOq9ULPZtgRCQy
-         VQGg==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=JYqfIDOo4Y81fOUls78kxCDhUADzm0w1A4KbE+kV/I0=;
+        fh=SkhirKlly5fIyQvS0d0tnMnii9XMZ20C0vDLNu3gv1E=;
+        b=Nf0RQlw7UepAePHT4xbZWRneC2tB+SMRf14b8WCz39RQe9NU4ffkLlE+RvaISBcb2w
+         dvvllFmDb4w200ALFyt/wiZzgt1JkJaGvd7Id2jgocethWnRWoqpZTaOGZYn8MN4iMih
+         f6iLEoeQ0VkaanHAyZU3+Ns2t3LUu1mW3O76dNfAsw7QU3mYZFOLBnrMXL8o4BXItGNT
+         niaUwandm0YM5VQOWaUQV3UIUPNZv+HzIPS91VdlUP3P5F/NzO1i6NteAD7j9XF7DrIu
+         8ClWLTA/lSVvmKwttptHfPoPaarfZVOfPHQGkwMK7K5qKe3j9Lr6xE/5Q0G376UE7ILN
+         +XFg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a6d0f1d30bsi982076f8f.114.2025.06.20.01.45.19
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Jun 2025 01:45:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b="m/xt4wdq";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-4536471a13esor1112635e9.5.2025.06.19.15.41.33
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 19 Jun 2025 15:41:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bNrb90crdz6L6Fc;
-	Fri, 20 Jun 2025 16:43:01 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 3823E140417;
-	Fri, 20 Jun 2025 16:45:19 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 20 Jun
- 2025 10:45:18 +0200
-Date: Fri, 20 Jun 2025 09:45:17 +0100
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: Eric Auger <eric.auger@redhat.com>
-CC: <eric.auger.pro@gmail.com>, <qemu-devel@nongnu.org>,
-	<qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <imammedo@redhat.com>,
-	<gustavo.romero@linaro.org>, <anisinha@redhat.com>, <mst@redhat.com>,
-	<shannon.zhaosl@gmail.com>, <pbonzini@redhat.com>, <philmd@linaro.org>,
-	<alex.bennee@linaro.org>
-Subject: Re: [PATCH v3 04/29] hw/pci-host/gpex-acpi: Add native_pci_hotplug
- arg to acpi_dsdt_add_pci_osc
-Message-ID: <20250620094517.00007eed@huawei.com>
-In-Reply-To: <20250616094903.885753-5-eric.auger@redhat.com>
-References: <20250616094903.885753-1-eric.auger@redhat.com>
-	<20250616094903.885753-5-eric.auger@redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+       dkim=pass header.i=@linaro.org header.s=google header.b="m/xt4wdq";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1750372893; x=1750977693; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=JYqfIDOo4Y81fOUls78kxCDhUADzm0w1A4KbE+kV/I0=;
+        b=m/xt4wdqXlKmH8ad2gFSYX+PtS0tlixYqCdJRe8Sj+/sqg0+dXZ3nfSSKYFIBIaCh7
+         hKkU46l1T/E4Fn5aLjPprslHii73IrLLQglmvdICoAkGy39j70KhAqieuDJ7r7yfpqQB
+         j68jyehuJ7P4DBgFPb2wMydXuDLUFYFxTW8GgLeHD/jNIwPKfWZBKk+mkM54V7LU+aPs
+         EKYHKoV8Vu9MQ8CW4i/zF4pyY3e8S9KrRmrG8/rvXNC2QEXOPySgjMa2c8SsR8WJyH36
+         onNTb6dtn2tG8Co8GDZekP2IX9GjrMxJVtrHrxyx1YYy0eAXcp/NUn6Pc6PGC23KLZL6
+         qpvw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750372893; x=1750977693;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=JYqfIDOo4Y81fOUls78kxCDhUADzm0w1A4KbE+kV/I0=;
+        b=qgTEWBtK7MsyidosDpY1Ke/zwNMMMvZ37lriSAR/lTvjzf27AY5YtOzEbk6ZUT62Vf
+         eDMd3S4LIueaPGr4FFXHM83pMvE/nZUnXoEpWnbClO+xeVNYNA6u/DzSMacExtattT0S
+         4fbvLLMb09Co9SD1EbS9fpTTFe62n0LrA6M8fY4DWOLCp//2tzriKbn+No8+/WLH67vZ
+         mCfIVAiiD05la0Q1olGqGn6ZtiTuUF6b/M07P9aPEIqYnbl09HJm9Z4ytCrwpEiRRKBA
+         dmIHjOaIjcAekDd49fkDHTnd8O0Jn4UlTsojqyKstpw7XaHoKfLTnK7jlT1wK9KJ5mrX
+         c6qw==
+X-Forwarded-Encrypted: i=1; AJvYcCWxpg+4N1dhiFSG6VJMlDAKFhG0+Y48a9aPY4MC28X1gMJT3HnqVNDWRBrunyq0/j7KmrbwZeBOBlo0sg==@linaro.org
+X-Gm-Message-State: AOJu0YxRUpU1hy9Ooi4jZcYQs4XEJow6U/9wgZu5ulWkcltAzFapBl9x
+	S5tY1nxSFukHzpAQymtVhjrTHc87NgP4ZX78g/gbjuWcUrqtGmHCNCh2hClPAGErFuer7A==
+X-Gm-Gg: ASbGncsTjEDQZ+VajEUbMKD1DFtLhP4jJ31H5ylBg/k8DaigmhynRZ7vBU3fo9M18hj
+	aPjZFqfm5Pnrk8MMy86hck76afmhcJNjHGLig40mKtR9uL+d3ZHq1kzIspcrHY9IF0f5nGWjnZa
+	ucBcrEjvQ7dOJvKwXnd3ls5MLa2loEq/jhH/uZn9XV9r4zG1QWFW/6qsGyAwgfxXt56McrXDRHv
+	52TKfbnWcuk7Qu5nRuoXEvVsIxVAGBCpeHrAM/ekDjPMcuVXuLy0dTLzTo+JCaB6pwxM0zOleLT
+	WGkz9kFd9MtkOe0dcX6H/kwFoDmU3LNhMPouewzRJc5Aws7c6EO/0Sc4OatgbDxHHEyJnCthpDb
+	FAGb9zxkgfeR89OCVtq2Iu/nqIreQjaHczkq2122r
+X-Google-Smtp-Source: AGHT+IFOG69Fu52xgibwQRh423sguVXqU81Wbdf1PctRsPGbOo+7PRS9kZaDB3bYWW+JSGHhTFHzFA==
+X-Received: by 2002:a05:600c:4f81:b0:453:84a:e8d6 with SMTP id 5b1f17b1804b1-45365e42db3mr877825e9.1.1750372893345;
+        Thu, 19 Jun 2025 15:41:33 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.167] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4535eac8c16sm40202245e9.19.2025.06.19.15.41.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 19 Jun 2025 15:41:32 -0700 (PDT)
+Message-ID: <47990a06-6867-4f5c-9c52-2770d2bba472@linaro.org>
+Date: Fri, 20 Jun 2025 00:41:31 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: es4aYdiW1u+G
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 07/20] accel/hvf: Trace VM memory mapping
+To: qemu-devel@nongnu.org
+Cc: Cameron Esfahani <dirty@apple.com>,
+ Julian Armistead <julian.armistead@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>
+References: <20250619131319.47301-1-philmd@linaro.org>
+ <20250619131319.47301-8-philmd@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250619131319.47301-8-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: CGAyOqQXLMQV
 
-On Mon, 16 Jun 2025 11:46:33 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
-
-> Add a new argument to acpi_dsdt_add_pci_osc to be able to disable
-> native pci hotplug.
+On 19/6/25 15:13, Philippe Mathieu-Daudé wrote:
+> Trace memory mapped / unmapped in the guest.
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-After discussion on earlier version I'm now fine with this.
-
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-
-> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
+>   meson.build               | 1 +
+>   accel/hvf/trace.h         | 2 ++
+>   accel/hvf/hvf-accel-ops.c | 6 ++++++
+>   accel/hvf/trace-events    | 7 +++++++
+>   4 files changed, 16 insertions(+)
+>   create mode 100644 accel/hvf/trace.h
+>   create mode 100644 accel/hvf/trace-events
 > 
-> rfc -> v1:
-> - updated the "Allow OS control for all 5 features" comment
-> ---
->  hw/pci-host/gpex-acpi.c | 15 ++++++++-------
->  1 file changed, 8 insertions(+), 7 deletions(-)
-> 
-> diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
-> index 0aba47c71c..f34b7cf25e 100644
-> --- a/hw/pci-host/gpex-acpi.c
-> +++ b/hw/pci-host/gpex-acpi.c
-> @@ -50,7 +50,7 @@ static void acpi_dsdt_add_pci_route_table(Aml *dev, uint32_t irq,
->      }
->  }
->  
-> -static void acpi_dsdt_add_pci_osc(Aml *dev)
-> +static void acpi_dsdt_add_pci_osc(Aml *dev, bool enable_native_pcie_hotplug)
->  {
->      Aml *method, *UUID, *ifctx, *ifctx1, *elsectx, *buf;
->  
-> @@ -77,11 +77,12 @@ static void acpi_dsdt_add_pci_osc(Aml *dev)
->      aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
->  
->      /*
-> -     * Allow OS control for all 5 features:
-> -     * PCIeHotplug SHPCHotplug PME AER PCIeCapability.
-> +     * Allow OS control for SHPCHotplug, PME, AER, PCIeCapability,
-> +     * and PCIeHotplug depending on enable_native_pcie_hotplug
->       */
-> -    aml_append(ifctx, aml_and(aml_name("CTRL"), aml_int(0x1F),
-> -                              aml_name("CTRL")));
-> +    aml_append(ifctx, aml_and(aml_name("CTRL"),
-> +               aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)),
-> +               aml_name("CTRL")));
->  
->      ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
->      aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
-> @@ -192,7 +193,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
->              if (is_cxl) {
->                  build_cxl_osc_method(dev);
->              } else {
-> -                acpi_dsdt_add_pci_osc(dev);
-> +                acpi_dsdt_add_pci_osc(dev, true);
->              }
->  
->              aml_append(scope, dev);
-> @@ -267,7 +268,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
->      }
->      aml_append(dev, aml_name_decl("_CRS", rbuf));
->  
-> -    acpi_dsdt_add_pci_osc(dev);
-> +    acpi_dsdt_add_pci_osc(dev, true);
->  
->      Aml *dev_res0 = aml_device("%s", "RES0");
->      aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));
+> diff --git a/meson.build b/meson.build
+> index 34729c2a3dd..5004678a26b 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -3633,6 +3633,7 @@ if have_block
+>   endif
+>   if have_system
+>     trace_events_subdirs += [
+> +    'accel/hvf',
+>       'accel/kvm',
+>       'audio',
+>       'backends',
+> diff --git a/accel/hvf/trace.h b/accel/hvf/trace.h
+> new file mode 100644
+> index 00000000000..83a1883343a
+> --- /dev/null
+> +++ b/accel/hvf/trace.h
+> @@ -0,0 +1,2 @@
+> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> +#include "trace/trace-accel_hvf.h"
+> diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+> index d60446b85b8..b38977207d2 100644
+> --- a/accel/hvf/hvf-accel-ops.c
+> +++ b/accel/hvf/hvf-accel-ops.c
+> @@ -59,6 +59,7 @@
+>   #include "system/hvf_int.h"
+>   #include "system/runstate.h"
+>   #include "qemu/guest-random.h"
+> +#include "trace.h"
+>   
+>   HVFState *hvf_state;
+>   
+> @@ -97,6 +98,7 @@ static int do_hvf_set_memory(hvf_slot *slot, hv_memory_flags_t flags)
+>       if (macslot->present) {
+>           if (macslot->size != slot->size) {
+>               macslot->present = 0;
+> +            trace_hvf_vm_unmap(macslot->gpa_start, macslot->size);
+>               ret = hv_vm_unmap(macslot->gpa_start, macslot->size);
+>               assert_hvf_ok(ret);
+>           }
+> @@ -109,6 +111,10 @@ static int do_hvf_set_memory(hvf_slot *slot, hv_memory_flags_t flags)
+>       macslot->present = 1;
+>       macslot->gpa_start = slot->start;
+>       macslot->size = slot->size;
+> +    trace_hvf_vm_map(slot->start, slot->size, slot->mem, flags,
+> +                     flags & HV_MEMORY_READ ?  'R' : '-',
+> +                     flags & HV_MEMORY_WRITE ? 'W' : '-',
+> +                     flags & HV_MEMORY_EXEC ?  'E' : '-');
+>       ret = hv_vm_map(slot->mem, slot->start, slot->size, flags);
+>       assert_hvf_ok(ret);
+>       return 0;
+> diff --git a/accel/hvf/trace-events b/accel/hvf/trace-events
+> new file mode 100644
+> index 00000000000..3c11f69f305
+> --- /dev/null
+> +++ b/accel/hvf/trace-events
+> @@ -0,0 +1,7 @@
+> +# SPDX-License-Identifier: GPL-2.0-or-later
+> +#
+> +# See docs/devel/tracing.rst for syntax documentation.
+> +
+> +# hvf-accel-ops.c
+> +hvf_vm_map(uint64_t paddr, uint64_t size, void *vaddr, uint8_t flags, const char r, const char w, const char e) "paddr:0x%016llx size:0x%08llx vaddr:%p flags:0x%02x/%c%c%c"
+> +hvf_vm_unmap(uint64_t paddr, uint64_t size) "paddr:0x%016llx size:0x%08llx"
+
+For some reason this is still cross-built as 32-bit (although HVF isn't
+supported there, see commit 7f800d34aa9c from 2021). Anyway, please read
+instead (and thanks Pierrick):
+
+hvf_vm_map(uint64_t paddr, uint64_t size, void *vaddr, uint8_t flags, 
+const char r, const char w, const char e) "paddr:0x%016"PRIx64" 
+size:0x%08"PRIx64" vaddr:%p flags:0x%02x/%c%c%c"
+hvf_vm_unmap(uint64_t paddr, uint64_t size) "paddr:0x%016"PRIx64" 
+size:0x%08"PRIx64

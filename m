@@ -1,224 +1,199 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp207858njc;
-        Thu, 19 Jun 2025 04:59:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVkGRdaT5CoEdKOuhXUH45kBss/Xo4hgeuW+SnuoY03Tu+AbDV3pIEp2XD8t3/gDF3x1AZ7PJBPIQ4arA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGnW5rDRLbWxU5eDdI3agNh3iSkHjyMATYuYT1pVQCpxRYvw2/6NJVv1ygSQqaO2mUcExL1
-X-Received: by 2002:a05:620a:a00e:b0:7d3:db44:86c3 with SMTP id af79cd13be357-7d3db4488c0mr2050160385a.54.1750334355584;
-        Thu, 19 Jun 2025 04:59:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750334355; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp228503njc;
+        Thu, 19 Jun 2025 05:32:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWEjPocWDsLzSJXIEg7498hLVBdrDsk7z+YTyvSZ/65Uz1cKQAzBFhTEB8fF34sWOzAbbePoshOMGijvQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGvPfpbxbcwFelD9Lfp2n0SqxI8KWa/cB7GgT94IQUHr1Xg/fas/O+28rkyCMpldUYvPLM7
+X-Received: by 2002:a05:6214:cc4:b0:6e4:2dd7:5c88 with SMTP id 6a1803df08f44-6fb4779f7a5mr297959486d6.38.1750336337221;
+        Thu, 19 Jun 2025 05:32:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750336337; cv=none;
         d=google.com; s=arc-20240605;
-        b=iaoeD3eGhXCkWyPDjuh4jmHw2QDk2XGMbhcegrmMIj7f40kTqiUjTpeBwxvf1OVe2F
-         vBHQ3z/6b3OABsQgLwRdecmqfcKXY4JPMlKbJETqWQZ0P8+AplLAbawO9np9f9eIspUs
-         aK1qu0+vPang1DifvdF/0qO+Vp6TfKAH5PtQrLge3ogw8dgGQQ6qBr2yc/Q0kj7IQgor
-         nm38i/dce/hGo7OmVXYLytu1XORQJFdeurw6WZlumdMZk3lZ/5hT5DNweZE+xP4FBE0v
-         rf3oaBxahEJPkxUB5NkwzTzUxFqOX2ShmsYUZ05jvTFTAb4bDDfW3Q/M+BkpafgQRFcv
-         rmQg==
+        b=fp+WEI7phpW82mnOglOGmmAEtZn21p1c/IA3KYf3m1DPOIziUehn9NAlVrWklTB7dr
+         +0JvJHXX5IqMHBHao3gqC9oq9SGHameBepQFnMRpUzNDQ/l9NkeZgXHWkGea8tZjlNu1
+         WzE3sQxhqukR0ODL4R44X1zvFrlLzmL1BxmxKM2TceYzd1UsjkTbQdBtfK5piAXMk3P6
+         24popIW47wnxrOrY9RV4wXb+1j0Nz9gwl5lNP//L71gTk57IoX0fo/rEnFl9heSxAHmV
+         lvb1rrdgjf7JNJtvL7NPWIaWhc+xVdvq2imhC9ZrpV86vh3fgQMe3kIAp0dhyQ/vWRK6
+         PoYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=sLlyEVjYXWORQmBalfTH8WaoQ4q2vm10ujxPD1CX4U8=;
-        fh=6XPaMxRZ3L/ngtVzusotL8txm2TZqSp9e/qEQo056qU=;
-        b=I1vDyKNwQgZAU/dgUH99e+Tk2BLBhzVIIdz9VI1IEv8DH28MnXWmwLAzuzVZmiwavj
-         Aor6JeGbBmY/wEKprVZZeNgmEwrgzQI43t1/reIt/GQJ9ceMEG1R6JNFj+0kgotfCH/L
-         U1ZwUBmaREu1UVt5SU8708AJxtTjsdiODUW1jYBnxz6s2p2+i1g68ni065C5rmXFkR2l
-         LsyQSvoGID03VtDd8Rw+xgKYlOXOoTMCSDFu8EBBK5F1RzlkxMc9WlF19iXK9DQQnb62
-         TjbMPwqIrbeAAxl7EuMmP+51pyj3rDgIeWhYywcmlp++90kyTAz9qoexOp+E9aH+VPQu
-         hcrA==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :feedback-id:dkim-signature:dkim-signature;
+        bh=DTuJ1SywhvD1/8Ak7EOA6B+1P89kuNDOpEV88BsdxXc=;
+        fh=kuKKWS/ncRspXZlm3PlibX+Ggzv7jGOgcYmSU0A6l7M=;
+        b=IaB3tBP84ylADJg+m6q2i46I4//H6ilUmORm49y92g+4ikot578F0u4mLaSdVN3FnW
+         EQuZc1PEX1jSgb/C8M/hZPhmGQlvlZvjT14vLYj40Bpb8Xe/M75pEjIjVn/f+jSAAH2c
+         boVZfSFhkMzXCmaTAudElIXD8Fm421Y6xMI1jz0ZnP6fSh9nnv4tm2lY4sBoNC1xoDWn
+         u1HnoqPJ4lJNfAlREZ33Ww40h/KS8VBhgLMJimHeJcy+L0YBSy+6pCIB3pbMTXfwT5Q9
+         M20Da7jYDor1ljpeHUjBesJEveD4Cl9A/2syefy+XsZCY1+ERGiyK8WmkTAm8xWF/MrQ
+         lz1Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@stwcx.xyz header.s=fm3 header.b=mwBwDilK;
+       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=SdCOHrgO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a72a552d63si163401951cf.651.2025.06.19.04.59.15
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd015132ddsi14659776d6.119.2025.06.19.05.32.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jun 2025 04:59:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Jun 2025 05:32:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@stwcx.xyz header.s=fm3 header.b=mwBwDilK;
+       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=SdCOHrgO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uSDv6-0002YI-Vu; Thu, 19 Jun 2025 07:59:05 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uSEQf-0000zz-2I; Thu, 19 Jun 2025 08:31:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=0/7f=ZC=kaod.org=clg@ozlabs.org>)
- id 1uSDv4-0002Xn-V3; Thu, 19 Jun 2025 07:59:02 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
+ id 1uSEQc-0000zS-9H; Thu, 19 Jun 2025 08:31:38 -0400
+Received: from fhigh-a1-smtp.messagingengine.com ([103.168.172.152])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=0/7f=ZC=kaod.org=clg@ozlabs.org>)
- id 1uSDv2-0006XA-Of; Thu, 19 Jun 2025 07:59:02 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bNJzk0DdYz4xG0;
- Thu, 19 Jun 2025 21:58:58 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bNJzf4ZqLz4x8y;
- Thu, 19 Jun 2025 21:58:54 +1000 (AEST)
-Message-ID: <c58bf387-a484-4cc3-a4b6-76cb955c6b0e@kaod.org>
-Date: Thu, 19 Jun 2025 13:58:52 +0200
+ (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
+ id 1uSEQZ-0004dh-HP; Thu, 19 Jun 2025 08:31:38 -0400
+Received: from phl-compute-02.internal (phl-compute-02.phl.internal
+ [10.202.2.42])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id BD20C114019A;
+ Thu, 19 Jun 2025 08:31:32 -0400 (EDT)
+Received: from phl-mailfrontend-01 ([10.202.2.162])
+ by phl-compute-02.internal (MEProxy); Thu, 19 Jun 2025 08:31:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=stwcx.xyz; h=cc
+ :cc:content-type:content-type:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:subject
+ :subject:to:to; s=fm3; t=1750336292; x=1750422692; bh=DTuJ1Sywhv
+ D1/8Ak7EOA6B+1P89kuNDOpEV88BsdxXc=; b=mwBwDilKyd9HkdaG2E0QPYl9Uu
+ K+k5kqqAgkc89yblXOpPLG3BEDJvdiS8CvZ9zhygD5OBtqjRttVxbEH81Jz9yxEB
+ ljUUFR0zw5EO3t9jelH3WcXo4xNIvdwqse1LjttdAbotN3slkQCzdzt4rn6/7j4Q
+ ZpPBP1M0v5A7IKg68tgNxOoJPbwmk6XqRQ23iCR/ZRTBnXkvMG/0un17ZCUtBX4x
+ 6tPQm7pylEUD+D3YD2YpGWxGHxxHgYpda5nLIfvAWEj/Ohqi5Fecyfd82LJJG1TO
+ XTklvbjJgwsym6PNFNb8GCtUDjvM5hdM9FKWA86xAd4jBIwk2CfOe9fM70zQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:subject:to
+ :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
+ 1750336292; x=1750422692; bh=DTuJ1SywhvD1/8Ak7EOA6B+1P89kuNDOpEV
+ 88BsdxXc=; b=SdCOHrgOd2ApnGgJNKR6IU42FIMAYD4aT7OEXl6lfVFsmySOisg
+ Bq0b/dyjCkN9Y4bIRCts7RfKfWGC+PbMy081D4BCwF/omvb3vSlTxJouKdd8bfBD
+ PlL+HhuwwFhCTV5nE9EUWjXDHutirwRoyQUNz7PMfL8L6ZqpHSjc4Aq4AE9YHnz4
+ CBeEk5U2SF8ASyvmJjjSbb84A4I+HxXH2rbIgR65cVb5F0Y3DSDj/T2i0TLZXeXc
+ jixNcYH5uk8eniT9yRG3+2uLlBHyKYz3DmaM6WIchK1itORO69VdkLoaUKkSrWyz
+ zN7fW0Hykw3VmS4x4Ln8yNQFkL6muPyoUWg==
+X-ME-Sender: <xms:IwNUaC-fH7HDUnccUPboWWZooU9T5j-MHf3KZ2JMXPwZ7IGfvAq88A>
+ <xme:IwNUaCsdxZzPrqd-2ptDGaUQu4PCyPhyVKsslBF8WpGfgy4qvVJevJtW0t5RoJJZK
+ aJNhNIarksHWeujZRY>
+X-ME-Received: <xmr:IwNUaIBlJv3xxu70d2n7drVDQxpbbQuEt9_iTSXkSYBre8hgHu-FE1vFwNw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddvgdehheefucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceurghi
+ lhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnegfrhhluc
+ fvnfffucdljedtmdenucfjughrpeffhffvvefukfhfgggtuggjsehgtderredttddunecu
+ hfhrohhmpefrrghtrhhitghkucghihhllhhirghmshcuoehprghtrhhitghksehsthiftg
+ igrdighiiiqeenucggtffrrghtthgvrhhnpedtjeejgfdugefhtedvudfghfejfeejfefh
+ ffeffeelgeduveejleelffefvdffleenucevlhhushhtvghrufhiiigvpedtnecurfgrrh
+ grmhepmhgrihhlfhhrohhmpehprghtrhhitghksehsthiftgigrdighiiipdhnsggprhgt
+ phhtthhopedutddpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheptghlgheskhgroh
+ gurdhorhhgpdhrtghpthhtohepphgsohhniihinhhisehrvgguhhgrthdrtghomhdprhgt
+ phhtthhopehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdprhgtphhtth
+ hopehsthgvvhgvnhgplhgvvgesrghsphgvvgguthgvtghhrdgtohhmpdhrtghpthhtohep
+ lhgvvghtrhhohiesghhmrghilhdrtghomhdprhgtphhtthhopehjrghmihhnpghlihhnse
+ grshhpvggvughtvggthhdrtghomhdprhgtphhtthhopegrnhgurhgvfiestghouggvtgho
+ nhhsthhruhgtthdrtghomhdrrghupdhrtghpthhtohepjhhovghlsehjmhhsrdhiugdrrg
+ hupdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
+X-ME-Proxy: <xmx:IwNUaKejbR9LTBSWVje49i6e0mBOtRzvPY6FWhEFhRZN6aBKjMqsvg>
+ <xmx:IwNUaHN87s4tgIWvbhePhOVz6oxqymJcP4r8OxUFj_hzvKRWtOINfw>
+ <xmx:IwNUaEnrRFQ4Dtu0vCTDaINn9ELDRE26T-ShDpfC85N3zmWROHzx4w>
+ <xmx:IwNUaJtVpXQ-xeM1lgsxRRgQbNIdkNJAF5EpyWL0hIT8hrh47FJmDw>
+ <xmx:JANUaMz0s7nhrg2l1OOgO6GgQGKxfBvhhOhFMOVU3U1w52ya5VtnEWB5>
+Feedback-ID: i68a1478a:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 19 Jun 2025 08:31:30 -0400 (EDT)
+Date: Thu, 19 Jun 2025 08:31:30 -0400
+From: Patrick Williams <patrick@stwcx.xyz>
+To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH] hw/arm/aspeed: add Catalina machine type
+Message-ID: <aFQDIiJDCeavt57O@heinlein>
+References: <20250619034338.2678536-1-patrick@stwcx.xyz>
+ <77c90f31-801f-48e7-b35c-db202a022769@kaod.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4] hw/misc/aspeed_scu: Handle AST2600 protection key
- registers correctly
-To: Tan Siewert <tan@siewert.io>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- qemu-arm@nongnu.org
-References: <20250619085329.42125-1-tan@siewert.io>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250619085329.42125-1-tan@siewert.io>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=0/7f=ZC=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.069, RCVD_IN_DNSWL_MED=-2.3,
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="Ka2dZUjXQSmmKKYg"
+Content-Disposition: inline
+In-Reply-To: <77c90f31-801f-48e7-b35c-db202a022769@kaod.org>
+Received-SPF: pass client-ip=103.168.172.152; envelope-from=patrick@stwcx.xyz;
+ helo=fhigh-a1-smtp.messagingengine.com
+X-Spam_score_int: -2
+X-Spam_score: -0.3
+X-Spam_bar: /
+X-Spam_report: (-0.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FROM_SUSPICIOUS_NTLD=0.499, PDS_OTHER_BAD_TLD=1.999, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tl7CSLdz4iCq
-
-Jamin,
-
-On 6/19/25 10:53, Tan Siewert wrote:
-> The AST2600 SCU has two protection key registers (0x00 and 0x10) that
-> both need to be unlocked. (Un-)locking 0x00 modifies both protection key
-> registers, while modifying 0x10 only modifies itself.
-> 
-> This commit updates the SCU write logic to reject writes unless both
-> protection key registers are unlocked, matching the behaviour of
-> real hardware.
-> 
-> Signed-off-by: Tan Siewert <tan@siewert.io>
-
-Could you please resend your R-b ?
-
-Thanks,
-
-C.
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UlB+cyfKIBeg
 
 
+--Ka2dZUjXQSmmKKYg
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> ---
-> V4:
->    - Fix mis-understanding of or operator in lock check [Tan]
->    - Move SCU protection data variable outside of switch case [Cedric]
->    - Fix u32 -> uint32_t mistake (now bool as same result) [Cedric]
-> 
->   hw/misc/aspeed_scu.c | 16 ++++++++++++++--
->   1 file changed, 14 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-> index 4930e00fed..39832cd861 100644
-> --- a/hw/misc/aspeed_scu.c
-> +++ b/hw/misc/aspeed_scu.c
-> @@ -91,6 +91,7 @@
->   #define BMC_DEV_ID           TO_REG(0x1A4)
->   
->   #define AST2600_PROT_KEY          TO_REG(0x00)
-> +#define AST2600_PROT_KEY2         TO_REG(0x10)
->   #define AST2600_SILICON_REV       TO_REG(0x04)
->   #define AST2600_SILICON_REV2      TO_REG(0x14)
->   #define AST2600_SYS_RST_CTRL      TO_REG(0x40)
-> @@ -722,6 +723,8 @@ static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
->       int reg = TO_REG(offset);
->       /* Truncate here so bitwise operations below behave as expected */
->       uint32_t data = data64;
-> +    bool prot_data_state = data == ASPEED_SCU_PROT_KEY;
-> +    bool unlocked = s->regs[AST2600_PROT_KEY] && s->regs[AST2600_PROT_KEY2];
->   
->       if (reg >= ASPEED_AST2600_SCU_NR_REGS) {
->           qemu_log_mask(LOG_GUEST_ERROR,
-> @@ -730,15 +733,24 @@ static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
->           return;
->       }
->   
-> -    if (reg > PROT_KEY && !s->regs[PROT_KEY]) {
-> +    if ((reg != AST2600_PROT_KEY && reg != AST2600_PROT_KEY2) && !unlocked) {
->           qemu_log_mask(LOG_GUEST_ERROR, "%s: SCU is locked!\n", __func__);
-> +        return;
->       }
->   
->       trace_aspeed_scu_write(offset, size, data);
->   
->       switch (reg) {
->       case AST2600_PROT_KEY:
-> -        s->regs[reg] = (data == ASPEED_SCU_PROT_KEY) ? 1 : 0;
-> +        /*
-> +         * Writing a value to SCU000 will modify both protection
-> +         * registers to each protection register individually.
-> +         */
-> +        s->regs[AST2600_PROT_KEY] = prot_data_state;
-> +        s->regs[AST2600_PROT_KEY2] = prot_data_state;
-> +        return;
-> +    case AST2600_PROT_KEY2:
-> +        s->regs[AST2600_PROT_KEY2] = prot_data_state;
->           return;
->       case AST2600_HW_STRAP1:
->       case AST2600_HW_STRAP2:
+On Thu, Jun 19, 2025 at 07:49:47AM +0200, C=E9dric Le Goater wrote:
+=20
+> Could you please also provide a functional test using this build ?
+> (same question for fuji-bmc and fby35-bmc if still possible)
 
+I can provide one for Catalina.  I just realized that the openbmc
+jenkins isn't building that like it should.  I fixed it and I'll point
+you to an image.
+
+I don't have a way to generate something for fuji or fby35 right now.
+Those aren't actually OpenBMC systems (they're the older "Facebook
+OpenBMC") so we don't have a public image build infrastructure set up
+for them.
+
+--=20
+Patrick Williams
+
+--Ka2dZUjXQSmmKKYg
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEBGD9ii4LE9cNbqJBqwNHzC0AwRkFAmhUAyAACgkQqwNHzC0A
+wRkVoxAAjjHCC+WZ3VG2QZEv/g0dKm0/u7bZzTQjKv8EmWaIYyCht7kxJ6yfrb09
+SwOeptIGag8J+pWs8OohYhy8x6+QMK0PmAwGEhJFxoXGsJldJ4vIffRNff4FVyx3
+pQ/XOr+U7pEO41zo2nbfiHRFNorIP84TUDzxaL6QDpl/cJo78NJN42yoy9mxheCc
+IJrxt41IZh0g8MtVWBz14c0mO3nARPB0wB7Qqy5O7H87hWxdF4NdtN236huVV5UW
+WjiWiUZFp96CuRkls3aI7ubN1nIUh9iPqWFc7qk7y+VwQ2L43dRF/0nRdTjIKUel
+uQvTl0FW3ezK1rAcBCok1XqymGEE+DsanhlnxCrDrYlN0aRfih2R2Os2lavLm56s
+hA3dXe+WcShB6vaeJj0z1uDGbdV2fTM6JFkrwuIsb0LxJ9+mWz9cqAWaCzW3305N
+slxasbZatsixRPQm46xnS9OOg+9TADIgCSx9sbr7nvSdZduxfDJUEvNQ5EkkV7sQ
+NPaG3tKPtUBt7TZTwI2uqzL1oYI/+uHiVF+J9o1pfQnbATWH/o2bHWwIMh13g5g2
+g9KCcWgWWuhCXeFwAwVLbJGBR+qyNS+HZ1bCVTnGw0Ml60MxceMTiYwcQ9SB+Ulo
+dn4xkooaaI2RruISDzN6Em2W7q/ZiVjfVwWhrxDE1qd1iuEBUkU=
+=uAOK
+-----END PGP SIGNATURE-----
+
+--Ka2dZUjXQSmmKKYg--

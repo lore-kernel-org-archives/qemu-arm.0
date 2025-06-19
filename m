@@ -1,154 +1,140 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp262359njc;
-        Thu, 19 Jun 2025 06:30:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW5InYneE6pMMXYuuHAA56DoRuJU4krnFHfEmJwl6UpEmmjMpaalAglv5dOv4NmXviP1QBFC9MmX8sfcQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGEwxCuMaNn4tVXycoWc208BgangDEzhhoAgSiV9+azm3BMF+81ORPUDXtCkMbT5XdM4aDK
-X-Received: by 2002:a05:620a:1a92:b0:7c7:739d:5cea with SMTP id af79cd13be357-7d3c6cda0dcmr3260071485a.35.1750339808532;
-        Thu, 19 Jun 2025 06:30:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750339808; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp331145njc;
+        Thu, 19 Jun 2025 08:15:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUnNiuXHsBqpuCxZYa6e2aHP+5w+5hc0mQt31XOW70ckemGsOd4CS01XVFDOnUy76Imbrv4ibxWaOXRJw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEVPce+fqZ/FsLUr8THh2xNgqUkOB3BNZuSdoODiM+rI3FhqEfvC6kMXbAmMQ96D8K6x5jj
+X-Received: by 2002:a05:622a:154:b0:476:8eb5:1669 with SMTP id d75a77b69052e-4a73c5d014amr324957891cf.32.1750346139364;
+        Thu, 19 Jun 2025 08:15:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750346139; cv=none;
         d=google.com; s=arc-20240605;
-        b=Iampca+uBXuTvK2qPLDrl14kTS87eQjmZ/rvB8LKG+Ikx5dfmZZ0eNpQzrvj+ZuOj0
-         +GLXODjZGRph7dDx2AUSQ7s7SgeowkAIT22E/uXCnBpHTE3dzvJZk20cud/1rTc1kgWM
-         j2fGXhQbSIi8b8K1CTZNsPh8h6enRbmHou2XMfKXk2JG5VfIGY/NU0TH5Gnu1dyqIFQ+
-         g25e0OAkWMW952ZeABe2xaqeWY8XkCM7eI83I/xbkfNwvjFb39QWg94Cmt8Ji4e5wbbf
-         TBr8wYtfEWfbr43yGtXjykQ0FJsiwxLZga2MbObJWTyIQ2Psg3fKn7N7jzOE2nmxHdut
-         g0og==
+        b=RqVzgAmhQVlEQ8WA77cy9pjBKyl6TXjEYNVqjZFTKJg2L6uxss0Y9OrHywM6fmDsAd
+         OAXuxEGj3FNupVHxzEm47PvQXqnrAo0P8soIcYVrHm9iFd5CMwshVLc8jV/DdH1QCy8L
+         vt2f9rGVXqiQby1QWFPlwrryyyOZzMbSznMdR5u4dws6DFCWjku9AmyDOeCV7nMCBB4a
+         fUrnySAzvOmjS4XD1z1QSHcV5L9nQri7thgXMbZEyfmaw4nJaN6XFQibg1w/FVky5J/L
+         d0ekb2gFFoI2q4qBcDzH4onKXlxfwBLq1Udm1hLr0mWV35yOwHGS3a7MReG3rVAF5B0X
+         exbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=e369BF/P5W53C1UtTP1YWy+iGdArJRFsp4iZMuaoBdw=;
-        fh=RJS1intwaYF8aKst8kgrY+YQxZJ0O+4o+ejml6ZjqJo=;
-        b=akA+ZonuzQBjRYPg1Uf7DHAoTPoA90oHAgoleVvApndGZCJRurmJ8UEvKU/MGzvRCY
-         BVnlHw0i4SfG9wIsDAmlMMl0G/i6EDy0dWH8D5JpaXtD9qY3FJE+siZBb+DFcj3/8P6k
-         evcbCEk7vyIIVxP7BDsClktrdiw/MJNZdSTyfak3FKqCSE/V7SYCkHSlkvTSy64hxdvF
-         +kbhKRfpe2VBxfxQz8tZRdxRgE5SAJ+GQaVZAohmFDFttdsCObltjTN1vJH3SE2e/7fU
-         F9LKCbGpNxyTCt/lUCDS6PZ8UEoA//+VQOX6yULG3eBKNoyTS8Bq3JE+ovdqVbjymQpB
-         JDVA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=QvcUB4yUJB1SD6RVv0eDSrRzlaQqRFyfQFi2+P2SIpg=;
+        fh=gIB+JsrqaGnqwkE145ZChtMCDKeVcpChcOMK2jdj2/g=;
+        b=JvSp6QjOaV+cYiy2mwPy6Xh8Q5056/T7yjWcLMh6+oCSRdrSwg6mHwTmGVJH44tgqT
+         HEhbn95sJPQi2nN3P0S/yzhpbViY9EqPutXZpNg7y+7K3xeqbjCzzL+yQWVXRJDVYjYX
+         0FrlO0UgWB3BCp862uuEdytxUfKFOrm5NezZkh8lhWMswI/W1bjJIuuejF+uNS+KTNBF
+         /4GhdXUrX873uMAZr7TdL3jz7aK4ryc+xNkQy5wIlVr+sUZnez7qhDsV7enW9n9MJNpF
+         AZQ082hH+dcE9XwqB6vHMzLh+BFREli3DQdyZRyEqCQyUStoPkUp0czXEHEsWFyxow8T
+         S2mA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f2NFKipd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@stwcx.xyz header.s=fm3 header.b=WHQYrBxr;
+       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=m6j8UvtH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3b8eaa5desi1692662785a.262.2025.06.19.06.30.08
+        by mx.google.com with ESMTPS id d75a77b69052e-4a778661bb0si413871cf.575.2025.06.19.08.15.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jun 2025 06:30:08 -0700 (PDT)
+        Thu, 19 Jun 2025 08:15:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f2NFKipd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@stwcx.xyz header.s=fm3 header.b=WHQYrBxr;
+       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=m6j8UvtH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uSFKt-0002kK-Ey; Thu, 19 Jun 2025 09:29:47 -0400
+	id 1uSGyu-0001Sk-Nu; Thu, 19 Jun 2025 11:15:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uSFKq-0002j4-Bw
- for qemu-arm@nongnu.org; Thu, 19 Jun 2025 09:29:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
+ id 1uSGyp-0001R8-Ls; Thu, 19 Jun 2025 11:15:07 -0400
+Received: from fout-a1-smtp.messagingengine.com ([103.168.172.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uSFKn-0007Es-95
- for qemu-arm@nongnu.org; Thu, 19 Jun 2025 09:29:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1750339779;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=e369BF/P5W53C1UtTP1YWy+iGdArJRFsp4iZMuaoBdw=;
- b=f2NFKipdKeVgWHa5pOacpxIgNGebRe1G8oQ+s0IP45v6nt1jDAdPCWbrWcXF/GQDPRbcO8
- 9xzoOldbSA5yWq0MUSdwlXGCz7lZM0Sq4NaQdIkaWcmQ/TPrlEGv3v7oYBE2ZgzcPsB5g8
- aKVV4GyClEMDGnZKhJEDOgaqL48R2bg=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-628-2Zjsp0QPMpWK0yig30u7bA-1; Thu, 19 Jun 2025 09:29:38 -0400
-X-MC-Unique: 2Zjsp0QPMpWK0yig30u7bA-1
-X-Mimecast-MFC-AGG-ID: 2Zjsp0QPMpWK0yig30u7bA_1750339777
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-43eed325461so5067245e9.3
- for <qemu-arm@nongnu.org>; Thu, 19 Jun 2025 06:29:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1750339777; x=1750944577;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=e369BF/P5W53C1UtTP1YWy+iGdArJRFsp4iZMuaoBdw=;
- b=RHEq9PCjH8AnNOuM06n67V9DowymCV5zRbTDwiBK8iVg/0TFxR/D5ifsFDlcjfRw/N
- wRC36wyhseAfrflrXalftZIQ8xenebJ+8gVi82yXS4332q254lcJzxYKEv+h9Vq5std0
- m12vSgGB5K+lmYoJetdFXnf5iYlyQ4hGP2eERS3xmuZpRHqVZphF2O+U799ONOTnDU8Q
- t+zeIRwlF98aq0QDTeJvUprN6y/FDQfNmahIj0hvVH8vxGRVLP3gEuW8LiDrmOgysXJo
- SGRbJCYVsxM39n8pJRxGS/rND3HV8cWpTlcc09NLyTOQ2Qu5kg9sL8gCwYVbVKCTCsFV
- 1+bQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVGFs5PVgQ5/++KfVJAazkLwieTsHyPQ8dwXSBYPVSREismeF9CkkBjcWlP5Vn4HUhG8HpRjZlMRw==@nongnu.org
-X-Gm-Message-State: AOJu0YxmANSw3F9FAozUMjWfnVfRCzOAUw9U2nPVzoaO/IeKLvLJSrfL
- Ann7ZmWeE3UKR2CWXLdAdJ9XGL4Qino9LL0tPzY2SFjKcAA88dHJYGJwwbpL2GhMwCvS05U43o8
- wQ2hgoNAdeLH4yECo0Gh9uc6umKtzAkBfttZanbjq2EESKXw4BgT4bQ==
-X-Gm-Gg: ASbGncugxKNgEQd1riSoGKaBfiqmeOsWAIuXv5u1C8LjaxWFrKXvfVYMkt/W0IfK3k5
- K/3UxcdnbFIb9eE1xIZIvxJ20+1++Pps8PI+1iXKdJaAtyeqBhkm57ggtd+YPISqqGPAZdf4T26
- mjFO2x2m2w47v3hCdNaAR/c77mmVXKjKZm+rrHreAd4fXCoosUA43ya+rTuSGbJCDQJKQOmkd78
- mL6EoPcf1S7ehA7sv2JQKZdtMO4Nu+1ZzYsvvByj/iCY/Dh2AvF/YmLeNLR1sTxessr5sG0gDL0
- KarsenF4qymOD4/11gLSyM6h0IXOZpSLe59QvIjQ9RX1D6KnvH54p76Iy4Krd/S4X6IFyg==
-X-Received: by 2002:a05:600c:5396:b0:43d:26e3:f2f6 with SMTP id
- 5b1f17b1804b1-4533cad1d17mr203936525e9.5.1750339776928; 
- Thu, 19 Jun 2025 06:29:36 -0700 (PDT)
-X-Received: by 2002:a05:600c:5396:b0:43d:26e3:f2f6 with SMTP id
- 5b1f17b1804b1-4533cad1d17mr203936245e9.5.1750339776423; 
- Thu, 19 Jun 2025 06:29:36 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45362b34f7esm6404805e9.25.2025.06.19.06.29.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Jun 2025 06:29:35 -0700 (PDT)
-Message-ID: <01ab0b6e-ccd5-4465-98c0-70b8ec2ac87a@redhat.com>
-Date: Thu, 19 Jun 2025 15:29:34 +0200
+ (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
+ id 1uSGym-0001Yf-JL; Thu, 19 Jun 2025 11:15:07 -0400
+Received: from phl-compute-08.internal (phl-compute-08.phl.internal
+ [10.202.2.48])
+ by mailfout.phl.internal (Postfix) with ESMTP id AF29D13804AC;
+ Thu, 19 Jun 2025 11:15:02 -0400 (EDT)
+Received: from phl-mailfrontend-02 ([10.202.2.163])
+ by phl-compute-08.internal (MEProxy); Thu, 19 Jun 2025 11:15:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=stwcx.xyz; h=cc
+ :cc:content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+ :to; s=fm3; t=1750346102; x=1750432502; bh=QvcUB4yUJB1SD6RVv0eDS
+ rRzlaQqRFyfQFi2+P2SIpg=; b=WHQYrBxrSxsFaLa7JZyG3xkpUMV7c49nW70Ac
+ Y2hOrZQe6SObNwl542n9d6ePHYuiJUVR4/vgY7jP31kpO9mHeRpzJdIV/pUMUr3A
+ zYEej1d4GBnIwIFImtIzANttMy8QRlFd1Murwx5Pyye0+11yNNVi6BHYwNmxXfgQ
+ 88CrFaFLZrrkHb097Nt8V/m6N1mRZZ/7ehnb6la47IX0XqZzwOtK6Zu9ec91Et+0
+ ZIo6EG+Ilf5Vg3lxnSMBbqCFt66LGO2BaAqVAw8pLLBrZQSah7Fwt9EpBBgMLtr5
+ hmPHlK6VC0Q6hpxP0N8DngBL713ez+jIhn62mmjXMDVvrG2mw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+ :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
+ 1750346102; x=1750432502; bh=QvcUB4yUJB1SD6RVv0eDSrRzlaQqRFyfQFi
+ 2+P2SIpg=; b=m6j8UvtHZCo3ywfOzIz9c/Jd5seZeXh/CculX82qCAUkNyAujf0
+ hvVFnwBL2IF53MN77/v8sgUQkqqN4+QfjWgIVdj8YIltCvX4wXIPjCAbmpZRfcJO
+ dXTnlpaW5pIh2DFv9x0j+5U/zLTUnCLenQFCovrNurQooq/7ZUPjr84uT8YykzSG
+ h7rJ/N0Rsb4DwMt22d69FpWj2l6Y9kCPmKwMJyE3U/CEO1W5MchgBZyyLjZ3eMJb
+ OjkPStzX//PEjpOcyPxhatN+w4vr/hbP/Ooz6VCt2IvRJGmbJAdAqAVKWxWxB/7G
+ kC3SPuxqNCM1dIGY6dRzE9x0KdN4EN1WmGg==
+X-ME-Sender: <xms:dClUaNstDNi1Txps78RVRAbboVu7MrHyHO3WuopokW22vgCsxvm-Vw>
+ <xme:dClUaGdkPGZBKGilNCxOoPjqhevma31PBkAjkk4bK59C6QG7v-aR9gr7gwT1QGOBa
+ 3p7HC51Tbyjopehvhg>
+X-ME-Received: <xmr:dClUaAyiP6LnQBsvUJrEf8jzbz1NBy_RBzXHzx6nWQ1Bor9Y0JT6XYmQlRw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddvgdehkeehucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceurghi
+ lhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnegfrhhluc
+ fvnfffucdlfeehmdenucfjughrpefhvfevufffkffoggfgsedtkeertdertddtnecuhfhr
+ ohhmpefrrghtrhhitghkucghihhllhhirghmshcuoehprghtrhhitghksehsthiftgigrd
+ ighiiiqeenucggtffrrghtthgvrhhnpedttdevtdegfefggeeuheekgfevkefgteehhedv
+ tdekkeefiedutdfhtdffgffhhfenucffohhmrghinhepghhithhhuhgsrdgtohhmnecuve
+ hluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepphgrthhrihgt
+ khesshhtfigtgidrgiihiidpnhgspghrtghpthhtohepuddupdhmohguvgepshhmthhpoh
+ huthdprhgtphhtthhopehpsghonhiiihhnihesrhgvughhrghtrdgtohhmpdhrtghpthht
+ ohepphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdhrtghpthhtoheptg
+ hlgheskhgrohgurdhorhhgpdhrtghpthhtohepshhtvghvvghnpghlvggvsegrshhpvggv
+ ughtvggthhdrtghomhdprhgtphhtthhopehlvggvthhrohihsehgmhgrihhlrdgtohhmpd
+ hrtghpthhtohepjhgrmhhinhgplhhinhesrghsphgvvgguthgvtghhrdgtohhmpdhrtghp
+ thhtoheprghnughrvgifsegtohguvggtohhnshhtrhhutghtrdgtohhmrdgruhdprhgtph
+ htthhopehjohgvlhesjhhmshdrihgurdgruhdprhgtphhtthhopehprghtrhhitghksehs
+ thiftgigrdighiii
+X-ME-Proxy: <xmx:dClUaEMzolBB-DS1gr_sQSnf329RAhxr1bTZsTVkhFYHGFjDoaQ70A>
+ <xmx:dClUaN_JJae4LGv9pF22FioiTQSTGHBnArfyCBFCOMi7ENvgm_exvw>
+ <xmx:dClUaEXq7xrMb3oDdw-q37-nI3evSW5By5vRjP3AZGcWjI6GQgTNsg>
+ <xmx:dClUaOdO2kSRpBgkLAxsc8JSxvTcxQRPO6iIW4h-1ltLnzkOOKnpwQ>
+ <xmx:dilUaHjFTqBUdBCsJZqIjjJ6hic7WRv5CpFHzck7F7lzoXeloGhCIxFF>
+Feedback-ID: i68a1478a:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 19 Jun 2025 11:14:59 -0400 (EDT)
+From: Patrick Williams <patrick@stwcx.xyz>
+To: Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+Cc: Patrick Williams <patrick@stwcx.xyz>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: [PATCH v2] hw/arm/aspeed: add Catalina machine type
+Date: Thu, 19 Jun 2025 11:14:58 -0400
+Message-ID: <20250619151458.2831859-1-patrick@stwcx.xyz>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 5/5] hw/arm/virt: Allow virt extensions with KVM
-To: Miguel Luis <miguel.luis@oracle.com>
-Cc: Alyssa Ross <hi@alyssa.is>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "maz@kernel.org" <maz@kernel.org>,
- "gkulkarni@amperecomputing.com" <gkulkarni@amperecomputing.com>,
- "gankulkarni@os.amperecomputing.com" <gankulkarni@os.amperecomputing.com>
-References: <20250527062534.1186004-1-eric.auger@redhat.com>
- <20250527062534.1186004-6-eric.auger@redhat.com> <875xgutpuh.fsf@alyssa.is>
- <D3582F3A-B07A-4F05-827C-B030617B77EA@oracle.com>
- <efd4cb44-3d63-43b5-9568-1263ccf7566a@redhat.com>
- <0EA149E9-D637-4BC0-A10F-7B896581A914@oracle.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <0EA149E9-D637-4BC0-A10F-7B896581A914@oracle.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: rGil4kncQehkKcSmrPTVyhOZGCUVB-E50A_Pap5Z2Nw_1750339777
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.897,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Received-SPF: pass client-ip=103.168.172.144; envelope-from=patrick@stwcx.xyz;
+ helo=fout-a1-smtp.messagingengine.com
+X-Spam_score_int: 17
+X-Spam_score: 1.7
+X-Spam_bar: +
+X-Spam_report: (1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FROM_SUSPICIOUS_NTLD=0.499,
+ FROM_SUSPICIOUS_NTLD_FP=1.999, PDS_OTHER_BAD_TLD=1.999, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -161,116 +147,328 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aonCsbLjYA81
+X-TUID: ShR1/o12ARrI
 
-Hi,
+Add the 'catalina-bmc' machine type based on the kernel DTS[1] as of
+6.16-rc2.  The i2c model is as complete as the current QEMU models
+support, but in some cases I substituted devices that are close enough
+for present functionality.  Strap registers are were verified with
+hardware.
 
-On 6/17/25 5:50 PM, Miguel Luis wrote:
-> Hi Eric,
->
->> On 17 Jun 2025, at 15:41, Eric Auger <eric.auger@redhat.com> wrote:
->>
->>
->>
->> On 6/17/25 5:23 PM, Miguel Luis wrote:
->>> Hi Alyssa,
->>>
->>>> On 17 Jun 2025, at 14:17, Alyssa Ross <hi@alyssa.is> wrote:
->>>>
->>>> Eric Auger <eric.auger@redhat.com> writes:
->>>>
->>>>> From: Haibo Xu <haibo.xu@linaro.org>
->>>>>
->>>>> Up to now virt support on guest has been only supported with TCG.
->>>>> Now it becomes feasible to use it with KVM acceleration.
->>>>>
->>>>> Also check only in-kernel GICv3 is used along with KVM EL2.
->>>>>
->>>>> Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
->>>>> Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
->>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->>>> Hi!  From what I can tell, this will produce an error on hosts that
->>>> don't support nested virtualization when QEMU is invoked with -accel
->>>> kvm:tcg
->>> I didn’t know '-acell kvm:tcg’ could be used as a fallback mechanism between
->>> acceleration modes. May I ask whether do you manage the ‘-cpu’ type for ‘-accel
->>> kvm:tcg’ with cpu ‘max’ ?
->> Does it exist?
->> qemu-system-aarch64: -accel kvm:tcg: invalid accelerator kvm:tcg
-> Maybe Alyssa is referring to ‘-M virt,accel=kvm:tcg,virtualization=on,gic-version=3’ ?
->
-> The above didn’t triggered any error. Anyhow if the above does what Alyssa’s saying 
-> we would just be missing the check for || !tcg_enabled() in this patch, I believe.
+This has been tested with an openbmc image built from [2].
 
-After discussion with Paolo, the lack of the CAP should be detected
-earlier in kvm_init/kvm_arch_init to allow the fallback to TCG.
-in target/arm/kvm.c kvm_arch_init() some generic caps are checked but
-none of them are related to machine settings and this code is virt arm
-machine agnostic.
+Add a functional test in line with Bletchley, pointing at an image
+obtained from the OpenBMC Jenkins server.
 
-I checked and adding
+[1]: https://github.com/torvalds/linux/blob/v6.16-rc2/arch/arm/boot/dts/aspeed/aspeed-bmc-facebook-catalina.dts
+[2]: https://github.com/openbmc/openbmc/commit/5bc73ec261f981d5e586bda5ac78eb0cbd5f92b0
 
-    if (object_dynamic_cast(OBJECT(ms), TYPE_VIRT_MACHINE)) {
-        VirtMachineState *vms = VIRT_MACHINE(ms);
+Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
+---
+ hw/arm/Kconfig                               |   1 +
+ hw/arm/aspeed.c                              | 200 +++++++++++++++++++
+ tests/functional/meson.build                 |   2 +
+ tests/functional/test_arm_aspeed_catalina.py |  25 +++
+ 4 files changed, 228 insertions(+)
+ create mode 100755 tests/functional/test_arm_aspeed_catalina.py
 
-        if (vms->virt && !kvm_arm_el2_supported()) {
-            error_report("KVM does not support nested virtualization");
-            ret = -EINVAL;
-        }
-    }
-
-at the end of the function would do the job. But as I said previously
-this is not done for other virt arm machine options that are accel
-specific or require special KVM caps (secure, mte for instance) so it
-would be a change in the approach.
-
-As pointed out before fallback spirit was rather: "KVM isn't enabled"
-than for "KVM doesn't support a specific feature".
-
-Thanks
-
-Eric
-
-
-
-
-it's purely the first accelerator that says it can work
-1:03
-<https://redhat-internal.slack.com/archives/C04KFKV2SE9/p1750331005242709>
-pbonzini
-Where "can work" is only based on the host.
-
-
->
-> Miguel
->
->> Alyssa, didn't you mean -accel kvm or --accel tcg
->>> But more importantly, is this what you’re referring to?
->>>
->>> Although,
->>>
->>>> -machine virtualization=on,
->>> should work for both '-accel kvm’ and ‘-accel tcg’.
->>>
->>>> but I don't think that's the ideal
->>>> behaviour.  It would make more sense for it to fall back to the first
->>>> permitted accel option that does support running the machine as
->>>> configured, so if hardware nested virtualization is not supported, it
->>>> should fall back to TCG.
->>>>
->>>> I maintain an OS development environment that includes scripts for
->>>> running images in QEMU, where running KVM on those images is a
->>>> requirement.  Currently, those scripts simply force TCG on aarch64.
->>>> With this change, to take advantage of KVM NV support, I'd have to try
->>>> to identify in the script whether NV would be supported.  QEMU would be
->>>> in a much better position to determine this and fall back to TCG if it's
->>>> unsupported, like how the -accel option with multiple values usually
->>>> works.
->>> Thanks,
->>> Miguel
->
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index f543d944c3..6ea86534d5 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -532,6 +532,7 @@ config ASPEED_SOC
+     select I2C
+     select DPS310
+     select PCA9552
++    select PCA9554
+     select SERIAL_MM
+     select SMBUS_EEPROM
+     select PCA954X
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index d0b333646e..b0965ef8a0 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -19,6 +19,7 @@
+ #include "hw/i2c/i2c_mux_pca954x.h"
+ #include "hw/i2c/smbus_eeprom.h"
+ #include "hw/gpio/pca9552.h"
++#include "hw/gpio/pca9554.h"
+ #include "hw/nvram/eeprom_at24c.h"
+ #include "hw/sensor/tmp105.h"
+ #include "hw/misc/led.h"
+@@ -1003,6 +1004,180 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+ }
+ 
+ #define TYPE_TMP421 "tmp421"
++#define TYPE_DS1338 "ds1338"
++
++/* Catalina hardware value */
++#define CATALINA_BMC_HW_STRAP1 0x00002002
++#define CATALINA_BMC_HW_STRAP2 0x00000800
++
++#define CATALINA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
++
++static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
++{
++    /* Reference from v6.16-rc2 aspeed-bmc-facebook-catalina.dts */
++
++    AspeedSoCState *soc = bmc->soc;
++    I2CBus *i2c[16] = {};
++    I2CSlave *i2c_mux;
++
++    /* busses 0-15 are all used. */
++    for (int i = 0; i < ARRAY_SIZE(i2c); i++) {
++        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
++    }
++
++    /* &i2c0 */
++    /* i2c-mux@71 (PCA9546) on i2c0 */
++    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x71);
++
++    /* i2c-mux@72 (PCA9546) on i2c0 */
++    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x72);
++
++    /* i2c0mux1ch1 */
++    /* io_expander7 - pca9535@20 */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
++                            TYPE_PCA9552, 0x20);
++    /* eeprom@50 */
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB);
++
++    /* i2c-mux@73 (PCA9546) on i2c0 */
++    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x73);
++
++    /* i2c-mux@75 (PCA9546) on i2c0 */
++    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x75);
++
++    /* i2c-mux@76 (PCA9546) on i2c0 */
++    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x76);
++
++    /* i2c0mux4ch1 */
++    /* io_expander8 - pca9535@21 */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
++                            TYPE_PCA9552, 0x21);
++    /* eeprom@50 */
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB);
++
++    /* i2c-mux@77 (PCA9546) on i2c0 */
++    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x77);
++
++
++    /* &i2c1 */
++    /* i2c-mux@70 (PCA9548) on i2c1 */
++    i2c_mux = i2c_slave_create_simple(i2c[1], TYPE_PCA9548, 0x70);
++    /* i2c1mux0ch0 */
++    /* ina238@41 - no model */
++    /* ina238@42 - no model */
++    /* ina238@44 - no model */
++    /* i2c1mux0ch1 */
++    /* ina238@41 - no model */
++    /* ina238@43 - no model */
++    /* i2c1mux0ch4 */
++    /* ltc4287@42 - no model */
++    /* ltc4287@43 - no model */
++
++    /* i2c1mux0ch5 */
++    /* eeprom@54 */
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 5), 0x54, 8 * KiB);
++    /* tpm75@4f */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), TYPE_TMP75, 0x4f);
++
++    /* i2c1mux0ch6 */
++    /* io_expander5 - pca9554@27 */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6),
++                            TYPE_PCA9554, 0x27);
++    /* io_expander6 - pca9555@25 */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6),
++                            TYPE_PCA9552, 0x25);
++    /* eeprom@51 */
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 6), 0x51, 8 * KiB);
++
++    /* i2c1mux0ch7 */
++    /* eeprom@53 */
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 7), 0x53, 8 * KiB);
++    /* temperature-sensor@4b - tmp75 */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 7), TYPE_TMP75, 0x4b);
++
++    /* &i2c2 */
++    /* io_expander0 - pca9555@20 */
++    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x20);
++    /* io_expander0 - pca9555@21 */
++    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x21);
++    /* io_expander0 - pca9555@27 */
++    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x27);
++    /* eeprom@50 */
++    at24c_eeprom_init(i2c[2], 0x50, 8 * KiB);
++    /* eeprom@51 */
++    at24c_eeprom_init(i2c[2], 0x51, 8 * KiB);
++
++    /* &i2c5 */
++    /* i2c-mux@70 (PCA9548) on i2c5 */
++    i2c_mux = i2c_slave_create_simple(i2c[5], TYPE_PCA9548, 0x70);
++    /* i2c5mux0ch6 */
++    /* eeprom@52 */
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 6), 0x52, 8 * KiB);
++    /* i2c5mux0ch7 */
++    /* ina230@40 - no model */
++    /* ina230@41 - no model */
++    /* ina230@44 - no model */
++    /* ina230@45 - no model */
++
++    /* &i2c6 */
++    /* io_expander3 - pca9555@21 */
++    i2c_slave_create_simple(i2c[6], TYPE_PCA9552, 0x21);
++    /* rtc@6f - nct3018y */
++    i2c_slave_create_simple(i2c[6], TYPE_DS1338, 0x6f);
++
++    /* &i2c9 */
++    /* io_expander4 - pca9555@4f */
++    i2c_slave_create_simple(i2c[9], TYPE_PCA9552, 0x4f);
++    /* temperature-sensor@4b - tpm75 */
++    i2c_slave_create_simple(i2c[9], TYPE_TMP75, 0x4b);
++    /* eeprom@50 */
++    at24c_eeprom_init(i2c[9], 0x50, 8 * KiB);
++    /* eeprom@56 */
++    at24c_eeprom_init(i2c[9], 0x56, 8 * KiB);
++
++    /* &i2c10 */
++    /* temperature-sensor@1f - tpm421 */
++    i2c_slave_create_simple(i2c[10], TYPE_TMP421, 0x1f);
++    /* eeprom@50 */
++    at24c_eeprom_init(i2c[10], 0x50, 8 * KiB);
++
++    /* &i2c11 */
++    /* ssif-bmc@10 - no model */
++
++    /* &i2c12 */
++    /* eeprom@50 */
++    at24c_eeprom_init(i2c[12], 0x50, 8 * KiB);
++
++    /* &i2c13 */
++    /* eeprom@50 */
++    at24c_eeprom_init(i2c[13], 0x50, 8 * KiB);
++    /* eeprom@54 */
++    at24c_eeprom_init(i2c[13], 0x54, 256);
++    /* eeprom@55 */
++    at24c_eeprom_init(i2c[13], 0x55, 256);
++    /* eeprom@57 */
++    at24c_eeprom_init(i2c[13], 0x57, 256);
++
++    /* &i2c14 */
++    /* io_expander9 - pca9555@10 */
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x10);
++    /* io_expander10 - pca9555@11 */
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x11);
++    /* io_expander11 - pca9555@12 */
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x12);
++    /* io_expander12 - pca9555@13 */
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x13);
++    /* io_expander13 - pca9555@14 */
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x14);
++    /* io_expander14 - pca9555@15 */
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x15);
++
++    /* &i2c15 */
++    /* temperature-sensor@1f - tmp421 */
++    i2c_slave_create_simple(i2c[15], TYPE_TMP421, 0x1f);
++    /* eeprom@52 */
++    at24c_eeprom_init(i2c[15], 0x52, 8 * KiB);
++}
+ 
+ static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+@@ -1585,6 +1760,27 @@ static void aspeed_machine_bletchley_class_init(ObjectClass *oc,
+     aspeed_machine_class_init_cpus_defaults(mc);
+ }
+ 
++static void aspeed_machine_catalina_class_init(ObjectClass *oc,
++                                               const void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Facebook Catalina BMC (Cortex-A7)";
++    amc->soc_name  = "ast2600-a3";
++    amc->hw_strap1 = CATALINA_BMC_HW_STRAP1;
++    amc->hw_strap2 = CATALINA_BMC_HW_STRAP2;
++    amc->fmc_model = "w25q01jvq";
++    amc->spi_model = NULL;
++    amc->num_cs    = 2;
++    amc->macs_mask = ASPEED_MAC2_ON;
++    amc->i2c_init  = catalina_bmc_i2c_init;
++    mc->auto_create_sdcard = true;
++    mc->default_ram_size = CATALINA_BMC_RAM_SIZE;
++    aspeed_machine_class_init_cpus_defaults(mc);
++    aspeed_machine_ast2600_class_emmc_init(oc);
++}
++
+ static void fby35_reset(MachineState *state, ResetType type)
+ {
+     AspeedMachineState *bmc = ASPEED_MACHINE(state);
+@@ -1877,6 +2073,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("bletchley-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_bletchley_class_init,
++    }, {
++        .name          = MACHINE_TYPE_NAME("catalina-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_catalina_class_init,
+     }, {
+         .name          = MACHINE_TYPE_NAME("fby35-bmc"),
+         .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index e9f19d54a2..11c32a8529 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -31,6 +31,7 @@ test_timeouts = {
+   'arm_aspeed_ast2500' : 720,
+   'arm_aspeed_ast2600' : 1200,
+   'arm_aspeed_bletchley' : 480,
++  'arm_aspeed_catalina' : 480,
+   'arm_aspeed_rainier' : 480,
+   'arm_bpim2u' : 500,
+   'arm_collie' : 180,
+@@ -124,6 +125,7 @@ tests_arm_system_thorough = [
+   'arm_aspeed_ast2500',
+   'arm_aspeed_ast2600',
+   'arm_aspeed_bletchley',
++  'arm_aspeed_catalina',
+   'arm_aspeed_rainier',
+   'arm_bpim2u',
+   'arm_canona1100',
+diff --git a/tests/functional/test_arm_aspeed_catalina.py b/tests/functional/test_arm_aspeed_catalina.py
+new file mode 100755
+index 0000000000..dc2f24e7b4
+--- /dev/null
++++ b/tests/functional/test_arm_aspeed_catalina.py
+@@ -0,0 +1,25 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots the ASPEED machines
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import Asset
++from aspeed import AspeedTest
++
++
++class CatalinaMachine(AspeedTest):
++
++    ASSET_CATALINA_FLASH = Asset(
++        'https://github.com/legoater/qemu-aspeed-boot/raw/a866feb5ef81245b4827a214584bf6bcc72939f6/images/catalina-bmc/obmc-phosphor-image-catalina-20250619123021.static.mtd.xz',
++        '287402e1ba021991e06be1d098f509444a02a3d81a73a932f66528b159e864f9')
++
++    def test_arm_ast2600_catalina_openbmc(self):
++        image_path = self.uncompress(self.ASSET_CATALINA_FLASH)
++
++        self.do_test_arm_aspeed_openbmc('catalina-bmc', image=image_path,
++                                        uboot='2019.04', cpu_id='0xf00',
++                                        soc='AST2600 rev A3')
++
++if __name__ == '__main__':
++    AspeedTest.main()
+-- 
+2.49.0
 

@@ -1,196 +1,227 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp307398njc;
-        Thu, 19 Jun 2025 07:40:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWnCjO8INTQe+5qHjG03jqbks5d1gSCto+Sj9KDPSmV3MswWCJA9+Lj+rUOFSrqpaCDQSJ6ERjidBauHg==@linaro.org
-X-Google-Smtp-Source: AGHT+IF5EMgNGyE7CcNChJ7dQ6rVMNNOMOLhkS6fkg8R5KnPmZXMXa4x+xFDaOv/m66QSJsGZmtG
-X-Received: by 2002:a05:6602:3688:b0:85b:476e:ede2 with SMTP id ca18e2360f4ac-875deddf14amr2556035439f.13.1750344046355;
-        Thu, 19 Jun 2025 07:40:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750344046; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp314881njc;
+        Thu, 19 Jun 2025 07:54:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVMFSabnoNnTBFZYlFlFFkhmXxkyvrpbFbX2sBxac99LsLKkHp48jwvYb+oGeHHrSomlS5o9qKrlTxDyA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHEKJC73g3os3MClUF4vs1R2iN9nKrOa2EZQuhcUv6Ing4qpWNMN3GsZm3P3ExWXcCNOAJK
+X-Received: by 2002:a05:620a:4547:b0:7d3:9ba1:a044 with SMTP id af79cd13be357-7d3c6cdc736mr3029784985a.33.1750344890161;
+        Thu, 19 Jun 2025 07:54:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750344890; cv=none;
         d=google.com; s=arc-20240605;
-        b=YwVjih0KfufwH/Gbb5Ad3/RouhWw4UVlZvRnQensD8HtGx1nJzneFIjC338Oi+LDEZ
-         c3sC4nUP0VWDPgfw/TPJ/4hV9381DkCcoNN4+7Wjptsce/G4ZexojUFnjNR2F3G25rEB
-         j/6lucHDIYKazFFBuhStjidVa+UgbEJfJqvh0b7waJz/lLMpaexBmDOHP//ROTmFx/y+
-         bSs1pJM1e8iEqmNKYqErZweC65/jQ7N1G9fJDtQlkpDl4exMPwyotvT04mvDdAQL/ioi
-         0SnZoybmn22qxojTV9R3MviG7SnmW7uVvGl7OwPSKBNwgBae5m78+Jq+av6PmLGOk8N+
-         N+wA==
+        b=Qk+cXejT8NInEj4rMfHBscR/tAKJMxgCEJnEo7WVLhKsPr2+8Y/qc6uzY+V/ggjH6v
+         Kjo6BG/RDOwSF6YEmyCCjhiqxfgXNDkwq9VeVvTfl3WSygGTW/X/hyI84yjqnDp2jm3o
+         RboJTa4H5uhUiRAryW+qoskBYZTfi4UO6pUG8LxwMm7WfPPVuFh7rcYnebO2d3B3j1B1
+         WsIFvzqX5kQpM0+bmPXdpiE+CJjNt8YHMSrMLhKnoN9qMI7DNNZCgIvQ0K33J5MHiAzq
+         sr6Dv3CSYAzYzZ1hnCtrX60bibPRmxKoipA/AIZ/OTq4qoF1hSTP2UynaMsALNt8gx/j
+         z0lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=7egzB71KgEy6DGRuLUQB30VjVlUozKtUHQPa0vK6/jc=;
-        fh=uoSWicanPyAED6VUqbI1CmUjAda9d1Q7E+MNyaaV7eU=;
-        b=CN8hmxttHuf4YKfdglV35jd5gI+3pXZ1eZePMz8vnSOjG+N32RmmFXnohM0z4F1zdj
-         E4nAIJp+iX45mTbtIWHxtt53strR6M27zhwjxxi8RlkRBR0sek+dwhIuNhQisfQVNFd4
-         KQgjsFqqzEtoYSDfkOQGuAGwAUiO/N2mG51hQ/a+he60daY/S4A7tBkoLSnIvTsOpHM4
-         rwdqQyy4iDxRJHoWr8fWor2+P/vVQpMXLTkK1IenNPFeR9qfpymNi0dLLOqP6SHVVDvL
-         swO/UICpNHvRNt2Hw6xLWdJfe87MzZwImRNaDlGM5XNdtUHQOnfNEX+QlS0plvzeR+fn
-         Ro+g==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=eak0OZ1v1XW00XZMJ/aMzb0NE0RwdLT7+UVeEZBSXc4=;
+        fh=Bb9qtU45juambGsHk23qln+hdsEeBKM/vU8sdSn9okA=;
+        b=TAart63vg+RolJxBYJuJEfts3KFqxAiT2s4DxErgAIBiUy4nEP/su8jmWOCFba4Oeq
+         jGiQk2gw24mtXxE+8Yg9+I+dHHOKdMQsKBL7rSXk2QbPtFoYGGulXaxzj8zqOoAK227K
+         4vHu2gNvSqnjHOjnzT3gKECbSGj+8LttisGouzrfCngRLp9ejYJtCprnU72iPQ5y5KfW
+         DlbSmuNH7cqezA0WUfuT/L5RhHc/KPwF8ZWRZR7poQRnNqC/YlmIHt6nwi4CK5y082+y
+         EtFV8Zm9Tp6ywGYziIMLkm3rGNTaUQ/V1qL24cVMiwJ/1wnQ10/174H9JzauRqlCqSGm
+         cBjQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@qualcomm.com header.s=qcppdkim1 header.b="Eym/o2RZ";
-       spf=pass (google.com: domain of leif.lindholm@oss.qualcomm.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=leif.lindholm@oss.qualcomm.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=qualcomm.com
-Return-Path: <leif.lindholm@oss.qualcomm.com>
-Received: from mx0a-0031df01.pphosted.com (mx0a-0031df01.pphosted.com. [205.220.168.131])
-        by mx.google.com with ESMTPS id ca18e2360f4ac-87629f605fdsi23624139f.87.2025.06.19.07.40.46
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dtEqm2Wj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3f8ded67asi8137185a.159.2025.06.19.07.54.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Jun 2025 07:40:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of leif.lindholm@oss.qualcomm.com designates 205.220.168.131 as permitted sender) client-ip=205.220.168.131;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 19 Jun 2025 07:54:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@qualcomm.com header.s=qcppdkim1 header.b="Eym/o2RZ";
-       spf=pass (google.com: domain of leif.lindholm@oss.qualcomm.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=leif.lindholm@oss.qualcomm.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=qualcomm.com
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 55J6qwGl027542
-	for <alex.bennee@linaro.org>; Thu, 19 Jun 2025 14:40:45 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	7egzB71KgEy6DGRuLUQB30VjVlUozKtUHQPa0vK6/jc=; b=Eym/o2RZ0ceaaGSF
-	OHq+HWS4+FY0fSWoLjmA811sZi1sPsa62Njr/c9oagBEr9UBJEiM3v2+OLqqzJjq
-	bSkpGvVwzCixhmxcsQpDxNMD8H8pMp5cARviIt9nPmIE6vzda28iZtQ5meI5/Xyx
-	mn7hvMyFv+sz2zTFrXI7C2Ud3hR9dPYtugvBcHuBvOv2y/MtL5No2ii2NrAvC2Ob
-	IVsMa97oAR1ibKMW4bHc13DCKJyF+NLhJDWtw0TFhxjyKC2OmtBD5Yi78hX2PQUp
-	IO6YEYLbmeKoGNWoOFabnIut8UWG7H085vE10IJmIYdwxBpmo8SegvL589tH048u
-	aolfEw==
-Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com [209.85.214.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4791hd8ds2-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <alex.bennee@linaro.org>; Thu, 19 Jun 2025 14:40:45 +0000 (GMT)
-Received: by mail-pl1-f200.google.com with SMTP id d9443c01a7336-234906c5e29so12513525ad.0
-        for <alex.bennee@linaro.org>; Thu, 19 Jun 2025 07:40:45 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dtEqm2Wj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uSGeg-000427-KV; Thu, 19 Jun 2025 10:54:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <leetroy@gmail.com>)
+ id 1uSGee-00041Q-38; Thu, 19 Jun 2025 10:54:16 -0400
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <leetroy@gmail.com>)
+ id 1uSGec-0006nn-9K; Thu, 19 Jun 2025 10:54:15 -0400
+Received: by mail-pj1-x102e.google.com with SMTP id
+ 98e67ed59e1d1-313f928718eso622200a91.0; 
+ Thu, 19 Jun 2025 07:54:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1750344852; x=1750949652; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=eak0OZ1v1XW00XZMJ/aMzb0NE0RwdLT7+UVeEZBSXc4=;
+ b=dtEqm2WjtWcsR8Vm02A7+XgGag5Xyc2pZyfMtk3dOVX75SDuZrHsyyLCKQFZGsPd+0
+ KT7iRM4S3c9OOEulhlsMr3/u57RoCSnEMF35cYxsnynv5kKfKumvdMrPSMz9ekF/osul
+ 6RXE9PvB1FEr/0GZdxFs7oECVR/Ec0eet+Z6xNSx/Th5yuLSOJZDPQZn76NEVom8+V82
+ B3VgAjeMnMIDDCQoMSsjOvdL8mCOKlf+igpmETUfJXz1ezD9aJhbaUwn6GmcS+Wni3n5
+ hnKu6f+cyeMq42JVb3Y1h7ljTvV2cBjNmnnvyjCVV9ZViBXWzoIVX7f7r7AJfg2kgCa9
+ wtww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750344044; x=1750948844;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7egzB71KgEy6DGRuLUQB30VjVlUozKtUHQPa0vK6/jc=;
-        b=WvTc7FV4a7DgSdG9n0SBi4wrM5Kx33jlummGAnUa1MPAnfDC38BPjy7dX7WNc1iEsX
-         q4omvt+2Ywz3hwK/+OkyVH9FgLUhaWsEWmGB4FFUaTjlZdDq+o6s5nuNybfTBjdETllz
-         UC4VDEYP+ETjYhk4BqNq380o+7lrsI5SwFIJQlA3mqGa5I9/AF7irSkaFSH0QlGwdOVO
-         XigeHCaoiO5EDFra5+JLehtIijKyW2ojX+39JJ0YK44uHQGJV0HmPmxgl6sooWeFAOVq
-         fzpMrZHFLgKZrKX2e2Yr+D78YJcZVlHUD6mvbtd/IsHnl7+vg1izpRhOxiGdKmeuyzHS
-         vzPg==
-X-Forwarded-Encrypted: i=1; AJvYcCW6uBHhwNSq3T/yxR+iOQ0NgJYUyYdLpIYg9F3zXLu5YfEvlcX+1CibxVCp0dY4vjmVEFk3cdy/cFVwZg==@linaro.org
-X-Gm-Message-State: AOJu0YymDZ7bAb97YKBgR3Hwhxzj/dJIHM/2x2IGqqvz8+rXhiTMYNfE
-	1U/5w7dYFs54CtPh/bcNvQxxJXLzmfcqJ7l5x5FFeTiMoScNMDsKVutfqflBItC0k3XAsh3pRnF
-	Tuy5dW5vKPXPSTqy6CRO+0IwaTrIFZNQBhp5czZlCH7NA2b2rklbgQSUXDGRWfgXKYurX+jpZci
-	vQkgtZv5lPEG70qom/DHxJHVJKPhyH8sPqSQ==
-X-Gm-Gg: ASbGncviqO6ZvxP8Q0zN0luizCGf1M+hpkKvWSh0wA0qhgtmp1zD4RyfwoH91+gNmSB
-	tEM+M4tupSQD5QFfCokxS4JM3kJ7AQrsUqAi+GhnsfiyUfTSk7eDckX6ITb7t/nHG+zOI6LE7+/
-	loteQ/mJDIncYD+1AHDBoQVRf41HZdu8FOak6e
-X-Received: by 2002:a17:902:ccc8:b0:234:eb6:a35d with SMTP id d9443c01a7336-2366b136680mr324320635ad.27.1750344044514;
-        Thu, 19 Jun 2025 07:40:44 -0700 (PDT)
-X-Received: by 2002:a17:902:ccc8:b0:234:eb6:a35d with SMTP id
- d9443c01a7336-2366b136680mr324320115ad.27.1750344044055; Thu, 19 Jun 2025
- 07:40:44 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1750344852; x=1750949652;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=eak0OZ1v1XW00XZMJ/aMzb0NE0RwdLT7+UVeEZBSXc4=;
+ b=lOjFzaNgIZ+PQAzRAM4BDT7jYyIGefsYCwsS5YdjJUJFS33OpdzRRM3XkgdMn2FhfR
+ fkM/wEDgaEDWpxgErJR4oILTTkhio4c/n68gw+DiZjQav4AxKj5fpbSB/DbBeV8XA5sU
+ dDrQMw2TdaooUCL2yVn7Pu2wAPvXTMSA1OLzfoFUxF9fNnf9iLvRR1cx457T7vV8qvmU
+ D+iUqibqaXzzo0dknnPd3BzDe3EehmdZnXaG1eI9TCCSckXFj8baJIuUwfCO0dZcDzz0
+ V3ru030tBmJLpOmPq3JBVrnoQYjIb9U5x1BIF3VWKIT/XxruOB/coYgMpIBeb+L0U0aj
+ C4Fg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXR0DOM2k2cPthlFWsZsMlzmwczu6HB+mgBKyQbbtDQKB+LLk2pssa82FKYSFesL2Ar5IcBRBkKk7nj@nongnu.org
+X-Gm-Message-State: AOJu0Yxxrd1EpHcRbhTWqQdoxVMk6lgf74rxL2oFnj9ZJCzaoYES+zX8
+ zQEvN92pmSlkefjmmKg869TDczHPMpqd3oZvc+ThNryWvbUn1oj9fx0Mk1zgbq9yDB/3n3AcPXs
+ 2nKCRsqW2Z+eVCvTpeX2qAGMThT5mTy8=
+X-Gm-Gg: ASbGncvSIfHY8sB2Ph0DM02yyvbQe6Hk/c9fZGP/p7Hw/tz6TbGu17uETcVNpSlTj3f
+ cFeI69Tf5TY5MgHziTeF44ltD/arYtd7w6OnHUHuB3Vp+0Raa0xYDVyJ4whpaycQi+6yq9XxOfh
+ 5u+M5Qdw9mNfUV6wO7UwyMJ2oeL294aIWFLCNzV/FvGElrJX7GoKZOlgs=
+X-Received: by 2002:a17:90b:3b4e:b0:312:e618:bd53 with SMTP id
+ 98e67ed59e1d1-313f1ce2b77mr25890209a91.26.1750344851685; Thu, 19 Jun 2025
+ 07:54:11 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250619131319.47301-1-philmd@linaro.org> <20250619131319.47301-21-philmd@linaro.org>
- <CAPMQPEJTTa4NiEvj9pmrubyn3dTB=13PW6scive=nfAGVtqMHw@mail.gmail.com>
-In-Reply-To: <CAPMQPEJTTa4NiEvj9pmrubyn3dTB=13PW6scive=nfAGVtqMHw@mail.gmail.com>
-From: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
-Date: Thu, 19 Jun 2025 15:40:32 +0100
-X-Gm-Features: AX0GCFtwtN7llzon1ANpJ2JjGfFA9AlqnSbO4UehnDWWNXuYEFiuEUKdYbwNL2I
-Message-ID: <CAD=n3R2S17nYoikdvVwOW=aF4wW=Pk7_86H3sN8R7v20HVArTg@mail.gmail.com>
-Subject: Re: [PATCH 20/20] tests/functional/sbsa-ref: Move where machine type
- is set
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>,
-        Julian Armistead <julian.armistead@linaro.org>,
-        Radoslaw Biernacki <rad@semihalf.com>,
-        =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
-        Phil Dennis-Jordan <phil@philjordan.eu>,
-        =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>,
-        =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-        Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
-        Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>
+References: <e2df1ff1-3ce4-4233-b32e-2bc680725c71@kaod.org>
+In-Reply-To: <e2df1ff1-3ce4-4233-b32e-2bc680725c71@kaod.org>
+From: Troy Lee <leetroy@gmail.com>
+Date: Thu, 19 Jun 2025 22:54:00 +0800
+X-Gm-Features: AX0GCFsCtrLKA9THJERQubk15_hyJ0q_lAX8IjRoR9UeemtGeKDEfHcBIRDJeKw
+Message-ID: <CAN9Jwz2m=YX-1_U6z6-=opxoYL8RkFT76--WMcgzOkVZjsFyrA@mail.gmail.com>
+Subject: Re: aspeed: Split the machine definition into individual source files
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Joel Stanley <joel@jms.id.au>, Jamin Lin <jamin_lin@aspeedtech.com>, 
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Patrick Williams <patrick@stwcx.xyz>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNjE5MDEyMiBTYWx0ZWRfXy7puYEncgIpt
- Doe3cB5AexFZDFYx6jyzMEDCPTU9XskJIGVyUZhp5qMVaGVWSfRgdnr3TkeHnYJa9r3swAZ5wyn
- C0zRM+6aUzizkepZPwAMaYILrzpQuyxdVZGo56NlpBaV4J6hC2XELhC5HnRxMDMyZzjujRvbkez
- rY2tmagF+0proIQ7PgtupgKKhibULTNGKJVDFOp5CHIJb2WlTwoBETm8LGErC2vyVeP4xFwmdQF
- FbPOlJW6bIHMVhmkvSIO4hbUAwUTTi8G9Xe4oR0pRzqdvnvrcxBoHOO6Y2SK75XysixK7R1qDof
- MFmX6L1e9DLiD/npZWaocYTRNk6a7aMURt6cJ4eKTWrpK1ewMq4mKaNv+AkvceUOjByRxM8QawR
- R/Ni6GxiC9XEsPlTGYRx12GmILHb3FPpA6hLW8JIRhVgEjnrHuAFi+zL7UQmbzCaJmBpdgXW
-X-Authority-Analysis: v=2.4 cv=PtaTbxM3 c=1 sm=1 tr=0 ts=6854216d cx=c_pps
- a=IZJwPbhc+fLeJZngyXXI0A==:117 a=IkcTkHD0fZMA:10 a=6IFa9wvqVegA:10
- a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=655RdkjLQMz9J5miF_YA:9 a=QEXdDO2ut3YA:10
- a=uG9DUKGECoFWVXl0Dc02:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: 3g7SPnjk1bek_r8BAmqNvAr5NQs8b8YR
-X-Proofpoint-GUID: 3g7SPnjk1bek_r8BAmqNvAr5NQs8b8YR
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
- definitions=2025-06-19_05,2025-06-18_03,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 clxscore=1015 mlxlogscore=773 suspectscore=0 malwarescore=0
- lowpriorityscore=0 impostorscore=0 adultscore=0 spamscore=0
- priorityscore=1501 phishscore=0 mlxscore=0 classifier=spam authscore=0
- authtc=n/a authcc= route=outbound adjust=0 reason=mlx scancount=1
- engine=8.19.0-2505280000 definitions=main-2506190122
-X-TUID: 0fZ56RtjWH7C
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=leetroy@gmail.com; helo=mail-pj1-x102e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2wL/n4FP4yQ/
 
-On Thu, 19 Jun 2025 at 14:23, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
+Hi,
+On Thu, Jun 19, 2025 at 5:24=E2=80=AFPM C=C3=A9dric Le Goater <clg@kaod.org=
+> wrote:
 >
-> On Thu, 19 Jun 2025 at 15:15, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.=
-org> wrote:
-> >
-> > fetch_firmware() is only about fetching firmware.
-> > Set the machine type in test_sbsaref_edk2_firmware().
-> >
-> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> > ---
-> >  tests/functional/test_aarch64_sbsaref.py | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/tests/functional/test_aarch64_sbsaref.py b/tests/functiona=
-l/test_aarch64_sbsaref.py
-> > index e6a55aecfac..5536ec622e6 100755
-> > --- a/tests/functional/test_aarch64_sbsaref.py
-> > +++ b/tests/functional/test_aarch64_sbsaref.py
-> > @@ -40,7 +40,6 @@ def fetch_firmware(test):
-> >          with open(path, "ab+") as fd:
-> >              fd.truncate(256 << 20)  # Expand volumes to 256MiB
-> >
-> > -    test.set_machine('sbsa-ref')
-> >      test.vm.set_console()
-> >      test.vm.add_args(
-> >          "-drive", f"if=3Dpflash,file=3D{fs0_path},format=3Draw",
-> > @@ -70,6 +69,7 @@ def test_sbsaref_edk2_firmware(self):
-> >
-> >          fetch_firmware(self)
-> >
-> > +        self.set_machine('sbsa-ref')
-> >          self.vm.add_args('-cpu', 'cortex-a57')
-> >          self.vm.launch()
+> Hi,
 >
-> Sorry, last patch, I forgot to squash:
+> This is a follow up of a private discussion with Patrick.
+>
+> Aspeed modeling started nearly 10y ago with the palmetto-bmc machine.
+> We now have 5 SoCs and 25 machines which are mostly defined in
+> in a single aspeed.c file. Multi SoC machines, fby35 and ast2700fc,
+> are defined in fby35.c and aspeed_ast27x0-fc.c respectively.
+>
 
-With the squash:
-Reviewed-by: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
+Sounds good to me.
+While we're on this subject, we have many variants of the AST27x0 SoC
+and development boards in different form factors. Should we also create
+separate SoC models and machine definitions for each one? Or can we
+treat AST27x0 as a superset of AST2700, AST2750, AST2720, and
+any future models?
 
-/
-    Leif
-> -- >8 --
-> diff --git a/tests/functional/test_aarch64_sbsaref_alpine.py
-> b/tests/functional/test_aarch64_sbsaref_alpine.py
-> index 6108ec65a54..98762eedb67 100755
-> --- a/tests/functional/test_aarch64_sbsaref_alpine.py
-> +++ b/tests/functional/test_aarch64_sbsaref_alpine.py
-> @@ -32,2 +32,3 @@ def boot_alpine_linux(self, cpu=3DNone):
+Thanks,
+Troy Lee
+
+> Since we started separating the SoCs :
 >
-> +        self.set_machine('sbsa-ref')
->          self.vm.set_console()
-> diff --git a/tests/functional/test_aarch64_sbsaref_freebsd.py
-> b/tests/functional/test_aarch64_sbsaref_freebsd.py
-> index 26dfc5878bb..1c243d0d459 100755
-> --- a/tests/functional/test_aarch64_sbsaref_freebsd.py
-> +++ b/tests/functional/test_aarch64_sbsaref_freebsd.py
-> @@ -32,2 +32,3 @@ def boot_freebsd14(self, cpu=3DNone):
+>    hw/arm/aspeed_ast10x0.c
+>    hw/arm/aspeed_ast2400.c
+>    hw/arm/aspeed_ast2600.c
+>    hw/arm/aspeed_ast27x0.c
+>    hw/arm/aspeed_ast27x0-ssp.c
+>    hw/arm/aspeed_ast27x0-tsp.c
 >
-> +        self.set_machine('sbsa-ref')
->          self.vm.set_console()
-> ---
+> We could do the same for the machines keeping an 'aspeed_ast<rev>'
+> prefix (and maybe avoid the 'bmc' suffix). I think this would ease
+> introduction of new machines. We would be able to get rid of
+> aspeed_eeprom.[ch] and move machine custom data in the machine source
+> file. Which seems cleaner.
+>
+> Timing is about right for code reshuffling, still 3w before soft
+> freeze, no important changes inflight, but if we start doing this
+> conversion, we should do it for all. See the list below for the brave.
+>
+> Comments ?
+>
+> Thanks,
+>
+> C.
+>
+>
+>
+> * AST2400
+>
+>    palmetto-bmc
+>    quanta-q71l-bmc
+>    supermicrox11-bmc
+>
+> * AST2500
+>
+>    ast2500-evb
+>    romulus-bmc
+>    sonorapass-bmc
+>    witherspoon-bmc
+>    yosemitev2-bmc
+>    supermicro-x11spi-bmc
+>    fp5280g2-bmc
+>    g220a-bmc
+>    tiogapass-bmc
+>
+> * AST2600
+>
+>    ast2600-evb
+>    qcom-dc-scm-v1-bmc
+>    qcom-firework-bmc
+>    rainier-bmc
+>    fuji-bmc
+>    bletchley-bmc
+>    fby35-bmc           (fby35.c should rename to aspeed_ast2600-fby35.c)
+>
+> * AST2700
+>
+>    ast2700a0-evb
+>    ast2700a1-evb
+>    ast2700fc           (aspeed_ast27x0-fc.c)
+>
+> * AST1030
+>
+>    ast1030-evb
+>

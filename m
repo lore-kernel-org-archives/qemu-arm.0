@@ -1,129 +1,147 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp341099njc;
-        Thu, 19 Jun 2025 08:32:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVELUtoorshbZ61WjwSjX/hhUBuLDPBctaxTmYx9B9NaQmHDyToA/33+Zwgb04y/lpSNqf1CuxarVp6iQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEvslsxAb8pDGod+wL/Y3m+1Oi5MwpjkU6ZGUpjOq9K3STEYIdm2eac4UTGTczvsc5iFQn+
-X-Received: by 2002:ad4:5d6f:0:b0:6e8:f770:5045 with SMTP id 6a1803df08f44-6fb477d9a18mr370215046d6.28.1750347131694;
-        Thu, 19 Jun 2025 08:32:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750347131; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp360992njc;
+        Thu, 19 Jun 2025 09:04:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVa9iM6FYv2SPfZXjg+oUOVrx5OOPs+nUYQCSeNsrgtgcLwvYjN4aDiZ1xeNvFTiXM8VYim8Z5Sa5lb7w==@linaro.org
+X-Google-Smtp-Source: AGHT+IGI7z80Tj7AOOQSaGKV+MSGRd8ndIEkfURiHP2zUlKQHQdl0QKYApndOC/foCKZPywEUF9R
+X-Received: by 2002:a05:651c:1993:b0:32a:7d76:2642 with SMTP id 38308e7fff4ca-32b4a3088a4mr69951691fa.2.1750349094668;
+        Thu, 19 Jun 2025 09:04:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750349094; cv=none;
         d=google.com; s=arc-20240605;
-        b=YIevb+8n46SAFhyu08iqRanwGOdnX1T6oVJ5bpAOyq4+2YNBHX6tqEh+MHMgS53XGb
-         ioQ+7SpYS9evmVnby1lIQJQrmn8EkXClUzHayyEj3+dRMDfV0JKyPOMWMU6lhuwnVGBQ
-         g6V3LSwkQX5S6rvLCB6CGTGZlX6xX4CYEUT47oulPLM+DwHh+OGDA1mD1i/Gu1ghnPBF
-         /HktOmXv2Uc+Iri/JpLJ5U9GcOCdnSmyOYesSwB2jxdxWWzPnkSGDjRE86lVUuymwukm
-         T0it05Mn6NtKaxmZyLJygBH1J4KmvOD5bcrkg7hbKEhj+1odtLz/cQEuB1BfIgkZpnBJ
-         qnmA==
+        b=kAtiSJ7vIQ11V6n1C106sPAGz78PH5X7bqrKMpq0O5XzUg+03MfuHunwLTqpXM6vCt
+         NV5EHgF80nDDE59Qjsgc/wY861a9SUi3r82a8lkIcngBesbXca/cY3nFQN3wLQVXRfkg
+         wJ+jxibMk0xWu7P9BlVp40s9JlmNN9gIMYgxXFdmkSaLypcGaY+d+q9XDXvwmmNLnEl0
+         VEITxJ7JM/18EP/2ESePCLOoKGddWWti/MIvgEdROhFJo3FTcDwrykmIKg36DZEeaD/E
+         R68NIqbddGC1ZUJd/cI+MIlz2aMKrDBwAzTytKDDaZGofUEmkGkbvx25TI5cVOcE2M1P
+         atDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=Fws3+CAiDT+Vf5ZQETml8wk8RqWL+UV8EaaItGtcEU8=;
-        fh=1ern3bSMH12CRsFMCtTQBDSRdPd8TZGqUZamyAoCemg=;
-        b=cepUrTVNvVNRfphFDTy3Ynh8gfQvc1KTMgkz28z81bYMPcScIWz+51OjFciqCVhwOg
-         j+mAMlyR5ZLKQnN6/bbIfvfR8Isvvnu8WYQi3AXW1j82E7EX7DD4WMDI/TxH9Iie4/Xc
-         lXhNW07v40YmKtzsQr42bckhbF7qdnfhirLMdFgy/TNukpQNQRhJaCF4docywSi887sH
-         0WSXfJXXFVE9mow8leg6eyLl+4Gmn0mJ5Lx3ljGALJ6pVPWj4v8O+ELH+Kp1AAX1NL1W
-         1Ptf2kV9YsC0Qcw48sY59NDU1MYLPGgaWQF4RgCJQHVw2MWd6mMQZRhKkinNufT8whSH
-         FVbg==;
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :references:in-reply-to:subject:cc:to:from:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=4Mw7RZCpfTRj8HYjbNRaqIyYTqg2qub9w1A9PzZ8RBc=;
+        fh=Pr/hiE8aQ1bjfrwbkLFNkfzXTVi/RZ4dwQ6A9DbnmF4=;
+        b=A7YKXddojTSNyoClr2BAk/AkZmpdhDVPPcGXLGLDIMUrrW6QWFPR+1iQ9ripSqnq+E
+         kvSwM96gUbpKJys59MkHFQ/FPvgq7lK47GfWU1QEK2sssHxq+7JYcDKmpt9TaVEFVD7l
+         onO/LTIWjlvgRr4J4ij3JKasSwpRBO27KvsFDWtl+jOTswZR1cLgWet4yaZhuCMnD7LO
+         5aT9HUWPsfqJO3UzRX7R/Souch9++ZzBX86qiaRoF6tHtRe9Uy8iMh47sg/ev1oYLZRc
+         SDd1JnUgK6iHNJRhyh9FkitHvPmnx18/TQC1f9NRYg2w46HDqTmoivrU6hN0sHQ47371
+         JNYw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@alyssa.is header.s=fm3 header.b=VbeY6U2H;
+       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=YdlMF5rx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd095bb605si1244856d6.447.2025.06.19.08.32.11
+        by mx.google.com with ESMTPS id 38308e7fff4ca-32b8b3b8dd6si6757501fa.495.2025.06.19.09.04.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jun 2025 08:32:11 -0700 (PDT)
+        Thu, 19 Jun 2025 09:04:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@alyssa.is header.s=fm3 header.b=VbeY6U2H;
+       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=YdlMF5rx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uSHEy-0003Gc-9z; Thu, 19 Jun 2025 11:31:48 -0400
+	id 1uSHkY-0005k9-44; Thu, 19 Jun 2025 12:04:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=0/7f=ZC=kaod.org=clg@ozlabs.org>)
- id 1uSHEd-00039q-MN; Thu, 19 Jun 2025 11:31:31 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <hi@alyssa.is>)
+ id 1uSHkS-0005jL-LW; Thu, 19 Jun 2025 12:04:20 -0400
+Received: from flow-a6-smtp.messagingengine.com ([103.168.172.141])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=0/7f=ZC=kaod.org=clg@ozlabs.org>)
- id 1uSHEY-0004kE-A2; Thu, 19 Jun 2025 11:31:25 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bNPhg27bVz4xDf;
- Fri, 20 Jun 2025 01:31:15 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bNPhZ70rCz4wj2;
- Fri, 20 Jun 2025 01:31:10 +1000 (AEST)
-Message-ID: <6ffe00d3-4a64-4799-ae52-2b64f11c9173@kaod.org>
-Date: Thu, 19 Jun 2025 17:31:06 +0200
+ (Exim 4.90_1) (envelope-from <hi@alyssa.is>)
+ id 1uSHkQ-0001oq-2L; Thu, 19 Jun 2025 12:04:20 -0400
+Received: from phl-compute-01.internal (phl-compute-01.phl.internal
+ [10.202.2.41])
+ by mailflow.phl.internal (Postfix) with ESMTP id 43CA9200676;
+ Thu, 19 Jun 2025 12:04:15 -0400 (EDT)
+Received: from phl-mailfrontend-01 ([10.202.2.162])
+ by phl-compute-01.internal (MEProxy); Thu, 19 Jun 2025 12:04:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alyssa.is; h=cc
+ :cc:content-type:content-type:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:subject
+ :subject:to:to; s=fm3; t=1750349055; x=1750356255; bh=4Mw7RZCpfT
+ Rj8HYjbNRaqIyYTqg2qub9w1A9PzZ8RBc=; b=VbeY6U2H0uusMeI87Anwctlm7F
+ 6VsemNtrGpex1ryZKx1Xc9MaNgHyLSweaP9TL8vDP9lbm2HzDVd9uajYhgVYiBnP
+ ZdSxoi06iiQUTRsFxLg01UYC/UHbsmKgOEROnj//8Z3rv4u1XPigmKwb0HzXExkn
+ qSApkFWdRz46Hu6Nt98IINZFR14ewtO5IxPkZ178PFt+a6rjzqTJxg7FZIncW0DB
+ bgpPBuX6Y2mYULVSIJEuO+UYNIONvUl9aDokbPYpOvMmjWf2rJM7MATiDLNyhkMl
+ +H1PWguFkwMbALRWDFwRwozfvoaSDjdBT19lFMKM8ZodakZ6tbbLKh580eUw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:subject:to
+ :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
+ 1750349055; x=1750356255; bh=4Mw7RZCpfTRj8HYjbNRaqIyYTqg2qub9w1A
+ 9PzZ8RBc=; b=YdlMF5rxpRGWF/yFAEyN1w5jwoJWQl5eCt7TUqzbTRmMl0dnhjv
+ g2jVf7Q42gTdSwAZPuZHfvOqpA+PACopiJOyfV9yh3a1iGshN0/BKYzzJRBI+E8n
+ dZwjmW8XWSh25Tjcgyhi0er1FeGRqCQW4RXCbarLOs5NBCNID7t/2+WDaAbRZ1GN
+ DLT3rE4kXIOQbXCRJBHWwipEAHznRYr9I2VXHc9Wwr8B/mfWJhhqJdbIa5ZmUj/K
+ Ya7q14Nb+1Sonm+6LNURFXJ1izEKiCsCUNvMt/Prcx7C4bL4e3zimI3dzMu9rYFJ
+ +eRIxDYT9imBhq6bJdNBcOcpWy42C0Acu7g==
+X-ME-Sender: <xms:_jRUaFsBlu6EE0S2ZncBtSzCNuS6L61j4h2d-6_XbP9Sy00vQ5YNvg>
+ <xme:_jRUaOdx8MwaME33-vCMNGGeGUkuEMO7MAlllkx-Byjbu1ETRExBm9Opwaf63YzV3
+ SujOem2_geMojJiEw>
+X-ME-Received: <xmr:_jRUaIxhCpMHgr08mRCee_V33taBSDQus7vrt8qaZn2SeOxKlhmTk6gN3LTSk7k>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddvgdehleehucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceurghi
+ lhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurh
+ ephffvvefujghffffkgggtsehgtderredttdejnecuhfhrohhmpeetlhihshhsrgcutfho
+ shhsuceohhhisegrlhihshhsrgdrihhsqeenucggtffrrghtthgvrhhnpeetheevudfgje
+ fghefhieejudelkeeljeegvdekueeuhffhgedvveefteevgeetieenucevlhhushhtvghr
+ ufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehhihesrghlhihsshgrrdhish
+ dpnhgspghrtghpthhtohepuddtpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopehg
+ khhulhhkrghrnhhisegrmhhpvghrvggtohhmphhuthhinhhgrdgtohhmpdhrtghpthhtoh
+ epvghrihgtrdgruhhgvghrrdhprhhosehgmhgrihhlrdgtohhmpdhrtghpthhtohepmhgr
+ iieskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepphgvthgvrhdrmhgrhiguvghllheslh
+ hinhgrrhhordhorhhgpdhrtghpthhtoheprhhitghhrghrugdrhhgvnhguvghrshhonhes
+ lhhinhgrrhhordhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdroh
+ hrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdhrtghp
+ thhtohepmhhighhuvghlrdhluhhishesohhrrggtlhgvrdgtohhmpdhrtghpthhtohepgh
+ grnhhkuhhlkhgrrhhnihesohhsrdgrmhhpvghrvggtohhmphhuthhinhhgrdgtohhm
+X-ME-Proxy: <xmx:_jRUaMO8AonOOpLZlXwCJpEMHtEgq8yBHHSpDJLrNubR7kP30LTLuA>
+ <xmx:_jRUaF9VySVNfRppp6LANAWjN5RrDFlUmLNXRPRBkjvImnSrCwc8OQ>
+ <xmx:_jRUaMVP5489f_ogQwEyQxI06zzJ-RMvEOnJU6kgEQPchs4yMYlh9A>
+ <xmx:_jRUaGeGYekoNGad-Ctdhuh63X2hmDjpf5I3kEhyXwGTbG3YzYWeRQ>
+ <xmx:_zRUaBxcWO60nVfWYyVQ2c7SAbiF3SFubtToCQS6qK2B55udmayiQkII>
+Feedback-ID: i12284293:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 19 Jun 2025 12:04:14 -0400 (EDT)
+Received: by mbp.qyliss.net (Postfix, from userid 1000)
+ id 2DD449BA578; Thu, 19 Jun 2025 18:04:13 +0200 (CEST)
+From: Alyssa Ross <hi@alyssa.is>
+To: eric.auger@redhat.com, Miguel Luis <miguel.luis@oracle.com>
+Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "richard.henderson@linaro.org"
+ <richard.henderson@linaro.org>, "maz@kernel.org" <maz@kernel.org>,
+ "gkulkarni@amperecomputing.com" <gkulkarni@amperecomputing.com>,
+ "gankulkarni@os.amperecomputing.com" <gankulkarni@os.amperecomputing.com>
+Subject: Re: [PATCH v5 5/5] hw/arm/virt: Allow virt extensions with KVM
+In-Reply-To: <01ab0b6e-ccd5-4465-98c0-70b8ec2ac87a@redhat.com>
+References: <20250527062534.1186004-1-eric.auger@redhat.com>
+ <20250527062534.1186004-6-eric.auger@redhat.com>
+ <875xgutpuh.fsf@alyssa.is>
+ <D3582F3A-B07A-4F05-827C-B030617B77EA@oracle.com>
+ <efd4cb44-3d63-43b5-9568-1263ccf7566a@redhat.com>
+ <0EA149E9-D637-4BC0-A10F-7B896581A914@oracle.com>
+ <01ab0b6e-ccd5-4465-98c0-70b8ec2ac87a@redhat.com>
+Date: Thu, 19 Jun 2025 18:04:11 +0200
+Message-ID: <8734bvyays.fsf@alyssa.is>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] hw/arm/aspeed: add Catalina machine type
-To: Patrick Williams <patrick@stwcx.xyz>, Paolo Bonzini
- <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20250619151458.2831859-1-patrick@stwcx.xyz>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250619151458.2831859-1-patrick@stwcx.xyz>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=0/7f=ZC=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.069, RCVD_IN_DNSWL_MED=-2.3,
+Content-Type: multipart/signed; boundary="=-=-=";
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+Received-SPF: pass client-ip=103.168.172.141; envelope-from=hi@alyssa.is;
+ helo=flow-a6-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -140,333 +158,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SjwV+j6dv4Us
+X-TUID: TCyW6B7w9qck
 
-On 6/19/25 17:14, Patrick Williams wrote:
-> Add the 'catalina-bmc' machine type based on the kernel DTS[1] as of
-> 6.16-rc2.  The i2c model is as complete as the current QEMU models
-> support, but in some cases I substituted devices that are close enough
-> for present functionality.  Strap registers are were verified with
-> hardware.
-> 
-> This has been tested with an openbmc image built from [2].
-> 
-> Add a functional test in line with Bletchley, pointing at an image
-> obtained from the OpenBMC Jenkins server.
-> 
-> [1]: https://github.com/torvalds/linux/blob/v6.16-rc2/arch/arm/boot/dts/aspeed/aspeed-bmc-facebook-catalina.dts
-> [2]: https://github.com/openbmc/openbmc/commit/5bc73ec261f981d5e586bda5ac78eb0cbd5f92b0
-> 
+--=-=-=
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
+Eric Auger <eric.auger@redhat.com> writes:
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+> Hi,
+>
+> On 6/17/25 5:50 PM, Miguel Luis wrote:
+>> Hi Eric,
+>>
+>>> On 17 Jun 2025, at 15:41, Eric Auger <eric.auger@redhat.com> wrote:
+>>>
+>>>
+>>>
+>>> On 6/17/25 5:23 PM, Miguel Luis wrote:
+>>>> Hi Alyssa,
+>>>>
+>>>>> On 17 Jun 2025, at 14:17, Alyssa Ross <hi@alyssa.is> wrote:
+>>>>>
+>>>>> Eric Auger <eric.auger@redhat.com> writes:
+>>>>>
+>>>>>> From: Haibo Xu <haibo.xu@linaro.org>
+>>>>>>
+>>>>>> Up to now virt support on guest has been only supported with TCG.
+>>>>>> Now it becomes feasible to use it with KVM acceleration.
+>>>>>>
+>>>>>> Also check only in-kernel GICv3 is used along with KVM EL2.
+>>>>>>
+>>>>>> Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+>>>>>> Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+>>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>>>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>>>>> Hi!  From what I can tell, this will produce an error on hosts that
+>>>>> don't support nested virtualization when QEMU is invoked with -accel
+>>>>> kvm:tcg
+>>>> I didn=E2=80=99t know '-acell kvm:tcg=E2=80=99 could be used as a fall=
+back mechanism between
+>>>> acceleration modes. May I ask whether do you manage the =E2=80=98-cpu=
+=E2=80=99 type for =E2=80=98-accel
+>>>> kvm:tcg=E2=80=99 with cpu =E2=80=98max=E2=80=99 ?
+>>> Does it exist?
+>>> qemu-system-aarch64: -accel kvm:tcg: invalid accelerator kvm:tcg
+>> Maybe Alyssa is referring to =E2=80=98-M virt,accel=3Dkvm:tcg,virtualiza=
+tion=3Don,gic-version=3D3=E2=80=99 ?
+>>
+>> The above didn=E2=80=99t triggered any error. Anyhow if the above does w=
+hat Alyssa=E2=80=99s saying=20
+>> we would just be missing the check for || !tcg_enabled() in this patch, =
+I believe.
+>
+> After discussion with Paolo, the lack of the CAP should be detected
+> earlier in kvm_init/kvm_arch_init to allow the fallback to TCG.
+> in target/arm/kvm.c kvm_arch_init() some generic caps are checked but
+> none of them are related to machine settings and this code is virt arm
+> machine agnostic.
+>
+> I checked and adding
+>
+> =C2=A0=C2=A0=C2=A0 if (object_dynamic_cast(OBJECT(ms), TYPE_VIRT_MACHINE)=
+) {
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VirtMachineState *vms =3D VIRT=
+_MACHINE(ms);
+>
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (vms->virt && !kvm_arm_el2_=
+supported()) {
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_=
+report("KVM does not support nested virtualization");
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =
+=3D -EINVAL;
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+> =C2=A0=C2=A0=C2=A0 }
+>
+> at the end of the function would do the job. But as I said previously
+> this is not done for other virt arm machine options that are accel
+> specific or require special KVM caps (secure, mte for instance) so it
+> would be a change in the approach.
 
-Thanks,
+Right =E2=80=94 if it's not done for other options it doesn't need to be do=
+ne
+here either; I wasn't aware of that.  It would be nice if QEMU worked
+differently, but that's certainly not in scope of this series.
 
-C.
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
-> ---
->   hw/arm/Kconfig                               |   1 +
->   hw/arm/aspeed.c                              | 200 +++++++++++++++++++
->   tests/functional/meson.build                 |   2 +
->   tests/functional/test_arm_aspeed_catalina.py |  25 +++
->   4 files changed, 228 insertions(+)
->   create mode 100755 tests/functional/test_arm_aspeed_catalina.py
-> 
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index f543d944c3..6ea86534d5 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -532,6 +532,7 @@ config ASPEED_SOC
->       select I2C
->       select DPS310
->       select PCA9552
-> +    select PCA9554
->       select SERIAL_MM
->       select SMBUS_EEPROM
->       select PCA954X
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index d0b333646e..b0965ef8a0 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -19,6 +19,7 @@
->   #include "hw/i2c/i2c_mux_pca954x.h"
->   #include "hw/i2c/smbus_eeprom.h"
->   #include "hw/gpio/pca9552.h"
-> +#include "hw/gpio/pca9554.h"
->   #include "hw/nvram/eeprom_at24c.h"
->   #include "hw/sensor/tmp105.h"
->   #include "hw/misc/led.h"
-> @@ -1003,6 +1004,180 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
->   }
->   
->   #define TYPE_TMP421 "tmp421"
-> +#define TYPE_DS1338 "ds1338"
-> +
-> +/* Catalina hardware value */
-> +#define CATALINA_BMC_HW_STRAP1 0x00002002
-> +#define CATALINA_BMC_HW_STRAP2 0x00000800
-> +
-> +#define CATALINA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
-> +
-> +static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
-> +{
-> +    /* Reference from v6.16-rc2 aspeed-bmc-facebook-catalina.dts */
-> +
-> +    AspeedSoCState *soc = bmc->soc;
-> +    I2CBus *i2c[16] = {};
-> +    I2CSlave *i2c_mux;
-> +
-> +    /* busses 0-15 are all used. */
-> +    for (int i = 0; i < ARRAY_SIZE(i2c); i++) {
-> +        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
-> +    }
-> +
-> +    /* &i2c0 */
-> +    /* i2c-mux@71 (PCA9546) on i2c0 */
-> +    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x71);
-> +
-> +    /* i2c-mux@72 (PCA9546) on i2c0 */
-> +    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x72);
-> +
-> +    /* i2c0mux1ch1 */
-> +    /* io_expander7 - pca9535@20 */
-> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
-> +                            TYPE_PCA9552, 0x20);
-> +    /* eeprom@50 */
-> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB);
-> +
-> +    /* i2c-mux@73 (PCA9546) on i2c0 */
-> +    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x73);
-> +
-> +    /* i2c-mux@75 (PCA9546) on i2c0 */
-> +    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x75);
-> +
-> +    /* i2c-mux@76 (PCA9546) on i2c0 */
-> +    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x76);
-> +
-> +    /* i2c0mux4ch1 */
-> +    /* io_expander8 - pca9535@21 */
-> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
-> +                            TYPE_PCA9552, 0x21);
-> +    /* eeprom@50 */
-> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB);
-> +
-> +    /* i2c-mux@77 (PCA9546) on i2c0 */
-> +    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x77);
-> +
-> +
-> +    /* &i2c1 */
-> +    /* i2c-mux@70 (PCA9548) on i2c1 */
-> +    i2c_mux = i2c_slave_create_simple(i2c[1], TYPE_PCA9548, 0x70);
-> +    /* i2c1mux0ch0 */
-> +    /* ina238@41 - no model */
-> +    /* ina238@42 - no model */
-> +    /* ina238@44 - no model */
-> +    /* i2c1mux0ch1 */
-> +    /* ina238@41 - no model */
-> +    /* ina238@43 - no model */
-> +    /* i2c1mux0ch4 */
-> +    /* ltc4287@42 - no model */
-> +    /* ltc4287@43 - no model */
-> +
-> +    /* i2c1mux0ch5 */
-> +    /* eeprom@54 */
-> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 5), 0x54, 8 * KiB);
-> +    /* tpm75@4f */
-> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), TYPE_TMP75, 0x4f);
-> +
-> +    /* i2c1mux0ch6 */
-> +    /* io_expander5 - pca9554@27 */
-> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6),
-> +                            TYPE_PCA9554, 0x27);
-> +    /* io_expander6 - pca9555@25 */
-> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6),
-> +                            TYPE_PCA9552, 0x25);
-> +    /* eeprom@51 */
-> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 6), 0x51, 8 * KiB);
-> +
-> +    /* i2c1mux0ch7 */
-> +    /* eeprom@53 */
-> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 7), 0x53, 8 * KiB);
-> +    /* temperature-sensor@4b - tmp75 */
-> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 7), TYPE_TMP75, 0x4b);
-> +
-> +    /* &i2c2 */
-> +    /* io_expander0 - pca9555@20 */
-> +    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x20);
-> +    /* io_expander0 - pca9555@21 */
-> +    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x21);
-> +    /* io_expander0 - pca9555@27 */
-> +    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x27);
-> +    /* eeprom@50 */
-> +    at24c_eeprom_init(i2c[2], 0x50, 8 * KiB);
-> +    /* eeprom@51 */
-> +    at24c_eeprom_init(i2c[2], 0x51, 8 * KiB);
-> +
-> +    /* &i2c5 */
-> +    /* i2c-mux@70 (PCA9548) on i2c5 */
-> +    i2c_mux = i2c_slave_create_simple(i2c[5], TYPE_PCA9548, 0x70);
-> +    /* i2c5mux0ch6 */
-> +    /* eeprom@52 */
-> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 6), 0x52, 8 * KiB);
-> +    /* i2c5mux0ch7 */
-> +    /* ina230@40 - no model */
-> +    /* ina230@41 - no model */
-> +    /* ina230@44 - no model */
-> +    /* ina230@45 - no model */
-> +
-> +    /* &i2c6 */
-> +    /* io_expander3 - pca9555@21 */
-> +    i2c_slave_create_simple(i2c[6], TYPE_PCA9552, 0x21);
-> +    /* rtc@6f - nct3018y */
-> +    i2c_slave_create_simple(i2c[6], TYPE_DS1338, 0x6f);
-> +
-> +    /* &i2c9 */
-> +    /* io_expander4 - pca9555@4f */
-> +    i2c_slave_create_simple(i2c[9], TYPE_PCA9552, 0x4f);
-> +    /* temperature-sensor@4b - tpm75 */
-> +    i2c_slave_create_simple(i2c[9], TYPE_TMP75, 0x4b);
-> +    /* eeprom@50 */
-> +    at24c_eeprom_init(i2c[9], 0x50, 8 * KiB);
-> +    /* eeprom@56 */
-> +    at24c_eeprom_init(i2c[9], 0x56, 8 * KiB);
-> +
-> +    /* &i2c10 */
-> +    /* temperature-sensor@1f - tpm421 */
-> +    i2c_slave_create_simple(i2c[10], TYPE_TMP421, 0x1f);
-> +    /* eeprom@50 */
-> +    at24c_eeprom_init(i2c[10], 0x50, 8 * KiB);
-> +
-> +    /* &i2c11 */
-> +    /* ssif-bmc@10 - no model */
-> +
-> +    /* &i2c12 */
-> +    /* eeprom@50 */
-> +    at24c_eeprom_init(i2c[12], 0x50, 8 * KiB);
-> +
-> +    /* &i2c13 */
-> +    /* eeprom@50 */
-> +    at24c_eeprom_init(i2c[13], 0x50, 8 * KiB);
-> +    /* eeprom@54 */
-> +    at24c_eeprom_init(i2c[13], 0x54, 256);
-> +    /* eeprom@55 */
-> +    at24c_eeprom_init(i2c[13], 0x55, 256);
-> +    /* eeprom@57 */
-> +    at24c_eeprom_init(i2c[13], 0x57, 256);
-> +
-> +    /* &i2c14 */
-> +    /* io_expander9 - pca9555@10 */
-> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x10);
-> +    /* io_expander10 - pca9555@11 */
-> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x11);
-> +    /* io_expander11 - pca9555@12 */
-> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x12);
-> +    /* io_expander12 - pca9555@13 */
-> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x13);
-> +    /* io_expander13 - pca9555@14 */
-> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x14);
-> +    /* io_expander14 - pca9555@15 */
-> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x15);
-> +
-> +    /* &i2c15 */
-> +    /* temperature-sensor@1f - tmp421 */
-> +    i2c_slave_create_simple(i2c[15], TYPE_TMP421, 0x1f);
-> +    /* eeprom@52 */
-> +    at24c_eeprom_init(i2c[15], 0x52, 8 * KiB);
-> +}
->   
->   static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
->   {
-> @@ -1585,6 +1760,27 @@ static void aspeed_machine_bletchley_class_init(ObjectClass *oc,
->       aspeed_machine_class_init_cpus_defaults(mc);
->   }
->   
-> +static void aspeed_machine_catalina_class_init(ObjectClass *oc,
-> +                                               const void *data)
-> +{
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-> +
-> +    mc->desc       = "Facebook Catalina BMC (Cortex-A7)";
-> +    amc->soc_name  = "ast2600-a3";
-> +    amc->hw_strap1 = CATALINA_BMC_HW_STRAP1;
-> +    amc->hw_strap2 = CATALINA_BMC_HW_STRAP2;
-> +    amc->fmc_model = "w25q01jvq";
-> +    amc->spi_model = NULL;
-> +    amc->num_cs    = 2;
-> +    amc->macs_mask = ASPEED_MAC2_ON;
-> +    amc->i2c_init  = catalina_bmc_i2c_init;
-> +    mc->auto_create_sdcard = true;
-> +    mc->default_ram_size = CATALINA_BMC_RAM_SIZE;
-> +    aspeed_machine_class_init_cpus_defaults(mc);
-> +    aspeed_machine_ast2600_class_emmc_init(oc);
-> +}
-> +
->   static void fby35_reset(MachineState *state, ResetType type)
->   {
->       AspeedMachineState *bmc = ASPEED_MACHINE(state);
-> @@ -1877,6 +2073,10 @@ static const TypeInfo aspeed_machine_types[] = {
->           .name          = MACHINE_TYPE_NAME("bletchley-bmc"),
->           .parent        = TYPE_ASPEED_MACHINE,
->           .class_init    = aspeed_machine_bletchley_class_init,
-> +    }, {
-> +        .name          = MACHINE_TYPE_NAME("catalina-bmc"),
-> +        .parent        = TYPE_ASPEED_MACHINE,
-> +        .class_init    = aspeed_machine_catalina_class_init,
->       }, {
->           .name          = MACHINE_TYPE_NAME("fby35-bmc"),
->           .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
-> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-> index e9f19d54a2..11c32a8529 100644
-> --- a/tests/functional/meson.build
-> +++ b/tests/functional/meson.build
-> @@ -31,6 +31,7 @@ test_timeouts = {
->     'arm_aspeed_ast2500' : 720,
->     'arm_aspeed_ast2600' : 1200,
->     'arm_aspeed_bletchley' : 480,
-> +  'arm_aspeed_catalina' : 480,
->     'arm_aspeed_rainier' : 480,
->     'arm_bpim2u' : 500,
->     'arm_collie' : 180,
-> @@ -124,6 +125,7 @@ tests_arm_system_thorough = [
->     'arm_aspeed_ast2500',
->     'arm_aspeed_ast2600',
->     'arm_aspeed_bletchley',
-> +  'arm_aspeed_catalina',
->     'arm_aspeed_rainier',
->     'arm_bpim2u',
->     'arm_canona1100',
-> diff --git a/tests/functional/test_arm_aspeed_catalina.py b/tests/functional/test_arm_aspeed_catalina.py
-> new file mode 100755
-> index 0000000000..dc2f24e7b4
-> --- /dev/null
-> +++ b/tests/functional/test_arm_aspeed_catalina.py
-> @@ -0,0 +1,25 @@
-> +#!/usr/bin/env python3
-> +#
-> +# Functional test that boots the ASPEED machines
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> +
-> +from qemu_test import Asset
-> +from aspeed import AspeedTest
-> +
-> +
-> +class CatalinaMachine(AspeedTest):
-> +
-> +    ASSET_CATALINA_FLASH = Asset(
-> +        'https://github.com/legoater/qemu-aspeed-boot/raw/a866feb5ef81245b4827a214584bf6bcc72939f6/images/catalina-bmc/obmc-phosphor-image-catalina-20250619123021.static.mtd.xz',
-> +        '287402e1ba021991e06be1d098f509444a02a3d81a73a932f66528b159e864f9')
-> +
-> +    def test_arm_ast2600_catalina_openbmc(self):
-> +        image_path = self.uncompress(self.ASSET_CATALINA_FLASH)
-> +
-> +        self.do_test_arm_aspeed_openbmc('catalina-bmc', image=image_path,
-> +                                        uboot='2019.04', cpu_id='0xf00',
-> +                                        soc='AST2600 rev A3')
-> +
-> +if __name__ == '__main__':
-> +    AspeedTest.main()
-
+iHUEARYKAB0WIQRV/neXydHjZma5XLJbRZGEIw/wogUCaFQ0+wAKCRBbRZGEIw/w
+oslFAQCwbeDiKhVAP4TiTUfAmPy6zAeumOa/B93qy1GIZYC1/wD/Uc2goZzJ09nD
+SpvhOfwnYAFooTtVuv8KH3u+WGETwQI=
+=Be5P
+-----END PGP SIGNATURE-----
+--=-=-=--

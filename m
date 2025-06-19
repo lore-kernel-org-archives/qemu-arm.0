@@ -1,224 +1,472 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp397705njc;
-        Thu, 19 Jun 2025 10:07:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXKnTrFHlhI0N0IECChsWPjJxd5eBOABswWNXFLl/M9jgQI5j5U8blPsA6TR013IUfGV2s9IgSnq4G/rQ==@linaro.org
-X-Received: by 2002:a05:6a00:cc8:b0:73e:10ea:b1e9 with SMTP id d2e1a72fcca58-7489ce45c6amr29339855b3a.6.1750352835910;
-        Thu, 19 Jun 2025 10:07:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750352835; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp341099njc;
+        Thu, 19 Jun 2025 08:32:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVELUtoorshbZ61WjwSjX/hhUBuLDPBctaxTmYx9B9NaQmHDyToA/33+Zwgb04y/lpSNqf1CuxarVp6iQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEvslsxAb8pDGod+wL/Y3m+1Oi5MwpjkU6ZGUpjOq9K3STEYIdm2eac4UTGTczvsc5iFQn+
+X-Received: by 2002:ad4:5d6f:0:b0:6e8:f770:5045 with SMTP id 6a1803df08f44-6fb477d9a18mr370215046d6.28.1750347131694;
+        Thu, 19 Jun 2025 08:32:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750347131; cv=none;
         d=google.com; s=arc-20240605;
-        b=jgmoBe7+HmQfrYDyl3fo1x5NpCtEPEQx8xiwUIQv+SbXgHdv1Defxe1TSiJZie2E9v
-         l/0QJF2J9/yWQSTp8Zz7McIbVINLhMt459jxg8CFJPlIF0YYRNJdSg9Ozte4zfTOk7jm
-         USl63ytbTV0HgdARWPqtTU/sSaUwemWB+eJtq8uS0qzMvIeqyqQeCYqIhDgnrOk0or+e
-         QwqUxo56wfrnbkkdR4lXCi+J2f13egKLOriMlzaq42YyG64897deG4VAM/6rEKlLkB3U
-         tjbkOZ/sCY0o+s8hOoEXcoYBt9ScMuZCIr1ScEuRUWmTfRjHGfXfy7S+EDYKNO4pO9p1
-         sZ6Q==
+        b=YIevb+8n46SAFhyu08iqRanwGOdnX1T6oVJ5bpAOyq4+2YNBHX6tqEh+MHMgS53XGb
+         ioQ+7SpYS9evmVnby1lIQJQrmn8EkXClUzHayyEj3+dRMDfV0JKyPOMWMU6lhuwnVGBQ
+         g6V3LSwkQX5S6rvLCB6CGTGZlX6xX4CYEUT47oulPLM+DwHh+OGDA1mD1i/Gu1ghnPBF
+         /HktOmXv2Uc+Iri/JpLJ5U9GcOCdnSmyOYesSwB2jxdxWWzPnkSGDjRE86lVUuymwukm
+         T0it05Mn6NtKaxmZyLJygBH1J4KmvOD5bcrkg7hbKEhj+1odtLz/cQEuB1BfIgkZpnBJ
+         qnmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Jll/2OF16vBpj1RgCeTtn0mBj/Ho38D8H1rIBCC+nOs=;
-        fh=otv5dBFKSCLeFNWYN7Zzp4Hkpqaw4Xpzk4kG5Q5wCmk=;
-        b=i9MkP8ivOGNTreYWLbrB80yDGVkPH5nXnefOHbkTG5LBowDXvRlewm0mZDGUk3PpD5
-         F6ZHb4qwjvb/xRNQ+NXCdXLRbEEgaoKXfbMJ6cP7qZ03B1M6K0g4uGG8Njf411XIC1DE
-         Lb4Fuevk1+rThGz6x7nlP2vHauY3pNwSf5EKIQJFvCt/Ki2etxV4LLEo+v6edLuPHbEY
-         w1+BRHRc1l2JEn2bXn+eBogs9hqRYDiYEGEYXJxWlYMFWM3mZRyr5nMx5EzfDRITLAnH
-         aMOllt0EliMWgozL+3Zk7/jLxPc0ccAImnukVKWE2Z+voVn+k2ZsBPdp8xOHvt9rV4Yo
-         Pp+A==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=Fws3+CAiDT+Vf5ZQETml8wk8RqWL+UV8EaaItGtcEU8=;
+        fh=1ern3bSMH12CRsFMCtTQBDSRdPd8TZGqUZamyAoCemg=;
+        b=cepUrTVNvVNRfphFDTy3Ynh8gfQvc1KTMgkz28z81bYMPcScIWz+51OjFciqCVhwOg
+         j+mAMlyR5ZLKQnN6/bbIfvfR8Isvvnu8WYQi3AXW1j82E7EX7DD4WMDI/TxH9Iie4/Xc
+         lXhNW07v40YmKtzsQr42bckhbF7qdnfhirLMdFgy/TNukpQNQRhJaCF4docywSi887sH
+         0WSXfJXXFVE9mow8leg6eyLl+4Gmn0mJ5Lx3ljGALJ6pVPWj4v8O+ELH+Kp1AAX1NL1W
+         1Ptf2kV9YsC0Qcw48sY59NDU1MYLPGgaWQF4RgCJQHVw2MWd6mMQZRhKkinNufT8whSH
+         FVbg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oBbwWx3b;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-7490a451044sor172129b3a.4.2025.06.19.10.07.15
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd095bb605si1244856d6.447.2025.06.19.08.32.11
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 19 Jun 2025 10:07:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 19 Jun 2025 08:32:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oBbwWx3b;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750352835; x=1750957635; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Jll/2OF16vBpj1RgCeTtn0mBj/Ho38D8H1rIBCC+nOs=;
-        b=oBbwWx3b+Jc3sa5KMFRYeYxsPeROU+kALN8MysTbPULtnKorg9DjIOdy6IiuGPUWoa
-         98rd6whxAS5MtlVFwNxOeCPUDrLA37WTVL6Ed6U9VJ33Hm4ccSJQkKxrdo3FXZX9fIHH
-         A5tzly+4hEga7FLrZtOARSDGIebh+2faAh5frdejsZdVYiStyinUArEqrRnFa/qZ4uZl
-         +6EXzin1matXua66CRNHkNr3a4eRyNgxoIoI2swoAsUAT5WWOsvFRyI5lgR88lRNwNAQ
-         B9YxNgsbiS6Bv80h3PpgjZCjQYzOPjIPGc/DRB0Ek8cYeMM99qSzGLMsQu3IwDeirHx/
-         ckuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750352835; x=1750957635;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Jll/2OF16vBpj1RgCeTtn0mBj/Ho38D8H1rIBCC+nOs=;
-        b=eMmBRyyAbVKZUpCWHmjP/Szl2HAHfIOBqN64MuxIA5px0kL5KssGBIO5fT5QhImj5+
-         XUGfS0Fcrx5nWTRke8x9iMWlTcBnqii6BuqLLjrt0RKwaWTYmqz9+h6w3GnVQo6nOKKT
-         bxKywKkzfa2RI6pN6RJBsWFeTMfbNAejO9ynVqr977xafp2qg9FmrwTfZqrulAoaDwOD
-         njlb/s+CXmVHG0Al9tDx4A1Lysmyf4C6+3q5VjKA8kd62dwNilyhdMqashSJiUhRdt9F
-         CK6zO/9VxvhgragclW8X8iUMll/MEek9rd85iEJV5pSUu2DFOdN1YVufmScCbCllvCCB
-         gFtA==
-X-Forwarded-Encrypted: i=1; AJvYcCWDRpPWKC+YfHhc5SrtwarGIs6sVvAMvoNKQlaiEiOVjQvx43gUo7EaclRzRtXCEex8jpo8+aJNz4Momg==@linaro.org
-X-Gm-Message-State: AOJu0YwyjKzt3Y2A3ojg0AiLKYzPyEpo9X3FpNGkl7Zu7DDMxIgN9m/8
-	8f6vHGjmI6EMARg2wXd5WPe6qRyHC0FydCrrU25WuIPb1UtDMmBppbBImV5/erSDBPAWkQ==
-X-Gm-Gg: ASbGncvFJ57z52STRjkjhKOkOVhYofJMPDD9E5puv+PmsD3/Svd9F4e4bQUzXsn6t0f
-	RHy8frTiD9EH1Z7gViz1Xcsu5DQNDKQ1z9GPNPWb2jxXoDkiHA1m5xglcYw58uV99e7MPe4LYd9
-	yPhHblKlCn05s6QLaGt848Sk7yWyKMyGNqYIoptUKjGNAX+Awjo4suXRqrvIx6Xz5PrNB51Gs/r
-	qYmm3eRwbBKhY6GtAlu4SoGWvB9X8QHVLQ0FrhwSI+XEodKifuZA5EU/lDwLBslKyROGNowTIGe
-	EtVn+fBb8nAbqouQM4VplL8abew5MRCJ/hWuzSitu+wcKtE0Xr+C5E7SEYTCIHpgEp6cFzIQ6Q=
-	=
-X-Google-Smtp-Source: AGHT+IEcQD+iM5dzT1mlqtovayUFGR9kigzcwB+Npw7tH3Lxerm48HzH0/niYYRWnfq99fe88FvJMw==
-X-Received: by 2002:a05:6a20:e609:b0:216:1ea0:a526 with SMTP id adf61e73a8af0-21fbd5ddde0mr38311580637.40.1750352835306;
-        Thu, 19 Jun 2025 10:07:15 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from [192.168.0.102] ([186.215.60.20])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7490a64be0asm250750b3a.126.2025.06.19.10.07.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Jun 2025 10:07:14 -0700 (PDT)
-Message-ID: <53c901c4-f408-43f6-a9aa-49f8fed59e98@linaro.org>
-Date: Thu, 19 Jun 2025 14:07:35 -0300
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uSHEy-0003Gc-9z; Thu, 19 Jun 2025 11:31:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=0/7f=ZC=kaod.org=clg@ozlabs.org>)
+ id 1uSHEd-00039q-MN; Thu, 19 Jun 2025 11:31:31 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=0/7f=ZC=kaod.org=clg@ozlabs.org>)
+ id 1uSHEY-0004kE-A2; Thu, 19 Jun 2025 11:31:25 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bNPhg27bVz4xDf;
+ Fri, 20 Jun 2025 01:31:15 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bNPhZ70rCz4wj2;
+ Fri, 20 Jun 2025 01:31:10 +1000 (AEST)
+Message-ID: <6ffe00d3-4a64-4799-ae52-2b64f11c9173@kaod.org>
+Date: Thu, 19 Jun 2025 17:31:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 4/8] hw/arm/virt-acpi-build: Fix comment in build_iort
-To: eric.auger@redhat.com, qemu-devel@nongnu.org, philmd@linaro.org,
- mst@redhat.com
-Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, udo@hypervisor.org,
- ajones@ventanamicro.com, peter.maydell@linaro.org, imammedo@redhat.com,
- anisinha@redhat.com
-References: <20250616131824.425315-1-gustavo.romero@linaro.org>
- <20250616131824.425315-5-gustavo.romero@linaro.org>
- <db5aa1ab-cec7-4de1-b14f-bba978e7d7f7@redhat.com>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <db5aa1ab-cec7-4de1-b14f-bba978e7d7f7@redhat.com>
+Subject: Re: [PATCH v2] hw/arm/aspeed: add Catalina machine type
+To: Patrick Williams <patrick@stwcx.xyz>, Paolo Bonzini
+ <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20250619151458.2831859-1-patrick@stwcx.xyz>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250619151458.2831859-1-patrick@stwcx.xyz>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: s4eFwSMUMUDP
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=0/7f=ZC=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.069, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SjwV+j6dv4Us
 
-Hi Eric,
-
-On 6/17/25 10:22, Eric Auger wrote:
-> Hi Gustavo,
+On 6/19/25 17:14, Patrick Williams wrote:
+> Add the 'catalina-bmc' machine type based on the kernel DTS[1] as of
+> 6.16-rc2.  The i2c model is as complete as the current QEMU models
+> support, but in some cases I substituted devices that are close enough
+> for present functionality.  Strap registers are were verified with
+> hardware.
 > 
-> On 6/16/25 3:18 PM, Gustavo Romero wrote:
->> The comment about the mapping from SMMU to ITS is incorrect and it reads
->> "RC -> ITS". The code in question actually maps SMMU -> ITS, so the
->> mapping in question is not direct. The direct mapping, i.e., RC -> ITS,
->> is handled a bit further down in the code, in the else block, and we
->> take the opportunity to update that as well, adding "RC -> ITS" to the
->> text so it's easier to see it's the direct map to the ITS Group node.
->>
->> Signed-off-by Gustavo Romero <gustavo.romero@linaro.org>
->> ---
->>   hw/arm/virt-acpi-build.c | 14 +++++++++-----
->>   1 file changed, 9 insertions(+), 5 deletions(-)
->>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index 9eee284c80..6990bce3bb 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -407,23 +407,27 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>       if (vms->iommu == VIRT_IOMMU_SMMUV3) {
->>           AcpiIortIdMapping *range;
->>   
->> -        /* translated RIDs connect to SMMUv3 node: RC -> SMMUv3 -> ITS */
->> +        /* Map RIDs (input) from RC to SMMUv3 nodes: RC -> SMMUv3. */
-> yes this is what the code builds at this location.
->>           for (i = 0; i < smmu_idmaps->len; i++) {
->>               range = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
->> -            /* output IORT node is the smmuv3 node */
->> +            /* Output IORT node is the SMMUv3 node. */
->>               build_iort_id_mapping(table_data, range->input_base,
->>                                     range->id_count, smmu_offset);
->>           }
->>   
->> -        /* bypassed RIDs connect to ITS group node directly: RC -> ITS */
->> +        /* Map DeviceIDs (input) from SMMUv3 to ITS Group nodes: SMMU -> ITS. */
-> But here I am confused. To me the its_idmaps matches the idmap between
-> RC and ITS. I understand this is built from holes left by bypassed
-> buses. See the build_iort() implementation. The comment at
-
-ah, thanks! I see. Indeed, it's mapping the RC -> ITS, not the SMMU -> ITS.
-I'll fix it in v5.
-
-One thing that confused me, which I think is actually ok, is that the
-output ID range from SMMU 0x000-0xFFFF) overlaps the output ID range
-from the RC (e.g. 0x100-0xFFFF) because the SMMU output range is defined as
-always taking the whole 16-bit range in:
-
-[...]
-    366         build_append_int_noprefix(table_data, irq + 1, 4); /* PRI */
-    367         build_append_int_noprefix(table_data, irq + 3, 4); /* GERR */
-    368         build_append_int_noprefix(table_data, irq + 2, 4); /* Sync */
-    369         build_append_int_noprefix(table_data, 0, 4); /* Proximity domain */
-    370         /* DeviceID mapping index (ignored since interrupts are GSIV based) */
-    371         build_append_int_noprefix(table_data, 0, 4);
-    372
-    373         /* output IORT node is the ITS group node (the first node) */
-    374         build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET); <=========== HERE
-    375     }
-    376
-    377     /* Table 17 Root Complex Node */
-
-
-I think that's ok since ITS can disambiguate the Device IDs from SMMU and from RC.
-
-
->          /*
->           * Split the whole RIDs by mapping from RC to SMMU,
->           * build the ID mapping from RC to ITS directly.
->           */
->          for (i = 0; i < smmu_idmaps->len; i++) {
->              idmap = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
+> This has been tested with an openbmc image built from [2].
 > 
->              if (next_range.input_base < idmap->input_base) {
->                  next_range.id_count = idmap->input_base -
-> next_range.input_base;
->                  g_array_append_val(its_idmaps, next_range);
->              }
+> Add a functional test in line with Bletchley, pointing at an image
+> obtained from the OpenBMC Jenkins server.
 > 
->              next_range.input_base = idmap->input_base + idmap->id_count;
->          }
+> [1]: https://github.com/torvalds/linux/blob/v6.16-rc2/arch/arm/boot/dts/aspeed/aspeed-bmc-facebook-catalina.dts
+> [2]: https://github.com/openbmc/openbmc/commit/5bc73ec261f981d5e586bda5ac78eb0cbd5f92b0
 > 
-> is not crystal clear but it looks like filling the holes into its_idmap.
-
-k, I'll create a helper as you suggested in 7/8 to populate the its_idmaps.
-
-  > Besides there is another "Its group" instance to be replaced by ITS Group
-
-Pardon, what do you mean? Another text to be replaced or it's just a comment
-about the "else" block when smmu is off?
-
-Thanks!
 
 
-Cheers,
-Gustavo
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
-> Eric
+Thanks,
+
+C.
+
+
+> ---
+>   hw/arm/Kconfig                               |   1 +
+>   hw/arm/aspeed.c                              | 200 +++++++++++++++++++
+>   tests/functional/meson.build                 |   2 +
+>   tests/functional/test_arm_aspeed_catalina.py |  25 +++
+>   4 files changed, 228 insertions(+)
+>   create mode 100755 tests/functional/test_arm_aspeed_catalina.py
 > 
->>           for (i = 0; i < its_idmaps->len; i++) {
->>               range = &g_array_index(its_idmaps, AcpiIortIdMapping, i);
->> -            /* output IORT node is the ITS group node (the first node) */
->> +            /* Output IORT node is the ITS Group node (the first node). */
->>               build_iort_id_mapping(table_data, range->input_base,
->>                                     range->id_count, IORT_NODE_OFFSET);
->>           }
->>       } else {
->> -        /* output IORT node is the ITS group node (the first node) */
->> +        /*
->> +         * Map bypassed RIDs (input) (don't go through the SMMU) to ITS Group
->> +         * nodes: RC -> ITS.
->> +         * Output IORT node is the ITS Group node (the first node).
->> +         */
->>           build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET);
->>       }
->>   
-> 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index f543d944c3..6ea86534d5 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -532,6 +532,7 @@ config ASPEED_SOC
+>       select I2C
+>       select DPS310
+>       select PCA9552
+> +    select PCA9554
+>       select SERIAL_MM
+>       select SMBUS_EEPROM
+>       select PCA954X
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index d0b333646e..b0965ef8a0 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -19,6 +19,7 @@
+>   #include "hw/i2c/i2c_mux_pca954x.h"
+>   #include "hw/i2c/smbus_eeprom.h"
+>   #include "hw/gpio/pca9552.h"
+> +#include "hw/gpio/pca9554.h"
+>   #include "hw/nvram/eeprom_at24c.h"
+>   #include "hw/sensor/tmp105.h"
+>   #include "hw/misc/led.h"
+> @@ -1003,6 +1004,180 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+>   }
+>   
+>   #define TYPE_TMP421 "tmp421"
+> +#define TYPE_DS1338 "ds1338"
+> +
+> +/* Catalina hardware value */
+> +#define CATALINA_BMC_HW_STRAP1 0x00002002
+> +#define CATALINA_BMC_HW_STRAP2 0x00000800
+> +
+> +#define CATALINA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+> +
+> +static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+> +{
+> +    /* Reference from v6.16-rc2 aspeed-bmc-facebook-catalina.dts */
+> +
+> +    AspeedSoCState *soc = bmc->soc;
+> +    I2CBus *i2c[16] = {};
+> +    I2CSlave *i2c_mux;
+> +
+> +    /* busses 0-15 are all used. */
+> +    for (int i = 0; i < ARRAY_SIZE(i2c); i++) {
+> +        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
+> +    }
+> +
+> +    /* &i2c0 */
+> +    /* i2c-mux@71 (PCA9546) on i2c0 */
+> +    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x71);
+> +
+> +    /* i2c-mux@72 (PCA9546) on i2c0 */
+> +    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x72);
+> +
+> +    /* i2c0mux1ch1 */
+> +    /* io_expander7 - pca9535@20 */
+> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
+> +                            TYPE_PCA9552, 0x20);
+> +    /* eeprom@50 */
+> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB);
+> +
+> +    /* i2c-mux@73 (PCA9546) on i2c0 */
+> +    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x73);
+> +
+> +    /* i2c-mux@75 (PCA9546) on i2c0 */
+> +    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x75);
+> +
+> +    /* i2c-mux@76 (PCA9546) on i2c0 */
+> +    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x76);
+> +
+> +    /* i2c0mux4ch1 */
+> +    /* io_expander8 - pca9535@21 */
+> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
+> +                            TYPE_PCA9552, 0x21);
+> +    /* eeprom@50 */
+> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB);
+> +
+> +    /* i2c-mux@77 (PCA9546) on i2c0 */
+> +    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x77);
+> +
+> +
+> +    /* &i2c1 */
+> +    /* i2c-mux@70 (PCA9548) on i2c1 */
+> +    i2c_mux = i2c_slave_create_simple(i2c[1], TYPE_PCA9548, 0x70);
+> +    /* i2c1mux0ch0 */
+> +    /* ina238@41 - no model */
+> +    /* ina238@42 - no model */
+> +    /* ina238@44 - no model */
+> +    /* i2c1mux0ch1 */
+> +    /* ina238@41 - no model */
+> +    /* ina238@43 - no model */
+> +    /* i2c1mux0ch4 */
+> +    /* ltc4287@42 - no model */
+> +    /* ltc4287@43 - no model */
+> +
+> +    /* i2c1mux0ch5 */
+> +    /* eeprom@54 */
+> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 5), 0x54, 8 * KiB);
+> +    /* tpm75@4f */
+> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), TYPE_TMP75, 0x4f);
+> +
+> +    /* i2c1mux0ch6 */
+> +    /* io_expander5 - pca9554@27 */
+> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6),
+> +                            TYPE_PCA9554, 0x27);
+> +    /* io_expander6 - pca9555@25 */
+> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6),
+> +                            TYPE_PCA9552, 0x25);
+> +    /* eeprom@51 */
+> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 6), 0x51, 8 * KiB);
+> +
+> +    /* i2c1mux0ch7 */
+> +    /* eeprom@53 */
+> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 7), 0x53, 8 * KiB);
+> +    /* temperature-sensor@4b - tmp75 */
+> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 7), TYPE_TMP75, 0x4b);
+> +
+> +    /* &i2c2 */
+> +    /* io_expander0 - pca9555@20 */
+> +    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x20);
+> +    /* io_expander0 - pca9555@21 */
+> +    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x21);
+> +    /* io_expander0 - pca9555@27 */
+> +    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x27);
+> +    /* eeprom@50 */
+> +    at24c_eeprom_init(i2c[2], 0x50, 8 * KiB);
+> +    /* eeprom@51 */
+> +    at24c_eeprom_init(i2c[2], 0x51, 8 * KiB);
+> +
+> +    /* &i2c5 */
+> +    /* i2c-mux@70 (PCA9548) on i2c5 */
+> +    i2c_mux = i2c_slave_create_simple(i2c[5], TYPE_PCA9548, 0x70);
+> +    /* i2c5mux0ch6 */
+> +    /* eeprom@52 */
+> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 6), 0x52, 8 * KiB);
+> +    /* i2c5mux0ch7 */
+> +    /* ina230@40 - no model */
+> +    /* ina230@41 - no model */
+> +    /* ina230@44 - no model */
+> +    /* ina230@45 - no model */
+> +
+> +    /* &i2c6 */
+> +    /* io_expander3 - pca9555@21 */
+> +    i2c_slave_create_simple(i2c[6], TYPE_PCA9552, 0x21);
+> +    /* rtc@6f - nct3018y */
+> +    i2c_slave_create_simple(i2c[6], TYPE_DS1338, 0x6f);
+> +
+> +    /* &i2c9 */
+> +    /* io_expander4 - pca9555@4f */
+> +    i2c_slave_create_simple(i2c[9], TYPE_PCA9552, 0x4f);
+> +    /* temperature-sensor@4b - tpm75 */
+> +    i2c_slave_create_simple(i2c[9], TYPE_TMP75, 0x4b);
+> +    /* eeprom@50 */
+> +    at24c_eeprom_init(i2c[9], 0x50, 8 * KiB);
+> +    /* eeprom@56 */
+> +    at24c_eeprom_init(i2c[9], 0x56, 8 * KiB);
+> +
+> +    /* &i2c10 */
+> +    /* temperature-sensor@1f - tpm421 */
+> +    i2c_slave_create_simple(i2c[10], TYPE_TMP421, 0x1f);
+> +    /* eeprom@50 */
+> +    at24c_eeprom_init(i2c[10], 0x50, 8 * KiB);
+> +
+> +    /* &i2c11 */
+> +    /* ssif-bmc@10 - no model */
+> +
+> +    /* &i2c12 */
+> +    /* eeprom@50 */
+> +    at24c_eeprom_init(i2c[12], 0x50, 8 * KiB);
+> +
+> +    /* &i2c13 */
+> +    /* eeprom@50 */
+> +    at24c_eeprom_init(i2c[13], 0x50, 8 * KiB);
+> +    /* eeprom@54 */
+> +    at24c_eeprom_init(i2c[13], 0x54, 256);
+> +    /* eeprom@55 */
+> +    at24c_eeprom_init(i2c[13], 0x55, 256);
+> +    /* eeprom@57 */
+> +    at24c_eeprom_init(i2c[13], 0x57, 256);
+> +
+> +    /* &i2c14 */
+> +    /* io_expander9 - pca9555@10 */
+> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x10);
+> +    /* io_expander10 - pca9555@11 */
+> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x11);
+> +    /* io_expander11 - pca9555@12 */
+> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x12);
+> +    /* io_expander12 - pca9555@13 */
+> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x13);
+> +    /* io_expander13 - pca9555@14 */
+> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x14);
+> +    /* io_expander14 - pca9555@15 */
+> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x15);
+> +
+> +    /* &i2c15 */
+> +    /* temperature-sensor@1f - tmp421 */
+> +    i2c_slave_create_simple(i2c[15], TYPE_TMP421, 0x1f);
+> +    /* eeprom@52 */
+> +    at24c_eeprom_init(i2c[15], 0x52, 8 * KiB);
+> +}
+>   
+>   static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
+>   {
+> @@ -1585,6 +1760,27 @@ static void aspeed_machine_bletchley_class_init(ObjectClass *oc,
+>       aspeed_machine_class_init_cpus_defaults(mc);
+>   }
+>   
+> +static void aspeed_machine_catalina_class_init(ObjectClass *oc,
+> +                                               const void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> +
+> +    mc->desc       = "Facebook Catalina BMC (Cortex-A7)";
+> +    amc->soc_name  = "ast2600-a3";
+> +    amc->hw_strap1 = CATALINA_BMC_HW_STRAP1;
+> +    amc->hw_strap2 = CATALINA_BMC_HW_STRAP2;
+> +    amc->fmc_model = "w25q01jvq";
+> +    amc->spi_model = NULL;
+> +    amc->num_cs    = 2;
+> +    amc->macs_mask = ASPEED_MAC2_ON;
+> +    amc->i2c_init  = catalina_bmc_i2c_init;
+> +    mc->auto_create_sdcard = true;
+> +    mc->default_ram_size = CATALINA_BMC_RAM_SIZE;
+> +    aspeed_machine_class_init_cpus_defaults(mc);
+> +    aspeed_machine_ast2600_class_emmc_init(oc);
+> +}
+> +
+>   static void fby35_reset(MachineState *state, ResetType type)
+>   {
+>       AspeedMachineState *bmc = ASPEED_MACHINE(state);
+> @@ -1877,6 +2073,10 @@ static const TypeInfo aspeed_machine_types[] = {
+>           .name          = MACHINE_TYPE_NAME("bletchley-bmc"),
+>           .parent        = TYPE_ASPEED_MACHINE,
+>           .class_init    = aspeed_machine_bletchley_class_init,
+> +    }, {
+> +        .name          = MACHINE_TYPE_NAME("catalina-bmc"),
+> +        .parent        = TYPE_ASPEED_MACHINE,
+> +        .class_init    = aspeed_machine_catalina_class_init,
+>       }, {
+>           .name          = MACHINE_TYPE_NAME("fby35-bmc"),
+>           .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
+> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+> index e9f19d54a2..11c32a8529 100644
+> --- a/tests/functional/meson.build
+> +++ b/tests/functional/meson.build
+> @@ -31,6 +31,7 @@ test_timeouts = {
+>     'arm_aspeed_ast2500' : 720,
+>     'arm_aspeed_ast2600' : 1200,
+>     'arm_aspeed_bletchley' : 480,
+> +  'arm_aspeed_catalina' : 480,
+>     'arm_aspeed_rainier' : 480,
+>     'arm_bpim2u' : 500,
+>     'arm_collie' : 180,
+> @@ -124,6 +125,7 @@ tests_arm_system_thorough = [
+>     'arm_aspeed_ast2500',
+>     'arm_aspeed_ast2600',
+>     'arm_aspeed_bletchley',
+> +  'arm_aspeed_catalina',
+>     'arm_aspeed_rainier',
+>     'arm_bpim2u',
+>     'arm_canona1100',
+> diff --git a/tests/functional/test_arm_aspeed_catalina.py b/tests/functional/test_arm_aspeed_catalina.py
+> new file mode 100755
+> index 0000000000..dc2f24e7b4
+> --- /dev/null
+> +++ b/tests/functional/test_arm_aspeed_catalina.py
+> @@ -0,0 +1,25 @@
+> +#!/usr/bin/env python3
+> +#
+> +# Functional test that boots the ASPEED machines
+> +#
+> +# SPDX-License-Identifier: GPL-2.0-or-later
+> +
+> +from qemu_test import Asset
+> +from aspeed import AspeedTest
+> +
+> +
+> +class CatalinaMachine(AspeedTest):
+> +
+> +    ASSET_CATALINA_FLASH = Asset(
+> +        'https://github.com/legoater/qemu-aspeed-boot/raw/a866feb5ef81245b4827a214584bf6bcc72939f6/images/catalina-bmc/obmc-phosphor-image-catalina-20250619123021.static.mtd.xz',
+> +        '287402e1ba021991e06be1d098f509444a02a3d81a73a932f66528b159e864f9')
+> +
+> +    def test_arm_ast2600_catalina_openbmc(self):
+> +        image_path = self.uncompress(self.ASSET_CATALINA_FLASH)
+> +
+> +        self.do_test_arm_aspeed_openbmc('catalina-bmc', image=image_path,
+> +                                        uboot='2019.04', cpu_id='0xf00',
+> +                                        soc='AST2600 rev A3')
+> +
+> +if __name__ == '__main__':
+> +    AspeedTest.main()
+

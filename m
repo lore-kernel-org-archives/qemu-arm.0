@@ -1,139 +1,130 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp24479njc;
-        Wed, 18 Jun 2025 20:59:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWbzMZ3DocWjNep1ecc01gUuigdYfDTj16MB7wbeuHnrA8oKxOsgoykbVhOFwS8bSbtmIKy8QD0VaNKWA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEXE834Hx2V+iC6ARuQ/KpjqRS/kcLCvtuBdmYV9gSKvfUA4UFamRZUqU5hYAwiZtNySwn1
-X-Received: by 2002:ad4:5c6b:0:b0:6f8:aebb:71c1 with SMTP id 6a1803df08f44-6fb47725e08mr294670746d6.4.1750305551010;
-        Wed, 18 Jun 2025 20:59:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750305551; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp57347njc;
+        Wed, 18 Jun 2025 22:50:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWsHsf7mhBgJ8H9YWC2OIegwqNKgxpYtZBiN6OzDG/kik53ntTbHR5EdVgAsm6feZPQFWu51ca4fRlnow==@linaro.org
+X-Google-Smtp-Source: AGHT+IEmh/8najSJ63/n/ApYEisv3//IBnoijaRBoC5fCibCZpuaxB2t6kISVMWhxnf2gmokIhey
+X-Received: by 2002:a05:620a:298c:b0:7d0:a101:f33a with SMTP id af79cd13be357-7d3c6cdc310mr3082850985a.27.1750312229790;
+        Wed, 18 Jun 2025 22:50:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750312229; cv=none;
         d=google.com; s=arc-20240605;
-        b=iBDz1Hk0rdK78AVnXmLUIMQ0Gsq6gfejrX3VxKEkyO2Q6C+mCMH931WGMyfHefa4WB
-         xHtOTRVEldJxXNqXRcsapWyDQL/Go7rncL0K/8t7wmYkc7QUQNjwA+/HOxvyCdjWR87C
-         zdV86z8TUERlZc2D7HQbOwBp4UgsaEcMuVqopNNaXs+rj7XCZmCXHWZEIPILlPgOClwR
-         LeYO8/WTXxrW7c0QC+KscVkbkBMidoLAFuUZ9dPvivCrrZseyC72xg2ID7iq/hoTIpZd
-         lIjn2esbeuB091dGNhjmeqvL7ERtLB3jj79Fg0mX6Hgpm4fF6caYGTSygYnmq2v4qwbz
-         1IbQ==
+        b=b3AQ3WM5flhuAMdhyikbqsfEnZF8xbXaM2JFcEhr2Cy+UBQ1aVBvyhhayxDo+lxiIA
+         PEDTiJBi8RL/b7yaIkbFOT1BojFGy+oZxmsT/Sm3lvLZQEn8ebY5AN0xh/aS1x47Lzd8
+         r2u8D0bvZ/Ly6CJ/fkGg8oL6NyaCzSEB3b9mbo3KfvNdVWbL1XWQsxKW3GFlA+Ig+tr5
+         BrOk9bN47co8bxXPpSY5hC+qCcPsH65M9gU73ZNbbeOwGHy+Lcoe2NRDBIGZ+5lb4+Gt
+         eJbMqXXrQ46Msf5EjZJ7CBkjb2p988ooC/TzqDWpvQSRNQxdWfmdDdDt04I+W4FxqHvY
+         Smng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:feedback-id
-         :dkim-signature:dkim-signature;
-        bh=uELtW7gaBzLgYxN3mCnUyaNa+RDpvLSxxNt7YAUFU6g=;
-        fh=d8Sj57FkTYBQkLKcBHS3PsjoABd0vAfHvR/kKegtS2Q=;
-        b=Xnr/aoypvpONc/H+cUwGIuzFgmz/2py4QlIgK8pKeCqe6oaJTll15EIqTybfF5Uv49
-         sDZq9uqzKwkzfXf6YjAw4E3jRHfOBaLZMNWTXB5NKtFya2szbqJ4nZ+L6aOyAfhRbEbM
-         NC8L+9oT0fPm6KKTe+83pmY4y9N4C9koVR0phOKc0F4U2pqFEvlXog5C8HJAGPpPgcc9
-         Y6JYGH4J17sJOPKb6NNNaohgLGTvpP6bqyz0BYw9gWmCiEUSJA/QdkHNZdT6qnYRS5Ca
-         9tBCbgsuRnEdhbV0LV0Eo5ZBidcnpTkpb9l2DVTP3NTiprVHlj8kr+KkzTTmOCp7E29g
-         cjZA==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=TZh3LaKlZXuibq0UTUvSGlqXRopVNgQRfKn+xGyEwwc=;
+        fh=1ern3bSMH12CRsFMCtTQBDSRdPd8TZGqUZamyAoCemg=;
+        b=gBZxT3dfc7TrVlsTvDpTd3tbooNwse5vj4GOKBHOoTxtK6de1MXlhLL3rIKLosnrMr
+         06KgPwVXUYPQfvtZYC2k+cwb4pdnGlEJ3nE+6GlxSt2NL9cCrTZsxJb2pcUq1VZZY8lE
+         gFcnQNW6NN8h8F4vo4EhAJ8j1+EQiv3x2s0n2WceKl3cHmdpOOYc2TmcRZrkYBXOSbFG
+         SMCmbpTgCtWp9MpD+mCVvzKS4R8WmTkEzjo8pI3ezX5Uzb+3xwrOaW5ZNagVa6AtixHw
+         hRtnaP6RRNAHYt2DlC/JeesaDOl6KrE8IYUVi/crdOPLNDD/p5hQkOAP4rEMctE0QeN0
+         tSqg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@stwcx.xyz header.s=fm3 header.b=nxrgJaGj;
-       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=aS6OT7r2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd015e5971si6517246d6.254.2025.06.18.20.59.10
+        by mx.google.com with ESMTPS id af79cd13be357-7d3b8f29bbfsi1553916385a.508.2025.06.18.22.50.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Jun 2025 20:59:10 -0700 (PDT)
+        Wed, 18 Jun 2025 22:50:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@stwcx.xyz header.s=fm3 header.b=nxrgJaGj;
-       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=aS6OT7r2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uS6Qa-0006Ot-Pv; Wed, 18 Jun 2025 23:59:05 -0400
+	id 1uS8A9-0006Lp-8W; Thu, 19 Jun 2025 01:50:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
- id 1uS6QY-0006Oc-Kz; Wed, 18 Jun 2025 23:59:03 -0400
-Received: from fhigh-b6-smtp.messagingengine.com ([202.12.124.157])
+ (Exim 4.90_1) (envelope-from <SRS0=0/7f=ZC=kaod.org=clg@ozlabs.org>)
+ id 1uS8A7-0006LO-KV; Thu, 19 Jun 2025 01:50:11 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
- id 1uS6QW-0001LL-Ev; Wed, 18 Jun 2025 23:59:02 -0400
-Received: from phl-compute-09.internal (phl-compute-09.phl.internal
- [10.202.2.49])
- by mailfhigh.stl.internal (Postfix) with ESMTP id 8554C2540185;
- Wed, 18 Jun 2025 23:58:58 -0400 (EDT)
-Received: from phl-mailfrontend-01 ([10.202.2.162])
- by phl-compute-09.internal (MEProxy); Wed, 18 Jun 2025 23:58:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=stwcx.xyz; h=cc
- :cc:content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
- :to; s=fm3; t=1750305538; x=1750391938; bh=uELtW7gaBzLgYxN3mCnUy
- aNa+RDpvLSxxNt7YAUFU6g=; b=nxrgJaGjcoUhCnU1WKcx+loUjL0JbY2sb0r0G
- DZGLfkJk/4mHG6Ue0S8JFjaBfTh0Vy+twQd0JkzX7lCh8OjAIL0auB0HIOrjK+QM
- b79GTYZjNu76Vuvq6r0Rm+3G2San8h+T0p70HEgfPSD5Pjrl4oRXqFzJb5cXawRy
- kQ6OFjIgdFzW2I3jDBI/A0utVemZeB4YPr5cnre9FCDIgFntUbGH3qmC/7m0SGiL
- QRbsZpzw56/GyHbnx6xfNIB6f6xw8KOV28JPrNk7XHfhSWaSojjglXDlnFHqlC6E
- el3W4k7YQibUQI6OWN6aPywBKB05QFUaFUcWCpcYJrmkuNEXg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
- 1750305538; x=1750391938; bh=uELtW7gaBzLgYxN3mCnUyaNa+RDpvLSxxNt
- 7YAUFU6g=; b=aS6OT7r2RtQxQrz7FG9oUV9m0B2BPFAZBsjpX4b6Fkr8U5ArS6x
- lF8b/zoRQVPxye4dIACRegJwB/OCg4u+/k7oYwcVahW4iMeoFiCLkxMFPUecFsW+
- /5anKCFC8VpQrRj4rwvCkJbOcDiNyui1goPaQObLd7CdZqnb/bzr1STEpkQEw9HO
- /c9cX3RW+f7iWF+73ZLzxVb6Uz2ROj+8EscYh0/In4+USsydytVL5sAOLokxn9zd
- 0/hGCEGtsFs65ZqANiHM8pgd6qnoPTA/dTu6FRfmshfLtyHA5WOOoGeGZPI+7fIT
- E+ToDb5LV9eqPBRC7PCA9g3nNEW7UsZWgOg==
-X-ME-Sender: <xms:AYtTaLjyfcr-rL1dp0X4b9roHZ2IgceK1DET5Pf08hzTxqiypVUImw>
- <xme:AYtTaIDER_lQlPLemeNW45gH7ZlA08rvmSvikm72Q-jG5rjMnlP9_5EduVa08Lm9w
- lKKeMYZCI-YHJO5das>
-X-ME-Received: <xmr:AYtTaLECeru7xPnMKe8HFarrcL0M_hrrfw8Xh9wnj1QTbLBE8wcNd3WOOD4>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddvgdeghedtucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
- rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnh
- htshculddquddttddmnegfrhhlucfvnfffucdljedtmdenucfjughrpefhvfevufffkffo
- ggfgsedtkeertdertddtnecuhfhrohhmpefrrghtrhhitghkucghihhllhhirghmshcuoe
- hprghtrhhitghksehsthiftgigrdighiiiqeenucggtffrrghtthgvrhhnpeevtdevgfdt
- hfefveejudelheeghefhhfdtteetheehudeiueefhfetkeejleefteenucevlhhushhtvg
- hrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehprghtrhhitghksehsthif
- tgigrdighiiipdhnsggprhgtphhtthhopedutddpmhhouggvpehsmhhtphhouhhtpdhrtg
- hpthhtoheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepphgvthgvrhdrmhgrhigu
- vghllheslhhinhgrrhhordhorhhgpdhrtghpthhtohepshhtvghvvghnpghlvggvsegrsh
- hpvggvughtvggthhdrtghomhdprhgtphhtthhopehlvggvthhrohihsehgmhgrihhlrdgt
- ohhmpdhrtghpthhtohepjhgrmhhinhgplhhinhesrghsphgvvgguthgvtghhrdgtohhmpd
- hrtghpthhtoheprghnughrvgifsegtohguvggtohhnshhtrhhutghtrdgtohhmrdgruhdp
- rhgtphhtthhopehjohgvlhesjhhmshdrihgurdgruhdprhgtphhtthhopehprghtrhhitg
- hksehsthiftgigrdighiiipdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdr
- ohhrgh
-X-ME-Proxy: <xmx:AYtTaISXba-70bos3tdbUQldWhy4P12aUKotJJb7yYunGXXoBQ7l9g>
- <xmx:AYtTaIzfvYkZ0wgj69d-RLNKU9vBV0aoRBcSE8shKwq-Yh4ZUlapFg>
- <xmx:AYtTaO6SpjptC9cU18Yfg3yO5gAqJVCONIlbs6nv4kQlcl8Zw41fXA>
- <xmx:AYtTaNz08-rUIwKmY3JpjOnzxhXmDgbz6Au1kZsu-KzAm0xrUUhm0g>
- <xmx:AotTaN1rmNDk-hG2Tzalhi17KWhJyF1zohQqdSegWW77MqrLmyLkuwDz>
-Feedback-ID: i68a1478a:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 18 Jun 2025 23:58:57 -0400 (EDT)
-From: Patrick Williams <patrick@stwcx.xyz>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>,
+ (Exim 4.90_1) (envelope-from <SRS0=0/7f=ZC=kaod.org=clg@ozlabs.org>)
+ id 1uS8A4-0007nY-EY; Thu, 19 Jun 2025 01:50:11 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bN8ny1JRgz4xDb;
+ Thu, 19 Jun 2025 15:49:58 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bN8nq3M06z4wj2;
+ Thu, 19 Jun 2025 15:49:50 +1000 (AEST)
+Message-ID: <77c90f31-801f-48e7-b35c-db202a022769@kaod.org>
+Date: Thu, 19 Jun 2025 07:49:47 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/arm/aspeed: add Catalina machine type
+To: Patrick Williams <patrick@stwcx.xyz>, Paolo Bonzini
+ <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
-Cc: Patrick Williams <patrick@stwcx.xyz>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: [PATCH] hw/arm/aspeed: bletchley: update hw strap values
-Date: Wed, 18 Jun 2025 23:58:50 -0400
-Message-ID: <20250619035850.2682690-1-patrick@stwcx.xyz>
-X-Mailer: git-send-email 2.49.0
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=202.12.124.157; envelope-from=patrick@stwcx.xyz;
- helo=fhigh-b6-smtp.messagingengine.com
-X-Spam_score_int: 17
-X-Spam_score: 1.7
-X-Spam_bar: +
-X-Spam_report: (1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FROM_SUSPICIOUS_NTLD=0.498,
- FROM_SUSPICIOUS_NTLD_FP=1.997, PDS_OTHER_BAD_TLD=1.997, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20250619034338.2678536-1-patrick@stwcx.xyz>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250619034338.2678536-1-patrick@stwcx.xyz>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=0/7f=ZC=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.067, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -148,38 +139,281 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fyJ3lPzq4cCi
+X-TUID: omEeSG3EDAm4
 
-Update the Bletchley hardware strap register values
-per actual hardware:
-```
-root@bmc:~# devmem 0x1e6e2500
-0x00002000
-root@bmc:~# devmem 0x1e6e2510
-0x00000801
-```
+Hello Patrick,
 
-Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
----
- hw/arm/aspeed.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+On 6/19/25 05:43, Patrick Williams wrote:
+> Add the 'catalina-bmc' machine type based on the kernel DTS[1] as of
+> 6.16-rc2.  The i2c model is as complete as the current QEMU models
+> support, but in some cases I substituted devices that are close enough
+> for present functionality.  Strap registers are were verified with
+> hardware.
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index b0965ef8a0..94897505f8 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -198,9 +198,8 @@ struct AspeedMachineState {
- #define FUJI_BMC_HW_STRAP2    0x00000000
- 
- /* Bletchley hardware value */
--/* TODO: Leave same as EVB for now. */
--#define BLETCHLEY_BMC_HW_STRAP1 AST2600_EVB_HW_STRAP1
--#define BLETCHLEY_BMC_HW_STRAP2 AST2600_EVB_HW_STRAP2
-+#define BLETCHLEY_BMC_HW_STRAP1 0x00002000
-+#define BLETCHLEY_BMC_HW_STRAP2 0x00000801
- 
- /* Qualcomm DC-SCM hardware value */
- #define QCOM_DC_SCM_V1_BMC_HW_STRAP1  0x00000000
--- 
-2.49.0
+The change looks good.
+
+> This has been tested with an openbmc image built from [2].
+> 
+> [1]: https://github.com/torvalds/linux/blob/v6.16-rc2/arch/arm/boot/dts/aspeed/aspeed-bmc-facebook-catalina.dts
+> [2]: https://github.com/openbmc/openbmc/commit/5bc73ec261f981d5e586bda5ac78eb0cbd5f92b0
+
+Could you please also provide a functional test using this build ?
+(same question for fuji-bmc and fby35-bmc if still possible)
+
+Thanks,
+
+C.
+
+
+> 
+> Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
+> ---
+>   hw/arm/Kconfig  |   1 +
+>   hw/arm/aspeed.c | 200 ++++++++++++++++++++++++++++++++++++++++++++++++
+>   2 files changed, 201 insertions(+)
+> 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index f543d944c3..6ea86534d5 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -532,6 +532,7 @@ config ASPEED_SOC
+>       select I2C
+>       select DPS310
+>       select PCA9552
+> +    select PCA9554
+>       select SERIAL_MM
+>       select SMBUS_EEPROM
+>       select PCA954X
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index d0b333646e..b0965ef8a0 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -19,6 +19,7 @@
+>   #include "hw/i2c/i2c_mux_pca954x.h"
+>   #include "hw/i2c/smbus_eeprom.h"
+>   #include "hw/gpio/pca9552.h"
+> +#include "hw/gpio/pca9554.h"
+>   #include "hw/nvram/eeprom_at24c.h"
+>   #include "hw/sensor/tmp105.h"
+>   #include "hw/misc/led.h"
+> @@ -1003,6 +1004,180 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+>   }
+>   
+>   #define TYPE_TMP421 "tmp421"
+> +#define TYPE_DS1338 "ds1338"
+> +
+> +/* Catalina hardware value */
+> +#define CATALINA_BMC_HW_STRAP1 0x00002002
+> +#define CATALINA_BMC_HW_STRAP2 0x00000800
+> +
+> +#define CATALINA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+> +
+> +static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+> +{
+> +    /* Reference from v6.16-rc2 aspeed-bmc-facebook-catalina.dts */
+> +
+> +    AspeedSoCState *soc = bmc->soc;
+> +    I2CBus *i2c[16] = {};
+> +    I2CSlave *i2c_mux;
+> +
+> +    /* busses 0-15 are all used. */
+> +    for (int i = 0; i < ARRAY_SIZE(i2c); i++) {
+> +        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
+> +    }
+> +
+> +    /* &i2c0 */
+> +    /* i2c-mux@71 (PCA9546) on i2c0 */
+> +    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x71);
+> +
+> +    /* i2c-mux@72 (PCA9546) on i2c0 */
+> +    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x72);
+> +
+> +    /* i2c0mux1ch1 */
+> +    /* io_expander7 - pca9535@20 */
+> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
+> +                            TYPE_PCA9552, 0x20);
+> +    /* eeprom@50 */
+> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB);
+> +
+> +    /* i2c-mux@73 (PCA9546) on i2c0 */
+> +    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x73);
+> +
+> +    /* i2c-mux@75 (PCA9546) on i2c0 */
+> +    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x75);
+> +
+> +    /* i2c-mux@76 (PCA9546) on i2c0 */
+> +    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x76);
+> +
+> +    /* i2c0mux4ch1 */
+> +    /* io_expander8 - pca9535@21 */
+> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
+> +                            TYPE_PCA9552, 0x21);
+> +    /* eeprom@50 */
+> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB);
+> +
+> +    /* i2c-mux@77 (PCA9546) on i2c0 */
+> +    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x77);
+> +
+> +
+> +    /* &i2c1 */
+> +    /* i2c-mux@70 (PCA9548) on i2c1 */
+> +    i2c_mux = i2c_slave_create_simple(i2c[1], TYPE_PCA9548, 0x70);
+> +    /* i2c1mux0ch0 */
+> +    /* ina238@41 - no model */
+> +    /* ina238@42 - no model */
+> +    /* ina238@44 - no model */
+> +    /* i2c1mux0ch1 */
+> +    /* ina238@41 - no model */
+> +    /* ina238@43 - no model */
+> +    /* i2c1mux0ch4 */
+> +    /* ltc4287@42 - no model */
+> +    /* ltc4287@43 - no model */
+> +
+> +    /* i2c1mux0ch5 */
+> +    /* eeprom@54 */
+> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 5), 0x54, 8 * KiB);
+> +    /* tpm75@4f */
+> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), TYPE_TMP75, 0x4f);
+> +
+> +    /* i2c1mux0ch6 */
+> +    /* io_expander5 - pca9554@27 */
+> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6),
+> +                            TYPE_PCA9554, 0x27);
+> +    /* io_expander6 - pca9555@25 */
+> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6),
+> +                            TYPE_PCA9552, 0x25);
+> +    /* eeprom@51 */
+> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 6), 0x51, 8 * KiB);
+> +
+> +    /* i2c1mux0ch7 */
+> +    /* eeprom@53 */
+> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 7), 0x53, 8 * KiB);
+> +    /* temperature-sensor@4b - tmp75 */
+> +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 7), TYPE_TMP75, 0x4b);
+> +
+> +    /* &i2c2 */
+> +    /* io_expander0 - pca9555@20 */
+> +    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x20);
+> +    /* io_expander0 - pca9555@21 */
+> +    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x21);
+> +    /* io_expander0 - pca9555@27 */
+> +    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x27);
+> +    /* eeprom@50 */
+> +    at24c_eeprom_init(i2c[2], 0x50, 8 * KiB);
+> +    /* eeprom@51 */
+> +    at24c_eeprom_init(i2c[2], 0x51, 8 * KiB);
+> +
+> +    /* &i2c5 */
+> +    /* i2c-mux@70 (PCA9548) on i2c5 */
+> +    i2c_mux = i2c_slave_create_simple(i2c[5], TYPE_PCA9548, 0x70);
+> +    /* i2c5mux0ch6 */
+> +    /* eeprom@52 */
+> +    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 6), 0x52, 8 * KiB);
+> +    /* i2c5mux0ch7 */
+> +    /* ina230@40 - no model */
+> +    /* ina230@41 - no model */
+> +    /* ina230@44 - no model */
+> +    /* ina230@45 - no model */
+> +
+> +    /* &i2c6 */
+> +    /* io_expander3 - pca9555@21 */
+> +    i2c_slave_create_simple(i2c[6], TYPE_PCA9552, 0x21);
+> +    /* rtc@6f - nct3018y */
+> +    i2c_slave_create_simple(i2c[6], TYPE_DS1338, 0x6f);
+> +
+> +    /* &i2c9 */
+> +    /* io_expander4 - pca9555@4f */
+> +    i2c_slave_create_simple(i2c[9], TYPE_PCA9552, 0x4f);
+> +    /* temperature-sensor@4b - tpm75 */
+> +    i2c_slave_create_simple(i2c[9], TYPE_TMP75, 0x4b);
+> +    /* eeprom@50 */
+> +    at24c_eeprom_init(i2c[9], 0x50, 8 * KiB);
+> +    /* eeprom@56 */
+> +    at24c_eeprom_init(i2c[9], 0x56, 8 * KiB);
+> +
+> +    /* &i2c10 */
+> +    /* temperature-sensor@1f - tpm421 */
+> +    i2c_slave_create_simple(i2c[10], TYPE_TMP421, 0x1f);
+> +    /* eeprom@50 */
+> +    at24c_eeprom_init(i2c[10], 0x50, 8 * KiB);
+> +
+> +    /* &i2c11 */
+> +    /* ssif-bmc@10 - no model */
+> +
+> +    /* &i2c12 */
+> +    /* eeprom@50 */
+> +    at24c_eeprom_init(i2c[12], 0x50, 8 * KiB);
+> +
+> +    /* &i2c13 */
+> +    /* eeprom@50 */
+> +    at24c_eeprom_init(i2c[13], 0x50, 8 * KiB);
+> +    /* eeprom@54 */
+> +    at24c_eeprom_init(i2c[13], 0x54, 256);
+> +    /* eeprom@55 */
+> +    at24c_eeprom_init(i2c[13], 0x55, 256);
+> +    /* eeprom@57 */
+> +    at24c_eeprom_init(i2c[13], 0x57, 256);
+> +
+> +    /* &i2c14 */
+> +    /* io_expander9 - pca9555@10 */
+> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x10);
+> +    /* io_expander10 - pca9555@11 */
+> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x11);
+> +    /* io_expander11 - pca9555@12 */
+> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x12);
+> +    /* io_expander12 - pca9555@13 */
+> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x13);
+> +    /* io_expander13 - pca9555@14 */
+> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x14);
+> +    /* io_expander14 - pca9555@15 */
+> +    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x15);
+> +
+> +    /* &i2c15 */
+> +    /* temperature-sensor@1f - tmp421 */
+> +    i2c_slave_create_simple(i2c[15], TYPE_TMP421, 0x1f);
+> +    /* eeprom@52 */
+> +    at24c_eeprom_init(i2c[15], 0x52, 8 * KiB);
+> +}
+>   
+>   static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
+>   {
+> @@ -1585,6 +1760,27 @@ static void aspeed_machine_bletchley_class_init(ObjectClass *oc,
+>       aspeed_machine_class_init_cpus_defaults(mc);
+>   }
+>   
+> +static void aspeed_machine_catalina_class_init(ObjectClass *oc,
+> +                                               const void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> +
+> +    mc->desc       = "Facebook Catalina BMC (Cortex-A7)";
+> +    amc->soc_name  = "ast2600-a3";
+> +    amc->hw_strap1 = CATALINA_BMC_HW_STRAP1;
+> +    amc->hw_strap2 = CATALINA_BMC_HW_STRAP2;
+> +    amc->fmc_model = "w25q01jvq";
+> +    amc->spi_model = NULL;
+> +    amc->num_cs    = 2;
+> +    amc->macs_mask = ASPEED_MAC2_ON;
+> +    amc->i2c_init  = catalina_bmc_i2c_init;
+> +    mc->auto_create_sdcard = true;
+> +    mc->default_ram_size = CATALINA_BMC_RAM_SIZE;
+> +    aspeed_machine_class_init_cpus_defaults(mc);
+> +    aspeed_machine_ast2600_class_emmc_init(oc);
+> +}
+> +
+>   static void fby35_reset(MachineState *state, ResetType type)
+>   {
+>       AspeedMachineState *bmc = ASPEED_MACHINE(state);
+> @@ -1877,6 +2073,10 @@ static const TypeInfo aspeed_machine_types[] = {
+>           .name          = MACHINE_TYPE_NAME("bletchley-bmc"),
+>           .parent        = TYPE_ASPEED_MACHINE,
+>           .class_init    = aspeed_machine_bletchley_class_init,
+> +    }, {
+> +        .name          = MACHINE_TYPE_NAME("catalina-bmc"),
+> +        .parent        = TYPE_ASPEED_MACHINE,
+> +        .class_init    = aspeed_machine_catalina_class_init,
+>       }, {
+>           .name          = MACHINE_TYPE_NAME("fby35-bmc"),
+>           .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
 

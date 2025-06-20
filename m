@@ -1,146 +1,175 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp794207njc;
-        Fri, 20 Jun 2025 03:40:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUvsWkJcngLTpwacTbsBLLD2Cc/J5CcK3XRgQKS0wZtjpA9JEp5vbAdA2nZ0Ic6kLpjbZpcnKasIc4eFA==@linaro.org
-X-Google-Smtp-Source: AGHT+IG7HEX+no7EDulyktS/nspH++FirTqcyqg5Et+vm7mSbC5UWh7DAGmzvceO25t15K00t1x6
-X-Received: by 2002:a05:6808:1383:b0:406:67b7:8b62 with SMTP id 5614622812f47-40ac6fe65f9mr1473510b6e.38.1750416034547;
-        Fri, 20 Jun 2025 03:40:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750416034; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp808768njc;
+        Fri, 20 Jun 2025 04:09:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUgz5iSMDVyOgAGcv/mfwGwnz8iBxrWZuqqnr/zY4W8PHTyjiJtcBIc14/Yhl2vq/NgO45Eb4yQjGvGcQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGd7PEnzwcS9hysBQBifmwMR00WzTp/xN5M49wiwGATyQ8WN27vhqCaaJHd+S1NfTsox1I/
+X-Received: by 2002:a05:6214:5f0e:b0:6fb:414:77b2 with SMTP id 6a1803df08f44-6fd0a599c8emr32211646d6.41.1750417787158;
+        Fri, 20 Jun 2025 04:09:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750417787; cv=none;
         d=google.com; s=arc-20240605;
-        b=HUzewaPVKbXbPR1fNoBWyFK7ZuH19PgtISLzfpBB2NxKpr8C/isxAZ3QRpa1A4/0eT
-         ZBxGF+QKJrPS+o4IFsGcAxee8YZ6s8Sb/IIfAAldeBKLrpgKIf3KigdRZA+gi6RsFQv3
-         Y1IXy03l9IcFXLjvtlIVUHnoDxi9yc7kDGeFedi/DN1hdgHmhxiDne++OeSE5rnxvhH9
-         CxNosjZycTAl7PnQjb7/ravbzq/oOpdDOZ09jClOEyRxVk38Lc7dMuQf46UDdZtDdk8O
-         i4aVkD1rHSRKXs0X8a4OOztSUuvHYfxWdPu5ylSYA2+iQh8VLx2xYu/EwJM04f7BuzHU
-         tXfw==
+        b=OR5h8FOwWWgQ1wrF5NpVz1EkxnWWHnYN34Don6VhQ6r8tRno8G1PeyFZQj0lXWnNxH
+         3szJz8YLt/yOLWLUYQKFqSJ703Ciw3T5/1E3jWExNLqoaaaViJIPGRBMjtN1v1Bofckq
+         MNkV0S43MNRZHe9oMzh7EwfK3TTpjdABbLdMA2HOhBylSDt1f/bEQQkt3s+gZMNWJpg8
+         6w3GnBN+9nZCtu5+xGDPygTuBFF59gjSZYUDpx7D5r0P1akd34R5e340BqdclMnrMg5F
+         /9WQgW6KryK/1G1t5K94h+//b7F51SzBOc+srP74tKxPsukGF2/or4BM9R/+ZTXY/lbM
+         Rp3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date;
-        bh=whbp4OcEZY/etS3636ICwd1VA+i4/5SalyT0CWgmCkM=;
-        fh=De5j/+RFiHp5oysg/kfBHcT9O0ASuV5hpNukEk4skqM=;
-        b=GNApUn/guryGVQ7kKeE9VsPFjj3HbUV0+J7T+KIVEmZqQkyqFBBwcBEmZhWZWR24Zw
-         Tc3MbFN+RX2S/C6Tf3PBtX8oaZh60f+5jQmsedtgdN6l0lChWupCEN/mr0UzufvZYNC1
-         q/EGOejVxGT+g01H4bD9MGtahAEDTmFFwupfgRpRKMhnT9ju2gr++/svIHlquWcu9Iww
-         6QTC9tgWWcf0mPoVyzbIYMbqS5XgSDJMUjT3Pt69ldeV+zSQbEOqvDVkIYDUerGqPxxQ
-         TWfP3Ghgp27WQUU6jIlBD4WD7JhGO/jAjzOK/y0XjzKq6MwKPCDTNCe8PKqKhCUtOVNQ
-         Ox0Q==;
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=0OqQ2p2Hgz2qUTH7fsIcOPZtBPS8OhJGUFJyKwSHi/Y=;
+        fh=dgoNERm0spHo5r2X5z2k/6T3UN1/aR/ebuEkwlsPpbM=;
+        b=Z37kyJjUKSlONpEwg/ypSCCyvoh7MB59tTG2avIXiAieLIEaD/ZvB+C2gaucsuZGem
+         gLwHlEInmiyBkUVDe+lkiGQz+p2vEgXnINGGQdhPGHmXg/6Yb8NW8epv4LQkGRUZW1N/
+         liVv6H+JYbEtEEE4Sj97vh4C+LpEh51mL2yxeg3FIvVRxyJnRs8AkUutAgfoVTz9aRb/
+         CjQSKwOGRVfCM5qlAZW53jtRTcBWy7VO69EBRIB0nyPLjsMk6QFntImw9M+Y2ghv6fDx
+         L6QQLqWCKveWxOKSrNGUj+eNUf6n59Wf3s8oasrQZ+I5gVR/wVgQoETnNHDQvvsIWiPB
+         YDBQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 5614622812f47-40ac6d22bf1si885543b6e.112.2025.06.20.03.40.34
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Jun 2025 03:40:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kn8HA7g3;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd0959e38dsi18029746d6.385.2025.06.20.04.09.46
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 20 Jun 2025 04:09:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bNv850nq5z6L57d;
-	Fri, 20 Jun 2025 18:38:13 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 758931400D7;
-	Fri, 20 Jun 2025 18:40:31 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 20 Jun
- 2025 12:40:30 +0200
-Date: Fri, 20 Jun 2025 11:40:29 +0100
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: Eric Auger <eric.auger@redhat.com>
-CC: <eric.auger.pro@gmail.com>, <qemu-devel@nongnu.org>,
-	<qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <imammedo@redhat.com>,
-	<gustavo.romero@linaro.org>, <anisinha@redhat.com>, <mst@redhat.com>,
-	<shannon.zhaosl@gmail.com>, <pbonzini@redhat.com>, <philmd@linaro.org>,
-	<alex.bennee@linaro.org>
-Subject: Re: [PATCH v3 28/29] tests/qtest/bios-tables-test: Add aarch64 ACPI
- PCI hotplug test
-Message-ID: <20250620114029.00005a94@huawei.com>
-In-Reply-To: <20250616094903.885753-29-eric.auger@redhat.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kn8HA7g3;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1750417786;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0OqQ2p2Hgz2qUTH7fsIcOPZtBPS8OhJGUFJyKwSHi/Y=;
+	b=Kn8HA7g3zPqz8fAn83SHPtSkRFKBUVgppRtAAfhKrnl/irxhBz1yuZ/QHEokxWm8Pnw0cj
+	q4LFwDjLA7qK7p5VEhaQ6VWQTe6bPq5MW51Bw+vkVlfVwQ2U5e3vxs7NcHfTHHoiEYNCiI
+	J3AubfGqSSZADtWtxk1upE2/X7ca340=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-137-kot4m1ZsObO1ccJ3R3FVxw-1; Fri, 20 Jun 2025 07:09:45 -0400
+X-MC-Unique: kot4m1ZsObO1ccJ3R3FVxw-1
+X-Mimecast-MFC-AGG-ID: kot4m1ZsObO1ccJ3R3FVxw_1750417785
+Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-450d244bfabso13979285e9.0
+        for <alex.bennee@linaro.org>; Fri, 20 Jun 2025 04:09:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750417785; x=1751022585;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0OqQ2p2Hgz2qUTH7fsIcOPZtBPS8OhJGUFJyKwSHi/Y=;
+        b=Np+ap0vzqCOwRfWInwY82yFdYUii+OemAycbO7Cz808yt/IH4b79IhZIK0kGxtr8VN
+         C6sEZvycSWsIhFZA6Vya7eE3ACpfwMEvVNWJ7jxRKGn5e3fHb7bd6tDEL3FBctY8TJHx
+         58ItdVjZWd1dZAiaQdThMmkpiTF0of4m500VbbvnAXLGwCwcpCB5oYHIwAHEFLigSJ0Y
+         fut4tqSNGKkMnVkUknxR2zV+GDvAkK+AVr7lB+YlczifJlQHlDQL3bL9ZtD1XUwx/MEm
+         qlwvYmiwd/WCFd+IdOllcrdl3ssiwiGb++QHw3eAfA05aUyi3f+PIaPBrDWX9YBIJggX
+         7N7g==
+X-Forwarded-Encrypted: i=1; AJvYcCWs7JvcDdSi4XazqCUSrPcTpyvFrCuZZdppHdlWq6ahs/7G3yTjMYNezgRqqgFXaqUPQ4vnFKeFDnhtLg==@linaro.org
+X-Gm-Message-State: AOJu0Yw/KLIePSYh8uH2+mahLTYOzhJ8nbwU5EOMCLuEyKKHMXB7qmiy
+	bikGpiIVJGsUElydDNZ5f3YuTn2L4C3KAFKQC/ssT2kn2QdMpMXGPQLxY+pR2k0JfpNko+WrT+3
+	IRhSlr/kZGBkT3Sd/XbM5JR+Eyt1JeLRgN/oRAda0UCJ5R8JHmdwew74Q2w==
+X-Gm-Gg: ASbGncu6RuPUsVKfnwvAGoigLihU4csidniUmvkhilzOrFqc4j7YVxxOnsWl4vfL7r7
+	DjCYykzI4p6qv6P7hOZ3T7hlEY3Fc/+HPvlS8jk/D/sBgAO9bSI/ZM65gZjbAfjkk3DGKfwar8N
+	6RaNC3FoYz7uLVNqPPZplZO7XdAYW0XaFDwTp5E4Mng4p7rtouD7YFT8LNiF+Rq6cAxJb06sgsq
+	3RwwhWK2Z9cj7qoARlg9rSnMFV0ItcMIdjOdFANMF3f0mpXQ2qCRj2KVDIRar80CMG2iMd4urG+
+	vJ2gpLwNzsVl
+X-Received: by 2002:a05:600c:3545:b0:442:f12f:bd9f with SMTP id 5b1f17b1804b1-453659d44f9mr19572925e9.27.1750417784188;
+        Fri, 20 Jun 2025 04:09:44 -0700 (PDT)
+X-Received: by 2002:a05:600c:3545:b0:442:f12f:bd9f with SMTP id 5b1f17b1804b1-453659d44f9mr19572595e9.27.1750417783791;
+        Fri, 20 Jun 2025 04:09:43 -0700 (PDT)
+Return-Path: <imammedo@redhat.com>
+Received: from fedora ([85.93.96.130])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-453632312a3sm31618575e9.1.2025.06.20.04.09.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 20 Jun 2025 04:09:43 -0700 (PDT)
+Date: Fri, 20 Jun 2025 13:09:41 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>,
+ <gustavo.romero@linaro.org>, <anisinha@redhat.com>, <mst@redhat.com>,
+ <shannon.zhaosl@gmail.com>, <pbonzini@redhat.com>, <philmd@linaro.org>,
+ <alex.bennee@linaro.org>
+Subject: Re: [PATCH v3 02/29] hw/acpi/ged: Add a
+ acpi-pci-hotplug-with-bridge-support property
+Message-ID: <20250620130941.6c0e6ff8@fedora>
+In-Reply-To: <20250620095308.00000d16@huawei.com>
 References: <20250616094903.885753-1-eric.auger@redhat.com>
-	<20250616094903.885753-29-eric.auger@redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+	<20250616094903.885753-3-eric.auger@redhat.com>
+	<20250620095308.00000d16@huawei.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: H-qS4WepY4qXzGjJCgYh-2YqL6X1Cku_GLCv-B1p7hU_1750417785
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml500002.china.huawei.com (7.191.160.78) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: 8B7N3VCdV+C6
+X-TUID: dZdyJFwadWk/
 
-On Mon, 16 Jun 2025 11:46:57 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
+On Fri, 20 Jun 2025 09:53:08 +0100
+Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
 
-> From: Gustavo Romero <gustavo.romero@linaro.org>
+> On Mon, 16 Jun 2025 11:46:31 +0200
+> Eric Auger <eric.auger@redhat.com> wrote:
 > 
-> The test uses -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on
-> to force the usage of ACPI PCI hotplug.
+> > A new boolean property is introduced. This will be used to turn
+> > ACPI PCI hotplug support. By default it is unset.
+> > 
+> > Signed-off-by: Eric Auger <eric.auger@redhat.com>  
 > 
-> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> I wonder a bit if it makes sense to do this so early rather than just
+> before it is first used in the series?  Doesn't really matter though.
+> Just meant I read on a bit before giving an RB on this.
 
-Could we add the necessary (I'm not quite sure what) to trigger the _DSM
-creation so EDSM gets used?  I'm not keen on that being dead code
-wrt to tests on ARM.
+Just before would be better, but it doesn't really matter.
+I guess Eric can rearrange that if there would be need to respin.
 
-Jonathan
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-
-
-> ---
->  tests/qtest/bios-tables-test.c | 34 ++++++++++++++++++++++++++++++++++
->  1 file changed, 34 insertions(+)
 > 
-> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-> index 0b2bdf9d0d..4b9e391eaf 100644
-> --- a/tests/qtest/bios-tables-test.c
-> +++ b/tests/qtest/bios-tables-test.c
-> @@ -1643,6 +1643,38 @@ static void test_acpi_aarch64_virt_tcg_memhp(void)
->  
->  }
->  
-> +static void test_acpi_aarch64_virt_acpi_pci_hotplug(void)
-> +{
-> +    test_data data = {
-> +        .machine = "virt",
-> +        .arch = "aarch64",
-> +        .tcg_only = true,
-> +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-> +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-> +        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
-> +        .ram_start = 0x40000000ULL,
-> +        .scan_len = 256ULL * MiB,
-> +        .variant = ".acpipcihp",
-> +    };
-> +
-> +   /* Use ACPI PCI Hotplug */
-> +   test_acpi_one(" -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on"
-> +                 " -cpu cortex-a57"
-> +                 /*
-> +                  * We just pick address=0x04 for the root port to avoid
-> +                  * collisions with other PCI devices on the root bus (pcie.0).
-> +                  * It could be any other value that doesn't collide.
-> +                  *
-> +                  * The 'chassis' and 'slot' options equal to 1 have no special
-> +                  * meaning here, could be any integer, but we set them to known
-> +                  * values to keep the test consistent.
-> +                  */
-> +                 " -device pcie-root-port,bus=pcie.0,chassis=1,slot=1,addr=0x04.0x00",
-> +                 &data);
-> +
-> +    free_test_data(&data);
-> +}
-> +
->  static void test_acpi_microvm_prepare(test_data *data)
->  {
->      data->machine = "microvm";
-> @@ -2580,6 +2612,8 @@ int main(int argc, char *argv[])
->              qtest_add_func("acpi/virt/numamem",
->                             test_acpi_aarch64_virt_tcg_numamem);
->              qtest_add_func("acpi/virt/memhp", test_acpi_aarch64_virt_tcg_memhp);
-> +            qtest_add_func("acpi/virt/acpipcihp",
-> +                           test_acpi_aarch64_virt_acpi_pci_hotplug);
->              qtest_add_func("acpi/virt/pxb", test_acpi_aarch64_virt_tcg_pxb);
->              qtest_add_func("acpi/virt/oem-fields",
->                             test_acpi_aarch64_virt_oem_fields);
+> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+> 
+> > ---
+> >  include/hw/acpi/generic_event_device.h | 2 ++
+> >  hw/acpi/generic_event_device.c         | 2 ++
+> >  2 files changed, 4 insertions(+)
+> > 
+> > diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+> > index d2dac87b4a..f5ffa67a39 100644
+> > --- a/include/hw/acpi/generic_event_device.h
+> > +++ b/include/hw/acpi/generic_event_device.h
+> > @@ -63,6 +63,7 @@
+> >  #include "hw/acpi/memory_hotplug.h"
+> >  #include "hw/acpi/ghes.h"
+> >  #include "hw/acpi/cpu.h"
+> > +#include "hw/acpi/pcihp.h"
+> >  #include "qom/object.h"
+> >  
+> >  #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+> > @@ -114,6 +115,7 @@ struct AcpiGedState {
+> >      MemoryRegion container_memhp;
+> >      CPUHotplugState cpuhp_state;
+> >      MemoryRegion container_cpuhp;
+> > +    AcpiPciHpState pcihp_state;
+> >      GEDState ged_state;
+> >      uint32_t ged_event_bitmap;
+> >      qemu_irq irq;
+> > diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+> > index 7a62f8d5bc..7831db412b 100644
+> > --- a/hw/acpi/generic_event_device.c
+> > +++ b/hw/acpi/generic_event_device.c
+> > @@ -318,6 +318,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+> >  
+> >  static const Property acpi_ged_properties[] = {
+> >      DEFINE_PROP_UINT32("ged-event", AcpiGedState, ged_event_bitmap, 0),
+> > +    DEFINE_PROP_BOOL(ACPI_PM_PROP_ACPI_PCIHP_BRIDGE, AcpiGedState,
+> > +                     pcihp_state.use_acpi_hotplug_bridge, 0),
+> >  };
+> >  
+> >  static const VMStateDescription vmstate_memhp_state = {  
+> 

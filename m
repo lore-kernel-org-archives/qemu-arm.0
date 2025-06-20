@@ -1,222 +1,284 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp828912njc;
-        Fri, 20 Jun 2025 04:48:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWciEU9wLf+WbI3wB2yl/6ZekonV85i97lfGimmOOHvJOHltNdaV6uweL1jP1faLA7fbs84VKekCw6/Sw==@linaro.org
-X-Google-Smtp-Source: AGHT+IErY4GitHqSNl7IzUW+k8c0YB0/dOOW/uTd/1du4TNfnA5O5RgyVsN8Nbtkyy0wADtLXaXW
-X-Received: by 2002:a05:6214:54c5:b0:6e8:f433:20a8 with SMTP id 6a1803df08f44-6fd0a4683f0mr37402036d6.9.1750420121084;
-        Fri, 20 Jun 2025 04:48:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750420121; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp830117njc;
+        Fri, 20 Jun 2025 04:51:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWSgdOaB16xv41t1ZgRdI8E2fRyGzMpmreOY+KNuqUKuEtzpe7/xvsCPsVUGh/Xp8q6jIywovcJ5ALTnQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEkBQFflBGB4mcms4C1rbgp40urCov2TyuZjTfleDtBC25VHjsyl8Px1XilZxCX0xLXOTSO
+X-Received: by 2002:ac8:6f0b:0:b0:4a5:a447:679f with SMTP id d75a77b69052e-4a77a1c727bmr41614061cf.22.1750420273698;
+        Fri, 20 Jun 2025 04:51:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750420273; cv=none;
         d=google.com; s=arc-20240605;
-        b=bbc+Om7zeD/oFEqH8Jpj3GWIY1I/S6PfEJqOWgd9ZEcpgUtJB+kxHJYYO37pbpQqfs
-         O12PI+VhI4BvYIzhwxsf9qr+zHCRUcA+YM5cyEUY65uJTYnjYoVuWONAAdt/ezMITgwG
-         vCCtPiSK/AFIlQ0C50ar2zYa4su2tfo2sYCLJCYnqWsYASqTzZVnDy/dbFExwWsvu49r
-         AfiHXJ2XhiCAaxwCmcbXa4MMLPIKcPPH5OgkQPls8xdV0ojsfzcYCxA8mSK1AaI7MiqJ
-         gJ69V+0lva60MhxyChakfHefuXl0HD2wXElc7Gwy+EPkbfcVUY76uMz9jVrYMNT9xY1Q
-         6p/w==
+        b=cy2dFA4UOPrznlnHz4Bw270PW7TK2rX3bjByFZpVg2paZct6b4O4BkeLzKmZfcNK1d
+         4b929uHXQFQ39ItpLWcpobk8Ozv6DsY9RxSFui4MBmyqcYsvO5vrbn+OkT1PLYrPHCo7
+         voN3B7OPND0mVU8XfcnngC4s4CHpiFGQHH4j/ktJRP3k53m3+ty9otk5B0KsPNvzVWjU
+         m09HASjngOG5q25/r4GzFoo8HLeBWEz0j3yEOYEJTGCiDlxGk5dvM1WiiSBFIDHPVURG
+         2w92rr4a9W0wI49eC9+ASUBNUioLsSRPiwpgv+SYuuo/RaCxYv7Pu0GEGpupbnGe4fHS
+         RZQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=nrtutyhe3vPjXSe4x5cAA5qlcu9MfmOyH4uCxbGo/+A=;
-        fh=vhAXch0GaOOzDafz2usGm4bdRY/IaJUYY2ryk9mtuaM=;
-        b=Y0rbRrBChM9eMhvn1a5IV65ZpfQwJsJNdbgBpJQyu2y5TmKdMKR79JbGdoZ0pKz8gg
-         YSre1ShHtGgtRyimraBGyBrt8e8eIgG0cye3UcHiDJrZVKA2N3X2rd/urEV/deEJ0RFc
-         CkeFaPfsl76otTfRR++3ZWPJDK6ngZdlhe2THyXT5sg/ahDGCDuBmnbqI8Y2LG08jXup
-         M8DyOv35uDmASSXBMO7PQqWymek/XLpf6Vk5bPw1Nlz4W83lIvHntxCG/0JskZe0xOmD
-         zqD8R6pGW66w8R6wnhFYoo4icKFOApgrzQb5kIbBMhhlpAzRLi0oekOUndLAnThWSKAG
-         XUNw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:date;
+        bh=yK1PQAqnWnzmU/uMc8vTHgS9hJyLoWJ4obvR6nVHCLk=;
+        fh=UascvB08epqB4QOB4kS/cBSiOX/r6mYqGoFIsLRFc7A=;
+        b=gYGIoD05M4ShF8j4SHnNSYmOW0sRypEEop5Mh2aISlWocvWT3od6QOkWswSN7JOSei
+         J22z1RGLWZZIJG5/FFQaiykjmbzbqMtkJxW3hT9DrYMqK5ZO39n+rE4Fx/O82h2tZEQh
+         Mjf2U8/CPbOnz7W407xpiq6iOk0I4MNQ116BrYfzPumVmnpkS4B7k4OnURW5JI17KQVe
+         inGEnasXSZmwUpFp4MLlLoA5wx/sg6STBEnSDl6iYWeqMwSTO3yN/T4vhc1IApympmce
+         KT008wG4UxImHXgJXoHUR5rx4O0+DQjrVjhOAfcAIB3iJWloFONLaN+xjTvYosfPsonX
+         QAuQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jb8F0EGM;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd0959b2basi18670406d6.377.2025.06.20.04.48.40
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a77a0d5ee9si16006661cf.523.2025.06.20.04.51.13
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Jun 2025 04:48:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 20 Jun 2025 04:51:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jb8F0EGM;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1750420120;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=nrtutyhe3vPjXSe4x5cAA5qlcu9MfmOyH4uCxbGo/+A=;
-	b=Jb8F0EGMOW+METDZa+q2ycOUrxl4lWJCO14ILUtpPUeiE0KKRNjMoVjILZh5oGxIdAtFYz
-	lp+wO8pudy4O/YoprnzHsJ7j4OHxc6Xz6VoEz4KMZGPEZbeSpDmROwM5z7rcg9uH8Q6W5m
-	NgDsKOadJmCIQvfdB6vC6J6C5stBD68=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-569-F6CokMh2N86BAHfWFhkhAg-1; Fri, 20 Jun 2025 07:48:39 -0400
-X-MC-Unique: F6CokMh2N86BAHfWFhkhAg-1
-X-Mimecast-MFC-AGG-ID: F6CokMh2N86BAHfWFhkhAg_1750420119
-Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-3a6d1394b07so420645f8f.3
-        for <alex.bennee@linaro.org>; Fri, 20 Jun 2025 04:48:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750420118; x=1751024918;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=nrtutyhe3vPjXSe4x5cAA5qlcu9MfmOyH4uCxbGo/+A=;
-        b=Phxi6BxT3iPSseTRhDJYOqnTCiKy0zcISwhZfqcecOy/dDiExT9hUWREdvBZNUN5M5
-         mNgiOEbzJaPvM5LDZ3MNsFOhSInjUMJfXSTmQba4olwrOP8+3zViHKdSg2lZHL91+YR6
-         AhdbvQ4TJbFlBUrnwiAUsqsp1d/1jHZw753cDk01uNUUtPWyuhDCj5VBByAahTHrYcUw
-         SjfBFedXlw768ZuwLXVC0UGP/OmCUh0eMdXjY3xpSs8BrQc+sPEBafAMqIp5TUwwYmBo
-         s3gr5KJDboL1PPdKnskjHw9OXTG8Ve8rHRUENmBeRZ+g2OIQRy3MSprH+v9k1Zh2G3AX
-         dS+Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWE2TXx+2auvH90HPwEt9nPmKO3gp8mCpoGbDbiCu2+yRgXeXegyE4MVEou6eICky2XYtKAzReHZ6gl/w==@linaro.org
-X-Gm-Message-State: AOJu0YxVBhOihmmdjFo65O1WHB5RexRKuFF0TlBpj39LiINYhtJgcewH
-	WFRxxbPMmJF6gOWvulZHL90QBd+8aajK+FJn99xuCqj1F+LfFk2bFkyM6sqxPJRqpYZ2uJ7jftv
-	G45GdEKSCjDuOJXmVSE96HyXQD61N+J9LH/h9X4pSJV3vDuhBniDDftly6Q==
-X-Gm-Gg: ASbGncuqcX6Rxt9Tm67pS0i9AVGDkGWaJQn6Hl5UFvYrV3/QLZCrvU/sp6ytrDuj6Iq
-	/vm6Crn62SIYuubUrbVRMUjUTBAb0wFwOjuA/ruiSVGfxIR3n46tZT1u0zCgexGldj3gwCKXTen
-	zj6799+MTCFMgq1qofvBlQmfZc9on1xApkoLJP77cBv4mKNYJiZts3bsMY4LzPGLA4hngix2irp
-	m+nBbQpCIc7naAo5VMLor501EVLnFsSLJvZwoIZmb4PaJ/FSQv99BuoZzzGaT6st934gyCDPljm
-	i0WbEqdju1q5
-X-Received: by 2002:a05:6000:18a4:b0:3a5:527b:64c6 with SMTP id ffacd0b85a97d-3a6d12bb700mr2313673f8f.1.1750420118504;
-        Fri, 20 Jun 2025 04:48:38 -0700 (PDT)
-X-Received: by 2002:a05:6000:18a4:b0:3a5:527b:64c6 with SMTP id ffacd0b85a97d-3a6d12bb700mr2313648f8f.1.1750420118109;
-        Fri, 20 Jun 2025 04:48:38 -0700 (PDT)
-Return-Path: <imammedo@redhat.com>
-Received: from fedora ([85.93.96.130])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d0f19e7dsm1905605f8f.38.2025.06.20.04.48.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Jun 2025 04:48:37 -0700 (PDT)
-Date: Fri, 20 Jun 2025 13:48:36 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
- mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
- Jonathan.Cameron@huawei.com, philmd@linaro.org, alex.bennee@linaro.org
-Subject: Re: [PATCH v3 06/29] hw/pci-host/gpex-acpi: Split host bridge OSC
- and DSM generation
-Message-ID: <20250620134836.5f467b6e@fedora>
-In-Reply-To: <20250616094903.885753-7-eric.auger@redhat.com>
-References: <20250616094903.885753-1-eric.auger@redhat.com>
-	<20250616094903.885753-7-eric.auger@redhat.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uSaGu-0004lg-5n; Fri, 20 Jun 2025 07:51:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uSaGS-0004ix-7Z; Fri, 20 Jun 2025 07:50:36 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uSaGL-0002pw-Kh; Fri, 20 Jun 2025 07:50:34 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bNwdm38vCz6L5TF;
+ Fri, 20 Jun 2025 19:45:32 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id C8A35140142;
+ Fri, 20 Jun 2025 19:50:18 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 20 Jun
+ 2025 13:50:18 +0200
+Date: Fri, 20 Jun 2025 12:50:15 +0100
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ <linuxarm@huawei.com>
+CC: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
+ <jgg@nvidia.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "ddutile@redhat.com" <ddutile@redhat.com>, "berrange@redhat.com"
+ <berrange@redhat.com>, "imammedo@redhat.com" <imammedo@redhat.com>,
+ "nathanc@nvidia.com" <nathanc@nvidia.com>, "mochs@nvidia.com"
+ <mochs@nvidia.com>, "smostafa@google.com" <smostafa@google.com>, "Wangzhou
+ (B)" <wangzhou1@hisilicon.com>, jiangkunkun <jiangkunkun@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+Subject: Re: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe Root
+ Complex association
+Message-ID: <20250620125015.000002aa@huawei.com>
+In-Reply-To: <20250619103802.00000dfa@huawei.com>
+References: <20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com>
+ <20250613144449.60156-2-shameerali.kolothum.thodi@huawei.com>
+ <20250616112019.00003bce@huawei.com>
+ <fcd05844-d2d9-450e-b962-59b0f3964185@redhat.com>
+ <20250617175247.00007d43@huawei.com>
+ <49d4c4b73e9a44a783332ddfe9a2fbdf@huawei.com>
+ <327b5515-467c-4666-86d6-fb2a99925a8c@redhat.com>
+ <e4879b1e26f941b5baa419824e4c928c@huawei.com>
+ <6e180d39-b1eb-4935-98b0-3ac73766e8aa@redhat.com>
+ <5fd7717fcd7e45d9aaff3e293cf63683@huawei.com>
+ <20250619103028.00000277@huawei.com>
+ <20250619103802.00000dfa@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: oHLuF1DT8kbLjoD5AzWr-KnMb7dqKrDAKisb8oMXt_M_1750420119
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: N19BbKBuQCmf
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml500002.china.huawei.com (7.191.160.78) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: PNd66MjSSyJ7
 
-On Mon, 16 Jun 2025 11:46:35 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
+On Thu, 19 Jun 2025 10:38:02 +0100
+Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
 
-> acpi_dsdt_add_pci_osc() name is confusing as it gives the impression
-> it appends the _OSC method but in fact it also appends the _DSM method
-> for the host bridge. Let's split the function into two separate ones
-> and let them return the method Aml pointer instead. This matches the
-> way it is done on x86 (build_q35_osc_method). In a subsequent patch
-> we will replace the gpex method by the q35 implementation that will
-> become shared between ARM and x86.
-> 
-> acpi_dsdt_add_host_bridge_methods is a new top helper that generates
-> both the _OSC and _DSM methods.
+> On Thu, 19 Jun 2025 10:30:28 +0100
+> Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+>=20
+> > On Thu, 19 Jun 2025 09:05:07 +0100
+> > Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
+> >  =20
+> > > > -----Original Message-----
+> > > > From: Eric Auger <eric.auger@redhat.com>
+> > > > Sent: Thursday, June 19, 2025 8:41 AM
+> > > > To: Shameerali Kolothum Thodi
+> > > > <shameerali.kolothum.thodi@huawei.com>; Jonathan Cameron
+> > > > <jonathan.cameron@huawei.com>
+> > > > Cc: Linuxarm <linuxarm@huawei.com>; qemu-arm@nongnu.org; qemu-
+> > > > devel@nongnu.org; peter.maydell@linaro.org; jgg@nvidia.com;
+> > > > nicolinc@nvidia.com; ddutile@redhat.com; berrange@redhat.com;
+> > > > imammedo@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
+> > > > smostafa@google.com; Wangzhou (B) <wangzhou1@hisilicon.com>;
+> > > > jiangkunkun <jiangkunkun@huawei.com>; zhangfei.gao@linaro.org
+> > > > Subject: Re: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has PCIe
+> > > > Root Complex association
+> > > >=20
+> > > > Hi Shameer,
+> > > >=20
+> > > > On 6/19/25 9:24 AM, Shameerali Kolothum Thodi wrote:     =20
+> > > > > Hi Eric,
+> > > > >     =20
+> > > > >> -----Original Message-----
+> > > > >> From: Eric Auger <eric.auger@redhat.com>
+> > > > >> Sent: Wednesday, June 18, 2025 6:00 PM
+> > > > >> To: Shameerali Kolothum Thodi
+> > > > >> <shameerali.kolothum.thodi@huawei.com>; Jonathan Cameron
+> > > > >> <jonathan.cameron@huawei.com>
+> > > > >> Cc: Linuxarm <linuxarm@huawei.com>; qemu-arm@nongnu.org; qemu-
+> > > > >> devel@nongnu.org; peter.maydell@linaro.org; jgg@nvidia.com;
+> > > > >> nicolinc@nvidia.com; ddutile@redhat.com; berrange@redhat.com;
+> > > > >> imammedo@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
+> > > > >> smostafa@google.com; Wangzhou (B) <wangzhou1@hisilicon.com>;
+> > > > >> jiangkunkun <jiangkunkun@huawei.com>; zhangfei.gao@linaro.org
+> > > > >> Subject: Re: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has  =
+   =20
+> > > > PCIe     =20
+> > > > >> Root Complex association
+> > > > >>
+> > > > >> Hi Shameer, Jonathan,
+> > > > >>
+> > > > >> On 6/18/25 10:35 AM, Shameerali Kolothum Thodi wrote:     =20
+> > > > >>>> -----Original Message-----
+> > > > >>>> From: Jonathan Cameron <jonathan.cameron@huawei.com>
+> > > > >>>> Sent: Tuesday, June 17, 2025 5:53 PM
+> > > > >>>> To: Eric Auger <eric.auger@redhat.com>
+> > > > >>>> Cc: Shameerali Kolothum Thodi
+> > > > >>>> <shameerali.kolothum.thodi@huawei.com>; Linuxarm
+> > > > >>>> <linuxarm@huawei.com>; qemu-arm@nongnu.org; qemu-
+> > > > >>>> devel@nongnu.org; peter.maydell@linaro.org; jgg@nvidia.com;
+> > > > >>>> nicolinc@nvidia.com; ddutile@redhat.com; berrange@redhat.com;
+> > > > >>>> imammedo@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
+> > > > >>>> smostafa@google.com; Wangzhou (B) <wangzhou1@hisilicon.com>;
+> > > > >>>> jiangkunkun <jiangkunkun@huawei.com>; zhangfei.gao@linaro.org
+> > > > >>>> Subject: Re: [PATCH v4 1/7] hw/arm/smmu-common: Check SMMU has=
+     =20
+> > > > >> PCIe     =20
+> > > > >>>> Root Complex association
+> > > > >>>>
+> > > > >>>> On Tue, 17 Jun 2025 09:49:54 +0200
+> > > > >>>> Eric Auger <eric.auger@redhat.com> wrote:
+> > > > >>>>     =20
+> > > > >>>>> On 6/16/25 12:20 PM, Jonathan Cameron wrote:     =20
+> > > > >>>>>> On Fri, 13 Jun 2025 15:44:43 +0100
+> > > > >>>>>> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>     =
+=20
+> > > > wrote:     =20
+> > > > >>>>>>     =20
+> > > > >>>>>>> Although this change does not affect functionality at prese=
+nt, it is     =20
+> > > > >>>>>> Patch title says PCIe.  This check is vs PCI host bridge.
+> > > > >>>>>>
+> > > > >>>>>> No idea which one you wanted, but if it is PCIe needs to be
+> > > > >>>>>> TYPC_PCIE_HOST_BRIDGE from pcie_host.h not the pci_host.h one
+> > > > >>>>>> I think.     =20
+> > > > >>>>> I think we need TYPE_PCI_HOST_BRIDGE as we want to check agai=
+nst     =20
+> > > > >> pxb     =20
+> > > > >>>>> pci-bridge/pci_expander_bridge.c:=C2=A0=C2=A0=C2=A0 .parent=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =3D     =20
+> > > > >>>> TYPE_PCI_HOST_BRIDGE,     =20
+> > > > >> sorry but I still fail to understand why we can't just check aga=
+inst
+> > > > >>
+> > > > >> TYPE_PCI_HOST_BRIDGE for making sure the SMMU is attached to PXB=
+ or
+> > > > >> GPEX. What does it fail to check? Why shall we care about PCI vs=
+ PCIe?     =20
+> > > > > I think the concern is  getting any other TYPE_PCI_HOST_BRIDGE ty=
+pes     =20
+> > > > attached     =20
+> > > > > to SMMUv3 other than pxb-pcie or GPEX. For example you could do,
+> > > > >
+> > > > > -device pxb-cxl,bus_nr=3D12,bus=3Dpcie.0,id=3Dcxl.1 \
+> > > > > -device arm-smmuv3,primary-bus=3Dcxl.1,id=3Dsmmuv3.1 \
+> > > > >
+> > > > > as pxb-cxl is of type TYPE_PCI_HOST_BRIDGE. I don't know if there=
+ are any     =20
+> > > > other     =20
+> > > > > ones similar to this out there.
+> > > > >
+> > > > > So the aim is to make the checking more specific to PXB.     =20
+> > > >=20
+> > > > thank you for the clarification. Is it invalid to have the SMMU
+> > > > protecting RIDs comming from the pxb-cxl hierarchy?     =20
+> > >=20
+> > > That=E2=80=99s a good question. I don't know that for sure.   =20
+> >=20
+> > It should be fine to support CXL for this but we can work that out late=
+r.
+> >=20
+> > For now limited use cases as there is no CXL VFIO support and the only =
+thing
+> > emulated devices do that the SMMU might influence is MSIX.
+> >=20
+> > The one that concerned me is pxb-pci if we only care about pcie.
+> > I'm not sure if we need to make that distinction or not. =20
+> >  =20
+> Hmm. Shameer pointed out I hallucinated the existence of a PCI only expan=
+der bridge.
+> So ignore that.
+After some more discussions...=20
 
-I'd get rid of wrapper, but it's not something that worth to fight over,
-so
+Ah but it does - just called "pxb" - but it's irrelevant anyway as you can =
+only add
+them to a PCI root bridge (Shameer tested with a PCIe to PCI bridge with a =
+pxb below
+it and it rejects that config).  So can't plug them into virt anyway.
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+That's just for the record if I forget the whole discussion in future ;)
 
-> 
-> We take the opportunity to move SUPP and CTRL in the _osc method
-> that use them.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
-> ---
-> 
-> v2 -> v3:
-> - moved
->     aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
->     aml_append(dev, aml_name_decl("CTRL", aml_int(0)));
->   into the _osc function. (Jonathan)
->   hence discarded Gustavo's and Igor's R-bs
-> ---
->  hw/pci-host/gpex-acpi.c | 32 +++++++++++++++++++++-----------
->  1 file changed, 21 insertions(+), 11 deletions(-)
-> 
-> diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
-> index f34b7cf25e..80fc2bf032 100644
-> --- a/hw/pci-host/gpex-acpi.c
-> +++ b/hw/pci-host/gpex-acpi.c
-> @@ -50,14 +50,12 @@ static void acpi_dsdt_add_pci_route_table(Aml *dev, uint32_t irq,
->      }
->  }
->  
-> -static void acpi_dsdt_add_pci_osc(Aml *dev, bool enable_native_pcie_hotplug)
-> +static Aml *build_host_bridge_osc(bool enable_native_pcie_hotplug)
->  {
-> -    Aml *method, *UUID, *ifctx, *ifctx1, *elsectx, *buf;
-> -
-> -    /* Declare an _OSC (OS Control Handoff) method */
-> -    aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
-> -    aml_append(dev, aml_name_decl("CTRL", aml_int(0)));
-> +    Aml *method, *UUID, *ifctx, *ifctx1, *elsectx;
->      method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
-> +    aml_append(method, aml_name_decl("SUPP", aml_int(0)));
-> +    aml_append(method, aml_name_decl("CTRL", aml_int(0)));
->      aml_append(method,
->          aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
->  
-> @@ -103,9 +101,13 @@ static void acpi_dsdt_add_pci_osc(Aml *dev, bool enable_native_pcie_hotplug)
->                                 aml_name("CDW1")));
->      aml_append(elsectx, aml_return(aml_arg(3)));
->      aml_append(method, elsectx);
-> -    aml_append(dev, method);
-> +    return method;
-> +}
->  
-> -    method = aml_method("_DSM", 4, AML_NOTSERIALIZED);
-> +static Aml *build_host_bridge_dsm(void)
-> +{
-> +    Aml *method = aml_method("_DSM", 4, AML_NOTSERIALIZED);
-> +    Aml *UUID, *ifctx, *ifctx1, *buf;
->  
->      /* PCI Firmware Specification 3.0
->       * 4.6.1. _DSM for PCI Express Slot Information
-> @@ -124,7 +126,15 @@ static void acpi_dsdt_add_pci_osc(Aml *dev, bool enable_native_pcie_hotplug)
->      byte_list[0] = 0;
->      buf = aml_buffer(1, byte_list);
->      aml_append(method, aml_return(buf));
-> -    aml_append(dev, method);
-> +    return method;
-> +}
-> +
-> +static void acpi_dsdt_add_host_bridge_methods(Aml *dev,
-> +                                              bool enable_native_pcie_hotplug)
-> +{
-> +    /* Declare an _OSC (OS Control Handoff) method */
-> +    aml_append(dev, build_host_bridge_osc(enable_native_pcie_hotplug));
-> +    aml_append(dev, build_host_bridge_dsm());
->  }
->  
->  void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
-> @@ -193,7 +203,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
->              if (is_cxl) {
->                  build_cxl_osc_method(dev);
->              } else {
-> -                acpi_dsdt_add_pci_osc(dev, true);
-> +                acpi_dsdt_add_host_bridge_methods(dev, true);
->              }
->  
->              aml_append(scope, dev);
-> @@ -268,7 +278,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
->      }
->      aml_append(dev, aml_name_decl("_CRS", rbuf));
->  
-> -    acpi_dsdt_add_pci_osc(dev, true);
-> +    acpi_dsdt_add_host_bridge_methods(dev, true);
->  
->      Aml *dev_res0 = aml_device("%s", "RES0");
->      aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));
+Jonathan
+
+>=20
+> > Jonathan
+> >  =20
+> > > Anyway currently the full support for CXL on virt is in progress here,
+> > > https://lore.kernel.org/qemu-devel/20250612134338.1871023-1-Jonathan.=
+Cameron@huawei.com/
+> > >=20
+> > > Jonathan?
+> > >=20
+> > > Thanks,
+> > > Shameer
+> > >    =20
+> > > >      =20
+> > >    =20
+> >  =20
+>=20
+

@@ -1,86 +1,86 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp878754njc;
-        Fri, 20 Jun 2025 06:09:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU9Nq7u90aaqL7Aq+IQT8PFTmupvIcofMiG5omvUFPoga743+BXX4rweTIgnOkpTEoTZp4zExYBA4doTA==@linaro.org
-X-Received: by 2002:a05:600c:8b2a:b0:43d:9d5:474d with SMTP id 5b1f17b1804b1-45364790383mr30366255e9.0.1750424951247;
-        Fri, 20 Jun 2025 06:09:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750424951; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp878843njc;
+        Fri, 20 Jun 2025 06:09:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVGkmSlInNmGCa/ZwPUTFArmeedIMCtq0Nk6D6CyfWJsCU0uKmHLxpHcYSAF2AkMyOukQ3RM0cKVbB3ww==@linaro.org
+X-Received: by 2002:a05:600c:820e:b0:442:f97f:8174 with SMTP id 5b1f17b1804b1-453658ba2d7mr29921715e9.18.1750424957221;
+        Fri, 20 Jun 2025 06:09:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750424957; cv=none;
         d=google.com; s=arc-20240605;
-        b=NUSgxD9DFZQ4lUjnc2QXDlvPDK4WWwpgv8cHCAQVWStDE2z+pn6hK5TY7WCW4uakeg
-         Y2mUl7qWaQUXU8vsuZuLMyLOTbLSNLSHM/VhNhahojUYpbumQ0UPM9SHRRhVh2d2VTLr
-         JsB8ai84QypqYjqvut1JoA7EsdxiUEmGvKW2OgPUjv0F5etJqlYlmdL0SmFHv7n4j12T
-         JPIwGUSQx1oobdaE6VXEF79RQxDJmnMSgLdU3cpWPDrkQboJR3CMc9dbuDflDOpPZmTK
-         smrW4OFzVeSA65ikMZFcq0sS/LUmfZZbTjefJw1AFL0U87h7175uW/cl6WK/nTO2NkIS
-         AmBg==
+        b=a76us30JD+V6fUrqHGNMVqUJ602l86s+j8nOKTGVi8bZw5qif8vW8uwYhWJhQNixzI
+         s6KteakWshOD6EYDs42dPc9/kXo6HEjxFy4qGu17Kc75SRJJDiZ7jHdb+onWZj2KjX6F
+         fwYZq9JWY5wfna9qSTFLwVab9IbzsIXbSkU7N3n87GKDe7Eb45jV8/lGUozZXi6nmA/s
+         ZDrk7XmpLVlFHi9/00bt0ePuMo3r5HO56nYw4eVP8UFKQTuJ5tNNVtld31SjSbPCcb0w
+         2ayBywBDFSEPkqJQAJLO4qO6otAQpcTkdIbYiBd8iQrs2Vjihv/vzj2jW595iitEFwW1
+         3t3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=y5LZcCqNpH4GazYoT4HEePjvcf7hcAUKrr97H91/oS0=;
-        fh=Qc7+ncWy91GrItBlCI4O/sjkT2nHtWD5scWqfp8V9dA=;
-        b=kIlVvPImzCSCMMQKsOPGS3AzzEIjSRkIWkD1SDESut58wRXT5vxJ5JbkrXIfk5UsCx
-         v6GXMlD9A7nwMT80xbIvbSG7qA5y7WEPiCg6/IB9tvYOTX+UmGF3gzHNN+LVmuMD1rY5
-         bNGBB3Dn7SHpZ/gjRUabKDJwhQAaBWoRBa/b8YWOKPXWZCfes32I81WpXYtRud5zoEZG
-         /7hkTMNiQAbfjbagQYOeBRqkvGqe9HUXmwso5qGdM8KJaxeODxqs+riGscef1cqPRUrY
-         fNum+2R13kXch3w/24GapPRFQw/5yg70f6kmh3YOP6SIA/2GU5LErH/rwpA+Jtbdrc6y
-         qOqg==;
+        bh=tlzGRKm85UWY2+8yyhfs+sQBrY+hIXBP3ETvuuIJ2dg=;
+        fh=oJQkS14vHlp0Tru1tvjoU6dVt9OI3wtuX0Q6Elexq+A=;
+        b=RAA8EWjqtlvSVscWuFFQeOGC/t7uXBKkAxJTqOy+ETjMh1tjKXLbXQDhxkW8t1hqRU
+         qz5XxEfTTm4ZNkCk8Mo14tFIMrnNh6JxR28T8rai/aikctXVSvWQhqBH3X+gagTaUkHi
+         US1Ciwfi+LvQWXiZvejEq1A3v1uIc4U982my8Uz+iy2L/MLfoj5p1fm/iB98X0K4JplY
+         KpTSE+CJU1o3/wbLc3dKfqxV1JmsJfXzrjqwDYSmTx7O5HzcCHgy4vB54O6bWUgd6TRP
+         B1zBxc1PbPqHPNtgwClpdDzYUZam7/26PkeLjVWz+ddu1cd8Bx7nbrmxyFj4iSfLVGHg
+         QXZw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MDCszFq5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=N4XDJo1H;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-453659dbabbsor5197335e9.1.2025.06.20.06.09.11
+        by mx.google.com with SMTPS id ffacd0b85a97d-3a6d1156436sor780988f8f.7.2025.06.20.06.09.16
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 20 Jun 2025 06:09:11 -0700 (PDT)
+        Fri, 20 Jun 2025 06:09:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MDCszFq5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=N4XDJo1H;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750424951; x=1751029751; darn=linaro.org;
+        d=linaro.org; s=google; t=1750424956; x=1751029756; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=y5LZcCqNpH4GazYoT4HEePjvcf7hcAUKrr97H91/oS0=;
-        b=MDCszFq5treM9GgiXmqK6J2LcKuY7X+hPm3JgQ2sI2Op6kJ82XiK/vzz7w5oXY+cGk
-         A3F83p05ixki2K56Be4o7desTmyRERC2B48QoRZammP2Q2si75AsOmuq/jRkQjBuTt4U
-         qlmeLOaLnd75ibqoyBqON18XXzgxP+W+SWtHueX7Xuhv9Pg/C4WfwLToblc/uos/rZOt
-         mgNZ+mXCSN/70ydo6DUE3sr2hFNXB2bQRgmPkDSNHPMg3+6kUykexJ6LWRaNw6Ic7Bxu
-         bfMmeRioy6huIAB8Voes0JGdQW+IFITtvRhFFMwqSIigH3nyiQbBgrVoFY7M0byo4b7e
-         r6kg==
+        bh=tlzGRKm85UWY2+8yyhfs+sQBrY+hIXBP3ETvuuIJ2dg=;
+        b=N4XDJo1HZir+hPVMw2qLzMjzYCfBnmkesZCYA0JGCUn4v7UcjsLZxQEScxHSPYSCUT
+         L46FvCe5qrGVYh+rpf/WUrDP7/eXCzEXzdc/cyKvhzUEsxQFkz3GQRJ+/ceGIY1vo+jJ
+         S2mWn5AxhAdY7AGBf38rk77bqCw1UFgX13EXeItskph6pebI46mHL7PaNMlE2Bbc8q34
+         DvpkQtDO/jEMBZ/NPiH65ZGXgefmR8lm1YSWDcmTejFIgoc+FNO/KZaTdG5qJywpV1nY
+         nKxaS0d+7XRduCTIc+E2vYYIKa2Q6MJdsVxA5EVl1C7XF2RM1ExYLEva9r1VbUJhNlqU
+         9QAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750424951; x=1751029751;
+        d=1e100.net; s=20230601; t=1750424956; x=1751029756;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=y5LZcCqNpH4GazYoT4HEePjvcf7hcAUKrr97H91/oS0=;
-        b=tHF5NnYxZa2gW43dCjgZ0q+OyqdNHE/62AXbwWsjTuiZzTGb0/E7NfVmSnEE8gZpCy
-         q5mr+2RmNjFKDtdMxvEqWb4AvfGDVN7p1bdnXgc5weTPDfloUtUMnT2tVnxgsMlnw7n5
-         cEfNKebYUQXwOrjM6EbQ1duoflyYZ/HtBTdle7uyk7pcUQ2PFg4VF+bvTmov6vYnI+wF
-         8jqXGJsRda3dehY9phSJZyGQcujZ83+d/NFXJfZjp5aKzEwM9dWHhPGGRH+iZPswC8ic
-         uFZ3w6AHxSPomsXJNR/3Hkyf6piwzOj3qs6Cpeuvsk3qHgc56aS3vwNCAbUY0foWXBK7
-         3wVQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWEqtfLrlwdBlWAbSnGUbDN0KmG7CY1F3m8izXC+vTHH3WQEKw8boz1QYMv6uEXBIPkeFqxQVt5hliARQ==@linaro.org
-X-Gm-Message-State: AOJu0YxaZqnPMxCjsKmGbt8YN1e9Or2DeFUIXfsnucG8bLigypDRIxfp
-	U4MCRnS48MwzWBwHfvr/kyUr+sPJ6vjfE5tPVzkz438MAOpWXIp9w0jOCDmGdLl6ZoftHA==
-X-Gm-Gg: ASbGncsOJMj+rhzoY5jIU/a6czrZv7MJcvX6Qc46q3V+y+qjEAw1Ot+Stjc30IuHZ6v
-	/hVeUtsnwjGP6ovvY8T8QkHg8qJTLN+tNEcXFGs7dSoVF4AnOKM8Xry0sCaw4hP0kaWLj4T/bGZ
-	m+9FTdNAoVk9yiMHk7/Cemp7AaeQFZHCgqw19SCBQnoiEipb2wjc2XC+fOeTnRm6btD/U/YkhO6
-	ftiuJ6Zrj8Fk0qhSC3xGrc/OUE3lf+VNtz/kSL1mLvaJ1WCg/URzeS5odF8DuWaQSEOpIdBa/f9
-	Vi8NtsbbFgmF88brfmx/ePLy/moSXoBknLBbxjlrolES+3MkUf3ZrSYzPvIsE+EKq0IsPDNYQl9
-	MYIUQSLbuy6d9HTMOETo3yVZpMoLCf5nEmwIe
-X-Google-Smtp-Source: AGHT+IFC6yofAEZU9uIg4ElHVXtdVlW8O/y3B6pNs8rlLb+5bVvaCqliz0NCeVD+ukrt5UnUQmDjdA==
-X-Received: by 2002:a5d:584e:0:b0:3a4:e841:b236 with SMTP id ffacd0b85a97d-3a6d12d8c86mr2406728f8f.33.1750424950626;
-        Fri, 20 Jun 2025 06:09:10 -0700 (PDT)
+        bh=tlzGRKm85UWY2+8yyhfs+sQBrY+hIXBP3ETvuuIJ2dg=;
+        b=Elqfs5dnLd7DyfsGhVjD/s95OT1/qFr0emCKUtXLre075tTLNeopmeBWD/MTPoDkyl
+         R0fQ3+4OChVynwALaZczM+udBzSGo3QM7V2cVlImOzHi7ax5GBMiGo9W9MVjCcWBSpt3
+         OZ4NGWmG1YAgLrcwcXhCLBl0ywdM7AllKTqLhn1qezgELX8w31vAan9frutbluGuDlNl
+         /u0qDAaikTuuwXeA/IF5+KsOGBpmnR8b9QpqyNq2KJv75trWZMbk/gtO8SBnSjQ2zwvE
+         EYKfxOBRdJ4VeCb8PtAnGGv90K1wcpkIGq5PwLPjiPqNtfS6EIsnGw4mKgeHwUaeWVoN
+         ZQHQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWw59dfOBKLWPJklvAXrGzNFL2y+hRA8TdTN9qWSaCHU+LkjthPBdrc+2lmvKcagZwaKLXWeSmFUfpYiw==@linaro.org
+X-Gm-Message-State: AOJu0YyOgKH4Qo5wU1HAy9Ju3Zd4QcO+4NbWyiMNSqRye7acAubw1Gp6
+	5Ie38GP/mRLiZfTKz+7NIMDnvm3BLshQCdWLmf47+8OAJYIpQ0Segfq3gpZZ7n4Af7peGg==
+X-Gm-Gg: ASbGnctR63kOujzURGxjQA/b1R1JbL6+KkHTPqNle6OrUfP9a/DVGvGeA/Pjk+thpqD
+	Z0ZrIRpcp2WWUjYVQn2xix92mQW+gUgvdKX4tEtGIGweyJ5ut2kLqFTOEjs5n1nQQp/ejvJgFEy
+	wNrV9cYeQPLKoWLX/9qOnNQAiL2/UnlCV+V0VEHP+0XNlfAwhGLSWfOnYwOyiLPKPorprMv9OyQ
+	3o42ldKSx4PU1R2BPgHXMkQOtKv2+zpyEch6AlOUirQPSK2fZ2MQjk1eBWw6jJIqExdj4a+pvuL
+	PuHlAfSphcgdNvreFXHSPfeW7ByMsjOsPargmn9rF+HHmeEZD/YIz1Epvd+jm9UMVpiX6O3kMK9
+	APnbYwXKQDrQoKdFqgZtdbEL7K7Kc8SrPp0Qn
+X-Google-Smtp-Source: AGHT+IF5uD/3snOQ4X+aLRPk1Xt/Xd4ZmVTTd6N1+20oIyEGbROy1hmGwi9rA/PwtOTLyfKem3s2JA==
+X-Received: by 2002:a05:6000:248a:b0:3a5:2fae:1348 with SMTP id ffacd0b85a97d-3a6d13129c6mr2233188f8f.51.1750424956479;
+        Fri, 20 Jun 2025 06:09:16 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d117bfd9sm2076809f8f.57.2025.06.20.06.09.09
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d2236452sm1791926f8f.59.2025.06.20.06.09.15
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 20 Jun 2025 06:09:10 -0700 (PDT)
+        Fri, 20 Jun 2025 06:09:15 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
@@ -103,48 +103,60 @@ Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
 	Thomas Huth <thuth@redhat.com>,
 	Roman Bolshakov <rbolshakov@ddn.com>,
 	John Snow <jsnow@redhat.com>
-Subject: [PATCH v2 21/26] hw/arm/virt: Rename cpu_post_init() -> post_cpus_gic_realized()
-Date: Fri, 20 Jun 2025 15:07:04 +0200
-Message-ID: <20250620130709.31073-22-philmd@linaro.org>
+Subject: [PATCH v2 22/26] hw/arm/sbsa-ref: Tidy up use of RAMLIMIT_GB definition
+Date: Fri, 20 Jun 2025 15:07:05 +0200
+Message-ID: <20250620130709.31073-23-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250620130709.31073-1-philmd@linaro.org>
 References: <20250620130709.31073-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: f4TjCqhVeA2W
+X-TUID: YjFrdWtZb3h4
 
-QDev uses _post_init() during instance creation, before being
-realized. Since here both vCPUs and GIC are REALIZED, rename
-as virt_post_cpus_gic_realized() for clarity.
+Define RAMLIMIT_BYTES using the TiB definition and display
+the error parsed with size_to_str():
+
+  $ qemu-system-aarch64-unsigned -M sbsa-ref -m 9T
+  qemu-system-aarch64-unsigned: sbsa-ref: cannot model more than 8 TiB of RAM
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/virt.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ hw/arm/sbsa-ref.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index a9099570faa..da453768cce 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2032,7 +2032,8 @@ static void finalize_gic_version(VirtMachineState *vms)
-  * virt_cpu_post_init() must be called after the CPUs have
-  * been realized and the GIC has been created.
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index deae5cf9861..15c1ff4b140 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -19,6 +19,7 @@
   */
--static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
-+static void virt_post_cpus_gic_realized(VirtMachineState *vms,
-+                                        MemoryRegion *sysmem)
- {
-     int max_cpus = MACHINE(vms)->smp.max_cpus;
-     bool aarch64, pmu, steal_time;
-@@ -2349,7 +2350,7 @@ static void machvirt_init(MachineState *machine)
  
-     create_gic(vms, sysmem);
+ #include "qemu/osdep.h"
++#include "qemu/cutils.h"
+ #include "qemu/datadir.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+@@ -53,8 +54,7 @@
+ #include "target/arm/cpu-qom.h"
+ #include "target/arm/gtimer.h"
  
--    virt_cpu_post_init(vms, sysmem);
-+    virt_post_cpus_gic_realized(vms, sysmem);
+-#define RAMLIMIT_GB 8192
+-#define RAMLIMIT_BYTES (RAMLIMIT_GB * GiB)
++#define RAMLIMIT_BYTES (8 * TiB)
  
-     fdt_add_pmu_nodes(vms);
+ #define NUM_IRQS        256
+ #define NUM_SMMU_IRQS   4
+@@ -756,7 +756,9 @@ static void sbsa_ref_init(MachineState *machine)
+     sms->smp_cpus = smp_cpus;
+ 
+     if (machine->ram_size > sbsa_ref_memmap[SBSA_MEM].size) {
+-        error_report("sbsa-ref: cannot model more than %dGB RAM", RAMLIMIT_GB);
++        char *size_str = size_to_str(RAMLIMIT_BYTES);
++
++        error_report("sbsa-ref: cannot model more than %s of RAM", size_str);
+         exit(1);
+     }
  
 -- 
 2.49.0

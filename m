@@ -1,86 +1,86 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp877762njc;
-        Fri, 20 Jun 2025 06:08:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU2iNnj6jnFo5RdPWLUhua36UCguQ+ddre4ESfbI8G7QxoyghwtnY8bnIOKYpjxeN8EwvDFvydnueH9LA==@linaro.org
-X-Received: by 2002:a05:6000:98b:b0:3a4:e5ea:1ac0 with SMTP id ffacd0b85a97d-3a6d1192656mr2037980f8f.5.1750424882723;
-        Fri, 20 Jun 2025 06:08:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750424882; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp877871njc;
+        Fri, 20 Jun 2025 06:08:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVnujvx8kAz3C5CYwKhjT/Nd39OnpUz8eJjOWN57uMIgK5nQiqIK+p0v0wJshhH3kFzwPJhVMfjAlrI2A==@linaro.org
+X-Received: by 2002:a05:600c:3b1a:b0:43d:97ea:2f4 with SMTP id 5b1f17b1804b1-453653b043amr29958165e9.12.1750424889281;
+        Fri, 20 Jun 2025 06:08:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750424889; cv=none;
         d=google.com; s=arc-20240605;
-        b=hblSCA46RZKKkm0W1FNT9b60RrDRWL81/T9xF3eaB34VoJ3/wMdejb6Pew9tsUUr2Q
-         TRvmAS87Qh36MIj/kP0/elgFriq0E/gD6+DVXUQNcfxKaBo3QEJrv3ZGEk9kg9rl2hX3
-         xQ1dRdAh6BTDRZk97+0C3qQ6eQ+VYTkHTyTfpsRUOfcnkmv7eSJlr29cjGKRzi0BBAW+
-         gFUcvR5d8TysSTnkXkBqgNfQlfxquvWGG30wtotiyU2MC2ZfzBaygx0hcagUuxisB/Vz
-         z9NHBdDg3LdzJk1zeHanRDV5F/beecwjXQhIXFsoLYgOSnfHM9P5MeWEy/ICWv4LHHh0
-         7Ulw==
+        b=Ff/kegM3Qpe2VO2YWtRwq6cFSbfxnLO9psws+6G9dX284yPYJuiIhze7OLAFm1svWz
+         1DsStoaGtudL+jcdgH855Z19Qcp7sKEte6rmfoHaDF1IwCP8VeabnjGDWPooystBLV+A
+         63g5bSVDIryOVEb2N5NZRQMMaLBXlLz/QvTAwJjNkgFVlYQFFnGejPYB93494EjQ5rvh
+         pq9AjvFHZ/T5Z/yJZwBT6SHV4Tq/dwLpL6z5jMR/WFZSagAnWywPGuR1xeryG6DLcbSi
+         tvqmRXlQXRcqTTvyUXkRUHks9EQh47DyE6oy2TwkQVttP+wyM1/1A6sigO0UPaye4Itd
+         a6HQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=DHkUxhiwznLnPGQ7CmoJiivDkUiQkmNfBetsY13UZBg=;
-        fh=WK7t8q/IXghH/vt3lojkMXHatvM7Fe4KMA6JpbJjjTc=;
-        b=XKqLU/nUH3blCOY8oJ0KEVGhg2XqEkC+A3fFBKMX5PJkz79EbfsgG+hB3+9vHYpJin
-         fkGYoPVDsSUupTBzTXXNkAHQlZEgoWhAa0z35pJpr6OOA6ZCxGws6WMqJz2jA0ef0Y1Z
-         TQZpcSlpsZ9u0MzmQQwnz9QR3cqk1kx1KlhF55KCU2Q2QpqB3U9cOugCojW/aw28+hvi
-         8vJdPPS8JRqWxD1TsZgQW2IZeziDCdaWqv1plZUNPrDQSgx6pS4xafrgnCDpN5supD1A
-         6ugNlo2DFlTICICZtykDGJseA1PJ7XWojGOXnWqYqZIN9Bmd6IzeT2jlpNtJ1UfWAiHu
-         Bk8w==;
+        bh=gcjg3QhSmhnYtUxzgWM8ifLgGs9HqCTQt/fl8y8J7b4=;
+        fh=AYCBdKD6UaV0zNjhgPpx1OsqQMU+gDhD9R3xXDV+r80=;
+        b=QrbWIdsp2tRjJcAvuyKo6bHLB2w1w8PJIhJsq2CZ9JfoIuAWxQGGB5/YsOFjPPaDuL
+         wHaTAo9zIEacbWlnjLFx4HfqnfmoBGJcaaLl5C62CTpp0vHTCYYt74c2/QOoAHmdqLUT
+         RqIRR1xcKH97USALy1z4emZRw0DvEAvMgLJTYirbTb5ik1Ueadp6ubdYyBb+k+MDdk6U
+         zPagTj9gLbqoF82idBRBPFK2JWiVJOixA2y5H/C89QVqIH8nS+sIkpVZkvJpdLiWIF8l
+         wjBIUXeDGPpAbsLWpGUOp/AlNtZGFYlDL6Vt6BZbdJ+p7z+bT3WlldcSnpJdRuQeTOyN
+         LbHQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="YOBhD+9/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=edqYg4FJ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-45365a3c338sor5605285e9.9.2025.06.20.06.08.02
+        by mx.google.com with SMTPS id 5b1f17b1804b1-453647070e9sor5490635e9.9.2025.06.20.06.08.09
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 20 Jun 2025 06:08:02 -0700 (PDT)
+        Fri, 20 Jun 2025 06:08:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="YOBhD+9/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=edqYg4FJ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750424882; x=1751029682; darn=linaro.org;
+        d=linaro.org; s=google; t=1750424889; x=1751029689; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=DHkUxhiwznLnPGQ7CmoJiivDkUiQkmNfBetsY13UZBg=;
-        b=YOBhD+9/txGqPbRsnuigCNRMp2zcmWvLVdCLFEn8gTfb0utS/Ve+wubwsmaiepnVra
-         iTueV0XhzxGfEpv9QNvkSzRtMCeWn80LUQbiLCXy82ziigrQCEN8hFAE18CwADxyMaST
-         iOKARfX9TbJZrh48dEhuvzOsD3cjdrFRYDslXvBg/KC2sIVhfTB83/okE8nTUNUZ9kQl
-         sNooMU/OLnPhw64KwDsyWJ6dvJLa/y60yFp7fsNwhqYntVLsNGNwYsbW57jbfDu7/XrD
-         tySZFebIpijiJOmxTdC5UlMAu05RZaw6sk5lztcxS7uX2dZb/bsfx2FZme9Ixsrx1p34
-         l10w==
+        bh=gcjg3QhSmhnYtUxzgWM8ifLgGs9HqCTQt/fl8y8J7b4=;
+        b=edqYg4FJkXXfH/WqEzlxb159JqjMwFN2NFCGPdFEZhpXF0/lE6VmPi1an8C5TSRiLQ
+         k54gee6m2rfzn441x+W2dMowuKpDxa5S5+E8NbkmmzuGpiWxqTOvZu9pxL1s9ZpUwYCB
+         sM7NSAbaCRtI+iOz0bCv512Nb4ATl59MMXk6opqlDVhvZd44q0DRUYGzgOrY2buM6UTt
+         e3RTEizAOc5oXUUuKIhVKqAGF0PKoXh5TSG9r3fDw2x5t0tfBYI+EfP4+kAUN7X6nSUL
+         1TwsO04y4USPLWVuwx+6YmJgTRMFBrM3crk0//BJHeFkyHP4YA0IeSYb8qrim/fy5/Un
+         CZ5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750424882; x=1751029682;
+        d=1e100.net; s=20230601; t=1750424889; x=1751029689;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=DHkUxhiwznLnPGQ7CmoJiivDkUiQkmNfBetsY13UZBg=;
-        b=V0tHDnDPsYqh5FNh8uyvf2aLi7Ghv4aFXMIW+k/4d9kmGcGn/fvwV0TapsTVmCdVqW
-         aMvSAniYP3V5Zr+xGBhw/kU2aQpHJuHbHrNPyNZAeANb2NPbiYuT9CaiWpMocjPaI5eW
-         9SRejAM0lFeYdc9ERbTml2YOZr8zp+eJrd3XreSwhOg+uUhyiI4CqrDnR8V0k+x7FBB2
-         fBgt4no5bNiFbLOC0K9fny/ZOCHej8R/CYnuggVgSysliR3zQQs2bPMYZicU+AKV0nTj
-         NLNojTPHR6g4ZuD+aOTTKGRMDPwujrDitcZD90mmaSBXcgSz0/w9+B90ha6iRmf6miWF
-         ppkw==
-X-Forwarded-Encrypted: i=1; AJvYcCWYbslTANpq5FkorwQ1cEiubGeoQ8qE4qj+45wT9ZkyO5AaWMvGpYNNLo80R+UEWa42SGAJPloxvLWoLQ==@linaro.org
-X-Gm-Message-State: AOJu0Yzw69CRH2LZ46pwQtltcavQ2GQDsPXSb47HXxE/dFhdvqED6UKJ
-	Hhm6HjHbRNF5aQKJ0tGzs+u4Rlgt6ALdkFxpSm4CD9M0aulLYdkIEyRnHDQvI0NW0JeYxQ==
-X-Gm-Gg: ASbGncsa07QUAJ44lqz0InnanweNEL99giVk5R5VvL5HYDpq/rRsmbgOnmEORpx1QdA
-	iY36jDXNOcc4ivGooY8GlcSXIuLzLRChgx1KwwNpk1g2rc3iTCbd6xFscTA02UBWXpa8dkytz6m
-	7bdrB/sBxbhTqE5zq1phFrruGWE9xkIgRJN3xF2xGucEAtT4gBzWNbZIjJf1MKTUKE4IYJcdo5n
-	ne9bZy3QaNh6MNpUm1L+BjCaoFe1mynWd6LLS6Gf8X88jdY3x/rlpiwHY17/DIcYRz1AfTqK78F
-	NbzU1XeJMGKApxynrYb8KVy9LzVDGItmfqdR5sgsqQr5mQlv3i2ySr/3tbGWQRSXg31Lhfy/WDq
-	t8r0DQqSVzEx8XYY/13jexE5tW8cw7DXdlkGp
-X-Google-Smtp-Source: AGHT+IFIRA+QgEzXaz5Kv5aRlxYuLkZKTx/pYgPZDxWBgIRvFsRGsi3xvxXp90rTSlKsbLeeXas7Hg==
-X-Received: by 2002:a05:600c:3acf:b0:440:6a37:be0d with SMTP id 5b1f17b1804b1-453655c3d4fmr28644125e9.15.1750424882015;
-        Fri, 20 Jun 2025 06:08:02 -0700 (PDT)
+        bh=gcjg3QhSmhnYtUxzgWM8ifLgGs9HqCTQt/fl8y8J7b4=;
+        b=YzOqkjleTYjbfkjEe+iEebGjkTJp6bynsq8/mXaiDixwNCDA84xnouW0FQcF2M7HWU
+         6dL8TrgjtnxJyPLHrSqgzEHNdBfQBa8iYi88z5kQ0vgE8It1OKnRCY0ZLVtfz8g2aWsW
+         ZhG7rglwBP/NFF7fypv5ve61/nhx/wu3cc+OokHZDWO46ODuCM3FGLv3tojVylhjREtc
+         NktUfO2bcqimZFH4gmJQMEkNpPwJcwo37xLzDUV76nZNrvusej8z6/ygOEoTNu3m05JE
+         bBArOY8miiYy/sTpxrRnyGHi18XzAlsbIBG9CUM+72tKu+Y6LjI/4eGZKJQt9zf3Lh5H
+         HjwQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWyPG7AOB3IvvgfzOQDkHx4qpCvi2FGNtX6tcG07TQCJB0uRYrWwoV/qHVFndnAJxt7AgKXEmp0V5VX+Q==@linaro.org
+X-Gm-Message-State: AOJu0YwTFIqQqY9MDoSNyDpG7sToeC4nyeaBFM3waUfnzhcLyKmebGX5
+	GhYKrAVjq7a94b0TIv/52iUqgHu9a5JEuVHNnPwicrivvOAd/tE/bEEkkZWroFP7NtjHWA==
+X-Gm-Gg: ASbGnct8Mr+W1y1ApdzaeGkMmZgSm1yw9ta9cyC/5ylikt2u58cKtQj9bF1fFk8QW+1
+	8eZ9FRecmtrTlXROJsSKblAIquBsyH22jUxnCfpsSUFSgx7+0yaxFEpjJrtHT2mYFq4m8RXATa+
+	RcYrspvPMehhd8WbAnXqI4wvuDhXdfKL8ytsKSqXFI46gp3apfpbHrV3YSD+I1DoAOBH9igSh9g
+	fYyI5parnlHLA2IkRibUFn9JnMjt6WGxu2/fjly+1dTyfhKQM1VKVM3nhHwyPAwEmrHPKtFjLQh
+	h8NjLql4AY76T+FqBk96oPUOCmt9OHe+8BZAVDgWgzKvrJRSd0OQUAySvnhTUF+0psppDzG5TYD
+	cUvHuXB9CHf9wxQL2qCaCadjHpEUt60xrD4cx
+X-Google-Smtp-Source: AGHT+IGlMawwPYBTI6F+HQ5fZwO6wtFZQ3ofGqTbh9NR6Oep2MJV2fe7y9qs/PunxZNaedQy8sLILg==
+X-Received: by 2002:a05:6000:1a8e:b0:3a4:f6ba:51da with SMTP id ffacd0b85a97d-3a6d12db6d0mr2328685f8f.15.1750424888138;
+        Fri, 20 Jun 2025 06:08:08 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4535e98b66asm57984935e9.17.2025.06.20.06.08.00
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d1190d13sm2038186f8f.90.2025.06.20.06.08.06
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 20 Jun 2025 06:08:01 -0700 (PDT)
+        Fri, 20 Jun 2025 06:08:07 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
@@ -103,56 +103,83 @@ Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
 	Thomas Huth <thuth@redhat.com>,
 	Roman Bolshakov <rbolshakov@ddn.com>,
 	John Snow <jsnow@redhat.com>
-Subject: [PATCH v2 09/26] target/arm: Correct KVM & HVF dtb_compatible value
-Date: Fri, 20 Jun 2025 15:06:52 +0200
-Message-ID: <20250620130709.31073-10-philmd@linaro.org>
+Subject: [PATCH v2 10/26] accel/hvf: Model PhysTimer register
+Date: Fri, 20 Jun 2025 15:06:53 +0200
+Message-ID: <20250620130709.31073-11-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250620130709.31073-1-philmd@linaro.org>
 References: <20250620130709.31073-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: S/Srg2jBKIpZ
+X-TUID: kMA0ImVY50d4
 
-Linux kernel knows how to parse "arm,armv8", not "arm,arm-v8".
+Emulate PhysTimer dispatching to TCG, like we do with GIC registers.
 
-See arch/arm64/boot/dts/foundation-v8.dts:
-
-  https://github.com/torvalds/linux/commit/90556ca1ebdd
-
-Fixes: 26861c7ce06 ("target-arm: Add minimal KVM AArch64 support")
-Fixes: 585df85efea ("hvf: arm: Implement -cpu host")
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/hvf/hvf.c | 2 +-
- target/arm/kvm.c     | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ target/arm/hvf/hvf.c | 19 ++++++++-----------
+ 1 file changed, 8 insertions(+), 11 deletions(-)
 
 diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index d4c58516e8b..bf59b17dcb9 100644
+index bf59b17dcb9..5169bf6e23c 100644
 --- a/target/arm/hvf/hvf.c
 +++ b/target/arm/hvf/hvf.c
-@@ -879,7 +879,7 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     hv_vcpu_exit_t *exit;
-     int i;
+@@ -187,6 +187,7 @@ void hvf_arm_init_debug(void)
+ #define SYSREG_OSDLR_EL1      SYSREG(2, 0, 1, 3, 4)
+ #define SYSREG_CNTPCT_EL0     SYSREG(3, 3, 14, 0, 1)
+ #define SYSREG_CNTP_CTL_EL0   SYSREG(3, 3, 14, 2, 1)
++#define SYSREG_CNTP_CVAL_EL0  SYSREG(3, 3, 14, 2, 2)
+ #define SYSREG_PMCR_EL0       SYSREG(3, 3, 9, 12, 0)
+ #define SYSREG_PMUSERENR_EL0  SYSREG(3, 3, 9, 14, 0)
+ #define SYSREG_PMCNTENSET_EL0 SYSREG(3, 3, 9, 12, 1)
+@@ -198,6 +199,7 @@ void hvf_arm_init_debug(void)
+ #define SYSREG_PMCEID0_EL0    SYSREG(3, 3, 9, 12, 6)
+ #define SYSREG_PMCEID1_EL0    SYSREG(3, 3, 9, 12, 7)
+ #define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 9, 13, 0)
++#define SYSREG_CNTP_TVAL_EL0  SYSREG(3, 3, 14, 2, 0)
+ #define SYSREG_PMCCFILTR_EL0  SYSREG(3, 3, 14, 15, 7)
  
--    ahcf->dtb_compatible = "arm,arm-v8";
-+    ahcf->dtb_compatible = "arm,armv8";
-     ahcf->features = (1ULL << ARM_FEATURE_V8) |
-                      (1ULL << ARM_FEATURE_NEON) |
-                      (1ULL << ARM_FEATURE_AARCH64) |
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 74fda8b8090..9a1b031556a 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -266,7 +266,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ #define SYSREG_ICC_AP0R0_EL1     SYSREG(3, 0, 12, 8, 4)
+@@ -1326,16 +1328,15 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
      }
  
-     ahcf->target = init.target;
--    ahcf->dtb_compatible = "arm,arm-v8";
-+    ahcf->dtb_compatible = "arm,armv8";
- 
-     err = read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64pfr0,
-                          ARM64_SYS_REG(3, 0, 0, 4, 0));
+     switch (reg) {
+-    case SYSREG_CNTPCT_EL0:
+-        *val = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) /
+-              gt_cntfrq_period_ns(arm_cpu);
+-        return 0;
+     case SYSREG_OSLSR_EL1:
+         *val = env->cp15.oslsr_el1;
+         return 0;
+     case SYSREG_OSDLR_EL1:
+         /* Dummy register */
+         return 0;
++    case SYSREG_CNTP_CTL_EL0:
++    case SYSREG_CNTP_TVAL_EL0:
++    case SYSREG_CNTPCT_EL0:
+     case SYSREG_ICC_AP0R0_EL1:
+     case SYSREG_ICC_AP0R1_EL1:
+     case SYSREG_ICC_AP0R2_EL1:
+@@ -1639,16 +1640,12 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+     case SYSREG_OSLAR_EL1:
+         env->cp15.oslsr_el1 = val & 1;
+         return 0;
+-    case SYSREG_CNTP_CTL_EL0:
+-        /*
+-         * Guests should not rely on the physical counter, but macOS emits
+-         * disable writes to it. Let it do so, but ignore the requests.
+-         */
+-        qemu_log_mask(LOG_UNIMP, "Unsupported write to CNTP_CTL_EL0\n");
+-        return 0;
+     case SYSREG_OSDLR_EL1:
+         /* Dummy register */
+         return 0;
++    case SYSREG_CNTP_CTL_EL0:
++    case SYSREG_CNTP_CVAL_EL0:
++    case SYSREG_CNTP_TVAL_EL0:
+     case SYSREG_ICC_AP0R0_EL1:
+     case SYSREG_ICC_AP0R1_EL1:
+     case SYSREG_ICC_AP0R2_EL1:
 -- 
 2.49.0

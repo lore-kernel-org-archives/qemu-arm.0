@@ -1,79 +1,262 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp764379njc;
-        Fri, 20 Jun 2025 02:37:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUw8Hp2Xkz3rRzIRtorrhyNxCtGySoF+drLCloFmj0h7U7V0Z48ujZFmCdWsgdnZV5gpxPpSaMhaikiYw==@linaro.org
-X-Google-Smtp-Source: AGHT+IG9AWQGCn44rCOZOyO8/QC6agOu5SSIeENyLmcObhTDZ7CQvs19GmM13JBJL+cA+je6V1Dp
-X-Received: by 2002:a05:6000:18a8:b0:391:3aaf:1d5f with SMTP id ffacd0b85a97d-3a6d12eb61amr1908381f8f.52.1750412242171;
-        Fri, 20 Jun 2025 02:37:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750412242; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp675628njc;
+        Thu, 19 Jun 2025 22:44:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWGVcoJ5TSa8+b2HpUxeWNmBPul6jipJhc4Q8gfGfzQZbmjVLQIALu+pYVYvay5jou5t7HHv4FdaQaU+A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHZ7/oRh6L0+3uXabzpeufOH8zuWtFgspew9ONgRZ89Q/WSS16olZ7nAPWbymY6Cg6X/A3G
+X-Received: by 2002:a05:620a:4606:b0:7ca:f65b:c341 with SMTP id af79cd13be357-7d3f994c55amr252793285a.52.1750398297980;
+        Thu, 19 Jun 2025 22:44:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750398297; cv=none;
         d=google.com; s=arc-20240605;
-        b=cHgKKbGZ6xXWWODzF3N5UK5PxlKUGm2oxNEXNts3RuFr84x5Ed94si9V9Ii9HZQKMo
-         BHjXJ/SJC0hsaP36+YpAIi013CMn+ueHaf5k8AQqCcmrM32w5Uqc+ivztjiPKCH4GadD
-         RlAUtmNDxqu8y8QGn1g9rtMUi+25TxP4gKY76hGRU+0IFsyomvh6AJbgMJo3oEVhF2eL
-         93DlZ8Xav/bqjHJYgVnQmUhEsNnPM5diRktlDib5pvwzIECAAgELAyBgQNyEFCdlCHwa
-         Hg90w5bjqjs1foqYG9AW0z3ZVm6W4RiPH2DD7ecA37c7bTByizmPaYP2vgIG4uGDU8O2
-         spig==
+        b=bgFe/VH11Q+cK4yQf33zNrpnA46Q3vLn2jbsWEN+1Fq34n1jeN1uMbzVNQu/7I2gPt
+         XWZN6ik3foi3Z826VqFoOOdY2QPCl/9Eyhn24MC9xJArlw++G6T3rmGWOemLdaX/LHOF
+         oJN3EA2DOcGB2Zb5DjeARo+cwQZkY+AmG9BWEaOM5c4esz5C2RYsH4WGFdkV6d0qdRJe
+         Kjda646uRWQjl9emo+B9JHOCa8ZFNYASIcWkcJHFEPH0t2qkjQ1/RGsYzqyTdOHnY2fO
+         xd+c7VcfbnDAluYbfVEf3GepY0Y8ycTj2jubdUbTjrTPDa+sD9Uxr8sinFsyL85csZC2
+         EDKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date;
-        bh=WW/2xU2dVnIekeb+IgZgKqyFkzh/BFQ+rJ62qJ+DQ5Q=;
-        fh=De5j/+RFiHp5oysg/kfBHcT9O0ASuV5hpNukEk4skqM=;
-        b=F3DVTss3ChxiDsN7yPqbgNRkfmKUjhRCIY+8paa2vK6vN2X+gyaq+hjOL1ofKOXqOa
-         FG+wO4IYUtSTBIVLqtkVVjfPFtIdyltcADa8DUsFq7n2LPkfamgpF75DtrzjoQQHH1Mn
-         IBoucpYK70UwiLXcD06lUiwFinvWZZTWp2ULQ1yUYdWTelvTW/TZqoA2askZFWfQBfOZ
-         2qn/pAskhczHDgUIANf1bZ7Me4nxDMdZn7Sg2z96Dj3fakdd1KzmUCUhNFLWrYcczhLh
-         eVfMJmsLPr9dVMg6xrrMwL7g36r/sfCU2mEuERkKC0AB84TdJH4dI7qlWJnqpETueiBz
-         hSFg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=CnIc2BVTx4FA7nAYysPDaJyB3FhpYaA7NZsHIQBzkk0=;
+        fh=e2doJimpuP43a+5rrKkGu3YAn2W68cBR+w+TN2Njkuw=;
+        b=ZHh27ILK9SsjL/COUSoQkxKMYikxJz7DPQCXCEh2vYWIvo7U5W3SASwjbbINXZMSte
+         raWhEHfKyfWg1nEtOdTe9viLaFMQEclBoRjThw+eanrmYF7IQ38H/3TWhVzsCsbbaSsK
+         Qef9D5KFgJx3LJZYtrA2sqMfljXqcXhDvF0tkQQBpAvtYXdplAS47bgHFEVLXUhpS8Ha
+         SOY/wY9Lmgz+mEE11cUXyezR1Wi2ZfJRj1a6mhVZJfStZfTtSgW8cGH8IxhKHg7pFE0W
+         lZLcGOLsj72FYJSX+rtegOq/5NmybKqPYNNWSQ2RJ3yeYSUPss3+Wtoif3tOIKupD2an
+         o4FQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a6d12b1e3fsi1038232f8f.831.2025.06.20.02.37.21
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Jun 2025 02:37:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3f999f26dsi101010785a.48.2025.06.19.22.44.57
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 19 Jun 2025 22:44:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bNsn72Grnz6M51K;
-	Fri, 20 Jun 2025 17:36:43 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 3F535140432;
-	Fri, 20 Jun 2025 17:37:21 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 20 Jun
- 2025 11:37:20 +0200
-Date: Fri, 20 Jun 2025 10:37:19 +0100
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: Eric Auger <eric.auger@redhat.com>
-CC: <eric.auger.pro@gmail.com>, <qemu-devel@nongnu.org>,
-	<qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <imammedo@redhat.com>,
-	<gustavo.romero@linaro.org>, <anisinha@redhat.com>, <mst@redhat.com>,
-	<shannon.zhaosl@gmail.com>, <pbonzini@redhat.com>, <philmd@linaro.org>,
-	<alex.bennee@linaro.org>
-Subject: Re: [PATCH v3 18/29] hw/acpi/ged: Add a bus link property
-Message-ID: <20250620103719.000034fe@huawei.com>
-In-Reply-To: <20250616094903.885753-19-eric.auger@redhat.com>
-References: <20250616094903.885753-1-eric.auger@redhat.com>
-	<20250616094903.885753-19-eric.auger@redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uSUYO-0004gt-W8; Fri, 20 Jun 2025 01:44:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=V2Fl=ZD=kaod.org=clg@ozlabs.org>)
+ id 1uSUYM-0004gc-6B; Fri, 20 Jun 2025 01:44:43 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=V2Fl=ZD=kaod.org=clg@ozlabs.org>)
+ id 1uSUYJ-0003vw-Di; Fri, 20 Jun 2025 01:44:41 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bNmdB1GQnz4xDb;
+ Fri, 20 Jun 2025 15:44:30 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bNmd637JPz4x11;
+ Fri, 20 Jun 2025 15:44:26 +1000 (AEST)
+Message-ID: <7abd4507-46e3-4848-8f54-928998c64565@kaod.org>
+Date: Fri, 20 Jun 2025 07:44:23 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC v5 0/4] Add QEMU model for ASPEED OTP memory and integrate
+ with SoCs
+To: Kane Chen <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com
+References: <20250619064115.4182202-1-kane_chen@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250619064115.4182202-1-kane_chen@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml100009.china.huawei.com (7.191.174.83) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: PKzWM5HhGGHB
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=V2Fl=ZD=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.069, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: s3sVhGf8osGn
 
-On Mon, 16 Jun 2025 11:46:47 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
+Hello Kane,
 
-> This property will be set by the machine code on the object
-> creation. It will be used by acpi pcihp hotplug code.
+On 6/19/25 08:41, Kane Chen wrote:
+> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+> This patch series introduces a QEMU model for the ASPEED OTP (One-Time
+> Programmable) memory, along with its integration into the Secure Boot
+> Controller (SBC) and supported SoCs (AST2600, AST1030).
+> 
+> The OTP model emulates a simple fuse array used for secure boot or
+> device configuration, with support for both file-backed content and
+> internal fallback buffers. It exposes an AddressSpace to support
+> transaction-based access from controllers like the SBC.
+> 
+> This series includes:
+>    - OTP memory device implementation
+>    - SBC integration with command decoding (READ/PROG)
+>    - Machine property wiring (via "otpmem" alias)
+>    - A functional test suite covering various initialization paths
+> 
+> **[RFC notice]**
+> This is an RFC submission. While the OTP model itself is mostly
+> complete, this version is primarily intended to gather feedback on the
+> device initialization flow-specifically how the OTP instance is created,
+> connected, and exposed via machine properties. Any comment on QOM
+> integration style, late binding via notifier, and fallback behavior are
+> welcome.
+> 
+> In particular, I am seeking input on:
+>    - Whether the current notifier-based connection from SBC to OTP is
+>      appropriate, or if there is a preferred QOM idiom for linking
+>      peripheral devices post-realize.
+>    - The use of "optmem" as a drive alias and machine parameter handling.
+> 
+> A more finalized version with any requested changes, documentation,
+> and test refinements will follow after review.
+> 
+> Example usage:
+> ```bash
+> qemu-system-arm -machine ast2600-evb,otpmem=otpmem-drive \
+>    -blockdev driver=file,filename=otpmem.img,node-name=otpmem \
+>    -device aspeed.otpmem,drive=otpmem,id=otpmem-drive \
+>    ...
+> ```
+> 
+> Any feedback or suggestions are appreciated!
+> 
+> Thanks,
+> Kane
+> 
+> ---
+> 
+> ChangeLog
+> ---------
+> v5:
+> - Switched to notifier-based late binding between SBC and OTP
+> - Exposed 'otpmem' as a machine parameter using QOM alias mechanism
+> - Added fallback support when no backend is provided
+> - Introduced functional test suite covering multiple init configurations
+> - Submitted as [RFC] to gather feedback on QOM integration approach
+> 
+> v4:
+> - Replaces blockdev backend with memory-mapped AddressSpace access
+> - Switches from `-drive` CLI option to `otpmem` machine parameter
+> - Restructures the OTP device under the SBC in the QOM tree
+> 
+> v3:
+> - Minor fixes and refinements on top of v2 content
+> 
+> v2:
+> - Separated the OTP memory into a standalone QEMU device (`aspeed.otpmem`)
+> - Replaced ad-hoc file handling with standard `-drive` backend integration
+> - Linked OTP to SBC via QOM property for cleaner abstraction
+> - Improved memory bounds checking and irreversible programming logic
+> 
+> v1:
+> - Embedded OTP logic in the SBC model and created the backing file internally.
+> 
+> ---
+> 
+> Kane-Chen-AS (4):
+>    hw/misc/aspeed_otp: Add ASPEED OTP memory device model
+>    hw/misc/aspeed_sbc: Connect ASPEED OTP memory device to SBC
+>    hw/arm: Integrate ASPEED OTP memory support into AST10x0 and AST2600
+>      SoCs
+>    tests/functional: Add integration tests for ASPEED OTP memory model
+> 
+>   hw/arm/aspeed.c                        |  20 +++
+>   hw/arm/aspeed_ast10x0.c                |   2 +-
+>   hw/arm/aspeed_ast2600.c                |   2 +-
+>   hw/misc/aspeed_otpmem.c                | 117 ++++++++++++++++
+>   hw/misc/aspeed_sbc.c                   | 179 +++++++++++++++++++++++++
+>   hw/misc/meson.build                    |   1 +
+>   hw/misc/trace-events                   |   7 +
+>   include/hw/misc/aspeed_otpmem.h        |  35 +++++
+>   include/hw/misc/aspeed_sbc.h           |   8 ++
+>   tests/functional/meson.build           |   1 +
+>   tests/functional/test_aspeed_otpmem.py |  82 +++++++++++
+>   11 files changed, 452 insertions(+), 2 deletions(-)
+>   create mode 100644 hw/misc/aspeed_otpmem.c
+>   create mode 100644 include/hw/misc/aspeed_otpmem.h
+>   create mode 100644 tests/functional/test_aspeed_otpmem.py
+> 
+
+I would like to see first a proposal without a BlockBackend and
+without an 'optmem' machine property. Please rework the series
+accordingly.
+
+Thanks,
+
+C.
+
+
+
+
 

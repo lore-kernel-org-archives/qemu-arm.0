@@ -1,177 +1,247 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp708094njc;
-        Fri, 20 Jun 2025 00:14:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW5hwwRTqsO8uHl00qsHJB1FQPLR+YhxfOGVm/2m23GaxWJldGoUVMauL/9AtOUA+fkymGdgmVxZEy5vQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEWNmdso2XH04HIDSY8/q/7nkSrmQlFLkJbX/XRHX04i20bjo5wpe53CmHFcQ/9SxYALNCg
-X-Received: by 2002:a05:6214:4a8e:b0:6fa:cdc9:8aff with SMTP id 6a1803df08f44-6fd0a52d55emr33956446d6.25.1750403658542;
-        Fri, 20 Jun 2025 00:14:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750403658; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp757324njc;
+        Fri, 20 Jun 2025 02:19:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUR448y4dZl+mrxi4f2RgbxIh7uYKixSojGqLk/Us69nWsP6CNz0ZBHt6VgCdhlTPFq6aSJbFHStXeZSg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHI0bt/ccP5YKhpUrQ1YoiZOGOqAPerUY5Ey29R/YlZauuwnmlfNRt2Ner2ZTo0ZvEwL0d/
+X-Received: by 2002:a05:620a:6187:b0:7d3:a606:7c96 with SMTP id af79cd13be357-7d3f98bfd9fmr340724885a.1.1750411180505;
+        Fri, 20 Jun 2025 02:19:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750411180; cv=none;
         d=google.com; s=arc-20240605;
-        b=JD4I96/g92IeQH5FlX7ep/8PgPNoKfxoTkaisHEFvwSaB+9BCRz7Q6mI4KLQiDzkcN
-         RteCRO7FTLisS8mCBHZSVTA80e9W3UVDnubMIKtw7AH0YMUaxrsX64AbWYvA20OHou1C
-         UrJAOSFr8VsCLLgXXyd+Wjv2AnRdT6HV7Eu853WQmmhUTm2LCHMCex7HXxF/z7UmiWVB
-         8pC6QpekeTbN6GecPKKHNKr+COUM6b87wT9lraL6+g9rsw2ePEOkjGG4PYPnEQgahCDm
-         qbed1mb3UDhrlhfv83uv4XAtaphQgI6yf3qKaAbpDN6xANxuzk5IdHDXT2z2S2B8Lt/K
-         uCMQ==
+        b=ZO3xBexidHO4jAgjY7I9aIANpCtdXHSNzWAIQyQU70TXjHCyMchXsMEu+LEsftq2l3
+         gHv0rHXkiUxhRm3MFR0ho8F8PZNu/yf8FA2FPPJjUd7aaJWL+C70zEg/HqGxfq/piIMm
+         +6pYmibM3p7vD9jNzqdCCxjf82qz449wqMfCKl31kojXWTORrGf9uzMv5UrYg0WcTD9d
+         TO42Ufw8aaBi8AJVeKcow428aShCpvQ2FQBOgj7SxMkYKOX/36WiS09Pvx9LDbvRe1lp
+         +f5q1HIAJLnpAIKyQPouiZSJB31I7oTZMvpffs/cqHV2oxWhi8auOvZtDqMlj5n2YOKS
+         8bWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=iukcaNGps2nc9kIyZ72bljONJ7HQvgBmz/1gwQYo2uM=;
-        fh=N69jDu0vxXovE3lez9zijsp5WCunCzL+4u2NpDSSUsE=;
-        b=E1ZEmW8aJH8bc3mlxVU//lxsI6+Ge8izzbbTHXXe7hO2LvgYrnWxAn7iwMgV6xEZER
-         mcXNqoH562e7+jS9/Sgrqfj+iuvc3zBuP1rmjM5NP2YxwN922ZMD8bKK051Gl0xj/kqx
-         iE20knvPXtb1wUihne/IFN4KshjUvRqyG877VtDT2XVqzei5xX3AUDrs0WOG2WIQds/p
-         nrm7JDWwWMxw1XThp/oozoHkOgIUYGdxWIVnMEjL3YMPR90nQW0m3eE8FCnDOW1LD9UY
-         yxg6sNgwJqZXf5oZgdsvK7WiJTz2whY2BvwBGeWzLh1dJnSaFGkZaF8Mtk5/BquLZDgm
-         Wuog==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date;
+        bh=Z6NwrMn4/nd2UuXtBW2knhkhGEeQyDQIpo6kIWwjIFs=;
+        fh=De5j/+RFiHp5oysg/kfBHcT9O0ASuV5hpNukEk4skqM=;
+        b=MCwxabwMODcZv5HHoxvRBSPlyoxCUM0u+cTM/nKIX9o6TWql0QQ+Ao7oX+7k16MiW9
+         7M/weMJXYF8X3Y81B4Q8Yi7MyVTdrkrmx64AkyLHxkpiRgOW0HoUeHlp4HJ/AxdPmN3R
+         Jt1Yptlq3OW/o1l7ALRmxP83xA4gymWA/Slb54zPTBR/K68sz3fyvHJtMnOOVzYU2quP
+         FK+qit76Jbj5ScaGmvK20DaklxY8NMiJw1SvnoUOds3/cMeER3NmFIHVGHksaCQcoqII
+         9Q/x4Z8IDiNDXHQ4i5tkM2gOrhVy6HYcwNWWjCE810QVH1re2xsQX/7x22Zg5sFkcXAg
+         emqg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd095351cesi14957416d6.227.2025.06.20.00.14.18
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Jun 2025 00:14:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3f9a172afsi131825185a.489.2025.06.20.02.19.40
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Jun 2025 02:19:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uSVwX-0002Uf-Qe; Fri, 20 Jun 2025 03:13:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=V2Fl=ZD=kaod.org=clg@ozlabs.org>)
- id 1uSVwV-0002UI-IO; Fri, 20 Jun 2025 03:13:43 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=V2Fl=ZD=kaod.org=clg@ozlabs.org>)
- id 1uSVwT-0006aE-B8; Fri, 20 Jun 2025 03:13:43 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bNpby57qPz4xN4;
- Fri, 20 Jun 2025 17:13:34 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bNpbr64p2z4x8X;
- Fri, 20 Jun 2025 17:13:28 +1000 (AEST)
-Message-ID: <05d20d6a-eede-432d-a4c4-0480ece7f745@kaod.org>
-Date: Fri, 20 Jun 2025 09:13:25 +0200
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bNsHw1dMjz6K5mL;
+	Fri, 20 Jun 2025 17:14:52 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+	by mail.maildlp.com (Postfix) with ESMTPS id 42246140446;
+	Fri, 20 Jun 2025 17:19:38 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 20 Jun
+ 2025 11:19:37 +0200
+Date: Fri, 20 Jun 2025 10:19:36 +0100
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+To: Eric Auger <eric.auger@redhat.com>
+CC: <eric.auger.pro@gmail.com>, <qemu-devel@nongnu.org>,
+	<qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <imammedo@redhat.com>,
+	<gustavo.romero@linaro.org>, <anisinha@redhat.com>, <mst@redhat.com>,
+	<shannon.zhaosl@gmail.com>, <pbonzini@redhat.com>, <philmd@linaro.org>,
+	<alex.bennee@linaro.org>
+Subject: Re: [PATCH v3 16/29] hw/i386/acpi-build: Move aml_pci_edsm to a
+ generic place
+Message-ID: <20250620101936.00005f96@huawei.com>
+In-Reply-To: <20250616094903.885753-17-eric.auger@redhat.com>
+References: <20250616094903.885753-1-eric.auger@redhat.com>
+	<20250616094903.885753-17-eric.auger@redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: aspeed: Split the machine definition into individual source files
-To: Troy Lee <leetroy@gmail.com>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Steven Lee
- <steven_lee@aspeedtech.com>, Peter Maydell <peter.maydell@linaro.org>,
- Patrick Williams <patrick@stwcx.xyz>
-References: <e2df1ff1-3ce4-4233-b32e-2bc680725c71@kaod.org>
- <CAN9Jwz2m=YX-1_U6z6-=opxoYL8RkFT76--WMcgzOkVZjsFyrA@mail.gmail.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <CAN9Jwz2m=YX-1_U6z6-=opxoYL8RkFT76--WMcgzOkVZjsFyrA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=V2Fl=ZD=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.069, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: A7L74CUkvl/q
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100009.china.huawei.com (7.191.174.83) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-TUID: QQOXVFY4hByC
 
-On 6/19/25 16:54, Troy Lee wrote:
-> Hi,
-> On Thu, Jun 19, 2025 at 5:24 PM Cédric Le Goater <clg@kaod.org> wrote:
->>
->> Hi,
->>
->> This is a follow up of a private discussion with Patrick.
->>
->> Aspeed modeling started nearly 10y ago with the palmetto-bmc machine.
->> We now have 5 SoCs and 25 machines which are mostly defined in
->> in a single aspeed.c file. Multi SoC machines, fby35 and ast2700fc,
->> are defined in fby35.c and aspeed_ast27x0-fc.c respectively.
->>
+On Mon, 16 Jun 2025 11:46:45 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
+
+> Move aml_pci_edsm to pci-bridge.c since we want to reuse that for
+> ARM and acpi-index support.
 > 
-> Sounds good to me.
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
+A request for a bit of documentation inline.  aml_pci_edsm() sounds
+like we should be able to grep the spec for edsm and find it but
+that's just internal method naming in qemu.
+
+
+More interesting is I don't think this will ever be called as
+the kernel has no idea how to call it and unlike on x86 the
+blobs don't show wrapping the call in a _DSM() (see aml_pci_static_endpoint_dsm())
+
+Did EDSM usage get dropped as this set evolved leaving this behind?
+
+
+
 >
-> While we're on this subject, we have many variants of the AST27x0 SoC
-> and development boards in different form factors. Should we also create
-> separate SoC models and machine definitions for each one? Or can we
-> treat AST27x0 as a superset of AST2700, AST2750, AST2720, and
-> any future models?
+> ---
+> 
+> v2 -> v3:
+> - move to pci-bridge.c instead of pcihp.c (Igor)
+> ---
+>  include/hw/acpi/pci.h |  1 +
+>  hw/acpi/pci-bridge.c  | 54 +++++++++++++++++++++++++++++++++++++++++++
+>  hw/i386/acpi-build.c  | 53 ------------------------------------------
+>  3 files changed, 55 insertions(+), 53 deletions(-)
+> 
+> diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
+> index 69bae95eac..05e72815c8 100644
+> --- a/include/hw/acpi/pci.h
+> +++ b/include/hw/acpi/pci.h
+> @@ -42,5 +42,6 @@ void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope);
+>  void build_srat_generic_affinity_structures(GArray *table_data);
+>  
+>  Aml *build_pci_host_bridge_osc_method(bool enable_native_pcie_hotplug);
+> +Aml *aml_pci_edsm(void);
+>  
+>  #endif
+> diff --git a/hw/acpi/pci-bridge.c b/hw/acpi/pci-bridge.c
+> index 7baa7034a1..be68a98c34 100644
+> --- a/hw/acpi/pci-bridge.c
+> +++ b/hw/acpi/pci-bridge.c
+> @@ -35,3 +35,57 @@ void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope)
+>          }
+>      }
+>  }
+> +
+> +Aml *aml_pci_edsm(void)
 
-I think keeping models for the AST27x0 SoC family in the same
-source file is fine for now. We have introduced aspeed_ast27x0-ssp.c
-and aspeed_ast27x0-tsp.c but these are service processor and are using
-Cortex-M4 processors.
-
-Thanks,
-
-C.
+Can we have some comments, or a more descriptive name than
+the resulting method name?  There is stuff in the function obviously
+that associates it with the naming DSM but given this is moving to
+generic code maybe it needs a brief intro comment?
 
 
+> +{
+> +    Aml *method, *ifctx;
+> +    Aml *zero = aml_int(0);
+> +    Aml *func = aml_arg(2);
+> +    Aml *ret = aml_local(0);
+> +    Aml *aidx = aml_local(1);
+> +    Aml *params = aml_arg(4);
+> +
+> +    method = aml_method("EDSM", 5, AML_SERIALIZED);
+> +
+> +    /* get supported functions */
+> +    ifctx = aml_if(aml_equal(func, zero));
+> +    {
+> +        /* 1: have supported functions */
+> +        /* 7: support for function 7 */
+> +        const uint8_t caps = 1 | BIT(7);
+> +        build_append_pci_dsm_func0_common(ifctx, ret);
+> +        aml_append(ifctx, aml_store(aml_int(caps), aml_index(ret, zero)));
+> +        aml_append(ifctx, aml_return(ret));
+> +    }
+> +    aml_append(method, ifctx);
+> +
+> +    /* handle specific functions requests */
+> +    /*
+> +     * PCI Firmware Specification 3.1
+> +     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
+> +     *        Operating Systems
+> +     */
+> +    ifctx = aml_if(aml_equal(func, aml_int(7)));
+> +    {
+> +       Aml *pkg = aml_package(2);
+> +       aml_append(pkg, zero);
+> +       /* optional, if not impl. should return null string */
+> +       aml_append(pkg, aml_string("%s", ""));
+> +       aml_append(ifctx, aml_store(pkg, ret));
+> +
+> +       /*
+> +        * IASL is fine when initializing Package with computational data,
+> +        * however it makes guest unhappy /it fails to process such AML/.
+> +        * So use runtime assignment to set acpi-index after initializer
+> +        * to make OSPM happy.
+> +        */
+> +       aml_append(ifctx,
+> +           aml_store(aml_derefof(aml_index(params, aml_int(0))), aidx));
+> +       aml_append(ifctx, aml_store(aidx, aml_index(ret, zero)));
+> +       aml_append(ifctx, aml_return(ret));
+> +    }
+> +    aml_append(method, ifctx);
+> +
+> +    return method;
+> +}
+> +
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index fe8bc62c03..6cf623392e 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -338,59 +338,6 @@ build_facs(GArray *table_data)
+>      g_array_append_vals(table_data, reserved, 40); /* Reserved */
+>  }
+>  
+> -static Aml *aml_pci_edsm(void)
+> -{
+> -    Aml *method, *ifctx;
+> -    Aml *zero = aml_int(0);
+> -    Aml *func = aml_arg(2);
+> -    Aml *ret = aml_local(0);
+> -    Aml *aidx = aml_local(1);
+> -    Aml *params = aml_arg(4);
+> -
+> -    method = aml_method("EDSM", 5, AML_SERIALIZED);
+> -
+> -    /* get supported functions */
+> -    ifctx = aml_if(aml_equal(func, zero));
+> -    {
+> -        /* 1: have supported functions */
+> -        /* 7: support for function 7 */
+> -        const uint8_t caps = 1 | BIT(7);
+> -        build_append_pci_dsm_func0_common(ifctx, ret);
+> -        aml_append(ifctx, aml_store(aml_int(caps), aml_index(ret, zero)));
+> -        aml_append(ifctx, aml_return(ret));
+> -    }
+> -    aml_append(method, ifctx);
+> -
+> -    /* handle specific functions requests */
+> -    /*
+> -     * PCI Firmware Specification 3.1
+> -     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
+> -     *        Operating Systems
+> -     */
+> -    ifctx = aml_if(aml_equal(func, aml_int(7)));
+> -    {
+> -       Aml *pkg = aml_package(2);
+> -       aml_append(pkg, zero);
+> -       /* optional, if not impl. should return null string */
+> -       aml_append(pkg, aml_string("%s", ""));
+> -       aml_append(ifctx, aml_store(pkg, ret));
+> -
+> -       /*
+> -        * IASL is fine when initializing Package with computational data,
+> -        * however it makes guest unhappy /it fails to process such AML/.
+> -        * So use runtime assignment to set acpi-index after initializer
+> -        * to make OSPM happy.
+> -        */
+> -       aml_append(ifctx,
+> -           aml_store(aml_derefof(aml_index(params, aml_int(0))), aidx));
+> -       aml_append(ifctx, aml_store(aidx, aml_index(ret, zero)));
+> -       aml_append(ifctx, aml_return(ret));
+> -    }
+> -    aml_append(method, ifctx);
+> -
+> -    return method;
+> -}
+> -
+>  /*
+>   * build_prt - Define interrupt routing rules
+>   *

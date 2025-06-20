@@ -1,247 +1,273 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp757324njc;
-        Fri, 20 Jun 2025 02:19:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUR448y4dZl+mrxi4f2RgbxIh7uYKixSojGqLk/Us69nWsP6CNz0ZBHt6VgCdhlTPFq6aSJbFHStXeZSg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHI0bt/ccP5YKhpUrQ1YoiZOGOqAPerUY5Ey29R/YlZauuwnmlfNRt2Ner2ZTo0ZvEwL0d/
-X-Received: by 2002:a05:620a:6187:b0:7d3:a606:7c96 with SMTP id af79cd13be357-7d3f98bfd9fmr340724885a.1.1750411180505;
-        Fri, 20 Jun 2025 02:19:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750411180; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp698968njc;
+        Thu, 19 Jun 2025 23:52:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVRbTpNgzhjBlfGaBL5/y3bK5L6OHmSwb+8pf18l1T231UUnQP+qUpEpj16+ARgliJ8k8sc8EecOAVWig==@linaro.org
+X-Google-Smtp-Source: AGHT+IESlVnLBLqy1HBCOssD+arMIYKNMywDOUIxlQhk8OjO8gPx/Gi/HfgCJz6zT60pBB3F+A1D
+X-Received: by 2002:a05:620a:7009:b0:7d3:8b7a:39c2 with SMTP id af79cd13be357-7d3f9923fadmr323267285a.36.1750402341373;
+        Thu, 19 Jun 2025 23:52:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750402341; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZO3xBexidHO4jAgjY7I9aIANpCtdXHSNzWAIQyQU70TXjHCyMchXsMEu+LEsftq2l3
-         gHv0rHXkiUxhRm3MFR0ho8F8PZNu/yf8FA2FPPJjUd7aaJWL+C70zEg/HqGxfq/piIMm
-         +6pYmibM3p7vD9jNzqdCCxjf82qz449wqMfCKl31kojXWTORrGf9uzMv5UrYg0WcTD9d
-         TO42Ufw8aaBi8AJVeKcow428aShCpvQ2FQBOgj7SxMkYKOX/36WiS09Pvx9LDbvRe1lp
-         +f5q1HIAJLnpAIKyQPouiZSJB31I7oTZMvpffs/cqHV2oxWhi8auOvZtDqMlj5n2YOKS
-         8bWQ==
+        b=kbq2zrldTrLeMQgdaP5kDNpgYVWhd5+LNKTVGwsk+94uxBUUVzB2SNbOz93/+dNxla
+         Tsn7J4KiUfRT86LoHyILBin1E5cCK2hfzOFJV8jacOutuFy1PHBxbverkvKunF3E/xEJ
+         G3DgclhVEr6yfpWDaL5Sj+N+8EHsiBIt5Jp3EdawAn5oMaktUcftxpnFEWoUVSOyz+Js
+         kHBo3K0zZYZz/FZBh6klrh8HS3RF10/AKJoryK51gvZpeoDvWwZIxq62LNbvvz+sjxSK
+         vOmJ1JDFjk3lHLNmUvMYh5gaKgWL5WptDhS7ISW8liPpw3/CXIKDiFHcQ6soZ6Qi4Z0u
+         8pjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date;
-        bh=Z6NwrMn4/nd2UuXtBW2knhkhGEeQyDQIpo6kIWwjIFs=;
-        fh=De5j/+RFiHp5oysg/kfBHcT9O0ASuV5hpNukEk4skqM=;
-        b=MCwxabwMODcZv5HHoxvRBSPlyoxCUM0u+cTM/nKIX9o6TWql0QQ+Ao7oX+7k16MiW9
-         7M/weMJXYF8X3Y81B4Q8Yi7MyVTdrkrmx64AkyLHxkpiRgOW0HoUeHlp4HJ/AxdPmN3R
-         Jt1Yptlq3OW/o1l7ALRmxP83xA4gymWA/Slb54zPTBR/K68sz3fyvHJtMnOOVzYU2quP
-         FK+qit76Jbj5ScaGmvK20DaklxY8NMiJw1SvnoUOds3/cMeER3NmFIHVGHksaCQcoqII
-         9Q/x4Z8IDiNDXHQ4i5tkM2gOrhVy6HYcwNWWjCE810QVH1re2xsQX/7x22Zg5sFkcXAg
-         emqg==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=cNd8pxyRKBYHOOxHPV6siKNUfLozEByTZ8WWKyQJIow=;
+        fh=oCiNuiJg7r82TE+YgSWVzSaI81b/f1v8/eONbGzlriE=;
+        b=dzzyRHGBl/Eqj5sumyd+dgxsZcBrJmm0IdpuYCuZbNNeqSh4Ji1e3elQQftndsmDby
+         3jJGTeUVg+NVoxlrO+YvctxSUfMzT7WyEj3wzLjovte6oBWpv9Lj62MSDW20U3ISuaJi
+         WWefey0AYNCXcOWrmB8HnPeKFgqysRLp+z8FK2beFvZ5USByiI9+rhm6LG1qcIv0Z+D8
+         lP/9DwAvE8BC+KPMjTxMREmYIHnfRime8jS17BoWUQABa3tbuMqKAUh2yfktKB2v5daL
+         QoxgFKjEOtGbiuqiwhMnHN9ZVpAQkZsOlE4MfFXOE3wLhddRBmUwcW+N+KjeSFjbyT/W
+         N1ZQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3f9a172afsi131825185a.489.2025.06.20.02.19.40
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Jun 2025 02:19:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=inCcF0kk;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3f99fbe8asi111393285a.330.2025.06.19.23.52.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Jun 2025 23:52:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bNsHw1dMjz6K5mL;
-	Fri, 20 Jun 2025 17:14:52 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 42246140446;
-	Fri, 20 Jun 2025 17:19:38 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 20 Jun
- 2025 11:19:37 +0200
-Date: Fri, 20 Jun 2025 10:19:36 +0100
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: Eric Auger <eric.auger@redhat.com>
-CC: <eric.auger.pro@gmail.com>, <qemu-devel@nongnu.org>,
-	<qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <imammedo@redhat.com>,
-	<gustavo.romero@linaro.org>, <anisinha@redhat.com>, <mst@redhat.com>,
-	<shannon.zhaosl@gmail.com>, <pbonzini@redhat.com>, <philmd@linaro.org>,
-	<alex.bennee@linaro.org>
-Subject: Re: [PATCH v3 16/29] hw/i386/acpi-build: Move aml_pci_edsm to a
- generic place
-Message-ID: <20250620101936.00005f96@huawei.com>
-In-Reply-To: <20250616094903.885753-17-eric.auger@redhat.com>
-References: <20250616094903.885753-1-eric.auger@redhat.com>
-	<20250616094903.885753-17-eric.auger@redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=inCcF0kk;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1750402341;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=cNd8pxyRKBYHOOxHPV6siKNUfLozEByTZ8WWKyQJIow=;
+	b=inCcF0kkYoUo5/e9rMDeiqnmmqM+Fdj5Dg/8cFybasnfGx0/vB+sHQkVeBvyNDLfLfydcr
+	3+JzvWx32BIqBCkp08wctNfVJyQZNMMGfY/PvoAEIXSf0cdnLzwVju5QZsXV5/wilsnlqf
+	6yi4f6NyW9ovfcgRL7flFcGM/hfe/I4=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-634-gR5A_bUPOq6GlkDZiYTCFQ-1; Fri, 20 Jun 2025 02:52:19 -0400
+X-MC-Unique: gR5A_bUPOq6GlkDZiYTCFQ-1
+X-Mimecast-MFC-AGG-ID: gR5A_bUPOq6GlkDZiYTCFQ_1750402338
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-450df53d461so12901725e9.1
+        for <alex.bennee@linaro.org>; Thu, 19 Jun 2025 23:52:19 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750402338; x=1751007138;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=cNd8pxyRKBYHOOxHPV6siKNUfLozEByTZ8WWKyQJIow=;
+        b=j2ZLWNabtU7Ax1b1kw2/DqioaHUqPwLrzKeSEfZV8VWUXg6KkKs1kBzn3g65S46keN
+         FdxKSTcgdbYDRevpRwe1YaaoADl5yLQdQgcybdpa+MRKhYdXYpAjmH078XqYVWlo5iRJ
+         6uJdk2/ZjsMcN8F13ZfbllIlzp0xUZhZdXukc6afX/l2WLre4hHrziGM2q8HR5SCiyRt
+         z8wzARP4ZRzSfme9BGSVSk5koulMEfAEv/WokR0nu3e72IWxdkPILO5Q+oZGqHXW9qxS
+         RuSAdLqa2fhsd2l1d02YFFQE22UAGTCIMB35KGEZJQio0Uuva+YeU+h0ZVsajZRNBPAs
+         n4bw==
+X-Forwarded-Encrypted: i=1; AJvYcCWvGd3kbpXTNwB3TKfIjKCm4UzqsJs0MlJ6uIzzu0a6+4glCMKZfUUr7IOzc7Ggk2wnX48Lx/0qB8hoWg==@linaro.org
+X-Gm-Message-State: AOJu0YzhhUU7cSQv8YZWHn6r9R8i/S+t7a4QiDa1LTN3HgFcPNqRjDBw
+	nduPmqTqUT136GxBkgPCIGU0ECJN2RJM0TY7f/lcOey8uxcWRHgHlsQABz5lA5ZTTHD1e/ltRAW
+	MVjG76p+eZT6OvdT5lPtLWlVWJvpNO5ByiOdDFhOTgM68RmxslcbVY+zOXA==
+X-Gm-Gg: ASbGnctOr6kEIRq73ng3e8GkA864ffjJ62FoKe3rV1o9ZYC5IWm5fAgPAUo9nIWu3xJ
+	2UjoS2icB6xFI98hKo8A7gh2XZK5Bmg2rkokilHhYbkopMdiQM8h8MkI+X3Khwa7aeLc1nKh+Sh
+	fhw/5FM40beKAafazWdLlgeVcWCqWS8XOuAb1xiPihxyJ8Nhdb4bfVcp4orAptr1wCLj+s6V9F6
+	e3/rt245wspwaW310SxuNmgmP8m26qhEbxX0zolsF6h9PkSYW4iOn8cEdzNmUossaTBf36K5nTd
+	0CMN6g3BAX+zhB9knGYnxRWDceagPY0QOBBdlRi+mEHSRnYTxqJGM8TEMe3ivTsjg7Xbbw==
+X-Received: by 2002:a05:600c:1c83:b0:453:5c30:a2c2 with SMTP id 5b1f17b1804b1-453659ca60fmr11824035e9.8.1750402338345;
+        Thu, 19 Jun 2025 23:52:18 -0700 (PDT)
+X-Received: by 2002:a05:600c:1c83:b0:453:5c30:a2c2 with SMTP id 5b1f17b1804b1-453659ca60fmr11823825e9.8.1750402337887;
+        Thu, 19 Jun 2025 23:52:17 -0700 (PDT)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d11920ebsm1213118f8f.94.2025.06.19.23.52.16
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 19 Jun 2025 23:52:17 -0700 (PDT)
+Message-ID: <34f801fd-2439-4042-baa0-3bc060104ec9@redhat.com>
+Date: Fri, 20 Jun 2025 08:52:16 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml100009.china.huawei.com (7.191.174.83) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: QQOXVFY4hByC
+User-Agent: Mozilla Thunderbird
+Reply-To: eric.auger@redhat.com
+Subject: Re: [PATCH v4 4/8] hw/arm/virt-acpi-build: Fix comment in build_iort
+To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
+ philmd@linaro.org, mst@redhat.com
+Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, udo@hypervisor.org,
+ ajones@ventanamicro.com, peter.maydell@linaro.org, imammedo@redhat.com,
+ anisinha@redhat.com
+References: <20250616131824.425315-1-gustavo.romero@linaro.org>
+ <20250616131824.425315-5-gustavo.romero@linaro.org>
+ <db5aa1ab-cec7-4de1-b14f-bba978e7d7f7@redhat.com>
+ <53c901c4-f408-43f6-a9aa-49f8fed59e98@linaro.org>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <53c901c4-f408-43f6-a9aa-49f8fed59e98@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: IWxnW433o4vxiBHO3YmOqs0pQLcIjEJAI78k9nf7Jn0_1750402338
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: jNw3ufOcv9X9
 
-On Mon, 16 Jun 2025 11:46:45 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
+Hi Gustavo,
 
-> Move aml_pci_edsm to pci-bridge.c since we want to reuse that for
-> ARM and acpi-index support.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
-A request for a bit of documentation inline.  aml_pci_edsm() sounds
-like we should be able to grep the spec for edsm and find it but
-that's just internal method naming in qemu.
-
-
-More interesting is I don't think this will ever be called as
-the kernel has no idea how to call it and unlike on x86 the
-blobs don't show wrapping the call in a _DSM() (see aml_pci_static_endpoint_dsm())
-
-Did EDSM usage get dropped as this set evolved leaving this behind?
-
-
-
+On 6/19/25 7:07 PM, Gustavo Romero wrote:
+> Hi Eric,
 >
-> ---
-> 
-> v2 -> v3:
-> - move to pci-bridge.c instead of pcihp.c (Igor)
-> ---
->  include/hw/acpi/pci.h |  1 +
->  hw/acpi/pci-bridge.c  | 54 +++++++++++++++++++++++++++++++++++++++++++
->  hw/i386/acpi-build.c  | 53 ------------------------------------------
->  3 files changed, 55 insertions(+), 53 deletions(-)
-> 
-> diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
-> index 69bae95eac..05e72815c8 100644
-> --- a/include/hw/acpi/pci.h
-> +++ b/include/hw/acpi/pci.h
-> @@ -42,5 +42,6 @@ void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope);
->  void build_srat_generic_affinity_structures(GArray *table_data);
->  
->  Aml *build_pci_host_bridge_osc_method(bool enable_native_pcie_hotplug);
-> +Aml *aml_pci_edsm(void);
->  
->  #endif
-> diff --git a/hw/acpi/pci-bridge.c b/hw/acpi/pci-bridge.c
-> index 7baa7034a1..be68a98c34 100644
-> --- a/hw/acpi/pci-bridge.c
-> +++ b/hw/acpi/pci-bridge.c
-> @@ -35,3 +35,57 @@ void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope)
->          }
->      }
->  }
-> +
-> +Aml *aml_pci_edsm(void)
+> On 6/17/25 10:22, Eric Auger wrote:
+>> Hi Gustavo,
+>>
+>> On 6/16/25 3:18 PM, Gustavo Romero wrote:
+>>> The comment about the mapping from SMMU to ITS is incorrect and it
+>>> reads
+>>> "RC -> ITS". The code in question actually maps SMMU -> ITS, so the
+>>> mapping in question is not direct. The direct mapping, i.e., RC -> ITS,
+>>> is handled a bit further down in the code, in the else block, and we
+>>> take the opportunity to update that as well, adding "RC -> ITS" to the
+>>> text so it's easier to see it's the direct map to the ITS Group node.
+>>>
+>>> Signed-off-by Gustavo Romero <gustavo.romero@linaro.org>
+>>> ---
+>>>   hw/arm/virt-acpi-build.c | 14 +++++++++-----
+>>>   1 file changed, 9 insertions(+), 5 deletions(-)
+>>>
+>>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>>> index 9eee284c80..6990bce3bb 100644
+>>> --- a/hw/arm/virt-acpi-build.c
+>>> +++ b/hw/arm/virt-acpi-build.c
+>>> @@ -407,23 +407,27 @@ build_iort(GArray *table_data, BIOSLinker
+>>> *linker, VirtMachineState *vms)
+>>>       if (vms->iommu == VIRT_IOMMU_SMMUV3) {
+>>>           AcpiIortIdMapping *range;
+>>>   -        /* translated RIDs connect to SMMUv3 node: RC -> SMMUv3
+>>> -> ITS */
+>>> +        /* Map RIDs (input) from RC to SMMUv3 nodes: RC -> SMMUv3. */
+>> yes this is what the code builds at this location.
+>>>           for (i = 0; i < smmu_idmaps->len; i++) {
+>>>               range = &g_array_index(smmu_idmaps, AcpiIortIdMapping,
+>>> i);
+>>> -            /* output IORT node is the smmuv3 node */
+>>> +            /* Output IORT node is the SMMUv3 node. */
+>>>               build_iort_id_mapping(table_data, range->input_base,
+>>>                                     range->id_count, smmu_offset);
+>>>           }
+>>>   -        /* bypassed RIDs connect to ITS group node directly: RC
+>>> -> ITS */
+>>> +        /* Map DeviceIDs (input) from SMMUv3 to ITS Group nodes:
+>>> SMMU -> ITS. */
+>> But here I am confused. To me the its_idmaps matches the idmap between
+>> RC and ITS. I understand this is built from holes left by bypassed
+>> buses. See the build_iort() implementation. The comment at
+>
+> ah, thanks! I see. Indeed, it's mapping the RC -> ITS, not the SMMU ->
+> ITS.
+> I'll fix it in v5.
+>
+> One thing that confused me, which I think is actually ok, is that the
+> output ID range from SMMU 0x000-0xFFFF) overlaps the output ID range
+> from the RC (e.g. 0x100-0xFFFF) because the SMMU output range is
+> defined as
+> always taking the whole 16-bit range in:
 
-Can we have some comments, or a more descriptive name than
-the resulting method name?  There is stuff in the function obviously
-that associates it with the naming DSM but given this is moving to
-generic code maybe it needs a brief intro comment?
+Agreed. However I think it is fine because those are ID mappings between
+different input/output space pairs.
+RC ->          ITS
+      SMMU ->  ITS
+>
+> [...]
+>    366         build_append_int_noprefix(table_data, irq + 1, 4); /*
+> PRI */
+>    367         build_append_int_noprefix(table_data, irq + 3, 4); /*
+> GERR */
+>    368         build_append_int_noprefix(table_data, irq + 2, 4); /*
+> Sync */
+>    369         build_append_int_noprefix(table_data, 0, 4); /*
+> Proximity domain */
+>    370         /* DeviceID mapping index (ignored since interrupts are
+> GSIV based) */
+>    371         build_append_int_noprefix(table_data, 0, 4);
+>    372
+>    373         /* output IORT node is the ITS group node (the first
+> node) */
+>    374         build_iort_id_mapping(table_data, 0, 0x10000,
+> IORT_NODE_OFFSET); <=========== HERE
+>    375     }
+>    376
+>    377     /* Table 17 Root Complex Node */
+>
+>
+> I think that's ok since ITS can disambiguate the Device IDs from SMMU
+> and from RC.
+>
+>
+>>          /*
+>>           * Split the whole RIDs by mapping from RC to SMMU,
+>>           * build the ID mapping from RC to ITS directly.
+>>           */
+>>          for (i = 0; i < smmu_idmaps->len; i++) {
+>>              idmap = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
+>>
+>>              if (next_range.input_base < idmap->input_base) {
+>>                  next_range.id_count = idmap->input_base -
+>> next_range.input_base;
+>>                  g_array_append_val(its_idmaps, next_range);
+>>              }
+>>
+>>              next_range.input_base = idmap->input_base +
+>> idmap->id_count;
+>>          }
+>>
+>> is not crystal clear but it looks like filling the holes into its_idmap.
+>
+> k, I'll create a helper as you suggested in 7/8 to populate the
+> its_idmaps.
+>
+>  > Besides there is another "Its group" instance to be replaced by ITS
+> Group
+>
+> Pardon, what do you mean? Another text to be replaced or it's just a
+> comment
+> about the "else" block when smmu is off?
+sorry, I meant another string to be replaced in the file
 
+Cheers
 
-> +{
-> +    Aml *method, *ifctx;
-> +    Aml *zero = aml_int(0);
-> +    Aml *func = aml_arg(2);
-> +    Aml *ret = aml_local(0);
-> +    Aml *aidx = aml_local(1);
-> +    Aml *params = aml_arg(4);
-> +
-> +    method = aml_method("EDSM", 5, AML_SERIALIZED);
-> +
-> +    /* get supported functions */
-> +    ifctx = aml_if(aml_equal(func, zero));
-> +    {
-> +        /* 1: have supported functions */
-> +        /* 7: support for function 7 */
-> +        const uint8_t caps = 1 | BIT(7);
-> +        build_append_pci_dsm_func0_common(ifctx, ret);
-> +        aml_append(ifctx, aml_store(aml_int(caps), aml_index(ret, zero)));
-> +        aml_append(ifctx, aml_return(ret));
-> +    }
-> +    aml_append(method, ifctx);
-> +
-> +    /* handle specific functions requests */
-> +    /*
-> +     * PCI Firmware Specification 3.1
-> +     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
-> +     *        Operating Systems
-> +     */
-> +    ifctx = aml_if(aml_equal(func, aml_int(7)));
-> +    {
-> +       Aml *pkg = aml_package(2);
-> +       aml_append(pkg, zero);
-> +       /* optional, if not impl. should return null string */
-> +       aml_append(pkg, aml_string("%s", ""));
-> +       aml_append(ifctx, aml_store(pkg, ret));
-> +
-> +       /*
-> +        * IASL is fine when initializing Package with computational data,
-> +        * however it makes guest unhappy /it fails to process such AML/.
-> +        * So use runtime assignment to set acpi-index after initializer
-> +        * to make OSPM happy.
-> +        */
-> +       aml_append(ifctx,
-> +           aml_store(aml_derefof(aml_index(params, aml_int(0))), aidx));
-> +       aml_append(ifctx, aml_store(aidx, aml_index(ret, zero)));
-> +       aml_append(ifctx, aml_return(ret));
-> +    }
-> +    aml_append(method, ifctx);
-> +
-> +    return method;
-> +}
-> +
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index fe8bc62c03..6cf623392e 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -338,59 +338,6 @@ build_facs(GArray *table_data)
->      g_array_append_vals(table_data, reserved, 40); /* Reserved */
->  }
->  
-> -static Aml *aml_pci_edsm(void)
-> -{
-> -    Aml *method, *ifctx;
-> -    Aml *zero = aml_int(0);
-> -    Aml *func = aml_arg(2);
-> -    Aml *ret = aml_local(0);
-> -    Aml *aidx = aml_local(1);
-> -    Aml *params = aml_arg(4);
-> -
-> -    method = aml_method("EDSM", 5, AML_SERIALIZED);
-> -
-> -    /* get supported functions */
-> -    ifctx = aml_if(aml_equal(func, zero));
-> -    {
-> -        /* 1: have supported functions */
-> -        /* 7: support for function 7 */
-> -        const uint8_t caps = 1 | BIT(7);
-> -        build_append_pci_dsm_func0_common(ifctx, ret);
-> -        aml_append(ifctx, aml_store(aml_int(caps), aml_index(ret, zero)));
-> -        aml_append(ifctx, aml_return(ret));
-> -    }
-> -    aml_append(method, ifctx);
-> -
-> -    /* handle specific functions requests */
-> -    /*
-> -     * PCI Firmware Specification 3.1
-> -     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
-> -     *        Operating Systems
-> -     */
-> -    ifctx = aml_if(aml_equal(func, aml_int(7)));
-> -    {
-> -       Aml *pkg = aml_package(2);
-> -       aml_append(pkg, zero);
-> -       /* optional, if not impl. should return null string */
-> -       aml_append(pkg, aml_string("%s", ""));
-> -       aml_append(ifctx, aml_store(pkg, ret));
-> -
-> -       /*
-> -        * IASL is fine when initializing Package with computational data,
-> -        * however it makes guest unhappy /it fails to process such AML/.
-> -        * So use runtime assignment to set acpi-index after initializer
-> -        * to make OSPM happy.
-> -        */
-> -       aml_append(ifctx,
-> -           aml_store(aml_derefof(aml_index(params, aml_int(0))), aidx));
-> -       aml_append(ifctx, aml_store(aidx, aml_index(ret, zero)));
-> -       aml_append(ifctx, aml_return(ret));
-> -    }
-> -    aml_append(method, ifctx);
-> -
-> -    return method;
-> -}
-> -
->  /*
->   * build_prt - Define interrupt routing rules
->   *
+Eric
+>
+> Thanks!
+>
+>
+> Cheers,
+> Gustavo
+>
+>> Eric
+>>
+>>>           for (i = 0; i < its_idmaps->len; i++) {
+>>>               range = &g_array_index(its_idmaps, AcpiIortIdMapping, i);
+>>> -            /* output IORT node is the ITS group node (the first
+>>> node) */
+>>> +            /* Output IORT node is the ITS Group node (the first
+>>> node). */
+>>>               build_iort_id_mapping(table_data, range->input_base,
+>>>                                     range->id_count, IORT_NODE_OFFSET);
+>>>           }
+>>>       } else {
+>>> -        /* output IORT node is the ITS group node (the first node) */
+>>> +        /*
+>>> +         * Map bypassed RIDs (input) (don't go through the SMMU) to
+>>> ITS Group
+>>> +         * nodes: RC -> ITS.
+>>> +         * Output IORT node is the ITS Group node (the first node).
+>>> +         */
+>>>           build_iort_id_mapping(table_data, 0, 0x10000,
+>>> IORT_NODE_OFFSET);
+>>>       }
+>>>   
+>>
+>

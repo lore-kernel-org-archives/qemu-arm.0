@@ -1,276 +1,177 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp846403njc;
-        Fri, 20 Jun 2025 05:16:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWtTN1Aeusx/U1lvYJYHf5rgEhox6JS8YzBMCly7NgadL8Jm7ZYOW8jmEW4VHr2o8QTiD9LLGY+XRFrmQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFkNQcUHs8FxjHgoU04n2JYUE3rKCl0cv3p55RXJfrR+VhiSzM6E2pqt9cf2vqRqJJy3oVS
-X-Received: by 2002:a05:6214:318d:b0:6fa:bb26:1459 with SMTP id 6a1803df08f44-6fd0a44eb39mr49443106d6.7.1750421773156;
-        Fri, 20 Jun 2025 05:16:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750421773; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp849321njc;
+        Fri, 20 Jun 2025 05:20:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVCTQLCuzJKLp0UzsPjKdjjh3oQEjo2g+9yARQ++L+sGBYZAZ5Ml919vas57QgWKJrAIGQHSAojn4qBsQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHpYZAULW+9zWSolMfcH8hUYgZLzTtXhRoAF67eOhlFpn0pTp3t2RbSrfJoTad6JbrOwgmX
+X-Received: by 2002:a05:6214:2627:b0:6fa:c0ca:c75c with SMTP id 6a1803df08f44-6fd0a5fff0fmr47858786d6.42.1750422058203;
+        Fri, 20 Jun 2025 05:20:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750422058; cv=none;
         d=google.com; s=arc-20240605;
-        b=XsGqtuPEnnGjDtMt4NnlUaH6tFwrY0K/Zaw1+7ZXnQ9q7Xfwi1c+ZdeIkVlUfFPfc5
-         l3fb6pDMpTJOwebkCVDYPQ1svofYiX8yDZb1X+fjxybmTIezhmd93EfRZV3sPKEhUT/2
-         ceS7dLIOaVaAc3ybvv4ypl+DwqSYbdLd6Gp0IqlgEOiYe1fmo+qTFK3WT/eP1KaIvrk1
-         y0YsIKLNFEF0w5nTEWvlkyIx5qjxh+u6z940F2wv/5q3zO9WCkDM0AAHDLf3P7h/Lmy8
-         4VPx70F4ovbVT21FcM8AKRv+sGanTj/HXCQ6Txn1s8eqQ3nENFW0FAQehyMKJlmzxpm5
-         F3bw==
+        b=ETbEXDpnnEczxxu7+8xJIqaO+feMDjBvcTyy+fwUCCKloihWBqij3wqwCuEKKJxRva
+         5y5s7IfveCuYJrDb7FbcRPo6AsyOxIBNilF4ZB1UC0bcAak3TMpNgq4B6FtXrd0yUak5
+         3K+uYGPhbLrn6BHL8XLZXmpAjRo2VwE//J3Zg87R1jrXUnXTVyclTSv0c5mFrXqFaZ1I
+         3KBeHaKyqfk2ML8B3HIXUKW+HrPWsibvTPZbsl7a29ym4SHqwEgVr6J3XXincFJJxrCt
+         nPzxyDTexpqmlm0WPsQ/ady1t1qE9RmDiuQLEpTInpmuAjj/qKVFkuLjXbR73Q3wUpxA
+         2zog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=YttMP97XA0YGzCwUTM9cPhn/4IsllK+DArVX8YtuLig=;
-        fh=M9Z1ygJpLkI/B7yRujdqaoAHtwAgpa6HR5jvUd98D6Q=;
-        b=CLplp9MLmuqZQryFWeLrAVdzYpn8TdWpQG0OFOwQcHoTN29ri3nSx88W6llvlE0kxw
-         eNCvVBTilrS+diwbGXwUUHxgrM9A9Gt/pBqPEBQx7Ftn2B5IvGRe7eOGjimqfH2+yIJS
-         awH4IZVKoj7L556kuHD2DGxEWNAReD/39d0xafVi1xJDfidI+dN56FpCZBtJKKmF8FEf
-         xdBILFD27tSe46h96DvozHKGJ0Sg5sxx20SoKoTB1s8NVFwlaTm8AxCFdmPKiXeAF/Zd
-         sJlrvmYgGwx4UlVBCpj6tb8kEsJRMG9WnF7ziZjtrrGGa4Af2CdOzybTugBW06atZSWy
-         k5kQ==;
+        bh=gCDuPbcz51+r9EY5thnNhRDzl+s2DLdA7Mhax7aDjbM=;
+        fh=w+XfDObRpXyPCxFVv2XbEaoJEMvD0MdHpvEmmuXuIWo=;
+        b=dNvm+Xh6urkooByh8YMm+pJxC/wI/98NhXyvUo8l88q64owQoKhtFpuLERDcl0PVCK
+         Zyk5lAN2DoJjpVkCinGw8jIvo/wEfKT95MEvqTQjOq3xChZL3KarvNMixkRmbGCtB8fi
+         n5YH5tloJec4x4Z59Ey7GieRGVEsik3ZaObFIT+EMqCjvi6RRzTL19yFYlf/EP7y54Wx
+         a1+TQ/yUuPNMnsqxicH78K1zdMWkvQryqy80DipVK/m6x7wtoUZG9iZnZDRlqwIJ/sml
+         6kfi/WfkcD4+CKp7zXKR0G4cLD+dD0l/fIj+Jc4MEl0+709z9bX2bP2q/svbwVapOtCB
+         1R0g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hHMYE6tc;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i8IbxwVa;
        spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <imammedo@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd093df85dsi19695636d6.16.2025.06.20.05.16.13
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd093dee3csi20395446d6.32.2025.06.20.05.20.57
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Jun 2025 05:16:13 -0700 (PDT)
+        Fri, 20 Jun 2025 05:20:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hHMYE6tc;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i8IbxwVa;
        spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1750421772;
+	s=mimecast20190719; t=1750422057;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=YttMP97XA0YGzCwUTM9cPhn/4IsllK+DArVX8YtuLig=;
-	b=hHMYE6tcaShK90DdV9kiwcb+wR+xGWswlMsnbxlt+ihYKXwxZ48zPm1HWffwZw6Jcn8rj1
-	OedYbCuOS62vuHOl4dZfoSSQl7x+VqWXfoZ/OWFUU4glL2fxFVHp/pQR+tbILU+tkn8XlN
-	SVYSMULsdj9RZBNvewMhHPqp4VgnNSM=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=gCDuPbcz51+r9EY5thnNhRDzl+s2DLdA7Mhax7aDjbM=;
+	b=i8IbxwVa3/DkxSYjrqcP23XGedoWUHD1yOcL1Z2wgwok08BYzT4/OoKBcNJjrVP7pFxNR6
+	osDWjw9dMeZzxJTVcx7FI9YI4poKEtO4ga9JS5E8Kmyz0axIxnJdGUY2dK+A6pEiGM/+/7
+	6k9CjcvryUPbwJK/OdHQptWZWyIL+3Q=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-55-ZtndxtZ5OdGVLK898GItRg-1; Fri, 20 Jun 2025 08:16:09 -0400
-X-MC-Unique: ZtndxtZ5OdGVLK898GItRg-1
-X-Mimecast-MFC-AGG-ID: ZtndxtZ5OdGVLK898GItRg_1750421769
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-4535d300d2dso13446635e9.1
-        for <alex.bennee@linaro.org>; Fri, 20 Jun 2025 05:16:09 -0700 (PDT)
+ us-mta-287-1paoutTdO-6fFG6g13bc7w-1; Fri, 20 Jun 2025 08:20:56 -0400
+X-MC-Unique: 1paoutTdO-6fFG6g13bc7w-1
+X-Mimecast-MFC-AGG-ID: 1paoutTdO-6fFG6g13bc7w_1750422055
+Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-3a4f858bc5eso1010832f8f.0
+        for <alex.bennee@linaro.org>; Fri, 20 Jun 2025 05:20:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750421768; x=1751026568;
+        d=1e100.net; s=20230601; t=1750422055; x=1751026855;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=YttMP97XA0YGzCwUTM9cPhn/4IsllK+DArVX8YtuLig=;
-        b=XeA1nS9n4ENf92x1eB1pelQiEHKglKOhkRbU/f2sXgGtNkDZPHSXgZR7irESL2UZlT
-         MCzjolqZ02lNFwupMVREUyz9YGhCC5lXwhu4DN8DKVxgHSd/vJiecxKbD3jyWgBE4x8p
-         E4dnPRo+G8JzSSpa0MUFYSdTOvHiFjL4fyfQ7X1e8dcmXpW6hxKx0TGbsB7XJvEcI0Z6
-         sV4byryu6eWi0ghXD2UFU0jMtJ/tU3zze3x94o9uP3d41rl9k/0T/desdHt+SzooHwxx
-         CZfJuka9b4IYCnjPh/wmS3eES3x5vRaGTW6+UQu0OZTCb/fxa+gql4eszo4ijFyLcIbo
-         z8cQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWMkhP9l36WgfDwFH+eMpIpDftscMsnEgsms1Bt6FRd9dKg5zN/Kzq9moakRx8EEK0UbIOegqFpCQNx+A==@linaro.org
-X-Gm-Message-State: AOJu0YzfW5WzZ/RcpDiplnzOQis1dGhcUn5TBt5146LI/E+2jYzp0EUP
-	lp0VuUqihyXIERm5OW8vWzaEwEq8P1zqrLdGwglOMwoxrzeMuuu+bWhUKK+OAK5d8iJ4OP3r/lX
-	jdtrXaNPuM7+7J0gp/mK249rm0S5TpA8/oaMT58/8vyEczePKgJUD49k8ng==
-X-Gm-Gg: ASbGncs0qRz00q59ZzkfOXN2noIx8ZLglj/yHlYy93zwtoxEfNcSNRHV9cSG/x1cM3I
-	EAu4GGBiqptbvHrzvYZzLaWG5JxlaJxotIAl7D2mTbQSuAFWv6J8gkFeFkrpFOc7tALW+BAYsAb
-	3+opuNkfj88bxztWTRQ6ypwLHaciWGqWkBl8iJDQXjYa0BVlLbYzjfbJ5x/H7U/O0iNw0Oei/S4
-	0Kt6ZjAq231QE7MNDrzY2wxcqMRt9VvN57hCooFkkpzAhr9at2sqwx16QKZE4N3gx+njY4zqZr/
-	P3hBwNkrX/4E
-X-Received: by 2002:a05:600c:4684:b0:453:d3d:d9fd with SMTP id 5b1f17b1804b1-453654cb7cdmr25695295e9.12.1750421768535;
-        Fri, 20 Jun 2025 05:16:08 -0700 (PDT)
-X-Received: by 2002:a05:600c:4684:b0:453:d3d:d9fd with SMTP id 5b1f17b1804b1-453654cb7cdmr25694855e9.12.1750421768092;
-        Fri, 20 Jun 2025 05:16:08 -0700 (PDT)
+        bh=gCDuPbcz51+r9EY5thnNhRDzl+s2DLdA7Mhax7aDjbM=;
+        b=CHJBNDpDAJgcugj8FUym50lSu4y0bGuL4SLcOBSoDechGzElbl/AKcQ6OIpilJgYT2
+         1pjhBrvrxyYC0T6xfedogXOyaP8dBuRaf9chq5FosJxivTpGkAzUNztdpSdICgSQNfb3
+         BLzIgrgYcs/aZMpF2QO5H80kuEXlMCxCIrNnJUfA6WbB4+HhVmJCSGph2SPDwGOgh2Lm
+         4xsbceJpRD8zg36WLRq9cGpP6pwU8F3hpwVVJT+B1h5CmCQ2ZCAjJVcd5hxGqoYqVQZY
+         c6AvHZBE3xYkgKmLQeTONAmuSj9IPtumvxHzQ7oeI4Ixf1o0Fn5CwqcwTDn5KtOSD//x
+         0rhQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVetUxSedEab5I7xSPfWslM8XtbcRYLswoS7VBWP7gYQLGuNIdXwxVC512X2FkBZWpf+UzyUSfexmuFCA==@linaro.org
+X-Gm-Message-State: AOJu0YxuMHyovqPTubgtjW+i01GcmiMw3n5xZwLbOxnrPbIJr+3T0B7i
+	fylMITbztknMo3Q0XiowmRGhnusGBkImmQjQeY81hNOwE4mnoN5QZil1KFRUyjT9QYtqSbBp9t0
+	L1q21R4BvTBWm73upS78YhutHyvBEfS/tk2ufpTkOUgMONBqH+zE6RsZ+lQ==
+X-Gm-Gg: ASbGncuhwn+yoYpiSQxfYiXIH/u8t78LgSm4gfqHONtfdy3KeYpC2QYkMEKsW22EEMY
+	U7gPR+AMdbkD1jweDny+RS3CCGTuOGBkreYJqyPa+8c9Win06GOVdyyTiISmSo21QDkvan4ITo1
+	z2qR4yPGsX8HHtZuljem8a8BvKp5UDuRYjzjSQLjE7fkcSSveFVdofUpoOAKeVbgE2KcwJ1JF6n
+	2Ae3RoHrNv0d+bGTlCZlv+SqfMbKSr1/uzSEKHkO+GkFHWbVljwiZhd2qszB/sHCUsPfjuJhtc5
+	5eKd6EJqGh6o
+X-Received: by 2002:a05:6000:65c:b0:3a4:e667:922e with SMTP id ffacd0b85a97d-3a6d12dbe56mr2141490f8f.4.1750422055279;
+        Fri, 20 Jun 2025 05:20:55 -0700 (PDT)
+X-Received: by 2002:a05:6000:65c:b0:3a4:e667:922e with SMTP id ffacd0b85a97d-3a6d12dbe56mr2141466f8f.4.1750422054881;
+        Fri, 20 Jun 2025 05:20:54 -0700 (PDT)
 Return-Path: <imammedo@redhat.com>
 Received: from fedora ([85.93.96.130])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d1190cc3sm1892106f8f.89.2025.06.20.05.16.07
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45366181aebsm7966475e9.3.2025.06.20.05.20.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Jun 2025 05:16:07 -0700 (PDT)
-Date: Fri, 20 Jun 2025 14:16:06 +0200
+        Fri, 20 Jun 2025 05:20:54 -0700 (PDT)
+Date: Fri, 20 Jun 2025 14:20:53 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Eric Auger <eric.auger@redhat.com>
 Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
  mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
  Jonathan.Cameron@huawei.com, philmd@linaro.org, alex.bennee@linaro.org
-Subject: Re: [PATCH v3 09/29] hw/pci-host/gpex-acpi: Use
- build_pci_host_bridge_osc_method
-Message-ID: <20250620141606.709c49a7@fedora>
-In-Reply-To: <20250616094903.885753-10-eric.auger@redhat.com>
+Subject: Re: [PATCH v3 15/29] hw/i386/acpi-build: Use AcpiPciHpState::root
+ in acpi_set_pci_info
+Message-ID: <20250620142053.3a32333e@fedora>
+In-Reply-To: <20250616094903.885753-16-eric.auger@redhat.com>
 References: <20250616094903.885753-1-eric.auger@redhat.com>
-	<20250616094903.885753-10-eric.auger@redhat.com>
+	<20250616094903.885753-16-eric.auger@redhat.com>
 X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 55DqJHMLNkZK4DTQH_OFkO1iwzid2iu4LL818Rf1JG4_1750421769
+X-Mimecast-MFC-PROC-ID: qqf3L2MfyFvEXvYjpyWojMTC5-2-hcXNoDL8k_02Yno_1750422055
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TUID: Ndu4zqPG7pPT
+X-TUID: EeGQr5rAEVOX
 
-On Mon, 16 Jun 2025 11:46:38 +0200
+On Mon, 16 Jun 2025 11:46:44 +0200
 Eric Auger <eric.auger@redhat.com> wrote:
 
-> gpex build_host_bridge_osc() and x86 originated
-> build_pci_host_bridge_osc_method() are mostly identical.
+> pcihp acpi_set_pci_info() generic code currently uses
+> acpi_get_i386_pci_host() to retrieve the pci host bridge.
 > 
-> In GPEX, SUPP is set to CDW2 but is not further used. CTRL
-> is same as Local0.
-> 
-> So let gpex code reuse build_pci_host_bridge_osc_method()
-> and remove build_host_bridge_osc().
-
-qtest fails with
-
-FAILED: qemu-system-mips64el 
-cc -m64 @qemu-system-mips64el.rsp
-/usr/bin/ld: libsystem.a.p/hw_pci-host_gpex-acpi.c.o: in function `acpi_dsdt_add_host_bridge_methods':
-./hw/pci-host/gpex-acpi.c:83: undefined reference to `build_pci_host_bridge_osc_method'
-
-> 
-> The disassembled DSDT difference is given below:
-> 
->   * Original Table Header:
->   *     Signature        "DSDT"
-> - *     Length           0x00001A4F (6735)
-> + *     Length           0x00001A35 (6709)
->   *     Revision         0x02
-> - *     Checksum         0xBF
-> + *     Checksum         0xDD
->   *     OEM ID           "BOCHS "
->   *     OEM Table ID     "BXPC    "
->   *     OEM Revision     0x00000001 (1)
-> @@ -1849,27 +1849,26 @@ DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
->                  {
->                      CreateDWordField (Arg3, 0x04, CDW2)
->                      CreateDWordField (Arg3, 0x08, CDW3)
-> -                    SUPP = CDW2 /* \_SB_.PCI0._OSC.CDW2 */
-> -                    CTRL = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
-> -                    CTRL &= 0x1F
-> +                    Local0 = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
-> +                    Local0 &= 0x1F
->                      If ((Arg1 != One))
->                      {
->                          CDW1 |= 0x08
->                      }
-> 
-> -                    If ((CDW3 != CTRL))
-> +                    If ((CDW3 != Local0))
->                      {
->                          CDW1 |= 0x10
->                      }
-> 
-> -                    CDW3 = CTRL /* \_SB_.PCI0.CTRL */
-> -                    Return (Arg3)
-> +                    CDW3 = Local0
->                  }
->                  Else
->                  {
->                      CDW1 |= 0x04
-> -                    Return (Arg3)
->                  }
-> +
-> +                Return (Arg3)
->              }
-> 
->              Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
+> To make it work also on ARM we get rid of that call and
+> directly use AcpiPciHpState::root.
 > 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
 > 
 > ---
 > 
-> v1 -> v2:
-> - move in the dsdt.dsl diff in the commit message and remove useless
->   info (Gustavo, Michael)
-> ---
->  hw/pci-host/gpex-acpi.c | 62 ++++-------------------------------------
->  1 file changed, 5 insertions(+), 57 deletions(-)
+> v2 -> v3:
+> - Use AcpiPciHpState::root
 > 
-> diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
-> index 44737a8d81..952a0ace19 100644
-> --- a/hw/pci-host/gpex-acpi.c
-> +++ b/hw/pci-host/gpex-acpi.c
-> @@ -1,5 +1,6 @@
->  #include "qemu/osdep.h"
->  #include "hw/acpi/aml-build.h"
-> +#include "hw/acpi/pci.h"
->  #include "hw/pci-host/gpex.h"
->  #include "hw/arm/virt.h"
->  #include "hw/pci/pci_bus.h"
-> @@ -50,61 +51,7 @@ static void acpi_dsdt_add_pci_route_table(Aml *dev, uint32_t irq,
+> v1 -> v2
+> - described the fact we changed the implementation of
+>   acpi_get_pci_host() in the commit msg.
+> ---
+>  hw/acpi/pcihp.c | 11 ++++-------
+>  1 file changed, 4 insertions(+), 7 deletions(-)
+> 
+> diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
+> index 236e175b69..e79a24b821 100644
+> --- a/hw/acpi/pcihp.c
+> +++ b/hw/acpi/pcihp.c
+> @@ -99,10 +99,10 @@ static void *acpi_set_bsel(PCIBus *bus, void *opaque)
+>      return info;
+>  }
+>  
+> -static void acpi_set_pci_info(bool has_bridge_hotplug)
+> +static void acpi_set_pci_info(AcpiPciHpState *s)
+>  {
+>      static bool bsel_is_set;
+> -    Object *host = acpi_get_i386_pci_host();
+> +    bool has_bridge_hotplug = s->use_acpi_hotplug_bridge;
+>      PCIBus *bus;
+>      BSELInfo info = { .bsel_alloc = ACPI_PCIHP_BSEL_DEFAULT,
+>                        .has_bridge_hotplug = has_bridge_hotplug };
+> @@ -112,11 +112,8 @@ static void acpi_set_pci_info(bool has_bridge_hotplug)
 >      }
+>      bsel_is_set = true;
+>  
+> -    if (!host) {
+> -        return;
+> -    }
+>  
+> -    bus = PCI_HOST_BRIDGE(host)->bus;
+> +    bus = s->root;
+>      if (bus) {
+>          /* Scan all PCI buses. Set property to enable acpi based hotplug. */
+>          pci_for_each_bus_depth_first(bus, acpi_set_bsel, NULL, &info);
+> @@ -266,7 +263,7 @@ static void acpi_pcihp_update(AcpiPciHpState *s)
+>  
+>  void acpi_pcihp_reset(AcpiPciHpState *s)
+>  {
+> -    acpi_set_pci_info(s->use_acpi_hotplug_bridge);
+> +    acpi_set_pci_info(s);
+>      acpi_pcihp_update(s);
 >  }
 >  
-> -static Aml *build_host_bridge_osc(bool enable_native_pcie_hotplug)
-> -{
-> -    Aml *method, *UUID, *ifctx, *ifctx1, *elsectx;
-> -    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
-> -    aml_append(method, aml_name_decl("SUPP", aml_int(0)));
-> -    aml_append(method, aml_name_decl("CTRL", aml_int(0)));
-> -    aml_append(method,
-> -        aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
-> -
-> -    /* PCI Firmware Specification 3.0
-> -     * 4.5.1. _OSC Interface for PCI Host Bridge Devices
-> -     * The _OSC interface for a PCI/PCI-X/PCI Express hierarchy is
-> -     * identified by the Universal Unique IDentifier (UUID)
-> -     * 33DB4D5B-1FF7-401C-9657-7441C03DD766
-> -     */
-> -    UUID = aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766");
-> -    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
-> -    aml_append(ifctx,
-> -        aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
-> -    aml_append(ifctx,
-> -        aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
-> -    aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
-> -    aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
-> -
-> -    /*
-> -     * Allow OS control for SHPCHotplug, PME, AER, PCIeCapability,
-> -     * and PCIeHotplug depending on enable_native_pcie_hotplug
-> -     */
-> -    aml_append(ifctx, aml_and(aml_name("CTRL"),
-> -               aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)),
-> -               aml_name("CTRL")));
-> -
-> -    ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
-> -    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
-> -                              aml_name("CDW1")));
-> -    aml_append(ifctx, ifctx1);
-> -
-> -    ifctx1 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), aml_name("CTRL"))));
-> -    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x10),
-> -                              aml_name("CDW1")));
-> -    aml_append(ifctx, ifctx1);
-> -
-> -    aml_append(ifctx, aml_store(aml_name("CTRL"), aml_name("CDW3")));
-> -    aml_append(ifctx, aml_return(aml_arg(3)));
-> -    aml_append(method, ifctx);
-> -
-> -    elsectx = aml_else();
-> -    aml_append(elsectx, aml_or(aml_name("CDW1"), aml_int(4),
-> -                               aml_name("CDW1")));
-> -    aml_append(elsectx, aml_return(aml_arg(3)));
-> -    aml_append(method, elsectx);
-> -    return method;
-> -}
-> -
-> -static Aml *build_host_bridge_dsm(void)
-> +static Aml *build_pci_host_bridge_dsm_method(void)
->  {
->      Aml *method = aml_method("_DSM", 4, AML_NOTSERIALIZED);
->      Aml *UUID, *ifctx, *ifctx1, *buf;
-> @@ -133,8 +80,9 @@ static void acpi_dsdt_add_host_bridge_methods(Aml *dev,
->                                                bool enable_native_pcie_hotplug)
->  {
->      /* Declare an _OSC (OS Control Handoff) method */
-> -    aml_append(dev, build_host_bridge_osc(enable_native_pcie_hotplug));
-> -    aml_append(dev, build_host_bridge_dsm());
-> +    aml_append(dev,
-> +               build_pci_host_bridge_osc_method(enable_native_pcie_hotplug));
-> +    aml_append(dev, build_pci_host_bridge_dsm_method());
->  }
->  
->  void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)

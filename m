@@ -1,213 +1,82 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp2789105njh;
-        Mon, 2 Jun 2025 07:25:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXOIEcDB0J50QV2qqSsZqGoQyNMYtl8EaI3xaoGIjNtWY84moDwsrWDU4jVPYDmqugVx281k/CeYqpRjw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFQC+iDjjXfFEq+4e8GdADNW6+uM7o7f2AA2MDSZNZ6kZ8FpXlgN3pU3f6CSazTsPuP+8xF
-X-Received: by 2002:a05:6214:20e2:b0:6f4:cfb3:9df9 with SMTP id 6a1803df08f44-6fad19671e4mr205520496d6.33.1748874320521;
-        Mon, 02 Jun 2025 07:25:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1748874320; cv=none;
-        d=google.com; s=arc-20240605;
-        b=FWlLikZH2TwdRHm1QQ2NK8qamirffKxljfTnQM7Di8Jv/tak3vW2J+YxzEe43LCJL0
-         teRuVqZvXUT1TYqw55PU7gqjc7XRISVcEE8pDJQoPpussM5grlhZcaZPSwWS8E6RYr6F
-         2Pc4aVUKekrQOT55OvjGlGjJumfYBy5y04iXoskLRwn7bZ/gJlX5+gHVd7s0UVi3IvXH
-         1qBEzr1kT3THXXWHDEvV5NDOqH2H6juV7y2dd7BC05D27ClfBL467NyfAf16WRUTNa82
-         9FgazSExSs+yM5rVMENHMOoHz75tF/YGiPYi8MJ7oVPi3xjYRUsKbRsuzgDubfQEMsCN
-         HPjw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=VAraLD0O99qqVbCM0WzQeauqLQGFXXrsIpxYuOivrn8=;
-        fh=By2ZyVGcoTK3q87CWVo0M9x17pIEWcCseJBUqvqnqxg=;
-        b=Um7DeJEy5qEmybchrws0qXWrcmCEQfu5AquRDoXjr1okQrmObhKN2n83uvZBSCYyn4
-         z9Z6eo/N4/G5juuZ7KJ3QYxfJaLb1TizmFvuNyOWXyp9ahM2u3DXFE9TMP9LbSmprC3A
-         /x9T3SaT5ep9tjxo+jRfHGdLoGLkmeNoZJQwIkmTL3YvLOHvVPVxN9+lN1pIAHRBnt/A
-         SGNr82yTNHV3m1D5HrGMupn89JJ4HwyUlwTPAeEuEal50TSMYOe+3CADCdYLsIpI6OwN
-         rDSF5bjR6qSDbqkOfDMCDJw93fKAD/hNoN2PL3XwxclaXN/n+8qoHon0CRebKDtzRQAX
-         6hCA==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=JMN00tUs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fac6dab53esi108298816d6.73.2025.06.02.07.25.20
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Jun 2025 07:25:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=JMN00tUs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uM65x-0004vX-2Y; Mon, 02 Jun 2025 10:24:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1uM65u-0004v6-Nx; Mon, 02 Jun 2025 10:24:54 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1uM65q-0002X7-Gl; Mon, 02 Jun 2025 10:24:53 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-23228b9d684so47307815ad.1; 
- Mon, 02 Jun 2025 07:24:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1748874287; x=1749479087; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
- bh=VAraLD0O99qqVbCM0WzQeauqLQGFXXrsIpxYuOivrn8=;
- b=JMN00tUsZboUg7e0SgbAmPGVB6+5KmXxOKlB1DlDHB2pmPJVtyVgcQWpmiUkD+s0XW
- VHoFcG+/rKA3Qgz4/BNxivImJEYQJz6SCjmB3yI/vASgNlg2hybJR57UESsK0vmBXKNT
- bGZl2WJdrtPlt9P51zaqMpsTECBreOgYu6y/A8A3g65/4ex96h6o3MGHitZFCjSheHvQ
- GiYFvxfG/+JBLAgLNla8F4FTNJqCqXd6fr4aEH0QVfFjpXIeprkvCvBB+6WjdcdjtR/e
- csKQ4oN8biDX1CAy4276KWX1/4Saf4ZGkq7t2u0rJ29EExmm43kaStU9OwPmecU8T7kn
- FA4A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1748874287; x=1749479087;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=VAraLD0O99qqVbCM0WzQeauqLQGFXXrsIpxYuOivrn8=;
- b=UED5rC/gFbN4SyXGx10tnpxd9OztKZRF4uCI+vBVNzB0OqYN3PyqBhZ78APaUKuUSs
- ALPJGbbje0ME4eXzZNSr7F9uWwDjue18z561gNszOGr+sSxH94RSztmVittUGH3umDM8
- IPcmyHbhyAP+/4zRccrINv1AddQXiTHyZCeH3stykgLJShyBj+kvJifvKJV6HJpaIWUm
- Vcwj+k914/BYB2IkmJMeUrag3Muj7z6uDUvJVFvl1o/nHjeMJhqfsEr48KqonO48WkHm
- fiwq7MEFa01so5NGvaRSXjH0g7/4Fu9XfFr3iXUOWIXJRB8qfRFIZnSyxQf9FXLtqPfM
- Sgwg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU19eTL4mfjYrPjVP1ZlKkq+l1CIIQUo9r5MadU0oL+6qRCy4gCmyistkYD+UyN5hPyLuWWIracwXEp@nongnu.org
-X-Gm-Message-State: AOJu0YyPz4lgy3C46A/OIwNoN6Ff5Xkgh8c1DCEVGMzxnDhd2jneb40b
- ayLHN5NlUkLMpwLOm81mz/xmXimI+5wEwHsd4zcxJ5QWZmsnVsRbs3uebwuX04Ad
-X-Gm-Gg: ASbGncvgFy+uhfYvfNOsCa5UDacCLpJhoSjmr76YUJJDAhjBMAleRJorWtlpZSIb7W3
- KwjD6OMxLGAPm3uAec79vwaEEv/Nn8IN5meFqKTXbsdTZxqqBYyS3ayQXX4KQJCJQ7GgdBmm6Lr
- sLfOp+c8sXTrvhN7cKx4ztNowv3Il0Jp7UouMGEhzbSt+tkg6WI5gDpci/PXK2+koa0JeAAS/H7
- Aueju2IdQN7cUDWT2G3oIcx/nvri0f4eD6TZp9UVaoxH8Pgm1/GG3TWQlDh7NmSzgvNOcQ5YW5F
- V2QLHjcrlr8jJ9k4TavV6960Bc2z6zbk4DY+uZbBheoCunB1AYGfw4OBSJQB2EBWeTxMAdxRko5
- pEkNP76vnpxXQR0EVtr8r5ozb
-X-Received: by 2002:a17:902:ea0f:b0:234:df51:d16c with SMTP id
- d9443c01a7336-2353961befdmr178747995ad.45.1748874287545; 
- Mon, 02 Jun 2025 07:24:47 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:da43:aeff:fecc:bfd5?
- ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23506cd8f9esm71080525ad.142.2025.06.02.07.24.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Jun 2025 07:24:46 -0700 (PDT)
-Message-ID: <1301bf7e-0e52-43c0-9910-55ea34647a34@roeck-us.net>
-Date: Mon, 2 Jun 2025 07:24:45 -0700
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([185.126.160.19])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d1190c9asm1653587f8f.93.2025.06.20.03.16.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 20 Jun 2025 03:16:31 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id C89885F876;
+	Fri, 20 Jun 2025 11:16:30 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org,  "open list:ARM cores" <qemu-arm@nongnu.org>
+Subject: Re: [RFC PATCH] target/arm: clamp value to account for RES0 fields
+In-Reply-To: <CAFEAcA_TODi-ZAkA900eV02TyKKD+gib4YxscUomoDt=q+RT7g@mail.gmail.com>
+	(Peter Maydell's message of "Fri, 20 Jun 2025 10:58:21 +0100")
+References: <20250616201042.2196127-1-alex.bennee@linaro.org>
+	<CAFEAcA_TODi-ZAkA900eV02TyKKD+gib4YxscUomoDt=q+RT7g@mail.gmail.com>
+User-Agent: mu4e 1.12.11; emacs 30.1
+Date: Fri, 20 Jun 2025 11:16:30 +0100
+Message-ID: <871preu39d.fsf@draig.linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: Is anybody still using the "highbank" or "midway" QEMU machines?
-To: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-References: <7aae8238-f7f4-4f3a-9a7e-e9afc99d1d0c@redhat.com>
-Content-Language: en-US
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- np3900V20aS7eD9K8GTU0TGC1pyz6IVJwIE=
-In-Reply-To: <7aae8238-f7f4-4f3a-9a7e-e9afc99d1d0c@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=groeck7@gmail.com; helo=mail-pl1-x62f.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U8sf3CaFF3c4
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 8UUeRPknBCpd
 
-On 5/30/25 07:23, Thomas Huth wrote:
-> 
->   Hi Guenter et al.,
-> 
-> I was trying to create a functional test for the "highbank" and "midway" arm machines of QEMU, and only succeeded after lots of trial and error to boot something on the "highbank" machine. Peter mentioned on IRC that he also does not test these machines by default, so we started wondering whether anybody is still using these machines? If not, we should maybe start the deprecation process for those instead?
-> 
->   Thomas
-> 
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-I don't try to boot midway anymore. Commit log shows:
+> On Mon, 16 Jun 2025 at 21:10, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
+rote:
+>>
+>> If the user writes a large value to the register but with the bottom
+>> bits unset we could end up with something illegal. By clamping ahead
+>> of the check we at least assure we won't assert(bpr > 0) later in the
+>> GIC interface code.
+>>
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> ---
+>>  hw/intc/arm_gicv3_cpuif.c | 5 ++++-
+>>  1 file changed, 4 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+>> index 4b4cf09157..165f7e9c2f 100644
+>> --- a/hw/intc/arm_gicv3_cpuif.c
+>> +++ b/hw/intc/arm_gicv3_cpuif.c
+>> @@ -1797,6 +1797,9 @@ static void icc_bpr_write(CPUARMState *env, const =
+ARMCPRegInfo *ri,
+>>      trace_gicv3_icc_bpr_write(ri->crm =3D=3D 8 ? 0 : 1,
+>>                                gicv3_redist_affid(cs), value);
+>>
+>> +    /* clamp the value to 2:0, the rest os RES0 */
+>> +    value =3D deposit64(0, 0, 3, value);
+>
+> Should be extract64(), as RTH notes (or just &=3D 7 if you like).
+>
+>> +
+>>      if (grp =3D=3D GICV3_G1 && gicv3_use_ns_bank(env)) {
+>>          grp =3D GICV3_G1NS;
+>>      }
+>> @@ -1820,7 +1823,7 @@ static void icc_bpr_write(CPUARMState *env, const =
+ARMCPRegInfo *ri,
+>>          value =3D minval;
+>>      }
+>>
+>> -    cs->icc_bpr[grp] =3D value & 7;
+>> +    cs->icc_bpr[grp] =3D value;
+>>      gicv3_cpuif_update(cs);
+>
+> Yes, I agree we should do the "work only on the 3 bit field"
+> part before we do the "enforce the minimum value" logic.
+>
+> The handling in icv_bpr_write() has a similar issue.
+>
+> (Why was your guest writing garbage to this register?)
 
-     midway only works with an antique version of qemu. Stop testing it.
+Heh, it was writing the SP instead of the XR, this is how I found out I
+was getting it wrong ;-)
 
-That was back in 2021. The log shows that it needs qemu v3.0.
+>
+> -- PMM
 
-I only test highbank manually (not in automated tests). I have this in my code:
-
-     # highbank boots with updated (local version of) qemu,
-     # but generates warnings to the console due to ignored SMC calls.
-
-I have not run the manual test for ages, so I have no idea if it still works.
-It also looks like I removed the local changes. Those were needed to enable basic
-SMC support for highbank; maybe similar code is now upstream.
-
-Ok for me to remove both. Not worth the trouble.
-
-Guenter
-
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

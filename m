@@ -1,86 +1,86 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp878993njc;
-        Fri, 20 Jun 2025 06:09:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW9IhJlyF4amXdkBmFIA8pWS0bEvULjr1Im9u1SUiwg/dOwKB8xbiesb6ff4S0FUSmEOvATKuDCfpIPCw==@linaro.org
-X-Received: by 2002:a05:600c:c08b:b0:442:e109:3027 with SMTP id 5b1f17b1804b1-453659ec1ecmr19715625e9.24.1750424968973;
-        Fri, 20 Jun 2025 06:09:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750424968; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp879072njc;
+        Fri, 20 Jun 2025 06:09:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXP17lzkr/YRW/x0/7m3TMg3+QuQgwfN3bAMIfkUOxzRBSh5OqwNmaerEKEe4dxU3gh5lY6V+H9PE4ldA==@linaro.org
+X-Received: by 2002:a05:6000:1888:b0:3a5:8600:7cff with SMTP id ffacd0b85a97d-3a6d12fb1f9mr2359623f8f.1.1750424975081;
+        Fri, 20 Jun 2025 06:09:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750424975; cv=none;
         d=google.com; s=arc-20240605;
-        b=jbH4qzHKvfifeEbidpiAuvKc3HzECjlFQ3Q4wbzovfsEtb3PDD557yaoN3ZLq/Vmp/
-         YiOiTgQmBGnMgOUZ7Yrknty0kii3veGMqrnZnXvrcP3q2bVKXIEvw2JY9IEgQUDCdjAn
-         gS9uHLLhlxGgqteXI0CcUM0oUMNYllqPBztp2W9tSAwH4JbdpLV0jDw6dCZxsYcwD4Kh
-         9B0113r3LYpQxqYhNWxMor6zF0Cj+Z5365y3eFNCJp0QMIqikx7mzlCbfqm95ihl2mXW
-         hfVY4qgJE8XH4JyIhhM1QygeTPCrxRlKrYyDAK22mnF8wMjyxAKIDqeInYuUrWWtgE81
-         sGAQ==
+        b=Ga2HT2yTBE5rsuBWBUXvh8+BunqkbxtUvM+9PJWhnqt4PFyc1Rcl+SVt19IiUPiDHK
+         7rFREW4+wdq50gPlYl4chaFkz9Rtp8+vrppCRUd4ToZR4Gbg5jlqcV8t86l0hNafvTlK
+         9tVQ0oAzDLVDZOpdaS7jUN4+AHsDjM5tTnFoQ715KNAWuu9/j3YbHWDbkpdXFUCTOJSg
+         KoXDDAhnfMvo1y+9WuAjqAKVwZdiEqgDyLoDYzfEgoEJqHOz79/HAJiL19/PFKX1yUgO
+         TaAWtMRjqXuG9pOOvfM6RqnqotmkB15koH4WspJG1qU7rCNCWCKjapAu5bLB+wVZgI4s
+         uB0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=2ho90gmr9LBnf0X5r6n+/qD5b6A/rnGinNhmNB6fBLQ=;
-        fh=sMvKE+qW3yHgoGF40IDkfMOW31ZpwRrYY0CcBFQ1VMM=;
-        b=jjmKYBI+rG6+RhSwnT/Io/8KjUTjon7iWzz78zl4iC+z+l6o146eoPm1Xaqg8uC0Pw
-         KNtf44soto7tLcdkaSx10vCXXXKc/5IjFHYQn6MyzJ0oUJ4uw4t09wGnbhoJm0/WI4FP
-         kXVG9b2PwnYUHgx5g5TrS9UjC5U/ty97mP3fEoCUz0NNGG4xei1XlnpAFLhOHzq9fLIZ
-         T4d2TNyOA9iYZmPzSoqu1OI4XjJ8PU5aVB2LmdDe8kntaCmqMnEBz/XW7kcR7zo/sdwP
-         Kx7SZPYqFWa+mJVSPsir3Lc57Wo1YIxcpWfSVL5iieGnIjlVnqGaGy5EOs9GlRlPqgq9
-         wbJw==;
+        bh=ML487RZEtX6RDPbX3JUchrWHyom2/STG3MUfjQAASi4=;
+        fh=PcaXBtU0SCDnT8OK/BCZJRJ9HzKEC3YG5oztVtnf3c8=;
+        b=jP979ZiJCpr09D0e9oUQUx+wP1GrNH0pzlRvuO56G3CajOgC/518r7rZYp3kL5q7LJ
+         DNkah0TRW0GHnCRSAri/WWURzd0SLVULBQLMO30Xm3DMQ7IOGLWImUQf4OL45H0n6h/y
+         c9NNhvDIXAwQi8mMIJ8Ds1frANt2YDy2krWeXGvrNSgbq7aAIa4p7QTDRY3KncSM0CR3
+         ux5hl9vtM9VWi5xyZpvTcoHu+OWBWyskN5TGQlAGL5dvIiCsBhgdD9OhMAyXs587Rihv
+         uxjRHcT27o3cABDdcExsbLa04fnVU8qKdh/psqqgf+PqzDnob3CQmh2H82Fgw/lC57I2
+         OxwA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eS7gpdbt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=n1T+fWHg;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-453646dfeb1sor8057705e9.4.2025.06.20.06.09.28
+        by mx.google.com with SMTPS id 5b1f17b1804b1-453662e16f4sor2713995e9.5.2025.06.20.06.09.34
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 20 Jun 2025 06:09:28 -0700 (PDT)
+        Fri, 20 Jun 2025 06:09:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eS7gpdbt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=n1T+fWHg;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750424968; x=1751029768; darn=linaro.org;
+        d=linaro.org; s=google; t=1750424974; x=1751029774; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=2ho90gmr9LBnf0X5r6n+/qD5b6A/rnGinNhmNB6fBLQ=;
-        b=eS7gpdbt9jCyqjWnR4LOzf+ew3JCs1CO2pSS24XRJCJO4QCyqqqNURabGeGHS2uSCe
-         xIPmtCebz1VXWuIf0vQhSqRn16bZSxi/lslgaG/DZz1EPlcAVrhL4/gyEt3r3wH/lSJx
-         eT1QvBhN33K7x6oZYT6KkDmvS29pozxCpOafsPOaqkBp2OzAvNjLzz0lFAgYx35Qvh2j
-         KAzefL+TTUZGUeWxsI9+Jmx2Jb85gzsoqpTPOMZs20lE6bbVtg1t4/7Q9yWoWZW4XLsB
-         5o0MnLL3R4upRqUnjSwBArwOdu3BeS2oh3qCBPMC6j1gWD4cXI6TszLgqjwM8eaXhcjk
-         agyw==
+        bh=ML487RZEtX6RDPbX3JUchrWHyom2/STG3MUfjQAASi4=;
+        b=n1T+fWHgGPKq5agH1PwkNTlmu0v4HpuxTb1qAN2gQYwpUoyL3uesORT7C0nswz2V7O
+         cocVPusSAO5jkJtPslcRHpfM2tJi/p3yAo+XyHeEnm3cTqBmD3oJ3M/OM8tcb/fylH7e
+         lkW6+uY9CcNLSolVHMHR+525l9Wx5M0ELg/csANVZGF3nnzumKV60MysMGAeFm6SWT9h
+         Z3DpmzqldfbkR04768x7zLhzwlxy4APaqKmBvzJzGMRVPn1qUFP2KzK1Q9UBleK3eCGT
+         qdLKUtBUMsQYx08FYCxh/VoYYgViOi2RiVWrVY10tv+7FRS45PiXqmz0FREqkQ13NZir
+         Va/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750424968; x=1751029768;
+        d=1e100.net; s=20230601; t=1750424974; x=1751029774;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=2ho90gmr9LBnf0X5r6n+/qD5b6A/rnGinNhmNB6fBLQ=;
-        b=OEqYM1zT3ubj1DVmDtNWujJ1W+ZJ8ntovPi7dGi8Kt5/8OWsEOCA3UEdo9lSgeq1UL
-         hSMGoKW4t/FbSteofqRaWajeJEBfjxMnaJFjp1t5D56o7SX3OYClpNlHaeCyaDwF1uVF
-         zvjnbUw9+x1vT7TMgWKrSlstgXC1z5BxjSXjaix3XfpuvJ7W4Koet4/B1Qnz/s4tMzFN
-         l5rYb3QRhPtR94PaonS4c/bmP4heaC6og5UcIWr1hIAJI6ynxaMJwlKVC66QDheXQ2v6
-         RSfvdUhYO2ool2sNoqOGQqi6t5p0V+ZimYS7HpEcKx/8W7J6Hf9qAuUzDae/ya/VLrD2
-         WmqA==
-X-Forwarded-Encrypted: i=1; AJvYcCU0X+JspETE9izKHbwk3J7oml4YI3egwMmDNXPq2hHLMoBdu3J1MAu4qYCWGYoditMafaBLOHOMhCzDCg==@linaro.org
-X-Gm-Message-State: AOJu0Yz5I7oAu6K0MmgbyHFlz2hrFh+oyQ4UQXJ2V4ZYYwOua9kxzS2Y
-	4enRXbookTzT7fbRaoUDwmLYq4WBHFBlPjwQ0Va0iySrQvIjFNuzBZ5b8U53uHyQyzXANQ==
-X-Gm-Gg: ASbGncsKKkEhgVquiiQ2BbeyEHRzT0xnNi9vOmta7JeCyjLH28QMXapAeps56uU64vQ
-	bOT97AcBi6W+xPPHn6NaXrO5qDWE+nxHacI0DTqy4iobWzxdlMv1Z7YsTYCaO+AeNEuMbLNMX2t
-	gzYPaO6n8ZwrCs7DVWPe9ZvhTBZssa8xL7gIcA1i9rx0jB00d0YuE/j78ZwdzPlhYa2YdRyxt1v
-	LziCzuXQOBR+lYIvO+c9NpoBrydJoE87q1zgZFBp9ydgQqOL8MGfbXKSMLj7kXffq+vkd0+HSTY
-	r55xmIR8Uv/Uhox2hQrzS4P9aUfDvL81YhaGPKDhQ29rg1ZV/wAbadthZ994JqmGdKX/cXRMSrJ
-	WpHPy8Bb+OOtU6ZNSFXhQqMYFrdkK30ZF+5u6
-X-Google-Smtp-Source: AGHT+IGF8bB+qSx4ZvZXQLjUAOyAVozgjbRUMGz4uRoQ08Z1w2S6A2LTzrO9vB7Kb0AUvy301GjaBg==
-X-Received: by 2002:a05:600c:4747:b0:450:d37c:9fc8 with SMTP id 5b1f17b1804b1-453659c0a51mr22550685e9.13.1750424968380;
-        Fri, 20 Jun 2025 06:09:28 -0700 (PDT)
+        bh=ML487RZEtX6RDPbX3JUchrWHyom2/STG3MUfjQAASi4=;
+        b=LaACbaNS8knrEo67Lob1A2+eW3YqUx4/WBdarrjmyRQibu9l5x/zgIgsv4cQXkoptw
+         PLmPpdBmToa2l7mpHWPINZWMlgz2SVrA2CQtxHldcnuIIyho0haAFJuzUcRTaIpH0lTq
+         jcXxgcUGrdj82IBiprJTevU3Xa9pugd8NMIl07I+3/aa3eRb/HIjieD3qfJ9Q0fDNVq0
+         OCFCv7fdarkd1rKn3A+N84hvCknukbPB4yZjaqBoWtzYULAFjNPQUamS73jBECrVDoUx
+         4Z1Pdgb+rYVjbUCphGC+HAUcbRg/5av3f1kXF4PhezkuMYVzq7N/mWvTVVCFpqCdkiyo
+         ybuA==
+X-Forwarded-Encrypted: i=1; AJvYcCWkbXWQuC+O0/Uerpa6tJGet0tFKQovjTQ2E3rZC3kwOzK3M6ISxw3CT0AbzJ4x06NdLFFutActxtJegw==@linaro.org
+X-Gm-Message-State: AOJu0Yx+ImChcD7klU8B0orOfDv3qj6gc4kcIp90/QPITJuED+RQAdDe
+	gJX+wW6/7ipoL+N6J1tCNUHbdeYYm9XIiF12IkXw8p7IOzxD8JHDj9lfxCHJ+s69lXP0og==
+X-Gm-Gg: ASbGncvP5IovMWhmK36kIh0H1TM9YVgPcTzB6c8GTSleaxVaaxfoFGJKVpWnwWbG2Mp
+	o8qTx/icr5dnJFC0YWqfx0ddaGmXr4fAbE3aXHCxIrDTBvijS6TSr2lsdGdjppvsVjLzczBncn/
+	6RE1gui/3bXkhXNxH5jKospkmgJtDT1p7QcU97RiH0XdctXJS7ZRVBYBwKazDOQ8KdsUXMOtRJQ
+	z/tam0Gj7kZn8gBkUhfqlfyLCGdyX0c0ZvGhqrHoeVRYfTRQEn1PtcuQYT/dGEpgdfLmU9BGbqH
+	FDAlU1tJFXzvDiCGuC92afmcbxbabUFCBwzOge88oHoMBSrNCfuNjgGRuFZIQFvf5i+csojigu6
+	HPU1bPDei11SCoGFNH3BuLpgkeFhU9mrh6JEF
+X-Google-Smtp-Source: AGHT+IFoaiSq8p/vZ15JMywutihLdhiyx/4+KTYgXl1gSeqr94tnRyEi672b3w+H0TV5kZSUiEuYRg==
+X-Received: by 2002:a05:600c:3542:b0:451:e394:8920 with SMTP id 5b1f17b1804b1-453659edd18mr24577215e9.27.1750424974566;
+        Fri, 20 Jun 2025 06:09:34 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d1190c9asm2073452f8f.93.2025.06.20.06.09.27
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45359a09ee6sm38434125e9.1.2025.06.20.06.09.33
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 20 Jun 2025 06:09:27 -0700 (PDT)
+        Fri, 20 Jun 2025 06:09:34 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
@@ -103,35 +103,76 @@ Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
 	Thomas Huth <thuth@redhat.com>,
 	Roman Bolshakov <rbolshakov@ddn.com>,
 	John Snow <jsnow@redhat.com>
-Subject: [PATCH v2 24/26] tests/functional: Require TCG to run Aarch64 imx8mp-evk test
-Date: Fri, 20 Jun 2025 15:07:07 +0200
-Message-ID: <20250620130709.31073-25-philmd@linaro.org>
+Subject: [PATCH v2 25/26] tests/functional: Add hvf_available() helper
+Date: Fri, 20 Jun 2025 15:07:08 +0200
+Message-ID: <20250620130709.31073-26-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250620130709.31073-1-philmd@linaro.org>
 References: <20250620130709.31073-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: d8IPJoGm3rIB
-
-The imx8mp-evk machine is only built when TCG is available.
+X-TUID: Zp5bvM4BFUVu
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- tests/functional/test_aarch64_imx8mp_evk.py | 1 +
- 1 file changed, 1 insertion(+)
+ python/qemu/utils/__init__.py          | 2 +-
+ python/qemu/utils/accel.py             | 8 ++++++++
+ tests/functional/qemu_test/testcase.py | 6 ++++--
+ 3 files changed, 13 insertions(+), 3 deletions(-)
 
-diff --git a/tests/functional/test_aarch64_imx8mp_evk.py b/tests/functional/test_aarch64_imx8mp_evk.py
-index 638bf9e1310..99ddcdef835 100755
---- a/tests/functional/test_aarch64_imx8mp_evk.py
-+++ b/tests/functional/test_aarch64_imx8mp_evk.py
-@@ -49,6 +49,7 @@ def setUp(self):
-                      self.DTB_OFFSET, self.DTB_SIZE)
+diff --git a/python/qemu/utils/__init__.py b/python/qemu/utils/__init__.py
+index 017cfdcda75..d2fe5db223c 100644
+--- a/python/qemu/utils/__init__.py
++++ b/python/qemu/utils/__init__.py
+@@ -23,7 +23,7 @@
+ from typing import Optional
  
-     def test_aarch64_imx8mp_evk_usdhc(self):
-+        self.require_accelerator("tcg")
-         self.set_machine('imx8mp-evk')
-         self.vm.set_console(console_index=1)
-         self.vm.add_args('-m', '2G',
+ # pylint: disable=import-error
+-from .accel import kvm_available, list_accel, tcg_available
++from .accel import hvf_available, kvm_available, list_accel, tcg_available
+ 
+ 
+ __all__ = (
+diff --git a/python/qemu/utils/accel.py b/python/qemu/utils/accel.py
+index 386ff640ca8..376d1e30005 100644
+--- a/python/qemu/utils/accel.py
++++ b/python/qemu/utils/accel.py
+@@ -82,3 +82,11 @@ def tcg_available(qemu_bin: str) -> bool:
+     @param qemu_bin (str): path to the QEMU binary
+     """
+     return 'tcg' in list_accel(qemu_bin)
++
++def hvf_available(qemu_bin: str) -> bool:
++    """
++    Check if HVF is available.
++
++    @param qemu_bin (str): path to the QEMU binary
++    """
++    return 'hvf' in list_accel(qemu_bin)
+diff --git a/tests/functional/qemu_test/testcase.py b/tests/functional/qemu_test/testcase.py
+index 50c401b8c3c..2082c6fce43 100644
+--- a/tests/functional/qemu_test/testcase.py
++++ b/tests/functional/qemu_test/testcase.py
+@@ -23,7 +23,7 @@
+ import uuid
+ 
+ from qemu.machine import QEMUMachine
+-from qemu.utils import kvm_available, tcg_available
++from qemu.utils import hvf_available, kvm_available, tcg_available
+ 
+ from .archive import archive_extract
+ from .asset import Asset
+@@ -317,7 +317,9 @@ def require_accelerator(self, accelerator):
+         :type accelerator: str
+         """
+         checker = {'tcg': tcg_available,
+-                   'kvm': kvm_available}.get(accelerator)
++                   'kvm': kvm_available,
++                   'hvf': hvf_available,
++                  }.get(accelerator)
+         if checker is None:
+             self.skipTest("Don't know how to check for the presence "
+                           "of accelerator %s" % accelerator)
 -- 
 2.49.0

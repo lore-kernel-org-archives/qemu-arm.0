@@ -1,227 +1,141 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp314881njc;
-        Thu, 19 Jun 2025 07:54:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVMFSabnoNnTBFZYlFlFFkhmXxkyvrpbFbX2sBxac99LsLKkHp48jwvYb+oGeHHrSomlS5o9qKrlTxDyA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHEKJC73g3os3MClUF4vs1R2iN9nKrOa2EZQuhcUv6Ing4qpWNMN3GsZm3P3ExWXcCNOAJK
-X-Received: by 2002:a05:620a:4547:b0:7d3:9ba1:a044 with SMTP id af79cd13be357-7d3c6cdc736mr3029784985a.33.1750344890161;
-        Thu, 19 Jun 2025 07:54:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750344890; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp742526njc;
+        Fri, 20 Jun 2025 01:45:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVKFIeU9RYY9EJKqDqNhaUdR6/kq9oFO19cSMYpkgpATcOKDO4pAdqoMGq82j42DUmKIGJPBPu984VL9Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHWiGi/70WA4fhoqzCJ+rATGIXm+T1br3rxWrL0sbydUqcahJOSL9o0+GmhFO1iE8f4pcP/
+X-Received: by 2002:a5d:588d:0:b0:3a4:f936:7882 with SMTP id ffacd0b85a97d-3a6d12e8531mr1453609f8f.55.1750409120135;
+        Fri, 20 Jun 2025 01:45:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750409120; cv=none;
         d=google.com; s=arc-20240605;
-        b=Qk+cXejT8NInEj4rMfHBscR/tAKJMxgCEJnEo7WVLhKsPr2+8Y/qc6uzY+V/ggjH6v
-         Kjo6BG/RDOwSF6YEmyCCjhiqxfgXNDkwq9VeVvTfl3WSygGTW/X/hyI84yjqnDp2jm3o
-         RboJTa4H5uhUiRAryW+qoskBYZTfi4UO6pUG8LxwMm7WfPPVuFh7rcYnebO2d3B3j1B1
-         WsIFvzqX5kQpM0+bmPXdpiE+CJjNt8YHMSrMLhKnoN9qMI7DNNZCgIvQ0K33J5MHiAzq
-         sr6Dv3CSYAzYzZ1hnCtrX60bibPRmxKoipA/AIZ/OTq4qoF1hSTP2UynaMsALNt8gx/j
-         z0lw==
+        b=WHIKZeepsEsjg2fYXsrAJt4FCTO5hDVb/sL1SmRT5deCuGNgcJG+GbxE34ofBdPrUT
+         yxEphAMbQfJo5+xVKkCGjy0huIHfCZYsU3oxh97PAxzY2OXAnLMPP2hFAfm65wXuiHvu
+         UQqsCgOMZ7Sh2jwo7xLxV6oemGkP3zoOI8vgQEhOMOSJxI6CrcKPl3389hqzKg68hFxE
+         WbRC2iuIQlO5lZLXACpqhAqlJ2p8NoFnXSBuexcHu3Tv7B9wDPsg9o8W0bxuu0Ufrizu
+         g0/gSKf+mo2FTwAA50GwEoJiCLOeW/9o9TVg9kIacUFrPEik1dTrX8lU9gbVH2jBzZnn
+         05nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=eak0OZ1v1XW00XZMJ/aMzb0NE0RwdLT7+UVeEZBSXc4=;
-        fh=Bb9qtU45juambGsHk23qln+hdsEeBKM/vU8sdSn9okA=;
-        b=TAart63vg+RolJxBYJuJEfts3KFqxAiT2s4DxErgAIBiUy4nEP/su8jmWOCFba4Oeq
-         jGiQk2gw24mtXxE+8Yg9+I+dHHOKdMQsKBL7rSXk2QbPtFoYGGulXaxzj8zqOoAK227K
-         4vHu2gNvSqnjHOjnzT3gKECbSGj+8LttisGouzrfCngRLp9ejYJtCprnU72iPQ5y5KfW
-         DlbSmuNH7cqezA0WUfuT/L5RhHc/KPwF8ZWRZR7poQRnNqC/YlmIHt6nwi4CK5y082+y
-         EtFV8Zm9Tp6ywGYziIMLkm3rGNTaUQ/V1qL24cVMiwJ/1wnQ10/174H9JzauRqlCqSGm
-         cBjQ==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date;
+        bh=tjofRoQPNZ6DG7m5o4IhowfnXNS2YFcrRjiSa1PV6A0=;
+        fh=De5j/+RFiHp5oysg/kfBHcT9O0ASuV5hpNukEk4skqM=;
+        b=BvnH0+y9VkV8kTOq0B4TsCUmQBwymAcTAZZ3H+aG8n69bKjp6z9HyTxhz0ZJKhQyL5
+         FF2gjXwSgImxovh+mdt04wXjRrmrL7BtZASR6U6AyExsb+cuVo/hxrwbRlQas7JqLmgd
+         5vSAIDC3yeuyvKw/HZe84v3pJrKRwTGy0BFe4M0bjaG0r9o0baCB128ksj2HRwZ/M87h
+         05pZMEpKDmMFVQk1V7l0xLPS0SLDA9W49OOgJkDiPKvtGcy9n4DKX8l3oePqS7/vCCj7
+         v1FM5fKr4YvmVw6NlVujkZsGwYFDaVZ62VIsmyIZfKuqwXIqKUO9MhmOq9ULPZtgRCQy
+         VQGg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dtEqm2Wj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3f8ded67asi8137185a.159.2025.06.19.07.54.50
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jun 2025 07:54:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a6d0f1d30bsi982076f8f.114.2025.06.20.01.45.19
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Jun 2025 01:45:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dtEqm2Wj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uSGeg-000427-KV; Thu, 19 Jun 2025 10:54:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leetroy@gmail.com>)
- id 1uSGee-00041Q-38; Thu, 19 Jun 2025 10:54:16 -0400
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <leetroy@gmail.com>)
- id 1uSGec-0006nn-9K; Thu, 19 Jun 2025 10:54:15 -0400
-Received: by mail-pj1-x102e.google.com with SMTP id
- 98e67ed59e1d1-313f928718eso622200a91.0; 
- Thu, 19 Jun 2025 07:54:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1750344852; x=1750949652; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=eak0OZ1v1XW00XZMJ/aMzb0NE0RwdLT7+UVeEZBSXc4=;
- b=dtEqm2WjtWcsR8Vm02A7+XgGag5Xyc2pZyfMtk3dOVX75SDuZrHsyyLCKQFZGsPd+0
- KT7iRM4S3c9OOEulhlsMr3/u57RoCSnEMF35cYxsnynv5kKfKumvdMrPSMz9ekF/osul
- 6RXE9PvB1FEr/0GZdxFs7oECVR/Ec0eet+Z6xNSx/Th5yuLSOJZDPQZn76NEVom8+V82
- B3VgAjeMnMIDDCQoMSsjOvdL8mCOKlf+igpmETUfJXz1ezD9aJhbaUwn6GmcS+Wni3n5
- hnKu6f+cyeMq42JVb3Y1h7ljTvV2cBjNmnnvyjCVV9ZViBXWzoIVX7f7r7AJfg2kgCa9
- wtww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1750344852; x=1750949652;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=eak0OZ1v1XW00XZMJ/aMzb0NE0RwdLT7+UVeEZBSXc4=;
- b=lOjFzaNgIZ+PQAzRAM4BDT7jYyIGefsYCwsS5YdjJUJFS33OpdzRRM3XkgdMn2FhfR
- fkM/wEDgaEDWpxgErJR4oILTTkhio4c/n68gw+DiZjQav4AxKj5fpbSB/DbBeV8XA5sU
- dDrQMw2TdaooUCL2yVn7Pu2wAPvXTMSA1OLzfoFUxF9fNnf9iLvRR1cx457T7vV8qvmU
- D+iUqibqaXzzo0dknnPd3BzDe3EehmdZnXaG1eI9TCCSckXFj8baJIuUwfCO0dZcDzz0
- V3ru030tBmJLpOmPq3JBVrnoQYjIb9U5x1BIF3VWKIT/XxruOB/coYgMpIBeb+L0U0aj
- C4Fg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXR0DOM2k2cPthlFWsZsMlzmwczu6HB+mgBKyQbbtDQKB+LLk2pssa82FKYSFesL2Ar5IcBRBkKk7nj@nongnu.org
-X-Gm-Message-State: AOJu0Yxxrd1EpHcRbhTWqQdoxVMk6lgf74rxL2oFnj9ZJCzaoYES+zX8
- zQEvN92pmSlkefjmmKg869TDczHPMpqd3oZvc+ThNryWvbUn1oj9fx0Mk1zgbq9yDB/3n3AcPXs
- 2nKCRsqW2Z+eVCvTpeX2qAGMThT5mTy8=
-X-Gm-Gg: ASbGncvSIfHY8sB2Ph0DM02yyvbQe6Hk/c9fZGP/p7Hw/tz6TbGu17uETcVNpSlTj3f
- cFeI69Tf5TY5MgHziTeF44ltD/arYtd7w6OnHUHuB3Vp+0Raa0xYDVyJ4whpaycQi+6yq9XxOfh
- 5u+M5Qdw9mNfUV6wO7UwyMJ2oeL294aIWFLCNzV/FvGElrJX7GoKZOlgs=
-X-Received: by 2002:a17:90b:3b4e:b0:312:e618:bd53 with SMTP id
- 98e67ed59e1d1-313f1ce2b77mr25890209a91.26.1750344851685; Thu, 19 Jun 2025
- 07:54:11 -0700 (PDT)
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bNrb90crdz6L6Fc;
+	Fri, 20 Jun 2025 16:43:01 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+	by mail.maildlp.com (Postfix) with ESMTPS id 3823E140417;
+	Fri, 20 Jun 2025 16:45:19 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 20 Jun
+ 2025 10:45:18 +0200
+Date: Fri, 20 Jun 2025 09:45:17 +0100
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+To: Eric Auger <eric.auger@redhat.com>
+CC: <eric.auger.pro@gmail.com>, <qemu-devel@nongnu.org>,
+	<qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <imammedo@redhat.com>,
+	<gustavo.romero@linaro.org>, <anisinha@redhat.com>, <mst@redhat.com>,
+	<shannon.zhaosl@gmail.com>, <pbonzini@redhat.com>, <philmd@linaro.org>,
+	<alex.bennee@linaro.org>
+Subject: Re: [PATCH v3 04/29] hw/pci-host/gpex-acpi: Add native_pci_hotplug
+ arg to acpi_dsdt_add_pci_osc
+Message-ID: <20250620094517.00007eed@huawei.com>
+In-Reply-To: <20250616094903.885753-5-eric.auger@redhat.com>
+References: <20250616094903.885753-1-eric.auger@redhat.com>
+	<20250616094903.885753-5-eric.auger@redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-References: <e2df1ff1-3ce4-4233-b32e-2bc680725c71@kaod.org>
-In-Reply-To: <e2df1ff1-3ce4-4233-b32e-2bc680725c71@kaod.org>
-From: Troy Lee <leetroy@gmail.com>
-Date: Thu, 19 Jun 2025 22:54:00 +0800
-X-Gm-Features: AX0GCFsCtrLKA9THJERQubk15_hyJ0q_lAX8IjRoR9UeemtGeKDEfHcBIRDJeKw
-Message-ID: <CAN9Jwz2m=YX-1_U6z6-=opxoYL8RkFT76--WMcgzOkVZjsFyrA@mail.gmail.com>
-Subject: Re: aspeed: Split the machine definition into individual source files
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Joel Stanley <joel@jms.id.au>, Jamin Lin <jamin_lin@aspeedtech.com>, 
- Steven Lee <steven_lee@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Patrick Williams <patrick@stwcx.xyz>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=leetroy@gmail.com; helo=mail-pj1-x102e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2wL/n4FP4yQ/
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-TUID: es4aYdiW1u+G
 
-Hi,
-On Thu, Jun 19, 2025 at 5:24=E2=80=AFPM C=C3=A9dric Le Goater <clg@kaod.org=
-> wrote:
->
-> Hi,
->
-> This is a follow up of a private discussion with Patrick.
->
-> Aspeed modeling started nearly 10y ago with the palmetto-bmc machine.
-> We now have 5 SoCs and 25 machines which are mostly defined in
-> in a single aspeed.c file. Multi SoC machines, fby35 and ast2700fc,
-> are defined in fby35.c and aspeed_ast27x0-fc.c respectively.
->
+On Mon, 16 Jun 2025 11:46:33 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
 
-Sounds good to me.
-While we're on this subject, we have many variants of the AST27x0 SoC
-and development boards in different form factors. Should we also create
-separate SoC models and machine definitions for each one? Or can we
-treat AST27x0 as a superset of AST2700, AST2750, AST2720, and
-any future models?
+> Add a new argument to acpi_dsdt_add_pci_osc to be able to disable
+> native pci hotplug.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+After discussion on earlier version I'm now fine with this.
 
-Thanks,
-Troy Lee
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 
-> Since we started separating the SoCs :
->
->    hw/arm/aspeed_ast10x0.c
->    hw/arm/aspeed_ast2400.c
->    hw/arm/aspeed_ast2600.c
->    hw/arm/aspeed_ast27x0.c
->    hw/arm/aspeed_ast27x0-ssp.c
->    hw/arm/aspeed_ast27x0-tsp.c
->
-> We could do the same for the machines keeping an 'aspeed_ast<rev>'
-> prefix (and maybe avoid the 'bmc' suffix). I think this would ease
-> introduction of new machines. We would be able to get rid of
-> aspeed_eeprom.[ch] and move machine custom data in the machine source
-> file. Which seems cleaner.
->
-> Timing is about right for code reshuffling, still 3w before soft
-> freeze, no important changes inflight, but if we start doing this
-> conversion, we should do it for all. See the list below for the brave.
->
-> Comments ?
->
-> Thanks,
->
-> C.
->
->
->
-> * AST2400
->
->    palmetto-bmc
->    quanta-q71l-bmc
->    supermicrox11-bmc
->
-> * AST2500
->
->    ast2500-evb
->    romulus-bmc
->    sonorapass-bmc
->    witherspoon-bmc
->    yosemitev2-bmc
->    supermicro-x11spi-bmc
->    fp5280g2-bmc
->    g220a-bmc
->    tiogapass-bmc
->
-> * AST2600
->
->    ast2600-evb
->    qcom-dc-scm-v1-bmc
->    qcom-firework-bmc
->    rainier-bmc
->    fuji-bmc
->    bletchley-bmc
->    fby35-bmc           (fby35.c should rename to aspeed_ast2600-fby35.c)
->
-> * AST2700
->
->    ast2700a0-evb
->    ast2700a1-evb
->    ast2700fc           (aspeed_ast27x0-fc.c)
->
-> * AST1030
->
->    ast1030-evb
->
+> 
+> ---
+> 
+> rfc -> v1:
+> - updated the "Allow OS control for all 5 features" comment
+> ---
+>  hw/pci-host/gpex-acpi.c | 15 ++++++++-------
+>  1 file changed, 8 insertions(+), 7 deletions(-)
+> 
+> diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+> index 0aba47c71c..f34b7cf25e 100644
+> --- a/hw/pci-host/gpex-acpi.c
+> +++ b/hw/pci-host/gpex-acpi.c
+> @@ -50,7 +50,7 @@ static void acpi_dsdt_add_pci_route_table(Aml *dev, uint32_t irq,
+>      }
+>  }
+>  
+> -static void acpi_dsdt_add_pci_osc(Aml *dev)
+> +static void acpi_dsdt_add_pci_osc(Aml *dev, bool enable_native_pcie_hotplug)
+>  {
+>      Aml *method, *UUID, *ifctx, *ifctx1, *elsectx, *buf;
+>  
+> @@ -77,11 +77,12 @@ static void acpi_dsdt_add_pci_osc(Aml *dev)
+>      aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
+>  
+>      /*
+> -     * Allow OS control for all 5 features:
+> -     * PCIeHotplug SHPCHotplug PME AER PCIeCapability.
+> +     * Allow OS control for SHPCHotplug, PME, AER, PCIeCapability,
+> +     * and PCIeHotplug depending on enable_native_pcie_hotplug
+>       */
+> -    aml_append(ifctx, aml_and(aml_name("CTRL"), aml_int(0x1F),
+> -                              aml_name("CTRL")));
+> +    aml_append(ifctx, aml_and(aml_name("CTRL"),
+> +               aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)),
+> +               aml_name("CTRL")));
+>  
+>      ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
+>      aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
+> @@ -192,7 +193,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+>              if (is_cxl) {
+>                  build_cxl_osc_method(dev);
+>              } else {
+> -                acpi_dsdt_add_pci_osc(dev);
+> +                acpi_dsdt_add_pci_osc(dev, true);
+>              }
+>  
+>              aml_append(scope, dev);
+> @@ -267,7 +268,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+>      }
+>      aml_append(dev, aml_name_decl("_CRS", rbuf));
+>  
+> -    acpi_dsdt_add_pci_osc(dev);
+> +    acpi_dsdt_add_pci_osc(dev, true);
+>  
+>      Aml *dev_res0 = aml_device("%s", "RES0");
+>      aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));

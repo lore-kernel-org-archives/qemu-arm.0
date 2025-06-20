@@ -1,86 +1,86 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp878539njc;
-        Fri, 20 Jun 2025 06:08:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVhVvAFKVJSKdA93/2nrHrD6ms7Esw/LrLyFwRNjhyTIhd/arcH8TaRIxKzDZx80AdvNaQNTIGOcY8WfA==@linaro.org
-X-Received: by 2002:a05:600c:8b52:b0:441:b19c:96fe with SMTP id 5b1f17b1804b1-453659c05e5mr32758075e9.10.1750424934094;
-        Fri, 20 Jun 2025 06:08:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750424934; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp878593njc;
+        Fri, 20 Jun 2025 06:08:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUAzkHZEaT2bj5SpkFBJHiHF+BWN2gz/bS20t7Tejw+X1gEGxQ49P/q8rXB5w+3euyPYfX8mNGdQaryIg==@linaro.org
+X-Received: by 2002:a05:6000:2dc4:b0:3a5:1cc5:aa6f with SMTP id ffacd0b85a97d-3a6d1322b77mr2375630f8f.34.1750424939333;
+        Fri, 20 Jun 2025 06:08:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750424939; cv=none;
         d=google.com; s=arc-20240605;
-        b=C3xgInjZGuwj8RajnZs0CF2WXoQwZmTipDETdFC9292PtPXKtfiFMz2pqlD0bz141+
-         AWn1g8SwFJpH+NCNFZ9JkabqZJ6n2kDQiC4FM2A7zeDXUwI9MEJp/L2MfQZnzcYHwY7V
-         LZraShcq/o5tAvu/KkgPMbQECbqVwx81XcTQZCq2kkYBA8dSs5FdJFWj8jGO5VUY7K2L
-         efNujBazTKCRKjriYqizvuqjEhcCxik8bP23/o6jpURkJRApnhZMEv8JPYhLHPux//v/
-         2fzcY31+TT8wJUiVMVvVqHTVha58/kBduqLq7fh/Z6AIZf3X+bMF5kXn7+vOA4SXdH3e
-         0TEg==
+        b=Lv2oA11FKlOUpoIi6NBq9Dn7Na5OozUfdv25MEU0n2vt/K0q8EJNDPR1VV2JkY7YFk
+         Oh7X+g7yFqu79ZJEXqyWq+YtC+zzcV7Yup29K45THPpDhZTmJ9Jv0Rz9JF9uGjoZ6l0b
+         QT18Y18hkoto1rwLRwwnMQ96boxeOaVG4HxITA4F3Gfom1XMhtVbmh72xtySWc/5j/WD
+         RBpzymYAuEK1d/V5lwk0vzvONJND3jGpiBbxO33kgRmRo4rmonipCcWw2GKDtU6s7YFC
+         vz7P2xJnlfB2TcFpLVK+avjfxYBGARIgsGsbDAMfdldn0KGApxYAWtI7Cxt10uOwHdeL
+         3oLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=WoXZ8Al0R/es9sXpuEKkELf4IYQr/L/uwmOyRIHiR2c=;
-        fh=0MVNod1TJy5Cg+6VfKh2KtzCFavbofHBDnBaIBlNh7Y=;
-        b=f/ycztzlDGmrBmnlnMIeMK1offUYcDIlCe3+X74UqI/fTN8xuSBwt29HaHAihVn6Va
-         pbLzuiWTIkwfzeaKp/YWtMz14PML4wIDLgUX9kSG2MiJ86MMS+1FPH0Gp0XAhPaIXUCb
-         lKGTdLi3BFefp4EKTYo4X6mW2bRlW8rOIJrF2C5VXgvaUoI4Icwa4PFHfIAGbfHhXnmK
-         MvvoFBtsFxwv80P+WvAo2khjlrX6g/tICUCXExc6obhWynvpFTkahkBza/pka2XyVYLZ
-         JA7Tco2SxpTewNmqq7PVhskF7KPZ7DqJWi+JQV1h1JV9uDaV/S/4wgu1NA7tpMtNt9/m
-         89Pg==;
+        bh=CoTleeCUcvYndolgWSxVbjuEBw5fGt+mb1nmRFlbWPU=;
+        fh=y6TGe3/+003aPI4QCJoR0JJI5OVkOiFgCmlQCQD7qn0=;
+        b=TJsVZQetrugvrWPQYDIL4QTFMomMAp1369nbMhnw12tfa4gJAMpGRc8a9riYyyjT8O
+         +Y/evp6zVcx9gMCelEgvwkuICteg+MlbFyK+sLrduOUo6El7ukWl0buEilCv1IzoeO7N
+         dUqLQsFi6w8y+KMcjIiWVdzQpQvvohBW4Yohw0wWCbIuEVfeNeN0xEdI6ImK4B3mkj1K
+         /HOiv1BP1yFTCLGaAFWbfV+iCI7wLnWjVMpNqRdYjk9g2hipdm9zLKMA2SLAA4LOCxXO
+         a5KceHbF5npROlIUHmF2p7zIPUIDd8gcohNoszr18g0+kfZDAPDHg+Msa1K8kYfdR3U1
+         Kfcw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=euvQsox5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=giz4gdYm;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-453646e9ce6sor8355135e9.3.2025.06.20.06.08.53
+        by mx.google.com with SMTPS id ffacd0b85a97d-3a6d114a767sor440043f8f.5.2025.06.20.06.08.59
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 20 Jun 2025 06:08:54 -0700 (PDT)
+        Fri, 20 Jun 2025 06:08:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=euvQsox5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=giz4gdYm;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750424933; x=1751029733; darn=linaro.org;
+        d=linaro.org; s=google; t=1750424939; x=1751029739; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=WoXZ8Al0R/es9sXpuEKkELf4IYQr/L/uwmOyRIHiR2c=;
-        b=euvQsox5mNv5r31SeeOYcfWi1BUVOOfTbYf+k9oPDRoctwf3vZH+jlBHyDVuNRDyPn
-         xyzNUjMNhl2NZMVWsJlCC71sS9TfMURds/5UImX+1NwcMU3svLiFitU+HSRoFIoQbsz1
-         2wwdxuXdjK75iXlRZDObgJoYzfnjV3Qd1jb2EarNZ5F9Vd6yyGTRMb8d1pogn5f7jZ1L
-         AlRKgz2JzMoTl3kL69/7Cpw8G5chPtQktV1Y59o/a3sLs+2n18VjlStiAHMi0r5b+Ed5
-         W1OmclCCFTvk6N2cFrUgKMsvQ2gigap7BGl0tQFQ6zhjzSL2K9jUml+F8++GYglXMmP0
-         J8vg==
+        bh=CoTleeCUcvYndolgWSxVbjuEBw5fGt+mb1nmRFlbWPU=;
+        b=giz4gdYmqzu8sYq3rcBi6JVLgCZtXk5frR61e8JOuxsa36FWSulDtaJj7cf6Z5McoD
+         ncSX0h7a+2FemL5fkmOrrTThZQRVp/F6HMC8M1yxH2nY9hLhmac4L1MKwyTzVDnkuYIt
+         uoAUNmKOEybRw3p74lJibSX5Je35HaVS5NCFRWmSrkaK3dbXlQeDdGe3Pp8YGtwTFiNH
+         2Lu5F0vce5D+JNMms7HtJpJTxAPuxLTayBlBZ4ljSMj4hnsSXad1JUGCisOiy24g4Gm6
+         KBKWLQhspZRItn4EtQhWv084KFn5RXZ6bqIv08GiyZ+YcosCQd1KxK0QD3cKQPDnHhTo
+         WYGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750424933; x=1751029733;
+        d=1e100.net; s=20230601; t=1750424939; x=1751029739;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=WoXZ8Al0R/es9sXpuEKkELf4IYQr/L/uwmOyRIHiR2c=;
-        b=WWldUOz4dcAhf/ehddSU1A39FCbUraUD1BrbTTCc/VWaAotFKPYnJdzpjG2j4n5842
-         Le4gLym9Gr43eSEqz7HMVmEAGsifpm88Tn0QHuzN8UwclIKfG9hOLvsbImrTWOCtUka/
-         eRzCdIcquCUmvxH8X8PbsF+UPfaWlHfAQ31OmdCVB8AHsxWSnywEP9afbBTcb3AELyxm
-         kmwQJzJ+UFRaj83rJ3lcgEAoXCnjHrUyZJGdK+y+TwO5we7CDqUOXJvlSjapV6zlBPPF
-         0KIfkrr8J3XgadOVEyibk8jUnVGJrzHklqhTLEEAiZBa4K5SCfdCsuE6O8M3vVD5c4G+
-         Ywig==
-X-Forwarded-Encrypted: i=1; AJvYcCURnvGNiP4/oTGyv+R8wmpLpQiemf5kPEK8aZbtBW/p290sZYTc41Jz3iBSxJmzsx1ROW5imbTPMxHVLA==@linaro.org
-X-Gm-Message-State: AOJu0YyvJIx5KoBUaGmvSCA/q8bP29MGiqyV/PuVvh+tr9hiR9MAEnd/
-	oeXCWIne3Y8XvWtHZ128xYgS3MTzjmo1S7c50hxhtG3uHHYQ5S+qmBsRKZyd5J4uWeqzxQ==
-X-Gm-Gg: ASbGncu5wlgV/JEsRv/3p1Eq2lNd3o8sP/dvJArjdiXqLXLf0UCs1Uh1zYbvlepN0HY
-	H0nZlQSSi1Bx3sHpa1n4LX0qXUhFmlB85xkbnYAGX3LsI7gzgqESvafTwxHmahxUv8UAazriiX+
-	lIy+YMTZ/SE9xCKQqcj/pwCOO5cWcLTMcKcLQU84Ckhq8Opr8QgqQNk6pofeJsTHFehmZ2kjpLe
-	lowIWKpSu6KCoyA87unOrOrldlDKQOpP1pLrvRrNBaovG/xz/ZC5YH+4Et15yrgvqiscsGYnYGO
-	qzC2y7o/57hMWt/q8ULxHyRES0rJ2pK2Ne5DjgC+0kWbvUwHUKKnVnCmt6WeOubxT1bISWKpRbF
-	XP1x60zI4BjspZXXvcHslBVhi03P2N0QC+Z4G
-X-Google-Smtp-Source: AGHT+IGEOZJZmS9VN7oJFrBpyPnyA04MJAIvpYC6GlxrITVRrfApyBG3DfPjsMvyvrXG11kPH2vwoA==
-X-Received: by 2002:a05:600c:8b52:b0:441:b19c:96fe with SMTP id 5b1f17b1804b1-453659c05e5mr32757335e9.10.1750424933502;
-        Fri, 20 Jun 2025 06:08:53 -0700 (PDT)
+        bh=CoTleeCUcvYndolgWSxVbjuEBw5fGt+mb1nmRFlbWPU=;
+        b=G80sC1u5X2Vi2iatt+6QlVHtMOcs12k5w607bDXMNZX/0D8mB9agjKByvMhoLhd5yd
+         WOqO/qpFwq+zIj8MiJbUhmzwqDkJIizs5fv69i/w/TzS4sfkxp2NG0tzwu8r3WdliTIt
+         BWFQW4sJYDMyOADa8IkiK1jyUBcKVIoOg5h4oJQbYoWMUeeyLFRtEQIv59IjeraG3nkn
+         BI1C9EMMh+3xkx3IP7PxkpR+XrqJRLaqvuPRn12FoDTeMMIGim6pXiBUoRyq5dg8NaLs
+         Ip+YrU+hBniExEfQL+PviVz9s72A1Izsj8NGdxcRFElomAFxnknfjmy9Q+HcBuaVnSND
+         6lxA==
+X-Forwarded-Encrypted: i=1; AJvYcCVN5xTdVRQYQ9nsa/LSX+SYhl3iW6eB6SPLBBr6uquudSgXJfo6To+v8p2TcdEHAa4tM2N5q79dSIHIbA==@linaro.org
+X-Gm-Message-State: AOJu0YxbHxV9+bbdSw50R3tZE7xHJpYyIBdDVSWFzY3MpOJyNmUzXWaY
+	+7kWE7Mk8+wvBZlp5Sn6QuV/ZDVANm3Ye8CP2bhY+AVU73eII1k/g472cceFZYF/6PAmWw==
+X-Gm-Gg: ASbGnctf0zUQ2EvT1BzdlVIlVOs8bQqWVwQOIzldVHPv9I8Ugtsn1c/6ewB4xlCe9Hp
+	oaWY5cB13EKFkUy4Uh9fmotl21+OrgO4OohqO3+LLkN8EDBIRll5v5zjwMCURJlKANtO5OhuKtu
+	72UsZwrga6rCri4+HuMEcmMi2lcpMaXlAkuudaCCPd/Z54NSZE8Ye9ev/w4ZM2H0KmqyG78kJwH
+	qFUYlWRmDw4EoVs2DvgEqY4kAQUJMYBb9nUY3XF3JSttCrl8ena36YznWXacBfBS9f/+DAQkIcL
+	AEXqM910xqDLebS+kO+s23isj11WXW0LPn5Jtqj1wxByCSGk0dXpGXRhfY43U6gPX/qWtKgn9Uw
+	8bdVrWayXIJj/ISJf474QjW64s37G8H58nNGtSe/DSqGth7o=
+X-Google-Smtp-Source: AGHT+IGuIbYoqiAUyyTvRzRx4XiSdr/lFqQmEELQqzVAO0UNUSoo47/0fUF0+MkjrXr0XzUJRZQK0w==
+X-Received: by 2002:a05:6000:3103:b0:3a5:58a5:6a83 with SMTP id ffacd0b85a97d-3a6d13013eemr2649039f8f.13.1750424938708;
+        Fri, 20 Jun 2025 06:08:58 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4536470826fsm24688205e9.36.2025.06.20.06.08.52
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d1192680sm2076203f8f.95.2025.06.20.06.08.57
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 20 Jun 2025 06:08:53 -0700 (PDT)
+        Fri, 20 Jun 2025 06:08:58 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
@@ -103,100 +103,39 @@ Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
 	Thomas Huth <thuth@redhat.com>,
 	Roman Bolshakov <rbolshakov@ddn.com>,
 	John Snow <jsnow@redhat.com>
-Subject: [PATCH v2 18/26] target/arm/hvf: Trace host processor features
-Date: Fri, 20 Jun 2025 15:07:01 +0200
-Message-ID: <20250620130709.31073-19-philmd@linaro.org>
+Subject: [PATCH v2 19/26] hw/arm/virt: Only require TCG || QTest to use TrustZone
+Date: Fri, 20 Jun 2025 15:07:02 +0200
+Message-ID: <20250620130709.31073-20-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250620130709.31073-1-philmd@linaro.org>
 References: <20250620130709.31073-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: LH69m/hwTrEf
+X-TUID: +m+yn1xhcOif
 
-Tracing an Apple M1 (Icestorm core, ARMv8.4-A):
+We only need TCG (or QTest) to use TrustZone, whether
+KVM or HVF are used is not relevant.
 
-  hvf_processor_feature_register EL0: 1
-  hvf_processor_feature_register EL1: 1
-  hvf_processor_feature_register EL2: 0
-  hvf_processor_feature_register FP: 1
-  hvf_processor_feature_register AdvSIMD: 1
-  hvf_processor_feature_register GIC: 0
-  hvf_processor_feature_register SVE: 0
-  hvf_processor_feature_register MTE: 0
-  hvf_processor_feature_register SME: 0
-
-Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+Reported-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/hvf/hvf.c        | 43 +++++++++++++++++++++++++++++++++++++
- target/arm/hvf/trace-events |  1 +
- 2 files changed, 44 insertions(+)
+ hw/arm/virt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 52199c4ff9d..87cd323c14d 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -2160,8 +2160,51 @@ static void hvf_vm_state_change(void *opaque, bool running, RunState state)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 99fde5836c9..b49d8579161 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2203,7 +2203,7 @@ static void machvirt_init(MachineState *machine)
+         exit(1);
      }
- }
  
-+static void trace_processor_feature_register(void)
-+{
-+    hv_return_t ret = HV_SUCCESS;
-+    hv_vcpu_exit_t *exit;
-+    hv_vcpu_t fd;
-+    uint64_t pfr;
-+
-+    if (!trace_event_get_state_backends(TRACE_HVF_PROCESSOR_FEATURE_REGISTER)) {
-+        return;
-+    }
-+
-+    /* We set up a small vcpu to extract host registers */
-+    ret = hv_vcpu_create(&fd, &exit, NULL);
-+    assert_hvf_ok(ret);
-+
-+    ret = hv_vcpu_get_sys_reg(fd, HV_SYS_REG_ID_AA64PFR0_EL1, &pfr);
-+    assert_hvf_ok(ret);
-+    trace_hvf_processor_feature_register("EL0",
-+                                         FIELD_EX64(pfr, ID_AA64PFR0, EL0));
-+    trace_hvf_processor_feature_register("EL1",
-+                                         FIELD_EX64(pfr, ID_AA64PFR0, EL1));
-+    trace_hvf_processor_feature_register("EL2",
-+                                         FIELD_EX64(pfr, ID_AA64PFR0, EL2));
-+    trace_hvf_processor_feature_register("FP",
-+                                         FIELD_EX64(pfr, ID_AA64PFR0, FP));
-+    trace_hvf_processor_feature_register("AdvSIMD", FIELD_EX64(pfr,
-+                                         ID_AA64PFR0, ADVSIMD));
-+    trace_hvf_processor_feature_register("GIC", FIELD_EX64(pfr,
-+                                         ID_AA64PFR0, GIC));
-+    trace_hvf_processor_feature_register("SVE", FIELD_EX64(pfr,
-+                                         ID_AA64PFR0, SVE));
-+
-+    ret = hv_vcpu_get_sys_reg(fd, HV_SYS_REG_ID_AA64PFR1_EL1, &pfr);
-+    assert_hvf_ok(ret);
-+    trace_hvf_processor_feature_register("MTE",
-+                                         FIELD_EX64(pfr, ID_AA64PFR1, MTE));
-+    trace_hvf_processor_feature_register("SME",
-+                                         FIELD_EX64(pfr, ID_AA64PFR1, SME));
-+    ret = hv_vcpu_destroy(fd);
-+    assert_hvf_ok(ret);
-+}
-+
- int hvf_arch_init(void)
- {
-+    trace_processor_feature_register();
-     hvf_state->vtimer_offset = mach_absolute_time();
-     vmstate_register(NULL, 0, &vmstate_hvf_vtimer, &vtimer);
-     qemu_add_vm_change_state_handler(hvf_vm_state_change, &vtimer);
-diff --git a/target/arm/hvf/trace-events b/target/arm/hvf/trace-events
-index b49746f28d1..7ef75184901 100644
---- a/target/arm/hvf/trace-events
-+++ b/target/arm/hvf/trace-events
-@@ -12,3 +12,4 @@ hvf_psci_call(uint64_t x0, uint64_t x1, uint64_t x2, uint64_t x3, uint32_t cpuid
- hvf_vgic_write(const char *name, uint64_t val) "vgic write to %s [val=0x%016"PRIx64"]"
- hvf_vgic_read(const char *name, uint64_t val) "vgic read from %s [val=0x%016"PRIx64"]"
- hvf_illegal_guest_state(void) "HV_ILLEGAL_GUEST_STATE"
-+hvf_processor_feature_register(const char *regname, unsigned value) "%s: %u"
+-    if (vms->secure && (kvm_enabled() || hvf_enabled())) {
++    if (vms->secure && !tcg_enabled() && !qtest_enabled()) {
+         error_report("mach-virt: %s does not support providing "
+                      "Security extensions (TrustZone) to the guest CPU",
+                      current_accel_name());
 -- 
 2.49.0

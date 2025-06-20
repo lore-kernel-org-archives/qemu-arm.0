@@ -1,86 +1,86 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp877981njc;
-        Fri, 20 Jun 2025 06:08:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWFZdGSFyeWNf0ZfBFh/FX3CFTMuc7bi9uiiZjRNTsbYncP6iD5GWapQEFCynPQE9AuAZ6Dy1F1qZlvKg==@linaro.org
-X-Received: by 2002:a05:600c:4e8a:b0:43d:1b74:e89a with SMTP id 5b1f17b1804b1-453659ca684mr30245385e9.9.1750424895282;
-        Fri, 20 Jun 2025 06:08:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750424895; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp878087njc;
+        Fri, 20 Jun 2025 06:08:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU/4fR9ZE7nmimoyN+zJ7uJoTo7JWSjHFrBlz3NCdaxfUHz5ETTgorbVSKmlpXzz7nkLXsu/eiTBz8XsA==@linaro.org
+X-Received: by 2002:a05:600c:c08e:b0:442:e0e0:250 with SMTP id 5b1f17b1804b1-453659ec202mr21903425e9.29.1750424900693;
+        Fri, 20 Jun 2025 06:08:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750424900; cv=none;
         d=google.com; s=arc-20240605;
-        b=g2Bm4+FlnACjsprGfqEi89taNYHHtEp01HSnXP0/NM4XaVKcvMjFHKaSh5PLQhkyf9
-         KwPbAMk3MjnUqldd81g6lbpl7ItrQ0wFPsvpMeel6WT3Q91rUpsDtRKJsqwdnjXj749y
-         Z3CAuMW81gb1A6D0fcJIKkG5Y00Nlp2NdE87N2vojsGZ3Uwx/k9JVUIm/cH3679Vb8YV
-         XTcBKNMvEFeC1qGMkS0z0em67nGuSxwTmIMy6O1Od/9jtmhfIFUf85rTnVvR5VWfFpyX
-         5XP3IgGlCfWm9fvC6o4sg5ZTDNeIl7CiA4+w2SmU65nOqt/aceOSryz7gZngIT1KS0bX
-         UFEw==
+        b=gn8uGP5jt0b0K/UouldFiPdhmrz0dbQ+BtAd11ZHXmqjYOU0vWnH8PbcQ6MYVKoh7E
+         c+b1SSzrsPl80fJLxCYQ3KKdDpaQc3JoEMlfABbQJHmeZegVc7NCCl5IqZNhZ3qYWJTz
+         muxswsADuNZK04cdCmNRZOjTJsZhxNoGH47Ez7Ngr1tEb4aFOet0CX4JSi8gIf7IvzKG
+         1Qjf1IxT5+AT4ER0m9ox1cyCfGG+NJmPJCbSebap955+8Be1qP63zMPA9f560DqBMj96
+         EpGhzGnmt7dL0KgvYXXIJ5qVTzJQ3FXmj+dpTnUKHdCNYZEGdNG6ZkZlBGaSsBZpv8Ww
+         I9qA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=fZYVTt5RemOQGhErk/wxiT1GRcR8x45vVeqGw/eKctk=;
-        fh=HEvFpOzblrFJ2DCvduFjHddo+xFOVwffhJx9/Xed4MI=;
-        b=jjifQTZLKMr8xeu3zQnPqVsLX/ZxmE6sdt+tloxWNAyDXRDZw4xRunvUMwaI2rqi1V
-         bc5xbZqhbbAZm5rKdgPRUGexDv6nn6Oq8f7sSmabSxHr9mBq+lZvYN9Wii7zxTQdDqPN
-         wsilPSMaUO2j63rt04vGDhNguvInd3MNpz9+5ViLSU1RBMWJnQR10qgz282Pp+q1eNJX
-         Yz8mV2Q4P0tMJztP775deE/KbwDWzsAJ9AzWNi9y6ld9AH5EDXnIQ/Hd7FLbs2VcHXbG
-         FBhxrQHsxZviPkDVWdNgt+Kq5X26Ab+N8PHB7rcqALLZaJCS23BN0KC0AJ6d+AAHplmH
-         Kp9Q==;
+        bh=oAt1PQLrHnO21M2Y87z2Ba1KRbOWR+1s+ZX+rYgrLRA=;
+        fh=s8AkELeSJIVGXuBmUCT8Xx0pkTzndzlFKLup5cjxi1Q=;
+        b=MOpXZkLKwVF8n40x7waudhoeGJ9KhPE+5225+sOLAb4SfxBNczHSe42u/CTGeiBr+A
+         EYLOAEEW2iQmaO8i9SB44FiNOb4ywUKhfoDPI34PpaAAP+3EzjNC0IMNasWLXHgd8Djz
+         2Hnhz8kRMimZI4LaXRjFq8X1ccyZ1KXij3FM3HZ95VMKjLl2/wBqIpomgelrricrr/1b
+         Jo6KOFZHV7le2W4vvGpnL21DL2aiu5zgo4c3kKUwiRgIUcsA+xojOGM66UjNZTY9L0ir
+         T8sqL69iJ1nWT7AUzMAyXZ6MKNAWFnHDt1B3Hz9Z4+NCgw4Mdk1vCCdRiHQG35Ade9B0
+         1OFQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QST8mvji;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qm1Btzh+;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-453659db95esor6585075e9.1.2025.06.20.06.08.15
+        by mx.google.com with SMTPS id 5b1f17b1804b1-45364718e9csor8340515e9.11.2025.06.20.06.08.20
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 20 Jun 2025 06:08:15 -0700 (PDT)
+        Fri, 20 Jun 2025 06:08:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QST8mvji;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qm1Btzh+;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750424895; x=1751029695; darn=linaro.org;
+        d=linaro.org; s=google; t=1750424900; x=1751029700; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=fZYVTt5RemOQGhErk/wxiT1GRcR8x45vVeqGw/eKctk=;
-        b=QST8mvjiJjQa3PDwp7doEgfMJ4ycG2lt+TAkKi2onFXAA4bTdcBijlcFxBTsYWhcQs
-         Vcqbsy5GGZfc2qwl2Rde+N2RtBwzPqVYoRLqjoOIjFastRJg5dTuL7elbEETFvveMGgO
-         ON/QRcci4kVQxQqeP0hAiwvD75T/iXnB/jPGgoUSOlmlN6MYVMM2DkhFLAhOvlocxcIj
-         mYlTx0z3yHLD16TlHvXZ5S3rAuZMiUrWMSKIhjGUqgbuDMSfMPeVhzPvy930Xtxfwh8X
-         M09zB9jGE4BGmCHnhV0/MN9mTIVKKExjRUoJs0vBg5ju4CqAmsbadG6ZWrRJ/K//BCdt
-         mOEA==
+        bh=oAt1PQLrHnO21M2Y87z2Ba1KRbOWR+1s+ZX+rYgrLRA=;
+        b=qm1Btzh+7mPVJ57W5RVmbYtV7soQSern86h1NLI1uauqG9JDRVGNp7Gk+yhqScmNcV
+         T0G7fBnogv6CZHqAbP52wDHJIuKKPt8hE6MgFKKk3GwsujUIU/6qmCrNQdUrsyaVO867
+         iXmRvJ3G7nQ79V2GBY9xK0V3LGzyKU338DLof7ycAd5GIWr9o2z38m4343S+/s1xdBfw
+         T8nzW47UOjd8O/51EJJSZcsnkE8uLk7XQL2nHqCmGGYj/wUASTnlYEx0/BRH5QFndsJc
+         9OldQ1uBLYGxF0E93sIzjmgg86xjHyyibbKqKbC6iCN4QLpiSThcngBoexK+7ZbIdmDW
+         QTFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750424895; x=1751029695;
+        d=1e100.net; s=20230601; t=1750424900; x=1751029700;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=fZYVTt5RemOQGhErk/wxiT1GRcR8x45vVeqGw/eKctk=;
-        b=l4YnbcuufDfkkgQ2HkRw6RRv/tz0WtN8dO2mGGYwpDKdn0SKYLrxsmBPvUJQN5FfnS
-         7rvCapr03IOV8yDuUKJeG8TmyAIY19pbu/7zmxtZ6Zj3oCwkOW3bwrlD4QKFo/rDa5i+
-         qooWyHPGY0GVqkAaZoyoW2zx8YwgUj5HhBwyUBlpYhCbqcLxTT6l6nLcSIA9YL6lzjlz
-         zTQz/2ZvsDnMkXylyPvLFwCOn5/GIoZ+La0Vb4WaDsp5brjLCmal0PSHAovD1DozsJbO
-         QQtq00Aok2f+LiyzU39+CosahoVkOj0qu/IKhST6qBqiQ9+SCCwynfJoG6rWwORH5oYz
-         gtyg==
-X-Forwarded-Encrypted: i=1; AJvYcCWhiW99pdICM5Q1Rs8yu1fk3vUqmEztcUbr9iAoxPGDjzC21ba+2aMCObd4SHF+f2pq4DA438V39EB/8A==@linaro.org
-X-Gm-Message-State: AOJu0YwgflgRrVcAc9GVvefEHO+QmLlo32j1/IY3UkFW6HYCs38i7U3w
-	xLBaZyC6D4cSxxUUuEhJgZf53bL09nRKzd8tMQkPF75nsmricCkd8gQCj9zrZlPfYXvXLg==
-X-Gm-Gg: ASbGncvmISDD9ayxZWH/iFJHJTZ1WEHXmDjazW/S+0avwX454N2F5Jf5/38KbWlkOXx
-	M/DgCDnLJW0vszT5WMQhxICDFx4d1gw4ayATn022NMg2seP1K8ArZNRsKFebMAUkrRMr8kCDBrm
-	O3ifYAb3RK55lT8Li3uJ7u5oKcFfKYhndkA8sxbS227WLBtPZy7UAtzllHk1NhSFY/tdllIt7xn
-	MLeUBx6hxQc7nawFhoJDgDU0mNUvw1SxpHMG9Vd7/ORmtgURkD7LqHlQ8rhZYjmHsf7itoS9bng
-	9KcmucYS4gEMm1WcSicfVvfmEFC1vPEgZb9JYtaXc9Q+8I39OCqqOULVerU3rjEK01KxpMwrlpE
-	UvbYysfwrE55tfxIlYMa/bNqInOj0sHxJ6NldJPj/tpiEoMw=
-X-Google-Smtp-Source: AGHT+IFVLdhGyOe5Gwiz0JlxZs0z4PUuLavXcnnSLq49twNgh52Q6RjdjYzWXSk1EhN5FYPARRZVKg==
-X-Received: by 2002:a05:600c:1f94:b0:439:9424:1b70 with SMTP id 5b1f17b1804b1-45365a05192mr27153005e9.30.1750424894423;
-        Fri, 20 Jun 2025 06:08:14 -0700 (PDT)
+        bh=oAt1PQLrHnO21M2Y87z2Ba1KRbOWR+1s+ZX+rYgrLRA=;
+        b=RHKvEm0A2BKg44EjjU1Lm7RWm7svmsO2wNZ8ROTTn9dIJAkq7EsP71qiJiOylOEPWK
+         vgMErFiXtE6UjgcBZUS9OVB8eFERUbiKHw2X7EW4uki6CaZWoUiA+nDBcL/n+qrmGFLc
+         uH5PC1TLgSK/KxAkooe2cTVqPdaY2VeMWHwM8KKIYjEYEVK69N08WUpihcrO0Ea7dQE2
+         urhcgOWJtruNS6F8uYk5UD4ke40UOt0EQIDmwb1T3WIolMB5CW9SVYPej/MW/ECR7HAE
+         rKHnhdtlZ/TpdjWEWhR2gc2ka2Mxx6epEbqc43KwiBEDETsAcelxZIBF/0VqSjYHhFEq
+         XQjA==
+X-Forwarded-Encrypted: i=1; AJvYcCVDKVL9pEYcAx/VdAOfPpk5aQQ71A2BMDfgqRFWfBN5XQlE1bxn990PTC8nKDecrXIaX7wRjeMt+5TOCQ==@linaro.org
+X-Gm-Message-State: AOJu0Yx7UQllIHVAeseQj4ZtqTFj0dQu4wYJfJT5P4IVJZRlztSH9TZb
+	OofkHXrMUovKl+yXBvXDVc3FCCYAyO5soDmPIbly8hsAhqP6ED95wWdxVlyfUeO2tuXYsg==
+X-Gm-Gg: ASbGncutlHEgcI3tJrzxSSc9kmx+MlHKBcsJS+V9y1jykKXwCgGtdp/bU7cd8suxP2n
+	QhYFw190/5gWAKz28OAiVY5JwCwlWwwlr2n1/i4KsUIKl2JI+D4El4MCb1qZVelN+JndpuInlzD
+	AP7kg3k7HnZuWac14axX7CoF0BnzdX6MQ15Ag3sWjl6TckFiMueospFv6oiGALxhyLXB1w0SDwh
+	2eoEbFyU+V3bI1eMo1wLcbf6kahV3clxPzLlVCsPUORHnsCTXMJ7JDpsWVTGN2sJyBJA/O3nIl4
+	AadMZv97i1Arlkaq9Rgs9R+bltxNSoSi1t0wJ3mMsKrliKRDIPuWihkIBjfMrTrKTY9m1VBI8bF
+	RnrKzhanUu1QAixQEMRGI1hSHOzcjQkHZsBps
+X-Google-Smtp-Source: AGHT+IEGmchw+a0k0hX0S9KobjryclE57uq2sgKFzkmMvuxn/d4B/I66wfS6mkzaJen5FMifqGqbXw==
+X-Received: by 2002:a05:600c:37c5:b0:453:5c30:a1d0 with SMTP id 5b1f17b1804b1-453659dcd62mr23896155e9.21.1750424899969;
+        Fri, 20 Jun 2025 06:08:19 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d117c663sm2084326f8f.64.2025.06.20.06.08.13
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-453646cb57fsm25578125e9.1.2025.06.20.06.08.18
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 20 Jun 2025 06:08:13 -0700 (PDT)
+        Fri, 20 Jun 2025 06:08:19 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
@@ -103,89 +103,120 @@ Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
 	Thomas Huth <thuth@redhat.com>,
 	Roman Bolshakov <rbolshakov@ddn.com>,
 	John Snow <jsnow@redhat.com>
-Subject: [PATCH v2 11/26] target/arm/hvf: Pass @target_el argument to hvf_raise_exception()
-Date: Fri, 20 Jun 2025 15:06:54 +0200
-Message-ID: <20250620130709.31073-12-philmd@linaro.org>
+Subject: [PATCH v2 12/26] target/arm: Restrict system register properties to system binary
+Date: Fri, 20 Jun 2025 15:06:55 +0200
+Message-ID: <20250620130709.31073-13-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250620130709.31073-1-philmd@linaro.org>
 References: <20250620130709.31073-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 59eU6OXorbXn
+X-TUID: m5+mL0eHFlLk
 
-In preparation of raising exceptions at EL2, add the 'target_el'
-argument to hvf_raise_exception().
+Do not expose the following system-specific properties on user-mode
+binaries:
+
+ - psci-conduit
+ - cntfrq (ARM_FEATURE_GENERIC_TIMER)
+ - rvbar (ARM_FEATURE_V8)
+ - has-mpu (ARM_FEATURE_PMSA)
+ - pmsav7-dregion (ARM_FEATURE_PMSA)
+ - reset-cbar (ARM_FEATURE_CBAR)
+ - reset-hivecs (ARM_FEATURE_M)
+ - init-nsvtor (ARM_FEATURE_M)
+ - init-svtor (ARM_FEATURE_M_SECURITY)
+ - idau (ARM_FEATURE_M_SECURITY)
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/hvf/hvf.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ target/arm/cpu.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 5169bf6e23c..b932134a833 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1089,13 +1089,13 @@ void hvf_kick_vcpu_thread(CPUState *cpu)
- }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index eb0639de719..e5b70f5de81 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1500,6 +1500,7 @@ static void arm_cpu_initfn(Object *obj)
+  * 0 means "unset, use the default value". That default might vary depending
+  * on the CPU type, and is set in the realize fn.
+  */
++#ifndef CONFIG_USER_ONLY
+ static const Property arm_cpu_gt_cntfrq_property =
+             DEFINE_PROP_UINT64("cntfrq", ARMCPU, gt_cntfrq_hz, 0);
  
- static void hvf_raise_exception(CPUState *cpu, uint32_t excp,
--                                uint32_t syndrome)
-+                                uint32_t syndrome, int target_el)
+@@ -1509,7 +1510,6 @@ static const Property arm_cpu_reset_cbar_property =
+ static const Property arm_cpu_reset_hivecs_property =
+             DEFINE_PROP_BOOL("reset-hivecs", ARMCPU, reset_hivecs, false);
+ 
+-#ifndef CONFIG_USER_ONLY
+ static const Property arm_cpu_has_el2_property =
+             DEFINE_PROP_BOOL("has_el2", ARMCPU, has_el2, true);
+ 
+@@ -1532,6 +1532,7 @@ static const Property arm_cpu_has_neon_property =
+ static const Property arm_cpu_has_dsp_property =
+             DEFINE_PROP_BOOL("dsp", ARMCPU, has_dsp, true);
+ 
++#ifndef CONFIG_USER_ONLY
+ static const Property arm_cpu_has_mpu_property =
+             DEFINE_PROP_BOOL("has-mpu", ARMCPU, has_mpu, true);
+ 
+@@ -1544,6 +1545,7 @@ static const Property arm_cpu_pmsav7_dregion_property =
+             DEFINE_PROP_UNSIGNED_NODEFAULT("pmsav7-dregion", ARMCPU,
+                                            pmsav7_dregion,
+                                            qdev_prop_uint32, uint32_t);
++#endif
+ 
+ static bool arm_get_pmu(Object *obj, Error **errp)
  {
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-     CPUARMState *env = &arm_cpu->env;
- 
-     cpu->exception_index = excp;
--    env->exception.target_el = 1;
-+    env->exception.target_el = target_el;
-     env->exception.syndrome = syndrome;
- 
-     arm_cpu_do_interrupt(cpu);
-@@ -1454,7 +1454,7 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
-                                     SYSREG_CRN(reg),
-                                     SYSREG_CRM(reg),
-                                     SYSREG_OP2(reg));
--    hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
-+    hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized(), 1);
-     return 1;
- }
- 
-@@ -1760,7 +1760,7 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
-                                      SYSREG_CRN(reg),
-                                      SYSREG_CRM(reg),
-                                      SYSREG_OP2(reg));
--    hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
-+    hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized(), 1);
-     return 1;
- }
- 
-@@ -1963,7 +1963,7 @@ int hvf_vcpu_exec(CPUState *cpu)
-         if (!hvf_find_sw_breakpoint(cpu, env->pc)) {
-             /* Re-inject into the guest */
-             ret = 0;
--            hvf_raise_exception(cpu, EXCP_BKPT, syn_aa64_bkpt(0));
-+            hvf_raise_exception(cpu, EXCP_BKPT, syn_aa64_bkpt(0), 1);
-         }
-         break;
+@@ -1731,6 +1733,7 @@ static void arm_cpu_post_init(Object *obj)
+                                         "Set on/off to enable/disable aarch64 "
+                                         "execution state ");
      }
-@@ -2074,7 +2074,7 @@ int hvf_vcpu_exec(CPUState *cpu)
-             }
-         } else {
-             trace_hvf_unknown_hvc(env->pc, env->xregs[0]);
--            hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
-+            hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized(), 1);
++#ifndef CONFIG_USER_ONLY
+     if (arm_feature(&cpu->env, ARM_FEATURE_CBAR) ||
+         arm_feature(&cpu->env, ARM_FEATURE_CBAR_RO)) {
+         qdev_property_add_static(DEVICE(obj), &arm_cpu_reset_cbar_property);
+@@ -1746,7 +1749,6 @@ static void arm_cpu_post_init(Object *obj)
+                                        OBJ_PROP_FLAG_READWRITE);
+     }
+ 
+-#ifndef CONFIG_USER_ONLY
+     if (arm_feature(&cpu->env, ARM_FEATURE_EL3)) {
+         /* Add the has_el3 state CPU property only if EL3 is allowed.  This will
+          * prevent "has_el3" from existing on CPUs which cannot support EL3.
+@@ -1818,6 +1820,7 @@ static void arm_cpu_post_init(Object *obj)
+         qdev_property_add_static(DEVICE(obj), &arm_cpu_has_dsp_property);
+     }
+ 
++#ifndef CONFIG_USER_ONLY
+     if (arm_feature(&cpu->env, ARM_FEATURE_PMSA)) {
+         qdev_property_add_static(DEVICE(obj), &arm_cpu_has_mpu_property);
+         if (arm_feature(&cpu->env, ARM_FEATURE_V7)) {
+@@ -1854,8 +1857,6 @@ static void arm_cpu_post_init(Object *obj)
+                                    &cpu->psci_conduit,
+                                    OBJ_PROP_FLAG_READWRITE);
+ 
+-    qdev_property_add_static(DEVICE(obj), &arm_cpu_cfgend_property);
+-
+     if (arm_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER)) {
+         qdev_property_add_static(DEVICE(cpu), &arm_cpu_gt_cntfrq_property);
+     }
+@@ -1864,7 +1865,6 @@ static void arm_cpu_post_init(Object *obj)
+         kvm_arm_add_vcpu_properties(cpu);
+     }
+ 
+-#ifndef CONFIG_USER_ONLY
+     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64) &&
+         cpu_isar_feature(aa64_mte, cpu)) {
+         object_property_add_link(obj, "tag-memory",
+@@ -1882,6 +1882,7 @@ static void arm_cpu_post_init(Object *obj)
          }
-         break;
-     case EC_AA64_SMC:
-@@ -2089,7 +2089,7 @@ int hvf_vcpu_exec(CPUState *cpu)
-             }
-         } else {
-             trace_hvf_unknown_smc(env->xregs[0]);
--            hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
-+            hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized(), 1);
-         }
-         break;
-     default:
+     }
+ #endif
++    qdev_property_add_static(DEVICE(obj), &arm_cpu_cfgend_property);
+ }
+ 
+ static void arm_cpu_finalizefn(Object *obj)
 -- 
 2.49.0

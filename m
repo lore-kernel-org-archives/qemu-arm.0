@@ -1,52 +1,52 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp744947njc;
-        Fri, 20 Jun 2025 01:52:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXDuvj4CYa77p/leuMnFro9HS4txsVDtLWEszf+Zt1kyDNMKdQ67iUCRVoVkvNJMxNeVNr4TgyNnDwOnQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFisycWYmYiZ6wgfFFq1NacLo5FT3jYQD8jurTfrVKhJCZTqOAbKIBEtwrWVjKzBfEtrBEz
-X-Received: by 2002:a05:6000:481e:b0:3a4:fb33:85ce with SMTP id ffacd0b85a97d-3a6d130cb6cmr1594522f8f.46.1750409523010;
-        Fri, 20 Jun 2025 01:52:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750409522; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp745332njc;
+        Fri, 20 Jun 2025 01:53:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV2+WfIvZUZKm6GKp6WW3bMd34fU3BAJiTov11nFDbHJkmK+FRAV/tZUG0sDUSu2VqdwdIToNhNOyABAg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHKOfWihLDqZkKPvT25ToZgikMZesm57twCcBDQKxqZ08STLAe2mNtO7j3+GFHewqaFWAnY
+X-Received: by 2002:a05:6000:41d9:b0:3a5:52b3:103b with SMTP id ffacd0b85a97d-3a6d12bb4c7mr1379854f8f.4.1750409591085;
+        Fri, 20 Jun 2025 01:53:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750409591; cv=none;
         d=google.com; s=arc-20240605;
-        b=hCVh+Lj9fRwK9AspJwLGj19IPjqKcwA/MycF+mY1kJ407eWTn3w/EEu3JoqT+KA3S4
-         mWjzbvouzUvxiHSkbgV+w2/3fpQStro0GtTVZTIFxIf6oJuQzfBsUeCdygdAxqbGnggP
-         YIlWVUQ2iemWUgpINwaiKt2YpDwjVk/ItYVsKcDUQM9WSw5H5DJT2CxVgW9YL3JADOxk
-         Wlaj1CJGGwPyldfQSov5uGU+XYZ2vGRP/HbZsRyW2pqQu1Xg7ToRRT6Pzo+0ksMHqB2d
-         Er0i/Ja7xB1ZKB21dTc7PBEGxogVK3bU3HiAsU4ibso/3IhIhcp3vfbZcgHN7Toravwn
-         2a9Q==
+        b=MZvplUZtCzglHijRPvcPzD3qeuYt/TVZYOhR9B5xC6e50G0yId4vspiJbpDVLYBGD6
+         GHr9qhnSpvGMuUqODdJaT/SJLXrqwpFVZHGF1P2ZAUb7R65Vug2elPY4CJ5Fep5HebJS
+         Bd3CmJsPtkwl03awXlguM7gpesRZncYMXVpRR6JUulYjwpob95oxf/+ArQZ/r85wpECK
+         dM7gndX1QHxtqby0lIKBdW3F4MG8QGuJf8jVLXqAdzifm3laMVtxlbytfpuJdUl/cPTR
+         wCtKxPDIHJI37JVQsIR85bnqRjuymQVepK88Z+fj1hQT6aQ11eK25uZfsz2LpiQqxsKL
+         Nu2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date;
-        bh=u6TASbyHEcGlxa/DjY5m2pzx1/USkpHbP/5XCTLAkVA=;
+        bh=xuK8BsxdRBdMW76xsXNUphcY1eDd2gZP8EROirFK+dM=;
         fh=De5j/+RFiHp5oysg/kfBHcT9O0ASuV5hpNukEk4skqM=;
-        b=CV37JCz3c3cSF/OuGSUlvVO/VjfAcNc2VV0YM4FYuHNnxbIvQXYUl++Ld81eqjIRwn
-         IhCgNlvM85BHjgHoHl+IvlzSI6UQSSsVDrCkOb90l6fbI8Lnrnr5rADaJgrxNWVi7+B1
-         V3crKKMhKn8V8A5ixkbU4wQ7c7qWQsV1vcinvK0hDzzhu1Szb5y+1SlA0o5iDpzDbX/L
-         q+a42fWt8Df7+KUHrKUavvfT+OQKcm4lLkf3ZSlXjuN9y93VUnM90gm+EDmc7GZxCtV4
-         fJbdl7N7fnDfPVFf+mJjiqmwZqhIhB1hcfXzoaoX3c8WfCs+ONkE+Nxg8gwjPu6Zgeh3
-         XtjA==;
+        b=AYDMD74GWAUNBO6jWFwPnHnXGAuhJksrIxXraRv2COTvNg+cilJX6Yw/Ffa+SmD5h2
+         1lmznGJ5XpXh/JyZVDnVajGhEoD4DFAl3Sn50Syp1dv3Qhby+cAsoDgH8AbposUqf41w
+         mpeLLrFbulHrfaz4jHQ+57QTJoXWPHyuZzFO7SgCHRmahzshBPiShdjK0Q5Gx91Gie8s
+         qqxu55I9sGbEgRuGbZV0TI0iQCsmsPwSjjuEOim78uQSjx12XHMf8NmIc9wFWtaiACcB
+         rZliuuorjom6c9ALd76ozKPNIrYIToq+vt8zsr5r3S58vTzkhqf2hh1UoKb1vfTqXfMH
+         ws7w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <jonathan.cameron@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-4535eaba2ffsi33715535e9.149.2025.06.20.01.52.02
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a6d0f1cd70si1005128f8f.112.2025.06.20.01.53.10
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Jun 2025 01:52:02 -0700 (PDT)
+        Fri, 20 Jun 2025 01:53:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bNrh41ctrz6L66H;
-	Fri, 20 Jun 2025 16:47:16 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bNrmD1xyxz6L6Gm;
+	Fri, 20 Jun 2025 16:50:52 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 3344E140446;
-	Fri, 20 Jun 2025 16:52:02 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 68C131402FE;
+	Fri, 20 Jun 2025 16:53:10 +0800 (CST)
 Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
  (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 20 Jun
- 2025 10:52:01 +0200
-Date: Fri, 20 Jun 2025 09:52:00 +0100
+ 2025 10:53:09 +0200
+Date: Fri, 20 Jun 2025 09:53:08 +0100
 From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 To: Eric Auger <eric.auger@redhat.com>
 CC: <eric.auger.pro@gmail.com>, <qemu-devel@nongnu.org>,
@@ -54,12 +54,12 @@ CC: <eric.auger.pro@gmail.com>, <qemu-devel@nongnu.org>,
 	<gustavo.romero@linaro.org>, <anisinha@redhat.com>, <mst@redhat.com>,
 	<shannon.zhaosl@gmail.com>, <pbonzini@redhat.com>, <philmd@linaro.org>,
 	<alex.bennee@linaro.org>
-Subject: Re: [PATCH v3 07/29] hw/pci-host/gpex-acpi: retrieve and use GED
- acpi_pcihp setting
-Message-ID: <20250620095200.00002e72@huawei.com>
-In-Reply-To: <20250616094903.885753-8-eric.auger@redhat.com>
+Subject: Re: [PATCH v3 02/29] hw/acpi/ged: Add a
+ acpi-pci-hotplug-with-bridge-support property
+Message-ID: <20250620095308.00000d16@huawei.com>
+In-Reply-To: <20250616094903.885753-3-eric.auger@redhat.com>
 References: <20250616094903.885753-1-eric.auger@redhat.com>
-	<20250616094903.885753-8-eric.auger@redhat.com>
+	<20250616094903.885753-3-eric.auger@redhat.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
@@ -67,87 +67,57 @@ Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.203.177.66]
 X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
  frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: +k9r3i7soZ4B
+X-TUID: NlAlZWWgTXN/
 
-On Mon, 16 Jun 2025 11:46:36 +0200
+On Mon, 16 Jun 2025 11:46:31 +0200
 Eric Auger <eric.auger@redhat.com> wrote:
 
-> retrieve the acpi_pcihp option value from the ged. In
-> case acpi_pcihp is unset we configure pci native hotplug on
-> pci0. For expander bridges we keep legacy pci native hotplug,
-> as done on x86 q35.
+> A new boolean property is introduced. This will be used to turn
+> ACPI PCI hotplug support. By default it is unset.
 > 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-One minor thing inline
+
+I wonder a bit if it makes sense to do this so early rather than just
+before it is first used in the series?  Doesn't really matter though.
+Just meant I read on a bit before giving an RB on this.
 
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 
-> 
 > ---
+>  include/hw/acpi/generic_event_device.h | 2 ++
+>  hw/acpi/generic_event_device.c         | 2 ++
+>  2 files changed, 4 insertions(+)
 > 
-> v2 -> v3:
-> - don'use the virt arm machine option anymore.
-> ---
->  include/hw/pci-host/gpex.h | 1 +
->  hw/arm/virt-acpi-build.c   | 5 +++++
->  hw/pci-host/gpex-acpi.c    | 3 ++-
->  3 files changed, 8 insertions(+), 1 deletion(-)
-> 
-> diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
-> index 84471533af..feaf827474 100644
-> --- a/include/hw/pci-host/gpex.h
-> +++ b/include/hw/pci-host/gpex.h
-> @@ -45,6 +45,7 @@ struct GPEXConfig {
->      MemMapEntry pio;
->      int         irq;
->      PCIBus      *bus;
-> +    bool        pci_native_hotplug;
+> diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+> index d2dac87b4a..f5ffa67a39 100644
+> --- a/include/hw/acpi/generic_event_device.h
+> +++ b/include/hw/acpi/generic_event_device.h
+> @@ -63,6 +63,7 @@
+>  #include "hw/acpi/memory_hotplug.h"
+>  #include "hw/acpi/ghes.h"
+>  #include "hw/acpi/cpu.h"
+> +#include "hw/acpi/pcihp.h"
+>  #include "qom/object.h"
+>  
+>  #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+> @@ -114,6 +115,7 @@ struct AcpiGedState {
+>      MemoryRegion container_memhp;
+>      CPUHotplugState cpuhp_state;
+>      MemoryRegion container_cpuhp;
+> +    AcpiPciHpState pcihp_state;
+>      GEDState ged_state;
+>      uint32_t ged_event_bitmap;
+>      qemu_irq irq;
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+> index 7a62f8d5bc..7831db412b 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -318,6 +318,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+>  
+>  static const Property acpi_ged_properties[] = {
+>      DEFINE_PROP_UINT32("ged-event", AcpiGedState, ged_event_bitmap, 0),
+> +    DEFINE_PROP_BOOL(ACPI_PM_PROP_ACPI_PCIHP_BRIDGE, AcpiGedState,
+> +                     pcihp_state.use_acpi_hotplug_bridge, 0),
 >  };
 >  
->  typedef struct GPEXIrq GPEXIrq;
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 7e8e0f0298..d7547c8d3b 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -123,12 +123,17 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
->                                uint32_t irq, VirtMachineState *vms)
->  {
->      int ecam_id = VIRT_ECAM_ID(vms->highmem_ecam);
-> +    AcpiGedState *acpi_ged_state = ACPI_GED(vms->acpi_dev);
-> +    AcpiPciHpState *pcihp_state = &acpi_ged_state->pcihp_state;
-> +
-
-Trivial, but why 2 blank lines? One seems enough here.
-
-> +
->      struct GPEXConfig cfg = {
->          .mmio32 = memmap[VIRT_PCIE_MMIO],
->          .pio    = memmap[VIRT_PCIE_PIO],
->          .ecam   = memmap[ecam_id],
->          .irq    = irq,
->          .bus    = vms->bus,
-> +        .pci_native_hotplug = !pcihp_state->use_acpi_hotplug_bridge,
->      };
->  
->      if (vms->highmem_mmio) {
-> diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
-> index 80fc2bf032..44737a8d81 100644
-> --- a/hw/pci-host/gpex-acpi.c
-> +++ b/hw/pci-host/gpex-acpi.c
-> @@ -203,6 +203,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
->              if (is_cxl) {
->                  build_cxl_osc_method(dev);
->              } else {
-> +                /* pxb bridges do not have ACPI PCI Hot-plug enabled */
->                  acpi_dsdt_add_host_bridge_methods(dev, true);
->              }
->  
-> @@ -278,7 +279,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
->      }
->      aml_append(dev, aml_name_decl("_CRS", rbuf));
->  
-> -    acpi_dsdt_add_host_bridge_methods(dev, true);
-> +    acpi_dsdt_add_host_bridge_methods(dev, cfg->pci_native_hotplug);
->  
->      Aml *dev_res0 = aml_device("%s", "RES0");
->      aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));
+>  static const VMStateDescription vmstate_memhp_state = {

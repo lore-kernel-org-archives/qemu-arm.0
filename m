@@ -1,78 +1,77 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp675628njc;
-        Thu, 19 Jun 2025 22:44:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWGVcoJ5TSa8+b2HpUxeWNmBPul6jipJhc4Q8gfGfzQZbmjVLQIALu+pYVYvay5jou5t7HHv4FdaQaU+A==@linaro.org
-X-Google-Smtp-Source: AGHT+IHZ7/oRh6L0+3uXabzpeufOH8zuWtFgspew9ONgRZ89Q/WSS16olZ7nAPWbymY6Cg6X/A3G
-X-Received: by 2002:a05:620a:4606:b0:7ca:f65b:c341 with SMTP id af79cd13be357-7d3f994c55amr252793285a.52.1750398297980;
-        Thu, 19 Jun 2025 22:44:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750398297; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp708094njc;
+        Fri, 20 Jun 2025 00:14:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW5hwwRTqsO8uHl00qsHJB1FQPLR+YhxfOGVm/2m23GaxWJldGoUVMauL/9AtOUA+fkymGdgmVxZEy5vQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEWNmdso2XH04HIDSY8/q/7nkSrmQlFLkJbX/XRHX04i20bjo5wpe53CmHFcQ/9SxYALNCg
+X-Received: by 2002:a05:6214:4a8e:b0:6fa:cdc9:8aff with SMTP id 6a1803df08f44-6fd0a52d55emr33956446d6.25.1750403658542;
+        Fri, 20 Jun 2025 00:14:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750403658; cv=none;
         d=google.com; s=arc-20240605;
-        b=bgFe/VH11Q+cK4yQf33zNrpnA46Q3vLn2jbsWEN+1Fq34n1jeN1uMbzVNQu/7I2gPt
-         XWZN6ik3foi3Z826VqFoOOdY2QPCl/9Eyhn24MC9xJArlw++G6T3rmGWOemLdaX/LHOF
-         oJN3EA2DOcGB2Zb5DjeARo+cwQZkY+AmG9BWEaOM5c4esz5C2RYsH4WGFdkV6d0qdRJe
-         Kjda646uRWQjl9emo+B9JHOCa8ZFNYASIcWkcJHFEPH0t2qkjQ1/RGsYzqyTdOHnY2fO
-         xd+c7VcfbnDAluYbfVEf3GepY0Y8ycTj2jubdUbTjrTPDa+sD9Uxr8sinFsyL85csZC2
-         EDKA==
+        b=JD4I96/g92IeQH5FlX7ep/8PgPNoKfxoTkaisHEFvwSaB+9BCRz7Q6mI4KLQiDzkcN
+         RteCRO7FTLisS8mCBHZSVTA80e9W3UVDnubMIKtw7AH0YMUaxrsX64AbWYvA20OHou1C
+         UrJAOSFr8VsCLLgXXyd+Wjv2AnRdT6HV7Eu853WQmmhUTm2LCHMCex7HXxF/z7UmiWVB
+         8pC6QpekeTbN6GecPKKHNKr+COUM6b87wT9lraL6+g9rsw2ePEOkjGG4PYPnEQgahCDm
+         qbed1mb3UDhrlhfv83uv4XAtaphQgI6yf3qKaAbpDN6xANxuzk5IdHDXT2z2S2B8Lt/K
+         uCMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=CnIc2BVTx4FA7nAYysPDaJyB3FhpYaA7NZsHIQBzkk0=;
-        fh=e2doJimpuP43a+5rrKkGu3YAn2W68cBR+w+TN2Njkuw=;
-        b=ZHh27ILK9SsjL/COUSoQkxKMYikxJz7DPQCXCEh2vYWIvo7U5W3SASwjbbINXZMSte
-         raWhEHfKyfWg1nEtOdTe9viLaFMQEclBoRjThw+eanrmYF7IQ38H/3TWhVzsCsbbaSsK
-         Qef9D5KFgJx3LJZYtrA2sqMfljXqcXhDvF0tkQQBpAvtYXdplAS47bgHFEVLXUhpS8Ha
-         SOY/wY9Lmgz+mEE11cUXyezR1Wi2ZfJRj1a6mhVZJfStZfTtSgW8cGH8IxhKHg7pFE0W
-         lZLcGOLsj72FYJSX+rtegOq/5NmybKqPYNNWSQ2RJ3yeYSUPss3+Wtoif3tOIKupD2an
-         o4FQ==;
+        bh=iukcaNGps2nc9kIyZ72bljONJ7HQvgBmz/1gwQYo2uM=;
+        fh=N69jDu0vxXovE3lez9zijsp5WCunCzL+4u2NpDSSUsE=;
+        b=E1ZEmW8aJH8bc3mlxVU//lxsI6+Ge8izzbbTHXXe7hO2LvgYrnWxAn7iwMgV6xEZER
+         mcXNqoH562e7+jS9/Sgrqfj+iuvc3zBuP1rmjM5NP2YxwN922ZMD8bKK051Gl0xj/kqx
+         iE20knvPXtb1wUihne/IFN4KshjUvRqyG877VtDT2XVqzei5xX3AUDrs0WOG2WIQds/p
+         nrm7JDWwWMxw1XThp/oozoHkOgIUYGdxWIVnMEjL3YMPR90nQW0m3eE8FCnDOW1LD9UY
+         yxg6sNgwJqZXf5oZgdsvK7WiJTz2whY2BvwBGeWzLh1dJnSaFGkZaF8Mtk5/BquLZDgm
+         Wuog==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3f999f26dsi101010785a.48.2025.06.19.22.44.57
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd095351cesi14957416d6.227.2025.06.20.00.14.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jun 2025 22:44:57 -0700 (PDT)
+        Fri, 20 Jun 2025 00:14:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uSUYO-0004gt-W8; Fri, 20 Jun 2025 01:44:45 -0400
+	id 1uSVwX-0002Uf-Qe; Fri, 20 Jun 2025 03:13:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=V2Fl=ZD=kaod.org=clg@ozlabs.org>)
- id 1uSUYM-0004gc-6B; Fri, 20 Jun 2025 01:44:43 -0400
+ id 1uSVwV-0002UI-IO; Fri, 20 Jun 2025 03:13:43 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=V2Fl=ZD=kaod.org=clg@ozlabs.org>)
- id 1uSUYJ-0003vw-Di; Fri, 20 Jun 2025 01:44:41 -0400
+ id 1uSVwT-0006aE-B8; Fri, 20 Jun 2025 03:13:43 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bNmdB1GQnz4xDb;
- Fri, 20 Jun 2025 15:44:30 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bNpby57qPz4xN4;
+ Fri, 20 Jun 2025 17:13:34 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bNmd637JPz4x11;
- Fri, 20 Jun 2025 15:44:26 +1000 (AEST)
-Message-ID: <7abd4507-46e3-4848-8f54-928998c64565@kaod.org>
-Date: Fri, 20 Jun 2025 07:44:23 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bNpbr64p2z4x8X;
+ Fri, 20 Jun 2025 17:13:28 +1000 (AEST)
+Message-ID: <05d20d6a-eede-432d-a4c4-0480ece7f745@kaod.org>
+Date: Fri, 20 Jun 2025 09:13:25 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v5 0/4] Add QEMU model for ASPEED OTP memory and integrate
- with SoCs
-To: Kane Chen <kane_chen@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
+Subject: Re: aspeed: Split the machine definition into individual source files
+To: Troy Lee <leetroy@gmail.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20250619064115.4182202-1-kane_chen@aspeedtech.com>
+ Jamin Lin <jamin_lin@aspeedtech.com>, Steven Lee
+ <steven_lee@aspeedtech.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Patrick Williams <patrick@stwcx.xyz>
+References: <e2df1ff1-3ce4-4233-b32e-2bc680725c71@kaod.org>
+ <CAN9Jwz2m=YX-1_U6z6-=opxoYL8RkFT76--WMcgzOkVZjsFyrA@mail.gmail.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -117,9 +116,9 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250619064115.4182202-1-kane_chen@aspeedtech.com>
+In-Reply-To: <CAN9Jwz2m=YX-1_U6z6-=opxoYL8RkFT76--WMcgzOkVZjsFyrA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=V2Fl=ZD=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -40
@@ -142,121 +141,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: s3sVhGf8osGn
+X-TUID: A7L74CUkvl/q
 
-Hello Kane,
+On 6/19/25 16:54, Troy Lee wrote:
+> Hi,
+> On Thu, Jun 19, 2025 at 5:24 PM Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> Hi,
+>>
+>> This is a follow up of a private discussion with Patrick.
+>>
+>> Aspeed modeling started nearly 10y ago with the palmetto-bmc machine.
+>> We now have 5 SoCs and 25 machines which are mostly defined in
+>> in a single aspeed.c file. Multi SoC machines, fby35 and ast2700fc,
+>> are defined in fby35.c and aspeed_ast27x0-fc.c respectively.
+>>
+> 
+> Sounds good to me.
+>
+> While we're on this subject, we have many variants of the AST27x0 SoC
+> and development boards in different form factors. Should we also create
+> separate SoC models and machine definitions for each one? Or can we
+> treat AST27x0 as a superset of AST2700, AST2750, AST2720, and
+> any future models?
 
-On 6/19/25 08:41, Kane Chen wrote:
-> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
-> 
-> This patch series introduces a QEMU model for the ASPEED OTP (One-Time
-> Programmable) memory, along with its integration into the Secure Boot
-> Controller (SBC) and supported SoCs (AST2600, AST1030).
-> 
-> The OTP model emulates a simple fuse array used for secure boot or
-> device configuration, with support for both file-backed content and
-> internal fallback buffers. It exposes an AddressSpace to support
-> transaction-based access from controllers like the SBC.
-> 
-> This series includes:
->    - OTP memory device implementation
->    - SBC integration with command decoding (READ/PROG)
->    - Machine property wiring (via "otpmem" alias)
->    - A functional test suite covering various initialization paths
-> 
-> **[RFC notice]**
-> This is an RFC submission. While the OTP model itself is mostly
-> complete, this version is primarily intended to gather feedback on the
-> device initialization flow-specifically how the OTP instance is created,
-> connected, and exposed via machine properties. Any comment on QOM
-> integration style, late binding via notifier, and fallback behavior are
-> welcome.
-> 
-> In particular, I am seeking input on:
->    - Whether the current notifier-based connection from SBC to OTP is
->      appropriate, or if there is a preferred QOM idiom for linking
->      peripheral devices post-realize.
->    - The use of "optmem" as a drive alias and machine parameter handling.
-> 
-> A more finalized version with any requested changes, documentation,
-> and test refinements will follow after review.
-> 
-> Example usage:
-> ```bash
-> qemu-system-arm -machine ast2600-evb,otpmem=otpmem-drive \
->    -blockdev driver=file,filename=otpmem.img,node-name=otpmem \
->    -device aspeed.otpmem,drive=otpmem,id=otpmem-drive \
->    ...
-> ```
-> 
-> Any feedback or suggestions are appreciated!
-> 
-> Thanks,
-> Kane
-> 
-> ---
-> 
-> ChangeLog
-> ---------
-> v5:
-> - Switched to notifier-based late binding between SBC and OTP
-> - Exposed 'otpmem' as a machine parameter using QOM alias mechanism
-> - Added fallback support when no backend is provided
-> - Introduced functional test suite covering multiple init configurations
-> - Submitted as [RFC] to gather feedback on QOM integration approach
-> 
-> v4:
-> - Replaces blockdev backend with memory-mapped AddressSpace access
-> - Switches from `-drive` CLI option to `otpmem` machine parameter
-> - Restructures the OTP device under the SBC in the QOM tree
-> 
-> v3:
-> - Minor fixes and refinements on top of v2 content
-> 
-> v2:
-> - Separated the OTP memory into a standalone QEMU device (`aspeed.otpmem`)
-> - Replaced ad-hoc file handling with standard `-drive` backend integration
-> - Linked OTP to SBC via QOM property for cleaner abstraction
-> - Improved memory bounds checking and irreversible programming logic
-> 
-> v1:
-> - Embedded OTP logic in the SBC model and created the backing file internally.
-> 
-> ---
-> 
-> Kane-Chen-AS (4):
->    hw/misc/aspeed_otp: Add ASPEED OTP memory device model
->    hw/misc/aspeed_sbc: Connect ASPEED OTP memory device to SBC
->    hw/arm: Integrate ASPEED OTP memory support into AST10x0 and AST2600
->      SoCs
->    tests/functional: Add integration tests for ASPEED OTP memory model
-> 
->   hw/arm/aspeed.c                        |  20 +++
->   hw/arm/aspeed_ast10x0.c                |   2 +-
->   hw/arm/aspeed_ast2600.c                |   2 +-
->   hw/misc/aspeed_otpmem.c                | 117 ++++++++++++++++
->   hw/misc/aspeed_sbc.c                   | 179 +++++++++++++++++++++++++
->   hw/misc/meson.build                    |   1 +
->   hw/misc/trace-events                   |   7 +
->   include/hw/misc/aspeed_otpmem.h        |  35 +++++
->   include/hw/misc/aspeed_sbc.h           |   8 ++
->   tests/functional/meson.build           |   1 +
->   tests/functional/test_aspeed_otpmem.py |  82 +++++++++++
->   11 files changed, 452 insertions(+), 2 deletions(-)
->   create mode 100644 hw/misc/aspeed_otpmem.c
->   create mode 100644 include/hw/misc/aspeed_otpmem.h
->   create mode 100644 tests/functional/test_aspeed_otpmem.py
-> 
-
-I would like to see first a proposal without a BlockBackend and
-without an 'optmem' machine property. Please rework the series
-accordingly.
+I think keeping models for the AST27x0 SoC family in the same
+source file is fine for now. We have introduced aspeed_ast27x0-ssp.c
+and aspeed_ast27x0-tsp.c but these are service processor and are using
+Cortex-M4 processors.
 
 Thanks,
 
 C.
-
-
-
 
 

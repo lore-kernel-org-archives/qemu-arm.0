@@ -1,159 +1,260 @@
-Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp879138njc;
-        Fri, 20 Jun 2025 06:09:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXaAusVE1ey7e3C+GuZrrJTuF3NhBFEBoLvXPFa1Lks7nD/QeuuNW26KMtZmFFwcdjJXmJqd6RELJSl1A==@linaro.org
-X-Received: by 2002:a05:600c:871b:b0:453:ec2:c7b2 with SMTP id 5b1f17b1804b1-45365e3dfc0mr23253975e9.7.1750424980379;
-        Fri, 20 Jun 2025 06:09:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750424980; cv=none;
+Received: by 2002:a17:505:8ed0:b0:1be9:327d:8ee3 with SMTP id kh16csp879826njc;
+        Fri, 20 Jun 2025 06:10:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXv+edpekZW1MbR6+BzNC9tRyvBpPT82tXENp3gCCLaIM/xj7XO4bw/K9Tz0qy2QEcbDCicl7mxnnNXlw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEXtTIdoGERA2HtxgMR0RIagfCq6tUS8trW9kFmVTxc0nPLmPtpLSuTffFAG+1zAhp8uK07
+X-Received: by 2002:a05:6214:2e84:b0:6fd:1687:2e1b with SMTP id 6a1803df08f44-6fd168735eamr1589726d6.27.1750425040636;
+        Fri, 20 Jun 2025 06:10:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750425040; cv=none;
         d=google.com; s=arc-20240605;
-        b=HQJn8+EaA6+osVAYp4JTmeSheOQFcLmSXwR3faNlz4mn7B026zzh/eKYKpmCIfyHqQ
-         0LkEwM02+HyYL8BqXsN3pWG77u+V6iZgd1eyQh1MBVu5nCDRZiaFndq63dAx3QF17w2Q
-         9rsYbG9uKxtmApB5ELWtlEyMEDOFgruT4xV9vjn9JgdgupO3Cxuj5o6uZMQW5fCRr2XC
-         BY1/V9A4D6dr6YY06/F/nIt67kFD26tNV/3fSDWRThiGsEXvnqkKXlAf2z6OXj+ngFKA
-         urVlgs2vxvlwiAFMtZYSl1YENddCePy3ybxtPqBdkVRdOL232O/Lk33UgN1YxQvv3ZbA
-         32+Q==
+        b=O0IwteyhAPkPPZ3XgC2KAG5MJeOjYdIidiPUX4DPJjCnf0kWRsRKdYKjqgr+mlVOva
+         StZRhKCPnqlGE7USsltnQFmfNlGUi5t28aN7nZ3981TnrHiUkip+XSxc10jfvySVw878
+         YOtvpyh5+BkYs3oCukjb8W2MWSb0b4URaI4kl29oG/AXU0uAbYqSNLJzswjaI335+rd9
+         I7gyz/vjTw4JP3tNgkLWx8PZb16/NRQwMVLMKDYX5ibXrTXJMKos8UOFHCbIWBMyOYGZ
+         4YJXtvEj8NUenxPwhEhIfoSRtbGXVaN1WnuEN9Gt4mwXHntjovNl/Vn2W6bzbYTN/NB0
+         g9Cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=w6n2BSSxRh+KStXe1TUl7/blQoxrrxglxVgcpHIzilA=;
-        fh=MlqdZkVcUKkw0O12bks8ReIiOrLZk4yzhA1RfXob17c=;
-        b=d3WpKPVBaZ/FGDuO3V9y5Pm+Xwe5TuQoM9lgDjJWGOQA5uHH54m/fzBg8qDvxCiPtH
-         rDj4KgLjHjTqphlC4OV2x8UxAghGddm31wKRFH21jx9m1Qrrjyjre3i/Anetyf9hejWt
-         t1R4gPEY8WtkyteVUbKuZtLC562EYDh4XbwmREWpTSdqjUf+qunm9FqIcLyl+WR352yR
-         eFuWxRr0Pyhq1sgn5Y0eWUI4SEgcJ1HqPG69JPycCrA1oL8P4dMpEtnlW+LPY74Eeq/F
-         QCszM3HOvitnrffRSGqFHmWZyvHAQxVjPz0FzHT2dIjqTaobgDeFSgPuGEht9G9FxUOz
-         q6NQ==;
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=b6E3ldKAHT76gzfPbKZDc3nqLlogjlvLORH7eAQ0qwM=;
+        fh=XIUI+NprgjfoEbxxxzOUAjmkydbi1X3iCXUWGBshUUk=;
+        b=VY64ngrvs/OTj6UbdIOWmHachkzrKhjNElaR/Zg2QTEGla9zLw+Ef1MMf49eUUujLh
+         asdVcqz4XWHnqW2TG5IxQjRXVTA9njc7jnPdVZJWCAwP9jY/Ds7g9k0t6YRHENvAqllY
+         HSXvbs+ZrnjwQalTP+rwnwTBOwikxh8yECjaLvIKpV9MZYPm5WRamtn7qxTgcObY2EXk
+         sRpfZxm77LphShLLQl5CTpRLdigmSF3poHiRd71vl7XBQeTE+BSWtJduaz4j7r06/sL3
+         j3Qg14UWbZNxGHaofC3g/HpLb71XyPrtFhpjJHl0XD9Hxou4AMQZXXvhH8dD81sgfurD
+         nluQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UI1Bim2L;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-4535efbb401sor14672005e9.5.2025.06.20.06.09.40
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=I+Hy79Kg;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd09444cebsi19264586d6.137.2025.06.20.06.10.40
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 20 Jun 2025 06:09:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 20 Jun 2025 06:10:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UI1Bim2L;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750424980; x=1751029780; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=w6n2BSSxRh+KStXe1TUl7/blQoxrrxglxVgcpHIzilA=;
-        b=UI1Bim2LmjtMwrIcD7r4sJb9GS+s2R0dDVHTE7eQtdp9ZAbkc2k4pualumRvu2wZg1
-         2a3Yfy2Mrf+EqiDZ0CjuFvvssjC/bMQqJ6t/u//E46ggsVtKas5G2j44dxnL+BXEqG1T
-         hSTHAvefTXA1P2LmEjzFVN0AXeMdq80g4DUv1UIF92+cqJ+Oj6FlRaimOuQrfSseFsCO
-         /J/Fy3P85iM/a5Qj7U+G44rXvjFkAWVtZaLNpLT5xO2XvpkHAjR6k5Tmt3f0XUwOmCZD
-         RAAJIFL/I18VbmI14e3owU6jCqE1lr1p8pEmLa7MApxHjqKLghPUIfaZZOJGBqLpAOGw
-         quhw==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=I+Hy79Kg;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1750425040;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=b6E3ldKAHT76gzfPbKZDc3nqLlogjlvLORH7eAQ0qwM=;
+	b=I+Hy79KgcMPUegGucOCfgFhfBhwNrvYcV+TjUnRqVnCXt6yS5OLlwX6piqFdtbfn1Clv/C
+	Rk+5vMB9CHAZEJmRjej0Q2Ba5mxRF3MObVji9yyP8zR9pwAcY1i4t0T7LLl8Tdcos7Iw+n
+	EqN2fI4xMUm5su//z4bIjVeTw4JdK6U=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-343-UryngdCRPxmsDiq2RqYNyg-1; Fri, 20 Jun 2025 09:10:37 -0400
+X-MC-Unique: UryngdCRPxmsDiq2RqYNyg-1
+X-Mimecast-MFC-AGG-ID: UryngdCRPxmsDiq2RqYNyg_1750425037
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-450d6768d4dso12821005e9.2
+        for <alex.bennee@linaro.org>; Fri, 20 Jun 2025 06:10:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750424980; x=1751029780;
+        d=1e100.net; s=20230601; t=1750425036; x=1751029836;
         h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=w6n2BSSxRh+KStXe1TUl7/blQoxrrxglxVgcpHIzilA=;
-        b=qGFQCpxHVkKUP871n95ggCFtByaj6gFgD4HrP6e6E7oRFrC1Ul/NjytjlqbKxb4K05
-         UHXfcN4RhRXqTn2dQc9CXCsQRFagNNLnChRRdVOs+og3tKAnO1IvM3YYc1LnUEhoZXrI
-         b4SDxOoftL8Akt/EM+FVapuQvGhLL5Isuj7yknom0HNncchwJgmV8Ii6OKU3H1on8FcJ
-         E0vnk7a6C5SELcgYY33m65eipdCWtTKDnOsU9QrnUtgZdlYNINm6cbaJt+uh21DZ7oEA
-         h9argtzUD7r9i/e5bIByzjOX3s+dEUG0KBBbOTU5ntiGRi6b31v0rB3SosTCnYYphv0p
-         F2Ig==
-X-Forwarded-Encrypted: i=1; AJvYcCWHOnSZ8ZIuzFLrcyQYMSN4tZIofdWiTk1yNb7zpjjJtOimYUu5m1XWupdhvxbnVy21mUj7D5NCyU4v0Q==@linaro.org
-X-Gm-Message-State: AOJu0Yy7JKLR/0B45TV3s7MjbNH4/61GXnYHc7Pw4RYNIgEXOcYFCjOy
-	LoALkSj5eWjmANxSHY8WVbnknNUF1f0KwaPqE1pZPchz9A1Se4TMmGcJYcENXvltOwvQXQ==
-X-Gm-Gg: ASbGncs/AC/7m0PfpZspb3twidtwqUce/VM1BCYU/CD9or80zPva8VScVcGQhg47P6v
-	CpAS7tvYSVRCTjVPJ0UyRfAUgZCSCNdYQsd51xIGcV/+sq8NH4vFu7U8vQr7R2m98zE5uCVf8iu
-	l/3v9H+D9N7V3KSbkj2RM61AhDAnxsXrAZtZs6f+y+uQPAT9KRlFwxRihGYqKPDq6X9rJzX1rIO
-	hECyCp9KZiTwmsk82U1toQEEVLPHCn+WrqKuQQGJqywjG7aUACje4mRpMJvv1JqSYphxMR1IK7O
-	C3ffe+hrtuHYQyLhlDfa3YH/IL44krZ2f3jP+wrMw/6uOgZTfkdG81o0ngLwg/r28kRQ2EExnbn
-	SaytjZ14Q4xpSduU3xCJFigo6zEj4TAXot24t
-X-Google-Smtp-Source: AGHT+IGXwFQFfwW7rAMovUtfDAuB9Dz2J3aZxTUZqf2DF7gPQ8T5LAmGCEyFfgo/pTiyQMieyUC1PQ==
-X-Received: by 2002:a05:6000:26c8:b0:3a5:8977:e0f8 with SMTP id ffacd0b85a97d-3a6d27e16f5mr2027646f8f.19.1750424979716;
-        Fri, 20 Jun 2025 06:09:39 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d1188804sm2015800f8f.79.2025.06.20.06.09.38
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 20 Jun 2025 06:09:39 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Radoslaw Biernacki <rad@semihalf.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Phil Dennis-Jordan <phil@philjordan.eu>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Bernhard Beschow <shentey@gmail.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Cameron Esfahani <dirty@apple.com>,
-	kvm@vger.kernel.org,
-	qemu-arm@nongnu.org,
-	Eric Auger <eric.auger@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Roman Bolshakov <rbolshakov@ddn.com>,
-	John Snow <jsnow@redhat.com>
-Subject: [PATCH v2 26/26] tests/functional: Expand Aarch64 SMMU tests to run on HVF accelerator
-Date: Fri, 20 Jun 2025 15:07:09 +0200
-Message-ID: <20250620130709.31073-27-philmd@linaro.org>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250620130709.31073-1-philmd@linaro.org>
-References: <20250620130709.31073-1-philmd@linaro.org>
+        bh=b6E3ldKAHT76gzfPbKZDc3nqLlogjlvLORH7eAQ0qwM=;
+        b=UrZKvzYrWi55a1bHfVzNI9T2Z6gCqCH6jZhaArybXe76T6QRPYau2UO43hAu75/J/h
+         ChYrmDn9Grm3WEl5RO+vOGt6+m52hpSFKRYHVBSkO/k/NvDsgclZOtCCurAicXXB3LEz
+         FfD8BzTUuPWupZJD4nfv7hL7P6FN2c2SgpTqgcZ65isq12jZASY8k8fCdfVc8tF/Vple
+         FX3/AvIQn09jdH+9Ay2jcrVo8yXfzKffPbonhEVmaX9ulYkx/DqiYNqzCS9ZilI62sgF
+         2MmNxAwNhC6b/lx/giYJeqyTWjibmMqtyh4A66mNVvd3PHPmKmSOBQ7oaap3jcQmT/hk
+         gxWg==
+X-Forwarded-Encrypted: i=1; AJvYcCWD5Aoh31N1lihipcmOXMYV6kwSLUq1UGebPmqDzJDg/oTiAUp9Gbp3Pyg516aJTY2Ar9CLf1W6UU1+nw==@linaro.org
+X-Gm-Message-State: AOJu0YzAdC8m5wWE+B8bI8cBoF/OOTjutX+QXoQb+hhxOE7HYWu7o5f4
+	0VkcJjplxQc5pod20B6m2mU6v+hYTD1mzXdUYFfBov8Qy/rlPDIwb1fppZ6RiVr01m5F+gAnQOw
+	+En5nU5Q1v/PkYWZxM6JrTAbUPF7BM2ta3SJIPa3qsH2S9MQvYXl8OHbRKg==
+X-Gm-Gg: ASbGncscHwsn4sZy3JcCiPK7y35l+eqyQRnSsk/dskjjIebVk/vtMZy8CZu2+dPBXxJ
+	MTKQwWp6ClhVYp8REamJ7wuktTmVC73jPkhG8e7lTQs9NNYIpV9K5w4Isj/otZgkpdfBABtnQ0d
+	70lQHLGCrSTbnw09qNnR0TdXrpqqTQx6vzHmJI4wu0R2Ai/j38RDAIlWCvBnay5UaoZVNYk7NG6
+	kLnGQiqteou5IsbLPP+syrJ+TGVTINee8S/2DaxwmVQ3/qlBz4jehMA9G1yUZrMEnZsYB3wz1DX
+	aec6Pgye8R2K
+X-Received: by 2002:a5d:5c04:0:b0:3a4:eb92:b5eb with SMTP id ffacd0b85a97d-3a6d12e5d82mr1959455f8f.50.1750425036493;
+        Fri, 20 Jun 2025 06:10:36 -0700 (PDT)
+X-Received: by 2002:a5d:5c04:0:b0:3a4:eb92:b5eb with SMTP id ffacd0b85a97d-3a6d12e5d82mr1959414f8f.50.1750425036060;
+        Fri, 20 Jun 2025 06:10:36 -0700 (PDT)
+Return-Path: <imammedo@redhat.com>
+Received: from fedora ([85.93.96.130])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d117c6b2sm2041443f8f.46.2025.06.20.06.10.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 20 Jun 2025 06:10:35 -0700 (PDT)
+Date: Fri, 20 Jun 2025 15:10:33 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
+ mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
+ Jonathan.Cameron@huawei.com, philmd@linaro.org, alex.bennee@linaro.org
+Subject: Re: [PATCH v3 26/29] hw/arm/virt: Plug pcihp hotplug/hotunplug
+ callbacks
+Message-ID: <20250620151033.7fedf673@fedora>
+In-Reply-To: <20250616094903.885753-27-eric.auger@redhat.com>
+References: <20250616094903.885753-1-eric.auger@redhat.com>
+	<20250616094903.885753-27-eric.auger@redhat.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: kw1CvXy7cGZP
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: p8pZXQE4oo-GU8Z19Y9GcERent5odh547OU2TJDXbuk_1750425037
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: olstRUZbbdwZ
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- tests/functional/test_aarch64_smmu.py | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+On Mon, 16 Jun 2025 11:46:55 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
 
-diff --git a/tests/functional/test_aarch64_smmu.py b/tests/functional/test_aarch64_smmu.py
-index c65d0f28178..59b62a55a9e 100755
---- a/tests/functional/test_aarch64_smmu.py
-+++ b/tests/functional/test_aarch64_smmu.py
-@@ -22,6 +22,7 @@
- 
- class SMMU(LinuxKernelTest):
- 
-+    accel = 'kvm'
-     default_kernel_params = ('earlyprintk=pl011,0x9000000 no_timer_check '
-                              'printk.time=1 rd_NO_PLYMOUTH net.ifnames=0 '
-                              'console=ttyAMA0 rd.rescue')
-@@ -45,11 +46,11 @@ def set_up_boot(self, path):
-         self.vm.add_args('-device', 'virtio-net,netdev=n1' + self.IOMMU_ADDON)
- 
-     def common_vm_setup(self, kernel, initrd, disk):
--        self.require_accelerator("kvm")
-+        self.require_accelerator(self.accel)
-         self.require_netdev('user')
-         self.set_machine("virt")
-         self.vm.add_args('-m', '1G')
--        self.vm.add_args("-accel", "kvm")
-+        self.vm.add_args("-accel", self.accel)
-         self.vm.add_args("-cpu", "host")
-         self.vm.add_args("-machine", "iommu=smmuv3")
-         self.vm.add_args("-d", "guest_errors")
-@@ -201,5 +202,9 @@ def test_smmu_ril_nostrict(self):
-         self.run_and_check(self.F33_FILENAME, self.F33_HSUM)
- 
- 
-+class SMMU_HVF(SMMU):
-+    accel = 'hvf'
-+
-+
- if __name__ == '__main__':
-     LinuxKernelTest.main()
--- 
-2.49.0
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
+why do we still need this?
+
+pcihp code should override native pcie bus handlers, and then
+when device_add calls bus hotplug handlers it will be pcihp ones.
+
+> ---
+> v2 -> v3:
+> - fix cohabitation with virtio-mem-pci device and tested
+>   hotplug/unplug of this latter (Igor)
+> ---
+>  hw/arm/virt.c | 72 ++++++++++++++++++++++++++++++++++++++++++++++++---
+>  1 file changed, 69 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 8c882e0794..06b87e1050 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1747,6 +1747,22 @@ static void virt_build_smbios(VirtMachineState *vms)
+>      }
+>  }
+>  
+> +static AcpiPciHpState *get_acpi_pcihp_state(VirtMachineState *vms)
+> +{
+> +    AcpiGedState *acpi_ged_state;
+> +    AcpiPciHpState *pcihp_state;
+> +
+> +    if (!vms->acpi_dev) {
+> +        return NULL;
+> +    }
+> +    acpi_ged_state = ACPI_GED(vms->acpi_dev);
+> +    pcihp_state = &acpi_ged_state->pcihp_state;
+> +    if (pcihp_state->use_acpi_hotplug_bridge) {
+> +        return pcihp_state;
+> +    }
+> +    return NULL;
+> +}
+> +
+>  static
+>  void virt_machine_done(Notifier *notifier, void *data)
+>  {
+> @@ -2907,6 +2923,13 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+>  {
+>      VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+>  
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
+> +        if (get_acpi_pcihp_state(vms)) {
+> +            acpi_pcihp_device_pre_plug_cb(HOTPLUG_HANDLER(vms->acpi_dev),
+> +                                          dev, errp);
+> +        }
+> +    }
+> +
+>      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+>          virt_memory_pre_plug(hotplug_dev, dev, errp);
+>      } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
+> @@ -2961,6 +2984,15 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>          }
+>      }
+>  
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
+> +        AcpiPciHpState *pcihp_state = get_acpi_pcihp_state(vms);
+> +
+> +        if (pcihp_state) {
+> +            acpi_pcihp_device_plug_cb(HOTPLUG_HANDLER(vms->acpi_dev),
+> +                                      pcihp_state, dev, errp);
+> +        }
+> +    }
+> +
+>      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+>          virt_memory_plug(hotplug_dev, dev, errp);
+>      } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
+> @@ -3017,12 +3049,27 @@ out:
+>  static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
+>                                            DeviceState *dev, Error **errp)
+>  {
+> +    bool supported = false;
+> +
+>      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+>          virt_dimm_unplug_request(hotplug_dev, dev, errp);
+> +        supported = true;
+>      } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
+>          virtio_md_pci_unplug_request(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev),
+>                                       errp);
+> -    } else {
+> +        supported = true;
+> +    }
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
+> +        VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+> +        AcpiPciHpState *pcihp_state = get_acpi_pcihp_state(vms);
+> +
+> +        if (pcihp_state) {
+> +            acpi_pcihp_device_unplug_request_cb(HOTPLUG_HANDLER(vms->acpi_dev),
+> +                                                pcihp_state, dev, errp);
+> +            supported = true;
+> +        }
+> +    }
+> +    if (!supported) {
+>          error_setg(errp, "device unplug request for unsupported device"
+>                     " type: %s", object_get_typename(OBJECT(dev)));
+>      }
+> @@ -3031,11 +3078,27 @@ static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
+>  static void virt_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
+>                                            DeviceState *dev, Error **errp)
+>  {
+> +    bool supported = false;
+> +
+>      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+>          virt_dimm_unplug(hotplug_dev, dev, errp);
+> +        supported = true;
+>      } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
+>          virtio_md_pci_unplug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev), errp);
+> -    } else {
+> +        supported = true;
+> +    }
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
+> +        VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+> +
+> +        AcpiPciHpState *pcihp_state = get_acpi_pcihp_state(vms);
+> +
+> +        if (pcihp_state) {
+> +            acpi_pcihp_device_unplug_cb(HOTPLUG_HANDLER(vms->acpi_dev),
+> +                                        pcihp_state, dev, errp);
+> +            supported = true;
+> +        }
+> +    }
+> +    if (!supported) {
+>          error_setg(errp, "virt: device unplug for unsupported device"
+>                     " type: %s", object_get_typename(OBJECT(dev)));
+>      }
+> @@ -3045,11 +3108,14 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
+>                                                          DeviceState *dev)
+>  {
+>      MachineClass *mc = MACHINE_GET_CLASS(machine);
+> +    VirtMachineState *vms = VIRT_MACHINE(machine);
+>  
+>      if (device_is_dynamic_sysbus(mc, dev) ||
+>          object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) ||
+>          object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI) ||
+> -        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+> +        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI) ||
+> +        (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE) &&
+> +                             get_acpi_pcihp_state(vms))) {
+>          return HOTPLUG_HANDLER(machine);
+>      }
+>      return NULL;

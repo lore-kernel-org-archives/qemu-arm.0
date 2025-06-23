@@ -1,86 +1,86 @@
-Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2509721dyb;
-        Mon, 23 Jun 2025 05:19:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXcxNi9enP3iGcyq0Me4FAw9+icLw+ImpfBl24A0Bz9W9+ttgfn0IqtoKitHYujJTN8D5R1PrPQHy753A==@linaro.org
-X-Received: by 2002:a05:600c:1e8a:b0:442:f956:53f9 with SMTP id 5b1f17b1804b1-453659dde93mr131189205e9.18.1750681189806;
-        Mon, 23 Jun 2025 05:19:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750681189; cv=none;
+Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2509834dyb;
+        Mon, 23 Jun 2025 05:19:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVk3c6ggwxxDs2K7ZwGdg3qS25Vq1wEPg5IeRVbUHsb9luI/AMnTDYM0Jb4DsDTO77YWEcAFHyrI5pY4w==@linaro.org
+X-Received: by 2002:a05:6000:1a8f:b0:3a4:f52d:8b05 with SMTP id ffacd0b85a97d-3a6d12d5316mr11691199f8f.35.1750681194926;
+        Mon, 23 Jun 2025 05:19:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750681194; cv=none;
         d=google.com; s=arc-20240605;
-        b=fkmnY/1dFl1hTBengLLljT020oJ7uIiHN5baBslyETvKDHWpPHCVjssJodTYIyEqtx
-         eAFR3fQtBlK/zGXl2uSpwJnaRIangVTOYpVLccj6Q6fiE733tS6VowflpECl5ShvBgQs
-         8Wr6NByg6VOySRKmJ0XBgoY0+CcQG7i29722k29CEWLY5/x0z5qK94eT94pHGfnPG2/B
-         gvzryJOkJ9JksvFOUGKdtfryxbhKwlsDPDSqB7gXmQKUD4LbQB0QvJOygoOVLNk2Rcuu
-         GwP/7/zzqFq3yDMU1bRKbyX3X47GIVVF1dzfbkbtpfT/tGo7KYar2EapNeMExDso7PQW
-         a8og==
+        b=dlfZdTJObzKfMCkm2izaliHu9hG2sw8+HNdZwmj5mi4u4CK6PuZjno7tSRmvaWMjDn
+         saGTheviKslsjPZiUI9pfqr9wQHrDN7Gxy27RdgvqG/i4bnB+ZLteN2WGJxIHiLrb5aI
+         dUME61fiYpiZKEi19G9+3jeuHTxks5xPPeJQHiUCNjszxw8kQj03MKH6J4eaIvM+kOkr
+         c+fTz78z1QFUTbuc56u72UC/w++kjL7Qhy+Amf4q4GZkj6Se8OPkKqUgVm/LJLj+Vkik
+         En6VL51IsqPVChFcDUMRvxs+Lz3EgusfyHkXmqqSKOH9OADJe8hJKB3P9FjnrfJu8pP3
+         NXTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=MZYDDWvDMspPzhkKxydUFPlizzWHJdNmtQlGNWnBP18=;
-        fh=MItJuOZGZcJTt3wJByFF0whgq8p5MX1SfztSCwOo2vc=;
-        b=jNaNZ3om3/Heur4sf2Ccwr54ihvuJPHnTon7EBvwiQKGTGBE3VnzdL2kOjmLLGIuio
-         DaAHvup+DUps5TzYeBS0gQj8S1Y3wmaOG4cz/LqxlswaE8SyXYuh8KftxIgyol6k3qb3
-         2fjyzIruAe4a+jG+3fojdnrI1n5vzg9fOZQNTeiN63lP/gxb0rVJb4x0TtiD0rxUXMN3
-         WbNeUTsZsLiiepIiWrUEvdDhFeR8jm7M52LZcqDvJGa4Nyp+2ZXmJ2cfQ0d3tyYzoEiT
-         Bnz+k4Ki/nLPtN7c/HgRMcx7mm730b2xpaFQut+hcl7pXcJg79RA6g8ffvM0aHrmMuOJ
-         8JDg==;
+        bh=n9TcP7uZ8sj3k25ApWupc8E4+ydRbD8zQYT0ugNh7kc=;
+        fh=a/STOxpX1tYimYiHU3IP7rz/sPTlf+hQBmJbeJNptJE=;
+        b=gR6IIPraVQ9EDxYtUXAQ6YLaAd2j6Kdv1Hs4K7S3E61uCKtHtOSh9+9CGnbenFslq0
+         kPGmXM1fY42HeYhTXgRShNDheZ+J+YrNiB2RGINIHD2FvaJyNpEG4p0qwdCFb4TDIv04
+         dWWVhq4tpXZjWg4Q0mholFm32h42Vziyl+v8zny1fSFsJlZcyWTSW2t/8UGai96xXSrI
+         lGJC0wDawGEQtVEJ7zzhtGdM/VDMx+WPvutwfyKp0fydZIC3Bf35UfoKqmKaqle/Unej
+         UoTupNWvJdNYloTw2rtYM/Op79qYANJA4Q4dohhqguMnkvlHEKqTBtfeI4pMwgfwpi8z
+         0HRg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iJHYZXbU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OGZEiS2M;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-453646fe7f9sor22658265e9.7.2025.06.23.05.19.49
+        by mx.google.com with SMTPS id ffacd0b85a97d-3a6d143b01bsor1774602f8f.4.2025.06.23.05.19.54
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 23 Jun 2025 05:19:49 -0700 (PDT)
+        Mon, 23 Jun 2025 05:19:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iJHYZXbU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OGZEiS2M;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750681189; x=1751285989; darn=linaro.org;
+        d=linaro.org; s=google; t=1750681194; x=1751285994; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=MZYDDWvDMspPzhkKxydUFPlizzWHJdNmtQlGNWnBP18=;
-        b=iJHYZXbUFyCarv0nm7OO/xFatfZkJsWSSSB8NmTx23a2KLzMmfO2qe6iPd0MKVx6be
-         3/Vg0QQs09jAoQbuyb1ikwgD4o/+vpPKeir54fGsL/+TLdw4SKnQ+3m7E7vSXUFqcE9C
-         /7Sunt9ZKfGwMkyIcwyGmSFP0W9/bBpP8grr7ALzCINk4Dv9FXicCutVbA02MrSt3VbW
-         FJ+q3iIngxdU6XzWSGkKhMWT88rXN7Vf+r4j/MH8qFOxAtf8UvpMttAmjQHYE6SqbPM4
-         dt1/rjG0bZ+SlFWTrQLO5gCuywbuvUZ/ja8nMQtj5CW1Q3dzSPQ9NATfBG4TfaAm3SYp
-         oSCQ==
+        bh=n9TcP7uZ8sj3k25ApWupc8E4+ydRbD8zQYT0ugNh7kc=;
+        b=OGZEiS2M5c2BhKOXNqiFONyITsVw2olGkBnPAoNXtLvXpXXWn4VprDtlLPYWKwTQ+w
+         hPH1XQF07kejS5eO0y/VNPmtEbIb2gmEwhuATCU9DLSxHz5CPlG29Zd2czSjBW9+MMN5
+         2F38scRCHj0k1APl6KcW5/lgjAfKerTlyoI+iSqruHoL+TgH8zM9Q/pM0y0L8r50sJCR
+         fRMnYrbHA3CamAJqcV9Lt2wc26uurvM8NGK0wPd8kFmHyOx7Nw2eiWARJHQQcqU/Cuyx
+         g2fkVHnOv9UTy8tSCIcH8jjzpfK9XP8pVzMhBRf07ti+UImkOzDednejMr+15NUmRFwT
+         LJXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750681189; x=1751285989;
+        d=1e100.net; s=20230601; t=1750681194; x=1751285994;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=MZYDDWvDMspPzhkKxydUFPlizzWHJdNmtQlGNWnBP18=;
-        b=WNKsQ2eM0CbXM82uYcevVxod++9ODZi8/mcdbMven5maklo9oyt862ZX5/zKBPHGux
-         YqhoeUlS6ZugGru62vk8OW9+4NwRA1KNGJYADFbUbAVVCRlTjETfbBqCSmQmI3HrRLHK
-         QjeLGX410XVDiHsiGwngq7AIgHhq+xB4AJTEiqSHxmHErA8G3te2Qq0me7uXr2L/jJIF
-         WwpXZ5Y7vEfWKXzJLqmyJjyH//J6i4iFnkGDR2DDuQXshlU0eJHP3ZSmrPwYAwOcQ6bv
-         O6lTj7mSje22xVXjkOdaqQd36jS1DuFZxJG07x0WohUZtPKxqN8p9Ra6A28lS4Xo/RuH
-         4rQA==
-X-Forwarded-Encrypted: i=1; AJvYcCVEM/xx3wKou4KZccf4TpGrUq610G0S/z/8LEDF43fDZxD4om7LdfYnyWpEcKlkDHD4fuZKa5SrF/gOTA==@linaro.org
-X-Gm-Message-State: AOJu0YyEsWKpJGKvTuFGQ9YcJkD7swn6JR9CAAG/o4wTArOwTmcdO2nd
-	Jig6pidTK6m/RcYQ0yNEABhmR/BbIcTdfud+GMj2Tt+h+h2NTSyQOVHFs+n5ZPUA1TxVIQ==
-X-Gm-Gg: ASbGncsme5xCnSo59c4qxYg307e9wfe3qFnKhLMmIOhUhLZk/HPGyHGkvopXUvM5Jl3
-	e5xvemlIhQd3EYcD01eMLbT9YY3r3bvNaq1fE4Ey0b212Hpm2gsCG5h//AyS77ARV8lWUEw8lx6
-	vNtJWeNCR5USzt2fs91L7BDzrZAoL6VCjCyZdr4PFKcffbuRWvWiRlX6v+9n0ZzLnQY6VG8tqzG
-	kIA81C6LyR3Qc72zctwgx5K6duHesSNTigQqs6y01nV3E9boMsqVbFY7AwCysR+kL3CoDOOtL+y
-	zYIWmVxRqj7qDk9hIZoHzVNKKmeXeiBoE4PM49WXvZvnnAcG5DjCNgTtuIR8uekOrk62TqNuCFu
-	N5Qx1ev2W9xN7ZOvBB0MkhgAZ8NKSE2f73r9e
-X-Google-Smtp-Source: AGHT+IGt+hN6QhdH8hKFCVkO4jTWulC9IJ1I0tIA0BlYCZoOOrf5ORdSOfgPjNgKAX8CHSeqYE/nlA==
-X-Received: by 2002:a05:600c:1d14:b0:43c:e7ae:4bcf with SMTP id 5b1f17b1804b1-4536b4be314mr77860915e9.0.1750681189099;
-        Mon, 23 Jun 2025 05:19:49 -0700 (PDT)
+        bh=n9TcP7uZ8sj3k25ApWupc8E4+ydRbD8zQYT0ugNh7kc=;
+        b=cV0Rg/w8avhR9rrLNo2K9kXmuOmQfJD6ee7TYihEnPCGZkLi9GGGHXVs8cYJe+wa17
+         z9/UMH8uOe5o5G2ty69x7wy/OS3zhBksddUkb0vTM1tnWrozxk47FOGA/PITKKhlc62X
+         ujQ1eA4MKJF1xEU4hO2a0PHaVkUs6DoUtxNnKaRpNcLnWEdI9eMyTdRyeg3FEIoxqKU3
+         n007p4HvX6aUEByLqV4n00zl9rtpGEq92dbbt4NGesqtDyXNyZV/n7pjl8loMC9vSQRj
+         cnsc0xgac6M+JDt6nSSsYpAnUvgUMJr/X1CcPC4Lss5jLlJZZH74tFhd+jG/nEDEiPFH
+         gKRg==
+X-Forwarded-Encrypted: i=1; AJvYcCWpryVx7toZyKAe6YErEQUtH/sGHtITKhB2scDPPZxY+okTzb/fS9ODRdiYXWg6C4WqSxYhGq4U8IBozA==@linaro.org
+X-Gm-Message-State: AOJu0YwdeOqYpxRZIAvYXARAT5yzYXQnLWK9AGXlx4t1EbSYEu9jocjL
+	j8XkqxWJom5SPvbffgIdSy8HMKSafIpZO6GhrNfbbKXCy2qVEpKhoVgCd43BXViIJnseUQ==
+X-Gm-Gg: ASbGncuHNd8pWCY2aF2HS04snykWsHkCIozcq1p5pbHHD0rKz6e52ulQNWs5fo2lsYL
+	1b661+LzhXWykZ4hQhbShHI03B92X+P8MJ9KtWEQrhLHJ+nq2vsTGX6i4eOc3XkiQbUqXfKNEn9
+	sNuam0B3dYL8nUsWgsXVT97dzODbb6kh8d8WKfjeTgWDzzXHOul4WRqIQeqefxTdb6vlg17Cv57
+	AQSjkYmzfNVKA7sDGbJHwFz0LyLVFqHg54MBRL8IWuyt19N0a53xRGutcpv8UAg0ftyi66fnyWb
+	ECktaOpYbQgiM3nnQ0MpjvrRiBPyQPpt3j8OFG98PC5eICR1PHke9E0QyfJGtEAYudX3PEWS8Qz
+	0IoKuyA0axZt3whHzUKOPEZXoxhXGEQyr2GXf
+X-Google-Smtp-Source: AGHT+IEHiq/SjlZG6KJQYhM0dN6HzIW1qJU45zGcdqrFfg265NhL0FAhAnfqOQcq/6jydwJBpJn65g==
+X-Received: by 2002:adf:e187:0:b0:3a4:f723:3e73 with SMTP id ffacd0b85a97d-3a6d129ccdbmr8492187f8f.16.1750681194323;
+        Mon, 23 Jun 2025 05:19:54 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-453646cb57fsm110694655e9.1.2025.06.23.05.19.47
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d0f10385sm9537215f8f.17.2025.06.23.05.19.52
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 23 Jun 2025 05:19:48 -0700 (PDT)
+        Mon, 23 Jun 2025 05:19:53 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
@@ -103,121 +103,116 @@ Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
 	Phil Dennis-Jordan <phil@philjordan.eu>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 12/26] target/arm: Restrict system register properties to system binary
-Date: Mon, 23 Jun 2025 14:18:31 +0200
-Message-ID: <20250623121845.7214-13-philmd@linaro.org>
+Subject: [PATCH v3 13/26] target/arm: Create GTimers *after* features finalized / accel realized
+Date: Mon, 23 Jun 2025 14:18:32 +0200
+Message-ID: <20250623121845.7214-14-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250623121845.7214-1-philmd@linaro.org>
 References: <20250623121845.7214-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 2iR33KSODpIi
+X-TUID: 3eGHRjkSLb4E
 
-Do not expose the following system-specific properties on user-mode
-binaries:
-
- - psci-conduit
- - cntfrq (ARM_FEATURE_GENERIC_TIMER)
- - rvbar (ARM_FEATURE_V8)
- - has-mpu (ARM_FEATURE_PMSA)
- - pmsav7-dregion (ARM_FEATURE_PMSA)
- - reset-cbar (ARM_FEATURE_CBAR)
- - reset-hivecs (ARM_FEATURE_M)
- - init-nsvtor (ARM_FEATURE_M)
- - init-svtor (ARM_FEATURE_M_SECURITY)
- - idau (ARM_FEATURE_M_SECURITY)
+Call generic (including accelerator) cpu_realize() handlers
+*before* setting @gt_cntfrq_hz default
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ target/arm/cpu.c | 65 ++++++++++++++++++++++++------------------------
+ 1 file changed, 33 insertions(+), 32 deletions(-)
 
 diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index eb0639de719..e5b70f5de81 100644
+index e5b70f5de81..ab5fbd9b40b 100644
 --- a/target/arm/cpu.c
 +++ b/target/arm/cpu.c
-@@ -1500,6 +1500,7 @@ static void arm_cpu_initfn(Object *obj)
-  * 0 means "unset, use the default value". That default might vary depending
-  * on the CPU type, and is set in the realize fn.
-  */
-+#ifndef CONFIG_USER_ONLY
- static const Property arm_cpu_gt_cntfrq_property =
-             DEFINE_PROP_UINT64("cntfrq", ARMCPU, gt_cntfrq_hz, 0);
- 
-@@ -1509,7 +1510,6 @@ static const Property arm_cpu_reset_cbar_property =
- static const Property arm_cpu_reset_hivecs_property =
-             DEFINE_PROP_BOOL("reset-hivecs", ARMCPU, reset_hivecs, false);
- 
--#ifndef CONFIG_USER_ONLY
- static const Property arm_cpu_has_el2_property =
-             DEFINE_PROP_BOOL("has_el2", ARMCPU, has_el2, true);
- 
-@@ -1532,6 +1532,7 @@ static const Property arm_cpu_has_neon_property =
- static const Property arm_cpu_has_dsp_property =
-             DEFINE_PROP_BOOL("dsp", ARMCPU, has_dsp, true);
- 
-+#ifndef CONFIG_USER_ONLY
- static const Property arm_cpu_has_mpu_property =
-             DEFINE_PROP_BOOL("has-mpu", ARMCPU, has_mpu, true);
- 
-@@ -1544,6 +1545,7 @@ static const Property arm_cpu_pmsav7_dregion_property =
-             DEFINE_PROP_UNSIGNED_NODEFAULT("pmsav7-dregion", ARMCPU,
-                                            pmsav7_dregion,
-                                            qdev_prop_uint32, uint32_t);
-+#endif
- 
- static bool arm_get_pmu(Object *obj, Error **errp)
- {
-@@ -1731,6 +1733,7 @@ static void arm_cpu_post_init(Object *obj)
-                                         "Set on/off to enable/disable aarch64 "
-                                         "execution state ");
-     }
-+#ifndef CONFIG_USER_ONLY
-     if (arm_feature(&cpu->env, ARM_FEATURE_CBAR) ||
-         arm_feature(&cpu->env, ARM_FEATURE_CBAR_RO)) {
-         qdev_property_add_static(DEVICE(obj), &arm_cpu_reset_cbar_property);
-@@ -1746,7 +1749,6 @@ static void arm_cpu_post_init(Object *obj)
-                                        OBJ_PROP_FLAG_READWRITE);
+@@ -1985,26 +1985,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         return;
      }
  
--#ifndef CONFIG_USER_ONLY
-     if (arm_feature(&cpu->env, ARM_FEATURE_EL3)) {
-         /* Add the has_el3 state CPU property only if EL3 is allowed.  This will
-          * prevent "has_el3" from existing on CPUs which cannot support EL3.
-@@ -1818,6 +1820,7 @@ static void arm_cpu_post_init(Object *obj)
-         qdev_property_add_static(DEVICE(obj), &arm_cpu_has_dsp_property);
-     }
- 
-+#ifndef CONFIG_USER_ONLY
-     if (arm_feature(&cpu->env, ARM_FEATURE_PMSA)) {
-         qdev_property_add_static(DEVICE(obj), &arm_cpu_has_mpu_property);
-         if (arm_feature(&cpu->env, ARM_FEATURE_V7)) {
-@@ -1854,8 +1857,6 @@ static void arm_cpu_post_init(Object *obj)
-                                    &cpu->psci_conduit,
-                                    OBJ_PROP_FLAG_READWRITE);
- 
--    qdev_property_add_static(DEVICE(obj), &arm_cpu_cfgend_property);
+-    if (!cpu->gt_cntfrq_hz) {
+-        /*
+-         * 0 means "the board didn't set a value, use the default". (We also
+-         * get here for the CONFIG_USER_ONLY case.)
+-         * ARMv8.6 and later CPUs architecturally must use a 1GHz timer; before
+-         * that it was an IMPDEF choice, and QEMU initially picked 62.5MHz,
+-         * which gives a 16ns tick period.
+-         *
+-         * We will use the back-compat value:
+-         *  - for QEMU CPU types added before we standardized on 1GHz
+-         *  - for versioned machine types with a version of 9.0 or earlier
+-         */
+-        if (arm_feature(env, ARM_FEATURE_BACKCOMPAT_CNTFRQ) ||
+-            cpu->backcompat_cntfrq) {
+-            cpu->gt_cntfrq_hz = GTIMER_BACKCOMPAT_HZ;
+-        } else {
+-            cpu->gt_cntfrq_hz = GTIMER_DEFAULT_HZ;
+-        }
+-    }
 -
-     if (arm_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER)) {
-         qdev_property_add_static(DEVICE(cpu), &arm_cpu_gt_cntfrq_property);
-     }
-@@ -1864,7 +1865,6 @@ static void arm_cpu_post_init(Object *obj)
-         kvm_arm_add_vcpu_properties(cpu);
-     }
- 
--#ifndef CONFIG_USER_ONLY
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64) &&
-         cpu_isar_feature(aa64_mte, cpu)) {
-         object_property_add_link(obj, "tag-memory",
-@@ -1882,6 +1882,7 @@ static void arm_cpu_post_init(Object *obj)
+ #ifndef CONFIG_USER_ONLY
+     /* The NVIC and M-profile CPU are two halves of a single piece of
+      * hardware; trying to use one without the other is a command line
+@@ -2051,7 +2031,40 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+             return;
          }
      }
- #endif
-+    qdev_property_add_static(DEVICE(obj), &arm_cpu_cfgend_property);
- }
++#endif
  
- static void arm_cpu_finalizefn(Object *obj)
++    cpu_exec_realizefn(cs, &local_err);
++    if (local_err != NULL) {
++        error_propagate(errp, local_err);
++        return;
++    }
++
++    arm_cpu_finalize_features(cpu, &local_err);
++    if (local_err != NULL) {
++        error_propagate(errp, local_err);
++        return;
++    }
++
++#ifndef CONFIG_USER_ONLY
++    if (!cpu->gt_cntfrq_hz) {
++        /*
++         * 0 means "the board didn't set a value, use the default". (We also
++         * get here for the CONFIG_USER_ONLY case.)
++         * ARMv8.6 and later CPUs architecturally must use a 1GHz timer; before
++         * that it was an IMPDEF choice, and QEMU initially picked 62.5MHz,
++         * which gives a 16ns tick period.
++         *
++         * We will use the back-compat value:
++         *  - for QEMU CPU types added before we standardized on 1GHz
++         *  - for versioned machine types with a version of 9.0 or earlier
++         */
++        if (arm_feature(env, ARM_FEATURE_BACKCOMPAT_CNTFRQ) ||
++            cpu->backcompat_cntfrq) {
++            cpu->gt_cntfrq_hz = GTIMER_BACKCOMPAT_HZ;
++        } else {
++            cpu->gt_cntfrq_hz = GTIMER_DEFAULT_HZ;
++        }
++    }
+     {
+         uint64_t scale = gt_cntfrq_period_ns(cpu);
+ 
+@@ -2072,18 +2085,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     }
+ #endif
+ 
+-    cpu_exec_realizefn(cs, &local_err);
+-    if (local_err != NULL) {
+-        error_propagate(errp, local_err);
+-        return;
+-    }
+-
+-    arm_cpu_finalize_features(cpu, &local_err);
+-    if (local_err != NULL) {
+-        error_propagate(errp, local_err);
+-        return;
+-    }
+-
+ #ifdef CONFIG_USER_ONLY
+     /*
+      * User mode relies on IC IVAU instructions to catch modification of
 -- 
 2.49.0

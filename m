@@ -1,124 +1,201 @@
-Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2496601dyb;
-        Mon, 23 Jun 2025 05:00:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXj1f9cmDPF0n0Yws8UgSzVYV1HyOVe9V7oYSeBl6RadNY/RNKtkDbWlrx8ps9t4EpeHGdHSO7RK1qZZg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHlsXT7QG1b8mCMHblpzYHKqr3wsZXGJXbbwFotNZHuEMbCAPfFcT7y/09jHxhwT9AmQ7Bd
-X-Received: by 2002:a05:620a:8804:b0:7cd:3ef0:d1ac with SMTP id af79cd13be357-7d3fc027409mr1942800285a.15.1750680029044;
-        Mon, 23 Jun 2025 05:00:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750680029; cv=none;
+Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2509184dyb;
+        Mon, 23 Jun 2025 05:18:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUoaOmXwU0lvw/3Z8TQ/g8KoGfW/rOFguUNWV7/qgeegFNkJvRscaW0KDC4xn1wjrDnHgbQ1ZjNsCQiYw==@linaro.org
+X-Received: by 2002:a05:6000:4188:b0:3a4:dbac:2dc1 with SMTP id ffacd0b85a97d-3a6d1313c09mr7265321f8f.54.1750681128798;
+        Mon, 23 Jun 2025 05:18:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750681128; cv=none;
         d=google.com; s=arc-20240605;
-        b=N1szVwpNiQnY1g7rVnrwBtcUl6CpA/A4rDip7bfuB5qfzUNFS00TYKXkSkTkAS9Hdt
-         ZXJp2PWcMlmHiU3Rko9P7YzNSLMO5C5yrte3ZynyRnC9G6dvqiCj+xdmgduKK5MxZNzp
-         2uqawy3BIQNPD4JF3U0v/LhRqPDz9TOa5j+/MmIMQMhdsieCzsYYvd842M+n7zy0LJ/N
-         +xMvTTQQ6GZR57ACZb+2U8wQJfwT5nS69aeUeN+2rVP9+tbfwQQbIYIOae/nbWLZ1C/S
-         UM4LVeUTTmXA2tNMCdqYtS+nbtDy7QD+xoCPq5JtKAfRA8mZUuqURdPOVxhu7gu2UQrH
-         l9mQ==
+        b=hntuZ9BBackxShkr3hNFm4G6i5khcJiB+0Kvsr64mHn9SfZD9qLSjev0eIk213l3xu
+         DBGRzL8MK26SSgFQ5k+UhV7UOzKwOjEjdv08ES0eUcbGGbunv+wNJybzykuVXzIXO3Jb
+         VXuCdoOpMOnzbgFckNymba9qP+z/7KmNfPpUpc+gzrPlL0kkjTzdww5DrFOHGgj+Sv/o
+         3sbyqQh1GXJR+SMntC+aPTOnTggnAL3MztobCkJKa/z4dpib+7tIEM77lOvHI2Oo7hAn
+         xLk7ux8Mhp9DQUf5JszkskgcMMeOgJ+OhdpKtJir6s72Z6VAVJTZ2Drj3w4tOSb6TNZh
+         /dEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:date;
-        bh=i2oBxo89CaK2v5/6po8ua8Kmr5wVvSUgmpTtYu1ljNw=;
-        fh=nDSQDZidiGeJ2daiUwC1/Yd3QXQYWxkzypgrkUaKy1k=;
-        b=g/N5f96KjaWUTEj2JYROL2BOF+vcuPvig8MtxVHKCN5BgtvzVL5JSZYtWnf8blP6UT
-         59pJpP3kQddGtHq9bMZ34TifNYNXY1NnbTJum6yeg9Ji15ENdSWMQw6xwwrgLUQcq0WE
-         8eThqwpQfSW7AxhKuwLiEd/p5nylRP4hy/KxB4zfvyyadOcuZjt5aGnV1ion9qlw9tZD
-         XRrunfoB2J2lvls2McCI35QImSJ/5xwlgvTt3V4v6Oh9LqDBfcgCYcLlyH2bIBPSqMvM
-         6YA/0raD7pvgi/q1lgyjR6fyOdk4/tmZ6pjrXqpn9WjmH/x5oM8z4lN9EL/2YbhTqrm+
-         utdg==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=7t8GepafkJeMN/Zl0RDAcmDhcsq3WRAaImUu4o56bag=;
+        fh=8XCwp/UQrkdFnZc62ELVVgRqZ68KzWMwSKZHu1163FI=;
+        b=WZ0UPXAi8uKnCqVMbrZl+hb4tRbZXnjA29U/oor2/j5MULOTS+Qttroov+qZN21xSd
+         OUd8xda5+6ZlSM6LzeN7XIgkuZHANJY0+w+25LWGuRNxDo3CZdj11YlVl9RRAIcwhFbT
+         FY2DmHeL60/Zszf0UMa+84nmn0M9a4aIGxYcQ+aj2LVQWjQYsEW5Qnfgtto5XJlWPstN
+         EhL9mzOStpbe5MSbI/J0HsMUkCfixXkcrHxJvP3v2xzGc6dAg2SYdCkHNdepKxPz/9oy
+         Cyq2Hy9reDgyz6PZNzUfJqcHM3qBXkZOXbrDmPEJyJSJHJJzirh2Gw22+UXZovWRQbzg
+         2NsA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3f999f416si775857485a.77.2025.06.23.05.00.28
+       dkim=pass header.i=@linaro.org header.s=google header.b="iSePic/T";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ffacd0b85a97d-3a6d0f0f9a2sor2213306f8f.1.2025.06.23.05.18.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Jun 2025 05:00:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 23 Jun 2025 05:18:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uTfqV-0004fC-7c; Mon, 23 Jun 2025 08:00:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uTfqT-0004cF-1W; Mon, 23 Jun 2025 08:00:17 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uTfqR-00066b-0P; Mon, 23 Jun 2025 08:00:16 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bQmmT12txz6HK0P;
- Mon, 23 Jun 2025 19:57:45 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 1E09A1402EF;
- Mon, 23 Jun 2025 20:00:12 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 23 Jun
- 2025 14:00:11 +0200
-Date: Mon, 23 Jun 2025 13:00:09 +0100
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- <linuxarm@huawei.com>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
- <peter.maydell@linaro.org>, <jgg@nvidia.com>, <nicolinc@nvidia.com>,
- <ddutile@redhat.com>, <berrange@redhat.com>, <imammedo@redhat.com>,
- <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
- <gustavo.romero@linaro.org>, <wangzhou1@hisilicon.com>,
- <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
- <zhangfei.gao@linaro.org>
-Subject: Re: [PATCH v5 11/11] qtest/bios-tables-test: Update tables for
- smmuv3 tests
-Message-ID: <20250623130009.0000238d@huawei.com>
-In-Reply-To: <20250623094230.76084-12-shameerali.kolothum.thodi@huawei.com>
-References: <20250623094230.76084-1-shameerali.kolothum.thodi@huawei.com>
- <20250623094230.76084-12-shameerali.kolothum.thodi@huawei.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+       dkim=pass header.i=@linaro.org header.s=google header.b="iSePic/T";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1750681128; x=1751285928; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=7t8GepafkJeMN/Zl0RDAcmDhcsq3WRAaImUu4o56bag=;
+        b=iSePic/Tjfd1jUV+YGIgUuXzwJjKQ8WYFcbTRa5mPHVE5cDxEsJKzVBrnLrM/ZYzt0
+         ZKiIh9F2EBJBtGJc2jSXMIXHsWJgvf5i/6ZELbMoKQS2+ZpW0CcVOkmvdIkaQtpPEzzl
+         bae1o/Co+232e2xs1ImmIGGuAMpCyy//YuomPDj6S/NdcPEk4PXMdfCljNId9fFN2MK/
+         Ve37ka3nwbfrPAiD5MA0VCTEm017HXQn1/uL6Wt0vV3XVXQjsH7+j4xAnMHuN3iWvE4b
+         ATsWZkGSeOnjKcHdoD0dRXmgtOughXceRuKB6Fj0I49O2gKdmDFHkcbuUrA1P1m+de3C
+         BAHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750681128; x=1751285928;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=7t8GepafkJeMN/Zl0RDAcmDhcsq3WRAaImUu4o56bag=;
+        b=UzQMrkgGcua+uIcxr9bz5x6RVzPfeaNn829j1YwC5JloyOxs7MfHGjHHjS3D52R6A2
+         ym3D2pDM4s11PnjKXdcl/He5QK7FtJ1sy/9QT21zNDaYtrkvBzmLjZRTVbOafsczMO7Q
+         qW9loOieoznKjcUdQkUWiPsXpVV67V7zWsBXu3hmw1CCpOTaV00JNFrPf9AMF4ca1o9S
+         tm/COt7/NQ1REtAK8aJKPZOlBeB0n4rtSISqVwJHKAcYvKxc2nJGLpqva0lkidGeDf1Z
+         AqcJW9Di5Ce1ps+2Qrjx+hcR9krTwHzmKjFtr6zgrvu5eg5a1DbmjSQoHmYmDjo8HnrL
+         qm9A==
+X-Forwarded-Encrypted: i=1; AJvYcCUD+kMad0iM8GSKOKXKqixNyrUvx09XTaHUgnhbZvXKqxlx5UWQAE3rcO0rbGTJidSeuE8FaaB2zdfYsA==@linaro.org
+X-Gm-Message-State: AOJu0YykuEqYphZ5EbgXBxTRrjEg/v3y6NXQyaisx6bcbpArJO3Mi1iD
+	vH0t0p/q8rdZcEuAhs1JtJREN2tyQDgrtQdPf8I2ZZ+g0QQ6oBsWYSSwP3z6awdLpbHpkw==
+X-Gm-Gg: ASbGnctUpPOYd3PvfMka4H1TPViZd1ILbbYlW7qjKlvzPKC2kQPPcTUQnC0C0SL/kR4
+	fYblwgdYVd4GfkeepZ4Hh8S/QsdXflAxg8fOVy1OgEbMRbhUcbEwqKcCWbXQtzwRSJLMFgVHpLU
+	cqfaw7TsAcYEfaLfRh9MrAdydZLTY742N63vlL+UhegulXF9RtX/0oNcUY6bS6RSv4P/7PUrW8s
+	wkAysav9X90brxuQAIqYsvHvDuT3j1RSPSFYYxrFy3Ca1/KrMkUC82Q4rT4+93VFfISnksUvZ8J
+	bsL+OZH8Qydh7gqbyEJCGe0o2g5HbqeX7M/pIsok+apbJB+mxgn4QDoO0toJWwWWTH5zqMH30ta
+	YR7jh+gs5x1w+KiiOzIeDLxXJ6nW+NlvCFGbr
+X-Google-Smtp-Source: AGHT+IFM1NS/tC9WBk7I3nX53LY2i9vYAhCY9oXhCQwhmOzZQ3Cjx1W2PBOvVDeh1+H7KqoU9pMS+Q==
+X-Received: by 2002:a05:6000:248a:b0:3a5:2fae:1348 with SMTP id ffacd0b85a97d-3a6d13129c6mr9113300f8f.51.1750681128074;
+        Mon, 23 Jun 2025 05:18:48 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d117c66esm9121303f8f.47.2025.06.23.05.18.46
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Mon, 23 Jun 2025 05:18:47 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Roman Bolshakov <rbolshakov@ddn.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Alexander Graf <agraf@csgraf.de>,
+	Bernhard Beschow <shentey@gmail.com>,
+	John Snow <jsnow@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	kvm@vger.kernel.org,
+	Eric Auger <eric.auger@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Cameron Esfahani <dirty@apple.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	Phil Dennis-Jordan <phil@philjordan.eu>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v3 00/26] arm: Fixes and preparatory cleanups for split-accel
+Date: Mon, 23 Jun 2025 14:18:19 +0200
+Message-ID: <20250623121845.7214-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dZaR9Q5Wcm3g
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: Dh13JCdnd79O
 
-On Mon, 23 Jun 2025 10:42:30 +0100
-Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+Only the last patch is missing review (#26)
 
-> For the legacy smmuv3 test case, IORT has a single SMMUV3 node and
-> a Root Complex node with three ID mappings of which two points to
-> the SMMUv3 node and the remaining one points to ITS.
-I haven't checked the blobs line by line but looks correct to me.
+Since v2:
+- Addressed thuth review comments
 
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+Since v1:
+- Addressed rth's review comments
+
+Omnibus series of ARM-related patches (noticed during the
+"split accel" PoC work).
+
+- Usual prototypes cleanups
+- Check TCG for EL2/EL3 features (and not !KVM or !HVF)
+- Improve HVF debugging
+- Correct HVF 'dtb_compatible' value for Linux
+- Fix HVF GTimer frequency (My M1 hardware has 24 MHz)
+  (this implies accel/ rework w.r.t. QDev vCPU REALIZE)
+- Expand functional tests w.r.t. HVF
+
+Regards,
+
+Phil.
+
+Philippe Mathieu-Daudé (26):
+  target/arm: Remove arm_handle_psci_call() stub
+  target/arm: Reduce arm_cpu_post_init() declaration scope
+  target/arm: Unify gen_exception_internal()
+  target/arm/hvf: Simplify GIC hvf_arch_init_vcpu()
+  target/arm/hvf: Directly re-lock BQL after hv_vcpu_run()
+  target/arm/hvf: Trace hv_vcpu_run() failures
+  accel/hvf: Trace VM memory mapping
+  target/arm/hvf: Log $pc in hvf_unknown_hvc() trace event
+  target/arm: Correct KVM & HVF dtb_compatible value
+  accel/hvf: Model PhysTimer register
+  target/arm/hvf: Pass @target_el argument to hvf_raise_exception()
+  target/arm: Restrict system register properties to system binary
+  target/arm: Create GTimers *after* features finalized / accel realized
+  accel: Keep reference to AccelOpsClass in AccelClass
+  accel: Introduce AccelOpsClass::cpu_target_realize() hook
+  accel/hvf: Add hvf_arch_cpu_realize() stubs
+  target/arm/hvf: Really set Generic Timer counter frequency
+  hw/arm/virt: Only require TCG || QTest to use TrustZone
+  hw/arm/virt: Only require TCG || QTest to use virtualization extension
+  hw/arm/virt: Rename cpu_post_init() -> post_cpus_gic_realized()
+  hw/arm/sbsa-ref: Tidy up use of RAMLIMIT_GB definition
+  tests/functional: Set sbsa-ref machine type in each test function
+  tests/functional: Restrict nested Aarch64 Xen test to TCG
+  tests/functional: Require TCG to run Aarch64 imx8mp-evk test
+  tests/functional: Add hvf_available() helper
+  tests/functional: Expand Aarch64 SMMU tests to run on HVF accelerator
+
+ meson.build                                   |  1 +
+ accel/hvf/trace.h                             |  2 +
+ include/qemu/accel.h                          |  3 +
+ include/system/accel-ops.h                    |  4 +-
+ include/system/hvf.h                          |  3 +
+ target/arm/cpu.h                              |  2 -
+ target/arm/internals.h                        |  6 +-
+ target/arm/tcg/translate.h                    |  1 +
+ accel/accel-common.c                          |  4 +
+ accel/accel-system.c                          |  3 +-
+ accel/hvf/hvf-accel-ops.c                     |  8 ++
+ accel/tcg/tcg-accel-ops.c                     |  4 +-
+ hw/arm/sbsa-ref.c                             |  8 +-
+ hw/arm/virt.c                                 |  9 +-
+ target/arm/cpu.c                              | 78 +++++++++--------
+ target/arm/hvf/hvf.c                          | 86 ++++++++++++-------
+ target/arm/kvm.c                              |  2 +-
+ target/arm/tcg/translate-a64.c                |  6 --
+ target/arm/tcg/translate.c                    |  2 +-
+ target/i386/hvf/hvf.c                         |  5 ++
+ accel/hvf/trace-events                        |  7 ++
+ python/qemu/utils/__init__.py                 |  2 +-
+ python/qemu/utils/accel.py                    |  8 ++
+ target/arm/hvf/trace-events                   |  5 +-
+ tests/functional/qemu_test/testcase.py        |  6 +-
+ tests/functional/test_aarch64_imx8mp_evk.py   |  1 +
+ tests/functional/test_aarch64_sbsaref.py      |  5 +-
+ .../functional/test_aarch64_sbsaref_alpine.py |  3 +-
+ .../test_aarch64_sbsaref_freebsd.py           |  3 +-
+ tests/functional/test_aarch64_smmu.py         | 12 ++-
+ tests/functional/test_aarch64_xen.py          |  1 +
+ 31 files changed, 186 insertions(+), 104 deletions(-)
+ create mode 100644 accel/hvf/trace.h
+ create mode 100644 accel/hvf/trace-events
+
+-- 
+2.49.0

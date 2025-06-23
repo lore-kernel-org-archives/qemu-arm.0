@@ -1,67 +1,67 @@
-Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2484021dyb;
-        Mon, 23 Jun 2025 04:32:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWNBgsXPEOIn3lDA1GI8Q6Q2DVlZpcLxc0fIdgERulRLNB+HEmBN92WIH3femYkG9svb2mBSLpoC4akng==@linaro.org
-X-Google-Smtp-Source: AGHT+IG0kFo4UJRlJss4DrYWdFzkXZQe8GioAsNC5NC8UjzemCSxjSRE6HBJOcKObsx0vaI6yXTG
-X-Received: by 2002:a05:622a:a1a:b0:494:b1f9:d683 with SMTP id d75a77b69052e-4a77a256f97mr216043481cf.49.1750678370825;
-        Mon, 23 Jun 2025 04:32:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750678370; cv=none;
+Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2485788dyb;
+        Mon, 23 Jun 2025 04:36:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUbN7SrMO0phsjhUJGohw2fIBNIKgzMzyvSG62ENjT2U7ucWoi7B3Xr1KjuEzCfWzGHN2SK8wx2mcCBjw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGXnIGSxGehowgTkPRLYmYCfkzZt+ZSyZP0aS7BBKximmsd68eoCUMfviy5xQbQ8hnA/MJG
+X-Received: by 2002:a05:620a:a810:b0:7d4:451:b8cb with SMTP id af79cd13be357-7d40451bcbdmr1032190385a.4.1750678595173;
+        Mon, 23 Jun 2025 04:36:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750678595; cv=none;
         d=google.com; s=arc-20240605;
-        b=TrWRO5ImluLouLiRSxj9wmLjZGfBLgEEBCWj0Fwo7NNwWDacBv/+NWcjXnL5h5t9V5
-         ne90VsYCg6kXxLvJQxa6r5AfLJ51zYx6c77+UsQ1AaGtuZiioETY69FtrBnppOQzENmr
-         aQxQJRUVSwXtlPLZ5rnHeuyvcxzpnI+GVBxegSxzSxVmHgwco4PlmtWiN6pyemsSMToV
-         bfkk8CuMM2y6bNO88PiYvk+zS5fiDmd5QOIcW9TaFllSUXtpHs+Q/iK3BFGtF+nW5ywC
-         krLr1RR7kAtV2Tp+Cb0mhO+APIlRAFcE0x542fYfL4JinAXYJFAsfJmPVGMRPIbKxk61
-         Xy9A==
+        b=fOt67CWdOnJZYivt4aOhGHlCNXs5ZhKEpllddyHvSlRTyVfiX2ex0c8cI7lUB5bCe1
+         ruBH68iz/BBa9iX11dzuYoad73K/8+4EK7O8LYbLGtX/q2qDA1ZJvozejklaAlERJeOJ
+         g6/HeEbgEi6I4iPbCKB9v+Pk9VphhmpDsbA/L97wNpGXnLaBVZLO4SQDnJmZv+mt7TZU
+         jSQmbbb3E+IIahxG5x/LLpf0nLeb9sdVanZP9Q7kXMP8rWyT6OMK5LXSCd5JdQrlBg6o
+         xapsGTTOC/IofN+Pk4bTs85DW5dltQBF/ZJAcdwvuYwHkKwfdsXvTILpDogFBvY55qYf
+         dluA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:date;
-        bh=EBW+5HuEb7bK4lD/J79fWUqyfsg1kOGM1mDpejaU7uE=;
+        bh=sERH6wYFQAuW+FgvELxg1b2EaeSnquOThHPg/hT8VN8=;
         fh=nDSQDZidiGeJ2daiUwC1/Yd3QXQYWxkzypgrkUaKy1k=;
-        b=L9fYr8WpLZ2ruVLAALALFsa53NEIZid+6Hmc8k6arvJf6RekDATIfzdm7nsGWB1/30
-         /i/Ck1TYvKewqKIXLC2I4drmY1GdM862HMOmJWTs1JvZGFy8UpX774B+2XfNaZU1W68P
-         GK5jsaGKJfZsZz39RbU1zocJR6XSaE2JwrDPs5yCNQ81kJ71kCrFCyMAVIb6uD15sGSb
-         AtUtVkZLYJI9L7CvJsyzAD+FucsQKo9mFAd0w5sgIYc8ODBIN4z+68s3m8FRH80yadh+
-         oRs8pm0vjtJszhaFPIYUxcFcV9Zb6/jnsGsivAOB4FUWrfZ+GSYz01KI76jyU8w6z+pQ
-         Wxnw==;
+        b=ga7HDZ4mLL3vWrYouSoBqrvswnU99fkZszeRM4bsHTZrNB9YXwdpxoDwIk+b0tQRJR
+         Idqv/25YNOHJ6ireZICTrnLsHXr3z5eRAU380SR+2446iRPkR6s64IevjP+j9Z6PouhP
+         tPJHa56x72TeBUANbKrj2+XpHSPpfBTq2gW+6ctd/sk4GtS5+wjcCiWtV1uzqw9juVFg
+         wMNiJOl2a2N9JHD4F5sAPIo4Aqdd/FlTijhLbyKC7uZCP3/jeVLlT7qzLzxjyezF9iYR
+         pYZfCutOc4n9t5nyv0QSiGIyOsBKWaCC13kPg/u9UVbPvakZ9a0dbH10588gE3S+yBxl
+         BEjA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a77a0e6863si79989871cf.582.2025.06.23.04.32.50
+        by mx.google.com with ESMTPS id af79cd13be357-7d3f9a22f5fsi744703585a.614.2025.06.23.04.36.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Jun 2025 04:32:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Jun 2025 04:36:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uTfPf-0000eY-Lh; Mon, 23 Jun 2025 07:32:37 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uTfT0-0002FS-Of; Mon, 23 Jun 2025 07:36:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uTfPZ-0000eC-8Z; Mon, 23 Jun 2025 07:32:29 -0400
+ id 1uTfSs-0002BK-UJ; Mon, 23 Jun 2025 07:35:56 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1uTfPW-0002aV-DU; Mon, 23 Jun 2025 07:32:28 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bQm8441cVz6HJxV;
- Mon, 23 Jun 2025 19:29:40 +0800 (CST)
+ id 1uTfSn-00034t-E9; Mon, 23 Jun 2025 07:35:54 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bQmDC6KzWz6HJxW;
+ Mon, 23 Jun 2025 19:33:15 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 741AE1402F6;
- Mon, 23 Jun 2025 19:32:07 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id C71BF1402E9;
+ Mon, 23 Jun 2025 19:35:42 +0800 (CST)
 Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
  (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 23 Jun
- 2025 13:32:06 +0200
-Date: Mon, 23 Jun 2025 12:32:04 +0100
+ 2025 13:35:41 +0200
+Date: Mon, 23 Jun 2025 12:35:39 +0100
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
  <linuxarm@huawei.com>
 CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
@@ -71,12 +71,11 @@ CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
  <gustavo.romero@linaro.org>, <wangzhou1@hisilicon.com>,
  <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
  <zhangfei.gao@linaro.org>
-Subject: Re: [PATCH v5 01/11] hw/arm/smmu-common: Check SMMU has PCIe Root
- Complex association
-Message-ID: <20250623123149.0000703f@huawei.com>
-In-Reply-To: <20250623094230.76084-2-shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH v5 05/11] hw/arm/virt: Add an SMMU_IO_LEN macro
+Message-ID: <20250623123525.0000607b@huawei.com>
+In-Reply-To: <20250623094230.76084-6-shameerali.kolothum.thodi@huawei.com>
 References: <20250623094230.76084-1-shameerali.kolothum.thodi@huawei.com>
- <20250623094230.76084-2-shameerali.kolothum.thodi@huawei.com>
+ <20250623094230.76084-6-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
@@ -96,32 +95,64 @@ X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SEa8bPv2/T6o
+From:  Jonathan Cameron via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fodW3lqPq4Gs
 
-On Mon, 23 Jun 2025 10:42:20 +0100
+On Mon, 23 Jun 2025 10:42:24 +0100
 Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-> We only allow default PCIe Root Complex(pcie.0) or pxb-pcie based extra
-> root complexes to be associated with SMMU.
+> From: Nicolin Chen <nicolinc@nvidia.com>
 > 
-> Although this change does not affect functionality at present, it is
-> required when we add support for user-creatable SMMUv3 devices in
-> future patches.
+> This is useful as the subsequent support for new SMMUv3 dev will also
+> use the same.
 > 
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Reviewed-by: Donald Dutile <ddutile@redhat.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Tested-by: Nathan Chen <nathanc@nvidia.com>
 > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+
+> ---
+>  hw/arm/virt.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 71b923f786..ae30320c38 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -146,6 +146,9 @@ static void arm_virt_compat_set(MachineClass *mc)
+>  #define LEGACY_RAMLIMIT_GB 255
+>  #define LEGACY_RAMLIMIT_BYTES (LEGACY_RAMLIMIT_GB * GiB)
+>  
+> +/* MMIO region size for SMMUv3 */
+> +#define SMMU_IO_LEN 0x20000
+> +
+>  /* Addresses and sizes of our components.
+>   * 0..128MB is space for a flash device so we can run bootrom code such as UEFI.
+>   * 128MB..256MB is used for miscellaneous device I/O.
+> @@ -177,7 +180,7 @@ static const MemMapEntry base_memmap[] = {
+>      [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
+>      [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+>      [VIRT_UART1] =              { 0x09040000, 0x00001000 },
+> -    [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
+> +    [VIRT_SMMU] =               { 0x09050000, SMMU_IO_LEN },
+>      [VIRT_PCDIMM_ACPI] =        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
+>      [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
+>      [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
+

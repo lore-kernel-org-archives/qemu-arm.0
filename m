@@ -1,100 +1,99 @@
-Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2401185dyb;
-        Mon, 23 Jun 2025 01:19:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVp7IiZLg0os7BLoxbwjjZAxPtdlMVnLH0Req4SJp4e7e7Dd8cXhAsFEFf9XE+w27gpDXmJDVuQnik68w==@linaro.org
-X-Google-Smtp-Source: AGHT+IEH4tYo4/zN+f3H1Z4UXscYdHTupb547pIryTY16mYjauGkHIhPIneFBXcpXA6ghFciVvwv
-X-Received: by 2002:a17:903:4b2b:b0:234:e0c3:8406 with SMTP id d9443c01a7336-237d9775527mr187785275ad.1.1750666777042;
-        Mon, 23 Jun 2025 01:19:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750666777; cv=none;
+Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2401639dyb;
+        Mon, 23 Jun 2025 01:20:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVjupQb1tfix74nWhTcB8fr3GewEBjVpUabrtV6Ou3qhxU0rCY3ZPRFvBuhx+zihzFjNmZQ+Y4Zn+wJoQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGVMACOQD5erNpBjD9Xjvxm45dI/mV2jCBBxcwlLCAIdaovSShe624xY+5yc83/DTityI8F
+X-Received: by 2002:a05:622a:9013:b0:4a4:3449:2b82 with SMTP id d75a77b69052e-4a785abdea3mr167794291cf.13.1750666839560;
+        Mon, 23 Jun 2025 01:20:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750666839; cv=none;
         d=google.com; s=arc-20240605;
-        b=NxjGF7ldT4UrKUg66pYutr6fbavNnOojDI7A0ly2asg1FjFTluJl1T27kOpOA0VDfA
-         KOruBO13biHnnKJbvwRh680bJzKhVkUo1idQNcCUNZnz++HFrYZdLNJQifwnMrQFnIGi
-         2DJXL4zAv/59udNXos13lufgfsFLNwRIsGriSKu5x39WD/8Dp+QRZKjxw0ZoE98B1Zsu
-         hvFjmMKdq/uHQYAV9ggPAKxCc10lLgQj3OH8Hk2f2EM4eQfbazJ0P29jlesqYxEh6i7l
-         ZuhbntHrWjD19Dc4hWzPZnREjP20uWRCwTzv2Idc0Vqc1GvmeekA4L0Rm1OHd6UGpECx
-         6Zwg==
+        b=TiwscxSsUejMWkTJLECbuuV8B+AYmLVjNsXhHbE2xaUSAOZKa9rrFemZ1H0kGmZDzf
+         dFJfP+FBo3PEfJZgzhFl7JnwojGwl/joTW40vWml6Mfuy/eLq+IAE3U/dIW6NSiVpOzl
+         OcrUpA5belO6kYXe6LI8efKTCXhnwMMdv/4reNadW6cLliAHPS0/MBUxiCCmJzjcmrKn
+         4jxyE9WZ6M1ZgZejoQaSBV8Si7XzdYDDwHCf01Y0anveeho+c5WYBI06qq+1gl7VcmPs
+         qYgTdULgmpPwsJJd+TwVjOjOa/bby+UIIa7LfQ52798qIFt5V/zFzM3Pv5MUpxMP/YA/
+         Ljwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:content-language:in-reply-to:autocrypt
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=8XX5DDD8hC5pLsDuzu/Mi8zN3wXHrIluVW5N+ZopIaA=;
-        fh=0NGpcfOHw7kwcdF5EZ3Z8i7mmyyz9msYJmIaBmNmv0o=;
-        b=B41kw2e1hcfb/eSFgIw1xwUArm7q+IefmNTpDaJlVadx5+YHeSIcVXy5Qjjv7a6hb3
-         ozSQ0FrD+/8lrmGSJHpSCMkNZn+kSj2pLQGLkDpTsvtydy93k0/aq6ybNvcJ2xwst+Ik
-         1TVEoXYwVNqA6ftjUql8HF8pPBap+Q3yMyII0Kp/hqTj1fqYyI+HjP6f8ikuswvL9RkC
-         of7Z6sZ2yy7BgFAb+MXeORtlSUF12mUdGznD0OEKRbGIiIHKKRHR9RPf5UHNwQlZJx5S
-         3c1ugNqa9XKREGIucubGqbgrwS+IDRNwkSRQl5q2gAViB2e5I4qP+h+y7/q2Caqqq9E5
-         Hoyw==;
+        bh=GBbPkcJ+cqTlKtkPkEOBLY6Eme/Qi2QlGOOm0lPBfy8=;
+        fh=E0uL5X2WlsXz+8TqJzDRIMHdDt3FmzdV5owzLk9eP+4=;
+        b=XQ7uSsa1nYRfSfdRTBrCkHVGQKn/nLfyz9IUUyCxAlBtkAiqEGVxrlhrYVsa/fkofk
+         BFjUL3B48X/HgiiixaeOkWqsgBHxRIg0Q/9XmIrQ7iCzVtzGQFjnAzVYnBHV41XRqyNk
+         i93F+iJRkPUma+1MvO0se8SV9tFB8dSKWp/KrWz47iuZ6D42LarRit4T2+Up26OU261u
+         tBRD8Qy3wmUmQrXnApfOQnpYr/o7NL65d3PT5euR+3U5FKJQiGFkgvXlPo//uFU8RstH
+         0DpSu+2qwbnTjNjjwFbbuefnAEy96FgloiUIIgMWXH5vXYiMi1VqHmxAdBpLOCGhLwMg
+         JNRg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="N45P/d9H";
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CIK45zJ+;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d9443c01a7336-237d86b7a2bsi96534255ad.427.2025.06.23.01.19.36
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a779e992a3si77566931cf.259.2025.06.23.01.20.39
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Jun 2025 01:19:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Mon, 23 Jun 2025 01:20:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="N45P/d9H";
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CIK45zJ+;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1750666775;
+	s=mimecast20190719; t=1750666839;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=8XX5DDD8hC5pLsDuzu/Mi8zN3wXHrIluVW5N+ZopIaA=;
-	b=N45P/d9Ha58RGN6GkPWCtjWlTEnsw509pykuKIxeaHCRxFmbmvhfHlHY8qxPThliyvU1Ue
-	CtOn/ZgO27BQ42PBI1bbSD1o2LLlGJXyCT/l09oq21xYTOtUIu+tqEPHCSCgO+NUg1rIQj
-	4jw2pIrm8fGGwcs1bplj04CPBUU+3hA=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=GBbPkcJ+cqTlKtkPkEOBLY6Eme/Qi2QlGOOm0lPBfy8=;
+	b=CIK45zJ+/lUHW+bNfl0/hAzB24LRDT0UFGI2SFRwNg/kdb1J5KhK18Titp/poUQFZKXtZR
+	6ujKnHwOomYcCWL24At2kx+hMhMEfbHaADbEe2zjB/UxSWbrjfkIWo3olXpC+XmmMc+Nqn
+	KANOqOHZEyseHzdVGLNOFiQvBpcnK0A=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-470-cNnrEegUP-WRIUpEvESVaQ-1; Mon, 23 Jun 2025 04:19:34 -0400
-X-MC-Unique: cNnrEegUP-WRIUpEvESVaQ-1
-X-Mimecast-MFC-AGG-ID: cNnrEegUP-WRIUpEvESVaQ_1750666773
-Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-3a50816ccc6so2422445f8f.1
-        for <alex.bennee@linaro.org>; Mon, 23 Jun 2025 01:19:34 -0700 (PDT)
+ us-mta-605-gI746RDONsas67etIKPqAA-1; Mon, 23 Jun 2025 04:20:33 -0400
+X-MC-Unique: gI746RDONsas67etIKPqAA-1
+X-Mimecast-MFC-AGG-ID: gI746RDONsas67etIKPqAA_1750666830
+Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-3a579058758so1614183f8f.1
+        for <alex.bennee@linaro.org>; Mon, 23 Jun 2025 01:20:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750666773; x=1751271573;
+        d=1e100.net; s=20230601; t=1750666830; x=1751271630;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=8XX5DDD8hC5pLsDuzu/Mi8zN3wXHrIluVW5N+ZopIaA=;
-        b=hCx0EESpxVyhgxPmNPz43lCYdoUCHK50bzSfRC0FN8ieiI4qMEfjw4XSj68dnOhtMM
-         x6YcytDyc+f6FgMPyd76mrlkXL171fa3PyXs9R1J8Z2xFdAhpMC0EDXj05hymnyBxsCZ
-         ybZaKpdb1eBZ1TF2fd7TILzI/1g3NRvGgshjI+75573xU/tYt2cXU5ymourEgJS0xBpy
-         wOzExbmR/tEacUR9utte7PlJB+AW2rHOgFHEWwj9WliDU9Q/GpK8hUJ5+WOb8TefZDj/
-         gKBy+GzudO4e25U2OlJDpCVEx2vVbKecW4cC4jfeFX5c4wMBWWWfWxJ6ykkexAUgl37n
-         xINA==
-X-Forwarded-Encrypted: i=1; AJvYcCWFLbj4FfmMgAIhlXXIGq/PFre4iD221xBwZ8CHos9CgdBGO4+F4Kck7dWHAnV02kyFmODN7NHnLXvnzQ==@linaro.org
-X-Gm-Message-State: AOJu0YxJ2VYoatBbscseObggqfIpvtR4vMGADhh8cyqrWkOk64vE6Zvj
-	CwEdxwmx1+sVSZVMc6NeHx5eH2IGYrDNqYc3fUWSB1FcpH2S+jP2WMuciUE+IkEG04ab7Mw3CpG
-	Y830OejTPZdeg+bOxs2pQ6OcF8cdNj09fSQPB6/yoN554u9acJWuo7ctdIw==
-X-Gm-Gg: ASbGnctGGVoPx0e8fuHkfGgGCiiWilc7cW0Bxr31U8WXIHQkGiAibGbZCkUSLm84Sqr
-	wHZopc522UQBbDlgx3/qiTKuPJx0EKDoyyCfgU54Mxwsr+c0ksmewiT8LgG7uGolLokxiw9jqRr
-	POS2DC+2SiZ9onxnofoSR5tesOqFREvMbRdF1jpQVSufPNkas1JJbmpDnOFfE2kazmfKq5RkIVz
-	Dg97marpDh+9RMcWuYI3qoxessEieI7M7PNxM1ZH6To2AWwAS8k1piiiZDVxAUjYFgwtSMpV5ph
-	hneirPTqYIuMhdy2/LqIrnH+zGeN7xliM+96zEh81x7jrv+lCFbPJNohaFYlK2o=
-X-Received: by 2002:a05:6000:178f:b0:3a4:f038:af76 with SMTP id ffacd0b85a97d-3a6d1331ef9mr10090469f8f.53.1750666773240;
-        Mon, 23 Jun 2025 01:19:33 -0700 (PDT)
-X-Received: by 2002:a05:6000:178f:b0:3a4:f038:af76 with SMTP id ffacd0b85a97d-3a6d1331ef9mr10090434f8f.53.1750666772820;
-        Mon, 23 Jun 2025 01:19:32 -0700 (PDT)
+        bh=GBbPkcJ+cqTlKtkPkEOBLY6Eme/Qi2QlGOOm0lPBfy8=;
+        b=YNQRGxTSoGVDKrUcqwFWuueryUseHM12v33fHRgiUuOorpOm/3O8s4zKv911Vmyal1
+         4e/9/7GuNIxbV0cGtsojxedGPZ+PTI6bg9BgVNXoDh9LVAZQmQLP+SPwaiqlQGh7vrH9
+         +vi31esS2RbTaz9CXho5FUPRtqazveACWZb+BZhf8ce1GfwqHnC81M74cxk2ktgYQ4UT
+         bv2uIvxRxabsjFjIdWGYIMxvN5hG0pZTjbuvZGLTM9El8whyREoc72TO6atTo1STQNQJ
+         Shb102/ynDE3kQfFohdYqyjAdMQzuxvUVEwf9TrNPbOI32mMqJKgJhHuFlnqNYU4dlMl
+         Fe+g==
+X-Forwarded-Encrypted: i=1; AJvYcCVkFS5pa37znJ38svHRLFBeAyCKVNKgzdVoakoVMJyOgyDyLrTfAVRW9ax+jyKkhc/HIUvqZdGbWIx4Ig==@linaro.org
+X-Gm-Message-State: AOJu0YwH/wgZAWbeSry+DmSIFdhuRbPzmSEucf/+ptwYzrDo98TaYpcG
+	vbH7xHyFtBA2NqzTIvLLnEmZiHIJuuyqoM6/U8R8HxEjJAm99igAU3s81FnR4HnJS8SUIp81whl
+	mbHHzJZ/18O002znh6maJkVDzKLV29Y/PLtVM/Kl02inxXAE8LtV2iz2EVQ==
+X-Gm-Gg: ASbGnct5juFNEffM4c6/5WESIaXRVM6UoK6Ox5DnXRsOaWWOvaAzPyG2m+NjmFoZUjE
+	JycXyjS5BamtVnuSwo/fMdw9z2Dc/C1eD3tyHU4fdkeBM8LU+xl+X9eM5E2ku8lA+iO/EREZYs/
+	2cGZdOAcRG6h/cYEm6/taVTrNs9D6CH3KGqufsV3MK1ltKw+RLz6HD9h/7753OJ7vn2tW77MNto
+	OJYv7/rCbaoy3H4vq2PB378tXX16n/PQ69u/PpktDm5SZUWazvD1HS/TL2OovD9B4NDzAQtT6pH
+	4iMp9ISOrU9GNmxncy062AYYQZ4tD55Ohv6aK4odAwfqQ8t/4jz1pJqVzxdSm4g=
+X-Received: by 2002:a05:6000:4605:b0:3a4:f6b7:8b07 with SMTP id ffacd0b85a97d-3a6d12e39famr8683869f8f.48.1750666830081;
+        Mon, 23 Jun 2025 01:20:30 -0700 (PDT)
+X-Received: by 2002:a05:6000:4605:b0:3a4:f6b7:8b07 with SMTP id ffacd0b85a97d-3a6d12e39famr8683830f8f.48.1750666829696;
+        Mon, 23 Jun 2025 01:20:29 -0700 (PDT)
 Return-Path: <thuth@redhat.com>
 Received: from [192.168.0.7] (ltea-047-064-114-166.pools.arcor-ip.net. [47.64.114.166])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d0f1d902sm8609481f8f.43.2025.06.23.01.19.31
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-453647f29bdsm101598745e9.18.2025.06.23.01.20.28
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 23 Jun 2025 01:19:32 -0700 (PDT)
-Message-ID: <3896c4a8-8b25-45e0-978c-1539648ab4cc@redhat.com>
-Date: Mon, 23 Jun 2025 10:19:30 +0200
+        Mon, 23 Jun 2025 01:20:29 -0700 (PDT)
+Message-ID: <5ce9667b-3e88-4882-9e70-f5511f9cbe07@redhat.com>
+Date: Mon, 23 Jun 2025 10:20:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 24/26] tests/functional: Require TCG to run Aarch64
- imx8mp-evk test
+Subject: Re: [PATCH v2 25/26] tests/functional: Add hvf_available() helper
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
@@ -110,7 +109,7 @@ Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Roman Bolshakov <rbolshakov@ddn.com>, John Snow <jsnow@redhat.com>
 References: <20250620130709.31073-1-philmd@linaro.org>
- <20250620130709.31073-25-philmd@linaro.org>
+ <20250620130709.31073-26-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -154,42 +153,75 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250620130709.31073-25-philmd@linaro.org>
+In-Reply-To: <20250620130709.31073-26-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: WiU_VHJTzwUKgaYAs9jIXGIbFCeho6AKPUYFot9WUMM_1750666773
+X-Mimecast-MFC-PROC-ID: rxn1nUDUIgqvx0wHeg4H8hHzYNpikX84-KPX6zTOw7U_1750666830
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: F7vF8b30KJlQ
+X-TUID: rz83bFx6lPT+
 
 On 20/06/2025 15.07, Philippe Mathieu-Daudé wrote:
-> The imx8mp-evk machine is only built when TCG is available.
-
-The rationale here sounds wrong. If the machine is only built with TCG, then 
-the set_machine() should be good enough to check whether it's available.
-So I'd rather say:
-
-"The imx8mp-evk machine can only run with the TCG accelerator".
-
-With that update:
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-
-
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   tests/functional/test_aarch64_imx8mp_evk.py | 1 +
->   1 file changed, 1 insertion(+)
+>   python/qemu/utils/__init__.py          | 2 +-
+>   python/qemu/utils/accel.py             | 8 ++++++++
+>   tests/functional/qemu_test/testcase.py | 6 ++++--
+>   3 files changed, 13 insertions(+), 3 deletions(-)
 > 
-> diff --git a/tests/functional/test_aarch64_imx8mp_evk.py b/tests/functional/test_aarch64_imx8mp_evk.py
-> index 638bf9e1310..99ddcdef835 100755
-> --- a/tests/functional/test_aarch64_imx8mp_evk.py
-> +++ b/tests/functional/test_aarch64_imx8mp_evk.py
-> @@ -49,6 +49,7 @@ def setUp(self):
->                        self.DTB_OFFSET, self.DTB_SIZE)
+> diff --git a/python/qemu/utils/__init__.py b/python/qemu/utils/__init__.py
+> index 017cfdcda75..d2fe5db223c 100644
+> --- a/python/qemu/utils/__init__.py
+> +++ b/python/qemu/utils/__init__.py
+> @@ -23,7 +23,7 @@
+>   from typing import Optional
 >   
->       def test_aarch64_imx8mp_evk_usdhc(self):
-> +        self.require_accelerator("tcg")
->           self.set_machine('imx8mp-evk')
->           self.vm.set_console(console_index=1)
->           self.vm.add_args('-m', '2G',
+>   # pylint: disable=import-error
+> -from .accel import kvm_available, list_accel, tcg_available
+> +from .accel import hvf_available, kvm_available, list_accel, tcg_available
+>   
+>   
+>   __all__ = (
+> diff --git a/python/qemu/utils/accel.py b/python/qemu/utils/accel.py
+> index 386ff640ca8..376d1e30005 100644
+> --- a/python/qemu/utils/accel.py
+> +++ b/python/qemu/utils/accel.py
+> @@ -82,3 +82,11 @@ def tcg_available(qemu_bin: str) -> bool:
+>       @param qemu_bin (str): path to the QEMU binary
+>       """
+>       return 'tcg' in list_accel(qemu_bin)
+> +
+> +def hvf_available(qemu_bin: str) -> bool:
+> +    """
+> +    Check if HVF is available.
+> +
+> +    @param qemu_bin (str): path to the QEMU binary
+> +    """
+> +    return 'hvf' in list_accel(qemu_bin)
+> diff --git a/tests/functional/qemu_test/testcase.py b/tests/functional/qemu_test/testcase.py
+> index 50c401b8c3c..2082c6fce43 100644
+> --- a/tests/functional/qemu_test/testcase.py
+> +++ b/tests/functional/qemu_test/testcase.py
+> @@ -23,7 +23,7 @@
+>   import uuid
+>   
+>   from qemu.machine import QEMUMachine
+> -from qemu.utils import kvm_available, tcg_available
+> +from qemu.utils import hvf_available, kvm_available, tcg_available
+>   
+>   from .archive import archive_extract
+>   from .asset import Asset
+> @@ -317,7 +317,9 @@ def require_accelerator(self, accelerator):
+>           :type accelerator: str
+>           """
+>           checker = {'tcg': tcg_available,
+> -                   'kvm': kvm_available}.get(accelerator)
+> +                   'kvm': kvm_available,
+> +                   'hvf': hvf_available,
+> +                  }.get(accelerator)
+>           if checker is None:
+>               self.skipTest("Don't know how to check for the presence "
+>                             "of accelerator %s" % accelerator)
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>

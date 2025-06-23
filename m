@@ -1,147 +1,124 @@
-Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2495932dyb;
-        Mon, 23 Jun 2025 04:59:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX2zhNMQM7kHRUGVYysE7CDFpYAUChBLAJDh5m5PZeTn/DTzIGJ4zh0diVP5lp3n5LG56feokcNqSpd1Q==@linaro.org
-X-Received: by 2002:a05:6000:2010:b0:3a3:598f:5a97 with SMTP id ffacd0b85a97d-3a6d2799df4mr8969475f8f.9.1750679965505;
-        Mon, 23 Jun 2025 04:59:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750679965; cv=none;
+Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2496601dyb;
+        Mon, 23 Jun 2025 05:00:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXj1f9cmDPF0n0Yws8UgSzVYV1HyOVe9V7oYSeBl6RadNY/RNKtkDbWlrx8ps9t4EpeHGdHSO7RK1qZZg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHlsXT7QG1b8mCMHblpzYHKqr3wsZXGJXbbwFotNZHuEMbCAPfFcT7y/09jHxhwT9AmQ7Bd
+X-Received: by 2002:a05:620a:8804:b0:7cd:3ef0:d1ac with SMTP id af79cd13be357-7d3fc027409mr1942800285a.15.1750680029044;
+        Mon, 23 Jun 2025 05:00:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750680029; cv=none;
         d=google.com; s=arc-20240605;
-        b=kqwjs5DpiJfpj1XdTi3+H/GiO8mpeZzOBAz2+yOSsp9ZxLec42Byw/a6qHRcq9XnPT
-         UOgxL2f3+LN14cuf55zcGUnWOUrr7dYbIoFZhCo1H+LgRmBSe66uHbAs2EmC4JMLZAeO
-         iAnG2H4H7TtTEiteQS/aUR+hOr2oQaHr44NyQnoN+8AgnnqdvRqv/prwOV7utyemaPua
-         xXqJHytM3gPexMykuoJGie20riC5T1WCZWyGDQh6aq4jzqPrHF0rcHuer4UFgoSvdJiZ
-         a1J+veGK0reLJ1pGEZzmhmxhvxfVQY0eotjl4q/rVd6S3T/y4ZR5DNL0PWrqycrWoYzp
-         o9ZQ==
+        b=N1szVwpNiQnY1g7rVnrwBtcUl6CpA/A4rDip7bfuB5qfzUNFS00TYKXkSkTkAS9Hdt
+         ZXJp2PWcMlmHiU3Rko9P7YzNSLMO5C5yrte3ZynyRnC9G6dvqiCj+xdmgduKK5MxZNzp
+         2uqawy3BIQNPD4JF3U0v/LhRqPDz9TOa5j+/MmIMQMhdsieCzsYYvd842M+n7zy0LJ/N
+         +xMvTTQQ6GZR57ACZb+2U8wQJfwT5nS69aeUeN+2rVP9+tbfwQQbIYIOae/nbWLZ1C/S
+         UM4LVeUTTmXA2tNMCdqYtS+nbtDy7QD+xoCPq5JtKAfRA8mZUuqURdPOVxhu7gu2UQrH
+         l9mQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=ZNl0GNUoL+pUzh6aZuBV7rBwC2JelgKVfHJY1PQe040=;
-        fh=gb6JLZz7rPqfTA43exKGrQKrXi7xMv5B3u/o9JzY/fE=;
-        b=Jj1yBfeNPjf/0rJUVl903VDGsurdPskeHJbwnrkl7BJK4Awtb+4hI7T+OINydIIJm2
-         kJ7CIwGo6EbyOiUGZbSYLNtbpgtOdbATFKiYx5hPBGn7pKcuoCNFZwXNqW9Jpkq/FOzb
-         I6pao+w69MqNWDL1oy6IfUkYRv/HP8FCfsHxbHeVFRK2tIbLgoH6ma2JEGMs2Xy8V504
-         a5CHI5wX+7j4+WwqKWZsg20mdeZWAHgyowgZOuLRSDxS1E6QoPMwOU9jLqIKXlc0XHFl
-         T1XDGXwJsySqccFm9PrujLCELjMl8jym77y7ZjclLYvuuzFC7ZN5h/ByojN1OSDhmyaf
-         BGgw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:date;
+        bh=i2oBxo89CaK2v5/6po8ua8Kmr5wVvSUgmpTtYu1ljNw=;
+        fh=nDSQDZidiGeJ2daiUwC1/Yd3QXQYWxkzypgrkUaKy1k=;
+        b=g/N5f96KjaWUTEj2JYROL2BOF+vcuPvig8MtxVHKCN5BgtvzVL5JSZYtWnf8blP6UT
+         59pJpP3kQddGtHq9bMZ34TifNYNXY1NnbTJum6yeg9Ji15ENdSWMQw6xwwrgLUQcq0WE
+         8eThqwpQfSW7AxhKuwLiEd/p5nylRP4hy/KxB4zfvyyadOcuZjt5aGnV1ion9qlw9tZD
+         XRrunfoB2J2lvls2McCI35QImSJ/5xwlgvTt3V4v6Oh9LqDBfcgCYcLlyH2bIBPSqMvM
+         6YA/0raD7pvgi/q1lgyjR6fyOdk4/tmZ6pjrXqpn9WjmH/x5oM8z4lN9EL/2YbhTqrm+
+         utdg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SWhgyQBe;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-3a6c93c3438sor2177679f8f.0.2025.06.23.04.59.25
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3f999f416si775857485a.77.2025.06.23.05.00.28
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 23 Jun 2025 04:59:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 23 Jun 2025 05:00:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SWhgyQBe;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750679965; x=1751284765; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ZNl0GNUoL+pUzh6aZuBV7rBwC2JelgKVfHJY1PQe040=;
-        b=SWhgyQBeQX4mCH3nEEsv5yJEYli8ly/0Qm4XiWPV2h4T2epbVxVBU4iPWyTItGh3Am
-         tsUpRSlOYd/7vcDLwZ59FSLkqah7wnY/mN7SWAYtRjXk74Nb/nPt8r85QUCera4s17Ax
-         ncxwdhD/1FZ56chnuGvtxFwfuEq49VGX1WuDAZI2D2bJ8CZlfFqz4OgVrjIOYvSFfQYu
-         qtnUQpdS9D4xjhhzBurbP0jbjByMHD1eMEvwhJZUKOg/Y9klvDc5Ec2AF0HZxP3sWw98
-         xyRtdxG6iRR7xrB3nRTeD2xk4BuCEgjOALV4uuOUOPxxE/IO8nDs+N7zsLYPEVEnqnDU
-         N5dQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750679965; x=1751284765;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZNl0GNUoL+pUzh6aZuBV7rBwC2JelgKVfHJY1PQe040=;
-        b=O20dXMwaJ+b/exBumqQ5vFshSwDek7scaBDaWpG0Ft/CtOEstyMbUI/18/k9XUdRzC
-         NakwTOG79+KJDzlKrNZDAp+T7P9ivadH+0z1O7YV47d+UuVEEN+/1xi5EdY1BDSuZBDY
-         aNeDho4m0piikrsSQU8sowk7seMuu4NTEkqCnHNPvUIYGr3FyNCXaujlGxzv7dd5Q1Vp
-         HKXhy0+3UwWDGJblq2eitoTW96gD+JzjwajUS2QF6SmKSq6YAp2Xoljuyzuy4lMz2u6P
-         Nx/ObznD2ZEv14gMoxBZajzlQYeU3X01T8D+QoxuL4NftW96e5bEcB7/8RmTECW6hhPE
-         z8yg==
-X-Forwarded-Encrypted: i=1; AJvYcCUhx31W3BRUeJ9YC7/wKm6C+Jm29GpYeYjVLyD55JkSlFVoxqS3A3aG/BCn6EWSbMvwVI6D48e7ushGbA==@linaro.org
-X-Gm-Message-State: AOJu0YzKkppkmbum7F+iaaUPpxNPZAE4038z1MlO/ZAofMtuQD0ypmxi
-	UHLux8QhU+LMtMPSzkwTNwHVKYSbu7KUl5m+YflT1Cw3N1wmG48By44m9nOJLoKAdGuVzA==
-X-Gm-Gg: ASbGncvehWJDh3/nexZ0KqZEvpOdEw7r5rL1nHp/mng+J6EP4ELpw4PUgmhpf0qBnCi
-	Rh37ZG4sVF4sM7sw9C6lMx5oEPROMmUJI7x73ZHAvVceXIv20Bx8VraV99SDGMOj72cvDzobhU7
-	HwnBjxsKQgRWREH664pImyRCM9vtMZs+mH7fJlffkprWsPD0L3gy/9Vm2enlod/iiSwofg5P/lZ
-	wOc6asDxtIclCi4jubINqOOXSBnCiF42hox1IBGOVPKPwWg8GepaS5Q50ycszE2h5aC2m2ONIRb
-	UcjLtSfVaUATNSPhfb3gMm/RzUkHU5tdbiIM5BCTgahDpSa0JNl3wczr4/nNaTsutIc8pYbMv91
-	NuwaWZA7CZ0FAIgfYrav8pebocY0qhWLR0Aw5uNjr
-X-Google-Smtp-Source: AGHT+IHOxtkdXSM3EMBB+rtXAYT6HLDRhKe1XTMmCY2e3R+6NO7I2w8zqwom52rHbrwAtgyuUqWVsQ==
-X-Received: by 2002:a05:6000:2010:b0:3a3:598f:5a97 with SMTP id ffacd0b85a97d-3a6d2799df4mr8969438f8f.9.1750679964791;
-        Mon, 23 Jun 2025 04:59:24 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.167] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d128cf7asm9177773f8f.100.2025.06.23.04.59.23
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 23 Jun 2025 04:59:24 -0700 (PDT)
-Message-ID: <be71c7cc-a5ba-4ba5-b697-60814b712eea@linaro.org>
-Date: Mon, 23 Jun 2025 13:59:22 +0200
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uTfqV-0004fC-7c; Mon, 23 Jun 2025 08:00:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uTfqT-0004cF-1W; Mon, 23 Jun 2025 08:00:17 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1uTfqR-00066b-0P; Mon, 23 Jun 2025 08:00:16 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bQmmT12txz6HK0P;
+ Mon, 23 Jun 2025 19:57:45 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 1E09A1402EF;
+ Mon, 23 Jun 2025 20:00:12 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 23 Jun
+ 2025 14:00:11 +0200
+Date: Mon, 23 Jun 2025 13:00:09 +0100
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ <linuxarm@huawei.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>, <jgg@nvidia.com>, <nicolinc@nvidia.com>,
+ <ddutile@redhat.com>, <berrange@redhat.com>, <imammedo@redhat.com>,
+ <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
+ <gustavo.romero@linaro.org>, <wangzhou1@hisilicon.com>,
+ <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
+ <zhangfei.gao@linaro.org>
+Subject: Re: [PATCH v5 11/11] qtest/bios-tables-test: Update tables for
+ smmuv3 tests
+Message-ID: <20250623130009.0000238d@huawei.com>
+In-Reply-To: <20250623094230.76084-12-shameerali.kolothum.thodi@huawei.com>
+References: <20250623094230.76084-1-shameerali.kolothum.thodi@huawei.com>
+ <20250623094230.76084-12-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 23/26] tests/functional: Restrict nexted Aarch64 Xen
- test to TCG
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>,
- David Woodhouse <dwmw2@infradead.org>
-Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>, Alexander Graf <agraf@csgraf.de>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Bernhard Beschow <shentey@gmail.com>,
- Cleber Rosa <crosa@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, kvm@vger.kernel.org,
- qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Roman Bolshakov <rbolshakov@ddn.com>, John Snow <jsnow@redhat.com>
-References: <20250620130709.31073-1-philmd@linaro.org>
- <20250620130709.31073-24-philmd@linaro.org>
- <497fc7b1-dfd2-49ad-938c-47fca1153590@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <497fc7b1-dfd2-49ad-938c-47fca1153590@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: JsqBbX0KMF7i
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dZaR9Q5Wcm3g
 
-On 23/6/25 10:11, Thomas Huth wrote:
-> On 20/06/2025 15.07, Philippe Mathieu-Daudé wrote:
->> On macOS this test fails:
->>
->>    qemu-system-aarch64: mach-virt: HVF does not support providing 
->> Virtualization extensions to the guest CPU
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   tests/functional/test_aarch64_xen.py | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/tests/functional/test_aarch64_xen.py b/tests/functional/ 
->> test_aarch64_xen.py
->> index 339904221b0..261d796540d 100755
->> --- a/tests/functional/test_aarch64_xen.py
->> +++ b/tests/functional/test_aarch64_xen.py
->> @@ -33,6 +33,7 @@ def launch_xen(self, xen_path):
->>           """
->>           Launch Xen with a dom0 guest kernel
->>           """
->> +        self.require_accelerator("tcg") # virtualization=on
-> 
-> What about kvm (or xen) as accelerator? Would that work?
+On Mon, 23 Jun 2025 10:42:30 +0100
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-IIUC this tests boots a nested Xen guest running at Aarch64 EL2,
-and at this point we can only run EL2/EL3 on TCG. HVF and KVM
-can not for now (we are working on it).
+> For the legacy smmuv3 test case, IORT has a single SMMUV3 node and
+> a Root Complex node with three ID mappings of which two points to
+> the SMMUv3 node and the remaining one points to ITS.
+I haven't checked the blobs line by line but looks correct to me.
 
-I don't know if Xen can accelerate EL2, it would need support for
-such hardware (like the Apple Silicon M4). Cc'ing Xen folks to
-figure it out.
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>

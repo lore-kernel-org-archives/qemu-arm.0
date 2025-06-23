@@ -1,85 +1,85 @@
-Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2567300dyb;
-        Mon, 23 Jun 2025 06:58:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWAdQUosIgwAtga0cQ6fyGzplNbOr3gQHsWmYzm/xXCF2r2ttLS+BQXh9SBGJXiprBNVZYRCi04JUjZ2Q==@linaro.org
-X-Received: by 2002:a05:6a21:1589:b0:21f:4631:811c with SMTP id adf61e73a8af0-22026ec726cmr16373554637.19.1750687128446;
-        Mon, 23 Jun 2025 06:58:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750687128; cv=none;
+Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2567335dyb;
+        Mon, 23 Jun 2025 06:58:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW1L1+BMo1z3IjhgYPGBEHgo3/zU0dAIH0sprDopmWLFTmO8SviuJGdkGeuNGePldztXeoeIxaGJRmtMg==@linaro.org
+X-Received: by 2002:a05:6a00:4fce:b0:746:25d1:b712 with SMTP id d2e1a72fcca58-7490f5487b8mr16741923b3a.7.1750687132189;
+        Mon, 23 Jun 2025 06:58:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750687132; cv=none;
         d=google.com; s=arc-20240605;
-        b=Cyh/FPz+O7kdboNsDGV6WRn6nbrw8gUhSEUajoOhRwGJuNAeAHv8ZlIFD9Y7ek4m3V
-         cvtryFr93Y4aQdJbDC3X4ReFQwbYQQEcltgDrRohNjGt+YtNj3TWfbOtAp/FEB7QFqee
-         z6gbdHki0mfQ5a7GHXc4Pui2ngLPAb6ykuTP8TOi/Pg7yUGS5L6+VzHUp8XCpE9HHvue
-         fHc45+mcKWocN4cqlJYWU7pRfdk7sNwG1mH3lEL7exMAnB6M2263PPJiDvQlP7ObTdKo
-         HRmBldw8AdJ6VnkiMvL3kYN0YYNIrdbe58DpqyYRWJbXWuhZG5xVsYZyHoy26zVH84Xy
-         5Eew==
+        b=ILqLuYoSFJ8J2CxXwtPubcuY3myGYOY0o2WziRmgyLV7LysliK35e/zfP8oXDKzxUf
+         I2bnEKMe7oqdIyABlJdaWNQdgW3COvq0heb0WKAmoAPfEEkSU2P4avaNKHEJDqiYcQ8j
+         4/HqIuHUhpbLx0TtjMgBK7qIESt7j1xgVtjDebEde7xR52gpElSoJCR2uKviPKFVFu/8
+         tZqrwysfaPMxtWGQ5txJPxn5WHy78cwyMgkoqbYulSQO6f4Drhpd5buGlvdgRSMd/U2V
+         zkVCg9ZN1Pnea0C0x7mmlyJY9hA2gHEFI5E6N6psi8MH7Q26oI38QiBSNPdi5QuTOwCz
+         0AQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=BjZboSZZUhHnL3j3LLICgav2KEwJ5awXyYH+Nvj74ZU=;
-        fh=q3jfSFdKSEKcdg43zvfQbvZWvKQ6C8g5oGALonHDZCQ=;
-        b=e39bE0p4APYrjQORag5WVq8EK8HJyF8UWUCgqP5c5H64MeA+wXDD23RA/8fZF4ve6i
-         daBYGs+JLvQlcGmTxa2d0Tzc5B6+3N29kAVwwpSQYK6xbrhnNq4msOzoU71uQJLChHua
-         Lgh151jzizUMgjAZXTgcJurO+P4ydee9KnAiMyv5DeFqoYMgY7pB25b67RmoqHfjX/sI
-         zeiUAGnaubn3vvTtwf55EBqHoo4bGKxBFPEAzb5PlrYfYzKj8uqwKOWk/nNshRfoxvur
-         dgyeB0lubTxomMuWhyACIJdGSTl1WXxOG5yR+57w1WraNM+MaWeWiAPSQewF/AzA2qtU
-         nHhg==;
+        bh=IOV46Ps4a8FdPp4RmxE7rRFywBE4TgcqqV4mGLREwqI=;
+        fh=0HhWnJE1Haz9vqsjUu7UTwbwgiKs7QOB/Mxz71YWBrw=;
+        b=AvCqUCCU0yvZF3XqhixKe6uXPfTB7BksNXiQlTC7UrnORiBlCzOEq9F4UrJYpANSGB
+         3sYdvG1OZfuWwrtI9jGXjQVRfXfO0ahon66J2FqFi1XasCu1TM211IdDG82zARKWmUk7
+         BUSXwHHtpbwpW6GFbhLoN0Cm8OwoNVgaTPjitPfQmNCWyFo4a21w8A+R32ZLZz2pNoz1
+         1l+pVg+/TGUyC0AMKlZPXqQ9s51RqIeompkcbQpjdksu24zTjefAXm2iW8t5fwsquH/0
+         4N/erjx65Pa8t6w94GIwO+qyMc3dKuipdD+1O6rE5UpGJ3uhTUCQ4HA9ovopBIhRXI7O
+         WdVA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="FWR/n4di";
+       dkim=pass header.i=@linaro.org header.s=google header.b=T17l38Dl;
        spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <gustavo.romero@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-7490a61c360sor5337058b3a.10.2025.06.23.06.58.48
+        by mx.google.com with SMTPS id d2e1a72fcca58-7490a600eb8sor3705776b3a.6.2025.06.23.06.58.52
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 23 Jun 2025 06:58:48 -0700 (PDT)
+        Mon, 23 Jun 2025 06:58:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="FWR/n4di";
+       dkim=pass header.i=@linaro.org header.s=google header.b=T17l38Dl;
        spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750687128; x=1751291928; darn=linaro.org;
+        d=linaro.org; s=google; t=1750687132; x=1751291932; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=BjZboSZZUhHnL3j3LLICgav2KEwJ5awXyYH+Nvj74ZU=;
-        b=FWR/n4diY1hLQQgJbSDtHAw6kw6oVh/likt5AwB39d92KM78guzTDUh+b1mI9IXXU6
-         oNKId5H0RuufV7djPsn9tqr1EzjHsgQXHxVxtcDXDC+nInZRGp3zeZjQgeNfYqetRkXe
-         o+8a96gh46nWijF4+TH4OsE4VF7o72gJcj9b0mRKnviumJ+/lcY4b1XCx72vFFI/Uxx2
-         TzXkss490bd8Od2brXH2jod6MYh1UwSodPaAv0h5cYzKAFFtJTOJCRwj2+gu/5wvHtDi
-         ZiY8TsJaSA/MzqZTHc7tDORK74zL+1XTGS3a9gMGxKIv478D4BhmsnAtdcreaUTOJsXj
-         lf3g==
+        bh=IOV46Ps4a8FdPp4RmxE7rRFywBE4TgcqqV4mGLREwqI=;
+        b=T17l38DlzyoYLG95IRJwIKmvRRSBWiqCAdZeVUYAypKF+UnkyDHArC6AixpO7WMbtM
+         lE/SEV8cZo2e1jxJy1OllKQttCcDJdDLboiONDahumc5yKJYBCGt9yNOqWuXxmNO3HIr
+         h2/TmrwekPnruAuLMbAzYFlMYViZ7tqSaUOJvc+gl/NBnaG0oIIGu+BWcDxYLGylBQiD
+         IRZIuYkdCrCBsa/cy+B0pLdVe1ixvF5qUkq9amQUxWwjMKVxsgBj5y0F85J4Ryry9NhN
+         vkz8KiXyJTxX5480btYOvI63+8GKB3mnUqUxq7yInQcmrf1U8bAHA9rPIdTuJC832wju
+         VJLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750687128; x=1751291928;
+        d=1e100.net; s=20230601; t=1750687132; x=1751291932;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=BjZboSZZUhHnL3j3LLICgav2KEwJ5awXyYH+Nvj74ZU=;
-        b=g3MrnPh5To/5UueoVyGShiCj3vkXOG22Q+wJpR7bhiCCrhzttUm0I30WVOR68uurkO
-         wm8k3qROwjcwKA5pHWhe3D5zffxXQtBR87U1zF+o5dOVmQWdeDL+qbNR3A0d0Ft3R1Lw
-         9GE576+/zLt3Rv1DxEWkAEAFQVRfaS7ggpkEFoWTCv3Gs9X/5FTzLrqF5GevkEKjb+Vp
-         wjPqXqAf1JzmgwGfk2CNWMXfMlRzDxsIh+0k0/cRwDFzlEzXX9lfDWdEp+L0wH176FWN
-         6siSThTiQgHqQx6xxHFME7RVVOhFAe6MzdCRYEWcLFa3jhKzTT6v2m2ftDQZK3BznDnw
-         QY/g==
-X-Forwarded-Encrypted: i=1; AJvYcCWoLfV8yKDDyFJZIJ6igDGYE2M3jXiTTjUtmZI+mbrKx3TPwmhLo+kOIM6QnFV/IENhTOiqtsO9c8b+SA==@linaro.org
-X-Gm-Message-State: AOJu0YyoDy63Ag2clP+K+chuA5h+cG4cw//q0NgSEJ2mP70KYLqPcYz9
-	xrNyfsGzJFLtEjo83XC3H1dIFpnvYtybVRhuB0+otepsdcTY/KNzXe7OEzHMwNguQUfpMg==
-X-Gm-Gg: ASbGncseGBKP1kxR8S/vYjm6qImE0eVDylK2XYPb6IeyRGkJrZh6cuG7mKDI2Y1y5m3
-	UuL0+0W4Dm+F7KJGX9/x1rLS6BY9JtzWoyjta76RH4+VTfKt2zwmscJxBWReoeYIIp1oW7tPKp9
-	ONqCc1UaoL0R5iDcWiReGCrcn1o7+N0PjLGVPwe2MxDuZFtQ5qnKDBXQuiOERNFD7gsR+8jruzZ
-	ZuiTKLTB+YToCYN7DdaKIqIsWnVsLGpLMrKVg0KlQFt0q2c91oG/lqfX6nBo82oPJNMk1SilRPP
-	O6SfRb1a4wCHuZqT8qJ4fd/KwSjAvdC4hx/J5roovMxcApIbY9sDaJTyu/mUD51chS4=
-X-Google-Smtp-Source: AGHT+IHsoedkmJQ0n/a5C+RtaBEy4+v5P4ksQGHxVeJT1rsse9x+CVH2+Kh/iM3iAYio9fHd4l9gag==
-X-Received: by 2002:a05:6a21:b94:b0:1f5:6f95:2544 with SMTP id adf61e73a8af0-22026f00f14mr16060884637.33.1750687127987;
-        Mon, 23 Jun 2025 06:58:47 -0700 (PDT)
+        bh=IOV46Ps4a8FdPp4RmxE7rRFywBE4TgcqqV4mGLREwqI=;
+        b=p4TLbqV85RZbk3kbzIT4LOCD2chl0P+9tdqg1Mf2KtBMndEEqhv7IucwaNnCyvqS3L
+         rEIM4XmfAOXLo/NCA7Jrx+SY/xxMNjeDIvLdkpBuHdi42Hoxkfb1iCu/S/zOLOQzLi2X
+         uOmix0OCuvV6bvwIxtZHhcIQU4/txVWI6r03wljr3xt/FLXWlD+gFbq+wA++qS2goQlr
+         A/YijFyKBuIgUY/LNCHPTjJFJ8gOFfq+ZQeSzR1VET+NWE5BUcI7yxlMXj+gsLZAGkxG
+         gWAFUJ4HlFsn5GWQ0vtIplwI120zEgeleGbrfZ8ICy4Sg+0Ucluq3bEVMMIOIjWkYrUI
+         Wycw==
+X-Forwarded-Encrypted: i=1; AJvYcCVLLJGenBT9SpRw4HZja8f7MoPJUx3eDcheMAGGNvbd2CVRKlNlkT6UXMAlVWi9Ev8yDp9ZfBN+shhPQA==@linaro.org
+X-Gm-Message-State: AOJu0YxnKNU7gRBQmNzfh2rG5DEUWmueNWzb8MqKSYX0BEjjDwBC/g/8
+	q42xDGhdl3fjBi0iYTM0PvkIDyMPMyxr8GrI/JKVWaENA96z/wgn0rQaH3RQbCrEI98gig==
+X-Gm-Gg: ASbGnctsxaLI3to9wbhA7iCihJC/KKWz4IxPZGxv09GwfoVrvBqPZ1vJ+yE22WFrgQi
+	XiQy53tK2tS5uTQeL/WgqZbKyqjEaU3AejRkaU/izystAr6qT3d7BxHdZxK/KwtkoMNsyUOz1Zi
+	AgIuNcmovZk9fUY/NObo/8Ryj2T1m4UxpzYIpYbAdU8njoMO90YnD+/s4tlrHYYCeEEY7jxjMBx
+	tQbnVoUhY7jxgS81qdxvXKh612taOAbRjQy6wS5lwXsFMXPmPJ+y0F4sYJcNpEj0AsiTD/A6+/7
+	toYcFs4azREFr46FmetWQ2b1Rwq80RFgr8AgQNCxZxZcIS9WMnNtkqcCzLZf/zTgD34=
+X-Google-Smtp-Source: AGHT+IFJNmxnYgubIONa8S0ID6ICpLttZdIWCbRmzjTTncyS+bivCcrNi3m2sJ4YPmh1McRRCoCaXQ==
+X-Received: by 2002:a05:6a21:3387:b0:218:183b:ccaa with SMTP id adf61e73a8af0-220292ec76fmr18167176637.17.1750687131541;
+        Mon, 23 Jun 2025 06:58:51 -0700 (PDT)
 Return-Path: <gustavo.romero@linaro.org>
 Received: from gromero0.. ([186.215.58.88])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b31f119eb64sm8063490a12.31.2025.06.23.06.58.44
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b31f119eb64sm8063490a12.31.2025.06.23.06.58.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Jun 2025 06:58:47 -0700 (PDT)
+        Mon, 23 Jun 2025 06:58:51 -0700 (PDT)
 From: Gustavo Romero <gustavo.romero@linaro.org>
 To: qemu-devel@nongnu.org,
 	eric.auger@redhat.com,
@@ -93,211 +93,229 @@ Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org,
 	imammedo@redhat.com,
 	anisinha@redhat.com
-Subject: [PATCH v5 7/9] qtest/bios-tables-test: Add blobs for its=off test on aarch64
-Date: Mon, 23 Jun 2025 13:57:47 +0000
-Message-Id: <20250623135749.691137-8-gustavo.romero@linaro.org>
+Subject: [PATCH v5 8/9] hw/arm/virt-acpi-build: Fix ACPI IORT and MADT tables when its=off
+Date: Mon, 23 Jun 2025 13:57:48 +0000
+Message-Id: <20250623135749.691137-9-gustavo.romero@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250623135749.691137-1-gustavo.romero@linaro.org>
 References: <20250623135749.691137-1-gustavo.romero@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Vw7UFzWIhkg6
+X-TUID: yiK5JkiBglo9
 
-Add blobs for test_acpi_aarch64_virt_tcg_its_off(), which introduces a
-new variant, .its_off, that requires variations of the MADT and IORT
-tables.
+Currently, the ITS Group nodes in the IORT table and the GIC ITS Struct
+in the MADT table are always generated, even if GIC ITS is not available
+on the machine.
 
-MADT (aka APIC) diff:
+This commit fixes it by not generating the ITS Group nodes, not mapping
+any other node to them, and not advertising the GIC ITS in the MADT
+table, when GIC ITS is not available on the machine.
 
-+[000h 0000   4]                    Signature : "APIC"    [Multiple APIC Description Table (MADT)]
-+[004h 0004   4]                 Table Length : 000000B8
-+[008h 0008   1]                     Revision : 04
-+[009h 0009   1]                     Checksum : C1
-+[00Ah 0010   6]                       Oem ID : "BOCHS "
-+[010h 0016   8]                 Oem Table ID : "BXPC    "
-+[018h 0024   4]                 Oem Revision : 00000001
-+[01Ch 0028   4]              Asl Compiler ID : "BXPC"
-+[020h 0032   4]        Asl Compiler Revision : 00000001
-+
-+[024h 0036   4]           Local Apic Address : 00000000
-+[028h 0040   4]        Flags (decoded below) : 00000000
-+                         PC-AT Compatibility : 0
-+
-+[02Ch 0044   1]                Subtable Type : 0C [Generic Interrupt Distributor]
-+[02Dh 0045   1]                       Length : 18
-+[02Eh 0046   2]                     Reserved : 0000
-+[030h 0048   4]        Local GIC Hardware ID : 00000000
-+[034h 0052   8]                 Base Address : 0000000008000000
-+[03Ch 0060   4]               Interrupt Base : 00000000
-+[040h 0064   1]                      Version : 03
-+[041h 0065   3]                     Reserved : 000000
-+
-+[044h 0068   1]                Subtable Type : 0B [Generic Interrupt Controller]
-+[045h 0069   1]                       Length : 50
-+[046h 0070   2]                     Reserved : 0000
-+[048h 0072   4]         CPU Interface Number : 00000000
-+[04Ch 0076   4]                Processor UID : 00000000
-+[050h 0080   4]        Flags (decoded below) : 00000001
-+                           Processor Enabled : 1
-+          Performance Interrupt Trigger Mode : 0
-+          Virtual GIC Interrupt Trigger Mode : 0
-+[054h 0084   4]     Parking Protocol Version : 00000000
-+[058h 0088   4]        Performance Interrupt : 00000017
-+[05Ch 0092   8]               Parked Address : 0000000000000000
-+[064h 0100   8]                 Base Address : 0000000000000000
-+[06Ch 0108   8]     Virtual GIC Base Address : 0000000000000000
-+[074h 0116   8]  Hypervisor GIC Base Address : 0000000000000000
-+[07Ch 0124   4]        Virtual GIC Interrupt : 00000000
-+[080h 0128   8]   Redistributor Base Address : 0000000000000000
-+[088h 0136   8]                    ARM MPIDR : 0000000000000000
-+[090h 0144   1]             Efficiency Class : 00
-+[091h 0145   1]                     Reserved : 00
-+[092h 0146   2]       SPE Overflow Interrupt : 0000
-+
-+[094h 0148   1]                Subtable Type : 0E [Generic Interrupt Redistributor]
-+[095h 0149   1]                       Length : 10
-+[096h 0150   2]                     Reserved : 0000
-+[098h 0152   8]                 Base Address : 00000000080A0000
-+[0A0h 0160   4]                       Length : 00F60000
-+
-+[0A4h 0164   1]                Subtable Type : 0F [Generic Interrupt Translator]
-+[0A5h 0165   1]                       Length : 14
-+[0A6h 0166   2]                     Reserved : 0000
-+[0A8h 0168   4]               Translation ID : 00000000
-+[0ACh 0172   8]                 Base Address : 0000000008080000
-+[0B4h 0180   4]                     Reserved : 00000000
+Since the fix changes the MADT and IORT tables, add the blobs for the
+"its=off" test to the allow list and update them in the next commit.
 
-IORT diff:
-
-+[000h 0000   4]                    Signature : "IORT"    [IO Remapping Table]
-+[004h 0004   4]                 Table Length : 000000EC
-+[008h 0008   1]                     Revision : 03
-+[009h 0009   1]                     Checksum : 57
-+[00Ah 0010   6]                       Oem ID : "BOCHS "
-+[010h 0016   8]                 Oem Table ID : "BXPC    "
-+[018h 0024   4]                 Oem Revision : 00000001
-+[01Ch 0028   4]              Asl Compiler ID : "BXPC"
-+[020h 0032   4]        Asl Compiler Revision : 00000001
-+
-+[024h 0036   4]                   Node Count : 00000003
-+[028h 0040   4]                  Node Offset : 00000030
-+[02Ch 0044   4]                     Reserved : 00000000
-+
-+[030h 0048   1]                         Type : 00
-+[031h 0049   2]                       Length : 0018
-+[033h 0051   1]                     Revision : 01
-+[034h 0052   4]                     Reserved : 00000000
-+[038h 0056   4]                Mapping Count : 00000000
-+[03Ch 0060   4]               Mapping Offset : 00000000
-+
-+[040h 0064   4]                     ItsCount : 00000001
-+[044h 0068   4]                  Identifiers : 00000000
-+
-+[048h 0072   1]                         Type : 04
-+[049h 0073   2]                       Length : 0058
-+[04Bh 0075   1]                     Revision : 04
-+[04Ch 0076   4]                     Reserved : 00000001
-+[050h 0080   4]                Mapping Count : 00000001
-+[054h 0084   4]               Mapping Offset : 00000044
-+
-+[058h 0088   8]                 Base Address : 0000000009050000
-+[060h 0096   4]        Flags (decoded below) : 00000001
-+                             COHACC Override : 1
-+                               HTTU Override : 0
-+                      Proximity Domain Valid : 0
-+[064h 0100   4]                     Reserved : 00000000
-+[068h 0104   8]                VATOS Address : 0000000000000000
-+[070h 0112   4]                        Model : 00000000
-+[074h 0116   4]                   Event GSIV : 0000006A
-+[078h 0120   4]                     PRI GSIV : 0000006B
-+[07Ch 0124   4]                    GERR GSIV : 0000006D
-+[080h 0128   4]                    Sync GSIV : 0000006C
-+[084h 0132   4]             Proximity Domain : 00000000
-+[088h 0136   4]      Device ID Mapping Index : 00000000
-+
-+[08Ch 0140   4]                   Input base : 00000000
-+[090h 0144   4]                     ID Count : 0000FFFF
-+[094h 0148   4]                  Output Base : 00000000
-+[098h 0152   4]             Output Reference : 00000030
-+[09Ch 0156   4]        Flags (decoded below) : 00000000
-+                              Single Mapping : 0
-+
-+[0A0h 0160   1]                         Type : 02
-+[0A1h 0161   2]                       Length : 004C
-+[0A3h 0163   1]                     Revision : 03
-+[0A4h 0164   4]                     Reserved : 00000002
-+[0A8h 0168   4]                Mapping Count : 00000002
-+[0ACh 0172   4]               Mapping Offset : 00000024
-+
-+[0B0h 0176   8]            Memory Properties : [IORT Memory Access Properties]
-+[0B0h 0176   4]              Cache Coherency : 00000001
-+[0B4h 0180   1]        Hints (decoded below) : 00
-+                                   Transient : 0
-+                              Write Allocate : 0
-+                               Read Allocate : 0
-+                                    Override : 0
-+[0B5h 0181   2]                     Reserved : 0000
-+[0B7h 0183   1] Memory Flags (decoded below) : 03
-+                                   Coherency : 1
-+                            Device Attribute : 1
-+[0B8h 0184   4]                ATS Attribute : 00000000
-+[0BCh 0188   4]           PCI Segment Number : 00000000
-+[0C0h 0192   1]            Memory Size Limit : 40
-+[0C1h 0193   3]                     Reserved : 000000
-+
-+[0C4h 0196   4]                   Input base : 00000000
-+[0C8h 0200   4]                     ID Count : 000000FF
-+[0CCh 0204   4]                  Output Base : 00000000
-+[0D0h 0208   4]             Output Reference : 00000048
-+[0D4h 0212   4]        Flags (decoded below) : 00000000
-+                              Single Mapping : 0
-+
-+[0D8h 0216   4]                   Input base : 00000100
-+[0DCh 0220   4]                     ID Count : 0000FEFF
-+[0E0h 0224   4]                  Output Base : 00000100
-+[0E4h 0228   4]             Output Reference : 00000030
-+[0E8h 0232   4]        Flags (decoded below) : 00000000
-+                              Single Mapping : 0
-
+Reported-by: Udo Steinberg <udo@hypervisor.org>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2886
 Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+Co-authored-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 0 -> 184 bytes
- tests/data/acpi/aarch64/virt/IORT.its_off   | Bin 0 -> 236 bytes
- tests/qtest/bios-tables-test-allowed-diff.h |   2 --
- 3 files changed, 2 deletions(-)
- create mode 100644 tests/data/acpi/aarch64/virt/APIC.its_off
- create mode 100644 tests/data/acpi/aarch64/virt/IORT.its_off
+ hw/arm/virt-acpi-build.c                    | 128 ++++++++++++--------
+ tests/qtest/bios-tables-test-allowed-diff.h |   2 +
+ 2 files changed, 80 insertions(+), 50 deletions(-)
 
-diff --git a/tests/data/acpi/aarch64/virt/APIC.its_off b/tests/data/acpi/aarch64/virt/APIC.its_off
-new file mode 100644
-index 0000000000000000000000000000000000000000..37d82e970b1331cb5b259f0bd2d3654bacb2d623
-GIT binary patch
-literal 184
-zcmZ<^@O0k6z`($A(8=G~BUr&HBEVSz2pEB4AU24G0Uik$i-7~iVg@p}17JJ`2AFzr
-Zgb>LrJ^_#xE~p*f82CkCMsUFG1ppOZ2>}2A
-
-literal 0
-HcmV?d00001
-
-diff --git a/tests/data/acpi/aarch64/virt/IORT.its_off b/tests/data/acpi/aarch64/virt/IORT.its_off
-new file mode 100644
-index 0000000000000000000000000000000000000000..0fceb820d509e852ca0849baf568a8e93e426738
-GIT binary patch
-literal 236
-zcmebD4+?q1z`(#9?&R<65v<@85#X!<1dKp25F11@1F-=RgMkDCNC*yK9F_<M77!bR
-zUBI%eoFED&4;F$FSwK1)h;xBB2Py`m{{M%tVD>TjFfcO#g+N#Zh@s|zoCF3AP#UU@
-R!2`+%Dg6Hr$N|zYvjDIZ5CH%H
-
-literal 0
-HcmV?d00001
-
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 40a782a498..17ae46804a 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -328,17 +328,27 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         /* Sort the smmu idmap by input_base */
+         g_array_sort(smmu_idmaps, iort_idmap_compare);
+ 
+-	/*
+-	 * Knowing the ID ranges from the RC to the SMMU, it's possible to
+-	 * determine the ID ranges from RC that go directly to ITS.
+-	 */
+-        create_its_idmaps(its_idmaps, smmu_idmaps);
+-
+-        nb_nodes = 3; /* RC, ITS, SMMUv3 */
+-        rc_mapping_count = smmu_idmaps->len + its_idmaps->len;
++        nb_nodes = 2; /* RC and SMMUv3 */
++        rc_mapping_count = smmu_idmaps->len;
++
++        if (vms->its) {
++            /*
++             * Knowing the ID ranges from the RC to the SMMU, it's possible to
++             * determine the ID ranges from RC that go directly to ITS.
++             */
++            create_its_idmaps(its_idmaps, smmu_idmaps);
++
++            nb_nodes++; /* ITS */
++            rc_mapping_count += its_idmaps->len;
++        }
+     } else {
+-        nb_nodes = 2; /* RC, ITS */
+-        rc_mapping_count = 1;
++        if (vms->its) {
++            nb_nodes = 2; /* RC and ITS */
++            rc_mapping_count = 1; /* Direct map to ITS */
++        } else {
++            nb_nodes = 1; /* RC only */
++            rc_mapping_count = 0; /* No output mapping */
++        }
+     }
+     /* Number of IORT Nodes */
+     build_append_int_noprefix(table_data, nb_nodes, 4);
+@@ -347,31 +357,43 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     build_append_int_noprefix(table_data, IORT_NODE_OFFSET, 4);
+     build_append_int_noprefix(table_data, 0, 4); /* Reserved */
+ 
+-    /* Table 12 ITS Group Format */
+-    build_append_int_noprefix(table_data, 0 /* ITS Group */, 1); /* Type */
+-    node_size =  20 /* fixed header size */ + 4 /* 1 GIC ITS Identifier */;
+-    build_append_int_noprefix(table_data, node_size, 2); /* Length */
+-    build_append_int_noprefix(table_data, 1, 1); /* Revision */
+-    build_append_int_noprefix(table_data, id++, 4); /* Identifier */
+-    build_append_int_noprefix(table_data, 0, 4); /* Number of ID mappings */
+-    build_append_int_noprefix(table_data, 0, 4); /* Reference to ID Array */
+-    build_append_int_noprefix(table_data, 1, 4); /* Number of ITSs */
+-    /* GIC ITS Identifier Array */
+-    build_append_int_noprefix(table_data, 0 /* MADT translation_id */, 4);
++    if (vms->its) {
++        /* Table 12 ITS Group Format */
++        build_append_int_noprefix(table_data, 0 /* ITS Group */, 1); /* Type */
++        node_size =  20 /* fixed header size */ + 4 /* 1 GIC ITS Identifier */;
++        build_append_int_noprefix(table_data, node_size, 2); /* Length */
++        build_append_int_noprefix(table_data, 1, 1); /* Revision */
++        build_append_int_noprefix(table_data, id++, 4); /* Identifier */
++        build_append_int_noprefix(table_data, 0, 4); /* Number of ID mappings */
++        build_append_int_noprefix(table_data, 0, 4); /* Reference to ID Array */
++        build_append_int_noprefix(table_data, 1, 4); /* Number of ITSs */
++        /* GIC ITS Identifier Array */
++        build_append_int_noprefix(table_data, 0 /* MADT translation_id */, 4);
++    }
+ 
+     if (vms->iommu == VIRT_IOMMU_SMMUV3) {
+         int irq =  vms->irqmap[VIRT_SMMU] + ARM_SPI_BASE;
+-
++        int num_id_mappings, offset_to_id_array;
++
++        if (vms->its) {
++            num_id_mappings = 1; /* ITS Group node */
++            offset_to_id_array = SMMU_V3_ENTRY_SIZE; /* Just after the header */
++        } else {
++            num_id_mappings = 0; /* No ID mappings */
++            offset_to_id_array = 0; /* No ID mappings array */
++        }
+         smmu_offset = table_data->len - table.table_offset;
+         /* Table 9 SMMUv3 Format */
+         build_append_int_noprefix(table_data, 4 /* SMMUv3 */, 1); /* Type */
+-        node_size =  SMMU_V3_ENTRY_SIZE + ID_MAPPING_ENTRY_SIZE;
++        node_size =  SMMU_V3_ENTRY_SIZE +
++                     (ID_MAPPING_ENTRY_SIZE * num_id_mappings);
+         build_append_int_noprefix(table_data, node_size, 2); /* Length */
+         build_append_int_noprefix(table_data, 4, 1); /* Revision */
+         build_append_int_noprefix(table_data, id++, 4); /* Identifier */
+-        build_append_int_noprefix(table_data, 1, 4); /* Number of ID mappings */
++        /* Number of ID mappings */
++        build_append_int_noprefix(table_data, num_id_mappings, 4);
+         /* Reference to ID Array */
+-        build_append_int_noprefix(table_data, SMMU_V3_ENTRY_SIZE, 4);
++        build_append_int_noprefix(table_data, offset_to_id_array, 4);
+         /* Base address */
+         build_append_int_noprefix(table_data, vms->memmap[VIRT_SMMU].base, 8);
+         /* Flags */
+@@ -387,9 +409,11 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         build_append_int_noprefix(table_data, 0, 4); /* Proximity domain */
+         /* DeviceID mapping index (ignored since interrupts are GSIV based) */
+         build_append_int_noprefix(table_data, 0, 4);
+-
+-        /* Output IORT node is the ITS Group node (the first node) */
+-        build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET);
++        /* Array of ID mappings */
++        if (num_id_mappings) {
++            /* Output IORT node is the ITS Group node (the first node). */
++            build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET);
++        }
+     }
+ 
+     /* Table 17 Root Complex Node */
+@@ -430,7 +454,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+          *
+          * N.B.: The mapping from SMMUv3 to ITS Group node (SMMUv3 -> ITS) is
+          * defined in the SMMUv3 table, where all SMMUv3 IDs are mapped to the
+-         * ITS Group node.
++         * ITS Group node, if ITS is available.
+          */
+         for (i = 0; i < smmu_idmaps->len; i++) {
+             range = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
+@@ -439,15 +463,17 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                                   range->id_count, smmu_offset);
+         }
+ 
+-        /*
+-         * Map bypassed (don't go throught the SMMU) RIDs (input) to ITS Group
+-         * node directly: RC -> ITS.
+-         */
+-        for (i = 0; i < its_idmaps->len; i++) {
+-            range = &g_array_index(its_idmaps, AcpiIortIdMapping, i);
+-            /* Output IORT node is the ITS Group node (the first node). */
+-            build_iort_id_mapping(table_data, range->input_base,
+-                                  range->id_count, IORT_NODE_OFFSET);
++        if (vms->its) {
++            /*
++             * Map bypassed (don't go throught the SMMU) RIDs (input) to ITS Group
++             * node directly: RC -> ITS.
++             */
++            for (i = 0; i < its_idmaps->len; i++) {
++                range = &g_array_index(its_idmaps, AcpiIortIdMapping, i);
++                /* Output IORT node is the ITS Group node (the first node). */
++                build_iort_id_mapping(table_data, range->input_base,
++                                      range->id_count, IORT_NODE_OFFSET);
++            }
+         }
+     } else {
+         /*
+@@ -768,18 +794,20 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                                           memmap[VIRT_HIGH_GIC_REDIST2].size);
+         }
+ 
+-        /*
+-         * ACPI spec, Revision 6.0 Errata A
+-         * (original 6.0 definition has invalid Length)
+-         * 5.2.12.18 GIC ITS Structure
+-         */
+-        build_append_int_noprefix(table_data, 0xF, 1);  /* Type */
+-        build_append_int_noprefix(table_data, 20, 1);   /* Length */
+-        build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
+-        build_append_int_noprefix(table_data, 0, 4);    /* GIC ITS ID */
+-        /* Physical Base Address */
+-        build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
+-        build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
++        if (vms->its) {
++            /*
++             * ACPI spec, Revision 6.0 Errata A
++             * (original 6.0 definition has invalid Length)
++             * 5.2.12.18 GIC ITS Structure
++             */
++            build_append_int_noprefix(table_data, 0xF, 1);  /* Type */
++            build_append_int_noprefix(table_data, 20, 1);   /* Length */
++            build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
++            build_append_int_noprefix(table_data, 0, 4);    /* GIC ITS ID */
++            /* Physical Base Address */
++            build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
++            build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
++        }
+     } else {
+         const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE;
+ 
 diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index a88198d5c2..dfb8523c8b 100644
+index dfb8523c8b..a88198d5c2 100644
 --- a/tests/qtest/bios-tables-test-allowed-diff.h
 +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,3 +1 @@
+@@ -1 +1,3 @@
  /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/aarch64/virt/APIC.its_off",
--"tests/data/acpi/aarch64/virt/IORT.its_off",
++"tests/data/acpi/aarch64/virt/APIC.its_off",
++"tests/data/acpi/aarch64/virt/IORT.its_off",
 -- 
 2.34.1

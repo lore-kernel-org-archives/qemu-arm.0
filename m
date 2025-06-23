@@ -1,181 +1,160 @@
-Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2510375dyb;
-        Mon, 23 Jun 2025 05:20:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXKL8K0BLlyYBCYblKXi9Pjke7R73pZviqYqQ7FSZs+SeJEPY1+y0VBpGFHDP0Qr8o1md3NoMZoQkidxA==@linaro.org
-X-Received: by 2002:a05:600c:a08b:b0:453:8f6:6383 with SMTP id 5b1f17b1804b1-453698fea31mr103873165e9.15.1750681255776;
-        Mon, 23 Jun 2025 05:20:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750681255; cv=none;
+Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2567086dyb;
+        Mon, 23 Jun 2025 06:58:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXOT68Ma6vJFmU/RByp2MqyYuu9tsgMrBaPU5Jp6xQhDqJUuMvtPEMmmDjxNVNUEmI11s1g1Z9p+xdkyw==@linaro.org
+X-Received: by 2002:a05:6a20:7485:b0:21f:563e:b7e8 with SMTP id adf61e73a8af0-22026e65dd7mr20497768637.4.1750687102962;
+        Mon, 23 Jun 2025 06:58:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750687102; cv=none;
         d=google.com; s=arc-20240605;
-        b=iNko30stCengABZUSdl6GUehBjvMYWDjF8Hx/aD/FDoaZYb1HSaBC5b5/lOp0pNtUn
-         +h25JxRjtPQReAfELUmmxDVYJkuAhpwlr95wAx9SbjIa0INxPTUK6rgfMC4PJH+CTzu8
-         kBpj8YIE84pxAhxKMZvN4zgX22V/OJX8v0VHjygu+Imb26Dtx51Dok9U54GEqLJn5MmA
-         L+JoqfQ0ZsjbChXaXAUnqMkt9MfNMEoT1h26oqVHTgYOJSadnKy8EJqbZIKvmBnsYDJm
-         nfiH6SQtHfOXD0JQhbWp1NV2XxC9x78HKEZAHJlq2PvCv/e29K/APODkvEjYuOn6t4Er
-         +jPA==
+        b=Ps44iSKn84jM9Gm7sQRP05ClheDf+4HrBGdI6ayLgvUQAPN6Epcg1MiUHDDmS0MCxi
+         WtmmCeDe7DfcAdO0HOgvpURR9emmIoaY9iXJ3mWGeNlqmuJqCJsoCxO/L9yuwyC8ZGLg
+         Jsoie7RbahQfVfnneeNA2EI43MiTyj0pY2CEgtoGNEjNn2fgm1l6b0aNU4bVNqvnw6HS
+         15Sv5HWrxdRpkmVuxWM5SRn3LVdnXJ7MMMUSFtRL5o/pT1l0UskIhpt0nTda/Camglon
+         CqFpHmN4eEhTeas/mioNMMRrnCjNS8W5EnlHBF17UKUKvxf1Ks0itGQ/Nvz5EivNLgtQ
+         kn+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=uYUPy6c9pCrsEaCpnIHygEtzD7GwjrL4VzsD7TAXMX4=;
-        fh=EfZASTM8NNT2dEJEQKsrzsTEu5j/Ou+g4v9TyEsMDP0=;
-        b=PJPlSJ1puPghshGJHqYrznH2jThTQZJKolUWlf/Q9Cqys5yraInLUkb4u8NhYF+nv2
-         bnILJAXh+vDAfE0tNgJy5JQJLuN6u8T40Mi933W9Dqa+wM70bOsmxlJbob7+PE+7AhMM
-         AhzlD8MaOc+mduYOISW14j7WdqlV0usmiPyG3Ui+MdNQttDGOdESim8UPr/BRsYySgWa
-         6sHSAKg8bwhkaw6JQqG9uLNxmqncsdKTCjM969ktNFGi5t5fBK04yElQf6kdlJK0Z9qF
-         2reOpx/vB50sJjsc/Sk5vcRKTjLQqY/gNUh/6ur+GgrzEicaYHBBdo9Dqzo8OoxUtKZN
-         FqYA==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=FjqjwOShSvL5ZiDHvWdQfdLkebsd1QtRSET7cdjduQM=;
+        fh=nvx6nsRgdLL32jX6dZIu4t1NFwEfSZ3+Fei3qzH+J08=;
+        b=lgITwo7nEi9sXjr2zY22ppq3BI0oj7qq0nze7es9/O90pEtJAQthUKkLQ7HW2RP8KO
+         NDgmHv24ESSeQkSLzPoHJLupmgF9Zi1mdmS/ovYyQxNg0bqDYwgrK7jiiwsmAQEkwImE
+         qpnfFU9WIZGYFADJ1mgb0+NELWiXMNXZg+9gh4QPguZ23+8+k+q48SrYr9dMfsm4xTDU
+         67RhZvCW8vAHJUwRCUxXudBE5oGomRsKvsUbIDelvz7KOOl9AvSB0sHKPEmqWoNeZhJ2
+         mkcSuEmHWcjfa4TB8YrHDmD4ouffJrcPG6DJGtXituB+3USQhd//dfMigs0+mbmjNvgj
+         Mkzw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hYaw3wLc;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="EahVt/KL";
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
+Return-Path: <gustavo.romero@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-4536a37f960sor12898975e9.4.2025.06.23.05.20.55
+        by mx.google.com with SMTPS id d2e1a72fcca58-7490a475de2sor4059626b3a.1.2025.06.23.06.58.22
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 23 Jun 2025 05:20:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 23 Jun 2025 06:58:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hYaw3wLc;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="EahVt/KL";
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750681255; x=1751286055; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=uYUPy6c9pCrsEaCpnIHygEtzD7GwjrL4VzsD7TAXMX4=;
-        b=hYaw3wLcHrc9LfG6qOhOwAe9SbaekiwYRvB+d7u/yHO3OkGhpR1786bkEJjJeGuw+l
-         +j5NPRE7iy+XTWNeXuEXjWab16dZwLj4werPR1u3js/vA/1V7HMCkgYcfygrhyEDNJ0d
-         RKxs+38A3KV9qRR6WHjtc2KGFrW+SfJ14q+MnEL3JuVMdAbyVgL6QrMuYulrSXGSs6Ty
-         hMAaVoDb9aL6D73xWaaT9x5xLvMSV7KYjSVfxbu/m4hv8DpRNY9OMbSUKAQ2LYAuwatV
-         AFnQIEDNiNzUA9jd5WUqLfc6Ekb1U83fgg2UoUMn4LIOjuHvaMrXj2kjM/JGNnK0HS0c
-         rYEA==
+        d=linaro.org; s=google; t=1750687102; x=1751291902; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=FjqjwOShSvL5ZiDHvWdQfdLkebsd1QtRSET7cdjduQM=;
+        b=EahVt/KLQkLHrAVlMH6HV/z+2fMADWFgkZCH27KsI30mgOKb4FAPC56T9yaqafr1QX
+         15hOUbXhLozLD4AWDGjvTyKrZSeCQHKelGHL2EBfvEISn2AeWGXhemqsrsDbcgMIYBff
+         /Ciso2Y3uAxikIFN7XtpcNbfVzjqI5bN+5vdRAPu+1/H5Y92b5O+VuKljgzKJYBaXOlc
+         55ysl1Vd6N5JIhPGTo7w2n750zsY1+JvPkpXrpaLSEzN0/zM573tqn0YTkw64DfAlgnA
+         Hgg5MfsRtRylAxcryaEkpIJqHBV9o05j5gLQFmiaeWkdIzV1ZR1gET65nVZzGVDNTXho
+         1fSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750681255; x=1751286055;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=uYUPy6c9pCrsEaCpnIHygEtzD7GwjrL4VzsD7TAXMX4=;
-        b=A0E6nx+xL2/YWJPZz5YUbdHnpyzHZ5YipH9qfiFhthkzSrgqE4rrKwU5KIwZ+d1PI6
-         ZGNNBtI9ZZlPoYdTP9eca+7aDofCmnYNj8Z6ujyK30PWxGS0dnLbF++DYKkpyA2payRk
-         Z8PX4dLng1/+SbmujINGjvSMTtd40XEZUkMimanvYVNVHhTGKKWIgsnlumUXVsr6R1cI
-         sa6HnX5PsMU/zw+EfNrAbZiBYpCvV120t69NVmG36yLm7cSVPVQvj1hw7U0GfRjYplKO
-         0fs/Czmhk7zU2P07OdDd5QgCxGUzt2BsrJGw9pOTRX0NMloCuquWBGbchoxEHdmo5uIi
-         R7Lw==
-X-Forwarded-Encrypted: i=1; AJvYcCW8McfdqUXIvYvlgymU0EpUIGIax7/ROVGWqU7GWNrO3aPQv/fCJ3w6EvAQXRyLlOcLpWT5eSIFC85fNQ==@linaro.org
-X-Gm-Message-State: AOJu0Yz9BoDNgjnU/3L4GIFGd5BW0PzkNrUKXwZ9JrcTXbDJ3NJ6pIay
-	pOtLJ/h0rMiABLDVwCf+Nvf846DcUHn5s5YHvS8DHIqiNtHFex8XtgyRlRtd/BBAXtdJ9OTAVt/
-	VzZAt7vA=
-X-Gm-Gg: ASbGncsfBxjyIodOiEsZBnxsccfe//s2oKpO5h2VkQWf6yKL5nd3c2VDeIbw2r9heFd
-	qIAh9nO9+2lODP+t08M4ME3YDlFjnfmbtrTzq00vQZjUW8g9E2aMKCLJcCk+oMMxAvc0nb+KhTt
-	hOOqEbisP6xnLkxGxdl9keTulmSX5KtkK7Eps6qdWIlx4DMNz4/mpjGl1Gz+29iWSmo9hJEFKS3
-	osTvWmPRZLRMnUatm1MSoQ5hS5ob7l1PpojVGuzBl/ISEQPNFSg+cd/w/XGBKIsL0xt5FTX4NP6
-	zfol7kbNFjaUfr4Ijmbxf7MrMv+DyFmny9wqQ16DUXi2eFJWkgfbape/8kWX0x54WzpDgWatnIW
-	lEZPUUfqBJaiI9jV3lHCaknMHW0/o/yEgMh19dGO+S6i00qU=
-X-Google-Smtp-Source: AGHT+IGT6YWtiD9z6rC4lmVWjBSvzyqzKhJAfYphN1oZr29sjiHZbaoLUEt5rTgirbEWO1WecJkvgA==
-X-Received: by 2002:a05:600c:4512:b0:453:5c30:a1d0 with SMTP id 5b1f17b1804b1-4536e0da765mr56200145e9.21.1750681255141;
-        Mon, 23 Jun 2025 05:20:55 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6e2036094sm2263838f8f.99.2025.06.23.05.20.53
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 23 Jun 2025 05:20:54 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Roman Bolshakov <rbolshakov@ddn.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	Bernhard Beschow <shentey@gmail.com>,
-	John Snow <jsnow@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	kvm@vger.kernel.org,
-	Eric Auger <eric.auger@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Cameron Esfahani <dirty@apple.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Radoslaw Biernacki <rad@semihalf.com>,
-	Phil Dennis-Jordan <phil@philjordan.eu>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 25/26] tests/functional: Add hvf_available() helper
-Date: Mon, 23 Jun 2025 14:18:44 +0200
-Message-ID: <20250623121845.7214-26-philmd@linaro.org>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250623121845.7214-1-philmd@linaro.org>
-References: <20250623121845.7214-1-philmd@linaro.org>
+        d=1e100.net; s=20230601; t=1750687102; x=1751291902;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=FjqjwOShSvL5ZiDHvWdQfdLkebsd1QtRSET7cdjduQM=;
+        b=aZuPagsYj+HVmxNqEM5IMZP9NHsiOdDICGSNFCoky1J+js81F/wH3SSShBUcfbjOnI
+         MqOD63fGw4kI6EKcSokmzimGZTpj7BeA7uCYPJGij70nfyZB1WuKaKhAEbufdxxvt1Vy
+         MNKSugeN0Ftvn5VxIVHF51P7FqCfTtRIFq7iLY+MsKr6SRby12LNrr3RzAIydk1v3l45
+         i5ZtF0DAoq3nxrYfqY9/QbIHkN9r8euB76gxBFFXRWPWZ4JO3M3Rn5DB5DSrBZ/mJDA4
+         NRVy63vP0/mkcllfh7WibMAP5qbKBlUcKvZiVOqJgaBkwqUoj5XspDv4QAja2qxueXZP
+         4Q6A==
+X-Forwarded-Encrypted: i=1; AJvYcCUYc4O+ZrbGh4V7amtkWR6CI9vRdcEWhJmqO3gO9F3UJOvoXvnElBo6ZmPBmTo0KtGcsn8bW25Covpvbw==@linaro.org
+X-Gm-Message-State: AOJu0YxdlZbsJrJmMPJM7OIB77cxwKeuoD+wvKOkNL2dyJ17TYPmCWbN
+	B+7esWUkrDU4RFzu3rco1wcEmPLwIrRbMh8Wf2WpBi4RMPS3QAOrU812qztNREmxJQhbJA==
+X-Gm-Gg: ASbGncuLcaVPzRtewdY8zxGEpuDz42ZSkGiYwyHJvmyDcVsq+uPc+ojvM2k+tsGsP8c
+	o9dfegeJf8VCV+3i8gp2EnFcX3D/noIcXjUdQ+wxSbnPypkjy8BB6vYW87L0Tjf+lDyJMAgtcf5
+	RXFRAy5upYjSQksHaKI1tznub+NYEBZ/72Ml8WfU3NmKF5oJnQuZ29K/zZTQrKAMlTyA+rl/Dfj
+	uOwnsRUZUra4PpWaDyugJgfn169BROVnEFxkU0ZX/al5ccNX8PVPQCwHZ2V993Z2CTra55mF2Zy
+	cntTl/ePUPo2TOkG9JmwjmW8RSX3mAyOoAPDjgwQHNipz8DhDR/yvKMkp74w/zjGoyM=
+X-Google-Smtp-Source: AGHT+IHaA3Yci2lOBcHNqVah8h5dJVMn2TwdFADEDLj0ezLFm7ojgfI/ihv3C+IjezMknXl6Qtfe3g==
+X-Received: by 2002:a05:6a21:6daa:b0:216:5f67:98f7 with SMTP id adf61e73a8af0-22026fb9b57mr16047428637.33.1750687102509;
+        Mon, 23 Jun 2025 06:58:22 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from gromero0.. ([186.215.58.88])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b31f119eb64sm8063490a12.31.2025.06.23.06.58.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Jun 2025 06:58:21 -0700 (PDT)
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: qemu-devel@nongnu.org,
+	eric.auger@redhat.com,
+	philmd@linaro.org,
+	mst@redhat.com
+Cc: qemu-arm@nongnu.org,
+	alex.bennee@linaro.org,
+	gustavo.romero@linaro.org,
+	udo@hypervisor.org,
+	ajones@ventanamicro.com,
+	peter.maydell@linaro.org,
+	imammedo@redhat.com,
+	anisinha@redhat.com
+Subject: [PATCH-for-10.1 v5 0/9] hw/arm: GIC 'its=off' ACPI table fixes
+Date: Mon, 23 Jun 2025 13:57:40 +0000
+Message-Id: <20250623135749.691137-1-gustavo.romero@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: SdzsNqpIAC2v
+X-TUID: igkfFA0MzMJs
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
----
- python/qemu/utils/__init__.py          | 2 +-
- python/qemu/utils/accel.py             | 8 ++++++++
- tests/functional/qemu_test/testcase.py | 6 ++++--
- 3 files changed, 13 insertions(+), 3 deletions(-)
+Since v3:
+- Fixed remappings in the IORT table when ITS is no present
+- Rebased on master and resoled conflics, like no more "no_its"
+  flag in VirtMachineClass
+- Dropped patch 1/9 because we actually want the instance flags,
+  not only the class flags, and the instance flags are the ones
+  to be used often when deciding about the presence/absence of a
+  machine feature, instead of the negated class flags ("no_*")
+- Adapted the other patches that depended on 1/9
+- Dropped patch 4/9 in favor of using the instance flag for
+  checking if ITS is on or off
+- Simplified VM options for the new "its=off" test
 
-diff --git a/python/qemu/utils/__init__.py b/python/qemu/utils/__init__.py
-index 017cfdcda75..d2fe5db223c 100644
---- a/python/qemu/utils/__init__.py
-+++ b/python/qemu/utils/__init__.py
-@@ -23,7 +23,7 @@
- from typing import Optional
- 
- # pylint: disable=import-error
--from .accel import kvm_available, list_accel, tcg_available
-+from .accel import hvf_available, kvm_available, list_accel, tcg_available
- 
- 
- __all__ = (
-diff --git a/python/qemu/utils/accel.py b/python/qemu/utils/accel.py
-index 386ff640ca8..376d1e30005 100644
---- a/python/qemu/utils/accel.py
-+++ b/python/qemu/utils/accel.py
-@@ -82,3 +82,11 @@ def tcg_available(qemu_bin: str) -> bool:
-     @param qemu_bin (str): path to the QEMU binary
-     """
-     return 'tcg' in list_accel(qemu_bin)
-+
-+def hvf_available(qemu_bin: str) -> bool:
-+    """
-+    Check if HVF is available.
-+
-+    @param qemu_bin (str): path to the QEMU binary
-+    """
-+    return 'hvf' in list_accel(qemu_bin)
-diff --git a/tests/functional/qemu_test/testcase.py b/tests/functional/qemu_test/testcase.py
-index 50c401b8c3c..2082c6fce43 100644
---- a/tests/functional/qemu_test/testcase.py
-+++ b/tests/functional/qemu_test/testcase.py
-@@ -23,7 +23,7 @@
- import uuid
- 
- from qemu.machine import QEMUMachine
--from qemu.utils import kvm_available, tcg_available
-+from qemu.utils import hvf_available, kvm_available, tcg_available
- 
- from .archive import archive_extract
- from .asset import Asset
-@@ -317,7 +317,9 @@ def require_accelerator(self, accelerator):
-         :type accelerator: str
-         """
-         checker = {'tcg': tcg_available,
--                   'kvm': kvm_available}.get(accelerator)
-+                   'kvm': kvm_available,
-+                   'hvf': hvf_available,
-+                  }.get(accelerator)
-         if checker is None:
-             self.skipTest("Don't know how to check for the presence "
-                           "of accelerator %s" % accelerator)
+Since v4:
+- Fixed/restored commit authorship and author tags (philmd)
+- Factored out create_its_idmaps to clarify how ID ranges that
+  go direct to ITS Group node are created (eauger)
+- Addressed all remaining minor review comments (eauger)
+
+
+v1: https://lists.gnu.org/archive/html/qemu-devel/2025-03/msg07080.html
+v2: https://lists.gnu.org/archive/html/qemu-devel/2025-04/msg00495.html (Patches 6/14 -> 14/14 in the series)
+v3: https://lists.gnu.org/archive/html/qemu-devel/2025-04/msg00567.html
+v4: https://mail.gnu.org/archive/html/qemu-devel/2025-06/msg02583.html
+
+Fix ACPI tables for '-M its=off' CLI option and resolve the issue:
+
+https://gitlab.com/qemu-project/qemu/-/issues/2886
+
+Cheers,
+Gustavo
+
+Gustavo Romero (6):
+  hw/arm/virt: Simplify logic for setting instance's 'tcg_its' variable
+  hw/arm/virt-acpi-build: Improve comment in build_iort
+  hw/arm/virt-acpi-build: Factor out create_its_idmaps
+  qtest/bios-tables-test: Add blobs for its=off test on aarch64
+  hw/arm/virt-acpi-build: Fix ACPI IORT and MADT tables when its=off
+  qtest/bios-tables-test: Update blobs for its=off test on aarch64
+
+Philippe Mathieu-Daudé (3):
+  hw/intc/gicv3_its: Do not check its_class_name()
+  hw/arm/virt: Simplify create_its()
+  qtest/bios-tables-test: Add test for when ITS is off on aarch64
+
+ hw/arm/virt-acpi-build.c                  | 169 ++++++++++++++--------
+ hw/arm/virt.c                             |  25 ++--
+ include/hw/intc/arm_gicv3_its_common.h    |   2 +-
+ tests/data/acpi/aarch64/virt/APIC.its_off | Bin 0 -> 164 bytes
+ tests/data/acpi/aarch64/virt/IORT.its_off | Bin 0 -> 172 bytes
+ tests/qtest/bios-tables-test.c            |  21 +++
+ 6 files changed, 143 insertions(+), 74 deletions(-)
+ create mode 100644 tests/data/acpi/aarch64/virt/APIC.its_off
+ create mode 100644 tests/data/acpi/aarch64/virt/IORT.its_off
+
 -- 
-2.49.0
+2.34.1

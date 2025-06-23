@@ -1,86 +1,86 @@
-Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2510039dyb;
-        Mon, 23 Jun 2025 05:20:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVGwtDYPXUBIUZ0tNR8fCG4YP/TjPC2x2htRjJEweHG/EFpPFVfm7JpGsiwY63DyzZE4M3OfAKZt9dByA==@linaro.org
-X-Received: by 2002:a5d:5f4b:0:b0:3a1:fe77:9e1d with SMTP id ffacd0b85a97d-3a6d12c1848mr10458079f8f.16.1750681220341;
-        Mon, 23 Jun 2025 05:20:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750681220; cv=none;
+Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2510430dyb;
+        Mon, 23 Jun 2025 05:21:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXj8Jv2IFCZ6+/jMoNSehFVkWCN/jH6COgKrGEl3cnXEx4FqZuYa/bGY8WWKPgRyPkevH0jKJ0H3kIYoQ==@linaro.org
+X-Received: by 2002:a05:6000:2308:b0:3a4:e6c6:b8bf with SMTP id ffacd0b85a97d-3a6d1325a45mr9830536f8f.52.1750681260813;
+        Mon, 23 Jun 2025 05:21:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750681260; cv=none;
         d=google.com; s=arc-20240605;
-        b=izFsLYTqzoSy2BawMXALLPl7mnuFxzDJywJxRlYgD5J9k5wHoS4i07nMWIZg+QiOO4
-         t4OPvwo+6Qr9YiT5Tbps0EkXObA/GvevcAKhwCcC2/GZ21NZDjSHV0+4JlL9puTbfZU7
-         m6ULbBUJfgqDfTefvhvfe+Ol/t0YKsZd/nqLFBkqvgFyENxnEFo23OpF3kYr0+1jqsle
-         UmFTHjMmGhIv8xiiYeV9FpuoTs6SG/K49uoH+qBNe1BZ3B08XUEgFlBtsqyZYYG4uZnc
-         HTMaggrOP/tkBIIh5/b5rO7OHGki3ZRM4VQksg/Q87DRaYfmxvtrkb0WmSrx8ltYY4yz
-         8Djg==
+        b=kuUP6rfoag0lDHaMudRFA88sJ09n2+VfsTfl3qgaxJ1csu0MhlP7zQsgb0S222X9VA
+         d4yop8ZcMH27j/PbIvWfQWIeXyrrMEAK0prU2cfyXMIl2S8gUeBUFP/WnB2637J/UJQ4
+         Uk6Z1XLWUTITQazpnLoJwCpG4AhH71YQINkfMNk1rpn5p6ynGJSDE+Z6eJ0j6NytIRML
+         MfsbnDUD4mLJIHgX8hFiXFnMegotzV344g/L7+PLF1Un9Hk1VmwdHMPUqntOvIRQRxDY
+         ow8j51pDwcqclks/Tx+pGxNaUrxArKIQqutq7B7LhxOBGUtFGSfvaEN3FpoeGXmp/tBi
+         RLaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=CoTleeCUcvYndolgWSxVbjuEBw5fGt+mb1nmRFlbWPU=;
-        fh=QFlTUXrNFIkDQ7be9wjXdBNKuk2GX8BkO9pp6UJZO3k=;
-        b=RHOI23IFTXI805Mrf5MtF7vxWpN4SvJTaqZsP6x/CthKzKNjOaaXZ5OJwnHHkK2/UN
-         WLs7ZbwFuhF9xjPgMmxENkGtuJQeO8QUbu4eCEaabz1hoELcPNmmFUxQdjPSa0600ZXp
-         WGrL8UqkW77z1Jeg0sD1rgnonSTslvaI37WCVG+Mkv//17hjsH41gT/DBsb9wgTx3fcT
-         uvmukYZ6l83ln6/pXPYfv7mq0Y5Q5B2wYhPVK4FnOJIdgegHxC15ECjAeG8F57FxUVwe
-         PPOU+Qfvb3mfW0+55IiNk4tJ+5uXhk4gt4wJMmOxswriCPvuoAhE4mWtPQFUyNSTzyB/
-         /FXg==;
+        bh=udXllEXY1gPSi8pgPr+YWAsY2WGcZfddjVlJVNiCuOE=;
+        fh=egEn7dwixqXaU+PHumaWZxIWRBiDnJDyDDSjl9U/L+E=;
+        b=UIIEwVE7nlSpom8YEOLaK7J8C1e8z/Mza+sAlmY7DCsgHM3rFC6QSaiiAHwqkOVoyP
+         LOQzk7NCN92FW4V4k6H1X41hmep7kufC5qExJhu7KrVOaxbJ7IH5E6UvX1spS17P11sr
+         1DmR3mHUpvYEzqgt0vIlPmmUOGzFPWu0eWnn/bSDx4+aXKWnpq6Zj2a3lmEJdPGMAJYO
+         6b4PS6j3ZHIgw0etLjkVEjihx2i7IigntEg4rgnv6drYcaROvn/RVo+UD4TnQmB5sK1x
+         XjJJ5PcpYhqTDTccNmebxtzEhw5DtMv+O6NnAqPGGA9Jit0PIgnkQEtzrlY0laXL5Hyy
+         /iZg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WemGmd9s;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IJAlvsu4;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-453646db077sor27591115e9.4.2025.06.23.05.20.20
+        by mx.google.com with SMTPS id ffacd0b85a97d-3a6d1363b1csor2710623f8f.0.2025.06.23.05.21.00
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 23 Jun 2025 05:20:20 -0700 (PDT)
+        Mon, 23 Jun 2025 05:21:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WemGmd9s;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IJAlvsu4;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750681220; x=1751286020; darn=linaro.org;
+        d=linaro.org; s=google; t=1750681260; x=1751286060; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=CoTleeCUcvYndolgWSxVbjuEBw5fGt+mb1nmRFlbWPU=;
-        b=WemGmd9sfSN45XoHMpqfVcIN96wBKk3kbTYSbJolAZCeGIInJjvqYGxwut9c96Uh0Q
-         +XoGAPjR01bvSRfl/JS0a10VtTZ2efmrxCkxAY+q3KkWwEnmoiYgc0ptkJbm+bQQGyk/
-         n4gHiEYVfZvze9GHzotkbEAaVgiQBteQKhyf3HTZPuS2eQXV7PLxGiP6l8RHdxYN4D8R
-         +aqaoddBmwQ+KwneCQbdSr63YNJrXk99t89hUUsSi5TTy4FY8RkMtRWGemcEHLdlDgZB
-         fJNZEBxrVOnU6hUHg6f04xAAhF45EwZ8WA/oczzLT5WECh2iIf6R3nmj0NeNPmsiR+FV
-         D1IA==
+        bh=udXllEXY1gPSi8pgPr+YWAsY2WGcZfddjVlJVNiCuOE=;
+        b=IJAlvsu4Yq1YaN36ghkG9EoQe0gtQiIaeYLWQUhLsVJcQlyOg3vACUlxI5k/1N3tVh
+         RSEq19VeSgoU+8ziIx8LZ2v3U+z37O0m05SNrdjfhpp24LE3it9MCA7A2w4tKkvrc1OA
+         kKngE+qAmhA5Fa9Q1Ge3O1XEsGoQh/WwIvcJ953MphpDgitzs6WYtJWfURxjBUcaTJmp
+         wIzUIoMDx9/Hor6zd91k7qG9Ghhxw3u0++8T0OiwaeAjntYoRtWyhhQeNH0za0oCbLwG
+         x+BoYFNCqohGYThR/wbRrYE+3+3eT7hudxA1NbIKRqDVvQTfvqcukmsgkZwgadCZ/UeE
+         tNsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750681220; x=1751286020;
+        d=1e100.net; s=20230601; t=1750681260; x=1751286060;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=CoTleeCUcvYndolgWSxVbjuEBw5fGt+mb1nmRFlbWPU=;
-        b=qlMfvBaQ5b9u0rYU9iq2SB1kUhIp51o7ck5vf17o4TJjZ4JTzJPHIuAhb8TjH27rmp
-         cnWmbgUy5yc9Lh54MgP1InUmqIZ18621eDMgYJYZnsciO75hpskXfL2imqsv66tl3701
-         nJ7pzBNjKENGzKZDo6FclLo8RtR2SQcj+MvBXTfUygY2xoFaMwFZ6BuLAsQ/CCbP282J
-         D34zM/nIxdQrUn1L1sNIP7wxzY7ysKuZRbw3p38d+/7DXuPwme28AOqWEW0705+ddurj
-         39uYLWWZeNv+8ScHxBerIgCTRcTOAlqUhU5gvNa5iSRM40UfK76oqiJSv0W30PwbaAAV
-         AM3A==
-X-Forwarded-Encrypted: i=1; AJvYcCVSOzlNSNLhr9O5VnLwbhznPNJly6wlyAffDh9eEpaGcGsxtg6M0h44Kc+hBWeyOyOf7rUV+Y3qd8H++w==@linaro.org
-X-Gm-Message-State: AOJu0Yx9K+YUdK4ih4BBG0Mzc8FIMhCBQEGGiF0WgyM5K0/0laaLY0JL
-	dm3dq7cPCaIrAjmYPZi8ezOMKPkAneG8Su2I9J/dcgrPXTNexAXbEcRxudTT3ssabOW8JA==
-X-Gm-Gg: ASbGnctbUuzDm5z2x0hF6jD0ZzKQTgAFzzKIWfNxHlboJ39u+e1xlr15weZ4xA1Zayp
-	+3Y6Op0X0vWlyOMHRS3w+3GqkqMLJ1zvRkt/k+8RnE6BhYtxhF60yxU8FmvzWBpf615dnjKgoZ3
-	dieT06R5ueNwEOgTUOp2YYFIHOgckgqUze/0r9EH3veu1yLZd9U1mzavaCeh+ndU/st0q32Kvo1
-	lI8qaiR6uUcgrAR6+HIMxf+86OfTi71OjbKyueQI4w3c9HCn/QHhmLw+8UbXUakbNrtbkz7V8ET
-	QGImSflfsY4tkLBONpjhZKNVeuBq0B43HV+/R5pi6boI0sMkPncQ36s0X57C69lHLvSTUyriLjQ
-	fZjEga83j5qMmhjwo7yMrMp4D3J7wnRuEAoTsYhwzP68DC+w=
-X-Google-Smtp-Source: AGHT+IFBHJwLkEEc6nlf5I87v2Hc8Cpzzh5zV8wh3kfSp+SDxvF8pOTvTMZ84BVKQcVmti0UNd5Jng==
-X-Received: by 2002:a05:600c:a345:b0:453:58e8:a445 with SMTP id 5b1f17b1804b1-453654cb7bemr101468665e9.11.1750681219792;
-        Mon, 23 Jun 2025 05:20:19 -0700 (PDT)
+        bh=udXllEXY1gPSi8pgPr+YWAsY2WGcZfddjVlJVNiCuOE=;
+        b=Rc20j3Y0Q6ZmFae/M78PgcQJLXZTRtnGvNRbQ9Tml9g6dpBUafAHsonns1d4YwI2ul
+         nmcP3AEg8B8zjldQcSXBD1V2mtogfNt5abvks/mCUDQvMNDUG68zOU0Zjik1hmieO1XV
+         4+w2GmGO5BTDoNGFWT0Ii3sdSorRiWH0ffFQ963WKLgEBwex42aaD81gT1BGS5UBBnrF
+         Hz/j6YymIGsHIXQo4ZUaHF5H40AOYJzEK2rP2b66Rl5DCz2H4K8AdKpYzu47WptIYHL3
+         nmz97SPaobXsO0+SirqwAHxcR+MRrxQvdSD2p9xzVCUAR3wY0j4ok8HQWBZRqmD254vn
+         XSYg==
+X-Forwarded-Encrypted: i=1; AJvYcCVQX0NTsdUCvIG6OmxEnq5ZaX5rmzIYcxvpmbzj8RNAi7q3ZLmI2J4pKo/Z52YY+bjgTjqx5e6SP4GsJQ==@linaro.org
+X-Gm-Message-State: AOJu0Yz+/PeXbtGWqGv2BBYfzQuMuPVhuRKky2adS3OFDdwTaAdscD53
+	GsaAIsjDnZ3q8/MQ6NOvFTTrP56zYs61VkGb3nIIzaS2xBtX9iWWxIk/Ypq7SO4k41SVHA==
+X-Gm-Gg: ASbGncucS7bgXjHyqKjdwKaztOFh4lNmOzOSdiL9pEpnZNWwEzcdKAlc4ytTtOh8kgX
+	xO65SxEjkFd/2YUMWl1j/Wwx5ghFe2/r3V8QO02Ns+88G9pqLvN9kIWtpzoYibC2hNz+8bqWMfx
+	LqhDCQZJxD1B43+KQLb0RpEjMGPAiAzvh57WPVFiwDfNMYd1qveFgv4QDZ+VZKJumx0O72iEKmk
+	upefSPfIwLGdCSeHgtCWG0Kar7I25SR5zgD8WJFwz23fwW3l2yBeh1V2lvhao7Yw5h1FkNxIosE
+	0Uvzm1DyS+YHSMQ1Gvr1lCa+FhtZxm3JaPtsQB5nVrF9pnp4jhOKwcImslfHEbsXZ4q8xiDpO3v
+	VpA01BiYT19MGidmA75Kt5WTLk3HMaExcsqyc
+X-Google-Smtp-Source: AGHT+IGSZgVi8a4ONdtjF7+uNRguyN8Xn3B71Lmx7xCfC5fcG/JmZoeL4oP6TQwKjqTxGU0oRlOa5A==
+X-Received: by 2002:a05:6000:2d11:b0:3a4:e1e1:7779 with SMTP id ffacd0b85a97d-3a6d130707cmr5965156f8f.32.1750681260192;
+        Mon, 23 Jun 2025 05:21:00 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-453647071f4sm109685435e9.34.2025.06.23.05.20.18
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d0ec947fsm9340220f8f.0.2025.06.23.05.20.58
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 23 Jun 2025 05:20:19 -0700 (PDT)
+        Mon, 23 Jun 2025 05:20:59 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
@@ -103,39 +103,54 @@ Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
 	Phil Dennis-Jordan <phil@philjordan.eu>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 18/26] hw/arm/virt: Only require TCG || QTest to use TrustZone
-Date: Mon, 23 Jun 2025 14:18:37 +0200
-Message-ID: <20250623121845.7214-19-philmd@linaro.org>
+Subject: [PATCH v3 26/26] tests/functional: Expand Aarch64 SMMU tests to run on HVF accelerator
+Date: Mon, 23 Jun 2025 14:18:45 +0200
+Message-ID: <20250623121845.7214-27-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250623121845.7214-1-philmd@linaro.org>
 References: <20250623121845.7214-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: TxQjpTUlwc/a
+X-TUID: bCTf3tn0eUi9
 
-We only need TCG (or QTest) to use TrustZone, whether
-KVM or HVF are used is not relevant.
-
-Reported-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/arm/virt.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/functional/test_aarch64_smmu.py | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 99fde5836c9..b49d8579161 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2203,7 +2203,7 @@ static void machvirt_init(MachineState *machine)
-         exit(1);
-     }
+diff --git a/tests/functional/test_aarch64_smmu.py b/tests/functional/test_aarch64_smmu.py
+index c65d0f28178..e0f4a922176 100755
+--- a/tests/functional/test_aarch64_smmu.py
++++ b/tests/functional/test_aarch64_smmu.py
+@@ -17,7 +17,7 @@
  
--    if (vms->secure && (kvm_enabled() || hvf_enabled())) {
-+    if (vms->secure && !tcg_enabled() && !qtest_enabled()) {
-         error_report("mach-virt: %s does not support providing "
-                      "Security extensions (TrustZone) to the guest CPU",
-                      current_accel_name());
+ from qemu_test import LinuxKernelTest, Asset, exec_command_and_wait_for_pattern
+ from qemu_test import BUILD_DIR
+-from qemu.utils import kvm_available
++from qemu.utils import kvm_available, hvf_available
+ 
+ 
+ class SMMU(LinuxKernelTest):
+@@ -45,11 +45,17 @@ def set_up_boot(self, path):
+         self.vm.add_args('-device', 'virtio-net,netdev=n1' + self.IOMMU_ADDON)
+ 
+     def common_vm_setup(self, kernel, initrd, disk):
+-        self.require_accelerator("kvm")
++        if hvf_available(self.qemu_bin):
++            accel = "hvf"
++        elif kvm_available(self.qemu_bin):
++            accel = "kvm"
++        else:
++            self.skipTest("Neither HVF nor KVM accelerator is available")
++        self.require_accelerator(accel)
+         self.require_netdev('user')
+         self.set_machine("virt")
+         self.vm.add_args('-m', '1G')
+-        self.vm.add_args("-accel", "kvm")
++        self.vm.add_args("-accel", accel)
+         self.vm.add_args("-cpu", "host")
+         self.vm.add_args("-machine", "iommu=smmuv3")
+         self.vm.add_args("-d", "guest_errors")
 -- 
 2.49.0

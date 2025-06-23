@@ -1,144 +1,96 @@
-Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2287867dyb;
-        Sun, 22 Jun 2025 19:18:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWdGf3+GgPslvR2AtZO9QWxE1L2FIpnmAXqeggM/yoUG8sT7TejLoL3rhknhTIP9oGPZs6H5hJYOUjdlQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFRzrQMJ6T/obXnUmsWPXsPPjN5Wu054GTyd7TvND0GeBn0QlCC3ODgEvbwAKzpfs+nAQIJ
-X-Received: by 2002:a05:620a:27c3:b0:7c7:9a85:d395 with SMTP id af79cd13be357-7d3f993868amr1811805885a.44.1750645098575;
-        Sun, 22 Jun 2025 19:18:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750645098; cv=none;
+Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2434504dyb;
+        Mon, 23 Jun 2025 02:43:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXnoz9yjCiiswugXj/7hEgsXILl7MjVc1RPQqEubgivJ3CyhQFxmJhjFeok86EpCQxFVMn9bK1BN5FP1w==@linaro.org
+X-Google-Smtp-Source: AGHT+IG6OLmgh8RJHMuFsJFS8FnWlIat362BNZF8+lMKlemiFwfwGnYmUW9XzqiwhwgRCQF1so5T
+X-Received: by 2002:a05:620a:7001:b0:7d3:e939:52a4 with SMTP id af79cd13be357-7d3f98c4a72mr1517892085a.3.1750671809559;
+        Mon, 23 Jun 2025 02:43:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750671809; cv=none;
         d=google.com; s=arc-20240605;
-        b=SYiLufMg70kn24bJ2sIUQ9gNeCu+tun8Ja+761WHt3oC80ckauh8qrDrWEVBH/A5cJ
-         sUJ4pufETLkITZf4o3gG5B1ZkTbQz5HVv/+jz3emWPNXiqOgdKbOwJ7j4yCewmIubty2
-         ttumBz4+c1vVzx+nEKp7LnfRlPCMCqvknt/YSAu/k/8xQCb62pTJlBeo4D9/KoM/uqnW
-         7oMURbYuEVJYZ9v1NWfv2Ktf+WoqBxnMouaFpnNkE5EBak12nl+whM8m98V6dA32xUJ3
-         FKcej/oZkMVIJB21roauxHWQCSgcQjGjZQoK/e2qWh+6smMqm/NYu3DVpQqQRFsBygzz
-         gMTw==
+        b=BaWCfc3VeEk6jpPQhCiIH3gGx5REmeM0j6Rsfx7PoyeT5SdTe8RbPTiMY567Hftvym
+         VF9xQAUEwF+XMIKlFw7TXim8Mec8Tu7OEPqtyaqy967sc2mKozUocIR7a+6b/NSqOZBF
+         sThRJhIDXZAybsQ3pEwfPG77dy4Y//3pTeh+Xp5yFfjAx87gwhn6tLSo1I55R6GHK3hA
+         hSQ8gP9fe5GydBSYpxRGJVCuYTGPsW0z6pqL3SlQ24+ECjqeOAf1HtLtMS4NoE/boiN8
+         T0DA1/Tw84FqeM38fT1E7vTM/a6CWFZJA7f1DNeH2B0c/L/z8AUzNY/aruMQKQZUt60D
+         fUbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=pVQNsnzkR4fy/0MFAc0InlJSrCjdz2VdJOThIkc6lIE=;
-        fh=LUHGj8Zf2Ly8FGn0baHQjNeQQYa4AgpBSTs6fF6ujoU=;
-        b=JiYsZr8kxshrx9rmTNeyHl6HRIDR7pLkYw4Yz3AoWiPsepc7CqNPQoRhFtWP+0IpIV
-         RdvD6Scdw1PWveFU0F44n0cJ8l85sdMcytS3juy6F0cbktZgQRCMQ6LXTUZsA8mLwTIk
-         hcACWrCHDwXBPTkmSUW9yoqtUV3eyKaNL24Iyrbb/zbNsulJqbEBxQ1QFO/GaRZdGgi2
-         Z28Yp1oHWlRlaXWX16iCXi7Mmux3pcGp82C/hHaYqzt01yUaAYlwELyOYZv6/tgI9uMy
-         Lsb9OTudHACBpFRZk2Nd3APNrAtfGMiTEISaDgVq1gW7yyzupB9M8IdAjtEos/GuvBtU
-         DJfg==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=WmRfKH6+IB5YMAoPXr7SGpR996yjOC3ho41C5cpujW0=;
+        fh=y6a9dndW+0CJHcvYdghYwLzdcwMeXoOVhEZ+ThybITY=;
+        b=ay319+Ucc66Rm771evmOnBmn6jYv+UeV3VHIIc1LqDFRv8nFANKYCdxNlfMKO7eJmD
+         RWr/hl/dTwxubV02tvlW3duFM7EoIckSG+xOSc6mMXM9oPpcEHhvUj9rqQlF8k0n4zCG
+         k1xoyprlB3MlXF9hMMYzvGGf57cgwdrzu+kSskqAcTBiI+Hj9IBVx7N+r5SYpQJo/1IS
+         be/tWzpsEtTHKJMZYleYtcFdY0Q7sY8kI2KXQogggubWGUVO3TxzId9V3BBhAYSrKyaY
+         6yIpiH6fkb+YUmQ5fsBw7WV3flq/kFCVGwaQixU055WmCFXQykxRgK/5ClJWUQPLYxJt
+         3Uog==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MuCg2zO/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3f9a2408bsi668081485a.616.2025.06.22.19.18.18
+        by mx.google.com with ESMTPS id af79cd13be357-7d3f99e64besi753380885a.239.2025.06.23.02.43.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Jun 2025 19:18:18 -0700 (PDT)
+        Mon, 23 Jun 2025 02:43:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MuCg2zO/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uTWkm-00032k-2T; Sun, 22 Jun 2025 22:17:48 -0400
+	id 1uTdhw-0004el-Jb; Mon, 23 Jun 2025 05:43:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uTWkk-00032Z-Fx
- for qemu-arm@nongnu.org; Sun, 22 Jun 2025 22:17:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uTdhu-0004eR-ST; Mon, 23 Jun 2025 05:43:18 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uTWki-00088r-9k
- for qemu-arm@nongnu.org; Sun, 22 Jun 2025 22:17:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1750645062;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=pVQNsnzkR4fy/0MFAc0InlJSrCjdz2VdJOThIkc6lIE=;
- b=MuCg2zO/LCmaPS1wEkihMCWK5dywQqhqX82nCU0pdU/kVdSPHiLBlJtvLidKC18cCCQgcs
- v6pYdbFeBFsKH1eQFSF/JgTwHay6GP3wv4L944SDsn2ZR+BoqBCKcL36JFjBMBXoUhTdxs
- OfDPb2N6i5i+NpvV3zb7J3P3oNSt+88=
-Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
- [209.85.216.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-461-zkTvXRb6N2-rKrVOIClPLA-1; Sun, 22 Jun 2025 22:17:40 -0400
-X-MC-Unique: zkTvXRb6N2-rKrVOIClPLA-1
-X-Mimecast-MFC-AGG-ID: zkTvXRb6N2-rKrVOIClPLA_1750645060
-Received: by mail-pj1-f71.google.com with SMTP id
- 98e67ed59e1d1-3138c50d2a0so5309103a91.2
- for <qemu-arm@nongnu.org>; Sun, 22 Jun 2025 19:17:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1750645059; x=1751249859;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=pVQNsnzkR4fy/0MFAc0InlJSrCjdz2VdJOThIkc6lIE=;
- b=roXadUL23Mwd0vGhX2MChSpnFWu0R0zGVfFx22hWbFDIdaMU9tHaZEUvzC5HVtN9Bb
- NEzhHxpLJQ8elsVYxhM8kDc+e9eZdxx12H+QCgCNrq081e7lmTjGCo1C4WWl9bHSYnQ7
- UrN/yMrC8wLNLqnOuP21XV6gkTwDctCAo/3tFsjr4CaJcJLO1bzxeNqMCIJiXfGsP5Ru
- UR9X9NOQrsW87++WL4Tyc3e0Ajk/fvE++9jFVuWtAu+SvWfKEjPzFqLgerTZ+XN9N9fS
- 3sLo/ZjgU6dzFhH0piN5lbYAk6jCoVDP1igPUHUhdShfbTcd3rfKF5AXK7EqiKi4H4Px
- iJ0w==
-X-Gm-Message-State: AOJu0YyfGue7VyHm07t7AD6z8ZFNWx7ZDNDDa/GuJRxB91ddHPkz7Dqi
- r9re2zhDOWR0dwBk54S6gzuSrVdGm9Mm10CW9oFCFcEPqDe/xilFoXBaP6PHYLdzSR8wpb5gENY
- edWsigEX7sW8BuvtH189p92BnX8CcBmZtJO7watb5R9CXRhjXMIOpXkcQtjhvxkfkfMeNgs91JT
- ife6qJ6PgQHSlJ8PMz9Z486JcLXeZfoFExtmBXxg==
-X-Gm-Gg: ASbGncsoWKq0CY5HO+PMlu3qOsHVq5gS4908S2V50okgmfgo5w8SK5Xp5PjPSs/0LYh
- oFi/HweGglHHEpyeL7DXje/JodeSB5MFbtNPnkKAlyz9Or83f7lm6EJGI40eWJfxuDeixgUzecM
- gRIqVLWSOJNtIxPe2/N3GK+QKjj9BKSRdW26oUTPvRxhoD94qWp7//tAp4f3qE35B+LGog5M88S
- u9m5+wUBtc7U4BKfTaS5o3b5KhD3QSYjDi1tNvJbb+8Y7QXFx+lbdi/ab9OaucwP8Pe3ly7iipS
- Tp06bAzQ9bEgGBUTveZ+nHpk3tI=
-X-Received: by 2002:a17:902:d542:b0:235:ed01:18cd with SMTP id
- d9443c01a7336-237d997a5aemr207642345ad.44.1750645059412; 
- Sun, 22 Jun 2025 19:17:39 -0700 (PDT)
-X-Received: by 2002:a17:902:d542:b0:235:ed01:18cd with SMTP id
- d9443c01a7336-237d997a5aemr207641875ad.44.1750645058878; 
- Sun, 22 Jun 2025 19:17:38 -0700 (PDT)
-Received: from [10.72.116.103] ([209.132.188.88])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-237d8695440sm70830085ad.185.2025.06.22.19.17.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 22 Jun 2025 19:17:38 -0700 (PDT)
-Message-ID: <61187896-f836-46c2-9f4a-4957b85f33b2@redhat.com>
-Date: Mon, 23 Jun 2025 10:17:32 +0800
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uTdhr-0002Zn-Hu; Mon, 23 Jun 2025 05:43:18 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bQjmB0NW4z6M4Sn;
+ Mon, 23 Jun 2025 17:42:18 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 883A71402F6;
+ Mon, 23 Jun 2025 17:43:00 +0800 (CST)
+Received: from A2303104131.china.huawei.com (10.203.177.241) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 23 Jun 2025 11:42:51 +0200
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
+ <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
+ <imammedo@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <smostafa@google.com>, <gustavo.romero@linaro.org>, <linuxarm@huawei.com>,
+ <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
+Subject: [PATCH v5 00/11] hw/arm/virt: Add support for user creatable SMMUv3
+ device
+Date: Mon, 23 Jun 2025 10:42:19 +0100
+Message-ID: <20250623094230.76084-1-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/2] ramfb: Add property to control if load the romfile
-To: qemu-arm@nongnu.org
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Eric Auger <eauger@redhat.com>, Alex Williamson
- <alex.williamson@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-References: <20250617030521.2109305-1-shahuang@redhat.com>
-From: Shaoqin Huang <shahuang@redhat.com>
-In-Reply-To: <20250617030521.2109305-1-shahuang@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: M1ntsBvpIJZ0dsuCyzJgY_WHKHvuCyvm3OiMer4tl18_1750645060
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=shahuang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.203.177.241]
+X-ClientProxiedBy: kwepems200001.china.huawei.com (7.221.188.67) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) AC_FROM_MANY_DOTS=2.499, BAYES_00=-1.9,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -151,65 +103,183 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0LKeNUMPO7QI
+X-TUID: DFl/1bjLvp0N
 
-Hi guys,
+Hi All,
 
-Kindly ping for this series.
+Changes from v4:
+https://lore.kernel.org/qemu-devel/20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com/
+
+Major changes from v4:
+
+1. Added stricter validation for PCI buses associated with the SMMU.
+   Only the default PCIe Root Complex (pcie.0) and additional root
+   complexes created using pxb-pcie (see patch #1) are allowed.
+
+2. While testing this series with a setup involving multiple PCIe root
+   complexes using pxb-pcie, I encountered an issue related to IOMMU
+   ops resolution. Consider the below configuration, where an
+   arm-smmuv3 device is associated with the default root complex pcie.0,
+   and an additional pxb-pcie-based root complex (pcie.1) is added
+   without any associated SMMU:
+
+   -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.1 \
+   ...
+   -device pxb-pcie,id=pcie.1,bus_nr=8,bus=pcie.0 \
+   -device pcie-root-port,id=pcie.port1,chassis=2,bus=pcie.1 \
+   -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.2 \
+   ...
+   -device virtio-net-pci,bus=pcie.0,netdev=net0,id=virtionet.0 \
+   -device virtio-net-pci,bus=pcie.port1,netdev=net1,id=virtionet.1
+
+   The guest boots fine, and virtionet.0(behind the SMMUV3) bring up
+   is successful. However, attempting to bring up virtionet.1
+   (behind pcie.1, which lacks a connected SMMU) results in a failure:
+
+   root@ubuntu:/# dhclient enp9s0
+   arm-smmu-v3 arm-smmu-v3.0.auto: event 0x02 received:
+   arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000090000000002
+   arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000000000000000
+   arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000000000000000
+   arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000000000000000
+   arm-smmu-v3 arm-smmu-v3.0.auto: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x900 ssid: 0x0
+   virtio_net virtio1 enp9s0: NETDEV WATCHDOG: CPU: 2: transmit queue 0 timed out 5172 ms
+   virtio_net virtio1 enp9s0: TX timeout on queue: 0, sq: output.0, vq: 0x1, name: output.0, 5172000 usecs ago
+   ...
+
+   Debug shows that QEMU currently registers IOMMU ops for bus using
+   pci_setup_iommu(). However, when retrieving IOMMU ops for a device
+   via pci_device_get_iommu_bus_devfn(), the function walks up to the 
+   parent_dev and fetches the IOMMU ops from the parent, even if the
+   current root bus has none configured.
+
+   This works today because existing IOMMU models in QEMU are globally 
+   scoped, and pxb-pcie based extra root complexes can use the
+   bypass_iommu property to skip translation as needed.
+
+   However, with this series introducing support for associating
+   arm-smmuv3 devices with specific PCIe root complexes, this
+   becomes problematic. In QEMU, pxb-pcie is implemented as a synthetic
+   root complex whose parent_dev is pcie.0. As a result, even though
+   pcie.1 has no SMMU attached, pci_device_get_iommu_bus_devfn()
+   incorrectly returns the IOMMU ops associated with pcie.0 due to
+   the fallback mechanism via parent_dev. This causes devices on
+   pcie.1 to erroneously use the address space from pcie.0's SMMU,
+   leading to failures like the one above.
+
+   To address this, patch #6 in the series introduces a new helper 
+   function pci_setup_iommu_per_bus(), which explicitly sets the 
+   iommu_per_bus field in the PCIBus structure. This allows 
+   pci_device_get_iommu_bus_devfn() to retrieve IOMMU ops based 
+   on the specific bus.
+
+   Not sure this is the correct approach or not. If there is a better
+   way to handle this, please let me know .
+
+3. Picked up few R-by tags where the patch content has not changed much.
+
+4. Dropped T-by from Nathan for some patches as things have changed a bit.
+   @Nathan, apprecaite if you have time to rerun the tests.
+
+5. Added a bios table tests for both legacy SMMUv3 and new SMMMv3 devices.
+   See last few patches.
+
+Cover letter:
+
+This patch series introduces support for a user-creatable SMMUv3 device
+(-device arm-smmuv3) in QEMU.
+
+The implementation is based on feedback received from the RFCv2[0]:
+"hw/arm/virt: Add support for user-creatable accelerated SMMUv3"
+
+Currently, QEMU's SMMUv3 emulation (iommu=smmuv3) is tied to the machine
+and does not support instantiating multiple SMMUv3 devices—each associated
+with a separate PCIe root complex. In contrast, real-world ARM systems
+often include multiple SMMUv3 instances, each bound to a different PCIe
+root complex.
+
+This series allows to specify multiple SMMUv3 instances as below,
+
+ -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0
+  ...
+ -device arm-smmuv3,primary-bus=pcie.1,,id=smmuv3.1
+
+The multiple SMMUv3 instance support lays the groundwork for supporting
+accelerated SMMUv3, as proposed in the aforementioned RFCv2[0]. The
+proposed accelerated support will be an optional property like below,
+-device arm-smmuv3,primary-bus=pcie.1,accel=on,..
+
+Please note, the accelerated SMMUv3 support is not part of this series
+and will be sent out as a separate series later on top of this one.
+
+This series also,
+
+-Supports either the legacy iommu=smmuv3 option or the new
+  "-device arm-smmuv3" model.
+  -Adds device tree bindings for the new SMMUv3 device on the arm/virt
+   machine only, and only for the default pcie.0 root complex.
+   (Note: pxb-pcie root complexes are currently not supported with the
+    device tree due to known limitations[1].)
+
+Example usage:
+  -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0
+  -device virtio-net-pci,bus=pcie.0
+  -device pxb-pcie,id=pcie.1,bus_nr=2
+  -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.1
+  -device pcie-root-port,id=pcie.port1,bus=pcie.1
+  -device virtio-net-pci,bus=pcie.port1
+
+Please take a look and let me know your feedback.
 
 Thanks,
-Shaoqin
+Shameer
+[0]:https://lore.kernel.org/qemu-devel/20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com/
+[1]:https://lore.kernel.org/qemu-devel/20230421165037.2506-1-Jonathan.Cameron@huawei.com/
 
-On 6/17/25 11:05 AM, Shaoqin Huang wrote:
-> Now the ramfb will load the vgabios-ramfb.bin unconditionally, but only
-> the x86 need the vgabios-ramfb.bin, this can cause that when use the
-> release package on arm64 it can't find the vgabios-ramfb.bin.
-> 
-> Because only seabios will use the vgabios-ramfb.bin, load the rom logic
-> is x86-specific. For other !x86 platforms, the edk2 ships an EFI driver
-> for ramfb, so they don't need to load the romfile.
-> 
-> So add a new property use_legacy_x86_rom in both ramfb and vfio_pci
-> device, because the vfio display also use the ramfb_setup() to load
-> the vgabios-ramfb.bin file.
-> 
-> After have this property, the machine type can set the compatibility to
-> not load the vgabios-ramfb.bin if the arch doesn't need it.
-> 
-> Then I set the use_legacy_x86_rom property to false by default, and only set it
-> to true on x86 since only x86 will need it.
-> 
-> Changelog:
-> ---------
-> v3 -> v4:
->    - Set the new property to false by default, only set it to true on x86.
-> v2 -> v3:
->    - Fix the underscore error.
->    - Add a new patch to set the property in arm compatibility.
-> v1 -> v2:
->    - Change the property name.
-> 
-> v3: https://lore.kernel.org/all/20250609073408.2083831-1-shahuang@redhat.com/
-> v2: https://lore.kernel.org/all/20250606070234.2063451-1-shahuang@redhat.com/
-> v1: https://lore.kernel.org/all/20250605030351.2056571-1-shahuang@redhat.com/
-> 
-> Shaoqin Huang (2):
->    ramfb: Add property to control if load the romfile
->    hw/i386: Add the ramfb romfile compatatibility
-> 
->   hw/display/ramfb-standalone.c | 4 +++-
->   hw/display/ramfb-stubs.c      | 2 +-
->   hw/display/ramfb.c            | 6 ++++--
->   hw/i386/pc_q35.c              | 3 +++
->   hw/vfio/display.c             | 4 ++--
->   hw/vfio/pci.c                 | 1 +
->   hw/vfio/pci.h                 | 1 +
->   include/hw/display/ramfb.h    | 2 +-
->   8 files changed, 16 insertions(+), 7 deletions(-)
-> 
+Nicolin Chen (1):
+  hw/arm/virt: Add an SMMU_IO_LEN macro
+
+Shameer Kolothum (10):
+  hw/arm/smmu-common: Check SMMU has PCIe Root Complex association
+  hw/arm/virt-acpi-build: Re-arrange SMMUv3 IORT build
+  hw/arm/virt-acpi-build: Update IORT for multiple smmuv3 devices
+  hw/arm/virt: Factor out common SMMUV3 dt bindings code
+  hw/pci: Introduce pci_setup_iommu_per_bus() for per-bus IOMMU ops
+    retrieval
+  hw/arm/virt: Allow user-creatable SMMUv3 dev instantiation
+  qemu-options.hx: Document the arm-smmuv3 device
+  bios-tables-test: Allow for smmuv3 test data.
+  qtest/bios-tables-test: Add tests for legacy smmuv3 and smmuv3 device
+  qtest/bios-tables-test: Update tables for smmuv3 tests
+
+ hw/arm/smmu-common.c                          |  35 +++-
+ hw/arm/smmuv3.c                               |   2 +
+ hw/arm/virt-acpi-build.c                      | 164 ++++++++++++++----
+ hw/arm/virt.c                                 | 110 +++++++++---
+ hw/core/sysbus-fdt.c                          |   3 +
+ hw/pci-bridge/pci_expander_bridge.c           |   1 -
+ hw/pci/pci.c                                  |  25 +++
+ include/hw/arm/smmu-common.h                  |   1 +
+ include/hw/arm/virt.h                         |   1 +
+ include/hw/pci/pci.h                          |   2 +
+ include/hw/pci/pci_bridge.h                   |   1 +
+ include/hw/pci/pci_bus.h                      |   1 +
+ qemu-options.hx                               |   7 +
+ tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev  | Bin 0 -> 10162 bytes
+ .../data/acpi/aarch64/virt/DSDT.smmuv3-legacy | Bin 0 -> 10162 bytes
+ tests/data/acpi/aarch64/virt/IORT.smmuv3-dev  | Bin 0 -> 364 bytes
+ .../data/acpi/aarch64/virt/IORT.smmuv3-legacy | Bin 0 -> 276 bytes
+ tests/qtest/bios-tables-test.c                |  86 +++++++++
+ 18 files changed, 375 insertions(+), 64 deletions(-)
+ create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev
+ create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy
+ create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-dev
+ create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy
 
 -- 
-Shaoqin
+2.34.1
 

@@ -1,156 +1,206 @@
-Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2510430dyb;
-        Mon, 23 Jun 2025 05:21:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXj8Jv2IFCZ6+/jMoNSehFVkWCN/jH6COgKrGEl3cnXEx4FqZuYa/bGY8WWKPgRyPkevH0jKJ0H3kIYoQ==@linaro.org
-X-Received: by 2002:a05:6000:2308:b0:3a4:e6c6:b8bf with SMTP id ffacd0b85a97d-3a6d1325a45mr9830536f8f.52.1750681260813;
-        Mon, 23 Jun 2025 05:21:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750681260; cv=none;
+Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp2532536dyb;
+        Mon, 23 Jun 2025 06:02:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUAAWpm2QMF+gyUPjbR8t4zjj788WT4K9V40aRJW7zXXyzkEn3LLR1ZNkjKKKzZaGDwICwszPCcRFiEhA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGgrGOy3DJgPiHbnbyM64EzzyYksA1XbY9KQ6tW1ihbxSlF4E3XflPDzWPrHclf01PVjdF2
+X-Received: by 2002:a05:6808:148b:b0:403:3660:4130 with SMTP id 5614622812f47-40ac6f50168mr8313974b6e.27.1750683712333;
+        Mon, 23 Jun 2025 06:01:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750683712; cv=none;
         d=google.com; s=arc-20240605;
-        b=kuUP6rfoag0lDHaMudRFA88sJ09n2+VfsTfl3qgaxJ1csu0MhlP7zQsgb0S222X9VA
-         d4yop8ZcMH27j/PbIvWfQWIeXyrrMEAK0prU2cfyXMIl2S8gUeBUFP/WnB2637J/UJQ4
-         Uk6Z1XLWUTITQazpnLoJwCpG4AhH71YQINkfMNk1rpn5p6ynGJSDE+Z6eJ0j6NytIRML
-         MfsbnDUD4mLJIHgX8hFiXFnMegotzV344g/L7+PLF1Un9Hk1VmwdHMPUqntOvIRQRxDY
-         ow8j51pDwcqclks/Tx+pGxNaUrxArKIQqutq7B7LhxOBGUtFGSfvaEN3FpoeGXmp/tBi
-         RLaA==
+        b=eYNzUVeh8t9usrHOH5JbJNsq7wVvxvmCYscNvOkK5Izz3NZR5lwze85+L9ci+c0X/j
+         QliKRKCrvsb9iQi7tyj7OqGhNIjejnzOoItJPxlJONl/YAZUEVV/BaRSsf2AMLGn7uRh
+         245SbhL6fUsDhiU/MjmcThkExVGVOKXFbZ6vGaSDMOjnuPcQba75k3pFzmsIlRcarAPi
+         niNbTaesUf7zm+iBHHfkDzVTT4C6ND60S7i2I5Xu491GES0coDfY25ACaLHnAdsqRI5U
+         ha5W2rhwmJacGf43p9mgNq/pqCgE5yPcvgpB1UBSIt/jt31/oqUvopHphn1Wdve5PSld
+         QV6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=udXllEXY1gPSi8pgPr+YWAsY2WGcZfddjVlJVNiCuOE=;
-        fh=egEn7dwixqXaU+PHumaWZxIWRBiDnJDyDDSjl9U/L+E=;
-        b=UIIEwVE7nlSpom8YEOLaK7J8C1e8z/Mza+sAlmY7DCsgHM3rFC6QSaiiAHwqkOVoyP
-         LOQzk7NCN92FW4V4k6H1X41hmep7kufC5qExJhu7KrVOaxbJ7IH5E6UvX1spS17P11sr
-         1DmR3mHUpvYEzqgt0vIlPmmUOGzFPWu0eWnn/bSDx4+aXKWnpq6Zj2a3lmEJdPGMAJYO
-         6b4PS6j3ZHIgw0etLjkVEjihx2i7IigntEg4rgnv6drYcaROvn/RVo+UD4TnQmB5sK1x
-         XjJJ5PcpYhqTDTccNmebxtzEhw5DtMv+O6NnAqPGGA9Jit0PIgnkQEtzrlY0laXL5Hyy
-         /iZg==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=JH5umFS36US7IDsZT2yyveGcuseLmnIc9KBJy2RGDsk=;
+        fh=yhmGPL60DKNkZThJbi/hbLGYnbXiPqqFqHzUC5zzxWU=;
+        b=EyMzGDWJS97LBrlDsaOTfvBTR9jFCod7gaC9wfCvYp3OXs+/LPRU1ieN1cRDdnCIFP
+         TyujCtSWEAzfRvDO6ijtTrq+EaAurv4+cn/7NHh49A2ArSEbgj5XXnt5dEIyVzQwbSxf
+         S4HoVTx/qiBaF+y6tWOmMvQhfroGKA51XAfiLuuacq9cpKQRbKeFCdEdlz+3MU2gediN
+         v7nevySjiNJFxyTrahLQ6VeXdXq/5DN9sfUFn1rFwEJeJtH0PONbL89Ion6Nf9kjWyJR
+         O86m3t4Ok/W6Xa4t0BHJ7iZ5HmST3QJT6C+6bf7cGlbXPvdR9wYWbsmzA9ZJwop0Hlgl
+         RwCw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IJAlvsu4;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-3a6d1363b1csor2710623f8f.0.2025.06.23.05.21.00
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TwlqAR9s;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 5614622812f47-40ac6c36c8csi5123133b6e.76.2025.06.23.06.01.51
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 23 Jun 2025 05:21:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Jun 2025 06:01:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IJAlvsu4;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750681260; x=1751286060; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=udXllEXY1gPSi8pgPr+YWAsY2WGcZfddjVlJVNiCuOE=;
-        b=IJAlvsu4Yq1YaN36ghkG9EoQe0gtQiIaeYLWQUhLsVJcQlyOg3vACUlxI5k/1N3tVh
-         RSEq19VeSgoU+8ziIx8LZ2v3U+z37O0m05SNrdjfhpp24LE3it9MCA7A2w4tKkvrc1OA
-         kKngE+qAmhA5Fa9Q1Ge3O1XEsGoQh/WwIvcJ953MphpDgitzs6WYtJWfURxjBUcaTJmp
-         wIzUIoMDx9/Hor6zd91k7qG9Ghhxw3u0++8T0OiwaeAjntYoRtWyhhQeNH0za0oCbLwG
-         x+BoYFNCqohGYThR/wbRrYE+3+3eT7hudxA1NbIKRqDVvQTfvqcukmsgkZwgadCZ/UeE
-         tNsg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TwlqAR9s;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1750683711;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=JH5umFS36US7IDsZT2yyveGcuseLmnIc9KBJy2RGDsk=;
+	b=TwlqAR9som06MZDcdtOxrlnG/aLhzyaVMxpYVjJwPZKMJ+vqDUbbMc9eOn96MkcPJxFibb
+	VbpNpUcPr+QQR8U4l5HtQpIpLQDfqhK6fboeurZ2dGaNKwtU+8FK+dA/6Ppzwr4MW8xObz
+	E2ydmDZa4U38xeXCWv+CpuaQVA761yI=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-672-C0ohE8VHN_6wLA4a9yUUBA-1; Mon, 23 Jun 2025 09:01:50 -0400
+X-MC-Unique: C0ohE8VHN_6wLA4a9yUUBA-1
+X-Mimecast-MFC-AGG-ID: C0ohE8VHN_6wLA4a9yUUBA_1750683709
+Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-451dda846a0so30166375e9.2
+        for <alex.bennee@linaro.org>; Mon, 23 Jun 2025 06:01:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750681260; x=1751286060;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=udXllEXY1gPSi8pgPr+YWAsY2WGcZfddjVlJVNiCuOE=;
-        b=Rc20j3Y0Q6ZmFae/M78PgcQJLXZTRtnGvNRbQ9Tml9g6dpBUafAHsonns1d4YwI2ul
-         nmcP3AEg8B8zjldQcSXBD1V2mtogfNt5abvks/mCUDQvMNDUG68zOU0Zjik1hmieO1XV
-         4+w2GmGO5BTDoNGFWT0Ii3sdSorRiWH0ffFQ963WKLgEBwex42aaD81gT1BGS5UBBnrF
-         Hz/j6YymIGsHIXQo4ZUaHF5H40AOYJzEK2rP2b66Rl5DCz2H4K8AdKpYzu47WptIYHL3
-         nmz97SPaobXsO0+SirqwAHxcR+MRrxQvdSD2p9xzVCUAR3wY0j4ok8HQWBZRqmD254vn
-         XSYg==
-X-Forwarded-Encrypted: i=1; AJvYcCVQX0NTsdUCvIG6OmxEnq5ZaX5rmzIYcxvpmbzj8RNAi7q3ZLmI2J4pKo/Z52YY+bjgTjqx5e6SP4GsJQ==@linaro.org
-X-Gm-Message-State: AOJu0Yz+/PeXbtGWqGv2BBYfzQuMuPVhuRKky2adS3OFDdwTaAdscD53
-	GsaAIsjDnZ3q8/MQ6NOvFTTrP56zYs61VkGb3nIIzaS2xBtX9iWWxIk/Ypq7SO4k41SVHA==
-X-Gm-Gg: ASbGncucS7bgXjHyqKjdwKaztOFh4lNmOzOSdiL9pEpnZNWwEzcdKAlc4ytTtOh8kgX
-	xO65SxEjkFd/2YUMWl1j/Wwx5ghFe2/r3V8QO02Ns+88G9pqLvN9kIWtpzoYibC2hNz+8bqWMfx
-	LqhDCQZJxD1B43+KQLb0RpEjMGPAiAzvh57WPVFiwDfNMYd1qveFgv4QDZ+VZKJumx0O72iEKmk
-	upefSPfIwLGdCSeHgtCWG0Kar7I25SR5zgD8WJFwz23fwW3l2yBeh1V2lvhao7Yw5h1FkNxIosE
-	0Uvzm1DyS+YHSMQ1Gvr1lCa+FhtZxm3JaPtsQB5nVrF9pnp4jhOKwcImslfHEbsXZ4q8xiDpO3v
-	VpA01BiYT19MGidmA75Kt5WTLk3HMaExcsqyc
-X-Google-Smtp-Source: AGHT+IGSZgVi8a4ONdtjF7+uNRguyN8Xn3B71Lmx7xCfC5fcG/JmZoeL4oP6TQwKjqTxGU0oRlOa5A==
-X-Received: by 2002:a05:6000:2d11:b0:3a4:e1e1:7779 with SMTP id ffacd0b85a97d-3a6d130707cmr5965156f8f.32.1750681260192;
-        Mon, 23 Jun 2025 05:21:00 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6d0ec947fsm9340220f8f.0.2025.06.23.05.20.58
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 23 Jun 2025 05:20:59 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Roman Bolshakov <rbolshakov@ddn.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	Bernhard Beschow <shentey@gmail.com>,
-	John Snow <jsnow@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	kvm@vger.kernel.org,
-	Eric Auger <eric.auger@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Cameron Esfahani <dirty@apple.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Radoslaw Biernacki <rad@semihalf.com>,
-	Phil Dennis-Jordan <phil@philjordan.eu>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 26/26] tests/functional: Expand Aarch64 SMMU tests to run on HVF accelerator
-Date: Mon, 23 Jun 2025 14:18:45 +0200
-Message-ID: <20250623121845.7214-27-philmd@linaro.org>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250623121845.7214-1-philmd@linaro.org>
-References: <20250623121845.7214-1-philmd@linaro.org>
+        d=1e100.net; s=20230601; t=1750683709; x=1751288509;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=JH5umFS36US7IDsZT2yyveGcuseLmnIc9KBJy2RGDsk=;
+        b=W1OlzwEUTSJCd12/wrA6tWV/tQpvjXjIMAah5Qgva+Z+FLCdJd22EeyAonkL9mczea
+         Nk3l/fDdN2laRV67jqwP/p3jQSU4llFi/BMMF+++IvDHcGhJ18WTw+EsnedIjOIwNj1M
+         dMJybaje3FGOUphU4G/tNylaA/GLEaOF9pHR2z+87ZMBMKBn6gpot3hk8UqHgbWr5F2F
+         +Nt2rxyLn7+wS+Fq8OMKRBdra929oygCqbCAkk9+rZh8nUVDcQcbMwBw7XqOO2JE6ToP
+         65AMuWJ2j/0Pg/xhM5zCve56M1QaLbGdlQAztOtzgomtSPeKbHNXPdpqZ/DnfNCSA+co
+         yKaQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUKtCCu/V6oXLKZuQJPeWyrmPLtGO6T8skUJ5Gh3dFdzd5Rr2Y8jb4xI0EaUHGTnkabMA8vJxTaaJDovg==@linaro.org
+X-Gm-Message-State: AOJu0YzBJt1IfXZh65LYZHNASXw6ZWSz2ALOvgxBfSY8H5iL6bZ6wUiO
+	fkwbX373uobXrmwAHOJrTemc2TKGOc1aTmgOiUM/wXbMgS4S1eHAINq8kXvga/LobY09I3t+V5n
+	yFKAt9NOpgHeg1trCDOY55otN0Y84oF64D2osxWW53ik2dcXWZYK54FlPwg==
+X-Gm-Gg: ASbGncsAlYK1GZ1cTYbq/jqDzuohbCmOyB9WzvLxXCubFvMAtBEqTDS9TVSnaJja3Dx
+	T3e+xXqKeioxBDrQE5LgtjImiWQPxehXDgz5MjJAPgX3UMmF0MXR493iUX/nRV/T2RlsJjbCung
+	8CKeVBSKPOjpozygFoPEIjuVMIsYfZWYYA7ajYXwJY/zIOsN2n44ClFF573W+9u9wr60/kCFniY
+	H4CHt2j7wthNHjEnJUUGCd6aELBqXjqaLlAFPT0RoK9daQoe2GV3n5fahIs6eP7Szye1r3DFpAB
+	lqh6tUUhSt0Tt+miyGKFpvs/PiqQZ5z3lpfkmGA/wf/k5Ztv9zQMR4x9i91Pk0o=
+X-Received: by 2002:a05:600c:6994:b0:453:dda:a52e with SMTP id 5b1f17b1804b1-453659d762cmr95488375e9.33.1750683708542;
+        Mon, 23 Jun 2025 06:01:48 -0700 (PDT)
+X-Received: by 2002:a05:600c:6994:b0:453:dda:a52e with SMTP id 5b1f17b1804b1-453659d762cmr95487845e9.33.1750683708001;
+        Mon, 23 Jun 2025 06:01:48 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.7] (ltea-047-064-114-166.pools.arcor-ip.net. [47.64.114.166])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4536c77b980sm68667655e9.23.2025.06.23.06.01.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 23 Jun 2025 06:01:43 -0700 (PDT)
+Message-ID: <0107a85c-3335-478a-9414-55cfdd2f763b@redhat.com>
+Date: Mon, 23 Jun 2025 15:01:40 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 26/26] tests/functional: Expand Aarch64 SMMU tests to
+ run on HVF accelerator
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Alexander Graf <agraf@csgraf.de>, Bernhard Beschow <shentey@gmail.com>,
+ John Snow <jsnow@redhat.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, kvm@vger.kernel.org,
+ Eric Auger <eric.auger@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Cameron Esfahani <dirty@apple.com>,
+ Cleber Rosa <crosa@redhat.com>, Radoslaw Biernacki <rad@semihalf.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+References: <20250623121845.7214-1-philmd@linaro.org>
+ <20250623121845.7214-27-philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20250623121845.7214-27-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: -OCymymT9wMAlC7Cw-8fxqqHLUYhfHaJEnpWuDZiLUA_1750683709
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: bCTf3tn0eUi9
+X-TUID: WtxTLlCNemYY
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- tests/functional/test_aarch64_smmu.py | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+On 23/06/2025 14.18, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   tests/functional/test_aarch64_smmu.py | 12 +++++++++---
+>   1 file changed, 9 insertions(+), 3 deletions(-)
+> 
+> diff --git a/tests/functional/test_aarch64_smmu.py b/tests/functional/test_aarch64_smmu.py
+> index c65d0f28178..e0f4a922176 100755
+> --- a/tests/functional/test_aarch64_smmu.py
+> +++ b/tests/functional/test_aarch64_smmu.py
+> @@ -17,7 +17,7 @@
+>   
+>   from qemu_test import LinuxKernelTest, Asset, exec_command_and_wait_for_pattern
+>   from qemu_test import BUILD_DIR
+> -from qemu.utils import kvm_available
+> +from qemu.utils import kvm_available, hvf_available
+>   
+>   
+>   class SMMU(LinuxKernelTest):
+> @@ -45,11 +45,17 @@ def set_up_boot(self, path):
+>           self.vm.add_args('-device', 'virtio-net,netdev=n1' + self.IOMMU_ADDON)
+>   
+>       def common_vm_setup(self, kernel, initrd, disk):
+> -        self.require_accelerator("kvm")
+> +        if hvf_available(self.qemu_bin):
+> +            accel = "hvf"
+> +        elif kvm_available(self.qemu_bin):
+> +            accel = "kvm"
+> +        else:
+> +            self.skipTest("Neither HVF nor KVM accelerator is available")
+> +        self.require_accelerator(accel)
+>           self.require_netdev('user')
+>           self.set_machine("virt")
+>           self.vm.add_args('-m', '1G')
+> -        self.vm.add_args("-accel", "kvm")
+> +        self.vm.add_args("-accel", accel)
+>           self.vm.add_args("-cpu", "host")
+>           self.vm.add_args("-machine", "iommu=smmuv3")
+>           self.vm.add_args("-d", "guest_errors")
 
-diff --git a/tests/functional/test_aarch64_smmu.py b/tests/functional/test_aarch64_smmu.py
-index c65d0f28178..e0f4a922176 100755
---- a/tests/functional/test_aarch64_smmu.py
-+++ b/tests/functional/test_aarch64_smmu.py
-@@ -17,7 +17,7 @@
- 
- from qemu_test import LinuxKernelTest, Asset, exec_command_and_wait_for_pattern
- from qemu_test import BUILD_DIR
--from qemu.utils import kvm_available
-+from qemu.utils import kvm_available, hvf_available
- 
- 
- class SMMU(LinuxKernelTest):
-@@ -45,11 +45,17 @@ def set_up_boot(self, path):
-         self.vm.add_args('-device', 'virtio-net,netdev=n1' + self.IOMMU_ADDON)
- 
-     def common_vm_setup(self, kernel, initrd, disk):
--        self.require_accelerator("kvm")
-+        if hvf_available(self.qemu_bin):
-+            accel = "hvf"
-+        elif kvm_available(self.qemu_bin):
-+            accel = "kvm"
-+        else:
-+            self.skipTest("Neither HVF nor KVM accelerator is available")
-+        self.require_accelerator(accel)
-         self.require_netdev('user')
-         self.set_machine("virt")
-         self.vm.add_args('-m', '1G')
--        self.vm.add_args("-accel", "kvm")
-+        self.vm.add_args("-accel", accel)
-         self.vm.add_args("-cpu", "host")
-         self.vm.add_args("-machine", "iommu=smmuv3")
-         self.vm.add_args("-d", "guest_errors")
--- 
-2.49.0
+Reviewed-by: Thomas Huth <thuth@redhat.com>

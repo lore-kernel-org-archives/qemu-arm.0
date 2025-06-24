@@ -1,214 +1,218 @@
-Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp3011381dyb;
-        Mon, 23 Jun 2025 23:44:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU5kxnW8iFhgBtAEJxjj4qWKlGVVXOVO7iq7Ivb6aUez9oe8vdLFJy1AfvTUo6lPCzO/SKALHMDpZlrSA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFGfxUNsB/Svo9BfsoY8Bxc2jDcH0rJkKGZbqu6oPAUh7Qe4AUJf+HArG02SwdoLL1S6Epz
-X-Received: by 2002:a05:622a:64c:b0:4a7:1417:37e8 with SMTP id d75a77b69052e-4a77a1b054dmr197261031cf.10.1750747479165;
-        Mon, 23 Jun 2025 23:44:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750747479; cv=none;
+Received: by 2002:a05:7301:4085:b0:178:84eb:402c with SMTP id pt5csp6388dyb;
+        Tue, 24 Jun 2025 00:34:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUDtklbNBGyiOHl5IX7co4kKh2QXWP2J14gtjzYqubsAQUUsiFW0yUg0aA9XERsgTteNCZgFn7kU6jp7A==@linaro.org
+X-Google-Smtp-Source: AGHT+IFwctmN/5LRPmzD5Wi8DTRcs6T+ur02jVMMsjQkC97aAea/iIVvaNKPw1KNTuoL80Ak3fVs
+X-Received: by 2002:a05:622a:489:b0:4a7:693a:6ae4 with SMTP id d75a77b69052e-4a77a2b67c0mr259828621cf.28.1750750469589;
+        Tue, 24 Jun 2025 00:34:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750750469; cv=none;
         d=google.com; s=arc-20240605;
-        b=GZRaopPXuBJs4CMZlCRFfksY+s0MnaBVJC1u7L0Zaa9QTP9ZhpC1BAY1fI0E0eLex1
-         FWvQSarUnfaHLyoawA+aZ5Hcyu8tHJODyGXk51Ji9ymISktCnuH+nOxMVmYvngJ9awk1
-         5jPozaciG1/WOO7NbbWdck+cSCKlRsuEKDuo80CqfQIItiyDgJ5oWWU/nkR+f0OFGINX
-         wDTSWPXCX3WdCyLeu9ClfH7BK2KtMUQ+VKPdvqH6nnHPYH8fMFQztwzHd3YXtCUoJ6MJ
-         73bkbRZoEYV/vNJ0UETf6m6+uXv7TygBUtMcN73px+VhAf2zGF2768iUPpyHTrrnnOOz
-         UcFw==
+        b=XFWYQ8DlQ3iM8EUTx8sh8VojdWTVaXfpqCNLc6M+8qUyWHojbpwA7pt9+HTXEY5Alm
+         QUlm7ZaxzE65yGWfrheC3eNONJwHISlzarOxPXRoU8H0btY/doNlyKMJNOfjIiUNYFRS
+         dEExDOh5Od6Q+pnLcyCat2Sr2XgwDKLWovf9W+Ia1gN2kO0j9M5RfYyc7+JUHNIxrLej
+         yOQe5LpQPn4zbzuYC372JQZ6NL/3HcHPA0r1G3ey4FSuA0mx0v+2Ec8zIIkZVHIIV/W5
+         Z7YOjoV22Bf+1mXBYy9YW5rcrnB2mg9PPHKa26E0nrvG5GOIT20Ryi5e9n6HvwRQ+38X
+         5bnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=FkbRkIcjwt6KAEWm8oOEf7g09hW0e1U50scQlvwe4xE=;
-        fh=e2doJimpuP43a+5rrKkGu3YAn2W68cBR+w+TN2Njkuw=;
-        b=jXFb74IKJA0K8OOTqJu3l1BtGDarOVTan93AtPjhYarFNrAtY1okafRBGXPzpLHB6L
-         2dkwojdJZlA4JSyJ1gg+A60zEgW9RFirnkTxRdJ3y+yxoJHswwKq25uN0CVQlbVLbF8a
-         lVbI0yOG5zmgIrCoUmcf6KMXZfeHKZcNXW6QcnKoB7zAEqDJDRRsGJLNnoyOnT0QaZVw
-         MYsj91J/550u9Ryz49wGSeZrLe0uKwWgVpXrIsmG25ro7418xZoBDMq1qN1NJj+WFai0
-         53vtQuDc597ea3lpcbJFiU5TV77Pw0k+lX4framt7OkkngtDWB+RznPxDujKDi/EmKZv
-         JFIQ==;
+        h=content-transfer-encoding:mime-version:user-agent:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=Jq44Z2zwbgcBqtfTirT5nLheLYiyc6cOV9sFWrSjdZA=;
+        fh=JsYS1j22pDclmMd5QyUiOMaq3Tnie2u2fULgH65fSIA=;
+        b=hx37J3r/OPm+REAzaCb+XaMpSFTr6QWAuh40K/hJhAHnGo/cfxARLGTzkqzJOghJxG
+         v46vjFuEahHnfJkhuI9r9NdSzsOLGXVL428KU/mzWx/0NJ7PeSF7efui11TTMTFqsIPN
+         jtYHI+KyzPUYZkHFXDY/NfL3Nj4V0ALKjAnMJOM6+GUoID65n7wlekX501gyUD+dSbf+
+         NpBTmsEBj0XKZ5LNyYE4lmBdXbnExi+CDhCoAjh9yjeDNawt/36Bj+WRHSmfzXroLhIC
+         Toe4s9V1A7rIQGx++Rr1FhyBUvi2ArkbJ5taGPca8OQcYk8u6FvqPTeeApO08B5whs+p
+         xRtg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a77a0b5cc5si98823141cf.392.2025.06.23.23.44.38
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DA8+kHN4;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a77a0d1b80si94781281cf.460.2025.06.24.00.34.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Jun 2025 23:44:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Jun 2025 00:34:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uTxNy-0004Te-40; Tue, 24 Jun 2025 02:44:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=CPSq=ZH=kaod.org=clg@ozlabs.org>)
- id 1uTxNv-0004T7-3I; Tue, 24 Jun 2025 02:43:59 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=CPSq=ZH=kaod.org=clg@ozlabs.org>)
- id 1uTxNs-0002VC-NI; Tue, 24 Jun 2025 02:43:58 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bRFlt0bdJz4x4m;
- Tue, 24 Jun 2025 16:43:54 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bRFlp62s2z4wbZ;
- Tue, 24 Jun 2025 16:43:50 +1000 (AEST)
-Message-ID: <46cc6026-e7f3-4f94-92d9-005ec0660810@kaod.org>
-Date: Tue, 24 Jun 2025 08:43:48 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DA8+kHN4;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1750750469;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Jq44Z2zwbgcBqtfTirT5nLheLYiyc6cOV9sFWrSjdZA=;
+	b=DA8+kHN4Bt97u0onQxeNRWDR7Iwj/TD9iNusuvALYEx6gKyOVvn2Nxq7oISxqw2PoyfUei
+	1ntEAsZuGPewtMqgBnJiFz/9ZrBaSjFz1EI9LqcE1gw/y4Xrbac2/4JnZaolKTBamDgkw0
+	XvhAzXMwbfDuL/cEpDCaMhYK80kYhLU=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-526-2m1SBbyzMwa9OUJhhUdqoQ-1; Tue,
+ 24 Jun 2025 03:34:22 -0400
+X-MC-Unique: 2m1SBbyzMwa9OUJhhUdqoQ-1
+X-Mimecast-MFC-AGG-ID: 2m1SBbyzMwa9OUJhhUdqoQ_1750750457
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 1F86B19560A2;
+	Tue, 24 Jun 2025 07:34:14 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.10])
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E32821800287;
+	Tue, 24 Jun 2025 07:34:09 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 4E5A821E6A27; Tue, 24 Jun 2025 09:34:07 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Cc: qemu-devel@nongnu.org,  Joel Stanley <joel@jms.id.au>,  Yi Liu
+ <yi.l.liu@intel.com>,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,  Helge Deller
+ <deller@gmx.de>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,  Andrew
+ Jeffery <andrew@codeconstruct.com.au>,  Fabiano Rosas <farosas@suse.de>,
+  Alexander Bulekov <alxndr@bu.edu>,  Darren Kenny
+ <darren.kenny@oracle.com>,  Leif Lindholm
+ <leif.lindholm@oss.qualcomm.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@kaod.org>,  Ed
+ Maste <emaste@freebsd.org>,  Gerd Hoffmann <kraxel@redhat.com>,  Warner
+ Losh <imp@bsdimp.com>,  Kevin Wolf <kwolf@redhat.com>,  Tyrone Ting
+ <kfting@nuvoton.com>,  Eric Blake <eblake@redhat.com>,  Palmer Dabbelt
+ <palmer@dabbelt.com>,  Yoshinori Sato <ysato@users.sourceforge.jp>,  Troy
+ Lee <leetroy@gmail.com>,  Halil Pasic <pasic@linux.ibm.com>,  Akihiko
+ Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,  Michael Roth
+ <michael.roth@amd.com>,  Laurent Vivier <laurent@vivier.eu>,  Ani Sinha
+ <anisinha@redhat.com>,  Weiwei Li <liwei1518@gmail.com>,  Eric Farman
+ <farman@linux.ibm.com>,  Steven Lee <steven_lee@aspeedtech.com>,  Brian
+ Cain <brian.cain@oss.qualcomm.com>,  Li-Wen Hsu <lwhsu@freebsd.org>,
+  Jamin Lin <jamin_lin@aspeedtech.com>,  qemu-s390x@nongnu.org,  Vladimir
+ Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,  qemu-block@nongnu.org,
+  Bernhard Beschow <shentey@gmail.com>,  =?utf-8?Q?Cl=C3=A9ment?=
+ Mathieu--Drif
+ <clement.mathieu--drif@eviden.com>,  Maksim Davydov
+ <davydov-max@yandex-team.ru>,  Niek Linnenbank <nieklinnenbank@gmail.com>,
+  =?utf-8?Q?Herv=C3=A9?= Poussineau <hpoussin@reactos.org>,  Christian
+ Borntraeger
+ <borntraeger@linux.ibm.com>,  Paul Durrant <paul@xen.org>,  Manos
+ Pitsidianakis <manos.pitsidianakis@linaro.org>,  Jagannathan Raman
+ <jag.raman@oracle.com>,  Igor Mitsyanko <i.mitsyanko@gmail.com>,  Max
+ Filippov <jcmvbkbc@gmail.com>,  Pierrick Bouvier
+ <pierrick.bouvier@linaro.org>,  "Michael S. Tsirkin" <mst@redhat.com>,
+  Anton Johansson <anjo@rev.ng>,  Peter Maydell <peter.maydell@linaro.org>,
+  Cleber Rosa <crosa@redhat.com>,  Eric Auger <eric.auger@redhat.com>,
+  Yanan Wang <wangyanan55@huawei.com>,  qemu-arm@nongnu.org,  Hao Wu
+ <wuhaotsh@google.com>,  Mads Ynddal <mads@ynddal.dk>,  Sriram Yagnaraman
+ <sriram.yagnaraman@ericsson.com>,  qemu-riscv@nongnu.org,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Jason Wang <jasowang@redhat.com>,  Nicholas Piggin
+ <npiggin@gmail.com>,  Michael Rolnik <mrolnik@gmail.com>,  Zhao Liu
+ <zhao1.liu@intel.com>,  Alessandro Di Federico <ale@rev.ng>,  Thomas Huth
+ <thuth@redhat.com>,  Antony Pavlov <antonynpavlov@gmail.com>,  Jiaxun Yang
+ <jiaxun.yang@flygoat.com>,  Hanna Reitz <hreitz@redhat.com>,  Ilya
+ Leoshkevich <iii@linux.ibm.com>,  Marcelo Tosatti <mtosatti@redhat.com>,
+  Nina Schoetterl-Glausch <nsg@linux.ibm.com>,  Daniel Henrique Barboza
+ <danielhb413@gmail.com>,  Qiuhao Li <Qiuhao.Li@outlook.com>,  Hyman Huang
+ <yong.huang@smartx.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,
+  Magnus Damm <magnus.damm@gmail.com>,  qemu-rust@nongnu.org,  Bandan Das
+ <bsd@redhat.com>,  Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  Philippe =?utf-8?Q?Ma?=
+ =?utf-8?Q?thieu-Daud=C3=A9?=
+ <philmd@linaro.org>,  kvm@vger.kernel.org,  Fam Zheng <fam@euphon.net>,
+  Jia Liu <proljc@gmail.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  Alistair Francis <alistair@alistair23.me>,
+  Subbaraya Sundeep <sundeep.lkml@gmail.com>,  Kyle Evans
+ <kevans@freebsd.org>,  Song Gao <gaosong@loongson.cn>,  Alexandre Iooss
+ <erdnaxe@crans.org>,  Aurelien Jarno <aurelien@aurel32.net>,  Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>,  Peter Xu <peterx@redhat.com>,  Stefan
+ Hajnoczi <stefanha@redhat.com>,  BALATON Zoltan <balaton@eik.bme.hu>,
+  Elena Ufimtseva <elena.ufimtseva@oracle.com>,  "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>,  =?utf-8?B?RnLDqWTDqXJpYw==?= Barrat
+ <fbarrat@linux.ibm.com>,
+  qemu-ppc@nongnu.org,  Radoslaw Biernacki <rad@semihalf.com>,  Beniamino
+ Galvani <b.galvani@gmail.com>,  David Hildenbrand <david@redhat.com>,
+  Richard Henderson <richard.henderson@linaro.org>,  David Woodhouse
+ <dwmw2@infradead.org>,  Eduardo Habkost <eduardo@habkost.net>,  Ahmed
+ Karaman <ahmedkhaledkaraman@gmail.com>,  Huacai Chen
+ <chenhuacai@kernel.org>,  Mahmoud Mandour <ma.mandourr@gmail.com>,  Harsh
+ Prateek Bora <harshpb@linux.ibm.com>
+Subject: Re: [PATCH v2 06/12] python: upgrade to python3.9+ syntax
+In-Reply-To: <20250612205451.1177751-7-jsnow@redhat.com> (John Snow's message
+	of "Thu, 12 Jun 2025 16:54:44 -0400")
+References: <20250612205451.1177751-1-jsnow@redhat.com>
+	<20250612205451.1177751-7-jsnow@redhat.com>
+Date: Tue, 24 Jun 2025 09:34:07 +0200
+Message-ID: <87cyatmw40.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v6 3/3] hw/arm: Integrate ASPEED OTP memory support into
- AST2600 SoCs
-To: Kane Chen <kane_chen@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20250624022219.3704712-1-kane_chen@aspeedtech.com>
- <20250624022219.3704712-4-kane_chen@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250624022219.3704712-4-kane_chen@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=CPSq=ZH=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yi0RxQQS868L
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: b9ak6Pgvzj9QWHX3z3XFBIS51nXg9aMAg5CPfR0_gQ8_1750750457
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: jCK/6j7E5Ri7
 
-On 6/24/25 04:22, Kane Chen wrote:
-> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
-> 
-> The has_otpmem attribute is enabled in the SBC subclasses for AST2600
-> to control the presence of OTP support per SoC type.
-> 
-> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
-> ---
->   hw/arm/aspeed_ast2600.c      | 2 +-
->   hw/misc/aspeed_sbc.c         | 2 ++
->   include/hw/misc/aspeed_sbc.h | 2 ++
->   3 files changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index d12707f0ab..59ffd41a4a 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -261,7 +261,7 @@ static void aspeed_soc_ast2600_init(Object *obj)
->   
->       object_initialize_child(obj, "i3c", &s->i3c, TYPE_ASPEED_I3C);
->   
-> -    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_SBC);
-> +    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_AST2600_SBC);
+John Snow <jsnow@redhat.com> writes:
 
-I see that TYPE_ASPEED_AST2600_SBC was defined but never used :/
+> This patch is fully automated, using pymagic, isort and autoflake.
+>
+> Create a script named pymagic.sh:
+>
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D
+>
+> pyupgrade --exit-zero-even-if-changed --keep-percent-format \
+>           --py39-plus "$@"
+>
+> autoflake -i "$@"
+>
+> isort --settings-file python/setup.cfg \
+>       -p compat -p qapidoc_legacy -p iotests -o qemu "$@"
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D
+>
+> Then, from qemu.git root:
+>
+>> find . -type f -name '*.py' | xargs pymagic
+>> git grep --name-only "#!/usr/bin/env python" | xargs pymagic
+>
+> This changes a lot of old Pythonisms, but in particular it upgrades the
+> old Python type hint paradigm to the new 3.9+ paradigm wherein you no
+> longer need to import List, Dict, Tuple, Set, etc from the Typing module
+> and instead directly subscript the built-in types list, dict, tuple,
+> set, etc. The old-style annotations are deprecated as of 3.9 and are
+> eligible for removal starting in Python 3.14, though the exact date of
+> their removal is not yet known.
+>
+> pyupgrade updates the imports and type hint paradigms (as well as
+> updating other old 'isms, such as removing the unicode string
+> prefix). autoflake in turn then removes any unused import statements,
+> possibly left behind by pyupgrade. Lastly, isort fixes the import order
+> and formatting to the standard we use in qemu.git/python and
+> scripts/qapi in particular.
+>
+> Signed-off-by: John Snow <jsnow@redhat.com>
 
->   
->       object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
->       object_initialize_child(obj, "video", &s->video, TYPE_UNIMPLEMENTED_DEVICE);
-> diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
-> index 3bc5e37c6b..f1e8747edd 100644
-> --- a/hw/misc/aspeed_sbc.c
-> +++ b/hw/misc/aspeed_sbc.c
-> @@ -254,8 +254,10 @@ static const TypeInfo aspeed_sbc_info = {
->   static void aspeed_ast2600_sbc_class_init(ObjectClass *klass, const void *data)
->   {
->       DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSBCClass *sc = ASPEED_SBC_CLASS(klass);
->   
->       dc->desc = "AST2600 Secure Boot Controller";
-> +    sc->has_otpmem = true;
->   }
->   
->   static const TypeInfo aspeed_ast2600_sbc_info = {
-> diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
-> index 3191c6eb87..f1e6f8148c 100644
-> --- a/include/hw/misc/aspeed_sbc.h
-> +++ b/include/hw/misc/aspeed_sbc.h
-> @@ -43,6 +43,8 @@ struct AspeedSBCState {
->   
->   struct AspeedSBCClass {
->       SysBusDeviceClass parent_class;
-> +
-> +    bool has_otpmem;
+[...]
 
-This change should be in the previous patch.
+>  448 files changed, 1959 insertions(+), 1631 deletions(-)
 
+*=C3=84chz*
 
-Thanks,
+I hate it when people ask me to split up my mechanical patches...
 
-C.
+One split is by subsystem / maintainer.  I've done this a few times, and
+it's quite a bother.  Questionable use of your time if you ask me.
 
+There's another split here...  Your pymagic.sh runs three tools.  If you
+commit after each one, the patch splits into three.
 
->   };
->   
->   #endif /* ASPEED_SBC_H */
+I understand you pass --py39-plus to pyupgrade to get the type hints
+modernized.  If you run it without --py39-plus for all the miscellaneous
+upgrades, commit, then run it with --py39-plus for just the type hint
+upgrades, commit, the last patch splits again.
 
+Thoughts?

@@ -1,69 +1,69 @@
-Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp3006036dyb;
-        Mon, 23 Jun 2025 23:29:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUjhrSC/cnp7Cydl2ScvMDDlIJGCPXWTb5FY9e0S54CHd7ZRKoqULuYGHoBub6MTVhSkZwe2/27foJVlQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IH2vcXnecqBjRSE8k+gfBfPENOy/qbHCJZNgs9BsOqnCfg3k+s6psR/mGn1uwzMSKI3cDT1
-X-Received: by 2002:a05:622a:81:b0:4a7:30e2:b31e with SMTP id d75a77b69052e-4a77a233d86mr255242271cf.34.1750746560169;
-        Mon, 23 Jun 2025 23:29:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750746560; cv=none;
+Received: by 2002:a05:7301:19ab:b0:175:694b:cb76 with SMTP id mc43csp3011381dyb;
+        Mon, 23 Jun 2025 23:44:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU5kxnW8iFhgBtAEJxjj4qWKlGVVXOVO7iq7Ivb6aUez9oe8vdLFJy1AfvTUo6lPCzO/SKALHMDpZlrSA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFGfxUNsB/Svo9BfsoY8Bxc2jDcH0rJkKGZbqu6oPAUh7Qe4AUJf+HArG02SwdoLL1S6Epz
+X-Received: by 2002:a05:622a:64c:b0:4a7:1417:37e8 with SMTP id d75a77b69052e-4a77a1b054dmr197261031cf.10.1750747479165;
+        Mon, 23 Jun 2025 23:44:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750747479; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZW2cNL42tOPzSyYrDrStlF6M7iQM3ATIBLDLti557A7VSbR+2dP8QEKhVQ4S8TGOVM
-         8NdUF3qdzMq1kycTPgYbyFXzsBdOtOjVYt3eamO+s8ZKJmPX5eqPtlgZPhFWxUbCTZ7B
-         YYji+GxqJPNuyQ1pNjw4WQcCz5XV26q62xYQchJS1wYqfFmxPbMxj42gVCPs/+ShAJ5s
-         9w2YdRCAe4ODlUksBfZyNIJq0ZATcaYIOQIq8o5X0f0LUVwwjYHJ5xaRN2Bm8Chv4qfQ
-         a+wJYmSc2CsCNniAzcN0jTZXXSxBsIrj8cFCuuq/aH5iauj3mM+ukBxISFuEw+NBiV8l
-         25Cw==
+        b=GZRaopPXuBJs4CMZlCRFfksY+s0MnaBVJC1u7L0Zaa9QTP9ZhpC1BAY1fI0E0eLex1
+         FWvQSarUnfaHLyoawA+aZ5Hcyu8tHJODyGXk51Ji9ymISktCnuH+nOxMVmYvngJ9awk1
+         5jPozaciG1/WOO7NbbWdck+cSCKlRsuEKDuo80CqfQIItiyDgJ5oWWU/nkR+f0OFGINX
+         wDTSWPXCX3WdCyLeu9ClfH7BK2KtMUQ+VKPdvqH6nnHPYH8fMFQztwzHd3YXtCUoJ6MJ
+         73bkbRZoEYV/vNJ0UETf6m6+uXv7TygBUtMcN73px+VhAf2zGF2768iUPpyHTrrnnOOz
+         UcFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=vbt00mVIbOI1NTBvChAZvBzb7Go9yfPj/CGdTYETjGw=;
+        bh=FkbRkIcjwt6KAEWm8oOEf7g09hW0e1U50scQlvwe4xE=;
         fh=e2doJimpuP43a+5rrKkGu3YAn2W68cBR+w+TN2Njkuw=;
-        b=K8K5hSHgS8j8vtRNzlt4FIQL9D7uWOqfA2VKQKXKVFoYdBJadq3ZBaZSQE5TJ/Hrbh
-         5mfW1WZdAz1/uuV8IzjF2S/484oKlG7AReGgT/C1EmjI0Z7yixTlIFZleb2KlWkPJbww
-         On+BWOxszv7ZsV+m63A1yI2Lqqfn+ag9QR1u2qKBtYJPLxeGRGRcqgW8F+BmAGfeoEf3
-         Q0Yj6qG2gLsG/Fa4zw1ANLkSQYyHjMzECAXo7dBJjXXivNbwH+mBTaMJpFdL/YNCdvhz
-         WdyqX7XaXu+dxlCRZnHt9N62QppW2v+pI3fbEFTbZAW5lvK7+/9MS5E+6aTDjqTvZ693
-         UW2w==;
+        b=jXFb74IKJA0K8OOTqJu3l1BtGDarOVTan93AtPjhYarFNrAtY1okafRBGXPzpLHB6L
+         2dkwojdJZlA4JSyJ1gg+A60zEgW9RFirnkTxRdJ3y+yxoJHswwKq25uN0CVQlbVLbF8a
+         lVbI0yOG5zmgIrCoUmcf6KMXZfeHKZcNXW6QcnKoB7zAEqDJDRRsGJLNnoyOnT0QaZVw
+         MYsj91J/550u9Ryz49wGSeZrLe0uKwWgVpXrIsmG25ro7418xZoBDMq1qN1NJj+WFai0
+         53vtQuDc597ea3lpcbJFiU5TV77Pw0k+lX4framt7OkkngtDWB+RznPxDujKDi/EmKZv
+         JFIQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a779d47545si100643921cf.46.2025.06.23.23.29.20
+        by mx.google.com with ESMTPS id d75a77b69052e-4a77a0b5cc5si98823141cf.392.2025.06.23.23.44.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Jun 2025 23:29:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Jun 2025 23:44:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uTx9I-0007yw-P1; Tue, 24 Jun 2025 02:28:52 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uTxNy-0004Te-40; Tue, 24 Jun 2025 02:44:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=CPSq=ZH=kaod.org=clg@ozlabs.org>)
- id 1uTx8z-0007n1-IQ; Tue, 24 Jun 2025 02:28:41 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ id 1uTxNv-0004T7-3I; Tue, 24 Jun 2025 02:43:59 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=CPSq=ZH=kaod.org=clg@ozlabs.org>)
- id 1uTx8m-00087A-B3; Tue, 24 Jun 2025 02:28:32 -0400
+ id 1uTxNs-0002VC-NI; Tue, 24 Jun 2025 02:43:58 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bRFPg2SCHz4x4m;
- Tue, 24 Jun 2025 16:28:07 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bRFlt0bdJz4x4m;
+ Tue, 24 Jun 2025 16:43:54 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bRFPb6mHxz4x0C;
- Tue, 24 Jun 2025 16:28:03 +1000 (AEST)
-Message-ID: <601cae7f-8203-4068-a7ec-7cd3e11519d8@kaod.org>
-Date: Tue, 24 Jun 2025 08:28:00 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bRFlp62s2z4wbZ;
+ Tue, 24 Jun 2025 16:43:50 +1000 (AEST)
+Message-ID: <46cc6026-e7f3-4f94-92d9-005ec0660810@kaod.org>
+Date: Tue, 24 Jun 2025 08:43:48 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v6 1/3] hw/misc/aspeed_otp: Add ASPEED OTP memory device
- model
+Subject: Re: [RFC v6 3/3] hw/arm: Integrate ASPEED OTP memory support into
+ AST2600 SoCs
 To: Kane Chen <kane_chen@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -73,7 +73,7 @@ To: Kane Chen <kane_chen@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com
 References: <20250624022219.3704712-1-kane_chen@aspeedtech.com>
- <20250624022219.3704712-2-kane_chen@aspeedtech.com>
+ <20250624022219.3704712-4-kane_chen@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -118,182 +118,89 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250624022219.3704712-2-kane_chen@aspeedtech.com>
+In-Reply-To: <20250624022219.3704712-4-kane_chen@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=CPSq=ZH=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, FORGED_SPF_HELO=1,
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: soPCKeMpcAVv
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yi0RxQQS868L
 
 On 6/24/25 04:22, Kane Chen wrote:
 > From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 > 
-> Introduce a QEMU device model for ASPEED's One-Time Programmable (OTP)
-> memory.
-> 
-> This model simulates a word-addressable OTP region used for secure
-> fuse storage. The OTP memory can operate with an internal memory
-> buffer.
-> 
-> The OTP model provides a memory-like interface through a dedicated
-> AddressSpace, allowing other device models (e.g., SBC) to issue
-> transactions as if accessing a memory-mapped region.
+> The has_otpmem attribute is enabled in the SBC subclasses for AST2600
+> to control the presence of OTP support per SoC type.
 > 
 > Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 > ---
->   hw/misc/aspeed_otpmem.c         | 85 +++++++++++++++++++++++++++++++++
->   hw/misc/meson.build             |  1 +
->   include/hw/misc/aspeed_otpmem.h | 33 +++++++++++++
->   3 files changed, 119 insertions(+)
->   create mode 100644 hw/misc/aspeed_otpmem.c
->   create mode 100644 include/hw/misc/aspeed_otpmem.h
+>   hw/arm/aspeed_ast2600.c      | 2 +-
+>   hw/misc/aspeed_sbc.c         | 2 ++
+>   include/hw/misc/aspeed_sbc.h | 2 ++
+>   3 files changed, 5 insertions(+), 1 deletion(-)
 > 
-> diff --git a/hw/misc/aspeed_otpmem.c b/hw/misc/aspeed_otpmem.c
-> new file mode 100644
-> index 0000000000..b13b87fae8
-> --- /dev/null
-> +++ b/hw/misc/aspeed_otpmem.c
-> @@ -0,0 +1,85 @@
-> +/*
-> + *  ASPEED OTP (One-Time Programmable) memory
-> + *
-> + *  Copyright (C) 2025 Aspeed
-> + *
-> + *  SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/log.h"
-> +#include "qapi/error.h"
-> +#include "trace.h"
-> +#include "system/block-backend-global-state.h"
-> +#include "system/block-backend-io.h"
-> +#include "hw/misc/aspeed_otpmem.h"
-> +
-> +static uint64_t aspeed_otpmem_read(void *opaque, hwaddr offset, unsigned size)
-> +{
-> +    AspeedOTPMemState *s = opaque;
-> +    uint64_t val = 0;
-> +
-> +    memcpy(&val, s->storage + offset, size);
-> +
-> +    return val;
-> +}
-> +
-> +static void aspeed_otpmem_write(void *opaque, hwaddr offset,
-> +                                uint64_t val, unsigned size)
-> +{
-> +    AspeedOTPMemState *s = opaque;
-> +
-> +    memcpy(s->storage + offset, &val, size);
-> +}
-> +
-> +static const MemoryRegionOps aspeed_otpmem_ops = {
-> +    .read = aspeed_otpmem_read,
-> +    .write = aspeed_otpmem_write,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .valid.min_access_size = 1,
-> +    .valid.max_access_size = 4,
-> +};
-> +
-> +static void aspeed_otpmem_realize(DeviceState *dev, Error **errp)
-> +{
-> +    AspeedOTPMemState *s = ASPEED_OTPMEM(dev);
-> +    const size_t size = OTPMEM_SIZE;
-
-Why not use s->size instead ? and a device property ?
-
-> +    int i, num;
-> +    uint32_t *p;
-> +
-> +    s->storage = g_malloc(size);
-> +    if (!s->storage) {
-
-if g_malloc() fails, the application will terminate. There is no
-need to test the returned pointer.
-
-> +        error_setg(errp, "Failed to allocate OTP memory storage buffer");
-> +        return;
-> +    }
-> +
-> +    num = size / sizeof(uint32_t);
-> +    p = (uint32_t *)s->storage;
-> +    for (i = 0; i < num; i++) {
-> +        p[i] = (i % 2 == 0) ? 0x00000000 : 0xFFFFFFFF;
-> +    }
-
-The above initialization could be done in a aspeed_otpmem_init_storage()routine.
-
-I understand that you want the values set at runtime to be kept
-after a machine/device reset.
-
-> +    memory_region_init_io(&s->mmio, OBJECT(dev), &aspeed_otpmem_ops,
-> +                          s, "aspeed.otpmem", size);
-> +    address_space_init(&s->as, &s->mmio, NULL);
-> +}
-> +
-> +static void aspeed_otpmem_class_init(ObjectClass *klass, const void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    dc->realize = aspeed_otpmem_realize;
-> +}
-> +
-> +static const TypeInfo aspeed_otpmem_info = {
-> +    .name          = TYPE_ASPEED_OTPMEM,
-> +    .parent        = TYPE_DEVICE,
-> +    .instance_size = sizeof(AspeedOTPMemState),
-> +    .class_init    = aspeed_otpmem_class_init,
-> +};
-> +
-> +static void aspeed_otpmem_register_types(void)
-> +{
-> +    type_register_static(&aspeed_otpmem_info);
-> +}
-> +
-> +type_init(aspeed_otpmem_register_types)
-> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> index 6d47de482c..ed1eaaa2ad 100644
-> --- a/hw/misc/meson.build
-> +++ b/hw/misc/meson.build
-> @@ -136,6 +136,7 @@ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
->     'aspeed_sbc.c',
->     'aspeed_sdmc.c',
->     'aspeed_xdma.c',
-> +  'aspeed_otpmem.c',
->     'aspeed_peci.c',
->     'aspeed_sli.c'))
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index d12707f0ab..59ffd41a4a 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -261,7 +261,7 @@ static void aspeed_soc_ast2600_init(Object *obj)
 >   
-> diff --git a/include/hw/misc/aspeed_otpmem.h b/include/hw/misc/aspeed_otpmem.h
-> new file mode 100644
-> index 0000000000..a598e707a9
-> --- /dev/null
-> +++ b/include/hw/misc/aspeed_otpmem.h
+>       object_initialize_child(obj, "i3c", &s->i3c, TYPE_ASPEED_I3C);
+>   
+> -    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_SBC);
+> +    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_AST2600_SBC);
 
-Please add to your .git/config file :
+I see that TYPE_ASPEED_AST2600_SBC was defined but never used :/
 
-[diff]
-	orderFile = /path/to/qemu/scripts/git.orderfile
+>   
+>       object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
+>       object_initialize_child(obj, "video", &s->video, TYPE_UNIMPLEMENTED_DEVICE);
+> diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
+> index 3bc5e37c6b..f1e8747edd 100644
+> --- a/hw/misc/aspeed_sbc.c
+> +++ b/hw/misc/aspeed_sbc.c
+> @@ -254,8 +254,10 @@ static const TypeInfo aspeed_sbc_info = {
+>   static void aspeed_ast2600_sbc_class_init(ObjectClass *klass, const void *data)
+>   {
+>       DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedSBCClass *sc = ASPEED_SBC_CLASS(klass);
+>   
+>       dc->desc = "AST2600 Secure Boot Controller";
+> +    sc->has_otpmem = true;
+>   }
+>   
+>   static const TypeInfo aspeed_ast2600_sbc_info = {
+> diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
+> index 3191c6eb87..f1e6f8148c 100644
+> --- a/include/hw/misc/aspeed_sbc.h
+> +++ b/include/hw/misc/aspeed_sbc.h
+> @@ -43,6 +43,8 @@ struct AspeedSBCState {
+>   
+>   struct AspeedSBCClass {
+>       SysBusDeviceClass parent_class;
+> +
+> +    bool has_otpmem;
+
+This change should be in the previous patch.
 
 
 Thanks,
@@ -301,39 +208,7 @@ Thanks,
 C.
 
 
-
-> @@ -0,0 +1,33 @@
-> +/*
-> + *  ASPEED OTP (One-Time Programmable) memory
-> + *
-> + *  Copyright (C) 2025 Aspeed
-> + *
-> + *  SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#ifndef ASPEED_OTPMMEM_H
-> +#define ASPEED_OTPMMEM_H
-> +
-> +#include "system/memory.h"
-> +#include "hw/block/block.h"
-> +#include "system/memory.h"
-> +#include "system/address-spaces.h"
-> +
-> +#define OTPMEM_SIZE 0x4000
-> +#define TYPE_ASPEED_OTPMEM "aspeed.otpmem"
-> +OBJECT_DECLARE_SIMPLE_TYPE(AspeedOTPMemState, ASPEED_OTPMEM)
-> +
-> +typedef struct AspeedOTPMemState {
-> +    DeviceState parent_obj;
-> +
-> +    uint64_t size;
-> +
-> +    AddressSpace as;
-> +
-> +    MemoryRegion mmio;
-> +
-> +    uint8_t *storage;
-> +} AspeedOTPMemState;
-> +
-> +#endif /* ASPEED_OTPMMEM_H */
+>   };
+>   
+>   #endif /* ASPEED_SBC_H */
 

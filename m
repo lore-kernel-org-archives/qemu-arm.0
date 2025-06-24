@@ -1,58 +1,57 @@
-Received: by 2002:a05:7301:4085:b0:178:84eb:402c with SMTP id pt5csp352067dyb;
-        Tue, 24 Jun 2025 10:54:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCURdPAVd2RdfHj60CjsZAGXTV+aYZzsya7DRlfckok7paHdGol7gVYA0SfcK/XmIIk7Jcg8OaVhecVlqA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHZkgUTdZGXjao+3buvIXhvp1FZaRi7/wM0dXKoe3G9BmFVaqSfNTdfNoNUXpwgaifL8bpG
-X-Received: by 2002:ac8:5915:0:b0:4a5:a4e9:1330 with SMTP id d75a77b69052e-4a7c0887274mr3648241cf.50.1750787664342;
-        Tue, 24 Jun 2025 10:54:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750787664; cv=none;
+Received: by 2002:a05:7301:4085:b0:178:84eb:402c with SMTP id pt5csp352156dyb;
+        Tue, 24 Jun 2025 10:54:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUKJZPw4RlpJrL2eVuNQp6559wAmKzo3mkgLUUOzMhh8dsHMn2yibuoUA3r9oWt+brtwBZdIyzVHmjbdQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHHUbSb+D+F2B+SqdRDuSXHu4ARGquux0iGMKtJ/8zd8rfCTD30iONQl0McHwR1XhSEkaIX
+X-Received: by 2002:ac8:7d8c:0:b0:4a5:8b39:626b with SMTP id d75a77b69052e-4a7c07d0997mr4034051cf.27.1750787678732;
+        Tue, 24 Jun 2025 10:54:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750787678; cv=none;
         d=google.com; s=arc-20240605;
-        b=jiu7HDI8QMtZDJ6fiL0Rc1sdYVF8PW5EDdr4WRSvox7zxpHscx4WxOPOqzzf5qEHwB
-         hVPjGJvSA8m6iXN6Jl4dTLLHUTy2oUTcBOz8gJ+ZhvcmQAjaO1n72DYYovv/J5VTk01G
-         d984tGCJujdbaslrB8i9X1L9/DcLstcv2gSm+vMzElxV4Dur8qDo4PqswP8REh2B7U5+
-         6Qb7Hf4cuUeSgEg7o///+DUcvw9L4O6xkkxIRlFVwdvO6CavV/w0E121UJfPH5wkJnmT
-         xNX4k3FbKDdI/zM/I9IVRD4zQ1K91NAN5OMMrJmisHy6lHaDUoKvwsT7HFKgEmEGt0Wx
-         +gLg==
+        b=f1zrfLsyKSDt/6sb+iSVlcn4Mkte9id9fOF7lZ6yog0JAG/ebVMLTHjNBfGt+bYg9a
+         uyNQcvc/MJAwFLaOmTh2iiiWAVPXtiUoqO+ZcjUjB3CjI46P868wdmj0GdgwT6N6eHFD
+         1918pxIYHHJitxCSKTTm+H6xI/86KeHYf460GKUK7dXZ9eFuuy0GECVw5mnM362assbi
+         g8lCd2LICG1kOb2as09Bw75n8QHI/w3uIu8zpz4oCfd6mW5jepWzZoMnSiSzfm+jrX4Q
+         NCBiXs1q1S9o5H+yIbYO38t7U7ZM9xWjpVAMSZjFbePXfAuDadoToMdDRhrgGQ8TRGn9
+         Egaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=5za+ItbXTcHGreAaQBdNMeS3Q7GBDJIGedGChRhm4EY=;
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=vjQjGRGJYV8oj6C9qlehHQhV+zZF7SSfzV2GNkxSF1U=;
         fh=HgScNWUKrsiSAZjMwzmJSLCIQSpPo0VqsG8Pr9G5dWY=;
-        b=eHvlzJsLisfBR2C/vl5tTIY9TJtqa1FD/W7wqVB29cLy54p55biXp2qVgJVdcMRMJX
-         8UaGkHXNG+1W1LDcWZPFwAXr36FGqesD0cw9pJ2xhUMRrXdqNdAoUK+2S0B35MCvb3ZJ
-         0s1HkpD2SkIDmZ8DNzu44NO10OB1KOR78OZgRdp1nFHBDphOrN4Tqq4jCiAQSD+QmTaQ
-         VXqzr6Gdu2TggpJzjqAWSF2oNBuJ2WWaicQ3te3AUXoIhk3g9oUqigb+KRncowyLeogJ
-         ZXDJlUcBt/OchrZTy1heGtaQafhiY+Qt4agP6dfkAQ6YV3Em13BCpfe+ooFwhp3Zm+e+
-         6tDA==;
+        b=TVhgvN9Xf2CKEGppzFbQNybSxK187qXdF539po5sZVoiiChdefKeMUvPs/R52GP5TM
+         dMY7ZgRNoS0yU1THccJf6j0bYqkLykXT+cjX0U8hY9zjcxN44R6xuik3jvsJilZwZrwi
+         gQIZ2hfHtQjWpnE9Zmws3V08OJj7h5NebwzX84bSpaodN55veaS02vxX13zFcD010PuN
+         KUJKRFCsJWUtUK7rMuyc9Elqc8iGQrhrxGZMkDcMN99PkiD1I64lq2FkINvIcgFytLJB
+         CJwRVAyxvaAgc/MPdDjBb5ZzhqE+eQ3EZT0qCxSy+3jNS73YmiiJw6Qw5YjAi02VvCYK
+         nj3g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a77c33a253si104184411cf.231.2025.06.24.10.54.24
+        by mx.google.com with ESMTPS id d75a77b69052e-4a79de8d589si53889361cf.494.2025.06.24.10.54.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Jun 2025 10:54:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Jun 2025 10:54:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uU7ps-0002tD-Ib; Tue, 24 Jun 2025 13:53:33 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uU7ps-0002t8-7s; Tue, 24 Jun 2025 13:53:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mhej@vps-ovh.mhejs.net>)
- id 1uU7pm-0002rt-Jv; Tue, 24 Jun 2025 13:53:26 -0400
+ id 1uU7pm-0002rx-Pr; Tue, 24 Jun 2025 13:53:26 -0400
 Received: from vps-ovh.mhejs.net ([145.239.82.108])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mhej@vps-ovh.mhejs.net>)
- id 1uU7pk-0002in-J1; Tue, 24 Jun 2025 13:53:26 -0400
+ id 1uU7pk-0002ic-J2; Tue, 24 Jun 2025 13:53:26 -0400
 Received: from MUA
  by vps-ovh.mhejs.net with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.98.1) (envelope-from <mhej@vps-ovh.mhejs.net>)
- id 1uU7pb-00000005WmI-1ZgI; Tue, 24 Jun 2025 19:53:15 +0200
+ id 1uU7pW-00000005WmG-12EG; Tue, 24 Jun 2025 19:53:10 +0200
 From: "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>
 To: Alex Williamson <alex.williamson@redhat.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
@@ -60,14 +59,12 @@ To: Alex Williamson <alex.williamson@redhat.com>,
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Avihai Horon <avihaih@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Subject: [PATCH 1/3] vfio/migration: Max in-flight VFIO device state buffer
- count limit
-Date: Tue, 24 Jun 2025 19:51:56 +0200
-Message-ID: <0e88a253e06647f6c01bdeba45848501b3631bd3.1750787338.git.maciej.szmigiero@oracle.com>
+Subject: [PATCH 0/3] VFIO multifd device state transfer patches for QEMU 10.1
+Date: Tue, 24 Jun 2025 19:51:55 +0200
+Message-ID: <cover.1750787338.git.maciej.szmigiero@oracle.com>
 X-Mailer: git-send-email 2.49.0
-In-Reply-To: <cover.1750787338.git.maciej.szmigiero@oracle.com>
-References: <cover.1750787338.git.maciej.szmigiero@oracle.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=145.239.82.108;
  envelope-from=mhej@vps-ovh.mhejs.net; helo=vps-ovh.mhejs.net
@@ -79,145 +76,51 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4LRzDyoBVXQZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: AD8MXn1Y+9Ph
 
 From: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
 
-Allow capping the maximum count of in-flight VFIO device state buffers
-queued at the destination, otherwise a malicious QEMU source could
-theoretically cause the target QEMU to allocate unlimited amounts of memory
-for buffers-in-flight.
+When VFIO multifd device state transfer support was merged in QEMU 10.0
+some of patches were separated for the future QEMU release after the
+spring cleanup.
 
-Since this is not expected to be a realistic threat in most of VFIO live
-migration use cases and the right value depends on the particular setup
-disable the limit by default by setting it to UINT64_MAX.
+Since QEMU 10.1 code freeze is getting closer let's have them reviewed
+now.
 
-Signed-off-by: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
----
- docs/devel/migration/vfio.rst | 13 +++++++++++++
- hw/vfio/migration-multifd.c   | 16 ++++++++++++++++
- hw/vfio/pci.c                 |  9 +++++++++
- include/hw/vfio/vfio-device.h |  1 +
- 4 files changed, 39 insertions(+)
+The most important patch from this patch set is the one adding
+"x-migration-load-config-after-iter" VFIO property since it is a
+correctness fix for an ARM64 platform idiosyncrasy with respect
+to VFIO load dependency on interrupt controller being loaded first.
 
-diff --git a/docs/devel/migration/vfio.rst b/docs/devel/migration/vfio.rst
-index 673e354754c8..f4a6bfa4619b 100644
---- a/docs/devel/migration/vfio.rst
-+++ b/docs/devel/migration/vfio.rst
-@@ -247,3 +247,16 @@ The multifd VFIO device state transfer is controlled by
- "x-migration-multifd-transfer" VFIO device property. This property defaults to
- AUTO, which means that VFIO device state transfer via multifd channels is
- attempted in configurations that otherwise support it.
-+
-+Since the target QEMU needs to load device state buffers in-order it needs to
-+queue incoming buffers until they can be loaded into the device.
-+This means that a malicious QEMU source could theoretically cause the target
-+QEMU to allocate unlimited amounts of memory for such buffers-in-flight.
-+
-+The "x-migration-max-queued-buffers" property allows capping the maximum count
-+of these VFIO device state buffers queued at the destination.
-+
-+Because a malicious QEMU source causing OOM on the target is not expected to be
-+a realistic threat in most of VFIO live migration use cases and the right value
-+depends on the particular setup by default this queued buffers limit is
-+disabled by setting it to UINT64_MAX.
-diff --git a/hw/vfio/migration-multifd.c b/hw/vfio/migration-multifd.c
-index 850a31948878..f26c112090b4 100644
---- a/hw/vfio/migration-multifd.c
-+++ b/hw/vfio/migration-multifd.c
-@@ -56,6 +56,7 @@ typedef struct VFIOMultifd {
-     QemuMutex load_bufs_mutex; /* Lock order: this lock -> BQL */
-     uint32_t load_buf_idx;
-     uint32_t load_buf_idx_last;
-+    uint32_t load_buf_queued_pending_buffers;
- } VFIOMultifd;
- 
- static void vfio_state_buffer_clear(gpointer data)
-@@ -127,6 +128,17 @@ static bool vfio_load_state_buffer_insert(VFIODevice *vbasedev,
- 
-     assert(packet->idx >= multifd->load_buf_idx);
- 
-+    multifd->load_buf_queued_pending_buffers++;
-+    if (multifd->load_buf_queued_pending_buffers >
-+        vbasedev->migration_max_queued_buffers) {
-+        error_setg(errp,
-+                   "%s: queuing state buffer %" PRIu32
-+                   " would exceed the max of %" PRIu64,
-+                   vbasedev->name, packet->idx,
-+                   vbasedev->migration_max_queued_buffers);
-+        return false;
-+    }
-+
-     lb->data = g_memdup2(&packet->data, packet_total_size - sizeof(*packet));
-     lb->len = packet_total_size - sizeof(*packet);
-     lb->is_present = true;
-@@ -387,6 +399,9 @@ static bool vfio_load_bufs_thread(void *opaque, bool *should_quit, Error **errp)
-             goto thread_exit;
-         }
- 
-+        assert(multifd->load_buf_queued_pending_buffers > 0);
-+        multifd->load_buf_queued_pending_buffers--;
-+
-         if (multifd->load_buf_idx == multifd->load_buf_idx_last - 1) {
-             trace_vfio_load_state_device_buffer_end(vbasedev->name);
-         }
-@@ -423,6 +438,7 @@ static VFIOMultifd *vfio_multifd_new(void)
- 
-     multifd->load_buf_idx = 0;
-     multifd->load_buf_idx_last = UINT32_MAX;
-+    multifd->load_buf_queued_pending_buffers = 0;
-     qemu_cond_init(&multifd->load_bufs_buffer_ready_cond);
- 
-     multifd->load_bufs_thread_running = false;
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index fa25bded25c5..2765a39f9df1 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -3524,6 +3524,8 @@ static const Property vfio_pci_dev_properties[] = {
-                 vbasedev.migration_multifd_transfer,
-                 vfio_pci_migration_multifd_transfer_prop, OnOffAuto,
-                 .set_default = true, .defval.i = ON_OFF_AUTO_AUTO),
-+    DEFINE_PROP_UINT64("x-migration-max-queued-buffers", VFIOPCIDevice,
-+                       vbasedev.migration_max_queued_buffers, UINT64_MAX),
-     DEFINE_PROP_BOOL("migration-events", VFIOPCIDevice,
-                      vbasedev.migration_events, false),
-     DEFINE_PROP_BOOL("x-no-mmap", VFIOPCIDevice, vbasedev.no_mmap, false),
-@@ -3698,6 +3700,13 @@ static void vfio_pci_dev_class_init(ObjectClass *klass, const void *data)
-                                           "x-migration-multifd-transfer",
-                                           "Transfer this device state via "
-                                           "multifd channels when live migrating it");
-+    object_class_property_set_description(klass, /* 10.1 */
-+                                          "x-migration-max-queued-buffers",
-+                                          "Maximum count of in-flight VFIO "
-+                                          "device state buffers queued at the "
-+                                          "destination when doing live "
-+                                          "migration of device state via "
-+                                          "multifd channels");
- }
- 
- static const TypeInfo vfio_pci_dev_info = {
-diff --git a/include/hw/vfio/vfio-device.h b/include/hw/vfio/vfio-device.h
-index d45e5a68a24e..0ee34aaf668b 100644
---- a/include/hw/vfio/vfio-device.h
-+++ b/include/hw/vfio/vfio-device.h
-@@ -66,6 +66,7 @@ typedef struct VFIODevice {
-     bool ram_block_discard_allowed;
-     OnOffAuto enable_migration;
-     OnOffAuto migration_multifd_transfer;
-+    uint64_t migration_max_queued_buffers;
-     bool migration_events;
-     bool use_region_fds;
-     VFIODeviceOps *ops;
+I've also CCed the ARM maintainer and qemu-arm as suggested previously
+by Cédric.
+
+Maciej S. Szmigiero (3):
+  vfio/migration: Max in-flight VFIO device state buffer count limit
+  vfio/migration: Add x-migration-load-config-after-iter VFIO property
+  vfio/migration: Add also max in-flight VFIO device state buffers size
+    limit
+
+ docs/devel/migration/vfio.rst     |  21 +++++
+ hw/core/machine.c                 |   1 +
+ hw/vfio/migration-multifd.c       | 125 +++++++++++++++++++++++++++++-
+ hw/vfio/migration-multifd.h       |   3 +
+ hw/vfio/migration.c               |  10 ++-
+ hw/vfio/pci.c                     |  27 +++++++
+ hw/vfio/vfio-migration-internal.h |   1 +
+ include/hw/vfio/vfio-device.h     |   3 +
+ 8 files changed, 188 insertions(+), 3 deletions(-)
+

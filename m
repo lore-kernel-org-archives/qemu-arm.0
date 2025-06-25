@@ -1,184 +1,409 @@
-Received: by 2002:a05:7301:4085:b0:178:84eb:402c with SMTP id pt5csp967667dyb;
-        Wed, 25 Jun 2025 09:22:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWyPc2qtjYXOXy8njqhhvCwwGwU3i6wTp8h7GvrmA+ktJETNIBVj7P7rzjbE0YmPMh+asvnJcUPpRnBwQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFu754QKFkwY9fslrh23H57N5vyW8ME+K/XVtv5eFwjK18tkqeHBIlPrZd4grYcTqLhVVRG
-X-Received: by 2002:a05:6000:18a5:b0:39c:30cd:352c with SMTP id ffacd0b85a97d-3a6ed5b8721mr2884316f8f.8.1750868524499;
-        Wed, 25 Jun 2025 09:22:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750868524; cv=none;
+Received: by 2002:a05:7301:4085:b0:178:84eb:402c with SMTP id pt5csp1015893dyb;
+        Wed, 25 Jun 2025 10:35:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWMu6xjZCOdWrUG8DMaGxBc45p/qcMR9Qj8lLf49W+w4Nuymgzhapuv0jPA2yWmZa20ICRNk2U1WaBsIw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFsQywwo22rNuuVqeRL22TrYsLf/YEtcaT2NVnGzLTTpcGHt6ZA0qBwlSq91oIb7qaHDJGH
+X-Received: by 2002:a05:6102:4a81:b0:4e9:b0d4:1133 with SMTP id ada2fe7eead31-4ecc7671bbbmr3122463137.20.1750872943453;
+        Wed, 25 Jun 2025 10:35:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750872943; cv=none;
         d=google.com; s=arc-20240605;
-        b=BHXd+UQCoIMwhz/OKvH+bKaPGN0eQysKN2Dro+Ya5EzugYBHjZaNneUaN48FjhAXv7
-         9gd0eP1zko/5yBg7kFO0SO5ps4dSWaH/0ZSl2ww0iHQjMioXbeFwgxVYGLldmF67owon
-         nY/FaDUVJoLriiHpuWU9pnrIidMdGGmMd8w/ICQhbgGKn79db1bmEi+jqvRLZdd5y+BN
-         0imqDeMdoXe3QZsOH3WzN3JjdAu4Xdyi9NMynMTKLnyOEtfbtcLYfUbKFPeI4v5jjt8I
-         +d7u5fUynWitrqYisYpweufkj0TH3vQVFTyJJw0/qwlHAfcoeMa51PQQlCBRcN4/N1Db
-         Ko5A==
+        b=Ge6cC35qJRqgwTfwfOzY83MnFxFwhrfRHLShkPt3AHXiwEyNFfY1nfyMp53TBNZ5a+
+         T6hQoCYqt17JUIrYxA+EJ1yhYvzrAjNz4qVb14jHp3eK7GYJqOFMVjUsMhjRnPqCVVgy
+         QDm04AnJ22AA59u6kNV3P4izqlEShjC59OCqcQLVSXkZvE9Ru0EzH8PQ+tW43A4H4pnZ
+         H9OWwkPZNY3vDFrrZMaQK9UEtQblUqfduQca24lYxATPweGeknSciT8+DUIqg8jf72ng
+         GhTmLxtmM9Z5qNBjJU7Ob7VEPILXLUx2oUmdJAyYp9TDOEeh7WuqwbaAjmUauTi+Us0n
+         9K0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=wEOR5b66kjE61uQfN4wemrTcmCJU1cFghqwBRtOtHLY=;
-        fh=XUvLIQQ+XauERGTJwKbaGPxk6m9WHQ9TdRLiHbw47Bs=;
-        b=VCKhXOpWntrhhjeoClUN+vDZq1yqPjqo5dsu2ucQRhhnD5AD6icKd4HhC+HszA5H2Q
-         9Bt9M/kROedybczV+kj6wwMgCnyY5GGJEjTiIDmryUOoC6zAQ6GbOnd7ZClOy59ZcJ7A
-         W6HqAmylqRL3bJY/1sK9KbjRbFJQC7++UNFl7oqrGM2YbpcJC+tTf9fpNfnWQfxSr1OR
-         WVuoy7CPEVsJ843snLKoTWCK7nfWS7hHZ8RinCzBQjSL12psKIBBXZq1F3cYuHqZFsfu
-         HjDXQb64W2awRMq44zBbCgP+nddPDjCIbvj6BAIlxuCOlQ5HbzKy8OdYVQX6vi9tp1/x
-         p8Ig==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=00DB+SSRdwHKOyusU4cMMbYpeqAuVYJIoyFzCQOSb6w=;
+        fh=hTUJC5YgHRaRO+DdmJoRA94enms0+tUlH0OLBxW1SdY=;
+        b=UKC1LKjg184sBO99J4RgFccfWtHeHRz3OWfhdiwbH7TE6w7TFe35XOXogQ+60mBvHp
+         tVwwTR9swNHydyrQXK9l6XtgHgLZOhBIe9nFxoYhECtRC/QeEoQbBQ7vvjyMZQeRrtzU
+         5KjIHfingdCazK3W1/SH+tq8fscxD0XUofG2wq56MRaNkcfUhXmeEXGcCc7pP2tPBrK5
+         SqC1bMSA3hD3d5V5FtM4tf8g4beHu2WvgUb9EhJKO3apWo5bBOgrUBJfMPC4u/CQRoA3
+         U4cQnmOs8LhxvRnnuvL9Reg3ASedva3eb1n8EZYRFXwY4oXC40txgolqU77MsqAIaylP
+         R//Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-4538237e08asi16558565e9.127.2025.06.25.09.22.04
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Jun 2025 09:22:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TspfQV++;
+       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <jsnow@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-8811aea575asi2187260241.166.2025.06.25.10.35.43
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Jun 2025 10:35:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bS6Wd6t1Vz6M4ZQ;
-	Thu, 26 Jun 2025 00:21:17 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id D4A3A14044F;
-	Thu, 26 Jun 2025 00:22:03 +0800 (CST)
-Received: from SecurePC-101-06.china.huawei.com (10.122.19.247) by
- frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 25 Jun 2025 18:22:03 +0200
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
-	<peter.maydell@linaro.org>, <mst@redhat.com>, Zhijian Li
-	<lizhijian@fujitsu.com>, Itaru Kitayama <itaru.kitayama@linux.dev>
-CC: <linuxarm@huawei.com>, <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>,
-	Yuquan Wang <wangyuquan1236@phytium.com.cn>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH qemu v16 5/5] qtest/cxl: Add aarch64 virt test for CXL
-Date: Wed, 25 Jun 2025 17:19:26 +0100
-Message-ID: <20250625161926.549812-6-Jonathan.Cameron@huawei.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250625161926.549812-1-Jonathan.Cameron@huawei.com>
-References: <20250625161926.549812-1-Jonathan.Cameron@huawei.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TspfQV++;
+       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1750872943;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=00DB+SSRdwHKOyusU4cMMbYpeqAuVYJIoyFzCQOSb6w=;
+	b=TspfQV++OJh8td4fCtpwpXhiLO98z68HB6KW0jaLbnn2NKoYkMqcapTOTNqN4cWMrsxDm8
+	yIWnew01t15eVoNqWukhlaOOFuT8U58I0LdTF5zRUK07lvaBICc9LuOwZfa16P7/U8uCOq
+	4h+pwZfsKBvu9Rj7omXS1cH6YK6x/gM=
+Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
+ [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-387-Q9LAe2E-PV6IYfuV5-5PDg-1; Wed, 25 Jun 2025 13:35:41 -0400
+X-MC-Unique: Q9LAe2E-PV6IYfuV5-5PDg-1
+X-Mimecast-MFC-AGG-ID: Q9LAe2E-PV6IYfuV5-5PDg_1750872940
+Received: by mail-pl1-f198.google.com with SMTP id d9443c01a7336-23824a9bc29so1853695ad.3
+        for <alex.bennee@linaro.org>; Wed, 25 Jun 2025 10:35:41 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750872940; x=1751477740;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=00DB+SSRdwHKOyusU4cMMbYpeqAuVYJIoyFzCQOSb6w=;
+        b=Q3/TFWzV2B6tYprlCEfav66iZ51l19YW2TiTbYaU4chzC0270JWIj5JofKdXzIIbex
+         hQf16YBELPcAewyEXm/UxvFfp/rExdOxT/FkzcZ9mmuRDM9T3pUqF5RzFDyLkPR/3bTV
+         xEx40vwpd9cDK9OXSuI3AlGn0KTwbzArqEnhLBN0NYGILNLZ0bDgLfjOgYDFSFNXfnDg
+         RwV+czUW5l+rBXW9D9u0o2cepkT+aQWPHB1SPZKi6m2l64ZQB/YDVBFxbMd4aSjoIyq7
+         YfZ4oWwVdv6WpE+iArAA56QDQ2Tf9PI0tMx+dAQtmyOATQjB0HkzaYjU25KuXysURHSQ
+         RfwA==
+X-Forwarded-Encrypted: i=1; AJvYcCXTRPznScnLHp9D1ZbcY9+WguMBQrGgXoPaJO4PbP9sh5W17xUm+606WBzVQinpz7NS+/oHLTxwa0q0gw==@linaro.org
+X-Gm-Message-State: AOJu0Yyk0gyeFJVIlBlxokQskyHuvUng6qjwvfxHS7Jg1k82evR1PW+l
+	zSKgzdpmmqYssjO5A9Uh3+UIoD4EelwqN7ewmzX4GVxaturwRRJQTHXtfCtpJA4UjZZgGSr+zU6
+	8M6fzTt4f/b3p7aHOqP+Wb7IsCRpO1U1/9xxxHQJxlPqic7AwF++egRfwxStMp+XrxQkkLZQUeZ
+	0H3Vm06RITPmJHXo9jg3mvQ26cNWaWcYs8
+X-Gm-Gg: ASbGncsf3E52fUtoCOYqa9JmKJE4G1AhXKL7AKiN9tsWdKovcC2bTgk0R0o0JFTqErC
+	ACETswsoPndbhFapyZCMnwqotp2KB4qDjeG+kwdBOyvQa3a9F5knEeXauxNI3RsHI/oj6azQUiN
+	Y0LyynVfZp2mhlSIUP2gCUlKSuW4iupW3mvkQ=
+X-Received: by 2002:a17:903:4b0c:b0:234:b44c:d3c8 with SMTP id d9443c01a7336-2382407271emr60408035ad.37.1750872940118;
+        Wed, 25 Jun 2025 10:35:40 -0700 (PDT)
+X-Received: by 2002:a17:903:4b0c:b0:234:b44c:d3c8 with SMTP id
+ d9443c01a7336-2382407271emr60407225ad.37.1750872939601; Wed, 25 Jun 2025
+ 10:35:39 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.122.19.247]
-X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: jF604ekIF++t
+References: <20250612205451.1177751-1-jsnow@redhat.com> <20250612205451.1177751-7-jsnow@redhat.com>
+ <87cyatmw40.fsf@pond.sub.org>
+In-Reply-To: <87cyatmw40.fsf@pond.sub.org>
+From: John Snow <jsnow@redhat.com>
+Date: Wed, 25 Jun 2025 13:35:24 -0400
+X-Gm-Features: AX0GCFu24gcy7gu7f1D_mcQaqWYN_lmZubp5dC6zB91-XnM9SnsHagHu3mq7Xgg
+Message-ID: <CAFn=p-YPN6MWZiETi7XWkyYVPpe7uew49CwjEdAsMmW=ZPOx5A@mail.gmail.com>
+Subject: Re: [PATCH v2 06/12] python: upgrade to python3.9+ syntax
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>, Yi Liu <yi.l.liu@intel.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Helge Deller <deller@gmx.de>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+	Andrew Jeffery <andrew@codeconstruct.com.au>, Fabiano Rosas <farosas@suse.de>, 
+	Alexander Bulekov <alxndr@bu.edu>, Darren Kenny <darren.kenny@oracle.com>, 
+	Leif Lindholm <leif.lindholm@oss.qualcomm.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+	Ed Maste <emaste@freebsd.org>, Gerd Hoffmann <kraxel@redhat.com>, Warner Losh <imp@bsdimp.com>, 
+	Kevin Wolf <kwolf@redhat.com>, Tyrone Ting <kfting@nuvoton.com>, Eric Blake <eblake@redhat.com>, 
+	Palmer Dabbelt <palmer@dabbelt.com>, Yoshinori Sato <ysato@users.sourceforge.jp>, 
+	Troy Lee <leetroy@gmail.com>, Halil Pasic <pasic@linux.ibm.com>, 
+	Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, Michael Roth <michael.roth@amd.com>, 
+	Laurent Vivier <laurent@vivier.eu>, Ani Sinha <anisinha@redhat.com>, Weiwei Li <liwei1518@gmail.com>, 
+	Eric Farman <farman@linux.ibm.com>, Steven Lee <steven_lee@aspeedtech.com>, 
+	Brian Cain <brian.cain@oss.qualcomm.com>, Li-Wen Hsu <lwhsu@freebsd.org>, 
+	Jamin Lin <jamin_lin@aspeedtech.com>, qemu-s390x@nongnu.org, 
+	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>, qemu-block@nongnu.org, 
+	Bernhard Beschow <shentey@gmail.com>, 
+	=?UTF-8?Q?Cl=C3=A9ment_Mathieu=2D=2DDrif?= <clement.mathieu--drif@eviden.com>, 
+	Maksim Davydov <davydov-max@yandex-team.ru>, Niek Linnenbank <nieklinnenbank@gmail.com>, 
+	=?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
+	Christian Borntraeger <borntraeger@linux.ibm.com>, Paul Durrant <paul@xen.org>, 
+	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, Jagannathan Raman <jag.raman@oracle.com>, 
+	Igor Mitsyanko <i.mitsyanko@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>, 
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>, 
+	Anton Johansson <anjo@rev.ng>, Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>, 
+	Eric Auger <eric.auger@redhat.com>, Yanan Wang <wangyanan55@huawei.com>, qemu-arm@nongnu.org, 
+	Hao Wu <wuhaotsh@google.com>, Mads Ynddal <mads@ynddal.dk>, 
+	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>, qemu-riscv@nongnu.org, 
+	Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowang@redhat.com>, 
+	Nicholas Piggin <npiggin@gmail.com>, Michael Rolnik <mrolnik@gmail.com>, Zhao Liu <zhao1.liu@intel.com>, 
+	Alessandro Di Federico <ale@rev.ng>, Thomas Huth <thuth@redhat.com>, Antony Pavlov <antonynpavlov@gmail.com>, 
+	Jiaxun Yang <jiaxun.yang@flygoat.com>, Hanna Reitz <hreitz@redhat.com>, 
+	Ilya Leoshkevich <iii@linux.ibm.com>, Marcelo Tosatti <mtosatti@redhat.com>, 
+	Nina Schoetterl-Glausch <nsg@linux.ibm.com>, Daniel Henrique Barboza <danielhb413@gmail.com>, 
+	Qiuhao Li <Qiuhao.Li@outlook.com>, Hyman Huang <yong.huang@smartx.com>, 
+	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	Magnus Damm <magnus.damm@gmail.com>, qemu-rust@nongnu.org, Bandan Das <bsd@redhat.com>, 
+	Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, 
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	kvm@vger.kernel.org, Fam Zheng <fam@euphon.net>, Jia Liu <proljc@gmail.com>, 
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	Alistair Francis <alistair@alistair23.me>, Subbaraya Sundeep <sundeep.lkml@gmail.com>, 
+	Kyle Evans <kevans@freebsd.org>, Song Gao <gaosong@loongson.cn>, 
+	Alexandre Iooss <erdnaxe@crans.org>, Aurelien Jarno <aurelien@aurel32.net>, 
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Peter Xu <peterx@redhat.com>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>, 
+	Elena Ufimtseva <elena.ufimtseva@oracle.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+	=?UTF-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?= <fbarrat@linux.ibm.com>, 
+	qemu-ppc@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>, 
+	Beniamino Galvani <b.galvani@gmail.com>, David Hildenbrand <david@redhat.com>, 
+	Richard Henderson <richard.henderson@linaro.org>, David Woodhouse <dwmw2@infradead.org>, 
+	Eduardo Habkost <eduardo@habkost.net>, Ahmed Karaman <ahmedkhaledkaraman@gmail.com>, 
+	Huacai Chen <chenhuacai@kernel.org>, Mahmoud Mandour <ma.mandourr@gmail.com>, 
+	Harsh Prateek Bora <harshpb@linux.ibm.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: jSOFbRqmr-uo9R2SU8tW1-OC-v3jR46X_8QKMZDPNQA_1750872940
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/alternative; boundary="0000000000009cc6ee063868df67"
+X-TUID: e4Ob26qeKCZz
 
-Add a single complex case for aarch64 virt machine.
-Given existing much more comprehensive tests for x86 cover the
-common functionality, a single test should be enough to verify
-that the aarch64 part continue to work.
+--0000000000009cc6ee063868df67
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Tested-by: Itaru Kitayama <itaru.kitayama@fujitsu.com>
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+On Tue, Jun 24, 2025 at 3:34=E2=80=AFAM Markus Armbruster <armbru@redhat.co=
+m> wrote:
 
----
-v16: Update to bring improvements made to other tests (Peter Maydell).
-     I'd failed to notice when rebasing this over time that the
-     other tests had undergone various improvment and I should have
-     updated this one as well.
----
- tests/qtest/cxl-test.c  | 58 ++++++++++++++++++++++++++++++++---------
- tests/qtest/meson.build |  1 +
- 2 files changed, 46 insertions(+), 13 deletions(-)
+> John Snow <jsnow@redhat.com> writes:
+>
+> > This patch is fully automated, using pymagic, isort and autoflake.
+> >
+> > Create a script named pymagic.sh:
+> >
+> > =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D
+> >
+> > pyupgrade --exit-zero-even-if-changed --keep-percent-format \
+> >           --py39-plus "$@"
+> >
+> > autoflake -i "$@"
+> >
+> > isort --settings-file python/setup.cfg \
+> >       -p compat -p qapidoc_legacy -p iotests -o qemu "$@"
+> > =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D
+> >
+> > Then, from qemu.git root:
+> >
+> >> find . -type f -name '*.py' | xargs pymagic
+> >> git grep --name-only "#!/usr/bin/env python" | xargs pymagic
+> >
+> > This changes a lot of old Pythonisms, but in particular it upgrades the
+> > old Python type hint paradigm to the new 3.9+ paradigm wherein you no
+> > longer need to import List, Dict, Tuple, Set, etc from the Typing modul=
+e
+> > and instead directly subscript the built-in types list, dict, tuple,
+> > set, etc. The old-style annotations are deprecated as of 3.9 and are
+> > eligible for removal starting in Python 3.14, though the exact date of
+> > their removal is not yet known.
+> >
+> > pyupgrade updates the imports and type hint paradigms (as well as
+> > updating other old 'isms, such as removing the unicode string
+> > prefix). autoflake in turn then removes any unused import statements,
+> > possibly left behind by pyupgrade. Lastly, isort fixes the import order
+> > and formatting to the standard we use in qemu.git/python and
+> > scripts/qapi in particular.
+> >
+> > Signed-off-by: John Snow <jsnow@redhat.com>
+>
+> [...]
+>
+> >  448 files changed, 1959 insertions(+), 1631 deletions(-)
+>
+> *=C3=84chz*
+>
 
-diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
-index a600331843..8fb7e58d4f 100644
---- a/tests/qtest/cxl-test.c
-+++ b/tests/qtest/cxl-test.c
-@@ -19,6 +19,12 @@
-     "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
-     "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
- 
-+#define QEMU_VIRT_2PXB_CMD \
-+    "-machine virt,cxl=on -cpu max " \
-+    "-device pxb-cxl,id=cxl.0,bus=pcie.0,bus_nr=52 " \
-+    "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
-+    "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
-+
- #define QEMU_RP \
-     "-device cxl-rp,id=rp0,bus=cxl.0,chassis=0,slot=0 "
- 
-@@ -197,25 +203,51 @@ static void cxl_2pxb_4rp_4t3d(void)
-     qtest_end();
-     rmdir(tmpfs);
- }
-+
-+static void cxl_virt_2pxb_4rp_4t3d(void)
-+{
-+    g_autoptr(GString) cmdline = g_string_new(NULL);
-+    g_autofree const char *tmpfs = NULL;
-+
-+    tmpfs = g_dir_make_tmp("cxl-test-XXXXXX", NULL);
-+
-+    g_string_printf(cmdline, QEMU_VIRT_2PXB_CMD QEMU_4RP QEMU_4T3D,
-+                    tmpfs, tmpfs, tmpfs, tmpfs, tmpfs, tmpfs,
-+                    tmpfs, tmpfs);
-+
-+    qtest_start(cmdline->str);
-+    qtest_end();
-+    rmdir(tmpfs);
-+}
- #endif /* CONFIG_POSIX */
- 
- int main(int argc, char **argv)
- {
--    g_test_init(&argc, &argv, NULL);
-+    const char *arch = qtest_get_arch();
- 
--    qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
--    qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
--    qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
--    qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
--    qtest_add_func("/pci/cxl/rp", cxl_root_port);
--    qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
-+    g_test_init(&argc, &argv, NULL);
-+    if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
-+        qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
-+        qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
-+        qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
-+        qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
-+        qtest_add_func("/pci/cxl/rp", cxl_root_port);
-+        qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
- #ifdef CONFIG_POSIX
--    qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
--    qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
--    qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
--    qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
--    qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
--    qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4", cxl_2pxb_4rp_4t3d);
-+        qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
-+        qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
-+        qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
-+        qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
-+        qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
-+        qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4",
-+                       cxl_2pxb_4rp_4t3d);
- #endif
-+    } else if (strcmp(arch, "aarch64") == 0) {
-+#ifdef CONFIG_POSIX
-+        qtest_add_func("/pci/cxl/virt/pxb_x2_root_port_x4_type3_x4",
-+                       cxl_virt_2pxb_4rp_4t3d);
-+#endif
-+    }
-+
-     return g_test_run();
- }
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 8ad849054f..42e927b32a 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -261,6 +261,7 @@ qtests_aarch64 = \
-    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
-   (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : []) + \
-+  qtests_cxl +                                                                                  \
-   ['arm-cpu-features',
-    'numa-test',
-    'boot-serial-test',
--- 
-2.48.1
+Gesundheit.
+
+
+>
+> I hate it when people ask me to split up my mechanical patches...
+>
+> One split is by subsystem / maintainer.  I've done this a few times, and
+> it's quite a bother.  Questionable use of your time if you ask me.
+>
+
+I'd prefer not to unless it is requested of me specifically. I don't think
+most maintainers really care about the nuances of Python and as long as
+their stuff continues to work they're not going to mind much.
+
+Or, to be frank: I don't think this series would ever garner enough review
+and attention to warrant the labor it'd take to tailor it to such a review.
+It's mechanical, it's boring, it should be fine.
+
+I switched from a manual patch series to a tool-driven one specifically to
+make it more mindless and less interesting, and going through and splitting
+it back out is ... eh. I would prefer not to.
+
+
+>
+> There's another split here...  Your pymagic.sh runs three tools.  If you
+> commit after each one, the patch splits into three.
+>
+
+I use all three because each one alone isn't sufficient to then pass the
+static analysis checks, they each do a little bit of damage that another
+tool corrects afterwards.
+
+pyupgrade works to modernize syntax, but leaves impotent import statements
+hanging.
+autoflake removes those impotent imports.
+isort fixes the import statement ordering and formatting to our standard.
+(And then I do some manual fixups to fix the linting tests where things
+were auto-formatted suboptimally.)
+
+I can still split it out for review purposes, like I did here with some
+manual fixups appended to the end.
+
+Just, for merge, they'll be combined by necessity as a result of our
+no-regressions-for-bisect rule.
+
+
+>
+> I understand you pass --py39-plus to pyupgrade to get the type hints
+> modernized.  If you run it without --py39-plus for all the miscellaneous
+> upgrades, commit, then run it with --py39-plus for just the type hint
+> upgrades, commit, the last patch splits again.
+>
+
+I can try it! I actually didn't try running it without py39-plus at all, so
+I don't know what that'll do. but no harm in an experiment.
+
+
+>
+> Thoughts?
+
+
+First and foremost I just thought it'd be good to get this mechanical
+change squared away in one giant patch so we could add this one singular
+horrible mega-commit into the git blame "ignored commits" list to minimize
+the impact of the "flag day".
+
+This upgrade will have to happen "eventually" but it needn't be "right
+now", but I figured it'd be good to get it out of the way... or put another
+way, "better my mess than someone else's".
+
+--js
+
+--0000000000009cc6ee063868df67
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
+mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Jun 24,=
+ 2025 at 3:34=E2=80=AFAM Markus Armbruster &lt;<a href=3D"mailto:armbru@red=
+hat.com">armbru@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gma=
+il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
+04,204);padding-left:1ex">John Snow &lt;<a href=3D"mailto:jsnow@redhat.com"=
+ target=3D"_blank">jsnow@redhat.com</a>&gt; writes:<br>
+<br>
+&gt; This patch is fully automated, using pymagic, isort and autoflake.<br>
+&gt;<br>
+&gt; Create a script named pymagic.sh:<br>
+&gt;<br>
+&gt; =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D<br>
+&gt;<br>
+&gt; pyupgrade --exit-zero-even-if-changed --keep-percent-format \<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0--py39-plus &quot;$@&quot;<br>
+&gt;<br>
+&gt; autoflake -i &quot;$@&quot;<br>
+&gt;<br>
+&gt; isort --settings-file python/setup.cfg \<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-p compat -p qapidoc_legacy -p iotests -o qe=
+mu &quot;$@&quot;<br>
+&gt; =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D<br>
+&gt;<br>
+&gt; Then, from qemu.git root:<br>
+&gt;<br>
+&gt;&gt; find . -type f -name &#39;*.py&#39; | xargs pymagic<br>
+&gt;&gt; git grep --name-only &quot;#!/usr/bin/env python&quot; | xargs pym=
+agic<br>
+&gt;<br>
+&gt; This changes a lot of old Pythonisms, but in particular it upgrades th=
+e<br>
+&gt; old Python type hint paradigm to the new 3.9+ paradigm wherein you no<=
+br>
+&gt; longer need to import List, Dict, Tuple, Set, etc from the Typing modu=
+le<br>
+&gt; and instead directly subscript the built-in types list, dict, tuple,<b=
+r>
+&gt; set, etc. The old-style annotations are deprecated as of 3.9 and are<b=
+r>
+&gt; eligible for removal starting in Python 3.14, though the exact date of=
+<br>
+&gt; their removal is not yet known.<br>
+&gt;<br>
+&gt; pyupgrade updates the imports and type hint paradigms (as well as<br>
+&gt; updating other old &#39;isms, such as removing the unicode string<br>
+&gt; prefix). autoflake in turn then removes any unused import statements,<=
+br>
+&gt; possibly left behind by pyupgrade. Lastly, isort fixes the import orde=
+r<br>
+&gt; and formatting to the standard we use in qemu.git/python and<br>
+&gt; scripts/qapi in particular.<br>
+&gt;<br>
+&gt; Signed-off-by: John Snow &lt;<a href=3D"mailto:jsnow@redhat.com" targe=
+t=3D"_blank">jsnow@redhat.com</a>&gt;<br>
+<br>
+[...]<br>
+<br>
+&gt;=C2=A0 448 files changed, 1959 insertions(+), 1631 deletions(-)<br>
+<br>
+*=C3=84chz*<br></blockquote><div><br></div><div>Gesundheit.</div><div>=C2=
+=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+I hate it when people ask me to split up my mechanical patches...<br>
+<br>
+One split is by subsystem / maintainer.=C2=A0 I&#39;ve done this a few time=
+s, and<br>
+it&#39;s quite a bother.=C2=A0 Questionable use of your time if you ask me.=
+<br></blockquote><div><br></div><div>I&#39;d prefer not to unless it is req=
+uested of me specifically. I don&#39;t think most maintainers really care a=
+bout the nuances of Python and as long as their stuff continues to work the=
+y&#39;re not going to mind much.</div><div><br></div><div>Or, to be frank: =
+I don&#39;t think this series would ever garner enough review and attention=
+ to warrant the labor it&#39;d take to tailor it to such a review. It&#39;s=
+ mechanical, it&#39;s boring, it should be fine.</div><div><br></div><div>I=
+ switched from a manual patch series to a tool-driven one specifically to m=
+ake it more mindless and less interesting, and going through and splitting =
+it back out is ... eh. I would prefer not to.</div><div>=C2=A0</div><blockq=
+uote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1p=
+x solid rgb(204,204,204);padding-left:1ex">
+<br>
+There&#39;s another split here...=C2=A0 Your pymagic.sh runs three tools.=
+=C2=A0 If you<br>
+commit after each one, the patch splits into three.<br></blockquote><div><b=
+r></div><div>I use all three because each one alone isn&#39;t sufficient to=
+ then pass the static analysis checks, they each do a little bit of damage =
+that another tool corrects afterwards.</div><div><br></div><div>pyupgrade w=
+orks to modernize syntax, but leaves impotent import statements hanging.</d=
+iv><div>autoflake removes those impotent imports.</div><div>isort fixes the=
+ import statement ordering and formatting to our standard.</div><div>(And t=
+hen I do some manual fixups to fix the linting tests where things were auto=
+-formatted suboptimally.)</div><div><br></div><div>I can still split it out=
+ for review purposes, like I did here with some manual fixups appended to t=
+he end.</div><div><br></div><div>Just, for merge, they&#39;ll be combined b=
+y necessity as a result of our no-regressions-for-bisect rule.</div><div>=
+=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
+.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+I understand you pass --py39-plus to pyupgrade to get the type hints<br>
+modernized.=C2=A0 If you run it without --py39-plus for all the miscellaneo=
+us<br>
+upgrades, commit, then run it with --py39-plus for just the type hint<br>
+upgrades, commit, the last patch splits again.<br></blockquote><div><br></d=
+iv><div>I can try it! I actually didn&#39;t try running it without py39-plu=
+s at all, so I don&#39;t know what that&#39;ll do. but no harm in an experi=
+ment.</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"marg=
+in:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1e=
+x">
+<br>
+Thoughts?</blockquote><div><br></div><div>First and foremost I just thought=
+ it&#39;d be good to get this mechanical change squared away in one giant p=
+atch so we could add this one singular horrible mega-commit into the git bl=
+ame &quot;ignored commits&quot; list to minimize the impact of the &quot;fl=
+ag day&quot;.</div><div><br></div><div>This upgrade will have to happen &qu=
+ot;eventually&quot; but it needn&#39;t be &quot;right now&quot;, but I figu=
+red it&#39;d be good to get it out of the way... or put another way, &quot;=
+better my mess than someone else&#39;s&quot;.</div><div><br></div><div>--js=
+</div></div></div>
+
+--0000000000009cc6ee063868df67--

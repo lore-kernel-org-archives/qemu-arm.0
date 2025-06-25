@@ -1,150 +1,162 @@
-Received: by 2002:a05:7301:4085:b0:178:84eb:402c with SMTP id pt5csp919205dyb;
-        Wed, 25 Jun 2025 08:12:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWYLYDVsD1Q0CpdAnSXLS8/eou5aSdEVzeR05hjPPWgShwASzg5iG7UmsVwkLKxDWM1CoJytDAbCIN3tQ==@linaro.org
-X-Received: by 2002:a05:6a00:2302:b0:748:2e1a:84e3 with SMTP id d2e1a72fcca58-74ad4410aa8mr5718409b3a.8.1750864337087;
-        Wed, 25 Jun 2025 08:12:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750864337; cv=none;
+Received: by 2002:a05:7301:4085:b0:178:84eb:402c with SMTP id pt5csp977762dyb;
+        Wed, 25 Jun 2025 09:38:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWgXcQ/ov2rYz9EV2atQrrLguVEAfAoDq9vUV62K4LEQKI+agxM8o96gI9iv4aFC+tVPsNFGG8fQd6n0g==@linaro.org
+X-Google-Smtp-Source: AGHT+IF6T/WfAp/sZlQNeK6tvNzICoy50QlOt90myBvv+NnnSVQDZqATkGe+PhoBxvfeySCnIgmt
+X-Received: by 2002:ad4:596c:0:b0:6fb:24ea:5c36 with SMTP id 6a1803df08f44-6fd74cefd56mr7757736d6.24.1750869488994;
+        Wed, 25 Jun 2025 09:38:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750869488; cv=none;
         d=google.com; s=arc-20240605;
-        b=HlWTAQ/t9F5FN8R6FzWZnVaAr8PYwNGy1fLhkEoHROPTM3u8NUIU/cjMZBnCSO8k9E
-         YWSz8eergOQUChem5cLBqV047vOaR8URKV77cxEpVsrySGiKwCOIvLR5U43O3Hol6KV9
-         SysQgkj6qJKsH8e1eHyXeyu317sKbdzObkprJJjISVu9Pu3DdyTztTAQTVlR3cP8p6Ag
-         8/+DZaGnf8ISVn+ZwAcAiHCwmJUcQPtnhalJ83NWgvZ35g8SOErMs1Ix/b0KZrp1hgqN
-         tM9d595CW9u0VBkIZnNqJTZIxoVE8l1xtC9UC7jknoe/ZzbKzdfdNT7zhr8W8KjVhHim
-         gyyQ==
+        b=bkEM3lN2sQXau5EzZqfqCDXW2iNNjg1y7uNnsWbqmjc291LzqHuH+dfBKZY5a1TviF
+         cQgPmttd9Tn+18vVJFQ5CXrjcL9vk81K51ksuj/LfL5qJEW1TmowmNAAgX1RozjHrFFD
+         QUzKQ0+bWVr9OImK38LigeVM+c8KJQqmKjoKm8A95FJbSceCpWcvNHWP0W180MmNhuPr
+         ThPtZoCxPhN7reV3xbhejHXscjpERzCLZv+kj79N+oHgn86xGwNBaytsW0xOBRK8CrbS
+         Vnoj+FbV4znYxsClJQH4o434OlfLrQUbyazBBIPwLPjMFRRTH1YpyH2wPEy1GPCHt6sx
+         0/ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=/qMeMhPelSpcJ0gJ14dnSjD3jHGx1/A0gA2Na72Fbwg=;
-        fh=ijygVXQcnY2r94QfqIWcERRwDAfgsFDmZusmx7neoKA=;
-        b=KI7zsm3n2GFjwisO99I0QmiR6vi9s92NcI7npwhkdi5zok9dO+ua7VjSV4hP+ldHFB
-         GA3DxHzkAxcDaT7jt233VsK6sTnnFTruMm2V5SAagxbphsbwl994ZM+yg1B2Hdtv4baY
-         cxALzF1v9Xc7ykhUkF3Y8OkqFdDTnbzX+LC1MkMtrS2RTheRpUK7Q1PFy2HzElKA5Um8
-         JnM8Zxn9neG/S59C9AqM/nYmn9xPTB45zk1CfIjWdw5HoZvh/pDGGKcIj/ocoEJyXiWz
-         G141W+BstDX+rAGRHUbXS0o72YdeC+2XW2xKuIPTm5QKW6QgABEDmRaCQ62lTgWolF8m
-         +4MQ==;
+        h=mime-version:message-id:date:user-agent:references:organization
+         :in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=oGUU/IPrSry2Fwx2P5b8O9w0u3Wyi69gqhC1KaKfI04=;
+        fh=Cw/uTxqYpXOo8rd3llYqbXY3S1KJM92Kmr/q+FVOGMc=;
+        b=imN4vsP8DeOopCnbBS/nmEYSK2K/4MHQPsKJi0Z1dTJafxYraQSTOL4BP1LaJFSZnF
+         CxorRdOvhusnYDwquk2X6bMxH4XBiK/SWp9FbG21d0GHuHLght1qcJvnsGsGR8W/Db8u
+         DxcdBVWxKldMSP1PUIbISjmtDl1LCXqqPqZjIkAR4hhm8urB6H85XehMd1tjybMw9M+G
+         C6EWeuWzl91PuwtELuyte5UBi8sYCcry7FcKqbEhf9buxu9GnB1orlFdt+VG62X7i2rN
+         XJMI03MOwJ3/zIS+XoKZfmY/luYhTStJsjdbxrrGpKKi9eSmDUFoGjQFxMoqMoI4qxF7
+         cctw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yrULxGhb;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-7490a58b39dsor7253285b3a.8.2025.06.25.08.12.16
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=guS8dz6t;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd095872c6si138881826d6.329.2025.06.25.09.38.08
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 25 Jun 2025 08:12:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Jun 2025 09:38:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yrULxGhb;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750864336; x=1751469136; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=/qMeMhPelSpcJ0gJ14dnSjD3jHGx1/A0gA2Na72Fbwg=;
-        b=yrULxGhbxUqM9bATHlbT0qe2rMfRLhdv2O33aOsOxNyRGXiwQeQOy4Xi9Zy9yHIMsC
-         vGSVplhuncyBLgWkD0+A0EUtmXtmGet55CT3l5cZ5E6cVNo4U2xyimKdFQ3pMGIM3SQE
-         APFWtochAT8Zqh81LZJtqj6fgmkx1vzN8MuXsYZorNGNTuDaGqG9JpZ/D+JoDScsHjP3
-         WEAI+WNX2gM8O9Uh7v0rQotPqgKFfVsVA/Twa2l/OF32UHScT7u2sgw6iJnvFink0hmq
-         ckVgI+EABW7bnnA5L+K3LHwRtuMpJBT93NCdlAr3YreFz9bPYQSaEIzqd/tSpNgKO0Em
-         A6Fg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750864336; x=1751469136;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=/qMeMhPelSpcJ0gJ14dnSjD3jHGx1/A0gA2Na72Fbwg=;
-        b=vJZRUdNpYgRHgGm1fPJeOq2rFoyw158DkAil7Q0A/HOtZynCPqJkbtqjBquZOZXMwa
-         12dZhi1VPapHplB4Pa0241B/ygoJJaUXQLtFeIMuIOQwFxjgWLqT6vXrbWU/MkvLFS+y
-         RjhpW/acgtdIHvAgt8IXRBgIdFiK6NAqD4fgCXKrnl9Qr5jW2XzZUvRIPb6HdsA2OTz3
-         AdyHIR11as2/jC9ax2XqwbT4Ne2z/tH/cX9BDfS1nZSOxcZtHfRJseSHWUwaVldNITO1
-         RyTl/44C3YkYwwt84Fs7O21t4/pie66hKkfa48166GixSaflzySqJfUwE6nRAt1ee+81
-         J4mg==
-X-Forwarded-Encrypted: i=1; AJvYcCUflaidbq7Z6GzJiyiLOBefi8BJu7DZFmhMZwl20sqH8PWZvobi67W77puaaEpuPsimU4+VpzYwqOJ4rw==@linaro.org
-X-Gm-Message-State: AOJu0YzZlKoVSQTzpgeQux1xhjCMqDX+xqg5Hyvqf0Lumt5ntY5iis4g
-	UjljvBato0cuPSI/RgujBYkkJCGzCpKc1mlTbV55MFTOtvzMAi6se7rEg2t++nxYoIQWRA==
-X-Gm-Gg: ASbGnctZUQ8kWK6o3djOj8vsId0G8rjjPDRF6qYhogVEf2S8d5ER86GC84ld74ZQHIg
-	xRDE54RPTQqoY5cIsivSfJ9eFWwQsNiZIFVfOl1p3Hpg7Bw0MS2B8eEP7bwNSuKud1ST0wHZqyI
-	wjvYc+xdIxiaVgPoBx9jA228xKrY6Sc+cNDlrqGZcXrSvGuzak2g2/WXMXmvR3O2jmkZEIoJHzS
-	Hw/Lw0NomIl82kCJcHfQkp/HUyp9BvaSJlKCpxaYHniNI3RhENoG5VmB5+ic0i7jlXlFhCVia98
-	ZVKS5XI/NMPd8yD0OO1e/nxrp0Pu4c0OT9Jw1y/2ihutn7qVU0RFvXhVRpLqQ0r+WwymYmUw4Bn
-	esmkvYdwyhA==
-X-Google-Smtp-Source: AGHT+IGCI4OltHnjeZ8wmnsoagl2YId79GZjZBNxf6qaTX19UI8dhcybN5J4UzW7CwbjgTdGFziIHg==
-X-Received: by 2002:a05:6a00:2302:b0:748:2e1a:84e3 with SMTP id d2e1a72fcca58-74ad4410aa8mr5718334b3a.8.1750864336323;
-        Wed, 25 Jun 2025 08:12:16 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from [192.168.1.87] ([38.41.223.211])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-749b5e09750sm4695867b3a.26.2025.06.25.08.12.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 25 Jun 2025 08:12:15 -0700 (PDT)
-Message-ID: <b5005da8-ff10-4644-8815-b288a719e0ee@linaro.org>
-Date: Wed, 25 Jun 2025 08:12:14 -0700
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=guS8dz6t;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1750869488;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=oGUU/IPrSry2Fwx2P5b8O9w0u3Wyi69gqhC1KaKfI04=;
+	b=guS8dz6tAhRd1aONf7FHgjpgZwkV+upD2Vel+m6aqyygwQDtLyHs4/lsotr35YIgLk04oX
+	UYc9gwX/YmwKMtk3uYHNnzmG3fFuik9q6F63id2qWc3OjlvppfdNY2tacW8t3ioB2VVsTq
+	dLjW8wRBLUCMdh2w5oyrqG+diDAJNXI=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-67-zT2ApMJhOfizHJsQaD8EkA-1; Wed,
+ 25 Jun 2025 12:38:05 -0400
+X-MC-Unique: zT2ApMJhOfizHJsQaD8EkA-1
+X-Mimecast-MFC-AGG-ID: zT2ApMJhOfizHJsQaD8EkA_1750869483
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 119CB19560BA;
+	Wed, 25 Jun 2025 16:38:02 +0000 (UTC)
+Received: from localhost (mschlens-int.str.redhat.com [10.33.192.203])
+	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id AD52F1956096;
+	Wed, 25 Jun 2025 16:37:59 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>, eric.auger@redhat.com
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ kvmarm@lists.linux.dev, richard.henderson@linaro.org,
+ alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+ sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
+ armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
+ jdenemar@redhat.com, agraf@csgraf.de, shahuang@redhat.com,
+ mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [PATCH v8 00/14] arm: rework id register storage
+In-Reply-To: <CAFEAcA95vCKpk1wXQh49xAWnqY=JZnKdr8NEQuYaRJr=jrKWyA@mail.gmail.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Avril Crosse O'Flaherty"
+References: <20250617153931.1330449-1-cohuck@redhat.com>
+ <05e903b3-02bf-4c04-ac2b-cdec0b45fe3f@redhat.com>
+ <CAFEAcA95vCKpk1wXQh49xAWnqY=JZnKdr8NEQuYaRJr=jrKWyA@mail.gmail.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Wed, 25 Jun 2025 18:37:57 +0200
+Message-ID: <87y0tfhj4q.fsf@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 05/26] target/arm/hvf: Directly re-lock BQL after
- hv_vcpu_run()
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Roman Bolshakov <rbolshakov@ddn.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Alexander Graf <agraf@csgraf.de>, Bernhard Beschow <shentey@gmail.com>,
- John Snow <jsnow@redhat.com>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- kvm@vger.kernel.org, Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Cameron Esfahani
- <dirty@apple.com>, Cleber Rosa <crosa@redhat.com>,
- Radoslaw Biernacki <rad@semihalf.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-References: <20250623121845.7214-1-philmd@linaro.org>
- <20250623121845.7214-6-philmd@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20250623121845.7214-6-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: JK9VHP4Dklty
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+X-TUID: xs/j2/fk4V+c
 
-On 6/23/25 5:18 AM, Philippe Mathieu-Daudé wrote:
-> Keep bql_unlock() / bql_lock() close.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Acked-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   target/arm/hvf/hvf.c | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index c1ed8b510db..ef76dcd28de 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -1914,7 +1914,9 @@ int hvf_vcpu_exec(CPUState *cpu)
->       flush_cpu_state(cpu);
->   
->       bql_unlock();
-> -    assert_hvf_ok(hv_vcpu_run(cpu->accel->fd));
-> +    r = hv_vcpu_run(cpu->accel->fd);
-> +    bql_lock();
-> +    assert_hvf_ok(r);
->   
->       /* handle VMEXIT */
->       uint64_t exit_reason = hvf_exit->reason;
-> @@ -1922,7 +1924,6 @@ int hvf_vcpu_exec(CPUState *cpu)
->       uint32_t ec = syn_get_ec(syndrome);
->   
->       ret = 0;
-> -    bql_lock();
->       switch (exit_reason) {
->       case HV_EXIT_REASON_EXCEPTION:
->           /* This is the main one, handle below. */
+On Wed, Jun 25 2025, Peter Maydell <peter.maydell@linaro.org> wrote:
 
-Just moves the lock a few lines up, does not impact what is protected.
+> On Wed, 25 Jun 2025 at 10:10, Eric Auger <eric.auger@redhat.com> wrote:
+>> However there are other checkpatch errors besides the one you reported, in
+>> 52873a54ad arm/cpu: Store aa64isar0/aa64zfr0 into the idregs arrays
+>> ERROR: line over 90 characters
+>> #388: FILE: target/arm/kvm.c:225:
+>> +    return ARM64_SYS_REG((sysreg & CP_REG_ARM64_SYSREG_OP0_MASK) >>
+>> CP_REG_ARM64_SYSREG_OP0_SHIFT,
+>>
+>> ERROR: line over 90 characters
+>> #389: FILE: target/arm/kvm.c:226:
+>> +                         (sysreg & CP_REG_ARM64_SYSREG_OP1_MASK) >>
+>> CP_REG_ARM64_SYSREG_OP1_SHIFT,
+>>
+>> ERROR: line over 90 characters
+>> #390: FILE: target/arm/kvm.c:227:
+>> +                         (sysreg & CP_REG_ARM64_SYSREG_CRN_MASK) >>
+>> CP_REG_ARM64_SYSREG_CRN_SHIFT,
+>>
+>> ERROR: line over 90 characters
+>> #391: FILE: target/arm/kvm.c:228:
+>> +                         (sysreg & CP_REG_ARM64_SYSREG_CRM_MASK) >>
+>> CP_REG_ARM64_SYSREG_CRM_SHIFT,
+>>
+>> ERROR: line over 90 characters
+>> #392: FILE: target/arm/kvm.c:229:
+>> +                         (sysreg & CP_REG_ARM64_SYSREG_OP2_MASK) >>
+>> CP_REG_ARM64_SYSREG_OP2_SHIFT);
+>>
+>> WARNING: line over 80 characters
+>> #396: FILE: target/arm/kvm.c:233:
+>> +static int get_host_cpu_reg(int fd, ARMHostCPUFeatures *ahcf,
+>> ARMIDRegisterIdx index)
+>
+> The last one of those is probably easily fixed, but note the general
+> remark in style.rst that it's better to have an overlong line than
+> one with an awkward and unreadable wrapping. (We ought to fix
+> checkpatch and style.rst to agree on whether to warn or error and
+> whether that should be at 90 chars or 100 chars, but that would require
+> reopening an old style argument and it's too much effort.)
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+I would not disagree with fixing the last one if wanted, but I think the
+others are more readable if we do not try to break them up.
+
+>
+>> 5f15ebdf3f arm/cpu: Add sysreg definitions in cpu-sysregs.h
+>> ERROR: Macros with complex values should be enclosed in parenthesis
+>> #56: FILE: target/arm/cpu-sysregs.h:21:
+>> +#define DEF(NAME, OP0, OP1, CRN, CRM, OP2) NAME##_IDX,
+>>
+>> ERROR: Macros with complex values should be enclosed in parenthesis
+>> #64: FILE: target/arm/cpu-sysregs.h:29:
+>> +#define DEF(NAME, OP0, OP1, CRN, CRM, OP2) \
+>> +    SYS_##NAME = ENCODE_ID_REG(OP0, OP1, CRN, CRM, OP2),
+>>
+>> ERROR: Macros with complex values should be enclosed in parenthesis
+>> #203: FILE: target/arm/cpu64.c:40:
+>> +#define DEF(NAME, OP0, OP1, CRN, CRM, OP2)      \
+>> +    [NAME##_IDX] = SYS_##NAME,
+>
+> This is checkpatch not being able to cope with more complex
+> uses of the preprocessor; the warning only makes sense for
+> "acts like a function" macros.
+
+Yep, that's why I ignored it.
+
+In general, should we mention that we intentionally ignored
+checkpatch.pl feedback, or would that be just noise?

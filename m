@@ -1,281 +1,228 @@
-Received: by 2002:a05:7301:4085:b0:178:84eb:402c with SMTP id pt5csp927307dyb;
-        Wed, 25 Jun 2025 08:23:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWQWGLsDYN6kPNWOFzfsnMU0kWqiXlVDQjWO7GnOzneUaJiNt79VZ6KQCgUSj4sCbjbqZp3DaaHK0Xv5Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IESH0Epq+TQl4qKNvzP4b5X4Sbg6k6Gvp1BHJF0mAd0bmb8DLQ5K/zn8AF//HYWcVWvIvNQ
-X-Received: by 2002:a05:620a:2b47:b0:7ce:b4d4:395a with SMTP id af79cd13be357-7d429725cf1mr476479585a.18.1750865001485;
-        Wed, 25 Jun 2025 08:23:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750865001; cv=none;
+Received: by 2002:a05:7301:4085:b0:178:84eb:402c with SMTP id pt5csp957995dyb;
+        Wed, 25 Jun 2025 09:08:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVgEZTQxWXzF6pjLGG2y/Ftf8v8mUSleNp92intsym+7A3MwE8k2jLvjl7QO1khWdZ0VSQAGhtu009FxQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEqVtm3V7iuTRI/8zIH/GA2hqwStWvPbZp9hA2iIPmWcWQ4jEaMgtNJN0D0b2HqSM7+/xQj
+X-Received: by 2002:a05:6000:4411:b0:3a5:8a68:b81d with SMTP id ffacd0b85a97d-3a6ed646bc4mr2216327f8f.43.1750867738007;
+        Wed, 25 Jun 2025 09:08:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750867737; cv=none;
         d=google.com; s=arc-20240605;
-        b=OZsi+BYGcgecv6eG+xVmtPn4/GO7keh7Tw5oba1hEziMos/nuqIzkrAnvDUe0tPf4H
-         TyI2YGFQ3UGGdV7LFX1PKvuoL/PkWfsMnx4XVuEtx5vRqCbzzTR/clAQn3NUiIxVwW9u
-         RA82/dhWF7RKxIv0jh1H+qo4BdV8yfBN7brKYqI1lgVQOsb3BfWU7e/x65AHMJlcuref
-         I2jQw60paBQ4wJL+RmxKXuTVYc7Hrd1ZIshjt7JngEIsmYOh32mjULNlS1cpucvAJivT
-         7fnz9sE7E7y8GGXQ+DHqCkf8UO2S+aFZLA9sje30MSocaUOB5ViFGdaL5zEBtxC7Di73
-         5d7Q==
+        b=jahrcOfJJ51Rtr3b4NiWHH9p/WFR/dwLlY/86YuCrwruw+1y1xWiPIWvTguPoZjfD3
+         zIySQwa80mncNZASRbOh+3IyzcCXyjO3BSAXBMagJHVVDccruvAvxXeQSkoF8cNEhaMA
+         h3G9NBatSbCIfia4ZUGRx3U1ooLS0+YxfRWbKZh6GPfGV+BtrSBtx3vTOMPSfehz4a5A
+         WUzISJt7eyDlCHZA9dzmvEKHQu+7RN7aHWviB/avhKNoGclvPgXJ5b9zZDKIV+T3jOFi
+         heG5mMsFMPHPJu8wr9tGaFiuVJ4ejXmIV345C9r2Loql/2HGTjWKdEX2GR7alk2kXckq
+         BnoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=sgqpt6+LkQyqIfK65io/n4s5hgmJ2bFQ+Ds8DGQQ5HM=;
-        fh=GRAguv4PAtCKyRoDewgfLoAo9hSy4G272HjhU5kerW4=;
-        b=Kkrt3WMQgydWQZyYRaP6SZEA693otVR1QONN/UXnDo9xbXJsIfpbcu7jcUfQ1KAwR+
-         uJw9YPDzUW/TdCZxAhBD4iv8RkTsnodcvGiqv3BWywmeyLwJGrTdm30QZzOmvyAKv5PG
-         WBqqB4cdhiC127dkZPmQQF1V33bU5M29jZ7a0iW9P6esgKnFf3ggqy8ObERZxLnlXif3
-         yoph3WtbDDoJOBuyz1vjYkoubk6Y8P+CssLa3njNfkyv8RqtqHbY3VoYNCRfWvoZP02S
-         50bEIOqOan2r/2LVvETcTjgnPNKxTqKcX9k/wE3kvBpbWayt4L8SJyIrWioommaCvbUr
-         2yjg==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date;
+        bh=nTu0tB4fwIyEINQU5Vk10dqfav1q5+keeB5Aml+EaRY=;
+        fh=qQbmNEA/xaYZ1+F/G1dDTtTYRWlmOeSnIuM5hAgT3r8=;
+        b=G9tFxIgoEkCCJUmYmlOu+9UxBLlvC/U/PmuZyBQ1evh9kPK6uyXGE6xWdNhfxNqBaP
+         JqqIdWSFvj8kl1TNaHQLSu1RSlf3LSbL/fgm0HhFXlQ2UsTxMiQ6o2KQj7HVRRg7Few8
+         gLrKGigCPIbsY3kRKLRI1vnRBgp7TRead2odrGDG7430NrxYMqxyeF61eWtGGR5tb3Gy
+         PAI/Zyh9w28/1YQXGPDdGtRUFko7wSWc8wEb5ga0a81gb9Qadhu95KCFJvI5Dfs5KlHm
+         95ZxWefIknUtYW8CpO+aCVWW7P67Zbd6PFKqrBaCGDo2P547L9SVLPF4cD5FGuvsk/5l
+         mguA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MMc+Z1TT;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3f999f491si1179450385a.125.2025.06.25.08.23.21
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Jun 2025 08:23:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a6e80f6c09si3264436f8f.492.2025.06.25.09.08.57
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 25 Jun 2025 09:08:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MMc+Z1TT;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1750865001;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=sgqpt6+LkQyqIfK65io/n4s5hgmJ2bFQ+Ds8DGQQ5HM=;
-	b=MMc+Z1TTEj7JX6VUxEc+tCtNatviqmB10Q0MlNy7JDL044O7++t5kOoBtQKVyy0P0umBD9
-	Z/9/H5v7VJ8KH4lKB+5ry7U2QinyMjXrjKHmETwIdSr0OBDvPvMDX+nK1e0RFAnrnz9JIA
-	8qmT2lt2y2gJFtzzOVpiyO/6xpnkoE4=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-196-PI_EIc6dO9SFHenUHfjj9A-1; Wed, 25 Jun 2025 11:23:19 -0400
-X-MC-Unique: PI_EIc6dO9SFHenUHfjj9A-1
-X-Mimecast-MFC-AGG-ID: PI_EIc6dO9SFHenUHfjj9A_1750864999
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-450de98b28eso5388625e9.0
-        for <alex.bennee@linaro.org>; Wed, 25 Jun 2025 08:23:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750864998; x=1751469798;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=sgqpt6+LkQyqIfK65io/n4s5hgmJ2bFQ+Ds8DGQQ5HM=;
-        b=ArihTIG8C0vE+SAoRg8bZ3BSW3epg2CvXD9P0DaMYuPNJXgpmruEPRnOQ92GNjPbBH
-         aSTo71dj8WWPa9+TYSxLIhizDe/xlXIeCVpkyvEHDW2okOZOd0dD+qCHV+dPtJM84WaA
-         ARO7kvOyQOJEq3optoio4x9f6jCXXfSfeBEox4rWpey7VvCtMVcMIObdLk/OPTsIM9Yh
-         4yqogYD2OxenkCdIpTlnV5kTi6IRDYL8W38AFr8qRnpLfR/bzzuDWO9VRALApMzEiDzN
-         R6A1rsi1Lns9FPu6dUSx3ZEgkhx3qxyTV2ZyEKT7AyAGEpHVF5r9IhWn/yFsXeqEh+7f
-         Glbg==
-X-Forwarded-Encrypted: i=1; AJvYcCWlwjjMynjjILegxBDNU8zTuskbTOGGgVbSCHAgBqc4/3QUqRpkU1yVWbmatmmLuVQjM6pppH96iXwEYA==@linaro.org
-X-Gm-Message-State: AOJu0YxtCIh9o5zq+5n+91xbiZbQ/Zt8YUgFK00azzH4a9ScgkLAGp9e
-	5TDnJtjsQcaSxbXWbMWWPbzUlh4H8qW2ad0qGNgejZPqxJGnGoDgZmS8xzpfulRaeXADuvnACTd
-	9U2j1m7H/J3TB8B+KSD4vaMc9mKH8Tp4ZyAyRYWlhAZlC2Me5LvbTW7BAhw==
-X-Gm-Gg: ASbGnctcKL0RITZC1v/k2q/JpG7QqVSBG3Ni1u3PbrsIKCuvlppV4xetkWklnW8+cj3
-	BfoAESSuUDApSKk6x1PzpnH2JahAd0UueCi3TjZ585xoc5XuteaxvaqpCqFIKmBUxkCiyxa9HpP
-	CfTyeLwUjRkG240kkmaHIvw5yJKHGNQtEa5AIyeqj7Q+S4AtIdM5PLyEmNGoG6OUew9zMNC/9M5
-	aGa7t4IjwxWvk3nn8nyCsbqEkxraBIOzZc8zOmV6mlIPLTd4liJjHwIhfuUIFbn0+fQn9mquk1G
-	TbwA0x5tzKToFsEMqfUtNOuA+UpMCPBUOOnSVu+Num5iwsCyHqm7jrLhN7H4MjD7GtVHpQ==
-X-Received: by 2002:a05:6000:2409:b0:3a6:daff:9e5 with SMTP id ffacd0b85a97d-3a6e71c5b54mr6453899f8f.7.1750864998393;
-        Wed, 25 Jun 2025 08:23:18 -0700 (PDT)
-X-Received: by 2002:a05:6000:2409:b0:3a6:daff:9e5 with SMTP id ffacd0b85a97d-3a6e71c5b54mr6453857f8f.7.1750864997815;
-        Wed, 25 Jun 2025 08:23:17 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45382363f7fsm23617965e9.27.2025.06.25.08.23.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 25 Jun 2025 08:23:17 -0700 (PDT)
-Message-ID: <13edf868-707a-4caa-9b83-8b7ac103ff0a@redhat.com>
-Date: Wed, 25 Jun 2025 17:23:15 +0200
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bS6FK2zQHz6DL4c;
+	Thu, 26 Jun 2025 00:08:53 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+	by mail.maildlp.com (Postfix) with ESMTPS id 15D991404C4;
+	Thu, 26 Jun 2025 00:08:57 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 25 Jun
+ 2025 18:08:56 +0200
+Date: Wed, 25 Jun 2025 17:08:50 +0100
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>, <linuxarm@huawei.com>
+CC: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, <mst@redhat.com>,
+	Zhijian Li <lizhijian@fujitsu.com>, Itaru Kitayama
+	<itaru.kitayama@linux.dev>, <linux-cxl@vger.kernel.org>,
+	<qemu-arm@nongnu.org>, Yuquan Wang <wangyuquan1236@phytium.com.cn>, Philippe
+ =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, "Alireza Sanaee"
+	<alireza.sanaee@huawei.com>, Alex =?ISO-8859-1?Q?Benn=E9e?=
+	<alex.bennee@linaro.org>
+Subject: Re: [PATCH v15 3/4] hw/arm/virt: Basic CXL enablement on
+ pci_expander_bridge instances pxb-cxl
+Message-ID: <20250625170850.00005cfe@huawei.com>
+In-Reply-To: <20250613182125.00004e5f@huawei.com>
+References: <20250612134338.1871023-1-Jonathan.Cameron@huawei.com>
+	<20250612134338.1871023-4-Jonathan.Cameron@huawei.com>
+	<CAFEAcA-J+vAGfEV67PezA72rUiqpuqTBT=8hJLc1sw+xo3XHWQ@mail.gmail.com>
+	<20250613162054.000003cf@huawei.com>
+	<CAFEAcA9dHc8werChGk_HzXWsxqv1E4==iDPxRtCmPe9Ndr7nmA@mail.gmail.com>
+	<20250613182125.00004e5f@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH v3 17/29] hw/arm/virt-acpi-build: Modify the DSDT ACPI
- table to enable ACPI PCI hotplug
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
- mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
- philmd@linaro.org, alex.bennee@linaro.org
-References: <20250616094903.885753-1-eric.auger@redhat.com>
- <20250616094903.885753-18-eric.auger@redhat.com>
- <20250620103538.000021c1@huawei.com> <20250620143822.7ab69038@fedora>
- <20250620171351.00004cb0@huawei.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250620171351.00004cb0@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 6OaT8-6r34MrufXxKYzhROFdutx3m1bIRrPf2AY0utY_1750864999
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: o7lhgSsYe7Gx
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100012.china.huawei.com (7.191.174.184) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-TUID: oaVZ+b/sCNto
 
-Hi Igor, Jonathan,
+On Fri, 13 Jun 2025 18:21:25 +0100
+Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
 
-On 6/20/25 6:13 PM, Jonathan Cameron wrote:
-> On Fri, 20 Jun 2025 14:38:22 +0200
-> Igor Mammedov <imammedo@redhat.com> wrote:
->
->> On Fri, 20 Jun 2025 10:35:38 +0100
->> Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
->>
->>> On Mon, 16 Jun 2025 11:46:46 +0200
->>> Eric Auger <eric.auger@redhat.com> wrote:
->>>   
->>>> Modify the DSDT ACPI table to enable ACPI PCI hotplug.
->>>>
->>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>>
->>>> ---
->>>> v2 -> v3:
->>>> - use ACPI_PCIHP_SIZE instead of 0x1000 (Igor)
->>>> - use cihp_state->use_acpi_hotplug_bridge    
->>> pcihp_state
->>>
->>> Takes a bit of searching to find the various bits of the
->>> same support on x86 but this seems to match up.
->>> Exactly when things are built does vary but not I think
->>> in a way that matters.  e.g. I think on x86 the
->>> EDSM stuff is built whether or not we have pcihp enabled
->>> whereas here you've made it conditional on using acpi
->>> hp.  Perhaps a tiny bit more description on that would be
->>> useful if you do a v4?  
->> edsm should be built regardless of pcihp
->> (well intention was there, whether I messed it up or not I don't know)
->>
->> idea is that non hotplug ports can have a static acpi-index,
->> so it doesn't depend on pcihp.
-> That makes sense - so here should that edsm feature be enabled whether
-> or not we have pcihp_state->use_acpi_hotplug_bridge == true
->
-> i.e. is it really a separate thing from the rest of this series?
+> On Fri, 13 Jun 2025 17:07:24 +0100
+> Peter Maydell <peter.maydell@linaro.org> wrote:
+> 
+> > On Fri, 13 Jun 2025 at 16:20, Jonathan Cameron
+> > <Jonathan.Cameron@huawei.com> wrote:  
+> > >
+> > > On Fri, 13 Jun 2025 13:57:39 +0100
+> > > Peter Maydell <peter.maydell@linaro.org> wrote:
+> > >    
+> > > > On Thu, 12 Jun 2025 at 14:45, Jonathan Cameron
+> > > > <Jonathan.Cameron@huawei.com> wrote:    
+> > > > >
+> > > > > Code based on i386/pc enablement. The memory layout places space for 16
+> > > > > host bridge register regions after the GIC_REDIST2 in the extended memmap.
+> > > > > The CFMWs are placed above the extended memmap.
+> > > > >
+> > > > > Only create the CEDT table if cxl=on set for the machine.
+> > > > >
+> > > > > Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > > > >
+> > > > > ---
+> > > > > v15: No changes.
+> > > > > ---
+> > > > >  include/hw/arm/virt.h    |  4 ++++
+> > > > >  hw/arm/virt-acpi-build.c | 34 ++++++++++++++++++++++++++++++++++
+> > > > >  hw/arm/virt.c            | 29 +++++++++++++++++++++++++++++
+> > > > >  3 files changed, 67 insertions(+)    
+> > > >    
+> > > Hi Peter,
+> > >
+> > > Thanks for reviewing.
+> > >    
+> > > > Can we have some user-facing documentation, please?
+> > > > (docs/system/arm/virt.rst -- can just be a brief mention
+> > > > and link to docs/system/devices/cxl.rst if you want to put the
+> > > > examples of aarch64 use in there.)    
+> > >
+> > > Given the examples should look exactly like those for x86/pc, do we need
+> > > extra examples in cxl.rst? I guess I can add one simple arm/virt example
+> > > in a follow up patch without bloating that file too badly..    
+> > 
+> > That's fine too -- if the answer is "all these command lines work
+> > for aarch64 too", then you can just say that in cxl.rst.  
+> 
+> I'll put an example in just to avoid people using a default
+> command line and getting an a55 with too small a PA range.
+> 
+> >   
+> > > Is the following sufficient for the board specific docs?
+> > >
+> > > diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+> > > index 6a719b9586..10cbffc8a7 100644
+> > > --- a/docs/system/arm/virt.rst
+> > > +++ b/docs/system/arm/virt.rst
+> > > @@ -31,6 +31,7 @@ Supported devices
+> > >  The virt board supports:
+> > >
+> > >  - PCI/PCIe devices
+> > > +- CXL Fixed memory windows, root bridges and devices.
+> > >  - Flash memory
+> > >  - Either one or two PL011 UARTs for the NonSecure World
+> > >  - An RTC
+> > > @@ -189,6 +190,14 @@ ras
+> > >  acpi
+> > >    Set ``on``/``off``/``auto`` to enable/disable ACPI.
+> > >
+> > > +cxl
+> > > +  Set  ``on``/``off`` to enable/disable CXL. More details in
+> > > +  :doc:`../devices/cxl`. The default is off.
+> > > +
+> > > +cxl-fmw
+> > > +  Array of CXL fixed memory windows describing fixed address routing to
+> > > +  target CXL host bridges. See :doc:`../devices/cxl`.
+> > > +
+> > >  dtb-randomness
+> > >    Set ``on``/``off`` to pass random seeds via the guest DTB
+> > >    rng-seed and kaslr-seed nodes (in both "/chosen" and    
+> > 
+> > Looks OK.
+> >   
+> > > >    
+> > > > > @@ -220,6 +223,7 @@ static const MemMapEntry base_memmap[] = {
+> > > > >  static MemMapEntry extended_memmap[] = {
+> > > > >      /* Additional 64 MB redist region (can contain up to 512 redistributors) */
+> > > > >      [VIRT_HIGH_GIC_REDIST2] =   { 0x0, 64 * MiB },
+> > > > > +    [VIRT_CXL_HOST] =           { 0x0, 64 * KiB * 16 }, /* 16 UID */    
+> > > >
+> > > > This is going to shuffle the memory map around, even if CXL
+> > > > isn't enabled, which will break migration compatibility.
+> > > > You need to do something to ensure that the CXL region isn't
+> > > > included in the calculations of the base addresses for these
+> > > > regions if CXL isn't enabled.
+> > > >    
+> > >
+> > > It doesn't move any existing stuff because these are naturally aligned
+> > > regions so this is in a gap before the PCIE ECAM region.    
+> > 
+> > Is that true even when we have the maximum number of CPUs and
+> > so the max number of redistributors in that VIRT_HIGH_GIC_REDIST2
+> > region ?  
+> 
+> Yes.   The gap is between that and the ECAM window.  The CXL RCRB
+> stuff doesn't move whether or not that is there.  Making sure it
+> is present does make it easier to see the gap though - hence example below.
+> 
+> 
+> >   
+> > > > >      [VIRT_HIGH_PCIE_ECAM] =     { 0x0, 256 * MiB },
+> > > > >      /* Second PCIe window */
+> > > > >      [VIRT_HIGH_PCIE_MMIO] =     { 0x0, DEFAULT_HIGH_PCIE_MMIO_SIZE },    
+> > > >
+> > > > If you're OK with having the CXL host region at the end of the
+> > > > list then that's a simpler way to avoid its presence disturbing
+> > > > the layout of the existing regions, but you might not like it
+> > > > being at such a high physaddr.    
+> > >
+> > > From what I recall a higher address isn't a problem I just wanted to not waste any
+> > > PA space at all so used the gap.
+> > >
+> > > Chunk of /proc/iomem with a random test case (in first case with the cxl bits
+> > > removed as obvious that doesn't start until this patch is in place).
+> > > Need more than 123 cpus to make the second gicv3 redist appear
+> > > (I've no idea why that number I just printed the threshold where
+> > > it was calculated to find out what I needed to wait for boot on).    
+> > 
+> > It's 123 because that's the most redistributors we can fit into
+> > the lower redistributor region. (We didn't really allow enough
+> > space in the lower memory map, which is why we need this awkward
+> > split setup.
+> > 
+> > (I have to run now, will look at the rest of the email next week.)  
+> Thanks and have a good weekend.
 
-Further studying this comment,
+Hi Peter,
 
-EDSM is invoked by code generated in aml_pci_static_endpoint_dsm() whcih
-itself is invoked by build_append_pci_bus_devices()
+I'll post a v16 with the changes discussed and for this patch include a few
+comments on what we didn't yet resolve in this thread.
 
-So to me it means that if we generate edsm unconditionally we also need
-to call the following block unconditionnally
+Thanks,
 
-+    aml_append(pci0_scope, build_pci_bridge_edsm());
-+    build_append_pci_bus_devices(pci0_scope, vms->bus);
-+    if (object_property_find(OBJECT(vms->bus), ACPI_PCIHP_PROP_BSEL)) {
-+        build_append_pcihp_slots(pci0_scope, vms->bus);
-+    }
+Jonathan
 
-which seems to be done that way in hw/i386/acpi-build.c/build_dsdt()
-
-Igor, if I recall correctly you said that addition changes related to
-"S%.02X" could change the guest ABI. And in that case this wouldn't be
-guarded by any new option/compat. So that's annoying.
-
-By the way I tested static acpi-index on ARM with resulting code and it
-does not not seem to work - maybe I try with a wrong topology though
-(pcie root port + virtio-net acpi-index)-. I have not checked on x86 yet.
-
-So I wonder if it makes sense to do that refinement now. Maybe we can
-check try to improve that afterwards?
-
-What do you think?
-
-Eric
-
-
-
->
-> Thanks,
->
+> 
 > J
->>> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
->>>
->>>   
->>>> ---
->>>>  include/hw/acpi/pcihp.h  |  2 ++
->>>>  include/hw/arm/virt.h    |  1 +
->>>>  hw/arm/virt-acpi-build.c | 22 ++++++++++++++++++++++
->>>>  hw/arm/virt.c            |  2 ++
->>>>  hw/arm/Kconfig           |  2 ++
->>>>  5 files changed, 29 insertions(+)
->>>>
->>>> diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
->>>> index 5506a58862..9ff548650b 100644
->>>> --- a/include/hw/acpi/pcihp.h
->>>> +++ b/include/hw/acpi/pcihp.h
->>>> @@ -38,6 +38,8 @@
->>>>  #define ACPI_PCIHP_SEJ_BASE 0x8
->>>>  #define ACPI_PCIHP_BNMR_BASE 0x10
->>>>  
->>>> +#define ACPI_PCIHP_SIZE 0x0018
->>>> +
->>>>  typedef struct AcpiPciHpPciStatus {
->>>>      uint32_t up;
->>>>      uint32_t down;
->>>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
->>>> index 9a1b0f53d2..0ed2e6b732 100644
->>>> --- a/include/hw/arm/virt.h
->>>> +++ b/include/hw/arm/virt.h
->>>> @@ -79,6 +79,7 @@ enum {
->>>>      VIRT_ACPI_GED,
->>>>      VIRT_NVDIMM_ACPI,
->>>>      VIRT_PVTIME,
->>>> +    VIRT_ACPI_PCIHP,
->>>>      VIRT_LOWMEMMAP_LAST,
->>>>  };
->>>>  
->>>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->>>> index d7547c8d3b..a2e58288f8 100644
->>>> --- a/hw/arm/virt-acpi-build.c
->>>> +++ b/hw/arm/virt-acpi-build.c
->>>> @@ -34,6 +34,7 @@
->>>>  #include "hw/core/cpu.h"
->>>>  #include "hw/acpi/acpi-defs.h"
->>>>  #include "hw/acpi/acpi.h"
->>>> +#include "hw/acpi/pcihp.h"
->>>>  #include "hw/nvram/fw_cfg_acpi.h"
->>>>  #include "hw/acpi/bios-linker-loader.h"
->>>>  #include "hw/acpi/aml-build.h"
->>>> @@ -809,6 +810,8 @@ static void
->>>>  build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>>>  {
->>>>      VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->>>> +    AcpiGedState *acpi_ged_state = ACPI_GED(vms->acpi_dev);
->>>> +    AcpiPciHpState *pcihp_state = &acpi_ged_state->pcihp_state;
->>>>      Aml *scope, *dsdt;
->>>>      MachineState *ms = MACHINE(vms);
->>>>      const MemMapEntry *memmap = vms->memmap;
->>>> @@ -868,6 +871,25 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>>>  
->>>>      aml_append(dsdt, scope);
->>>>  
->>>> +    if (pcihp_state->use_acpi_hotplug_bridge) {
->>>> +        Aml *pci0_scope = aml_scope("\\_SB.PCI0");
->>>> +
->>>> +        aml_append(pci0_scope, aml_pci_edsm());
->>>> +        build_acpi_pci_hotplug(dsdt, AML_SYSTEM_MEMORY,
->>>> +                               memmap[VIRT_ACPI_PCIHP].base);
->>>> +        build_append_pcihp_resources(pci0_scope,
->>>> +                                     memmap[VIRT_ACPI_PCIHP].base,
->>>> +                                     memmap[VIRT_ACPI_PCIHP].size);
->>>> +
->>>> +        /* Scan all PCI buses. Generate tables to support hotplug. */
->>>> +        build_append_pci_bus_devices(pci0_scope, vms->bus);
->>>> +        if (object_property_find(OBJECT(vms->bus), ACPI_PCIHP_PROP_BSEL)) {
->>>> +            build_append_pcihp_slots(pci0_scope, vms->bus);
->>>> +        }
->>>> +        build_append_notification_callback(pci0_scope, vms->bus);
->>>> +        aml_append(dsdt, pci0_scope);
->>>> +    }
->>>> +
->>>>      /* copy AML table into ACPI tables blob */
->>>>      g_array_append_vals(table_data, dsdt->buf->data, dsdt->buf->len);
->>>>      
->>>   
->>
+> > 
+> > -- PMM  
+> 
+> 

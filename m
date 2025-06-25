@@ -1,171 +1,274 @@
-Received: by 2002:a05:7301:4085:b0:178:84eb:402c with SMTP id pt5csp751080dyb;
-        Wed, 25 Jun 2025 03:26:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW+iTM7fxZMWf3kkXavY58a5HytgeULgEOXWU80Rryscj/TbKNmKXeSJt4wuMTJnBXf6LM1NWNDT4drDA==@linaro.org
-X-Google-Smtp-Source: AGHT+IE8cuA2NCwP2Q+GDL4NlPwiYemY0uDHqEmgnav9a4iLsxJpSFyqRzYhTvei2iQOrunWlw0V
-X-Received: by 2002:a05:620a:410f:b0:7d3:90e4:1581 with SMTP id af79cd13be357-7d42974c4e1mr295925885a.42.1750847215261;
-        Wed, 25 Jun 2025 03:26:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750847215; cv=none;
+Received: by 2002:a05:7301:4085:b0:178:84eb:402c with SMTP id pt5csp887386dyb;
+        Wed, 25 Jun 2025 07:21:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUNPkofTAneakTQOOuVQ2AIK/kfSHlH2PkypnQ9voD+oixGgjCZ3iHOCShbtiAsFFSK57kkfi1wxF+d1A==@linaro.org
+X-Google-Smtp-Source: AGHT+IH7LYhS+B4O5mn7TPmr7xU2dIBe40AFMza5JI8OCPfWj660b+zW4V+cPJaBkspGt3qEW74w
+X-Received: by 2002:ac8:598d:0:b0:4a5:912a:7c64 with SMTP id d75a77b69052e-4a7c07d4fc2mr49498751cf.30.1750861289434;
+        Wed, 25 Jun 2025 07:21:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750861289; cv=none;
         d=google.com; s=arc-20240605;
-        b=PIgLHJ9SedrARaiup1AUgPjxxiXAW4qUaerZUIzePwHk05XKiR6oKP1KFNH8Hpji2i
-         e6Azz7kyaf+GUR4cxjxY0NpO1DXlm6Qz9juwHpavNV5r997HhHsFfePUYHz2bVioAPzP
-         CaVS5S83fua1GEsm2eAcK222Hlzr+N0JmSli5V/glqRBSnLDMkFsdwPc31uCLC9LpM4c
-         VpmGXMUKJUysDDM+r4G6S6rzlNjVA7011v11yhDtWUO3vG54A0rG4+Sru55J6F+yw+2V
-         Lg+3kn0LYDvRgyi7lkXoMh2UELqsROO15hSlKO8Nu5q1WUkErj/dMLOL1htY9wz/K9VP
-         pcLw==
+        b=KX2679WPuQO6N8+5uyT3pwIu5vn+6oXSjxo7/Hife5fgEZKZReZ/GM6HqX1689wCbS
+         txSii1U2MafYwINOtUncmxmmRXdMRs4PpNz+opfRv67BLr1r6U3IIXyTbcXslF/b3KUb
+         iH5G6WvY9fgQNeuG17TfJS0Vfa//I0b01Zpw9afW2fExYnCUMcwxoVoeGeKeZdwxcRml
+         FVcT6HpQ5Kwmze0pC1Uyr/R6u+8Y3+ZnoLNAPsU0PfBQgr8x4KsomCfgbEHgUnhofbmr
+         Y9gx+/Ahi4Uiak9gMQkMuhjoqk8P5hGS6IKDV6ShftrI2T6tLtU4YHSegsi024nbxhYW
+         2Mjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=NSXeXYYzfwYyuvQlnP/dxqPNFRa7HWdTUao3PH64I3E=;
-        fh=+VDWOlto7KYYEEi7NCZHTsjW41EmsLdiTgPT/WIHoGQ=;
-        b=AAbus/LRkTWy52Vtcpaqh9NMVZQPwu2X4waVeroo/pTtFHEYh5FH0NKRiRjHZeRz2f
-         GaHUWypvWHGthE82BmUDw7GoTzOUAOgHGd12qFh3rtrHjBYQFzf3NjbLdiRDIozod/Q2
-         NR1w8kDy7vydGAZA+/gnkwytPBWgTY4M9kFkwBqGZvXtYOlFNLytoMIOfLg+w5HPIELK
-         KRl4W/V5//ZAZ2bmhGO/sTI99IhbOu7hBH8e7IHdaGqD2/d0TIdLQnlAExA0cxmftwqE
-         HSfFFLyz6/dgXNWFMmBIXtmbpkk9Xl3HmgQUgtzGCwERvH3sANvfi7bSiWJ3VL+AAZq+
-         9QPg==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=uLeoRO3qY2bDTFoaD7t9coh7zMYmVZ6hL7duH5Mrtmc=;
+        fh=8htBJSiT/V/H5tEoae7f5gfYGQnHUknHvm2kGzcFJhQ=;
+        b=HB8HuShK2XQO/5ihyUEvtKmU500u+GOgwhxREA6zFfSbeBVd809+qiZ7G5nY9WNtbJ
+         wulhIqF6gsJGBkm0RuRBns4tCb905MFVjaqDDqhVI4jEFquwcb2bXNuj+I2qXrVJf9Q0
+         VCB9R4/RIubb7tk1K4hydBws1GKqdvdZV3LKlOELV7mL4oFX8h4o6uTvmKHzdlFymyvt
+         MIVtWA/ZkwSgvNgcT77GemwT7lHhUjXrW4u9iEsHYLBXAKjRghR1DdPbcMFy3/sB5Ykl
+         GHkcuanIWlZbFDxZh+7nsfKWzTCQgrWCPLok0FFo6pkP2PtRde2y7Mg5nWWu8WzFjAY8
+         rH/g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S6NWXpsu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3f9a09e78si1127038385a.423.2025.06.25.03.26.55
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P8bIh+TT;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3f9a2a286si1221777885a.636.2025.06.25.07.21.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Jun 2025 03:26:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Jun 2025 07:21:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S6NWXpsu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uUNKw-00071A-D0; Wed, 25 Jun 2025 06:26:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uUNKu-00070b-BU
- for qemu-arm@nongnu.org; Wed, 25 Jun 2025 06:26:36 -0400
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uUNKs-0006VY-FL
- for qemu-arm@nongnu.org; Wed, 25 Jun 2025 06:26:36 -0400
-Received: by mail-yw1-x112b.google.com with SMTP id
- 00721157ae682-710bbd7a9e2so60611257b3.0
- for <qemu-arm@nongnu.org>; Wed, 25 Jun 2025 03:26:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1750847192; x=1751451992; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=NSXeXYYzfwYyuvQlnP/dxqPNFRa7HWdTUao3PH64I3E=;
- b=S6NWXpsufcYb02oedlRJBymZCnmoC3l1JqAgChZj/TDX76PwwPjknflSoX0hEIoOi7
- +eHsZY6hpKKMwEXymi4O9HNbEJNM7HCZP3yR30D8lFajXhwaO/0PoL32yP2J942w3f8j
- WX7E8sByehj3ICZtxxE11JKqOuHq23lQ+IaHQAzgCWjp5eK9OQrhaujJN+4hwCY4mSep
- rjhW52IKAuojSpBK+csb5F9O5AQD1UQbfyyjm1+4D1bKkBfG2x1jEVANmT1MFDSU8RMh
- +/IBam6njKi6DOWXLGLv1Trn6Tw6sWRzAtMZ0p56bW4SSsC82DCU2hHwpbE0jHbxg6LP
- sg3Q==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P8bIh+TT;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1750861289;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=uLeoRO3qY2bDTFoaD7t9coh7zMYmVZ6hL7duH5Mrtmc=;
+	b=P8bIh+TTbANvcHult5uJH+6d+/0xJTuOIUnTf6ivrnDZEka98NCJoQVqEvlpxh9YxvmCiI
+	v7CD3p/SpKqVWCn0FSHoWs1RccYcy+mb2DY7oRGKnFHn2cgnWrC6A3Ug1tIwmHIFKS4jHW
+	QseteB4T4Sxe7p58BmCztgvhcZc4DXo=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-318-j5HWYUaDP3ysEzALoWqpbA-1; Wed, 25 Jun 2025 10:21:27 -0400
+X-MC-Unique: j5HWYUaDP3ysEzALoWqpbA-1
+X-Mimecast-MFC-AGG-ID: j5HWYUaDP3ysEzALoWqpbA_1750861286
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-450d64026baso9916655e9.1
+        for <alex.bennee@linaro.org>; Wed, 25 Jun 2025 07:21:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1750847192; x=1751451992;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=NSXeXYYzfwYyuvQlnP/dxqPNFRa7HWdTUao3PH64I3E=;
- b=H9KhH842KQUghqfYopSfjVPgI4BHOVeJAkQDA5iFh/I/k1zd33ANfmSSgAOlpLMujs
- bm1kXcDZ6QcSuXJMYaVXYC5SfMuHPbFgIF5C9KaDpA0BaF+c/iUfELYmK/PaMf0LHrCW
- sAVp3vzTIom2WuE7PHet8bRfbpsDV/pX7If4/9dAM2HpvIHjCrEYx5jEeVgXpyj9PCTM
- IUEZ68HwVcpZB3bwkoU5ozGlSDwXXOqntNQ+zOPHMDIOcBQ2aLbXHhJW2bccohygyDDi
- gMUb4xKyj8cAAP737tn6gxUhzM5WCzKeLI3ZijhkLVL9bBp1euB27NBmT+/kcTbL/ICX
- zTZw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUdabD3EYa5nhObQNLTfzEw0NdpuRM16G6qhY89f9J5sV3b8BYOk3lT9gsYeEjMxT0xIfJdWArFWg==@nongnu.org
-X-Gm-Message-State: AOJu0Yxh57WyTekXrjFqMcMizvvy5Q/+Eu3F4fyeh8d6Fv8eOciE15UR
- FUHuPDmogsRt/g8UiaZ8IkeEsqQ+jxUH352+WuVmuzBsujVxSSB/LbawCeiWMvLoAdiKsNkh5j2
- R1Z0i/wXAhwh9iUWCpsSxrYSr/1UvXkAcv63GDLdQag==
-X-Gm-Gg: ASbGncsb2GFded/IgqVgRE2WOjTUNl4gNg7e7DeUrbkznXlnXg2jcDrjZvLGzUaU1SC
- 3uQ3yllke3rRR+jxhMgEbu9VStW0mcUnzBWsTTQYKvK9MlzSnFuY8IfGsVxcbBBzbqehXRwwP61
- v+7kVvr8qyoISEnusdpjShGiU+6Kr794U4nXs4pB55deXKVIfquh5jxfk=
-X-Received: by 2002:a05:690c:5506:10b0:70c:bb54:cd05 with SMTP id
- 00721157ae682-71406d9c227mr23704047b3.19.1750847192050; Wed, 25 Jun 2025
- 03:26:32 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1750861286; x=1751466086;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=uLeoRO3qY2bDTFoaD7t9coh7zMYmVZ6hL7duH5Mrtmc=;
+        b=jesskroLZZgk+rjqPBBxudJafEvsyQA8TNk6O+K8H4Az/wE/a4RdEimUPYZcKAbN7P
+         k9XIOdcSqBsxcG3VVuqAYBtujiur0I7/kb/qjsjjUJnvy8I6pmtT3EoxThyXkzyyrJJZ
+         /YRtzuSDbZkPXswZvhezIgeSZWC/7me8zVMhV0rdn//NqbRdHYMVfRIYnYr40V+u5L+O
+         mC+lDsFA33r6PwbAPbudHnSYE+dI9DC7eM5CMa0QDTF7+EZ+slZhQnPDxKShJgGCZwW4
+         rdI7SUaZqtDsI43VIF3pr43DEi7AzeSQFEhRZx2Btih8AAPd00AU5UkrVAWvWZLTf/dK
+         Kf8g==
+X-Forwarded-Encrypted: i=1; AJvYcCUxVzIzdRDJiJiiWoXMN8sWlDUUKcoSIbMoJs9TDgM4rcPqA+bnOl0s2YgQtPrQqGAqSPoPy8c6PO6/hQ==@linaro.org
+X-Gm-Message-State: AOJu0Yy+QWYRrEfEOCOdb/t25wEF5lkNO4xfAApxg05vyM3uWsSSEPkc
+	GXKnBzcKiUFwgu4xTekIKsRs3yKh0AayXzhnSlZ6UHg1HECHgO4hzwaVamRqaa4X6AB7vLaUpsO
+	ftS/gFEpDA3hyMffiHYFmd6H5vNabCio8oNW1Hec65uhTvNjnKarVWohbxg==
+X-Gm-Gg: ASbGncsFW1SylZhjFS5VT7/oRBICvd9yZc5DH4oJMN9R3eIX77Vf1S5KY0AbCMN39AJ
+	qeXzVoiLfauu/8D/ojkkuOfYUQXXquAHMqhWS+cXpMzaVVen++PFArNylu5l6/M64mVPhuMUcyr
+	Ew2RyERDP4t/5LmwRNuMvm94WXO460Oz1LLue19PdvEdbsKWYz0rG9MS1Fj/7CrfWe0sFbSNT8t
+	XNR9DH6Id/bSd/w+xub+zHyLlzHR8OoijbKZ/ETlNO2rB2Ykc0DI+i0VFX3OukPCN75k1rIh8h4
+	w6CpjyNzu6c9S9D2OBICN68Jy/PS60WFrt3I3sgU5BJDnETSqnsWt52AKySHXTjJ4TUFkA==
+X-Received: by 2002:a05:600d:15a:10b0:442:e9eb:cb9e with SMTP id 5b1f17b1804b1-4538331236cmr14520815e9.26.1750861286123;
+        Wed, 25 Jun 2025 07:21:26 -0700 (PDT)
+X-Received: by 2002:a05:600d:15a:10b0:442:e9eb:cb9e with SMTP id 5b1f17b1804b1-4538331236cmr14520665e9.26.1750861285654;
+        Wed, 25 Jun 2025 07:21:25 -0700 (PDT)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4538235600csm21581305e9.20.2025.06.25.07.21.24
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 25 Jun 2025 07:21:24 -0700 (PDT)
+Message-ID: <8e82a2d3-514b-4d3f-9c62-26062d243135@redhat.com>
+Date: Wed, 25 Jun 2025 16:21:23 +0200
 MIME-Version: 1.0
-References: <20250624022219.3704712-1-kane_chen@aspeedtech.com>
- <20250624022219.3704712-2-kane_chen@aspeedtech.com>
-In-Reply-To: <20250624022219.3704712-2-kane_chen@aspeedtech.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 25 Jun 2025 11:26:20 +0100
-X-Gm-Features: AX0GCFuwqyXAweUMPZQdbzrRBYG3pm7MInO6RuM1zhrLLFPhuBWUUFzF84WFzPw
-Message-ID: <CAFEAcA-Kpg1YjdQ9toU6cYmhpo+6GRgAxxF2ny1SG8C2wFz29g@mail.gmail.com>
-Subject: Re: [RFC v6 1/3] hw/misc/aspeed_otp: Add ASPEED OTP memory device
- model
-To: Kane Chen <kane_chen@aspeedtech.com>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- troy_lee@aspeedtech.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: l7C8ikydQWBr
+User-Agent: Mozilla Thunderbird
+Reply-To: eric.auger@redhat.com
+Subject: Re: [PATCH v3 20/29] hw/acpi/ged: Prepare the device to react to PCI
+ hotplug events
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
+ mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
+ Jonathan.Cameron@huawei.com, philmd@linaro.org, alex.bennee@linaro.org
+References: <20250616094903.885753-1-eric.auger@redhat.com>
+ <20250616094903.885753-21-eric.auger@redhat.com>
+ <20250620145714.0923f6c0@fedora>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20250620145714.0923f6c0@fedora>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: gFDvc0asfp1fGgMwOeatqseXPHctwzzgyQb8wioTKi8_1750861286
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-TUID: 95FW80rAiEF+
 
-On Tue, 24 Jun 2025 at 03:22, Kane Chen <kane_chen@aspeedtech.com> wrote:
->
-> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
->
-> Introduce a QEMU device model for ASPEED's One-Time Programmable (OTP)
-> memory.
->
-> This model simulates a word-addressable OTP region used for secure
-> fuse storage. The OTP memory can operate with an internal memory
-> buffer.
->
-> The OTP model provides a memory-like interface through a dedicated
-> AddressSpace, allowing other device models (e.g., SBC) to issue
-> transactions as if accessing a memory-mapped region.
->
-> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
-> ---
->  hw/misc/aspeed_otpmem.c         | 85 +++++++++++++++++++++++++++++++++
->  hw/misc/meson.build             |  1 +
->  include/hw/misc/aspeed_otpmem.h | 33 +++++++++++++
 
-Our other otp-type devices are in hw/nvram/.
 
-You should probably look at whether there's any kind of
-already existing conventions for these types of devices
-that this one should follow. (There may be nothing
-appropriate, but it's worth a look, so we don't end up
-with half a dozen devices that are all fairly similar
-but all do things in arbitrarily different ways.)
+On 6/20/25 2:57 PM, Igor Mammedov wrote:
+> On Mon, 16 Jun 2025 11:46:49 +0200
+> Eric Auger <eric.auger@redhat.com> wrote:
+>
+>> QEMU will notify the OS about PCI hotplug/hotunplug events through
+>> GED interrupts. Let the GED device handle a new PCI hotplug event.
+>> On its occurrence it calls the \\_SB.PCI0.PCNT method with the BLCK
+>> mutex held.
+>>
+>> The GED device uses a dedicated MMIO region that will be mapped
+>> by the machine code.
+>
+>> At this point the GED still does not support PCI device hotplug in
+>> its TYPE_HOTPLUG_HANDLER implementation. This will come in a
+>> subsequent patch.
+> looks out of order, perhaps it should be before this patch
+done, swapped both patches.
 
-thanks
--- PMM
+Eric
+>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>
+>> ---
+>> v2 -> v3:
+>> - pcihp_init and reset are put in ged code instead of machine code
+>>   (Igor)
+>>
+>> v1 -> v2:
+>> - Introduce ACPI_PCIHP_REGION_NAME
+>> ---
+>>  include/hw/acpi/generic_event_device.h |  4 ++++
+>>  hw/acpi/generic_event_device.c         | 26 ++++++++++++++++++++++++++
+>>  hw/acpi/pcihp.c                        |  1 -
+>>  3 files changed, 30 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+>> index f5ffa67a39..ec8e1abe0a 100644
+>> --- a/include/hw/acpi/generic_event_device.h
+>> +++ b/include/hw/acpi/generic_event_device.h
+>> @@ -102,6 +102,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AcpiGedState, ACPI_GED)
+>>  #define ACPI_GED_PWR_DOWN_EVT      0x2
+>>  #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
+>>  #define ACPI_GED_CPU_HOTPLUG_EVT    0x8
+>> +#define ACPI_GED_PCI_HOTPLUG_EVT    0x10
+>>  
+>>  typedef struct GEDState {
+>>      MemoryRegion evt;
+>> @@ -109,6 +110,8 @@ typedef struct GEDState {
+>>      uint32_t     sel;
+>>  } GEDState;
+>>  
+>> +#define ACPI_PCIHP_REGION_NAME "pcihp container"
+>> +
+>>  struct AcpiGedState {
+>>      SysBusDevice parent_obj;
+>>      MemHotplugState memhp_state;
+>> @@ -116,6 +119,7 @@ struct AcpiGedState {
+>>      CPUHotplugState cpuhp_state;
+>>      MemoryRegion container_cpuhp;
+>>      AcpiPciHpState pcihp_state;
+>> +    MemoryRegion container_pcihp;
+>>      GEDState ged_state;
+>>      uint32_t ged_event_bitmap;
+>>      qemu_irq irq;
+>> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+>> index ef1c1ec51f..b4eefb0106 100644
+>> --- a/hw/acpi/generic_event_device.c
+>> +++ b/hw/acpi/generic_event_device.c
+>> @@ -12,6 +12,7 @@
+>>  #include "qemu/osdep.h"
+>>  #include "qapi/error.h"
+>>  #include "hw/acpi/acpi.h"
+>> +#include "hw/acpi/pcihp.h"
+>>  #include "hw/acpi/generic_event_device.h"
+>>  #include "hw/pci/pci.h"
+>>  #include "hw/irq.h"
+>> @@ -27,6 +28,7 @@ static const uint32_t ged_supported_events[] = {
+>>      ACPI_GED_PWR_DOWN_EVT,
+>>      ACPI_GED_NVDIMM_HOTPLUG_EVT,
+>>      ACPI_GED_CPU_HOTPLUG_EVT,
+>> +    ACPI_GED_PCI_HOTPLUG_EVT,
+>>  };
+>>  
+>>  /*
+>> @@ -122,6 +124,12 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
+>>                             aml_notify(aml_name("\\_SB.NVDR"),
+>>                                        aml_int(0x80)));
+>>                  break;
+>> +            case ACPI_GED_PCI_HOTPLUG_EVT:
+>> +                aml_append(if_ctx,
+>> +                           aml_acquire(aml_name("\\_SB.PCI0.BLCK"), 0xFFFF));
+>> +                aml_append(if_ctx, aml_call0("\\_SB.PCI0.PCNT"));
+>> +                aml_append(if_ctx, aml_release(aml_name("\\_SB.PCI0.BLCK")));
+>> +                break;
+>>              default:
+>>                  /*
+>>                   * Please make sure all the events in ged_supported_events[]
+>> @@ -300,6 +308,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+>>          sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
+>>      } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
+>>          sel = ACPI_GED_CPU_HOTPLUG_EVT;
+>> +    } else if (ev & ACPI_PCI_HOTPLUG_STATUS) {
+>> +        sel = ACPI_GED_PCI_HOTPLUG_EVT;
+>>      } else {
+>>          /* Unknown event. Return without generating interrupt. */
+>>          warn_report("GED: Unsupported event %d. No irq injected", ev);
+>> @@ -433,6 +443,12 @@ static void acpi_ged_realize(DeviceState *dev, Error **errp)
+>>              cpu_hotplug_hw_init(&s->container_cpuhp, OBJECT(dev),
+>>                                  &s->cpuhp_state, 0);
+>>              break;
+>> +        case ACPI_GED_PCI_HOTPLUG_EVT:
+>> +            memory_region_init(&s->container_pcihp, OBJECT(dev),
+>> +                               ACPI_PCIHP_REGION_NAME, ACPI_PCIHP_SIZE);
+>> +            sysbus_init_mmio(sbd, &s->container_pcihp);
+>> +            acpi_pcihp_init(OBJECT(s), &s->pcihp_state,
+>> +                            s->pcihp_state.root, &s->container_pcihp, 0);
+>>          }
+>>          ged_events--;
+>>      }
+>> @@ -474,6 +490,15 @@ static void acpi_ged_initfn(Object *obj)
+>>      sysbus_init_mmio(sbd, &ged_st->regs);
+>>  }
+>>  
+>> +static void ged_reset(DeviceState *dev)
+>> +{
+>> +    AcpiGedState *s = ACPI_GED(dev);
+>> +
+>> +    if (s->pcihp_state.use_acpi_hotplug_bridge) {
+>> +        acpi_pcihp_reset(&s->pcihp_state);
+>> +    }
+>> +}
+>> +
+>>  static void acpi_ged_class_init(ObjectClass *class, const void *data)
+>>  {
+>>      DeviceClass *dc = DEVICE_CLASS(class);
+>> @@ -488,6 +513,7 @@ static void acpi_ged_class_init(ObjectClass *class, const void *data)
+>>      hc->plug = acpi_ged_device_plug_cb;
+>>      hc->unplug_request = acpi_ged_unplug_request_cb;
+>>      hc->unplug = acpi_ged_unplug_cb;
+>> +    device_class_set_legacy_reset(dc, ged_reset);
+>>  
+>>      adevc->ospm_status = acpi_ged_ospm_status;
+>>      adevc->send_event = acpi_ged_send_event;
+>> diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
+>> index e79a24b821..36492aa0d9 100644
+>> --- a/hw/acpi/pcihp.c
+>> +++ b/hw/acpi/pcihp.c
+>> @@ -43,7 +43,6 @@
+>>  #include "qobject/qnum.h"
+>>  #include "trace.h"
+>>  
+>> -#define ACPI_PCIHP_SIZE 0x0018
+>>  #define PCI_UP_BASE 0x0000
+>>  #define PCI_DOWN_BASE 0x0004
+>>  #define PCI_EJ_BASE 0x0008

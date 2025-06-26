@@ -1,259 +1,198 @@
-Received: by 2002:a05:7301:4085:b0:178:84eb:402c with SMTP id pt5csp1250692dyb;
-        Wed, 25 Jun 2025 19:05:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWWTlp5Z7LIk78nlArXFKA0KzlMUSHIhf307rjoBJE19FanSN8k0DIANCvAr1Il4imn6imRWwn/WL8qEQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEfibXhzPX7oUdxHeRAtN3PMD552Z3z3+TDXDSOCv0UPNBX+NZ3LaEO62AecoKQ6wm84SLv
-X-Received: by 2002:a05:6214:6210:b0:6fd:997a:bb47 with SMTP id 6a1803df08f44-6fd997abc97mr7921036d6.14.1750903556908;
-        Wed, 25 Jun 2025 19:05:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750903556; cv=none;
+Received: by 2002:a05:7301:4085:b0:178:84eb:402c with SMTP id pt5csp1258986dyb;
+        Wed, 25 Jun 2025 19:34:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWIQOobWJ1rR1FKm6Mfbl24i4Ptsey8ixMiopca5gm0aE2cpOuN6WGs/qGV7n+khDy/jzYYZFa4b3oNYQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHPGg3CKvLCLYIWM64LsLjdRfBjmAs2uPrtkUB2maF3QER3kN67OXSwWTTkCTdNuTW8ir16
+X-Received: by 2002:a05:6000:4a0d:b0:3a4:e841:b236 with SMTP id ffacd0b85a97d-3a6ed6644e6mr4638326f8f.33.1750905248581;
+        Wed, 25 Jun 2025 19:34:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750905248; cv=none;
         d=google.com; s=arc-20240605;
-        b=We6JjXWu1aC++DyGvxmf9MrhwgmRAFbzD3RhrEhOSSbPTWI+N7nor3uH5osskn/uL+
-         QzygRr4F+lXxIgWnNL6AnIAfPBwkZwblViu+gltCwBknZcS0KmEw+WTrhAIg7kNb7FjV
-         lRcr/i1/FkyjbFZD/7Ier76poa/9rn/6WZhVv2LQ8uN//EFgoqfcjuXfEQuOCX1iUf3A
-         1PeomFHnUVCl9FDauBi5p1A0FOXcwFTlu/Q9yq/yLA14Urn+9cBUK/XNe23m328wUYyi
-         nrAabMTp83UjYHNLyJpFCqQkkzybaqNq6Rrc2xhvco7RwXjMXGkcC1XSQ4QJe/tbk9rj
-         FTlg==
+        b=B1zTiKg4xJNVGbRACt/WRGoQcseYhZLDwVZ0oVMlJNsq/LeuFDKMO1zUFajDmqhaS0
+         m16X4DdTFix7Jlv6XWI7TWuxPb8r6Y3+Fz2YFc4XkknjXB88aqfyY+Z1jWQReYY4S1ro
+         8KTzg7UxZDzHNC2XpSVAGdUWQu5Vzj7g0dQ/eyacaNpuY/Fvy0cgSBHZGw+27kAyy/yo
+         CtgNzR53V0jF6/6YyOstOhZTAxvFnZizIpt0IjDy9nVRBMLwwHRdiPgKOK2N9jUkDbfV
+         11RBdlWb//qx4OciSukuiGhS84V3y7CnzPC/s+6eSeE4nc+i8VBcOo+aTJTpbtKtnl5k
+         IBVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=CsVwtbTXgN1sTCzxD8a29D3ttCsgaT/KYDol/Mtl0o8=;
-        fh=Kze5udhMgmDKQkYTZkbD7wwGMCQ1h0ctFEy7IRqNBRc=;
-        b=jzRg1NuoRwcdvQTySnSga8M26ZTIR2Zuqe7DWx2Byhdm1u+PYFvGOU25ZDyU2Y7bys
-         HjHLgN36L223jfEce7phzF5abifukc1cmK3M/3hPDgAPZe3Ew7/aZL+uGO9m0uidvZVg
-         4RYPpaVTE+o8GFdMyl0M4OvCvRjCglWQ0eK31szwIw0FKg4j3bSIMcibXKme9tS9IPZI
-         arvXaL4dzt7slZTjCYYrdH50Hc6DfYtL0Sov/nrlM/QkZFkRTh1Zl4PK5qfEYSwMgb6o
-         6m2TEsImNSvAQM+ex0ylTu8ChbJQZPFDnHxUiIwaOSP0ZSDaHElHFrh5x7dMS2N5mKtX
-         JfVA==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:dkim-signature:date;
+        bh=RjL5hT4l8Yh+/iydgPaThwMUOJfmrbIQqeQkawidg3Q=;
+        fh=JeWKgUI13WBJNK+7ejyRYlgVuqyDRBo47jknzpXfg3E=;
+        b=Yqo855qfDXoTOCyqZrJRn+FgX0nPiT8LvjCnJMQYzwyR9Yow8u55wPdt5t0x0+X3WV
+         EfDTplNU/h9v5iaAtVtK3sIpZi9W/28jg9hRCHaJB2l9nTo0HRXTdu2JUOHjE2NRAwq8
+         aPL/0e3r36TheRSVljMdocZlphDe2EKc564XGPCPW8MM6ywIwTdYf58NZhR1dfhUV7mG
+         h8ECEudmScP7i/yj7qlln7fQ/+H8Gfk/WLfRCOwjKx9AtcDQKvndNmDyZf6fqSIV2ISp
+         GWpJzBdyy8yDKBNpS/dZM59/BFG+5rO7f4YvZWDHh/xC9sosQV8dKYUW1LNhze7C6xy3
+         v35w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pbjksrl2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd773aba80si5040986d6.463.2025.06.25.19.05.56
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=NZblTC2C;
+       spf=pass (google.com: domain of itaru.kitayama@linux.dev designates 91.218.175.188 as permitted sender) smtp.mailfrom=itaru.kitayama@linux.dev;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
+Return-Path: <itaru.kitayama@linux.dev>
+Received: from out-188.mta0.migadu.com (out-188.mta0.migadu.com. [91.218.175.188])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a6e80e2761si4223244f8f.353.2025.06.25.19.34.08
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Jun 2025 19:05:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Jun 2025 19:34:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of itaru.kitayama@linux.dev designates 91.218.175.188 as permitted sender) client-ip=91.218.175.188;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pbjksrl2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uUbzK-0002Ia-1C; Wed, 25 Jun 2025 22:05:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uUbzH-0002I8-CC
- for qemu-arm@nongnu.org; Wed, 25 Jun 2025 22:05:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uUbzF-00009I-Ap
- for qemu-arm@nongnu.org; Wed, 25 Jun 2025 22:05:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1750903511;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=CsVwtbTXgN1sTCzxD8a29D3ttCsgaT/KYDol/Mtl0o8=;
- b=Pbjksrl2L7TZ6YAZCLtQRHKWsocCvF8pCrPdZe5f8pCtZBzsRMNeoZk9dM159/CPORbTK1
- EjzOdJQGPTZ3h1vIsDOwkMvNKbYZ08cD0/gSQUe8mw0CS1bX9NvBaP1zOvrqPesxlGIKzL
- h7+uOV2m0ypHHbOcBC5oPcXNQGISF1w=
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-16-IsaDaZ0MOwWDagvo2A7h_A-1; Wed, 25 Jun 2025 22:05:09 -0400
-X-MC-Unique: IsaDaZ0MOwWDagvo2A7h_A-1
-X-Mimecast-MFC-AGG-ID: IsaDaZ0MOwWDagvo2A7h_A_1750903508
-Received: by mail-pl1-f198.google.com with SMTP id
- d9443c01a7336-234f1acc707so4238745ad.3
- for <qemu-arm@nongnu.org>; Wed, 25 Jun 2025 19:05:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1750903508; x=1751508308;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=CsVwtbTXgN1sTCzxD8a29D3ttCsgaT/KYDol/Mtl0o8=;
- b=mVNMmE6e02ffPya5aWMjwtNpogZwQkyYT0wIHHL0Rgpn4DEeVPAvmPtKs5KOezkOYP
- WlZ6GPUrv/iifKkLx0YfLRm68GArPozcmUK1rUQTWtgiexdhyuInSNCgSmU0PJtWRTu8
- S9YVB7VVvfEIFSZ6KtqPoIUo52thlFwE9at2Rs7nMxGo0UjEGWECv0yzs0L4KpF+kjD8
- WzyzIBmT3p7PR1UNa7fk1CNcxDpc/ylwrvUJycx0TB5DjaP81jQYnTae2tPzDs15GHgy
- l0Tm/BVGOlXPy9WDxGddIC7lS14PR66T+Dl1TQBcH9NBZxb/KGenKTa/6gx72pB+emNY
- BC5Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWGxOaw6ebdR/9LJZWuCulXvjUtQgG6laVpUtfjR9N/qPmZnclAYxxYcBNO00I41nkdirApfblN+Q==@nongnu.org
-X-Gm-Message-State: AOJu0Yyh7yZ5vw66LQWmYODWwSzikTgqlsYanHN2wnG9+EFcbR35FWa0
- gkka10L0Ptb7W3QsW8HLbXbX8LXpUFT2QzznoxYJ2kfI99pRpNg1s1LEhOAyWfJ+64u0pW4CIHd
- 9AeZsi440DHlsruoMDi7BTnKA5CMvMIQP2syDO2vaALs1qjXtksFz7A==
-X-Gm-Gg: ASbGncsJYyNyoOr5Hmgz2FfLmQB/O9o5NSo6hm0un9QjjqyBbfn/d+SMj+G6mpFRHsR
- poekiJ/E0jrL1RS+06wHi0NUkzrrwz967rP+4IjqoNQYXzmwdNfFuGWhFVfIaPXTBb6mZIwlixW
- FQVLi5nG0ue15iQ2pmQ3no2F9lRVQhaUqEsDcoaGOqqfKFb6aoz6wrmyWH6wK+QEZpqR35uF2j0
- Y1/4uBJHWwJeXlAun2b5hNoDcTPKPepYjs7ExMfPmcYJS9vsehetzat08ERka7NvP+TS1Y8TQyZ
- K77u+8R14t4OUXEqJ7ehoq/njJc=
-X-Received: by 2002:a17:903:1664:b0:234:e655:a618 with SMTP id
- d9443c01a7336-2382403e012mr72256845ad.25.1750903508151; 
- Wed, 25 Jun 2025 19:05:08 -0700 (PDT)
-X-Received: by 2002:a17:903:1664:b0:234:e655:a618 with SMTP id
- d9443c01a7336-2382403e012mr72256515ad.25.1750903507787; 
- Wed, 25 Jun 2025 19:05:07 -0700 (PDT)
-Received: from [10.72.116.141] ([209.132.188.88])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-237d839389esm145484855ad.41.2025.06.25.19.05.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Jun 2025 19:05:07 -0700 (PDT)
-Message-ID: <ba75ac62-db52-491e-8944-2bf27106d0a6@redhat.com>
-Date: Thu, 26 Jun 2025 10:05:01 +0800
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=NZblTC2C;
+       spf=pass (google.com: domain of itaru.kitayama@linux.dev designates 91.218.175.188 as permitted sender) smtp.mailfrom=itaru.kitayama@linux.dev;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
+Date: Thu, 26 Jun 2025 11:33:58 +0900
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1750905247;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=RjL5hT4l8Yh+/iydgPaThwMUOJfmrbIQqeQkawidg3Q=;
+	b=NZblTC2CwDxjpBOUo/smyeyW4p/s/xQM0cZNU3bhk8nEJPj51xI3RDAjLsUW56weR0+pJb
+	as5CH3O8uEJl8Q+7uwXsGwr6u1qCNbgP2hVitGd+UU/1cqojW4r2rzci35r02Fq99PIeJh
+	MoP2Pl6z6qUbsWB5nmHEVTrSexTN3OM=
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Itaru Kitayama <itaru.kitayama@linux.dev>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: qemu-devel@nongnu.org, Fan Ni <fan.ni@samsung.com>,
+	Peter Maydell <peter.maydell@linaro.org>, mst@redhat.com,
+	Zhijian Li <lizhijian@fujitsu.com>, linuxarm@huawei.com,
+	linux-cxl@vger.kernel.org, qemu-arm@nongnu.org,
+	Yuquan Wang <wangyuquan1236@phytium.com.cn>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Subject: Re: [PATCH qemu v16 5/5] qtest/cxl: Add aarch64 virt test for CXL
+Message-ID: <aFyxljLgpYXxiSn3@vm4>
+References: <20250625161926.549812-1-Jonathan.Cameron@huawei.com>
+ <20250625161926.549812-6-Jonathan.Cameron@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/2] hw/i386: Add the ramfb romfile compatatibility
-To: Eric Auger <eauger@redhat.com>, qemu-arm@nongnu.org
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-devel@nongnu.org
-References: <20250617030521.2109305-1-shahuang@redhat.com>
- <20250617030521.2109305-3-shahuang@redhat.com>
- <aa4ef145-9e08-4ad9-a152-dd8fa2371436@redhat.com>
-From: Shaoqin Huang <shahuang@redhat.com>
-In-Reply-To: <aa4ef145-9e08-4ad9-a152-dd8fa2371436@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: pjH3SN4O0l03aCF5ERVUASi_-PA8mN7nWrj6wkDjLhg_1750903508
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=shahuang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7RUz09EydZ0Y
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250625161926.549812-6-Jonathan.Cameron@huawei.com>
+X-Migadu-Flow: FLOW_OUT
+X-TUID: I4ZbdXzXpb6n
 
-Hi Eric,
-
-On 6/23/25 5:20 PM, Eric Auger wrote:
+On Wed, Jun 25, 2025 at 05:19:26PM +0100, Jonathan Cameron wrote:
+> Add a single complex case for aarch64 virt machine.
+> Given existing much more comprehensive tests for x86 cover the
+> common functionality, a single test should be enough to verify
+> that the aarch64 part continue to work.
 > 
+> Tested-by: Itaru Kitayama <itaru.kitayama@fujitsu.com>
+> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 > 
-> On 6/17/25 5:05 AM, Shaoqin Huang wrote:
->> Set the "use-legacy-x86-rom" property to false by default, and only set
->> it to true on x86 since only x86 will need it.
-> s/compatatibility/compatibility in the title
-
-Ok. Will fix it.
-
->>
->> Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
->> ---
->>   hw/display/ramfb-standalone.c | 2 +-
->>   hw/i386/pc_q35.c              | 3 +++
->>   hw/vfio/pci.c                 | 2 +-
->>   3 files changed, 5 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/display/ramfb-standalone.c b/hw/display/ramfb-standalone.c
->> index af1175bf96..ddbf42f181 100644
->> --- a/hw/display/ramfb-standalone.c
->> +++ b/hw/display/ramfb-standalone.c
->> @@ -63,7 +63,7 @@ static const VMStateDescription ramfb_dev_vmstate = {
->>   
->>   static const Property ramfb_properties[] = {
->>       DEFINE_PROP_BOOL("x-migrate", RAMFBStandaloneState, migrate,  true),
->> -    DEFINE_PROP_BOOL("use-legacy-x86-rom", RAMFBStandaloneState, use_legacy_x86_rom, true),
->> +    DEFINE_PROP_BOOL("use-legacy-x86-rom", RAMFBStandaloneState, use_legacy_x86_rom, false),
->>   };
->>   
->>   static void ramfb_class_initfn(ObjectClass *klass, void *data)
->> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
->> index fd96d0345c..f6d89578d0 100644
->> --- a/hw/i386/pc_q35.c
->> +++ b/hw/i386/pc_q35.c
->> @@ -45,6 +45,7 @@
->>   #include "hw/i386/pc.h"
->>   #include "hw/i386/amd_iommu.h"
->>   #include "hw/i386/intel_iommu.h"
->> +#include "hw/vfio/pci.h"
->>   #include "hw/virtio/virtio-iommu.h"
->>   #include "hw/display/ramfb.h"
->>   #include "hw/ide/pci.h"
->> @@ -67,6 +68,8 @@
->>   
->>   static GlobalProperty pc_q35_compat_defaults[] = {
->>       { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "39" },
->> +    { TYPE_RAMFB_DEVICE, "use-legacy-x86-rom", "true" },
->> +    { TYPE_VFIO_PCI, "use-legacy-x86-rom", "true" },
-> this will only keep the legacy behavior along with q35 machine type but
-> not on other machines being used for x86. what about pc-i440fx? Doesn't
-> it apply to it as well? Are there other machine types also impacted.
-
-Ok I will also add it with pc-i440fx. I think only q35 and i440fx are 
-impacted.
-
+> ---
+> v16: Update to bring improvements made to other tests (Peter Maydell).
+>      I'd failed to notice when rebasing this over time that the
+>      other tests had undergone various improvment and I should have
+>      updated this one as well.
+> ---
+>  tests/qtest/cxl-test.c  | 58 ++++++++++++++++++++++++++++++++---------
+>  tests/qtest/meson.build |  1 +
+>  2 files changed, 46 insertions(+), 13 deletions(-)
 > 
-> Also what about Daniel's comment in v3:
-> https://lore.kernel.org/all/aEak8utPPkHepVfR@redhat.com/
-> "For non-x86, historical versioned machine types will need
-> likely it set to true, in order to avoid the memory layout
-> being changed IIUC."
-> 
-> Is it actually needed?
+> diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
+> index a600331843..8fb7e58d4f 100644
+> --- a/tests/qtest/cxl-test.c
+> +++ b/tests/qtest/cxl-test.c
+> @@ -19,6 +19,12 @@
+>      "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
+>      "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
+>  
+> +#define QEMU_VIRT_2PXB_CMD \
+> +    "-machine virt,cxl=on -cpu max " \
+> +    "-device pxb-cxl,id=cxl.0,bus=pcie.0,bus_nr=52 " \
+> +    "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
+> +    "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
+> +
+>  #define QEMU_RP \
+>      "-device cxl-rp,id=rp0,bus=cxl.0,chassis=0,slot=0 "
+>  
+> @@ -197,25 +203,51 @@ static void cxl_2pxb_4rp_4t3d(void)
+>      qtest_end();
+>      rmdir(tmpfs);
+>  }
+> +
+> +static void cxl_virt_2pxb_4rp_4t3d(void)
+> +{
+> +    g_autoptr(GString) cmdline = g_string_new(NULL);
+> +    g_autofree const char *tmpfs = NULL;
+> +
+> +    tmpfs = g_dir_make_tmp("cxl-test-XXXXXX", NULL);
+> +
+> +    g_string_printf(cmdline, QEMU_VIRT_2PXB_CMD QEMU_4RP QEMU_4T3D,
+> +                    tmpfs, tmpfs, tmpfs, tmpfs, tmpfs, tmpfs,
+> +                    tmpfs, tmpfs);
+> +
+> +    qtest_start(cmdline->str);
+> +    qtest_end();
+> +    rmdir(tmpfs);
+> +}
+>  #endif /* CONFIG_POSIX */
+>  
+>  int main(int argc, char **argv)
+>  {
+> -    g_test_init(&argc, &argv, NULL);
+> +    const char *arch = qtest_get_arch();
+>  
+> -    qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
+> -    qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
+> -    qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
+> -    qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
+> -    qtest_add_func("/pci/cxl/rp", cxl_root_port);
+> -    qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
+> +    g_test_init(&argc, &argv, NULL);
+> +    if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
+> +        qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
+> +        qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
+> +        qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
+> +        qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
+> +        qtest_add_func("/pci/cxl/rp", cxl_root_port);
+> +        qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
+>  #ifdef CONFIG_POSIX
+> -    qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
+> -    qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
+> -    qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
+> -    qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
+> -    qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
+> -    qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4", cxl_2pxb_4rp_4t3d);
+> +        qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
+> +        qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
+> +        qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
+> +        qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
+> +        qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
+> +        qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4",
+> +                       cxl_2pxb_4rp_4t3d);
+>  #endif
+> +    } else if (strcmp(arch, "aarch64") == 0) {
+> +#ifdef CONFIG_POSIX
+> +        qtest_add_func("/pci/cxl/virt/pxb_x2_root_port_x4_type3_x4",
+> +                       cxl_virt_2pxb_4rp_4t3d);
+> +#endif
+> +    }
+> +
+>      return g_test_run();
+>  }
+> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> index 8ad849054f..42e927b32a 100644
+> --- a/tests/qtest/meson.build
+> +++ b/tests/qtest/meson.build
+> @@ -261,6 +261,7 @@ qtests_aarch64 = \
+>     config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
+>    (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
+>    (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : []) + \
+> +  qtests_cxl +                                                                                  \
+>    ['arm-cpu-features',
+>     'numa-test',
+>     'boot-serial-test',
 
-If those machine types need to set it to true. I think they can set it 
-after they have this property.
+The v16 series was applied cleanly against the master today and did 
+meson test qtest-aarch64/cxl-test it went ok.
+
+Tested-by: Itaru Kitayama <itaru.kitayama@fujitsu.com>
 
 Thanks,
-Shaoqin
+Itaru.
 
-> 
-> Thanks
-> 
-> Eric
->>   };
->>   static const size_t pc_q35_compat_defaults_len =
->>       G_N_ELEMENTS(pc_q35_compat_defaults);
->> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
->> index ff0d93fae0..a529500b70 100644
->> --- a/hw/vfio/pci.c
->> +++ b/hw/vfio/pci.c
->> @@ -3564,7 +3564,7 @@ static const TypeInfo vfio_pci_dev_info = {
->>   
->>   static const Property vfio_pci_dev_nohotplug_properties[] = {
->>       DEFINE_PROP_BOOL("ramfb", VFIOPCIDevice, enable_ramfb, false),
->> -    DEFINE_PROP_BOOL("use-legacy-x86-rom", VFIOPCIDevice, use_legacy_x86_rom, true),
->> +    DEFINE_PROP_BOOL("use-legacy-x86-rom", VFIOPCIDevice, use_legacy_x86_rom, false),
->>       DEFINE_PROP_ON_OFF_AUTO("x-ramfb-migrate", VFIOPCIDevice, ramfb_migrate,
->>                               ON_OFF_AUTO_AUTO),
->>   };
-> 
 
--- 
-Shaoqin
-
+> -- 
+> 2.48.1
+> 

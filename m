@@ -1,181 +1,345 @@
-Received: by 2002:a05:7301:4085:b0:178:84eb:402c with SMTP id pt5csp1282056dyb;
-        Wed, 25 Jun 2025 20:46:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWxf24Nnwkz93NiitBS+6MocKGAq06jEFPX/vh6bCZz7DK+F3525zOLTpDpNKaDWwmtE2WhDBO2zeqxUw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFT5xOBkIygTTu4ULBBsof3R5iUvUVthIBw2vuaej5SDc4lQTlQzEyI2qSUGIyeHdkts3wc
-X-Received: by 2002:a05:6214:419a:b0:6fa:c5f8:67eb with SMTP id 6a1803df08f44-6fd7536105fmr37477076d6.7.1750909611925;
-        Wed, 25 Jun 2025 20:46:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750909611; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp19393dye;
+        Wed, 25 Jun 2025 21:54:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUt9BrBm1FzIMvsMTQo6FrKLBbsqbEfN7UOPlf95K7EbCy0IobdMftsEy7nfiNHx+4apTf9CHGwffEhQw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGekR1uNCscWNkBFd9fA53v5fP0HYrgnzDi1tZ7nhNqFJNYWvDrcBkQNhfhpCpp8kzQom6c
+X-Received: by 2002:a17:90a:c890:b0:311:ff18:b84b with SMTP id 98e67ed59e1d1-315f268d08cmr7964150a91.25.1750913686680;
+        Wed, 25 Jun 2025 21:54:46 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1750913686; cv=pass;
         d=google.com; s=arc-20240605;
-        b=M2oZ4itHJt2n/wgXLve3tBzWGNiRCUrqu2BNC+Uw5zoiugzkvT5n1BVa1LmadX19d3
-         R1AkqBxW6OrDh3cJbC5AZsyODGQ+nn83DDmXUjrY/xBk9LVL9Div3+1nr5v2eTsP96qY
-         qi2T/LBDV59hO263bh3kkuunTIwTLSPmBJTabhCJDLtoDjN2Uw1LuFy/Cqi1V3GIu5iC
-         MWWAptHBaXbsqSTMVC8xg7vwek8L5J5Q0Xq+qnfggeNeTxRlRjhcDuX0SDa9a67eHq8w
-         y4X59lQ3MLRQDLhSmdo+e/lDCDDWB1zGnLSRQl4NggCwO56Bn4Dw/Zzy0r8ZYC7ShI8F
-         bLBg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=LS0Nj0pX9AHR5YWuZobcUnVkGlGLkmNu16VSLdY1xWM=;
-        fh=XmQ64oC2GXlRKeSh70qOiuviRf7iaTTDuYAzitDP7YU=;
-        b=FMUlIpshwOA5M5CiTLWfVVt5WW0FTV8knAk2Rq1iz1c2SO0bpNRjbz/jTl+o6od8/2
-         4dWC68qrP7HQqvCINxLY8sBv+bcGe8LDGMgJHRqNJme6DpugsZdeXfZeT5/f319G0F8u
-         ZFzRixYz3vJ/6Dt792VaPxh1GtTdN+AVspGZ+/Pr/KUCj7MT469v4dK9RGsEACqvNnA6
-         YOtvQSBmoT78QYrt78mQ0sbLiG0Spswe1i0pYzF1CT7PzhayUBUt8/wlDBS+yfgTrl2N
-         dY1DHfGhC5Q8lDla9gAnx/M+J7gSaQFpQSjdHjzjbhfD1uec0xKY63T7saQCjlOIQdua
-         eNfQ==;
+        b=jFF4msb1niamVnMRpwzC+XZayadkNRJMuhcdSX3+ECrm0b6ZNrl+OVoqNMHKdO/giK
+         4XxXk9qRGYHyPJiFWAt8Cy4trY1rUo39TVA0Nysnj/5YFnWvfbK86l3nPugjieGDw4Mf
+         B2emYPlUChtQx/c73gyCp97sTNaSvq/+DYldpLZ+jqTFYXV9TkXXzQoue+G8BXjL+n7T
+         WcLWX/Um+EKkokaFZw3Os9hdi1JvSTSl9cagGVB+c3j6Ohe+FalmzkWlKHvuW58mz2kg
+         3hRPe2kOLWEoK1WPorQ2Wf1R3av0bXU9i1ow31voZxVAwlWqvB6X97M9pUywcQuuThYt
+         Q0fg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:user-agent:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=ux55LTzZu+8r8VvC9MmnRWtiQyH3i5QT3q5f9MnpL9Q=;
+        fh=JsYS1j22pDclmMd5QyUiOMaq3Tnie2u2fULgH65fSIA=;
+        b=akSzBbO5q5n+Qz1i5CC3wTJK6HJzApplVQY+k4V0K7yR4MJKdIoSdsk5rdRWbZSNGO
+         J1waLwF5A5TvEheM8l/HK5mD+u160WakwuQBdDlrXwIqilyKRYhweCccD4vel+NCEPJ4
+         auUujjRqVFpY73ES5SSIWrVEskWNRhuaqmEuPGL0HGRf69qEUwrfT3sXX6h+9oEIrFyJ
+         R0Jr6r5CTMC/0O77yhxx924bez2sa7tn3414lUJdMlY7jJesaVd1HIYyySSqEN808fel
+         yySuOIK3HzGbQptujhVL18I4oeNK/Y3qj/a7zj/TsaaneFOnMI0heR2mTjqSewSNng53
+         ph5g==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Joi7xIL9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QCEKlDuv;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-50788-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-50788-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d3f99e49ecsi1257430085a.267.2025.06.25.20.46.51
+Return-Path: <kvm+bounces-50788-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-315f53a76d7si4034108a91.66.2025.06.25.21.54.46
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Jun 2025 20:46:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Jun 2025 21:54:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-50788-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Joi7xIL9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QCEKlDuv;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-50788-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-50788-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uUdYl-00013j-Rh; Wed, 25 Jun 2025 23:45:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uUdYi-000127-NV
- for qemu-arm@nongnu.org; Wed, 25 Jun 2025 23:45:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uUdYY-00081E-Do
- for qemu-arm@nongnu.org; Wed, 25 Jun 2025 23:45:56 -0400
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 518403AC9C8
+	for <alex.bennee@linaro.org>; Thu, 26 Jun 2025 04:54:22 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id DF430202990;
+	Thu, 26 Jun 2025 04:54:42 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="QCEKlDuv"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 651DD1A5BB7
+	for <kvm@vger.kernel.org>; Thu, 26 Jun 2025 04:54:40 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1750913682; cv=none; b=b764BYiZB08uqQYq5A6JMGbJDDdskFCElVN7azAX+ciknUDEBQkB9QqdEDgSvajV57slVMjezgd0v996m5Hnh3tcRLlFC2VqHTPibHocLFGH6Z6MMc04GxAH3EoN6pofHDHURcbpWxSp+wYux9Pr+Bf4xCanSFSPYhQfx/3alGY=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1750913682; c=relaxed/simple;
+	bh=haqwDtha2Z89HrEjT+bEVAxDlitwpo9nqhMB2zttZeo=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
+	 MIME-Version:Content-Type; b=ec0q3yYI1KdOSTmPUeugC9O1sX9/l2UgEtrk5tbgWJvHWsRYfr7/1ZD+0nW3FgXEF2lrOEPoDkwFnPXA6PxjWDGd/+rRlzVnLiGQecV5R+taGK1eg1DU/8wJjgzcSimOv9xzVNWWbZ+vqAK2gOpXhgynOdgWggTDtbezxtny/U8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=QCEKlDuv; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1750909542;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=LS0Nj0pX9AHR5YWuZobcUnVkGlGLkmNu16VSLdY1xWM=;
- b=Joi7xIL99nyV8Qjno3ilrA1WvE2CfjpBdjmi/H7pL2myq+FQ6qL0l5n1eNsWNgIQg8T9vV
- IwmUsqX8VZGSlNLKky+dh60HgA/J4hpLxNtfocEU+76WSRLKxRK7u6S0LK74YhwDUhdPk5
- fudcAloFLW9YzfHhjlrvDu7E67xtUjc=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+	s=mimecast20190719; t=1750913679;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ux55LTzZu+8r8VvC9MmnRWtiQyH3i5QT3q5f9MnpL9Q=;
+	b=QCEKlDuvXGyNaNBT+npxGJZv655Q3d01PwriL68trCtdsyabbiwJ5x0DA1PORQ58G4g+U3
+	Hr04rroPhsxeylYJzYRLAESCULnPsdJ/j1lzL2xPVdh7awLBNEUWpHS8vX/y3qc3sx33ta
+	jlGUEMlt/SCOGi1+DkYKejikNoDAVzQ=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-180-tInWLXpmPAuWxqwuEZRFGA-1; Wed,
- 25 Jun 2025 23:45:39 -0400
-X-MC-Unique: tInWLXpmPAuWxqwuEZRFGA-1
-X-Mimecast-MFC-AGG-ID: tInWLXpmPAuWxqwuEZRFGA_1750909537
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A961A1809C88; Thu, 26 Jun 2025 03:45:37 +0000 (UTC)
-Received: from virt-mtcollins-01.lab.eng.rdu2.redhat.com
- (virt-mtcollins-01.lab.eng.rdu2.redhat.com [10.8.1.196])
- by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7E5831956096; Thu, 26 Jun 2025 03:45:29 +0000 (UTC)
-From: Shaoqin Huang <shahuang@redhat.com>
-To: qemu-arm@nongnu.org
-Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Eric Auger <eauger@redhat.com>,
- Shaoqin Huang <shahuang@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v5 0/2] ramfb: Add property to control if load the romfile
-Date: Wed, 25 Jun 2025 23:45:24 -0400
-Message-Id: <20250626034526.2136585-1-shahuang@redhat.com>
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-29-bzK0JSyXOEeHtuAvfZED4w-1; Thu,
+ 26 Jun 2025 00:54:34 -0400
+X-MC-Unique: bzK0JSyXOEeHtuAvfZED4w-1
+X-Mimecast-MFC-AGG-ID: bzK0JSyXOEeHtuAvfZED4w_1750913670
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 4886119560B2;
+	Thu, 26 Jun 2025 04:54:27 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.10])
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 6CE3F30001A1;
+	Thu, 26 Jun 2025 04:54:21 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id B9BE521E6A27; Thu, 26 Jun 2025 06:54:18 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Cc: qemu-devel@nongnu.org,  Joel Stanley <joel@jms.id.au>,  Yi Liu
+ <yi.l.liu@intel.com>,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,  Helge Deller
+ <deller@gmx.de>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,  Andrew
+ Jeffery <andrew@codeconstruct.com.au>,  Fabiano Rosas <farosas@suse.de>,
+  Alexander Bulekov <alxndr@bu.edu>,  Darren Kenny
+ <darren.kenny@oracle.com>,  Leif Lindholm
+ <leif.lindholm@oss.qualcomm.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@kaod.org>,  Ed
+ Maste <emaste@freebsd.org>,  Gerd Hoffmann <kraxel@redhat.com>,  Warner
+ Losh <imp@bsdimp.com>,  Kevin Wolf <kwolf@redhat.com>,  Tyrone Ting
+ <kfting@nuvoton.com>,  Eric Blake <eblake@redhat.com>,  Palmer Dabbelt
+ <palmer@dabbelt.com>,  Yoshinori Sato <ysato@users.sourceforge.jp>,  Troy
+ Lee <leetroy@gmail.com>,  Halil Pasic <pasic@linux.ibm.com>,  Akihiko
+ Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,  Michael Roth
+ <michael.roth@amd.com>,  Laurent Vivier <laurent@vivier.eu>,  Ani Sinha
+ <anisinha@redhat.com>,  Weiwei Li <liwei1518@gmail.com>,  Eric Farman
+ <farman@linux.ibm.com>,  Steven Lee <steven_lee@aspeedtech.com>,  Brian
+ Cain <brian.cain@oss.qualcomm.com>,  Li-Wen Hsu <lwhsu@freebsd.org>,
+  Jamin Lin <jamin_lin@aspeedtech.com>,  qemu-s390x@nongnu.org,  Vladimir
+ Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,  qemu-block@nongnu.org,
+  Bernhard Beschow <shentey@gmail.com>,  =?utf-8?Q?Cl=C3=A9ment?=
+ Mathieu--Drif
+ <clement.mathieu--drif@eviden.com>,  Maksim Davydov
+ <davydov-max@yandex-team.ru>,  Niek Linnenbank <nieklinnenbank@gmail.com>,
+  =?utf-8?Q?Herv=C3=A9?= Poussineau <hpoussin@reactos.org>,  Christian
+ Borntraeger
+ <borntraeger@linux.ibm.com>,  Paul Durrant <paul@xen.org>,  Manos
+ Pitsidianakis <manos.pitsidianakis@linaro.org>,  Jagannathan Raman
+ <jag.raman@oracle.com>,  Igor Mitsyanko <i.mitsyanko@gmail.com>,  Max
+ Filippov <jcmvbkbc@gmail.com>,  Pierrick Bouvier
+ <pierrick.bouvier@linaro.org>,  "Michael S. Tsirkin" <mst@redhat.com>,
+  Anton Johansson <anjo@rev.ng>,  Peter Maydell <peter.maydell@linaro.org>,
+  Cleber Rosa <crosa@redhat.com>,  Eric Auger <eric.auger@redhat.com>,
+  Yanan Wang <wangyanan55@huawei.com>,  qemu-arm@nongnu.org,  Hao Wu
+ <wuhaotsh@google.com>,  Mads Ynddal <mads@ynddal.dk>,  Sriram Yagnaraman
+ <sriram.yagnaraman@ericsson.com>,  qemu-riscv@nongnu.org,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Jason Wang <jasowang@redhat.com>,  Nicholas Piggin
+ <npiggin@gmail.com>,  Michael Rolnik <mrolnik@gmail.com>,  Zhao Liu
+ <zhao1.liu@intel.com>,  Alessandro Di Federico <ale@rev.ng>,  Thomas Huth
+ <thuth@redhat.com>,  Antony Pavlov <antonynpavlov@gmail.com>,  Jiaxun Yang
+ <jiaxun.yang@flygoat.com>,  Hanna Reitz <hreitz@redhat.com>,  Ilya
+ Leoshkevich <iii@linux.ibm.com>,  Marcelo Tosatti <mtosatti@redhat.com>,
+  Nina Schoetterl-Glausch <nsg@linux.ibm.com>,  Daniel Henrique Barboza
+ <danielhb413@gmail.com>,  Qiuhao Li <Qiuhao.Li@outlook.com>,  Hyman Huang
+ <yong.huang@smartx.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,
+  Magnus Damm <magnus.damm@gmail.com>,  qemu-rust@nongnu.org,  Bandan Das
+ <bsd@redhat.com>,  Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  Philippe =?utf-8?Q?Ma?=
+ =?utf-8?Q?thieu-Daud=C3=A9?=
+ <philmd@linaro.org>,  kvm@vger.kernel.org,  Fam Zheng <fam@euphon.net>,
+  Jia Liu <proljc@gmail.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  Alistair Francis <alistair@alistair23.me>,
+  Subbaraya Sundeep <sundeep.lkml@gmail.com>,  Kyle Evans
+ <kevans@freebsd.org>,  Song Gao <gaosong@loongson.cn>,  Alexandre Iooss
+ <erdnaxe@crans.org>,  Aurelien Jarno <aurelien@aurel32.net>,  Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>,  Peter Xu <peterx@redhat.com>,  Stefan
+ Hajnoczi <stefanha@redhat.com>,  BALATON Zoltan <balaton@eik.bme.hu>,
+  Elena Ufimtseva <elena.ufimtseva@oracle.com>,  "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>,  =?utf-8?B?RnLDqWTDqXJpYw==?= Barrat
+ <fbarrat@linux.ibm.com>,
+  qemu-ppc@nongnu.org,  Radoslaw Biernacki <rad@semihalf.com>,  Beniamino
+ Galvani <b.galvani@gmail.com>,  David Hildenbrand <david@redhat.com>,
+  Richard Henderson <richard.henderson@linaro.org>,  David Woodhouse
+ <dwmw2@infradead.org>,  Eduardo Habkost <eduardo@habkost.net>,  Ahmed
+ Karaman <ahmedkhaledkaraman@gmail.com>,  Huacai Chen
+ <chenhuacai@kernel.org>,  Mahmoud Mandour <ma.mandourr@gmail.com>,  Harsh
+ Prateek Bora <harshpb@linux.ibm.com>
+Subject: Re: [PATCH v2 06/12] python: upgrade to python3.9+ syntax
+In-Reply-To: <CAFn=p-YPN6MWZiETi7XWkyYVPpe7uew49CwjEdAsMmW=ZPOx5A@mail.gmail.com>
+	(John Snow's message of "Wed, 25 Jun 2025 13:35:24 -0400")
+References: <20250612205451.1177751-1-jsnow@redhat.com>
+	<20250612205451.1177751-7-jsnow@redhat.com>
+	<87cyatmw40.fsf@pond.sub.org>
+	<CAFn=p-YPN6MWZiETi7XWkyYVPpe7uew49CwjEdAsMmW=ZPOx5A@mail.gmail.com>
+Date: Thu, 26 Jun 2025 06:54:18 +0200
+Message-ID: <87cyar14sl.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=shahuang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GHsbDzAQm9dl
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: 7n3No15dPp+H
 
-Currently the ramfb device loads the vgabios-ramfb.bin unconditionally, but only
-the x86 need the vgabios-ramfb.bin, this can cause that when use the
-release package on arm64 it can't find the vgabios-ramfb.bin.
+John Snow <jsnow@redhat.com> writes:
 
-Because only seabios will use the vgabios-ramfb.bin, load the rom logic
-is x86-specific. For other !x86 platforms, the edk2 ships an EFI driver
-for ramfb, so they don't need to load the romfile.
+> On Tue, Jun 24, 2025 at 3:34=E2=80=AFAM Markus Armbruster <armbru@redhat.=
+com> wrote:
+>
+>> John Snow <jsnow@redhat.com> writes:
+>>
+>> > This patch is fully automated, using pymagic, isort and autoflake.
+>> >
+>> > Create a script named pymagic.sh:
+>> >
+>> > =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D
+>> >
+>> > pyupgrade --exit-zero-even-if-changed --keep-percent-format \
+>> >           --py39-plus "$@"
+>> >
+>> > autoflake -i "$@"
+>> >
+>> > isort --settings-file python/setup.cfg \
+>> >       -p compat -p qapidoc_legacy -p iotests -o qemu "$@"
+>> > =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D
+>> >
+>> > Then, from qemu.git root:
+>> >
+>> >> find . -type f -name '*.py' | xargs pymagic
+>> >> git grep --name-only "#!/usr/bin/env python" | xargs pymagic
+>> >
+>> > This changes a lot of old Pythonisms, but in particular it upgrades the
+>> > old Python type hint paradigm to the new 3.9+ paradigm wherein you no
+>> > longer need to import List, Dict, Tuple, Set, etc from the Typing modu=
+le
+>> > and instead directly subscript the built-in types list, dict, tuple,
+>> > set, etc. The old-style annotations are deprecated as of 3.9 and are
+>> > eligible for removal starting in Python 3.14, though the exact date of
+>> > their removal is not yet known.
+>> >
+>> > pyupgrade updates the imports and type hint paradigms (as well as
+>> > updating other old 'isms, such as removing the unicode string
+>> > prefix). autoflake in turn then removes any unused import statements,
+>> > possibly left behind by pyupgrade. Lastly, isort fixes the import order
+>> > and formatting to the standard we use in qemu.git/python and
+>> > scripts/qapi in particular.
+>> >
+>> > Signed-off-by: John Snow <jsnow@redhat.com>
+>>
+>> [...]
+>>
+>> >  448 files changed, 1959 insertions(+), 1631 deletions(-)
+>>
+>> *=C3=84chz*
+>>
+>
+> Gesundheit.
+>
+>
+>>
+>> I hate it when people ask me to split up my mechanical patches...
+>>
+>> One split is by subsystem / maintainer.  I've done this a few times, and
+>> it's quite a bother.  Questionable use of your time if you ask me.
+>>
+>
+> I'd prefer not to unless it is requested of me specifically. I don't think
+> most maintainers really care about the nuances of Python and as long as
+> their stuff continues to work they're not going to mind much.
+>
+> Or, to be frank: I don't think this series would ever garner enough review
+> and attention to warrant the labor it'd take to tailor it to such a revie=
+w.
+> It's mechanical, it's boring, it should be fine.
+>
+> I switched from a manual patch series to a tool-driven one specifically to
+> make it more mindless and less interesting, and going through and splitti=
+ng
+> it back out is ... eh. I would prefer not to.
+>
+>
+>>
+>> There's another split here...  Your pymagic.sh runs three tools.  If you
+>> commit after each one, the patch splits into three.
+>>
+>
+> I use all three because each one alone isn't sufficient to then pass the
+> static analysis checks, they each do a little bit of damage that another
+> tool corrects afterwards.
+>
+> pyupgrade works to modernize syntax, but leaves impotent import statements
+> hanging.
 
-So add a new property use-legacy-x86-rom in both ramfb and vfio_pci
-device, because the vfio display also use the ramfb_setup() to load
-the vgabios-ramfb.bin file.
+Import statements it made impotent, I presume.
 
-After have this property, the machine type can set the compatibility to
-not load the vgabios-ramfb.bin if the arch doesn't need it.
+> autoflake removes those impotent imports.
+> isort fixes the import statement ordering and formatting to our standard.
 
-Then I set the use_legacy_x86_rom property to false by default, and only set it
-to true on x86 since only x86 will need it.
+Out of curiosity: what messes up ordering and formatting?
 
-Changelog:
----------
-v4 -> v5:
-  - Fix some typo error.
-  - Set the property in piix machine type.
-v3 -> v4:
-  - Set the new property to false by default, only set it to true on x86.
-v2 -> v3:
-  - Fix the underscore error.
-  - Add a new patch to set the property in arm compatibility.
-v1 -> v2:
-  - Change the property name.
+> (And then I do some manual fixups to fix the linting tests where things
+> were auto-formatted suboptimally.)
+>
+> I can still split it out for review purposes, like I did here with some
+> manual fixups appended to the end.
+>
+> Just, for merge, they'll be combined by necessity as a result of our
+> no-regressions-for-bisect rule.
 
-v4: https://lore.kernel.org/all/20250617030521.2109305-1-shahuang@redhat.com/
-v3: https://lore.kernel.org/all/20250609073408.2083831-1-shahuang@redhat.com/
-v2: https://lore.kernel.org/all/20250606070234.2063451-1-shahuang@redhat.com/
-v1: https://lore.kernel.org/all/20250605030351.2056571-1-shahuang@redhat.com/
+I see.
 
-Shaoqin Huang (2):
-  ramfb: Add property to control if load the romfile
-  hw/i386: Add the ramfb romfile compatibility
+>> I understand you pass --py39-plus to pyupgrade to get the type hints
+>> modernized.  If you run it without --py39-plus for all the miscellaneous
+>> upgrades, commit, then run it with --py39-plus for just the type hint
+>> upgrades, commit, the last patch splits again.
+>>
+>
+> I can try it! I actually didn't try running it without py39-plus at all, =
+so
+> I don't know what that'll do. but no harm in an experiment.
+>
+>
+>>
+>> Thoughts?
+>
+>
+> First and foremost I just thought it'd be good to get this mechanical
+> change squared away in one giant patch so we could add this one singular
+> horrible mega-commit into the git blame "ignored commits" list to minimize
+> the impact of the "flag day".
 
- hw/display/ramfb-standalone.c |  4 +++-
- hw/display/ramfb-stubs.c      |  2 +-
- hw/display/ramfb.c            |  6 ++++--
- hw/i386/pc_piix.c             | 10 ++++++++++
- hw/i386/pc_q35.c              |  3 +++
- hw/vfio/display.c             |  4 ++--
- hw/vfio/pci.c                 |  1 +
- hw/vfio/pci.h                 |  1 +
- include/hw/display/ramfb.h    |  2 +-
- 9 files changed, 26 insertions(+), 7 deletions(-)
+Point.
 
--- 
-2.40.1
+Still, it's awfully hard to see what the horrible mega-commit does.
+
+A patch that does one thing entirely mechanically is fine even when it's
+huge.  Understanding the one thing is easy.  I can usually develop
+confidence in the patch.
+
+A patch that does many things mechanically can be problematic.  If it's
+small enough, I can just review them like any other patch.  If it's way
+too big for that, we have to rely on appeal to authority, i.e. the
+tool(s) that generated the patch.  Certainly not nothing, but it gives
+me an uneasy feeling.
+
+This is why I'm keen to see the type hint upgrade split off.  I expect
+the type hint part to do one thing entirely mechanically (fine), and I
+hope the other part will be small enough to let me build confidence in
+it.
+
+> This upgrade will have to happen "eventually" but it needn't be "right
+> now", but I figured it'd be good to get it out of the way... or put anoth=
+er
+> way, "better my mess than someone else's".
+
+I'd prefer upgrade now rather than later for the Python code I maintain.
 

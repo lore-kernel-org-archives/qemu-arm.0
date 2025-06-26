@@ -1,394 +1,304 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp95977dye;
-        Thu, 26 Jun 2025 01:27:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWJqjJB7koG0Bvr7UOVZKXbCA8+XSmnQX6UIwh9yJBLd2svxByLSdXPhYt44+B3q9LFFfw6aaRcpY5FbQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFRnZCxN92Pqqhde/Bi6nnmZeDdgGj5Au6o50f6tGIHSdxe6cM+0G63X0lCq3wcUlSQ0z87
-X-Received: by 2002:ac8:7d41:0:b0:4a1:356:5e7b with SMTP id d75a77b69052e-4a7f2869e5bmr43702021cf.1.1750926462128;
-        Thu, 26 Jun 2025 01:27:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750926462; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp102675dye;
+        Thu, 26 Jun 2025 01:45:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCURSjhICmFC+XUBUWTxPnjyLPkPsZkL3uzuFbojWvKw7IrjDdYSgXYJ+ilGxN47E/2qjzIKZlVJBEgZ8g==@linaro.org
+X-Google-Smtp-Source: AGHT+IG/fHIwxmeHfQTOvoT4y/5iT1myZRinsTwJ8uagRTlxM4ZnKHXs+N3NCkuFRIll6MIZLs1C
+X-Received: by 2002:a05:6214:1bc8:b0:6fa:f94e:6e75 with SMTP id 6a1803df08f44-6fd5ef7f311mr104227746d6.25.1750927505249;
+        Thu, 26 Jun 2025 01:45:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750927505; cv=none;
         d=google.com; s=arc-20240605;
-        b=h3PNiNbZXZ1Wsa1el7Z4wLXP7GPN38PJqIkl5YHELdyEqVFswqyD+Nm5qQiHBQ71rJ
-         2Tw68KV1yI8KwR3s5BmgvAvfIzf8Y7ZL93RFWQA+V4/0fUAQ9au/q45TEW7++q6CG4py
-         jBvhBzaUccbuXwDv4FsLuhn8VapgpN0fFvQGe8xpCNIZFryshSrpMApsmpYURUqEFX59
-         0nOv6V/fkFxhA3PSpq8ypjxOa0Mkfi7fdETVTFvCvWSKiuNHQ+0M/VHGdB5hTDOJTGwu
-         dbCOpjdQvXzkskqEYfVh8sWlrwWaSF+cOdvDZ1RcTgssBinHAp06Cn/ypLYDkxb6VM27
-         WJ1Q==
+        b=dRu/AO08M9t/NRu7A3fP6qgl4X/PWJvBEkDwxZcV7ojBSCup59uUw3xaQdBsa7twvC
+         M11p6qCxQO++AQK6zV5mUALE3JhwpiNHtNotZoo7k++WNBx9sKqeDpgcSxGi/OBX/9iX
+         x/Ajhbof1ZjWay5u+FEuDJ1Qa05ED1eGxYG93ITvXdsVgWtLhciN11ffw1LO4pvcB9w8
+         rPTiyWCFsSr9Ujzo9is3mRGE9SM7sRI79jJ3b/R1O1X3dgWYBLsIldMsXXcrXgpDAY5+
+         l4UtLQfVXlDMHv/c9XRDBFBxlKERy3F2IL5jHdUMHpxzSkZaV69w85WG/790RUWGgZqz
+         CyEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=MwaJ4IkGbhHSrT2VUuv3Ww/NmmGXetURwRGTXbHAwQ4=;
-        fh=e2doJimpuP43a+5rrKkGu3YAn2W68cBR+w+TN2Njkuw=;
-        b=FdLzXIANpHqMbx+nbHDBGsH3aM1X1hArGB6xCov8xbm+wF1PQTwhoaBn3zpwlOsmln
-         OOduYMIqCRN6ChDVsJO8amZjkkPWUaowtnxsJpJDVJkshUfMz5ApuiknEAe0ailBzsiO
-         rsdaX8v986cJLFLUOYgkwD6nh1ESejjrpFiMUvGt4/mZ7xDu3W4vtTmBRElXh5B60b9n
-         f9wsmwXGr+y49o6aVOuBOFStVRle+W+18IlERODs05hiNmYCDYq9koUb7seTXETdn8iS
-         shDurEd/wKcslk00SlM0ZWbmLbuFVCUuHSK6IFWKwwe5A3xvRYz1yyZx/o5yZ/xKjglS
-         bdyA==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=hKLpQInaFASwAceYYn1afmSoRMGL6bQ/K3rN9lhTxKo=;
+        fh=PtCwf2omcLPrI0V00q01mHtQWYEiEZ8m9M7jOKutydg=;
+        b=X1HRIDNPrucgUG7ZMxA5x24CoYXl3sc8xxCNIoYtd36RLtY5pxl5H+Y/B7pEjag0Lp
+         kQjhE9jAIe1BHtJeKn8GOmV09gfgIHPLBqvd05H0gI7JuutIMHInEg7yYD1FpXQVTgl+
+         jWB2PsBOxIm8fYU7wQhcYy7UDW+kfDn9ed91r1wb5vvGnomyOazgfJkfzmgFOn24rKk1
+         1IpNfWN7+rkU0fMwElLmwwsJmEGC+pxQt0YGX2ltQEQlQ0QumQuIpG6n8x/h+WeDZXzV
+         rdiIivCa0AzjPgBqoEMqDFvBnvRbme2f+3GzG/S6XCXX4XnqjZgDZpQAvfl9cGRO7K5u
+         LRlg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a77b54a802si137983441cf.212.2025.06.26.01.27.41
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NEYuMlDT;
+       spf=pass (google.com: domain of eauger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eauger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <eauger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd773548easi11644686d6.176.2025.06.26.01.45.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Jun 2025 01:27:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 26 Jun 2025 01:45:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eauger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uUhx9-0004AT-2b; Thu, 26 Jun 2025 04:27:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Iwxx=ZJ=kaod.org=clg@ozlabs.org>)
- id 1uUhx8-00049n-2m; Thu, 26 Jun 2025 04:27:26 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Iwxx=ZJ=kaod.org=clg@ozlabs.org>)
- id 1uUhx1-00029R-4t; Thu, 26 Jun 2025 04:27:25 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bSWy95SGqz4x4m;
- Thu, 26 Jun 2025 18:27:13 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bSWy63GsKz4wcm;
- Thu, 26 Jun 2025 18:27:10 +1000 (AEST)
-Message-ID: <3d491182-5984-49a1-999c-5e7cb70923da@kaod.org>
-Date: Thu, 26 Jun 2025 10:27:08 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NEYuMlDT;
+       spf=pass (google.com: domain of eauger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eauger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1750927504;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=hKLpQInaFASwAceYYn1afmSoRMGL6bQ/K3rN9lhTxKo=;
+	b=NEYuMlDTpvu2qwYA26bG698NaOC9vyJ1UqxWLOU70PiVD6juUXO9PxOcPnM62m2Scy/SMi
+	OJjxj8o0OaEp8R4THLWz/0kiX5vDIOd7nK7Ws7wH4ZyTHDOlIDk3i544TstkcDfCXqsK02
+	+N3GJgFiv2wepPmOGxRbpVOdL/NfKV0=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-367-xrqWtTdWP1SLCtU_6mzFEg-1; Thu, 26 Jun 2025 04:45:02 -0400
+X-MC-Unique: xrqWtTdWP1SLCtU_6mzFEg-1
+X-Mimecast-MFC-AGG-ID: xrqWtTdWP1SLCtU_6mzFEg_1750927502
+Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-3a5780e8137so914479f8f.1
+        for <alex.bennee@linaro.org>; Thu, 26 Jun 2025 01:45:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750927501; x=1751532301;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=hKLpQInaFASwAceYYn1afmSoRMGL6bQ/K3rN9lhTxKo=;
+        b=siZTAAyMpS0noytC+sIHpKTgXPtNqPTe+eaCUp745O8t6+lA/s8m6QJFiUhnmh1C5I
+         AEIruCMEZz7vziE5OqcyQCBc/KielM5mUw8qT8OhOOrTqyF7tywPaRBygiUAwzMbnNq7
+         N+Hs/gouAcSkogLUiYaGOJa7SjXRDLjzHo/EshCr3wiRSv1b4yLnE25pvJVIzjPY4bjR
+         t7d4AnTS+E4PLxuP+O202udWzkmpHN9it7NiXh0X7Qo/wValTQZkykxWBwuOJzdtEFW6
+         vHh0j7Rzr+bojADyvwf6IGADn6SLn46wyv5MnvC8gaLnIxBbOR/r/MPZv0AdzkYrr3jE
+         QvWg==
+X-Forwarded-Encrypted: i=1; AJvYcCUXSo2+TekyYdGkIMROvLgiBYhU2sZy+3X2ksoUDknZHVEKrLvpW3y/m7zqWCfIHLXI2AdnukUMCkWy0Q==@linaro.org
+X-Gm-Message-State: AOJu0YxXShJxqStylIpnsoHL1mB+Az74SBRQiFrKvlOEyKdfsj8IZqHg
+	N7p7X89YdZyO6ajAu/O2Y7eeVZUv0VSYR4dxTS8pS//tieeKLripQUNlSMwcejkKSJcKDMJ30/I
+	gn32lJ4ivEbVWUECSfw+HfdQKWbOL3FWFujmFxdx865onqb9yN2ACUDN6g7OyGKDZ6g==
+X-Gm-Gg: ASbGnctg9kZkQtgBQnNhmpJGMxcsQCyfuZtyARxrZkGkv1UxTcVFb9tCmVxtlO69Xij
+	GZzk/VwNIOFI5p4z5G+wRQjKHn2KmHfSTVC+ixSFZm0VhczYb70zdJVKnKI6C0ZF2WmUErRO/b7
+	4LW1855x5I+IZkJ7pw9HA6KAgNHUpAWuqrRr67r90w+mx77Fm6/s2l2MS7mszaDx/23+eP21uq/
+	QI/MSMbdutE/SaGsKIVTk9y/J5GKZJZxbqsO6zgoLYmkZAiFrhD0fbwLISBnlfLlazfprO8veuG
+	eOlkB6e2ZO3BkKd4zWAZ0ulh30k/fob6oCnbX235hIT37sU4+qYf2CTcNoo9HM7x
+X-Received: by 2002:a05:6000:2407:b0:3a5:8977:e0f8 with SMTP id ffacd0b85a97d-3a6f311abd1mr2080304f8f.19.1750927501072;
+        Thu, 26 Jun 2025 01:45:01 -0700 (PDT)
+X-Received: by 2002:a05:6000:2407:b0:3a5:8977:e0f8 with SMTP id ffacd0b85a97d-3a6f311abd1mr2080288f8f.19.1750927500595;
+        Thu, 26 Jun 2025 01:45:00 -0700 (PDT)
+Return-Path: <eauger@redhat.com>
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6e805d21fsm6578031f8f.23.2025.06.26.01.44.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 26 Jun 2025 01:44:59 -0700 (PDT)
+Message-ID: <133b5108-85ab-4a32-9e20-7eb1b4492d9b@redhat.com>
+Date: Thu, 26 Jun 2025 10:44:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/3] hw/misc/aspeed_sbc: Connect ASPEED OTP memory
- device to SBC
-To: Kane Chen <kane_chen@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20250626075711.1589039-1-kane_chen@aspeedtech.com>
- <20250626075711.1589039-3-kane_chen@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250626075711.1589039-3-kane_chen@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=Iwxx=ZJ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ic8qgKysU8De
+Subject: Re: [PATCH v3 17/29] hw/arm/virt-acpi-build: Modify the DSDT ACPI
+ table to enable ACPI PCI hotplug
+To: eric.auger@redhat.com, Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Igor Mammedov <imammedo@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
+ mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
+ philmd@linaro.org, alex.bennee@linaro.org
+References: <20250616094903.885753-1-eric.auger@redhat.com>
+ <20250616094903.885753-18-eric.auger@redhat.com>
+ <20250620103538.000021c1@huawei.com> <20250620143822.7ab69038@fedora>
+ <20250620171351.00004cb0@huawei.com>
+ <13edf868-707a-4caa-9b83-8b7ac103ff0a@redhat.com>
+From: Eric Auger <eauger@redhat.com>
+In-Reply-To: <13edf868-707a-4caa-9b83-8b7ac103ff0a@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: ZuKb8q7Fij1YoQMN-xbhoa7whSvYTOLNof_DiH-xx64_1750927502
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 9hupqCn80RHL
 
-On 6/26/25 09:57, Kane Chen wrote:
-> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
+Hi Igor,
+
+On 6/25/25 5:23 PM, Eric Auger wrote:
+> Hi Igor, Jonathan,
 > 
-> This patch connects the aspeed.otpmem device to the ASPEED Secure Boot
-> Controller (SBC) model. It implements OTP memory access via the SBC's
-> command interface and enables emulation of secure fuse programming flows.
+> On 6/20/25 6:13 PM, Jonathan Cameron wrote:
+>> On Fri, 20 Jun 2025 14:38:22 +0200
+>> Igor Mammedov <imammedo@redhat.com> wrote:
+>>
+>>> On Fri, 20 Jun 2025 10:35:38 +0100
+>>> Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+>>>
+>>>> On Mon, 16 Jun 2025 11:46:46 +0200
+>>>> Eric Auger <eric.auger@redhat.com> wrote:
+>>>>   
+>>>>> Modify the DSDT ACPI table to enable ACPI PCI hotplug.
+>>>>>
+>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>>>
+>>>>> ---
+>>>>> v2 -> v3:
+>>>>> - use ACPI_PCIHP_SIZE instead of 0x1000 (Igor)
+>>>>> - use cihp_state->use_acpi_hotplug_bridge    
+>>>> pcihp_state
+>>>>
+>>>> Takes a bit of searching to find the various bits of the
+>>>> same support on x86 but this seems to match up.
+>>>> Exactly when things are built does vary but not I think
+>>>> in a way that matters.  e.g. I think on x86 the
+>>>> EDSM stuff is built whether or not we have pcihp enabled
+>>>> whereas here you've made it conditional on using acpi
+>>>> hp.  Perhaps a tiny bit more description on that would be
+>>>> useful if you do a v4?  
+>>> edsm should be built regardless of pcihp
+>>> (well intention was there, whether I messed it up or not I don't know)
+>>>
+>>> idea is that non hotplug ports can have a static acpi-index,
+>>> so it doesn't depend on pcihp.
+>> That makes sense - so here should that edsm feature be enabled whether
+>> or not we have pcihp_state->use_acpi_hotplug_bridge == true
+>>
+>> i.e. is it really a separate thing from the rest of this series?
 > 
-> The following OTP commands are supported:
->    - READ: reads a 32-bit word from OTP memory into internal registers
->    - PROG: programs a 32-bit word value to the specified OTP address
+> Further studying this comment,
 > 
-> Trace events are added to observe read/program operations and command
-> handling flow.
+> EDSM is invoked by code generated in aml_pci_static_endpoint_dsm() whcih
+> itself is invoked by build_append_pci_bus_devices()
 > 
-> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
-> ---
->   include/hw/misc/aspeed_sbc.h |   5 ++
->   hw/misc/aspeed_sbc.c         | 113 +++++++++++++++++++++++++++++++++++
->   hw/misc/trace-events         |   5 ++
->   3 files changed, 123 insertions(+)
+> So to me it means that if we generate edsm unconditionally we also need
+> to call the following block unconditionnally
 > 
-> diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
-> index 405e6782b9..667d6088c0 100644
-> --- a/include/hw/misc/aspeed_sbc.h
-> +++ b/include/hw/misc/aspeed_sbc.h
-> @@ -10,6 +10,7 @@
->   #define ASPEED_SBC_H
->   
->   #include "hw/sysbus.h"
-> +#include "hw/misc/aspeed_otpmem.h"
->   
->   #define TYPE_ASPEED_SBC "aspeed.sbc"
->   #define TYPE_ASPEED_AST2600_SBC TYPE_ASPEED_SBC "-ast2600"
-> @@ -36,10 +37,14 @@ struct AspeedSBCState {
->       MemoryRegion iomem;
->   
->       uint32_t regs[ASPEED_SBC_NR_REGS];
-> +
-> +    AspeedOTPMemState otpmem;
->   };
->   
->   struct AspeedSBCClass {
->       SysBusDeviceClass parent_class;
-> +
-> +    bool has_otpmem;
->   };
->   
->   #endif /* ASPEED_SBC_H */
-> diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
-> index a7d101ba71..5cbf55c216 100644
-> --- a/hw/misc/aspeed_sbc.c
-> +++ b/hw/misc/aspeed_sbc.c
-> @@ -15,9 +15,13 @@
->   #include "hw/misc/aspeed_sbc.h"
->   #include "qapi/error.h"
->   #include "migration/vmstate.h"
-> +#include "trace.h"
->   
->   #define R_PROT          (0x000 / 4)
-> +#define R_CMD           (0x004 / 4)
-> +#define R_ADDR          (0x010 / 4)
->   #define R_STATUS        (0x014 / 4)
-> +#define R_CAMP1         (0x020 / 4)
->   #define R_QSR           (0x040 / 4)
->   
->   /* R_STATUS */
-> @@ -41,6 +45,10 @@
->   #define QSR_RSA_MASK           (0x3 << 12)
->   #define QSR_HASH_MASK          (0x3 << 10)
->   
-> +/* OTP command */
-> +#define SBC_OTP_CMD_READ 0x23b1e361
-> +#define SBC_OTP_CMD_PROG 0x23b1e364
-> +
->   static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
->   {
->       AspeedSBCState *s = ASPEED_SBC(opaque);
-> @@ -57,6 +65,87 @@ static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
->       return s->regs[addr];
->   }
->   
-> +static bool aspeed_sbc_otpmem_read(AspeedSBCState *s,
-> +                                   uint32_t otp_addr, Error **errp)
-> +{
-> +    MemTxResult ret;
-> +    AspeedOTPMemState *otpmem = &s->otpmem;
-> +    uint32_t value, otp_offset;
-> +
-> +    otp_offset = otp_addr << 2;
-> +    ret = address_space_read(&otpmem->as, otp_offset, MEMTXATTRS_UNSPECIFIED,
-> +                             &value, sizeof(value));
-> +    if (ret != MEMTX_OK) {
-> +        error_setg(errp, "Failed to read OTP memory, addr = %x\n", otp_addr);
+> +    aml_append(pci0_scope, build_pci_bridge_edsm());
+> +    build_append_pci_bus_devices(pci0_scope, vms->bus);
+> +    if (object_property_find(OBJECT(vms->bus), ACPI_PCIHP_PROP_BSEL)) {
+> +        build_append_pcihp_slots(pci0_scope, vms->bus);
+> +    }
+> 
+> which seems to be done that way in hw/i386/acpi-build.c/build_dsdt()
+> 
+> Igor, if I recall correctly you said that addition changes related to
+> "S%.02X" could change the guest ABI. And in that case this wouldn't be
+> guarded by any new option/compat. So that's annoying.
+> 
+> By the way I tested static acpi-index on ARM with resulting code and it
+> does not not seem to work - maybe I try with a wrong topology though
+> (pcie root port + virtio-net acpi-index)-. I have not checked on x86 yet.
+I tested on x86 and if you turn off acpi pci hotplug by setting
+-global ICH9-LPC.acpi-pci-hotplug-with-bridge-support=off
+and you statically instantiate a virtio-net-pci device on a pcie root
+port with ,acpi-index=3, acpi-index does not work either.
+guest exposes enp5s0.
 
-Since the error can not be propagated, doing directly here a :
-  
-    qemu_log_mask(LOG_GUEST_ERROR, ...)
+if you remove the global prop setting (acpi pcihp enabled by default),
+guest exposes eno3.
 
-seems cleaner. Same for address_space_write()
+so static acpi-index also seems to be dependent on acpi-pcihp on x86.
 
+So I intend to leave the code as is with edsm added within the
+acpi_pcihp conditional block. It is also simpler in terms of ref blob
+and most importantly with regards to compat handling.
 
-> +        return false;
-> +    }
-> +    s->regs[R_CAMP1] = value;
-> +    trace_aspeed_sbc_otp_read(otp_addr, value);
-> +
-> +    return true;
-> +}
-> +
-> +static bool aspeed_sbc_otpmem_prog(AspeedSBCState *s,
-> +                                   uint32_t otp_addr, Error **errp)
-> +{
-> +    MemTxResult ret;
-> +    AspeedOTPMemState *otpmem = &s->otpmem;
-> +    uint32_t value = s->regs[R_CAMP1];;
-> +
-> +    ret = address_space_write(&otpmem->as, otp_addr, MEMTXATTRS_UNSPECIFIED,
-> +                        &value, sizeof(value));
-> +    if (ret != MEMTX_OK) {
-> +        error_setg(errp, "Failed to write OTP memory, addr = %x\n", otp_addr);
-> +        return false;
-> +    }
-> +
-> +    trace_aspeed_sbc_otp_prog(otp_addr, value);
-> +
-> +    return true;
-> +}
-> +
-> +static void aspeed_sbc_handle_command(void *opaque, uint32_t cmd)
-> +{
-> +    AspeedSBCState *s = ASPEED_SBC(opaque);
-> +    AspeedSBCClass *sc = ASPEED_SBC_GET_CLASS(opaque);
-> +    Error *local_err = NULL;
-> +    bool ret = false;
-> +    uint32_t otp_addr;
-> +
-> +    if (!sc->has_otpmem) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: OTP memory is not supported\n",
-> +                      __func__);
-> +        return;
-> +    }
-> +
-> +    s->regs[R_STATUS] &= ~(OTP_MEM_IDLE | OTP_IDLE);
-> +    otp_addr = s->regs[R_ADDR];
-> +
-> +    switch (cmd) {
-> +    case SBC_OTP_CMD_READ:
-> +        ret = aspeed_sbc_otpmem_read(s, otp_addr, &local_err);
-> +        break;
-> +    case SBC_OTP_CMD_PROG:
-> +        ret = aspeed_sbc_otpmem_prog(s, otp_addr, &local_err);
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: Unknown command 0x%x\n",
-> +                      __func__, cmd);
-> +        break;
-> +    }
-> +
-> +    trace_aspeed_sbc_handle_cmd(cmd, otp_addr, ret);
-> +    if (ret == false && local_err) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: %s\n",
-> +                      __func__, error_get_pretty(local_err));
-> +        error_free(local_err);
-> +    }
-> +    s->regs[R_STATUS] |= (OTP_MEM_IDLE | OTP_IDLE);
-> +}
-> +
->   static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,
->                                 unsigned int size)
->   {
-> @@ -78,6 +167,9 @@ static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,
->                         "%s: write to read only register 0x%" HWADDR_PRIx "\n",
->                         __func__, addr << 2);
->           return;
-> +    case R_CMD:
-> +        aspeed_sbc_handle_command(opaque, data);
-> +        return;
->       default:
->           break;
->       }
-> @@ -115,6 +207,26 @@ static void aspeed_sbc_reset(DeviceState *dev)
->       s->regs[R_QSR] = s->signing_settings;
->   }
->   
-> +static void aspeed_sbc_instance_init(Object *obj)
-> +{
-> +    AspeedSBCClass *sc = ASPEED_SBC_GET_CLASS(obj);
-> +    AspeedSBCState *s = ASPEED_SBC(obj);
-> +    Error *local_errp = NULL;
-> +    bool ret;
-> +
-> +    if (sc->has_otpmem) {
-> +        object_initialize_child(OBJECT(s), "otp", &s->otpmem,
-> +                                TYPE_ASPEED_OTPMEM);
-> +        ret = qdev_realize(DEVICE(&s->otpmem), NULL, &local_errp);
+Thanks
 
-
-The realize part should be done under aspeed_sbc_realize(). Before you
-could set the OTP object size too. As you wish.
-
-
-Thanks,
-
-C.
+Eric
 
 
 
-> +        if (!ret && local_errp) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "%s: %s\n",
-> +                          __func__, error_get_pretty(local_errp));
-> +            error_free(local_errp);
-> +        }
-> +    }
-> +}
-> +
->   static void aspeed_sbc_realize(DeviceState *dev, Error **errp)
->   {
->       AspeedSBCState *s = ASPEED_SBC(dev);
-> @@ -155,6 +267,7 @@ static const TypeInfo aspeed_sbc_info = {
->       .name = TYPE_ASPEED_SBC,
->       .parent = TYPE_SYS_BUS_DEVICE,
->       .instance_size = sizeof(AspeedSBCState),
-> +    .instance_init = aspeed_sbc_instance_init,
->       .class_init = aspeed_sbc_class_init,
->       .class_size = sizeof(AspeedSBCClass)
->   };
-> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-> index e3f64c0ff6..6f216a77fd 100644
-> --- a/hw/misc/trace-events
-> +++ b/hw/misc/trace-events
-> @@ -90,6 +90,11 @@ slavio_sysctrl_mem_readl(uint32_t ret) "Read system control 0x%08x"
->   slavio_led_mem_writew(uint32_t val) "Write diagnostic LED 0x%04x"
->   slavio_led_mem_readw(uint32_t ret) "Read diagnostic LED 0x%04x"
->   
-> +# aspped_sbc.c
-> +aspeed_sbc_handle_cmd(uint32_t cmd, uint32_t addr, bool ret) "Handling command 0x%" PRIx32 " for OTP addr 0x%" PRIx32 " Result: %d"
-> +aspeed_sbc_otp_read(uint32_t addr, uint32_t value) "OTP Memory read: addr 0x%" PRIx32 " value 0x%" PRIx32
-> +aspeed_sbc_otp_prog(uint32_t addr, uint32_t value) "OTP Memory write: addr 0x%" PRIx32 " value 0x%" PRIx32
-> +
->   # aspeed_scu.c
->   aspeed_scu_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
->   aspeed_scu_read(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
-
+> 
+> So I wonder if it makes sense to do that refinement now. Maybe we can
+> check try to improve that afterwards?
+> 
+> What do you think?
+> 
+> Eric
+> 
+> 
+> 
+>>
+>> Thanks,
+>>
+>> J
+>>>> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+>>>>
+>>>>   
+>>>>> ---
+>>>>>  include/hw/acpi/pcihp.h  |  2 ++
+>>>>>  include/hw/arm/virt.h    |  1 +
+>>>>>  hw/arm/virt-acpi-build.c | 22 ++++++++++++++++++++++
+>>>>>  hw/arm/virt.c            |  2 ++
+>>>>>  hw/arm/Kconfig           |  2 ++
+>>>>>  5 files changed, 29 insertions(+)
+>>>>>
+>>>>> diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
+>>>>> index 5506a58862..9ff548650b 100644
+>>>>> --- a/include/hw/acpi/pcihp.h
+>>>>> +++ b/include/hw/acpi/pcihp.h
+>>>>> @@ -38,6 +38,8 @@
+>>>>>  #define ACPI_PCIHP_SEJ_BASE 0x8
+>>>>>  #define ACPI_PCIHP_BNMR_BASE 0x10
+>>>>>  
+>>>>> +#define ACPI_PCIHP_SIZE 0x0018
+>>>>> +
+>>>>>  typedef struct AcpiPciHpPciStatus {
+>>>>>      uint32_t up;
+>>>>>      uint32_t down;
+>>>>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+>>>>> index 9a1b0f53d2..0ed2e6b732 100644
+>>>>> --- a/include/hw/arm/virt.h
+>>>>> +++ b/include/hw/arm/virt.h
+>>>>> @@ -79,6 +79,7 @@ enum {
+>>>>>      VIRT_ACPI_GED,
+>>>>>      VIRT_NVDIMM_ACPI,
+>>>>>      VIRT_PVTIME,
+>>>>> +    VIRT_ACPI_PCIHP,
+>>>>>      VIRT_LOWMEMMAP_LAST,
+>>>>>  };
+>>>>>  
+>>>>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>>>>> index d7547c8d3b..a2e58288f8 100644
+>>>>> --- a/hw/arm/virt-acpi-build.c
+>>>>> +++ b/hw/arm/virt-acpi-build.c
+>>>>> @@ -34,6 +34,7 @@
+>>>>>  #include "hw/core/cpu.h"
+>>>>>  #include "hw/acpi/acpi-defs.h"
+>>>>>  #include "hw/acpi/acpi.h"
+>>>>> +#include "hw/acpi/pcihp.h"
+>>>>>  #include "hw/nvram/fw_cfg_acpi.h"
+>>>>>  #include "hw/acpi/bios-linker-loader.h"
+>>>>>  #include "hw/acpi/aml-build.h"
+>>>>> @@ -809,6 +810,8 @@ static void
+>>>>>  build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>>>>  {
+>>>>>      VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+>>>>> +    AcpiGedState *acpi_ged_state = ACPI_GED(vms->acpi_dev);
+>>>>> +    AcpiPciHpState *pcihp_state = &acpi_ged_state->pcihp_state;
+>>>>>      Aml *scope, *dsdt;
+>>>>>      MachineState *ms = MACHINE(vms);
+>>>>>      const MemMapEntry *memmap = vms->memmap;
+>>>>> @@ -868,6 +871,25 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>>>>  
+>>>>>      aml_append(dsdt, scope);
+>>>>>  
+>>>>> +    if (pcihp_state->use_acpi_hotplug_bridge) {
+>>>>> +        Aml *pci0_scope = aml_scope("\\_SB.PCI0");
+>>>>> +
+>>>>> +        aml_append(pci0_scope, aml_pci_edsm());
+>>>>> +        build_acpi_pci_hotplug(dsdt, AML_SYSTEM_MEMORY,
+>>>>> +                               memmap[VIRT_ACPI_PCIHP].base);
+>>>>> +        build_append_pcihp_resources(pci0_scope,
+>>>>> +                                     memmap[VIRT_ACPI_PCIHP].base,
+>>>>> +                                     memmap[VIRT_ACPI_PCIHP].size);
+>>>>> +
+>>>>> +        /* Scan all PCI buses. Generate tables to support hotplug. */
+>>>>> +        build_append_pci_bus_devices(pci0_scope, vms->bus);
+>>>>> +        if (object_property_find(OBJECT(vms->bus), ACPI_PCIHP_PROP_BSEL)) {
+>>>>> +            build_append_pcihp_slots(pci0_scope, vms->bus);
+>>>>> +        }
+>>>>> +        build_append_notification_callback(pci0_scope, vms->bus);
+>>>>> +        aml_append(dsdt, pci0_scope);
+>>>>> +    }
+>>>>> +
+>>>>>      /* copy AML table into ACPI tables blob */
+>>>>>      g_array_append_vals(table_data, dsdt->buf->data, dsdt->buf->len);
+>>>>>      
+>>>>   
+>>>
+> 

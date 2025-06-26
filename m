@@ -1,119 +1,211 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4421071lfg;
-        Tue, 30 Mar 2021 03:03:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxFAVBCFyC8b1iM5LPL6dRMSkNlIVJv5d/fIJGfL4/JnZpyoBZHRWzISl1inpsHLPgtZ6Eu
-X-Received: by 2002:a05:6e02:1a68:: with SMTP id w8mr25570397ilv.129.1617098636694;
-        Tue, 30 Mar 2021 03:03:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617098636; cv=none;
-        d=google.com; s=arc-20160816;
-        b=ps3JCfLZHxcbMtgui+lwB0PK8uIRhoSSh+bUzMOF5tpvU+zXMJyL//tKD7durKEOQ5
-         90bTTx1b0oZ33RvK/5mdHtu9nb7NBcXXjd+LTUKlZbZYK47cm5dIoyiDXJ8HMR7PywtP
-         aKy4lcRVJTz6e2CixIS30l5ZL8LIrt4m7pPWUuJvxWOnaUzGcGGmHTIBeTkf+Gen3KkW
-         drmjiGrxPJYw0wl6+7wHfMwqYLP6Mj7YRNYRERyBjOzTrkVuVT75MI8NtzlgYQreaSSX
-         bUnr0ZLOED2hn6Z2mq/bQP9vRewH0O1NHWHVSn+XSEAqm8nwzkcfa0y105GfchNFoKXG
-         S2hQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:organization:message-id:date
-         :subject:to:from;
-        bh=2ETVft5yW/I40Ph/IvJjKFJNigicSQWvVTgFy0AWUSk=;
-        b=zhhjDDFOkresFhu4rREagQ4GhibyiexzEj1t5HmuNU21AdkJY19rA+RktXJA0hSVo2
-         ebv6LdQDdwKMtu+k88d7hQWn5ift5ZcSqaWIkH3OpcMHvU4qjV8w27wJyzun01DU2B+Y
-         wirlu2kewfi7KozbCMVqLtzmIRhGxV8d+578EefH8g5g9yc3I2ksnItikH+KGYnvIhiJ
-         MrsxOxPUL3lyaHrL69O3RRGgpOFmnaYXppWoaVanoLYklUYietzefzptWqVD/PQhVu/f
-         YPKxVv7uNdgwVP6vuX5ltcfm9CJXXeckA1PA9KDFNVNGFhQDspKMG7NT0IdrbnASU+mL
-         DTWg==
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp136164dye;
+        Thu, 26 Jun 2025 03:04:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWXNO4pWM1l2qKP/lGgaVT3PdkJADcfRbo+rr3ntRtR/OCdCYgPSeY1KkNr10M2ktZgVhRtWwSxx3/BMA==@linaro.org
+X-Google-Smtp-Source: AGHT+IG9xTfDQi3hDnR4WcJRwvPQIDIA/T4D9e5/V0KKTrThEMa7blnTUBIHoU3y8ocqE9t1R8Hf
+X-Received: by 2002:a05:622a:205:b0:48a:e2ec:a3b4 with SMTP id d75a77b69052e-4a7c0670c5bmr102426111cf.17.1750932251443;
+        Thu, 26 Jun 2025 03:04:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750932251; cv=none;
+        d=google.com; s=arc-20240605;
+        b=NodHJ5osMWHCTsBMPxPJR/CPjPR2dT71R8RDzuCUbjGAzfRlVUDfW8RCW/Wis5gxGJ
+         RAILNOf7mpbZyqIugpmHbP6Dc08uqNIc6DfGl9AP5kFMWPUvZlChSRXA3T0tRPVhhYjc
+         xQCvj+shKoXPNr1TuPrz7zCymiEkLkMp7tAICICjU6JvGTNt6IC8PClrgJLgVjcSDq/C
+         fCORP/ZQCQF0uEh0AeC5oXuBOJ6k6qNj6b4H1lUMlK5kcksqqInYor4crGjp/I6CIplX
+         NOvGUc/9PsFFInYuiv196Jk6ftSh3mg+EBwynHjJhQq1bdpmGOmvguvpOWEu/k1UHLgj
+         pUhA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=CqIMLUpLTvuoDk139361pTQIme9E1ERhTOI3fzvNR/s=;
+        fh=qw/wWFjfUF10y0uZYQdNNc/ZIWkhohZVvE5dauLwdgA=;
+        b=e3rQxBydtLndSj+6yUTHCdn9qvi5JD5jY5Tqw4ZcxtOMsEg/Mq/Yju5t87BT2LqFrQ
+         qxoa61HSZ+VRM/HaxqMk7y0ZQnH6ShYg0abwn33URbfPAME8fPO9ZtJVMpW/jAY2CqqB
+         1/R7CjQ45N9QCYOEMzDIeXMbZroqCHvjHHjBTR8eX9Mmbx7AanH0bFinvdOS44Uy3NAX
+         n4dYXZywp24jNn8cWnV1rIkMWxPnChZ6GTFh8N2dRsku86+bu1XjFDTIy/TY7bs9nbhq
+         22EEdRzFMWVVUCatTToGV1mVWEVMiVAIbBR9xUZRAiTOpfBYI0WcVaZCjF4P46z0k3p/
+         6mBw==;
+        dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n10si3983563ili.79.2021.03.30.03.03.56
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bMlmZZdI;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a77a0d29d5si149536151cf.448.2025.06.26.03.04.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Mar 2021 03:03:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 26 Jun 2025 03:04:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36200 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lRBE3-0001Br-VZ
-	for alex.bennee@linaro.org; Tue, 30 Mar 2021 06:03:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41656)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <remi@remlab.net>) id 1lRBBt-0000EO-BA
- for qemu-arm@nongnu.org; Tue, 30 Mar 2021 06:01:41 -0400
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:44590
- helo=ns207790.ip-94-23-215.eu)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <remi@remlab.net>) id 1lRBBl-0003Bk-Ea
- for qemu-arm@nongnu.org; Tue, 30 Mar 2021 06:01:41 -0400
-Received: from basile.remlab.net (dzyqn8ypzhx7l91mxjsvy-3.rev.dnainternet.fi
- [IPv6:2001:14ba:a01a:be01:9434:f69e:d553:3be2])
- (Authenticated sender: remi)
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTPSA id B4B2C5FD2F
- for <qemu-arm@nongnu.org>; Tue, 30 Mar 2021 12:01:25 +0200 (CEST)
-From: =?ISO-8859-1?Q?R=E9mi?= Denis-Courmont <remi@remlab.net>
-To: "open list:ARM" <qemu-arm@nongnu.org>
-Subject: Re: AUTIA authentication sometimes fails
-Date: Tue, 30 Mar 2021 13:01:23 +0300
-Message-ID: <14186436.QnnKl2KyAm@basile.remlab.net>
-Organization: Remlab
-In-Reply-To: <CAJoBWHx5DM=zhj10j1ai5T_LO9ScAhFzUezuhGu6a73vn=4_Rg@mail.gmail.com>
-References: <CAJoBWHx5DM=zhj10j1ai5T_LO9ScAhFzUezuhGu6a73vn=4_Rg@mail.gmail.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bMlmZZdI;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1750932251;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=CqIMLUpLTvuoDk139361pTQIme9E1ERhTOI3fzvNR/s=;
+	b=bMlmZZdI04NmhFQeq5QeQ+Knsy+Q2N1Zli91CKLwQWilHSQJt33XE+br+J4iTk2QY/8oF9
+	ihtvYUKFQHfKsVGu6uVXUHiNIzsP0H3CO03MLZR3bjDlhKrC/z0MMTViIBGgaImrDbfc0L
+	GYRAGvP8q/H5dxIuZdUz6LOfq3RXrfE=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-494-L5z3aKSmOJ-CT5HpMGV88g-1; Thu, 26 Jun 2025 06:04:09 -0400
+X-MC-Unique: L5z3aKSmOJ-CT5HpMGV88g-1
+X-Mimecast-MFC-AGG-ID: L5z3aKSmOJ-CT5HpMGV88g_1750932249
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3a523ce0bb2so469802f8f.0
+        for <alex.bennee@linaro.org>; Thu, 26 Jun 2025 03:04:09 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750932248; x=1751537048;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=CqIMLUpLTvuoDk139361pTQIme9E1ERhTOI3fzvNR/s=;
+        b=j69ZHj6F261UvGb57yr20dv1Mxb9ftf/iNTVPabDsq4jBP6jIPfIGHvi2nSsMZeE5z
+         zn4DouQkPzPrsauXcecH1LRt0B8XmhWpdjPShg5wsbCpZMvMohU500y19Vgq6oM4JsW1
+         7qM4KL1Vs2Io9kNGHUPjTQKC65TMb/dx6xAnomW9zlC1GATCnCUuvUkeKFox36Cuzbhr
+         0nlf7WJ+s3+rPFaz8OR8+fIU6k5KyuHJ/sbTmaMp99F7HHkunu0l2VuG3pFrwe4yAtnO
+         VG5bQAPIfqeX8k948L69uZPi3KFUMN4eiIrw7954rtOqx2s2BA1UEcWS+oHEOpVqwVTK
+         tFGw==
+X-Forwarded-Encrypted: i=1; AJvYcCWt6lIm7Fq/JKPixYgi90FY8uD6iSs/xQbE09Xlz4OBFFw9dOpW5JNbpRoutwkp2cb9hnje9fXP5p74RA==@linaro.org
+X-Gm-Message-State: AOJu0Yw4RDMDQQ/hhFNaSL08SK36oXiQeJi+4pas8LfN6LVCiUMS9Y5w
+	PMgO2lRtF/6kvE4Clh8kSh4wTtSmPmReP8rGynX5A7XibMkofUeRaJH1VWvuG5OND/hte3XDl1u
+	sctzGw+FWlJzp5u667EYUa8H1RM8AfcqxEaAlPbAV6JSpHJ4HfnyUOJcOfA==
+X-Gm-Gg: ASbGnct/IZtzp5O7JD/RfaLarTsriiDJlkR2j6CLmvWc2zxzOooPpu/MbP16k1q9Ofx
+	wejNqzozOcoJ41J6MYaa5bRJBnFD/ZcdSJX7vG8Tg3hZ5j6DB+8zUZnIanzCs1PdLDNDM9jmK8b
+	wTh4vpP+vU3iqkK5i82AgIbsjAbjZ8MOcxq269PkgaJwCDR2lMS24SuE+2vy/PHTpvw60FvoQ1P
+	IY9FATTQ5wFnvz1qx1kWuXGO0FaPh3ORL9FvQJes5NSY2bhTwRrraI0QrH6k1igQ5QemN5hzcqP
+	pJ/jkpKsy6SNF5eCkOzKvtXf0wcC+12EHKfP25Tsj592yaRcsVGqnw4C7XDF/XsbRyWOqA==
+X-Received: by 2002:a05:6000:1acd:b0:3a4:e7b7:3851 with SMTP id ffacd0b85a97d-3a6ed664462mr5585656f8f.58.1750932248446;
+        Thu, 26 Jun 2025 03:04:08 -0700 (PDT)
+X-Received: by 2002:a05:6000:1acd:b0:3a4:e7b7:3851 with SMTP id ffacd0b85a97d-3a6ed664462mr5585615f8f.58.1750932247906;
+        Thu, 26 Jun 2025 03:04:07 -0700 (PDT)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6e80ff8d9sm6998132f8f.70.2025.06.26.03.04.06
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 26 Jun 2025 03:04:07 -0700 (PDT)
+Message-ID: <cebadc10-2525-4646-8810-6c6cc1656b69@redhat.com>
+Date: Thu, 26 Jun 2025 12:04:04 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
- helo=ns207790.ip-94-23-215.eu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vJ0XkD2Y3cU5
-
-Le maanantaina 29. maaliskuuta 2021, 23.07.20 EEST Derrick McKee a =C3=A9cr=
-it :
-> I am running across a scenario where a PAC signed code pointer (using
-> pacia) sometimes does not successfully authenticate despite the signed
-> pointer and the salt used to sign the pointer are correctly given to a
-> autia instruction.  Only one particular pointer fails, while others
-> are correctly authenticated.  Unfortunately, I can't provide a simple
-> use case, because the behavior is part of a running kernel, and all
-> the pointers involved are kernel space pointers.  An example of what I
-> am seeing (not guaranteeing correct assembly, just a gist):
->=20
-> mov x9, 0xffff800009200000
-> mov x10, 0x20001
-> pacia x9, x10  // x9 contains 0xff90800009200000
-> ...
-> mov x9, 0xff90800009200000
-> mov x10 0x20001
-> autia x9, x10  // x9 contains invalid pointer
-
-That's not how PAuth works. x9 must be a signed value in the second block, =
-so=20
-it shouldn't be possible to supply a constant there, at least not in any=20
-reasonable use.
-
-=2D-=20
-=E9=9B=B7=E7=B1=B3=E2=80=A7=E5=BE=B7=E5=B0=BC-=E5=BA=93=E5=B0=94=E8=92=99
-http://www.remlab.net/
+User-Agent: Mozilla Thunderbird
+Reply-To: eric.auger@redhat.com
+Subject: Re: [PATCH v3 28/29] tests/qtest/bios-tables-test: Add aarch64 ACPI
+ PCI hotplug test
+To: Igor Mammedov <imammedo@redhat.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
+ mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
+ philmd@linaro.org, alex.bennee@linaro.org
+References: <20250616094903.885753-1-eric.auger@redhat.com>
+ <20250616094903.885753-29-eric.auger@redhat.com>
+ <20250620114029.00005a94@huawei.com> <20250620152232.36683ffc@fedora>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20250620152232.36683ffc@fedora>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: RcHJKuG8qYnsYdMgyVXX__j5NPjHBVox5FZHBDJQMMo_1750932249
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-TUID: lTdIDp5nslDK
 
 
 
+On 6/20/25 3:22 PM, Igor Mammedov wrote:
+> On Fri, 20 Jun 2025 11:40:29 +0100
+> Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+>
+>> On Mon, 16 Jun 2025 11:46:57 +0200
+>> Eric Auger <eric.auger@redhat.com> wrote:
+>>
+>>> From: Gustavo Romero <gustavo.romero@linaro.org>
+>>>
+>>> The test uses -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on
+>>> to force the usage of ACPI PCI hotplug.
+>>>
+>>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>  
+>> Could we add the necessary (I'm not quite sure what) to trigger the _DSM
+>> creation so EDSM gets used?  I'm not keen on that being dead code
+>> wrt to tests on ARM.
+> relevant x86 example:
+>
+>         " -device pcie-root-port,id=nohprp,port=0x0,chassis=2,hotplug=off,"    
+argh. I did not see hotplug=off.
+
+So then static acpi-index also works on ARM. So I will make edsm
+independent on acpi pcihp
+
+Sorry for the noise
+
+Eric
+>   
+>                                  "addr=7.0"                                      
+>         " -device pci-testdev,bus=nohprp,acpi-index=501"  
+>> Jonathan
+>>
+>>
+>>
+>>> ---
+>>>  tests/qtest/bios-tables-test.c | 34 ++++++++++++++++++++++++++++++++++
+>>>  1 file changed, 34 insertions(+)
+>>>
+>>> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+>>> index 0b2bdf9d0d..4b9e391eaf 100644
+>>> --- a/tests/qtest/bios-tables-test.c
+>>> +++ b/tests/qtest/bios-tables-test.c
+>>> @@ -1643,6 +1643,38 @@ static void test_acpi_aarch64_virt_tcg_memhp(void)
+>>>  
+>>>  }
+>>>  
+>>> +static void test_acpi_aarch64_virt_acpi_pci_hotplug(void)
+>>> +{
+>>> +    test_data data = {
+>>> +        .machine = "virt",
+>>> +        .arch = "aarch64",
+>>> +        .tcg_only = true,
+>>> +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
+>>> +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
+>>> +        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
+>>> +        .ram_start = 0x40000000ULL,
+>>> +        .scan_len = 256ULL * MiB,
+>>> +        .variant = ".acpipcihp",
+>>> +    };
+>>> +
+>>> +   /* Use ACPI PCI Hotplug */
+>>> +   test_acpi_one(" -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on"
+>>> +                 " -cpu cortex-a57"
+>>> +                 /*
+>>> +                  * We just pick address=0x04 for the root port to avoid
+>>> +                  * collisions with other PCI devices on the root bus (pcie.0).
+>>> +                  * It could be any other value that doesn't collide.
+>>> +                  *
+>>> +                  * The 'chassis' and 'slot' options equal to 1 have no special
+>>> +                  * meaning here, could be any integer, but we set them to known
+>>> +                  * values to keep the test consistent.
+>>> +                  */
+>>> +                 " -device pcie-root-port,bus=pcie.0,chassis=1,slot=1,addr=0x04.0x00",
+>>> +                 &data);
+>>> +
+>>> +    free_test_data(&data);
+>>> +}
+>>> +
+>>>  static void test_acpi_microvm_prepare(test_data *data)
+>>>  {
+>>>      data->machine = "microvm";
+>>> @@ -2580,6 +2612,8 @@ int main(int argc, char *argv[])
+>>>              qtest_add_func("acpi/virt/numamem",
+>>>                             test_acpi_aarch64_virt_tcg_numamem);
+>>>              qtest_add_func("acpi/virt/memhp", test_acpi_aarch64_virt_tcg_memhp);
+>>> +            qtest_add_func("acpi/virt/acpipcihp",
+>>> +                           test_acpi_aarch64_virt_acpi_pci_hotplug);
+>>>              qtest_add_func("acpi/virt/pxb", test_acpi_aarch64_virt_tcg_pxb);
+>>>              qtest_add_func("acpi/virt/oem-fields",
+>>>                             test_acpi_aarch64_virt_oem_fields);  

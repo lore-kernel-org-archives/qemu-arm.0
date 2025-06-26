@@ -1,211 +1,333 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp136164dye;
-        Thu, 26 Jun 2025 03:04:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWXNO4pWM1l2qKP/lGgaVT3PdkJADcfRbo+rr3ntRtR/OCdCYgPSeY1KkNr10M2ktZgVhRtWwSxx3/BMA==@linaro.org
-X-Google-Smtp-Source: AGHT+IG9xTfDQi3hDnR4WcJRwvPQIDIA/T4D9e5/V0KKTrThEMa7blnTUBIHoU3y8ocqE9t1R8Hf
-X-Received: by 2002:a05:622a:205:b0:48a:e2ec:a3b4 with SMTP id d75a77b69052e-4a7c0670c5bmr102426111cf.17.1750932251443;
-        Thu, 26 Jun 2025 03:04:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750932251; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp94321dye;
+        Thu, 26 Jun 2025 01:23:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXpe7kNvjxxnrdqkJIAK+9mXgVEIB2ec90QIPJf2HmC8F42vyCtIXg2lG1UlYSEdv/9XWXymSibrw0IiA==@linaro.org
+X-Google-Smtp-Source: AGHT+IF6I6pRySWsLy2pXchzOHZPPvmJn2o4h6hm1TQ+IlZp2tlf2Zi0Ikfne5+PashZwpjunozN
+X-Received: by 2002:a05:6214:570a:b0:6fa:cb72:955a with SMTP id 6a1803df08f44-6fd5ef2fccemr94601546d6.4.1750926188959;
+        Thu, 26 Jun 2025 01:23:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750926188; cv=none;
         d=google.com; s=arc-20240605;
-        b=NodHJ5osMWHCTsBMPxPJR/CPjPR2dT71R8RDzuCUbjGAzfRlVUDfW8RCW/Wis5gxGJ
-         RAILNOf7mpbZyqIugpmHbP6Dc08uqNIc6DfGl9AP5kFMWPUvZlChSRXA3T0tRPVhhYjc
-         xQCvj+shKoXPNr1TuPrz7zCymiEkLkMp7tAICICjU6JvGTNt6IC8PClrgJLgVjcSDq/C
-         fCORP/ZQCQF0uEh0AeC5oXuBOJ6k6qNj6b4H1lUMlK5kcksqqInYor4crGjp/I6CIplX
-         NOvGUc/9PsFFInYuiv196Jk6ftSh3mg+EBwynHjJhQq1bdpmGOmvguvpOWEu/k1UHLgj
-         pUhA==
+        b=GQNB/GquaHd1PDanKZsOD838wAPhzepz4J6qSOeqZwZpzccO3mdwquGzQb8LQIvL0a
+         jDCo8SppHLYG86Bg/SchUS527FlLBNa/lxGLgyQquRNcuuJ+VRs+5xwwcZW+UladHS+L
+         UkzZFZ+LuSw2eJRbL27pEeTzHLOxcgkcePRAgwSlw10amLbOAeEhkY01Yn7TTgOcRfFn
+         xneDrzWM1up5QWvX91gXAA1aQ9UqWbNJzhcAD6Dao/LFIutrj7qTe/b3ASB8A8d4qCZn
+         eUXR3No9KlF494oLnvX7MUDv1rx6/Cgjwc4JMY193r7xkJt/ySocoo1gYBAWeg/+KAGv
+         KZcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=CqIMLUpLTvuoDk139361pTQIme9E1ERhTOI3fzvNR/s=;
-        fh=qw/wWFjfUF10y0uZYQdNNc/ZIWkhohZVvE5dauLwdgA=;
-        b=e3rQxBydtLndSj+6yUTHCdn9qvi5JD5jY5Tqw4ZcxtOMsEg/Mq/Yju5t87BT2LqFrQ
-         qxoa61HSZ+VRM/HaxqMk7y0ZQnH6ShYg0abwn33URbfPAME8fPO9ZtJVMpW/jAY2CqqB
-         1/R7CjQ45N9QCYOEMzDIeXMbZroqCHvjHHjBTR8eX9Mmbx7AanH0bFinvdOS44Uy3NAX
-         n4dYXZywp24jNn8cWnV1rIkMWxPnChZ6GTFh8N2dRsku86+bu1XjFDTIy/TY7bs9nbhq
-         22EEdRzFMWVVUCatTToGV1mVWEVMiVAIbBR9xUZRAiTOpfBYI0WcVaZCjF4P46z0k3p/
-         6mBw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=SrliV4bWn580G+K7FAl6UpLhXgzX2WimMRmqU7idJDs=;
+        fh=e2doJimpuP43a+5rrKkGu3YAn2W68cBR+w+TN2Njkuw=;
+        b=fyGk0dd+VvSZkyHsn2YKmgA/0+4LyKjiqCEsbADv0YHTEx75iPVPop0TmrxZ0QqkX7
+         VkW5GzTKP+DWD82bbvvWH0/w52Jn1SV8si7XISec2pQTnaiEs/x8Dcn644hM07hPjxDB
+         VUgnCt31zOW+faSF7N/6FOr1LaxzKi89hMhONBz9bcL+S/d6KYO/3gsN5Hs3WkPFoxdv
+         AFiDQkb3a9SMvYSeWxHQGUdqwWFUmEsgB9L5MTBMdzSOiqYMvdOUsGz9pRL2KRYWrhw+
+         iTIvetYG6NEP1HkLGhPRHA8D0PuTsXmM+YF45xpX2q8b76+iRptl0fSdViCJHgvyh/HI
+         y6Hw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bMlmZZdI;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a77a0d29d5si149536151cf.448.2025.06.26.03.04.11
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3f9a1149dsi1350380985a.467.2025.06.26.01.23.08
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Jun 2025 03:04:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 26 Jun 2025 01:23:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bMlmZZdI;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1750932251;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CqIMLUpLTvuoDk139361pTQIme9E1ERhTOI3fzvNR/s=;
-	b=bMlmZZdI04NmhFQeq5QeQ+Knsy+Q2N1Zli91CKLwQWilHSQJt33XE+br+J4iTk2QY/8oF9
-	ihtvYUKFQHfKsVGu6uVXUHiNIzsP0H3CO03MLZR3bjDlhKrC/z0MMTViIBGgaImrDbfc0L
-	GYRAGvP8q/H5dxIuZdUz6LOfq3RXrfE=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-494-L5z3aKSmOJ-CT5HpMGV88g-1; Thu, 26 Jun 2025 06:04:09 -0400
-X-MC-Unique: L5z3aKSmOJ-CT5HpMGV88g-1
-X-Mimecast-MFC-AGG-ID: L5z3aKSmOJ-CT5HpMGV88g_1750932249
-Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3a523ce0bb2so469802f8f.0
-        for <alex.bennee@linaro.org>; Thu, 26 Jun 2025 03:04:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750932248; x=1751537048;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=CqIMLUpLTvuoDk139361pTQIme9E1ERhTOI3fzvNR/s=;
-        b=j69ZHj6F261UvGb57yr20dv1Mxb9ftf/iNTVPabDsq4jBP6jIPfIGHvi2nSsMZeE5z
-         zn4DouQkPzPrsauXcecH1LRt0B8XmhWpdjPShg5wsbCpZMvMohU500y19Vgq6oM4JsW1
-         7qM4KL1Vs2Io9kNGHUPjTQKC65TMb/dx6xAnomW9zlC1GATCnCUuvUkeKFox36Cuzbhr
-         0nlf7WJ+s3+rPFaz8OR8+fIU6k5KyuHJ/sbTmaMp99F7HHkunu0l2VuG3pFrwe4yAtnO
-         VG5bQAPIfqeX8k948L69uZPi3KFUMN4eiIrw7954rtOqx2s2BA1UEcWS+oHEOpVqwVTK
-         tFGw==
-X-Forwarded-Encrypted: i=1; AJvYcCWt6lIm7Fq/JKPixYgi90FY8uD6iSs/xQbE09Xlz4OBFFw9dOpW5JNbpRoutwkp2cb9hnje9fXP5p74RA==@linaro.org
-X-Gm-Message-State: AOJu0Yw4RDMDQQ/hhFNaSL08SK36oXiQeJi+4pas8LfN6LVCiUMS9Y5w
-	PMgO2lRtF/6kvE4Clh8kSh4wTtSmPmReP8rGynX5A7XibMkofUeRaJH1VWvuG5OND/hte3XDl1u
-	sctzGw+FWlJzp5u667EYUa8H1RM8AfcqxEaAlPbAV6JSpHJ4HfnyUOJcOfA==
-X-Gm-Gg: ASbGnct/IZtzp5O7JD/RfaLarTsriiDJlkR2j6CLmvWc2zxzOooPpu/MbP16k1q9Ofx
-	wejNqzozOcoJ41J6MYaa5bRJBnFD/ZcdSJX7vG8Tg3hZ5j6DB+8zUZnIanzCs1PdLDNDM9jmK8b
-	wTh4vpP+vU3iqkK5i82AgIbsjAbjZ8MOcxq269PkgaJwCDR2lMS24SuE+2vy/PHTpvw60FvoQ1P
-	IY9FATTQ5wFnvz1qx1kWuXGO0FaPh3ORL9FvQJes5NSY2bhTwRrraI0QrH6k1igQ5QemN5hzcqP
-	pJ/jkpKsy6SNF5eCkOzKvtXf0wcC+12EHKfP25Tsj592yaRcsVGqnw4C7XDF/XsbRyWOqA==
-X-Received: by 2002:a05:6000:1acd:b0:3a4:e7b7:3851 with SMTP id ffacd0b85a97d-3a6ed664462mr5585656f8f.58.1750932248446;
-        Thu, 26 Jun 2025 03:04:08 -0700 (PDT)
-X-Received: by 2002:a05:6000:1acd:b0:3a4:e7b7:3851 with SMTP id ffacd0b85a97d-3a6ed664462mr5585615f8f.58.1750932247906;
-        Thu, 26 Jun 2025 03:04:07 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a6e80ff8d9sm6998132f8f.70.2025.06.26.03.04.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 26 Jun 2025 03:04:07 -0700 (PDT)
-Message-ID: <cebadc10-2525-4646-8810-6c6cc1656b69@redhat.com>
-Date: Thu, 26 Jun 2025 12:04:04 +0200
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uUhst-0002cG-8r; Thu, 26 Jun 2025 04:23:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=Iwxx=ZJ=kaod.org=clg@ozlabs.org>)
+ id 1uUhsr-0002bN-4X; Thu, 26 Jun 2025 04:23:01 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=Iwxx=ZJ=kaod.org=clg@ozlabs.org>)
+ id 1uUhso-0001g8-EA; Thu, 26 Jun 2025 04:23:00 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bSWs54n39z4x5g;
+ Thu, 26 Jun 2025 18:22:49 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bSWs22vf9z4x0C;
+ Thu, 26 Jun 2025 18:22:46 +1000 (AEST)
+Message-ID: <37b1845f-85f6-4c5a-aba1-45433844ad7f@kaod.org>
+Date: Thu, 26 Jun 2025 10:22:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH v3 28/29] tests/qtest/bios-tables-test: Add aarch64 ACPI
- PCI hotplug test
-To: Igor Mammedov <imammedo@redhat.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, gustavo.romero@linaro.org, anisinha@redhat.com,
- mst@redhat.com, shannon.zhaosl@gmail.com, pbonzini@redhat.com,
- philmd@linaro.org, alex.bennee@linaro.org
-References: <20250616094903.885753-1-eric.auger@redhat.com>
- <20250616094903.885753-29-eric.auger@redhat.com>
- <20250620114029.00005a94@huawei.com> <20250620152232.36683ffc@fedora>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250620152232.36683ffc@fedora>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: RcHJKuG8qYnsYdMgyVXX__j5NPjHBVox5FZHBDJQMMo_1750932249
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Subject: Re: [PATCH v1 1/3] hw/misc/aspeed_otp: Add ASPEED OTP memory device
+ model
+To: Kane Chen <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com
+References: <20250626075711.1589039-1-kane_chen@aspeedtech.com>
+ <20250626075711.1589039-2-kane_chen@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250626075711.1589039-2-kane_chen@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: lTdIDp5nslDK
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=Iwxx=ZJ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /D3eZVkQHsNk
+
+On 6/26/25 09:57, Kane Chen wrote:
+> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> 
+> Introduce a QEMU device model for ASPEED's One-Time Programmable (OTP)
+> memory.
+> 
+> This model simulates a word-addressable OTP region used for secure
+> fuse storage. The OTP memory can operate with an internal memory
+> buffer.
+> 
+> The OTP model provides a memory-like interface through a dedicated
+> AddressSpace, allowing other device models (e.g., SBC) to issue
+> transactions as if accessing a memory-mapped region.
+> 
+> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> ---
+>   include/hw/misc/aspeed_otpmem.h | 33 ++++++++++++
+>   hw/misc/aspeed_otpmem.c         | 91 +++++++++++++++++++++++++++++++++
+
+Peter suggested to move these files under hw/nvram/ with the
+other OTP models.
+
+Please consider renaming to :
+
+    include/hw/nvram/aspeed_otp.h
+    hw/nvram/aspeed_otp.c
 
 
+>   3 files changed, 125 insertions(+)
+>   create mode 100644 include/hw/misc/aspeed_otpmem.h
+>   create mode 100644 hw/misc/aspeed_otpmem.c
+> 
+> diff --git a/include/hw/misc/aspeed_otpmem.h b/include/hw/misc/aspeed_otpmem.h
+> new file mode 100644
+> index 0000000000..64cd4d1a7c
+> --- /dev/null
+> +++ b/include/hw/misc/aspeed_otpmem.h
+> @@ -0,0 +1,33 @@
+> +/*
+> + *  ASPEED OTP (One-Time Programmable) memory
+> + *
+> + *  Copyright (C) 2025 Aspeed
+> + *
+> + *  SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#ifndef ASPEED_OTPMEM_H
+> +#define ASPEED_OTPMEM_H
+> +
+> +#include "system/memory.h"
+> +#include "hw/block/block.h"
+> +#include "system/memory.h"
+> +#include "system/address-spaces.h"
+> +
+> +#define OTPMEM_SIZE 0x4000
 
-On 6/20/25 3:22 PM, Igor Mammedov wrote:
-> On Fri, 20 Jun 2025 11:40:29 +0100
-> Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
->
->> On Mon, 16 Jun 2025 11:46:57 +0200
->> Eric Auger <eric.auger@redhat.com> wrote:
->>
->>> From: Gustavo Romero <gustavo.romero@linaro.org>
->>>
->>> The test uses -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on
->>> to force the usage of ACPI PCI hotplug.
->>>
->>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>  
->> Could we add the necessary (I'm not quite sure what) to trigger the _DSM
->> creation so EDSM gets used?  I'm not keen on that being dead code
->> wrt to tests on ARM.
-> relevant x86 example:
->
->         " -device pcie-root-port,id=nohprp,port=0x0,chassis=2,hotplug=off,"    
-argh. I did not see hotplug=off.
+This define doesn't seem useful. May be instead, set the OTP object
+"size" from the parent model at realize time.
 
-So then static acpi-index also works on ARM. So I will make edsm
-independent on acpi pcihp
-
-Sorry for the noise
-
-Eric
+> +#define TYPE_ASPEED_OTPMEM "aspeed.otpmem"
+> +OBJECT_DECLARE_SIMPLE_TYPE(AspeedOTPMemState, ASPEED_OTPMEM)
+> +
+> +typedef struct AspeedOTPMemState {
+> +    DeviceState parent_obj;
+> +
+> +    uint64_t size;
+> +
+> +    AddressSpace as;
+> +
+> +    MemoryRegion mmio;
+> +
+> +    uint8_t *storage;
+> +} AspeedOTPMemState;
+> +
+> +#endif /* ASPEED_OTPMEM_H */
+> diff --git a/hw/misc/aspeed_otpmem.c b/hw/misc/aspeed_otpmem.c
+> new file mode 100644
+> index 0000000000..a77d4186f8
+> --- /dev/null
+> +++ b/hw/misc/aspeed_otpmem.c
+> @@ -0,0 +1,91 @@
+> +/*
+> + *  ASPEED OTP (One-Time Programmable) memory
+> + *
+> + *  Copyright (C) 2025 Aspeed
+> + *
+> + *  SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "qapi/error.h"
+> +#include "trace.h"
+> +#include "system/block-backend-global-state.h"
+> +#include "system/block-backend-io.h"
+> +#include "hw/misc/aspeed_otpmem.h"
+> +
+> +static uint64_t aspeed_otpmem_read(void *opaque, hwaddr offset, unsigned size)
+> +{
+> +    AspeedOTPMemState *s = opaque;
+> +    uint64_t val = 0;
+> +
+> +    memcpy(&val, s->storage + offset, size);
+> +
+> +    return val;
+> +}
+> +
+> +static void aspeed_otpmem_write(void *opaque, hwaddr offset,
+> +                                uint64_t val, unsigned size)
+> +{
+> +    AspeedOTPMemState *s = opaque;
+> +
+> +    memcpy(s->storage + offset, &val, size);
+> +}
+> +
+> +static void aspeed_otpmem_init_storage(uint8_t *storage, uint64_t size)
+> +{
+> +    uint32_t *p;
+> +    int i, num;
+> +
+> +    num = size / sizeof(uint32_t);
+> +    p = (uint32_t *)storage;
+> +    for (i = 0; i < num; i++) {
+> +        p[i] = (i % 2 == 0) ? 0x00000000 : 0xFFFFFFFF;
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps aspeed_otpmem_ops = {
+> +    .read = aspeed_otpmem_read,
+> +    .write = aspeed_otpmem_write,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    .valid.min_access_size = 1,
+> +    .valid.max_access_size = 4,
+> +};
+> +
+> +static void aspeed_otpmem_realize(DeviceState *dev, Error **errp)
+> +{
+> +    AspeedOTPMemState *s = ASPEED_OTPMEM(dev);
+> +
+> +    s->storage = g_malloc(s->size);
+> +
+> +    aspeed_otpmem_init_storage(s->storage, s->size);
+> +
+> +    memory_region_init_io(&s->mmio, OBJECT(dev), &aspeed_otpmem_ops,
+> +                          s, "aspeed.otpmem", s->size);
+> +    address_space_init(&s->as, &s->mmio, NULL);
+> +}
+> +
+> +static const Property aspeed_otpmem_properties[] = {
+> +    DEFINE_PROP_UINT64("size", AspeedOTPMemState, size, OTPMEM_SIZE),
+> +};
+> +
+> +static void aspeed_otpmem_class_init(ObjectClass *klass, const void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    dc->realize = aspeed_otpmem_realize;
+> +    device_class_set_props(dc, aspeed_otpmem_properties);
+> +}
+> +
+> +static const TypeInfo aspeed_otpmem_info = {
+> +    .name          = TYPE_ASPEED_OTPMEM,
+> +    .parent        = TYPE_DEVICE,
+> +    .instance_size = sizeof(AspeedOTPMemState),
+> +    .class_init    = aspeed_otpmem_class_init,
+> +};
+> +
+> +static void aspeed_otpmem_register_types(void)
+> +{
+> +    type_register_static(&aspeed_otpmem_info);
+> +}
+> +
+> +type_init(aspeed_otpmem_register_types)
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index 6d47de482c..ed1eaaa2ad 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -136,6 +136,7 @@ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+>     'aspeed_sbc.c',
+>     'aspeed_sdmc.c',
+>     'aspeed_xdma.c',
+> +  'aspeed_otpmem.c',
+>     'aspeed_peci.c',
+>     'aspeed_sli.c'))
 >   
->                                  "addr=7.0"                                      
->         " -device pci-testdev,bus=nohprp,acpi-index=501"  
->> Jonathan
->>
->>
->>
->>> ---
->>>  tests/qtest/bios-tables-test.c | 34 ++++++++++++++++++++++++++++++++++
->>>  1 file changed, 34 insertions(+)
->>>
->>> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
->>> index 0b2bdf9d0d..4b9e391eaf 100644
->>> --- a/tests/qtest/bios-tables-test.c
->>> +++ b/tests/qtest/bios-tables-test.c
->>> @@ -1643,6 +1643,38 @@ static void test_acpi_aarch64_virt_tcg_memhp(void)
->>>  
->>>  }
->>>  
->>> +static void test_acpi_aarch64_virt_acpi_pci_hotplug(void)
->>> +{
->>> +    test_data data = {
->>> +        .machine = "virt",
->>> +        .arch = "aarch64",
->>> +        .tcg_only = true,
->>> +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
->>> +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
->>> +        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
->>> +        .ram_start = 0x40000000ULL,
->>> +        .scan_len = 256ULL * MiB,
->>> +        .variant = ".acpipcihp",
->>> +    };
->>> +
->>> +   /* Use ACPI PCI Hotplug */
->>> +   test_acpi_one(" -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on"
->>> +                 " -cpu cortex-a57"
->>> +                 /*
->>> +                  * We just pick address=0x04 for the root port to avoid
->>> +                  * collisions with other PCI devices on the root bus (pcie.0).
->>> +                  * It could be any other value that doesn't collide.
->>> +                  *
->>> +                  * The 'chassis' and 'slot' options equal to 1 have no special
->>> +                  * meaning here, could be any integer, but we set them to known
->>> +                  * values to keep the test consistent.
->>> +                  */
->>> +                 " -device pcie-root-port,bus=pcie.0,chassis=1,slot=1,addr=0x04.0x00",
->>> +                 &data);
->>> +
->>> +    free_test_data(&data);
->>> +}
->>> +
->>>  static void test_acpi_microvm_prepare(test_data *data)
->>>  {
->>>      data->machine = "microvm";
->>> @@ -2580,6 +2612,8 @@ int main(int argc, char *argv[])
->>>              qtest_add_func("acpi/virt/numamem",
->>>                             test_acpi_aarch64_virt_tcg_numamem);
->>>              qtest_add_func("acpi/virt/memhp", test_acpi_aarch64_virt_tcg_memhp);
->>> +            qtest_add_func("acpi/virt/acpipcihp",
->>> +                           test_acpi_aarch64_virt_acpi_pci_hotplug);
->>>              qtest_add_func("acpi/virt/pxb", test_acpi_aarch64_virt_tcg_pxb);
->>>              qtest_add_func("acpi/virt/oem-fields",
->>>                             test_acpi_aarch64_virt_oem_fields);  
+

@@ -1,150 +1,135 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp689721dye;
-        Thu, 26 Jun 2025 22:38:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX+Wv0NOrQBalNZqau+5p9wj0BZ8Rt66M4Y4+AA326zDHq9zqwFitRwKDyuJuWb83ek5ulpGXn8KgfahQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE2+r+x9+BPqI49RF2s/7sVuQ/FAfPXQWzGR4g/jNrQRhLbutvplSLTrfYaCjd6zLRrTPuq
-X-Received: by 2002:a05:6214:1d2a:b0:6e8:97f6:3229 with SMTP id 6a1803df08f44-70002917afdmr31988146d6.16.1751002721918;
-        Thu, 26 Jun 2025 22:38:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751002721; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp713960dye;
+        Thu, 26 Jun 2025 23:49:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWkv10w9rt0mpXqqDpoNeSxLmGzwSUJxpXnc9s7ic1VOw7XVy8rMerij26OpkLP6vX6iA1Zb48Fs6yPbQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IG18D4M2/KDCoygqzWEsXDksmVYw1DxrkS/hOQuxKc5/pqpgxcnfDfxpr5MVGkEwGcNP0UQ
+X-Received: by 2002:a05:600c:8412:b0:441:b698:3431 with SMTP id 5b1f17b1804b1-4538ee84e10mr16642005e9.28.1751006981460;
+        Thu, 26 Jun 2025 23:49:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751006981; cv=none;
         d=google.com; s=arc-20240605;
-        b=aoHaSRYoVLcIA4h7aTsf1GLyIZH9SiVnlIk3g/nz82vE4Js/9FrA5W0PkHa0u0QBey
-         UnUR2Y3WNRYiaGZxVh8ALffSoBgXj6uIsvX2wVvPEu43cc4oK/gKuwbzpY0rZIwf8vyN
-         U76Xv4AAR7rAYbYioWLItxF/QPtUQO2txNHMRclMuUtkLXqXSkqpbi1TrGrp7yD1Qbip
-         SWqG1moI0rV4FtxSdEI16i5UBz+q509L+28RkwLwK+xVhVbqdVmzrSxkvPPbGHN81fY4
-         KQJuHEbMuEN6o+k+pdBNDMOfHUNFHarPy5uDA57Pw+NGtep5yCjHx+wG8n9jH6wu8N4I
-         Hivw==
+        b=aASCcWk3gPEh6kkb/j52qn+HA451FPzYl9f5HcJN6arfX1bUxWs6GEQ5p+r6AByXfx
+         3tgdnCV0C6F1LboOK98Ip8oqGBzoF+a3UGcekYpdZ+SStGsQbU2ZJmN6KyDPPXz3gDpI
+         Dbma7pbb6fJlpS8oNU7PM8Y0iLFQadIyK5msCZo99WcBf2pwTf1ifIqyIf98vXsYJd15
+         ZebKalbqvoL1+uH8KrZqH7X2vHNU6G/aKBB4stR7rnUUJI/v8wKQkyyXmkshUytVjTsn
+         cOt7NyT4FzF0ps01b7uI42U/Z+oNhgMr6UIkUnLUNMfphx6eawNKqNI6ha0QxnndRuuQ
+         3vBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=cu4usQ2gQdBazm6/4Ep90beuN7im2paUHjG6ZOfKXEA=;
-        fh=v1u57GJAKxCSwbhIWLumSyMKuSrB4ssxGkQV1/uR6NQ=;
-        b=hxCvuABJu03+K89++V8w9ajQl4q0/v1E7H6i3HI0mhEx+xHvF8FkWlTi4229ZnxMFC
-         8FqAfgpvVwOh5nmcWlpuqaFbqibLNhDiGyE9uWNXSNaZMi0zd0vL7Gm8sYjcL7jV/AcB
-         RKEUWOYDB1Rvlti9KUXkwCUMNRuGpfdpjqvHlezvuPNWMorpp2RSrc7RRVeqwreyvSXc
-         2WCmXiIa+7V9lHJTSYLYQREYnu3mUg94sNqX612euaATRDv1LbC3kLfrOWxFM5pdZ51M
-         afqkeZLKNr1tjkVgj7S123iBzzSLH19Dbl/C/gbhnmKJmBBR5nAdtCisM6PATqkk8eZO
-         4aig==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=JePdUiZpnW8hUGABIJeVGpnKgW0YRdw4xFjLuWrIKP0=;
+        fh=e2doJimpuP43a+5rrKkGu3YAn2W68cBR+w+TN2Njkuw=;
+        b=lTPcXXCOey+gmSS9CF/noqbXGyGXHJGbRTFTDtXIqvdGEB2r1yhUpZU55KCZYbMy40
+         2u++pQcW0mZrt7az+wfW5cbYRBjW085Z2hvO7lgdsL9Iz9vyjmaAJPX8+NTxjeiYDLvu
+         bTDQiBoTemChj0/y7UkiNRiduNAlexBPVwGnCOBuO/GVPzlxnHnD20XDX/hfh/KFEsuP
+         J7tPn7K/Q/KtPydW1r4JkTykov/CRWk4FGkRJHaOY0SMGUcspQ3uSwWz3ufhlYp56fTc
+         gI3W1RdJFj9QnT0OLTZKi5eNM5hviqUFDKldbvrlDRdHylY5MrfdrQBeCyKmJ203nz5c
+         MT1A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kh6+Ly8o;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd7735487dsi34689686d6.153.2025.06.26.22.38.41
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a8a082282fsi1085671f8f.891.2025.06.26.23.49.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Jun 2025 22:38:41 -0700 (PDT)
+        Thu, 26 Jun 2025 23:49:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kh6+Ly8o;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uV1mz-0004nC-Bt; Fri, 27 Jun 2025 01:38:17 -0400
+	id 1uV2tZ-0007v3-Lh; Fri, 27 Jun 2025 02:49:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uV1mx-0004ma-CX
- for qemu-arm@nongnu.org; Fri, 27 Jun 2025 01:38:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <SRS0=5m2v=ZK=kaod.org=clg@ozlabs.org>)
+ id 1uV2tX-0007uG-Ch; Fri, 27 Jun 2025 02:49:07 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uV1mv-0000tY-Cx
- for qemu-arm@nongnu.org; Fri, 27 Jun 2025 01:38:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1751002686;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=cu4usQ2gQdBazm6/4Ep90beuN7im2paUHjG6ZOfKXEA=;
- b=Kh6+Ly8o1Ca3km7J/2sdW8b6nHA9PNKIlN3ommCWiemnvG5PeIbeGxNGlQiSayuEhVsmMv
- 5WeV3wU/YTgrECWj8EbYNHKsMiZYiwUDx3XPep2x/BNct8rfeNESfcceUrxpk0V0zKRI6W
- ckdSSQfABE4cqFya3Lf5FbD3xWFNKaw=
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-327-SBkRj4LBP6efvMNiCEi-Hw-1; Fri, 27 Jun 2025 01:38:04 -0400
-X-MC-Unique: SBkRj4LBP6efvMNiCEi-Hw-1
-X-Mimecast-MFC-AGG-ID: SBkRj4LBP6efvMNiCEi-Hw_1751002683
-Received: by mail-pl1-f198.google.com with SMTP id
- d9443c01a7336-234b133b428so13750995ad.3
- for <qemu-arm@nongnu.org>; Thu, 26 Jun 2025 22:38:03 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751002683; x=1751607483;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=cu4usQ2gQdBazm6/4Ep90beuN7im2paUHjG6ZOfKXEA=;
- b=QydOUHRUHdPpCTnqrkoYP72qhV2sniDEbcCC4iKd1I1KWurSJ2wqfh519QUq/0bsJU
- qEJBez9aNlLWBKqYNG6GVV5V4u8W3eHD1dbXyCaR/cwskQQzteZeBrd1YvvRvYKA35Zr
- /I018qIvxsULFdO5qJi3zlGebk1X9+T25VHcSm51hmCrMavFFxqlfqyFEtQix39ZCYqK
- nlC3uelleeCeYuNXMkc0zED4xAS/m/xPlefvMoXsUOdR1rAnBJ1vxRqHk10W7iqe+XdE
- krJQPc6XRa8Qj+OeQxHtKJ6NPsrJL2vBFlD+I2LNsrB2aQcJjJ4RJlnQ8w6BIBiruWnq
- mqMg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVCQJP2PIGJjSUOkX9Q6sNJrYRXon2aHhtg7c+sBkFZxaS2NsrBtGZ1q6XBlbXndB1kpkJ3oxh3Gg==@nongnu.org
-X-Gm-Message-State: AOJu0YzV2ZTo56FD/S21CTTSXHEm4jf6Qoa0Ok16MbgBmRKQVqOEX/3x
- VMlEQ+cwnmEnRvd6+DuOhT6oht75YX/wmVL9YE/WjSsrUl7ZFdb5Q3HUC0gstqdwwOOpTagGsZ7
- UAMeKb7qAMCSFWDpjaGzhJIUQ2DFhQQKvhXHh8chonDO65zYJhnUDsA==
-X-Gm-Gg: ASbGncvp6jpr6uUzpIwlJ/gl7tZHkNfcH6l6ODzpz+V4o4lSnf+/bdzdFsdrzrwRk4Q
- nVaRr2WTQ9b/b5FDInD0U5zHszWRL6yoLQHQ7PrNMjk7paWTBWxWQ7QcuiKLE6/trj36YiFwMMd
- rRTfu0a3a/ZgCsNju1tMYIgoaxqdAX8NXZaisvgMUzfYAdfHy8CfN62PPC++4CHneDWgsb8HxuD
- e/f9yflbnYR5Oc/kXOK7ixyNAL0mYVwgtGmqG0LpTiaAF10SwoS1BW+v3gtV6ZKBgZe8sQyI6z3
- Au9oNyE/K0Ur2hZnxDyKWtstCw==
-X-Received: by 2002:a17:902:e54b:b0:234:a66d:ccf5 with SMTP id
- d9443c01a7336-23ac463faeamr30548235ad.49.1751002682756; 
- Thu, 26 Jun 2025 22:38:02 -0700 (PDT)
-X-Received: by 2002:a17:902:e54b:b0:234:a66d:ccf5 with SMTP id
- d9443c01a7336-23ac463faeamr30547915ad.49.1751002682397; 
- Thu, 26 Jun 2025 22:38:02 -0700 (PDT)
-Received: from [10.72.116.80] ([209.132.188.88])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23acb3c49casm7126755ad.215.2025.06.26.22.37.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 26 Jun 2025 22:38:01 -0700 (PDT)
-Message-ID: <0d59875a-88a0-41f2-99d4-4e7a19de0e14@redhat.com>
-Date: Fri, 27 Jun 2025 13:37:55 +0800
+ (Exim 4.90_1) (envelope-from <SRS0=5m2v=ZK=kaod.org=clg@ozlabs.org>)
+ id 1uV2tU-0007GM-C3; Fri, 27 Jun 2025 02:49:06 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bT5kG2G3Wz4x6r;
+ Fri, 27 Jun 2025 16:48:54 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bT5kC01s1z4wcm;
+ Fri, 27 Jun 2025 16:48:50 +1000 (AEST)
+Message-ID: <a35878aa-bf5e-4a17-9c24-79c291326332@kaod.org>
+Date: Fri, 27 Jun 2025 08:48:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/2] hw/i386: Add the ramfb romfile compatatibility
-To: Eric Auger <eauger@redhat.com>, qemu-arm@nongnu.org
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-devel@nongnu.org
-References: <20250617030521.2109305-1-shahuang@redhat.com>
- <20250617030521.2109305-3-shahuang@redhat.com>
- <aa4ef145-9e08-4ad9-a152-dd8fa2371436@redhat.com>
- <ba75ac62-db52-491e-8944-2bf27106d0a6@redhat.com>
- <8c3cce88-fab5-4bf1-bc6b-804730e9889d@redhat.com>
-From: Shaoqin Huang <shahuang@redhat.com>
-In-Reply-To: <8c3cce88-fab5-4bf1-bc6b-804730e9889d@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: XeRgMKEnSOZZpSXdPC-7Dj7YExMp0pOKol5F48sNurI_1751002683
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+Subject: Re: [PATCH v2 2/3] hw/misc/aspeed_sbc: Connect ASPEED OTP memory
+ device to SBC
+To: Kane Chen <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com
+References: <20250627025606.631167-1-kane_chen@aspeedtech.com>
+ <20250627025606.631167-3-kane_chen@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
+ 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
+ yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
+ 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
+ ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
+ RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
+ gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
+ 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
+ Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
+ tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
+ IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
+ BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
+ M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
+ 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
+ jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
+ TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
+ neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
+ VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
+ QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
+ ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
+ WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
+ wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
+ SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
+ cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
+ S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
+ 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
+ hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
+ tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
+ t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
+ OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
+ KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
+ o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
+ ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
+ IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
+ d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
+ +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
+ HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
+ l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
+ 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
+ ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
+ KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20250627025606.631167-3-kane_chen@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=shahuang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=5m2v=ZK=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -159,134 +144,256 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 42xnUE4u+igN
+X-TUID: vDFbR3utXduD
 
-Hi Eric,
-
-On 6/26/25 4:01 PM, Eric Auger wrote:
+On 6/27/25 04:56, Kane Chen wrote:
+> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 > 
+> This patch connects the aspeed.otpmem device to the ASPEED Secure Boot
+> Controller (SBC) model. It implements OTP memory access via the SBC's
+> command interface and enables emulation of secure fuse programming flows.
 > 
-> On 6/26/25 4:05 AM, Shaoqin Huang wrote:
->> Hi Eric,
->>
->> On 6/23/25 5:20 PM, Eric Auger wrote:
->>>
->>>
->>> On 6/17/25 5:05 AM, Shaoqin Huang wrote:
->>>> Set the "use-legacy-x86-rom" property to false by default, and only set
->>>> it to true on x86 since only x86 will need it.
->>> s/compatatibility/compatibility in the title
->>
->> Ok. Will fix it.
->>
->>>>
->>>> Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
->>>> ---
->>>>    hw/display/ramfb-standalone.c | 2 +-
->>>>    hw/i386/pc_q35.c              | 3 +++
->>>>    hw/vfio/pci.c                 | 2 +-
->>>>    3 files changed, 5 insertions(+), 2 deletions(-)
->>>>
->>>> diff --git a/hw/display/ramfb-standalone.c b/hw/display/ramfb-
->>>> standalone.c
->>>> index af1175bf96..ddbf42f181 100644
->>>> --- a/hw/display/ramfb-standalone.c
->>>> +++ b/hw/display/ramfb-standalone.c
->>>> @@ -63,7 +63,7 @@ static const VMStateDescription ramfb_dev_vmstate = {
->>>>      static const Property ramfb_properties[] = {
->>>>        DEFINE_PROP_BOOL("x-migrate", RAMFBStandaloneState, migrate,
->>>> true),
->>>> -    DEFINE_PROP_BOOL("use-legacy-x86-rom", RAMFBStandaloneState,
->>>> use_legacy_x86_rom, true),
->>>> +    DEFINE_PROP_BOOL("use-legacy-x86-rom", RAMFBStandaloneState,
->>>> use_legacy_x86_rom, false),
->>>>    };
->>>>      static void ramfb_class_initfn(ObjectClass *klass, void *data)
->>>> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
->>>> index fd96d0345c..f6d89578d0 100644
->>>> --- a/hw/i386/pc_q35.c
->>>> +++ b/hw/i386/pc_q35.c
->>>> @@ -45,6 +45,7 @@
->>>>    #include "hw/i386/pc.h"
->>>>    #include "hw/i386/amd_iommu.h"
->>>>    #include "hw/i386/intel_iommu.h"
->>>> +#include "hw/vfio/pci.h"
->>>>    #include "hw/virtio/virtio-iommu.h"
->>>>    #include "hw/display/ramfb.h"
->>>>    #include "hw/ide/pci.h"
->>>> @@ -67,6 +68,8 @@
->>>>      static GlobalProperty pc_q35_compat_defaults[] = {
->>>>        { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "39" },
->>>> +    { TYPE_RAMFB_DEVICE, "use-legacy-x86-rom", "true" },
->>>> +    { TYPE_VFIO_PCI, "use-legacy-x86-rom", "true" },
->>> this will only keep the legacy behavior along with q35 machine type but
->>> not on other machines being used for x86. what about pc-i440fx? Doesn't
->>> it apply to it as well? Are there other machine types also impacted.
->>
->> Ok I will also add it with pc-i440fx. I think only q35 and i440fx are
->> impacted.
->>
->>>
->>> Also what about Daniel's comment in v3:
->>> https://lore.kernel.org/all/aEak8utPPkHepVfR@redhat.com/
->>> "For non-x86, historical versioned machine types will need
->>> likely it set to true, in order to avoid the memory layout
->>> being changed IIUC."
->>>
->>> Is it actually needed?
->>
->> If those machine types need to set it to true. I think they can set it
->> after they have this property.
-> nope it does not work like that. In case we really need to take care of
-> this, this must be handled by compats.
+> The following OTP commands are supported:
+>    - READ: reads a 32-bit word from OTP memory into internal registers
+>    - PROG: programs a 32-bit word value to the specified OTP address
+> 
+> Trace events are added to observe read/program operations and command
+> handling flow.
+> 
+> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> ---
+>   include/hw/misc/aspeed_sbc.h |   5 ++
+>   hw/misc/aspeed_sbc.c         | 117 +++++++++++++++++++++++++++++++++++
+>   hw/misc/trace-events         |   5 ++
+>   3 files changed, 127 insertions(+)
+> 
+> diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
+> index 405e6782b9..0c2746d392 100644
+> --- a/include/hw/misc/aspeed_sbc.h
+> +++ b/include/hw/misc/aspeed_sbc.h
+> @@ -10,6 +10,7 @@
+>   #define ASPEED_SBC_H
+>   
+>   #include "hw/sysbus.h"
+> +#include "hw/nvram/aspeed_otp.h"
+>   
+>   #define TYPE_ASPEED_SBC "aspeed.sbc"
+>   #define TYPE_ASPEED_AST2600_SBC TYPE_ASPEED_SBC "-ast2600"
+> @@ -36,10 +37,14 @@ struct AspeedSBCState {
+>       MemoryRegion iomem;
+>   
+>       uint32_t regs[ASPEED_SBC_NR_REGS];
+> +
+> +    AspeedOTPState otp;
+>   };
+>   
+>   struct AspeedSBCClass {
+>       SysBusDeviceClass parent_class;
+> +
+> +    bool has_otp;
+>   };
+>   
+>   #endif /* ASPEED_SBC_H */
+> diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
+> index a7d101ba71..2f5b83a3f2 100644
+> --- a/hw/misc/aspeed_sbc.c
+> +++ b/hw/misc/aspeed_sbc.c
+> @@ -15,9 +15,13 @@
+>   #include "hw/misc/aspeed_sbc.h"
+>   #include "qapi/error.h"
+>   #include "migration/vmstate.h"
+> +#include "trace.h"
+>   
+>   #define R_PROT          (0x000 / 4)
+> +#define R_CMD           (0x004 / 4)
+> +#define R_ADDR          (0x010 / 4)
+>   #define R_STATUS        (0x014 / 4)
+> +#define R_CAMP1         (0x020 / 4)
+>   #define R_QSR           (0x040 / 4)
+>   
+>   /* R_STATUS */
+> @@ -41,6 +45,11 @@
+>   #define QSR_RSA_MASK           (0x3 << 12)
+>   #define QSR_HASH_MASK          (0x3 << 10)
+>   
+> +#define OTP_MEMORY_SIZE 0x4000
+> +/* OTP command */
+> +#define SBC_OTP_CMD_READ 0x23b1e361
+> +#define SBC_OTP_CMD_PROG 0x23b1e364
+> +
+>   static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
+>   {
+>       AspeedSBCState *s = ASPEED_SBC(opaque);
+> @@ -57,6 +66,84 @@ static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
+>       return s->regs[addr];
+>   }
+>   
+> +static bool aspeed_sbc_otp_read(AspeedSBCState *s,
+> +                                   uint32_t otp_addr)
+> +{
+> +    MemTxResult ret;
+> +    AspeedOTPState *otp = &s->otp;
+> +    uint32_t value, otp_offset;
+> +
+> +    otp_offset = otp_addr << 2;
+> +    ret = address_space_read(&otp->as, otp_offset, MEMTXATTRS_UNSPECIFIED,
+> +                             &value, sizeof(value));
+> +    if (ret != MEMTX_OK) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "Failed to read OTP memory, addr = %x\n",
+> +                      otp_addr);
+> +        return false;
+> +    }
+> +    s->regs[R_CAMP1] = value;
+> +    trace_aspeed_sbc_otp_read(otp_addr, value);
+> +
+> +    return true;
+> +}
+> +
+> +static bool aspeed_sbc_otp_prog(AspeedSBCState *s,
+> +                                   uint32_t otp_addr)
+> +{
+> +    MemTxResult ret;
+> +    AspeedOTPState *otp = &s->otp;
+> +    uint32_t value = s->regs[R_CAMP1];
+> +
+> +    ret = address_space_write(&otp->as, otp_addr, MEMTXATTRS_UNSPECIFIED,
+> +                        &value, sizeof(value));
+> +    if (ret != MEMTX_OK) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "Failed to write OTP memory, addr = %x\n",
+> +                      otp_addr);
+> +        return false;
+> +    }
+> +
+> +    trace_aspeed_sbc_otp_prog(otp_addr, value);
+> +
+> +    return true;
+> +}
+> +
+> +static void aspeed_sbc_handle_command(void *opaque, uint32_t cmd)
+> +{
+> +    AspeedSBCState *s = ASPEED_SBC(opaque);
+> +    AspeedSBCClass *sc = ASPEED_SBC_GET_CLASS(opaque);
+> +    bool ret = false;
+> +    uint32_t otp_addr;
+> +
+> +    if (!sc->has_otp) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: OTP memory is not supported\n",
+> +                      __func__);
+> +        return;
+> +    }
+> +
+> +    s->regs[R_STATUS] &= ~(OTP_MEM_IDLE | OTP_IDLE);
+> +    otp_addr = s->regs[R_ADDR];
+> +
+> +    switch (cmd) {
+> +    case SBC_OTP_CMD_READ:
+> +        ret = aspeed_sbc_otp_read(s, otp_addr);
+> +        break;
+> +    case SBC_OTP_CMD_PROG:
+> +        ret = aspeed_sbc_otp_prog(s, otp_addr);
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Unknown command 0x%x\n",
+> +                      __func__, cmd);
+> +        break;
+> +    }
+> +
+> +    trace_aspeed_sbc_handle_cmd(cmd, otp_addr, ret);
+> +    s->regs[R_STATUS] |= (OTP_MEM_IDLE | OTP_IDLE);
+> +}
+> +
+>   static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,
+>                                 unsigned int size)
+>   {
+> @@ -78,6 +165,9 @@ static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,
+>                         "%s: write to read only register 0x%" HWADDR_PRIx "\n",
+>                         __func__, addr << 2);
+>           return;
+> +    case R_CMD:
+> +        aspeed_sbc_handle_command(opaque, data);
+> +        return;
+>       default:
+>           break;
+>       }
+> @@ -115,10 +205,36 @@ static void aspeed_sbc_reset(DeviceState *dev)
+>       s->regs[R_QSR] = s->signing_settings;
+>   }
+>   
+> +static void aspeed_sbc_instance_init(Object *obj)
+> +{
+> +    AspeedSBCClass *sc = ASPEED_SBC_GET_CLASS(obj);
+> +    AspeedSBCState *s = ASPEED_SBC(obj);
+> +
+> +    if (sc->has_otp) {
+> +        object_initialize_child(OBJECT(s), "otp", &s->otp,
+> +                                TYPE_ASPEED_OTP);
+> +    }
+> +}
+> +
+>   static void aspeed_sbc_realize(DeviceState *dev, Error **errp)
+>   {
+>       AspeedSBCState *s = ASPEED_SBC(dev);
+>       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> +    AspeedSBCClass *sc = ASPEED_SBC_GET_CLASS(dev);
+> +    Error *local_errp = NULL;
+> +    bool ret;
+> +
+> +    if (sc->has_otp) {
+> +        qdev_prop_set_uint64(DEVICE(&s->otp), "size", OTP_MEMORY_SIZE);
 
-If so. Why don't we still keep the "use-legacy-x86-rom" default to true, 
-and only set it to false to those arch which doesn't need it just like 
-my original implementation.
 
-Because I don't really know how other arch's memoery layout was impacted 
-by this property set to false. I think keep their original behavior and 
-only change it on arm64 is a good idea.
+Please prefer object_property_set_int() instead. For examples, see
+aspeed_soc_ast2600_realize().
 
-How do you think about it?
+> +        ret = qdev_realize(DEVICE(&s->otp), NULL, &local_errp);
+> +        if (!ret && local_errp) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "%s: %s\n",
+> +                          __func__, error_get_pretty(local_errp));
+> +            error_free(local_errp);
+> +            return;
+
+This should be :
+
+         if (!qdev_realize(DEVICE(&a->otp), NULL, errp)) {
+             return;
+         }
 
 Thanks,
-Shaoqin
 
-> 
-> Thanks
-> 
-> Eric
->>
->> Thanks,
->> Shaoqin
->>
->>>
->>> Thanks
->>>
->>> Eric
->>>>    };
->>>>    static const size_t pc_q35_compat_defaults_len =
->>>>        G_N_ELEMENTS(pc_q35_compat_defaults);
->>>> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
->>>> index ff0d93fae0..a529500b70 100644
->>>> --- a/hw/vfio/pci.c
->>>> +++ b/hw/vfio/pci.c
->>>> @@ -3564,7 +3564,7 @@ static const TypeInfo vfio_pci_dev_info = {
->>>>      static const Property vfio_pci_dev_nohotplug_properties[] = {
->>>>        DEFINE_PROP_BOOL("ramfb", VFIOPCIDevice, enable_ramfb, false),
->>>> -    DEFINE_PROP_BOOL("use-legacy-x86-rom", VFIOPCIDevice,
->>>> use_legacy_x86_rom, true),
->>>> +    DEFINE_PROP_BOOL("use-legacy-x86-rom", VFIOPCIDevice,
->>>> use_legacy_x86_rom, false),
->>>>        DEFINE_PROP_ON_OFF_AUTO("x-ramfb-migrate", VFIOPCIDevice,
->>>> ramfb_migrate,
->>>>                                ON_OFF_AUTO_AUTO),
->>>>    };
->>>
->>
-> 
+C.
 
--- 
-Shaoqin
+> +        }
+> +    }
+>   
+>       memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sbc_ops, s,
+>               TYPE_ASPEED_SBC, 0x1000);
+> @@ -155,6 +271,7 @@ static const TypeInfo aspeed_sbc_info = {
+>       .name = TYPE_ASPEED_SBC,
+>       .parent = TYPE_SYS_BUS_DEVICE,
+>       .instance_size = sizeof(AspeedSBCState),
+> +    .instance_init = aspeed_sbc_instance_init,
+>       .class_init = aspeed_sbc_class_init,
+>       .class_size = sizeof(AspeedSBCClass)
+>   };
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index e3f64c0ff6..9e05b82f37 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -90,6 +90,11 @@ slavio_sysctrl_mem_readl(uint32_t ret) "Read system control 0x%08x"
+>   slavio_led_mem_writew(uint32_t val) "Write diagnostic LED 0x%04x"
+>   slavio_led_mem_readw(uint32_t ret) "Read diagnostic LED 0x%04x"
+>   
+> +# aspeed_sbc.c
+> +aspeed_sbc_handle_cmd(uint32_t cmd, uint32_t addr, bool ret) "Handling command 0x%" PRIx32 " for OTP addr 0x%" PRIx32 " Result: %d"
+> +aspeed_sbc_otp_read(uint32_t addr, uint32_t value) "OTP Memory read: addr 0x%" PRIx32 " value 0x%" PRIx32
+> +aspeed_sbc_otp_prog(uint32_t addr, uint32_t value) "OTP Memory write: addr 0x%" PRIx32 " value 0x%" PRIx32
+> +
+>   # aspeed_scu.c
+>   aspeed_scu_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
+>   aspeed_scu_read(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
 

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.19])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4538233c749sm79308685e9.4.2025.06.27.04.25.16
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a88c7fadf3sm2503596f8f.34.2025.06.27.04.25.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 27 Jun 2025 04:25:20 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id F1D245F90B;
+	by draig.lan (Postfix) with ESMTP id BAD645F8BF;
 	Fri, 27 Jun 2025 12:25:12 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -27,92 +27,152 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
 	Alexandre Iooss <erdnaxe@crans.org>,
 	Rowan Hart <rowanbhart@gmail.com>
-Subject: [PATCH 08/15] plugins: Add memory virtual address write API
-Date: Fri, 27 Jun 2025 12:25:04 +0100
-Message-ID: <20250627112512.1880708-9-alex.bennee@linaro.org>
+Subject: [PATCH 06/15] plugins: Add register write API
+Date: Fri, 27 Jun 2025 12:25:02 +0100
+Message-ID: <20250627112512.1880708-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250627112512.1880708-1-alex.bennee@linaro.org>
 References: <20250627112512.1880708-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: s3+jfMyXWt3X
+X-TUID: M+RSPmuLtWiQ
 
 From: Rowan Hart <rowanbhart@gmail.com>
 
-This patch adds functions to the plugins API to allow reading and
-writing memory via virtual addresses. These functions only permit doing
-so on the current CPU, because there is no way to ensure consistency if
-plugins are allowed to read or write to other CPUs that aren't currently
-in the context of the plugin.
+This patch adds a function to the plugins API to allow plugins to write
+register contents. It also moves the qemu_plugin_read_register function
+so all the register-related functions are grouped together in the file.
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Rowan Hart <rowanbhart@gmail.com>
-Message-ID: <20250624175351.440780-5-rowanbhart@gmail.com>
+Message-ID: <20250624175351.440780-3-rowanbhart@gmail.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/qemu/qemu-plugin.h | 21 +++++++++++++++++++++
- plugins/api.c              | 18 ++++++++++++++++++
- 2 files changed, 39 insertions(+)
+ include/qemu/qemu-plugin.h | 54 ++++++++++++++++++++++++++------------
+ plugins/api.c              | 26 +++++++++++++-----
+ 2 files changed, 56 insertions(+), 24 deletions(-)
 
 diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
-index 9c9ebf6ce0..4167c46c2a 100644
+index 3a850aa216..cfe1692ecb 100644
 --- a/include/qemu/qemu-plugin.h
 +++ b/include/qemu/qemu-plugin.h
-@@ -958,6 +958,27 @@ QEMU_PLUGIN_API
+@@ -871,7 +871,8 @@ struct qemu_plugin_register;
+ /**
+  * typedef qemu_plugin_reg_descriptor - register descriptions
+  *
+- * @handle: opaque handle for retrieving value with qemu_plugin_read_register
++ * @handle: opaque handle for retrieving value with qemu_plugin_read_register or
++ *          writing value with qemu_plugin_write_register
+  * @name: register name
+  * @feature: optional feature descriptor, can be NULL
+  */
+@@ -893,6 +894,41 @@ typedef struct {
+ QEMU_PLUGIN_API
+ GArray *qemu_plugin_get_registers(void);
+ 
++/**
++ * qemu_plugin_read_register() - read register for current vCPU
++ *
++ * @handle: a @qemu_plugin_reg_handle handle
++ * @buf: A GByteArray for the data owned by the plugin
++ *
++ * This function is only available in a context that register read access is
++ * explicitly requested via the QEMU_PLUGIN_CB_R_REGS flag.
++ *
++ * Returns the size of the read register. The content of @buf is in target byte
++ * order. On failure returns -1.
++ */
++QEMU_PLUGIN_API
++int qemu_plugin_read_register(struct qemu_plugin_register *handle,
++                              GByteArray *buf);
++
++/**
++ * qemu_plugin_write_register() - write register for current vCPU
++ *
++ * @handle: a @qemu_plugin_reg_handle handle
++ * @buf: A GByteArray for the data owned by the plugin
++ *
++ * This function is only available in a context that register write access is
++ * explicitly requested via the QEMU_PLUGIN_CB_RW_REGS flag.
++ *
++ * The size of @buf must be at least the size of the requested register.
++ * Attempting to write a register with @buf smaller than the register size
++ * will result in a crash or other undesired behavior.
++ *
++ * Returns the number of bytes written. On failure returns 0.
++ */
++QEMU_PLUGIN_API
++int qemu_plugin_write_register(struct qemu_plugin_register *handle,
++                              GByteArray *buf);
++
+ /**
+  * qemu_plugin_read_memory_vaddr() - read from memory using a virtual address
+  *
+@@ -915,22 +951,6 @@ QEMU_PLUGIN_API
  bool qemu_plugin_read_memory_vaddr(uint64_t addr,
                                     GByteArray *data, size_t len);
  
-+/**
-+ * qemu_plugin_write_memory_vaddr() - write to memory using a virtual address
-+ *
-+ * @addr: A virtual address to write to
-+ * @data: A byte array containing the data to write
-+ *
-+ * The contents of @data will be written to memory starting at the virtual
-+ * address @addr.
-+ *
-+ * This function does not guarantee consistency of writes, nor does it ensure
-+ * that pending writes are flushed either before or after the write takes place,
-+ * so callers should take care to only call this function in vCPU context (i.e.
-+ * in callbacks) and avoid depending on the existence of data written using this
-+ * function which may be overwritten afterward.
-+ *
-+ * Returns true on success and false on failure.
-+ */
-+QEMU_PLUGIN_API
-+bool qemu_plugin_write_memory_vaddr(uint64_t addr,
-+                                   GByteArray *data);
-+
+-/**
+- * qemu_plugin_read_register() - read register for current vCPU
+- *
+- * @handle: a @qemu_plugin_reg_handle handle
+- * @buf: A GByteArray for the data owned by the plugin
+- *
+- * This function is only available in a context that register read access is
+- * explicitly requested via the QEMU_PLUGIN_CB_R_REGS flag.
+- *
+- * Returns the size of the read register. The content of @buf is in target byte
+- * order. On failure returns -1.
+- */
+-QEMU_PLUGIN_API
+-int qemu_plugin_read_register(struct qemu_plugin_register *handle,
+-                              GByteArray *buf);
+-
  /**
   * qemu_plugin_scoreboard_new() - alloc a new scoreboard
   *
 diff --git a/plugins/api.c b/plugins/api.c
-index 3f04399c26..1f64a9ea64 100644
+index 3c9d4832e9..6514f2c76a 100644
 --- a/plugins/api.c
 +++ b/plugins/api.c
-@@ -476,6 +476,24 @@ bool qemu_plugin_read_memory_vaddr(uint64_t addr, GByteArray *data, size_t len)
-     return true;
+@@ -433,6 +433,25 @@ GArray *qemu_plugin_get_registers(void)
+     return create_register_handles(regs);
  }
  
-+bool qemu_plugin_write_memory_vaddr(uint64_t addr, GByteArray *data)
++int qemu_plugin_read_register(struct qemu_plugin_register *reg, GByteArray *buf)
 +{
 +    g_assert(current_cpu);
 +
-+    if (data->len == 0) {
-+        return false;
-+    }
-+
-+    int result = cpu_memory_rw_debug(current_cpu, addr, data->data,
-+                                     data->len, true);
-+
-+    if (result < 0) {
-+        return false;
-+    }
-+
-+    return true;
++    return gdb_read_register(current_cpu, buf, GPOINTER_TO_INT(reg) - 1);
 +}
 +
++int qemu_plugin_write_register(struct qemu_plugin_register *reg,
++                               GByteArray *buf)
++{
++    g_assert(current_cpu);
++
++    if (buf->len == 0 || qemu_plugin_get_cb_flags() != QEMU_PLUGIN_CB_RW_REGS) {
++        return -1;
++    }
++
++    return gdb_write_register(current_cpu, buf->data, GPOINTER_TO_INT(reg) - 1);
++}
++
+ bool qemu_plugin_read_memory_vaddr(uint64_t addr, GByteArray *data, size_t len)
+ {
+     g_assert(current_cpu);
+@@ -453,13 +472,6 @@ bool qemu_plugin_read_memory_vaddr(uint64_t addr, GByteArray *data, size_t len)
+     return true;
+ }
+ 
+-int qemu_plugin_read_register(struct qemu_plugin_register *reg, GByteArray *buf)
+-{
+-    g_assert(current_cpu);
+-
+-    return gdb_read_register(current_cpu, buf, GPOINTER_TO_INT(reg) - 1);
+-}
+-
  struct qemu_plugin_scoreboard *qemu_plugin_scoreboard_new(size_t element_size)
  {
      return plugin_scoreboard_new(element_size);

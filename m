@@ -1,70 +1,70 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp788119dye;
-        Fri, 27 Jun 2025 02:58:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUg2k5mKlDO+RN81IgsNsNReJatAgJZeCMm+g+pjCzFfWL4HwOx6shPkVxqhbns7m5ujpxrRqX222UXHQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IF89FJed55IGb4JGk+l0V8R9pcFrz88XpMa4j6zbdzuuPkf2lTnmB4gD8K9ZVrBFgXY0Ozb
-X-Received: by 2002:ac8:5c93:0:b0:4a6:fa39:63a4 with SMTP id d75a77b69052e-4a7f2db5dc1mr122497611cf.2.1751018288885;
-        Fri, 27 Jun 2025 02:58:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751018288; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp788156dye;
+        Fri, 27 Jun 2025 02:58:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUwFMLnRdAtp3iwFWoaTmAj0i4qf1nO0Ena0b0/EMkpHI2tMe9OkhsASna0iOiYQZzEcnyNeE97jnNK3Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IFJI+bDrNcrKmaGtTOkrtxZQ7DMfyT5B8Zn5cxPcH3qqpAL4XGfncfvwy1WyVZhR3BV1b2F
+X-Received: by 2002:ac8:5fd2:0:b0:47a:e1b1:c6c9 with SMTP id d75a77b69052e-4a7fcae5de7mr39818221cf.42.1751018295826;
+        Fri, 27 Jun 2025 02:58:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751018295; cv=none;
         d=google.com; s=arc-20240605;
-        b=lQ8TgZC2XUiv/7zHjBV6ZcgLrysG/YUYfEzzNZfKTXkouzBA8IrhmxjvjQrYM5kmZ/
-         +8tdbNIjxSJSkBj5yZK5bOBwMk1AHpbQqsuaVSsvZZnbZdztPooyFWmGereq25xpYSae
-         TAcev9u/KgzXSaJCemmFJ+he0OkN0Zg8UIFfPmdPkRNYN56SRhKqAIB6ebxta4D7QKJr
-         FgvXQS7Kgry9Y5UFXDIpObGoF5wLJFAwgKvhAUggiTkpkAe/Cs+8E3t5oo3NeGejftCH
-         BerSDCqV7rbbKgeOWpqTLEcUT0h7E+rJsBjxqm9egDm/ggvegaGnTXmtXW7LTyXGQZJ8
-         lynw==
+        b=KCtsVpmnrfDBmvKasCHFhQfB86zRcMw+oiwP4MHHMTa8Z7I3dHsuDesLbhhAeiVwuw
+         mLe/gSiMgK8lSoFJox9sdX/guv1tuDkhzYTQITVTtMQjgFilqtLuYhDcAhqL7QiHM/YF
+         Yn3T2jCGve1nZuDF22FkRaWF2/w3ZHoJXQvMVQS/XTn7d0bbn6ESD8XJLdBZ3+dymdG7
+         UwiZ3zcYMuLfw0BlG75im5he7n+eSdRhnMjE4qtRwvnnUmECCJlqvZL0+IxapasNmEoq
+         t+REw5+GV8HWORSBMRTCQCI/FkKfC2Fsqb/umjmSwKJ5/TlnFxbLXRdDwi/yBQlMSB5L
+         jVKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=3P0lk6reQ0jJHbmCNRDUlBNJ8kYS7VDrLmKg9C1u1os=;
+        bh=sm2bM+8cqCRH4BtCAxabEh2omERCplS5pCQo9etPPQA=;
         fh=3+/pQVIKD31FE8qJaDVh0A7e2m9TMoY7e0VvIw0mRHw=;
-        b=AmjDuneZkZxdLf/7hDF+fDreHW23+n4c/Ef5pVm8IYqPh2Zxi24eI5G9+VIeAe//wT
-         GV4tSpHbDadpTsA6tfBA1qvx3aFepxdVeKVYmsbX3ekGKfrF52n9Bz85jou0qNPYnPJQ
-         24Z0fHc3Z81OpMOQvBQ3V2Ex+sv3EW49t/AlmX8BbGKiv1RrocIMGJfO6WcKYzHoguMB
-         HfjZq344sPOaMUfL9ClkX69xTdzQjSzgSI7xRUBRFKHRao43xYjoc0B0MM2/DLWP1Vm2
-         TSO+1f9NEvnkoZDRRuUeDhZfcDXpzrYQXG1gusDYotBeug3jCksBKcuvRnaefYrdAPdv
-         9JaQ==;
+        b=h8IcJM4w8kGyCyUVoa2xEVOX0qW8UWFZs8hZBpyeavfELoUz8mRX8ZcUzT8Tro5cXa
+         sjdvhl4qmDSLy1wMU6GLSWPucIAgwmSe7JpRk9O0aIyRRp1c4gjxKU6wDPpUm5S5sAwy
+         7+F6x4oWA5pNcP5ZwQ6N7JV8/Ft/7DUpDSfG8QW0svKlOacNK/9HMdj45odEo9bGCOcP
+         5UhZFVqYqEX/qvkOapoU4QX8TgFEAG++q4Az+jyzKhzkN52VyLFmmTUlRPbf0NK2psX4
+         4Ce3BboW4GZdopmVNSbeQfzzLtQeaqPbM2jpXQ8WJRpFMJ40r8BTpzSERx5I+2HjtJzc
+         f1Bg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gGQP+ufA;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q23KwkQu;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <eric.auger@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc12aa0fsi20314441cf.156.2025.06.27.02.58.08
+        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc554cc7si18383361cf.524.2025.06.27.02.58.15
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Jun 2025 02:58:08 -0700 (PDT)
+        Fri, 27 Jun 2025 02:58:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gGQP+ufA;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q23KwkQu;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1751018288;
+	s=mimecast20190719; t=1751018295;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=3P0lk6reQ0jJHbmCNRDUlBNJ8kYS7VDrLmKg9C1u1os=;
-	b=gGQP+ufASCD4At1gnFuQwn6nyGs0HtswTyYfJJnWT1moDuZ4ZZWEGr9TgDSbXDW0+rxTUw
-	DYS2y8jz+nr97XxDf8vDISYpeI566d1IeXRrIkMzEszG1MFAFFP6b49fqHkK2EqT05FrZD
-	lYxjldECi6YDipOJYPwhRmQxh5wbNqw=
+	bh=sm2bM+8cqCRH4BtCAxabEh2omERCplS5pCQo9etPPQA=;
+	b=Q23KwkQuG8mBgU6mt3S0VAIy1WZC8XwD3tIWuRiMrg5aiOOG/zIchKolReUPmJG/cS7syH
+	N9WPutP6GnjRKz+ebi0TFWEQBcTNXn7jTkQBttHvI+fPPTm41HbiWokrBluYVVqo8K4/sR
+	D+Jf8WmixtLzOKxYl6s+73ktLpNdhQw=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-335-cnZOd8bkMZutBue0sovOpA-1; Fri,
- 27 Jun 2025 05:58:05 -0400
-X-MC-Unique: cnZOd8bkMZutBue0sovOpA-1
-X-Mimecast-MFC-AGG-ID: cnZOd8bkMZutBue0sovOpA_1751018284
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-7-3VWrTRvCOrmVVnqTia1LCw-1; Fri,
+ 27 Jun 2025 05:58:10 -0400
+X-MC-Unique: 3VWrTRvCOrmVVnqTia1LCw-1
+X-Mimecast-MFC-AGG-ID: 3VWrTRvCOrmVVnqTia1LCw_1751018289
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 30FC8180120B;
-	Fri, 27 Jun 2025 09:58:04 +0000 (UTC)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 2803B1801222;
+	Fri, 27 Jun 2025 09:58:09 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.16])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id BCBD619560A7;
-	Fri, 27 Jun 2025 09:57:59 +0000 (UTC)
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id B133119560A7;
+	Fri, 27 Jun 2025 09:58:04 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com,
 	eric.auger@redhat.com,
@@ -80,226 +80,124 @@ Cc: pbonzini@redhat.com,
 	Jonathan.Cameron@huawei.com,
 	philmd@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v4 19/32] tests/qtest/bios-tables-test: Update ARM DSDT reference blobs
-Date: Fri, 27 Jun 2025 11:55:08 +0200
-Message-ID: <20250627095620.3300028-20-eric.auger@redhat.com>
+Subject: [PATCH v4 20/32] hw/arm/virt-acpi-build: Modify the DSDT ACPI table to enable ACPI PCI hotplug
+Date: Fri, 27 Jun 2025 11:55:09 +0200
+Message-ID: <20250627095620.3300028-21-eric.auger@redhat.com>
 In-Reply-To: <20250627095620.3300028-1-eric.auger@redhat.com>
 References: <20250627095620.3300028-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: 9OtbqAq/C+yZ
+X-TUID: 6z0/eCiVS1DX
 
-Changes relate to the introduction of pieces related to
-acpi-index static support along with root ports with no hotplug.
-
-+
-+    Scope (\_SB.PCI0)
-+    {
-+        Method (EDSM, 5, Serialized)
-+        {
-+            If ((Arg2 == Zero))
-+            {
-+                Local0 = Buffer (One)
-+                    {
-+                         0x00                                             // .
-+                    }
-+                If ((Arg0 != ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
-+                {
-+                    Return (Local0)
-+                }
-+
-+                If ((Arg1 < 0x02))
-+                {
-+                    Return (Local0)
-+                }
-+
-+                Local0 [Zero] = 0x81
-+                Return (Local0)
-+            }
-+
-+            If ((Arg2 == 0x07))
-+            {
-+                Local0 = Package (0x02)
-+                    {
-+                        Zero,
-+                        ""
-+                    }
-+                Local1 = DerefOf (Arg4 [Zero])
-+                Local0 [Zero] = Local1
-+                Return (Local0)
-+            }
-+        }
-+
-+        Device (S00)
-+        {
-+            Name (_ADR, Zero)  // _ADR: Address
-+        }
-+
-+        Device (S08)
-+        {
-+            Name (_ADR, 0x00010000)  // _ADR: Address
-+        }
-+
-+        Device (S10)
-+        {
-+            Name (_ADR, 0x00020000)  // _ADR: Address
-+        }
-+    }
- }
+Modify the DSDT ACPI table to enable ACPI PCI hotplug.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
+v3 -> v4:
+- use property accessor
+- removed ACPI_PCIHP_SIZE which is already in the header
+- make addition of EDSM unconditional
 
-above changes are reported after running make check V=2
-then I launched ../tests/data/acpi/rebuild-expected-aml.sh from the
-build directory and it putput those reference blobs.
-
-But I run make check V=2 after committing those changes I get and error
-which looks totally unexpected to me:
-
-acpi-test: Warning! DSDT binary file mismatch. Actual [aml:/tmp/aml-LZSL82], Expected [aml:tests/data/acpi/aarch64/virt/DSDT].
-See source file tests/qtest/bios-tables-test.c for instructions on how to update expected files.
-acpi-test: Warning! DSDT mismatch. Actual [asl:/tmp/asl-FTSL82.dsl, aml:/tmp/aml-LZSL82], Expected [asl:/tmp/asl-ZAWL82.dsl, aml:tests/data/acpi/aarch64/virt/DSDT].
---- /tmp/asl-ZAWL82.dsl	2025-06-27 03:34:45.518848387 -0400
-+++ /tmp/asl-FTSL82.dsl	2025-06-27 03:34:45.514848036 -0400
-@@ -1,30 +1,30 @@
- /*
-  * Intel ACPI Component Architecture
-  * AML/ASL+ Disassembler version 20210604 (64-bit version)
-  * Copyright (c) 2000 - 2021 Intel Corporation
-  *
-  * Disassembling to symbolic ASL+ operators
-  *
-- * Disassembly of tests/data/acpi/aarch64/virt/DSDT, Fri Jun 27 03:34:45 2025
-+ * Disassembly of /tmp/aml-LZSL82, Fri Jun 27 03:34:45 2025
-  *
-  * Original Table Header:
-  *     Signature        "DSDT"
-- *     Length           0x000014BE (5310)
-+ *     Length           0x000014AD (5293)
-  *     Revision         0x02
-- *     Checksum         0x8C
-+ *     Checksum         0xEA
-  *     OEM ID           "BOCHS "
-  *     OEM Table ID     "BXPC    "
-  *     OEM Revision     0x00000001 (1)
-  *     Compiler ID      "BXPC"
-  *     Compiler Version 0x00000001 (1)
-  */
- DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
- {
-     Scope (\_SB)
-     {
-         Device (C000)
-         {
-             Name (_HID, "ACPI0007" /* Processor Device */)  // _HID: Hardware ID
-             Name (_UID, Zero)  // _UID: Unique ID
-         }
-
-@@ -1929,24 +1929,19 @@
-                     }
-                 Local1 = DerefOf (Arg4 [Zero])
-                 Local0 [Zero] = Local1
-                 Return (Local0)
-             }
-         }
-
-         Device (S00)
-         {
-             Name (_ADR, Zero)  // _ADR: Address
-         }
-
-         Device (S08)
-         {
-             Name (_ADR, 0x00010000)  // _ADR: Address
-         }
--
--        Device (S10)
--        {
--            Name (_ADR, 0x00020000)  // _ADR: Address
--        }
-     }
- }
+v2 -> v3:
+- use ACPI_PCIHP_SIZE instead of 0x1000 (Igor)
+- use cihp_state->use_acpi_hotplug_bridge
 ---
- tests/qtest/bios-tables-test-allowed-diff.h   |   5 -----
- tests/data/acpi/aarch64/virt/DSDT             | Bin 5158 -> 5310 bytes
- .../data/acpi/aarch64/virt/DSDT.acpihmatvirt  | Bin 5244 -> 5379 bytes
- tests/data/acpi/aarch64/virt/DSDT.memhp       | Bin 6519 -> 6654 bytes
- tests/data/acpi/aarch64/virt/DSDT.pxb         | Bin 7603 -> 7768 bytes
- tests/data/acpi/aarch64/virt/DSDT.topology    | Bin 5360 -> 5495 bytes
- 6 files changed, 5 deletions(-)
+ include/hw/acpi/pcihp.h  |  2 ++
+ include/hw/arm/virt.h    |  1 +
+ hw/acpi/pcihp.c          |  1 -
+ hw/arm/virt-acpi-build.c | 13 +++++++++++++
+ hw/arm/virt.c            |  2 ++
+ 5 files changed, 18 insertions(+), 1 deletion(-)
 
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index abe00ad4ee..dfb8523c8b 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,6 +1 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/aarch64/virt/DSDT",
--"tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt",
--"tests/data/acpi/aarch64/virt/DSDT.memhp",
--"tests/data/acpi/aarch64/virt/DSDT.pxb",
--"tests/data/acpi/aarch64/virt/DSDT.topology",
-diff --git a/tests/data/acpi/aarch64/virt/DSDT b/tests/data/acpi/aarch64/virt/DSDT
-index acab6e65febbc210158d4c39be0680bbb90250f5..b897d667971500da4732000091a6f0828d05d89e 100644
-GIT binary patch
-delta 173
-zcmZ3cu}_oBCD<iop9lj3Q_n^&8IgJccg`5S_+Y2_0B27F5pPykmtbGs1!j}87zzZL
-z85t55NKKlYAt=lxaKZfK(_qso--+U{d?gP%`z}dXz&<sTi)l$h0as&30t3U6gatB_
-zv$)s`gjksvco`B3nmckB7!nH-A(GKe+`$G0@f`7vE<p^@P5i+I7V#YMl8!DxJPZts
-OU=c&8G!Fv<69WJ)j4yfs
-
-delta 19
-acmdm|xlDu0CD<iIO@x7g>C8qh84&<COa$Tp
-
-diff --git a/tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt b/tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt
-index 54c27e7d95b4956ed1b5dee0d299ccb08dc2a73e..2cef095bcc1bb404f8cd9ec77a879ed81c191875 100644
-GIT binary patch
-delta 156
-zcmeyP(X7Sg66_MfEXu&Zv}_|+kx0FO8%K;@e6Uk|fU~E8h&QXNORz8R0<+0k3<ZMB
-zj0_12q$W+y5ESMTxL|(rX|QRP??mxezLJNXeU~IGV4s@F#k3@$fUB`1fq`L3!UCDe
-zSzPP|Laa;-ybK8i%^f)m42cDa5XtB!?qCChc#e2Smmr4dCjMXpi+GNB4o8<D9tH+R
-F1_1j$EA9XQ
-
-delta 19
-acmZqH`lG?+66_LEBf`MI)VYzXNCW^oYz1ck
-
-diff --git a/tests/data/acpi/aarch64/virt/DSDT.memhp b/tests/data/acpi/aarch64/virt/DSDT.memhp
-index 4330bc97cba0950191c45ac833533db7a190db81..372ca3d7fb1e2927c7c12f97eec406d597f294ab 100644
-GIT binary patch
-delta 156
-zcmexv^v{^fCD<k8pCkhV6Zb~0T*-O?H;x#+_+Y2_0B27F5pPykmtbGs1!j}87zzZL
-z85t55NKKlYAt=lxaKZfK(_qso--+U{d?gP%`z}dXz&<sTi)l$h0as&30t3U6gatB_
-zv$)s`gjksvco`B3nmckB7!nH-A(GKe+`$G0@f`7vE<p^@P5i+I7V#YM9F8tQJPZts
-F3;>E4EZYD8
-
-delta 19
-acmexo{N0GlCD<jTT#|u->Fq|YTuA^&WCm0K
-
-diff --git a/tests/data/acpi/aarch64/virt/DSDT.pxb b/tests/data/acpi/aarch64/virt/DSDT.pxb
-index 7fdbc03e2bf9fb7d35704779253de36e362f0bf9..c2779882494e16920787b8ab7b4cb3c3b70f224b 100644
-GIT binary patch
-delta 168
-zcmdmNeZz*!CD<h-LXLrf$!jCmN?BzA7p@q+_+Y2_0B27F5pPykmtbGs1!j}87zzZL
-z85t55NKKl&K}IZRNx}m5shM0%OA-pW8aomg7?va~keQst#a<x9%EZ9SkWkRvk;A}{
-uSda*jjBer%HZX|ih<9`eVu)^%2{y2RaCjIP7#YxH`GXCiN_iL<m>2+L6)WZd
-
-delta 19
-acmca%v)P)<CD<iovn&Gx)9sC1D`f#g-Uey_
-
-diff --git a/tests/data/acpi/aarch64/virt/DSDT.topology b/tests/data/acpi/aarch64/virt/DSDT.topology
-index 969b4f6560d3ae39f5b7e0064b7122905476fce8..ebbeedc1ed30d811315c350f4cb42f8aa265af73 100644
-GIT binary patch
-delta 156
-zcmeyM`CW_4CD<jTT$F)<>HJ2nXCn0iZX7Xs@xe~<0nVNVBHpa7F2TOM3(O{GF%$?g
-zGcqJBkeW0(Lr|DY;DY(dr@^LGz7xe?`AQyk_Fa;&fPHEv7t@l20<Ol61O|pB2@7N<
-zXK}F?2(dCT@G>M6G<W1MFeDZvLL{S`xPuK0;yL0SU4j^*oA`qbEaExhIUHSrco-NM
-F8359@EocA$
-
-delta 19
-acmeya^+A)%CD<k8g9rly)25AF&qM%8i3Z^S
-
+diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
+index 5506a58862..9ff548650b 100644
+--- a/include/hw/acpi/pcihp.h
++++ b/include/hw/acpi/pcihp.h
+@@ -38,6 +38,8 @@
+ #define ACPI_PCIHP_SEJ_BASE 0x8
+ #define ACPI_PCIHP_BNMR_BASE 0x10
+ 
++#define ACPI_PCIHP_SIZE 0x0018
++
+ typedef struct AcpiPciHpPciStatus {
+     uint32_t up;
+     uint32_t down;
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 9a1b0f53d2..0ed2e6b732 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -79,6 +79,7 @@ enum {
+     VIRT_ACPI_GED,
+     VIRT_NVDIMM_ACPI,
+     VIRT_PVTIME,
++    VIRT_ACPI_PCIHP,
+     VIRT_LOWMEMMAP_LAST,
+ };
+ 
+diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
+index e79a24b821..36492aa0d9 100644
+--- a/hw/acpi/pcihp.c
++++ b/hw/acpi/pcihp.c
+@@ -43,7 +43,6 @@
+ #include "qobject/qnum.h"
+ #include "trace.h"
+ 
+-#define ACPI_PCIHP_SIZE 0x0018
+ #define PCI_UP_BASE 0x0000
+ #define PCI_DOWN_BASE 0x0004
+ #define PCI_EJ_BASE 0x0008
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 57847658a1..50bd559181 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -817,6 +817,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     AcpiTable table = { .sig = "DSDT", .rev = 2, .oem_id = vms->oem_id,
+                         .oem_table_id = vms->oem_table_id };
+     Aml *pci0_scope;
++    bool acpi_pcihp;
+ 
+     acpi_table_begin(&table, table_data);
+     dsdt = init_aml_allocator();
+@@ -878,6 +879,18 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         build_append_pcihp_slots(pci0_scope, vms->bus);
+     }
+ 
++    acpi_pcihp = object_property_get_bool(OBJECT(vms->acpi_dev),
++                                          ACPI_PM_PROP_ACPI_PCIHP_BRIDGE, NULL);
++    if (acpi_pcihp) {
++        aml_append(pci0_scope, build_pci_bridge_edsm());
++        build_acpi_pci_hotplug(dsdt, AML_SYSTEM_MEMORY,
++                               memmap[VIRT_ACPI_PCIHP].base);
++        build_append_pcihp_resources(pci0_scope,
++                                     memmap[VIRT_ACPI_PCIHP].base,
++                                     memmap[VIRT_ACPI_PCIHP].size);
++
++        build_append_notification_callback(pci0_scope, vms->bus);
++    }
+     aml_append(dsdt, pci0_scope);
+ 
+     /* copy AML table into ACPI tables blob */
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 99fde5836c..d4e671617a 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -75,6 +75,7 @@
+ #include "standard-headers/linux/input.h"
+ #include "hw/arm/smmuv3.h"
+ #include "hw/acpi/acpi.h"
++#include "hw/acpi/pcihp.h"
+ #include "target/arm/cpu-qom.h"
+ #include "target/arm/internals.h"
+ #include "target/arm/multiprocessing.h"
+@@ -183,6 +184,7 @@ static const MemMapEntry base_memmap[] = {
+     [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
+     [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
+     [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
++    [VIRT_ACPI_PCIHP] =         { 0x090c0000, ACPI_PCIHP_SIZE },
+     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
 -- 
 2.49.0

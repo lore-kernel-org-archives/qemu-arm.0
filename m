@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.19])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a88c7fadf3sm2503596f8f.34.2025.06.27.04.25.15
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a88c800eaasm2489362f8f.37.2025.06.27.04.25.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 27 Jun 2025 04:25:20 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id BAD645F8BF;
-	Fri, 27 Jun 2025 12:25:12 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 4CB6F5F914;
+	Fri, 27 Jun 2025 12:25:13 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -27,154 +27,417 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
 	Alexandre Iooss <erdnaxe@crans.org>,
 	Rowan Hart <rowanbhart@gmail.com>
-Subject: [PATCH 06/15] plugins: Add register write API
-Date: Fri, 27 Jun 2025 12:25:02 +0100
-Message-ID: <20250627112512.1880708-7-alex.bennee@linaro.org>
+Subject: [PATCH 11/15] plugins: Add patcher plugin and test
+Date: Fri, 27 Jun 2025 12:25:07 +0100
+Message-ID: <20250627112512.1880708-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250627112512.1880708-1-alex.bennee@linaro.org>
 References: <20250627112512.1880708-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: M+RSPmuLtWiQ
+X-TUID: hnlkOMKjQm68
 
 From: Rowan Hart <rowanbhart@gmail.com>
 
-This patch adds a function to the plugins API to allow plugins to write
-register contents. It also moves the qemu_plugin_read_register function
-so all the register-related functions are grouped together in the file.
+This patch adds a plugin that exercises the virtual and hardware memory
+read-write API functions added in a previous patch. The plugin takes a
+target and patch byte sequence, and will overwrite any instruction
+matching the target byte sequence with the patch.
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Rowan Hart <rowanbhart@gmail.com>
-Message-ID: <20250624175351.440780-3-rowanbhart@gmail.com>
+Message-ID: <20250624175351.440780-8-rowanbhart@gmail.com>
+[AJB: tweak Makefile, use uintptr_t for pointer stuffing]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/qemu/qemu-plugin.h | 54 ++++++++++++++++++++++++++------------
- plugins/api.c              | 26 +++++++++++++-----
- 2 files changed, 56 insertions(+), 24 deletions(-)
+ tests/tcg/plugins/patch.c                 | 251 ++++++++++++++++++++++
+ tests/tcg/x86_64/system/patch-target.c    |  22 ++
+ tests/tcg/Makefile.target                 |   7 +-
+ tests/tcg/plugins/meson.build             |   2 +-
+ tests/tcg/x86_64/Makefile.softmmu-target  |   9 +
+ tests/tcg/x86_64/system/validate-patch.py |  39 ++++
+ 6 files changed, 328 insertions(+), 2 deletions(-)
+ create mode 100644 tests/tcg/plugins/patch.c
+ create mode 100644 tests/tcg/x86_64/system/patch-target.c
+ create mode 100755 tests/tcg/x86_64/system/validate-patch.py
 
-diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
-index 3a850aa216..cfe1692ecb 100644
---- a/include/qemu/qemu-plugin.h
-+++ b/include/qemu/qemu-plugin.h
-@@ -871,7 +871,8 @@ struct qemu_plugin_register;
- /**
-  * typedef qemu_plugin_reg_descriptor - register descriptions
-  *
-- * @handle: opaque handle for retrieving value with qemu_plugin_read_register
-+ * @handle: opaque handle for retrieving value with qemu_plugin_read_register or
-+ *          writing value with qemu_plugin_write_register
-  * @name: register name
-  * @feature: optional feature descriptor, can be NULL
-  */
-@@ -893,6 +894,41 @@ typedef struct {
- QEMU_PLUGIN_API
- GArray *qemu_plugin_get_registers(void);
- 
-+/**
-+ * qemu_plugin_read_register() - read register for current vCPU
+diff --git a/tests/tcg/plugins/patch.c b/tests/tcg/plugins/patch.c
+new file mode 100644
+index 0000000000..111c5c1f16
+--- /dev/null
++++ b/tests/tcg/plugins/patch.c
+@@ -0,0 +1,251 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * @handle: a @qemu_plugin_reg_handle handle
-+ * @buf: A GByteArray for the data owned by the plugin
++ * This plugin patches instructions matching a pattern to a different
++ * instruction as they execute
 + *
-+ * This function is only available in a context that register read access is
-+ * explicitly requested via the QEMU_PLUGIN_CB_R_REGS flag.
-+ *
-+ * Returns the size of the read register. The content of @buf is in target byte
-+ * order. On failure returns -1.
 + */
-+QEMU_PLUGIN_API
-+int qemu_plugin_read_register(struct qemu_plugin_register *handle,
-+                              GByteArray *buf);
++
++#include "glib.h"
++#include "glibconfig.h"
++
++#include <qemu-plugin.h>
++#include <string.h>
++#include <stdio.h>
++
++QEMU_PLUGIN_EXPORT int qemu_plugin_version = QEMU_PLUGIN_VERSION;
++
++static bool use_hwaddr;
++static GByteArray *target_data;
++static GByteArray *patch_data;
 +
 +/**
-+ * qemu_plugin_write_register() - write register for current vCPU
-+ *
-+ * @handle: a @qemu_plugin_reg_handle handle
-+ * @buf: A GByteArray for the data owned by the plugin
-+ *
-+ * This function is only available in a context that register write access is
-+ * explicitly requested via the QEMU_PLUGIN_CB_RW_REGS flag.
-+ *
-+ * The size of @buf must be at least the size of the requested register.
-+ * Attempting to write a register with @buf smaller than the register size
-+ * will result in a crash or other undesired behavior.
-+ *
-+ * Returns the number of bytes written. On failure returns 0.
++ * Parse a string of hexadecimal digits into a GByteArray. The string must be
++ * even length
 + */
-+QEMU_PLUGIN_API
-+int qemu_plugin_write_register(struct qemu_plugin_register *handle,
-+                              GByteArray *buf);
-+
- /**
-  * qemu_plugin_read_memory_vaddr() - read from memory using a virtual address
-  *
-@@ -915,22 +951,6 @@ QEMU_PLUGIN_API
- bool qemu_plugin_read_memory_vaddr(uint64_t addr,
-                                    GByteArray *data, size_t len);
- 
--/**
-- * qemu_plugin_read_register() - read register for current vCPU
-- *
-- * @handle: a @qemu_plugin_reg_handle handle
-- * @buf: A GByteArray for the data owned by the plugin
-- *
-- * This function is only available in a context that register read access is
-- * explicitly requested via the QEMU_PLUGIN_CB_R_REGS flag.
-- *
-- * Returns the size of the read register. The content of @buf is in target byte
-- * order. On failure returns -1.
-- */
--QEMU_PLUGIN_API
--int qemu_plugin_read_register(struct qemu_plugin_register *handle,
--                              GByteArray *buf);
--
- /**
-  * qemu_plugin_scoreboard_new() - alloc a new scoreboard
-  *
-diff --git a/plugins/api.c b/plugins/api.c
-index 3c9d4832e9..6514f2c76a 100644
---- a/plugins/api.c
-+++ b/plugins/api.c
-@@ -433,6 +433,25 @@ GArray *qemu_plugin_get_registers(void)
-     return create_register_handles(regs);
- }
- 
-+int qemu_plugin_read_register(struct qemu_plugin_register *reg, GByteArray *buf)
++static GByteArray *str_to_bytes(const char *str)
 +{
-+    g_assert(current_cpu);
++    size_t len = strlen(str);
 +
-+    return gdb_read_register(current_cpu, buf, GPOINTER_TO_INT(reg) - 1);
++    if (len == 0 || len % 2 != 0) {
++        return NULL;
++    }
++
++    GByteArray *bytes = g_byte_array_new();
++    char byte[3] = {0};
++    guint8 value = 0;
++
++    for (size_t i = 0; i < len; i += 2) {
++        byte[0] = str[i];
++        byte[1] = str[i + 1];
++        value = (guint8)g_ascii_strtoull(byte, NULL, 16);
++        g_byte_array_append(bytes, &value, 1);
++    }
++
++    return bytes;
 +}
 +
-+int qemu_plugin_write_register(struct qemu_plugin_register *reg,
-+                               GByteArray *buf)
++static void patch_hwaddr(unsigned int vcpu_index, void *userdata)
 +{
-+    g_assert(current_cpu);
++    uintptr_t addr = (uintptr_t) userdata;
++    g_autoptr(GString) str = g_string_new(NULL);
++    g_string_printf(str, "patching: @0x%"
++                    PRIxPTR "\n",
++                    addr);
++    qemu_plugin_outs(str->str);
 +
-+    if (buf->len == 0 || qemu_plugin_get_cb_flags() != QEMU_PLUGIN_CB_RW_REGS) {
++    enum qemu_plugin_hwaddr_operation_result result =
++        qemu_plugin_write_memory_hwaddr(addr, patch_data);
++
++
++    if (result != QEMU_PLUGIN_HWADDR_OPERATION_OK) {
++        g_autoptr(GString) errmsg = g_string_new(NULL);
++        g_string_printf(errmsg, "Failed to write memory: %d\n", result);
++        qemu_plugin_outs(errmsg->str);
++        return;
++    }
++
++    GByteArray *read_data = g_byte_array_new();
++
++    result = qemu_plugin_read_memory_hwaddr(addr, read_data,
++                                            patch_data->len);
++
++    qemu_plugin_outs("Reading memory...\n");
++
++    if (result != QEMU_PLUGIN_HWADDR_OPERATION_OK) {
++        g_autoptr(GString) errmsg = g_string_new(NULL);
++        g_string_printf(errmsg, "Failed to read memory: %d\n", result);
++        qemu_plugin_outs(errmsg->str);
++        return;
++    }
++
++    if (memcmp(patch_data->data, read_data->data, patch_data->len) != 0) {
++        qemu_plugin_outs("Failed to read back written data\n");
++    }
++
++    qemu_plugin_outs("Success!\n");
++
++    return;
++}
++
++static void patch_vaddr(unsigned int vcpu_index, void *userdata)
++{
++    uintptr_t addr = (uintptr_t) userdata;
++    uint64_t hwaddr = 0;
++    if (!qemu_plugin_translate_vaddr(addr, &hwaddr)) {
++        qemu_plugin_outs("Failed to translate vaddr\n");
++        return;
++    }
++    g_autoptr(GString) str = g_string_new(NULL);
++    g_string_printf(str, "patching: @0x%"
++                    PRIxPTR " hw: @0x%" PRIx64 "\n",
++                    addr, hwaddr);
++    qemu_plugin_outs(str->str);
++
++    qemu_plugin_outs("Writing memory (vaddr)...\n");
++
++    if (!qemu_plugin_write_memory_vaddr(addr, patch_data)) {
++        qemu_plugin_outs("Failed to write memory\n");
++        return;
++    }
++
++    qemu_plugin_outs("Reading memory (vaddr)...\n");
++
++    g_autoptr(GByteArray) read_data = g_byte_array_new();
++
++    if (!qemu_plugin_read_memory_vaddr(addr, read_data, patch_data->len)) {
++        qemu_plugin_outs("Failed to read memory\n");
++        return;
++    }
++
++    if (memcmp(patch_data->data, read_data->data, patch_data->len) != 0) {
++        qemu_plugin_outs("Failed to read back written data\n");
++    }
++
++    qemu_plugin_outs("Success!\n");
++
++    return;
++}
++
++/*
++ * Callback on translation of a translation block.
++ */
++static void vcpu_tb_trans_cb(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
++{
++    g_autoptr(GByteArray) insn_data = g_byte_array_new();
++    uintptr_t addr = 0;
++
++    for (size_t i = 0; i < qemu_plugin_tb_n_insns(tb); i++) {
++        struct qemu_plugin_insn *insn = qemu_plugin_tb_get_insn(tb, i);
++        uint64_t vaddr = qemu_plugin_insn_vaddr(insn);
++
++        if (use_hwaddr) {
++            uint64_t hwaddr = 0;
++            if (!qemu_plugin_translate_vaddr(vaddr, &hwaddr)) {
++                qemu_plugin_outs("Failed to translate vaddr\n");
++                continue;
++            }
++            /*
++             * As we cannot emulate 64 bit systems on 32 bit hosts we
++             * should never see the top bits set, hence we can safely
++             * cast to uintptr_t.
++             */
++            g_assert(hwaddr <= UINTPTR_MAX);
++            addr = (uintptr_t) hwaddr;
++        } else {
++            g_assert(vaddr <= UINTPTR_MAX);
++            addr = (uintptr_t) vaddr;
++        }
++
++        g_byte_array_set_size(insn_data, qemu_plugin_insn_size(insn));
++        qemu_plugin_insn_data(insn, insn_data->data, insn_data->len);
++
++        if (insn_data->len >= target_data->len &&
++            !memcmp(insn_data->data, target_data->data,
++                    MIN(target_data->len, insn_data->len))) {
++            if (use_hwaddr) {
++                qemu_plugin_register_vcpu_tb_exec_cb(tb, patch_hwaddr,
++                                                     QEMU_PLUGIN_CB_NO_REGS,
++                                                     (void *) addr);
++            } else {
++                qemu_plugin_register_vcpu_tb_exec_cb(tb, patch_vaddr,
++                                                     QEMU_PLUGIN_CB_NO_REGS,
++                                                     (void *) addr);
++            }
++        }
++    }
++}
++
++static void usage(void)
++{
++    fprintf(stderr, "Usage: <lib>,target=<bytes>,patch=<new_bytes>"
++            "[,use_hwaddr=true|false]");
++}
++
++/*
++ * Called when the plugin is installed
++ */
++QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
++                                           const qemu_info_t *info, int argc,
++                                           char **argv)
++{
++
++    use_hwaddr = true;
++    target_data = NULL;
++    patch_data = NULL;
++
++    if (argc > 4) {
++        usage();
 +        return -1;
 +    }
 +
-+    return gdb_write_register(current_cpu, buf->data, GPOINTER_TO_INT(reg) - 1);
-+}
++    for (size_t i = 0; i < argc; i++) {
++        char *opt = argv[i];
++        g_auto(GStrv) tokens = g_strsplit(opt, "=", 2);
++        if (g_strcmp0(tokens[0], "use_hwaddr") == 0) {
++            if (!qemu_plugin_bool_parse(tokens[0], tokens[1], &use_hwaddr)) {
++                fprintf(stderr,
++                        "Failed to parse boolean argument use_hwaddr\n");
++                return -1;
++            }
++        } else if (g_strcmp0(tokens[0], "target") == 0) {
++            target_data = str_to_bytes(tokens[1]);
++            if (!target_data) {
++                fprintf(stderr,
++                         "Failed to parse target bytes.\n");
++                return -1;
++            }
++        } else if (g_strcmp0(tokens[0], "patch") == 0) {
++            patch_data = str_to_bytes(tokens[1]);
++            if (!patch_data) {
++                fprintf(stderr, "Failed to parse patch bytes.\n");
++                return -1;
++            }
++        } else {
++            fprintf(stderr, "Unknown argument: %s\n", tokens[0]);
++            usage();
++            return -1;
++        }
++    }
 +
- bool qemu_plugin_read_memory_vaddr(uint64_t addr, GByteArray *data, size_t len)
- {
-     g_assert(current_cpu);
-@@ -453,13 +472,6 @@ bool qemu_plugin_read_memory_vaddr(uint64_t addr, GByteArray *data, size_t len)
-     return true;
- }
++    if (!target_data) {
++        fprintf(stderr, "target argument is required\n");
++        usage();
++        return -1;
++    }
++
++    if (!patch_data) {
++        fprintf(stderr, "patch argument is required\n");
++        usage();
++        return -1;
++    }
++
++    if (target_data->len != patch_data->len) {
++        fprintf(stderr, "Target and patch data must be the same length\n");
++        return -1;
++    }
++
++    qemu_plugin_register_vcpu_tb_trans_cb(id, vcpu_tb_trans_cb);
++
++    return 0;
++}
+diff --git a/tests/tcg/x86_64/system/patch-target.c b/tests/tcg/x86_64/system/patch-target.c
+new file mode 100644
+index 0000000000..8c2b6f4ba7
+--- /dev/null
++++ b/tests/tcg/x86_64/system/patch-target.c
+@@ -0,0 +1,22 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This test target increments a value 100 times. The patcher converts the
++ * inc instruction to a nop, so it only increments the value once.
++ *
++ */
++#include <minilib.h>
++
++int main(void)
++{
++    ml_printf("Running test...\n");
++    unsigned int x = 0;
++    for (int i = 0; i < 100; i++) {
++        asm volatile (
++            "inc %[x]"
++            : [x] "+a" (x)
++        );
++    }
++    ml_printf("Value: %d\n", x);
++    return 0;
++}
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index 95ff76ea44..af68f11664 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -151,7 +151,12 @@ ifeq ($(CONFIG_PLUGIN),y)
+ PLUGIN_SRC=$(SRC_PATH)/tests/tcg/plugins
+ PLUGIN_LIB=../plugins
+ VPATH+=$(PLUGIN_LIB)
+-PLUGINS=$(patsubst %.c, lib%.so, $(notdir $(wildcard $(PLUGIN_SRC)/*.c)))
++# Some plugins need to be disabled for all tests to avoid exponential explosion.
++# For example, libpatch.so only needs to run against the arch-specific patch
++# target test, so we explicitly run it in the arch-specific Makefile.
++DISABLE_PLUGINS=libpatch.so
++PLUGINS=$(filter-out $(DISABLE_PLUGINS), \
++	$(patsubst %.c, lib%.so, $(notdir $(wildcard $(PLUGIN_SRC)/*.c))))
  
--int qemu_plugin_read_register(struct qemu_plugin_register *reg, GByteArray *buf)
--{
--    g_assert(current_cpu);
--
--    return gdb_read_register(current_cpu, buf, GPOINTER_TO_INT(reg) - 1);
--}
--
- struct qemu_plugin_scoreboard *qemu_plugin_scoreboard_new(size_t element_size)
- {
-     return plugin_scoreboard_new(element_size);
+ # We need to ensure expand the run-plugin-TEST-with-PLUGIN
+ # pre-requistes manually here as we can't use stems to handle it. We
+diff --git a/tests/tcg/plugins/meson.build b/tests/tcg/plugins/meson.build
+index 029342282a..61a007d9e7 100644
+--- a/tests/tcg/plugins/meson.build
++++ b/tests/tcg/plugins/meson.build
+@@ -1,6 +1,6 @@
+ t = []
+ if get_option('plugins')
+-  foreach i : ['bb', 'empty', 'inline', 'insn', 'mem', 'reset', 'syscall']
++  foreach i : ['bb', 'empty', 'inline', 'insn', 'mem', 'reset', 'syscall', 'patch']
+     if host_os == 'windows'
+       t += shared_module(i, files(i + '.c') + '../../../contrib/plugins/win32_linker.c',
+                         include_directories: '../../../include/qemu',
+diff --git a/tests/tcg/x86_64/Makefile.softmmu-target b/tests/tcg/x86_64/Makefile.softmmu-target
+index d3e09708a5..3e30ca9307 100644
+--- a/tests/tcg/x86_64/Makefile.softmmu-target
++++ b/tests/tcg/x86_64/Makefile.softmmu-target
+@@ -33,3 +33,12 @@ memory: CFLAGS+=-DCHECK_UNALIGNED=1
+ 
+ # Running
+ QEMU_OPTS+=-device isa-debugcon,chardev=output -device isa-debug-exit,iobase=0xf4,iosize=0x4 -kernel
++
++ifeq ($(CONFIG_PLUGIN),y)
++run-plugin-patch-target-with-libpatch.so:		\
++	PLUGIN_ARGS=$(COMMA)target=ffc0$(COMMA)patch=9090$(COMMA)use_hwaddr=true
++run-plugin-patch-target-with-libpatch.so:		\
++	CHECK_PLUGIN_OUTPUT_COMMAND=$(X64_SYSTEM_SRC)/validate-patch.py $@.out
++run-plugin-patch-target-with-libpatch.so: patch-target libpatch.so
++EXTRA_RUNS+=run-plugin-patch-target-with-libpatch.so
++endif
+diff --git a/tests/tcg/x86_64/system/validate-patch.py b/tests/tcg/x86_64/system/validate-patch.py
+new file mode 100755
+index 0000000000..700950eae5
+--- /dev/null
++++ b/tests/tcg/x86_64/system/validate-patch.py
+@@ -0,0 +1,39 @@
++#!/usr/bin/env python3
++#
++# validate-patch.py: check the patch applies
++#
++# This program takes two inputs:
++#   - the plugin output
++#   - the binary output
++#
++# Copyright (C) 2024
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++import sys
++from argparse import ArgumentParser
++
++def main() -> None:
++    """
++    Process the arguments, injest the program and plugin out and
++    verify they match up and report if they do not.
++    """
++    parser = ArgumentParser(description="Validate patch")
++    parser.add_argument('test_output',
++                        help="The output from the test itself")
++    parser.add_argument('plugin_output',
++                        help="The output from plugin")
++    args = parser.parse_args()
++
++    with open(args.test_output, 'r') as f:
++        test_data = f.read()
++    with open(args.plugin_output, 'r') as f:
++        plugin_data = f.read()
++    if "Value: 1" in test_data:
++        sys.exit(0)
++    else:
++        sys.exit(1)
++
++if __name__ == "__main__":
++    main()
++
 -- 
 2.47.2

@@ -1,70 +1,70 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp788369dye;
-        Fri, 27 Jun 2025 02:58:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX5EGeaTNiHWnGuTaFH260ZZoekz9w2rDie9LT3rgNtV5nfxdMjFiFYi5y8Zu7koYWEz/P+8efZqdMdiQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE4eFxxywzGUUzfmvmwCtBXBI6Jz2emDc1XxdPbmca1hrqptGiiBiVeZ/X50i/jogW4VOnR
-X-Received: by 2002:a05:620a:4613:b0:7d3:d029:2356 with SMTP id af79cd13be357-7d44411aaf3mr333440585a.11.1751018333028;
-        Fri, 27 Jun 2025 02:58:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751018333; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp788395dye;
+        Fri, 27 Jun 2025 02:59:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVKuX4NzbI0voffXO+SLueL1s6cAwKsVfFQB86NYHhf7i8+6ECXh+Dezfny+zq/yfTxJ8jY5FEvJuZEMg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFuettv1xYK7StVOOvxgY0PEBXT6uZRNUx7Baq74qoZPPRZZkK79OL5APyz2i6L0qJ803J2
+X-Received: by 2002:a05:622a:4b08:b0:4a7:6872:babd with SMTP id d75a77b69052e-4a804a88015mr258801cf.12.1751018340747;
+        Fri, 27 Jun 2025 02:59:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751018340; cv=none;
         d=google.com; s=arc-20240605;
-        b=BREsgplwRtma0pcuRAWYw4N1MZQEWExdV2qXvMbB1haVKKcSjlOvAUU9ILMzwDbeZp
-         MllJZyrb3f49QOrIrZGuKTomGu9sJ3/ooOSKvIxvCvKBtpK5OcCe5q62Sld87HY2DPNx
-         k629BBoE0fGkrGTtWr0mUIVqioO1womcmERUbIIDQHM2+Gsqa3n6QFeebHoCWbpR2prE
-         XyJVATjTiZfRiAfFwj0JoUsTQOMV3R2qmMBncXqhR6GdGT1Ty7+MDdhGWRArzLfw2+It
-         uptdh5VgCkwQVE0adobGtbuKh+W2fuHUp44NYGbZV05AGrJ0n9vjrNIR2jdh9s9KK/s4
-         kDGA==
+        b=Kot351glg6ooH+UQG6XLQBmJXHikXbeVmzKl1rIYftgC3A0fT0yY9gq4DRwTaIBIG1
+         Fp20kYB4hIHQPEo7NCe0wc7U6S/JTTmZuGwTWcWi36qPH7UbjggrRInHhK3DwXm4vpms
+         2MbUbvvCD3jplIGGRIVeWLfjmXZnq9GkIdr03O9m+5FXjtDxBUgOJJgI5xUhgMFkxN+5
+         CXEOoS6S1oUs1g0d8ZATD7HOeT3IMduE77Kzi5yXXk0c9ysxpmoH37b8x0vgO2P5iA8R
+         ba3DPsXL64tBkVMQMLrjvtZPX4j2bsreUvRgzfsix+2FvOzP4Y/YaqpS0D/XUOgi4NFB
+         fiiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/d3+oYG6EXhDPYhOXvbhWgpCOTN9+9rZDzH5VylPhQI=;
+        bh=tRoRixwqTnZ7ojJEkTwJJJeBkcITPbZrpHGxpWdI9MA=;
         fh=3+/pQVIKD31FE8qJaDVh0A7e2m9TMoY7e0VvIw0mRHw=;
-        b=Gr5vClzOB7LQGFxDohps3090tJx8gj5gCjxWtE+MD6emSh8HZ/mQhl5gVyK0d2hUtP
-         N4QZn9nzcGsxCfLV4Ai2hyMiR1gaajxZ01VfNXuqCs1DQECrZIMcme5OE7K4sbznVSlg
-         d4cxL7q9XyJG7//Ff4EKj7X8ct3Sq35h0GVOBl25MBK1hQUIWBf/ubSgPGqBOo9lx2it
-         q58dBRhAhmXDUBbHa9Tr8m8Gd9I65yg4AMRd/D9ipbbW571wlMmwxvVttQhXgHQXPBoi
-         JzwTcZdy/O9PqoTp+3+YsOrw6m5g/ROR4lWlaH7AMUE8joJIa6TUsyfCNUKRb6ufSPRo
-         Uu3g==;
+        b=JoJ3SUSy+Oo1+CH5ift22jL2u8Xol4CHqgql6+Dah/MwmOrshBX3JZ/A/1iHWKfnhS
+         IOOuLoDUppt83Sh2Ep5W/AsjBRg2zw02+r5ZCLj8v4fJ1Y2i3YNJaupPkzZMv1S8e92I
+         DWRR3bIUdZqZyJktBSi+VCXrJPU1vpGM4xZkGEWLeuWbOH7jILRyCpsLBwBraHcLtBvG
+         xuhxvPG069RhupWoYs35EI/QrtT9YyD3/1sqnN08T6ts39/nGaiTX39FqJODnxiGFDqv
+         Vu4mOr3C0aydMngjNxLxkpfB3fuX+3WOJg9mL0xcHhhWeHc2UjFO6IFlL7X2gxK+6KS/
+         qYJg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gvZHo024;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GoKNZBw5;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <eric.auger@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7d443192fbfsi192333085a.6.2025.06.27.02.58.52
+        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc100f51si20220241cf.66.2025.06.27.02.59.00
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Jun 2025 02:58:53 -0700 (PDT)
+        Fri, 27 Jun 2025 02:59:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gvZHo024;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GoKNZBw5;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1751018332;
+	s=mimecast20190719; t=1751018340;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=/d3+oYG6EXhDPYhOXvbhWgpCOTN9+9rZDzH5VylPhQI=;
-	b=gvZHo024gxTJr8K1F9ZeaJAiFkBFcEnVdfZlLMyRu1VZUe0MTFGFGR597JgSER5Qk4O0+s
-	EYge+DFJJsRT+Nk4pmz8i9sELjihSZgofA0sscV03+5KU/WDVAf1oD+lNR5rcNV57/Lb6T
-	GPysFg3LNIGrCp+Gritjdfcp1OLv+YY=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+	bh=tRoRixwqTnZ7ojJEkTwJJJeBkcITPbZrpHGxpWdI9MA=;
+	b=GoKNZBw5m1lfRX2nc9evATK7eS75nbNLV0Ip0QMYXL0vkFZPiQxeJTwNoT7WJvzLLNgKNv
+	8cRj67XCrxsg7Mgt1FABEqqo1D3j9+FWc/cc8+hAoxN5mxNWHkznFtz0HMMXM5WhZ0Vams
+	hP2K5o0QwX12IOjQ0fDImhGIUoIpw5w=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-451-stascEnrNJ2KG8hU3QxygA-1; Fri,
- 27 Jun 2025 05:58:51 -0400
-X-MC-Unique: stascEnrNJ2KG8hU3QxygA-1
-X-Mimecast-MFC-AGG-ID: stascEnrNJ2KG8hU3QxygA_1751018329
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-479-qVufnhvLMxevo8_iVlqo_A-1; Fri,
+ 27 Jun 2025 05:58:56 -0400
+X-MC-Unique: qVufnhvLMxevo8_iVlqo_A-1
+X-Mimecast-MFC-AGG-ID: qVufnhvLMxevo8_iVlqo_A_1751018335
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id AF2D71800366;
-	Fri, 27 Jun 2025 09:58:49 +0000 (UTC)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 2A8AB193F048;
+	Fri, 27 Jun 2025 09:58:55 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.16])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 5EFFD19560AF;
-	Fri, 27 Jun 2025 09:58:45 +0000 (UTC)
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 3A14819560AB;
+	Fri, 27 Jun 2025 09:58:49 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com,
 	eric.auger@redhat.com,
@@ -80,69 +80,63 @@ Cc: pbonzini@redhat.com,
 	Jonathan.Cameron@huawei.com,
 	philmd@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v4 28/32] hw/arm/virt: Minor code reshuffling in create_acpi_ged
-Date: Fri, 27 Jun 2025 11:55:17 +0200
-Message-ID: <20250627095620.3300028-29-eric.auger@redhat.com>
+Subject: [PATCH v4 29/32] hw/arm/virt: Let virt support pci hotplug/unplug GED event
+Date: Fri, 27 Jun 2025 11:55:18 +0200
+Message-ID: <20250627095620.3300028-30-eric.auger@redhat.com>
 In-Reply-To: <20250627095620.3300028-1-eric.auger@redhat.com>
 References: <20250627095620.3300028-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: 3f8dsqZC4rPA
+X-TUID: IUboBOj2IMwn
 
-Use a local SysBusDevice handle. Also use the newly introduced
-sysbus_mmio_map_name which brings better readability about the region
-being mapped. GED device has regions which exist depending on some
-external properties and it becomes difficult to guess the index of
-a region. Better refer to a region by its name.
+Set up the IO registers used to communicate between QEMU
+and ACPI.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- include/hw/acpi/generic_event_device.h |  1 +
- hw/arm/virt.c                          | 11 +++++++----
- 2 files changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-index ec8e1abe0a..8f5d903146 100644
---- a/include/hw/acpi/generic_event_device.h
-+++ b/include/hw/acpi/generic_event_device.h
-@@ -111,6 +111,7 @@ typedef struct GEDState {
- } GEDState;
- 
- #define ACPI_PCIHP_REGION_NAME "pcihp container"
-+#define ACPI_MEMHP_REGION_NAME "memhp container"
- 
- struct AcpiGedState {
-     SysBusDevice parent_obj;
+---
+v2 -> v3:
+- remove acpi_ged_state->pcihp_state.use_acpi_hotplug_bridge = true;
+- use sysbus_mmio_map_name for all regs (Igor)
+- create_pcie left at its original place
+
+v1 -> v2:
+- use ACPI_PCIHP_REGION_NAME
+---
+ hw/arm/virt.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 2b0814888a..878c567354 100644
+index 878c567354..d8706ef9c8 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -683,6 +683,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
- {
-     DeviceState *dev;
-     MachineState *ms = MACHINE(vms);
-+    SysBusDevice *sbdev;
+@@ -686,6 +686,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+     SysBusDevice *sbdev;
      int irq = vms->irqmap[VIRT_ACPI_GED];
      uint32_t event = ACPI_GED_PWR_DOWN_EVT;
++    bool acpi_pcihp;
  
-@@ -697,11 +698,13 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
-     dev = qdev_new(TYPE_ACPI_GED);
-     qdev_prop_set_uint32(dev, "ged-event", event);
-     object_property_set_link(OBJECT(dev), "bus", OBJECT(vms->bus), &error_abort);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sbdev = SYS_BUS_DEVICE(dev);
-+    sysbus_realize_and_unref(sbdev, &error_fatal);
- 
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_ACPI_GED].base);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 1, vms->memmap[VIRT_PCDIMM_ACPI].base);
--    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(vms->gic, irq));
-+    sysbus_mmio_map_name(sbdev, TYPE_ACPI_GED, vms->memmap[VIRT_ACPI_GED].base);
-+    sysbus_mmio_map_name(sbdev, ACPI_MEMHP_REGION_NAME,
-+                         vms->memmap[VIRT_PCDIMM_ACPI].base);
-+    sysbus_connect_irq(sbdev, 0, qdev_get_gpio_in(vms->gic, irq));
+     if (ms->ram_slots) {
+         event |= ACPI_GED_MEM_HOTPLUG_EVT;
+@@ -704,6 +705,18 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+     sysbus_mmio_map_name(sbdev, TYPE_ACPI_GED, vms->memmap[VIRT_ACPI_GED].base);
+     sysbus_mmio_map_name(sbdev, ACPI_MEMHP_REGION_NAME,
+                          vms->memmap[VIRT_PCDIMM_ACPI].base);
++
++    acpi_pcihp = object_property_get_bool(OBJECT(dev),
++                                          ACPI_PM_PROP_ACPI_PCIHP_BRIDGE, NULL);
++
++    if (acpi_pcihp) {
++        int pcihp_region_index;
++
++        pcihp_region_index = sysbus_mmio_map_name(sbdev, ACPI_PCIHP_REGION_NAME,
++                                                  vms->memmap[VIRT_ACPI_PCIHP].base);
++        assert(pcihp_region_index >= 0);
++    }
++
+     sysbus_connect_irq(sbdev, 0, qdev_get_gpio_in(vms->gic, irq));
  
      return dev;
- }
 -- 
 2.49.0

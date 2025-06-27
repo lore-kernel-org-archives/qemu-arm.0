@@ -1,121 +1,123 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp856613dye;
-        Fri, 27 Jun 2025 05:14:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWMEQOupF0InPPrl0Henk49/vYIjoIZx1b1jZuBysnNOrKfTT32nmDEs9TaUatUG6xrSx0Vd2jdFSYuwg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFjM82vS+OdfL6WGYW6GGgnqADQ6yElZyMXHugvtMDNbh6cDOMYQL6++ybWQs6feQqIj/Gr
-X-Received: by 2002:a05:620a:cdb:b0:7d3:f193:6328 with SMTP id af79cd13be357-7d4439a15famr464039385a.54.1751026496563;
-        Fri, 27 Jun 2025 05:14:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751026496; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp867781dye;
+        Fri, 27 Jun 2025 05:34:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW/fWIGzBiGysbIDmYeX2iyBcAxrZfbBd3ppEU2UdN64XhpNTO7HAblwDiAbqJFd9srTNtezj7fvFHCjg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHER1sHyltLE0UyTAw1+inQE3DmCSc1cjnmLX0EIGkwDshKpKqsXmyImJis8TnX2rfG0xym
+X-Received: by 2002:a05:620a:f13:b0:7d4:1e32:5421 with SMTP id af79cd13be357-7d4440f2dcfmr423369785a.5.1751027695901;
+        Fri, 27 Jun 2025 05:34:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751027695; cv=none;
         d=google.com; s=arc-20240605;
-        b=jrMeKBmuYkuQmn8OXwFGGWCaA7cU4U0im0hfEH7hY9YBrkcTn96h3N6yr117KxEoxo
-         6mHjcgxHJeSP7+A1omaafaZULB81JrYU4o+LMUBEJxjBI0nPt/8zZMJ12WqpEly9kQ0s
-         ULqtVsk9ej4R3n7g5o8OWKXG6wDTXyrg88ZWQ4gLxq4OnCD8Xb4OKDsSqChnPnPOGUC9
-         3DhsKgo2V1CBnYXyQE+FxD+eXrXKqOv3Zk4OseA7BI1kEEfF+vqkKwqEJco+mvz+sr8J
-         IdBrgN3vcoEQ09LoW7vqGA+Q7Ts9K7dZh0OH+hRgRlYomHkXWZPJecTxIwXl6EOaQRuh
-         ek6A==
+        b=D449RPrz2kqErTkVEWWW33Qf1EH3WaeyntcHywNcWghzuhWIoFafTjBgxmAcvpv9nq
+         xQ1q0oAJ1No8zCSRqfWW6G/oqrijcRLrUYZtX55h83otjTSrxRwbgfiDpb7ri81E6IrN
+         ugwdiJ6AjBVsqR3RjhHh3XhEXs6hyHk0S2TnYtlM1M7hvtS38ikRPGewpqm0eVUaIVt0
+         EUMmWNtR0/FhP7YyhfOa7EX3sN94I+K1Th9KKQjzDDn0ov240WEX/7RJRjxpHhFzXXAM
+         KyQ28Tm6IZc/XZNtacCT8bo8lzFAIGO5jIB30CKrJnCTWh0LUtlYXMPbNlfQvO6krOXk
+         wbfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=Py3TPV5zuZPrpF/KGzIXmqU+JkJO3G52AmeeZCrSa9c=;
-        fh=ylXPPJQDo7Ryig4p7CaR5ZgCUPH9Wyl8qnXsgukKhzY=;
-        b=DgA2xQD3ZZpMm++Ylf48puxoD6j40Ya3fLoMYYSQpx87NjmLO1Np9wPXsw1dnO+0el
-         zc27Ygng4ojYnsDKb5m/VPck40N9VRYsuKO0aHTwWqXDQS53tyTfOdu77O7U6t31njlJ
-         tDqU96tnTA0QOgTd+XnavqYQZGYQHPgXXbtTPqVfXqFKuGRUlS8mjAxS4AxYq/eUhqZs
-         UjH7IeJCsyu6powvWatX5mk6ySd0I93SsehOZLuGFY1a6ZHE4E3bBDoWNA+20dCNYANc
-         Q+J4zihtiUolqYqzn32eQwxEVYInI7DWkEiwpYUMWFR4+dAaHKQFJnMGzpMTXE0iSQbD
-         Le1g==;
+        bh=D3Sv9Y8di8jPYm/s97VvLp8PmHdRBf8mYlRytEYZR4c=;
+        fh=k0ZS6VmHF8TnDwfSjHANNMRvZoNJTjbVFPQjZQdr0b4=;
+        b=jtjxKFQfgpwdoojEximoVNPOmkuLqubou/hl5Rqgoac8NFbpb4wLhNvNG0ktNpqdTS
+         T7jLb6/5+MUFp8CaJubcLCpBIyvN8eaANW88BZ7/1Fl+jwKsmCuEkk9Xb2dReN1FMYU6
+         gM7eU2LpqkTRMERg8sEe3y6ygeEXoSYC87UyMFLvYbmOy5epcza3opoxQtTv3X2PaRcG
+         OmL202/G6qgcGUojoyttx/ytBL/LYqGE+1Wd90ZOC4PKNTEVZ2IPGdIpvXNvJc8wgyFn
+         22FCjpqcwSyacfozAFTbDQbNe070lZy5TEJb3OQmfefpbT84yqamOjNkffHK1DcgojuT
+         Mmbw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="i/BBrTr4";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MlJHDylP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d44327c985si217096485a.480.2025.06.27.05.14.56
+        by mx.google.com with ESMTPS id af79cd13be357-7d443225881si207503485a.255.2025.06.27.05.34.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Jun 2025 05:14:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 27 Jun 2025 05:34:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="i/BBrTr4";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MlJHDylP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uV7yE-00022D-2j; Fri, 27 Jun 2025 08:14:18 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uV8Hk-0007bt-Dy; Fri, 27 Jun 2025 08:34:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uV7yC-00021g-9U
- for qemu-arm@nongnu.org; Fri, 27 Jun 2025 08:14:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1uV8Hj-0007bf-HF
+ for qemu-devel@nongnu.org; Fri, 27 Jun 2025 08:34:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uV7y9-0006YJ-4G
- for qemu-arm@nongnu.org; Fri, 27 Jun 2025 08:14:15 -0400
+ id 1uV8Hd-0002Ck-RL
+ for qemu-devel@nongnu.org; Fri, 27 Jun 2025 08:34:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1751026450;
+ s=mimecast20190719; t=1751027659;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Py3TPV5zuZPrpF/KGzIXmqU+JkJO3G52AmeeZCrSa9c=;
- b=i/BBrTr4C5lIVc7eeGIA/R3NO+CVWxNcvyEvh0av5BxoAU4+txab4u3yu7O8xMs2VN/p7/
- blKvs19DpwrGZdWbK7Gdwan48MzNPDb1TF2WiL2b9RKl5fWxm1w+um9hQNNQpS4HWJqxoZ
- 1zKEtJQE/B8gyJ6pqC+BmGNIp35i9uY=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=D3Sv9Y8di8jPYm/s97VvLp8PmHdRBf8mYlRytEYZR4c=;
+ b=MlJHDylP+SF9wn2uNQp/AaTMtFq/m7SoQsOxW/Wvh0w0METM2zCNIKEoDrQfrn0SKhgM1C
+ sODx9rPoraJLrcC+Y79HbNYUgOekf7+e9kMUsaCxDHFNtObawZtXONCleFt3h0mMM08cbs
+ aCktu29sPenV2OElz+Czdh4a1S3kVnA=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-180-SjMPx8sKPHK--Q7BA5tnsg-1; Fri, 27 Jun 2025 08:14:08 -0400
-X-MC-Unique: SjMPx8sKPHK--Q7BA5tnsg-1
-X-Mimecast-MFC-AGG-ID: SjMPx8sKPHK--Q7BA5tnsg_1751026448
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-3a50816cc58so1098070f8f.3
- for <qemu-arm@nongnu.org>; Fri, 27 Jun 2025 05:14:08 -0700 (PDT)
+ us-mta-67-8URbAQo7NMiXPMNckgVbRg-1; Fri, 27 Jun 2025 08:34:17 -0400
+X-MC-Unique: 8URbAQo7NMiXPMNckgVbRg-1
+X-Mimecast-MFC-AGG-ID: 8URbAQo7NMiXPMNckgVbRg_1751027656
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-450eaae2934so15495105e9.2
+ for <qemu-devel@nongnu.org>; Fri, 27 Jun 2025 05:34:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751026447; x=1751631247;
+ d=1e100.net; s=20230601; t=1751027656; x=1751632456;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Py3TPV5zuZPrpF/KGzIXmqU+JkJO3G52AmeeZCrSa9c=;
- b=wFHu5xJbVBMUyGTcK+zMbT9awgymelZwXUDcKs3m45y8pVXgKALH/gIiX6mHwvmGvM
- kVVUqk2Wh6naOzey1UwpJuc4ZHgFw/GjMgcqJCrXn6KX4TziX2YoSEEBjj4aUY2NH6hh
- mpBba4bHBhR6ZpAT7teLIYFIXlcG7eUQcxTyMTiWTHIZuviHlo2LNdTJwWJqUSvUnooR
- nnOWRN+4LnX4oTu0EYzEoBWCPyOgdPGIBumqwVXiA4TzeZRtCsNITJRkn4KPkkoh5lpm
- nnU/WrNYqabmL0t3r0v/cz8v6qbMMqDqDEPu8GyBmE0OBG2Jb6sTCL9MiC6/8xm5uLW1
- z6jw==
+ bh=D3Sv9Y8di8jPYm/s97VvLp8PmHdRBf8mYlRytEYZR4c=;
+ b=WXq1zDrJOwfk/sbF5PIAPcv13QLnYmMdqFyRAeHCJJVyKCydDXwsVazYzlPHI4H1rp
+ IEDq6dsVO7Ao9JFvn+ExhbW/9VVMjrlrdYIGZW/Yhs4fssLXYLyxDPYHGyYZf34YTIC1
+ eGscR5QntGQc1lxrBocLPVZ2ZzcD6Lpok7t3zc8ex/QdhlN/nCHxS10zyuf6GXE3hQQI
+ xomBsR2J55mvlNfCJynDt+tt9J2uQuw/a68sDul8ghxpCWFWT86jrOd85efouP/NXfb1
+ 8LIGnu2RoaGxP5fwOrL/nueD1z2SB1RrV/z773HBJQCY8OAMlQqLOlXrC/DkP4snUcA1
+ 67ag==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW6UTE3+QLce966P3oysnIdNxaB3+v02DKn/H1IiCeh5OVLtvw47E2ebYak6A3RxSQ5nq54Hpe/2A==@nongnu.org
-X-Gm-Message-State: AOJu0YzqQ2qBBSWjCutAj7DJowh2udo56qDnZs1Oo61vS+bqWMyaIh+B
- 2VqDsFTSPPmcX410OJHr8UpRqZcr/cYRPoVAmoHPwIopzlkYf17SIMdJJc/o6AIRv5UjjwL/9nK
- d0WZdmKdvt66m8BmcRHxoYSG8D7epnR50zNNNCFYt4IGkU/c8R8X4Gw==
-X-Gm-Gg: ASbGncuHSyDKqsrzd8DshNNoSv4TR0AO8mSmWVYK76Ga+Yby1DBfRmp1PbiDTig/YHg
- J4OWhjC2dWSiTgecXRU+Zn/MmBJdsO9zRLVqMqei4QSvnEemsbfwcui5P03A7qaNcNoRnfE7o7C
- CwsdUEUpIGBMoaF4xEnZLXKhwWYL1Xw7YK9y34Ywav15atCMqtMIGLW8nCeHroYvFK2Q7ggFX2i
- tzl2T2k+IvbuXcnhaqs5ZjBc9hK4qQY5U9OIQb39NW+qWtlXVR6UwPRRHPN+evbmVKPbXHPbBg4
- /Utl9vOx4T95WpbW6d4lGN3XNFTJZeQj18iqF9Bl0LTiH3jnPjxqu8FMQBKpsS6I/aQy5Q==
-X-Received: by 2002:a05:6000:645:b0:3a4:d53d:be20 with SMTP id
- ffacd0b85a97d-3a8fdff4832mr2372082f8f.18.1751026447363; 
- Fri, 27 Jun 2025 05:14:07 -0700 (PDT)
-X-Received: by 2002:a05:6000:645:b0:3a4:d53d:be20 with SMTP id
- ffacd0b85a97d-3a8fdff4832mr2372048f8f.18.1751026446855; 
- Fri, 27 Jun 2025 05:14:06 -0700 (PDT)
+ AJvYcCWMNOhYb6x8OrAg8wZ1b5BCsbSJL/xLhRBRQyEc1VqFGe3IyC2jUWpNCpC5jpgdhGx/M+uO3MuHnoqf@nongnu.org
+X-Gm-Message-State: AOJu0Yz1mSB+JLaM+ucL+6HDxyktvI9zl4F4Zcu7P4JIvc9Y5YW24AQ2
+ RwiC1CEywWzDaEWGeZpKzN7daM28/JwrLHr2xeJD8l+t+oqQWxE/0JbgqZJfb4kM2pMJia7YL+x
+ SvmcgRZdzqiyp4/zF/lPwNOI7tk2Vr8RUiBvMbMjKzNg0oF1nB1UpWJB5
+X-Gm-Gg: ASbGncuyhsYxRc2YvxqD60GIkNAHX34qCOFWLq7hIuOPmyguAmq+JAZbykWb1HJAJ+T
+ 6J1cdldjGsfTUGjFsiJ7leke38iJ0ai3tkIo1FYZTB/8PaWLMpliKfGv0vR7mPwhgZ3OULVt28i
+ i1mRwBxJB8ineJ4habryvo0dL7v5iEzj21VCBZA42fEqg3Fzzwpiwacn2CC/uPJ8e1Ktdbr0voR
+ o5igTcRt5+TPHorcLASOaXMDMv1ZTZWqMQs/cfQn2auMTG6cNg2M5e9Eb+ySRKerbTyvNozUCXL
+ pkK6BDhA2Q3u7LqZVGVBB8dfUcVCkpJbAISlLDhhYsw4a2zn5tkJUYxD2iNTp66peuDQsA==
+X-Received: by 2002:a5d:59c7:0:b0:3a4:fc3f:ed28 with SMTP id
+ ffacd0b85a97d-3a8fee64fafmr3464655f8f.29.1751027656345; 
+ Fri, 27 Jun 2025 05:34:16 -0700 (PDT)
+X-Received: by 2002:a5d:59c7:0:b0:3a4:fc3f:ed28 with SMTP id
+ ffacd0b85a97d-3a8fee64fafmr3464615f8f.29.1751027655799; 
+ Fri, 27 Jun 2025 05:34:15 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4538a406ab6sm49594285e9.30.2025.06.27.05.14.05
+ 5b1f17b1804b1-453823ad0f3sm81282035e9.19.2025.06.27.05.34.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Jun 2025 05:14:06 -0700 (PDT)
-Message-ID: <6a3c2ebf-ac62-474f-b2b7-a1d017f6c2bb@redhat.com>
-Date: Fri, 27 Jun 2025 14:14:01 +0200
+ Fri, 27 Jun 2025 05:34:15 -0700 (PDT)
+Message-ID: <a9499ef5-17c2-446b-b4d3-167ede3f4f9b@redhat.com>
+Date: Fri, 27 Jun 2025 14:34:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 09/11] bios-tables-test: Allow for smmuv3 test data.
+Subject: Re: [PATCH v5 10/11] qtest/bios-tables-test: Add tests for legacy
+ smmuv3 and smmuv3 device
+Content-Language: en-US
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
@@ -124,16 +126,12 @@ Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
  gustavo.romero@linaro.org, linuxarm@huawei.com, wangzhou1@hisilicon.com,
  jiangkunkun@huawei.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
 References: <20250623094230.76084-1-shameerali.kolothum.thodi@huawei.com>
- <20250623094230.76084-10-shameerali.kolothum.thodi@huawei.com>
+ <20250623094230.76084-11-shameerali.kolothum.thodi@huawei.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250623094230.76084-10-shameerali.kolothum.thodi@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: YxyQKdnno_6o4CwrNPSuv2Gc1XSyLbH0460V9h9jdWk_1751026448
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+In-Reply-To: <20250623094230.76084-11-shameerali.kolothum.thodi@huawei.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -144,67 +142,162 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LuDNEpJQaNt3
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xz3GTz6d7epo
 
-Hi Shameer,
+
 
 On 6/23/25 11:42 AM, Shameer Kolothum wrote:
-> The tests to be added exercises both legacy(iommu=smmuv3) and new
-Suggesting: exercice.  legacy (
+> For the legacy SMMUv3 test, the setup includes three PCIe Root Complexes,
+> one of which has bypass_iommu enabled. The generated IORT table contains
+> a single SMMUv3 node and a Root Complex node with three ID mappings. Two
+> of these ID mappings have output references pointing to the SMMUv3 node
+> and the remianing one points to ITS.
+remaining
+>
+> For the -device arm-smmuv3,... test, the configuration also includes three
+> Root Complexes, with two connected to separate SMMUv3 devices.
+By the way I have never paid attention to the fact there is only 1
+single IORT node despite we have 3 GPEX/PXB devices
+> The resulting IORT table contains two SMMUv3 nodes and a Root Complex node
+> with ID mappings of which two of the ID mappings have output references
+above is a bit difficult to parse.
 
-Besides:
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Suggesting:
+The resulting IORT table contains 1 RC node, 2 SMMU nodes and 1 ITS node.
 
-Eric
-> -device arm-smmuv3,.. cases.
+> pointing to two different SMMUv3 nodes and the remaining ones to ITS.
+RC node features 3 ID mappings. 2 of them target the 2 SMMU nodes while
+the last one targets the ITS.
+a drawing might be simpler
+        pcie.0 -> {SMMU0} -> {ITS}
+{RC}    pcie.1 -> {SMMU1} -> {ITS}
+        pcie.2            -> {ITS}
 >
 > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > ---
->  tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev    | 0
->  tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy | 0
->  tests/data/acpi/aarch64/virt/IORT.smmuv3-dev    | 0
->  tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy | 0
->  tests/qtest/bios-tables-test-allowed-diff.h     | 4 ++++
->  5 files changed, 4 insertions(+)
->  create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev
->  create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy
->  create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-dev
->  create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy
+>  tests/qtest/bios-tables-test.c | 86 ++++++++++++++++++++++++++++++++++
+>  1 file changed, 86 insertions(+)
 >
-> diff --git a/tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev b/tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev
-> new file mode 100644
-> index 0000000000..e69de29bb2
-> diff --git a/tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy b/tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy
-> new file mode 100644
-> index 0000000000..e69de29bb2
-> diff --git a/tests/data/acpi/aarch64/virt/IORT.smmuv3-dev b/tests/data/acpi/aarch64/virt/IORT.smmuv3-dev
-> new file mode 100644
-> index 0000000000..e69de29bb2
-> diff --git a/tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy b/tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy
-> new file mode 100644
-> index 0000000000..e69de29bb2
-> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-> index dfb8523c8b..2e3e3ccdce 100644
-> --- a/tests/qtest/bios-tables-test-allowed-diff.h
-> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-> @@ -1 +1,5 @@
->  /* List of comma-separated changed AML files to ignore */
-> +"tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy",
-> +"tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev",
-> +"tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy",
-> +"tests/data/acpi/aarch64/virt/IORT.smmuv3-dev",
+> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+> index 0b2bdf9d0d..1c50541b43 100644
+> --- a/tests/qtest/bios-tables-test.c
+> +++ b/tests/qtest/bios-tables-test.c
+> @@ -2231,6 +2231,86 @@ static void test_acpi_aarch64_virt_viot(void)
+>      free_test_data(&data);
+>  }
+>  
+> +static void test_acpi_aarch64_virt_smmuv3_legacy(void)
+> +{
+> +    test_data data = {
+> +        .machine = "virt",
+> +        .arch = "aarch64",
+> +        .tcg_only = true,
+> +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
+> +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
+> +        .ram_start = 0x40000000ULL,
+> +        .scan_len = 128ULL * MiB,
+> +    };
+> +
+> +    /*
+> +     * cdrom is plugged into scsi controller to avoid conflict
+> +     * with pxb-pcie. See comments in test_acpi_aarch64_virt_tcg_pxb() for
+> +     * details.
+> +     *
+> +     * The setup includes three PCIe root complexes, one of which has
+> +     * bypass_iommu enabled. The generated IORT table contains a single
+> +     * SMMUv3 node and a Root Complex node with three ID mappings. Two
+> +     * of the ID mappings have output references pointing to the SMMUv3
+> +     * node and the remaining one points to ITS.
+> +     */
+> +    data.variant = ".smmuv3-legacy";
+> +    test_acpi_one(" -device pcie-root-port,chassis=1,id=pci.1"
+> +                  " -device virtio-scsi-pci,id=scsi0,bus=pci.1"
+> +                  " -drive file="
+> +                  "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2,"
+> +                  "if=none,media=cdrom,id=drive-scsi0-0-0-1,readonly=on"
+> +                  " -device scsi-cd,bus=scsi0.0,scsi-id=0,"
+> +                  "drive=drive-scsi0-0-0-1,id=scsi0-0-0-1,bootindex=1"
+> +                  " -cpu cortex-a57"
+> +                  " -M iommu=smmuv3"
+> +                  " -device pxb-pcie,id=pcie.1,bus=pcie.0,bus_nr=0x10"
+> +                  " -device pxb-pcie,id=pcie.2,bus=pcie.0,bus_nr=0x20,bypass_iommu=on",
+> +                  &data);
+> +    free_test_data(&data);
+> +}
+> +
+> +static void test_acpi_aarch64_virt_smmuv3_dev(void)
+> +{
+> +    test_data data = {
+> +        .machine = "virt",
+> +        .arch = "aarch64",
+> +        .tcg_only = true,
+> +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
+> +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
+> +        .ram_start = 0x40000000ULL,
+> +        .scan_len = 128ULL * MiB,
+> +    };
+> +
+> +    /*
+> +     * cdrom is plugged into scsi controller to avoid conflict
+> +     * with pxb-pcie. See comments in test_acpi_aarch64_virt_tcg_pxb()
+> +     * for details.
+> +     *
+> +     * The setup includes three PCie root complexes, two of which are
+> +     * connected to separate SMMUv3 devices. The resulting IORT table
+> +     * contains two SMMUv3 nodes and a Root Complex node with ID mappings
+> +     * of which two of the ID mappings have output references pointing
+> +     * to two different SMMUv3 nodes and the remaining ones pointing to
+> +     * ITS.
+> +     */
+> +    data.variant = ".smmuv3-dev";
+> +    test_acpi_one(" -device pcie-root-port,chassis=1,id=pci.1"
+> +                  " -device virtio-scsi-pci,id=scsi0,bus=pci.1"
+> +                  " -drive file="
+> +                  "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2,"
+> +                  "if=none,media=cdrom,id=drive-scsi0-0-0-1,readonly=on"
+> +                  " -device scsi-cd,bus=scsi0.0,scsi-id=0,"
+> +                  "drive=drive-scsi0-0-0-1,id=scsi0-0-0-1,bootindex=1"
+> +                  " -cpu cortex-a57"
+> +                  " -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0"
+> +                  " -device pxb-pcie,id=pcie.1,bus=pcie.0,bus_nr=0x10"
+> +                  " -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.1"
+> +                  " -device pxb-pcie,id=pcie.2,bus=pcie.0,bus_nr=0x20",
+> +                  &data);
+> +    free_test_data(&data);
+> +}
+> +
+>  #ifndef _WIN32
+>  # define DEV_NULL "/dev/null"
+>  #else
+> @@ -2586,6 +2666,12 @@ int main(int argc, char *argv[])
+>              if (qtest_has_device("virtio-iommu-pci")) {
+>                  qtest_add_func("acpi/virt/viot", test_acpi_aarch64_virt_viot);
+>              }
+> +            qtest_add_func("acpi/virt/smmuv3-legacy",
+> +                           test_acpi_aarch64_virt_smmuv3_legacy);
+> +            if (qtest_has_device("arm-smmuv3")) {
+> +                qtest_add_func("acpi/virt/smmuv3-dev",
+> +                               test_acpi_aarch64_virt_smmuv3_dev);
+> +            }
+>          }
+>      } else if (strcmp(arch, "riscv64") == 0) {
+>          if (has_tcg && qtest_has_device("virtio-blk-pci")) {
+Besides
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Eric
 

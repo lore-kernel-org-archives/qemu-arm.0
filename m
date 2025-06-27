@@ -1,97 +1,97 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp986195dye;
-        Fri, 27 Jun 2025 08:44:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWUG51ntuDWHYkdw2SYUUoIvHDo+kfXTEOg0eDVY+hCW8p3tSce02lWvuIVuErXBk1k/mMqikidCaMAdA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFnAyq55eaWgGhiBlx64rvpxGTDxEneHWfR/Pj9DJ/mnZxCnXEkAoIKY6BcaXZrcHvCoem5
-X-Received: by 2002:a05:6214:c48:b0:6fa:a724:8769 with SMTP id 6a1803df08f44-7000291853fmr62244366d6.35.1751039080639;
-        Fri, 27 Jun 2025 08:44:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751039080; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp986746dye;
+        Fri, 27 Jun 2025 08:45:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWF+Zoxu1syKL+kRLDQeTQhfz6+szZq0xpz/7nD3qIGC9SHucs/TcEhMG6Spdrsfv+SO57oZpkZMvwX0g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFQfCJyEV7bCb6Agy+g/tgVt+FiyXHR9h4b9/ZiiFULCpWdpMr/Q1ilr1RwXBRFePmZC6w6
+X-Received: by 2002:a05:622a:296:b0:4a6:f6e6:7693 with SMTP id d75a77b69052e-4a7fc9d8522mr55812351cf.6.1751039129680;
+        Fri, 27 Jun 2025 08:45:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751039129; cv=none;
         d=google.com; s=arc-20240605;
-        b=aK3jVvg7kFz0+wAXTAWze21ZN8WkuWL9hMV0aEbEduBDi60ZtT36ekml8jboNdsWnI
-         l9Y9EULgduBK9g/xYb1xnhpStXWf9obVHww83jqZHTZGd4XO/3O8qF+GORuHPbVp1Y60
-         faTahkEKm9lH5ZmxACz4XYvJkldRiqQJo/uoh3Gf13XTQfz8eXmPpvR9GA6VsLfeUZKO
-         3AaqeBpkE62gKTD1qRDCaUl0Adept1H9zHzZWdYcofhLgXKcOewhQuAn5jacplHN3BDe
-         7D4e0Pu4vtLxmcHyAv9eGD0BKctIMUBvUovH42RSratW/Y/PrDrfXg4GHKwBVhA+C7Ja
-         Fk5w==
+        b=L4J6TQzJz9Mat4On/PvRTiHf/EhWI8dQQRNYlbVhIXeg0sMJ4QIp2j9PTzgugHVhgQ
+         fVTBq5XC9jiMTSdlZ3xu510sCW4cnBH6EovsEXX7O3t9sNQ9o8DecU9OpRuXrH9hubAE
+         d1yYWIsJ7j8/dPOQBYzVwb+5NIq7Y+wbx+P1zl4vvj90aglUnA8JsXeKUrmSLe7IZku1
+         D878d50HTz9FhGee0t5Wxq8/qZcqvZsqIwFgjRH/ylPB0KZfjnYPXq0rH7TiMJn5Gkrh
+         XnKYy0jn48cwvXgqpGhqk8cHCCKk6WxEC9tZaT2Ts4BrGWyOvtKW58uceymTom0JRz5d
+         LzmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:reply-to:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=HEDOUjPtxmsWcDn67nR+IKB3WKWJ3kq0H/uNMQDCfdE=;
-        fh=/m2hBs78bz9APkS5mxwaC21rvmK4+nj1/DFQvklcaQI=;
-        b=jNc1QwiN01sC+tR8RUau47CDk18+FyloF6ByrZLmvIt4ThEhOFesWU6eKuUV52hWIq
-         HxrwqdKvqxkeePim4hh1WR9/3MmPizmlYY+FpSmaLAeHlFZDSPOIpo+gmfEoE6CCquK9
-         RlyB28s7d/FsZZBHTr9U3INkQgrsGHfanoeQlrpIlOaAZC6XGZIhqlM5tLt1iCZq+KJ1
-         28Z2roCVP4F7i5d0n69NjFiXGYKK3f8s6Og2c78ev1PJ/8nT7Gpc8Tot+VP/7Jn+Uqem
-         vG4NRmiZVEPCatQQBKMmgl5voW56n7ctga0QKNllfLQF5RpTBVaiYtU8EfOb6S5S5Jsn
-         VIkA==;
+        bh=tbhSGpYnnKPSj+oh98w7vQyURqNZ7CCnKJwgu/azLNE=;
+        fh=dktQBrkgVP93oNz/ZTzmD/7+MmrnBE40mtl9jXOZSfw=;
+        b=XnMQyMqlEZ9u90zyeVSiS45Fhh7ZPCxLu6au1lVoREw6qjdXVQLJYV5zpw84Xrdr+w
+         2HBdO+hTQqRz4mnvfpM1OMCtlRPC9S9PC37gO46tYXh8N9n6mcrkqpWGEba5vj8CCAb2
+         JMX/VqEGsKovzlM6tmjXve9+tVhDqMUeHFo87fUVIGkAJ34BL10zfk7R2ABrCrTQE/cd
+         AVrQiJFBdgNPzIzNH0aCAZX2n9P4tQawVpt1ZAAfSuUi3shmNkqsB4o4abhcVS8EeTAt
+         fDDLcVj0C6l+cbuYwh7u2l6y0X77cufwUMWyp7+BAw9yHsCi8e+stuOqnMGb+Wgh49hW
+         D2ng==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E3v57P8C;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J6SAcEIO;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd77389342si45619866d6.394.2025.06.27.08.44.40
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc12c66fsi24557191cf.154.2025.06.27.08.45.29
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Jun 2025 08:44:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Fri, 27 Jun 2025 08:45:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E3v57P8C;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J6SAcEIO;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1751039080;
+	s=mimecast20190719; t=1751039129;
 	h=from:from:reply-to:reply-to:subject:subject:date:date:
 	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
 	 content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=HEDOUjPtxmsWcDn67nR+IKB3WKWJ3kq0H/uNMQDCfdE=;
-	b=E3v57P8C9eaTs6GfKJ4+oINTZdKAAjOtQfSN+KRPFPxxKNyGEcvPQ9T95jCnfF9qhBUneG
-	AzoUIydl+c47G6GPFLJ6X1V/1f12Rb3PAIC09Bw6gesTVYBK3XaxplDVuN6nuQIELrmPQZ
-	DanhyU3MRJ8JuwnzQC/JqUpyXzmtm7I=
+	bh=tbhSGpYnnKPSj+oh98w7vQyURqNZ7CCnKJwgu/azLNE=;
+	b=J6SAcEIOD34m0pK3TwERlBiE4rJxdvBh/mSUpmSAILU1xdSCCkA9RsOc81g5NoNbFQbGQJ
+	cLQM2xX2FtXQAkMSjVmSx5mFFBc487fqQZUb4+yIYlLeRU8wnIY6Sjl/3/E7w7UYqpfFIU
+	0ck5uFRbo9/Nub2gGWmzTMTD7+mcCWc=
 Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
  [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-347-2DJJZV5XM6S4rVgYWFaJtQ-1; Fri, 27 Jun 2025 11:44:38 -0400
-X-MC-Unique: 2DJJZV5XM6S4rVgYWFaJtQ-1
-X-Mimecast-MFC-AGG-ID: 2DJJZV5XM6S4rVgYWFaJtQ_1751039077
-Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3a6da94a532so1270552f8f.2
-        for <alex.bennee@linaro.org>; Fri, 27 Jun 2025 08:44:38 -0700 (PDT)
+ us-mta-44-J41OLuVoMjq4LQxefloI-Q-1; Fri, 27 Jun 2025 11:45:27 -0400
+X-MC-Unique: J41OLuVoMjq4LQxefloI-Q-1
+X-Mimecast-MFC-AGG-ID: J41OLuVoMjq4LQxefloI-Q_1751039127
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3a4eee2398bso864537f8f.1
+        for <alex.bennee@linaro.org>; Fri, 27 Jun 2025 08:45:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751039077; x=1751643877;
+        d=1e100.net; s=20230601; t=1751039126; x=1751643926;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:reply-to:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=HEDOUjPtxmsWcDn67nR+IKB3WKWJ3kq0H/uNMQDCfdE=;
-        b=ARbxZSVuV46wgUKmLmLB9YxJR3ToxjKet6h9GaNkV43gluyX2LkSumRDj3SdhQ0j9F
-         gstUPSkfXV/+GaawGxfoYw9Ch+eyIj67e8z7QWj9egtzRZXm4vDqXJyEGySTqSeVwoH3
-         QiC4fMATWDV9WJtFowDa+nJjnJYItBPKRo/MPLfpUv3FYfLPqhcvWjNBQv333skVUhpr
-         4c/pc1+jzoML9h+8xLdVvqn8K61rRO0GVhqkpxyhpKUkhnKQ2FoTKvnCDc4ajyDz06Q3
-         +ad+eeqMTnUKgh//+zfxQ2s4gS/oD4Nl9hQh5sSq8Tcf2sMpLNZa1cVVvcE2oprae3M3
-         n6Gg==
-X-Forwarded-Encrypted: i=1; AJvYcCXeGpJTmqljDDRq5Spr3VETa3c2k8p92uIxFIONrwKfixPBl42uykF77nWteZq3iDRZJ2L/JX1WJyz23A==@linaro.org
-X-Gm-Message-State: AOJu0YwefJbYqOjRNkSqZxMLIbLupcsvpqXL9lLSgbxoNo2tpdGCierW
-	28tD059jPtlhSKSDWmLz7oLd9OopUwgGbVEKovvbHLGUAAENBQuRTcxlkIYTVgTkFEnGavsY0p3
-	cBFumRkRWHvpOF6PTRrtNj/5bgDctkD2YsMK0aFnQZcNTaYruqqCE/hJPdA==
-X-Gm-Gg: ASbGncvnBVsgeaDHz9kbZnej6+9+9qO8X6rNQOwJK04T7EE42gjF/R4jFxYjjUmZ0L1
-	xWbDPmkgPx7j18K8KHWPAUAb3POBaZadrNCztjFavtC3Q/ABhV7Rz6ZREKq/etEJ3dAdvZMb955
-	qD7AsHGRp4m1ZV+dPvx8xw0bPzetIdszf6h/xoeBx/gWkGhwT2CpObFGUvD7+lSow5UQn72gCwd
-	xuCxk4oYGua5i3pxVrn96tSoXgSpWL/Wst6pd3f6xo/nFzAuQg5ymh6/cB36t8RT2fv1h4XR1KR
-	PYPynEfsEDPqnJsPsm+B5xvBlUqnhEk3/krrLW9QRceYWxW4JVsQqgMMXCf02kXmYfX7CA==
-X-Received: by 2002:a5d:5f46:0:b0:3a5:8d08:6239 with SMTP id ffacd0b85a97d-3a8f58749a0mr4203598f8f.21.1751039077319;
-        Fri, 27 Jun 2025 08:44:37 -0700 (PDT)
-X-Received: by 2002:a5d:5f46:0:b0:3a5:8d08:6239 with SMTP id ffacd0b85a97d-3a8f58749a0mr4203574f8f.21.1751039076729;
-        Fri, 27 Jun 2025 08:44:36 -0700 (PDT)
+        bh=tbhSGpYnnKPSj+oh98w7vQyURqNZ7CCnKJwgu/azLNE=;
+        b=d3nJaRBj7Sq8KdM117gS6NsNwD71nYNIxsS3uR6Bgc5zwjMekn4zBL5SfsJljPbtEf
+         HmlOMwXftNnQyp5R4xobCBzjiUfUu4ktQvI/SmDiQK97o9hsjnWBQZGQRT3z/Zz+3Def
+         cfTL7CoarRdAWUTozWaSBHyo6iWmW7CdN4VsV//EcYOUtPVDTp5BDNCvFFuYCzI+Os67
+         9ccffJXc/fBb07/LPkSO7EQ+EfCVNDjg92lvigqBoZKFJEyi8d2g0NcbCWV/sQHXY4jD
+         lcdyv+/SE4d27lBH4M064/cCPwUeevl3ltlyVUatkcNetrt4EFU2jfPPc3aplgvxtD7Y
+         uCSw==
+X-Forwarded-Encrypted: i=1; AJvYcCXqcQlXPEnsQKh7p3HGltePRXbHfBlw2dsn9V0ImGJ4YI86d3TreACM4xNHCBR2kAqCJFs44G4wVKQ3aw==@linaro.org
+X-Gm-Message-State: AOJu0YyOWcrHeZfl3FAkrENSxkH3M2J/ZmdiNQi8nkW95dNFCL8o8M6Y
+	p1B6UqB1T1ktjTKpmR5Xp0ZTHwhLP3hPxpQCaMaWJJ6p+74gESMqeUa9GA71rYlJJ5eNMHr0xum
+	qmMO2ayNH7KKmKtOaFKl9Xocsdk7mwSWQdpNIZ3NLu/ceybPsMJR4yDPIlw==
+X-Gm-Gg: ASbGncuhhUNbNbKovkedHvu+wuvbJ97g6TGXoSstahceb7aommBYsRsZO9NOUZemSd2
+	zGQye7wfAIUfq0I7mlrSgfkvWxkduP324hnTafzPf76wOBaHu/hq/f6wqyGcmz0iZwxeXpvVdXb
+	TTVRqu71aLFHUEDTmCAZSMqaXv7AsXj/SxP3g6+q6BPJU0e5thZiNhARBz4YdoeMdE/vTxMgevp
+	Oy3HwJAeAo3gdaJuJ+Nn7P6n3+yWP5hipB2P+/TzpcTLGJuthXSZ+L1hYSuMr41iM/y5oMy9h/V
+	PmuMo8w27r/XN+CG745IJnmQsBX7RmPi1RSqtSLfxMIIRlt3sNq8J42UGXvfYdRzlyYaeg==
+X-Received: by 2002:a05:6000:4009:b0:3a8:2f65:373f with SMTP id ffacd0b85a97d-3aa9fc2002dmr1103285f8f.16.1751039126521;
+        Fri, 27 Jun 2025 08:45:26 -0700 (PDT)
+X-Received: by 2002:a05:6000:4009:b0:3a8:2f65:373f with SMTP id ffacd0b85a97d-3aa9fc2002dmr1103259f8f.16.1751039126017;
+        Fri, 27 Jun 2025 08:45:26 -0700 (PDT)
 Return-Path: <eric.auger@redhat.com>
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a892e59884sm2947388f8f.80.2025.06.27.08.44.35
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a892e52af3sm3087624f8f.50.2025.06.27.08.45.24
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 27 Jun 2025 08:44:36 -0700 (PDT)
-Message-ID: <5e0e0aa6-cc09-4aa3-b48c-65de8273549c@redhat.com>
-Date: Fri, 27 Jun 2025 17:44:35 +0200
+        Fri, 27 Jun 2025 08:45:25 -0700 (PDT)
+Message-ID: <91976510-de0d-45b7-a9ea-68927e505db7@redhat.com>
+Date: Fri, 27 Jun 2025 17:45:23 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Reply-To: eric.auger@redhat.com
@@ -107,14 +107,14 @@ References: <20250623135749.691137-1-gustavo.romero@linaro.org>
 From: Eric Auger <eric.auger@redhat.com>
 In-Reply-To: <20250623135749.691137-9-gustavo.romero@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ysjJydzRRVdYMyae5Pi1XDXz-4O5wrY7TRC7xLhWkTQ_1751039077
+X-Mimecast-MFC-PROC-ID: Pjau3fjLceDay_E-3AmarMilTqWjwAADW-5Tx4F5U8w_1751039127
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: de7jBTepZc/8
+X-TUID: y7p7xbxvXyFF
 
-Hi Gustavo,
+
 
 On 6/23/25 3:57 PM, Gustavo Romero wrote:
 > Currently, the ITS Group nodes in the IORT table and the GIC ITS Struct
@@ -132,6 +132,9 @@ On 6/23/25 3:57 PM, Gustavo Romero wrote:
 > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2886
 > Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 > Co-authored-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Eric
 > ---
 >  hw/arm/virt-acpi-build.c                    | 128 ++++++++++++--------
 >  tests/qtest/bios-tables-test-allowed-diff.h |   2 +
@@ -215,19 +218,6 @@ On 6/23/25 3:57 PM, Gustavo Romero wrote:
 > +
 > +        if (vms->its) {
 > +            num_id_mappings = 1; /* ITS Group node */
-While at it, I would suggest to rename num_id_mappings into
-smmu_mapping_count for consistency with
-
-rc_mapping_count.
-
-Also I would recommend to rename smmu_idmaps and its_idmaps into rc_smmu_idmaps and rc_its_idmaps to make things clearer. But that be done outside of thise series if you prefer.
-
-Otherwise this looks good.
-
-Thanks
-
-Eric
-
 > +            offset_to_id_array = SMMU_V3_ENTRY_SIZE; /* Just after the header */
 > +        } else {
 > +            num_id_mappings = 0; /* No ID mappings */

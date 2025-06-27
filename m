@@ -1,56 +1,56 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp639190dye;
-        Thu, 26 Jun 2025 19:56:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVw74cNfyc3Tc5DkHMWlu7dS8Xbcnp+VgpsUfgb0dTSBjncih3JI4sPlolPCqyo0g+bJmito1b5IlsIuQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGsJicLMuYafSFwwKK2opiuC/kBt2lL5cyl7pmwMugUY73/Ok4/MseLA+ETiPGmJquKcLie
-X-Received: by 2002:ad4:5ae3:0:b0:6f8:b73e:8ea5 with SMTP id 6a1803df08f44-7000233c759mr30100766d6.26.1750992991380;
-        Thu, 26 Jun 2025 19:56:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1750992991; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp639397dye;
+        Thu, 26 Jun 2025 19:57:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXKAfspVqzpO1HuAF8SaBmESnnfFzO88tjZkL4UpdMQGYEqY7pzqivhbrH61bwlXiB8bk0dOZJT/OzfJA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHVeS9+jeFAOzsmenTQEZyxTB5t+opX/Fs9Ye09qJLI0uQ+QfHSzmlAPoQGyHAtYPWgLhLr
+X-Received: by 2002:ac8:5a4e:0:b0:494:ab13:6824 with SMTP id d75a77b69052e-4a7fc9fea9amr29948821cf.15.1750993042734;
+        Thu, 26 Jun 2025 19:57:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750993042; cv=none;
         d=google.com; s=arc-20240605;
-        b=Lim0kzREwOum+IuDaQod4oTZZ3baFvZrCutootZwRWEdirgg/BLrznBsKXFuzAZivM
-         tktljtmQEFt4po5dBjCp0H8KswgVb4vpadEyvT/uZfDu8b1wKXmmh6jLWj8GrR+IjtR7
-         zNmcchA8zrvzuCWCUNRv+TS441uVuL1TNZO3a3KvBI/p4oUp5t8KvJwytNh9sFnKSu58
-         ttu41u2W+KlOOL6IRX0Fn3bTXKU/xyzsUrxfz0Ge2H/oFtaKleVjadTtnM5dAWKGmhMP
-         xny4RVS8ZXY+81fYTxOjap0SWkmVDYkYjRAsulx5a5BoJ0sHkyvi+yPD2a3uvFN40ORO
-         iUeA==
+        b=ZyDqkzSBDrxhtGnGY/+RiPJuMJ4u83j7S2+4UzHgzEAjbVu6JwTP/QS18RhUgVMbe9
+         7niqni10i0wrCh6TCeBMP8Qf3OoVqM2ZklCMFRazpeEQu0vQSLecnfwBR0H5bcUpo0x4
+         IH/mrYIyziVH8fy8AMk1j/qI2g7qJmpwQQJWeBvOmoMgrQcbc3gFVzZAoo7VTIPNpmdP
+         m0/lPVPWjXaSszkxQxf3UqhqxhSpfF4IomSk2bsX9t9ydUSEeFw308G6WYq2Im2u+PMt
+         3Y2DqUtC8pmq0TJ8z1NIJFpSKkXgDdeaE9w1BQmNQ153nscfdOqYQ2ETGZxoKR7a8y9g
+         xJzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=y20sE+HVPmTGju2eP9tVauCX/Lly8SDo3KfwGZh9Pn8=;
+        bh=V1SCVfQDL6hnElUhmBPwHXbaUAPdrqFao5wL51TiIJQ=;
         fh=3E+GgkJ59sv88GyUpaKWpV4DoJlJz+B5Ev7H4uQXan0=;
-        b=PRYhEl5Tg40RcdTSJc/ZaCUPUaQegAEh2owb1rIwerEWU8SL2KOhIqAKECVm/Sc2NM
-         7YI3+PIgDWWctrZfY2dqGMISzZwrobM9TkMyiNeHcbjbhNKgGrzqsQgaP+EFPnaebIwk
-         aSurZPBZstvux6yg9ZOs8bRMRjh9WeKxrY8mQwwoq6YIHiWSFFkwxnXz3Xfdqa/+8x4L
-         /p4r9YfqNhqMtkO+aIZhUZnG7UQekJjJzk/6ZVXtVJNtfWfEyVodi2KkJzOzhS8dcKly
-         61IPslhP3Pp1cyQ/D5bpRVTPukFF0Dlm4J8/Wlz9wuzmOMQoNy7ItYOkh+LYUiPQ3hcU
-         36Bw==;
+        b=JCNIo8Z+DDeFGPBOuhVx7tMTdaX9uotTZWzoAamrlG7HxzJL6HoXYV066qsBnBsAON
+         y5jUtLyHxwvmB5dEEFqrnfhP4yRLIJJpS3DTd/q2svsOhSjOXVcS/bGNlwMSrv4so66s
+         cD/dayVO4jnwTq5uTsPK1zWYJWrSH4vqtnhn+HGGME8VHm2JTLF3G7yepkZYd7ypLkJX
+         bRogbGvHqX5j44ZhFixLILbZymDZ6hLCtmWKwgEheekk83CZyNX++0GA2tZnwMjL9Iw/
+         +kJAE2L8O6QQPQ1ML/TJCr8R9gIcwG5oFimyazhTNFKkdtL0ytWScQJfr7xTtUTscI6q
+         +07w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd7736926bsi31424186d6.257.2025.06.26.19.56.31
+        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc235640si13984911cf.330.2025.06.26.19.57.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Jun 2025 19:56:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Jun 2025 19:57:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uUzGG-0007eh-QN; Thu, 26 Jun 2025 22:56:20 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uUzGK-0007fi-3e; Thu, 26 Jun 2025 22:56:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1uUzGF-0007eQ-Cr; Thu, 26 Jun 2025 22:56:19 -0400
+ id 1uUzGI-0007fS-9w; Thu, 26 Jun 2025 22:56:22 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1uUzGD-0006B6-Qm; Thu, 26 Jun 2025 22:56:19 -0400
+ id 1uUzGG-0006B6-Ij; Thu, 26 Jun 2025 22:56:22 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Fri, 27 Jun
@@ -65,9 +65,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>
-Subject: [PATCH v2 1/3] hw/misc/aspeed_otp: Add ASPEED OTP memory device model
-Date: Fri, 27 Jun 2025 10:56:03 +0800
-Message-ID: <20250627025606.631167-2-kane_chen@aspeedtech.com>
+Subject: [PATCH v2 2/3] hw/misc/aspeed_sbc: Connect ASPEED OTP memory device
+ to SBC
+Date: Fri, 27 Jun 2025 10:56:04 +0800
+Message-ID: <20250627025606.631167-3-kane_chen@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250627025606.631167-1-kane_chen@aspeedtech.com>
 References: <20250627025606.631167-1-kane_chen@aspeedtech.com>
@@ -83,194 +84,256 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-to:  Kane Chen <kane_chen@aspeedtech.com>
-From:  Kane Chen via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WeLIM0qH5Chp
+From:  Kane Chen via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: A+8WdqfwriqT
 
 From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 
-Introduce a QEMU device model for ASPEED's One-Time Programmable (OTP)
-memory.
+This patch connects the aspeed.otpmem device to the ASPEED Secure Boot
+Controller (SBC) model. It implements OTP memory access via the SBC's
+command interface and enables emulation of secure fuse programming flows.
 
-This model simulates a word-addressable OTP region used for secure
-fuse storage. The OTP memory can operate with an internal memory
-buffer.
+The following OTP commands are supported:
+  - READ: reads a 32-bit word from OTP memory into internal registers
+  - PROG: programs a 32-bit word value to the specified OTP address
 
-The OTP model provides a memory-like interface through a dedicated
-AddressSpace, allowing other device models (e.g., SBC) to issue
-transactions as if accessing a memory-mapped region.
+Trace events are added to observe read/program operations and command
+handling flow.
 
 Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 ---
- include/hw/nvram/aspeed_otp.h | 30 +++++++++++
- hw/nvram/aspeed_otp.c         | 94 +++++++++++++++++++++++++++++++++++
- hw/nvram/meson.build          |  4 ++
- 3 files changed, 128 insertions(+)
- create mode 100644 include/hw/nvram/aspeed_otp.h
- create mode 100644 hw/nvram/aspeed_otp.c
+ include/hw/misc/aspeed_sbc.h |   5 ++
+ hw/misc/aspeed_sbc.c         | 117 +++++++++++++++++++++++++++++++++++
+ hw/misc/trace-events         |   5 ++
+ 3 files changed, 127 insertions(+)
 
-diff --git a/include/hw/nvram/aspeed_otp.h b/include/hw/nvram/aspeed_otp.h
-new file mode 100644
-index 0000000000..aadeb313be
---- /dev/null
-+++ b/include/hw/nvram/aspeed_otp.h
-@@ -0,0 +1,30 @@
-+/*
-+ *  ASPEED OTP (One-Time Programmable) memory
-+ *
-+ *  Copyright (C) 2025 Aspeed
-+ *
-+ *  SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef ASPEED_OTP_H
-+#define ASPEED_OTP_H
-+
-+#include "system/memory.h"
-+#include "system/address-spaces.h"
-+
-+#define TYPE_ASPEED_OTP "aspeed.otp"
-+OBJECT_DECLARE_SIMPLE_TYPE(AspeedOTPState, ASPEED_OTP)
-+
-+typedef struct AspeedOTPState {
-+    DeviceState parent_obj;
-+
-+    uint64_t size;
-+
-+    AddressSpace as;
-+
-+    MemoryRegion mmio;
-+
-+    uint8_t *storage;
-+} AspeedOTPState;
-+
-+#endif /* ASPEED_OTP_H */
-diff --git a/hw/nvram/aspeed_otp.c b/hw/nvram/aspeed_otp.c
-new file mode 100644
-index 0000000000..233dc3528b
---- /dev/null
-+++ b/hw/nvram/aspeed_otp.c
-@@ -0,0 +1,94 @@
-+/*
-+ *  ASPEED OTP (One-Time Programmable) memory
-+ *
-+ *  Copyright (C) 2025 Aspeed
-+ *
-+ *  SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qapi/error.h"
-+#include "hw/qdev-properties.h"
+diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
+index 405e6782b9..0c2746d392 100644
+--- a/include/hw/misc/aspeed_sbc.h
++++ b/include/hw/misc/aspeed_sbc.h
+@@ -10,6 +10,7 @@
+ #define ASPEED_SBC_H
+ 
+ #include "hw/sysbus.h"
 +#include "hw/nvram/aspeed_otp.h"
+ 
+ #define TYPE_ASPEED_SBC "aspeed.sbc"
+ #define TYPE_ASPEED_AST2600_SBC TYPE_ASPEED_SBC "-ast2600"
+@@ -36,10 +37,14 @@ struct AspeedSBCState {
+     MemoryRegion iomem;
+ 
+     uint32_t regs[ASPEED_SBC_NR_REGS];
 +
-+static uint64_t aspeed_otp_read(void *opaque, hwaddr offset, unsigned size)
++    AspeedOTPState otp;
+ };
+ 
+ struct AspeedSBCClass {
+     SysBusDeviceClass parent_class;
++
++    bool has_otp;
+ };
+ 
+ #endif /* ASPEED_SBC_H */
+diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
+index a7d101ba71..2f5b83a3f2 100644
+--- a/hw/misc/aspeed_sbc.c
++++ b/hw/misc/aspeed_sbc.c
+@@ -15,9 +15,13 @@
+ #include "hw/misc/aspeed_sbc.h"
+ #include "qapi/error.h"
+ #include "migration/vmstate.h"
++#include "trace.h"
+ 
+ #define R_PROT          (0x000 / 4)
++#define R_CMD           (0x004 / 4)
++#define R_ADDR          (0x010 / 4)
+ #define R_STATUS        (0x014 / 4)
++#define R_CAMP1         (0x020 / 4)
+ #define R_QSR           (0x040 / 4)
+ 
+ /* R_STATUS */
+@@ -41,6 +45,11 @@
+ #define QSR_RSA_MASK           (0x3 << 12)
+ #define QSR_HASH_MASK          (0x3 << 10)
+ 
++#define OTP_MEMORY_SIZE 0x4000
++/* OTP command */
++#define SBC_OTP_CMD_READ 0x23b1e361
++#define SBC_OTP_CMD_PROG 0x23b1e364
++
+ static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
+ {
+     AspeedSBCState *s = ASPEED_SBC(opaque);
+@@ -57,6 +66,84 @@ static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
+     return s->regs[addr];
+ }
+ 
++static bool aspeed_sbc_otp_read(AspeedSBCState *s,
++                                   uint32_t otp_addr)
 +{
-+    AspeedOTPState *s = opaque;
-+    uint64_t val = 0;
++    MemTxResult ret;
++    AspeedOTPState *otp = &s->otp;
++    uint32_t value, otp_offset;
 +
-+    memcpy(&val, s->storage + offset, size);
-+
-+    return val;
-+}
-+
-+static void aspeed_otp_write(void *opaque, hwaddr offset,
-+                                uint64_t val, unsigned size)
-+{
-+    AspeedOTPState *s = opaque;
-+
-+    memcpy(s->storage + offset, &val, size);
-+}
-+
-+static void aspeed_otp_init_storage(uint8_t *storage, uint64_t size)
-+{
-+    uint32_t *p;
-+    int i, num;
-+
-+    num = size / sizeof(uint32_t);
-+    p = (uint32_t *)storage;
-+    for (i = 0; i < num; i++) {
-+        p[i] = (i % 2 == 0) ? 0x00000000 : 0xFFFFFFFF;
++    otp_offset = otp_addr << 2;
++    ret = address_space_read(&otp->as, otp_offset, MEMTXATTRS_UNSPECIFIED,
++                             &value, sizeof(value));
++    if (ret != MEMTX_OK) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "Failed to read OTP memory, addr = %x\n",
++                      otp_addr);
++        return false;
 +    }
++    s->regs[R_CAMP1] = value;
++    trace_aspeed_sbc_otp_read(otp_addr, value);
++
++    return true;
 +}
 +
-+static const MemoryRegionOps aspeed_otp_ops = {
-+    .read = aspeed_otp_read,
-+    .write = aspeed_otp_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid.min_access_size = 1,
-+    .valid.max_access_size = 4,
-+};
-+
-+static void aspeed_otp_realize(DeviceState *dev, Error **errp)
++static bool aspeed_sbc_otp_prog(AspeedSBCState *s,
++                                   uint32_t otp_addr)
 +{
-+    AspeedOTPState *s = ASPEED_OTP(dev);
++    MemTxResult ret;
++    AspeedOTPState *otp = &s->otp;
++    uint32_t value = s->regs[R_CAMP1];
 +
-+    if (s->size == 0) {
-+        error_setg(errp, "aspeed.otp: 'size' property must be set");
++    ret = address_space_write(&otp->as, otp_addr, MEMTXATTRS_UNSPECIFIED,
++                        &value, sizeof(value));
++    if (ret != MEMTX_OK) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "Failed to write OTP memory, addr = %x\n",
++                      otp_addr);
++        return false;
++    }
++
++    trace_aspeed_sbc_otp_prog(otp_addr, value);
++
++    return true;
++}
++
++static void aspeed_sbc_handle_command(void *opaque, uint32_t cmd)
++{
++    AspeedSBCState *s = ASPEED_SBC(opaque);
++    AspeedSBCClass *sc = ASPEED_SBC_GET_CLASS(opaque);
++    bool ret = false;
++    uint32_t otp_addr;
++
++    if (!sc->has_otp) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: OTP memory is not supported\n",
++                      __func__);
 +        return;
 +    }
 +
-+    s->storage = g_malloc(s->size);
++    s->regs[R_STATUS] &= ~(OTP_MEM_IDLE | OTP_IDLE);
++    otp_addr = s->regs[R_ADDR];
 +
-+    aspeed_otp_init_storage(s->storage, s->size);
++    switch (cmd) {
++    case SBC_OTP_CMD_READ:
++        ret = aspeed_sbc_otp_read(s, otp_addr);
++        break;
++    case SBC_OTP_CMD_PROG:
++        ret = aspeed_sbc_otp_prog(s, otp_addr);
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Unknown command 0x%x\n",
++                      __func__, cmd);
++        break;
++    }
 +
-+    memory_region_init_io(&s->mmio, OBJECT(dev), &aspeed_otp_ops,
-+                          s, "aspeed.otp", s->size);
-+    address_space_init(&s->as, &s->mmio, NULL);
++    trace_aspeed_sbc_handle_cmd(cmd, otp_addr, ret);
++    s->regs[R_STATUS] |= (OTP_MEM_IDLE | OTP_IDLE);
 +}
 +
-+static const Property aspeed_otp_properties[] = {
-+    DEFINE_PROP_UINT64("size", AspeedOTPState, size, 0),
-+};
-+
-+static void aspeed_otp_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    dc->realize = aspeed_otp_realize;
-+    device_class_set_props(dc, aspeed_otp_properties);
-+}
-+
-+static const TypeInfo aspeed_otp_info = {
-+    .name          = TYPE_ASPEED_OTP,
-+    .parent        = TYPE_DEVICE,
-+    .instance_size = sizeof(AspeedOTPState),
-+    .class_init    = aspeed_otp_class_init,
-+};
-+
-+static void aspeed_otp_register_types(void)
-+{
-+    type_register_static(&aspeed_otp_info);
-+}
-+
-+type_init(aspeed_otp_register_types)
-diff --git a/hw/nvram/meson.build b/hw/nvram/meson.build
-index 10f3639db6..b66f23605b 100644
---- a/hw/nvram/meson.build
-+++ b/hw/nvram/meson.build
-@@ -19,3 +19,7 @@ system_ss.add(when: 'CONFIG_XLNX_BBRAM', if_true: files('xlnx-bbram.c'))
+ static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,
+                               unsigned int size)
+ {
+@@ -78,6 +165,9 @@ static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,
+                       "%s: write to read only register 0x%" HWADDR_PRIx "\n",
+                       __func__, addr << 2);
+         return;
++    case R_CMD:
++        aspeed_sbc_handle_command(opaque, data);
++        return;
+     default:
+         break;
+     }
+@@ -115,10 +205,36 @@ static void aspeed_sbc_reset(DeviceState *dev)
+     s->regs[R_QSR] = s->signing_settings;
+ }
  
- specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_nvram.c'))
- specific_ss.add(when: 'CONFIG_ACPI', if_true: files('fw_cfg-acpi.c'))
++static void aspeed_sbc_instance_init(Object *obj)
++{
++    AspeedSBCClass *sc = ASPEED_SBC_GET_CLASS(obj);
++    AspeedSBCState *s = ASPEED_SBC(obj);
 +
-+system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-+  'aspeed_otp.c',
-+  ))
-\ No newline at end of file
++    if (sc->has_otp) {
++        object_initialize_child(OBJECT(s), "otp", &s->otp,
++                                TYPE_ASPEED_OTP);
++    }
++}
++
+ static void aspeed_sbc_realize(DeviceState *dev, Error **errp)
+ {
+     AspeedSBCState *s = ASPEED_SBC(dev);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++    AspeedSBCClass *sc = ASPEED_SBC_GET_CLASS(dev);
++    Error *local_errp = NULL;
++    bool ret;
++
++    if (sc->has_otp) {
++        qdev_prop_set_uint64(DEVICE(&s->otp), "size", OTP_MEMORY_SIZE);
++        ret = qdev_realize(DEVICE(&s->otp), NULL, &local_errp);
++        if (!ret && local_errp) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: %s\n",
++                          __func__, error_get_pretty(local_errp));
++            error_free(local_errp);
++            return;
++        }
++    }
+ 
+     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sbc_ops, s,
+             TYPE_ASPEED_SBC, 0x1000);
+@@ -155,6 +271,7 @@ static const TypeInfo aspeed_sbc_info = {
+     .name = TYPE_ASPEED_SBC,
+     .parent = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(AspeedSBCState),
++    .instance_init = aspeed_sbc_instance_init,
+     .class_init = aspeed_sbc_class_init,
+     .class_size = sizeof(AspeedSBCClass)
+ };
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index e3f64c0ff6..9e05b82f37 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -90,6 +90,11 @@ slavio_sysctrl_mem_readl(uint32_t ret) "Read system control 0x%08x"
+ slavio_led_mem_writew(uint32_t val) "Write diagnostic LED 0x%04x"
+ slavio_led_mem_readw(uint32_t ret) "Read diagnostic LED 0x%04x"
+ 
++# aspeed_sbc.c
++aspeed_sbc_handle_cmd(uint32_t cmd, uint32_t addr, bool ret) "Handling command 0x%" PRIx32 " for OTP addr 0x%" PRIx32 " Result: %d"
++aspeed_sbc_otp_read(uint32_t addr, uint32_t value) "OTP Memory read: addr 0x%" PRIx32 " value 0x%" PRIx32
++aspeed_sbc_otp_prog(uint32_t addr, uint32_t value) "OTP Memory write: addr 0x%" PRIx32 " value 0x%" PRIx32
++
+ # aspeed_scu.c
+ aspeed_scu_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
+ aspeed_scu_read(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
 -- 
 2.43.0
 

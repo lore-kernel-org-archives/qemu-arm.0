@@ -1,166 +1,190 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2113217dye;
-        Sun, 29 Jun 2025 13:50:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWmXc3cHutCjygM4MdA1/81OwoasRryEE3U8/8rD6fCV9anGHA03d1H0pQMFGcqDT8kTvoEQNs870WjPw==@linaro.org
-X-Google-Smtp-Source: AGHT+IE5BQzJ/gyE3uHgFSVwj7bqlmbaG72XoL6KdVJwPYDHt5dTyegMFRcmTmockhwQTC0Cf1kO
-X-Received: by 2002:a05:622a:1352:b0:4a7:817e:c345 with SMTP id d75a77b69052e-4a7fdc706c3mr169869021cf.24.1751230208188;
-        Sun, 29 Jun 2025 13:50:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751230208; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp1647937dye;
+        Sat, 28 Jun 2025 12:57:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU43D7d8PNaxoXdQMJCR5Dw0GIGUy0+eWu4HY9QRvRET3D2C1lMs91/uQypoaeI6vWAJqY9uUkhW0YCXw==@linaro.org
+X-Received: by 2002:a05:6214:2a82:b0:6fa:c0f8:4dff with SMTP id 6a1803df08f44-70002918ceamr151182356d6.37.1751140666942;
+        Sat, 28 Jun 2025 12:57:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751140666; cv=none;
         d=google.com; s=arc-20240605;
-        b=AFFIz9aejQSj60znjxb3YnKp5zj4pyYchGT9/k/q8jAcx17Wipfb5d7Q4u3WuH96BI
-         sp571tOV6BJP8zzXqwT5QH8+rqNKan9XRYYxDd7o89/ZGKDuvNZI5cBinGqx4DsCYX9s
-         It/unHASYj9j4cenSIkh94QeDAZgKKbdUWbeZeLeNAAv2Bu1G3M2/XLQKDU1IhHsWJiu
-         HVxJl6G6cM+wCexpSNhBZTNHOXjBbOCo6lsYu1V9y9zXJjL5eaX9w71fIbpU7Tip77ez
-         jyEgz49WQafbD1uONJqFeEnAMcEf2Rdg654boE+L4WbhkOGXCxyl3Bk1gL7jJXhUA2fB
-         BHTg==
+        b=hxtWuvy1yjfHA/5jbaUdJEW2bTvb1tUCm82XkugjAusPKdAnank5AluYiu+/ARnePh
+         ODu0KipinVcawk9kYwWuD3njPZuBQ+8CJHYhcUZn2cFzsnY+wAoiM5rmK35TkOeSI/z1
+         f0cVV7hjKNs1XCF3H3ishEEaXOGtQNvd4nOF65DaWWtxvKDsMFf0Rs0f57PWtEdxQSCu
+         VpE9eJa5kEhQ6O8Skbj0nEWTHRKLXvBCv4GSXQp0iMos04N0d2POsSfSj++hPHouNFRI
+         ZmQ1TyzX7d48FFy+sgij4kVZaMzLNgLQyy+kSipjne3wmjoegIzd9ENWSNtefslyGV9D
+         ZTCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=LQOw7AHWnconnv7IJtYR9CMfxMCXTEspg6v7zFVpGKE=;
-        fh=qDXqUkqMs8fJCFUgQ10a0i0ZsVeEsNpuTLeSU2I/sRw=;
-        b=cCOV+WaCXFPUmCBIRH4MqoaT3GFyrtuXAkeaVnjFsSldAZecyeT56vCV+6+Z7hDz9P
-         CQ1/kLAJastDyG/R4yit/aLaob1Hs+1ukTSFyvUHfWD25jpaPTwVJxFoEZQblE2Zay19
-         im/scQfsv9QI6YIV0k0/wf+c3Tchhn6xtP2wbrNvMyYizUVrnjhoxUZAnJLBdDdnMfbo
-         OJRi+nIK6P0eRZVy1LFZBJYjq5kjwDXJcY2FmjWxlYVnLClZQDkVCpgtpQSzF08TzSkI
-         dZJtyBtaEbEKZn8aEPR3xqkT8Luw7JbD/eqmsjoldEDoDZH/JNuzIjRZ7Xc/JVmXzY2v
-         +EFg==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=uTp8cYLG6UEglvnDlfAVLBZ5UreW7WM/U27Ywrb2bxw=;
+        fh=2uy+MDeuDbU87GT6D0J0KMggkChNRBEONwBPueboU5E=;
+        b=YWgfgUT8r9ULXyY4Zn8nWJyaPG083/NL1VP1tBupuoPTK7yQgYTAISXHgfxMQwq6H+
+         zbxVzIAqGx5VCEMvz0Df7r9NREb22xTfspRPdmYFjfGLiX770eGoXD5sa0xO8GkFT6Ka
+         vrc2zRv9FxpO0YJIJCO2jNGLLXK1dTrL3exdiNHEJhAimd29DT56/I6ZyJWVOzW1Hq7r
+         E99uCVgbVjwADMukiOs2HlUqCC6sqBcEA/vyEYT1O9uLFwmvzGJ30wpnkAGrVMD4QpWs
+         OpNRQTMUzHcXjROQanNL45bKm8Mq2LapkGI5WDMsQ9mvT4evn3htdIsuer8P0/TlbFbf
+         DDjg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dVYeuqkc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dYK5IeqG;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc12b5d5si75777881cf.155.2025.06.29.13.50.08
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id af79cd13be357-7d443144f62sor215791785a.2.2025.06.28.12.57.46
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 29 Jun 2025 13:50:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sat, 28 Jun 2025 12:57:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dVYeuqkc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dYK5IeqG;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uVyxW-0003ei-Jm; Sun, 29 Jun 2025 16:49:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1uVyxV-0003eC-EE; Sun, 29 Jun 2025 16:49:05 -0400
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1uVyxU-0000Rn-1Q; Sun, 29 Jun 2025 16:49:05 -0400
-Received: by mail-ej1-x62d.google.com with SMTP id
- a640c23a62f3a-ae0b2ead33cso678500266b.0; 
- Sun, 29 Jun 2025 13:49:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1751230141; x=1751834941; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=LQOw7AHWnconnv7IJtYR9CMfxMCXTEspg6v7zFVpGKE=;
- b=dVYeuqkcuBagkpsDhSzVQWJyAgLr5F2TJEYjM8qEpTgKvBUmPh0EK8oUKUuDihu95s
- FrnWSlrv9Hyl6vNKUcHWjhJvb+09ZGtFDof+YE+aFboQjaUsCl6udKZemxvOuI4J52G0
- 7UTQi/Ffg4UNykJAlZ9FyMw+bxgf/Y34nwFyHBviJdZRIdj7D6VNYtwbV0sl+Lc9DOp1
- E6hWGq6gvBKpRUGlVxyEVHgGDAPT1JhOSVa3jK4uJlm7/QrW7E3fmaeY9CLyOPmAjWSi
- 1NmFpc0ZDelqAqYTncm54xlXriff60O5DmPZb43H5aS4GOjvKVr9ZtR5ncPYkReX8V5a
- dQfA==
+        d=linaro.org; s=google; t=1751140666; x=1751745466; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=uTp8cYLG6UEglvnDlfAVLBZ5UreW7WM/U27Ywrb2bxw=;
+        b=dYK5IeqG3AwOF24+3CyK0roSOJ29Nbv0Y5LqDXycw4G6niF6HOcfWYhwfOYxAv45AS
+         5oAZc8uVrqYdeiBChxg7WcoT15ust8Zxpkihw881BDCKRmSkEioXVX9J/BVta/BHR1q0
+         wCK6jO6w5olQIXQGX+CYJbLZlPbpWh1az6O1aHnQA0GM8OMyl7Lic2LLmuvDEhjYHspc
+         w87st05cntJZDsGa0BongB1n1hSrklV6W61CmXvtdNTh68PBqQT3hXvZmo9youHYFsk9
+         h9FoSNMGpf9poE5tGGxqbvwcaRWb/5b2QDSWTh1tueZwR5QVA9o2c7+JuBeg0ovyrYb0
+         4IsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751230141; x=1751834941;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=LQOw7AHWnconnv7IJtYR9CMfxMCXTEspg6v7zFVpGKE=;
- b=rsQtiE7Jm02UGQyIZTNIT2Iu7Va+BUSlSg72fYGEH5qqmPax1lqyHkeLnEYyjr5nXe
- mljSvIoh+cRoqK/P3M389xW4b7l6ojbF7MuUAFbH0RwZno4gex6kcQYa4uev+8GynhJh
- iF1fhNJmJJRg5v9aIJUrtrEj3D5KmlNvZqEXWX8hLiNldG67UmHWfzoxgzBOtEyTgsKi
- gsujSX8dD1AHWao8WRLYeTEfzvYNaYDhKYa9vo2aCd3s7jEdHN8ZdIzPKGO7UBJn7tSP
- 1a8NDW+Daq6HeQPG6gVwj7fCdHdHrWJ2GwFBJ12DBExS0eFbPvzfN+W2TpCieX+faJgg
- dGNg==
-X-Gm-Message-State: AOJu0YwQTBb2LbS+v+hwVyYxaw4fygDkKr71xXg9DvXWWEccYluI0dtt
- 0LLJ6sTfrG1E2TIgaMQ0JnHwItwzQt4YU5olLY8tST/B/I/1SSyg5tTuTDpZEw==
-X-Gm-Gg: ASbGncua3U5trXyaaGCq8EToV2dDsBzrpTStNCQ8s8ULqpJdk4powxK7bNi39Moj9XM
- FFIq3o/2jY9X3sxRJc8u1DFDKvGxxE3lZ3WGYWPB4usd9vVruyGZRiGcAhOI/IUKULOhbETRzXh
- jYtsvg9H9LssMOv4so4c7bXWN2S7uf7LUyYSM7w84ppCW2qCNTNEKJnCxVkgm06eh3F9bnKlExr
- ubW6Mvr6HLnCvcrZ8M37Ig5rgb1CmvlA9qu1fWUXV8x/7JLcw2aSqcuIC9Dm3UPx9ygGM4up4HD
- X+cqnypgglCAAxnIpokzS8W9vbNH1G8PppsdW98BLDjZniG8b1jeAXjy4PNOMKI2kUUsTprLuJ2
- AbarJO/jfOZ6Ac7VDXQ18r4A4d1y/zyMmTAf8pjT+LKkV0/2d/Rsu8UrhnCOmwJePpw==
-X-Received: by 2002:a17:907:94c8:b0:ae0:6621:2f69 with SMTP id
- a640c23a62f3a-ae0d262937emr1704713166b.13.1751230141268; 
- Sun, 29 Jun 2025 13:49:01 -0700 (PDT)
-Received: from Provence
- (dynamic-2a02-3100-2f97-a200-0219-99ff-feb2-2458.310.pool.telefonica.de.
- [2a02:3100:2f97:a200:219:99ff:feb2:2458])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-ae353659e06sm535709566b.44.2025.06.29.13.49.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 29 Jun 2025 13:49:00 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Bernhard Beschow <shentey@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 1/2] hw/arm/fsl-imx8mp: Wire VIRQ and VFIQ
-Date: Sun, 29 Jun 2025 22:48:50 +0200
-Message-ID: <20250629204851.1778-2-shentey@gmail.com>
-X-Mailer: git-send-email 2.50.0
-In-Reply-To: <20250629204851.1778-1-shentey@gmail.com>
-References: <20250629204851.1778-1-shentey@gmail.com>
+        d=1e100.net; s=20230601; t=1751140666; x=1751745466;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=uTp8cYLG6UEglvnDlfAVLBZ5UreW7WM/U27Ywrb2bxw=;
+        b=qx7yZiELVYHUov5Lwb/ueltXqlDzfYAvgHlyVJa0hA8HbL3ysxPrKvKJC1EQjwDAWG
+         vxZbtRYBQS/2NwANZ0bNSvImhjKpq3uJfn4rSGVl4wm4iCRSsKs4nmxyZEy+lgvqKgzU
+         LdLvZoikPnH7J3lMenklUd+/DeOokgGwjaJXHZp4m9opthCseidsCP2rZrIAvPuuU6xT
+         RS1Sfb8nmd41xSgAA1c+7n4PaWebtDRMRqBxlTfsMfWOmhiMrwJc+FNjtsLkjVWlO/2M
+         h0m6q/5lMEnGa2g13hedxcZk+x4ZbN+aLQcY/iNZCD705wDwLdrTMhyGqwWajE95tpM6
+         TVVw==
+X-Forwarded-Encrypted: i=1; AJvYcCUqB7ZtQdnmolCRYRUyH3cmEQ1eoxNs//jRuijv7DY8cNSadkNI6mRAbZn4UhGP95UxsU00PWAOltG4Lw==@linaro.org
+X-Gm-Message-State: AOJu0YyV1VvZ8VO9ROuA9lJBODY9ASQVJGbPrn0d48Zc48SMr/iaEXl0
+	LZaDiE8ZEimEuVrhUKMElnWbvw7uOtm02DglpcwyOewDUdH+x7bVhRKtxnmd8epVZZlgG/WiPHs
+	brVSobkM=
+X-Gm-Gg: ASbGncswGWSrZGPDhbjh7wQwFnxn9Usas4JGbrFV0FXhR686a25xywHtfSnGI8Bsm7D
+	QmNs3RAlUw8G1c/ttnujuZU8NHMeNUya4PlzHL/DC1a+L7eaNGIAc59d6uzXn897NXd5PanIbk9
+	tdaqPLN/YTbRV6/cIDfds8Q37WbYUZmKcyJzidFysJhKyLYa8enzQbIFevP+DleDbYKua7VZnNP
+	DxiukaXjz8/IIsqZEoXpmX9PbiWo6jpPStpMAWU13ftS6RAm3H4lruaWlJflUifK54VbjtvWyut
+	KIWM/txBqU5gLs5GCBGoxUeamNqlKgu5KenesvgrpoxmZKK4JGNFVZYEvUk86HLz1sM=
+X-Google-Smtp-Source: AGHT+IHCWt0MySBOW4/eJZhAhJfGUH28azA8GKy0+5uc6bNcCs5wVCA/bZ7gMZcibFl5b6UaTvifHQ==
+X-Received: by 2002:a05:620a:bd4:b0:7d0:9ffd:423e with SMTP id af79cd13be357-7d44398da20mr1062133685a.13.1751140666380;
+        Sat, 28 Jun 2025 12:57:46 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from gromero0.. ([186.215.58.88])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7d443136907sm334395585a.14.2025.06.28.12.57.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 28 Jun 2025 12:57:45 -0700 (PDT)
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: qemu-devel@nongnu.org,
+	eric.auger@redhat.com,
+	philmd@linaro.org,
+	mst@redhat.com
+Cc: qemu-arm@nongnu.org,
+	alex.bennee@linaro.org,
+	gustavo.romero@linaro.org,
+	udo@hypervisor.org,
+	ajones@ventanamicro.com,
+	peter.maydell@linaro.org,
+	imammedo@redhat.com,
+	anisinha@redhat.com,
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v6 1/9] hw/intc/gicv3_its: Do not check its_class_name()
+Date: Sat, 28 Jun 2025 19:57:14 +0000
+Message-Id: <20250628195722.977078-2-gustavo.romero@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250628195722.977078-1-gustavo.romero@linaro.org>
+References: <20250628195722.977078-1-gustavo.romero@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NC4nZJT5HLYY
+X-TUID: QhvzDJpe0FfN
 
-Allows to run KVM guests inside the imx8mp-evk machine.
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Fixes: a4eefc69b237 ("hw/arm: Add i.MX 8M Plus EVK board")
-CC: qemu-stable
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Since commit cc5e719e2c8 ("kvm: require KVM_CAP_SIGNAL_MSI"), the single
+implementation of its_class_name() no longer returns NULL (it now always
+returns a valid char pointer). Hence, update the prototype docstring and
+remove the tautological checks that use the its_class_name() returned
+value.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 ---
- hw/arm/fsl-imx8mp.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ hw/arm/virt-acpi-build.c               | 32 +++++++++++---------------
+ include/hw/intc/arm_gicv3_its_common.h |  2 +-
+ 2 files changed, 15 insertions(+), 19 deletions(-)
 
-diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
-index 23e662c16c..866f4d1d74 100644
---- a/hw/arm/fsl-imx8mp.c
-+++ b/hw/arm/fsl-imx8mp.c
-@@ -356,6 +356,10 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
-                                qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
-             sysbus_connect_irq(gicsbd, i + ms->smp.cpus,
-                                qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
-+            sysbus_connect_irq(gicsbd, i + 2 * ms->smp.cpus,
-+                               qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
-+            sysbus_connect_irq(gicsbd, i + 3 * ms->smp.cpus,
-+                               qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 7e8e0f0298..9eee284c80 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -737,20 +737,18 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                                           memmap[VIRT_HIGH_GIC_REDIST2].size);
          }
+ 
+-        if (its_class_name()) {
+-            /*
+-             * ACPI spec, Revision 6.0 Errata A
+-             * (original 6.0 definition has invalid Length)
+-             * 5.2.12.18 GIC ITS Structure
+-             */
+-            build_append_int_noprefix(table_data, 0xF, 1);  /* Type */
+-            build_append_int_noprefix(table_data, 20, 1);   /* Length */
+-            build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
+-            build_append_int_noprefix(table_data, 0, 4);    /* GIC ITS ID */
+-            /* Physical Base Address */
+-            build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
+-            build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
+-        }
++        /*
++         * ACPI spec, Revision 6.0 Errata A
++         * (original 6.0 definition has invalid Length)
++         * 5.2.12.18 GIC ITS Structure
++         */
++        build_append_int_noprefix(table_data, 0xF, 1);  /* Type */
++        build_append_int_noprefix(table_data, 20, 1);   /* Length */
++        build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
++        build_append_int_noprefix(table_data, 0, 4);    /* GIC ITS ID */
++        /* Physical Base Address */
++        build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
++        build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
+     } else {
+         const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE;
+ 
+@@ -969,10 +967,8 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+                           vms->oem_table_id);
      }
  
+-    if (its_class_name()) {
+-        acpi_add_table(table_offsets, tables_blob);
+-        build_iort(tables_blob, tables->linker, vms);
+-    }
++    acpi_add_table(table_offsets, tables_blob);
++    build_iort(tables_blob, tables->linker, vms);
+ 
+ #ifdef CONFIG_TPM
+     if (tpm_get_version(tpm_find()) == TPM_VERSION_2_0) {
+diff --git a/include/hw/intc/arm_gicv3_its_common.h b/include/hw/intc/arm_gicv3_its_common.h
+index 7dc712b38d..3c7b543b01 100644
+--- a/include/hw/intc/arm_gicv3_its_common.h
++++ b/include/hw/intc/arm_gicv3_its_common.h
+@@ -128,7 +128,7 @@ struct GICv3ITSCommonClass {
+  * Return the ITS class name to use depending on whether KVM acceleration
+  * and KVM CAP_SIGNAL_MSI are supported
+  *
+- * Returns: class name to use or NULL
++ * Returns: class name to use
+  */
+ const char *its_class_name(void);
+ 
 -- 
-2.50.0
-
+2.34.1

@@ -1,518 +1,305 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp1960234dye;
-        Sun, 29 Jun 2025 06:54:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCU6B92Tvtv6y8vZ6YZuNxc/u3hI6aMErWpQzmYH6ACZSYL/6uat3DBsiCRQMw684aHxiZZha0R2rjFESw==@linaro.org
-X-Google-Smtp-Source: AGHT+IESXdIkWKVqb0aIFsAB0zAk5rTGM/kqWCuY27UFDzJQNTD1jhpW+uP3H18zrasgs4TpsYgT
-X-Received: by 2002:a05:620a:28d3:b0:7d4:56be:9b67 with SMTP id af79cd13be357-7d456be9f15mr256648985a.12.1751205289729;
-        Sun, 29 Jun 2025 06:54:49 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1751205289; cv=pass;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2113223dye;
+        Sun, 29 Jun 2025 13:50:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUmlyXS2C4LdBRWuNzXLW9c/AlN4807UA6FB1bZLoB9t1QMPnzbf90SVxLYIynp8XOBazCMFXvh/hDPdA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGd6Sb1qUgWilrHIa7JdvmMwCvyaC6qf3xwoHenGSLHZEnng+d8bnHhwpC+bcQpv6wA5XIo
+X-Received: by 2002:a05:6214:2581:b0:6fa:bbb7:602c with SMTP id 6a1803df08f44-700134a7130mr149857046d6.29.1751230209443;
+        Sun, 29 Jun 2025 13:50:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751230209; cv=none;
         d=google.com; s=arc-20240605;
-        b=CdOHkAfJzq661ohutbdcR+RfybwKcCI+XEbOGrYo415Fv3HLIu87Hi1XNiNMlU2Uq4
-         jRqAOQws+lXF6q06xgIrvlO/MemhJvgmESPhxKbkkk0EtBChBVLbtsbQNmoiQFksEsqv
-         TZlsc2SFrgJ/J/u0E9jI65VhANq5VUNQuOPXqaAdlqmm2zVkj05O4R4CbV5x0s7rkXzP
-         Scdrgi6+qkSVGN03mFZGB9GtHCIu/dkNEGJ/eJdupyJ/IW/UJB74ECuidW80hbzubame
-         WjIPkKwSZD22H0NYdrZKbX/G74F+QY6DCQhFnAA4rGwrPr0jIA6jsS+TC4o544ETu2MN
-         sCKw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=PHJOdJ26l5fWSOvEzKvw7DevHly4IIs3XpAy6NoLGdm42epK/8L6L4djc+D1G+gBl1
+         zL0pxdtVXBhJvXlnLqZpjscaiUJTvN2j/B9ZS6OXZk7bSHE2t04Ky1SbK4UWpWwCnMSg
+         dB2vjv+dw6VCaz7sg/dGYjSvV4oKzxcLtLtWMc8pzl9uFcrtGEwVKGaoczAAgpWQ3H3f
+         N3ZoeXUFo55DapWMHCTtd1sHqT+xjZz7UgrU9YT13H/Kgfb3fildcLFJ2RB+XgrtuU7e
+         cie6Hj1L9J6mQRq/nBsoOs8SAXkruefp1iHLSs7g6/ysZ12sWloR/53eUNL1c5oNSEb9
+         lx7g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:message-id:date:subject:cc:to:from;
-        bh=dn7yRGkj3e8xZIBoPowL/Eq/VXIPntvu+PBifbE5PGM=;
-        fh=+f95HxKnZP7OMV51HNGnhx71oroeqCcS354W/QU47Jc=;
-        b=Lr1v3iKzWsNov93QAiwHvxAFYNY3UVeLoOr+hPvNMRbl2CjU37/5piWyEGZCpslJtc
-         e7zECr2nVOLDYPpyhwV0E17bBdWLDXhT4Aq29Sw/P47Uh6wdtLQ///dUistu/fT/faoZ
-         wZN29YYoLYQsgomEIt2jWFCXgLouk3PToKaulgs93L7gpqbXkxp34UQRJqI2blAjygGW
-         Ojk0ctoSjeyqMkqsCygdhZIR3tu6kXRcRJNXymzjPbct8Kpu+b+cjrkU85qdNCG9dtZS
-         0Cfv989R2g7hRKpzJymEAyVPWTaRtLznbsacVC0EK+al66uZTzyyfuRtKyedIiuKzyWi
-         3L3g==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=6ZwtYW+m6w4oQmOf8ZPSw+Fz8ib8szmgXYuwZPtcG1c=;
+        fh=qDXqUkqMs8fJCFUgQ10a0i0ZsVeEsNpuTLeSU2I/sRw=;
+        b=X49A00oQTRSl+KHaUiSbCmpMa4GX6ue9l7jDWb0l0l75UTmu0NasmZEKgfuaq3mhpC
+         O+y8OccHaITYxZprl52eR1T/uDOoOPucFZA+7/1ZMdlotgcw3PLzVbI2WOZ5NpO83UYL
+         KjbAco/OYgm81OTpJLtIoCmWok3IV3sIBFPs0aT0CT673nXWH0URxHCGotk62HRLmXjb
+         MjYcxnhDsB5P4JNyeazBRYxV6MjWYgsFw64T7keJbPjhfh9P0hzw6F0i3H0Nwp9lgakI
+         QgkifAmWnGvipBZsuZP8sCpKv7rFZtJLmSrtcT+xxKVXNkFL63NzV+09/0qi//dnGlP5
+         ImyA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=siewert.io dkim=pass dkdomain=siewert.io dmarc=pass fromdomain=siewert.io);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=CMK6iZTk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd7736ba62si77240426d6.307.2025.06.29.06.54.49
+        by mx.google.com with ESMTPS id af79cd13be357-7d45f0a05basi15264085a.168.2025.06.29.13.50.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 29 Jun 2025 06:54:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 29 Jun 2025 13:50:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=siewert.io dkim=pass dkdomain=siewert.io dmarc=pass fromdomain=siewert.io);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=CMK6iZTk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uVsUQ-0006XI-5Z; Sun, 29 Jun 2025 09:54:38 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uVyxY-0003fr-7d; Sun, 29 Jun 2025 16:49:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tan@siewert.io>)
- id 1uVsUO-0006X4-9n; Sun, 29 Jun 2025 09:54:36 -0400
-Received: from
- mail-germanywestcentralazlp170100001.outbound.protection.outlook.com
- ([2a01:111:f403:c20c::1] helo=FR6P281CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tan@siewert.io>)
- id 1uVsUM-0002d5-6w; Sun, 29 Jun 2025 09:54:36 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=vXB1pZG+BUeccXpsl3I2WKUzfEPf1UHx8eA6O8BWLyrhbEmfsQjnp00+MHnARqklgs9tEBeoeRTbeb8j8PciK9J9eay72/yvXcSs9Nw2d3ZA8ucAgoHMmrqkRzLhXaKJSO6lxPa6NNgyRKqt2MI12pECgfIHI8OA6OPgSzSP4xthyXqRFC9DYW3Qg/Enm4HUhT5wOn6c2xcnObFQ9TCnx7hoDRfTzsyT/NxTIreZvZEEmcKFY0NO3Kg5kkp0z1FjYKno9wFLSETo23Zlr7Kh6P0YatJ2EGfXTG0gi++aZt/11eal8PIgHlQlebYTlb8xCCKzNFHcUYZqxeWPEVt8VA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=dn7yRGkj3e8xZIBoPowL/Eq/VXIPntvu+PBifbE5PGM=;
- b=sHnDDsl+pdELxLopXBanGTMwxLA8oYGNF6F+YOo68210Lttn+HlaflmjZ+P1KPnMAfEFHBWjJwFa1UNB04msc6pL5wWXlNZA3kidsyFR6kLnbMDSCnZIoDEntUal1C/sg5t8FAcw18GZ4xCnhepSsUv4NPVUkYm24MYyEBxf2diaAfn1JnY83I24wdcUgKJUuhpBFDC0HYEQtOSyDXnxflXqrb7+xXC3G+6dJnOwzPgaWIF+YgBoiHdfwg5LTJ1dR8oWt6swuiyNyzuDJZOelTK7F3gtVkSO5xKVRd1DtocVe3Kr42cZrrNOtYOf66FFg1rPttc5efSgWAr8SiBYpw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=siewert.io; dmarc=pass action=none header.from=siewert.io;
- dkim=pass header.d=siewert.io; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=siewert.io;
-Received: from BE1PPF7DB70B163.DEUP281.PROD.OUTLOOK.COM (2603:10a6:b18::65f)
- by FR6P281MB4223.DEUP281.PROD.OUTLOOK.COM (2603:10a6:d10:12b::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8880.29; Sun, 29 Jun
- 2025 13:54:28 +0000
-Received: from BE1PPF7DB70B163.DEUP281.PROD.OUTLOOK.COM
- ([fe80::5c4:893c:2523:a442]) by BE1PPF7DB70B163.DEUP281.PROD.OUTLOOK.COM
- ([fe80::5c4:893c:2523:a442%3]) with mapi id 15.20.8880.021; Sun, 29 Jun 2025
- 13:54:27 +0000
-From: Tan Siewert <tan@siewert.io>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Tan Siewert <tan@siewert.io>
-Subject: [PATCH] tests/qtest: Add test for ASPEED SCU
-Date: Sun, 29 Jun 2025 15:54:03 +0200
-Message-ID: <20250629135405.73117-1-tan@siewert.io>
-X-Mailer: git-send-email 2.49.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: FR2P281CA0153.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:98::20) To BE1PPF7DB70B163.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:b18::65f)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1uVyxW-0003f1-OH; Sun, 29 Jun 2025 16:49:06 -0400
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1uVyxU-0000Rs-By; Sun, 29 Jun 2025 16:49:06 -0400
+Received: by mail-ej1-x62c.google.com with SMTP id
+ a640c23a62f3a-ad574992fcaso246731666b.1; 
+ Sun, 29 Jun 2025 13:49:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1751230142; x=1751834942; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=6ZwtYW+m6w4oQmOf8ZPSw+Fz8ib8szmgXYuwZPtcG1c=;
+ b=CMK6iZTkbf8lLL+hRjHdIgCUuiUEFbqTK+qseOAkz54Lmo/084LnGp7g+McWo/ImHj
+ n5u2dPjZgfIAYm67ALJ/h1CvJKobSQQXlNVfNkTmerivrgLpngUBvlNuk8/CfaFUkxc+
+ BvFmZR/7eVuZQJpH7J6OX0tmo9XMaU/XYzBuVAdhHUQKtRQTWBMFUPB/PLX7CVimnDYj
+ sqvi8Od4tNcRjNhYLFNnRzvqhofvHt1J/u+WiPAn/s86IfdrTVpFc0wG/ujsw818HXHu
+ Ae6KrWEa42Rx4751Ioa5g2lr5+z2+Chiuif2kf2j0ry3WovPgGhYfoVe3wTC9WlUZxv+
+ 28BQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1751230142; x=1751834942;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=6ZwtYW+m6w4oQmOf8ZPSw+Fz8ib8szmgXYuwZPtcG1c=;
+ b=xII6Ab657BcuBBALHU8QbE/06rKGkFPPvfeH2i3bsHXq+s/NoqudyfvsBOTf1lVhAL
+ VXBFap5nu8Io95KkSmIXJ6XOV7cvVUTMacLul89Og+pio77XwPh83nZqYyedPZNqiK/Q
+ I51QpKCpPikjghAZXjthahiAFJYImcR2WGQD9I1cYjIkIthiXwt65nVZbwLosUKReyvY
+ 8n0GVWQ7QY6QNOVKVjtmcHu13mwsdvmzpB+Qaqp/J17q5iOk6wuS6rbYrwvpSrSK1jiZ
+ 3X7aPszbBtoyiVikf97rl3gPu93AliaMIJ8sWtAdxM2T+yMJJp1ObSeDlrYNfebJTU8f
+ JAMw==
+X-Gm-Message-State: AOJu0YyPRwF1Z8l2xmYuG4pVF/LNgQY1B788es85LVYwJg+oRTdOZ75T
+ +N0HoQLLublqZxc2hkmfbo4P3nBBAr3ii6GTUPoVp2e7fJyK5pqOnLJDerjvYA==
+X-Gm-Gg: ASbGnctzpgk+6bhUtTTtYChlhq2vFxtdK1hq7CrbyP75n87cnmxBetpScfPS8AyQtOA
+ WxA3A+yokCJj+yefO/JkY3PrWF8Y1FkvYfPFkhbmHXtzruhE4VMcJLdaOvYF15K08RIHqvv3k66
+ PVZD9rqrMu0eyeBnlG6xm3qWvGk9j2ZeudoffUvI5PL2v53U12Xg0vgJTFYcIom+wsYQzSgbWw2
+ 8pPo0zwwYdo/4IW2fuL25ueDHbA8kggzdZxdeKu9+MDZWQmQBynLRWcEc5hfi5pErTymMJDPIvA
+ 1AIPdN30Qnr6AQEjxcguBwnInYv73bt3LApA/pHT2RorDXTWkDnu8QRvuc9m4X1hvho5Q+brNnD
+ IB39d+DujP2zKWVcgOoN6jmd2UkXQtcA3VU9oMIvnCjKAzBV9oFiOYywfa/UPFEk1xQ==
+X-Received: by 2002:a17:907:9603:b0:ae0:cf36:ea81 with SMTP id
+ a640c23a62f3a-ae34fd1837fmr957999566b.5.1751230141999; 
+ Sun, 29 Jun 2025 13:49:01 -0700 (PDT)
+Received: from Provence
+ (dynamic-2a02-3100-2f97-a200-0219-99ff-feb2-2458.310.pool.telefonica.de.
+ [2a02:3100:2f97:a200:219:99ff:feb2:2458])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-ae353659e06sm535709566b.44.2025.06.29.13.49.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 29 Jun 2025 13:49:01 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Bernhard Beschow <shentey@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH 2/2] hw/arm/imx8mp-evk: Add KVM support
+Date: Sun, 29 Jun 2025 22:48:51 +0200
+Message-ID: <20250629204851.1778-3-shentey@gmail.com>
+X-Mailer: git-send-email 2.50.0
+In-Reply-To: <20250629204851.1778-1-shentey@gmail.com>
+References: <20250629204851.1778-1-shentey@gmail.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BE1PPF7DB70B163:EE_|FR6P281MB4223:EE_
-X-MS-Office365-Filtering-Correlation-Id: e55d5f26-71a6-4056-bfaa-08ddb71476d0
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|52116014|1800799024|376014|7416014|10070799003|921020; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?mC9CXf9CXXxv/hHc+BzObv6PkuY9pnGCKsx92kYd1PbPS+kDWQBK4Q40fdXR?=
- =?us-ascii?Q?wjyBERnHMq5D7ReKhQfkcYI6XzDFZrOpQ5YUe0J9Ww38HO8Gc6MlDzOHA5n6?=
- =?us-ascii?Q?zku2cwX8g9KMwdJFxDTfawN3Juy0DTO77Mx/zIyLgDXQ+fzcxpHjAhFJn9dH?=
- =?us-ascii?Q?jHVubK3+H2/KZcP5/TeaA5741QHlKY7JXs9/G2WN8N3e7u4Qp7UABfHntZen?=
- =?us-ascii?Q?58D8b/zqAwDNNr9kmUO4jzVRRd85KcalCFeJeSpJXPMvNeWotm3zoX38QtGc?=
- =?us-ascii?Q?R6rmxeE4E33fbvEWN5tyZpB7ItjEAfCAvHtxN8JV4sKStYj9bvwM6QVwf4wU?=
- =?us-ascii?Q?DRdc8HnOSJaOEg/QcJvrrmrs70KIjNIUEzMuxUPVhEslNB8eYlfiS7zJSlyf?=
- =?us-ascii?Q?+gIWitOb/jY5RvwLWTNP+DlvsdF9VZbdq66lDVUHpr/OdI9s+giCBME6b0KL?=
- =?us-ascii?Q?qiE+0c+G+NP3qtT8+uQ5M8vTOsZf3eklCUkm5Pd4j74m8CvOTKn6UMKdCgVb?=
- =?us-ascii?Q?LQ68xPicfdYWWj024lz2dyFROaL5FTOYZhaWMc5umLDN40s95Fg0OfQiQYn8?=
- =?us-ascii?Q?/qlHHrI2uabIaoooqwFy7HTqxUoPD74qdDZ3xQwgqeIkGXKQx4Cvk7v8qVOR?=
- =?us-ascii?Q?7WoVFGYM5TdHU0GDDluQ3sf/SENHEZ1I5ZVS1QASD7uFLcooThVvyE02aU/c?=
- =?us-ascii?Q?eLteOjmj7xrFOr5oiznJfHk6I6TABOw/9CkdZzW3BV1gzbI1TxF6ZdgSu/zy?=
- =?us-ascii?Q?4nmO94acJeUSakijZBkl50XNCp545KvDiNm5Yjmr+cyhbxECK0R89SURWOMf?=
- =?us-ascii?Q?6uNFTYePFAjc6oyDG1nrYffYJUkAk6GhqWHnfpISLtW00JVnfUvXAo2pzq+P?=
- =?us-ascii?Q?uHx+QIR0AyCpDlpTd15icUt1Fuoxcefr7hqufYiKV8K0Wn/xE2jb7MmFmsnM?=
- =?us-ascii?Q?cjTbWFezLpnZzgbSETYMwmWrVKuS2fCu4niCiFojjuGYv/uLzFT1X2moYzis?=
- =?us-ascii?Q?VjKkKSkm8PGbMQkbuMEcsiaXhKYDdTO+1OQsS/BLkHGlUFpeyDwdDkzqaKBn?=
- =?us-ascii?Q?GemkDvGBAjXzP2IaRkgMwk1+Iy9C7P3AxFptqy2QqjQ+Fst5rsWgu/AlsI+k?=
- =?us-ascii?Q?PCjyTVwiDkYBPqa92G4pj52J5wlGiWroyMAQ9NeN+4pOB9ZwZuGSj1solOfV?=
- =?us-ascii?Q?5Sa22buFE2ahZ+sreKPbo6c/JY26oDwnVX5yXlDLBZgM5/61YIX6kLC4sgrX?=
- =?us-ascii?Q?AOQrkIrdrrDpPwQ7fpxg/9KwyZwMU1gzHrqWP9em5KH/7aQORiMn/H5L9/Lm?=
- =?us-ascii?Q?8UllubZoRKZXf8fO5Hoe0aVntZH1UZmCuNzGWNVaGoNYFlDaSmMLx6+zTJ3m?=
- =?us-ascii?Q?jKYdCDTYdxcU4cJamQwiWEfhl5P+O3eOr/sbnyfIlvvkK8KLgE429ZiaQV4i?=
- =?us-ascii?Q?9UqpBxii464iBlUOCbbUZqNkDK4/o+XpG4GIUm9bXs6HEj0y1Cdk2g=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BE1PPF7DB70B163.DEUP281.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(52116014)(1800799024)(376014)(7416014)(10070799003)(921020);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?qeaMyzsyLjNWlARBEP4urfUcFTi4/2fa9lx9bjT+qPjQ0iYbRsHnDB3A0WXx?=
- =?us-ascii?Q?c6EL2Le+kqkEC6rRYsi5LOsR/FCOs3FcQtdwxDn9URqYXyzHkzVvTXNQbI1G?=
- =?us-ascii?Q?xk0YT+ywrBJg9uVT/ZPMO8dFRF/j8ZM+HP4vygkJSakgb+WfNNUMLFtQZskx?=
- =?us-ascii?Q?4vaYiJhqoMkCYkGUBLUbBD2g1jMHbDLz8kp7wmDPDlEpvZ1UK8pcYSSp9wh2?=
- =?us-ascii?Q?X+GWxdGTjSnImmcQLtBb3UGeNJDTk6jHKi316uYwFDS5OrcuqOg75PfzpcU9?=
- =?us-ascii?Q?D+Ya2qGZODwLSQR6mNzmkbWDuxaVD3iniGBvhJZQUnNTR22Pj3eq1wtnr8Dj?=
- =?us-ascii?Q?OJykXwlq3Bo3jDoB7qsfi7w8rz4xHEJwN6eib2bRoLPZawC4/JnGFW6K3ahg?=
- =?us-ascii?Q?8OUeehTxlsIcZERuskkWr+RETzpw0h4f9jTGmsapkZh4hjinQucBxoNGm2+Y?=
- =?us-ascii?Q?fedgdEdwuTSFSLPbMMJcUnNhtNcd507limE/mwYPP1tBYbTbWWxhsY9wqg5a?=
- =?us-ascii?Q?3Wd6J4OAhLXQr68yypyirTnrwg+gEDRbsOASKiRTk4H1hqF348DpGdMhbomP?=
- =?us-ascii?Q?hTeu7cAYMrxi0bKHvZZZJ/U9kLBmR/b4MSfNqpOZSsBqArWcbhjXowtaMUD+?=
- =?us-ascii?Q?LMx2TbW5fxS3DWt9J0s1Gevpb5sHuZIRDMaEhNiiEHup4v1X78zLcFjoHMRx?=
- =?us-ascii?Q?7AKopmiGKNIdNFMwAVkBuEkprQExuUM4p9vN/RVjn4tzX4GbJxXcFmxCzP0r?=
- =?us-ascii?Q?o/1sUpstsCErUI036B3OMGUH91v4Mz9m5/xyn62aaTEW0Ml/VmfYmVLvTvQW?=
- =?us-ascii?Q?8/lIU4lFhn5RV3myVaP8JH5C8QyMX11Mhn4GRoMCl6woxEVN4lOD83drK7ss?=
- =?us-ascii?Q?/WUWmu0dD3+YieZ3PVr0VOxL3WYV7A0XDsZrOiY0CPU/B3KhCpT5xMAopEVX?=
- =?us-ascii?Q?cWCFIagQvbRTvuaLTcHc9UtmMwC6UFGV0mF1BJVxouuYVSwj3enlfbdSIP4Y?=
- =?us-ascii?Q?n3ty10P3NzYuQ3jwT7XtK1CdVP5sUnFQdwjqYnXGBodyUeVR9ViiXfR9S2JM?=
- =?us-ascii?Q?W/w1PXcV/wkKDAJg6/um7HAtcZ04EpTkEyEPWHh2IC+G7mViy9XWaQdm0ZSW?=
- =?us-ascii?Q?PI4IwSFmKa7oxr2KGb51ePsncczjh56/2mutQD0a5uU8Vn+uMFe08d+M3IIq?=
- =?us-ascii?Q?Ou0mLWoR4inH42XFSqGWvbbkbSlG28S8+N3Nd8d1W6CWsjbafgRb+d/Y4mte?=
- =?us-ascii?Q?EPIHRD8XhlqoqewaTNC0G2BOAqSxx+7M9SYkbqCde+dMG/y6ZeJymR+8RAjO?=
- =?us-ascii?Q?8PtxcJkS4IX72JWCbbILZFF/1F20T54ICsDmBbdH6Bxv8XGjiuVXSe1MBUfi?=
- =?us-ascii?Q?7Vig1B01K0qrOmvwTaG8wW/30vu/R74zz4KVsZ8u3svbu8AFAORN0uP7/Mm+?=
- =?us-ascii?Q?BlIYRRu4d0z9NEnjP637Sx5yj7OfFVmSXiPzGcTYqIPN+nQ14XvpQTLZMIUn?=
- =?us-ascii?Q?1gl4Q19txPkELjNF2/V40SqFDPjBXZ3iX3cdjahiHrl9n5bRL7R8M5Y3OKSy?=
- =?us-ascii?Q?3EKCUwbSUSU+UQKsa5+FV7ucvPPp1s6rR51VM0dRB/3fT/cFOt3QxaVfYLtu?=
- =?us-ascii?Q?rXYW0p+T19oRtrml11PdGoA=3D?=
-X-OriginatorOrg: siewert.io
-X-MS-Exchange-CrossTenant-Network-Message-Id: e55d5f26-71a6-4056-bfaa-08ddb71476d0
-X-MS-Exchange-CrossTenant-AuthSource: BE1PPF7DB70B163.DEUP281.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Jun 2025 13:54:27.8630 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e8b4abbe-444b-4835-b8fd-87ac97451a7e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: YlSJ0LaxzbBylhCXPPlMVZlS7ueU5uslPORIreQ6jaicbrA5nYHuzX3NYIz9luxC
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: FR6P281MB4223
-Received-SPF: pass client-ip=2a01:111:f403:c20c::1;
- envelope-from=tan@siewert.io;
- helo=FR6P281CU001.outbound.protection.outlook.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ja3g/dgKoeMk
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: gAcJjKCVllon
 
-This adds basic tests for the ASPEED System Control Unit (SCU) and its
-protection mechanism on the AST2500 and AST2600 platforms.
+Allows the imx8mp-evk machine to be run with KVM acceleration as a guest.
 
-The tests verify:
-  - That SCU protection registers can be unlocked and locked again
-  - That modifying the primary protection register on AST2600 also
-    affects the secondary one
-  - That writes to protected SCU registers are blocked unless
-    protection registers are unlocked explicitly
-
-These tests ensure proper emulation of hardware locking behaviour
-and help catch regressions in SCU access logic.
-
-Signed-off-by: Tan Siewert <tan@siewert.io>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- tests/qtest/aspeed-scu-utils.c |  22 ++++
- tests/qtest/aspeed-scu-utils.h |  38 +++++++
- tests/qtest/aspeed_scu-test.c  | 197 +++++++++++++++++++++++++++++++++
- tests/qtest/meson.build        |   4 +-
- 4 files changed, 260 insertions(+), 1 deletion(-)
- create mode 100644 tests/qtest/aspeed-scu-utils.c
- create mode 100644 tests/qtest/aspeed-scu-utils.h
- create mode 100644 tests/qtest/aspeed_scu-test.c
+ docs/system/arm/imx8mp-evk.rst |  7 +++++++
+ hw/arm/fsl-imx8mp.c            | 33 ++++++++++++++++++++++++++++-----
+ hw/arm/imx8mp-evk.c            | 11 +++++++++++
+ hw/arm/Kconfig                 |  3 ++-
+ hw/arm/meson.build             |  2 +-
+ 5 files changed, 49 insertions(+), 7 deletions(-)
 
-diff --git a/tests/qtest/aspeed-scu-utils.c b/tests/qtest/aspeed-scu-utils.c
-new file mode 100644
-index 0000000000..9083827b98
---- /dev/null
-+++ b/tests/qtest/aspeed-scu-utils.c
-@@ -0,0 +1,22 @@
-+/*
-+ * QTest testcase for the ASPEED AST2500 and AST2600 SCU.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2025 Tan Siewert
-+ */
+diff --git a/docs/system/arm/imx8mp-evk.rst b/docs/system/arm/imx8mp-evk.rst
+index b2f7d29ade..1399820163 100644
+--- a/docs/system/arm/imx8mp-evk.rst
++++ b/docs/system/arm/imx8mp-evk.rst
+@@ -60,3 +60,10 @@ Now that everything is prepared the machine can be started as follows:
+       -dtb imx8mp-evk.dtb \
+       -append "root=/dev/mmcblk2p2" \
+       -drive file=sdcard.img,if=sd,bus=2,format=raw,id=mmcblk2
 +
-+#include "qemu/osdep.h"
-+#include "libqtest-single.h"
-+#include "aspeed-scu-utils.h"
 +
-+void assert_register_eq(QTestState *s, uint32_t reg, uint32_t expected)
-+{
-+    uint32_t value = qtest_readl(s, reg);
-+    g_assert_cmphex(value, ==, expected);
-+}
++KVM Virtualization
++------------------
 +
-+void assert_register_neq(QTestState *s, uint32_t reg, uint32_t not_expected)
-+{
-+    uint32_t value = qtest_readl(s, reg);
-+    g_assert_cmphex(value, !=, not_expected);
-+}
-diff --git a/tests/qtest/aspeed-scu-utils.h b/tests/qtest/aspeed-scu-utils.h
-new file mode 100644
-index 0000000000..9cc7e3e113
---- /dev/null
-+++ b/tests/qtest/aspeed-scu-utils.h
-@@ -0,0 +1,38 @@
-+/*
-+ * QTest testcase for the ASPEED AST2500 and AST2600 SCU.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2025 Tan Siewert
-+ */
-+
-+#ifndef TESTS_ASPEED_SCU_UTILS_H
-+#define TESTS_ASPEED_SCU_UTILS_H
-+
-+#include "qemu/osdep.h"
-+#include "libqtest-single.h"
-+
-+/**
-+ * Assert that a given register matches an expected value.
-+ *
-+ * Reads the register and checks if its value equals the expected value,
-+ * without requiring a temporary variable in the caller.
-+ *
-+ * @param *s - QTest machine state
-+ * @param reg - Address of the register to be checked
-+ * @param expected - Expected register value
-+ */
-+void assert_register_eq(QTestState *s, uint32_t reg, uint32_t expected);
-+
-+/**
-+ * Assert that a given register does not match a specific value.
-+ *
-+ * Reads the register and checks that its value is not equal to the
-+ * provided value.
-+ *
-+ * @param *s - QTest machine state
-+ * @param reg - Address of the register to be checked
-+ * @param not_expected - Value the register must not contain
-+ */
-+void assert_register_neq(QTestState *s, uint32_t reg, uint32_t not_expected);
-+
-+#endif /* TESTS_ASPEED_SCU_UTILS_H */
-diff --git a/tests/qtest/aspeed_scu-test.c b/tests/qtest/aspeed_scu-test.c
-new file mode 100644
-index 0000000000..75d6a800a6
---- /dev/null
-+++ b/tests/qtest/aspeed_scu-test.c
-@@ -0,0 +1,197 @@
-+/*
-+ * QTest testcase for the ASPEED AST2500 and AST2600 SCU.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2025 Tan Siewert
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest-single.h"
-+#include "aspeed-scu-utils.h"
-+
-+/*
-+ * SCU base, as well as protection key are
-+ * the same on AST2500 and 2600.
-+ */
-+#define AST_SCU_BASE                    0x1E6E2000
-+#define AST_SCU_PROT_LOCK_STATE         0x0
-+#define AST_SCU_PROT_LOCK_VALUE         0x2
-+#define AST_SCU_PROT_UNLOCK_STATE       0x1
-+#define AST_SCU_PROT_UNLOCK_VALUE       0x1688A8A8
-+
-+#define AST2500_MACHINE                 "-machine ast2500-evb"
-+#define AST2500_SCU_PROT_REG            0x00
-+#define AST2500_SCU_MISC_2_CONTROL_REG  0x4C
-+
-+#define AST2600_MACHINE                 "-machine ast2600-evb"
-+/* AST2600 has two protection registers */
-+#define AST2600_SCU_PROT_REG            0x000
-+#define AST2600_SCU_PROT_REG2           0x010
-+#define AST2600_SCU_MISC_2_CONTROL_REG  0x0C4
-+
-+#define TEST_LOCK_ARBITRARY_VALUE       0xABCDEFAB
-+
-+/**
-+ * Test whether the SCU can be locked and unlocked correctly.
-+ *
-+ * When testing multiple registers, this function assumes that writing
-+ * to the first register also affects the others. However, writing to
-+ * any other register only affects itself.
-+ *
-+ * @param *machine - input machine configuration, passed directly
-+ *                   to QTest
-+ * @param regs[] - List of registers to be checked
-+ * @param regc - amount of arguments for registers to be checked
-+ */
-+static void test_protection_register(const char *machine,
-+                                     const uint32_t regs[],
-+                                     const int regc)
-+{
-+    QTestState *s = qtest_init(machine);
-+
-+    for (int i = 0; i < regc; i++) {
-+        uint32_t reg = regs[i];
-+
-+        qtest_writel(s, reg, AST_SCU_PROT_UNLOCK_VALUE);
-+        assert_register_eq(s, reg, AST_SCU_PROT_UNLOCK_STATE);
-+
-+        /**
-+         * Check that other registers are unlocked too, if more
-+         * than one is available.
-+         */
-+        if (regc > 1 && i == 0) {
-+            /* Initialise at 1 instead of 0 to skip first */
-+            for (int j = 1; j < regc; j++) {
-+                uint32_t add_reg = regs[j];
-+                assert_register_eq(s, add_reg, AST_SCU_PROT_UNLOCK_STATE);
-+            }
++To enable hardware-assisted acceleration via KVM, append
++``-accel kvm -cpu host`` to the command line.
+diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
+index 866f4d1d74..7e61392abb 100644
+--- a/hw/arm/fsl-imx8mp.c
++++ b/hw/arm/fsl-imx8mp.c
+@@ -12,11 +12,13 @@
+ #include "system/address-spaces.h"
+ #include "hw/arm/bsa.h"
+ #include "hw/arm/fsl-imx8mp.h"
+-#include "hw/intc/arm_gicv3.h"
+ #include "hw/misc/unimp.h"
+ #include "hw/boards.h"
++#include "system/kvm.h"
+ #include "system/system.h"
++#include "target/arm/cpu.h"
+ #include "target/arm/cpu-qom.h"
++#include "target/arm/kvm_arm.h"
+ #include "qapi/error.h"
+ #include "qobject/qlist.h"
+ 
+@@ -197,11 +199,10 @@ static void fsl_imx8mp_init(Object *obj)
+ 
+     for (i = 0; i < MIN(ms->smp.cpus, FSL_IMX8MP_NUM_CPUS); i++) {
+         g_autofree char *name = g_strdup_printf("cpu%d", i);
+-        object_initialize_child(obj, name, &s->cpu[i],
+-                                ARM_CPU_TYPE_NAME("cortex-a53"));
++        object_initialize_child(obj, name, &s->cpu[i], ms->cpu_type);
+     }
+ 
+-    object_initialize_child(obj, "gic", &s->gic, TYPE_ARM_GICV3);
++    object_initialize_child(obj, "gic", &s->gic, gicv3_class_name());
+ 
+     object_initialize_child(obj, "ccm", &s->ccm, TYPE_IMX8MP_CCM);
+ 
+@@ -274,7 +275,8 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+     /* CPUs */
+     for (i = 0; i < ms->smp.cpus; i++) {
+         /* On uniprocessor, the CBAR is set to 0 */
+-        if (ms->smp.cpus > 1) {
++        if (ms->smp.cpus > 1 &&
++                object_property_find(OBJECT(&s->cpu[i]), "reset-cbar")) {
+             object_property_set_int(OBJECT(&s->cpu[i]), "reset-cbar",
+                                     fsl_imx8mp_memmap[FSL_IMX8MP_GIC_DIST].addr,
+                                     &error_abort);
+@@ -286,6 +288,16 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+         object_property_set_int(OBJECT(&s->cpu[i]), "cntfrq", 8000000,
+                                 &error_abort);
+ 
++        if (object_property_find(OBJECT(&s->cpu[i]), "has_el2")) {
++            object_property_set_bool(OBJECT(&s->cpu[i]), "has_el2",
++                                     !kvm_enabled(), &error_abort);
 +        }
 +
-+        /* Lock the register again */
-+        qtest_writel(s, reg, AST_SCU_PROT_LOCK_VALUE);
-+        assert_register_eq(s, reg, AST_SCU_PROT_LOCK_STATE);
-+
-+        /* And the same for locked state */
-+        if (regc > 1 && i == 0) {
-+            /* Initialise at 1 instead of 0 to skip first */
-+            for (int j = 1; j < regc; j++) {
-+                uint32_t add_reg = regs[j];
-+                assert_register_eq(s, add_reg, AST_SCU_PROT_LOCK_STATE);
-+            }
++        if (object_property_find(OBJECT(&s->cpu[i]), "has_el3")) {
++            object_property_set_bool(OBJECT(&s->cpu[i]), "has_el3",
++                                     !kvm_enabled(), &error_abort);
 +        }
-+    }
 +
-+    qtest_quit(s);
-+}
+         if (i) {
+             /*
+              * Secondary CPUs start in powered-down state (and can be
+@@ -304,6 +316,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+     {
+         SysBusDevice *gicsbd = SYS_BUS_DEVICE(&s->gic);
+         QList *redist_region_count;
++        bool pmu = object_property_get_bool(OBJECT(first_cpu), "pmu", NULL);
+ 
+         qdev_prop_set_uint32(gicdev, "num-cpu", ms->smp.cpus);
+         qdev_prop_set_uint32(gicdev, "num-irq",
+@@ -360,6 +373,16 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+                                qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
+             sysbus_connect_irq(gicsbd, i + 3 * ms->smp.cpus,
+                                qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
 +
-+static void test_2500_protection_register(void)
-+{
-+    uint32_t regs[] = { AST_SCU_BASE + AST2500_SCU_PROT_REG };
++            if (kvm_enabled()) {
++                if (pmu) {
++                    assert(arm_feature(&s->cpu[i].env, ARM_FEATURE_PMU));
++                    if (kvm_irqchip_in_kernel()) {
++                        kvm_arm_pmu_set_irq(&s->cpu[i], VIRTUAL_PMU_IRQ);
++                    }
++                    kvm_arm_pmu_init(&s->cpu[i]);
++                }
++            }
+         }
+     }
+ 
+diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
+index b3082fa60d..30eb57318d 100644
+--- a/hw/arm/imx8mp-evk.c
++++ b/hw/arm/imx8mp-evk.c
+@@ -95,9 +95,20 @@ static void imx8mp_evk_init(MachineState *machine)
+ 
+ static void imx8mp_evk_machine_init(MachineClass *mc)
+ {
++    static const char *const valid_cpu_types[] = {
++        ARM_CPU_TYPE_NAME("cortex-a53"),
++#ifdef CONFIG_KVM
++        ARM_CPU_TYPE_NAME("host"),
++#endif /* CONFIG_KVM */
++        NULL
++    };
 +
-+    test_protection_register(AST2500_MACHINE,
-+                             regs,
-+                             ARRAY_SIZE(regs));
-+}
+     mc->desc = "NXP i.MX 8M Plus EVK Board";
+     mc->init = imx8mp_evk_init;
+     mc->max_cpus = FSL_IMX8MP_NUM_CPUS;
++    mc->valid_cpu_types = valid_cpu_types;
++    mc->default_cpu_type = mc->valid_cpu_types[0];
+     mc->default_ram_id = "imx8mp-evk.ram";
+ }
 +
-+static void test_2600_protection_register(void)
-+{
-+    /**
-+     * The AST2600 has two protection registers, both
-+     * being required to be unlocked to do any operation.
-+     *
-+     * Modifying SCU000 also modifies SCU010, but modifying
-+     * SCU010 only will keep SCU000 untouched.
-+     */
-+    uint32_t regs[] = { AST_SCU_BASE + AST2600_SCU_PROT_REG,
-+                        AST_SCU_BASE + AST2600_SCU_PROT_REG2 };
-+
-+    test_protection_register(AST2600_MACHINE,
-+                             regs,
-+                             ARRAY_SIZE(regs));
-+}
-+
-+/**
-+ * Test if SCU register writes are correctly allowed or blocked
-+ * depending on the protection register state.
-+ *
-+ * The test first locks the protection register and verifies that
-+ * writes to the target SCU register are rejected. It then unlocks
-+ * the protection register and confirms that the written value is
-+ * retained when unlocked.
-+ *
-+ * @param *machine - input machine configuration, passed directly
-+ *                   to QTest
-+ * @param protection_register - first SCU protection key register
-+ *                              (only one for keeping it simple)
-+ * @param test_register - Register to be used for writing arbitrary
-+ *                        values
-+ */
-+static void test_write_permission_lock_state(const char *machine,
-+                                             const uint32_t protection_register,
-+                                             const uint32_t test_register)
-+{
-+    QTestState *s = qtest_init(machine);
-+
-+    /* Arbitrary value to lock provided SCU protection register */
-+    qtest_writel(s, protection_register, AST_SCU_PROT_LOCK_VALUE);
-+
-+    /* Ensure that the SCU is really locked */
-+    assert_register_eq(s, protection_register, AST_SCU_PROT_LOCK_STATE);
-+
-+    /* Write a known arbitrary value to test that the write is blocked */
-+    qtest_writel(s, test_register, TEST_LOCK_ARBITRARY_VALUE);
-+
-+    /* We do not want to have the written value to be saved */
-+    assert_register_neq(s, test_register, TEST_LOCK_ARBITRARY_VALUE);
-+
-+    /**
-+     * Unlock the SCU and verify that it can be written to.
-+     * Assumes that the first SCU protection register is sufficient to
-+     * unlock all protection registers, if multiple are present.
-+     */
-+    qtest_writel(s, protection_register, AST_SCU_PROT_UNLOCK_VALUE);
-+    assert_register_eq(s, protection_register, AST_SCU_PROT_UNLOCK_STATE);
-+
-+    /* Write a known arbitrary value to test that the write works */
-+    qtest_writel(s, test_register, TEST_LOCK_ARBITRARY_VALUE);
-+
-+    /* Ensure that the written value is retained */
-+    assert_register_eq(s, test_register, TEST_LOCK_ARBITRARY_VALUE);
-+
-+    qtest_quit(s);
-+}
-+
-+static void test_2500_write_permission_lock_state(void)
-+{
-+    test_write_permission_lock_state(
-+            AST2500_MACHINE,
-+            AST_SCU_BASE + AST2500_SCU_PROT_REG,
-+            AST_SCU_BASE + AST2500_SCU_MISC_2_CONTROL_REG
-+    );
-+}
-+
-+static void test_2600_write_permission_lock_state(void)
-+{
-+    test_write_permission_lock_state(
-+            AST2600_MACHINE,
-+            AST_SCU_BASE + AST2600_SCU_PROT_REG,
-+            AST_SCU_BASE + AST2600_SCU_MISC_2_CONTROL_REG
-+    );
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+
-+    qtest_add_func("/ast2500/scu/protection_register",
-+                   test_2500_protection_register);
-+    qtest_add_func("/ast2600/scu/protection_register",
-+                   test_2600_protection_register);
-+
-+    qtest_add_func("/ast2500/scu/write_permission_lock_state",
-+                   test_2500_write_permission_lock_state);
-+    qtest_add_func("/ast2600/scu/write_permission_lock_state",
-+                   test_2600_write_permission_lock_state);
-+
-+    return g_test_run();
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 8ad849054f..7713fae885 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -215,7 +215,8 @@ qtests_npcm8xx = \
- qtests_aspeed = \
-   ['aspeed_gpio-test',
-    'aspeed_hace-test',
--   'aspeed_smc-test']
-+   'aspeed_smc-test',
-+   'aspeed_scu-test']
- qtests_aspeed64 = \
-   ['ast2700-gpio-test',
-    'ast2700-hace-test',
-@@ -366,6 +367,7 @@ endif
- qtests = {
-   'aspeed_hace-test': files('aspeed-hace-utils.c', 'aspeed_hace-test.c'),
-   'aspeed_smc-test': files('aspeed-smc-utils.c', 'aspeed_smc-test.c'),
-+  'aspeed_scu-test': files('aspeed-scu-utils.c', 'aspeed_scu-test.c'),
-   'ast2700-hace-test': files('aspeed-hace-utils.c', 'ast2700-hace-test.c'),
-   'ast2700-smc-test': files('aspeed-smc-utils.c', 'ast2700-smc-test.c'),
-   'bios-tables-test': [io, 'boot-sector.c', 'acpi-utils.c', 'tpm-emu.c'],
+ DEFINE_MACHINE("imx8mp-evk", imx8mp_evk_machine_init)
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index f543d944c3..d35f41331f 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -604,7 +604,8 @@ config FSL_IMX8MP
+ config FSL_IMX8MP_EVK
+     bool
+     default y
+-    depends on TCG && AARCH64
++    depends on AARCH64
++    depends on TCG || KVM
+     select FSL_IMX8MP
+ 
+ config ARM_SMMUV3
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index d90be8f4c9..a4212a6ab2 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -59,7 +59,7 @@ arm_common_ss.add(when: 'CONFIG_MUSCA', if_true: files('musca.c'))
+ arm_common_ss.add(when: 'CONFIG_ARMSSE', if_true: files('armsse.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c', 'mcimx7d-sabre.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-imx8mp.c'))
+-arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
++arm_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
+ arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
+ arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
 -- 
-2.49.0
+2.50.0
 

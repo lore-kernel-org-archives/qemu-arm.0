@@ -1,248 +1,166 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp1644448dye;
-        Sat, 28 Jun 2025 12:42:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV380drGa0FASVD7r9UONbTuEW3yFFFbzgVPZA1sXwWIkwBi0Lb+XcgaEahoT6ZDaVZ8IYdTR/R7jVWHw==@linaro.org
-X-Received: by 2002:a05:620a:46a0:b0:7d3:9012:75d7 with SMTP id af79cd13be357-7d443976abfmr1245719985a.43.1751139774309;
-        Sat, 28 Jun 2025 12:42:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751139774; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2113217dye;
+        Sun, 29 Jun 2025 13:50:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWmXc3cHutCjygM4MdA1/81OwoasRryEE3U8/8rD6fCV9anGHA03d1H0pQMFGcqDT8kTvoEQNs870WjPw==@linaro.org
+X-Google-Smtp-Source: AGHT+IE5BQzJ/gyE3uHgFSVwj7bqlmbaG72XoL6KdVJwPYDHt5dTyegMFRcmTmockhwQTC0Cf1kO
+X-Received: by 2002:a05:622a:1352:b0:4a7:817e:c345 with SMTP id d75a77b69052e-4a7fdc706c3mr169869021cf.24.1751230208188;
+        Sun, 29 Jun 2025 13:50:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751230208; cv=none;
         d=google.com; s=arc-20240605;
-        b=bMeNlbNjhztyp+DauSqnf6VhaAPmJ+L20D8jOyZEbhE0nVnXJBl4BwbsAe6kstZ4dm
-         /S9VyADC0oBhZD0wQf3Z/cfDhENNfcbDhlbXXzH4UEElTgopfKEL/rHQWkwrxOh05CCX
-         IJ+/nlUTqwnCZPyk8H1i1A2zWYjHb1jOA3H6byGKkUAPR7nIxFFWYVkQtsiZ5Bd1Kis6
-         YWZBqkZvO/kxUCfVsFqMY5vOlpktEvV8baDS5atb46VYj+dA86L3Vfu9EZhWTYUzX4mp
-         gcFgZthChigW1ypC9x9Mp0oE7zVc7SgEI8V32/RiekUkCaRI3R32ggxGnKPP/M3V85UE
-         t1Gw==
+        b=AFFIz9aejQSj60znjxb3YnKp5zj4pyYchGT9/k/q8jAcx17Wipfb5d7Q4u3WuH96BI
+         sp571tOV6BJP8zzXqwT5QH8+rqNKan9XRYYxDd7o89/ZGKDuvNZI5cBinGqx4DsCYX9s
+         It/unHASYj9j4cenSIkh94QeDAZgKKbdUWbeZeLeNAAv2Bu1G3M2/XLQKDU1IhHsWJiu
+         HVxJl6G6cM+wCexpSNhBZTNHOXjBbOCo6lsYu1V9y9zXJjL5eaX9w71fIbpU7Tip77ez
+         jyEgz49WQafbD1uONJqFeEnAMcEf2Rdg654boE+L4WbhkOGXCxyl3Bk1gL7jJXhUA2fB
+         BHTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=8cFAKCpZ94rojrIIQVS0isZGEm4RULTPYcXzNgvCux4=;
-        fh=4RKG1YgBwIlmNJjpasM8fje3KweVf5IaexvTG7R+NZU=;
-        b=W423LK+rZOcORXcZn6KocEmHLIhk9iq1htFb41j2Y4SC1xee6OAkvVJ+yi5zUnlcMv
-         GBKq61eatTTe49kZMmLrrBJ7IH2iLiT9XOaYG68OPy0Y2IsguLY3gZdLNcWF1J8M984/
-         pLPvuvufbeHDqcw8Q7FgM2LQ0XX1tv2cvDPuHpmMA2y6SuLQv5ivTkBV4ZQeMqAlneod
-         Lbcv/9oxxrCBSNDvtDQQFI8YV7viLCae3ROcsIMecNXOxuWR3ugdwXltmhI+htI/0udK
-         1DYebZNkT1d/tD06P3w+74rJ6HFO6NXZ0sjGAA/a26jvl+cHSg7fZ+wTJJRDB/1oVUAr
-         d0oQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=LQOw7AHWnconnv7IJtYR9CMfxMCXTEspg6v7zFVpGKE=;
+        fh=qDXqUkqMs8fJCFUgQ10a0i0ZsVeEsNpuTLeSU2I/sRw=;
+        b=cCOV+WaCXFPUmCBIRH4MqoaT3GFyrtuXAkeaVnjFsSldAZecyeT56vCV+6+Z7hDz9P
+         CQ1/kLAJastDyG/R4yit/aLaob1Hs+1ukTSFyvUHfWD25jpaPTwVJxFoEZQblE2Zay19
+         im/scQfsv9QI6YIV0k0/wf+c3Tchhn6xtP2wbrNvMyYizUVrnjhoxUZAnJLBdDdnMfbo
+         OJRi+nIK6P0eRZVy1LFZBJYjq5kjwDXJcY2FmjWxlYVnLClZQDkVCpgtpQSzF08TzSkI
+         dZJtyBtaEbEKZn8aEPR3xqkT8Luw7JbD/eqmsjoldEDoDZH/JNuzIjRZ7Xc/JVmXzY2v
+         +EFg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SIrSFzbi;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dVYeuqkc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id af79cd13be357-7d44316dbb3sor484280285a.7.2025.06.28.12.42.54
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc12b5d5si75777881cf.155.2025.06.29.13.50.08
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 28 Jun 2025 12:42:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 29 Jun 2025 13:50:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SIrSFzbi;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dVYeuqkc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uVyxW-0003ei-Jm; Sun, 29 Jun 2025 16:49:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1uVyxV-0003eC-EE; Sun, 29 Jun 2025 16:49:05 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1uVyxU-0000Rn-1Q; Sun, 29 Jun 2025 16:49:05 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id
+ a640c23a62f3a-ae0b2ead33cso678500266b.0; 
+ Sun, 29 Jun 2025 13:49:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1751139774; x=1751744574; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=8cFAKCpZ94rojrIIQVS0isZGEm4RULTPYcXzNgvCux4=;
-        b=SIrSFzbizaolAQ46JQdsaa2der3cPE8h9R9WsAetQD8GiZBT2EEC3eL8cUhlUGdlkv
-         MyWC7Y0xRfyBXeyLWFHCgY1BHom1ijVcLSOTjiWqCsSwxVSnA0A7c71//wJ+OUH0a78c
-         Skqz6czaOZa6G9IPuY6SFE5UjthQQ43ufDij069rRibMPg9GN/se+JRtLd5DZSHYoNwm
-         ATXiRF6M6Zybjz/IWlPiiuv8bxOEJuZ7aIExkR0LR2Q9yP619eXeRAHPVY8LTlHILetq
-         qCYpU0IHkVDx9H4ak9lgeSuVWUb/Ug9iK4IaBllflJnKak+Yk1tRa6SBa3qEKju7WlaB
-         nNYg==
+ d=gmail.com; s=20230601; t=1751230141; x=1751834941; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=LQOw7AHWnconnv7IJtYR9CMfxMCXTEspg6v7zFVpGKE=;
+ b=dVYeuqkcuBagkpsDhSzVQWJyAgLr5F2TJEYjM8qEpTgKvBUmPh0EK8oUKUuDihu95s
+ FrnWSlrv9Hyl6vNKUcHWjhJvb+09ZGtFDof+YE+aFboQjaUsCl6udKZemxvOuI4J52G0
+ 7UTQi/Ffg4UNykJAlZ9FyMw+bxgf/Y34nwFyHBviJdZRIdj7D6VNYtwbV0sl+Lc9DOp1
+ E6hWGq6gvBKpRUGlVxyEVHgGDAPT1JhOSVa3jK4uJlm7/QrW7E3fmaeY9CLyOPmAjWSi
+ 1NmFpc0ZDelqAqYTncm54xlXriff60O5DmPZb43H5aS4GOjvKVr9ZtR5ncPYkReX8V5a
+ dQfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751139774; x=1751744574;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=8cFAKCpZ94rojrIIQVS0isZGEm4RULTPYcXzNgvCux4=;
-        b=Yn143yst/jg/G5YnpPQUyj742hsRODrtzWWg/ztQM2fUmHyE0ZllrSl0mTs/JoicYg
-         U/O5BWTt4gsYD/VRRWtxCAhSeEn5oThGj/CZJSmMmooMltgyo50M37CjVwCNpHPKLhgM
-         xHtCQlvDlHz6uMoPiYVt5EGIVw5LfDcXKvsv1sd9uO8ssWcu2RyzNUZP9KPLf7VOLVSm
-         wUTbiFp3r2FGRPprnzDVJVkODZTE1ZKsdDmT/I56y6jgKNzXjx/qDZ28jqMj+AIdkbTA
-         zpPSTiLO95tdz3YUppHRcB0uMHqSUQeOQ2abilTGbmgACdJqN9MJViUBaXS0ZIaqaL33
-         wi6w==
-X-Forwarded-Encrypted: i=1; AJvYcCUetDf5IO1DDyb8/UdyDs4+eqRKX1KViMwKeYr8BXV2PPfOFDySs5P/hf2qg5t7gE7w/xWUYYr8Mk4uqg==@linaro.org
-X-Gm-Message-State: AOJu0YyMT6AW+d43ZBZ0JC8+l1EEI8L8gQaeb6SZCfUSKfO+jwXvQS8A
-	zcw+HKsgK5ULBzW0okrHfcISdZDBU+Dw+2nHJurh/tXdNrnzDi0YmlhxTFO8ZGFE3tmcuA==
-X-Gm-Gg: ASbGncv+3MpeHb02eCNNh05WJPsUc5rVyyNWVG4wEH3DtYZFOB8yW+tGQHigWnUAtdr
-	MgNk2Fz95JlbC4KzDYGCKJVGkQTpER1QmjwSN/2ea3wV0T2MlBkNACEs4zXmBj9GOmezy1/aMw7
-	nsfkmY6RMScNs3hw0uaKwDgBvr1sjJ0FTAFe2U3bmgSRsntTBaCHCq9ZiNgA0A54x48xoRT0EgT
-	M02RD2RFefJED7IL9gM3o7ld/V0jtHnOl3uPK4DEpfKyZ+rWiuZnBBoEZ1UA2LYYKjFMPe3shRh
-	FKNJvE8rFHOVvayTb9F+Rdde+xj0SpuDc0Yjt3jquM14vToXPuW9eWXbLtV+5IgC8n3XcayIJg=
-	=
-X-Google-Smtp-Source: AGHT+IGCD8YQkKPEdVLSn9wkzwZ4R76YUA1qFX8wuyOw2+qymxi3ua1KPj4FOUQVqo/GNFqhxWSsRg==
-X-Received: by 2002:a05:620a:444b:b0:7d2:2822:3f79 with SMTP id af79cd13be357-7d443906621mr1102945885a.13.1751139773786;
-        Sat, 28 Jun 2025 12:42:53 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from [192.168.0.102] ([186.215.58.88])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7d443204c00sm335321385a.74.2025.06.28.12.42.50
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 28 Jun 2025 12:42:53 -0700 (PDT)
-Message-ID: <875034d4-c891-44db-bb09-0036ce932118@linaro.org>
-Date: Sat, 28 Jun 2025 16:43:23 -0300
+ d=1e100.net; s=20230601; t=1751230141; x=1751834941;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=LQOw7AHWnconnv7IJtYR9CMfxMCXTEspg6v7zFVpGKE=;
+ b=rsQtiE7Jm02UGQyIZTNIT2Iu7Va+BUSlSg72fYGEH5qqmPax1lqyHkeLnEYyjr5nXe
+ mljSvIoh+cRoqK/P3M389xW4b7l6ojbF7MuUAFbH0RwZno4gex6kcQYa4uev+8GynhJh
+ iF1fhNJmJJRg5v9aIJUrtrEj3D5KmlNvZqEXWX8hLiNldG67UmHWfzoxgzBOtEyTgsKi
+ gsujSX8dD1AHWao8WRLYeTEfzvYNaYDhKYa9vo2aCd3s7jEdHN8ZdIzPKGO7UBJn7tSP
+ 1a8NDW+Daq6HeQPG6gVwj7fCdHdHrWJ2GwFBJ12DBExS0eFbPvzfN+W2TpCieX+faJgg
+ dGNg==
+X-Gm-Message-State: AOJu0YwQTBb2LbS+v+hwVyYxaw4fygDkKr71xXg9DvXWWEccYluI0dtt
+ 0LLJ6sTfrG1E2TIgaMQ0JnHwItwzQt4YU5olLY8tST/B/I/1SSyg5tTuTDpZEw==
+X-Gm-Gg: ASbGncua3U5trXyaaGCq8EToV2dDsBzrpTStNCQ8s8ULqpJdk4powxK7bNi39Moj9XM
+ FFIq3o/2jY9X3sxRJc8u1DFDKvGxxE3lZ3WGYWPB4usd9vVruyGZRiGcAhOI/IUKULOhbETRzXh
+ jYtsvg9H9LssMOv4so4c7bXWN2S7uf7LUyYSM7w84ppCW2qCNTNEKJnCxVkgm06eh3F9bnKlExr
+ ubW6Mvr6HLnCvcrZ8M37Ig5rgb1CmvlA9qu1fWUXV8x/7JLcw2aSqcuIC9Dm3UPx9ygGM4up4HD
+ X+cqnypgglCAAxnIpokzS8W9vbNH1G8PppsdW98BLDjZniG8b1jeAXjy4PNOMKI2kUUsTprLuJ2
+ AbarJO/jfOZ6Ac7VDXQ18r4A4d1y/zyMmTAf8pjT+LKkV0/2d/Rsu8UrhnCOmwJePpw==
+X-Received: by 2002:a17:907:94c8:b0:ae0:6621:2f69 with SMTP id
+ a640c23a62f3a-ae0d262937emr1704713166b.13.1751230141268; 
+ Sun, 29 Jun 2025 13:49:01 -0700 (PDT)
+Received: from Provence
+ (dynamic-2a02-3100-2f97-a200-0219-99ff-feb2-2458.310.pool.telefonica.de.
+ [2a02:3100:2f97:a200:219:99ff:feb2:2458])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-ae353659e06sm535709566b.44.2025.06.29.13.49.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 29 Jun 2025 13:49:00 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Bernhard Beschow <shentey@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH 1/2] hw/arm/fsl-imx8mp: Wire VIRQ and VFIQ
+Date: Sun, 29 Jun 2025 22:48:50 +0200
+Message-ID: <20250629204851.1778-2-shentey@gmail.com>
+X-Mailer: git-send-email 2.50.0
+In-Reply-To: <20250629204851.1778-1-shentey@gmail.com>
+References: <20250629204851.1778-1-shentey@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 5/9] hw/arm/virt-acpi-build: Factor out
- create_its_idmaps
-To: eric.auger@redhat.com, qemu-devel@nongnu.org, philmd@linaro.org,
- mst@redhat.com
-Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, udo@hypervisor.org,
- ajones@ventanamicro.com, peter.maydell@linaro.org, imammedo@redhat.com,
- anisinha@redhat.com
-References: <20250623135749.691137-1-gustavo.romero@linaro.org>
- <20250623135749.691137-6-gustavo.romero@linaro.org>
- <6990669d-7750-4f30-a11f-6ac06ffb266c@redhat.com>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <6990669d-7750-4f30-a11f-6ac06ffb266c@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: sCHTI2ZAGFaC
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NC4nZJT5HLYY
 
-Hi Eric,
+Allows to run KVM guests inside the imx8mp-evk machine.
 
-Thanks a lot for another round of reviews :)
+Fixes: a4eefc69b237 ("hw/arm: Add i.MX 8M Plus EVK board")
+CC: qemu-stable
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/arm/fsl-imx8mp.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-On 6/27/25 12:28, Eric Auger wrote:
-> Hi Gustavo,
-> 
-> On 6/23/25 3:57 PM, Gustavo Romero wrote:
->> Factor out a new function, create_its_idmaps(), from the current
-> I would call it build_rc_its_idmap() to be clearer on what relationship
-> we build.
->> build_iort code. Add proper comments to it clarifying how the ID ranges
->> that go directly to the ITS Group node are computed based on the ones
->> that go to the SMMU node.
->>
->> Suggested-by: Eric Auger <eric.auger@redhat.com>
->> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
->> ---
->>   hw/arm/virt-acpi-build.c | 64 +++++++++++++++++++++++++---------------
->>   1 file changed, 41 insertions(+), 23 deletions(-)
->>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index e9cd3fb351..40a782a498 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -266,6 +266,42 @@ static int iort_idmap_compare(gconstpointer a, gconstpointer b)
->>       return idmap_a->input_base - idmap_b->input_base;
->>   }
->>   
->> +/* Compute ID ranges (RIDs) from RC that do directly to the ITS Group node */
-> s/do/go
-> Ior use the spec terminology: that are directed to the ITS Group node
+diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
+index 23e662c16c..866f4d1d74 100644
+--- a/hw/arm/fsl-imx8mp.c
++++ b/hw/arm/fsl-imx8mp.c
+@@ -356,6 +356,10 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+                                qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
+             sysbus_connect_irq(gicsbd, i + ms->smp.cpus,
+                                qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
++            sysbus_connect_irq(gicsbd, i + 2 * ms->smp.cpus,
++                               qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
++            sysbus_connect_irq(gicsbd, i + 3 * ms->smp.cpus,
++                               qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
+         }
+     }
+ 
+-- 
+2.50.0
 
-Thanks, I stuck to "directed to" in v6.
-
-
->> +static void create_its_idmaps(GArray *its_idmaps, GArray *smmu_idmaps)
->> +{
->> +    AcpiIortIdMapping *idmap;
->> +    AcpiIortIdMapping next_range = {0};
->> +
->> +    /*
->> +     * Based on the RID ranges that go to the SMMU, determine the bypassed RID
-> same here
->> +     * ranges, i.e., the ones that go directly to the ITS Group node, by
->> +     * subtracting the SMMU-bound ranges from the full RID range, 0x0000–0xFFFF.
-> substracting
-
-I believe that "subtracting" is the correct form (but I'm not a native English speaker, of course).
-It seems the "substract" is sometimes used in ancient texts and I do see them occurring in the
-commit messages, but they occur much less frequently than "subtract":
-
-gromero@gromero0:/mnt/git/qemu_/build$ git log | grep substract | wc -l
-13
-gromero@gromero0:/mnt/git/qemu_/build$ git log | grep subtract | wc -l
-188
-
-
-Cheers,
-Gustavo
-
->> +     */
->> +     for (int i = 0; i < smmu_idmaps->len; i++) {
->> +        idmap = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
->> +
->> +        if (next_range.input_base < idmap->input_base) {
->> +            next_range.id_count = idmap->input_base - next_range.input_base;
->> +            g_array_append_val(its_idmaps, next_range);
->> +        }
->> +
->> +        next_range.input_base = idmap->input_base + idmap->id_count;
->> +    }
->> +
->> +    /*
->> +     * Append the last RC -> ITS ID mapping.
->> +     *
->> +     * RIDs are 16-bit, according to the PCI Express 2.0 Base Specification, rev
->> +     * 0.9, section 2.2.6.2, "Transaction Descriptor - Transaction ID Field",
->> +     * hence, the end of the range is 0x10000.
->> +     */
->> +    if (next_range.input_base < 0x10000) {
->> +        next_range.id_count = 0x10000 - next_range.input_base;
->> +        g_array_append_val(its_idmaps, next_range);
->> +    }
->> +}
->> +
->> +
->>   /*
->>    * Input Output Remapping Table (IORT)
->>    * Conforms to "IO Remapping Table System Software on ARM Platforms",
->> @@ -276,7 +312,6 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>   {
->>       int i, nb_nodes, rc_mapping_count;
->>       size_t node_size, smmu_offset = 0;
->> -    AcpiIortIdMapping *idmap;
->>       uint32_t id = 0;
->>       GArray *smmu_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
->>       GArray *its_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
->> @@ -287,34 +322,17 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>       acpi_table_begin(&table, table_data);
->>   
->>       if (vms->iommu == VIRT_IOMMU_SMMUV3) {
->> -        AcpiIortIdMapping next_range = {0};
->> -
->>           object_child_foreach_recursive(object_get_root(),
->>                                          iort_host_bridges, smmu_idmaps);
->>   
->>           /* Sort the smmu idmap by input_base */
->>           g_array_sort(smmu_idmaps, iort_idmap_compare);
->>   
->> -        /*
->> -         * Split the whole RIDs by mapping from RC to SMMU,
->> -         * build the ID mapping from RC to ITS directly.
->> -         */
->> -        for (i = 0; i < smmu_idmaps->len; i++) {
->> -            idmap = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
->> -
->> -            if (next_range.input_base < idmap->input_base) {
->> -                next_range.id_count = idmap->input_base - next_range.input_base;
->> -                g_array_append_val(its_idmaps, next_range);
->> -            }
->> -
->> -            next_range.input_base = idmap->input_base + idmap->id_count;
->> -        }
->> -
->> -        /* Append the last RC -> ITS ID mapping */
->> -        if (next_range.input_base < 0x10000) {
->> -            next_range.id_count = 0x10000 - next_range.input_base;
->> -            g_array_append_val(its_idmaps, next_range);
->> -        }
->> +	/*
->> +	 * Knowing the ID ranges from the RC to the SMMU, it's possible to
->> +	 * determine the ID ranges from RC that go directly to ITS.
-> are directed to
->> +	 */
->> +        create_its_idmaps(its_idmaps, smmu_idmaps);
->>   
->>           nb_nodes = 3; /* RC, ITS, SMMUv3 */
->>           rc_mapping_count = smmu_idmaps->len + its_idmaps->len;
-> Thanks
-> 
-> Eric
-> 

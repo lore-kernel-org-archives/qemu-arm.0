@@ -1,330 +1,518 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp1648063dye;
-        Sat, 28 Jun 2025 12:58:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXZ6y3f4+jxbFx0l7p7eWyQ4tNJZDCHBIHxA8kbkmu4fOi6rfIBewT1NwDXqbsNStOyvHJdVlelSCdCQQ==@linaro.org
-X-Received: by 2002:a05:620a:1987:b0:7d0:a243:d5c5 with SMTP id af79cd13be357-7d44390231dmr1166505885a.5.1751140696023;
-        Sat, 28 Jun 2025 12:58:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751140696; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp1960234dye;
+        Sun, 29 Jun 2025 06:54:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCU6B92Tvtv6y8vZ6YZuNxc/u3hI6aMErWpQzmYH6ACZSYL/6uat3DBsiCRQMw684aHxiZZha0R2rjFESw==@linaro.org
+X-Google-Smtp-Source: AGHT+IESXdIkWKVqb0aIFsAB0zAk5rTGM/kqWCuY27UFDzJQNTD1jhpW+uP3H18zrasgs4TpsYgT
+X-Received: by 2002:a05:620a:28d3:b0:7d4:56be:9b67 with SMTP id af79cd13be357-7d456be9f15mr256648985a.12.1751205289729;
+        Sun, 29 Jun 2025 06:54:49 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1751205289; cv=pass;
         d=google.com; s=arc-20240605;
-        b=cwzD2JhMSDoQghgU35j/jgezjwKXpksURgEH0sHSbeC9aVUdwwpP47/epLRPZvOUtL
-         aZB6sZmH3XNLws/ON1E7XDRmkWQk+D3FxTGxRfYL+WKcoUhbriLjHmouxI9IRZpjQEL6
-         S+9wSGi0PcfT5yAMGLrvec8MHmMGZTDhuVACzfmo93sWSJjGwtnlcmr3a8AZPmWXvRFw
-         hTkVp8p8hfU4EFpRypmW0tQ83DHSG59FCA975SEi0MUtHnJDIPhgds1nL5ACXrw82VUL
-         d5D4XIx4AiPWp+oKrfQwRFA9tn3grR/k12vqccO7PblQFdbSF3uZoLVSl87PthRIBNcM
-         Khbg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=+F6nN8jVuJ9x9ikMI93e1pxkuyZDDe/xC+x/t6zowT4=;
-        fh=rE+Ih1eO8JcMNQvmjS+hEyCO2nMO2QCwSC5epSRkLaU=;
-        b=H9af6Bil8WvJ7gmycZ32EREeEMW/ZZCpsBCoFshdp9PGvuDD0rOXbHHBcmq8xxaXFB
-         xIJMnWS2YlMx0ZRfPP6RlXYrBVn5slAv+soxeTqg5kImd1cxvVxUwbqC6PgUe/8VR1DL
-         3in7+JLESAa+bFHC2J/HDCMXh/4Al3GT233ePv+2uqb6b7G71pVDze7bAVq60w9H+8mw
-         p0yWI0vYSl/ky2IVkr8PO4goM8wlt5uzMcq8O9MFsJtZKxGTHF6hPQTMJ30pqrfnabgr
-         kd4Ck/74mJeh9E4iEhyJEPyrvenRL9X+iR58q4eYUAOgr7ShIoMXsnmxwULtyqVknsd+
-         NEiQ==;
+        b=CdOHkAfJzq661ohutbdcR+RfybwKcCI+XEbOGrYo415Fv3HLIu87Hi1XNiNMlU2Uq4
+         jRqAOQws+lXF6q06xgIrvlO/MemhJvgmESPhxKbkkk0EtBChBVLbtsbQNmoiQFksEsqv
+         TZlsc2SFrgJ/J/u0E9jI65VhANq5VUNQuOPXqaAdlqmm2zVkj05O4R4CbV5x0s7rkXzP
+         Scdrgi6+qkSVGN03mFZGB9GtHCIu/dkNEGJ/eJdupyJ/IW/UJB74ECuidW80hbzubame
+         WjIPkKwSZD22H0NYdrZKbX/G74F+QY6DCQhFnAA4rGwrPr0jIA6jsS+TC4o544ETu2MN
+         sCKw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from;
+        bh=dn7yRGkj3e8xZIBoPowL/Eq/VXIPntvu+PBifbE5PGM=;
+        fh=+f95HxKnZP7OMV51HNGnhx71oroeqCcS354W/QU47Jc=;
+        b=Lr1v3iKzWsNov93QAiwHvxAFYNY3UVeLoOr+hPvNMRbl2CjU37/5piWyEGZCpslJtc
+         e7zECr2nVOLDYPpyhwV0E17bBdWLDXhT4Aq29Sw/P47Uh6wdtLQ///dUistu/fT/faoZ
+         wZN29YYoLYQsgomEIt2jWFCXgLouk3PToKaulgs93L7gpqbXkxp34UQRJqI2blAjygGW
+         Ojk0ctoSjeyqMkqsCygdhZIR3tu6kXRcRJNXymzjPbct8Kpu+b+cjrkU85qdNCG9dtZS
+         0Cfv989R2g7hRKpzJymEAyVPWTaRtLznbsacVC0EK+al66uZTzyyfuRtKyedIiuKzyWi
+         3L3g==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fYQIFkmW;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id af79cd13be357-7d4431f6e9bsor555443585a.14.2025.06.28.12.58.15
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=siewert.io dkim=pass dkdomain=siewert.io dmarc=pass fromdomain=siewert.io);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd7736ba62si77240426d6.307.2025.06.29.06.54.49
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 28 Jun 2025 12:58:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 29 Jun 2025 06:54:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fYQIFkmW;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1751140695; x=1751745495; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=+F6nN8jVuJ9x9ikMI93e1pxkuyZDDe/xC+x/t6zowT4=;
-        b=fYQIFkmWoBOoatIcxOAOY6p6NGm11LybpToZJyeFdB7XCq7VY+xRUJ344JRTC88iMe
-         DZu8kJaO0f7WX6LKsDwpUcQVlk0rdF78JDrQSSfb2Gh5mua1FOSzec6MH2YIWZSfgMk6
-         sX8ykR5FqFu8MR2+WdAcVXylDnoEkRQImLeT/6qAdagw6tv8go3X5vYfqEHQtfa6pGSc
-         5VGhVaBba23rOy0L7gCIKr+/UCUX4tLgmYroxnQWcQv2YyLiIem0j+6U5+Zu4Hal/1ME
-         BU/DZOIRxhBlyRGv+e81tZDWNJgXO8AAixqqPVIG7lBavfNd5tTJxVOr+v7zcZ8g1Bjg
-         +UfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751140695; x=1751745495;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=+F6nN8jVuJ9x9ikMI93e1pxkuyZDDe/xC+x/t6zowT4=;
-        b=KCZS9KDYQt6rYd8g5V8eYnSnuUhlHW50T2snheqFqajCLNkaokNUEc/BMQCdvV5VLt
-         dSpREjpozpeFRzWu37DRIO4aqJzy3/NFsiiTYOvfzlvrR6jrMjvInScVStMDkmgEziOT
-         hAZkmfgGPJ8QJmESjhWg0s/MnSrzwuxEu/CCiLcAAHDZZpV7Zjbn13IA5meznCe9IH2w
-         JGzMfc/6KbQKnBA7tU1J2GmZSnmGo71DtGGVVVLBSfCfHpi6Rsiq96XhO0wYtVom/FCe
-         rWi3/DWopzp0gqM+ALtashuKx0s9JTuaAWXVlh6kjKG8jfYkC2wd8QFjDNauq2BwWkjB
-         z6Qg==
-X-Forwarded-Encrypted: i=1; AJvYcCUFSSRIz9t3rkPQFkK7LAlCax2Ipge6+Ngxz/PsC+KHtZj2C5puonrvrn/icxhRYGgcwCjk4ieshjkJ0Q==@linaro.org
-X-Gm-Message-State: AOJu0YxCy+D6miPKmtK1kKVuaj05T2mu7j4V4BXLFx1JT/gpU/z7QrqB
-	ejwtdQkoMfZTXfwF8ITC/z9inTpObckndYUsby5Cq3xmWZ8O5cgl9I+2cxEQOb0wN3rpKg==
-X-Gm-Gg: ASbGncsMIaR5UN5IW1kbLq1jAEfJZCj9niLkqnaW6TsGd3lae1QD/HgAwqDdq5mqimP
-	KX8kImt+TYdVEnQi7mFbRkbCQi6USXHKEWO+d8cOOQqEubVRTDM5vQnlfMTgGdNMlwf3uGjnInS
-	J52u1YuP7iDvP3tSk+rEfJRtyTT6t/WKDrRzfA3Ki172aege6ElJeVSqB3wtBf0ADcGfWhA+XKc
-	8zT5d3iLKvcJxImBE6ZYyBvWT0ci2xJmtmd652tfz0bpvVWGTdsSR/W85721JGtAmuiNdAbEByU
-	CN/poxpVi6xLw2ngU9t7P1ejr3nNTGQ9gQxW75VTgJyjTFCQlDJqWdHiB9QJeqG+yjk=
-X-Google-Smtp-Source: AGHT+IEM2K2QwZG0uMnpZVZqVPWCYCy4HGDusOH2tzw4wWfbrvz1DcFZ29qe2fqn5sFPZU6Ra8On5Q==
-X-Received: by 2002:a05:620a:444d:b0:7d4:4596:d6a5 with SMTP id af79cd13be357-7d44596dcabmr1050929385a.55.1751140695521;
-        Sat, 28 Jun 2025 12:58:15 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from gromero0.. ([186.215.58.88])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7d443136907sm334395585a.14.2025.06.28.12.58.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 28 Jun 2025 12:58:14 -0700 (PDT)
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: qemu-devel@nongnu.org,
-	eric.auger@redhat.com,
-	philmd@linaro.org,
-	mst@redhat.com
-Cc: qemu-arm@nongnu.org,
-	alex.bennee@linaro.org,
-	gustavo.romero@linaro.org,
-	udo@hypervisor.org,
-	ajones@ventanamicro.com,
-	peter.maydell@linaro.org,
-	imammedo@redhat.com,
-	anisinha@redhat.com
-Subject: [PATCH v6 9/9] qtest/bios-tables-test: Update blobs for its=off test on aarch64
-Date: Sat, 28 Jun 2025 19:57:22 +0000
-Message-Id: <20250628195722.977078-10-gustavo.romero@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250628195722.977078-1-gustavo.romero@linaro.org>
-References: <20250628195722.977078-1-gustavo.romero@linaro.org>
-MIME-Version: 1.0
+       arc=pass (i=1 spf=pass spfdomain=siewert.io dkim=pass dkdomain=siewert.io dmarc=pass fromdomain=siewert.io);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uVsUQ-0006XI-5Z; Sun, 29 Jun 2025 09:54:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tan@siewert.io>)
+ id 1uVsUO-0006X4-9n; Sun, 29 Jun 2025 09:54:36 -0400
+Received: from
+ mail-germanywestcentralazlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c20c::1] helo=FR6P281CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tan@siewert.io>)
+ id 1uVsUM-0002d5-6w; Sun, 29 Jun 2025 09:54:36 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=vXB1pZG+BUeccXpsl3I2WKUzfEPf1UHx8eA6O8BWLyrhbEmfsQjnp00+MHnARqklgs9tEBeoeRTbeb8j8PciK9J9eay72/yvXcSs9Nw2d3ZA8ucAgoHMmrqkRzLhXaKJSO6lxPa6NNgyRKqt2MI12pECgfIHI8OA6OPgSzSP4xthyXqRFC9DYW3Qg/Enm4HUhT5wOn6c2xcnObFQ9TCnx7hoDRfTzsyT/NxTIreZvZEEmcKFY0NO3Kg5kkp0z1FjYKno9wFLSETo23Zlr7Kh6P0YatJ2EGfXTG0gi++aZt/11eal8PIgHlQlebYTlb8xCCKzNFHcUYZqxeWPEVt8VA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=dn7yRGkj3e8xZIBoPowL/Eq/VXIPntvu+PBifbE5PGM=;
+ b=sHnDDsl+pdELxLopXBanGTMwxLA8oYGNF6F+YOo68210Lttn+HlaflmjZ+P1KPnMAfEFHBWjJwFa1UNB04msc6pL5wWXlNZA3kidsyFR6kLnbMDSCnZIoDEntUal1C/sg5t8FAcw18GZ4xCnhepSsUv4NPVUkYm24MYyEBxf2diaAfn1JnY83I24wdcUgKJUuhpBFDC0HYEQtOSyDXnxflXqrb7+xXC3G+6dJnOwzPgaWIF+YgBoiHdfwg5LTJ1dR8oWt6swuiyNyzuDJZOelTK7F3gtVkSO5xKVRd1DtocVe3Kr42cZrrNOtYOf66FFg1rPttc5efSgWAr8SiBYpw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=siewert.io; dmarc=pass action=none header.from=siewert.io;
+ dkim=pass header.d=siewert.io; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=siewert.io;
+Received: from BE1PPF7DB70B163.DEUP281.PROD.OUTLOOK.COM (2603:10a6:b18::65f)
+ by FR6P281MB4223.DEUP281.PROD.OUTLOOK.COM (2603:10a6:d10:12b::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8880.29; Sun, 29 Jun
+ 2025 13:54:28 +0000
+Received: from BE1PPF7DB70B163.DEUP281.PROD.OUTLOOK.COM
+ ([fe80::5c4:893c:2523:a442]) by BE1PPF7DB70B163.DEUP281.PROD.OUTLOOK.COM
+ ([fe80::5c4:893c:2523:a442%3]) with mapi id 15.20.8880.021; Sun, 29 Jun 2025
+ 13:54:27 +0000
+From: Tan Siewert <tan@siewert.io>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Tan Siewert <tan@siewert.io>
+Subject: [PATCH] tests/qtest: Add test for ASPEED SCU
+Date: Sun, 29 Jun 2025 15:54:03 +0200
+Message-ID: <20250629135405.73117-1-tan@siewert.io>
+X-Mailer: git-send-email 2.49.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 1Es4o07vw21d
+Content-Type: text/plain
+X-ClientProxiedBy: FR2P281CA0153.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:98::20) To BE1PPF7DB70B163.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:b18::65f)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BE1PPF7DB70B163:EE_|FR6P281MB4223:EE_
+X-MS-Office365-Filtering-Correlation-Id: e55d5f26-71a6-4056-bfaa-08ddb71476d0
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|366016|52116014|1800799024|376014|7416014|10070799003|921020; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?mC9CXf9CXXxv/hHc+BzObv6PkuY9pnGCKsx92kYd1PbPS+kDWQBK4Q40fdXR?=
+ =?us-ascii?Q?wjyBERnHMq5D7ReKhQfkcYI6XzDFZrOpQ5YUe0J9Ww38HO8Gc6MlDzOHA5n6?=
+ =?us-ascii?Q?zku2cwX8g9KMwdJFxDTfawN3Juy0DTO77Mx/zIyLgDXQ+fzcxpHjAhFJn9dH?=
+ =?us-ascii?Q?jHVubK3+H2/KZcP5/TeaA5741QHlKY7JXs9/G2WN8N3e7u4Qp7UABfHntZen?=
+ =?us-ascii?Q?58D8b/zqAwDNNr9kmUO4jzVRRd85KcalCFeJeSpJXPMvNeWotm3zoX38QtGc?=
+ =?us-ascii?Q?R6rmxeE4E33fbvEWN5tyZpB7ItjEAfCAvHtxN8JV4sKStYj9bvwM6QVwf4wU?=
+ =?us-ascii?Q?DRdc8HnOSJaOEg/QcJvrrmrs70KIjNIUEzMuxUPVhEslNB8eYlfiS7zJSlyf?=
+ =?us-ascii?Q?+gIWitOb/jY5RvwLWTNP+DlvsdF9VZbdq66lDVUHpr/OdI9s+giCBME6b0KL?=
+ =?us-ascii?Q?qiE+0c+G+NP3qtT8+uQ5M8vTOsZf3eklCUkm5Pd4j74m8CvOTKn6UMKdCgVb?=
+ =?us-ascii?Q?LQ68xPicfdYWWj024lz2dyFROaL5FTOYZhaWMc5umLDN40s95Fg0OfQiQYn8?=
+ =?us-ascii?Q?/qlHHrI2uabIaoooqwFy7HTqxUoPD74qdDZ3xQwgqeIkGXKQx4Cvk7v8qVOR?=
+ =?us-ascii?Q?7WoVFGYM5TdHU0GDDluQ3sf/SENHEZ1I5ZVS1QASD7uFLcooThVvyE02aU/c?=
+ =?us-ascii?Q?eLteOjmj7xrFOr5oiznJfHk6I6TABOw/9CkdZzW3BV1gzbI1TxF6ZdgSu/zy?=
+ =?us-ascii?Q?4nmO94acJeUSakijZBkl50XNCp545KvDiNm5Yjmr+cyhbxECK0R89SURWOMf?=
+ =?us-ascii?Q?6uNFTYePFAjc6oyDG1nrYffYJUkAk6GhqWHnfpISLtW00JVnfUvXAo2pzq+P?=
+ =?us-ascii?Q?uHx+QIR0AyCpDlpTd15icUt1Fuoxcefr7hqufYiKV8K0Wn/xE2jb7MmFmsnM?=
+ =?us-ascii?Q?cjTbWFezLpnZzgbSETYMwmWrVKuS2fCu4niCiFojjuGYv/uLzFT1X2moYzis?=
+ =?us-ascii?Q?VjKkKSkm8PGbMQkbuMEcsiaXhKYDdTO+1OQsS/BLkHGlUFpeyDwdDkzqaKBn?=
+ =?us-ascii?Q?GemkDvGBAjXzP2IaRkgMwk1+Iy9C7P3AxFptqy2QqjQ+Fst5rsWgu/AlsI+k?=
+ =?us-ascii?Q?PCjyTVwiDkYBPqa92G4pj52J5wlGiWroyMAQ9NeN+4pOB9ZwZuGSj1solOfV?=
+ =?us-ascii?Q?5Sa22buFE2ahZ+sreKPbo6c/JY26oDwnVX5yXlDLBZgM5/61YIX6kLC4sgrX?=
+ =?us-ascii?Q?AOQrkIrdrrDpPwQ7fpxg/9KwyZwMU1gzHrqWP9em5KH/7aQORiMn/H5L9/Lm?=
+ =?us-ascii?Q?8UllubZoRKZXf8fO5Hoe0aVntZH1UZmCuNzGWNVaGoNYFlDaSmMLx6+zTJ3m?=
+ =?us-ascii?Q?jKYdCDTYdxcU4cJamQwiWEfhl5P+O3eOr/sbnyfIlvvkK8KLgE429ZiaQV4i?=
+ =?us-ascii?Q?9UqpBxii464iBlUOCbbUZqNkDK4/o+XpG4GIUm9bXs6HEj0y1Cdk2g=3D=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BE1PPF7DB70B163.DEUP281.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(52116014)(1800799024)(376014)(7416014)(10070799003)(921020);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?qeaMyzsyLjNWlARBEP4urfUcFTi4/2fa9lx9bjT+qPjQ0iYbRsHnDB3A0WXx?=
+ =?us-ascii?Q?c6EL2Le+kqkEC6rRYsi5LOsR/FCOs3FcQtdwxDn9URqYXyzHkzVvTXNQbI1G?=
+ =?us-ascii?Q?xk0YT+ywrBJg9uVT/ZPMO8dFRF/j8ZM+HP4vygkJSakgb+WfNNUMLFtQZskx?=
+ =?us-ascii?Q?4vaYiJhqoMkCYkGUBLUbBD2g1jMHbDLz8kp7wmDPDlEpvZ1UK8pcYSSp9wh2?=
+ =?us-ascii?Q?X+GWxdGTjSnImmcQLtBb3UGeNJDTk6jHKi316uYwFDS5OrcuqOg75PfzpcU9?=
+ =?us-ascii?Q?D+Ya2qGZODwLSQR6mNzmkbWDuxaVD3iniGBvhJZQUnNTR22Pj3eq1wtnr8Dj?=
+ =?us-ascii?Q?OJykXwlq3Bo3jDoB7qsfi7w8rz4xHEJwN6eib2bRoLPZawC4/JnGFW6K3ahg?=
+ =?us-ascii?Q?8OUeehTxlsIcZERuskkWr+RETzpw0h4f9jTGmsapkZh4hjinQucBxoNGm2+Y?=
+ =?us-ascii?Q?fedgdEdwuTSFSLPbMMJcUnNhtNcd507limE/mwYPP1tBYbTbWWxhsY9wqg5a?=
+ =?us-ascii?Q?3Wd6J4OAhLXQr68yypyirTnrwg+gEDRbsOASKiRTk4H1hqF348DpGdMhbomP?=
+ =?us-ascii?Q?hTeu7cAYMrxi0bKHvZZZJ/U9kLBmR/b4MSfNqpOZSsBqArWcbhjXowtaMUD+?=
+ =?us-ascii?Q?LMx2TbW5fxS3DWt9J0s1Gevpb5sHuZIRDMaEhNiiEHup4v1X78zLcFjoHMRx?=
+ =?us-ascii?Q?7AKopmiGKNIdNFMwAVkBuEkprQExuUM4p9vN/RVjn4tzX4GbJxXcFmxCzP0r?=
+ =?us-ascii?Q?o/1sUpstsCErUI036B3OMGUH91v4Mz9m5/xyn62aaTEW0Ml/VmfYmVLvTvQW?=
+ =?us-ascii?Q?8/lIU4lFhn5RV3myVaP8JH5C8QyMX11Mhn4GRoMCl6woxEVN4lOD83drK7ss?=
+ =?us-ascii?Q?/WUWmu0dD3+YieZ3PVr0VOxL3WYV7A0XDsZrOiY0CPU/B3KhCpT5xMAopEVX?=
+ =?us-ascii?Q?cWCFIagQvbRTvuaLTcHc9UtmMwC6UFGV0mF1BJVxouuYVSwj3enlfbdSIP4Y?=
+ =?us-ascii?Q?n3ty10P3NzYuQ3jwT7XtK1CdVP5sUnFQdwjqYnXGBodyUeVR9ViiXfR9S2JM?=
+ =?us-ascii?Q?W/w1PXcV/wkKDAJg6/um7HAtcZ04EpTkEyEPWHh2IC+G7mViy9XWaQdm0ZSW?=
+ =?us-ascii?Q?PI4IwSFmKa7oxr2KGb51ePsncczjh56/2mutQD0a5uU8Vn+uMFe08d+M3IIq?=
+ =?us-ascii?Q?Ou0mLWoR4inH42XFSqGWvbbkbSlG28S8+N3Nd8d1W6CWsjbafgRb+d/Y4mte?=
+ =?us-ascii?Q?EPIHRD8XhlqoqewaTNC0G2BOAqSxx+7M9SYkbqCde+dMG/y6ZeJymR+8RAjO?=
+ =?us-ascii?Q?8PtxcJkS4IX72JWCbbILZFF/1F20T54ICsDmBbdH6Bxv8XGjiuVXSe1MBUfi?=
+ =?us-ascii?Q?7Vig1B01K0qrOmvwTaG8wW/30vu/R74zz4KVsZ8u3svbu8AFAORN0uP7/Mm+?=
+ =?us-ascii?Q?BlIYRRu4d0z9NEnjP637Sx5yj7OfFVmSXiPzGcTYqIPN+nQ14XvpQTLZMIUn?=
+ =?us-ascii?Q?1gl4Q19txPkELjNF2/V40SqFDPjBXZ3iX3cdjahiHrl9n5bRL7R8M5Y3OKSy?=
+ =?us-ascii?Q?3EKCUwbSUSU+UQKsa5+FV7ucvPPp1s6rR51VM0dRB/3fT/cFOt3QxaVfYLtu?=
+ =?us-ascii?Q?rXYW0p+T19oRtrml11PdGoA=3D?=
+X-OriginatorOrg: siewert.io
+X-MS-Exchange-CrossTenant-Network-Message-Id: e55d5f26-71a6-4056-bfaa-08ddb71476d0
+X-MS-Exchange-CrossTenant-AuthSource: BE1PPF7DB70B163.DEUP281.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Jun 2025 13:54:27.8630 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e8b4abbe-444b-4835-b8fd-87ac97451a7e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: YlSJ0LaxzbBylhCXPPlMVZlS7ueU5uslPORIreQ6jaicbrA5nYHuzX3NYIz9luxC
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: FR6P281MB4223
+Received-SPF: pass client-ip=2a01:111:f403:c20c::1;
+ envelope-from=tan@siewert.io;
+ helo=FR6P281CU001.outbound.protection.outlook.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ja3g/dgKoeMk
 
-Update blobs for the its=off test on aarch64 after fix.
+This adds basic tests for the ASPEED System Control Unit (SCU) and its
+protection mechanism on the AST2500 and AST2600 platforms.
 
-Basically, all structs related to ITS are gone in MADT and IORT
-tables after the fix (previously ITS was not properly disabled
-when "its=off" option was passed to the machine).
+The tests verify:
+  - That SCU protection registers can be unlocked and locked again
+  - That modifying the primary protection register on AST2600 also
+    affects the secondary one
+  - That writes to protected SCU registers are blocked unless
+    protection registers are unlocked explicitly
 
-MADT diff:
+These tests ensure proper emulation of hardware locking behaviour
+and help catch regressions in SCU access logic.
 
- [000h 0000   4]                    Signature : "APIC"    [Multiple APIC Description Table (MADT)]
--[004h 0004   4]                 Table Length : 000000B8
-+[004h 0004   4]                 Table Length : 000000A4
- [008h 0008   1]                     Revision : 04
--[009h 0009   1]                     Checksum : C1
-+[009h 0009   1]                     Checksum : 08
- [00Ah 0010   6]                       Oem ID : "BOCHS "
- [010h 0016   8]                 Oem Table ID : "BXPC    "
- [018h 0024   4]                 Oem Revision : 00000001
- [01Ch 0028   4]              Asl Compiler ID : "BXPC"
- [020h 0032   4]        Asl Compiler Revision : 00000001
-
- [024h 0036   4]           Local Apic Address : 00000000
- [028h 0040   4]        Flags (decoded below) : 00000000
-                          PC-AT Compatibility : 0
-
- [02Ch 0044   1]                Subtable Type : 0C [Generic Interrupt Distributor]
- [02Dh 0045   1]                       Length : 18
- [02Eh 0046   2]                     Reserved : 0000
- [030h 0048   4]        Local GIC Hardware ID : 00000000
- [034h 0052   8]                 Base Address : 0000000008000000
- [03Ch 0060   4]               Interrupt Base : 00000000
-@@ -48,37 +48,29 @@
- [064h 0100   8]                 Base Address : 0000000000000000
- [06Ch 0108   8]     Virtual GIC Base Address : 0000000000000000
- [074h 0116   8]  Hypervisor GIC Base Address : 0000000000000000
- [07Ch 0124   4]        Virtual GIC Interrupt : 00000000
- [080h 0128   8]   Redistributor Base Address : 0000000000000000
- [088h 0136   8]                    ARM MPIDR : 0000000000000000
- [090h 0144   1]             Efficiency Class : 00
- [091h 0145   1]                     Reserved : 00
- [092h 0146   2]       SPE Overflow Interrupt : 0000
-
- [094h 0148   1]                Subtable Type : 0E [Generic Interrupt Redistributor]
- [095h 0149   1]                       Length : 10
- [096h 0150   2]                     Reserved : 0000
- [098h 0152   8]                 Base Address : 00000000080A0000
- [0A0h 0160   4]                       Length : 00F60000
-
--[0A4h 0164   1]                Subtable Type : 0F [Generic Interrupt Translator]
--[0A5h 0165   1]                       Length : 14
--[0A6h 0166   2]                     Reserved : 0000
--[0A8h 0168   4]               Translation ID : 00000000
--[0ACh 0172   8]                 Base Address : 0000000008080000
--[0B4h 0180   4]                     Reserved : 00000000
-
-IORT diff:
-
- [000h 0000   4]                    Signature : "IORT"    [IO Remapping Table]
--[004h 0004   4]                 Table Length : 000000EC
-+[004h 0004   4]                 Table Length : 000000AC
- [008h 0008   1]                     Revision : 03
--[009h 0009   1]                     Checksum : 57
-+[009h 0009   1]                     Checksum : 97
- [00Ah 0010   6]                       Oem ID : "BOCHS "
- [010h 0016   8]                 Oem Table ID : "BXPC    "
- [018h 0024   4]                 Oem Revision : 00000001
- [01Ch 0028   4]              Asl Compiler ID : "BXPC"
- [020h 0032   4]        Asl Compiler Revision : 00000001
-
--[024h 0036   4]                   Node Count : 00000003
-+[024h 0036   4]                   Node Count : 00000002
- [028h 0040   4]                  Node Offset : 00000030
- [02Ch 0044   4]                     Reserved : 00000000
-
--[030h 0048   1]                         Type : 00
--[031h 0049   2]                       Length : 0018
--[033h 0051   1]                     Revision : 01
-+[030h 0048   1]                         Type : 04
-+[031h 0049   2]                       Length : 0044
-+[033h 0051   1]                     Revision : 04
- [034h 0052   4]                     Reserved : 00000000
- [038h 0056   4]                Mapping Count : 00000000
- [03Ch 0060   4]               Mapping Offset : 00000000
-
--[040h 0064   4]                     ItsCount : 00000001
--[044h 0068   4]                  Identifiers : 00000000
--
--[048h 0072   1]                         Type : 04
--[049h 0073   2]                       Length : 0058
--[04Bh 0075   1]                     Revision : 04
--[04Ch 0076   4]                     Reserved : 00000001
--[050h 0080   4]                Mapping Count : 00000001
--[054h 0084   4]               Mapping Offset : 00000044
--
--[058h 0088   8]                 Base Address : 0000000009050000
--[060h 0096   4]        Flags (decoded below) : 00000001
-+[040h 0064   8]                 Base Address : 0000000009050000
-+[048h 0072   4]        Flags (decoded below) : 00000001
-                              COHACC Override : 1
-                                HTTU Override : 0
-                       Proximity Domain Valid : 0
--[064h 0100   4]                     Reserved : 00000000
--[068h 0104   8]                VATOS Address : 0000000000000000
--[070h 0112   4]                        Model : 00000000
--[074h 0116   4]                   Event GSIV : 0000006A
--[078h 0120   4]                     PRI GSIV : 0000006B
--[07Ch 0124   4]                    GERR GSIV : 0000006D
--[080h 0128   4]                    Sync GSIV : 0000006C
--[084h 0132   4]             Proximity Domain : 00000000
--[088h 0136   4]      Device ID Mapping Index : 00000000
--
--[08Ch 0140   4]                   Input base : 00000000
--[090h 0144   4]                     ID Count : 0000FFFF
--[094h 0148   4]                  Output Base : 00000000
--[098h 0152   4]             Output Reference : 00000030
--[09Ch 0156   4]        Flags (decoded below) : 00000000
--                              Single Mapping : 0
--
--[0A0h 0160   1]                         Type : 02
--[0A1h 0161   2]                       Length : 004C
--[0A3h 0163   1]                     Revision : 03
--[0A4h 0164   4]                     Reserved : 00000002
--[0A8h 0168   4]                Mapping Count : 00000002
--[0ACh 0172   4]               Mapping Offset : 00000024
--
--[0B0h 0176   8]            Memory Properties : [IORT Memory Access Properties]
--[0B0h 0176   4]              Cache Coherency : 00000001
--[0B4h 0180   1]        Hints (decoded below) : 00
-+[04Ch 0076   4]                     Reserved : 00000000
-+[050h 0080   8]                VATOS Address : 0000000000000000
-+[058h 0088   4]                        Model : 00000000
-+[05Ch 0092   4]                   Event GSIV : 0000006A
-+[060h 0096   4]                     PRI GSIV : 0000006B
-+[064h 0100   4]                    GERR GSIV : 0000006D
-+[068h 0104   4]                    Sync GSIV : 0000006C
-+[06Ch 0108   4]             Proximity Domain : 00000000
-+[070h 0112   4]      Device ID Mapping Index : 00000000
-+
-+[074h 0116   1]                         Type : 02
-+[075h 0117   2]                       Length : 0038
-+[077h 0119   1]                     Revision : 03
-+[078h 0120   4]                     Reserved : 00000001
-+[07Ch 0124   4]                Mapping Count : 00000001
-+[080h 0128   4]               Mapping Offset : 00000024
-+
-+[084h 0132   8]            Memory Properties : [IORT Memory Access Properties]
-+[084h 0132   4]              Cache Coherency : 00000001
-+[088h 0136   1]        Hints (decoded below) : 00
-                                    Transient : 0
-                               Write Allocate : 0
-                                Read Allocate : 0
-                                     Override : 0
--[0B5h 0181   2]                     Reserved : 0000
--[0B7h 0183   1] Memory Flags (decoded below) : 03
-+[089h 0137   2]                     Reserved : 0000
-+[08Bh 0139   1] Memory Flags (decoded below) : 03
-                                    Coherency : 1
-                             Device Attribute : 1
--[0B8h 0184   4]                ATS Attribute : 00000000
--[0BCh 0188   4]           PCI Segment Number : 00000000
--[0C0h 0192   1]            Memory Size Limit : 40
--[0C1h 0193   3]                     Reserved : 000000
--
--[0C4h 0196   4]                   Input base : 00000000
--[0C8h 0200   4]                     ID Count : 000000FF
--[0CCh 0204   4]                  Output Base : 00000000
--[0D0h 0208   4]             Output Reference : 00000048
--[0D4h 0212   4]        Flags (decoded below) : 00000000
--                              Single Mapping : 0
--
--[0D8h 0216   4]                   Input base : 00000100
--[0DCh 0220   4]                     ID Count : 0000FEFF
--[0E0h 0224   4]                  Output Base : 00000100
--[0E4h 0228   4]             Output Reference : 00000030
--[0E8h 0232   4]        Flags (decoded below) : 00000000
-+[08Ch 0140   4]                ATS Attribute : 00000000
-+[090h 0144   4]           PCI Segment Number : 00000000
-+[094h 0148   1]            Memory Size Limit : 40
-+[095h 0149   3]                     Reserved : 000000
-+
-+[098h 0152   4]                   Input base : 00000000
-+[09Ch 0156   4]                     ID Count : 000000FF
-+[0A0h 0160   4]                  Output Base : 00000000
-+[0A4h 0164   4]             Output Reference : 00000030
-+[0A8h 0168   4]        Flags (decoded below) : 00000000
-                               Single Mapping : 0
-
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Tan Siewert <tan@siewert.io>
 ---
- tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 184 -> 164 bytes
- tests/data/acpi/aarch64/virt/IORT.its_off   | Bin 236 -> 172 bytes
- tests/qtest/bios-tables-test-allowed-diff.h |   2 --
- 3 files changed, 2 deletions(-)
+ tests/qtest/aspeed-scu-utils.c |  22 ++++
+ tests/qtest/aspeed-scu-utils.h |  38 +++++++
+ tests/qtest/aspeed_scu-test.c  | 197 +++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build        |   4 +-
+ 4 files changed, 260 insertions(+), 1 deletion(-)
+ create mode 100644 tests/qtest/aspeed-scu-utils.c
+ create mode 100644 tests/qtest/aspeed-scu-utils.h
+ create mode 100644 tests/qtest/aspeed_scu-test.c
 
-diff --git a/tests/data/acpi/aarch64/virt/APIC.its_off b/tests/data/acpi/aarch64/virt/APIC.its_off
-index 37d82e970b1331cb5b259f0bd2d3654bacb2d623..6130cb7d07103b326feb4dcd7034f85808bebadf 100644
-GIT binary patch
-delta 18
-ZcmdnNxP+0*F~HM#2?GNI3&%vRSpY2+1Zw~Q
-
-delta 39
-jcmZ3&xPy_)F~HM#2Ll5G%fX3UvqbnsfJ`vp;DE6JqX7kf
-
-diff --git a/tests/data/acpi/aarch64/virt/IORT.its_off b/tests/data/acpi/aarch64/virt/IORT.its_off
-index 0fceb820d509e852ca0849baf568a8e93e426738..c10da4e61dd00e7eb062558a2735d49ca0b20620 100644
-GIT binary patch
-delta 69
-zcmaFExQ3C-(?2L=4FdxM^Yn>aQj$zSmH`lh0E-I)3xowECx)7HGFdP%GXmL+6IZHp
-Hz*GSMclZc%
-
-literal 236
-zcmebD4+?q1z`(#9?&R<65v<@85#X!<1dKp25F11@1F-=RgMkDCNC*yK9F_<M77!bR
-zUBI%eoFED&4;F$FSwK1)h;xBB2Py`m{{M%tVD>TjFfcO#g+N#Zh@s|zoCF3AP#UU@
-R!2`+%Dg6Hr$N|zYvjDIZ5CH%H
-
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index a88198d5c2..dfb8523c8b 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,3 +1 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/aarch64/virt/APIC.its_off",
--"tests/data/acpi/aarch64/virt/IORT.its_off",
+diff --git a/tests/qtest/aspeed-scu-utils.c b/tests/qtest/aspeed-scu-utils.c
+new file mode 100644
+index 0000000000..9083827b98
+--- /dev/null
++++ b/tests/qtest/aspeed-scu-utils.c
+@@ -0,0 +1,22 @@
++/*
++ * QTest testcase for the ASPEED AST2500 and AST2600 SCU.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (C) 2025 Tan Siewert
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest-single.h"
++#include "aspeed-scu-utils.h"
++
++void assert_register_eq(QTestState *s, uint32_t reg, uint32_t expected)
++{
++    uint32_t value = qtest_readl(s, reg);
++    g_assert_cmphex(value, ==, expected);
++}
++
++void assert_register_neq(QTestState *s, uint32_t reg, uint32_t not_expected)
++{
++    uint32_t value = qtest_readl(s, reg);
++    g_assert_cmphex(value, !=, not_expected);
++}
+diff --git a/tests/qtest/aspeed-scu-utils.h b/tests/qtest/aspeed-scu-utils.h
+new file mode 100644
+index 0000000000..9cc7e3e113
+--- /dev/null
++++ b/tests/qtest/aspeed-scu-utils.h
+@@ -0,0 +1,38 @@
++/*
++ * QTest testcase for the ASPEED AST2500 and AST2600 SCU.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (C) 2025 Tan Siewert
++ */
++
++#ifndef TESTS_ASPEED_SCU_UTILS_H
++#define TESTS_ASPEED_SCU_UTILS_H
++
++#include "qemu/osdep.h"
++#include "libqtest-single.h"
++
++/**
++ * Assert that a given register matches an expected value.
++ *
++ * Reads the register and checks if its value equals the expected value,
++ * without requiring a temporary variable in the caller.
++ *
++ * @param *s - QTest machine state
++ * @param reg - Address of the register to be checked
++ * @param expected - Expected register value
++ */
++void assert_register_eq(QTestState *s, uint32_t reg, uint32_t expected);
++
++/**
++ * Assert that a given register does not match a specific value.
++ *
++ * Reads the register and checks that its value is not equal to the
++ * provided value.
++ *
++ * @param *s - QTest machine state
++ * @param reg - Address of the register to be checked
++ * @param not_expected - Value the register must not contain
++ */
++void assert_register_neq(QTestState *s, uint32_t reg, uint32_t not_expected);
++
++#endif /* TESTS_ASPEED_SCU_UTILS_H */
+diff --git a/tests/qtest/aspeed_scu-test.c b/tests/qtest/aspeed_scu-test.c
+new file mode 100644
+index 0000000000..75d6a800a6
+--- /dev/null
++++ b/tests/qtest/aspeed_scu-test.c
+@@ -0,0 +1,197 @@
++/*
++ * QTest testcase for the ASPEED AST2500 and AST2600 SCU.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (C) 2025 Tan Siewert
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest-single.h"
++#include "aspeed-scu-utils.h"
++
++/*
++ * SCU base, as well as protection key are
++ * the same on AST2500 and 2600.
++ */
++#define AST_SCU_BASE                    0x1E6E2000
++#define AST_SCU_PROT_LOCK_STATE         0x0
++#define AST_SCU_PROT_LOCK_VALUE         0x2
++#define AST_SCU_PROT_UNLOCK_STATE       0x1
++#define AST_SCU_PROT_UNLOCK_VALUE       0x1688A8A8
++
++#define AST2500_MACHINE                 "-machine ast2500-evb"
++#define AST2500_SCU_PROT_REG            0x00
++#define AST2500_SCU_MISC_2_CONTROL_REG  0x4C
++
++#define AST2600_MACHINE                 "-machine ast2600-evb"
++/* AST2600 has two protection registers */
++#define AST2600_SCU_PROT_REG            0x000
++#define AST2600_SCU_PROT_REG2           0x010
++#define AST2600_SCU_MISC_2_CONTROL_REG  0x0C4
++
++#define TEST_LOCK_ARBITRARY_VALUE       0xABCDEFAB
++
++/**
++ * Test whether the SCU can be locked and unlocked correctly.
++ *
++ * When testing multiple registers, this function assumes that writing
++ * to the first register also affects the others. However, writing to
++ * any other register only affects itself.
++ *
++ * @param *machine - input machine configuration, passed directly
++ *                   to QTest
++ * @param regs[] - List of registers to be checked
++ * @param regc - amount of arguments for registers to be checked
++ */
++static void test_protection_register(const char *machine,
++                                     const uint32_t regs[],
++                                     const int regc)
++{
++    QTestState *s = qtest_init(machine);
++
++    for (int i = 0; i < regc; i++) {
++        uint32_t reg = regs[i];
++
++        qtest_writel(s, reg, AST_SCU_PROT_UNLOCK_VALUE);
++        assert_register_eq(s, reg, AST_SCU_PROT_UNLOCK_STATE);
++
++        /**
++         * Check that other registers are unlocked too, if more
++         * than one is available.
++         */
++        if (regc > 1 && i == 0) {
++            /* Initialise at 1 instead of 0 to skip first */
++            for (int j = 1; j < regc; j++) {
++                uint32_t add_reg = regs[j];
++                assert_register_eq(s, add_reg, AST_SCU_PROT_UNLOCK_STATE);
++            }
++        }
++
++        /* Lock the register again */
++        qtest_writel(s, reg, AST_SCU_PROT_LOCK_VALUE);
++        assert_register_eq(s, reg, AST_SCU_PROT_LOCK_STATE);
++
++        /* And the same for locked state */
++        if (regc > 1 && i == 0) {
++            /* Initialise at 1 instead of 0 to skip first */
++            for (int j = 1; j < regc; j++) {
++                uint32_t add_reg = regs[j];
++                assert_register_eq(s, add_reg, AST_SCU_PROT_LOCK_STATE);
++            }
++        }
++    }
++
++    qtest_quit(s);
++}
++
++static void test_2500_protection_register(void)
++{
++    uint32_t regs[] = { AST_SCU_BASE + AST2500_SCU_PROT_REG };
++
++    test_protection_register(AST2500_MACHINE,
++                             regs,
++                             ARRAY_SIZE(regs));
++}
++
++static void test_2600_protection_register(void)
++{
++    /**
++     * The AST2600 has two protection registers, both
++     * being required to be unlocked to do any operation.
++     *
++     * Modifying SCU000 also modifies SCU010, but modifying
++     * SCU010 only will keep SCU000 untouched.
++     */
++    uint32_t regs[] = { AST_SCU_BASE + AST2600_SCU_PROT_REG,
++                        AST_SCU_BASE + AST2600_SCU_PROT_REG2 };
++
++    test_protection_register(AST2600_MACHINE,
++                             regs,
++                             ARRAY_SIZE(regs));
++}
++
++/**
++ * Test if SCU register writes are correctly allowed or blocked
++ * depending on the protection register state.
++ *
++ * The test first locks the protection register and verifies that
++ * writes to the target SCU register are rejected. It then unlocks
++ * the protection register and confirms that the written value is
++ * retained when unlocked.
++ *
++ * @param *machine - input machine configuration, passed directly
++ *                   to QTest
++ * @param protection_register - first SCU protection key register
++ *                              (only one for keeping it simple)
++ * @param test_register - Register to be used for writing arbitrary
++ *                        values
++ */
++static void test_write_permission_lock_state(const char *machine,
++                                             const uint32_t protection_register,
++                                             const uint32_t test_register)
++{
++    QTestState *s = qtest_init(machine);
++
++    /* Arbitrary value to lock provided SCU protection register */
++    qtest_writel(s, protection_register, AST_SCU_PROT_LOCK_VALUE);
++
++    /* Ensure that the SCU is really locked */
++    assert_register_eq(s, protection_register, AST_SCU_PROT_LOCK_STATE);
++
++    /* Write a known arbitrary value to test that the write is blocked */
++    qtest_writel(s, test_register, TEST_LOCK_ARBITRARY_VALUE);
++
++    /* We do not want to have the written value to be saved */
++    assert_register_neq(s, test_register, TEST_LOCK_ARBITRARY_VALUE);
++
++    /**
++     * Unlock the SCU and verify that it can be written to.
++     * Assumes that the first SCU protection register is sufficient to
++     * unlock all protection registers, if multiple are present.
++     */
++    qtest_writel(s, protection_register, AST_SCU_PROT_UNLOCK_VALUE);
++    assert_register_eq(s, protection_register, AST_SCU_PROT_UNLOCK_STATE);
++
++    /* Write a known arbitrary value to test that the write works */
++    qtest_writel(s, test_register, TEST_LOCK_ARBITRARY_VALUE);
++
++    /* Ensure that the written value is retained */
++    assert_register_eq(s, test_register, TEST_LOCK_ARBITRARY_VALUE);
++
++    qtest_quit(s);
++}
++
++static void test_2500_write_permission_lock_state(void)
++{
++    test_write_permission_lock_state(
++            AST2500_MACHINE,
++            AST_SCU_BASE + AST2500_SCU_PROT_REG,
++            AST_SCU_BASE + AST2500_SCU_MISC_2_CONTROL_REG
++    );
++}
++
++static void test_2600_write_permission_lock_state(void)
++{
++    test_write_permission_lock_state(
++            AST2600_MACHINE,
++            AST_SCU_BASE + AST2600_SCU_PROT_REG,
++            AST_SCU_BASE + AST2600_SCU_MISC_2_CONTROL_REG
++    );
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/ast2500/scu/protection_register",
++                   test_2500_protection_register);
++    qtest_add_func("/ast2600/scu/protection_register",
++                   test_2600_protection_register);
++
++    qtest_add_func("/ast2500/scu/write_permission_lock_state",
++                   test_2500_write_permission_lock_state);
++    qtest_add_func("/ast2600/scu/write_permission_lock_state",
++                   test_2600_write_permission_lock_state);
++
++    return g_test_run();
++}
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 8ad849054f..7713fae885 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -215,7 +215,8 @@ qtests_npcm8xx = \
+ qtests_aspeed = \
+   ['aspeed_gpio-test',
+    'aspeed_hace-test',
+-   'aspeed_smc-test']
++   'aspeed_smc-test',
++   'aspeed_scu-test']
+ qtests_aspeed64 = \
+   ['ast2700-gpio-test',
+    'ast2700-hace-test',
+@@ -366,6 +367,7 @@ endif
+ qtests = {
+   'aspeed_hace-test': files('aspeed-hace-utils.c', 'aspeed_hace-test.c'),
+   'aspeed_smc-test': files('aspeed-smc-utils.c', 'aspeed_smc-test.c'),
++  'aspeed_scu-test': files('aspeed-scu-utils.c', 'aspeed_scu-test.c'),
+   'ast2700-hace-test': files('aspeed-hace-utils.c', 'ast2700-hace-test.c'),
+   'ast2700-smc-test': files('aspeed-smc-utils.c', 'ast2700-smc-test.c'),
+   'bios-tables-test': [io, 'boot-sector.c', 'acpi-utils.c', 'tpm-emu.c'],
 -- 
-2.34.1
+2.49.0
+

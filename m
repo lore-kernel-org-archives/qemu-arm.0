@@ -1,145 +1,351 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2257559dye;
-        Sun, 29 Jun 2025 22:19:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUGrwuukZyFE8WR8I63YEUIgBL8I8f7gQhpXV9IDtIiGKBjmvtSEBI6K7qdQXZwK4kjiwFwdanoQerSwg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGzXvFVFAfPvk2FHx0bU6fBGwXbQIAoUcoArJr05YfchYN6uS7r4Fwt7i9/zmLq/YNCvniH
-X-Received: by 2002:a05:622a:8317:b0:4a8:a77:d2e2 with SMTP id d75a77b69052e-4a80a77d4f5mr102436501cf.13.1751260742265;
-        Sun, 29 Jun 2025 22:19:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751260742; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2275864dye;
+        Sun, 29 Jun 2025 23:18:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXPxJDaUjMh1fGh1+dMa52Igqzjh+IuN+2M1Nn0AMl85E4LL7UwtFgpJMdcCEkjleynRWsDW6xN3PZZvA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHQjngEALRuZ8S+3V1KYKDpn4yKZx+TFuVkJTU4AsafQ0zqysFubbJW9ODrswTSv1xonIBL
+X-Received: by 2002:ac8:5a86:0:b0:4a7:29f2:313 with SMTP id d75a77b69052e-4a7fcbdcd6amr175900921cf.42.1751264306293;
+        Sun, 29 Jun 2025 23:18:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751264306; cv=none;
         d=google.com; s=arc-20240605;
-        b=kHQbfJOZggnEbpy4LqqhT9Z5YiG94vcpes61Dwjk84n19Az8bsysRSnFsl8cvvD7VA
-         le+pmYT/RInRZ5N+Cj8rUaKv0cPgtUWFW9VVskzymQxSUiQZnM0aAZyl4k1+/Nc94pQx
-         WlOoEw3luRk8AjWkLvu0ewtHYCnh5b+wYmVwbmje69bdFhLUdWytlnMzouSz43VgR1Ht
-         dSgQPWNcoYriocT0wEzPPHmbgQo6at6nnMnRgObjP57IJepHGZkQ/9JRVeyajVlIs0ti
-         j8FVHQPzgFGF35JdNt3EOZt2CAXbU4cqBm72IV+ZVgPgSa4NDPjYBRBnUF2eOxe9JANx
-         ec4w==
+        b=FMU9rQdB7K/kzpbWc6iSzy08VDa22jrGMr0fy9quNJx12WOew/Axx7bsNYpiFvUYwv
+         aM2nIB9PKmT7Czpt2moBXJehoQcpVntOC/C8pTTUEE1ct63HZXTinGannprqrF9a64J8
+         j2algqjgId9gxJQCcXytVfAVXXx7JVlXBqyKxpFRzQPwZjViRiixdc5JceOciV1XQrHY
+         ZzOM8S90L5nQyv/ClcuOiQ4MFf8iqsVCDt/cGlUr5C39XxwAcPbtuSgWFs5rlpDCOfKo
+         5l8kc1555WwQqQlJor1Uj0YlOY/5Zk8Hes7lF43EpZh/yf7YbeyIka7kxs7+ASmQ4lQA
+         H2hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=Q4vkntF3MLk4JZjrCQKqv2FXBE/M+2b+rWE8hFpbrnw=;
-        fh=3E+GgkJ59sv88GyUpaKWpV4DoJlJz+B5Ev7H4uQXan0=;
-        b=lJNwZ6u4zMAn+I4pOUoQBfhUPmbDG816hZUA2Z1t0SXdm7vDBqiBbCffOQ6OI/agbB
-         vOaK1yFzoWe7gQ1srpYgIpXoVzy9YKb4I+UVqG8bVdhkHQkQ7ZZLscgYM8XW501UO/RC
-         oCtWSY9ZaMNcIaFmdqsv1jxeWxgChiU4QVUlnbv5G/cDKEU/jjvF+Wy2mJcjtdXLoEzz
-         uFgcNTxUXbEllraF2Cysd3cs/g0d/ZRozDkOoCylVBw2cE+ebwcVxI0h0Npdd5uupTuS
-         V37mPVEtm66vn3frsFJYixyTy9nTBAs9JJia/Ievm5oC6m6My0uAxcjDsV3cdlFPEFTm
-         79oQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=TwJ/3rceYyrrxpC6UqYgajKkd2sOCZmZlCgZmipFPR0=;
+        fh=e2doJimpuP43a+5rrKkGu3YAn2W68cBR+w+TN2Njkuw=;
+        b=NUAdwGTg/YZFzpyY317ReBYd0nnlgrWAATG+dDknTyOhQImgY5uF44+El/GTKGU9/0
+         RwLR6Ts1OJjoZFAh1usBBEuG80bbl2THq7Zyln0f2LUYD5WEpA5la4qp4IAb7moVFVBQ
+         B0h3O7xJx2NQyKQLCGpl86q/fySG0WdnBu1Ts/hlRl/Ybm7vTWpfLk4TyEoQClI+Nt3D
+         L4ppjixvGYTHZo3B51r6SqlsDyK8smH+H/V7aLVYIN9ngMvxy8y2ACEA22ph/vna6uHd
+         wnXrQ3cqADyLq7kylSxHpkl4glK6/ZDXm+PkEGKvJNggRLo+YEg2QXwsntWiecZ2/yv3
+         my6Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a80f228a9fsi36419911cf.366.2025.06.29.22.19.02
+        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc236dabsi80182711cf.399.2025.06.29.23.18.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 29 Jun 2025 22:19:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 29 Jun 2025 23:18:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uW6tl-0005Yh-HC; Mon, 30 Jun 2025 01:17:45 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uW7qI-0001Fk-C1; Mon, 30 Jun 2025 02:18:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1uW6tk-0005Y7-3y; Mon, 30 Jun 2025 01:17:44 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <SRS0=bKmi=ZN=kaod.org=clg@ozlabs.org>)
+ id 1uW7q1-0001Ca-EB; Mon, 30 Jun 2025 02:17:57 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1uW6ti-0003fn-N3; Mon, 30 Jun 2025 01:17:43 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Mon, 30 Jun
- 2025 13:17:22 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Mon, 30 Jun 2025 13:17:22 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>
-Subject: [PATCH v3 3/3] hw/arm: Integrate ASPEED OTP memory support into
- AST2600 SoCs
-Date: Mon, 30 Jun 2025 13:17:20 +0800
-Message-ID: <20250630051721.254207-4-kane_chen@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250630051721.254207-1-kane_chen@aspeedtech.com>
-References: <20250630051721.254207-1-kane_chen@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <SRS0=bKmi=ZN=kaod.org=clg@ozlabs.org>)
+ id 1uW7py-0003sp-PU; Mon, 30 Jun 2025 02:17:57 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bVwtw2r4zz4xQ0;
+ Mon, 30 Jun 2025 16:17:44 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bVwts055kz4wvb;
+ Mon, 30 Jun 2025 16:17:40 +1000 (AEST)
+Message-ID: <4ee5bd2c-fd15-4947-88ee-30a28946d805@kaod.org>
+Date: Mon, 30 Jun 2025 08:17:37 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=kane_chen@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/3] hw/misc/aspeed_otp: Add OTP device model with
+ fallback RAM storage
+To: Kane Chen <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com
+References: <20250630051721.254207-1-kane_chen@aspeedtech.com>
+ <20250630051721.254207-2-kane_chen@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250630051721.254207-2-kane_chen@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=bKmi=ZN=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Kane Chen <kane_chen@aspeedtech.com>
-From:  Kane Chen via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ouh4N7kPtU8i
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KCLTZp6aXRDe
 
-From: Kane-Chen-AS <kane_chen@aspeedtech.com>
+On 6/30/25 07:17, Kane Chen wrote:
+> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> 
+> This patch introduces a QEMU model of the ASPEED One-Time Programmable
+> (OTP) memory, used for secure fuse storage. The model simulates a
+> word-addressable OTP region with a memory-like interface via a dedicated
+> AddressSpace.
+> 
+> If no external block backend is provided via the "drive" property, the
+> model automatically allocates an internal RAM-backed storage buffer
+> to hold OTP data, enabling simplified usage without CLI configuration.
+> 
+> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> ---
+>   include/hw/nvram/aspeed_otp.h |  33 ++++++++++
+>   hw/nvram/aspeed_otp.c         | 113 ++++++++++++++++++++++++++++++++++
+>   hw/nvram/meson.build          |   4 ++
+>   3 files changed, 150 insertions(+)
+>   create mode 100644 include/hw/nvram/aspeed_otp.h
+>   create mode 100644 hw/nvram/aspeed_otp.c
+> 
+> diff --git a/include/hw/nvram/aspeed_otp.h b/include/hw/nvram/aspeed_otp.h
+> new file mode 100644
+> index 0000000000..22b2195a00
+> --- /dev/null
+> +++ b/include/hw/nvram/aspeed_otp.h
+> @@ -0,0 +1,33 @@
+> +/*
+> + *  ASPEED OTP (One-Time Programmable) memory
+> + *
+> + *  Copyright (C) 2025 Aspeed
+> + *
+> + *  SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#ifndef ASPEED_OTP_H
+> +#define ASPEED_OTP_H
+> +
+> +#include "system/memory.h"
+> +#include "hw/block/block.h"
+> +#include "system/address-spaces.h"
+> +
+> +#define TYPE_ASPEED_OTP "aspeed.otp"
+> +OBJECT_DECLARE_SIMPLE_TYPE(AspeedOTPState, ASPEED_OTP)
+> +
+> +typedef struct AspeedOTPState {
+> +    DeviceState parent_obj;
+> +
+> +    BlockBackend *blk;
+> +
+> +    uint64_t size;
+> +
+> +    AddressSpace as;
+> +
+> +    MemoryRegion mmio;
+> +
+> +    uint8_t *storage;
+> +} AspeedOTPState;
+> +
+> +#endif /* ASPEED_OTP_H */
+> diff --git a/hw/nvram/aspeed_otp.c b/hw/nvram/aspeed_otp.c
+> new file mode 100644
+> index 0000000000..f018c58713
+> --- /dev/null
+> +++ b/hw/nvram/aspeed_otp.c
+> @@ -0,0 +1,113 @@
+> +/*
+> + *  ASPEED OTP (One-Time Programmable) memory
+> + *
+> + *  Copyright (C) 2025 Aspeed
+> + *
+> + *  SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "qapi/error.h"
+> +#include "system/block-backend-global-state.h"
+> +#include "system/block-backend-io.h"
+> +#include "hw/qdev-properties.h"
+> +#include "hw/nvram/aspeed_otp.h"
+> +
+> +static uint64_t aspeed_otp_read(void *opaque, hwaddr offset, unsigned size)
+> +{
+> +    AspeedOTPState *s = opaque;
+> +    uint64_t val = 0;
+> +
+> +    memcpy(&val, s->storage + offset, size);
+> +
+> +    return val;
+> +}
+> +
+> +static void aspeed_otp_write(void *opaque, hwaddr offset,
+> +                                uint64_t val, unsigned size)
+> +{
+> +    AspeedOTPState *s = opaque;
+> +
+> +    memcpy(s->storage + offset, &val, size);
+> +}
+> +
+> +static bool aspeed_otp_init_storage(AspeedOTPState *s, Error **errp)
+> +{
+> +    uint32_t *p;
+> +    int i, num;
+> +    uint64_t perm;
+> +
+> +    if (s->blk) {
+> +        perm = BLK_PERM_CONSISTENT_READ |
+> +               (blk_supports_write_perm(s->blk) ? BLK_PERM_WRITE : 0);
+> +        if (blk_set_perm(s->blk, perm, BLK_PERM_ALL, errp) < 0) {
+> +            return false;
+> +        }
+> +        if (blk_pread(s->blk, 0, s->size, s->storage, 0) < 0) {
+> +            error_setg(errp, "Failed to read the initial flash content");
+> +            return false;
+> +        }
+> +    } else {
+> +        num = s->size / sizeof(uint32_t);
+> +        p = (uint32_t *)s->storage;
+> +        for (i = 0; i < num; i++) {
+> +            p[i] = (i % 2 == 0) ? 0x00000000 : 0xFFFFFFFF;
+> +        }
+> +    }
+> +    return true;
+> +}
+> +
+> +static const MemoryRegionOps aspeed_otp_ops = {
+> +    .read = aspeed_otp_read,
+> +    .write = aspeed_otp_write,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    .valid.min_access_size = 1,
+> +    .valid.max_access_size = 4,
+> +};
+> +
+> +static void aspeed_otp_realize(DeviceState *dev, Error **errp)
+> +{
+> +    AspeedOTPState *s = ASPEED_OTP(dev);
+> +
+> +    if (s->size == 0) {
+> +        error_setg(errp, "aspeed.otp: 'size' property must be set");
+> +        return;
+> +    }
+> +
+> +    s->storage = blk_blockalign(s->blk, s->size);
+> +
+> +    if (!aspeed_otp_init_storage(s, errp)) {
+> +        return;
+> +    }
+> +
+> +    memory_region_init_io(&s->mmio, OBJECT(dev), &aspeed_otp_ops,
+> +                          s, "aspeed.otp", s->size);
+> +    address_space_init(&s->as, &s->mmio, NULL);
+> +}
+> +
+> +static const Property aspeed_otp_properties[] = {
+> +    DEFINE_PROP_UINT64("size", AspeedOTPState, size, 0),
+> +    DEFINE_PROP_DRIVE("drive", AspeedOTPState, blk),
+> +};
+> +
+> +static void aspeed_otp_class_init(ObjectClass *klass, const void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    dc->realize = aspeed_otp_realize;
+> +    device_class_set_props(dc, aspeed_otp_properties);
+> +}
+> +
+> +static const TypeInfo aspeed_otp_info = {
+> +    .name          = TYPE_ASPEED_OTP,
+> +    .parent        = TYPE_DEVICE,
+> +    .instance_size = sizeof(AspeedOTPState),
+> +    .class_init    = aspeed_otp_class_init,
+> +};
+> +
+> +static void aspeed_otp_register_types(void)
+> +{
+> +    type_register_static(&aspeed_otp_info);
+> +}
+> +
+> +type_init(aspeed_otp_register_types)
+> diff --git a/hw/nvram/meson.build b/hw/nvram/meson.build
+> index 10f3639db6..b66f23605b 100644
+> --- a/hw/nvram/meson.build
+> +++ b/hw/nvram/meson.build
+> @@ -19,3 +19,7 @@ system_ss.add(when: 'CONFIG_XLNX_BBRAM', if_true: files('xlnx-bbram.c'))
+>   
+>   specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_nvram.c'))
+>   specific_ss.add(when: 'CONFIG_ACPI', if_true: files('fw_cfg-acpi.c'))
+> +
+> +system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+> +  'aspeed_otp.c',
+> +  ))
+> \ No newline at end of file
 
-The has_otpmem attribute is enabled in the SBC subclasses for AST2600
-to control the presence of OTP support per SoC type.
 
-Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
----
- hw/arm/aspeed_ast2600.c | 2 +-
- hw/misc/aspeed_sbc.c    | 2 ++
- 2 files changed, 3 insertions(+), 1 deletion(-)
+The patch looks OK but, in the previous round, I asked to add the
+BlockBackend and drive in a new patch. May be I wasn't clear ?
 
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index d12707f0ab..59ffd41a4a 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -261,7 +261,7 @@ static void aspeed_soc_ast2600_init(Object *obj)
- 
-     object_initialize_child(obj, "i3c", &s->i3c, TYPE_ASPEED_I3C);
- 
--    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_SBC);
-+    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_AST2600_SBC);
- 
-     object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
-     object_initialize_child(obj, "video", &s->video, TYPE_UNIMPLEMENTED_DEVICE);
-diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
-index 46a038337c..b56a8b7678 100644
---- a/hw/misc/aspeed_sbc.c
-+++ b/hw/misc/aspeed_sbc.c
-@@ -273,8 +273,10 @@ static const TypeInfo aspeed_sbc_info = {
- static void aspeed_ast2600_sbc_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedSBCClass *sc = ASPEED_SBC_CLASS(klass);
- 
-     dc->desc = "AST2600 Secure Boot Controller";
-+    sc->has_otp = true;
- }
- 
- static const TypeInfo aspeed_ast2600_sbc_info = {
--- 
-2.43.0
+Thanks,
+
+C.
+
+
+
 

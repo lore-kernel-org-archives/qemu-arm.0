@@ -1,155 +1,259 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2244305dye;
-        Sun, 29 Jun 2025 21:33:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWSA5k/YrdhrwiZGBFT+BDuns2MSAhfVTVME2OyTSOoZ1A6bRMJyOJCbj/J9b70npcFBpOMae65FR1NkQ==@linaro.org
-X-Received: by 2002:ac8:5fce:0:b0:4a7:1402:3b3 with SMTP id d75a77b69052e-4a7fc9d5020mr214731531cf.11.1751257983676;
-        Sun, 29 Jun 2025 21:33:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751257983; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2244318dye;
+        Sun, 29 Jun 2025 21:33:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUDYF6iogxrDq3ANWs5eZjsrTYZXhFFQmoFTj976NVPwQD8+0mquqzbd6jUrZQilGrQzccqUSz5Yf4Xuw==@linaro.org
+X-Received: by 2002:a05:622a:1301:b0:474:e75e:fccc with SMTP id d75a77b69052e-4a7fcacd83emr204896411cf.35.1751257986238;
+        Sun, 29 Jun 2025 21:33:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751257986; cv=none;
         d=google.com; s=arc-20240605;
-        b=H6FCN5MIopYmqFnD+BKJ9kLoPJNtgyxBMFHLn5eu/ekamY/oJxkRZoWc1M/vjYBDxI
-         QJbcwZ8fcnzHwuYuNSgROKC3SguHQBLb2RcgBhtlGch2HeXyixHzsF8jILpI4d4lUKLs
-         7ytLAT+OOSvBft1v8w2z7eHdALEc9NSupkwp1FCn7cH+XjdkQ+ju85shS0g55/4MDR0H
-         4FQSYRwZO06gAzmEcleACXA2F0VsI80DAp4uatpCagWe8oOc6WTT/CQVE2+upQZ8bEsq
-         0Owao/23JnpiFSnHEOV54n5fYUI6+PhLMofAgeSSeSEXxD0YBbIVzIGBR0PWuMkKby6L
-         N4vg==
+        b=RDTXFi/LRXCVYQ4L7IDVHlB6GhXr7sWfN5EM+gPQkhaYYeav0MiJBUrEZaLgWFz5Ej
+         wTqvUPE6CeL8AVJGsF7+Nzmj53ra5KJOPIF8JF5hLOARMwY2oSNecKITtnV1OFiv8xBV
+         uLIWGgbMtWRQ7HGJr9vJZM0okiAT9wKeTgA/1NjcIELyPT8GmUmhBGh9twmAVShe17jq
+         HAulGzZUHkZJKm+iXIWMsrlkmXLx3CNDxWxffoL65E/QMxKI5a/6HSP6JFj3P30pNgWO
+         yCZ628KgK0xjK8iBhmf4a2SoT8iC3jF5Kma08WCdnwAzyQH1wYs8S3nGhFTa5KORYtVY
+         atzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=m7p1tDIFwTjQb2kYrEx8VXYNJTLr+20o3ghBktTtRy4=;
-        fh=pM2kA5ssJetCkYyxrWg7OyVF9CcxoUfFepF93Lv0sZk=;
-        b=KOv9OodVYAESoyjkEAAv0lM7WhpXK3eIgmo0nkJSbmTksJGyAorVD+6/nXX1F/Akk4
-         JNKPZ/gMNO0XVbEI516kPDKRiz2qtjSvFl9+i8rh3qFPAQcxHGe9VCKgVEWwLn7YzXDD
-         9IOCc1ibab6crajkkzf6UUpiT21FtBknzIqE325RnWgKcSLsIh32oY488qhJDK6z7ui6
-         QcqANIHaEFDq30JAPVxxUbTdHdr2wKqKDFeCeScxh1FMaX6DRG7z+yxgoko6f2pD3V2t
-         xbnBvhUSWQuucpM8JKlLDPrsAEkn8SIlbuDvb4v8hrGeP4O2aIgesUNwvWFCxMS/GOPa
-         vCyQ==;
+        bh=ac/L14+pskdVO/8psuhLq/nvDUBkV5afYQiukb3LTRs=;
+        fh=Z+GITwQGu2TCRxmU8onGh4Uz15YSgFTSan30N8a2Poo=;
+        b=LgwxvYVWAAO8TO+t5ck7nGmPArSd68/7x1afiV57xVrIqIWWf9sD4Z5DLnAN1zLSLF
+         jLiL3+Cwhxhwt6QyqDRP6+7bNpXjE/0xyxu6f1AeRmA3VpbeuKBfW9sre9sP/buOiqrc
+         MmHSzTfQASEXGVuY2NrHIi7aqkJFLyPiBrL+zVkoQyi1A+fnQg1o/9OKF1sae7gnWIem
+         KjfJ1xsbzSXwFTH+7QpJ4kxniLf1oSpO+aWA9K0z+R4MTs31zhipNb4jdoBYHuVH2Zd7
+         g1iMJ+g+H5x3yUzBxLZfccmbaLh/PBCaj8eDnzz5xFaNo+xxbTDKe7ujZvqnT/2SEi4v
+         tYaw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=t+45Frdx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=z7Hh9Juy;
        spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <gustavo.romero@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d75a77b69052e-4a7fbffbd6asor56320531cf.0.2025.06.29.21.33.03
+        by mx.google.com with SMTPS id d75a77b69052e-4a7fc1d7a76sor78460031cf.6.2025.06.29.21.33.06
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 29 Jun 2025 21:33:03 -0700 (PDT)
+        Sun, 29 Jun 2025 21:33:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=t+45Frdx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=z7Hh9Juy;
        spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1751257983; x=1751862783; darn=linaro.org;
+        d=linaro.org; s=google; t=1751257986; x=1751862786; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=m7p1tDIFwTjQb2kYrEx8VXYNJTLr+20o3ghBktTtRy4=;
-        b=t+45Frdx6TPt7MHWX8N8x3Hq4LhFAYrkNUnvdOmW9CZ83vCAUXUzghpIrKK68VLdMw
-         GGqIin/uqDBee4yDx+jsQck9vsxvXJhRaYlSkBINFI4JIMJqezPI1DHJm+Qx0L8PVZgU
-         9SPProS8cWLfel4y5Bk44jmYxhA7cFb8hx4KGWFxAhSieCE+kRHpOs8VR88FpsZTkRxV
-         d+yoA8AAnRD+g+UJZVXYejOoNDPMBi7PMuuvB9M6cYWKxNOhZzpa6BgUuHOD/CQNu9Au
-         ygXEufoL3rB5kgBWea255Kr0RX5IlEoye0QFuZnd9gHQQImMw4X24z0bQtPqlAwREg5l
-         VNRQ==
+        bh=ac/L14+pskdVO/8psuhLq/nvDUBkV5afYQiukb3LTRs=;
+        b=z7Hh9JuyzOmwdk7lAwKVE4IWFQ6J3o4YQBYZA4nhp725FNoD/5fOlMigmXQrMAVFmV
+         esPCfLb1oOLkgVkce5o/RJf2IpseE2qq1ZhcbtcxKA9Fl6gUyhtp/sDi+2qxRznY9Pfd
+         YN9UPMN5yCnJDIgsMj/GRJBHLmuKfVr3oGQW+Qbc9uMsMgmxr9JshxWZiArU1xEBIQ3d
+         lE13kDbL3voxLjhRq9f40rr+2d+jrhZqoUQzB6Fis0+VqePHGqVUcRDyX/gm38sVg1wG
+         /g8+qpFB/6MbvOc/qUVfaE0Cwuk4Yp9WsgeJ1cnBnaS9y8BinNjr7GdsVPT1kQVTIeOS
+         TvTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751257983; x=1751862783;
+        d=1e100.net; s=20230601; t=1751257986; x=1751862786;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=m7p1tDIFwTjQb2kYrEx8VXYNJTLr+20o3ghBktTtRy4=;
-        b=Qw2cKIw1oVwQLT4V4sa1fNnY8up87wZ/ClA8ahIOtaDURdvinseHRtWWRLY6I6g6tA
-         rwas2FCm1gaEu+rehS9yetdKmCea4dWFFAPR18lWIRyGHfY4dZGPt7xkGlcOtYWM+pP7
-         VN0k3zO4JJsNV3AziQQ8xG+SLnME5hWmaDDC4IB0HjiKpKxxNW8KD7ZPBoLkROv4vlOK
-         DCRRcswSCBG5JKkqDOmVtoH1UUcTMB8Zgt4WzGntXA3rQJivM4M+mSQWxgf+mcVT75ew
-         D/439ztZCL7cp9fec2TSi9TWf468ffHyL5U9Cnal6LQtszXIrTV3gqB0CyRbZm88dy+k
-         53ew==
-X-Forwarded-Encrypted: i=1; AJvYcCXYvMo672O0OaeR9HbyTb5LZORXCSILJv0etEAUTxDLWbH9qFKqdl83I9Fq0PtSb/V2RLe5r4sFy+LFPg==@linaro.org
-X-Gm-Message-State: AOJu0YyiqSDD3ko/+cA6J5PWlWo+h5Ha7qYFWJhU6bnFkkJ4aMX6ykfk
-	g541xiAjNc0wzKyykAYzFJCJQTmis+hE8o6WCrACkrYtihN9vP/5oshc/hJxkl7aBstH0Q==
-X-Gm-Gg: ASbGnctyXnc+1qMtMISi6aX0VBhEs7e8xU2OySKoaBB22GyZd1i9vHqob1ildaw0fV8
-	A1Mm/BmQIRZpQAJIm6ZzMBecA6tl89TZ8b3nS6HQqh6Bd65cnPDB0+O3p0xa5Xn0U4qbPGHB22o
-	W04SsCG0u+WlHFrdQy/EUcM0GKeUSPJymbhOpTYtN/9EBz3FS2CaRadmjS64AduFNub40enWj2i
-	hvO6B0JlOT/UsCeLp8rHwbKwV7nf7jttqHTYQpCiYpEXUgH5OiBkKNrZdafq2RTJ3PmgbTRGtKs
-	sweXGLqeFCiXnqPkyqgor4jRW2UNr9Rjqxztk6DI/h/AE3E1R76cf2grQsR5DF0lVRU=
-X-Google-Smtp-Source: AGHT+IFj5wFwbOMqR/+3+2Bt9LpdUyGqCRpRf2COHd39idOzknEGTiSuLuiV7CPBqU8z7ahE3cAL6g==
-X-Received: by 2002:a05:622a:4012:b0:4a7:a8a:eed with SMTP id d75a77b69052e-4a7fcae72c0mr214110621cf.39.1751257983162;
-        Sun, 29 Jun 2025 21:33:03 -0700 (PDT)
+        bh=ac/L14+pskdVO/8psuhLq/nvDUBkV5afYQiukb3LTRs=;
+        b=i6Gkc6cHCy8bzxNQXPVnIbzgJjV43pQuKDyQ2bWhgTS0vwaenMD+W0m0j1qD5Lr7Jy
+         qR25pe1kfgXzINkJHUrBKwZi6+RPtoM7BfoM3CV9uD0jgJQxOYr8Rk36c2DnGzSEZwnl
+         hOF/aGaIOx/Zt2qL5wuJHqbzdgNHtAIhhn4oSzebXXTLfXbn67gPWBCEauv524g61Msu
+         x9Agw/AIVe+iI5kNTGlv/RK2uVSxq2yeYyyaMXKsbcgQcm6paFS7bm1frzsx+iLyr3hR
+         2TPp5pdBKGhK1D6PrhXPOX1zdeNgg3IjyU2jpMEPLfJnf5icK9LepVIK0KRXGigj3gbm
+         8fTg==
+X-Forwarded-Encrypted: i=1; AJvYcCV43ejy5rqrBzGuQcYDE9UMolLrGtTGK7STbRlgXul5Ho1SRXcQRNZBoE2dC8lNyTrWwzuQrKp5Zr+xbw==@linaro.org
+X-Gm-Message-State: AOJu0YzM/aNjzJxYCPXnJS7x8+yQl3DEYBgSD3CzIGNyLOLCatAdh3mu
+	mhisBuzH98cV0R4Xk+iEQ0KOpLcuT5rQwB+Kq9u82xTlqaHutTZzTuW6hlLmye2/8ViB1w==
+X-Gm-Gg: ASbGncu26fCYJcOUlSKgklIkMJDfPQZNz8FlMqg0drdZIzOHppdKiw9vSHMFKX3N1cF
+	KPJXv7n8LiGuD9vWtLymslKyLILz2f9cflg9Q/Z+iBbPW2XF2eQlsd7SH9uVQlwX/1D9m0v81zk
+	aRlwlmF5wRdPCDFGorKKVe9+hEhRKTM+CkYDfnbqrQQ2FVkghJYy4AaGRRd0gVYj0nrJb7GE8iK
+	xggqz7/DDbi1sqDfvkYYcxrdp06I4YCmxvkVDc3PwsZQqkMMU0XbKvDLmjmCpqWcdJZTGcZVngt
+	46y+SCJlZ0rA6fysyykVV/VVGsxk5ZFjJXNGE3BGpgvzFm4Pbpx0l6IrUGAHmKybFCY=
+X-Google-Smtp-Source: AGHT+IG0+6eUU7nIhJ/CuImTG1xLG3cPeCWy7xmdAbw1mWBudBCO1TE469WoXtur1MoIfdNnEd9hyA==
+X-Received: by 2002:a05:622a:2c43:b0:4a7:234e:6c00 with SMTP id d75a77b69052e-4a7fd683b3dmr139092151cf.2.1751257985650;
+        Sun, 29 Jun 2025 21:33:05 -0700 (PDT)
 Return-Path: <gustavo.romero@linaro.org>
 Received: from gromero0.. ([186.215.58.88])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4a7fc13971fsm53470171cf.20.2025.06.29.21.33.01
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4a7fc13971fsm53470171cf.20.2025.06.29.21.33.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 29 Jun 2025 21:33:02 -0700 (PDT)
+        Sun, 29 Jun 2025 21:33:04 -0700 (PDT)
 From: Gustavo Romero <gustavo.romero@linaro.org>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	alex.bennee@linaro.org,
 	gustavo.romero@linaro.org
-Subject: [PATCH 2/3] target/arm: Advertise FEAT_MEC in cpu max
-Date: Mon, 30 Jun 2025 04:32:36 +0000
-Message-Id: <20250630043237.996788-3-gustavo.romero@linaro.org>
+Subject: [PATCH 3/3] target/arm: Add FEAT_MEC registers
+Date: Mon, 30 Jun 2025 04:32:37 +0000
+Message-Id: <20250630043237.996788-4-gustavo.romero@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250630043237.996788-1-gustavo.romero@linaro.org>
 References: <20250630043237.996788-1-gustavo.romero@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: i6tdnUI8eLAq
+X-TUID: IC+7Si4NXVSh
 
-Advertise FEAT_MEC in AA64MMFR3 ID register for the Arm64 cpu max as a
-first step to fully support FEAT_MEC.
+Add FEAT_MEC registers to the arm max cpu.
 
-The FEAT_MEC is an extension to FEAT_RME that implements multiple
-Memory Encryption Contexts (MEC) so the memory in a realm can be
-encrypted and accessing it from the wrong encryption context is not
-possible. An encryption context allow the selection of a memory
-encryption engine.
+To work properly, FEAT_MEC also depends on FEAT_SCTLR2 and FEAT_TCR2, which are
+not implemented in this commit. The bits in SCTLR2 and TCR2 control which
+translation regimes use MECIDs, and determine which MECID is selected.
 
 Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 ---
- docs/system/arm/emulation.rst | 1 +
- target/arm/cpu-features.h     | 5 +++++
- target/arm/tcg/cpu64.c        | 1 +
- 3 files changed, 7 insertions(+)
+ target/arm/cpu.h    | 14 +++++++
+ target/arm/helper.c | 98 +++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 112 insertions(+)
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 78c2fd2113..68acb49825 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -89,6 +89,7 @@ the following architecture extensions:
- - FEAT_LSE (Large System Extensions)
- - FEAT_LSE2 (Large System Extensions v2)
- - FEAT_LVA (Large Virtual Address space)
-+- FEAT_MEC (Memory Encryption Contexts)
- - FEAT_MixedEnd (Mixed-endian support)
- - FEAT_MixedEndEL0 (Mixed-endian support at EL0)
- - FEAT_MOPS (Standardization of memory operations)
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 4452e7c21e..128d75e68f 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -593,6 +593,11 @@ static inline bool isar_feature_aa64_hbc(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64isar2, ID_AA64ISAR2, BC) != 0;
- }
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 8ce30ca857..9509217486 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -565,6 +565,16 @@ typedef struct CPUArchState {
  
-+static inline bool isar_feature_aa64_mec(const ARMISARegisters *id)
+         /* NV2 register */
+         uint64_t vncr_el2;
++
++        /* MEC registers */
++        uint64_t mecidr_el2;
++        uint64_t mecid_p0_el2;
++        uint64_t mecid_a0_el2;
++        uint64_t mecid_p1_el2;
++        uint64_t mecid_a1_el2;
++        uint64_t mecid_rl_a_el3;
++        uint64_t vmecid_p_el2;
++        uint64_t vmecid_a_el2;
+     } cp15;
+ 
+     struct {
+@@ -2389,6 +2399,10 @@ FIELD(MFAR, FPA, 12, 40)
+ FIELD(MFAR, NSE, 62, 1)
+ FIELD(MFAR, NS, 63, 1)
+ 
++FIELD(MECIDR, MECIDW, 0, 4)
++FIELD(MECID, MECID, 0, 16)
++FIELD(VMECID, MECID, 0, 16)
++
+ QEMU_BUILD_BUG_ON(ARRAY_SIZE(((ARMCPU *)0)->ccsidr) <= R_V7M_CSSELR_INDEX_MASK);
+ 
+ /* If adding a feature bit which corresponds to a Linux ELF
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 889d308807..9f8a284261 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6823,6 +6823,100 @@ static const ARMCPRegInfo nmi_reginfo[] = {
+       .resetfn = arm_cp_reset_ignore },
+ };
+ 
++static void mecidr_reset(CPUARMState *env, const ARMCPRegInfo *ri)
 +{
-+    return FIELD_EX64(id->id_aa64mmfr3, ID_AA64MMFR3, MEC);
++    /* MECIDWidthm1 = 15, i.e. 16 bits is the width of a MECID. */
++    env->cp15.mecidr_el2 = FIELD_DP64(0, MECIDR, MECIDW, 15);
 +}
 +
- static inline bool isar_feature_aa64_mops(const ARMISARegisters *id)
++static uint64_t mecidr_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    uint64_t valid_mask;
++
++    if (!arm_is_el2_enabled(env)) {
++        /* All bits are RES0. */
++        return 0ULL;
++    }
++
++    valid_mask = R_MECIDR_MECIDW_MASK;
++    return env->cp15.mecidr_el2 & valid_mask;
++}
++
++static CPAccessResult mecid_access(CPUARMState *env,
++                                   const ARMCPRegInfo *ri, bool isread)
++{
++    int el;
++
++    el = arm_current_el(env);
++    if (el == 2 && !(env->cp15.scr_el3 & SCR_MECEN)) {
++        return CP_ACCESS_TRAP_EL3;
++    }
++
++    return CP_ACCESS_OK;
++}
++
++static void mecid_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                        uint64_t value)
++{
++    uint64_t valid_mask;
++
++    valid_mask = R_MECID_MECID_MASK;
++    value &= valid_mask;
++    raw_write(env, ri, value);
++}
++
++static uint64_t mecid_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    uint64_t valid_mask;
++
++    valid_mask = R_MECID_MECID_MASK;
++    return raw_read(env, ri) & valid_mask;
++}
++
++static const ARMCPRegInfo mec_reginfo[] = {
++    { .name = "MECIDR_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 7, .crn = 10, .crm = 8,
++      .resetfn = mecidr_reset,
++      .access = PL2_RW, .accessfn = mecid_access, .readfn = mecidr_read,
++      .writefn = arm_cp_write_ignore,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecidr_el2) },
++    { .name = "MECID_P0_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 8,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .readfn = mecid_read, .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p0_el2) },
++    { .name = "MECID_A0_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 8,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .readfn = mecid_read, .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a0_el2) },
++    { .name = "MECID_P1_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 2, .crn = 10, .crm = 8,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .readfn = mecid_read, .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p1_el2) },
++    { .name = "MECID_A1_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 3, .crn = 10, .crm = 8,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .readfn = mecid_read, .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a1_el2) },
++    { .name = "MECID_RL_A_EL3", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 6, .opc2 = 1, .crn = 10, .crm = 10,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .readfn = mecid_read, .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecid_rl_a_el3) },
++    { .name = "VMECID_P_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 9,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .readfn = mecid_read, .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_p_el2) },
++    { .name = "VMECID_A_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 9,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .readfn = mecid_read, .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_a_el2) },
++};
++
+ static void define_pmu_regs(ARMCPU *cpu)
  {
-     return FIELD_EX64(id->id_aa64isar2, ID_AA64ISAR2, MOPS);
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 5d8ed2794d..66c4d1d789 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1242,6 +1242,7 @@ void aarch64_max_tcg_initfn(Object *obj)
+     /*
+@@ -9008,6 +9102,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         define_arm_cp_regs(cpu, nmi_reginfo);
+     }
  
-     t = cpu->isar.id_aa64mmfr3;
-     t = FIELD_DP64(t, ID_AA64MMFR3, SPEC_FPACC, 1); /* FEAT_FPACC_SPEC */
-+    t = FIELD_DP64(t, ID_AA64MMFR3, MEC, 1);        /* FEAT_MEC */
-     cpu->isar.id_aa64mmfr3 = t;
- 
-     t = cpu->isar.id_aa64zfr0;
++    if (cpu_isar_feature(aa64_mec, cpu)) {
++        define_arm_cp_regs(cpu, mec_reginfo);
++    }
++
+     if (cpu_isar_feature(any_predinv, cpu)) {
+         define_arm_cp_regs(cpu, predinv_reginfo);
+     }
 -- 
 2.34.1

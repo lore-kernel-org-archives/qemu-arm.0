@@ -1,106 +1,136 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2362353dye;
-        Mon, 30 Jun 2025 03:04:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWooosjEHYF3bm8ECgOjhbBGfPSQiLCBRXCIbTAotBDvS0Y9MHWXK2ygS151D2CCzxGP+lK7TWvgjkqWA==@linaro.org
-X-Google-Smtp-Source: AGHT+IE1FLDwUgNsmQcvlGPCFT0/COCCctC5THR2Mxs2p/JpawsKX8jflIRyyaTJxZPwfttrCuy2
-X-Received: by 2002:a05:620a:19a4:b0:7d3:f8bd:f34c with SMTP id af79cd13be357-7d43bba94d8mr2066069685a.10.1751277882741;
-        Mon, 30 Jun 2025 03:04:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751277882; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2579097dye;
+        Mon, 30 Jun 2025 09:16:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUoi2aaw+qDFdHG6+Vjo2Ptq7cif+QguwqGFvlbgDFbzc5QRe1P77xGbtmzByNfMkamEZFFC04yNdCOFg==@linaro.org
+X-Received: by 2002:a05:690c:6089:b0:70e:719e:743 with SMTP id 00721157ae682-715171c7453mr204309797b3.26.1751300189984;
+        Mon, 30 Jun 2025 09:16:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751300189; cv=none;
         d=google.com; s=arc-20240605;
-        b=D40x2cnYHEcHFguClm+w72AYGDjm0gsqouwHr5hPuHy+SIaBXxlyHS2ItQOsq5+5GB
-         eeJOCkGlUnCcDV/KAg831U2y0QdgxrllhN9GpsnVt+FnT7qlRtOoJRRGuojWqaVBZA9v
-         u/JiqYGmWOdMHy2073YENPSA4cifCX+5c1/k7t9uGTd1UfwKzEREQpBfCGO8SuoNLRl3
-         dEH4XEU1OaxKiZpn0UqPF2CHqih3w5wbl2+t4CS5w4pPtxxFP/S9yDtHjVzu3p4Ti+Qv
-         4ngjR/SJUzz5Duf+ykLLr9L3vkMnv31XIpr+W4eF23ZZoRJ71z4dJ5kL5WdX9ZRVrpS6
-         pZ6A==
+        b=hy+K/d13VlQxH1gCLKpGHBgiJ/iqc/bmc4v2bIPJtg6c5fTHztqgfeYftWYtPFdQgm
+         XxoqeJg3SyZJD5seO8Dk7jOZEujg0z6Wu/XibcYtI6us/392fTmPz1EBw3KoeB5RI4au
+         v+IpLqaabdNxIZqNyrzHpvYu2MZgtUjCCHjUOcW5sekhzgXCqEk7xi5Q5bENlxbpp+eL
+         kHIp1aqquqE5qw0YmezTTxcJo9KV0zXvVkgjLAtRJKXLO40bFR0t3BulhuUYpQAwh7Nq
+         bcO8CIzE5Q1kOQ6JzaOdrGfoAbWMEaZMO8CoRQytEB1zQcYLSOVFIr8bopEOyx1pEgoT
+         8NOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:message-id:date:user-agent:references:organization
-         :in-reply-to:subject:to:from:dkim-signature;
-        bh=rjChr4l7bDoOse0Y08kwZF8ENfM0mEbxnZ8orFyHQAs=;
-        fh=4mGvTxkDBcPiBzF8VLXw8EDx1NipcFDb2/iENmYmljw=;
-        b=kaPF3bj8TAG2ihFeT5oJIXDuszDHCBMD0uSqRHzd9bz3K8O+WKCRXze3uYzqU3ZVFa
-         clBnhf0FwC68Us00cUFUZ0Azjt9DrALgStkmgbwaWv2CjZDrPymOdcVReRoUeM2F3x0c
-         JIgROeg6xbeagD9yiXJopITz9ePdOCFE2sZ9es0GPo7Rl6GlOw2flbRvmMtDL8smZqOD
-         C1xPuKKqoMs/oW9JYgRYDaHc3g9b7h4Wg9C8OCN7TDdvi/TOMBkJNuaWgSvJ+atbYMBp
-         WCNLi0bpPvz+AWsSAMsUlTAyu+woOLME0JddlBvstLspaFaQQX8S3TVdxTBa1vs4Ne67
-         D9mA==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=8BZBxgeIj5Ljo6n9tAnEBpWp9p9IcUSOm3ISMJeS7VM=;
+        fh=kaxtLDJmQmIdG0s15wT6KHRNTBJ16ALzlgo2LKtvMQM=;
+        b=Or+rLMquPeBeA98gHfNdzgQD0bhm2MhE+ozALZgp7h7FOz95Qu7M6TI6hGLXuudEtL
+         HI4s3F5MS9gv0Gh7/JSJQfpr2M/senBL4n/XSVX8YIYasdPyfL+L32qhPIFiWf1FAyOQ
+         5oloKvFC1amnWrd4n/4a40mWgUxDvU0L8c2Kax5bEMFfDAtRWgkHEeYYdEAXui8FKAQD
+         jIXvexrEtj6aeXYr5XhaYRYX0CxjKzRMpoug+5mHTT6VyvDasa4UYk+jVx2QIyS28M8L
+         5BX4w2r1OQm+iFNPxQ+e0eXCUj/oyCJ0j7zwilBlfjP1DPGtMhbk50FxSqZuvHVYtjF9
+         sz3w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jzq+aPp8;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd77388586si100481426d6.389.2025.06.30.03.04.42
+       dkim=pass header.i=@linaro.org header.s=google header.b=XhK4eN1f;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 00721157ae682-71515cc20e7sor44960447b3.13.2025.06.30.09.16.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Jun 2025 03:04:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Mon, 30 Jun 2025 09:16:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jzq+aPp8;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1751277882;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=rjChr4l7bDoOse0Y08kwZF8ENfM0mEbxnZ8orFyHQAs=;
-	b=Jzq+aPp8X2RzLLBvsWhjKmHnbxkBi2GI8mKe1CWG9jYytfYJFxruRnEnBwfjHj1xhudSMq
-	RntJgp4g3/zYnUOWn/C5GBlQc+HDhB5GsS09eNdDaldhjzoLngTElqtl4j9t8inTbFjEZS
-	EDSnPXw1zclffVzNjAQiXqIB3Ju5EZQ=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-597-dE_8xuvEPCeE7rJ1WeK2eg-1; Mon,
- 30 Jun 2025 06:04:38 -0400
-X-MC-Unique: dE_8xuvEPCeE7rJ1WeK2eg-1
-X-Mimecast-MFC-AGG-ID: dE_8xuvEPCeE7rJ1WeK2eg_1751277877
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 03DB61978F63;
-	Mon, 30 Jun 2025 10:04:36 +0000 (UTC)
-Received: from localhost (dhcp-192-236.str.redhat.com [10.33.192.236])
-	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 7ABC918003FC;
-	Mon, 30 Jun 2025 10:04:33 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
- richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
- oliver.upton@linux.dev, sebott@redhat.com,
- shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
- agraf@csgraf.de
-Subject: Re: [PATCH v8 00/14] arm: rework id register storage
-In-Reply-To: <20250617153931.1330449-1-cohuck@redhat.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Avril Crosse O'Flaherty"
-References: <20250617153931.1330449-1-cohuck@redhat.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Mon, 30 Jun 2025 12:04:30 +0200
-Message-ID: <87jz4tr1e9.fsf@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=XhK4eN1f;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1751300189; x=1751904989; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=8BZBxgeIj5Ljo6n9tAnEBpWp9p9IcUSOm3ISMJeS7VM=;
+        b=XhK4eN1f4vF+e1aKXNtiHQWaKCbnXieDO2N5SK+m259wHKNaPUUV+mQ+pHaHjgyacH
+         wVjK8Hc9CSvDV5+hDFwDLaTpBC65nTSqRW2+48CNUaFnbxSRVADx7ZvcOsUNUJNqJG2k
+         yWwVvVsQG/oFuqWUW1Fru2b0kOtMUyo4Evlq+r+ucyadXVSyGmWo88JrFeVsIl558lWi
+         cSYTOVSmzV+7WlfHdBHN50c90B/81CuFJClAtiyi2PxzaIyY0jlasJGNe6OTdMzoaT2H
+         R3MWjDj2ggKy8AlZvPNyBReUC7f8Z/ATd60hfMmjUQMkr+6PCxet0CKTU+wY9eBd26pV
+         gz0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751300189; x=1751904989;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=8BZBxgeIj5Ljo6n9tAnEBpWp9p9IcUSOm3ISMJeS7VM=;
+        b=bHV8/DzFvFlBUJp8dGFgI0oeXyFcp7YZVboHrrVnsbuOFhjOCK4Wfc8Q5FC5MIJhps
+         myCcBXblCbzBB+LsJfye1tuTf0HEuDdDnIc4eu7utLz/k7x+AMXZqkuLWqdXIgVSi7Hu
+         FfW3q4f8DL518VgdZ3M4hqJo433IaJKqA0I2cqOidWi1yFnhmbgqNVcXbgsKaQBGlKxg
+         9wk+aCDgvXmlieVVwdM0RnMLAfK4ytJdiJilZe+7ys0MEekzIq9v6u6Q3A4TQBN4NrNU
+         CmViuXpuMJPDWXzvAqRnrd/lbvc0V4ySTZOESMgVREh0BP1qi/m6JFSd5r9rUEgirOOa
+         aBqA==
+X-Forwarded-Encrypted: i=1; AJvYcCVPSx1KkRO/qmCsmIGVYeNCfJroInhXtOB6wP4vDnmOw658Xufdus8rahIo3bg5cn8hogRCHlTqnuORww==@linaro.org
+X-Gm-Message-State: AOJu0YyPh6sjM5W4E+Psflm4NMYgAxCeaxl5YZmoDyVUo1+qViSycDLD
+	NjC5o3R9lcRb4HPLr5u2cxIlnroSvO67AUxOa1Iyb7pYzxyqRAvNId+B7t6xw3oWs3Bs6xZz5G2
+	zx/G/CuiTcFHI/ls4GgX3b1XLLoEeA7AepsJ0EGIshi33
+X-Gm-Gg: ASbGncuJnboU2R2whGCkSH/EM1tbPy4oy1ilf2sXcfnr4QE4Qc3wVaZEfOQRWiG8p/f
+	YPHHR3t/zQsHINAgeaYDYsQRJP0yBhJN2n3yEcQVuB3T2Zhwgo4t8yW0yNJycBBbs712/X8BENL
+	weqAagbjAe6asse/Mz6B0NXfG0fZWIqcLkVMTcUpqx0Wwh
+X-Google-Smtp-Source: AGHT+IHvTJtFy/nU7dOCoKHEaC52egzb/2X3lb3j1a5kbQx+70kL7EhZ0Abj6VtKqqtQDr+w9dVqmOi9yfh1n12XHpw=
+X-Received: by 2002:a05:690c:6482:b0:70c:a854:8384 with SMTP id
+ 00721157ae682-71517169329mr221842707b3.11.1751300189521; Mon, 30 Jun 2025
+ 09:16:29 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-TUID: wniWE9pbSk0q
+References: <20250628195722.977078-1-gustavo.romero@linaro.org>
+In-Reply-To: <20250628195722.977078-1-gustavo.romero@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 30 Jun 2025 17:16:17 +0100
+X-Gm-Features: Ac12FXzISi-A2WlMiUBX1pzbJT0z8Snzh3hDylllMcn4Z4ESFev1Cp8oWPlbTf4
+Message-ID: <CAFEAcA8_ObePy2_A2st+=R2aKPrc=XeqMv6L+Jg5JxJTsA4qaQ@mail.gmail.com>
+Subject: Re: [PATCH-for-10.1 v6 0/9] hw/arm: GIC 'its=off' ACPI table fixes
+To: Gustavo Romero <gustavo.romero@linaro.org>
+Cc: qemu-devel@nongnu.org, eric.auger@redhat.com, philmd@linaro.org, 
+	mst@redhat.com, qemu-arm@nongnu.org, alex.bennee@linaro.org, 
+	udo@hypervisor.org, ajones@ventanamicro.com, imammedo@redhat.com, 
+	anisinha@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: u9bmK1S21rus
 
-
-On Tue, Jun 17 2025, Cornelia Huck <cohuck@redhat.com> wrote:
-
-> Mostly addressed Peter's feedback:
-> - make sure every inbetween stage compiles (also fixed some bonus issues)
-> - try to make the scripts more robust, add a note the generated file,
->   and make sure to grab only registers we actually want
->   - I did a half-hearted attempt to use python instead of awk, but I'm
->     out of my depth, especially with the script that will be used for
->     the register fields in the cpu models series
+On Sat, 28 Jun 2025 at 20:57, Gustavo Romero <gustavo.romero@linaro.org> wrote:
 >
-> Also available at
-> https://gitlab.com/cohuck/qemu/-/commits/arm-rework-idreg-storage-v8
+> Since v2:
+> - Fixed no_tcg_its inverted logic (rth)
+>
+> Since v3:
+> - Fixed remappings in the IORT table when ITS is no present
+> - Rebased on master and resoled conflics, like no more "no_its"
+>   flag in VirtMachineClass
+> - Dropped patch 1/9 because we actually want the instance flags,
+>   not only the class flags, and the instance flags are the ones
+>   to be used often when deciding about the presence/absence of a
+>   machine feature, instead of the negated class flags ("no_*")
+> - Adapted the other patches that depended on 1/9
+> - Dropped patch 4/9 in favor of using the instance flag for
+>   checking if ITS is on or off
+> - Simplified VM options for the new "its=off" test
+>
+> Since v4:
+> - Fixed/restored commit authorship and author tags (philmd)
+> - Factored out create_its_idmaps to clarify how ID ranges that
+>   go direct to ITS Group node are created (eauger)
+> - Addressed all remaining minor review comments (eauger)
+>
+> Since v5:
+> - Use of "directed to" in comments and commit messages (eauger)
+> - Renaming of variables num_id_mappings, smmu_idmaps, and its_idmaps
+>   to make code clearer (eauger)
+>
+> v1: https://lists.gnu.org/archive/html/qemu-devel/2025-03/msg07080.html
+> v2: https://lists.gnu.org/archive/html/qemu-devel/2025-04/msg00495.html (Patches 6/14 -> 14/14 in the series)
+> v3: https://lists.gnu.org/archive/html/qemu-devel/2025-04/msg00567.html
+> v4: https://mail.gnu.org/archive/html/qemu-devel/2025-06/msg02583.html
+> v5: https://mail.gnu.org/archive/html/qemu-devel/2025-06/msg03793.html
+>
+> Fix ACPI tables for '-M its=off' CLI option and resolve the issue:
+>
+> https://gitlab.com/qemu-project/qemu/-/issues/2886
 
-This still seems to apply cleanly... can it go in as-is, or should I
-respin to shorten the long line in kvm.c?
+
+Applied to target-arm.next, thanks. (I fixed a few checkpatch
+nits about hardcoded tabs and an overlong line.)
+
+-- PMM

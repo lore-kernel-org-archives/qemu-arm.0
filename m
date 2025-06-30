@@ -1,87 +1,87 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2545156dye;
-        Mon, 30 Jun 2025 08:23:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWkIuJlTYh78inWc4Jl9jQGbLiGLjZz3qAOklCWdVyrwYGOkxwVpJx3j/tzEjy4vVWHD0ZgA1jhGx28YA==@linaro.org
-X-Received: by 2002:a05:690c:7105:b0:70f:83ef:ddff with SMTP id 00721157ae682-7151719a23emr198626197b3.30.1751296992128;
-        Mon, 30 Jun 2025 08:23:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751296992; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2546454dye;
+        Mon, 30 Jun 2025 08:25:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXVM5zkNFYT3VMY0DryFDIVwJBT3DXTGO+Mgyb744QFfCq0nYIcdh8BLvutJBznEjbu1isTEJd1qjjK6g==@linaro.org
+X-Received: by 2002:a05:690c:60ca:b0:714:586:86fc with SMTP id 00721157ae682-7151715b900mr205893807b3.16.1751297112469;
+        Mon, 30 Jun 2025 08:25:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751297112; cv=none;
         d=google.com; s=arc-20240605;
-        b=jIcn8MNLq/oy8OqLummlLcaev//7oYDbHAakf+IQtgSDmZEUaGCWxIIiSi77k3wtUo
-         glY0HIk1LEgGg/Pij28dqzS+iSPE4LLEeZgBaFmre3t86wY4NaQVEK/nWKAP+0ZxhZQj
-         CSRBfUMs0UNV3hsP5e0YelGBQE5+AVGhtAwW5y6YDTCO0erhGsaXnqffWZ3f6/Ix+0gm
-         +8qfR5QUtD2FtzDNZ4/RJY7vj2+py1oKolDkju9IHk7IibhRBVeoSSBAzW5Tbqd37cY/
-         WmWLVMCIgoS82uRNCmrHve+Ix+cupzDUiyr9VfSpIlZX6ZR4AIXA/lj/VykRxU7Pp6Dx
-         nIxA==
+        b=XPCBpqbb9EI+gDam2RCrpLkzlUnhFvpjqSa1vHQBz+36zvx6Pq0Fax2ecCYB4AmgHR
+         Nv6oR9NtZpp4wPfHos6kj2CKPC+jr+YfEe8XsP15zKm++Pxbxf3bpN9COr3vIggS3sMT
+         K6hXBcHhyRXt9Ao5O7poR34v0nLSOGsci7/WJK3+73MPZBspIS4SuOXv5acu3l+5vKAh
+         DpipeR6drwuQL6PVYTHJ3n1otpRhBPxJQp1ApHyn7nEk7+f5ub9qVnJVp2jXpQ93ymFk
+         1+2KcpiJ2dF8ezWmFtH95hAyNhU1lKKNwwkkren72b/vPfTxs/FsWUGuisc7Wc8GGEnF
+         kCjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=m40CaCvXv6dQ/Kik62QOQVVIz2NlJXmaGa9e5MrI4kA=;
-        fh=qnpvK+ylMf0XIhTLX1H1uZ/3NkhMtb40CsJAOc7BNNI=;
-        b=BFJZeXyWEl56ovVoI+jNVKuOBNfK0SAWIp8KnMv/5tR6k741M/9syR6ei04iUed+4v
-         4Nwuct0PxnWbqvYQpWCrlXSniFBJZXsxXPsZd7PiRqiR1LyV3f5y3h5yUQEaI3ozVH18
-         3eXPSz/v6gLqmUqos8vA9mb5/jfYjJLxp4y9xOg+XBMNs0dG8L2L0joOWHgp5Kh+SAjS
-         7X9FwN8rq4WikmNVWMVCOoDaEGB0ozNyrNRbA3TozsstIvokhFGjb4yxueAgVJLD7rr7
-         nieItv+7XiD89k6t9kvenBwzRK3nZfdW9log1ZY/F3hKFVXe0mLNfrAwdjSvifq3UQ5Z
-         U2DA==;
+        bh=I5h/4tT6uYWyspNT7UisC2lRP7Ask7OpjyLTLtPE4HQ=;
+        fh=EA769Muqs2KHZq5K986g6Hp4V1jxtMlIEMzwKE/YW00=;
+        b=Tho8C8nsf6+oQ+/IC/5qpwKUgRGlGluli3eKoJFUq0YrtQMly9l5y7ilvIoGRd26mU
+         43Q0hDvundhwI5jKk7MeX2PiLHNmMbFP5KkKdg5E5DG71nGXQvjcozjfY6dQvzmseKxs
+         4IZZshHhAGbNRtYqkR8aFihb1dPhPe7HkPkW3ebPhYDIECxuKy7InNlJlwH8ZeXzNm45
+         BBqarwhFHg7L6ydfoMcN1SwGgw3wKJD4on/KUHdlGuULVPGruTfkeL4jKLcH+KQ5Lx/s
+         zB+eEQ06guSRCdlaB+fXEg2VorP5xDAYoyY+n+TXYlyA4TSGWiKALPsYZg9Bh/TcrzjV
+         wAcQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WF92Y6th;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QIxPz96p;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-71515bff2f0sor50241257b3.5.2025.06.30.08.23.12
+        by mx.google.com with SMTPS id 00721157ae682-71515cc080bsor48344797b3.13.2025.06.30.08.25.12
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 30 Jun 2025 08:23:12 -0700 (PDT)
+        Mon, 30 Jun 2025 08:25:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WF92Y6th;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QIxPz96p;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1751296991; x=1751901791; darn=linaro.org;
+        d=linaro.org; s=google; t=1751297112; x=1751901912; darn=linaro.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=m40CaCvXv6dQ/Kik62QOQVVIz2NlJXmaGa9e5MrI4kA=;
-        b=WF92Y6thHC6geWhmd24S9mSkdEQytTC8YJKl+hsRXLMsTSxZBwooaf9j3JRN+p1yw6
-         LZMrRFlp5VZYDhtoldvlrI20tKUpYQ12lbWGiMszQvQ9PCbN5Z0eUbfaBJZlRdH3zYhO
-         CJQazl44dN2wj5oNTUQZrWPP06Uejgy4lCWhgrjzNSm7UO0NdHQ9KO5jXcCe50Si9L/a
-         rnryGqLZcUmJUWjD63YagQN1zXsvr6njwscVuuzx0kX3vs6NENu+RvuNv0767f0X/E8M
-         wwYBmHz3VGhcFMPpGTPgHtyBrnWcN0rFhU5lt9XlMiIvHjUyke4zhSUEFwNYuQvmccy4
-         Zd3A==
+        bh=I5h/4tT6uYWyspNT7UisC2lRP7Ask7OpjyLTLtPE4HQ=;
+        b=QIxPz96pY0qbxmIMz1XCSFpz3REAzdSm9fXXtASFwesZBsyRPMFzJMEJ7QFyRT/6Jm
+         aIIv1PAcYMnc4pQwYhANZhYZXltqgBbzys3HJGXchIXHQ6ZVaT4VGGKoEkKt+f9VVgWT
+         PlmtQKu05wK+L7pw6NW/ylFcO/v7mWplgdVwg1neqBCzI1jTQgRU4SKovbIceXupDW31
+         QM6FRuhnLqKx/MoqlmZ2Ew1Fb/Qeg8O84C8qscLbaZRakqAEAmcdDuZPglcKEr3scL6M
+         HnA/iGpFsTLnj0GxwHfxCF+Cyt+x3oiGeV7qnyeqLBkxxPj+X9ybWWP+Q5m44lNDaG6j
+         +qWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751296992; x=1751901792;
+        d=1e100.net; s=20230601; t=1751297112; x=1751901912;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=m40CaCvXv6dQ/Kik62QOQVVIz2NlJXmaGa9e5MrI4kA=;
-        b=eZYVzFQadKM8ZPGKD493e252SFS5IHKK8UeO+vPlWMIzjgM3ScXgrQY0ZLKbwbU3mL
-         e7p606WjxiLMgqvnFXjIHVm+qhUNzKusHtgMggyUp8AenoVzI2Wtm0HI7kP+3wPt/Wye
-         rK1NEkrfISjZWhFfNXLLKxds+odDtHJiFitzbMNj4iyJ+v1aWOLHzEh51IrOL7fP3+R4
-         /xOkW8X0YdIGFzVY6kc1TjCZkIsJo1rtuIpjthxTEjecnczZ8k3n5X7BIE+XOuSWvPvz
-         69h9CUPDENmmu5onwSHWOnvLSI0XO49NbST09xkc9yyK4rM5kq8sjfORC8UITj+/cZ3K
-         gqog==
-X-Forwarded-Encrypted: i=1; AJvYcCXwDHCe7jnljvm8teatJHrSXo+OeqgB6v6dZp19gjLVEbNzV9jgkI+FKJGH+iedTQJa4V4I7NpPlTZ+6A==@linaro.org
-X-Gm-Message-State: AOJu0Yx4kdFQ8yFYJT58s4fPH//LCERoiUTm8hcoVZ4YdOQXE7HH+D0C
-	eBRsZfp38ULiseNjENbdXaTb9HSH0mBTP+T/l73GK/lo7UXXrJm8BXqS47l0BqTNDTeRo7Fy8It
-	vAIeQTO8Sss/sbGdPS62HrGZMy2Q4oKPUz7RXDABEZraf
-X-Gm-Gg: ASbGncvzNXVQuRWd+WgA3WFBhVG2/lX74wSWC9pj5ZFXRXX7qaZMTz/cEvIzabNkv4e
-	Akwz0DcvWn6J17FAPBvDJL2mhEMATnKtXCuYQHv0XcNBdzjx1u12MgGUigma6v6CxmhVOLpn/XT
-	uHSVpF7yJb85Wehk319hTfN74zi4s4YHRrd4WxNHpvObkH
-X-Google-Smtp-Source: AGHT+IFLey3gbDO7x3IaACwxZKzj8qTloEuvMAvkPa8CTVEMIeapmV9N19RDAtE8dOmUNYaIULXNoTjX4myy8R9g/Lc=
-X-Received: by 2002:a05:690c:d85:b0:702:52af:7168 with SMTP id
- 00721157ae682-7151713694bmr204905857b3.2.1751296991584; Mon, 30 Jun 2025
- 08:23:11 -0700 (PDT)
+        bh=I5h/4tT6uYWyspNT7UisC2lRP7Ask7OpjyLTLtPE4HQ=;
+        b=bm9ELWRHXPu20rNxyQym7YNOar8xdKwwdjwdW2REx0dmM9tsRLZib+RpkRVZpsi4U1
+         JXwVOahYzsi4DpMrXy9b1zE5DcbkXlD85fGG6oB/q4EjDbS0ft/+MrmkzIu6zKP04XsM
+         xPGTmtqmz0oPZKX+1jFfxqevPytXotAYJxcXDJNsewvXALz1qhRv/qL7UBLmL4kwSQTA
+         uDG+3PRpajF8EIz3l3yUTtsR5vNxJMDtjS4QelrYgFcb+VSlLEeWw8AcOI4x9+xUKWEM
+         zHEXTXUDNYKvIDIPlc+k9kQGy1gRdLYzb62j19N44ansMPYuP/8lLw0D0E2n9A26XXvs
+         7bHg==
+X-Forwarded-Encrypted: i=1; AJvYcCU34M3inY5QLBG9D6Ei15AZpd+Xfwv7L/alt0CJFvYKiNtTU2UIOOF67L+HWjCGV1Elvm28EOXsChHnEQ==@linaro.org
+X-Gm-Message-State: AOJu0YyKO9CrzFvwcMTfqbzLNZns7FNaNxaTXUkqHE3Xlv7AOwqEUwEQ
+	FPA2r3FHQD+C/cLarLYxpXZb8EQ7ZHTNfVEyN5ekBDpa2y4KZw+oFIwsgJmPF+aW8vIHANNwTnK
+	ResEvRPJBgTia750GQ6954JYbeVcsSWgYSNCcJt4TCwzp
+X-Gm-Gg: ASbGnctz7KwFcFIGMVoRHIrWx19F7dgQMRDKWM7Pjmugaf3Q35/S7D5ztlctGPNCrde
+	O29D4lz7Qbvk5bzPHyXsxG1t3JLNqFaVtOO+C6tbuWQy2yKNT3JdFxfnOScAKU6byOw282UUiCP
+	OM389gI02tiv88beoqmDg4kUVcG90aBpFCAdons085vr9q
+X-Google-Smtp-Source: AGHT+IHbDKkB+v2UqZI/qbpQTn8DDgm/V9SQW5oPnLxD8oZI4VSXOLZFRxjLJnIc+/ugHtVSQMvSaqZsLIPCSyZdD+4=
+X-Received: by 2002:a05:690c:dc9:b0:70e:142d:9c52 with SMTP id
+ 00721157ae682-7151719cf61mr215756077b3.22.1751297111869; Mon, 30 Jun 2025
+ 08:25:11 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250617153931.1330449-1-cohuck@redhat.com> <20250617153931.1330449-14-cohuck@redhat.com>
-In-Reply-To: <20250617153931.1330449-14-cohuck@redhat.com>
+References: <20250617153931.1330449-1-cohuck@redhat.com>
+In-Reply-To: <20250617153931.1330449-1-cohuck@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 30 Jun 2025 16:23:00 +0100
-X-Gm-Features: Ac12FXx_QA1CfRyIPMvH1-pew-Ema3cEXUdffZUdmGWz7Wrn2y7JuUohVq0azp4
-Message-ID: <CAFEAcA9OXi4v+hdBMamQv85HYp2EqxOA5=nfsdZ5E3nf8RP_pw@mail.gmail.com>
-Subject: Re: [PATCH v8 13/14] arm/cpu: switch to a generated cpu-sysregs.h.inc
+Date: Mon, 30 Jun 2025 16:25:00 +0100
+X-Gm-Features: Ac12FXw50PpiOmK56GCGuI5ZjfhKrVyyA1XeCo2Esd3LtbqKHdL_R1y58yMuILw
+Message-ID: <CAFEAcA-Zuqzqg_qUQh+yT4BGqEke3=OhSr0iSY1ztPtVV506sw@mail.gmail.com>
+Subject: Re: [PATCH v8 00/14] arm: rework id register storage
 To: Cornelia Huck <cohuck@redhat.com>
 Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org, 
 	qemu-arm@nongnu.org, kvmarm@lists.linux.dev, richard.henderson@linaro.org, 
@@ -91,78 +91,26 @@ Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org, 
 	pbonzini@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: VVDURO0pSYxp
+X-TUID: zdTPKMxi180n
 
-On Tue, 17 Jun 2025 at 16:41, Cornelia Huck <cohuck@redhat.com> wrote:
+On Tue, 17 Jun 2025 at 16:39, Cornelia Huck <cohuck@redhat.com> wrote:
 >
-> Generated against Linux 6.15.
+> Mostly addressed Peter's feedback:
+> - make sure every inbetween stage compiles (also fixed some bonus issues)
+> - try to make the scripts more robust, add a note the generated file,
+>   and make sure to grab only registers we actually want
+>   - I did a half-hearted attempt to use python instead of awk, but I'm
+>     out of my depth, especially with the script that will be used for
+>     the register fields in the cpu models series
 >
-> Reviewed-by: Sebastian Ott <sebott@redhat.com>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> Also available at
+> https://gitlab.com/cohuck/qemu/-/commits/arm-rework-idreg-storage-v8
 
-Stripping out all the lines that just moved around,
-here are the additions:
+The script seems to be creating array entries for some registers
+it should not still; I've left comments on that patch.
 
-> +DEF(ID_AFR0_EL1, 3, 0, 0, 1, 3)
+I've taken patches 1-11 and 14 into target-arm.next so you don't
+have to keep rebasing them.
 
-This is ARMCPU::id_afr0. If we want to store this in
-the idregs[] array that's fine but we ought to move it.
-
-> +DEF(ID_AA64PFR2_EL1, 3, 0, 0, 4, 2)
-
-> +DEF(ID_AA64FPFR0_EL1, 3, 0, 0, 4, 7)
-
-> +DEF(ID_AA64DFR2_EL1, 3, 0, 0, 5, 2)
-
-These are all ID registers we don't implement yet
-because we don't implement any features that are
-described in them (i.e. our implementation is RAZ/WI).
-I guess it's OK to list them here, though we won't
-do anything with the array entry.
-
-> +DEF(ID_AA64AFR0_EL1, 3, 0, 0, 5, 4)
-
-ARMCPU::id_aa64afr0
-
-> +DEF(ID_AA64AFR1_EL1, 3, 0, 0, 5, 5)
-
-ARMCPU::id_aa64afr1
-
-> +DEF(ID_AA64ISAR3_EL1, 3, 0, 0, 6, 3)
-
-> +DEF(ID_AA64MMFR4_EL1, 3, 0, 0, 7, 4)
-
-More ID regs for features we don't implement yet.
-
-> +DEF(CCSIDR_EL1, 3, 1, 0, 0, 0)
-
-CCSIDR_EL1 isn't a single ID register, it's an array
-of them (indexed by CCSELR_EL1). We keep them in
-ARMCPU::ccsidr[]. I don't think it makes sense to
-have an entry in isar.idregs[] for this.
-
-> +DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
-
-ARMCPU::clidr
-
-> +DEF(CCSIDR2_EL1, 3, 1, 0, 0, 2)
-
-This is an array too.
-
-> +DEF(GMID_EL1, 3, 1, 0, 0, 4)
-
-Another ID register for a feature we don't yet implement
-(and a slightly oddball one in that it should UNDEF
-until we do implement FEAT_MTE2).
-
-> +DEF(SMIDR_EL1, 3, 1, 0, 0, 6)
-
-We implement this as a fixed zero in helper.c.
-
-> +DEF(DCZID_EL0, 3, 3, 0, 0, 7)
-
-We construct the value of this one in aa64_dczid_read()
-based on ARMCPU::dcz_blocksize plus some runtime info.
-
+thanks
 -- PMM

@@ -1,160 +1,130 @@
-Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp969984ejb;
-        Fri, 9 Feb 2024 10:58:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVenqrrAWQzUMncpXUZ660gE11BeFVXbfNrtNg//0LyBjJ+1EwD+mGwuONAN8XH6Pv169WUJHn/3Ke6uCRMn/NJGdlzPs2s
-X-Google-Smtp-Source: AGHT+IGlDgI3JdciROc7sa8GCWqfcplyQGgFAv7XrVUGrAEKXtm0W/f6dNX8iUAPM4AKcRlEPfsh
-X-Received: by 2002:a0c:cb01:0:b0:68c:a83b:aec7 with SMTP id o1-20020a0ccb01000000b0068ca83baec7mr8054qvk.50.1707505093457;
-        Fri, 09 Feb 2024 10:58:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707505093; cv=none;
-        d=google.com; s=arc-20160816;
-        b=FlVH62c1DC7qbAcTKLv52MTr/I4mOwGe/WLRxufAK0uePqIkId+CAWXMcu7V/lKQZn
-         ZZyRbNWcn4ZNeL/Dh3oniSovi1AwwwGhS57EswrvTOHpS0l4TiePhf9OvpN7LcHLFwDf
-         Jb79E0ysmMjkT2g2exuU/xQCoBA9XMWSrtTcho7ZQpMnteruny1bV/mvIhOvVIXHzlsy
-         Pulo900KZM99BF2t7/U5zwjN64W08WhYdaaPF8xDOm2KcwAZD8asca2PCI+s5HtS/DaH
-         Tx5s+7YKMsvRJ65FMNOQfWZGpEp5Ziqy++5rA+aqeGtwPAveghG3yKONPQSVJxsmaDDj
-         W0Tg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=w5tjkzD5+dT/pEawdBPPKkooZploLqHu869R7Wt9kyY=;
-        fh=HrD6Q8K0SI7eOpuLXblnQ2c7I+IAK4QR/w5zGFivMuQ=;
-        b=sZDIM84Sdz5dxWc1m3xc+61VSNBY+JfDPrMyj3J3zhZLjKBQG623VlIxwrhtbkK7Cw
-         zJ0SP8oeVrdPo5CjwowRzSF0CfDUiRq1TYRV/v1S3HLZ/EOFrBaH8+PStNRVjVn3+4FE
-         k8XJUEoEqP2Z0r8dw5QxqVyqB6mEy0MaUEd9lbhbUzZO2s97uP12ja0qwITb/qvj8RSy
-         fUoX+w5a5fWWBnmWdFE7kNLdBm7DgQM3fl3vtkko1u5MrjRWcGCqcLEWgKPYQHyXUnU6
-         To2gRolKhFmEo+OkCx2zk+hcEIUEtXvpH5M3R1TryAOLS2W3fGkb0SchQvQe62y/Pmr9
-         NmmQ==;
-        darn=linaro.org
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2447418dye;
+        Mon, 30 Jun 2025 05:53:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXNmg8qD3RgHMK92kCbEgAxbR4eLUgqpZKw332+xYoDbGr3gwMWDHL5jgTbnVN5+UFfrbgprrqp+hzW/Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IFd8UBvrLVc8FV8Uq3oFqWX0cd6Aiw+Yb5iZm4iBkOVGCjSRQTuPmpHK30VXdk9zjQMVIn/
+X-Received: by 2002:adf:cb8c:0:b0:3a5:8a68:b81d with SMTP id ffacd0b85a97d-3a8ff520200mr8372478f8f.43.1751287997766;
+        Mon, 30 Jun 2025 05:53:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751287997; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Md9dFJU6sAfFRXc1liIzKnKSKRxiScpqDRVb/JP2mZzoL0TletXGj7Va5UzFgHGl8j
+         8Nce8bZa6x/6SZPOiCHkdH0NCCycOrndi3uYn9dlJpqKXikzVH2ur3XTMefe/Vz9k9WP
+         cDyXGYJQ+PE/5nLkgJiBLlMACHL9G/lP/34NQd4rIOvtr1YPEkznlH7HvWAwxY3RfiI7
+         z80lwnay+9R+CIxrXEHdOy6IPxds7qEdUmCts0F0mlCkhS11tOZblkOKzW5QXojJ2aqS
+         8KU/Vr7oop6X/XwTrTTWT71FjW8zQBHiP2obttIA8ojKnWDZlPhv9YtNNCbtNmfj2pf0
+         zwSg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date;
+        bh=YIFiJa1T9SmcA9hzQPyKCn9XRBbxcR6stcBE6XfxPP4=;
+        fh=De5j/+RFiHp5oysg/kfBHcT9O0ASuV5hpNukEk4skqM=;
+        b=VuaS5JyaoEzE4M6BCJKbBUBkpCDyLrkCLBeTEbyjmt+aA0gQpqO6MWHoQ7oMYMXBfP
+         dpVNDX7YvxQv/4/rUIves9/RLFkQKDnfZSHhSbb4rYjKt3oH9Daf8zWnV4DnvoDNZzRR
+         EYkfKmdQEnoIfJdPxJRxtreiy0D3WRG7eKPwADRhkUdMVryqcV98JeezWcAbAvpiyWN9
+         BUn+wVW/WsT6Tn3jLRw+ZONur5FsqbIQuVwMLQiT8hZH1ELreFHpssUN1cF8NVOjvrg6
+         DfeQdbFvdskEF/JDeRJXC24cqE4bTj3E/WNMH9vIUz0BwkTYCndR0+dIukTkORVbqUi3
+         WQtw==;
+        dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E7looAsm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=1; AJvYcCXv09FNBXoP4qB6Q9yMGnIuy1R8NEHolFrK49vpD1ACjkmzOtzupLRjuMUSxtJIrzz2wFaM1OnIGo4qn+z0Xcrtwlo4cDYI
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i3-20020ad45c63000000b0068cb64ecfd3si2675329qvh.86.2024.02.09.10.58.13
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Feb 2024 10:58:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3a8a081845csi5858530f8f.712.2025.06.30.05.53.17
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 30 Jun 2025 05:53:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E7looAsm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rYW4R-0002Sr-Ux; Fri, 09 Feb 2024 13:57:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rYW4P-0002SP-I3
- for qemu-arm@nongnu.org; Fri, 09 Feb 2024 13:57:53 -0500
-Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rYW4N-0002QT-RJ
- for qemu-arm@nongnu.org; Fri, 09 Feb 2024 13:57:53 -0500
-Received: by mail-lj1-x233.google.com with SMTP id
- 38308e7fff4ca-2cf1fd1cc5bso13517921fa.3
- for <qemu-arm@nongnu.org>; Fri, 09 Feb 2024 10:57:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707505068; x=1708109868; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=w5tjkzD5+dT/pEawdBPPKkooZploLqHu869R7Wt9kyY=;
- b=E7looAsma2fktAAkBZyvCMibTaNnFTj4o1WYr5HVZbjCCUKbpaGZ79Z6gbrm4q/6It
- Vl/jEXRuHw13rkbyqLeql8lqfYN9nKQDqB4epnufchgu5vmipV9UttdhAjVxa/biNQ6p
- pGIgP8F/MGReIf74scTV1DeC2CiYqryP/gWl0mI0lwVLq1FLdllIvCOCqT4fFGDm7nXZ
- nVO78PGjrefxyEDmOqNOA69Lw68NSkik1IFPlcBkxcGCl3sr4aupzTa6DB13eKdIiie9
- 9Xk5keff6zY0Z4P073NaQ9fgpMhu854i/4IW6VVGaX1sTTERmeU/JhbizoHIoBW847z9
- 4tWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707505068; x=1708109868;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=w5tjkzD5+dT/pEawdBPPKkooZploLqHu869R7Wt9kyY=;
- b=b6M+9tfKm94sF7P8SbQ0dUkDksFUAaZeF1wD0xS6nIDtKlz3TZtTyyIFLnRk+ZDWKH
- 523ASFAz/2zKtY3pxIiNK2Wu05uD887iifdP2fiUdsq1X2oS4yTxgRxio7vQrCaRQPt+
- 4+1YcNDHao2+XtkYmTryTrigY1QZAS5FCVmJqLuqEWkNYrzi09YuRPEqCl6arShhKpjh
- sfUfDvY+e4AZVzvQUoMq0kyLtysWX9GP1HSL/Y6XdQc7fRrESPG91y1J1xMhqq69R5P4
- YuwWxpfj6Xx45ErfyI/cUyP+5uRHW/c2CunVSEb6zlnHh8MnwjO2k0M+3Sp1wz6KD+gj
- RHdg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWMQuVJQT9n/b697mwoKytWWxc7cJBmq5Zz+k/2+GIyKOobsBLC/zK3e8mHG0ZX7rTOeb3xg9GpA5MtU6NQSX3UFO10
-X-Gm-Message-State: AOJu0Ywkom0/Wjk662IWZIo6isDp6VekjYnNnrjINsfI8obSuJS14+ph
- XovkVzxjr/LsLMvwvmbvWBsgrjrjZdh6pY2YajK63Ig+rK8c3GIY+NqmgaPQSuBF1crYeNEpyRw
- WtXJdanlmVRV8KiQyp3mNYPFlUYM4KuRiYuQzRQ==
-X-Received: by 2002:a2e:900b:0:b0:2d0:d054:17df with SMTP id
- h11-20020a2e900b000000b002d0d05417dfmr1778421ljg.42.1707505067670; Fri, 09
- Feb 2024 10:57:47 -0800 (PST)
-MIME-Version: 1.0
-References: <20240209160039.677865-1-eric.auger@redhat.com>
-In-Reply-To: <20240209160039.677865-1-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 9 Feb 2024 18:57:36 +0000
-Message-ID: <CAFEAcA_SFtmCCFBPwWjJF3uygdpdqoZuYLaQQP186fyQ+dJEHA@mail.gmail.com>
-Subject: Re: [RFC v2 0/5] ARM Nested Virt Support
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bW5fJ3Nz9z6M4dG;
+	Mon, 30 Jun 2025 20:52:24 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+	by mail.maildlp.com (Postfix) with ESMTPS id 1B8E01404C4;
+	Mon, 30 Jun 2025 20:53:17 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 30 Jun
+ 2025 14:53:16 +0200
+Date: Mon, 30 Jun 2025 13:53:15 +0100
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- miguel.luis@oracle.com, haibo.xu@linaro.org, richard.henderson@linaro.org, 
- maz@kernel.org, gkulkarni@amperecomputing.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::233;
- envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x233.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: o6Oofo3xXBAX
+CC: <eric.auger.pro@gmail.com>, <qemu-devel@nongnu.org>,
+	<qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <imammedo@redhat.com>,
+	<gustavo.romero@linaro.org>, <anisinha@redhat.com>, <mst@redhat.com>,
+	<shannon.zhaosl@gmail.com>, <pbonzini@redhat.com>, <philmd@linaro.org>,
+	<alex.bennee@linaro.org>
+Subject: Re: [PATCH v4 29/32] hw/arm/virt: Let virt support pci
+ hotplug/unplug GED event
+Message-ID: <20250630135315.000041b2@huawei.com>
+In-Reply-To: <20250627095620.3300028-30-eric.auger@redhat.com>
+References: <20250627095620.3300028-1-eric.auger@redhat.com>
+	<20250627095620.3300028-30-eric.auger@redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+MIME-Version: 1.0
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml500003.china.huawei.com (7.191.162.67) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-TUID: a+WXdGI/ENNe
 
-On Fri, 9 Feb 2024 at 16:00, Eric Auger <eric.auger@redhat.com> wrote:
->
-> This series adds ARM Nested Virtualization support in KVM mode.
-> This is a respin of previous contributions from Miguel [1] and Haibo [2].
->
-> This was tested with Marc's v11 [3] on Ampere HW with fedora L1 guest and
-> L2 guests booted without EDK2. However it does not work yet with
-> EDK2 but it looks unrelated to this qemu integration (host hard lockups).
->
-> The host needs to be booted with "kvm-arm.mode=nested" option and
-> qemu needs to be invoked with :
->
-> -machine virt,virtualization=on
->
-> There is a known issue with hosts supporting SVE. Kernel does not support both
-> SVE and NV2 and the current qemu integration has an issue with the
-> scratch_host_vcpu startup because both are enabled if exposed by the kernel.
-> This is independent on whether sve is disabled on the command line. Unfortunately
-> I lost access to the HW that expose that issue so I couldn't fix it in this
-> version.
+On Fri, 27 Jun 2025 11:55:18 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
 
-You can probably repro that by running the whole setup under
-QEMU's FEAT_NV emulation, which will be able to give you a CPU
-with both FEAT_NV and SVE.
+> Set up the IO registers used to communicate between QEMU
+> and ACPI.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Follow on comment inline.  Otherwise LGTM
 
-Personally I think that this is a kernel missing-feature that
-should really be fixed as part of getting the kernel patches
-upstreamed. There's no cause to force every userspace VMM to
-develop extra complications for this.
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 
-thanks
--- PMM
+> 
+> ---
+> v2 -> v3:
+> - remove acpi_ged_state->pcihp_state.use_acpi_hotplug_bridge = true;
+> - use sysbus_mmio_map_name for all regs (Igor)
+> - create_pcie left at its original place
+> 
+> v1 -> v2:
+> - use ACPI_PCIHP_REGION_NAME
+> ---
+>  hw/arm/virt.c | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 878c567354..d8706ef9c8 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -686,6 +686,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+>      SysBusDevice *sbdev;
+>      int irq = vms->irqmap[VIRT_ACPI_GED];
+>      uint32_t event = ACPI_GED_PWR_DOWN_EVT;
+> +    bool acpi_pcihp;
+>  
+>      if (ms->ram_slots) {
+>          event |= ACPI_GED_MEM_HOTPLUG_EVT;
+> @@ -704,6 +705,18 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+>      sysbus_mmio_map_name(sbdev, TYPE_ACPI_GED, vms->memmap[VIRT_ACPI_GED].base);
+>      sysbus_mmio_map_name(sbdev, ACPI_MEMHP_REGION_NAME,
+>                           vms->memmap[VIRT_PCDIMM_ACPI].base);
+> +
+> +    acpi_pcihp = object_property_get_bool(OBJECT(dev),
+> +                                          ACPI_PM_PROP_ACPI_PCIHP_BRIDGE, NULL);
+> +
+> +    if (acpi_pcihp) {
+
+As mentioned in earlier patch review, with this code you now have means to set the event
+bitmap as done in other cases.  Maybe just do that here as well?
+
+> +        int pcihp_region_index;
+> +
+> +        pcihp_region_index = sysbus_mmio_map_name(sbdev, ACPI_PCIHP_REGION_NAME,
+> +                                                  vms->memmap[VIRT_ACPI_PCIHP].base);
+> +        assert(pcihp_region_index >= 0);
+> +    }
+> +
+>      sysbus_connect_irq(sbdev, 0, qdev_get_gpio_in(vms->gic, irq));
+>  
+>      return dev;

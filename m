@@ -1,185 +1,181 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2606334dye;
-        Mon, 30 Jun 2025 10:03:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXKeqZJesIau5K0ClkUpE7HgvhxrfScWO7iKwbwd22EllMvwMkCfpCST5SVK/d4g1FQ7kva21esesYEvA==@linaro.org
-X-Received: by 2002:a17:902:fc85:b0:234:bc4e:4eb8 with SMTP id d9443c01a7336-23ac48b49e3mr201220015ad.46.1751303002851;
-        Mon, 30 Jun 2025 10:03:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751303002; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2709784dye;
+        Mon, 30 Jun 2025 13:23:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWLwyhiCwlS4Knt2Mg7i5Y+scx3Gjv8m7z2UhZVXWgQs2P2Fw7zWi2SvRg2Odbwi7uYEX+BsoSh155wMw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEDo+s7+ji1JvJi9MtA9gZlBKz755mQG+7r9ugFRL4XT0gZoUZCcTSCqZdOVfHxCzIfodxl
+X-Received: by 2002:a05:622a:1ba1:b0:494:959e:26a3 with SMTP id d75a77b69052e-4a7fcdc2237mr233402421cf.34.1751314983659;
+        Mon, 30 Jun 2025 13:23:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751314983; cv=none;
         d=google.com; s=arc-20240605;
-        b=OeDQmHSloL5Yb+DGyNF9+ws54Hhgy2MSEW4oybtJDd9ek+2er3Gh7dNVUKyJneTVVN
-         BqZoqLYFfefY1+SeS2IlsMe9KhKcptDfmJxkDtgvhLS+z/6KhmozAIkGkM8/1Gxp1Nw9
-         ddgznkU5Uc/Uol01zXkxCl6V5DhtK4mZBmxxoIeMzKkCWGGFMlM/inbnPxzftClnaaFo
-         g2stFVNa+vg4DK7c6EYethtnlXVdGClmr/kBlAdA3rfNAgpjN06K1oupn4PwVQTLsgG/
-         pJQC1jWLBEBCS3mKKLGAygcew/Ejdfi/OTtNV6kGlcAk9Wm3eefz4whc9+wBiC2L8xH2
-         zUQA==
+        b=Ct29f0H1Mm/8MAZxAOgZca51g4/5JNnWpr/xzN4oFTaY30H+ihHfNWL8WVFSu83iRo
+         B/TIkCF1b4iC4Mh2Z2n93kSQjekwbiCKh5+BWZEulwD/V/b+FtRkGpMOgMJWJNGJew3j
+         LiDGGqc0Bh9rjo2FiRPjDj67V2Z4yURx4Rx3teRRPk25L+zsEaD9zaSYCsrar7bGHNCq
+         hX1iv2QaTfTtpPCVZR74gPTHrg7wqq79rV2no8VhpKBBs49rskf8XYCNQ5ma31b47KWq
+         +M53jQqKRjSmsrQ0lv5+Tdp+k3XGaexn7mfcRHerG5mMP6onMPJz3oKZvx962fDD0YQy
+         TZnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=ZrwSuaD+VoYFdUIXCegGF1YB386Md8D+3yHN0v09ydk=;
-        fh=YagkjHqVtfxG1HDX7TFThHjXGzgtXK61qNAKD6anRWE=;
-        b=PJ7j3H0CfM8kj4C0trSrNo5HbHdDZG+uCb6v9r6n1+JyN7Nl8OpBsFK5uFS1dF4vKJ
-         ctC1/Z6+Ba+cAaUQdu0XwZ9HxSmPCcxmQyxkenol33r+lc8TeVd7ZrjxLivN7+VDlR/H
-         jWWlxnH3oZLLV6xEGeeDJGXrWf37h2l3m7AtWMrULxvRlWU/PZwXwHJCoQi2boJQ8vWY
-         8ftwNE6pNMp6GY1UgoZziOrUvxP7PEfsurCDaiDzx/7/3Od5JOAGpHLXwuGiirT9KB5/
-         Zh4B+z1NxupVg7JriKbsHcV8OzlZdthGwXb9VGaqK4dwqzQrXGXArScc1uF+WufsgWqU
-         F+Fw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=eMwmpWEZqoiCNj7GYzzb6y85+B9zqDZXBHnEWVdHCp8=;
+        fh=6tFBqg4vnWQDuT42yX/Wp+42LwkqSqYPhujI+lYeO+Q=;
+        b=Rm079vGGOedNBr4Jp0NZWmRVZxJuknvnvpHcgJNmxVKfl5KO3QJaF6v9CH0yaxMwTH
+         WzZ7WkaLnQYbrQt/g95MVGJMR1KazJ+80YUiEEvfGGRxwAVxz146gapIjclyy++tQ0Mv
+         hxPypPHMCbIYQS/IJnD1i67DhIzxCYXkLAhpGa3ZARFwZGJax+maHQzDhuyHTiX7Gixq
+         XxkYwmtr/roClhyxZ0oAeOipunnaztnHywY4u1mzaM002qSyLrJuVGwsFiobYhI3yoTU
+         3MIvquJIsjYhLfuBqyNJT0x2t6za8aClz+RgILhKE3BckwdKAnEFslOsGXvWtRw1NDrG
+         oCTQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YhWAjYCH;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="Vhxu/2bj";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-23abe311c33sor35759465ad.1.2025.06.30.10.03.22
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc553915si91954621cf.458.2025.06.30.13.23.03
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 30 Jun 2025 10:03:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 30 Jun 2025 13:23:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YhWAjYCH;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="Vhxu/2bj";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uWL1N-0004VF-6y; Mon, 30 Jun 2025 16:22:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1uWL1G-0004Ue-Vy; Mon, 30 Jun 2025 16:22:27 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1uWL1A-0002sZ-Og; Mon, 30 Jun 2025 16:22:26 -0400
+Received: by mail-ej1-x634.google.com with SMTP id
+ a640c23a62f3a-ae0c4945c76so371287366b.3; 
+ Mon, 30 Jun 2025 13:22:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1751303002; x=1751907802; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ZrwSuaD+VoYFdUIXCegGF1YB386Md8D+3yHN0v09ydk=;
-        b=YhWAjYCHZ8oVQY1f50x0F4qzrpcUMJ8kGesNkv0Us7uAogBEnsh4D7pGX3hHOpWw3V
-         wNoDYz3Sjy3feVaRP0vOimETpR8i/CfgS6Wz3duNu5IFgeQ25ZMh+aEI46T9n3ixcTZN
-         W0qI5ckElrCwNZKBAds5tise12RjV5WS4W7PbqiMxVQm/69fZbtFYIpPOaCUi1DeYGEB
-         EyAzSIj+QtfSXAQgMbaOltBKPY/jhLHvFC/DRd2hdahcj4jiPM7/g9EzKynduKGVWAVa
-         VlkJRiO+cIg+ci5W1HHck9odkc3TVeN+ICFl/nwdYoDUGoEpQN6J8uL4Im5hBQGMFHWz
-         suKg==
+ d=gmail.com; s=20230601; t=1751314938; x=1751919738; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=eMwmpWEZqoiCNj7GYzzb6y85+B9zqDZXBHnEWVdHCp8=;
+ b=Vhxu/2bjrj0vAR8pL/OpQRLE9SyEx5aOGF6JF4CDtwXixJNEyCwhl7MdN7A20i3j7d
+ ENr7tYtIiu4RZayh1ys3B/72/17I9/+fc+8YE4QJc2LWC3My5TO9ygEOyPM/5NqPDL1K
+ Ql7B2pJHF/Tp/J7OG7QCiLyJ88ouGwE9gL3G+5CvTP7fN7DgsJzsncuk9G0XUj3tNVqL
+ 3dkRFrY9bR6k3VyzjJvEEg9hp6IdM9UfkXCov9iVqpNxqyR4trQfCDYZ7WR1Zwqx6t6A
+ 1yCi0UNYlvPMyMA/FyRLchVgQERqP+QavQfMPK7JgFz//saFHeBNg90djZXLtZW6+9VA
+ NUTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751303002; x=1751907802;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZrwSuaD+VoYFdUIXCegGF1YB386Md8D+3yHN0v09ydk=;
-        b=qUdpRpTk6OAqQyIp24XU+eJmfHuP60YdbJmbRmqsh/lPVsVWeRp2rDoE7Xdow/lZ15
-         amHsToVb70ASVhSdxTbxZbMwpQ09dq9Fmx6U3EQevgbv0xPHZOSEHN6MF+RwIPXUcnfJ
-         3hwQW43OqLZunKiucU0z/BA3+izorzT0c+iUUceim4QRbeZXMJJ+kWoHtFTwWXyKMGlk
-         dBrBIthuEVI442B0pV/gl/AsKdNHeH7qYS3INcRlQ8/UAoARuuphCyl5uB/K1d+pEChl
-         J4AIOUsH/trICpotLKtyQuf5W1/1ueMsR99YywqaHYZjxMNk+qGKwWWFYFvlkBneZrN1
-         CrpQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVShr5udA4CIN8fwbjsAmMqoBVIPY93zc67TwP5vM35ANr08JVbnE+Oe2rr1cKNgLjiSpO4dLBw5ue36A==@linaro.org
-X-Gm-Message-State: AOJu0Yyek1CE+s7RsErJAN9BzXEq41as4wHM+Fqy9TgH1yUHI31fchxZ
-	zNADjPoX/rJUmMoRjz4gE/RohRMjEljoWXS7Zw2eqY/7BdUADQRIkHhpOgqwC5HDoXWV9w==
-X-Gm-Gg: ASbGncvah+Kki+Hccl0/5khRAWydnmdqaA9afpvZvn2hN+qtwm4ldokPbKWaYalu6Wm
-	G67vBAhJTAxhSm1q8WLxk1UIgVmxur2vvllprot2QkJnYKOiUinKaEd0wz/4CbTm2q/1SSfEbmS
-	pu0CMPdZk5KeNihmo113cytakmzJvvjHER9pSpBrD8G67Q5bKSjFnM8OpNG9EKY1sEKPWxN8+nB
-	1c3OqTCaNZIpOvc9NrQoOYfV0lySDEsxc/GDVSpQLuROcFWa9AxbeIFjAXOXGPRllCpn92YZgeQ
-	QtleFagQWQYe+0KxV1GQTS+rYJoIvWTjUfARuf3ugAlxtekS90YP90PgNlSNqMS2tA7hU/roits
-	=
-X-Google-Smtp-Source: AGHT+IF7jwW8bH4WMwCcHfVMsj33+s3MLF/FcAce/QU9etIlvWhRLQ36FSx2NDLSAyyjMwT9gF+1XA==
-X-Received: by 2002:a17:903:f8c:b0:234:bfcb:5c21 with SMTP id d9443c01a7336-23ac45e4467mr223746585ad.19.1751303002164;
-        Mon, 30 Jun 2025 10:03:22 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from [192.168.1.87] ([38.41.223.211])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-23acb3d27dbsm83852835ad.256.2025.06.30.10.03.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 30 Jun 2025 10:03:21 -0700 (PDT)
-Message-ID: <66593af9-0d9d-462b-a170-f4e81ffb7429@linaro.org>
-Date: Mon, 30 Jun 2025 10:03:20 -0700
+ d=1e100.net; s=20230601; t=1751314938; x=1751919738;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=eMwmpWEZqoiCNj7GYzzb6y85+B9zqDZXBHnEWVdHCp8=;
+ b=DfvSNOsCaXdkZCDKlt5TASSAEFqTWZbv3S123fdKJA+NjRPRpUOj9tSarkIXRbyIDC
+ bk4sFdCptCXT3+NY4Pri7YSAYPzRxDiz/FDFGz98Owb0NQjyNiVYEfUlo1ZoNP4Ro8XX
+ 4fWAtnRqVhiMdX7UGBuS5c9UrHQ+JFQd3ahdmFUvp6EdiW6yAsrNOHdcAgzYW4DWEdOq
+ kXZx5e+Gg7BX5nKOxhv5ajJyuLU6W9y/ic8e/yMFz75OY69q9f2zNnKvwvErve11TLNQ
+ fWzwhBfhrovVVDxQVqgt92ZfAAfD9pYq5uRzJdbwd6wZZIZ8xIR5Qio+HriKg+QAj2IJ
+ W3XQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVe32sgr4FaqSjQU3BUIlnMocEsF7PT5W2/VSJqx9tMdh/AIbNa/gWR3ld6iEZFC0V1UzZT6vUiSg==@nongnu.org
+X-Gm-Message-State: AOJu0Yz7ebud+fbLJUke4+YGVDrfiN76bkKdcaSEs+5wTG8L9E6CpMGQ
+ E3x84Na7iYWiRmRGUl0wmBaUCViArEDAa4AK589cKYEpOPi0OEgaZ3RO
+X-Gm-Gg: ASbGncvDGCO+geoEvs7kzwlTu9cVqr9pwbHY6QikXrx7Rvib/Eili2oxWJkrHYO/z/w
+ O8EVKnSltsTNXSSw9pOuiwJPyvc4udcZmcqLc4kBdymZ5KR6JskKtyU1lIQon+T0OyzT686TenA
+ otnYQYulQJEzcnjWVRLorCegY+ZF+8v6egCMVyAkFXCHhbazKUagdVqPR4yC92+HmRldD6zVQx7
+ PIFpZpo+4C4iA2m7aAvrCcl9r+c9UTupI8+/wIWnqNTuYcREMKY4DJSLlLboKEQGWdkcCKWj9qa
+ sb8/O2pbrP+tQEzUJbuEyNAwsBi2GixId3Wj0kf0NXGJJJ65xletXA7hi77IB1jhxkOx9kukJB4
+ zwxLegGAcX4PsxXc/zMd8/5fMUlLZw3QSlYoizM1CH7KsXaEflKWJE6/twL/GuOj62dm+4g==
+X-Received: by 2002:a17:907:3d92:b0:ae0:c7b4:b797 with SMTP id
+ a640c23a62f3a-ae35011ff6fmr1407942666b.45.1751314938243; 
+ Mon, 30 Jun 2025 13:22:18 -0700 (PDT)
+Received: from ?IPv6:::1?
+ (dynamic-2a02-3100-2c1e-5d00-bd73-623e-7632-a2ac.310.pool.telefonica.de.
+ [2a02:3100:2c1e:5d00:bd73:623e:7632:a2ac])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-ae353c6bdcasm734494566b.137.2025.06.30.13.22.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 30 Jun 2025 13:22:17 -0700 (PDT)
+Date: Mon, 30 Jun 2025 20:22:15 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH 2/2] hw/arm/imx8mp-evk: Add KVM support
+In-Reply-To: <CAFEAcA-HaQwySM1j7Cy_R1z0fM1D9ykiBiMKLYNVYF+Tm_mrPA@mail.gmail.com>
+References: <20250629204851.1778-1-shentey@gmail.com>
+ <20250629204851.1778-3-shentey@gmail.com>
+ <CAFEAcA-HaQwySM1j7Cy_R1z0fM1D9ykiBiMKLYNVYF+Tm_mrPA@mail.gmail.com>
+Message-ID: <78B2535C-38D8-4612-8958-49AC28482A8D@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/6] target/arm: Better describe PMU depends on TCG or HVF
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org
-References: <20250630130937.3487-1-philmd@linaro.org>
- <20250630130937.3487-4-philmd@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20250630130937.3487-4-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: ki9L1c1FSQ8i
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x634.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: OWf9tyf/EUyu
 
-On 6/30/25 6:09 AM, Philippe Mathieu-Daudé wrote:
-> Simplify PMU logic by rewriting '!KVM' as 'TCG || HVF'
-> (ignoring QTest, because vCPUs are not available there).
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   target/arm/cpu.c     |  2 +-
->   target/arm/machine.c | 10 +++++-----
->   2 files changed, 6 insertions(+), 6 deletions(-)
-> 
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index b6a8ba83a46..0311ff315fe 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -2352,7 +2352,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->       if (arm_feature(env, ARM_FEATURE_PMU)) {
->           pmu_init(cpu);
->   
-> -        if (!kvm_enabled()) {
-> +        if (tcg_enabled() || hvf_enabled()) {
->               arm_register_pre_el_change_hook(cpu, &pmu_pre_el_change, 0);
->               arm_register_el_change_hook(cpu, &pmu_post_el_change, 0);
->           }
-> diff --git a/target/arm/machine.c b/target/arm/machine.c
-> index e442d485241..baa7ad25ca9 100644
-> --- a/target/arm/machine.c
-> +++ b/target/arm/machine.c
-> @@ -1,7 +1,7 @@
->   #include "qemu/osdep.h"
->   #include "cpu.h"
->   #include "qemu/error-report.h"
-> -#include "system/kvm.h"
-> +#include "system/hvf.h"
->   #include "system/tcg.h"
->   #include "kvm_arm.h"
->   #include "internals.h"
-> @@ -853,7 +853,7 @@ static int cpu_pre_save(void *opaque)
->   {
->       ARMCPU *cpu = opaque;
->   
-> -    if (!kvm_enabled()) {
-> +    if (tcg_enabled() || hvf_enabled()) {
->           pmu_op_start(&cpu->env);
->       }
->   
-> @@ -888,7 +888,7 @@ static int cpu_post_save(void *opaque)
->   {
->       ARMCPU *cpu = opaque;
->   
-> -    if (!kvm_enabled()) {
-> +    if (tcg_enabled() || hvf_enabled()) {
->           pmu_op_finish(&cpu->env);
->       }
->   
-> @@ -921,7 +921,7 @@ static int cpu_pre_load(void *opaque)
->        */
->       env->irq_line_state = UINT32_MAX;
->   
-> -    if (!kvm_enabled()) {
-> +    if (tcg_enabled() || hvf_enabled()) {
->           pmu_op_start(env);
->       }
->   
-> @@ -1013,7 +1013,7 @@ static int cpu_post_load(void *opaque, int version_id)
->           }
->       }
->   
-> -    if (!kvm_enabled()) {
-> +    if (tcg_enabled() || hvf_enabled()) {
->           pmu_op_finish(env);
->       }
->   
 
-If I understand correctly, this is supported for tcg and hvf, but not 
-kvm, right?
-I'm just a bit confused by commit description mentioning "simplify 
-logic", which is more "make it explicit".
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Am 30=2E Juni 2025 09:09:31 UTC schrieb Peter Maydell <peter=2Emaydell@lin=
+aro=2Eorg>:
+>On Sun, 29 Jun 2025 at 21:49, Bernhard Beschow <shentey@gmail=2Ecom> wrot=
+e:
+>>
+>> Allows the imx8mp-evk machine to be run with KVM acceleration as a gues=
+t=2E
+>>
+>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>> ---
+>>  docs/system/arm/imx8mp-evk=2Erst |  7 +++++++
+>>  hw/arm/fsl-imx8mp=2Ec            | 33 ++++++++++++++++++++++++++++----=
+-
+>>  hw/arm/imx8mp-evk=2Ec            | 11 +++++++++++
+>>  hw/arm/Kconfig                 |  3 ++-
+>>  hw/arm/meson=2Ebuild             |  2 +-
+>>  5 files changed, 49 insertions(+), 7 deletions(-)
+>
+>This puts a lot of IMX device models onto our security boundary,
+>which makes me a bit nervous -- that's a lot of code which
+>wasn't really written or reviewed carefully to ensure it
+>can't be exploited by a malicious guest=2E
+
+Hi Peter,
+
+Does KVM increase the attack surface compared to TCG? Is there anything I =
+could read to better understand the problem, both in technical and in polic=
+y terms? Since the i=2EMX 8M Plus has pretty capable CPUs it would be reall=
+y to have KVM acceleration=2E
 
 Thanks,
-Pierrick
+Bernhard
+
+>
+>-- PMM

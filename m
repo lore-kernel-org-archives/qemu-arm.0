@@ -1,259 +1,125 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2244318dye;
-        Sun, 29 Jun 2025 21:33:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUDYF6iogxrDq3ANWs5eZjsrTYZXhFFQmoFTj976NVPwQD8+0mquqzbd6jUrZQilGrQzccqUSz5Yf4Xuw==@linaro.org
-X-Received: by 2002:a05:622a:1301:b0:474:e75e:fccc with SMTP id d75a77b69052e-4a7fcacd83emr204896411cf.35.1751257986238;
-        Sun, 29 Jun 2025 21:33:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751257986; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2273738dye;
+        Sun, 29 Jun 2025 23:12:10 -0700 (PDT)
+X-Received: by 2002:a05:600c:8b46:b0:453:1e14:6387 with SMTP id 5b1f17b1804b1-4538ee954bdmr109512215e9.32.1751263930219;
+        Sun, 29 Jun 2025 23:12:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751263930; cv=none;
         d=google.com; s=arc-20240605;
-        b=RDTXFi/LRXCVYQ4L7IDVHlB6GhXr7sWfN5EM+gPQkhaYYeav0MiJBUrEZaLgWFz5Ej
-         wTqvUPE6CeL8AVJGsF7+Nzmj53ra5KJOPIF8JF5hLOARMwY2oSNecKITtnV1OFiv8xBV
-         uLIWGgbMtWRQ7HGJr9vJZM0okiAT9wKeTgA/1NjcIELyPT8GmUmhBGh9twmAVShe17jq
-         HAulGzZUHkZJKm+iXIWMsrlkmXLx3CNDxWxffoL65E/QMxKI5a/6HSP6JFj3P30pNgWO
-         yCZ628KgK0xjK8iBhmf4a2SoT8iC3jF5Kma08WCdnwAzyQH1wYs8S3nGhFTa5KORYtVY
-         atzA==
+        b=bODSvpZPuNcx4CODB5cslcz3nKyhkam8hjhGuvkeCexKB4ykBhWQbmk0PrHIqavGLp
+         r4f1FMJ0VM4im6pbBySlNQDZaiPAbiOma6JMNUYSdK/DuQ2hHNTMjhnKIlPleC6B3WGw
+         L/pUcyO/RfEdlfMu+1KXBY06s0aQouM1ywEf+o8/mk2P7XX6XO2WDxheFNXdoXWLdSRk
+         zWLrbtAzHakFcTeXdJ461Ktl+N66e85RftMqwaNftstA7th8KF5MeG8NLVb5ZxmAiqDu
+         KeZ/KsCSM2jTplNvZLXQSOLlkLOjs20IWMEwyqtjqw+jOj5ob08Du7dZ93FbeFDiV1SH
+         OjlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ac/L14+pskdVO/8psuhLq/nvDUBkV5afYQiukb3LTRs=;
-        fh=Z+GITwQGu2TCRxmU8onGh4Uz15YSgFTSan30N8a2Poo=;
-        b=LgwxvYVWAAO8TO+t5ck7nGmPArSd68/7x1afiV57xVrIqIWWf9sD4Z5DLnAN1zLSLF
-         jLiL3+Cwhxhwt6QyqDRP6+7bNpXjE/0xyxu6f1AeRmA3VpbeuKBfW9sre9sP/buOiqrc
-         MmHSzTfQASEXGVuY2NrHIi7aqkJFLyPiBrL+zVkoQyi1A+fnQg1o/9OKF1sae7gnWIem
-         KjfJ1xsbzSXwFTH+7QpJ4kxniLf1oSpO+aWA9K0z+R4MTs31zhipNb4jdoBYHuVH2Zd7
-         g1iMJ+g+H5x3yUzBxLZfccmbaLh/PBCaj8eDnzz5xFaNo+xxbTDKe7ujZvqnT/2SEi4v
-         tYaw==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=WunxR0k+nmp3qdd6gRV7DzcKlEagnW+dxdSX1BM/0gU=;
+        fh=XZt/dlIh/egsV3Wytea//V7dPvLO+/t1xvUWdx5hQYY=;
+        b=YtDQ6rCRad0EKCuF3cRnRi6N8tytTiq1O6+0umFbMYj3CODD/bqAPMJnreSoJnBb/O
+         ZQxhEf/1v7vQzIbdMoQV+B6LmDKko2oG+WJJcVdQh8kpsogeAStvPvmfbQdjQ+5Y2Z6V
+         n04AeWLDBov/YIUbpSmvyg9auFktg7q404f1wSvdvJzq/aGnGFhLO6Hjec5sQCNa8IQq
+         HzHNmLSdt430lvdDpKPsok3AVFt+unfqDgjrWpW+ainS3kAWdyuTPM4vUuW/GeiKka5q
+         1XMWHQnmxMC81/zVliWO5DOpEZPHmYoC9yI8RPsDcDi8MbHr7/XUWhQn/7I2++977O/9
+         ljgg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=z7Hh9Juy;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=v+3TkHYd;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
+Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d75a77b69052e-4a7fc1d7a76sor78460031cf.6.2025.06.29.21.33.06
+        by mx.google.com with SMTPS id 5b1f17b1804b1-4538a40a1f1sor35633225e9.8.2025.06.29.23.12.10
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 29 Jun 2025 21:33:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Sun, 29 Jun 2025 23:12:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=z7Hh9Juy;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=v+3TkHYd;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1751257986; x=1751862786; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ac/L14+pskdVO/8psuhLq/nvDUBkV5afYQiukb3LTRs=;
-        b=z7Hh9JuyzOmwdk7lAwKVE4IWFQ6J3o4YQBYZA4nhp725FNoD/5fOlMigmXQrMAVFmV
-         esPCfLb1oOLkgVkce5o/RJf2IpseE2qq1ZhcbtcxKA9Fl6gUyhtp/sDi+2qxRznY9Pfd
-         YN9UPMN5yCnJDIgsMj/GRJBHLmuKfVr3oGQW+Qbc9uMsMgmxr9JshxWZiArU1xEBIQ3d
-         lE13kDbL3voxLjhRq9f40rr+2d+jrhZqoUQzB6Fis0+VqePHGqVUcRDyX/gm38sVg1wG
-         /g8+qpFB/6MbvOc/qUVfaE0Cwuk4Yp9WsgeJ1cnBnaS9y8BinNjr7GdsVPT1kQVTIeOS
-         TvTg==
+        d=linaro.org; s=google; t=1751263929; x=1751868729; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=WunxR0k+nmp3qdd6gRV7DzcKlEagnW+dxdSX1BM/0gU=;
+        b=v+3TkHYdl9fFTPUprHAVNdODuy5KImGBsElFY+Aj9JV2UYj5A4FI8lOYE0BGHPqPWX
+         HulKRLFaorFihGAKN+lKMWW7SwgFa7HgeGeNiVKWIo5nX3+/BWUY/gpkZx1M1rXPn+7O
+         kZlHB4F3w/aOFOAfuS0V+har6c0prK6prg/TgpKp4TGBPLD4ZWe3XmMDqAtgHVJzT2UB
+         UfHJSMN0bqyw8XwcoAWeyeipYO1pdUBl/9fMxCFDDJYcfQFw8f/J3lxEtNzUhQDGSbYA
+         LKGkEvpnoZudGubCToUpYHdmgeXMX7WMBEM1+7QRjfX6ugFeTPjzF22UgDsn+NCAdoD8
+         tBeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751257986; x=1751862786;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ac/L14+pskdVO/8psuhLq/nvDUBkV5afYQiukb3LTRs=;
-        b=i6Gkc6cHCy8bzxNQXPVnIbzgJjV43pQuKDyQ2bWhgTS0vwaenMD+W0m0j1qD5Lr7Jy
-         qR25pe1kfgXzINkJHUrBKwZi6+RPtoM7BfoM3CV9uD0jgJQxOYr8Rk36c2DnGzSEZwnl
-         hOF/aGaIOx/Zt2qL5wuJHqbzdgNHtAIhhn4oSzebXXTLfXbn67gPWBCEauv524g61Msu
-         x9Agw/AIVe+iI5kNTGlv/RK2uVSxq2yeYyyaMXKsbcgQcm6paFS7bm1frzsx+iLyr3hR
-         2TPp5pdBKGhK1D6PrhXPOX1zdeNgg3IjyU2jpMEPLfJnf5icK9LepVIK0KRXGigj3gbm
-         8fTg==
-X-Forwarded-Encrypted: i=1; AJvYcCV43ejy5rqrBzGuQcYDE9UMolLrGtTGK7STbRlgXul5Ho1SRXcQRNZBoE2dC8lNyTrWwzuQrKp5Zr+xbw==@linaro.org
-X-Gm-Message-State: AOJu0YzM/aNjzJxYCPXnJS7x8+yQl3DEYBgSD3CzIGNyLOLCatAdh3mu
-	mhisBuzH98cV0R4Xk+iEQ0KOpLcuT5rQwB+Kq9u82xTlqaHutTZzTuW6hlLmye2/8ViB1w==
-X-Gm-Gg: ASbGncu26fCYJcOUlSKgklIkMJDfPQZNz8FlMqg0drdZIzOHppdKiw9vSHMFKX3N1cF
-	KPJXv7n8LiGuD9vWtLymslKyLILz2f9cflg9Q/Z+iBbPW2XF2eQlsd7SH9uVQlwX/1D9m0v81zk
-	aRlwlmF5wRdPCDFGorKKVe9+hEhRKTM+CkYDfnbqrQQ2FVkghJYy4AaGRRd0gVYj0nrJb7GE8iK
-	xggqz7/DDbi1sqDfvkYYcxrdp06I4YCmxvkVDc3PwsZQqkMMU0XbKvDLmjmCpqWcdJZTGcZVngt
-	46y+SCJlZ0rA6fysyykVV/VVGsxk5ZFjJXNGE3BGpgvzFm4Pbpx0l6IrUGAHmKybFCY=
-X-Google-Smtp-Source: AGHT+IG0+6eUU7nIhJ/CuImTG1xLG3cPeCWy7xmdAbw1mWBudBCO1TE469WoXtur1MoIfdNnEd9hyA==
-X-Received: by 2002:a05:622a:2c43:b0:4a7:234e:6c00 with SMTP id d75a77b69052e-4a7fd683b3dmr139092151cf.2.1751257985650;
-        Sun, 29 Jun 2025 21:33:05 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from gromero0.. ([186.215.58.88])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4a7fc13971fsm53470171cf.20.2025.06.29.21.33.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 29 Jun 2025 21:33:04 -0700 (PDT)
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	alex.bennee@linaro.org,
-	gustavo.romero@linaro.org
-Subject: [PATCH 3/3] target/arm: Add FEAT_MEC registers
-Date: Mon, 30 Jun 2025 04:32:37 +0000
-Message-Id: <20250630043237.996788-4-gustavo.romero@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250630043237.996788-1-gustavo.romero@linaro.org>
-References: <20250630043237.996788-1-gustavo.romero@linaro.org>
+        d=1e100.net; s=20230601; t=1751263929; x=1751868729;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=WunxR0k+nmp3qdd6gRV7DzcKlEagnW+dxdSX1BM/0gU=;
+        b=HZ5JRwq3xb+q73AFmIDzWJj22tfX9BbInLrYgOayTjSdV5bAMTtJ7RXegfPBsUepnK
+         pScSb+3jtinaYbC5qCoHePOV9lm3Y0V27YuV1GY0iJmqZ6f/h3Q9w6tfWdMTE9FD7X1f
+         SGvpJjhUpmGO60EJbpdKI6JlsJ6Ov2DGD2raGiXqrdOdPY2KcMGHEfKBkXYKrEyzMtUN
+         pvj+b/l/nLcX0DBgeHQ4P/z9fOrSeVftlVXHBzeJJclvrinbFWNV+yJDjIrASknUsHDv
+         +QTfCwbNcO+OxE9Qge9m43/7MK/7piroxYbJFVjnJtI3CDTNQcRpwA/yAIYst8qafnIK
+         tkBg==
+X-Gm-Message-State: AOJu0Yxg21WGjoBB/V9ncOnp3m5ckvEBJV9pvRXsj/Y1m+jnQlmLzOQ5
+	Ml0/wxxNGgJjQbCWN4ieulO2k4px4YK3+kScATrI+cEPhmcuPbzUsIQKNC4XJ9ZGyQ2+KIyQ3zQ
+	PFPvKEcw=
+X-Gm-Gg: ASbGncuVapi2Avvrs2GC+zXThkCEEcWsZdcrBOg3CxgDauLF3t1ZladcmHLOKvqWZU9
+	JVWvA9pNb+oJv075m9zGp8KznqOqbEk15nYrw63fFboBZcBvu3iH+3+Oi0xKu4J2FNRVBSiTKvR
+	b6PiiYIsOoHxeGMqFikpI/bi7KvRcEc9Z5ZXUEmK/i+qnyV6mZCs+LoYCM6nUi4PJRP67MxD5iF
+	3XS5f5M2nPhI7olQVInI+J43N17EbH8vcUYFf1nDvl1v1mk6Ou0I03fCifuCrtytgS/jLjO4C6G
+	JGeOVzM/YOycgyvtxUC5+zq+da96lwJdx17Pt1KilH3MG1QVbhaUOD5BDycSn6NTqnUT9ejHD+W
+	8jBhD7A9DLoRJBLS4m08fq8av+b2hOQ==
+X-Google-Smtp-Source: AGHT+IHdwlVYc3MN1G9DYUrSMe7EHVx6HFhKzlk0nOPKRkraWic6oCUm2fbM3LvnrEgW+8hrfUragA==
+X-Received: by 2002:adf:e181:0:b0:3a4:f038:af76 with SMTP id ffacd0b85a97d-3a8feb844cemr9309903f8f.53.1751263929308;
+        Sun, 29 Jun 2025 23:12:09 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.218] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a892e59736sm9399485f8f.74.2025.06.29.23.12.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 29 Jun 2025 23:12:08 -0700 (PDT)
+Message-ID: <d02f590f-5085-453e-91cc-beccf936d0b7@linaro.org>
+Date: Mon, 30 Jun 2025 08:12:07 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 13/15] MAINTAINERS: add myself to virtio-gpu for Odd Fixes
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
+ Gustavo Romero <gustavo.romero@linaro.org>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
+ qemu-s390x@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Zhao Liu
+ <zhao1.liu@intel.com>, Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Alexandre Iooss <erdnaxe@crans.org>, Markus Armbruster <armbru@redhat.com>
+References: <20250627112512.1880708-1-alex.bennee@linaro.org>
+ <20250627112512.1880708-14-alex.bennee@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250627112512.1880708-14-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: IC+7Si4NXVSh
+X-TUID: DpcoIf0GUNM5
 
-Add FEAT_MEC registers to the arm max cpu.
+On 27/6/25 13:25, Alex Bennée wrote:
+> Seeing as I've taken a few patches to here now I might as well put
+> myself forward to maintain virtio-gpu. I've marked it as Odd Fixes as
+> it is not my core focus. If someone with more GPU experience comes
+> forward we can always update again.
+> 
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Message-ID: <20250603110204.838117-8-alex.bennee@linaro.org>
+> ---
+>   MAINTAINERS | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
 
-To work properly, FEAT_MEC also depends on FEAT_SCTLR2 and FEAT_TCR2, which are
-not implemented in this commit. The bits in SCTLR2 and TCR2 control which
-translation regimes use MECIDs, and determine which MECID is selected.
-
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
----
- target/arm/cpu.h    | 14 +++++++
- target/arm/helper.c | 98 +++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 112 insertions(+)
-
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 8ce30ca857..9509217486 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -565,6 +565,16 @@ typedef struct CPUArchState {
- 
-         /* NV2 register */
-         uint64_t vncr_el2;
-+
-+        /* MEC registers */
-+        uint64_t mecidr_el2;
-+        uint64_t mecid_p0_el2;
-+        uint64_t mecid_a0_el2;
-+        uint64_t mecid_p1_el2;
-+        uint64_t mecid_a1_el2;
-+        uint64_t mecid_rl_a_el3;
-+        uint64_t vmecid_p_el2;
-+        uint64_t vmecid_a_el2;
-     } cp15;
- 
-     struct {
-@@ -2389,6 +2399,10 @@ FIELD(MFAR, FPA, 12, 40)
- FIELD(MFAR, NSE, 62, 1)
- FIELD(MFAR, NS, 63, 1)
- 
-+FIELD(MECIDR, MECIDW, 0, 4)
-+FIELD(MECID, MECID, 0, 16)
-+FIELD(VMECID, MECID, 0, 16)
-+
- QEMU_BUILD_BUG_ON(ARRAY_SIZE(((ARMCPU *)0)->ccsidr) <= R_V7M_CSSELR_INDEX_MASK);
- 
- /* If adding a feature bit which corresponds to a Linux ELF
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 889d308807..9f8a284261 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6823,6 +6823,100 @@ static const ARMCPRegInfo nmi_reginfo[] = {
-       .resetfn = arm_cp_reset_ignore },
- };
- 
-+static void mecidr_reset(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    /* MECIDWidthm1 = 15, i.e. 16 bits is the width of a MECID. */
-+    env->cp15.mecidr_el2 = FIELD_DP64(0, MECIDR, MECIDW, 15);
-+}
-+
-+static uint64_t mecidr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    uint64_t valid_mask;
-+
-+    if (!arm_is_el2_enabled(env)) {
-+        /* All bits are RES0. */
-+        return 0ULL;
-+    }
-+
-+    valid_mask = R_MECIDR_MECIDW_MASK;
-+    return env->cp15.mecidr_el2 & valid_mask;
-+}
-+
-+static CPAccessResult mecid_access(CPUARMState *env,
-+                                   const ARMCPRegInfo *ri, bool isread)
-+{
-+    int el;
-+
-+    el = arm_current_el(env);
-+    if (el == 2 && !(env->cp15.scr_el3 & SCR_MECEN)) {
-+        return CP_ACCESS_TRAP_EL3;
-+    }
-+
-+    return CP_ACCESS_OK;
-+}
-+
-+static void mecid_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                        uint64_t value)
-+{
-+    uint64_t valid_mask;
-+
-+    valid_mask = R_MECID_MECID_MASK;
-+    value &= valid_mask;
-+    raw_write(env, ri, value);
-+}
-+
-+static uint64_t mecid_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    uint64_t valid_mask;
-+
-+    valid_mask = R_MECID_MECID_MASK;
-+    return raw_read(env, ri) & valid_mask;
-+}
-+
-+static const ARMCPRegInfo mec_reginfo[] = {
-+    { .name = "MECIDR_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 7, .crn = 10, .crm = 8,
-+      .resetfn = mecidr_reset,
-+      .access = PL2_RW, .accessfn = mecid_access, .readfn = mecidr_read,
-+      .writefn = arm_cp_write_ignore,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecidr_el2) },
-+    { .name = "MECID_P0_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .readfn = mecid_read, .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p0_el2) },
-+    { .name = "MECID_A0_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .readfn = mecid_read, .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a0_el2) },
-+    { .name = "MECID_P1_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 2, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .readfn = mecid_read, .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p1_el2) },
-+    { .name = "MECID_A1_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 3, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .readfn = mecid_read, .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a1_el2) },
-+    { .name = "MECID_RL_A_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .opc2 = 1, .crn = 10, .crm = 10,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .readfn = mecid_read, .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_rl_a_el3) },
-+    { .name = "VMECID_P_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 9,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .readfn = mecid_read, .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_p_el2) },
-+    { .name = "VMECID_A_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 9,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .readfn = mecid_read, .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_a_el2) },
-+};
-+
- static void define_pmu_regs(ARMCPU *cpu)
- {
-     /*
-@@ -9008,6 +9102,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, nmi_reginfo);
-     }
- 
-+    if (cpu_isar_feature(aa64_mec, cpu)) {
-+        define_arm_cp_regs(cpu, mec_reginfo);
-+    }
-+
-     if (cpu_isar_feature(any_predinv, cpu)) {
-         define_arm_cp_regs(cpu, predinv_reginfo);
-     }
--- 
-2.34.1
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

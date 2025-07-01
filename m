@@ -1,161 +1,168 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3067612dye;
-        Tue, 1 Jul 2025 03:58:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVtV7JZMHWUOS/YsnmDAowjrANx9s/uJ17q/cqhOvfdvZJBRIcnqFrNZI9SNa/XeAMJtj8+E5zVFEQ8pw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFOO9nps/L9h67Y39sjRF/3KlXvSm1qkpYQtYH6WwAj1tJnUbxQ0NHTHEkCVMTExiabaJ4I
-X-Received: by 2002:a05:620a:2a02:b0:7d0:9847:ff06 with SMTP id af79cd13be357-7d4439a4f72mr1973654985a.57.1751367522260;
-        Tue, 01 Jul 2025 03:58:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751367522; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3105441dye;
+        Tue, 1 Jul 2025 05:04:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXN+Dy4hToVF3ZuRt90hqfzz2Wa9QotO6XLMLlQFztg4To/hw2G7w5z6M9EXndGphRKApZI/b2SPoigoQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGdwI3GHdajA7nkXRs2QNf15HjkFOS6kY7CCcciivGVOrxOqcUa+IZtKXQgO7XjUgb1u7zB
+X-Received: by 2002:a05:620a:4008:b0:7ca:df98:2d7 with SMTP id af79cd13be357-7d4439361aamr2316675185a.25.1751371493854;
+        Tue, 01 Jul 2025 05:04:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751371493; cv=none;
         d=google.com; s=arc-20240605;
-        b=MPKh6sVItYcpE/cn8JOzBp8AO5vrrG1/NIKUZoPlYIXfSvMnkuqindhy77riqf9RTf
-         D23JUn/GETgq4BB9MUqk87M3HijMOMPpuK2iAhgIS5qvqAiNmUSfDeoNOfH2KUX5Flwj
-         RjKcl12zOl/avUEv+GX3bio4Nryk/pIWTBEyChAF0Pjx03Cer7bWtYYUo03btXt8+Y31
-         F0GExVEeurjtrcU8IHy5+ArNvH9iirDsDOzjlPl0EsYtQvnkNJfxesrcYx0pTtAHHYfI
-         DVV6IKh8f5QITxmMOGdQgKu6qBtryz3fRrVTSPLlG0XDCLsgnL1XAzjwzxkbrc2v2f2M
-         a7pg==
+        b=ih9mXiSnW8PFAt2y3Z7NzjlrL0KqVTz2iPbHqgBD8vlzRv2+rcdk1tGy1HNUlCJ17R
+         xU4b+na9fqhUsaXx9aoZUHEHlvjwgsXXtttZtvH6LTD8QDTv2PO4JMYTEldZ0f3RBuXD
+         uyHOPqYnf3dpKXL+Ty5BRsZOmC6EA+xFieODrV2z+6Els18Qy4TpY43PDRUuAoDWslcn
+         nlPFPDSMhD+GSOq+H5qlMPpTI8HfCT5Z0GngBsQW904YESU4zIICkLf6YoYSI7wun3jG
+         1J0OQfGRFH6yl1sa8zv8LqDVZY3TRt+1I+xjWCkDm/xh/rsawsAZKogmqo3d6WOXJlYD
+         caCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=vaysZIU4o0SnKCiXfmsE+GY/I6OdRo57O2XTDSYmKDo=;
-        fh=hvlI5qLA4Zwqzi2lzyeNftB8dbGCWJkQbDbUzuqwTEM=;
-        b=De1x9UV/MJ/zmu3rehNTFuuJa0OKrjPkD0wwjAApV1N9gdXVHJrD6usI2ZD0k6Vmwz
-         eU0sPQGAq8UuHDRmW08AFZFFl2GkzC2zK69kmhRAcIjKHWmIqrP0WuXbh/qIdAq3t213
-         1XN5i0cD4UH+uvHrsmz6ck4I+z7Ene1YsjBW2wzQ1ZGawCCg69KGGnNL19V+KqzA1qAF
-         y9Diewr9yqAWte6ZlGy60gMiLLlBwo2D4LcdjSzIfGTlmN1KjpSnx4lPTmCOMvKpdw8G
-         IxpsnCjESTEmBcwWkfv5vQFkUPvhEZxgdCXLuaYAjtR6fBSM5RGJariijor9R5UF3JLK
-         g6Vw==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=U1wQDv7i+UE5qB1RJHLYR+2M1eVSaLLN//9E/lyDscw=;
+        fh=H413WGZIL0WdkSq1c9VnQCHGOrhhCQiO5+wxEvhn4Ag=;
+        b=XAJ0o8xa5g8R5kQn2/q3rzFl4NjX8/jwQdbZVNPKu2YgafZrx6CG6IjT1RTvmYb32Y
+         quloLU7rrhxqLEI2kdhY96H2hx12ANvCa/4BtYZv9lf/C3yG89+G9I/LZDFJKB6kf6Rm
+         oW8dEBOD4p/fgHYLN0S/jQJce/KkC9qeZv2GKFTlCeDwvksOqE+8xo3Xd3lV2/4Tq4x+
+         22Fi3FsWKX6BoizLI8N2Nzb/IKUnfZEtfUkJ7DL32d4JT8cF0FxuNc7wK2Ou0RCRT7e4
+         4W4XvU7IyHgeD+w9mq/8NbMM96yAofIYIh+OUE+h3ztrbyVaNno9fYKbN4wStBTVZLYu
+         kqQQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cx1ImAcD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P8NLzdJv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d443193e98si986439085a.56.2025.07.01.03.58.42
+        by mx.google.com with ESMTPS id af79cd13be357-7d44322600asi935607985a.248.2025.07.01.05.04.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Jul 2025 03:58:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Jul 2025 05:04:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cx1ImAcD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P8NLzdJv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uWYh1-0000e5-PP; Tue, 01 Jul 2025 06:58:28 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uWZjB-0005Kv-3j; Tue, 01 Jul 2025 08:04:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uWYh0-0000dx-P3
- for qemu-devel@nongnu.org; Tue, 01 Jul 2025 06:58:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1uWZj8-0005Kc-9b
+ for qemu-arm@nongnu.org; Tue, 01 Jul 2025 08:04:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uWYgv-0002X4-Ob
- for qemu-devel@nongnu.org; Tue, 01 Jul 2025 06:58:26 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1uWZj6-0001o0-8T
+ for qemu-arm@nongnu.org; Tue, 01 Jul 2025 08:04:41 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1751367499;
+ s=mimecast20190719; t=1751371476;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=vaysZIU4o0SnKCiXfmsE+GY/I6OdRo57O2XTDSYmKDo=;
- b=cx1ImAcDBOjGyf0nGoTkKhww9yzboRULNYINWpPuxcbjsXXtT1PT6stKXH3J3zCGp6dq0j
- PUtNAcS3SZL5jgFYEXPhA8P/SvSeL4MBusyDKakYsw2ddRiLF0hc3Jl7iNTTEMsS81/Njr
- aM0yXVahjHYGYFOhTo78dvlSMG9Umr4=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=U1wQDv7i+UE5qB1RJHLYR+2M1eVSaLLN//9E/lyDscw=;
+ b=P8NLzdJvt+BYR/44OKLkisQ9V1unhGXFOntbXNZyiQZ1AekjolIEIHo0pEvjmye5keq/rV
+ SBVbpVFyBS4QlWbRVvp4To6gFetMwNOy/DDImtiJAip4wM2ojjOaiHjAZ5cEa5LKMI/kA2
+ Pi4DSoQE7qRYTzlHVjUqw7Vp/lfKbZU=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-241-UFSGaungM_aTaNtWzPWQlA-1; Tue,
- 01 Jul 2025 06:58:16 -0400
-X-MC-Unique: UFSGaungM_aTaNtWzPWQlA-1
-X-Mimecast-MFC-AGG-ID: UFSGaungM_aTaNtWzPWQlA_1751367494
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-332-Aqn9mBViPJadGKjVELrKIA-1; Tue,
+ 01 Jul 2025 08:04:33 -0400
+X-MC-Unique: Aqn9mBViPJadGKjVELrKIA-1
+X-Mimecast-MFC-AGG-ID: Aqn9mBViPJadGKjVELrKIA_1751371472
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5FF3818DA5C7; Tue,  1 Jul 2025 10:58:14 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.45.226.103])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 949F7180035C; Tue,  1 Jul 2025 10:58:11 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Stefan Hajnoczi <stefanha@gmail.com>
-Cc: qemu-arm@nongnu.org, Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
- Warner Losh <imp@bsdimp.com>
-Subject: [PATCH] tests/functional/test_aarch64_sbsaref_freebsd: Fix the URL of
- the ISO image
-Date: Tue,  1 Jul 2025 12:58:09 +0200
-Message-ID: <20250701105809.366180-1-thuth@redhat.com>
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 393E21800343; Tue,  1 Jul 2025 12:04:32 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.45.226.82])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6523F19560AB; Tue,  1 Jul 2025 12:04:31 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id E345218000BA; Tue, 01 Jul 2025 14:04:28 +0200 (CEST)
+Date: Tue, 1 Jul 2025 14:04:28 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Eric Auger <eauger@redhat.com>
+Cc: Shaoqin Huang <shahuang@redhat.com>, qemu-arm@nongnu.org, 
+ Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Eduardo Habkost <eduardo@habkost.net>,
+ Alex Williamson <alex.williamson@redhat.com>, 
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>, qemu-devel@nongnu.org
+Subject: Re: [PATCH v4 2/2] hw/i386: Add the ramfb romfile compatatibility
+Message-ID: <3s45ekea2lotfcyrldxjmaybxujmfjrxemozoivnc2tq3qxfew@naef2yhuealw>
+References: <20250617030521.2109305-1-shahuang@redhat.com>
+ <20250617030521.2109305-3-shahuang@redhat.com>
+ <aa4ef145-9e08-4ad9-a152-dd8fa2371436@redhat.com>
+ <ba75ac62-db52-491e-8944-2bf27106d0a6@redhat.com>
+ <8c3cce88-fab5-4bf1-bc6b-804730e9889d@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <8c3cce88-fab5-4bf1-bc6b-804730e9889d@redhat.com>
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.237, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UhhhZb9i7neM
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: WX+qYAimjANV
 
-From: Thomas Huth <thuth@redhat.com>
+  Hi,
 
-The original image has been removed from the server, so the test
-currently fails if it has to fetch the asset, but we can still
-download the ISO from the archive server. While we're at it, prefer
-the XZ compressed image, it's much smaller and thus the download
-should be faster.
+> > If those machine types need to set it to true. I think they can set it
+> > after they have this property.
+> nope it does not work like that. In case we really need to take care of
+> this, this must be handled by compats.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- tests/functional/test_aarch64_sbsaref_freebsd.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ramfb is a sysbus device so it can only used for machine types where it
+is explicitly enabled:
 
-diff --git a/tests/functional/test_aarch64_sbsaref_freebsd.py b/tests/functional/test_aarch64_sbsaref_freebsd.py
-index 26dfc5878bb..92ebc69c9b1 100755
---- a/tests/functional/test_aarch64_sbsaref_freebsd.py
-+++ b/tests/functional/test_aarch64_sbsaref_freebsd.py
-@@ -18,9 +18,9 @@
- class Aarch64SbsarefFreeBSD(QemuSystemTest):
- 
-     ASSET_FREEBSD_ISO = Asset(
--        ('https://download.freebsd.org/releases/arm64/aarch64/ISO-IMAGES/'
--         '14.1/FreeBSD-14.1-RELEASE-arm64-aarch64-bootonly.iso'),
--        '44cdbae275ef1bb6dab1d5fbb59473d4f741e1c8ea8a80fd9e906b531d6ad461')
-+        ('http://ftp-archive.freebsd.org/pub/FreeBSD-Archive/old-releases/arm64'
-+         '/aarch64/ISO-IMAGES/14.1/FreeBSD-14.1-RELEASE-arm64-aarch64-bootonly.iso.xz'),
-+        '7313a4495ffd71ab77b49b1e83f571521c32756e1d75bf48bd890e0ab0f75827')
- 
-     # This tests the whole boot chain from EFI to Userspace
-     # We only boot a whole OS for the current top level CPU and GIC
-@@ -28,7 +28,7 @@ class Aarch64SbsarefFreeBSD(QemuSystemTest):
-     def boot_freebsd14(self, cpu=None):
-         fetch_firmware(self)
- 
--        img_path = self.ASSET_FREEBSD_ISO.fetch()
-+        img_path = self.uncompress(self.ASSET_FREEBSD_ISO)
- 
-         self.vm.set_console()
-         self.vm.add_args(
--- 
-2.50.0
+  # git grep machine_class_allow_dynamic_sysbus_dev.*TYPE_RAMFB_DEVICE
+  hw/arm/virt.c:    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+  hw/i386/microvm.c:    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+  hw/i386/pc_piix.c:    machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+  hw/i386/pc_q35.c:    machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+  hw/loongarch/virt.c:    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+  hw/riscv/virt.c:    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+
+So these six are the only machine types we have to worry about.
+
+The three x86 machine types (pc, q35, microvm) will actually use the rom
+(when booting with seabios).
+
+For arm/riscv/loongarch virt we want disable the rom.
+
+Everything else doesn't matter much because ramfb can not be used in the
+first place, you'll get an error like this when trying:
+
+  # qemu-default -M isapc -device ramfb
+  qemu-system-x86_64: -device ramfb: Parameter 'driver' expects a dynamic sysbus device type for the machine
+
+HTH & take care,
+  Gerd
 

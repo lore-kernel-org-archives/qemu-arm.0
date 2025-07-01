@@ -1,151 +1,187 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3350254dye;
-        Tue, 1 Jul 2025 11:30:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXceeJKEAfjDeElje6aRSqcD8JW638CEF7//rpR5MyTSIoS7A9PE9Upk5PJvQAQTm/N8FCbCRgvYAFf8A==@linaro.org
-X-Google-Smtp-Source: AGHT+IGJ/ge8TPfmTkuOhzl1RghozVfZqx2Rxr6944Nyr7vfEP2P5Z2KASbUuKAgRfaIy692z5sL
-X-Received: by 2002:a05:620a:29cc:b0:7ca:f039:d471 with SMTP id af79cd13be357-7d4439b800emr2560819485a.52.1751394638550;
-        Tue, 01 Jul 2025 11:30:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751394638; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3361909dye;
+        Tue, 1 Jul 2025 11:55:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUCaTbpw8ztXV2259mjnEWlE8xS05yLUAg2dI1FGZXzzLtlcaKaN0cGJ+4F0PiLrN8Bl5jptbhO2fQ4FQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IF7YGHonYFsGCP32hcHULGtRtOjsxxCBzzGtze3cUgja8Vroqh359FH97BCppDFVVOA0yCR
+X-Received: by 2002:a05:620a:290a:b0:7d4:4596:d69a with SMTP id af79cd13be357-7d5c466559amr14619485a.9.1751396131411;
+        Tue, 01 Jul 2025 11:55:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751396131; cv=none;
         d=google.com; s=arc-20240605;
-        b=it28XpPa6GXbI4ncbckCpr5ItWajonJq6aq8aRTg67RrZFlFjZiCv3XamdxgQQ/R+M
-         FOHF9suJc5zXq6qXnoL1ludkcSUd/5fAargSxgB2NB2NxngJLZkX9EmM1bNCOweDkEsZ
-         gQZA2IeJS1zztsJjYa/SP8jVDdv/b3OJzXVEDEeVK8JM1c/3VdN3eou+F9BRJU+F6T5T
-         HyEN8GNk32LtXH+8necaqgfDz5d3lGebq+BajnoHLuejRI/OMhpqhyCOb1dTIeMbwo4v
-         BjLswbcsrBAxn07DJSTNK80rLi0ZDQ4WK3CcGZVY6cN8fvpp6hOP1Qwkd3TiSit6hnxV
-         eTDg==
+        b=Zk/brRyFv0dM8zts7QhurVRwjGKfX8OVtBzAoO0sGVYN6UX7qmDp1zDDVq+obO9qdK
+         +J9Coltr97oB5CUisozcqt9V19L/AWY2BL8/6ut1XBQUhQCYLKKp36QD43RzjrUwHou1
+         CeEPmgMnXMGchdE8RNqd7GNQpTvfEoBomW7CjDtzcmGGzZ0QcTeoflma9xFPSYlUluHt
+         Yx2nG9q28ERuATnAvE/fXNcHwT10g1E9a1syosYVi48/aoUZgcEswUrcIVdELcLN4Ed4
+         Kg5ZabtSGd8bj/DTv8vuRGbSq7fFslvd4T1hXT4zumoGK9clMtoeuV+6Yl65ox2dXX/3
+         08/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :references:in-reply-to:subject:cc:to:from:dkim-signature
-         :dkim-signature:dkim-signature:dkim-signature;
-        bh=d79TSWiDh+xge6JXemda2+oiMNoylXzkzIvtKGg7+CU=;
-        fh=j6iHk4AM1YLyf3OKqmaqFME8jWgLEGKdCamY6HxTIrM=;
-        b=BM9e9BHsEFB6VuG60OjrB5JBGoZK4o0FcDp/uhJXzUPHl1Ni4JIl3Zl6f23EH3R3VC
-         DHYz+aofiPrRWnMOx1HWb74LW47ECV98s6AJ66CDvpwR9K7HPyKkwLnjdWjE7jV0XcYZ
-         B+YGmrwZSihpDoZnQz6hv9I6K1uUBb8i/5osIpQwt+Xj9vwi0EY/Iba/QrAeWrxCX8QD
-         d3yMt6mT2Up4Oob6iqo72fFpXoiJgbWErLzpq/QMgRKxhKLB7Mmacgxss7SlQOnIKGoI
-         LvpDQp0aaepY9mgha5l8t4GoebdBGzjZDzMPUIHgPzqwTMnif28NrAJfx2EXjRuZvX9h
-         +j0g==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=5/APklDuHUlsdRDanLmiTcf2GNQGu11tbs9gk8d9iEE=;
+        fh=hcKXFB5klMHGPAmWSZeITuu8/9VY6hzJXR2wSor4jfA=;
+        b=b9LgpCfF/jCkI0wGIGC5aXvaxo2Cts3TOnOLWz6DANlQlWYlrUfiVKYcKJU/HzDoyT
+         J5pas3Y7bWzVf8NAwd31Y7WECyHUovhhkDodvQht3y3HddOHUCOXoY+EVo4/gSeVYabx
+         eKSF0Egf1M1fBrgdry5A/z8TscoLF38ZUwJWWSWgqQPaQAMldAwcnCegU+biftgofBHV
+         Dq2ySdzLY8IhBTQ0D51nGd85TwKpaKIG35MipW+MDZQOA/sgLBWUKpzJZSiOsQYYdDRP
+         rT8EfvsqJMdZxDoMmN2OXJmWrPmi7pnMRgMUy5l5Accia5GUj/rUnsa46FaGyfRO5Vso
+         UALA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=U5WM3m7a;
-       dkim=neutral (no key) header.i=@suse.de;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=U5WM3m7a;
-       dkim=neutral (no key) header.i=@suse.de;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OfPLJKGc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d44319310esi1017983585a.4.2025.07.01.11.30.38
+        by mx.google.com with ESMTPS id af79cd13be357-7d443193e35si1063041585a.32.2025.07.01.11.55.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Jul 2025 11:30:38 -0700 (PDT)
+        Tue, 01 Jul 2025 11:55:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=U5WM3m7a;
-       dkim=neutral (no key) header.i=@suse.de;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=U5WM3m7a;
-       dkim=neutral (no key) header.i=@suse.de;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OfPLJKGc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uWfjx-0003Z1-AH; Tue, 01 Jul 2025 14:29:57 -0400
+	id 1uWg8F-0001xn-MS; Tue, 01 Jul 2025 14:55:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1uWfju-0003Y1-IG
- for qemu-arm@nongnu.org; Tue, 01 Jul 2025 14:29:54 -0400
-Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1uWfjt-0007cy-2U
- for qemu-arm@nongnu.org; Tue, 01 Jul 2025 14:29:54 -0400
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id C377F1F445;
- Tue,  1 Jul 2025 18:29:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1751394591; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=d79TSWiDh+xge6JXemda2+oiMNoylXzkzIvtKGg7+CU=;
- b=U5WM3m7a0crsOWo5YBLk3M28iyuwFlptVaX9Xl4FG6LI3V9tsgHEDdEl/E0RVxlUUbWT3s
- sIDHWw9HBgFIUFs422MD2eMwO/H+d9KqqMaTLxo8kiSXahCsa5r44Z5LuQusklmdnHRIWO
- iQ+1emPEThPJpvodp7Eyk6LlWrj1Fe0=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1751394591;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=d79TSWiDh+xge6JXemda2+oiMNoylXzkzIvtKGg7+CU=;
- b=NS+SoitOmdPortQfDRRbFA1BBJVdJoJ1GJ2pRhI1nrMuQ6+7tSonwQv7KlmSk+mpwqdQBj
- ZEmnuKTaREWBX5Bg==
-Authentication-Results: smtp-out2.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1751394591; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=d79TSWiDh+xge6JXemda2+oiMNoylXzkzIvtKGg7+CU=;
- b=U5WM3m7a0crsOWo5YBLk3M28iyuwFlptVaX9Xl4FG6LI3V9tsgHEDdEl/E0RVxlUUbWT3s
- sIDHWw9HBgFIUFs422MD2eMwO/H+d9KqqMaTLxo8kiSXahCsa5r44Z5LuQusklmdnHRIWO
- iQ+1emPEThPJpvodp7Eyk6LlWrj1Fe0=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1751394591;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=d79TSWiDh+xge6JXemda2+oiMNoylXzkzIvtKGg7+CU=;
- b=NS+SoitOmdPortQfDRRbFA1BBJVdJoJ1GJ2pRhI1nrMuQ6+7tSonwQv7KlmSk+mpwqdQBj
- ZEmnuKTaREWBX5Bg==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 3CAAF1364B;
- Tue,  1 Jul 2025 18:29:50 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
- by imap1.dmz-prg2.suse.org with ESMTPSA id PSHiOh4pZGgAVwAAD6G6ig
- (envelope-from <farosas@suse.de>); Tue, 01 Jul 2025 18:29:50 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>, Alex Williamson
- <alex.williamson@redhat.com>, =?utf-8?Q?C=C3=A9dric?= Le Goater
- <clg@redhat.com>, Peter Xu <peterx@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Avihai Horon
- <avihaih@nvidia.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH 3/3] vfio/migration: Add also max in-flight VFIO device
- state buffers size limit
-In-Reply-To: <65a132db72807ec6341015e7079b10352d718b96.1750787338.git.maciej.szmigiero@oracle.com>
-References: <cover.1750787338.git.maciej.szmigiero@oracle.com>
- <65a132db72807ec6341015e7079b10352d718b96.1750787338.git.maciej.szmigiero@oracle.com>
-Date: Tue, 01 Jul 2025 15:29:48 -0300
-Message-ID: <87y0t74vdv.fsf@suse.de>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uWg8D-0001wJ-Jv
+ for qemu-arm@nongnu.org; Tue, 01 Jul 2025 14:55:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uWg8B-0006J2-Nn
+ for qemu-arm@nongnu.org; Tue, 01 Jul 2025 14:55:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1751396097;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=5/APklDuHUlsdRDanLmiTcf2GNQGu11tbs9gk8d9iEE=;
+ b=OfPLJKGc/9td/oLMxQZ/tYMX1BLuIedh9MY5RjmbYpNqqWayo34vkHsfpKOuHttkiqFoCM
+ z1rqEhL6L0JJsWh8awtzjMfAAeGOnb2BRxRQ/VWanWK1yzhYawMkzeyHTnmhq6wgF9WKXQ
+ xcdwPgMSDFHeJr0Xg2lbgNWN+Pa0Wz0=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-539-waBegRcENdWGHvKjmkOU1A-1; Tue, 01 Jul 2025 14:54:55 -0400
+X-MC-Unique: waBegRcENdWGHvKjmkOU1A-1
+X-Mimecast-MFC-AGG-ID: waBegRcENdWGHvKjmkOU1A_1751396094
+Received: by mail-ej1-f69.google.com with SMTP id
+ a640c23a62f3a-ade70c2cfc1so513698666b.3
+ for <qemu-arm@nongnu.org>; Tue, 01 Jul 2025 11:54:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1751396094; x=1752000894;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=5/APklDuHUlsdRDanLmiTcf2GNQGu11tbs9gk8d9iEE=;
+ b=L6XAWJmdLHt4tVpiB6wAvKm3M6TcSjdlO0ZXogVwxT5IWgpAZh9vIEeRpG9usVmwjT
+ 3X0APUe9pqFfdKb4cj3HApHiJurFx1VewR5S4TMktRvyk0qjrKRcGlkST0iq0Dbr8b92
+ J+F112O+UwnAzBScZ2gTPWe5Xlvlb0UfwAp8gRvAOwJyLrir//SZTksEhm0eIYaajYtn
+ 4d2Eraht/lqxkBqpjad+hnS5l10MvHbKpB7u+S2erb7uviSn9ojgEtQ6aIZoe6LcrCnm
+ /QXtOioTbuDcRiLu8JhVhUR2azp7BXOmO6FhyuGCvlrGNbEWEF37bMqEkDHUSdCp+zQZ
+ AQ2A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUwCsMY2UBI3LoYXN4WHpPp6v1FWBqgZkeEQkDd7uy8eWoU8XiyoiWUKI/TxSJXXuxBqViGZA83qg==@nongnu.org
+X-Gm-Message-State: AOJu0YyKTuS02vNr8e5+10WC/9y/PIX2HsrcO1VgZo+NyAY62ujFTJoR
+ nsssOk2/VljH4jKJU5lmbys0jKXKoSWiwMs8UNqbZEf1rRgDrnC+jHRN552jpdusrwq/RlokNSc
+ S3jpe7QA4ryPmdMqVkQBWM/n1CZx6rbw/HuPbZsVQJAP2IYzj+SdlWA==
+X-Gm-Gg: ASbGncuV9UvmLk/iviAljCBEEVvWEtxkdxYpd4FUhe+s20M7BygFGgsi6bANAXK7ilZ
+ +PJJaJzXsrK95wU8RM8tCNG4n1CF7pnGloFlVMjOWTTawKO+MgCp58uygvHRuwo3uLzideGmAeu
+ /DvVTZoOuFzoGFp/lMHrIkdp10LubtOFMeSDT6aDAjhtNm2guilytuM1z8Irg8M8uQfWyBDwIP2
+ 4H9JKHoGFQSardsLBD5d3T4X7Eo34JTqtotBz3/3pIyQAGUVmzecP+5VZAgK/TFJ5lQHFEfmIsW
+ rqyay8eInnQ38kwoRoerKLsMK5ED7hNY+G+b4k4zHp4ZzYqDi/BBLEc1gljTHg==
+X-Received: by 2002:a17:907:6d1d:b0:ae0:c0b3:5649 with SMTP id
+ a640c23a62f3a-ae34fd0661dmr1675571866b.11.1751396094244; 
+ Tue, 01 Jul 2025 11:54:54 -0700 (PDT)
+X-Received: by 2002:a17:907:6d1d:b0:ae0:c0b3:5649 with SMTP id
+ a640c23a62f3a-ae34fd0661dmr1675569666b.11.1751396093685; 
+ Tue, 01 Jul 2025 11:54:53 -0700 (PDT)
+Received: from [192.168.0.6] (ltea-047-064-114-041.pools.arcor-ip.net.
+ [47.64.114.41]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-ae353c0100fsm918640766b.88.2025.07.01.11.54.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 01 Jul 2025 11:54:53 -0700 (PDT)
+Message-ID: <ff3f37b2-97bb-4a54-8647-4a8963993d89@redhat.com>
+Date: Tue, 1 Jul 2025 20:54:51 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Spamd-Result: default: False [-4.30 / 50.00]; BAYES_HAM(-3.00)[99.99%];
- NEURAL_HAM_LONG(-1.00)[-1.000];
- NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
- ARC_NA(0.00)[]; RCVD_VIA_SMTP_AUTH(0.00)[];
- MISSING_XM_UA(0.00)[]; MIME_TRACE(0.00)[0:+];
- RCPT_COUNT_SEVEN(0.00)[8]; MID_RHS_MATCH_FROM(0.00)[];
- RCVD_TLS_ALL(0.00)[];
- DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
- TO_DN_SOME(0.00)[]; RCVD_COUNT_TWO(0.00)[2];
- FUZZY_BLOCKED(0.00)[rspamd.com]; TO_MATCH_ENVRCPT_ALL(0.00)[];
- DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:helo, suse.de:email,
- suse.de:mid, oracle.com:email, szmigiero.name:email]
-X-Spam-Score: -4.30
-Received-SPF: pass client-ip=2a07:de40:b251:101:10:150:64:2;
- envelope-from=farosas@suse.de; helo=smtp-out2.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/6] MAINTAINERS: fix paths for relocated files
+To: Sean Wei <me@sean.taipei>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "Dr . David Alan Gilbert" <dave@treblig.org>
+References: <20250616.qemu.relocated@sean.taipei>
+ <20250616.qemu.relocated.02@sean.taipei>
+ <ff8a559e-f1d7-45a8-a292-20c9ab697646@redhat.com>
+ <374597a7-94e4-45b2-9617-35183db3ea9d@sean.taipei>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <374597a7-94e4-45b2-9617-35183db3ea9d@sean.taipei>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: SQip6KDdYVN4CPwOWDpRBzQUBmZF-i-kx63P3KsSw5I_1751396094
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -160,15 +196,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Mp0ErgE1Xyh/
+X-TUID: X7bvkT8NTPMV
 
-"Maciej S. Szmigiero" <mail@maciej.szmigiero.name> writes:
+On 01/07/2025 20.06, Sean Wei wrote:
+> On 2025/7/1 1:24 PM, Thomas Huth wrote:
+>> On 16/06/2025 17.48, Sean Wei wrote:
+>>> Several files were renamed in previous commits, causing their entries
+>>> in MAINTAINERS to reference outdated paths.
+>>> This prevents scripts/get_maintainer.pl from correctly matching
+>>> these files to their maintainers.
+>>>
+>>> Update the filenames to reflect their current locations so that
+>>> maintainer lookup works properly.
+>>>
+>>> Related commits
+>>> ---------------
+>>>
+>>>    c45460decbd (Oct 2023)
+>>>      hw/input/stellaris_input: Rename to stellaris_gamepad
+>>>      Rename  include/hw/input/{gamepad.h => stellaris_gamepad.h}
+>>>
+>>>    4faf359accb (Nov 2020)
+>>>      docs: Move virtio-net-failover.rst into the system manual
+>>>      Rename  docs/{ => system}/virtio-net-failover.rst
+>>>
+>>>    89857312f32 (Apr 2024)
+>>>      hw/usb: move stubs out of stubs/
+>>>      Rename  stubs/usb-dev-stub.c => hw/usb/bus-stub.c
+>>>
+>>>    f2604d8508a (Apr 2024)
+>>>      hw/virtio: move stubs out of stubs/
+>>>      Rename  stubs/virtio-md-pci.c => hw/virtio/virtio-md-stubs.c
+>>>
+>>>    2c888febdfa (Apr 2024)
+>>>      memory-device: move stubs out of stubs/
+>>>      Rename  stubs/memory_device.c => hw/mem/memory-device-stubs.c
+>>>
+>>>    d481cec7565 (Oct 2024)
+>>>      migration: Move cpu-throttle.c from system to migration
+>>>      Rename  {system => migration}/cpu-throttle.c
+>>>
+>>>    864a3fa4392 (Jan 2023)
+>>>      monitor: Rename misc.c to hmp-target.c
+>>>      Rename  monitor/{misc.c => hmp-target.c}
+>>>
+>>> Signed-off-by: Sean Wei <me@sean.taipei>
+>>> ---
+>>>   MAINTAINERS | 14 +++++++-------
+>>>   1 file changed, 7 insertions(+), 7 deletions(-)
+>>>
+>>> diff --git a/MAINTAINERS b/MAINTAINERS
+>>> index fed8619874..0477e124d1 100644
+>>> --- a/MAINTAINERS
+>>> +++ b/MAINTAINERS
+>>> @@ -1002,7 +1002,7 @@ L: qemu-arm@nongnu.org
+>>>   S: Odd Fixes
+>>>   F: hw/*/stellaris*
+>>>   F: hw/display/ssd03*
+>>> -F: include/hw/input/gamepad.h
+>>> +F: include/hw/input/stellaris_gamepad.h
+>>>   F: include/hw/timer/stellaris-gptm.h
+>>>   F: docs/system/arm/stellaris.rst
+>>>   F: tests/functional/test_arm_stellaris.py
+>>> @@ -2163,7 +2163,7 @@ F: hw/net/
+>>>   F: include/hw/net/
+>>>   F: tests/qtest/virtio-net-test.c
+>>>   F: tests/functional/test_info_usernet.py
+>>> -F: docs/virtio-net-failover.rst
+>>> +F: docs/system/virtio-net-failover.rst
+>>>   T: git https://github.com/jasowang/qemu.git net
+>>>   Parallel NOR Flash devices
+>>> @@ -2214,7 +2214,7 @@ F: tests/qtest/sdhci-test.c
+>>>   USB
+>>>   S: Orphan
+>>>   F: hw/usb/*
+>>> -F: stubs/usb-dev-stub.c
+>>> +F: hw/usb/bus-stub.c
+>>
+>> I think we could simply drop this line now completely since it is already 
+>> covered by the previous hw/usb/* wildcard line.
+>>
+>>>   F: tests/qtest/usb-*-test.c
+>>>   F: docs/system/devices/usb.rst
+>>>   F: include/hw/usb.h
+>>> @@ -2469,7 +2469,7 @@ F: hw/s390x/virtio-ccw-md.h
+>>>   F: hw/s390x/virtio-ccw-md-stubs.c
+>>>   F: hw/virtio/virtio-md-pci.c
+>>>   F: include/hw/virtio/virtio-md-pci.h
+>>> -F: stubs/virtio-md-pci.c
+>>> +F: hw/virtio/virtio-md-stubs.c
+>>
+>> Could be merged with the hw/virtio/virtio-md-pci.c line by turning it into:
+>>
+>> F: hw/virtio/virtio-md-*.c
+>>
+>>>   virtio-mem
+>>>   M: David Hildenbrand <david@redhat.com>
+>>> @@ -3187,7 +3187,7 @@ F: hw/mem/pc-dimm.c
+>>>   F: include/hw/mem/memory-device.h
+>>>   F: include/hw/mem/nvdimm.h
+>>>   F: include/hw/mem/pc-dimm.h
+>>> -F: stubs/memory_device.c
+>>> +F: hw/mem/memory-device-stubs.c
+>>
+>> This could be merged with the preceeding "hw/mem/memory-device.c" line, 
+>> too, by turning it into:
+>>
+>> F: hw/mem/memory-device*.c
+>>
+>>   Thomas
+>>
+> 
+> 
+> Hi Thomas,
+> 
+> Oh yeah, those suggestions makes sense to me, and make this patch much better!
+> 
+> Should I send a PATCH v2 to the mailing list, or just attach the fix-up like 
+> this is enough?
 
-> From: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
->
-> There's already a max in-flight VFIO device state buffers *count* limit,
-> add also max queued buffers *size* limit.
->
-> Signed-off-by: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
+Normally I'd recommend a proper v2, but this time I was also able to apply 
+your inlined updated patch, so no need to resend.
 
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
+Thanks, I'll queue your patches for my next pull request.
+
+  Thomas
+

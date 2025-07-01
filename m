@@ -1,164 +1,230 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3277870dye;
-        Tue, 1 Jul 2025 09:26:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWORKmTyxhs3HfCIklWvqh6sqvZDKx6wzk2uLxTd87XbYC2aXhyKQ8VokNWTENc1aGvf+dMkWQ6uLoB0A==@linaro.org
-X-Google-Smtp-Source: AGHT+IE77rseCBk8yOMEwFOQHMCRHJ7rEJraro4N56PgPLnIN1iA1djxZBh2BJLjJycX/PnBW50B
-X-Received: by 2002:a17:903:188:b0:22e:3c2:d477 with SMTP id d9443c01a7336-23ac462468amr252662195ad.25.1751387168666;
-        Tue, 01 Jul 2025 09:26:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751387168; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3322286dye;
+        Tue, 1 Jul 2025 10:37:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWhAWLjzc2nKb8GzChmvfy12FawA+p/FXOeVWq3aMt526V8gxFN9F333/6PF5RghNVIgfzXqu92CQoDgQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IExafuhsxHCxUWohsEBUmBbKUCZ3G3z7ZTicJUC8I0kBdJC2ICTgBphEWMeJtdZl0VQIUGI
+X-Received: by 2002:a05:6214:5190:b0:6fd:26bd:3fe9 with SMTP id 6a1803df08f44-700036af8bamr306150476d6.36.1751391449620;
+        Tue, 01 Jul 2025 10:37:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751391449; cv=none;
         d=google.com; s=arc-20240605;
-        b=P+XbG92DNF3YIu4qFVB/JzdVi6CT0lAhrp23O2gEzvTvIc1gEf+mg/C0ZSYM2x6oNn
-         XBLOT8t7O+oQOXhBQgfA0SIdNoLTm2IlI1BEKnQWqy2IqtPBP5AwR5VsHKXeJQlhR2GJ
-         SmVJ/+fNf28fjq2u8jLAt+iND1RXu1BVy9RZWQ7LSblwRLqO9KZdADYjcNcxoR68Yqlt
-         dLVPzcbVq/zmGAvYwI4TCvNicFG7m79eNvWYJ/fRqMV3/88ZXq8KoyjPvx+g61Zit1Oi
-         cEvDi1RHheSSShvq46SpOPS/Kv6SRatSpGkb3LH+zC5iBk8jD1Qe74ZHM67+fFFBbAd7
-         IIcQ==
+        b=F6q/hrEmsIflTqD0Lz0jawCg4BsjVKcOIsdjoKBux8t0b3fFJmJFxQoMzf9DoOZ2lQ
+         C6ZAwVHXijxNpmKJZD+RtbLOlnbDiaJckRK8sSKrrOZWnSfHJb6KKFVYVbo+kstm+lQv
+         JHY2FOjmDUH4yykB99B5j0wrl0vjzG24bHO6lH1x+28OHimqpJXQYNaHdpDeW1+JxzYZ
+         Sn1BXFEPpjM4Eg5V/z4Cc5ZabbfCaUbcnLj71zWAOhP/wSPvWDIIf9LOlD6QXo8tl0xQ
+         l2ADMBF7BQVG8CKy6MMlnsrc4MlRJcY1ZfPQ83kZaYjd1Tb5BeFVZq3f+u7ipm+pBusk
+         +vQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date;
-        bh=fxJJIRgM/7anhNa9Pn1OY5HTO5VsFVlPv/6spmV/Uco=;
-        fh=KQiuoQS65+0RFucE32HbuCDy3oDTDBckj/dNA1UFN1M=;
-        b=Bpwep6peumP8ga8tF3kCP3j7dikJ5WPyAwJyOLqwumssqqyy/ZskGSaA+r2Gxbtt8L
-         5hMCkDLj9l0cW/dpkRtI8cQ8HYhNTcKE9d05b9RqMrh5q7d9dj41/3Q3ciThvHCSWIPd
-         HW28qktDRyHs97eUNVC6ZOoT1+ewvYjYOf/K/SxVroS63DoJaQRjiC6sCjfSvuiT/YrS
-         M+rukhIF92H5xXsgdFB2/iQTHF1mKmC/cUyTz5NwarbHOXTO7GhQwY5YcKi3SwFWmVan
-         P9xGz/kNdI9OHa1qbgLL0iIGj6wOIQu4DqaH3hJ00lnjkg7b1bgCmgIMARTUR+yBbSMm
-         aFcQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:content-language:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=+oSMyrCsd9PQmvJAo8VtpC0GfICKT3Ea3CYydX0cp8s=;
+        fh=1dZjDoUntCOF9HFgVE14jl4OA3TRoiAWwWR1xZRE3eg=;
+        b=etrl+fiqwIMlduHorHoRSX+F4jMcH95q0hB6/UJYZkw4Erm8uc/p1CYESz/Rf1d1MZ
+         DD/5xWi8xU+rOQCnnKwI361Lfig7bI0Zaxj8P64aoeZ3coZMMEIXsWZfLLheatKI5exy
+         LJYKgOuYMSbkFSRcd1tFMu0fgPORjVDUNUOGEp12tg4PxXWDZTM6FFi3jbS5LvkxZMgS
+         LGI1WPr2pe8PeoHpQ0pZ7Zj/dPdY94eY99IB7l710iDLCwJUtzoJaXUA9VFEUCkGsZR6
+         KynH7dQPF6KYk/1+9C/oEaGV5EpimD2yQs5ukn2bfvMcSt+HVEfhRetrCTyWgNV0H5fH
+         UjUw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id d9443c01a7336-23acb3c15aesi139537665ad.387.2025.07.01.09.26.07
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Jul 2025 09:26:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cdxmadMV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd77287771si127632516d6.58.2025.07.01.10.37.29
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 01 Jul 2025 10:37:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bWpKx4yqXz6L57n;
-	Wed,  2 Jul 2025 00:25:41 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id D2B00140393;
-	Wed,  2 Jul 2025 00:26:04 +0800 (CST)
-Received: from localhost (10.122.19.247) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 1 Jul
- 2025 18:26:04 +0200
-Date: Tue, 1 Jul 2025 17:26:02 +0100
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: Eric Auger <eric.auger@redhat.com>
-CC: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
-	<peter.maydell@linaro.org>, <mst@redhat.com>, Zhijian Li
-	<lizhijian@fujitsu.com>, Itaru Kitayama <itaru.kitayama@linux.dev>,
-	<linuxarm@huawei.com>, <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>,
-	"Yuquan Wang" <wangyuquan1236@phytium.com.cn>, Philippe
- =?ISO-8859-1?Q?Mathieu-Dau?= =?ISO-8859-1?Q?d=E9?= <philmd@linaro.org>, Alex
- =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH qemu v16 3/5] hw/arm/virt: Basic CXL enablement on
- pci_expander_bridge instances pxb-cxl
-Message-ID: <20250701172602.0000740a@huawei.com>
-In-Reply-To: <954f10cf-3de4-4067-878c-f0bb07e9dbe0@redhat.com>
-References: <20250625161926.549812-1-Jonathan.Cameron@huawei.com>
-	<20250625161926.549812-4-Jonathan.Cameron@huawei.com>
-	<128e59be-4038-4a19-8cca-3be3d6446e0e@redhat.com>
-	<20250701165222.0000068f@huawei.com>
-	<954f10cf-3de4-4067-878c-f0bb07e9dbe0@redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cdxmadMV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uWeqM-0007vg-0e; Tue, 01 Jul 2025 13:32:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uWeqB-0007qn-Dd
+ for qemu-devel@nongnu.org; Tue, 01 Jul 2025 13:32:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uWeq8-0007jS-Lu
+ for qemu-devel@nongnu.org; Tue, 01 Jul 2025 13:32:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1751391134;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=+oSMyrCsd9PQmvJAo8VtpC0GfICKT3Ea3CYydX0cp8s=;
+ b=cdxmadMVCRc4HuxmYGYAQff/RPXxRZgLJ2QyLR1KPRV403yPF6Rg7VtNO88c7RbeUhkbDD
+ zorzxV5V0ZCFrydof4qSB0563hDPMn+197s1RPtDtfYh9ZKLwh1BZhTl4R9qXIfouBJiNZ
+ /Yiw5fXPDG2FYVYSE/8vlMgBT3eDdPg=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-570-FzQD2spwOrG6J4TZi2_SKQ-1; Tue, 01 Jul 2025 13:32:13 -0400
+X-MC-Unique: FzQD2spwOrG6J4TZi2_SKQ-1
+X-Mimecast-MFC-AGG-ID: FzQD2spwOrG6J4TZi2_SKQ_1751391132
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-453a5d50b81so13202345e9.1
+ for <qemu-devel@nongnu.org>; Tue, 01 Jul 2025 10:32:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1751391132; x=1751995932;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=+oSMyrCsd9PQmvJAo8VtpC0GfICKT3Ea3CYydX0cp8s=;
+ b=oPKjdBN1Y+ScFNYvh+pRvtvXZIDkV6DrPdaVbXuCdFka7atDNlnVciDYvdRYvqsWO/
+ cdKTQDNsLj4yCL21jlF/0zoy8Cbyioo0N4VXmeLj0NeiPJtd+qcnFFvNzCX39oW07gr6
+ Hkuymawc8QfuXV3iwZPklg2phnjozt1mPSAZ+6vhDs65xQ9F0s5YTVFqljUVJNruXYOe
+ 4xbHorK2fcVmPQ1squBA+h2wLqJzNygF9yiAfJqHwjPJBG34XSgzLlfnWLzYEiyo9bVO
+ ciKegch74lLBU38/fhoU7ydu3iJrvsQHBPSSns+W75Wq4twGJKZJVH2Q2W3sPJ80KIFA
+ uBWA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWXnxk/A5+KhtsM7RAlssnKuE+PDn0nSnFpRDWK8jx8Xei/k3sO9gOJxS8ViPapuuAVc47/EvbimWGP@nongnu.org
+X-Gm-Message-State: AOJu0YyFt6mHcwG9iL4eaC3swJivjgSm83ICnQfP5ckJb9jJ+p7bbMZa
+ /hrLaosJOWodw/hVT9aR0VdmEjDYubkm0SWZ/2Bv3D2lAVVjzUmCB3LZmOs2gTZiBE16/R3QL4H
+ 7BjxjAijSTWAPk5U8EugIHcnXUv9ktZpLLKPVpj5ITCyo0JN/BUDdhue+
+X-Gm-Gg: ASbGncu+WOrz/y6C/N6Plo02OQabjr/RgQ1eHnhGRP1GFjg/DafV3u2mB1RZBfAGHKF
+ mnvIrjpYAtDJ2HDIYbd3E0jJUAFyOr5aMQ1E9phi/VMVAk+zOlVfFVU4F43AoAtR5PU+Fa6gT2F
+ qd+zSUZ0tLryck2BraPAOiShCj9sJmn0FNZVyvFT9szwz9N1hZjrr9hXKz/v4wr1a+cb8SvdtU8
+ qnNTHkOZ1LW6KuJlw7ff6ai6IoXM425d1Iqbx73P1oIaxqdQe6mE84dFK2oyl8yAuDhWJvvjeGC
+ xy39h0pS81Bwnt84KKW9py1YNeyDHS/DMqd/dtNL6eILYCKamDJj0rHOuACoEw==
+X-Received: by 2002:a05:600c:698c:b0:441:b076:fce8 with SMTP id
+ 5b1f17b1804b1-4538ee5db08mr203962285e9.14.1751391131947; 
+ Tue, 01 Jul 2025 10:32:11 -0700 (PDT)
+X-Received: by 2002:a05:600c:698c:b0:441:b076:fce8 with SMTP id
+ 5b1f17b1804b1-4538ee5db08mr203961915e9.14.1751391131467; 
+ Tue, 01 Jul 2025 10:32:11 -0700 (PDT)
+Received: from [192.168.0.6] (ltea-047-064-114-041.pools.arcor-ip.net.
+ [47.64.114.41]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3a88c7e74fbsm14023459f8f.10.2025.07.01.10.32.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 01 Jul 2025 10:32:10 -0700 (PDT)
+Message-ID: <55f15763-9b67-418f-a670-9a1bbd55d3f8@redhat.com>
+Date: Tue, 1 Jul 2025 19:32:09 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 6/6] treewide: fix paths for relocated files in comments
+To: Sean Wei <me@sean.taipei>, qemu-devel@nongnu.org
+Cc: Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
+ Jesper Devantier <foss@defmacro.it>, Peter Maydell
+ <peter.maydell@linaro.org>, Song Gao <gaosong@loongson.cn>,
+ "open list:nvme" <qemu-block@nongnu.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20250616.qemu.relocated@sean.taipei>
+ <20250616.qemu.relocated.06@sean.taipei>
+From: Thomas Huth <thuth@redhat.com>
+Content-Language: en-US
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20250616.qemu.relocated.06@sean.taipei>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.122.19.247]
-X-ClientProxiedBy: lhrpeml100010.china.huawei.com (7.191.174.197) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: d4BJwqCjpIY6
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uOXxNneTcTuo
 
-On Tue, 1 Jul 2025 18:12:39 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
-
-> Hi Jonathan,
-> On 7/1/25 5:52 PM, Jonathan Cameron wrote:
-> > On Tue, 1 Jul 2025 17:34:36 +0200
-> > Eric Auger <eric.auger@redhat.com> wrote:
-> >  
-> >> Hi Jonathan,
-> >>
-> >> On 6/25/25 6:19 PM, Jonathan Cameron via wrote:  
-> >>> Code based on i386/pc enablement.
-> >>> The memory layout places space for 16 host bridge register regions after
-> >>> the GIC_REDIST2 in the extended memmap. This is a hole in the current
-> >>> map so adding them here has no impact on placement of other memory regions
-> >>> (tested with enough CPUs for GIC_REDIST2 to be in use.)
-> >>>
-> >>> The CFMWs are placed above the extended memmap.  Note the confusing
-> >>> existing variable highest_gpa is the highest_gpa that has been allocated
-> >>> at a particular point in setting up the memory map.
-> >>>
-> >>> The cxl_devices_state.host_mr is provides a small space in which to place    
-> >> s/is//  
-> > Fixed. Thanks.  
-> >>> the individual host bridge register regions for whatever host bridges are
-> >>> allocated via -device pxb-cxl on the command line. The existing dynamic
-> >>> sysbus infrastructure is not reused because pxb-cxl is a PCI device not
-> >>> a sysbus one but these registers are directly in the main memory map,
-> >>> not the PCI address space.
-> >>>
-> >>> Only create the CEDT table if cxl=on set for the machine. Default to off.
-> >>>
-> >>> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> >>> ---
-> >>> @@ -1895,6 +1917,9 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
-> >>>      if (device_memory_size > 0) {
-> >>>          machine_memory_devices_init(ms, device_memory_base, device_memory_size);
-> >>>      }
-> >>> +    vms->highest_gpa = cxl_fmws_set_memmap(ROUND_UP(vms->highest_gpa + 1,
-> >>> +                                                    256 * MiB),
-> >>> +                                           BIT_ULL(pa_bits)) - 1;    
-> >> in hw/cxl/cxl-host.c, there seems to be a loop on fw windows? I guess
-> >> those windows only exist if cxl option is set. In the positive,
-> >> highest_gpa will be changed only if the option is set, which is fine.
-> >> Indeed we have requested_ipa_size = 64 - clz64(vms->highest_gpa). So we
-> >> shall not modify this if cxl is not set.  
-> so do you confirm highest_gpa is unchanged in case cxl/fmw option is not
-> set ?
-> >>
-> >> What I am a bit concerned with is that it"consumes" some high memory
-> >> without making it explicit in extended_memmap. Shouldn't we book some
-> >> dedicated space there? Sorry I am jumping very late in the review, maybe
-> >> turning things worse & noisy :-( Eric  
-> > No problem with late review - whilst it looks late we had a several year
-> > gap at one point in updating this series!
-> >
-> > How much to book?  It's effectively infinite much like device memory.
-> > Would be odd to book the minimum which is 256MiB given any useful system
-> > is going to have a lot more than that (they are usually a few TiB but
-> > may be much larger than that).
-> >
-> > Would a comment after 
-> >    [VIRT_HIGH_PCIE_MMIO] =     { 0x0, DEFAULT_HIGH_PCIE_MMIO_SIZE }, 
-> > such as
-> >    /* Any CXL Fixed memory windows come here */
-> > be enough?  
-> yes at least it deserves a comment I think. Then it must be understood
-> that it may prevent new regions from being added in the high mem range.
-> I am definitively not the most knowledgeable guy to decide whether it is
-> critical. I have not checked CCA impact on the layout for instance.
-
-Current CXL isn't migratable but when we fix that I guess this will
-mean that we need to version any new features that need space
-in the high memory map to only be enabled on newer machines if
-CXL is also enabled.  For now migration isn't relevant to CXL/qemu
-usecases but it soon will be.
-
-Jonathan
-
+On 16/06/2025 17.51, Sean Wei wrote:
+> After the docs directory restructuring, several comments
+> refer to paths that no longer exist.
 > 
-> Thanks
+> Replace these references to the current file locations
+> so readers can find the correct files.
 > 
-> Eric
-> >
-> >  
-> >  
+> Related commits
+> ---------------
 > 
+>    189c099f75f (Jul 2021)
+>      docs: collect the disparate device emulation docs into one section
+>      Rename  docs/system/{ => devices}/nvme.rst
 > 
+>    5f4c96b779f (Feb 2023)
+>      docs/system/loongarch: update loongson3.rst and rename it to virt.rst
+>      Rename  docs/system/loongarch/{loongson3.rst => virt.rst}
+> 
+>    fe0007f3c1d (Sep 2023)
+>      exec: Rename cpu.c -> cpu-target.c
+>      Rename  cpus-common.c => cpu-common.c
+> 
+>    42fa9665e59 (Apr 2025)
+>      exec: Restrict 'cpu_ldst.h' to accel/tcg/
+>      Rename  include/{exec/cpu_ldst.h => accel/tcg/cpu-ldst.h}
+> 
+> Signed-off-by: Sean Wei <me@sean.taipei>
+> ---
+>   docs/spin/tcg-exclusive.promela | 4 ++--
+>   hw/nvme/ctrl.c                  | 2 +-
+>   target/arm/cpu.c                | 2 +-
+>   target/loongarch/README         | 2 +-
+>   4 files changed, 5 insertions(+), 5 deletions(-)
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+

@@ -1,88 +1,88 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3029674dye;
-        Tue, 1 Jul 2025 02:39:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVxt5HmLEx0foIpZyC0pc0S7Um+6bslxjKjY058gmJJbkBB2ASuEeUvJEER88/guqGx1uvy3p6sykD0lQ==@linaro.org
-X-Received: by 2002:a05:690c:9985:b0:710:ead5:8a95 with SMTP id 00721157ae682-715171506d9mr252002247b3.14.1751362791375;
-        Tue, 01 Jul 2025 02:39:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751362791; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3033804dye;
+        Tue, 1 Jul 2025 02:50:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX+C0SbAQxc1w45dwX8ip9CoDxEBBsT6m7RVPDwSz57c9uFXR9ejRbI3Ynqv0DTq1icnKeXc1tpyFYEhg==@linaro.org
+X-Received: by 2002:a05:690c:3691:b0:713:ff2c:a7aa with SMTP id 00721157ae682-7151719b132mr260633537b3.31.1751363406561;
+        Tue, 01 Jul 2025 02:50:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751363406; cv=none;
         d=google.com; s=arc-20240605;
-        b=kJzXipD3gg9oME3GhXbmQQqVHh+2qlMeaJrKAtW1ds2Vr82ZrU21wo4QVjSdnbDjOd
-         cG0A5sVwbCepe1/hxO1gaxnZGtXIvPsLu+z94IYEGUPo3AznySpKwpFf4No/djlldaRF
-         aJGmXlqkp7Jc3hGJL6fDVrQbbmSrLJwmH0Mm1Tm0mxU2SZZQokBfvMCqyQ42MVTGvKPy
-         5XjwJe9PF05rVyspYivZnAisy/Dydk8TVICM1vq0soXutLpSJeBMfKzrZHeV+hJeCPhh
-         7n5u3UyXNo6bTMoDW4aQ4hbNLMmZtKoF8aaWQi60196tmAv8m81pr0gYOfVwMBfCEQX6
-         c8AQ==
+        b=AdOOV4dnPkroyZJf0LxXU64NJjrZ/2E7VrD1/FSADGaSu8kA/bjaN8Qwgl/tibFtTR
+         4KXq1bxzawcM9YbJGmkyINgzXJLsyvSc+bioAxahbX0tFyvNPo+zTcCYXeyC1yq/P9lP
+         Ngi5VDGIgqEiEHixm4bNbGLO77aVqSKuD/N52BAamzA9R5xR7l1AUit7wPHIdZg75yyK
+         1KpKwhx8MaLuSzTuqMghEcN1YFSZD4xIKnIWLINKCK1F0zdWNXPWgyb500qxaOuSpY0p
+         hfVeSGxRLrVcDKucRXGw6V6cq6h6PmH345R+PyI/7l2fqIoKrmoeF1wsl7QTk3AiG49r
+         m8Dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=yCOcQLmgdtfiHoEGzlEjIWzRramti7JO+XwYRKwRFyc=;
-        fh=UnOQ5/w2sSesQpjK9pR1dfQNVxpZ0Ltyb0zKzaYIS+0=;
-        b=JMVkSUVpuQF+0nFoXirRtkH6s8206r/zZg0Ab0J2/U1dheymKn3JzVxut5Q+pLuUKL
-         YzH47Xlt2qRdZZ5KnutpbppjVqktZj8YASBm4yF9ixyPD82fXoyCVgi8R/i2/IUwn2nN
-         Y7yBLdKb3Mdbcy8iufOTWgqo49LfRu8geDMYzl6OAWxRBIRRg6jaui5GPiNueY5t/aoB
-         I5DcczgnJuZ0U/hNuPdSIHQc6rju51CzxciyNE6R1weYcEP7fWKg1qePvUW8GRLnuDKx
-         JGWv0+zkJ+leSUrq7XJ/NGpXnaeeWmmObtUMszecGlgz1YbOnUNkKIVXr3lXQybUoy+0
-         Pcgw==;
+        bh=L3ead+uizm1Vc976UnfrINanFTxCKtIjchE+tw+EPsA=;
+        fh=HFNhXL6MstgvXhHccbj+32U3iet7fYuxKIDeqEj1oXI=;
+        b=Q1+CvFBtcnxgwsAht4AOZZueJHu4INW87GHtNtlPWt4kzdVuCOS5KKLwYVRKz/luAS
+         F7zCKseW+h3JImlfBD4GVtlAUqVtFDAbb76Og+AUELaO3XlmT0PBGWb0DK2AKTn6+r6J
+         SLq10D3loygrH91tWMUiJnru/sWCHUa/H1vYng/6X30UuYb33w1RpJXmOXM5eTBlYztQ
+         FvzdpU9i2+EdceFqjvKIFNr1hQXEmazo7bM9SE35vgtlMlDvl7h40diKGBvwVAWSTx65
+         37dZz9HXGR/kdE4dC2v2Dty+/Jt8T5i5vjvFXqzJdtJsP+hWLh/ohAes1COtSMuqm0UK
+         zpVA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NNmZytgk;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VBQeMyzQ;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-71515bfc275sor64345257b3.2.2025.07.01.02.39.51
+        by mx.google.com with SMTPS id 00721157ae682-71515cd0b3fsor62728747b3.12.2025.07.01.02.50.06
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 01 Jul 2025 02:39:51 -0700 (PDT)
+        Tue, 01 Jul 2025 02:50:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NNmZytgk;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VBQeMyzQ;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1751362791; x=1751967591; darn=linaro.org;
+        d=linaro.org; s=google; t=1751363406; x=1751968206; darn=linaro.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=yCOcQLmgdtfiHoEGzlEjIWzRramti7JO+XwYRKwRFyc=;
-        b=NNmZytgk10/4SUArXXYS1dIQbZBFYruXb9p46l1SxkmfMxk2hTXIQ+IUqVMY8kkcdK
-         TFW6gxbNfwNteMQE7wL9B3VlKWaeLmy5XbZBiw3QAHpl7lw4P5hK4E9iVaBrOiymYqa8
-         2m7m8tOmLG+xNAcmrrIsHrt9hbesl6wPhKpTrMXyeLH5VEQ2skcpbB64Sd2ejboxrzgg
-         CEIKUuJ5kzE1fTqCdDtue/DMMrhkxZxtu+KM67f2O2JwuR/O5Aq2Sly4zCSOiHv8Kzx8
-         IPg5BHt2hWU51gJJ4fhc5g6HJmidXBPFGZBBwGw2MLdeT1y2YORGQlGYIgKKWjmKGyVl
-         FL9g==
+        bh=L3ead+uizm1Vc976UnfrINanFTxCKtIjchE+tw+EPsA=;
+        b=VBQeMyzQ8Vb//a4LqPey5O04CTiXmZ3RVGZKZiqg5bl7TcW0lqfdafZ6fQcs8vej9B
+         K6mTiOBxQ0CHealHifcM4rnaTilM2uuiPXYHh2OSS52X/bv6YOnvolfLaK6DO4jKD5LT
+         7NsQnt1wWbUq4T90i9ScNcPFvi7s8Dm8Go2DcGmbDWbj5nnKk8p4iFc5j7OUBZ1dQFxU
+         heywD1Kt766cCN02xnzQzFqUI6C0vHU4V31WRYKHDIyXpJCG/Hk4roDWmrJOdDYl/VsO
+         3yAbgABRkcRwCBqdC6zB19HCX9htjoPWAqoGnQ8YoczhOJN/l1AgYKOJ8HKY7pJ7tI4U
+         xanQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751362791; x=1751967591;
+        d=1e100.net; s=20230601; t=1751363406; x=1751968206;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=yCOcQLmgdtfiHoEGzlEjIWzRramti7JO+XwYRKwRFyc=;
-        b=UnBqyxzi5dhKfZDEgsLywKDHrXmkkxMkkGh54F9gY6Qb9FMectZysRQEOKc0USOwou
-         3J6522fdNn/hDm0mzj0PpT9I21E8r+32wArki1p5iBKEGFS/lm+h+cvnBgP+ZMTeRUcm
-         /XGZTQWg8o9BsYcZJ1+hbXn0QDidg/eOe4rQiJNlMwBTvNYJfLlnNCYc0yRnCc/WRG/R
-         ga9rDABumTU9Yc++3SDsW7ZbgDbRVJQVvlQItld1Uo5SEP61fYMlHfyFGHn4uaPvZBCx
-         CJC0dN6m1lUAzqvuCCzY+Wz45CWptOfyb4l2wZKOLiHf5jI98pO+ewLnkHQ3oBEvzdGO
-         ZlAg==
-X-Forwarded-Encrypted: i=1; AJvYcCWiA3SO+wWSyA1bur/PIHs6xnfbDZZ205Bu4ThlbL1GLILc2eCaOAcPfcaHYAaeaowJW0qmMBLyX/qYdQ==@linaro.org
-X-Gm-Message-State: AOJu0Yym6vY92M2RAp7uAVJe1XIM+4Jav0YlhMKKbQkRK7yaQbdsNF05
-	RiK9dbREvNNH60WW/uMu/xhSzluEa32NH6SEKw8gSbNW1x9MmFOSr702rjLyHiMH+zzqEQJJ/MM
-	rnjbw+jyCM5n2HzORXyW2r/MzItuKbprPSHjj/kQ7Ax9B
-X-Gm-Gg: ASbGnct7lFL3louuJEZvCM5NnoQb8M+6bInbn8NIzyu6Ql00LHide3V3K6s0Uf/TrsY
-	g0dN9ytfqSMbgaQ9Dvj27L1f+kXDMubewYk+1t8QMIwj9vCA4Una/xXOEp+95ovBoUOnRa3Ti6w
-	cU3uMmUtCZbWYzUqlenBZ3qqFlX8slDKlGneQ1GxK+jwod
-X-Google-Smtp-Source: AGHT+IHDlq2gURbFKW5g1kNI0w9591f5lYZ70IA6CEkE0lSHka0P6ZqUiCTl2McDGmbd1GXnJnECbd53cRCfMH2DS9I=
-X-Received: by 2002:a05:690c:7443:b0:70f:8883:ce60 with SMTP id
- 00721157ae682-715171aacdamr245762197b3.26.1751362790962; Tue, 01 Jul 2025
- 02:39:50 -0700 (PDT)
+        bh=L3ead+uizm1Vc976UnfrINanFTxCKtIjchE+tw+EPsA=;
+        b=oifU0TICSeEYS6jbJ9lPwt6n7FLGAKBwsVDPZjmKCHtaLUKlP1+9w6kHFzqItvu1CX
+         t2zhL34CPqVKS/eOkEndgGz2PUepa/f4xiPJ53inDMDUzDD6sA1rezgIPeIxFCwPL3/K
+         7at1ppCbxAHgodZCL4tj8ghigWw79M5bLqQqOomysyx7actAz2vPVOIp8s9wo3yYGkw/
+         cwpMbe3XCH4Ba9F2mN+JDR49gt4/rVYL5XUZx4YLxPpJ/rt1LVcH1qkT+Ff1GCxQlLjz
+         Z/Rv7tDOY0pX2n6w32CCGQYtHQXVK7yIed1w7uv0IesOM6q6wey/iyeSPHAVldDrFY3G
+         ebyA==
+X-Forwarded-Encrypted: i=1; AJvYcCWCNhncYz4iNqUfJ23+Gnh3vtlQIR4fZzz67grrU9P+MEw8zhOs9FB93ghnE623qEyaaLMFYITS4tIFNw==@linaro.org
+X-Gm-Message-State: AOJu0YxyLm4PqxYw2VbmWj4sGg3tw2OiSLUAcsjdL0kdCnWIY0LqHCcy
+	GF8vkxIgFrES6h+8PoEqjtfOns1+vK+Tde/V4djg/PUc71j8gmCRDF0LMAAT2F7MJvQFg5+74oB
+	zbcj9TKcNEnqvHr16P+33Mw9Y4NTb8dxmno7kSEIE7Vqo
+X-Gm-Gg: ASbGnctpkR6mh5JOHDKDwkWdv6CG+GL8JEJt6A8aBPro7Q6nolNze8JDIgwMXbajAmt
+	3Jy6oQa0iwRGyWKTRNQcw3Ev747iXO5+96My8IztriF5z3JCZ0JZMelPyu3dOGghDQorgzeg2af
+	2/HNrlZITodXvu9EvVVnqXTeSGszYRAH5XCS0y4VbtAIkj
+X-Google-Smtp-Source: AGHT+IEgNBWX5tGLtftpO87ft/BiEpcXC82wrB1DaQaCVscRFjWWJgGUjii5r8i+5yiViziGpgeRsjHaIy59eNovzCg=
+X-Received: by 2002:a05:690c:7442:b0:711:a4af:43ad with SMTP id
+ 00721157ae682-71517147badmr235251117b3.14.1751363406075; Tue, 01 Jul 2025
+ 02:50:06 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250623121845.7214-1-philmd@linaro.org> <20250623121845.7214-5-philmd@linaro.org>
-In-Reply-To: <20250623121845.7214-5-philmd@linaro.org>
+References: <20250623121845.7214-1-philmd@linaro.org> <20250623121845.7214-7-philmd@linaro.org>
+In-Reply-To: <20250623121845.7214-7-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 1 Jul 2025 10:39:39 +0100
-X-Gm-Features: Ac12FXxpYnulxisO6QVKFIKPO-zv9Pwl_r62oxyX2ZYzOaAwSavLKRmqxWTN_Jo
-Message-ID: <CAFEAcA8+9TPps4NkRwRTZXq-nkR=zJ1SsFLnMzzNf7MioU-qsw@mail.gmail.com>
-Subject: Re: [PATCH v3 04/26] target/arm/hvf: Simplify GIC hvf_arch_init_vcpu()
+Date: Tue, 1 Jul 2025 10:49:54 +0100
+X-Gm-Features: Ac12FXyuBHFyZZaOxyOwWqZE-W7vNcGgM_jfizm0gIVdy-6YVWg7T5T5DEF9PnA
+Message-ID: <CAFEAcA9ref1SFd2uPRBBjyg=eph+GptWxoyURxMZj8aSVD7zAg@mail.gmail.com>
+Subject: Re: [PATCH v3 06/26] target/arm/hvf: Trace hv_vcpu_run() failures
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Leif Lindholm <leif.lindholm@oss.qualcomm.com>, 
 	qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
@@ -95,54 +95,45 @@ Cc: qemu-devel@nongnu.org, Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
 	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: SAeubE7tiycY
+X-TUID: Ik3e4GQ9n7sf
 
 On Mon, 23 Jun 2025 at 13:19, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
 g> wrote:
 >
-> Only update the ID_AA64PFR0_EL1 register when a GIC is provided.
+> Allow distinguishing HV_ILLEGAL_GUEST_STATE in trace events.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/hvf/hvf.c | 14 +++++++++-----
->  1 file changed, 9 insertions(+), 5 deletions(-)
+>  target/arm/hvf/hvf.c        | 10 +++++++++-
+>  target/arm/hvf/trace-events |  1 +
+>  2 files changed, 10 insertions(+), 1 deletion(-)
 >
 > diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index 42258cc2d88..c1ed8b510db 100644
+> index ef76dcd28de..cc5bbc155d2 100644
 > --- a/target/arm/hvf/hvf.c
 > +++ b/target/arm/hvf/hvf.c
-> @@ -1057,11 +1057,15 @@ int hvf_arch_init_vcpu(CPUState *cpu)
->                                arm_cpu->mp_affinity);
->      assert_hvf_ok(ret);
->
-> -    ret =3D hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64PFR0_E=
-L1, &pfr);
-> -    assert_hvf_ok(ret);
-> -    pfr |=3D env->gicv3state ? (1 << 24) : 0;
-> -    ret =3D hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64PFR0_E=
-L1, pfr);
-> -    assert_hvf_ok(ret);
-> +    if (env->gicv3state) {
-> +        ret =3D hv_vcpu_get_sys_reg(cpu->accel->fd,
-> +                                  HV_SYS_REG_ID_AA64PFR0_EL1, &pfr);
-> +        assert_hvf_ok(ret);
-> +        pfr =3D FIELD_DP64(pfr, ID_AA64PFR0, GIC, 1);
-> +        ret =3D hv_vcpu_set_sys_reg(cpu->accel->fd,
-> +                                  HV_SYS_REG_ID_AA64PFR0_EL1, pfr);
-> +        assert_hvf_ok(ret);
-> +    }
+> @@ -1916,7 +1916,15 @@ int hvf_vcpu_exec(CPUState *cpu)
+>      bql_unlock();
+>      r =3D hv_vcpu_run(cpu->accel->fd);
+>      bql_lock();
+> -    assert_hvf_ok(r);
+> +    switch (r) {
+> +    case HV_SUCCESS:
+> +        break;
+> +    case HV_ILLEGAL_GUEST_STATE:
+> +        trace_hvf_illegal_guest_state();
+> +        /* fall through */
+> +    default:
+> +        g_assert_not_reached();
 
-This doesn't seem like a simplification to me...
+This seems kind of odd.
 
-Looking at the code, I suspect what we should really be doing
-is setting the GIC field to either 0 or 1 depending on whether
-env->gicv3state. Currently if hvf hands us an initial value with
-the GIC field set to 1 but we don't have a gicv3state we won't
-correctly clear it to 0. i.e. we should change the current
-  pfr |=3D env->gicv3state ? (1 << 24) : 0;
-to
-  pfr =3D FIELD_DP64(pfr, ID_AA64PFR0, GIC, env->gicv3state ? 1 : 0);
+If it can happen, we shouldn't g_assert_not_reached().
+If it can't happen, we shouldn't trace it.
 
-thanks
+But the hvf code already has a lot of "assert success
+rather than handling possible-but-fatal errors more
+gracefully", so I guess it's OK.
+
 -- PMM

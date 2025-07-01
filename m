@@ -1,207 +1,161 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3057000dye;
-        Tue, 1 Jul 2025 03:35:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWAaBNCOG85vpIg3ZDX9g8B8WH5AdaxX9eiY1tZVGHSMdVfTShuEOz/0lvAO1RKXzL5F5TRS2fKqIBhwA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGlIR+FyRBULwEebVIcTD6elvlNZqOFK7VFuUHzNj+UJ5bw83itTTIX+3CJSy4xMI1PS0YP
-X-Received: by 2002:ad4:5c8a:0:b0:6e4:4274:aaf8 with SMTP id 6a1803df08f44-70001e5bf93mr258645546d6.17.1751366102000;
-        Tue, 01 Jul 2025 03:35:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751366101; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3067612dye;
+        Tue, 1 Jul 2025 03:58:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVtV7JZMHWUOS/YsnmDAowjrANx9s/uJ17q/cqhOvfdvZJBRIcnqFrNZI9SNa/XeAMJtj8+E5zVFEQ8pw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFOO9nps/L9h67Y39sjRF/3KlXvSm1qkpYQtYH6WwAj1tJnUbxQ0NHTHEkCVMTExiabaJ4I
+X-Received: by 2002:a05:620a:2a02:b0:7d0:9847:ff06 with SMTP id af79cd13be357-7d4439a4f72mr1973654985a.57.1751367522260;
+        Tue, 01 Jul 2025 03:58:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751367522; cv=none;
         d=google.com; s=arc-20240605;
-        b=Ud2uuUY8M4eZak5i7wA+Y5n08WYqEDq3f/j8oJp1kCQ3babddfXioRHMLUL0wNJ75c
-         LqVMdY86V5gn+MP/I7cDZjeFdrcZP0DBUJfY7Qv3YYsUIdEfhva1Un96yFz/twtKFWBv
-         BWibdHCtyHFnx9PhIZnzngxNSNltDxJpqW2ZUyo8pbMCBQAQEXmnQFkp5OhZVgeCvZ8B
-         ik+cfx8Rzll0e64zqG2YOqkSmTysPpoWE5N4kVvedJLabDTApglUKitCj9GfPVpgx/Ra
-         ijaiuCk28e5hKe8+nztua6P9n9maswN2vfwjHcCclTGx/kuxNk9ztVVHdn05VVs1dKAP
-         L/1A==
+        b=MPKh6sVItYcpE/cn8JOzBp8AO5vrrG1/NIKUZoPlYIXfSvMnkuqindhy77riqf9RTf
+         D23JUn/GETgq4BB9MUqk87M3HijMOMPpuK2iAhgIS5qvqAiNmUSfDeoNOfH2KUX5Flwj
+         RjKcl12zOl/avUEv+GX3bio4Nryk/pIWTBEyChAF0Pjx03Cer7bWtYYUo03btXt8+Y31
+         F0GExVEeurjtrcU8IHy5+ArNvH9iirDsDOzjlPl0EsYtQvnkNJfxesrcYx0pTtAHHYfI
+         DVV6IKh8f5QITxmMOGdQgKu6qBtryz3fRrVTSPLlG0XDCLsgnL1XAzjwzxkbrc2v2f2M
+         a7pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=YaRnx40pfqe2LWdyO+Phw71MFavCwwYSk+ZdTDx9hxA=;
-        fh=YY9nUc5w24cMHuHgTFjcuo3GC73LQtyUYEufVd64Hvs=;
-        b=Eohi6T5G8BOA6nI9sLNiDkBW/697+IEWhRBCMRJTN984WwClLv357cKLw/tAhl7T09
-         H9VLKyoPQuePMANHLAGjxGVdpMA7rhrodUcfAsdADvg3GmSZFItZ4iYrPckJ4I2q2+YE
-         wi+Z8RRFQjczZrkJVquhQ3x4mqBEDiji08aCX6wXRo1bRcfUGaqaKKmZGyU78QmnWuRB
-         VY5zwhhrOYhhwJKIBtCk2HRhu7qbWj9/ZXK9n08sr4gdbvquv4K5cvKcasDoclCMFbsi
-         azbiT/REqin779RoWji6tuicW0GEaWnZ5zR00XYWD7977zmPCP3j6kAgIfN6R6vrG3dd
-         zhuA==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=vaysZIU4o0SnKCiXfmsE+GY/I6OdRo57O2XTDSYmKDo=;
+        fh=hvlI5qLA4Zwqzi2lzyeNftB8dbGCWJkQbDbUzuqwTEM=;
+        b=De1x9UV/MJ/zmu3rehNTFuuJa0OKrjPkD0wwjAApV1N9gdXVHJrD6usI2ZD0k6Vmwz
+         eU0sPQGAq8UuHDRmW08AFZFFl2GkzC2zK69kmhRAcIjKHWmIqrP0WuXbh/qIdAq3t213
+         1XN5i0cD4UH+uvHrsmz6ck4I+z7Ene1YsjBW2wzQ1ZGawCCg69KGGnNL19V+KqzA1qAF
+         y9Diewr9yqAWte6ZlGy60gMiLLlBwo2D4LcdjSzIfGTlmN1KjpSnx4lPTmCOMvKpdw8G
+         IxpsnCjESTEmBcwWkfv5vQFkUPvhEZxgdCXLuaYAjtR6fBSM5RGJariijor9R5UF3JLK
+         g6Vw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kiwd5gHo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cx1ImAcD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd772987a3si122507166d6.127.2025.07.01.03.35.01
+        by mx.google.com with ESMTPS id af79cd13be357-7d443193e98si986439085a.56.2025.07.01.03.58.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Jul 2025 03:35:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Jul 2025 03:58:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kiwd5gHo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cx1ImAcD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uWYJ8-0005qY-O5; Tue, 01 Jul 2025 06:33:46 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uWYh1-0000e5-PP; Tue, 01 Jul 2025 06:58:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kosasihwilliam4@gmail.com>)
- id 1uWYJ2-0005bP-NS; Tue, 01 Jul 2025 06:33:40 -0400
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <kosasihwilliam4@gmail.com>)
- id 1uWYIx-0002OD-Gb; Tue, 01 Jul 2025 06:33:40 -0400
-Received: by mail-pl1-x631.google.com with SMTP id
- d9443c01a7336-23636167b30so27519295ad.1; 
- Tue, 01 Jul 2025 03:33:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1751366012; x=1751970812; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=YaRnx40pfqe2LWdyO+Phw71MFavCwwYSk+ZdTDx9hxA=;
- b=kiwd5gHoGdsLocZzEXP8oBANVFtQLEaDep9xrvypZMNUPGL+0B0/aUvZJsKOGjsjD8
- XDAg3gww7Yxj1MXMkZ5LnEFOSA14FX8iyThKceXyN0+CKbnjHE6pOyFYy6WsSlCc6Puz
- E9pKspG9Jw/S1MPCoGLkc3ATQRc39+K15lEc6hicn688p566LhDQ3TFURaajOI5gnMJi
- HgOudJ4LRt6cURtx7bSvJwIOetsI/sVYd400QQbcGwQk0mw3RkxW/oeH0h+jEADFVZpz
- YzH3yTKDAwIz24k5IKDh+6tRvn8KW0ev+I0OpJi1QpNCFvUKlfK5zwSvf5M3+2w/Gl8l
- 7NzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751366012; x=1751970812;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=YaRnx40pfqe2LWdyO+Phw71MFavCwwYSk+ZdTDx9hxA=;
- b=ff59mpAyCsZVKxeBhgqT4WRQppNb+WOI9J6rBApDQSUEgXtIbYy64cbu/uW2r95Pv5
- lNQKWekjKKTjeFnMHb7G+A1xmp5yWYePINO/INjmer6yaJ+VR7oMpkHtpMJg5jYVvws1
- Dml6WZhH++yDhpG9o49kxTCrkOX89LYC8N9aVrgWOwVihZ4mhm/49ghE3o0d8crCvEEI
- jlSqdv7fIpT7h6MXFne6KwWK3P4EcYCTMah5K51mQQjPd87QucAQMRdxAoXMmsgViQux
- qMKUZ7nZL3lURKkF3w5PoH3VPDCtCQq09F4zP+lK3BXODIrxbIvQzxXso5s73tRze7OM
- DpOg==
-X-Gm-Message-State: AOJu0YwAgxyGly6gB+clMS4nTndTjyi+cKha0zucnfktr89neD56vuIV
- Uqq3ByIBfIP/TN8MOOIhl10pUzG7YwCAJvyjJ9kJ85s6dvAmc4SRu2iwajJbyFojNIg=
-X-Gm-Gg: ASbGnct/S1dlRJdMJwEsiZ5iEwGEiaN0DMTnx/hVfdo/2PWx8sV+k9kv2Zx66kWRfgn
- 4FX9NHnPbBVq3S+8/F7K5/m7eSMD6B5FgsrwvphtH1edqL5Jld/KXetYwbLI7yRnB4AFHIawObs
- Gx+dzJ99KExvw2UuI8EQfw2/ncio5yPkVBZisq02yD3WhxcpcblVAde4vGyY0MDK11nLim7YfnM
- V2ZO+wtXdBq54Da2co4DIRzH2CV4i0He9Nu+EUekd4bF4s50+jv3AUY272ssjZxL+6EdFjIvuen
- +icEdGf2FR4mr/6r11mQ3Taa+LeJIqUZ6iPJqfjkUxIVPGKtnUplnanzFuRRl/heVY1HYiIOO7t
- tG5WIgqvvIErFJr56rz63EkDU/KqIROAvbYq1iL1FsoI=
-X-Received: by 2002:a17:903:1ac8:b0:235:225d:30a2 with SMTP id
- d9443c01a7336-23ac4664161mr255766415ad.48.1751366011834; 
- Tue, 01 Jul 2025 03:33:31 -0700 (PDT)
-Received: from localhost (pa49-178-74-199.pa.nsw.optusnet.com.au.
- [49.178.74.199]) by smtp.gmail.com with UTF8SMTPSA id
- d9443c01a7336-23acb3acc00sm99523915ad.142.2025.07.01.03.33.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Jul 2025 03:33:31 -0700 (PDT)
-From: William Kosasih <kosasihwilliam4@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- William Kosasih <kosasihwilliam4@gmail.com>
-Subject: [PATCH v2 10/12] target/arm: Fix VST4 helper store alignment checks
-Date: Tue,  1 Jul 2025 20:01:57 +0930
-Message-ID: <20250701103159.62661-11-kosasihwilliam4@gmail.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250701103159.62661-1-kosasihwilliam4@gmail.com>
-References: <20250701103159.62661-1-kosasihwilliam4@gmail.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uWYh0-0000dx-P3
+ for qemu-devel@nongnu.org; Tue, 01 Jul 2025 06:58:26 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uWYgv-0002X4-Ob
+ for qemu-devel@nongnu.org; Tue, 01 Jul 2025 06:58:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1751367499;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=vaysZIU4o0SnKCiXfmsE+GY/I6OdRo57O2XTDSYmKDo=;
+ b=cx1ImAcDBOjGyf0nGoTkKhww9yzboRULNYINWpPuxcbjsXXtT1PT6stKXH3J3zCGp6dq0j
+ PUtNAcS3SZL5jgFYEXPhA8P/SvSeL4MBusyDKakYsw2ddRiLF0hc3Jl7iNTTEMsS81/Njr
+ aM0yXVahjHYGYFOhTo78dvlSMG9Umr4=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-241-UFSGaungM_aTaNtWzPWQlA-1; Tue,
+ 01 Jul 2025 06:58:16 -0400
+X-MC-Unique: UFSGaungM_aTaNtWzPWQlA-1
+X-Mimecast-MFC-AGG-ID: UFSGaungM_aTaNtWzPWQlA_1751367494
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5FF3818DA5C7; Tue,  1 Jul 2025 10:58:14 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.45.226.103])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 949F7180035C; Tue,  1 Jul 2025 10:58:11 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Hajnoczi <stefanha@gmail.com>
+Cc: qemu-arm@nongnu.org, Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+ Warner Losh <imp@bsdimp.com>
+Subject: [PATCH] tests/functional/test_aarch64_sbsaref_freebsd: Fix the URL of
+ the ISO image
+Date: Tue,  1 Jul 2025 12:58:09 +0200
+Message-ID: <20250701105809.366180-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=kosasihwilliam4@gmail.com; helo=mail-pl1-x631.google.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.237, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 52J8uCIf7YPG
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UhhhZb9i7neM
 
-This patch adds alignment checks in the store operations in the VST4
-instruction.
+From: Thomas Huth <thuth@redhat.com>
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1154
-Signed-off-by: William Kosasih <kosasihwilliam4@gmail.com>
+The original image has been removed from the server, so the test
+currently fails if it has to fetch the asset, but we can still
+download the ISO from the archive server. While we're at it, prefer
+the XZ compressed image, it's much smaller and thus the download
+should be faster.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- target/arm/tcg/mve_helper.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+ tests/functional/test_aarch64_sbsaref_freebsd.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/tcg/mve_helper.c b/target/arm/tcg/mve_helper.c
-index 9e8ea04074..f16877ba45 100644
---- a/target/arm/tcg/mve_helper.c
-+++ b/target/arm/tcg/mve_helper.c
-@@ -595,6 +595,8 @@ DO_VLD2W(vld21w, 8, 12, 16, 20)
-         uint16_t mask = mve_eci_mask(env);                              \
-         static const uint8_t off[4] = { O1, O2, O3, O4 };               \
-         uint32_t addr, data;                                            \
-+        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
-+        MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN, mmu_idx);      \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -606,7 +608,7 @@ DO_VLD2W(vld21w, 8, 12, 16, 20)
-                 uint8_t *qd = (uint8_t *)aa32_vfp_qreg(env, qnidx + e); \
-                 data = (data << 8) | qd[H1(off[beat])];                 \
-             }                                                           \
--            cpu_stl_le_data_ra(env, addr, data, GETPC());               \
-+            cpu_stl_mmu(env, addr, data, oi, GETPC());                  \
-         }                                                               \
-     }
+diff --git a/tests/functional/test_aarch64_sbsaref_freebsd.py b/tests/functional/test_aarch64_sbsaref_freebsd.py
+index 26dfc5878bb..92ebc69c9b1 100755
+--- a/tests/functional/test_aarch64_sbsaref_freebsd.py
++++ b/tests/functional/test_aarch64_sbsaref_freebsd.py
+@@ -18,9 +18,9 @@
+ class Aarch64SbsarefFreeBSD(QemuSystemTest):
  
-@@ -620,6 +622,8 @@ DO_VLD2W(vld21w, 8, 12, 16, 20)
-         uint32_t addr, data;                                            \
-         int y; /* y counts 0 2 0 2 */                                   \
-         uint16_t *qd;                                                   \
-+        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
-+        MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN, mmu_idx);      \
-         for (beat = 0, y = 0; beat < 4; beat++, mask >>= 4, y ^= 2) {   \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -630,7 +634,7 @@ DO_VLD2W(vld21w, 8, 12, 16, 20)
-             data = qd[H2(off[beat])];                                   \
-             qd = (uint16_t *)aa32_vfp_qreg(env, qnidx + y + 1);         \
-             data |= qd[H2(off[beat])] << 16;                            \
--            cpu_stl_le_data_ra(env, addr, data, GETPC());               \
-+            cpu_stl_mmu(env, addr, data, oi, GETPC());                  \
-         }                                                               \
-     }
+     ASSET_FREEBSD_ISO = Asset(
+-        ('https://download.freebsd.org/releases/arm64/aarch64/ISO-IMAGES/'
+-         '14.1/FreeBSD-14.1-RELEASE-arm64-aarch64-bootonly.iso'),
+-        '44cdbae275ef1bb6dab1d5fbb59473d4f741e1c8ea8a80fd9e906b531d6ad461')
++        ('http://ftp-archive.freebsd.org/pub/FreeBSD-Archive/old-releases/arm64'
++         '/aarch64/ISO-IMAGES/14.1/FreeBSD-14.1-RELEASE-arm64-aarch64-bootonly.iso.xz'),
++        '7313a4495ffd71ab77b49b1e83f571521c32756e1d75bf48bd890e0ab0f75827')
  
-@@ -644,6 +648,8 @@ DO_VLD2W(vld21w, 8, 12, 16, 20)
-         uint32_t addr, data;                                            \
-         uint32_t *qd;                                                   \
-         int y;                                                          \
-+        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
-+        MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN, mmu_idx);      \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -653,7 +659,7 @@ DO_VLD2W(vld21w, 8, 12, 16, 20)
-             y = (beat + (O1 & 2)) & 3;                                  \
-             qd = (uint32_t *)aa32_vfp_qreg(env, qnidx + y);             \
-             data = qd[H4(off[beat] >> 2)];                              \
--            cpu_stl_le_data_ra(env, addr, data, GETPC());               \
-+            cpu_stl_mmu(env, addr, data, oi, GETPC());                  \
-         }                                                               \
-     }
+     # This tests the whole boot chain from EFI to Userspace
+     # We only boot a whole OS for the current top level CPU and GIC
+@@ -28,7 +28,7 @@ class Aarch64SbsarefFreeBSD(QemuSystemTest):
+     def boot_freebsd14(self, cpu=None):
+         fetch_firmware(self)
  
+-        img_path = self.ASSET_FREEBSD_ISO.fetch()
++        img_path = self.uncompress(self.ASSET_FREEBSD_ISO)
+ 
+         self.vm.set_console()
+         self.vm.add_args(
 -- 
-2.48.1
+2.50.0
 

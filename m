@@ -1,117 +1,115 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3056842dye;
-        Tue, 1 Jul 2025 03:34:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW9R0PIR5YEjzZ0SFkuGulH4/AjhJG3Qf3jg/KtdYL6dtUgIvExwQ7HkVRNeLfX4vuS+ZESB467PjTBDQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGbKx+2zmkDZBGkmmRW/FR14jad4uEiIF3OQ/aT2vfExbSamkJjNzORhOnUY2pkH1ifPV4L
-X-Received: by 2002:ad4:4ee2:0:b0:6fd:37c0:2c74 with SMTP id 6a1803df08f44-70001d66c35mr232541636d6.11.1751366080698;
-        Tue, 01 Jul 2025 03:34:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751366080; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3056881dye;
+        Tue, 1 Jul 2025 03:34:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXM9ZAorXLqCNzMU0C3y1Rmf8aKcqgZ149xDtZESD3+woYADgo0wUpEqCTXjnGacmazvioDl0Olz29EKg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFFerdoMlbwWNRVOkdyZT81hKGVK0M23/XjDmi3jk/bMekzIXYCBUZLxB6GffnAHoHowmRS
+X-Received: by 2002:a05:622a:120a:b0:4a2:719b:1238 with SMTP id d75a77b69052e-4a7fc9f3e66mr251688171cf.12.1751366085015;
+        Tue, 01 Jul 2025 03:34:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751366085; cv=none;
         d=google.com; s=arc-20240605;
-        b=A3y+qRKl8clnzSBx6wL46NDF2k9A9y/XknWo9r5iCaI1wHzlJ72g7JWLOXAaif+VaZ
-         EhBZVzOt7JP4RXQBn4Dr5DhVtBKfwm+c3rLaf6zpfKY7X4F+E0gMClt6GnAq9GmV8E86
-         iyHGc3+TBEwHynJo8GjbHxW31NqeGpdqpp9b9RUznJ90nY+leEZPqLFzhvsf8V3alB50
-         7PRazAYYoA10OD067QsFOHO/HWsABYG5Kx8b7dMpE7Avmtc00AwHxGlhEmg0L3aCtNRi
-         sNhWW3JuPFyYEu44ghxbdd5mX7Yy6Sz3GyEQxyaFykGA6GivBRKCCYPXpiUg0JjQRK4i
-         W8Fg==
+        b=XOAR10TZPILoWqguzHNbhvrmC2AdtHPm8sXrrg4Cu5Y2ePbk7DKTcQaGfCNuBVW7vh
+         JVWvjTwsMQlDlTbf5L9QdcgUwa6BFuRQjxvEtyh4345Y/IzQUOXtyZNRAr8at4lCZmwn
+         VZT58TCDQECOoQnFNYE3IB8z6fk1lx7y3mD/ZDf9jgSTIlIzSf1nZzwZDAeiy4+p0zrR
+         6BbXrXT2ZgCbjj0n4fUiO6EfojYbv3TERTUOcgloIxKqHvMHeRSRvrs4T7eveq8by39Z
+         jwWzYpCjo0NrrTlD2AO3WGy6g67Gow87tg+ZY1Kvpqu3GaxsJc9bxZsSabgUsCzCmjy4
+         FrZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=nn7pEBa0qW7/HK5JWwan6hjx8tL/xhtvqcSy45ddR/M=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=QoIVN/xkFbmjb8YH/F1wK8KcMj+smYpegVeMJ4/WZ7I=;
         fh=YY9nUc5w24cMHuHgTFjcuo3GC73LQtyUYEufVd64Hvs=;
-        b=akmaFlFKrDpAVlEJFslywcmNdhjtQM29XOtkpoOYn4N3VkQqnQ0u76hy9N3inXAURq
-         7fNnIea0n1HnYut1lD+WWJEAjJLOlCL9HoE9UF1Ndz/V97HevfrzpOg68L0CRyRXv7B+
-         oIqEMW0e2dOiG1zbJL6NqnEH71Gshizqs6tDpo9SmL4FXCymZ9CCBz+dBlC0Vt5o3G/x
-         WxM5MPb/stdO/zloSkNKuaRyXHm3AGIBCSDRGAO5BmNd/2wyG/ZvcWD4bPeG3DwQlCf9
-         j6e37wDCJ4hJIGEs6d7LTlYYEDj9+SFgrczrfrL2Qfz3AAHEpoI9GyDvJ7rSVPgsL9hs
-         YntQ==;
+        b=NooiJu0SSNqkj0XjqvkUPkPcYWa+73UYlY+2BpRg+2ySxJpDtGYOT7BHwC20YB6CV7
+         rjhQA/9QKj7abVzxq6Jvh/4H3ZWupjWR4SrxnZOJy8eBjVyRgAAA2w10v5Wt2UGS5PFr
+         xP2nGlK5ZCFjeyCxKM8WR6EGmdNXoEBxv+YhGn1dPEVYPv+CID+5FY+jZwKd1Clob0/g
+         wmTv3QLbK7cjRmcJlVTkvs1tvdaamTc7x22JMUz7gxbuwmpxgTYQzr8Iu5x3FJP5+BUG
+         UAbb0H4YXCu/WfY+f7W8yn0NZlsz70pdmcNLH8UU7igpxcY7yWtQrwU32rAtuVr96mzr
+         eV2g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=YEQ96SlX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=PaMZNgdG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd773aea4dsi122451206d6.468.2025.07.01.03.34.40
+        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc0fee7asi102797841cf.100.2025.07.01.03.34.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Jul 2025 03:34:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Jul 2025 03:34:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=YEQ96SlX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=PaMZNgdG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uWYIS-0004oY-7S; Tue, 01 Jul 2025 06:33:04 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uWYIG-0004Xl-D9; Tue, 01 Jul 2025 06:32:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kosasihwilliam4@gmail.com>)
- id 1uWYIQ-0004oB-JR; Tue, 01 Jul 2025 06:33:02 -0400
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+ id 1uWYHy-0004Nf-Lf; Tue, 01 Jul 2025 06:32:34 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <kosasihwilliam4@gmail.com>)
- id 1uWYIO-0002Ik-DG; Tue, 01 Jul 2025 06:33:02 -0400
-Received: by mail-pl1-x632.google.com with SMTP id
- d9443c01a7336-2353a2bc210so26827145ad.2; 
- Tue, 01 Jul 2025 03:32:58 -0700 (PDT)
+ id 1uWYHq-0002Co-Vq; Tue, 01 Jul 2025 06:32:33 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-742c3d06de3so3668539b3a.0; 
+ Tue, 01 Jul 2025 03:32:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1751365977; x=1751970777; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=nn7pEBa0qW7/HK5JWwan6hjx8tL/xhtvqcSy45ddR/M=;
- b=YEQ96SlXBJ7ODkbOHcvhZnTNA4DTtaK1NjFmzA/19zkVfzZg6dNrruhOLD6T+D1nk9
- C7WKLfrPuPL2MXAAZv0ep05ojG0FFIiKZkL63WSoQoex3gg+JWwGImnn8nwc8mr8z4Wl
- ybL6OK3LTx9Nth+rQULDofheWnUR5Jz11sS1V2+YvToIMoLFa2PXLBjqoTJ+JtqWkh2E
- 7t2H3kaDEg81DllE/LFS11Y/IZp4u2YoQPqOg2USG5jEEJNstgC2RV/ByS0gM4fqQaBD
- Ww5BMl3ck5ahPiPAW8aDcDA8zpBevrJ9C2KUe5+MUNKxTW/sAkGF8Vq0nzHGPDImpDAp
- IC6g==
+ d=gmail.com; s=20230601; t=1751365942; x=1751970742; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=QoIVN/xkFbmjb8YH/F1wK8KcMj+smYpegVeMJ4/WZ7I=;
+ b=PaMZNgdGDlNj71EQxMWEAn5g5diE4awEvHswNvr3PhQsDPQ4jyxxTqV110X86K3Jol
+ gQNUB6ovKHZhfAypd0kUPHG6QJ7qfV63NmT06ZJ6rAIroltxvQvPe+HuILoxVH/VlXtz
+ urC+GxapvZ0w7o02/EMP8fsinEFKjZWh468iY6UWDVcDarjHdOOTlDwc9HTsfviGNxUF
+ FaC6/A9s8TH0/bmI/gKLOEG2sAvMQgorOYssu/usX8Vruc2/E0q0rUse06Sska7zBH09
+ n0bkR4NZlreMLD5DubjZ+7sMqK1kMPHalPhGZC7qQWHA6MEW669Cn+d+nhqqK70NT7KC
+ RL+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751365977; x=1751970777;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=nn7pEBa0qW7/HK5JWwan6hjx8tL/xhtvqcSy45ddR/M=;
- b=BbMOqQvBEE5wjqDnTNTjdN1EOzKRgOj1QZRv3rftZnfCZF7DX4b/2Hg1vJfPD3Awmp
- olEzUt0hZAc06ty3RGTa7QG5u5ob7oBo0iCNTdS2vxJvWqlWLqhWRt1Jcg9g17dNYxMp
- ImGrYHVRfWwQDT3Nch/ZG5j06gUCIDOYtbyoWewLRuaajTfNhJ8qr3MnY4dgsq0QOYM8
- 5qbA3NxjFafre0JHiAe5h7MMxmusrOUFD7InUg1A4035NUzPH4kPpxwN4IFDlw9Adfgg
- wwaIHbO9EOs4A+9lVco6qDf1VmP7sjvamDyB++k67mcv2f5NqIRvffvJCH5y1NU3d9Gw
- OPEQ==
-X-Gm-Message-State: AOJu0Yxy+yNLBFVzYqE9fqBuXczHfGMcytBtmZ/q/1P17EtUtiXROh//
- 28A/ZV+/LqJesKppHacQ4DWzanIejrOYpZP5/i8e1uulXC6m0X9RCpMBjtFxP3rBBHo=
-X-Gm-Gg: ASbGncv8KALBhR8JvEweWU7mcerk8nJOvh5ksnM+/dTc5ZX+BgyQY1XS6BAYhIpt7QK
- u+dvGr1z4aKcQDsCq5MI0SXAyBD+MQfytYP8ptz2mTcK8n/MVPjGglhDZvF0cAtRCEg9N6yVMgz
- my6eJkerx7SjpYCDIivTzz7wlOAwocP2IHbP1MgJkO6VlL1vgX7FecQuxbpEQJcFWzd4M4VSJU0
- oZkPprfANIi0TYAQF89Tm1L3hOyo5gAGgAjwyIaXAXqRPPJqgD8Zv3bqQRyeS7zlp5KmFrTYpEz
- 0CKFDXEedt/1ifbS+Y+5+xY/DQ/XJsy5zy8POWZPSwhYCb1bnaTDe4XJU+wLi5y6sf4XmXOGZOu
- 4cxkheiL8xVxjaMXKFg/5g3NYqiTITI2o6rC+Jv/a2k4=
-X-Received: by 2002:a17:902:ce87:b0:235:7c6:ebbf with SMTP id
- d9443c01a7336-23ac46342d3mr287965775ad.35.1751365976659; 
- Tue, 01 Jul 2025 03:32:56 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1751365942; x=1751970742;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=QoIVN/xkFbmjb8YH/F1wK8KcMj+smYpegVeMJ4/WZ7I=;
+ b=LKQ7nXKbmFvdkyh2JzmctNTenvtZNYSVcKoGSxOG2hi6bC56E5hyvxURYgicx2oWdP
+ nWn67Ajn2/2AnCdD2dLsUn7J5USHyM0jeQW1eY6GFAZki74MOv7V7GOLZOIZ1/Wi5H3t
+ KfLY+6wN4yuhIgDV2pW5D1912HnfkXLLlCT90Yg+pDrk0P/LB7pjvPyECyW+/hwM63wf
+ 8hafTsG5//YlYTR3i6xGo4vLXBSBpy5+vOssFREcsFmNA4kwhISTC1EBrpg/96KHgyzp
+ inQ2WqWV8E8j/48zzdQhGjuoiRJQt7rpJ3l/LFsZyGfFGkhA87lE0tkU9sfrrx6s7Xbc
+ OKXQ==
+X-Gm-Message-State: AOJu0YzyzE5UhAu7wF8ffpNTd8BSlN74INCnpn0oAHTQgOMhGVl3nXRK
+ GQaxtFUeJ+dQ5G5GzQ31OpKD5gbV5MJ9EpGU1UdJg1qJl4yxyf+DfYkJX8X/gZyjb9o=
+X-Gm-Gg: ASbGnctq0QekLll8BCkZRgRH93LHlyRyx3NPrJ6E2azOh54F+4VmxwQevrH+CO6o+es
+ 9KUkSW+LWDZXBYTCaYIJ4sdNbsdb6mpI8NWDRY5U28blQc2xuvKuqNepwH0aCp2ktVcnkemBluI
+ 2CvFtbclZWtdzOI43nCffds8EBAcOmW36LIImVvZwD7TwBo/tqDQQ7Pdas6JrGm0JK5DiFSiYrU
+ XOMYVWKLGCzrJiyk1QHXkr6lNRXZfyktcuTb9r59vsMOhMYIOkUc4pPvufCAJkDtYt/LLkgxHhi
+ jvnmiJknIduHuH4tf5BPYQ44wlewtnL28CrMQSTK/uwnBjUwlpFit4NJewOt+eOJHyAFTM8dkiG
+ BZhGuYL0rBIZSpf9RD97VlCekqhnWn/ZRUzvASHapiUM=
+X-Received: by 2002:a05:6a00:23d1:b0:748:3385:a4a with SMTP id
+ d2e1a72fcca58-74af70ab3a2mr24873194b3a.23.1751365942271; 
+ Tue, 01 Jul 2025 03:32:22 -0700 (PDT)
 Received: from localhost (pa49-178-74-199.pa.nsw.optusnet.com.au.
  [49.178.74.199]) by smtp.gmail.com with UTF8SMTPSA id
- d9443c01a7336-23b0b3bc0f1sm59135935ad.171.2025.07.01.03.32.55
+ d2e1a72fcca58-74af541beb1sm11652955b3a.51.2025.07.01.03.32.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Jul 2025 03:32:56 -0700 (PDT)
+ Tue, 01 Jul 2025 03:32:21 -0700 (PDT)
 From: William Kosasih <kosasihwilliam4@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  William Kosasih <kosasihwilliam4@gmail.com>
-Subject: [PATCH v2 05/12] target/arm: Fix VSTR helper store alignment checks
-Date: Tue,  1 Jul 2025 20:01:52 +0930
-Message-ID: <20250701103159.62661-6-kosasihwilliam4@gmail.com>
+Subject: [PATCH v2 00/12] target/arm: Fix M-profile helper loads/stores
+ alignment checks
+Date: Tue,  1 Jul 2025 20:01:47 +0930
+Message-ID: <20250701103159.62661-1-kosasihwilliam4@gmail.com>
 X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250701103159.62661-1-kosasihwilliam4@gmail.com>
-References: <20250701103159.62661-1-kosasihwilliam4@gmail.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=kosasihwilliam4@gmail.com; helo=mail-pl1-x632.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=kosasihwilliam4@gmail.com; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -121,73 +119,59 @@ X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gL+ULHy51+te
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: snuC3gurgk32
 
-This patch adds alignment checks in the store operations in the VSTR
-instruction.
+Historically, M-profile helper functions in m_helper.c and mve_helper.c
+used the unaligned cpu_*_data_ra() routines to perform guest memory
+accesses. This meant we had no way to enforce alignment constraints
+when executing helper-based loads/stores. With the addition of the
+cpu_*_mmu() APIs, we can now combine the current MMU state with MO_ALIGN
+flags to build a MemOpIdx that enforces alignment at the helper level.
+
+This patch series:
+- Replaces all calls to cpu_ld*_data_ra(), cpu_st*_data_ra()
+  in the M-profile helpers (m_helper.c) and the MVE helpers
+  (mve_helper.c) with their cpu_*_mmu() equivalents.
+- Leaves SME and SVE helper code untouched, as those extensions
+  support unaligned accesses by design.
+
+With this change, all M-profile and MVE helper-based loads and stores
+will now correctly honor their alignment requirements.
 
 Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1154
 Signed-off-by: William Kosasih <kosasihwilliam4@gmail.com>
----
- target/arm/tcg/mve_helper.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/tcg/mve_helper.c b/target/arm/tcg/mve_helper.c
-index 922cd2371a..a49b8842e3 100644
---- a/target/arm/tcg/mve_helper.c
-+++ b/target/arm/tcg/mve_helper.c
-@@ -197,9 +197,11 @@ static void mve_advance_vpt(CPUARMState *env)
-         TYPE *d = vd;                                                   \
-         uint16_t mask = mve_element_mask(env);                          \
-         unsigned b, e;                                                  \
-+        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
-+        MemOpIdx oi = make_memop_idx(MFLAG(STTYPE) | MO_ALIGN, mmu_idx);\
-         for (b = 0, e = 0; b < 16; b += ESIZE, e++) {                   \
-             if (mask & (1 << b)) {                                      \
--                cpu_##STTYPE##_data_ra(env, addr, d[H##ESIZE(e)], GETPC()); \
-+                cpu_st##STTYPE##_mmu(env, addr, d[H##ESIZE(e)], oi, GETPC());\
-             }                                                           \
-             addr += MSIZE;                                              \
-         }                                                               \
-@@ -210,9 +212,9 @@ DO_VLDR(vldrb, 1, b, 1, uint8_t)
- DO_VLDR(vldrh, 2, w, 2, uint16_t)
- DO_VLDR(vldrw, 4, l, 4, uint32_t)
- 
--DO_VSTR(vstrb, 1, stb, 1, uint8_t)
--DO_VSTR(vstrh, 2, stw, 2, uint16_t)
--DO_VSTR(vstrw, 4, stl, 4, uint32_t)
-+DO_VSTR(vstrb, 1, b, 1, uint8_t)
-+DO_VSTR(vstrh, 2, w, 2, uint16_t)
-+DO_VSTR(vstrw, 4, l, 4, uint32_t)
- 
- DO_VLDR(vldrb_sh, 1, b, 2, int16_t)
- DO_VLDR(vldrb_sw, 1, b, 4, int32_t)
-@@ -221,9 +223,9 @@ DO_VLDR(vldrb_uw, 1, b, 4, uint32_t)
- DO_VLDR(vldrh_sw, 2, w, 4, int32_t)
- DO_VLDR(vldrh_uw, 2, w, 4, uint32_t)
- 
--DO_VSTR(vstrb_h, 1, stb, 2, int16_t)
--DO_VSTR(vstrb_w, 1, stb, 4, int32_t)
--DO_VSTR(vstrh_w, 2, stw, 4, int32_t)
-+DO_VSTR(vstrb_h, 1, b, 2, int16_t)
-+DO_VSTR(vstrb_w, 1, b, 4, int32_t)
-+DO_VSTR(vstrh_w, 2, w, 4, int32_t)
- 
- #undef DO_VLDR
- #undef DO_VSTR
+William Kosasih (12):
+  target/arm: Fix VLSTM/VLLDM helper load/store alignment checks
+  target/arm: Fix BLXNS helper store alignment checks
+  target/arm: Fix function_return helper load alignment checks
+  target/arm: Fix VLDR helper load alignment checks
+  target/arm: Fix VSTR helper store alignment checks
+  target/arm: Fix VLDR_SG helper load alignment checks
+  target/arm: Fix VSTR_SG helper store alignment checks
+  target/arm: Fix VLD4 helper load alignment checks
+  target/arm: Fix VLD2 helper load alignment checks
+  target/arm: Fix VST4 helper store alignment checks
+  target/arm: Fix VST2 helper store alignment checks
+  target/arm: Fix helper macros indentation in mve_helper.c
+
+ target/arm/tcg/m_helper.c   |  33 +--
+ target/arm/tcg/mve_helper.c | 408 ++++++++++++++++++++----------------
+ 2 files changed, 254 insertions(+), 187 deletions(-)
+
 -- 
 2.48.1
 

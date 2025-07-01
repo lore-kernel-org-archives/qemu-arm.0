@@ -1,117 +1,118 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3056546dye;
-        Tue, 1 Jul 2025 03:34:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVGuFzb9xS9nvi92XqxMu+7IQr/wPR4FjGo4+z13J5YQlctU6paY2cG1pw1Zcd77tgXzCryn5yW+iywRQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGwQFV51gC9aTT3OnQaB90x/SCMYY1aNHG+p6GzZvbVpT1x5x/CewVbIQzT1pziMLd4rtNl
-X-Received: by 2002:a05:6214:c45:b0:6fa:ccb6:601f with SMTP id 6a1803df08f44-70001c5f0edmr219259716d6.21.1751366044624;
-        Tue, 01 Jul 2025 03:34:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751366044; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3056637dye;
+        Tue, 1 Jul 2025 03:34:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX8wqDGGxDJqWEu6gJof6PyK3dogbuzffIER1BKfFzwGYVYws735VwUazwHN8MtTqe1L0Y6UFZtTziAIA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFf4emOF+ToZnkOUT4H7dRG7t7idv3c4M+jTq2eEaa6P2bE9q7ajpIuoVdJyQV6D3H3nFq0
+X-Received: by 2002:a05:6214:3213:b0:6fb:6129:d6f5 with SMTP id 6a1803df08f44-7010a9bf37dmr51316796d6.16.1751366055366;
+        Tue, 01 Jul 2025 03:34:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751366055; cv=none;
         d=google.com; s=arc-20240605;
-        b=fQWTQgeoRGb4F0OgOhMdDmww1mhAPVJNvyfjx7VjZS5QBm+NAzwhMA70sPbQdGtYpp
-         3SJpNAV/Q0bWZZHAolXgceuGp4k/Z2LwKudHgpp2jFxu2CowjrbtEVrDrrXJIave8KCn
-         TYnzhIEBNBRbhKxleqf/V4AKyvGUjGbo44PgGm2nU8M4/7/BMyP9B+H0JZ7CLcTCSRB9
-         OkfxSsqVIsbC4NB7v4q9XpySR69IGaMnihMPwhaq4EyeBIEG/U+oQxmffF83TNi/zZxz
-         vYd+tu2Jfw48U+/xoB+ezzBfsVuuyTf5Hdj5OaUu/l1NjrVsieV0dp+VXlQ2uaIv9sW1
-         fLFA==
+        b=G3q26IUXGAkK0+DhCD/AwgpBAnQeKTyNAvDfLiEIRsVRmoaj0++sa+bGT+zZL8X+Wd
+         xPXnUVljpak/P9Xal4n5UAQO2yreZIF2FE+NBpZCMTzU41lFh1VRPuBU7B/lT0XDEa7e
+         9sl1CxjYOzT2u9Ahmxsy3wdoejdlzg7+uCM7aBklLhKIDq4z7YcMhE6EVasuE3VxZMZf
+         0xud7LU6H7xpW5fJWM0M16tZM8OAgYdf39H/vftYsepveoQZn+HhFitkn/cTxR4cI10D
+         XeGWna+oJ1T8YyeRtdi6HHsefVui7+7sKCWp0+2Ndhfq1T8z8XBTIZPbqjsFfaPJcNeu
+         TUUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=JyGD103OZ4Hk2SYZr4SYZ7rCbtWK1S69PA+W1WpCH/w=;
+        bh=8ANEeeXFNou7PoIjW7yOiOz8sk3zkXq4bZ+pgAyMZ1Y=;
         fh=YY9nUc5w24cMHuHgTFjcuo3GC73LQtyUYEufVd64Hvs=;
-        b=SUmiEEzb/e4bw05PCybjW3fvzu38OFdZK7MIzzqiZDstXYKJYsua9lIzemVHTShKw/
-         3aDklZLQlfwMmu59MpRqnF94ulxq0eH60K8TO/MPMKovX3QoDW7S/tg1rGAqiFITupsp
-         N1Zj30mIF3cYqZ6rMBdcKs3Zr8eY7TQEmBTJO7xuUztFY+RXxV+X8E8UF+CkEZWqGbWk
-         bkHNbfeo30Cu+61eRUV+H/smQ4SMSFaurRrlaKNppSLpwgfwq1GwAmEkGWOV64/IwWDH
-         dlI5OW0xtbXxbYBrKW2ZYRCLyVdSltN0MHUsrIYzR19aif1vvn7qFf5MliXYPYxw0FKA
-         Cw7Q==;
+        b=dSto/iUyXk3y26C+HKcA3oWkYPJuLFioau+UDwaM2AI8oCiwk0RvYh/Vt4Vkjt0YGx
+         SyQqiObTRbSHMPLsfGR2fkrIiROGcOeme9LwvHyfZHeZNQWgV3egiDylPgUYwcLBJZif
+         OviDoPRgQg+y3mEyiVQ6o4shDcKHc0pDUy5imHsivDrCJ0MD3PQtTOBVW4+kxcSiPopn
+         4QubKo9RiW2+/s6K8t+5600MRqUjHPzT1+sfOD2Ia9YUewXFnJdsdB6kQG1sJtnpjNVG
+         guskDAmby3ylQAkqJtaMb2gkHwR3xNOUTzCuXMHC10utX6gEurE82PFHpKXasDCmlEH+
+         l5Pg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=MV1iWUTi;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cJCWDBUv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd77288d3csi117201006d6.102.2025.07.01.03.34.04
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd77355acesi121410436d6.222.2025.07.01.03.34.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Jul 2025 03:34:04 -0700 (PDT)
+        Tue, 01 Jul 2025 03:34:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=MV1iWUTi;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cJCWDBUv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uWYJ5-0005eT-EU; Tue, 01 Jul 2025 06:33:43 -0400
+	id 1uWYJB-0005vX-1D; Tue, 01 Jul 2025 06:33:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kosasihwilliam4@gmail.com>)
- id 1uWYIr-0005Og-71; Tue, 01 Jul 2025 06:33:31 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+ id 1uWYJ8-0005pR-3k; Tue, 01 Jul 2025 06:33:46 -0400
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <kosasihwilliam4@gmail.com>)
- id 1uWYIo-0002NF-Eb; Tue, 01 Jul 2025 06:33:28 -0400
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-74264d1832eso3847694b3a.0; 
- Tue, 01 Jul 2025 03:33:24 -0700 (PDT)
+ id 1uWYJ5-0002Pd-Go; Tue, 01 Jul 2025 06:33:45 -0400
+Received: by mail-pg1-x533.google.com with SMTP id
+ 41be03b00d2f7-b31d578e774so6066854a12.1; 
+ Tue, 01 Jul 2025 03:33:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1751366003; x=1751970803; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1751366021; x=1751970821; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=JyGD103OZ4Hk2SYZr4SYZ7rCbtWK1S69PA+W1WpCH/w=;
- b=MV1iWUTi4oTVFHgnkuLPV5sKjUkjgnj17SGchmHqFMfR3TNz+2wO/msmYoswO8RaTI
- 4jecV5L+o9XhD3RfHv3kDf+4JJePK3CKKhLEVdUG7Y97IHPHgNlOJ4afRUbBjQjiKaFV
- 76WfN3q3ZOG/qJm1krtnE7wbR/CJkoa+NnEU4PTGoc8V0niBimyH8cwM+TsKuEOPAW+6
- 0jvkIfU1IOEm9MiKwyniaxk1ylK+pOBUv/8ErgSFycwGddFaYIud1G7qf7Rs+TGnM09s
- oKBS7L/z7iw8NLcBmjhCGSDU02pWSgoU0RcaN4HayHGWcGE8qbVMCvu1v815ITIbSzW7
- 6N5Q==
+ bh=8ANEeeXFNou7PoIjW7yOiOz8sk3zkXq4bZ+pgAyMZ1Y=;
+ b=cJCWDBUv6+Yroetb5s2lFDZ5vS+DdoqV64BrZW6ZV8vjngDhpuN6ivxTyIbN/H+ZTU
+ J6F5H6T2lOoFrbOC05Ip8wa370myjitdO0ONbVBNP2NRTZH7esg9mHZSKSEEqqOjO0TK
+ 7DqgCTXZgPSc+jnSRUaVvMTXgE4dNq0BtjdoEK5/lT6QY7fxmIqD9DGrRKFy95oj0d4C
+ g+I4/Y7pfuhh2//9EjKHCOLV4ckDaeOeDtvijtxyZgc3xifUNg4uSmmYJeXgbMP/WQuK
+ IZMvV8IwX5Phw3TdjbU1d+b6Kj9sagAq7nS62cTC5DULHJnSBhFg1MEmPDL9VsTMigc/
+ w64Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751366003; x=1751970803;
+ d=1e100.net; s=20230601; t=1751366021; x=1751970821;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=JyGD103OZ4Hk2SYZr4SYZ7rCbtWK1S69PA+W1WpCH/w=;
- b=O3DB0xpxI1ymLboe23thdBgF3jENmOgkVk1VDVc9HjBJ3sVqwRd+9cqT8x/OaoLHLR
- BAdAskG47tC6SbpkVNVc4EIhuy9UohXCWg3INkXREOF8P+S6WiDNNXp6SQ+OGQXFrt/v
- 4i+XZXGGkZ1nhMFQjEdIMi/lOrNifNxS1OLEcJ6lkPhGKhJU6JhPx411VZbBJQ1+DmSL
- loiwLIxFSClWrFNKOKQ0k9H1R3ZUElyjP19AFXJh3aY7xxdjuOJmV57M5r3/DqHlYtK8
- wo2omVkwOrH7TxXjWj/fqCxOUgyXI9m7UpR0L0ffEQ3IRhBmNS5gAne1LtFSZvvI8Kd5
- MhLA==
-X-Gm-Message-State: AOJu0YzGYVnTpQQHvnfWcL988bsGqdPQjx3MfNzCBZAIXCgXrVj9MZtQ
- Y45rZo7ZiQDkpEIdHieNu8O4MczOuLnHZ3+k/SaCJY0DfSGcPq1wnWiZZE5n174HPWU=
-X-Gm-Gg: ASbGncswSG/C53Vk0caqMWRR9jDlqtIrUxpStBZ+8Uf0anCwGMdsDWfB2QMO02csD2H
- kStXb6TOZo//btETp//2bimCxLiJX9UdXvttRh57dtaSuYOS9NxNXm4s5JG6UC8c5AUs/gUbO/m
- /K/POYKzdFX8MVhA8FM8txhcekwdY7TLTLCdYzDCL6g+EbPhwHnEHXzup7UVGkfS3rOsBSp2yNL
- xgFp3Iy92h5nBUST8PwDX2fTeHvAx+Xgk4M40mVMFHNx7xbsSpfBgiaauYgC7Jtx4rifek0UDWZ
- AemgROg2/eI4m52igGPhk0oQxhXq4LIkEL41SRuTehsDLZY4VgLV4Oo7xEGi8zA3PBHhW3ntIxQ
- xqdG1mTNNU8WW7rs340QDM9Z68i+wtx3NUhgNx7ttUXG4aTmxxur3mQ==
-X-Received: by 2002:aa7:88c3:0:b0:736:35d4:f03f with SMTP id
- d2e1a72fcca58-74af6e6620fmr23199013b3a.6.1751366003127; 
- Tue, 01 Jul 2025 03:33:23 -0700 (PDT)
+ bh=8ANEeeXFNou7PoIjW7yOiOz8sk3zkXq4bZ+pgAyMZ1Y=;
+ b=oNV9TN7DBM4KP9HOC+5DgiD6B5K/+1q9dHISSVN7t8r3kXL9b/MobRfbpeekspj4OA
+ AuvXKvresdWg+3meK8GnUO3XX0Sa/Ltftvs+Pp71bGLDmhFtqbvpXYpttmt5l8+9GTUt
+ /LM3wPwxoZ3Vi/cv04L6TuqMBk2UUaBgUZ2cTbudwJLFDhy1Ka1/RNSHR0LMpVCaJt7M
+ 5df2e6/WA9svEglPkbSwweRfPCfU3VvnVse+rAd5pYblfeCm90KE1zZJDCUisF7K+rme
+ vZ34z/5TCiKAom4tXM6/piWWi0ukFHv63JqXh7NbFFVACdKO+c3S6VsNGj+AngzO/dTV
+ jz2Q==
+X-Gm-Message-State: AOJu0YyQCI5Iny1Y1uNExRQmPWCSo3d9hI3cMqMedbp1BypaqVMocisB
+ ImRTflijyxFbvImt8qOMWLsr8EwXxtjLPNORZzTDwt62Uxmy/e6AJ2mQ4QMaaiP/aoA=
+X-Gm-Gg: ASbGnctXpKrV5N51mRqnKvNCtm3JPTdZwBeM1wscUVPAHZmlBlhRE75t9hK4ta0TSxx
+ 3PwrSLzroXKPLKy0pZ+l0B6zeiBCDrqoSh6aJUiuGGzpf1k7A3NmxOSyeLm+RPEVi/2lsS0zEBo
+ f952OzAMU+0eqOeMtrS6bLIAKl5B6An16+/Zw/OLRMW/aVECpPmqy9v1QbI/3PtYQrVgWFPKwxn
+ giqojJe5ovE9Kd2xwsAM3bQo4c5MM7C7XedXv3c8HzNJiGjbbPnRdQLtLwjj65qkz51XqTduaad
+ D2j7HjJBZeG6T6jccfmCUEKiSiO0OiMDnOMhRCwv0cnmMdo/WlS8kPC1s2nsGoJaWKnTSSP2M2X
+ spZwX92CMcE0bAWNJVlhSIwEZH3PEOhl2+pQSqCo/Kk1lKQw30UK3jQ==
+X-Received: by 2002:a17:90b:48c8:b0:30e:3737:7c87 with SMTP id
+ 98e67ed59e1d1-31939af5b45mr4256466a91.5.1751366020858; 
+ Tue, 01 Jul 2025 03:33:40 -0700 (PDT)
 Received: from localhost (pa49-178-74-199.pa.nsw.optusnet.com.au.
  [49.178.74.199]) by smtp.gmail.com with UTF8SMTPSA id
- d2e1a72fcca58-74af56d91d7sm11185740b3a.141.2025.07.01.03.33.22
+ 98e67ed59e1d1-315f542e494sm15233336a91.31.2025.07.01.03.33.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Jul 2025 03:33:22 -0700 (PDT)
+ Tue, 01 Jul 2025 03:33:40 -0700 (PDT)
 From: William Kosasih <kosasihwilliam4@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  William Kosasih <kosasihwilliam4@gmail.com>
-Subject: [PATCH v2 08/12] target/arm: Fix VLD4 helper load alignment checks
-Date: Tue,  1 Jul 2025 20:01:55 +0930
-Message-ID: <20250701103159.62661-9-kosasihwilliam4@gmail.com>
+Subject: [PATCH v2 12/12] target/arm: Fix helper macros indentation in
+ mve_helper.c
+Date: Tue,  1 Jul 2025 20:01:59 +0930
+Message-ID: <20250701103159.62661-13-kosasihwilliam4@gmail.com>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250701103159.62661-1-kosasihwilliam4@gmail.com>
 References: <20250701103159.62661-1-kosasihwilliam4@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=kosasihwilliam4@gmail.com; helo=mail-pf1-x431.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
+ envelope-from=kosasihwilliam4@gmail.com; helo=mail-pg1-x533.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -134,72 +135,332 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1PmF/Z94YrkY
+X-TUID: miovCJGOmw8o
 
-This patch adds alignment checks in the load operations in the VLD4
-instruction.
+Recent helper function load and store alignment fix caused the continuation
+backslashes in those macro definitions to shift out of alignment.
+This patch restores a uniform indentation for those trailing backslashes,
+making them consistent.
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1154
 Signed-off-by: William Kosasih <kosasihwilliam4@gmail.com>
 ---
- target/arm/tcg/mve_helper.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+ target/arm/tcg/mve_helper.c | 280 ++++++++++++++++++------------------
+ 1 file changed, 140 insertions(+), 140 deletions(-)
 
 diff --git a/target/arm/tcg/mve_helper.c b/target/arm/tcg/mve_helper.c
-index 5b04fa4425..2d2936abde 100644
+index 6dffd9cb35..72c07262c0 100644
 --- a/target/arm/tcg/mve_helper.c
 +++ b/target/arm/tcg/mve_helper.c
-@@ -421,13 +421,15 @@ DO_VSTR64_SG(vstrd_sg_wb_ud, ADDR_ADD, true)
-         uint16_t mask = mve_eci_mask(env);                              \
-         static const uint8_t off[4] = { O1, O2, O3, O4 };               \
-         uint32_t addr, data;                                            \
-+        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
-+        MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN, mmu_idx);      \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-                 continue;                                               \
-             }                                                           \
-             addr = base + off[beat] * 4;                                \
--            data = cpu_ldl_le_data_ra(env, addr, GETPC());              \
-+            data = cpu_ldl_mmu(env, addr, oi, GETPC());                 \
-             for (e = 0; e < 4; e++, data >>= 8) {                       \
-                 uint8_t *qd = (uint8_t *)aa32_vfp_qreg(env, qnidx + e); \
-                 qd[H1(off[beat])] = data;                               \
-@@ -445,13 +447,15 @@ DO_VSTR64_SG(vstrd_sg_wb_ud, ADDR_ADD, true)
-         uint32_t addr, data;                                            \
-         int y; /* y counts 0 2 0 2 */                                   \
-         uint16_t *qd;                                                   \
-+        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
-+        MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN, mmu_idx);      \
-         for (beat = 0, y = 0; beat < 4; beat++, mask >>= 4, y ^= 2) {   \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-                 continue;                                               \
-             }                                                           \
-             addr = base + off[beat] * 8 + (beat & 1) * 4;               \
--            data = cpu_ldl_le_data_ra(env, addr, GETPC());              \
-+            data = cpu_ldl_mmu(env, addr, oi, GETPC());                 \
-             qd = (uint16_t *)aa32_vfp_qreg(env, qnidx + y);             \
-             qd[H2(off[beat])] = data;                                   \
-             data >>= 16;                                                \
-@@ -470,13 +474,15 @@ DO_VSTR64_SG(vstrd_sg_wb_ud, ADDR_ADD, true)
-         uint32_t addr, data;                                            \
-         uint32_t *qd;                                                   \
-         int y;                                                          \
-+        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
-+        MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN, mmu_idx);      \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-                 continue;                                               \
-             }                                                           \
-             addr = base + off[beat] * 4;                                \
--            data = cpu_ldl_le_data_ra(env, addr, GETPC());              \
-+            data = cpu_ldl_mmu(env, addr, oi, GETPC());                 \
-             y = (beat + (O1 & 2)) & 3;                                  \
-             qd = (uint32_t *)aa32_vfp_qreg(env, qnidx + y);             \
-             qd[H4(off[beat] >> 2)] = data;                              \
+@@ -164,48 +164,48 @@ static void mve_advance_vpt(CPUARMState *env)
+     ((T)(v) << (sizeof(T) * 8 - (B))) >> (sizeof(T) * 8 - (B)) }
+ 
+ /* For loads, predicated lanes are zeroed instead of keeping their old values */
+-#define DO_VLDR(OP, MSIZE, LDTYPE, ESIZE, TYPE)                         \
+-    void HELPER(mve_##OP)(CPUARMState *env, void *vd, uint32_t addr)    \
+-    {                                                                   \
+-        TYPE *d = vd;                                                   \
+-        uint16_t mask = mve_element_mask(env);                          \
+-        uint16_t eci_mask = mve_eci_mask(env);                          \
+-        unsigned b, e;                                                  \
+-        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
+-        MemOpIdx oi = make_memop_idx(MFLAG(LDTYPE) | MO_ALIGN, mmu_idx);\
+-        /*                                                              \
+-         * R_SXTM allows the dest reg to become UNKNOWN for abandoned   \
+-         * beats so we don't care if we update part of the dest and     \
+-         * then take an exception.                                      \
+-         */                                                             \
+-        for (b = 0, e = 0; b < 16; b += ESIZE, e++) {                   \
+-            if (eci_mask & (1 << b)) {                                  \
+-                d[H##ESIZE(e)] = (mask & (1 << b)) ?                    \
+-                    SIGN_EXT(cpu_ld##LDTYPE##_mmu(env, addr, oi, GETPC()),\
+-                             TYPE,                                      \
+-                             MSIZE * 8)                                 \
+-                    : 0;                                                \
+-            }                                                           \
+-            addr += MSIZE;                                              \
+-        }                                                               \
+-        mve_advance_vpt(env);                                           \
++#define DO_VLDR(OP, MSIZE, LDTYPE, ESIZE, TYPE)                               \
++    void HELPER(mve_##OP)(CPUARMState *env, void *vd, uint32_t addr)          \
++    {                                                                         \
++        TYPE *d = vd;                                                         \
++        uint16_t mask = mve_element_mask(env);                                \
++        uint16_t eci_mask = mve_eci_mask(env);                                \
++        unsigned b, e;                                                        \
++        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));                  \
++        MemOpIdx oi = make_memop_idx(MFLAG(LDTYPE) | MO_ALIGN, mmu_idx);      \
++        /*                                                                    \
++         * R_SXTM allows the dest reg to become UNKNOWN for abandoned         \
++         * beats so we don't care if we update part of the dest and           \
++         * then take an exception.                                            \
++         */                                                                   \
++        for (b = 0, e = 0; b < 16; b += ESIZE, e++) {                         \
++            if (eci_mask & (1 << b)) {                                        \
++                d[H##ESIZE(e)] = (mask & (1 << b)) ?                          \
++                    SIGN_EXT(cpu_ld##LDTYPE##_mmu(env, addr, oi, GETPC()),    \
++                             TYPE,                                            \
++                             MSIZE * 8)                                       \
++                    : 0;                                                      \
++            }                                                                 \
++            addr += MSIZE;                                                    \
++        }                                                                     \
++        mve_advance_vpt(env);                                                 \
+     }
+ 
+-#define DO_VSTR(OP, MSIZE, STTYPE, ESIZE, TYPE)                         \
+-    void HELPER(mve_##OP)(CPUARMState *env, void *vd, uint32_t addr)    \
+-    {                                                                   \
+-        TYPE *d = vd;                                                   \
+-        uint16_t mask = mve_element_mask(env);                          \
+-        unsigned b, e;                                                  \
+-        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
+-        MemOpIdx oi = make_memop_idx(MFLAG(STTYPE) | MO_ALIGN, mmu_idx);\
+-        for (b = 0, e = 0; b < 16; b += ESIZE, e++) {                   \
+-            if (mask & (1 << b)) {                                      \
+-                cpu_st##STTYPE##_mmu(env, addr, d[H##ESIZE(e)], oi, GETPC());\
+-            }                                                           \
+-            addr += MSIZE;                                              \
+-        }                                                               \
+-        mve_advance_vpt(env);                                           \
++#define DO_VSTR(OP, MSIZE, STTYPE, ESIZE, TYPE)                               \
++    void HELPER(mve_##OP)(CPUARMState *env, void *vd, uint32_t addr)          \
++    {                                                                         \
++        TYPE *d = vd;                                                         \
++        uint16_t mask = mve_element_mask(env);                                \
++        unsigned b, e;                                                        \
++        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));                  \
++        MemOpIdx oi = make_memop_idx(MFLAG(STTYPE) | MO_ALIGN, mmu_idx);      \
++        for (b = 0, e = 0; b < 16; b += ESIZE, e++) {                         \
++            if (mask & (1 << b)) {                                            \
++                cpu_st##STTYPE##_mmu(env, addr, d[H##ESIZE(e)], oi, GETPC()); \
++            }                                                                 \
++            addr += MSIZE;                                                    \
++        }                                                                     \
++        mve_advance_vpt(env);                                                 \
+     }
+ 
+ DO_VLDR(vldrb, 1, b, 1, uint8_t)
+@@ -237,61 +237,61 @@ DO_VSTR(vstrh_w, 2, w, 4, int32_t)
+  * For loads, predicated lanes are zeroed instead of retaining
+  * their previous values.
+  */
+-#define DO_VLDR_SG(OP, LDTYPE, ESIZE, TYPE, OFFTYPE, ADDRFN, WB)        \
+-    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm,         \
+-                          uint32_t base)                                \
+-    {                                                                   \
+-        TYPE *d = vd;                                                   \
+-        OFFTYPE *m = vm;                                                \
+-        uint16_t mask = mve_element_mask(env);                          \
+-        uint16_t eci_mask = mve_eci_mask(env);                          \
+-        unsigned e;                                                     \
+-        uint32_t addr;                                                  \
+-        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
+-        MemOpIdx oi = make_memop_idx(MFLAG(LDTYPE) | MO_ALIGN, mmu_idx);\
++#define DO_VLDR_SG(OP, LDTYPE, ESIZE, TYPE, OFFTYPE, ADDRFN, WB)              \
++    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm,               \
++                          uint32_t base)                                      \
++    {                                                                         \
++        TYPE *d = vd;                                                         \
++        OFFTYPE *m = vm;                                                      \
++        uint16_t mask = mve_element_mask(env);                                \
++        uint16_t eci_mask = mve_eci_mask(env);                                \
++        unsigned e;                                                           \
++        uint32_t addr;                                                        \
++        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));                  \
++        MemOpIdx oi = make_memop_idx(MFLAG(LDTYPE) | MO_ALIGN, mmu_idx);      \
+         for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE, eci_mask >>= ESIZE) {\
+-            if (!(eci_mask & 1)) {                                      \
+-                continue;                                               \
+-            }                                                           \
+-            addr = ADDRFN(base, m[H##ESIZE(e)]);                        \
+-            d[H##ESIZE(e)] = (mask & 1) ?                               \
+-                SIGN_EXT(cpu_ld##LDTYPE##_mmu(env, addr, oi, GETPC()),  \
+-                         TYPE,                                          \
+-                         MSIZE(LDTYPE) * 8)                             \
+-                : 0;                                                    \
+-            if (WB) {                                                   \
+-                m[H##ESIZE(e)] = addr;                                  \
+-            }                                                           \
+-        }                                                               \
+-        mve_advance_vpt(env);                                           \
++            if (!(eci_mask & 1)) {                                            \
++                continue;                                                     \
++            }                                                                 \
++            addr = ADDRFN(base, m[H##ESIZE(e)]);                              \
++            d[H##ESIZE(e)] = (mask & 1) ?                                     \
++                SIGN_EXT(cpu_ld##LDTYPE##_mmu(env, addr, oi, GETPC()),        \
++                         TYPE,                                                \
++                         MSIZE(LDTYPE) * 8)                                   \
++                : 0;                                                          \
++            if (WB) {                                                         \
++                m[H##ESIZE(e)] = addr;                                        \
++            }                                                                 \
++        }                                                                     \
++        mve_advance_vpt(env);                                                 \
+     }
+ 
+ /* We know here TYPE is unsigned so always the same as the offset type */
+-#define DO_VSTR_SG(OP, STTYPE, ESIZE, TYPE, ADDRFN, WB)                 \
+-    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm,         \
+-                          uint32_t base)                                \
+-    {                                                                   \
+-        TYPE *d = vd;                                                   \
+-        TYPE *m = vm;                                                   \
+-        uint16_t mask = mve_element_mask(env);                          \
+-        uint16_t eci_mask = mve_eci_mask(env);                          \
+-        unsigned e;                                                     \
+-        uint32_t addr;                                                  \
+-        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
+-        MemOpIdx oi = make_memop_idx(MFLAG(STTYPE) | MO_ALIGN, mmu_idx);\
+-        for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE, eci_mask >>= ESIZE) { \
+-            if (!(eci_mask & 1)) {                                      \
+-                continue;                                               \
+-            }                                                           \
+-            addr = ADDRFN(base, m[H##ESIZE(e)]);                        \
+-            if (mask & 1) {                                             \
++#define DO_VSTR_SG(OP, STTYPE, ESIZE, TYPE, ADDRFN, WB)                       \
++    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm,               \
++                          uint32_t base)                                      \
++    {                                                                         \
++        TYPE *d = vd;                                                         \
++        TYPE *m = vm;                                                         \
++        uint16_t mask = mve_element_mask(env);                                \
++        uint16_t eci_mask = mve_eci_mask(env);                                \
++        unsigned e;                                                           \
++        uint32_t addr;                                                        \
++        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));                  \
++        MemOpIdx oi = make_memop_idx(MFLAG(STTYPE) | MO_ALIGN, mmu_idx);      \
++        for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE, eci_mask >>= ESIZE) {\
++            if (!(eci_mask & 1)) {                                            \
++                continue;                                                     \
++            }                                                                 \
++            addr = ADDRFN(base, m[H##ESIZE(e)]);                              \
++            if (mask & 1) {                                                   \
+                 cpu_st##STTYPE##_mmu(env, addr, d[H##ESIZE(e)], oi, GETPC()); \
+-            }                                                           \
+-            if (WB) {                                                   \
+-                m[H##ESIZE(e)] = addr;                                  \
+-            }                                                           \
+-        }                                                               \
+-        mve_advance_vpt(env);                                           \
++            }                                                                 \
++            if (WB) {                                                         \
++                m[H##ESIZE(e)] = addr;                                        \
++            }                                                                 \
++        }                                                                     \
++        mve_advance_vpt(env);                                                 \
+     }
+ 
+ /*
+@@ -302,58 +302,58 @@ DO_VSTR(vstrh_w, 2, w, 4, int32_t)
+  * Address writeback happens on the odd beats and updates the address
+  * stored in the even-beat element.
+  */
+-#define DO_VLDR64_SG(OP, ADDRFN, WB)                                    \
+-    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm,         \
+-                          uint32_t base)                                \
+-    {                                                                   \
+-        uint32_t *d = vd;                                               \
+-        uint32_t *m = vm;                                               \
+-        uint16_t mask = mve_element_mask(env);                          \
+-        uint16_t eci_mask = mve_eci_mask(env);                          \
+-        unsigned e;                                                     \
+-        uint32_t addr;                                                  \
+-        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
+-        MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN, mmu_idx);      \
+-        for (e = 0; e < 16 / 4; e++, mask >>= 4, eci_mask >>= 4) {      \
+-            if (!(eci_mask & 1)) {                                      \
+-                continue;                                               \
+-            }                                                           \
+-            addr = ADDRFN(base, m[H4(e & ~1)]);                         \
+-            addr += 4 * (e & 1);                                        \
+-            d[H4(e)] = (mask & 1) ? cpu_ldl_mmu(env, addr, oi, GETPC()) : 0;\
+-            if (WB && (e & 1)) {                                        \
+-                m[H4(e & ~1)] = addr - 4;                               \
+-            }                                                           \
+-        }                                                               \
+-        mve_advance_vpt(env);                                           \
++#define DO_VLDR64_SG(OP, ADDRFN, WB)                                          \
++    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm,               \
++                          uint32_t base)                                      \
++    {                                                                         \
++        uint32_t *d = vd;                                                     \
++        uint32_t *m = vm;                                                     \
++        uint16_t mask = mve_element_mask(env);                                \
++        uint16_t eci_mask = mve_eci_mask(env);                                \
++        unsigned e;                                                           \
++        uint32_t addr;                                                        \
++        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));                  \
++        MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN, mmu_idx);            \
++        for (e = 0; e < 16 / 4; e++, mask >>= 4, eci_mask >>= 4) {            \
++            if (!(eci_mask & 1)) {                                            \
++                continue;                                                     \
++            }                                                                 \
++            addr = ADDRFN(base, m[H4(e & ~1)]);                               \
++            addr += 4 * (e & 1);                                              \
++            d[H4(e)] = (mask & 1) ? cpu_ldl_mmu(env, addr, oi, GETPC()) : 0;  \
++            if (WB && (e & 1)) {                                              \
++                m[H4(e & ~1)] = addr - 4;                                     \
++            }                                                                 \
++        }                                                                     \
++        mve_advance_vpt(env);                                                 \
+     }
+ 
+-#define DO_VSTR64_SG(OP, ADDRFN, WB)                                    \
+-    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm,         \
+-                          uint32_t base)                                \
+-    {                                                                   \
+-        uint32_t *d = vd;                                               \
+-        uint32_t *m = vm;                                               \
+-        uint16_t mask = mve_element_mask(env);                          \
+-        uint16_t eci_mask = mve_eci_mask(env);                          \
+-        unsigned e;                                                     \
+-        uint32_t addr;                                                  \
+-        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
+-        MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN, mmu_idx);      \
+-        for (e = 0; e < 16 / 4; e++, mask >>= 4, eci_mask >>= 4) {      \
+-            if (!(eci_mask & 1)) {                                      \
+-                continue;                                               \
+-            }                                                           \
+-            addr = ADDRFN(base, m[H4(e & ~1)]);                         \
+-            addr += 4 * (e & 1);                                        \
+-            if (mask & 1) {                                             \
+-                cpu_stl_mmu(env, addr, d[H4(e)], oi, GETPC());          \
+-            }                                                           \
+-            if (WB && (e & 1)) {                                        \
+-                m[H4(e & ~1)] = addr - 4;                               \
+-            }                                                           \
+-        }                                                               \
+-        mve_advance_vpt(env);                                           \
++#define DO_VSTR64_SG(OP, ADDRFN, WB)                                          \
++    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm,               \
++                          uint32_t base)                                      \
++    {                                                                         \
++        uint32_t *d = vd;                                                     \
++        uint32_t *m = vm;                                                     \
++        uint16_t mask = mve_element_mask(env);                                \
++        uint16_t eci_mask = mve_eci_mask(env);                                \
++        unsigned e;                                                           \
++        uint32_t addr;                                                        \
++        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));                  \
++        MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN, mmu_idx);            \
++        for (e = 0; e < 16 / 4; e++, mask >>= 4, eci_mask >>= 4) {            \
++            if (!(eci_mask & 1)) {                                            \
++                continue;                                                     \
++            }                                                                 \
++            addr = ADDRFN(base, m[H4(e & ~1)]);                               \
++            addr += 4 * (e & 1);                                              \
++            if (mask & 1) {                                                   \
++                cpu_stl_mmu(env, addr, d[H4(e)], oi, GETPC());                \
++            }                                                                 \
++            if (WB && (e & 1)) {                                              \
++                m[H4(e & ~1)] = addr - 4;                                     \
++            }                                                                 \
++        }                                                                     \
++        mve_advance_vpt(env);                                                 \
+     }
+ 
+ #define ADDR_ADD(BASE, OFFSET) ((BASE) + (OFFSET))
 -- 
 2.48.1
 

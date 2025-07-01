@@ -1,129 +1,197 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3253688dye;
-        Tue, 1 Jul 2025 08:50:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUduFuep5NRkgaFfS9HAa8sPu/QVbe6O+Pt7WBjSNi6E7t8lyr1SYPPlmwkDY5F/nyD2IvZkBehffH/SA==@linaro.org
-X-Received: by 2002:a05:690c:6284:b0:70c:b958:9fbb with SMTP id 00721157ae682-71517150e74mr259331107b3.4.1751385026315;
-        Tue, 01 Jul 2025 08:50:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751385026; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3264669dye;
+        Tue, 1 Jul 2025 09:07:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUecNbhQ34OmyNaY/zAeMZwcsAMIMeqvlBX0njQ+sjLATo1Gn/cfhSe6HVS/x4htXT01JQasytDQOFWzg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFTZfgsryPLy9jZnz17zKYBmmCrmje456I8zZ4eZvqw50cZ741GQEzrDVJ+2HeB3KAWf6a4
+X-Received: by 2002:a05:6214:2f87:b0:6ff:664f:c4ca with SMTP id 6a1803df08f44-70001d66704mr245668616d6.12.1751386020606;
+        Tue, 01 Jul 2025 09:07:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751386020; cv=none;
         d=google.com; s=arc-20240605;
-        b=THrEq1dQwU/qgVqNm6ETb2bx3FPdUzb92mFrEHdfdOgv7G4HNChtB0uByrBR4CBGyO
-         kZIwaBCrspSCD3cCPc1L0F19p+dYG5V6JT9umSoGk0A1xTc/I1XcHOCcIBmqhYEdHB1D
-         jOmDnR4LURwekLBLE+sPeCk0HLeY6c4rmW3c3OAQGadYY6eMIyZogQkAnezcTUO27+Cp
-         F22yjQK1oTMNHprS9BfytxLGGVWxILK7+tuzFkmYq9gEzX1Flvp+jvW24f801YzlcHN2
-         tmSDpkxvpETkvBKbkqwFc37aLFRtyw7HHZm7o3XkctXv9z2nwL+7aByqvpF2A2sfeoFP
-         kUOA==
+        b=brujJbT8ArKUthZCgeGPGi2+if+lecIM3qB7+OtFLV1XHmdYUudJ4UcMUEowgEtRbB
+         tlP/YsDkQFxigi7cQatUmQgX8xnoY7oJ9RtJU3eWyuyxyGTZY4UVPi7sn9TwBWAC6FUx
+         fIL1/FZETxYSk7R5j0ylG3fRHqvZh01Dpn1VKaI8DBsEEJ/KOTPF9dIj0iVRxig4l1at
+         xU1BhIF373GH3geA4cA/FJnrQgD/BpdDDN6mDSwxFFDJmIQ+C/LcWlCDUTpMGAHKLn6L
+         0UhPRYlqVSNZjB6ACtAQnVQYL+tHAer2LZB4ek4KHtURzP4y61cXacuxxnvZJOr4eRL+
+         DOFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=NM0m9m6FgXQhqUCQOzdMmZYVj23cYKuGezzGfv9F+qE=;
-        fh=sAM3btnl5dfDd2oKrP9ifda/l+nQVYHliVWuw9Lt7q8=;
-        b=gEJrfJA43I24kW8ixWICHib/nYQ93j9gaaGt5uxWn0WXxDU5h6txterEcsxbK4JUew
-         Bxa3V2GP8PkFA514MLkxbZRXiE90Q+X/QG73//46Tw0ALyqt4Jy1tZCCgt5dLy23ZLp/
-         kK90aALI2TAnvE+8htuGRhntI4rsIrsI5/jPH1dWm3CWEVc7YLy9h1VTC0gMe0cWPyHf
-         SSluAjNDV69gt6zjVbZccJTHspMLoqP0MKP0HOiS1y+nHCWErVFZA2G3Wkto74MG7Jut
-         +IU0t0/OcoagGwqxuNOuTS6seQzpb+2p+U0sEwf8NPZyH2XRFm0T2/qpSdsnRM1xGk8u
-         j+7Q==;
+        h=mime-version:message-id:date:user-agent:references:organization
+         :in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=OANjoBvVLf6xMXLThwWS0hhZV0+SpHpMDNDI4sHOTSQ=;
+        fh=3AH/4enSkYH+0gdMWbJY9r7skS1O9K2SeH+yRsCcYPI=;
+        b=ccJbXNPRU+TBjm2mE9GH87NwV5ozPUiTdt/sRNPM2z2CTm4gAzrlS1xlHdP7v3qYYx
+         U9treMDwOCIzgFGq4SdLV32e1Nyo7kW4Rce2/cwVELb9djsQH9BWF4Lhvm1uDFzlKd/3
+         oLZZtIE7eA0Z7rvB18Z9oiGz5Nr8O8TlZjSRpo1SPJMcsoeBBYO/6AJHAnJs97SS7TH4
+         VhCP6yWOd24iV08Po9JdiGQlxu4uLMXQ8nlg2vCgkGyXxveJTqxPE5xvsGpDd3tY7C9W
+         jVNYoPgueFv5XAI8wPq4WCWUsinLxMQNHUtpBlm1A04dK0eWbhdLJyF75OUB/RMstom2
+         JZ9g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=g7jBRf5r;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-71515be778esor60674277b3.3.2025.07.01.08.50.26
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cb45bsbP;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd77354d4esi129542576d6.237.2025.07.01.09.07.00
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 01 Jul 2025 08:50:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 01 Jul 2025 09:07:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=g7jBRf5r;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1751385026; x=1751989826; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=NM0m9m6FgXQhqUCQOzdMmZYVj23cYKuGezzGfv9F+qE=;
-        b=g7jBRf5rU32l+ysM0fhxqmebOS0e7UeDEq/PAV8ulkwZ8i3OgA1Ek9AchP+sqSUqp9
-         idHVpS67CNlhaFz2fl8/XVQwj7nLEncjW7nk1IapN90oYf7shZ70T60vT4CpkRLCoaTO
-         s0A2dmv5X/wAL+a06OMGjaV8j4gPzF7nyWIkN2Ba7uzK5F4QAJo6ujbyEa1aCNBzTc+G
-         yF/X7HU0rVEUqmupY+j9uCv1CMppQWsMuPeSrJZ7z803+fyfwnvgAqB3YcwQ5ehmpmDu
-         mOuq2M3KU05hjM5HxgEXNAcChjU/5ZPXH8K+AwIF8ed3VwDX9VWwyM+TAtxoSVKadLxl
-         rZhw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751385026; x=1751989826;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=NM0m9m6FgXQhqUCQOzdMmZYVj23cYKuGezzGfv9F+qE=;
-        b=xCMDRgIeTJuIWcS2PWOtaDehTZRBz+IV7lsK4pAPS9O4yVYqqaEYlYvBqQPV3ZrVQz
-         /BTyNUlTMWwsMW6E/ppo4zYt5k/jxF1pb/ElgX1+VE9bl13yyDbT2Y1j1yWvmfWf+qUf
-         CFIiP2qy9mcBu96/GvpE9Q+fI+T3sMNS1v5EqznH1ec6oem/aBCZj4L4JJJCSyF04wZA
-         0Nt71YhH6IlcPKvbymvKkaNuYsIu7HRx5WzxdAEykxF8vOxINcf39H8bNmSXu2q8qOuM
-         XPkAmHQoqzq13VcvlwBaD8GRu6hE5269FwwDN64VFUg5d5wHkOflQ/YVLmrCLxQ4ujR+
-         6IFw==
-X-Forwarded-Encrypted: i=1; AJvYcCXK7aDeMcXNTQZenuygJfXUseHXhe5zr2iCcit96ay7QL9MilUlTaBtNM/n1PT0cCIBnWwMLQMkCPMsPA==@linaro.org
-X-Gm-Message-State: AOJu0Yw/7UNSJaMaynoN9HQ9KjbgP3YrJaqMG1Z/jADqN0nczDr74ej1
-	q+FbKjckuzuKL8UAHCCqaTm+6lqWeu1W4UJYCUn4+PTrKkvPv2EliJLXCEfh+y+5ES4gnMqrLo7
-	htLdD+o5dlsurzIZAYumdASizoLx3njLD7NIcRuViCiLe
-X-Gm-Gg: ASbGncvKMywb8cUTgTH4fuGgG3tElxdohtK90TScAa4YfkFF2CBzgUz2q+DubdqdFKw
-	nKEBeanoRymMP1CZwJ9hl3uCZK/coVDXHn7h/5zftOD90DWk1CguJ0w2RaiDajuGhOltzuz6l/J
-	4KIv5XZ812Sq8CQp6RwPT9PbtJMV3yBkL0/jOMprrvtCBG
-X-Google-Smtp-Source: AGHT+IGGy1LiWLJoul/YG8YZ7v1W37zVJZeUDsvzCu+RNL4TBiAeiTy/45xc5PzZQdt8W81oQJcvdTJMl4dmlwVX3uo=
-X-Received: by 2002:a05:690c:1e:b0:70f:6ec6:62b2 with SMTP id
- 00721157ae682-71517150f8emr253657857b3.8.1751385025700; Tue, 01 Jul 2025
- 08:50:25 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cb45bsbP;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1751386019;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=OANjoBvVLf6xMXLThwWS0hhZV0+SpHpMDNDI4sHOTSQ=;
+	b=cb45bsbP2cSPjmmYU2YpLSKHdREgOSIUbBql+MsNK1oOhuiJHrbykFnDVFylv+LhGzmaxV
+	fzLxWILPlEYTTcFy/KJG5I8WzsqyK8msfAv2dz/KhO91MRYgDUrKbM8GtVhU3guze5QzP6
+	QHhpdE2V9NsdVCI8NNj7rKhv6Irg8Nc=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-568-0VCybmYhOPOIp4N0ampxqw-1; Tue,
+ 01 Jul 2025 12:06:57 -0400
+X-MC-Unique: 0VCybmYhOPOIp4N0ampxqw-1
+X-Mimecast-MFC-AGG-ID: 0VCybmYhOPOIp4N0ampxqw_1751386015
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 2832719560A2;
+	Tue,  1 Jul 2025 16:06:54 +0000 (UTC)
+Received: from localhost (dhcp-192-236.str.redhat.com [10.33.192.236])
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id BEC191800284;
+	Tue,  1 Jul 2025 16:06:51 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, richard.henderson@linaro.org,
+ alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+ sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
+ armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
+ jdenemar@redhat.com, agraf@csgraf.de, shahuang@redhat.com,
+ mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [PATCH v8 13/14] arm/cpu: switch to a generated cpu-sysregs.h.inc
+In-Reply-To: <CAFEAcA9OXi4v+hdBMamQv85HYp2EqxOA5=nfsdZ5E3nf8RP_pw@mail.gmail.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Avril Crosse O'Flaherty"
+References: <20250617153931.1330449-1-cohuck@redhat.com>
+ <20250617153931.1330449-14-cohuck@redhat.com>
+ <CAFEAcA9OXi4v+hdBMamQv85HYp2EqxOA5=nfsdZ5E3nf8RP_pw@mail.gmail.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Tue, 01 Jul 2025 18:06:49 +0200
+Message-ID: <87bjq3rj3a.fsf@redhat.com>
 MIME-Version: 1.0
-References: <20250623121845.7214-1-philmd@linaro.org> <20250623121845.7214-26-philmd@linaro.org>
-In-Reply-To: <20250623121845.7214-26-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 1 Jul 2025 16:50:14 +0100
-X-Gm-Features: Ac12FXxbbgcWVCUlees7q4LLOO8nBn3R6BKx2RlRYHRfsfQHSIdewGI2EN-Bf0M
-Message-ID: <CAFEAcA9MLMJBFk+PQCJT8Bd+6R+vaho9_vXmDCjPU5cp6B7LfQ@mail.gmail.com>
-Subject: Re: [PATCH v3 25/26] tests/functional: Add hvf_available() helper
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Leif Lindholm <leif.lindholm@oss.qualcomm.com>, 
-	qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	Roman Bolshakov <rbolshakov@ddn.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Alexander Graf <agraf@csgraf.de>, Bernhard Beschow <shentey@gmail.com>, John Snow <jsnow@redhat.com>, 
-	Thomas Huth <thuth@redhat.com>, =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	kvm@vger.kernel.org, Eric Auger <eric.auger@redhat.com>, 
-	Cameron Esfahani <dirty@apple.com>, Cleber Rosa <crosa@redhat.com>, 
-	Radoslaw Biernacki <rad@semihalf.com>, Phil Dennis-Jordan <phil@philjordan.eu>, 
-	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: XIM5TEaScz0l
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-TUID: rYzEAldStHyG
 
-On Mon, 23 Jun 2025 at 13:20, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
+On Mon, Jun 30 2025, Peter Maydell <peter.maydell@linaro.org> wrote:
+
+> On Tue, 17 Jun 2025 at 16:41, Cornelia Huck <cohuck@redhat.com> wrote:
+>>
+>> Generated against Linux 6.15.
+>>
+>> Reviewed-by: Sebastian Ott <sebott@redhat.com>
+>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> ---
->  python/qemu/utils/__init__.py          | 2 +-
->  python/qemu/utils/accel.py             | 8 ++++++++
->  tests/functional/qemu_test/testcase.py | 6 ++++--
->  3 files changed, 13 insertions(+), 3 deletions(-)
+> Stripping out all the lines that just moved around,
+> here are the additions:
+>
+>> +DEF(ID_AFR0_EL1, 3, 0, 0, 1, 3)
+>
+> This is ARMCPU::id_afr0. If we want to store this in
+> the idregs[] array that's fine but we ought to move it.
+>
 
-This seems to trigger errors in the check-python-minreqs job:
-https://gitlab.com/pm215/qemu/-/jobs/10529051338
+I guess the *afr* regs fell into the cracks because they were not in the
+isar struct -- makes sense to move them.
 
-Log file "stdout" content for test "01-tests/flake8.sh" (FAIL):
-qemu/utils/__init__.py:26:1: F401 '.accel.hvf_available' imported but unuse=
-d
-qemu/utils/accel.py:86:1: E302 expected 2 blank lines, found 1
-Log file "stderr" content for test "01-tests/flake8.sh" (FAIL):
-Log file "stdout" content for test "04-tests/isort.sh" (FAIL):
-ERROR: /builds/pm215/qemu/python/qemu/utils/__init__.py Imports are
-incorrectly sorted and/or formatted.
+(This reg "must be interpreted with" MIDR_EL1; I'm wondering if that has
+any implications once we enlighten guests with possible midr/revidr/aidr
+values.)
 
-I'll see if I can fix this up locally. (The missing blank line
-is easy; I think probably hvf_available needs to be in the
-__all__ =3D () list in __init__.py like kvm_available and
-tcg_available. Not sure about the incorrectly-sorted warning.)
 
--- PMM
+>> +DEF(ID_AA64PFR2_EL1, 3, 0, 0, 4, 2)
+>
+>> +DEF(ID_AA64FPFR0_EL1, 3, 0, 0, 4, 7)
+>
+>> +DEF(ID_AA64DFR2_EL1, 3, 0, 0, 5, 2)
+>
+> These are all ID registers we don't implement yet
+> because we don't implement any features that are
+> described in them (i.e. our implementation is RAZ/WI).
+> I guess it's OK to list them here, though we won't
+> do anything with the array entry.
+
+I don't think it hurts to include them, it makes things easier when we
+want to deal with non-zero values in there via kvm.
+
+>
+>> +DEF(ID_AA64AFR0_EL1, 3, 0, 0, 5, 4)
+>
+> ARMCPU::id_aa64afr0
+>
+>> +DEF(ID_AA64AFR1_EL1, 3, 0, 0, 5, 5)
+>
+> ARMCPU::id_aa64afr1
+>
+>> +DEF(ID_AA64ISAR3_EL1, 3, 0, 0, 6, 3)
+>
+>> +DEF(ID_AA64MMFR4_EL1, 3, 0, 0, 7, 4)
+>
+> More ID regs for features we don't implement yet.
+>
+>> +DEF(CCSIDR_EL1, 3, 1, 0, 0, 0)
+>
+> CCSIDR_EL1 isn't a single ID register, it's an array
+> of them (indexed by CCSELR_EL1). We keep them in
+> ARMCPU::ccsidr[]. I don't think it makes sense to
+> have an entry in isar.idregs[] for this.
+
+Hm, IIUC, kvm gets the correct CCSIDR_EL1 under the covers already
+(i.e. no array).
+
+>
+>> +DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
+>
+> ARMCPU::clidr
+>
+>> +DEF(CCSIDR2_EL1, 3, 1, 0, 0, 2)
+>
+> This is an array too.
+
+Currently, kvm handles this as undef.
+
+(I think the whole cache stuff might be a bit of a headache.)
+
+>
+>> +DEF(GMID_EL1, 3, 1, 0, 0, 4)
+>
+> Another ID register for a feature we don't yet implement
+> (and a slightly oddball one in that it should UNDEF
+> until we do implement FEAT_MTE2).
+>
+>> +DEF(SMIDR_EL1, 3, 1, 0, 0, 6)
+>
+> We implement this as a fixed zero in helper.c.
+
+Undef in kvm.
+
+>
+>> +DEF(DCZID_EL0, 3, 3, 0, 0, 7)
+>
+> We construct the value of this one in aa64_dczid_read()
+> based on ARMCPU::dcz_blocksize plus some runtime info.
+
+That one's another bit of a headache (I didn't manage to spot kvm code
+dealing with it.)
+
+I'll move the *afr* ones, not yet quite sure how to deal with the cache
+related ones.

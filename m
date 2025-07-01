@@ -1,88 +1,88 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3033804dye;
-        Tue, 1 Jul 2025 02:50:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX+C0SbAQxc1w45dwX8ip9CoDxEBBsT6m7RVPDwSz57c9uFXR9ejRbI3Ynqv0DTq1icnKeXc1tpyFYEhg==@linaro.org
-X-Received: by 2002:a05:690c:3691:b0:713:ff2c:a7aa with SMTP id 00721157ae682-7151719b132mr260633537b3.31.1751363406561;
-        Tue, 01 Jul 2025 02:50:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751363406; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3035121dye;
+        Tue, 1 Jul 2025 02:53:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUBCV+IaV6yDq1TPmlV9hHkZQPNuIVWe29x+uENzpdWTcEAWE+REVV+vcD1wDyl0tbwFm4+aEOVao5mLQ==@linaro.org
+X-Received: by 2002:a05:690c:6410:b0:713:fed3:70a5 with SMTP id 00721157ae682-7163ee8e0c2mr41985937b3.9.1751363608599;
+        Tue, 01 Jul 2025 02:53:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751363608; cv=none;
         d=google.com; s=arc-20240605;
-        b=AdOOV4dnPkroyZJf0LxXU64NJjrZ/2E7VrD1/FSADGaSu8kA/bjaN8Qwgl/tibFtTR
-         4KXq1bxzawcM9YbJGmkyINgzXJLsyvSc+bioAxahbX0tFyvNPo+zTcCYXeyC1yq/P9lP
-         Ngi5VDGIgqEiEHixm4bNbGLO77aVqSKuD/N52BAamzA9R5xR7l1AUit7wPHIdZg75yyK
-         1KpKwhx8MaLuSzTuqMghEcN1YFSZD4xIKnIWLINKCK1F0zdWNXPWgyb500qxaOuSpY0p
-         hfVeSGxRLrVcDKucRXGw6V6cq6h6PmH345R+PyI/7l2fqIoKrmoeF1wsl7QTk3AiG49r
-         m8Dg==
+        b=ILBu37ptdptD9wQv0tMPnAvw5yHaR/LkuuvN+7R5qLcmKIRpe2j5h6ez4vGHcIBnO2
+         aaaJY9zO6Z5BGQkf7TaBYDR873wWkuoKeMXD+fF1hsbZfrs88ud9HSNLuXwJb0s0AOk3
+         RDIwRjaB9ZUJ2zKd5qagQ+2EzXQ4qY+6Tlb40ELy8BbOVQv1lOZbYBD/ZJZqsyhQWA9d
+         Kx+PyoA/p8dcCGynM8wJEGz4SzV5KE3y/sbsbNdeeN9AIjKdDKw6TvNha/0X6Sy+iIb8
+         mVJ3GERJ01X/pCOV5M27HyRCFIohaWABYIPeYmVbKMZwLhn9Yu0SMxDQwkQxa7Wn0IFy
+         eVcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=L3ead+uizm1Vc976UnfrINanFTxCKtIjchE+tw+EPsA=;
-        fh=HFNhXL6MstgvXhHccbj+32U3iet7fYuxKIDeqEj1oXI=;
-        b=Q1+CvFBtcnxgwsAht4AOZZueJHu4INW87GHtNtlPWt4kzdVuCOS5KKLwYVRKz/luAS
-         F7zCKseW+h3JImlfBD4GVtlAUqVtFDAbb76Og+AUELaO3XlmT0PBGWb0DK2AKTn6+r6J
-         SLq10D3loygrH91tWMUiJnru/sWCHUa/H1vYng/6X30UuYb33w1RpJXmOXM5eTBlYztQ
-         FvzdpU9i2+EdceFqjvKIFNr1hQXEmazo7bM9SE35vgtlMlDvl7h40diKGBvwVAWSTx65
-         37dZz9HXGR/kdE4dC2v2Dty+/Jt8T5i5vjvFXqzJdtJsP+hWLh/ohAes1COtSMuqm0UK
-         zpVA==;
+        bh=wImLPadQucP6avEWGXXDkRvaaePghLhR5MvhokcUgVY=;
+        fh=G3HX5PJflaGEpy+WrVM2w9QuFrZBAw2ZltPJhrN3JkE=;
+        b=HOvmMtukaZb4DBnZhmEauzYm5bAvLka+lYAxjpddKjzxC8CQG2tb8nGvuc4TfK+HSv
+         5b9chjdYZQHZQaFlFqLGv1MdB6eetlZSiuI87kQjxfB60I+agpZ7s67HglzGJKcW2MBt
+         +T1a2U4Bf2KLNU4yboVSxHa2cGT+4DvmtdbTLYMhv6w2v5gqot7hM7bbDHt/eG9jw7jc
+         qhdZpt2v2K/GoDoqfT/2ESCOm8dwBCCCyH2DKjRZ9Fa2UOXd4JjThnPEFES+OoLztQg4
+         XiCNyML++sHyB55Ew47pFZcFMxLiaIgoUzv65q9bXXqJLQXpEIIjCHXcefqTgVB5wgqk
+         ERww==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VBQeMyzQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ULfzZA47;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-71515cd0b3fsor62728747b3.12.2025.07.01.02.50.06
+        by mx.google.com with SMTPS id 00721157ae682-71407e4becfsor58829877b3.0.2025.07.01.02.53.28
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 01 Jul 2025 02:50:06 -0700 (PDT)
+        Tue, 01 Jul 2025 02:53:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VBQeMyzQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ULfzZA47;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1751363406; x=1751968206; darn=linaro.org;
+        d=linaro.org; s=google; t=1751363608; x=1751968408; darn=linaro.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=L3ead+uizm1Vc976UnfrINanFTxCKtIjchE+tw+EPsA=;
-        b=VBQeMyzQ8Vb//a4LqPey5O04CTiXmZ3RVGZKZiqg5bl7TcW0lqfdafZ6fQcs8vej9B
-         K6mTiOBxQ0CHealHifcM4rnaTilM2uuiPXYHh2OSS52X/bv6YOnvolfLaK6DO4jKD5LT
-         7NsQnt1wWbUq4T90i9ScNcPFvi7s8Dm8Go2DcGmbDWbj5nnKk8p4iFc5j7OUBZ1dQFxU
-         heywD1Kt766cCN02xnzQzFqUI6C0vHU4V31WRYKHDIyXpJCG/Hk4roDWmrJOdDYl/VsO
-         3yAbgABRkcRwCBqdC6zB19HCX9htjoPWAqoGnQ8YoczhOJN/l1AgYKOJ8HKY7pJ7tI4U
-         xanQ==
+        bh=wImLPadQucP6avEWGXXDkRvaaePghLhR5MvhokcUgVY=;
+        b=ULfzZA47MBzLvIb5YG/TywDwUQT61lUT9tg1QN0qOHjBdl4vx7buF3k6yZ+ay/rp8l
+         oxDZ8k9uusjBIvXDsQuvDCNCI7USjd/xK0qB6d2y1aC5C69RNEaNpXXs9vnVwuutHS5R
+         FCbgflZly2Ul/+TRQif7+PijV87O3WLf9+LJGlDRAkfiK01jSRh2krdsYhJc0ygnrSAa
+         VObrA695kRXxnGUamIqR9TBh6fJ/8NsHFQkdVTEz6OqWXxvpXuARzZVkORLSJPI3mOq1
+         ysvOhfHF4asxOQ1KKKfqUiWyyZPh/AF3S2rmsWKjT1dMybywbYld/Ahvw4XiDXxZEPHT
+         9sCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751363406; x=1751968206;
+        d=1e100.net; s=20230601; t=1751363608; x=1751968408;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=L3ead+uizm1Vc976UnfrINanFTxCKtIjchE+tw+EPsA=;
-        b=oifU0TICSeEYS6jbJ9lPwt6n7FLGAKBwsVDPZjmKCHtaLUKlP1+9w6kHFzqItvu1CX
-         t2zhL34CPqVKS/eOkEndgGz2PUepa/f4xiPJ53inDMDUzDD6sA1rezgIPeIxFCwPL3/K
-         7at1ppCbxAHgodZCL4tj8ghigWw79M5bLqQqOomysyx7actAz2vPVOIp8s9wo3yYGkw/
-         cwpMbe3XCH4Ba9F2mN+JDR49gt4/rVYL5XUZx4YLxPpJ/rt1LVcH1qkT+Ff1GCxQlLjz
-         Z/Rv7tDOY0pX2n6w32CCGQYtHQXVK7yIed1w7uv0IesOM6q6wey/iyeSPHAVldDrFY3G
-         ebyA==
-X-Forwarded-Encrypted: i=1; AJvYcCWCNhncYz4iNqUfJ23+Gnh3vtlQIR4fZzz67grrU9P+MEw8zhOs9FB93ghnE623qEyaaLMFYITS4tIFNw==@linaro.org
-X-Gm-Message-State: AOJu0YxyLm4PqxYw2VbmWj4sGg3tw2OiSLUAcsjdL0kdCnWIY0LqHCcy
-	GF8vkxIgFrES6h+8PoEqjtfOns1+vK+Tde/V4djg/PUc71j8gmCRDF0LMAAT2F7MJvQFg5+74oB
-	zbcj9TKcNEnqvHr16P+33Mw9Y4NTb8dxmno7kSEIE7Vqo
-X-Gm-Gg: ASbGnctpkR6mh5JOHDKDwkWdv6CG+GL8JEJt6A8aBPro7Q6nolNze8JDIgwMXbajAmt
-	3Jy6oQa0iwRGyWKTRNQcw3Ev747iXO5+96My8IztriF5z3JCZ0JZMelPyu3dOGghDQorgzeg2af
-	2/HNrlZITodXvu9EvVVnqXTeSGszYRAH5XCS0y4VbtAIkj
-X-Google-Smtp-Source: AGHT+IEgNBWX5tGLtftpO87ft/BiEpcXC82wrB1DaQaCVscRFjWWJgGUjii5r8i+5yiViziGpgeRsjHaIy59eNovzCg=
-X-Received: by 2002:a05:690c:7442:b0:711:a4af:43ad with SMTP id
- 00721157ae682-71517147badmr235251117b3.14.1751363406075; Tue, 01 Jul 2025
- 02:50:06 -0700 (PDT)
+        bh=wImLPadQucP6avEWGXXDkRvaaePghLhR5MvhokcUgVY=;
+        b=ZQh15fD7TXkmaFJ64fZ2F8GF/TRS+UCAsOBXTm7dyyZt6mCY1pSKPpB0fOavrfKKtC
+         go4R1brpwK59ogy+e1JapKecJf5fwmeewUu0wspbvPxoD6OPDd3mSFKuTrFbUIa3epH4
+         jTKpE5DLr8/9zzcAuUx37HLAKx6xfDCQaMiKqp0ZJHwlwXSoc3EA5Nj6pjAHAKMj9t7s
+         E2MnffIeZtAVXdS5qTIwo/BuR3ircVI8TrTqU7R0OxW7PwDs8aoygUZlUXRXFf9rAMtG
+         tQqhJn4+CWRMSDj8/NB9gaPmfKLyDFe4HtUl5htyTJV31DnGS7eQH5PI5sfu1BJMma7h
+         RjKQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUMRYT0DD0Qw2y5DYYq6L6fmAoBesdPw9KjyIoeyeR0qIAU3AWrKROZolflHY0geGJ5esVsWuSfa1yKmg==@linaro.org
+X-Gm-Message-State: AOJu0Yxss/LBcqYCl6HKQlXLC1WzPiQj9zRL3aClbZ1JahHUqMK4qBm6
+	SALmm5U4ML2pbL0hOHhQolLI+2iN5I9cAhYggibjXCkEZAX6qgtcUl4b1Y3eqnmfmxmXCSo9dpi
+	x6V7IbmCZPNLz9PriaNG9rnlVQdfaomR6TZxNUC25kMaa
+X-Gm-Gg: ASbGncteIKTb0eAkBJJb/Ym7+aD7Acv8//oz+l5SFu6l8ndvlxiLe9rrJKVBYg161El
+	Tix4xRpEcqtQik2rAHlk4t1AQmvc91l4z0LmvqXMoCgn2nArjA4pfQTdTl52Y0rBxady+CBzEWC
+	I69/+P3AvuKNoSfHVRI37Zz1EoeE5iXcNvpF5dDEYDIVDY
+X-Google-Smtp-Source: AGHT+IFJCoy+BaAXpqIPg7zTDLzhyK8miq/1Dpx45qGcw9+XUoph9itQWahKy4dHJ12+vXIQx6+RnOzACS932yqoIig=
+X-Received: by 2002:a05:690c:6602:b0:712:c295:d012 with SMTP id
+ 00721157ae682-7163eeb32c8mr39248687b3.13.1751363608216; Tue, 01 Jul 2025
+ 02:53:28 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250623121845.7214-1-philmd@linaro.org> <20250623121845.7214-7-philmd@linaro.org>
-In-Reply-To: <20250623121845.7214-7-philmd@linaro.org>
+References: <20250623121845.7214-1-philmd@linaro.org> <20250623121845.7214-12-philmd@linaro.org>
+In-Reply-To: <20250623121845.7214-12-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 1 Jul 2025 10:49:54 +0100
-X-Gm-Features: Ac12FXyuBHFyZZaOxyOwWqZE-W7vNcGgM_jfizm0gIVdy-6YVWg7T5T5DEF9PnA
-Message-ID: <CAFEAcA9ref1SFd2uPRBBjyg=eph+GptWxoyURxMZj8aSVD7zAg@mail.gmail.com>
-Subject: Re: [PATCH v3 06/26] target/arm/hvf: Trace hv_vcpu_run() failures
+Date: Tue, 1 Jul 2025 10:53:17 +0100
+X-Gm-Features: Ac12FXww9a1Do6eGY4OGmuJAIl3RWIp53XrSRbJt38wyQKMH3BAQVzfhsdW1Nmw
+Message-ID: <CAFEAcA95pGrwhv7DwmjayhHoPvdmYbYBHnHUmCpHSMzLz_YE_A@mail.gmail.com>
+Subject: Re: [PATCH v3 11/26] target/arm/hvf: Pass @target_el argument to hvf_raise_exception()
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Leif Lindholm <leif.lindholm@oss.qualcomm.com>, 
 	qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
@@ -95,45 +95,21 @@ Cc: qemu-devel@nongnu.org, Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
 	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: Ik3e4GQ9n7sf
+X-TUID: P/dblZUO1A0A
 
 On Mon, 23 Jun 2025 at 13:19, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
 g> wrote:
 >
-> Allow distinguishing HV_ILLEGAL_GUEST_STATE in trace events.
+> In preparation of raising exceptions at EL2, add the 'target_el'
+> argument to hvf_raise_exception().
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/hvf/hvf.c        | 10 +++++++++-
->  target/arm/hvf/trace-events |  1 +
->  2 files changed, 10 insertions(+), 1 deletion(-)
->
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index ef76dcd28de..cc5bbc155d2 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -1916,7 +1916,15 @@ int hvf_vcpu_exec(CPUState *cpu)
->      bql_unlock();
->      r =3D hv_vcpu_run(cpu->accel->fd);
->      bql_lock();
-> -    assert_hvf_ok(r);
-> +    switch (r) {
-> +    case HV_SUCCESS:
-> +        break;
-> +    case HV_ILLEGAL_GUEST_STATE:
-> +        trace_hvf_illegal_guest_state();
-> +        /* fall through */
-> +    default:
-> +        g_assert_not_reached();
 
-This seems kind of odd.
-
-If it can happen, we shouldn't g_assert_not_reached().
-If it can't happen, we shouldn't trace it.
-
-But the hvf code already has a lot of "assert success
-rather than handling possible-but-fatal errors more
-gracefully", so I guess it's OK.
+I'm taking this patch, but note that caution is required here:
+part of the analysis that says we're OK to call into the
+TCG GICv3 implementation includes "we will only do this
+for EL0 or EL1, not EL2 or EL3".
 
 -- PMM

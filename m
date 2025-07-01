@@ -1,93 +1,93 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3044889dye;
-        Tue, 1 Jul 2025 03:11:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU0njKH1bAU6+rzMAPdSLb1/YzeAF54V4J//2ECgyhELUWLwsUbjAXCypd3/jyF5M4Q6VEELnji8wB58g==@linaro.org
-X-Received: by 2002:a05:600c:4ed2:b0:453:7b2b:ed2e with SMTP id 5b1f17b1804b1-4538ee8cb15mr166395445e9.24.1751364691638;
-        Tue, 01 Jul 2025 03:11:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751364691; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3045446dye;
+        Tue, 1 Jul 2025 03:12:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX0iLJWWL1+m4MedTrG+g3JS63wYllCS7gMvCE8SiUtvw/4X00l4GG8oITg4rijvfRQHIAWo7YNSS+cLg==@linaro.org
+X-Received: by 2002:a05:6000:4305:b0:3a4:e387:c0bb with SMTP id ffacd0b85a97d-3a90c171f65mr16980184f8f.59.1751364750623;
+        Tue, 01 Jul 2025 03:12:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751364750; cv=none;
         d=google.com; s=arc-20240605;
-        b=MuHJen0GWolHecXRNqUdgM0R9s88iBPWsn053fbhswxefCE0zqDu8YBwW0xim4ThC4
-         SEpGJPfHo4hKgeVZdDbPlWEzYWNEPXziWSFVPgdwc3/QGdySkIolixIRoGdwVYoWz2ek
-         dOwMAptceDGPuxeObtVpXsVcM+y5Qf37HF2GmKr8QjNjhLOx4Pfx5R5vaJINeIZJQzeF
-         +IqkMAN3WyJ7nIh2DNix7dZ4HXD243THiiZkzEu5GOVnvACDMMEc6T9/+mkKd4OvnSIW
-         gQ3gzjfKVnF5h7r8aCwteD+gAfsT7mwm0IXADqpK/EqsWAJGOhe3PNbnEMAkX6ns7s0M
-         3N9g==
+        b=k0x2JZyNQcRj/PleC6cwDsCDOMLQlPh5I5UqqiFrkPFoFcaVilLxHMtTYFByU8HnGj
+         FGWVhMH4a9HOopdeyyqRRNgE9gIr0WUqooxyu7l/1qBbmTTzpumod3+5naAcGAH8accx
+         9CsBJ9FugCfII4dKqelS5k2v3LRvlJGhVCj3vcJfD/UiJU/EulpGAshFN7ixZ9mOb2ul
+         w83PUq0SnZsVujBcCQng0fU2LPFfFxIsIIDG17JQzYhJSXRLlojr+mIfTy8OHwlpyTn7
+         M5Q4S0NRGGI4NetaVc/n3+63skMwX8fW8uMNn9gUwg/uyYpy/o83eq07izI+41VI+jCg
+         RnSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=xukDN3H63LwhhQewlIjnzCHEaos/m6LMLbLr7A6Mjes=;
-        fh=NGpPiN+DnMTp/AsXcVvVscpePdeG8hgK5Pbt0P4+p9c=;
-        b=VtmVegF83fXv5e5WRVTR062Qn1JO6RkBeNSMIrSDV1ZDqxaDNXvmYSOv29+Mn7dYXw
-         7zcGfK5VfoJuTLHBSK1OFhyn7Ud3nRUtNs3TCK9iycNcZkYOpWhhSLN9GXJxiyaQ8g5/
-         +OEeX9jTMWdUnPToD+Zv/JYKA7sqVs/DBLpugQWNQnf9GI6p52aDS+SNGjLMkPko59Mb
-         3y5DsS5Q0d3bk2LhcplLexjgDEf2fxLqoYmXpT7dEBtmgJD3aHY3SB3CfmCBVL5dCCYe
-         BTuyhc+s2z8BrZDAZ5BAicvRLYjj1zK7cXi3khXce4qcmCdD6/wJE4Q5OP2ZP64yEcz8
-         i+xA==;
+        bh=i48kyF48WGF1kOw5a2fFzh77wpZJNP5oYB8FFOd+ev8=;
+        fh=QyF7kFXl4SbPCbk0ERh0zNfN4rjWq9XyQL7HP0Yb+i8=;
+        b=cMTuaxEyyUjHbgpQAseRBnnVdRYyTIVzGB1AjEdrv0Ra4QBeKRpMDuYRq8c0am9y/L
+         M07OnqkX/PwhtjqG9wbkbSVe9HSHKm7yVgN3v8pyMKR3FLykDiZKBZCuWqYWKiarKBQ2
+         xBdvWJiSmWjN8Ow8ywlTsq4nG/khSPXPmP2aCZVogCeIaJO9I2KVCHmbfav2AaO2NqJX
+         L0EM88e1X35c0jiTA8m0udUY78e+vWUd3YuwpwXVktnhtG9q41te0IlMcOV1Ben2bmnm
+         GfIH4Hw7EbkcB9ROYOe3HnnuJADST6L9qKEhwLQPQWWYVoyxk83rHEw0MioasqFMOsf9
+         TitQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TunWQn1P;
+       dkim=pass header.i=@linaro.org header.s=google header.b=abaMm3bZ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-4539120a895sor35133815e9.11.2025.07.01.03.11.31
+        by mx.google.com with SMTPS id 5b1f17b1804b1-45390ada73dsor29862725e9.4.2025.07.01.03.12.30
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 01 Jul 2025 03:11:31 -0700 (PDT)
+        Tue, 01 Jul 2025 03:12:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TunWQn1P;
+       dkim=pass header.i=@linaro.org header.s=google header.b=abaMm3bZ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1751364691; x=1751969491; darn=linaro.org;
+        d=linaro.org; s=google; t=1751364750; x=1751969550; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=xukDN3H63LwhhQewlIjnzCHEaos/m6LMLbLr7A6Mjes=;
-        b=TunWQn1PEC+vH76T8M5+4ysqMLC/OT6lrYn/TKe4Tbk2XUTQDJV0D7/nv1HLEbAucc
-         TS/KntSCgbpk/P1OI8m/hP6YONbxLSRfd8KJGUDRilBH1bKoRuGSCsHV3UPZpmPoSqMz
-         oedAj3JRRsQByRwrE4b0+3IxxSSahRKCZjQp6yDeCl6GdvOBXlGdvNhOgA7sWflFDjub
-         x/JbV1OvqOhXQWwwdsSYiE6J2OznxooKE8ZgN3nLcJz6G1GFQlvXEOOBt+Djm6HdG669
-         KoRu/ly9TwU1kmQ2dNMoKuKZR+SIhgdeoleEM2Ik4JMZaQUjP5MSYVFMyhsLjCi+U5ME
-         2Q9A==
+        bh=i48kyF48WGF1kOw5a2fFzh77wpZJNP5oYB8FFOd+ev8=;
+        b=abaMm3bZa/Cckto57D3BYcJyUpV4OBALx3nSYMmILLW5EkJozvYMMb3BXXcs6VDwX5
+         7Qq1VkL3AL131uMYwU+jDx9Q+pbVpAIPVXOaH9/spjK+4cIHSgw+TtgnKLCkDEM2Xh9u
+         36v5ZcZXFqxWmNVj58rV53LAak1NU3GIXQM3235RTTRUk8QxehQhCi83Ls3gWedCo45i
+         CuyiDwdlbr1ZOC19J7LqENrmANYCSGiKLmT1Uoi6coW6bqVi4Gamg9f/bZt+mVRqBIdN
+         iodJo8lTCuj003Pcl7vsynLpdM5zZIb9/SvzAvrQBK6+PSGKmRFteJB2gmn99Z6L1Oif
+         hLbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751364691; x=1751969491;
+        d=1e100.net; s=20230601; t=1751364750; x=1751969550;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=xukDN3H63LwhhQewlIjnzCHEaos/m6LMLbLr7A6Mjes=;
-        b=Y1+OUn1fUZyCcGyq9QxYGKodHeiFkcvHYhbK0SoV8iqmEzbVe8pVB7N6czNA4FeiEH
-         U5g+8yPQHtS1LjdajAOBeAzzJlKTqkO4QrmFW5hBwdcWzp8A/JYcU0SoCZ745rUYag3w
-         3M3EwsgyVOM5PzMIiBNTrPNGcFbe1nVVDjf9QHQhdkeaquJaih3S1gDPiSvGo3ofjc+H
-         s+qrC6b3tuhWyNMcvZ1wCXXAAcFToX70J6pUGl99Fhp0X2ha81a6UyQAn2XdbB1n87qy
-         6SWJR05fdaVF4c/KksIbUgB3pECctmNGfoPQtKSwix0ypInMDLaApVs7W6p+yS0hVyQt
-         z+mQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU44HbJjJQQR+shyQRhDJfzKtH0QVr6faxrhtdh7wgON8motsEa1xibYdBN3h1DQRNC1NtjXI4Be42w6w==@linaro.org
-X-Gm-Message-State: AOJu0YzJFxnMOTvgKvWeM7Z+il8GF3266l7TINpUmxkxkld0Z9X6F9Ts
-	xYSDbXx2phmfvZ7yb5UvoPfAmvZBqembpQoyMwSd9as/tBwxjfOTcLTfW5EmZhrZLJU3yw==
-X-Gm-Gg: ASbGncsw536QF7mcgFu/suobNdb7LzoZFkkAEf4Z96OR9ljyKovTfl8MkMXrQAISQY1
-	JgLaa2zIDM+90PRqeIJOqcLb4d7MYm5Zp0923KaTf3paAqmtKhrTESjwArmQHvvN1ernLskbaTn
-	5jE3tpXDG/Uk1oHZd6dQ4lJJ4kjM67XHL7SqQ3GFAhBXpvsx46c1Hw6Bm+/tmMpQfC4Mr17Flg4
-	fI9BzuVp5r6eOjtwLHpY2RBdkdgJyOrk81vCOux9NTq0ExT49MjgnTgrLumunf+zfLW3wtw4rPS
-	60g8YhWnBW9zlzbgphdOMUD5wPn/BvLw5M12s8JELCHpHZsWuG7Kyj9DWPesTrMCekVuoFyUqUG
-	aXDniaZHtXG6HrQFVxERR7qCflhpq4ITOL9XsEyaf
-X-Google-Smtp-Source: AGHT+IFJ2dzhbA7AS66Am/DJLv0M0N+kubAZsKkWqs3D2gOnCtcFq+eIstRODMqR92FI66ozNZuD7w==
-X-Received: by 2002:a05:600c:4594:b0:43d:47b7:b32d with SMTP id 5b1f17b1804b1-4538ee8c45emr157635275e9.25.1751364690947;
-        Tue, 01 Jul 2025 03:11:30 -0700 (PDT)
+        bh=i48kyF48WGF1kOw5a2fFzh77wpZJNP5oYB8FFOd+ev8=;
+        b=fkaYElYNsuyv6ukbio/wONazaDdjZMVJZlZAYTrKpV0T8tLVRSrD/95S2Cm4sp7CcB
+         SL8UEtGtVRX8k5FGxeaPPgFqAK/G4AX8vSasaqHkp0fWnnteDsjaYNJZP/ImPkvOsIIC
+         4DrGFPv+XuO8SZstbQFy8drIQAw9nmI6xb5uThCf9mBtkDiGsOrU9bk8wTIuw7RwqgzL
+         qW2gYDI1FQ+2/gjUZcC/5636hfKsj08HtVO3tCRuKtmYmjgEoEiyB7TivReddKd6DzlB
+         VAWQVWAlhwOQkHOP7OdSdXqjZiNzs7ar6bPDLLjl+lYcAN55JL/nadvAJw3f6CB6jW2n
+         Fo+Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWCbGi2n94vECrbC4N4hPCW04iW9FHPMqPaaw6LaQHsEY4kFmISfLTFBEUFjDhB0GyWP+raMWybTe4I0w==@linaro.org
+X-Gm-Message-State: AOJu0Yx0iDcR0vzUCS1LEqDQyMXe/HlyZKy1umgOoU6C9vLylBhlG58a
+	Ew4Fgvh4KRYeNcvnS837UkUyqhyCAPI/Has4+6MaZ57IuSNcAzSZchziqJapz80edAzpEg==
+X-Gm-Gg: ASbGnct1kJvCx6x6ZAEmtO5CQh2Va3gog0YPelUQ6TqqEiH1CT1AzP53xzXA/Do4AW3
+	GBDPsB5skSBxxb4kHlroA8dA/zXltIVAQmnBgUczwT1E8o+Be6EJQsp24HqjiUqdgGiCJk5rfv4
+	9mJMYhygtRGcRWiTSQ2X/f0HZ6T3jZCA2+PEKgQXuClXCgDJx8pX4nuTuxs0/QyFvKA/lSpCpsf
+	0tv9MFCroNk7GVmWHg5jF9rCFJe1HxP5/+4AIgIFd9Ysl92Kl0Y96O26CMl1dqmGshhLSg0hOCA
+	1IwyaBtVN195TYDNDyraFYzI/b0k2yz2MDr9y8grkXfw3V9q0rGa+hhxqWkSyzj9w0ISNd+23iv
+	Am/d0vqxWBmLcD7GQNBiS79wzsMDSNg==
+X-Google-Smtp-Source: AGHT+IG3V/DgLWI7Rr9w/9AtpjvbqCpEr0yemPeswRn1wIGk+oob6kO0PmMCNon/JHwIcG/zcwIGUQ==
+X-Received: by 2002:a05:600c:8219:b0:43d:42b:e186 with SMTP id 5b1f17b1804b1-4549f5db40cmr11080065e9.8.1751364749915;
+        Tue, 01 Jul 2025 03:12:29 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.166] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4538233c05csm191355995e9.5.2025.07.01.03.11.29
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-453823ad247sm197230345e9.26.2025.07.01.03.12.27
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 01 Jul 2025 03:11:30 -0700 (PDT)
-Message-ID: <8d72bfca-b79d-431b-b9c9-8e21fccd22f4@linaro.org>
-Date: Tue, 1 Jul 2025 12:11:28 +0200
+        Tue, 01 Jul 2025 03:12:28 -0700 (PDT)
+Message-ID: <1c7a557f-2ab4-465c-a84a-43dffbf4e0f4@linaro.org>
+Date: Tue, 1 Jul 2025 12:12:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 18/26] hw/arm/virt: Only require TCG || QTest to use
- TrustZone
+Subject: Re: [PATCH v3 04/26] target/arm/hvf: Simplify GIC
+ hvf_arch_init_vcpu()
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
  qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
@@ -103,64 +103,58 @@ Cc: qemu-devel@nongnu.org, Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 References: <20250623121845.7214-1-philmd@linaro.org>
- <20250623121845.7214-19-philmd@linaro.org>
- <CAFEAcA_M+nXYL5HaN7QUUwWywJw8VaxU3T54YCMQsVd42PQ+PA@mail.gmail.com>
+ <20250623121845.7214-5-philmd@linaro.org>
+ <CAFEAcA8+9TPps4NkRwRTZXq-nkR=zJ1SsFLnMzzNf7MioU-qsw@mail.gmail.com>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA_M+nXYL5HaN7QUUwWywJw8VaxU3T54YCMQsVd42PQ+PA@mail.gmail.com>
+In-Reply-To: <CAFEAcA8+9TPps4NkRwRTZXq-nkR=zJ1SsFLnMzzNf7MioU-qsw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 1S1+tTjrlX4z
+X-TUID: 6cfLv4NX59AT
 
-On 1/7/25 12:05, Peter Maydell wrote:
-> On Mon, 23 Jun 2025 at 13:20, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+On 1/7/25 11:39, Peter Maydell wrote:
+> On Mon, 23 Jun 2025 at 13:19, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
 >>
->> We only need TCG (or QTest) to use TrustZone, whether
->> KVM or HVF are used is not relevant.
+>> Only update the ID_AA64PFR0_EL1 register when a GIC is provided.
 >>
->> Reported-by: Alex Bennée <alex.bennee@linaro.org>
 >> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 >> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 >> ---
->>   hw/arm/virt.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>   target/arm/hvf/hvf.c | 14 +++++++++-----
+>>   1 file changed, 9 insertions(+), 5 deletions(-)
 >>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 99fde5836c9..b49d8579161 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -2203,7 +2203,7 @@ static void machvirt_init(MachineState *machine)
->>           exit(1);
->>       }
+>> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+>> index 42258cc2d88..c1ed8b510db 100644
+>> --- a/target/arm/hvf/hvf.c
+>> +++ b/target/arm/hvf/hvf.c
+>> @@ -1057,11 +1057,15 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+>>                                 arm_cpu->mp_affinity);
+>>       assert_hvf_ok(ret);
 >>
->> -    if (vms->secure && (kvm_enabled() || hvf_enabled())) {
->> +    if (vms->secure && !tcg_enabled() && !qtest_enabled()) {
->>           error_report("mach-virt: %s does not support providing "
->>                        "Security extensions (TrustZone) to the guest CPU",
->>                        current_accel_name());
+>> -    ret = hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64PFR0_EL1, &pfr);
+>> -    assert_hvf_ok(ret);
+>> -    pfr |= env->gicv3state ? (1 << 24) : 0;
+>> -    ret = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64PFR0_EL1, pfr);
+>> -    assert_hvf_ok(ret);
+>> +    if (env->gicv3state) {
+>> +        ret = hv_vcpu_get_sys_reg(cpu->accel->fd,
+>> +                                  HV_SYS_REG_ID_AA64PFR0_EL1, &pfr);
+>> +        assert_hvf_ok(ret);
+>> +        pfr = FIELD_DP64(pfr, ID_AA64PFR0, GIC, 1);
+>> +        ret = hv_vcpu_set_sys_reg(cpu->accel->fd,
+>> +                                  HV_SYS_REG_ID_AA64PFR0_EL1, pfr);
+>> +        assert_hvf_ok(ret);
+>> +    }
 > 
-> The change is fine, but the commit message is odd. You
-> only get to pick one accelerator. The reason for preferring
-> "fail unless accelerator A or B" over "fail if accelerator
-> C or D" is that if/when we add a new accelerator type E
-> we want the default to be "fail". Then the person implementing
-> the new accelerator can add E to the accept-list if they
-> implement support for an EL3 guest.
+> This doesn't seem like a simplification to me...
 > 
-> For the not-yet-implemented case of a hybrid hvf+TCG
-> accelerator, it's not clear what to do: in some cases
-> where we check the accelerator type you'll want it to
-> act like TCG, and sometimes like hvf.
+> Looking at the code, I suspect what we should really be doing
+> is setting the GIC field to either 0 or 1 depending on whether
+> env->gicv3state. Currently if hvf hands us an initial value with
+> the GIC field set to 1 but we don't have a gicv3state we won't
+> correctly clear it to 0. i.e. we should change the current
+>    pfr |= env->gicv3state ? (1 << 24) : 0;
+> to
+>    pfr = FIELD_DP64(pfr, ID_AA64PFR0, GIC, env->gicv3state ? 1 : 0);
 
-In that case we want to defer to the accelerator, not block
-from the machine init.
-
-BTW hybrid hw/sw accelerators *is* implemented, but not yet ready
-to be merged:
-https://lore.kernel.org/qemu-devel/20250620172751.94231-1-philmd@linaro.org/
-
-
-> 
-> I'll take these patches, with an updated commit message.
-
-Thank you!
+Good idea.

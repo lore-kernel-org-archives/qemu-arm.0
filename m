@@ -1,77 +1,76 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3619676dye;
-        Tue, 1 Jul 2025 23:48:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVvLdKR30DXq+dH2pAxRE4RIMdwAEANafSX+D5y3my/mcnpfviXPSFL7TFpXbJyA/Ldm8ZhTp7upfROwA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFqSq1NKRefZtI+7LRdA+WClfD4xRXFtFpIweUuQHYjBF23Hz6zmJRqCiKUFXAnOlEPnadQ
-X-Received: by 2002:a05:6214:194a:b0:6f4:cfb3:9df9 with SMTP id 6a1803df08f44-702b1bef4e6mr22948126d6.33.1751438907135;
-        Tue, 01 Jul 2025 23:48:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751438907; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3620276dye;
+        Tue, 1 Jul 2025 23:50:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU5Ycx+x9VFjMC0PLvMfeQ9m/xp7gCZ6HwBPXHu3FPYfo6fnkkKGzqLeDoIWBOtsdVImdH05xWWcBky/w==@linaro.org
+X-Google-Smtp-Source: AGHT+IFpcsmMbLq/sKqOKYFcfbMNcSZrB+iR/amcgwX30/4RXl0ipbiSRVZojqXr5gM3U8Vl3rOH
+X-Received: by 2002:a05:620a:4708:b0:7d3:e868:a684 with SMTP id af79cd13be357-7d5c47c5c7bmr250400685a.51.1751439012807;
+        Tue, 01 Jul 2025 23:50:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751439012; cv=none;
         d=google.com; s=arc-20240605;
-        b=TyDZVxKu1p7gpOOEUzTstx1fhw1/uO+mPcFYg2PYTmWqsuJWCrQ4o6zuExkfk9A3D3
-         OI6yrFI40VZFpgiShsSEjNidAzLSRVFPa2WH9JLUdRLVuqgehq0+m+FKW09c93Yc6ATo
-         GaPtcTWv2agAUclnGZAAzo6m/qs3SQV0WSpFWpEUNZPVE4aP5NvXbKNcD5AjuMGY/S8k
-         AeETxTQ/8RjM7o7+2f5ob2jGoWCo2boEg0eg+fNuxgdMyn87GQyYWvYgCaxTvxo7vZOA
-         GK8RkG8dhy5r7DLcS7KBKOyDi74DSmzLNYP/2rC3TuXdDIOc0SjnrynXT87PJ4GsEHfL
-         Rlag==
+        b=R+CvRxZNh7+3Y97JhMvfg7MbPOkE+mxJcz1dKKvBNkWI9bWJr3FFlh/qWpoSIUYID2
+         DeZaw50XlVBq7pB0Q9/DP/bilNXxacYMXPV3miUZsbZphoGMguVtOmdtBl90RAVP9pCM
+         lVtpWKolQmYFDz3Fz8aTSEkr6HfvUQ6vSYAppNTKhYfDrK/HFuKTV2Ai6+iETHu+h/44
+         q8iH4GJqOAe8Dbxkb6L2cI34r3C899zmsPxQ6DLLSmrtIbwWjMOXIuwoaVbe0objosic
+         CPCWkt26U9sn2abNH3ToxkS+9/XAyHTVLHkl7xj+fRT2WeZEzRci6+xG5irXmgQpnFLx
+         vlLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=Zk5icbxIS4HnCyPC8vzKv+lv6GH3Yy43JETJVU6133Y=;
-        fh=cXfyCbTeGe8qRp10nSsuplYy8ryNTDCVawOo7664qRY=;
-        b=QlJnwN323WQVGAsxWS59CFOAAd1Lz1oMU2X2UDy/J7p4Wb5KFSSMseLXZVY5SwM+M8
-         RYPlUgQ7yfPhuHLFjva2OK/8YlLFOobhcSyk0HOWPqbZ5l76K9zQxd6ftLh8S2hmJKgm
-         vU6VYDcF35rGUCrx0kEzpWaQTeV7RGbpJLNdEPPl1gG/GKSBJK9an6i8m4fsMzyNSY8z
-         XrRAbKFKvKIudGM3VsoAvEqY9ohyh3NSejWpXsyxpxCaOrZZhwq1uYnXzISXo74Wr6VG
-         3bGaNAowGNSgO3nTL24e3lq1aZ4Cn2gD97uoljLcLim/2OJVy4E15ImvFTwtmOCNdNq3
-         y+PA==;
+        bh=lxDdcYaBU3qRPYfa6vUFfHk3nzioUBRFvRBhNqXi9Ds=;
+        fh=xoK8YzOEV8ZyS81N/3/MvLz9zM8dK8ycsJatd17XBNo=;
+        b=hmWNqA3w22Y1aRaLYg4nXK0kLkcbB2V8ZotdmgY2Auc0ANBwOSJngw7UUh32w8tzZr
+         bK0cde3jx7HTit6Tkmq/PnzFPh0Xn1cZVtFk26ELCFSLuvJ2bDoRoEEEq8c6JkSFaBKQ
+         LvIQmOsUIoIKha+kXuxQuaF6Io/E8zSyXCeUDPpBwE0R007JQNH0AChppgnXWRHgV0m+
+         4USM0uhWBEVELHyeFM+XdCnMQIGg2sr41pdy8ZnPJhtsH8Bm4zPbP0YjkrhakCLQg2RV
+         ft8a550Dou+o+fGB2PGYgwg9UUdTjkpjCQKYGVAo4RV/C4tldiNaPczl7AkJMifJLhBA
+         Irig==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd77355a7bsi143730086d6.213.2025.07.01.23.48.26
+        by mx.google.com with ESMTPS id af79cd13be357-7d443254094si1192112785a.389.2025.07.01.23.50.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Jul 2025 23:48:27 -0700 (PDT)
+        Tue, 01 Jul 2025 23:50:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uWrGG-0003rD-0w; Wed, 02 Jul 2025 02:48:04 -0400
+	id 1uWrI1-0004b4-L2; Wed, 02 Jul 2025 02:49:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=U4+o=ZP=kaod.org=clg@ozlabs.org>)
- id 1uWrGC-0003q7-Ln; Wed, 02 Jul 2025 02:48:00 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ id 1uWrI0-0004ag-1U; Wed, 02 Jul 2025 02:49:52 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=U4+o=ZP=kaod.org=clg@ozlabs.org>)
- id 1uWrG9-0005eM-HG; Wed, 02 Jul 2025 02:48:00 -0400
+ id 1uWrHw-0005mt-Uk; Wed, 02 Jul 2025 02:49:50 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bX9SW5rK8z4wyV;
- Wed,  2 Jul 2025 16:47:39 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bX9Vd39y6z4x6q;
+ Wed,  2 Jul 2025 16:49:29 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bX9SR6ZvPz4wcr;
- Wed,  2 Jul 2025 16:47:35 +1000 (AEST)
-Message-ID: <f7e9fcba-e844-42e3-8e4c-9cc67a3069e7@kaod.org>
-Date: Wed, 2 Jul 2025 08:47:48 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bX9VZ1H6Kz4wyR;
+ Wed,  2 Jul 2025 16:49:25 +1000 (AEST)
+Message-ID: <055915bf-6e68-4a1c-aeca-c31f0772da2c@kaod.org>
+Date: Wed, 2 Jul 2025 08:49:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] hw/arm: Add PCA9554 to ARM target
+Subject: Re: [PATCH 3/4] docs: add support for gb200-bmc
 To: Ed Tanous <etanous@nvidia.com>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
  Troy Lee <leetroy@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org,
- Ed Tanous <ed@tanous.net>
+ Jamin Lin <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org
 References: <20250701203400.71677-1-etanous@nvidia.com>
- <20250701203400.71677-2-etanous@nvidia.com>
+ <20250701203400.71677-4-etanous@nvidia.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -116,16 +115,17 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250701203400.71677-2-etanous@nvidia.com>
+In-Reply-To: <20250701203400.71677-4-etanous@nvidia.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=U4+o=ZP=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.017, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -141,42 +141,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iJLWcERVny1b
-
-Hello Ed,
+X-TUID: gMa2N2xEXInJ
 
 On 7/1/25 22:33, Ed Tanous wrote:
-> From: Ed Tanous <ed@tanous.net>
-> 
-> There are arm targets that are connected to this io expander,
-> specifically some varieties of Aspeed 2600 BMCs.  Add it to Kconfig to
-> allow use.
+> This patch updates the docs for support of gb200-bmc.
 > 
 > Signed-off-by: Ed Tanous <etanous@nvidia.com>
 > ---
->   hw/arm/Kconfig | 1 +
->   1 file changed, 1 insertion(+)
+>   docs/system/arm/aspeed.rst | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index f543d944c3..6ea86534d5 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -532,6 +532,7 @@ config ASPEED_SOC
->       select I2C
->       select DPS310
->       select PCA9552
-> +    select PCA9554
->       select SERIAL_MM
->       select SMBUS_EEPROM
->       select PCA954X
+> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+> index 43d27d83cb..bec0a1dfa8 100644
+> --- a/docs/system/arm/aspeed.rst
+> +++ b/docs/system/arm/aspeed.rst
+> @@ -1,5 +1,4 @@
+> -Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
+> -=================================================================================================================================================================================================================================================================================================================================================================================================================================
+> +Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
+>   
+>   The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
+>   Aspeed evaluation boards. They are based on different releases of the
+> @@ -35,6 +34,7 @@ AST2600 SoC based machines :
+>   - ``fuji-bmc``             Facebook Fuji BMC
+>   - ``bletchley-bmc``        Facebook Bletchley BMC
+>   - ``fby35-bmc``            Facebook fby35 BMC
+> +- ``gb200nvl-bmc``         Nvidia GB200nvl BMC
+>   - ``qcom-dc-scm-v1-bmc``   Qualcomm DC-SCM V1 BMC
+>   - ``qcom-firework-bmc``    Qualcomm Firework BMC
+>   
 
 
-This was already added by Patrick in patch :
-
-   https://lore.kernel.org/qemu-devel/20250619151458.2831859-1-patrick@stwcx.xyz/
-
-which should be pushed by the end the week.
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
 C.
+
+

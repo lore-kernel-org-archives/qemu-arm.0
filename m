@@ -1,183 +1,202 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3411892dye;
-        Tue, 1 Jul 2025 13:35:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUEs/7XEReJmq78CdjjbtmOAcEn5B55I5wgsxGIm6mDika9AgkyT7VuJn1kw3V3diYGK3wesWn6C7kDGg==@linaro.org
-X-Google-Smtp-Source: AGHT+IF8NU1tmxZwBdl4chgt048ypnft0XiDiEEcrwHhOz8gBS4DDmzvGG0804iDTIbsDBwrpN8u
-X-Received: by 2002:ac8:7f88:0:b0:4a3:d015:38ae with SMTP id d75a77b69052e-4a9769541a1mr8248021cf.23.1751402117289;
-        Tue, 01 Jul 2025 13:35:17 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1751402117; cv=pass;
+Received: by 2002:a05:622a:6187:b0:4a7:49b6:ba6e with SMTP id hh7csp3434283qtb;
+        Tue, 1 Jul 2025 18:02:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXRqWce2siVp/XeupUjpdN7iurwH4ZiIrBsqk6Z7ADFoQtHoOcdEVkLAMolB4a8nB8dmAfSkaTHj9TD1w==@linaro.org
+X-Google-Smtp-Source: AGHT+IFQNx10N1FCBoGNWGshOiDn3q3N6bWgb89FPIamrEcFMJmA8WyyzSjGJDuH82YKSthOFeS8
+X-Received: by 2002:a05:6102:4b1b:b0:4e9:add0:2816 with SMTP id ada2fe7eead31-4f160ff47ebmr437096137.5.1751418143700;
+        Tue, 01 Jul 2025 18:02:23 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1751418143; cv=pass;
         d=google.com; s=arc-20240605;
-        b=LxqnFxqohwx+HZBGefggxST6uSUST7v3OT/HZkxio750O7SSFJxZlXHMXKMK1qmqA2
-         rV49wyvKp+/gBTBasGqgZEPOG2ejXtlpfvGCMui5RlOx8fSy5ex3wpLyK+UbwZ0bB00+
-         xJ931PpePzcYy7GYL4duS7mbYh4eMEOOpHofThU/88TmDttWxzpEGeTusJxAZz1zVOIr
-         xN8ThENfbEtK+YSPsUsAvLIcRWoGPP+ekgHjMYeIyoNNqLXTrr0DnCg0zrphBLZ3aJO6
-         3nF2UdSlzidAw+E6TWabq4f36lfKOUyvvcro5MZ69LI+pL8nHRb2yW1e4J+mLVyeybaR
-         NzaQ==
+        b=WNbC38Ww+or21LROvq0t+vMlpTIdYA7MfDg+GRiFXcHR92B8B1NaPeR5uWx4x6/rBS
+         ZJyGwc7DmBpyFGowwfN8So0GaGaq+3LfiqWbnmguhwebPTODMoPhCxWKuOardrbz4lAN
+         G2509HnjDO0QFi5N4/wLbJ0B2DP6ELhPspTkodX4u0b1pCvNhmXnEJharMnMBHoBafPl
+         LPBePKf4NDXkxqn0ZnxYZRJ0rdWlPMIfHebtqZISQAoUOkUWYip2pfg6Lch6c4JD4nP3
+         ccU9RWGOTSmnDlj1cFCObi3cd5GRg8TcJR954X1sufO2Sm1ZnRwYJNcKDXYNgIz2gjGU
+         CwPQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=rcH1E2ZK9pMDGZzdHyVZF+vURoJ31zRQbSlMRo/QOd8=;
-        fh=z29TmhkkdEOu4ozJ2J3YTH162aGiC2RC85z9cfvfwtU=;
-        b=cHOZvtb2HmkDdfgKB8rEJPM/H+Ee9tvNO/5xkpC4yea8608A/U/OIcFTAyBp3ni4Cq
-         ZKdrjT1ktQ4Pkj8MJkmW9Yu/TeRhOU2pna91ABfnQMkj2I4WfWOfytWH/i4HUDPIm9F8
-         hPZsVn9VJT5QUjo5GeWtfl+d/366W1tsOAEeWzR5P0gbcOuy0537AZ9mIPYUh36ptFAS
-         Mhd7k9QK9UwK7EaqRxNn1tPXMnpmNZ2izvoOm46rEZD12BflHAosygT/9CO062Hj05eE
-         KLCkDJgzC7YJz5oNUzaq0x71nz4Z1p+0ttc+19Cc2HLWbsz8PAlsdtfFG5CavNe1a0Dp
-         AIFg==;
+         :content-transfer-encoding:in-reply-to:from:content-language:subject
+         :references:cc:to:user-agent:date:message-id:dkim-signature;
+        bh=BaYR7I7FK+n7wM9027CmnwaNObPilb9mIoGhMwWImBw=;
+        fh=JUOJtMziMokT7K1inDTI9a0gXs1aLIUm/9L49kQDzcs=;
+        b=dmbP2qXRnoa9TGq9zMY2FUR7d2E//zJYN/1rmxs3ULpZjmFUdEgTp6eDXfbkxsslvy
+         aldFNUUR0k9a2usbXEzswdgr4q3nzkTBamWRoyyaDNQhY9J9e5y6tkpV6RNQqKs1oDlT
+         omRBeR33y7iPHYNnj9akjm0xWWHF6VzUXZw3jqlHNcLoGFG18KzL0Dr+mBlJr+uYF7gC
+         zzRhkQlxcDIF6ju3kVuInioXVEUCOzB1xSkEx/JkdInsLEJdMGs+esPpJ3bDVdQ6vDEB
+         v8LQLaW5JidDc+ehpAto3hM1beEeyjpFq7p0HgFQWszpnr4fpu1d8An+reROC6XN+FpC
+         fkDw==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=VVY5fN8F;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=KDnZjJQe;
        arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc0fd37bsi115836521cf.4.2025.07.01.13.35.17
+        by mx.google.com with ESMTPS id ada2fe7eead31-4ee4cc5bd3dsi2579686137.626.2025.07.01.18.02.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Jul 2025 13:35:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Jul 2025 18:02:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=VVY5fN8F;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=KDnZjJQe;
        arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uWhgJ-0002B7-2d; Tue, 01 Jul 2025 16:34:19 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uWlrA-0002eX-I0; Tue, 01 Jul 2025 21:01:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <etanous@nvidia.com>)
- id 1uWhgF-0002A0-R4; Tue, 01 Jul 2025 16:34:15 -0400
-Received: from mail-bn7nam10on20606.outbound.protection.outlook.com
- ([2a01:111:f403:2009::606]
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1uWlr9-0002eK-1S; Tue, 01 Jul 2025 21:01:47 -0400
+Received: from mail-bn7nam10on20615.outbound.protection.outlook.com
+ ([2a01:111:f403:2009::615]
  helo=NAM10-BN7-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <etanous@nvidia.com>)
- id 1uWhgE-0000h4-A6; Tue, 01 Jul 2025 16:34:15 -0400
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1uWlr6-0006Ze-A3; Tue, 01 Jul 2025 21:01:46 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=I6IXc8A5c14EweK3vJJEXSBC1WseSy2tQTdQaWUxO/zOY7jry742PhQ3l/JAwodhxVc0HArJmTbf63YlD26qVBWp2Ou/EcRjPEy6OeKZ9fVAQkvQPvYOImnaZgcqgt9yL9WWOjwQMbku/AXL74yb0rmLCPS9D0mV63OxSHyeweV0M4iEwSjDY/3y/jMHv5uvcKjM5Km46OeTL56uGtTYCIOw9yM3VeTbarQrNO8MN3LW3cMb7BdjmrcqSGJOiav+RPJeOFiHmXTbdIew2gdwbUj67lEcf7q8M6ksXHa0It5pE4sNQPdcyQq+KvNfm0dYVBiaWrKfiFfs6kUmTlOWZw==
+ b=UKV2+FMQazOb7Xy3SuzkK39W2clzwxyPP56sCKgySGDO9v2Dogc2nK8bjXa/S6tOI8HVtgC0EdoJbKKnez4MpdLftfI1kdz8Bk9t8bVJJWJJSmZAM4y4PjyzudU2n+kGUfz2aNwEvZ9RzW1FBb+AzAJEcPEgQWTVQ5YqfBdUztOAYwGqiNt/I1xJVxYvEjsuwmTs/5JDgWOpCG38j9DsBWtQz9hOKjZudy3b1EbizkCzOQQnQWfVWDl2mtv6Bb5GdspZ/M3VtA/Cv+LqZ4eIwEPCl5qeZZdaENR4Nn3rXJQa01sLkTdwUvUWi+qfQokCyWAiahNB6UjOSu/yx2DeyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=rcH1E2ZK9pMDGZzdHyVZF+vURoJ31zRQbSlMRo/QOd8=;
- b=anQWo3VdCPGDatMoj66jqIM0eFagqjdWwcY2yk04ay+me35KDdBQKf4+Ol5aeRxpc+AfblYN0q0VYEZx2nBCGpoFCoJKrpgTF0RPtzitFtDUSV3YxoowuAFu53nlsDdD73rMKinKNW3zuitLC4kLNTF3g4iAVvNRle96sFsyAjAB0B+LaJrgFy6zJcOfuv2ruiIuWFc+8as2qG6TQHhqEDnbBZfmZIXmXHG7p23Lxwa/+/d1DLeqMf74YaTlCB5D3NfQftSuYCMR2qFNPMADes3UMBjAiMOE6Le0W3ZdDqUzDsNOAGZd195w38fJjIxptUHJu9lEYfiEfCcvTwgZAg==
+ bh=BaYR7I7FK+n7wM9027CmnwaNObPilb9mIoGhMwWImBw=;
+ b=xzCPDzwP1PqmwmTTfWyVqcAsS9ltKniFQB9kByS0344Xd59vizKjN3yPEqzgKQPn80KYO5pxAsmQI8l2NFvBIg1Q+aanL+YfFoSh5WF0J/xr+ci2jagzdO6DPIgis05tuXeqHSeQ6mSF+E+UJJYdtkNvgM5nAH6Rm8iVzlcsQT3CNo/IXDg5k/oEKM7RTheeauF0KALO5BajrkmBMr2mP6DezpJ98nomDk/WHLI4/KHbBvgioh0Hj3SRxEsVrvWR8ON+RuxRcujRVW/5SoHC7RPwfpWw0sVH2G9CzUonZ8566lhk0A0940g81enOMHO7D3wPsgdBVWYhmOR1kNPsaA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rcH1E2ZK9pMDGZzdHyVZF+vURoJ31zRQbSlMRo/QOd8=;
- b=VVY5fN8FPx8D8XVko12jINYwjDuwxXbVm5s1lbQjQjoW1wY51yuLhed/KgGB1FrjTlpR3VWWQVOQ0l/+dSAc9uICJlI3XvAvwxyuBTT3xWx2i4ZrBrMlQKxTcCc9F1G6WV14ZC/Jpm1WTwVsF/nbXu7niGupmIyFJMtiHHd/bzkq+yg5nc1yejVmbeQ5ieTT2obkhX5R3QuvQzxU20nvsz3/zcKKZNhrnWDxXl/mzSzlE95jArKceHl5mFwMB2I0lhwM/s7awg+O39teQn7PtcdXM9oj70KtRpG5c0DHvDYVSiHzBtMSZE7YYr+Pkki7Suv0eO2TNV4g7aNNWNPSBQ==
+ bh=BaYR7I7FK+n7wM9027CmnwaNObPilb9mIoGhMwWImBw=;
+ b=KDnZjJQeFVzSLk73A6+rwEpfWBnr6YRPnu0li4+NjRAJXBFxvMIvkMtL4BcmFQko9QEwGHl8+dQk+IlqwyP/uXr6E6ChK3OSImMWwCchpM5UhBG/A0WRUopKPzi8/gEV1gTKzOeSQeuGxmoNIYsB8vwPrPatV/5dEE9BRk4oP7BW89SChx1QkTji38gGIinNCYQf3uaxh42abAsd2KlL2bvIVbupAEUknDDiFoeWF9WWF4wkMZNtvNmnnERfEgirrze7FIeWPmiZH/c8uvI0zGNAzDWqg/DZPI6vXp6fPeyF+IYR9M2hyfA8OSpgUBqzo3l1cJvU3BTU+OVrs3LpdQ==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CH2PR12MB4277.namprd12.prod.outlook.com (2603:10b6:610:ae::23)
- by BN7PPF0FD1DEA27.namprd12.prod.outlook.com
- (2603:10b6:40f:fc02::6c8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8835.29; Tue, 1 Jul
- 2025 20:34:05 +0000
-Received: from CH2PR12MB4277.namprd12.prod.outlook.com
- ([fe80::8857:98e9:8b64:787]) by CH2PR12MB4277.namprd12.prod.outlook.com
- ([fe80::8857:98e9:8b64:787%4]) with mapi id 15.20.8880.021; Tue, 1 Jul 2025
- 20:34:05 +0000
-From: Ed Tanous <etanous@nvidia.com>
+Received: from SN7PR12MB6838.namprd12.prod.outlook.com (2603:10b6:806:266::18)
+ by SJ0PR12MB7476.namprd12.prod.outlook.com (2603:10b6:a03:48d::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8880.32; Wed, 2 Jul
+ 2025 01:01:37 +0000
+Received: from SN7PR12MB6838.namprd12.prod.outlook.com
+ ([fe80::529d:478:bc5d:b400]) by SN7PR12MB6838.namprd12.prod.outlook.com
+ ([fe80::529d:478:bc5d:b400%3]) with mapi id 15.20.8880.027; Wed, 2 Jul 2025
+ 01:01:36 +0000
+Message-ID: <81708f09-849a-4b01-9e4c-a854ae26eefb@nvidia.com>
+Date: Tue, 1 Jul 2025 18:01:34 -0700
+User-Agent: Mozilla Thunderbird
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Troy Lee <leetroy@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org,
- Ed Tanous <etanous@nvidia.com>
-Subject: [PATCH 2/4] hw/arm/aspeed: Add second SPI chip to Aspeed model
-Date: Tue,  1 Jul 2025 13:33:58 -0700
-Message-ID: <20250701203400.71677-3-etanous@nvidia.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250701203400.71677-1-etanous@nvidia.com>
-References: <20250701203400.71677-1-etanous@nvidia.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SJ0PR03CA0022.namprd03.prod.outlook.com
- (2603:10b6:a03:33a::27) To CH2PR12MB4277.namprd12.prod.outlook.com
- (2603:10b6:610:ae::23)
+Cc: berrange@redhat.com, ddutile@redhat.com, eric.auger@redhat.com,
+ gustavo.romero@linaro.org, imammedo@redhat.com, jgg@nvidia.com,
+ jiangkunkun@huawei.com, jonathan.cameron@huawei.com, linuxarm@huawei.com,
+ mochs@nvidia.com, nathanc@nvidia.com, nicolinc@nvidia.com,
+ peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ shameerali.kolothum.thodi@huawei.com, smostafa@google.com,
+ wangzhou1@hisilicon.com, zhangfei.gao@linaro.org
+References: <20250623094230.76084-1-shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH v5 00/11] hw/arm/virt: Add support for user creatable
+ SMMUv3 device
+Content-Language: en-US
+From: Nathan Chen <nathanc@nvidia.com>
+In-Reply-To: <20250623094230.76084-1-shameerali.kolothum.thodi@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: BYAPR07CA0094.namprd07.prod.outlook.com
+ (2603:10b6:a03:12b::35) To SN7PR12MB6838.namprd12.prod.outlook.com
+ (2603:10b6:806:266::18)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH2PR12MB4277:EE_|BN7PPF0FD1DEA27:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7a8c4239-20d5-4f7c-4544-08ddb8de9f86
+X-MS-TrafficTypeDiagnostic: SN7PR12MB6838:EE_|SJ0PR12MB7476:EE_
+X-MS-Office365-Filtering-Correlation-Id: b8e5ea9a-7d6e-4f22-6e6c-08ddb903feb6
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|366016|1800799024;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?CUbTSdqn//4cfyHmoXkENIxVQUAo9KsNOarnCj9QxADbltPV9U0cmLU8keNA?=
- =?us-ascii?Q?4qYPwlIqi7Q5ObwxQqGvFtad6SKGysjL9Z6PvbBr1p4683weBsr4L48noymj?=
- =?us-ascii?Q?8+GDYUL2LsofEdDkQFvf3qxWML3ixj2KN/pKbmycaZLNc8l9r53tqzozih9r?=
- =?us-ascii?Q?6d8xtXRPbrGX9//CGZ0v0Qrcg64ndR0GdZ/1MUo+CU3r2PIkNrodTqvNWpl5?=
- =?us-ascii?Q?5IldkNjmR+Dl+H2gve6UoUOztYebS6xs0MbNqoImVpcCyS/qm51G+zeRsD7z?=
- =?us-ascii?Q?9/NAQZUIngz+4mBmnG8RxVuY//Scc9fz2Supzbsn/YZM5qeHCmMrtqEj8kRg?=
- =?us-ascii?Q?M5zkJsYHBkw8hDYPkac04sA/A414pNDRrgyknVI9UhRedg2eQiFX/cWjqTe3?=
- =?us-ascii?Q?b/BdYipQdV0u8Zq8TGmI0gKK4nkY0+1bVbP449h2fXugP1jMBvdidV0i+6DZ?=
- =?us-ascii?Q?pfZVqx2bxieK+9QUA2aT+dWtm+KbqgeySSHt5HWNJWQLmonDXOm6LBIbGxhR?=
- =?us-ascii?Q?t7CEcKHYErjVtJdr8cgWplT4kHmQHTWq4iv00q1VgIRgvTNrgJRDw5e9A8fW?=
- =?us-ascii?Q?wKkxShecZvFVlepK0vmMA3LKZ5bgDEpxAtqFnifiP4xSjyd/IKxQSK5Agkix?=
- =?us-ascii?Q?cKbuoxUhvk9ntb2KiNxAo0Jevr3SCEiQFzv/yKZwhm03RYe3l1K5hQ1pUb8Y?=
- =?us-ascii?Q?EHKDi+erB5N0+l/LSJi6ZxznGgwPgdi1dE2JesaomhcJmuKCwE8EXYnqQ5Ue?=
- =?us-ascii?Q?OVWPq4T1vrbmt8s77xQhcwxJC58155+q4nLhX1u9Bpd1JVMXhyi6eWU5Pot3?=
- =?us-ascii?Q?s/WdtoeZE6kKJNVix+nvQrN5dFMsFyLXG3uPbWzA0tTI2f2q/LC+3MNw/4+y?=
- =?us-ascii?Q?eD2AoOhzNlfr1UsfaLus//bweqPW4RIprQTBYBPj8v8V7dpvcYAfujLmVhDF?=
- =?us-ascii?Q?+Vf9FV3Wf7QJ0IyXMmU4d8ywWfNfh/MBMiol/JJiVUMNyNxYBFtOJqUSe0R0?=
- =?us-ascii?Q?YErGHCn0jeMtG7jSXUwD2fGUgOBCNlwW1ssSmpIY6WBTejwRmZggy0j882z2?=
- =?us-ascii?Q?fPiBUxG7E+3zoq6LOWgohFwfxKrxjzzdUUIPZO5msWQHzeghdCJ9+Xaxt570?=
- =?us-ascii?Q?/xvM2FQrSsAhv5yK2HTQaSzmSFymXihWVd/sQZ+AUVHwfNA6ewga8xvfdkuE?=
- =?us-ascii?Q?Lq7zEwCgp5NnVfzxSmbKQI77/d3L+ROf6nojvl0a9lWRjQHtI2sxIYKFNbn+?=
- =?us-ascii?Q?ArBgdaUrzYfdgM72cJYz+qBAMYVBVLVYae22jipmINlEHGKKzTmGjbXHy48M?=
- =?us-ascii?Q?3puUybsG/h+M7zO09WliBTKK6jP28phhatGvg3lAxGooUETlaHJOzjRzaKCu?=
- =?us-ascii?Q?FxiRy2Ln5MYAIE8vWOVrGvMSnFwtQLGym9HryGFnh9RL8hJ25SlKrb8Ik3KS?=
- =?us-ascii?Q?SELfSloaEx0=3D?=
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|7416014|376014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?ZERMN3hkamRHKzNxcWNYaERzdTZFMXMvOThuM3U5eUlOQnNNbWR6R0xPelNV?=
+ =?utf-8?B?L1lhcVpvYXAzdzZiTUlmN0k3M2pjNEJYbVZoajlKUTRmOUtOUVFMUVgxZkxy?=
+ =?utf-8?B?SGRMUW1EdHdrQUs3M3B6empramRpcXhYZTRaOUFTbzhFcWVNTWt2VDRSZElN?=
+ =?utf-8?B?RGs3ZmRHcWxERFRkcXJ0bDBya0tMTXRwanVRcHk0OEVPNlZDRkpFK1VEemln?=
+ =?utf-8?B?UXZhL2QvNTJiL0NkVG1mdUtWZ0lqY3F2Snhic0lRWUQ0emNhd2pramI3Tkpo?=
+ =?utf-8?B?b1BNejl0cUF1aHpYS3VwTVNUelVwM1ZubU95OFhib0U3QzdQaHFFTkVYbUVW?=
+ =?utf-8?B?SzJaYkN2VWM5dE5TNEdmQjVndytlWjduN0dVZkx2Nis1c0F3TEFIbitIem5C?=
+ =?utf-8?B?SDJVZDJTVkgrTlNJOURya1dpNkZIY0xsdTZySkkxKzBwOVRIZzJNV1NVM3Qx?=
+ =?utf-8?B?YmVoQWpiY0FsOTR3RUlmYTZZQnhnSEg5OHVnUVpwVUgyY2F2ZkpBcGczTmV0?=
+ =?utf-8?B?WUFnVXprQ2RycWJaZG4zb2RHczUzQlhObXkzWk1pV1YxbVUvM21RK1RoYlZR?=
+ =?utf-8?B?VHFhM05MMjluRUpiN01mVExtMGNaQ3JSZ1Z6bDZLSnRjZVEvQjNPTkRmTDA2?=
+ =?utf-8?B?OVhHc2hYbkcyS0pBWXA4aVY1M2tnbmo3RGMrWE02dTg1ci9OdkNTQ3dZcU9Q?=
+ =?utf-8?B?TWphWFNZVFhCRTZRSTRUa2cyZGQxRWNLTlIzU3FGZ0pvd1F3V2N3UWEzVk5U?=
+ =?utf-8?B?RDYwdS93V2VOQ2dMM3J6aStaT0JVNGdmRVU2VmtmZlJyRkRoZCtvdjJmTDVa?=
+ =?utf-8?B?V1luUkVCVUZ6cGU2SHRwR3Y5RkQyb202d2RNY3hTV0ZXbG1ZdkpiTG5WS1pp?=
+ =?utf-8?B?VWRQejlia1hvWExGSFlhYWFsS0FpeE5tc1NCV0pSNjRsSmJjWmJURjNQZWlE?=
+ =?utf-8?B?alVzTGx1TnJKSlprZ2FjbklVY0w5ZmppdmUxN2U5YWZvREJzNEhSaGsrbCtB?=
+ =?utf-8?B?VGRGdllyd2ZsVi9pNk9UbHFTZnNyL0hiRmMyWTNNWERLd3JLbUhXeCttWFEx?=
+ =?utf-8?B?SW9xbmUyZ215ZXU2d0Z0UE9TNHdoTW12eGVhQm1Wcm8wM2pYZ3YvM0RLR0lx?=
+ =?utf-8?B?elBKd1Q1ZllDK1FjL0FXdlNJZ3ZkNVQzenEwVGMvK3pNZWh5TDYyb0dxTkti?=
+ =?utf-8?B?N2JyRXNXRzcza2N3aituQmFtdmtGWUErWU1xNUl6NnQyVkxGb0VBdkZwVnlI?=
+ =?utf-8?B?T21KY2ZmWjRQZXp5MmJJZ1RGZ0ZIYTFteTRIa2R5ME5XZjBUZTFLWThsT25k?=
+ =?utf-8?B?NjRxc0ZVTXRIdDVYbUJmUzJmaGZ3MjZCbFZTSnFaTUlxTXJlY1N1VEF5UlJm?=
+ =?utf-8?B?T041WHg4THJ0bXNzUVJjd3M4ZHhDdUhCdEJaZFFXNDRqa2pNYmdBZUZaeGlM?=
+ =?utf-8?B?SExaNEYxOXViRVBVUEliK1l3WWd0ck1yYWtQcThBNTE4dmRkMVJQRHZwWkdE?=
+ =?utf-8?B?d1k3Mk5MVklLZExKNUxqU2RaN1RpNFE5dUVsYjlQc2N3QU1YNzIzcGFKbUFy?=
+ =?utf-8?B?MkQ3WEJ0RFVUazBnSGJzVGhNcTE2amVsaElCZWNUb1hmNjZsVnJOcFVDdFBx?=
+ =?utf-8?B?SUs1bmxJNElhbTNybnZCUXJHZ1dBOUMxeERKakNTd1ZKSDhoc3hEa2s2SlZv?=
+ =?utf-8?B?SFU2RC95Y3pnd0FubFZGVlRTOXU5ZjV1eGRmdnBKN1R3dUZEUTNMVDdFbzVI?=
+ =?utf-8?B?RVJzSkF2bGFhRW9wNU5wMGV4MGJMU2MwWEVuU2IyK3I0aklJMnVDNkVySnZh?=
+ =?utf-8?B?U0Y0YmNPd1hVS25ZSmtiZkxGS1NaK1haNU91RzVzamR6djNyNlRoZmtWM2pS?=
+ =?utf-8?B?R0dHNmpoSFBLazFsaTJndUdPdkw0Sm1MRERZdVpObFhac3VOQWozNmFNaEZQ?=
+ =?utf-8?Q?HKjZhynHs70=3D?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH2PR12MB4277.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(376014)(366016)(1800799024); DIR:OUT; SFP:1101; 
+ IPV:NLI; SFV:NSPM; H:SN7PR12MB6838.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(7416014)(376014); DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?3qjLufXUKZyDdvXmFrdYNRkX6e98TaZxwXgRbmIqrgZcXW6Q2RJoIc+h3qd9?=
- =?us-ascii?Q?dW1Q58WRAMmEdB8v3ibFXWSYRHdHF7LA3cFG7l5VtmgOxLS6B0r9tN0EUHjz?=
- =?us-ascii?Q?zerruLImShGnAaa9Lina/yscTxYDBtO5YCiN3lnQms8t/p8x1Rgfv51yD8gO?=
- =?us-ascii?Q?VTk76WroKTjv5wJ1aEXDu8Yb10OAnYpHSCpwKFIf8SH5Jhpzc4p5Rf9lzfLd?=
- =?us-ascii?Q?FOceU5CkYDpBm1D3ZMaM2lkQE5MZAIdFjy+HyHPAGfN3ctc8PPFQChQ4cDYj?=
- =?us-ascii?Q?frQYow9/70c/KeOdbrHK+07mIbuOXgd93Hmsqz2MOUzi3Hjd1jZcaCZi06as?=
- =?us-ascii?Q?4qU77zLFRNsIgYLkOmTYSXmebpkiy1TvJmLfB2ASqHaTVldONTTAbeyLzPb5?=
- =?us-ascii?Q?SzsoRNL1AeodMqfD8ekCzUa1SgJHh91/XN7qGZnpk/ByE2bR4RAO8wgYXH+j?=
- =?us-ascii?Q?wIhJ7hIF64Mj1RHAJVbKgY58NWuSZVcT86qX8W0NnjjThZASHkv+PLtFPNSI?=
- =?us-ascii?Q?IzPBBp8vmzHAi05eoD12hkCMdZwaJnagtNygARiSgWYQ4f2r5nM+HY2MF+4P?=
- =?us-ascii?Q?SeWACPuYBLGLd4tIS0u4UmbdVy3FG53sFeCII48bas0Yn4k9LKjLeEfZigg0?=
- =?us-ascii?Q?8oVdBLj5OWgfY/Bp8bqTL+ZlCBRmg9KM+3HVE/Qt8mXGUV36D3WrWIPeyFCP?=
- =?us-ascii?Q?udgs9G3EFU78qR1s9rpH0HDVLhmPPe2STl5JbTbf6Vgs7VH/YRAbzY3TXLZw?=
- =?us-ascii?Q?8c1Krcbs5VDmaUnnoopuoaqaWeJoE+dZ8jCWgGedgAGoHUEne06iTpJ60GKl?=
- =?us-ascii?Q?eYk7pSd6gARAQObnoY7Pjkb9f4YI2PxJOO5rz0eojot3nZyumLZPGxZXHwYJ?=
- =?us-ascii?Q?wV2xpPZr6/qLaIGrx/k98SVIXAcIOuJuN39jPUak8VUhW1Es8rw+dqX+Kewu?=
- =?us-ascii?Q?DAr3ak5YTj7VjkMIULBR7tbXQ+UjnnOEYOnUzN/iCNdYzX4M4HOQkpLvXzfX?=
- =?us-ascii?Q?S7nvQOFF1zGPlYaLIUVzfpI5ZBF0ciEGzHoZA7kCFAorNgDwLmlXmSGyZa4q?=
- =?us-ascii?Q?GNUXzZOaqkoIG7FcNmK/AVEA/4j6Ge8jPD5hB4qZLrq7obmn/tqBfNHRBPOI?=
- =?us-ascii?Q?GVrdtE5NsgLfuZbqALM57GklUgyXdX5nWWu0jYkB686Ml8AvUeirn8bd0e08?=
- =?us-ascii?Q?WtqQbCJkjQpPaZEDC23p9kV8QCjaLHWXLer2CNe2n1ELij4t3nZk99+JP9LS?=
- =?us-ascii?Q?vjS1kXl5k0KKMlqhQqxU6CnyU9whshDn3yddPswf8asEmA6eu0STV816YliU?=
- =?us-ascii?Q?otA7VXyAf7lYNRDoOUsthTCmcRKu8tPnWZHn/8cMsP0osZVqfXzd71mHUcnu?=
- =?us-ascii?Q?30g2+7TAMmaq35EX6C+5F7IFaCNLhL5zUNWeyz5FnihhUMT7P9XtcASrTBEr?=
- =?us-ascii?Q?eWVJEFzmzwQzIDgnTR5x13HmzCUy5Sps2mKva5k8bkL+SJJP+XH6aMFr38Ox?=
- =?us-ascii?Q?2AOPFQa4qvdtGhpM/gMOSna+npjzStwAocfqDtzkTqULOWyUTtHMJC8tBS2H?=
- =?us-ascii?Q?DseoCZt/dhxR0SEamdIlz0I8NfoJC8miAz2maQm0?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TU51aHhyUDRBenlGS3p2dHFkMU5YMGl5cXY2NHBQYTJoalZhM1lFZ255aENS?=
+ =?utf-8?B?dWpPZjV2TWpXNTNjTUtCOURiZFJ1Q3U0em11citZSDA4YnV3UmpFNEg4ZGJR?=
+ =?utf-8?B?aHdoR0hqOGR3amFhK0xqN3FWRGgyMS9UQXN2OGRlTm1XcklXYm5GWGtiVlBW?=
+ =?utf-8?B?cnBsWitIRXhVRjNqTGJ0QVkyNHQ5anlzRCtFMld3Q0hmWGhvSTE3YXZLVWhi?=
+ =?utf-8?B?ajQxME0xRWNBOGRrc0ZEYzRLanBSN2I0S1FrUnBDZ1JObjRsMDFiVUI1RUdv?=
+ =?utf-8?B?ZXd3bmFmMWx3YlVtYzFoTGhCN2JUckpnajlOZkJmNGFwckZWMkI1Qi9FNTZx?=
+ =?utf-8?B?UUhlNkw0TG8wUHgvWG5LaThWbjhxZndrQ3p5cmxQUmI0cm5iTU9uM0tkOERp?=
+ =?utf-8?B?c1BwdlE0NEU5d0l5ZnJIMUhFUTN5NTZkSmhHM2RXLzBPVFlpOTQ0ZHNBd0RU?=
+ =?utf-8?B?Y1BuYnVJek43SDJ4cnIraFZlK282ekp3UDE4K3pRSzVLRURNc0JSZkgxVko4?=
+ =?utf-8?B?dSsyb3A5clJ6UCtLM1lsejJ2eFpSVFZNdDBUb1ZUdU5QRXpCaklXdlVIdnNR?=
+ =?utf-8?B?enh2dTFUQ1VXdXArelpqdXdvZ1gyQW50dVp1cks2MXc4bXNTZ1FocGZFb0ZZ?=
+ =?utf-8?B?NUdpdHlBckpweFhMaEtqdG5IbUU1NGRrT1EvQzZ0RUxrMkdJdlVZYVhiUjdC?=
+ =?utf-8?B?Tk11U2JqUTA2V2w3eW1HUjVhNXVJdXBUaWM5M2hVM0IwdDR6MUpNQ1d1bXJQ?=
+ =?utf-8?B?TVhOb2Q5L0xtdWtONHNqcWxFd2h0ZWd4ZS9rN1Faam1ldndGVVFoTzNRTC82?=
+ =?utf-8?B?OGgvcTJacEZrU2x2dldBTjMveGlyMGsvSFUrYnFpdGFvUzJ1N1NkQUZDNUs0?=
+ =?utf-8?B?VlU5STdMR0FvV0hid0NoSm1LSVJBYzE1NUJNajlCVXlrRjdEekJGZjZOMi9M?=
+ =?utf-8?B?MWJ6T1FHSHFyYnFUWENVVzJXVjRaZ0FYSFprWmxER2RiUVBUYUZoY0lFdHZi?=
+ =?utf-8?B?VW5lS3dwNWZmMVpvOE1kcENhNjdCUjBlNDNwb0xCOXZoT3Y5YmYvQmFranI1?=
+ =?utf-8?B?MWFRM2VDNlIzWGNZODhUVEp3d3ZhM0xnSUhHZ3RxbG1yczkzQzVlNzYrWkFO?=
+ =?utf-8?B?TC9iTm0reUdIN203cTZYTjFyRXQ1R3ZQcDNveEc5SmM4b0pVTFQxa3U3T2d0?=
+ =?utf-8?B?R0tsNldLaWZ0a2RNbUJRVXdva1hDcktjTHhEb2VWYVBJUTdTSE9MUHNxOER3?=
+ =?utf-8?B?SytKRUdsaUZoQTFiYUxTTUg5Mk51MG9aMGxrWFVBdytvNjcyMWdweUYzeEhQ?=
+ =?utf-8?B?WVoweXdoZVVyQW0xS252OUR3QWxEdUR2T1lLSEFMWFAxMnMwQ05YWUhWZHI1?=
+ =?utf-8?B?VC9IUXhlQkNPdE4yb3dxNDNmTjNlc0U4eXZ3RmEvL2lLUjBiVjlRUjNraUFx?=
+ =?utf-8?B?c0p5aFc4NWdaT2tJclVicnV6L1Bhb1VQc2dSN2lYMFRjcWlyRzFwb3k0NHc4?=
+ =?utf-8?B?SnFhRCtjQ3NxenNxdmxFNUthcWxBOVNuUmFFbno4eDYyRWlFYjlxVloxMTBx?=
+ =?utf-8?B?VWxodnVZbW9Zc01qcE1RQm9HMEcrTkpSblVpclJMVDM1NVZNNFBPdzN6RzIv?=
+ =?utf-8?B?bW5GUGlPZFlRN3orU0JMbTdpdlR6SmZ5VHdHTEJrZ2szdU92Q3FxTGFxbWxl?=
+ =?utf-8?B?T2lKRW9jOVZFWjJibndPbUhlTkE1emE2OTJLRXdzMTFZa0t0WGtSZDFSeklG?=
+ =?utf-8?B?Q2Y0bE1lSmlwT3RSY0NvMmc0cFpPWDdtMlBRcTBIM0lHWFlWN2dwSE9SRVd5?=
+ =?utf-8?B?OWFRS3lSQjkycmQ2VjJiczB4a0hZM0tTTzZnaU9sVTZ3UFRFWVlVWGQyMmQ2?=
+ =?utf-8?B?QU5rOXcxU3ZhM2RZNUNlOWcyeEVva2lkeUprMTFxaG9aU0ROc0lPdHFncE1O?=
+ =?utf-8?B?VW1tR1dZczRtWU9MbjNybHpDZmM5d09jWEc1YUlYZGZOZ3lvVlVkdFBTakxp?=
+ =?utf-8?B?V0hhdkNRT0dhSWNId3JqWWx5QXljYklOcnZiY0Q0R3hXdVpNRHEyTGdLQy9k?=
+ =?utf-8?B?UmcvSjNENjdTNCtDOVNGUGVLRWdTS0FRUzRVcytMWDdXajhFazU2RTI1dWpk?=
+ =?utf-8?Q?ab8p05IjuvsfAZjVOYgc3lPVE?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7a8c4239-20d5-4f7c-4544-08ddb8de9f86
-X-MS-Exchange-CrossTenant-AuthSource: CH2PR12MB4277.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b8e5ea9a-7d6e-4f22-6e6c-08ddb903feb6
+X-MS-Exchange-CrossTenant-AuthSource: SN7PR12MB6838.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Jul 2025 20:34:05.6701 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Jul 2025 01:01:36.7657 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: DCCXUxTBiYVNV8H/Rk9gz1x9oN/vP0ueIl8gvATkt9fR4PVJvfsTmGKq35ixYIriB6GFvzXoeheCe+mpm5MVuw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PPF0FD1DEA27
-Received-SPF: permerror client-ip=2a01:111:f403:2009::606;
- envelope-from=etanous@nvidia.com;
+X-MS-Exchange-CrossTenant-UserPrincipalName: 94xCA1dZnNhK51ZXW4DPM29i4MUpG45sYrrUFUjAq7Z9ewtnpMQ/R/TDRomWAi0IeBQF3sFHcw9iCdfqbIQ32A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR12MB7476
+Received-SPF: permerror client-ip=2a01:111:f403:2009::615;
+ envelope-from=nathanc@nvidia.com;
  helo=NAM10-BN7-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -186,57 +205,196 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uNnLYCbruPIf
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4mPp91SQUOS2
 
-Aspeed2600 has two spi lanes;  Add a new struct that can mount the
-second SPI.
+>    To address this, patch #6 in the series introduces a new helper 
+>    function pci_setup_iommu_per_bus(), which explicitly sets the 
+>    iommu_per_bus field in the PCIBus structure. This allows 
+>    pci_device_get_iommu_bus_devfn() to retrieve IOMMU ops based 
+>    on the specific bus.
+>
+>    This patch series introduces support for a user-creatable SMMUv3 device
+>    (-device arm-smmuv3) in QEMU.
 
-Signed-off-by: Ed Tanous <etanous@nvidia.com>
----
- hw/arm/aspeed.c         | 2 ++
- include/hw/arm/aspeed.h | 2 ++
- 2 files changed, 4 insertions(+)
+Tested-by: Nathan Chen <nathanc@nvidia.com>
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index d0b333646e..3ef7f6c5b2 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -465,6 +465,8 @@ static void aspeed_machine_init(MachineState *machine)
-         aspeed_board_init_flashes(&bmc->soc->spi[0],
-                               bmc->spi_model ? bmc->spi_model : amc->spi_model,
-                               1, amc->num_cs);
-+        aspeed_board_init_flashes(&bmc->soc->spi[1],
-+                                  amc->spi2_model, 1, amc->num_cs2);
-     }
- 
-     if (machine->kernel_filename && sc->num_cpus > 1) {
-diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index 973277bea6..6c36455656 100644
---- a/include/hw/arm/aspeed.h
-+++ b/include/hw/arm/aspeed.h
-@@ -35,7 +35,9 @@ struct AspeedMachineClass {
-     uint32_t hw_strap2;
-     const char *fmc_model;
-     const char *spi_model;
-+    const char *spi2_model;
-     uint32_t num_cs;
-+    uint32_t num_cs2;
-     uint32_t macs_mask;
-     void (*i2c_init)(AspeedMachineState *bmc);
-     uint32_t uart_default;
--- 
-2.43.0
+I re-ran the test from v3 [0] and am able to create 16 SMMUv3 devices in 
+a qemu VM with emulated devices properly associated with the guest SMMUs 
+in guest sysfs - verified with some guest SMMUs having two or three 
+emulated NICs assigned to them while other guest SMMUs have a minimum of 
+one assigned.
 
+Removing SMMUv3 devices from the VM config described above, I do not 
+observe the problematic behavior where devices behind PXBs without SMMUs 
+erroneously use the address space from pcie.0's SMMU. I removed SMMUv3 
+devices from PXBs with one, two, and three emulated NICs assigned to 
+them. Below are the guest topology and qemu command used where SMMUv3 
+devices are excluded from the original test:
+
+nvidia@lego-cg1-dvt-59:~$ lspci -tv
+-+-[0000:00]-+-00.0  Red Hat, Inc. QEMU PCIe Host bridge
+  |           +-01.0  Red Hat, Inc. QEMU NVM Express Controller
+  |           +-02.0  Intel Corporation 82540EM Gigabit Ethernet Controller
+  |           +-03.0  Red Hat, Inc. Virtio network device
+  |           +-04.0  Red Hat, Inc. Virtio network device
+  |           +-05.0  Red Hat, Inc. QEMU PCIe Expander bridge
+  |           +-06.0  Red Hat, Inc. QEMU PCIe Expander bridge
+  |           +-07.0  Red Hat, Inc. QEMU PCIe Expander bridge
+  |           +-08.0  Red Hat, Inc. QEMU PCIe Expander bridge
+  |           +-09.0  Red Hat, Inc. QEMU PCIe Expander bridge
+  |           +-0a.0  Red Hat, Inc. QEMU PCIe Expander bridge
+  |           +-0b.0  Red Hat, Inc. QEMU PCIe Expander bridge
+  |           +-0c.0  Red Hat, Inc. QEMU PCIe Expander bridge
+  |           +-0d.0  Red Hat, Inc. QEMU PCIe Expander bridge
+  |           +-0e.0  Red Hat, Inc. QEMU PCIe Expander bridge
+  |           +-0f.0  Red Hat, Inc. QEMU PCIe Expander bridge
+  |           +-10.0  Red Hat, Inc. QEMU PCIe Expander bridge
+  |           +-11.0  Red Hat, Inc. QEMU PCIe Expander bridge
+  |           +-12.0  Red Hat, Inc. QEMU PCIe Expander bridge
+  |           \-13.0  Red Hat, Inc. QEMU PCIe Expander bridge
+  +-[0000:90]-+-00.0-[91]----00.0  Red Hat, Inc. Virtio 1.0 network device
+  |           \-01.0-[92]----00.0  Red Hat, Inc. Virtio 1.0 network device
+  +-[0000:94]---00.0-[95]----00.0  Red Hat, Inc. Virtio 1.0 network device
+  +-[0000:98]---00.0-[99]----00.0  Red Hat, Inc. Virtio 1.0 network device
+  +-[0000:9c]---00.0-[9d]----00.0  Red Hat, Inc. Virtio 1.0 network device
+  +-[0000:a0]---00.0-[a1]----00.0  Red Hat, Inc. Virtio 1.0 network device
+  +-[0000:a4]---00.0-[a5]----00.0  Red Hat, Inc. Virtio 1.0 network device
+  +-[0000:a8]---00.0-[a9]----00.0  Red Hat, Inc. Virtio 1.0 network device
+  +-[0000:ac]---00.0-[ad]----00.0  Red Hat, Inc. Virtio 1.0 network device
+  +-[0000:b0]---00.0-[b1]----00.0  Red Hat, Inc. Virtio 1.0 network device
+  +-[0000:b4]---00.0-[b5]----00.0  Red Hat, Inc. Virtio 1.0 network device
+  +-[0000:b8]---00.0-[b9]----00.0  Red Hat, Inc. Virtio 1.0 network device
+  +-[0000:bc]---00.0-[bd]----00.0  Red Hat, Inc. Virtio 1.0 network device
+  +-[0000:c0]---00.0-[c1]----00.0  Red Hat, Inc. Virtio 1.0 network device
+  +-[0000:c4]---00.0-[c5]----00.0  Red Hat, Inc. Virtio 1.0 network device
+  \-[0000:c8]-+-00.0-[c9]----00.0  Red Hat, Inc. Virtio 1.0 network device
+              +-01.0-[ca]----00.0  Red Hat, Inc. Virtio 1.0 network device
+              \-02.0-[cb]----00.0  Red Hat, Inc. Virtio 1.0 network device
+
+qemu-system-aarch64 \
+    -machine hmat=on -machine virt,accel=kvm,gic-version=3,ras=on \
+         -cpu host -smp cpus=4 -m size=16G,slots=4,maxmem=32G -nographic \
+         -bios /usr/share/AAVMF/AAVMF_CODE.fd \
+         -device nvme,drive=nvme0,serial=deadbeaf1,bus=pcie.0 \
+         -drive 
+file=/localhome/local-nathanc/noble-server-cloudimg-arm64.qcow2,index=0,media=disk,format=qcow2,if=none,id=nvme0 
+\
+         -device 
+e1000,romfile=/localhome/local-nathanc/efi-e1000.rom,netdev=net0,bus=pcie.0 
+\
+         -netdev 
+user,id=net0,hostfwd=tcp::5558-:22,hostfwd=tcp::5586-:5586 \
+         -netdev user,id=net1 \
+         -netdev user,id=net2 \
+         -netdev user,id=net3 \
+         -netdev user,id=net4 \
+         -netdev user,id=net5 \
+         -netdev user,id=net6 \
+         -netdev user,id=net7 \
+         -netdev user,id=net8 \
+         -netdev user,id=net9 \
+         -netdev user,id=net10 \
+         -netdev user,id=net11 \
+         -netdev user,id=net12 \
+         -netdev user,id=net13 \
+         -netdev user,id=net14 \
+         -netdev user,id=net15 \
+         -netdev user,id=net16 \
+         -netdev user,id=net17 \
+         -netdev user,id=net18 \
+         -netdev user,id=net19 \
+         -netdev user,id=net20 \
+         -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0 \
+         -device virtio-net-pci,bus=pcie.0,netdev=net1 \
+         -device virtio-net-pci,bus=pcie.0,netdev=net20 \
+         -device pxb-pcie,id=pcie.1,bus_nr=200,bus=pcie.0 \
+         -device pcie-root-port,id=pcie.port1,bus=pcie.1,slot=1,chassis=1 \
+         -device virtio-net-pci,bus=pcie.port1,netdev=net2 \
+         -device 
+pcie-root-port,id=pcie.port17,bus=pcie.1,slot=17,chassis=17 \
+         -device virtio-net-pci,bus=pcie.port17,netdev=net18 \
+         -device 
+pcie-root-port,id=pcie.port18,bus=pcie.1,slot=18,chassis=18 \
+         -device virtio-net-pci,bus=pcie.port18,netdev=net19 \
+         -device pxb-pcie,id=pcie.2,bus_nr=196,bus=pcie.0 \
+         -device arm-smmuv3,primary-bus=pcie.2,id=smmuv3.2 \
+         -device pcie-root-port,id=pcie.port2,bus=pcie.2,slot=2,chassis=2 \
+         -device virtio-net-pci,bus=pcie.port2,netdev=net3 \
+         -device pxb-pcie,id=pcie.3,bus_nr=192,bus=pcie.0 \
+         -device pcie-root-port,id=pcie.port3,bus=pcie.3,slot=3,chassis=3 \
+         -device virtio-net-pci,bus=pcie.port3,netdev=net4 \
+         -device pxb-pcie,id=pcie.4,bus_nr=188,bus=pcie.0 \
+         -device arm-smmuv3,primary-bus=pcie.4,id=smmuv3.4 \
+         -device pcie-root-port,id=pcie.port4,bus=pcie.4,slot=4,chassis=4 \
+         -device virtio-net-pci,bus=pcie.port4,netdev=net5 \
+         -device pxb-pcie,id=pcie.5,bus_nr=184,bus=pcie.0 \
+         -device pcie-root-port,id=pcie.port5,bus=pcie.5,slot=5,chassis=5 \
+         -device virtio-net-pci,bus=pcie.port5,netdev=net6 \
+         -device pxb-pcie,id=pcie.6,bus_nr=180,bus=pcie.0 \
+         -device arm-smmuv3,primary-bus=pcie.6,id=smmuv3.6 \
+         -device pcie-root-port,id=pcie.port6,bus=pcie.6,slot=6,chassis=6 \
+         -device virtio-net-pci,bus=pcie.port6,netdev=net7 \
+         -device pxb-pcie,id=pcie.7,bus_nr=176,bus=pcie.0 \
+         -device arm-smmuv3,primary-bus=pcie.7,id=smmuv3.7 \
+         -device pcie-root-port,id=pcie.port7,bus=pcie.7,slot=7,chassis=7 \
+         -device virtio-net-pci,bus=pcie.port7,netdev=net8 \
+         -device pxb-pcie,id=pcie.8,bus_nr=172,bus=pcie.0 \
+         -device arm-smmuv3,primary-bus=pcie.8,id=smmuv3.8 \
+         -device pcie-root-port,id=pcie.port8,bus=pcie.8,slot=8,chassis=8 \
+         -device virtio-net-pci,bus=pcie.port8,netdev=net9 \
+         -device pxb-pcie,id=pcie.9,bus_nr=168,bus=pcie.0 \
+         -device arm-smmuv3,primary-bus=pcie.9,id=smmuv3.9 \
+         -device pcie-root-port,id=pcie.port9,bus=pcie.9,slot=9,chassis=9 \
+         -device virtio-net-pci,bus=pcie.port9,netdev=net10 \
+         -device pxb-pcie,id=pcie.10,bus_nr=164,bus=pcie.0 \
+         -device arm-smmuv3,primary-bus=pcie.10,id=smmuv3.10 \
+         -device 
+pcie-root-port,id=pcie.port10,bus=pcie.10,slot=10,chassis=10 \
+         -device virtio-net-pci,bus=pcie.port10,netdev=net11 \
+         -device pxb-pcie,id=pcie.11,bus_nr=160,bus=pcie.0 \
+         -device arm-smmuv3,primary-bus=pcie.11,id=smmuv3.11 \
+         -device 
+pcie-root-port,id=pcie.port11,bus=pcie.11,slot=11,chassis=11 \
+         -device virtio-net-pci,bus=pcie.port11,netdev=net12 \
+         -device pxb-pcie,id=pcie.12,bus_nr=156,bus=pcie.0 \
+         -device arm-smmuv3,primary-bus=pcie.12,id=smmuv3.12 \
+         -device 
+pcie-root-port,id=pcie.port12,bus=pcie.12,slot=12,chassis=12 \
+         -device virtio-net-pci,bus=pcie.port12,netdev=net13 \
+         -device pxb-pcie,id=pcie.13,bus_nr=152,bus=pcie.0 \
+         -device arm-smmuv3,primary-bus=pcie.13,id=smmuv3.13 \
+         -device 
+pcie-root-port,id=pcie.port13,bus=pcie.13,slot=13,chassis=13 \
+         -device virtio-net-pci,bus=pcie.port13,netdev=net14 \
+         -device pxb-pcie,id=pcie.14,bus_nr=148,bus=pcie.0 \
+         -device arm-smmuv3,primary-bus=pcie.14,id=smmuv3.14 \
+         -device 
+pcie-root-port,id=pcie.port14,bus=pcie.14,slot=14,chassis=14 \
+         -device virtio-net-pci,bus=pcie.port14,netdev=net15 \
+         -device pxb-pcie,id=pcie.15,bus_nr=144,bus=pcie.0 \
+         -device 
+pcie-root-port,id=pcie.port15,bus=pcie.15,slot=15,chassis=15 \
+         -device virtio-net-pci,bus=pcie.port15,netdev=net16 \
+         -device 
+pcie-root-port,id=pcie.port16,bus=pcie.15,slot=16,chassis=16 \
+         -device virtio-net-pci,bus=pcie.port16,netdev=net17
+
+
+[0] 
+https://lore.kernel.org/all/90957693-dc12-4731-960f-0ee295d297ec@nvidia.com/
+
+Thanks,
+Nathan

@@ -1,129 +1,149 @@
-Received: by 2002:a05:622a:6187:b0:4a7:49b6:ba6e with SMTP id hh7csp3457016qtb;
-        Tue, 1 Jul 2025 19:07:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVgUUDspybWHniylake2BewvWtKkH1fLzwPLNKBbcO3RIsIqfrlNnRQNHWM0L1GQdiYs0kfGgCXtLDVIg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHWyRfU//fXTJ1c6SpxfOtbqCMLjoiBsxRxwBGb/zZykU1DtCyq0G7PKaeX5CY/jI4zkLhm
-X-Received: by 2002:a05:620a:170f:b0:7d3:dbed:869b with SMTP id af79cd13be357-7d5c4797b69mr181940085a.42.1751422039471;
-        Tue, 01 Jul 2025 19:07:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751422039; cv=none;
+Received: by 2002:a05:622a:6187:b0:4a7:49b6:ba6e with SMTP id hh7csp3463061qtb;
+        Tue, 1 Jul 2025 19:25:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWHbwfYrZeIw04/74/9OSc66PgxUXh2nn0XGk9MYm9UUzpOAA/7Wc1MLqs7gHLGlfMiRibB/KQtJJcrUg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEomuAM4Js2bASHOwPSATWh0bdHAmZw3LP+uRNjF74SZ/P67mCKqzdAzRMbtEFCUh0YL8cN
+X-Received: by 2002:a05:620a:40d2:b0:7d4:6506:cb63 with SMTP id af79cd13be357-7d5c478ef7bmr156984285a.28.1751423112509;
+        Tue, 01 Jul 2025 19:25:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751423112; cv=none;
         d=google.com; s=arc-20240605;
-        b=eiWwiRIyaVAdiUcp8h1zP3Ltr0tc//hkL8CkO/0ka6mjgD9DlhjBXmW/AODjlAYUsd
-         +9ntfoUMF1FKKmxCQ43CRLf8qWYErFg9Q6GcOxn7rc7YFqkarAVNJHh1VZL4egKQlXld
-         O3HLjUi+wKnrnBYl8CA5/V8k2ukT8huG1giPnMrSzQRZp/mMVLnPbXsDbY8srqZmAR8B
-         NPiXEe9vJCSm4y0C6eAumPyhApubveWh1ZcXo76rj5RhMywhcm64pAA6dMSnuxJfjToj
-         xX92ylFlLUjF62adyFcTNspNWNXCUMjptgPvyIwwS16dlGLlOEjw60QrVvuGjk9gqrJj
-         aTXQ==
+        b=bl9t0G/HW/83vYVu24j4Kd8mE98U4DBh0mKHRDCsy34wveopK6BltZqTYggFoEJg+r
+         /1IDz67H0vbps2x/OEOEelURZMIOEqggkRh0OHvmmkighwbIcOPevGR8A32Bb07FLX8u
+         pH7U59RQVXMGr9H93L9lrSrsNigWrI2YJmg4mRzvLKmvxQz5spWbsSRX/QmhE59LQ2cg
+         JSdtrCepBI3IAZXxLC0BkPYPcTlwRve/PmfAfuWAhFtvSAz5pOdsMgNWU0Es/WbStQBd
+         tH5RIVxjscSMjKyJOQvibPVKUJRihPOmiSbE7uiVD6gTy9aupCNblYCEjsjjiyOEjJ0F
+         j2bA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
+         :content-language:in-reply-to:from:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=4yiF5IrOyxAjbvHg14hQjpBgBMge4ArYTidkU/xmVuQ=;
-        fh=VmNcvBpGnZ12hYnd9vj+I9Y9X/sn86eY2dEvOtqhn80=;
-        b=LaPNqTdAXGxZJWxDoCDuQaJxvo64r6ZV6IjiAy6kJZVM/7Nj4xbUHgCp5QvCEa8sBi
-         UM/CwNsrWcj3V7Fbd0zsU9j2zNXWMuQ0i2TSU0pvjTFCVFmMfYNfqWuJgPNyoPfZhxHo
-         vpgqOQKceUAMA1CCNVVM0c4E2Slfuk4/gHih140r03qXVbgsLbYH7PmFO2nLIm9uiSiB
-         sHG705bWBiCKHFADM3kqPPs2YxdPfQcICc/5FxC5wnCserjj4X3gYU0WNJKacg+f/qKR
-         05F2CQo3MxzQhJ3/QasWtGpvYc6K/ljthWtfaJdVRYI1rWZ5brp+VQceVre/fp2lh4G7
-         4hlg==;
+        bh=+Tsp9dzizK+AtKctxeLQzqRqxNRLoIZa766o0sMJY24=;
+        fh=vwLrR6CMOlzTUf1KlTRfkjaM6n1iFGh3/ULDqWqFTbA=;
+        b=cRhSlUdkU+rRt37KEwRpGMFQ5e73VJkpUnQcRmxprqycHUz9F9lnt6DdsJ7+HHjH/p
+         UU7M5A/WBbrantYOdMUDXrYhQ1Bx3j216Y080IVuNfX68/KPmEb4XNO/NbMnwP5jfEiQ
+         bvIepIpcktyBZirj14dglVxDQimBi92JII7q23c36vzh5vpB4hu/oq8j1yHSmXcEVMgo
+         58XBS8S+NfEJVplrt3Q1VDXYmL1RYH75miEOwKx5CiAHQqyBgu4Gm0vYlAUMOkaCU43I
+         iVh0FeiqjBMU8kFlfGFXNRycZtvu/v5RenrFNSYddPY83nMr3fEbud7uTMDQ96/5zH/M
+         nt5Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Abtf3901;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f5nILZIh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d44324c356si1212469285a.357.2025.07.01.19.07.19
+        by mx.google.com with ESMTPS id af79cd13be357-7d4432253cfsi1115981085a.180.2025.07.01.19.25.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Jul 2025 19:07:19 -0700 (PDT)
+        Tue, 01 Jul 2025 19:25:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Abtf3901;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f5nILZIh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uWms4-0006Bt-C9; Tue, 01 Jul 2025 22:06:48 -0400
+	id 1uWn9T-0002Bj-Nx; Tue, 01 Jul 2025 22:24:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uWms1-0006Ap-OK
- for qemu-arm@nongnu.org; Tue, 01 Jul 2025 22:06:45 -0400
-Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uWmrz-0002v5-PD
- for qemu-arm@nongnu.org; Tue, 01 Jul 2025 22:06:45 -0400
-Received: by mail-oi1-x234.google.com with SMTP id
- 5614622812f47-407aac76036so2274534b6e.1
- for <qemu-arm@nongnu.org>; Tue, 01 Jul 2025 19:06:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751422002; x=1752026802; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=4yiF5IrOyxAjbvHg14hQjpBgBMge4ArYTidkU/xmVuQ=;
- b=Abtf39011RQO515bmJhEW4pLNEj7RC6J1LX72ZgP9TW5LUeFL/DOnPCasHCwmS665d
- VAh1ikMbXa56qey+TWaDqHG118/p2hzVZ1I6GfuaeIHLVr5IcP+fi/MXYBDp4Mk491wX
- 6FxB+rps3tsUlnf4rUPjxHs2l4EoHnfPiQ4bAzOww4dDqjfYuSYn8mUwdkJFMurtBAOJ
- 63SytYNQeI1wowh0bG8+IgZ730CRnSYLubmaI8ZOe/PDnL36ZbavnYkIwr6Plng2MzHz
- Xva+OizU7Qlv61nrG4DL9Au3wH9HqlE3xzvvXR9THcZQJGMxy5PNgvEvFfkscZOYVrZF
- nhlg==
+ (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
+ id 1uWn9R-0002BD-59
+ for qemu-arm@nongnu.org; Tue, 01 Jul 2025 22:24:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
+ id 1uWn9P-0001H2-3I
+ for qemu-arm@nongnu.org; Tue, 01 Jul 2025 22:24:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1751423079;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+Tsp9dzizK+AtKctxeLQzqRqxNRLoIZa766o0sMJY24=;
+ b=f5nILZIhm8By4yvZHVTbbrRdT382UgIegooXbldT2xwq2SypXhGVoYMTDVW2LFs/pnI5Su
+ c5lmrlbA3s/lwTGI5n2E85wxgD1j5xUXJOjJkY3X+348JYogh+KUYXklGCiH1BGMXRUtN4
+ M5ZevaoRxrQldt2XE1ShRBy15a8fViE=
+Received: from mail-pf1-f199.google.com (mail-pf1-f199.google.com
+ [209.85.210.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-296-4lcuJGc1M5-43eizVC-3-A-1; Tue, 01 Jul 2025 22:24:38 -0400
+X-MC-Unique: 4lcuJGc1M5-43eizVC-3-A-1
+X-Mimecast-MFC-AGG-ID: 4lcuJGc1M5-43eizVC-3-A_1751423077
+Received: by mail-pf1-f199.google.com with SMTP id
+ d2e1a72fcca58-748764d84feso6154543b3a.2
+ for <qemu-arm@nongnu.org>; Tue, 01 Jul 2025 19:24:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751422002; x=1752026802;
+ d=1e100.net; s=20230601; t=1751423077; x=1752027877;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4yiF5IrOyxAjbvHg14hQjpBgBMge4ArYTidkU/xmVuQ=;
- b=kf57HCOWMpkD7mADSW0R9aa7OgGwA9KfO82V0ytutXxGLBZoRg7Kb1A9GNLgVLourv
- d62HztUOFu+GKuCopwzqVEza81Uz3krv6YhbIyd8JJjSleHAnUH/MNhScEdD6Eego1Yu
- hwoQi/0GRV1L0Ej+aUMYiKDXQ7B8iffg977DmaNL/BKdIW8Er2p4h1Au/Gigewy1GcyL
- d9MfSi4BeqjNIi456YAr61jSaH8JJ6lP6kyzW3SZSr0PmsOPM819Ui538qk1P6W6cIIk
- bCNsNlyhP+YJ5CubU87+yY8V3HcoVxXKknYfMdVBOwb/GwOn+2CpNmt4fX4PUuSvjc9B
- bwDQ==
-X-Gm-Message-State: AOJu0YzJQfxKNFOf2DmH+AMK5UbouI3hv1ePynGmERkJxxOFYi69puSq
- wdEQi55Hor00G6ZszYORYD6v5uO27GeBpjCZ9eldBpXPUK6wG3+ptnz+1abevOCI3ck=
-X-Gm-Gg: ASbGnctPWNkjQuARrNZKJuP8AJHiNObY3rWNsxscRWQp78IiXIY4HAmCozgf9NCO5iN
- c1ZmECcN1kBZh1ZgupUq2+3KkvA+CZVeo0qFu1b/053Vl0SgXKi0TRaCBT5y0LBV8+PkuiHpqhI
- r2i9CFOOifWmOsYjOTn9dYZKhlXGMEOE+fPsLRbI06pxj+SO/UljMbHoTfcMcmWJJ1Ublr8H869
- JIhL8HE8519N0jpg74ZceNQhlxcjN9EMoiEmCYRW8RVHgYAtX5D1Jo+hqKFAP0GQUFFW9hQNO+e
- xrOfoRO2nCFH2+PPnQrse+WaAuRM4sOvBTR9XHISorQs6L8wYATMYcx9+ceTMq9tv5TwseV7w8P
- CQw==
-X-Received: by 2002:a05:6808:6909:b0:40b:1588:e005 with SMTP id
- 5614622812f47-40b8877df29mr667132b6e.10.1751422002239; 
- Tue, 01 Jul 2025 19:06:42 -0700 (PDT)
-Received: from [10.25.7.201] ([187.210.107.185])
+ bh=+Tsp9dzizK+AtKctxeLQzqRqxNRLoIZa766o0sMJY24=;
+ b=s1KSfMQEIGtFMM4Bj7qZTfif3b6Vm1NUvg9cCr24RmstXOaXaDCkACpWWX5HhRSsjZ
+ +DY9ZuLARd/GPpJ6mUBt5akEpQdn4Cp0kJmNQ1Ra2+0YvgeVx9U07y4aSbfuJhqxCWD+
+ 8eD5GWtFahnh9/DqZ4t5kqzeE1EoGU28gbNPCreHKP5RwhPG90kFf/d7/rHuHkjMkhSq
+ 6MnGykbnovtwNBlCgKBu/+Au+gQRc1x782S6+QbzUocjXX+BB+8VhxMUzxD9yiAIySh3
+ xMr6bM3NFApKDp/YH4YCKLDLA+nCc+Db5tCvohwTg/edllg/PdwQch/+S5DNhAHsEKjw
+ ZqYg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVfRlsfCcw9kuMBnFlGZ/YS8jeMvhrCnb/+Zy/gcTRLVpLE8YDduPjXsqb8f0PD7g3N2z4eqC/qLw==@nongnu.org
+X-Gm-Message-State: AOJu0YzXyuGxdTLYnoCNgIgQVK6VZT87RJedvJyhrUEVVjfYiy8ME4T5
+ GF8oxWbkEfN2bufiryBLD5B3qFRN0ugW36W0RSlpaYG2dcZRkmSkSDqaEn6QozwjJ4D4c8x0Mxj
+ zCK6eZxD2bLPcrjhap0RoxK7oHtq62FfFKvZx1pE2W26jPX6fecnThw==
+X-Gm-Gg: ASbGncsTeNP0j0GCj5tVb8DeR9FJVNyDRIL8Z2HFz2X56xyehp+NeJp/KsIz048LXRH
+ CgDFnBvtqCEWOuI0EALYH6dFLcObUWAt6jZZJq8B1C3OM/YIG1iyrOsXb+I2cAF4Uatvp9QUymq
+ DknPutMk45cjPlpU1yzzvg9Szc9nIGWvs9y6wAhuBJ8tKMZQEtDT61UFsBFBgqq6Os3bQH1Qp/M
+ xlNlJl7MsG28beP6DTvjeV/BPdzTcZkX1o2bAZCKdApbrDBNY3ZVcQgE5MfAGr/lIU2JlBbWaW8
+ 1HUurPnv3X1mGk7lRkLtWWX2K/E=
+X-Received: by 2002:a05:6a00:1910:b0:748:4652:bff4 with SMTP id
+ d2e1a72fcca58-74b5149c0f6mr1573731b3a.13.1751423077484; 
+ Tue, 01 Jul 2025 19:24:37 -0700 (PDT)
+X-Received: by 2002:a05:6a00:1910:b0:748:4652:bff4 with SMTP id
+ d2e1a72fcca58-74b5149c0f6mr1573683b3a.13.1751423077060; 
+ Tue, 01 Jul 2025 19:24:37 -0700 (PDT)
+Received: from [10.72.116.105] ([209.132.188.88])
  by smtp.gmail.com with ESMTPSA id
- 5614622812f47-40b324050d2sm2370875b6e.32.2025.07.01.19.06.41
+ d2e1a72fcca58-74af541c399sm13288493b3a.52.2025.07.01.19.24.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 01 Jul 2025 19:06:41 -0700 (PDT)
-Message-ID: <0ac8967e-ce39-4820-8c60-474b702cc728@linaro.org>
-Date: Tue, 1 Jul 2025 20:06:39 -0600
+ Tue, 01 Jul 2025 19:24:36 -0700 (PDT)
+Message-ID: <6347e3a2-23f5-43a3-8b74-503148f3bacf@redhat.com>
+Date: Wed, 2 Jul 2025 10:24:24 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 01/12] target/arm: Fix VLSTM/VLLDM helper load/store
- alignment checks
-To: William Kosasih <kosasihwilliam4@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20250701103159.62661-1-kosasihwilliam4@gmail.com>
- <20250701103159.62661-2-kosasihwilliam4@gmail.com>
+Subject: Re: [PATCH v6 2/2] hw/i386: Add the ramfb romfile compatibility
+To: Eric Auger <eauger@redhat.com>, qemu-arm@nongnu.org
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-devel@nongnu.org
+References: <20250701030549.2153331-1-shahuang@redhat.com>
+ <20250701030549.2153331-3-shahuang@redhat.com>
+ <9bbaa0bb-cf32-48f2-aff6-6484285496f0@redhat.com>
+From: Shaoqin Huang <shahuang@redhat.com>
+In-Reply-To: <9bbaa0bb-cf32-48f2-aff6-6484285496f0@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 1-hyPyC2PV6MoidtyWIVZlf2jVpEASgUo257awg5ctM_1751423077
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250701103159.62661-2-kosasihwilliam4@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::234;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x234.google.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=shahuang@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,55 +158,150 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +NXk6fkLDdNA
+X-TUID: H0hwbGREVa6N
 
-On 7/1/25 04:31, William Kosasih wrote:
-> This patch adds alignment checks in the load operations in the VLLDM
-> instruction, and in the store operations in the VLSTM instruction.
+Hi Eric,
+
+Thanks for your review.
+
+On 7/1/25 1:17 PM, Eric Auger wrote:
+> Hi,
 > 
-> Manual alignment checks in the both helpers are retained because they
-> enforce an 8-byte alignment requirement (instead of the 4-byte alignment for
-> ordinary long loads/stores). References to cpu_*_data_* are still replaced
-> with cpu_*_mmu(), so that the individual word accesses themselves also
-> perform the standard alignment checks, in keeping with the ARM pseudocode.
+> On 7/1/25 5:05 AM, Shaoqin Huang wrote:
+>> Set the "use-legacy-x86-rom" property to false by default, and only set
+>> it to true on x86 since only x86 will need it.
+>>
+>> At the same time, set the "use-legacy-x86-rom" property to true on those
+>> historical versioned machine types in order to avoid the memory layout
+>> being changed.
+>>
+>> Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
+>> ---
+>>   hw/core/machine.c             |  2 ++
+>>   hw/display/ramfb-standalone.c |  2 +-
+>>   hw/i386/pc_piix.c             | 10 ++++++++++
+>>   hw/i386/pc_q35.c              |  3 +++
+>>   hw/vfio/pci.c                 |  2 +-
+>>   5 files changed, 17 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/core/machine.c b/hw/core/machine.c
+>> index 63c6ef93d2..349aec1e0d 100644
+>> --- a/hw/core/machine.c
+>> +++ b/hw/core/machine.c
+>> @@ -46,6 +46,8 @@ GlobalProperty hw_compat_9_2[] = {
+>>       { "migration", "multifd-clean-tls-termination", "false" },
+>>       { "migration", "send-switchover-start", "off"},
+>>       { "vfio-pci", "x-migration-multifd-transfer", "off" },
+>> +    { "ramfb", "use-legacy-x86-rom", "true"},
+>> +    { "vfio-pci", "use-legacy-x86-rom", "true" },
+> why 9.2? The 10.0 machine type should also apply the previous "true"
+> default setting. To me the new default shall only affect the latest 10.1
+> machine type.
 
-So... this merely makes this function match the pseudocode, it doesn't actually fix a bug.
-This description should be fixed to reflect that.
+It seems what I understand is wrong, I thought the 9.2 is the historical 
+machine type.
 
-> diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
-> index 6614719832..251e12edf9 100644
-> --- a/target/arm/tcg/m_helper.c
-> +++ b/target/arm/tcg/m_helper.c
-> @@ -1048,6 +1048,9 @@ void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
->       bool s = env->v7m.fpccr[M_REG_S] & R_V7M_FPCCR_S_MASK;
->       bool lspact = env->v7m.fpccr[s] & R_V7M_FPCCR_LSPACT_MASK;
->       uintptr_t ra = GETPC();
-> +    ARMMMUIdx mmu_idx = arm_mmu_idx(env);
-> +    MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN,
-> +                                 arm_to_core_mmu_idx(mmu_idx));
->   
->       assert(env->v7m.secure);
->   
-> @@ -1073,7 +1076,7 @@ void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
->        * Note that we do not use v7m_stack_write() here, because the
->        * accesses should not set the FSR bits for stacking errors if they
->        * fail. (In pseudocode terms, they are AccType_NORMAL, not AccType_STACK
-> -     * or AccType_LAZYFP). Faults in cpu_stl_data_ra() will throw exceptions
-> +     * or AccType_LAZYFP). Faults in cpu_stl_mmu() will throw exceptions
->        * and longjmp out.
->        */
->       if (!(env->v7m.fpccr[M_REG_S] & R_V7M_FPCCR_LSPEN_MASK)) {
-> @@ -1089,12 +1092,12 @@ void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
->               if (i >= 16) {
->                   faddr += 8; /* skip the slot for the FPSCR */
->               }
-> -            cpu_stl_data_ra(env, faddr, slo, ra);
-> -            cpu_stl_data_ra(env, faddr + 4, shi, ra);
-> +            cpu_stl_mmu(env, faddr, slo, oi, ra);
-> +            cpu_stl_mmu(env, faddr + 4, shi, oi, ra);
+10.0 machine type is the current machine type, it also should be 
+included into the historical machine type when we add the property.
 
-This is an improvement because the mmu index is resolved once, instead of within every 
-call to cpu_stl_data_ra.
+ok I will update it again with add those property into 10.0 machine type.
 
+Thanks
 
-r~
+>>   };
+>>   const size_t hw_compat_9_2_len = G_N_ELEMENTS(hw_compat_9_2);
+>>   
+>> diff --git a/hw/display/ramfb-standalone.c b/hw/display/ramfb-standalone.c
+>> index af1175bf96..ddbf42f181 100644
+>> --- a/hw/display/ramfb-standalone.c
+>> +++ b/hw/display/ramfb-standalone.c
+>> @@ -63,7 +63,7 @@ static const VMStateDescription ramfb_dev_vmstate = {
+>>   
+>>   static const Property ramfb_properties[] = {
+>>       DEFINE_PROP_BOOL("x-migrate", RAMFBStandaloneState, migrate,  true),
+>> -    DEFINE_PROP_BOOL("use-legacy-x86-rom", RAMFBStandaloneState, use_legacy_x86_rom, true),
+>> +    DEFINE_PROP_BOOL("use-legacy-x86-rom", RAMFBStandaloneState, use_legacy_x86_rom, false),
+>>   };
+>>   
+>>   static void ramfb_class_initfn(ObjectClass *klass, void *data)
+>> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+>> index 6c91e2d292..4a8bbc0e28 100644
+>> --- a/hw/i386/pc_piix.c
+>> +++ b/hw/i386/pc_piix.c
+>> @@ -49,6 +49,7 @@
+>>   #include "hw/i2c/smbus_eeprom.h"
+>>   #include "exec/memory.h"
+>>   #include "hw/acpi/acpi.h"
+>> +#include "hw/vfio/pci.h"
+>>   #include "qapi/error.h"
+>>   #include "qemu/error-report.h"
+>>   #include "system/xen.h"
+>> @@ -77,6 +78,13 @@ static const int ide_iobase2[MAX_IDE_BUS] = { 0x3f6, 0x376 };
+>>   static const int ide_irq[MAX_IDE_BUS] = { 14, 15 };
+>>   #endif
+>>   
+>> +static GlobalProperty pc_piix_compat_defaults[] = {
+>> +    { TYPE_RAMFB_DEVICE, "use-legacy-x86-rom", "true" },
+>> +    { TYPE_VFIO_PCI, "use-legacy-x86-rom", "true" },
+>> +};
+>> +static const size_t pc_piix_compat_defaults_len =
+>> +    G_N_ELEMENTS(pc_piix_compat_defaults);
+>> +
+>>   /*
+>>    * Return the global irq number corresponding to a given device irq
+>>    * pin. We could also use the bus number to have a more precise mapping.
+>> @@ -477,6 +485,8 @@ static void pc_i440fx_machine_options(MachineClass *m)
+>>                                      pc_set_south_bridge);
+>>       object_class_property_set_description(oc, "x-south-bridge",
+>>                                        "Use a different south bridge than PIIX3");
+>> +    compat_props_add(m->compat_props,
+>> +                     pc_piix_compat_defaults, pc_piix_compat_defaults_len);
+>>   }
+>>   
+>>   static void pc_i440fx_machine_10_0_options(MachineClass *m)
+>> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+>> index fd96d0345c..f6d89578d0 100644
+>> --- a/hw/i386/pc_q35.c
+>> +++ b/hw/i386/pc_q35.c
+>> @@ -45,6 +45,7 @@
+>>   #include "hw/i386/pc.h"
+>>   #include "hw/i386/amd_iommu.h"
+>>   #include "hw/i386/intel_iommu.h"
+>> +#include "hw/vfio/pci.h"
+>>   #include "hw/virtio/virtio-iommu.h"
+>>   #include "hw/display/ramfb.h"
+>>   #include "hw/ide/pci.h"
+>> @@ -67,6 +68,8 @@
+>>   
+>>   static GlobalProperty pc_q35_compat_defaults[] = {
+>>       { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "39" },
+>> +    { TYPE_RAMFB_DEVICE, "use-legacy-x86-rom", "true" },
+>> +    { TYPE_VFIO_PCI, "use-legacy-x86-rom", "true" },
+> I hope we do not omit any other machine that would actually need ramfb
+> rom. At the moment we take care of q35 and  piix. Anyone aware of any
+> other user?
+> 
+> Thanks
+> 
+> Eric
+>>   };
+>>   static const size_t pc_q35_compat_defaults_len =
+>>       G_N_ELEMENTS(pc_q35_compat_defaults);
+>> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+>> index ff0d93fae0..a529500b70 100644
+>> --- a/hw/vfio/pci.c
+>> +++ b/hw/vfio/pci.c
+>> @@ -3564,7 +3564,7 @@ static const TypeInfo vfio_pci_dev_info = {
+>>   
+>>   static const Property vfio_pci_dev_nohotplug_properties[] = {
+>>       DEFINE_PROP_BOOL("ramfb", VFIOPCIDevice, enable_ramfb, false),
+>> -    DEFINE_PROP_BOOL("use-legacy-x86-rom", VFIOPCIDevice, use_legacy_x86_rom, true),
+>> +    DEFINE_PROP_BOOL("use-legacy-x86-rom", VFIOPCIDevice, use_legacy_x86_rom, false),
+>>       DEFINE_PROP_ON_OFF_AUTO("x-ramfb-migrate", VFIOPCIDevice, ramfb_migrate,
+>>                               ON_OFF_AUTO_AUTO),
+>>   };
+> 
+
+-- 
+Shaoqin
+

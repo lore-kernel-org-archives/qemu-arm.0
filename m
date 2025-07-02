@@ -1,131 +1,122 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3867021dye;
-        Wed, 2 Jul 2025 07:53:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVhyk/BX7CqbpnWF84KB2ogFUtGL5VwSx7QCUsnT4dYwZ3Lk1J8yUewWD+U4de2i9NzN+rpZ5xwRSHbxQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFJ2+uLaKJmA/u6TkoWlgRmMoK5Bl0XgZoTp3h48Ca6Kg02yU065tHPak0LdsidATZsasCG
-X-Received: by 2002:a05:622a:98b:b0:4a7:c4d:1a51 with SMTP id d75a77b69052e-4a976913b28mr67889901cf.13.1751468016087;
-        Wed, 02 Jul 2025 07:53:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751468016; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3869339dye;
+        Wed, 2 Jul 2025 07:57:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWt7YT73hwxpAeYWhst3thPwWbRZV5HbKQE+d4czYuSfZvPwbPq5Zf8851NB73xBIP303VDNffk5Dv1Kw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFuphgETnqjzg+w18MFZKCtXDxX+Fz3LnLGX/wRGxaLd6eAVS7pQApj/IGol3n6FDyw2n2Y
+X-Received: by 2002:a05:620a:f03:b0:7d4:2922:14a4 with SMTP id af79cd13be357-7d5c46ab20cmr475464685a.23.1751468269511;
+        Wed, 02 Jul 2025 07:57:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751468269; cv=none;
         d=google.com; s=arc-20240605;
-        b=MII5aj2ggVaJJBsf0hn5nh0GFuDc4PYkxVm48RRU9Za120cQI5ZAZGytUvRmHRMtO2
-         ecpR2xH0C6SWn2ngGDAq0P1JXHtF34qhqn6QikC0b41XyI2HgB40WwhuACiO1R4taNzS
-         QHhLr2H0dbOXZO62m4eQYz7wJBG/hJSDi3c8fwQXuI9Tlo/SyKi/6Fnume80ZxPfG3hu
-         hyVeBJmx/I8wBYE2TZ7nnbbYUeNGn8/buppRe2u2Uv+powc2VOQP5p4N7QZ0xedeDJHS
-         kjr1yLGLhbOrykoTFRBwo5NU0lEuvuEhunuLo/EyA3bdM/ObkdGXqI2NPDimwVz82ZLI
-         3cWw==
+        b=kt4WVHVxP1s5PIKY/lh7AuTkkd9TJ93hO/kUeyMSmjriNX+7dyKt1AIV8gOwoZD7TR
+         5zGaLXzz0HdTRtQ4s+HOlpJ+o3icneuxF/wrvp0SECRqXxRyQ5pyWn6Xv4QQxusKZhHb
+         bzxmaFoOITCaW8IsWsmFcbypWyuPRXV2JGlGkb5aikqhlxoxQpdWh8WBjMtS+9xPgQRH
+         eIo8Wx51INXbNzSwp7UUgQairBkEIo+a77yZ9y46rFIFOr0FG3z3trmkO3398LSN77SJ
+         qBPm6KuQCN34E8wyi6ICTXbJsT336+yK0yNVnaKYvaW/I2VkxzkgyxphQZhzcmfCaMYL
+         bn4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=kwWpTNjg5xC74r+Bbkg5UnuBhFFvSK+AVJZR1e1fL7M=;
-        fh=qzncoh899YCO2RwJ4eOkQUSQ2cIKhAj7MCgz1Qe0cU4=;
-        b=VQq371qti0zPPiPNyYFhy1tRvQSLitazjqSlXs3GWfeGpdAhEhwQChtZotXA67eIki
-         SLimbZxeJNV51bm97xg5/hvti35YMDp4z0y5Kltocq917PKlsweFw+CFGeexG6Ji/6rS
-         QUkKPi8gNWdsuvqH2r5aTQ532Sewper9yer/KfX+BuD54QfMEvz57mtzfv1SMhc7FKZ9
-         GRxzheAavFl+JxD6RMuxw/qVa491pKllMX/qi+TQesgwhGvBgmCHtGzylmzpsSzMUq+B
-         xdezidK62uh2yKr4nuN671i7tq/H9Kh2jr1ZL6g+dGu/gQaC/jJoypF11YrT5Mo0MiCC
-         sU9Q==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=Zr1m7o+vBDA1X7640SV/6+9ie79yVM/QnE+MqMugg00=;
+        fh=whAzYn1vBDtu5rKAwWSLKl8567H3e+D4yZ1txB6wRZ8=;
+        b=KB+adu2WVOMd8jVuVWcjXYNK7QvquazLbxWuKXWshJBIknE9cNRyBuEAW4IHsVK2Ym
+         Gz0IE2Mfpkk7mOXHwOZZKyLcS5AL6eBKe9/eOfEfzVLV1X04p5IdLD68ZKlLInRJGOKI
+         phIlYMYw1LLnQ3W6+tHz21L1GAoGFLpxNztwnzh5tqle8SA8w3piwUg9jGFNpJObrXUi
+         uCMyQmD6q9BclTPYjAmpI640uoXrMbnX0cf64KmNMQYelijn9+yi6j3mr4rO171W1BLJ
+         5MXSvEw/W036RCFwjeKo3twhSrYr+rJS+f7DL1Sf4hz37envbH+5bx3KQQ9IXoNkKxyU
+         Neyg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="qa0LweD/";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D+WeeA+R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc24030fsi135245651cf.408.2025.07.02.07.53.35
+        by mx.google.com with ESMTPS id af79cd13be357-7d443224e66si1266340385a.266.2025.07.02.07.57.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jul 2025 07:53:36 -0700 (PDT)
+        Wed, 02 Jul 2025 07:57:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="qa0LweD/";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D+WeeA+R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uWypy-0002Ai-Gp; Wed, 02 Jul 2025 10:53:26 -0400
+	id 1uWyts-0005ca-Pt; Wed, 02 Jul 2025 10:57:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uWypr-00023e-Bc
- for qemu-arm@nongnu.org; Wed, 02 Jul 2025 10:53:19 -0400
-Received: from mail-oo1-xc2c.google.com ([2607:f8b0:4864:20::c2c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uWypl-0001bS-HP
- for qemu-arm@nongnu.org; Wed, 02 Jul 2025 10:53:19 -0400
-Received: by mail-oo1-xc2c.google.com with SMTP id
- 006d021491bc7-610d87553b6so2761067eaf.2
- for <qemu-arm@nongnu.org>; Wed, 02 Jul 2025 07:53:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751467989; x=1752072789; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=kwWpTNjg5xC74r+Bbkg5UnuBhFFvSK+AVJZR1e1fL7M=;
- b=qa0LweD/CPX6Y1lHAL2feLOpzoq66+z39hDF+/EnFf1VCSTwYfp0vKnDZOD+KKdi/6
- DThjM6riz3Fhk90wRtggCISL5jCMV3YHkQWb5mmW6813aWEq4c3eISAaZUsKZVPRz2mE
- mHb5KOSZRUHw+9rGclTNl1lDvRnC3CtzZGaShwB/MdPuDqvuM3Rp9L6VO7+RpuKdWzxJ
- Rc5avcwug1yKlBmwen814M3vbXDz2KIeaPdEPmRrspVUfSO5pzAYj/3qYUq9BzRA7j8X
- kPbWTUbNYAnLX9SkxhDk8dGje+ulGeonpICejw7vinomXq8IA373r/sCpHps4K88Aw0y
- BXmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751467989; x=1752072789;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=kwWpTNjg5xC74r+Bbkg5UnuBhFFvSK+AVJZR1e1fL7M=;
- b=LLc7aFxFsuVzEB+Av4fAOzTfCx5jBtaMdiDBrNhh6/tuYnJgnsrR8A8yCaOeq29sgJ
- tahHrnj2hdPZTvSvji3nQxXh8G74aSBfMAzKdBScuodcgeTNsCh/27JnPsrE2phuciNK
- t0vWfFyX/UFTVrshWjM+GyhDRVUF2OqAewcbOiEIM7Y9ET6I8kUis0CsOVpLKBSDcmmP
- CgAci49+5TqhJhA6NtOgze0I2hDegmuVNuT050Fg0PJhSkZvD4aX45fNbcuboxbAS+y5
- /85djAB1BReePqtz0RLYYPHLmT5217AQQsCJP3ZEJwRfwMUM516fE40jdF/5ORSnYn5p
- oJDg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUNmNJe7IW8heLEgqYoRpFlZc85PSgvhmX7dZ9hT88fCaWqtQvgk4neGODcx4/30VmHrSCSmjcQ5Q==@nongnu.org
-X-Gm-Message-State: AOJu0YzBZ/K2X/+xhrWzMb5ej3OHvSrXSIFv95i1bmFsTxGFcsOSqFsZ
- ZNLA01BAYRM+8MuN96S3vmmFt4hb1JMUyosGbQxLOlT0h5r2vGkNyCE9Y1TU53bmtMw=
-X-Gm-Gg: ASbGncv99DLU+3yzsdNh2++PmHt7tYVlmyseyh2gv5jKiIlJC/LKk6+Rq37aVqrNuk7
- lJ90gHtk9x67PTHBLeSymYYmjHpzBtyAAR1hHqtK5UFFFS5wcbXGDTkykWVsX3UiaRcHJkmtMtY
- wbOzDSgsdHXXHKUvVQCRdVpeagS/WKuOr1oDHZpc/zKkKfLjs1YEpQhpJlO5B/ReptUlK++n21X
- rVliUMTyiMYcxhbwzySi4K1J7sDbz6UYklJSmMOAkxh24A2V5FB7md+fto3ouO1lKyzlwNTFc9e
- gl82N4Bg/kCe/KdAA2Iggj2W8FCmeWQmORWT8BO5h9TWPx3qEEg/qUgJkuJDZFgaNwG8sFek4RL
- C
-X-Received: by 2002:a05:6820:a09:b0:611:ab35:8025 with SMTP id
- 006d021491bc7-61200e1610fmr2203009eaf.0.1751467989058; 
- Wed, 02 Jul 2025 07:53:09 -0700 (PDT)
-Received: from [10.25.7.74] ([187.210.107.185])
- by smtp.gmail.com with ESMTPSA id
- 006d021491bc7-611b859fb13sm1694908eaf.29.2025.07.02.07.53.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Jul 2025 07:53:08 -0700 (PDT)
-Message-ID: <7847dd0b-271c-4e1d-93ba-605630464ef7@linaro.org>
-Date: Wed, 2 Jul 2025 08:53:06 -0600
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1uWytr-0005cK-V4
+ for qemu-arm@nongnu.org; Wed, 02 Jul 2025 10:57:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1uWytp-0004Wf-Ga
+ for qemu-arm@nongnu.org; Wed, 02 Jul 2025 10:57:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1751468243;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=Zr1m7o+vBDA1X7640SV/6+9ie79yVM/QnE+MqMugg00=;
+ b=D+WeeA+RvTDlOr2jWafQhmK6zi8zkvazoqbPyKedpj4U/8ARjlYPoU1climESkn2aIXvNZ
+ xZUyqPeXY8S41UIyC7Zlp4VTz7EHy3Ggj3rpcIYUy2eyTJaIwYQz5pnqHtUFtMfZGRjufw
+ n37gIrCEjf+OI7qFm2cdXG9FudRAy1w=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-6-eq5MIiPEOBOrsQpcJLqPLg-1; Wed,
+ 02 Jul 2025 10:57:20 -0400
+X-MC-Unique: eq5MIiPEOBOrsQpcJLqPLg-1
+X-Mimecast-MFC-AGG-ID: eq5MIiPEOBOrsQpcJLqPLg_1751468239
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D2B3518DA5C6; Wed,  2 Jul 2025 14:57:18 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.116])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 867F118003FC; Wed,  2 Jul 2025 14:57:15 +0000 (UTC)
+Date: Wed, 2 Jul 2025 15:57:12 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Warner Losh <imp@bsdimp.com>
+Cc: Stefan Hajnoczi <stefanha@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Subject: Re: FreeBSD 14.1 aarch64 iso URL is down
+Message-ID: <aGVIyAxgyNmcnAfC@redhat.com>
+References: <CAJSP0QU=v_jN5oBDBefg0mB=Qv3SvD4ZdJzz2LT-cu5ZL7pK0Q@mail.gmail.com>
+ <CAJSP0QXe1L2P24oUrABO1eUzn1JFc=BJWEfakrQ5u3Ek5LkfKg@mail.gmail.com>
+ <CANCZdfqfFNAYcF3BEDucyR3YN1PXwyEmzE5LPcJCyshCXwhe6Q@mail.gmail.com>
+ <9bac4585-255a-4805-b24d-b3b75d2ca9c3@redhat.com>
+ <CANCZdfq6+R=VgyYdcdJCmDBTCgLSxDJuqd8h=ehb5F+v-HPT+g@mail.gmail.com>
+ <CAJSP0QWSVhAYBtxKV+WDubmif2m=jxTYd-BK=d7ExZXWUNUYXA@mail.gmail.com>
+ <CANCZdfqTKUMLbrT9HEXa-O7pyHqfcMWMmYx7iCq=ZU_ewgCaag@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 12/12] target/arm: Fix helper macros indentation in
- mve_helper.c
-To: William Kosasih <kosasihwilliam4@gmail.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20250702111954.128563-1-kosasihwilliam4@gmail.com>
- <20250702111954.128563-13-kosasihwilliam4@gmail.com>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250702111954.128563-13-kosasihwilliam4@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c2c;
- envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc2c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <CANCZdfqTKUMLbrT9HEXa-O7pyHqfcMWMmYx7iCq=ZU_ewgCaag@mail.gmail.com>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 15
+X-Spam_score: 1.5
+X-Spam_bar: +
+X-Spam_report: (1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.237,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,22 +129,114 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: e4Uwn/V93a//
+X-TUID: hJaMhvn1f7Vc
 
-On 7/2/25 05:19, William Kosasih wrote:
-> Recent helper function load and store alignment fix caused the continuation
-> backslashes in those macro definitions to shift out of alignment.
-> This patch restores a uniform indentation for those trailing backslashes,
-> making them consistent.
+On Tue, Jun 24, 2025 at 11:41:28AM -0600, Warner Losh wrote:
+
+> FreeBSD does maintain all our archival releases forever. They never change.
+> But, we don't have permanent links to them today. We start with one URL and
+> then migrate to a second one when they transition from supported to unsupported.
+> We do this, in part, to make sure people upgrade. So in effect, this breakage
+> means that our notion is "working" in the sense that the FreeBSD project's goals
+> of making people "keep up to date."
 > 
-> Signed-off-by: William Kosasih <kosasihwilliam4@gmail.com>
-> ---
->   target/arm/tcg/mve_helper.c | 268 ++++++++++++++++++------------------
->   1 file changed, 134 insertions(+), 134 deletions(-)
+> This does, I realize, clash with the views that QEMU wants to have some stable
+> way to test images over time, even if the upstream's notion of supported or not
+> changes.
+> 
+> One easy idea might be to 'prestage' the 'legacy' releases when they
+> are supported
+> on the 'legacy' server so that tests can be written with the legacy
+> path so that these
+> tests always work, now and in the future.
+> 
+> So, this is terrible from a FreeBSD point of view. We'd like it if
+> qemu always tested
+> all of our releases, as well as snapshots of the tip of the spear.
 
-I'd fix these within the patch that breaks the alignment or not at all.
+FWIW, there are two distinct POV to testing which are clashing here.
+
+What you're describing, IMHO, is a desire for QEMU to perform what
+I would consider integration testing against all FreeBSD releases,
+and forthcoming releases of FreeBSD.
+
+What QEMU's functional test suite is aiming to do is provide
+sufficient coverage of QEMU's functionality that we avoid
+shipping regressions.
+
+Where it gets fuzzy is that a functional test suite has overlap
+with, and can be a decent proxy for, an integration test suite.
+
+The key difference I see is around expectations for the results
+of the test harness.
+
+For QEMU's functional test suite, an overriding concern is that
+a failure of the test suite *MUST* reflect a fault in QEMU.
+
+We want to minimize (ideally eliminate) any failures caused by
+factors outside QEMU. A failure should be something that can
+be immediately referred back to the author of the PULL that
+triggered it, without needing triage to determine if is it a
+failure caused by something outside QEMU. A functional test
+failure should generally gate the merging of a PULL request,
+given that it should reflect a clear QEMU fault.
+
+With this in mind, we don't ever want to be testing unreleased
+snapshots, and even for released images, we always want to
+fixate on a specific image hash. Similarly the execution  env
+of the test suite is a docker container that has fairly well
+constrained  software, though currently we do not fixate
+our container images on particular package versions, which
+has caused us painful spurious failures at times.
 
 
-r~
+An integration test suite, by contrast, should be open to the
+idea that failures can be cause by any moving part in the stack,
+whether the host OS, QEMU, or the guest OS. Accepting that,
+however, means taking on a significantly higher burden in the
+triage of failures - that can easily become a full time job for
+one or more people, so diagnose problems and then herd cats to
+get it fixed in whichever piece was at fault.
+
+This makes integration testing mostly unsuitable for use as a
+gating test for merging PULL requests. It would run asynchronously
+and problems could potentially take a long time to resolve, though
+ideally by resolves by time of rrelease.
+
+> There's got to be some
+> way to have some shared responsibility that we can automate. FreeBSD could test
+> the most recent release of qemu against a bunch of images in our CI
+> cluster. But we
+> don't actually have a CI cluster we could put that into (our focus is
+> just a little different)
+> today.
+
+The issue of CI resources also impacts QEMU :-( We have to be wary that
+our upstream testing is using our own limited CI resources, and any
+contributors using GitLab CI also have limited quota.
+
+The human constraint is probably the overriding concern I would
+have from the QEMU side though. I'd love it if QEMU did full
+integration testing across all guestOS we can get our hands on,
+both current & forthcoming FreeBSD/Linux releases, and the
+countless historical releases of many OS. Realistically we just
+don't have the human resources to manage such a testing effort,
+even if we found the hardware to support it.
+
+Putting my Fedora hat on, we rebase QEMU in Fedora rawhide when
+rc0 comes out, and Fedora's QA team rely on the rawhide QEMU in
+doing release testing. While this isn't always timely enough to
+prevent QEMU bugs getting into Fedora which then impact Fedora
+releases, it is the best we can do given constraints of both
+projects.
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+

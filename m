@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([185.126.160.19])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-60e26b7ac4esm3334924a12.7.2025.07.02.03.43.37
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a88c7fb67dsm16071010f8f.35.2025.07.02.03.49.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Jul 2025 03:43:37 -0700 (PDT)
+        Wed, 02 Jul 2025 03:49:56 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id EBD875F8D6;
-	Wed, 02 Jul 2025 11:43:36 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id F097C5F8D6;
+	Wed, 02 Jul 2025 11:49:55 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Gustavo Romero <gustavo.romero@linaro.org>,
@@ -14,15 +14,15 @@ Cc: Gustavo Romero <gustavo.romero@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-arm@nongnu.org (open list:ARM PCI Hotplug)
 Subject: [PULL 02/15] tests/functional: Add PCI hotplug test for aarch64
-Date: Wed,  2 Jul 2025 11:43:23 +0100
-Message-ID: <20250702104336.3775206-3-alex.bennee@linaro.org>
+Date: Wed,  2 Jul 2025 11:49:42 +0100
+Message-ID: <20250702104955.3778269-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250702104336.3775206-1-alex.bennee@linaro.org>
-References: <20250702104336.3775206-1-alex.bennee@linaro.org>
+In-Reply-To: <20250702104955.3778269-1-alex.bennee@linaro.org>
+References: <20250702104955.3778269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 3RHUwQ7WMvhL
+X-TUID: 3zI67mNuWmp/
 
 From: Gustavo Romero <gustavo.romero@linaro.org>
 

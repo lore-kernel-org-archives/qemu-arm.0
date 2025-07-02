@@ -1,219 +1,179 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp25363dyc;
-        Wed, 2 Jul 2025 10:28:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXjknmXHKALM7jIfaZ3ZYuIXowjSPAicFcDiHmV3NQl7Z0cGzq7r+qpP35pxR07TkgWLmOWIQX2jVgFWA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEqFLCw18RM6bmgviEEOrrk6mT0SAvfsoyRbuwoQNdDDThEYagRgTe5wAqzMplqeEAvI/Xx
-X-Received: by 2002:a05:620a:2596:b0:7cd:4b5b:a1fc with SMTP id af79cd13be357-7d5c4710897mr698560085a.7.1751477325616;
-        Wed, 02 Jul 2025 10:28:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751477325; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp71506dyc;
+        Wed, 2 Jul 2025 11:54:20 -0700 (PDT)
+X-Received: by 2002:a05:600c:348e:b0:450:d386:1afb with SMTP id 5b1f17b1804b1-454a36e35f0mr48504985e9.9.1751482460154;
+        Wed, 02 Jul 2025 11:54:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751482460; cv=none;
         d=google.com; s=arc-20240605;
-        b=CNoHhzrla35veN0jrBzLLjeOfI0ZAk4TNIcK1v+UfcNfv84ZyN5wYy/7GkcxrSw9RZ
-         i1+1b94QV3j2HenYgEaIRAsrUNjtZmzEY+UcnmG/wv0FyzMu6Au2Gwios2N0wA0ac9aI
-         cE/5B5QVFm6Fj3qPc4dpwskrfxIFlVy1m0/pCQokVjiwPYVQ4A6l1ej9nq+k+N6Y1SIQ
-         oNEBl/iyIXLQQoC3So1iB/xjwtNCXY8kIWlOOwPKD9GACLFy9ucUtQn9qm7tt//XaA0V
-         rHnjKJdqpIJFNyoshRxsNKpBMKLgHvtnLySY3RPf3uWrRhC5ZBiucUahLUtId3d2i5LB
-         czVw==
+        b=Lh0kiWag/s8hju4c/TA8VgJxnZCWVUIq/OSwLOlVXj+XaLfwpn4OWnFHijcW1eRSmI
+         Z8EAs7sPwpPqq91zwnoLqbu/vNG7kG5DVG0SqT6VUNaZNnctLhb24wvW5U1BAb0nFCWI
+         zmm1qR9rpYokxug0dWHhicTS5fLry1ai5SVzblp1z1AeDuUBDvH49KEHnhP8v9C34Q1J
+         iQlfy6DQncorzY50Hs+z/tmOLKJijxsFhXQBMux08l/ZBo1v6TGkmCUN0RutcVSFMD8q
+         V0nR2zOuH/Csxcl5E0HL09GMS/r/b2l+rCQ5LUOXFNFoYZyZJbbzUysTaHQk8/RreKhd
+         0ttg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=NmuXrtpcZuUBDGhFPoyqfHsuQwXhfVOIuEi8X//tpFQ=;
-        fh=DdSoBaaEWyo7ZuAXowxUdfgCFAvqaI9e5AjrCeS+ivk=;
-        b=WBZECR+3vkFmC11g13vRuh5XDvc95o2TN5TjkCPYFnOT90K68GvNFoC2eNFmM35aRK
-         yFAaA8wojTypWLK+x8+qlHLvLJBft3TYGeg031EoWfwVdj3has9L1pn0xgNJLa7ONS7C
-         n33+zR4VI/a5NLBucD+HAtPfiNzhs1gP+Qc1XTOd9R3ltQbUG0yzZ7lzElreX0TQ3v/n
-         sFJUWX0K0fdWHBRQrIS2sYLNy4IcY3YqzATawmus3T31H5T9TKJH89assGjccU8+blIJ
-         s3qsTb3jG8SR4XXsmhpnQZh29RQVChPAmljjmNvBYEF6X7qb/dYckaawOFnKGvAUOnv9
-         3Ipg==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=bOy/hh8CdzW8JKLOeQuyvYboWC5TjWykREm1ryjsqd8=;
+        fh=b2XjpJ2+IYlxCMiX9mmXPpc/Ga6KDz5ZuwLYZUnkBzI=;
+        b=Uy3/eEoTAbfdJY0+E/jdRAAUVPYQbojDnAk3eeshJMDpUSwOa06N8wgFkHDvf/AvEi
+         xkujcZVsefnWylLqZex85x0hBNQZoaJT+mOYH6xD4gCZm/xHziTw0UVLPjUIpp7TqIRk
+         oGEnqUqfyxvzB09Q/UFy5Vh0YdFr98owP2FukkYl++x2Da83zPyq+ziDOHhJ1pQjKC+C
+         pDIqrlt5Ko1n9QbXI8IJKEgqkGDkWFvHOiy3dDF6EwEaOtGNG/v8LbKRg+vHOLVRKKZo
+         nndRAondkhdJmEcM+pZ46SDFmE4fvQ9Q2dPV6B9HT5vQt+FIyeTh1b6KHbiDwpqMdMiQ
+         fjXw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc578c4fsi140395821cf.634.2025.07.02.10.28.45
+       dkim=pass header.i=@linaro.org header.s=google header.b="KtJ/iRmt";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-453a0c5b0ccsor29598115e9.1.2025.07.02.11.54.19
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jul 2025 10:28:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 02 Jul 2025 11:54:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uX1Fw-0005pm-57; Wed, 02 Jul 2025 13:28:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mhej@vps-ovh.mhejs.net>)
- id 1uX1Ft-0005pS-5P; Wed, 02 Jul 2025 13:28:21 -0400
-Received: from vps-ovh.mhejs.net ([145.239.82.108])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mhej@vps-ovh.mhejs.net>)
- id 1uX1Fq-0008M5-V1; Wed, 02 Jul 2025 13:28:20 -0400
-Received: from MUA
- by vps-ovh.mhejs.net with esmtpsa  (TLS1.3) tls TLS_AES_128_GCM_SHA256
- (Exim 4.98.2) (envelope-from <mhej@vps-ovh.mhejs.net>)
- id 1uX1Fa-000000009Qh-2Lzv; Wed, 02 Jul 2025 19:28:02 +0200
-Message-ID: <8a541c48-15d9-4609-bad7-a1606eeff22e@maciej.szmigiero.name>
-Date: Wed, 2 Jul 2025 19:27:57 +0200
+       dkim=pass header.i=@linaro.org header.s=google header.b="KtJ/iRmt";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1751482459; x=1752087259; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=bOy/hh8CdzW8JKLOeQuyvYboWC5TjWykREm1ryjsqd8=;
+        b=KtJ/iRmt1GiEQH+zIigbgJsHeYW7WFCxwQVfx0nSQb6VT8nguKVU5fw1JhrkxhlafV
+         qL0vjetD6dxDOEkytsJKg7A7CGliYFzNSptJdQjJBzb7gFUqVY9r/2yg11lCgoKpSkRe
+         0OONdpiOYhDjj0+bNuEgp9nabKv2ulc4W2hqYcKexnR/6Lt2baWXTtCnToeGV/KdsrOY
+         ixPiuWAbK9RQadsjtm0VwzZGLwgemRGho85U7l/w1tKFhX/WFFyfFC67jG36e9Qqqwi7
+         87MptZAsoVdfGj0lAMxobjZjLovDkA46WPxrYSKp01CnOiu2hTTXf/ghdRekb/5UG5cM
+         y87g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751482459; x=1752087259;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=bOy/hh8CdzW8JKLOeQuyvYboWC5TjWykREm1ryjsqd8=;
+        b=g/WOigbAh+ay82vteHogXktKPtfBj6BJ+6Cojs+8LcNRKF43h3CFIzzOhIISebW+Pl
+         97PJ3wW/oUnnX+lt5ZsD8VXyb43+VDI26ZRMP42Kd/PGqAB6MIH2sz+/sl0cC4GXLK0B
+         GYACBuAMcv10YChga+IQw+jbfQfe98LWZeBkaB7SJxSL4W/ebnqxwTkWHDkJTpFe57V2
+         XiqdA4XPoft016F96/TR5EmPv2BW0ndYAF+TtCCoLGpaGy2/B0qpzRb/4soY10nlxqDz
+         S+H/DstclYUUFA+WIrmlb21dygPcwVVanVDbA+gPZLyhSubGJyiiIJdLMsR/hBUl1s0n
+         0z7w==
+X-Gm-Message-State: AOJu0Yyn3LjuTk64XKbeWfx3opVdYRD4QpcWbyFvD9+K1TqGoma0HVOB
+	dmxD4imzBCqJPleKkUh2eHvdA4CebySuIJFQmBUZGYMTHRybzF4yWesypE+/PNuPsRgNlQ==
+X-Gm-Gg: ASbGncskAJgWyysDY1QBi82db6A5svKaVczOST29BFIsXtDy24TRuBVczqO9R51ZXH4
+	ofV8OZv0bw0baQpsuArVcECpkkWW1UUUvO/IWkM3iz+UqPtefSXPlrMJUs/J48RGLd9A2Sje92u
+	7dH0Oi5x2zkITRy01PI6qMWTd/++qJI13SZvkfSYBedGrKJNHvsf0Gt+9DWTs9D+T6nUgMkYTIv
+	47PwBQmEm7Wi0cTc8giHS/NDsqFKXuYq/pUw74VeJW4Lftn0wq7FP6JIMdN4rkzZN3zRsJnKP/i
+	cdeQjenClptd0BdLf0YITKoKthays8jX3iOnOEkP7KMAuM6qb2LQB9ByAZifaWRfyQDxwHmA1Xp
+	a9UVgkeyEwZFtVB4mX2gHNrwehnogn181SFwB
+X-Google-Smtp-Source: AGHT+IEgLL7L+r+iZgsRNi8i+FxvbIr5PVnGC8TUcln6/EmVy2Fl0Q34xbpV9etgWh6AfecbWbg6LQ==
+X-Received: by 2002:a05:600c:348e:b0:450:d386:1afb with SMTP id 5b1f17b1804b1-454a36e35f0mr48504795e9.9.1751482459480;
+        Wed, 02 Jul 2025 11:54:19 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-453b35309casm35763075e9.1.2025.07.02.11.54.17
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Wed, 02 Jul 2025 11:54:18 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Cameron Esfahani <dirty@apple.com>,
+	Roman Bolshakov <rbolshakov@ddn.com>,
+	Phil Dennis-Jordan <phil@philjordan.eu>,
+	Mads Ynddal <mads@ynddal.dk>,
+	Alexander Graf <agraf@csgraf.de>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org
+Subject: [PATCH v4 06/65] accel/hvf: Add hvf_arch_cpu_realize() stubs
+Date: Wed,  2 Jul 2025 20:52:28 +0200
+Message-ID: <20250702185332.43650-7-philmd@linaro.org>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250702185332.43650-1-philmd@linaro.org>
+References: <20250702185332.43650-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] vfio/migration: Add
- x-migration-load-config-after-iter VFIO property
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Cc: Alex Williamson <alex.williamson@redhat.com>, Peter Xu
- <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Eric Auger <eric.auger@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Avihai Horon <avihaih@nvidia.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <cover.1750787338.git.maciej.szmigiero@oracle.com>
- <22e94f25448f9ff42b84c84df3960c4ecc94cbdc.1750787338.git.maciej.szmigiero@oracle.com>
- <9bfa5e01-37a9-4e2a-bff5-264909e0dab9@redhat.com>
-Content-Language: en-US, pl-PL
-From: "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>
-Autocrypt: addr=mail@maciej.szmigiero.name; keydata=
- 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
-In-Reply-To: <9bfa5e01-37a9-4e2a-bff5-264909e0dab9@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=145.239.82.108;
- envelope-from=mhej@vps-ovh.mhejs.net; helo=vps-ovh.mhejs.net
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.237,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aIr7PkXdwWBG
+X-TUID: d+rUz+3wzPvM
 
-On 2.07.2025 08:27, Cédric Le Goater wrote:
-> Adding more maintainers,
-> 
-> +Eric (ARM smmu),
-> +Peter (ARM, GIC, virt),
-> 
-> On 6/24/25 19:51, Maciej S. Szmigiero wrote:
->> From: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
->>
->> This property allows configuring whether to start the config load only
->> after all iterables were loaded.
->> Such interlocking is required for ARM64 due to this platform VFIO
->> dependency on interrupt controller being loaded first.
-> 
-> Could you please a bit more ?
+Implement HVF AccelOpsClass::cpu_target_realize() hook as
+empty stubs. Target implementations will come separately.
 
-Any proposals what more you'd want to have written there?
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/system/hvf.h      | 3 +++
+ accel/hvf/hvf-accel-ops.c | 2 ++
+ target/arm/hvf/hvf.c      | 5 +++++
+ target/i386/hvf/hvf.c     | 5 +++++
+ 4 files changed, 15 insertions(+)
 
-Do you want to have the description of the issue being fixed from commit
-d329f5032e17 copied into this fix commit message?
-
->> The property defaults to AUTO, which means ON for ARM, OFF for other
->> platforms.
->>
->> Signed-off-by: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
-> 
-> As we've mentioned a couple of times, this is essentially a workaround
-> to help ARM support a migration optimization (multifd) for guests using
-> passthrough PCI devices. At the moment, this mainly for MLX5 VFs
-> (upstream) and NVIDIA vGPUs (not upstream).
-> 
-> It looks like the issue is related to the ordering of the vmstate during
-> load time.
-> 
-> Is there a different way we could address this ? Other virt machines like
-> x86 and ppc also deal with complex interrupt controllers, and those cases
-> have been handled cleanly AFAICT. So what’s the fundamental issue here that
-> makes it necessary to add more complexity to an already complex feature
-> (multif VFIO migration) for what seems to be a corner case on a single
-> architecture ?
-> 
-> d329f5032e17 is the turning point.
-That commit says that restoring VFIO devices config space on an ARM target
-needs to have the VGIC interrupt controller there already fully loaded,
-otherwise that VFIO config space load operation may error out.
-
-But here it would be good to have some feedback from ARM people, thanks for
-CCing them.
-
-I'm open to reasonable alternative proposals - as long as they can be tested,
-preferably on other platforms.
-
-The reason I implemented this ARM device loading ordering requirement this way
-is that I can then test it on the VFIO setup I have and be reasonably certain
-that it will work on the target platform too.
-
-> Using 'strcmp(target_name(), "aarch64")' is quite unique in the QEMU code
-> base, and to be honest, I’m not too keen on adding it unless there’s really
-> no other option.
-The previous versions simply tested the TARGET_ARM macro but commit
-5731baee6c3c ("hw/vfio: Compile some common objects once") made the
-migration-multifd.c file target-independent so it cannot use target-specific
-macros now.
-
-Another option would be to move vfio_load_config_after_iter() to helpers.c
-since that file is target-dependent and can simply test TARGET_ARM
-macro (#if defined(TARGET_ARM)) instead of doing strcmp(target_name(), "aarch64")
-which I agree looks weird.
-
-> Thanks,
-> 
-> C.
-> 
->
-
-Thanks,
-Maciej
-
+diff --git a/include/system/hvf.h b/include/system/hvf.h
+index a9a502f0c8f..8c4409a13f1 100644
+--- a/include/system/hvf.h
++++ b/include/system/hvf.h
+@@ -72,6 +72,9 @@ void hvf_arch_update_guest_debug(CPUState *cpu);
+  * Return whether the guest supports debugging.
+  */
+ bool hvf_arch_supports_guest_debug(void);
++
++bool hvf_arch_cpu_realize(CPUState *cpu, Error **errp);
++
+ #endif /* COMPILING_PER_TARGET */
+ 
+ #endif
+diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+index b38977207d2..b9511103a75 100644
+--- a/accel/hvf/hvf-accel-ops.c
++++ b/accel/hvf/hvf-accel-ops.c
+@@ -588,6 +588,8 @@ static void hvf_accel_ops_class_init(ObjectClass *oc, const void *data)
+ {
+     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
+ 
++    ops->cpu_target_realize = hvf_arch_cpu_realize;
++
+     ops->create_vcpu_thread = hvf_start_vcpu_thread;
+     ops->kick_vcpu_thread = hvf_kick_vcpu_thread;
+ 
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 7b6d291e79c..4c4d21e38cd 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1081,6 +1081,11 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+     return 0;
+ }
+ 
++bool hvf_arch_cpu_realize(CPUState *cs, Error **errp)
++{
++    return true;
++}
++
+ void hvf_kick_vcpu_thread(CPUState *cpu)
+ {
+     cpus_kick_thread(cpu);
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 99e37a33e50..28484496710 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -367,6 +367,11 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+     return 0;
+ }
+ 
++bool hvf_arch_cpu_realize(CPUState *cs, Error **errp)
++{
++    return true;
++}
++
+ static void hvf_store_events(CPUState *cpu, uint32_t ins_len, uint64_t idtvec_info)
+ {
+     X86CPU *x86_cpu = X86_CPU(cpu);
+-- 
+2.49.0

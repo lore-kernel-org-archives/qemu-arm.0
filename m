@@ -1,179 +1,257 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3744087dye;
-        Wed, 2 Jul 2025 04:31:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXHQjYtrpwN8FXnQH7wjcdChgcPJk2zbcJhjqWa745CskHOp2CQ5nfE4C2JqQ8z0//aGq6kD5mu/WcdXA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEjiLV7ThTDYh4Ai4B2qR8lJ3zSAeaN9ZOeUmlEMsN6pbXOqyqUjsLlcQr6+LnDBafk0x2v
-X-Received: by 2002:ac8:7f42:0:b0:4a7:2f49:37d6 with SMTP id d75a77b69052e-4a9768b99afmr49863641cf.5.1751455906269;
-        Wed, 02 Jul 2025 04:31:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751455906; cv=none;
+Received: by 2002:a05:622a:6187:b0:4a7:49b6:ba6e with SMTP id hh7csp3704473qtb;
+        Wed, 2 Jul 2025 05:34:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVFEhQP4je5spfImXZzdXrepRkKyvetviMd3m6Yu1SfyAoNtK13kntMHuGSHa6dpvKDIT5vvEYQsBfzNA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGdQQMWyV/NAitSKyroJbp+pJ3kNcINvMwyxyX3+aT/mjKYCnuIZA98GmSubTg+6JaVnD2f
+X-Received: by 2002:a05:6214:2424:b0:6fd:c80:98f2 with SMTP id 6a1803df08f44-702b20499d6mr42149386d6.27.1751459697810;
+        Wed, 02 Jul 2025 05:34:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751459697; cv=none;
         d=google.com; s=arc-20240605;
-        b=UxgRhjQLSu1AQdHQF54tW0N3ieEPVDg6ZD/iVbYv5O1H79M6UBQutC4crAkSLmYCtf
-         VrpfE4woEOzfyod2EhtNPDnUN5cRKWPhfQfwhgegSzvDkmiWYF0iPifLF1TkeHaO7DpW
-         cF/u9ny8MQKdhc81hBg847RvgDdxl1Ujf16N4AyMhTeS1ZSZO1TlN5Es4lMAqnJcT3yi
-         SNHcbOIs884AcOTX0eOFEdbMXJrLfQ/OW8mqPGBBZfNlDpOFOJqqEduTXmFQDE2Uej4Y
-         TspcmKJaIbtNmr/Toj5agwTQHduIO9wga403vZT7zpX1Go8cFO1f8puO+QnDHwW7g6Cm
-         rxGA==
+        b=NrcYDDTZrR8/xmy7/+LKnAZjg4cXoljRVDxWtV2WNXHJC5sq4mLWdMaVdpdIcmpJde
+         yeEOkxXV3Le6GzpT38qn5N7czYfaB0ogfepJG8Myfx26rfAHrhDRsQFntrgvnhNVd+W2
+         P7drgrE0GiF5s+8lEz7ksHQ3eXML+QX37SJacL/7AP9Ru+/ENjyyiQIpkP0KT+90u468
+         1K3pFyOK/bjOn3iF/xpOea+batvbla4tC2SqAzBg6vfYKuBuSlywXuMDW4QryktqukpZ
+         pmnBnBd4ETIXn1QMaaxmdS+RlvyhELIeeoMWVQwuQm07TEnQYWXy/vub0RUZo4lctNKb
+         uuPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=mFmWlY277Om1t9wcCcb1S7yGVkyGpWURkwZuknh2Coc=;
-        fh=mr1KeAIdoHzJzEzTjULXZ03GRjrkB4xVO3acsox9RFc=;
-        b=XSA3Hnq3J068vwv98k2UkxiZFqNO7tXtGcxzPe2utzOP9mpYWpmUCXNhjYiUG+4i2+
-         o4EBxvT3QqS4V1mj/hdSGzc0juCg8OVaH041xUf3N4cuWIGk7LFpc4XF6ITfnUAit0Bi
-         mKtBt+39Ry4+DgDKyCMvTi2rExPSKtlolkMDcPqPm0NMjgXu60m73NZPYyQp/7+wNC81
-         gMjgpFTeCcWG2OT+pU60giETluct39dzlxBTBMxa88o/3dW+KNH9pMjLPu0piHIZX4F/
-         uckAKqmkaJXGn7EJFCNBU/bNpZcNMRLt5ARjuYMbEWpRpEM/iGc9EczZ7cgD3QooWJ42
-         tjgg==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=qv/VxcFKc2nhD2P/0kekyRsDOu03G4xgMX0HwOwNFDA=;
+        fh=vZxkDpCwvhENXlY8qSqryGKuN7qdzoFpPjxnavaSuNI=;
+        b=V98oJAP0spOfF6Yfd04LonpS5G3VY+Z8eof0j7gTmnxJwioYP/CPCIgyIJmKkEBA8F
+         CYHI61HKlDRiujhxZUj0ojl7+0F87T49Hx/zxj4clftIGsG1QTZd4llN/wg9m5HbOIoa
+         NF7pg9PH3ab0tOhb8nHJyz0YSMoXXa6YRRroCJlxn7Yv4z9z8Y6oW6EPKVVSnW7FC53g
+         +5+VpFoHpiXn8qoohmVNK5gGMPTbTwRk21PIB693zluM63EHblrE9l57zJbK/Js9EmPP
+         gvirTVEwT/jhYPhG2Z8qE2L2NX4OKBhmU87mibvxROKpx1oq3w8q+tGwmpL1DmWTvOIL
+         4dKg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jL8mM58G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="rQ/d8Uhi";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc1e767asi124686521cf.172.2025.07.02.04.31.46
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd77386934si139265966d6.351.2025.07.02.05.34.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jul 2025 04:31:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 02 Jul 2025 05:34:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jL8mM58G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b="rQ/d8Uhi";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uWvgM-0000w2-O5; Wed, 02 Jul 2025 07:31:18 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uWwfa-0007S7-Te; Wed, 02 Jul 2025 08:34:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uWvgF-0000vP-Cv
- for qemu-arm@nongnu.org; Wed, 02 Jul 2025 07:31:12 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uWvg8-00052V-Ed
- for qemu-arm@nongnu.org; Wed, 02 Jul 2025 07:31:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1751455861;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=mFmWlY277Om1t9wcCcb1S7yGVkyGpWURkwZuknh2Coc=;
- b=jL8mM58GhtJEXnXPacuuEhBMGma0wxQyNyX8YnI4rxhvSNpC1ZnNS+eZCM2i6XWLI4Yclc
- eCBLnIVTc1hI7CjdMA1efYlHmWOivMhmFN0KIXeSWfPPzla1MdaPatrhUWs9ULQiDI6QB+
- B9lTIR2tYv6XKf+wh5Qdl30cL0xFYNc=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-634-Z_LAIBxbN7GGh9PztV5-7g-1; Wed,
- 02 Jul 2025 07:30:56 -0400
-X-MC-Unique: Z_LAIBxbN7GGh9PztV5-7g-1
-X-Mimecast-MFC-AGG-ID: Z_LAIBxbN7GGh9PztV5-7g_1751455855
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 632A51978F63; Wed,  2 Jul 2025 11:30:55 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.45.225.139])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BCA8C19560AB; Wed,  2 Jul 2025 11:30:52 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Cc: Rob Herring <robh@kernel.org>, qemu-arm@nongnu.org,
- Guenter Roeck <linux@roeck-us.net>
-Subject: [PATCH] hw/arm/highbank: Mark the "highbank" and the "midway" machine
- as deprecated
-Date: Wed,  2 Jul 2025 13:30:51 +0200
-Message-ID: <20250702113051.46483-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uWwfX-0007Qa-I4
+ for qemu-devel@nongnu.org; Wed, 02 Jul 2025 08:34:31 -0400
+Received: from mail-oa1-x33.google.com ([2001:4860:4864:20::33])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uWwfL-0000v2-1l
+ for qemu-devel@nongnu.org; Wed, 02 Jul 2025 08:34:31 -0400
+Received: by mail-oa1-x33.google.com with SMTP id
+ 586e51a60fabf-2e999729ccbso2665994fac.2
+ for <qemu-devel@nongnu.org>; Wed, 02 Jul 2025 05:34:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1751459656; x=1752064456; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=qv/VxcFKc2nhD2P/0kekyRsDOu03G4xgMX0HwOwNFDA=;
+ b=rQ/d8UhitQlVGH8oerbVDSofrdypqNKDFWpvkqe540iAhFgDtC1KidRMYCRaEjXp7z
+ 1YyfjFUpxNbiBMNpT8Hq9qbyICwSzdOKej+0JlHr76BRUsIKEh4mdwow6bhIxGa/QGB3
+ pXE//nmjaUQLiyDWWAynlJr4W0AzxYmc8yLX4v7edQ3EiERv53PXk4SHOYLI3w999hyy
+ TRWCAx4vvp/sovu8fOWUD3vWZ90+BbofqAAlD2p76aB/AE5NaGXDCewePFT6FAZJwCIO
+ nE+KO+Y3m0U3sb9/R22+WPAloz59pMrPC7rWVaXqXVx8tyBQ70fLPmkdsKA2MRznJOZn
+ XJhQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1751459656; x=1752064456;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=qv/VxcFKc2nhD2P/0kekyRsDOu03G4xgMX0HwOwNFDA=;
+ b=P+PLb4BSCpsrXDZIwGvDV0mO6Uq0kZUBkcRMLxktJGZG48x7Dcrt86K+O+jE1Frr61
+ pkalK7vq/1pwxTveP03KZQaQVWCGdECjlk/Is2NxA2VnMfSDHr0F3YLqX2aVGzWvZoM5
+ hh/jjM+2OuugdXOuzf9Db84kKcwiHLZr6mZdT+B5DiVal2/fLZtBTFUI+0aNZwYP/Nk2
+ 6G8sdQ0mR/5hwno1HxL/xHAgFgRnrtsTfcWkvAyxveB0s9iSgruazsA2wKwtdrZMZETt
+ zQ+N82iCqm8s03IlCr7VqQp7W3XrjGSEPQmeeyq4RjZESTuEjSLnN4l6LiaRpERJYga8
+ koeg==
+X-Gm-Message-State: AOJu0Yxh6tXTtkcHIGd6R6CEdQn1UMkMMoYDONOsZ8/gVVKn7npMgmPP
+ f5LRlg+HTvaHUyolv9uxj8vC7cvJde5JvKvj8JCqar0L4XngYAH46k5iQcQK/3fN/nU9de0fI6O
+ WPktNCmE=
+X-Gm-Gg: ASbGncul3KnlBQaDSCDquf1IbpdmzMffhGT8wLwkD/Z3HL4qqI9HXOl70wXztdazftF
+ dYJTsI7W0n1vARMZL0sBTYHW3FTtLEHArjBU0McIA1rWj0Zk3PT5SCgs5XQqjm2CLNj77qwwvaU
+ +qiT/EQz3n8uBIsAp/X6YatjV5E/OoFEqeJwlUrgiTRLz2iY4r/74Yvvp6115dN/i+/FJQxcySq
+ LHgGtizET3ayRZ28p+zt8g1TBXit0NyNEHcKb1XQY9ckSgs2OV2jz5muIyb2A7VKudiY3bbYd3G
+ VuXve723BfHAXtoSCcL3qVKMxgnTiPuBTLIZ4OXTCSJVpmqbHWJAAQPXuD1+ojVc8SljnA==
+X-Received: by 2002:a05:6870:7007:b0:2d6:6639:52d9 with SMTP id
+ 586e51a60fabf-2f5c7adb95amr2137992fac.32.1751459655619; 
+ Wed, 02 Jul 2025 05:34:15 -0700 (PDT)
+Received: from stoup.. ([187.210.107.185]) by smtp.gmail.com with ESMTPSA id
+ 586e51a60fabf-2efd50b1b2fsm3864281fac.32.2025.07.02.05.34.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 02 Jul 2025 05:34:15 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	peter.maydell@linaro.org
+Subject: [PATCH v3 02/97] target/arm: Use FPST_ZA for sme_fmopa_[hsd]
+Date: Wed,  2 Jul 2025 06:32:35 -0600
+Message-ID: <20250702123410.761208-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250702123410.761208-1-richard.henderson@linaro.org>
+References: <20250702123410.761208-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 15
-X-Spam_score: 1.5
-X-Spam_bar: +
-X-Spam_report: (1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.237,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2001:4860:4864:20::33;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x33.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DRbnGRDhiYsc
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZI20BoWA5JSR
 
-From: Thomas Huth <thuth@redhat.com>
-
-We don't have any automatic regression tests for these machines and
-when asking the usual suspects on the mailing list we came to the
-conclusion that nobody tests these machines manually, too, so it seems
-like this is currently just completely unused code. Mark them as depre-
-cated to see whether anybody still speaks up during the deprecation
-period, otherwise we can likely remove these two machines in a couple
-of releases.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- Here's the preceeding discussion on the mailing list:
- https://lore.kernel.org/qemu-devel/CAFEAcA_0Hu8+G50sy0FJ2rX-=cNymLddDdrS2nN5ZY-doKiT8w@mail.gmail.com/
+ target/arm/tcg/sme_helper.c    | 37 ++++++++--------------------------
+ target/arm/tcg/translate-sme.c |  4 ++--
+ 2 files changed, 10 insertions(+), 31 deletions(-)
 
- docs/about/deprecated.rst | 7 +++++++
- hw/arm/highbank.c         | 2 ++
- 2 files changed, 9 insertions(+)
-
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 42037131de1..3fb9d8e1ebd 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -344,6 +344,13 @@ they want to use and avoids confusion.  Existing users of the ``spike``
- machine must ensure that they're setting the ``spike`` machine in the
- command line (``-M spike``).
- 
-+Arm ``highbank`` and ``midway`` machines (since 10.1)
-+'''''''''''''''''''''''''''''''''''''''''''''''''''''
-+
-+There are no known users left for these machines (if you still use it,
-+please write a mail to the qemu-devel mailing list). If you just want to
-+boot an A15 or A9 Linux, use the ``virt`` machine instead.
-+
- 
- System emulator binaries
- ------------------------
-diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-index 3ae26ebebdc..165c0b741a5 100644
---- a/hw/arm/highbank.c
-+++ b/hw/arm/highbank.c
-@@ -357,6 +357,7 @@ static void highbank_class_init(ObjectClass *oc, const void *data)
-     mc->max_cpus = 4;
-     mc->ignore_memory_transaction_failures = true;
-     mc->default_ram_id = "highbank.dram";
-+    mc->deprecation_reason = "no known users left for this machine";
+diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
+index 8f33387e4b..9942d717aa 100644
+--- a/target/arm/tcg/sme_helper.c
++++ b/target/arm/tcg/sme_helper.c
+@@ -904,20 +904,11 @@ void HELPER(sme_addva_d)(void *vzda, void *vzn, void *vpn,
  }
  
- static const TypeInfo highbank_type = {
-@@ -381,6 +382,7 @@ static void midway_class_init(ObjectClass *oc, const void *data)
-     mc->max_cpus = 4;
-     mc->ignore_memory_transaction_failures = true;
-     mc->default_ram_id = "highbank.dram";
-+    mc->deprecation_reason = "no known users left for this machine";
+ void HELPER(sme_fmopa_s)(void *vza, void *vzn, void *vzm, void *vpn,
+-                         void *vpm, float_status *fpst_in, uint32_t desc)
++                         void *vpm, float_status *fpst, uint32_t desc)
+ {
+     intptr_t row, col, oprsz = simd_maxsz(desc);
+     uint32_t neg = simd_data(desc) << 31;
+     uint16_t *pn = vpn, *pm = vpm;
+-    float_status fpst;
+-
+-    /*
+-     * Make a copy of float_status because this operation does not
+-     * update the cumulative fp exception status.  It also produces
+-     * default nans.
+-     */
+-    fpst = *fpst_in;
+-    set_default_nan_mode(true, &fpst);
+ 
+     for (row = 0; row < oprsz; ) {
+         uint16_t pa = pn[H2(row >> 4)];
+@@ -932,7 +923,7 @@ void HELPER(sme_fmopa_s)(void *vza, void *vzn, void *vzm, void *vpn,
+                         if (pb & 1) {
+                             uint32_t *a = vza_row + H1_4(col);
+                             uint32_t *m = vzm + H1_4(col);
+-                            *a = float32_muladd(n, *m, *a, 0, &fpst);
++                            *a = float32_muladd(n, *m, *a, 0, fpst);
+                         }
+                         col += 4;
+                         pb >>= 4;
+@@ -946,15 +937,12 @@ void HELPER(sme_fmopa_s)(void *vza, void *vzn, void *vzm, void *vpn,
  }
  
- static const TypeInfo midway_type = {
+ void HELPER(sme_fmopa_d)(void *vza, void *vzn, void *vzm, void *vpn,
+-                         void *vpm, float_status *fpst_in, uint32_t desc)
++                         void *vpm, float_status *fpst, uint32_t desc)
+ {
+     intptr_t row, col, oprsz = simd_oprsz(desc) / 8;
+     uint64_t neg = (uint64_t)simd_data(desc) << 63;
+     uint64_t *za = vza, *zn = vzn, *zm = vzm;
+     uint8_t *pn = vpn, *pm = vpm;
+-    float_status fpst = *fpst_in;
+-
+-    set_default_nan_mode(true, &fpst);
+ 
+     for (row = 0; row < oprsz; ++row) {
+         if (pn[H1(row)] & 1) {
+@@ -964,7 +952,7 @@ void HELPER(sme_fmopa_d)(void *vza, void *vzn, void *vzm, void *vpn,
+             for (col = 0; col < oprsz; ++col) {
+                 if (pm[H1(col)] & 1) {
+                     uint64_t *a = &za_row[col];
+-                    *a = float64_muladd(n, zm[col], *a, 0, &fpst);
++                    *a = float64_muladd(n, zm[col], *a, 0, fpst);
+                 }
+             }
+         }
+@@ -1065,19 +1053,8 @@ void HELPER(sme_fmopa_h)(void *vza, void *vzn, void *vzm, void *vpn,
+     intptr_t row, col, oprsz = simd_maxsz(desc);
+     uint32_t neg = simd_data(desc) * 0x80008000u;
+     uint16_t *pn = vpn, *pm = vpm;
+-    float_status fpst_odd, fpst_std, fpst_f16;
++    float_status fpst_odd = env->vfp.fp_status[FPST_ZA];
+ 
+-    /*
+-     * Make copies of the fp status fields we use, because this operation
+-     * does not update the cumulative fp exception status.  It also
+-     * produces default NaNs. We also need a second copy of fp_status with
+-     * round-to-odd -- see above.
+-     */
+-    fpst_f16 = env->vfp.fp_status[FPST_A64_F16];
+-    fpst_std = env->vfp.fp_status[FPST_A64];
+-    set_default_nan_mode(true, &fpst_std);
+-    set_default_nan_mode(true, &fpst_f16);
+-    fpst_odd = fpst_std;
+     set_float_rounding_mode(float_round_to_odd, &fpst_odd);
+ 
+     for (row = 0; row < oprsz; ) {
+@@ -1097,7 +1074,9 @@ void HELPER(sme_fmopa_h)(void *vza, void *vzn, void *vzm, void *vpn,
+ 
+                         m = f16mop_adj_pair(m, pcol, 0);
+                         *a = f16_dotadd(*a, n, m,
+-                                        &fpst_f16, &fpst_std, &fpst_odd);
++                                        &env->vfp.fp_status[FPST_ZA_F16],
++                                        &env->vfp.fp_status[FPST_ZA],
++                                        &fpst_odd);
+                     }
+                     col += 4;
+                     pcol >>= 4;
+diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
+index fcbb350016..51175c923e 100644
+--- a/target/arm/tcg/translate-sme.c
++++ b/target/arm/tcg/translate-sme.c
+@@ -358,9 +358,9 @@ static bool do_outprod_env(DisasContext *s, arg_op *a, MemOp esz,
+ TRANS_FEAT(FMOPA_h, aa64_sme, do_outprod_env, a,
+            MO_32, gen_helper_sme_fmopa_h)
+ TRANS_FEAT(FMOPA_s, aa64_sme, do_outprod_fpst, a,
+-           MO_32, FPST_A64, gen_helper_sme_fmopa_s)
++           MO_32, FPST_ZA, gen_helper_sme_fmopa_s)
+ TRANS_FEAT(FMOPA_d, aa64_sme_f64f64, do_outprod_fpst, a,
+-           MO_64, FPST_A64, gen_helper_sme_fmopa_d)
++           MO_64, FPST_ZA, gen_helper_sme_fmopa_d)
+ 
+ TRANS_FEAT(BFMOPA, aa64_sme, do_outprod_env, a, MO_32, gen_helper_sme_bfmopa)
+ 
 -- 
-2.50.0
+2.43.0
 

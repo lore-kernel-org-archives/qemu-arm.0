@@ -1,151 +1,190 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp73500dyc;
-        Wed, 2 Jul 2025 11:58:44 -0700 (PDT)
-X-Received: by 2002:a05:600c:1d24:b0:450:d01f:de6f with SMTP id 5b1f17b1804b1-454a9c7f6a8mr10191475e9.15.1751482723781;
-        Wed, 02 Jul 2025 11:58:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751482723; cv=none;
-        d=google.com; s=arc-20240605;
-        b=CZvYlgipunwRoVH6HvJ4ufYBqgBILKxPSbaxpuHkCRfwkqFYpd2F7Dm8T6tpskTm6u
-         FvclsuZdCTXVJ/l2Ix3qymnfNp7XVF6Q6r8OhxRZRyUCZyCc2ZLWkUj0TUTVlucE+Bry
-         9ABvU6rDiNVLNwiD0Pzkg7P99MxFJ0ACNSpj4h80VGRyMZmZ6L46piFk4RUqI2Rh1u/u
-         XuhPEY0kq5Zu16kH6ZoQg7a/9CM42Xptk8a5jtSHd7HlSh0z6OBFOyzEyiDGu+KChJ1g
-         a9wC3RgF/TOXybn1ebp5JGx5+xb2R5KAZ4ZN1jgz7vTAenb5IjyBXae3+fZHIaJ4W8Xi
-         78tg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=+E/J0LnrR39EtKwfOEb6mQjjQJ2XUYL/z1tOblZJ55o=;
-        fh=2hZXzuf3xk2f6pq8vdd1ctoxCpF0gFxrYZClGSg7MHQ=;
-        b=XnMETvSTNVYsRaR91aqz4/h2dxo9V2wUEmqs12EypEmHx2F2MkcNpGq5ImxRGpkpvD
-         bdxpNA4IuinD+3jcGEHFlPNT4E1W5Xe4oWGTedzBOnijm42nAvy7KaK0yN92j7HNbhEb
-         IYbx77qxdNqronfIce6N/rs3t3BtfFyN9t6nPlNOk9dZeuCmlYzadOLoQEvzJBtF+xJA
-         Cv7NoWSI4pYR9Oc1HZZ1HcZ+IYHMjPc9DMBqSbPGU4m9N90vaEqN+170xs/XV+k0Dpv3
-         JEdZhaR5VOMP8d86edN5c8TCWZZxNGG0rkBf7o2oZSN35PzuBZy5IJv/S3Y6iLx/ELHN
-         aqQQ==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gGdRn1Y4;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-4538a4050f5sor60988605e9.6.2025.07.02.11.58.43
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp85739dyc;
+        Wed, 2 Jul 2025 12:19:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXCnX/qKacXgjSjYzU3sOYDCg8ZvqRcxeEivWaq2Cvqir8p9UiP/+duZsNexFUwpja7CYVEA6QoF85OSg==@linaro.org
+X-Google-Smtp-Source: AGHT+IG+JCnMOAPqvV/MgfEMxRE6phIjEtIYMXG0xBDU8eM7jzkleYd2SmhS23ohQ5FIAlPdBjxR
+X-Received: by 2002:a05:622a:40d:b0:4a5:a7a8:fd83 with SMTP id d75a77b69052e-4a987dbdfe3mr5617581cf.44.1751483966514;
+        Wed, 02 Jul 2025 12:19:26 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc0fefcesi135519171cf.111.2025.07.02.12.19.26
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 02 Jul 2025 11:58:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 02 Jul 2025 12:19:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gGdRn1Y4;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1751482723; x=1752087523; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=+E/J0LnrR39EtKwfOEb6mQjjQJ2XUYL/z1tOblZJ55o=;
-        b=gGdRn1Y4AQ/rlgmfvy5joF9mLjepdC0TTSEn3PQ8euD7BD1w+gpQtrodmb6y/mb5RR
-         kHEHkApkWr+9haQm7Y/4IA3/temCn3g2cKhv9XYZs8g+cJo6bi432ET2vu5YkuTCFIXg
-         gPESNpVlYWSKMIk3EiVGGyGH7gDEyyY/EnnOR+tPeh940qYYVDA9XleQENCSLaiS7nYs
-         dG03L2H/czeerKT4KDmvf7gvQQOviKZXvAkOgnlZejH9t/WqjM8XdsgF0wU1CKkGOfmr
-         gL1aIWUqD4sQNlu3ZtsXfdgd5T3l4MAP/TTAXRJJD1vZe6fZdNuLW5UtpTtoWG71XRDC
-         zDfg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751482723; x=1752087523;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=+E/J0LnrR39EtKwfOEb6mQjjQJ2XUYL/z1tOblZJ55o=;
-        b=UKWuV50PVl0AnSqt19m2rrfjee0o2xuWhccbbYlsIS59qqp0fOc3B7Cfz2J1Ai+dQu
-         CR+NHsGwXM3TZkjV1JhLL3FZhJsJ+Ydyk1Re+QLj2RKplz0saf+y/IQGBA94zrTHQZs4
-         fihroVw6/QWs+JaAJRgyhKLUR+PTadP+iUH/kvLJs/2pQc4YrhTbaDtE37BfGHrwoV3J
-         qxWuDXgZxl70dIR2A9KQmr0txAnOUQZCxXY5sweoftJzk+TGCoVuD8FKHEnquZuAQmw6
-         5uQpQ/3lr7KAyy3qvJI6Fs+p8tr2p9ipOIptP5YxUOAmHQyMOIbhitakEQ2iv5GcxsIN
-         XhBw==
-X-Gm-Message-State: AOJu0YysLklTCaOmOoxgLqpjc49ezWi0cVF9EUSvAPyqnkw07eU/gRxZ
-	VQ8VX7QtaEOUQ6HE9ocSAoBLvx9WzwZ6TvCnXwBDlC3aoT62WztgRbwLldyQiBovtpi03w==
-X-Gm-Gg: ASbGncu7qi3omARN8iizCG/Xdvw26Qzj74xHdriJ2c2Vlt9iVX6RWa9Da84MitR8MaZ
-	khdHE3xfZ9lZpA9N4mbr7Dm/Ook3wD7zU6EasrC7H4kitcu7FxZEymlRHS6cqIwEcW+Qef+AQcc
-	IcJ1T0fr37ij01aOv8fI6fSYkoCre/5NLZfdnSxJAtmVhheHglcbsSU0QXXoR7TVOU/HkTvRIL6
-	1mcix2QCagruACYiqe9qroKdaG+ZvUtp4K+5ofCWAae3bHKosmBtV/b4dzL9sR9kcPlUSPp2U+7
-	eaEz+Xl4DD/yIhovTxwp9KImhYmwC6SiHHDjwMPKXVNvLsYrs044g6b2iNoWjgr2wxQCDRfLG+L
-	CHy1wDiCXbdJ80D2eJa31ZRgjgciOY2jfCuuX
-X-Google-Smtp-Source: AGHT+IGHn6ZxpPshfR5wvuf8R3zCvqso2bXEWooi9BkpGmBlEXHOWIpLivNJNaJgccbmQciYmUaFuw==
-X-Received: by 2002:a05:600c:3148:b0:453:aca:4d05 with SMTP id 5b1f17b1804b1-454a9cb3b11mr9056495e9.31.1751482723163;
-        Wed, 02 Jul 2025 11:58:43 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-454a9bcebf7sm5793165e9.21.2025.07.02.11.58.41
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Wed, 02 Jul 2025 11:58:42 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org
-Subject: [PATCH v4 42/65] target/arm: Use generic hwaccel_enabled() to check 'host' cpu type
-Date: Wed,  2 Jul 2025 20:53:04 +0200
-Message-ID: <20250702185332.43650-43-philmd@linaro.org>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250702185332.43650-1-philmd@linaro.org>
-References: <20250702185332.43650-1-philmd@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+       dkim=neutral (body hash did not verify) header.i=@Nvidia.com header.s=selector2 header.b=kFIWmaBJ;
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uX2yv-0007cM-NO; Wed, 02 Jul 2025 15:18:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <etanous@nvidia.com>)
+ id 1uX2yp-0007bL-47; Wed, 02 Jul 2025 15:18:51 -0400
+Received: from mail-bn8nam04on20605.outbound.protection.outlook.com
+ ([2a01:111:f403:2408::605]
+ helo=NAM04-BN8-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <etanous@nvidia.com>)
+ id 1uX2yj-0007UI-76; Wed, 02 Jul 2025 15:18:50 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=oMnsnfX1i5ocAikv5/VJ+EbHa5R1bdeFBbKgevUCzyT4uMVU+mBEJlcYTc3kLcXSFKGTCLj6b9ChWJaZoIu5JGUPHPHGNrTHaU9xs0ybjB8OUmiQhipujstuMGRpuR4PUIYjqqJqW1jhZUOnPYLQY8xUSF2TNeLfIGNVi8O8kj3pCCd9iXcx8QCyr4gA5wd/xER8lwNPbKZg0rLYhkhWfXr91NY9t/kSZ3SNd8/0XKn2yr5qa+CQooXzRaipv5SBRk1e7m44DnojV77iiSZu5UaSHRXmLgghfGpJOWtRobrerk4UVDztXD9XwPpLDLFp44bEDbHABuWW2s5yIuwrSg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=MjEa+59OwSp52te+ePswFi9/qbA2S2qAyh/MAr5dLdo=;
+ b=c2kVCswbEki/vDZkMclN3/Fgv/q1Yrq7LARsRUuScbLOEQTpUfMp1i3NosLX/6aal5a2KBZcG3huYrPEIna9LrDLDXDC+KjWW5J1EHl89j5pMTozL3/Hm7XTYRnIoAdNJm28iCXn3hiTTwEBecV5nWSaw/Pa+5yOHK7gZdurKu0p1qWgZP9t+uIOU9l+dkOEtV9CtIP5KzniWisAlNRWQ6sUkMZRPttIs8WBQzSKcx6H3yXzMwxccCwa//ieYRRGiKuHDfJ+szM++CAU5i0db3f4pxpNdNSzXgMFpblv81WuIjbTlLkkg5TfcBVYR+SGXzul0h/Eqds7ShcuFAByHw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=MjEa+59OwSp52te+ePswFi9/qbA2S2qAyh/MAr5dLdo=;
+ b=kFIWmaBJfqv7d2UFkUO9YazTqe2nmExm9N4VQ/EiBL+KHkAnov1OvJnrCJ0k1YFP/zj5c+2IfitrB4Y2nPEV0p5mIXpkJhdauPzEbi6d01ABrLRvNGP8PN9/lCmJ8YjWsnIcYOZiw4uDvA6PhzAsyflsSh3HK0y2r7o9NuKA4VcdPwRWiL7VCMWcqbVeCvmwSspeQStQgmnwa2AQ8dmk1ZShWOzbz2ND/kCKgFqaWjYJb1OTUtXKxYoxqSNtszcPxkOtFSRxNm7P6YQh8Gpxcf0ous/LUVxkX7YptFhesIFz2B9DTIOCOrEjYwy6i/YbOmbfIBQ/STWPNMbe2eqmyA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from CH2PR12MB4277.namprd12.prod.outlook.com (2603:10b6:610:ae::23)
+ by PH0PR12MB7837.namprd12.prod.outlook.com (2603:10b6:510:282::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8901.19; Wed, 2 Jul
+ 2025 19:18:31 +0000
+Received: from CH2PR12MB4277.namprd12.prod.outlook.com
+ ([fe80::8857:98e9:8b64:787]) by CH2PR12MB4277.namprd12.prod.outlook.com
+ ([fe80::8857:98e9:8b64:787%4]) with mapi id 15.20.8880.021; Wed, 2 Jul 2025
+ 19:18:31 +0000
+Date: Wed, 2 Jul 2025 12:18:29 -0700
+To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Joel Stanley <joel@jms.id.au>, Troy Lee <leetroy@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org,
+ Ed Tanous <ed@tanous.net>
+Subject: Re: [PATCH 1/4] hw/arm: Add PCA9554 to ARM target
+Message-ID: <aGWGBdpvelKJgZKP@edtanousvm.nvidia.com>
+References: <20250701203400.71677-1-etanous@nvidia.com>
+ <20250701203400.71677-2-etanous@nvidia.com>
+ <f7e9fcba-e844-42e3-8e4c-9cc67a3069e7@kaod.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: dxQItVJhEdZt
+In-Reply-To: <f7e9fcba-e844-42e3-8e4c-9cc67a3069e7@kaod.org>
+X-ClientProxiedBy: SJ0PR13CA0068.namprd13.prod.outlook.com
+ (2603:10b6:a03:2c4::13) To CH2PR12MB4277.namprd12.prod.outlook.com
+ (2603:10b6:610:ae::23)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH2PR12MB4277:EE_|PH0PR12MB7837:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9148ee25-8ce4-47ad-5d67-08ddb99d3b17
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014;
+X-Microsoft-Antispam-Message-Info: =?iso-8859-1?Q?shuX4Rs69rv0/MWwXWS4Skyj0f6KattgsCTotEDpeCPc5GRhIVREOWEfoV?=
+ =?iso-8859-1?Q?r2qPgLG9XiP6cQ3WjW3e4lGlZ67ak51h2nOqJhHt4Hwr+gSboiSKejjpT9?=
+ =?iso-8859-1?Q?6yrjU5xp86fIJS8EG7DHSMpL0DD45iYSznsxHKYqFagIBIv6uoPqK9p0l+?=
+ =?iso-8859-1?Q?8bX3ay0RzUIhTZsCpcXHPLSTgFDIVTLpkLlf2SR+16C2o04HhX7LZX8fRT?=
+ =?iso-8859-1?Q?n9l3hdYkGi2gvhqVtfSvB7iRVZTjVwzximZt87MPXlULnKt3K577s6Bz1x?=
+ =?iso-8859-1?Q?Xb9K6iUJCFHF4MCTFQspWPMBd8xuQVoRZ3MCMt3VrlUGvCuHZKonRs05Sb?=
+ =?iso-8859-1?Q?zz3wEM6wpUpEzSa1TKlTs0qzUnbJEYjAuxYIPEVzyesiOLyEkZG8DhpCAf?=
+ =?iso-8859-1?Q?uuYnolLaEFeY9hjhoQxQjx1ZqPh3717k4JknJmRXiJY1AhSx5BWtrJTklZ?=
+ =?iso-8859-1?Q?A7j3ApwK5BMbKiTT+yXlKaFcc17VnsEcdsrLCo5E0ORRZ1FWBdufEQryyY?=
+ =?iso-8859-1?Q?KkE8xH+2qnvIxACBy4yUvCPvX5vY/cDCzxCTBb9MwrgKeheoxvog/GoUnd?=
+ =?iso-8859-1?Q?fHgMlaLOWVr/ijQ+ADEcyMxfjpI6VEiW9GtvhQFX0HSVrdlef5Wnad96Wx?=
+ =?iso-8859-1?Q?e4/F6F2G1EkCClw2C0YM7UF3PWb75zT3HanDnpobeAFg8RLTqrKvJcH9Y3?=
+ =?iso-8859-1?Q?pWEJSVh/BtcBqC8hNT9jl2hNeHDlrz9ZegCBqcPklDT/SBYOqnGlpWEu0Z?=
+ =?iso-8859-1?Q?/xHnhosX6yMjTS8vHUyK503ScAV/pdxTwZ1p3A3OxWXeYPYmsYt+udnmsY?=
+ =?iso-8859-1?Q?oXCIq2hNArZGP6gPfBP0OXKxJH7abq/Kh0/GflzcP2H+md35gHgALv0ONz?=
+ =?iso-8859-1?Q?mfMDG+T5HhcSsOTkOj7F2qiudtX2nOtvs/gWf5UfrmBXuqIBbp7SZ/ehD7?=
+ =?iso-8859-1?Q?kGQPMSXJ6Q+kVPqG9iPHS6nP7BtL/01ifCu8bGWpasRtPCtaerdydH6tJ+?=
+ =?iso-8859-1?Q?uiSYSj6wSMgm+wK8l1OI0uA1Z7cNdCRGkRGoEokT0MKmZbJsPSbRZNBsK8?=
+ =?iso-8859-1?Q?in3cxOB0YAX2r9vXQk9/K6vYCmiI0Efe3tl4KNNg4DnvsbKoWn7Sa0F5Wh?=
+ =?iso-8859-1?Q?fYkbWd1y17JdQFGQnwGeDIUnEWBdYoTdkA6HE3qdmqbyQ6hGuqfBccjN8I?=
+ =?iso-8859-1?Q?RlOfXxro3/WFXpqHyWaD2+m+1Q4dSVf/BzevEGP8h6iks697JuoS4aJvRY?=
+ =?iso-8859-1?Q?+vfIQQwl4DXrsG8MRf7wWaFYXsP7dJ8TZKpJoIHasSpWukyujwzFUIlBZu?=
+ =?iso-8859-1?Q?4KfXPzn7FZehT4zSGeyd3SPZHMXpEtkgKI4Ac60tAJ2+N/7fX9NxyBJQt0?=
+ =?iso-8859-1?Q?nxuWIiVxZ4zCmKtNIz2w4qN30MnbDGAxUCrZqnC1xf9CpNZosNKXJ8jRAX?=
+ =?iso-8859-1?Q?CS4sLdhsO+R4OsduCIumr33/H0weMjnyBDnE6ecyw+dLzkxcP3Ei9IB9+1?=
+ =?iso-8859-1?Q?Y=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH2PR12MB4277.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(7416014)(376014); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?CDL5Q3qOIR8NA9clIxtykBQ8fK+gH4x8+6S4JTqB4lmbfyTZ+jHxe5YqaE?=
+ =?iso-8859-1?Q?4DrHP/A/N7syLRN2UF/bosQAGwE2rBfhda/neciNdi134ijpx4UUpbm1dX?=
+ =?iso-8859-1?Q?3eSPzKc9mPolXS77cDxHFOwM93umKyfwfSrFkMPJBfBozVqDGk++MZfqXS?=
+ =?iso-8859-1?Q?d3I9xLSNSyIy/H/67ijLLtIs4t0iAyZrGzizDopsUeGavkAFZGY9R4chfK?=
+ =?iso-8859-1?Q?9+YHSl2a8LsPx964JCVHXZ/M5/Wg9aP8jdGe8TJrBR0afhNPYQv2iMQbvy?=
+ =?iso-8859-1?Q?5a+73ulJihd/0qB3QSM+JAJsBMyZg404XaZ+d8hmZ45hR4mVyWZrRzI9ur?=
+ =?iso-8859-1?Q?ZeNYmyenmPlOeb7BTfW44+M2FaXj4IHs1fjvuy6UkmPD6pdmSb2fASz2+K?=
+ =?iso-8859-1?Q?l1O2PqDXdVF3m4M12h2Ne6KNTIN2xEyqKAoub1zied6MeP7UUWmXw8akxs?=
+ =?iso-8859-1?Q?vg+d4iVXf5dfwgmcN5fdnHRPWjuHf2dLXFrD9wqAy0EcyWyHa0o4Gcaz1B?=
+ =?iso-8859-1?Q?mPmbL7sQ+lJLp1M08V03SzeAM3eXicE1IRkuFoEYXqz0LduRWCiOI1KKhR?=
+ =?iso-8859-1?Q?T4XtERg6q+JRmEznx/vzUWRUMLOGnwg+4riG3vnljyrrlWzoe3Cdq10F8Z?=
+ =?iso-8859-1?Q?1RzX8FsKaDTTvNpG0y1ovLnda1FIxlNVyfjXsPjtRmu0/mW0qqwB2lcmQk?=
+ =?iso-8859-1?Q?c6WDQ5rV4GoraF8VMz6Ixuc+rqQCdDefM4NB4WowPUXNzHm0VQGjBd93cL?=
+ =?iso-8859-1?Q?Ep37SKQPn+8khtfTMjEcSVIPG6HiA6BwVhPL4Zf23aPRU+LKWJVAFY2ndm?=
+ =?iso-8859-1?Q?MH5ieW6mmsQEnHd/6IwhVqrrL2xwIdPZDzS99hl/c6/dlsBmpR34a4EAqz?=
+ =?iso-8859-1?Q?P71R9bHqcBSbUWBobbgU3sMewSc7NCPK2ArKY1FGL5xB3YPmIATclO1xzr?=
+ =?iso-8859-1?Q?VRcMi+U/+Zj/BDEADAmYQlri1skL5cfcRgWXap/YF+WciheutYzoSJJeuc?=
+ =?iso-8859-1?Q?zrqV0Yln75g37SKnHIXPAr7Nikz6TI+FfAmSeHCQbT3Bf1a7YhSNyQYdwf?=
+ =?iso-8859-1?Q?l94Rhq5Npuun2zHwXFexFU8CW/qVMpRar0jhYqNLiXgBku2/xb4vID1sFh?=
+ =?iso-8859-1?Q?RMdDxNGlklumRgM/V6aSN4SeAmV3Ey9u3x+I3fSZ873c79HxFjHMZMW92f?=
+ =?iso-8859-1?Q?9BhcM1LDd7mMnK6a16jwPwWvmQYDbkb3QlJWUGHXgYqEVtAQqCtnUg7ZDx?=
+ =?iso-8859-1?Q?uMZbYusBG5gWrZZouDXX/MPEC18OXjIe0zSxosfA+iKbf5Tn2IiwzSXkUj?=
+ =?iso-8859-1?Q?Cel7eJ4FGb7SKvewNDkeKPV5hwqQsEqo5EMYWuagspQAjO2gHphf9c0xlg?=
+ =?iso-8859-1?Q?RAyBc3G6l0nyB/x8gPfWWFA9XU0oqpW/8cVyrLDT/nhzaJ1aep1q5zfXAa?=
+ =?iso-8859-1?Q?Y9BTR/rUBf/mJm7dxa2MF0PYkc2nJiPVSHoerMRByiZV3Y9v0eWS2TlbHh?=
+ =?iso-8859-1?Q?nx1Ev6rPfHWPYFM65KvlnE5aVYAaisULyaB8m8B2ybG6wGBAFwmVIJ2hyN?=
+ =?iso-8859-1?Q?DyIs7BitF3dBzIoBX/TlK2pfxYIslu2xny5d18TZ3ZSO3GxqYEti0ZHrBR?=
+ =?iso-8859-1?Q?dgZfmmfsxHuT53Q5ytu4A+lJcUL/DR7b/9?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9148ee25-8ce4-47ad-5d67-08ddb99d3b17
+X-MS-Exchange-CrossTenant-AuthSource: CH2PR12MB4277.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Jul 2025 19:18:31.0588 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: +FM3B94JgKLGgpOrgQN9IBMFg/+v5jayqXhdrYDxW1Us2t1w7fBT5Ml6SFgMSstcytcnsXKxct36QLXHtDl/AQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR12MB7837
+Received-SPF: permerror client-ip=2a01:111:f403:2408::605;
+ envelope-from=etanous@nvidia.com;
+ helo=NAM04-BN8-obe.outbound.protection.outlook.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  etanous <etanous@nvidia.com>
+From:  etanous via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: E9m3zERVNELl
 
-We should be able to use the 'host' CPU with any hardware accelerator.
+On Wed, Jul 02, 2025 at 08:47:48AM +0200, CÈdric Le Goater wrote:
+> 
+> 
+> 
+> 
+> This was already added by Patrick in patch :
+>
 
-Signed-off-by: Philippe Mathieu-Daud√© <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/arm-qmp-cmds.c | 5 +++--
- target/arm/cpu.c          | 5 +++--
- 2 files changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
-index cefd2352638..ee5eb1bac9f 100644
---- a/target/arm/arm-qmp-cmds.c
-+++ b/target/arm/arm-qmp-cmds.c
-@@ -30,6 +30,7 @@
- #include "qapi/qapi-commands-misc-arm.h"
- #include "qobject/qdict.h"
- #include "qom/qom-qobject.h"
-+#include "system/hw_accel.h"
- #include "cpu.h"
- 
- static GICCapability *gic_cap_new(int version)
-@@ -116,8 +117,8 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
-         return NULL;
-     }
- 
--    if (!kvm_enabled() && !strcmp(model->name, "host")) {
--        error_setg(errp, "The CPU type '%s' requires KVM", model->name);
-+    if (!hwaccel_enabled() && !strcmp(model->name, "host")) {
-+        error_setg(errp, "The CPU type 'host' requires hardware accelerator");
-         return NULL;
-     }
- 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index a59a5b57af6..1e782865233 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1978,8 +1978,9 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-      * this is the first point where we can report it.
-      */
-     if (cpu->host_cpu_probe_failed) {
--        if (!kvm_enabled() && !hvf_enabled()) {
--            error_setg(errp, "The 'host' CPU type can only be used with KVM or HVF");
-+        if (!hwaccel_enabled()) {
-+            error_setg(errp, "The 'host' CPU type can only be used with "
-+                             "hardware accelator such KVM/HVF");
-         } else {
-             error_setg(errp, "Failed to retrieve host CPU features");
-         }
--- 
-2.49.0
+ACK.  Will remove this patch in next series.

@@ -1,119 +1,117 @@
-Received: by 2002:a05:622a:6187:b0:4a7:49b6:ba6e with SMTP id hh7csp3710469qtb;
-        Wed, 2 Jul 2025 05:46:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV0MxNaWLOJWSpr3/6bvmGQ5aCfiaoBEG8mWqMWdA7p+OyAu15Nz/6IRcKTR8bINjn2xygiBJBguEp81Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IEWrRlsD01VmI1d2wrtb+EUh6rb8m+rkayZvr0EkcqGb5GAni3oksHDzjNebd2EFK3HyDUd
-X-Received: by 2002:a05:620a:4409:b0:7ca:cd16:b433 with SMTP id af79cd13be357-7d5c4718c73mr394030585a.31.1751460392753;
-        Wed, 02 Jul 2025 05:46:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751460392; cv=none;
+Received: by 2002:a05:622a:6187:b0:4a7:49b6:ba6e with SMTP id hh7csp3710537qtb;
+        Wed, 2 Jul 2025 05:46:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXmxhGYONIc4uc0yFsIQBto2Qw/f1dX9ty+R3ABJqKXzb/yK1Uh4BYuOBuF8mOsQw+nv7At/vlmXkPWeg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHAKFbFOx/5i+HsSSrT8ofX0dF5RX5vu/5GLzpqACE9tbfA8rwQgkSxFeW9KM+9jJ5lMSIv
+X-Received: by 2002:a05:620a:8010:b0:7d4:53d9:4139 with SMTP id af79cd13be357-7d5c4626147mr357542085a.0.1751460402706;
+        Wed, 02 Jul 2025 05:46:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751460402; cv=none;
         d=google.com; s=arc-20240605;
-        b=OLHvOvBn2rF6yY84mQjCDuS5Z5f6KX5lS8E2O7DjYcxuUKcy8RxluaKaxncjWJGwvD
-         Jls9t3sQK83PrHuPGT5AgiHpcYktc+LHGVr8wAj9e6aJHE8yrAPCCBZmL18kcxklGJEt
-         vMVDY4hYOMjiBlhOK5rgPuLzZvzdxnOV9N3ask9oow3J2lbM0H4NBsma8z/qSSnW26bK
-         7dB/0ZXdNBGI4OTXjVcaYzEVdz/V8+NKlydfJVckBH99Z6nAaUnVPoL0k+TjThrJ0v3g
-         YDiEWYvd0nVjgIGJVWRLvq2BtdDhVqdI8Z2bXBlUj2tu3ZtkWXjfiIYt7ewGcqohXVvx
-         Ho6g==
+        b=GOJ2jgYkU9Z7lGDmPYbzbbKk9Fhn2yloVEQ0Z0PLKSgLXrAGuTo93y+9HQ1xS8zPNR
+         VZu2rPqFJ+VBkoeVEk3WNRUai8g+4dE7xvu5Ft0L/7DmORDU79EoZcYHC4lcknj/RBak
+         Xo6o+cztIpXXMGo/SUgsjIkzryWTsvLPfZ6Yuz/aFUnKfCcxckXc51DdD8H7ZUV64gD2
+         uMVQxncz3/W1/t5auSxqVHVuflpDcAcbRSV+PFpgZkXTrQdyL8uOe27WR72C+xp8vmxB
+         rKayN1Z6pWz26wEpI3ySBzElTsyHnndLSeT/+g5wdIeZ+0CFob7AZt0G833mynCVqiMm
+         4d9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=jfD7brFizp76W5ey2BEJuLnJue/+9RsnLtE1z9wY2gg=;
+        bh=sJyUOtrlrDv0B+MKpNaKSMoSPPgcpvHASEXA36jwgJk=;
         fh=vZxkDpCwvhENXlY8qSqryGKuN7qdzoFpPjxnavaSuNI=;
-        b=cgcMD5RNzFSVvJUQKtfEVYrrBM8kOEgyZHqiBvwi8r3kDr+uNccMopzfUVfqcLHRtH
-         Uuy5mIQVvuH0J7u5OgoA4OCfXfiSWlYP4dCSuh0YvL7nrPf+pUSXTNzNk1ePeZYDKfkj
-         72j/A/YDcFkXy/iUVtQZhUuGwX93qjQJ3cQP149crYCp9vUL/6sQg+SBS6BSxBWcOgKf
-         5UklCByT9YITr8UF+apj8ivDsf2ojsVV9/moZdmtAuhTYyneluvXStf7bC/L3zwDYBA5
-         LnryeO8cG954da8FyF0i5KMMhzdXnzSGm1S2SI3mSanm7R4N3O+0LnW8DU+KCr1Ui+ha
-         C2vg==;
+        b=BBl/VSZzNw8XTi4/QrmIp0Iu0qW0HkbQpQBEKStQHivzHoygOJgfsXOHrgELcTPbck
+         Sa35m6pbdkPrM64+xK9qX1OeRsrySs4DBBoJuNY8Ter3KOpoLkuuG1GpWtlhVDuRnnPD
+         eYQRzM8dzP3XJ6cbUSDFrZW9NlyGchBv/PC+g3AkFpmBcvmZslBqywHG6HGzmal3njYY
+         DKeq7JHWTQh9dEPnontDP9ntuOcBWBgXG1pdY76lUxfKGNvu8n1lKTknHFlVvVYsUv2V
+         48cXjPoISZkX1Q0tkFvk7E53I51ybAdncdl/mcLgd9gWJpmM8L1GRvp/Q6A9byeO+VHe
+         Yh0Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gS8Bu2rR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OfOFrzav;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d45830901bsi719289385a.123.2025.07.02.05.46.32
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd773893dbsi137975016d6.414.2025.07.02.05.46.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jul 2025 05:46:32 -0700 (PDT)
+        Wed, 02 Jul 2025 05:46:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gS8Bu2rR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OfOFrzav;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uWwgM-0008MX-Sj; Wed, 02 Jul 2025 08:35:23 -0400
+	id 1uWwhj-0002J1-KT; Wed, 02 Jul 2025 08:36:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uWwg2-0007pm-1C
- for qemu-arm@nongnu.org; Wed, 02 Jul 2025 08:35:03 -0400
-Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
+ id 1uWwgN-0008N5-1T
+ for qemu-arm@nongnu.org; Wed, 02 Jul 2025 08:35:23 -0400
+Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uWwfk-00013B-EI
- for qemu-arm@nongnu.org; Wed, 02 Jul 2025 08:34:58 -0400
-Received: by mail-oa1-x29.google.com with SMTP id
- 586e51a60fabf-2ea35edc691so1680473fac.2
- for <qemu-arm@nongnu.org>; Wed, 02 Jul 2025 05:34:41 -0700 (PDT)
+ id 1uWwg5-00018U-Ew
+ for qemu-arm@nongnu.org; Wed, 02 Jul 2025 08:35:22 -0400
+Received: by mail-ot1-x336.google.com with SMTP id
+ 46e09a7af769-739f2508ffaso2973120a34.2
+ for <qemu-arm@nongnu.org>; Wed, 02 Jul 2025 05:34:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751459681; x=1752064481; darn=nongnu.org;
+ d=linaro.org; s=google; t=1751459697; x=1752064497; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jfD7brFizp76W5ey2BEJuLnJue/+9RsnLtE1z9wY2gg=;
- b=gS8Bu2rR0oGJqPa5dM8JyM/C9OKLzVnlhP9BaxZR4NTGawqIVCNLYbFtG4hy9b9EqY
- H58gGJp1p+ob5XvULHaBaU1BKvgC9lPGc7yJWBMncLqGX/vAGWMRRyEhSt01ir086uWS
- H+z53cPYzBunB4VDuXMflq3PHA9iPLLohWDxLdzxS0BvOgx/9lIs5fK/z9nZ5uRwD6qC
- cbo/Dv4ns6Hawx00ufkJUCwvbOsZD8uHpDB7RyFv1/NcZLZlcCMPrNeDWNf0sBoEbiC+
- lum6ttiAEktaJVsH0MkL6gpcjkxRgXd5gkAWj7UToCneDZGOZpxhMeZ73dDWr9o/+obI
- kuAw==
+ bh=sJyUOtrlrDv0B+MKpNaKSMoSPPgcpvHASEXA36jwgJk=;
+ b=OfOFrzavEM7/kdI+la0pv9C5Xg9EQB1sRsqKqFqhMfMAX4J+2XRSNb+HnIpMKzYEWg
+ 2m0wOK9By1Hby422Wg58ehNvYVYT2MzgM+sawJhb/XfKkblNEi8vpYA5YReN+Tzspe9R
+ 70HHrRxievIahZ39xd3CazBo2H3zkYfcshYtiL/dXJUB3I+GmOmTrwsUA2MaBq9UMyD2
+ 5gMmQRzjU63kL+9EYAQMFAyIFhlpPLS6wjDzH4e1z7j9j7aL/rWvxtTAqDVfZXLKHkud
+ n6GlVY8S58100z8uJHwPXeqzxWcsT/Xhzb9uUGy4kolrFoSQ4y002kVW1BWZOhW5iyRh
+ 9mQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751459681; x=1752064481;
+ d=1e100.net; s=20230601; t=1751459697; x=1752064497;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=jfD7brFizp76W5ey2BEJuLnJue/+9RsnLtE1z9wY2gg=;
- b=WjNhjd+99PPeWBXxGKYgzmNtjRXiy4mWWcbWDAeY+nlUl3O8+E66+EnJfJ+GMfxq8z
- lDnLL5K5998GXSIa00ghxEQz1M5UKRcIQq0eFEYHM+ZLCZLOeiRS9JFPeErT2+kPXh4c
- g0dtLofLDOYvTKiwXRjM6wljlhp5QemYVRVhmyzXk8PLD0yGCcuNzCRAJnwqIT0l8Q4k
- B261Ue5TCkVCcHKLVxz12IlYpsE4mN1T5P8iKfsxf0oEIkQVopv3wUgk36dXRBB6arGm
- 5YFvvCzGH8Qy5Q4pmYV4K900bsmHQMVCm2VDI5m1PYBcoZuKpVN2qI3PLoyziuwojrZT
- V4Tg==
-X-Gm-Message-State: AOJu0YxC4gDt4fvfgzt7dx+E2u94fdQgljKigXaFy4BHPPGwCAZq//rT
- 0WnLIjX9qrdyIVPcmAGG4KYJWyTvegicoHji7gvvE/7C+zzg6rmxYQBA0vec3lss6bA=
-X-Gm-Gg: ASbGncsRQyXfMSXOZnTIMCiq2fx27PX6uNGV1HmrbMKc+hE1Qf6jHhbsf7lN8cM1v50
- RKTBZ+i6YXVYI2Cs1x/mIJXQPBc/YoYIBti60meHft3YghIclh3DD2RKMEzlXWtNCF8zja8bhDV
- yjU/eunRh7QBCjoinX25UoNsF8bQ8G5EnyE9sy+pcNZiJwq3EoQ10WxvkFj4AB+ibUkymDSA5di
- CDE/JTzVwRFoj8u3aRRMcmyo7yssDnf/GsZ64EEsj+eL96doiyzfEbdfloN80NnnvmSBFXJ5Zzt
- QgxEt7WxRG6bhKoWoTVML5q1+ERzP0yFv3MXJ+/7oG8kGQY41Hw3L/Wn+/fQlT2CbNc0lMHvXtu
- oiwQx
-X-Received: by 2002:a05:6870:1b15:b0:2eb:87a9:7fc1 with SMTP id
- 586e51a60fabf-2f5a8d27727mr2046558fac.27.1751459680746; 
- Wed, 02 Jul 2025 05:34:40 -0700 (PDT)
+ bh=sJyUOtrlrDv0B+MKpNaKSMoSPPgcpvHASEXA36jwgJk=;
+ b=pbqu43cbd+fOJibl5Efw8EQp/CBzk5ms/U7tbROTlWTCkHZPBykfHS/l4sGA8Za+jo
+ 2LWva/Vgg4CTBvgSYZWNWtvKepQOTexRuAB7uFWka3yY5PI69jy7VLI2/L7AqFr+PYsD
+ N+IcJZr0nr5PXVLDXRXFTWQMmeZay+EJYXzsCBVKXEvRNPBXmMkii90T/cE61/Beq8t/
+ 5MGEpjxXLdyWBZ10/vMiBL1XVVxZwiBzvjtWPXw6lP6NH2C3gizAJXoxvPul45IFJsMC
+ ySV6hWEymuRX8Zn1hWw0R6y0EaLqqhqfX6aSXOP5Oac2PnAK9EFx3vOLt/ofXR0ZWcVF
+ +JJw==
+X-Gm-Message-State: AOJu0YzS1z/KJIDTJ/z2V8FIbARo+2b0unavh7i8KFj6c+CKvXYHh5Wf
+ UyNv44K15x1hzxI63mr0iEGIIh6XJgVi/pe2nxjLEBRIFcR+I3VqopO6mGBnz/wE4Do=
+X-Gm-Gg: ASbGncu12FjgclVv+4FAghS2uGGQURYkriLxg6dU8FEXF1f15UbP2EmLVSM2L0n3i92
+ BZ2rcYYAuPALSblChUaOi/jaPizf5Yyw5z07uPwf3gosIiuKZqxYTW0f58TP/zwVK73BbBD4Obo
+ 1qP6DKmJvZ7p/p6x17AsMKBCK7+acXTyy5AGLJAa2cnCTJVNXcICBdtI8ow+mFP5hsO8jNDk5ph
+ 5SvJdVwIn/5zEGB34DDbj8VIZhbfhR3zbUDUpO9CyI+Ff+mSnR43NbKc03FceFmUUsD3tvTFNQ5
+ czEeM1LK+UE8UwABi2Sf+WO2oiw+T+0zKASUmridohPrOko8s5c5V1NYRFutyKnbknEFEw==
+X-Received: by 2002:a05:6830:7303:b0:73a:9d92:fa51 with SMTP id
+ 46e09a7af769-73b4cc8f0eamr2065248a34.25.1751459697124; 
+ Wed, 02 Jul 2025 05:34:57 -0700 (PDT)
 Received: from stoup.. ([187.210.107.185]) by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-2efd50b1b2fsm3864281fac.32.2025.07.02.05.34.40
+ 586e51a60fabf-2efd50b1b2fsm3864281fac.32.2025.07.02.05.34.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Jul 2025 05:34:40 -0700 (PDT)
+ Wed, 02 Jul 2025 05:34:56 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v3 22/97] target/arm: Implement SME2 ADD/SUB (array results,
- multiple and single vector)
-Date: Wed,  2 Jul 2025 06:32:55 -0600
-Message-ID: <20250702123410.761208-23-richard.henderson@linaro.org>
+Subject: [PATCH v3 36/97] target/arm: Implement SME2 SMLAL, SMLSL, UMLAL, UMLSL
+Date: Wed,  2 Jul 2025 06:33:09 -0600
+Message-ID: <20250702123410.761208-37-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250702123410.761208-1-richard.henderson@linaro.org>
 References: <20250702123410.761208-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::29;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x29.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::336;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -135,90 +133,394 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: D089wPoBZ5Wg
+X-TUID: RwFz1HXFNG95
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate.h     |  2 ++
- target/arm/tcg/translate-sme.c | 30 ++++++++++++++++++++++++++++++
- target/arm/tcg/sme.decode      | 15 +++++++++++++++
- 3 files changed, 47 insertions(+)
+ target/arm/tcg/helper-sme.h    |  21 +++++
+ target/arm/tcg/sme_helper.c    |  59 ++++++++++++
+ target/arm/tcg/translate-sme.c |  84 +++++++++++++++++
+ target/arm/tcg/sme.decode      | 168 +++++++++++++++++++++++++++++++++
+ 4 files changed, 332 insertions(+)
 
-diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index 1b29b958f3..acfc00be78 100644
---- a/target/arm/tcg/translate.h
-+++ b/target/arm/tcg/translate.h
-@@ -642,6 +642,8 @@ typedef void GVecGen3Fn(unsigned, uint32_t, uint32_t,
-                         uint32_t, uint32_t, uint32_t);
- typedef void GVecGen4Fn(unsigned, uint32_t, uint32_t, uint32_t,
-                         uint32_t, uint32_t, uint32_t);
-+typedef void GVecGen3FnVar(unsigned, TCGv_ptr, uint32_t, TCGv_ptr, uint32_t,
-+                           TCGv_ptr, uint32_t, uint32_t, uint32_t);
+diff --git a/target/arm/tcg/helper-sme.h b/target/arm/tcg/helper-sme.h
+index 464877516b..0bb8af194b 100644
+--- a/target/arm/tcg/helper-sme.h
++++ b/target/arm/tcg/helper-sme.h
+@@ -191,3 +191,24 @@ DEF_HELPER_FLAGS_4(sme2_uvdot_idx_4h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
  
- /* Function prototype for gen_ functions for calling Neon helpers */
- typedef void NeonGenOneOpFn(TCGv_i32, TCGv_i32);
-diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
-index 0a6a10b63d..4bb880d9ef 100644
---- a/target/arm/tcg/translate-sme.c
-+++ b/target/arm/tcg/translate-sme.c
-@@ -745,3 +745,33 @@ static gen_helper_gvec_3_ptr * const f_vector_fminnm[4] = {
- };
- TRANS_FEAT(FMINNM_n1, aa64_sme2, do_z2z_n1_fpst, a, f_vector_fminnm)
- TRANS_FEAT(FMINNM_nn, aa64_sme2, do_z2z_nn_fpst, a, f_vector_fminnm)
+ DEF_HELPER_FLAGS_4(sme2_svdot_idx_2h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sme2_uvdot_idx_2h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 +
-+/* Add/Sub vector Z[m] to each Z[n*N] with result in ZA[d*N]. */
-+static bool do_azz_n1(DisasContext *s, arg_azz_n *a, int esz,
-+                      GVecGen3FnVar *fn)
-+{
-+    TCGv_ptr t_za;
-+    int svl, n, o_zm;
++DEF_HELPER_FLAGS_5(sme2_smlall_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_smlall_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_smlsll_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_smlsll_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_umlall_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_umlall_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_umlsll_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_umlsll_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_usmlall_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
 +
-+    if (!sme_smza_enabled_check(s)) {
-+        return true;
-+    }
++DEF_HELPER_FLAGS_5(sme2_smlall_idx_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_smlall_idx_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_smlsll_idx_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_smlsll_idx_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_umlall_idx_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_umlall_idx_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_umlsll_idx_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_umlsll_idx_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_usmlall_idx_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sme2_sumlall_idx_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
+index f5242d99be..0f79d7cb6e 100644
+--- a/target/arm/tcg/sme_helper.c
++++ b/target/arm/tcg/sme_helper.c
+@@ -1458,3 +1458,62 @@ DO_VDOT_IDX(sme2_svdot_idx_2h, int32_t, int16_t, int16_t, H4, H2)
+ DO_VDOT_IDX(sme2_uvdot_idx_2h, uint32_t, uint16_t, uint16_t, H4, H2)
+ 
+ #undef DO_VDOT_IDX
 +
-+    n = a->n;
-+    t_za = get_zarray(s, a->rv, a->off, n, 0);
-+    o_zm = vec_full_reg_offset(s, a->zm);
-+    svl = streaming_vec_reg_size(s);
-+
-+    for (int i = 0; i < n; ++i) {
-+        int o_za = (svl / n * sizeof(ARMVectorReg)) * i;
-+        int o_zn = vec_full_reg_offset(s, (a->zn + i) % 32);
-+
-+        fn(esz, t_za, o_za, tcg_env, o_zn, tcg_env, o_zm, svl, svl);
-+    }
-+    return true;
++#define DO_MLALL(NAME, TYPEW, TYPEN, TYPEM, HW, HN, OP) \
++void HELPER(NAME)(void *vd, void *vn, void *vm, void *va, uint32_t desc) \
++{                                                               \
++    intptr_t elements = simd_oprsz(desc) / sizeof(TYPEW);       \
++    intptr_t sel = extract32(desc, SIMD_DATA_SHIFT, 2);         \
++    TYPEW *d = vd, *a = va; TYPEN *n = vn; TYPEM *m = vm;       \
++    for (intptr_t i = 0; i < elements; ++i) {                   \
++        TYPEW nn = n[HN(i * 4 + sel)];                          \
++        TYPEM mm = m[HN(i * 4 + sel)];                          \
++        d[HW(i)] = a[HW(i)] OP (nn * mm);                       \
++    }                                                           \
 +}
 +
-+TRANS_FEAT(ADD_azz_n1_s, aa64_sme2, do_azz_n1, a, MO_32, tcg_gen_gvec_add_var)
-+TRANS_FEAT(SUB_azz_n1_s, aa64_sme2, do_azz_n1, a, MO_32, tcg_gen_gvec_sub_var)
-+TRANS_FEAT(ADD_azz_n1_d, aa64_sme2_i16i64, do_azz_n1, a, MO_64, tcg_gen_gvec_add_var)
-+TRANS_FEAT(SUB_azz_n1_d, aa64_sme2_i16i64, do_azz_n1, a, MO_64, tcg_gen_gvec_sub_var)
++DO_MLALL(sme2_smlall_s, int32_t, int8_t, int8_t, H4, H1, +)
++DO_MLALL(sme2_smlall_d, int64_t, int16_t, int16_t, H8, H2, +)
++DO_MLALL(sme2_smlsll_s, int32_t, int8_t, int8_t, H4, H1, -)
++DO_MLALL(sme2_smlsll_d, int64_t, int16_t, int16_t, H8, H2, -)
++
++DO_MLALL(sme2_umlall_s, uint32_t, uint8_t, uint8_t, H4, H1, +)
++DO_MLALL(sme2_umlall_d, uint64_t, uint16_t, uint16_t, H8, H2, +)
++DO_MLALL(sme2_umlsll_s, uint32_t, uint8_t, uint8_t, H4, H1, -)
++DO_MLALL(sme2_umlsll_d, uint64_t, uint16_t, uint16_t, H8, H2, -)
++
++DO_MLALL(sme2_usmlall_s, uint32_t, uint8_t, int8_t, H4, H1, +)
++
++#undef DO_MLALL
++
++#define DO_MLALL_IDX(NAME, TYPEW, TYPEN, TYPEM, HW, HN, OP) \
++void HELPER(NAME)(void *vd, void *vn, void *vm, void *va, uint32_t desc) \
++{                                                               \
++    intptr_t elements = simd_oprsz(desc) / sizeof(TYPEW);       \
++    intptr_t eltspersegment = 16 / sizeof(TYPEW);               \
++    intptr_t sel = extract32(desc, SIMD_DATA_SHIFT, 2);         \
++    intptr_t idx = extract32(desc, SIMD_DATA_SHIFT + 2, 4);     \
++    TYPEW *d = vd, *a = va; TYPEN *n = vn; TYPEM *m = vm;       \
++    for (intptr_t i = 0; i < elements; i += eltspersegment) {   \
++        TYPEW mm = m[HN(i * 4 + idx)];                          \
++        for (intptr_t j = 0; j < eltspersegment; ++j) {         \
++            TYPEN nn = n[HN((i + j) * 4 + sel)];                \
++            d[HW(i + j)] = a[HW(i + j)] OP (nn * mm);           \
++        }                                                       \
++    }                                                           \
++}
++
++DO_MLALL_IDX(sme2_smlall_idx_s, int32_t, int8_t, int8_t, H4, H1, +)
++DO_MLALL_IDX(sme2_smlall_idx_d, int64_t, int16_t, int16_t, H8, H2, +)
++DO_MLALL_IDX(sme2_smlsll_idx_s, int32_t, int8_t, int8_t, H4, H1, -)
++DO_MLALL_IDX(sme2_smlsll_idx_d, int64_t, int16_t, int16_t, H8, H2, -)
++
++DO_MLALL_IDX(sme2_umlall_idx_s, uint32_t, uint8_t, uint8_t, H4, H1, +)
++DO_MLALL_IDX(sme2_umlall_idx_d, uint64_t, uint16_t, uint16_t, H8, H2, +)
++DO_MLALL_IDX(sme2_umlsll_idx_s, uint32_t, uint8_t, uint8_t, H4, H1, -)
++DO_MLALL_IDX(sme2_umlsll_idx_d, uint64_t, uint16_t, uint16_t, H8, H2, -)
++
++DO_MLALL_IDX(sme2_usmlall_idx_s, uint32_t, uint8_t, int8_t, H4, H1, +)
++DO_MLALL_IDX(sme2_sumlall_idx_s, uint32_t, int8_t, uint8_t, H4, H1, +)
++
++#undef DO_MLALL_IDX
+diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
+index b88f439ef9..070cebc573 100644
+--- a/target/arm/tcg/translate-sme.c
++++ b/target/arm/tcg/translate-sme.c
+@@ -1070,3 +1070,87 @@ TRANS_FEAT(UVDOT_nx_4h, aa64_sme2, do_vdot_nx, a, gen_helper_sme2_uvdot_idx_4h)
+ 
+ TRANS_FEAT(SUVDOT_nx_4b, aa64_sme2, do_vdot_nx, a, gen_helper_sme2_suvdot_idx_4b)
+ TRANS_FEAT(USVDOT_nx_4b, aa64_sme2, do_vdot_nx, a, gen_helper_sme2_usvdot_idx_4b)
++
++static bool do_smlal(DisasContext *s, arg_azz_n *a, bool multi,
++                     gen_helper_gvec_4 *fn)
++{
++    return do_azz_acc(s, a->n, 2, a->rv, a->off, a->zn, a->zm,
++                      0, 0, multi, fn);
++}
++
++TRANS_FEAT(SMLAL_n1, aa64_sme2, do_smlal, a, false, gen_helper_sve2_smlal_zzzw_s)
++TRANS_FEAT(SMLSL_n1, aa64_sme2, do_smlal, a, false, gen_helper_sve2_smlsl_zzzw_s)
++TRANS_FEAT(UMLAL_n1, aa64_sme2, do_smlal, a, false, gen_helper_sve2_umlal_zzzw_s)
++TRANS_FEAT(UMLSL_n1, aa64_sme2, do_smlal, a, false, gen_helper_sve2_umlsl_zzzw_s)
++
++TRANS_FEAT(SMLAL_nn, aa64_sme2, do_smlal, a, true, gen_helper_sve2_smlal_zzzw_s)
++TRANS_FEAT(SMLSL_nn, aa64_sme2, do_smlal, a, true, gen_helper_sve2_smlsl_zzzw_s)
++TRANS_FEAT(UMLAL_nn, aa64_sme2, do_smlal, a, true, gen_helper_sve2_umlal_zzzw_s)
++TRANS_FEAT(UMLSL_nn, aa64_sme2, do_smlal, a, true, gen_helper_sve2_umlsl_zzzw_s)
++
++static bool do_smlal_nx(DisasContext *s, arg_azx_n *a,
++                         gen_helper_gvec_4 *fn)
++{
++    return do_azz_acc(s, a->n, 2, a->rv, a->off, a->zn, a->zm,
++                      a->idx << 1, 0, false, fn);
++}
++
++TRANS_FEAT(SMLAL_nx, aa64_sme2, do_smlal_nx, a, gen_helper_sve2_smlal_idx_s)
++TRANS_FEAT(SMLSL_nx, aa64_sme2, do_smlal_nx, a, gen_helper_sve2_smlsl_idx_s)
++TRANS_FEAT(UMLAL_nx, aa64_sme2, do_smlal_nx, a, gen_helper_sve2_umlal_idx_s)
++TRANS_FEAT(UMLSL_nx, aa64_sme2, do_smlal_nx, a, gen_helper_sve2_umlsl_idx_s)
++
++static bool do_smlall(DisasContext *s, arg_azz_n *a, bool multi,
++                     gen_helper_gvec_4 *fn)
++{
++    return do_azz_acc(s, a->n, 4, a->rv, a->off, a->zn, a->zm,
++                      0, 0, multi, fn);
++}
++
++static void gen_helper_sme2_sumlall_s(TCGv_ptr d, TCGv_ptr n, TCGv_ptr m,
++                                      TCGv_ptr a, TCGv_i32 desc)
++{
++    gen_helper_sme2_usmlall_s(d, m, n, a, desc);
++}
++
++TRANS_FEAT(SMLALL_n1_s, aa64_sme2, do_smlall, a, false, gen_helper_sme2_smlall_s)
++TRANS_FEAT(SMLSLL_n1_s, aa64_sme2, do_smlall, a, false, gen_helper_sme2_smlsll_s)
++TRANS_FEAT(UMLALL_n1_s, aa64_sme2, do_smlall, a, false, gen_helper_sme2_umlall_s)
++TRANS_FEAT(UMLSLL_n1_s, aa64_sme2, do_smlall, a, false, gen_helper_sme2_umlsll_s)
++TRANS_FEAT(USMLALL_n1_s, aa64_sme2, do_smlall, a, false, gen_helper_sme2_usmlall_s)
++TRANS_FEAT(SUMLALL_n1_s, aa64_sme2, do_smlall, a, false, gen_helper_sme2_sumlall_s)
++
++TRANS_FEAT(SMLALL_n1_d, aa64_sme2_i16i64, do_smlall, a, false, gen_helper_sme2_smlall_d)
++TRANS_FEAT(SMLSLL_n1_d, aa64_sme2_i16i64, do_smlall, a, false, gen_helper_sme2_smlsll_d)
++TRANS_FEAT(UMLALL_n1_d, aa64_sme2_i16i64, do_smlall, a, false, gen_helper_sme2_umlall_d)
++TRANS_FEAT(UMLSLL_n1_d, aa64_sme2_i16i64, do_smlall, a, false, gen_helper_sme2_umlsll_d)
++
++TRANS_FEAT(SMLALL_nn_s, aa64_sme2, do_smlall, a, true, gen_helper_sme2_smlall_s)
++TRANS_FEAT(SMLSLL_nn_s, aa64_sme2, do_smlall, a, true, gen_helper_sme2_smlsll_s)
++TRANS_FEAT(UMLALL_nn_s, aa64_sme2, do_smlall, a, true, gen_helper_sme2_umlall_s)
++TRANS_FEAT(UMLSLL_nn_s, aa64_sme2, do_smlall, a, true, gen_helper_sme2_umlsll_s)
++TRANS_FEAT(USMLALL_nn_s, aa64_sme2, do_smlall, a, true, gen_helper_sme2_usmlall_s)
++
++TRANS_FEAT(SMLALL_nn_d, aa64_sme2_i16i64, do_smlall, a, true, gen_helper_sme2_smlall_d)
++TRANS_FEAT(SMLSLL_nn_d, aa64_sme2_i16i64, do_smlall, a, true, gen_helper_sme2_smlsll_d)
++TRANS_FEAT(UMLALL_nn_d, aa64_sme2_i16i64, do_smlall, a, true, gen_helper_sme2_umlall_d)
++TRANS_FEAT(UMLSLL_nn_d, aa64_sme2_i16i64, do_smlall, a, true, gen_helper_sme2_umlsll_d)
++
++static bool do_smlall_nx(DisasContext *s, arg_azx_n *a,
++                        gen_helper_gvec_4 *fn)
++{
++    return do_azz_acc(s, a->n, 4, a->rv, a->off, a->zn, a->zm,
++                      a->idx << 2, 0, false, fn);
++}
++
++TRANS_FEAT(SMLALL_nx_s, aa64_sme2, do_smlall_nx, a, gen_helper_sme2_smlall_idx_s)
++TRANS_FEAT(SMLSLL_nx_s, aa64_sme2, do_smlall_nx, a, gen_helper_sme2_smlsll_idx_s)
++TRANS_FEAT(UMLALL_nx_s, aa64_sme2, do_smlall_nx, a, gen_helper_sme2_umlall_idx_s)
++TRANS_FEAT(UMLSLL_nx_s, aa64_sme2, do_smlall_nx, a, gen_helper_sme2_umlsll_idx_s)
++TRANS_FEAT(USMLALL_nx_s, aa64_sme2, do_smlall_nx, a, gen_helper_sme2_usmlall_idx_s)
++TRANS_FEAT(SUMLALL_nx_s, aa64_sme2, do_smlall_nx, a, gen_helper_sme2_sumlall_idx_s)
++
++TRANS_FEAT(SMLALL_nx_d, aa64_sme2_i16i64, do_smlall_nx, a, gen_helper_sme2_smlall_idx_d)
++TRANS_FEAT(SMLSLL_nx_d, aa64_sme2_i16i64, do_smlall_nx, a, gen_helper_sme2_smlsll_idx_d)
++TRANS_FEAT(UMLALL_nx_d, aa64_sme2_i16i64, do_smlall_nx, a, gen_helper_sme2_umlall_idx_d)
++TRANS_FEAT(UMLSLL_nx_d, aa64_sme2_i16i64, do_smlall_nx, a, gen_helper_sme2_umlsll_idx_d)
 diff --git a/target/arm/tcg/sme.decode b/target/arm/tcg/sme.decode
-index 470592f4c0..8b81c0a0ce 100644
+index 4146744a46..934e4a802e 100644
 --- a/target/arm/tcg/sme.decode
 +++ b/target/arm/tcg/sme.decode
-@@ -245,3 +245,18 @@ URSHL_nn       1100000 1 .. 1 ..... 1011.0 10001 .... 1    @z2z_4x4
+@@ -311,6 +311,65 @@ UDOT_n1_4h      11000001 011 1 .... 0 .. 101 ..... 10 ...   @azz_nx1_o3 n=4
+ UDOT_n1_2h      11000001 011 0 .... 0 .. 101 ..... 11 ...   @azz_nx1_o3 n=2
+ UDOT_n1_2h      11000001 011 1 .... 0 .. 101 ..... 11 ...   @azz_nx1_o3 n=4
  
- SQDMULH_nn     1100000 1 .. 1 ..... 1011.1 00000 .... 0    @z2z_2x2
- SQDMULH_nn     1100000 1 .. 1 ..... 1011.1 00000 .... 0    @z2z_4x4
++SMLAL_n1        11000001 011 0 .... 0 .. 011 ..... 00 ...   @azz_nx1_o3x2 n=1
++SMLAL_n1        11000001 011 0 .... 0 .. 010 ..... 000 ..   @azz_nx1_o2x2 n=2
++SMLAL_n1        11000001 011 1 .... 0 .. 010 ..... 000 ..   @azz_nx1_o2x2 n=4
 +
-+### SME2 Multi-vector Multiple and Single Array Vectors
++SMLSL_n1        11000001 011 0 .... 0 .. 011 ..... 01 ...   @azz_nx1_o3x2 n=1
++SMLSL_n1        11000001 011 0 .... 0 .. 010 ..... 010 ..   @azz_nx1_o2x2 n=2
++SMLSL_n1        11000001 011 1 .... 0 .. 010 ..... 010 ..   @azz_nx1_o2x2 n=4
 +
-+&azz_n          n off rv zn zm
-+@azz_nx1_o3     ........ .... zm:4 ...... zn:5 .. off:3     &azz_n rv=%mova_rv
++UMLAL_n1        11000001 011 0 .... 0 .. 011 ..... 10 ...   @azz_nx1_o3x2 n=1
++UMLAL_n1        11000001 011 0 .... 0 .. 010 ..... 100 ..   @azz_nx1_o2x2 n=2
++UMLAL_n1        11000001 011 1 .... 0 .. 010 ..... 100 ..   @azz_nx1_o2x2 n=4
 +
-+ADD_azz_n1_s    11000001 0010 .... 0 .. 110 ..... 10 ...    @azz_nx1_o3 n=2
-+ADD_azz_n1_s    11000001 0011 .... 0 .. 110 ..... 10 ...    @azz_nx1_o3 n=4
-+ADD_azz_n1_d    11000001 0110 .... 0 .. 110 ..... 10 ...    @azz_nx1_o3 n=2
-+ADD_azz_n1_d    11000001 0111 .... 0 .. 110 ..... 10 ...    @azz_nx1_o3 n=4
++UMLSL_n1        11000001 011 0 .... 0 .. 011 ..... 11 ...   @azz_nx1_o3x2 n=1
++UMLSL_n1        11000001 011 0 .... 0 .. 010 ..... 110 ..   @azz_nx1_o2x2 n=2
++UMLSL_n1        11000001 011 1 .... 0 .. 010 ..... 110 ..   @azz_nx1_o2x2 n=4
 +
-+SUB_azz_n1_s    11000001 0010 .... 0 .. 110 ..... 11 ...    @azz_nx1_o3 n=2
-+SUB_azz_n1_s    11000001 0011 .... 0 .. 110 ..... 11 ...    @azz_nx1_o3 n=4
-+SUB_azz_n1_d    11000001 0110 .... 0 .. 110 ..... 11 ...    @azz_nx1_o3 n=2
-+SUB_azz_n1_d    11000001 0111 .... 0 .. 110 ..... 11 ...    @azz_nx1_o3 n=4
++%off2_x4        0:2 !function=times_4
++%off1_x4        0:1 !function=times_4
++
++@azz_nx1_o2x4   ........ ... . zm:4 . .. ... zn:5 ... ..    \
++                &azz_n off=%off2_x4 rv=%mova_rv
++@azz_nx1_o1x4   ........ ... . zm:4 . .. ... zn:5 .... .    \
++                &azz_n off=%off1_x4 rv=%mova_rv
++
++SMLALL_n1_s     11000001 001 0 .... 0 .. 001 ..... 000 ..   @azz_nx1_o2x4 n=1
++SMLALL_n1_d     11000001 011 0 .... 0 .. 001 ..... 000 ..   @azz_nx1_o2x4 n=1
++SMLALL_n1_s     11000001 001 0 .... 0 .. 000 ..... 0000 .   @azz_nx1_o1x4 n=2
++SMLALL_n1_d     11000001 011 0 .... 0 .. 000 ..... 0000 .   @azz_nx1_o1x4 n=2
++SMLALL_n1_s     11000001 001 1 .... 0 .. 000 ..... 0000 .   @azz_nx1_o1x4 n=4
++SMLALL_n1_d     11000001 011 1 .... 0 .. 000 ..... 0000 .   @azz_nx1_o1x4 n=4
++
++SMLSLL_n1_s     11000001 001 0 .... 0 .. 001 ..... 010 ..   @azz_nx1_o2x4 n=1
++SMLSLL_n1_d     11000001 011 0 .... 0 .. 001 ..... 010 ..   @azz_nx1_o2x4 n=1
++SMLSLL_n1_s     11000001 001 0 .... 0 .. 000 ..... 0100 .   @azz_nx1_o1x4 n=2
++SMLSLL_n1_d     11000001 011 0 .... 0 .. 000 ..... 0100 .   @azz_nx1_o1x4 n=2
++SMLSLL_n1_s     11000001 001 1 .... 0 .. 000 ..... 0100 .   @azz_nx1_o1x4 n=4
++SMLSLL_n1_d     11000001 011 1 .... 0 .. 000 ..... 0100 .   @azz_nx1_o1x4 n=4
++
++UMLALL_n1_s     11000001 001 0 .... 0 .. 001 ..... 100 ..   @azz_nx1_o2x4 n=1
++UMLALL_n1_d     11000001 011 0 .... 0 .. 001 ..... 100 ..   @azz_nx1_o2x4 n=1
++UMLALL_n1_s     11000001 001 0 .... 0 .. 000 ..... 1000 .   @azz_nx1_o1x4 n=2
++UMLALL_n1_d     11000001 011 0 .... 0 .. 000 ..... 1000 .   @azz_nx1_o1x4 n=2
++UMLALL_n1_s     11000001 001 1 .... 0 .. 000 ..... 1000 .   @azz_nx1_o1x4 n=4
++UMLALL_n1_d     11000001 011 1 .... 0 .. 000 ..... 1000 .   @azz_nx1_o1x4 n=4
++
++UMLSLL_n1_s     11000001 001 0 .... 0 .. 001 ..... 110 ..   @azz_nx1_o2x4 n=1
++UMLSLL_n1_d     11000001 011 0 .... 0 .. 001 ..... 110 ..   @azz_nx1_o2x4 n=1
++UMLSLL_n1_s     11000001 001 0 .... 0 .. 000 ..... 1100 .   @azz_nx1_o1x4 n=2
++UMLSLL_n1_d     11000001 011 0 .... 0 .. 000 ..... 1100 .   @azz_nx1_o1x4 n=2
++UMLSLL_n1_s     11000001 001 1 .... 0 .. 000 ..... 1100 .   @azz_nx1_o1x4 n=4
++UMLSLL_n1_d     11000001 011 1 .... 0 .. 000 ..... 1100 .   @azz_nx1_o1x4 n=4
++
++USMLALL_n1_s    11000001 001 0 .... 0 .. 001 ..... 001 ..   @azz_nx1_o2x4 n=1
++USMLALL_n1_s    11000001 001 0 .... 0 .. 000 ..... 0010 .   @azz_nx1_o1x4 n=2
++USMLALL_n1_s    11000001 001 1 .... 0 .. 000 ..... 0010 .   @azz_nx1_o1x4 n=4
++
++SUMLALL_n1_s    11000001 001 0 .... 0 .. 000 ..... 1010 .   @azz_nx1_o1x4 n=2
++SUMLALL_n1_s    11000001 001 1 .... 0 .. 000 ..... 1010 .   @azz_nx1_o1x4 n=4
++
+ ### SME2 Multi-vector Multiple Array Vectors
+ 
+ %zn_ax2         6:4 !function=times_2
+@@ -371,6 +430,46 @@ UDOT_nn_4h      11000001 111 ...01 0 .. 101 ...00 10 ...    @azz_4x4_o3
+ UDOT_nn_2h      11000001 111 ....0 0 .. 101 ....0 11 ...    @azz_2x2_o3
+ UDOT_nn_2h      11000001 111 ...01 0 .. 101 ...00 11 ...    @azz_4x4_o3
+ 
++SMLAL_nn        11000001 111 ....0 0 .. 010 ....0 000 ..    @azz_2x2_o2x2
++SMLAL_nn        11000001 111 ...01 0 .. 010 ...00 000 ..    @azz_4x4_o2x2
++
++SMLSL_nn        11000001 111 ....0 0 .. 010 ....0 010 ..    @azz_2x2_o2x2
++SMLSL_nn        11000001 111 ...01 0 .. 010 ...00 010 ..    @azz_4x4_o2x2
++
++UMLAL_nn        11000001 111 ....0 0 .. 010 ....0 100 ..    @azz_2x2_o2x2
++UMLAL_nn        11000001 111 ...01 0 .. 010 ...00 100 ..    @azz_4x4_o2x2
++
++UMLSL_nn        11000001 111 ....0 0 .. 010 ....0 110 ..    @azz_2x2_o2x2
++UMLSL_nn        11000001 111 ...01 0 .. 010 ...00 110 ..    @azz_4x4_o2x2
++
++@azz_2x2_o1x4   ........ ... ..... . .. ... ..... ... ..    \
++                &azz_n n=2 rv=%mova_rv zn=%zn_ax2 zm=%zm_ax2 off=%off1_x4
++@azz_4x4_o1x4   ........ ... ..... . .. ... ..... ... ..    \
++                &azz_n n=4 rv=%mova_rv zn=%zn_ax4 zm=%zm_ax4 off=%off1_x4
++
++SMLALL_nn_s     11000001 101 ....0 0 .. 000 ....0 0000 .    @azz_2x2_o1x4
++SMLALL_nn_d     11000001 111 ....0 0 .. 000 ....0 0000 .    @azz_2x2_o1x4
++SMLALL_nn_s     11000001 101 ...01 0 .. 000 ...00 0000 .    @azz_4x4_o1x4
++SMLALL_nn_d     11000001 111 ...01 0 .. 000 ...00 0000 .    @azz_4x4_o1x4
++
++SMLSLL_nn_s     11000001 101 ....0 0 .. 000 ....0 0100 .    @azz_2x2_o1x4
++SMLSLL_nn_d     11000001 111 ....0 0 .. 000 ....0 0100 .    @azz_2x2_o1x4
++SMLSLL_nn_s     11000001 101 ...01 0 .. 000 ...00 0100 .    @azz_4x4_o1x4
++SMLSLL_nn_d     11000001 111 ...01 0 .. 000 ...00 0100 .    @azz_4x4_o1x4
++
++UMLALL_nn_s     11000001 101 ....0 0 .. 000 ....0 1000 .    @azz_2x2_o1x4
++UMLALL_nn_d     11000001 111 ....0 0 .. 000 ....0 1000 .    @azz_2x2_o1x4
++UMLALL_nn_s     11000001 101 ...01 0 .. 000 ...00 1000 .    @azz_4x4_o1x4
++UMLALL_nn_d     11000001 111 ...01 0 .. 000 ...00 1000 .    @azz_4x4_o1x4
++
++UMLSLL_nn_s     11000001 101 ....0 0 .. 000 ....0 1100 .    @azz_2x2_o1x4
++UMLSLL_nn_d     11000001 111 ....0 0 .. 000 ....0 1100 .    @azz_2x2_o1x4
++UMLSLL_nn_s     11000001 101 ...01 0 .. 000 ...00 1100 .    @azz_4x4_o1x4
++UMLSLL_nn_d     11000001 111 ...01 0 .. 000 ...00 1100 .    @azz_4x4_o1x4
++
++USMLALL_nn_s    11000001 101 ....0 0 .. 000 ....0 0010 .    @azz_2x2_o1x4
++USMLALL_nn_s    11000001 101 ...01 0 .. 000 ...00 0010 .    @azz_4x4_o1x4
++
+ ### SME2 Multi-vector Indexed
+ 
+ &azx_n          n off rv zn zm idx
+@@ -449,3 +548,72 @@ UVDOT_nx_4h     11000001 1101 .... 1 .. 01 . ...00 11 ...   @azx_4x1_i1_o3
+ 
+ SUVDOT_nx_4b    11000001 0101 .... 1 .. 0 .. ...01 11 ...   @azx_4x1_i2_o3
+ USVDOT_nx_4b    11000001 0101 .... 1 .. 0 .. ...01 01 ...   @azx_4x1_i2_o3
++
++SMLAL_nx        11000001 1100 .... . .. 1 .. ..... 00 ...   @azx_1x1_o3x2
++SMLAL_nx        11000001 1101 .... 0 .. 1 .. ....0 00 ...   @azx_2x1_o2x2
++SMLAL_nx        11000001 1101 .... 1 .. 1 .. ...00 00 ...   @azx_4x1_o2x2
++
++SMLSL_nx        11000001 1100 .... . .. 1 .. ..... 01 ...   @azx_1x1_o3x2
++SMLSL_nx        11000001 1101 .... 0 .. 1 .. ....0 01 ...   @azx_2x1_o2x2
++SMLSL_nx        11000001 1101 .... 1 .. 1 .. ...00 01 ...   @azx_4x1_o2x2
++
++UMLAL_nx        11000001 1100 .... . .. 1 .. ..... 10 ...   @azx_1x1_o3x2
++UMLAL_nx        11000001 1101 .... 0 .. 1 .. ....0 10 ...   @azx_2x1_o2x2
++UMLAL_nx        11000001 1101 .... 1 .. 1 .. ...00 10 ...   @azx_4x1_o2x2
++
++UMLSL_nx        11000001 1100 .... . .. 1 .. ..... 11 ...   @azx_1x1_o3x2
++UMLSL_nx        11000001 1101 .... 0 .. 1 .. ....0 11 ...   @azx_2x1_o2x2
++UMLSL_nx        11000001 1101 .... 1 .. 1 .. ...00 11 ...   @azx_4x1_o2x2
++
++%idx4_15_10     15:1 10:3
++%idx4_10_1      10:2 1:2
++%idx3_10_1      10:1 1:2
++
++@azx_1x1_i4_o2  ........ .... zm:4 . .. ... zn:5 ... ..     \
++                &azx_n n=1 rv=%mova_rv off=%off2_x4 idx=%idx4_15_10
++@azx_1x1_i3_o2  ........ .... zm:4 . .. ... zn:5 ... ..     \
++                &azx_n n=1 rv=%mova_rv off=%off2_x4 idx=%idx3_15_10
++@azx_2x1_i4_o1  ........ .... zm:4 . .. ... ..... ... ..     \
++                &azx_n n=2 rv=%mova_rv off=%off1_x4 zn=%zn_ax2 idx=%idx4_10_1
++@azx_2x1_i3_o1  ........ .... zm:4 . .. ... ..... ... ..     \
++                &azx_n n=2 rv=%mova_rv off=%off1_x4 zn=%zn_ax2 idx=%idx3_10_1
++@azx_4x1_i4_o1  ........ .... zm:4 . .. ... ..... ... ..     \
++                &azx_n n=4 rv=%mova_rv off=%off1_x4 zn=%zn_ax4 idx=%idx4_10_1
++@azx_4x1_i3_o1  ........ .... zm:4 . .. ... ..... ... ..     \
++                &azx_n n=4 rv=%mova_rv off=%off1_x4 zn=%zn_ax4 idx=%idx3_10_1
++
++SMLALL_nx_s     11000001 0000 .... . .. ... ..... 000 ..    @azx_1x1_i4_o2
++SMLALL_nx_d     11000001 1000 .... . .. 0.. ..... 000 ..    @azx_1x1_i3_o2
++SMLALL_nx_s     11000001 0001 .... 0 .. 0.. ....0 00 ...    @azx_2x1_i4_o1
++SMLALL_nx_d     11000001 1001 .... 0 .. 00. ....0 00 ...    @azx_2x1_i3_o1
++SMLALL_nx_s     11000001 0001 .... 1 .. 0.. ...00 00 ...    @azx_4x1_i4_o1
++SMLALL_nx_d     11000001 1001 .... 1 .. 00. ...00 00 ...    @azx_4x1_i3_o1
++
++SMLSLL_nx_s     11000001 0000 .... . .. ... ..... 010 ..    @azx_1x1_i4_o2
++SMLSLL_nx_d     11000001 1000 .... . .. 0.. ..... 010 ..    @azx_1x1_i3_o2
++SMLSLL_nx_s     11000001 0001 .... 0 .. 0.. ....0 01 ...    @azx_2x1_i4_o1
++SMLSLL_nx_d     11000001 1001 .... 0 .. 00. ....0 01 ...    @azx_2x1_i3_o1
++SMLSLL_nx_s     11000001 0001 .... 1 .. 0.. ...00 01 ...    @azx_4x1_i4_o1
++SMLSLL_nx_d     11000001 1001 .... 1 .. 00. ...00 01 ...    @azx_4x1_i3_o1
++
++UMLALL_nx_s     11000001 0000 .... . .. ... ..... 100 ..    @azx_1x1_i4_o2
++UMLALL_nx_d     11000001 1000 .... . .. 0.. ..... 100 ..    @azx_1x1_i3_o2
++UMLALL_nx_s     11000001 0001 .... 0 .. 0.. ....0 10 ...    @azx_2x1_i4_o1
++UMLALL_nx_d     11000001 1001 .... 0 .. 00. ....0 10 ...    @azx_2x1_i3_o1
++UMLALL_nx_s     11000001 0001 .... 1 .. 0.. ...00 10 ...    @azx_4x1_i4_o1
++UMLALL_nx_d     11000001 1001 .... 1 .. 00. ...00 10 ...    @azx_4x1_i3_o1
++
++UMLSLL_nx_s     11000001 0000 .... . .. ... ..... 110 ..    @azx_1x1_i4_o2
++UMLSLL_nx_d     11000001 1000 .... . .. 0.. ..... 110 ..    @azx_1x1_i3_o2
++UMLSLL_nx_s     11000001 0001 .... 0 .. 0.. ....0 11 ...    @azx_2x1_i4_o1
++UMLSLL_nx_d     11000001 1001 .... 0 .. 00. ....0 11 ...    @azx_2x1_i3_o1
++UMLSLL_nx_s     11000001 0001 .... 1 .. 0.. ...00 11 ...    @azx_4x1_i4_o1
++UMLSLL_nx_d     11000001 1001 .... 1 .. 00. ...00 11 ...    @azx_4x1_i3_o1
++
++USMLALL_nx_s    11000001 0000 .... . .. ... ..... 001 ..    @azx_1x1_i4_o2
++USMLALL_nx_s    11000001 0001 .... 0 .. 0.. ....1 00 ...    @azx_2x1_i4_o1
++USMLALL_nx_s    11000001 0001 .... 1 .. 0.. ...01 00 ...    @azx_4x1_i4_o1
++
++SUMLALL_nx_s    11000001 0000 .... . .. ... ..... 101 ..    @azx_1x1_i4_o2
++SUMLALL_nx_s    11000001 0001 .... 0 .. 0.. ....1 10 ...    @azx_2x1_i4_o1
++SUMLALL_nx_s    11000001 0001 .... 1 .. 0.. ...01 10 ...    @azx_4x1_i4_o1
 -- 
 2.43.0
 

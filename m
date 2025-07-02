@@ -1,189 +1,165 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3854944dye;
-        Wed, 2 Jul 2025 07:33:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV2K1Q2aA2wIkLTqp3ypdGRA/tRuvo6PS7pGXCdYXIDX/y3m1QHMv5vTzX0KtKYgchSTKf1wXsTcZVTAQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHuTdlNPAdy1uvTeBc7ZEJsKIDjjdrTg++LdZiNO+r7jqfE5un2AoKKA7RuWnG8Vv0NiZ35
-X-Received: by 2002:a05:6102:3053:b0:4ec:c548:f953 with SMTP id ada2fe7eead31-4f161278d53mr1549842137.17.1751466811849;
-        Wed, 02 Jul 2025 07:33:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751466811; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3855531dye;
+        Wed, 2 Jul 2025 07:34:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV70myEFZGWeHNhiR+x4NDQ8KBKUHejGRYa+Ver9oLYSGtqNK6+Y6chVoZvHrFfKAOoog9pC5IHCBmgeQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHKGp6GpNipW3elAmHn6MmYHCzyrzm0ETZCv7rlRDiXC8iX6Xz4nMbLJqyaA0ckuSiwCeKZ
+X-Received: by 2002:a05:6102:1606:b0:4e5:a93b:1d8e with SMTP id ada2fe7eead31-4f161365d9amr1477006137.21.1751466866875;
+        Wed, 02 Jul 2025 07:34:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751466866; cv=none;
         d=google.com; s=arc-20240605;
-        b=XQuMkL/z5hJZK+jb+HnsHP/7WpoSPSYBrp9tnuMzhwDjo9eX61PfqkOnTV07HHikbk
-         7QvZpE4S8SVw2OrcCE5icqQaH6OWdES0crLjnDa/KEYlHr7is6qkU731sUqzdoYlQiul
-         i7JvxV38hVYOGIsaUGnsTkl7eRkVA2QVPUeS47uGJxvVyxI4muGfDTOrdHeWcSXREH7W
-         OWzgqZ4kdmRx7r5ZW/f0FPwUqpWbXrL/bo6lw/SgVkRrHo+6YNMTaasVkoTk9zqxGCBB
-         0iUVr+3gVU58F+FISGg22cAR18SRMiEeQ/0LsfPpzQ2QgTk9sSkFwrWOK8Ptu7evtKAh
-         YkoA==
+        b=I5dr2zWLVQ400CssRgGXVbtwbtVDgl10lfC8N2F9me1eHyQQuM8mxvsW6cYM5hQZpQ
+         QDaNh69wQ9JU+K39u9BvlKGsl7w8rH61u9zRRCFQXc1MBcwc2E4snQVx22LBF27YW9PK
+         Ni6y8KHGz6dRE6dU8Vgzcv3MgOeNSX7FMvKsXagjoQ/jVmwWRICd0070ldGp2xtzKvGd
+         i8iQGRrS2oqecED4T7/J9OU+Di4USaj1EN/NJ008yyf6lwGWkdMsKxcMfoRN6l+7J3TK
+         92tI83MffwLdL6PHUy1q6WeF+Q0zHJPGrjWi1EiRR01bLXMD5EiYZmRmrk2nB7HpVNAs
+         Wugg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=BsBKy9jl+N02u6EXjdGsJxToxb/LGdsXv5iKgtPBjjY=;
-        fh=L30d3habTl3J6moarJSiwpCEHmUvoG5CLLdkIVpxjLg=;
-        b=Da0DGPf7SzCDb8MZsNUA34poHRAIthZtMKMDzg1DMgra0luzgX3eY/JfM9ex0acoEp
-         8icRaZuCAY3h6sbxA4nA2XLGAUHuVFt5ZUXehA6TCh0hG66kp3FZe5KL1lifY6uyTb/l
-         ds5o4tZxSx64lu8bwLZ9wuL7T733HUlUheP7kqbO+otrXeW4QdzO6UWesa/myuNq9fvB
-         8Q6sjtgIU50LWjykDQcdsnZeseD8+7o2JgxjSxcDvp97ufvPXVE53sazbzb+k35Byp5P
-         RLRedtzStGca/w18fMd52HjDV74Jpr7F9Hsa4/sq4Iv5xZ5VpNJITwu4iZv6l++8Crh9
-         llPQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=ScdsNivRgUJVL8aETXlbY7gbdCYxjqOKnFqplopzhGo=;
+        fh=f1zoy+AIHCm3/7PwMNwV2Y2S0ZQNvtjpC+CoI0mu8XM=;
+        b=jRiz722uGMevWLyu3rTDCANrPKdJHBhvLHe26aiYqJXjuWohteF/aqD2UpGVKsTJTC
+         ah0RKhUY8gQ7vchoKztKbYxGu2UKae0QG1xLVlbEEsOF9ejT705KOB5LnaP58wASe4OI
+         PC1Gn60KCRzYdPL+wWsGJzFoW9cend8XRiyjlhU4riTbFHAfseXhucbXBY/Xf2STfRkk
+         /i5PbMdDg2be6QafgL2SScGxxaEnfADuyfzZJBgkn6hD3zbc5mY3Bqik1Q73fBMKpjbZ
+         yGx9gVWNnu4SysfwvwmBrHuekyYeQmQT5BzITDu5N6/PEi/JWB61mF5Kg4ZG2GVqCh5t
+         w3iA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WeGDS3VO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="SlOOb3U/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4ef00209bb0si2295359137.283.2025.07.02.07.33.31
+        by mx.google.com with ESMTPS id ada2fe7eead31-4ee4caf1df1si3171636137.218.2025.07.02.07.34.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jul 2025 07:33:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 02 Jul 2025 07:34:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WeGDS3VO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="SlOOb3U/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uWyWb-0002Ux-Dp; Wed, 02 Jul 2025 10:33:27 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uWyX7-0002tY-PW; Wed, 02 Jul 2025 10:33:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1uWyW5-0002QM-0n; Wed, 02 Jul 2025 10:32:54 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uWyWu-0002ky-Cs
+ for qemu-devel@nongnu.org; Wed, 02 Jul 2025 10:33:45 -0400
+Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1uWyW2-0002jD-2O; Wed, 02 Jul 2025 10:32:52 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-608acb0a27fso7249252a12.0; 
- Wed, 02 Jul 2025 07:32:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uWyWp-0003co-23
+ for qemu-devel@nongnu.org; Wed, 02 Jul 2025 10:33:44 -0400
+Received: by mail-ot1-x336.google.com with SMTP id
+ 46e09a7af769-735b2699d5dso2245117a34.0
+ for <qemu-devel@nongnu.org>; Wed, 02 Jul 2025 07:33:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1751466765; x=1752071565; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=BsBKy9jl+N02u6EXjdGsJxToxb/LGdsXv5iKgtPBjjY=;
- b=WeGDS3VOVeq6QN04WoLhzhbn1JIomGocYUK5mNQU5eLfGAqMDCjiZzd1LsDQWY0mqr
- Pz858TXfCkZTw4ADx17s1v9gvs5JEgV1HO5Yp654ndxrUFuio89mNYCNRBqLqAu0ND8u
- C1SqaGfiq6GhqoZKhUEVrJ7vCde9tVuP4KZZoysa8Qb1bOTrIyYnf6FrE0Dizs5KxAcz
- U1S5Yw4Yw3kJnC+Klx9JsHDxfLnnlF/Fz0pjr8aeeSE6TmdzKrPtsxpeXE+sNrK6y/Jp
- s8VjPeiE0nVQUQrcFhudV2IIMAwDHcM+jLNXYSiin+9mNmyRptUJPDC32uZjjUqvgqsP
- a5bQ==
+ d=linaro.org; s=google; t=1751466815; x=1752071615; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ScdsNivRgUJVL8aETXlbY7gbdCYxjqOKnFqplopzhGo=;
+ b=SlOOb3U/hiw9IsxzvQrSa7OtAXHXmOzYvHh3M7UDiSYaCtB+V48UlPLNWqfRSGKsPt
+ 03/ePtyLX5M6Emrtd3kUIWUKJ+mpZEXc5bluYy6dml6/s64NsEkatsq5XM4Nf+BI0y4v
+ plCiuoMcJE00vEF2nmXzjGcjBY1l84o93WQyO7CQXm3XlAeekVwR8ac44jCq1KzUK2oK
+ 1TL3ilAsk58VRZLtaM9WoSMmT/Dv8fU4r6f1yHpqAEQ3GvZTN3qQ7rXBEjuTq4A1OZfY
+ rm4A7bPt+kOGzOWpPbGefCTQT4QCT+B3SpIVIP589uOZL0/UqoDI6lqH1eaJdtMaEgdt
+ ql9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751466765; x=1752071565;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=BsBKy9jl+N02u6EXjdGsJxToxb/LGdsXv5iKgtPBjjY=;
- b=Wl/5TNmAMJw8TG+UMKj7OMwFHXTc7MnGQjwr4cgyMhDYUe9pDWC0u3dFAZIvlNLij2
- 8d55uJmxIoq3Wl7vEGOfev/MtZ7WNNYUR0AtCLpT4DTPdHRGBUQF9fyzAV88LUfVQCyC
- hSQ+MQwRR+feqgLaNwWDvsA2Sc21fIVIoS07k4855WsKv7iAWbtO1CFTYjysC22+7086
- PP3iPPwrGqaz2bQ3nGLMhVAYdKIlP9PXh1sEmDpjN6mu2OfC98REN9eUdNN3wD2S6et4
- OUWaCBUgIFJOyYe6iNQnzkFRg+um60EDWVm8KfKr3LqZSbpkgSMRfBpsY+JwJ4+0j7Aw
- GtVw==
+ d=1e100.net; s=20230601; t=1751466815; x=1752071615;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ScdsNivRgUJVL8aETXlbY7gbdCYxjqOKnFqplopzhGo=;
+ b=D+9RjLVFgYUvG8ZIzoqxvBB8lf6JVjjplL7SdERgTZ+CW1k72YQxkTSO1/G9w708uK
+ T+5Mv3LfeyahWkSNwy0XIkecVMmOnT+LRxYVljHB1HJR/m8E0170RAFHGvslkBfcp7Xx
+ Ae1bJf5N0RkJU9LNvGA0m2OYnG+GFFNTfuwy5MhcJrARVwP1CtmtXY/OS8tKHPzcyAKR
+ RT3tdoXkj1LOhPLTqfiZlvEpwb34D2pH9a0YnULyE4+c6eOLHFIaWAUIZ/tbgcMzvpvr
+ 1LtH8vCc10p9XMb8PabPrQuTy/4C0axYMmU9Tv7bj9AZVYaMyCJTOxiShQCS/xMjki//
+ YK2g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXtiSh6W9pygipMYPAgiBUK56mZaKS4Qx6fda510uhUOfp5q5zDmoNlXXQXBEIe1fPrYFez4Iz9WQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwDgu5NS/vWuxn/18eeMdgWPfeRySY0eqO9ltrbSXZQtdJ8XHaN
- jNs7sVfhghJ7AaBvD3FR4J/j5zFbIm4/E3SKwJmXynFy6tY2n1ud8g3KBM2m7MiYpRL9dFowBg+
- Fk61sTwnAN5h6ZEd62u1u122dCMFqEEo=
-X-Gm-Gg: ASbGncsomLinbOqNctBxYkyzR4KnF4iZxcsbOiLHknXmL6Mx1VMwbPB8BHpYfEAnHMF
- cDPphqGBqiW8qAWcDJmU9KsG2m8iGODBPx7kS4y6Zy+1KLaoyBD3NNcTkC1Sx/dLzant3rLddAE
- k8vTuf0YbSzBSfxnffq25FOVb3g6dGXagzL1GX4tzNnQ==
-X-Received: by 2002:a17:906:491:b0:adb:2a21:28b3 with SMTP id
- a640c23a62f3a-ae3c2c7d137mr271824866b.54.1751466764413; Wed, 02 Jul 2025
- 07:32:44 -0700 (PDT)
+ AJvYcCWDDCXjH0SAnS/2ukdbc6yp+zibbLodt1RKo9OBOX8LsRiKbSATFoaAh+M7xY7IJOapNzATvuZ9dap3@nongnu.org
+X-Gm-Message-State: AOJu0Yy1A7HRfcfrFWrGi8FUqpRYNSaK6IIkvP46yquuo+HQSieRQsqU
+ Bh3EiV5RGUdAnDjSvC1o/lmqiPmJBsyMlDQk9OqYXyV9hnFFSSs/EUXW+sGrpzZ/zqc=
+X-Gm-Gg: ASbGncvTPahFqc4YAuy4hNU3WqGyZ2MwR8uJqJAAX+e9RV7LNk+hIqO6oOH4F43Xx+x
+ hqnYCqTlvnL/EDoQsNJTqqdVrqQ9FoVihI0qtOepQf0w8ltR2qKCzQtMBVh4pZLxxRdDKIK/W8I
+ mod0Ks3p2Qwk04mQxebPHTcXBPXjEUgtRFcOAq0FqILKO9CiI/ubp9s4KvT29ujxg8l7OikgJPx
+ 4k/5aIwUxkSHA0Y7rzYNb3DipUlRMt3BRHdtDGGHuZHus3d13HlgfpvcGJ2BhKdRSRaIg7bjdm1
+ Pwm7qJ7DM3n9RY9cqonCY3FFYhw+a7ZG69T105p/4kwcmpdtpvE58ZYA/eKXgibkUmfBHzgXLLK
+ V
+X-Received: by 2002:a05:6830:61c6:b0:72a:1494:481e with SMTP id
+ 46e09a7af769-73b4c610910mr2160238a34.0.1751466815441; 
+ Wed, 02 Jul 2025 07:33:35 -0700 (PDT)
+Received: from [10.25.7.74] ([187.210.107.185])
+ by smtp.gmail.com with ESMTPSA id
+ 46e09a7af769-73afaff24a6sm2481405a34.5.2025.07.02.07.33.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Jul 2025 07:33:35 -0700 (PDT)
+Message-ID: <da40584a-990e-4965-8d22-9a9489571a30@linaro.org>
+Date: Wed, 2 Jul 2025 08:33:33 -0600
 MIME-Version: 1.0
-References: <20250701105809.366180-1-thuth@redhat.com>
-In-Reply-To: <20250701105809.366180-1-thuth@redhat.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-Date: Wed, 2 Jul 2025 10:32:31 -0400
-X-Gm-Features: Ac12FXwnYvWz-wZ4o5IVqEQBlIcY2dh1eSARpNr6DCEDjMM9sBh1YDa8TgnRqh0
-Message-ID: <CAJSP0QWjoW3ZFC6dAXS-hsTBsdUVNOrMi5mwy_N6aEQtebaBHQ@mail.gmail.com>
-Subject: Re: [PATCH] tests/functional/test_aarch64_sbsaref_freebsd: Fix the
- URL of the ISO image
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Leif Lindholm <leif.lindholm@oss.qualcomm.com>, Warner Losh <imp@bsdimp.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=stefanha@gmail.com; helo=mail-ed1-x533.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 01/12] target/arm: Bring VLSTM/VLLDM helper store/load
+ closer to the ARM pseudocode
+To: William Kosasih <kosasihwilliam4@gmail.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+References: <20250702111954.128563-1-kosasihwilliam4@gmail.com>
+ <20250702111954.128563-2-kosasihwilliam4@gmail.com>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20250702111954.128563-2-kosasihwilliam4@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::336;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gjyRE3fmv+Me
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qrWeysf+fs21
 
-On Tue, Jul 1, 2025 at 6:58=E2=80=AFAM Thomas Huth <thuth@redhat.com> wrote=
-:
->
-> From: Thomas Huth <thuth@redhat.com>
->
-> The original image has been removed from the server, so the test
-> currently fails if it has to fetch the asset, but we can still
-> download the ISO from the archive server. While we're at it, prefer
-> the XZ compressed image, it's much smaller and thus the download
-> should be faster.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On 7/2/25 05:19, William Kosasih wrote:
+> This patch brings the VLSTM and VLLDM helper functions closer to the ARM
+> pseudocode by adding MO_ALIGN to the MemOpIdx of the associated store
+> (`cpu_stl_mmu`) operations and load (`cpu_ldl_mmu`) operations.
+> 
+> Note that this is not a bug fix: an 8-byte alignment check already exists
+> and remains in place, enforcing stricter alignment than the 4 bytes
+> requirement in the individual loads and stores. This change merely makes the
+> helper implementations closer to the ARM pseudocode.
+> 
+> That said, as a side effect, the MMU index is now resolved once instead of
+> on every `cpu_*_data_ra` call, reducing redundant lookups
+> 
+> Signed-off-by: William Kosasih<kosasihwilliam4@gmail.com>
 > ---
->  tests/functional/test_aarch64_sbsaref_freebsd.py | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>   target/arm/tcg/m_helper.c | 24 +++++++++++++++---------
+>   1 file changed, 15 insertions(+), 9 deletions(-)
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
->
-> diff --git a/tests/functional/test_aarch64_sbsaref_freebsd.py b/tests/fun=
-ctional/test_aarch64_sbsaref_freebsd.py
-> index 26dfc5878bb..92ebc69c9b1 100755
-> --- a/tests/functional/test_aarch64_sbsaref_freebsd.py
-> +++ b/tests/functional/test_aarch64_sbsaref_freebsd.py
-> @@ -18,9 +18,9 @@
->  class Aarch64SbsarefFreeBSD(QemuSystemTest):
->
->      ASSET_FREEBSD_ISO =3D Asset(
-> -        ('https://download.freebsd.org/releases/arm64/aarch64/ISO-IMAGES=
-/'
-> -         '14.1/FreeBSD-14.1-RELEASE-arm64-aarch64-bootonly.iso'),
-> -        '44cdbae275ef1bb6dab1d5fbb59473d4f741e1c8ea8a80fd9e906b531d6ad46=
-1')
-> +        ('http://ftp-archive.freebsd.org/pub/FreeBSD-Archive/old-release=
-s/arm64'
-> +         '/aarch64/ISO-IMAGES/14.1/FreeBSD-14.1-RELEASE-arm64-aarch64-bo=
-otonly.iso.xz'),
-> +        '7313a4495ffd71ab77b49b1e83f571521c32756e1d75bf48bd890e0ab0f7582=
-7')
->
->      # This tests the whole boot chain from EFI to Userspace
->      # We only boot a whole OS for the current top level CPU and GIC
-> @@ -28,7 +28,7 @@ class Aarch64SbsarefFreeBSD(QemuSystemTest):
->      def boot_freebsd14(self, cpu=3DNone):
->          fetch_firmware(self)
->
-> -        img_path =3D self.ASSET_FREEBSD_ISO.fetch()
-> +        img_path =3D self.uncompress(self.ASSET_FREEBSD_ISO)
->
->          self.vm.set_console()
->          self.vm.add_args(
-> --
-> 2.50.0
->
+r~

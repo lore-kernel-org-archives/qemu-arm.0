@@ -1,118 +1,119 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3790545dye;
-        Wed, 2 Jul 2025 05:58:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX0c2mrOn0dcjT8sXxRNQEmuFPfuokODiJL+XY5/Hfh8xs/qtymhPCgQHCPDHQZEBTu5axSqX4TJXN6PQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFezGJNUkk3RqTeX+401Trkn8dqV9WUr7cQC9anyCvHXVPhIBaBBtJ16ZV0Did+8jSNAWz2
-X-Received: by 2002:a05:620a:24d0:b0:7d4:1686:659b with SMTP id af79cd13be357-7d5c46649e7mr363833385a.1.1751461110061;
-        Wed, 02 Jul 2025 05:58:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751461110; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3790656dye;
+        Wed, 2 Jul 2025 05:58:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUO4nqfpaiqcXWhq3zGJJVm/6svm2r1Ive+LOpXdYhq/2sriJMuvXkd6xJqqJD8DVdmjlFNVlCfFZJTNg==@linaro.org
+X-Google-Smtp-Source: AGHT+IECphaqo9hPjV++WuILZPLuTXUgd2IDs9wmI6KzHsRt0TztdPyDr4BKVN41GdHtgFAn3SKW
+X-Received: by 2002:ac8:5956:0:b0:4a6:ef6a:ace3 with SMTP id d75a77b69052e-4a976a07a1bmr44109331cf.44.1751461113250;
+        Wed, 02 Jul 2025 05:58:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751461113; cv=none;
         d=google.com; s=arc-20240605;
-        b=aUp1PptL+ltCC2clR2Oh+Nw5J6GOJVo+bjRP+DgDNO4gyIvpW88bJbeZBVXtnJ/R/x
-         OBfpXYFT3SFA9KqHOd9VmLP8RJVpylz0qI5lYXWSsU8kDGh3vkRzT8kiPr9IlnVkKyCM
-         XNM0w5rPH3ka8moAY0I2vxLpKE0Zdp3YfyCpBO1RWXzc1Wg6pYwBV8e+Ciud6VUL83TF
-         WWnycsQVl0VCndnFF1VRkzSXECxh2Z9/xE78WsHbxRnM98qjoKKZXcaMW8a01oSuBqQm
-         QEWK5cz1odz/m4o+ZVDhPDsXNKup05zvIMtDVHSUcUS7TAJd1v/admgSoz/sgdTzkq8k
-         4SRA==
+        b=PMwPVkPW01i2fTnfHr/CqoPjYavZskHxHeI7ri3uOCcwgTBD7pvYi7TWwTQ6TQlJuy
+         LKN1iAQ4KQJJYLwDQRqYyidpLA1xnlkAIQIsSNL1oAjXWUmIX9iRnW+lyRvfm6fFIvPT
+         8JcBCZX84Pg47s02BBRIQ26XZripksNCrVf06yQs5Pq7kDxw1McFPLZQ6Q36gIx6gFAB
+         pm9/axLp0NzpOTwZOfnYIhRokibKLhQVNprOJ3wqUMv7GIjGSl4G1BjCuL90EQh6S9j6
+         cyTGfWYECOJJQHrJECHqrkxgO8QhXVkJas3HuvcoeK333ZgyJ0fVN0aFzxtf5h548l/5
+         ZayQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=phmIfMds8E5RxRVs9U5IB61cQYJsfJm2GIn7j+DSAc4=;
+        bh=20kn4eYbxYwfStQX/tEOBcIiKRrQrxRWQALB+sLrCqM=;
         fh=vZxkDpCwvhENXlY8qSqryGKuN7qdzoFpPjxnavaSuNI=;
-        b=dZdBju98XwCvGg1bnQHLwYIrgYrPylPcp1k5dyrrSuHdLuDuLIIEjWCInE7cwUhKvv
-         QZjU/gcQ4kRvwchX4v72PixUZYkpYqnXIfap3bmM3bAnu7rRUa1zdOqQP+B9HOsrJ1Su
-         9RDlQeuN734PFdFgS7lWhTjNHLfeyJOoIhTVqeavBR2EpCgR2MoHMCs/7nnxZCjOh/tg
-         2LIG61unJHrR9L/bFKJdLGqLgY3i7fccUMOb0FEyVXF18ZYqM58kJ+7eyRhE+e4qPVgf
-         0FLkXrseeI7zgcijkejCFAfmhzKwaIlX7htDKa17JSAwKzpy6rGALS2SD0sASXzxvo5a
-         rATA==;
+        b=LxaTH9kf37S+lo2/Jlo0gTfax0ZoANN8AHRxkISZXu+N+Ecc037HVoKFcckuEACQoh
+         Uu1snKzRq+MG1kHFGhk8wqP6QtTS8V8pKH9hhQhtP68YEhxQqF+CFLm5eiC8ySqsgxZw
+         IQy/fgc2HBwvhaQcLuPGs6VtYKpjnezgQQCdjvwUWGTK2h9PbpM80SuJxvaLqtKfvka+
+         q7/jrSQbhLJrrs7MAYIFBcQTFOM5Lg1Cme/xli1aCzzP5LdI1gA6oXMqrm6D5zjaV+Wf
+         V1thwuKhaIyZxEFfz+NzQv13sxn6reBRYxTTYvrWn+Ov5pFUMOzOCKgbhjPC//ESHbzv
+         Wvyg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uAE1pCQ1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=xEiD1yCd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d443225727si1119942985a.280.2025.07.02.05.58.29
+        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc553921si124814871cf.475.2025.07.02.05.58.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jul 2025 05:58:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 02 Jul 2025 05:58:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uAE1pCQ1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=xEiD1yCd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uWwic-0003Il-Fk; Wed, 02 Jul 2025 08:37:42 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uWwqW-0006cm-Ut; Wed, 02 Jul 2025 08:45:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uWwgS-0008Qv-1u
- for qemu-arm@nongnu.org; Wed, 02 Jul 2025 08:35:28 -0400
-Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
+ id 1uWwnB-00004t-G6
+ for qemu-devel@nongnu.org; Wed, 02 Jul 2025 08:42:26 -0400
+Received: from mail-oa1-x2d.google.com ([2001:4860:4864:20::2d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uWwg7-000183-Ns
- for qemu-arm@nongnu.org; Wed, 02 Jul 2025 08:35:26 -0400
-Received: by mail-oa1-x34.google.com with SMTP id
- 586e51a60fabf-2ea35edc691so1680535fac.2
- for <qemu-arm@nongnu.org>; Wed, 02 Jul 2025 05:34:57 -0700 (PDT)
+ id 1uWwn0-00039d-VS
+ for qemu-devel@nongnu.org; Wed, 02 Jul 2025 08:42:25 -0400
+Received: by mail-oa1-x2d.google.com with SMTP id
+ 586e51a60fabf-2ef8dfb3742so1095228fac.3
+ for <qemu-devel@nongnu.org>; Wed, 02 Jul 2025 05:42:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751459695; x=1752064495; darn=nongnu.org;
+ d=linaro.org; s=google; t=1751460124; x=1752064924; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=phmIfMds8E5RxRVs9U5IB61cQYJsfJm2GIn7j+DSAc4=;
- b=uAE1pCQ1YxPMrZ4pIkVmcj5csk2LQX2TB2ijppYvIsw99JwBSkk4v7NgUxwdDWY1Il
- iYJruvAf9jzZOGs9Ws92vnFUbydhkcfIdUJGJapjaAepChfWXQu0mtftXGQIL8IJL0BK
- mIbWLXRZGlc6uXVWMoHxQBsQAdi8hB/YnQv+sWJ7gT+kCyNFVdXQca77yTSYmUjbPUF3
- mnkZ5fa37qVLQwCcrcV619c4xsgqY30VIG54bm7Dnhg/BZRXDbobfasfkaif9zL6B7sm
- 3VBabiXYzdMHRV72zw+nKlkRrEgtG4MsyRtIajrfzLXlGgcz5FjaC4eKxwrs/9YRwXFg
- 0Dtw==
+ bh=20kn4eYbxYwfStQX/tEOBcIiKRrQrxRWQALB+sLrCqM=;
+ b=xEiD1yCdj8+UrRqy++o9frgUG0hyDsT1tNNUJPHZ6MniFhvIgJXxGYxcsXVttgotMV
+ +EwP6YrbfVixuIGN2ctpDv9OBD8l7p1fqroMO2sk08ehtu4VYCJwCCAz12AnbAVFjhTF
+ tq3WMoI1kIBFxVXg3QcdiKDM5YDwxhCQCR0/kmj8DP29SDPq7s1NvmGH9NrJNTHZUj9d
+ +VAv8cGjQQp9HDlqnsrDME/OJbMX6HVIisoG3LI8nPmh3/Dj3z6cO4+3l+SQbFeZM36U
+ 8COWry3N7Pz6Hj+sdl8MpfiaRtswZJT8xSMmVyx6bRUFv9VHPJswuP1hDezw96jaGl4o
+ 5uTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751459695; x=1752064495;
+ d=1e100.net; s=20230601; t=1751460124; x=1752064924;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=phmIfMds8E5RxRVs9U5IB61cQYJsfJm2GIn7j+DSAc4=;
- b=EHOFnIgpTlCaBLGp60Bnj1mAoCq2j4gAEPtBJAq/Wx4uKGjAVZDhpGnkrDZq4H2f0W
- 3QsQpE49bX7zDwBfFDPgWQT2qp8AEzJlVSKE18kQaY1LlHmrPU3OgVNP98XMx44GcBlO
- y8H5E25GGlMLt/ufi9I5VfReT36P9Ly51vcoLxrSj7k2khO5Hbp7t0E681Hsqg3kcABm
- wT8wB4V7r/3V088QVfXBInn2ky3dUXUadHU4vqWXGsNREU1aRlMyT82Z/l4PpxDFjhxy
- WBIstAUxnX3gQnxqTU68pFLjEFl6aP5ai79Sb7gV5U+AAgHrwfNshaONknDjxCgT4CJF
- yAAg==
-X-Gm-Message-State: AOJu0Yy98DGHPN+HMqa7srBH+WCNxKMwIaBe/yi7BzLIrPIBIRhribgR
- 2JMuRaPmU7zCwnP8dTYRhBf2+3DNGgKRbhQwCfIkIFjtohTRyb2iQMKtEtWYLiIswNw=
-X-Gm-Gg: ASbGncsilWQh9cGA4mS50aJEOVnRowtwALVaUwfbbn2dmovFVZP3Z58VI1vtv1EvAlf
- NgjQ8XzFBg1Kx7YwjLpTqpQQtrEEUR1GqEqLIiZR4WBN6VTfFKpGfNglIrKLXir2iV+8lR4UtAI
- vaKBItVfv8SGN7Bfv1sCr17jAefx8NVfOWUAqZYZIx2FRTXK75rz7VOBnfG3OYysRl8ReubHQNp
- 2Cco/sLLA029hB4uzROfNpy0mTUR96z57209WtkZNTV/xDHOxbEG3deq3heNMFgiHGQ0WpqPUfK
- iDGOEq+/1M13RSZexU4bOTf44xRaIdpC5rk8tYT7QDglb2aaDofc/KqXMz8huU8ClTZeUw==
-X-Received: by 2002:a05:6870:1b15:b0:2eb:87a9:7fc1 with SMTP id
- 586e51a60fabf-2f5a8d27727mr2047246fac.27.1751459694942; 
- Wed, 02 Jul 2025 05:34:54 -0700 (PDT)
+ bh=20kn4eYbxYwfStQX/tEOBcIiKRrQrxRWQALB+sLrCqM=;
+ b=WsH5rTTrCxyLEtZTbirFRQ/bBB5N2CPEfqutGJQM3Q67fxFuqqC7k8lyreAkNfdzhZ
+ ezIR1GAxEnk3AiPdvg+lrI85PIIzXMtSfdPg3eSLWbRCvgraeGX7DeZubg1XkdDeKkIa
+ 8DvKC2p+y7d2lv2Lvr9lspgf9Isp2N6lB5vd1yV+D3/d1JpWx7hZJJq2bRtUGseFKk5V
+ xwGoBxPXDisAnLgezGqSH/qdgmTgFatstksgHDAiH6e19uU9+QWmo/LprDHcBCilm/wm
+ Y4XJRps0VZ+03UnjfOfjXzgWerR1SdeXCZsxnkGh836aTEnFuEMml6Hho4679zLRhGEr
+ WmEA==
+X-Gm-Message-State: AOJu0Yy3IVdUh2MFa/Ao5W+Dj7yumYjOP8DUC/9GVk/xfgUCb6c4hJTP
+ 4We/JUjv51CNGIqyqMHbYwgjIOEIaYKl/M3OtsDDJ0yaYR+xziKSous6XSPiASOtLg4IWKO7ILt
+ lAuQBxek=
+X-Gm-Gg: ASbGnct57qpXSGEK4JVg9BH95Ne/5dSo3hk/o1J5UKEV5U+rvT0VjYyD+vHTTqOAMsY
+ E3exBbSl0noxiAd3h2MBltAV7DbqVptqR/QNwwwQc5QmrrQvbmfnp8W0rcSN8lfoDCKMO/Ov3wr
+ qXMyAnmhKVtlvDwehBeuMbsqn3wmmBMhwRttuswu3fLjbdrnTVQxmbMA2wcI3PZP82a84aYpnWN
+ gzgqr8dPxpCqBggcUWpfRII+OjvU5w/EQ6kefBXyV7wE7aqUmiqn1tRHceFTy/d0cy1Vb/AST7N
+ Z6oqaxYYhqbPFfxyq1fYDjCwbA510gta4/VbrjpObqMH2RMOGkgSf79VM48sUWIFf3BOjA==
+X-Received: by 2002:a05:6870:32d1:b0:2ee:2800:8592 with SMTP id
+ 586e51a60fabf-2f5a8c8e296mr1883885fac.23.1751460123652; 
+ Wed, 02 Jul 2025 05:42:03 -0700 (PDT)
 Received: from stoup.. ([187.210.107.185]) by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-2efd50b1b2fsm3864281fac.32.2025.07.02.05.34.53
+ 586e51a60fabf-2efd50f7d89sm3907004fac.34.2025.07.02.05.42.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Jul 2025 05:34:54 -0700 (PDT)
+ Wed, 02 Jul 2025 05:42:02 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v3 34/97] target/arm: Implement SDOT,
- UDOT (2-way) for SME2/SVE2p1
-Date: Wed,  2 Jul 2025 06:33:07 -0600
-Message-ID: <20250702123410.761208-35-richard.henderson@linaro.org>
+Subject: [PATCH v3 85/97] target/arm: Move ld1qq and st1qq primitives to
+ sve_ldst_internal.h
+Date: Wed,  2 Jul 2025 06:33:58 -0600
+Message-ID: <20250702123410.761208-86-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250702123410.761208-1-richard.henderson@linaro.org>
 References: <20250702123410.761208-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::34;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x34.google.com
+Received-SPF: pass client-ip=2001:4860:4864:20::2d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x2d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,81 +122,187 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9tL6IZjuc+lg
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fG94avmxDf1J
+
+Move from sme_helper.c to the shared header.
+Add a comment noting the lack of atomicity.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-sve.c | 10 ++++++++++
- target/arm/tcg/sve.decode      |  8 +++++++-
- 2 files changed, 17 insertions(+), 1 deletion(-)
+ target/arm/tcg/sve_ldst_internal.h | 63 ++++++++++++++++++++++++++++++
+ target/arm/tcg/sme_helper.c        | 44 +++------------------
+ 2 files changed, 69 insertions(+), 38 deletions(-)
 
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index c82a0f771d..10261e25f9 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -3426,6 +3426,11 @@ TRANS_FEAT(SUDOT_zzxw_4s, aa64_sve_i8mm, gen_gvec_ool_arg_zzxz,
- TRANS_FEAT(USDOT_zzxw_4s, aa64_sve_i8mm, gen_gvec_ool_arg_zzxz,
-            gen_helper_gvec_usdot_idx_4b, a)
+diff --git a/target/arm/tcg/sve_ldst_internal.h b/target/arm/tcg/sve_ldst_internal.h
+index e87beba435..c67cda9d3b 100644
+--- a/target/arm/tcg/sve_ldst_internal.h
++++ b/target/arm/tcg/sve_ldst_internal.h
+@@ -141,6 +141,69 @@ DO_LD_PRIM_3(ld1dqu_le, ld1dd_le)
+ #define sve_st1dq_be_tlb   sve_st1dd_be_tlb
+ #define sve_st1dq_le_tlb   sve_st1dd_le_tlb
  
-+TRANS_FEAT(SDOT_zzxw_2s, aa64_sme2_or_sve2p1, gen_gvec_ool_arg_zzxz,
-+           gen_helper_gvec_sdot_idx_2h, a)
-+TRANS_FEAT(UDOT_zzxw_2s, aa64_sme2_or_sve2p1, gen_gvec_ool_arg_zzxz,
-+           gen_helper_gvec_udot_idx_2h, a)
++/*
++ * The ARMVectorReg elements are stored in host-endian 64-bit units.
++ * For 128-bit quantities, the sequence defined by the Elem[] pseudocode
++ * corresponds to storing the two 64-bit pieces in little-endian order.
++ */
++/* FIXME: Nothing in this file makes any effort at atomicity. */
 +
- #define DO_SVE2_RRX(NAME, FUNC) \
-     TRANS_FEAT(NAME, aa64_sve, gen_gvec_ool_zzz, FUNC,          \
-                a->rd, a->rn, a->rm, a->index)
-@@ -7154,6 +7159,11 @@ TRANS_FEAT(SQRDCMLAH_zzzz, aa64_sve2, gen_gvec_ool_zzzz,
- TRANS_FEAT(USDOT_zzzz_4s, aa64_sve_i8mm, gen_gvec_ool_arg_zzzz,
-            gen_helper_gvec_usdot_4b, a, 0)
- 
-+TRANS_FEAT(SDOT_zzzz_2s, aa64_sme2_or_sve2p1, gen_gvec_ool_arg_zzzz,
-+           gen_helper_gvec_sdot_2h, a, 0)
-+TRANS_FEAT(UDOT_zzzz_2s, aa64_sme2_or_sve2p1, gen_gvec_ool_arg_zzzz,
-+           gen_helper_gvec_udot_2h, a, 0)
++static inline void sve_ld1qq_be_host(void *vd, intptr_t reg_off, void *host)
++{
++    sve_ld1dd_be_host(vd, reg_off + 8, host);
++    sve_ld1dd_be_host(vd, reg_off, host + 8);
++}
 +
- TRANS_FEAT_NONSTREAMING(AESMC, aa64_sve2_aes, gen_gvec_ool_zz,
-                         gen_helper_crypto_aesmc, a->rd, a->rd, 0)
- TRANS_FEAT_NONSTREAMING(AESIMC, aa64_sve2_aes, gen_gvec_ool_zz,
-diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
-index 401c025852..83c259def6 100644
---- a/target/arm/tcg/sve.decode
-+++ b/target/arm/tcg/sve.decode
-@@ -856,6 +856,9 @@ SDOT_zzxw_4d    01000100 11 1 ..... 000000 ..... .....   @rrxr_1 esz=3
- UDOT_zzxw_4s    01000100 10 1 ..... 000001 ..... .....   @rrxr_2 esz=2
- UDOT_zzxw_4d    01000100 11 1 ..... 000001 ..... .....   @rrxr_1 esz=3
- 
-+SDOT_zzxw_2s    01000100 10 0 ..... 110010 ..... .....   @rrxr_2 esz=2
-+UDOT_zzxw_2s    01000100 10 0 ..... 110011 ..... .....   @rrxr_2 esz=2
++static inline void sve_ld1qq_le_host(void *vd, intptr_t reg_off, void *host)
++{
++    sve_ld1dd_le_host(vd, reg_off, host);
++    sve_ld1dd_le_host(vd, reg_off + 8, host + 8);
++}
 +
- # SVE2 integer multiply-add (indexed)
- MLA_zzxz_h      01000100 0. 1 ..... 000010 ..... .....   @rrxr_3 esz=1
- MLA_zzxz_s      01000100 10 1 ..... 000010 ..... .....   @rrxr_2 esz=2
-@@ -1597,7 +1600,10 @@ UMLSLT_zzzw     01000100 .. 0 ..... 010 111 ..... .....  @rda_rn_rm
- CMLA_zzzz       01000100 esz:2 0 rm:5 0010 rot:2 rn:5 rd:5  ra=%reg_movprfx
- SQRDCMLAH_zzzz  01000100 esz:2 0 rm:5 0011 rot:2 rn:5 rd:5  ra=%reg_movprfx
- 
--## SVE mixed sign dot product
-+## SVE dot product
++static inline void
++sve_ld1qq_be_tlb(CPUARMState *env, void *vd, intptr_t reg_off,
++                 target_ulong addr, uintptr_t ra)
++{
++    sve_ld1dd_be_tlb(env, vd, reg_off + 8, addr, ra);
++    sve_ld1dd_be_tlb(env, vd, reg_off, addr + 8, ra);
++}
 +
-+SDOT_zzzz_2s    01000100 00 0 ..... 110 010 ..... .....  @rda_rn_rm_ex esz=2
-+UDOT_zzzz_2s    01000100 00 0 ..... 110 011 ..... .....  @rda_rn_rm_ex esz=2
++static inline void
++sve_ld1qq_le_tlb(CPUARMState *env, void *vd, intptr_t reg_off,
++                 target_ulong addr, uintptr_t ra)
++{
++    sve_ld1dd_le_tlb(env, vd, reg_off, addr, ra);
++    sve_ld1dd_le_tlb(env, vd, reg_off + 8, addr + 8, ra);
++}
++
++static inline void sve_st1qq_be_host(void *vd, intptr_t reg_off, void *host)
++{
++    sve_st1dd_be_host(vd, reg_off + 8, host);
++    sve_st1dd_be_host(vd, reg_off, host + 8);
++}
++
++static inline void sve_st1qq_le_host(void *vd, intptr_t reg_off, void *host)
++{
++    sve_st1dd_le_host(vd, reg_off, host);
++    sve_st1dd_le_host(vd, reg_off + 8, host + 8);
++}
++
++static inline void
++sve_st1qq_be_tlb(CPUARMState *env, void *vd, intptr_t reg_off,
++                 target_ulong addr, uintptr_t ra)
++{
++    sve_st1dd_be_tlb(env, vd, reg_off + 8, addr, ra);
++    sve_st1dd_be_tlb(env, vd, reg_off, addr + 8, ra);
++}
++
++static inline void
++sve_st1qq_le_tlb(CPUARMState *env, void *vd, intptr_t reg_off,
++                 target_ulong addr, uintptr_t ra)
++{
++    sve_st1dd_le_tlb(env, vd, reg_off, addr, ra);
++    sve_st1dd_le_tlb(env, vd, reg_off + 8, addr + 8, ra);
++}
++
+ #undef DO_LD_TLB
+ #undef DO_ST_TLB
+ #undef DO_LD_HOST
+diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
+index 77eab68870..19c4c2efa2 100644
+--- a/target/arm/tcg/sme_helper.c
++++ b/target/arm/tcg/sme_helper.c
+@@ -408,54 +408,22 @@ static inline void sme_##NAME##_v_tlb(CPUARMState *env, void *za,           \
+     TLB(env, useronly_clean_ptr(addr), val, ra);                            \
+ }
  
- USDOT_zzzz_4s   01000100 10 0 ..... 011 110 ..... .....  @rda_rn_rm_ex esz=2
+-/*
+- * The ARMVectorReg elements are stored in host-endian 64-bit units.
+- * For 128-bit quantities, the sequence defined by the Elem[] pseudocode
+- * corresponds to storing the two 64-bit pieces in little-endian order.
+- */
+-#define DO_LDQ(HNAME, VNAME, BE, HOST, TLB)                                 \
+-static inline void HNAME##_host(void *za, intptr_t off, void *host)         \
+-{                                                                           \
+-    uint64_t val0 = HOST(host), val1 = HOST(host + 8);                      \
+-    uint64_t *ptr = za + off;                                               \
+-    ptr[0] = BE ? val1 : val0, ptr[1] = BE ? val0 : val1;                   \
+-}                                                                           \
++#define DO_LDQ(HNAME, VNAME) \
+ static inline void VNAME##_v_host(void *za, intptr_t off, void *host)       \
+ {                                                                           \
+     HNAME##_host(za, tile_vslice_offset(off), host);                        \
+ }                                                                           \
+-static inline void HNAME##_tlb(CPUARMState *env, void *za, intptr_t off,    \
+-                               target_ulong addr, uintptr_t ra)             \
+-{                                                                           \
+-    uint64_t val0 = TLB(env, useronly_clean_ptr(addr), ra);                 \
+-    uint64_t val1 = TLB(env, useronly_clean_ptr(addr + 8), ra);             \
+-    uint64_t *ptr = za + off;                                               \
+-    ptr[0] = BE ? val1 : val0, ptr[1] = BE ? val0 : val1;                   \
+-}                                                                           \
+ static inline void VNAME##_v_tlb(CPUARMState *env, void *za, intptr_t off,  \
+                                target_ulong addr, uintptr_t ra)             \
+ {                                                                           \
+     HNAME##_tlb(env, za, tile_vslice_offset(off), addr, ra);                \
+ }
  
+-#define DO_STQ(HNAME, VNAME, BE, HOST, TLB)                                 \
+-static inline void HNAME##_host(void *za, intptr_t off, void *host)         \
+-{                                                                           \
+-    uint64_t *ptr = za + off;                                               \
+-    HOST(host, ptr[BE]);                                                    \
+-    HOST(host + 8, ptr[!BE]);                                               \
+-}                                                                           \
++#define DO_STQ(HNAME, VNAME) \
+ static inline void VNAME##_v_host(void *za, intptr_t off, void *host)       \
+ {                                                                           \
+     HNAME##_host(za, tile_vslice_offset(off), host);                        \
+ }                                                                           \
+-static inline void HNAME##_tlb(CPUARMState *env, void *za, intptr_t off,    \
+-                               target_ulong addr, uintptr_t ra)             \
+-{                                                                           \
+-    uint64_t *ptr = za + off;                                               \
+-    TLB(env, useronly_clean_ptr(addr), ptr[BE], ra);                        \
+-    TLB(env, useronly_clean_ptr(addr + 8), ptr[!BE], ra);                   \
+-}                                                                           \
+ static inline void VNAME##_v_tlb(CPUARMState *env, void *za, intptr_t off,  \
+                                target_ulong addr, uintptr_t ra)             \
+ {                                                                           \
+@@ -470,8 +438,8 @@ DO_LD(ld1s_le, uint32_t, ldl_le_p, cpu_ldl_le_data_ra)
+ DO_LD(ld1d_be, uint64_t, ldq_be_p, cpu_ldq_be_data_ra)
+ DO_LD(ld1d_le, uint64_t, ldq_le_p, cpu_ldq_le_data_ra)
+ 
+-DO_LDQ(sve_ld1qq_be, sme_ld1q_be, 1, ldq_be_p, cpu_ldq_be_data_ra)
+-DO_LDQ(sve_ld1qq_le, sme_ld1q_le, 0, ldq_le_p, cpu_ldq_le_data_ra)
++DO_LDQ(sve_ld1qq_be, sme_ld1q_be)
++DO_LDQ(sve_ld1qq_le, sme_ld1q_le)
+ 
+ DO_ST(st1b, uint8_t, stb_p, cpu_stb_data_ra)
+ DO_ST(st1h_be, uint16_t, stw_be_p, cpu_stw_be_data_ra)
+@@ -481,8 +449,8 @@ DO_ST(st1s_le, uint32_t, stl_le_p, cpu_stl_le_data_ra)
+ DO_ST(st1d_be, uint64_t, stq_be_p, cpu_stq_be_data_ra)
+ DO_ST(st1d_le, uint64_t, stq_le_p, cpu_stq_le_data_ra)
+ 
+-DO_STQ(sve_st1qq_be, sme_st1q_be, 1, stq_be_p, cpu_stq_be_data_ra)
+-DO_STQ(sve_st1qq_le, sme_st1q_le, 0, stq_le_p, cpu_stq_le_data_ra)
++DO_STQ(sve_st1qq_be, sme_st1q_be)
++DO_STQ(sve_st1qq_le, sme_st1q_le)
+ 
+ #undef DO_LD
+ #undef DO_ST
 -- 
 2.43.0
 

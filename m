@@ -1,165 +1,239 @@
-Received: by 2002:a05:622a:6187:b0:4a7:49b6:ba6e with SMTP id hh7csp3698026qtb;
-        Wed, 2 Jul 2025 05:24:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWoFgXYB4sfDV2US3ecXdei1054K6KNKU/C4qsgXwXjSakjpmn4E/RlRvTTpgax7MnS6cZfsQLZ7EvDfw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFjixxGDr817xU1u+dtPFsnzxVKz4cAMfp/F+HXkzGfK6RcoWJ+7+qXtQqdDZAuHLj3QMhs
-X-Received: by 2002:a05:6214:5a0c:b0:6f5:106a:270e with SMTP id 6a1803df08f44-702b1c118e8mr34673946d6.44.1751459055599;
-        Wed, 02 Jul 2025 05:24:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751459055; cv=none;
+Received: by 2002:a05:622a:6187:b0:4a7:49b6:ba6e with SMTP id hh7csp3698248qtb;
+        Wed, 2 Jul 2025 05:24:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWhiS6F6ubHw94EsgDd+cQL6ueAg40wiFZPleKWzBTcPad3WY5sE/K/HvXuP3tS9WOyCs3r7lBm+4La2w==@linaro.org
+X-Google-Smtp-Source: AGHT+IGiTbkLXmXWYIFVeT76kSQAzV3olw+10msiHCnAdqgmMRWLpDdmj4v4E292fBewZqvg+4BD
+X-Received: by 2002:a05:620a:8010:b0:7d4:53d9:4139 with SMTP id af79cd13be357-7d5c4626147mr348428585a.0.1751459076778;
+        Wed, 02 Jul 2025 05:24:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751459076; cv=none;
         d=google.com; s=arc-20240605;
-        b=gHVBFSmAK7MxzuBgyiBz3ehst5zV/PLGOV2qAOhZgMjVyUtw9CBn9XBX+hSlxYkMLU
-         B1F1NVSCUlXmnTUq4uymcdB9J+OD/wdvS9iqXWYlhfFwIBFm8EvmUnr2896lvMUFUnHB
-         Hd2mDCZH2G5zHMXpk5WwUHhbraSy8K1EKHNjViH6BE5iKx7taj8f+C0N/JmiPpC/MNyb
-         BBumnogTdA0258+S+fp5HAeON3koNZDNkW8aKbn5s5RIST6Y2ax2vlQ0BTOQdu9W2fu+
-         qT13RR3Suy6haHXj2Ko84g3Hh3fGZtJT00m0qkP2Fj2sBwAXqjb+yuFhwHLKthurU4p1
-         yeAg==
+        b=gpGvIQh2GVbUpbmnkDtUGYwlVKOJ2doyII5AItIrEvhQSuwVXEiOQd+z5uWtWGXuXZ
+         FYDJmIJ8qahZqFkplQDRVZl51Jih29MMq/F2700gA7q9h6TGLp5c06WC3YcMLwHqjRmi
+         yCvlxZ9x1eKJ/CBibOrGFyu2DQMjZurz+ft4JqWoOrtNPtJP+6Nnei1nkWocYFg2CeWk
+         1KHSfe9DxXwQKpvmlN9gqxpKaGulNKvPuk3XVu7084W12aOdbBzJKcR9otZ6Wm4HDmfr
+         vkOksYh21JsffLvkEHsQnyMGVMTcyoVebOW/FlPh0HHvEDo9VZQOJPOZWx3ISYKTVwAG
+         ODgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=7yKEiHZ9hbY/jVbCg1JFWOkif/DEikx+UVyK1VqdZTU=;
-        fh=s400U+Tx6cQDhtn+2Oey97pyo8KpW6wmR0wxZgTa8vk=;
-        b=RI91F5kJQqSTsVjZUXIovr37wv80oxKkxMPjrRnTWWVbAatdpMKfDDnpajhE/nJp2x
-         PNvcSSeq5JlNz8BrnUi/t823TE37qVl+8VCjEGUWZKEVyqbiUuYOrxqEzxyuDI8eJp5x
-         UmioMnDm+QV+4QcL5GGTn2Xbf6ybRZcRUzLnLPWyg6zPDrZV+EY2/I7Ym6qGjpSbMOV6
-         kiGWqw3PGp5JVZzaJL4pN5j7M8kIk9CCaDIWwbWuPeqZ4WtP5Kb3tmDA+thqMUSWgNcH
-         CF6Vley2ld5tGqGCvoFthk7O6QUdKlr11en+9HspFRK7A/DQkSHlnpmqEWthsIBxKN2s
-         RmCw==;
+        bh=G0lOyAHGfdwVrVagI3IBAJ8avsxWv+VgaY92gqB8lM0=;
+        fh=vZxkDpCwvhENXlY8qSqryGKuN7qdzoFpPjxnavaSuNI=;
+        b=EZtsdXd6VNk8b85D1F4yXlOWZIMwD5jlj7IAs6CxBiJLDsQve7AmNbRg9/dEfySpEv
+         aW9JwB1rPjcP1vM+YdRcqqueThNkVQpf6E561h+Mv5s3SdA3HpXWPesmz9HfAT6ZDq+2
+         rd99KnrU5650GvMQdsXapO2Ng4clPQ/z4Q2uG7VHrC8OSV/JQ0yt/RQRuuoIh8m0X7Tb
+         /7wOYKgeSscvpudARxoZfnndimzp4vqGli5/4QqdGeBsFFisJBQN7oMAi5v/TK3alm34
+         KNbqwrCKOkS8vcySq99dv9ZyoKS4qXTBaS2krufvys9RxksM9qMi3XIQ/xiP72K/b8J3
+         UOQA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aKUumR19;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=G3goi1vc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-702af493283si21161256d6.209.2025.07.02.05.24.15
+        by mx.google.com with ESMTPS id af79cd13be357-7d44bf89247si984007185a.511.2025.07.02.05.24.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jul 2025 05:24:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 02 Jul 2025 05:24:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aKUumR19;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=G3goi1vc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uWwUj-0005CW-U5; Wed, 02 Jul 2025 08:23:21 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uWwUN-00053z-Vg; Wed, 02 Jul 2025 08:23:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uWwUF-000513-EP
- for qemu-devel@nongnu.org; Wed, 02 Jul 2025 08:22:57 -0400
-Received: from mail-oo1-xc2b.google.com ([2607:f8b0:4864:20::c2b])
+ id 1uWwU2-0004vt-Uw
+ for qemu-arm@nongnu.org; Wed, 02 Jul 2025 08:22:39 -0400
+Received: from mail-oa1-x31.google.com ([2001:4860:4864:20::31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uWwTt-0007E2-5s
- for qemu-devel@nongnu.org; Wed, 02 Jul 2025 08:22:50 -0400
-Received: by mail-oo1-xc2b.google.com with SMTP id
- 006d021491bc7-611b246727cso2197518eaf.0
- for <qemu-devel@nongnu.org>; Wed, 02 Jul 2025 05:22:25 -0700 (PDT)
+ id 1uWwTo-0007D7-Ko
+ for qemu-arm@nongnu.org; Wed, 02 Jul 2025 08:22:37 -0400
+Received: by mail-oa1-x31.google.com with SMTP id
+ 586e51a60fabf-2ef8df09ce9so2150607fac.1
+ for <qemu-arm@nongnu.org>; Wed, 02 Jul 2025 05:22:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751458944; x=1752063744; darn=nongnu.org;
+ d=linaro.org; s=google; t=1751458941; x=1752063741; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7yKEiHZ9hbY/jVbCg1JFWOkif/DEikx+UVyK1VqdZTU=;
- b=aKUumR19qpBK6829uTJtEioqyRF6S0xJArFsC/hTaKxkvK5s1MiLZRshFNLGf2iMug
- uHVq4ZBHtaj/dqfJQJNhc3xMwirUGF32vKIWWdaNV0u41Nt8rMH3/u7H9nRUZlJ+twHG
- ev98wpAtekD1qsVTAneZAy/Cj9WUcWb4pVkVpxMtaPuZbNjLwYk+JPMri7WcyEYJc/gP
- tjjoljxtQYm4a9anHZuf3xzZLt4pAzlDmF2EgLWKtMVMm4wDtWH/sAEz7qTIZhQZQZ83
- i2dP10dn0Uy+9CVtDsGMjI9/3fkAnroMp/GKxUP6IHPUecRGKLbz7YdazqdM/SVaaLk7
- jmAg==
+ bh=G0lOyAHGfdwVrVagI3IBAJ8avsxWv+VgaY92gqB8lM0=;
+ b=G3goi1vcMmuBgTjiSnPcfp0cKCxPosUutjboZYSMJI7U84zOgE5sc1LYh/lIFDzOPg
+ vDZDP7sEd34KrLG33ZwHCa+zDkFktRwBlhJVeXjvsNO3XlEIEYllznbb4t2xfsDhzehw
+ tQGumBxoebADGhKS4D7u3l6gniW3UeXg8PT3Ga97QNOgLjGDsoGeff3E+pgUb8JVkDVD
+ GFtzp/kb2dVAsEfQRgTV9BqHRrc0IGSSrF8hYV7vb9qyTQU+JdhedTeTaXB6qFzHuyzT
+ jvQSvkIsKp7gGNKGtXf1/tECU1wYOtReBeqi/jIGjDDH5/uNthsGjMYRBpZgLORw4reJ
+ 0p2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751458944; x=1752063744;
+ d=1e100.net; s=20230601; t=1751458941; x=1752063741;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=7yKEiHZ9hbY/jVbCg1JFWOkif/DEikx+UVyK1VqdZTU=;
- b=irbl/JtRuChKHqucQSXXvr8btSGS9WE0otwJ0HPOZYv9Psa8luob1w6FT/zzOsKwo8
- AlljukmjfaCdbL0wKOLNXuqFmRhGUVVbP/VgdETcZ5lhGqW7dx6XaWtlhiBRr6T8zpZZ
- e4m3piLIRMutn6eEOF+u7X8QZl+FdlP2iu1hZ6tzl59kLBiCziGasCaWAxXDC8zZnCne
- FsstJ05lAh05Uxok7xAwmjYwj+4CzWS/H9B14upvxKv0yovvKaCRsDNuvkhX+RtD2yT/
- 4vNdEWHDBvKjot9SyoiVWFfBsUve4uoNq2XnM3IUnfvZRzrDhbi1bJxgUvpx14hnheOc
- XP5Q==
-X-Gm-Message-State: AOJu0Yxq6cSwl9ci52qONVLbLEmrX1qnq0T9PNVb4etkDm0ds8ClStqM
- 2kfkUQk1LKNEBprlzWr1UrUM2na7o9s3gDp0HNmvfERtbgMEz/VVoQBvm5vTDN18LX4kG7382SY
- x48W5Sx0=
-X-Gm-Gg: ASbGncs6t57Jf1iY9sSXgefC8mYviB25JpFKlMRPzZ/oC7mNlHxFxzR99OHYWLL6xNU
- aLCHkOUlkt6efrfEOO3lUI75Cve1wyYtFbjrzoc6S9f3YBp6omlkmSIwbiJpkMtocyNp5PD2zDG
- AT7lOm85u+e31OgMlnxmqNjzhxw7NQhWLp4M1iPUjDxelRO2sn1tfLWZ5XeWSxkQ+YUUTzeElyX
- BMADuQKvzYFj7AbE/cD3fn1UJfB3nUuza0vI6T7UOQ5zmBjO8ybTDxR+ATwFFPEPs6hc0hNP0kh
- ycn0jqxG2RzovDlmDcvJd+y27lSJTDRrHrfxQjNxgajNU6vk3FGsgrdnA5Lgm0e1WvoTdQ==
-X-Received: by 2002:a05:6870:818a:b0:2ef:ac47:798a with SMTP id
- 586e51a60fabf-2f5b0aa9a6amr2334709fac.9.1751458944129; 
- Wed, 02 Jul 2025 05:22:24 -0700 (PDT)
+ bh=G0lOyAHGfdwVrVagI3IBAJ8avsxWv+VgaY92gqB8lM0=;
+ b=C5zJDFg0UXwrnvo/QRHptPjSSmywVghzG3cI6J4v3Q3ja4lUHeBM5k10ZN4ZySJAiB
+ 2NuPwxaNIN1Kbr23KxBYR8fLYcD+Y0QYf/MmiZTPfZYJrEk2RKGhlBr/cJcP0Db/bXcv
+ Ae5S2LcvxQwq3DlkPwqAkmp6VPUJK+PIzufmNPPPvV+W5nQCeWhpCTliEIZcDSX7Wi02
+ Z/XlmyoTr9CLj5e+ZAzhHXRHzD3siBL2Nkdb7eEGeYZSw784A0TCVwOymNFntfeN0ZSv
+ 9ErHzgm+TB2emTNx+nJKJ40QiCh4yawN0YcLtFpHK7I4Wq07UQGiFIS1P0T7pkE4TRXV
+ MEEg==
+X-Gm-Message-State: AOJu0Ywc7z9KsqZ1tbNd+qRQxZUxPqqBSMSoY7vUW/0fete9y98Urg1J
+ 0fzRJh8BMrZabeaj0bbVx7Z59KARhDl+CeQkdTMI53K6CEElm49HFS7a260UcQzGnM1vkCs8axL
+ 7g6IHMk0=
+X-Gm-Gg: ASbGncsINzaSB9ez0OpiC1fFG9e81lC5u1dYgeD1rWpSJdpAhjtaH6rihpv0gGHQWuL
+ SfXn3WY1oQb89ygJkfMiAbswmk1JasY/3TegJJL9YF3QMNimEPG/IL/NPpvF9jxjdZHa58bZELg
+ IbcewVHP+sg8pvohzcFhPPQUDRwKehJibuC58rObQL5dLa2J/s1Tcz5wMMgPdNExDun/zQ0bGGE
+ BM33XgtVH2Gg2KeSP8kXg1Hbeww+WMiz4f8CUtlElWYisC3j6KCRmfXj0i06amh74bP3eXcg+1v
+ fjcXBkz60TGtS/JBEjLKiNp+oKOFiqUJbvGh6mgNHZIyuXkK1WCQjkl41Tc7R6zjj8H6xQ==
+X-Received: by 2002:a05:6870:6f12:b0:2e9:fd62:9061 with SMTP id
+ 586e51a60fabf-2f5a8c83c06mr2028914fac.32.1751458940998; 
+ Wed, 02 Jul 2025 05:22:20 -0700 (PDT)
 Received: from stoup.. ([187.210.107.185]) by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-2efd50b1bd3sm3785013fac.28.2025.07.02.05.22.23
+ 586e51a60fabf-2efd50b1bd3sm3785013fac.28.2025.07.02.05.22.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Jul 2025 05:22:23 -0700 (PDT)
+ Wed, 02 Jul 2025 05:22:20 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	peter.maydell@linaro.org,
-	qemu-stable@nongnu.org
-Subject: [PATCH v3 07/10] target/arm: Fix PSEL size operands to
- tcg_gen_gvec_ands
-Date: Wed,  2 Jul 2025 06:22:10 -0600
-Message-ID: <20250702122213.758588-8-richard.henderson@linaro.org>
+	peter.maydell@linaro.org
+Subject: [PATCH v3 04/10] target/arm: Replace @rda_rn_rm_e0 in sve.decode
+Date: Wed,  2 Jul 2025 06:22:07 -0600
+Message-ID: <20250702122213.758588-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250702122213.758588-1-richard.henderson@linaro.org>
 References: <20250702122213.758588-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c2b;
- envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc2b.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2001:4860:4864:20::31;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x31.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Zga45f8vTlhj
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NFf/l334BheW
 
-Gvec only operates on size 8 and multiples of 16.
-Predicates may be any multiple of 2.
-Round up the size using the appropriate function.
+Replace @rda_rn_rm_e0 with @rda_rn_rm_ex, and require
+users to supply an explicit esz.
 
-Cc: qemu-stable@nongnu.org
-Fixes: 598ab0b24c0 ("target/arm: Implement PSEL")
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-sve.c | 1 +
- 1 file changed, 1 insertion(+)
+ target/arm/tcg/sve.decode | 48 +++++++++++++++++++--------------------
+ 1 file changed, 24 insertions(+), 24 deletions(-)
 
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index a0de5b488d..8403034a0e 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -7291,6 +7291,7 @@ static bool trans_PSEL(DisasContext *s, arg_psel *a)
-     tcg_gen_neg_i64(tmp, tmp);
+diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
+index 04b6fcc0cf..3a99eb7299 100644
+--- a/target/arm/tcg/sve.decode
++++ b/target/arm/tcg/sve.decode
+@@ -131,11 +131,11 @@
+ @rda_rn_rm      ........ esz:2 . rm:5 ... ... rn:5 rd:5 \
+                 &rrrr_esz ra=%reg_movprfx
  
-     /* Apply to either copy the source, or write zeros. */
-+    pl = size_for_gvec(pl);
-     tcg_gen_gvec_ands(MO_64, pred_full_reg_offset(s, a->pd),
-                       pred_full_reg_offset(s, a->pn), tmp, pl, pl);
-     return true;
+-# Four operand with unused vector element size
+-@rda_rn_rm_e0   ........ ... rm:5 ... ... rn:5 rd:5 \
+-                &rrrr_esz esz=0 ra=%reg_movprfx
+-@rdn_ra_rm_e0   ........ ... rm:5 ... ... ra:5 rd:5 \
+-                &rrrr_esz esz=0 rn=%reg_movprfx
++# Four operand with explicit vector element size
++@rda_rn_rm_ex   ........ ... rm:5 ... ... rn:5 rd:5 \
++                &rrrr_esz ra=%reg_movprfx
++@rdn_ra_rm_ex   ........ ... rm:5 ... ... ra:5 rd:5 \
++                &rrrr_esz rn=%reg_movprfx
+ 
+ # Three operand with "memory" size, aka immediate left shift
+ @rd_rn_msz_rm   ........ ... rm:5 .... imm:2 rn:5 rd:5          &rrri
+@@ -428,12 +428,12 @@ XAR             00000100 .. 1 ..... 001 101 rm:5  rd:5   &rrri_esz \
+                 rn=%reg_movprfx esz=%tszimm16_esz imm=%tszimm16_shr
+ 
+ # SVE2 bitwise ternary operations
+-EOR3            00000100 00 1 ..... 001 110 ..... .....         @rdn_ra_rm_e0
+-BSL             00000100 00 1 ..... 001 111 ..... .....         @rdn_ra_rm_e0
+-BCAX            00000100 01 1 ..... 001 110 ..... .....         @rdn_ra_rm_e0
+-BSL1N           00000100 01 1 ..... 001 111 ..... .....         @rdn_ra_rm_e0
+-BSL2N           00000100 10 1 ..... 001 111 ..... .....         @rdn_ra_rm_e0
+-NBSL            00000100 11 1 ..... 001 111 ..... .....         @rdn_ra_rm_e0
++EOR3            00000100 00 1 ..... 001 110 ..... .....     @rdn_ra_rm_ex esz=0
++BSL             00000100 00 1 ..... 001 111 ..... .....     @rdn_ra_rm_ex esz=0
++BCAX            00000100 01 1 ..... 001 110 ..... .....     @rdn_ra_rm_ex esz=0
++BSL1N           00000100 01 1 ..... 001 111 ..... .....     @rdn_ra_rm_ex esz=0
++BSL2N           00000100 10 1 ..... 001 111 ..... .....     @rdn_ra_rm_ex esz=0
++NBSL            00000100 11 1 ..... 001 111 ..... .....     @rdn_ra_rm_ex esz=0
+ 
+ ### SVE Index Generation Group
+ 
+@@ -1450,9 +1450,9 @@ EORTB           01000101 .. 0 ..... 10010 1 ..... .....  @rd_rn_rm
+ 
+ ## SVE integer matrix multiply accumulate
+ 
+-SMMLA           01000101 00 0 ..... 10011 0 ..... .....  @rda_rn_rm_e0
+-USMMLA          01000101 10 0 ..... 10011 0 ..... .....  @rda_rn_rm_e0
+-UMMLA           01000101 11 0 ..... 10011 0 ..... .....  @rda_rn_rm_e0
++SMMLA           01000101 00 0 ..... 10011 0 ..... .....  @rda_rn_rm_ex esz=2
++USMMLA          01000101 10 0 ..... 10011 0 ..... .....  @rda_rn_rm_ex esz=2
++UMMLA           01000101 11 0 ..... 10011 0 ..... .....  @rda_rn_rm_ex esz=2
+ 
+ ## SVE2 bitwise permute
+ 
+@@ -1602,9 +1602,9 @@ SQRDCMLAH_zzzz  01000100 esz:2 0 rm:5 0011 rot:2 rn:5 rd:5  ra=%reg_movprfx
+ USDOT_zzzz      01000100 .. 0 ..... 011 110 ..... .....  @rda_rn_rm
+ 
+ ### SVE2 floating point matrix multiply accumulate
+-BFMMLA          01100100 01 1 ..... 111 001 ..... .....  @rda_rn_rm_e0
+-FMMLA_s         01100100 10 1 ..... 111 001 ..... .....  @rda_rn_rm_e0
+-FMMLA_d         01100100 11 1 ..... 111 001 ..... .....  @rda_rn_rm_e0
++BFMMLA          01100100 01 1 ..... 111 001 ..... .....  @rda_rn_rm_ex esz=1
++FMMLA_s         01100100 10 1 ..... 111 001 ..... .....  @rda_rn_rm_ex esz=2
++FMMLA_d         01100100 11 1 ..... 111 001 ..... .....  @rda_rn_rm_ex esz=3
+ 
+ ### SVE2 Memory Gather Load Group
+ 
+@@ -1654,16 +1654,16 @@ FCVTLT_sd       01100100 11 0010 11 101 ... ..... .....  @rd_pg_rn_e0
+ FLOGB           01100101 00 011 esz:2 0101 pg:3 rn:5 rd:5  &rpr_esz
+ 
+ ### SVE2 floating-point multiply-add long (vectors)
+-FMLALB_zzzw     01100100 10 1 ..... 10 0 00 0 ..... .....  @rda_rn_rm_e0
+-FMLALT_zzzw     01100100 10 1 ..... 10 0 00 1 ..... .....  @rda_rn_rm_e0
+-FMLSLB_zzzw     01100100 10 1 ..... 10 1 00 0 ..... .....  @rda_rn_rm_e0
+-FMLSLT_zzzw     01100100 10 1 ..... 10 1 00 1 ..... .....  @rda_rn_rm_e0
++FMLALB_zzzw     01100100 10 1 ..... 10 0 00 0 ..... .....  @rda_rn_rm_ex esz=2
++FMLALT_zzzw     01100100 10 1 ..... 10 0 00 1 ..... .....  @rda_rn_rm_ex esz=2
++FMLSLB_zzzw     01100100 10 1 ..... 10 1 00 0 ..... .....  @rda_rn_rm_ex esz=2
++FMLSLT_zzzw     01100100 10 1 ..... 10 1 00 1 ..... .....  @rda_rn_rm_ex esz=2
+ 
+-BFMLALB_zzzw    01100100 11 1 ..... 10 0 00 0 ..... .....  @rda_rn_rm_e0
+-BFMLALT_zzzw    01100100 11 1 ..... 10 0 00 1 ..... .....  @rda_rn_rm_e0
++BFMLALB_zzzw    01100100 11 1 ..... 10 0 00 0 ..... .....  @rda_rn_rm_ex esz=2
++BFMLALT_zzzw    01100100 11 1 ..... 10 0 00 1 ..... .....  @rda_rn_rm_ex esz=2
+ 
+ ### SVE2 floating-point bfloat16 dot-product
+-BFDOT_zzzz      01100100 01 1 ..... 10 0 00 0 ..... .....  @rda_rn_rm_e0
++BFDOT_zzzz      01100100 01 1 ..... 10 0 00 0 ..... .....  @rda_rn_rm_ex esz=2
+ 
+ ### SVE2 floating-point multiply-add long (indexed)
+ FMLALB_zzxw     01100100 10 1 ..... 0100.0 ..... .....     @rrxr_3a esz=2
 -- 
 2.43.0
 

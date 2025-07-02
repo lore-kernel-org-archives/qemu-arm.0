@@ -1,128 +1,113 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3840886dye;
-        Wed, 2 Jul 2025 07:12:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVnM3p3+h8K/r8g0gXnEoqTxBUrA4GtNCRZDZSXdWlp+LPBxaja0O9VUfTvy8zHwNw6qe6mwq0UafjOqA==@linaro.org
-X-Google-Smtp-Source: AGHT+IG7NTAkK4f4TzoaFgW4uU7J6DKTmk1/bizUCaw4o6GuaatEvAslmkNqunp4zLD8mhcqTvs8
-X-Received: by 2002:a05:6102:3753:b0:4e5:a6ad:8fee with SMTP id ada2fe7eead31-4f1612e9daemr1622931137.19.1751465547519;
-        Wed, 02 Jul 2025 07:12:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751465547; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3934151dye;
+        Wed, 2 Jul 2025 09:32:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXOrj/u7pbpvxW/xCtIhs3ES3Lubf80Gfi42yO/kytOKTGCRIJGlWjcTlJy+kUHdTXNQaNsx2SVGpErjA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGudIfftospcF5qmv1XbwZwo0fpjVSVfrOYbJIUo1D9CxWGNal2k2JdFJfZ5V2axfGiHw+S
+X-Received: by 2002:a05:6102:41ab:b0:4ec:c50c:399f with SMTP id ada2fe7eead31-4f16117a294mr2398767137.11.1751473956100;
+        Wed, 02 Jul 2025 09:32:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751473956; cv=none;
         d=google.com; s=arc-20240605;
-        b=i40mfpqybcyi3pmftEZYVVbNKdmhQDOvJwyFJv34Gjw12DSVSQKpKJ+lk2f+3fyWVW
-         CEcg9Gc48vVUBP5vOXVxFFRYtKdnflLaFyqciANBxPwn6QkKh5Mv1xNz+ibZ+KKJ1qa9
-         bEAqvNoCVWN9hePxvbJMDD05PUikJUNelmwJ9GS96u/Y9ApkyGmHX+IBae23gXOMwHvb
-         U3ineomtnoR7AP1uGIQ5W0pgIJznIuKkVclmJSIZVjnDG6ck42ivD0kvxHhhp8vBHF01
-         /kXI/ofHCd6AojBFGuB4GMNHvQMd2RXvoV+No/Ehag5FqSpWfeTMW02XIT4Zs+M3NOzT
-         0nRg==
+        b=RFT3gJJijuG6yFw6EgywUmgVlvGayHqeBgQhxkwTavbuSfTqcAEo7TxQJbUKve3PaV
+         eEDsMqU2tOP7gIuGkmK3Loj39n2rE3JPovyZqP+7ohXSJ5wSDfoPfb7vZQ1Zoyxwwpcf
+         GESjbhov8m40SyfMcq7Q+X6JAFJIp/Q3qE25Nw8W22qpDLu/UVbKRZHYf45+CSrcNGhY
+         TY3Q1i1W4mNlziov0lT7xSZMk6dwyk/icoTdIk9EfYQsc/0hRbO69/aLXuV9dByfEDAf
+         /+8XyPCAiojTNeiXqwyi0KW8QMyASIlpQs/bifJE6s58ymfb8B8B/Z/HwtIYIzyeLORi
+         ULLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:content-language:references:cc:to:from:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ax92OI6M4WzJiJxDk5o5mfpOIrq8GmFb/DsxeWoDlBA=;
-        fh=vZxkDpCwvhENXlY8qSqryGKuN7qdzoFpPjxnavaSuNI=;
-        b=BzJzWR7oy9hxwYsUMgYN40/niqZ6Jo6tCxlnN/F5rNrGCvxcG1JwkbBHDcws0bWFv+
-         72ib2JPOdlLTxcDRZOHV9Bqi6blL+kRM9nPPH/V0xa3HRzSOAGKpU6rX8hEQuqeZMyia
-         2vZ0iV9vLYQX/P5ujF7iN0gnCb/9vQYuUXxf1hm9AevrSuRgFnSoRW/imlQIy89GPVQI
-         2n/RaARakKVl0SiSrTLydNMdTOmJ2S1ZdEe6QKUEWD/oGns+bIO6xKrfu+lbWZQpnRBr
-         vphFnXBjH39rRxUDLXtXzFJr+I7m+O4102IkTLLXio7JbwgmCrO+X2kBdXHQfNECBzyp
-         0dMw==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Y7zgkic6Vn3Gg62tyqYV3n0+jagdb6H2rJ2Bf3rpzog=;
+        fh=UVrGBnfE9R8/5nTz0HPCluylUu4vXq1b0MPFtmDhPnc=;
+        b=dA2ytAabfWtlQsBSUhs4jku+m10KlzAFuoa0FZ78lFbMixiVmwgs/90yvrudtAdUZI
+         Bd8RuJfwZAWZOawjNNQo4xgqk4vhMQ+IFyoX3NhOgp5x7i2Vwus75PjIKZVtVie/sdgA
+         PdCIhZ59NPZXkXio8NyrggVhMi6Jk6e8AHfJGHhPKEmRnEcGQl/FgllZVFbWP3B1wdoz
+         9SeP4VXSn/YJRRZ2FXPgGzgNIlkBu6cGxk+sHJRja90ZZwm1oYc9OqBjmM7Scaj/FIT0
+         f4/J0DYE76HcE5qlYhFu/FRJvjiqMhb64tOV0nI8B/IwZ3SMW69nCxnXEKgGnpsRud1K
+         im2Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NAVoPos4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="aMzgJ/iw";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-884f7e91f6esi1551010241.62.2025.07.02.07.12.27
+        by mx.google.com with ESMTPS id ada2fe7eead31-4ee4cbc2331si2910588137.480.2025.07.02.09.32.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jul 2025 07:12:27 -0700 (PDT)
+        Wed, 02 Jul 2025 09:32:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NAVoPos4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="aMzgJ/iw";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uWyBf-0002Kw-MO; Wed, 02 Jul 2025 10:11:47 -0400
+	id 1uX0NP-0001GF-H4; Wed, 02 Jul 2025 12:32:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uWyBc-0002Jx-Ua
- for qemu-arm@nongnu.org; Wed, 02 Jul 2025 10:11:45 -0400
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uWyBV-0001pE-Eo
- for qemu-arm@nongnu.org; Wed, 02 Jul 2025 10:11:44 -0400
-Received: by mail-oi1-x22a.google.com with SMTP id
- 5614622812f47-408e0986303so2772165b6e.2
- for <qemu-arm@nongnu.org>; Wed, 02 Jul 2025 07:11:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751465495; x=1752070295; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
- :cc:subject:date:message-id:reply-to;
- bh=ax92OI6M4WzJiJxDk5o5mfpOIrq8GmFb/DsxeWoDlBA=;
- b=NAVoPos4vIkjRmT2t3jZi8U5ZKWTfDnPKcN6bLQdq0yCTTumqnvF1W9Wh/J9Yu7bIc
- AxAsIvDzdTWwZ7sIE/8s1yWkC4qJ8F/M0Ysf1nuLLEkI6dqxh8pV68aTjKFnHZ2lYGKt
- ICiJ+y01tBDxxIX71a2X8PIDsNwyyF27dnUEKjlDz+IxQy9QA1OueupDghKb6d0n/1Ux
- UmSbr7gwG7HyR/4fF+TOk3L1A8G8DbHAUG3jZhb4EgHR6eKxy69pSfezGxj4u+pw1OPB
- 1lmBRJae+nWknnOSFe/6X0iL2RkL7KGZ5gumJFy7fyG+wZ5dmpzgz9K3JZXqMxwsKqIi
- EQ9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751465495; x=1752070295;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ax92OI6M4WzJiJxDk5o5mfpOIrq8GmFb/DsxeWoDlBA=;
- b=vWZelj2Au42yuJUtpWWbE99UE83QQPddEnBwX4ok7I9hdMD2WyZ/6lHp2V0wSkuotw
- nKKjGUq8cSWF5HTJE/7kApdLFu/RxmXH51MMvXQZkX7YQUfgS0/kSnL13Ux/net21eHH
- DqovcK/wf35bM7BomQcDPgLAVqYt61vsgX0G0SHW/xnqmIXIAi+khPxeuZddkE8ehKul
- gko34RhFpIZWmJZEqsn9D6OL0ATgGNSi+wfwwepUEYtV1OtKys5y0IvPxTnvzChJPWpj
- AU/t4XhTaMxlmYgsPcuLXWManmyzVacWQL82jVmosZd/lyJCbNn5wsn9Dzaq/NTV3xjF
- 2eaQ==
-X-Gm-Message-State: AOJu0YxdmmeKDOFAS7/oUqMj4P4rEuti5Jlr98ILnfUhqw6dq5m0avOD
- YEBnTA+BquK4iZwiGtWNryVj2ZCyQ7lpBd3ShZCM2IqLSL5nfV1LZx3zqOReuUrrfsQ=
-X-Gm-Gg: ASbGnctp3ll5M9SBKQRttfoqnHYwcMtCQ/L94D+h+UxZQgTErOz7gTWbOOdvPHjw9NU
- jSlPD8OBQDCVgqtmNFHTZM9kTOzJdN1sLN55DBtmRyNahjYuI5dDOxI87peZxkuQrsDUR+OQJIZ
- jTcmMUWLXTQjOvY0K3SiS9D6+NUqaHVBldftdZ4ivwwazVek71M7UNlb8vOFzFkpltfhUXHt7Nm
- 5+SGxjhtFrXhw8trx546exp27OawV7pCcA2MY3wJOg0Z9BTAyEjSI+QkB0q5BaKBROO7t16GXyJ
- 1hv/0qeqDSb8gd0MAdCTH9n9XUm2Yw7RXqpP33XzylqOa86Jp5QeB0pTrPm+ulpSdIrlbVjRW/G
- 0
-X-Received: by 2002:a05:6808:1823:b0:3fa:7909:2716 with SMTP id
- 5614622812f47-40b89521769mr2288942b6e.39.1751465494894; 
- Wed, 02 Jul 2025 07:11:34 -0700 (PDT)
-Received: from [10.25.7.74] ([187.210.107.185])
- by smtp.gmail.com with ESMTPSA id
- 5614622812f47-40b322ae397sm2537119b6e.11.2025.07.02.07.11.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Jul 2025 07:11:34 -0700 (PDT)
-Message-ID: <c350ae1c-e2ad-41be-8b49-e532adeb964c@linaro.org>
-Date: Wed, 2 Jul 2025 08:11:32 -0600
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uX0ND-0001Bx-7b
+ for qemu-arm@nongnu.org; Wed, 02 Jul 2025 12:31:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uX0N4-0006EU-D0
+ for qemu-arm@nongnu.org; Wed, 02 Jul 2025 12:31:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1751473897;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Y7zgkic6Vn3Gg62tyqYV3n0+jagdb6H2rJ2Bf3rpzog=;
+ b=aMzgJ/iwJb0q7QwAwcUUALLkDWYHTW+bE4XvnB0RHwXwtN3RccIf8zda6RHy1PN2aCQwhc
+ QS7LcQKU6KGNgvLMRfiJ9+UzU3oVVaxwRg+iqPPKLGKA4EQ4ER8KKcYozLHB1UUbqV+jV0
+ VNORprUpL8Yrfm6h/Eb7/2i2qcy2HlM=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-279-pftlK1FvO-SWviDCSSS81A-1; Wed,
+ 02 Jul 2025 12:31:34 -0400
+X-MC-Unique: pftlK1FvO-SWviDCSSS81A-1
+X-Mimecast-MFC-AGG-ID: pftlK1FvO-SWviDCSSS81A_1751473893
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9495D19560B4; Wed,  2 Jul 2025 16:31:32 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.44.32.16])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id EC5FE195608F; Wed,  2 Jul 2025 16:31:28 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, miguel.luis@oracle.com, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, maz@kernel.org,
+ gkulkarni@amperecomputing.com, gankulkarni@os.amperecomputing.com
+Cc: hi@alyssa.is
+Subject: [PATCH v7 2/4] target/arm/kvm: Add helper to detect EL2 when using KVM
+Date: Wed,  2 Jul 2025 18:30:41 +0200
+Message-ID: <20250702163115.251445-3-eric.auger@redhat.com>
+In-Reply-To: <20250702163115.251445-1-eric.auger@redhat.com>
+References: <20250702163115.251445-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 04/10] target/arm: Replace @rda_rn_rm_e0 in sve.decode
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org
-References: <20250702122213.758588-1-richard.henderson@linaro.org>
- <20250702122213.758588-5-richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20250702122213.758588-5-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22a;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x22a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 15
+X-Spam_score: 1.5
+X-Spam_bar: +
+X-Spam_report: (1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.237,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,19 +122,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vabLoeRCvvRC
+X-TUID: MT3GS9aEqznG
 
-On 7/2/25 06:22, Richard Henderson wrote:
-> Replace @rda_rn_rm_e0 with @rda_rn_rm_ex, and require
-> users to supply an explicit esz.
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   target/arm/tcg/sve.decode | 48 +++++++++++++++++++--------------------
->   1 file changed, 24 insertions(+), 24 deletions(-)
+From: Haibo Xu <haibo.xu@linaro.org>
 
-Bah.  Sorting error with too many patches.
-This is not a SME1 bug fix, merely a code reorg for SME2.
+Introduce query support for KVM_CAP_ARM_EL2.
 
+Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/arm/kvm_arm.h  | 7 +++++++
+ target/arm/kvm-stub.c | 5 +++++
+ target/arm/kvm.c      | 5 +++++
+ 3 files changed, 17 insertions(+)
 
-r~
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 7dc83caed5..b4cad05155 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -191,6 +191,13 @@ bool kvm_arm_sve_supported(void);
+  */
+ bool kvm_arm_mte_supported(void);
+ 
++/**
++ * kvm_arm_el2_supported:
++ *
++ * Returns true if KVM can enable EL2 and false otherwise.
++ */
++bool kvm_arm_el2_supported(void);
++
+ /**
+  * kvm_arm_get_max_vm_ipa_size:
+  * @ms: Machine state handle
+diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+index 34e57fab01..c93462c5b9 100644
+--- a/target/arm/kvm-stub.c
++++ b/target/arm/kvm-stub.c
+@@ -47,6 +47,11 @@ bool kvm_arm_mte_supported(void)
+     return false;
+ }
+ 
++bool kvm_arm_el2_supported(void)
++{
++    return false;
++}
++
+ /*
+  * These functions should never actually be called without KVM support.
+  */
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 426f8b159e..e5708e54ae 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -1762,6 +1762,11 @@ bool kvm_arm_aarch32_supported(void)
+     return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL1_32BIT);
+ }
+ 
++bool kvm_arm_el2_supported(void)
++{
++    return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL2);
++}
++
+ bool kvm_arm_sve_supported(void)
+ {
+     return kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
+-- 
+2.49.0
+

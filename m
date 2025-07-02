@@ -1,162 +1,159 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp86677dyc;
-        Wed, 2 Jul 2025 12:21:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUu2UKLn/OoYyweO502Sl/3peT6BDBjAHmJG14cGqy/3+Kj25SXqpKl/kGEffIh3R9LMwqfWHwbHa0yVA==@linaro.org
-X-Google-Smtp-Source: AGHT+IF5Wn/G2AWeugPJRIxZgDollszuZ2uO4CYW2qNqjhEZhhPriKg71ncLU0fjYXs7Bq63vbAz
-X-Received: by 2002:ac8:5e48:0:b0:4a6:ef6a:ace3 with SMTP id d75a77b69052e-4a987a8533cmr7322541cf.44.1751484086614;
-        Wed, 02 Jul 2025 12:21:26 -0700 (PDT)
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp90389dyc;
+        Wed, 2 Jul 2025 12:29:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX/2DmtNdiCO3S20bH8gSBRmdoeHbz9KxKqdP2ghnOCOaoAbg8TJw5HW+VPv8C22/ZSV5afmntAk+FwBQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH6qmn4KeITCspfhOxNt+dZpvttrXlWFzRXZxgI8kVzD8u8kC7KOz49IocXmPDkZrx3zcb3
+X-Received: by 2002:a05:6214:29e1:b0:6fc:ff41:8eb7 with SMTP id 6a1803df08f44-702b1bef00fmr62378056d6.31.1751484552305;
+        Wed, 02 Jul 2025 12:29:12 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc2462f6si134632501cf.406.2025.07.02.12.21.26
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd77389cc5si149465286d6.426.2025.07.02.12.29.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jul 2025 12:21:26 -0700 (PDT)
+        Wed, 02 Jul 2025 12:29:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@Nvidia.com header.s=selector2 header.b="ETham/jk";
+       dkim=neutral (body hash did not verify) header.i=@Nvidia.com header.s=selector2 header.b=oky9uZ4U;
        arc=fail (body hash mismatch);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uX31B-0000NL-Gx; Wed, 02 Jul 2025 15:21:17 -0400
+	id 1uX386-0003lK-8z; Wed, 02 Jul 2025 15:28:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <etanous@nvidia.com>)
- id 1uX319-0000N0-Jv; Wed, 02 Jul 2025 15:21:15 -0400
-Received: from mail-co1nam11on2061a.outbound.protection.outlook.com
- ([2a01:111:f403:2416::61a]
- helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+ id 1uX37c-0003fH-Dt; Wed, 02 Jul 2025 15:27:57 -0400
+Received: from mail-dm6nam10on20610.outbound.protection.outlook.com
+ ([2a01:111:f403:2413::610]
+ helo=NAM10-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <etanous@nvidia.com>)
- id 1uX310-0008Aj-2Z; Wed, 02 Jul 2025 15:21:13 -0400
+ id 1uX37V-0001NT-Fj; Wed, 02 Jul 2025 15:27:56 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=QttQdPm85bLPZt8EeuNyw75ZwDbaryHrZnjO6yhXp2YdNLgx9e9B2UMN+FA9jlmOpPItMz71VYqpI49nm233VbpE9EaEo2BrcFn5fH50hNbwuLpfatBl/RWjWohUEtB2Wi0dgHJp9TsqMDrAX6WaxTzmpTamBNbgt661GG22VJcy1blEgwcle5AYzyTbWIjgNSdbwnOTT+LAlQ5XJzzvu+t0+hIDNrkDLmJmhf1zO8f3nIlz1iwaS7i7MIi5s7UAkmN9aqv+AQbCAcp3UrrfKRJWOLLgFcbKfuwJzMbNVeyMdOHgNTxLQfpRgN0XyW/V2SxOx1LyfGgUlrrZRRDcyg==
+ b=zF/Udpw9WVYGzIlGHWyidUiXQ/53gAUKo3bgnKg5t2zbmV4Rmn/o6mKtczsvcqvK+UBiDiC0YNfpOj5v23ZkZN36zVW6ec4q8Q17XCW57t+V3+Qn8C+j5aimDqNvgjijGjoftxsn/aYTLdfM/ld0CQpMQlRpSNbOTa/rul/AvacEsz7aWmIEreVhsTpIINGJ6XRNvIj3FLfYGtjfKnl9G1/5qcArh2aZDBndRIX0M9FoCcuCSomKumu8CgcdTsJ5wkZXnsc52U8AbzKt61g8oO7AzL3Jssm3aUXauJu4WZIxGQrWLgDqQYkJKRqHDc+4jPWd2SyVkKuh2H3j6WNJhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=e93q2DBGrxHhH+UwmI1sgI+8gDeDgY4TRvmt7zeuEz8=;
- b=pn255iZogJOnFLiQQZs6rVIHrxkHLEDUMTADKhpdGI4dn+vFZWMQ328PUmM7smFsHgqRSQ6JxB+cGPwoSEEdFv7wex3/zu4uSl1a+u1UCPUQrkna3WAczFenWNVwnaszJDTDxonAmNay/b9YC59GWDJ7RERBIOQTie5WFHwpZAawg7io989kOotRQXxmgNynWw+io0ysCxvOG3lDV55ivown0zdlGyAT+jkl/4QZ7dIyswpwuCwZvFsmWGlfIsMa7k12mPUZc6M/01UQ65LsX4EhSnPqFnhrWeERKA92aA7R+iauOlRawPc8sDquV/qY7QesS507ChbnsvSzL0BYgw==
+ bh=2Ed25Iu1AhDnE18qGkoUoaXgZVHH4W11z07NymYyUWk=;
+ b=I7I5gjOAD31RLPZWMoNXIZ296v1s/jdRU2yLwX9nG87A0u6L+zFUtFX4AqrnJrOPdc8wH1+lgah6oLOduHfANHPyQmbB0MLPPvKilSEHp5ucXWfWaY4Qsx4QyPcrZeTgkRmnJpWBuzJ4h4rMHJDA4yNdUb9H0k0azVf9Y5XVjCMCLZlsfhhZr7e0ic6IMjHkGhfrr7NQLT7RIJq1HRx208N4ZiJbIOiWu6wVXBrakihxfkXHrMIMOjIZ6tTu9HyXSGCItbTtEVayWIJrKAafWX7XvujxxBo+H6eWafvSTAIk0f/DgsgCgMeUsxRs1R7mwxnfL5+j6KmVlNcbBGXF9A==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=e93q2DBGrxHhH+UwmI1sgI+8gDeDgY4TRvmt7zeuEz8=;
- b=ETham/jkgq8UHVnS5p9xKkjkjvXxNiY5mHSnuNO5SmJnY5eJ9cHsxlSXW6BIebmI6+IPxo/KznjvmorQ1Wc67yDX3t+yoZjG+Qgo6wfhMRW37gU0aQ5ogAClIoyASwM5S8p+OLagtvX35i7G9BWWer/UUPUlbCZtc4gQaEmRqt7LN4zgfqOSWnTAMnDLmJ2+hQUecg6vLByec8JXxw/l6czmz1ld/tR3ztCIC4Ie60mNVjEtwSqAifXZpyOq0o5JvDzkLF5K8jv+WFt3Z5NMwLMUnF02xG6SG96sxOFFCC2O94bAIIAauZpkcMAebb1TKNl8tZPOJqNtQdVg3BjeQw==
+ bh=2Ed25Iu1AhDnE18qGkoUoaXgZVHH4W11z07NymYyUWk=;
+ b=oky9uZ4UtBP1BkXpfu2fb1uC28ab4T3lHIGAEeUc92JcFze/+pnH2nayw2FbDXA3KljOOFQdkVUi3dImwxUrnvFfZGrME/x7JhEcttaGCuhbFDAxpL8j2TKO3RBUNk1IAgtwrYZKzqV/kSMPWTZr+PRJhWs3kXQ/VvdaKt2gxnPsJ3I2RHHgAkfg5UTxXaPJf3JPe8+mYieXYqq63CLRdslzww7W5onEbgDm9+dHsABdCnPIhMcTqtbdZuhiGqlXjbF/cVVTBXIzmaIQYCja54Dt9TavMkoSSxebrw1TyqPFgzhC+YBkoNiq8PsgaEt9wJ0IaZfsdSlbp8IQzeiwsQ==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
 Received: from CH2PR12MB4277.namprd12.prod.outlook.com (2603:10b6:610:ae::23)
- by SJ0PR12MB6928.namprd12.prod.outlook.com (2603:10b6:a03:47a::21)
+ by LV2PR12MB5848.namprd12.prod.outlook.com (2603:10b6:408:173::18)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8880.31; Wed, 2 Jul
- 2025 19:20:57 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8880.32; Wed, 2 Jul
+ 2025 19:27:33 +0000
 Received: from CH2PR12MB4277.namprd12.prod.outlook.com
  ([fe80::8857:98e9:8b64:787]) by CH2PR12MB4277.namprd12.prod.outlook.com
  ([fe80::8857:98e9:8b64:787%4]) with mapi id 15.20.8880.021; Wed, 2 Jul 2025
- 19:20:57 +0000
-Date: Wed, 2 Jul 2025 12:20:55 -0700
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ 19:27:33 +0000
+Date: Wed, 2 Jul 2025 12:27:31 -0700
+To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>,
  Joel Stanley <joel@jms.id.au>, Troy Lee <leetroy@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org,
- Ed Tanous <ed@tanous.net>, Patrick Williams <patrick@stwcx.xyz>
-Subject: Re: [PATCH 1/4] hw/arm: Add PCA9554 to ARM target
-Message-ID: <aGWGl-9v4Nt9e2O1@edtanousvm.nvidia.com>
+ Jamin Lin <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH 2/4] hw/arm/aspeed: Add second SPI chip to Aspeed model
+Message-ID: <aGWII78ihmhn_-q6@edtanousvm.nvidia.com>
 References: <20250701203400.71677-1-etanous@nvidia.com>
- <20250701203400.71677-2-etanous@nvidia.com>
- <f7e9fcba-e844-42e3-8e4c-9cc67a3069e7@kaod.org>
- <e273f8c9-6479-4ae7-95a4-5f3a3053ad76@linaro.org>
+ <20250701203400.71677-3-etanous@nvidia.com>
+ <a0dfcbf7-cc09-4fb8-bc3b-3d4060fce5e9@kaod.org>
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <e273f8c9-6479-4ae7-95a4-5f3a3053ad76@linaro.org>
-X-ClientProxiedBy: SJ0PR05CA0166.namprd05.prod.outlook.com
- (2603:10b6:a03:339::21) To CH2PR12MB4277.namprd12.prod.outlook.com
+In-Reply-To: <a0dfcbf7-cc09-4fb8-bc3b-3d4060fce5e9@kaod.org>
+X-ClientProxiedBy: SJ0PR05CA0092.namprd05.prod.outlook.com
+ (2603:10b6:a03:334::7) To CH2PR12MB4277.namprd12.prod.outlook.com
  (2603:10b6:610:ae::23)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH2PR12MB4277:EE_|SJ0PR12MB6928:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5c46ffec-79e4-4772-5f16-08ddb99d9269
+X-MS-TrafficTypeDiagnostic: CH2PR12MB4277:EE_|LV2PR12MB5848:EE_
+X-MS-Office365-Filtering-Correlation-Id: fa77f332-fc17-4507-ba08-08ddb99e7e57
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024;
-X-Microsoft-Antispam-Message-Info: =?iso-8859-1?Q?tI9x2zq9Pz94MF26o6hIsyhBJ24S+7yRuv8mY7zmvhVMPs0NnZE14ihOk0?=
- =?iso-8859-1?Q?jYWiqib8A5NqsOQVcgzwIhLyrJRfsBEpRthm6Ng/KUpXv57P0rJpZ9RPIo?=
- =?iso-8859-1?Q?Qv60hzCmIz7pz17W+kz89LvTdsq9eGCF9dVpS97f93Gctb/fhhfBc+8WGQ?=
- =?iso-8859-1?Q?xthuh0zuPui+JO3wYjrMecex1GjI6w4wC905OCgmUC97Mxmz1HDaBW/Bco?=
- =?iso-8859-1?Q?smb0MjuKRjzzR1o2ypiHiJwUlkDyGdaeOIU3k+WWyDfnsr9oKzLaGQwChL?=
- =?iso-8859-1?Q?OuL+Qcibh45zBZC73N2Km+Jjqq2vkOjw4iYNH9OY03HzFSw4zM5cnWMZ2S?=
- =?iso-8859-1?Q?vQpTizQvOsZUkd8TJ/FQ2UOnswb/pI13s7/MUsqDcegVrL7AZSUJzxpo8P?=
- =?iso-8859-1?Q?eYXOgWKUqy5T2g9r+aUG4uTKfloxP+3u5aKeoUQVTZmQo97JPqjDxTMaZr?=
- =?iso-8859-1?Q?PDqCN5zNqWDDO2gZLzLgkjM48xe0LzZiYX/gYeFTBJLJ1z8Jr578xlHI8g?=
- =?iso-8859-1?Q?umw2LW6lnMyGnDHZtU8ZLeEyNJJ0FtZnJM11KSNb76e1SKI8NwExXAh9Mo?=
- =?iso-8859-1?Q?eNlZcQziTOruAU0ln7Cg1Qhy+0g6kyxrCKJZAorgKZUNZX1SBWBt/YxudI?=
- =?iso-8859-1?Q?hk+rWuWw/0VKJVuSXai6Ob5rcxfBsSCyJYIlGM3Pe0DoL9i8Vhbmhl/0oB?=
- =?iso-8859-1?Q?yMwgOui4UYn7hagIlpOxCZNK0ymZukBNKBIFE05F8qtqgVcs3KKsZ6oCsa?=
- =?iso-8859-1?Q?nM4snNBq1/o6k3llWXzOpLZbRzqxPf+la343hG8NkiqWiWztzcRiENjmGx?=
- =?iso-8859-1?Q?8+++aR3p6hBfO+wqgWAoS0c3M8gy9bsKkSjX9QZadvJISjoWlwPEPysZVs?=
- =?iso-8859-1?Q?aBXgKnP/rd2uO7m18pUtEHgSXJYxpxst6O2MMG7ik+/3gfGt03lVU9gZP+?=
- =?iso-8859-1?Q?FCOG1bV3ESxvor+Ou6zxPkJ6jeA3XeR+VTt86wfS50v8klDRHL5AEuHLvZ?=
- =?iso-8859-1?Q?o+0x7IjLLMDRcubBMwEJpWgKtJyx/t5gqlZpQtn+gDaY5v492EDk5PSlyB?=
- =?iso-8859-1?Q?YcuyE6bjmFdWKtvHLp1EPVu3hsgRLe7lDNwFyjTlAIJhyc2BEwV6uq1QxG?=
- =?iso-8859-1?Q?mZuSII1uj68MTxUsrPdzIAau0N1T26RDfRMqp9ttVzfF+RDcsEpAmWmR7l?=
- =?iso-8859-1?Q?Nby9OPzM8NBvkP4/MyuZ7Pbj/R+TOIlqqE8puYhV6U3GU1Qr7POgHSJBk8?=
- =?iso-8859-1?Q?t0QGVRxKHj91MrvskDvPXsIyY6YBpwsBc5nyGhCXj/p6e3c+jU2+lil0hH?=
- =?iso-8859-1?Q?voOolD5f9iu73YG+NHWsgoijNVdUV2ZeJNSiQYU8XIe7CxGc2WbIA0a639?=
- =?iso-8859-1?Q?ZS/dPEHH+tF5buysrVhhGMfvlcHKr0yitH8e6PS+3rc8qVSc8BypdpAcye?=
- =?iso-8859-1?Q?h1cHKl7ofX9QMBYdrWwHaa9My2/t6wDUAyp+4Poh7+29QLP0LVTlb0Qtpi?=
- =?iso-8859-1?Q?A=3D?=
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|7416014|376014;
+X-Microsoft-Antispam-Message-Info: =?iso-8859-1?Q?RaSd07AVbFE2eUrq/3yzA70PmX6+M3iiEPHm20KTRy+9aumYIX16tIr2Nw?=
+ =?iso-8859-1?Q?F1Zp3bmIAONPWrdglQCXCxNOQG8m7qa6Fu/D7vzJhwDHxSSmRJ9nii7XqE?=
+ =?iso-8859-1?Q?D/xmwS0zmdbPuXA1P0i8o8voiCLo5Yl8kem6p8wNfoU50dzrJYQsMuQG1H?=
+ =?iso-8859-1?Q?4aBTivDT3aWRUuM6N3Bp7r7fj0KpRdZD6uXNvtvFyMVb50hIx4KdHBckAs?=
+ =?iso-8859-1?Q?L0//8IvHddlPqL1d5kWa2119OZBaEZLu4Y7AgUKXUV1jdhUe35am3u+Hyl?=
+ =?iso-8859-1?Q?Mb5kIZdIUiJLNjxCBkOhzn3gLqacLyyr41F0Bh9VA2JNZ6aYXf4augxtdG?=
+ =?iso-8859-1?Q?34CjPy7nV55+yM0ZQovGqy/m5mElp8ltBp2UktyfVV3EpvYmEuatwDUhX8?=
+ =?iso-8859-1?Q?USkJOvBQMSzClX70vBslmIa9rJh+L2UM90Sb4Dfo+JfvdVEWteMQYv/w8f?=
+ =?iso-8859-1?Q?0o9LjKZyb3jvC7sVLeCC0QdRp/LT3XwLaOk5iECh6xNZ2xNR9o32Zo9dBf?=
+ =?iso-8859-1?Q?qBwG3WOOHKC3rZDElGx2CdREwZmDGU8CgPE3qwr14UKEvcKogtEeY4hlLm?=
+ =?iso-8859-1?Q?3qPtSvfb0FT81n7T/RIAloQCFXJ2MjfG7jLLSN2ZPOKz5eSXMoIDZqabEF?=
+ =?iso-8859-1?Q?t54y9U5JoXrZMNVK+FxrVKn2KxCGkAL7i/xo+1OTH5PgXxR4RBdEUiloIM?=
+ =?iso-8859-1?Q?Y+92x3DbKrbJqtQd9HIKzssSb3gMzlUQ/I91vy0ffwEVripwHqWPCEVIi+?=
+ =?iso-8859-1?Q?2b6BpaGt+utH4Wsq2HSQLdhX6dyB4SXsK4NrTmwtHRGnPj0tB2agBHcbkq?=
+ =?iso-8859-1?Q?fyc6otvhVsaGuwaff90tRi+uslC6j80e90NZWedwxaujCcmI+W+vHky3KC?=
+ =?iso-8859-1?Q?RQYlDlMpdcyxgyox65QKe48MqaL/O3XRwUI6lZFFXKG+6K2ZD9mrtYNv/l?=
+ =?iso-8859-1?Q?a6PHuInu52jt1N8giZ2GWOCKLkOLlxqSkAeCu+U3ntlX46/T/zMjzPrZEZ?=
+ =?iso-8859-1?Q?QPcUm3uIpVTSIlayw+78BgAQsWAUUR2QsYpXJRDk/xheiAKF3GsB4MbQXW?=
+ =?iso-8859-1?Q?Zo8cWkLUBMewLO5Ty6qJCLjYSBeLx3eUHZGHcAC37EJwcOjHc7bX37aAvx?=
+ =?iso-8859-1?Q?qNAca+ZuYV7+toqqHxHGCzEI0nE309PcvfejyqS+dAojvaupwEhLU3IRSl?=
+ =?iso-8859-1?Q?ln0Kddkb6M01oWDhlJJhU0GMqBPBgBvB5/fQL4oCLtx3JvnHDJTFrYHOeJ?=
+ =?iso-8859-1?Q?p/xWEWEmddb+yOCw9I2wz/eJS4wBQyF+od/twD8I3kyf7sGlEP3gRMu7XR?=
+ =?iso-8859-1?Q?arlBkpjOTPacw2zT6GvpukGtd9CqyDKuFpLpZrMpk8BoWF81hzZ/pzkKWm?=
+ =?iso-8859-1?Q?91gYW1wNIdv6OV1hHQP/gKf8jGykJmGupc6xNEKhLYRHHhGZDsqu2SBhGh?=
+ =?iso-8859-1?Q?+QhbgrHazv88gpkZPszgnemQGmTHPmgjgzW5AKcEokwEizqQPOAzt+gWA0?=
+ =?iso-8859-1?Q?I=3D?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:CH2PR12MB4277.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(7416014)(366016)(1800799024); DIR:OUT; SFP:1101; 
+ SFS:(13230040)(1800799024)(366016)(7416014)(376014); DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?GR1DzHIven9Ufs7mY49w2mezmv4Z5CYho7/H11PBfSxMw9Bji3EuoF+nRt?=
- =?iso-8859-1?Q?wL7rb2vzZ/YL+vbj40+LQ/3u/MGb1SJOuuNn9tRH+JLvr2a1Kx4vkbKl2K?=
- =?iso-8859-1?Q?+cuFn4KhXEJnxYNw7SLQddLoJkKCOs2/Rnu9jfYIpXcBYHJpFz8BQKwCwX?=
- =?iso-8859-1?Q?EwXEAzUnblUDRMkiFutuWU/v1fs0Ovz3MVLIIq5zQLtONBm1+FSX/EpEt2?=
- =?iso-8859-1?Q?bgYIfuoUUZbC8XPOn7zMsKBg9xgHeEJYsBlmQ/zI4bhKrWUv4EARjIcSJo?=
- =?iso-8859-1?Q?Q3Opc6ptFFUjf8wVJgt5kyUn4POdhed+7sAPQMDjhU5V3c+157TRJ2aNHH?=
- =?iso-8859-1?Q?vl8ELpeQK0sGprAdp+3wyFal/e2fswVjGkBUyW5n0PO7Sp22OPEhWDwBAS?=
- =?iso-8859-1?Q?EKWfo3puZvZDzMXXqcsgbi48yqHIz4DrIstrjfcGXWdsXbK47uS6V5A9MM?=
- =?iso-8859-1?Q?NGMk4fWj90v2W5G0poQJtT/+OQFKAyP7wfGz16RB2smWwvx0T/GCjN4wCp?=
- =?iso-8859-1?Q?RwMq3eCFfEkOYL3Sp7afISzqUZSJA3WQnCU5ZDDzMygliw7uAZgv3y4e/n?=
- =?iso-8859-1?Q?VwciM7Zd0GFHFmrx/0YP1J6jy6ew57cM++OqQw8XSEh3j4BYfhiIeTgvNp?=
- =?iso-8859-1?Q?AuwodbwoA8dT75ZbvRggAs4k8DnrSqkKnK3XjnUgU4GMKdl1rb+Uv5lxKV?=
- =?iso-8859-1?Q?QU1HXDfJVfTs8KY9BeStjvip+JiiHldLaysKO8e8EzFx2yEym2PK3MUOau?=
- =?iso-8859-1?Q?fdzWfhWjNGPzNSl76eRpApyrzfoprkXa/t7pKff9HYAGxEklsXUQBerbUo?=
- =?iso-8859-1?Q?Pb4Odxk/FKOrtwMgUANNoplBbmE8euQMwDNCdFgshdKX18yaRL7LLD1IIi?=
- =?iso-8859-1?Q?Nt7XwP8m8ta+1U1Nsp1p6T2mTAcV1NIOWgeM8VtmBHLFg9VhKD/pxE1uZI?=
- =?iso-8859-1?Q?IRoQEf4r1CDi3cBD6ETbeJeUuK2JZM/55vzGo3QgQQ+SMICmg3ej+dw+Q+?=
- =?iso-8859-1?Q?QoJw+EEsdk/2fOeKnWiMDQGvSdthaLCkUu5U8J5hVlswdC4dO/Wn/NVJHo?=
- =?iso-8859-1?Q?okq+h2E2QQevcEhHY5/wTZGhdQ3TXxcqOXjS8ZklkU09iVGBX6Pk6Wau/j?=
- =?iso-8859-1?Q?na2kNbD/gZFftlV0o7di76OwLs5rjkKEZg1bTvpDu3Q10x4IHce8JIO5rn?=
- =?iso-8859-1?Q?Yzj6oNoVw1x7t8EihCq+jM6VhYx7xQR9iOGZ7bej0MhlnQUzRm9nyeOAi8?=
- =?iso-8859-1?Q?Pd+9EYAIexjvm0Y7enSy5L1tQ6nS3K8Uu525jWYniQhkpcuwU+U3L4Cr12?=
- =?iso-8859-1?Q?Mpjz1OxYmed+cr578bCN2apg+fx8GCal6o9W6icTOpA/E6cu2RUxLlj9An?=
- =?iso-8859-1?Q?LdLb2n7yvjQV8b39oNFEwvRbbcR5fZYtmv9pJeR0fsL4jT/XA0maE2s+pl?=
- =?iso-8859-1?Q?QmIQ/KSupOWOazgPrqHIOBDMQoeSM7eZEBinO/18hGmXuCxkUMPfacDQuz?=
- =?iso-8859-1?Q?wRZGqx9TCu3PR46GIeXkWoT50mUv5z2eiKDbTcBJO0Dpu2q407Gm2HpBlX?=
- =?iso-8859-1?Q?mtEshY9EDcCS0fc1CEn7X+V8ZBo+mCH0OjydMs2iUpXGq23xeCNK8lbC9D?=
- =?iso-8859-1?Q?aXUFCbXUhE9XXGnT9ouo4D1pW7gWcgdUls?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?pUrAkj3lErxJR805cakkb7vEDiGibS7CsRauXGBfPRlTTTCYCI7fQuICFD?=
+ =?iso-8859-1?Q?fuWDPGSDQWCBMOAqaAouZzd1CLfXH/bSJYzvF94wAXn+h/yjSJz18BF+Uk?=
+ =?iso-8859-1?Q?eeqMCeeT4ikIiCcWFbvF0V99xyc4Etbfwf+Zhx6RTwLJnOFwP2BeoK9jmS?=
+ =?iso-8859-1?Q?bLyKLpVXx987Co8nkSPVC1h2lxFYxn8dBijO+SpoLJ8oM3reZh8iUA3pIl?=
+ =?iso-8859-1?Q?sU4rrzO6rwnFb/xbr/AYSRmXz1c6T/eW3uRQdb4kDziCG3hedczyiL5lkv?=
+ =?iso-8859-1?Q?OeivYdqBQCVx9IgDrFRoYDo3gh+Kfa+JgogDP5NeJXQI+jumIPrsUms50r?=
+ =?iso-8859-1?Q?PcwqDin3/t1grHFKJNzFO6m7rvK/mxyByBUwX2Zy+5XfO31V+ZsElv61M1?=
+ =?iso-8859-1?Q?Hgkt0+XKFOcvY4r4BiyDOlLVdHeBd9MssGxtXJPNm7Sjx8eJGy0N6zDRjm?=
+ =?iso-8859-1?Q?NVCWKTQGGCcq/6ZTpfWpJKUfUJ1fyHlu7VvwevjHtQvmPKdYKqI7o+mpJb?=
+ =?iso-8859-1?Q?Xe43iUswTT+i5v3ynJebMXxKNKn9250TeYG4h1YfzL7gdj+MrbYrbMOTxu?=
+ =?iso-8859-1?Q?PW8wmJx2bGr7HkbjLbUy53V9UbbuZpbGjOREgQ/yYvn6ZbfofFPGVq0hXp?=
+ =?iso-8859-1?Q?nHd0fE5YLjpGT9lUGOfecQTCoZ8uufW0wp7u07YzUa1ygCHS1KvQFQA/QT?=
+ =?iso-8859-1?Q?5qUic39zTG+lqDjj3cc0j6Jfmtpght++5eIhqxSVC4qZr4C31sH6R4hmyd?=
+ =?iso-8859-1?Q?3XJddYVHHWW+8J5t0NOPo6xyhqLiPsWEK5OKmOCqDVwKsm20xJzvo/i+OX?=
+ =?iso-8859-1?Q?iCy2m3/D4ysZrfG8oO4b5UpMnAAHGfWYTYN+ZX1ctRMidY8pYYqSjYF/wk?=
+ =?iso-8859-1?Q?N9ch+7HN/6XEvI0CXlDflGV+XUFuFMm5AvuLdJj6uWSoeNqsbnXoS+KTqo?=
+ =?iso-8859-1?Q?rCnTsizeR21b1egTbhwyeDTCGPPmapivB1nEtDt6dcnmDsPsoNEtPXrI93?=
+ =?iso-8859-1?Q?RowA+WuNlUIAveCk7nwhLQjZCw6OZRd4AgobbIxSfelmlyMTDDPsO+2XcW?=
+ =?iso-8859-1?Q?4g/WalteNA5apb3E+Svg98c5A/E5LNYlBDWxJB20VJ6r88OWiR1vzNYI75?=
+ =?iso-8859-1?Q?aWib7v89q8vfT3bvs3Y1fKgpCUzUqVu9IdveVW1nDGkOGVjhRl+1Sh2hRu?=
+ =?iso-8859-1?Q?m3FF1ELUtqO2boSOMElGa8ERvgIrJISHw+XbooHf0SYkDOv2rdSG2jYtBK?=
+ =?iso-8859-1?Q?MsieDkAcvq0Mw/up4gFs50Qyi/M5joQdzONeT9WB/B1XmPFZ5P9qThhW+A?=
+ =?iso-8859-1?Q?JpdarcgYR2ABaiISE7U/EPWT92kEfSfHka574ZFZ0V3RjQwlvBgi73ip6V?=
+ =?iso-8859-1?Q?AF5ap0jps/3wuxNjYRvMizMTe6tkw3xU29/Tp/6GeSUSg1POAK0GgRZrLO?=
+ =?iso-8859-1?Q?vMBHUZ53CUzvBrrzC6gjXkHjA36vjLRG9JJhgtT9aAoxsEudoD8ypLmAlX?=
+ =?iso-8859-1?Q?+vSdQVxJfKZlqDC4533CjTZ0pI5Jae06XwZnBR6jS2bAp9Pjr/Amwqb+65?=
+ =?iso-8859-1?Q?gjuboQDGGQDFSKbU5LrHkKEw4DSegRRNvnaKFZ1Mo4GOBKHhmrg3OJUzTK?=
+ =?iso-8859-1?Q?j+eqHPdKacsoC1x/tGg6LLXV7ZSkD+zO4O?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5c46ffec-79e4-4772-5f16-08ddb99d9269
+X-MS-Exchange-CrossTenant-Network-Message-Id: fa77f332-fc17-4507-ba08-08ddb99e7e57
 X-MS-Exchange-CrossTenant-AuthSource: CH2PR12MB4277.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Jul 2025 19:20:57.5238 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Jul 2025 19:27:33.3667 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: BxQihVF6uLYkce30SSKHKGN0hiOmW3yCdgwRBDlrhIHUd+labMOKqOLXhHu+1GNj2HpAJbyFeQWvnGb+KRpvmQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR12MB6928
-Received-SPF: permerror client-ip=2a01:111:f403:2416::61a;
+X-MS-Exchange-CrossTenant-UserPrincipalName: KV6VtsXoTzNJISCNUoUKim7rz4vXFkfdzEJVy+tbn4x1NwLbKR/FVpjur+9gBj2DeJSo8OSWj0Sj5gQin17ngg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV2PR12MB5848
+Received-SPF: permerror client-ip=2a01:111:f403:2413::610;
  envelope-from=etanous@nvidia.com;
- helo=NAM11-CO1-obe.outbound.protection.outlook.com
+ helo=NAM10-DM6-obe.outbound.protection.outlook.com
 X-Spam_score_int: -16
 X-Spam_score: -1.7
 X-Spam_bar: -
@@ -179,65 +176,78 @@ Reply-to:  etanous <etanous@nvidia.com>
 From:  etanous via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: n4RGEbfjk000
+X-TUID: hliR0MQAMkPG
 
-On Wed, Jul 02, 2025 at 09:04:25AM +0200, Philippe Mathieu-Daudé wrote:
+On Wed, Jul 02, 2025 at 09:00:20AM +0200, Cédric Le Goater wrote:
+> External email: Use caution opening links or attachments
 > 
-> Hi,
 > 
-> On 2/7/25 08:47, Cédric Le Goater wrote:
-> > Hello Ed,
+> On 7/1/25 22:33, Ed Tanous wrote:
+> > Aspeed2600 has two spi lanes;  Add a new struct that can mount the
+> > second SPI.
 > > 
-> > On 7/1/25 22:33, Ed Tanous wrote:
-> > > From: Ed Tanous <ed@tanous.net>
-> > > 
-> > > There are arm targets that are connected to this io expander,
-> > > specifically some varieties of Aspeed 2600 BMCs.  Add it to Kconfig to
-> > > allow use.
-> > > 
-> > > Signed-off-by: Ed Tanous <etanous@nvidia.com>
-> > > ---
-> > >   hw/arm/Kconfig | 1 +
-> > >   1 file changed, 1 insertion(+)
-> > > 
-> > > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> > > index f543d944c3..6ea86534d5 100644
-> > > --- a/hw/arm/Kconfig
-> > > +++ b/hw/arm/Kconfig
-> > > @@ -532,6 +532,7 @@ config ASPEED_SOC
-> > >       select I2C
-> > >       select DPS310
-> > >       select PCA9552
-> > > +    select PCA9554
+> > Signed-off-by: Ed Tanous <etanous@nvidia.com>
+> > ---
+> >   hw/arm/aspeed.c         | 2 ++
+> >   include/hw/arm/aspeed.h | 2 ++
+> >   2 files changed, 4 insertions(+)
+> > 
+> > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> > index d0b333646e..3ef7f6c5b2 100644
+> > --- a/hw/arm/aspeed.c
+> > +++ b/hw/arm/aspeed.c
+> > @@ -465,6 +465,8 @@ static void aspeed_machine_init(MachineState *machine)
+> >           aspeed_board_init_flashes(&bmc->soc->spi[0],
+> >                                 bmc->spi_model ? bmc->spi_model : amc->spi_model,
+> >                                 1, amc->num_cs);
+> > +        aspeed_board_init_flashes(&bmc->soc->spi[1],
+> > +                                  amc->spi2_model, 1, amc->num_cs2);
+> >       }
+> > 
+> >       if (machine->kernel_filename && sc->num_cpus > 1) {
+> > diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+> > index 973277bea6..6c36455656 100644
+> > --- a/include/hw/arm/aspeed.h
+> > +++ b/include/hw/arm/aspeed.h
+> > @@ -35,7 +35,9 @@ struct AspeedMachineClass {
+> >       uint32_t hw_strap2;
+> >       const char *fmc_model;
+> >       const char *spi_model;
+> > +    const char *spi2_model;
+> >       uint32_t num_cs;
+> > +    uint32_t num_cs2;
+> >       uint32_t macs_mask;
+> >       void (*i2c_init)(AspeedMachineState *bmc);
+> >       uint32_t uart_default;
 > 
-> Note, these i2c devices 1/ aren't part of the SoC, but boards/machines,
-> 2/ nor are they required to have a functional machine (i.e. a i2c link
-> could get cut or an i2c device ending dead).
+> Another way specifying backends for all SPI devices is to use -blockdev :
 > 
-> I'd prefer 1/ add a ASPEED_MACHINE layer selecting ASPEED_SOC and the
-> external devices, and 2/ use "imply" statement instead of "select" for
-> devices, as per docs/devel/kconfig.rst:
-> 
->   Boards specify their constituent devices using ``imply`` and
->   ``select`` directives.  A device should be listed under ``select``
->   if the board cannot be started at all without it.  It should be
->   listed under ``imply`` if (depending on the QEMU command line)
->   the board may or may not be started without it.  Boards default to
->   true, but also have a ``depends on`` clause to limit them to the
->   appropriate targets.
->   For some targets, not all boards may be supported by hardware
->   virtualization, in which case they also depend on the ``TCG``
->   symbol, other symbols that are commonly used as dependencies for
->   boards include libraries (such as ``FDT``) or ``TARGET_BIG_ENDIAN``
->   (possibly negated).
+>   $ qemu-system-arm -M ast2600-evb \
+>       -blockdev node-name=fmc0,driver=file,filename=/path/to/fmc0.img \
+>       -device mx66u51235f,bus=ssi.0,cs=0x0,drive=fmc0 \
+>       -blockdev node-name=fmc1,driver=file,filename=/path/to/fmc1.img \
+>       -device mx66u51235f,bus=ssi.0,cs=0x1,drive=fmc1 \
+>       -blockdev node-name=spi1,driver=file,filename=/path/to/spi1.img \
+>       -device mx66u51235f,cs=0x0,bus=ssi.1,drive=spi1 \
+>       -nographic -nodefaults
 > 
 
-ACK, seems reasonable.  I tried to follow the pattern that was there,
-but agreed, it was odd that "board" level things were added at the ARM
-layer.
+I had attempted that at one point.  The second SPI flash is expected to
+be empty on first boot, so building up an empty file with dd seemed like
+a waste, and pushed more details on the user calling the machine to
+know the machine configuration.  FWIW, yoctos 'runqemu' helper script is
+also very useful, but getting it to spit out non-standard args and files
+isn't the easiest.  If what's in this patch is ok, I'd like to stick
+with it.  If not, I can dig deeper into trying to do this on command
+line.
 
-> My 2 cents.
+> See <LINK SCRUBBED>
 > 
-> Regards,
+> Have you tried it ?
 > 
-> Phil.
+> 
+> Thanks,
+> 
+> C.
+> 
+> 

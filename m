@@ -1,114 +1,116 @@
-Received: by 2002:a05:622a:6187:b0:4a7:49b6:ba6e with SMTP id hh7csp3699237qtb;
-        Wed, 2 Jul 2025 05:26:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW8iJtSZklTXzL5KeHHywN/HsgrE4JP5pf26Pn/PprhQ66IILY+18lE8bRVivPLPByq6OePKBZshAjdjQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IH4wW1eQdL+e7k+QUv/r9/t7Q43f6yjCxsn3ywgnvrxwe5feCAN3loG8E7L1dRohnVteRSP
-X-Received: by 2002:a05:620a:2996:b0:7d3:ba53:d88c with SMTP id af79cd13be357-7d5c478e8d6mr321289585a.30.1751459187303;
-        Wed, 02 Jul 2025 05:26:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751459187; cv=none;
+Received: by 2002:a05:622a:6187:b0:4a7:49b6:ba6e with SMTP id hh7csp3704511qtb;
+        Wed, 2 Jul 2025 05:35:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUYuYD615IyP3yvnNGanuJ0VIaN4MOh32z/59loNDpr+AHeTnrIM6KBHEiQ2pCKxyVBV1/LvQXbaIrApA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHsTs3cAfJdng97cB4or0fM4vKbvh4yRr41AccC3g7OG4HKlQgOZuc17HwAv7KuMv/SBlE4
+X-Received: by 2002:a05:620a:7005:b0:7d2:1199:d850 with SMTP id af79cd13be357-7d5c47363cbmr350703785a.24.1751459700519;
+        Wed, 02 Jul 2025 05:35:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751459700; cv=none;
         d=google.com; s=arc-20240605;
-        b=FT4wwVAlweaAVjY/X0h+0ndc+wIcL4WYIGS0DQrL+PqkNGQwIt2yx9IiCIvUUkHVEE
-         AHPTkE+tP+qYPHqiz1tolwr6mh0X65mTlLEXb39CHAgPw048irl3bbGcqmFCEEHNO4pc
-         BoZfMsvsKwDjXxU42EL+Y8+4ayg/XoHCtcaS7LkJeRQLtvLiF8iq9sbU9XU6D/eUJH2K
-         E0/eXD+F9U7qeH4qLs0HEuQo4eO6EaP8illloncN8eDMSy6If+sDRtxAMJem0d0mGd03
-         HsU5vWoCGXGP0DNW5Ry346ONmKf5UuEFKuFtEZuGfLK15UcJs7+2SNyS3FMwJB/ABgl9
-         CPTw==
+        b=FG8pzVIkhg0y6zJqSTKIOAUJXxnMskNrshThG6/rkwCAhMeSNYfTnJ1xvak7Le5nVY
+         W8HFE8BGQnJH2nwl9D0g32H1zjDHeAuqTE2jS64SBmoKcnMU16NluhCJdYrZN/4wTmtz
+         pd2wm7m7GbdZUB/NWvDASnaPfA4ShvJ5Bmox5+h8If11GBVAqaIbxjswIf19OYIlRaxf
+         7FefVH6A9PgHl9Gmfeo2zwjmpQdzX6R9l/7J2YJP7qgZnVXAO3tMNYCayDuYbJVpZyd2
+         ccEW6yGdKcAg3UNSUvqD+DYbXWVYWCPRrx07K47wv7aPpImeIsY6TfRqzDezGssoH+8O
+         XG/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ySkdVJ0hHGep9Ajf3QmKn3ttpJmzhhtBTQDGQch3lt8=;
+        bh=BNNMHr09tTasVhE+8wqFbbS+T9GKbkOkcJYOlgxT0c0=;
         fh=vZxkDpCwvhENXlY8qSqryGKuN7qdzoFpPjxnavaSuNI=;
-        b=Xm9yCAB077SbMva2lMzGk6euaH9Y9l6BFyHozEeJt/nVIn1Iv8mR08aas+qhZDUNbY
-         V33VDwVm4TSJDQeiVGQtM+Q34q3hORtQ1WocNWLeHDDx4SxOdpIna0+OAfPaoAtNDm+r
-         ngaE+cKFs7K3v3MWsjewifu50SEGhDTmwZScq5+zHooVb9jsgTQjBip3b8IhHSntcH3C
-         8EBZXOVtd+FOQn6scwicQcgfBaIui0VMoMoOatLGgaSLMXciU5oo2jZB6IMRNlrRGHl7
-         uta80ZjxxReEa8jZH9W71nNY1ndqqeUYKufqHoW9sss12T3q4TqPGYoFNKZapAF3bwjh
-         79yg==;
+        b=V0FYneaJi5PaeCJwqKzQJn7A+PfjR+UityGh57LvaipeUTx8w+qyle8ur7yuboZ3Y3
+         l2ng7AbnwwoN0zT+L2Wa3xaPfSoedVef4wSWsw7208oOWOfR7/GhhIlA1FL4M8CNwatk
+         8e0873LKdR7KX1Haaj6vzKNtx1wYU/pr5Kv1SMJoSWD4p0aqW+x7oyAbRhbZVnAO1i08
+         wzOOX6owYxkpak4jfx24bu1oZgjtwPCwtItJLtt5tZdVg32lhYkPt9/GfNLTX56ZWu1E
+         ETFKUCwzXrTm/Bv13F+rbCj3caiJHjfo97RB4Vc6Ebzvjpo2w8OMS3otdk1UihS4dssz
+         2gmQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B4TD5wxx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NBa7i8vd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d4432a4f64si1291916785a.635.2025.07.02.05.26.27
+        by mx.google.com with ESMTPS id af79cd13be357-7d5bf85a4f5si258202285a.204.2025.07.02.05.35.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jul 2025 05:26:27 -0700 (PDT)
+        Wed, 02 Jul 2025 05:35:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B4TD5wxx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NBa7i8vd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uWwTu-0004px-4I; Wed, 02 Jul 2025 08:22:30 -0400
+	id 1uWwfh-0007Wp-HD; Wed, 02 Jul 2025 08:34:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uWwTr-0004pG-KR
- for qemu-devel@nongnu.org; Wed, 02 Jul 2025 08:22:27 -0400
-Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
+ id 1uWwfa-0007Rm-8y
+ for qemu-devel@nongnu.org; Wed, 02 Jul 2025 08:34:34 -0400
+Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uWwTk-0007Bu-NS
- for qemu-devel@nongnu.org; Wed, 02 Jul 2025 08:22:27 -0400
-Received: by mail-oa1-x34.google.com with SMTP id
- 586e51a60fabf-2e9071e3706so2767422fac.0
- for <qemu-devel@nongnu.org>; Wed, 02 Jul 2025 05:22:19 -0700 (PDT)
+ id 1uWwfI-0000uS-Kf
+ for qemu-devel@nongnu.org; Wed, 02 Jul 2025 08:34:33 -0400
+Received: by mail-ot1-x32c.google.com with SMTP id
+ 46e09a7af769-72c16e658f4so2262853a34.1
+ for <qemu-devel@nongnu.org>; Wed, 02 Jul 2025 05:34:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751458936; x=1752063736; darn=nongnu.org;
+ d=linaro.org; s=google; t=1751459653; x=1752064453; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=ySkdVJ0hHGep9Ajf3QmKn3ttpJmzhhtBTQDGQch3lt8=;
- b=B4TD5wxx7ZNIV4vSCaUXAqF4xljbPGqJOdRHt4K2/89uItc6wISjQIyUhkpPo2bvCg
- uDF3nAe4S4TtxW2fj4Ppk2xYEPAZHEgot2IZvCT1dlIDmdAZf7IGkK60z9VbG2Htsmit
- uqU/l4onA/cBUbFi0RMcOSflcN4a84LqE7Gwgx+kjmD3gCvLqEHbO6YHxdjdm8v9nnyH
- Jvhh+Oo1zyHzpn/ftbiuOCgukduv9+ChvYFLJq21lQ2SFXpWFHehayfUWBfUbxG8zjE7
- nUJaCFHj8Yg7tvLNx9dgoFuzYZk9n41iPY/MXM841Q/f8/+3b9IN5lcRYUmE7LFxAOiv
- IIyA==
+ bh=BNNMHr09tTasVhE+8wqFbbS+T9GKbkOkcJYOlgxT0c0=;
+ b=NBa7i8vdvo2o7txH7zY8TKcAGvO4FJDhdtjC2rJhm1uCeBGWvjhJmi0b4lNXp/VBEb
+ oykJAMBkV8ZPxPWocRUSPFPBM5uA3tj7hYhI3SsQO/gB9BMr5pdVNbrRqwofLQJRfsxB
+ tDmVziSMOoN+sXzq3r7rVa0UnG+zDyB4ijbwBZS4jy9PEWqncpftK22h1Kc+TbyVQx3e
+ gVewlxlSsM6QdjQ1ZpBQOJruitnwcCNkAIRUFzygKlEYaKFPUMhq9X4VPWssPRt2jwCS
+ YcMOMHFdGk2WzPpCnnjddWqx5BMLzcVtQWVFS/5SOSYI3CIzwHJUpH/na3mhJ/0cr/tR
+ x+Sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751458936; x=1752063736;
+ d=1e100.net; s=20230601; t=1751459653; x=1752064453;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=ySkdVJ0hHGep9Ajf3QmKn3ttpJmzhhtBTQDGQch3lt8=;
- b=XWSRv6gvjEdCBBlwK6oF/FQ5ERD+tLoySrtqpMrKopqBr8288TXlyVWyI8dP86cSBo
- ML7whIZB+hpJheNErorMUymTWIbvb7Py38wvSzBPjCdGvi/pvgOwLZnc0r4D+AJOopRg
- fqA0gi3Vlsf9GxDcQs8R10rLe3BKwoTKnZcVdstw4lN2j954i/+d/Qka+gMHUE+FWYnD
- p+BQ8i9miXTjDpQOUpctWF2HJ0BtaG1vQr7bPtcpEcR4WNy3A8jkqX9hG/gvgYx03vK7
- 0vRdDJod3AGS2OV3kqGudK2ZLtPcQL8hOTCvep7X5s5qXAMU7g22nBAwjX6G0e49XMEX
- FXgA==
-X-Gm-Message-State: AOJu0Yz76ckCTYG/SfEVXKQIxd8kYRSZfLvjnnHTeOH0lLywZFPduzF6
- srLcx3ilZdlPGynXOVW8Nmk/NR0fRMNDFdDoN4af7Va0WhbE5BGnYc9RBAje2gmc+46h8YCOakP
- fIguUVwk=
-X-Gm-Gg: ASbGncsoeTDZJ3SN3uRqntt029lu3Ee/dJPNZv9lkExo+XO+ClydYMPRuwTwJiT+4dV
- d3wg4LlWxy5xEdmfutZJUap93RitEBhYn/MoyRqYTqgzNq3uxgW4Z1UqFUH0ujSAI7GDDiEYo1l
- PD52DIDPBQNm9KNxIgK6iQpv87HUBzfVu/wBgsZM27R2MMtPq+ITY00cyOmZxR8YDGOXA6LL+qL
- YFr77MXo387owDZaQXYf0ZHxX7MQYDpfTx9821ly8RSgNo8HdDha/df9fkvfW1m8SLM1RZ/m6m3
- p142tEmG6wF2Cp3sH5sjHf+1MrTlSCSqsJPKKYYRLa7LuT+RNDUWMQPsY2znLgLxWrUPew==
-X-Received: by 2002:a05:6870:524:b0:2e9:93c6:6e4a with SMTP id
- 586e51a60fabf-2f5c79fd99emr1922933fac.38.1751458935766; 
- Wed, 02 Jul 2025 05:22:15 -0700 (PDT)
+ bh=BNNMHr09tTasVhE+8wqFbbS+T9GKbkOkcJYOlgxT0c0=;
+ b=jvZbH2epDtTTQPCSPwzwLuLK8XQaBKWuBnSQtZ9ZNfnhYYnVsUmR5CXEXndOzpkQXI
+ R66v1Z6MXc+hO8i5iUhEJQikDQJs1/D06eW8F431ZbL9Tlz2emodSMHxKvkrLBQstsWd
+ LG1+olZc9szqGRv2nQ5oqlcuI04lVUd8ebiJo4iAFX84xqFvfS+IF0WRu7bKo42lTeg3
+ vvdRd8/Jhma++IqG24vp3xNTEYJhft8IVBVtdMOmPg4pMP2NzpaGeO0PtJFYGJM0JOdn
+ psI+lap7WVgVx2WOtbuGwCmzmCelBcKpj28otNVygj1KBtVbhN6kyLTelkZuDuJ2Km+E
+ wrLQ==
+X-Gm-Message-State: AOJu0YzwnHxBV7QiwhmIkYLNb3ehjxnmKhq3ZCKlTuNDX48waIIGj42l
+ sRTepZ2+47lPDXSNPFO9WjyeGcExlW+1etTBmdg51GyrDe/rZrniEYInDDnPzuRmyj64q/g2gcU
+ 1iKqfobQ=
+X-Gm-Gg: ASbGncu8Em91KaajZjC/wN7ku5fgsOGVw3JWKuJnr8t/1s5ft0I5/V/blXd0Dhi/Did
+ qGvjbnbCQc5x+14Or0h4rD2zCj6Cs9fHVgAVeNP37b+TzmsZ3gs9SnFUhesGjwuRKt0kNkpKJA6
+ GgIutzIB15KGtVU3jRhw0H2ZcHGCsUrW0XG26HbQ6tilxlL9IKQDeR9mXo52JJ/dHYAjE1y5qAo
+ GrqtBMMJxv+6tYHQIK8xfSfaGUMIKttkqcyFp0npwpbHZgCOzDm7e3WVAOPWEhz4Rb86rN9//rl
+ p1YNtFEUbaQnnmhToD2ygYoppQDR6nQ94DpMtmSabP7R87SE+f/R70VQw1i4p4+WJZ2zHJRttQE
+ 74gKg
+X-Received: by 2002:a05:6830:2a0c:b0:727:876:c849 with SMTP id
+ 46e09a7af769-73b4d2863c1mr1984875a34.27.1751459653153; 
+ Wed, 02 Jul 2025 05:34:13 -0700 (PDT)
 Received: from stoup.. ([187.210.107.185]) by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-2efd50b1bd3sm3785013fac.28.2025.07.02.05.22.14
+ 586e51a60fabf-2efd50b1b2fsm3864281fac.32.2025.07.02.05.34.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Jul 2025 05:22:15 -0700 (PDT)
+ Wed, 02 Jul 2025 05:34:12 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v3 00/10] target/arm: SME1/SVE2 fixes
-Date: Wed,  2 Jul 2025 06:22:03 -0600
-Message-ID: <20250702122213.758588-1-richard.henderson@linaro.org>
+Subject: [PATCH v3 00/97] target/arm: Implement FEAT_SME2p1
+Date: Wed,  2 Jul 2025 06:32:33 -0600
+Message-ID: <20250702123410.761208-1-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::34;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x34.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,40 +132,161 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d9Axet0T2/2o
+X-TUID: srmuOMBoPZIV
 
-- A couple of fixes for EC_SMETRAP, plus some insns that missed
-  being updated for non-streaming.
-  (Removed the switch (bool) that PMM commented on, and as it
-  turns out our clang CI Werrors on; now perhaps clearer using
-  if + goto, where the label name helps clarify things.)
-- Disable FEAT_F64MM if the command-line sve vector size cannot
-  support it (PMM)
-- Fix a gvec assert in PSEL
-- Fix NaN selection per FPDot pseudocode.
+Based-on: 20250702122213.758588-1-richard.henderson@linaro.org
+("[PATCH v3 00/10] target/arm: SME1/SVE2 fixes")
+
+Since v2:
+  - The tcg prep patches have been merged.
+  - https://gitlab.arm.com/kleidi/kleidiai test suite now passes.
+  - Too many other bug fixes to list.
+
 
 r~
 
-Richard Henderson (10):
-  target/arm: Fix SME vs AdvSIMD exception priority
-  target/arm: Fix sve_access_check for SME
-  target/arm: Fix 128-bit element ZIP, UZP, TRN
-  target/arm: Replace @rda_rn_rm_e0 in sve.decode
-  target/arm: Fix FMMLA (64-bit element) for 128-bit VL
-  target/arm: Disable FEAT_F64MM if maximum SVE vector size too small
-  target/arm: Fix PSEL size operands to tcg_gen_gvec_ands
-  target/arm: Fix f16_dotadd vs nan selection
-  target/arm: Fix bfdotadd_ebf vs nan selection
-  target/arm: Remove CPUARMState.vfp.scratch
 
- target/arm/cpu.h               |  3 --
- target/arm/cpu64.c             |  6 +++
- target/arm/tcg/sme_helper.c    | 62 ++++++++++++++++++++--------
- target/arm/tcg/translate-a64.c | 29 +++++++++----
- target/arm/tcg/translate-sve.c | 67 +++++++++++++++++++++---------
- target/arm/tcg/vec_helper.c    | 75 ++++++++++++++++++++++++----------
- target/arm/tcg/sve.decode      | 48 +++++++++++-----------
- 7 files changed, 197 insertions(+), 93 deletions(-)
+Peter Maydell (4):
+  target/arm: Rename FMOPA_h to FMOPA_w_h
+  target/arm: Rename BFMOPA to BFMOPA_w
+  target/arm: Implement FMOPA (non-widening) for fp16
+  target/arm: Implement SME2 BFMOPA (non-widening)
+
+Richard Henderson (93):
+  target/arm: Introduce FPST_ZA, FPST_ZA_F16
+  target/arm: Use FPST_ZA for sme_fmopa_[hsd]
+  target/arm: Rename zarray to za_state.za
+  target/arm: Add isar feature tests for SME2p1, SVE2p1
+  target/arm: Add ZT0
+  target/arm: Add zt0_excp_el to DisasContext
+  target/arm: Implement SME2 ZERO ZT0
+  target/arm: Add alignment argument to gen_sve_{ldr,str}
+  target/arm: Implement SME2 LDR/STR ZT0
+  target/arm: Implement SME2 MOVT
+  target/arm: Split get_tile_rowcol argument tile_index
+  target/arm: Rename MOVA for translate
+  target/arm: Split out get_zarray
+  target/arm: Introduce ARMCPU.sme_max_vq
+  target/arm: Implement SME2 MOVA to/from tile, multiple registers
+  target/arm: Implement SME2 MOVA to/from array, multiple registers
+  target/arm: Implement SME2 BMOPA
+  target/arm: Implement SME2 SMOPS, UMOPS (2-way)
+  target/arm: Introduce gen_gvec_sve2_sqdmulh
+  target/arm: Implement SME2 Multiple and Single SVE Destructive
+  target/arm: Implement SME2 Multiple Vectors SVE Destructive
+  target/arm: Implement SME2 ADD/SUB (array results, multiple and single
+    vector)
+  target/arm: Implement SME2 ADD/SUB (array results, multiple vectors)
+  target/arm: Pass ZA to helper_sve2_fmlal_zz[zx]w_s
+  target/arm: Add helper_gvec{_ah}_bfmlsl{_nx}
+  target/arm: Implement SME2 FMLAL, BFMLAL
+  target/arm: Implement SME2 FDOT
+  target/arm: Implement SME2 BFDOT
+  target/arm: Implement SME2 FVDOT, BFVDOT
+  target/arm: Rename helper_gvec_*dot_[bh] to *_4[bh]
+  target/arm: Implemement SME2 SDOT, UDOT, USDOT, SUDOT
+  target/arm: Rename SVE SDOT and UDOT patterns
+  target/arm: Tighten USDOT (vectors) decode
+  target/arm: Implement SDOT, UDOT (2-way) for SME2/SVE2p1
+  target/arm: Implement SME2 SVDOT, UVDOT, SUVDOT, USVDOT
+  target/arm: Implement SME2 SMLAL, SMLSL, UMLAL, UMLSL
+  target/arm: Rename gvec_fml[as]_[hs] with _nf_ infix
+  target/arm: Implement SME2 FMLA, FMLS
+  target/arm: Implement SME2 BFMLA, BFMLS
+  target/arm: Implement SME2 FADD, FSUB, BFADD, BFSUB
+  target/arm: Implement SME2 ADD/SUB (array accumulator)
+  target/arm: Implement SME2 BFCVT, BFCVTN, FCVT, FCVTN
+  target/arm: Implement SME2 FCVT (widening), FCVTL
+  target/arm: Implement SME2 FCVTZS, FCVTZU
+  target/arm: Implement SME2 SCVTF, UCVTF
+  target/arm: Implement SME2 FRINTN, FRINTP, FRINTM, FRINTA
+  target/arm: Introduce do_[us]sat_[bhs] macros
+  target/arm: Use do_[us]sat_[bhs] in sve_helper.c
+  target/arm: Implement SME2 SQCVT, UQCVT, SQCVTU
+  target/arm: Implement SQCVTN, UQCVTN, SQCVTUN for SME2/SVE2p1
+  target/arm: Implement SME2 SUNPK, UUNPK
+  target/arm: Implement SME2 ZIP, UZP (four registers)
+  target/arm: Move do_urshr, do_srshr to vec_internal.h
+  target/arm: Implement SME2 SQRSHR, UQRSHR, SQRSHRN
+  target/arm: Implement SME2 ZIP, UZP (two registers)
+  target/arm: Implement SME2 FCLAMP, SCLAMP, UCLAMP
+  target/arm: Enable SCLAMP, UCLAMP for SVE2p1
+  target/arm: Implement FCLAMP for SME2, SVE2p1
+  target/arm: Implement SME2p1 Multiple Zero
+  target/arm: Introduce pred_count_test
+  target/arm: Fold predtest_ones into helper_sve_brkns
+  target/arm: Split out do_whilel from helper_sve_whilel
+  target/arm: Split out do_whileg from helper_sve_whileg
+  target/arm: Move scale by esz into helper_sve_while*
+  target/arm: Split trans_WHILE to lt and gt
+  target/arm: Enable PSEL for SVE2p1
+  target/arm: Implement SVE2p1 WHILE (predicate pair)
+  target/arm: Implement SVE2p1 WHILE (predicate as counter)
+  target/arm: Implement SVE2p1 PTRUE (predicate as counter)
+  target/arm: Implement {ADD,SMIN,SMAX,UMIN,UMAX}QV for SVE2p1
+  target/arm: Implement SVE2p1 PEXT
+  target/arm: Implement SME2 SEL
+  target/arm: Implement ANDQV, ORQV, EORQV for SVE2p1
+  target/arm: Implement FADDQV, F{MIN,MAX}{NM}QV for SVE2p1
+  target/arm: Implement BFMLSLB{L,T} for SME2/SVE2p1
+  target/arm: Implement CNTP (predicate as counter) for SME2/SVE2p1
+  target/arm: Implement DUPQ for SME2p1/SVE2p1
+  target/arm: Implement EXTQ for SME2p1/SVE2p1
+  target/arm: Implement PMOV for SME2p1/SVE2p1
+  target/arm: Implement ZIPQ, UZPQ for SME2p1/SVE2p1
+  target/arm: Implement TBLQ, TBXQ for SME2p1/SVE2p1
+  target/arm: Implement SME2 counted predicate register load/store
+  target/arm: Split the ST_zpri and ST_zprr patterns
+  target/arm: Implement {LD1,ST1}{W,D} (128-bit element) for SVE2p1
+  target/arm: Move ld1qq and st1qq primitives to sve_ldst_internal.h
+  target/arm: Implement {LD,ST}[234]Q for SME2p1/SVE2p1
+  target/arm: Implement LD1Q, ST1Q for SVE2p1
+  target/arm: Implement MOVAZ for SME2p1
+  target/arm: Implement LUTI2, LUTI4 for SME2/SME2p1
+  target/arm: Support FPCR.AH in SME FMOPS, BFMOPS
+  target/arm: Enable FEAT_SME2p1 on -cpu max
+  linux-user/aarch64: Set hwcap bits for SME2p1/SVE2p1
+  tests/tcg/aarch64: Add sme2-matmul test case
+
+ target/arm/cpu-features.h          |   63 ++
+ target/arm/cpu.h                   |   67 +-
+ target/arm/syndrome.h              |    1 +
+ target/arm/tcg/helper-sme.h        |  215 +++-
+ target/arm/tcg/helper-sve.h        |  212 ++++
+ target/arm/tcg/helper.h            |   91 +-
+ target/arm/tcg/sve_ldst_internal.h |   89 ++
+ target/arm/tcg/translate-a64.h     |   10 +-
+ target/arm/tcg/translate.h         |    9 +
+ target/arm/tcg/vec_internal.h      |  130 +++
+ linux-user/aarch64/signal.c        |    4 +-
+ linux-user/elfload.c               |    8 +
+ target/arm/cpu.c                   |   11 +-
+ target/arm/cpu64.c                 |    1 +
+ target/arm/helper.c                |    8 +-
+ target/arm/machine.c               |   22 +-
+ target/arm/tcg/cpu64.c             |   10 +-
+ target/arm/tcg/gengvec64.c         |   11 +
+ target/arm/tcg/helper-a64.c        |    2 +
+ target/arm/tcg/hflags.c            |   34 +-
+ target/arm/tcg/mve_helper.c        |   21 -
+ target/arm/tcg/neon_helper.c       |   30 +
+ target/arm/tcg/sme_helper.c        | 1599 ++++++++++++++++++++++++++--
+ target/arm/tcg/sve_helper.c        | 1424 ++++++++++++++++++++++---
+ target/arm/tcg/translate-a64.c     |   16 +-
+ target/arm/tcg/translate-neon.c    |   18 +-
+ target/arm/tcg/translate-sme.c     | 1480 ++++++++++++++++++++++++-
+ target/arm/tcg/translate-sve.c     |  947 ++++++++++++++--
+ target/arm/tcg/vec_helper.c        |  309 +++++-
+ target/arm/tcg/vfp_helper.c        |   12 +-
+ tests/tcg/aarch64/sme2-matmul-0.c  |  236 ++++
+ docs/system/arm/emulation.rst      |    6 +
+ target/arm/tcg/sme.decode          |  937 +++++++++++++++-
+ target/arm/tcg/sve.decode          |  279 ++++-
+ tests/tcg/aarch64/Makefile.target  |   11 +-
+ tests/tcg/aarch64/sme2-matmul-1.S  |  321 ++++++
+ 36 files changed, 8046 insertions(+), 598 deletions(-)
+ create mode 100644 tests/tcg/aarch64/sme2-matmul-0.c
+ create mode 100644 tests/tcg/aarch64/sme2-matmul-1.S
 
 -- 
 2.43.0

@@ -1,80 +1,77 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3618320dye;
-        Tue, 1 Jul 2025 23:44:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUj4lrIF1yFQF8RKcSK5OM/q0wCo5h/9SHIC4Q8bcvdoFTyMwzdGirfg/cxKQtGDswXQYw6LCS0YE/69w==@linaro.org
-X-Google-Smtp-Source: AGHT+IHg+xXQgCJ2a+RPi6ziZ0/kjjOtyKnhRd1tJVmosfAXQiLq2jaIdoL/iEvogstTeZmbCPlv
-X-Received: by 2002:ac8:7d44:0:b0:4a4:3be3:6d65 with SMTP id d75a77b69052e-4a976976d78mr27897081cf.33.1751438670259;
-        Tue, 01 Jul 2025 23:44:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751438670; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3619676dye;
+        Tue, 1 Jul 2025 23:48:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVvLdKR30DXq+dH2pAxRE4RIMdwAEANafSX+D5y3my/mcnpfviXPSFL7TFpXbJyA/Ldm8ZhTp7upfROwA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFqSq1NKRefZtI+7LRdA+WClfD4xRXFtFpIweUuQHYjBF23Hz6zmJRqCiKUFXAnOlEPnadQ
+X-Received: by 2002:a05:6214:194a:b0:6f4:cfb3:9df9 with SMTP id 6a1803df08f44-702b1bef4e6mr22948126d6.33.1751438907135;
+        Tue, 01 Jul 2025 23:48:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751438907; cv=none;
         d=google.com; s=arc-20240605;
-        b=TdK53lWfsENvhoNbFrEQBnhyocwj5y26Dywz8kEgNt1sUEUa/QcORwcO8bGKljix9y
-         FHZRVaDtZu48ZKMXDqYskykgWIyCzeVtBnbUi39lBNhuFBmtyXZ8yj1zu6O2hOEu40bm
-         ROUlrNgriVWy2m+niFywVVk0DlI/prIdeCM49t0NXs6Db86+aNP0RQTssot+n7WTuDp7
-         WmxKhqKZzJzBhjo8csiXAoRX4EX1h2ukEHzCd9Ma5nwWZnUlg2NIQ6pOUssF3cj7L/k0
-         xdNBJzZqPBv4M7aWK+wmDTU9prhD+IytTDsVR6o2E0c4GEQR718XPVTPeRjOpBXu6ZuX
-         rCag==
+        b=TyDZVxKu1p7gpOOEUzTstx1fhw1/uO+mPcFYg2PYTmWqsuJWCrQ4o6zuExkfk9A3D3
+         OI6yrFI40VZFpgiShsSEjNidAzLSRVFPa2WH9JLUdRLVuqgehq0+m+FKW09c93Yc6ATo
+         GaPtcTWv2agAUclnGZAAzo6m/qs3SQV0WSpFWpEUNZPVE4aP5NvXbKNcD5AjuMGY/S8k
+         AeETxTQ/8RjM7o7+2f5ob2jGoWCo2boEg0eg+fNuxgdMyn87GQyYWvYgCaxTvxo7vZOA
+         GK8RkG8dhy5r7DLcS7KBKOyDi74DSmzLNYP/2rC3TuXdDIOc0SjnrynXT87PJ4GsEHfL
+         Rlag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=1wlY85cAwf0f/cuzhCOa11WCowT9pIjz1wy7cECwcLc=;
-        fh=CL8FkEck4sBUNnn94VzrZRxnUNRexsX6t//lDNccdpQ=;
-        b=gYVsNTlnFuRD+1ynXB3AVlmGMRfY0gP2xP54Ya5ceyZ94XoL8aNkgCeUfNgiZ7aKSW
-         r56WbAAVg8Szh1XkDnADXr+QNAYWMbXJL/X8ndtzTquf3lPutusZ0zTWibQeXweLehMF
-         y42TKEPz/09MAPI3j685W6TfRykMuQmChajtXiOW97SgtPirAwZb4zngNY+kxAf1hTUc
-         QXWZp2V9FLt1w8hAyCPGZ7qBlLdPgTIwuEd26AZ3UuwnVqrgBYnk/IDNpLG4DVu14Fn8
-         oVJ2NUJmlsvgHUvXoTLv+CJVhWOuTWOFuZOxLpY0LOhgSf2Zq+bAiyEa/otS54fGrcjk
-         53SA==;
+        bh=Zk5icbxIS4HnCyPC8vzKv+lv6GH3Yy43JETJVU6133Y=;
+        fh=cXfyCbTeGe8qRp10nSsuplYy8ryNTDCVawOo7664qRY=;
+        b=QlJnwN323WQVGAsxWS59CFOAAd1Lz1oMU2X2UDy/J7p4Wb5KFSSMseLXZVY5SwM+M8
+         RYPlUgQ7yfPhuHLFjva2OK/8YlLFOobhcSyk0HOWPqbZ5l76K9zQxd6ftLh8S2hmJKgm
+         vU6VYDcF35rGUCrx0kEzpWaQTeV7RGbpJLNdEPPl1gG/GKSBJK9an6i8m4fsMzyNSY8z
+         XrRAbKFKvKIudGM3VsoAvEqY9ohyh3NSejWpXsyxpxCaOrZZhwq1uYnXzISXo74Wr6VG
+         3bGaNAowGNSgO3nTL24e3lq1aZ4Cn2gD97uoljLcLim/2OJVy4E15ImvFTwtmOCNdNq3
+         y+PA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a7fda328c0si119311971cf.614.2025.07.01.23.44.30
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd77355a7bsi143730086d6.213.2025.07.01.23.48.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Jul 2025 23:44:30 -0700 (PDT)
+        Tue, 01 Jul 2025 23:48:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uWrCD-0002l3-C9; Wed, 02 Jul 2025 02:43:53 -0400
+	id 1uWrGG-0003rD-0w; Wed, 02 Jul 2025 02:48:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=U4+o=ZP=kaod.org=clg@ozlabs.org>)
- id 1uWrCB-0002kQ-Ez; Wed, 02 Jul 2025 02:43:51 -0400
+ id 1uWrGC-0003q7-Ln; Wed, 02 Jul 2025 02:48:00 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=U4+o=ZP=kaod.org=clg@ozlabs.org>)
- id 1uWrC4-00056Q-Lq; Wed, 02 Jul 2025 02:43:51 -0400
+ id 1uWrG9-0005eM-HG; Wed, 02 Jul 2025 02:48:00 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bX9MW6f4rz4x0C;
- Wed,  2 Jul 2025 16:43:19 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bX9SW5rK8z4wyV;
+ Wed,  2 Jul 2025 16:47:39 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bX9MS2jH2z4wd0;
- Wed,  2 Jul 2025 16:43:15 +1000 (AEST)
-Message-ID: <f4b1f8ae-691f-49b8-847c-19cac9445668@kaod.org>
-Date: Wed, 2 Jul 2025 08:43:26 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bX9SR6ZvPz4wcr;
+ Wed,  2 Jul 2025 16:47:35 +1000 (AEST)
+Message-ID: <f7e9fcba-e844-42e3-8e4c-9cc67a3069e7@kaod.org>
+Date: Wed, 2 Jul 2025 08:47:48 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 00/18] Support AST2700 A1
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- Yunlin Tang <yunlin.tang@aspeedtech.com>
-References: <20250121070424.2465942-1-jamin_lin@aspeedtech.com>
- <096e8152-ec19-4b2b-aa56-dd566ce7bb6d@kaod.org>
- <9534dc4d-fdf6-418d-b5f7-9bc7f03bf7ec@kaod.org>
- <SI2PR06MB504195531936785FFA2CA4BDFC40A@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Subject: Re: [PATCH 1/4] hw/arm: Add PCA9554 to ARM target
+To: Ed Tanous <etanous@nvidia.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
+ Troy Lee <leetroy@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org,
+ Ed Tanous <ed@tanous.net>
+References: <20250701203400.71677-1-etanous@nvidia.com>
+ <20250701203400.71677-2-etanous@nvidia.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -119,9 +116,9 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <SI2PR06MB504195531936785FFA2CA4BDFC40A@SI2PR06MB5041.apcprd06.prod.outlook.com>
+In-Reply-To: <20250701203400.71677-2-etanous@nvidia.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=U4+o=ZP=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
@@ -144,39 +141,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9ETlJlpX3U65
+X-TUID: iJLWcERVny1b
 
-Hello,
+Hello Ed,
 
->> Should we switch the alias to point to 'ast2700a1-evb' in QEMU 10.1.0 ?
->> and deprecate the A0 SoC and machine if it is no longer planned to support
->> them.
->>
+On 7/1/25 22:33, Ed Tanous wrote:
+> From: Ed Tanous <ed@tanous.net>
 > 
-> Sorry for the late reply and delay in processing this task.
-> I’ve been postponing this because our customers do not have "AST2700 A1 EVB".
-
-oh. There is no urgency to remove A0.
-
-> Since ASPEED SDK has dropped support for AST2700 A0 as of version "v09.07", I believe it's now appropriate to remove AST2700 A0 support in QEMU.
-> https://github.com/AspeedTech-BMC/openbmc/releases/tag/v09.07
-> In addition, I plan to make ast2700-evb an alias of ast2700a1-evb.
+> There are arm targets that are connected to this io expander,
+> specifically some varieties of Aspeed 2600 BMCs.  Add it to Kconfig to
+> allow use.
 > 
-> Currently, I’m not very familiar with the proper procedure to deprecate an existing machine in QEMU, but the following is my initial plan for handling this task:
-> PATCH 1: Update the ast2700-evb alias to point to ast2700a1-evb and remove AST2700 A0 functional tests.
+> Signed-off-by: Ed Tanous <etanous@nvidia.com>
+> ---
+>   hw/arm/Kconfig | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index f543d944c3..6ea86534d5 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -532,6 +532,7 @@ config ASPEED_SOC
+>       select I2C
+>       select DPS310
+>       select PCA9552
+> +    select PCA9554
+>       select SERIAL_MM
+>       select SMBUS_EEPROM
+>       select PCA954X
 
-That's something we can do whenever we like now.
 
-> PATCH 2: Remove the AST2700 A0 SoC and ast2700a0-evb machine implementation.
-> PATCH 3: (Question) Should I update the docs/about/deprecated.rst file as well?
+This was already added by Patrick in patch :
 
-See https://www.qemu.org/docs/master/about/deprecated.html
+   https://lore.kernel.org/qemu-devel/20250619151458.2831859-1-patrick@stwcx.xyz/
 
-First, we update the deprecated file, then remove the soc in
-2 releases.
+which should be pushed by the end the week.
 
 Thanks,
 
 C.
-
-

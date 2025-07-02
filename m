@@ -1,214 +1,196 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3668479dye;
-        Wed, 2 Jul 2025 01:47:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXU/HRHjjHq54BFEd/dsWfMcIW0qOYyUYUJc1Ml268A+fPm2+j8wDUmffnp6NzTTFmb2OEGeCLljfs/1A==@linaro.org
-X-Google-Smtp-Source: AGHT+IG5jlLawG4k1q1bdGIwsDchpa5gWW3Q/RcSnSMUGeI8cbivd3vi06SQwiHdgy59LWta8IsC
-X-Received: by 2002:a05:6214:f2b:b0:6fd:75e1:16b9 with SMTP id 6a1803df08f44-702b1a6db0amr27414216d6.18.1751446027302;
-        Wed, 02 Jul 2025 01:47:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751446027; cv=none;
+Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp3672150dye;
+        Wed, 2 Jul 2025 01:57:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXrHVOcYUwdr4FAkDtJLwjJqxuCCyH8jDe6cE5i6Vb3mpr41HMmf7QssmRYCOupFSaji9BqU5c3nrVgrg==@linaro.org
+X-Google-Smtp-Source: AGHT+IG8WMEK3c/RRika7g6NcwDa7yr//iN6DcrKVM7Sa07PHMePcMz63i8JNe9IPY4KZYKt7XuW
+X-Received: by 2002:a05:620a:298c:b0:7d4:6123:fae0 with SMTP id af79cd13be357-7d5c4735b70mr313816285a.44.1751446623320;
+        Wed, 02 Jul 2025 01:57:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751446623; cv=none;
         d=google.com; s=arc-20240605;
-        b=ErUyh7yrZ9/20bkVEOLSgJCOCs598/OSb6cfmSIEoBj+rFCgi96sxkYucqlWevDAjs
-         HEQcXaw8rWVQ5aAQy7Q2od+7jkdsE7j1K7cUfV8bcCh6F50+TuupWNgKWGlg+wC2j8aL
-         GkAbUhmrSiQtZc9Ccr7XiqT8mnu0GqzzuCDb4yg1POONVKh0vizZ4HhYcUc5tlxK7fkA
-         f2aOX/DaQXiotUjbO+MIeNOndGQNthEEhvYoiAnlb85zH1+TcSQeLOvYpUfS6dpPWFIS
-         PbR6HALNiUZrqOwjwKJej+3HczegNzgkoP4UQQxpTKMCh1XvhbGjQFISZerIVj1hBJB4
-         mWXw==
+        b=PsA+7j1Agb5EPV/xpnJ0ZReFCTw9JigOGUXXTORRfWv9zLksKS8CKnsmjuoMQ89Ofj
+         MCgLdDB97KtWbNfRQMZs1YgrS/ohmFVpYw+gFg5UKVNC6fR9tFMf6kmAqzU+46/g9Up4
+         TTX6S4bgTqpnsFUqcVlzXBCzIA93cM9e5tGEYbNUyJNTFBrKMqGgpMmAa4ep/0z87MCb
+         h0AmGC3TSXEVP2rhT2gB0kEt2t2f5BYyn3PUGtsWHXoKdnbGamOXWUplcJXl3x1vbTnt
+         SXSnyjlCQfhuCWxC1eijEmmJeR/hH/uOXFmRoTr3dqQCCzwlAcijGl7AaynRNWGDQJYq
+         /aDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:user-agent
-         :references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=8bmrix3SRkejtxkZeSUfVdsas9XCclL2BdcDpYVHi4M=;
-        fh=bjxS5XoCoqiIFhmMCIs3RZOf29FzNoskHckUbJiTg1g=;
-        b=TAp+Z1X+mPja7vK0nnyzpylzX88NI1CL2q3fe0mmLOCLmedpB2LCEUi8GL3OBtOUZk
-         ViBD1/AjnbitDed3HKMNJggRXtWFXqY+Z3E7KedLmkaBvRZEUm3iGqky3Y3ErdM5cIOK
-         xnAgZvi6YV8qouVOClwm5ISlUrpcTQTdjt2B3I1KQsF7Zds5GvJeBrbkPVF91nUqSOAz
-         ksiIQS07MLCDdNY3oCu6hRBcUsc3OXDQvzjb63qv/r6k3aaLvq43gK3ZaF09BpUL9y8r
-         0BOFrDLDySecu6F/3f58BR5O+bJWbJ2I+c3aC4lLVjytwHoz2Mxd0NXPpPwLEyXdKIMp
-         JUFQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=RQGL6Fh3ytcO2cXkmkLYkjWcg5c3LLdLoqv9zK/qqQ4=;
+        fh=cf4RIoSY8nLlsUThZaJ+LO601L/hXQB8ckYyDM2NlFA=;
+        b=TxauhUCAZc9h5cnzb/ZVWW8cxb7aqRBA9KbJcJLXK9nhEQHM8pO+VFIvy8BAqu+ZvL
+         QdhBPNqdCAV/+8CsoiZC4UPzRB00PdZ/k4kVwjVOl7jYlt7FkpgtE6qTDwnJJjg/TNmk
+         F8MP3nV+tkvpATaty7offcNUWHh5NQk+5KYeFYXfW5vDYaWYn1LO7/w19753FWJphoU4
+         ZMTfIGRx3Lzb/1qU9rZcMa6Hr9odPvMvBrCFj+8UNuVK9LfQtjoDeaHIzbR2ZloYPs9q
+         7/y5zm3Dubock6dcnB6ctiZd8pMULw7fTQa9POCfUNjY2Hp9l5Zv9Tp0U1dOmJUHYuQp
+         8vww==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OQz0J7JW;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JKKwKNlu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7d443239c7dsi1209607385a.303.2025.07.02.01.47.07
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7d4432375fesi1214171585a.305.2025.07.02.01.57.03
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Jul 2025 01:47:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 02 Jul 2025 01:57:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OQz0J7JW;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JKKwKNlu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uWtGd-0001eK-6Y; Wed, 02 Jul 2025 04:56:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
+ id 1uWtGb-0001e8-9o
+ for qemu-arm@nongnu.org; Wed, 02 Jul 2025 04:56:33 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
+ id 1uWtGY-0003uw-Tv
+ for qemu-arm@nongnu.org; Wed, 02 Jul 2025 04:56:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1751446026;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=8bmrix3SRkejtxkZeSUfVdsas9XCclL2BdcDpYVHi4M=;
-	b=OQz0J7JWCEo4PJv4wgxjpJhgybcr+c9D6QMq1TCWghxmUzYHEUGU0kJ+wkgwzGWF8DAdyz
-	BjIq3lTl0ThE5HGCyreHWxiwnbtLHwoqbnJSTuc4fxsyOjE/FnO8H1Gl3UH0mt+gHeOGYE
-	7e3L0nHdczLoRYEuxhzdfKk/1yJTKdM=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ s=mimecast20190719; t=1751446588;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=RQGL6Fh3ytcO2cXkmkLYkjWcg5c3LLdLoqv9zK/qqQ4=;
+ b=JKKwKNluNZ713v/DiW/dKE4Nkio/V/LqwM1ADaSXeAIBA/I7/5dZkuyktAEFoKD6xVyVLv
+ TdxzWJHfuEAzVNy4P5OXz1qvqOAXwu4uUwZJRnvBF9sEYbQvW8VC+7tAvSgP8JQT3H+v3w
+ NcMq9on0ZFq8T0kldOVMTegMZeBX8sE=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-609-OiDTYf4FNIeL_xP4JTgzeQ-1; Wed,
- 02 Jul 2025 04:47:02 -0400
-X-MC-Unique: OiDTYf4FNIeL_xP4JTgzeQ-1
-X-Mimecast-MFC-AGG-ID: OiDTYf4FNIeL_xP4JTgzeQ_1751446020
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 208461955EDB;
-	Wed,  2 Jul 2025 08:46:59 +0000 (UTC)
-Received: from localhost (dhcp-192-236.str.redhat.com [10.33.192.236])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 6A5AA19560B3;
-	Wed,  2 Jul 2025 08:46:56 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Jinqian Yang <yangjinqian1@huawei.com>, eric.auger.pro@gmail.com,
- eric.auger@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- kvmarm@lists.linux.dev, peter.maydell@linaro.org,
- richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
- oliver.upton@linux.dev, sebott@redhat.com,
- shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com, Zhou
- Wang <wangzhou1@hisilicon.com>, liuyonglong <liuyonglong@huawei.com>
-Cc: agraf@csgraf.de, shahuang@redhat.com, mark.rutland@arm.com,
- philmd@linaro.org, pbonzini@redhat.com
-Subject: Re: [PATCH v3 07/10] arm/kvm: write back modified ID regs to KVM
-In-Reply-To: <ae3f4d26-7a1a-418c-b303-2ed1d9ced4ba@huawei.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Avril Crosse O'Flaherty"
-References: <20250414163849.321857-1-cohuck@redhat.com>
- <20250414163849.321857-8-cohuck@redhat.com>
- <ae3f4d26-7a1a-418c-b303-2ed1d9ced4ba@huawei.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Wed, 02 Jul 2025 10:46:53 +0200
-Message-ID: <878ql7q8si.fsf@redhat.com>
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-541-QtdRg5MZP420TZ-pHO3vVw-1; Wed,
+ 02 Jul 2025 04:56:25 -0400
+X-MC-Unique: QtdRg5MZP420TZ-pHO3vVw-1
+X-Mimecast-MFC-AGG-ID: QtdRg5MZP420TZ-pHO3vVw_1751446584
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7EED619560A1; Wed,  2 Jul 2025 08:56:23 +0000 (UTC)
+Received: from virt-mtcollins-01.lab.eng.rdu2.redhat.com
+ (virt-mtcollins-01.lab.eng.rdu2.redhat.com [10.8.1.196])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 2DE0E18002B5; Wed,  2 Jul 2025 08:56:18 +0000 (UTC)
+From: Shaoqin Huang <shahuang@redhat.com>
+To: qemu-arm@nongnu.org
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Eric Auger <eauger@redhat.com>,
+ Shaoqin Huang <shahuang@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>
+Subject: [PATCH v7 0/2] ramfb: Add property to control if load the romfile
+Date: Wed,  2 Jul 2025 04:56:14 -0400
+Message-Id: <20250702085616.2172722-1-shahuang@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: bwjoQgtQW/yo
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=shahuang@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NvMVpK232Swn
 
-On Wed, Jul 02 2025, Jinqian Yang <yangjinqian1@huawei.com> wrote:
+Currently the ramfb device loads the vgabios-ramfb.bin unconditionally, but only
+the x86 need the vgabios-ramfb.bin, this can cause that when use the
+release package on arm64 it can't find the vgabios-ramfb.bin.
 
-> On 2025/4/15 0:38, Cornelia Huck wrote:
->> From: Eric Auger <eric.auger@redhat.com>
->>
->> We want to give a chance to override the value of host ID regs.
->> In a previous patch we made sure all their values could be fetched
->> through kvm_get_one_reg() calls before their modification. After
->> their potential modification we need to make sure we write back
->> the values through kvm_set_one_reg() calls.
->>
->> Make sure the cpreg_list is modified with updated values and
->> transfer those values back to kvm.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->> ---
->>   target/arm/kvm.c        | 44 ++++++++++++++++++++++++++++++++++++++++-
->>   target/arm/trace-events |  1 +
->>   2 files changed, 44 insertions(+), 1 deletion(-)
->>
->> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->> index b07d5f16db50..9e4cca1705c8 100644
->> --- a/target/arm/kvm.c
->> +++ b/target/arm/kvm.c
->> @@ -1083,6 +1083,39 @@ void kvm_arm_cpu_post_load(ARMCPU *cpu)
->>       }
->>   }
->>=20=20=20
->> +static void kvm_arm_writable_idregs_to_cpreg_list(ARMCPU *cpu)
->> +{
->> +    if (!cpu->writable_map) {
->> +        return;
->> +    }
->> +    for (int i =3D 0; i < NR_ID_REGS; i++) {
->> +        uint64_t writable_mask =3D cpu->writable_map->regs[i];
->> +        uint64_t *cpreg;
->> +
->> +        if (writable_mask) {
->> +            uint64_t previous, new;
->> +            int idx =3D kvm_idx_to_idregs_idx(i);
->> +            ARM64SysReg *sysregdesc;
->> +            uint32_t sysreg;
->> +
->> +            if (idx =3D=3D -1) {
->> +                /* sysreg writable, but we don't know it */
->> +                continue;
->> +            }
->> +            sysregdesc =3D &arm64_id_regs[idx];
->> +            sysreg =3D sysregdesc->sysreg;
->> +            cpreg =3D kvm_arm_get_cpreg_ptr(cpu, idregs_sysreg_to_kvm_r=
-eg(sysreg));
->> +            previous =3D *cpreg;
->> +            new =3D cpu->isar.idregs[idx];
->> +            if (previous !=3D new) {
->> +                *cpreg =3D new;
->> +                trace_kvm_arm_writable_idregs_to_cpreg_list(sysregdesc-=
->name,
->> +                                                            previous, n=
-ew);
->> +            }
->> +        }
->> +    }
->> +}
->> +
->>   void kvm_arm_reset_vcpu(ARMCPU *cpu)
->>   {
->>       int ret;
->> @@ -2050,7 +2083,16 @@ int kvm_arch_init_vcpu(CPUState *cs)
->>       }
->>       cpu->mp_affinity =3D mpidr & ARM64_AFFINITY_MASK;
->>=20=20=20
->> -    return kvm_arm_init_cpreg_list(cpu);
->> +    ret =3D kvm_arm_init_cpreg_list(cpu);
->> +    if (ret) {
->> +        return ret;
->> +    }
->> +    /* overwrite writable ID regs with their updated property values */
->> +    kvm_arm_writable_idregs_to_cpreg_list(cpu);
->> +
->> +    write_list_to_kvmstate(cpu, 3);
->> +
->> +    return 0;
->>   }
->
-> Hi,
->
-> When I was testing this series, I found a problem. On the host,=20
-> SYSREG_ID_AA64MMFR3_EL1_TCRX=3D0x1,
-> I configured it to 0x0 in=C2=A0qemu, and qemu cannot start.
-> The ID_AA64MMFR3_EL1 TCRX field controls whether the TCR2_EL1 and=20
-> TCR2_EL2 registers are used.
-> In the kernel, when TCRX is 0, TCR2_EL1 is invisible to the guest, and=20
-> when it is 1, it is visible. When we
-> configure this field segment to 0, the configuration is not yet written=20
-> to KVM, but the cpreg list is initialized,
-> adding TCR2_EL1 to the cpreg list. Therefore, after writing the=20
-> QEMU-configured registers to KVM, the
-> cpreg list needs to be updated again.
->
-> @@ -2227,7 +2229,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
->
->  =C2=A0 =C2=A0 =C2=A0write_list_to_kvmstate(cpu, 3);
->
-> -=C2=A0 =C2=A0 return 0;
-> +=C2=A0 =C2=A0 return kvm_arm_init_cpreg_list(cpu);
->  =C2=A0}
->
-> The above modification can solve the problem, but it may not be the best=
-=20
-> way.
+Because only seabios will use the vgabios-ramfb.bin, load the rom logic
+is x86-specific. For other !x86 platforms, the edk2 ships an EFI driver
+for ramfb, so they don't need to load the romfile.
 
-Thanks for testing. Indeed, if we write something that changes the
-visibility of registers, we need to do an update. Probably needs some
-thinking (e.g. what happens if a register disappears, but the user set
-some fields?)
+So add a new property use-legacy-x86-rom in both ramfb and vfio_pci
+device, because the vfio display also use the ramfb_setup() to load
+the vgabios-ramfb.bin file.
+
+After have this property, the machine type can set the compatibility to
+not load the vgabios-ramfb.bin if the arch doesn't need it.
+
+Then I set the use_legacy_x86_rom property to false by default, and only set it
+to true on x86 since only x86 will need it.
+
+At the same time, set the "use-legacy-x86-rom" property to true on those
+historical versioned machine types in order to avoid the memory layout
+being changed.
+
+Changelog:
+---------
+v6 -> v7:
+  - Set the property into hw_compat_10_0 instead of hw_compat_9_2.
+v5 -> v6:
+  - Set the property to true on those historical versioned machine types.
+v4 -> v5:
+  - Fix some typo error.
+  - Set the property in piix machine type.
+v3 -> v4:
+  - Set the new property to false by default, only set it to true on x86.
+v2 -> v3:
+  - Fix the underscore error.
+  - Add a new patch to set the property in arm compatibility.
+v1 -> v2:
+  - Change the property name.
+
+v6: https://lore.kernel.org/all/20250701030549.2153331-1-shahuang@redhat.com/
+v5: https://lore.kernel.org/all/20250626034526.2136585-1-shahuang@redhat.com/
+v4: https://lore.kernel.org/all/20250617030521.2109305-1-shahuang@redhat.com/
+v3: https://lore.kernel.org/all/20250609073408.2083831-1-shahuang@redhat.com/
+v2: https://lore.kernel.org/all/20250606070234.2063451-1-shahuang@redhat.com/
+v1: https://lore.kernel.org/all/20250605030351.2056571-1-shahuang@redhat.com/
+
+
+Shaoqin Huang (2):
+  ramfb: Add property to control if load the romfile
+  hw/i386: Add the ramfb romfile compatibility
+
+ hw/core/machine.c             |  2 ++
+ hw/display/ramfb-standalone.c |  4 +++-
+ hw/display/ramfb-stubs.c      |  2 +-
+ hw/display/ramfb.c            |  6 ++++--
+ hw/i386/pc_piix.c             | 10 ++++++++++
+ hw/i386/pc_q35.c              |  3 +++
+ hw/vfio/display.c             |  4 ++--
+ hw/vfio/pci.c                 |  1 +
+ hw/vfio/pci.h                 |  1 +
+ include/hw/display/ramfb.h    |  2 +-
+ 10 files changed, 28 insertions(+), 7 deletions(-)
+
+-- 
+2.40.1
+

@@ -1,70 +1,70 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp506215dyc;
-        Thu, 3 Jul 2025 05:39:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXLKU2zH9LY95oEC06HLVJR80My+vkchv7Kdp97MuMNRIje9ns85o9H/uaPlOj6IZS0lEDPDgrqfUnmjQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFBgxSHcoFOltWO0IKjrj9DboIz42UbuTDexv68TovSaoe3rjuV4uimZdIXF/ajWZQctdmU
-X-Received: by 2002:a05:622a:1bab:b0:4a7:8439:796e with SMTP id d75a77b69052e-4a98add5d41mr32105111cf.13.1751546395478;
-        Thu, 03 Jul 2025 05:39:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751546395; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp506296dyc;
+        Thu, 3 Jul 2025 05:40:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXf2PoWsNdsIT2Y0HV78KCMM6GhMEeHg7arKdv5Y4ke0Kgkd8IgAQFz3v9fD1rGefu3SuYD0ZfDsMDAXw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGCkFMtlJPq0kqkDUt0gjuhlS5UXjnbAy5slyQTtcAp8V6dDBV8Sb1YQLiYj8UuiPln74l4
+X-Received: by 2002:a05:620a:4148:b0:7d4:6784:beb with SMTP id af79cd13be357-7d5c4711ea1mr1080467785a.4.1751546404356;
+        Thu, 03 Jul 2025 05:40:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751546404; cv=none;
         d=google.com; s=arc-20240605;
-        b=EesDtMEaNwyODy37nDApi1G3Y3XJ8z4nNV5Twdk5gUto7x6JGIJSFN1j3vHDPpDvjy
-         NfLhrs88ih7wvjkKY7Bn3Z30n3/CCetcFCz1r1trhdKkSQpTM2NYEpKPy+5wmWYNrE6E
-         INzXaUeiOLWHVsg3zLbpy6cW5JNYk3SeZnpX30imrbN6nAU+Ca4B/dckq0EUFw4HLWqk
-         sx4r76AJZ827tJCudDNLdl1QmgL+iXVItvPI44Byz8xbJsTxivycSBj6JyCXQqgX8dMm
-         5adIJsilKuQOrblsnR0BeHlyvMyFm36wYIMsBvTqEtIlSafXrAuLcGvUJ/ihjcVX8CwB
-         HDww==
+        b=V0ympXBajC7MPtyvz0GcCkJUkG7ifPMFUY07bKBkezoiQLsqSdxxAleDSda/2olIkx
+         on/ExM7iV3/qi0D0w72GA6gtGjYKcIRaAUIQM8bwK5brXYkfhua76JDXTvl6DW0tq+9c
+         /NMCC+qPdnlpO9Hj+czfv+xxH9H9C5yM+Gu08DFNdj8yTfYhChaSwdG2IpoeqqVw0wlz
+         1f4dUy1ndSytfLBRyVUHMPUbPR+6E4Rb/5bXaD12DP6YN2CHeIB7sMbCaRk+R1OF7CfD
+         LOQqEWrMXHhTZjuV959MqsV8Sj2t/PbzklXp0irsOfq0ZP/eUOs/TOfvER0R+qWMmsEL
+         WXAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=5SBU8rqjDCM9bszWrHYCJiNHA4uqefOcOO5gBO57x8s=;
+        bh=qykNbq9Z1KR/RSUyv3WPhqM899KG4p1hewVkFgNUlDM=;
         fh=wjCXBlYiEFaE/nRXdXhm/QzbgpklGNl9u9+2G4gHJbk=;
-        b=Fb+OlfajcjkjJjlo8iu6paLWk3BSL0B4ZZA5cZpsqEPCLU6ueczhnJk/JM6u41R9UJ
-         /UlR6F8EKuFMp932AQRp4rbal4suou8PS2Qd7jHVm4xj/c4LGDPHBE3Z5XbCiUfVPVfT
-         7KYfQgA6EyQDvsYk80SuS5FjLOzh5O+SwEyZa7+D7ACGjsJ+lcg2maYU3nsyLf3IbU9e
-         N8kZOEXgtnPs6GC76Cd8xHuKg0vgp/C1Ay25E2Z1XDy5gMh1JQm8+9JWFn7jbdF65dS/
-         02c4GhXxJxH0eSYdlLmcTasdhlFf3CHL3bCAJa63qApcuDE9L2whGRteQnuH24FcgiwU
-         ks5A==;
+        b=kK/a/bfftHoVaFT1csqjM4FobFC0EKJ+PCfZw/Kt0Yn6f/HVlxLGtWxzxygQSRPfl2
+         rws/epxcfl9FUX757iOYTZsQE+fRczEZphT0NbCqLmBaCNZjA/AuLKY9KmyVAeDyDR6s
+         LHdU1e6QhEf6jNS18zULs8azt46i6Rj2kZdSizVFKP+P9J1QkPOYxSjAOBHPClrbR8at
+         D83cHG2ULl8yt19UDYf0lFqaVcnaekf4XzoAO3Qw5c5ArQI8r+HOlmLd/mLIEb8QGVPz
+         ZeVvUFOtbeefgLFbaXOp5EX6qKmEiU4REQwfKlXjMLHfYZ6jhvekvlNsafA7ZgZg59kO
+         JBlw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YskQ7u06;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FSXfLyI6;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <eric.auger@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc57e8bfsi142957291cf.660.2025.07.03.05.39.55
+        by mx.google.com with ESMTPS id af79cd13be357-7d443193e10si1406161385a.60.2025.07.03.05.40.04
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Jul 2025 05:39:55 -0700 (PDT)
+        Thu, 03 Jul 2025 05:40:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YskQ7u06;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FSXfLyI6;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1751546395;
+	s=mimecast20190719; t=1751546403;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=5SBU8rqjDCM9bszWrHYCJiNHA4uqefOcOO5gBO57x8s=;
-	b=YskQ7u069VoDXGB5XR2VXy/iZQMk6hFpCvN5/99pQUovZQYHxQHsxAemkuoACuiDthpGwO
-	RkFBrkElc3AI21kXYp5jdr5mCo1tY+VYeUoqqEOjpqsMlc98XI8GuJamGtayLfVOFCdX3q
-	RpC1efD+syjk4Eioa+7CxGfEGsMI5gc=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+	bh=qykNbq9Z1KR/RSUyv3WPhqM899KG4p1hewVkFgNUlDM=;
+	b=FSXfLyI6cTSaKDAxpVW/DHM3/VDTAqUrls0RY+3ZyqIxz+Kt8idAj2uxiSccEoeULacTzZ
+	a9YtsJzhqFDgdJkOWVnrwzq4EKMap7ggEbqxUVYc8+D04d+e+IsVO2KBpr3huhvkAbdb09
+	nJZwrDAiRYuakuhlkZ/cMxc4EBYBEF4=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-620-oBq0hhyqPV6U0FJshPVShA-1; Thu,
- 03 Jul 2025 08:39:54 -0400
-X-MC-Unique: oBq0hhyqPV6U0FJshPVShA-1
-X-Mimecast-MFC-AGG-ID: oBq0hhyqPV6U0FJshPVShA_1751546392
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-152-0qgx4O3_Op6RVLD_Q77E_A-1; Thu,
+ 03 Jul 2025 08:40:00 -0400
+X-MC-Unique: 0qgx4O3_Op6RVLD_Q77E_A-1
+X-Mimecast-MFC-AGG-ID: 0qgx4O3_Op6RVLD_Q77E_A_1751546398
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 9C34D18DA5CE;
-	Thu,  3 Jul 2025 12:39:52 +0000 (UTC)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B0644180121B;
+	Thu,  3 Jul 2025 12:39:58 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.16])
-	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 27D2A180045C;
-	Thu,  3 Jul 2025 12:39:47 +0000 (UTC)
+	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 2857318046C3;
+	Thu,  3 Jul 2025 12:39:52 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com,
 	eric.auger@redhat.com,
@@ -80,101 +80,131 @@ To: eric.auger.pro@gmail.com,
 Cc: pbonzini@redhat.com,
 	philmd@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v5 26/36] hw/acpi/ged: Call pcihp plug callbacks in hotplug handler implementation
-Date: Thu,  3 Jul 2025 14:35:26 +0200
-Message-ID: <20250703123728.414386-27-eric.auger@redhat.com>
+Subject: [PATCH v5 27/36] hw/acpi/pcihp: Remove root arg in acpi_pcihp_init
+Date: Thu,  3 Jul 2025 14:35:27 +0200
+Message-ID: <20250703123728.414386-28-eric.auger@redhat.com>
 In-Reply-To: <20250703123728.414386-1-eric.auger@redhat.com>
 References: <20250703123728.414386-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-TUID: UFNdvQN+RLKf
+X-TUID: 8+E/zsHh7sam
 
-Add PCI device related code in the TYPE_HOTPLUG_HANDLER
-implementation.
+Let pass the root bus to ich9 and piix4 through a property link
+instead of through an argument passed to acpi_pcihp_init().
 
-For a PCI device hotplug/hotunplug event, the code routes to
-acpi_pcihp_device callbacks (pre_plug_cb, plug_cb, unplug_request_cb,
-unplug_cb).
+Also make sure the root bus is set at the entry of acpi_pcihp_init().
+
+The rationale of that change is to be consistent with the forecoming ARM
+implementation where the machine passes the root bus (steming from GPEX)
+to the GED device through a link property.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-
 ---
+ include/hw/acpi/pcihp.h         | 2 +-
+ hw/acpi/acpi-pci-hotplug-stub.c | 2 +-
+ hw/acpi/ich9.c                  | 7 ++++++-
+ hw/acpi/pcihp.c                 | 4 ++--
+ hw/acpi/piix4.c                 | 5 ++++-
+ 5 files changed, 14 insertions(+), 6 deletions(-)
 
-v2 -> v4:
-moved before "hw/acpi/ged: Prepare the device to react to PCI hotplug
-events" (Igor)
-
-v2 -> v3:
-- remove else block in acpi_ged_device_pre_plug_cb
----
- hw/acpi/generic_event_device.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
-
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index ef1c1ec51f..92b931758f 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -17,6 +17,7 @@
- #include "hw/irq.h"
- #include "hw/mem/pc-dimm.h"
- #include "hw/mem/nvdimm.h"
-+#include "hw/pci/pci_device.h"
- #include "hw/qdev-properties.h"
- #include "migration/vmstate.h"
- #include "qemu/error-report.h"
-@@ -228,6 +229,14 @@ static const MemoryRegionOps ged_regs_ops = {
+diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
+index 9ff548650b..ca6a258825 100644
+--- a/include/hw/acpi/pcihp.h
++++ b/include/hw/acpi/pcihp.h
+@@ -62,7 +62,7 @@ typedef struct AcpiPciHpState {
+     bool use_acpi_root_pci_hotplug;
+ } AcpiPciHpState;
+ 
+-void acpi_pcihp_init(Object *owner, AcpiPciHpState *, PCIBus *root,
++void acpi_pcihp_init(Object *owner, AcpiPciHpState *,
+                      MemoryRegion *io, uint16_t io_base);
+ 
+ bool acpi_pcihp_is_hotpluggable_bus(AcpiPciHpState *s, BusState *bus);
+diff --git a/hw/acpi/acpi-pci-hotplug-stub.c b/hw/acpi/acpi-pci-hotplug-stub.c
+index b7bc6e40a1..d58ea726a8 100644
+--- a/hw/acpi/acpi-pci-hotplug-stub.c
++++ b/hw/acpi/acpi-pci-hotplug-stub.c
+@@ -4,7 +4,7 @@
+ 
+ const VMStateDescription vmstate_acpi_pcihp_pci_status;
+ 
+-void acpi_pcihp_init(Object *owner, AcpiPciHpState *s, PCIBus *root_bus,
++void acpi_pcihp_init(Object *owner, AcpiPciHpState *s,
+                      MemoryRegion *address_space_io, uint16_t io_base)
+ {
+ }
+diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
+index 967b67485e..2b3b493c01 100644
+--- a/hw/acpi/ich9.c
++++ b/hw/acpi/ich9.c
+@@ -322,9 +322,10 @@ void ich9_pm_init(PCIDevice *lpc_pci, ICH9LPCPMRegs *pm, qemu_irq sci_irq)
+     }
+ 
+     if (pm->acpi_pci_hotplug.use_acpi_hotplug_bridge) {
++        object_property_set_link(OBJECT(lpc_pci), "bus",
++                                 OBJECT(pci_get_bus(lpc_pci)), &error_abort);
+         acpi_pcihp_init(OBJECT(lpc_pci),
+                         &pm->acpi_pci_hotplug,
+-                        pci_get_bus(lpc_pci),
+                         pci_address_space_io(lpc_pci),
+                         ACPI_PCIHP_ADDR_ICH9);
+ 
+@@ -428,6 +429,10 @@ void ich9_pm_add_properties(Object *obj, ICH9LPCPMRegs *pm)
+ 
+     object_property_add_uint32_ptr(obj, ACPI_PM_PROP_PM_IO_BASE,
+                                    &pm->pm_io_base, OBJ_PROP_FLAG_READ);
++    object_property_add_link(obj, "bus", TYPE_PCI_BUS,
++                             (Object **)&pm->acpi_pci_hotplug.root,
++                             object_property_allow_set_link,
++                             OBJ_PROP_LINK_STRONG);
+     object_property_add(obj, ACPI_PM_PROP_GPE0_BLK, "uint32",
+                         ich9_pm_get_gpe0_blk,
+                         NULL, NULL, pm);
+diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
+index f1594e664a..4922bbc778 100644
+--- a/hw/acpi/pcihp.c
++++ b/hw/acpi/pcihp.c
+@@ -493,13 +493,13 @@ static const MemoryRegionOps acpi_pcihp_io_ops = {
      },
  };
  
-+static void acpi_ged_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-+                                        DeviceState *dev, Error **errp)
-+{
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        acpi_pcihp_device_pre_plug_cb(hotplug_dev, dev, errp);
-+    }
-+}
-+
- static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
-                                     DeviceState *dev, Error **errp)
+-void acpi_pcihp_init(Object *owner, AcpiPciHpState *s, PCIBus *root_bus,
++void acpi_pcihp_init(Object *owner, AcpiPciHpState *s,
+                      MemoryRegion *io, uint16_t io_base)
  {
-@@ -241,6 +250,8 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
-         }
-     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-         acpi_cpu_plug_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        acpi_pcihp_device_plug_cb(hotplug_dev, &s->pcihp_state, dev, errp);
-     } else {
-         error_setg(errp, "virt: device plug request for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -257,6 +268,9 @@ static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
-         acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
-     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-         acpi_cpu_unplug_request_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        acpi_pcihp_device_unplug_request_cb(hotplug_dev, &s->pcihp_state,
-+                                            dev, errp);
-     } else {
-         error_setg(errp, "acpi: device unplug request for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -272,6 +286,8 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
-         acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
-     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-         acpi_cpu_unplug_cb(&s->cpuhp_state, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        acpi_pcihp_device_unplug_cb(hotplug_dev, &s->pcihp_state, dev, errp);
-     } else {
-         error_setg(errp, "acpi: device unplug for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -485,6 +501,7 @@ static void acpi_ged_class_init(ObjectClass *class, const void *data)
-     dc->vmsd = &vmstate_acpi_ged;
-     dc->realize = acpi_ged_realize;
+     s->io_len = ACPI_PCIHP_SIZE;
+     s->io_base = io_base;
  
-+    hc->pre_plug = acpi_ged_device_pre_plug_cb;
-     hc->plug = acpi_ged_device_plug_cb;
-     hc->unplug_request = acpi_ged_unplug_request_cb;
-     hc->unplug = acpi_ged_unplug_cb;
+-    s->root = root_bus;
++    assert(s->root);
+ 
+     memory_region_init_io(&s->io, owner, &acpi_pcihp_io_ops, s,
+                           "acpi-pci-hotplug", s->io_len);
+diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+index d98b80df6d..7a18f18dda 100644
+--- a/hw/acpi/piix4.c
++++ b/hw/acpi/piix4.c
+@@ -567,7 +567,8 @@ static void piix4_acpi_system_hot_add_init(MemoryRegion *parent,
+ 
+     if (s->acpi_pci_hotplug.use_acpi_hotplug_bridge ||
+         s->acpi_pci_hotplug.use_acpi_root_pci_hotplug) {
+-        acpi_pcihp_init(OBJECT(s), &s->acpi_pci_hotplug, bus, parent,
++        object_property_set_link(OBJECT(s), "bus", OBJECT(bus), &error_abort);
++        acpi_pcihp_init(OBJECT(s), &s->acpi_pci_hotplug, parent,
+                         ACPI_PCIHP_ADDR_PIIX4);
+         qbus_set_hotplug_handler(BUS(pci_get_bus(PCI_DEVICE(s))), OBJECT(s));
+     }
+@@ -611,6 +612,8 @@ static const Property piix4_pm_properties[] = {
+                      acpi_pci_hotplug.use_acpi_hotplug_bridge, true),
+     DEFINE_PROP_BOOL(ACPI_PM_PROP_ACPI_PCI_ROOTHP, PIIX4PMState,
+                      acpi_pci_hotplug.use_acpi_root_pci_hotplug, true),
++    DEFINE_PROP_LINK("bus", PIIX4PMState, acpi_pci_hotplug.root,
++                     TYPE_PCI_BUS, PCIBus *),
+     DEFINE_PROP_BOOL("memory-hotplug-support", PIIX4PMState,
+                      acpi_memory_hotplug.is_enabled, true),
+     DEFINE_PROP_BOOL("smm-compat", PIIX4PMState, smm_compat, false),
 -- 
 2.49.0

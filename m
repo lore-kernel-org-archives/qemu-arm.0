@@ -1,119 +1,120 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp412686dyc;
-        Thu, 3 Jul 2025 02:34:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWQ/runWYn9irLnhvETLB2qFR9eU4YHEkuKMaUX3E52C38NUN9VUs1UH/iQYDfTsu5BTwDqPYfeKWkEqw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGPmpydgbKWbA40fy8tIAipzYXhAkX/p5LQ3cdFC3H4Nq31LYvvk1NQhWyekXAbRXEs8kkg
-X-Received: by 2002:a05:620a:261d:b0:7d4:64f5:3c98 with SMTP id af79cd13be357-7d5d1c685bamr332971285a.15.1751535288807;
-        Thu, 03 Jul 2025 02:34:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751535288; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp416919dyc;
+        Thu, 3 Jul 2025 02:45:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXbw+e/x08GBN+fdORgWbNcMc/g0HNnKPqWazp53kn58nfbO2ywwgiDwy7REegdw2lng7w+ZAi57BrqBA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHdG6dhQ4bEgQjYFf0LSrbKZHOeJnHNp8tILtJNTH0YI9ohifCpltLgWUz1Tuooe4SO439g
+X-Received: by 2002:a05:620a:408a:b0:7d4:3811:84b6 with SMTP id af79cd13be357-7d5c478e967mr892796985a.32.1751535946411;
+        Thu, 03 Jul 2025 02:45:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751535946; cv=none;
         d=google.com; s=arc-20240605;
-        b=b07O3EgZTjT9UG023Dw1haSDoaFqosF0OVmd2ojt0UPIyaiM3RCQwU9eiLQOUTRPG4
-         dgDHfRmDfaYaDIzBCbBKRJEb1p2EloILIdzaXn7ZYCCfHsPWkmygfHS/SDjoZaOGSTFN
-         JH8E/VIf5UmsEU15Cz7T7U9k+AQxSIw9drohTyTwqTQcOjydYqIWf1E8eJR3+hT125en
-         ZwQinfb1a8aL8o71eBrR1uAZDqbJwcAHHsDfzFr11FTqxVsjTXJSUwN3ZnAtaqkJ/rvL
-         Rb6vE9I9g9onEXd3DbEnEA2XKpMA+qg/XgmTRpkq3JAr1pwrdm5us+OXiiLeY5ZtCQy0
-         2JnA==
+        b=IOi9l/6BNXH+LrgZFVdbpa36cd9RYo/GZsfbbbUVzewNWwgDF5RgLS5gPXGrbs9IiH
+         DbRPHGhmWXueiNW7oHywrwF8PqIdS++6Mby3qyoV/b7F/gviulR91kIPwPKqKdgDa+xJ
+         DK7COHMsY3WjuARyV5U4b1KWOMfK30G0zWjL6rqfNYOh+1IJXNR+tSKOonI8I13BNuJq
+         hn6XbwWAFyQ4PrPLP6BoHAWUICtrzogug5PS2/8M9CJP7ivobRBEL/j5eu/JslTPvtAZ
+         q7lEHjI+bl6S/P/le9bcnqt3A4j8uu43T4unkFnjrsA2HLWjYsf2At2Fw3Wv9L22R85o
+         gLFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=7ild05BJyJV7piMfK/sm9VUr1D7Yv5vwaABxOwmxVXk=;
-        fh=EhjjFkbrdf+SRs8xv77ncUs6UlR1o/lsvJC5d5e4a28=;
-        b=P3WYZVJhp2WN9qeSXBUvYfgROkTICOtJdcjnytwUa98f0QhT8AXsEO+/pj6d06SqQw
-         7qGJbnPHgOqEuVpWs7ED09Xaok8mgRk5gNZigGBC9N4k7VPSPN51DK6E/5qCSC6PQtox
-         dUoRpMnFxKOh5Ij8NXpLDRM7zYAC+b/jfOAPOCdNCh/AWJ2QlA1TUSaY+8vm//MB2CsK
-         KSdzqLu9QwHSL0lzJMQ+1/1USxAsnirbX/Jw6sb/QE2kyn/RznVRfhFTDIkZqwrTtFTI
-         VWjjSYIWsjuKO5ksbdY2Z2OPd+r453E/xUoDexmCfcbSQRwxVPCnlRHwWpy41o3Zutho
-         7O1g==;
+        bh=yqLrDQKiB7p2Djao7wyoxhIuPDF5XbtOnum5lvMNefE=;
+        fh=VTkhQBiYsTp/S5Hrq4QzVaCZ+iTJy5WjPXdNo7XP8rw=;
+        b=ZQTaKNi1H+Sul5WGPxY2rDAhq3t12rfjilhvP06q3MOK74VL6TVi8ECv7iJs2uLEz1
+         MISo5fSrTavV6eak/KHUZof6ReMAl3BupgqY1QJWVWUcS6FI3ycP3kB/9poPYSaTCIv9
+         LZkETwipNkoacxDvpxFlETW9Ms/S7mg70UOfVpT0SyWYqVbzJaArZb3pSHYZtglIOFgI
+         LBK7wUhFULNvz9fJCjMABNxbBtj/at3se9ADuMacuL9jTDjaxtgCOdW7Gl76mvG7eSne
+         Bw9oh/Fdn6rrsltLSO3jaRkQbKFcEcBWH69m9Hn4s223p9IvIZf3VZLcW4nknYSlWU2H
+         6taA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rm4h3pqg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=T2r9rbFl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d4431930e2si1355606485a.64.2025.07.03.02.34.48
+        by mx.google.com with ESMTPS id af79cd13be357-7d4432a25b6si1409527385a.619.2025.07.03.02.45.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Jul 2025 02:34:48 -0700 (PDT)
+        Thu, 03 Jul 2025 02:45:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rm4h3pqg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=T2r9rbFl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uXGL5-000199-HM; Thu, 03 Jul 2025 05:34:43 -0400
+	id 1uXGVe-0005rG-F5; Thu, 03 Jul 2025 05:45:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uXGKm-0000s9-M3
- for qemu-arm@nongnu.org; Thu, 03 Jul 2025 05:34:26 -0400
-Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
+ id 1uXGVa-0005nz-3g
+ for qemu-arm@nongnu.org; Thu, 03 Jul 2025 05:45:34 -0400
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uXGKk-0001Og-52
- for qemu-arm@nongnu.org; Thu, 03 Jul 2025 05:34:24 -0400
-Received: by mail-yb1-xb2a.google.com with SMTP id
- 3f1490d57ef6-e7dc89108bfso6851140276.3
- for <qemu-arm@nongnu.org>; Thu, 03 Jul 2025 02:34:21 -0700 (PDT)
+ id 1uXGVY-000885-E7
+ for qemu-arm@nongnu.org; Thu, 03 Jul 2025 05:45:33 -0400
+Received: by mail-yw1-x112d.google.com with SMTP id
+ 00721157ae682-70e64b430daso59420867b3.3
+ for <qemu-arm@nongnu.org>; Thu, 03 Jul 2025 02:45:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751535259; x=1752140059; darn=nongnu.org;
+ d=linaro.org; s=google; t=1751535930; x=1752140730; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=7ild05BJyJV7piMfK/sm9VUr1D7Yv5vwaABxOwmxVXk=;
- b=rm4h3pqgLcjT0WsXS7ERdt3d2dh1HwB6HdlEC85OHZZ8v0uw2TExroeGwzQcRSxxYF
- 3wOtJ0lyl7GjnxWF9QTK7me9qzImCbyxxVHU8tAjvoA73HcxJ2zSOImTdbo2q7z5tPZV
- rmnPRp24JG8OXHOT/DH30MxpivEOa5DwvK3GwMYuwtTdX3BhOVsAitk+bkLKHjXv3qpC
- rar4gGTLqo8VylHXjdtF4wj9dpQ+rNu5iDthquRAl/ACrp/CfsPHbh2xQcDsD1CVifZh
- AXOeuh03O9IEXIh2Rk+XNQUfTQxW/jCJYAwNXot+OkQG0XrMVsBDbACBktL7pVS7S+3J
- OnpA==
+ bh=yqLrDQKiB7p2Djao7wyoxhIuPDF5XbtOnum5lvMNefE=;
+ b=T2r9rbFl9qAiWLzeAfbv/2C2ItOWIflqxjyASOrs8NFNUrh1koUzMepT45m3XyXuA3
+ EMnDfQfg8joHP9tDFHDBKcWHCxO5aSKH7v5gqOofghI3NSeL8SRN9WkG//Hh9UkijUSs
+ xiJR+8y+jw7XFY5Pv32oiAgHrIzGqgI0DBuXKfMKylNQ2lDLJaoUmUIQpKHbijt1MPD5
+ Hiseo26relPVhvn2O22jUJ1DTo0OQ44ZZzGwcoslLcmN8ZTasXazkSzuQcSlEzxIvFEr
+ UYHEbBGRfRHSve/zDS79CP1ybuolH+htGOf4LYmWqtFvB4/9bPeBQIaEAeWFsPVJ2p8a
+ Pg8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751535259; x=1752140059;
+ d=1e100.net; s=20230601; t=1751535930; x=1752140730;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=7ild05BJyJV7piMfK/sm9VUr1D7Yv5vwaABxOwmxVXk=;
- b=VhDS8Bwp5Ks6y5PX21LwDtSjAA/7C+BxEJW6OMfcrZ48d2Kaql2fWDde5sHJp3GKg+
- N0IhmiJOREj7bxQwannktODJ7NsRrdxj7+Vyc+PEo2feHXxHOLKXEz2gmr++ClXWbtqF
- w0XtezDD6jie4VoUgBYGIYaIGC64NQ1H9bnfmuEAmOC2Ok4QimQASbnAFr4FLyyErlaP
- pTCMDmj4rAhd3KASj0PeORE9owslDZAMcKo4P8cC40XeTu384jIul6JPFe0I/q/ujOGS
- DR+rnntcMiyqlnVIqmACVo63DGBQOpisMMDH2A3ndiFHZ5uqSDel5B9kQUK6OacQ3Uey
- aVRg==
+ bh=yqLrDQKiB7p2Djao7wyoxhIuPDF5XbtOnum5lvMNefE=;
+ b=PbKElC2qmxJydshGUF9kWGpsK4K82wWyezb6yODSV6z4brCFgyyyr9WV6ZkuaFDaXK
+ yV4eUlR+0GesVTH3KXfFj6ioQ7IEKbY+agIRrPtCfL3/xcU4j7jzUbjwqPNResmD0Rld
+ FuAnaYvdXld35DBjlsUx+j8nL1BitJe9gNN7xQ1aAunn6AXinD3mbZguIdedhR4L7KT9
+ APdUYnCor2kl26+VpLdPGRcKXBW/1MWT3sjciPg2xIwS50PFjrmikOKKDQi18y54VyXg
+ x3xC3MGfGF+HXKDqMhcqwd1vxqax391sUINMDXlgiIqxFMmww00ZMfbgnDjaJFiWI4O4
+ 9JwQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVPMgVvHlmAdA0flS/i/jdtMJCXJO/RfqFCnNnwTQYXQURsO70fVcwVrS72iqRY0FW/87hekcf8bg==@nongnu.org
-X-Gm-Message-State: AOJu0YzkgVEgFJEeGXnfNIHPvZ8nh7qd202bva0VCNCLCwqWL9ta6T9i
- VWQAx0LaHu/DBuyf1zyjVjtJITZDuss/w2rz0D5tqu0Kih7CSlMR8/by3g1MVKNBIIjkMHI6qGn
- jZSJoYsOK4cc5O2k5S3ngY6Gi6tm8aQAwL85sdd9fkw==
-X-Gm-Gg: ASbGncttEtW5lqcQM0x6JjG14RlDbULy9dVbeKWKViDdonAcOErjAeqXr1kxRquV19g
- iaQsRp2YYyyhdcA7uoq5kg15L3Q+Va3Uf4GmEgjZ2K6hZVN+AjtN042pi9pM/zURpBBk/tJlhgu
- SqoWyvtWIXjzqbc19cpsgYD85WvhHp2Q+NXv6nAycmGoLKrjCncOL1g34=
-X-Received: by 2002:a05:690c:6601:b0:70e:26ef:95eb with SMTP id
- 00721157ae682-7165a320362mr27659007b3.5.1751535259074; Thu, 03 Jul 2025
- 02:34:19 -0700 (PDT)
+ AJvYcCWgdvv2LZ353YYk8Z4E3TJo/BsZwHKvxjouB0bIEFB5ziQpUiOgD64ITsYBtRjOmllAX6YaIOiHpw==@nongnu.org
+X-Gm-Message-State: AOJu0Yykc0nbmNj6pTRw3T/TnklAr72ccPAXSlafrTG01qocwSchEuIn
+ E8u+9Jyy0chfle/cPvPK4Po/7ApUbJS4/SLR9tz81H9Thtw3QelqcnBaRWsR6YNWkie/AH3NNcv
+ 1DSrzaatSTQyUkDvHz9lS2b1yYS5At4XjYl9RDEqCkQ==
+X-Gm-Gg: ASbGncvoIrZnQm46zJYisWVRueL7OyHLdxUtMrOZuANt/p/6eaHulKhPt2g+Xn5lpYf
+ x+3PfEjtkutlx9x3E4BD9kH3DDBGkbGI2p4qjm1IflbL+RHs3ErMktxuGLml51c43pww2ap7d/s
+ 0juLMhS+Yp/Qoh2OAarnxrXyKNKWG4TZ24dzLMOpWG/ORe
+X-Received: by 2002:a05:690c:f0d:b0:712:cc11:aed with SMTP id
+ 00721157ae682-7164d27d0e4mr90397977b3.2.1751535930213; Thu, 03 Jul 2025
+ 02:45:30 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250702123410.761208-1-richard.henderson@linaro.org>
- <20250702123410.761208-26-richard.henderson@linaro.org>
-In-Reply-To: <20250702123410.761208-26-richard.henderson@linaro.org>
+ <20250702123410.761208-32-richard.henderson@linaro.org>
+In-Reply-To: <20250702123410.761208-32-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 3 Jul 2025 10:34:06 +0100
-X-Gm-Features: Ac12FXxEF6yunYWp0iXImMNf_PkPNbmQAi7TAdEvbdNTeGy89N2bBMtk5KKZqAs
-Message-ID: <CAFEAcA99rix7vxcOyBzW-4W8ETBSF=Sw-b8bHWBKY94VJSxUVw@mail.gmail.com>
-Subject: Re: [PATCH v3 25/97] target/arm: Add helper_gvec{_ah}_bfmlsl{_nx}
+Date: Thu, 3 Jul 2025 10:45:18 +0100
+X-Gm-Features: Ac12FXzYp_EOl4Fj5V6qX_5rlS4wbCmsU_qh2I4BV8fA2paflc3HX76WbAUu6Rg
+Message-ID: <CAFEAcA8szLP4mEvkatHhbBJzU5A6w0XGcMRRJYr_HPSNgZmU7Q@mail.gmail.com>
+Subject: Re: [PATCH v3 31/97] target/arm: Implemement SME2 SDOT, UDOT, USDOT,
+ SUDOT
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,18 +129,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2cg8dBmNp8Js
+X-TUID: Xty+5B7N9u7M
 
 On Wed, 2 Jul 2025 at 13:34, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/tcg/helper.h     |  8 +++++
->  target/arm/tcg/vec_helper.c | 58 ++++++++++++++++++++++++++++---------
->  2 files changed, 53 insertions(+), 13 deletions(-)
->
 
+
+
+> +/* Similar for 2-way dot product */
+> +#define DO_DOT(NAME, TYPED, TYPEN, TYPEM) \
+> +void HELPER(NAME)(void *vd, void *vn, void *vm, void *va, uint32_t desc)  \
+> +{                                                                         \
+> +    intptr_t i, opr_sz = simd_oprsz(desc);                                \
+> +    TYPED *d = vd, *a = va;                                               \
+> +    TYPEN *n = vn;                                                        \
+> +    TYPEM *m = vm;                                                        \
+> +    for (i = 0; i < opr_sz / sizeof(TYPED); ++i) {                        \
+> +        d[i] = (a[i] +                                                    \
+> +                (TYPED)n[i * 2 + 0] * m[i * 2 + 0] +                      \
+> +                (TYPED)n[i * 2 + 1] * m[i * 2 + 1]);                      \
+
+Don't we need some H macros here for the big-endian host case?
+(For that matter, the existing 4-way dot product helpers also
+look like they won't work on big-endian...)
+
+> +    }                                                                     \
+> +    clear_tail(d, opr_sz, simd_maxsz(desc));                              \
+> +}
+> +
+> +#define DO_DOT_IDX(NAME, TYPED, TYPEN, TYPEM, HD) \
+> +void HELPER(NAME)(void *vd, void *vn, void *vm, void *va, uint32_t desc)  \
+> +{                                                                         \
+> +    intptr_t i = 0, opr_sz = simd_oprsz(desc);                            \
+> +    intptr_t opr_sz_n = opr_sz / sizeof(TYPED);                           \
+> +    intptr_t segend = MIN(16 / sizeof(TYPED), opr_sz_n);                  \
+> +    intptr_t index = simd_data(desc);                                     \
+> +    TYPED *d = vd, *a = va;                                               \
+> +    TYPEN *n = vn;                                                        \
+> +    TYPEM *m_indexed = (TYPEM *)vm + HD(index) * 2;                       \
+> +    do {                                                                  \
+> +        TYPED m0 = m_indexed[i * 2 + 0];                                  \
+> +        TYPED m1 = m_indexed[i * 2 + 1];                                  \
+> +        do {                                                              \
+> +            d[i] = (a[i] +                                                \
+> +                    n[i * 2 + 0] * m0 +                                   \
+> +                    n[i * 2 + 1] * m1);                                   \
+
+Similarly here.
+
+> +        } while (++i < segend);                                           \
+> +        segend = i + (16 / sizeof(TYPED));                                \
+> +    } while (i < opr_sz_n);                                               \
+> +    clear_tail(d, opr_sz, simd_maxsz(desc));                              \
+> +}
+
+Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

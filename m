@@ -1,189 +1,341 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp661000dyc;
-        Thu, 3 Jul 2025 09:34:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVcZKjLPm1zRNJ5fKnLYh9z5AgH+x+S/tWkhM84N0Rt4rU2nygXaKQPwRqDJXerZTjFN0MAzj+3z0gabg==@linaro.org
-X-Google-Smtp-Source: AGHT+IF0qTEo7X6qgpcuJmhgAdsi5nKmxNyNr1lJzgvRCa7/Gg6jYrOvThCAeZuz0/JkAZVhUWLk
-X-Received: by 2002:a05:6214:f03:b0:700:bfbe:bdf with SMTP id 6a1803df08f44-702bcc8715bmr58976446d6.40.1751560487286;
-        Thu, 03 Jul 2025 09:34:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751560487; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp696890dyc;
+        Thu, 3 Jul 2025 10:33:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUDKPYFpwwNJPee5D55kk2B/oxQUOSTB0gYpBgmgsNIxkQpK+lS3tAs9p/3s0LShpNikdGgZcSzhBa8Fg==@linaro.org
+X-Received: by 2002:a05:600c:540e:b0:43d:b3:f95 with SMTP id 5b1f17b1804b1-454adabf504mr29454785e9.28.1751564032562;
+        Thu, 03 Jul 2025 10:33:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751564032; cv=none;
         d=google.com; s=arc-20240605;
-        b=Y2xWbr7HcoCDWrIbsTNrYALZMP+nxgFMNmHx7DbjQgGZ30aEfmnXkuVmXEh7RNXB72
-         eDVKmHrOKoRPfU2+0tzBpeVML5EOKzalSF4Xjh64aqzVOY8TL+E/5q6PgKS0lNB8NROK
-         UOkF/YJ+8RoWJQEW+T/8iiz1KBGdw1ahF/jv+76mOHKo698NvudM8OvEwbuQTojfN3hT
-         ndy99g+xbfpG2RTRE1MNhd2BXnFjRq3CtkKz9CyUqGRbLbxKG2a0YeWtw+FLQ+RzigYW
-         AkE5zVjGaCg20JTPUQZiXtkYkpc41ts8qHIoBG5psaJtBmBtYpQL+O/pfAUhx4OJptmu
-         ERNg==
+        b=Ufkd3VRdVoRMAzJcUJLH68qHJN/f1GTpWklqixGLaTqQPGB3DagMgBZblSgr+getx5
+         OYVFBaeHhlwMTShp2W8PoKeL71xl/uXulu6a/b3xYPp8Ty7+f9usvcsOVxaadM0li+lL
+         aeD6pnfo+BMWu0ssE8ftSctfEIAjVhuTgS/DX/hwacu57xl5G4c0kT91qrApISwVf3iO
+         q8XWgywOQX6HLwXnTbWwlMfdzE4G+IUP/U0MwX5H/pmXp8PhcUM2fVMZ7idofKl59H5Y
+         tIV1PY1YfJVXwYQOgetGJyKfoxjvJ3z40KDjmAPdmF5uz7cYVF9v3uVtKtT6nRGgS40J
+         k73w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=eaCcGqOSLi5xymHRgXk9oQXJi3fiaQ8iLUZzWw1Wc4g=;
-        fh=P9+Z7/4AkgPn3qqc7ezkzIo/pIOomln+GodLIHXdhv4=;
-        b=JVSrMbBdxsgJzzgKNtaBe8bujTFs+jc6Ihejmy/a7Qy4zD1JuRwBTmldNUJX0C+ydQ
-         PQ4XDeUidKJuoaT/ALlZ8Do9gys0iFE8XhWF/XyOzpmeveriGFBQMOHiU1IlapikY5jm
-         lyM1wXWLGMhIeAd8Vq2GjtG7+VHTljzLPq4rv1oq/SknPp8I0W32+bX3fj4IcIfkrPW8
-         LxyQ6d9nxGecyJRwhxK0E3E9ahtq4rLmuxoggrhpNVMbp6GTcKmijvmTadyNwGabYp4q
-         Sk2mYxs1out7zDcLKV1XiVfNTxFCvV57LWgoQdARN1kdQ1qDFN1U9ujREtr0xN9wKw1j
-         U8oA==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=XcfnS13GIUjtg983McguNHeXSVu+J5s+ZUMQk0qRbKs=;
+        fh=ZrHIEcx3Xue9+Dc5HrRFxBt0IU/SS5zQ3NVDGDfRg3M=;
+        b=jMDGInBNcEPzIwqSQyzJ/kEh3Mn2mKypR60RNzW5u/wtnGwMtDvXpVEheWUBeqtsA/
+         KG+oQrIgRzveToAZBLPJmfVDEqBt+ANbHXQTN380fG4fDBzSNMRZw7OlfbYHrzOhiGtu
+         iTBprCI8dPXabIeClcb3OAP2jvKaIv17tykyewCMzG69tnfrJCfu6VVce0HDLp4jw+jO
+         6IOr+jHvIk8do4+rdDuPm0LChqDCaZo1pFYJXcZCttygDNAdyX2NoXiqNpLKEb8vkvYn
+         B/m3IN/khkxSgdgyof9ND73P0b6mvEP5yhCZz+x4bEyd/p+cjgs4Lf2+d2nGQNtRMQ7o
+         BEgg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PRxSpKAN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd77288980si173933176d6.101.2025.07.03.09.34.47
+       dkim=pass header.i=@linaro.org header.s=google header.b="N/wFKdVg";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-454b1b9d033sor691605e9.10.2025.07.03.10.33.52
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Jul 2025 09:34:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 03 Jul 2025 10:33:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PRxSpKAN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uXMtB-0007CR-2f; Thu, 03 Jul 2025 12:34:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
- id 1uXMt7-00077s-TY
- for qemu-devel@nongnu.org; Thu, 03 Jul 2025 12:34:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
- id 1uXMt4-0001ix-CK
- for qemu-devel@nongnu.org; Thu, 03 Jul 2025 12:34:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1751560450;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=eaCcGqOSLi5xymHRgXk9oQXJi3fiaQ8iLUZzWw1Wc4g=;
- b=PRxSpKANq0nOq/Yq1Ot6pIAJgI1eekvImegQGGNomj5c8PxRpeyMJpSdNZ3Z6r1pLwwneF
- rIMpumSABbUeq279qNMIzoN9jVuogpVax21PokgTv/3n5ZlEBvdLZwhKt9sJUUAefL3Wnf
- 37BPQuBhrfK81QaZNNPgh5IdjbauVoA=
-Received: from mail-oo1-f70.google.com (mail-oo1-f70.google.com
- [209.85.161.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-225-gX4GQZcoO52mgB8QBoB9Bw-1; Thu, 03 Jul 2025 12:34:08 -0400
-X-MC-Unique: gX4GQZcoO52mgB8QBoB9Bw-1
-X-Mimecast-MFC-AGG-ID: gX4GQZcoO52mgB8QBoB9Bw_1751560447
-Received: by mail-oo1-f70.google.com with SMTP id
- 006d021491bc7-610bf6f2c8bso123658eaf.3
- for <qemu-devel@nongnu.org>; Thu, 03 Jul 2025 09:34:08 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b="N/wFKdVg";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1751564032; x=1752168832; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XcfnS13GIUjtg983McguNHeXSVu+J5s+ZUMQk0qRbKs=;
+        b=N/wFKdVgTiSJdYvnY8Vqmjk9mGA0pa0nC8Co3ayc7PyJSTUcn8PaLt5uBYsCY/b5CH
+         2UKOFShtZ1DURc58lPporMLI17UDX66LivByx/XyibndQxKmmG0M2N55ZJBAEeZikpfg
+         d0GnpHqvqDcOahDZteNSsaxzM9tScPYMGr7ygMTmrpItaLzS79R9CkhtJtJfD8Rv6yGF
+         mPeGv+9wkV/23oTmA0+PHX1mBSRRC7fGBWehYRwOJemPTMA0LcbFeCraXRcTlWON4iAf
+         2Oa3fz/8UGCY/Hbol1LTXdSnuVMinUMHgTy3D0MPI2NczcuGx8qVm+2vrlfMA3vPK7bl
+         MKFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751560447; x=1752165247;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=eaCcGqOSLi5xymHRgXk9oQXJi3fiaQ8iLUZzWw1Wc4g=;
- b=w3ZDRABCop2i8vWa0Ik3h3kfrnok1Bebn2//9Q+3l3XBwpfJpinSceLBxJJz5fFQZ3
- KNh8T4SEuFDT//b+UZZymBhfgc+r89Q4PuOw1ckQL7qCAsXKIJ55gAVw09sRr5k6gvOc
- hSrChiP7WmgaxscQaeIlo52+rskKDhJn/YRxSE2FUzmGc5fEAzqtoOeC8i6cM6sJGMRM
- VTikYFFACnY4UPNRqfJvR8ZvOAKFxDL8fQo5RA//7HNLqh6LZIF9BfbRTNsvGR7RtArA
- yuW36qHA8Q9QtTKzoS7sv52Dnft/5gT3yKb4NXMXnjT424jPD915saQm9GzVw+Bg2oI6
- baEA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX2JWzFgD9NH08p/LhBIdRZebTGBxiiZ/yulC/fuI6LmrkxD6NuvgF3YjZn4pE1Wv+bBCbKIVMVUqOX@nongnu.org
-X-Gm-Message-State: AOJu0YyESSTB85f5hJshn9+7iyEo24DPA9QpGpgGOiadFwSVIWgf9DxH
- QgTqBlUG+Aj26rVJtxjuAa2bs8j7xASaFiUMow8XBhl7zrPVGs6gQnV1QNHRtRwRdNKJtfenix8
- xe+0JREti4asbAg/FUcFFaD0J/i/QKUy0/Nu1PV+YrGGP6F+qz05nEWAw
-X-Gm-Gg: ASbGncsnxVnwmnY4pYc8DrXUNUGZlxxnYwozRqJyyj6aw4O7CzcHBD9dDjz8iY9NhDy
- wMJg2YSv+Hwl0uYmDc11alwMhxYcemPNzpqExrtiOcXVidK4ika40TFk7B9MwPgxgvE+c7UELyw
- DJb0nKkhGOHHXNKY/ApzIvw/7Hn98n83jl1/B/X4ooS9C7V6IJMZKAkQ4joqE66gTcpLmWze5Hd
- VNo8zY9cMEyzS4XfQOykKHTv+K+c42Uvwj3bYvIA/tsSGF14f2WpJVx9DM9MJtLAzoEG50me/RO
- KcfjPG8Q4ie4uS7H5lx0vnw=
-X-Received: by 2002:a05:6871:758a:b0:29e:1cd8:4a0f with SMTP id
- 586e51a60fabf-2f76ed9763dmr2844160fac.17.1751560447628; 
- Thu, 03 Jul 2025 09:34:07 -0700 (PDT)
-X-Received: by 2002:a05:6871:758a:b0:29e:1cd8:4a0f with SMTP id
- 586e51a60fabf-2f76ed9763dmr2844133fac.17.1751560447228; 
- Thu, 03 Jul 2025 09:34:07 -0700 (PDT)
-Received: from [192.168.40.164] ([70.105.235.240])
- by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-2efd512dc69sm4515294fac.47.2025.07.03.09.34.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Jul 2025 09:34:06 -0700 (PDT)
-Message-ID: <c3d7e59d-eda6-4bc4-913c-e23555c13bdd@redhat.com>
-Date: Thu, 3 Jul 2025 12:32:18 -0400
+        d=1e100.net; s=20230601; t=1751564032; x=1752168832;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=XcfnS13GIUjtg983McguNHeXSVu+J5s+ZUMQk0qRbKs=;
+        b=PLbzHLQd3Il25A8ibH+fIj60sX9STJaqNWKI+5kERDTblriiz9bwfLAiKXMVSKO6o2
+         Bd6bJIAmMzlw2yC6zP/kVieMjyr1rWXQnpfOqQsnAqgXADsoJJAvAEgBUaILZf0zgm8S
+         L/o4+w0crru4J4z9Md2VtYc7L5xCrwh+YUyTK81k4g8N3MxvKqnGdEPvjsuJcd45MwXB
+         ZdEJUugho/Kkef3j+Pgtbodaw+52TKPMwG4NHwZME2YDNMvtdMKe7XZCyhFCL1VU/E8t
+         Wiwfy6JnyvkTlr5km7ub/apak6iOsCCPXEcVg3riNOnwMeadKuQSzQrJlcHJlctDExCa
+         WWUw==
+X-Forwarded-Encrypted: i=1; AJvYcCUht51u/mpflqwAix8asRlziZGOLYOIESWfeTAkYRp1RScwgnRmzeD/HxIR1CgQ4nKiW0oVO4z2hbm5FA==@linaro.org
+X-Gm-Message-State: AOJu0Yy2fPy9a066+rcCFAWEhq+W0KNZgDdcbSAYqs/9xdib/CzPUKH1
+	1osz4Ym12aByoev3zbePHcjtgf31rN8AA82yX61w76aPiPePIhw+XuPgFM3zPjZO5hEKnQ==
+X-Gm-Gg: ASbGncv6eNfStEDTzwKGDeduYiqxjJ1qsaKHdyxxZZ8Z0/nipKwK1QdRx1o1m3mbIBl
+	bIyucapaU+cU18aCMW7n6LeEQh5aAss+sm4O94+/vUbCC6IF/JKl51RKU4xbeqxXEpm/SJbyagr
+	bgQaaxKIRWc49LpncTK/ee05IsRT9milojFddhrffRvIutqAXftVryb/xQYpgtQ7oS6UG1/W9W7
+	1Mtwd6KPV4bIis08/MJK59cT6GZZNdAYAWaoKdZswFlS9ZYHbt5emJMgzs33dJWakTz86de/I37
+	Mi1GA7Is+uLmcW6kQF4vPNqa1W3aOPLfgrbJUgYo+F15ZF9LScl4wEagA2T8bOSMhKgI9OX8+AC
+	cQTX2cCpiUFoZP28ZUge2WMag8cRokGKh3WpT
+X-Google-Smtp-Source: AGHT+IEFHjox5AGA4sYKqeK/FG7AbGqmsv8ejvJN4rlnX1vF5JW7xikwMjQzSAdkM74+gnv+3GpQ/A==
+X-Received: by 2002:a05:600c:1554:b0:450:d4a6:79ad with SMTP id 5b1f17b1804b1-454a9ca8543mr46409505e9.23.1751564031784;
+        Thu, 03 Jul 2025 10:33:51 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-454b1628ed7sm3556035e9.15.2025.07.03.10.33.50
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Thu, 03 Jul 2025 10:33:51 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Zhao Liu <zhao1.liu@intel.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Cameron Esfahani <dirty@apple.com>,
+	Roman Bolshakov <rbolshakov@ddn.com>,
+	Phil Dennis-Jordan <phil@philjordan.eu>,
+	Mads Ynddal <mads@ynddal.dk>,
+	Alexander Graf <agraf@csgraf.de>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	kvm@vger.kernel.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH v6 12/39] accel: Move supports_guest_debug() declaration to AccelClass
+Date: Thu,  3 Jul 2025 19:32:18 +0200
+Message-ID: <20250703173248.44995-13-philmd@linaro.org>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250703173248.44995-1-philmd@linaro.org>
+References: <20250703173248.44995-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 01/12] hw/arm/virt-acpi-build: Don't create ITS id
- mappings by default
-Content-Language: en-US
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: eric.auger@redhat.com, peter.maydell@linaro.org, jgg@nvidia.com,
- nicolinc@nvidia.com, berrange@redhat.com, imammedo@redhat.com,
- nathanc@nvidia.com, mochs@nvidia.com, smostafa@google.com,
- gustavo.romero@linaro.org, mst@redhat.com, marcel.apfelbaum@gmail.com,
- linuxarm@huawei.com, wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
-References: <20250703084643.85740-1-shameerali.kolothum.thodi@huawei.com>
- <20250703084643.85740-2-shameerali.kolothum.thodi@huawei.com>
-From: Donald Dutile <ddutile@redhat.com>
-In-Reply-To: <20250703084643.85740-2-shameerali.kolothum.thodi@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=ddutile@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.237, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: z5zi/pWrriT2
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: amqytS78b2bd
 
+AccelOpsClass is for methods dealing with vCPUs.
+When only dealing with AccelState, AccelClass is sufficient.
 
+In order to have AccelClass methods instrospect their state,
+we need to pass AccelState by argument.
 
-On 7/3/25 4:46 AM, Shameer Kolothum wrote:
-> Commit d6afe18b7242 ("hw/arm/virt-acpi-build: Fix ACPI IORT and MADT tables
-> when its=off") moved ITS group node generation under the its=on condition.
-> However, it still creates rc_its_idmaps unconditionally, which results in
-> duplicate ID mappings in the IORT table.
-> 
-> Fixes:d6afe18b7242 ("hw/arm/virt-acpi-build: Fix ACPI IORT and MADT tables when its=off")
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
->   hw/arm/virt-acpi-build.c | 6 ------
->   1 file changed, 6 deletions(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index cd90c47976..724fad5ffa 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -329,12 +329,6 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->           /* Sort the smmu idmap by input_base */
->           g_array_sort(rc_smmu_idmaps, iort_idmap_compare);
->   
-> -        /*
-> -         * Knowing the ID ranges from the RC to the SMMU, it's possible to
-> -         * determine the ID ranges from RC that are directed to the ITS.
-> -         */
-> -        create_rc_its_idmaps(rc_its_idmaps, rc_smmu_idmaps);
-> -
->           nb_nodes = 2; /* RC and SMMUv3 */
->           rc_mapping_count = rc_smmu_idmaps->len;
->   
-Reviewed-by: Donald Dutile <ddutile@redhat.com>
+Restrict kvm_supports_guest_debug() scope.
 
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ accel/kvm/kvm-cpus.h       | 1 -
+ include/qemu/accel.h       | 1 +
+ include/system/accel-ops.h | 1 -
+ include/system/hvf.h       | 2 +-
+ accel/hvf/hvf-accel-ops.c  | 2 +-
+ accel/kvm/kvm-accel-ops.c  | 1 -
+ accel/kvm/kvm-all.c        | 5 ++++-
+ accel/tcg/tcg-accel-ops.c  | 6 ------
+ accel/tcg/tcg-all.c        | 6 ++++++
+ gdbstub/system.c           | 8 +++++---
+ target/arm/hvf/hvf.c       | 2 +-
+ target/i386/hvf/hvf.c      | 2 +-
+ 12 files changed, 20 insertions(+), 17 deletions(-)
+
+diff --git a/accel/kvm/kvm-cpus.h b/accel/kvm/kvm-cpus.h
+index 688511151c8..3185659562d 100644
+--- a/accel/kvm/kvm-cpus.h
++++ b/accel/kvm/kvm-cpus.h
+@@ -16,7 +16,6 @@ void kvm_destroy_vcpu(CPUState *cpu);
+ void kvm_cpu_synchronize_post_reset(CPUState *cpu);
+ void kvm_cpu_synchronize_post_init(CPUState *cpu);
+ void kvm_cpu_synchronize_pre_loadvm(CPUState *cpu);
+-bool kvm_supports_guest_debug(void);
+ int kvm_insert_breakpoint(CPUState *cpu, int type, vaddr addr, vaddr len);
+ int kvm_remove_breakpoint(CPUState *cpu, int type, vaddr addr, vaddr len);
+ void kvm_remove_all_breakpoints(CPUState *cpu);
+diff --git a/include/qemu/accel.h b/include/qemu/accel.h
+index fbd3d897fef..fb176e89bad 100644
+--- a/include/qemu/accel.h
++++ b/include/qemu/accel.h
+@@ -47,6 +47,7 @@ typedef struct AccelClass {
+                        hwaddr start_addr, hwaddr size);
+ 
+     /* gdbstub related hooks */
++    bool (*supports_guest_debug)(AccelState *as);
+     int (*gdbstub_supported_sstep_flags)(void);
+ 
+     bool *allowed;
+diff --git a/include/system/accel-ops.h b/include/system/accel-ops.h
+index 4c99d25aeff..700df92ac6d 100644
+--- a/include/system/accel-ops.h
++++ b/include/system/accel-ops.h
+@@ -63,7 +63,6 @@ struct AccelOpsClass {
+     int64_t (*get_elapsed_ticks)(void);
+ 
+     /* gdbstub hooks */
+-    bool (*supports_guest_debug)(void);
+     int (*update_guest_debug)(CPUState *cpu);
+     int (*insert_breakpoint)(CPUState *cpu, int type, vaddr addr, vaddr len);
+     int (*remove_breakpoint)(CPUState *cpu, int type, vaddr addr, vaddr len);
+diff --git a/include/system/hvf.h b/include/system/hvf.h
+index a9a502f0c8f..a9fd13d9bba 100644
+--- a/include/system/hvf.h
++++ b/include/system/hvf.h
+@@ -71,7 +71,7 @@ void hvf_arch_update_guest_debug(CPUState *cpu);
+ /*
+  * Return whether the guest supports debugging.
+  */
+-bool hvf_arch_supports_guest_debug(void);
++bool hvf_arch_supports_guest_debug(AccelState *as);
+ #endif /* COMPILING_PER_TARGET */
+ 
+ #endif
+diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+index b38977207d2..aed791a3f3e 100644
+--- a/accel/hvf/hvf-accel-ops.c
++++ b/accel/hvf/hvf-accel-ops.c
+@@ -366,6 +366,7 @@ static void hvf_accel_class_init(ObjectClass *oc, const void *data)
+     ac->name = "HVF";
+     ac->init_machine = hvf_accel_init;
+     ac->allowed = &hvf_allowed;
++    ac->supports_guest_debug = hvf_arch_supports_guest_debug;
+     ac->gdbstub_supported_sstep_flags = hvf_gdbstub_sstep_flags;
+ }
+ 
+@@ -600,7 +601,6 @@ static void hvf_accel_ops_class_init(ObjectClass *oc, const void *data)
+     ops->remove_breakpoint = hvf_remove_breakpoint;
+     ops->remove_all_breakpoints = hvf_remove_all_breakpoints;
+     ops->update_guest_debug = hvf_update_guest_debug;
+-    ops->supports_guest_debug = hvf_arch_supports_guest_debug;
+ };
+ static const TypeInfo hvf_accel_ops_type = {
+     .name = ACCEL_OPS_NAME("hvf"),
+diff --git a/accel/kvm/kvm-accel-ops.c b/accel/kvm/kvm-accel-ops.c
+index e5c15449aa6..96606090889 100644
+--- a/accel/kvm/kvm-accel-ops.c
++++ b/accel/kvm/kvm-accel-ops.c
+@@ -104,7 +104,6 @@ static void kvm_accel_ops_class_init(ObjectClass *oc, const void *data)
+ 
+ #ifdef TARGET_KVM_HAVE_GUEST_DEBUG
+     ops->update_guest_debug = kvm_update_guest_debug_ops;
+-    ops->supports_guest_debug = kvm_supports_guest_debug;
+     ops->insert_breakpoint = kvm_insert_breakpoint;
+     ops->remove_breakpoint = kvm_remove_breakpoint;
+     ops->remove_all_breakpoints = kvm_remove_all_breakpoints;
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 17235f26464..c8611552d19 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -3533,7 +3533,7 @@ int kvm_update_guest_debug(CPUState *cpu, unsigned long reinject_trap)
+     return data.err;
+ }
+ 
+-bool kvm_supports_guest_debug(void)
++static bool kvm_supports_guest_debug(AccelState *as)
+ {
+     /* probed during kvm_init() */
+     return kvm_has_guest_debug;
+@@ -3998,6 +3998,9 @@ static void kvm_accel_class_init(ObjectClass *oc, const void *data)
+     ac->has_memory = kvm_accel_has_memory;
+     ac->allowed = &kvm_allowed;
+     ac->gdbstub_supported_sstep_flags = kvm_gdbstub_sstep_flags;
++#ifdef TARGET_KVM_HAVE_GUEST_DEBUG
++    ac->supports_guest_debug = kvm_supports_guest_debug;
++#endif
+ 
+     object_class_property_add(oc, "kernel-irqchip", "on|off|split",
+         NULL, kvm_set_kernel_irqchip,
+diff --git a/accel/tcg/tcg-accel-ops.c b/accel/tcg/tcg-accel-ops.c
+index 6116644d1c0..f579685a611 100644
+--- a/accel/tcg/tcg-accel-ops.c
++++ b/accel/tcg/tcg-accel-ops.c
+@@ -106,11 +106,6 @@ void tcg_handle_interrupt(CPUState *cpu, int mask)
+     }
+ }
+ 
+-static bool tcg_supports_guest_debug(void)
+-{
+-    return true;
+-}
+-
+ /* Translate GDB watchpoint type to a flags value for cpu_watchpoint_* */
+ static inline int xlat_gdb_type(CPUState *cpu, int gdbtype)
+ {
+@@ -216,7 +211,6 @@ static void tcg_accel_ops_init(AccelOpsClass *ops)
+     }
+ 
+     ops->cpu_reset_hold = tcg_cpu_reset_hold;
+-    ops->supports_guest_debug = tcg_supports_guest_debug;
+     ops->insert_breakpoint = tcg_insert_breakpoint;
+     ops->remove_breakpoint = tcg_remove_breakpoint;
+     ops->remove_all_breakpoints = tcg_remove_all_breakpoints;
+diff --git a/accel/tcg/tcg-all.c b/accel/tcg/tcg-all.c
+index 6e5dc333d59..0cff0f8a0f9 100644
+--- a/accel/tcg/tcg-all.c
++++ b/accel/tcg/tcg-all.c
+@@ -219,6 +219,11 @@ static void tcg_set_one_insn_per_tb(Object *obj, bool value, Error **errp)
+     qatomic_set(&one_insn_per_tb, value);
+ }
+ 
++static bool tcg_supports_guest_debug(AccelState *as)
++{
++    return true;
++}
++
+ static int tcg_gdbstub_supported_sstep_flags(void)
+ {
+     /*
+@@ -242,6 +247,7 @@ static void tcg_accel_class_init(ObjectClass *oc, const void *data)
+     ac->cpu_common_realize = tcg_exec_realizefn;
+     ac->cpu_common_unrealize = tcg_exec_unrealizefn;
+     ac->allowed = &tcg_allowed;
++    ac->supports_guest_debug = tcg_supports_guest_debug;
+     ac->gdbstub_supported_sstep_flags = tcg_gdbstub_supported_sstep_flags;
+ 
+     object_class_property_add_str(oc, "thread",
+diff --git a/gdbstub/system.c b/gdbstub/system.c
+index 8a32d8e1a1d..03934deed49 100644
+--- a/gdbstub/system.c
++++ b/gdbstub/system.c
+@@ -13,6 +13,7 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
++#include "qemu/accel.h"
+ #include "qemu/cutils.h"
+ #include "exec/gdbstub.h"
+ #include "gdbstub/syscalls.h"
+@@ -634,9 +635,10 @@ int gdb_signal_to_target(int sig)
+ 
+ bool gdb_supports_guest_debug(void)
+ {
+-    const AccelOpsClass *ops = cpus_get_accel();
+-    if (ops->supports_guest_debug) {
+-        return ops->supports_guest_debug();
++    AccelState *accel = current_accel();
++    AccelClass *acc = ACCEL_GET_CLASS(accel);
++    if (acc->supports_guest_debug) {
++        return acc->supports_guest_debug(accel);
+     }
+     return false;
+ }
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 7b6d291e79c..995a6a74b06 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -2352,7 +2352,7 @@ void hvf_arch_update_guest_debug(CPUState *cpu)
+     hvf_arch_set_traps(cpu);
+ }
+ 
+-bool hvf_arch_supports_guest_debug(void)
++bool hvf_arch_supports_guest_debug(AccelState *as)
+ {
+     return true;
+ }
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 99e37a33e50..b25bff0df41 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -1019,7 +1019,7 @@ void hvf_arch_update_guest_debug(CPUState *cpu)
+ {
+ }
+ 
+-bool hvf_arch_supports_guest_debug(void)
++bool hvf_arch_supports_guest_debug(AccelState *as)
+ {
+     return false;
+ }
+-- 
+2.49.0

@@ -1,357 +1,204 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp373509dyc;
-        Thu, 3 Jul 2025 01:02:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWadvRFGYODY0nEmjUyXYQuSvTNTmdqOoBs66EoOPn2JtqvgH1GkPv1WTt2d8/WHafQaZVeN+nFfPtNGA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHTFlVa39tp1RV4Eo0h5RFRPGDTSrsibHsHXej8kO2+idNlDQj0DxwikhQXzQAPng0BlL9A
-X-Received: by 2002:a05:622a:487:b0:4a9:72ed:6c48 with SMTP id d75a77b69052e-4a98799538dmr39297381cf.14.1751529725544;
-        Thu, 03 Jul 2025 01:02:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751529725; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp385978dyc;
+        Thu, 3 Jul 2025 01:32:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVXNPSxoINfAwH84gzrk/GwXYCr/ESnjDvcdwiixtEQgfKb3Z9E1pqLzI1oyjQf4ybLePvGCn3cLPTZEw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHSy6b19/3tE6LBbL9JNlhG7pAmh8Jpo0Cjbs8XyiP5xDyOzQM/beMEt4tZ3domr3tAdqMH
+X-Received: by 2002:a05:6214:5195:b0:6fd:7604:d90a with SMTP id 6a1803df08f44-702bcbdf838mr28286096d6.6.1751531553305;
+        Thu, 03 Jul 2025 01:32:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751531553; cv=none;
         d=google.com; s=arc-20240605;
-        b=hTNVytQLueLebvwJn05AEoWXqYcQYYcYew01Ffi9MxSQz+lUgaGRmgvYHBVtgiL1Hy
-         fkOSUBJXF1uP8WBMwSxt5h5xm/Yww+704k004OfCDqNj1jI76a4BIN2NR0/kpBPhjbyC
-         M5w701OCoJwqY87Cozh+NlYB8y7QaJ4lorA7YS4Z45l2T/SpxKGKV747cPw2bz42Hs/A
-         L3TnADibgfOYz0y8yqUjNiVfm5CWVQT/zTZ5jyLP5rTzuY54LaQznYwA8pBbuEAac2v4
-         xlqW7xo4QZLngoSk5+e9CsyA3MCHoQEdRTGJRBasLAIfKepoXdglnhmpU/AU2pPw2OMc
-         adsA==
+        b=Uqsj30E6O0TZwqJik6hetI9UC5fTOGZfGRTrqatNcpNy531P/gmdDP3Nu0avPTYOBk
+         c3kOHOecszrJyo0X0jbJKr8/sfiou/wD/CCv+gyiVGu4ZixedvCAFZ1C5Xaz68p7oKvd
+         dl+mgWXywr/QLxLrIBPL5WK/BAmXBOfEf6G0QHMqpcM+VXIhLCc61m9p2Zu8VI+7ohAS
+         i4iJjZXFtW7MqcpLmexUHt8M9C//WU2ohJDnPu/7Frm4OOOwRsFHIBTmUVcMjmE9bl1d
+         0ztAK+oGmOWR8tUQ0lsFawFpyulYvshaytq5Sq03W3RSKGR1pGZ8y9VHx+sx0ZySD2rm
+         U8KA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=3c3DKauhdLkdsks44u+qLiNGjcmkNrdblfu+4EWIQ+w=;
-        fh=UtzWrwUScRPkPRs10OzZprZ6IjlNheZm1wrONN0J0fg=;
-        b=fD12yzb+1bR+CJpL67FYYbe5hQJgmcAYmgNiMXysmfU2uywKEsTbBpknbVr7sYMFVs
-         S6r6kMt8XSIwtayYHZHUTVDGZuq+ZBJlpXPBcwnkanAlI9wsrlXu284oi2/5tYYc9DSD
-         hPMeooV8Cfcvsbb7Z+YCn/yaARgasyutdcU1bjl0nJwk38j5bvK0O5wCPuSPUTMDroqE
-         BmNZX56nyQWubViT5jOjOhf+Pfcy0nQB56PaR8OeNpZ4P4RGd/1SCpCN0EgAFo1KhTiW
-         cuWJ11HQ+Qd+SdmbpgTvbtDPOpHH2K8ljjC4T6WgO5laiVRUNMlh424F3/6mnGrpCoff
-         9tfw==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=ACN3/5ZwuMHWPnIM2LvNkb6ZNX2drFxWaI640q4NOCk=;
+        fh=O9QHe3r3b1soDSwTEVNzXLq1IohWBQizkjYmXO46LMo=;
+        b=X4CiMpw9vaBdetpQfOdvrLmIz868i/DuC8SmhkMmAuaERKSa7CJbw7QEAJjRNVnE/k
+         030FdBGs3aMVLe2M2OJkPbskDUCPy/kMVDtNa+tNXGs5Cpm21yV6p8R8p7d0v8ksTkZp
+         RDABDMxrTOu2f9ISfuJ7WSijJh1ngZJeuIgIEAXn5cHtl8YWalR8MmcBa1oZ/mT3stia
+         fadipXFhixPMz6iLhO0374vMii2s7O4YKCy1CSwkbDs9cNoZ+xes9xRoZsTcWq2RQDtI
+         bu8Xil6BU+BVbLskw0eIY3fpae+4Olt8KypV/ph9HgfW1sTjT5w2j541bU8ooi6dzd+n
+         5Hlw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QsmPI6kM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NlHEnfeD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc5538e5si134446701cf.500.2025.07.03.01.02.05
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd7736ae72si158120686d6.267.2025.07.03.01.32.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Jul 2025 01:02:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 03 Jul 2025 01:32:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QsmPI6kM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NlHEnfeD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uXEt6-0007Im-Ke; Thu, 03 Jul 2025 04:01:44 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uXFMY-0000AD-Gc; Thu, 03 Jul 2025 04:32:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uXEsx-0007HQ-5e
- for qemu-arm@nongnu.org; Thu, 03 Jul 2025 04:01:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uXEst-0000YG-6w
- for qemu-arm@nongnu.org; Thu, 03 Jul 2025 04:01:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1751529687;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3c3DKauhdLkdsks44u+qLiNGjcmkNrdblfu+4EWIQ+w=;
- b=QsmPI6kMCV1wFmSt1jAOQ818gXkSU348vpdFSxPe9GbyVJ0p09LhfpVmiJenHk1yPm5X6G
- KTAgAJuRV4+/sXF1Jiyj/WWxqdcyrdAgEYlpJ42UPE54hNMm82nScyEggkF1ysCxL1vCN2
- 7KdoJJVNE97wO4/toeaLYOOEdYttbjI=
-Received: from mail-pj1-f69.google.com (mail-pj1-f69.google.com
- [209.85.216.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-18-FvHdMcBUOnidfWEeutq1gQ-1; Thu, 03 Jul 2025 04:01:26 -0400
-X-MC-Unique: FvHdMcBUOnidfWEeutq1gQ-1
-X-Mimecast-MFC-AGG-ID: FvHdMcBUOnidfWEeutq1gQ_1751529685
-Received: by mail-pj1-f69.google.com with SMTP id
- 98e67ed59e1d1-313f8835f29so6938364a91.3
- for <qemu-arm@nongnu.org>; Thu, 03 Jul 2025 01:01:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <kosasihwilliam4@gmail.com>)
+ id 1uXFM7-0008Rk-FA; Thu, 03 Jul 2025 04:31:43 -0400
+Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <kosasihwilliam4@gmail.com>)
+ id 1uXFM5-0006az-MP; Thu, 03 Jul 2025 04:31:43 -0400
+Received: by mail-yb1-xb2b.google.com with SMTP id
+ 3f1490d57ef6-e819ebc3144so6841856276.0; 
+ Thu, 03 Jul 2025 01:31:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1751531499; x=1752136299; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=ACN3/5ZwuMHWPnIM2LvNkb6ZNX2drFxWaI640q4NOCk=;
+ b=NlHEnfeDKaMMeRMARD7OfVUuwmxr74AI6pBvvv0uXS5grSxUlbXhytWtxMMD9Pwvxd
+ N4diRdtY/o8g3F0S94v7p3SHw2fEvawCG3AXKwrt8alqDCKb87gJ4pt594mldOTntBxy
+ Qo7S1QVgUfJmFXIp1LDgRdsfEs/RQFO3UzPrQhRGSd8rFMoxikoofO97ORNUhzxVxSkY
+ dOLL78iZNS0wydiCaEBb/J3nIyTVWLV1E7ItCip2EM2sLiGflyVr4OR7kKyKr2fAP1Rx
+ K49RXPgU4kdUYaHFyIKZvIHYSyWTYBJXEVB7zxaUYYlnW0tsDiICRpXzpOUZcvnXQXvv
+ 4I3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751529685; x=1752134485;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=3c3DKauhdLkdsks44u+qLiNGjcmkNrdblfu+4EWIQ+w=;
- b=dmQQgihwE840+epheY4I6zN+OlyXyN+KNQOD5hv2l53iRVc6oHO9FD4zk89T33Zgt+
- YcdTqr227RWhuJdEPWkEPnhE2zgS1lcTtFGOwybzxd0/OBv5NzZRcVV1P8W7ox7pAmkR
- St+JrdUG4me14GFrDukXYRUSpWGQDIrD48toeIGSTJ0n46xEA8TByUQV659KNz0IqhHQ
- bga1Einjlg4115Ofr/cGdJIAzqNeUhMkSMCrBVVutXuz7Ki+waeu1HYI5He5X/iZVmvy
- gmS/pQh5cWgYcXPiBZPbkgiumlYyiHX79TWlZqFXFYF2sCk5/N34ZiJ4mel0d4IIMyU2
- 2uZA==
+ d=1e100.net; s=20230601; t=1751531499; x=1752136299;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ACN3/5ZwuMHWPnIM2LvNkb6ZNX2drFxWaI640q4NOCk=;
+ b=ZHjBq+62CTLlUwpPj3Xwg2Dm697V58dGBErLfxcD/QR0H2Q+X4k+YGsjnxJg3YOkVm
+ UKnoSJaCWngMJ+I882tolfyFKf2Q3WpEGCR4kLOj+ARDj7yD6/1imIkRKNz4FOFukrcD
+ 7q2z9xEv431Yj3YKbF5uV05n5l26oAzzw3XNrwTUgRCCelB0EDxbta9/YOEYjtrqfXDu
+ 3ZhzBN9Q3zk+YBIHckc1auw9LM1UFBS3bM/ENNxiBs4d+JjpLNK4LrMtbGrapwVcbMew
+ 1LiI/AetIlIlxFiCX4GjgjGohkS+rqilUNbyBP+BFxbTFBqPKmEvjYvo1XvPAsPcPvkw
+ pk9g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUYZDAmQFkcLcENSXqzbR+ApFBRxfSUolX0P1Kz7gyBZXomKUnv8nN4NwpP6xXqEvtlAO2E2xDa5Q==@nongnu.org
-X-Gm-Message-State: AOJu0YyJHAH4ZOPoxWoJmyj6SxjTfguATCv2e35LZwgnDEkAB1/llIL8
- eFKUb4kSf3DAs96G/4jfx7z6FF/TofX679jAsHttraicpc4690hIjU8ZX6Gl6MMIptR4KWwU7Jf
- /AUzsj34iwRcjVjmmwH7rQLZHpX4rvcJY/aOvcBQ9PpbToMEUKd/ZuA==
-X-Gm-Gg: ASbGncvMM1cKplVWSR2oGQCGyq1f/R044w6NpN44qhEppVOCe3FF0DuyrkwoWtfGk/v
- Qc69+TAlJo46jK+AP4OjOz5LAnAbJWpw/Wc+BgJpGUWK9RJpR8LvfZzcGfsBZpj0vJD1xcawD0C
- GzY40RMdIadg/YDAGg3HKsBCkIsvTtdXbdpFWf2DqNl+nvI6WtyfzKoi/zLWgC5IiHBcmVB/1iq
- R+mw2KRG4GJ+b5lFsRZcsT3ZQS9CeWDxdWHk29tAuHl3586Hd4udzb3nnFm5bc5Fiu0XZR9xbIn
- qJ8oHkU5bnOd/m+M01IxUX2koQ==
-X-Received: by 2002:a17:90b:3b8c:b0:311:ab20:159a with SMTP id
- 98e67ed59e1d1-31a9d6998d2mr2989905a91.29.1751529685266; 
- Thu, 03 Jul 2025 01:01:25 -0700 (PDT)
-X-Received: by 2002:a17:90b:3b8c:b0:311:ab20:159a with SMTP id
- 98e67ed59e1d1-31a9d6998d2mr2989840a91.29.1751529684756; 
- Thu, 03 Jul 2025 01:01:24 -0700 (PDT)
-Received: from [10.72.116.69] ([209.132.188.88])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23acb2e1b28sm156294035ad.33.2025.07.03.01.01.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Jul 2025 01:01:24 -0700 (PDT)
-Message-ID: <bd2ae425-a144-4655-9b9e-f74fd3d82edd@redhat.com>
-Date: Thu, 3 Jul 2025 16:01:15 +0800
+ AJvYcCUCIF54Ee4MPKMS48K9+CfWkiL81BF+gY0dkrhjbMb4dYhP4Q8wvC6eBnusfMUKePNwaWbxEPmnKg==@nongnu.org
+X-Gm-Message-State: AOJu0YyLeky5mK5zEBI9sDCvEXegqO4wtkeGPAd+3HjCiHq7U8y7kpan
+ x5y27hc3yWCvIspnABBLEoqAWQYo0J5Owr35VC947Z61p79mhdOornqpEyVF7ydhAvZZhrhnRVg
+ 5D8Q9BdKK4Xph8VomP6HTlLN9EzXFcO0=
+X-Gm-Gg: ASbGncscdhUj0j6NAMp3yTAwzw+MgH94Csg5rnvCRRTNIWLGKknuM2CaZXtEPEREkj2
+ 59NbaYfwA1sWUb1bv5O1YYh0iMUxEcAHWpxjK/CKsbtIX+ZB7XvfpTK/lVDp5j445YkriDzT3Tb
+ dTi+hWDfZTnK6EpjpjzYc1IMpmf/dI28/INNmzTJ+EgZg=
+X-Received: by 2002:a05:6902:160d:b0:e87:a485:b430 with SMTP id
+ 3f1490d57ef6-e898f9caefbmr2933418276.35.1751531499377; Thu, 03 Jul 2025
+ 01:31:39 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 2/2] hw/i386: Add the ramfb romfile compatibility
-To: Eric Auger <eauger@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- Sergio Lopez <slp@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-devel@nongnu.org
-References: <20250703012836.2177297-1-shahuang@redhat.com>
- <20250703012836.2177297-3-shahuang@redhat.com>
- <f47d2860-ed26-47c7-9ec0-9fb77d7b7694@redhat.com>
-From: Shaoqin Huang <shahuang@redhat.com>
-In-Reply-To: <f47d2860-ed26-47c7-9ec0-9fb77d7b7694@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: XXF_Xd-ptZlAc0cDLtnhb9tAUBLAiOriTemufEe2kbI_1751529685
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=shahuang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+References: <20250702111954.128563-1-kosasihwilliam4@gmail.com>
+ <20250702111954.128563-5-kosasihwilliam4@gmail.com>
+ <bfdc5e5d-40fa-49e6-88d4-b70dcbdfd71d@linaro.org>
+In-Reply-To: <bfdc5e5d-40fa-49e6-88d4-b70dcbdfd71d@linaro.org>
+From: William Kosasih <kosasihwilliam4@gmail.com>
+Date: Thu, 3 Jul 2025 18:01:27 +0930
+X-Gm-Features: Ac12FXwtUjcfdobSiDA5d862nUAbeSn_L2C7ukHrAzJ_lWuieKk0BFB10fig9jc
+Message-ID: <CAG66A_fib3v1HM=R4A6sv3OU77JmhY8VHpA_qJ6i1n42kiiNNA@mail.gmail.com>
+Subject: Re: [PATCH v3 04/12] target/arm: Fix VLDR helper load alignment checks
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000d558cc0639023430"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2b;
+ envelope-from=kosasihwilliam4@gmail.com; helo=mail-yb1-xb2b.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.237, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Akov6GRWvww5
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: d7OGuJgZihAx
 
-Hi Eric,
+--000000000000d558cc0639023430
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Thanks for your review.
+>
+> Much better, thanks.
 
-On 7/3/25 12:54 PM, Eric Auger wrote:
-> Hi Shaoqin,
-> 
-> On 7/3/25 3:28 AM, Shaoqin Huang wrote:
->> Set the "use-legacy-x86-rom" property to false by default, and only set
->> it to true on x86 since only x86 will need it.
->>
->> At the same time, set the "use-legacy-x86-rom" property to true on those
->> historical versioned machine types in order to avoid the memory layout
->> being changed.
-> 
-> I would improve the commit message by adding Gerd's inputs:
-> 
-> "
-> ramfb is a sysbus device so it can only used for machine types where it
-> is explicitly enabled:
-> 
->    # git grep machine_class_allow_dynamic_sysbus_dev.*TYPE_RAMFB_DEVICE
->    hw/arm/virt.c:    machine_class_allow_dynamic_sysbus_dev(mc,
-> TYPE_RAMFB_DEVICE);
->    hw/i386/microvm.c:    machine_class_allow_dynamic_sysbus_dev(mc,
-> TYPE_RAMFB_DEVICE);
->    hw/i386/pc_piix.c:    machine_class_allow_dynamic_sysbus_dev(m,
-> TYPE_RAMFB_DEVICE);
->    hw/i386/pc_q35.c:    machine_class_allow_dynamic_sysbus_dev(m,
-> TYPE_RAMFB_DEVICE);
->    hw/loongarch/virt.c:    machine_class_allow_dynamic_sysbus_dev(mc,
-> TYPE_RAMFB_DEVICE);
->    hw/riscv/virt.c:    machine_class_allow_dynamic_sysbus_dev(mc,
-> TYPE_RAMFB_DEVICE);
-> 
-> So these six are the only machine types we have to worry about.
-> 
-> The three x86 machine types (pc, q35, microvm) will actually use the rom
-> (when booting with seabios).
-> 
-> For arm/riscv/loongarch virt we want to disable the rom.
-> 
-> "
-> 
-> This patch sets ramfb romfile option to false by default, except for x86
-> machines types (pc, q35, microvm) which need the rom file when booting
-> with seabios and machine types <= 10.0 (handling the case of arm virt,
-> for compat reasons).
-> 
+Cheers! :-)
 
-Ok I will improve the commit message with those content.
+Use MO_SB, MO_TESW here.
 
->>
->> Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
-> Besides I think it now does what it is supposed to. With the commit
-> description improvement:
-> 
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+It won't matter for normal operation, but the sign of the operation is
+> exposed to plugins.
 
-Thanks,
-Shaoqin
 
-> 
-> Eric
->> ---
->>   hw/core/machine.c             |  2 ++
->>   hw/display/ramfb-standalone.c |  2 +-
->>   hw/i386/microvm.c             |  3 +++
->>   hw/i386/pc_piix.c             | 10 ++++++++++
->>   hw/i386/pc_q35.c              |  3 +++
->>   hw/vfio/pci.c                 |  2 +-
->>   6 files changed, 20 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/core/machine.c b/hw/core/machine.c
->> index e869821b22..a7043e2a34 100644
->> --- a/hw/core/machine.c
->> +++ b/hw/core/machine.c
->> @@ -39,6 +39,8 @@
->>   
->>   GlobalProperty hw_compat_10_0[] = {
->>       { "scsi-hd", "dpofua", "off" },
->> +    { "ramfb", "use-legacy-x86-rom", "true"},
->> +    { "vfio-pci", "use-legacy-x86-rom", "true" },
->>   };
->>   const size_t hw_compat_10_0_len = G_N_ELEMENTS(hw_compat_10_0);
->>   
->> diff --git a/hw/display/ramfb-standalone.c b/hw/display/ramfb-standalone.c
->> index 725aef9896..b20a7c57b3 100644
->> --- a/hw/display/ramfb-standalone.c
->> +++ b/hw/display/ramfb-standalone.c
->> @@ -63,7 +63,7 @@ static const VMStateDescription ramfb_dev_vmstate = {
->>   
->>   static const Property ramfb_properties[] = {
->>       DEFINE_PROP_BOOL("x-migrate", RAMFBStandaloneState, migrate,  true),
->> -    DEFINE_PROP_BOOL("use-legacy-x86-rom", RAMFBStandaloneState, use_legacy_x86_rom, true),
->> +    DEFINE_PROP_BOOL("use-legacy-x86-rom", RAMFBStandaloneState, use_legacy_x86_rom, false),
->>   };
->>   
->>   static void ramfb_class_initfn(ObjectClass *klass, const void *data)
->> diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
->> index e0daf0d4fc..6666db9e4f 100644
->> --- a/hw/i386/microvm.c
->> +++ b/hw/i386/microvm.c
->> @@ -49,6 +49,7 @@
->>   #include "hw/acpi/generic_event_device.h"
->>   #include "hw/pci-host/gpex.h"
->>   #include "hw/usb/xhci.h"
->> +#include "hw/vfio/pci.h"
->>   
->>   #include "elf.h"
->>   #include "kvm/kvm_i386.h"
->> @@ -633,6 +634,8 @@ GlobalProperty microvm_properties[] = {
->>        * so reserving io space is not going to work.  Turn it off.
->>        */
->>       { "pcie-root-port", "io-reserve", "0" },
->> +    { TYPE_RAMFB_DEVICE, "use-legacy-x86-rom", "true" },
->> +    { TYPE_VFIO_PCI, "use-legacy-x86-rom", "true" },
->>   };
->>   
->>   static void microvm_class_init(ObjectClass *oc, const void *data)
->> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
->> index ea7572e783..8ec8d8ae6d 100644
->> --- a/hw/i386/pc_piix.c
->> +++ b/hw/i386/pc_piix.c
->> @@ -49,6 +49,7 @@
->>   #include "hw/i2c/smbus_eeprom.h"
->>   #include "system/memory.h"
->>   #include "hw/acpi/acpi.h"
->> +#include "hw/vfio/pci.h"
->>   #include "qapi/error.h"
->>   #include "qemu/error-report.h"
->>   #include "system/xen.h"
->> @@ -77,6 +78,13 @@ static const int ide_iobase2[MAX_IDE_BUS] = { 0x3f6, 0x376 };
->>   static const int ide_irq[MAX_IDE_BUS] = { 14, 15 };
->>   #endif
->>   
->> +static GlobalProperty pc_piix_compat_defaults[] = {
->> +    { TYPE_RAMFB_DEVICE, "use-legacy-x86-rom", "true" },
->> +    { TYPE_VFIO_PCI, "use-legacy-x86-rom", "true" },
->> +};
->> +static const size_t pc_piix_compat_defaults_len =
->> +    G_N_ELEMENTS(pc_piix_compat_defaults);
->> +
->>   /*
->>    * Return the global irq number corresponding to a given device irq
->>    * pin. We could also use the bus number to have a more precise mapping.
->> @@ -482,6 +490,8 @@ static void pc_i440fx_machine_options(MachineClass *m)
->>                                      pc_set_south_bridge);
->>       object_class_property_set_description(oc, "x-south-bridge",
->>                                        "Use a different south bridge than PIIX3");
->> +    compat_props_add(m->compat_props,
->> +                     pc_piix_compat_defaults, pc_piix_compat_defaults_len);
->>   }
->>   
->>   static void pc_i440fx_machine_10_1_options(MachineClass *m)
->> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
->> index 33211b1876..0096eef6f4 100644
->> --- a/hw/i386/pc_q35.c
->> +++ b/hw/i386/pc_q35.c
->> @@ -45,6 +45,7 @@
->>   #include "hw/i386/pc.h"
->>   #include "hw/i386/amd_iommu.h"
->>   #include "hw/i386/intel_iommu.h"
->> +#include "hw/vfio/pci.h"
->>   #include "hw/virtio/virtio-iommu.h"
->>   #include "hw/display/ramfb.h"
->>   #include "hw/ide/pci.h"
->> @@ -67,6 +68,8 @@
->>   
->>   static GlobalProperty pc_q35_compat_defaults[] = {
->>       { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "39" },
->> +    { TYPE_RAMFB_DEVICE, "use-legacy-x86-rom", "true" },
->> +    { TYPE_VFIO_PCI, "use-legacy-x86-rom", "true" },
->>   };
->>   static const size_t pc_q35_compat_defaults_len =
->>       G_N_ELEMENTS(pc_q35_compat_defaults);
->> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
->> index f4fa8a5610..604b337389 100644
->> --- a/hw/vfio/pci.c
->> +++ b/hw/vfio/pci.c
->> @@ -3710,7 +3710,7 @@ static const TypeInfo vfio_pci_dev_info = {
->>   
->>   static const Property vfio_pci_dev_nohotplug_properties[] = {
->>       DEFINE_PROP_BOOL("ramfb", VFIOPCIDevice, enable_ramfb, false),
->> -    DEFINE_PROP_BOOL("use-legacy-x86-rom", VFIOPCIDevice, use_legacy_x86_rom, true),
->> +    DEFINE_PROP_BOOL("use-legacy-x86-rom", VFIOPCIDevice, use_legacy_x86_rom, false),
->>       DEFINE_PROP_ON_OFF_AUTO("x-ramfb-migrate", VFIOPCIDevice, ramfb_migrate,
->>                               ON_OFF_AUTO_AUTO),
->>   };
-> 
+Ah okay. I'll update accordingly and copy over your Reviewed-by line.
+Thanks!
 
--- 
-Shaoqin
+On Thu, Jul 3, 2025 at 12:14=E2=80=AFAM Richard Henderson <
+richard.henderson@linaro.org> wrote:
 
+> On 7/2/25 05:19, William Kosasih wrote:
+> > +DO_VLDR(vldrb_sh, MO_UB, 1, int8_t, ldb, 2, int16_t)
+> > +DO_VLDR(vldrb_sw, MO_UB, 1, int8_t, ldb, 4, int32_t)
+> ...
+> > +DO_VLDR(vldrh_sw, MO_TEUW, 2, int16_t, ldw, 4, int32_t)
+>
+> Use MO_SB, MO_TESW here.
+>
+> It won't matter for normal operation, but the sign of the operation is
+> exposed to plugins.
+>
+>
+> r~
+>
+
+--000000000000d558cc0639023430
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Much bet=
+ter, thanks.</blockquote><div>Cheers! :-)</div><div><br></div><blockquote c=
+lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px soli=
+d rgb(204,204,204);padding-left:1ex">Use MO_SB, MO_TESW here.</blockquote><=
+blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-l=
+eft:1px solid rgb(204,204,204);padding-left:1ex">It won&#39;t matter for no=
+rmal operation, but the sign of the operation is exposed to plugins.=C2=A0<=
+/blockquote><div><br></div><div>Ah okay. I&#39;ll update accordingly and co=
+py over your Reviewed-by line. Thanks!=C2=A0</div></div><br><div class=3D"g=
+mail_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On =
+Thu, Jul 3, 2025 at 12:14=E2=80=AFAM Richard Henderson &lt;<a href=3D"mailt=
+o:richard.henderson@linaro.org">richard.henderson@linaro.org</a>&gt; wrote:=
+<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8=
+ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On 7/2/25 05:19=
+, William Kosasih wrote:<br>
+&gt; +DO_VLDR(vldrb_sh, MO_UB, 1, int8_t, ldb, 2, int16_t)<br>
+&gt; +DO_VLDR(vldrb_sw, MO_UB, 1, int8_t, ldb, 4, int32_t)<br>
+...<br>
+&gt; +DO_VLDR(vldrh_sw, MO_TEUW, 2, int16_t, ldw, 4, int32_t)<br>
+<br>
+Use MO_SB, MO_TESW here.<br>
+<br>
+It won&#39;t matter for normal operation, but the sign of the operation is =
+exposed to plugins.<br>
+<br>
+<br>
+r~<br>
+</blockquote></div>
+
+--000000000000d558cc0639023430--

@@ -1,120 +1,121 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp395600dyc;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp395601dyc;
         Thu, 3 Jul 2025 01:58:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVt0kneTg4HIVF6J5C/9rd83zfZG5PYpho/jl9Gna9OXxs5BgMyCSOEsmsJRzsl/5JfErvcecDF34mEPg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGQTBsGPiAfyxhG659xzK+KNCJZIanCRI4/rn+H2kaMHPKXX+pJl2Ql4irnDAj+/0FKBDbM
-X-Received: by 2002:a05:622a:6a95:b0:4a9:8b58:6300 with SMTP id d75a77b69052e-4a98b5863a5mr12791421cf.16.1751533087769;
+X-Forwarded-Encrypted: i=2; AJvYcCXIYVZWc9Xg5Xa3HBB8+FxynR3SItAjpk5NrxfkvNlE1rZID6OdmWTj26xACqRuBycPprGh6r1tSRTLKw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH0WJKl2UFJQTNPv3vPYGsyTGoYp6VyhQEr4AtM9vCmHduVSTV1trP8+HZ/aQ7zOcId04P0
+X-Received: by 2002:a05:622a:1301:b0:494:a283:1c4a with SMTP id d75a77b69052e-4a976a2044dmr107615501cf.32.1751533087743;
         Thu, 03 Jul 2025 01:58:07 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1751533087; cv=none;
         d=google.com; s=arc-20240605;
-        b=S4XIkErr7WeXAgkDak9PwQWvZVJcfxGN9H/iOEBQCKfDZ7OUInsNX2x1sTJkkfIEzp
-         8fR/iKlhfftewd8d3oYstH4z2XRr0ILeP8+0foMto3JLlAWxRXtqrYOt27Mhjoc3GoES
-         JcIA47IWRiIfbhLYMZt7L0tbPW4mOsK9bhfxT0IEbFJV/F6QGyx7BbqqJd3lPqgbgkrc
-         rGzShwOrEbPJM/WSekTpeLTgDoE7JnkwXlEDSId9Bvl54uxBKd/RABQyLwIh4BYjYPYY
-         //QvGY/jU7ev/9HPDQPpXPosv9XEpzxM2ZkidTlRDpnC9dCecEFncRyjjfiAnsjZLXwb
-         d3zQ==
+        b=InpDajyK6DirG6YLUnwmrmyMxBEs4Wfk4p0Gg3kZC08dr+MS7xqR+WZy7wwAsyQ997
+         rRGUrECNbUpGBZy+keVN2Y+rrKObz/Guqoly3uJgt51ctw4SFEzWxDOlmt2MJvsFrV2c
+         FW4pYH4HOgT56yqn41O5P+ZoyXmarJmcr15bQVHm//gIB0coUUjDItU7k9gxhRspplMP
+         OdLGyrc0bo8/echd1DMWqtcgm6pv5VNuNO52gGtqFmOgX59c8F/W6K3ZjZpGy2fHrpEf
+         EvTdMGcJh3YT/+3BFRkSouWuthWCpKpXRbQsYrP8zFLQDMl4wpvAe9O4jJa8wQT9gtT7
+         G8NQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=iyFUAaglgtudCcm/+GaLUiopNJBnEFOWo2eTOT6yB94=;
-        fh=a3Jp/u9nNL12HtZcCfIITo0KzR1AaxbCeDuhQS55J3c=;
-        b=f1DqkpUVyQY7XxCC3UtbmIjpnjkA0SSxeX7OIEWUkbh51bKDscRUsLCnBzQCYVhFZH
-         5DNAV6eo7cLmGA91RFKY9TfpjFJ6jckVWUFw9uAWe/P96l/IjzPH+tr/pkxaJDsjC7Fe
-         cnGiGcSlhrvwmF7/ePwpB8IBpDRq1IGTKgWq6XzMx3dkCoeN7CGYoBf7Qg+P0QhYdVvu
-         xRRQPcOW4jF1GpyDjdYEtgeMI7S/QJsB7n23LawLCeREImGIoJrAbo+iybLSlOmFK3j6
-         xAllv2Vrz2eN3WQPrxX8dTjEMuh3qo9EzFxZRarHcrHFWRE8M9dEirz0tqBFzmG2oGc7
-         r+gw==;
+        bh=ue+TRUQ4zOoNWn0fMMKkbL+MC+6NF+Rulh2d0yliDEM=;
+        fh=OV+7U2UjYnv1RMZp0/PImdFf94j7RNbj/vnHkcM5AG8=;
+        b=iCWbbfiHqbT7ZVb/emxaA3zuTjyNOK3afRe/jrMsNT1uyNk8oHC+GXxL7JoVkcGiO0
+         VYhN+JhGGNDFMcyGdAvS3xh9bbhxc1ZZKax2Az8DXqYss+RO9hAHFXECt3Q1YeL1C6Qt
+         qco2ETaAY+tFKU9E8SfqkfsbIFlOOluQdM7c7TRSO35SBClE+rk/ETVnL8+/nDUTFD/N
+         gJu70XdJpkcGtqM1RxUmj+drWBAlAWMDoQ5jJahC6RyqbxeEGRADHW+yHiKDNr5ro0Vu
+         p0ypcQIahcDlLZok0fjUngyMb3OKrZyRpIGiYJ2ayhfQuNt4yEWFPrOBF8ejiDH7/CPR
+         gFfw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=e8VDtZbu;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="jpMp1D/W";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc236d87si153480211cf.423.2025.07.03.01.58.07
+        by mx.google.com with ESMTPS id d75a77b69052e-4a9863513e2si21538641cf.541.2025.07.03.01.58.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 03 Jul 2025 01:58:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=e8VDtZbu;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="jpMp1D/W";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uXFkr-0003Ye-7n; Thu, 03 Jul 2025 04:57:17 -0400
+	id 1uXFk4-0002R3-BG; Thu, 03 Jul 2025 04:56:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kosasihwilliam4@gmail.com>)
- id 1uXFkg-00038M-U9; Thu, 03 Jul 2025 04:57:08 -0400
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+ id 1uXFk2-0002Pr-OE; Thu, 03 Jul 2025 04:56:26 -0400
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <kosasihwilliam4@gmail.com>)
- id 1uXFkf-0008GH-1Z; Thu, 03 Jul 2025 04:57:06 -0400
-Received: by mail-pf1-x42d.google.com with SMTP id
- d2e1a72fcca58-74af4af04fdso580193b3a.1; 
- Thu, 03 Jul 2025 01:57:03 -0700 (PDT)
+ id 1uXFjz-0007vZ-MM; Thu, 03 Jul 2025 04:56:25 -0400
+Received: by mail-pf1-x436.google.com with SMTP id
+ d2e1a72fcca58-739b3fe7ce8so8294382b3a.0; 
+ Thu, 03 Jul 2025 01:56:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1751533022; x=1752137822; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1751532977; x=1752137777; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=iyFUAaglgtudCcm/+GaLUiopNJBnEFOWo2eTOT6yB94=;
- b=e8VDtZbuK3J8i1UDixoDdWwNAS1UKJjzZqLhTOwCFesXRtK9ueDgthkUTh+sg+GhUg
- brcvh+2tu6073O3wBbT1RoICNwWY/hTuiuWVX/lYAoxbEfR7wcZW1/VP6adWTmZcEbVh
- AGgi4aGTb0goYYgHF0kp8eC0UwzxzHjRiQrcFeJdUAYybv8dmTHoyZA+giYb1sEJRRL1
- MCxSm+IGp09RHiiT77226ybf68FHLpb9zieNouehoHTJGM175/UU53FXhmwLK2HFnEGr
- rSV5qkZkcCTHqT6Y0NlBxoKxn+1tnJNRK+HswoDvkwTNdTM13Yzb143Ytu4S54+Ig9UH
- 9xAw==
+ bh=ue+TRUQ4zOoNWn0fMMKkbL+MC+6NF+Rulh2d0yliDEM=;
+ b=jpMp1D/Wig4EyvWL6yRCrUJtN3wlInjAEHR8LlR04TV835qDlKFtA+0xiFhFZBvjjl
+ WIstFs+KjpGlE3Ri8CkZ46towjw3ZTKp+B9AfHTlVr1P9jFQOfKBMwADHCtJmhsGKUL6
+ T5RpSlte5SKwWgkfFnQRpS5Nlq0i1SUCHnwrVuGr6/nVg9EEvPpP4zllCSeISKWOvqz/
+ jHLyeqvqAQ3DSzCvO92A4OcD2dCaVpzhd7KBleZiY17hnxBJIdv/g+noxeSibsffYg7/
+ gi5WRH9e0evnyYoBY2KIK1X43C1GbZSY4SkN+v2IsmFAvNb3kpblUXAedhE8qEIFWx5c
+ zX/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751533022; x=1752137822;
+ d=1e100.net; s=20230601; t=1751532977; x=1752137777;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=iyFUAaglgtudCcm/+GaLUiopNJBnEFOWo2eTOT6yB94=;
- b=Ke8K0DUdPSou9HheaqQJkXFbqBzRK0YylV/EkZUSTxuzJL7Wy50UlGkoLmspoTmr41
- 6mavKnU7dTATzQYlCrZnV77htOJCsD95j8MSErWkXZTt9znaJMx4Ii511F9sntnJKP47
- fJwki1M/d48OqKb4af0K9/bGBcSzLjD9EI+iTmK60iN9j6rRKT8HJNgbxCRqViGUphZr
- pO/T/BsxDXpbf/pupB0QnMue9mrj3OcSIvhGe1jJKYo+QH5BSAe1Vvm5MZuBsrGyHkdj
- BPT8fEjvg5VKeCF1chO1aqj7EIz1V1Pb+JOHso6qcaVHr4XN8yTA0jWwnLKsVt6wtqos
- HQ0Q==
+ bh=ue+TRUQ4zOoNWn0fMMKkbL+MC+6NF+Rulh2d0yliDEM=;
+ b=NrxlHOmnO+RViRlr69lG3hhNduO/q4/8bayhefQL8eVLpBAESoL8WMrOgl3ezFyj0Y
+ T7Zqfbx6ECz82Wwrjw4FErrHqvZJFUcuC5Vgvs9/AFm7Bl9yn5HbbhFtw8fzj3pOqow8
+ OPo8aoBJTODKcrgD5/sSBda38rcUgE+pY4SFMsGg6cpCl48SYsg/UiX4VxgLLqTjnYZ1
+ vZrGdCp7T9GOdgXRHRqcLOztfsF+986T4cyNN2pHeFcl92ya7mVkbT/fR2QfxUgLEJRk
+ rjx10nOEEDi15Wb+d8rta34BYQbGoEz6KPWED68GxSdSYZcPg7SsOB+lCPh818YOvXb9
+ WFXg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVH7uZQkuOEkolY4k5nmHbjnjHR5K6ZfmvqMq3pcKjI+TnlJu6ORNayupMIvAJ1l33LB35Ljn3ifQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxKdr03ic29qKkfNxj7uHO8BNqoGTGk9d6TBs/96v3CBv3D53l6
- a/A6NK20FaTN3vQqRyfQ2n+fZpYDuu0/njqZCQtwqQYnMxL67aXWY+5ZK89jaJNK6GU=
-X-Gm-Gg: ASbGncstC5Oifm57euXZgmSHywtsSQHOaf0XE7vBHVaqnI48gmjiuhrrvoe7dcqVuVS
- OB5RviOl0eGaQSwOob3EWQAFLPIKUbyO6YHjZehY4vgE2Sd6GkGmgNaZUP9XbXlTHf4CrwNbsWz
- FDj7tELk6IuVhhIKya1PaIWj58w+ljmtTSLBbopIC3x1ByeK4msCAYUaEnf+uHDIzCbxwTAkudT
- 3orwhJ15DEpLWzR+XuegQBP+5awllG/JrZYwrChObsY/z4Puj+VSWJMxEHrECHz3wuLZMfYt5UG
- 4tTHdlHhiVDN0t05LU3vAYftOxilShOKEFKoG9P2EmjJIBjlBgGVtLfN28nIR2EK2NUDUxow7/I
- 8ZxzLze3Y7SG6fx5OoZd1PC9uU0twen2ZRrFfkbv+ftY=
-X-Received: by 2002:a05:6a21:999e:b0:1f3:3547:f21b with SMTP id
- adf61e73a8af0-22487aa74b0mr2219578637.5.1751533022148; 
- Thu, 03 Jul 2025 01:57:02 -0700 (PDT)
+ AJvYcCXqjMquyVXm+sSVKxht5vw3AOaVyf4AFhH1/oXBF7MJEu4EuGIc905RkL11uggPlMKqBzbfugVZsA==@nongnu.org
+X-Gm-Message-State: AOJu0YwRQuZm/F2OhvzZKa26T1U/NokKn3LK0HGnZRlE+HtWWDv+KaXA
+ csu487kbVMW43meENrfyTqHhCrZFKrS360RCc+Uw7dckSVxK6fJ8jNCnhdeTOPh0E7I=
+X-Gm-Gg: ASbGncvW1YyRWGEfy5dxmptUaWuaNcCcFpB4n/b40pdJFp8rK7rW7TcNBih8ChleRx9
+ nYW70AccRojawAoAJm2Oio2MuesN8kmd0+W6aupOAaUT//J8/cKUMgqBU02U2ZWHGD9BV43A3P/
+ Kl33UXlPYRI6ueeL5JF5OJGL0tKWnZg8CiLonuePt368RTNwglH2QeIxMLSTRoQ7O1XzfqS+egC
+ j+nDpMGcvVdLFrZ4kMtlLzTzpX0z4bEigkfmMCVDUVFIB7lS/xzHuMGWsCh5H/lGuIntswEiMzM
+ v60ApLrsuCZe+jVdzkJVrzBjOb2wlCtL5z1taTTD5K2r3UuLrJxCaRhjBK7XweoKcGvaF4f/A9y
+ SSYmPioBWqFwdjtgINcEw4Mv/7byrCCcPAzLW0AuM5OI=
+X-Received: by 2002:aa7:8881:0:b0:748:2fa4:14c0 with SMTP id
+ d2e1a72fcca58-74b50c84cb2mr8726323b3a.0.1751532977206; 
+ Thu, 03 Jul 2025 01:56:17 -0700 (PDT)
 Received: from localhost (pa49-178-74-199.pa.nsw.optusnet.com.au.
  [49.178.74.199]) by smtp.gmail.com with UTF8SMTPSA id
- d2e1a72fcca58-74af55c6c67sm16731730b3a.110.2025.07.03.01.57.01
+ d2e1a72fcca58-74af557b3bcsm16409931b3a.101.2025.07.03.01.56.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Jul 2025 01:57:01 -0700 (PDT)
+ Thu, 03 Jul 2025 01:56:16 -0700 (PDT)
 From: William Kosasih <kosasihwilliam4@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  William Kosasih <kosasihwilliam4@gmail.com>
-Subject: [PATCH v4 10/11] target/arm: Fix VST4 helper store alignment checks
-Date: Thu,  3 Jul 2025 18:26:03 +0930
-Message-ID: <20250703085604.154449-11-kosasihwilliam4@gmail.com>
+Subject: [PATCH v4 01/11] target/arm: Bring VLSTM/VLLDM helper store/load
+ closer to the ARM pseudocode
+Date: Thu,  3 Jul 2025 18:25:54 +0930
+Message-ID: <20250703085604.154449-2-kosasihwilliam4@gmail.com>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250703085604.154449-1-kosasihwilliam4@gmail.com>
 References: <20250703085604.154449-1-kosasihwilliam4@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
- envelope-from=kosasihwilliam4@gmail.com; helo=mail-pf1-x42d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
+ envelope-from=kosasihwilliam4@gmail.com; helo=mail-pf1-x436.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -137,74 +138,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6zYFpPk04eeA
+X-TUID: RjOK1ngF8Q16
 
-This patch adds alignment checks in the store operations in the VST4
-instruction.
+This patch brings the VLSTM and VLLDM helper functions closer to the ARM
+pseudocode by adding MO_ALIGN to the MemOpIdx of the associated store
+(`cpu_stl_mmu`) operations and load (`cpu_ldl_mmu`) operations.
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1154
+Note that this is not a bug fix: an 8-byte alignment check already exists
+and remains in place, enforcing stricter alignment than the 4 bytes
+requirement in the individual loads and stores. This change merely makes the
+helper implementations closer to the ARM pseudocode.
+
+That said, as a side effect, the MMU index is now resolved once instead of
+on every `cpu_*_data_ra` call, reducing redundant lookups
+
 Signed-off-by: William Kosasih <kosasihwilliam4@gmail.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/mve_helper.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+ target/arm/tcg/m_helper.c | 24 +++++++++++++++---------
+ 1 file changed, 15 insertions(+), 9 deletions(-)
 
-diff --git a/target/arm/tcg/mve_helper.c b/target/arm/tcg/mve_helper.c
-index 7473dfad2d..5273411389 100644
---- a/target/arm/tcg/mve_helper.c
-+++ b/target/arm/tcg/mve_helper.c
-@@ -577,6 +577,8 @@ DO_VLD2W(vld21w, 8, 12, 16, 20)
-         uint16_t mask = mve_eci_mask(env);                              \
-         static const uint8_t off[4] = { O1, O2, O3, O4 };               \
-         uint32_t addr, data;                                            \
-+        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
-+        MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN, mmu_idx);      \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -588,7 +590,7 @@ DO_VLD2W(vld21w, 8, 12, 16, 20)
-                 uint8_t *qd = (uint8_t *)aa32_vfp_qreg(env, qnidx + e); \
-                 data = (data << 8) | qd[H1(off[beat])];                 \
-             }                                                           \
--            cpu_stl_le_data_ra(env, addr, data, GETPC());               \
-+            cpu_stl_mmu(env, addr, data, oi, GETPC());                  \
-         }                                                               \
-     }
+diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+index 6614719832..251e12edf9 100644
+--- a/target/arm/tcg/m_helper.c
++++ b/target/arm/tcg/m_helper.c
+@@ -1048,6 +1048,9 @@ void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
+     bool s = env->v7m.fpccr[M_REG_S] & R_V7M_FPCCR_S_MASK;
+     bool lspact = env->v7m.fpccr[s] & R_V7M_FPCCR_LSPACT_MASK;
+     uintptr_t ra = GETPC();
++    ARMMMUIdx mmu_idx = arm_mmu_idx(env);
++    MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN,
++                                 arm_to_core_mmu_idx(mmu_idx));
  
-@@ -602,6 +604,8 @@ DO_VLD2W(vld21w, 8, 12, 16, 20)
-         uint32_t addr, data;                                            \
-         int y; /* y counts 0 2 0 2 */                                   \
-         uint16_t *qd;                                                   \
-+        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
-+        MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN, mmu_idx);      \
-         for (beat = 0, y = 0; beat < 4; beat++, mask >>= 4, y ^= 2) {   \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -612,7 +616,7 @@ DO_VLD2W(vld21w, 8, 12, 16, 20)
-             data = qd[H2(off[beat])];                                   \
-             qd = (uint16_t *)aa32_vfp_qreg(env, qnidx + y + 1);         \
-             data |= qd[H2(off[beat])] << 16;                            \
--            cpu_stl_le_data_ra(env, addr, data, GETPC());               \
-+            cpu_stl_mmu(env, addr, data, oi, GETPC());                  \
-         }                                                               \
-     }
+     assert(env->v7m.secure);
  
-@@ -626,6 +630,8 @@ DO_VLD2W(vld21w, 8, 12, 16, 20)
-         uint32_t addr, data;                                            \
-         uint32_t *qd;                                                   \
-         int y;                                                          \
-+        int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
-+        MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN, mmu_idx);      \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -635,7 +641,7 @@ DO_VLD2W(vld21w, 8, 12, 16, 20)
-             y = (beat + (O1 & 2)) & 3;                                  \
-             qd = (uint32_t *)aa32_vfp_qreg(env, qnidx + y);             \
-             data = qd[H4(off[beat] >> 2)];                              \
--            cpu_stl_le_data_ra(env, addr, data, GETPC());               \
-+            cpu_stl_mmu(env, addr, data, oi, GETPC());                  \
-         }                                                               \
+@@ -1073,7 +1076,7 @@ void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
+      * Note that we do not use v7m_stack_write() here, because the
+      * accesses should not set the FSR bits for stacking errors if they
+      * fail. (In pseudocode terms, they are AccType_NORMAL, not AccType_STACK
+-     * or AccType_LAZYFP). Faults in cpu_stl_data_ra() will throw exceptions
++     * or AccType_LAZYFP). Faults in cpu_stl_mmu() will throw exceptions
+      * and longjmp out.
+      */
+     if (!(env->v7m.fpccr[M_REG_S] & R_V7M_FPCCR_LSPEN_MASK)) {
+@@ -1089,12 +1092,12 @@ void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
+             if (i >= 16) {
+                 faddr += 8; /* skip the slot for the FPSCR */
+             }
+-            cpu_stl_data_ra(env, faddr, slo, ra);
+-            cpu_stl_data_ra(env, faddr + 4, shi, ra);
++            cpu_stl_mmu(env, faddr, slo, oi, ra);
++            cpu_stl_mmu(env, faddr + 4, shi, oi, ra);
+         }
+-        cpu_stl_data_ra(env, fptr + 0x40, vfp_get_fpscr(env), ra);
++        cpu_stl_mmu(env, fptr + 0x40, vfp_get_fpscr(env), oi, ra);
+         if (cpu_isar_feature(aa32_mve, cpu)) {
+-            cpu_stl_data_ra(env, fptr + 0x44, env->v7m.vpr, ra);
++            cpu_stl_mmu(env, fptr + 0x44, env->v7m.vpr, oi, ra);
+         }
+ 
+         /*
+@@ -1121,6 +1124,9 @@ void HELPER(v7m_vlldm)(CPUARMState *env, uint32_t fptr)
+ {
+     ARMCPU *cpu = env_archcpu(env);
+     uintptr_t ra = GETPC();
++    ARMMMUIdx mmu_idx = arm_mmu_idx(env);
++    MemOpIdx oi = make_memop_idx(MO_TEUL | MO_ALIGN,
++                                 arm_to_core_mmu_idx(mmu_idx));
+ 
+     /* fptr is the value of Rn, the frame pointer we load the FP regs from */
+     assert(env->v7m.secure);
+@@ -1155,16 +1161,16 @@ void HELPER(v7m_vlldm)(CPUARMState *env, uint32_t fptr)
+                 faddr += 8; /* skip the slot for the FPSCR and VPR */
+             }
+ 
+-            slo = cpu_ldl_data_ra(env, faddr, ra);
+-            shi = cpu_ldl_data_ra(env, faddr + 4, ra);
++            slo = cpu_ldl_mmu(env, faddr, oi, ra);
++            shi = cpu_ldl_mmu(env, faddr + 4, oi, ra);
+ 
+             dn = (uint64_t) shi << 32 | slo;
+             *aa32_vfp_dreg(env, i / 2) = dn;
+         }
+-        fpscr = cpu_ldl_data_ra(env, fptr + 0x40, ra);
++        fpscr = cpu_ldl_mmu(env, fptr + 0x40, oi, ra);
+         vfp_set_fpscr(env, fpscr);
+         if (cpu_isar_feature(aa32_mve, cpu)) {
+-            env->v7m.vpr = cpu_ldl_data_ra(env, fptr + 0x44, ra);
++            env->v7m.vpr = cpu_ldl_mmu(env, fptr + 0x44, oi, ra);
+         }
      }
  
 -- 

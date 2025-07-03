@@ -1,70 +1,70 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp505744dyc;
-        Thu, 3 Jul 2025 05:38:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW1VAgIdeRx+jSe4e9TFYUHYqkTqURkVkEv7/2wcsGEiFtEcX6LWTXqOSnkXCQhzQ5/prCZ/4a3cCDpRg==@linaro.org
-X-Google-Smtp-Source: AGHT+IECzAWGBi8yA3GmcLgPMc2GMloi9OB4wSmBF+t0H1ScZlZ7VxeD6sJv5NyUjEqFv/1sXeWT
-X-Received: by 2002:a05:622a:48:b0:4a7:70a5:e726 with SMTP id d75a77b69052e-4a987dd1fedmr58871191cf.52.1751546339433;
-        Thu, 03 Jul 2025 05:38:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751546339; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp505814dyc;
+        Thu, 3 Jul 2025 05:39:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXiRDK5nxAxJeDd4FltFN+Q7iOyzTH5zg57vEuN1jI2gFtNMQ2liSxKCGECrpde0bosporpGf+7pSZoCw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFVSd5b5cQronLKKbHLRjtpTpzNScrfljWUrl0NdqJomCKxIldOINMLfryZ//ROSPBz8mdT
+X-Received: by 2002:a05:6214:1242:b0:6fd:75e6:bd33 with SMTP id 6a1803df08f44-702b16c4e9dmr96025346d6.0.1751546346505;
+        Thu, 03 Jul 2025 05:39:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751546346; cv=none;
         d=google.com; s=arc-20240605;
-        b=byl53Kg1Qts18jlvjoFbsrI1jBxxD/z5/I8ZggwYDRq0S4YZrgGXuP5NcMp5HjL2/b
-         l8RtA7iyDNY+HloI8favgtt0YtvaL+jAAUjV4YlmuSnAkj6XML1IcIVHI58/VlsapoKy
-         5VsUlJtvyRD7kKLJhREp2mtL5v829CEM4WErDxp1IyPsPdXDVlp6FNGwJUS71Ult33N2
-         NB/h62m57jmx+G6ouzFoRKD2YObXUZS61vRh7aaqUAvhzEkgJpipmcW5FOTjTi29WbBE
-         BcuvAqekZlchOLcJSEM/vY+vErlorDfkf0U0w/W6mQ6/oPGEWScTOwxPHVxB6wCQPxP3
-         A9SA==
+        b=i0yvsorFNNTJlbMvZYqTVWMjZVD9LEW0DmlmumUR42nXALdj1DGChcon6Gw4YmaZma
+         v5x02pLtmp9YnO4Q1x0o8sLACfopivmo1J1f4wAomG5szlYCDqYdETpXt+WsHF7Qum0C
+         VR1RP7W9IqLo0ZjCdQysbl2uUL/MxBUjq9Hkz1ZTpILBfb4libQu5w0OnnkZ0ff2f2Pt
+         bWMMJnXACNuMZsfVpmk0TmDjDLD1UjdjGpa6r/yBkUZ65yLxoDQlh0wqKkiP+/wDhHuv
+         4sfCf3aWbbbYgr5DSF3YldEkVLuH2sC6+XWlAPwzM3oNXuoJBLnAATrV/onADqtpkXUY
+         UC8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=hOnk6tUF8BEtgoK/DOmMaR/Km0pJrk/2ZiEFOx7CRQU=;
+        bh=qrdM5Qv5B/f5uJagCphvmvd7g7H1raHqAypDeISaWyY=;
         fh=wjCXBlYiEFaE/nRXdXhm/QzbgpklGNl9u9+2G4gHJbk=;
-        b=eFFkmuPh76ib4M+1WBQzy6+pm0g7TFoQH26aqKzsdwE7iVspCpngBnzsM2tWmzv+5u
-         jUlSFJN2aNghxln6M4kyWQD6AYCKB61kyECldOKVsKy68G49cx8Gc0lkMzD8W2V0thAV
-         GSTE9DPUMLpPerndlWPNburrpUDm5oDWIsZljZoDPnVue5Wpn3WB5bYrJdzQBISbKAQ5
-         SLtJyijKYW+chFxkkYQZ40ztjniSjLwCq6ntm+XRazznd9Fr+tsfr8GmNcqmh65G+2bf
-         WcKlQT3bJWBWVHtYx+92xNCocnQZXh87NkzYpU6vBJ2N7XXsAardwtDtLlA1uilj4tEg
-         ybnQ==;
+        b=F984jcDcQos8YPQX1qH4hw7M50hzzrWGO7uSbzrXXhpOiuUG8iu9az/fdfZwFDEbAu
+         LhFwuPlVwtOrJ5/c0mctG5btgniBp1S/LpbhUQtBisiyK6LRpiisbj17EQQxixf8QzkC
+         s2q+9j7PFqa+FpcZoSwunG88/e7pORKRWUf6TZoT8Jn9/4OWMQM3wAlLLP9jtZbNbuAI
+         VqzTc70d/XxS5Em7eEUxfkWupTu2PniEVPVcUGrSLKuCh9ibLRsj79UV06OGXPFrsQqw
+         33g0SVw+mU48tb2E9DAmO5jlHSvXQHXGoCLdrjh5yhMEW4akG41inxZgX/sUO4aociKt
+         I82w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NBzjgKVZ;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IqStNk3e;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc100f51si153727051cf.66.2025.07.03.05.38.59
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6fd772981a6si172361466d6.117.2025.07.03.05.39.06
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Jul 2025 05:38:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Thu, 03 Jul 2025 05:39:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NBzjgKVZ;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IqStNk3e;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1751546339;
+	s=mimecast20190719; t=1751546346;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=hOnk6tUF8BEtgoK/DOmMaR/Km0pJrk/2ZiEFOx7CRQU=;
-	b=NBzjgKVZMjhFoTR8gTsfWbaq0xNV7a4aHLxVPaclMH+zrVlifhut3rU3QaxC7e3n1aUzCZ
-	gPGB+XtWJAvZC6Ivh8zD3mMLr6+0BrwpQvUZ8YfPKvqQ9WDzZ/ZAHfMVSz3O+yiiVU8mr5
-	JyLmZl0WFviTEmxotCBNwHUg91LjDZU=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+	bh=qrdM5Qv5B/f5uJagCphvmvd7g7H1raHqAypDeISaWyY=;
+	b=IqStNk3ei94b13vhEzhbZiodnsfPHx+QcjUjTHDqHgdeAj0exMVue1zkTRVSOL0xpgqQ1X
+	DN366EWChi3bHuEEiQNPmprPi9Z72ekfip8rSeZJAe8hXiJDYe+B64IbB42To+dKDoKTf3
+	dK1Xd4sJiqp40xm3ogv/xa0L76vZSgU=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-681-k_7hvxCjNz29U4_dmSkw0Q-1; Thu,
- 03 Jul 2025 08:38:57 -0400
-X-MC-Unique: k_7hvxCjNz29U4_dmSkw0Q-1
-X-Mimecast-MFC-AGG-ID: k_7hvxCjNz29U4_dmSkw0Q_1751546336
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-588-s0yPEGRaPGW51AiwDbBSGQ-1; Thu,
+ 03 Jul 2025 08:39:03 -0400
+X-MC-Unique: s0yPEGRaPGW51AiwDbBSGQ-1
+X-Mimecast-MFC-AGG-ID: s0yPEGRaPGW51AiwDbBSGQ_1751546341
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 745AE1955EC7;
-	Thu,  3 Jul 2025 12:38:56 +0000 (UTC)
+	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 9EFC018089B7;
+	Thu,  3 Jul 2025 12:39:01 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.16])
-	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id F25BE180045C;
-	Thu,  3 Jul 2025 12:38:51 +0000 (UTC)
+	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 012D1180045B;
+	Thu,  3 Jul 2025 12:38:56 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com,
 	eric.auger@redhat.com,
@@ -80,77 +80,189 @@ To: eric.auger.pro@gmail.com,
 Cc: pbonzini@redhat.com,
 	philmd@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v5 15/36] hw/i386/acpi-build: Use AcpiPciHpState::root in acpi_set_pci_info
-Date: Thu,  3 Jul 2025 14:35:15 +0200
-Message-ID: <20250703123728.414386-16-eric.auger@redhat.com>
+Subject: [PATCH v5 16/36] hw/i386/acpi-build: Move aml_pci_edsm to a generic place
+Date: Thu,  3 Jul 2025 14:35:16 +0200
+Message-ID: <20250703123728.414386-17-eric.auger@redhat.com>
 In-Reply-To: <20250703123728.414386-1-eric.auger@redhat.com>
 References: <20250703123728.414386-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-TUID: DU6GK/qPlM9K
+X-TUID: vO0Dmh6tG+0N
 
-pcihp acpi_set_pci_info() generic code currently uses
-acpi_get_i386_pci_host() to retrieve the pci host bridge.
-
-To make it work also on ARM we get rid of that call and
-directly use AcpiPciHpState::root.
+Move aml_pci_edsm to pci-bridge.c since we want to reuse that for
+ARM and acpi-index support. Also rename it into build_pci_bridge_edsm.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Suggested-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 
 ---
 
+v3->v4:
+- renamed into build_pci_bridge_edsm() (Jonathan, Igor)
+
 v2 -> v3:
-- Use AcpiPciHpState::root
-
-v1 -> v2
-- described the fact we changed the implementation of
-  acpi_get_pci_host() in the commit msg.
+- move to pci-bridge.c instead of pcihp.c (Igor)
 ---
- hw/acpi/pcihp.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
+ include/hw/acpi/pci.h |  1 +
+ hw/acpi/pci-bridge.c  | 54 ++++++++++++++++++++++++++++++++++++++++
+ hw/i386/acpi-build.c  | 57 ++-----------------------------------------
+ 3 files changed, 57 insertions(+), 55 deletions(-)
 
-diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-index 2c76edeb15..2db2f16940 100644
---- a/hw/acpi/pcihp.c
-+++ b/hw/acpi/pcihp.c
-@@ -99,10 +99,10 @@ static void *acpi_set_bsel(PCIBus *bus, void *opaque)
-     return info;
- }
+diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
+index 69bae95eac..20b672575f 100644
+--- a/include/hw/acpi/pci.h
++++ b/include/hw/acpi/pci.h
+@@ -42,5 +42,6 @@ void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope);
+ void build_srat_generic_affinity_structures(GArray *table_data);
  
--static void acpi_set_pci_info(bool has_bridge_hotplug)
-+static void acpi_set_pci_info(AcpiPciHpState *s)
- {
-     static bool bsel_is_set;
--    Object *host = acpi_get_i386_pci_host();
-+    bool has_bridge_hotplug = s->use_acpi_hotplug_bridge;
-     PCIBus *bus;
-     BSELInfo info = { .bsel_alloc = ACPI_PCIHP_BSEL_DEFAULT,
-                       .has_bridge_hotplug = has_bridge_hotplug };
-@@ -112,11 +112,8 @@ static void acpi_set_pci_info(bool has_bridge_hotplug)
+ Aml *build_pci_host_bridge_osc_method(bool enable_native_pcie_hotplug);
++Aml *build_pci_bridge_edsm(void);
+ 
+ #endif
+diff --git a/hw/acpi/pci-bridge.c b/hw/acpi/pci-bridge.c
+index 7baa7034a1..394a919479 100644
+--- a/hw/acpi/pci-bridge.c
++++ b/hw/acpi/pci-bridge.c
+@@ -35,3 +35,57 @@ void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope)
+         }
      }
-     bsel_is_set = true;
- 
--    if (!host) {
--        return;
--    }
- 
--    bus = PCI_HOST_BRIDGE(host)->bus;
-+    bus = s->root;
-     if (bus) {
-         /* Scan all PCI buses. Set property to enable acpi based hotplug. */
-         pci_for_each_bus_depth_first(bus, acpi_set_bsel, NULL, &info);
-@@ -266,7 +263,7 @@ static void acpi_pcihp_update(AcpiPciHpState *s)
- 
- void acpi_pcihp_reset(AcpiPciHpState *s)
- {
--    acpi_set_pci_info(s->use_acpi_hotplug_bridge);
-+    acpi_set_pci_info(s);
-     acpi_pcihp_update(s);
+ }
++
++Aml *build_pci_bridge_edsm(void)
++{
++    Aml *method, *ifctx;
++    Aml *zero = aml_int(0);
++    Aml *func = aml_arg(2);
++    Aml *ret = aml_local(0);
++    Aml *aidx = aml_local(1);
++    Aml *params = aml_arg(4);
++
++    method = aml_method("EDSM", 5, AML_SERIALIZED);
++
++    /* get supported functions */
++    ifctx = aml_if(aml_equal(func, zero));
++    {
++        /* 1: have supported functions */
++        /* 7: support for function 7 */
++        const uint8_t caps = 1 | BIT(7);
++        build_append_pci_dsm_func0_common(ifctx, ret);
++        aml_append(ifctx, aml_store(aml_int(caps), aml_index(ret, zero)));
++        aml_append(ifctx, aml_return(ret));
++    }
++    aml_append(method, ifctx);
++
++    /* handle specific functions requests */
++    /*
++     * PCI Firmware Specification 3.1
++     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
++     *        Operating Systems
++     */
++    ifctx = aml_if(aml_equal(func, aml_int(7)));
++    {
++       Aml *pkg = aml_package(2);
++       aml_append(pkg, zero);
++       /* optional, if not impl. should return null string */
++       aml_append(pkg, aml_string("%s", ""));
++       aml_append(ifctx, aml_store(pkg, ret));
++
++       /*
++        * IASL is fine when initializing Package with computational data,
++        * however it makes guest unhappy /it fails to process such AML/.
++        * So use runtime assignment to set acpi-index after initializer
++        * to make OSPM happy.
++        */
++       aml_append(ifctx,
++           aml_store(aml_derefof(aml_index(params, aml_int(0))), aidx));
++       aml_append(ifctx, aml_store(aidx, aml_index(ret, zero)));
++       aml_append(ifctx, aml_return(ret));
++    }
++    aml_append(method, ifctx);
++
++    return method;
++}
++
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index fe8bc62c03..423c4959fe 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -338,59 +338,6 @@ build_facs(GArray *table_data)
+     g_array_append_vals(table_data, reserved, 40); /* Reserved */
  }
  
+-static Aml *aml_pci_edsm(void)
+-{
+-    Aml *method, *ifctx;
+-    Aml *zero = aml_int(0);
+-    Aml *func = aml_arg(2);
+-    Aml *ret = aml_local(0);
+-    Aml *aidx = aml_local(1);
+-    Aml *params = aml_arg(4);
+-
+-    method = aml_method("EDSM", 5, AML_SERIALIZED);
+-
+-    /* get supported functions */
+-    ifctx = aml_if(aml_equal(func, zero));
+-    {
+-        /* 1: have supported functions */
+-        /* 7: support for function 7 */
+-        const uint8_t caps = 1 | BIT(7);
+-        build_append_pci_dsm_func0_common(ifctx, ret);
+-        aml_append(ifctx, aml_store(aml_int(caps), aml_index(ret, zero)));
+-        aml_append(ifctx, aml_return(ret));
+-    }
+-    aml_append(method, ifctx);
+-
+-    /* handle specific functions requests */
+-    /*
+-     * PCI Firmware Specification 3.1
+-     * 4.6.7. _DSM for Naming a PCI or PCI Express Device Under
+-     *        Operating Systems
+-     */
+-    ifctx = aml_if(aml_equal(func, aml_int(7)));
+-    {
+-       Aml *pkg = aml_package(2);
+-       aml_append(pkg, zero);
+-       /* optional, if not impl. should return null string */
+-       aml_append(pkg, aml_string("%s", ""));
+-       aml_append(ifctx, aml_store(pkg, ret));
+-
+-       /*
+-        * IASL is fine when initializing Package with computational data,
+-        * however it makes guest unhappy /it fails to process such AML/.
+-        * So use runtime assignment to set acpi-index after initializer
+-        * to make OSPM happy.
+-        */
+-       aml_append(ifctx,
+-           aml_store(aml_derefof(aml_index(params, aml_int(0))), aidx));
+-       aml_append(ifctx, aml_store(aidx, aml_index(ret, zero)));
+-       aml_append(ifctx, aml_return(ret));
+-    }
+-    aml_append(method, ifctx);
+-
+-    return method;
+-}
+-
+ /*
+  * build_prt - Define interrupt routing rules
+  *
+@@ -937,7 +884,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+         dev = aml_device("PCI0");
+         aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A03")));
+         aml_append(dev, aml_name_decl("_UID", aml_int(pcmc->pci_root_uid)));
+-        aml_append(dev, aml_pci_edsm());
++        aml_append(dev, build_pci_bridge_edsm());
+         aml_append(sb_scope, dev);
+         aml_append(dsdt, sb_scope);
+ 
+@@ -952,7 +899,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+         aml_append(dev, aml_name_decl("_CID", aml_eisaid("PNP0A03")));
+         aml_append(dev, aml_name_decl("_UID", aml_int(pcmc->pci_root_uid)));
+         aml_append(dev, build_pci_host_bridge_osc_method(!pm->pcihp_bridge_en));
+-        aml_append(dev, aml_pci_edsm());
++        aml_append(dev, build_pci_bridge_edsm());
+         aml_append(sb_scope, dev);
+         if (mcfg_valid) {
+             aml_append(sb_scope, build_q35_dram_controller(&mcfg));
 -- 
 2.49.0

@@ -1,184 +1,180 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp443486dyc;
-        Thu, 3 Jul 2025 03:43:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVzInt13mZ+49EypXRdrOGkkbjTgrA71ZhA43Vvnf7hnHTYiH6kY5plngXo2/1JxhfO3gFjBAmjMMebVw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHlpoguJ2M7Se+BzkXWkgxeZ3kN8HP4Gz7HHCBICmEvjYwexQwl86Y4m2h/r3varaDJequP
-X-Received: by 2002:a05:6000:2207:b0:3a5:8934:4959 with SMTP id ffacd0b85a97d-3b3450a2240mr1826475f8f.27.1751539428138;
-        Thu, 03 Jul 2025 03:43:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751539428; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp449010dyc;
+        Thu, 3 Jul 2025 03:56:20 -0700 (PDT)
+X-Received: by 2002:a05:600c:c4ab:b0:43d:17f1:2640 with SMTP id 5b1f17b1804b1-454a3728b01mr57950145e9.26.1751540179905;
+        Thu, 03 Jul 2025 03:56:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751540179; cv=none;
         d=google.com; s=arc-20240605;
-        b=R9oqYSMFGMJhHYnG+0r87t3oZXWF/Xu/FXjH+nYxmcha4ONcgSRwJkEMSLBhF0SbLs
-         V250n8HyxMzfE/V3Wamoq7UUK/BcVs8d0KRvc/swVoR6r8BieFPq6HeA2WXpO5x569qP
-         AwGsY44leJnrHVloesMsevAJW/JMUtRAhYj4UWutvR9iXugjDSkQ07eBCn+k6ECD0jAb
-         SA4+tEIwhO+aO86mIJkY4M9fQoeU6fzSoKnZy6c/duqqfG/8POgAwlXI7+TpZ9rWdTuM
-         cLlfkD7osmm0JV/YroqLeJmeRS5vbbm9iSbcZsHfm6jlPq7Sijtpv2+qbvciE1GpZdWV
-         gCgg==
+        b=E30RD8QFU31LeTJIpQNqlo4kAn2/Y/Dj3ThzqtGM1BOV1qWydNMiqKCzT9gWIlzGFG
+         Q04Xy1rLbQSiZdK6ci97MYNSOLrHKVhlrAxMj7bEc4uGJikbaLBAo1CY6N9vEeHZzyRZ
+         965xQe0NacgxCyfkXDEr7ilwy9iuAFFffSzaPWQgHC2KkkDCZrwaBgpbuQw2bJX9VYvg
+         kSxKokE+0lyN6RTCffgU07wa7gOMmjJ3xSt2FbdHEggLqlKGGxG9p0JmbQ0QTOWREpxy
+         X5qKPfnzUjmplPGcw4w97RpHH2q2vrfLE/1OJbOcuhgFm4sMU+Q7yjQQQnUTZcZpQFdh
+         XE+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=6xRgUI28Gf0sNOpTUFwskT+Hc6wfIMHk35pRiLOqM7U=;
-        fh=2OWm8s7qWlCZ9oKfEpMPigkCh0wt4LR/kIjLb0p9Pkg=;
-        b=FRxWi1CXk0gD5TiqTouhk6MvUKERmBFvYZrY03AFfG6I3W6/0usYaUES000FVKBA8D
-         MzM8C9b3NXRZBZMRaK9fsSUMF4if1icvVBCj9kKwnCd+MElZ0VTVSS8gZ3K3QtwJ24CF
-         nb+odwxc49g4ppfGqtR5caxYsbcaoZbzp1XSrCiB0ZanZGCZd9pkNOlXydVA4Szq+3uy
-         k+FgJnxvvlKJRhHy2SpUPxOFLCJpnojvHcF51gYA8Hw0M8bwVWY8bBq1rtlA7b8WTbxN
-         BKbVGvZoga9u//ZeGRU7eKOKePQM9xwrRnaoJEaJWOvNbQZ4VBwjDU3yWDoj79jrMesL
-         aqIQ==;
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=bOy/hh8CdzW8JKLOeQuyvYboWC5TjWykREm1ryjsqd8=;
+        fh=uJ3dFTbL6U4oY1jR+3e9dBFvfZBH369kHbvQi/mdha8=;
+        b=Zen84r1HAbdDEmDGxkBOyXGMkmPWt3DzZ3KtrFkVWyUbppU/5Y3K2g4Lb/0rhP0b9r
+         8Uu3eV27rGmD5Yx5WSjs545RtB5xftY44aBQpzQ3zH+NdiaSBhToJbdfHzfjVI4FWIQd
+         cpSRhjbEOf11r1P7ImFgMAygYx4PspZIjH+ISOFEhzlOJlR5dcE8sfmeOOYlZmUzeZqN
+         F8p7NMX6xpdVZvQIWQwU0BQT2lP0jAr+QUeiHqlJzVd0mf1cObz2IXh73ufwOwoDW94P
+         /qC0w4w5ruv+AfpPU7fkY9uWsOKzfnzG0VRTOIVLAvtq8FfzCAQVGHDE9FbDgKrheYiW
+         MAMA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-454a9babaddsi15257755e9.188.2025.07.03.03.43.47
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 03 Jul 2025 03:43:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PkLp3K5s;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-4538a428c9fsor58300495e9.11.2025.07.03.03.56.19
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 03 Jul 2025 03:56:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bXtdy4nRrz6DKlk;
-	Thu,  3 Jul 2025 18:43:18 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 757D31402EE;
-	Thu,  3 Jul 2025 18:43:47 +0800 (CST)
-Received: from SecurePC-101-06.china.huawei.com (10.122.19.247) by
- frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 3 Jul 2025 12:43:46 +0200
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
-	<peter.maydell@linaro.org>, Eric Auger <eric.auger@redhat.com>,
-	<mst@redhat.com>, Zhijian Li <lizhijian@fujitsu.com>, Itaru Kitayama
-	<itaru.kitayama@linux.dev>
-CC: <linuxarm@huawei.com>, <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>,
-	Yuquan Wang <wangyuquan1236@phytium.com.cn>,
+       dkim=pass header.i=@linaro.org header.s=google header.b=PkLp3K5s;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1751540179; x=1752144979; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=bOy/hh8CdzW8JKLOeQuyvYboWC5TjWykREm1ryjsqd8=;
+        b=PkLp3K5sCggdAZPO66HtXHb1BUe0mdKJxhwtqGxhTTTtisKmw4kt7SNcAp91KSCo89
+         SWWIFqAbbEy5EWvtz7+ZWxAM5ibIfE3Ki5P5jzaPI9kT7NFeggYzBn83Y5w6Dqz4wJhv
+         A/qTOTmpgg7MULo2trtlNCc5DToc4+sSv7HtmPp4ifJuOOOBFuE0jsVz9F8GiJ8PGbRP
+         oAIh494kZAjRvpRu2mBeQxX1nTB4B5l6snZn2eodcv7dzXI0C2gd0GVHpSKaNjAUBGer
+         LTmB5ukxwgOdAs2BnBfmiyurbQATDZnvdczFSFdbugGgiaKPARiPxKZF8RLVRX71bU+4
+         PiWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751540179; x=1752144979;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=bOy/hh8CdzW8JKLOeQuyvYboWC5TjWykREm1ryjsqd8=;
+        b=Z01UpqFAI9fpWYjds2pyoRV5DzR1xOVg7yrMrX9AohEY6yC3rPXaHic7qwGli0usKb
+         xE0pMPeTwd6L1qYvvNrWPo6B21kP1lBLp8rbZIHfY/UCsqoNAilZeKvbIXM9LFYcVUKg
+         prs8VqURFADggtTPopVAvjEdbBIQFi7sRF/ZqNzEuSdrzbq66K8l2hiF/W5+cGKbiM17
+         gLTA+PyYLt30zIJkWQYGuydEkXlegPdMG0eKeEyuQ756H8IoByRZFJbTr0q+9VQGYQMt
+         meJyCXukBJX3f1e58UlV1I2YfUhQ+Uuq8vA2GVkuD5cCfvHjqiH/zyV+7ljZ7Lw1gZfy
+         386A==
+X-Gm-Message-State: AOJu0YzWtMurx7AiVqnEWEFSBc7D2Y3911v9GxTkYZ9TluehPrN3pKHO
+	UnyiHKfI9kKPk+KA0sAs48muMgYbU9l+gU9IQxlI44ibwKNu00wV05NP24mfVK+ra/pZEg==
+X-Gm-Gg: ASbGncs/wBVKbzzON/alKttyv5OGs4Su8K8Qj8O7m1XCD+s4gX1xtqOnlEV1ur45bI4
+	26A45Jkyfjpa+jqdlc4AQfQZQ3PxMhaCi943QBUi506qDPVyQlOpf3Z30UnigOtJP1tysFXuXZK
+	J/KP38PeCJbHiJ/lkVWOCJE0FmsAnabwwwi962LkblPK4PwxhUN4Ml8RQF0V3kIcNBIJn2QNidR
+	tkRyUgzIyAU7BolCwupkdfMjPEQdr2qt77G9qZGLPI5/hVgUcg6uc6TtwV1Dnf08bUdlRSvQNdJ
+	ZjxyVQLyhQOjkjqg1N33Mvc2eHq8qlr1KeiCwzmmt4ynWrjlH7Ojzz8J7hpy0Vn6MdsziHP3npo
+	3F3oNrhg4ZrA=
+X-Google-Smtp-Source: AGHT+IG7ipjun04dtTdCOm6oy7eUWWjsKtRV5HObOuItyYoks+uXkUq2AKmszEHPvw4ntsxZJLkEbg==
+X-Received: by 2002:a05:6000:2c0b:b0:3a3:7387:3078 with SMTP id ffacd0b85a97d-3b1fe5bf382mr5188202f8f.4.1751540179252;
+        Thu, 03 Jul 2025 03:56:19 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from localhost.localdomain ([83.247.137.20])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a892e595d1sm18529515f8f.71.2025.07.03.03.56.17
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Thu, 03 Jul 2025 03:56:18 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	kvm@vger.kernel.org,
+	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH qemu v17 5/5] qtest/cxl: Add aarch64 virt test for CXL
-Date: Thu, 3 Jul 2025 11:41:10 +0100
-Message-ID: <20250703104110.992379-6-Jonathan.Cameron@huawei.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250703104110.992379-1-Jonathan.Cameron@huawei.com>
-References: <20250703104110.992379-1-Jonathan.Cameron@huawei.com>
+	Cameron Esfahani <dirty@apple.com>,
+	Roman Bolshakov <rbolshakov@ddn.com>,
+	Phil Dennis-Jordan <phil@philjordan.eu>,
+	Mads Ynddal <mads@ynddal.dk>,
+	Alexander Graf <agraf@csgraf.de>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org
+Subject: [PATCH v5 07/69] accel/hvf: Add hvf_arch_cpu_realize() stubs
+Date: Thu,  3 Jul 2025 12:54:33 +0200
+Message-ID: <20250703105540.67664-8-philmd@linaro.org>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250703105540.67664-1-philmd@linaro.org>
+References: <20250703105540.67664-1-philmd@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.122.19.247]
-X-ClientProxiedBy: lhrpeml100012.china.huawei.com (7.191.174.184) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: ebVp0U/wJdJO
+X-TUID: G55O/QcuNucf
 
-Add a single complex case for aarch64 virt machine.
+Implement HVF AccelOpsClass::cpu_target_realize() hook as
+empty stubs. Target implementations will come separately.
 
-Given existing much more comprehensive tests for x86 cover the common
-functionality, a single test should be enough to verify that the aarch64
-part continues to work.
-
-Tested-by: Itaru Kitayama <itaru.kitayama@fujitsu.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v17: Tag and small fix for patch description (Eric).
----
- tests/qtest/cxl-test.c  | 58 ++++++++++++++++++++++++++++++++---------
- tests/qtest/meson.build |  1 +
- 2 files changed, 46 insertions(+), 13 deletions(-)
+ include/system/hvf.h      | 3 +++
+ accel/hvf/hvf-accel-ops.c | 2 ++
+ target/arm/hvf/hvf.c      | 5 +++++
+ target/i386/hvf/hvf.c     | 5 +++++
+ 4 files changed, 15 insertions(+)
 
-diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
-index a600331843..8fb7e58d4f 100644
---- a/tests/qtest/cxl-test.c
-+++ b/tests/qtest/cxl-test.c
-@@ -19,6 +19,12 @@
-     "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
-     "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
+diff --git a/include/system/hvf.h b/include/system/hvf.h
+index a9a502f0c8f..8c4409a13f1 100644
+--- a/include/system/hvf.h
++++ b/include/system/hvf.h
+@@ -72,6 +72,9 @@ void hvf_arch_update_guest_debug(CPUState *cpu);
+  * Return whether the guest supports debugging.
+  */
+ bool hvf_arch_supports_guest_debug(void);
++
++bool hvf_arch_cpu_realize(CPUState *cpu, Error **errp);
++
+ #endif /* COMPILING_PER_TARGET */
  
-+#define QEMU_VIRT_2PXB_CMD \
-+    "-machine virt,cxl=on -cpu max " \
-+    "-device pxb-cxl,id=cxl.0,bus=pcie.0,bus_nr=52 " \
-+    "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
-+    "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
-+
- #define QEMU_RP \
-     "-device cxl-rp,id=rp0,bus=cxl.0,chassis=0,slot=0 "
- 
-@@ -197,25 +203,51 @@ static void cxl_2pxb_4rp_4t3d(void)
-     qtest_end();
-     rmdir(tmpfs);
- }
-+
-+static void cxl_virt_2pxb_4rp_4t3d(void)
-+{
-+    g_autoptr(GString) cmdline = g_string_new(NULL);
-+    g_autofree const char *tmpfs = NULL;
-+
-+    tmpfs = g_dir_make_tmp("cxl-test-XXXXXX", NULL);
-+
-+    g_string_printf(cmdline, QEMU_VIRT_2PXB_CMD QEMU_4RP QEMU_4T3D,
-+                    tmpfs, tmpfs, tmpfs, tmpfs, tmpfs, tmpfs,
-+                    tmpfs, tmpfs);
-+
-+    qtest_start(cmdline->str);
-+    qtest_end();
-+    rmdir(tmpfs);
-+}
- #endif /* CONFIG_POSIX */
- 
- int main(int argc, char **argv)
- {
--    g_test_init(&argc, &argv, NULL);
-+    const char *arch = qtest_get_arch();
- 
--    qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
--    qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
--    qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
--    qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
--    qtest_add_func("/pci/cxl/rp", cxl_root_port);
--    qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
-+    g_test_init(&argc, &argv, NULL);
-+    if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
-+        qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
-+        qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
-+        qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
-+        qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
-+        qtest_add_func("/pci/cxl/rp", cxl_root_port);
-+        qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
- #ifdef CONFIG_POSIX
--    qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
--    qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
--    qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
--    qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
--    qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
--    qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4", cxl_2pxb_4rp_4t3d);
-+        qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
-+        qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
-+        qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
-+        qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
-+        qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
-+        qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4",
-+                       cxl_2pxb_4rp_4t3d);
  #endif
-+    } else if (strcmp(arch, "aarch64") == 0) {
-+#ifdef CONFIG_POSIX
-+        qtest_add_func("/pci/cxl/virt/pxb_x2_root_port_x4_type3_x4",
-+                       cxl_virt_2pxb_4rp_4t3d);
-+#endif
-+    }
+diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+index b38977207d2..b9511103a75 100644
+--- a/accel/hvf/hvf-accel-ops.c
++++ b/accel/hvf/hvf-accel-ops.c
+@@ -588,6 +588,8 @@ static void hvf_accel_ops_class_init(ObjectClass *oc, const void *data)
+ {
+     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
+ 
++    ops->cpu_target_realize = hvf_arch_cpu_realize;
 +
-     return g_test_run();
+     ops->create_vcpu_thread = hvf_start_vcpu_thread;
+     ops->kick_vcpu_thread = hvf_kick_vcpu_thread;
+ 
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 7b6d291e79c..4c4d21e38cd 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1081,6 +1081,11 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+     return 0;
  }
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 8ad849054f..42e927b32a 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -261,6 +261,7 @@ qtests_aarch64 = \
-    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
-   (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : []) + \
-+  qtests_cxl +                                                                                  \
-   ['arm-cpu-features',
-    'numa-test',
-    'boot-serial-test',
+ 
++bool hvf_arch_cpu_realize(CPUState *cs, Error **errp)
++{
++    return true;
++}
++
+ void hvf_kick_vcpu_thread(CPUState *cpu)
+ {
+     cpus_kick_thread(cpu);
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 99e37a33e50..28484496710 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -367,6 +367,11 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+     return 0;
+ }
+ 
++bool hvf_arch_cpu_realize(CPUState *cs, Error **errp)
++{
++    return true;
++}
++
+ static void hvf_store_events(CPUState *cpu, uint32_t ins_len, uint64_t idtvec_info)
+ {
+     X86CPU *x86_cpu = X86_CPU(cpu);
 -- 
-2.48.1
+2.49.0

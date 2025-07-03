@@ -1,198 +1,167 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp831022dyc;
-        Thu, 3 Jul 2025 15:04:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUn234/AJyrh+yqdOw6FpeFd9zICf98VL5h/FmTEjBbNlYIlNzlLFjDtW1ckc7m6Z1jG3t2+C59h++edg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGsaw4ksdcK7c8UsTUi9UmpJIE9Es2G1HpqvXMkLY0Jb5ZiyQF8TkciMSwKbMBWy38dScPB
-X-Received: by 2002:a05:600c:8b52:b0:43c:ed61:2c26 with SMTP id 5b1f17b1804b1-454b30df0d5mr2376555e9.17.1751580292312;
-        Thu, 03 Jul 2025 15:04:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751580292; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp865676dyc;
+        Thu, 3 Jul 2025 16:27:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWg6Cqps6wuI9soMlsfdoVNDFtnjvQQ11WLmT0QTQ/BAa6tDfypm5kcDlCbfQnWlHCIz7STtqshRUcBUA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGLElS/eooNsNYS9dMWgfQ2qeZQZ93Sh8P5Q2PA4KV7BK+/kiT0u4/QxW3mvsqIygg/2BsE
+X-Received: by 2002:ac8:5813:0:b0:4a7:146b:d762 with SMTP id d75a77b69052e-4a9964cc981mr10049051cf.13.1751585271191;
+        Thu, 03 Jul 2025 16:27:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751585271; cv=none;
         d=google.com; s=arc-20240605;
-        b=S2CGTiQUh+9ffA0sju9yVm7oL+fHtyA/Vpmt1CPeLFYx15SdL19jzTGIWBOeEC1J/Z
-         EYyEWzhNXEDXS2RHcB0AVGI12v7Hr9cU443pIcEQ5BF1zG8DgUi1uVR2nkZx5kxhFOLy
-         ZArlBVl4/3a2iEriptvg6gdvkpq9tEtWBMdkrBUgXKMPrwsfKsKZ8kQ+VXgS9cHFjAHn
-         2wY/UchXD4y2VRQOt9TDV3FVAZGJ7oKirTqocvASabFfiuZW8Z8jkYbsHCUTpbHIGNS1
-         ODPkKtkhx+S0D4icaGM+FMZ2Lt0lTCTtKNh9+LmJb59lGOS331Jym8dURdICshF7UX+s
-         X0Fw==
+        b=TTpL29bhokaQNBPohyFyzsQwn4UDG57PnPIdQXYwIi/Cg7TenMEkGOY9E2i+ECMT3Z
+         nmEOUTcwbR3x8hb+aVx3ETto2BQqZK/IUkWWO4KoeflmjT1s7eWoyArHg9CFrdGq5Xjt
+         FcS2ZCIERgyoYW55FSSYBWfEPvfDDpRX+nH0HdoWFjA35SMGQDwT96yO8r/MoFTnFHPK
+         bFa8MXZrfwKiuHXQBXyrXAH6yzyMjXd2MD47rGip9zlELMENngojoor1ylUzNcyW7iqQ
+         ocz6yYaU4oNVtC4YuOpNWHb+p0lLTtBTf1x64O29OJ7sBzUnQ0xDTAKMR4/2gQVxqOVA
+         pIwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:dkim-signature:date;
-        bh=UxtN1BIaN3WcxHEmRC1CN+JEMOjBTmNpbuuXcmYcvQA=;
-        fh=s/kMT2z54YyLoaDdqcysXi5atpy4VWuzPgW2BOhEi1U=;
-        b=GctH54GNMnrLj+WxmS0bY/gR3ro80P6eGrERqCfsCR+ugzyKE+VsRzyP9BVVARtQGO
-         pR0k+eQYC1W8BG18qz27Bh6sPyO14UFyM+0TDbnG9RUIUFTgZtfG5J5t+KSUxCIa3c6Q
-         mzv5s2H6L9/qOW/IgTRLiVRATFkS0RIbQT+5baMuRlhf7qFdGw2wDoEaW/kgrHXvtT7j
-         YV6+CNJgojUVJTIuWd6nfBm0+VdyVw/VPKe5CP3mtZgId8o5smdTIp4mrNY0S1eE2jLt
-         f/AOGdVeVBkBPSW1wHgnoHX6XG52mhRHjA/1AU7yJwaC6egePKGgrjSKqoRaordWk981
-         8nRg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=ZXqytMu0wdCH+SYu3GrpXsxyh0GMIXvcrYNbvw4+76I=;
+        fh=WtwckuuvlsXer1eWempYRLfLyk7y+6+CwisRa/cJMaw=;
+        b=UD8dv4L+32nIAu9+dW5B2cwduBuG6JYRgpYgfAflyyMVP4cdFETycc/Li3iVfbMYke
+         TvoA/DjzfGrTkEUDLm+Bnilt4Dyu3seJscbejwxmY3y+1RHvR+p+9BkpcEjxYgoSVJVf
+         1/IkdVYKyierxvW5xqphyrUECTBBwTuMviIsYvJ79WKbytRROQDPrKcwkW/BPCppK0VX
+         yLjBSdBjEbSxAGjC+dE8evwQX6SU4PPMLuj42m7buv5t9iWYC2zJ23szZrSOtqnfH5S+
+         xAxnyFxCDmjm5zqkQigfd70FIDVtMX+hc02J94dEa/5ueUVnzZH8X4cdF8dhhJwZNPbH
+         5OEQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.dev header.s=key1 header.b=Et5orT2h;
-       spf=pass (google.com: domain of itaru.kitayama@linux.dev designates 91.218.175.188 as permitted sender) smtp.mailfrom=itaru.kitayama@linux.dev;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
-Return-Path: <itaru.kitayama@linux.dev>
-Received: from out-188.mta0.migadu.com (out-188.mta0.migadu.com. [91.218.175.188])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3b473aaafb0si491188f8f.350.2025.07.03.15.04.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Jul 2025 15:04:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of itaru.kitayama@linux.dev designates 91.218.175.188 as permitted sender) client-ip=91.218.175.188;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Kx1Jjz2K;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a994b0ff4bsi7338231cf.576.2025.07.03.16.27.51
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 03 Jul 2025 16:27:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.dev header.s=key1 header.b=Et5orT2h;
-       spf=pass (google.com: domain of itaru.kitayama@linux.dev designates 91.218.175.188 as permitted sender) smtp.mailfrom=itaru.kitayama@linux.dev;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
-Date: Fri, 4 Jul 2025 07:04:41 +0900
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1751580291;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=UxtN1BIaN3WcxHEmRC1CN+JEMOjBTmNpbuuXcmYcvQA=;
-	b=Et5orT2hRkElcOB4Z2ykzVCDyOdgqvOefDO5Dkdk8ean6TdMwJeCc6fI2k+RLDA3/Yluq2
-	TVDF/r+hyjS1ovDxkPAsIjkhh3lqtNqGTv2KU1y53Or2YduTHrL6JMuR43M7VByz6uedhx
-	d4r/a8NSOQGvdoUb/MhAvc/IAcB60Gk=
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Itaru Kitayama <itaru.kitayama@linux.dev>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: qemu-devel@nongnu.org, Fan Ni <fan.ni@samsung.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Eric Auger <eric.auger@redhat.com>, mst@redhat.com,
-	Zhijian Li <lizhijian@fujitsu.com>, linuxarm@huawei.com,
-	linux-cxl@vger.kernel.org, qemu-arm@nongnu.org,
-	Yuquan Wang <wangyuquan1236@phytium.com.cn>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH qemu v17 5/5] qtest/cxl: Add aarch64 virt test for CXL
-Message-ID: <aGb+eZxaZYCofHk8@vm4>
-References: <20250703104110.992379-1-Jonathan.Cameron@huawei.com>
- <20250703104110.992379-6-Jonathan.Cameron@huawei.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Kx1Jjz2K;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uXTL4-0004Xr-1j; Thu, 03 Jul 2025 19:27:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uXTL1-0004XG-N1
+ for qemu-arm@nongnu.org; Thu, 03 Jul 2025 19:27:31 -0400
+Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uXTL0-0006B4-4u
+ for qemu-arm@nongnu.org; Thu, 03 Jul 2025 19:27:31 -0400
+Received: by mail-oi1-x22a.google.com with SMTP id
+ 5614622812f47-40a7322f081so163807b6e.3
+ for <qemu-arm@nongnu.org>; Thu, 03 Jul 2025 16:27:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1751585247; x=1752190047; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ZXqytMu0wdCH+SYu3GrpXsxyh0GMIXvcrYNbvw4+76I=;
+ b=Kx1Jjz2KrCWUyxZelz5VeG9KgXyDsbECe0xLMvXdcruJqENunnMu5sulYp6hFiVLOS
+ rhsawtw3nxBK4E65dPukn8JmV97v6WI9xXi5bMSr7NB45hb791rb7+1abu0FvP8Lt5Oj
+ x8MA3qtBvu1zGLUqfFEorsK97yjrTydU3fQax5ou+o6msVPKmJp/gx7xzVMelFO5zULM
+ UWC5RH2NRnEzfFa1yXzXcrh502NVeBoPlYIya754vP8bt12hHkDTwIGcDihznKd7KAWk
+ P6arZ+eJbHTHXmpkcGirpW6/LP7lrgu+Z8y6hxKVxaZK6UbRjPW3ciPSgtUXNnGcPkZd
+ fvTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1751585247; x=1752190047;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZXqytMu0wdCH+SYu3GrpXsxyh0GMIXvcrYNbvw4+76I=;
+ b=YQsI0oHAADA7TFwB9cOZX5KqY8Ye4Wt2NBX8bDyMnxei7wAQSGme2ePOmeLU+bGb8K
+ z3M3BFJDGuzomZyj7dhCK8dVqkMS2H/LTeHjlGeB7OJQ7M4HtWRiWaf6hpVEAZARuGE8
+ OPpUbHFce7LnnLi0v5dIlAhbB9Vos9k9nrQqchhcMtqHRWK7PQ7Vgb2Rtwfu+mEqtDJZ
+ q1yKu3k4kCU9S2z9wtJBr/HFJJ3ot80HXXJJRf7BDrhlnbm3eHnZi9/5S6V1nHH734fR
+ GBzk+WEz7gRCYwUqchGeLkJrNUPLa2yHo7umgrQZgGDhDNdJ2eHF1gqsrfmCrEuIsgDG
+ 6vCg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVPdjtynsVPhwQIlxCVRDsArwQkxbWvPron7HIi1OYOg8C60yi20rL7nv48fIyoHJPWIZKm+ERnsQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzpLOVf5Oo5VBGVAMStc+pXpRcEOIXYagS0QgUO1BZz+ootkRzh
+ No2UaoBBlKptxpoDg/vYINq9bhZOeuoPh7tdwJdwR2OKivxgD+YI4aEfQdDwsDwu1sJAoaS7zqu
+ rbQIKcko=
+X-Gm-Gg: ASbGncuUZ2JiB3xGu2nykSPOyUC/jQbagAxuebS0MVFyIr4dTrAN2Vcha9i2itfOzGa
+ vvXZFjlD09lpVEKnLILmuopVBz/X45rqtQ0uZZkCPc6ur0mdK1I5kpsixs+s7oEnNP1AysF9kXU
+ xIuf/Cv6KyoNAu04mvefKPv3/AfzWAaQAadXL5/ATCQAxzh1674eghNLravEXcFr4efVK8nGlLK
+ U7qOFg1HoGLPaOj8GpRblkPJ7blI1CaSiUpLvX/lCHgB2VOA0UTM8soEb44BzVC38yOZ6bIutj3
+ QareD9yRVyjKurgt5/qW7tIHL/NV8WNCcZ9Tg0Yp2I20ptfDpDXkfZT312P3os2Lx/4cMu1kGl5
+ PvDJeyImV7c2ITax1mmgLY6eBh+rhXp4gyMRbhoEM
+X-Received: by 2002:a05:6808:6f8f:b0:406:7a21:1ae9 with SMTP id
+ 5614622812f47-40d044815afmr585591b6e.37.1751585247029; 
+ Thu, 03 Jul 2025 16:27:27 -0700 (PDT)
+Received: from [192.168.4.112] (fixed-187-189-51-143.totalplay.net.
+ [187.189.51.143]) by smtp.gmail.com with ESMTPSA id
+ 5614622812f47-40d02ac74e5sm118767b6e.35.2025.07.03.16.27.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 03 Jul 2025 16:27:26 -0700 (PDT)
+Message-ID: <fd02ab69-c157-4538-b180-42eab6ca8a8d@linaro.org>
+Date: Thu, 3 Jul 2025 17:27:19 -0600
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250703104110.992379-6-Jonathan.Cameron@huawei.com>
-X-Migadu-Flow: FLOW_OUT
-X-TUID: /LwdDNMLuRfY
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 79/97] target/arm: Implement PMOV for SME2p1/SVE2p1
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20250702123410.761208-1-richard.henderson@linaro.org>
+ <20250702123410.761208-80-richard.henderson@linaro.org>
+ <CAFEAcA837SedaYqtKaDOFSuZjZ2H=6YgZuFOVs9pSoLN5GZ8vQ@mail.gmail.com>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA837SedaYqtKaDOFSuZjZ2H=6YgZuFOVs9pSoLN5GZ8vQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::22a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x22a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3RRnjzRfk/Ld
 
-On Thu, Jul 03, 2025 at 11:41:10AM +0100, Jonathan Cameron wrote:
-> Add a single complex case for aarch64 virt machine.
+On 7/3/25 07:24, Peter Maydell wrote:
+> On Wed, 2 Jul 2025 at 13:38, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>   target/arm/tcg/helper-sve.h    |   8 +
+>>   target/arm/tcg/sve_helper.c    | 317 +++++++++++++++++++++++++++++++++
+>>   target/arm/tcg/translate-sve.c |  93 ++++++++++
+>>   target/arm/tcg/sve.decode      |  17 ++
+>>   4 files changed, 435 insertions(+)
 > 
-> Given existing much more comprehensive tests for x86 cover the common
-> functionality, a single test should be enough to verify that the aarch64
-> part continues to work.
-> 
-> Tested-by: Itaru Kitayama <itaru.kitayama@fujitsu.com>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> 
-> ---
-> v17: Tag and small fix for patch description (Eric).
-> ---
->  tests/qtest/cxl-test.c  | 58 ++++++++++++++++++++++++++++++++---------
->  tests/qtest/meson.build |  1 +
->  2 files changed, 46 insertions(+), 13 deletions(-)
-> 
-> diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
-> index a600331843..8fb7e58d4f 100644
-> --- a/tests/qtest/cxl-test.c
-> +++ b/tests/qtest/cxl-test.c
-> @@ -19,6 +19,12 @@
->      "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
->      "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
->  
-> +#define QEMU_VIRT_2PXB_CMD \
-> +    "-machine virt,cxl=on -cpu max " \
-> +    "-device pxb-cxl,id=cxl.0,bus=pcie.0,bus_nr=52 " \
-> +    "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
-> +    "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
-> +
->  #define QEMU_RP \
->      "-device cxl-rp,id=rp0,bus=cxl.0,chassis=0,slot=0 "
->  
-> @@ -197,25 +203,51 @@ static void cxl_2pxb_4rp_4t3d(void)
->      qtest_end();
->      rmdir(tmpfs);
->  }
-> +
-> +static void cxl_virt_2pxb_4rp_4t3d(void)
-> +{
-> +    g_autoptr(GString) cmdline = g_string_new(NULL);
-> +    g_autofree const char *tmpfs = NULL;
-> +
-> +    tmpfs = g_dir_make_tmp("cxl-test-XXXXXX", NULL);
-> +
-> +    g_string_printf(cmdline, QEMU_VIRT_2PXB_CMD QEMU_4RP QEMU_4T3D,
-> +                    tmpfs, tmpfs, tmpfs, tmpfs, tmpfs, tmpfs,
-> +                    tmpfs, tmpfs);
-> +
-> +    qtest_start(cmdline->str);
-> +    qtest_end();
-> +    rmdir(tmpfs);
-> +}
->  #endif /* CONFIG_POSIX */
->  
->  int main(int argc, char **argv)
->  {
-> -    g_test_init(&argc, &argv, NULL);
-> +    const char *arch = qtest_get_arch();
->  
-> -    qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
-> -    qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
-> -    qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
-> -    qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
-> -    qtest_add_func("/pci/cxl/rp", cxl_root_port);
-> -    qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
-> +    g_test_init(&argc, &argv, NULL);
-> +    if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
-> +        qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
-> +        qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
-> +        qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
-> +        qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
-> +        qtest_add_func("/pci/cxl/rp", cxl_root_port);
-> +        qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
->  #ifdef CONFIG_POSIX
-> -    qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
-> -    qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
-> -    qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
-> -    qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
-> -    qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
-> -    qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4", cxl_2pxb_4rp_4t3d);
-> +        qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
-> +        qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
-> +        qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
-> +        qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
-> +        qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
-> +        qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4",
-> +                       cxl_2pxb_4rp_4t3d);
->  #endif
-> +    } else if (strcmp(arch, "aarch64") == 0) {
-> +#ifdef CONFIG_POSIX
-> +        qtest_add_func("/pci/cxl/virt/pxb_x2_root_port_x4_type3_x4",
-> +                       cxl_virt_2pxb_4rp_4t3d);
-> +#endif
-> +    }
-> +
->      return g_test_run();
->  }
-> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-> index 8ad849054f..42e927b32a 100644
-> --- a/tests/qtest/meson.build
-> +++ b/tests/qtest/meson.build
-> @@ -261,6 +261,7 @@ qtests_aarch64 = \
->     config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
->    (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
->    (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : []) + \
-> +  qtests_cxl +                                                                                  \
->    ['arm-cpu-features',
->     'numa-test',
->     'boot-serial-test',
-> -- 
+> Given how much code we end up with here for insns which are
+> implemented in the pseudocode as a two-line loop, I think
+> some more comments on what's going on would be helpful.
 
-I checked out jic23/cxl-2025-07-03 branch and built fine for all the
-architectures, and did `meson test qtest-aarch64/cxl-test` returned OK.
+This one was hard for me to think about, and even now I'm not sure I've got it right.  I'm 
+going to re-implement exactly with the two-line loop, and not think about how it might be 
+"optimized".
 
-Again, for the latest v17
 
-Tested-by: Itaru Kitayama <itaru.kitayama@fujitsu.com>
-
-Thanks,
-Itaru.
-
-> 2.48.1
-> 
+r~

@@ -1,68 +1,68 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp611219dyc;
-        Thu, 3 Jul 2025 08:19:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUniF6OdXvLUCbz3gwRqSorLZ5Mw8phgiXO8a8t7ekeA2vxjIXafRT51qv6tNGIYM4vBhloM9cI5xazOA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEIf9s1+o9WergXcZOEDis7PWyQNvH6mcTX0X53dcIqWKOe/ouljibt/xQzreSjg+7wL6Jf
-X-Received: by 2002:a05:6122:1799:b0:526:720:704 with SMTP id 71dfb90a1353d-5345835feb4mr6918707e0c.7.1751555968003;
-        Thu, 03 Jul 2025 08:19:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751555967; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp611232dyc;
+        Thu, 3 Jul 2025 08:19:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXZaL89d90eiqCo68sY+ocUFIEgEsvOftPoedpAanZKee69kEocbUsT4QJwUoy1pRoyp9cXXUNDg/iZhQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IERTW/f918a7jyqGdpGZsmssfRV9wk93VaxsFzB6BQVUI6QnGbF0XOoN2WE30NKUM1Xelk8
+X-Received: by 2002:a05:6102:c0c:b0:4e9:ad6a:cd06 with SMTP id ada2fe7eead31-4f17638d909mr2923588137.13.1751555969398;
+        Thu, 03 Jul 2025 08:19:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751555969; cv=none;
         d=google.com; s=arc-20240605;
-        b=c9lRuEMllVIQ5JGm2aBybx4ZRwCegIt7oOusOSt1adxW8xQGk/Jq4ghX6LXzVEzTwV
-         qF7MIonU1dh9gYnO6Uk2BTCnrUuLX+YqI9hg9G5LECqOsHOO9MWhg46aVw2A50rskMdG
-         js86Ij3hdA8aGacWd8RLaXeqkzV16SI0rMq6gu4xZ/UpHZ7fymqnsTJ5oUXVG+pNDnH4
-         LSH5wu6iTnTiss4TpMnBfv7rNN/4u1VKOEFVN+cyP66ITO0dxkcmLMnIeDHjYYyIhbEx
-         DCXiF5+mVXKgA1kvNeEbDeNBopKMYLe3fLbxNqxfkghhGhxMe+F/qXzjd5ls5DfByA0M
-         HQVA==
+        b=SF8J154ei9PDlZ65X9qVZPGEm+Aw2FH4fjO6mW4G3q4xFmIZQsOzhUjmz3+r5N+BX5
+         GG5l70B/3Rf1TMbR+7wLI0TqcmCRmVshzceCxvet6ulM/QwWvHWe+4I5rFtbPUC0Egwk
+         fLY/C5g3dt9iZkmdTUkDb0P9vHGiqJNmVtWf+7Vquku+4tmkqbj9Lep5szgChVbBA2ZR
+         gJo1Up/TeDGd2xZTezb/N+JDjdGCu2tcU4wRKYfnO6KCE0BDLNo8+gm/QvqfYDEZv6An
+         WocGdTsYE190FlrXT0PCNQP0KQl9LZ0XsUt1zcPFSdhXm6CwPxHn3xsLd3zLCmx+6PGZ
+         HYzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=N15A990mGwRMJmuiLK45s42aKXkTJfbLhmbWvYUZYK4=;
+        bh=1WOVf3G0sNqSmu3TJm2jNpLEx49AkIdprGO9tRqjGtg=;
         fh=0Rin2lBkYZpo7cmfqczbL7qKcwMyrZ/cq0rUmddTnFA=;
-        b=ld1VKAU6qcFJzU1bCLp+xoBzBaumFSxdtfCNnraLB6i3zLOloDBrPluJOz+wBjdcjJ
-         gayXZz8bM9L77SpTu2tnkzN/sb/QxILPE3iEI/6IMEDL1mLdEluFeY/cCIXGN8eCyy/H
-         7CMTPDmMUtMbUMq02CMef3NhjQ+gTEbwUe+p8oANiEOgDh5+cd8a1w/wEInnk57hTOwy
-         CmPazNj4gEpwNGpxpV7VR8ucLUVuQdOuIswWCZEePkx5K5iMgm4cnTk/a9SZ/uqHQGkY
-         0AmgWrNQOd2ElKIqpl3kt/e/4KkvRaQvEI4A/Twb/2DFMlG61y9665UGc7Y2zrd3OBl1
-         RY3g==;
+        b=c05m/eoO+r2mx7DD4OeFb/O95EMtbn00hA474scuLFZZVr3oqtmlxWU8HWSOAKUQvm
+         g58V078pniscNJTOAdtC+9XNQlQ6hUhRbJsGAEGUcL6faOHVkwVnmVFSIwtastPMTdyJ
+         bghZVMSd9Kkr+FDVMYHjCAC8sLjVG/1PxHNHJrDMh9kzvKP3f47jP4MMBj01yha5HjUN
+         6A1pjXRn1Phe5XEujQ8TUYeRQFas5kmjxX7kXpd20Q+OPOKzKRU76PWpMUbeVn8L1vZy
+         UJwkefBN2PXqgW2XWJySnW6PbG9Y+M+jgsmPYCZBtDSOAff8eyuEBSU24w4b3EknssR9
+         s2HQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-533092da754si4184445e0c.186.2025.07.03.08.19.27
+        by mx.google.com with ESMTPS id ada2fe7eead31-4f2ea78b34dsi43519137.655.2025.07.03.08.19.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Jul 2025 08:19:27 -0700 (PDT)
+        Thu, 03 Jul 2025 08:19:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uXLiQ-0007cm-7F; Thu, 03 Jul 2025 11:19:10 -0400
+	id 1uXLiW-0007s4-O4; Thu, 03 Jul 2025 11:19:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=EggC=ZQ=kaod.org=clg@ozlabs.org>)
- id 1uXLiN-0007Xn-9y; Thu, 03 Jul 2025 11:19:07 -0400
+ id 1uXLiU-0007qa-Sy; Thu, 03 Jul 2025 11:19:14 -0400
 Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=EggC=ZQ=kaod.org=clg@ozlabs.org>)
- id 1uXLiK-0007Fa-R9; Thu, 03 Jul 2025 11:19:07 -0400
+ id 1uXLiS-0007Kf-KF; Thu, 03 Jul 2025 11:19:14 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bY0lf0NK4z4xcr;
- Fri,  4 Jul 2025 01:18:38 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bY0ln659Yz4xcm;
+ Fri,  4 Jul 2025 01:18:45 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bY0lZ5L5Dz4xcm;
- Fri,  4 Jul 2025 01:18:34 +1000 (AEST)
-Message-ID: <417686d0-bddc-40de-bbd8-631bb9cc4945@kaod.org>
-Date: Thu, 3 Jul 2025 17:18:56 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bY0lk4Ds5z4xcb;
+ Fri,  4 Jul 2025 01:18:42 +1000 (AEST)
+Message-ID: <9498349f-f6ae-4d56-a09d-ef2bd49ef992@kaod.org>
+Date: Thu, 3 Jul 2025 17:19:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/4] Add support for gb200-bmc machine
+Subject: Re: [PATCH v2 1/4] hw/arm/aspeed: Add second SPI chip to Aspeed model
 To: Ed Tanous <etanous@nvidia.com>, qemu-devel@nongnu.org
 Cc: Troy Lee <leetroy@gmail.com>, Steven Lee <steven_lee@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>,
@@ -70,6 +70,7 @@ Cc: Troy Lee <leetroy@gmail.com>, Steven Lee <steven_lee@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
  qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 References: <20250703144249.3348879-1-etanous@nvidia.com>
+ <20250703144249.3348879-2-etanous@nvidia.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -114,9 +115,9 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250703144249.3348879-1-etanous@nvidia.com>
+In-Reply-To: <20250703144249.3348879-2-etanous@nvidia.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=EggC=ZQ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -39
@@ -140,44 +141,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KHHme/rq0AJ/
+X-TUID: g89RiR7OZCBC
 
 On 7/3/25 16:42, Ed Tanous wrote:
-> This patch series adds support for gb200-bmc, a baseboard management controller
-> module based on an Aspeed 2600 SOC.
+> Aspeed2600 has two spi lanes;  Add a new struct that can mount the
+> second SPI.
 > 
-> v2:
-> - Rebase on master
-> - Drop duplicated patch for enabling PCA954X
-> - Updated commit message with source information
-> - Added functional tests and example openbmc image
+> Signed-off-by: Ed Tanous <etanous@nvidia.com>
 
 
-Please try to collect the Reviewed-by trailers of the previous
-series when you resend.
-
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
 C.
 
 
+> ---
+>   hw/arm/aspeed.c         | 2 ++
+>   include/hw/arm/aspeed.h | 2 ++
+>   2 files changed, 4 insertions(+)
 > 
-> Ed Tanous (4):
->    hw/arm/aspeed: Add second SPI chip to Aspeed model
->    docs: add support for gb200-bmc
->    hw/arm/aspeed: Add GB200 BMC target
->    tests/functional: Add gb200 tests
-> 
->   docs/system/arm/aspeed.rst                    |  4 +-
->   hw/arm/aspeed.c                               | 81 +++++++++++++++++++
->   hw/arm/aspeed_eeprom.c                        | 21 +++++
->   hw/arm/aspeed_eeprom.h                        |  3 +
->   include/hw/arm/aspeed.h                       |  2 +
->   tests/functional/aspeed.py                    |  9 ++-
->   tests/functional/meson.build                  |  2 +
->   .../test_arm_aspeed_gb200nvl_bmc.py           | 26 ++++++
->   8 files changed, 144 insertions(+), 4 deletions(-)
->   create mode 100755 tests/functional/test_arm_aspeed_gb200nvl_bmc.py
-> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index d0b333646e..3ef7f6c5b2 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -465,6 +465,8 @@ static void aspeed_machine_init(MachineState *machine)
+>           aspeed_board_init_flashes(&bmc->soc->spi[0],
+>                                 bmc->spi_model ? bmc->spi_model : amc->spi_model,
+>                                 1, amc->num_cs);
+> +        aspeed_board_init_flashes(&bmc->soc->spi[1],
+> +                                  amc->spi2_model, 1, amc->num_cs2);
+>       }
+>   
+>       if (machine->kernel_filename && sc->num_cpus > 1) {
+> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+> index 973277bea6..6c36455656 100644
+> --- a/include/hw/arm/aspeed.h
+> +++ b/include/hw/arm/aspeed.h
+> @@ -35,7 +35,9 @@ struct AspeedMachineClass {
+>       uint32_t hw_strap2;
+>       const char *fmc_model;
+>       const char *spi_model;
+> +    const char *spi2_model;
+>       uint32_t num_cs;
+> +    uint32_t num_cs2;
+>       uint32_t macs_mask;
+>       void (*i2c_init)(AspeedMachineState *bmc);
+>       uint32_t uart_default;
 

@@ -1,679 +1,240 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp604117dyc;
-        Thu, 3 Jul 2025 08:09:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXnCLFVQNhLzUNLAWQX6yVo1BrKlvqlI3Vn0g48LQLPQZWez/GaTVggE65kAv515z5w0sYb+Q8y0iiGbg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGtPOMYxF8L//sdpWnu4VjQytjzjpc7SQN/VZuZfJ8n6aSYBzXUfS5IeqUxLXHBXDW6wj6Q
-X-Received: by 2002:a05:6000:26d3:b0:3a4:f7ae:77c9 with SMTP id ffacd0b85a97d-3b34281c504mr2820930f8f.5.1751555393872;
-        Thu, 03 Jul 2025 08:09:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751555393; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp610339dyc;
+        Thu, 3 Jul 2025 08:18:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWl0NWot/9POPGQvOAX1WrFeLm2tkL8QQX/DWRuHzke9uyyFsJ52p6I9KxuSOKBBl/KtMB5SRUMU81HqA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGX61N30WiYjXOzsIdGwZ3NIUxWm4Mt8r0w+ufeAdp8L5B1GNQaH2yKbNEyMV0srld844Jv
+X-Received: by 2002:a05:6102:8096:b0:4c3:6393:83f4 with SMTP id ada2fe7eead31-4f16106d096mr6225231137.2.1751555896401;
+        Thu, 03 Jul 2025 08:18:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751555896; cv=none;
         d=google.com; s=arc-20240605;
-        b=cnOdIqbT8SL9sAt0klghXFshvNZd4iBJeqqwJ8Y9jXaefd/hVZHOBVecumOIzHqbCF
-         ipgNv1pApOEfLO9owiAkFLY4aX/+nJy4Dp6+U2ZnxlLpeuJnI81abzn9KO8hMVQF4bxz
-         lcN5TR6lc9q6qMLHRzMhTG1h72iaDomktEQD01rz7iWYlXfY03mHrWqdz2vv+pqjf68d
-         L11L08Xi4AYT7XOdzpUPr9rhoqgR7mKuZJ9eC+X5Xi3oDikmb+KL4yWZgac7VWLLVOnT
-         AtDepL2knF9OLaoeLLfifFnZgC+u+CFm+ptarP2D4+/OaFBiX95WnEytP7Bqw37HXqh8
-         UZjQ==
+        b=idltcGTcjdr93uEgBSeAVxEMsxBeRSTcVk/J7Z21nrFipT4KE/ZZU6sd58UVVDHGFB
+         bTpCdTDbOAokyoNqsGc750r3ZbNmuwhxtJmreJBCkqyxLGv3ThlANcNVIl9yGQAv1KN2
+         Fdzfm0cBP+mLVqHmJCLVcuHE1v+2m/i6eiXUKxgsU3mLNvoqCtdeHEGX+8/PQiosABVb
+         0lw4GdZH2FvOytDZkCY82yUbCsQ3pHWBdlejolblGSbFV3cMGnL72owHtZmBrnumq0lQ
+         VlZYUUK/WXhMfzZ8W8pSzYFrTTO8TdmTJ/wV2m4ouoisH+hTvyqwnS9niiLsi1fog5iT
+         ZSlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date;
-        bh=vYF1Q6QGw5C6QBuDcUtInuYAMT0szIanG1v6Np98z8w=;
-        fh=De5j/+RFiHp5oysg/kfBHcT9O0ASuV5hpNukEk4skqM=;
-        b=M36u9S5LlqP4C0FSubrJrIfc/6Vz5nWjbYmfMEAyzymiW4Wmkqnuuw/BbTxqRO7cyt
-         xmXse7KvD2jL2mt1W19RAlNithpfpiwFBRrTU/vr0ncEznAR6ft4+rETByo9wxxxrS+a
-         AkStEhw0pFt8nUygDKJWiqY37S4MgticzT0mqkd8pYv+2/pUD4X6hM6D8/duu4Epojmt
-         EEBnkLWocOqSrPg1+Vr/ko7Kzi9y9i060rBu3IUR/rTUnglHzdrwtQiDkGhx72TK+wY2
-         I66hJLNPsCciGvyjKqDR6jDsR3BMxQVSYltEtcdfwKEq/JHKSHD2aFTB+F163KEHyrQZ
-         qQRA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=3GR3YeLzlyfuQV1zG9ErdNBRnKS83HgkjIQyrHcYeUo=;
+        fh=0Rin2lBkYZpo7cmfqczbL7qKcwMyrZ/cq0rUmddTnFA=;
+        b=O++R0ZTw+ANvNKDmMgSg6Bghh1zCslMZpk+De5Fkkoch79Ojud0tMVw0II/DEBeQjP
+         jsdN3FMVVt4zgzvrZeabxL9SYm5RkEFUhqomCdHSIP4A0e6uOKgGQ6UCOOO0V1Ai91BY
+         LI0QExtVy3Qs+3q84mgnv3smP9mgpKlYEH6buVtRiIT+C8DCbf3CrmS5Ogy2DticyYIz
+         CDiANhJPnrMoJchpKd1gDguvg3G4XQvZg6yKXGId9kocYcXO0pzj5L/hwfgIrJfTgw14
+         udgfGCcfq3A/rBcHMWG8FLjyuoe0jj8mIPt+9mUH8cmRGBeFEfTpzYfCt0EcraisKprV
+         El8Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3b474458aa9si9219f8f.499.2025.07.03.08.09.53
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 03 Jul 2025 08:09:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4f2ea742e20si40503137.503.2025.07.03.08.18.16
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 03 Jul 2025 08:18:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bY0V8534pz6L54g;
-	Thu,  3 Jul 2025 23:06:56 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 119BE1404D8;
-	Thu,  3 Jul 2025 23:09:53 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 3 Jul
- 2025 17:09:52 +0200
-Date: Thu, 3 Jul 2025 16:09:50 +0100
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: Eric Auger <eric.auger@redhat.com>
-CC: <eric.auger.pro@gmail.com>, <qemu-devel@nongnu.org>,
-	<qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <imammedo@redhat.com>,
-	<gustavo.romero@linaro.org>, <anisinha@redhat.com>, <mst@redhat.com>,
-	<shannon.zhaosl@gmail.com>, <pbonzini@redhat.com>, <philmd@linaro.org>,
-	<alex.bennee@linaro.org>
-Subject: Re: [PATCH v5 36/36] qtest/bios-tables-test: Generate reference
- blob for DSDT.acpipcihp
-Message-ID: <20250703160950.000037f2@huawei.com>
-In-Reply-To: <20250703123728.414386-37-eric.auger@redhat.com>
-References: <20250703123728.414386-1-eric.auger@redhat.com>
-	<20250703123728.414386-37-eric.auger@redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uXLhK-0006gd-HP; Thu, 03 Jul 2025 11:18:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=EggC=ZQ=kaod.org=clg@ozlabs.org>)
+ id 1uXLhC-0006gD-6E; Thu, 03 Jul 2025 11:17:55 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=EggC=ZQ=kaod.org=clg@ozlabs.org>)
+ id 1uXLh9-0006NS-7l; Thu, 03 Jul 2025 11:17:53 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bY0k46Hqtz4x11;
+ Fri,  4 Jul 2025 01:17:16 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bY0jz0Q3yz4wbR;
+ Fri,  4 Jul 2025 01:17:10 +1000 (AEST)
+Message-ID: <ea805ebc-877d-48b0-861c-ac9b5c855acf@kaod.org>
+Date: Thu, 3 Jul 2025 17:17:31 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 4/4] tests/functional: Add gb200 tests
+To: Ed Tanous <etanous@nvidia.com>, qemu-devel@nongnu.org
+Cc: Troy Lee <leetroy@gmail.com>, Steven Lee <steven_lee@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+References: <20250703144249.3348879-1-etanous@nvidia.com>
+ <20250703144249.3348879-5-etanous@nvidia.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250703144249.3348879-5-etanous@nvidia.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml500010.china.huawei.com (7.191.174.240) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: HovoVKXN0Gn2
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=EggC=ZQ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.237, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ocH34NqvGWxG
 
-On Thu,  3 Jul 2025 14:35:36 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
-
-> The disassembled DSDT table is given below.
-I think the aim for this one should be to highlight the blobs where it differs
-from the previous rather than having the whole thing.
-
-
+On 7/3/25 16:42, Ed Tanous wrote:
+> To support the newly added gb200 machine, add appropriate tests.
 > 
-> /*
->  * Intel ACPI Component Architecture
->  * AML/ASL+ Disassembler version 20210604 (64-bit version)
->  * Copyright (c) 2000 - 2021 Intel Corporation
->  *
->  * Disassembling to symbolic ASL+ operators
->  *
->  * Disassembly of ../tests/data/acpi/aarch64/virt/DSDT.acpipcihp, Thu Jul  3 05:16:27 2025
->  *
->  * Original Table Header:
->  *     Signature        "DSDT"
->  *     Length           0x0000183A (6202)
->  *     Revision         0x02
->  *     Checksum         0x98
->  *     OEM ID           "BOCHS "
->  *     OEM Table ID     "BXPC    "
->  *     OEM Revision     0x00000001 (1)
->  *     Compiler ID      "BXPC"
->  *     Compiler Version 0x00000001 (1)
->  */
-> DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
-> {
->     Scope (\_SB)
->     {
->         Device (C000)
->         {
->             Name (_HID, "ACPI0007" /* Processor Device */)  // _HID: Hardware ID
->             Name (_UID, Zero)  // _UID: Unique ID
->         }
-> 
->         Device (COM0)
->         {
->             Name (_HID, "ARMH0011")  // _HID: Hardware ID
->             Name (_UID, Zero)  // _UID: Unique ID
->             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
->             {
->                 Memory32Fixed (ReadWrite,
->                     0x09000000,         // Address Base
->                     0x00001000,         // Address Length
->                     )
->                 Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
->                 {
->                     0x00000021,
->                 }
->             })
->         }
-> 
->         Device (FWCF)
->         {
->             Name (_HID, "QEMU0002")  // _HID: Hardware ID
->             Name (_STA, 0x0B)  // _STA: Status
->             Name (_CCA, One)  // _CCA: Cache Coherency Attribute
->             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
->             {
->                 Memory32Fixed (ReadWrite,
->                     0x09020000,         // Address Base
->                     0x00000018,         // Address Length
->                     )
->             })
->         }
-...
-
-> 
->         Device (L000)
->         {
->             Name (_HID, "PNP0C0F" /* PCI Interrupt Link Device */)  // _HID: Hardware ID
->             Name (_UID, Zero)  // _UID: Unique ID
->             Name (_PRS, ResourceTemplate ()  // _PRS: Possible Resource Settings
->             {
->                 Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
->                 {
->                     0x00000023,
->                 }
->             })
->             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
->             {
->                 Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
->                 {
->                     0x00000023,
->                 }
->             })
->             Method (_SRS, 1, NotSerialized)  // _SRS: Set Resource Settings
->             {
->             }
->         }
-
-...
-
-> 
->         Device (PCI0)
->         {
->             Name (_HID, "PNP0A08" /* PCI Express Bus */)  // _HID: Hardware ID
->             Name (_CID, "PNP0A03" /* PCI Bus */)  // _CID: Compatible ID
->             Name (_SEG, Zero)  // _SEG: PCI Segment
->             Name (_BBN, Zero)  // _BBN: BIOS Bus Number
->             Name (_UID, Zero)  // _UID: Unique ID
->             Name (_STR, Unicode ("PCIe 0 Device"))  // _STR: Description String
->             Name (_CCA, One)  // _CCA: Cache Coherency Attribute
->             Name (_PRT, Package (0x80)  // _PRT: PCI Routing Table
->             {
->                 Package (0x04)
->                 {
->                     0xFFFF,
->                     Zero,
->                     L000,
->                     Zero
->                 },
-
-...
-
->             })
->             Method (_CBA, 0, NotSerialized)  // _CBA: Configuration Base Address
->             {
->                 Return (0x0000004010000000)
->             }
-> 
->             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
->             {
->                 WordBusNumber (ResourceProducer, MinFixed, MaxFixed, PosDecode,
->                     0x0000,             // Granularity
->                     0x0000,             // Range Minimum
->                     0x00FF,             // Range Maximum
->                     0x0000,             // Translation Offset
->                     0x0100,             // Length
->                     ,, )
->                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
->                     0x00000000,         // Granularity
->                     0x10000000,         // Range Minimum
->                     0x3EFEFFFF,         // Range Maximum
->                     0x00000000,         // Translation Offset
->                     0x2EFF0000,         // Length
->                     ,, , AddressRangeMemory, TypeStatic)
->                 DWordIO (ResourceProducer, MinFixed, MaxFixed, PosDecode, EntireRange,
->                     0x00000000,         // Granularity
->                     0x00000000,         // Range Minimum
->                     0x0000FFFF,         // Range Maximum
->                     0x3EFF0000,         // Translation Offset
->                     0x00010000,         // Length
->                     ,, , TypeStatic, DenseTranslation)
->                 QWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
->                     0x0000000000000000, // Granularity
->                     0x0000008000000000, // Range Minimum
->                     0x000000FFFFFFFFFF, // Range Maximum
->                     0x0000000000000000, // Translation Offset
->                     0x0000008000000000, // Length
->                     ,, , AddressRangeMemory, TypeStatic)
->             })
->             Method (_OSC, 4, NotSerialized)  // _OSC: Operating System Capabilities
->             {
->                 CreateDWordField (Arg3, Zero, CDW1)
->                 If ((Arg0 == ToUUID ("33db4d5b-1ff7-401c-9657-7441c03dd766") /* PCI Host Bridge Device */))
->                 {
->                     CreateDWordField (Arg3, 0x04, CDW2)
->                     CreateDWordField (Arg3, 0x08, CDW3)
->                     Local0 = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
->                     Local0 &= 0x1E
-
-This being one of those differences.
-
->                     If ((Arg1 != One))
->                     {
->                         CDW1 |= 0x08
->                     }
-> 
->                     If ((CDW3 != Local0))
->                     {
->                         CDW1 |= 0x10
->                     }
-> 
->                     CDW3 = Local0
->                 }
->                 Else
->                 {
->                     CDW1 |= 0x04
->                 }
-> 
->                 Return (Arg3)
->             }
-> 
->             Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
->             {
->                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
->                 {
->                     If ((Arg2 == Zero))
->                     {
->                         Return (Buffer (One)
->                         {
->                              0x01                                             // .
->                         })
->                     }
->                 }
-> 
->                 Return (Buffer (One)
->                 {
->                      0x00                                             // .
->                 })
->             }
-> 
->             Device (RES0)
->             {
->                 Name (_HID, "PNP0C02" /* PNP Motherboard Resources */)  // _HID: Hardware ID
->                 Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
->                 {
->                     QWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
->                         0x0000000000000000, // Granularity
->                         0x0000004010000000, // Range Minimum
->                         0x000000401FFFFFFF, // Range Maximum
->                         0x0000000000000000, // Translation Offset
->                         0x0000000010000000, // Length
->                         ,, , AddressRangeMemory, TypeStatic)
->                 })
->             }
->         }
-> 
->         Device (\_SB.GED)
->         {
->             Name (_HID, "ACPI0013" /* Generic Event Device */)  // _HID: Hardware ID
->             Name (_UID, "GED")  // _UID: Unique ID
->             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
->             {
->                 Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, )
->                 {
->                     0x00000029,
->                 }
->             })
->             OperationRegion (EREG, SystemMemory, 0x09080000, 0x04)
->             Field (EREG, DWordAcc, NoLock, WriteAsZeros)
->             {
->                 ESEL,   32
->             }
-> 
->             Method (_EVT, 1, Serialized)  // _EVT: Event
->             {
->                 Local0 = ESEL /* \_SB_.GED_.ESEL */
->                 If (((Local0 & 0x02) == 0x02))
->                 {
->                     Notify (PWRB, 0x80) // Status Change
->                 }
-> 
->                 If (((Local0 & 0x10) == 0x10))
-
-And this being another.
-
->                 {
->                     Acquire (\_SB.PCI0.BLCK, 0xFFFF)
->                     \_SB.PCI0.PCNT ()
->                     Release (\_SB.PCI0.BLCK)
->                 }
->             }
->         }
-> 
->         Device (PWRB)
->         {
->             Name (_HID, "PNP0C0C" /* Power Button Device */)  // _HID: Hardware ID
->             Name (_UID, Zero)  // _UID: Unique ID
->         }
->     }
-> 
->     Scope (_SB.PCI0)
-
-And all this.
-
->     {
->         OperationRegion (PCST, SystemMemory, 0x090C0000, 0x08)
->         Field (PCST, DWordAcc, NoLock, WriteAsZeros)
->         {
->             PCIU,   32,
->             PCID,   32
->         }
-> 
->         OperationRegion (SEJ, SystemMemory, 0x090C0008, 0x04)
->         Field (SEJ, DWordAcc, NoLock, WriteAsZeros)
->         {
->             B0EJ,   32
->         }
-> 
->         OperationRegion (BNMR, SystemMemory, 0x090C0010, 0x08)
->         Field (BNMR, DWordAcc, NoLock, WriteAsZeros)
->         {
->             BNUM,   32,
->             PIDX,   32
->         }
-> 
->         Mutex (BLCK, 0x00)
->         Method (PCEJ, 2, NotSerialized)
->         {
->             Acquire (BLCK, 0xFFFF)
->             BNUM = Arg0
->             B0EJ = (One << Arg1)
->             Release (BLCK)
->             Return (Zero)
->         }
-> 
->         Method (AIDX, 2, NotSerialized)
->         {
->             Acquire (BLCK, 0xFFFF)
->             BNUM = Arg0
->             PIDX = (One << Arg1)
->             Local0 = PIDX /* \_SB_.PCI0.PIDX */
->             Release (BLCK)
->             Return (Local0)
->         }
-> 
->         Method (PDSM, 5, Serialized)
->         {
->             If ((Arg2 == Zero))
->             {
->                 Local0 = Buffer (One)
->                     {
->                          0x00                                             // .
->                     }
->                 If ((Arg0 != ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
->                 {
->                     Return (Local0)
->                 }
-> 
->                 If ((Arg1 < 0x02))
->                 {
->                     Return (Local0)
->                 }
-> 
->                 Local1 = Zero
->                 Local2 = AIDX (DerefOf (Arg4 [Zero]), DerefOf (Arg4 [One]
->                     ))
->                 If (!((Local2 == Zero) | (Local2 == 0xFFFFFFFF)))
->                 {
->                     Local1 |= One
->                     Local1 |= (One << 0x07)
->                 }
-> 
->                 Local0 [Zero] = Local1
->                 Return (Local0)
->             }
-> 
->             If ((Arg2 == 0x07))
->             {
->                 Local2 = AIDX (DerefOf (Arg4 [Zero]), DerefOf (Arg4 [One]
->                     ))
->                 Local0 = Package (0x02) {}
->                 If (!((Local2 == Zero) || (Local2 == 0xFFFFFFFF)))
->                 {
->                     Local0 [Zero] = Local2
->                     Local0 [One] = ""
->                 }
-> 
->                 Return (Local0)
->             }
->         }
->     }
-> 
->     Scope (\_SB.PCI0)
->     {
->         Method (EDSM, 5, Serialized)
->         {
->             If ((Arg2 == Zero))
->             {
->                 Local0 = Buffer (One)
->                     {
->                          0x00                                             // .
->                     }
->                 If ((Arg0 != ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
->                 {
->                     Return (Local0)
->                 }
-> 
->                 If ((Arg1 < 0x02))
->                 {
->                     Return (Local0)
->                 }
-> 
->                 Local0 [Zero] = 0x81
->                 Return (Local0)
->             }
-> 
->             If ((Arg2 == 0x07))
->             {
->                 Local0 = Package (0x02)
->                     {
->                         Zero,
->                         ""
->                     }
->                 Local1 = DerefOf (Arg4 [Zero])
->                 Local0 [Zero] = Local1
->                 Return (Local0)
->             }
->         }
-> 
->         Device (S00)
->         {
->             Name (_ADR, Zero)  // _ADR: Address
->         }
-> 
->         Device (S08)
->         {
->             Name (_ADR, 0x00010000)  // _ADR: Address
->         }
-> 
->         Device (S38)
->         {
->             Name (_ADR, 0x00070000)  // _ADR: Address
->             Device (S00)
->             {
->                 Name (_ADR, Zero)  // _ADR: Address
->             }
-> 
->             Name (BSEL, One)
->             Scope (S00)
->             {
->                 Name (ASUN, Zero)
-
-All this stuff as well.
-
->                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
->                 {
->                     Local0 = Package (0x02)
->                         {
->                             Zero,
->                             Zero
->                         }
->                     Local0 [Zero] = BSEL /* \_SB_.PCI0.S38_.BSEL */
->                     Local0 [One] = ASUN /* \_SB_.PCI0.S38_.S00_.ASUN */
->                     Return (PDSM (Arg0, Arg1, Arg2, Arg3, Local0))
->                 }
-> 
->                 Name (_SUN, Zero)  // _SUN: Slot User Number
->                 Method (_EJ0, 1, NotSerialized)  // _EJx: Eject Device, x=0-9
->                 {
->                     PCEJ (BSEL, _SUN)
->                 }
->             }
-> 
->             Method (DVNT, 2, NotSerialized)
->             {
->                 If ((Arg0 & One))
->                 {
->                     Notify (S00, Arg1)
->                 }
->             }
->         }
-> 
->         Name (BSEL, Zero)
->         Scope (S00)
->         {
->             Name (ASUN, Zero)
->             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
->             {
->                 Local0 = Package (0x02)
->                     {
->                         Zero,
->                         Zero
->                     }
->                 Local0 [Zero] = BSEL /* \_SB_.PCI0.BSEL */
->                 Local0 [One] = ASUN /* \_SB_.PCI0.S00_.ASUN */
->                 Return (PDSM (Arg0, Arg1, Arg2, Arg3, Local0))
->             }
-> 
->             Name (_SUN, Zero)  // _SUN: Slot User Number
->             Method (_EJ0, 1, NotSerialized)  // _EJx: Eject Device, x=0-9
->             {
->                 PCEJ (BSEL, _SUN)
->             }
->         }
-> 
->         Scope (S08)
->         {
->             Name (ASUN, One)
->             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
->             {
->                 Local0 = Package (0x02)
->                     {
->                         Zero,
->                         Zero
->                     }
->                 Local0 [Zero] = BSEL /* \_SB_.PCI0.BSEL */
->                 Local0 [One] = ASUN /* \_SB_.PCI0.S08_.ASUN */
->                 Return (PDSM (Arg0, Arg1, Arg2, Arg3, Local0))
->             }
-> 
->             Name (_SUN, One)  // _SUN: Slot User Number
->             Method (_EJ0, 1, NotSerialized)  // _EJx: Eject Device, x=0-9
->             {
->                 PCEJ (BSEL, _SUN)
->             }
->         }
-> 
->         Method (DVNT, 2, NotSerialized)
->         {
->             If ((Arg0 & One))
->             {
->                 Notify (S00, Arg1)
->             }
-> 
->             If ((Arg0 & 0x02))
->             {
->                 Notify (S08, Arg1)
->             }
->         }
-> 
->         Device (PHPR)
->         {
->             Name (_HID, "PNP0A06" /* Generic Container Device */)  // _HID: Hardware ID
->             Name (_UID, "PCI Hotplug resources")  // _UID: Unique ID
->             Name (_STA, 0x0B)  // _STA: Status
->             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
->             {
->                 IO (Decode16,
->                     0x0000,             // Range Minimum
->                     0x0000,             // Range Maximum
->                     0x01,               // Alignment
->                     0x18,               // Length
->                     )
->             })
->         }
-> 
->         Scope (S38)
->         {
->             Method (PCNT, 0, NotSerialized)
->             {
->                 BNUM = One
->                 DVNT (PCIU, One)
->                 DVNT (PCID, 0x03)
->             }
->         }
-> 
->         Method (PCNT, 0, NotSerialized)
->         {
->             BNUM = Zero
->             DVNT (PCIU, One)
->             DVNT (PCID, 0x03)
->             ^S38.PCNT ()
->         }
->     }
-> }
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
-Looks plausible so unless Igor or Michael aren't keen on it, please crop to
-highlight the bits that need focus.  With that.
-
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-
+> Signed-off-by: Ed Tanous <etanous@nvidia.com>
 > ---
->  tests/qtest/bios-tables-test-allowed-diff.h |   1 -
->  tests/data/acpi/aarch64/virt/DSDT.acpipcihp | Bin 0 -> 6202 bytes
->  2 files changed, 1 deletion(-)
+>   tests/functional/aspeed.py                    |  9 +++++--
+>   tests/functional/meson.build                  |  2 ++
+>   .../test_arm_aspeed_gb200nvl_bmc.py           | 26 +++++++++++++++++++
+>   3 files changed, 35 insertions(+), 2 deletions(-)
+>   create mode 100755 tests/functional/test_arm_aspeed_gb200nvl_bmc.py
 > 
-> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-> index dc3ab24d05..dfb8523c8b 100644
-> --- a/tests/qtest/bios-tables-test-allowed-diff.h
-> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-> @@ -1,2 +1 @@
->  /* List of comma-separated changed AML files to ignore */
-> -"tests/data/acpi/aarch64/virt/DSDT.acpipcihp",
-> diff --git a/tests/data/acpi/aarch64/virt/DSDT.acpipcihp b/tests/data/acpi/aarch64/virt/DSDT.acpipcihp
-> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..8d55a877a40cb4c4dffdc70378204e12d2261a75 100644
-> GIT binary patch
-> literal 6202
-> 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
-> R?PfR*|6}}@w~&H!{sU733QPb1
-> 
-> literal 0
-> HcmV?d00001
-> 
+> diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
+> index 7a40d5dda7..b131703c52 100644
+> --- a/tests/functional/aspeed.py
+> +++ b/tests/functional/aspeed.py
+> @@ -8,8 +8,13 @@
+>   class AspeedTest(LinuxKernelTest):
+>   
+>       def do_test_arm_aspeed_openbmc(self, machine, image, uboot='2019.04',
+> -                                   cpu_id='0x0', soc='AST2500 rev A1'):
+> -        hostname = machine.removesuffix('-bmc')
+> +                                   cpu_id='0x0', soc='AST2500 rev A1',
+> +                                   image_hostname=None):
+> +        # Allow for the image hostname to not end in "-bmc"
+> +        if image_hostname is not None:
+> +            hostname = image_hostname
+> +        else:
+> +            hostname = machine.removesuffix('-bmc')
+
+
+This change belongs to another patch and it doesn't seem that
+this series needs it. Does it ?
+
+
+Thanks,
+
+C.
+
+
+
+>           self.set_machine(machine)
+>           self.vm.set_console()
+> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+> index 85158562a2..d2864543a5 100644
+> --- a/tests/functional/meson.build
+> +++ b/tests/functional/meson.build
+> @@ -32,6 +32,7 @@ test_timeouts = {
+>     'arm_aspeed_ast2500' : 720,
+>     'arm_aspeed_ast2600' : 1200,
+>     'arm_aspeed_bletchley' : 480,
+> +  'arm_aspeed_gb200nvl_bmc' : 480,
+>     'arm_aspeed_rainier' : 480,
+>     'arm_bpim2u' : 500,
+>     'arm_collie' : 180,
+> @@ -126,6 +127,7 @@ tests_arm_system_thorough = [
+>     'arm_aspeed_ast2500',
+>     'arm_aspeed_ast2600',
+>     'arm_aspeed_bletchley',
+> +  'arm_aspeed_gb200nvl_bmc',
+>     'arm_aspeed_rainier',
+>     'arm_bpim2u',
+>     'arm_canona1100',
+> diff --git a/tests/functional/test_arm_aspeed_gb200nvl_bmc.py b/tests/functional/test_arm_aspeed_gb200nvl_bmc.py
+> new file mode 100755
+> index 0000000000..8e8e3f05c1
+> --- /dev/null
+> +++ b/tests/functional/test_arm_aspeed_gb200nvl_bmc.py
+> @@ -0,0 +1,26 @@
+> +#!/usr/bin/env python3
+> +#
+> +# Functional test that boots the ASPEED machines
+> +#
+> +# SPDX-License-Identifier: GPL-2.0-or-later
+> +
+> +from qemu_test import Asset
+> +from aspeed import AspeedTest
+> +
+> +
+> +class GB200Machine(AspeedTest):
+> +
+> +    ASSET_GB200_FLASH = Asset(
+> +        'https://github.com/legoater/qemu-aspeed-boot/raw/refs/heads/master/images/gb200nvl-obmc/obmc-phosphor-image-gb200nvl-obmc-20250702182348.static.mtd.xz',
+> +        'b84819317cb3dc762895ad507705978ef000bfc77c50c33a63bdd37921db0dbc')
+> +
+> +    def test_arm_aspeed_gb200_openbmc(self):
+> +        image_path = self.uncompress(self.ASSET_GB200_FLASH)
+> +
+> +        self.do_test_arm_aspeed_openbmc('gb200nvl-bmc', image=image_path,
+> +                                        uboot='2019.04', cpu_id='0xf00',
+> +                                        soc='AST2600 rev A3',
+> +                                        image_hostname='gb200nvl-obmc')
+> +
+> +if __name__ == '__main__':
+> +    AspeedTest.main()
+

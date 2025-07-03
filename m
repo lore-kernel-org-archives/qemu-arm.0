@@ -1,70 +1,70 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp506598dyc;
-        Thu, 3 Jul 2025 05:40:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWRX9xY7dUzSrYKv5oqsikf9OsK4gZM/yHhJ0n8pS9k027dvruRhPUKrGmJZMimEnGqFpEY62au/2Y/Dg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG6ocnuoPFHJw4nmAK9DRZ/hheDDs1EAY6atMuIvBMR9vWbWBDwyx1R5dFkNzr+ncq84s7L
-X-Received: by 2002:a05:622a:1a90:b0:4a7:189b:98ad with SMTP id d75a77b69052e-4a98799987emr51318961cf.14.1751546437525;
-        Thu, 03 Jul 2025 05:40:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751546437; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp506669dyc;
+        Thu, 3 Jul 2025 05:40:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUJ4nc2i9DQG0xgdKEwzn3E2NVxkwjKkuRiBJRtXLJ7pcQQJeIx6wMKTR4vPTYMJ71mfngUwvcV0zJ3tQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFUPrLRcoSLTNHUYIHsT/yhrtR9i0t5W3sEXYMxmOiO6vrNCdjzFXKhmX/eA04CRwR2hut/
+X-Received: by 2002:a05:620a:448b:b0:7d4:4d60:3bfa with SMTP id af79cd13be357-7d5d146142cmr524212685a.32.1751546446930;
+        Thu, 03 Jul 2025 05:40:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751546446; cv=none;
         d=google.com; s=arc-20240605;
-        b=eax77hZrSQVZ/C/CCUDZ9qqq2alq5z+qqhHkSZR4QVuaiK/2+V3MEjtSJOBb/Ayz4W
-         MgdH098FPi8UsrLmt2e59FDV3Kpks5z+Lew7tKFhlpOZKuxFLjAQRpfOF75pYt40Yfb6
-         q4FznIbxD3HCJ4sZ2REvlbzvlD1bg5HSJdm7VfWdFKbQ9gG/JtiowSRYj2Io9aTx0mNp
-         1lOYJlsklZe9JsIEKEpGasDRXpQ5z+MXDpLsoTlodGl5NC+ycLXAvfYDDrYBa6EAxQep
-         DrZdRxl7KXQTLss23EueV6f0lr2C5P4Ql3vAuBiU3boOdH5BzDXN6vr3LMALxtDMMPmj
-         tsIA==
+        b=KGikWfwqbPkCRryTb+yQDkbtQH/mN+Z27/cJw1IQnAPCZqhEvMUzI+5YSD7+GlBmUq
+         HbMZunANzvSyA/dcBEvPbfvc1dGiheOoxAj8qdRKFtU0sPH3k5kfvWPAV1MKiV65D/X1
+         Rv+imhMBL2C5/TLvZQqVKGBmI041IuOhmZgj8Robsao79mwHIvGkqgRNrcWJQwiCNZGd
+         jmPpSGPScuZOc3EcYGqE+3Qq6z1CaZO+BELhhe2+46Rd8OW5AQ6SFFcHoP2EUSmSGRec
+         aEPaq0gVEDb2AFqQ4/tJDb7ptaUIcPbm1vp2SK6foD0E7SMjEVLSh//bJ43gVjeGla5j
+         zQoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=7z4t23L2CEjvRbW4POxEjlHbPc7Y86a0BBQtX1AsNc0=;
+        bh=TyMY/wK3HEYC3QDJ06OrdRZLREBhcdwj8DHiOhLxrrU=;
         fh=wjCXBlYiEFaE/nRXdXhm/QzbgpklGNl9u9+2G4gHJbk=;
-        b=CH2iT0PnIKSckJqBsSB9897CeL3p2mohG2VzBwFBR1Un78PuO3yx42Cp02FE0IXgmQ
-         MtjFon+Kl5eZUw4PXMz01cfG+14Ad6UH0i9m0F5a4d2QLJnYIONhHNSO1mLWF4XqNs03
-         vCx1k6p6MbVbSWCgwRvbwNP+emwkHXwX0RtrIeNFKqr01v6ONvLrqcHLsemSGRmklX3Z
-         lqMtlH0/YYejerg9YHx8rl/aYgM4uRpiVNpvD7W0GqPSVrUUlCoGO2IAilM55VVnCTsE
-         4KPorqQyU31eIZvUc+20ZGXJ/36Rbi1b0M6UegnYLpJvpjE1R1bm6YFy6LSp19kQtTdp
-         3iDQ==;
+        b=Cd8cKD5NTM9vsZSt5QGIIahlitk5xraiRsjzzRWfFqAlyY0DF6r0szyrMaAlrbL9vV
+         JIa62Y1NbsJ/DZpeYE9oBCVSo6K6wP/TeJ+G3pFo4NxOZU+XthLMAibi3hbOWAvGFUMz
+         4GwBDAxcDbW2bMTqsVtjgj6xemdNYNoWV5I15d2iwWRhYyyLZ1Ma4mMiXt6sWdkAxGAg
+         NM8XvVM5mvSic5QvaW/DR0X20af4o/Mh3j7tV9oAVLAZ6whwQV+qUQfa6JToYYu9swTe
+         wQq5XtW+sbKt1Z7ZLeey+TlCsBYol/4xQ/xb8y4pve9mkCAjtIsq5NvhCTfl5fjXoweD
+         kDzQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TLPJMqEC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dnuquSMV;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <eric.auger@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a7fc23260csi149617481cf.332.2025.07.03.05.40.37
+        by mx.google.com with ESMTPS id af79cd13be357-7d4509c0397si1094199085a.191.2025.07.03.05.40.46
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Jul 2025 05:40:37 -0700 (PDT)
+        Thu, 03 Jul 2025 05:40:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TLPJMqEC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dnuquSMV;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1751546437;
+	s=mimecast20190719; t=1751546446;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=7z4t23L2CEjvRbW4POxEjlHbPc7Y86a0BBQtX1AsNc0=;
-	b=TLPJMqEChlp9mM4fmfL8ei3b23yUgT4ZcGNEb0cZafwA0pJ6C+pujCJI9MkZpjvUcPuY3a
-	MjIfRTQZhLONtLAHjGu3dVkhaNhoAFyxoQdV4I50hl9Ll+RPkr0oDmRm+YDxNn2ObExHae
-	fCzL/v46auYryRCEcIwzm46hjKX+Nac=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+	bh=TyMY/wK3HEYC3QDJ06OrdRZLREBhcdwj8DHiOhLxrrU=;
+	b=dnuquSMVyE6+CKTe9JwXTZB+gM4ldxHUhsHB03Gawkl2AUX2jv/gy+xP/rX2N9I2gKohRJ
+	guGVdlvZ1OjwFUxoxCzi5gVPA/IqFIHPnoyZ/s9sFAYt893SE6xEg3+IdoyaRjqwEVm0Wd
+	JM3CMTyqzkm5/yM701fxH9RM00H8Kn4=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-632-VCGK9_JxP4qRm1RqCS9Uxg-1; Thu,
- 03 Jul 2025 08:40:36 -0400
-X-MC-Unique: VCGK9_JxP4qRm1RqCS9Uxg-1
-X-Mimecast-MFC-AGG-ID: VCGK9_JxP4qRm1RqCS9Uxg_1751546434
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-192-_Y8iJyw2NKmys08qXP3Upw-1; Thu,
+ 03 Jul 2025 08:40:42 -0400
+X-MC-Unique: _Y8iJyw2NKmys08qXP3Upw-1
+X-Mimecast-MFC-AGG-ID: _Y8iJyw2NKmys08qXP3Upw_1751546441
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 72ABA1955F38;
-	Thu,  3 Jul 2025 12:40:34 +0000 (UTC)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 722DE1954198;
+	Thu,  3 Jul 2025 12:40:41 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.16])
-	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id EE13E180045C;
-	Thu,  3 Jul 2025 12:40:29 +0000 (UTC)
+	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 05786180045B;
+	Thu,  3 Jul 2025 12:40:34 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com,
 	eric.auger@redhat.com,
@@ -80,106 +80,2024 @@ To: eric.auger.pro@gmail.com,
 Cc: pbonzini@redhat.com,
 	philmd@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v5 34/36] tests/qtest/bios-tables-test: Add aarch64 ACPI PCI hotplug test
-Date: Thu,  3 Jul 2025 14:35:34 +0200
-Message-ID: <20250703123728.414386-35-eric.auger@redhat.com>
+Subject: [PATCH v5 35/36] qtest/bios-tables-test: Generate reference blob for DSDT.hpoffacpiindex
+Date: Thu,  3 Jul 2025 14:35:35 +0200
+Message-ID: <20250703123728.414386-36-eric.auger@redhat.com>
 In-Reply-To: <20250703123728.414386-1-eric.auger@redhat.com>
 References: <20250703123728.414386-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-TUID: kZwA5KpoIfa7
+X-TUID: edYrDfr5r/Bq
 
-From: Gustavo Romero <gustavo.romero@linaro.org>
+The disassembled DSDT table is given below
 
-Add 2 new tests:
-- test_acpi_aarch64_virt_acpi_pci_hotplug tests the acpi pci hotplug
-  using -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on
-- test_acpi_aarch64_virt_pcie_root_port_hpoff tests static-acpi index
-  on a root port with disabled hotplug
+ * Original Table Header:
+ *     Signature        "DSDT"
+ *     Length           0x000014E3 (5347)
+ *     Revision         0x02
+ *     Checksum         0x92
+ *     OEM ID           "BOCHS "
+ *     OEM Table ID     "BXPC    "
+ *     OEM Revision     0x00000001 (1)
+ *     Compiler ID      "BXPC"
+ *     Compiler Version 0x00000001 (1)
+ */
+DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
+{
+    Scope (\_SB)
+    {
+        Device (C000)
+        {
+            Name (_HID, "ACPI0007" /* Processor Device */)  // _HID: Hardware ID
+            Name (_UID, Zero)  // _UID: Unique ID
+        }
 
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+        Device (COM0)
+        {
+            Name (_HID, "ARMH0011")  // _HID: Hardware ID
+            Name (_UID, Zero)  // _UID: Unique ID
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x09000000,         // Address Base
+                    0x00001000,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000021,
+                }
+            })
+        }
+
+        Device (FWCF)
+        {
+            Name (_HID, "QEMU0002")  // _HID: Hardware ID
+            Name (_STA, 0x0B)  // _STA: Status
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x09020000,         // Address Base
+                    0x00000018,         // Address Length
+                    )
+            })
+        }
+
+        Device (VR00)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, Zero)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A000000,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000030,
+                }
+            })
+        }
+
+        Device (VR01)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, One)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A000200,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000031,
+                }
+            })
+        }
+
+        Device (VR02)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x02)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A000400,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000032,
+                }
+            })
+        }
+
+        Device (VR03)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x03)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A000600,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000033,
+                }
+            })
+        }
+
+        Device (VR04)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x04)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A000800,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000034,
+                }
+            })
+        }
+
+        Device (VR05)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x05)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A000A00,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000035,
+                }
+            })
+        }
+
+        Device (VR06)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x06)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A000C00,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000036,
+                }
+            })
+        }
+
+        Device (VR07)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x07)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A000E00,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000037,
+                }
+            })
+        }
+
+        Device (VR08)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x08)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A001000,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000038,
+                }
+            })
+        }
+
+        Device (VR09)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x09)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A001200,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000039,
+                }
+            })
+        }
+
+        Device (VR10)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x0A)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A001400,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x0000003A,
+                }
+            })
+        }
+
+        Device (VR11)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x0B)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A001600,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x0000003B,
+                }
+            })
+        }
+
+        Device (VR12)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x0C)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A001800,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x0000003C,
+                }
+            })
+        }
+
+        Device (VR13)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x0D)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A001A00,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x0000003D,
+                }
+            })
+        }
+
+        Device (VR14)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x0E)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A001C00,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x0000003E,
+                }
+            })
+        }
+
+        Device (VR15)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x0F)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A001E00,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x0000003F,
+                }
+            })
+        }
+
+        Device (VR16)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x10)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A002000,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000040,
+                }
+            })
+        }
+
+        Device (VR17)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x11)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A002200,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000041,
+                }
+            })
+        }
+
+        Device (VR18)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x12)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A002400,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000042,
+                }
+            })
+        }
+
+        Device (VR19)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x13)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A002600,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000043,
+                }
+            })
+        }
+
+        Device (VR20)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x14)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A002800,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000044,
+                }
+            })
+        }
+
+        Device (VR21)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x15)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A002A00,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000045,
+                }
+            })
+        }
+
+        Device (VR22)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x16)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A002C00,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000046,
+                }
+            })
+        }
+
+        Device (VR23)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x17)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A002E00,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000047,
+                }
+            })
+        }
+
+        Device (VR24)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x18)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A003000,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000048,
+                }
+            })
+        }
+
+        Device (VR25)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x19)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A003200,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000049,
+                }
+            })
+        }
+
+        Device (VR26)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x1A)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A003400,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x0000004A,
+                }
+            })
+        }
+
+        Device (VR27)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x1B)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A003600,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x0000004B,
+                }
+            })
+        }
+
+        Device (VR28)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x1C)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A003800,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x0000004C,
+                }
+            })
+        }
+
+        Device (VR29)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x1D)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A003A00,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x0000004D,
+                }
+            })
+        }
+
+        Device (VR30)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x1E)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A003C00,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x0000004E,
+                }
+            })
+        }
+
+        Device (VR31)
+        {
+            Name (_HID, "LNRO0005")  // _HID: Hardware ID
+            Name (_UID, 0x1F)  // _UID: Unique ID
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0x0A003E00,         // Address Base
+                    0x00000200,         // Address Length
+                    )
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x0000004F,
+                }
+            })
+        }
+
+        Device (L000)
+        {
+            Name (_HID, "PNP0C0F" /* PCI Interrupt Link Device */)  // _HID: Hardware ID
+            Name (_UID, Zero)  // _UID: Unique ID
+            Name (_PRS, ResourceTemplate ()  // _PRS: Possible Resource Settings
+            {
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000023,
+                }
+            })
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000023,
+                }
+            })
+            Method (_SRS, 1, NotSerialized)  // _SRS: Set Resource Settings
+            {
+            }
+        }
+
+        Device (L001)
+        {
+            Name (_HID, "PNP0C0F" /* PCI Interrupt Link Device */)  // _HID: Hardware ID
+            Name (_UID, One)  // _UID: Unique ID
+            Name (_PRS, ResourceTemplate ()  // _PRS: Possible Resource Settings
+            {
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000024,
+                }
+            })
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000024,
+                }
+            })
+            Method (_SRS, 1, NotSerialized)  // _SRS: Set Resource Settings
+            {
+            }
+        }
+
+        Device (L002)
+        {
+            Name (_HID, "PNP0C0F" /* PCI Interrupt Link Device */)  // _HID: Hardware ID
+            Name (_UID, 0x02)  // _UID: Unique ID
+            Name (_PRS, ResourceTemplate ()  // _PRS: Possible Resource Settings
+            {
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000025,
+                }
+            })
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000025,
+                }
+            })
+            Method (_SRS, 1, NotSerialized)  // _SRS: Set Resource Settings
+            {
+            }
+        }
+
+        Device (L003)
+        {
+            Name (_HID, "PNP0C0F" /* PCI Interrupt Link Device */)  // _HID: Hardware ID
+            Name (_UID, 0x03)  // _UID: Unique ID
+            Name (_PRS, ResourceTemplate ()  // _PRS: Possible Resource Settings
+            {
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000026,
+                }
+            })
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000026,
+                }
+            })
+            Method (_SRS, 1, NotSerialized)  // _SRS: Set Resource Settings
+            {
+            }
+        }
+
+        Device (PCI0)
+        {
+            Name (_HID, "PNP0A08" /* PCI Express Bus */)  // _HID: Hardware ID
+            Name (_CID, "PNP0A03" /* PCI Bus */)  // _CID: Compatible ID
+            Name (_SEG, Zero)  // _SEG: PCI Segment
+            Name (_BBN, Zero)  // _BBN: BIOS Bus Number
+            Name (_UID, Zero)  // _UID: Unique ID
+            Name (_STR, Unicode ("PCIe 0 Device"))  // _STR: Description String
+            Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+            Name (_PRT, Package (0x80)  // _PRT: PCI Routing Table
+            {
+                Package (0x04)
+                {
+                    0xFFFF,
+                    Zero,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0xFFFF,
+                    One,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0xFFFF,
+                    0x02,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0xFFFF,
+                    0x03,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0001FFFF,
+                    Zero,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0001FFFF,
+                    One,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0001FFFF,
+                    0x02,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0001FFFF,
+                    0x03,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0002FFFF,
+                    Zero,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0002FFFF,
+                    One,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0002FFFF,
+                    0x02,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0002FFFF,
+                    0x03,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0003FFFF,
+                    Zero,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0003FFFF,
+                    One,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0003FFFF,
+                    0x02,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0003FFFF,
+                    0x03,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0004FFFF,
+                    Zero,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0004FFFF,
+                    One,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0004FFFF,
+                    0x02,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0004FFFF,
+                    0x03,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0005FFFF,
+                    Zero,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0005FFFF,
+                    One,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0005FFFF,
+                    0x02,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0005FFFF,
+                    0x03,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0006FFFF,
+                    Zero,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0006FFFF,
+                    One,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0006FFFF,
+                    0x02,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0006FFFF,
+                    0x03,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0007FFFF,
+                    Zero,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0007FFFF,
+                    One,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0007FFFF,
+                    0x02,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0007FFFF,
+                    0x03,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0008FFFF,
+                    Zero,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0008FFFF,
+                    One,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0008FFFF,
+                    0x02,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0008FFFF,
+                    0x03,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0009FFFF,
+                    Zero,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0009FFFF,
+                    One,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0009FFFF,
+                    0x02,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0009FFFF,
+                    0x03,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000AFFFF,
+                    Zero,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000AFFFF,
+                    One,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000AFFFF,
+                    0x02,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000AFFFF,
+                    0x03,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000BFFFF,
+                    Zero,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000BFFFF,
+                    One,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000BFFFF,
+                    0x02,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000BFFFF,
+                    0x03,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000CFFFF,
+                    Zero,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000CFFFF,
+                    One,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000CFFFF,
+                    0x02,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000CFFFF,
+                    0x03,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000DFFFF,
+                    Zero,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000DFFFF,
+                    One,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000DFFFF,
+                    0x02,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000DFFFF,
+                    0x03,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000EFFFF,
+                    Zero,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000EFFFF,
+                    One,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000EFFFF,
+                    0x02,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000EFFFF,
+                    0x03,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000FFFFF,
+                    Zero,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000FFFFF,
+                    One,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000FFFFF,
+                    0x02,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x000FFFFF,
+                    0x03,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0010FFFF,
+                    Zero,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0010FFFF,
+                    One,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0010FFFF,
+                    0x02,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0010FFFF,
+                    0x03,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0011FFFF,
+                    Zero,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0011FFFF,
+                    One,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0011FFFF,
+                    0x02,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0011FFFF,
+                    0x03,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0012FFFF,
+                    Zero,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0012FFFF,
+                    One,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0012FFFF,
+                    0x02,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0012FFFF,
+                    0x03,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0013FFFF,
+                    Zero,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0013FFFF,
+                    One,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0013FFFF,
+                    0x02,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0013FFFF,
+                    0x03,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0014FFFF,
+                    Zero,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0014FFFF,
+                    One,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0014FFFF,
+                    0x02,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0014FFFF,
+                    0x03,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0015FFFF,
+                    Zero,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0015FFFF,
+                    One,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0015FFFF,
+                    0x02,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0015FFFF,
+                    0x03,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0016FFFF,
+                    Zero,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0016FFFF,
+                    One,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0016FFFF,
+                    0x02,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0016FFFF,
+                    0x03,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0017FFFF,
+                    Zero,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0017FFFF,
+                    One,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0017FFFF,
+                    0x02,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0017FFFF,
+                    0x03,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0018FFFF,
+                    Zero,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0018FFFF,
+                    One,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0018FFFF,
+                    0x02,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0018FFFF,
+                    0x03,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0019FFFF,
+                    Zero,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0019FFFF,
+                    One,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0019FFFF,
+                    0x02,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x0019FFFF,
+                    0x03,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001AFFFF,
+                    Zero,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001AFFFF,
+                    One,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001AFFFF,
+                    0x02,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001AFFFF,
+                    0x03,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001BFFFF,
+                    Zero,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001BFFFF,
+                    One,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001BFFFF,
+                    0x02,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001BFFFF,
+                    0x03,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001CFFFF,
+                    Zero,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001CFFFF,
+                    One,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001CFFFF,
+                    0x02,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001CFFFF,
+                    0x03,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001DFFFF,
+                    Zero,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001DFFFF,
+                    One,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001DFFFF,
+                    0x02,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001DFFFF,
+                    0x03,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001EFFFF,
+                    Zero,
+                    L002,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001EFFFF,
+                    One,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001EFFFF,
+                    0x02,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001EFFFF,
+                    0x03,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001FFFFF,
+                    Zero,
+                    L003,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001FFFFF,
+                    One,
+                    L000,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001FFFFF,
+                    0x02,
+                    L001,
+                    Zero
+                },
+
+                Package (0x04)
+                {
+                    0x001FFFFF,
+                    0x03,
+                    L002,
+                    Zero
+                }
+            })
+            Method (_CBA, 0, NotSerialized)  // _CBA: Configuration Base Address
+            {
+                Return (0x0000004010000000)
+            }
+
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                WordBusNumber (ResourceProducer, MinFixed, MaxFixed, PosDecode,
+                    0x0000,             // Granularity
+                    0x0000,             // Range Minimum
+                    0x00FF,             // Range Maximum
+                    0x0000,             // Translation Offset
+                    0x0100,             // Length
+                    ,, )
+                DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
+                    0x00000000,         // Granularity
+                    0x10000000,         // Range Minimum
+                    0x3EFEFFFF,         // Range Maximum
+                    0x00000000,         // Translation Offset
+                    0x2EFF0000,         // Length
+                    ,, , AddressRangeMemory, TypeStatic)
+                DWordIO (ResourceProducer, MinFixed, MaxFixed, PosDecode, EntireRange,
+                    0x00000000,         // Granularity
+                    0x00000000,         // Range Minimum
+                    0x0000FFFF,         // Range Maximum
+                    0x3EFF0000,         // Translation Offset
+                    0x00010000,         // Length
+                    ,, , TypeStatic, DenseTranslation)
+                QWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
+                    0x0000000000000000, // Granularity
+                    0x0000008000000000, // Range Minimum
+                    0x000000FFFFFFFFFF, // Range Maximum
+                    0x0000000000000000, // Translation Offset
+                    0x0000008000000000, // Length
+                    ,, , AddressRangeMemory, TypeStatic)
+            })
+            Method (_OSC, 4, NotSerialized)  // _OSC: Operating System Capabilities
+            {
+                CreateDWordField (Arg3, Zero, CDW1)
+                If ((Arg0 == ToUUID ("33db4d5b-1ff7-401c-9657-7441c03dd766") /* PCI Host Bridge Device */))
+                {
+                    CreateDWordField (Arg3, 0x04, CDW2)
+                    CreateDWordField (Arg3, 0x08, CDW3)
+                    Local0 = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
+                    Local0 &= 0x1F
+                    If ((Arg1 != One))
+                    {
+                        CDW1 |= 0x08
+                    }
+
+                    If ((CDW3 != Local0))
+                    {
+                        CDW1 |= 0x10
+                    }
+
+                    CDW3 = Local0
+                }
+                Else
+                {
+                    CDW1 |= 0x04
+                }
+
+                Return (Arg3)
+            }
+
+            Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
+            {
+                If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+                {
+                    If ((Arg2 == Zero))
+                    {
+                        Return (Buffer (One)
+                        {
+                             0x01                                             // .
+                        })
+                    }
+                }
+
+                Return (Buffer (One)
+                {
+                     0x00                                             // .
+                })
+            }
+
+            Device (RES0)
+            {
+                Name (_HID, "PNP0C02" /* PNP Motherboard Resources */)  // _HID: Hardware ID
+                Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+                {
+                    QWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
+                        0x0000000000000000, // Granularity
+                        0x0000004010000000, // Range Minimum
+                        0x000000401FFFFFFF, // Range Maximum
+                        0x0000000000000000, // Translation Offset
+                        0x0000000010000000, // Length
+                        ,, , AddressRangeMemory, TypeStatic)
+                })
+            }
+        }
+
+        Device (\_SB.GED)
+        {
+            Name (_HID, "ACPI0013" /* Generic Event Device */)  // _HID: Hardware ID
+            Name (_UID, "GED")  // _UID: Unique ID
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, )
+                {
+                    0x00000029,
+                }
+            })
+            OperationRegion (EREG, SystemMemory, 0x09080000, 0x04)
+            Field (EREG, DWordAcc, NoLock, WriteAsZeros)
+            {
+                ESEL,   32
+            }
+
+            Method (_EVT, 1, Serialized)  // _EVT: Event
+            {
+                Local0 = ESEL /* \_SB_.GED_.ESEL */
+                If (((Local0 & 0x02) == 0x02))
+                {
+                    Notify (PWRB, 0x80) // Status Change
+                }
+            }
+        }
+
+        Device (PWRB)
+        {
+            Name (_HID, "PNP0C0C" /* Power Button Device */)  // _HID: Hardware ID
+            Name (_UID, Zero)  // _UID: Unique ID
+        }
+    }
+
+    Scope (\_SB.PCI0)
+    {
+        Method (EDSM, 5, Serialized)
+        {
+            If ((Arg2 == Zero))
+            {
+                Local0 = Buffer (One)
+                    {
+                         0x00                                             // .
+                    }
+                If ((Arg0 != ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+                {
+                    Return (Local0)
+                }
+
+                If ((Arg1 < 0x02))
+                {
+                    Return (Local0)
+                }
+
+                Local0 [Zero] = 0x81
+                Return (Local0)
+            }
+
+            If ((Arg2 == 0x07))
+            {
+                Local0 = Package (0x02)
+                    {
+                        Zero,
+                        ""
+                    }
+                Local1 = DerefOf (Arg4 [Zero])
+                Local0 [Zero] = Local1
+                Return (Local0)
+            }
+        }
+
+        Device (S00)
+        {
+            Name (_ADR, Zero)  // _ADR: Address
+        }
+
+        Device (S08)
+        {
+            Name (_ADR, 0x00010000)  // _ADR: Address
+        }
+
+        Device (S38)
+        {
+            Name (_ADR, 0x00070000)  // _ADR: Address
+            Device (S00)
+            {
+                Name (_ADR, Zero)  // _ADR: Address
+                Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
+                {
+                    Local0 = Package (0x01)
+                        {
+                            0x0C
+                        }
+                    Return (EDSM (Arg0, Arg1, Arg2, Arg3, Local0))
+                }
+            }
+        }
+    }
+}
+
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-
 ---
-v3 -> v4:
-- add -device pci-testdev for the first test case
-- fix the chassis
-- add a test for static acpi-index
----
- tests/qtest/bios-tables-test.c | 52 ++++++++++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
+ tests/qtest/bios-tables-test-allowed-diff.h      |   1 -
+ tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex | Bin 0 -> 5347 bytes
+ 2 files changed, 1 deletion(-)
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index 357bcefd37..1074b8d67a 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -1643,6 +1643,54 @@ static void test_acpi_aarch64_virt_tcg_memhp(void)
- 
- }
- 
-+static void test_acpi_aarch64_virt_acpi_pci_hotplug(void)
-+{
-+    test_data data = {
-+        .machine = "virt",
-+        .arch = "aarch64",
-+        .tcg_only = true,
-+        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-+        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-+        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
-+        .ram_start = 0x40000000ULL,
-+        .scan_len = 256ULL * MiB,
-+        .variant = ".acpipcihp",
-+    };
-+
-+   /* Use ACPI PCI Hotplug */
-+   test_acpi_one(" -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on"
-+                 " -cpu cortex-a57"
-+                 " -device pcie-root-port,id=pcie.1,bus=pcie.0,chassis=0,slot=1,addr=7.0"
-+                 " -device pci-testdev,bus=pcie.1",
-+                 &data);
-+
-+    free_test_data(&data);
-+}
-+
-+static void test_acpi_aarch64_virt_pcie_root_port_hpoff(void)
-+{
-+    test_data data = {
-+        .machine = "virt",
-+        .arch = "aarch64",
-+        .tcg_only = true,
-+        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-+        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-+        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
-+        .ram_start = 0x40000000ULL,
-+        .scan_len = 256ULL * MiB,
-+        .variant = ".hpoffacpiindex",
-+    };
-+
-+   /* turn hotplug off on the pcie-root-port and use static acpi-index*/
-+   test_acpi_one(" -device pcie-root-port,id=pcie.1,chassis=0,"
-+                                          "slot=1,hotplug=off,addr=7.0"
-+                 " -device pci-testdev,bus=pcie.1,acpi-index=12"
-+                 " -cpu cortex-a57",
-+                 &data);
-+
-+    free_test_data(&data);
-+}
-+
- static void test_acpi_microvm_prepare(test_data *data)
- {
-     data->machine = "microvm";
-@@ -2602,6 +2650,10 @@ int main(int argc, char *argv[])
-             qtest_add_func("acpi/virt/numamem",
-                            test_acpi_aarch64_virt_tcg_numamem);
-             qtest_add_func("acpi/virt/memhp", test_acpi_aarch64_virt_tcg_memhp);
-+            qtest_add_func("acpi/virt/acpipcihp",
-+                           test_acpi_aarch64_virt_acpi_pci_hotplug);
-+            qtest_add_func("acpi/virt/hpoffacpiindex",
-+                          test_acpi_aarch64_virt_pcie_root_port_hpoff);
-             qtest_add_func("acpi/virt/pxb", test_acpi_aarch64_virt_tcg_pxb);
-             qtest_add_func("acpi/virt/oem-fields",
-                            test_acpi_aarch64_virt_oem_fields);
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index 02f4f0b29f..dc3ab24d05 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1,3 +1,2 @@
+ /* List of comma-separated changed AML files to ignore */
+ "tests/data/acpi/aarch64/virt/DSDT.acpipcihp",
+-"tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex",
+diff --git a/tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex b/tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex
+index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..970d43f68bca060361105f70dbb00b3a25646db4 100644
+GIT binary patch
+literal 5347
+zcmZvgOK%!i6oAjb0K+ig;bCKAY)F$veMSTLl{8HQGuS2pn=(#ZiAY0KrHbt?kQ!A=
+zqe>2yk~F*8YS&cq52@5ucinZ-Wz|jpKzF6Oa|inz<;()+KF)XVH=L0U*KwV_zj6Sf
+zlg6&S?Uoy#b?tJwTvh-;+>3AX`EBKa=Qh0ls9;-`rFq*eCt0_<Ez7djLG$jl9O#d3
+z*t?zSSg*5fS(QpKrg?VHO&9e1i#P~i987@kqo6340N^R~M;n{__NL^1+U(r3EUOBd
+z=kC?@gyz|HU6F{io|1@Ad_IV*tM_};Ewy)gyOw3GUMzbad9k<-p<r<fBPw!riV(}b
+zfe0Z)B|tR9E~*?t4{;0?F{+qRV;NzN5k-s|W~{Ibm1Ag#v4R<^EF;1(bi`Q2j5U@K
+z<roHHtYOAF%ZPD|6k@Dn#s<sKIEINB8<=sOWyCo~1~IN9MkRPTXo~4N$H*bZ4a{KE
+zl)fa>RG&kPk1&JJQ-j;bJYw9$3_eej9HW33A7cierzwt6M2uUQ!RP4=$5=*;PcVbe
+zQ<Gzq5#u&y@Ohf%7;hm)9W(em&2Wq>h|$0dK2Nh8<0@j<h*9P9G{-UCK@0~o_&lBE
+z81ErQ6EpZco#PlEAjT$U@Ohf&7}pSE3p4mUo#z-9Vr*jupQj5Pqly?U%;591z%f=3
+z;|^x<dAi6k))3<^X7G7h<QN->(Z&ouPnS5x4aDdmMvc$YWsY$ZF?KM6&(jjexP=(I
+z0i&h1&kLgNPS>)n&GX`;+jG+?J>l0mm;L#&h@pMCsOR=vr7uyzb_hz*2<i%hl6~i>
+zJ7QPC+e1*I7{S|mn_<a5$_m~h$_i7~RfZ+|E?6gByA}Luf>pOR#4~9*L8~TezUCHa
+zUZb&d{v6%CUb>_gyI?~L9zhu_D1!r!;A=R5&*2e(fcRxvx3`yVf2AL15^7>H0rA^_
+zyjR+mRe_8l`t^`_Jkv(FZCN$QBvoTFQ9#60&RZg?3YnA~^W$n4O%Z7Yb3=Y)^}Hn_
+zr&B{R(h4F&;73kZ3Hy=L9fbYJ>C~`{tOSu^897}=^&_V{Q2og1R8>Y!H?PXb=_(Q8
+z86ln#>KT!d(^aCxGfF(8)H6ywW5hE?JY&=|Mm;s+sS!_&dTP`&PCVnpGfq9@)Ke#(
+zI`P!0r%pW+#4|xW6Vx+7Jq_Y%5Kn`88q_mMJd?yTNj;O)Geta8#4|-bQ`B>Yc+L>d
+z8R|JhJx$_i5>JzQn$$B*Jk!K8O+C}pGebNx#4|%ZGt@InJhQ|zOFgsHGe<mg#4|@d
+zbJTN|c+L{fS?W1UJ?Dt$9Pyl^o^#YQPdxL)GfzG9)N`JA&J)jh>N!t67l`Kq@m!#u
+z3)HhfJPX9LKs^i8bCGy163<2Ixkx>W#Ir~|i`277J(q~*67gK3o=enonRqS}&t>Yl
+zOg&4)vqU^g)U!18%$c6usKZ%Gocf6WH?m^cj_FTcB_U*hxF+I5d6@?=#9@xO%*o_G
+z@wZHjUVE7b#R$t5z{H<ExdouW>-SNNe;xZXCUO$GME_IBwPW6{Ypbu1z;^a4<DJOq
+z<8)Rx`<*{)|CWlkf7*Xi|K;O9zIc74tG2UWeSM^BwzFRwijTpwfnFMn&6Cpu<y#T%
+zk5$ImlT&|K_L*X2I1oKQ8?sBFDrZNz4?V~2sN+j=&EMC5``caprt?GopU%Rsc4r(v
+zJ%qD#SW(0W^hX`F*K|>FWBW%~;^3>MTW^^APj@nzl*Cg;mnrVWiC81{;F>sd+iE(V
+zJbRD_ZWU1^-D^3?t)@c?%CPdT3_Wi4np<E1XmMTbKTn9J-E^Dna&F0M-rtK4MPo2F
+zPoE8RQJcKz?)Mt{aeuTRZscOJ)U$&k%xov*Zbbc-yBldbZYMcjJ3WM<kROZ-C;U@7
+z8;oN=9_XR7!BBtxY5;IH7#B|u_1G{I2|*GD!|z^w3Gi_EP!9G-3D>eb&8s^-=#OSx
+qYeO~+kw5*>id(zrh(UjJ`C@u5FMcp%m{Aqo7@UbcK0Y`+8vG9j4In)L
+
+literal 0
+HcmV?d00001
+
 -- 
 2.49.0

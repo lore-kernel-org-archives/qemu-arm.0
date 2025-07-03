@@ -1,185 +1,198 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp794233dyc;
-        Thu, 3 Jul 2025 13:43:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW1mu+tzEFi0GBAaEiVirO0atjcTjBL6KkqcmSur4lDxtoXsxkC7hvhocy6JE5YF/Az8AmuIDsMcuY88Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IHbmqtTocr4t/NOp3QX1uc6IzZkUqCPnE8q9zayZG8PXzzqLC4UMhOWmHq6WzcYJsu4GQ0z
-X-Received: by 2002:a05:622a:48:b0:4a6:f854:8104 with SMTP id d75a77b69052e-4a996010091mr1347521cf.0.1751575428027;
-        Thu, 03 Jul 2025 13:43:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751575428; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp831022dyc;
+        Thu, 3 Jul 2025 15:04:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUn234/AJyrh+yqdOw6FpeFd9zICf98VL5h/FmTEjBbNlYIlNzlLFjDtW1ckc7m6Z1jG3t2+C59h++edg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGsaw4ksdcK7c8UsTUi9UmpJIE9Es2G1HpqvXMkLY0Jb5ZiyQF8TkciMSwKbMBWy38dScPB
+X-Received: by 2002:a05:600c:8b52:b0:43c:ed61:2c26 with SMTP id 5b1f17b1804b1-454b30df0d5mr2376555e9.17.1751580292312;
+        Thu, 03 Jul 2025 15:04:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751580292; cv=none;
         d=google.com; s=arc-20240605;
-        b=f4IEt9fTd2Rlm8iecsTN0euBiKfcwkI6QNHiryn3HmRfuVQPXCE6/L2DDUSauGVHl2
-         zE6tfaV2BvyU/uZdh9RK/KQ0FunmpXcaZIJ9mhVJY0al71XTzcRcHSzZJnkSOtjHLU9c
-         dn3Z6BketWGtPGZuY3AAg+9Suxd3OgLPJcs3QNOoZcNvVofSD0rGnUJ2vb9WIwPjP+pM
-         bGSaTG2EjBpq6hM6bi6ZTVi13V19s6UTICk0NIXeiC5jtutaCaYraf26lyiHkcHok/5B
-         4uVjfbAgjbI2EL94mN2cMSx3hWhElIgEj+o9lq8/5vX863DW3VeINOverPqTCC7Jcad5
-         Kfcw==
+        b=S2CGTiQUh+9ffA0sju9yVm7oL+fHtyA/Vpmt1CPeLFYx15SdL19jzTGIWBOeEC1J/Z
+         EYyEWzhNXEDXS2RHcB0AVGI12v7Hr9cU443pIcEQ5BF1zG8DgUi1uVR2nkZx5kxhFOLy
+         ZArlBVl4/3a2iEriptvg6gdvkpq9tEtWBMdkrBUgXKMPrwsfKsKZ8kQ+VXgS9cHFjAHn
+         2wY/UchXD4y2VRQOt9TDV3FVAZGJ7oKirTqocvASabFfiuZW8Z8jkYbsHCUTpbHIGNS1
+         ODPkKtkhx+S0D4icaGM+FMZ2Lt0lTCTtKNh9+LmJb59lGOS331Jym8dURdICshF7UX+s
+         X0Fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=avcS83d1xROyrkb+P9B6fRdqS6ZXLOHUYmszroxpApg=;
-        fh=1oVkkafBEU1eVVNV7E3e5Gb4rFdAOwqeapnfFXyy3vU=;
-        b=jgUNEncY9VVGqsHhlfRHnYjUpeez41Eiy4iYr6SPM9o36vKWdzLIv+j+d/t4DaBs5K
-         nx52Xi6AjlPN4fLE5CwKzNrpa05L//5xXUDgOlvl9jenLHFiA9p2qLgxrqHLXTRXIYaS
-         I/TvaeAyd3UYtr/L0ulAVM3ASmvS1QP8EtVm7uwpmbdv8cLlW1DzeBxNfnIdausnMEuc
-         bg9s51nnM4oMFT7upZjhJ+1HJX45dLvx4njUSsS1SHkcTZlFsPlQDBH1YWEJUiwa9rlf
-         YOn1j5OhWgEuBJxiqXcGuGSdyejQFmzP+tnt59s7X2r/B5cCHzDLrzZecFxNCdba9jyT
-         742w==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:dkim-signature:date;
+        bh=UxtN1BIaN3WcxHEmRC1CN+JEMOjBTmNpbuuXcmYcvQA=;
+        fh=s/kMT2z54YyLoaDdqcysXi5atpy4VWuzPgW2BOhEi1U=;
+        b=GctH54GNMnrLj+WxmS0bY/gR3ro80P6eGrERqCfsCR+ugzyKE+VsRzyP9BVVARtQGO
+         pR0k+eQYC1W8BG18qz27Bh6sPyO14UFyM+0TDbnG9RUIUFTgZtfG5J5t+KSUxCIa3c6Q
+         mzv5s2H6L9/qOW/IgTRLiVRATFkS0RIbQT+5baMuRlhf7qFdGw2wDoEaW/kgrHXvtT7j
+         YV6+CNJgojUVJTIuWd6nfBm0+VdyVw/VPKe5CP3mtZgId8o5smdTIp4mrNY0S1eE2jLt
+         f/AOGdVeVBkBPSW1wHgnoHX6XG52mhRHjA/1AU7yJwaC6egePKGgrjSKqoRaordWk981
+         8nRg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=AhfB0IUa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a9949f3de2si4718711cf.61.2025.07.03.13.43.47
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Jul 2025 13:43:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=Et5orT2h;
+       spf=pass (google.com: domain of itaru.kitayama@linux.dev designates 91.218.175.188 as permitted sender) smtp.mailfrom=itaru.kitayama@linux.dev;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
+Return-Path: <itaru.kitayama@linux.dev>
+Received: from out-188.mta0.migadu.com (out-188.mta0.migadu.com. [91.218.175.188])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3b473aaafb0si491188f8f.350.2025.07.03.15.04.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 03 Jul 2025 15:04:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of itaru.kitayama@linux.dev designates 91.218.175.188 as permitted sender) client-ip=91.218.175.188;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=AhfB0IUa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uXQlo-00066D-SL; Thu, 03 Jul 2025 16:43:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1uXQlB-0005o1-P9
- for qemu-devel@nongnu.org; Thu, 03 Jul 2025 16:42:24 -0400
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1uXQl8-0004qd-RM
- for qemu-devel@nongnu.org; Thu, 03 Jul 2025 16:42:21 -0400
-Received: by mail-pj1-x1035.google.com with SMTP id
- 98e67ed59e1d1-313bb9b2f5bso391344a91.3
- for <qemu-devel@nongnu.org>; Thu, 03 Jul 2025 13:42:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1751575336; x=1752180136;
- darn=nongnu.org; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=avcS83d1xROyrkb+P9B6fRdqS6ZXLOHUYmszroxpApg=;
- b=AhfB0IUaMdEESYCOz4ProZ0sX+evNHSHamwSyd6hgozyDQqAq3zjJybVdBYyP+NDvD
- r6iVT7nuEIgYjPzKTQMfA5XR2WVwIQom3R/53qBU1sFp7GZM+0j3DrsLv3x2NHxSyZp4
- gAf++72Js4dJetlg1pD8EC9a5ltU39wi4omDhrvS+l2jgtJnk1j24kBRTNXwgnjLtS8Z
- Ow5IujNdPFpY4lkGuzOtFTdzKCxp94qy3iLmRkoAjYdq1wVZYFDxh9xEV9nPzejaY3rM
- uNePFmkv7I75yGH4oowhwYzWm9Ixedrx4295Rpzaw720zudgrmgf6jWzZ9P1rnJcrd+f
- 7wxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751575336; x=1752180136;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=avcS83d1xROyrkb+P9B6fRdqS6ZXLOHUYmszroxpApg=;
- b=f1M2Vix6qJ0OeZl3RC3OmGNzziiMjqMyhRYutRGSHFrE/pIsWyyoXRfa2Ri26FSd4D
- Y6L491rFCdtSQrRN4VV5hyLEnMv4rKjPS4Ji6+DJ+bNNfF59f1JMIvZr2bMgpTYpPt/G
- wxNJVoRv9JPsBKj0YdrieS7wjnfc2vBe6yYVmTorW7pvldnLLh8wGWggnmIOk7adcUM/
- sDQFW248q/59fK2FC5mpp8aG+zzbbhbKtDm2htK5g0dC1nxy2SMnTBBJTKKdn4BbhuXW
- tsQe/Z15KIw5wVyVNLSWQj8V722KpsC8UA7WDBh+CTIVDsu+u8YPxWjFfGZqpZxsd7Vj
- /CPw==
-X-Gm-Message-State: AOJu0Yz3eU61Uw6ET2hHUy1mBSIkn3JcTytbKyMAakASW4lN9Q3TIIcc
- 2AhUMlZIsqafEbNyCHli60D+qsFjIg0st0NS3XzYcCHwTHImWZW+WPArTXRxhB6rWqPLx6nhwmM
- HbS+7+PILwoa1ffeElwyvfRNPhs5t+bv9LVs3ekxYYw==
-X-Gm-Gg: ASbGnctxgkQUmcgv9hmK9zOgK89tmuGfyQScGb9VzIE+Rq4qoGatQegLJnZjDWgdee5
- Dm5n+ruhGlJPOmlonTxd2+kWoX/rMZxs2IzQUIlIvgm/KZKIpJS8aX7ACX/LCukE6mk6VJixJa5
- GaLAzKSDRbe5sC4+v+UnLUzohaFtHrQaqShXvK8AXuhps=
-X-Received: by 2002:a17:90b:3dc8:b0:311:e8cc:4253 with SMTP id
- 98e67ed59e1d1-31aac436a71mr59636a91.2.1751575336441; Thu, 03 Jul 2025
- 13:42:16 -0700 (PDT)
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=Et5orT2h;
+       spf=pass (google.com: domain of itaru.kitayama@linux.dev designates 91.218.175.188 as permitted sender) smtp.mailfrom=itaru.kitayama@linux.dev;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
+Date: Fri, 4 Jul 2025 07:04:41 +0900
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1751580291;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=UxtN1BIaN3WcxHEmRC1CN+JEMOjBTmNpbuuXcmYcvQA=;
+	b=Et5orT2hRkElcOB4Z2ykzVCDyOdgqvOefDO5Dkdk8ean6TdMwJeCc6fI2k+RLDA3/Yluq2
+	TVDF/r+hyjS1ovDxkPAsIjkhh3lqtNqGTv2KU1y53Or2YduTHrL6JMuR43M7VByz6uedhx
+	d4r/a8NSOQGvdoUb/MhAvc/IAcB60Gk=
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Itaru Kitayama <itaru.kitayama@linux.dev>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: qemu-devel@nongnu.org, Fan Ni <fan.ni@samsung.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Eric Auger <eric.auger@redhat.com>, mst@redhat.com,
+	Zhijian Li <lizhijian@fujitsu.com>, linuxarm@huawei.com,
+	linux-cxl@vger.kernel.org, qemu-arm@nongnu.org,
+	Yuquan Wang <wangyuquan1236@phytium.com.cn>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Subject: Re: [PATCH qemu v17 5/5] qtest/cxl: Add aarch64 virt test for CXL
+Message-ID: <aGb+eZxaZYCofHk8@vm4>
+References: <20250703104110.992379-1-Jonathan.Cameron@huawei.com>
+ <20250703104110.992379-6-Jonathan.Cameron@huawei.com>
 MIME-Version: 1.0
-References: <20250701105809.366180-1-thuth@redhat.com>
-In-Reply-To: <20250701105809.366180-1-thuth@redhat.com>
-From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 3 Jul 2025 14:42:04 -0600
-X-Gm-Features: Ac12FXyZmu9HvAPM6zhdITrUKOMhC-JJWBaKQojR5x_lqQ02a2kNVjNvQQF1TPI
-Message-ID: <CANCZdfoRtq53M5zf+KZD3rU9CggTZ0kNj0+=-yvAZ-ijziFzTw@mail.gmail.com>
-Subject: Re: [PATCH] tests/functional/test_aarch64_sbsaref_freebsd: Fix the
- URL of the ISO image
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Stefan Hajnoczi <stefanha@gmail.com>,
- qemu-arm@nongnu.org, Leif Lindholm <leif.lindholm@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: none client-ip=2607:f8b0:4864:20::1035;
- envelope-from=wlosh@bsdimp.com; helo=mail-pj1-x1035.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hzYF+2oY7tVv
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250703104110.992379-6-Jonathan.Cameron@huawei.com>
+X-Migadu-Flow: FLOW_OUT
+X-TUID: /LwdDNMLuRfY
 
-On Tue, Jul 1, 2025 at 4:58=E2=80=AFAM Thomas Huth <thuth@redhat.com> wrote=
-:
->
-> From: Thomas Huth <thuth@redhat.com>
->
-> The original image has been removed from the server, so the test
-> currently fails if it has to fetch the asset, but we can still
-> download the ISO from the archive server. While we're at it, prefer
-> the XZ compressed image, it's much smaller and thus the download
-> should be faster.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On Thu, Jul 03, 2025 at 11:41:10AM +0100, Jonathan Cameron wrote:
+> Add a single complex case for aarch64 virt machine.
+> 
+> Given existing much more comprehensive tests for x86 cover the common
+> functionality, a single test should be enough to verify that the aarch64
+> part continues to work.
+> 
+> Tested-by: Itaru Kitayama <itaru.kitayama@fujitsu.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> 
 > ---
->  tests/functional/test_aarch64_sbsaref_freebsd.py | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/tests/functional/test_aarch64_sbsaref_freebsd.py b/tests/fun=
-ctional/test_aarch64_sbsaref_freebsd.py
-> index 26dfc5878bb..92ebc69c9b1 100755
-> --- a/tests/functional/test_aarch64_sbsaref_freebsd.py
-> +++ b/tests/functional/test_aarch64_sbsaref_freebsd.py
-> @@ -18,9 +18,9 @@
->  class Aarch64SbsarefFreeBSD(QemuSystemTest):
->
->      ASSET_FREEBSD_ISO =3D Asset(
-> -        ('https://download.freebsd.org/releases/arm64/aarch64/ISO-IMAGES=
-/'
-> -         '14.1/FreeBSD-14.1-RELEASE-arm64-aarch64-bootonly.iso'),
-> -        '44cdbae275ef1bb6dab1d5fbb59473d4f741e1c8ea8a80fd9e906b531d6ad46=
-1')
-> +        ('http://ftp-archive.freebsd.org/pub/FreeBSD-Archive/old-release=
-s/arm64'
-> +         '/aarch64/ISO-IMAGES/14.1/FreeBSD-14.1-RELEASE-arm64-aarch64-bo=
-otonly.iso.xz'),
-> +        '7313a4495ffd71ab77b49b1e83f571521c32756e1d75bf48bd890e0ab0f7582=
-7')
->
->      # This tests the whole boot chain from EFI to Userspace
->      # We only boot a whole OS for the current top level CPU and GIC
-> @@ -28,7 +28,7 @@ class Aarch64SbsarefFreeBSD(QemuSystemTest):
->      def boot_freebsd14(self, cpu=3DNone):
->          fetch_firmware(self)
->
-> -        img_path =3D self.ASSET_FREEBSD_ISO.fetch()
-> +        img_path =3D self.uncompress(self.ASSET_FREEBSD_ISO)
->
->          self.vm.set_console()
->          self.vm.add_args(
+> v17: Tag and small fix for patch description (Eric).
+> ---
+>  tests/qtest/cxl-test.c  | 58 ++++++++++++++++++++++++++++++++---------
+>  tests/qtest/meson.build |  1 +
+>  2 files changed, 46 insertions(+), 13 deletions(-)
+> 
+> diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
+> index a600331843..8fb7e58d4f 100644
+> --- a/tests/qtest/cxl-test.c
+> +++ b/tests/qtest/cxl-test.c
+> @@ -19,6 +19,12 @@
+>      "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
+>      "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
+>  
+> +#define QEMU_VIRT_2PXB_CMD \
+> +    "-machine virt,cxl=on -cpu max " \
+> +    "-device pxb-cxl,id=cxl.0,bus=pcie.0,bus_nr=52 " \
+> +    "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
+> +    "-M cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G "
+> +
+>  #define QEMU_RP \
+>      "-device cxl-rp,id=rp0,bus=cxl.0,chassis=0,slot=0 "
+>  
+> @@ -197,25 +203,51 @@ static void cxl_2pxb_4rp_4t3d(void)
+>      qtest_end();
+>      rmdir(tmpfs);
+>  }
+> +
+> +static void cxl_virt_2pxb_4rp_4t3d(void)
+> +{
+> +    g_autoptr(GString) cmdline = g_string_new(NULL);
+> +    g_autofree const char *tmpfs = NULL;
+> +
+> +    tmpfs = g_dir_make_tmp("cxl-test-XXXXXX", NULL);
+> +
+> +    g_string_printf(cmdline, QEMU_VIRT_2PXB_CMD QEMU_4RP QEMU_4T3D,
+> +                    tmpfs, tmpfs, tmpfs, tmpfs, tmpfs, tmpfs,
+> +                    tmpfs, tmpfs);
+> +
+> +    qtest_start(cmdline->str);
+> +    qtest_end();
+> +    rmdir(tmpfs);
+> +}
+>  #endif /* CONFIG_POSIX */
+>  
+>  int main(int argc, char **argv)
+>  {
+> -    g_test_init(&argc, &argv, NULL);
+> +    const char *arch = qtest_get_arch();
+>  
+> -    qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
+> -    qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
+> -    qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
+> -    qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
+> -    qtest_add_func("/pci/cxl/rp", cxl_root_port);
+> -    qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
+> +    g_test_init(&argc, &argv, NULL);
+> +    if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
+> +        qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
+> +        qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
+> +        qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
+> +        qtest_add_func("/pci/cxl/pxb_x2_with_window", cxl_2pxb_with_window);
+> +        qtest_add_func("/pci/cxl/rp", cxl_root_port);
+> +        qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
+>  #ifdef CONFIG_POSIX
+> -    qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
+> -    qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
+> -    qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
+> -    qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
+> -    qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
+> -    qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4", cxl_2pxb_4rp_4t3d);
+> +        qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
+> +        qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
+> +        qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
+> +        qtest_add_func("/pci/cxl/type3_device_vmem_lsa", cxl_t3d_volatile_lsa);
+> +        qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
+> +        qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4",
+> +                       cxl_2pxb_4rp_4t3d);
+>  #endif
+> +    } else if (strcmp(arch, "aarch64") == 0) {
+> +#ifdef CONFIG_POSIX
+> +        qtest_add_func("/pci/cxl/virt/pxb_x2_root_port_x4_type3_x4",
+> +                       cxl_virt_2pxb_4rp_4t3d);
+> +#endif
+> +    }
+> +
+>      return g_test_run();
+>  }
+> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> index 8ad849054f..42e927b32a 100644
+> --- a/tests/qtest/meson.build
+> +++ b/tests/qtest/meson.build
+> @@ -261,6 +261,7 @@ qtests_aarch64 = \
+>     config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
+>    (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
+>    (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : []) + \
+> +  qtests_cxl +                                                                                  \
+>    ['arm-cpu-features',
+>     'numa-test',
+>     'boot-serial-test',
+> -- 
 
-Reviewed-by: Warner Losh <imp@bsdimp.com>
+I checked out jic23/cxl-2025-07-03 branch and built fine for all the
+architectures, and did `meson test qtest-aarch64/cxl-test` returned OK.
 
-Though maybe updating to 14.3 would be better.
+Again, for the latest v17
 
-Warner
+Tested-by: Itaru Kitayama <itaru.kitayama@fujitsu.com>
+
+Thanks,
+Itaru.
+
+> 2.48.1
+> 

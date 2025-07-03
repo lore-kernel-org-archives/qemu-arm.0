@@ -1,112 +1,113 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp385978dyc;
-        Thu, 3 Jul 2025 01:32:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVXNPSxoINfAwH84gzrk/GwXYCr/ESnjDvcdwiixtEQgfKb3Z9E1pqLzI1oyjQf4ybLePvGCn3cLPTZEw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHSy6b19/3tE6LBbL9JNlhG7pAmh8Jpo0Cjbs8XyiP5xDyOzQM/beMEt4tZ3domr3tAdqMH
-X-Received: by 2002:a05:6214:5195:b0:6fd:7604:d90a with SMTP id 6a1803df08f44-702bcbdf838mr28286096d6.6.1751531553305;
-        Thu, 03 Jul 2025 01:32:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751531553; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp386802dyc;
+        Thu, 3 Jul 2025 01:34:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUxTKrud+3N4V3FtlHzg/WZwmJT+SRBHBMgRqTFn1wmY0CMN4P/3kqMF50QarWDoLk+6v+VGvGmuxvkDw==@linaro.org
+X-Google-Smtp-Source: AGHT+IF7i/rT6C+ydqTOuhaMDWpzi1W5LOBlKGYd+7qsJMh+i1IV/YXeukKp6zXf2bV2kt3RoXVf
+X-Received: by 2002:a05:6214:62e:b0:6fa:a428:8b1e with SMTP id 6a1803df08f44-702bf5f47f6mr20967626d6.22.1751531680506;
+        Thu, 03 Jul 2025 01:34:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751531680; cv=none;
         d=google.com; s=arc-20240605;
-        b=Uqsj30E6O0TZwqJik6hetI9UC5fTOGZfGRTrqatNcpNy531P/gmdDP3Nu0avPTYOBk
-         c3kOHOecszrJyo0X0jbJKr8/sfiou/wD/CCv+gyiVGu4ZixedvCAFZ1C5Xaz68p7oKvd
-         dl+mgWXywr/QLxLrIBPL5WK/BAmXBOfEf6G0QHMqpcM+VXIhLCc61m9p2Zu8VI+7ohAS
-         i4iJjZXFtW7MqcpLmexUHt8M9C//WU2ohJDnPu/7Frm4OOOwRsFHIBTmUVcMjmE9bl1d
-         0ztAK+oGmOWR8tUQ0lsFawFpyulYvshaytq5Sq03W3RSKGR1pGZ8y9VHx+sx0ZySD2rm
-         U8KA==
+        b=MAIY7p14ZsSsGif2jCxETE4PKl7K74NbvgcTfzc1Fo6zwziRBwyT3OSAOxOUTyq33n
+         IfGSehLL2p/LyjFAJPSYQIQfXnO8dkpliRsJBIWqQOHq6GJv0a5dUEdDrC/84kMOc5+o
+         G0galyx+e6k9guNfaaoe550FUjkgC91zTZoq6Px2MupT/kVOzjWTtyXF7kGqbvwuvKT7
+         ZwSPU+TJcHScUWK5kjP/CN6+zpkKTAv5VPmY5Jif1tnM70T1+R1bVqtF9nvdcwhLD6jL
+         CUjZm64ZP2X8YMHVYBNwNjYpdwU+Ms+kqY3H5UIzpLzoTpS8DaZCL8TvN1wxMss7Rhg7
+         Z5hQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ACN3/5ZwuMHWPnIM2LvNkb6ZNX2drFxWaI640q4NOCk=;
-        fh=O9QHe3r3b1soDSwTEVNzXLq1IohWBQizkjYmXO46LMo=;
-        b=X4CiMpw9vaBdetpQfOdvrLmIz868i/DuC8SmhkMmAuaERKSa7CJbw7QEAJjRNVnE/k
-         030FdBGs3aMVLe2M2OJkPbskDUCPy/kMVDtNa+tNXGs5Cpm21yV6p8R8p7d0v8ksTkZp
-         RDABDMxrTOu2f9ISfuJ7WSijJh1ngZJeuIgIEAXn5cHtl8YWalR8MmcBa1oZ/mT3stia
-         fadipXFhixPMz6iLhO0374vMii2s7O4YKCy1CSwkbDs9cNoZ+xes9xRoZsTcWq2RQDtI
-         bu8Xil6BU+BVbLskw0eIY3fpae+4Olt8KypV/ph9HgfW1sTjT5w2j541bU8ooi6dzd+n
-         5Hlw==;
+        bh=cINP96Jss7SibUBcY2updt34RZUNeJOb6caC2VmRQxc=;
+        fh=CtDiwGFf4wU7ZNWIMHk6/2DJzhW2s1RweHtdrD+/Elc=;
+        b=A3ySb0idtR5uwcG/knc3HopXhIt/SmkqtnArNlkUl2Plm8OI8avnYqcX0HIDAFM9g7
+         hNP61ZWjESxtMBxhEhg4DtgB0rWcX/aN2FPj0SmbC+y7RKbtkOhoZj0OmT/qOHoBKOqG
+         uckA+171Y7vrnx4RBGglU32WSyG/q2tnEl/SgqjOFAotQzUfQ29OcBPdgCrkejOO425V
+         BMLWly86QkMGVVi0JwzopEKdeEhxV+jnzWhwOCj0RX8jbd/Ok8gnhLKzWD1afb+GyCxZ
+         X4CsFspTiBjwWMtJqrhO1MnzN0vhlGPLG3ryvbKeF2CXGQNbTbzYIHXt7Xvih/xxYU1Y
+         ND7A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NlHEnfeD;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=mLesQo+2;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd7736ae72si158120686d6.267.2025.07.03.01.32.33
+        by mx.google.com with ESMTPS id 6a1803df08f44-700c4b22045si114140316d6.386.2025.07.03.01.34.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Jul 2025 01:32:33 -0700 (PDT)
+        Thu, 03 Jul 2025 01:34:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NlHEnfeD;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=mLesQo+2;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uXFMY-0000AD-Gc; Thu, 03 Jul 2025 04:32:10 -0400
+	id 1uXFOm-0002EL-JJ; Thu, 03 Jul 2025 04:34:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kosasihwilliam4@gmail.com>)
- id 1uXFM7-0008Rk-FA; Thu, 03 Jul 2025 04:31:43 -0400
-Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
+ id 1uXFOk-0002E0-N6; Thu, 03 Jul 2025 04:34:26 -0400
+Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <kosasihwilliam4@gmail.com>)
- id 1uXFM5-0006az-MP; Thu, 03 Jul 2025 04:31:43 -0400
-Received: by mail-yb1-xb2b.google.com with SMTP id
- 3f1490d57ef6-e819ebc3144so6841856276.0; 
- Thu, 03 Jul 2025 01:31:40 -0700 (PDT)
+ id 1uXFOj-0008H1-2R; Thu, 03 Jul 2025 04:34:26 -0400
+Received: by mail-yb1-xb31.google.com with SMTP id
+ 3f1490d57ef6-e73e9e18556so808708276.0; 
+ Thu, 03 Jul 2025 01:34:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1751531499; x=1752136299; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1751531663; x=1752136463; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ACN3/5ZwuMHWPnIM2LvNkb6ZNX2drFxWaI640q4NOCk=;
- b=NlHEnfeDKaMMeRMARD7OfVUuwmxr74AI6pBvvv0uXS5grSxUlbXhytWtxMMD9Pwvxd
- N4diRdtY/o8g3F0S94v7p3SHw2fEvawCG3AXKwrt8alqDCKb87gJ4pt594mldOTntBxy
- Qo7S1QVgUfJmFXIp1LDgRdsfEs/RQFO3UzPrQhRGSd8rFMoxikoofO97ORNUhzxVxSkY
- dOLL78iZNS0wydiCaEBb/J3nIyTVWLV1E7ItCip2EM2sLiGflyVr4OR7kKyKr2fAP1Rx
- K49RXPgU4kdUYaHFyIKZvIHYSyWTYBJXEVB7zxaUYYlnW0tsDiICRpXzpOUZcvnXQXvv
- 4I3Q==
+ bh=cINP96Jss7SibUBcY2updt34RZUNeJOb6caC2VmRQxc=;
+ b=mLesQo+2StO8c/XUN3y7gFNzMLaDO4nBG9PWjKMrUU8ArcZf3G9BZHBfp8atIVj153
+ OxqIdb8bLkauXrXzzCXlTofWsa0e2fDrI8V9DFFeTk3Pq1/lw4B3HIY6VUvVqBtbUonr
+ uRlPK5GFFfFBAgtqSpAFsMo41MDfVgNxVAtKSfv3imoiUHQuXT4yOwulALcUcHxZZMu1
+ yy1KdbsGkJzQZyqt4riZ8DBZNHrstwj6l+ciko+3vFljNSeXNk2iJkGpxiFvD2xGPnML
+ 4aMDDrUzwx4ymR++W7jYLMYNTriM250DS04Kkg/79NraacgPqRhSHecDT1k4OI8lf82l
+ NAqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751531499; x=1752136299;
+ d=1e100.net; s=20230601; t=1751531663; x=1752136463;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=ACN3/5ZwuMHWPnIM2LvNkb6ZNX2drFxWaI640q4NOCk=;
- b=ZHjBq+62CTLlUwpPj3Xwg2Dm697V58dGBErLfxcD/QR0H2Q+X4k+YGsjnxJg3YOkVm
- UKnoSJaCWngMJ+I882tolfyFKf2Q3WpEGCR4kLOj+ARDj7yD6/1imIkRKNz4FOFukrcD
- 7q2z9xEv431Yj3YKbF5uV05n5l26oAzzw3XNrwTUgRCCelB0EDxbta9/YOEYjtrqfXDu
- 3ZhzBN9Q3zk+YBIHckc1auw9LM1UFBS3bM/ENNxiBs4d+JjpLNK4LrMtbGrapwVcbMew
- 1LiI/AetIlIlxFiCX4GjgjGohkS+rqilUNbyBP+BFxbTFBqPKmEvjYvo1XvPAsPcPvkw
- pk9g==
+ bh=cINP96Jss7SibUBcY2updt34RZUNeJOb6caC2VmRQxc=;
+ b=rrMVY86XYiNybDAnZAF6FU8X7zodstrEni72qlnn4+xR1c6NXwhripcQMRNt76a7at
+ nBTyZucaxPu3WMguYLBIUImF5Vf/Q7sR0F3VAOVLqU8+2bWjeSxsRTQjDQpgasYWobsL
+ I3u6IUGz+DXFbKsHVPRy4SKLf01Lt08BWKuSpMMfdV3FV5iXaAZirPGhhM/m0XBm1/eI
+ 1jpJ5WEDKbqRUMcvbiy0shrxC7Drbl3sUXqhPxbOCGTa1dzZAPmqTETkLx7nfa4DKQON
+ TsQDW9Z+6wCScp1/U10xHeyi/M9MT/bsiclF5LASQ4nPWKBecj/hh/QtHjC5U9IWf2gb
+ 0Vdw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUCIF54Ee4MPKMS48K9+CfWkiL81BF+gY0dkrhjbMb4dYhP4Q8wvC6eBnusfMUKePNwaWbxEPmnKg==@nongnu.org
-X-Gm-Message-State: AOJu0YyLeky5mK5zEBI9sDCvEXegqO4wtkeGPAd+3HjCiHq7U8y7kpan
- x5y27hc3yWCvIspnABBLEoqAWQYo0J5Owr35VC947Z61p79mhdOornqpEyVF7ydhAvZZhrhnRVg
- 5D8Q9BdKK4Xph8VomP6HTlLN9EzXFcO0=
-X-Gm-Gg: ASbGncscdhUj0j6NAMp3yTAwzw+MgH94Csg5rnvCRRTNIWLGKknuM2CaZXtEPEREkj2
- 59NbaYfwA1sWUb1bv5O1YYh0iMUxEcAHWpxjK/CKsbtIX+ZB7XvfpTK/lVDp5j445YkriDzT3Tb
- dTi+hWDfZTnK6EpjpjzYc1IMpmf/dI28/INNmzTJ+EgZg=
-X-Received: by 2002:a05:6902:160d:b0:e87:a485:b430 with SMTP id
- 3f1490d57ef6-e898f9caefbmr2933418276.35.1751531499377; Thu, 03 Jul 2025
- 01:31:39 -0700 (PDT)
+ AJvYcCU7mbbPBiGRk4VO+JAZV5Xwve0g+hxyD7+7vXMwWjrvAmLyyz56cOHwXtMzW9c8Xmqr2zcJSTS/wQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy8vm0cxgPE+kRI5wlkvX40ar1MZ61rHtQrElQd8PFU3GT896wZ
+ kFOFdKPafNMLhTiy3UC2kEf2hx36Hb/+TSFKmPJv/8cP/Yvyl+aXZRvtiKkT4cLmPi1YNoUxr+H
+ 7KUflK+ZIHXDF+HtblVwO37ljcBarbBc=
+X-Gm-Gg: ASbGncvyv7b0yesMiGWuUBFwbUlLqq3o9MxSQmI5pIkPYsc8sXRBpWqbLvxYy3QSjbi
+ SHL7y0drUnp4n9In5RWGyOkyhT1u1LQFlGkjYr8C9UFsZpSXsIU6KtFY9l6SN3QuW7McpAv5ppl
+ KhM+cgCAc1OBlAtF3f6++gfLsSI2A4JRbwFQDcmVxONtI=
+X-Received: by 2002:a05:6902:1021:b0:e7d:9de6:810e with SMTP id
+ 3f1490d57ef6-e89936d5e5emr1467514276.21.1751531663071; Thu, 03 Jul 2025
+ 01:34:23 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250702111954.128563-1-kosasihwilliam4@gmail.com>
- <20250702111954.128563-5-kosasihwilliam4@gmail.com>
- <bfdc5e5d-40fa-49e6-88d4-b70dcbdfd71d@linaro.org>
-In-Reply-To: <bfdc5e5d-40fa-49e6-88d4-b70dcbdfd71d@linaro.org>
+ <20250702111954.128563-13-kosasihwilliam4@gmail.com>
+ <7847dd0b-271c-4e1d-93ba-605630464ef7@linaro.org>
+In-Reply-To: <7847dd0b-271c-4e1d-93ba-605630464ef7@linaro.org>
 From: William Kosasih <kosasihwilliam4@gmail.com>
-Date: Thu, 3 Jul 2025 18:01:27 +0930
-X-Gm-Features: Ac12FXwtUjcfdobSiDA5d862nUAbeSn_L2C7ukHrAzJ_lWuieKk0BFB10fig9jc
-Message-ID: <CAG66A_fib3v1HM=R4A6sv3OU77JmhY8VHpA_qJ6i1n42kiiNNA@mail.gmail.com>
-Subject: Re: [PATCH v3 04/12] target/arm: Fix VLDR helper load alignment checks
+Date: Thu, 3 Jul 2025 18:04:10 +0930
+X-Gm-Features: Ac12FXzqkF4uE0Lp4Ljp5Tg5hePys4P7ExTONYQOqZIDZwCq-cfQzzdT6PzTV6c
+Message-ID: <CAG66A_d=dpc9eevUTB0DN5EC8ed-M7i1ZJuULg4S8Bp5ou75Dg@mail.gmail.com>
+Subject: Re: [PATCH v3 12/12] target/arm: Fix helper macros indentation in
+ mve_helper.c
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000d558cc0639023430"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2b;
- envelope-from=kosasihwilliam4@gmail.com; helo=mail-yb1-xb2b.google.com
+Content-Type: multipart/alternative; boundary="000000000000971dcd0639023e06"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b31;
+ envelope-from=kosasihwilliam4@gmail.com; helo=mail-yb1-xb31.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -129,76 +130,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d7OGuJgZihAx
+X-TUID: 2+sF5d2CZCMu
 
---000000000000d558cc0639023430
+--000000000000971dcd0639023e06
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
->
-> Much better, thanks.
+Ah okay cool. I'll leave them as they are for now :-)
 
-Cheers! :-)
+Many thanks,
+William
 
-Use MO_SB, MO_TESW here.
-
-It won't matter for normal operation, but the sign of the operation is
-> exposed to plugins.
-
-
-Ah okay. I'll update accordingly and copy over your Reviewed-by line.
-Thanks!
-
-On Thu, Jul 3, 2025 at 12:14=E2=80=AFAM Richard Henderson <
+On Thu, Jul 3, 2025 at 12:23=E2=80=AFAM Richard Henderson <
 richard.henderson@linaro.org> wrote:
 
 > On 7/2/25 05:19, William Kosasih wrote:
-> > +DO_VLDR(vldrb_sh, MO_UB, 1, int8_t, ldb, 2, int16_t)
-> > +DO_VLDR(vldrb_sw, MO_UB, 1, int8_t, ldb, 4, int32_t)
-> ...
-> > +DO_VLDR(vldrh_sw, MO_TEUW, 2, int16_t, ldw, 4, int32_t)
+> > Recent helper function load and store alignment fix caused the
+> continuation
+> > backslashes in those macro definitions to shift out of alignment.
+> > This patch restores a uniform indentation for those trailing backslashe=
+s,
+> > making them consistent.
+> >
+> > Signed-off-by: William Kosasih <kosasihwilliam4@gmail.com>
+> > ---
+> >   target/arm/tcg/mve_helper.c | 268 ++++++++++++++++++-----------------=
+-
+> >   1 file changed, 134 insertions(+), 134 deletions(-)
 >
-> Use MO_SB, MO_TESW here.
->
-> It won't matter for normal operation, but the sign of the operation is
-> exposed to plugins.
+> I'd fix these within the patch that breaks the alignment or not at all.
 >
 >
 > r~
 >
 
---000000000000d558cc0639023430
+--000000000000971dcd0639023e06
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
-0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Much bet=
-ter, thanks.</blockquote><div>Cheers! :-)</div><div><br></div><blockquote c=
-lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px soli=
-d rgb(204,204,204);padding-left:1ex">Use MO_SB, MO_TESW here.</blockquote><=
-blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-l=
-eft:1px solid rgb(204,204,204);padding-left:1ex">It won&#39;t matter for no=
-rmal operation, but the sign of the operation is exposed to plugins.=C2=A0<=
-/blockquote><div><br></div><div>Ah okay. I&#39;ll update accordingly and co=
-py over your Reviewed-by line. Thanks!=C2=A0</div></div><br><div class=3D"g=
-mail_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On =
-Thu, Jul 3, 2025 at 12:14=E2=80=AFAM Richard Henderson &lt;<a href=3D"mailt=
-o:richard.henderson@linaro.org">richard.henderson@linaro.org</a>&gt; wrote:=
-<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8=
-ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On 7/2/25 05:19=
-, William Kosasih wrote:<br>
-&gt; +DO_VLDR(vldrb_sh, MO_UB, 1, int8_t, ldb, 2, int16_t)<br>
-&gt; +DO_VLDR(vldrb_sw, MO_UB, 1, int8_t, ldb, 4, int32_t)<br>
-...<br>
-&gt; +DO_VLDR(vldrh_sw, MO_TEUW, 2, int16_t, ldw, 4, int32_t)<br>
+<div dir=3D"ltr">Ah okay cool. I&#39;ll leave them as they are for now :-)<=
+div><br></div><div>Many=C2=A0thanks,</div><div>William</div></div><br><div =
+class=3D"gmail_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail=
+_attr">On Thu, Jul 3, 2025 at 12:23=E2=80=AFAM Richard Henderson &lt;<a hre=
+f=3D"mailto:richard.henderson@linaro.org">richard.henderson@linaro.org</a>&=
+gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0=
+px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On 7/=
+2/25 05:19, William Kosasih wrote:<br>
+&gt; Recent helper function load and store alignment fix caused the continu=
+ation<br>
+&gt; backslashes in those macro definitions to shift out of alignment.<br>
+&gt; This patch restores a uniform indentation for those trailing backslash=
+es,<br>
+&gt; making them consistent.<br>
+&gt; <br>
+&gt; Signed-off-by: William Kosasih &lt;<a href=3D"mailto:kosasihwilliam4@g=
+mail.com" target=3D"_blank">kosasihwilliam4@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0target/arm/tcg/mve_helper.c | 268 ++++++++++++++++++------=
+------------<br>
+&gt;=C2=A0 =C2=A01 file changed, 134 insertions(+), 134 deletions(-)<br>
 <br>
-Use MO_SB, MO_TESW here.<br>
+I&#39;d fix these within the patch that breaks the alignment or not at all.=
 <br>
-It won&#39;t matter for normal operation, but the sign of the operation is =
-exposed to plugins.<br>
 <br>
 <br>
 r~<br>
 </blockquote></div>
 
---000000000000d558cc0639023430--
+--000000000000971dcd0639023e06--

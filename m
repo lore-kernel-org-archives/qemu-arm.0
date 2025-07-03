@@ -1,511 +1,175 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp392907dyc;
-        Thu, 3 Jul 2025 01:50:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWvfjWNtJj5TNxgn/Mll3MTNUCvv+zd5wpRdbO1IF4pgBAH1zPkjHDT0V6n5H2v1YyrDDY48nuZgfJlcQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGljD7g0cq6GVfVdUrlrR+2o8bC9hNtQPH4YaTpGeKxjWmjj2gm652SS+aof732sXgRfHB/
-X-Received: by 2002:a05:6214:415:b0:700:c46f:3bd with SMTP id 6a1803df08f44-702b1bab600mr96419596d6.25.1751532646686;
-        Thu, 03 Jul 2025 01:50:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751532646; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp393863dyc;
+        Thu, 3 Jul 2025 01:53:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU+3TFih+SSAaIbRLN1wy6VzQg8tzvU6BnSLM+XUV6lIoQy6A4CHx5ROLSwwRlhcPn0Q0tPyi9iJntZOg==@linaro.org
+X-Google-Smtp-Source: AGHT+IH7vhOX/BlTZOqVmjKyGAJPvFLTXOKv4Ow/2c0a+h44HVWMzrle9zD9Z1iYLnsU6uuWSnAe
+X-Received: by 2002:a17:90b:2547:b0:313:1769:eb49 with SMTP id 98e67ed59e1d1-31a90b342bbmr9013604a91.8.1751532807797;
+        Thu, 03 Jul 2025 01:53:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751532807; cv=none;
         d=google.com; s=arc-20240605;
-        b=IfhsiJK4aWJayG9rcaa3VxcVabEMlLi7EzQ9XkXFnfkrKDsEGrTsOgp3qMqBrhs6L1
-         7w9fFmeKTsYzzojQHiX/cTXgJmfLQtkNQ2VfdUN12/FTn4OAaRCI2hMx9fKXoPV8suqv
-         gxO/jmn2+6/3x7VUmBDoo42ltbOiBogWZwZjJbeOqAEk/xPnlojDptaw/mYZ6wCGXTaU
-         xN+aGsECnTTEzdCuwaKxVcGeRRyPKLcESCNPVhgeNTMm5ScmJFmivjA8qanOLYbwDds3
-         owJOKzD87tTxdR3e6AufpzNpEKr2P6HqxGJF1lV8ln2w1Gv6rmBiBUtqH3QdG3C5nN02
-         3qag==
+        b=Ho5A8aTD+erLC0ltwLB06A+wy5PSTcB9i+g5gjko1VS8T2nS0TJuvXgQukVkuNCZJS
+         BeoYaRs0fgCDK3qg2klEhaC63k6F4x3eudMAqxLwqcmjfkMKBWiR94R7i2Yy71HZ6Bxu
+         Vj87/0Xb8Y+DJfk/tnB5I3smhqcY8KXJK2SqB1zLtgEow7Q9A2IzQdfqGMr7PcCHwhSA
+         lGcplA7zi2XAtgBTJxyn2c/x7jryxSnwPdWKskExB9oOxJ9udenO/Ep5Zm5HC5Kukccc
+         QgDjNjvPbT+UfnDNSbIUc9nZSq0toegZeQnnuLoUU8j3VkWNWnC2YiL/L2CFedha2JX4
+         pTLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to;
-        bh=nlS8zIE08k0g+3LDvUwn1Kk67FHjHJ/CYW1tQyPckH4=;
-        fh=K6DRGZ9v0QUPI5y28IyZ3JGzxcTK+mf/rR6Wgk4w8yA=;
-        b=EXPmE0bI4P5BtyRVwZcjxc1UNneYphX3ZU3wEg9L6toejH8mnc79XIeRuhOQMsJe/Q
-         ZJA+yLPaMcCpcvF51pDE1XGrLl6ZAyvgYKyLsQ1uYU5nOmoAlQSCAbX84MlrLlTjmBqa
-         rfncL6sLB0pjjKUpLc+75lqwRn1Atb8l0d6jJbDw44HDD5Svu62gimJNEmQPJf81GgGu
-         zSR7NMzMxodroc8obsKEqgTI+iqXtS94V7398wa9NVEA3hfFpKAkQvZfVP1VVGYJtAi4
-         votDerYZ+3aZ2Yity034Nb/+EGWEu0eR0LVyk+qgP8suQsFVgKwfpOn+RBVKYBVqWuer
-         er4Q==;
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=XJVik+IF+CdbGH74LLfocMUagCsaDV9TqlbhLqvITPk=;
+        fh=Qc7v90z1+o3yQ/29DTmWnc/Po+VgiM9vrZbD6joHDWQ=;
+        b=NFis2G25dkK/pUyG8B2PZ0qyIImlJNRrUD82Hv263cvNIvOyjBc6lKKWD8tMZfn6Ig
+         cqRF9OfblocovFev33vinSy+yOySQlrHYsMMNESs+ahyKFlpgx0uYRNJ18eHI4eB/lql
+         ucMNYFdERKtaQ6VAh9zh9m55uXHjUz/41iGxtKCb469ADfEps4zEyKeW6E2m5zXOnyFU
+         sPmCA7DXfkZThxtEbhE0qZCnlBwj5b/BYYFPjFYwUnZnZt8sAGQYOc3OkU82Na3DBsVz
+         oHj9rUIS94yiRLnerKAUCpdemLWFV8XLaGXs/TD3Mr4pb9c5XT4w3CtWc+U5VUUUwj/8
+         y3uQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd773ae39dsi169233466d6.483.2025.07.03.01.50.46
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Jul 2025 01:50:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=shameerali.kolothum.thodi@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <shameerali.kolothum.thodi@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-31a9cc521easi2204935a91.4.2025.07.03.01.53.27
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 03 Jul 2025 01:53:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uXFeJ-00025M-0K; Thu, 03 Jul 2025 04:50:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1uXFdL-0000WJ-K2; Thu, 03 Jul 2025 04:49:32 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1uXFdH-0004RR-Em; Thu, 03 Jul 2025 04:49:31 -0400
+       spf=pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=shameerali.kolothum.thodi@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bXr392xkLz6L5LM;
- Thu,  3 Jul 2025 16:46:29 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 01E5F1404A9;
- Thu,  3 Jul 2025 16:49:25 +0800 (CST)
-Received: from A2303104131.china.huawei.com (10.203.177.241) by
- frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bXrB22kwfz6M56l;
+	Thu,  3 Jul 2025 16:52:26 +0800 (CST)
+Received: from frapeml100006.china.huawei.com (unknown [7.182.85.201])
+	by mail.maildlp.com (Postfix) with ESMTPS id 3D63F140371;
+	Thu,  3 Jul 2025 16:53:23 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml100006.china.huawei.com (7.182.85.201) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 3 Jul 2025 10:49:15 +0200
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
- <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
- <imammedo@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
- <smostafa@google.com>, <gustavo.romero@linaro.org>, <mst@redhat.com>,
- <marcel.apfelbaum@gmail.com>, <linuxarm@huawei.com>,
- <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
- <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
-Subject: [PATCH v6 12/12] qtest/bios-tables-test: Update tables for smmuv3
- tests
-Date: Thu, 3 Jul 2025 09:46:43 +0100
-Message-ID: <20250703084643.85740-13-shameerali.kolothum.thodi@huawei.com>
-X-Mailer: git-send-email 2.12.0.windows.1
-In-Reply-To: <20250703084643.85740-1-shameerali.kolothum.thodi@huawei.com>
-References: <20250703084643.85740-1-shameerali.kolothum.thodi@huawei.com>
+ 15.1.2507.39; Thu, 3 Jul 2025 10:53:23 +0200
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Thu, 3 Jul 2025 10:53:23 +0200
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Gustavo Romero <gustavo.romero@linaro.org>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+	"philmd@linaro.org" <philmd@linaro.org>, "mst@redhat.com" <mst@redhat.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "alex.bennee@linaro.org"
+	<alex.bennee@linaro.org>, "udo@hypervisor.org" <udo@hypervisor.org>,
+	"ajones@ventanamicro.com" <ajones@ventanamicro.com>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>, "imammedo@redhat.com"
+	<imammedo@redhat.com>, "anisinha@redhat.com" <anisinha@redhat.com>
+Subject: RE: [PATCH v6 8/9] hw/arm/virt-acpi-build: Fix ACPI IORT and MADT
+ tables when its=off
+Thread-Topic: [PATCH v6 8/9] hw/arm/virt-acpi-build: Fix ACPI IORT and MADT
+ tables when its=off
+Thread-Index: AQHb6GdIluK/HKdfpEOOBoHhxk8xYLQehR/wgAGZgoA=
+Date: Thu, 3 Jul 2025 08:53:22 +0000
+Message-ID: <b5c3eff0b98f4292907c1e66f7486d17@huawei.com>
+References: <20250628195722.977078-1-gustavo.romero@linaro.org>
+ <20250628195722.977078-9-gustavo.romero@linaro.org>
+ <07a913cbe5ed461eab8951e4a8c4d17f@huawei.com>
+In-Reply-To: <07a913cbe5ed461eab8951e4a8c4d17f@huawei.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.203.177.241]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.203.177.241]
-X-ClientProxiedBy: kwepems200001.china.huawei.com (7.221.188.67) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.237, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-From:  Shameer Kolothum via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cGDL+e+pqUyQ
+X-TUID: G98pSgpCP/6V
 
-For the legacy smmuv3 test case, generated IORT has a single SMMUv3 node,
-a Root Complex(RC) node and 1 ITS node.
-RC node features 4 ID mappings, of which 2 points to SMMU node and the
-remaining ones points to ITS.
-
-       pcie.0 -> {SMMU0} -> {ITS}
-{RC}   pcie.1 -> {SMMU0} -> {ITS}
-       pcie.2            -> {ITS}
-       [all other ids]   -> {ITS}
-
-...
-[030h 0048   1]                         Type : 00
-[031h 0049   2]                       Length : 0018
-[033h 0051   1]                     Revision : 01
-[034h 0052   4]                   Identifier : 00000000
-[038h 0056   4]                Mapping Count : 00000000
-[03Ch 0060   4]               Mapping Offset : 00000000
-
-[040h 0064   4]                     ItsCount : 00000001
-[044h 0068   4]                  Identifiers : 00000000
-
-[048h 0072   1]                         Type : 04
-[049h 0073   2]                       Length : 0058
-[04Bh 0075   1]                     Revision : 04
-[04Ch 0076   4]                   Identifier : 00000001
-[050h 0080   4]                Mapping Count : 00000001
-[054h 0084   4]               Mapping Offset : 00000044
-
-[058h 0088   8]                 Base Address : 0000000009050000
-[060h 0096   4]        Flags (decoded below) : 00000001
-                             COHACC Override : 1
-                               HTTU Override : 0
-                      Proximity Domain Valid : 0
-[064h 0100   4]                     Reserved : 00000000
-[068h 0104   8]                VATOS Address : 0000000000000000
-[070h 0112   4]                        Model : 00000000
-[074h 0116   4]                   Event GSIV : 0000006A
-[078h 0120   4]                     PRI GSIV : 0000006B
-[07Ch 0124   4]                    GERR GSIV : 0000006D
-[080h 0128   4]                    Sync GSIV : 0000006C
-[084h 0132   4]             Proximity Domain : 00000000
-[088h 0136   4]      Device ID Mapping Index : 00000000
-
-[08Ch 0140   4]                   Input base : 00000000
-[090h 0144   4]                     ID Count : 0000FFFF
-[094h 0148   4]                  Output Base : 00000000
-[098h 0152   4]             Output Reference : 00000030
-[09Ch 0156   4]        Flags (decoded below) : 00000000
-                              Single Mapping : 0
-
-[0A0h 0160   1]                         Type : 02
-[0A1h 0161   2]                       Length : 0074
-[0A3h 0163   1]                     Revision : 03
-[0A4h 0164   4]                   Identifier : 00000002
-[0A8h 0168   4]                Mapping Count : 00000004
-[0ACh 0172   4]               Mapping Offset : 00000024
-
-[0B0h 0176   8]            Memory Properties : [IORT Memory Access Properties]
-[0B0h 0176   4]              Cache Coherency : 00000001
-[0B4h 0180   1]        Hints (decoded below) : 00
-                                   Transient : 0
-                              Write Allocate : 0
-                               Read Allocate : 0
-                                    Override : 0
-[0B5h 0181   2]                     Reserved : 0000
-[0B7h 0183   1] Memory Flags (decoded below) : 03
-                                   Coherency : 1
-                            Device Attribute : 1
-[0B8h 0184   4]                ATS Attribute : 00000000
-[0BCh 0188   4]           PCI Segment Number : 00000000
-[0C0h 0192   1]            Memory Size Limit : 40
-[0C1h 0193   2]           PASID Capabilities : 0000
-[0C3h 0195   1]                     Reserved : 00
-
-[0C4h 0196   4]                   Input base : 00000000
-[0C8h 0200   4]                     ID Count : 000001FF
-[0CCh 0204   4]                  Output Base : 00000000
-[0D0h 0208   4]             Output Reference : 00000048
-[0D4h 0212   4]        Flags (decoded below) : 00000000
-                              Single Mapping : 0
-
-[0D8h 0216   4]                   Input base : 00001000
-[0DCh 0220   4]                     ID Count : 000000FF
-[0E0h 0224   4]                  Output Base : 00001000
-[0E4h 0228   4]             Output Reference : 00000048
-[0E8h 0232   4]        Flags (decoded below) : 00000000
-                              Single Mapping : 0
-
-[0ECh 0236   4]                   Input base : 00000200
-[0F0h 0240   4]                     ID Count : 00000DFF
-[0F4h 0244   4]                  Output Base : 00000200
-[0F8h 0248   4]             Output Reference : 00000030
-[0FCh 0252   4]        Flags (decoded below) : 00000000
-                              Single Mapping : 0
-
-[100h 0256   4]                   Input base : 00001100
-[104h 0260   4]                     ID Count : 0000EEFF
-[108h 0264   4]                  Output Base : 00001100
-[10Ch 0268   4]             Output Reference : 00000030
-[110h 0272   4]        Flags (decoded below) : 00000000
-                              Single Mapping : 0
-
-For the smmuv3-dev test case, IORT has 2 SMMUV3 nodes,
-1 RC node and 1 ITS node.
-RC node features 4 ID mappings. 2 of them target the 2
-SMMU nodes while the others targets the ITS.
-
-        pcie.0 -> {SMMU0} -> {ITS}
-{RC}    pcie.1 -> {SMMU1} -> {ITS}
-        pcie.2            -> {ITS}
-        [all other ids]   -> {ITS}
-...
-[030h 0048   1]                         Type : 00
-[031h 0049   2]                       Length : 0018
-[033h 0051   1]                     Revision : 01
-[034h 0052   4]                   Identifier : 00000000
-[038h 0056   4]                Mapping Count : 00000000
-[03Ch 0060   4]               Mapping Offset : 00000000
-
-[040h 0064   4]                     ItsCount : 00000001
-[044h 0068   4]                  Identifiers : 00000000
-
-[048h 0072   1]                         Type : 04
-[049h 0073   2]                       Length : 0058
-[04Bh 0075   1]                     Revision : 04
-[04Ch 0076   4]                   Identifier : 00000001
-[050h 0080   4]                Mapping Count : 00000001
-[054h 0084   4]               Mapping Offset : 00000044
-
-[058h 0088   8]                 Base Address : 000000000C000000
-[060h 0096   4]        Flags (decoded below) : 00000001
-                             COHACC Override : 1
-                               HTTU Override : 0
-                      Proximity Domain Valid : 0
-[064h 0100   4]                     Reserved : 00000000
-[068h 0104   8]                VATOS Address : 0000000000000000
-[070h 0112   4]                        Model : 00000000
-[074h 0116   4]                   Event GSIV : 00000090
-[078h 0120   4]                     PRI GSIV : 00000091
-[07Ch 0124   4]                    GERR GSIV : 00000093
-[080h 0128   4]                    Sync GSIV : 00000092
-[084h 0132   4]             Proximity Domain : 00000000
-[088h 0136   4]      Device ID Mapping Index : 00000000
-
-[08Ch 0140   4]                   Input base : 00000000
-[090h 0144   4]                     ID Count : 0000FFFF
-[094h 0148   4]                  Output Base : 00000000
-[098h 0152   4]             Output Reference : 00000030
-[09Ch 0156   4]        Flags (decoded below) : 00000000
-                              Single Mapping : 0
-
-[0A0h 0160   1]                         Type : 04
-[0A1h 0161   2]                       Length : 0058
-[0A3h 0163   1]                     Revision : 04
-[0A4h 0164   4]                   Identifier : 00000002
-[0A8h 0168   4]                Mapping Count : 00000001
-[0ACh 0172   4]               Mapping Offset : 00000044
-
-[0B0h 0176   8]                 Base Address : 000000000C020000
-[0B8h 0184   4]        Flags (decoded below) : 00000001
-                             COHACC Override : 1
-                               HTTU Override : 0
-                      Proximity Domain Valid : 0
-[0BCh 0188   4]                     Reserved : 00000000
-[0C0h 0192   8]                VATOS Address : 0000000000000000
-[0C8h 0200   4]                        Model : 00000000
-[0CCh 0204   4]                   Event GSIV : 00000094
-[0D0h 0208   4]                     PRI GSIV : 00000095
-[0D4h 0212   4]                    GERR GSIV : 00000097
-[0D8h 0216   4]                    Sync GSIV : 00000096
-[0DCh 0220   4]             Proximity Domain : 00000000
-[0E0h 0224   4]      Device ID Mapping Index : 00000000
-
-[0E4h 0228   4]                   Input base : 00000000
-[0E8h 0232   4]                     ID Count : 0000FFFF
-[0ECh 0236   4]                  Output Base : 00000000
-[0F0h 0240   4]             Output Reference : 00000030
-[0F4h 0244   4]        Flags (decoded below) : 00000000
-                              Single Mapping : 0
-
-[0F8h 0248   1]                         Type : 02
-[0F9h 0249   2]                       Length : 0074
-[0FBh 0251   1]                     Revision : 03
-[0FCh 0252   4]                   Identifier : 00000003
-[100h 0256   4]                Mapping Count : 00000004
-[104h 0260   4]               Mapping Offset : 00000024
-
-[108h 0264   8]            Memory Properties : [IORT Memory Access Properties]
-[108h 0264   4]              Cache Coherency : 00000001
-[10Ch 0268   1]        Hints (decoded below) : 00
-                                   Transient : 0
-                              Write Allocate : 0
-                               Read Allocate : 0
-                                    Override : 0
-[10Dh 0269   2]                     Reserved : 0000
-[10Fh 0271   1] Memory Flags (decoded below) : 03
-                                   Coherency : 1
-                            Device Attribute : 1
-[110h 0272   4]                ATS Attribute : 00000000
-[114h 0276   4]           PCI Segment Number : 00000000
-[118h 0280   1]            Memory Size Limit : 40
-[119h 0281   2]           PASID Capabilities : 0000
-[11Bh 0283   1]                     Reserved : 00
-
-[11Ch 0284   4]                   Input base : 00000000
-[120h 0288   4]                     ID Count : 000001FF
-[124h 0292   4]                  Output Base : 00000000
-[128h 0296   4]             Output Reference : 00000048
-[12Ch 0300   4]        Flags (decoded below) : 00000000
-                              Single Mapping : 0
-
-[130h 0304   4]                   Input base : 00001000
-[134h 0308   4]                     ID Count : 000000FF
-[138h 0312   4]                  Output Base : 00001000
-[13Ch 0316   4]             Output Reference : 000000A0
-[140h 0320   4]        Flags (decoded below) : 00000000
-                              Single Mapping : 0
-
-[144h 0324   4]                   Input base : 00000200
-[148h 0328   4]                     ID Count : 00000DFF
-[14Ch 0332   4]                  Output Base : 00000200
-[150h 0336   4]             Output Reference : 00000030
-[154h 0340   4]        Flags (decoded below) : 00000000
-                              Single Mapping : 0
-
-[158h 0344   4]                   Input base : 00001100
-[15Ch 0348   4]                     ID Count : 0000EEFF
-[160h 0352   4]                  Output Base : 00001100
-[164h 0356   4]             Output Reference : 00000030
-[168h 0360   4]        Flags (decoded below) : 00000000
-                              Single Mapping : 0
-
-Note: DSDT changes are not described here as it is not impacted by the
-way the SMMUv3 is instantiated.
-
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
----
- tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev    | Bin 0 -> 10162 bytes
- tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy | Bin 0 -> 10162 bytes
- tests/data/acpi/aarch64/virt/IORT.smmuv3-dev    | Bin 0 -> 364 bytes
- tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy | Bin 0 -> 276 bytes
- tests/qtest/bios-tables-test-allowed-diff.h     |   4 ----
- 5 files changed, 4 deletions(-)
-
-diff --git a/tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev b/tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..4b166b836e75f0c049c245b0c1dc7955f0dbcd04 100644
-GIT binary patch
-literal 10162
-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
-zQ!9~8=80^Y0%Vf|Ae&l=Y%)(|!<6Tct%0A^zQD+K_OoMj4$6*$KLz#q&a&ALlf{oY
-zk<<&FWwW0t6H+gBmaTbS$hQ8+cD~m?H~PPjt-F24j-8!rvupf%TVUH#w$KiF*t4^1
-z%b{uiKHvE^du`6(%?_^M4Zq^{PreQ8TRsPG>^p-uHkPzjEn3SGD?Pli_YB^sTGAR;
-zT5DNirMY1*;7twyZ)zpHv6U+cZ<+#llLNq;S_yA5Pk7T5z?&QZ-qcEXlX=3MrU2gL
-z0Pv<(!kf$!-ZTa9CI^5wwG!TBp75qAfHye+ys4G&Ci8?hO#!^g0pLxogg2QdylD#H
-zO%4EWY9+kMJmF1K0B>>tcvCCkP38%2ngV!}1HhYF32!n_c+(WXn;Zb%)Jk}hdBU5f
-z0N&&P@TOM6o6Hm5GzIV`2Y@%V65eE<@TMt%H#q>jsg>|1^Mp4|0ldip;7zTBH<>5A
-zX$s&?4ghazCA`Tz;Z0KjZ*l;5Q!C+3<_T|_0(g@Hz?)hLZ!%AK(-gp)901<bN_dlb
-z!keZ5-sAxArdGn6%oE-;1@I;ZfH$=g-ejKerYV3oIRLz=mGCC>gf~qAyvYIJO|67C
-znJ2ty3gAr+0B>p~yvaP_O;Z4GasYT!E8$J%32&MLc#{Lbn_3BPGEaEZ6u_Gt0N&I}
-zc$0a;o2CHX<N)xdR>GUi6W%lh@FoX<H?<PpWS;PbDN~JJzPS;e+5ZZmv2Ird&Fv0m
-z@0DlZLa;Z!A>D6nzl>DuE-sDJ)BoU)AMA2^&7P@@*r!@?v7f!{a%#_3!qacMHGKLp
-zp2LNeuJHI5@*Lkmt+U;A2$Y{8^J><7?)dOEu%olIu0w-+AZq?~+UDTf*YNjmceb~B
-z1@9Gq{MNz`mWEHG_C)_hEPn7EsC>Ox`gprzq-7sD^`WeG^qXOn`F3}Ee|c)LxBb@P
-j&?6M@oHUL<cqhZ@rw`i?I-A+!qbGB?<KZ$dW`+L(PyH`>
-
-literal 0
-HcmV?d00001
-
-diff --git a/tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy b/tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..4b166b836e75f0c049c245b0c1dc7955f0dbcd04 100644
-GIT binary patch
-literal 10162
-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
-zQ!9~8=80^Y0%Vf|Ae&l=Y%)(|!<6Tct%0A^zQD+K_OoMj4$6*$KLz#q&a&ALlf{oY
-zk<<&FWwW0t6H+gBmaTbS$hQ8+cD~m?H~PPjt-F24j-8!rvupf%TVUH#w$KiF*t4^1
-z%b{uiKHvE^du`6(%?_^M4Zq^{PreQ8TRsPG>^p-uHkPzjEn3SGD?Pli_YB^sTGAR;
-zT5DNirMY1*;7twyZ)zpHv6U+cZ<+#llLNq;S_yA5Pk7T5z?&QZ-qcEXlX=3MrU2gL
-z0Pv<(!kf$!-ZTa9CI^5wwG!TBp75qAfHye+ys4G&Ci8?hO#!^g0pLxogg2QdylD#H
-zO%4EWY9+kMJmF1K0B>>tcvCCkP38%2ngV!}1HhYF32!n_c+(WXn;Zb%)Jk}hdBU5f
-z0N&&P@TOM6o6Hm5GzIV`2Y@%V65eE<@TMt%H#q>jsg>|1^Mp4|0ldip;7zTBH<>5A
-zX$s&?4ghazCA`Tz;Z0KjZ*l;5Q!C+3<_T|_0(g@Hz?)hLZ!%AK(-gp)901<bN_dlb
-z!keZ5-sAxArdGn6%oE-;1@I;ZfH$=g-ejKerYV3oIRLz=mGCC>gf~qAyvYIJO|67C
-znJ2ty3gAr+0B>p~yvaP_O;Z4GasYT!E8$J%32&MLc#{Lbn_3BPGEaEZ6u_Gt0N&I}
-zc$0a;o2CHX<N)xdR>GUi6W%lh@FoX<H?<PpWS;PbDN~JJzPS;e+5ZZmv2Ird&Fv0m
-z@0DlZLa;Z!A>D6nzl>DuE-sDJ)BoU)AMA2^&7P@@*r!@?v7f!{a%#_3!qacMHGKLp
-zp2LNeuJHI5@*Lkmt+U;A2$Y{8^J><7?)dOEu%olIu0w-+AZq?~+UDTf*YNjmceb~B
-z1@9Gq{MNz`mWEHG_C)_hEPn7EsC>Ox`gprzq-7sD^`WeG^qXOn`F3}Ee|c)LxBb@P
-j&?6M@oHUL<cqhZ@rw`i?I-A+!qbGB?<KZ$dW`+L(PyH`>
-
-literal 0
-HcmV?d00001
-
-diff --git a/tests/data/acpi/aarch64/virt/IORT.smmuv3-dev b/tests/data/acpi/aarch64/virt/IORT.smmuv3-dev
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..67be268f62afbf2d9459540984da5e9340afdaaa 100644
-GIT binary patch
-literal 364
-zcmebD4+_a)WME)E<>c?|5v<@85#X!<1VAAM5F13Z0I>lOgMkDCNC*yK9F_<M77!bR
-zT_CbNAPOcA5rU8tfYd}Fo(#m3AVP5R|9=P*W*^90CZG_)Tqd06P64W$3dGZacp4BR
-z19WqlN*I`#feJu=QvqVAJ3&HV-~grnLnS<*d<Fpq2Cx%>^a7X|(1HJXfgB(Wb2oz^
-MQ0yI03`oPo01?F*0RR91
-
-literal 0
-HcmV?d00001
-
-diff --git a/tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy b/tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..41981a449fc306b80cccd87ddec3c593a8d72c07 100644
-GIT binary patch
-literal 276
-zcmX|*K@NgI3`M`puy8?wi3^u3IDkhWzycE!jI!Vis5{Ti6^7s1@{>QmeVugXHa@5G
-z0SNbY?1op>&X2C5h#<9Ops%#*0ztdHi8G?q;$EluQNrhn>{ys@`b&R|d8G8O{Jrdl
-mkP$_?rfr{mN!3^;8w}Q?1auX1XIzvDUSRruoXA!(rn3!nx)K2Z
-
-literal 0
-HcmV?d00001
-
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index 2e3e3ccdce..dfb8523c8b 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,5 +1 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy",
--"tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev",
--"tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy",
--"tests/data/acpi/aarch64/virt/IORT.smmuv3-dev",
--- 
-2.34.1
-
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogU2hhbWVlcmFsaSBLb2xv
+dGh1bSBUaG9kaQ0KPiBTZW50OiBXZWRuZXNkYXksIEp1bHkgMiwgMjAyNSA5OjM0IEFNDQo+IFRv
+OiAnR3VzdGF2byBSb21lcm8nIDxndXN0YXZvLnJvbWVyb0BsaW5hcm8ub3JnPjsgcWVtdS0NCj4g
+ZGV2ZWxAbm9uZ251Lm9yZzsgZXJpYy5hdWdlckByZWRoYXQuY29tOyBwaGlsbWRAbGluYXJvLm9y
+ZzsNCj4gbXN0QHJlZGhhdC5jb20NCj4gQ2M6IHFlbXUtYXJtQG5vbmdudS5vcmc7IGFsZXguYmVu
+bmVlQGxpbmFyby5vcmc7IHVkb0BoeXBlcnZpc29yLm9yZzsNCj4gYWpvbmVzQHZlbnRhbmFtaWNy
+by5jb207IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsNCj4gaW1hbW1lZG9AcmVkaGF0LmNvbTsg
+YW5pc2luaGFAcmVkaGF0LmNvbQ0KPiBTdWJqZWN0OiBSRTogW1BBVENIIHY2IDgvOV0gaHcvYXJt
+L3ZpcnQtYWNwaS1idWlsZDogRml4IEFDUEkgSU9SVCBhbmQgTUFEVA0KPiB0YWJsZXMgd2hlbiBp
+dHM9b2ZmDQo+IA0KPiBIaSBHdXN0YXZvLA0KPiANCj4gPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2Ut
+LS0tLQ0KPiA+IEZyb206IHFlbXUtZGV2ZWwtDQo+ID4gYm91bmNlcytzaGFtZWVyYWxpLmtvbG90
+aHVtLnRob2RpPWh1YXdlaS5jb21Abm9uZ251Lm9yZyA8cWVtdS0NCj4gPiBkZXZlbC1ib3VuY2Vz
+K3NoYW1lZXJhbGkua29sb3RodW0udGhvZGk9aHVhd2VpLmNvbUBub25nbnUub3JnPg0KPiBPbg0K
+PiA+IEJlaGFsZiBPZiBHdXN0YXZvIFJvbWVybw0KPiA+IFNlbnQ6IFNhdHVyZGF5LCBKdW5lIDI4
+LCAyMDI1IDg6NTcgUE0NCj4gPiBUbzogcWVtdS1kZXZlbEBub25nbnUub3JnOyBlcmljLmF1Z2Vy
+QHJlZGhhdC5jb207DQo+IHBoaWxtZEBsaW5hcm8ub3JnOw0KPiA+IG1zdEByZWRoYXQuY29tDQo+
+ID4gQ2M6IHFlbXUtYXJtQG5vbmdudS5vcmc7IGFsZXguYmVubmVlQGxpbmFyby5vcmc7DQo+ID4g
+Z3VzdGF2by5yb21lcm9AbGluYXJvLm9yZzsgdWRvQGh5cGVydmlzb3Iub3JnOw0KPiA+IGFqb25l
+c0B2ZW50YW5hbWljcm8uY29tOyBwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc7DQo+ID4gaW1hbW1l
+ZG9AcmVkaGF0LmNvbTsgYW5pc2luaGFAcmVkaGF0LmNvbQ0KPiA+IFN1YmplY3Q6IFtQQVRDSCB2
+NiA4LzldIGh3L2FybS92aXJ0LWFjcGktYnVpbGQ6IEZpeCBBQ1BJIElPUlQgYW5kIE1BRFQNCj4g
+PiB0YWJsZXMgd2hlbiBpdHM9b2ZmDQo+ID4NCj4gPiBDdXJyZW50bHksIHRoZSBJVFMgR3JvdXAg
+bm9kZXMgaW4gdGhlIElPUlQgdGFibGUgYW5kIHRoZSBHSUMgSVRTIFN0cnVjdA0KPiA+IGluIHRo
+ZSBNQURUIHRhYmxlIGFyZSBhbHdheXMgZ2VuZXJhdGVkLCBldmVuIGlmIEdJQyBJVFMgaXMgbm90
+IGF2YWlsYWJsZQ0KPiA+IG9uIHRoZSBtYWNoaW5lLg0KPiA+DQo+ID4gVGhpcyBjb21taXQgZml4
+ZXMgaXQgYnkgbm90IGdlbmVyYXRpbmcgdGhlIElUUyBHcm91cCBub2Rlcywgbm90IG1hcHBpbmcN
+Cj4gPiBhbnkgb3RoZXIgbm9kZSB0byB0aGVtLCBhbmQgbm90IGFkdmVydGlzaW5nIHRoZSBHSUMg
+SVRTIGluIHRoZSBNQURUDQo+ID4gdGFibGUsIHdoZW4gR0lDIElUUyBpcyBub3QgYXZhaWxhYmxl
+IG9uIHRoZSBtYWNoaW5lLg0KPiA+DQo+ID4gU2luY2UgdGhlIGZpeCBjaGFuZ2VzIHRoZSBNQURU
+IGFuZCBJT1JUIHRhYmxlcywgYWRkIHRoZSBibG9icyBmb3IgdGhlDQo+ID4gIml0cz1vZmYiIHRl
+c3QgdG8gdGhlIGFsbG93IGxpc3QgYW5kIHVwZGF0ZSB0aGVtIGluIHRoZSBuZXh0IGNvbW1pdC4N
+Cj4gPg0KPiA+IFRoaXMgY29tbWl0IGFsc28gcmVuYW1lcyB0aGUgc21tdV9pZG1hcHMgYW5kIGl0
+c19pZG1hcHMgdmFyaWFibGVzIGluDQo+ID4gYnVpbGRfaW9ydCgpIHRvIHJjX3NtbXVfaWRtYXBz
+IGFuZCByY19pdHNfaWRtYXBzLCByZXNwZWN0aXZlbHksIHRvIG1ha2UNCj4gPiBpdCBjbGVhcmVy
+IHdoaWNoIG5vZGVzIGFyZSBpbnZvbHZlZCBpbiB0aGUgbWFwcGluZ3MgYXNzb2NpYXRlZCB3aXRo
+DQo+ID4gdGhlc2UgdmFyaWFibGVzLg0KPiA+DQo+ID4gUmVwb3J0ZWQtYnk6IFVkbyBTdGVpbmJl
+cmcgPHVkb0BoeXBlcnZpc29yLm9yZz4NCj4gPiBSZXNvbHZlczogaHR0cHM6Ly9naXRsYWIuY29t
+L3FlbXUtcHJvamVjdC9xZW11Ly0vaXNzdWVzLzI4ODYNCj4gPiBTaWduZWQtb2ZmLWJ5OiBHdXN0
+YXZvIFJvbWVybyA8Z3VzdGF2by5yb21lcm9AbGluYXJvLm9yZz4NCj4gPiBDby1hdXRob3JlZC1i
+eTogUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kgPHBoaWxtZEBsaW5hcm8ub3JnPg0KPiA+IC0tLQ0K
+PiA+ICBody9hcm0vdmlydC1hY3BpLWJ1aWxkLmMgICAgICAgICAgICAgICAgICAgIHwgMTQyICsr
+KysrKysrKysrKy0tLS0tLS0tDQo+ID4gIHRlc3RzL3F0ZXN0L2Jpb3MtdGFibGVzLXRlc3QtYWxs
+b3dlZC1kaWZmLmggfCAgIDIgKw0KPiA+ICAyIGZpbGVzIGNoYW5nZWQsIDkwIGluc2VydGlvbnMo
+KyksIDU0IGRlbGV0aW9ucygtKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2h3L2FybS92aXJ0LWFj
+cGktYnVpbGQuYyBiL2h3L2FybS92aXJ0LWFjcGktYnVpbGQuYw0KPiA+IGluZGV4IDA2ODM4M2Y5
+ODIuLmVmZjBkNjk4ZGYgMTAwNjQ0DQo+ID4gLS0tIGEvaHcvYXJtL3ZpcnQtYWNwaS1idWlsZC5j
+DQo+ID4gKysrIGIvaHcvYXJtL3ZpcnQtYWNwaS1idWlsZC5jDQo+ID4gQEAgLTI2Nyw3ICsyNjcs
+NyBAQCBzdGF0aWMgaW50IGlvcnRfaWRtYXBfY29tcGFyZShnY29uc3Rwb2ludGVyIGEsDQo+ID4g
+Z2NvbnN0cG9pbnRlciBiKQ0KPiA+ICB9DQo+ID4NCj4gPiAgLyogQ29tcHV0ZSBJRCByYW5nZXMg
+KFJJRHMpIGZyb20gUkMgdGhhdCBhcmUgZGlyZWN0ZWQgdG8gdGhlIElUUyBHcm91cA0KPiA+IG5v
+ZGUgKi8NCj4gPiAtc3RhdGljIHZvaWQgY3JlYXRlX2l0c19pZG1hcHMoR0FycmF5ICppdHNfaWRt
+YXBzLCBHQXJyYXkNCj4gKnNtbXVfaWRtYXBzKQ0KPiA+ICtzdGF0aWMgdm9pZCBjcmVhdGVfcmNf
+aXRzX2lkbWFwcyhHQXJyYXkgKml0c19pZG1hcHMsIEdBcnJheQ0KPiA+ICpzbW11X2lkbWFwcykN
+Cj4gPiAgew0KPiA+ICAgICAgQWNwaUlvcnRJZE1hcHBpbmcgKmlkbWFwOw0KPiA+ICAgICAgQWNw
+aUlvcnRJZE1hcHBpbmcgbmV4dF9yYW5nZSA9IHswfTsNCj4gPiBAQCAtMzE0LDggKzMxNCw4IEBA
+IGJ1aWxkX2lvcnQoR0FycmF5ICp0YWJsZV9kYXRhLCBCSU9TTGlua2VyICpsaW5rZXIsDQo+ID4g
+VmlydE1hY2hpbmVTdGF0ZSAqdm1zKQ0KPiA+ICAgICAgaW50IGksIG5iX25vZGVzLCByY19tYXBw
+aW5nX2NvdW50Ow0KPiA+ICAgICAgc2l6ZV90IG5vZGVfc2l6ZSwgc21tdV9vZmZzZXQgPSAwOw0K
+PiA+ICAgICAgdWludDMyX3QgaWQgPSAwOw0KPiA+IC0gICAgR0FycmF5ICpzbW11X2lkbWFwcyA9
+IGdfYXJyYXlfbmV3KGZhbHNlLCB0cnVlLA0KPiA+IHNpemVvZihBY3BpSW9ydElkTWFwcGluZykp
+Ow0KPiA+IC0gICAgR0FycmF5ICppdHNfaWRtYXBzID0gZ19hcnJheV9uZXcoZmFsc2UsIHRydWUs
+DQo+ID4gc2l6ZW9mKEFjcGlJb3J0SWRNYXBwaW5nKSk7DQo+ID4gKyAgICBHQXJyYXkgKnJjX3Nt
+bXVfaWRtYXBzID0gZ19hcnJheV9uZXcoZmFsc2UsIHRydWUsDQo+ID4gc2l6ZW9mKEFjcGlJb3J0
+SWRNYXBwaW5nKSk7DQo+ID4gKyAgICBHQXJyYXkgKnJjX2l0c19pZG1hcHMgPSBnX2FycmF5X25l
+dyhmYWxzZSwgdHJ1ZSwNCj4gPiBzaXplb2YoQWNwaUlvcnRJZE1hcHBpbmcpKTsNCj4gPg0KPiA+
+ICAgICAgQWNwaVRhYmxlIHRhYmxlID0geyAuc2lnID0gIklPUlQiLCAucmV2ID0gMywgLm9lbV9p
+ZCA9IHZtcy0+b2VtX2lkLA0KPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAub2VtX3RhYmxl
+X2lkID0gdm1zLT5vZW1fdGFibGVfaWQgfTsNCj4gPiBAQCAtMzI0LDIyICszMjQsMzggQEAgYnVp
+bGRfaW9ydChHQXJyYXkgKnRhYmxlX2RhdGEsIEJJT1NMaW5rZXINCj4gKmxpbmtlciwNCj4gPiBW
+aXJ0TWFjaGluZVN0YXRlICp2bXMpDQo+ID4NCj4gPiAgICAgIGlmICh2bXMtPmlvbW11ID09IFZJ
+UlRfSU9NTVVfU01NVVYzKSB7DQo+ID4gICAgICAgICAgb2JqZWN0X2NoaWxkX2ZvcmVhY2hfcmVj
+dXJzaXZlKG9iamVjdF9nZXRfcm9vdCgpLA0KPiA+IC0gICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICBpb3J0X2hvc3RfYnJpZGdlcywgc21tdV9pZG1hcHMpOw0KPiA+ICsgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpb3J0X2hvc3RfYnJpZGdlcywgcmNf
+c21tdV9pZG1hcHMpOw0KPiA+DQo+ID4gICAgICAgICAgLyogU29ydCB0aGUgc21tdSBpZG1hcCBi
+eSBpbnB1dF9iYXNlICovDQo+ID4gLSAgICAgICAgZ19hcnJheV9zb3J0KHNtbXVfaWRtYXBzLCBp
+b3J0X2lkbWFwX2NvbXBhcmUpOw0KPiA+ICsgICAgICAgIGdfYXJyYXlfc29ydChyY19zbW11X2lk
+bWFwcywgaW9ydF9pZG1hcF9jb21wYXJlKTsNCj4gPg0KPiA+ICAJLyoNCj4gPiAgCSAqIEtub3dp
+bmcgdGhlIElEIHJhbmdlcyBmcm9tIHRoZSBSQyB0byB0aGUgU01NVSwgaXQncyBwb3NzaWJsZSB0
+bw0KPiA+ICAJICogZGV0ZXJtaW5lIHRoZSBJRCByYW5nZXMgZnJvbSBSQyB0aGF0IGFyZSBkaXJl
+Y3RlZCB0byB0aGUgSVRTLg0KPiA+ICAJICovDQo+ID4gLSAgICAgICAgY3JlYXRlX2l0c19pZG1h
+cHMoaXRzX2lkbWFwcywgc21tdV9pZG1hcHMpOw0KPiA+ICsgICAgICAgIGNyZWF0ZV9yY19pdHNf
+aWRtYXBzKHJjX2l0c19pZG1hcHMsIHJjX3NtbXVfaWRtYXBzKTsNCj4gDQo+IEhtbS4uLm5vdCBz
+dXJlIHdoeSB3ZSBzdGlsbCBuZWVkIHRoZSBhYm92ZSBub3cgYXMgdGhpcyBpcyBiZWluZyBtb3Zl
+ZA0KPiBkb3duDQo+IGZvciB2bXMtPml0cyBpcyBzZXQgY2FzZS4NCj4gDQo+IEkgaGFkIGEgbG9v
+ayBhdCB2NSwgd2hpY2ggc2VlbXMgdG8gYmUgZG9pbmcgdGhlIHJpZ2h0IHRoaW5nLg0KPiBodHRw
+czovL2xvcmUua2VybmVsLm9yZy9xZW11LWRldmVsLzIwMjUwNjIzMTM1NzQ5LjY5MTEzNy05LQ0K
+PiBndXN0YXZvLnJvbWVyb0BsaW5hcm8ub3JnLw0KPiANCj4gT3IgYW0gSSBtaXNzaW5nIHNvbWV0
+aGluZyBoZXJlPw0KDQpJIGhhdmUgaW5jbHVkZWQgYSBmaXggZm9yIHRoZSBhYm92ZSBpbiBteSBT
+TU1VdjMgZGV2IHNlcmllcyBoZXJlLA0KaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZl
+bC8yMDI1MDcwMzA4NDY0My44NTc0MC0yLXNoYW1lZXJhbGkua29sb3RodW0udGhvZGlAaHVhd2Vp
+LmNvbS8NCg0KUGxlYXNlIHRha2UgYSBsb29rIGFuZCBsZXQgbWUga25vdyBpZiBpdCBkb2Vzbid0
+IG1ha2Ugc2Vuc2UuDQoNClRoYW5rcywNClNoYW1lZXINCg0K

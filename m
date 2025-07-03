@@ -1,70 +1,70 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp506669dyc;
-        Thu, 3 Jul 2025 05:40:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUJ4nc2i9DQG0xgdKEwzn3E2NVxkwjKkuRiBJRtXLJ7pcQQJeIx6wMKTR4vPTYMJ71mfngUwvcV0zJ3tQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFUPrLRcoSLTNHUYIHsT/yhrtR9i0t5W3sEXYMxmOiO6vrNCdjzFXKhmX/eA04CRwR2hut/
-X-Received: by 2002:a05:620a:448b:b0:7d4:4d60:3bfa with SMTP id af79cd13be357-7d5d146142cmr524212685a.32.1751546446930;
-        Thu, 03 Jul 2025 05:40:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751546446; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp506728dyc;
+        Thu, 3 Jul 2025 05:40:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWgXQ2X+kJOnYG4qCtreB+/gRPJxGqn5ki7RPezA1Ifr7jLD4vgaLHHAOkYP7/uVUazkx+p4intgpR6CQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFVPDxt2Bxo7BqbjtPaj2W69UqCkMVK0zH1ivXRpuO3PHJuZoTp/KJI/xJIjgMQwGDuwyYz
+X-Received: by 2002:a17:90a:eb0a:b0:312:f2ee:a895 with SMTP id 98e67ed59e1d1-31a9d5df646mr2971256a91.31.1751546454240;
+        Thu, 03 Jul 2025 05:40:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751546454; cv=none;
         d=google.com; s=arc-20240605;
-        b=KGikWfwqbPkCRryTb+yQDkbtQH/mN+Z27/cJw1IQnAPCZqhEvMUzI+5YSD7+GlBmUq
-         HbMZunANzvSyA/dcBEvPbfvc1dGiheOoxAj8qdRKFtU0sPH3k5kfvWPAV1MKiV65D/X1
-         Rv+imhMBL2C5/TLvZQqVKGBmI041IuOhmZgj8Robsao79mwHIvGkqgRNrcWJQwiCNZGd
-         jmPpSGPScuZOc3EcYGqE+3Qq6z1CaZO+BELhhe2+46Rd8OW5AQ6SFFcHoP2EUSmSGRec
-         aEPaq0gVEDb2AFqQ4/tJDb7ptaUIcPbm1vp2SK6foD0E7SMjEVLSh//bJ43gVjeGla5j
-         zQoA==
+        b=LKzyOBzllEu0rfIPhc8G9Rqc0s3zrjAdClZcpLX35SsSIgfIm8m3mvqO1CvacrLexl
+         R/9FFDmpt5+OevatyLBveUaG6htUl9XXNCgfpEBOFnZv2nCPzdqHegMHS7+yojNaXtjY
+         X+oymQOw/n5NmOCLkl7jeybP3/VoRKTC0eU7zpbWBBH/r/CYSpFhbU3DIHRBNb3WD8ZJ
+         zIP2e4Zx1fGgUdQSscu24YX0FMlR62wnOWtcqnmQRFPZpsfqpvXSg8OvDI6Puua0DoAh
+         8ixEk4GjPQV2/6/LiXrc2UxwI1msXFq929NReIMIx0JMlwfV2XhP3FUEMHrrcROn2nQW
+         W8mA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=TyMY/wK3HEYC3QDJ06OrdRZLREBhcdwj8DHiOhLxrrU=;
+        bh=OjtNEiXPJAImEXGm/zclHDOBKKUKXlJlaBVZEQKMvtA=;
         fh=wjCXBlYiEFaE/nRXdXhm/QzbgpklGNl9u9+2G4gHJbk=;
-        b=Cd8cKD5NTM9vsZSt5QGIIahlitk5xraiRsjzzRWfFqAlyY0DF6r0szyrMaAlrbL9vV
-         JIa62Y1NbsJ/DZpeYE9oBCVSo6K6wP/TeJ+G3pFo4NxOZU+XthLMAibi3hbOWAvGFUMz
-         4GwBDAxcDbW2bMTqsVtjgj6xemdNYNoWV5I15d2iwWRhYyyLZ1Ma4mMiXt6sWdkAxGAg
-         NM8XvVM5mvSic5QvaW/DR0X20af4o/Mh3j7tV9oAVLAZ6whwQV+qUQfa6JToYYu9swTe
-         wQq5XtW+sbKt1Z7ZLeey+TlCsBYol/4xQ/xb8y4pve9mkCAjtIsq5NvhCTfl5fjXoweD
-         kDzQ==;
+        b=V3NRuSVnYxrh3hbOYSgWvJERhH65j2st99ynURuv6yzEJyaH1GtVAQGYcrq6K8iN8M
+         jrvmogdD5eST8w6SEpEgoPiwzF0S6GL7z88bpZWC9r/lSFozGmD1+Dxy/WfHq9nk3ele
+         ya/48aF+hHadpOvLJjx7enVfQ2RH3WSISnJawfo8gDI6AbHyP1nnxAZFAwPGadYThC62
+         lxEQFZpeGqx7E8XbKlJbo4BCYpAD1BJGDDjBsFgGhS5/Pis3UaneUyNG21Ckj4+LLnoQ
+         UsaAq6OyJBjjU5XfaW25ToXBYdx2OykiG9+dzHRj7Rdh2mftH74hraYgY9xOJgnG2yej
+         uVsw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dnuquSMV;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=br6KyyPl;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 Return-Path: <eric.auger@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7d4509c0397si1094199085a.191.2025.07.03.05.40.46
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-31a9cc67da1si2639728a91.56.2025.07.03.05.40.53
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Jul 2025 05:40:46 -0700 (PDT)
+        Thu, 03 Jul 2025 05:40:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dnuquSMV;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=br6KyyPl;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1751546446;
+	s=mimecast20190719; t=1751546453;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=TyMY/wK3HEYC3QDJ06OrdRZLREBhcdwj8DHiOhLxrrU=;
-	b=dnuquSMVyE6+CKTe9JwXTZB+gM4ldxHUhsHB03Gawkl2AUX2jv/gy+xP/rX2N9I2gKohRJ
-	guGVdlvZ1OjwFUxoxCzi5gVPA/IqFIHPnoyZ/s9sFAYt893SE6xEg3+IdoyaRjqwEVm0Wd
-	JM3CMTyqzkm5/yM701fxH9RM00H8Kn4=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+	bh=OjtNEiXPJAImEXGm/zclHDOBKKUKXlJlaBVZEQKMvtA=;
+	b=br6KyyPlsUxKIsVJnKATJGEfZWhRyQxyutsPuYITvLD+5GYBji2cjKXsU2pa7N/Q16EVLa
+	AOLyzntd8yznmRt8lYKzTrRpZBmzqICuhiYG9pinpqKfXP0kc+9+ETx+79U6A2GrKUnX8T
+	u4oMUsbrdhtwjSy+BOKbtjv5rxH8vOc=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-192-_Y8iJyw2NKmys08qXP3Upw-1; Thu,
- 03 Jul 2025 08:40:42 -0400
-X-MC-Unique: _Y8iJyw2NKmys08qXP3Upw-1
-X-Mimecast-MFC-AGG-ID: _Y8iJyw2NKmys08qXP3Upw_1751546441
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-474-JlgVZIhvP1urmqHJ-FT5lQ-1; Thu,
+ 03 Jul 2025 08:40:49 -0400
+X-MC-Unique: JlgVZIhvP1urmqHJ-FT5lQ-1
+X-Mimecast-MFC-AGG-ID: JlgVZIhvP1urmqHJ-FT5lQ_1751546447
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 722DE1954198;
-	Thu,  3 Jul 2025 12:40:41 +0000 (UTC)
+	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B04A6180136B;
+	Thu,  3 Jul 2025 12:40:47 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.16])
-	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 05786180045B;
-	Thu,  3 Jul 2025 12:40:34 +0000 (UTC)
+	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 06038180045B;
+	Thu,  3 Jul 2025 12:40:41 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com,
 	eric.auger@redhat.com,
@@ -80,23 +80,32 @@ To: eric.auger.pro@gmail.com,
 Cc: pbonzini@redhat.com,
 	philmd@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v5 35/36] qtest/bios-tables-test: Generate reference blob for DSDT.hpoffacpiindex
-Date: Thu,  3 Jul 2025 14:35:35 +0200
-Message-ID: <20250703123728.414386-36-eric.auger@redhat.com>
+Subject: [PATCH v5 36/36] qtest/bios-tables-test: Generate reference blob for DSDT.acpipcihp
+Date: Thu,  3 Jul 2025 14:35:36 +0200
+Message-ID: <20250703123728.414386-37-eric.auger@redhat.com>
 In-Reply-To: <20250703123728.414386-1-eric.auger@redhat.com>
 References: <20250703123728.414386-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-TUID: edYrDfr5r/Bq
+X-TUID: mKJ11BwUsyYa
 
-The disassembled DSDT table is given below
+The disassembled DSDT table is given below.
 
+/*
+ * Intel ACPI Component Architecture
+ * AML/ASL+ Disassembler version 20210604 (64-bit version)
+ * Copyright (c) 2000 - 2021 Intel Corporation
+ *
+ * Disassembling to symbolic ASL+ operators
+ *
+ * Disassembly of ../tests/data/acpi/aarch64/virt/DSDT.acpipcihp, Thu Jul  3 05:16:27 2025
+ *
  * Original Table Header:
  *     Signature        "DSDT"
- *     Length           0x000014E3 (5347)
+ *     Length           0x0000183A (6202)
  *     Revision         0x02
- *     Checksum         0x92
+ *     Checksum         0x98
  *     OEM ID           "BOCHS "
  *     OEM Table ID     "BXPC    "
  *     OEM Revision     0x00000001 (1)
@@ -1891,7 +1900,7 @@ DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
                     CreateDWordField (Arg3, 0x04, CDW2)
                     CreateDWordField (Arg3, 0x08, CDW3)
                     Local0 = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
-                    Local0 &= 0x1F
+                    Local0 &= 0x1E
                     If ((Arg1 != One))
                     {
                         CDW1 |= 0x08
@@ -1971,6 +1980,13 @@ DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
                 {
                     Notify (PWRB, 0x80) // Status Change
                 }
+
+                If (((Local0 & 0x10) == 0x10))
+                {
+                    Acquire (\_SB.PCI0.BLCK, 0xFFFF)
+                    \_SB.PCI0.PCNT ()
+                    Release (\_SB.PCI0.BLCK)
+                }
             }
         }
 
@@ -1978,6 +1994,95 @@ DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
         {
             Name (_HID, "PNP0C0C" /* Power Button Device */)  // _HID: Hardware ID
             Name (_UID, Zero)  // _UID: Unique ID
+        }
+    }
+
+    Scope (_SB.PCI0)
+    {
+        OperationRegion (PCST, SystemMemory, 0x090C0000, 0x08)
+        Field (PCST, DWordAcc, NoLock, WriteAsZeros)
+        {
+            PCIU,   32,
+            PCID,   32
+        }
+
+        OperationRegion (SEJ, SystemMemory, 0x090C0008, 0x04)
+        Field (SEJ, DWordAcc, NoLock, WriteAsZeros)
+        {
+            B0EJ,   32
+        }
+
+        OperationRegion (BNMR, SystemMemory, 0x090C0010, 0x08)
+        Field (BNMR, DWordAcc, NoLock, WriteAsZeros)
+        {
+            BNUM,   32,
+            PIDX,   32
+        }
+
+        Mutex (BLCK, 0x00)
+        Method (PCEJ, 2, NotSerialized)
+        {
+            Acquire (BLCK, 0xFFFF)
+            BNUM = Arg0
+            B0EJ = (One << Arg1)
+            Release (BLCK)
+            Return (Zero)
+        }
+
+        Method (AIDX, 2, NotSerialized)
+        {
+            Acquire (BLCK, 0xFFFF)
+            BNUM = Arg0
+            PIDX = (One << Arg1)
+            Local0 = PIDX /* \_SB_.PCI0.PIDX */
+            Release (BLCK)
+            Return (Local0)
+        }
+
+        Method (PDSM, 5, Serialized)
+        {
+            If ((Arg2 == Zero))
+            {
+                Local0 = Buffer (One)
+                    {
+                         0x00                                             // .
+                    }
+                If ((Arg0 != ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+                {
+                    Return (Local0)
+                }
+
+                If ((Arg1 < 0x02))
+                {
+                    Return (Local0)
+                }
+
+                Local1 = Zero
+                Local2 = AIDX (DerefOf (Arg4 [Zero]), DerefOf (Arg4 [One]
+                    ))
+                If (!((Local2 == Zero) | (Local2 == 0xFFFFFFFF)))
+                {
+                    Local1 |= One
+                    Local1 |= (One << 0x07)
+                }
+
+                Local0 [Zero] = Local1
+                Return (Local0)
+            }
+
+            If ((Arg2 == 0x07))
+            {
+                Local2 = AIDX (DerefOf (Arg4 [Zero]), DerefOf (Arg4 [One]
+                    ))
+                Local0 = Package (0x02) {}
+                If (!((Local2 == Zero) || (Local2 == 0xFFFFFFFF)))
+                {
+                    Local0 [Zero] = Local2
+                    Local0 [One] = ""
+                }
+
+                Return (Local0)
+            }
         }
     }
 
@@ -2034,67 +2139,189 @@ DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
             Device (S00)
             {
                 Name (_ADR, Zero)  // _ADR: Address
+            }
+
+            Name (BSEL, One)
+            Scope (S00)
+            {
+                Name (ASUN, Zero)
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
-                    Local0 = Package (0x01)
+                    Local0 = Package (0x02)
                         {
-                            0x0C
+                            Zero,
+                            Zero
                         }
-                    Return (EDSM (Arg0, Arg1, Arg2, Arg3, Local0))
+                    Local0 [Zero] = BSEL /* \_SB_.PCI0.S38_.BSEL */
+                    Local0 [One] = ASUN /* \_SB_.PCI0.S38_.S00_.ASUN */
+                    Return (PDSM (Arg0, Arg1, Arg2, Arg3, Local0))
+                }
+
+                Name (_SUN, Zero)  // _SUN: Slot User Number
+                Method (_EJ0, 1, NotSerialized)  // _EJx: Eject Device, x=0-9
+                {
+                    PCEJ (BSEL, _SUN)
                 }
             }
+
+            Method (DVNT, 2, NotSerialized)
+            {
+                If ((Arg0 & One))
+                {
+                    Notify (S00, Arg1)
+                }
+            }
+        }
+
+        Name (BSEL, Zero)
+        Scope (S00)
+        {
+            Name (ASUN, Zero)
+            Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
+            {
+                Local0 = Package (0x02)
+                    {
+                        Zero,
+                        Zero
+                    }
+                Local0 [Zero] = BSEL /* \_SB_.PCI0.BSEL */
+                Local0 [One] = ASUN /* \_SB_.PCI0.S00_.ASUN */
+                Return (PDSM (Arg0, Arg1, Arg2, Arg3, Local0))
+            }
+
+            Name (_SUN, Zero)  // _SUN: Slot User Number
+            Method (_EJ0, 1, NotSerialized)  // _EJx: Eject Device, x=0-9
+            {
+                PCEJ (BSEL, _SUN)
+            }
+        }
+
+        Scope (S08)
+        {
+            Name (ASUN, One)
+            Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
+            {
+                Local0 = Package (0x02)
+                    {
+                        Zero,
+                        Zero
+                    }
+                Local0 [Zero] = BSEL /* \_SB_.PCI0.BSEL */
+                Local0 [One] = ASUN /* \_SB_.PCI0.S08_.ASUN */
+                Return (PDSM (Arg0, Arg1, Arg2, Arg3, Local0))
+            }
+
+            Name (_SUN, One)  // _SUN: Slot User Number
+            Method (_EJ0, 1, NotSerialized)  // _EJx: Eject Device, x=0-9
+            {
+                PCEJ (BSEL, _SUN)
+            }
+        }
+
+        Method (DVNT, 2, NotSerialized)
+        {
+            If ((Arg0 & One))
+            {
+                Notify (S00, Arg1)
+            }
+
+            If ((Arg0 & 0x02))
+            {
+                Notify (S08, Arg1)
+            }
+        }
+
+        Device (PHPR)
+        {
+            Name (_HID, "PNP0A06" /* Generic Container Device */)  // _HID: Hardware ID
+            Name (_UID, "PCI Hotplug resources")  // _UID: Unique ID
+            Name (_STA, 0x0B)  // _STA: Status
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                IO (Decode16,
+                    0x0000,             // Range Minimum
+                    0x0000,             // Range Maximum
+                    0x01,               // Alignment
+                    0x18,               // Length
+                    )
+            })
+        }
+
+        Scope (S38)
+        {
+            Method (PCNT, 0, NotSerialized)
+            {
+                BNUM = One
+                DVNT (PCIU, One)
+                DVNT (PCID, 0x03)
+            }
+        }
+
+        Method (PCNT, 0, NotSerialized)
+        {
+            BNUM = Zero
+            DVNT (PCIU, One)
+            DVNT (PCID, 0x03)
+            ^S38.PCNT ()
         }
     }
 }
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- tests/qtest/bios-tables-test-allowed-diff.h      |   1 -
- tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex | Bin 0 -> 5347 bytes
+ tests/qtest/bios-tables-test-allowed-diff.h |   1 -
+ tests/data/acpi/aarch64/virt/DSDT.acpipcihp | Bin 0 -> 6202 bytes
  2 files changed, 1 deletion(-)
 
 diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index 02f4f0b29f..dc3ab24d05 100644
+index dc3ab24d05..dfb8523c8b 100644
 --- a/tests/qtest/bios-tables-test-allowed-diff.h
 +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,3 +1,2 @@
+@@ -1,2 +1 @@
  /* List of comma-separated changed AML files to ignore */
- "tests/data/acpi/aarch64/virt/DSDT.acpipcihp",
--"tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex",
-diff --git a/tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex b/tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..970d43f68bca060361105f70dbb00b3a25646db4 100644
+-"tests/data/acpi/aarch64/virt/DSDT.acpipcihp",
+diff --git a/tests/data/acpi/aarch64/virt/DSDT.acpipcihp b/tests/data/acpi/aarch64/virt/DSDT.acpipcihp
+index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..8d55a877a40cb4c4dffdc70378204e12d2261a75 100644
 GIT binary patch
-literal 5347
-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
+literal 6202
+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
+R?PfR*|6}}@w~&H!{sU733QPb1
 
 literal 0
 HcmV?d00001

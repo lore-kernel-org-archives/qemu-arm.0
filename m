@@ -1,149 +1,157 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp537716dyc;
-        Thu, 3 Jul 2025 06:31:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX6LwtBG3URJtwg/4+2O4hUs8E79AO3oFOKHR5rehPp7ADMcWMcqkCuq90R2UsJlZshBdXgGnINaDElJQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE2S7w0kyBwWNTSmqpT6gyOcmHEx1SxpmQ6G0CxEZ1645Ne6RCmShA9y/9WnTjtioxdW+9L
-X-Received: by 2002:a05:6000:2d09:b0:3a5:26fd:d450 with SMTP id ffacd0b85a97d-3b20110b55fmr3710066f8f.47.1751549475097;
-        Thu, 03 Jul 2025 06:31:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751549475; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp546353dyc;
+        Thu, 3 Jul 2025 06:45:46 -0700 (PDT)
+X-Received: by 2002:a05:600c:6792:b0:450:c20d:64c3 with SMTP id 5b1f17b1804b1-454a370308cmr82364515e9.18.1751550346018;
+        Thu, 03 Jul 2025 06:45:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751550346; cv=none;
         d=google.com; s=arc-20240605;
-        b=hR1WP22kBPIMLHK/AnXf4F4kmVoa5NmH0kIMiqBS09wp2Pitqo8ky28M2ljjAuM4k6
-         TFaoXeaa0RqcX5OY24T6dMMxldoD9EDhatTzpGU3M+1gx3Yf9J/u/pn9aR8P27C7zN1o
-         N/Pq+G7JfuHkXkPU2sn4dKR2JJlyXi/jgx+aYdUg80BdCo7M1M3fl4pDxa7dDuGy4FSa
-         Chnk5rn3hHCnjHrjKlG11mMQmkzrPOpDoJ3AD7JIxrQ7+xudqAoUtWF6kbgSq2ci/wzI
-         i1gjjekMyol+bjB1XtIABjFGdoRWYq5jINAEeL/tMJQ8HTBpSZrY/iJERoGsiF3FEIG+
-         KOrQ==
+        b=PdfTbgbZzoMaOkxYCxGirFz8gjFILOGvFbO8tLHwjqVtIx/xwws3TJBAcgssy435Yb
+         h1iAyrutgGaZ5NQUO57QyUzsx7kc5M2do6DLxp3N9VUf9LYkPmyaKc92UbnaEJeGVQ19
+         q128G2UO4c5d60TfF2md+H775Huxehy+5FOV8Plw1KnbgAoIrmkXZl066IkBh1Cr6J2L
+         JDYWsynUOlHmcJMQqiiteDEl7RaRQbnYZ1sUY8rjXpG6yuuiiUO2y/Tjf3lsD8G4v514
+         PigHEKFkzKGKimvVbUZsfOmeBWXoxD+ExyQjUfhrcIAJZeob2y/9qhEDMLN9Mwe8qa5t
+         dEow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=m6ZRNcbpmPTdg4qBCLOqhMjI3q2CvUugVQV3teZrbT8=;
-        fh=/ftcwOPYeEIhzseC7WF42kR+xVR/IJiWpLC1+A7SOWQ=;
-        b=E3UFXC5InUv1VCP2vOg8va1iQseMu0JwZmIRjRF/Vt7bwtL++C9mrnH4JvYzHkBBll
-         x0nSPtpwqY2x64V2zbys+13T9QvSuR7uNQwf16yZLJ8cT5pv7ec7e2fE+mMDeAKRlkYj
-         aFMmHoLGLqOIrbERoqfdg/dPPxldLziN8h6XXG9KSl7S0BW6ag3OI38kD5nUf3CXToqO
-         nY+t2nBDA5fYttmDGocz2vNPi/Recq/Pf59/IZJjbvEeSwI6VFgSgpVP5Dr23FWpOIAV
-         GTSpIpG4q7jAqHxiea6glX/99ArnhObxzJkrnsm92He7oTd/aRdlcnaFZypIApqgyc/n
-         i/DA==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=bzgfIYKT0pu2euhC4Y01ktX+iPTZDzQ4TCdcNhT2AOU=;
+        fh=l1Qp56R5L6Cd4rzhr8AK/gTURDudv5Ma4ylpxSHh0d8=;
+        b=Hp2SWf/COYpO5BxZm3OM/DSFY++MswUSURhR1EjuolA7dsW5hXvTYzWEQHPYEBmGrD
+         vfVxjlzgGAXyCFbjqsETofJEW10iQVbu44zpc7gQPZC7BwlEtnfziqmUMV6MgNIXXLIb
+         uSbUJsGIJSB52gwT7C+Rzbtc+N7dtFkn2d93oQG9jvmeM/cN1HfWS3ziGiKaEGafjCkW
+         PxY9vyjzio5opcK9JX4Tt+GdnQv2SwUS5I/tMm4EGM/4wX20lQoiGct9fAJVDVHUlo6Q
+         jH18KUYj+ZJUSeHNH0hgDMtiFxaEZpcDRutzqfUqdRQlrA2egkcvBhBhf2KyQuImUr2+
+         G0Gw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jvRn3zVW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=qQTMM+bZ;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3a8a081eb23si10997232f8f.811.2025.07.03.06.31.14
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-454b05ab481sor1988645e9.7.2025.07.03.06.45.45
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Jul 2025 06:31:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 03 Jul 2025 06:45:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jvRn3zVW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=qQTMM+bZ;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uXK1h-0005Ud-1j; Thu, 03 Jul 2025 09:30:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uXK1U-0005RO-La
- for qemu-devel@nongnu.org; Thu, 03 Jul 2025 09:30:44 -0400
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uXK1O-00084F-5g
- for qemu-devel@nongnu.org; Thu, 03 Jul 2025 09:30:44 -0400
-Received: by mail-yw1-x1132.google.com with SMTP id
- 00721157ae682-70f94fe1e40so11532097b3.1
- for <qemu-devel@nongnu.org>; Thu, 03 Jul 2025 06:30:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751549435; x=1752154235; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=m6ZRNcbpmPTdg4qBCLOqhMjI3q2CvUugVQV3teZrbT8=;
- b=jvRn3zVWZRdFMUFJT+4Q0Cs/afToi+mfkcFBKMub7X1J82BlXTHJMFaw+KWSn/maFI
- lROpsn0xKzjWDgv/UCYZfeIYpX0Ui5BPN0Xk+9coIJtZwQ0gusKKBx6H7FQ5VIbs8Dhv
- A4qEJzoFlJgX24NPeSYVCPRfwOiVrOEMMZTgJnEpx+QAuompbVoCn+SK7cxOY3QR6KtS
- WODjvCbtmQ/bmW45HxHrsbQy99E63TSWW+ZJ4sQtAVwVK7R0VM1HLFjIc+4vZZjhj5yl
- eZ81MhhEcXY6iyUa7QaNPcVRL12IkwiqjCgajq4IEh3J5QtU7tZ9qcq7cdHRNiXlKtD8
- NFTw==
+        d=linaro.org; s=google; t=1751550345; x=1752155145; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=bzgfIYKT0pu2euhC4Y01ktX+iPTZDzQ4TCdcNhT2AOU=;
+        b=qQTMM+bZFRyOriKJ3SD0Iq1LzoIAW1Pa9VGWRnotCr2E8GVz5ktJeXBJYK97Jm+Mss
+         AzmQoZVgsWqRwLdp9otoz2LLi8PZ7duVh0+kIVizFNDj/fIxKv+lt0nX4hr2ixcnVgml
+         RtGCWBxPvDPouREkcJhCZkDEJvepBCFrVZT+zE+E3tGAqXFYKIXKi/YS5vidFHTluu1m
+         3pNXWNBHMDH+YjkDsDKrppYmfdHICfOT3rp4K7GszXNV5H+NNbBamKtO6u1fQ0huXIXE
+         xt96sePje1fnPrHyLrUfqfwjGgWrnDCrt4YLdGrBmc/wPNHF7yMZbPi7bcHb/EI++PMl
+         H+MA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751549435; x=1752154235;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=m6ZRNcbpmPTdg4qBCLOqhMjI3q2CvUugVQV3teZrbT8=;
- b=rVc0+Se+PEmH8djsiWgLhje/2ja+O1ld8pWK4XYdqmeUo0OPOGazHeH3Qz/+UaB/1u
- WUCzpnI9HdLQN/LtRBHv65kwsEl6R4h+KsVTMCgReFCoSlB9gfNUBI5ib4V+zSrGzwcO
- AYtUcN+8zgEoSUnwhOqo9L7+D2pz6FS0RAzcfULrlVh+w6g75JstlKvpXNNbxjbuQiy4
- Yb5/1xWmbB+DnjBoMHF1Nhx7UC79088UKFtw6a6nIFbaorli0sxBD5NoRagp+WLjtjeN
- opxmMpwoUvK9yAAGPn8g9Oc0PeHIiL5EKDxZ0lMxfLntHpeSN4fYg9+2GfPNIVM+PtXX
- 9rAA==
-X-Gm-Message-State: AOJu0Yy7+LQk3WWunqHFGF4EfLv22q/iLhevEYf8sax4H2faRcQz9Xzu
- NTQkeZ/kQCzF9N2Yfxop+n8lPy2AyFgG/NrWWzNZF1fXfQo4YmHBrRTKvXMbdh3NvGXF3jvCBIk
- oL5qtAJ5dQQUL486Wu8x/BZ7k6JQQkXEfwcfjRmIjZP+kcFfPO/17
-X-Gm-Gg: ASbGnct8sbNfsS9X4EFVkudGPfsJgZIZX7lHBSItDNL0D7TQqOHr+V1HnPZEAD2jcKK
- mw7cODJUiS3E/fGpJxKmgWHRpeiAjQ5zA9q76v4sbYo13CvTSCBEN+yB4tMubvprCoYyGCFSBJX
- TWbuBDpp6Y8p+XgH20fc4/TRYWUR6onxnapxZhO/pQqRUirqAru/h7IZ0=
-X-Received: by 2002:a05:690c:358a:b0:715:966:f67b with SMTP id
- 00721157ae682-7165ca5df21mr28523497b3.5.1751549435351; Thu, 03 Jul 2025
- 06:30:35 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1751550345; x=1752155145;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=bzgfIYKT0pu2euhC4Y01ktX+iPTZDzQ4TCdcNhT2AOU=;
+        b=gbY4Yqb7ZH+5GJNaK7oEtCWTO5dOUlIgH5OhCecEWv2riuqhO3B6yQzjUrrdxwBu+a
+         OSachB9jk++dqtyOmi/9mofqwdEnC5+s5yQ42zkZo4gPb8E9n72tZ6chpLXxB+6bodsy
+         pP9kwU6xUfT1wO1qUlklEj9+CpFJIvNS/hVnZKfIXKr0qK8H49i1M6clyKBf0OWH9NU1
+         nRNEOSGI7UFzKgU10S78MPaNUHyi7UkBNPmATDYGqhRlyYO2lVMOHTUWpBFemcvQQN1/
+         7nLi4uKUnqZgcYyFM9PWlGxaLKATtxDu0tTV7N+gwBwyGGFaDCUDqDI09ksvFTgueY71
+         krLw==
+X-Gm-Message-State: AOJu0YztkkSHJ0nE3OnGu/I1t2ku3EBEqH+5ZL+peFcwIyRpLfuOW0pA
+	eJfphUXXuKX9rMXcAQUsmhH1LrVePMRyzAUML4qFqQPJn9xLaeuNqeUWgLVvuwMKBltWHw==
+X-Gm-Gg: ASbGncuO3skkPCF2CJ5l+zqkgldvH2qnE+SApmHy45riklX69CNCva+INCU61sl7MyN
+	0N95kyA4kYZRmOrNZUuFAOwFEa+AzhnqPLHJmZG8XtXDBVPnYQZo/XYrXwHSLWElMBwB3VKtTOj
+	gknorHDR3pzcjuJ+pFZQ0yKJ5ak/X/0fsRLUbWcRD90v3f3ApNMP0giaFz071439f7xl12Un3lu
+	LZNhsQ3FeIBNNNut5+oZjbAmUPJinhXoCq9GaOac8HXWhkykvii6RgxszySgL4emu2O6w4GV9Ku
+	FFLpIbhUbxRPpqNesbkf/9yHybDR7AO1+/OysSjKZbjiTmEketOm9SJn3wa1XLp7tr1bj65mU38
+	Dsla9o/CrBcCaB4w+fQ+oym8xmBTJ/w==
+X-Google-Smtp-Source: AGHT+IHIBfzPNtmnIof400Agn8RwX1HvW/bLZV3KILkNnKHgCIfoputch4xZsSGQwe362Ldh+mT2Sg==
+X-Received: by 2002:a05:600c:8b10:b0:453:745:8534 with SMTP id 5b1f17b1804b1-454aa80da70mr34354995e9.12.1751550345370;
+        Thu, 03 Jul 2025 06:45:45 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.218] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a892e5f34csm18323235f8f.85.2025.07.03.06.45.44
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 03 Jul 2025 06:45:44 -0700 (PDT)
+Message-ID: <364dc354-ba78-47c6-ac65-2c0282e28733@linaro.org>
+Date: Thu, 3 Jul 2025 15:45:43 +0200
 MIME-Version: 1.0
-References: <20250702123410.761208-1-richard.henderson@linaro.org>
- <20250702123410.761208-83-richard.henderson@linaro.org>
-In-Reply-To: <20250702123410.761208-83-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 3 Jul 2025 14:30:22 +0100
-X-Gm-Features: Ac12FXwDt9XmpScOUEC5t1hS1b5pRq_XATdjmTfRndjlOQRfKg5cXOc4aBSn73w
-Message-ID: <CAFEAcA8MXPx-LazyhKjKbCSK18VLc0aLXAYr=Y2fDK8YymtzSg@mail.gmail.com>
-Subject: Re: [PATCH v3 82/97] target/arm: Implement SME2 counted predicate
- register load/store
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SeanX5mQQGqb
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 47/69] target/arm: Use generic hwaccel_enabled() to
+ check 'host' cpu type
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, kvm@vger.kernel.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+References: <20250703105540.67664-1-philmd@linaro.org>
+ <20250703105540.67664-48-philmd@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250703105540.67664-48-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: 7bVHHAZ/3rAm
 
-On Wed, 2 Jul 2025 at 13:41, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Implement the SVE2p1 consecutive register LD1/ST1,
-> and the SME2 strided register LD1/ST1.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+On 3/7/25 12:55, Philippe Mathieu-Daudé wrote:
+> We should be able to use the 'host' CPU with any hardware accelerator.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/tcg/helper-sve.h    |  16 ++
->  target/arm/tcg/sve_helper.c    | 493 +++++++++++++++++++++++++++++++++
->  target/arm/tcg/translate-sve.c | 103 +++++++
->  target/arm/tcg/sve.decode      |  50 ++++
->  4 files changed, 662 insertions(+)
+>   target/arm/arm-qmp-cmds.c | 5 +++--
+>   target/arm/cpu.c          | 5 +++--
+>   2 files changed, 6 insertions(+), 4 deletions(-)
+> 
+> diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+> index cefd2352638..ee5eb1bac9f 100644
+> --- a/target/arm/arm-qmp-cmds.c
+> +++ b/target/arm/arm-qmp-cmds.c
+> @@ -30,6 +30,7 @@
+>   #include "qapi/qapi-commands-misc-arm.h"
+>   #include "qobject/qdict.h"
+>   #include "qom/qom-qobject.h"
+> +#include "system/hw_accel.h"
+>   #include "cpu.h"
+>   
+>   static GICCapability *gic_cap_new(int version)
+> @@ -116,8 +117,8 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+>           return NULL;
+>       }
+>   
+> -    if (!kvm_enabled() && !strcmp(model->name, "host")) {
+> -        error_setg(errp, "The CPU type '%s' requires KVM", model->name);
+> +    if (!hwaccel_enabled() && !strcmp(model->name, "host")) {
+> +        error_setg(errp, "The CPU type 'host' requires hardware accelerator");
+>           return NULL;
+>       }
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Consider the following hunk squashed:
 
-thanks
--- PMM
+-- >8 --
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index eb8ddebffbf..bdd37cafecd 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -456,7 +456,8 @@ static void test_query_cpu_model_expansion(const 
+void *data)
+                   "ARM CPU type", NULL);
+      assert_error(qts, "max", "Parameter 'model.props.not-a-prop' is 
+unexpected",
+                   "{ 'not-a-prop': false }");
+-    assert_error(qts, "host", "The CPU type 'host' requires KVM", NULL);
++    assert_error(qts, "host",
++                 "The CPU type 'host' requires hardware accelerator", 
+NULL);
+
+      /* Test expected feature presence/absence for some cpu types */
+      assert_has_feature_enabled(qts, "cortex-a15", "pmu");
+---

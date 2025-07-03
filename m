@@ -1,391 +1,255 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp311813dyc;
-        Wed, 2 Jul 2025 22:12:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVAfezKSxNgdeLUb+eIR5I7nnopvWQEdc9TVH+EyjeBMhoH9tXrwnNya4CrCGx3QOpKh10BDSweTCjqhQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IG61NNfDY/VoAPt5U4UyBiJVWcMecrPwOt4H/RKKebaQMzsG9e46xdJjggXIlMLSbghm3uz
-X-Received: by 2002:a05:620a:2712:b0:7d4:635f:3e3a with SMTP id af79cd13be357-7d5d13e0381mr319639385a.19.1751519535337;
-        Wed, 02 Jul 2025 22:12:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751519535; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp366933dyc;
+        Thu, 3 Jul 2025 00:44:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCV+7r32/4khCpjJ/19KcoTcf/Rvy6acI70TBq75TTdwvucOYM+FEitWNtaze4siEzydNayA8RIqOFim3Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHTN8VHXWaM5SYux+HM6fJLkvoi1TPkEfq5pWGk0dPUSfk1R/QB54MIOjZ9Li9TyBkjmgty
+X-Received: by 2002:a05:620a:4445:b0:7d3:f0a1:30fb with SMTP id af79cd13be357-7d5c473cf6dmr918901985a.50.1751528661114;
+        Thu, 03 Jul 2025 00:44:21 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1751528661; cv=pass;
         d=google.com; s=arc-20240605;
-        b=e0J8wKnxGkWg0fZEN/gPLXzrhwXOMlyeI0uWe+svLsZiLOvGeaFrsAQwfcb5bWmJEe
-         +/RjPvBN3iIw2bTxpLQkmxXcHlP6FJ0IcLZAm8i4qqUppd+pb8KeNy2gjtt3tY/j05iF
-         I9QaE2cspYYiZvQF1noTlgaWza4NiRrTMaKsDMVyb88mteKJaMtMFhUs9cRt5MI+wcw6
-         7C8kpwwSuSruinvTW+OnhV630xqRKANmM2/YnVNx1DajgPi5LucQzJAaHT2BuNUZ67ml
-         RiFNmHBcT7aTG9kqbg9tCq3/BqCh267A09N1z30kTucoQEtJacHlQF9lUSgAWH2DxJFM
-         nmtA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=e409tKlSOQls0qfKIfh9Uq3MEqXSt50BS9oiWdfTBA4=;
-        fh=SzcnLup+XrgRB/Buxb8Au2Pb/W2LCJgT0rteLi80Cmk=;
-        b=Q76vokd1EXHZ1QMoeq6h4hHPmAsJkfjF4lEnx5k/C93LmIZbV7EICmXdfX5LHYZsXi
-         p4Bx9JO8ahUI5HG5yz0F/RMLMr5brvVWpJjen/USPlS7SZ0cl1ScYHGMRXp1stP7ZOmO
-         8f9++Aqstnwz19xDbKWQHlypt2UPuUknHpShXidDzOLJq1Pu8qD1d0dA/SrkrhIPnIXw
-         sxP6XXplyji16/A25qdpCFg/dE+vQx1TAPFdZ8jOnBMv1UC0Mpi8mpe8eT9M05yrFTGk
-         1WWOHvNEeKSbuH06h1BkiSBn1o8fz4aoIFiPdjPYCBoC8VwJFxv6yh85DpE2a64AtnLH
-         2fYw==;
+        b=CEPBjbqTbUnbtBccPCezNy+4FMjz5DwMY1HRqm06GtTyX02FUigUSzSpZvFPz5PyuC
+         0jbZGSj25FTF/F7yGWV1U4KIqbwdsBiIelqmj3ejxHMUklHHLwtD2NqFKOCiiYQV5OXw
+         RlB71OT82B2l125i0L7F46VEQx7jHSrd0+rnn6+zwAOvK72SpRd96+ETQGykhDGmBeyN
+         yXvpec8rx8A6TCRTsOaS4EHrMEeTjbuIuqbyYkJLl4VIMrYvKY2Kyn7sDWX/Zi9iOXRm
+         N06xQr0o2fwdvOKvNdoBMMFysxQiFhVP4w3jhsfw/gpAQorohI0Vkp4b4AWbJ5B7Hpjr
+         s6Zg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=FOVjTfM8lPOuepbXPThPUFgzNLKPE1kGl40fZJaWTd0=;
+        fh=K+gH7m/fV+V9o0lt7aj4XRx9Nv2+XTKjMVW8oCRYwH4=;
+        b=k1962jOPHre2/qCdRUpAH5Ob2Qi78BJTx37dg41Xosgbh5Zfb5nYblGaOJT8KztPMq
+         rILqc3SivPZ+lXihwj15vOLbjsd0MpX2yI8x8iWJ19uHrJRI01ftfB0eF9QNUCMHgc6b
+         UP5C2Q6IRiHLOZgG2WPfJ0Jxl3EsO0zYhxDSsk3B0zxS1i3V/BK4VknkG6coxQh/PRY9
+         MuTNmIosxu64tnAS34aJrNAT4ahbeL1X6H8ynO7dxgTyosaZgbjmyaUEYq7BfAQULa5s
+         PWt9Pf0FK0d9pGiNFQPew3jMgmOBxjgX6d9lYU2cBNrVVak8SFKQhGa3Q8UGdRL7V/3t
+         3ZMA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jCv8smGM;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7d44ff55e41si1084404585a.313.2025.07.02.22.12.15
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=opUZtIio;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7d443225927si1448178485a.169.2025.07.03.00.44.20
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Jul 2025 22:12:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 03 Jul 2025 00:44:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jCv8smGM;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1751519534;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=e409tKlSOQls0qfKIfh9Uq3MEqXSt50BS9oiWdfTBA4=;
-	b=jCv8smGMyplaD7iJzi6FoHJFeHhrooU7Gtfy+fUE8EmatzjjMiWF2p/aqtL2xrotfUO3z4
-	+NuwWWsRgsHHpQWQr520FTjy36QTf7n3G/SdwSnGdfzFt/DxO5+ZDnark1habfvoI3bLo3
-	ZFrPe9fukmI0XKk08Sh0JwbTcfxFZbo=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-549-4cvsYXO9O3iv8j9VWBqxTg-1; Thu, 03 Jul 2025 01:12:13 -0400
-X-MC-Unique: 4cvsYXO9O3iv8j9VWBqxTg-1
-X-Mimecast-MFC-AGG-ID: 4cvsYXO9O3iv8j9VWBqxTg_1751519532
-Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-3a6d1394b07so4967367f8f.3
-        for <alex.bennee@linaro.org>; Wed, 02 Jul 2025 22:12:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751519531; x=1752124331;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=e409tKlSOQls0qfKIfh9Uq3MEqXSt50BS9oiWdfTBA4=;
-        b=jEMMTPveY4SPqpJQO8W2OmkzyZW/+GEEUqeSJymvJwixvJEehNOsXbA2WdMbkrADB/
-         dEVMBWEBm5jtdNlzxzdYFPP++a94w9zU3KlteIlOkLSmUx2oS4SlSpVHP27NPaP849Dg
-         UAsr2xz4uUNfWMEgPo3SuqlTNm0iJLBzAelvPUfa5IrmKGB7Dn/Ghxzy2g7sp6d+ODgJ
-         OmKJD5RQ6xnWVr/OdVCUA79lxOnwrQriixcBZHcPdMf62pgggo9LPQycxd4pDqM9ZJhw
-         t6AYONMkwz619bkaexP72CvEK5roMaCrKRvYu8FHxybZeKU7aUi7RtfV/WMm28Bc3T16
-         Qyow==
-X-Forwarded-Encrypted: i=1; AJvYcCWSluffjojmvt7Z1SSer4pnnCcKQDUE6Ye4TuXqDgd7vytSl/7YOphlOQ6JsycBLe/IdvaOmqpPqiOOaA==@linaro.org
-X-Gm-Message-State: AOJu0YyVA1XG9M2dwpX+xE+s2coQad3/uzZetvm+s4jMoEncDID53oiH
-	b6YHzzlFOgDhtjjUmqlL/U6nWf46NqvJA2psQJX3IL90NaHOPzGvxsAZz5zuv8YFXWFJeZv8gcR
-	MA5fHk7SRr11cd+WEVhqbRl4pFS/4SqVkHTH2kw18jKx867YYvwTefGqQsA==
-X-Gm-Gg: ASbGncsh6wnKz9veIioJ8ITIrDif/2PX346XeVDmTR98xD9K0NqBhrh9HcBTigy/SU2
-	QgF2RdSazMdDmPgx52sT9BpfNwpT+bPEpfL6Gghrzf6K+ZdoTQhzslzduzGV82rI+MESK80i3dl
-	qD/GWIWU1ISdGiMSVMB3RSgrbLrYU8ikSX+tdTYl/sZ4g2lKFipk49L+o6FShPvG7DQ6ohe3wLK
-	oe7tabtMNnkI4RUQR4YXyHGkycTOQFqKGhQ3rK+YXl3oFbuHC04J/QpajOTUcHiOdM7cktjtVyP
-	TR8UfrJ4kiRvGVIEorYwOxT1611lC5/t9gwqAKzvvXrn+wd3HsSjBTNsw9xawosd8zJvPA==
-X-Received: by 2002:a05:6000:42c8:b0:3a5:1241:c1a3 with SMTP id ffacd0b85a97d-3b200d3393bmr2709500f8f.50.1751519530924;
-        Wed, 02 Jul 2025 22:12:10 -0700 (PDT)
-X-Received: by 2002:a05:6000:42c8:b0:3a5:1241:c1a3 with SMTP id ffacd0b85a97d-3b200d3393bmr2709489f8f.50.1751519530439;
-        Wed, 02 Jul 2025 22:12:10 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874? ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a892e52ca4sm17752357f8f.58.2025.07.02.22.12.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Jul 2025 22:12:09 -0700 (PDT)
-Message-ID: <5d84a15c-5b1e-465d-84c8-321a49ab6d4f@redhat.com>
-Date: Thu, 3 Jul 2025 07:12:08 +0200
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=opUZtIio;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uXEbb-000474-Jj; Thu, 03 Jul 2025 03:43:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1uXEbR-00046U-Us; Thu, 03 Jul 2025 03:43:31 -0400
+Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1uXEbP-0004gH-GJ; Thu, 03 Jul 2025 03:43:29 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=uKV2rrM6oDZRjuvDWkU8JXvlqHwAc1JnR54yR4H7oe4Ax3R7/SDhUCRzZhSABzQ8KaQp2Md61rn95YTox3C1EPhHZKyb0F2L76AyDMC9ZxXHesRShhqBL1BAF4Okkrxj7AL7F/bduxwWR6Yfea3R+JrrFeJGwK6TiNcULsrJqLwQMeHVFXPh0mNFQEui1j+6b4jcJ0U+FfTK/RLMHyAtIB2lOsaFFYVOmEdKWnSXsqqfdKVT6Z25HmoxIAepLl6khxwoNjwkWRDwIjPrtRL0lCpabiFlmLXUEjz1aUvLHUHeXD0Cdpbfu3LPJQ1vQSH1n8BEAfKkzg9qM54lsiBVWA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=FOVjTfM8lPOuepbXPThPUFgzNLKPE1kGl40fZJaWTd0=;
+ b=lEudRlqLC6tuMzVSrCBJqSLstCfuVqL/y1NBxgQbLJ9Efp+8zYHHcH0DqMHjVNroDrfIv5TrkIp5iobyJTkiZtTNKWRpM++zHdSHlLu44GlDun1ZV6k9JEpa0FHlAHZigzdppm4ogJvrzUrQq72/kL8KlwAi37ZLG4cog9DYt7gWcZGrz+8cSe9P+CSezuBI9XGsl3yNnr7aX6uV23KabPfBz7SKVTMAcbm0KT29RnXe9dwXlT/pB4cOuJgg9pWGb4h3pc083E2yrcH8FFbGGPOZ50eeVI+HcxB0aSc86NJkv1H6a9aEf05MSOMZu3e69Ht4dWiZikuKKm72+pLa3Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=FOVjTfM8lPOuepbXPThPUFgzNLKPE1kGl40fZJaWTd0=;
+ b=opUZtIioC737EjaQ9aNT4x+si01xNuAGZV6w/4F/IBhX5jhGC+MSkNTbM7bxNP2yPVmI0PTloQUwkFTGSvI3FYYssKsvIelfRBcK6O/iUv+RHZ7x5cDmDZE10c+4rKw4hbYZlBSUSiRt3x5yvIJzjT88MlishAsYqqs5mYSmmR+Vh3xsnAWVdXP9HDVU82g1XhnGeCpeBppWOicgMgE5RGr0LOdfNwS6YGf38+HKGBNqcMjTAH/D9I9U9zuU+N0KqD6U8YHQTjj2iGzGW4Io0cVPIY7bFFP1tl06VH0CO8vEgOHnU43SQ8rsfzyb8vsjPntQJGLRs+h8Fne3bzwnwA==
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
+ KL1PR06MB6324.apcprd06.prod.outlook.com (2603:1096:820:99::9) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8901.20; Thu, 3 Jul 2025 07:43:15 +0000
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::705a:352a:7564:8e56]) by SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::705a:352a:7564:8e56%7]) with mapi id 15.20.8880.029; Thu, 3 Jul 2025
+ 07:43:14 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
+ Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, Yunlin Tang
+ <yunlin.tang@aspeedtech.com>
+Subject: RE: [PATCH v1 00/18] Support AST2700 A1
+Thread-Topic: [PATCH v1 00/18] Support AST2700 A1
+Thread-Index: AQHba9K4uIwzG6e2E0KIgXebc6jl4LMwjV2AgOyWFICAAeBlEIAAXb4AgAGikUA=
+Date: Thu, 3 Jul 2025 07:43:14 +0000
+Message-ID: <SI2PR06MB504167DC9727E91F92198F84FC43A@SI2PR06MB5041.apcprd06.prod.outlook.com>
+References: <20250121070424.2465942-1-jamin_lin@aspeedtech.com>
+ <096e8152-ec19-4b2b-aa56-dd566ce7bb6d@kaod.org>
+ <9534dc4d-fdf6-418d-b5f7-9bc7f03bf7ec@kaod.org>
+ <SI2PR06MB504195531936785FFA2CA4BDFC40A@SI2PR06MB5041.apcprd06.prod.outlook.com>
+ <f4b1f8ae-691f-49b8-847c-19cac9445668@kaod.org>
+In-Reply-To: <f4b1f8ae-691f-49b8-847c-19cac9445668@kaod.org>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|KL1PR06MB6324:EE_
+x-ms-office365-filtering-correlation-id: 1be598e4-4d00-48b9-7edf-08ddba054480
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|1800799024|366016|376014|38070700018;
+x-microsoft-antispam-message-info: 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
+ =?utf-8?Q?W/SOUm+/p34=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE; SFS:(13230040)(1800799024)(366016)(376014)(38070700018); DIR:OUT;
+ SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: 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
+ =?utf-8?Q?M3ISmQ18rLP+CUjtKFP4y7JpW?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH v4 19/32] tests/qtest/bios-tables-test: Update ARM DSDT
- reference blobs
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, imammedo@redhat.com, gustavo.romero@linaro.org,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com,
- pbonzini@redhat.com, philmd@linaro.org, alex.bennee@linaro.org
-References: <20250627095620.3300028-1-eric.auger@redhat.com>
- <20250627095620.3300028-20-eric.auger@redhat.com>
- <f502c91e-ffea-4b39-bedf-9503fc45e568@redhat.com>
- <20250630133105.00002f43@huawei.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250630133105.00002f43@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: OJFHL-bD_3Ds9KkOzIctxZLE0Ot0-Us0ZgkfFN1D0ak_1751519532
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: akHpF3L8euZt
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1be598e4-4d00-48b9-7edf-08ddba054480
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Jul 2025 07:43:14.3182 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: WhYQEiyGIcYS2OcshXXaRzIdDkMvYzq4Jgeb/5Rh2YXNIPU6s4+3dXU4DgZj9EpbG/61ou8yQ9uE+fm/jvCKLDBcXEhMZ05Ec9P8mlX3lLA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR06MB6324
+Received-SPF: pass client-ip=2a01:111:f403:c405::7;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYDPR03CU002.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: De3vn44utvmY
 
-Hi,
-
-On 6/30/25 2:31 PM, Jonathan Cameron wrote:
-> On Fri, 27 Jun 2025 12:00:51 +0200
-> Eric Auger <eric.auger@redhat.com> wrote:
->
->> Hi,
->>
->> On 6/27/25 11:55 AM, Eric Auger wrote:
->>> Changes relate to the introduction of pieces related to
->>> acpi-index static support along with root ports with no hotplug.
->>>
->>> +
->>> +    Scope (\_SB.PCI0)
->>> +    {
->>> +        Method (EDSM, 5, Serialized)
->>> +        {
->>> +            If ((Arg2 == Zero))
->>> +            {
->>> +                Local0 = Buffer (One)
->>> +                    {
->>> +                         0x00                                             // .
->>> +                    }
->>> +                If ((Arg0 != ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
->>> +                {
->>> +                    Return (Local0)
->>> +                }
->>> +
->>> +                If ((Arg1 < 0x02))
->>> +                {
->>> +                    Return (Local0)
->>> +                }
->>> +
->>> +                Local0 [Zero] = 0x81
->>> +                Return (Local0)
->>> +            }
->>> +
->>> +            If ((Arg2 == 0x07))
->>> +            {
->>> +                Local0 = Package (0x02)
->>> +                    {
->>> +                        Zero,
->>> +                        ""
->>> +                    }
->>> +                Local1 = DerefOf (Arg4 [Zero])
->>> +                Local0 [Zero] = Local1
->>> +                Return (Local0)
->>> +            }
->>> +        }
->>> +
->>> +        Device (S00)
->>> +        {
->>> +            Name (_ADR, Zero)  // _ADR: Address
->>> +        }
->>> +
->>> +        Device (S08)
->>> +        {
->>> +            Name (_ADR, 0x00010000)  // _ADR: Address
->>> +        }
->>> +
->>> +        Device (S10)
->>> +        {
->>> +            Name (_ADR, 0x00020000)  // _ADR: Address
->>> +        }
->>> +    }  
->> after regenerating the blobs using
->>
->> ../tests/data/acpi/rebuild-expected-aml.sh
->>
->> I still get an error :
->> Using expected file 'tests/data/acpi/aarch64/virt/DSDT'
->> acpi-test: Warning! DSDT binary file mismatch. Actual
->> [aml:/tmp/aml-2YB972], Expected [aml:tests/data/acpi/aarch64/virt/DSDT].
->> See source file tests/qtest/bios-tables-test.c for instructions on how
->> to update expected files.
->> acpi-test: Warning! DSDT mismatch. Actual [asl:/tmp/asl-O0B972.dsl,
->> aml:/tmp/aml-2YB972], Expected [asl:/tmp/asl-NO6872.dsl,
->> aml:tests/data/acpi/aarch64/virt/DSDT].
->>
->> ../..
->>
->> -
->> -        Device (S10)
->> -        {
->> -            Name (_ADR, 0x00020000)  // _ADR: Address
->> -        }
->>      }
->>  }
->>  
->> **
->> ERROR:../tests/qtest/bios-tables-test.c:554:test_acpi_asl: assertion
->> failed: (all_tables_match)
->>
->> (test program exited with status code -6)
->>
->>
->> I don't get what is wrong.
->>
->> Thoughts?
-> I've hit so many problems over time with regenerating these I tend
-> to just blow away the build directory whenever this sort of
-> issue happens to make sure it's building a clean set.
->
-> Otherwise, no idea!
-
-I actually found the reason of this failure. The viot test for aarch64
-is missing a "variant" and this causes the DSDT ref blob to be overriden.
-
-Fixing that asap
-
-Cheers
-
-Eric
->
-> Jonathan
->
->> Eric
->>>  }
->>>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>
->>> ---
->>>
->>> above changes are reported after running make check V=2
->>> then I launched ../tests/data/acpi/rebuild-expected-aml.sh from the
->>> build directory and it putput those reference blobs.
->>>
->>> But I run make check V=2 after committing those changes I get and error
->>> which looks totally unexpected to me:
->>>
->>> acpi-test: Warning! DSDT binary file mismatch. Actual [aml:/tmp/aml-LZSL82], Expected [aml:tests/data/acpi/aarch64/virt/DSDT].
->>> See source file tests/qtest/bios-tables-test.c for instructions on how to update expected files.
->>> acpi-test: Warning! DSDT mismatch. Actual [asl:/tmp/asl-FTSL82.dsl, aml:/tmp/aml-LZSL82], Expected [asl:/tmp/asl-ZAWL82.dsl, aml:tests/data/acpi/aarch64/virt/DSDT].
->>> --- /tmp/asl-ZAWL82.dsl	2025-06-27 03:34:45.518848387 -0400
->>> +++ /tmp/asl-FTSL82.dsl	2025-06-27 03:34:45.514848036 -0400
->>> @@ -1,30 +1,30 @@
->>>  /*
->>>   * Intel ACPI Component Architecture
->>>   * AML/ASL+ Disassembler version 20210604 (64-bit version)
->>>   * Copyright (c) 2000 - 2021 Intel Corporation
->>>   *
->>>   * Disassembling to symbolic ASL+ operators
->>>   *
->>> - * Disassembly of tests/data/acpi/aarch64/virt/DSDT, Fri Jun 27 03:34:45 2025
->>> + * Disassembly of /tmp/aml-LZSL82, Fri Jun 27 03:34:45 2025
->>>   *
->>>   * Original Table Header:
->>>   *     Signature        "DSDT"
->>> - *     Length           0x000014BE (5310)
->>> + *     Length           0x000014AD (5293)
->>>   *     Revision         0x02
->>> - *     Checksum         0x8C
->>> + *     Checksum         0xEA
->>>   *     OEM ID           "BOCHS "
->>>   *     OEM Table ID     "BXPC    "
->>>   *     OEM Revision     0x00000001 (1)
->>>   *     Compiler ID      "BXPC"
->>>   *     Compiler Version 0x00000001 (1)
->>>   */
->>>  DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
->>>  {
->>>      Scope (\_SB)
->>>      {
->>>          Device (C000)
->>>          {
->>>              Name (_HID, "ACPI0007" /* Processor Device */)  // _HID: Hardware ID
->>>              Name (_UID, Zero)  // _UID: Unique ID
->>>          }
->>>
->>> @@ -1929,24 +1929,19 @@
->>>                      }
->>>                  Local1 = DerefOf (Arg4 [Zero])
->>>                  Local0 [Zero] = Local1
->>>                  Return (Local0)
->>>              }
->>>          }
->>>
->>>          Device (S00)
->>>          {
->>>              Name (_ADR, Zero)  // _ADR: Address
->>>          }
->>>
->>>          Device (S08)
->>>          {
->>>              Name (_ADR, 0x00010000)  // _ADR: Address
->>>          }
->>> -
->>> -        Device (S10)
->>> -        {
->>> -            Name (_ADR, 0x00020000)  // _ADR: Address
->>> -        }
->>>      }
->>>  }
->>> ---
->>>  tests/qtest/bios-tables-test-allowed-diff.h   |   5 -----
->>>  tests/data/acpi/aarch64/virt/DSDT             | Bin 5158 -> 5310 bytes
->>>  .../data/acpi/aarch64/virt/DSDT.acpihmatvirt  | Bin 5244 -> 5379 bytes
->>>  tests/data/acpi/aarch64/virt/DSDT.memhp       | Bin 6519 -> 6654 bytes
->>>  tests/data/acpi/aarch64/virt/DSDT.pxb         | Bin 7603 -> 7768 bytes
->>>  tests/data/acpi/aarch64/virt/DSDT.topology    | Bin 5360 -> 5495 bytes
->>>  6 files changed, 5 deletions(-)
->>>
->>> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
->>> index abe00ad4ee..dfb8523c8b 100644
->>> --- a/tests/qtest/bios-tables-test-allowed-diff.h
->>> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
->>> @@ -1,6 +1 @@
->>>  /* List of comma-separated changed AML files to ignore */
->>> -"tests/data/acpi/aarch64/virt/DSDT",
->>> -"tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt",
->>> -"tests/data/acpi/aarch64/virt/DSDT.memhp",
->>> -"tests/data/acpi/aarch64/virt/DSDT.pxb",
->>> -"tests/data/acpi/aarch64/virt/DSDT.topology",
->>> diff --git a/tests/data/acpi/aarch64/virt/DSDT b/tests/data/acpi/aarch64/virt/DSDT
->>> index acab6e65febbc210158d4c39be0680bbb90250f5..b897d667971500da4732000091a6f0828d05d89e 100644
->>> GIT binary patch
->>> delta 173
->>> zcmZ3cu}_oBCD<iop9lj3Q_n^&8IgJccg`5S_+Y2_0B27F5pPykmtbGs1!j}87zzZL
->>> z85t55NKKlYAt=lxaKZfK(_qso--+U{d?gP%`z}dXz&<sTi)l$h0as&30t3U6gatB_
->>> zv$)s`gjksvco`B3nmckB7!nH-A(GKe+`$G0@f`7vE<p^@P5i+I7V#YMl8!DxJPZts
->>> OU=c&8G!Fv<69WJ)j4yfs
->>>
->>> delta 19
->>> acmdm|xlDu0CD<iIO@x7g>C8qh84&<COa$Tp
->>>
->>> diff --git a/tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt b/tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt
->>> index 54c27e7d95b4956ed1b5dee0d299ccb08dc2a73e..2cef095bcc1bb404f8cd9ec77a879ed81c191875 100644
->>> GIT binary patch
->>> delta 156
->>> zcmeyP(X7Sg66_MfEXu&Zv}_|+kx0FO8%K;@e6Uk|fU~E8h&QXNORz8R0<+0k3<ZMB
->>> zj0_12q$W+y5ESMTxL|(rX|QRP??mxezLJNXeU~IGV4s@F#k3@$fUB`1fq`L3!UCDe
->>> zSzPP|Laa;-ybK8i%^f)m42cDa5XtB!?qCChc#e2Smmr4dCjMXpi+GNB4o8<D9tH+R
->>> F1_1j$EA9XQ
->>>
->>> delta 19
->>> acmZqH`lG?+66_LEBf`MI)VYzXNCW^oYz1ck
->>>
->>> diff --git a/tests/data/acpi/aarch64/virt/DSDT.memhp b/tests/data/acpi/aarch64/virt/DSDT.memhp
->>> index 4330bc97cba0950191c45ac833533db7a190db81..372ca3d7fb1e2927c7c12f97eec406d597f294ab 100644
->>> GIT binary patch
->>> delta 156
->>> zcmexv^v{^fCD<k8pCkhV6Zb~0T*-O?H;x#+_+Y2_0B27F5pPykmtbGs1!j}87zzZL
->>> z85t55NKKlYAt=lxaKZfK(_qso--+U{d?gP%`z}dXz&<sTi)l$h0as&30t3U6gatB_
->>> zv$)s`gjksvco`B3nmckB7!nH-A(GKe+`$G0@f`7vE<p^@P5i+I7V#YM9F8tQJPZts  
->>> F3;>E4EZYD8  
->>>
->>> delta 19
->>> acmexo{N0GlCD<jTT#|u->Fq|YTuA^&WCm0K
->>>
->>> diff --git a/tests/data/acpi/aarch64/virt/DSDT.pxb b/tests/data/acpi/aarch64/virt/DSDT.pxb
->>> index 7fdbc03e2bf9fb7d35704779253de36e362f0bf9..c2779882494e16920787b8ab7b4cb3c3b70f224b 100644
->>> GIT binary patch
->>> delta 168
->>> zcmdmNeZz*!CD<h-LXLrf$!jCmN?BzA7p@q+_+Y2_0B27F5pPykmtbGs1!j}87zzZL
->>> z85t55NKKl&K}IZRNx}m5shM0%OA-pW8aomg7?va~keQst#a<x9%EZ9SkWkRvk;A}{
->>> uSda*jjBer%HZX|ih<9`eVu)^%2{y2RaCjIP7#YxH`GXCiN_iL<m>2+L6)WZd
->>>
->>> delta 19
->>> acmca%v)P)<CD<iovn&Gx)9sC1D`f#g-Uey_
->>>
->>> diff --git a/tests/data/acpi/aarch64/virt/DSDT.topology b/tests/data/acpi/aarch64/virt/DSDT.topology
->>> index 969b4f6560d3ae39f5b7e0064b7122905476fce8..ebbeedc1ed30d811315c350f4cb42f8aa265af73 100644
->>> GIT binary patch
->>> delta 156
->>> zcmeyM`CW_4CD<jTT$F)<>HJ2nXCn0iZX7Xs@xe~<0nVNVBHpa7F2TOM3(O{GF%$?g
->>> zGcqJBkeW0(Lr|DY;DY(dr@^LGz7xe?`AQyk_Fa;&fPHEv7t@l20<Ol61O|pB2@7N<  
->>> zXK}F?2(dCT@G>M6G<W1MFeDZvLL{S`xPuK0;yL0SU4j^*oA`qbEaExhIUHSrco-NM  
->>> F8359@EocA$
->>>
->>> delta 19
->>> acmeya^+A)%CD<k8g9rly)25AF&qM%8i3Z^S
->>>  
->>
+SGkgQ8OpZHJpYywNCg0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHYxIDAwLzE4XSBTdXBwb3J0IEFT
+VDI3MDAgQTENCj4gDQo+IEhlbGxvLA0KPiANCj4gPj4gU2hvdWxkIHdlIHN3aXRjaCB0aGUgYWxp
+YXMgdG8gcG9pbnQgdG8gJ2FzdDI3MDBhMS1ldmInIGluIFFFTVUgMTAuMS4wID8NCj4gPj4gYW5k
+IGRlcHJlY2F0ZSB0aGUgQTAgU29DIGFuZCBtYWNoaW5lIGlmIGl0IGlzIG5vIGxvbmdlciBwbGFu
+bmVkIHRvDQo+ID4+IHN1cHBvcnQgdGhlbS4NCj4gPj4NCj4gPg0KPiA+IFNvcnJ5IGZvciB0aGUg
+bGF0ZSByZXBseSBhbmQgZGVsYXkgaW4gcHJvY2Vzc2luZyB0aGlzIHRhc2suDQo+ID4gSeKAmXZl
+IGJlZW4gcG9zdHBvbmluZyB0aGlzIGJlY2F1c2Ugb3VyIGN1c3RvbWVycyBkbyBub3QgaGF2ZSAi
+QVNUMjcwMCBBMQ0KPiBFVkIiLg0KPiANCj4gb2guIFRoZXJlIGlzIG5vIHVyZ2VuY3kgdG8gcmVt
+b3ZlIEEwLg0KPiANCj4gPiBTaW5jZSBBU1BFRUQgU0RLIGhhcyBkcm9wcGVkIHN1cHBvcnQgZm9y
+IEFTVDI3MDAgQTAgYXMgb2YgdmVyc2lvbiAidjA5LjA3IiwNCj4gSSBiZWxpZXZlIGl0J3Mgbm93
+IGFwcHJvcHJpYXRlIHRvIHJlbW92ZSBBU1QyNzAwIEEwIHN1cHBvcnQgaW4gUUVNVS4NCj4gPiBo
+dHRwczovL2dpdGh1Yi5jb20vQXNwZWVkVGVjaC1CTUMvb3BlbmJtYy9yZWxlYXNlcy90YWcvdjA5
+LjA3DQo+ID4gSW4gYWRkaXRpb24sIEkgcGxhbiB0byBtYWtlIGFzdDI3MDAtZXZiIGFuIGFsaWFz
+IG9mIGFzdDI3MDBhMS1ldmIuDQo+ID4NCj4gPiBDdXJyZW50bHksIEnigJltIG5vdCB2ZXJ5IGZh
+bWlsaWFyIHdpdGggdGhlIHByb3BlciBwcm9jZWR1cmUgdG8gZGVwcmVjYXRlIGFuDQo+IGV4aXN0
+aW5nIG1hY2hpbmUgaW4gUUVNVSwgYnV0IHRoZSBmb2xsb3dpbmcgaXMgbXkgaW5pdGlhbCBwbGFu
+IGZvciBoYW5kbGluZyB0aGlzDQo+IHRhc2s6DQo+ID4gUEFUQ0ggMTogVXBkYXRlIHRoZSBhc3Qy
+NzAwLWV2YiBhbGlhcyB0byBwb2ludCB0byBhc3QyNzAwYTEtZXZiIGFuZCByZW1vdmUNCj4gQVNU
+MjcwMCBBMCBmdW5jdGlvbmFsIHRlc3RzLg0KPiANCj4gVGhhdCdzIHNvbWV0aGluZyB3ZSBjYW4g
+ZG8gd2hlbmV2ZXIgd2UgbGlrZSBub3cuDQo+IA0KPiA+IFBBVENIIDI6IFJlbW92ZSB0aGUgQVNU
+MjcwMCBBMCBTb0MgYW5kIGFzdDI3MDBhMC1ldmIgbWFjaGluZQ0KPiBpbXBsZW1lbnRhdGlvbi4N
+Cj4gPiBQQVRDSCAzOiAoUXVlc3Rpb24pIFNob3VsZCBJIHVwZGF0ZSB0aGUgZG9jcy9hYm91dC9k
+ZXByZWNhdGVkLnJzdCBmaWxlIGFzDQo+IHdlbGw/DQo+IA0KPiBTZWUgaHR0cHM6Ly93d3cucWVt
+dS5vcmcvZG9jcy9tYXN0ZXIvYWJvdXQvZGVwcmVjYXRlZC5odG1sDQo+IA0KPiBGaXJzdCwgd2Ug
+dXBkYXRlIHRoZSBkZXByZWNhdGVkIGZpbGUsIHRoZW4gcmVtb3ZlIHRoZSBzb2MgaW4NCj4gMiBy
+ZWxlYXNlcy4NCg0KVXBkYXRlIGRlcHJlY2F0ZWQuaHRtbCBwYXRjaCBoZXJlLCBodHRwczovL3Bh
+dGNod29yay5rZXJuZWwub3JnL3Byb2plY3QvcWVtdS1kZXZlbC9wYXRjaC8yMDI1MDcwMzA1MjQw
+MC4yOTI3ODMxLTEtamFtaW5fbGluQGFzcGVlZHRlY2guY29tLw0KVGhhbmtzLUphbWluDQo+IA0K
+PiBUaGFua3MsDQo+IA0KPiBDLg0KPiANCg0K

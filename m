@@ -1,425 +1,205 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1255842dyc;
-        Fri, 4 Jul 2025 07:32:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXWLQx9VjHFhuPC4Ipif9lZhBJJ4+xIdPRZoZBTBIYzV7pwWzc4E7knZSi6eFsIgxc98ppGbkyh/BGGzg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGkEG4cv6G9oR7PfiNkQX35JsPi6HGq01YSjUlFxjgfMbHUjShuip8CKDA7AHe9t+atpxEW
-X-Received: by 2002:a05:620a:1a1d:b0:7d3:c5f1:7807 with SMTP id af79cd13be357-7d5ddb32340mr358991185a.1.1751639534210;
-        Fri, 04 Jul 2025 07:32:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751639534; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1255925dyc;
+        Fri, 4 Jul 2025 07:32:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWpG1i5rTXm2b+q9wEkAVzZfut6BvPkV7x0zb/UqQqnH9bkcurIbiVR8iSJ/WFhppuWlfem+PZq/MP0WQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEjv1U2Sbm6FhUYFrPNNEou4CmUGK/1G/HOKLCZvE4Bk5jUZ0NRM3JSFpqPUNrwGFFWEiN/
+X-Received: by 2002:a05:6102:3584:b0:4e7:e145:ac7a with SMTP id ada2fe7eead31-4f2f175398bmr1652931137.4.1751639542867;
+        Fri, 04 Jul 2025 07:32:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751639542; cv=none;
         d=google.com; s=arc-20240605;
-        b=HnO9QoQNMJKjH1NkIaODXviwTkMrvLF3w0ZC9joGapHanP6sY6xGFQpS35QIFRqdXv
-         tzSmGFPE7XntG5X/ksUjjjQcH4/I7IPRaDlBxR+7VW6SAHGPDVL1GSgnOXiVk96Rkz/x
-         ppQhWz+1hdb5HF/fgVIf08oYmb7r4Pk3n+nraxb+CRqKRgytRr3/7mP3WHXRgeDhLtt1
-         5EY+BV1Jf7EULRYPat/unSACFuFiJsUu016u8NFeTaNpC/GWbNQSLHUTf78ulnERUTQV
-         nVIpudTSTipmpYJc19apcKMFYqKTznUogjst+A0jZ4qn80O+rzNadI1aY3zDY92xZnRw
-         Atbg==
+        b=I01Jur2HDqjGMGmf5Clm3tZku/1BMvChNfwp4MOEkOO2Y+b4Lz/bG/IeBgqIlrtYZ3
+         /0yEQIImmLJySz97AWcPZHnFvX8koP1GDfOVlHJlN78+YGBn5p6fp+aaCi8nv5cqq8rF
+         FDIHI5K5ZzBCYAzemwGA0qxIeyVXybCbk7R8aRTWbff8Rz4VJ+Bi88nWHcrIxyg/0kg6
+         PyAhqdKPfSXnQNChbLFQzGgdvUvLiSksDTTb6JTxhBHv0ZtjeykHMHl0GRiDhBNZC577
+         THmVdZdCejkGC/YI1t4CC5s/BLqYO67/2PjBjhZkNiV9dW68d0pRKQaDDTHRB4qdfTXk
+         Md5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=IQhJ1gIJFra9DD3N/uhfijNYQXKFa3R/yXaOcwjQenE=;
+        bh=evIEKVuk/ILgHNEpYwuB+i/P5ybvHcDbwAQ21gq1RzI=;
         fh=vZxkDpCwvhENXlY8qSqryGKuN7qdzoFpPjxnavaSuNI=;
-        b=EKX3H7IGtvA9R3E/+OxgP+MnJC4rQZF90d137L2+2epU4XRAd/YAsgK9HLloipi4UQ
-         Nzk2Yz9TIVas38WxTOeUAUj+WpzoNDIDWA93PS5/j1xHiIQwE0SkXN47rR2UumZVsd03
-         XasTRCP3kLkuK8FqNY/Rn47EF6yDs5EX0udc4qUOk626s3L7PeAodgMjeMfs+UfxcQRp
-         r/XhYlNrvFyIxirp98LxeEhsBnJnUlJ0/paLCjrmqywAeLZV9tu/rRLKsvfsfsgCNiUD
-         JaNpze6isMNqMo5M+29AOcEbbm0jiXyAoRclHVSoARmKfnRjxdN/jNQDQQiieKzpCKJI
-         TZMA==;
+        b=CyIyAoF1JCn1tJRlGDHPlyYNpzmGYGA8/+vUJtegyjXZV23RfKq1kQrl0mq+QQ+xPh
+         2iGvPavAfJ+okJhiQZ8wP03WoUVz51CapstZ35Zn6u2anmlzKS798iZ0DjrMdMYwUiHP
+         FsOOkqWuheObexS74XtyBesuaV3SOr7B0CyKHiicekVigrQ7J3dttrTHrmW510at5sQz
+         g5LEODLmi37yLOky4K3esA4XG6wpB53g2FIhycifwavQP1IIPogLrunwwNbkDK7q3Fwr
+         Urrls+E3zifg8LO9DJ00/3N+sMNR5nKPCvaGXlQi2tOuLaw8lZNkE6ge+rhlccAU2/o4
+         2uPw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P+gfnaUf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=uik+tFqH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-53478eb581fsi646391e0c.68.2025.07.04.07.32.14
+        by mx.google.com with ESMTPS id ada2fe7eead31-4f2ea6f10dfsi662619137.366.2025.07.04.07.32.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Jul 2025 07:32:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 04 Jul 2025 07:32:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P+gfnaUf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=uik+tFqH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uXhOR-0001KL-2a; Fri, 04 Jul 2025 10:27:59 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uXhNf-0007eT-7A; Fri, 04 Jul 2025 10:27:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uXhLc-0003ZS-2u
- for qemu-arm@nongnu.org; Fri, 04 Jul 2025 10:25:04 -0400
-Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233])
+ id 1uXhLe-0003jC-QM
+ for qemu-devel@nongnu.org; Fri, 04 Jul 2025 10:25:07 -0400
+Received: from mail-oo1-xc2f.google.com ([2607:f8b0:4864:20::c2f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uXhLX-0007bT-5v
- for qemu-arm@nongnu.org; Fri, 04 Jul 2025 10:25:03 -0400
-Received: by mail-oi1-x233.google.com with SMTP id
- 5614622812f47-407a3913049so485869b6e.2
- for <qemu-arm@nongnu.org>; Fri, 04 Jul 2025 07:24:58 -0700 (PDT)
+ id 1uXhLa-0007e0-SK
+ for qemu-devel@nongnu.org; Fri, 04 Jul 2025 10:25:06 -0400
+Received: by mail-oo1-xc2f.google.com with SMTP id
+ 006d021491bc7-6118c1775dbso307492eaf.1
+ for <qemu-devel@nongnu.org>; Fri, 04 Jul 2025 07:25:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751639098; x=1752243898; darn=nongnu.org;
+ d=linaro.org; s=google; t=1751639101; x=1752243901; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=IQhJ1gIJFra9DD3N/uhfijNYQXKFa3R/yXaOcwjQenE=;
- b=P+gfnaUfgfDhHPd2Aij/uhGhtnPuXtsYx3MrzWxxe4jzNB6ve8GWtj6F35A0GCecwh
- hlyxZ8VN6H+uAhO4K2NEOMH4wyKLBJRKXHKBy5ro2SS3RY4xdHk45L28/9Rg3Qws78X5
- IeBXpWPu5Yv9I/oT7mug5l6lAb+ifow+RFu22J6ZB1cTE+p3bDuuCd/UZ88d3bNycKGR
- mBCJX474h9zfdve+cOEgyqqAYcQ0+uhPZwj5HGFwFuvwXmpYp8DmL0X1UuHJh/MVAUF/
- qdSPwxnGryF2Xo9iDkTO/hczDDTjbd4OQv628QGFvmUghtgvUvcmuOYNidi7LV2fG37e
- htnA==
+ bh=evIEKVuk/ILgHNEpYwuB+i/P5ybvHcDbwAQ21gq1RzI=;
+ b=uik+tFqHnKwemPl+iC4k40fgSlECXsGPr0AuLdkmKc6A2fLWAZRHU2D2tIJXraFS/E
+ 6pJFAQa36gYB8HcnpqxvBqi42mBBI5km+nta6/j++Y3KXF1u3gfKulII0d1JuyzBNdZf
+ GhjSl66Og2B6GZCCYgn6a2wRW2vNCGFEXA9vpOK/xbrw/CSwG6et8+l6uJ2iao2ikjlu
+ y8kg0lVg2lAK2TvbiiWpCnnzysCk/Iq1RLkOvhPAyq7e/6nvGF8mVSmil00qED4bdpcQ
+ AJt7cVM43rACvRs4RFksM3D0kKRFLYGw5MOkpfde4Jown8Xi7C7o30mJG8jGoNTEnQu2
+ 32jA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751639098; x=1752243898;
+ d=1e100.net; s=20230601; t=1751639101; x=1752243901;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=IQhJ1gIJFra9DD3N/uhfijNYQXKFa3R/yXaOcwjQenE=;
- b=hGB5h5tnqPYVqm+2I4RYAOBxfN5Hx7cs3tKi1bd0bqpaxG/shGIrfIp//faxt58YA+
- l6TlFg1G5Mc/Y74JuJyKLLFDKSGuTMd5HiCcekRvtvCWt3TCTds2KYR+eeh2tnt7Noxb
- i3ZDM6gLdB4Q2UPPPgfoLfHYKNR+ec/k4RPEECKXOaW9Su5IWcxDWIT0BgJOoqIfAzNC
- vqaW/oePX8Hv9vjVGOpET6ZUN+FVPrLOeVV2CGetWvWMH//w3fdNtpzU585dqcrlL+Sk
- RQ4ibT1J403d2Ku50iKbch5RgY0B3RVOiEKfOC9sVVaSJ32RWErufjx7GcFeW9YedRqX
- oqfA==
-X-Gm-Message-State: AOJu0Yx342VSoTwA1/WA4OPlJn8+kL7MrY304txsDlqrmMPd/XtxXlSA
- wWhaQuki3Dic03BKMeOFUeTNAlvR/l6YhMwuIGVP1dIf8bJBF+oCQ7blHMMWxKv/gWP1aagf8sT
- k0aoUjSM=
-X-Gm-Gg: ASbGnctaKRgcAB22XDOB3w3UZwlELMjwrGVlnRg+AryjmhFx07AUz5Jc7SxX8HejAqH
- w6/ngSbcGg63QMIeMbbCtrtQBfPBMsb/rtX8TvK1O8AhrQNIzOQYZavWkW0kmz2qhzFWQsT8HPK
- XBWmXCrReHLOZnurOvT3XnA20QLyEENNzrhN/DKY739/NZa86u916WlN9kP6P3Bg544LzPZyhMi
- pM0n4MIA/tjZqxKtmUj+W/7ObQ4hf5MPIKqCffwr/b+niX3ZPyXSMZiva0NdWIypOaysonvh0Ma
- oK6q9BYy1gP9LwqSoJlXzLeY0cKyvLViK+7v9vY9WhrkdDPg4LxAKE8DwDfxQuuoNm+8Aa/aJdd
- fraMdoU23+EiSSKB5ip1NgjhTWoxRfJSA1jPVDF3dUGmrBbrj
-X-Received: by 2002:a05:6808:d4b:b0:40c:f644:8abc with SMTP id
- 5614622812f47-40d04a1001emr2368370b6e.13.1751639097789; 
- Fri, 04 Jul 2025 07:24:57 -0700 (PDT)
+ bh=evIEKVuk/ILgHNEpYwuB+i/P5ybvHcDbwAQ21gq1RzI=;
+ b=g3531lTnKWUkAXDUneVEDYUYRtN+iOPlClvPsd61K67DL7siUkwUeR69ZrMV5zkKy/
+ ZokhAQXLgi0zLvbS/nVU/I5BTgkwOSQsJyH3UxM+qRFhExFnNuisCpdt6fgDEOwsNowq
+ e32LsMMgne34Gw+CCaBPcJYrYxQuxzvXOeFtBbENLdecV+JFI65Ykro6zg0AYFfgWZTD
+ 4LNtZnz2f8jRuLwEEAG7e+lt+CnqO8eckzmrtRY6iJgeWMSF/VMrWwX9JXrETlump7c4
+ 1gSZMYwtIWLvKJoUKPrhpjx8pnD57gT8oV5OEQzU2lEr1Qu9KxJOBeXXIkztWxmNpiOT
+ q8HQ==
+X-Gm-Message-State: AOJu0Yztcq/BzVJ2hw86EU4lcD6LhrO1J0ycpRqEe7UJoUHaugGwpSkW
+ Gt0XwDnuPDADy7j9/lr0Hb1EUgiCQJURJQsZHdbjio8t/NtUzyqeXrUT1nDg8kdHUqpvO7Ql6zb
+ pyyly9pA=
+X-Gm-Gg: ASbGncvQmddlnxBWM0o2XxSNKjRvcxcCGXrcAZCzLiY3HiLVj9FEGFtd9MqOcSX19Sn
+ QqGhIGFC3vmdalGm7eX89zIXs9zN2w3L1tUWFu9y6ohE7R8AHAKdpo5UNDmoVTtz/Hg+ZZeEeJ+
+ wFXc3VQtMQ60LKp3oRSoB2FqSesy4eQi0/2LGePs8aHl50tqCfH5VkFNwLi+vG8WDUn+JVV32vy
+ FCfLBwT5+xXRlwSAzg79dINeUzu49XqG4OF/sCUilWUpPQFFst3AQTOcQyUYb1+6N/KFDG1BuBJ
+ RtkUY/5B6IpALwHTiUxNSzBbl1WjxOmbAFUwnZXGWMqhTDj6DFWIMW1KGY2N3BRGSWbPyVOd583
+ gUznxgri08HxMICUZcshwwVPQdzvhlgrf9oqG3oVDBtuTi4s/x7nIS4DW+lg=
+X-Received: by 2002:a05:6820:1796:b0:611:ae2b:4d33 with SMTP id
+ 006d021491bc7-613900ecb32mr1923206eaf.6.1751639101543; 
+ Fri, 04 Jul 2025 07:25:01 -0700 (PDT)
 Received: from localhost.localdomain (fixed-187-189-51-143.totalplay.net.
  [187.189.51.143]) by smtp.gmail.com with ESMTPSA id
- 006d021491bc7-6138e5ac5eesm310233eaf.29.2025.07.04.07.24.57
+ 006d021491bc7-6138e5ac5eesm310233eaf.29.2025.07.04.07.25.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Jul 2025 07:24:57 -0700 (PDT)
+ Fri, 04 Jul 2025 07:25:01 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v4 041/108] target/arm: Implemement SME2 SDOT, UDOT, USDOT,
- SUDOT
-Date: Fri,  4 Jul 2025 08:20:04 -0600
-Message-ID: <20250704142112.1018902-42-richard.henderson@linaro.org>
+Subject: [PATCH v4 044/108] target/arm: Implement SDOT,
+ UDOT (2-way) for SME2/SVE2p1
+Date: Fri,  4 Jul 2025 08:20:07 -0600
+Message-ID: <20250704142112.1018902-45-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250704142112.1018902-1-richard.henderson@linaro.org>
 References: <20250704142112.1018902-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::233;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x233.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c2f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc2f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UkCsqM6v+2fI
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /Io9bMv/yrla
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/helper.h        |  8 ++++
- target/arm/tcg/translate-sme.c | 85 ++++++++++++++++++++++++++++++++++
- target/arm/tcg/vec_helper.c    | 51 ++++++++++++++++++++
- target/arm/tcg/sme.decode      | 63 ++++++++++++++++++++++++-
- 4 files changed, 206 insertions(+), 1 deletion(-)
+ target/arm/tcg/translate-sve.c | 10 ++++++++++
+ target/arm/tcg/sve.decode      |  8 +++++++-
+ 2 files changed, 17 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/tcg/helper.h b/target/arm/tcg/helper.h
-index a19955b872..c4a208e3ba 100644
---- a/target/arm/tcg/helper.h
-+++ b/target/arm/tcg/helper.h
-@@ -622,6 +622,9 @@ DEF_HELPER_FLAGS_5(gvec_sdot_4h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(gvec_udot_4h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(gvec_usdot_4b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
+index c82a0f771d..10261e25f9 100644
+--- a/target/arm/tcg/translate-sve.c
++++ b/target/arm/tcg/translate-sve.c
+@@ -3426,6 +3426,11 @@ TRANS_FEAT(SUDOT_zzxw_4s, aa64_sve_i8mm, gen_gvec_ool_arg_zzxz,
+ TRANS_FEAT(USDOT_zzxw_4s, aa64_sve_i8mm, gen_gvec_ool_arg_zzxz,
+            gen_helper_gvec_usdot_idx_4b, a)
  
-+DEF_HELPER_FLAGS_5(gvec_sdot_2h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_udot_2h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++TRANS_FEAT(SDOT_zzxw_2s, aa64_sme2_or_sve2p1, gen_gvec_ool_arg_zzxz,
++           gen_helper_gvec_sdot_idx_2h, a)
++TRANS_FEAT(UDOT_zzxw_2s, aa64_sme2_or_sve2p1, gen_gvec_ool_arg_zzxz,
++           gen_helper_gvec_udot_idx_2h, a)
 +
- DEF_HELPER_FLAGS_5(gvec_sdot_idx_4b, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(gvec_udot_idx_4b, TCG_CALL_NO_RWG,
-@@ -635,6 +638,11 @@ DEF_HELPER_FLAGS_5(gvec_sudot_idx_4b, TCG_CALL_NO_RWG,
- DEF_HELPER_FLAGS_5(gvec_usdot_idx_4b, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, i32)
+ #define DO_SVE2_RRX(NAME, FUNC) \
+     TRANS_FEAT(NAME, aa64_sve, gen_gvec_ool_zzz, FUNC,          \
+                a->rd, a->rn, a->rm, a->index)
+@@ -7154,6 +7159,11 @@ TRANS_FEAT(SQRDCMLAH_zzzz, aa64_sve2, gen_gvec_ool_zzzz,
+ TRANS_FEAT(USDOT_zzzz_4s, aa64_sve_i8mm, gen_gvec_ool_arg_zzzz,
+            gen_helper_gvec_usdot_4b, a, 0)
  
-+DEF_HELPER_FLAGS_5(gvec_sdot_idx_2h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_udot_idx_2h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
++TRANS_FEAT(SDOT_zzzz_2s, aa64_sme2_or_sve2p1, gen_gvec_ool_arg_zzzz,
++           gen_helper_gvec_sdot_2h, a, 0)
++TRANS_FEAT(UDOT_zzzz_2s, aa64_sme2_or_sve2p1, gen_gvec_ool_arg_zzzz,
++           gen_helper_gvec_udot_2h, a, 0)
 +
- DEF_HELPER_FLAGS_5(gvec_fcaddh, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, fpst, i32)
- DEF_HELPER_FLAGS_5(gvec_fcadds, TCG_CALL_NO_RWG,
-diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
-index 410a8d037c..341f4495e9 100644
---- a/target/arm/tcg/translate-sme.c
-+++ b/target/arm/tcg/translate-sme.c
-@@ -962,3 +962,88 @@ static bool do_vdot(DisasContext *s, arg_azx_n *a, gen_helper_gvec_4_ptr *fn)
+ TRANS_FEAT_NONSTREAMING(AESMC, aa64_sve2_aes, gen_gvec_ool_zz,
+                         gen_helper_crypto_aesmc, a->rd, a->rd, 0)
+ TRANS_FEAT_NONSTREAMING(AESIMC, aa64_sve2_aes, gen_gvec_ool_zz,
+diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
+index 401c025852..83c259def6 100644
+--- a/target/arm/tcg/sve.decode
++++ b/target/arm/tcg/sve.decode
+@@ -856,6 +856,9 @@ SDOT_zzxw_4d    01000100 11 1 ..... 000000 ..... .....   @rrxr_1 esz=3
+ UDOT_zzxw_4s    01000100 10 1 ..... 000001 ..... .....   @rrxr_2 esz=2
+ UDOT_zzxw_4d    01000100 11 1 ..... 000001 ..... .....   @rrxr_1 esz=3
  
- TRANS_FEAT(FVDOT, aa64_sme, do_vdot, a, gen_helper_sme2_fvdot_idx_h)
- TRANS_FEAT(BFVDOT, aa64_sme, do_vdot, a, gen_helper_sme2_bfvdot_idx)
++SDOT_zzxw_2s    01000100 10 0 ..... 110010 ..... .....   @rrxr_2 esz=2
++UDOT_zzxw_2s    01000100 10 0 ..... 110011 ..... .....   @rrxr_2 esz=2
 +
-+/*
-+ * Expand array multi-vector single (n1), array multi-vector (nn),
-+ * and array multi-vector indexed (nx), for integer accumulate.
-+ *   multi: true for nn, false for n1.
-+ *   data: stuff for simd_data, including any index.
-+ */
-+static bool do_azz_acc(DisasContext *s, int nreg, int nsel,
-+                       int rv, int off, int zn, int zm,
-+                       int data, int shsel, bool multi,
-+                       gen_helper_gvec_4 *fn)
-+{
-+    if (sme_smza_enabled_check(s)) {
-+        int svl = streaming_vec_reg_size(s);
-+        int vstride = svl / nreg;
-+        TCGv_ptr t_za = get_zarray(s, rv, off, nreg, nsel);
-+        TCGv_ptr t = tcg_temp_new_ptr();
-+
-+        for (int r = 0; r < nreg; ++r) {
-+            TCGv_ptr t_zn = vec_full_reg_ptr(s, zn);
-+            TCGv_ptr t_zm = vec_full_reg_ptr(s, zm);
-+
-+            for (int i = 0; i < nsel; ++i) {
-+                int o_za = (r * vstride + i) * sizeof(ARMVectorReg);
-+                int desc = simd_desc(svl, svl, data | (i << shsel));
-+
-+                tcg_gen_addi_ptr(t, t_za, o_za);
-+                fn(t, t_zn, t_zm, t, tcg_constant_i32(desc));
-+            }
-+
-+            /*
-+             * For multiple-and-single vectors, Zn may wrap.
-+             * For multiple vectors, both Zn and Zm are aligned.
-+             */
-+            zn = (zn + 1) % 32;
-+            zm += multi;
-+        }
-+    }
-+    return true;
-+}
-+
-+static bool do_dot(DisasContext *s, arg_azz_n *a, bool multi,
-+                   gen_helper_gvec_4 *fn)
-+{
-+    return do_azz_acc(s, a->n, 1, a->rv, a->off, a->zn, a->zm,
-+                      0, 0, multi, fn);
-+}
-+
-+static void gen_helper_gvec_sudot_4b(TCGv_ptr d, TCGv_ptr n, TCGv_ptr m,
-+                                     TCGv_ptr a, TCGv_i32 desc)
-+{
-+    gen_helper_gvec_usdot_4b(d, m, n, a, desc);
-+}
-+
-+TRANS_FEAT(USDOT_n1, aa64_sme2, do_dot, a, false, gen_helper_gvec_usdot_4b)
-+TRANS_FEAT(SUDOT_n1, aa64_sme2, do_dot, a, false, gen_helper_gvec_sudot_4b)
-+TRANS_FEAT(SDOT_n1_2h, aa64_sme2, do_dot, a, false, gen_helper_gvec_sdot_2h)
-+TRANS_FEAT(UDOT_n1_2h, aa64_sme2, do_dot, a, false, gen_helper_gvec_udot_2h)
-+TRANS_FEAT(SDOT_n1_4b, aa64_sme2, do_dot, a, false, gen_helper_gvec_sdot_4b)
-+TRANS_FEAT(UDOT_n1_4b, aa64_sme2, do_dot, a, false, gen_helper_gvec_udot_4b)
-+TRANS_FEAT(SDOT_n1_4h, aa64_sme2_i16i64, do_dot, a, false, gen_helper_gvec_sdot_4h)
-+TRANS_FEAT(UDOT_n1_4h, aa64_sme2_i16i64, do_dot, a, false, gen_helper_gvec_udot_4h)
-+
-+TRANS_FEAT(USDOT_nn, aa64_sme2, do_dot, a, true, gen_helper_gvec_usdot_4b)
-+TRANS_FEAT(SDOT_nn_2h, aa64_sme2, do_dot, a, true, gen_helper_gvec_sdot_2h)
-+TRANS_FEAT(UDOT_nn_2h, aa64_sme2, do_dot, a, true, gen_helper_gvec_udot_2h)
-+TRANS_FEAT(SDOT_nn_4b, aa64_sme2, do_dot, a, true, gen_helper_gvec_sdot_4b)
-+TRANS_FEAT(UDOT_nn_4b, aa64_sme2, do_dot, a, true, gen_helper_gvec_udot_4b)
-+TRANS_FEAT(SDOT_nn_4h, aa64_sme2_i16i64, do_dot, a, true, gen_helper_gvec_sdot_4h)
-+TRANS_FEAT(UDOT_nn_4h, aa64_sme2_i16i64, do_dot, a, true, gen_helper_gvec_udot_4h)
-+
-+static bool do_dot_nx(DisasContext *s, arg_azx_n *a, gen_helper_gvec_4 *fn)
-+{
-+    return do_azz_acc(s, a->n, 1, a->rv, a->off, a->zn, a->zm,
-+                      a->idx, 0, false, fn);
-+}
-+
-+TRANS_FEAT(USDOT_nx, aa64_sme2, do_dot_nx, a, gen_helper_gvec_usdot_idx_4b)
-+TRANS_FEAT(SUDOT_nx, aa64_sme2, do_dot_nx, a, gen_helper_gvec_sudot_idx_4b)
-+TRANS_FEAT(SDOT_nx_2h, aa64_sme2, do_dot_nx, a, gen_helper_gvec_sdot_idx_2h)
-+TRANS_FEAT(UDOT_nx_2h, aa64_sme2, do_dot_nx, a, gen_helper_gvec_udot_idx_2h)
-+TRANS_FEAT(SDOT_nx_4b, aa64_sme2, do_dot_nx, a, gen_helper_gvec_sdot_idx_4b)
-+TRANS_FEAT(UDOT_nx_4b, aa64_sme2, do_dot_nx, a, gen_helper_gvec_udot_idx_4b)
-+TRANS_FEAT(SDOT_nx_4h, aa64_sme2_i16i64, do_dot_nx, a, gen_helper_gvec_sdot_idx_4h)
-+TRANS_FEAT(UDOT_nx_4h, aa64_sme2_i16i64, do_dot_nx, a, gen_helper_gvec_udot_idx_4h)
-diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
-index f18d1675b5..baea6d8b89 100644
---- a/target/arm/tcg/vec_helper.c
-+++ b/target/arm/tcg/vec_helper.c
-@@ -872,6 +872,57 @@ DO_DOT_IDX(gvec_usdot_idx_4b, int32_t, uint8_t, int8_t, H4)
- DO_DOT_IDX(gvec_sdot_idx_4h, int64_t, int16_t, int16_t, H8)
- DO_DOT_IDX(gvec_udot_idx_4h, uint64_t, uint16_t, uint16_t, H8)
+ # SVE2 integer multiply-add (indexed)
+ MLA_zzxz_h      01000100 0. 1 ..... 000010 ..... .....   @rrxr_3 esz=1
+ MLA_zzxz_s      01000100 10 1 ..... 000010 ..... .....   @rrxr_2 esz=2
+@@ -1597,7 +1600,10 @@ UMLSLT_zzzw     01000100 .. 0 ..... 010 111 ..... .....  @rda_rn_rm
+ CMLA_zzzz       01000100 esz:2 0 rm:5 0010 rot:2 rn:5 rd:5  ra=%reg_movprfx
+ SQRDCMLAH_zzzz  01000100 esz:2 0 rm:5 0011 rot:2 rn:5 rd:5  ra=%reg_movprfx
  
-+#undef DO_DOT
-+#undef DO_DOT_IDX
+-## SVE mixed sign dot product
++## SVE dot product
 +
-+/* Similar for 2-way dot product */
-+#define DO_DOT(NAME, TYPED, TYPEN, TYPEM) \
-+void HELPER(NAME)(void *vd, void *vn, void *vm, void *va, uint32_t desc)  \
-+{                                                                         \
-+    intptr_t i, opr_sz = simd_oprsz(desc);                                \
-+    TYPED *d = vd, *a = va;                                               \
-+    TYPEN *n = vn;                                                        \
-+    TYPEM *m = vm;                                                        \
-+    for (i = 0; i < opr_sz / sizeof(TYPED); ++i) {                        \
-+        d[i] = (a[i] +                                                    \
-+                (TYPED)n[i * 2 + 0] * m[i * 2 + 0] +                      \
-+                (TYPED)n[i * 2 + 1] * m[i * 2 + 1]);                      \
-+    }                                                                     \
-+    clear_tail(d, opr_sz, simd_maxsz(desc));                              \
-+}
-+
-+#define DO_DOT_IDX(NAME, TYPED, TYPEN, TYPEM, HD) \
-+void HELPER(NAME)(void *vd, void *vn, void *vm, void *va, uint32_t desc)  \
-+{                                                                         \
-+    intptr_t i = 0, opr_sz = simd_oprsz(desc);                            \
-+    intptr_t opr_sz_n = opr_sz / sizeof(TYPED);                           \
-+    intptr_t segend = MIN(16 / sizeof(TYPED), opr_sz_n);                  \
-+    intptr_t index = simd_data(desc);                                     \
-+    TYPED *d = vd, *a = va;                                               \
-+    TYPEN *n = vn;                                                        \
-+    TYPEM *m_indexed = (TYPEM *)vm + HD(index) * 2;                       \
-+    do {                                                                  \
-+        TYPED m0 = m_indexed[i * 2 + 0];                                  \
-+        TYPED m1 = m_indexed[i * 2 + 1];                                  \
-+        do {                                                              \
-+            d[i] = (a[i] +                                                \
-+                    n[i * 2 + 0] * m0 +                                   \
-+                    n[i * 2 + 1] * m1);                                   \
-+        } while (++i < segend);                                           \
-+        segend = i + (16 / sizeof(TYPED));                                \
-+    } while (i < opr_sz_n);                                               \
-+    clear_tail(d, opr_sz, simd_maxsz(desc));                              \
-+}
-+
-+DO_DOT(gvec_sdot_2h, int32_t, int16_t, int16_t)
-+DO_DOT(gvec_udot_2h, uint32_t, uint16_t, uint16_t)
-+
-+DO_DOT_IDX(gvec_sdot_idx_2h, int32_t, int16_t, int16_t, H4)
-+DO_DOT_IDX(gvec_udot_idx_2h, uint32_t, uint16_t, uint16_t, H4)
-+
-+#undef DO_DOT
-+#undef DO_DOT_IDX
-+
- void HELPER(gvec_fcaddh)(void *vd, void *vn, void *vm,
-                          float_status *fpst, uint32_t desc)
- {
-diff --git a/target/arm/tcg/sme.decode b/target/arm/tcg/sme.decode
-index 7c057bcad2..338637decd 100644
---- a/target/arm/tcg/sme.decode
-+++ b/target/arm/tcg/sme.decode
-@@ -291,6 +291,26 @@ FDOT_n1         11000001 001 1 .... 0 .. 100 ..... 00 ...   @azz_nx1_o3 n=4
- BFDOT_n1        11000001 001 0 .... 0 .. 100 ..... 10 ...   @azz_nx1_o3 n=2
- BFDOT_n1        11000001 001 1 .... 0 .. 100 ..... 10 ...   @azz_nx1_o3 n=4
++SDOT_zzzz_2s    01000100 00 0 ..... 110 010 ..... .....  @rda_rn_rm_ex esz=2
++UDOT_zzzz_2s    01000100 00 0 ..... 110 011 ..... .....  @rda_rn_rm_ex esz=2
  
-+USDOT_n1        11000001 001 0 .... 0 .. 101 ..... 01 ...   @azz_nx1_o3 n=2
-+USDOT_n1        11000001 001 1 .... 0 .. 101 ..... 01 ...   @azz_nx1_o3 n=4
-+
-+SUDOT_n1        11000001 001 0 .... 0 .. 101 ..... 11 ...   @azz_nx1_o3 n=2
-+SUDOT_n1        11000001 001 1 .... 0 .. 101 ..... 11 ...   @azz_nx1_o3 n=4
-+
-+SDOT_n1_4b      11000001 001 0 .... 0 .. 101 ..... 00 ...   @azz_nx1_o3 n=2
-+SDOT_n1_4b      11000001 001 1 .... 0 .. 101 ..... 00 ...   @azz_nx1_o3 n=4
-+SDOT_n1_4h      11000001 011 0 .... 0 .. 101 ..... 00 ...   @azz_nx1_o3 n=2
-+SDOT_n1_4h      11000001 011 1 .... 0 .. 101 ..... 00 ...   @azz_nx1_o3 n=4
-+SDOT_n1_2h      11000001 011 0 .... 0 .. 101 ..... 01 ...   @azz_nx1_o3 n=2
-+SDOT_n1_2h      11000001 011 1 .... 0 .. 101 ..... 01 ...   @azz_nx1_o3 n=4
-+
-+UDOT_n1_4b      11000001 001 0 .... 0 .. 101 ..... 10 ...   @azz_nx1_o3 n=2
-+UDOT_n1_4b      11000001 001 1 .... 0 .. 101 ..... 10 ...   @azz_nx1_o3 n=4
-+UDOT_n1_4h      11000001 011 0 .... 0 .. 101 ..... 10 ...   @azz_nx1_o3 n=2
-+UDOT_n1_4h      11000001 011 1 .... 0 .. 101 ..... 10 ...   @azz_nx1_o3 n=4
-+UDOT_n1_2h      11000001 011 0 .... 0 .. 101 ..... 11 ...   @azz_nx1_o3 n=2
-+UDOT_n1_2h      11000001 011 1 .... 0 .. 101 ..... 11 ...   @azz_nx1_o3 n=4
-+
- ### SME2 Multi-vector Multiple Array Vectors
+ USDOT_zzzz_4s   01000100 10 0 ..... 011 110 ..... .....  @rda_rn_rm_ex esz=2
  
- %zn_ax2         6:4 !function=times_2
-@@ -334,6 +354,23 @@ FDOT_nn         11000001 101 ...01 0 .. 100 ...00 00 ...    @azz_4x4_o3
- BFDOT_nn        11000001 101 ....0 0 .. 100 ....0 10 ...    @azz_2x2_o3
- BFDOT_nn        11000001 101 ...01 0 .. 100 ...00 10 ...    @azz_4x4_o3
- 
-+USDOT_nn        11000001 101 ....0 0 .. 101 ....0 01 ...    @azz_2x2_o3
-+USDOT_nn        11000001 101 ...01 0 .. 101 ...00 01 ...    @azz_4x4_o3
-+
-+SDOT_nn_4b      11000001 101 ....0 0 .. 101 ....0 00 ...    @azz_2x2_o3
-+SDOT_nn_4b      11000001 101 ...01 0 .. 101 ...00 00 ...    @azz_4x4_o3
-+SDOT_nn_4h      11000001 111 ....0 0 .. 101 ....0 00 ...    @azz_2x2_o3
-+SDOT_nn_4h      11000001 111 ...01 0 .. 101 ...00 00 ...    @azz_4x4_o3
-+SDOT_nn_2h      11000001 111 ....0 0 .. 101 ....0 01 ...    @azz_2x2_o3
-+SDOT_nn_2h      11000001 111 ...01 0 .. 101 ...00 01 ...    @azz_4x4_o3
-+
-+UDOT_nn_4b      11000001 101 ....0 0 .. 101 ....0 10 ...    @azz_2x2_o3
-+UDOT_nn_4b      11000001 101 ...01 0 .. 101 ...00 10 ...    @azz_4x4_o3
-+UDOT_nn_4h      11000001 111 ....0 0 .. 101 ....0 10 ...    @azz_2x2_o3
-+UDOT_nn_4h      11000001 111 ...01 0 .. 101 ...00 10 ...    @azz_4x4_o3
-+UDOT_nn_2h      11000001 111 ....0 0 .. 101 ....0 11 ...    @azz_2x2_o3
-+UDOT_nn_2h      11000001 111 ...01 0 .. 101 ...00 11 ...    @azz_4x4_o3
-+
- ### SME2 Multi-vector Indexed
- 
- &azx_n          n off rv zn zm idx
-@@ -367,7 +404,11 @@ BFMLSL_nx       11000001 1001 .... 1 .. 1 .. ...00 11 ...   @azx_4x1_o2x2
- @azx_2x1_i2_o3  ........ .... zm:4 . .. . idx:2 .... ... off:3 \
-                 &azx_n n=2 rv=%mova_rv zn=%zn_ax2
- @azx_4x1_i2_o3  ........ .... zm:4 . .. . idx:2 .... ... off:3 \
--                &azx_n n=2 rv=%mova_rv zn=%zn_ax4
-+                &azx_n n=4 rv=%mova_rv zn=%zn_ax4
-+@azx_2x1_i1_o3  ........ .... zm:4 . .. .. idx:1 .... ... off:3 \
-+                &azx_n n=2 rv=%mova_rv zn=%zn_ax2
-+@azx_4x1_i1_o3  ........ .... zm:4 . .. .. idx:1 .... ... off:3 \
-+                &azx_n n=4 rv=%mova_rv zn=%zn_ax4
- 
- FDOT_nx         11000001 0101 .... 0 .. 1 .. ....0 01 ...   @azx_2x1_i2_o3
- FDOT_nx         11000001 0101 .... 1 .. 1 .. ...00 01 ...   @azx_4x1_i2_o3
-@@ -377,3 +418,23 @@ BFDOT_nx        11000001 0101 .... 1 .. 1 .. ...00 11 ...   @azx_4x1_i2_o3
- 
- FVDOT           11000001 0101 .... 0 .. 0 .. ....0 01 ...   @azx_2x1_i2_o3
- BFVDOT          11000001 0101 .... 0 .. 0 .. ....0 11 ...   @azx_2x1_i2_o3
-+
-+SDOT_nx_2h      11000001 0101 .... 0 .. 1 .. ....0 00 ...   @azx_2x1_i2_o3
-+SDOT_nx_2h      11000001 0101 .... 1 .. 1 .. ...00 00 ...   @azx_4x1_i2_o3
-+SDOT_nx_4b      11000001 0101 .... 0 .. 1 .. ....1 00 ...   @azx_2x1_i2_o3
-+SDOT_nx_4b      11000001 0101 .... 1 .. 1 .. ...01 00 ...   @azx_4x1_i2_o3
-+SDOT_nx_4h      11000001 1101 .... 0 .. 00 . ....0 01 ...   @azx_2x1_i1_o3
-+SDOT_nx_4h      11000001 1101 .... 1 .. 00 . ...00 01 ...   @azx_4x1_i1_o3
-+
-+UDOT_nx_2h      11000001 0101 .... 0 .. 1 .. ....0 10 ...   @azx_2x1_i2_o3
-+UDOT_nx_2h      11000001 0101 .... 1 .. 1 .. ...00 10 ...   @azx_4x1_i2_o3
-+UDOT_nx_4b      11000001 0101 .... 0 .. 1 .. ....1 10 ...   @azx_2x1_i2_o3
-+UDOT_nx_4b      11000001 0101 .... 1 .. 1 .. ...01 10 ...   @azx_4x1_i2_o3
-+UDOT_nx_4h      11000001 1101 .... 0 .. 00 . ....0 11 ...   @azx_2x1_i1_o3
-+UDOT_nx_4h      11000001 1101 .... 1 .. 00 . ...00 11 ...   @azx_4x1_i1_o3
-+
-+USDOT_nx        11000001 0101 .... 0 .. 1 .. ....1 01 ...   @azx_2x1_i2_o3
-+USDOT_nx        11000001 0101 .... 1 .. 1 .. ...01 01 ...   @azx_4x1_i2_o3
-+
-+SUDOT_nx        11000001 0101 .... 0 .. 1 .. ....1 11 ...   @azx_2x1_i2_o3
-+SUDOT_nx        11000001 0101 .... 1 .. 1 .. ...01 11 ...   @azx_4x1_i2_o3
 -- 
 2.43.0
 

@@ -1,156 +1,219 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1191489dyc;
-        Fri, 4 Jul 2025 05:59:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW2H61R9DTm9AbaxAkt3t5F93LqIdU1rjBUbNbIoGfERGB06bz1zPo0JQthh242Cw4iyoo7/IlO9Z8I0w==@linaro.org
-X-Google-Smtp-Source: AGHT+IElMJa0jV1KW24bXjeTd4akRIVplJv8RtvzO+LF2nPJsXA19hrNtJ1TN4kfemwaKW6J1Nfq
-X-Received: by 2002:a05:620a:d84:b0:7d4:295c:884c with SMTP id af79cd13be357-7d5ddaa7f06mr332615485a.7.1751633982725;
-        Fri, 04 Jul 2025 05:59:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751633982; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1227194dyc;
+        Fri, 4 Jul 2025 06:51:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUwu6zuKY6tWlnTcCdqyq9PGjfuedhufKhc7Fqdgi8ZxgsTU+uXMRWOMv0rO3oKijza3cFSrFghO0JPPw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHOt9Bj2/X5Z/j02W/uWuXz8PS29RtO9ZjgEozsk5yLUZbqypJkzz+R9ZhOCbqDsIsM759d
+X-Received: by 2002:ac8:7f83:0:b0:4a3:b6a0:1777 with SMTP id d75a77b69052e-4a9957cd1efmr44653901cf.20.1751637106371;
+        Fri, 04 Jul 2025 06:51:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751637106; cv=none;
         d=google.com; s=arc-20240605;
-        b=O6LNkSbL8u2z+ZmKPFFm4b19+2ctnzbNWr+OTOQzymZN617mkjZP3gCEHiyzi4mqnY
-         /huCpbZQ4Gp8yPyzXRMsdPRErqSOoBh312uwxz90HieYJJ2bss5lJMsKDZL8XfPRPwpa
-         FwscVyLqrg9tJ6Xl7bagiL/6Df2cqbNN47aD68J77tzuAH1G1EzwCHyJAn2+iXutTKER
-         fxNMdnUuEtSqn7H5W7ZqlwdQMDNBh0UIAkFPwOpxYkE/Ir5FPyOfITLV0H3sPPtNpe5k
-         SVipdsH6H/xVizloAVlgrCIcUzLyhv27tiehpl6DHvbcuf93j2XgwNFfMpfvpPvLrhrc
-         wcXA==
+        b=GGGc6KUYW7BXKBHTgwRe6fBjY4mJ/Lz87/eDuRZHaGJnr9CjswC/WzExRcWf8uDao7
+         lSOQgkeNbsY270IHp4gCHOhW7KJpMJqvr7Mi2iInJTiQaYby/Ue09rQTyS3CEdIIaqm3
+         iPh5Ii93hOksV+717c3Sx/o7Y5w4B1688XaCYglmmZe8IDF2PloTk4GD/V1XQnYGfU6D
+         Q2+Ypio/JpQJ0Ird8DlzVI/Veo37h0MjvsGjgRn7V6RRA5vAL5EnU2GWr8Z+R5ct2xhc
+         +ky/tt21dw7Oh46n84AEQDhKAVt7bxHBbjo8mDk+hvbFwP0JzM3/WNC/Qak6XNm9iP53
+         53Kw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ep8RwMJ0M9i5BPjIgEJpfQPQz9oWccG3B4OGUcUZy5A=;
-        fh=faPZC5w0Ir01ovgsAAvKZ5sEGx0/RGzlhY7dEdNQB8Y=;
-        b=BvVAwtbMBFIYjY7pcFlNqFXwfzd87V9ODLZX/YYrpdi7Mcf8/q3ooLuN8phR+nYS2z
-         NWK0WAaJQymvJcS57a9ju5nageTfBFylH7pxSUvWiIJdh6KU/FfoZEMjepad6EB674He
-         +am4kLsjfw7yCZwDeqcZF2DK3rM4YwTY0mQF3AebVZChRw7+qm/bNeGBKG2xPMSfxJWI
-         gn5gDbaPqvzNUrUxWXq6BdYBGcNuJ3XatUYJ8/gE9nQuz/Vt7xNx5hsoAWQrs0QPBqW7
-         LYsfz/qsl1pvHueWJ5hxkG6HbjJaVjwis1f6Xax7XIdnhjwmkNJKe90/aOpRXSBA6IEv
-         bQeQ==;
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:in-reply-to:subject:cc:to:from:message-id:date
+         :dkim-signature;
+        bh=XWy3yTjZ6fCNfRFK/lbld/z1IhzKGxbr9I3yBeeHErc=;
+        fh=VOrxn0N4VmTEDkEzG+Yq86rn2V3vLjO0lKGiKgQmJhs=;
+        b=QkTEeQB0NC1bl8pTmbmSsJDx0M3NB2aqDao0h5Nv7Pu3EJ30HUdBgzgMV5JLA75eiL
+         BGV99JfGIr0jSzTDgqT94BZiQvXGY/Xtn7OPwef5i4eI9z5Lm079cF3AKbHM+msioRaA
+         MTcP8h4UQm7m0uHC7n7WbapnHaRGlrVCxgFzux+nNYgpov4i/idcB0AWg31u94SMk8h7
+         kRtp09Vglp6HUCp3GkZ6T4BYeAfGh+CSdasRUi7GqBflPUXdoKYQvXLbBz99E4cYA60z
+         64fP8kQXhV410eKb//ZshS2p7rbGME2flU5bQ78GcfS4TCplrTTzNqmUcS9B5kvmWKmG
+         sd0g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NjJLyuBF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=DgorvigT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a9949f466fsi20656871cf.20.2025.07.04.05.59.42
+        by mx.google.com with ESMTPS id d75a77b69052e-4a994ab405dsi20480691cf.296.2025.07.04.06.51.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Jul 2025 05:59:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 04 Jul 2025 06:51:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NjJLyuBF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=DgorvigT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uXg0f-0001eH-Sp; Fri, 04 Jul 2025 08:59:24 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uXgpJ-0000VU-54; Fri, 04 Jul 2025 09:51:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uXg0b-0001cK-N2
- for qemu-devel@nongnu.org; Fri, 04 Jul 2025 08:59:17 -0400
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uXg0Z-0007tx-7C
- for qemu-devel@nongnu.org; Fri, 04 Jul 2025 08:59:17 -0400
-Received: by mail-yb1-xb35.google.com with SMTP id
- 3f1490d57ef6-e818a572828so595123276.1
- for <qemu-devel@nongnu.org>; Fri, 04 Jul 2025 05:59:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751633953; x=1752238753; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ep8RwMJ0M9i5BPjIgEJpfQPQz9oWccG3B4OGUcUZy5A=;
- b=NjJLyuBFXmUJTj9CG9xsXIOdtdBFxGBN9JjFrGZjZyT4ak0BIAg+ruzmpU7Vzyv+kF
- VDrKmTXDBRpUShZl6YMTKFRFF3B+oMfjA3gxDKzSbotRE4m79PiMcbAvZtObDHsxlRDb
- XrM7B7pCSWQtq+qifSqRB4dL1c5x5F9ZN/FkiBMgljsM3LQwD694V4I45Bz8lpirCKgX
- VTzrMSMjDPogFmUVmGLwW6Hkbq7AYmUNnEEk4lyD/sCr/zNbYefdjAc55L3yY+T1P4HH
- hwd7a6UOsOcwWAQLMulLs/szd1ZKiWeQNwdSjFlL8k4eyFzaOGnqenDJqv7nIZ8hwbbT
- rHrw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751633953; x=1752238753;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ep8RwMJ0M9i5BPjIgEJpfQPQz9oWccG3B4OGUcUZy5A=;
- b=S0DciVYXaoe+LeBo4r1wcS5xQiu4Oi+RjdwhjAu2HCdoR5zLZWYTbSGpVNI92ol08J
- IY9HJp+nHALMZi5zaTAkBpzqUc+VbnsmkLTFN5KdcnIPe4l/qnWRSdbaWe/Jn5Ni+EEn
- EB3nTrq6o3T14bKhaDRjlU1F+/xDJNswCcQ8VbOorYeK6DC9Vu0AOuU6Qgx6NmWlQ7sR
- +9TW3AZsudS1YVBb6ARhMHc7+MG/mEhiug6vauQbxprbE4EfoNV6WLo2EkyY5KITfkxc
- 9u4DS28ehPzNO0bHh/RQbGRzzStSBoYduEA4Y1IfyVkrms4Dhb08CtdnuGoGhIJ0CN5P
- jdiw==
-X-Gm-Message-State: AOJu0Yz7lO92DqAuaAHF7i+w6tOTYRETdLtlpxqxKhD31c88gHO+VKXC
- nwdML1BH4aZ2vBFXjNmg1D6H/5VVpr6tqTTigTmUY76pSaXgFHrDYTevIIzP6IeAr99DCMO9L0z
- DsNpSGxe/rKoJJDSJyy4EA5CU/N82ImbeYfFMqrU0Ng==
-X-Gm-Gg: ASbGncsrIik7g5azvvv1PwJeNHjlGExnJbMiErcp8uOu1GnEOq5Avta45A6FRDcC497
- OrX5R6Tl5GVF/vAhuBdxXsD646PnUOtLvzc6up6c+1Gee8ZAgFzCdLaYgF9U4pPcWwEEixjtv3z
- V/XlgYBTu0H7V1dVU4xIxmOHrZT1GxNkFaJ6TlAL8Ht15b
-X-Received: by 2002:a05:690c:6:b0:70f:6ebb:b29a with SMTP id
- 00721157ae682-71668d04e88mr29643897b3.29.1751633953648; Fri, 04 Jul 2025
- 05:59:13 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250703085604.154449-1-kosasihwilliam4@gmail.com>
-In-Reply-To: <20250703085604.154449-1-kosasihwilliam4@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 4 Jul 2025 13:59:01 +0100
-X-Gm-Features: Ac12FXwSac9Laj_vHcH-p-uxJpINs0H5g3o7vcUg3xomduQF3ebXgfUpIq6Bmnw
-Message-ID: <CAFEAcA97cvAmtRYEr3hD-BG=LNjoaZFAThYWNKa2zok1MOxgGA@mail.gmail.com>
-Subject: Re: [PATCH v4 00/11] target/arm: Fix M-profile helper loads/stores
- alignment checks
-To: William Kosasih <kosasihwilliam4@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb35.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1uXgp9-0000U5-1V; Fri, 04 Jul 2025 09:51:32 -0400
+Received: from tor.source.kernel.org ([172.105.4.254])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1uXgp6-0007pg-Vb; Fri, 04 Jul 2025 09:51:30 -0400
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id 7E6E261457;
+ Fri,  4 Jul 2025 13:51:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34273C4CEEE;
+ Fri,  4 Jul 2025 13:51:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1751637079;
+ bh=dePqag9toNbk0vZKK+JedM9GAanBG0rzuVg7dhWaoPw=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=DgorvigT0+ibKH+kbAGo+aVEeCXNWL2e1nKV2Tyzy2CPWhy92bjy39P7mbX00uIkd
+ AYB/CbvBOe2ydgKoEvBrgVRNbLeq7GudcKdqdfQ/f61+ja9RNG5Iy772tkJNQWYvLD
+ XQ8qJUHev6bJLUbtF4ZoGr0tn/qglEOwrNPyiskSYEUNNWpZCTPam8XJs4WgWPFPIG
+ oQV+SvLFQmrHT8dwUz0GQqdhptVv2oRdJ3gIoOJBQakNvI8qFYXADiLX/qRZN57D/O
+ 1nbNmBDdhK+gCvGC1KxScMykSfjRsEr+UOuRHQiAVgquxWpfP85BlXHXvhqtcRqWVp
+ b2kJP9Pz35qSg==
+Received: from sofa.misterjones.org ([185.219.108.64]
+ helo=goblin-girl.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
+ (envelope-from <maz@kernel.org>) id 1uXgou-00ChyL-RV;
+ Fri, 04 Jul 2025 14:51:16 +0100
+Date: Fri, 04 Jul 2025 14:51:15 +0100
+Message-ID: <86zfdk9i98.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, miguel.luis@oracle.com,
+ richard.henderson@linaro.org, gkulkarni@amperecomputing.com,
+ gankulkarni@os.amperecomputing.com, hi@alyssa.is
+Subject: Re: [PATCH v7 1/4] hw/arm: Allow setting KVM vGIC maintenance IRQ
+In-Reply-To: <CAFEAcA88pUf6tpn7_o-khYjRP6T1NwCuaZKREkC3wmd_YUKEiQ@mail.gmail.com>
+References: <20250702163115.251445-1-eric.auger@redhat.com>
+ <20250702163115.251445-2-eric.auger@redhat.com>
+ <CAFEAcA88pUf6tpn7_o-khYjRP6T1NwCuaZKREkC3wmd_YUKEiQ@mail.gmail.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/30.1
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: peter.maydell@linaro.org, eric.auger@redhat.com,
+ eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ miguel.luis@oracle.com, richard.henderson@linaro.org,
+ gkulkarni@amperecomputing.com, gankulkarni@os.amperecomputing.com,
+ hi@alyssa.is
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
+Received-SPF: pass client-ip=172.105.4.254; envelope-from=maz@kernel.org;
+ helo=tor.source.kernel.org
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.218, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Zi9PwoB9CtCa
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: IwsZHzMX2wx+
 
-On Thu, 3 Jul 2025 at 09:56, William Kosasih <kosasihwilliam4@gmail.com> wrote:
->
-> Historically, M-profile helper functions in m_helper.c and mve_helper.c
-> used the unaligned cpu_*_data_ra() routines to perform guest memory
-> accesses. This meant we had no way to enforce alignment constraints
-> when executing helper-based loads/stores. With the addition of the
-> cpu_*_mmu() APIs, we can now combine the current MMU state with MO_ALIGN
-> flags to build a MemOpIdx that enforces alignment at the helper level.
->
-> This patch series:
-> - Replaces all calls to cpu_ld*_data_ra(), cpu_st*_data_ra()
->   in the M-profile helpers (m_helper.c) and the MVE helpers
->   (mve_helper.c) with their cpu_*_mmu() equivalents.
-> - Leaves SME and SVE helper code untouched, as those extensions
->   support unaligned accesses by design.
->
-> With this change, all M-profile and MVE helper-based loads and stores
-> will now correctly honor their alignment requirements.
->
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1154
-> Signed-off-by: William Kosasih <kosasihwilliam4@gmail.com>
+On Fri, 04 Jul 2025 13:01:05 +0100,
+Peter Maydell <peter.maydell@linaro.org> wrote:
+> 
+> On Wed, 2 Jul 2025 at 17:31, Eric Auger <eric.auger@redhat.com> wrote:
+> >
+> > From: Haibo Xu <haibo.xu@linaro.org>
+> >
+> > Allow virt arm machine to set the interrupt ID for the KVM
+> > GIC maintenance interrupt.
+> >
+> > This setting must be done before the KVM_DEV_ARM_VGIC_CTRL_INIT
+> > hence the choice to perform the setting in the GICv3 realize
+> > instead of proceeding the same way as kvm_arm_pmu_set_irq().
+> >
+> > Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+> > Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+> > Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> 
+> > @@ -231,6 +231,7 @@ struct GICv3State {
+> >      uint32_t num_cpu;
+> >      uint32_t num_irq;
+> >      uint32_t revision;
+> > +    uint32_t maint_irq;
+> >      bool lpi_enable;
+> >      bool nmi_support;
+> >      bool security_extn;
+> 
+> > +    if (s->maint_irq) {
+> > +        int ret;
+> > +
+> > +        ret = kvm_device_check_attr(s->dev_fd,
+> > +                                    KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ, 0);
+> > +        if (!ret) {
+> > +            error_setg_errno(errp, errno,
+> > +                             "VGICv3 setting maintenance IRQ is not "
+> > +                             "supported by this host kernel");
+> > +            return;
+> > +        }
+> > +
+> > +        ret = kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ, 0,
+> > +                                &s->maint_irq, true, errp);
+> 
+> This doesn't seem to line up with what the kernel documents
+> for KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ:
+> 
+> https://www.kernel.org/doc/Documentation/virt/kvm/devices/arm-vgic-v3.rst
+> says
+> 
+> # KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ
+> # Attributes:
+> #
+> #    The attr field of kvm_device_attr encodes the following values:
+> #
+> #      bits:     | 31   ....    5 | 4  ....  0 |
+> #      values:   |      RES0      |   vINTID   |
+> #
+> #    The vINTID specifies which interrupt is generated when the vGIC
+> #    must generate a maintenance interrupt. This must be a PPI.
+> 
+> but this code sets kvmattr.addr to 0 and kvmaddr.addr to
+> the address of a uint32_t with the vINTID in it.
+> 
+> Looking at the kernel code in vgic_v3_attr_regs_access() it
+> looks like maybe the kernel docs are wrong, but I'm not sure.
 
-Applied to target-arm.next. Thanks for these patches!
+I think this is a pretty bad case of one person implementing
+something, and another (me) hoping (but not checking) it would be
+implemented in a particular way. Oh well.
 
--- PMM
+Would the following match your expectations (and the code)?
+
+diff --git a/Documentation/virt/kvm/devices/arm-vgic-v3.rst b/Documentation/virt/kvm/devices/arm-vgic-v3.rst
+index e860498b1e359..4843c91052786 100644
+--- a/Documentation/virt/kvm/devices/arm-vgic-v3.rst
++++ b/Documentation/virt/kvm/devices/arm-vgic-v3.rst
+@@ -299,7 +299,7 @@ Groups:
+   KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ
+    Attributes:
+ 
+-    The attr field of kvm_device_attr encodes the following values:
++    The attribute data pointed to by kvm_device_attr.addr is a __u32 value::
+ 
+       bits:     | 31   ....    5 | 4  ....  0 |
+       values:   |      RES0      |   vINTID   |
+
+Thanks,
+
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.

@@ -1,120 +1,119 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1258290dyc;
-        Fri, 4 Jul 2025 07:35:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXvHkMg42KDG9y7EpT6ht26SjsE3WD9eEsOY6Ww8lO9ZTWWmIQPA3S0Eybk/sZHKaMbZoM0L+pj8DdT5g==@linaro.org
-X-Google-Smtp-Source: AGHT+IEoHdyqE8fCEsIL0eO9RJ9jtGvEw6sudvhDqRsKDttfzRfT6MfXmicZQQ3YrkqVkG9pWUCH
-X-Received: by 2002:ad4:5cc2:0:b0:6fa:fb4f:b582 with SMTP id 6a1803df08f44-702c8b723c3mr27631756d6.6.1751639758605;
-        Fri, 04 Jul 2025 07:35:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751639758; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1258591dyc;
+        Fri, 4 Jul 2025 07:36:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXY4wYTYSmvNyoJ716DkiHDbfJc2yJ+0LAGvAjXoFuu4J2nChgMiz8ybyKMcPYHW3/iYb0Ag4JtNVTsGA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFZVQSsLmu6LGYrSqurn8vjRUZRfp6WpJ/ENJfo8aIbxKJtYOvf1cMDoNkZa2EwBjRdUEWS
+X-Received: by 2002:a05:6122:3708:b0:531:2f51:7676 with SMTP id 71dfb90a1353d-5347c0328a6mr1886121e0c.9.1751639788951;
+        Fri, 04 Jul 2025 07:36:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751639788; cv=none;
         d=google.com; s=arc-20240605;
-        b=PVJlar+Z2vHl5IlwJ37Q/ECS/+/sM40ysiFpFeWy2KdIIuN/AU/uLZgU/P9PrW9atQ
-         SGModtMI8wWoTx3aCvS+A+8xGLR+aRCqubWDL5flmgVKtk+x5KJBSiFQbC953Sc40vMy
-         rKvUea1B0mA61ABGuDVFmdl0+XrQfUJwkKBCyz3hugPyDvdhKNJh12ULDeFLO9u5nlmr
-         vqwZ/1npj3QdDbFnHGkmOjUsBEZvYMlqNdbsHXICWjWBZ3/5OiR70Rd4qjwQBQSRCgHZ
-         9BAXeBAj0rXTUAecahX0IZhpmudebJzZPQ5efZCvTwUmVFE3JOYt5imyswzsa7IMqBOr
-         SUpw==
+        b=ZfTRnJzJAW9o2j9MOn9b9iKGnw6BgEWtjJCkTBdK8zzDyh5YUOpk4BLcfpPA4lSbIs
+         G/JX4wXcih2IwilM4Kf9E8qN6e4iflOfQzzKuh/OKFnhJ2OMSncI8Ex/SoXhNr4CI648
+         fNcjSiDOVgFEBLLgowJI8QIRfr3rywFl3T4tB1spWOxmtJUysIVXp8KMr86HoDA1zxAP
+         AKJ/MRb4FoyvCjhGHG8mo2ZV5hmo7nd4r4SBLZTj2zPpUOU8TBHpvUxUejiXi1zzOe68
+         Np5pio16kXG5m8PGF3bahEsGY4sQzLV4xlQ9lONKbhAFQvVoohAnxrDrioHQeXWftPsj
+         49Eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=+O7jmLrwj7uYx9707P2+AK6L9PFAUcM9kTC7/PievL8=;
+        bh=6bLvhBwNEmDsnka8cIDU5PrrUCOcipDYGvxoPFyUBc4=;
         fh=vZxkDpCwvhENXlY8qSqryGKuN7qdzoFpPjxnavaSuNI=;
-        b=IgxNJn6EFD7rOw1CcTY4bFqvShdnovblwLc7Cwqw88ZxlzZ6WcuhWjZnNbz+KeXwgE
-         SxfShKmYbr/6J7q7GoOA9M8VukBpZB/yTo8f2ujkglli3LUx9UMwApUVxZIYZIE96gOQ
-         0OoLaReANaA9ijQK4xIbk2S9BKexstND72AlhdgjVo4l3iD8jTZtJ0/XoS88UXM5PhqT
-         In1BB50F0/fbjq6hia3G9E2tMIP/UbM2uksJ1y30TnPyVbDSuOAwvklwOdTlHEMgseao
-         7bu1Y+MQa3XQ2fUmspJccJiaW57YfNwm7GrKlInLRmTjc46/c0ro53g59gCammpOjUa9
-         lr1Q==;
+        b=g8XmmN5tIW3uL0HF4xW9BFZ7K3+7yPDW/GdRVO29TK4sU53rMJoypnpKp25zfEYJzH
+         71752gb/WRx4nimkTKWMDtSBUte+DNbV62Nhrp3hcWgj6lUvRA5XYowvjTF9sIFcVh6q
+         zvPPOZIWA6A7u8eegK3DUZDuszetqmS85BeKWZ6oYz+vF89HltIzOrVXmKmsGPWDaF1F
+         /nK3l/sDmymN+xKMThRKEWWF+7KTo3nK7rSsI0o36RMAAWCa0SoB3OSJJM2Z8cB7+UYq
+         TatfvsoamSRiVAMTLC16ZtWLN/xtgjwZHGx0RoIj0o63gvWgYSV8gE7E0+YMOgY5kYZT
+         Phug==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ecRas4AX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vDc2C2rM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-702c4ccc477si21385226d6.13.2025.07.04.07.35.58
+        by mx.google.com with ESMTPS id ada2fe7eead31-4f2ea787fcesi665670137.610.2025.07.04.07.36.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Jul 2025 07:35:58 -0700 (PDT)
+        Fri, 04 Jul 2025 07:36:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ecRas4AX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vDc2C2rM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uXhUP-0003cE-C1; Fri, 04 Jul 2025 10:34:09 -0400
+	id 1uXhVM-0005q5-EJ; Fri, 04 Jul 2025 10:35:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uXhPI-0002Xw-9F
- for qemu-arm@nongnu.org; Fri, 04 Jul 2025 10:28:52 -0400
-Received: from mail-oa1-x2d.google.com ([2001:4860:4864:20::2d])
+ id 1uXhM7-0004bI-AJ
+ for qemu-arm@nongnu.org; Fri, 04 Jul 2025 10:25:39 -0400
+Received: from mail-oo1-xc2c.google.com ([2607:f8b0:4864:20::c2c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uXhPF-0001Tu-QD
- for qemu-arm@nongnu.org; Fri, 04 Jul 2025 10:28:51 -0400
-Received: by mail-oa1-x2d.google.com with SMTP id
- 586e51a60fabf-2ef891cd058so857906fac.1
- for <qemu-arm@nongnu.org>; Fri, 04 Jul 2025 07:28:48 -0700 (PDT)
+ id 1uXhM1-00087Z-GJ
+ for qemu-arm@nongnu.org; Fri, 04 Jul 2025 10:25:34 -0400
+Received: by mail-oo1-xc2c.google.com with SMTP id
+ 006d021491bc7-60d6303a11eso567366eaf.0
+ for <qemu-arm@nongnu.org>; Fri, 04 Jul 2025 07:25:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751639328; x=1752244128; darn=nongnu.org;
+ d=linaro.org; s=google; t=1751639128; x=1752243928; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=+O7jmLrwj7uYx9707P2+AK6L9PFAUcM9kTC7/PievL8=;
- b=ecRas4AXToF2trg6iHA3OKedkKhUr2aQqt2MgebjTltM0mIIjDeQ478e/aXwpL4Jti
- 6MCMoNozg9llNkIAPVeP5vhtTNW6+FQw3bzc1eQ84VEL7fSHWQX2YYptWxc39TqXu5KV
- 4J558eSXKzes2jQKQMXSqQVUX9eg/ATOIzZwh9aYNhQYAYmiPRrzK4GExj0kA2N0g2Jg
- P1e8gPnWuqHRe94pGoEMayu1mEeTvL9ZRHFYV1XaA+DFTA5Css65sZRdIUdWlVoT4gsS
- hJu1PzDj2NpEVtCpni9chd+0OqcTmsEOTps7Lod6ImI1EaYZIECvWiKVmdM/3WbapuVJ
- Qfew==
+ bh=6bLvhBwNEmDsnka8cIDU5PrrUCOcipDYGvxoPFyUBc4=;
+ b=vDc2C2rMeVVG6QK5W4T8/NKnhMOFn4Rxl/rDsV7vwinOqSRNCtdIBg48OUymM2T0Ky
+ A+ywlxURYwXoOGQfIa+4ZDaB83meW2LcCK46flRRqfdOtuz7jQwnkfSfs1Ot4YjFclxQ
+ pscbBnPbX6Gfm+9mQ0GUfflvGTagiRca5LAD8w/fKTSW6IP2Xy8BRmm/NxcnH0Izt+gn
+ TNFtvZwi+i6wA4U8QWTKf0h6PjctriI2rLvKD2tzrbAlJpF135fhlHhnFxQiyBVqMX/1
+ 9E1tRMdpem4+6sX60pnqcmTk3Jl+nia9ajFS2bX13rRQhFpnoyb8q+bAuZ6pRpYKye6a
+ FpZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751639328; x=1752244128;
+ d=1e100.net; s=20230601; t=1751639128; x=1752243928;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=+O7jmLrwj7uYx9707P2+AK6L9PFAUcM9kTC7/PievL8=;
- b=nQk3Dj9sgbmxY4VdghBaKC9mLkVsCap/s7oNqH9ppS3PoTRy3brPSni2xaGUxg7aU8
- bfVQbD2sUUtzSRrkAgZL3WGEttZrPqdY6PUgvUJWSJyn5mtv776iELRmvjzbDhKnsIMk
- 27afIEk+TOeB9BTvveNZ3cnJpnCjqfE0NYEsXynFR3aPIBG8j3namLfR/p+YrXN+tDup
- hRO2xoJr0sJGLZ70xy7+OLRUX5oT+qJBp0M19jkfu4ftAPzAzhi9pKy/UgH7Dx5u91ws
- wnOtS6yj5QzShaUn1lfn5wCADICe2UHOpKXebD3cuboroCdcessOBZHJ/OisGacybASa
- bbOw==
-X-Gm-Message-State: AOJu0YyhDKEap0ufHxaGil+SyTQtQfmKFDwzjGetl34FnwGcrQ7xvx1A
- pgImU1epwdjewQMOkKkDJCLFQUDw1feY5HNd4YOZt1/Z5WcvprqnLCVrS84R8ktLJ6fOJX+VAlZ
- uPNl+2zs=
-X-Gm-Gg: ASbGnct+rZHRKPXmlFrjafmYIhyYTnF4KSv4X3k0lDqztcF7kOf9KQICSUYYxhDLY2q
- Oz8rElFFGfzNpXjCahl2OyQkSFsTcz4hWGkxVHnwfbInIRZ4FtFrKOtgnGU2U+ENsu85oJ68NYy
- 1R2kDOXJVJnSpplUdq368uSVf0DbAlTZsWv6MsfrPuQUfyKtGjAFUlRZhLroca3BZG3fWebaPbR
- IhOn5kbo4fLDbRAxqzJMn6aQzOc6aurLev53Wd4StBNt8/Ul0sjP0rleQ3hZ2sBgKQUT9hLqaac
- zpX+qBxnHK6TBJYftyNgivIryQrdo/bOBuhPZstlWC5W1oEYyTA+XihXn3n5FBpJf2kHjtrOW6K
- KW0dO7a1paHW/x/zIHLAY0Mp47rqIWOIvIleNfIjqkMDK0Qwo
-X-Received: by 2002:a05:6870:e80b:b0:2cf:bc73:7bbb with SMTP id
- 586e51a60fabf-2f796cd0dd0mr1763771fac.25.1751639327945; 
- Fri, 04 Jul 2025 07:28:47 -0700 (PDT)
+ bh=6bLvhBwNEmDsnka8cIDU5PrrUCOcipDYGvxoPFyUBc4=;
+ b=i/beWD2xv1rTrr6au4Xv5ZIWx+/zN5clUkx9irJl1t0QIVb8ZFEhT87HPGE5L8oO1X
+ KBZxpFkbw61357phjMDy4SnCrIMI+O26SnFU6jZ5duqIQD0c8kfj3zToLLwMVS7JFoH1
+ bspUj4TwfuURIRHAi+wsUFFB4DeEcj3vDjgZEkBXE8LOS+RqMXtRIUAncKnz/jqWCB8S
+ TygbbAb5QExEToQx3ZzcEIxsff8gEOPvp/CLEmgM8qJ8nqfYs/P5DHNrudS5f9LTpfqF
+ EyLr2TY3Q3c1QVwKtEgeYDUjFTHnV+jXdHcSy+olOy2VDK5KbCwHPpCM2ZterDimRz/f
+ Hvxg==
+X-Gm-Message-State: AOJu0YzCau5En5RfUVqTh2br7RYVj9YloRMvWxGFYsF4gSPocPea09xW
+ fiDwxnah2JWfNzMvcPV1Qh2VfpwBB+fVZbuJYBskOeKCDMqNWA+fjisNgnQrfpgntJY=
+X-Gm-Gg: ASbGnctNgr5DsVBaiu7GNTc511cQrc74gt8q0EAogR7Z+eW8YttMZT4RuB0+qjP1r6c
+ sRqeYnOVle+F1e1rG7iGEqR46FYc8Uq9MGhzq1NC6M0PCGJzEnRlCCzJWPAIyvN2gGJZNn+50TN
+ o2iBUggPHhowBylv0LRl0M0C2lzlqnufd5SweZEpbjLa1UVQjFVjenKrCmdTA2QrifBDm3AeOA4
+ yL8PkGDDkJ3yvG7LJ6a2Md7EPuGw1ElVcWj+VgpKZd/kQVw/GFIewNufbUzXGtlyr6HPw5/rZ/D
+ 8n6mS5anNG3BZoGEIzbqwHL0Yz6klaKTn5hrOmLkvtx+BAFNwkAUw90xlTBor+5ZNmti9Wtkgaa
+ k5ircDjLJycWHG/expIGDemfFvw9BDA1hoA3n0/yDmWQG4AA+Qe7GoV8fKro=
+X-Received: by 2002:a05:6820:1e88:b0:613:8456:51ac with SMTP id
+ 006d021491bc7-6138fe859cemr1633774eaf.0.1751639128110; 
+ Fri, 04 Jul 2025 07:25:28 -0700 (PDT)
 Received: from localhost.localdomain (fixed-187-189-51-143.totalplay.net.
  [187.189.51.143]) by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-2f78ff55633sm531448fac.20.2025.07.04.07.28.47
+ 006d021491bc7-6138e5ac5eesm310233eaf.29.2025.07.04.07.25.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Jul 2025 07:28:47 -0700 (PDT)
+ Fri, 04 Jul 2025 07:25:27 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v4 089/108] target/arm: Implement EXTQ for SME2p1/SVE2p1
-Date: Fri,  4 Jul 2025 08:20:52 -0600
-Message-ID: <20250704142112.1018902-90-richard.henderson@linaro.org>
+Subject: [PATCH v4 070/108] target/arm: Introduce pred_count_test
+Date: Fri,  4 Jul 2025 08:20:33 -0600
+Message-ID: <20250704142112.1018902-71-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250704142112.1018902-1-richard.henderson@linaro.org>
 References: <20250704142112.1018902-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::2d;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x2d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c2c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc2c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -136,88 +135,133 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: F3lHsCdMwH28
+X-TUID: h5+iSTju46h3
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+For WHILE, we have the count of enabled predicates, so we don't
+need to search to compute the PredTest result.  Reuse the logic
+that will shortly be required for counted predicates.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-sve.c | 49 ++++++++++++++++++++++++++++++++++
- target/arm/tcg/sve.decode      |  2 ++
- 2 files changed, 51 insertions(+)
+ target/arm/tcg/sve_helper.c | 81 +++++++++++++++++++++----------------
+ 1 file changed, 46 insertions(+), 35 deletions(-)
 
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index e33b2eb2a4..a918da31fe 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -2202,6 +2202,55 @@ static bool do_EXT(DisasContext *s, int rd, int rn, int rm, int imm)
- TRANS_FEAT(EXT, aa64_sve, do_EXT, a->rd, a->rn, a->rm, a->imm)
- TRANS_FEAT(EXT_sve2, aa64_sve2, do_EXT, a->rd, a->rn, (a->rn + 1) % 32, a->imm)
+diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
+index 0e59ad2262..5b5871ba13 100644
+--- a/target/arm/tcg/sve_helper.c
++++ b/target/arm/tcg/sve_helper.c
+@@ -4102,30 +4102,46 @@ uint64_t HELPER(sve_cntp)(void *vn, void *vg, uint32_t pred_desc)
+     return sum;
+ }
  
-+static bool trans_EXTQ(DisasContext *s, arg_EXTQ *a)
++/* C.f. Arm pseudocode PredCountTest */
++static uint32_t pred_count_test(uint32_t elements, uint32_t count, bool invert)
 +{
-+    unsigned vl, dofs, sofs0, sofs1, sofs2, imm;
++    uint32_t flags;
 +
-+    if (!dc_isar_feature(aa64_sme2p1_or_sve2p1, s)) {
-+        return false;
-+    }
-+    if (!sve_access_check(s)) {
-+        return true;
-+    }
-+
-+    imm = a->imm;
-+    if (imm == 0) {
-+        /* So far we never optimize Zdn with MOVPRFX, so zd = zn is a nop. */
-+        return true;
-+    }
-+
-+    vl = vec_full_reg_size(s);
-+    dofs = vec_full_reg_offset(s, a->rd);
-+    sofs2 = vec_full_reg_offset(s, a->rn);
-+
-+    if (imm & 8) {
-+        sofs0 = dofs + 8;
-+        sofs1 = sofs2;
-+        sofs2 += 8;
++    if (count == 0) {
++        flags = 1;                              /* !N, Z, C */
++    } else if (!invert) {
++        flags = (1u << 31) | 2;                 /* N, !Z */
++        flags |= count != elements;             /* C */
 +    } else {
-+        sofs0 = dofs;
-+        sofs1 = dofs + 8;
++        flags = 2;                              /* !Z, !C */
++        flags |= (count == elements) << 31;     /* N */
 +    }
-+    imm = (imm & 7) << 3;
-+
-+    for (unsigned i = 0; i < vl; i += 16) {
-+        TCGv_i64 s0 = tcg_temp_new_i64();
-+        TCGv_i64 s1 = tcg_temp_new_i64();
-+        TCGv_i64 s2 = tcg_temp_new_i64();
-+
-+        tcg_gen_ld_i64(s0, tcg_env, sofs0 + i);
-+        tcg_gen_ld_i64(s1, tcg_env, sofs1 + i);
-+        tcg_gen_ld_i64(s2, tcg_env, sofs2 + i);
-+
-+        tcg_gen_extract2_i64(s0, s0, s1, imm);
-+        tcg_gen_extract2_i64(s1, s1, s2, imm);
-+
-+        tcg_gen_st_i64(s0, tcg_env, dofs + i);
-+        tcg_gen_st_i64(s1, tcg_env, dofs + i + 8);
-+    }
-+    return true;
++    return flags;
 +}
 +
- /*
-  *** SVE Permute - Unpredicated Group
-  */
-diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
-index 2650e00f80..af4fb966bf 100644
---- a/target/arm/tcg/sve.decode
-+++ b/target/arm/tcg/sve.decode
-@@ -583,6 +583,8 @@ DUPQ            00000101 001 imm:3   10 001001 rn:5 rd:5        &rri_esz esz=1
- DUPQ            00000101 001 imm:2  100 001001 rn:5 rd:5        &rri_esz esz=2
- DUPQ            00000101 001 imm:1 1000 001001 rn:5 rd:5        &rri_esz esz=3
- 
-+EXTQ            00000101 0110 imm:4 001001 rn:5 rd:5            &rri
+ uint32_t HELPER(sve_whilel)(void *vd, uint32_t count, uint32_t pred_desc)
+ {
+     intptr_t oprsz = FIELD_EX32(pred_desc, PREDDESC, OPRSZ);
+     intptr_t esz = FIELD_EX32(pred_desc, PREDDESC, ESZ);
+     uint64_t esz_mask = pred_esz_masks[esz];
+     ARMPredicateReg *d = vd;
+-    uint32_t flags;
+-    intptr_t i;
++    intptr_t i, oprbits = oprsz * 8;
 +
- # SVE insert SIMD&FP scalar register
- INSR_f          00000101 .. 1 10100 001110 ..... .....          @rdn_rm
++    tcg_debug_assert(count <= oprbits);
  
+     /* Begin with a zero predicate register.  */
+-    flags = do_zero(d, oprsz);
+-    if (count == 0) {
+-        return flags;
++    do_zero(d, oprsz);
++    if (count) {
++        /* Set all of the requested bits.  */
++        for (i = 0; i < count / 64; ++i) {
++            d->p[i] = esz_mask;
++        }
++        if (count & 63) {
++            d->p[i] = MAKE_64BIT_MASK(0, count & 63) & esz_mask;
++        }
+     }
+ 
+-    /* Set all of the requested bits.  */
+-    for (i = 0; i < count / 64; ++i) {
+-        d->p[i] = esz_mask;
+-    }
+-    if (count & 63) {
+-        d->p[i] = MAKE_64BIT_MASK(0, count & 63) & esz_mask;
+-    }
+-
+-    return predtest_ones(d, oprsz, esz_mask);
++    return pred_count_test(oprbits, count, false);
+ }
+ 
+ uint32_t HELPER(sve_whileg)(void *vd, uint32_t count, uint32_t pred_desc)
+@@ -4134,34 +4150,29 @@ uint32_t HELPER(sve_whileg)(void *vd, uint32_t count, uint32_t pred_desc)
+     intptr_t esz = FIELD_EX32(pred_desc, PREDDESC, ESZ);
+     uint64_t esz_mask = pred_esz_masks[esz];
+     ARMPredicateReg *d = vd;
+-    intptr_t i, invcount, oprbits;
++    intptr_t i, invcount, oprbits = oprsz * 8;
+     uint64_t bits;
+ 
+-    if (count == 0) {
+-        return do_zero(d, oprsz);
+-    }
+-
+-    oprbits = oprsz * 8;
+     tcg_debug_assert(count <= oprbits);
+ 
+-    bits = esz_mask;
+-    if (oprbits & 63) {
+-        bits &= MAKE_64BIT_MASK(0, oprbits & 63);
+-    }
+-
+-    invcount = oprbits - count;
+-    for (i = (oprsz - 1) / 8; i > invcount / 64; --i) {
+-        d->p[i] = bits;
++    /* Begin with a zero predicate register.  */
++    do_zero(d, oprsz);
++    if (count) {
++        /* Set all of the requested bits.  */
+         bits = esz_mask;
++        if (oprbits & 63) {
++            bits &= MAKE_64BIT_MASK(0, oprbits & 63);
++        }
++
++        invcount = oprbits - count;
++        for (i = (oprsz - 1) / 8; i > invcount / 64; --i) {
++            d->p[i] = bits;
++            bits = esz_mask;
++        }
++        d->p[i] = bits & MAKE_64BIT_MASK(invcount & 63, 64);
+     }
+ 
+-    d->p[i] = bits & MAKE_64BIT_MASK(invcount & 63, 64);
+-
+-    while (--i >= 0) {
+-        d->p[i] = 0;
+-    }
+-
+-    return predtest_ones(d, oprsz, esz_mask);
++    return pred_count_test(oprbits, count, true);
+ }
+ 
+ /* Recursive reduction on a function;
 -- 
 2.43.0
 

@@ -1,147 +1,158 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1477941dyc;
-        Fri, 4 Jul 2025 15:29:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVuTphfwMfWulbgbC5dYw4SwEXjlbFs+6DinU5dkPLVCxC5h1TR+e0CNVJgio6o3vg7mj0+ImIjCuy5Qw==@linaro.org
-X-Received: by 2002:a05:6808:50a5:b0:408:fef8:9c6d with SMTP id 5614622812f47-40d2cc4054bmr256940b6e.19.1751668164651;
-        Fri, 04 Jul 2025 15:29:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751668164; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1485806dyc;
+        Fri, 4 Jul 2025 15:56:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWhbhkD3Dhj5y713Y1Vy5AcwnRGykx4d79lKAp9oSCyXu9uVZvJNAsXNDg9kEyJKWlb/quncJauhXHSiQ==@linaro.org
+X-Received: by 2002:a05:6820:2002:b0:611:a5f4:42c0 with SMTP id 006d021491bc7-6138f9c3c2bmr3304495eaf.2.1751669773999;
+        Fri, 04 Jul 2025 15:56:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751669773; cv=none;
         d=google.com; s=arc-20240605;
-        b=O7an3B6wNiidnY+ZIUhFBlYScr3Z2vqJTQFcnzH/NtooLzTWzgW44MeV1DOZw93G6S
-         E+/euoiP0JOmb/lztGlhMHx2MI7djpxWsmgUt3d50nCi2Lk/Nu9tq9puy1PJQaDGq2Cp
-         vQwWOWbiBrRR5TDwq426qlZbLFPdDy40N9OmMHYjVBoXP9mmIF9xGljU5NNjlS4XfQX+
-         Z5ttqv1i6/pyzdEni3MO30Izju2b6GvILg78AXLFeizPcqDnF6A+zTKNonhAXvZ34kCW
-         KbLkpryWkkj+zunyMVE6A5e7c3vOeeu42i7ElA6vmDZAty5gS2S3ojaRIz7uks4HacZA
-         F3pA==
+        b=X1BDQFZSwjvY1OkTdjuRYR6N5g97jDU9csTMa1gHKkYXjcIwPiHLzvDohxDYH5wElT
+         +2jIfjKWmetKktQhyearwckQgp5vlGy8SIy8gRDxmPFwBCkkVp8uqjcK+H2ZsKkADlLT
+         wuzk5aTz7ezSpslrWo2/MpQjVQjNkgR4LkaNa4jddg43wpC2iG99ieCOvzcPr5LweGAk
+         Y4NQ2QDy5+oxvDOHS7zthWxPxHH8JqpbL4eXITutGieJKVyhuycpextEHmfusmNB/PBy
+         PDfRZR/uiUfp/oV8mUDuxZR6gRVVEOtS9ksgIInTeJdyCP2I/zPv5KJiqrelTfDS3O4X
+         rUPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=PSW5Sd3fMRcO+9pF1PYCNd4U9ckjj4wNXGVkuLJI+50=;
-        fh=PbIWsCRlDlo67MNf/czZGAlFwyYGJhZeMivct6wjw/4=;
-        b=GXiPoecW6v6TX1mHTQli4A6TjJ4jPs1NHbZveovoyXr2V8kfP9uxW2QvEcfo211ve/
-         9pNaFezbQHoYbwf28Ib5e7um36uBK3dad06zAC118hhDCtKcV9BREHaG46xRsKY3ugVW
-         CUPwQjPVZP4Whfah2Br3hk9QNRk9ZFUakyIpdqu2W1N/Q13KMvlTfdvrHs1wVnpqYxhX
-         6Ggam512q5+DRmFOdCzcxeLde3K1lZkplr0IZcdqLm73g8Jjp/CfO7/pKb3vd0BT28Ex
-         EoGqvD3hhTHrckJWMK+zcgQeFc7WdULrIH2uknlmyABq2v1VlAeMwnTHdloTJJWamRwJ
-         XUZQ==;
+        bh=ou+0WFq2STWCoZpLVCiZpnuZ5I6nDVFyUDgY7umpZLg=;
+        fh=zYYfNwjICBKN9qYzCqZieMeF7sphT3S0R2dOKxavfkE=;
+        b=hPmBKgQHtPGCFX7k1x1Uz1aHqz/RAESFNtpu40yB3Y07+wOwemUl95XzZ6na++8U1U
+         2J+COBZyjUSKNOeUzSg4l76OXdZDiVcawbThFsKI/Yysiz80nfHeNzugRmcn2QdiZN6/
+         w4goIqGy8/ak7Q7nbU3kPRL/jgimPqYyJQqsSz1Pl8mPhBQ17W7gTjt988hw7ARMUIA/
+         6nTW0F8DeMWJa75OBVeTCnImNiQdctwMfdpPkc5s8ptBGQudcRIjiNEtI5d9GwOnEErd
+         2EFNbnZuKo4iMzgQ2g4k0r7OJ6RUnA3Xo2vT8TyDtGTwzRG6XdURYi4hBwkH4XqjUIgR
+         +JMg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=l3bjowzt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JKboQHqN;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5614622812f47-40d02ad471bsor516518b6e.9.2025.07.04.15.29.24
+        by mx.google.com with SMTPS id 006d021491bc7-6137cff3b97sor1018910eaf.2.2025.07.04.15.56.13
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 04 Jul 2025 15:29:24 -0700 (PDT)
+        Fri, 04 Jul 2025 15:56:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=l3bjowzt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JKboQHqN;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1751668164; x=1752272964; darn=linaro.org;
+        d=linaro.org; s=google; t=1751669773; x=1752274573; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=PSW5Sd3fMRcO+9pF1PYCNd4U9ckjj4wNXGVkuLJI+50=;
-        b=l3bjowzt5AuQDWxaqRgnwsaFV+vSK/9re25T3gp4l6ep+O1WTgLXET0ESC3PLGlkNb
-         lFUWhwHmcbkWngtO9EtK5A7usSRex6BaD0XPjSTR8eUTaIUSg8fBj7e0jXnConmgE1dt
-         YSvWrR5TI67B9Y79qtIn3hqO4rj2L7rl/Ppn8BOaNjeNHaJ2sI6LSGl+pVx0+GFfsBHi
-         GpPqbJvAyTFJ0wC74sljKhZiJUuhgithsl7gjiZ+ufUq3QWB92p3qfOsUzOP9YNHHQ5c
-         JAZxlZbXih6tPTAgx2Li/9eztlVSVA4flaDDc3B1dFqCH1ej9+oYHQs84Ts2R8kPAZ5e
-         ZbLQ==
+        bh=ou+0WFq2STWCoZpLVCiZpnuZ5I6nDVFyUDgY7umpZLg=;
+        b=JKboQHqNaNzP/CgYL1D2GMo6p386MYREAnrv2iNY5RBHR6zHCcv/gH5fgaxTSc+Bf+
+         EmDvu5ZFwRxfSGCMlgLRjGNF8m00trwLfVMaLFXhIXzvj1NhjxV6yGIA89xBpkhYMU6D
+         Mjnx2FySRi4Oy6D0geXMtgYFMHbb+6jR+GFD+tYamVhFTcLA7QyceZlGDMEHI+0vL73J
+         VXlHct5+sN8D+dc1QrS0MTAi2HieXdDrkyI7LNCF3s6yEJcIuHazvFsO7Vb0+blOxHKY
+         8mbQ8JHoZxS2kmvupTf2aIDNQG6Zta/jwQhSCUwJJJQNoc7OjkO0GakeTKKVwgiZCYrf
+         9WRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751668164; x=1752272964;
+        d=1e100.net; s=20230601; t=1751669773; x=1752274573;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=PSW5Sd3fMRcO+9pF1PYCNd4U9ckjj4wNXGVkuLJI+50=;
-        b=TMp4VqlU4NAoBldprvaH5KLuTaz4aaQyeX4Qrm6ZMZCZHVFy+Q1fORkgdrjbtZtW0a
-         iFNSmsXGkPniu/uaEwovtFougAQ8a8Bfn694Gqk1kjC4S2Z/o6F2Tc8uOhUiRgZoUgth
-         UB6pjpEN9hZJW3NbII+OTrpQyP74PdwueQFAS40DB23InFrihbHuUmL59rJ3YqNZbpSi
-         N0ntc3a6TOominT3cqxyB58q6u51I33XNVU2wAdYi+lWfDad21FfxrhUX0CqBdI39dX7
-         84dFWvQfEThNCc61Z2XKk5XdQBmEfX6qmIhcHCvASOOOhHNfzD5aPddrL/lljHqQXLpT
-         tgJg==
-X-Forwarded-Encrypted: i=1; AJvYcCXIpG2RBsmKSvsg9tz/b/gDWc/3ZstP0j1AgywYx+13rFGfV6f4xpgFx6dGfuWQxnBTxKKoAyS2qRVOWw==@linaro.org
-X-Gm-Message-State: AOJu0YxqkkhzyW2A3Xar3IKt363jDBEkdiMJbjZx1uw03VS3+pQftwmf
-	sX43LAfDi4NumG4UAmmahlLuq384bvM7bqHAHGtA4wHu+ZfHkVjvIaeqcI7vk1Z4c2FcsA==
-X-Gm-Gg: ASbGncvgAyOZMEXBzgMXWv6iD+yWe1YKXJPxVxOTtZnhFWLrNcdUOLKm/viukvipVhk
-	/hZk3RROJuJFxnIjrSPlHyI+uWmNfcAsOuQcwHHUDKCKSsPSKyFPlm1ujkkrdaP3zpUo8bbHL/i
-	jiuCxMtcR1t6Gn/einhIP1CRoy+BS/pd1uytQKUU37YC8j2a1uMaK5VzjT42Mt1LMpzJLvdkjjw
-	IneV53v7cmPuYBVIPMNx4ydpZLze2HO7qEAeUvErFe9y1FbSxLyjP/YUVQ1bDoGS1ygf1jLUT+v
-	WCUya5zlBWzDSORKtqvRJJ2YagR+3Z5NE1qzFjUQH63QIPxwu0+vSh7cM0N7MN13U/7RGCYqu+n
-	EmN/iC+brNra46LpapA76WngIxh3dvP0rG0DtROaG
-X-Google-Smtp-Source: AGHT+IFNltfHEPPmzoHupTJkq0BusMmkW8D5wSxtbZ0PuXL0cTpWykazdEPe2SQ/Gw2J+K8yY/PfiQ==
-X-Received: by 2002:a05:6808:2183:b0:40b:4208:710f with SMTP id 5614622812f47-40d2cc40ef2mr206202b6e.24.1751668164146;
-        Fri, 04 Jul 2025 15:29:24 -0700 (PDT)
+        bh=ou+0WFq2STWCoZpLVCiZpnuZ5I6nDVFyUDgY7umpZLg=;
+        b=sSFHXIQd+9GNxkYCUXsbMHm9jiAIBpeupWSIzRMrw+z/DLVc59MyTtAOEF3W/JaGyZ
+         MDz+vfMp57z8gYnW/EzoCbe00pr3iIs6y1GN9GeEj0pKgyJtU6lIvGKzs8kTN7lD8MyH
+         w3Y9vVyXUDEvUu/c+sRb94mNAqOlLzNZseuPhprW8VO7BX2T2fvU0kM+d6m10bgQjOMV
+         7GKqB1k2FHQYD5f4ofUfXb1t07uGAGFQgJovdHP2PwnK3pRnVzGEnIEw3L2DAxXQXlfB
+         WL7mNIwLf1NCp3xK055VRgH9p8Hcqwo3xShM/HZkEYl85i2KMKiLoQ9qZhkZiFWLjkxa
+         6RbQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVEMHCdsZfy5cLYDN/Z6ACIiekprDduqp9yEFTUApiz1a13pgl5NytxOI4UJfzvMabGga5MCoimFtGq6A==@linaro.org
+X-Gm-Message-State: AOJu0YwmBkP9skiyqMPbhoURBfF+s+haqlBlAotbzo5cINp1uckKazT9
+	J4gGYC9VKkjArAGJGHbjLXNCOtRvg9k/Kekm2zGvvyHuSRLPrQT0Cn9yPOflJdGxCawxRfdAp7l
+	fAFO4Fi1uuw==
+X-Gm-Gg: ASbGnct5ekOes8alFjHFzz9yClTOoqWGDZQ4u65/yl62OPiGpgQ1DzzDHFbYtrhZmXs
+	aFnmqgzzIyCGOvU4yM33rZGwrYU5vPxlTbi8fHpUa21ujf/ZCW1HJRSgbAphMeHWSXw4meNkm3/
+	sykFR0chy9qS7QhgG8Fkk9p0Bmn/s67aEyAAR9xG6Vcqtnq9dYxR0CQmVFvbsoDpbMIXd5kK93d
+	jb7fh1HLqDsPacwM//wQc+2F7VXEPBqHghkNajI4Vkiq1Cc5LZnqWl9w8oYsgPrFgcxcmn+A7bQ
+	EMJvmtcfuhiau+DveHULiMLkuV2wqfHuKym3+eiwlzEzsXbiQQ3R/aHiiiX7U1DjvK+g28owVKP
+	gchsI3twZKNTliHejARs4BETBGaneCcq9T9MqMqRroE72OM46O6o=
+X-Google-Smtp-Source: AGHT+IHTawUUsQ6glpnrHxTd7cf6x0AI/Cp0cZaPjYUbdedgO91BKeT6aj2IZmdR7czXYLDweuv4Fg==
+X-Received: by 2002:a05:6820:4684:b0:603:f521:ff26 with SMTP id 006d021491bc7-6138eaf3c4cmr2810056eaf.1.1751669773427;
+        Fri, 04 Jul 2025 15:56:13 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.4.112] (fixed-187-189-51-143.totalplay.net. [187.189.51.143])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-40d02a442d3sm453991b6e.13.2025.07.04.15.29.21
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-6138e5b8c9fsm422819eaf.34.2025.07.04.15.56.10
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 04 Jul 2025 15:29:23 -0700 (PDT)
-Message-ID: <04076187-3892-48dd-9b6d-60bd9dc4a16c@linaro.org>
-Date: Fri, 4 Jul 2025 16:29:15 -0600
+        Fri, 04 Jul 2025 15:56:13 -0700 (PDT)
+Message-ID: <af3c8b1b-63e0-43bf-8d9a-6c6bf699fa97@linaro.org>
+Date: Fri, 4 Jul 2025 16:56:04 -0600
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [WIP-for-10.1 v2 4/5] target/arm: Add FEAT_TCR2
+Subject: Re: [WIP-for-10.1 v2 5/5] target/arm: Advertise FEAT_MEC in cpu max
 To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
  alex.bennee@linaro.org
 Cc: qemu-devel@nongnu.org
 References: <20250704151431.1033520-1-gustavo.romero@linaro.org>
- <20250704151431.1033520-5-gustavo.romero@linaro.org>
+ <20250704151431.1033520-6-gustavo.romero@linaro.org>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250704151431.1033520-5-gustavo.romero@linaro.org>
+In-Reply-To: <20250704151431.1033520-6-gustavo.romero@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: 0eJLgyBEoViz
+X-TUID: lp60X6fzGhzY
 
 On 7/4/25 09:14, Gustavo Romero wrote:
-> +static CPAccessResult tcr2_access(CPUARMState *env, const ARMCPRegInfo *ri,
-> +                                  bool isread)
+> Advertise FEAT_MEC in AA64MMFR3 ID register for the Arm64 cpu max as a
+> first step to fully support FEAT_MEC.
+> 
+> The FEAT_MEC is an extension to FEAT_RME that implements multiple
+> Memory Encryption Contexts (MEC) so the memory in a realm can be
+> encrypted and accessing it from the wrong encryption context is not
+> possible. An encryption context allow the selection of a memory
+> encryption engine.
+> 
+> At this point, no real memory encryption or obfuscation is supported,
+> but software stacks that rely on FEAT_MEC to run should work properly,
+> except if they use the new cache management instructions, which will
+> be implement in a subsequent commit.
+
+You really need to implement the new cache instruction before exposing this feature.  Like 
+other cache instructions, the insn can be a nop.  All you need is the accessfn to trap 
+when EL2 and !SS_Realm.
+
+> diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+> index 611d7385d8..14f17febe2 100644
+> --- a/docs/system/arm/emulation.rst
+> +++ b/docs/system/arm/emulation.rst
+> @@ -89,6 +89,7 @@ the following architecture extensions:
+>   - FEAT_LSE (Large System Extensions)
+>   - FEAT_LSE2 (Large System Extensions v2)
+>   - FEAT_LVA (Large Virtual Address space)
+> +- FEAT_MEC (Memory Encryption Contexts)
+
+We probably want to document that this is a stub implementation.
+
+>   - FEAT_MixedEnd (Mixed-endian support)
+>   - FEAT_MixedEndEL0 (Mixed-endian support at EL0)
+>   - FEAT_MOPS (Standardization of memory operations)
+> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+> index e6a731472f..009618fd9c 100644
+> --- a/target/arm/cpu-features.h
+> +++ b/target/arm/cpu-features.h
+> @@ -603,6 +603,11 @@ static inline bool isar_feature_aa64_hbc(const ARMISARegisters *id)
+>       return FIELD_EX64(id->id_aa64isar2, ID_AA64ISAR2, BC) != 0;
+>   }
+>   
+> +static inline bool isar_feature_aa64_mec(const ARMISARegisters *id)
 > +{
-> +    return CP_ACCESS_OK;
-> +};
-
-Eh?  This is missing everything: TRVM, HCRX_EL2.TCR2En, SCR_EL3.TCR2En.
-Two different functions required for TCR2_EL1 and TCR2_EL2.
-
-> +
-> +static void tcr2_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> +                       uint64_t value)
-> +{
-> +    int el = arm_current_el(env);
-> +    uint64_t valid_mask = 0ULL;
-> +
-> +    valid_mask |= TCR2_AMEC0;
-> +    if (el_is_in_host(env, el)) {
-> +        if (cpu_isar_feature(aa64_mec, env_archcpu(env))) {
-> +            valid_mask |= TCR2_AMEC1;
-> +	}
-
-This is incorrect.
-
-(1) Both bits are reserved unless FEAT_MEC.
-(2) Bits that change interpretation based on el_is_in_host must always be writable, but 
-ignored when !el_is_in_host.
-
-> +    }
-> +
-> +    value &= valid_mask;
-> +    raw_write(env, ri, value);
+> +    return FIELD_EX64(id->id_aa64mmfr3, ID_AA64MMFR3, MEC);
 > +}
-> +
-> +static const ARMCPRegInfo tcr2_reginfo[] = {
-> +    { .name = "TCR2_EL1", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 3, .opc1 = 0, .opc2 = 3, .crn = 2, .crm = 0,
-> +      .access = PL1_RW, .accessfn = tcr2_access,
-> +      .writefn = tcr2_write,
-> +      .fieldoffset = offsetof(CPUARMState, cp15.tcr2_el[1]) },
 
-Missing FGT and NV2 settings.
+This test (updated for master of course) needs to be in the first patch, because you're 
+using it in the implementations of SCTLR2 and TCR2.  So patches 2 and 3 don't build alone 
+at the moment.
+
+Alternately, implement SCTLR2 + TCR2 without *any* other features which would enable valid 
+write bits, and then add the MEC code here.
 
 
 r~

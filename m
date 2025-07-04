@@ -1,127 +1,128 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1264460dyc;
-        Fri, 4 Jul 2025 07:47:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUNLpqCv/kSvH4cTpa1r3VK/RAucrlSgxwhCDn/aGR1UlwBigjTc/JcgBjLwHGL35oU7slew8PjjokafQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGAnKCHI1YPLFibft3HX5Cg5hgUhjRsDnsw0C7OzYEAgLJQ3XB+MAIP7I34mJfp2COiX6oi
-X-Received: by 2002:ad4:5fc8:0:b0:6fa:c5be:dac3 with SMTP id 6a1803df08f44-702c6d0e5damr39841146d6.3.1751640427060;
-        Fri, 04 Jul 2025 07:47:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751640427; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1264657dyc;
+        Fri, 4 Jul 2025 07:47:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUxaE5hfGTMoQKqPkJ+V97Py8eoZxwKKqkkLFtCRXFM7+RRuDwv0C/FPV87EqBSJ0NueJmCbA0da2D9gA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHeDJ7o94fe7xpK8CjFlOOPL+ADB01xA/NfhMEU7voKct1IrvNjHadFtQwDHw3maoOUELzP
+X-Received: by 2002:a05:622a:1f8c:b0:494:78d5:baea with SMTP id d75a77b69052e-4a99686acecmr42991341cf.51.1751640447778;
+        Fri, 04 Jul 2025 07:47:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751640447; cv=none;
         d=google.com; s=arc-20240605;
-        b=cyFuFQ6Ln4saTWRl3rpVuQMgby1lKxMJo1RrKDkycLgQHnrNohhfkUDVT7jfUjbdpF
-         EQcyreXFL6zEcV0VzQzED45kcRJJyO3ot7eyZB19EJgWm7Q5tfyLll75YWVqUDoKq9dr
-         MdLS0m/bqHahk5JpI7Px10LGWJT2M/uJnFt+XqgTDBw3FA7ieI+I/eWkBJiCvzrkbqj4
-         ie53ZbMLMuKPbdK/n8YZX55rZVDFx4o90q77rZ7mlsQe41NO45qH7OWjjpoPDuXqCWbO
-         3Bl3e6m56HGya+r7cpiujQlTMF/eObJW/ltTH0fIEG7iSKfU0hqYdMiirItte2OVWK/e
-         +iEw==
+        b=Ah0v4cDSv/xtM2F7KnzaicU8+1p649IszxNEf5bWXx6FImL3L362iZVZH5y9A3vONd
+         5lg4HAGTRMnDkEY0N7b6bFqGXvHKclK2VsAq/W8gH/paJe0ucfB++ALy5y5EjiEYmOcA
+         DJy8OBL2xwe6aAL6d1KPniKEcEXnaH79ILfqZPdvy/TXSCOdaEwxAevknCu2vfGUr56n
+         bKCOgvl2d4eN2uXfGpsBZCMi3XtHMq6c7naydYED8zjyqmRFkAM1fGpJFvogzjmBObnQ
+         6FXW4lJDF2+YI8NQZVhH+/YB91qlvPO4qvQmu/VRXnyccDJEFtlc1ccbqbbxpWYrjmBM
+         9ThQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=mE+L0a4Yv78oWbvNtAlRfemO9fxwjgUBwoQXmXgyee0=;
+        bh=/y6ae8MFtHgdri3B/hfnDJLsIID9R8RxmBlWT9Y9/4M=;
         fh=vZxkDpCwvhENXlY8qSqryGKuN7qdzoFpPjxnavaSuNI=;
-        b=YhcjE3rlPs2x6/qBgsaNak6m08mxDBqSPNPdliXWFImf7oC/fIhp/qJJ3w7P9Bzt1l
-         //u1PbgBXxCa6kxdHu4wnpr6R3pXk+dR8Vj2+PysAPj/wUWq/Q+DQcBSXcOf83+oH0Fc
-         fpNwXwiItIfD3DjavxbMCruLv46UqIaYkYjbA53WuSn+k2b1wVbyWnIdmCV9cuL2tYSU
-         02tO08DD8Rv5m5CDd0cKaQqJl0i5L4kNFVhnNqtc3UunDBq7NSS/qSr34YsoJquLqPrQ
-         ZUjO8Qa8BnXX+ZtalqjgtBt47kSgfR6WiOrTciP5Wgyj4d82Ah3/+cHOKIl9Y6yztTlr
-         FoNA==;
+        b=gEelo8hCJ9b/GvGwb8qSgGDQExQupSypTpwqYtDRpNGBgLG9n9ZASWQMS3Oh9DCZEF
+         hu1XzcjGViTGxiILUZwcPAW6kTDnLN83BJHMbeTnmq8pFCNSJl7QtuHh3qnf5clp3Fkg
+         yhjUFMybyiDGbMizNmOr8R4+VRY+k0jrUrOKZd2RQ0CN2Ljd5yfwokB95QFgGBFdpT4R
+         YAK3BsMiAS/BMBGKU6WhrMZ0iBXBRlVENA5hg1EoMEp1sANxiIkzQ9WkvD1LtNcyX1vP
+         BubGDq1V9bXbXtEpxMogbiay1U3atFA+VKG+WbDMOskQn8JGrrdNL+rrPiYBbstFoh3A
+         KgtA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Rio9bp1J;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xEJZEzQ+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-702c4ccc0f9si21097056d6.40.2025.07.04.07.47.06
+        by mx.google.com with ESMTPS id d75a77b69052e-4a994aefdcfsi21241281cf.445.2025.07.04.07.47.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Jul 2025 07:47:07 -0700 (PDT)
+        Fri, 04 Jul 2025 07:47:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Rio9bp1J;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xEJZEzQ+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uXhTg-0001Kt-4Y; Fri, 04 Jul 2025 10:33:24 -0400
+	id 1uXhZM-00044G-L1; Fri, 04 Jul 2025 10:39:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uXhP9-0002Po-E2
- for qemu-arm@nongnu.org; Fri, 04 Jul 2025 10:28:44 -0400
-Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
+ id 1uXhPP-0002vY-BB
+ for qemu-arm@nongnu.org; Fri, 04 Jul 2025 10:29:03 -0400
+Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uXhP6-0001Jb-Bh
- for qemu-arm@nongnu.org; Fri, 04 Jul 2025 10:28:42 -0400
-Received: by mail-oa1-x29.google.com with SMTP id
- 586e51a60fabf-2e95ab2704fso963618fac.3
- for <qemu-arm@nongnu.org>; Fri, 04 Jul 2025 07:28:39 -0700 (PDT)
+ id 1uXhPM-0001go-4y
+ for qemu-arm@nongnu.org; Fri, 04 Jul 2025 10:28:58 -0400
+Received: by mail-oa1-x2b.google.com with SMTP id
+ 586e51a60fabf-2f3dab2a2a9so901320fac.2
+ for <qemu-arm@nongnu.org>; Fri, 04 Jul 2025 07:28:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751639318; x=1752244118; darn=nongnu.org;
+ d=linaro.org; s=google; t=1751639335; x=1752244135; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=mE+L0a4Yv78oWbvNtAlRfemO9fxwjgUBwoQXmXgyee0=;
- b=Rio9bp1Jdd5OE3gIF4RwlMyd29XkIYF8aBl7MN3KE3fMUf+QtR7sJZqGzmvgAfMfvs
- O3hsWzs9h8SHoWpP41xpDNRr4rs7YmilH1MtOo+LJ6l6m9H9xjLee8u0vO/gQi3P/fDE
- SoauYTPswF+QTwl3JhQI+Sr4c08kYqCOkO4+h8BM7PPAqdR05IspoKR+vC1pW3quxd2F
- xAMoMTEZ/3Io+F2KvG6AwOsgyTaEcqaJmwsAHMpyNT9p125N5J6ucbZesXWH+d/2Y8HU
- QzIPYvl5GFRCz4Kc8EfWyaJlbHPQ6PZsHSspN8jDwwmm210Hl9XzP74iH7tLssav2utm
- 57yA==
+ bh=/y6ae8MFtHgdri3B/hfnDJLsIID9R8RxmBlWT9Y9/4M=;
+ b=xEJZEzQ+2ractfUc8ROuAGifbDV7hDlHIF57lACNxDpOUVxSKkp9qKKwJBQkRlgbNL
+ enefb9WquFXVhAM8uE7cM601okabF0Wj3Bp/bmmZViIvohkE6/JpmPpz6wlwMuR90Gt2
+ 5zcmiu+9Ym8KRdc9yk5SiZIdPXhzuQa1tjtdR5iTuUkLGoKfMob5Ib8sCDAIzx+xgAnH
+ RIfWK+vcbRLrhl9PGWGagIfp0q1BFtgjkptzRM34CaMPFr+Z0i6G6WZ7MyY5EnvD/Ijl
+ MYZJOx0d9mv6Y4FL0p2vizaToei16xrComXw5wRU4W6X/kx12nWqnbkM8Q/RFfoB3Fhs
+ rh3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751639318; x=1752244118;
+ d=1e100.net; s=20230601; t=1751639335; x=1752244135;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=mE+L0a4Yv78oWbvNtAlRfemO9fxwjgUBwoQXmXgyee0=;
- b=vfEkhV/G4MJ7Ft1R0Ww6fKBpZC8XmzS0+XVENRtpr/qH8gup7uOqKxWYSrMdnt33vC
- 2VKZuvwISgTXFLmWhYOzydNYPW/+/bEdjIVIbR4MVXB80PjtcTSxEzoOJAKw1IPTcsxj
- +WT+tzj6EAqtcjrda/gYSnLE0UynQtoGLKZD2YZCBYSRj/77GzZ3wXOAyorvfASaqEHO
- BI8QhAEyVUVAYltJRYBS3SewQwMDheiQPXo8VFluAKiYr236zK2az0GA+4M55FmbK8Iy
- pvpOi0KXPY6Qkn7hG3ui1Q40Np4Ux+IgYRyOd5t/5zI47l/JrVeK2Xk+NkGSmwQFaugC
- rojA==
-X-Gm-Message-State: AOJu0YwIsr7AsV2YaEhhr39I7Ph7pDLQUk8/Xd/PlX1LW4ltH4rQfhmH
- DTj42uQ32An0a+9s2cRY5Mg0+slFXw2damtl5E8ttPs/XT7dZpjDJzYkD8m1YmigxPg=
-X-Gm-Gg: ASbGncsPU5awNG54OC6xjZgfyqMO9h1EdOLCFvxJQM/til7CXPzwofPbCpWVCiwHMMK
- fQP+Gc2HeA0l9+vFLvfy1MwYLV37HnWhvYWazeTcYtlQZDvpaQWh6krz13Vpv6cW+LkiiCo2mR9
- Ypq0CFd46mUXcqbksOzJW8PXbrw58UUnCd0Gp+5SU1Tyuva05KYqB1f2bKzgSNd60OA5KP0SNfx
- NXdN5qhil/4Tul3/u3sB3STfE92yF7MQs2ltzQcjmbkXpLahPMwm3FFAKsNzXmjk00EheYS2+VQ
- zl1l6Z6h3NVufJhNzkWA6SuuJSxfhuinXxgXrejg6w4q8960yAuhzd7A2ym90GfjlbElJheZKQC
- swkkZd6h/k+QDTro3BeZOpPBl77mfHVIRZdBfUIMHkCIIY0l9
-X-Received: by 2002:a05:6870:ac0d:b0:2d8:957a:5163 with SMTP id
- 586e51a60fabf-2f791d4ecedmr2340480fac.10.1751639318497; 
- Fri, 04 Jul 2025 07:28:38 -0700 (PDT)
+ bh=/y6ae8MFtHgdri3B/hfnDJLsIID9R8RxmBlWT9Y9/4M=;
+ b=BPf7O4312wv9CX1h61mkNHDsGB/R/mQKqvcyZtYucydMnx1e6sjKZftDox7IaedJbj
+ iR1hNtCzRaT1KkxGpyPBD+kvSllCqZvf45Cs258hzuyJze3zbUPbuf+TJcXN2EdbQMh9
+ zZJ39Tpipd4iic94e8KGel0xawTYiFvckEUDpF05qjgBUg88rPgerAWLD73Weg4kHvSR
+ 2dphyVbPLxMEw0DLt7fCye7HqA75tYDSCDiAsxMdlDpB86RCSz2WZhpZqdetc62JnbKM
+ N5k/8Tkbe3eTPUgHVmSgVIRBcumB/E6fIqn/1QausCD45hZqxThx2WlujEmgg6KU8ocJ
+ /yFw==
+X-Gm-Message-State: AOJu0YzuHK8D8BMRQDdzVGlIprPsnlW2INtO0aq5eQ6YcPT0tCkdLF+Z
+ FchbA4Dadn+DIoMFKnv5h7iTMyDHK4hiqtr9RPxOfBYBA4aGeQFXZYvs6FTLTWL7ssPN8U4CJhE
+ +MZ8luf0=
+X-Gm-Gg: ASbGnctnc4sF9OkNxbfGyYzzw+Onu4B2LDSXq97Rc+4EUmuJYGCCBYVkEPzWEoMAFCb
+ oc4i1Jzbmf9ZSrLus+7o/v92W+EA5n+Wn/nFgESGTb+cTf0PRE0fQ24btadAv2iidoLXtQcZklW
+ +oiVJlDbrc4YthCoXEkudWmWvu6WifZgPRifvXkP0Csh8Sb+SgDub9/CRQIRcBUrPVEfqU4u6Tj
+ zaCpRVFSLh35lNc4G8uOJzsyHLNA6abmUDFUr4EsHTZGPwMzg0VNA76LGu+280O38N1z2rc0hCp
+ b/sgat4AR+uC2xTRn3QVf4z52Cy1olIvj/j8O9gQ9MWGicvjA/+spmT7BbuOl14f8idCiIcBVpX
+ 5GVHe/qckYo8RnCcoOZ0pTjDTS4IgDdETsx92tkwnj3VrfSin
+X-Received: by 2002:a05:6870:79e:b0:28c:8476:dd76 with SMTP id
+ 586e51a60fabf-2f796cae8d2mr2117805fac.29.1751639334864; 
+ Fri, 04 Jul 2025 07:28:54 -0700 (PDT)
 Received: from localhost.localdomain (fixed-187-189-51-143.totalplay.net.
  [187.189.51.143]) by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-2f78ff55633sm531448fac.20.2025.07.04.07.28.37
+ 586e51a60fabf-2f78ff55633sm531448fac.20.2025.07.04.07.28.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Jul 2025 07:28:37 -0700 (PDT)
+ Fri, 04 Jul 2025 07:28:54 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v4 080/108] target/arm: Implement SVE2p1 PTRUE (predicate as
- counter)
-Date: Fri,  4 Jul 2025 08:20:43 -0600
-Message-ID: <20250704142112.1018902-81-richard.henderson@linaro.org>
+Subject: [PATCH v4 096/108] target/arm: Move ld1qq and st1qq primitives to
+ sve_ldst_internal.h
+Date: Fri,  4 Jul 2025 08:20:59 -0600
+Message-ID: <20250704142112.1018902-97-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250704142112.1018902-1-richard.henderson@linaro.org>
 References: <20250704142112.1018902-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::29;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x29.google.com
+Received-SPF: pass client-ip=2001:4860:4864:20::2b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x2b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,54 +137,175 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: g3KlO325oYvc
+X-TUID: KzHwPeVR451r
+
+Move from sme_helper.c to the shared header.
+Add a comment noting the lack of atomicity.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-sve.c | 16 ++++++++++++++++
- target/arm/tcg/sve.decode      |  1 +
- 2 files changed, 17 insertions(+)
+ target/arm/tcg/sve_ldst_internal.h | 63 ++++++++++++++++++++++++++++++
+ target/arm/tcg/sme_helper.c        | 44 +++------------------
+ 2 files changed, 69 insertions(+), 38 deletions(-)
 
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index c93dca224c..651b4aa378 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -1679,6 +1679,22 @@ static bool do_predset(DisasContext *s, int esz, int rd, int pat, bool setflag)
+diff --git a/target/arm/tcg/sve_ldst_internal.h b/target/arm/tcg/sve_ldst_internal.h
+index e87beba435..c67cda9d3b 100644
+--- a/target/arm/tcg/sve_ldst_internal.h
++++ b/target/arm/tcg/sve_ldst_internal.h
+@@ -141,6 +141,69 @@ DO_LD_PRIM_3(ld1dqu_le, ld1dd_le)
+ #define sve_st1dq_be_tlb   sve_st1dd_be_tlb
+ #define sve_st1dq_le_tlb   sve_st1dd_le_tlb
  
- TRANS_FEAT(PTRUE, aa64_sve, do_predset, a->esz, a->rd, a->pat, a->s)
- 
-+static bool trans_PTRUE_cnt(DisasContext *s, arg_PTRUE_cnt *a)
-+{
-+    if (!dc_isar_feature(aa64_sme2_or_sve2p1, s)) {
-+        return false;
-+    }
-+    if (sve_access_check(s)) {
-+        /* Canonical TRUE is 0 count, invert bit, plus element size. */
-+        int val = (1 << 15) | (1 << a->esz);
++/*
++ * The ARMVectorReg elements are stored in host-endian 64-bit units.
++ * For 128-bit quantities, the sequence defined by the Elem[] pseudocode
++ * corresponds to storing the two 64-bit pieces in little-endian order.
++ */
++/* FIXME: Nothing in this file makes any effort at atomicity. */
 +
-+        /* Write val to the first uint64_t; clear all of the rest. */
-+        tcg_gen_gvec_dup_imm(MO_64, pred_full_reg_offset(s, a->rd),
-+                             8, size_for_gvec(pred_full_reg_size(s)), val);
-+    }
-+    return true;
++static inline void sve_ld1qq_be_host(void *vd, intptr_t reg_off, void *host)
++{
++    sve_ld1dd_be_host(vd, reg_off + 8, host);
++    sve_ld1dd_be_host(vd, reg_off, host + 8);
 +}
 +
- /* Note pat == 31 is #all, to set all elements.  */
- TRANS_FEAT_NONSTREAMING(SETFFR, aa64_sve,
-                         do_predset, 0, FFR_PRED_NUM, 31, false)
-diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
-index 389a72d824..3517efb31b 100644
---- a/target/arm/tcg/sve.decode
-+++ b/target/arm/tcg/sve.decode
-@@ -730,6 +730,7 @@ PTEST           00100101 01 010000 11 pg:4 0 rn:4 0 0000
++static inline void sve_ld1qq_le_host(void *vd, intptr_t reg_off, void *host)
++{
++    sve_ld1dd_le_host(vd, reg_off, host);
++    sve_ld1dd_le_host(vd, reg_off + 8, host + 8);
++}
++
++static inline void
++sve_ld1qq_be_tlb(CPUARMState *env, void *vd, intptr_t reg_off,
++                 target_ulong addr, uintptr_t ra)
++{
++    sve_ld1dd_be_tlb(env, vd, reg_off + 8, addr, ra);
++    sve_ld1dd_be_tlb(env, vd, reg_off, addr + 8, ra);
++}
++
++static inline void
++sve_ld1qq_le_tlb(CPUARMState *env, void *vd, intptr_t reg_off,
++                 target_ulong addr, uintptr_t ra)
++{
++    sve_ld1dd_le_tlb(env, vd, reg_off, addr, ra);
++    sve_ld1dd_le_tlb(env, vd, reg_off + 8, addr + 8, ra);
++}
++
++static inline void sve_st1qq_be_host(void *vd, intptr_t reg_off, void *host)
++{
++    sve_st1dd_be_host(vd, reg_off + 8, host);
++    sve_st1dd_be_host(vd, reg_off, host + 8);
++}
++
++static inline void sve_st1qq_le_host(void *vd, intptr_t reg_off, void *host)
++{
++    sve_st1dd_le_host(vd, reg_off, host);
++    sve_st1dd_le_host(vd, reg_off + 8, host + 8);
++}
++
++static inline void
++sve_st1qq_be_tlb(CPUARMState *env, void *vd, intptr_t reg_off,
++                 target_ulong addr, uintptr_t ra)
++{
++    sve_st1dd_be_tlb(env, vd, reg_off + 8, addr, ra);
++    sve_st1dd_be_tlb(env, vd, reg_off, addr + 8, ra);
++}
++
++static inline void
++sve_st1qq_le_tlb(CPUARMState *env, void *vd, intptr_t reg_off,
++                 target_ulong addr, uintptr_t ra)
++{
++    sve_st1dd_le_tlb(env, vd, reg_off, addr, ra);
++    sve_st1dd_le_tlb(env, vd, reg_off + 8, addr + 8, ra);
++}
++
+ #undef DO_LD_TLB
+ #undef DO_ST_TLB
+ #undef DO_LD_HOST
+diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
+index c1166e4ffa..df16bb2f9c 100644
+--- a/target/arm/tcg/sme_helper.c
++++ b/target/arm/tcg/sme_helper.c
+@@ -415,54 +415,22 @@ static inline void sme_##NAME##_v_tlb(CPUARMState *env, void *za,           \
+     TLB(env, useronly_clean_ptr(addr), val, ra);                            \
+ }
  
- # SVE predicate initialize
- PTRUE           00100101 esz:2 01100 s:1 111000 pat:5 0 rd:4
-+PTRUE_cnt       00100101 esz:2 1000000111100000010 ...          rd=%pnd
+-/*
+- * The ARMVectorReg elements are stored in host-endian 64-bit units.
+- * For 128-bit quantities, the sequence defined by the Elem[] pseudocode
+- * corresponds to storing the two 64-bit pieces in little-endian order.
+- */
+-#define DO_LDQ(HNAME, VNAME, BE, HOST, TLB)                                 \
+-static inline void HNAME##_host(void *za, intptr_t off, void *host)         \
+-{                                                                           \
+-    uint64_t val0 = HOST(host), val1 = HOST(host + 8);                      \
+-    uint64_t *ptr = za + off;                                               \
+-    ptr[0] = BE ? val1 : val0, ptr[1] = BE ? val0 : val1;                   \
+-}                                                                           \
++#define DO_LDQ(HNAME, VNAME) \
+ static inline void VNAME##_v_host(void *za, intptr_t off, void *host)       \
+ {                                                                           \
+     HNAME##_host(za, tile_vslice_offset(off), host);                        \
+ }                                                                           \
+-static inline void HNAME##_tlb(CPUARMState *env, void *za, intptr_t off,    \
+-                               target_ulong addr, uintptr_t ra)             \
+-{                                                                           \
+-    uint64_t val0 = TLB(env, useronly_clean_ptr(addr), ra);                 \
+-    uint64_t val1 = TLB(env, useronly_clean_ptr(addr + 8), ra);             \
+-    uint64_t *ptr = za + off;                                               \
+-    ptr[0] = BE ? val1 : val0, ptr[1] = BE ? val0 : val1;                   \
+-}                                                                           \
+ static inline void VNAME##_v_tlb(CPUARMState *env, void *za, intptr_t off,  \
+                                target_ulong addr, uintptr_t ra)             \
+ {                                                                           \
+     HNAME##_tlb(env, za, tile_vslice_offset(off), addr, ra);                \
+ }
  
- # SVE initialize FFR
- SETFFR          00100101 0010 1100 1001 0000 0000 0000
+-#define DO_STQ(HNAME, VNAME, BE, HOST, TLB)                                 \
+-static inline void HNAME##_host(void *za, intptr_t off, void *host)         \
+-{                                                                           \
+-    uint64_t *ptr = za + off;                                               \
+-    HOST(host, ptr[BE]);                                                    \
+-    HOST(host + 8, ptr[!BE]);                                               \
+-}                                                                           \
++#define DO_STQ(HNAME, VNAME) \
+ static inline void VNAME##_v_host(void *za, intptr_t off, void *host)       \
+ {                                                                           \
+     HNAME##_host(za, tile_vslice_offset(off), host);                        \
+ }                                                                           \
+-static inline void HNAME##_tlb(CPUARMState *env, void *za, intptr_t off,    \
+-                               target_ulong addr, uintptr_t ra)             \
+-{                                                                           \
+-    uint64_t *ptr = za + off;                                               \
+-    TLB(env, useronly_clean_ptr(addr), ptr[BE], ra);                        \
+-    TLB(env, useronly_clean_ptr(addr + 8), ptr[!BE], ra);                   \
+-}                                                                           \
+ static inline void VNAME##_v_tlb(CPUARMState *env, void *za, intptr_t off,  \
+                                target_ulong addr, uintptr_t ra)             \
+ {                                                                           \
+@@ -477,8 +445,8 @@ DO_LD(ld1s_le, uint32_t, ldl_le_p, cpu_ldl_le_data_ra)
+ DO_LD(ld1d_be, uint64_t, ldq_be_p, cpu_ldq_be_data_ra)
+ DO_LD(ld1d_le, uint64_t, ldq_le_p, cpu_ldq_le_data_ra)
+ 
+-DO_LDQ(sve_ld1qq_be, sme_ld1q_be, 1, ldq_be_p, cpu_ldq_be_data_ra)
+-DO_LDQ(sve_ld1qq_le, sme_ld1q_le, 0, ldq_le_p, cpu_ldq_le_data_ra)
++DO_LDQ(sve_ld1qq_be, sme_ld1q_be)
++DO_LDQ(sve_ld1qq_le, sme_ld1q_le)
+ 
+ DO_ST(st1b, uint8_t, stb_p, cpu_stb_data_ra)
+ DO_ST(st1h_be, uint16_t, stw_be_p, cpu_stw_be_data_ra)
+@@ -488,8 +456,8 @@ DO_ST(st1s_le, uint32_t, stl_le_p, cpu_stl_le_data_ra)
+ DO_ST(st1d_be, uint64_t, stq_be_p, cpu_stq_be_data_ra)
+ DO_ST(st1d_le, uint64_t, stq_le_p, cpu_stq_le_data_ra)
+ 
+-DO_STQ(sve_st1qq_be, sme_st1q_be, 1, stq_be_p, cpu_stq_be_data_ra)
+-DO_STQ(sve_st1qq_le, sme_st1q_le, 0, stq_le_p, cpu_stq_le_data_ra)
++DO_STQ(sve_st1qq_be, sme_st1q_be)
++DO_STQ(sve_st1qq_le, sme_st1q_le)
+ 
+ #undef DO_LD
+ #undef DO_ST
 -- 
 2.43.0
 

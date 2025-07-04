@@ -1,115 +1,116 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1158397dyc;
-        Fri, 4 Jul 2025 05:01:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUV2G+aEf3VZmodFO81RRfTGvTNK8c2z1gyGk+uZ9sjZKI8oayKMJvbFNiDkd+3qXeXk8d3K62xmc2/Wg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHUCX0dQLQWwiDzvQv1W82Z55iTzTVDlxeUCv28INtESPb+F23UXk5424GzWvLiiWVd++4h
-X-Received: by 2002:a05:620a:6781:b0:7d4:4e61:4673 with SMTP id af79cd13be357-7d5ddb33354mr210419685a.6.1751630517935;
-        Fri, 04 Jul 2025 05:01:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751630517; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1168178dyc;
+        Fri, 4 Jul 2025 05:15:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV4P+M37NjgCpv3Tqf7M17DHIZnZVQj4I3N6wL3inyz1O+FZVx1e3L48mZboSla1x8Z+TMcSszw6EHxPQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFocTViKCta6QiKD3H4vDyZvKHO1dMFXtmZYqmf1zKSeg7VA57f1YwT/rYVxDjXPUtgdma2
+X-Received: by 2002:a05:6102:5111:b0:4e2:e5ec:fa09 with SMTP id ada2fe7eead31-4f2ee0acdcemr1629104137.6.1751631340746;
+        Fri, 04 Jul 2025 05:15:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751631340; cv=none;
         d=google.com; s=arc-20240605;
-        b=T7fgWAiwNfwbkiajo2TyG2KyCuG0x47gZWTSlmJbVHDkfGs0S5IeAEdL+CUFPkoIQ5
-         TsEHw5qOJm2Z8FJ5Yvk5HRf87S8CivSHo7GlmCtxxkBkr+KpzSxt/ymKB21sUDAkba+F
-         2r3ptx8/CP+HbIxRgQKv5gEve3yBCqBw0K7IbEU//AC0deRJWtC5gau6NRHCR2Mhs8eS
-         +xXwapahldj0v4bLofbE16GXeX07HdcRRQE4WSN1dnBI7s+COBa5ICJXzxjR4bIXB7Qu
-         9AsTDQbEtUcJh2Brucx2/g/B/6a5bLfXAVGxjsw/M6N89jTKEP+NkhuriGadybrEBezE
-         DsDA==
+        b=S33ki75S8FCMw4ABs7hKzoePzdun8WdbwQb8dDEh4/Tld+KCw9UZ6Is5Q7SCISw4nK
+         iy6p1tOQYW1N0bLcaWr6pN08/VnTXnLzIXW8ocuOn7d0zCoGK7OhjAL/wHaenThu9Vq6
+         vL6+ajtJlwIEyX/zOobCvVlEys7xTSw1NiNe72PX8Xl1z1bwoCzamm8gnM9orCdHVUrk
+         hj41BGeG/OiqcFCT7xI2Yv8/owGT7wmdE+TVya6Khuik+bZOGpjRnudDitx23sEllfx4
+         RhEB0fpqswBttJ1kvh37YmzVDHQj4affQ6ir945Rl3xOA5vv3R25g3O0DZ0hlf6MGAAH
+         sF0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=g7em2cNXKnXUibtFakubNMgOKSsBTiBM0K9HagMSvwI=;
-        fh=tcUZ8rcWm39qCEbmuAg1czgdb8O+tlnSed6kqKbBR4c=;
-        b=j/07z8G8/U/T/OUZzeP2DlWt2XSGXYnzYTF+Gb1OmdXE7PVLRfvfbVqvNCOHsi0qFf
-         UZ/gmLb/cm/Smyiqxgh/J9wSSDc8a8CmWNX3u50cLG+SzcoNZRfa65wTdmAeuTUS0ffr
-         GG5WLPDHq/dTPpyLZpfHTT2YcOJ87np3CX0PFuw/EaBAkiMUBP/IJ6oMwjuIK16tYKGr
-         am8MaDDxA/azQt5hb5lUbKkHeeoCwzbE/U0D+Mf9aVSNuKj88NRT6aS3D1acepIwHb4U
-         YKenIVD/vr36+5UZeb/FNt1xG8tg7vBF8Gyv9Jl0SrAt6ldWFXXII1r9pO9vNactUPth
-         7H+A==;
+        bh=Yim1rEzPel4pu+PfAZneNAEGt32iL8SSue5oPN+mJR4=;
+        fh=p97A5UMA1U7tSIJa+9Wji8NFjDJVDSMvoOJbSioHcRU=;
+        b=CDipWCdYaVOH9sYWAr7kpnvm5zyiHAv8F96bRJ7KBW2cYTEVVqeoMx+zTC+go36hMM
+         4yL54LT36kgUttf6lot/QB1sQQVhe+8Ksc0Jxr5WVXRVGcDCIAsItKvHmg0F37Ofaahb
+         GRpgis6Svgv7dOZP2Bk+Z6jE90OvaCNcb51b6DAptwXqWGDwQf6iO4LlBe/cc4xKI0bV
+         q9DJOI4o4yjS9oYrmJA1V+3ktuf140n5CXowKWAt/bSOidPznEH3G5wVRaKeryWUFmAT
+         qJizXfa0HmFpmEiBTM1g+er89/1EaGNxNUwhu5FioEaekctAaDhP5OOm4M7y/jS5iA3T
+         muew==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TQsgriX6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=D5cVoI4m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d5dbef6303si203229485a.567.2025.07.04.05.01.57
+        by mx.google.com with ESMTPS id ada2fe7eead31-4f2ea783ea5si561542137.582.2025.07.04.05.15.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Jul 2025 05:01:57 -0700 (PDT)
+        Fri, 04 Jul 2025 05:15:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TQsgriX6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=D5cVoI4m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uXf6i-0004GB-O4; Fri, 04 Jul 2025 08:01:32 -0400
+	id 1uXfKB-0000uN-2k; Fri, 04 Jul 2025 08:15:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uXf6c-0004FJ-DN
- for qemu-arm@nongnu.org; Fri, 04 Jul 2025 08:01:28 -0400
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+ id 1uXfJx-0000rb-No
+ for qemu-arm@nongnu.org; Fri, 04 Jul 2025 08:15:15 -0400
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uXf6V-0002PD-DU
- for qemu-arm@nongnu.org; Fri, 04 Jul 2025 08:01:25 -0400
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-70e5e6ab7b8so8154817b3.1
- for <qemu-arm@nongnu.org>; Fri, 04 Jul 2025 05:01:17 -0700 (PDT)
+ id 1uXfJq-0001fn-NB
+ for qemu-arm@nongnu.org; Fri, 04 Jul 2025 08:15:12 -0400
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-70e3e0415a7so9274277b3.0
+ for <qemu-arm@nongnu.org>; Fri, 04 Jul 2025 05:15:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751630476; x=1752235276; darn=nongnu.org;
+ d=linaro.org; s=google; t=1751631302; x=1752236102; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=g7em2cNXKnXUibtFakubNMgOKSsBTiBM0K9HagMSvwI=;
- b=TQsgriX6dHEohyXn+4V8fecGJYoyr0mntB70xWtQz5ef9nm2CPcLifmyRhY0tJ55fs
- G9oi7+qk8da9qr6Y1euFqERxdx3qMxKB0eWjqY5Y6HgKOq2UGJ/ZTxDYn4tHREpaexWe
- dmbhXixDUnph7YXPy+XvNXNf9L4QNLvLbTaGijU03alCW1AokY6PZDnBqK0OmMVD5e3g
- ZQr62+xR2ioRRCYU8fmSvEdMjCLn/2UEc5tPxlBYr+TtAkyXb8Qa0FUM+7MSMArK+Gmg
- LlKAtuxYHsuV6jBDItgYzraCNPUgOtMG2qkroN2T1J9bqXUNlSEIZZ6CYqs+7QA8g6Y2
- BFUg==
+ bh=Yim1rEzPel4pu+PfAZneNAEGt32iL8SSue5oPN+mJR4=;
+ b=D5cVoI4mFgq3rON5tErx+NJAf6PLQNRw7RlPAvMFsFREmiPZizhLeS6T9SFpYBbE84
+ DuiYdR2Nc6rw49QgkdGQ3Hz83ZJBIG5e/G6SmAHNgRW7VxMAA3oTGL5car3NTMBxTYqc
+ 2q1k2PF/a3jFzY/mCae3SAu8BbtmQwkQyBwLy6ImT6AQN0y2fP7t03dygyAZLvZtUvV3
+ DLF6pdaVGYvgcKCntSX5OIVlIhXpWn2m9WKsFsaBiDQQszz9tETml//7/EzB3CcoJZ35
+ 4pNQQ1BEAfp3O0o2+jCjSFHRDcgNV3FXKWLNycvTUwN3zmr9OoUJyU6w8KMawp8mZ+Yl
+ 4uHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751630476; x=1752235276;
+ d=1e100.net; s=20230601; t=1751631302; x=1752236102;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=g7em2cNXKnXUibtFakubNMgOKSsBTiBM0K9HagMSvwI=;
- b=M4zKs0GMt+Wcz+NZL96qKwGswgWFE7FAmyIFe0pid1BxdKrOXAB3jfkBBBUcAy63aX
- 3h1jD/EC3PkFALRqfseVHEKRmsX1Lc6U25xaq8K9HGKTrBd0niPJwhe8jFRERl9PzaiY
- OYfEe/Se6RQzjG15Ajvs1A3NcAF2kHsVB6U1c2Np+SeuqXAHaNlDAHvyVFzvVnh+tKd8
- BrRIZ5ppuBBb8zrGXujGCZyh08rjs47HgoPztU2SM+DQvKhOsH/CbKuPTotF6M/q6jf6
- 1zWTlUV6jPxjzErS1eb8LOJVNseTL2kXNXdNkVRg11MQQCQB7AFF3EeWj61+nNP2W34g
- 7o7w==
+ bh=Yim1rEzPel4pu+PfAZneNAEGt32iL8SSue5oPN+mJR4=;
+ b=cuw/GlpmxmLerhxXgHK0eoBxyjmKShEZDPVxwQsz5w/oo/cRiboeeJmUWZLJXepz7l
+ Ga03Gx8VYxeh2JZZD6IsiZ5xJTTwF1CW8odCWiECah8FWSwOjt5NVXiFIgTRCRno+1Jc
+ Z9CfJXIRB/prMt1uaFZNh3YSQkuRD7ihIMoNZCDzYo4Pptqk2jzBKz+rch1LT+0Bxahx
+ OHwisaCyE6ESy2T6/d0tmnIieuFFgtXt8nuxssnKribZEwS0/oUW2uWk9aXvhEDNl+T7
+ 1efm/ZL5foqqz3HlcIm9hZ/0R2V7TW2m2k/oWTCeCfLTI2xS4PPYC8Aue/9SRUYiwaNP
+ i/kA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVqhwQqbfEbyIOgG7byHtJuzCVjB+su/4nQtJC0OOpRDCDqZrZ/bDYb9+mdc2IsTNY7SBM4J/+TVQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yzrb+tjjS9b/PdGqY4+EjSYvatIte9i3FVy3j1DvNvV1kSWY1t/
- Yi+JeEZOq3OLejrLvXfWZoKVeWClhzlghrVgT0oi/9g/lsB2Qap06qC5mRE813LARByah413vD4
- vPSwVzNw5k+9k0/iNJKfzmQV2AmER3/Pt4ZF8jJ0uSw==
-X-Gm-Gg: ASbGnctyZ7A1PfauaWep8YlV/TpzM+iNYtJXj1sRkXPlm+G9zb7pIZHU23Yi/4AS/p0
- cJHwz/syhw3fBjKUBwkIs0fRvrdZtaDHyaPyRLr4sXf06ZChMnFT6EKNsMCONxxNe6/hIuRzLjH
- QN4s8Bu1zlpKAd+aR6WTYJWJ0pngOQC8TT+EYk6bm6sBkF
-X-Received: by 2002:a05:690c:316:b0:710:ebdb:83d3 with SMTP id
- 00721157ae682-71668bd1741mr29194787b3.8.1751630476316; Fri, 04 Jul 2025
- 05:01:16 -0700 (PDT)
+ AJvYcCU+4lxDwMf2ykPlthYqTe/K3YvxgG2PrVHbw0aTBjJ7MSVRaQRzA+MbcSSx4oCg7hiPEfsPCS8hDw==@nongnu.org
+X-Gm-Message-State: AOJu0YxLkF/y86ZPEevu9+5mShtx3BhzJax/Mf5vzvo/huXmkwy46U+j
+ XdXJVy2gKIPqp0n5p2XdK/JhRJglcut7Dkk1ZX18AuNamjrOwscA6186HQmUSBb8A9eY86HiTVe
+ H+J+4zS3wiqPGiE+bavhdmGtUagWSUPDka2BAcBSmLQ==
+X-Gm-Gg: ASbGnctEjqpyHcKBhIpi5tSwSM3g/xITYcEaeJlOZoUFnb6i9kIUyhDfoYY952S6Qnf
+ Dc1vaaKpXkTNtuOsvK448umYH04CILaYLbNM2eTcLI7fPmW8sju3ApaaW7u6ZnuCS4tG51pnNLU
+ NEVNgyk9Xsb9c9O+Xqs7zO0wZshO0wRpMGoabFNBBkxZ8x
+X-Received: by 2002:a05:690c:4491:b0:70e:61b:afed with SMTP id
+ 00721157ae682-71667e2423emr33546617b3.7.1751631302462; Fri, 04 Jul 2025
+ 05:15:02 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250702163115.251445-1-eric.auger@redhat.com>
- <20250702163115.251445-2-eric.auger@redhat.com>
-In-Reply-To: <20250702163115.251445-2-eric.auger@redhat.com>
+ <20250702163115.251445-4-eric.auger@redhat.com>
+In-Reply-To: <20250702163115.251445-4-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 4 Jul 2025 13:01:05 +0100
-X-Gm-Features: Ac12FXxU2qWCFEJnCsnQzqxfbOYtcDGtugAMlaUkVitxW20uhx4ehzd4LdKhauE
-Message-ID: <CAFEAcA88pUf6tpn7_o-khYjRP6T1NwCuaZKREkC3wmd_YUKEiQ@mail.gmail.com>
-Subject: Re: [PATCH v7 1/4] hw/arm: Allow setting KVM vGIC maintenance IRQ
+Date: Fri, 4 Jul 2025 13:14:50 +0100
+X-Gm-Features: Ac12FXzlUZA2mdd605D54nUYuLELbwtpcCj1kcW_KBcQ-ibk8gKaJ9TVi0D6mIM
+Message-ID: <CAFEAcA_4AAprfa_TV48rwbxx7ndjbFYy74ykQQ8s=Ej-nBe4EA@mail.gmail.com>
+Subject: Re: [PATCH v7 3/4] target/arm: Enable feature ARM_FEATURE_EL2 if EL2
+ is supported
 To: Eric Auger <eric.auger@redhat.com>
 Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  miguel.luis@oracle.com, richard.henderson@linaro.org, maz@kernel.org, 
  gkulkarni@amperecomputing.com, gankulkarni@os.amperecomputing.com, 
  hi@alyssa.is
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,69 +132,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tEWC2aBzy5Nt
+X-TUID: KynnqCf9T28A
 
 On Wed, 2 Jul 2025 at 17:31, Eric Auger <eric.auger@redhat.com> wrote:
 >
 > From: Haibo Xu <haibo.xu@linaro.org>
 >
-> Allow virt arm machine to set the interrupt ID for the KVM
-> GIC maintenance interrupt.
->
-> This setting must be done before the KVM_DEV_ARM_VGIC_CTRL_INIT
-> hence the choice to perform the setting in the GICv3 realize
-> instead of proceeding the same way as kvm_arm_pmu_set_irq().
+> KVM_CAP_ARM_EL2 must be supported by the cpu to enable ARM_FEATURE_EL2.
+> In case the host does support NV, expose the feature.
 >
 > Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
 > Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
-> @@ -231,6 +231,7 @@ struct GICv3State {
->      uint32_t num_cpu;
->      uint32_t num_irq;
->      uint32_t revision;
-> +    uint32_t maint_irq;
->      bool lpi_enable;
->      bool nmi_support;
->      bool security_extn;
-
-> +    if (s->maint_irq) {
-> +        int ret;
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>
+> ---
+> v2 -> v3:
+> - check pmu->has_el2 on kvm_arch_init_vcpu() when setting
+>   KVM_ARM_VCPU_HAS_EL2 feature (Peter)
+>
+> v1 -> v2:
+> - remove isar_feature_aa64_aa32_el2 modif in target/arm/cpu.h
+>   [Richard] and use el2_supported in kvm_arch_init_vcpu
+> ---
+>  target/arm/kvm.c | 16 ++++++++++++++++
+>  1 file changed, 16 insertions(+)
+>
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index e5708e54ae..46e5f19637 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -250,6 +250,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>       */
+>      int fdarray[3];
+>      bool sve_supported;
+> +    bool el2_supported;
+>      bool pmu_supported = false;
+>      uint64_t features = 0;
+>      int err;
+> @@ -269,6 +270,14 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>          init.features[0] |= 1 << KVM_ARM_VCPU_SVE;
+>      }
+>
+> +    /*
+> +     * Ask for EL2 if supported.
+> +     */
+> +    el2_supported = kvm_arm_el2_supported();
+> +    if (el2_supported) {
+> +        init.features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
+> +    }
 > +
-> +        ret = kvm_device_check_attr(s->dev_fd,
-> +                                    KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ, 0);
-> +        if (!ret) {
-> +            error_setg_errno(errp, errno,
-> +                             "VGICv3 setting maintenance IRQ is not "
-> +                             "supported by this host kernel");
-> +            return;
-> +        }
+>      /*
+>       * Ask for Pointer Authentication if supported, so that we get
+>       * the unsanitized field values for AA64ISAR1_EL1.
+> @@ -422,6 +431,10 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>      features |= 1ULL << ARM_FEATURE_AARCH64;
+>      features |= 1ULL << ARM_FEATURE_GENERIC_TIMER;
+>
+> +    if (el2_supported) {
+> +        features |= 1ULL << ARM_FEATURE_EL2;
+> +    }
 > +
-> +        ret = kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ, 0,
-> +                                &s->maint_irq, true, errp);
+>      ahcf->features = features;
+>
+>      return true;
+> @@ -1887,6 +1900,9 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>          cpu->kvm_init_features[0] |= (1 << KVM_ARM_VCPU_PTRAUTH_ADDRESS |
+>                                        1 << KVM_ARM_VCPU_PTRAUTH_GENERIC);
+>      }
+> +    if (cpu->has_el2 && kvm_arm_el2_supported()) {
+> +        cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
+> +    }
+>
+>      /* Do KVM_ARM_VCPU_INIT ioctl */
+>      ret = kvm_arm_vcpu_init(cpu);
+> --
 
-This doesn't seem to line up with what the kernel documents
-for KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ:
+How does this interact with creating an aarch32 VM with
+"-cpu host,aarch64=off" ?  Looking at the kernel, it will
+fail vcpu_init if you ask for a vcpu with both EL1_32BIT
+and HAS_EL2. I guess since the virt board will only request
+HAS_EL2 if you say virtualization=on this is fine. Do we
+give a sensible error message if the user tries
+ -accel kvm -M virt,virtualization=on -cpu host,aarch64=off   ?
 
-https://www.kernel.org/doc/Documentation/virt/kvm/devices/arm-vgic-v3.rst
-says
-
-# KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ
-# Attributes:
-#
-#    The attr field of kvm_device_attr encodes the following values:
-#
-#      bits:     | 31   ....    5 | 4  ....  0 |
-#      values:   |      RES0      |   vINTID   |
-#
-#    The vINTID specifies which interrupt is generated when the vGIC
-#    must generate a maintenance interrupt. This must be a PPI.
-
-but this code sets kvmattr.addr to 0 and kvmaddr.addr to
-the address of a uint32_t with the vINTID in it.
-
-Looking at the kernel code in vgic_v3_attr_regs_access() it
-looks like maybe the kernel docs are wrong, but I'm not sure.
-
-thanks
 -- PMM

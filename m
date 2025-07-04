@@ -1,120 +1,121 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1266114dyc;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1266117dyc;
         Fri, 4 Jul 2025 07:50:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUF5Jlw0ikH0ggtDIh0IHyCHYmRom9Ml1h8ubrh0v08Q45v9XY3PYULDU6Cd+ALK20vztH+FXuky/QuNg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEaSC4zewhIeLW43udJpbTcZ4Bj8N59bdQEsImR/fZ9xAfao4nG4NOC+ng6Mm7OxuOv8p6I
-X-Received: by 2002:ac8:57d1:0:b0:4a9:93f0:e228 with SMTP id d75a77b69052e-4a9964085e8mr52409591cf.1.1751640607045;
+X-Forwarded-Encrypted: i=2; AJvYcCW2fFzuJjk831l7WpYMQMrFQkWTZs15MvVOaigJUDB/0TiDOlvLZ4D9n9phl1XopV/n+eFkakKqHHnhug==@linaro.org
+X-Google-Smtp-Source: AGHT+IG1i5U1cAJFPJID7MQspbxNsKQFrbIIaw87hybwvQhNpdxkFfaSlDlMbN4JDse7Y/1h2+2E
+X-Received: by 2002:a05:620a:1727:b0:7c7:c1f8:34eb with SMTP id af79cd13be357-7d5dc6d1daamr476636385a.23.1751640607290;
         Fri, 04 Jul 2025 07:50:07 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1751640607; cv=none;
         d=google.com; s=arc-20240605;
-        b=EQ1u2Y/fjmcRSSYMj1AqpsH106qcF/Jtsu4BANuK9izopaWPaH3MPZoN71fkHj8PQf
-         ekMMCcmeo7d4zFNkgayNgt7kKVDRVxUqWCXSeuNp3aMWZiQf9Jeu/qjEr6j7ZgsBrLux
-         8RFfHLl4LTLpF44dcgB/uwjrS9ky7OcR/22Q5AP1/ht7xQhk2B5HSiKz8kItv+ysksSL
-         Hhivq6aQCJcs/MRodMUbM8X3mR7KZufQ1DoNHCPIYNVAgwCIKzQsZiNVSVSn90/cv44V
-         AEkQCCv/O7fUKQV10rkwF2bkCqX+6Qqq3qnDHyQq3lcs2PYBvaLaazHjvSkyM0Y38R9f
-         AUEQ==
+        b=hutlhuoEolU44bPMm8oNb/emumq6ctY4iBvFxkFvjgxEkKH3ptyVJ6ZegHF4KLl3dc
+         Q4j9hQulhZabbP5pSgfwQhBbyVud5Oxhu58LZHS6cD8LRvZeYWbkvYzhn2gcPChyz3EQ
+         2k4nK6ZMPNbF4GE0OtEUFYeie+ADyciPexWnuDucV8+eqafls0Jk91KQTfs1z5ReXAxQ
+         RHGLtkJQXYdhBOoQDum9kQRsjf/72NoGzKGYn3BzLbxbj3rhyg5gir9ybgT6X04OmXTT
+         HamDVrO/5EFp5RLL9rlkNFugw/fqr04l0ANB2PqqzP9zPMsHz3f+0QdhJ0fnA09XsLY7
+         Xl6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=gcJidUgVCed/js/3FKBfJ91rH6i0WIv0/y/g9dQIpSE=;
+        bh=og0z3O2MJT0QCwzRYtxsXjZzBvNbK6+O59Vlkv9/sNA=;
         fh=vZxkDpCwvhENXlY8qSqryGKuN7qdzoFpPjxnavaSuNI=;
-        b=Ygvye+K3R31zRKTSLWC6nQ3SDPhApXb0NsMMMT0dEKx9UpankZpCj+WyL+1c3jf4F/
-         0DKFP3sgY/TTZaRBGl+NBsdf74OJluTpcRgwKh164SmmOG9qWA9TLXY4xjrAmvHgLKCp
-         IxVAQgQmuiA25whWJuYq5TKBkLiDiOEtKM00739LMBejZEnbElrntps2P70K1fF8650K
-         2SR6LnvQpilma0Y7SdIrDCxMLvIk7Pt+wv951yrQxSdNk0AWeyOV09XSGuTijhGHHCal
-         50B+oZDZ3Hwj8NffsA3GxZm9qOcngA7ORZMCaZ5anrqqs8cb09H8myv+lyODRblrVhyf
-         YgZw==;
+        b=dDHrE8X0QnE+nME/PpuzHkOmRdclBR42l+KaEBPUAfSICy6holBsiRx0OR8iCuPdMO
+         FEoMpk9fkz1gUlMqQ+zmTG3Qv75nlwl+6I3NCMDLfOtqnz4K/CngUpVjLIwEx88p7FFe
+         kImNi0jBkNG7vFwu30FVghZ4+NyuLun/tlGrjvpn7uxM6MShJnFYHgd+2IVLZnk2Qeac
+         rpuxMmHM6A3zYsHRed17nzw+lRdPYrancKzY1CS7efAbkwxJSN89gwmK2cOkbh0k0hnm
+         DXA9aCe0aPS2j6hRlGsyNuZ9OW8CPT3d90EJl5ef2IqSnX4MOUZuJWpLTk0Cqoo65+Ug
+         DFww==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qafGXlLC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=B5uIsCCn;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4a994ab239bsi20037881cf.289.2025.07.04.07.50.06
+        by mx.google.com with ESMTPS id 6a1803df08f44-702c4d5cbd8si22087336d6.347.2025.07.04.07.50.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 04 Jul 2025 07:50:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qafGXlLC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=B5uIsCCn;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uXhUy-0005P6-79; Fri, 04 Jul 2025 10:34:46 -0400
+	id 1uXhUX-0004We-Bj; Fri, 04 Jul 2025 10:34:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uXhPc-0003aA-9S
- for qemu-devel@nongnu.org; Fri, 04 Jul 2025 10:29:13 -0400
-Received: from mail-oa1-x2d.google.com ([2001:4860:4864:20::2d])
+ id 1uXhPM-0002kn-Kk
+ for qemu-devel@nongnu.org; Fri, 04 Jul 2025 10:29:02 -0400
+Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uXhPU-0001uZ-Ik
- for qemu-devel@nongnu.org; Fri, 04 Jul 2025 10:29:11 -0400
-Received: by mail-oa1-x2d.google.com with SMTP id
- 586e51a60fabf-2edec6c5511so332968fac.2
- for <qemu-devel@nongnu.org>; Fri, 04 Jul 2025 07:29:03 -0700 (PDT)
+ id 1uXhPJ-0001bF-25
+ for qemu-devel@nongnu.org; Fri, 04 Jul 2025 10:28:56 -0400
+Received: by mail-oa1-x29.google.com with SMTP id
+ 586e51a60fabf-2eb6c422828so1287397fac.1
+ for <qemu-devel@nongnu.org>; Fri, 04 Jul 2025 07:28:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751639343; x=1752244143; darn=nongnu.org;
+ d=linaro.org; s=google; t=1751639332; x=1752244132; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=gcJidUgVCed/js/3FKBfJ91rH6i0WIv0/y/g9dQIpSE=;
- b=qafGXlLCu1HXljZFYcFJdopvGVxLhr5SOAaM2MaYocMR7beSTm6oKqhgH7N+Piaew4
- Al+jYIDC5Huwcue7/53iUyd9xq807r0iapxMRk562y6/dNUBu4F+tUYi3A/zbbzlLfxO
- jR+rsacw//tO89s8QTGVMW9HWQuOhL48Vv43f47jhL2VfX3vzzfjjdLO8QM19TzPU2PQ
- 3fccTfoH18uSnEkguB7ojSwo1wQtjHnV8KzWrHm+vXlkr0WPa6yrUXr+WOcE0lP/rvL0
- Xu0yPu581k41qCKP3nGHppTcmhJdGbrv8+z8YJuaVH0egBh7i0oes0nxrmHpmAQYypkv
- Ykew==
+ bh=og0z3O2MJT0QCwzRYtxsXjZzBvNbK6+O59Vlkv9/sNA=;
+ b=B5uIsCCn9hWIRiwze9TN3NKNFXJRytSf+ytvFnVFN6PlLQAi47s7bxUOYEI3WtX4WM
+ RC3Qf+n2uqs12ZHpFcPD1GBRVhmtRA2160xNq5vCSOovywezeKKswx0zqnOCLAgqsXJ7
+ 9bB7vv53blVrvHuKwAH5mJVV1L/KrkJqjNjRNEb5jGm4Lk0kT6hGB1v/V89T9mbBe6pO
+ 1zklytFHVaKfXdzU3Bf1z+3QttLrYtB31Zn2HN4iGJjgvu1nj1D9ssrYp8fvLYWHl4sM
+ 8vors1edqNV4ewgHrbQUfErZffC2piXiwa7F/QyXzK0fQ5Q1K1NR+nI0r9a5QQ8D3Mrp
+ XL5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751639343; x=1752244143;
+ d=1e100.net; s=20230601; t=1751639332; x=1752244132;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=gcJidUgVCed/js/3FKBfJ91rH6i0WIv0/y/g9dQIpSE=;
- b=HmVPOsmWi2mQNFMyo9GymTN/nKnk3k0X5zy0zf5hbcvEWAkM+Wb2K7q+kriFbSS8wU
- g7OuimWz5cyTSdUqMiWS7/U2cHSiALZEVWIbeM89kIBpu8XISC4ls+9iEVvYoY5lpi2J
- WW+tTF3Emzy6/MGSXN+3+P8Mjtv0Hh0vjLG8CQVNzmU9MHYAV87uyE4YQZX7OZzE10IM
- csGsh6Jm+dRCH7ebSY9qhneiO7Wgz0migs/zV3iSxEgsfs7gaCvHoF1C1EjVDipm8x2b
- iUCrr0AUEOZ+IjCSginpjuinrzkw2PHNYtiQydIosgcRmKVUhnXDlpRSEsawFs24QBTb
- zxiA==
-X-Gm-Message-State: AOJu0YxjIbHG39suGqk2i+FmILE+Ff5iugfisItLFzhcTdByzbNRcZFu
- NygTg3sGWsVnRwwF53IxN8/FCfGGEazooVUzuESYbs6Sn0h3Zap81967vnb8eIvbqpFvXpfxAH1
- 32rhW8Wc=
-X-Gm-Gg: ASbGncu65PkgrinDpPWGmv0OWHMK3g1etE+8zIAkJ7J6E3tx89ePQ9Iuf0XZJwyhOMd
- EUWevcMUx7dl9jEGpGB2VZuFYxHOvF2Q9CcknUD/Y1DBFFikH3+WtIl4CWDJfJePCE4jGUXo3Ij
- +I0SWq2A5cuaqqTe2sXq4Sm92zXoLd018U8lv5t+Kx+PClQIAPMkmi7JeHbDwW+ZaNcdc/LSSSu
- mkvSCJtAWX/h6NDwEXv4KhPG0DzR3pDCgytW78+O9lSOEuLPaU412NwYx6lrJE+BBTBrm5F6aIt
- 7SvFxd1fPoHI1DKZs5nuR6Vdz/mW/ahc3eeeRL8UnEqaea78oHMTh/pTk37mfGORTgN2iecH/Aq
- +jV6EW2b5/DFYCY2GPBbIn2SBNChbRjpHdAIzqcQ5VPsCflMioSMnCq7G6Kw=
-X-Received: by 2002:a05:6870:3106:b0:29e:5de2:cffb with SMTP id
- 586e51a60fabf-2f796a8c5f3mr1693658fac.17.1751639342827; 
- Fri, 04 Jul 2025 07:29:02 -0700 (PDT)
+ bh=og0z3O2MJT0QCwzRYtxsXjZzBvNbK6+O59Vlkv9/sNA=;
+ b=v7btj+ThEXp29CXaPxumtSUIRSEsQLlApkUIuctviooVr7wi3Fyfzzu6tXremAh3tJ
+ 1e90aQFfcjSp2PDpvtBLhcTyHRp6eoleNcFBPSOQ+7IdGgRD8PcksHlzELDFlT2/63pG
+ tu67wUgaqXHX4qFNyuMCpZ0wND9DBRJ5t6ntbU1nfKO/1anx4G37hAeFBmHTHCZnEFhK
+ jU+RiSjn0+OUfwvYBtXtV1vdx/5A1QU3JvqaYwuPNuJC/PTa+l2MXzAWzepFG+L77wQk
+ wG6U9YqENue6DGuiEVGz5r5c0VqQwcVsXNj34hqbsAaRT+f5utL/dfLKXK+10c5Rqa4p
+ zPrA==
+X-Gm-Message-State: AOJu0YyZ7X2XY8oFXPTjayg68JwJ8vAnG34PCGRc4IizvZPhZYztU+fx
+ RxZNzC85agtOoFBjUhorsljjU12VbUkQ9Ft81mjrfxQLhqkxM1q5nRbwm7U4HwXNZ1XOPR8t0VC
+ mi859PcU=
+X-Gm-Gg: ASbGnctC0Bwo+OZDN9IIw3svMh7kwvS/rmgOPSCX/IFvUJq0h/fVPCpi24fOZTOKc+K
+ JFtarJaoNYap2KEGBQZJquXtOaqJ2w5Ae4QOM7C0QG2wmXlX2QS2ZAxI7U1CA/3QEN4bOvX+89e
+ Ut6dwtgpeWtlv9blQ1elCfwkvx8mQ7R7z3PFhDw9PL85SYy/4gcESRkIe+KbK54/cru7jPTEJt7
+ 6LmQTdkFBw0RnQC/NBpvdE51gAEo4Le/1+3AToFRiixA/Ghb0K3XtFu7FkH0gwZHC9dzKOYb3ia
+ iqxwhXTqZlVeAHUt/rxsoe15FzyLpuGol24XGF0W6RL72PeE3YwpnTN1ZQuU9DtQVhlrDbvIlrc
+ 7CFiHzgdWw3RBTGl67rnW3eKLxIMjKmQcVxAxY+wayg9CZCiv
+X-Received: by 2002:a05:6870:3906:b0:2da:87a2:f223 with SMTP id
+ 586e51a60fabf-2f791f2bc81mr2469391fac.11.1751639331612; 
+ Fri, 04 Jul 2025 07:28:51 -0700 (PDT)
 Received: from localhost.localdomain (fixed-187-189-51-143.totalplay.net.
  [187.189.51.143]) by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-2f78ff55633sm531448fac.20.2025.07.04.07.29.01
+ 586e51a60fabf-2f78ff55633sm531448fac.20.2025.07.04.07.28.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Jul 2025 07:29:02 -0700 (PDT)
+ Fri, 04 Jul 2025 07:28:51 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v4 103/108] target/arm: Support FPCR.AH in SME FMOPS, BFMOPS
-Date: Fri,  4 Jul 2025 08:21:06 -0600
-Message-ID: <20250704142112.1018902-104-richard.henderson@linaro.org>
+Subject: [PATCH v4 093/108] target/arm: Implement SME2 counted predicate
+ register load/store
+Date: Fri,  4 Jul 2025 08:20:56 -0600
+Message-ID: <20250704142112.1018902-94-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250704142112.1018902-1-richard.henderson@linaro.org>
 References: <20250704142112.1018902-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::2d;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x2d.google.com
+Received-SPF: pass client-ip=2001:4860:4864:20::29;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x29.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -136,371 +137,717 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tKPfwxuEcYJb
+X-TUID: A8tczR/ZEl31
 
-For non-widening, we can use float_muladd_negate_product,
-For widening, which uses dot-product, we need to handle
-the negation explicitly.
+Implement the SVE2p1 consecutive register LD1/ST1,
+and the SME2 strided register LD1/ST1.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/helper-sme.h    |  19 +++++
- target/arm/tcg/vec_internal.h  |   5 ++
- target/arm/tcg/sme_helper.c    | 141 +++++++++++++++++++++++++++------
- target/arm/tcg/translate-sme.c |  27 ++++---
- 4 files changed, 160 insertions(+), 32 deletions(-)
+ target/arm/tcg/helper-sve.h    |  16 ++
+ target/arm/tcg/sve_helper.c    | 493 +++++++++++++++++++++++++++++++++
+ target/arm/tcg/translate-sve.c | 103 +++++++
+ target/arm/tcg/sve.decode      |  50 ++++
+ 4 files changed, 662 insertions(+)
 
-diff --git a/target/arm/tcg/helper-sme.h b/target/arm/tcg/helper-sme.h
-index 16083660e2..2b22c6aee5 100644
---- a/target/arm/tcg/helper-sme.h
-+++ b/target/arm/tcg/helper-sme.h
-@@ -143,6 +143,25 @@ DEF_HELPER_FLAGS_7(sme_fmopa_d, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, ptr, fpst, i32)
- DEF_HELPER_FLAGS_7(sme_bfmopa_w, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, ptr, env, i32)
+diff --git a/target/arm/tcg/helper-sve.h b/target/arm/tcg/helper-sve.h
+index 5f4b4aa036..c4736d7510 100644
+--- a/target/arm/tcg/helper-sve.h
++++ b/target/arm/tcg/helper-sve.h
+@@ -3048,3 +3048,19 @@ DEF_HELPER_FLAGS_3(pmov_pv_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(pmov_vp_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(pmov_vp_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(pmov_vp_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_7(sme_fmops_w_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, env, i32)
-+DEF_HELPER_FLAGS_7(sme_fmops_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, fpst, i32)
-+DEF_HELPER_FLAGS_7(sme_fmops_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, fpst, i32)
-+DEF_HELPER_FLAGS_7(sme_bfmops_w, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(sve2p1_ld1bb_c, TCG_CALL_NO_WG, void, env, ptr, tl, i32, i32)
++DEF_HELPER_FLAGS_5(sve2p1_ld1hh_le_c, TCG_CALL_NO_WG, void, env, ptr, tl, i32, i32)
++DEF_HELPER_FLAGS_5(sve2p1_ld1hh_be_c, TCG_CALL_NO_WG, void, env, ptr, tl, i32, i32)
++DEF_HELPER_FLAGS_5(sve2p1_ld1ss_le_c, TCG_CALL_NO_WG, void, env, ptr, tl, i32, i32)
++DEF_HELPER_FLAGS_5(sve2p1_ld1ss_be_c, TCG_CALL_NO_WG, void, env, ptr, tl, i32, i32)
++DEF_HELPER_FLAGS_5(sve2p1_ld1dd_le_c, TCG_CALL_NO_WG, void, env, ptr, tl, i32, i32)
++DEF_HELPER_FLAGS_5(sve2p1_ld1dd_be_c, TCG_CALL_NO_WG, void, env, ptr, tl, i32, i32)
 +
-+DEF_HELPER_FLAGS_7(sme_ah_fmops_w_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, env, i32)
-+DEF_HELPER_FLAGS_7(sme_ah_fmops_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, fpst, i32)
-+DEF_HELPER_FLAGS_7(sme_ah_fmops_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, fpst, i32)
-+DEF_HELPER_FLAGS_7(sme_ah_bfmops_w, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_5(sve2p1_st1bb_c, TCG_CALL_NO_WG, void, env, ptr, tl, i32, i32)
++DEF_HELPER_FLAGS_5(sve2p1_st1hh_le_c, TCG_CALL_NO_WG, void, env, ptr, tl, i32, i32)
++DEF_HELPER_FLAGS_5(sve2p1_st1hh_be_c, TCG_CALL_NO_WG, void, env, ptr, tl, i32, i32)
++DEF_HELPER_FLAGS_5(sve2p1_st1ss_le_c, TCG_CALL_NO_WG, void, env, ptr, tl, i32, i32)
++DEF_HELPER_FLAGS_5(sve2p1_st1ss_be_c, TCG_CALL_NO_WG, void, env, ptr, tl, i32, i32)
++DEF_HELPER_FLAGS_5(sve2p1_st1dd_le_c, TCG_CALL_NO_WG, void, env, ptr, tl, i32, i32)
++DEF_HELPER_FLAGS_5(sve2p1_st1dd_be_c, TCG_CALL_NO_WG, void, env, ptr, tl, i32, i32)
+diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
+index 42b05756a9..e6342990fa 100644
+--- a/target/arm/tcg/sve_helper.c
++++ b/target/arm/tcg/sve_helper.c
+@@ -7586,6 +7586,499 @@ DO_ST1_ZPZ_D(dd_be, zd, MO_64)
+ #undef DO_ST1_ZPZ_S
+ #undef DO_ST1_ZPZ_D
+ 
++/*
++ * SVE2.1 consecutive register load/store
++ */
 +
- DEF_HELPER_FLAGS_6(sme_smopa_s, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_6(sme_umopa_s, TCG_CALL_NO_RWG,
-diff --git a/target/arm/tcg/vec_internal.h b/target/arm/tcg/vec_internal.h
-index 957bf6d9fc..cf41b03dbc 100644
---- a/target/arm/tcg/vec_internal.h
-+++ b/target/arm/tcg/vec_internal.h
-@@ -300,6 +300,11 @@ bool is_ebf(CPUARMState *env, float_status *statusp, float_status *oddstatusp);
- /*
-  * Negate as for FPCR.AH=1 -- do not negate NaNs.
-  */
-+static inline float16 bfloat16_ah_chs(float16 a)
++static unsigned sve2p1_cont_ldst_elements(SVEContLdSt *info, vaddr addr,
++                                          uint32_t png, intptr_t reg_max,
++                                          int N, int v_esz)
 +{
-+    return bfloat16_is_any_nan(a) ? a : bfloat16_chs(a);
++    const int esize = 1 << v_esz;
++    intptr_t reg_off_first = -1, reg_off_last = -1, reg_off_split;
++    DecodeCounter p = decode_counter(png, reg_max, v_esz);
++    unsigned b_count = p.count << v_esz;
++    unsigned b_stride = 1 << (v_esz + p.lg2_stride);
++    intptr_t page_split;
++
++    /* Set all of the element indices to -1, and the TLB data to 0. */
++    memset(info, -1, offsetof(SVEContLdSt, page));
++    memset(info->page, 0, sizeof(info->page));
++
++    if (p.invert) {
++        if (b_count >= reg_max * N) {
++            return 0;
++        }
++        reg_off_first = b_count;
++        reg_off_last = reg_max * N - b_stride;
++    } else {
++        if (b_count == 0) {
++            return 0;
++        }
++        reg_off_first = 0;
++        reg_off_last = MIN(b_count - esize, reg_max * N - b_stride);
++    }
++
++    info->reg_off_first[0] = reg_off_first;
++    info->mem_off_first[0] = reg_off_first;
++
++    page_split = -(addr | TARGET_PAGE_MASK);
++    if (reg_off_last + esize <= page_split || reg_off_first >= page_split) {
++        /* The entire operation fits within a single page. */
++        info->reg_off_last[0] = reg_off_last;
++        return b_stride;
++    }
++
++    info->page_split = page_split;
++    reg_off_split = ROUND_DOWN(page_split, esize);
++
++    /*
++     * This is the last full element on the first page, but it is not
++     * necessarily active.  If there is no full element, i.e. the first
++     * active element is the one that's split, this value remains -1.
++     * It is useful as iteration bounds.
++     */
++    if (reg_off_split != 0) {
++        info->reg_off_last[0] = ROUND_DOWN(reg_off_split - esize, b_stride);
++    }
++
++    /* Determine if an unaligned element spans the pages.  */
++    if (page_split & (esize - 1)) {
++        /* It is helpful to know if the split element is active. */
++        if ((reg_off_split & (b_stride - 1)) == 0) {
++            info->reg_off_split = reg_off_split;
++            info->mem_off_split = reg_off_split;
++        }
++        reg_off_split += esize;
++    }
++
++    /*
++     * We do want the first active element on the second page, because
++     * this may affect the address reported in an exception.
++     */
++    reg_off_split = ROUND_UP(reg_off_split, b_stride);
++    if (reg_off_split <= reg_off_last) {
++        info->reg_off_first[1] = reg_off_split;
++        info->mem_off_first[1] = reg_off_split;
++        info->reg_off_last[1] = reg_off_last;
++    }
++    return b_stride;
 +}
 +
- static inline float16 float16_ah_chs(float16 a)
- {
-     return float16_is_any_nan(a) ? a : float16_chs(a);
-diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
-index 4772c97deb..eff0ce7480 100644
---- a/target/arm/tcg/sme_helper.c
-+++ b/target/arm/tcg/sme_helper.c
-@@ -1002,19 +1002,18 @@ void HELPER(sme_addva_d)(void *vzda, void *vzn, void *vpn,
-     }
- }
- 
--void HELPER(sme_fmopa_s)(void *vza, void *vzn, void *vzm, void *vpn,
--                         void *vpm, float_status *fpst, uint32_t desc)
-+static void do_fmopa_s(void *vza, void *vzn, void *vzm, uint16_t *pn,
-+                       uint16_t *pm, float_status *fpst, uint32_t desc,
-+                       uint32_t negx, int negf)
- {
-     intptr_t row, col, oprsz = simd_maxsz(desc);
--    uint32_t neg = simd_data(desc) << 31;
--    uint16_t *pn = vpn, *pm = vpm;
- 
-     for (row = 0; row < oprsz; ) {
-         uint16_t pa = pn[H2(row >> 4)];
-         do {
-             if (pa & 1) {
-                 void *vza_row = vza + tile_vslice_offset(row);
--                uint32_t n = *(uint32_t *)(vzn + H1_4(row)) ^ neg;
-+                uint32_t n = *(uint32_t *)(vzn + H1_4(row)) ^ negx;
- 
-                 for (col = 0; col < oprsz; ) {
-                     uint16_t pb = pm[H2(col >> 4)];
-@@ -1022,7 +1021,7 @@ void HELPER(sme_fmopa_s)(void *vza, void *vzn, void *vzm, void *vpn,
-                         if (pb & 1) {
-                             uint32_t *a = vza_row + H1_4(col);
-                             uint32_t *m = vzm + H1_4(col);
--                            *a = float32_muladd(n, *m, *a, 0, fpst);
-+                            *a = float32_muladd(n, *m, *a, negf, fpst);
-                         }
-                         col += 4;
-                         pb >>= 4;
-@@ -1035,29 +1034,65 @@ void HELPER(sme_fmopa_s)(void *vza, void *vzn, void *vzm, void *vpn,
-     }
- }
- 
--void HELPER(sme_fmopa_d)(void *vza, void *vzn, void *vzm, void *vpn,
-+void HELPER(sme_fmopa_s)(void *vza, void *vzn, void *vzm, void *vpn,
-                          void *vpm, float_status *fpst, uint32_t desc)
++static void sve2p1_cont_ldst_watchpoints(SVEContLdSt *info, CPUARMState *env,
++                                         target_ulong addr, unsigned estride,
++                                         int esize, int wp_access, uintptr_t ra)
 +{
-+    do_fmopa_s(vza, vzn, vzm, vpn, vpm, fpst, desc, 0, 0);
++#ifndef CONFIG_USER_ONLY
++    intptr_t count_off, count_last;
++    int flags0 = info->page[0].flags;
++    int flags1 = info->page[1].flags;
++
++    if (likely(!((flags0 | flags1) & TLB_WATCHPOINT))) {
++        return;
++    }
++
++    /* Indicate that watchpoints are handled. */
++    info->page[0].flags = flags0 & ~TLB_WATCHPOINT;
++    info->page[1].flags = flags1 & ~TLB_WATCHPOINT;
++
++    if (flags0 & TLB_WATCHPOINT) {
++        count_off = info->reg_off_first[0];
++        count_last = info->reg_off_split;
++        if (count_last < 0) {
++            count_last = info->reg_off_last[0];
++        }
++        do {
++            cpu_check_watchpoint(env_cpu(env), addr + count_off,
++                                 esize, info->page[0].attrs, wp_access, ra);
++            count_off += estride;
++        } while (count_off <= count_last);
++    }
++
++    count_off = info->reg_off_first[1];
++    if ((flags1 & TLB_WATCHPOINT) && count_off >= 0) {
++        count_last = info->reg_off_last[1];
++        do {
++            cpu_check_watchpoint(env_cpu(env), addr + count_off,
++                                 esize, info->page[1].attrs,
++                                 wp_access, ra);
++            count_off += estride;
++        } while (count_off <= count_last);
++    }
++#endif
 +}
 +
-+void HELPER(sme_fmops_s)(void *vza, void *vzn, void *vzm, void *vpn,
-+                         void *vpm, float_status *fpst, uint32_t desc)
++static void sve2p1_cont_ldst_mte_check(SVEContLdSt *info, CPUARMState *env,
++                                       target_ulong addr, unsigned estride,
++                                       int esize, uint32_t mtedesc,
++                                       uintptr_t ra)
 +{
-+    do_fmopa_s(vza, vzn, vzm, vpn, vpm, fpst, desc, 1u << 31, 0);
++    intptr_t count_off, count_last;
++
++    /*
++     * TODO: estride is always a small power of two, <= 8.
++     * Manipulate the stride within the loops such that
++     *   - first iteration hits addr + off, as required,
++     *   - second iteration hits ALIGN_UP(addr, 16),
++     *   - other iterations advance addr by 16.
++     * This will minimize the probing to once per MTE granule.
++     */
++
++    /* Process the page only if MemAttr == Tagged. */
++    if (info->page[0].tagged) {
++        count_off = info->reg_off_first[0];
++        count_last = info->reg_off_split;
++        if (count_last < 0) {
++            count_last = info->reg_off_last[0];
++        }
++
++        do {
++            mte_check(env, mtedesc, addr + count_off, ra);
++            count_off += estride;
++        } while (count_off <= count_last);
++    }
++
++    count_off = info->reg_off_first[1];
++    if (count_off >= 0 && info->page[1].tagged) {
++        count_last = info->reg_off_last[1];
++        do {
++            mte_check(env, mtedesc, addr + count_off, ra);
++            count_off += estride;
++        } while (count_off <= count_last);
++    }
 +}
 +
-+void HELPER(sme_ah_fmops_s)(void *vza, void *vzn, void *vzm, void *vpn,
-+                            void *vpm, float_status *fpst, uint32_t desc)
++static inline QEMU_ALWAYS_INLINE
++void sve2p1_ld1_c(CPUARMState *env, ARMVectorReg *zd, const vaddr addr,
++                  uint32_t png, uint32_t desc,
++                  const uintptr_t ra, const MemOp esz,
++                  sve_ldst1_host_fn *host_fn,
++                  sve_ldst1_tlb_fn *tlb_fn)
 +{
-+    do_fmopa_s(vza, vzn, vzm, vpn, vpm, fpst, desc, 0,
-+               float_muladd_negate_product);
-+}
++    const unsigned N = (desc >> SIMD_DATA_SHIFT) & 1 ? 4 : 2;
++    const unsigned rstride = 1 << ((desc >> (SIMD_DATA_SHIFT + 1)) % 4);
++    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
++    const intptr_t reg_max = simd_oprsz(desc);
++    const unsigned esize = 1 << esz;
++    intptr_t count_off, count_last;
++    intptr_t reg_off, reg_last, reg_n;
++    SVEContLdSt info;
++    unsigned estride, flags;
++    void *host;
 +
-+static void do_fmopa_d(uint64_t *za, uint64_t *zn, uint64_t *zm, uint8_t *pn,
-+                       uint8_t *pm, float_status *fpst, uint32_t desc,
-+                       uint64_t negx, int negf)
- {
-     intptr_t row, col, oprsz = simd_oprsz(desc) / 8;
--    uint64_t neg = (uint64_t)simd_data(desc) << 63;
--    uint64_t *za = vza, *zn = vzn, *zm = vzm;
--    uint8_t *pn = vpn, *pm = vpm;
- 
-     for (row = 0; row < oprsz; ++row) {
-         if (pn[H1(row)] & 1) {
-             uint64_t *za_row = &za[tile_vslice_index(row)];
--            uint64_t n = zn[row] ^ neg;
-+            uint64_t n = zn[row] ^ negx;
- 
-             for (col = 0; col < oprsz; ++col) {
-                 if (pm[H1(col)] & 1) {
-                     uint64_t *a = &za_row[col];
--                    *a = float64_muladd(n, zm[col], *a, 0, fpst);
-+                    *a = float64_muladd(n, zm[col], *a, negf, fpst);
-                 }
-             }
-         }
-     }
- }
- 
-+void HELPER(sme_fmopa_d)(void *vza, void *vzn, void *vzm, void *vpn,
-+                         void *vpm, float_status *fpst, uint32_t desc)
-+{
-+    do_fmopa_d(vza, vzn, vzm, vpn, vpm, fpst, desc, 0, 0);
-+}
++    estride = sve2p1_cont_ldst_elements(&info, addr, png, reg_max, N, esz);
++    if (estride == 0) {
++        /* The entire predicate was false; no load occurs.  */
++        for (unsigned n = 0; n < N; n++) {
++            memset(zd + n * rstride, 0, reg_max);
++        }
++        return;
++    }
 +
-+void HELPER(sme_fmops_d)(void *vza, void *vzn, void *vzm, void *vpn,
-+                         void *vpm, float_status *fpst, uint32_t desc)
-+{
-+    do_fmopa_d(vza, vzn, vzm, vpn, vpm, fpst, desc, 1ull << 63, 0);
-+}
++    /* Probe the page(s).  Exit with exception for any invalid page. */
++    sve_cont_ldst_pages(&info, FAULT_ALL, env, addr, MMU_DATA_LOAD, ra);
 +
-+void HELPER(sme_ah_fmops_d)(void *vza, void *vzn, void *vzm, void *vpn,
-+                            void *vpm, float_status *fpst, uint32_t desc)
-+{
-+    do_fmopa_d(vza, vzn, vzm, vpn, vpm, fpst, desc, 0,
-+               float_muladd_negate_product);
-+}
++    /* Handle watchpoints for all active elements. */
++    sve2p1_cont_ldst_watchpoints(&info, env, addr, estride,
++                                 esize, BP_MEM_READ, ra);
 +
- /*
-  * Alter PAIR as needed for controlling predicates being false,
-  * and for NEG on an enabled row element.
-@@ -1078,6 +1113,20 @@ static inline uint32_t f16mop_adj_pair(uint32_t pair, uint32_t pg, uint32_t neg)
-     return pair;
- }
- 
-+static inline uint32_t f16mop_ah_neg_adj_pair(uint32_t pair, uint32_t pg)
-+{
-+    uint32_t l = pg & 1 ? float16_ah_chs(pair) : 0;
-+    uint32_t h = pg & 4 ? float16_ah_chs(pair >> 16) : 0;
-+    return l | (h << 16);
-+}
++    /*
++     * Handle mte checks for all active elements.
++     * Since TBI must be set for MTE, !mtedesc => !mte_active.
++     */
++    if (mtedesc) {
++        sve2p1_cont_ldst_mte_check(&info, env, estride, addr,
++                                   esize, mtedesc, ra);
++    }
 +
-+static inline uint32_t bf16mop_ah_neg_adj_pair(uint32_t pair, uint32_t pg)
-+{
-+    uint32_t l = pg & 1 ? bfloat16_ah_chs(pair) : 0;
-+    uint32_t h = pg & 4 ? bfloat16_ah_chs(pair >> 16) : 0;
-+    return l | (h << 16);
-+}
++    flags = info.page[0].flags | info.page[1].flags;
++    if (unlikely(flags != 0)) {
++        /*
++         * At least one page includes MMIO.
++         * Any bus operation can fail with cpu_transaction_failed,
++         * which for ARM will raise SyncExternal.  Perform the load
++         * into scratch memory to preserve register state until the end.
++         */
++        ARMVectorReg scratch[4] = { };
 +
- static float32 f16_dotadd(float32 sum, uint32_t e1, uint32_t e2,
-                           float_status *s_f16, float_status *s_std,
-                           float_status *s_odd)
-@@ -1146,12 +1195,11 @@ static float32 f16_dotadd(float32 sum, uint32_t e1, uint32_t e2,
-     return float32_add(sum, t32, s_std);
- }
- 
--void HELPER(sme_fmopa_w_h)(void *vza, void *vzn, void *vzm, void *vpn,
--                           void *vpm, CPUARMState *env, uint32_t desc)
-+static void do_fmopa_w_h(void *vza, void *vzn, void *vzm, uint16_t *pn,
-+                         uint16_t *pm, CPUARMState *env, uint32_t desc,
-+                         uint32_t negx, bool ah_neg)
- {
-     intptr_t row, col, oprsz = simd_maxsz(desc);
--    uint32_t neg = simd_data(desc) * 0x80008000u;
--    uint16_t *pn = vpn, *pm = vpm;
-     float_status fpst_odd = env->vfp.fp_status[FPST_ZA];
- 
-     set_float_rounding_mode(float_round_to_odd, &fpst_odd);
-@@ -1162,7 +1210,11 @@ void HELPER(sme_fmopa_w_h)(void *vza, void *vzn, void *vzm, void *vpn,
-             void *vza_row = vza + tile_vslice_offset(row);
-             uint32_t n = *(uint32_t *)(vzn + H1_4(row));
- 
--            n = f16mop_adj_pair(n, prow, neg);
-+            if (ah_neg) {
-+                n = f16mop_ah_neg_adj_pair(n, prow);
-+            } else {
-+                n = f16mop_adj_pair(n, prow, negx);
++        count_off = info.reg_off_first[0];
++        count_last = info.reg_off_last[1];
++        if (count_last < 0) {
++            count_last = info.reg_off_split;
++            if (count_last < 0) {
++                count_last = info.reg_off_last[0];
 +            }
- 
-             for (col = 0; col < oprsz; ) {
-                 uint16_t pcol = pm[H2(col >> 4)];
-@@ -1187,6 +1239,24 @@ void HELPER(sme_fmopa_w_h)(void *vza, void *vzn, void *vzm, void *vpn,
-     }
- }
- 
-+void HELPER(sme_fmopa_w_h)(void *vza, void *vzn, void *vzm, void *vpn,
-+                           void *vpm, CPUARMState *env, uint32_t desc)
-+{
-+    do_fmopa_w_h(vza, vzn, vzm, vpn, vpm, env, desc, 0, false);
++        }
++        reg_off = count_off % reg_max;
++        reg_n = count_off / reg_max;
++
++        do {
++            reg_last = MIN(count_last - count_off, reg_max - esize);
++            do {
++                tlb_fn(env, &scratch[reg_n], reg_off, addr + count_off, ra);
++                reg_off += estride;
++                count_off += estride;
++            } while (reg_off <= reg_last);
++            reg_off = 0;
++            reg_n++;
++        } while (count_off <= count_last);
++
++        for (unsigned n = 0; n < N; ++n) {
++            memcpy(&zd[n * rstride], &scratch[n], reg_max);
++        }
++        return;
++    }
++
++    /* The entire operation is in RAM, on valid pages. */
++
++    for (unsigned n = 0; n < N; ++n) {
++        memset(&zd[n * rstride], 0, reg_max);
++    }
++
++    count_off = info.reg_off_first[0];
++    count_last = info.reg_off_last[0];
++    reg_off = count_off % reg_max;
++    reg_n = count_off / reg_max;
++    host = info.page[0].host;
++
++    set_helper_retaddr(ra);
++
++    do {
++        reg_last = MIN(count_last - reg_n * reg_max, reg_max - esize);
++        do {
++            host_fn(&zd[reg_n * rstride], reg_off, host + count_off);
++            reg_off += estride;
++            count_off += estride;
++        } while (reg_off <= reg_last);
++        reg_off = 0;
++        reg_n++;
++    } while (count_off <= count_last);
++
++    clear_helper_retaddr();
++
++    /*
++     * Use the slow path to manage the cross-page misalignment.
++     * But we know this is RAM and cannot trap.
++     */
++    count_off = info.reg_off_split;
++    if (unlikely(count_off >= 0)) {
++        reg_off = count_off % reg_max;
++        reg_n = count_off / reg_max;
++        tlb_fn(env, &zd[reg_n * rstride], reg_off, addr + count_off, ra);
++    }
++
++    count_off = info.reg_off_first[1];
++    if (unlikely(count_off >= 0)) {
++        count_last = info.reg_off_last[1];
++        reg_off = count_off % reg_max;
++        reg_n = count_off / reg_max;
++        host = info.page[1].host;
++
++        set_helper_retaddr(ra);
++
++        do {
++            reg_last = MIN(count_last - reg_n * reg_max, reg_max - esize);
++            do {
++                host_fn(&zd[reg_n * rstride], reg_off, host + count_off);
++                reg_off += estride;
++                count_off += estride;
++            } while (reg_off <= reg_last);
++            reg_off = 0;
++            reg_n++;
++        } while (count_off <= count_last);
++
++        clear_helper_retaddr();
++    }
 +}
 +
-+void HELPER(sme_fmops_w_h)(void *vza, void *vzn, void *vzm, void *vpn,
-+                           void *vpm, CPUARMState *env, uint32_t desc)
++void HELPER(sve2p1_ld1bb_c)(CPUARMState *env, void *vd, target_ulong addr,
++                            uint32_t png, uint32_t desc)
 +{
-+    do_fmopa_w_h(vza, vzn, vzm, vpn, vpm, env, desc, 0x80008000u, false);
++    sve2p1_ld1_c(env, vd, addr, png, desc, GETPC(), MO_8,
++                 sve_ld1bb_host, sve_ld1bb_tlb);
 +}
 +
-+void HELPER(sme_ah_fmops_w_h)(void *vza, void *vzn, void *vzm, void *vpn,
-+                              void *vpm, CPUARMState *env, uint32_t desc)
-+{
-+    do_fmopa_w_h(vza, vzn, vzm, vpn, vpm, env, desc, 0, true);
++#define DO_LD1_2(NAME, ESZ)                                             \
++void HELPER(sve2p1_##NAME##_le_c)(CPUARMState *env, void *vd,           \
++                                  target_ulong addr, uint32_t png,      \
++                                  uint32_t desc)                        \
++{                                                                       \
++    sve2p1_ld1_c(env, vd, addr, png, desc, GETPC(), ESZ,                \
++                 sve_##NAME##_le_host, sve_##NAME##_le_tlb);            \
++}                                                                       \
++void HELPER(sve2p1_##NAME##_be_c)(CPUARMState *env, void *vd,           \
++                                  target_ulong addr, uint32_t png,      \
++                                  uint32_t desc)                        \
++{                                                                       \
++    sve2p1_ld1_c(env, vd, addr, png, desc, GETPC(), ESZ,                \
++                 sve_##NAME##_be_host, sve_##NAME##_be_tlb);            \
 +}
 +
- void HELPER(sme2_fdot_h)(void *vd, void *vn, void *vm, void *va,
-                          CPUARMState *env, uint32_t desc)
++DO_LD1_2(ld1hh, MO_16)
++DO_LD1_2(ld1ss, MO_32)
++DO_LD1_2(ld1dd, MO_64)
++
++#undef DO_LD1_2
++
++static inline QEMU_ALWAYS_INLINE
++void sve2p1_st1_c(CPUARMState *env, ARMVectorReg *zd, const vaddr addr,
++                  uint32_t png, uint32_t desc,
++                  const uintptr_t ra, const int esz,
++                  sve_ldst1_host_fn *host_fn,
++                  sve_ldst1_tlb_fn *tlb_fn)
++{
++    const unsigned N = (desc >> SIMD_DATA_SHIFT) & 1 ? 4 : 2;
++    const unsigned rstride = 1 << ((desc >> (SIMD_DATA_SHIFT + 1)) % 4);
++    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
++    const intptr_t reg_max = simd_oprsz(desc);
++    const unsigned esize = 1 << esz;
++    intptr_t count_off, count_last;
++    intptr_t reg_off, reg_last, reg_n;
++    SVEContLdSt info;
++    unsigned estride, flags;
++    void *host;
++
++    estride = sve2p1_cont_ldst_elements(&info, addr, png, reg_max, N, esz);
++    if (estride == 0) {
++        /* The entire predicate was false; no store occurs.  */
++        return;
++    }
++
++    /* Probe the page(s).  Exit with exception for any invalid page. */
++    sve_cont_ldst_pages(&info, FAULT_ALL, env, addr, MMU_DATA_STORE, ra);
++
++    /* Handle watchpoints for all active elements. */
++    sve2p1_cont_ldst_watchpoints(&info, env, addr, estride,
++                                 esize, BP_MEM_WRITE, ra);
++
++    /*
++     * Handle mte checks for all active elements.
++     * Since TBI must be set for MTE, !mtedesc => !mte_active.
++     */
++    if (mtedesc) {
++        sve2p1_cont_ldst_mte_check(&info, env, estride, addr,
++                                   esize, mtedesc, ra);
++    }
++
++    flags = info.page[0].flags | info.page[1].flags;
++    if (unlikely(flags != 0)) {
++        /*
++         * At least one page includes MMIO.
++         * Any bus operation can fail with cpu_transaction_failed,
++         * which for ARM will raise SyncExternal.  Perform the load
++         * into scratch memory to preserve register state until the end.
++         */
++        count_off = info.reg_off_first[0];
++        count_last = info.reg_off_last[1];
++        if (count_last < 0) {
++            count_last = info.reg_off_split;
++            if (count_last < 0) {
++                count_last = info.reg_off_last[0];
++            }
++        }
++        reg_off = count_off % reg_max;
++        reg_n = count_off / reg_max;
++
++        do {
++            reg_last = MIN(count_last - count_off, reg_max - esize);
++            do {
++                tlb_fn(env, &zd[reg_n * rstride], reg_off, addr + count_off, ra);
++                reg_off += estride;
++                count_off += estride;
++            } while (reg_off <= reg_last);
++            reg_off = 0;
++            reg_n++;
++        } while (count_off <= count_last);
++        return;
++    }
++
++    /* The entire operation is in RAM, on valid pages. */
++
++    count_off = info.reg_off_first[0];
++    count_last = info.reg_off_last[0];
++    reg_off = count_off % reg_max;
++    reg_n = count_off / reg_max;
++    host = info.page[0].host;
++
++    set_helper_retaddr(ra);
++
++    do {
++        reg_last = MIN(count_last - reg_n * reg_max, reg_max - esize);
++        do {
++            host_fn(&zd[reg_n * rstride], reg_off, host + count_off);
++            reg_off += estride;
++            count_off += estride;
++        } while (reg_off <= reg_last);
++        reg_off = 0;
++        reg_n++;
++    } while (count_off <= count_last);
++
++    clear_helper_retaddr();
++
++    /*
++     * Use the slow path to manage the cross-page misalignment.
++     * But we know this is RAM and cannot trap.
++     */
++    count_off = info.reg_off_split;
++    if (unlikely(count_off >= 0)) {
++        reg_off = count_off % reg_max;
++        reg_n = count_off / reg_max;
++        tlb_fn(env, &zd[reg_n * rstride], reg_off, addr + count_off, ra);
++    }
++
++    count_off = info.reg_off_first[1];
++    if (unlikely(count_off >= 0)) {
++        count_last = info.reg_off_last[1];
++        reg_off = count_off % reg_max;
++        reg_n = count_off / reg_max;
++        host = info.page[1].host;
++
++        set_helper_retaddr(ra);
++
++        do {
++            reg_last = MIN(count_last - reg_n * reg_max, reg_max - esize);
++            do {
++                host_fn(&zd[reg_n * rstride], reg_off, host + count_off);
++                reg_off += estride;
++                count_off += estride;
++            } while (reg_off <= reg_last);
++            reg_off = 0;
++            reg_n++;
++        } while (count_off <= count_last);
++
++        clear_helper_retaddr();
++    }
++}
++
++void HELPER(sve2p1_st1bb_c)(CPUARMState *env, void *vd, target_ulong addr,
++                           uint32_t png, uint32_t desc)
++{
++    sve2p1_st1_c(env, vd, addr, png, desc, GETPC(), MO_8,
++                 sve_st1bb_host, sve_st1bb_tlb);
++}
++
++#define DO_ST1_2(NAME, ESZ)                                             \
++void HELPER(sve2p1_##NAME##_le_c)(CPUARMState *env, void *vd,           \
++                                  target_ulong addr, uint32_t png,      \
++                                  uint32_t desc)                        \
++{                                                                       \
++    sve2p1_st1_c(env, vd, addr, png, desc, GETPC(), ESZ,                \
++                 sve_##NAME##_le_host, sve_##NAME##_le_tlb);            \
++}                                                                       \
++void HELPER(sve2p1_##NAME##_be_c)(CPUARMState *env, void *vd,           \
++                                  target_ulong addr, uint32_t png,      \
++                                  uint32_t desc)                        \
++{                                                                       \
++    sve2p1_st1_c(env, vd, addr, png, desc, GETPC(), ESZ,                \
++                 sve_##NAME##_be_host, sve_##NAME##_be_tlb);            \
++}
++
++DO_ST1_2(st1hh, MO_16)
++DO_ST1_2(st1ss, MO_32)
++DO_ST1_2(st1dd, MO_64)
++
++#undef DO_ST1_2
++
+ void HELPER(sve2_eor3)(void *vd, void *vn, void *vm, void *vk, uint32_t desc)
  {
-@@ -1261,12 +1331,11 @@ void HELPER(sme2_fvdot_idx_h)(void *vd, void *vn, void *vm, void *va,
-     }
- }
- 
--void HELPER(sme_bfmopa_w)(void *vza, void *vzn, void *vzm,
--                          void *vpn, void *vpm, CPUARMState *env, uint32_t desc)
-+static void do_bfmopa_w(void *vza, void *vzn, void *vzm,
-+                        uint16_t *pn, uint16_t *pm, CPUARMState *env,
-+                        uint32_t desc, uint32_t negx, bool ah_neg)
- {
-     intptr_t row, col, oprsz = simd_maxsz(desc);
--    uint32_t neg = simd_data(desc) * 0x80008000u;
--    uint16_t *pn = vpn, *pm = vpm;
-     float_status fpst, fpst_odd;
- 
-     if (is_ebf(env, &fpst, &fpst_odd)) {
-@@ -1276,7 +1345,11 @@ void HELPER(sme_bfmopa_w)(void *vza, void *vzn, void *vzm,
-                 void *vza_row = vza + tile_vslice_offset(row);
-                 uint32_t n = *(uint32_t *)(vzn + H1_4(row));
- 
--                n = f16mop_adj_pair(n, prow, neg);
-+                if (ah_neg) {
-+                    n = bf16mop_ah_neg_adj_pair(n, prow);
-+                } else {
-+                    n = f16mop_adj_pair(n, prow, negx);
-+                }
- 
-                 for (col = 0; col < oprsz; ) {
-                     uint16_t pcol = pm[H2(col >> 4)];
-@@ -1303,7 +1376,11 @@ void HELPER(sme_bfmopa_w)(void *vza, void *vzn, void *vzm,
-                 void *vza_row = vza + tile_vslice_offset(row);
-                 uint32_t n = *(uint32_t *)(vzn + H1_4(row));
- 
--                n = f16mop_adj_pair(n, prow, neg);
-+                if (ah_neg) {
-+                    n = bf16mop_ah_neg_adj_pair(n, prow);
-+                } else {
-+                    n = f16mop_adj_pair(n, prow, negx);
-+                }
- 
-                 for (col = 0; col < oprsz; ) {
-                     uint16_t pcol = pm[H2(col >> 4)];
-@@ -1326,6 +1403,24 @@ void HELPER(sme_bfmopa_w)(void *vza, void *vzn, void *vzm,
-     }
- }
- 
-+void HELPER(sme_bfmopa_w)(void *vza, void *vzn, void *vzm, void *vpn,
-+                          void *vpm, CPUARMState *env, uint32_t desc)
+     intptr_t i, opr_sz = simd_oprsz(desc) / 8;
+diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
+index 02f885dd48..dfb53e4bf4 100644
+--- a/target/arm/tcg/translate-sve.c
++++ b/target/arm/tcg/translate-sve.c
+@@ -7863,3 +7863,106 @@ TRANS_FEAT(UQCVTN_sh, aa64_sme2_or_sve2p1, gen_gvec_ool_zz,
+            gen_helper_sme2_uqcvtn_sh, a->rd, a->rn, 0)
+ TRANS_FEAT(SQCVTUN_sh, aa64_sme2_or_sve2p1, gen_gvec_ool_zz,
+            gen_helper_sme2_sqcvtun_sh, a->rd, a->rn, 0)
++
++static bool gen_ldst_c(DisasContext *s, TCGv_i64 addr, int zd, int png,
++                       MemOp esz, bool is_write, int n, bool strided)
 +{
-+    do_bfmopa_w(vza, vzn, vzm, vpn, vpm, env, desc, 0, false);
++    typedef void ldst_c_fn(TCGv_env, TCGv_ptr, TCGv_i64,
++                           TCGv_i32, TCGv_i32);
++    static ldst_c_fn * const f_ldst[2][2][4] = {
++        { { gen_helper_sve2p1_ld1bb_c,
++            gen_helper_sve2p1_ld1hh_le_c,
++            gen_helper_sve2p1_ld1ss_le_c,
++            gen_helper_sve2p1_ld1dd_le_c, },
++          { gen_helper_sve2p1_ld1bb_c,
++            gen_helper_sve2p1_ld1hh_be_c,
++            gen_helper_sve2p1_ld1ss_be_c,
++            gen_helper_sve2p1_ld1dd_be_c, } },
++
++        { { gen_helper_sve2p1_st1bb_c,
++            gen_helper_sve2p1_st1hh_le_c,
++            gen_helper_sve2p1_st1ss_le_c,
++            gen_helper_sve2p1_st1dd_le_c, },
++          { gen_helper_sve2p1_st1bb_c,
++            gen_helper_sve2p1_st1hh_be_c,
++            gen_helper_sve2p1_st1ss_be_c,
++            gen_helper_sve2p1_st1dd_be_c, } }
++    };
++
++    TCGv_i32 t_png, t_desc;
++    TCGv_ptr t_zd;
++    uint32_t desc, lg2_rstride = 0;
++    bool be = s->be_data == MO_BE;
++
++    assert(n == 2 || n == 4);
++    if (strided) {
++        lg2_rstride = 3;
++        if (n == 4) {
++            /* Validate ZD alignment. */
++            if (zd & 4) {
++                return false;
++            }
++            lg2_rstride = 2;
++        }
++        /* Ignore non-temporal bit */
++        zd &= ~8;
++    }
++
++    if (strided || !dc_isar_feature(aa64_sve2p1, s)
++        ? !sme_sm_enabled_check(s)
++        : !sve_access_check(s)) {
++        return true;
++    }
++
++    if (!s->mte_active[0]) {
++        addr = clean_data_tbi(s, addr);
++    }
++
++    desc = n == 2 ? 0 : 1;
++    desc = desc | (lg2_rstride << 1);
++    desc = make_svemte_desc(s, vec_full_reg_size(s), 1, esz, is_write, desc);
++    t_desc = tcg_constant_i32(desc);
++
++    t_png = tcg_temp_new_i32();
++    tcg_gen_ld16u_i32(t_png, tcg_env,
++                      pred_full_reg_offset(s, png) ^
++                      (HOST_BIG_ENDIAN ? 6 : 0));
++
++    t_zd = tcg_temp_new_ptr();
++    tcg_gen_addi_ptr(t_zd, tcg_env, vec_full_reg_offset(s, zd));
++
++    f_ldst[is_write][be][esz](tcg_env, t_zd, addr, t_png, t_desc);
++    return true;
 +}
 +
-+void HELPER(sme_bfmops_w)(void *vza, void *vzn, void *vzm, void *vpn,
-+                          void *vpm, CPUARMState *env, uint32_t desc)
++static bool gen_ldst_zcrr_c(DisasContext *s, arg_zcrr_ldst *a,
++                            bool is_write, bool strided)
 +{
-+    do_bfmopa_w(vza, vzn, vzm, vpn, vpm, env, desc, 0x80008000u, false);
++    TCGv_i64 addr = tcg_temp_new_i64();
++
++    tcg_gen_shli_i64(addr, cpu_reg(s, a->rm), a->esz);
++    tcg_gen_add_i64(addr, addr, cpu_reg_sp(s, a->rn));
++    return gen_ldst_c(s, addr, a->rd, a->png, a->esz, is_write,
++                      a->nreg, strided);
 +}
 +
-+void HELPER(sme_ah_bfmops_w)(void *vza, void *vzn, void *vzm, void *vpn,
-+                             void *vpm, CPUARMState *env, uint32_t desc)
++static bool gen_ldst_zcri_c(DisasContext *s, arg_zcri_ldst *a,
++                            bool is_write, bool strided)
 +{
-+    do_bfmopa_w(vza, vzn, vzm, vpn, vpm, env, desc, 0, true);
++    TCGv_i64 addr = tcg_temp_new_i64();
++
++    tcg_gen_addi_i64(addr, cpu_reg_sp(s, a->rn),
++                     a->imm * a->nreg * vec_full_reg_size(s));
++    return gen_ldst_c(s, addr, a->rd, a->png, a->esz, is_write,
++                      a->nreg, strided);
 +}
 +
- typedef uint32_t IMOPFn32(uint32_t, uint32_t, uint32_t, uint8_t, bool);
- static inline void do_imopa_s(uint32_t *za, uint32_t *zn, uint32_t *zm,
-                               uint8_t *pn, uint8_t *pm,
-diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
-index 38d0231b0a..782f408061 100644
---- a/target/arm/tcg/translate-sme.c
-+++ b/target/arm/tcg/translate-sme.c
-@@ -526,7 +526,7 @@ static bool do_outprod_fpst(DisasContext *s, arg_op *a, MemOp esz,
-                             gen_helper_gvec_5_ptr *fn)
- {
-     int svl = streaming_vec_reg_size(s);
--    uint32_t desc = simd_desc(svl, svl, a->sub);
-+    uint32_t desc = simd_desc(svl, svl, 0);
-     TCGv_ptr za, zn, zm, pn, pm, fpst;
++TRANS_FEAT(LD1_zcrr, aa64_sme2_or_sve2p1, gen_ldst_zcrr_c, a, false, false)
++TRANS_FEAT(LD1_zcri, aa64_sme2_or_sve2p1, gen_ldst_zcri_c, a, false, false)
++TRANS_FEAT(ST1_zcrr, aa64_sme2_or_sve2p1, gen_ldst_zcrr_c, a, true, false)
++TRANS_FEAT(ST1_zcri, aa64_sme2_or_sve2p1, gen_ldst_zcri_c, a, true, false)
++
++TRANS_FEAT(LD1_zcrr_stride, aa64_sme2, gen_ldst_zcrr_c, a, false, true)
++TRANS_FEAT(LD1_zcri_stride, aa64_sme2, gen_ldst_zcri_c, a, false, true)
++TRANS_FEAT(ST1_zcrr_stride, aa64_sme2, gen_ldst_zcrr_c, a, true, true)
++TRANS_FEAT(ST1_zcri_stride, aa64_sme2, gen_ldst_zcri_c, a, true, true)
+diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
+index 52a56d3341..bf3d4f4853 100644
+--- a/target/arm/tcg/sve.decode
++++ b/target/arm/tcg/sve.decode
+@@ -1812,3 +1812,53 @@ SCLAMP          01000100 .. 0 ..... 110000 ..... .....          @rda_rn_rm
+ UCLAMP          01000100 .. 0 ..... 110001 ..... .....          @rda_rn_rm
  
-     if (!sme_smza_enabled_check(s)) {
-@@ -548,7 +548,7 @@ static bool do_outprod_env(DisasContext *s, arg_op *a, MemOp esz,
-                            gen_helper_gvec_5_ptr *fn)
- {
-     int svl = streaming_vec_reg_size(s);
--    uint32_t desc = simd_desc(svl, svl, a->sub);
-+    uint32_t desc = simd_desc(svl, svl, 0);
-     TCGv_ptr za, zn, zm, pn, pm;
- 
-     if (!sme_smza_enabled_check(s)) {
-@@ -565,14 +565,23 @@ static bool do_outprod_env(DisasContext *s, arg_op *a, MemOp esz,
-     return true;
- }
- 
--TRANS_FEAT(FMOPA_w_h, aa64_sme, do_outprod_env, a,
--           MO_32, gen_helper_sme_fmopa_w_h)
--TRANS_FEAT(FMOPA_s, aa64_sme, do_outprod_fpst, a,
--           MO_32, FPST_ZA, gen_helper_sme_fmopa_s)
--TRANS_FEAT(FMOPA_d, aa64_sme_f64f64, do_outprod_fpst, a,
--           MO_64, FPST_ZA, gen_helper_sme_fmopa_d)
-+TRANS_FEAT(FMOPA_w_h, aa64_sme, do_outprod_env, a, MO_32,
-+           !a->sub ? gen_helper_sme_fmopa_w_h
-+           : !s->fpcr_ah ? gen_helper_sme_fmops_w_h
-+           : gen_helper_sme_ah_fmops_w_h)
-+TRANS_FEAT(FMOPA_s, aa64_sme, do_outprod_fpst, a, MO_32, FPST_ZA,
-+           !a->sub ? gen_helper_sme_fmopa_s
-+           : !s->fpcr_ah ? gen_helper_sme_fmops_s
-+           : gen_helper_sme_ah_fmops_s)
-+TRANS_FEAT(FMOPA_d, aa64_sme_f64f64, do_outprod_fpst, a, MO_64, FPST_ZA,
-+           !a->sub ? gen_helper_sme_fmopa_d
-+           : !s->fpcr_ah ? gen_helper_sme_fmops_d
-+           : gen_helper_sme_ah_fmops_d)
- 
--TRANS_FEAT(BFMOPA_w, aa64_sme, do_outprod_env, a, MO_32, gen_helper_sme_bfmopa_w)
-+TRANS_FEAT(BFMOPA_w, aa64_sme, do_outprod_env, a, MO_32,
-+           !a->sub ? gen_helper_sme_bfmopa_w
-+           : !s->fpcr_ah ? gen_helper_sme_bfmops_w
-+           : gen_helper_sme_ah_bfmops_w)
- 
- TRANS_FEAT(SMOPA_s, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_smopa_s)
- TRANS_FEAT(UMOPA_s, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_umopa_s)
+ FCLAMP          01100100 .. 1 ..... 001001 ..... .....          @rda_rn_rm
++
++### SVE2p1 multi-vec contiguous load
++
++&zcrr_ldst      rd png rn rm esz nreg
++&zcri_ldst      rd png rn imm esz nreg
++%png            10:3 !function=plus_8
++%zd_ax2         1:4 !function=times_2
++%zd_ax4         2:3 !function=times_4
++
++LD1_zcrr        10100000000 rm:5 0 esz:2 ... rn:5 .... - \
++                &zcrr_ldst %png rd=%zd_ax2 nreg=2
++LD1_zcrr        10100000000 rm:5 1 esz:2 ... rn:5 ... 0- \
++                &zcrr_ldst %png rd=%zd_ax4 nreg=4
++
++ST1_zcrr        10100000001 rm:5 0 esz:2 ... rn:5 .... - \
++                &zcrr_ldst %png rd=%zd_ax2 nreg=2
++ST1_zcrr        10100000001 rm:5 1 esz:2 ... rn:5 ... 0- \
++                &zcrr_ldst %png rd=%zd_ax4 nreg=4
++
++LD1_zcri        101000000100 imm:s4 0 esz:2 ... rn:5 .... - \
++                &zcri_ldst %png rd=%zd_ax2 nreg=2
++LD1_zcri        101000000100 imm:s4 1 esz:2 ... rn:5 ... 0- \
++                &zcri_ldst %png rd=%zd_ax4 nreg=4
++
++ST1_zcri        101000000110 imm:s4 0 esz:2 ... rn:5 .... - \
++                &zcri_ldst %png rd=%zd_ax2 nreg=2
++ST1_zcri        101000000110 imm:s4 1 esz:2 ... rn:5 ... 0- \
++                &zcri_ldst %png rd=%zd_ax4 nreg=4
++
++# Note: N bit and 0 bit (for nreg4) still mashed in rd.
++# This is handled within gen_ldst_c().
++LD1_zcrr_stride 10100001000 rm:5 0 esz:2 ... rn:5 rd:5 \
++                &zcrr_ldst %png nreg=2
++LD1_zcrr_stride 10100001000 rm:5 1 esz:2 ... rn:5 rd:5 \
++                &zcrr_ldst %png nreg=4
++
++ST1_zcrr_stride 10100001001 rm:5 0 esz:2 ... rn:5 rd:5 \
++                &zcrr_ldst %png nreg=2
++ST1_zcrr_stride 10100001001 rm:5 1 esz:2 ... rn:5 rd:5 \
++                &zcrr_ldst %png nreg=4
++
++LD1_zcri_stride 101000010100 imm:s4 0 esz:2 ... rn:5 rd:5 \
++                &zcri_ldst %png nreg=2
++LD1_zcri_stride 101000010100 imm:s4 1 esz:2 ... rn:5 rd:5 \
++                &zcri_ldst %png nreg=4
++
++ST1_zcri_stride 101000010110 imm:s4 0 esz:2 ... rn:5 rd:5 \
++                &zcri_ldst %png nreg=2
++ST1_zcri_stride 101000010110 imm:s4 1 esz:2 ... rn:5 rd:5 \
++                &zcri_ldst %png nreg=4
 -- 
 2.43.0
 

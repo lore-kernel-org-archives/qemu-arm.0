@@ -1,238 +1,183 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1448884dyc;
-        Fri, 4 Jul 2025 14:05:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVx1hZ3tBErQXCds/krwKUbTMdIl9I1aLrsMMJZJpPb+crMTc78hX6unu1f7n26SvUdBNccdu3b09iKkw==@linaro.org
-X-Received: by 2002:a05:6871:1c6:b0:2df:b3b9:5dfe with SMTP id 586e51a60fabf-2f796cd66dfmr2832114fac.29.1751663125016;
-        Fri, 04 Jul 2025 14:05:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751663125; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1465927dyc;
+        Fri, 4 Jul 2025 14:59:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXHZVW/ozAIDoKdMaOtF1qy1Y4IdEWlxLJ+6sAbeUhqoq/CEqYi90yMe4mAIdxhzmEf3RbTTxNG9W2Wig==@linaro.org
+X-Received: by 2002:a05:6808:211a:b0:3fe:af0b:22f7 with SMTP id 5614622812f47-40d07375143mr2623182b6e.11.1751666368027;
+        Fri, 04 Jul 2025 14:59:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751666368; cv=none;
         d=google.com; s=arc-20240605;
-        b=C/k+jUJny4yr/aYYx986TTdtkYiRN5CPA6EQBqxFfKI5/vsctFBVFzfHYf8MKGwxhx
-         3j2W2Ss7k8DMI8naWPehNtlEheUrsEvZp1thC2e6OdOKCsRAAXtMQls2h7Kf8TwYdx0J
-         ypXegtMquZEQV6PlUudXVDn/LIuD80esg/4eCO3sz6XANSblw4bQTrc8QXD+O8sFagQO
-         63wO1c99UgvDiVMIa2v46a2EbkVLkPSxylTJmPTy5kvmsGQtJiVTEhJwecPJrDOfn5yQ
-         VFCmPiSriO9S2+SxWxJiYLj20mtnDuBo0s/JtsgQCk02qn/wPz2iyZhWOmO44ylKORpC
-         VLtg==
+        b=Q02DUuUiWLRQSAaEZEopysqWkcjbYJcVRpqOBFFx4lNEuzH0IsB582RYuXjqPhqk/S
+         OYBv6Z/fRjw++v4VN4yFsjueuNSB9HJzIzqLfrGkRigKw3rLtZmpRKhYWRWsSFD29lR+
+         JhbIcsCLNT2HJkMxw/pnfiukWrpVkpi6nM77SGdT20WZIu7ucGwMOedypkanpgY6jHfq
+         MLSfC/bC2HV30n6bqk2WT9nqoAimPZpCvG9IAd/vK0SIR7rl8k2zjb9qfvIm4Z2vrr3s
+         qi2EM/WDaNNV2MvNBwK0kGbVguiidLdSH/XM67Y+q18r8dMknMQvXMHJLJ8wcBVGTBXa
+         o1Vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=HnmF+GWdMytPfWe99miS4RSdRwwQ9DvX3uQuYYnubNg=;
-        fh=1vbbH1tZkagBcVIE7i8A2yHze6XwCW3UCumahTWOhTw=;
-        b=MivjzN3SBRl7KNf7Ce7iwkltOwYtwQVT0Vj8lTQMfjChehK7tytvAt+Jyf82GLT4M4
-         /05BXLfenrYKKU0DvPFd17ub/41ycXAekRRElZvgwqFz2R0cZ8JQ3JtR5QFSNwDZOepn
-         CVOwh1YSI4kEykRUgE0e/oS6TMFDyu40mx3ei7FSvBADVrwGsvylx5HYiK8XTr5PgurV
-         tVM3liinv+ghTzDcvsrLmBuprQFmSfupazZD3EZ687tixaXNc1MbEgPsrYAYS+yZHMV+
-         1TB+k2xNe0cUE52pxDCJDVBd2ddIbcrjc88UTWowxwmK3pXXlEi/xDNoNU2+7IRWSG3v
-         Fo8w==;
+        bh=ev7KsC0b9BR/+p9nRfGPqAOeby21hJM34Dq1OG5FbAQ=;
+        fh=QiyYs/Wnho7sZUIUOf/CNz7IbBxtDElefjuuWPDCNRQ=;
+        b=C3leI5clWU7Gx8R4QREDZ1ctY4Vp0FLZ2heO8CMLLthmumu3zaF+OGtZWVDZbsSuI7
+         4M5smN+CO0M2hv1KJ4btwNwGvMZkh0uOxiw3pQTeSfDijOe6b/+QOYMt5oybLqqBPYi9
+         +JWOXeSY86ITKPuZdUe59S6Kl54/hkRomN4nVin60Xwa86Wsm64hwayHnC27x0Ha+AUt
+         5VlR6RfnGj8FHvzkZ0Dh+2FWJ5c0dXSQLWPKnyileaF3Ni7i0fDST4wkrpzEsGjJuvH/
+         tUL17O4AEKRg4g/pZFgUMjvYnW0ViWJY7N7w1ComrWiTEBN6H4zpPv8oTZl9bgxhPNUS
+         1M3A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iVT3qnE3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zafyPzni;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 586e51a60fabf-2f790111422sor931957fac.16.2025.07.04.14.05.24
+        by mx.google.com with SMTPS id 5614622812f47-40d02ab2d16sor491736b6e.10.2025.07.04.14.59.27
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 04 Jul 2025 14:05:24 -0700 (PDT)
+        Fri, 04 Jul 2025 14:59:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iVT3qnE3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zafyPzni;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1751663124; x=1752267924; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=HnmF+GWdMytPfWe99miS4RSdRwwQ9DvX3uQuYYnubNg=;
-        b=iVT3qnE33xHvr2RH/jF9lwikehPLyXaxwq3UInCnUcynqjKvP3o6MkST09aomKjGA/
-         T+vA4ofXXdgslETsLO91mbNzbS6BbvbI0gcAWHTq6JZLZ5gZKeoWUn6rjONk3ZyGs9E3
-         6dOB1AeAiIa6L6GVwIFWK7sR+zxWvzCfPFFFskYCdD4CZtm8zGeOnv30k45mKu2PzQnT
-         umWjl0Eu5XRMAwAq7di15lRZbdsX/hYp9OYg0xn+jB9zd9mjOdD1Pt5ILUS2ckvhRMmv
-         U1pjLPQBY3BdujLtrS9ZRchVckdbhok2oFRuQji56TTD9uEN4IN+vd1W4RuHrkCOy4PB
-         FPRg==
+        d=linaro.org; s=google; t=1751666367; x=1752271167; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=ev7KsC0b9BR/+p9nRfGPqAOeby21hJM34Dq1OG5FbAQ=;
+        b=zafyPznicRCv07lOIUPzd3+iGj8ygIiIA7aCciIKx+pDlmN7Lq335ZFGMvMx4dzjE8
+         Mali0xXiX/gtWz2u/B4zKR7MHuqAa7x1HUAf1xiKYa1sHi9tLF5W7AoR6GItbQNf8/AE
+         F2DEtFigByNImmjCldlSF6rfIAtUHJlO0vJ4Ah5/gWv7BIxeUpteGgMyGOsXjw9pYOkr
+         WKDuRlPMWVqHt+SiQ8Tio44GEFH/g5UL3q4Yxh8ybch3xnS6aG8CUCK+Rf/LvAhDPQku
+         eEyEFyC/nIyusYni4XiJ+rJgspeXA7oV5wDtC5aJ3mti5VK/7rHIlXtZ6ws9zuqUuaTz
+         4ieQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751663124; x=1752267924;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20230601; t=1751666367; x=1752271167;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=HnmF+GWdMytPfWe99miS4RSdRwwQ9DvX3uQuYYnubNg=;
-        b=iH+Zx8W6WFkjh1Wcpk9BgaWxUvsExzTadbK57trZpD63cG7k2nal3U7tSXN5GvGdpb
-         bjsmeEQdv6YmaZhVjrd9YgsI2V1i5I8EeneNAaseE9wmzEJqXm5fikhpVgBjZUsT5ft3
-         5bd3aRX9rgU8Ikav0ZSBOmzgBS1ng9nOh6VxlIA+kojSwW3GeCHBG9EKpD69iTzsFNn/
-         WOff9Xijyc2Zwt1nzHEYQhj1Jnz7qqh+kDyXxOFblDtNyM8WHjX9PjTqZ0UP1+5CODCo
-         9aK8R0HxocAmiQo/Ba4Nyqx3rpjW8lJq7/MEuAWROaMadcVTmxd1LAH+ggT4Sww89wml
-         p3Zg==
-X-Forwarded-Encrypted: i=1; AJvYcCU4BjumuqGpoTL0qWN9dkirf7+7k4IFCoJVY+SNFbs9QNaDMM2ci2zfXKBDU1bL/jCx2uKQqVJrwQdg0A==@linaro.org
-X-Gm-Message-State: AOJu0YyIPjl3YUs2N7CcW3HKUmVQpV6XboJNJJ7ev2UuSXjt0ouUMPid
-	+ALxNJfhO7IawhcAiJayfa8hRh9VjAAGuyXQ0buynb99l7A//ig4LzUvQCeWqp5qkNsngA==
-X-Gm-Gg: ASbGnctxhlYc6+Gq2sTcCdMQRurvdS49v1N15yhh4ip2aiLS16E7iC12hTVVp+qFeUM
-	YiqxXmKSFkept5rKptt9RhHbqYclMBe+oDj+b+zS5KcHUpfeu/o4C1ezaH5WzV8sfEIIq6mk3VH
-	e8Z77isCqhmTy4dF1K1q7QTer+gw0bFU2mW4+TGTmWzUy1HXirCb/oeMBDydb7EXNwV++EV3PaS
-	4Wi1Gx7jg2M1aau4HWWQ9lHpKUB1G0/rLWPBywOpv9sgYuhGdJSZ6m8/UrnKTCupRSG7iiuSrro
-	LXSEramfH2bvXi4b3hfqDlIoPF//pVh7GQaFIA/tesUxIqx5KXHW+X7DCehL2NvH59RiQd6wHTt
-	6arz4pSitV4SHjQ+0SKTtE9DHYCiTsmowbIdWXXmY
-X-Google-Smtp-Source: AGHT+IEzkwZCCR6fG/k4l6BZPscawmW/So7U0vch0ENSLTMH8G/T/YOWK/bNoY0+6nNYtxiCbKzAqg==
-X-Received: by 2002:a05:6870:c195:b0:2d5:714b:f661 with SMTP id 586e51a60fabf-2f796a57083mr2732657fac.12.1751663124384;
-        Fri, 04 Jul 2025 14:05:24 -0700 (PDT)
+        bh=ev7KsC0b9BR/+p9nRfGPqAOeby21hJM34Dq1OG5FbAQ=;
+        b=PN4XXDscHJ8ci9TI/3MnOpo8vWVJdvIv9YlenOo12hyvCUeq7rVSNeHR/CiVICgBtL
+         4sY8aXaXOe3NIbcsZ1lU/q6oFyKJOXyB+Ss2lkTgbIbiZtpbKEz4jmx/A2/GwC1wFgl+
+         A7XyPni406GVwRSPdTxnDVG590MvAqmvqw3zEd1N5lRwrNrxwWGUoXLQrlipZMcpzAT2
+         cpoWZnoUtGH7GBrwiOhw7bErhRbkE+wHHlr+aaxx6rZ99QCBbgfnOzt6Oj5Qfk/3clfK
+         64xOA8KB3iqz8Kz/O5uzaeg/temaxC3d/ubWf6uLEnSyI+f7vWnnu6F9W1FS9nFJoyYM
+         2C1g==
+X-Forwarded-Encrypted: i=1; AJvYcCXUvlW3Sz4GWeDPR6DdYJy8HdeDhHUkO6HyRGQ36u2cYNno1+U4jPysyPbz1P1LsEaSwhwZRTBGEhQ3Sw==@linaro.org
+X-Gm-Message-State: AOJu0YxRWctvqg2/6dWLosmQ4RGUcj/JLrErNSbKs34YlsyYHLCF7II+
+	Pw+fWoUxKBcBVTk8Iz0jyYy4f55YlNjWegmfut3GHFZHbBVJxcnLImswPpnmFil3Uco6Bg==
+X-Gm-Gg: ASbGncsz3GwUuQ9CtMYUiwFFITu6DBWwOoWSuYdq9T+rZtG7bxegSNNRNz2cNvUwSuW
+	/Xyg1OL4CENP0C2StvNzbokqodhvWdAu0HQyeD/qmuMf82z+iXekBPGP7Eq+Esf4Rv464zaIj0f
+	nyxvaM+bHx1cXWAdPwScigRjmbyYvrQuvk835rzgEoqm6m5kQ0Gx61z8bkYWD/2xG2U5t3wngwR
+	cgwUo2KDEgLmarTS2npef5bBVeJwtm4P3Q09DWoQdrZNhBk1iWSoNhlnkYCP18LKXqA3IbpLN60
+	aj6VygG3gtISq0Si0Rh/rTbYj/ZyhFW63sb1yGqAQ0zhspwl/xTzOcI0IxW9h5uXyJ7cOWTafy5
+	n1N9iYf+HFRPjwy+tCx7+QtO20U1VZm1h99ewWjDz/PMOpQUBqaw=
+X-Google-Smtp-Source: AGHT+IEsrDtFGguJ116PDfJMP2MxORvHetPFKsc4Ot8546vGb6vyVsLQS+OAP5EogM/1YV4/208bvA==
+X-Received: by 2002:a05:6808:2191:b0:40c:fcb9:90b9 with SMTP id 5614622812f47-40d0737f61bmr2536416b6e.16.1751666367379;
+        Fri, 04 Jul 2025 14:59:27 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.4.112] (fixed-187-189-51-143.totalplay.net. [187.189.51.143])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-2f790276f63sm705485fac.44.2025.07.04.14.05.23
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-40d02adbd55sm432967b6e.40.2025.07.04.14.59.26
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 04 Jul 2025 14:05:24 -0700 (PDT)
-Message-ID: <f18ad948-3d14-446f-8d37-041b4f9ffa8c@linaro.org>
-Date: Fri, 4 Jul 2025 15:05:21 -0600
+        Fri, 04 Jul 2025 14:59:26 -0700 (PDT)
+Message-ID: <bffb3cf0-25ce-41fe-bca9-5ce387f7f02e@linaro.org>
+Date: Fri, 4 Jul 2025 15:59:24 -0600
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [WIP-for-10.1 v2 2/5] target/arm: Add FEAT_MEC registers
+From: Richard Henderson <richard.henderson@linaro.org>
+Subject: Re: [WIP-for-10.1 v2 3/5] target/arm: Add FEAT_SCTLR2
 To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
  alex.bennee@linaro.org
 Cc: qemu-devel@nongnu.org
 References: <20250704151431.1033520-1-gustavo.romero@linaro.org>
- <20250704151431.1033520-3-gustavo.romero@linaro.org>
+ <20250704151431.1033520-4-gustavo.romero@linaro.org>
 Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250704151431.1033520-3-gustavo.romero@linaro.org>
+In-Reply-To: <20250704151431.1033520-4-gustavo.romero@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: DDdu5d6AhVey
+X-TUID: JInHH83Ue2nD
 
 On 7/4/25 09:14, Gustavo Romero wrote:
-> +        /* MEC registers */
-> +        uint64_t mecidr_el2;
-
-Don't need this one.
-
-> +        uint64_t mecid_p0_el2;
-> +        uint64_t mecid_a0_el2;
-> +        uint64_t mecid_p1_el2;
-> +        uint64_t mecid_a1_el2;
-> +        uint64_t mecid_rl_a_el3;
-> +        uint64_t vmecid_p_el2;
-> +        uint64_t vmecid_a_el2;
->       } cp15;
+> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+> index 4452e7c21e..a42d1133c2 100644
+> --- a/target/arm/cpu-features.h
+> +++ b/target/arm/cpu-features.h
+> @@ -296,6 +296,11 @@ static inline bool isar_feature_aa32_ats1e1(const ARMISARegisters *id)
+>       return FIELD_EX32(id->id_mmfr3, ID_MMFR3, PAN) >= 2;
+>   }
 >   
->       struct {
-> @@ -2389,6 +2399,10 @@ FIELD(MFAR, FPA, 12, 40)
->   FIELD(MFAR, NSE, 62, 1)
->   FIELD(MFAR, NS, 63, 1)
->   
-> +FIELD(MECIDR, MECIDW, 0, 4)
-> +FIELD(MECID, MECID, 0, 16)
-> +FIELD(VMECID, MECID, 0, 16)
-
-You don't really need these.
-
-> +
->   QEMU_BUILD_BUG_ON(ARRAY_SIZE(((ARMCPU *)0)->ccsidr) <= R_V7M_CSSELR_INDEX_MASK);
->   
->   /* If adding a feature bit which corresponds to a Linux ELF
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 889d308807..9f8a284261 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -6823,6 +6823,100 @@ static const ARMCPRegInfo nmi_reginfo[] = {
->         .resetfn = arm_cp_reset_ignore },
->   };
->   
-> +static void mecidr_reset(CPUARMState *env, const ARMCPRegInfo *ri)
+> +static inline bool isar_feature_aa64_sctlr2(const ARMISARegisters *id)
 > +{
-> +    /* MECIDWidthm1 = 15, i.e. 16 bits is the width of a MECID. */
-> +    env->cp15.mecidr_el2 = FIELD_DP64(0, MECIDR, MECIDW, 15);
+> +    return FIELD_EX64(id->id_mmfr3, ID_AA64MMFR3, SCTLRX) == 1;
 > +}
-> +
-> +static uint64_t mecidr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+
+!= 0.  Value 2 will mean "value 1, plus ..."
+
+This also needs updating for the IDREG reorg that landed this week.
+
+> @@ -1692,6 +1706,7 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
+>   #define SCR_HXEN              (1ULL << 38)
+>   #define SCR_TRNDR             (1ULL << 40)
+>   #define SCR_ENTP2             (1ULL << 41)
+> +#define SCR_SCTLR2EN          (1ULL << 42)
+
+44.  Bit 42 is RCWMASKEn.
+
+> +static CPAccessResult sctlr2_access(CPUARMState *env, const ARMCPRegInfo *ri,
+> +                                    bool isread)
 > +{
-> +    uint64_t valid_mask;
+> +    int el = arm_current_el(env);
 > +
-> +    if (!arm_is_el2_enabled(env)) {
-> +        /* All bits are RES0. */
-> +        return 0ULL;
+> +    if (!cpu_isar_feature(aa64_sctlr2, env_archcpu(env))) {
+> +        return CP_ACCESS_UNDEFINED;
 > +    }
-> +
-> +    valid_mask = R_MECIDR_MECIDW_MASK;
-> +    return env->cp15.mecidr_el2 & valid_mask;
-> +}
 
-How do you get the arm_is_el2_enabled check?
+Not needed, because the cpregs will not be registered otherwise.
 
-MECIDR_EL2 is a read-only register with one field: MECIDWidthm1, containing a constant 
-value.  I would expect to see
+> +    if ((el < 3)  && !(env->cp15.scr_el3 & SCR_SCTLR2EN)) {
 
-     { .name = "MECIDR_EL2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 4, .opc2 = 7, .crn = 10, .crm = 8,
-       .access = PL2_R, .type = ARM_CP_CONST, .reset = MECID_WIDTH - 1 },
+Remove extra () and extra space.
 
+For SCTLR2_EL1, this is missing the TVM/TRVM check (use access_tvm_trvm first), and the 
+HCRX_EL2.SCTLR2En check.
 
-
-> +
-> +static CPAccessResult mecid_access(CPUARMState *env,
-> +                                   const ARMCPRegInfo *ri, bool isread)
+> +static void sctlr2_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> +                         uint64_t value)
 > +{
-> +    int el;
-> +
-> +    el = arm_current_el(env);
-> +    if (el == 2 && !(env->cp15.scr_el3 & SCR_MECEN)) {
-> +        return CP_ACCESS_TRAP_EL3;
-> +    }
-> +
-> +    return CP_ACCESS_OK;
-> +}
+> +    int el = arm_current_el(env);
+> +    uint64_t valid_mask = 0ULL;
 
-It's better practice to initialize local variables when at all possible, especially now 
-that we build with -ftrivial-auto-var-init:
-
-     int el = arm_current_el(env);
-
-Missing security state check:
-
-     if (el == 2) {
-         if (arm_security_space(env) != ARMSS_Realm) {
-             return CP_ACCESS_UNDEFINED;
-         }
-         if (!(env->cp15.scr_el3 & SCR_MECEN)) {
-             return CP_ACCESS_TRAP_EL3;
-         }
-     }
-     return CP_ACCESS_OK;
-
+ULL is unnecessary.
 
 > +
-> +static void mecid_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> +                        uint64_t value)
-> +{
-> +    uint64_t valid_mask;
-> +
-> +    valid_mask = R_MECID_MECID_MASK;
-> +    value &= valid_mask;
-> +    raw_write(env, ri, value);
-> +}
+> +    if (el > 1 && cpu_isar_feature(aa64_mec, env_archcpu(env))) {
+> +        /* SCTLR2_EL1 does not implement the EMEC bit */
 
-The valid mask does not come from R_MECID_MECID_MASK,
-but from the contents of that field.  This should be
+Incorrect test for SCTLR2_EL1: EL is the current cpu state, nothing to do with the 
+register.  You might notice that all three registers have different sets of supported 
+bits.  If you want to properly validate, you might as well you three different functions.
 
-     value = extract64(value, 0, MECID_WIDTH);
+> +static const ARMCPRegInfo sctlr2_reginfo[] = {
+> +    { .name = "SCTLR2_EL1", .state = ARM_CP_STATE_AA64,
+> +      .opc0 = 3, .opc1 = 0, .opc2 = 3, .crn = 1, .crm = 0,
+> +      .access = PL1_RW, .accessfn = sctlr2_access,
+> +      .writefn = sctlr2_write,
+> +      .fieldoffset = offsetof(CPUARMState, cp15.sctlr2_el[1]) },
 
+Missing .fgt = FGT_SCTLR_EL1, .nv2_redirect_offset.
 
-> +
-> +static uint64_t mecid_read(CPUARMState *env, const ARMCPRegInfo *ri)
-> +{
-> +    uint64_t valid_mask;
-> +
-> +    valid_mask = R_MECID_MECID_MASK;
-> +    return raw_read(env, ri) & valid_mask;
-> +}
+> +    { .name = "SCTLR2_EL2", .state = ARM_CP_STATE_AA64,
+> +      .opc0 = 3, .opc1 = 4, .opc2 = 3, .crn = 1, .crm = 0,
+> +      .access = PL2_RW, .accessfn = sctlr2_access,
+> +      .writefn = sctlr2_write,
+> +      .fieldoffset = offsetof(CPUARMState, cp15.sctlr2_el[2]) },
+> +    { .name = "SCTLR2_EL3", .state = ARM_CP_STATE_AA64,
+> +      .opc0 = 3, .opc1 = 6, .opc2 = 3, .crn = 1, .crm = 0,
+> +      .access = PL3_RW, .accessfn = sctlr2_access,
 
-If you've properly masked writes, you don't need to mask reads too.
-
-
-> +    { .name = "MECID_RL_A_EL3", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 3, .opc1 = 6, .opc2 = 1, .crn = 10, .crm = 10,
-> +      .access = PL2_RW, .accessfn = mecid_access,
-
-.access = PL3_RW, no accessfn.
+No accessfn.
 
 
 r~

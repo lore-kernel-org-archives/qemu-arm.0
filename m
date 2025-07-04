@@ -1,120 +1,119 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1260576dyc;
-        Fri, 4 Jul 2025 07:40:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXSZrdhgoKEyAMxenCQVptL5A42rI6paIv7XNVd6KnIrwkkRMJ8fFMx2NpHQ8s9MM5lYxTkmuO2cMV46Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IEYD7+d4qo6eZ78VEsYRchJn5S8R6EfPJ/slv8z3j1vdpvxqstdnSXtO7MRL4+kSYuUEmra
-X-Received: by 2002:a05:6102:50a2:b0:4e9:d951:1433 with SMTP id ada2fe7eead31-4f2f18cfc8amr1768820137.12.1751640002447;
-        Fri, 04 Jul 2025 07:40:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751640002; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1260896dyc;
+        Fri, 4 Jul 2025 07:40:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV2CnqcYDv7V52HfMISrha/FTrGw0qYL3ZTob3kVWsxtFfQsSMW7Rw/NlHrl6mze8xU/S93ynbDoYPLUQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IE1cKc7O/AwglhHUT/vcUAESwsmuqPAt4iU4ezL0KYC4//SKZLxPnS6DKYH26XbdThkXT4f
+X-Received: by 2002:a05:6102:952:b0:4e5:a9b7:df with SMTP id ada2fe7eead31-4f2ee1d3ecfmr2173473137.13.1751640037662;
+        Fri, 04 Jul 2025 07:40:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751640037; cv=none;
         d=google.com; s=arc-20240605;
-        b=X0zzbg42KfP5Gg+Pb66COLeJMPoz+v+X2iSSWUcqC3Sn+vWKKrh7wbBymg7EMt8bxR
-         pusfXGc/XUPPiNWmMUMJ5oAEI4DSNcoiq8iesOkyqHpdwK9YeiifkKU9xx9/FrCGBmSG
-         4Mm7eTHkpBDk9Jtkz41aulfmXI1TnmaHUCMOqhTAwiyJ18j/cDG92LX0HaOuvkopkolM
-         oRcQI9sgEniwzccSomYU3c4vQtlYuqJ+EyncxyHbzHUYDxxYZgFI2qTbjIVosXxI5XDG
-         x6ufp0+d8iO1+en8qf+FDQGxlDQi6pkuotKrXJWMsD1A3kxImFzTGo5NoCSTrisLC0PE
-         p6DQ==
+        b=B90C5ntofDGmo03k8WOeSaeVZNW529UXol0UrIHE2r9bvKOfoHPs/3RkbrY2YNQXJ4
+         jHbd+dh8ITkCRiP7IhnxDMfqPCv5oO3vx93bqwTRFlS9ueNQdh4zkkYn5outlXOzQC6/
+         /cqonDA3FBHjFyV/bFXLbldtIO4EuL76MM898aUYH0cO6+gwZdBKIXwQM4K0yAwamg0F
+         NUjtdsS1bO4lzq7ecFKf4Mwu0xYEkaN31BZzs+LEs2cyAMh3fnusRs2ipelSZIp63Jsr
+         r6g7ZLvUm91PeTdQkcqhWDiuYiQfZrewZfN/dBlZItbf5WDnuVi1K1Rmhn1BYL2649qm
+         oMZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=VyLvmUAwER2EHlgaJJwCQjTaDhs3vwDL2SICpR1u2ig=;
+        bh=NlTOBE4Jn2fkd9net09wcfWNBe1xruDmY2EOcz8YZIc=;
         fh=vZxkDpCwvhENXlY8qSqryGKuN7qdzoFpPjxnavaSuNI=;
-        b=j5GVH0qtprRsdusZ2M0Uemm4divdjSCoxjLqoOQ5hLbxw8Cy1awoMXNcbotmgi63qh
-         s7h7M0jUaMqCvMTVU0YlFeIw66fBRxCwtWL3JigDTUejd9sLSl2moPPWxnGzqqGPXA9a
-         bL7xIE0fHSQ7A5JIF7RO1Kt7GUp+7EAfodlUJRGn34Ga6MVaQVHC7EIayDxHGRTX8jfi
-         Vh5NATC21ppj9qQ6EINpe7qJNVT8nUXtvEerX2bzgp6d+paUN0ZT/cTst9FsJ0LYHG3d
-         vY2r4UDDcwqetXHV/8/+P943iTtfjFL0+Z1tcvEDB0t4EEryAgAbZ+36yoo2abeSL9MP
-         kQ/Q==;
+        b=RNpu7fcMBfT7Jp/PfHyWczuxaM0xcc+Uh9jktwWT7WhJzo2ZKz0hcR3qvlL0AEt9PY
+         aQPEHBizIWdKHie+0OMeE+2hCdDsbxFWGzIepenS6qmjLYX32Lq4K9y1zBBZtkpDzGAN
+         wK6Sfc1SDS0PB+qm6bSvy02m6dlQfzRKWpvQg8nCeijFej9A6cJO7zpeWaSjJARRdMHL
+         zm1PlGv1SNJTOuZFteuhHuUaokX6f7tCxtFfqXym6BVHa/xKsvBLU65Tqi2ZJiyhd0rd
+         cIOpeDXGzl89UzcdG+AuubSAB+jgSBH78ChVAE18TJnii5zzc7yBE4FZITmXYmRj8s+Z
+         Ngyg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gmfp+URa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=hxI7lAi0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4f2ea73fdeasi779492137.508.2025.07.04.07.40.02
+        by mx.google.com with ESMTPS id ada2fe7eead31-4f2ea4e89a7si668706137.60.2025.07.04.07.40.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Jul 2025 07:40:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 04 Jul 2025 07:40:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gmfp+URa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=hxI7lAi0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1uXhQQ-0004LJ-Ci; Fri, 04 Jul 2025 10:30:05 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1uXhOA-0000Up-99; Fri, 04 Jul 2025 10:27:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uXhLx-0004A3-0E
- for qemu-devel@nongnu.org; Fri, 04 Jul 2025 10:25:28 -0400
-Received: from mail-oo1-xc2f.google.com ([2607:f8b0:4864:20::c2f])
+ id 1uXhLs-00042Y-2Z
+ for qemu-arm@nongnu.org; Fri, 04 Jul 2025 10:25:22 -0400
+Received: from mail-oo1-xc2c.google.com ([2607:f8b0:4864:20::c2c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uXhLq-000807-Hs
- for qemu-devel@nongnu.org; Fri, 04 Jul 2025 10:25:23 -0400
-Received: by mail-oo1-xc2f.google.com with SMTP id
- 006d021491bc7-61208b86da2so283808eaf.2
- for <qemu-devel@nongnu.org>; Fri, 04 Jul 2025 07:25:17 -0700 (PDT)
+ id 1uXhLn-0007wZ-W4
+ for qemu-arm@nongnu.org; Fri, 04 Jul 2025 10:25:18 -0400
+Received: by mail-oo1-xc2c.google.com with SMTP id
+ 006d021491bc7-611998766c0so545272eaf.1
+ for <qemu-arm@nongnu.org>; Fri, 04 Jul 2025 07:25:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751639117; x=1752243917; darn=nongnu.org;
+ d=linaro.org; s=google; t=1751639112; x=1752243912; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=VyLvmUAwER2EHlgaJJwCQjTaDhs3vwDL2SICpR1u2ig=;
- b=gmfp+URaKFgg0mtnp5ugCZWnPjYM1uAXwSQVNkjiRx1s+j67VNR0klurm7OvSzRy7u
- j/dPj0UAhfgYrBpxQiZFWnXpMrDCLKv9uiAGRDoeJTgybDtDLRJ66Visdr/ZmJeD7ajY
- DmFK8Mq0DE+QWS/P4CwruwqYIHfVwtz6lCVHPOTyjhaHO1riy1suirTA9ToLPTzXAjAB
- AERgluNp48Cu/N+A/nh30gTz6xpSBq6YMR61+NIo6fKMEZ72RWfp15OqzTwHoeVTKDyP
- vBQO10WC++eHNnyyRxvDKLfkBIYZ19d7KKu2q93Px0FEF2uZ7ALfB6IKRoPMSzLzwxob
- EnQw==
+ bh=NlTOBE4Jn2fkd9net09wcfWNBe1xruDmY2EOcz8YZIc=;
+ b=hxI7lAi0QAJRML5nQfJ21KiHb54pbfqkxdPFyhc/P/8K8cbuwqmP1gpdPAFch7E6Tb
+ ftYwLBxQnwN0nWlfKieq06qRHkC463dJzb2twig6b4d9vO4D5eC8w+O6wy7P5tyLSf3f
+ YpZvphJuOs/N6ZC1NyRfpj4AeOb3W6/HhLdEt3SRXR/MFIRIFjk4djM4FOgP5rmeuyuS
+ jMmYsn0b3erSH+I3/ao+4j92nta/KHm1HfzvpAFYR4qqAismAO4yrDauJ6bKZg2aRSrF
+ RUZj/0L14aHF40RiOzdWTWJo82w3tjDJvZLE7Q911eSTmCk+eeDNcRHLlrwSHGxfPMRT
+ T5Pg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751639117; x=1752243917;
+ d=1e100.net; s=20230601; t=1751639112; x=1752243912;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=VyLvmUAwER2EHlgaJJwCQjTaDhs3vwDL2SICpR1u2ig=;
- b=n0mTggr5O60GpaoSA30cCVfSU1T2sOil8cXZYkWmJbRkGIThp0nZdtMhn5i9YkicgZ
- /gtBIbyaRqMCStdNjkHKuhGmD7UFygL3XgU6BidxBgv7lZFtGb6KyPfgYEI8XOIbluaY
- lXv+/hyCnPOw9hRJzU7Gyr54xfp9von7kD0F2SsJXJDUuQ8mO/O96DgtfApejdy8zmN0
- AoppA2+ngYtT97VuvRXpLF3bUc35Kixnk92MciA4dZ7c+YmXdbYijkWW5hJJ4mbXsvAb
- 31r92iVRSZbQJ+b9k8ojSqrIxsDbw2sxCLZ4r7G63zbiF2Qc8lmYSu3nyMYWAfpqicl8
- 47yw==
-X-Gm-Message-State: AOJu0YzfsMCR/+2MIMHzziLt+XgAvrn3IBHc6dOw8PpMNi5Tj5n4q4T8
- 49V2HjI7RHRod0kPoejKoF7omB6SN+g0d1+Y76uxCmELK/zh5YaX64cEsnT4/xdrCgKe8fBJsNQ
- rVRjnC7Q=
-X-Gm-Gg: ASbGncsa+l8YkxwJ7ruG0v/isgUTNuK8oze0vPYoJbISpdmRuKvFwQ7YQCq/1HQZWx0
- pwd805HIsLWYrOkY/cqcSyX2FMlgNEBgHH1d2GX1QBHol1uZDk9zzFj8B/jDa6z54v5ceh1wpwO
- 8D0S+M7AcrBqqY3OmxMu5pUIi8Kfg2jzhjRbCYOcOWI7+3J/wcusSMAVMQbgoGFkzLeFfS3Bdjy
- Ueau1V+jlkdoh4sfseMK/BFmJg3G+kzAV8D0ECHLRuwi+2/2Lw8oR/UEFK5rNl/tPmEapx3dPeM
- x1WtiznD4bHOiIxm8j5+4ZWec3P2ePTFbuguHBvZgD6fH1IuadGPs+Wf5Jd421i/20YvPfaEv5o
- w9mlOxsKkUgcXLz/57DfyMvgFMFby+UQLumSF5Jp4wW6izQCu
-X-Received: by 2002:a05:6820:2901:b0:610:fc12:cbb4 with SMTP id
- 006d021491bc7-6138ffbca71mr1811340eaf.1.1751639116858; 
- Fri, 04 Jul 2025 07:25:16 -0700 (PDT)
+ bh=NlTOBE4Jn2fkd9net09wcfWNBe1xruDmY2EOcz8YZIc=;
+ b=XvEYfnUWq2JE2ryJgwCvl9bvVeKXbwjv1qj9BeMFefKDSKO0Z6YADsRnWNIXzM+wKY
+ eeIu6slHpV+1WdzDpNe/YO3ESEvgpNUPLmjOit8PrnunXcTcCdkcWBjEhzRN/T6o4w7m
+ FPVfruiSQFPtlQwkm+SrOxvK92+iaTCpAd3SGn7leAUJML73uxUxmbgudo0LW8BZb4yg
+ ZJ++D/EwEdrkfK1ax4e+WghSCCFnvs5s7V2wN1SCH/zMcZNvcZwhO57BomH89UGC9tfp
+ tpMMkNGZRfQDYK075wzLGBaJUKIH56yDZTxirGTDyXVJjAR18xNUc2YWjqorBKX++h48
+ QANw==
+X-Gm-Message-State: AOJu0Ywu6zbSDk1N18kNGAIjALXNnTeX5HO8EXriBfJojQTOb6sIqcCl
+ mhBIcxC/EdOAUIUY/gFtq/5er19fnW2csEUKVr1mYIjF8NPfyqKQ3vcVUzPRUtjXzZI=
+X-Gm-Gg: ASbGncvmVdvM8bF6uBK9gG8Bw4g/vMRLSE6VaI68f+/RPSfbqpvcOYtXUQejZ3Xtkag
+ HeddutIK1y8elZuHWSyruWE+bPOaH0BJTwogaJyAfocyxQ2BJzD5pQ1YeG6bm1J6PxMZLyVDNmo
+ IQfQubgrFqHqZlpyflfDaXXLvylY1t7yVqiJuKYXBsEYyaCaqvs1S0AeCQ6GOTlE4orD/xk25JJ
+ E9g6FYUncZauKCWBg60VTVN/dxJgN/Rrm22WvSp3UFGHYGCli9kPTTMBc0eTGTPBHy19NjK2CMS
+ osehx/zXhBnfLh2vI9EKL7BDOsSOTKXvICFcl2HyRLsk+rpWRyZCynG54JnpYNkJ8LSB6TF/ycg
+ ooTWZ/yeT4tr9dqG3APKs5NlP4Wa1zxCsgs0ZTunGSp+2yL5l
+X-Received: by 2002:a05:6820:818f:b0:611:bdaa:5b01 with SMTP id
+ 006d021491bc7-6138fdb94c0mr2128064eaf.6.1751639112542; 
+ Fri, 04 Jul 2025 07:25:12 -0700 (PDT)
 Received: from localhost.localdomain (fixed-187-189-51-143.totalplay.net.
  [187.189.51.143]) by smtp.gmail.com with ESMTPSA id
- 006d021491bc7-6138e5ac5eesm310233eaf.29.2025.07.04.07.25.16
+ 006d021491bc7-6138e5ac5eesm310233eaf.29.2025.07.04.07.25.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Jul 2025 07:25:16 -0700 (PDT)
+ Fri, 04 Jul 2025 07:25:12 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v4 058/108] target/arm: Use do_[us]sat_[bhs] in sve_helper.c
-Date: Fri,  4 Jul 2025 08:20:21 -0600
-Message-ID: <20250704142112.1018902-59-richard.henderson@linaro.org>
+Subject: [PATCH v4 054/108] target/arm: Implement SME2 FCVTZS, FCVTZU
+Date: Fri,  4 Jul 2025 08:20:17 -0600
+Message-ID: <20250704142112.1018902-55-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250704142112.1018902-1-richard.henderson@linaro.org>
 References: <20250704142112.1018902-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c2f;
- envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc2f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c2c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc2c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,232 +122,65 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HeT4Xcyblw6K
-
-Replace and remove do_sat_bhs.
-This avoids multiple repetitions of INT*_MIN/MAX.
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yn8NxbPj/9f5
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/sve_helper.c | 116 +++++++++++++++---------------------
- 1 file changed, 48 insertions(+), 68 deletions(-)
+ target/arm/tcg/translate-sme.c | 5 +++++
+ target/arm/tcg/sme.decode      | 9 +++++++++
+ 2 files changed, 14 insertions(+)
 
-diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
-index 4f12723afe..f9052f2164 100644
---- a/target/arm/tcg/sve_helper.c
-+++ b/target/arm/tcg/sve_helper.c
-@@ -527,14 +527,9 @@ DO_ZPZZ(sve2_uhsub_zpzz_h, uint16_t, H1_2, DO_HSUB_BHS)
- DO_ZPZZ(sve2_uhsub_zpzz_s, uint32_t, H1_4, DO_HSUB_BHS)
- DO_ZPZZ_D(sve2_uhsub_zpzz_d, uint64_t, DO_HSUB_D)
+diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
+index d6167eafe1..3bf2b6935f 100644
+--- a/target/arm/tcg/translate-sme.c
++++ b/target/arm/tcg/translate-sme.c
+@@ -1365,3 +1365,8 @@ TRANS_FEAT(FCVT_w, aa64_sme_f16f16, do_zz_fpst, a, 0,
+            FPST_A64_F16, gen_helper_sme2_fcvt_w)
+ TRANS_FEAT(FCVTL, aa64_sme_f16f16, do_zz_fpst, a, 0,
+            FPST_A64_F16, gen_helper_sme2_fcvtl)
++
++TRANS_FEAT(FCVTZS, aa64_sme2, do_zz_fpst, a, 0,
++           FPST_A64, gen_helper_gvec_vcvt_rz_fs)
++TRANS_FEAT(FCVTZU, aa64_sme2, do_zz_fpst, a, 0,
++           FPST_A64, gen_helper_gvec_vcvt_rz_fu)
+diff --git a/target/arm/tcg/sme.decode b/target/arm/tcg/sme.decode
+index 5100ebaeba..79df2dcd2b 100644
+--- a/target/arm/tcg/sme.decode
++++ b/target/arm/tcg/sme.decode
+@@ -728,6 +728,10 @@ SUB_aaz_d       11000001 111 000010 .. 111 ...00 11 ...     @az_4x4_o3
+                 &zz_n n=1 zn=%zn_ax2
+ @zz_2x1         ........ ... ..... ...... zn:5  .....       \
+                 &zz_n n=1 zd=%zd_ax2
++@zz_2x2         ........ ... ..... ...... .... . .....      \
++                &zz_n n=2 zd=%zd_ax2 zn=%zn_ax2
++@zz_4x4         ........ ... ..... ...... .... . .....      \
++                &zz_n n=4 zd=%zd_ax4 zn=%zn_ax4
  
--static inline int32_t do_sat_bhs(int64_t val, int64_t min, int64_t max)
--{
--    return val >= max ? max : val <= min ? min : val;
--}
--
--#define DO_SQADD_B(n, m) do_sat_bhs((int64_t)n + m, INT8_MIN, INT8_MAX)
--#define DO_SQADD_H(n, m) do_sat_bhs((int64_t)n + m, INT16_MIN, INT16_MAX)
--#define DO_SQADD_S(n, m) do_sat_bhs((int64_t)n + m, INT32_MIN, INT32_MAX)
-+#define DO_SQADD_B(n, m) do_ssat_b((int64_t)n + m)
-+#define DO_SQADD_H(n, m) do_ssat_h((int64_t)n + m)
-+#define DO_SQADD_S(n, m) do_ssat_s((int64_t)n + m)
+ BFCVT           11000001 011 00000 111000 ....0 .....       @zz_1x2
+ BFCVTN          11000001 011 00000 111000 ....1 .....       @zz_1x2
+@@ -737,3 +741,8 @@ FCVTN           11000001 001 00000 111000 ....1 .....       @zz_1x2
  
- static inline int64_t do_sqadd_d(int64_t n, int64_t m)
- {
-@@ -551,9 +546,9 @@ DO_ZPZZ(sve2_sqadd_zpzz_h, int16_t, H1_2, DO_SQADD_H)
- DO_ZPZZ(sve2_sqadd_zpzz_s, int32_t, H1_4, DO_SQADD_S)
- DO_ZPZZ_D(sve2_sqadd_zpzz_d, int64_t, do_sqadd_d)
- 
--#define DO_UQADD_B(n, m) do_sat_bhs((int64_t)n + m, 0, UINT8_MAX)
--#define DO_UQADD_H(n, m) do_sat_bhs((int64_t)n + m, 0, UINT16_MAX)
--#define DO_UQADD_S(n, m) do_sat_bhs((int64_t)n + m, 0, UINT32_MAX)
-+#define DO_UQADD_B(n, m) do_usat_b((int64_t)n + m)
-+#define DO_UQADD_H(n, m) do_usat_h((int64_t)n + m)
-+#define DO_UQADD_S(n, m) do_usat_s((int64_t)n + m)
- 
- static inline uint64_t do_uqadd_d(uint64_t n, uint64_t m)
- {
-@@ -566,9 +561,9 @@ DO_ZPZZ(sve2_uqadd_zpzz_h, uint16_t, H1_2, DO_UQADD_H)
- DO_ZPZZ(sve2_uqadd_zpzz_s, uint32_t, H1_4, DO_UQADD_S)
- DO_ZPZZ_D(sve2_uqadd_zpzz_d, uint64_t, do_uqadd_d)
- 
--#define DO_SQSUB_B(n, m) do_sat_bhs((int64_t)n - m, INT8_MIN, INT8_MAX)
--#define DO_SQSUB_H(n, m) do_sat_bhs((int64_t)n - m, INT16_MIN, INT16_MAX)
--#define DO_SQSUB_S(n, m) do_sat_bhs((int64_t)n - m, INT32_MIN, INT32_MAX)
-+#define DO_SQSUB_B(n, m) do_ssat_b((int64_t)n - m)
-+#define DO_SQSUB_H(n, m) do_ssat_h((int64_t)n - m)
-+#define DO_SQSUB_S(n, m) do_ssat_s((int64_t)n - m)
- 
- static inline int64_t do_sqsub_d(int64_t n, int64_t m)
- {
-@@ -585,9 +580,9 @@ DO_ZPZZ(sve2_sqsub_zpzz_h, int16_t, H1_2, DO_SQSUB_H)
- DO_ZPZZ(sve2_sqsub_zpzz_s, int32_t, H1_4, DO_SQSUB_S)
- DO_ZPZZ_D(sve2_sqsub_zpzz_d, int64_t, do_sqsub_d)
- 
--#define DO_UQSUB_B(n, m) do_sat_bhs((int64_t)n - m, 0, UINT8_MAX)
--#define DO_UQSUB_H(n, m) do_sat_bhs((int64_t)n - m, 0, UINT16_MAX)
--#define DO_UQSUB_S(n, m) do_sat_bhs((int64_t)n - m, 0, UINT32_MAX)
-+#define DO_UQSUB_B(n, m) do_usat_b((int64_t)n - m)
-+#define DO_UQSUB_H(n, m) do_usat_h((int64_t)n - m)
-+#define DO_UQSUB_S(n, m) do_usat_s((int64_t)n - m)
- 
- static inline uint64_t do_uqsub_d(uint64_t n, uint64_t m)
- {
-@@ -599,12 +594,9 @@ DO_ZPZZ(sve2_uqsub_zpzz_h, uint16_t, H1_2, DO_UQSUB_H)
- DO_ZPZZ(sve2_uqsub_zpzz_s, uint32_t, H1_4, DO_UQSUB_S)
- DO_ZPZZ_D(sve2_uqsub_zpzz_d, uint64_t, do_uqsub_d)
- 
--#define DO_SUQADD_B(n, m) \
--    do_sat_bhs((int64_t)(int8_t)n + m, INT8_MIN, INT8_MAX)
--#define DO_SUQADD_H(n, m) \
--    do_sat_bhs((int64_t)(int16_t)n + m, INT16_MIN, INT16_MAX)
--#define DO_SUQADD_S(n, m) \
--    do_sat_bhs((int64_t)(int32_t)n + m, INT32_MIN, INT32_MAX)
-+#define DO_SUQADD_B(n, m) do_ssat_b((int64_t)(int8_t)n + m)
-+#define DO_SUQADD_H(n, m) do_ssat_h((int64_t)(int16_t)n + m)
-+#define DO_SUQADD_S(n, m) do_ssat_s((int64_t)(int32_t)n + m)
- 
- static inline int64_t do_suqadd_d(int64_t n, uint64_t m)
- {
-@@ -634,12 +626,9 @@ DO_ZPZZ(sve2_suqadd_zpzz_h, uint16_t, H1_2, DO_SUQADD_H)
- DO_ZPZZ(sve2_suqadd_zpzz_s, uint32_t, H1_4, DO_SUQADD_S)
- DO_ZPZZ_D(sve2_suqadd_zpzz_d, uint64_t, do_suqadd_d)
- 
--#define DO_USQADD_B(n, m) \
--    do_sat_bhs((int64_t)n + (int8_t)m, 0, UINT8_MAX)
--#define DO_USQADD_H(n, m) \
--    do_sat_bhs((int64_t)n + (int16_t)m, 0, UINT16_MAX)
--#define DO_USQADD_S(n, m) \
--    do_sat_bhs((int64_t)n + (int32_t)m, 0, UINT32_MAX)
-+#define DO_USQADD_B(n, m) do_usat_b((int64_t)n + (int8_t)m)
-+#define DO_USQADD_H(n, m) do_usat_h((int64_t)n + (int16_t)m)
-+#define DO_USQADD_S(n, m) do_usat_s((int64_t)n + (int32_t)m)
- 
- static inline uint64_t do_usqadd_d(uint64_t n, int64_t m)
- {
-@@ -1226,37 +1215,29 @@ void HELPER(NAME)(void *vd, void *vn, uint32_t desc)                    \
-     }                                                                   \
- }
- 
--#define DO_SQXTN_H(n)  do_sat_bhs(n, INT8_MIN, INT8_MAX)
--#define DO_SQXTN_S(n)  do_sat_bhs(n, INT16_MIN, INT16_MAX)
--#define DO_SQXTN_D(n)  do_sat_bhs(n, INT32_MIN, INT32_MAX)
-+DO_XTNB(sve2_sqxtnb_h, int16_t, do_ssat_b)
-+DO_XTNB(sve2_sqxtnb_s, int32_t, do_ssat_h)
-+DO_XTNB(sve2_sqxtnb_d, int64_t, do_ssat_s)
- 
--DO_XTNB(sve2_sqxtnb_h, int16_t, DO_SQXTN_H)
--DO_XTNB(sve2_sqxtnb_s, int32_t, DO_SQXTN_S)
--DO_XTNB(sve2_sqxtnb_d, int64_t, DO_SQXTN_D)
-+DO_XTNT(sve2_sqxtnt_h, int16_t, int8_t, H1, do_ssat_b)
-+DO_XTNT(sve2_sqxtnt_s, int32_t, int16_t, H1_2, do_ssat_h)
-+DO_XTNT(sve2_sqxtnt_d, int64_t, int32_t, H1_4, do_ssat_s)
- 
--DO_XTNT(sve2_sqxtnt_h, int16_t, int8_t, H1, DO_SQXTN_H)
--DO_XTNT(sve2_sqxtnt_s, int32_t, int16_t, H1_2, DO_SQXTN_S)
--DO_XTNT(sve2_sqxtnt_d, int64_t, int32_t, H1_4, DO_SQXTN_D)
-+DO_XTNB(sve2_uqxtnb_h, uint16_t, do_usat_b)
-+DO_XTNB(sve2_uqxtnb_s, uint32_t, do_usat_h)
-+DO_XTNB(sve2_uqxtnb_d, uint64_t, do_usat_s)
- 
--#define DO_UQXTN_H(n)  do_sat_bhs(n, 0, UINT8_MAX)
--#define DO_UQXTN_S(n)  do_sat_bhs(n, 0, UINT16_MAX)
--#define DO_UQXTN_D(n)  do_sat_bhs(n, 0, UINT32_MAX)
-+DO_XTNT(sve2_uqxtnt_h, uint16_t, uint8_t, H1, do_usat_b)
-+DO_XTNT(sve2_uqxtnt_s, uint32_t, uint16_t, H1_2, do_usat_h)
-+DO_XTNT(sve2_uqxtnt_d, uint64_t, uint32_t, H1_4, do_usat_s)
- 
--DO_XTNB(sve2_uqxtnb_h, uint16_t, DO_UQXTN_H)
--DO_XTNB(sve2_uqxtnb_s, uint32_t, DO_UQXTN_S)
--DO_XTNB(sve2_uqxtnb_d, uint64_t, DO_UQXTN_D)
-+DO_XTNB(sve2_sqxtunb_h, int16_t, do_usat_b)
-+DO_XTNB(sve2_sqxtunb_s, int32_t, do_usat_h)
-+DO_XTNB(sve2_sqxtunb_d, int64_t, do_usat_s)
- 
--DO_XTNT(sve2_uqxtnt_h, uint16_t, uint8_t, H1, DO_UQXTN_H)
--DO_XTNT(sve2_uqxtnt_s, uint32_t, uint16_t, H1_2, DO_UQXTN_S)
--DO_XTNT(sve2_uqxtnt_d, uint64_t, uint32_t, H1_4, DO_UQXTN_D)
--
--DO_XTNB(sve2_sqxtunb_h, int16_t, DO_UQXTN_H)
--DO_XTNB(sve2_sqxtunb_s, int32_t, DO_UQXTN_S)
--DO_XTNB(sve2_sqxtunb_d, int64_t, DO_UQXTN_D)
--
--DO_XTNT(sve2_sqxtunt_h, int16_t, int8_t, H1, DO_UQXTN_H)
--DO_XTNT(sve2_sqxtunt_s, int32_t, int16_t, H1_2, DO_UQXTN_S)
--DO_XTNT(sve2_sqxtunt_d, int64_t, int32_t, H1_4, DO_UQXTN_D)
-+DO_XTNT(sve2_sqxtunt_h, int16_t, int8_t, H1, do_usat_b)
-+DO_XTNT(sve2_sqxtunt_s, int32_t, int16_t, H1_2, do_usat_h)
-+DO_XTNT(sve2_sqxtunt_d, int64_t, int32_t, H1_4, do_usat_s)
- 
- #undef DO_XTNB
- #undef DO_XTNT
-@@ -2187,10 +2168,9 @@ DO_SHRNT(sve2_rshrnt_h, uint16_t, uint8_t, H1_2, H1, do_urshr)
- DO_SHRNT(sve2_rshrnt_s, uint32_t, uint16_t, H1_4, H1_2, do_urshr)
- DO_SHRNT(sve2_rshrnt_d, uint64_t, uint32_t, H1_8, H1_4, do_urshr)
- 
--#define DO_SQSHRUN_H(x, sh) do_sat_bhs((int64_t)(x) >> sh, 0, UINT8_MAX)
--#define DO_SQSHRUN_S(x, sh) do_sat_bhs((int64_t)(x) >> sh, 0, UINT16_MAX)
--#define DO_SQSHRUN_D(x, sh) \
--    do_sat_bhs((int64_t)(x) >> (sh < 64 ? sh : 63), 0, UINT32_MAX)
-+#define DO_SQSHRUN_H(x, sh) do_usat_b((int64_t)(x) >> sh)
-+#define DO_SQSHRUN_S(x, sh) do_usat_h((int64_t)(x) >> sh)
-+#define DO_SQSHRUN_D(x, sh) do_usat_s((int64_t)(x) >> (sh < 64 ? sh : 63))
- 
- DO_SHRNB(sve2_sqshrunb_h, int16_t, uint8_t, DO_SQSHRUN_H)
- DO_SHRNB(sve2_sqshrunb_s, int32_t, uint16_t, DO_SQSHRUN_S)
-@@ -2200,9 +2180,9 @@ DO_SHRNT(sve2_sqshrunt_h, int16_t, uint8_t, H1_2, H1, DO_SQSHRUN_H)
- DO_SHRNT(sve2_sqshrunt_s, int32_t, uint16_t, H1_4, H1_2, DO_SQSHRUN_S)
- DO_SHRNT(sve2_sqshrunt_d, int64_t, uint32_t, H1_8, H1_4, DO_SQSHRUN_D)
- 
--#define DO_SQRSHRUN_H(x, sh) do_sat_bhs(do_srshr(x, sh), 0, UINT8_MAX)
--#define DO_SQRSHRUN_S(x, sh) do_sat_bhs(do_srshr(x, sh), 0, UINT16_MAX)
--#define DO_SQRSHRUN_D(x, sh) do_sat_bhs(do_srshr(x, sh), 0, UINT32_MAX)
-+#define DO_SQRSHRUN_H(x, sh) do_usat_b(do_srshr(x, sh))
-+#define DO_SQRSHRUN_S(x, sh) do_usat_h(do_srshr(x, sh))
-+#define DO_SQRSHRUN_D(x, sh) do_usat_s(do_srshr(x, sh))
- 
- DO_SHRNB(sve2_sqrshrunb_h, int16_t, uint8_t, DO_SQRSHRUN_H)
- DO_SHRNB(sve2_sqrshrunb_s, int32_t, uint16_t, DO_SQRSHRUN_S)
-@@ -2212,9 +2192,9 @@ DO_SHRNT(sve2_sqrshrunt_h, int16_t, uint8_t, H1_2, H1, DO_SQRSHRUN_H)
- DO_SHRNT(sve2_sqrshrunt_s, int32_t, uint16_t, H1_4, H1_2, DO_SQRSHRUN_S)
- DO_SHRNT(sve2_sqrshrunt_d, int64_t, uint32_t, H1_8, H1_4, DO_SQRSHRUN_D)
- 
--#define DO_SQSHRN_H(x, sh) do_sat_bhs(x >> sh, INT8_MIN, INT8_MAX)
--#define DO_SQSHRN_S(x, sh) do_sat_bhs(x >> sh, INT16_MIN, INT16_MAX)
--#define DO_SQSHRN_D(x, sh) do_sat_bhs(x >> sh, INT32_MIN, INT32_MAX)
-+#define DO_SQSHRN_H(x, sh) do_ssat_b(x >> sh)
-+#define DO_SQSHRN_S(x, sh) do_ssat_h(x >> sh)
-+#define DO_SQSHRN_D(x, sh) do_ssat_s(x >> sh)
- 
- DO_SHRNB(sve2_sqshrnb_h, int16_t, uint8_t, DO_SQSHRN_H)
- DO_SHRNB(sve2_sqshrnb_s, int32_t, uint16_t, DO_SQSHRN_S)
-@@ -2224,9 +2204,9 @@ DO_SHRNT(sve2_sqshrnt_h, int16_t, uint8_t, H1_2, H1, DO_SQSHRN_H)
- DO_SHRNT(sve2_sqshrnt_s, int32_t, uint16_t, H1_4, H1_2, DO_SQSHRN_S)
- DO_SHRNT(sve2_sqshrnt_d, int64_t, uint32_t, H1_8, H1_4, DO_SQSHRN_D)
- 
--#define DO_SQRSHRN_H(x, sh) do_sat_bhs(do_srshr(x, sh), INT8_MIN, INT8_MAX)
--#define DO_SQRSHRN_S(x, sh) do_sat_bhs(do_srshr(x, sh), INT16_MIN, INT16_MAX)
--#define DO_SQRSHRN_D(x, sh) do_sat_bhs(do_srshr(x, sh), INT32_MIN, INT32_MAX)
-+#define DO_SQRSHRN_H(x, sh) do_ssat_b(do_srshr(x, sh))
-+#define DO_SQRSHRN_S(x, sh) do_ssat_h(do_srshr(x, sh))
-+#define DO_SQRSHRN_D(x, sh) do_ssat_s(do_srshr(x, sh))
- 
- DO_SHRNB(sve2_sqrshrnb_h, int16_t, uint8_t, DO_SQRSHRN_H)
- DO_SHRNB(sve2_sqrshrnb_s, int32_t, uint16_t, DO_SQRSHRN_S)
+ FCVT_w          11000001 101 00000 111000 ..... ....0       @zz_2x1
+ FCVTL           11000001 101 00000 111000 ..... ....1       @zz_2x1
++
++FCVTZS          11000001 001 00001 111000 ....0 ....0       @zz_2x2
++FCVTZS          11000001 001 10001 111000 ...00 ...00       @zz_4x4
++FCVTZU          11000001 001 00001 111000 ....1 ....0       @zz_2x2
++FCVTZU          11000001 001 10001 111000 ...01 ...00       @zz_4x4
 -- 
 2.43.0
 

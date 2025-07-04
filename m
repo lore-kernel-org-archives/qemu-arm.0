@@ -1,168 +1,263 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1249820dyc;
-        Fri, 4 Jul 2025 07:22:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX2M1I4cOBb6bCPp2ejPfUEOyRnRdS0oGV61yQ9w/6oaxxlr2fzFH02qe+387znSEJvrK3pUMqmjuc6gQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHcWthZEVIJodaNFdFGJhQZ/1cfxyEzSihp6BRzhuXfMt48PPUZC4KIEPF3L4XALxAJ2mVv
-X-Received: by 2002:a05:620a:2682:b0:7d3:e88d:a1d4 with SMTP id af79cd13be357-7d5ddc485ccmr230890785a.33.1751638955503;
-        Fri, 04 Jul 2025 07:22:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751638955; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1282951dyc;
+        Fri, 4 Jul 2025 08:15:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWV9ncyt+UVpsgyCExX+bxbaXCPZYhdvzVcvecv9W7aIqJ30JcO3RqkOcVDH6pRHDpCb6mJisoYDBbwKA==@linaro.org
+X-Received: by 2002:a05:622a:27c4:b0:4a4:31e0:c834 with SMTP id d75a77b69052e-4a996843417mr32829141cf.46.1751642109275;
+        Fri, 04 Jul 2025 08:15:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751642109; cv=none;
         d=google.com; s=arc-20240605;
-        b=YdVWnLSatKml3zbk+rqdk7IszzmJkgvuFH2GjO+VC/LrAFBP+WcNNfXHBbD+VlplS5
-         DHnNOEwePDV4L2b7dtiSx7Li+aCL0Zm3g1jUUivQKdwObovkqgcBXSccnNaue9XHy56O
-         MBO5x8WUwpzi8RyWNTgrW92D8c6d6jcZa5DyT/WH/3iMQMheEcY7S7LQmGtvXKSWfNyd
-         spbGlBxd+0ZdcCDPl9Bri7qRf6wPKDczXcM+ZXWflQx8h0TOK7JPwUjKsK3hR2QTf9ht
-         qCcMIuG4y6JRRxlqvFSWHdVyC2bjH9E7I3ObUhQ0WXMZDP1yG4pGJUtQsDcvkkuDGR5A
-         z1fA==
+        b=JXnrlu/fAqmIV4Fxud+skMPosRK67fcO3KdH1EILAA4vPHTFUqGiYI84DiFhDJDw+Y
+         X51h94Nhz6nIKYLkrN9CWjLqm6bFoK7WhG/Q2qmUd8Pxh0xZiSWor9v8jZU5TTMIw11w
+         eh/QnD/PDHLTfV5A+d3z2WZ4PKI20CtovdzlbqVjCeVjQNZQQrt/jQpPeGpBn3J2oapS
+         YCBPDYaEu/oFfhASoTj52RW2Bx1MvBKDnwoOWLj/4ZMV8iizzeKyJA+fFMJwtczwx9/k
+         E7eqz/+4ChBonKmjsiCNK+zHVcOENcjTd7GVw+DJQztT+SgyFaOtilNGqIfjlEXAhu1m
+         3MVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=EJkg5Eikh8pDdMpxJ6bol3squO0VoPxIikfVrqRqSHM=;
-        fh=s400U+Tx6cQDhtn+2Oey97pyo8KpW6wmR0wxZgTa8vk=;
-        b=TbRlFJVkbQwzyX7I0mPO2INDVTXtcLsiyla/I0bKZVioglkF+6TD+7qKjTc32whNiv
-         TFn4U5n1wEMvezNXy4bgM2FhbvBgyVnUnEkCaIZa+C0IpcZPNIGwg1++vsFdVY3Xj8cG
-         OEAXV7LD0Y3Kqe4CZGL8baxwm/nViZsEUiLL4lHVFuV07m8HWgqL8l8GuGCKZd1qtmD2
-         7VjRQcUt4rU8mDPiKvKY7tCsIkovYFQCb0HBo3xiRKXzAnncixadFanXjHUlglt+V1dw
-         knyGdnJmE//76DA7X+WmIGzp8LW+/18sPJHseo+1TaFiZTmbdJWiEHHgn7KHAIOIaUwf
-         1MzQ==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=I2pA8Kdl7I3oMXH8ei53t6GkTDaEspN8YWJLUEgwyNk=;
+        fh=AI1JKx6GIjUMIeEIkA7lXKZYW/9PUKlrfX3Q1puIi08=;
+        b=QLRNOGifRCIG5cO9Poudo1XkqdB/uSBr04nckkVSEZsDLUr6xSoPqV8glP4J8TXEIW
+         YLm5PSmuMn6jiPvaHw3QVoq1u/AkI4XJboIMvnWpdzasvRv1Ekzbp1ruCwzdNF/1+YdA
+         Myn0d6ej4GzK4LWutMMJ7iMQTS8Ki8F5uc5/qLqyox5nq+ZPe2DihK3QIRwWCtQQA+g9
+         X5RQVsgt9ojayfAEBjaGTf+KjgAsjRo++JzxcbvP731HwT7Zk+QAHpmMGZQfemigpIT3
+         KK4hp04j6jvLZhSwP0I1WBZXwoumfZEVEGxmW+S+KEiLeSJiZuLn7qX7Wc/OwHzZkIOY
+         hOaA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Jq9iyNWO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dYVfIXAm;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d5dbe96b30si208763085a.265.2025.07.04.07.22.35
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id af79cd13be357-7d5dbe226a0sor149565885a.4.2025.07.04.08.15.09
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Jul 2025 07:22:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 04 Jul 2025 08:15:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Jq9iyNWO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dYVfIXAm;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uXhIW-0005Sm-Nn; Fri, 04 Jul 2025 10:21:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uXhI0-0004jo-6L
- for qemu-arm@nongnu.org; Fri, 04 Jul 2025 10:21:20 -0400
-Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uXhHx-00057T-5P
- for qemu-arm@nongnu.org; Fri, 04 Jul 2025 10:21:19 -0400
-Received: by mail-oa1-x32.google.com with SMTP id
- 586e51a60fabf-2f78ef10832so690822fac.3
- for <qemu-arm@nongnu.org>; Fri, 04 Jul 2025 07:21:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751638875; x=1752243675; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=EJkg5Eikh8pDdMpxJ6bol3squO0VoPxIikfVrqRqSHM=;
- b=Jq9iyNWOxkqTKZnnaZYl2lhQOE5VfbW61M0eKBbHJMI6CV4tFHWli4Bfk0RYPn47Dq
- RPzqkddXdBnkCw8VIbVLK1ZF7d2XjjMt9a9T9fQ/dduQgAX3hGGNb2C1wGX6PhZPYZGx
- yN7DELoruHfYwCb1qYCKUEiFck3R8GZJkQGAi6Nb+/fbkBJ0NSUIieJipybSyjNWK/xU
- ixsEckEheEDZJznxSqr1HvoZN7jeJYHCkYv7jcOpibUsDZpnx9Z76XxzovaeNHn31hQw
- Jk+gKxoIeOmgc/wbduSelQ0ISGkCx2+nwDFqsr90k5sI33uhW3Hb3BW6hNMaMInipH7k
- ZB7Q==
+        d=linaro.org; s=google; t=1751642109; x=1752246909; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=I2pA8Kdl7I3oMXH8ei53t6GkTDaEspN8YWJLUEgwyNk=;
+        b=dYVfIXAmwozrFQ6EirDUg1f2XUkkeW9WXY8HWpaEXAg3SceBe7uPPIRZ8SBsdjtKhm
+         6g+xRajvmC24+QDCjrZxHkxNcv7i9oJN0zVI/q8PmyC14v1h1im2eWxCwn7nNhUOE/c1
+         6AEMyjmyYMAWrd9ZuIctlikJmOOfxZ9e4OUdFr7uoovEA4LeYAJqr+nko7kG6bZ9i1M5
+         U9KmcEHyw/0EASU4V5Iiv7P0uRws2CWT4coiIrekgxhlT/S/i5KNiLAnKpRNGnFunsKQ
+         km27mRQygbDkanuRsuMMP5vCFvnuDjDqYlT2wNtmezB2ebt5MMNy03AqS/qREhS53dDZ
+         BvfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751638875; x=1752243675;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=EJkg5Eikh8pDdMpxJ6bol3squO0VoPxIikfVrqRqSHM=;
- b=ghAZbN60fSfS8KlyRu5j87MGe95G+EXvvjuy9MbJLgVg3xF2LID68XJSlucYnXUKGf
- /41L8Y3aHv4LUXHvo/M8DibHPCao3QEUTGis7e7VPVQrobUqsAmgegC13Bl7jevnXKW0
- qKRk95C9tTYPEnaOAYTRrquIkdIH11zySMEQivbNTW7WWvh7eGjrAQNXahbTqPVnwgt0
- 8siLjIJOcZ9MaAFXG/6yr+XuHXgAokNbthVV02yYy0GP8QAQPrvc/94Nch0ZP/OfOLPT
- LdD2dujo101Q4JmCZtiBNHnvcq3lCntZ6feoAPwdBJ4XOPkeyQe2wYVxIksfMkKOwjMG
- F+ug==
-X-Gm-Message-State: AOJu0YxBEXm8oN+/cBE9GAGcml7AhdD5LWByr9MfS9ygL5o6922rsycJ
- /HBSSxNLZfX/qdjn4LtH4QAvE61ENRJXhmCLSYXqOsoR6IslOKP/GRn4jiDXAylm1cU=
-X-Gm-Gg: ASbGncuc8wr/yIPmtbZNu7DkZ1pMeGm5hIuOnKrHgqFDo975OBSNIBJYsF2VOcduiq0
- J0pJbClfIrpP4I5AKX0vL5gY0i75hkAwA125qiqw0giJmRR737dphdZ4pZ/0XifAFSpAv5qxSuR
- D5GiHSfjxpvEnBTsdTiM+8hwqRg6eq3Nf0JRZUVtCFBXYmSRFdcaRzNA/V/4rVJjKIlZRuoZ38p
- HrichLhVZxOSsRc8CwCOHnMmawPvpXqeTT26syIk3aFfPZrV5Fez7xtjerJxBIkT9IKTISqruGO
- 7BQbSixGewtDHyzxgZsksSLqBQ4tOCJAKS7SdvyUbfssclqKNWpMdHVutyckjgtf+SP7+SjapY9
- eXirhD6c2vGk+usfu9MSNAHQEyyQ7BbS6M5T4n0jN2EfJ+NSM
-X-Received: by 2002:a05:6870:3c07:b0:2c8:5831:8d4 with SMTP id
- 586e51a60fabf-2f796e1b536mr1609909fac.39.1751638875231; 
- Fri, 04 Jul 2025 07:21:15 -0700 (PDT)
-Received: from localhost.localdomain (fixed-187-189-51-143.totalplay.net.
- [187.189.51.143]) by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-2f78ff0471esm528016fac.3.2025.07.04.07.21.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Jul 2025 07:21:14 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	peter.maydell@linaro.org,
-	qemu-stable@nongnu.org
-Subject: [PATCH v4 001/108] target/arm: Fix SME vs AdvSIMD exception priority
-Date: Fri,  4 Jul 2025 08:19:24 -0600
-Message-ID: <20250704142112.1018902-2-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250704142112.1018902-1-richard.henderson@linaro.org>
-References: <20250704142112.1018902-1-richard.henderson@linaro.org>
+        d=1e100.net; s=20230601; t=1751642109; x=1752246909;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=I2pA8Kdl7I3oMXH8ei53t6GkTDaEspN8YWJLUEgwyNk=;
+        b=j+0BeRskqiM5fBBzrEuZapwUwid6iILvls/HdGgb9vWCAs+O51jhRCPp+LLzaw4FJg
+         wBRy32IthGnXCIsAGCAcP8B/BTa+gICimsKbZXg+kKADl0jPXjI2AwA2+6+FBJQPP3W2
+         4YubHN3K1h5vTByfaA6aLml/bIKctF+bH70eBXe7+ULqipkWREdgfu/IGoGLWLKYidlv
+         b7KugPe/wazmOLQJFhUOmeVYCUkYRvkMIj/J1bxyWP8IzphkTdtb2v0CSXcaXn/tfCGE
+         /Wcy0y/zliVzxczw5nn7rMDwS5oVQby2wdlNuYBqzspkChre8pijw3xFal4ECNvYlziC
+         C/vA==
+X-Forwarded-Encrypted: i=1; AJvYcCWTTfIHWcB2VV5Xn4EmPWJNrRB6iT4ZJyRMz4DkXs7mmuWaUgvO0Ye5cnkRLgaISpJ8rrb1PE7hMOlbdQ==@linaro.org
+X-Gm-Message-State: AOJu0Yz9mDwnDSNorp9snF0KaHC+/0IgJY4fxL8HBa+B01L9MNSvitcH
+	PpovRXwPlxS6YWJYC3wH+JakLo4Ww2ep0KARCM1RxRFZ+6q3AbNeE6kg9c0K4sn5fHVbAw==
+X-Gm-Gg: ASbGncuP9vO361SrkMEI8xeg82HCZsKxHAJr0NX2hvBkLGXuU/TKDu9TD935pKPutHO
+	dsaXjwU0kVhPkyFdGfjW+WqKnMzSZNo7LNEoARzkm1BCZuGLXYLXYaDrjfvXgZrlc8yO5s2Q/86
+	80nA/peoDpPXtLFXv6lZAN4NUrhv7Mc5CY0ZHe9twk5pdWZPZJyAkjiWAs7kqsWXtdgjPzQA5TR
+	tB5vDwNs38+za9JUfUiQR8pdnESoj3IpO6F5W0Yhkukow/g6t3xBlOK+DNeigiLtZoo+0/YwqlZ
+	SQ88i6AzWmGqhP2krcUAWAM31m+fIEdGZovFsBlVbg0mzKjFu1j+kdJcAHZ7JNAeW2Q=
+X-Google-Smtp-Source: AGHT+IHj77mXCr/eo8Y9pVElKQB6QlMeINThWHuNNEHwQi2m0hzBWii/jY6k/xnVh3sxR5m+fSPUHA==
+X-Received: by 2002:a05:6214:301a:b0:702:c150:46c2 with SMTP id 6a1803df08f44-702c6d33a2dmr42807526d6.10.1751642108469;
+        Fri, 04 Jul 2025 08:15:08 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from gromero0.. ([189.110.24.38])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-702c4d6039fsm13658666d6.111.2025.07.04.08.15.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 04 Jul 2025 08:15:07 -0700 (PDT)
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: qemu-arm@nongnu.org,
+	alex.bennee@linaro.org
+Cc: qemu-devel@nongnu.org,
+	gustavo.romero@linaro.org
+Subject: [WIP-for-10.1 v2 2/5] target/arm: Add FEAT_MEC registers
+Date: Fri,  4 Jul 2025 15:14:28 +0000
+Message-Id: <20250704151431.1033520-3-gustavo.romero@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250704151431.1033520-1-gustavo.romero@linaro.org>
+References: <20250704151431.1033520-1-gustavo.romero@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::32;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x32.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Xov+3ph0NbV8
+X-TUID: FCW/aGe7bs/f
 
-We failed to raise an exception when
-sme_excp_el == 0 and fp_excp_el == 1.
+Add all FEAT_MEC registers.
 
-Cc: qemu-stable@nongnu.org
-Fixes: 3d74825f4d6 ("target/arm: Add SME enablement checks")
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+To work properly, FEAT_MEC also depends on FEAT_SCTLR2 and FEAT_TCR2,
+which are not implemented in this commit. The bits in SCTLR2 and TCR2
+control which translation regimes use MECIDs, and determine which MECID
+is selected.
+
+FEAT_MEC also requires two new cache management instructions, not
+included in this commit, that will be implemented in subsequent commits.
+
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 ---
- target/arm/tcg/translate-a64.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ target/arm/cpu.h    | 14 +++++++
+ target/arm/helper.c | 98 +++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 112 insertions(+)
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 815225b130..5c44a5dece 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -1488,7 +1488,8 @@ bool sme_enabled_check(DisasContext *s)
-      * to be zero when fp_excp_el has priority.  This is because we need
-      * sme_excp_el by itself for cpregs access checks.
-      */
--    if (!s->fp_excp_el || s->sme_excp_el < s->fp_excp_el) {
-+    if (s->sme_excp_el
-+        && (!s->fp_excp_el || s->sme_excp_el <= s->fp_excp_el)) {
-         bool ret = sme_access_check(s);
-         s->fp_access_checked = (ret ? 1 : -1);
-         return ret;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 8ce30ca857..9509217486 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -565,6 +565,16 @@ typedef struct CPUArchState {
+ 
+         /* NV2 register */
+         uint64_t vncr_el2;
++
++        /* MEC registers */
++        uint64_t mecidr_el2;
++        uint64_t mecid_p0_el2;
++        uint64_t mecid_a0_el2;
++        uint64_t mecid_p1_el2;
++        uint64_t mecid_a1_el2;
++        uint64_t mecid_rl_a_el3;
++        uint64_t vmecid_p_el2;
++        uint64_t vmecid_a_el2;
+     } cp15;
+ 
+     struct {
+@@ -2389,6 +2399,10 @@ FIELD(MFAR, FPA, 12, 40)
+ FIELD(MFAR, NSE, 62, 1)
+ FIELD(MFAR, NS, 63, 1)
+ 
++FIELD(MECIDR, MECIDW, 0, 4)
++FIELD(MECID, MECID, 0, 16)
++FIELD(VMECID, MECID, 0, 16)
++
+ QEMU_BUILD_BUG_ON(ARRAY_SIZE(((ARMCPU *)0)->ccsidr) <= R_V7M_CSSELR_INDEX_MASK);
+ 
+ /* If adding a feature bit which corresponds to a Linux ELF
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 889d308807..9f8a284261 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6823,6 +6823,100 @@ static const ARMCPRegInfo nmi_reginfo[] = {
+       .resetfn = arm_cp_reset_ignore },
+ };
+ 
++static void mecidr_reset(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    /* MECIDWidthm1 = 15, i.e. 16 bits is the width of a MECID. */
++    env->cp15.mecidr_el2 = FIELD_DP64(0, MECIDR, MECIDW, 15);
++}
++
++static uint64_t mecidr_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    uint64_t valid_mask;
++
++    if (!arm_is_el2_enabled(env)) {
++        /* All bits are RES0. */
++        return 0ULL;
++    }
++
++    valid_mask = R_MECIDR_MECIDW_MASK;
++    return env->cp15.mecidr_el2 & valid_mask;
++}
++
++static CPAccessResult mecid_access(CPUARMState *env,
++                                   const ARMCPRegInfo *ri, bool isread)
++{
++    int el;
++
++    el = arm_current_el(env);
++    if (el == 2 && !(env->cp15.scr_el3 & SCR_MECEN)) {
++        return CP_ACCESS_TRAP_EL3;
++    }
++
++    return CP_ACCESS_OK;
++}
++
++static void mecid_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                        uint64_t value)
++{
++    uint64_t valid_mask;
++
++    valid_mask = R_MECID_MECID_MASK;
++    value &= valid_mask;
++    raw_write(env, ri, value);
++}
++
++static uint64_t mecid_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    uint64_t valid_mask;
++
++    valid_mask = R_MECID_MECID_MASK;
++    return raw_read(env, ri) & valid_mask;
++}
++
++static const ARMCPRegInfo mec_reginfo[] = {
++    { .name = "MECIDR_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 7, .crn = 10, .crm = 8,
++      .resetfn = mecidr_reset,
++      .access = PL2_RW, .accessfn = mecid_access, .readfn = mecidr_read,
++      .writefn = arm_cp_write_ignore,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecidr_el2) },
++    { .name = "MECID_P0_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 8,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .readfn = mecid_read, .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p0_el2) },
++    { .name = "MECID_A0_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 8,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .readfn = mecid_read, .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a0_el2) },
++    { .name = "MECID_P1_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 2, .crn = 10, .crm = 8,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .readfn = mecid_read, .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p1_el2) },
++    { .name = "MECID_A1_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 3, .crn = 10, .crm = 8,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .readfn = mecid_read, .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a1_el2) },
++    { .name = "MECID_RL_A_EL3", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 6, .opc2 = 1, .crn = 10, .crm = 10,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .readfn = mecid_read, .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecid_rl_a_el3) },
++    { .name = "VMECID_P_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 9,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .readfn = mecid_read, .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_p_el2) },
++    { .name = "VMECID_A_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 9,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .readfn = mecid_read, .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_a_el2) },
++};
++
+ static void define_pmu_regs(ARMCPU *cpu)
+ {
+     /*
+@@ -9008,6 +9102,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         define_arm_cp_regs(cpu, nmi_reginfo);
+     }
+ 
++    if (cpu_isar_feature(aa64_mec, cpu)) {
++        define_arm_cp_regs(cpu, mec_reginfo);
++    }
++
+     if (cpu_isar_feature(any_predinv, cpu)) {
+         define_arm_cp_regs(cpu, predinv_reginfo);
+     }
 -- 
-2.43.0
-
+2.34.1

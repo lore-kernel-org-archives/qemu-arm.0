@@ -1,113 +1,124 @@
-Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1338753dyc;
-        Fri, 4 Jul 2025 09:56:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU1XRyUHMDCD5/nnf80ANN4cWhYiJRqoGLZEnQI+nK7fOcBMxRWdv0xB6swYjPPB/hCnqdGt7hJgnTYlw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHJXs9gbCHQX8X42XDJWeUcwzk8Wf6F9e1NUPCFW8NMtXTgqx65SGB1+4Hje/AYCS5LE93/
-X-Received: by 2002:a05:620a:6190:b0:7d4:4139:e906 with SMTP id af79cd13be357-7d5dccf4ad0mr505885885a.30.1751648211171;
-        Fri, 04 Jul 2025 09:56:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751648211; cv=none;
+Received: by 2002:a05:693c:2909:b0:17e:9665:bf4c with SMTP id rk9csp1367434dyc;
+        Fri, 4 Jul 2025 10:50:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW58ACiDsVjP49261U3l7fBHtSduCR8N2uvhTFAknAKVccropxBmBy8eaHwpSrHEWT4tzOMwHX4Qpg/SQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHDehAYg2eMnUWcVoDduAe5DPIAY7diRdng6iLwbei6fd5X3QHU/c8eKFhBiYhgdSNj5/fB
+X-Received: by 2002:a05:620a:4708:b0:7d4:70:908a with SMTP id af79cd13be357-7d5dcd23bbemr591477285a.53.1751651432597;
+        Fri, 04 Jul 2025 10:50:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751651432; cv=none;
         d=google.com; s=arc-20240605;
-        b=aP0ukR/YCdW3w7NYfKypuKI4ajUtO1BH9WHWJF/v5J9d86F7oXrJOpL053ov7T0RcF
-         urjpkV8Pc8G6ZGoRk/rhTTbENsuneP1xpJkXXuXRbieG2fQ2V2aCSaomvdiP0fJZXYO+
-         kl5cQJNhWGY4bDN9KTjg4PqZNZqesG6sB/iiZQN8iRZAI+SUcU2zvl69Fhp/Zbh83FEK
-         w4E1GR4E9DYzpdv7PL2MWZ7VcrXkApzgkee8ro38PIF8OZQOPpiYnZX3Ab84FEmHC7yT
-         ezgihFUYg5gsahBcniKoJ34CKwW4y0V1fuAX95csARDGKbkpU8hixuZwODFexwZjHWZZ
-         ls/Q==
+        b=W9+tgAUleiN3CYAnYCWkj5pfDYb1PqOnX+YTefLK3rLP2jbzbKXOGsP4HD12iHxg5E
+         F76t4kxLw6+hZNjwLJyT+P592dGUFEGGH2HiBvCgcefUBtz8g+R+NYvkv/xLd2iS7sHJ
+         touboHsGfLTuzWIj7tGBFsK21ZqxG3EOP7ksppmjNUA8cwKHGP/Cr5I8hfut7ytreWiq
+         1K6xizOmBlTWLFOAdtg2xBLTPNOv0SS87Kcg9YkxtB6ERdpMWqfE1i38UPxxtp/bVHJG
+         QCic3zxNXcfCIvZ4Hwn/ufHSxlMVRO2oueZv3fwjsDTG+kmpMraid93fMKi+lyNTrk27
+         zLfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=3ad8SnT1cTuIC4lkjk0LMOdTFwc31GHfx2RXFXWvncE=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=T2CJi50Qd1tyN2ByuLn6s9CMnkmCB7bIC7So3PpHEMB5pWtLyEH0Es/ajW9mX1C4FJ
-         lwz9pTEBFkAQqi7qzUjUoBQSsxSIgU48nCgdKVNEHr+t3pane0+7be2NZqnOmrFe6kdL
-         IqLF8dhDtDXByN4ldFGD4IY9aDir58sbyEbIu048uGA3EO3e5SxTkdPC3dWCCbdqVFZk
-         TxuU2FLy8YZ4qLg7j9MuzXmdiYO1Mh6TnkFWOnc6PGWlp2va+jsPIZdbn3i/UVO8lU5k
-         Bqeh2Eca2ZEnFgOAKPY7rx4ogjbWrFbyoWhQnFelvq+u7ElB+r2SHxXH39kcMM10M+Te
-         /VuA==;
+         :in-reply-to:from:content-language:references:to:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=hRbAt35ga9TlYhtTcIDMTS2490Ha3n2dEGWk3Zn+vJo=;
+        fh=cQmE2Ygp8766ZPomagH01L8tvy519hsHjqSqR+0Z2NQ=;
+        b=c3TA5D1KuIq6BOHM7doGueM6qA8uxnOp53uwUh1Ob+vr9dJUOjqkas7gkPbL49Sq+D
+         AMLWw6jfqaEvi8tBCUvSfOZhDguR4O9Qxkzn168eZnTpYK1QambhRasPEUjYe7uFfLUe
+         U+1gUwZBuHrY8s4snreftHWTHaqHbRodNfgwbglQ31anhn0Pm9/fdyhBkJZoyhnCE9o7
+         FHqX2j8rdQoSUbdSb5NwIu8yXW3IXBgJ8dUtPtDIuwp84QZKuE8pv7qvSxMpnLnreiAx
+         V1FxA1+6Pms4WG9wZe+a7L8VB/bvENw7KWtnaUXCmYAQam+8zaA4MDkFCeOBkOLotl/i
+         zLMA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XBIxAfos;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="JP8s/2vb";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-702c4d49b75si22522016d6.214.2025.07.04.09.56.51
+        by mx.google.com with ESMTPS id af79cd13be357-7d5dbed1f70si261371985a.420.2025.07.04.10.50.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Jul 2025 09:56:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 04 Jul 2025 10:50:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XBIxAfos;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="JP8s/2vb";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uXjiN-0006Yq-Hp; Fri, 04 Jul 2025 12:56:43 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1uXkYN-00058e-MG; Fri, 04 Jul 2025 13:50:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uXjiL-0006Yb-Su
- for qemu-arm@nongnu.org; Fri, 04 Jul 2025 12:56:41 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uXkYK-00057T-Gv
+ for qemu-devel@nongnu.org; Fri, 04 Jul 2025 13:50:24 -0400
+Received: from mail-oi1-x232.google.com ([2607:f8b0:4864:20::232])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uXjiK-0000Ey-51
- for qemu-arm@nongnu.org; Fri, 04 Jul 2025 12:56:41 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-3a6cdc27438so948417f8f.2
- for <qemu-arm@nongnu.org>; Fri, 04 Jul 2025 09:56:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uXkYI-0000kS-US
+ for qemu-devel@nongnu.org; Fri, 04 Jul 2025 13:50:24 -0400
+Received: by mail-oi1-x232.google.com with SMTP id
+ 5614622812f47-40a7322f081so351586b6e.3
+ for <qemu-devel@nongnu.org>; Fri, 04 Jul 2025 10:50:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751648198; x=1752252998; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=3ad8SnT1cTuIC4lkjk0LMOdTFwc31GHfx2RXFXWvncE=;
- b=XBIxAfosq4oVUCK6wTvw7IMh6iD0IqXKeT0VuL4QYD8UxKJWIZMxiHmff8jL3ncdpH
- NvUxxy2s9FN6tt5ouvPfS/wsi+h+bQiETkhKQfsMknQ31rx1J0T20fjir6xdB+YjqOdh
- QRJKsda7jTTdUPNKAv9BBlIfRSsLVb4cr20d2nWCpfvJHzs/2Z5lrQnfcTDJD4ZR/vSZ
- 27D+kPwHfJdYNOsb/f1XBjLQ7ZzzSZtAKsdWnpCBTlRxkoRRbr6Z6BLDPBvJo0TtXiuT
- HgVoq0fFmJsIGc6Yz8kFNDWdMp507W3h8mSmnB5apxp6CL85u7VsN+XmtJFF28nQ05yY
- Juhg==
+ d=linaro.org; s=google; t=1751651421; x=1752256221; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=hRbAt35ga9TlYhtTcIDMTS2490Ha3n2dEGWk3Zn+vJo=;
+ b=JP8s/2vbsiuhnUWwxGojdol+lKUUrwCzQBGjz9yZKo/VRSwT1PxDnnApnO/knEKwuU
+ PLHuRd+GL00U4y1U7+Udr50nMAMLotMV+wLtWLXE7hcw0vokhxqddE0DYnu8R59nW6n2
+ ivAHsVesmTDmpRcUmW8zrki9HzhTeX9BgXxLA5xT12zUFRfx3Z80+FIslb6CnOs4AScK
+ vL6FCM0Qc435OgcOSS9oO7tnaKsWTWqfSYCofKPBiBWZM+5CDfBfc/DQAAbTYek/nKr0
+ j4L4NHg7MI+w4ejYm0gJzRdeQnfz9ctfrXCV61wjPr1NQoDoEy0mQFjTwod7CWHWH6o/
+ n4MA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751648198; x=1752252998;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=3ad8SnT1cTuIC4lkjk0LMOdTFwc31GHfx2RXFXWvncE=;
- b=QxiuQS6tRiNOOt5YqlI+Bb4weiH8xqf8lJdlHYlBdSXRRyGDZga1FfE4/yiBX3DNEo
- +cZXaKxWMkGI6RB56KXk8sNKfC+Jh7ogZHFh+gHeVq1g3jDjsmhvtcmB3scRG8YZ3Kd9
- PM7vNH/Bvk9h6xgwPjDES7OVWweEHsqbXSk5Ui51O7g6+x2o8OntK1t577hPNFFtVEsM
- wFvW0Y0gz48Cyp7+ltjVfIynnBb3jvO3QqawR/yZG5d16ubKDRlNZ+9Cd84Zee6MUHeb
- WA5oMlxlYv9n9LmWjHjimuA2+5hnKQhCt7j6JSQywgWPft7ted2fjQIKd3tw7FbMZoKn
- bZEA==
-X-Gm-Message-State: AOJu0Yy2zUKA96pDBAe0SAvCj90/+/ex8Unhm/22e0V1ytpRrn6d224O
- LYzYH2oZcE2oShEd9clKtsW9HKdmq9V4UH8z4n7vtD1xLRaUkOooSxFVMs0LfHUH/56ckJTxVyk
- Bo/VC
-X-Gm-Gg: ASbGncun8G+37Htvhz6ihip+pNEK9/khD9TbQxUG3cIN6PSdezcYEyASyCa0Innf/R+
- hz23vpNzMeNmq6eY3o3EpPiRwo1T4tUXjMOt3FZ37pl0NXE5TUkyB/uYZwbNwV5Qe+IqQKiggmd
- TqHVAq2Kcjb5471FWb3hfWnOSgDahYGNWvg0m0cyfXoWfF518WkgFkl63Zed8fE2gjSIgxUcmNe
- 5fq1+Clwy1m2aLPix4cqDPp/1mcvNDy6KUwrpEFb4rMfOA10AS895S/poF+Ng6+8ZegkgQ44ZIY
- dCVZu5NFkS7R1REVfw/Yt2Cfnh5QE2ZFuxkkra6YxpBiv09mFHc19q/Z3ac3Bwz4m7iV
-X-Received: by 2002:a5d:64cc:0:b0:3a4:e6e6:a026 with SMTP id
- ffacd0b85a97d-3b49703162fmr2471625f8f.28.1751648198248; 
- Fri, 04 Jul 2025 09:56:38 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b47030ba54sm2884168f8f.8.2025.07.04.09.56.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Jul 2025 09:56:37 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Don't enforce NSE,NS check for EL3->EL3 returns
-Date: Fri,  4 Jul 2025 17:56:36 +0100
-Message-ID: <20250704165636.261888-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ d=1e100.net; s=20230601; t=1751651421; x=1752256221;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=hRbAt35ga9TlYhtTcIDMTS2490Ha3n2dEGWk3Zn+vJo=;
+ b=m/m7tZe+0dxvrpm3QF8J6EipNQ7CPOygW5lCJyszYiQH/gwrGkGLsRrfjvfuoiPnOk
+ YsiKlxBG4jl+g9KmckuuLZlaQpOI9w/2VWlRAdMFa8bQHv84q2D/QW2uFKXGX1XJQfB8
+ sm5qiO45WQI1elNYBi4wrclpyzdBeiqLvxDRXphEks6tRdCEKP4M83gfixpaoKDGn/Wd
+ Rbi6ej7CBTSPeZqnPb1Z9wU2UOn7O0UURxp5dhraQY9D0f4O8Vlw6lZc6vSZUkAYrr7z
+ 82e3ACFz01ZUtk6fy5zBQKLwKvJlDkNzxXb33cwI5ZjOUEEjP+z4cW4PI0O99oMh6YFy
+ lVVg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWriPJ5dZylYJ98siZVgT/io/9geVsRTsaayAywS/eJ4Wrs64oqa4CJyEdViMyI2SndAaxIp0JQuTTU@nongnu.org
+X-Gm-Message-State: AOJu0Yxrow3RapzIB7aKoUWUCW6glCxUO+epWxO5Fm+oEzryd4tbDEFO
+ nGmOntRDgCDtJE1SWLa8cr9ijcvxiWQZWEH12NM1vktNiLvSRHiY8Tq/6ydkaV0PCtZLrSNTkp2
+ HHyyE+jw=
+X-Gm-Gg: ASbGnctFfRV/tXc8UbIkhg+0okifds7ocXZn0qMslXeqDd42cwGaD7il0TuPLbeWf/z
+ ZgaOPJnD8FaK8vbPjZ3rykiZZd0MLb6fP5KcWPDQeGarLqXIqofl9C+0RwpH6Szq3O5v3qbeeY+
+ MmYPJ8jN92SB47dp8KjGRkHEaitCdpsm6qfVJOXFHvzt5H+G3mOh5HRXmYTpzd5dupR2J0FnJl2
+ qOnSAHu+3H2J97fIkM4Ysil5OEwQoPGukt+B5629M9tPHU7XPWiL6J2Krka4+OB2eQr5hxaFp9U
+ JKqaNtoCupTBkIdtvkpYipmVmSBO+rtCCmkb0Glj3iD2KHXiXN8MwRIRERcltTV/zSOTuCecHfc
+ 8eaVXn40htJ9aYQbzr36m+dxnsHOCMTOnj+HAn/18
+X-Received: by 2002:a05:6808:5090:b0:40b:9361:cd69 with SMTP id
+ 5614622812f47-40d043a3153mr2857517b6e.15.1751651421506; 
+ Fri, 04 Jul 2025 10:50:21 -0700 (PDT)
+Received: from [192.168.4.112] (fixed-187-189-51-143.totalplay.net.
+ [187.189.51.143]) by smtp.gmail.com with ESMTPSA id
+ 5614622812f47-40d02a43f8bsm371347b6e.12.2025.07.04.10.50.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 04 Jul 2025 10:50:21 -0700 (PDT)
+Message-ID: <97a6099f-0272-4156-85bc-8c7881dec8db@linaro.org>
+Date: Fri, 4 Jul 2025 11:50:18 -0600
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/arm: Don't enforce NSE,NS check for EL3->EL3
+ returns
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20250704165636.261888-1-peter.maydell@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20250704165636.261888-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::232;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x232.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,79 +127,42 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WDadYpLswMRQ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: e43yzdi9vQxc
 
-In the Arm ARM, rule R_TYTWB that defines illegal exception return cases
-includes the case:
- If FEAT_RME is implemented, then if SCR_EL3.{NSE, NS} is {1, 0}, an
- exception return from EL3 to a lower Exception level
+On 7/4/25 10:56, Peter Maydell wrote:
+> In the Arm ARM, rule R_TYTWB that defines illegal exception return cases
+> includes the case:
+>   If FEAT_RME is implemented, then if SCR_EL3.{NSE, NS} is {1, 0}, an
+>   exception return from EL3 to a lower Exception level
+> 
+> Our implementation of this check fails to check that the
+> return is to a lower exception level, so it will incorrectly fire on
+> EL3->EL3 exception returns.
+> 
+> Fix the check condition. This requires us to move it further
+> down in the function to a point where we know the new_el value.
+> 
+> Fixes: 35aa6715ddcd9 ("target/arm: Catch illegal-exception-return from EL3 with bad NSE/NS")
+> Cc:qemu-stable@nongnu.org
+> Resolves:https://gitlab.com/qemu-project/qemu/-/issues/3016
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+>   target/arm/tcg/helper-a64.c | 20 +++++++++++---------
+>   1 file changed, 11 insertions(+), 9 deletions(-)
 
-Our implementation of this check fails to check that the
-return is to a lower exception level, so it will incorrectly fire on
-EL3->EL3 exception returns.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Fix the check condition. This requires us to move it further
-down in the function to a point where we know the new_el value.
-
-Fixes: 35aa6715ddcd9 ("target/arm: Catch illegal-exception-return from EL3 with bad NSE/NS")
-Cc: qemu-stable@nongnu.org
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3016
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/tcg/helper-a64.c | 20 +++++++++++---------
- 1 file changed, 11 insertions(+), 9 deletions(-)
-
-diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
-index 4f618ae390e..cb02cee51b2 100644
---- a/target/arm/tcg/helper-a64.c
-+++ b/target/arm/tcg/helper-a64.c
-@@ -656,15 +656,6 @@ void HELPER(exception_return)(CPUARMState *env, uint64_t new_pc)
-         spsr &= ~PSTATE_SS;
-     }
- 
--    /*
--     * FEAT_RME forbids return from EL3 with an invalid security state.
--     * We don't need an explicit check for FEAT_RME here because we enforce
--     * in scr_write() that you can't set the NSE bit without it.
--     */
--    if (cur_el == 3 && (env->cp15.scr_el3 & (SCR_NS | SCR_NSE)) == SCR_NSE) {
--        goto illegal_return;
--    }
--
-     new_el = el_from_spsr(spsr);
-     if (new_el == -1) {
-         goto illegal_return;
-@@ -676,6 +667,17 @@ void HELPER(exception_return)(CPUARMState *env, uint64_t new_pc)
-         goto illegal_return;
-     }
- 
-+    /*
-+     * FEAT_RME forbids return from EL3 to a lower exception level
-+     * with an invalid security state.
-+     * We don't need an explicit check for FEAT_RME here because we enforce
-+     * in scr_write() that you can't set the NSE bit without it.
-+     */
-+    if (cur_el == 3 && new_el < 3 &&
-+        (env->cp15.scr_el3 & (SCR_NS | SCR_NSE)) == SCR_NSE) {
-+        goto illegal_return;
-+    }
-+
-     if (new_el != 0 && arm_el_is_aa64(env, new_el) != return_to_aa64) {
-         /* Return to an EL which is configured for a different register width */
-         goto illegal_return;
--- 
-2.43.0
-
+r~

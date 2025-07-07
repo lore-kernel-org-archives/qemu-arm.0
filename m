@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DCEBC8303C
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 17:23:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3CAAC8303C
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 17:24:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uYpY4-0003np-3X; Mon, 07 Jul 2025 13:22:36 -0400
+	id 1uYpXr-00038i-Pf; Mon, 07 Jul 2025 13:22:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uYpVu-0000R8-Np
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:20:27 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uYpWl-0000v4-Mp
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:21:17 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uYpVr-0004yg-JD
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:20:22 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-3b49ffbb31bso1002233f8f.3
- for <qemu-arm@nongnu.org>; Mon, 07 Jul 2025 10:20:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uYpWf-0005CJ-7E
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:21:12 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-450ce671a08so17673055e9.3
+ for <qemu-arm@nongnu.org>; Mon, 07 Jul 2025 10:21:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751908817; x=1752513617; darn=nongnu.org;
+ d=linaro.org; s=google; t=1751908863; x=1752513663; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=RPKj5S3tHFubjMvOc+FpSPzyOTtYDrCXYgAF/148ssQ=;
- b=vi/0Szt/odD7mCaQ3ijnqksRBn0A+3My0nPWR8NfldWdiMvdLbD424LL89MXpAasBX
- VsY0q4DxVs+1Y6qPi1m5vKjhZv8t3i4+tBqAHIUa1WjJdAvO3ubojOQbUCQUp5wARxPx
- Lp+xWQPE+tdecEA4ZsHahdW/X8maanKJTKvWnvarxzD3zIwR4OoSMmt8T1UztpU1G1Fu
- nuDvSjKVdkksvzVHHVKqJTej4h8cNWlEgaZSlJqZBZPeG4WH7WgeIBVT8IJi1gqXwkoH
- OPju/cu9/yml2/MLQTo5mzEiXfZZdnVPXTEXrXrFryS7LYMGa6IwAneTJ7asw8M4+s5o
- fWoA==
+ bh=jqODDGmVZwWpLG85t5AjRhEjZXJgSLCLXmN69PZ4Bno=;
+ b=zYT6tcE9nRHOtCk+jYfqKkZZ+8G6aPt22pNdoezSBiboDiQYRiqksYtmhvCUikolNP
+ GLFCj1q754AzAOPSFs1FhSjSnY1Un8QBpPlt9Ys68b2W4g3EXes5aQtsirHvkuBsUUzc
+ G6P2mAKXn/CzHwb5wNeo0DbJQiiWk0miFn60tVXC6XnP0A3jh+irRArmAgIh/dYFbZ7J
+ zbEr0VMJ59ppcXeoVE3fvifa2cy68x5ABybjsz1Ip42w3oPfEOX2t7kxcl5jU3QADsVX
+ EgvR1umfKKUSP/9W066kafJL/3Au7FkcvZZ+XqIomE5kTlQ++NKwRuZYEscnspUltgOJ
+ b+Bg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751908817; x=1752513617;
+ d=1e100.net; s=20230601; t=1751908863; x=1752513663;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=RPKj5S3tHFubjMvOc+FpSPzyOTtYDrCXYgAF/148ssQ=;
- b=X0FUHmElWO1h1eyxNl/UoDNOCUlQ5Qc5Ref7GGGXrLHsZuarZXMEX9WF3uMMFeVmGo
- NLB/8turs+KlN2itYG+FyotJG7X/WAqB8nmN0aZVKsll8lBtp/nczu1k974ViTAAQVdV
- t68k88D2/hS+9wqT7EDZ7F6q/KLOPgdFbQPEQVKj9XkPgWX5StULZnTxu0/dM9/F9wQP
- efdGyiwUM9qTemEbM6WHs93FUZb7neYzbEM+jGVpQtLWsbSkcEPA/H0ptz/sHXTH8/ll
- b/SRZlhSNh9YOgh5pgZL7i8K+wK29YMRS/ons6xtx8YU1XLn1Xxztw8rsCpuRUoCKv4w
- ed3g==
+ bh=jqODDGmVZwWpLG85t5AjRhEjZXJgSLCLXmN69PZ4Bno=;
+ b=Uq9tShfvKqUTfQ1TGrhLP+Jta7t0IJPDCPqZ/Q61kHpga0U5o9rbgtBNbwBAE3t66B
+ 80DqJXjabBTMxKhkPHl0wKdWLTSGZWCzRNqhYMKGO8Zwrpi2V0dIJq8dBN1Uyt/3gR6N
+ 5DZ9MFiIB9VyDSQtvb6/Va2eGUA0wOHkBYrqLO2ofwYU+uXLbB3DKDjQrLkozNBejYIx
+ gIEQlMg0hZynQRhR53y6JmntQa8JmfckLs8d3W1xH2/2GjUAGd5LTnuJj3ROaSJ07XGV
+ Xc2hJitvNHnsoGnmc9b/uHqdHETBD6FqU1I915zF34sfYYOs3IrqE8Jt78pk+25pwbUA
+ IErg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXuXblDUZUdDu89f+dQvbCPYt+CTYpQHn3zuYb8EjWfbxsuXClK0AeXbZkDZA7GYtAlRVyur0F9Vw==@nongnu.org
-X-Gm-Message-State: AOJu0YwAofT3JZVsbssZc0xZeVDwNZaVbjh2pAQ9IQDgKiJOyp3AU7fh
- h840oLeeYrNruTjcEOWt/ewBz3wwLj0fgDUtjUigknO2Cg3cRpxA9cs3XJ6hOpoe/5o=
-X-Gm-Gg: ASbGnctRUfS/4xnACYRWN8/CMquT3hqugEpeOcKUssgBWKN4sQqE5YOYkR17e6c5S4Q
- O7nsnshuRe7Bzd5SP+D25kpbZRyGOMMaoz7OWENtLq/ybMJe60qoP/6GSp0CehrYySLK1sO/NWS
- DI5q7RsvYinPy9og/H7voqpJBwe2pI1GsTB/q7p9oTb26lVGFvZbclhUzTHwg828Tap/18QSlgQ
- nbcIO/wNyxipuAzoyd6QhXCf5022Ramf7TH7b8TbU2M4RMKl70d+xYmkkT28oUEHYekUA7jtQP2
- iI5qKFN9GBkhcrFEP+zk6r+Tg2Tq9u9EhIVRV/aYIcgCwXRkHLOdhBuVw4bRc0hcu7oTn0VDODe
- pGE7S0ZxTd89214IPLoxRwinumh5YMi4MLaC/
-X-Google-Smtp-Source: AGHT+IGCSV5kO8RY5wl3hODLRNtupRcCVEnCURNmqdz6EdIEC8nno86Za7JhyuoqB207ZkzMCGrdVA==
-X-Received: by 2002:a05:6000:98e:b0:3a4:e387:c0bb with SMTP id
- ffacd0b85a97d-3b49aabdc06mr7100887f8f.59.1751908816657; 
- Mon, 07 Jul 2025 10:20:16 -0700 (PDT)
+ AJvYcCU/88+NseTrzacdYy45fM56kmrmwkv4ls3HrHWqmZ5TZkj1yxXSAg5Y31iS87JykPTs8G8aUJjR0g==@nongnu.org
+X-Gm-Message-State: AOJu0Yz20H/8x3A5YaG6CZpVNFsn7ltj09XVXMeRANyYHi0Emq9WdynI
+ hg/m0onjt118V8+ivyqaTBHk6gJupN3LJSG9Lp+UeKa+8kdy9wU4qB2Lgf6otWk+YSo0mI8ytbI
+ /WW332go=
+X-Gm-Gg: ASbGncueDkZXzKAhtHdcDRGyBh4/KolL+Z8xhmGsZaaQ2yNZ0sEUDvITkXv1VFEIxVa
+ cj8fpxS2MbHl6BqUfEY35aLjrJVNkB5/LJTOWb8SB1wQeM5CRigywibh2KkoI1NpXc2UOM0UIPE
+ DhM2AkHXc4oCro3TibBA0s91qFbWMqjxHkS360wWacqkHlkAbrHe5Du/ZuZIQtDnfqQe2Qzl73C
+ BNEEO2ehvrIcsVP2yTYHzXMuLnktgc8YtcyVo3ED6JlMaD8wZhUtUUHioX3zEguaf4mav2iFrvN
+ SUTuAQ1UxviwPvb7V4FGk6CSRQSlb7yz6+kbkD3KPo7oJL6QDJmt0CuUZIiOix9SyUYVCwv8yfj
+ SwU7QfHwEMnDr5njz92qkWOk7K3wc4tVBykyZ
+X-Google-Smtp-Source: AGHT+IH4AKONYKk8WayseeK6glA6RWMBLDwrfBPAg+NlginweazDCvf0XL2oKfGi1AQj0zCr2pB27w==
+X-Received: by 2002:a05:600c:8885:b0:450:d5bf:6720 with SMTP id
+ 5b1f17b1804b1-454b5e9a2ffmr100958275e9.3.1751908863459; 
+ Mon, 07 Jul 2025 10:21:03 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b47030baa5sm11084319f8f.12.2025.07.07.10.20.15
+ 5b1f17b1804b1-454b161e8fcsm122271075e9.7.2025.07.07.10.21.02
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 07 Jul 2025 10:20:16 -0700 (PDT)
+ Mon, 07 Jul 2025 10:21:02 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-s390x@nongnu.org,
@@ -73,21 +74,21 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-s390x@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, Song Gao <gaosong@loongson.cn>,
- Huacai Chen <chenhuacai@kernel.org>, Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <arikalo@gmail.com>
-Subject: [PATCH-for-10.1 v6 01/14] target/qmp: Use target_cpu_type()
-Date: Mon,  7 Jul 2025 19:19:55 +0200
-Message-ID: <20250707172009.3884-2-philmd@linaro.org>
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>
+Subject: [PATCH-for-10.1 v6 10/14] hw/core/null-machine: Define machine as
+ generic QOM type
+Date: Mon,  7 Jul 2025 19:20:04 +0200
+Message-ID: <20250707172009.3884-11-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250707172009.3884-1-philmd@linaro.org>
 References: <20250707172009.3884-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,76 +111,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- target/arm/arm-qmp-cmds.c             | 3 ++-
- target/loongarch/loongarch-qmp-cmds.c | 3 ++-
- target/mips/system/mips-qmp-cmds.c    | 3 ++-
- 3 files changed, 6 insertions(+), 3 deletions(-)
+While DEFINE_MACHINE() is a succinct macro, it doesn't
+allow registering QOM interfaces to the defined machine.
+Convert to the generic DEFINE_TYPES() in preparation to
+register interfaces.
 
-diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
-index cefd2352638..d292c974c44 100644
---- a/target/arm/arm-qmp-cmds.c
-+++ b/target/arm/arm-qmp-cmds.c
-@@ -21,6 +21,7 @@
-  */
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ hw/core/null-machine.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/hw/core/null-machine.c b/hw/core/null-machine.c
+index a6e477a2d88..3e03771d570 100644
+--- a/hw/core/null-machine.c
++++ b/hw/core/null-machine.c
+@@ -42,8 +42,10 @@ static void machine_none_init(MachineState *mch)
+     }
+ }
  
- #include "qemu/osdep.h"
-+#include "qemu/target-info.h"
- #include "hw/boards.h"
- #include "kvm_arm.h"
- #include "qapi/error.h"
-@@ -241,7 +242,7 @@ CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
-     CpuDefinitionInfoList *cpu_list = NULL;
-     GSList *list;
+-static void machine_none_machine_init(MachineClass *mc)
++static void null_machine_class_init(ObjectClass *oc, const void *data)
+ {
++    MachineClass *mc = MACHINE_CLASS(oc);
++
+     mc->desc = "empty machine";
+     mc->init = machine_none_init;
+     mc->max_cpus = 1;
+@@ -55,4 +57,12 @@ static void machine_none_machine_init(MachineClass *mc)
+     mc->no_cdrom = 1;
+ }
  
--    list = object_class_get_list(TYPE_ARM_CPU, false);
-+    list = object_class_get_list(target_cpu_type(), false);
-     g_slist_foreach(list, arm_cpu_add_definition, &cpu_list);
-     g_slist_free(list);
- 
-diff --git a/target/loongarch/loongarch-qmp-cmds.c b/target/loongarch/loongarch-qmp-cmds.c
-index f5f1cd0009d..1d8cd32f5fc 100644
---- a/target/loongarch/loongarch-qmp-cmds.c
-+++ b/target/loongarch/loongarch-qmp-cmds.c
-@@ -7,6 +7,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/target-info.h"
- #include "qapi/error.h"
- #include "qapi/qapi-commands-machine.h"
- #include "cpu.h"
-@@ -32,7 +33,7 @@ CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
-     CpuDefinitionInfoList *cpu_list = NULL;
-     GSList *list;
- 
--    list = object_class_get_list(TYPE_LOONGARCH_CPU, false);
-+    list = object_class_get_list(target_cpu_type(), false);
-     g_slist_foreach(list, loongarch_cpu_add_definition, &cpu_list);
-     g_slist_free(list);
- 
-diff --git a/target/mips/system/mips-qmp-cmds.c b/target/mips/system/mips-qmp-cmds.c
-index d98d6623f2f..b6a2874f2dd 100644
---- a/target/mips/system/mips-qmp-cmds.c
-+++ b/target/mips/system/mips-qmp-cmds.c
-@@ -7,6 +7,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/target-info.h"
- #include "qapi/error.h"
- #include "qapi/qapi-commands-machine.h"
- #include "cpu.h"
-@@ -40,7 +41,7 @@ CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
-     CpuDefinitionInfoList *cpu_list = NULL;
-     GSList *list;
- 
--    list = object_class_get_list(TYPE_MIPS_CPU, false);
-+    list = object_class_get_list(target_cpu_type(), false);
-     g_slist_foreach(list, mips_cpu_add_definition, &cpu_list);
-     g_slist_free(list);
- 
+-DEFINE_MACHINE("none", machine_none_machine_init)
++static const TypeInfo null_machine_types[] = {
++    {
++        .name           = MACHINE_TYPE_NAME("none"),
++        .parent         = TYPE_MACHINE,
++        .class_init     = null_machine_class_init,
++    },
++};
++
++DEFINE_TYPES(null_machine_types)
 -- 
 2.49.0
 

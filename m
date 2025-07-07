@@ -4,61 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4FE6C83F07
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 13:32:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04B05C8303C
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 13:33:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uYlxU-0008GI-CQ; Mon, 07 Jul 2025 09:32:39 -0400
+	id 1uYlxf-0000Rz-OV; Mon, 07 Jul 2025 09:32:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uYlhY-000273-7f
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 09:16:10 -0400
+ id 1uYlhI-00023z-J3
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 09:15:58 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uYlhT-0001Kk-OT
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 09:16:07 -0400
+ id 1uYlh9-0001Gm-Uk
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 09:15:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1751894162;
+ s=mimecast20190719; t=1751894141;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=V9UxRJvPZbUcaS5XkaTexqwX2GQAj6Hec0NFKw8sW+0=;
- b=ShT6keR+b0nghX9DRKdhqCIK9mxdVqVPLAzKMthQAQAmgV+20gRwCFSe8kSeWl6oTthFGG
- IZJEMaBxq6IlwtIJr9cakv9AAa+SGqVJtG1qdEtS3yMaPynW4OAvtZNy8NEnLFnilstlcg
- P+pyIiINPh2Y3qz+lN6B9WoNPysYwkA=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=+xWD0vMarxJFM+QJuV6VrfwQDKjrnHzEakGgrJVOHok=;
+ b=O0iIEv/IpJCbD4bXc55Auj9YSKpxL5RrDBTsG1jCAReRA+YJ2PbVODDvxXDhjXX4JBMvVi
+ GzHJrVDhMFDEiLOyaDJqIPBw2iR1xZyTuJEKThai/pXzoeoKK5rO4r7vydmrIpUIJIX9Gi
+ myRbumDcQppFopQ/60TTsSgb52WaxeE=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-660-poVC_94PPeu_zk2wFmtnbw-1; Mon,
- 07 Jul 2025 09:15:59 -0400
-X-MC-Unique: poVC_94PPeu_zk2wFmtnbw-1
-X-Mimecast-MFC-AGG-ID: poVC_94PPeu_zk2wFmtnbw_1751894157
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-326-sW9yhtLmPne-cMOz8vXrCg-1; Mon,
+ 07 Jul 2025 09:15:39 -0400
+X-MC-Unique: sW9yhtLmPne-cMOz8vXrCg-1
+X-Mimecast-MFC-AGG-ID: sW9yhtLmPne-cMOz8vXrCg_1751894138
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2D4E018DA380; Mon,  7 Jul 2025 13:15:57 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A8CFB1800368; Mon,  7 Jul 2025 13:15:37 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.187])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 759C419560AD; Mon,  7 Jul 2025 13:15:53 +0000 (UTC)
+ id 1C86C19560AD; Mon,  7 Jul 2025 13:15:32 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, miguel.luis@oracle.com, peter.maydell@linaro.org,
  richard.henderson@linaro.org, maz@kernel.org,
  gkulkarni@amperecomputing.com, gankulkarni@os.amperecomputing.com
 Cc: hi@alyssa.is
-Subject: [PATCH v8 4/4] hw/arm/virt: Allow virt extensions with KVM
-Date: Mon,  7 Jul 2025 15:14:51 +0200
-Message-ID: <20250707131530.1141759-5-eric.auger@redhat.com>
-In-Reply-To: <20250707131530.1141759-1-eric.auger@redhat.com>
-References: <20250707131530.1141759-1-eric.auger@redhat.com>
+Subject: [PATCH v8 0/4] ARM Nested Virt Support
+Date: Mon,  7 Jul 2025 15:14:47 +0200
+Message-ID: <20250707131530.1141759-1-eric.auger@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
 Received-SPF: pass client-ip=170.10.133.124;
@@ -70,7 +68,8 @@ X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ T_SPF_HELO_TEMPERROR=0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,112 +85,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Haibo Xu <haibo.xu@linaro.org>
+This is candidate for 10.1.
 
-Up to now virt support on guest has been only supported with TCG.
-Now it becomes feasible to use it with KVM acceleration.
+For gaining virt functionality in KVM accelerated L1, The host needs to
+be booted with "kvm-arm.mode=nested" option and qemu needs to be invoked
+with: -machine virt,virtualization=on.
 
-Check neither in-kernel GICv3 nor aarch64=off is used along with KVM
-EL2.
+This series can be found at:
+https://github.com/eauger/qemu/tree/v10.0.0-nv-v8
+previous:
+https://github.com/eauger/qemu/tree/v10.0.0-nv-v7
 
-Also add a migration blocker in case KVM NV is set as some
-GIC registers are most probably not properly saved/restored:
-ICH_AP*R<n>_EL2, ICH_EISR_EL2, ICH_ELRSR_EL2, ICH_HCR_EL2,
-ICH_LR<n>_EL2, etc etc.
+Original version from Miguel:
+[1] https://lore.kernel.org/all/20230227163718.62003-1-miguel.luis@oracle.com/
+version from Haibo:
+[2] https://lore.kernel.org/qemu-devel/cover.1617281290.git.haibo.xu@linaro.org/
 
-Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
-Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
----
-v7 -> v8:
-- add the migration blocker
+History:
+v7 -> v8
+- add migration blocker when virt is set along with kvm enabled
+- test virt is not set with -cpu host,aarch64=off
 - s/only is/is only
-- check aarch64=off
-- update the commit message
 
 v6 -> v7:
-- rebase on top of "hw/arm/virt: Make EL2 accelerator check an
-  accept-list". I dared to keep Richard's R-b though.
+- rebase on Peter's target-arm.next. as a result linux header update could be
+  dropped. Faced a small conflict in hw/arm/virt: Allow virt extensions with KVM
+  due to recently landed hw/arm/virt: Make EL2 accelerator check an accept-list.
+  I dared to keep Richard's R-b though.
+
+v5 -> v6:
+- linux header update against v6.16-rc2
+
+v4 -> v5:
+- rebase on top of v10.0.0
+
+v3 -> v4:
+- fix: only set maint_irq if vms->virt
 
 v2 -> v3:
-- check gic version/in-kernel implementation when kvm el2 is set (Peter)
+- KVM EL2 only is set if virtualization option is set
+- fixes regression with virtualization=off
+- Add checks against unsupported GIC configs until the kernel does
 
-v1 -> v2:
-- fixed test ordering: virt && ((kvm && !kvm_el2) || hvf) [Richard]
-- tweeked the commit title & message
----
- hw/arm/virt.c | 35 ++++++++++++++++++++++++++++++-----
- 1 file changed, 30 insertions(+), 5 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 550a272fbb..54337527d0 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -65,6 +65,7 @@
- #include "hw/intc/arm_gic.h"
- #include "hw/intc/arm_gicv3_common.h"
- #include "hw/intc/arm_gicv3_its_common.h"
-+#include "migration/blocker.h"
- #include "hw/irq.h"
- #include "kvm_arm.h"
- #include "hvf_arm.h"
-@@ -792,6 +793,13 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
-     default:
-         g_assert_not_reached();
-     }
-+
-+    if (kvm_enabled() && vms->virt &&
-+        (revision != 3 || !kvm_irqchip_in_kernel())) {
-+        error_report("KVM EL2 is only supported with in-kernel GICv3");
-+        exit(1);
-+    }
-+
-     vms->gic = qdev_new(gictype);
-     qdev_prop_set_uint32(vms->gic, "revision", revision);
-     qdev_prop_set_uint32(vms->gic, "num-cpu", smp_cpus);
-@@ -2066,6 +2074,10 @@ static void virt_post_cpus_gic_realized(VirtMachineState *vms,
-             memory_region_init_ram(pvtime, NULL, "pvtime", pvtime_size, NULL);
-             memory_region_add_subregion(sysmem, pvtime_reg_base, pvtime);
-         }
-+        if (!aarch64 && vms->virt) {
-+            error_report("vcpu with both EL1_32BIT and HAS_EL2 is not supported");
-+            exit(1);
-+        }
- 
-         CPU_FOREACH(cpu) {
-             if (pmu) {
-@@ -2211,11 +2223,24 @@ static void machvirt_init(MachineState *machine)
-         exit(1);
-     }
- 
--    if (vms->virt && !tcg_enabled() && !qtest_enabled()) {
--        error_report("mach-virt: %s does not support providing "
--                     "Virtualization extensions to the guest CPU",
--                     current_accel_name());
--        exit(1);
-+    if (vms->virt) {
-+        if (!(kvm_enabled() && kvm_arm_el2_supported()) &&
-+            !tcg_enabled() && !qtest_enabled()) {
-+            error_report("mach-virt: %s does not support providing "
-+                         "Virtualization extensions to the guest CPU",
-+                         current_accel_name());
-+            exit(1);
-+        }
-+        if (kvm_enabled()) {
-+            Error *kvm_nv_migration_blocker = NULL;
-+
-+            error_setg(&kvm_nv_migration_blocker,
-+                       "Live migration disabled due to KVM nested virt enabled");
-+            if (migrate_add_blocker(&kvm_nv_migration_blocker, NULL)) {
-+                error_free(kvm_nv_migration_blocker);
-+                return;
-+            }
-+        }
-     }
- 
-     if (vms->mte && hvf_enabled()) {
+Haibo Xu (4):
+  hw/arm: Allow setting KVM vGIC maintenance IRQ
+  target/arm/kvm: Add helper to detect EL2 when using KVM
+  target/arm: Enable feature ARM_FEATURE_EL2 if EL2 is supported
+  hw/arm/virt: Allow virt extensions with KVM
+
+ include/hw/intc/arm_gicv3_common.h |  1 +
+ target/arm/kvm_arm.h               |  7 ++++++
+ hw/arm/virt.c                      | 38 ++++++++++++++++++++++++++----
+ hw/intc/arm_gicv3_common.c         |  1 +
+ hw/intc/arm_gicv3_kvm.c            | 21 +++++++++++++++++
+ target/arm/kvm-stub.c              |  5 ++++
+ target/arm/kvm.c                   | 21 +++++++++++++++++
+ 7 files changed, 89 insertions(+), 5 deletions(-)
+
 -- 
 2.49.0
 

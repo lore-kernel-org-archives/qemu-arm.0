@@ -4,107 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B610AC71130
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 17:17:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E224C71130
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 17:21:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uYpSk-0004bm-MR; Mon, 07 Jul 2025 13:17:06 -0400
+	id 1uYpX7-0001NC-LN; Mon, 07 Jul 2025 13:21:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uYpLe-00053G-9l
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:09:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uYpLc-0003JM-7C
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:09:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1751908183;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FR2nLCDVHY9d7UVVgAB8exedy8Te20CE8R9aCPYD3NY=;
- b=Twy6jpeQ5p70dNZlYZeuQmyOX4DeMdEQvo1+WBB30mB+GV8H3Yh2mrb798HTpfmMxfrr7V
- VACtt9LZjqTsrywWe88pQN1Wx9BoovngONWZBxAI0PRic5fJ+dI9XitLGRyxOOY+wuCbzJ
- vGFKK2YDrNmClPIQWbgBXxM+IvQKy9k=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-218-vpxad13IPb6WxpEE5npTSA-1; Mon, 07 Jul 2025 13:09:40 -0400
-X-MC-Unique: vpxad13IPb6WxpEE5npTSA-1
-X-Mimecast-MFC-AGG-ID: vpxad13IPb6WxpEE5npTSA_1751908179
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-4535ee06160so29339195e9.3
- for <qemu-arm@nongnu.org>; Mon, 07 Jul 2025 10:09:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uYpVr-0000Nz-TM
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:20:21 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uYpVo-0004xN-2A
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:20:19 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-453749aef9eso11814835e9.3
+ for <qemu-arm@nongnu.org>; Mon, 07 Jul 2025 10:20:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1751908812; x=1752513612; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=VwlvYMLKGx15+uSdEjsebhQs/sGbFO9TGa0DA+Ywmbs=;
+ b=slskS9gbDezEGGyxN738Fe/nkwSs07DsVX6vV5fYM5Ha2FgbrrCkcj5a9Fkesoe1Au
+ mOmEwtcZtIcDeYtALlXquN09jQsY1AUtpvcD86Aw2elJsJwOl/GdF//pEzvIKqbAHFKI
+ kw/KdVMswAtzP6WEiPNLKR4CdKXM2SpjO6EhP2VDQOkHavvR3bfXmiFi5UvfiwvnUF2Y
+ 1CtzaUn2h1DBdEH9mRBGurbWH9UGGsuKIxN6O5Ygco5DFtDJdeS9igzjGMf3kJsac8rO
+ SezMr0zTqM169KyzpB/WfUuthwFyNkf7XaldPCZGhKk4Z6svpTA3JuLCQFxNE1fH4C1H
+ tTAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751908179; x=1752512979;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1751908812; x=1752513612;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=FR2nLCDVHY9d7UVVgAB8exedy8Te20CE8R9aCPYD3NY=;
- b=cK7amoGe9+zrKtck13LqtmixPreqnHr8zFO064Wz0CwcawpzgqpWzqQ1/sfvrQPJaP
- n4lvFAHUM7AaQfCvmr+gY5sQgUfRxIYsRg3SOzINup4iv/gCzj5iEn+T2bFQ0vsVAt1H
- EJDWlUCrc/JPXXhNFZBk1cV/OmvX8oNB3sLGhZdvnSMYcjs53AdaL1vEVPgYIZH2RY1m
- 38eAUJBkjJsHZQpctfGDuj9qiCsuzQSiatCQ+dO7NtmaDYnxF+yrVz43A1Sy2mI8vLnA
- Gc6IkL86+Aiimi+cl5didqOXdk65oPc1hh6Hl27VvGBZEQ0WA6smiKLTOfsDEu6Jwq93
- u9Ow==
+ bh=VwlvYMLKGx15+uSdEjsebhQs/sGbFO9TGa0DA+Ywmbs=;
+ b=Of1wyaMj6TNMwlRECvq/dlZiVmcNe4TWyDw5AI1JKqqyipFVjBrJ8KjdMefQP0lHr/
+ jsdiuiJyuiB0L2HlEPkdLIvDb8QYkF5CMiUNZV1e5PJkuStHDQYcBIJ0dHgvNuS2ZZHD
+ +zxkYhcDoP2gReVKmROkVokO1YPKDbuntDXOJnZPbqSNT4sVk4c11x7ta2oQGJipWvQK
+ 7A2qiG7DZZTVNxil219Xh27P0LeXyCi9poUKa1jevjBxTTy7ePd4gDLLbaV9WkoZH4Qq
+ XRDLHKudOzlKKuf953cHtwsyXhsC3fB7cVPjZ/dWLhTzS6f8L1h7+05DDJC4MYSrJdfA
+ G6Fg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVn67cYBTsdg5o5u++5fkRjtw/Ex01ornUvpgS3hrx+aSZ1oq/fMSVJjNhn8GTCyTrYTBmLhATcNA==@nongnu.org
-X-Gm-Message-State: AOJu0Yw9j6awJTEYDrXbFQARFHBvW4tdDWuxVHcUsvYKfBOv2+1qOer5
- DWmjDcVJQrWaiymINYTVqWeV4xMgdgPlpESgyseCnP1b3r3aXmPsSxCleLNIHxK1CBacp5j2jHv
- 0QJsJJKjaFs+1UMdMNGg/I0ohaVkBOSzgAooGC2wpw0wPUd86GIjbKA==
-X-Gm-Gg: ASbGncsiCvrSS89LcqGH/Av32Dvr+yxb99XfXCdLmd63fipzLodiB5RKCFMA6ACjY2m
- HdSpbEdWjSzmgp/Sf/T4FtHLZlhp3judRcsGcySEqhOKcQjUKPq0NtAEYIk73wH6E9IdfJ2s1Yk
- h812wAhbH6pK8G4OTWEGqZaniAp7DY1O8oG6vMKJjhV1XtX6TJJNnIYs3gvM5EQ4+zUFTqkWQNP
- H9PCrir0kjxdcWHTRa5I9PqL52nbNXls2biO5Ir2QDT4z156UoTWloO176UVF1UVeA0jwPFc3rV
- fjwE4RwBYw0HRgu3MI/tC+PAScajibcFGJI9v/9iZ50E1+LeLOKuZmyCiTu5HPJxz2YVwA==
-X-Received: by 2002:a05:6000:1a88:b0:3b4:58ff:ed1 with SMTP id
- ffacd0b85a97d-3b4966267b8mr10438821f8f.52.1751908178547; 
- Mon, 07 Jul 2025 10:09:38 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHPd2bneaMF7NkCBkJQrgDTPDtLPO+jsuAjmZmwd22QcOUoJwMY/M7xS5Ryb9FOz4HgI9NgRA==
-X-Received: by 2002:a05:6000:1a88:b0:3b4:58ff:ed1 with SMTP id
- ffacd0b85a97d-3b4966267b8mr10438784f8f.52.1751908178052; 
- Mon, 07 Jul 2025 10:09:38 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b47225b5cdsm10577834f8f.85.2025.07.07.10.09.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 07 Jul 2025 10:09:37 -0700 (PDT)
-Message-ID: <152beeb2-7de7-4a4b-8f5d-806e7f18dda6@redhat.com>
-Date: Mon, 7 Jul 2025 19:09:34 +0200
+ AJvYcCUBVcn2K55O/8ngRzBNWjRXiQJvEIbgUmSwE+Rx9Moz6D3xUsxOeh1hckO7Vp+dBiXPuBw8gh0sKA==@nongnu.org
+X-Gm-Message-State: AOJu0YyXVQvvLhd5g3UNqafBa2EVk6xSA44HfVdy4J6xAbXoL7bvo7rU
+ lm96Ehbx4I/R0FBejF7ZEQrcYd0xUEeN36KdrarVclHI6tiDvtMhnAypH3tGyWKVM0A=
+X-Gm-Gg: ASbGncspZzk0r7iDwKUvzzdTlC/mJ/TWYupfGycmYjK1WAWHKThvQmMCG3z331zO61B
+ 55+uRWrwBCnIKp3Nx5gr8eAQxweNO5CKoBKMvsE0fD1wa4Rc3FvUdckvQyqEIEcBdtjMAybksbP
+ wM66m3wDB8VstXSc7KeS7AmJH6KBxe6Apeu8x3Sjlz6Pc8x4PEXw0pKxTPwTX67T7xFHTuP9h3a
+ 8cW6c1sl75JK+dUgzvl90Oo4+DciAoS+E+abi6oqo/Cbj0J19/45/AF9ehBUiCmjtwYujDtnBaw
+ 1mlHXzG39COCctj9z4JUegtsbLxTbPNoxBOJUPaJgbpNKzeu+ihJyOXeJ7QsNdNqz6Q88zffiMU
+ HfpAMjqmW7Mdxv3NqK43kVyEPt1UYmyGKAg0K
+X-Google-Smtp-Source: AGHT+IFXJaWZblJsvgvZ9YocoQ5qQUoqaCOLEEeQ4pK3oPMgd5g7JTcoK86RS82udO6VSR0rHXnl5A==
+X-Received: by 2002:a05:6000:25e3:b0:3a8:38b3:1aa1 with SMTP id
+ ffacd0b85a97d-3b49aa7746bmr6842620f8f.27.1751908811677; 
+ Mon, 07 Jul 2025 10:20:11 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3b472767a20sm10623419f8f.86.2025.07.07.10.20.10
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 07 Jul 2025 10:20:11 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-block@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [RFC PATCH-for-10.1 v6 00/14] target-info: Add more API for VirtIO
+ cleanups & introduce ARM macros
+Date: Mon,  7 Jul 2025 19:19:54 +0200
+Message-ID: <20250707172009.3884-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 00/36] ACPI PCI Hotplug support on ARM
-To: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, imammedo@redhat.com, Jonathan.Cameron@huawei.com,
- gustavo.romero@linaro.org, anisinha@redhat.com, mst@redhat.com,
- shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com, philmd@linaro.org, alex.bennee@linaro.org
-References: <20250703123728.414386-1-eric.auger@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250703123728.414386-1-eric.auger@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: FfnKLkCttL6rXPcupjG8cpvC5FU10L-6rC46wcKauI8_1751908179
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,192 +101,98 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
+Rather than re-spinning the whole "single-binary: Make hw/arm/
+common" series, restrict to the API additions, but include
+examples of their usefulness (hundreds of virtio objects
+removed from default Linux build).
+Time passed since I context-switched out of this work so I'm
+not sure the DEFINE_MACHINE_WITH_INTERFACES() implementation
+is in the form Zoltan asked.
 
-On 7/3/25 2:35 PM, Eric Auger wrote:
-> This series enables ACPI PCI hotplug/hotunplug on ARM.
-> It is not enabled by default and ACPI PCI hotplug can
-> be selected by setting:
->
-> -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on
->
-> Expected benefits should be similar to those listed in [1],
-> ie. removal of some racy behaviors, improved latencies.
->
-> The infrastructure used in x86 is heavily reused and a
-> huge part of the series consists in moving code from
-> hw/i386/acpi-build.c to a generic place and slightly
-> adapting it to make it usable on ARM. The DSDT table is
-> augmented to support ACPI PCI hotplug elements.
->
-> On ARM we use use a GED event to notify the OS about
-> hotplug events.
+Philippe Mathieu-Daudé (14):
+  target/qmp: Use target_cpu_type()
+  qemu/target-info: Factor target_arch() out
+  qemu/target-info: Add %target_arch field to TargetInfo
+  qemu/target-info: Introduce target_base_arch()
+  qemu/target-info: Add target_endian_mode()
+  qemu: Convert target_words_bigendian() to TargetInfo API
+  gdbstub/helpers: Replace TARGET_BIG_ENDIAN -> target_big_endian()
+  qemu: Declare all load/store helpert in 'qemu/bswap.h'
+  hw/virtio: Build various files once
+  hw/core/null-machine: Define machine as generic QOM type
+  hw/arm: Register TYPE_TARGET_ARM/AARCH64_MACHINE QOM interfaces
+  hw/core: Allow ARM/Aarch64 binaries to use the 'none' machine
+  hw/boards: Introduce DEFINE_MACHINE_WITH_INTERFACES() macro
+  hw/arm: Add DEFINE_MACHINE_[ARM_]AARCH64() macros
 
-gentle ping on this series. I was hoping that this could target 10.1 but
-I ackowledge this is a big series to review and I am already very
-grateful to all reviewers.
+ meson.build                           |  1 +
+ include/exec/tswap.h                  | 83 +--------------------------
+ include/gdbstub/helpers.h             | 15 ++---
+ include/hw/arm/machines-qom.h         | 31 ++++++++++
+ include/hw/boards.h                   |  6 +-
+ include/qemu/bswap.h                  | 73 +++++++++++++++++++++++
+ include/qemu/target-info-impl.h       |  8 ++-
+ include/qemu/target-info-qapi.h       | 36 ++++++++++++
+ include/qemu/target-info.h            | 10 +++-
+ include/system/memory.h               |  1 -
+ include/user/abitypes.h               |  1 -
+ target/ppc/mmu-hash64.h               |  2 -
+ cpu-target.c                          |  7 ---
+ hw/acpi/bios-linker-loader.c          |  2 -
+ hw/arm/allwinner-r40.c                |  1 -
+ hw/arm/boot.c                         |  2 +
+ hw/arm/npcm7xx.c                      |  2 +-
+ hw/block/hd-geometry.c                |  1 -
+ hw/char/riscv_htif.c                  |  1 -
+ hw/core/cpu-system.c                  |  2 +-
+ hw/core/machine-qmp-cmds.c            |  8 +--
+ hw/core/null-machine.c                | 20 ++++++-
+ hw/cxl/cxl-events.c                   |  2 -
+ hw/display/artist.c                   |  1 +
+ hw/display/ati.c                      |  1 +
+ hw/display/vga.c                      |  2 +-
+ hw/net/can/ctucan_core.c              |  1 -
+ hw/net/lan9118.c                      |  1 +
+ hw/net/rtl8139.c                      |  1 +
+ hw/net/vmxnet3.c                      |  1 -
+ hw/pci-host/gt64120.c                 |  1 +
+ hw/pci-host/pnv_phb3.c                |  1 +
+ hw/pci-host/pnv_phb4.c                |  1 +
+ hw/pci-host/ppce500.c                 |  1 -
+ hw/pci-host/sh_pci.c                  |  1 -
+ hw/s390x/s390-pci-inst.c              |  1 +
+ hw/sensor/lsm303dlhc_mag.c            |  1 -
+ hw/smbios/smbios.c                    |  1 +
+ hw/vfio/migration-multifd.c           |  1 -
+ hw/virtio/virtio-config-io.c          |  1 -
+ hw/virtio/virtio-pci.c                |  1 +
+ hw/virtio/virtio.c                    |  2 +-
+ hw/vmapple/virtio-blk.c               |  1 -
+ system/memory.c                       |  1 +
+ system/qtest.c                        |  1 +
+ target-info-qom.c                     | 24 ++++++++
+ target-info-stub.c                    |  3 +
+ target-info.c                         | 33 +++++++++++
+ target/arm/arm-qmp-cmds.c             |  3 +-
+ target/arm/cpu.c                      |  1 -
+ target/arm/machine.c                  | 12 ++++
+ target/i386/tcg/system/excp_helper.c  |  1 -
+ target/i386/xsave_helper.c            |  1 -
+ target/loongarch/loongarch-qmp-cmds.c |  3 +-
+ target/mips/system/mips-qmp-cmds.c    |  3 +-
+ target/riscv/vector_helper.c          |  1 -
+ tests/tcg/plugins/mem.c               |  1 +
+ hw/block/meson.build                  |  6 +-
+ hw/virtio/meson.build                 | 20 ++++---
+ 59 files changed, 302 insertions(+), 149 deletions(-)
+ create mode 100644 include/hw/arm/machines-qom.h
+ create mode 100644 include/qemu/target-info-qapi.h
+ create mode 100644 target-info-qom.c
 
-At least patches 1-15 have collected R-bs including Igor's ones. They
-can be seen as code move/reshuffle/cleanup and does not bring any
-functionality. I think patches 16-19 also belong to prerequisite and
-fixes and are easy to parse.
-So if we could at least have patches 1-19 merged in 10.1, this would
-alleviate the rebase efforts for next respins if any.
-
-Of course I have not totally lost all hopes to get this in in 10.1 ;-)
-and I will be able to diligently respin upon comments.
-
-Thanks
-
-Eric
->
-> Best Regards
->
-> Eric
->
-> This series can be found at:
-> https://github.com/eauger/qemu/tree/arm-acpi-pcihp-v5
->
-> previous series:
-> https://github.com/eauger/qemu/tree/arm-acpi-pcihp-v4
->
-> History:
-> v4 -> v5:
-> - Collected Jonathan's R-bs (many thanks!)
-> - fixed the tests/qtest/bios-tables-test issue by
->   creating a variant for the viot test
-> - use the 3 phase reset API
-> - fixed qom-test failures that were due to unconditionnal
->   fetches of the GED property
->
-> v3 -> v4:
-> - toook into account all comments on v3
-> - static acpi-index is now supported unconditionally
->   from acpi pcihp option. See indiviual patches.
-> - I hit a problem with ref block generation at
->   [19/32] tests/qtest/bios-tables-test: Update ARM DSDT reference
->   blobs: despite I regenerate the blobs, I get some errors.
->
-> v2 -> v3:
-> - lot of changes taking into account various feedbacks
->   (many thanks to all reviewers). Please refer to
->   individual patches for details. Main changes:
->   - no more machine option, acpi pci hp is not set by
->     default.
->   - removal of 2 unused variables in the osc method
->   - introduction of GED property to set the bus
->   - rework of the init/reset sequence
->   - fix virtio-mem-pci hotplug regression
->
-> v1 -> v2:
-> - collected a bunch of R-bs from Gustavo (many thanks!)
-> - Fixed the breakage of bios-tables-test in TCG mode by
->   incorporating Gustavo's patches (part of
->   [PATCH 0/5] ACPI tests for PCI Hotplug on ARM
->   https://lore.kernel.org/all/20250526053123.1434204-1-gustavo.romero@linaro.org/)
-> - Tweeked the dsdt aml changes to avoid any dsdt blob difference when
->   acpi-pcihp is off.
->
-> RFC -> v1:
-> - First 3 trivial patches were pulled separately
-> - Fix of the register region size (0x18), ie. ACPI_PCIHP_SIZE
-> - addition of aml_pci_edsm which was not called in RFC
-> - acpi-index feature is now fixed. vms->bus was not set on
->   acpi_pcihp_init. The init sequence is still hacky though. Suggestions
->   are welcome.
->
-> [1] [PATCH v6 0/6] Use ACPI PCI hot-plug for Q35
-> https://lore.kernel.org/all/20210713004205.775386-1-jusual@redhat.com/
->
->
-> Eric Auger (32):
->   hw/i386/acpi-build: Make aml_pci_device_dsm() static
->   hw/acpi: Rename and move build_x86_acpi_pci_hotplug to pcihp
->   hw/pci-host/gpex-acpi: Add native_pci_hotplug arg to
->     acpi_dsdt_add_pci_osc
->   hw/pci-host/gpex-acpi: Split host bridge OSC and DSM generation
->   hw/acpi/ged: Add a acpi-pci-hotplug-with-bridge-support property
->   hw/pci-host/gpex-acpi: Use GED acpi pcihp property
->   hw/i386/acpi-build: Turn build_q35_osc_method into a generic method
->   hw/pci-host/gpex-acpi: Use build_pci_host_bridge_osc_method
->   tests/qtest/bios-tables-test: Update DSDT blobs after GPEX _OSC change
->   hw/i386/acpi-build: Introduce build_append_pcihp_resources() helper
->   hw/acpi/pcihp: Add an AmlRegionSpace arg to build_acpi_pci_hotplug
->   hw/i386/acpi-build: Move build_append_notification_callback to pcihp
->   hw/i386/acpi-build: Move build_append_pci_bus_devices/pcihp_slots to
->     pcihp
->   hw/i386/acpi-build: Use AcpiPciHpState::root in acpi_set_pci_info
->   hw/i386/acpi-build: Move aml_pci_edsm to a generic place
->   qtest/bios-tables-test: Prepare for fixing the aarch64 viot test
->   qtest/bios-tables-test: Add a variant to the aarch64 viot test
->   qtest/bios-tables-test: Generate DSDT.viot
->   hw/arm/virt-acpi-build: Let non hotplug ports support static
->     acpi-index
->   tests/qtest/bios-tables-test: Update ARM DSDT reference blobs
->   hw/arm/virt-acpi-build: Modify the DSDT ACPI table to enable ACPI PCI
->     hotplug
->   hw/acpi/ged: Add a bus link property
->   hw/arm/virt: Pass the bus on the ged creation
->   hw/acpi/ged: Call pcihp plug callbacks in hotplug handler
->     implementation
->   hw/acpi/pcihp: Remove root arg in acpi_pcihp_init
->   hw/acpi/ged: Prepare the device to react to PCI hotplug events
->   hw/acpi/ged: Support migration of AcpiPciHpState
->   hw/core/sysbus: Introduce sysbus_mmio_map_name() helper
->   hw/arm/virt: Minor code reshuffling in create_acpi_ged
->   hw/arm/virt: Let virt support pci hotplug/unplug GED event
->   qtest/bios-tables-test: Generate reference blob for
->     DSDT.hpoffacpiindex
->   qtest/bios-tables-test: Generate reference blob for DSDT.acpipcihp
->
-> Gustavo Romero (4):
->   tests/qtest/bios-tables-test: Prepare for changes in the DSDT table
->   tests/qtest/bios-tables-test: Prepare for changes in the arm virt DSDT
->     table
->   tests/qtest/bios-tables-test: Prepare for addition of acpi pci hp
->     tests
->   tests/qtest/bios-tables-test: Add aarch64 ACPI PCI hotplug test
->
->  hw/i386/acpi-build.h                          |   4 -
->  include/hw/acpi/generic_event_device.h        |  17 +-
->  include/hw/acpi/pci.h                         |   5 +-
->  include/hw/acpi/pcihp.h                       |  17 +-
->  include/hw/arm/virt.h                         |   1 +
->  include/hw/pci-host/gpex.h                    |   1 +
->  include/hw/sysbus.h                           |   1 +
->  hw/acpi/acpi-pci-hotplug-stub.c               |   2 +-
->  hw/acpi/generic_event_device.c                |  77 +++
->  hw/acpi/ich9.c                                |   7 +-
->  hw/acpi/pci-bridge.c                          |  54 ++
->  hw/acpi/pci.c                                 |  50 ++
->  hw/acpi/pcihp.c                               | 439 ++++++++++++++-
->  hw/acpi/piix4.c                               |   5 +-
->  hw/arm/virt-acpi-build.c                      |  38 ++
->  hw/arm/virt.c                                 |  27 +-
->  hw/core/sysbus.c                              |  11 +
->  hw/i386/acpi-build.c                          | 532 +-----------------
->  hw/pci-host/gpex-acpi.c                       |  74 +--
->  tests/qtest/bios-tables-test.c                |  53 ++
->  hw/arm/Kconfig                                |   2 +
->  hw/pci-host/Kconfig                           |   1 +
->  tests/data/acpi/aarch64/virt/DSDT             | Bin 5196 -> 5293 bytes
->  .../data/acpi/aarch64/virt/DSDT.acpihmatvirt  | Bin 5282 -> 5379 bytes
->  tests/data/acpi/aarch64/virt/DSDT.acpipcihp   | Bin 0 -> 6202 bytes
->  .../acpi/aarch64/virt/DSDT.hpoffacpiindex     | Bin 0 -> 5347 bytes
->  tests/data/acpi/aarch64/virt/DSDT.memhp       | Bin 6557 -> 6654 bytes
->  tests/data/acpi/aarch64/virt/DSDT.pxb         | Bin 7679 -> 7768 bytes
->  tests/data/acpi/aarch64/virt/DSDT.topology    | Bin 5398 -> 5495 bytes
->  tests/data/acpi/aarch64/virt/DSDT.viot        | Bin 0 -> 5310 bytes
->  tests/data/acpi/riscv64/virt/DSDT             | Bin 3576 -> 3538 bytes
->  tests/data/acpi/x86/microvm/DSDT.pcie         | Bin 3023 -> 2985 bytes
->  32 files changed, 811 insertions(+), 607 deletions(-)
->  create mode 100644 tests/data/acpi/aarch64/virt/DSDT.acpipcihp
->  create mode 100644 tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex
->  create mode 100644 tests/data/acpi/aarch64/virt/DSDT.viot
->
+-- 
+2.49.0
 
 

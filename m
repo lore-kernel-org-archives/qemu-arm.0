@@ -4,106 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16EC4C8303C
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 17:26:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B3A7C71130
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 17:27:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uYpar-0005Oq-Is; Mon, 07 Jul 2025 13:25:36 -0400
+	id 1uYpXs-0003Bd-EB; Mon, 07 Jul 2025 13:22:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uYpad-0005CD-5t
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:25:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uYpab-000615-6a
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:25:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1751909111;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oQci3fqek21R+COSXStaejW9Snm1UGS4WsZYUzf869s=;
- b=Et2vQQuTWDsDRS25uZflYDqkV76q9U0l5b/tNgXDrb84ca3cTDMaxRz53+GBE3+tLTe8YJ
- CiWU2uOPNGJetM6dN/6qdySuKFHZzZLKtA1l6AjRbz5k8UyjzTzKTLcBrGTyavNp0h4lOe
- dvdXzGl5vm899680BRCa+88zdmGg1qQ=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-643-oKpzDlGtNKuH4Y7QE469_g-1; Mon, 07 Jul 2025 13:25:10 -0400
-X-MC-Unique: oKpzDlGtNKuH4Y7QE469_g-1
-X-Mimecast-MFC-AGG-ID: oKpzDlGtNKuH4Y7QE469_g_1751909109
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-451d30992bcso24335675e9.2
- for <qemu-arm@nongnu.org>; Mon, 07 Jul 2025 10:25:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uYpWI-0000fI-8S
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:20:55 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uYpW9-00053r-TD
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:20:42 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-3a4fd1ba177so2358380f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 07 Jul 2025 10:20:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1751908832; x=1752513632; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=j6jE+E8cLL9PvtEqsQIMM5Q/m0eFlodpHTi07huBO/s=;
+ b=W2yzfMoRJ11v8bg8P+Qg4ls0nJaIPhvLMev1/23gceETeNRghxq96r17Q3W23VtfLj
+ sJwezp3J24ng3cGsv2alz0/ew6MyWx+2orJKf7B9+D7dfR7MWxW12islGds7sZ/Z7mnP
+ 5u08tAe05DvA5FmsByc2GEqcC21Kf1H8X7v1xvAxx5thhlPnchhvef6zxy32SqnleTXp
+ yaHb9VK5Se/ibRlx93mo7pNgNKylJNwijlz5UEyVHNjBd2a1KbvVaM0F6/ogflqCSyfO
+ wQpg9oK8e+d+QL7hS3x6OI96DwE3EBvHRVBcmw8QErnd/zKx0X6aZTdhcvsaAWwNBKM4
+ ZUBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751909108; x=1752513908;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=oQci3fqek21R+COSXStaejW9Snm1UGS4WsZYUzf869s=;
- b=etDEstQEERyCOM16bEI99LFwG5v6N8WNL5sLsad/pJRrSwfb3B1ia3KQ/uFLhpa8qr
- B29I9Es31JYR1eLMYsPbGv0DyU1CCcXU6qHjTWWeBthpzAY2aXWbMyOzrPVY6+PAdUR7
- LqlTzGepuTEQCxQlz7z1bNpjRkEklRizIW612wTHjWMkl8KaXQYKdaB8bP50aUWYsPOE
- OVWHimXNpWdxL+s1jbj1ajkdTJ5Vd4zNM/wEq3yWoTfGYY51oKcmRCL7eu/lY701FAgh
- Oq+HLd99qC8n8NQleMJnwXfZc/cCq8L1BM4HA82uMKTaEB5zUEJxcAHaezehhR7RKSJw
- z/fw==
+ d=1e100.net; s=20230601; t=1751908832; x=1752513632;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=j6jE+E8cLL9PvtEqsQIMM5Q/m0eFlodpHTi07huBO/s=;
+ b=G9FRRjXEou65S1zGOHKTSjfHZnS7yareB1sKrobDbQzT5QEHseBMBtb7ZaxidMkT/3
+ +XdehGB6gvMWagCLsB9Qcy/hHDuP0piS6c1IU77Hb+dPqLWmzgBbEhS/+Jv9Ivrylm+4
+ x5PJLmRNUbJX4nPMXhaBFzXvOpCAZFxb4hYxK4wJmU0Gd4MaKDYIkmHYRxnnjrnyiOZF
+ MXbNl2mkBAiUE4exFjO37fWIvK0fVIVfRAWS6sciJzaq/zX0Sd8aYuZnWw20SGJXm5It
+ 9N7IbqL8yU/e8HN0+ArCPFd5dMpZLZZD3fvuoaaGV5sYHPmWCe5bpKgoxbg5NUllpr04
+ MXnw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV5S9Mh1Q9tLWeswDg79GZZU7W8BRdSkEmmU/7Az8F0kkvx+F3bjS2VC83avlzC9UDYpfeVUtuwDQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwJFGEng1Dy8vyS9RHTctktVEmV+A/pR93z6nUh1gcnYbVcMwFB
- zOQhX5jCcxGwKXfi8OJauVx98XYPtZQGtwOZoQCd3ckQGPi+sB0xhMUWixAh2OqKFLXAcbLLmcg
- jrkzzcUlG8Nn9FppsODRX7MEP/OhchRMKp8JIp855WsTKgkFY5cMoQMT94XRuTw==
-X-Gm-Gg: ASbGncupod9+Zk9wB0gGVluJQjsNB890FElMu/uiKsFMKZN8K4mgI56xZ4qBCXZu9aI
- TX73RrV6eDi+UV79U1EV2tRFi/w9vqKbIq7MQk+tvRiZuur3UAL4f0+NhR8hMGCpNiHF2WnQ0st
- XHnAmz/YHVxzrBn6xuPUTqqFGZAlLmoMON0pLBMrGNQ0YiEO9mhWrSYw3C/x8JxD2O8prxojjJX
- M8tSAnI0Uf4ahmY5aKTGBORGadI6EqPYIRLsCf/9/X1h8jQ5nodSv2k5anPYQ2z686DmKhLf8xu
- Y/uIYbinqxsUSLI7UDlAHsK9eWhLPbv+ASajk66868TEeb0Mzc/GgS+L1ER+7E6wnSrLmw==
-X-Received: by 2002:a05:600c:a4b:b0:453:1e14:6387 with SMTP id
- 5b1f17b1804b1-454b4ec46d0mr97376215e9.32.1751909107756; 
- Mon, 07 Jul 2025 10:25:07 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG/qOdixyfNMg7eHc5kapYqDFxEsfkT42QE2VVqGkQQ5n+Urx1WIEiXF9znmKP2B4j9WKI+fA==
-X-Received: by 2002:a05:600c:a4b:b0:453:1e14:6387 with SMTP id
- 5b1f17b1804b1-454b4ec46d0mr97375995e9.32.1751909107150; 
- Mon, 07 Jul 2025 10:25:07 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-454b162a3ccsm118058915e9.12.2025.07.07.10.25.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 07 Jul 2025 10:25:06 -0700 (PDT)
-Message-ID: <d87b733a-c8d3-4038-9159-60806d5a6186@redhat.com>
-Date: Mon, 7 Jul 2025 19:25:05 +0200
+ AJvYcCVm5c+UvAI3QkUGpXRbU2C+oVF7txriO86RtGpxGvn/BWdJEeA7j2n7ZQwmx+1oxhHpTdGw/mVMVQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzUsEux8gxv3QvGLeSF2Sr1fNNCQjN6aLUdhcm+C4gmUh/XTFCY
+ 3TmpBxVQZMYOMmFluXkiuPT+I9jx6LE7GcS/desBNtcs4mPStG5mt6KPEjjVBMDv/54/F/XqXqY
+ ak8x3Re0=
+X-Gm-Gg: ASbGncvlenH9Lkq/WUO1R79ZYhK4EOz82UuRAzJGcEkxbGS6w9uvhh/1AfE0xSv1J+C
+ 6Oxv+I5rFfIKcrNxKlqj/CJ8HMVC9LjGteVJBOwT6eMCvjK9JMkI62M/vP9+HERxLDyIB2/2NrB
+ Ia4hGkwboBFC3b6emQepLc3C0LPJxQHoq01/0YCm+GsV+/qVSO1RGPfSDIkamZaXBnbW14/OTML
+ nIxRLTeHA8lNisIFTBQdipojRqAuYqZK2R+4ELntZC1Qto923vaX4Glya0YRV9A/6T/LQVmRf3S
+ 6N/XXbKHMw9dedktYhJi8ZeU5jL4VZO60k47Pgf7G2D1lCoEMaJqIqcVR8WdWYJYqdykcSCf2b7
+ aBDaETsQNh5Ze1Km9Jj3G4k1zeGySv7kvI4Xi
+X-Google-Smtp-Source: AGHT+IEBAmgTQWwQQDm+6K4rVCpjdWQ5u057LU8G4ktHHXd0VbtGTyL3sl9T3U7ABAnB++ZEW7nESw==
+X-Received: by 2002:a05:6000:20c2:b0:3a4:f722:a46b with SMTP id
+ ffacd0b85a97d-3b5dd15bdfcmr143247f8f.15.1751908831556; 
+ Mon, 07 Jul 2025 10:20:31 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3b47225afd4sm10589634f8f.83.2025.07.07.10.20.30
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 07 Jul 2025 10:20:31 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-block@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH-for-10.1 v6 04/14] qemu/target-info: Introduce
+ target_base_arch()
+Date: Mon,  7 Jul 2025 19:19:58 +0200
+Message-ID: <20250707172009.3884-5-philmd@linaro.org>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250707172009.3884-1-philmd@linaro.org>
+References: <20250707172009.3884-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] hw/intc/arm_gicv3_kvm: Migrate GICD_TYPER2
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Marc Zyngier <maz@kernel.org>
-References: <20250707161018.585469-1-peter.maydell@linaro.org>
- <20250707161018.585469-3-peter.maydell@linaro.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250707161018.585469-3-peter.maydell@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 0PJXAVJ81Pin87FTwdkGgE7FWZPbbWjzStmYHqaPq3g_1751909109
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,135 +105,84 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Peter,
+target_base_arch() returns the base architecture as in QEMU
+target/$arch/ path. For example, X86_64 is implemented in the
+target/i386/ so its QEMU base arch is 'i386'.
 
-On 7/7/25 6:10 PM, Peter Maydell wrote:
-> The GICD_TYPER2 register is new for GICv4.1.  As an ID register, we
-> migrate it so that on the destination the kernel can check that the
-> destination supports the same configuration that the source system
-> had.  This avoids confusing behaviour if the user tries to migrate a
-> VM from a GICv3 system to a GICv4.1 system or vice-versa.  (In
-> practice the inability to migrate between different CPU types
-> probably already prevented this.)
->
-> Note that older kernels pre-dating GICv4.1 support in the KVM GIC
-> will just ignore whatever userspace writes to GICD_TYPER2, so
-> migration where the destination is one of those kernels won't have
-> this safety-check.
->
-> (The reporting of a mismatch will be a bit clunky, because this
-> file currently uses error_abort for all failures to write the
-> data to the kernel. Ideally we would fix this by making them
-> propagate the failure information back up to the post_load hook
-> return value, to cause a migration failure.)
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  include/hw/intc/arm_gicv3_common.h |  6 ++++++
->  hw/intc/arm_gicv3_common.c         | 24 ++++++++++++++++++++++++
->  hw/intc/arm_gicv3_kvm.c            |  6 ++++++
->  3 files changed, 36 insertions(+)
->
-> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-> index a3d6a0e5077..bcbcae1fbe7 100644
-> --- a/include/hw/intc/arm_gicv3_common.h
-> +++ b/include/hw/intc/arm_gicv3_common.h
-> @@ -267,6 +267,12 @@ struct GICv3State {
->      GICv3CPUState *gicd_irouter_target[GICV3_MAXIRQ];
->      uint32_t gicd_nsacr[DIV_ROUND_UP(GICV3_MAXIRQ, 16)];
->  
-> +    /*
-> +     * GICv4.1 extended ID information. This is currently only needed
-> +     * for migration of a KVM GIC.
-> +     */
-> +    uint32_t gicd_typer2;
-> +
->      GICv3CPUState *cpu;
->      /* List of all ITSes connected to this GIC */
->      GPtrArray *itslist;
-> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-> index 1cee68193ca..7b09771310e 100644
-> --- a/hw/intc/arm_gicv3_common.c
-> +++ b/hw/intc/arm_gicv3_common.c
-> @@ -275,6 +275,29 @@ const VMStateDescription vmstate_gicv3_gicd_nmi = {
->      }
->  };
->  
-> +static bool gicv3_typer2_needed(void *opaque)
-> +{
-> +    /*
-> +     * GICD_TYPER2 ID register for GICv4.1. Was RES0 for
-> +     * GICv3 and GICv4.0; don't migrate if zero for backwards
-> +     * compatibility.
-> +     */
-> +    GICv3State *cs = opaque;
-> +
-> +    return cs->gicd_typer2 != 0;
-> +}
-> +
-> +const VMStateDescription vmstate_gicv3_gicd_typer2 = {
-> +    .name = "arm_gicv3/gicd_typer2",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .needed = gicv3_typer2_needed,
-> +    .fields = (const VMStateField[]) {
-> +        VMSTATE_UINT32(gicd_typer2, GICv3State),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  static const VMStateDescription vmstate_gicv3 = {
->      .name = "arm_gicv3",
->      .version_id = 1,
-> @@ -304,6 +327,7 @@ static const VMStateDescription vmstate_gicv3 = {
->      .subsections = (const VMStateDescription * const []) {
->          &vmstate_gicv3_gicd_no_migration_shift_bug,
->          &vmstate_gicv3_gicd_nmi,
-> +        &vmstate_gicv3_gicd_typer2,
->          NULL
->      }
->  };
-> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-> index 3be3bf6c28d..0302beb0c07 100644
-> --- a/hw/intc/arm_gicv3_kvm.c
-> +++ b/hw/intc/arm_gicv3_kvm.c
-> @@ -332,6 +332,9 @@ static void kvm_arm_gicv3_put(GICv3State *s)
->      kvm_gicr_access(s, GICR_TYPER + 4, 0, &regh, false);
->      redist_typer = ((uint64_t)regh << 32) | regl;
->  
-> +    reg = s->gicd_typer2;
-> +    kvm_gicd_access(s, GICD_TYPER2, &reg, true);
-> +
-I don't know if there is any rationale about the access order. I see
-most of the dist reg accesses are done below in the function after rdist
-ones, although the GICD_CTLR is also here. If there is a rationale a
-comment may be useful to avoid another dev to do something wrong. I
-remember that for the ITS for instance some speicifc ordering needed to
-be enforced.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/qemu/target-info-impl.h |  2 ++
+ include/qemu/target-info-qapi.h |  7 +++++++
+ target-info-stub.c              |  1 +
+ target-info.c                   | 10 ++++++++++
+ 4 files changed, 20 insertions(+)
 
-While at it you can also fix the missing bracket at
- /* Distributor state (shared between all CPUs */
-
-same remark on the guest side and same missing bracket ;-)
->      reg = s->gicd_ctlr;
->      kvm_gicd_access(s, GICD_CTLR, &reg, true);
->  
-> @@ -519,6 +522,9 @@ static void kvm_arm_gicv3_get(GICv3State *s)
->      kvm_gicr_access(s, GICR_TYPER + 4, 0, &regh, false);
->      redist_typer = ((uint64_t)regh << 32) | regl;
->  
-> +    kvm_gicd_access(s, GICD_TYPER2, &reg, false);
-> +    s->gicd_typer2 = reg;
-> +
->      kvm_gicd_access(s, GICD_CTLR, &reg, false);
->      s->gicd_ctlr = reg;
->  
-Others looks good to me
-
-Eric
+diff --git a/include/qemu/target-info-impl.h b/include/qemu/target-info-impl.h
+index a8b34d150ab..c5aea6fa6d2 100644
+--- a/include/qemu/target-info-impl.h
++++ b/include/qemu/target-info-impl.h
+@@ -16,6 +16,8 @@ typedef struct TargetInfo {
+     const char *target_name;
+     /* related to TARGET_ARCH definition */
+     SysEmuTarget target_arch;
++    /* related to TARGET_BASE_ARCH definition (target/${base_arch}/ path) */
++    SysEmuTarget target_base_arch;
+     /* runtime equivalent of TARGET_LONG_BITS definition */
+     unsigned long_bits;
+     /* runtime equivalent of CPU_RESOLVING_TYPE definition */
+diff --git a/include/qemu/target-info-qapi.h b/include/qemu/target-info-qapi.h
+index dae92c47eb1..5d63fc4ab84 100644
+--- a/include/qemu/target-info-qapi.h
++++ b/include/qemu/target-info-qapi.h
+@@ -18,4 +18,11 @@
+  */
+ SysEmuTarget target_arch(void);
+ 
++/**
++ * target_base_arch:
++ *
++ * Returns: QAPI SysEmuTarget enum (i.e. SYS_EMU_TARGET_I386).
++ */
++SysEmuTarget target_base_arch(void);
++
+ #endif
+diff --git a/target-info-stub.c b/target-info-stub.c
+index 2e4407ff04b..c0f438b45c4 100644
+--- a/target-info-stub.c
++++ b/target-info-stub.c
+@@ -15,6 +15,7 @@
+ static const TargetInfo target_info_stub = {
+     .target_name = TARGET_NAME,
+     .target_arch = SYS_EMU_TARGET__MAX,
++    .target_base_arch = SYS_EMU_TARGET__MAX,
+     .long_bits = TARGET_LONG_BITS,
+     .cpu_type = CPU_RESOLVING_TYPE,
+     .machine_typename = TYPE_MACHINE,
+diff --git a/target-info.c b/target-info.c
+index 8e29553b4ef..46780ec5450 100644
+--- a/target-info.c
++++ b/target-info.c
+@@ -33,6 +33,16 @@ SysEmuTarget target_arch(void)
+     return arch;
+ }
+ 
++SysEmuTarget target_base_arch(void)
++{
++    SysEmuTarget base_arch = target_info()->target_base_arch;
++
++    if (base_arch == SYS_EMU_TARGET__MAX) {
++        base_arch = target_arch();
++    }
++    return base_arch;
++}
++
+ const char *target_cpu_type(void)
+ {
+     return target_info()->cpu_type;
+-- 
+2.49.0
 
 

@@ -4,65 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 235EEC71130
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 16:44:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB32BC8303C
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 17:06:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uYovM-0005Lb-H7; Mon, 07 Jul 2025 12:42:36 -0400
+	id 1uYpIE-0007jF-2l; Mon, 07 Jul 2025 13:06:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uYour-0004dZ-S3
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 12:42:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1uYpDW-0002Um-8W
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:01:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uYouq-00060u-99
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 12:42:05 -0400
+ id 1uYpDP-0001TL-Ca
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:01:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1751906523;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
+ s=mimecast20190719; t=1751907673;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=2Q3O8eJ538y7PYDfgBgjViRu/m/H+nJ5Qmx9a5Hovgs=;
- b=T+w8opYkCAX1Lv1IexSr5cdwB8R+aGKdoquyLGoJlbsahTm9e3/4Fq/HEDtKm83CiTNhJO
- JIq0T2VfEELF4e1XSrttbnRqnM5CS3sbCXAUHw48B3riGI1CRgfJU2oth2hZbFZC4fdCmi
- 6WM7DKQ1/C0kmmMKmpVeiVpR0bWLfB4=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-689-E-35iN02Ot6wS8fewfBnhA-1; Mon,
- 07 Jul 2025 12:42:00 -0400
-X-MC-Unique: E-35iN02Ot6wS8fewfBnhA-1
-X-Mimecast-MFC-AGG-ID: E-35iN02Ot6wS8fewfBnhA_1751906518
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 799EB18011F9; Mon,  7 Jul 2025 16:41:58 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.44.32.187])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 49AC018003FC; Mon,  7 Jul 2025 16:41:54 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, miguel.luis@oracle.com, peter.maydell@linaro.org,
- richard.henderson@linaro.org, maz@kernel.org,
- gkulkarni@amperecomputing.com, gankulkarni@os.amperecomputing.com
-Cc: hi@alyssa.is
-Subject: [PATCH v9 4/5] hw/arm/arm_gicv3_kvm: Add a migration blocker with kvm
- nested virt
-Date: Mon,  7 Jul 2025 18:40:30 +0200
-Message-ID: <20250707164129.1167837-5-eric.auger@redhat.com>
-In-Reply-To: <20250707164129.1167837-1-eric.auger@redhat.com>
-References: <20250707164129.1167837-1-eric.auger@redhat.com>
+ bh=lpgYKlczFeuxrlFKNeufRtRyceaecv3+qEYqERdQXrc=;
+ b=aYTLypwcIzfJFd2ThVBccGsQSaoK1BNzRA6OiDfCjJnjpxZfoWg2vLzNCvOmm+uOd4BY26
+ +GtYejsCmeAD4oSxKV3xVea2m7nx4rT2KA0LCQBoZFpVh+kQOqg/Hg3yJfRPvYphzwOOP9
+ +BYHP1QNlPg2jJXv2dEO4pdvdggK3+k=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-472-7ZUbYtMBNbaMkGu_IJq3VQ-1; Mon, 07 Jul 2025 13:01:12 -0400
+X-MC-Unique: 7ZUbYtMBNbaMkGu_IJq3VQ-1
+X-Mimecast-MFC-AGG-ID: 7ZUbYtMBNbaMkGu_IJq3VQ_1751907671
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-450d244bfabso25026835e9.0
+ for <qemu-arm@nongnu.org>; Mon, 07 Jul 2025 10:01:12 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1751907671; x=1752512471;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=lpgYKlczFeuxrlFKNeufRtRyceaecv3+qEYqERdQXrc=;
+ b=r221u2u+8MCm24WZ65XccSW+33nU9Cp69Me6L+ZGbcC484121lTsfLJMpF8inQaCe/
+ 37OcL6Peib+iwXl+m05QzN5h/l726wbjVdNBDHYWBosl1YtL1H+ebPgUAqgt1kJNQuzM
+ pjpX9t/L23+3ZUEusx1LQ+UxAuYdvRfH8H8QruhfsQaXsPEWkKIK7MWGofBDA2xSejQ7
+ m1ysh/KE5/W5NZfa8qb7FWAM0rzH1ngamsP2e3QJPox08HRMJtEgWGW1cY3u8EZ+UGNC
+ 05VDKf9iitWpjuBvfW2K+f/rAqlj1wE8HoVNmuZXRUybWM2iHQ6A0dDB7Cj7DixLmf6V
+ TUbg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUkEnalmI53mYRhRsYTMpKEatM5XFfWfG4kTOGjpdlNAmJetmpxMyjXELTgBOqSiBc1HoLDR0kxog==@nongnu.org
+X-Gm-Message-State: AOJu0Yy9GkTC6cSb5T6S58WXqIS3EMhu85BccI0Qdml+XjNwkpgwWpyp
+ mQnM5ZDZ+NW2/lwOl//dGHa4lyw95jTJWRqgQa+WHU5pyOcIHjt7IGlSotQhnA8wGWvI8V2wxD5
+ CJfZ2zXTelcdmKc4RtloDAiK1mXJ/phriJjkdDHmK7xNBscJxRbmORg==
+X-Gm-Gg: ASbGncvAoLlWBfSu/GfA9sZsB2xET1p5UmUq/BCiO6jdzijtE/RmCI2eKZ+dTEJgZed
+ Iwh33xZ5VXcJTV29pMqxngH2DG4z558xtkCFE7mcLvBkqhkc5HR+CW0rVfuZgI56bSVXrwiC5vC
+ kJKDnXXcFDBKOVAHm5Cewayew9sArYqFZvuWUmjbP+JZCErZRSCw43NLckmDV8n9tc578w4+IDm
+ Uj5/YS+mdalST5Tjn04d0nh87fsy3hD5B/La2ncJg4j4/isDZSzXheSx0E3CNd0G+uHc8na8DYS
+ zkfxOZ/DXxoSmdgFpsBKPP14PDS5LZw5GG0QEFVbjyOosQwwAew0KDyFr1AFkB84mp5wKA==
+X-Received: by 2002:a05:6000:4022:b0:3a6:e1e7:2a88 with SMTP id
+ ffacd0b85a97d-3b497037a9amr11539217f8f.57.1751907670628; 
+ Mon, 07 Jul 2025 10:01:10 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGaZUot5l6fhwuh/BrwTrEt1yg/BIv2AacsBztyW3suDwyHxCXPJPilmrMVOObKqkLmjIegRw==
+X-Received: by 2002:a05:6000:4022:b0:3a6:e1e7:2a88 with SMTP id
+ ffacd0b85a97d-3b497037a9amr11538991f8f.57.1751907668437; 
+ Mon, 07 Jul 2025 10:01:08 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-454c041cd4asm64259515e9.28.2025.07.07.10.01.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 07 Jul 2025 10:01:07 -0700 (PDT)
+Message-ID: <cf2deff5-92d8-419e-b94d-fb346f17b10d@redhat.com>
+Date: Mon, 7 Jul 2025 19:01:06 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124;
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 35/36] qtest/bios-tables-test: Generate reference blob
+ for DSDT.hpoffacpiindex
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, imammedo@redhat.com, gustavo.romero@linaro.org,
+ anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com,
+ pbonzini@redhat.com, philmd@linaro.org, alex.bennee@linaro.org
+References: <20250703123728.414386-1-eric.auger@redhat.com>
+ <20250703123728.414386-36-eric.auger@redhat.com>
+ <20250703160233.00001571@huawei.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20250703160233.00001571@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: uL23b2BHwa088eh_ZcKqL6spoiADhVaW-3Jhp4F7yAs_1751907671
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -71,7 +107,7 @@ X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,41 +120,372 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We may be miss some NV related GIC register save/restore. Until
-we complete the study, let's add a migration blocker when the
-maintenance IRQ is set.
+Hi Jonathan,
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/arm_gicv3_kvm.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+On 7/3/25 5:02 PM, Jonathan Cameron wrote:
+> On Thu,  3 Jul 2025 14:35:35 +0200
+> Eric Auger <eric.auger@redhat.com> wrote:
+>
+>> The disassembled DSDT table is given below
+> I'd suggest maybe a spot of cropping to bring this down to a reasonable length.
+> See inline.
+Yup. I can do that.
+>
+> Otherwise LGTM
+>
+> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+many thanks!
 
-diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-index b30aac7aee..fccb3886bf 100644
---- a/hw/intc/arm_gicv3_kvm.c
-+++ b/hw/intc/arm_gicv3_kvm.c
-@@ -827,8 +827,16 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
-     }
- 
-     if (s->maint_irq) {
-+        Error *kvm_nv_migration_blocker = NULL;
-         int ret;
- 
-+        error_setg(&kvm_nv_migration_blocker,
-+                       "Live migration disabled due to KVM nested virt enabled");
-+        if (migrate_add_blocker(&kvm_nv_migration_blocker, errp)) {
-+            error_free(kvm_nv_migration_blocker);
-+            return;
-+        }
-+
-         ret = kvm_device_check_attr(s->dev_fd,
-                                     KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ, 0);
-         if (!ret) {
--- 
-2.49.0
+Eric
+>
+>>  * Original Table Header:
+>>  *     Signature        "DSDT"
+>>  *     Length           0x000014E3 (5347)
+>>  *     Revision         0x02
+>>  *     Checksum         0x92
+>>  *     OEM ID           "BOCHS "
+>>  *     OEM Table ID     "BXPC    "
+>>  *     OEM Revision     0x00000001 (1)
+>>  *     Compiler ID      "BXPC"
+>>  *     Compiler Version 0x00000001 (1)
+>>  */
+>> DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
+>> {
+>>     Scope (\_SB)
+>>     {
+>>         Device (C000)
+>>         {
+>>             Name (_HID, "ACPI0007" /* Processor Device */)  // _HID: Hardware ID
+>>             Name (_UID, Zero)  // _UID: Unique ID
+>>         }
+>>
+>>         Device (COM0)
+>>         {
+>>             Name (_HID, "ARMH0011")  // _HID: Hardware ID
+>>             Name (_UID, Zero)  // _UID: Unique ID
+>>             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+>>             {
+>>                 Memory32Fixed (ReadWrite,
+>>                     0x09000000,         // Address Base
+>>                     0x00001000,         // Address Length
+>>                     )
+>>                 Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+>>                 {
+>>                     0x00000021,
+>>                 }
+>>             })
+>>         }
+>>
+>>         Device (FWCF)
+>>         {
+>>             Name (_HID, "QEMU0002")  // _HID: Hardware ID
+>>             Name (_STA, 0x0B)  // _STA: Status
+>>             Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+>>             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+>>             {
+>>                 Memory32Fixed (ReadWrite,
+>>                     0x09020000,         // Address Base
+>>                     0x00000018,         // Address Length
+>>                     )
+>>             })
+>>         }
+>>
+>>         Device (VR00)
+>>         {
+>>             Name (_HID, "LNRO0005")  // _HID: Hardware ID
+>>             Name (_UID, Zero)  // _UID: Unique ID
+>>             Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+>>             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+>>             {
+>>                 Memory32Fixed (ReadWrite,
+>>                     0x0A000000,         // Address Base
+>>                     0x00000200,         // Address Length
+>>                     )
+>>                 Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+>>                 {
+>>                     0x00000030,
+>>                 }
+>>             })
+>>         }
+> If you want to keep these, maybe a single representative LNRO0005 only.
+>
+>>         Device (PCI0)
+>>         {
+>>             Name (_HID, "PNP0A08" /* PCI Express Bus */)  // _HID: Hardware ID
+>>             Name (_CID, "PNP0A03" /* PCI Bus */)  // _CID: Compatible ID
+>>             Name (_SEG, Zero)  // _SEG: PCI Segment
+>>             Name (_BBN, Zero)  // _BBN: BIOS Bus Number
+>>             Name (_UID, Zero)  // _UID: Unique ID
+>>             Name (_STR, Unicode ("PCIe 0 Device"))  // _STR: Description String
+>>             Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+>>             Name (_PRT, Package (0x80)  // _PRT: PCI Routing Table
+>>             {
+>>                 Package (0x04)
+>>                 {
+>>                     0xFFFF,
+>>                     Zero,
+>>                     L000,
+>>                     Zero
+>>                 },
+>>
+> Could probably crop this to just leave a representative chunk.
+>
+>>             })
+>>             Method (_CBA, 0, NotSerialized)  // _CBA: Configuration Base Address
+>>             {
+>>                 Return (0x0000004010000000)
+>>             }
+>>
+>>             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+>>             {
+>>                 WordBusNumber (ResourceProducer, MinFixed, MaxFixed, PosDecode,
+>>                     0x0000,             // Granularity
+>>                     0x0000,             // Range Minimum
+>>                     0x00FF,             // Range Maximum
+>>                     0x0000,             // Translation Offset
+>>                     0x0100,             // Length
+>>                     ,, )
+>>                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
+>>                     0x00000000,         // Granularity
+>>                     0x10000000,         // Range Minimum
+>>                     0x3EFEFFFF,         // Range Maximum
+>>                     0x00000000,         // Translation Offset
+>>                     0x2EFF0000,         // Length
+>>                     ,, , AddressRangeMemory, TypeStatic)
+>>                 DWordIO (ResourceProducer, MinFixed, MaxFixed, PosDecode, EntireRange,
+>>                     0x00000000,         // Granularity
+>>                     0x00000000,         // Range Minimum
+>>                     0x0000FFFF,         // Range Maximum
+>>                     0x3EFF0000,         // Translation Offset
+>>                     0x00010000,         // Length
+>>                     ,, , TypeStatic, DenseTranslation)
+>>                 QWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
+>>                     0x0000000000000000, // Granularity
+>>                     0x0000008000000000, // Range Minimum
+>>                     0x000000FFFFFFFFFF, // Range Maximum
+>>                     0x0000000000000000, // Translation Offset
+>>                     0x0000008000000000, // Length
+>>                     ,, , AddressRangeMemory, TypeStatic)
+>>             })
+>>             Method (_OSC, 4, NotSerialized)  // _OSC: Operating System Capabilities
+>>             {
+>>                 CreateDWordField (Arg3, Zero, CDW1)
+>>                 If ((Arg0 == ToUUID ("33db4d5b-1ff7-401c-9657-7441c03dd766") /* PCI Host Bridge Device */))
+>>                 {
+>>                     CreateDWordField (Arg3, 0x04, CDW2)
+>>                     CreateDWordField (Arg3, 0x08, CDW3)
+>>                     Local0 = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
+>>                     Local0 &= 0x1F
+>>                     If ((Arg1 != One))
+>>                     {
+>>                         CDW1 |= 0x08
+>>                     }
+>>
+>>                     If ((CDW3 != Local0))
+>>                     {
+>>                         CDW1 |= 0x10
+>>                     }
+>>
+>>                     CDW3 = Local0
+>>                 }
+>>                 Else
+>>                 {
+>>                     CDW1 |= 0x04
+>>                 }
+>>
+>>                 Return (Arg3)
+>>             }
+>>
+>>             Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
+>>             {
+>>                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+>>                 {
+>>                     If ((Arg2 == Zero))
+>>                     {
+>>                         Return (Buffer (One)
+>>                         {
+>>                              0x01                                             // .
+>>                         })
+>>                     }
+>>                 }
+>>
+>>                 Return (Buffer (One)
+>>                 {
+>>                      0x00                                             // .
+>>                 })
+>>             }
+>>
+>>             Device (RES0)
+>>             {
+>>                 Name (_HID, "PNP0C02" /* PNP Motherboard Resources */)  // _HID: Hardware ID
+>>                 Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+>>                 {
+>>                     QWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
+>>                         0x0000000000000000, // Granularity
+>>                         0x0000004010000000, // Range Minimum
+>>                         0x000000401FFFFFFF, // Range Maximum
+>>                         0x0000000000000000, // Translation Offset
+>>                         0x0000000010000000, // Length
+>>                         ,, , AddressRangeMemory, TypeStatic)
+>>                 })
+>>             }
+>>         }
+>>
+>>         Device (\_SB.GED)
+>>         {
+>>             Name (_HID, "ACPI0013" /* Generic Event Device */)  // _HID: Hardware ID
+>>             Name (_UID, "GED")  // _UID: Unique ID
+>>             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+>>             {
+>>                 Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, )
+>>                 {
+>>                     0x00000029,
+>>                 }
+>>             })
+>>             OperationRegion (EREG, SystemMemory, 0x09080000, 0x04)
+>>             Field (EREG, DWordAcc, NoLock, WriteAsZeros)
+>>             {
+>>                 ESEL,   32
+>>             }
+>>
+>>             Method (_EVT, 1, Serialized)  // _EVT: Event
+>>             {
+>>                 Local0 = ESEL /* \_SB_.GED_.ESEL */
+>>                 If (((Local0 & 0x02) == 0x02))
+>>                 {
+>>                     Notify (PWRB, 0x80) // Status Change
+>>                 }
+>>             }
+>>         }
+>>
+>>         Device (PWRB)
+>>         {
+>>             Name (_HID, "PNP0C0C" /* Power Button Device */)  // _HID: Hardware ID
+>>             Name (_UID, Zero)  // _UID: Unique ID
+>>         }
+>>     }
+>>
+>>     Scope (\_SB.PCI0)
+>>     {
+>>         Method (EDSM, 5, Serialized)
+>>         {
+>>             If ((Arg2 == Zero))
+>>             {
+>>                 Local0 = Buffer (One)
+>>                     {
+>>                          0x00                                             // .
+>>                     }
+>>                 If ((Arg0 != ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+>>                 {
+>>                     Return (Local0)
+>>                 }
+>>
+>>                 If ((Arg1 < 0x02))
+>>                 {
+>>                     Return (Local0)
+>>                 }
+>>
+>>                 Local0 [Zero] = 0x81
+>>                 Return (Local0)
+>>             }
+>>
+>>             If ((Arg2 == 0x07))
+>>             {
+>>                 Local0 = Package (0x02)
+>>                     {
+>>                         Zero,
+>>                         ""
+>>                     }
+>>                 Local1 = DerefOf (Arg4 [Zero])
+>>                 Local0 [Zero] = Local1
+>>                 Return (Local0)
+>>             }
+>>         }
+>>
+>>         Device (S00)
+>>         {
+>>             Name (_ADR, Zero)  // _ADR: Address
+>>         }
+>>
+>>         Device (S08)
+>>         {
+>>             Name (_ADR, 0x00010000)  // _ADR: Address
+>>         }
+>>
+>>         Device (S38)
+>>         {
+>>             Name (_ADR, 0x00070000)  // _ADR: Address
+>>             Device (S00)
+>>             {
+>>                 Name (_ADR, Zero)  // _ADR: Address
+>>                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
+>>                 {
+>>                     Local0 = Package (0x01)
+>>                         {
+>>                             0x0C
+>>                         }
+>>                     Return (EDSM (Arg0, Arg1, Arg2, Arg3, Local0))
+>>                 }
+>>             }
+>>         }
+>>     }
+>> }
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>>  tests/qtest/bios-tables-test-allowed-diff.h      |   1 -
+>>  tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex | Bin 0 -> 5347 bytes
+>>  2 files changed, 1 deletion(-)
+>>
+>> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+>> index 02f4f0b29f..dc3ab24d05 100644
+>> --- a/tests/qtest/bios-tables-test-allowed-diff.h
+>> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+>> @@ -1,3 +1,2 @@
+>>  /* List of comma-separated changed AML files to ignore */
+>>  "tests/data/acpi/aarch64/virt/DSDT.acpipcihp",
+>> -"tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex",
+>> diff --git a/tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex b/tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex
+>> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..970d43f68bca060361105f70dbb00b3a25646db4 100644
+>> GIT binary patch
+>> literal 5347
+>> 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  
+>>
+>> literal 0
+>> HcmV?d00001
+>>
 
 

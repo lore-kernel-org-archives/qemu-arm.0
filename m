@@ -4,83 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 327C6C71130
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 16:07:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95490C8303C
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 16:11:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uYoNJ-0005xL-3Y; Mon, 07 Jul 2025 12:07:27 -0400
+	id 1uYoQd-0001KY-3x; Mon, 07 Jul 2025 12:10:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uYoN6-0005kX-FI
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 12:07:17 -0400
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
+ id 1uYoQD-00015v-I7
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 12:10:28 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uYoN4-0000Ph-Sh
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 12:07:12 -0400
-Received: by mail-yb1-xb29.google.com with SMTP id
- 3f1490d57ef6-e8187601f85so3062429276.2
- for <qemu-arm@nongnu.org>; Mon, 07 Jul 2025 09:07:10 -0700 (PDT)
+ id 1uYoQB-00011j-GN
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 12:10:25 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-3a588da60dfso2220630f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 07 Jul 2025 09:10:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751904429; x=1752509229; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=gI1NaEdiD3UCtdd4/givRGsziakR5o7SzMY1WqWAiyY=;
- b=g1yBMVQBTGP1iNBqavHVjaY2Xy6/NhofkhD830v6UOB4IP7L52xUIa8rb4zb1WgtRV
- 3o7XYUO3XR7PxAx8SflQctI7vi3404cOzZErGssJQH09j5Ztb0LrQlOXbwYn5rm1PgOE
- dSBoNJLfpDEKvmZYG/VrT5sQ2iB1BDmIK9UrIoL6+rJlpEeORN9r9GPzVaFuTTg3FPJx
- KsWew7D0O1k2WvnsBkk8+1+ha2wLvi+vgEFFB554SuXb4+/q8zQ/nVJB604n1vwBOM0P
- uaZZlRX+QXLQRFs1IDKwnbTpGgscox9TA1/HxgcY/CnJQcQKhcayWkOm+eyikscKRamt
- yXrw==
+ d=linaro.org; s=google; t=1751904620; x=1752509420; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=mvlKn9k7rYCTQr3+QZYoxhTIVmuma8T4y8kkwY1v1WM=;
+ b=svIk2yVACGHU/KAG2WmUZvwcfrnaELyrMbj1UeAThUje/EXtpUmRW2Kx9YeqHKx5pu
+ qjnaKbpVZFCOXD6TQQ1adqC3QIEZdm98eV+KlP1fqlQoDsaJ2nJyphbCpoAFTl/BD4vf
+ h8jeZkiFaG+kgbhWbwNiXVl1agJ6djKbI2oL711WxQdGrZ/Ii4P8Ub65rf8vA77+n6ZN
+ 57VWSO7JojTr0S9oUSOJOrcmLxqvlfACRXAOuqGCFbELK55ZQ6Ocx2XCwpCbLZ2cv7iN
+ 4Lc3k7t2s6GVZkNM/kxsBaQJyCiEiW28wIA3QpheI9tZckyl0lj/P8Py9wfg7EUp9yI4
+ OQbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751904429; x=1752509229;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1751904620; x=1752509420;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=gI1NaEdiD3UCtdd4/givRGsziakR5o7SzMY1WqWAiyY=;
- b=qL2Ct4xU+Wr0NEw9vGLvVyiiJhLZfb1rphRVhpSBXETAbuieDQ8iKXoxeXLNLX3+pP
- SBHE+vnlGhMXdOLaFMDuWjjoKiM+s4OwZ0zUKAcdz93FyC3BPFwLMOGI/hTmjJcuFzDS
- t7IphIFEAHI2BLFloyAUCRrhwdlknUimjvKEQa+0fqj97o9zrXeaYsQBdxx9QFNd7Uxh
- CUn4D5lL70KhDm/8mazhLfWUBMomV6ZJXFf+bbf9DzYwyWCTJQ5RZAFDLf9L8A3IK6la
- DqpqqMuetMApS+XB5Qw+1mclZvIuDOiTvRhea9l2S9kgBK9gWb9CPw7E7z0Rmhx4ZnbR
- I6rg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX4vMGR31FnkfNMhWq3et0EkeCMFX7Z2MKfkXQzqXbxdZ+9l1ZmmscjHNk7QKOYijbT2470iWLnYQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzVVXD/QtWWpYkQzp499RrxL5aSI3S65eJ4+JCH46xI4grqXaPR
- uZZ1Sxn3+hTpl9UYakl60v0Q0yqcJiQUOhpNUbgJ95igClGiFOIjLL/nVk+ZLTlhcKDy7sy7x4i
- TcMu/hYiDNCZHklndAgV2Ul5zW3yOf10ejOygzbN5tQ==
-X-Gm-Gg: ASbGncs1r/4Yd3UPx1c+C4RMcBRx8YKPfDmDYUYlCCzsWfBqM9XAa1enMbFIdwIKJgy
- HREsrhoSbXer3D4AHRmrmBxX/iHq9gF5Dmwqiogs0N9gj8g2BFVSfaF4VdkiOT8Nqobu4YhGyw0
- xi1Bu4gv4AT9QQDlItY/tdhAYLNwuRnyQRXN+2/s5CgLsO
-X-Google-Smtp-Source: AGHT+IEQABQCCOXJ07L81DhzGDCLOUuWK3z5NZsAT6/B92P3SpagvN5tLKVZdZWhGvBo/4qsXZkiaFU4ctlC62wLzW4=
-X-Received: by 2002:a05:690c:6e08:b0:6fb:a696:b23b with SMTP id
- 00721157ae682-7179e4a6233mr548297b3.33.1751904429206; Mon, 07 Jul 2025
- 09:07:09 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250702163115.251445-1-eric.auger@redhat.com>
- <20250702163115.251445-5-eric.auger@redhat.com>
- <CAFEAcA9hhdwHNrBfEqO4GD6kSb3Efcw-Rztq=CqvcOGMG3+z6A@mail.gmail.com>
- <9c78f7c0-88ce-4c4d-b6c0-5b77b4d83367@redhat.com>
- <CAFEAcA-qh5zPUY6q-TH3T8CCrD2KEfXNDrZbVzr2H-HX5n7sSw@mail.gmail.com>
- <86y0t09im1.wl-maz@kernel.org>
- <CAFEAcA_fNzm1w_vccMv8q6QhyPFu+qSSq23+EyP==LCV0xWWSQ@mail.gmail.com>
- <86wm8k9fb0.wl-maz@kernel.org>
-In-Reply-To: <86wm8k9fb0.wl-maz@kernel.org>
+ bh=mvlKn9k7rYCTQr3+QZYoxhTIVmuma8T4y8kkwY1v1WM=;
+ b=niCD+oWhGN0DgDhe7a2WQbwnZ5iHtC4Zszz7e+OxV4Zce1H7FJX8GkJAlBNGt3W4jq
+ eJM9YheieUR5IoP76LlUXuX2VsZQxRLlb5Bc1ljRaTsl7cZXg6HJzGoQtZwSfgE0YBQ1
+ 9bOGKD1lnjwcIv1eTHzl4aUM7ls2JaGh3WnDO3ffM0+A+12E1ZYkHOw0kD/Ux+p5yjre
+ SQKc2CMmsqF3p21gxrQbn4szStwuULg7czubxh1JWoK8BGQRZ/ywxX32PGnHdfHqPwwI
+ H3JnI+ELs+3etUykkyX1vdurcV4r9v5Vxa4xu20/bv95mRYuTGdZ52tsj2j+Rh65ApCN
+ Ihbw==
+X-Gm-Message-State: AOJu0YzELqOjVOkKADZWIXlR4pEHX0a/UPcCRHjjwZhCyHPUbID+zs2s
+ yfjsYfVY5jLsGae468GbT1HCtZhce3hqP+sNiu5KyDp3vj34mxG1vhKmFhEk11VkwOvDMMno0lP
+ 0nSAU
+X-Gm-Gg: ASbGnctKrLD0eozd/HmJC42MtsgEgZJo7JWszNtI3C7ZUFTqn4b8iL1o4QqzAdwdiiO
+ avrVgyzVlrCj70IW7Vus6uV17sg+yXtudhjVTZlIHLJ2AMplwrV2ZmyCdniABsGvS6np4SJASlV
+ dcijpWY/Gw6ibtnTOO3QUbAJgC0iHE/ooM1CLXeZ9JX9i7Ysoz+RLOwlE7iE9J0woC4HLxk2YM7
+ +KQB7iHuJxDQeVCo2Ggy5coGIErhC15SXrVy91IGfykvpkfmTCbR5OvoKGNHgokMdJBV7GZmrxy
+ XSOFT6IvNnj7rLN3CZwH4spGaiI3BePHu5sBM+yzg61BrNi3LJp3jciNyYjXInOvMc/o
+X-Google-Smtp-Source: AGHT+IE/fcTwqdzEZEQOM3+7GzY86j8aNDZJsfw2xKahUjBShmo9nVTj1kgZsgFVx5j4b21LOJCoew==
+X-Received: by 2002:a05:6000:4012:b0:3a4:f6b7:8b07 with SMTP id
+ ffacd0b85a97d-3b4964ea37bmr11117399f8f.48.1751904620147; 
+ Mon, 07 Jul 2025 09:10:20 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3b4708d0aebsm10842820f8f.37.2025.07.07.09.10.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 07 Jul 2025 09:10:19 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 7 Jul 2025 17:06:57 +0100
-X-Gm-Features: Ac12FXyNPRiN4FXd84VRSygmlkJyWQBpj9q_0BOzyKTqI-L8FKFuUZur895ctuc
-Message-ID: <CAFEAcA9qsGak2HY5n8F_kaxE4+anyLoOthKuXRfRBeV7gUEmAA@mail.gmail.com>
-Subject: Re: [PATCH v7 4/4] hw/arm/virt: Allow virt extensions with KVM
-To: Marc Zyngier <maz@kernel.org>
-Cc: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org, miguel.luis@oracle.com, richard.henderson@linaro.org, 
- gkulkarni@amperecomputing.com, gankulkarni@os.amperecomputing.com, 
- hi@alyssa.is
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b29;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb29.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Eric Auger <eric.auger@redhat.com>,
+	Marc Zyngier <maz@kernel.org>
+Subject: [PATCH 0/2] hw/intc: handle GICD_TYPER2 for KVM GICv3
+Date: Mon,  7 Jul 2025 17:10:15 +0100
+Message-ID: <20250707161018.585469-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,24 +98,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 7 Jul 2025 at 16:44, Marc Zyngier <maz@kernel.org> wrote:
->
-> On Mon, 07 Jul 2025 15:46:04 +0100,
-> Peter Maydell <peter.maydell@linaro.org> wrote:
-> > Speaking of GIC ID registers, we never updated QEMU to
-> > handle the GICv4.1 GICD_TYPER2 register, so we don't try
-> > to send and sanity check that on migration at the moment.
->
-> KVM only exposes a virtual GICv3 to the guest, even in the host can do
-> GICv4.0+. The only nit is the "nASSGIcap" bit, which is always
-> advertised to the guest when the host if v4.1-capable. We have a patch
-> series in progress to address this and make it controllable.
+The GICD_TYPER2 GICv3 distributor register is one that is added
+for GICv4.1; previously this was architected as a RES0 location.
+Our TCG GIC doesn't implement GICv4.1, but for KVM the kernel
+might support it.
 
-Isn't that out-of-spec? If the GIC the guest sees is a GICv3
-then GICD_TYPER2 should be RES0...
+This patchset:
+ * makes GICD_TYPER0 reads not trigger a bad-read trace
+   event on the TCG GICv3, for the benefit of GICv4.1-aware
+   guest code
+ * migrates the GICD_TYPER2 register value on a KVM GIC,
+   so that a mismatch between source and destination
+   can be caught by the destination kernel
 
-Anyway, I have some lightly tested QEMU patches that
-migrate the GICD_TYPER2 value, which I'll send out in a moment.
+Note that I have only very lightly tested this, on a
+host which (I believe) doesn't have a GICv4.1.
 
+thanks
 -- PMM
+
+Peter Maydell (2):
+  hw/intc/arm_gicv3_dist: Implement GICD_TYPER2 as 0
+  hw/intc/arm_gicv3_kvm: Migrate GICD_TYPER2
+
+ hw/intc/gicv3_internal.h           |  1 +
+ include/hw/intc/arm_gicv3_common.h |  6 ++++++
+ hw/intc/arm_gicv3_common.c         | 24 ++++++++++++++++++++++++
+ hw/intc/arm_gicv3_dist.c           |  9 +++++++++
+ hw/intc/arm_gicv3_kvm.c            |  6 ++++++
+ 5 files changed, 46 insertions(+)
+
+-- 
+2.43.0
+
 

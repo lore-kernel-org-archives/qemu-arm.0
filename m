@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2204DC71130
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 17:25:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CE3FC8303C
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 17:26:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uYpXm-0002eY-Kl; Mon, 07 Jul 2025 13:22:18 -0400
+	id 1uYpYZ-0005b3-Rt; Mon, 07 Jul 2025 13:23:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uYpWB-0000a6-TV
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:20:41 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uYpWd-0000rj-Fw
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:21:10 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uYpW3-00052r-Sj
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:20:34 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-3a50fc7ac4dso1539494f8f.0
- for <qemu-arm@nongnu.org>; Mon, 07 Jul 2025 10:20:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uYpWX-0005Ac-0Q
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:21:03 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-453643020bdso26611605e9.1
+ for <qemu-arm@nongnu.org>; Mon, 07 Jul 2025 10:20:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751908827; x=1752513627; darn=nongnu.org;
+ d=linaro.org; s=google; t=1751908859; x=1752513659; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=MdQhcbrWCDw+stGMxabzY7NAeBH4tymx5hVA3eT0Fq4=;
- b=NVNai+COG99kpDvNGILKVlTjLqhQ+4hqxd5vz+J6IOlCZ4jKqsClEHi8/8wurONKqW
- pJDA23JfL+XDki6S3tBld8xWiPyUWdg7huIxaR8e7mbb2LYJKbeBYhd3BfvMM0/u7Qq7
- 4e4Qx5fTan/6WRbGoepfFT7/UftGGl2RHF2UqnUpWJIsNumaoEJzPClCVNYoUwHYieQx
- YYvM34dVe3I5SdzcekUsuxe41+1koi2Jr6jwA5pPIDjgCNWkzO0rMKJ14eLdfEXkYoyf
- Y03sHwNHGDX+kVqWo+jP/63/yjcoq0316vqPdnWXSZe6AStUYEHo0c5RVnPUBrfy7yXO
- SBew==
+ bh=8lDaJH6Ce53XuxvTc0s491uDx3B3bM8+Y+iNdGUdVDY=;
+ b=Rx86VCTHlCv0wU0GqeRyP6zwJLiGHjONm/RpAb0hP1OEyJc5yYubxFbuIeVElsN+n1
+ eoPI1QgSAh92cfrrmKaZ3euyoSHFIWens4YUF/gP+mSX4Xl8VxmktlR3r//6vsaG5tY2
+ uLsLUPIPjHEc9B0pvw2MuJjkjNFugNkE/RcFjYKqCADJIvC6YlcP+BeM63AOiE5XnfMF
+ 8rS0/IBt33hVWgD4azqhaMr4IMxd6Dh4j65384tUjLesmZtXsQCkpLHGJW8nt9ku55rp
+ Zj+WdVMiNUtAkOHJBoAWMr/xEnd7l/R3eh4LdoXJZzKr1nKEHh3R29CDlBCjGdSiTgTB
+ IXDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751908827; x=1752513627;
+ d=1e100.net; s=20230601; t=1751908859; x=1752513659;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=MdQhcbrWCDw+stGMxabzY7NAeBH4tymx5hVA3eT0Fq4=;
- b=EtUwuINDThm3crG+mGgOxkczJ9KGZU+hNVQEx8YyLZUR6C/RBJN53RCAy2E0MZI76j
- QWP0QsrfErj9Etv7O/TTbTHLBSQrKlO4RUC86jbUogqHvtuOdXo9wy6sn+Y1TKixg8Xq
- thtmmlJA0X9okSp+uqv0oikXw7NqmdIvIMVn7YVQJh/kJTdnWqZjX4hGwbwMtw/gqejp
- GqiNkMMiHrlGDgzWYylDrkI2pnDrW1AHFTtnuo+XuILfEFEalaL1sUswMg4oynLnaFjo
- WX/ZTT91OSiy12dGybjSv1oAAI4zMoqtIoRHowssEN3QxPR5Be11nY6wjVC4KftGbMH6
- 4sLA==
+ bh=8lDaJH6Ce53XuxvTc0s491uDx3B3bM8+Y+iNdGUdVDY=;
+ b=Z25JCIcLu3mCyZju/yEjPM1GJV5jo8A9vM0ldOE7KHytRMMu1cgM8ZkmATjyLaaR8C
+ UPfbJ67vtgISk3wmwZpY4gncR+h6nJEBYrGMbrRHHlAldzf86NoIbl+PsUw4361WHYG5
+ L0KdHof4H2+NEeYiiMhbQaCKgdDkEprYpxpiInERsri6yuE8UACmicWT9YQqo82sFxkc
+ 0ntTX45Zkm5rDunjGe/WiyRkPy/CP6sTQrh208arRtqWPnCgfzhYn/jnbCfFUmZhH40F
+ e+Io3d4TflzMKNyR3vlFhrUtNKlTijlX4okLYuypaAmCpB21k5pCupxX4sZt8SehBH1x
+ Eraw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXitE9chvHkXrX1WGJvCmcrzTogvWxXSOLweYqzBoAEihfPFK/acvTL8yEw0EEZzeOk+Cj1t6dotg==@nongnu.org
-X-Gm-Message-State: AOJu0Yz/WV4tNZaBuaJ5rvkFl82SZ7yX7thQgG2RAStaqemZusu/cl/y
- jYDsZ940fOSicc1Pxp1vq3BTpVc6a5wYB0WNZZKHC1FfDOHCLGGIR7eOJCYot9j8suM=
-X-Gm-Gg: ASbGncsetsxv81iXV+GS9MDEwl0MXN+iLJT/IcGxCqr809nrJSMLbIvMhAM12a8jwJI
- xUZvAx0U9XfcDlDq2qsLpR5yoXWR7r87do1SxkLulBkJHtGARipBOl3KaFlpYDWARFNdK6vjVtc
- LTmscylRW8PWS/p22RPtstrXe68XoA+9akwL/eADyy9H68PO6PKK5WZWA5uCbK5Ug3CsICgAqt2
- cjkDZWknSLFciQBaMWH+1Ru421QAsNWB1ktqIAU39zCnV6klMLVs5C9QCNaCI8YDGkIaRFqFexp
- lgR9GBwk481QIRpTUCfKWiRW9/N60LScunRCsCQQTKjYr7vPOJr9qr9Z1XOTHSUm4qoTmjEl1UI
- nB4OTdctTQs6WoC3/wYUwd5koJ5QlLFH+dqps
-X-Google-Smtp-Source: AGHT+IHgxWsQMmAO1HC/m+G4aoKXFMZBmXnsWXv6XR3g4QAjowjDWEhNK2HOw2Gxi/FtEhT3yJoiPA==
-X-Received: by 2002:a05:6000:2006:b0:3a6:c923:bc5f with SMTP id
- ffacd0b85a97d-3b49aa5eef1mr8409979f8f.17.1751908826685; 
- Mon, 07 Jul 2025 10:20:26 -0700 (PDT)
+ AJvYcCUE99Q/COeOmLqbhh+da4pOPol18TnCm2DfIbGmo8nzMFq9iNM0qgDIvbMWwDvSKL4SkxEQH7aYjQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyS/ymIHxjMaG9G9zZ2lvBKLuMwco+NDNJL7GEhHp/gOjLQOCta
+ XAu1v/CFjQPHUgZmpzwP5xoTpj4flQ/6cx8/IDXYvea2gziYktRmwqjGMH6wBvSVuz4=
+X-Gm-Gg: ASbGncuFv82e5OI/94hRP8eEShqiuW09biQuVJV51ekvYd4iNUxZvqz8PTPNt8ZS2rD
+ m+y+BeFJ5vf5Oy7u8pjQQymuDtSwQm3T2IW6GzA1RbQuQemDaE4OBbox0Ugt39Od3lx3v8lg7dy
+ WM6oeqzZtusUpT4kyDkCwLuE9AsoIh8UVqxJZ0FTH1UHq83Rt/SG0r48WO6GREi75Y21nqnYk7r
+ 2iyRax7ubTjdLZ1bzVlThZVzFy3wi+fT0VVhN9WDjsjvByX0Ygbhxq9YHcR72PI9xNadb0faoBK
+ wjc1bWUKOc4aC7cHRSwO1vveu+DecjScvV/BECMXuCxgsPmrp0JUkSYMrxyxfFLsF3XIjdIzkmO
+ lG9x/+EAF/qfhAKUqhaDeFmhMkH6VbsqxyOcF
+X-Google-Smtp-Source: AGHT+IFz7F32N7Ofbk3BqanonWCW/gDDJTCEpN0e8m21S47/jx+luTuR3jluFTHsrv8uZNwF5aWxFA==
+X-Received: by 2002:a05:600c:6303:b0:442:dc75:5625 with SMTP id
+ 5b1f17b1804b1-454ccfada1fmr1254505e9.5.1751908858528; 
+ Mon, 07 Jul 2025 10:20:58 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b47030c2e8sm10611361f8f.3.2025.07.07.10.20.25
+ ffacd0b85a97d-3b47040161bsm10692655f8f.4.2025.07.07.10.20.57
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 07 Jul 2025 10:20:26 -0700 (PDT)
+ Mon, 07 Jul 2025 10:20:58 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-s390x@nongnu.org,
@@ -72,26 +72,26 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-s390x@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-block@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-10.1 v6 03/14] qemu/target-info: Add %target_arch field to
- TargetInfo
-Date: Mon,  7 Jul 2025 19:19:57 +0200
-Message-ID: <20250707172009.3884-4-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>
+Subject: [PATCH-for-10.1 v6 09/14] hw/virtio: Build various files once
+Date: Mon,  7 Jul 2025 19:20:03 +0200
+Message-ID: <20250707172009.3884-10-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250707172009.3884-1-philmd@linaro.org>
 References: <20250707172009.3884-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,65 +107,117 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Now than various VirtIO files don't use target specific
+API anymore, we can move them to the system_ss[] source
+set to build them once.
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/qemu/target-info-impl.h | 4 +++-
- target-info-stub.c              | 1 +
- target-info.c                   | 9 +++++++--
- 3 files changed, 11 insertions(+), 3 deletions(-)
+ hw/virtio/virtio-config-io.c |  1 -
+ hw/block/meson.build         |  6 ++++--
+ hw/virtio/meson.build        | 20 +++++++++++---------
+ 3 files changed, 15 insertions(+), 12 deletions(-)
 
-diff --git a/include/qemu/target-info-impl.h b/include/qemu/target-info-impl.h
-index 1b51cbcfe1b..a8b34d150ab 100644
---- a/include/qemu/target-info-impl.h
-+++ b/include/qemu/target-info-impl.h
-@@ -9,11 +9,13 @@
- #ifndef QEMU_TARGET_INFO_IMPL_H
- #define QEMU_TARGET_INFO_IMPL_H
+diff --git a/hw/virtio/virtio-config-io.c b/hw/virtio/virtio-config-io.c
+index ad78e0b9bc5..f58d90b6e31 100644
+--- a/hw/virtio/virtio-config-io.c
++++ b/hw/virtio/virtio-config-io.c
+@@ -11,7 +11,6 @@
  
--#include "qemu/target-info.h"
-+#include "qapi/qapi-types-machine.h"
+ #include "qemu/osdep.h"
+ #include "hw/virtio/virtio.h"
+-#include "cpu.h"
  
- typedef struct TargetInfo {
-     /* runtime equivalent of TARGET_NAME definition */
-     const char *target_name;
-+    /* related to TARGET_ARCH definition */
-+    SysEmuTarget target_arch;
-     /* runtime equivalent of TARGET_LONG_BITS definition */
-     unsigned long_bits;
-     /* runtime equivalent of CPU_RESOLVING_TYPE definition */
-diff --git a/target-info-stub.c b/target-info-stub.c
-index fecc0e71286..2e4407ff04b 100644
---- a/target-info-stub.c
-+++ b/target-info-stub.c
-@@ -14,6 +14,7 @@
- 
- static const TargetInfo target_info_stub = {
-     .target_name = TARGET_NAME,
-+    .target_arch = SYS_EMU_TARGET__MAX,
-     .long_bits = TARGET_LONG_BITS,
-     .cpu_type = CPU_RESOLVING_TYPE,
-     .machine_typename = TYPE_MACHINE,
-diff --git a/target-info.c b/target-info.c
-index 9ebabec988f..8e29553b4ef 100644
---- a/target-info.c
-+++ b/target-info.c
-@@ -24,8 +24,13 @@ unsigned target_long_bits(void)
- 
- SysEmuTarget target_arch(void)
+ uint32_t virtio_config_readb(VirtIODevice *vdev, uint32_t addr)
  {
--    return qapi_enum_parse(&SysEmuTarget_lookup, target_name(), -1,
--                           &error_abort);
-+    SysEmuTarget arch = target_info()->target_arch;
-+
-+    if (arch == SYS_EMU_TARGET__MAX) {
-+        arch = qapi_enum_parse(&SysEmuTarget_lookup, target_name(), -1,
-+                               &error_abort);
-+    }
-+    return arch;
- }
+diff --git a/hw/block/meson.build b/hw/block/meson.build
+index 655704471a5..43ed296cf47 100644
+--- a/hw/block/meson.build
++++ b/hw/block/meson.build
+@@ -13,7 +13,9 @@ system_ss.add(when: 'CONFIG_SSI_M25P80', if_true: files('m25p80_sfdp.c'))
+ system_ss.add(when: 'CONFIG_SWIM', if_true: files('swim.c'))
+ system_ss.add(when: 'CONFIG_XEN_BUS', if_true: files('xen-block.c'))
  
- const char *target_cpu_type(void)
+-specific_ss.add(when: 'CONFIG_VIRTIO_BLK', if_true: files('virtio-blk.c', 'virtio-blk-common.c'))
+-specific_ss.add(when: 'CONFIG_VHOST_USER_BLK', if_true: files('vhost-user-blk.c', 'virtio-blk-common.c'))
++specific_ss.add(when: 'CONFIG_VIRTIO_BLK', if_true: files('virtio-blk.c'))
++system_ss.add(when: 'CONFIG_VIRTIO_BLK', if_true: files('virtio-blk-common.c'))
++specific_ss.add(when: 'CONFIG_VHOST_USER_BLK', if_true: files('vhost-user-blk.c'))
++system_ss.add(when: 'CONFIG_VHOST_USER_BLK', if_true: files('virtio-blk-common.c'))
+ 
+ subdir('dataplane')
+diff --git a/hw/virtio/meson.build b/hw/virtio/meson.build
+index 164f6fd995a..3ea7b3cec83 100644
+--- a/hw/virtio/meson.build
++++ b/hw/virtio/meson.build
+@@ -1,6 +1,7 @@
+ system_virtio_ss = ss.source_set()
+ system_virtio_ss.add(files('virtio-bus.c'))
+ system_virtio_ss.add(files('iothread-vq-mapping.c'))
++system_virtio_ss.add(files('virtio-config-io.c'))
+ system_virtio_ss.add(when: 'CONFIG_VIRTIO_PCI', if_true: files('virtio-pci.c'))
+ system_virtio_ss.add(when: 'CONFIG_VIRTIO_MMIO', if_true: files('virtio-mmio.c'))
+ system_virtio_ss.add(when: 'CONFIG_VIRTIO_CRYPTO', if_true: files('virtio-crypto.c'))
+@@ -10,11 +11,11 @@ system_virtio_ss.add(when: 'CONFIG_VHOST_VDPA_DEV', if_true: files('vdpa-dev.c')
+ 
+ specific_virtio_ss = ss.source_set()
+ specific_virtio_ss.add(files('virtio.c'))
+-specific_virtio_ss.add(files('virtio-config-io.c', 'virtio-qmp.c'))
++specific_virtio_ss.add(files('virtio-qmp.c'))
+ 
+ if have_vhost
+   system_virtio_ss.add(files('vhost.c'))
+-  specific_virtio_ss.add(files('vhost-backend.c', 'vhost-iova-tree.c'))
++  system_virtio_ss.add(files('vhost-backend.c', 'vhost-iova-tree.c'))
+   if have_vhost_user
+     # fixme - this really should be generic
+     specific_virtio_ss.add(files('vhost-user.c'))
+@@ -43,22 +44,22 @@ if have_vhost
+   endif
+   if have_vhost_vdpa
+     system_virtio_ss.add(files('vhost-vdpa.c'))
+-    specific_virtio_ss.add(files('vhost-shadow-virtqueue.c'))
++    system_virtio_ss.add(files('vhost-shadow-virtqueue.c'))
+   endif
+ else
+   system_virtio_ss.add(files('vhost-stub.c'))
+ endif
++system_virtio_ss.add(when: 'CONFIG_VHOST_USER_VSOCK', if_true: files('vhost-user-vsock.c'))
++system_virtio_ss.add(when: 'CONFIG_VIRTIO_RNG', if_true: files('virtio-rng.c'))
+ 
+ specific_virtio_ss.add(when: 'CONFIG_VIRTIO_BALLOON', if_true: files('virtio-balloon.c'))
+ specific_virtio_ss.add(when: 'CONFIG_VHOST_USER_FS', if_true: files('vhost-user-fs.c'))
+ specific_virtio_ss.add(when: 'CONFIG_VIRTIO_PMEM', if_true: files('virtio-pmem.c'))
+ specific_virtio_ss.add(when: 'CONFIG_VHOST_VSOCK', if_true: files('vhost-vsock.c'))
+-specific_virtio_ss.add(when: 'CONFIG_VHOST_USER_VSOCK', if_true: files('vhost-user-vsock.c'))
+-specific_virtio_ss.add(when: 'CONFIG_VIRTIO_RNG', if_true: files('virtio-rng.c'))
+-specific_virtio_ss.add(when: 'CONFIG_VIRTIO_NSM', if_true: [files('virtio-nsm.c', 'cbor-helpers.c'), libcbor])
+ specific_virtio_ss.add(when: 'CONFIG_VIRTIO_MEM', if_true: files('virtio-mem.c'))
+-specific_virtio_ss.add(when: 'CONFIG_VHOST_USER_SCMI', if_true: files('vhost-user-scmi.c'))
+-specific_virtio_ss.add(when: ['CONFIG_VIRTIO_PCI', 'CONFIG_VHOST_USER_SCMI'], if_true: files('vhost-user-scmi-pci.c'))
++system_virtio_ss.add(when: 'CONFIG_VIRTIO_NSM', if_true: files('virtio-nsm.c'))
++system_virtio_ss.add(when: 'CONFIG_VIRTIO_NSM', if_true: [files('cbor-helpers.c'), libcbor])
++system_virtio_ss.add(when: 'CONFIG_VHOST_USER_SCMI', if_true: files('vhost-user-scmi.c'))
+ 
+ virtio_pci_ss = ss.source_set()
+ virtio_pci_ss.add(when: 'CONFIG_VHOST_VSOCK', if_true: files('vhost-vsock-pci.c'))
+@@ -67,6 +68,7 @@ virtio_pci_ss.add(when: 'CONFIG_VHOST_USER_BLK', if_true: files('vhost-user-blk-
+ virtio_pci_ss.add(when: 'CONFIG_VHOST_USER_SCSI', if_true: files('vhost-user-scsi-pci.c'))
+ virtio_pci_ss.add(when: 'CONFIG_VHOST_SCSI', if_true: files('vhost-scsi-pci.c'))
+ virtio_pci_ss.add(when: 'CONFIG_VHOST_USER_FS', if_true: files('vhost-user-fs-pci.c'))
++virtio_pci_ss.add(when: 'CONFIG_VHOST_USER_SCMI', if_true: files('vhost-user-scmi-pci.c'))
+ 
+ virtio_pci_ss.add(when: 'CONFIG_VIRTIO_CRYPTO', if_true: files('virtio-crypto-pci.c'))
+ virtio_pci_ss.add(when: 'CONFIG_VIRTIO_INPUT_HOST', if_true: files('virtio-input-host-pci.c'))
+@@ -85,7 +87,7 @@ virtio_pci_ss.add(when: 'CONFIG_VIRTIO_MEM', if_true: files('virtio-mem-pci.c'))
+ virtio_pci_ss.add(when: 'CONFIG_VHOST_VDPA_DEV', if_true: files('vdpa-dev-pci.c'))
+ virtio_pci_ss.add(when: 'CONFIG_VIRTIO_MD', if_true: files('virtio-md-pci.c'))
+ 
+-specific_virtio_ss.add_all(when: 'CONFIG_VIRTIO_PCI', if_true: virtio_pci_ss)
++system_virtio_ss.add_all(when: 'CONFIG_VIRTIO_PCI', if_true: virtio_pci_ss)
+ 
+ system_ss.add_all(when: 'CONFIG_VIRTIO', if_true: system_virtio_ss)
+ system_ss.add(when: 'CONFIG_VIRTIO', if_false: files('vhost-stub.c'))
 -- 
 2.49.0
 

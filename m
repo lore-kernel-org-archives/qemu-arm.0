@@ -4,94 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CE3FC8303C
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 17:26:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16EC4C8303C
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Jul 2025 17:26:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uYpYZ-0005b3-Rt; Mon, 07 Jul 2025 13:23:08 -0400
+	id 1uYpar-0005Oq-Is; Mon, 07 Jul 2025 13:25:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uYpWd-0000rj-Fw
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:21:10 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uYpWX-0005Ac-0Q
- for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:21:03 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-453643020bdso26611605e9.1
- for <qemu-arm@nongnu.org>; Mon, 07 Jul 2025 10:20:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751908859; x=1752513659; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=8lDaJH6Ce53XuxvTc0s491uDx3B3bM8+Y+iNdGUdVDY=;
- b=Rx86VCTHlCv0wU0GqeRyP6zwJLiGHjONm/RpAb0hP1OEyJc5yYubxFbuIeVElsN+n1
- eoPI1QgSAh92cfrrmKaZ3euyoSHFIWens4YUF/gP+mSX4Xl8VxmktlR3r//6vsaG5tY2
- uLsLUPIPjHEc9B0pvw2MuJjkjNFugNkE/RcFjYKqCADJIvC6YlcP+BeM63AOiE5XnfMF
- 8rS0/IBt33hVWgD4azqhaMr4IMxd6Dh4j65384tUjLesmZtXsQCkpLHGJW8nt9ku55rp
- Zj+WdVMiNUtAkOHJBoAWMr/xEnd7l/R3eh4LdoXJZzKr1nKEHh3R29CDlBCjGdSiTgTB
- IXDQ==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uYpad-0005CD-5t
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:25:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uYpab-000615-6a
+ for qemu-arm@nongnu.org; Mon, 07 Jul 2025 13:25:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1751909111;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=oQci3fqek21R+COSXStaejW9Snm1UGS4WsZYUzf869s=;
+ b=Et2vQQuTWDsDRS25uZflYDqkV76q9U0l5b/tNgXDrb84ca3cTDMaxRz53+GBE3+tLTe8YJ
+ CiWU2uOPNGJetM6dN/6qdySuKFHZzZLKtA1l6AjRbz5k8UyjzTzKTLcBrGTyavNp0h4lOe
+ dvdXzGl5vm899680BRCa+88zdmGg1qQ=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-643-oKpzDlGtNKuH4Y7QE469_g-1; Mon, 07 Jul 2025 13:25:10 -0400
+X-MC-Unique: oKpzDlGtNKuH4Y7QE469_g-1
+X-Mimecast-MFC-AGG-ID: oKpzDlGtNKuH4Y7QE469_g_1751909109
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-451d30992bcso24335675e9.2
+ for <qemu-arm@nongnu.org>; Mon, 07 Jul 2025 10:25:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751908859; x=1752513659;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=8lDaJH6Ce53XuxvTc0s491uDx3B3bM8+Y+iNdGUdVDY=;
- b=Z25JCIcLu3mCyZju/yEjPM1GJV5jo8A9vM0ldOE7KHytRMMu1cgM8ZkmATjyLaaR8C
- UPfbJ67vtgISk3wmwZpY4gncR+h6nJEBYrGMbrRHHlAldzf86NoIbl+PsUw4361WHYG5
- L0KdHof4H2+NEeYiiMhbQaCKgdDkEprYpxpiInERsri6yuE8UACmicWT9YQqo82sFxkc
- 0ntTX45Zkm5rDunjGe/WiyRkPy/CP6sTQrh208arRtqWPnCgfzhYn/jnbCfFUmZhH40F
- e+Io3d4TflzMKNyR3vlFhrUtNKlTijlX4okLYuypaAmCpB21k5pCupxX4sZt8SehBH1x
- Eraw==
+ d=1e100.net; s=20230601; t=1751909108; x=1752513908;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=oQci3fqek21R+COSXStaejW9Snm1UGS4WsZYUzf869s=;
+ b=etDEstQEERyCOM16bEI99LFwG5v6N8WNL5sLsad/pJRrSwfb3B1ia3KQ/uFLhpa8qr
+ B29I9Es31JYR1eLMYsPbGv0DyU1CCcXU6qHjTWWeBthpzAY2aXWbMyOzrPVY6+PAdUR7
+ LqlTzGepuTEQCxQlz7z1bNpjRkEklRizIW612wTHjWMkl8KaXQYKdaB8bP50aUWYsPOE
+ OVWHimXNpWdxL+s1jbj1ajkdTJ5Vd4zNM/wEq3yWoTfGYY51oKcmRCL7eu/lY701FAgh
+ Oq+HLd99qC8n8NQleMJnwXfZc/cCq8L1BM4HA82uMKTaEB5zUEJxcAHaezehhR7RKSJw
+ z/fw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUE99Q/COeOmLqbhh+da4pOPol18TnCm2DfIbGmo8nzMFq9iNM0qgDIvbMWwDvSKL4SkxEQH7aYjQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyS/ymIHxjMaG9G9zZ2lvBKLuMwco+NDNJL7GEhHp/gOjLQOCta
- XAu1v/CFjQPHUgZmpzwP5xoTpj4flQ/6cx8/IDXYvea2gziYktRmwqjGMH6wBvSVuz4=
-X-Gm-Gg: ASbGncuFv82e5OI/94hRP8eEShqiuW09biQuVJV51ekvYd4iNUxZvqz8PTPNt8ZS2rD
- m+y+BeFJ5vf5Oy7u8pjQQymuDtSwQm3T2IW6GzA1RbQuQemDaE4OBbox0Ugt39Od3lx3v8lg7dy
- WM6oeqzZtusUpT4kyDkCwLuE9AsoIh8UVqxJZ0FTH1UHq83Rt/SG0r48WO6GREi75Y21nqnYk7r
- 2iyRax7ubTjdLZ1bzVlThZVzFy3wi+fT0VVhN9WDjsjvByX0Ygbhxq9YHcR72PI9xNadb0faoBK
- wjc1bWUKOc4aC7cHRSwO1vveu+DecjScvV/BECMXuCxgsPmrp0JUkSYMrxyxfFLsF3XIjdIzkmO
- lG9x/+EAF/qfhAKUqhaDeFmhMkH6VbsqxyOcF
-X-Google-Smtp-Source: AGHT+IFz7F32N7Ofbk3BqanonWCW/gDDJTCEpN0e8m21S47/jx+luTuR3jluFTHsrv8uZNwF5aWxFA==
-X-Received: by 2002:a05:600c:6303:b0:442:dc75:5625 with SMTP id
- 5b1f17b1804b1-454ccfada1fmr1254505e9.5.1751908858528; 
- Mon, 07 Jul 2025 10:20:58 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b47040161bsm10692655f8f.4.2025.07.07.10.20.57
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 07 Jul 2025 10:20:58 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-block@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>
-Subject: [PATCH-for-10.1 v6 09/14] hw/virtio: Build various files once
-Date: Mon,  7 Jul 2025 19:20:03 +0200
-Message-ID: <20250707172009.3884-10-philmd@linaro.org>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250707172009.3884-1-philmd@linaro.org>
-References: <20250707172009.3884-1-philmd@linaro.org>
+ AJvYcCV5S9Mh1Q9tLWeswDg79GZZU7W8BRdSkEmmU/7Az8F0kkvx+F3bjS2VC83avlzC9UDYpfeVUtuwDQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwJFGEng1Dy8vyS9RHTctktVEmV+A/pR93z6nUh1gcnYbVcMwFB
+ zOQhX5jCcxGwKXfi8OJauVx98XYPtZQGtwOZoQCd3ckQGPi+sB0xhMUWixAh2OqKFLXAcbLLmcg
+ jrkzzcUlG8Nn9FppsODRX7MEP/OhchRMKp8JIp855WsTKgkFY5cMoQMT94XRuTw==
+X-Gm-Gg: ASbGncupod9+Zk9wB0gGVluJQjsNB890FElMu/uiKsFMKZN8K4mgI56xZ4qBCXZu9aI
+ TX73RrV6eDi+UV79U1EV2tRFi/w9vqKbIq7MQk+tvRiZuur3UAL4f0+NhR8hMGCpNiHF2WnQ0st
+ XHnAmz/YHVxzrBn6xuPUTqqFGZAlLmoMON0pLBMrGNQ0YiEO9mhWrSYw3C/x8JxD2O8prxojjJX
+ M8tSAnI0Uf4ahmY5aKTGBORGadI6EqPYIRLsCf/9/X1h8jQ5nodSv2k5anPYQ2z686DmKhLf8xu
+ Y/uIYbinqxsUSLI7UDlAHsK9eWhLPbv+ASajk66868TEeb0Mzc/GgS+L1ER+7E6wnSrLmw==
+X-Received: by 2002:a05:600c:a4b:b0:453:1e14:6387 with SMTP id
+ 5b1f17b1804b1-454b4ec46d0mr97376215e9.32.1751909107756; 
+ Mon, 07 Jul 2025 10:25:07 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG/qOdixyfNMg7eHc5kapYqDFxEsfkT42QE2VVqGkQQ5n+Urx1WIEiXF9znmKP2B4j9WKI+fA==
+X-Received: by 2002:a05:600c:a4b:b0:453:1e14:6387 with SMTP id
+ 5b1f17b1804b1-454b4ec46d0mr97375995e9.32.1751909107150; 
+ Mon, 07 Jul 2025 10:25:07 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-454b162a3ccsm118058915e9.12.2025.07.07.10.25.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 07 Jul 2025 10:25:06 -0700 (PDT)
+Message-ID: <d87b733a-c8d3-4038-9159-60806d5a6186@redhat.com>
+Date: Mon, 7 Jul 2025 19:25:05 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] hw/intc/arm_gicv3_kvm: Migrate GICD_TYPER2
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Marc Zyngier <maz@kernel.org>
+References: <20250707161018.585469-1-peter.maydell@linaro.org>
+ <20250707161018.585469-3-peter.maydell@linaro.org>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20250707161018.585469-3-peter.maydell@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 0PJXAVJ81Pin87FTwdkGgE7FWZPbbWjzStmYHqaPq3g_1751909109
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,121 +116,135 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now than various VirtIO files don't use target specific
-API anymore, we can move them to the system_ss[] source
-set to build them once.
+Hi Peter,
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/virtio/virtio-config-io.c |  1 -
- hw/block/meson.build         |  6 ++++--
- hw/virtio/meson.build        | 20 +++++++++++---------
- 3 files changed, 15 insertions(+), 12 deletions(-)
+On 7/7/25 6:10 PM, Peter Maydell wrote:
+> The GICD_TYPER2 register is new for GICv4.1.  As an ID register, we
+> migrate it so that on the destination the kernel can check that the
+> destination supports the same configuration that the source system
+> had.  This avoids confusing behaviour if the user tries to migrate a
+> VM from a GICv3 system to a GICv4.1 system or vice-versa.  (In
+> practice the inability to migrate between different CPU types
+> probably already prevented this.)
+>
+> Note that older kernels pre-dating GICv4.1 support in the KVM GIC
+> will just ignore whatever userspace writes to GICD_TYPER2, so
+> migration where the destination is one of those kernels won't have
+> this safety-check.
+>
+> (The reporting of a mismatch will be a bit clunky, because this
+> file currently uses error_abort for all failures to write the
+> data to the kernel. Ideally we would fix this by making them
+> propagate the failure information back up to the post_load hook
+> return value, to cause a migration failure.)
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  include/hw/intc/arm_gicv3_common.h |  6 ++++++
+>  hw/intc/arm_gicv3_common.c         | 24 ++++++++++++++++++++++++
+>  hw/intc/arm_gicv3_kvm.c            |  6 ++++++
+>  3 files changed, 36 insertions(+)
+>
+> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+> index a3d6a0e5077..bcbcae1fbe7 100644
+> --- a/include/hw/intc/arm_gicv3_common.h
+> +++ b/include/hw/intc/arm_gicv3_common.h
+> @@ -267,6 +267,12 @@ struct GICv3State {
+>      GICv3CPUState *gicd_irouter_target[GICV3_MAXIRQ];
+>      uint32_t gicd_nsacr[DIV_ROUND_UP(GICV3_MAXIRQ, 16)];
+>  
+> +    /*
+> +     * GICv4.1 extended ID information. This is currently only needed
+> +     * for migration of a KVM GIC.
+> +     */
+> +    uint32_t gicd_typer2;
+> +
+>      GICv3CPUState *cpu;
+>      /* List of all ITSes connected to this GIC */
+>      GPtrArray *itslist;
+> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+> index 1cee68193ca..7b09771310e 100644
+> --- a/hw/intc/arm_gicv3_common.c
+> +++ b/hw/intc/arm_gicv3_common.c
+> @@ -275,6 +275,29 @@ const VMStateDescription vmstate_gicv3_gicd_nmi = {
+>      }
+>  };
+>  
+> +static bool gicv3_typer2_needed(void *opaque)
+> +{
+> +    /*
+> +     * GICD_TYPER2 ID register for GICv4.1. Was RES0 for
+> +     * GICv3 and GICv4.0; don't migrate if zero for backwards
+> +     * compatibility.
+> +     */
+> +    GICv3State *cs = opaque;
+> +
+> +    return cs->gicd_typer2 != 0;
+> +}
+> +
+> +const VMStateDescription vmstate_gicv3_gicd_typer2 = {
+> +    .name = "arm_gicv3/gicd_typer2",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .needed = gicv3_typer2_needed,
+> +    .fields = (const VMStateField[]) {
+> +        VMSTATE_UINT32(gicd_typer2, GICv3State),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+>  static const VMStateDescription vmstate_gicv3 = {
+>      .name = "arm_gicv3",
+>      .version_id = 1,
+> @@ -304,6 +327,7 @@ static const VMStateDescription vmstate_gicv3 = {
+>      .subsections = (const VMStateDescription * const []) {
+>          &vmstate_gicv3_gicd_no_migration_shift_bug,
+>          &vmstate_gicv3_gicd_nmi,
+> +        &vmstate_gicv3_gicd_typer2,
+>          NULL
+>      }
+>  };
+> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+> index 3be3bf6c28d..0302beb0c07 100644
+> --- a/hw/intc/arm_gicv3_kvm.c
+> +++ b/hw/intc/arm_gicv3_kvm.c
+> @@ -332,6 +332,9 @@ static void kvm_arm_gicv3_put(GICv3State *s)
+>      kvm_gicr_access(s, GICR_TYPER + 4, 0, &regh, false);
+>      redist_typer = ((uint64_t)regh << 32) | regl;
+>  
+> +    reg = s->gicd_typer2;
+> +    kvm_gicd_access(s, GICD_TYPER2, &reg, true);
+> +
+I don't know if there is any rationale about the access order. I see
+most of the dist reg accesses are done below in the function after rdist
+ones, although the GICD_CTLR is also here. If there is a rationale a
+comment may be useful to avoid another dev to do something wrong. I
+remember that for the ITS for instance some speicifc ordering needed to
+be enforced.
 
-diff --git a/hw/virtio/virtio-config-io.c b/hw/virtio/virtio-config-io.c
-index ad78e0b9bc5..f58d90b6e31 100644
---- a/hw/virtio/virtio-config-io.c
-+++ b/hw/virtio/virtio-config-io.c
-@@ -11,7 +11,6 @@
- 
- #include "qemu/osdep.h"
- #include "hw/virtio/virtio.h"
--#include "cpu.h"
- 
- uint32_t virtio_config_readb(VirtIODevice *vdev, uint32_t addr)
- {
-diff --git a/hw/block/meson.build b/hw/block/meson.build
-index 655704471a5..43ed296cf47 100644
---- a/hw/block/meson.build
-+++ b/hw/block/meson.build
-@@ -13,7 +13,9 @@ system_ss.add(when: 'CONFIG_SSI_M25P80', if_true: files('m25p80_sfdp.c'))
- system_ss.add(when: 'CONFIG_SWIM', if_true: files('swim.c'))
- system_ss.add(when: 'CONFIG_XEN_BUS', if_true: files('xen-block.c'))
- 
--specific_ss.add(when: 'CONFIG_VIRTIO_BLK', if_true: files('virtio-blk.c', 'virtio-blk-common.c'))
--specific_ss.add(when: 'CONFIG_VHOST_USER_BLK', if_true: files('vhost-user-blk.c', 'virtio-blk-common.c'))
-+specific_ss.add(when: 'CONFIG_VIRTIO_BLK', if_true: files('virtio-blk.c'))
-+system_ss.add(when: 'CONFIG_VIRTIO_BLK', if_true: files('virtio-blk-common.c'))
-+specific_ss.add(when: 'CONFIG_VHOST_USER_BLK', if_true: files('vhost-user-blk.c'))
-+system_ss.add(when: 'CONFIG_VHOST_USER_BLK', if_true: files('virtio-blk-common.c'))
- 
- subdir('dataplane')
-diff --git a/hw/virtio/meson.build b/hw/virtio/meson.build
-index 164f6fd995a..3ea7b3cec83 100644
---- a/hw/virtio/meson.build
-+++ b/hw/virtio/meson.build
-@@ -1,6 +1,7 @@
- system_virtio_ss = ss.source_set()
- system_virtio_ss.add(files('virtio-bus.c'))
- system_virtio_ss.add(files('iothread-vq-mapping.c'))
-+system_virtio_ss.add(files('virtio-config-io.c'))
- system_virtio_ss.add(when: 'CONFIG_VIRTIO_PCI', if_true: files('virtio-pci.c'))
- system_virtio_ss.add(when: 'CONFIG_VIRTIO_MMIO', if_true: files('virtio-mmio.c'))
- system_virtio_ss.add(when: 'CONFIG_VIRTIO_CRYPTO', if_true: files('virtio-crypto.c'))
-@@ -10,11 +11,11 @@ system_virtio_ss.add(when: 'CONFIG_VHOST_VDPA_DEV', if_true: files('vdpa-dev.c')
- 
- specific_virtio_ss = ss.source_set()
- specific_virtio_ss.add(files('virtio.c'))
--specific_virtio_ss.add(files('virtio-config-io.c', 'virtio-qmp.c'))
-+specific_virtio_ss.add(files('virtio-qmp.c'))
- 
- if have_vhost
-   system_virtio_ss.add(files('vhost.c'))
--  specific_virtio_ss.add(files('vhost-backend.c', 'vhost-iova-tree.c'))
-+  system_virtio_ss.add(files('vhost-backend.c', 'vhost-iova-tree.c'))
-   if have_vhost_user
-     # fixme - this really should be generic
-     specific_virtio_ss.add(files('vhost-user.c'))
-@@ -43,22 +44,22 @@ if have_vhost
-   endif
-   if have_vhost_vdpa
-     system_virtio_ss.add(files('vhost-vdpa.c'))
--    specific_virtio_ss.add(files('vhost-shadow-virtqueue.c'))
-+    system_virtio_ss.add(files('vhost-shadow-virtqueue.c'))
-   endif
- else
-   system_virtio_ss.add(files('vhost-stub.c'))
- endif
-+system_virtio_ss.add(when: 'CONFIG_VHOST_USER_VSOCK', if_true: files('vhost-user-vsock.c'))
-+system_virtio_ss.add(when: 'CONFIG_VIRTIO_RNG', if_true: files('virtio-rng.c'))
- 
- specific_virtio_ss.add(when: 'CONFIG_VIRTIO_BALLOON', if_true: files('virtio-balloon.c'))
- specific_virtio_ss.add(when: 'CONFIG_VHOST_USER_FS', if_true: files('vhost-user-fs.c'))
- specific_virtio_ss.add(when: 'CONFIG_VIRTIO_PMEM', if_true: files('virtio-pmem.c'))
- specific_virtio_ss.add(when: 'CONFIG_VHOST_VSOCK', if_true: files('vhost-vsock.c'))
--specific_virtio_ss.add(when: 'CONFIG_VHOST_USER_VSOCK', if_true: files('vhost-user-vsock.c'))
--specific_virtio_ss.add(when: 'CONFIG_VIRTIO_RNG', if_true: files('virtio-rng.c'))
--specific_virtio_ss.add(when: 'CONFIG_VIRTIO_NSM', if_true: [files('virtio-nsm.c', 'cbor-helpers.c'), libcbor])
- specific_virtio_ss.add(when: 'CONFIG_VIRTIO_MEM', if_true: files('virtio-mem.c'))
--specific_virtio_ss.add(when: 'CONFIG_VHOST_USER_SCMI', if_true: files('vhost-user-scmi.c'))
--specific_virtio_ss.add(when: ['CONFIG_VIRTIO_PCI', 'CONFIG_VHOST_USER_SCMI'], if_true: files('vhost-user-scmi-pci.c'))
-+system_virtio_ss.add(when: 'CONFIG_VIRTIO_NSM', if_true: files('virtio-nsm.c'))
-+system_virtio_ss.add(when: 'CONFIG_VIRTIO_NSM', if_true: [files('cbor-helpers.c'), libcbor])
-+system_virtio_ss.add(when: 'CONFIG_VHOST_USER_SCMI', if_true: files('vhost-user-scmi.c'))
- 
- virtio_pci_ss = ss.source_set()
- virtio_pci_ss.add(when: 'CONFIG_VHOST_VSOCK', if_true: files('vhost-vsock-pci.c'))
-@@ -67,6 +68,7 @@ virtio_pci_ss.add(when: 'CONFIG_VHOST_USER_BLK', if_true: files('vhost-user-blk-
- virtio_pci_ss.add(when: 'CONFIG_VHOST_USER_SCSI', if_true: files('vhost-user-scsi-pci.c'))
- virtio_pci_ss.add(when: 'CONFIG_VHOST_SCSI', if_true: files('vhost-scsi-pci.c'))
- virtio_pci_ss.add(when: 'CONFIG_VHOST_USER_FS', if_true: files('vhost-user-fs-pci.c'))
-+virtio_pci_ss.add(when: 'CONFIG_VHOST_USER_SCMI', if_true: files('vhost-user-scmi-pci.c'))
- 
- virtio_pci_ss.add(when: 'CONFIG_VIRTIO_CRYPTO', if_true: files('virtio-crypto-pci.c'))
- virtio_pci_ss.add(when: 'CONFIG_VIRTIO_INPUT_HOST', if_true: files('virtio-input-host-pci.c'))
-@@ -85,7 +87,7 @@ virtio_pci_ss.add(when: 'CONFIG_VIRTIO_MEM', if_true: files('virtio-mem-pci.c'))
- virtio_pci_ss.add(when: 'CONFIG_VHOST_VDPA_DEV', if_true: files('vdpa-dev-pci.c'))
- virtio_pci_ss.add(when: 'CONFIG_VIRTIO_MD', if_true: files('virtio-md-pci.c'))
- 
--specific_virtio_ss.add_all(when: 'CONFIG_VIRTIO_PCI', if_true: virtio_pci_ss)
-+system_virtio_ss.add_all(when: 'CONFIG_VIRTIO_PCI', if_true: virtio_pci_ss)
- 
- system_ss.add_all(when: 'CONFIG_VIRTIO', if_true: system_virtio_ss)
- system_ss.add(when: 'CONFIG_VIRTIO', if_false: files('vhost-stub.c'))
--- 
-2.49.0
+While at it you can also fix the missing bracket at
+ /* Distributor state (shared between all CPUs */
+
+same remark on the guest side and same missing bracket ;-)
+>      reg = s->gicd_ctlr;
+>      kvm_gicd_access(s, GICD_CTLR, &reg, true);
+>  
+> @@ -519,6 +522,9 @@ static void kvm_arm_gicv3_get(GICv3State *s)
+>      kvm_gicr_access(s, GICR_TYPER + 4, 0, &regh, false);
+>      redist_typer = ((uint64_t)regh << 32) | regl;
+>  
+> +    kvm_gicd_access(s, GICD_TYPER2, &reg, false);
+> +    s->gicd_typer2 = reg;
+> +
+>      kvm_gicd_access(s, GICD_CTLR, &reg, false);
+>      s->gicd_ctlr = reg;
+>  
+Others looks good to me
+
+Eric
 
 

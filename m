@@ -4,95 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D01CC83F09
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 21:21:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A4E4C8303C
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 21:21:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZFG9-0006eW-GY; Tue, 08 Jul 2025 16:49:49 -0400
+	id 1uZFJr-0001Aw-4s; Tue, 08 Jul 2025 16:53:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uZDsX-0000kX-A2
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:21:25 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uZDsQ-0000d1-0q
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:21:19 -0400
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-ae3b336e936so880545766b.3
- for <qemu-arm@nongnu.org>; Tue, 08 Jul 2025 12:21:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752002469; x=1752607269; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=4XBodQSROD8wkglC7LQNsiAxFO/V5HnbCa2RbyfuTVw=;
- b=xzKIqXDU5i+2qGnbhYL6EFWyI7JIfcwTJNmL8avlCZDB04SkiDAYvAFStesSux3SUo
- zabZYaxxV2P2PjtMDdDJxszkxhLGi/arMP40uUGv/lZgd5zl00uu/1Zb+TTMUzzbj7Xg
- 6HO8oUAab3woQj5mrTI0LECwPZbdSfbmwt97A8iWjB1tDLEcdABqmDjhWwFcPRsUndqJ
- tzbud8lD7Bn04NdPBmNhzhfvMFhXs9D0T+hm94TciQagyYvB9BdSphbVlqzPvPqcfhBq
- cK1ICv/N7yWIBvbHKHlt8v3S0qsguhMvAQK5MT4KdhZZjbGU3lBrkq5Lnk/lQJd25pzT
- jJOw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752002469; x=1752607269;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4XBodQSROD8wkglC7LQNsiAxFO/V5HnbCa2RbyfuTVw=;
- b=Bh7+SAdON9e9a/EuwfSDyOaZGCZ7DxOqxsaBYxCEVeAxHIh8DPw1g+XB1VJc6Hqm0L
- v2OgdGCXZFsS+98GuI1y5AibyNwdW1vb+GeCythtRUiU9/5E3/NrrwJxH/Qm/yxYIp2R
- EAlMBzXSpg0QwiTmIprlhjFG6cS3YgRM5Yxp/CkCZUX6ymfmA903StO7VES2d900QXdN
- urFfjIG/KsrG2yL163lvhN83XQaGRB/Dc72TaxfRdYS661SDfJZMEAEk91ujIWrbzAqs
- EChQ3omJ77QvVZ2P6BXY1QAfmBYhsaW+LwbP/RnsBWfsqGfwx9AfoLvDjD4mlozbcd56
- BIbg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCViKn05Yr6t4RzsZrVwBhcpUZGHcS6snkO/ohW2XFh0I5AcSBpG4e6Z7xFAts5hd5Yc/HbZ5fEVdQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxbL/9QO3jnbW7XQw3Eww3PgP9ImxZ7M3+JOVrbyeLayfrqKcPd
- FDfuXoXUWYwTRasBYeQm0OEbPu4sEO49s+fyS9VTY1/DzLbbNPyrYvHNVVQdVrck1F7oF6Kj8FZ
- pFORmWkE=
-X-Gm-Gg: ASbGncuzTo2JPldupWVfydENjjU9y/zL4kORZuySjUOIGq1hcl55Lq3Mmewsc0pnhKF
- yU43oFcNkJkvA1Jc/iWC2euJZ5ZROJ8zAeu2VqBpJaEAkFa9rGY8ce3KAEDp8aUSRjPn2xLdApy
- G7lsYwh9U84jevgn5jsWSTOitzhRsulKJ+WoxOzavGBIJRam0ISD2KxaM1Ua4HNWptZXhF1eRGX
- ovROD+Ec2fnQjqIR7e/gQaky1oxQJcIZsofXPVBS/rDJPRgw7NomCewrP6YC8cvC1ycBaQwA6Lr
- tRbzEsfsJwaGOL9m/3FzO1LXYKwOSFHoEUArK87UOHy+uY0J8YRgh/7h3fTjwCf9L//Pcp7nmk2
- 1AA/f5xc8v876CvS3O6NIRMi2fPBKaw==
-X-Google-Smtp-Source: AGHT+IFYrA0gK6QeZ2HxMQl3p/ZUhSkytREMZ1X9mDDfs8B1Np5M4o/aiK8fRXsF3TIg/X2pS/+SjQ==
-X-Received: by 2002:a05:6000:2b0e:b0:3b5:dfc2:f0ca with SMTP id
- ffacd0b85a97d-3b5dfc2f414mr843121f8f.40.1751969863893; 
- Tue, 08 Jul 2025 03:17:43 -0700 (PDT)
-Received: from [192.168.69.242] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b4708d0a5csm12387002f8f.29.2025.07.08.03.17.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Jul 2025 03:17:43 -0700 (PDT)
-Message-ID: <64700490-e94b-405e-92cf-2ffc25537aea@linaro.org>
-Date: Tue, 8 Jul 2025 12:17:42 +0200
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uZEDp-0004Og-03
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:43:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uZEDn-0006Qd-AZ
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:43:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1752003798;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5SBU8rqjDCM9bszWrHYCJiNHA4uqefOcOO5gBO57x8s=;
+ b=cy8j7iSb/Q5qO4saj6tpWppjSamHDaQkNyJ9L1l3qDgaMgyrPUJ3FqACxThHM9BRe03k3d
+ x2QhtDJ3LZ0dihTqFIme7JQO38e/5FlwMdpJO02kuIS1v1sEVdy0ZtizlwXOehN+njizam
+ xUV5Qm4SQXCmWlOhrVsaCCUhsdsCch0=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-121-X8jnBkrGNeCPixZg3Y5P2Q-1; Tue,
+ 08 Jul 2025 10:27:39 -0400
+X-MC-Unique: X8jnBkrGNeCPixZg3Y5P2Q-1
+X-Mimecast-MFC-AGG-ID: X8jnBkrGNeCPixZg3Y5P2Q_1751984857
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C69BA19560A2; Tue,  8 Jul 2025 14:27:37 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.44.32.187])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id A296F30001B9; Tue,  8 Jul 2025 14:27:31 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
+ Jonathan.Cameron@huawei.com, gustavo.romero@linaro.org,
+ anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
+Cc: pbonzini@redhat.com,
+	philmd@linaro.org,
+	alex.bennee@linaro.org
+Subject: [PATCH v6 26/36] hw/acpi/ged: Call pcihp plug callbacks in hotplug
+ handler implementation
+Date: Tue,  8 Jul 2025 16:23:08 +0200
+Message-ID: <20250708142437.1344644-27-eric.auger@redhat.com>
+In-Reply-To: <20250708142437.1344644-1-eric.auger@redhat.com>
+References: <20250708142437.1344644-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-10.1 v6 09/14] hw/virtio: Build various files once
-To: qemu-devel@nongnu.org, Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-block@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org,
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>
-References: <20250707172009.3884-1-philmd@linaro.org>
- <20250707172009.3884-10-philmd@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250707172009.3884-10-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x633.google.com
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,119 +89,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-(Forgot to Cc Manos)
+Add PCI device related code in the TYPE_HOTPLUG_HANDLER
+implementation.
 
-On 7/7/25 19:20, Philippe Mathieu-Daudé wrote:
-> Now than various VirtIO files don't use target specific
-> API anymore, we can move them to the system_ss[] source
-> set to build them once.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   hw/virtio/virtio-config-io.c |  1 -
->   hw/block/meson.build         |  6 ++++--
->   hw/virtio/meson.build        | 20 +++++++++++---------
->   3 files changed, 15 insertions(+), 12 deletions(-)
-> 
-> diff --git a/hw/virtio/virtio-config-io.c b/hw/virtio/virtio-config-io.c
-> index ad78e0b9bc5..f58d90b6e31 100644
-> --- a/hw/virtio/virtio-config-io.c
-> +++ b/hw/virtio/virtio-config-io.c
-> @@ -11,7 +11,6 @@
->   
->   #include "qemu/osdep.h"
->   #include "hw/virtio/virtio.h"
-> -#include "cpu.h"
->   
->   uint32_t virtio_config_readb(VirtIODevice *vdev, uint32_t addr)
->   {
-> diff --git a/hw/block/meson.build b/hw/block/meson.build
-> index 655704471a5..43ed296cf47 100644
-> --- a/hw/block/meson.build
-> +++ b/hw/block/meson.build
-> @@ -13,7 +13,9 @@ system_ss.add(when: 'CONFIG_SSI_M25P80', if_true: files('m25p80_sfdp.c'))
->   system_ss.add(when: 'CONFIG_SWIM', if_true: files('swim.c'))
->   system_ss.add(when: 'CONFIG_XEN_BUS', if_true: files('xen-block.c'))
->   
-> -specific_ss.add(when: 'CONFIG_VIRTIO_BLK', if_true: files('virtio-blk.c', 'virtio-blk-common.c'))
-> -specific_ss.add(when: 'CONFIG_VHOST_USER_BLK', if_true: files('vhost-user-blk.c', 'virtio-blk-common.c'))
-> +specific_ss.add(when: 'CONFIG_VIRTIO_BLK', if_true: files('virtio-blk.c'))
-> +system_ss.add(when: 'CONFIG_VIRTIO_BLK', if_true: files('virtio-blk-common.c'))
-> +specific_ss.add(when: 'CONFIG_VHOST_USER_BLK', if_true: files('vhost-user-blk.c'))
-> +system_ss.add(when: 'CONFIG_VHOST_USER_BLK', if_true: files('virtio-blk-common.c'))
->   
->   subdir('dataplane')
-> diff --git a/hw/virtio/meson.build b/hw/virtio/meson.build
-> index 164f6fd995a..3ea7b3cec83 100644
-> --- a/hw/virtio/meson.build
-> +++ b/hw/virtio/meson.build
-> @@ -1,6 +1,7 @@
->   system_virtio_ss = ss.source_set()
->   system_virtio_ss.add(files('virtio-bus.c'))
->   system_virtio_ss.add(files('iothread-vq-mapping.c'))
-> +system_virtio_ss.add(files('virtio-config-io.c'))
->   system_virtio_ss.add(when: 'CONFIG_VIRTIO_PCI', if_true: files('virtio-pci.c'))
->   system_virtio_ss.add(when: 'CONFIG_VIRTIO_MMIO', if_true: files('virtio-mmio.c'))
->   system_virtio_ss.add(when: 'CONFIG_VIRTIO_CRYPTO', if_true: files('virtio-crypto.c'))
-> @@ -10,11 +11,11 @@ system_virtio_ss.add(when: 'CONFIG_VHOST_VDPA_DEV', if_true: files('vdpa-dev.c')
->   
->   specific_virtio_ss = ss.source_set()
->   specific_virtio_ss.add(files('virtio.c'))
-> -specific_virtio_ss.add(files('virtio-config-io.c', 'virtio-qmp.c'))
-> +specific_virtio_ss.add(files('virtio-qmp.c'))
->   
->   if have_vhost
->     system_virtio_ss.add(files('vhost.c'))
-> -  specific_virtio_ss.add(files('vhost-backend.c', 'vhost-iova-tree.c'))
-> +  system_virtio_ss.add(files('vhost-backend.c', 'vhost-iova-tree.c'))
->     if have_vhost_user
->       # fixme - this really should be generic
->       specific_virtio_ss.add(files('vhost-user.c'))
-> @@ -43,22 +44,22 @@ if have_vhost
->     endif
->     if have_vhost_vdpa
->       system_virtio_ss.add(files('vhost-vdpa.c'))
-> -    specific_virtio_ss.add(files('vhost-shadow-virtqueue.c'))
-> +    system_virtio_ss.add(files('vhost-shadow-virtqueue.c'))
->     endif
->   else
->     system_virtio_ss.add(files('vhost-stub.c'))
->   endif
-> +system_virtio_ss.add(when: 'CONFIG_VHOST_USER_VSOCK', if_true: files('vhost-user-vsock.c'))
-> +system_virtio_ss.add(when: 'CONFIG_VIRTIO_RNG', if_true: files('virtio-rng.c'))
->   
->   specific_virtio_ss.add(when: 'CONFIG_VIRTIO_BALLOON', if_true: files('virtio-balloon.c'))
->   specific_virtio_ss.add(when: 'CONFIG_VHOST_USER_FS', if_true: files('vhost-user-fs.c'))
->   specific_virtio_ss.add(when: 'CONFIG_VIRTIO_PMEM', if_true: files('virtio-pmem.c'))
->   specific_virtio_ss.add(when: 'CONFIG_VHOST_VSOCK', if_true: files('vhost-vsock.c'))
-> -specific_virtio_ss.add(when: 'CONFIG_VHOST_USER_VSOCK', if_true: files('vhost-user-vsock.c'))
-> -specific_virtio_ss.add(when: 'CONFIG_VIRTIO_RNG', if_true: files('virtio-rng.c'))
-> -specific_virtio_ss.add(when: 'CONFIG_VIRTIO_NSM', if_true: [files('virtio-nsm.c', 'cbor-helpers.c'), libcbor])
->   specific_virtio_ss.add(when: 'CONFIG_VIRTIO_MEM', if_true: files('virtio-mem.c'))
-> -specific_virtio_ss.add(when: 'CONFIG_VHOST_USER_SCMI', if_true: files('vhost-user-scmi.c'))
-> -specific_virtio_ss.add(when: ['CONFIG_VIRTIO_PCI', 'CONFIG_VHOST_USER_SCMI'], if_true: files('vhost-user-scmi-pci.c'))
-> +system_virtio_ss.add(when: 'CONFIG_VIRTIO_NSM', if_true: files('virtio-nsm.c'))
-> +system_virtio_ss.add(when: 'CONFIG_VIRTIO_NSM', if_true: [files('cbor-helpers.c'), libcbor])
-> +system_virtio_ss.add(when: 'CONFIG_VHOST_USER_SCMI', if_true: files('vhost-user-scmi.c'))
->   
->   virtio_pci_ss = ss.source_set()
->   virtio_pci_ss.add(when: 'CONFIG_VHOST_VSOCK', if_true: files('vhost-vsock-pci.c'))
-> @@ -67,6 +68,7 @@ virtio_pci_ss.add(when: 'CONFIG_VHOST_USER_BLK', if_true: files('vhost-user-blk-
->   virtio_pci_ss.add(when: 'CONFIG_VHOST_USER_SCSI', if_true: files('vhost-user-scsi-pci.c'))
->   virtio_pci_ss.add(when: 'CONFIG_VHOST_SCSI', if_true: files('vhost-scsi-pci.c'))
->   virtio_pci_ss.add(when: 'CONFIG_VHOST_USER_FS', if_true: files('vhost-user-fs-pci.c'))
-> +virtio_pci_ss.add(when: 'CONFIG_VHOST_USER_SCMI', if_true: files('vhost-user-scmi-pci.c'))
->   
->   virtio_pci_ss.add(when: 'CONFIG_VIRTIO_CRYPTO', if_true: files('virtio-crypto-pci.c'))
->   virtio_pci_ss.add(when: 'CONFIG_VIRTIO_INPUT_HOST', if_true: files('virtio-input-host-pci.c'))
-> @@ -85,7 +87,7 @@ virtio_pci_ss.add(when: 'CONFIG_VIRTIO_MEM', if_true: files('virtio-mem-pci.c'))
->   virtio_pci_ss.add(when: 'CONFIG_VHOST_VDPA_DEV', if_true: files('vdpa-dev-pci.c'))
->   virtio_pci_ss.add(when: 'CONFIG_VIRTIO_MD', if_true: files('virtio-md-pci.c'))
->   
-> -specific_virtio_ss.add_all(when: 'CONFIG_VIRTIO_PCI', if_true: virtio_pci_ss)
-> +system_virtio_ss.add_all(when: 'CONFIG_VIRTIO_PCI', if_true: virtio_pci_ss)
->   
->   system_ss.add_all(when: 'CONFIG_VIRTIO', if_true: system_virtio_ss)
->   system_ss.add(when: 'CONFIG_VIRTIO', if_false: files('vhost-stub.c'))
+For a PCI device hotplug/hotunplug event, the code routes to
+acpi_pcihp_device callbacks (pre_plug_cb, plug_cb, unplug_request_cb,
+unplug_cb).
+
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+
+---
+
+v2 -> v4:
+moved before "hw/acpi/ged: Prepare the device to react to PCI hotplug
+events" (Igor)
+
+v2 -> v3:
+- remove else block in acpi_ged_device_pre_plug_cb
+---
+ hw/acpi/generic_event_device.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index ef1c1ec51f..92b931758f 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -17,6 +17,7 @@
+ #include "hw/irq.h"
+ #include "hw/mem/pc-dimm.h"
+ #include "hw/mem/nvdimm.h"
++#include "hw/pci/pci_device.h"
+ #include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
+ #include "qemu/error-report.h"
+@@ -228,6 +229,14 @@ static const MemoryRegionOps ged_regs_ops = {
+     },
+ };
+ 
++static void acpi_ged_device_pre_plug_cb(HotplugHandler *hotplug_dev,
++                                        DeviceState *dev, Error **errp)
++{
++    if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
++        acpi_pcihp_device_pre_plug_cb(hotplug_dev, dev, errp);
++    }
++}
++
+ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
+                                     DeviceState *dev, Error **errp)
+ {
+@@ -241,6 +250,8 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
+         }
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+         acpi_cpu_plug_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
++        acpi_pcihp_device_plug_cb(hotplug_dev, &s->pcihp_state, dev, errp);
+     } else {
+         error_setg(errp, "virt: device plug request for unsupported device"
+                    " type: %s", object_get_typename(OBJECT(dev)));
+@@ -257,6 +268,9 @@ static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
+         acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+         acpi_cpu_unplug_request_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
++        acpi_pcihp_device_unplug_request_cb(hotplug_dev, &s->pcihp_state,
++                                            dev, errp);
+     } else {
+         error_setg(errp, "acpi: device unplug request for unsupported device"
+                    " type: %s", object_get_typename(OBJECT(dev)));
+@@ -272,6 +286,8 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
+         acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+         acpi_cpu_unplug_cb(&s->cpuhp_state, dev, errp);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
++        acpi_pcihp_device_unplug_cb(hotplug_dev, &s->pcihp_state, dev, errp);
+     } else {
+         error_setg(errp, "acpi: device unplug for unsupported device"
+                    " type: %s", object_get_typename(OBJECT(dev)));
+@@ -485,6 +501,7 @@ static void acpi_ged_class_init(ObjectClass *class, const void *data)
+     dc->vmsd = &vmstate_acpi_ged;
+     dc->realize = acpi_ged_realize;
+ 
++    hc->pre_plug = acpi_ged_device_pre_plug_cb;
+     hc->plug = acpi_ged_device_plug_cb;
+     hc->unplug_request = acpi_ged_unplug_request_cb;
+     hc->unplug = acpi_ged_unplug_cb;
+-- 
+2.49.0
 
 

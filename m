@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A875BC83F09
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 21:03:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A14EC83F0F
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 21:03:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZFIi-00063J-ES; Tue, 08 Jul 2025 16:52:28 -0400
+	id 1uZFJi-0000Nb-UN; Tue, 08 Jul 2025 16:53:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZEDD-0004hv-Vb
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:42:45 -0400
+ id 1uZEDZ-0002QX-K4
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:43:06 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZEDB-0006B0-Hd
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:42:43 -0400
+ id 1uZEDW-0006J2-DP
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:43:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752003760;
+ s=mimecast20190719; t=1752003781;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ztOHQuRdZU6Ia6/9fdzeOkwFogOl4LLzWMJKwr7hjGI=;
- b=dzyr6gGc8luENkJnhB7yARd7LvYWZxhzn0Ej0KXghtL7SdvSgzpHbyQIo7+i3tqgf+271a
- UhUzsV/jhRR2M9nsjc0uKBBbf4rcdwWJl4f7dU3DXZXnWwXoVJUfxbtFu6Yz6bjZC7r3nf
- R2D7KD++JLT4NV8neRWe/B4IOVzussY=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=/5nu6NuITo203ftGtrA2lpVLlTccJCwkIpBLYxqRRHk=;
+ b=TbDsidClYqKZR1HIWXokGKx4wSW4XTgzOdgQSW4QQh8mf/YaU12/VuHFR5db1oUXCFfftl
+ rYHO03JGSx73L9+URGsitBs9/rzchneuVEx/R3re//17YOSwE8MHsJHRTk9aJiXZNmVFxE
+ Hu2gxuNGoar+PKQF1wty+QeqxUijb6Y=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-248-gcyLuUOpPh6obSAxS76PQg-1; Tue,
- 08 Jul 2025 10:26:20 -0400
-X-MC-Unique: gcyLuUOpPh6obSAxS76PQg-1
-X-Mimecast-MFC-AGG-ID: gcyLuUOpPh6obSAxS76PQg_1751984775
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-662-TYsKp-QiMTeaf3yTHuWPJQ-1; Tue,
+ 08 Jul 2025 10:27:22 -0400
+X-MC-Unique: TYsKp-QiMTeaf3yTHuWPJQ-1
+X-Mimecast-MFC-AGG-ID: TYsKp-QiMTeaf3yTHuWPJQ_1751984840
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3A7C41956048; Tue,  8 Jul 2025 14:26:15 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1645D193585F; Tue,  8 Jul 2025 14:27:20 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.187])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 03D1730001B1; Tue,  8 Jul 2025 14:26:08 +0000 (UTC)
+ id 6582F30001B9; Tue,  8 Jul 2025 14:27:14 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
@@ -55,10 +55,10 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: pbonzini@redhat.com,
 	philmd@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v6 13/36] hw/i386/acpi-build: Move
- build_append_notification_callback to pcihp
-Date: Tue,  8 Jul 2025 16:22:55 +0200
-Message-ID: <20250708142437.1344644-14-eric.auger@redhat.com>
+Subject: [PATCH v6 23/36] hw/arm/virt-acpi-build: Modify the DSDT ACPI table
+ to enable ACPI PCI hotplug
+Date: Tue,  8 Jul 2025 16:23:05 +0200
+Message-ID: <20250708142437.1344644-24-eric.auger@redhat.com>
 In-Reply-To: <20250708142437.1344644-1-eric.auger@redhat.com>
 References: <20250708142437.1344644-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -89,178 +89,116 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We plan to reuse build_append_notification_callback() on ARM
-so let's move it to pcihp.c.
-
-No functional change intended.
+Modify the DSDT ACPI table to enable ACPI PCI hotplug.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+
 ---
- include/hw/acpi/pcihp.h |  1 +
- hw/acpi/pcihp.c         | 58 +++++++++++++++++++++++++++++++++++++++++
- hw/i386/acpi-build.c    | 58 -----------------------------------------
- 3 files changed, 59 insertions(+), 58 deletions(-)
+v4 -> v5:
+- protect the access to the ged property by an acpi_dev check
+
+v3 -> v4:
+- use property accessor
+- removed ACPI_PCIHP_SIZE which is already in the header
+- make addition of EDSM unconditional
+
+v2 -> v3:
+- use ACPI_PCIHP_SIZE instead of 0x1000 (Igor)
+- use cihp_state->use_acpi_hotplug_bridge
+---
+ include/hw/acpi/pcihp.h  |  2 ++
+ include/hw/arm/virt.h    |  1 +
+ hw/acpi/pcihp.c          |  1 -
+ hw/arm/virt-acpi-build.c | 17 +++++++++++++++++
+ hw/arm/virt.c            |  2 ++
+ 5 files changed, 22 insertions(+), 1 deletion(-)
 
 diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
-index 253ac6e483..f4fd44cb32 100644
+index 5506a58862..9ff548650b 100644
 --- a/include/hw/acpi/pcihp.h
 +++ b/include/hw/acpi/pcihp.h
-@@ -78,6 +78,7 @@ void build_acpi_pci_hotplug(Aml *table, AmlRegionSpace rs, uint64_t pcihp_addr);
- void build_append_pci_dsm_func0_common(Aml *ctx, Aml *retvar);
- void build_append_pcihp_resources(Aml *table,
-                                   uint64_t io_addr, uint64_t io_len);
-+bool build_append_notification_callback(Aml *parent_scope, const PCIBus *bus);
+@@ -38,6 +38,8 @@
+ #define ACPI_PCIHP_SEJ_BASE 0x8
+ #define ACPI_PCIHP_BNMR_BASE 0x10
  
- /* Called on reset */
- void acpi_pcihp_reset(AcpiPciHpState *s);
++#define ACPI_PCIHP_SIZE 0x0018
++
+ typedef struct AcpiPciHpPciStatus {
+     uint32_t up;
+     uint32_t down;
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 9a1b0f53d2..0ed2e6b732 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -79,6 +79,7 @@ enum {
+     VIRT_ACPI_GED,
+     VIRT_NVDIMM_ACPI,
+     VIRT_PVTIME,
++    VIRT_ACPI_PCIHP,
+     VIRT_LOWMEMMAP_LAST,
+ };
+ 
 diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-index afa3ec5f4d..b64d06afc9 100644
+index 2db2f16940..f1594e664a 100644
 --- a/hw/acpi/pcihp.c
 +++ b/hw/acpi/pcihp.c
-@@ -39,6 +39,7 @@
- #include "migration/vmstate.h"
- #include "qapi/error.h"
- #include "qom/qom-qobject.h"
-+#include "qobject/qnum.h"
+@@ -43,7 +43,6 @@
+ #include "qobject/qnum.h"
  #include "trace.h"
  
- #define ACPI_PCIHP_SIZE 0x0018
-@@ -703,6 +704,63 @@ void build_append_pcihp_resources(Aml *scope /* \\_SB.PCI0 */,
-     aml_append(scope, dev);
- }
- 
-+bool build_append_notification_callback(Aml *parent_scope, const PCIBus *bus)
-+{
-+    Aml *method;
-+    PCIBus *sec;
-+    QObject *bsel;
-+    int nr_notifiers = 0;
-+    GQueue *pcnt_bus_list = g_queue_new();
-+
-+    QLIST_FOREACH(sec, &bus->child, sibling) {
-+        Aml *br_scope = aml_scope("S%.02X", sec->parent_dev->devfn);
-+        if (pci_bus_is_root(sec)) {
-+            continue;
-+        }
-+        nr_notifiers = nr_notifiers +
-+                       build_append_notification_callback(br_scope, sec);
-+        /*
-+         * add new child scope to parent
-+         * and keep track of bus that have PCNT,
-+         * bus list is used later to call children PCNTs from this level PCNT
-+         */
-+        if (nr_notifiers) {
-+            g_queue_push_tail(pcnt_bus_list, sec);
-+            aml_append(parent_scope, br_scope);
-+        }
-+    }
-+
-+    /*
-+     * Append PCNT method to notify about events on local and child buses.
-+     * ps: hostbridge might not have hotplug (bsel) enabled but might have
-+     * child bridges that do have bsel.
-+     */
-+    method = aml_method("PCNT", 0, AML_NOTSERIALIZED);
-+
-+    /* If bus supports hotplug select it and notify about local events */
-+    bsel = object_property_get_qobject(OBJECT(bus), ACPI_PCIHP_PROP_BSEL, NULL);
-+    if (bsel) {
-+        uint64_t bsel_val = qnum_get_uint(qobject_to(QNum, bsel));
-+
-+        aml_append(method, aml_store(aml_int(bsel_val), aml_name("BNUM")));
-+        aml_append(method, aml_call2("DVNT", aml_name("PCIU"),
-+                                     aml_int(1))); /* Device Check */
-+        aml_append(method, aml_call2("DVNT", aml_name("PCID"),
-+                                     aml_int(3))); /* Eject Request */
-+        nr_notifiers++;
-+    }
-+
-+    /* Notify about child bus events in any case */
-+    while ((sec = g_queue_pop_head(pcnt_bus_list))) {
-+        aml_append(method, aml_name("^S%.02X.PCNT", sec->parent_dev->devfn));
-+    }
-+
-+    aml_append(parent_scope, method);
-+    qobject_unref(bsel);
-+    g_queue_free(pcnt_bus_list);
-+    return !!nr_notifiers;
-+}
-+
- const VMStateDescription vmstate_acpi_pcihp_pci_status = {
-     .name = "acpi_pcihp_pci_status",
-     .version_id = 1,
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 6ca2b34ef8..3275675e60 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -563,64 +563,6 @@ void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus)
+-#define ACPI_PCIHP_SIZE 0x0018
+ #define PCI_UP_BASE 0x0000
+ #define PCI_DOWN_BASE 0x0004
+ #define PCI_EJ_BASE 0x0008
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 1f936516b3..14eb775b0c 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -946,6 +946,23 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         build_append_pcihp_slots(pci0_scope, vms->bus);
      }
- }
  
--static bool build_append_notification_callback(Aml *parent_scope,
--                                               const PCIBus *bus)
--{
--    Aml *method;
--    PCIBus *sec;
--    QObject *bsel;
--    int nr_notifiers = 0;
--    GQueue *pcnt_bus_list = g_queue_new();
--
--    QLIST_FOREACH(sec, &bus->child, sibling) {
--        Aml *br_scope = aml_scope("S%.02X", sec->parent_dev->devfn);
--        if (pci_bus_is_root(sec)) {
--            continue;
--        }
--        nr_notifiers = nr_notifiers +
--                       build_append_notification_callback(br_scope, sec);
--        /*
--         * add new child scope to parent
--         * and keep track of bus that have PCNT,
--         * bus list is used later to call children PCNTs from this level PCNT
--         */
--        if (nr_notifiers) {
--            g_queue_push_tail(pcnt_bus_list, sec);
--            aml_append(parent_scope, br_scope);
--        }
--    }
--
--    /*
--     * Append PCNT method to notify about events on local and child buses.
--     * ps: hostbridge might not have hotplug (bsel) enabled but might have
--     * child bridges that do have bsel.
--     */
--    method = aml_method("PCNT", 0, AML_NOTSERIALIZED);
--
--    /* If bus supports hotplug select it and notify about local events */
--    bsel = object_property_get_qobject(OBJECT(bus), ACPI_PCIHP_PROP_BSEL, NULL);
--    if (bsel) {
--        uint64_t bsel_val = qnum_get_uint(qobject_to(QNum, bsel));
--
--        aml_append(method, aml_store(aml_int(bsel_val), aml_name("BNUM")));
--        aml_append(method, aml_call2("DVNT", aml_name("PCIU"),
--                                     aml_int(1))); /* Device Check */
--        aml_append(method, aml_call2("DVNT", aml_name("PCID"),
--                                     aml_int(3))); /* Eject Request */
--        nr_notifiers++;
--    }
--
--    /* Notify about child bus events in any case */
--    while ((sec = g_queue_pop_head(pcnt_bus_list))) {
--        aml_append(method, aml_name("^S%.02X.PCNT", sec->parent_dev->devfn));
--    }
--
--    aml_append(parent_scope, method);
--    qobject_unref(bsel);
--    g_queue_free(pcnt_bus_list);
--    return !!nr_notifiers;
--}
--
- /*
-  * build_prt - Define interrupt routing rules
-  *
++    if (vms->acpi_dev) {
++        bool acpi_pcihp;
++
++        acpi_pcihp = object_property_get_bool(OBJECT(vms->acpi_dev),
++                                              ACPI_PM_PROP_ACPI_PCIHP_BRIDGE,
++                                              NULL);
++
++        if (acpi_pcihp) {
++            build_acpi_pci_hotplug(dsdt, AML_SYSTEM_MEMORY,
++                                   memmap[VIRT_ACPI_PCIHP].base);
++            build_append_pcihp_resources(pci0_scope,
++                                         memmap[VIRT_ACPI_PCIHP].base,
++                                         memmap[VIRT_ACPI_PCIHP].size);
++
++            build_append_notification_callback(pci0_scope, vms->bus);
++        }
++    }
+     aml_append(dsdt, pci0_scope);
+ 
+     /* copy AML table into ACPI tables blob */
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 3bcdf92e2f..8024a0b6b3 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -75,6 +75,7 @@
+ #include "standard-headers/linux/input.h"
+ #include "hw/arm/smmuv3.h"
+ #include "hw/acpi/acpi.h"
++#include "hw/acpi/pcihp.h"
+ #include "target/arm/cpu-qom.h"
+ #include "target/arm/internals.h"
+ #include "target/arm/multiprocessing.h"
+@@ -183,6 +184,7 @@ static const MemMapEntry base_memmap[] = {
+     [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
+     [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
+     [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
++    [VIRT_ACPI_PCIHP] =         { 0x090c0000, ACPI_PCIHP_SIZE },
+     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
 -- 
 2.49.0
 

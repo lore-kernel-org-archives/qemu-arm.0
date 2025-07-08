@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8502EC83F09
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 19:43:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8381C83F09
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 19:50:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZEEC-0006uJ-9C; Tue, 08 Jul 2025 15:43:45 -0400
+	id 1uZEJy-0001bt-SE; Tue, 08 Jul 2025 15:49:42 -0400
 Received: from eggs.gnu.org ([209.51.188.92])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZBOz-00006U-UC
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 12:43:06 -0400
+ id 1uZBPV-0000Rm-2B
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 12:43:24 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZBOj-0006oh-CP
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 12:42:33 -0400
+ id 1uZBP2-00063u-Sp
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 12:42:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1751992914;
+ s=mimecast20190719; t=1751992899;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KsfUkLon/+WAZ1K8J1yMGAMyGCY2Z1dhM4JRzV9aVSE=;
- b=JHRbRNwG4FZ7dXRp7XULgL4VMbEvvjKo0cAKb+O+Z8Geukyad5TF2XuYzBxJcgX+X+XvZO
- fLVTTlS8kbqb910vjGUbvN0a4Rw1sn90LE+5VhyvQjAUNnDKVhsUtpIIq0sWV9uBGdiGkD
- /hongwUFiP3b0iM3A+swS2YqPUdGcrQ=
+ bh=zOreZF7iJ7Xj4M3A4SKQurpH0SYsfcpWvlogIxrsc8o=;
+ b=JTbOlYM3DJmMo5g6SWRhGcdBi9EaiQefDP9C5YLlc7Oxhg9dvnZnuq3CsrS4HTrxbudqDA
+ jXCwrUxUdh3ScvYI1Kd1tKSZyIPSjj3IthsaOc4d6MF4CzobX8j+KTEWIv7+bLnjsVUL+B
+ pKhHNZcG3Xe8P/yyxqjY6gS4V0EbF+w=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-453-0ZhNDNNcPbiceIFEntL6vA-1; Tue,
- 08 Jul 2025 10:28:35 -0400
-X-MC-Unique: 0ZhNDNNcPbiceIFEntL6vA-1
-X-Mimecast-MFC-AGG-ID: 0ZhNDNNcPbiceIFEntL6vA_1751984911
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-557-qLb42m7JPo-RQiQx0SxPbg-1; Tue,
+ 08 Jul 2025 10:27:57 -0400
+X-MC-Unique: qLb42m7JPo-RQiQx0SxPbg-1
+X-Mimecast-MFC-AGG-ID: qLb42m7JPo-RQiQx0SxPbg_1751984875
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1080A1809C88; Tue,  8 Jul 2025 14:28:20 +0000 (UTC)
+ id ECA6A18011DF; Tue,  8 Jul 2025 14:27:54 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.187])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 64B8330001B9; Tue,  8 Jul 2025 14:28:14 +0000 (UTC)
+ id 4275330001B1; Tue,  8 Jul 2025 14:27:49 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
@@ -55,10 +55,9 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: pbonzini@redhat.com,
 	philmd@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v6 33/36] tests/qtest/bios-tables-test: Prepare for addition
- of acpi pci hp tests
-Date: Tue,  8 Jul 2025 16:23:15 +0200
-Message-ID: <20250708142437.1344644-34-eric.auger@redhat.com>
+Subject: [PATCH v6 29/36] hw/acpi/ged: Support migration of AcpiPciHpState
+Date: Tue,  8 Jul 2025 16:23:11 +0200
+Message-ID: <20250708142437.1344644-30-eric.auger@redhat.com>
 In-Reply-To: <20250708142437.1344644-1-eric.auger@redhat.com>
 References: <20250708142437.1344644-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -89,44 +88,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Gustavo Romero <gustavo.romero@linaro.org>
+Add a subsection to migrate the AcpiPciHpState state.
 
-Soon we will introduce new tests related to ACPI PCI hotplug and
-acpi-index that will use a new reference blob:
-
-tests/data/acpi/aarch64/virt/DSDT.acpipcihp
-tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex
-
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-
 ---
+ hw/acpi/generic_event_device.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-v3 -> v4:
-- switch Sign-off's (Jonathan)
----
- tests/qtest/bios-tables-test-allowed-diff.h      | 2 ++
- tests/data/acpi/aarch64/virt/DSDT.acpipcihp      | 0
- tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex | 0
- 3 files changed, 2 insertions(+)
- create mode 100644 tests/data/acpi/aarch64/virt/DSDT.acpipcihp
- create mode 100644 tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex
-
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8b..02f4f0b29f 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,3 @@
- /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/aarch64/virt/DSDT.acpipcihp",
-+"tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex",
-diff --git a/tests/data/acpi/aarch64/virt/DSDT.acpipcihp b/tests/data/acpi/aarch64/virt/DSDT.acpipcihp
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex b/tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex
-new file mode 100644
-index 0000000000..e69de29bb2
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index 7535d07737..95682b79a2 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -417,6 +417,25 @@ static const VMStateDescription vmstate_ghes_state = {
+     }
+ };
+ 
++static bool pcihp_needed(void *opaque)
++{
++    AcpiGedState *s = opaque;
++    return s->pcihp_state.use_acpi_hotplug_bridge;
++}
++
++static const VMStateDescription vmstate_pcihp_state = {
++    .name = "acpi-ged/pcihp",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = pcihp_needed,
++    .fields = (const VMStateField[]) {
++        VMSTATE_PCI_HOTPLUG(pcihp_state,
++                            AcpiGedState,
++                            NULL, NULL),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static const VMStateDescription vmstate_acpi_ged = {
+     .name = "acpi-ged",
+     .version_id = 1,
+@@ -429,6 +448,7 @@ static const VMStateDescription vmstate_acpi_ged = {
+         &vmstate_memhp_state,
+         &vmstate_cpuhp_state,
+         &vmstate_ghes_state,
++        &vmstate_pcihp_state,
+         NULL
+     }
+ };
 -- 
 2.49.0
 

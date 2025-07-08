@@ -4,95 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E49A2C83F09
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 21:24:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E394C83F0F
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 21:24:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZFKM-0003cd-Qf; Tue, 08 Jul 2025 16:54:11 -0400
+	id 1uZFI7-0004e7-BY; Tue, 08 Jul 2025 16:51:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uZEPx-0004dZ-5Y
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:55:58 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uZEPt-0001Q3-TK
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:55:51 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-ae0d758c3a2so798993966b.2
- for <qemu-arm@nongnu.org>; Tue, 08 Jul 2025 12:55:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752004548; x=1752609348; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=hI8sAmJ13x4dAhHqQ5KRW0VbwKRcg/Fsqe6mUGhQqN4=;
- b=n0uSbJYi3NqKQi2SS3tuGRnHKARtm/zcSuy/XetuPH+zjgos9AcsKGRbUM3hNwcgMu
- c44e3fT7xAls658uFFctf9FiY8vaZ0NeqfFOW/OJkYu3E9saQil0a/8mC49mCZQ63WUe
- rXEwB7R0yj/3XQdJpzmghjPpmo1yl+N14QXGpJUD4MyKHJKUoKbbj7FYN0ruFBZcXFOS
- 1RekI4knypJ29E4kDOFLaG7aGJNEDUeus9Yb99YTHZKhILN5ZUG0w2d93JHF2tcG0Vr2
- trdEYCPCtVzx/6lJs+2UZ+CZav0eQcqK0oOOLvYzlk3Gu3Ww4UI5xoyh9ekcJ8Lrue3R
- mGHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752004548; x=1752609348;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=hI8sAmJ13x4dAhHqQ5KRW0VbwKRcg/Fsqe6mUGhQqN4=;
- b=ZPAVKp427SOsJa7jA2XcXNLk5pW+ija0g7CdQ5CCCzlI+boLfDGWYpe8pYINC8H88j
- 5NjL8xERdh6k1FZXkrviWsnIAKdgozKCxC9+r/e8JZ3pr7doJGz7rJcr0/90SDLlAr18
- evM2+rPqRuXvhcetQtsV8Y4Uquk4lHwco++8Urzm7zW/vtF/kdNcyQqOUxaKz4UL1Eh4
- GntgCPSCmpafIMOvb3AQLtcNpaxB7esi487aCa5d0ph1/VFF/vIYG8xWspu3NojH/iEd
- USv/DrQAIlp2Kz7H2WOXj2KNJbRjZm8EPKwjpZnzx/Cx6cV3HyKWCZm19xKRxO0zrKrg
- DwoQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVKTxJm0i8vjI2SwH7R0M33FKXs+QP3/2FBluilYJugYOYuPkUhgwz5ZM3J9ZwEOLIFqHqq2jgQpA==@nongnu.org
-X-Gm-Message-State: AOJu0YzpKpL+PQZucIImLLKyJq4AK+NLbqyBJXuZyp5P8Ry70lhOEHaJ
- L9puLwLmZ8jXQflKL8q49ysJn+PqzlyfKHYTDfS1VHq6yWARbuBbnT+KE1rV+Qw7G3psshYYwNe
- 6OHA+igI=
-X-Gm-Gg: ASbGncvwftimQLPYx1I5cRT//0l/ai9aD1b7zvkhL+BL6RspCWnb9mpGNYzDyTdWR+y
- FxdvwI37WG3phua+LbaXpZ7lhov5I12/KwfKDdnuEg8u3BUhp9anp0pDm2v2l/sE0WOSBhjSwpy
- IK3rdj/VWL+FHt6IxjQ5MVCRZtrdVvDk0lDwk1W0quqofaem4ZBDJ+bFTGOVauPwXgHuyiehRCr
- c77K/U3VXUB0XEhAeLuH7Ocr19+CixMaHxudLlDoU54uwr8lOrDcXrFY6JVgUs7OIMe+7pJy+s9
- QdsTGxwF0kEuGqGXldUsUTQDqLCDOiJyEnEhTc4dFSzZ+MZVm1MLPOYrIWXDB4L/MQ+QzWN+yQf
- nM0tq4uape6M9UbA3ZZIvSCwRvshH/pendto8Wr5T
-X-Google-Smtp-Source: AGHT+IEBF8Dg32b2zfK2LEUCiBIqsCkszQ/RmitWt476HpBfkMyJozJs4eVA6oF9QsJ7q9Ox3RaC1w==
-X-Received: by 2002:a05:600c:4e05:b0:43d:2313:7b49 with SMTP id
- 5b1f17b1804b1-454cd4cbd79mr24423785e9.12.1751970430502; 
- Tue, 08 Jul 2025 03:27:10 -0700 (PDT)
-Received: from [192.168.69.242] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-454cd39d0f6sm18081605e9.16.2025.07.08.03.27.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Jul 2025 03:27:09 -0700 (PDT)
-Message-ID: <21692283-9767-4109-b14b-ef0ff787d856@linaro.org>
-Date: Tue, 8 Jul 2025 12:27:08 +0200
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uZE8B-0001Ej-3z; Tue, 08 Jul 2025 15:37:35 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uZE83-00053B-K6; Tue, 08 Jul 2025 15:37:30 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bc5120Ncjz6GF16;
+ Tue,  8 Jul 2025 23:40:54 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 324CA140433;
+ Tue,  8 Jul 2025 23:41:58 +0800 (CST)
+Received: from A2303104131.china.huawei.com (10.203.177.241) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 8 Jul 2025 17:41:48 +0200
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
+ <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
+ <imammedo@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <smostafa@google.com>, <gustavo.romero@linaro.org>, <mst@redhat.com>,
+ <marcel.apfelbaum@gmail.com>, <linuxarm@huawei.com>,
+ <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
+Subject: [PATCH v7 04/12] hw/arm/virt-acpi-build: Update IORT for multiple
+ smmuv3 devices
+Date: Tue, 8 Jul 2025 16:40:47 +0100
+Message-ID: <20250708154055.101012-5-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
+In-Reply-To: <20250708154055.101012-1-shameerali.kolothum.thodi@huawei.com>
+References: <20250708154055.101012-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH-for-10.1 v6 00/14] target-info: Add more API for
- VirtIO cleanups & introduce ARM macros
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-block@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org
-References: <20250707172009.3884-1-philmd@linaro.org>
- <20250707135403-mutt-send-email-mst@kernel.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250707135403-mutt-send-email-mst@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.203.177.241]
+X-ClientProxiedBy: kwepems500001.china.huawei.com (7.221.188.70) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,38 +72,157 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/7/25 19:55, Michael S. Tsirkin wrote:
-> On Mon, Jul 07, 2025 at 07:19:54PM +0200, Philippe Mathieu-Daudé wrote:
->> Rather than re-spinning the whole "single-binary: Make hw/arm/
->> common" series, restrict to the API additions, but include
->> examples of their usefulness (hundreds of virtio objects
->> removed from default Linux build).
->> Time passed since I context-switched out of this work so I'm
->> not sure the DEFINE_MACHINE_WITH_INTERFACES() implementation
->> is in the form Zoltan asked.
-> 
-> 
-> I think I'd prefer to defer cleanups to post 10.1 - already
-> too much on my plate as I was out sick. Unless there's a reason
-> I'm missing to rush this in? Is there a feature we want in
-> 10.1 that depends on it?
+With the soon to be introduced user-creatable SMMUv3 devices for
+virt, it is possible to have multiple SMMUv3 devices associated
+with different PCIe root complexes.
 
-Fair enough for the virtio patch.
+Update IORT nodes accordingly.
 
-Hopefully the previous ones (TargetInfo related, not touching
-virtio) could get in (you don't have to look a them ;P).
+An example IORT Id mappings for a Qemu virt machine with two
+PCIe Root Complexes each assocaited with a SMMUv3 will
+be something like below,
 
-> 
->> Philippe Mathieu-Daudé (14):
->>    target/qmp: Use target_cpu_type()
->>    qemu/target-info: Factor target_arch() out
->>    qemu/target-info: Add %target_arch field to TargetInfo
->>    qemu/target-info: Introduce target_base_arch()
->>    qemu/target-info: Add target_endian_mode()
->>    qemu: Convert target_words_bigendian() to TargetInfo API
->>    gdbstub/helpers: Replace TARGET_BIG_ENDIAN -> target_big_endian()
->>    qemu: Declare all load/store helpert in 'qemu/bswap.h'
+  -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0
+  -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.1
+  ...
+
+  +--------------------+           +--------------------+
+  |   Root Complex 0   |           |   Root Complex 1   |
+  |                    |           |                    |
+  |  Requestor IDs     |           |  Requestor IDs     |
+  |  0x0000 - 0x00FF   |           |  0x0100 - 0x01FF   |
+  +---------+----------+           +---------+----------+
+            |                               |
+            |                               |
+            |       Stream ID Mapping       |
+            v                               v
+  +--------------------+          +--------------------+
+  |    SMMUv3 Node 0   |          |    SMMUv3 Node 1   |
+  |                    |          |                    |
+  | Stream IDs 0x0000- |          | Stream IDs 0x0100- |
+  | 0x00FF mapped from |          | 0x01FF mapped from |
+  | RC0 Requestor IDs  |          | RC1 Requestor IDs  |
+  +--------------------+          +--------------------+
+            |                                |
+            |                                |
+            +----------------+---------------+
+                             |
+                             |Device ID Mapping
+                             v
+              +----------------------------+
+              |       ITS Node 0           |
+              |                            |
+              | Device IDs:                |
+              | 0x0000 - 0x00FF (from RC0) |
+              | 0x0100 - 0x01FF (from RC1) |
+              | 0x0200 - 0xFFFF (No SMMU)  |
+              +----------------------------+
+
+Tested-by: Nathan Chen <nathanc@nvidia.com>
+Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+---
+ hw/arm/virt-acpi-build.c | 64 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 64 insertions(+)
+
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index cb11b316a2..d2a3914d91 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -43,6 +43,7 @@
+ #include "hw/acpi/generic_event_device.h"
+ #include "hw/acpi/tpm.h"
+ #include "hw/acpi/hmat.h"
++#include "hw/arm/smmuv3.h"
+ #include "hw/pci/pcie_host.h"
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pci_bus.h"
+@@ -299,6 +300,67 @@ static int populate_smmuv3_legacy_dev(GArray *sdev_blob)
+     return sdev.rc_smmu_idmaps->len;
+ }
+ 
++static int smmuv3_dev_idmap_compare(gconstpointer a, gconstpointer b)
++{
++    AcpiIortSMMUv3Dev *sdev_a = (AcpiIortSMMUv3Dev *)a;
++    AcpiIortSMMUv3Dev *sdev_b = (AcpiIortSMMUv3Dev *)b;
++    AcpiIortIdMapping *map_a = &g_array_index(sdev_a->rc_smmu_idmaps,
++                                              AcpiIortIdMapping, 0);
++    AcpiIortIdMapping *map_b = &g_array_index(sdev_b->rc_smmu_idmaps,
++                                              AcpiIortIdMapping, 0);
++    return map_a->input_base - map_b->input_base;
++}
++
++static int iort_smmuv3_devices(Object *obj, void *opaque)
++{
++    VirtMachineState *vms = VIRT_MACHINE(qdev_get_machine());
++    GArray *sdev_blob = opaque;
++    AcpiIortIdMapping idmap;
++    PlatformBusDevice *pbus;
++    AcpiIortSMMUv3Dev sdev;
++    int min_bus, max_bus;
++    SysBusDevice *sbdev;
++    PCIBus *bus;
++
++    if (!object_dynamic_cast(obj, TYPE_ARM_SMMUV3)) {
++        return 0;
++    }
++
++    bus = PCI_BUS(object_property_get_link(obj, "primary-bus", &error_abort));
++    pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
++    sbdev = SYS_BUS_DEVICE(obj);
++    sdev.base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
++    sdev.base += vms->memmap[VIRT_PLATFORM_BUS].base;
++    sdev.irq = platform_bus_get_irqn(pbus, sbdev, 0);
++    sdev.irq += vms->irqmap[VIRT_PLATFORM_BUS];
++    sdev.irq += ARM_SPI_BASE;
++
++    pci_bus_range(bus, &min_bus, &max_bus);
++    sdev.rc_smmu_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
++    idmap.input_base = min_bus << 8,
++    idmap.id_count = (max_bus - min_bus + 1) << 8,
++    g_array_append_val(sdev.rc_smmu_idmaps, idmap);
++    g_array_append_val(sdev_blob, sdev);
++    return 0;
++}
++
++/*
++ * Populate the struct AcpiIortSMMUv3Dev for all SMMUv3 devices and
++ * return the total number of idmaps.
++ */
++static int populate_smmuv3_dev(GArray *sdev_blob)
++{
++    object_child_foreach_recursive(object_get_root(),
++                                   iort_smmuv3_devices, sdev_blob);
++    /* Sort the smmuv3 devices(if any) by smmu idmap input_base */
++    g_array_sort(sdev_blob, smmuv3_dev_idmap_compare);
++    /*
++     * Since each SMMUv3 dev is assocaited with specific host bridge,
++     * total number of idmaps equals to total number of smmuv3 devices.
++     */
++    return sdev_blob->len;
++}
++
+ /* Compute ID ranges (RIDs) from RC that are directed to the ITS Group node */
+ static void create_rc_its_idmaps(GArray *its_idmaps, GArray *smmuv3_devs)
+ {
+@@ -362,6 +424,8 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ 
+     if (vms->legacy_smmuv3_present) {
+         rc_smmu_idmaps_len = populate_smmuv3_legacy_dev(smmuv3_devs);
++    } else {
++        rc_smmu_idmaps_len = populate_smmuv3_dev(smmuv3_devs);
+     }
+ 
+     num_smmus = smmuv3_devs->len;
+-- 
+2.47.0
+
 

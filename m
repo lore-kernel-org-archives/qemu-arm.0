@@ -4,103 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 762C1C83F09
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 21:43:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7B61C8303C
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 21:44:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZG55-0001KE-Hz; Tue, 08 Jul 2025 17:42:27 -0400
+	id 1uZG4h-0000ep-4R; Tue, 08 Jul 2025 17:42:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uZFI5-0004Tu-6l
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 16:51:49 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1uZFEh-0006um-9b; Tue, 08 Jul 2025 16:48:19 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uZFI1-0003k8-Lc
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 16:51:48 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-451d6ade159so42903355e9.1
- for <qemu-arm@nongnu.org>; Tue, 08 Jul 2025 13:51:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1uZFEf-00030q-HB; Tue, 08 Jul 2025 16:48:19 -0400
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-6099d89a19cso8636434a12.2; 
+ Tue, 08 Jul 2025 13:48:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752007904; x=1752612704; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=QQDHaXgLVXl0gHbIqDPzR2E3LfpbTz1sMTNEwou3C5A=;
- b=QsVXXaQeKZocCWDChiX6QwwZbYMiQVD5nE8YD4Rj7M7c1HujxShfLAj/JiRjDuMXd+
- Ixj1BEbGp4DX2tDRTsgjxasF7+TS5gNrIwU3fpUGDA/QiROa5IAX/MrNgAhtLA5OJmWf
- JI/SsytJvjlKTD42axndvERhcewHYM3ffB4AkyRb89JUoEj6kLJVId0gPpClzMDEE5f1
- eOpdzoC1vvNqGqAX6W2SMANeT+id+VN6FhnH89ecDeUpXcs839qFyfWDbhUdJmjCl1zC
- WRJ1602v2BhIuGI05muZaEjFn0sGs7jTpL2Np58VUPccCySekLKhQLxTUvCnUxv46jVF
- gMIg==
+ d=gmail.com; s=20230601; t=1752007695; x=1752612495; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=FvvobzBx99gkG33buzr8HiFgQYziBfA1louF03XtHno=;
+ b=FJHcuX/GVf8r5EdDAfYiZsHxShKjL9cz7I2Xm1o01+rWENThHrwP/JVibjzGEvPOlH
+ ouw6gvhqfSIVqWxNPJ4XOY4BvXQjov6KJCJavGzeEiUxC3zz9YIuvOtNynZYd2HAg2aV
+ qxwZj9n7pn5Nr9wQ4d02Rc/6ac2wqZLrqd5fDmoTcf2QQeLMIuuqsvYNx38+RDGraY+t
+ wmPHTALFIOaTIoRVFxzL9nBU+a5f6HcGS0QNWKMpokoUKAA+14oA1Bma92GzNu8t+vio
+ SH5LBSOOKWKKcGoJZV5Bq6wdHeh/IdSU4+F5zOnEDJ3WxKWrjcEIAfpsR1LHZk6Je9wQ
+ 3A5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752007904; x=1752612704;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QQDHaXgLVXl0gHbIqDPzR2E3LfpbTz1sMTNEwou3C5A=;
- b=djfQnc9tXDReDHw0GVr0rihRvN/CWuoKTS3ItEE9yBHaKdziwPu6UCmcgw6QJ2yxWt
- e37yUdvCZKrfCKgDQ01u62pfjKXWtPsOli+7QActxqUxmHImYNjh7PUJabrRUdhfrklc
- dFkzNBNSduoqE9jIxb/xDrQu2yspOrfo3B2/ZraYMWqH4jjF6AUGeTmTCsoeyIeK130K
- bCbcEy3u/TnpKP2fdjKlUtyx9cwTvJPiqRRVnJTZUjloo9j89w8mzKegbfrT1YpSyOyd
- lgNtohuqqQsZIWo3J/WYMteStJQFvA7BHCF5hdUuW4ZHLRq25Y0LNe2jdbr0Tzi9gVvc
- xXpA==
+ d=1e100.net; s=20230601; t=1752007695; x=1752612495;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=FvvobzBx99gkG33buzr8HiFgQYziBfA1louF03XtHno=;
+ b=nQgcNexvK+iCmA0kRxIPi9W8nqMwzbbcw0aqF5S0it7I8ibQfHCC6k8kfNh7HDfw68
+ 37AUBzrWxSeD5aQqSNtjzhdwzdisC8J8/be6diQVp5jtF4CAfsyaaU0SsZt73LZQKaRZ
+ eFRWfnylqceem0zpevle9C3X0f238Id5qa4VjN4WNL7ubwHncLBNaKxBnQXXrpYC6G29
+ I9j10RS6izRf55oClfa41je0jwTHnfsaSqa1336jZvf5O9RTFySUjVLCYPmM8ZsYZ0X9
+ TfpyXS3BnQ/Y/MvwEqH0i3jf/P/p2ybf3ciPWjWSPBefU49NKnN2CuAD/jR1XG1Rki/i
+ pzjg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW9crIElWGVz+qslWLC+Cy6VRaSXxalhc808Wr7lMJmwzr3rZ1Z9CYRjbbaxbqKH8yrQ2MgN6VEzw==@nongnu.org
-X-Gm-Message-State: AOJu0YzyamBr57fua5LS4wtDepubJAm9jRHwqxUSnDHb6XPE7zkbS7la
- Dtq7didwA2gi7kfBPfYdqjMJHkkYVxxud86LzJm92fa+0i6hvIHhZqOdu0zSo9+IbEk=
-X-Gm-Gg: ASbGncu4KrgLZX7C8si1TltJuZwXMGxJJ3ZA0UlYoXgk+Ojq0ORmL+ixJ+254X+uaWE
- 48yfxNBDNB0S9MayEuD08rdCj4WAY6/P0SqhW+U84+KAwOXjfvnEIKiLCdWNsacaaLvDPMPVcWS
- zJbwohvDb+mmH72qRfmK8K9W7bjBNK9V8KyCE1I6WEm1BPVy0lQOE2IfiI1bktMhv88QLY6LxM1
- nHlsOL8NxKZX2Oh/M7jcRWvPdKifrVCRz8piKgIaRZwnGDSpQ0H/r8B+OoBhkguL5mD1PhoPo3Y
- ELOy1auEmCWm5ccMGz8kJkIwqArKYsRJhFAZz0KDtW7Z8KggjQJA+XRg2VrUSVQjDx9xVFGXjtE
- WUUjs5WATliYkeyCX6KLkibjnkpFakw==
-X-Google-Smtp-Source: AGHT+IHCm4U62yMcdDOy/uU5IArAmGMbrjBp83eeNWKl6JGlxumzEl4Y4FYQVTyJP5J3svEBxGXxvg==
-X-Received: by 2002:a05:600c:3b05:b0:43c:f8fc:f697 with SMTP id
- 5b1f17b1804b1-454d01ca370mr43382405e9.9.1752007903775; 
- Tue, 08 Jul 2025 13:51:43 -0700 (PDT)
-Received: from [192.168.69.242] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-454cd4a5dd0sm30764305e9.36.2025.07.08.13.51.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Jul 2025 13:51:43 -0700 (PDT)
-Message-ID: <96c87227-2389-4d51-8f26-b2c4a446bd67@linaro.org>
-Date: Tue, 8 Jul 2025 22:51:16 +0200
+ AJvYcCVwKTWiOnRPUCs8bKwSvNrrIXHoO9SDO6lPw5Rwm6b8J4o/grZEBZ2APLirWxzDYUXrSdapc6oKtK0=@nongnu.org,
+ AJvYcCX0iwhOYFj1Zb6uK+dATtCN/+HscXdRTYKQ45oxMmqxL1NH5WPuPx/KEoSz7mZtzXhWVXOYc2vaJA==@nongnu.org
+X-Gm-Message-State: AOJu0Yxabt6uv1uLXeBdc4PTRQsTH94fI0UgKybxvxq+2M5JSb2FdYvI
+ j00W2QhwJgnnGJyZTWqXYiUOp4sIjpyFHhsIS82KtmHzHlTPh7rSG7OJBmCuTA==
+X-Gm-Gg: ASbGncuDAI3QG19iZfzJR5K+sv1mh39KzxErQPwVUy/lXDAJm/vQjdLC04EAiD0oQCZ
+ phHw8gCaCRfgbXhvbXLFPlrNvGAI8w235XTxRaRkQhayaB5BwO1264iBJtadd+uD7sGKXNx8Sc/
+ mNthteIiyXMc0UPrfOjAc2V82cIRqGNUx1UEBf4FANTZhvxR2u4+gl1aAMpwQcOe17l0FxnKFg0
+ L2MhyIbwht2J4bFQqxtjJRfnIMdvIxYhDBxY1I43Q66w/y9N/lNGK/sewHY+GDElU/wpSYiqTNf
+ 8VUSZLEs6RGChnhZ55AUTqYYNAB1gqdbyKUhHCmTZsDQsCfIZnSecuQGlL3a6CHHVxYzTLrS1vL
+ D390e8ggsB+EcmxzDcRM0H8gFnNrjsh9ZyaaYzuMSpkSDWude310pXrITM7t5p3ULcjgbd7y9Pl
+ GnwBQFlDtRolmlTOt7
+X-Google-Smtp-Source: AGHT+IHhMUqXZD0KhMTOqCpjTzBKBqjDSWYJJPqhzbxCLoBpV+WXAMtwTkBQmCa9fYMIWUVXvaeSwQ==
+X-Received: by 2002:a50:fb8c:0:b0:602:a0:1f3a with SMTP id
+ 4fb4d7f45d1cf-60fd65260eemr13728817a12.13.1752007694463; 
+ Tue, 08 Jul 2025 13:48:14 -0700 (PDT)
+Received: from Provence.localdomain
+ (dynamic-2a02-3100-18f0-be00-0219-99ff-feb2-2458.310.pool.telefonica.de.
+ [2a02:3100:18f0:be00:219:99ff:feb2:2458])
+ by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-60fca66410bsm7647461a12.1.2025.07.08.13.48.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 08 Jul 2025 13:48:14 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 0/3] DTB build housekeeping
+Date: Tue,  8 Jul 2025 22:48:03 +0200
+Message-ID: <20250708204806.1898-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.50.0
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-10.1 v7 5/8] qemu: Convert target_words_bigendian() to
- TargetInfo API
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-riscv@nongnu.org,
- qemu-block@nongnu.org, qemu-ppc@nongnu.org,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Peter Xu <peterx@redhat.com>,
- David Hildenbrand <david@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>
-References: <20250708171949.62500-1-philmd@linaro.org>
- <20250708171949.62500-6-philmd@linaro.org>
- <d52695e3-0d52-48ff-8402-c9b9fd892cc7@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <d52695e3-0d52-48ff-8402-c9b9fd892cc7@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x529.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,45 +107,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/7/25 19:39, Richard Henderson wrote:
-> On 7/8/25 11:19, Philippe Mathieu-Daudé wrote:
->> -/**
->> - * target_big_endian:
->> - * Returns true if the (default) endianness of the target is big endian,
->> - * false otherwise. Common code should normally never need to know 
->> about the
->> - * endianness of the target, so please do *not* use this function 
->> unless you
->> - * know very well what you are doing!
->> - */
-> ...
->> +/**
->> + * target_big_endian:
->> + *
->> + * Returns: %true if the (default) endianness of the target is big 
->> endian,
->> + *          %false otherwise.
->> + */
->> +bool target_big_endian(void);
-> 
-> Perhaps retain the warning about not using this unless necessary.
+This series removes the bundled device tree blobs from the repository which are
+redundant to the bundled device tree sources. To make this work, the device tree
+compiler 'dtc' is now required whenever libfdt is used. Furthermore, dtc can now
+be built from the bundled libfdt if needed.
 
-This is what I did in a previous version, but Thomas (or Pierrick?)
-said something about this method now being safe, so the comment
-obsolete.
+v2:
+* Allow building dtc from bundled libfdt (Paolo)
+* Find dtc iff libfdt is used (Paolo)
+* Remove dtc configure option (now obsolete)
 
-I told Pierrick this method doesn't make sense to me in a
-heterogeneous context, he said to not make change with the
-current behavior, when run on a vCPU we'll eventually infer
-via TargetInfo on the vCPU TLS area, and otherwise (I/O
-thread) this method shouldn't be called so we should abort.
-Such change LGTM. I can start updating the documentation
-mentioning "the (default) endianness of the current vCPU."
-Currently on I/O thread this is the endianness of the binary.
+Bernhard Beschow (3):
+  hw/microblaze: Add missing FDT dependency
+  configure: Ensure existance of dtc when libfdt is used
+  pc-bios/dtb: Remove device tree blobs
 
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> 
-> 
-> r~
+ MAINTAINERS                                   |   2 +-
+ meson.build                                   |  16 +++--
+ hw/microblaze/Kconfig                         |   4 +-
+ pc-bios/dtb/bamboo.dtb                        | Bin 3211 -> 0 bytes
+ pc-bios/dtb/canyonlands.dtb                   | Bin 9779 -> 0 bytes
+ pc-bios/dtb/meson.build                       |  17 ++---
+ pc-bios/dtb/petalogix-ml605.dtb               | Bin 9882 -> 0 bytes
+ pc-bios/dtb/petalogix-s3adsp1800.dtb          | Bin 8161 -> 0 bytes
+ subprojects/dtc.wrap                          |   1 +
+ .../packagefiles/dtc-meson-override.patch     |  62 ++++++++++++++++++
+ 10 files changed, 85 insertions(+), 17 deletions(-)
+ delete mode 100644 pc-bios/dtb/bamboo.dtb
+ delete mode 100644 pc-bios/dtb/canyonlands.dtb
+ delete mode 100644 pc-bios/dtb/petalogix-ml605.dtb
+ delete mode 100644 pc-bios/dtb/petalogix-s3adsp1800.dtb
+ create mode 100644 subprojects/packagefiles/dtc-meson-override.patch
+
+-- 
+2.50.0
 
 

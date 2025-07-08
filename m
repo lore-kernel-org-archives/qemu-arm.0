@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 183FBC8303C
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 22:12:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27C97C83F09
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 22:12:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZGY8-0003tz-Pq; Tue, 08 Jul 2025 18:12:28 -0400
+	id 1uZGY6-0003iV-LP; Tue, 08 Jul 2025 18:12:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uZGG1-0000rl-MW
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 17:53:45 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uZGFx-0000mH-Sw
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 17:53:42 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uZGFz-0003M9-Vc
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 17:53:45 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-3a4fb9c2436so2770488f8f.1
- for <qemu-arm@nongnu.org>; Tue, 08 Jul 2025 14:53:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uZGFv-0003Kw-8J
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 17:53:41 -0400
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-3a588da60dfso3340269f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 08 Jul 2025 14:53:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752011622; x=1752616422; darn=nongnu.org;
+ d=linaro.org; s=google; t=1752011617; x=1752616417; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=raEYFujrRvjmCyFkmc4EZhoAqBaaMKjzPeGsgftBG6Y=;
- b=BFfGfX3ZWjDUFrIk+h3877VYZUTuQrOsq3/kGhLG5IBPZErPkM9etSMvPavyeHO3Uv
- bYqg80cZRothckLbAo4AiUOohTNrUY01HKU/R+EpU1HlrzXIuvBsCeYDwCDrhi3vn6r/
- x3BXuU1twALuSzDCNFnzUPbBRxReZx2pS5bsGK6QCHZUrHUkcvu85kVcoLGp6OcxM5ar
- yoGIw/RzvYEs4zrizuYaGrsCKIplke5OFoJZiZvWFjqRrl4qt4Y6Wzzi9SNVNc3+3SiW
- 5TPDAivX1vHoknCXElEVmYIZNbx5OUegE0LcWYlo2Guq217JMfDph+I5nKse9xxj4AGo
- csCQ==
+ bh=KQ7EZXT9CO2OHBTy9GyeX1UKDvNPuq/+5ZdKjXTN/Ns=;
+ b=Psld7g/74SA6GJhQAs/jfv8k2wtgeJmYGSN1xjNhURa0ypfON4niWCEAzLe+sCaWSg
+ igIAuVtsgOUBAvo8V6r79IDwmQSyh1bIAFOEVLb2UvRhOR6yFtraNjUDJSaWrdgaUodl
+ kNLTy0C/4gWrkAzYmkG5VjcHjF4bzgNlvJB9xF0Aea1TG/w1HSdHv5lm2Wq7euY9gD1g
+ UCr95+su0+p/j9iOpOKko72FKgOCzyqbcOAXKniipIasTeIyCo95iACOjq5/U2HYHYbK
+ 0bnxoQMPC/AXqopjY17Wkk7x5wVJ1THriQdc/IDGN9zMESk3lCa5cdIHGry7n3IKgsu9
+ gmPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752011622; x=1752616422;
+ d=1e100.net; s=20230601; t=1752011617; x=1752616417;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=raEYFujrRvjmCyFkmc4EZhoAqBaaMKjzPeGsgftBG6Y=;
- b=uXrfEOjs6weAVYUaqDBbCzKSQI+3ydpBSNK4epGNiEqrb3mC/HgkqOAhw5Q5U1khK6
- RKtfu4BwV3/0vMX3XNCsT+2Texvq0dYrWndPmvpiJPcEaZZ6MMJsc6eeW11oQTt89Y00
- eQdYakGnvp5EdUmBe7cwjw3Gqm9i4UkBbcGZdVwOdZsRxkZI3tHNpGw5XMtkjBvxWmON
- YzEtqw06Bl+AHmGCsXEsn+GH7yiHrzeXtsH6hZnlj7ueQKFQSL1H9FsuneChK9oX4/PN
- hHPDy4NrRaHJlthG18t8OHiQVj3Dgy73V+Z2xKMJ01V4iUjIP+4tK5eEgyEqV7aALtTt
- kW0w==
+ bh=KQ7EZXT9CO2OHBTy9GyeX1UKDvNPuq/+5ZdKjXTN/Ns=;
+ b=GtxBEJNHBlSZES8ryQ4/x+jX50puFGc/JNA5fRZKXSVhOIRk4EBXwAc2tpE69ZerWW
+ bWMvNhLDj758DQUH3ejREoCcojK8kBKUyXmFe6Sq70MS1iAu8SANL8GalhhJnUNUzNo0
+ s23Hbf3LKsBd3mbxA3M07ovAq9xInvlYFwTDysztOiqPS1ihoVjPPhnFsU4vatxEQltB
+ ERiMbXexU58ytVymyPVl0UfpFDVg+b0ln5v0ELpQAKzEKQ0mUz0YxuF7akmstEynCjGR
+ gM+gt60tq0nrHU2cRMPf4GqtBhkz4VEHyxCOaZxGYvxBllXanTuU0S4CmAmMajFbpJjZ
+ 8NUw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWS3/m2NFD9gc1wS01Z1p/w0iabLeMSVtjNQNjwtPOJ1UhuwKBiLwLVz9e2EIpSnv5jVrPo6WhSVA==@nongnu.org
-X-Gm-Message-State: AOJu0YxdLuEH5Az+sFLQPGvjk8OsqGf8cRSvjhaRmJcM7++wvN8uSqVC
- 8fKqP1kMn78pYaZuLkLVz+JYujyEOZvYoV4ee48GXGVZR2xfLm3l2ZyFFuLupn2R/Fw=
-X-Gm-Gg: ASbGncuxl1nKWnYSPOCQVEKo3HispvNH7qmGidQtpMgrp26vHW9jZQUunJ7PoMu5BGL
- VuMheKijd6w23lgPMD9WcyB7GkdD7kn+h/xF9T4701tTIgb+fGbgdQmsB9wsWfbk9ZH99ehScl7
- uhbiFWCtl8zca3aeO+/F1PXJZj9ah6tB1H6w+91z59PKMT1gvnhFGv1JuiVpWmxOHZKvysvTBoH
- umNTFeJ5+NSR9BOLcvXNVIVQeqMJaLeHkBw6oYgAPEIKMJ5wdGxnauJQfg4sfH5vofI6hp4ZVYd
- 2SvfQew0YiSyPMmyxqWtAA6kVO8voeXvOOpYsqUir2waRw3MteqNowydN0SrGdaN6kxVOjW/owy
- NIw5pEafPIcVaaxL69fbP89h9Bo/N+CL2ofWgVIRZUg==
-X-Google-Smtp-Source: AGHT+IFBICwrTOKSAv/BrN5Pi3NIZ3nfqRGD8Pm3OdP4WVs03v47EGoWPVWm0JWrOshnYIlBJQIV4w==
-X-Received: by 2002:a05:6000:4716:b0:3a8:38b3:1aa1 with SMTP id
- ffacd0b85a97d-3b5ddecd002mr4301575f8f.27.1752011622408; 
- Tue, 08 Jul 2025 14:53:42 -0700 (PDT)
+ AJvYcCUYXOo3sDUZpqZyBaGJ2zlGwXmnH8ZWBKt5FyceOW3Swzvzka0NnpRtHrVhJUv8wHzKUsSo4cFKIg==@nongnu.org
+X-Gm-Message-State: AOJu0YwsTMALnDdItP3k7cq3PX3mjeiK4IyOsfi8TxggIwpX1PgoZwfe
+ CVQdcFd+u6F5A1br523nBrgQqGY7JDy/RLWZnu3SmETRjDFaWaH6ogFkxbMkC1+CJXA=
+X-Gm-Gg: ASbGncvQkzjEYY2XR2483Vh8Zw2umkjjF1azC1LJgRss2PWPVPJA8Z/v1RAR5ZRoQzP
+ edIP6xd8+FPIJe3zcl1RoiVflbghpCDn0iBKxR4j5NES5WQjpqcBCWKKWkAySpg1dDjS6wuBa8V
+ AJVAY1R2E3heUZitiAnsQRSfc93zi9wQ0QiBtqWCHW2LigRmv0p8YW9gI8RelNPgsv0Yswr0tJ4
+ IveO8xm3bRcv9rVTlMjCbpH7W2bf7G15iwli/Ye7hjhGby7piZDzM4gWxWhOudnFdwNlCyEmyEo
+ hWAs5eZuLsA9YbJIy0NQ7MYGR9DRE2sbW87mFUztgpkDIfZckcCWnveJzyjy5X8UI+D0Cj7RsTB
+ QXRrUAMeH6DhG9nsNrmKkWm3pn0VJnPkEjeRZlLSpkw==
+X-Google-Smtp-Source: AGHT+IH6LgiCiKP3S4x7k4EEXqGXeCKB1z+Qt1OoQC51l1ga4Ds5cTR1QEfJT4eN5CJVshZ3/iSHSw==
+X-Received: by 2002:a5d:64e7:0:b0:3a4:ddde:13e4 with SMTP id
+ ffacd0b85a97d-3b4964ee263mr14146877f8f.58.1752011617528; 
+ Tue, 08 Jul 2025 14:53:37 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-454cdb31d21sm27771445e9.1.2025.07.08.14.53.41
+ 5b1f17b1804b1-454d508cbdesm703125e9.33.2025.07.08.14.53.35
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 08 Jul 2025 14:53:41 -0700 (PDT)
+ Tue, 08 Jul 2025 14:53:36 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
@@ -74,18 +74,18 @@ Cc: qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org,
  qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-10.1 RESEND v8 4/8] qemu/target-info: Add
- target_endian_mode()
-Date: Tue,  8 Jul 2025 23:53:15 +0200
-Message-ID: <20250708215320.70426-5-philmd@linaro.org>
+Subject: [PATCH-for-10.1 RESEND v8 3/8] qemu/target-info: Add %target_arch
+ field to TargetInfo
+Date: Tue,  8 Jul 2025 23:53:14 +0200
+Message-ID: <20250708215320.70426-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250708215320.70426-1-philmd@linaro.org>
 References: <20250708215320.70426-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,81 +108,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-target_endian_mode() returns the default endianness (QAPI type)
-of a target.
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/qemu/target-info-impl.h | 2 ++
- include/qemu/target-info-qapi.h | 8 ++++++++
+ include/qemu/target-info-impl.h | 4 +++-
  target-info-stub.c              | 1 +
- target-info.c                   | 5 +++++
- 4 files changed, 16 insertions(+)
+ target-info.c                   | 9 +++++++--
+ 3 files changed, 11 insertions(+), 3 deletions(-)
 
 diff --git a/include/qemu/target-info-impl.h b/include/qemu/target-info-impl.h
-index a8b34d150ab..17887f64e26 100644
+index 1b51cbcfe1b..a8b34d150ab 100644
 --- a/include/qemu/target-info-impl.h
 +++ b/include/qemu/target-info-impl.h
-@@ -22,6 +22,8 @@ typedef struct TargetInfo {
-     const char *cpu_type;
-     /* QOM typename machines for this binary must implement */
-     const char *machine_typename;
-+    /* related to TARGET_BIG_ENDIAN definition */
-+    EndianMode endianness;
- } TargetInfo;
+@@ -9,11 +9,13 @@
+ #ifndef QEMU_TARGET_INFO_IMPL_H
+ #define QEMU_TARGET_INFO_IMPL_H
  
- /**
-diff --git a/include/qemu/target-info-qapi.h b/include/qemu/target-info-qapi.h
-index a337c867bfb..d5ce0523238 100644
---- a/include/qemu/target-info-qapi.h
-+++ b/include/qemu/target-info-qapi.h
-@@ -9,6 +9,7 @@
- #ifndef QEMU_TARGET_INFO_EXTRA_H
- #define QEMU_TARGET_INFO_EXTRA_H
+-#include "qemu/target-info.h"
++#include "qapi/qapi-types-machine.h"
  
-+#include "qapi/qapi-types-common.h"
- #include "qapi/qapi-types-machine.h"
- 
- /**
-@@ -18,4 +19,11 @@
-  */
- SysEmuTarget target_arch(void);
- 
-+/**
-+ * target_endian_mode:
-+ *
-+ * Returns: QAPI EndianMode enum (e.g. ENDIAN_MODE_LITTLE).
-+ */
-+EndianMode target_endian_mode(void);
-+
- #endif
+ typedef struct TargetInfo {
+     /* runtime equivalent of TARGET_NAME definition */
+     const char *target_name;
++    /* related to TARGET_ARCH definition */
++    SysEmuTarget target_arch;
+     /* runtime equivalent of TARGET_LONG_BITS definition */
+     unsigned long_bits;
+     /* runtime equivalent of CPU_RESOLVING_TYPE definition */
 diff --git a/target-info-stub.c b/target-info-stub.c
-index 2e4407ff04b..ca0caa3686c 100644
+index fecc0e71286..2e4407ff04b 100644
 --- a/target-info-stub.c
 +++ b/target-info-stub.c
-@@ -18,6 +18,7 @@ static const TargetInfo target_info_stub = {
+@@ -14,6 +14,7 @@
+ 
+ static const TargetInfo target_info_stub = {
+     .target_name = TARGET_NAME,
++    .target_arch = SYS_EMU_TARGET__MAX,
      .long_bits = TARGET_LONG_BITS,
      .cpu_type = CPU_RESOLVING_TYPE,
      .machine_typename = TYPE_MACHINE,
-+    .endianness = TARGET_BIG_ENDIAN ? ENDIAN_MODE_BIG : ENDIAN_MODE_LITTLE,
- };
- 
- const TargetInfo *target_info(void)
 diff --git a/target-info.c b/target-info.c
-index 8e29553b4ef..a756c0714c4 100644
+index 9ebabec988f..8e29553b4ef 100644
 --- a/target-info.c
 +++ b/target-info.c
-@@ -42,3 +42,8 @@ const char *target_machine_typename(void)
+@@ -24,8 +24,13 @@ unsigned target_long_bits(void)
+ 
+ SysEmuTarget target_arch(void)
  {
-     return target_info()->machine_typename;
- }
+-    return qapi_enum_parse(&SysEmuTarget_lookup, target_name(), -1,
+-                           &error_abort);
++    SysEmuTarget arch = target_info()->target_arch;
 +
-+EndianMode target_endian_mode(void)
-+{
-+    return target_info()->endianness;
-+}
++    if (arch == SYS_EMU_TARGET__MAX) {
++        arch = qapi_enum_parse(&SysEmuTarget_lookup, target_name(), -1,
++                               &error_abort);
++    }
++    return arch;
+ }
+ 
+ const char *target_cpu_type(void)
 -- 
 2.49.0
 

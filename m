@@ -4,95 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5136FC83F09
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 22:42:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FDD8C8303C
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 22:50:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZH0C-0004HI-Kp; Tue, 08 Jul 2025 18:41:28 -0400
+	id 1uZH8c-0005ql-43; Tue, 08 Jul 2025 18:50:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZH0A-0004EF-UQ
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 18:41:26 -0400
+ id 1uZH7w-0004QR-Pm
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 18:49:28 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZH07-0005SA-P8
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 18:41:26 -0400
+ id 1uZH7q-0006vf-4h
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 18:49:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752014481;
+ s=mimecast20190719; t=1752014959;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Th59yqZKU5dEO/5ON0qAlIoffWY8AJQBXGx2RrXvJVE=;
- b=Ziu2XXlZ2Ety7r/y4hYdvhxLUoUaGo6XUYy4xJQpl+JkP189q/TFveP8QRH/YzdD+6OM2S
- DcqYJRV/SONT5jU4H+TOA3uMOwMquDtbQFI1RFNWGDppuClt1sKAxGNAJwQPxSyINT/BQX
- DwbWW4pPh4doqX+LKEcbzjhPkeRnt1M=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Y1F9Lf8fawOz8sRYw9HjXfqGoTCcQqHLj5VILHhRtYA=;
+ b=AyUytm27YUbUkIOtxCrrH5eQOm+X+Ry/kuBSqHyr8ByO2TxsyofvXR2mSNtFGug5+LvHq1
+ f3/2mQkHwcpF2HQhZrfMwTsLLin+Ex5kjgXNPMO8W03a04NTZLOQ1wzVqz8lhmZ2psaw5v
+ 0GIwGaeiKAR2yWQy62tZbSf4ml2Czp4=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-128-s9apSCu3N9u5A645655Otg-1; Tue, 08 Jul 2025 02:17:29 -0400
-X-MC-Unique: s9apSCu3N9u5A645655Otg-1
-X-Mimecast-MFC-AGG-ID: s9apSCu3N9u5A645655Otg_1751955448
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-3a4eb6fcd88so2461691f8f.1
- for <qemu-arm@nongnu.org>; Mon, 07 Jul 2025 23:17:29 -0700 (PDT)
+ us-mta-616-R92mFu8eO8-zI2S_XtphCA-1; Tue, 08 Jul 2025 02:31:07 -0400
+X-MC-Unique: R92mFu8eO8-zI2S_XtphCA-1
+X-Mimecast-MFC-AGG-ID: R92mFu8eO8-zI2S_XtphCA_1751956266
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-453018b4ddeso19751135e9.3
+ for <qemu-arm@nongnu.org>; Mon, 07 Jul 2025 23:31:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751955448; x=1752560248;
+ d=1e100.net; s=20230601; t=1751956266; x=1752561066;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Th59yqZKU5dEO/5ON0qAlIoffWY8AJQBXGx2RrXvJVE=;
- b=SiWJDFu1BTZliRRY7f42okOLT9LG1O3B8xkY8TlIIcBiMvzLJ6fMNWUygXWfI4EX9H
- X95hixevd6961OC3WwYNBawdEgPNMS9h2KSxAm4YK7xBKO7dJ/5KnBw9VdpCaQIYFVa8
- SBMMaOOcFimR0+RAzKXeGzFi/2DHgiwql3OsGWOMWm545qPg4qNLP6FXTqOeQ9Cmn+WN
- rUhJ3WCUQmf/mhGS1W3qBIPxe3lyKwV+cP991aI3guz3BS0wEoQGP+KvEvhik2siTyUi
- m8LtOsMVivWtgopdC/hX/5cf8StMlBTayW4CRzRehc4o1gfSlgMKF989vYozCmlJnjA2
- JWVA==
+ bh=Y1F9Lf8fawOz8sRYw9HjXfqGoTCcQqHLj5VILHhRtYA=;
+ b=J5IqYVIu1C3HMUK33uLzfcxdqzJLUu4skazWlt5P6xbwvj4zdmPnd6vlyK3th9gT9g
+ gn/HEIz3+l0q+Xs6/KpYkjHHBNgHBxvC7NZ9yJA6vrYORCxcE+9v+U1b/ZVU5WjngPLQ
+ qmAZKELlGU/AwMzeDNRiXN7mC9qmA7t94+94RIpJ81NsKbKow4dIGoJj9kqO0Cp87IOl
+ cRyZg+3yFtemWfqR5x/wtxpk7G/WTQx+mpBDoSoKyn5XHl97Qxj7i7iChCp9JYDGu2NS
+ fEW5AAIVP/WYt1VVRUPmJ0eVsIRhHt/GbTq2Mntef7Ev41Daau9hB/E8tHLm6/GxE9Zd
+ GtUA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV9ugV0QXt0BRZN2S1ABe5RXiAIQ0hJEjPKlRq29FN1+iqRLjNzdnXCDg1oZ3dSAvv22UDeK3vN1g==@nongnu.org
-X-Gm-Message-State: AOJu0YwXoK4rsb5lIy+GgPBnvD3eNoRkY3mQ3RShl+mb5Zwf3fry16c3
- dSiR5ZwKWd9zGgx9R/ZOnZZGz9or2g2Siaf5lFqEvG2HDiRI6IsPy8h/C7JPBInQ1FbUJl1zqHv
- sE3MgTavlUIuVta/KVeAjCZ+6n5DAIQAVbXvheTSIhi4QORiL5QukFw==
-X-Gm-Gg: ASbGnctLUfukoc4L/1yrJf8gFkvlQNboeCb0s9rEFkZECOGpPCTWJINEHPnyVTw81ON
- 9XHKrqSPCxpYskTFgY5oJzQALCara/YiyebDLO9YGoWXQrs2rQwnp5EKuPwFkz5WAKCoq3rmz7j
- lqFYx7ZpRsULWQ2q7PdvPTve5FZTuLfNdZddSk8/WG0wVwVtAyFMLZTGZKDvvLVf8SxfcSVkSIQ
- 9rxlqC2/tQ1/s/7VxIcb+3uYl6jNlJRSX1nyEA73FfLtX9qnxuYH9NDxUyRIJTWonJrBEq9413T
- FCRtHJO8Rl2aeqIUuuj2DrrnKAaS1MmxoyHU5OP7pD8BTpxN/w01cstcnBDBNzGhtjqF9A==
-X-Received: by 2002:a05:6000:4205:b0:3a4:f7e3:c63c with SMTP id
- ffacd0b85a97d-3b496f97855mr11262775f8f.0.1751955447989; 
- Mon, 07 Jul 2025 23:17:27 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEsjLhC+OZaSBMPgiGP99stWdu9P3CMZciBhti+rdh+SRSw6IO1EjHgKYIsILgLv3ocKPlGTg==
-X-Received: by 2002:a05:6000:4205:b0:3a4:f7e3:c63c with SMTP id
- ffacd0b85a97d-3b496f97855mr11262739f8f.0.1751955447486; 
- Mon, 07 Jul 2025 23:17:27 -0700 (PDT)
+ AJvYcCVERZcPRBcANs5fNAvChMewft5jVVkgL3FV/1eMpkeWOjHbbyC1EAhIUU8rpLHjrRqcDvh2/mAFAQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwzeNlpK025013JgUWAW4gEYlaKzDWlIChZ0hm0j0Q0lG25pbAs
+ BOUYt054DZBLONiCy4kajBhlaz4mMSbsyQMZqwIF5ta655NlghpQq8oHrWsJDjpDnhDE763v2zW
+ bKV6iOFcDCI34qIiSh/sqhNliul7nM0sg80Mxzcndq/DK1joTpAhfDQ==
+X-Gm-Gg: ASbGncszMsE7PlKaByQ90Ul4sGhzE94T9NUEq51YcfHVjCZGGETTn72qrwqUp6pGZN5
+ 28uwpK+awG2banThxz3T6D3TNeIYDeORqlF/CrWd37myb1NBHjbXpET0gbiteuolsD8ZlNE4vWb
+ Qx3cElA5+W1eyvhVYjfb803lUsIpCs7KOwPVWLr2YsuMY3udQfxiEXtiwZY0p4CSP12GxVfzP6V
+ 5LNl1ugwSBy1k43ymtPFuQ4sRUJdG1sSlAF+XXFvocR1yVfkcGB+nOoGxAydFBjQDKTF2n/JQGz
+ 8KvhLu/2Sj/cDAJUTZVkc45wlwWMPp695Fu3NAG+QIukFCeaCjxRkpkwirNC8HH2+dir8Q==
+X-Received: by 2002:a05:600c:6286:b0:43c:fa24:8721 with SMTP id
+ 5b1f17b1804b1-454cd51869amr16578295e9.17.1751956266117; 
+ Mon, 07 Jul 2025 23:31:06 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEUE7MUQyaT0zWTzdkTJFL/PCReTQe1ucZbGBSeOx5Cef1hQzV0VQ7ylgmR6oQtWInTOMyxbw==
+X-Received: by 2002:a05:600c:6286:b0:43c:fa24:8721 with SMTP id
+ 5b1f17b1804b1-454cd51869amr16577865e9.17.1751956265504; 
+ Mon, 07 Jul 2025 23:31:05 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b472259806sm12178521f8f.67.2025.07.07.23.17.26
+ ffacd0b85a97d-3b47225985csm12199350f8f.69.2025.07.07.23.31.03
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 07 Jul 2025 23:17:26 -0700 (PDT)
-Message-ID: <c8405058-b26b-4d19-9251-1c37548e2b70@redhat.com>
-Date: Tue, 8 Jul 2025 08:17:25 +0200
+ Mon, 07 Jul 2025 23:31:04 -0700 (PDT)
+Message-ID: <ecaf9b4d-e60b-473f-be69-d80704484dda@redhat.com>
+Date: Tue, 8 Jul 2025 08:31:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 00/36] ACPI PCI Hotplug support on ARM
-To: "Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [PATCH v5 36/36] qtest/bios-tables-test: Generate reference blob
+ for DSDT.acpipcihp
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, imammedo@redhat.com, Jonathan.Cameron@huawei.com,
- gustavo.romero@linaro.org, anisinha@redhat.com, shannon.zhaosl@gmail.com,
+ peter.maydell@linaro.org, imammedo@redhat.com, gustavo.romero@linaro.org,
+ anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com,
  pbonzini@redhat.com, philmd@linaro.org, alex.bennee@linaro.org
 References: <20250703123728.414386-1-eric.auger@redhat.com>
- <152beeb2-7de7-4a4b-8f5d-806e7f18dda6@redhat.com>
- <20250707135106-mutt-send-email-mst@kernel.org>
+ <20250703123728.414386-37-eric.auger@redhat.com>
+ <20250703160950.000037f2@huawei.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250707135106-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20250703160950.000037f2@huawei.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: nqe1LVgHKjNiFf3OgFdC4WO_dfK7vr0Yv4dLQx__mb8_1751955448
+X-Mimecast-MFC-PROC-ID: pbPAwRwLYxdO5CCx036IT0yS_NFW5Ttuwxlug2kKYGE_1751956266
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -123,203 +124,612 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Michael,
+Hi Jonathan,
 
-On 7/7/25 7:53 PM, Michael S. Tsirkin wrote:
-> On Mon, Jul 07, 2025 at 07:09:34PM +0200, Eric Auger wrote:
->> Hi,
->>
->> On 7/3/25 2:35 PM, Eric Auger wrote:
->>> This series enables ACPI PCI hotplug/hotunplug on ARM.
->>> It is not enabled by default and ACPI PCI hotplug can
->>> be selected by setting:
->>>
->>> -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on
->>>
->>> Expected benefits should be similar to those listed in [1],
->>> ie. removal of some racy behaviors, improved latencies.
->>>
->>> The infrastructure used in x86 is heavily reused and a
->>> huge part of the series consists in moving code from
->>> hw/i386/acpi-build.c to a generic place and slightly
->>> adapting it to make it usable on ARM. The DSDT table is
->>> augmented to support ACPI PCI hotplug elements.
->>>
->>> On ARM we use use a GED event to notify the OS about
->>> hotplug events.
->> gentle ping on this series. I was hoping that this could target 10.1 but
->> I ackowledge this is a big series to review and I am already very
->> grateful to all reviewers.
->>
->> At least patches 1-15 have collected R-bs including Igor's ones. They
->> can be seen as code move/reshuffle/cleanup and does not bring any
->> functionality. I think patches 16-19 also belong to prerequisite and
->> fixes and are easy to parse.
->> So if we could at least have patches 1-19 merged in 10.1, this would
->> alleviate the rebase efforts for next respins if any.
->>
->> Of course I have not totally lost all hopes to get this in in 10.1 ;-)
->> and I will be able to diligently respin upon comments.
->>
->> Thanks
->>
->> Eric
+On 7/3/25 5:09 PM, Jonathan Cameron wrote:
+> On Thu,  3 Jul 2025 14:35:36 +0200
+> Eric Auger <eric.auger@redhat.com> wrote:
 >
-> If no one objects, I can queue this. OK with ARM maintainers?
-> I think the only comment I have is shorter/cropped commit logs for the blobs,
-> that Jonathan already pointed out.
-> Want to respin doing that?
-Sure I will respin today with that change and grabbing latest R-bs from
-Jonathan.
+>> The disassembled DSDT table is given below.
+> I think the aim for this one should be to highlight the blobs where it differs
+> from the previous rather than having the whole thing.
 
-Thanks
+makes sense. I will crop the commit message accordingly.
+
+Thanks!
 
 Eric
 >
 >
->>> Best Regards
->>>
->>> Eric
->>>
->>> This series can be found at:
->>> https://github.com/eauger/qemu/tree/arm-acpi-pcihp-v5
->>>
->>> previous series:
->>> https://github.com/eauger/qemu/tree/arm-acpi-pcihp-v4
->>>
->>> History:
->>> v4 -> v5:
->>> - Collected Jonathan's R-bs (many thanks!)
->>> - fixed the tests/qtest/bios-tables-test issue by
->>>   creating a variant for the viot test
->>> - use the 3 phase reset API
->>> - fixed qom-test failures that were due to unconditionnal
->>>   fetches of the GED property
->>>
->>> v3 -> v4:
->>> - toook into account all comments on v3
->>> - static acpi-index is now supported unconditionally
->>>   from acpi pcihp option. See indiviual patches.
->>> - I hit a problem with ref block generation at
->>>   [19/32] tests/qtest/bios-tables-test: Update ARM DSDT reference
->>>   blobs: despite I regenerate the blobs, I get some errors.
->>>
->>> v2 -> v3:
->>> - lot of changes taking into account various feedbacks
->>>   (many thanks to all reviewers). Please refer to
->>>   individual patches for details. Main changes:
->>>   - no more machine option, acpi pci hp is not set by
->>>     default.
->>>   - removal of 2 unused variables in the osc method
->>>   - introduction of GED property to set the bus
->>>   - rework of the init/reset sequence
->>>   - fix virtio-mem-pci hotplug regression
->>>
->>> v1 -> v2:
->>> - collected a bunch of R-bs from Gustavo (many thanks!)
->>> - Fixed the breakage of bios-tables-test in TCG mode by
->>>   incorporating Gustavo's patches (part of
->>>   [PATCH 0/5] ACPI tests for PCI Hotplug on ARM
->>>   https://lore.kernel.org/all/20250526053123.1434204-1-gustavo.romero@linaro.org/)
->>> - Tweeked the dsdt aml changes to avoid any dsdt blob difference when
->>>   acpi-pcihp is off.
->>>
->>> RFC -> v1:
->>> - First 3 trivial patches were pulled separately
->>> - Fix of the register region size (0x18), ie. ACPI_PCIHP_SIZE
->>> - addition of aml_pci_edsm which was not called in RFC
->>> - acpi-index feature is now fixed. vms->bus was not set on
->>>   acpi_pcihp_init. The init sequence is still hacky though. Suggestions
->>>   are welcome.
->>>
->>> [1] [PATCH v6 0/6] Use ACPI PCI hot-plug for Q35
->>> https://lore.kernel.org/all/20210713004205.775386-1-jusual@redhat.com/
->>>
->>>
->>> Eric Auger (32):
->>>   hw/i386/acpi-build: Make aml_pci_device_dsm() static
->>>   hw/acpi: Rename and move build_x86_acpi_pci_hotplug to pcihp
->>>   hw/pci-host/gpex-acpi: Add native_pci_hotplug arg to
->>>     acpi_dsdt_add_pci_osc
->>>   hw/pci-host/gpex-acpi: Split host bridge OSC and DSM generation
->>>   hw/acpi/ged: Add a acpi-pci-hotplug-with-bridge-support property
->>>   hw/pci-host/gpex-acpi: Use GED acpi pcihp property
->>>   hw/i386/acpi-build: Turn build_q35_osc_method into a generic method
->>>   hw/pci-host/gpex-acpi: Use build_pci_host_bridge_osc_method
->>>   tests/qtest/bios-tables-test: Update DSDT blobs after GPEX _OSC change
->>>   hw/i386/acpi-build: Introduce build_append_pcihp_resources() helper
->>>   hw/acpi/pcihp: Add an AmlRegionSpace arg to build_acpi_pci_hotplug
->>>   hw/i386/acpi-build: Move build_append_notification_callback to pcihp
->>>   hw/i386/acpi-build: Move build_append_pci_bus_devices/pcihp_slots to
->>>     pcihp
->>>   hw/i386/acpi-build: Use AcpiPciHpState::root in acpi_set_pci_info
->>>   hw/i386/acpi-build: Move aml_pci_edsm to a generic place
->>>   qtest/bios-tables-test: Prepare for fixing the aarch64 viot test
->>>   qtest/bios-tables-test: Add a variant to the aarch64 viot test
->>>   qtest/bios-tables-test: Generate DSDT.viot
->>>   hw/arm/virt-acpi-build: Let non hotplug ports support static
->>>     acpi-index
->>>   tests/qtest/bios-tables-test: Update ARM DSDT reference blobs
->>>   hw/arm/virt-acpi-build: Modify the DSDT ACPI table to enable ACPI PCI
->>>     hotplug
->>>   hw/acpi/ged: Add a bus link property
->>>   hw/arm/virt: Pass the bus on the ged creation
->>>   hw/acpi/ged: Call pcihp plug callbacks in hotplug handler
->>>     implementation
->>>   hw/acpi/pcihp: Remove root arg in acpi_pcihp_init
->>>   hw/acpi/ged: Prepare the device to react to PCI hotplug events
->>>   hw/acpi/ged: Support migration of AcpiPciHpState
->>>   hw/core/sysbus: Introduce sysbus_mmio_map_name() helper
->>>   hw/arm/virt: Minor code reshuffling in create_acpi_ged
->>>   hw/arm/virt: Let virt support pci hotplug/unplug GED event
->>>   qtest/bios-tables-test: Generate reference blob for
->>>     DSDT.hpoffacpiindex
->>>   qtest/bios-tables-test: Generate reference blob for DSDT.acpipcihp
->>>
->>> Gustavo Romero (4):
->>>   tests/qtest/bios-tables-test: Prepare for changes in the DSDT table
->>>   tests/qtest/bios-tables-test: Prepare for changes in the arm virt DSDT
->>>     table
->>>   tests/qtest/bios-tables-test: Prepare for addition of acpi pci hp
->>>     tests
->>>   tests/qtest/bios-tables-test: Add aarch64 ACPI PCI hotplug test
->>>
->>>  hw/i386/acpi-build.h                          |   4 -
->>>  include/hw/acpi/generic_event_device.h        |  17 +-
->>>  include/hw/acpi/pci.h                         |   5 +-
->>>  include/hw/acpi/pcihp.h                       |  17 +-
->>>  include/hw/arm/virt.h                         |   1 +
->>>  include/hw/pci-host/gpex.h                    |   1 +
->>>  include/hw/sysbus.h                           |   1 +
->>>  hw/acpi/acpi-pci-hotplug-stub.c               |   2 +-
->>>  hw/acpi/generic_event_device.c                |  77 +++
->>>  hw/acpi/ich9.c                                |   7 +-
->>>  hw/acpi/pci-bridge.c                          |  54 ++
->>>  hw/acpi/pci.c                                 |  50 ++
->>>  hw/acpi/pcihp.c                               | 439 ++++++++++++++-
->>>  hw/acpi/piix4.c                               |   5 +-
->>>  hw/arm/virt-acpi-build.c                      |  38 ++
->>>  hw/arm/virt.c                                 |  27 +-
->>>  hw/core/sysbus.c                              |  11 +
->>>  hw/i386/acpi-build.c                          | 532 +-----------------
->>>  hw/pci-host/gpex-acpi.c                       |  74 +--
->>>  tests/qtest/bios-tables-test.c                |  53 ++
->>>  hw/arm/Kconfig                                |   2 +
->>>  hw/pci-host/Kconfig                           |   1 +
->>>  tests/data/acpi/aarch64/virt/DSDT             | Bin 5196 -> 5293 bytes
->>>  .../data/acpi/aarch64/virt/DSDT.acpihmatvirt  | Bin 5282 -> 5379 bytes
->>>  tests/data/acpi/aarch64/virt/DSDT.acpipcihp   | Bin 0 -> 6202 bytes
->>>  .../acpi/aarch64/virt/DSDT.hpoffacpiindex     | Bin 0 -> 5347 bytes
->>>  tests/data/acpi/aarch64/virt/DSDT.memhp       | Bin 6557 -> 6654 bytes
->>>  tests/data/acpi/aarch64/virt/DSDT.pxb         | Bin 7679 -> 7768 bytes
->>>  tests/data/acpi/aarch64/virt/DSDT.topology    | Bin 5398 -> 5495 bytes
->>>  tests/data/acpi/aarch64/virt/DSDT.viot        | Bin 0 -> 5310 bytes
->>>  tests/data/acpi/riscv64/virt/DSDT             | Bin 3576 -> 3538 bytes
->>>  tests/data/acpi/x86/microvm/DSDT.pcie         | Bin 3023 -> 2985 bytes
->>>  32 files changed, 811 insertions(+), 607 deletions(-)
->>>  create mode 100644 tests/data/acpi/aarch64/virt/DSDT.acpipcihp
->>>  create mode 100644 tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex
->>>  create mode 100644 tests/data/acpi/aarch64/virt/DSDT.viot
->>>
+>> /*
+>>  * Intel ACPI Component Architecture
+>>  * AML/ASL+ Disassembler version 20210604 (64-bit version)
+>>  * Copyright (c) 2000 - 2021 Intel Corporation
+>>  *
+>>  * Disassembling to symbolic ASL+ operators
+>>  *
+>>  * Disassembly of ../tests/data/acpi/aarch64/virt/DSDT.acpipcihp, Thu Jul  3 05:16:27 2025
+>>  *
+>>  * Original Table Header:
+>>  *     Signature        "DSDT"
+>>  *     Length           0x0000183A (6202)
+>>  *     Revision         0x02
+>>  *     Checksum         0x98
+>>  *     OEM ID           "BOCHS "
+>>  *     OEM Table ID     "BXPC    "
+>>  *     OEM Revision     0x00000001 (1)
+>>  *     Compiler ID      "BXPC"
+>>  *     Compiler Version 0x00000001 (1)
+>>  */
+>> DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
+>> {
+>>     Scope (\_SB)
+>>     {
+>>         Device (C000)
+>>         {
+>>             Name (_HID, "ACPI0007" /* Processor Device */)  // _HID: Hardware ID
+>>             Name (_UID, Zero)  // _UID: Unique ID
+>>         }
+>>
+>>         Device (COM0)
+>>         {
+>>             Name (_HID, "ARMH0011")  // _HID: Hardware ID
+>>             Name (_UID, Zero)  // _UID: Unique ID
+>>             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+>>             {
+>>                 Memory32Fixed (ReadWrite,
+>>                     0x09000000,         // Address Base
+>>                     0x00001000,         // Address Length
+>>                     )
+>>                 Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+>>                 {
+>>                     0x00000021,
+>>                 }
+>>             })
+>>         }
+>>
+>>         Device (FWCF)
+>>         {
+>>             Name (_HID, "QEMU0002")  // _HID: Hardware ID
+>>             Name (_STA, 0x0B)  // _STA: Status
+>>             Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+>>             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+>>             {
+>>                 Memory32Fixed (ReadWrite,
+>>                     0x09020000,         // Address Base
+>>                     0x00000018,         // Address Length
+>>                     )
+>>             })
+>>         }
+> ...
+>
+>>         Device (L000)
+>>         {
+>>             Name (_HID, "PNP0C0F" /* PCI Interrupt Link Device */)  // _HID: Hardware ID
+>>             Name (_UID, Zero)  // _UID: Unique ID
+>>             Name (_PRS, ResourceTemplate ()  // _PRS: Possible Resource Settings
+>>             {
+>>                 Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+>>                 {
+>>                     0x00000023,
+>>                 }
+>>             })
+>>             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+>>             {
+>>                 Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+>>                 {
+>>                     0x00000023,
+>>                 }
+>>             })
+>>             Method (_SRS, 1, NotSerialized)  // _SRS: Set Resource Settings
+>>             {
+>>             }
+>>         }
+> ...
+>
+>>         Device (PCI0)
+>>         {
+>>             Name (_HID, "PNP0A08" /* PCI Express Bus */)  // _HID: Hardware ID
+>>             Name (_CID, "PNP0A03" /* PCI Bus */)  // _CID: Compatible ID
+>>             Name (_SEG, Zero)  // _SEG: PCI Segment
+>>             Name (_BBN, Zero)  // _BBN: BIOS Bus Number
+>>             Name (_UID, Zero)  // _UID: Unique ID
+>>             Name (_STR, Unicode ("PCIe 0 Device"))  // _STR: Description String
+>>             Name (_CCA, One)  // _CCA: Cache Coherency Attribute
+>>             Name (_PRT, Package (0x80)  // _PRT: PCI Routing Table
+>>             {
+>>                 Package (0x04)
+>>                 {
+>>                     0xFFFF,
+>>                     Zero,
+>>                     L000,
+>>                     Zero
+>>                 },
+> ...
+>
+>>             })
+>>             Method (_CBA, 0, NotSerialized)  // _CBA: Configuration Base Address
+>>             {
+>>                 Return (0x0000004010000000)
+>>             }
+>>
+>>             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+>>             {
+>>                 WordBusNumber (ResourceProducer, MinFixed, MaxFixed, PosDecode,
+>>                     0x0000,             // Granularity
+>>                     0x0000,             // Range Minimum
+>>                     0x00FF,             // Range Maximum
+>>                     0x0000,             // Translation Offset
+>>                     0x0100,             // Length
+>>                     ,, )
+>>                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
+>>                     0x00000000,         // Granularity
+>>                     0x10000000,         // Range Minimum
+>>                     0x3EFEFFFF,         // Range Maximum
+>>                     0x00000000,         // Translation Offset
+>>                     0x2EFF0000,         // Length
+>>                     ,, , AddressRangeMemory, TypeStatic)
+>>                 DWordIO (ResourceProducer, MinFixed, MaxFixed, PosDecode, EntireRange,
+>>                     0x00000000,         // Granularity
+>>                     0x00000000,         // Range Minimum
+>>                     0x0000FFFF,         // Range Maximum
+>>                     0x3EFF0000,         // Translation Offset
+>>                     0x00010000,         // Length
+>>                     ,, , TypeStatic, DenseTranslation)
+>>                 QWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
+>>                     0x0000000000000000, // Granularity
+>>                     0x0000008000000000, // Range Minimum
+>>                     0x000000FFFFFFFFFF, // Range Maximum
+>>                     0x0000000000000000, // Translation Offset
+>>                     0x0000008000000000, // Length
+>>                     ,, , AddressRangeMemory, TypeStatic)
+>>             })
+>>             Method (_OSC, 4, NotSerialized)  // _OSC: Operating System Capabilities
+>>             {
+>>                 CreateDWordField (Arg3, Zero, CDW1)
+>>                 If ((Arg0 == ToUUID ("33db4d5b-1ff7-401c-9657-7441c03dd766") /* PCI Host Bridge Device */))
+>>                 {
+>>                     CreateDWordField (Arg3, 0x04, CDW2)
+>>                     CreateDWordField (Arg3, 0x08, CDW3)
+>>                     Local0 = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
+>>                     Local0 &= 0x1E
+> This being one of those differences.
+>
+>>                     If ((Arg1 != One))
+>>                     {
+>>                         CDW1 |= 0x08
+>>                     }
+>>
+>>                     If ((CDW3 != Local0))
+>>                     {
+>>                         CDW1 |= 0x10
+>>                     }
+>>
+>>                     CDW3 = Local0
+>>                 }
+>>                 Else
+>>                 {
+>>                     CDW1 |= 0x04
+>>                 }
+>>
+>>                 Return (Arg3)
+>>             }
+>>
+>>             Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
+>>             {
+>>                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+>>                 {
+>>                     If ((Arg2 == Zero))
+>>                     {
+>>                         Return (Buffer (One)
+>>                         {
+>>                              0x01                                             // .
+>>                         })
+>>                     }
+>>                 }
+>>
+>>                 Return (Buffer (One)
+>>                 {
+>>                      0x00                                             // .
+>>                 })
+>>             }
+>>
+>>             Device (RES0)
+>>             {
+>>                 Name (_HID, "PNP0C02" /* PNP Motherboard Resources */)  // _HID: Hardware ID
+>>                 Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+>>                 {
+>>                     QWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
+>>                         0x0000000000000000, // Granularity
+>>                         0x0000004010000000, // Range Minimum
+>>                         0x000000401FFFFFFF, // Range Maximum
+>>                         0x0000000000000000, // Translation Offset
+>>                         0x0000000010000000, // Length
+>>                         ,, , AddressRangeMemory, TypeStatic)
+>>                 })
+>>             }
+>>         }
+>>
+>>         Device (\_SB.GED)
+>>         {
+>>             Name (_HID, "ACPI0013" /* Generic Event Device */)  // _HID: Hardware ID
+>>             Name (_UID, "GED")  // _UID: Unique ID
+>>             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+>>             {
+>>                 Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, )
+>>                 {
+>>                     0x00000029,
+>>                 }
+>>             })
+>>             OperationRegion (EREG, SystemMemory, 0x09080000, 0x04)
+>>             Field (EREG, DWordAcc, NoLock, WriteAsZeros)
+>>             {
+>>                 ESEL,   32
+>>             }
+>>
+>>             Method (_EVT, 1, Serialized)  // _EVT: Event
+>>             {
+>>                 Local0 = ESEL /* \_SB_.GED_.ESEL */
+>>                 If (((Local0 & 0x02) == 0x02))
+>>                 {
+>>                     Notify (PWRB, 0x80) // Status Change
+>>                 }
+>>
+>>                 If (((Local0 & 0x10) == 0x10))
+> And this being another.
+>
+>>                 {
+>>                     Acquire (\_SB.PCI0.BLCK, 0xFFFF)
+>>                     \_SB.PCI0.PCNT ()
+>>                     Release (\_SB.PCI0.BLCK)
+>>                 }
+>>             }
+>>         }
+>>
+>>         Device (PWRB)
+>>         {
+>>             Name (_HID, "PNP0C0C" /* Power Button Device */)  // _HID: Hardware ID
+>>             Name (_UID, Zero)  // _UID: Unique ID
+>>         }
+>>     }
+>>
+>>     Scope (_SB.PCI0)
+> And all this.
+>
+>>     {
+>>         OperationRegion (PCST, SystemMemory, 0x090C0000, 0x08)
+>>         Field (PCST, DWordAcc, NoLock, WriteAsZeros)
+>>         {
+>>             PCIU,   32,
+>>             PCID,   32
+>>         }
+>>
+>>         OperationRegion (SEJ, SystemMemory, 0x090C0008, 0x04)
+>>         Field (SEJ, DWordAcc, NoLock, WriteAsZeros)
+>>         {
+>>             B0EJ,   32
+>>         }
+>>
+>>         OperationRegion (BNMR, SystemMemory, 0x090C0010, 0x08)
+>>         Field (BNMR, DWordAcc, NoLock, WriteAsZeros)
+>>         {
+>>             BNUM,   32,
+>>             PIDX,   32
+>>         }
+>>
+>>         Mutex (BLCK, 0x00)
+>>         Method (PCEJ, 2, NotSerialized)
+>>         {
+>>             Acquire (BLCK, 0xFFFF)
+>>             BNUM = Arg0
+>>             B0EJ = (One << Arg1)
+>>             Release (BLCK)
+>>             Return (Zero)
+>>         }
+>>
+>>         Method (AIDX, 2, NotSerialized)
+>>         {
+>>             Acquire (BLCK, 0xFFFF)
+>>             BNUM = Arg0
+>>             PIDX = (One << Arg1)
+>>             Local0 = PIDX /* \_SB_.PCI0.PIDX */
+>>             Release (BLCK)
+>>             Return (Local0)
+>>         }
+>>
+>>         Method (PDSM, 5, Serialized)
+>>         {
+>>             If ((Arg2 == Zero))
+>>             {
+>>                 Local0 = Buffer (One)
+>>                     {
+>>                          0x00                                             // .
+>>                     }
+>>                 If ((Arg0 != ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+>>                 {
+>>                     Return (Local0)
+>>                 }
+>>
+>>                 If ((Arg1 < 0x02))
+>>                 {
+>>                     Return (Local0)
+>>                 }
+>>
+>>                 Local1 = Zero
+>>                 Local2 = AIDX (DerefOf (Arg4 [Zero]), DerefOf (Arg4 [One]
+>>                     ))
+>>                 If (!((Local2 == Zero) | (Local2 == 0xFFFFFFFF)))
+>>                 {
+>>                     Local1 |= One
+>>                     Local1 |= (One << 0x07)
+>>                 }
+>>
+>>                 Local0 [Zero] = Local1
+>>                 Return (Local0)
+>>             }
+>>
+>>             If ((Arg2 == 0x07))
+>>             {
+>>                 Local2 = AIDX (DerefOf (Arg4 [Zero]), DerefOf (Arg4 [One]
+>>                     ))
+>>                 Local0 = Package (0x02) {}
+>>                 If (!((Local2 == Zero) || (Local2 == 0xFFFFFFFF)))
+>>                 {
+>>                     Local0 [Zero] = Local2
+>>                     Local0 [One] = ""
+>>                 }
+>>
+>>                 Return (Local0)
+>>             }
+>>         }
+>>     }
+>>
+>>     Scope (\_SB.PCI0)
+>>     {
+>>         Method (EDSM, 5, Serialized)
+>>         {
+>>             If ((Arg2 == Zero))
+>>             {
+>>                 Local0 = Buffer (One)
+>>                     {
+>>                          0x00                                             // .
+>>                     }
+>>                 If ((Arg0 != ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+>>                 {
+>>                     Return (Local0)
+>>                 }
+>>
+>>                 If ((Arg1 < 0x02))
+>>                 {
+>>                     Return (Local0)
+>>                 }
+>>
+>>                 Local0 [Zero] = 0x81
+>>                 Return (Local0)
+>>             }
+>>
+>>             If ((Arg2 == 0x07))
+>>             {
+>>                 Local0 = Package (0x02)
+>>                     {
+>>                         Zero,
+>>                         ""
+>>                     }
+>>                 Local1 = DerefOf (Arg4 [Zero])
+>>                 Local0 [Zero] = Local1
+>>                 Return (Local0)
+>>             }
+>>         }
+>>
+>>         Device (S00)
+>>         {
+>>             Name (_ADR, Zero)  // _ADR: Address
+>>         }
+>>
+>>         Device (S08)
+>>         {
+>>             Name (_ADR, 0x00010000)  // _ADR: Address
+>>         }
+>>
+>>         Device (S38)
+>>         {
+>>             Name (_ADR, 0x00070000)  // _ADR: Address
+>>             Device (S00)
+>>             {
+>>                 Name (_ADR, Zero)  // _ADR: Address
+>>             }
+>>
+>>             Name (BSEL, One)
+>>             Scope (S00)
+>>             {
+>>                 Name (ASUN, Zero)
+> All this stuff as well.
+>
+>>                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
+>>                 {
+>>                     Local0 = Package (0x02)
+>>                         {
+>>                             Zero,
+>>                             Zero
+>>                         }
+>>                     Local0 [Zero] = BSEL /* \_SB_.PCI0.S38_.BSEL */
+>>                     Local0 [One] = ASUN /* \_SB_.PCI0.S38_.S00_.ASUN */
+>>                     Return (PDSM (Arg0, Arg1, Arg2, Arg3, Local0))
+>>                 }
+>>
+>>                 Name (_SUN, Zero)  // _SUN: Slot User Number
+>>                 Method (_EJ0, 1, NotSerialized)  // _EJx: Eject Device, x=0-9
+>>                 {
+>>                     PCEJ (BSEL, _SUN)
+>>                 }
+>>             }
+>>
+>>             Method (DVNT, 2, NotSerialized)
+>>             {
+>>                 If ((Arg0 & One))
+>>                 {
+>>                     Notify (S00, Arg1)
+>>                 }
+>>             }
+>>         }
+>>
+>>         Name (BSEL, Zero)
+>>         Scope (S00)
+>>         {
+>>             Name (ASUN, Zero)
+>>             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
+>>             {
+>>                 Local0 = Package (0x02)
+>>                     {
+>>                         Zero,
+>>                         Zero
+>>                     }
+>>                 Local0 [Zero] = BSEL /* \_SB_.PCI0.BSEL */
+>>                 Local0 [One] = ASUN /* \_SB_.PCI0.S00_.ASUN */
+>>                 Return (PDSM (Arg0, Arg1, Arg2, Arg3, Local0))
+>>             }
+>>
+>>             Name (_SUN, Zero)  // _SUN: Slot User Number
+>>             Method (_EJ0, 1, NotSerialized)  // _EJx: Eject Device, x=0-9
+>>             {
+>>                 PCEJ (BSEL, _SUN)
+>>             }
+>>         }
+>>
+>>         Scope (S08)
+>>         {
+>>             Name (ASUN, One)
+>>             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
+>>             {
+>>                 Local0 = Package (0x02)
+>>                     {
+>>                         Zero,
+>>                         Zero
+>>                     }
+>>                 Local0 [Zero] = BSEL /* \_SB_.PCI0.BSEL */
+>>                 Local0 [One] = ASUN /* \_SB_.PCI0.S08_.ASUN */
+>>                 Return (PDSM (Arg0, Arg1, Arg2, Arg3, Local0))
+>>             }
+>>
+>>             Name (_SUN, One)  // _SUN: Slot User Number
+>>             Method (_EJ0, 1, NotSerialized)  // _EJx: Eject Device, x=0-9
+>>             {
+>>                 PCEJ (BSEL, _SUN)
+>>             }
+>>         }
+>>
+>>         Method (DVNT, 2, NotSerialized)
+>>         {
+>>             If ((Arg0 & One))
+>>             {
+>>                 Notify (S00, Arg1)
+>>             }
+>>
+>>             If ((Arg0 & 0x02))
+>>             {
+>>                 Notify (S08, Arg1)
+>>             }
+>>         }
+>>
+>>         Device (PHPR)
+>>         {
+>>             Name (_HID, "PNP0A06" /* Generic Container Device */)  // _HID: Hardware ID
+>>             Name (_UID, "PCI Hotplug resources")  // _UID: Unique ID
+>>             Name (_STA, 0x0B)  // _STA: Status
+>>             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+>>             {
+>>                 IO (Decode16,
+>>                     0x0000,             // Range Minimum
+>>                     0x0000,             // Range Maximum
+>>                     0x01,               // Alignment
+>>                     0x18,               // Length
+>>                     )
+>>             })
+>>         }
+>>
+>>         Scope (S38)
+>>         {
+>>             Method (PCNT, 0, NotSerialized)
+>>             {
+>>                 BNUM = One
+>>                 DVNT (PCIU, One)
+>>                 DVNT (PCID, 0x03)
+>>             }
+>>         }
+>>
+>>         Method (PCNT, 0, NotSerialized)
+>>         {
+>>             BNUM = Zero
+>>             DVNT (PCIU, One)
+>>             DVNT (PCID, 0x03)
+>>             ^S38.PCNT ()
+>>         }
+>>     }
+>> }
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Looks plausible so unless Igor or Michael aren't keen on it, please crop to
+> highlight the bits that need focus.  With that.
+>
+> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+>
+>> ---
+>>  tests/qtest/bios-tables-test-allowed-diff.h |   1 -
+>>  tests/data/acpi/aarch64/virt/DSDT.acpipcihp | Bin 0 -> 6202 bytes
+>>  2 files changed, 1 deletion(-)
+>>
+>> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+>> index dc3ab24d05..dfb8523c8b 100644
+>> --- a/tests/qtest/bios-tables-test-allowed-diff.h
+>> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+>> @@ -1,2 +1 @@
+>>  /* List of comma-separated changed AML files to ignore */
+>> -"tests/data/acpi/aarch64/virt/DSDT.acpipcihp",
+>> diff --git a/tests/data/acpi/aarch64/virt/DSDT.acpipcihp b/tests/data/acpi/aarch64/virt/DSDT.acpipcihp
+>> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..8d55a877a40cb4c4dffdc70378204e12d2261a75 100644
+>> GIT binary patch
+>> literal 6202
+>> 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
+>> R?PfR*|6}}@w~&H!{sU733QPb1
+>>
+>> literal 0
+>> HcmV?d00001
+>>
 
 

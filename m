@@ -4,76 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12177C83F0F
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 21:08:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3471C8303C
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 21:08:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZFK2-0002Ck-Kb; Tue, 08 Jul 2025 16:53:51 -0400
+	id 1uZFDs-0005CP-W8; Tue, 08 Jul 2025 16:47:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZEFu-00037O-LT
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:45:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZEFt-0006yE-0G
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:45:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752003928;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QM187LTqh66mz9nDTkv5Uwarxaf5Ee/ezdUTTwFgH/4=;
- b=cwySPfy/f8dOw2L5+nMFH5u21g5OMVX5qzMkaIEiwinjgDd9XJaj8OuVPC3QgYkuxh8YqJ
- kf1G2NloPrImfNdxgtxe8Ua01+lICVzNYP9HHYAsLx0Ejk1lXzttFct3CJQvb4gmlhfbMD
- kh9FsiSIApJN8yCh+Y+kLxbcd/E2e8I=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-519-vQwK2cAaPPa1I5sue9OnJQ-1; Tue,
- 08 Jul 2025 10:25:42 -0400
-X-MC-Unique: vQwK2cAaPPa1I5sue9OnJQ-1
-X-Mimecast-MFC-AGG-ID: vQwK2cAaPPa1I5sue9OnJQ_1751984740
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D304F1800290; Tue,  8 Jul 2025 14:25:40 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.44.32.187])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4CEA130001B1; Tue,  8 Jul 2025 14:25:35 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
- Jonathan.Cameron@huawei.com, gustavo.romero@linaro.org,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com,
-	philmd@linaro.org,
-	alex.bennee@linaro.org
-Subject: [PATCH v6 08/36] hw/i386/acpi-build: Turn build_q35_osc_method into a
- generic method
-Date: Tue,  8 Jul 2025 16:22:50 +0200
-Message-ID: <20250708142437.1344644-9-eric.auger@redhat.com>
-In-Reply-To: <20250708142437.1344644-1-eric.auger@redhat.com>
-References: <20250708142437.1344644-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1uZDq0-0006Hy-Ex
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:18:48 -0400
+Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1uZDpw-0007y8-PS
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:18:43 -0400
+Received: by mail-qk1-x729.google.com with SMTP id
+ af79cd13be357-7d9eac11358so141812985a.3
+ for <qemu-arm@nongnu.org>; Tue, 08 Jul 2025 12:18:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1752002319; x=1752607119; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=BSCjWCQ3lstbi0ZSjiMsYNzLX5vOS9M39IJn1ihn56g=;
+ b=jYuu5p7QKHg9aqA74SLvQSkoSiWuWa3NXKwyFcPLH3cPvfNIQIZPSkZIB2J710QB0n
+ i1iq2fVPdCnSYOlXpoHd7u5Qv/JNnog4ckRiOmMw56PRtMNb2FgovD2AvDWFoSXpzrNb
+ 03xu7JdEuDPX2HDwt601eVkPus4VeX6T8z9Ib6KPprR5WB3Uz5IYw2zxWPwEOaW6CpMs
+ cz3k7nYgbVuE2oCdDHdfqU8KsdpYuZ9g7K/CPHQwS4JlVwK1w4SPRIoGnmAErpiBE6CE
+ mE6sTSVDyz8Vmdw2nW0GmzwiPVuQhxXjS9pMJVbVRZ7LqAJfgixP4b80uiSM2hTNwMrb
+ y61w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1752002319; x=1752607119;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=BSCjWCQ3lstbi0ZSjiMsYNzLX5vOS9M39IJn1ihn56g=;
+ b=dC8HtsDeKJhNbgbdhxB/x1lLwIfTlXbgAcfMyuQTNwNGb33+GgATZIw8kUoOmKWsXj
+ tBw6fVKPOjAHcrhYE4TK/puLrTOJFBQr5Q+JyTvr81H0yA/lsO/JZq2GFeEq6sVi8rjR
+ npncJgcI3JdwpPq6SweJQPDjeAfg2L/PWRqgHht7XandcRjooGCsJCGzPpORzNW81wSH
+ CoSMmhLYVoAjnfjmuDSwK3luDil1qkY9Jx02PXVKnBP04PaQuwYIu3cW786jfA4UMbwN
+ F6Kwi+ObEi3o8POjr/0yRtgwj7lBOMo0Q0MNfQcHkc+nTyjfQ3+vhlNwfzIYjei5irDx
+ 283w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXzMX4bEyGZKbJMSSoMVKkcx70nxtdv8KXOcvFI6xDIEk0idCLuCQhieLoAlKVLalOsynS+wjj4PA==@nongnu.org
+X-Gm-Message-State: AOJu0YzsYcvljrkBRbytWp60mV+fNRzjM3ORG2Ou4VDWJQfoW0fKektT
+ jDJUGNdITvHhrWp4Wxvf5iUJWx7lhkN6940rCtKrCHIfbdRSJgIuqSi1SEu4c+NDzs8=
+X-Gm-Gg: ASbGnct6VA6Ry8OTyaSBPh1mUwEc2cJtqo7dSXHgLNVlz4f8B84W4YBmtP27/90tl7D
+ /XjL74dKkcZ0MaN9we9NoFYJvoGhJDwYrZK0NOSIfW1pKrnzuLG50HdScuiIRizRPzTxC8i8ys4
+ XT6jXZFcA/vRY+Seq5u3/EOEtCkjrQeDA5Wak3G4p3UsRd3hHY6p0BPRxdzXYobhXFwQDwTWca4
+ NRmZ/nRC7sX8F5x/gMUYMwjvZuET1ftzYORydF5Sp56Qxeg07mUizyO6DfdqjytZ/xEnaVpfzg8
+ l2rGpcjAFT6Vg+cqoMqiSgIx3uKl9u7Bd/HU7kP4lPh/5uBDydkDr3IE1Fii7ROQgLBbprOARvJ
+ HZBcZMVJa
+X-Google-Smtp-Source: AGHT+IGnx7vNPNXhsSPNERl4kCLWlLCEEZlFIkZ0Q3fv/qm/kJgxMysk+IDcIlMyfn9t3TGARummnA==
+X-Received: by 2002:a05:620a:2942:b0:7d4:4c40:8e02 with SMTP id
+ af79cd13be357-7db471203e7mr94642985a.23.1752002318934; 
+ Tue, 08 Jul 2025 12:18:38 -0700 (PDT)
+Received: from [192.168.0.102] ([189.110.24.38])
+ by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-702c4cc7588sm80589376d6.2.2025.07.08.12.18.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 08 Jul 2025 12:18:38 -0700 (PDT)
+Message-ID: <09f3447b-4ca1-4eb9-9fb7-6e9fcdfc2857@linaro.org>
+Date: Tue, 8 Jul 2025 16:18:57 -0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [WIP-for-10.1 v2 5/5] target/arm: Advertise FEAT_MEC in cpu max
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ alex.bennee@linaro.org
+Cc: qemu-devel@nongnu.org
+References: <20250704151431.1033520-1-gustavo.romero@linaro.org>
+ <20250704151431.1033520-6-gustavo.romero@linaro.org>
+ <af3c8b1b-63e0-43bf-8d9a-6c6bf699fa97@linaro.org>
+Content-Language: en-US
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <af3c8b1b-63e0-43bf-8d9a-6c6bf699fa97@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::729;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-qk1-x729.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,176 +106,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-GPEX acpi_dsdt_add_pci_osc() does basically the same as
-build_q35_osc_method().
+Hi Richard,
 
-Rename build_q35_osc_method() into build_pci_host_bridge_osc_method()
-and move it into hw/acpi/pci.c. In a subsequent patch we will
-use this later in place of acpi_dsdt_add_pci_osc().
+Thanks a lot for the reviews!
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+On 7/4/25 19:56, Richard Henderson wrote:
+> On 7/4/25 09:14, Gustavo Romero wrote:
+>> Advertise FEAT_MEC in AA64MMFR3 ID register for the Arm64 cpu max as a
+>> first step to fully support FEAT_MEC.
+>>
+>> The FEAT_MEC is an extension to FEAT_RME that implements multiple
+>> Memory Encryption Contexts (MEC) so the memory in a realm can be
+>> encrypted and accessing it from the wrong encryption context is not
+>> possible. An encryption context allow the selection of a memory
+>> encryption engine.
+>>
+>> At this point, no real memory encryption or obfuscation is supported,
+>> but software stacks that rely on FEAT_MEC to run should work properly,
+>> except if they use the new cache management instructions, which will
+>> be implement in a subsequent commit.
+> 
+> You really need to implement the new cache instruction before exposing this feature.  Like other cache instructions, the insn can be a nop.  All you need is the accessfn to trap when EL2 and !SS_Realm.
 
----
+Got it. Thanks, I'm looking at it right now. I'm sending v3 addressing your
+comments here and then in v4 I'll introduce the cache management insns.
 
-v2 -> v3:
-- move to hw/acpi/pci.c instead of aml-build.c (Igor)
----
- include/hw/acpi/pci.h |  2 ++
- hw/acpi/pci.c         | 50 +++++++++++++++++++++++++++++++++++++++
- hw/i386/acpi-build.c  | 54 ++-----------------------------------------
- 3 files changed, 54 insertions(+), 52 deletions(-)
 
-diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
-index ab0187a894..8a328b580c 100644
---- a/include/hw/acpi/pci.h
-+++ b/include/hw/acpi/pci.h
-@@ -42,4 +42,6 @@ void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope);
- 
- void build_srat_generic_affinity_structures(GArray *table_data);
- 
-+Aml *build_pci_host_bridge_osc_method(bool enable_native_pcie_hotplug);
-+
- #endif
-diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
-index d511a85029..2228f1245e 100644
---- a/hw/acpi/pci.c
-+++ b/hw/acpi/pci.c
-@@ -301,3 +301,53 @@ void build_srat_generic_affinity_structures(GArray *table_data)
-     object_child_foreach_recursive(object_get_root(), build_acpi_generic_port,
-                                    table_data);
- }
-+
-+Aml *build_pci_host_bridge_osc_method(bool enable_native_pcie_hotplug)
-+{
-+    Aml *if_ctx;
-+    Aml *if_ctx2;
-+    Aml *else_ctx;
-+    Aml *method;
-+    Aml *a_cwd1 = aml_name("CDW1");
-+    Aml *a_ctrl = aml_local(0);
-+
-+    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
-+    aml_append(method, aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
-+
-+    if_ctx = aml_if(aml_equal(
-+        aml_arg(0), aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766")));
-+    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
-+    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
-+
-+    aml_append(if_ctx, aml_store(aml_name("CDW3"), a_ctrl));
-+
-+    /*
-+     * Always allow native PME, AER (no dependencies)
-+     * Allow SHPC (PCI bridges can have SHPC controller)
-+     * Disable PCIe Native Hot-plug if ACPI PCI Hot-plug is enabled.
-+     */
-+    aml_append(if_ctx, aml_and(a_ctrl,
-+        aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)), a_ctrl));
-+
-+    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(1))));
-+    /* Unknown revision */
-+    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x08), a_cwd1));
-+    aml_append(if_ctx, if_ctx2);
-+
-+    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), a_ctrl)));
-+    /* Capabilities bits were masked */
-+    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x10), a_cwd1));
-+    aml_append(if_ctx, if_ctx2);
-+
-+    /* Update DWORD3 in the buffer */
-+    aml_append(if_ctx, aml_store(a_ctrl, aml_name("CDW3")));
-+    aml_append(method, if_ctx);
-+
-+    else_ctx = aml_else();
-+    /* Unrecognized UUID */
-+    aml_append(else_ctx, aml_or(a_cwd1, aml_int(4), a_cwd1));
-+    aml_append(method, else_ctx);
-+
-+    aml_append(method, aml_return(aml_arg(3)));
-+    return method;
-+}
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 4f8572eebe..91945f716c 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -1111,56 +1111,6 @@ static Aml *build_q35_dram_controller(const AcpiMcfgInfo *mcfg)
-     return dev;
- }
- 
--static Aml *build_q35_osc_method(bool enable_native_pcie_hotplug)
--{
--    Aml *if_ctx;
--    Aml *if_ctx2;
--    Aml *else_ctx;
--    Aml *method;
--    Aml *a_cwd1 = aml_name("CDW1");
--    Aml *a_ctrl = aml_local(0);
--
--    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
--    aml_append(method, aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
--
--    if_ctx = aml_if(aml_equal(
--        aml_arg(0), aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766")));
--    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
--    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
--
--    aml_append(if_ctx, aml_store(aml_name("CDW3"), a_ctrl));
--
--    /*
--     * Always allow native PME, AER (no dependencies)
--     * Allow SHPC (PCI bridges can have SHPC controller)
--     * Disable PCIe Native Hot-plug if ACPI PCI Hot-plug is enabled.
--     */
--    aml_append(if_ctx, aml_and(a_ctrl,
--        aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)), a_ctrl));
--
--    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(1))));
--    /* Unknown revision */
--    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x08), a_cwd1));
--    aml_append(if_ctx, if_ctx2);
--
--    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), a_ctrl)));
--    /* Capabilities bits were masked */
--    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x10), a_cwd1));
--    aml_append(if_ctx, if_ctx2);
--
--    /* Update DWORD3 in the buffer */
--    aml_append(if_ctx, aml_store(a_ctrl, aml_name("CDW3")));
--    aml_append(method, if_ctx);
--
--    else_ctx = aml_else();
--    /* Unrecognized UUID */
--    aml_append(else_ctx, aml_or(a_cwd1, aml_int(4), a_cwd1));
--    aml_append(method, else_ctx);
--
--    aml_append(method, aml_return(aml_arg(3)));
--    return method;
--}
--
- static void build_acpi0017(Aml *table)
- {
-     Aml *dev, *scope, *method;
-@@ -1231,7 +1181,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-         aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A08")));
-         aml_append(dev, aml_name_decl("_CID", aml_eisaid("PNP0A03")));
-         aml_append(dev, aml_name_decl("_UID", aml_int(pcmc->pci_root_uid)));
--        aml_append(dev, build_q35_osc_method(!pm->pcihp_bridge_en));
-+        aml_append(dev, build_pci_host_bridge_osc_method(!pm->pcihp_bridge_en));
-         aml_append(dev, aml_pci_edsm());
-         aml_append(sb_scope, dev);
-         if (mcfg_valid) {
-@@ -1353,7 +1303,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-                 aml_append(dev, aml_name_decl("_CID", aml_eisaid("PNP0A03")));
- 
-                 /* Expander bridges do not have ACPI PCI Hot-plug enabled */
--                aml_append(dev, build_q35_osc_method(true));
-+                aml_append(dev, build_pci_host_bridge_osc_method(true));
-             } else {
-                 aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A03")));
-             }
--- 
-2.49.0
+>> diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+>> index 611d7385d8..14f17febe2 100644
+>> --- a/docs/system/arm/emulation.rst
+>> +++ b/docs/system/arm/emulation.rst
+>> @@ -89,6 +89,7 @@ the following architecture extensions:
+>>   - FEAT_LSE (Large System Extensions)
+>>   - FEAT_LSE2 (Large System Extensions v2)
+>>   - FEAT_LVA (Large Virtual Address space)
+>> +- FEAT_MEC (Memory Encryption Contexts)
+> 
+> We probably want to document that this is a stub implementation.
 
+Where exactly? Maybe just below:
+
+When a specific named CPU is being emulated, only those features which
+are present in hardware for that CPU are emulated. (If a feature is
+not in the list above then it is not supported, even if the real
+hardware should have it.) The ``max`` CPU enables all features.
+
+or ?
+
+Can I use the term "stub implementation" in the docs?
+
+
+>>   - FEAT_MixedEnd (Mixed-endian support)
+>>   - FEAT_MixedEndEL0 (Mixed-endian support at EL0)
+>>   - FEAT_MOPS (Standardization of memory operations)
+>> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+>> index e6a731472f..009618fd9c 100644
+>> --- a/target/arm/cpu-features.h
+>> +++ b/target/arm/cpu-features.h
+>> @@ -603,6 +603,11 @@ static inline bool isar_feature_aa64_hbc(const ARMISARegisters *id)
+>>       return FIELD_EX64(id->id_aa64isar2, ID_AA64ISAR2, BC) != 0;
+>>   }
+>> +static inline bool isar_feature_aa64_mec(const ARMISARegisters *id)
+>> +{
+>> +    return FIELD_EX64(id->id_aa64mmfr3, ID_AA64MMFR3, MEC);
+>> +}
+> 
+> This test (updated for master of course) needs to be in the first patch, because you're using it in the implementations of SCTLR2 and TCR2.  So patches 2 and 3 don't build alone at the moment.
+
+I've moved it to the first FEAT_MEC patch, thanks.
+
+
+Cheers,
+Gustavo
+
+> Alternately, implement SCTLR2 + TCR2 without *any* other features which would enable valid write bits, and then add the MEC code here.
+> 
+> 
+> r~
 

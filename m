@@ -4,67 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89CA0C8303C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0821C83F14
 	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 21:20:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZFGu-0001VE-00; Tue, 08 Jul 2025 16:50:36 -0400
+	id 1uZFFu-0005B4-37; Tue, 08 Jul 2025 16:49:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZEDL-00081G-66
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:42:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1uZDsR-0000jD-B5
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:21:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZEDG-0006CY-TC
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:42:50 -0400
+ id 1uZDsM-0000ax-Lx
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:21:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752003765;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
+ s=mimecast20190719; t=1752002463;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hOnk6tUF8BEtgoK/DOmMaR/Km0pJrk/2ZiEFOx7CRQU=;
- b=X9HKmCppZqYQzj4gyxlw/Us/TIlQkgmQEmn06/hqNzhaXQCTj/KwHN0KvTpgZzXNSJI4Ut
- wP3TlSoppnPwMDTnuPSaiDfkB6wdzskUEWqjeJlUF7lqOMFe7W7WGNFnb1IXTPwjAiZdV2
- rr0e+veXaRkEN2MQ9jj7Tc6EWWjp19s=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-634-m2Y677plNFetcGI2MgpFig-1; Tue,
- 08 Jul 2025 10:26:32 -0400
-X-MC-Unique: m2Y677plNFetcGI2MgpFig-1
-X-Mimecast-MFC-AGG-ID: m2Y677plNFetcGI2MgpFig_1751984791
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2F574180028C; Tue,  8 Jul 2025 14:26:31 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.44.32.187])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D7E1A30001B1; Tue,  8 Jul 2025 14:26:25 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
- Jonathan.Cameron@huawei.com, gustavo.romero@linaro.org,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com,
-	philmd@linaro.org,
-	alex.bennee@linaro.org
-Subject: [PATCH v6 15/36] hw/i386/acpi-build: Use AcpiPciHpState::root in
- acpi_set_pci_info
-Date: Tue,  8 Jul 2025 16:22:57 +0200
-Message-ID: <20250708142437.1344644-16-eric.auger@redhat.com>
-In-Reply-To: <20250708142437.1344644-1-eric.auger@redhat.com>
-References: <20250708142437.1344644-1-eric.auger@redhat.com>
+ bh=fK/SayyC85xjWsBK0N6nN7kRK8Md2b8sI+ruNwWFLVw=;
+ b=KPMyafmNBdzgXGuLgv2p9x8Nz3rNF6agyPifg1/ptSIiP0rvKwffr1wXCyQ6kOv9+6EUNV
+ 3naGU9jo2npH4ZPT2g0yWNni+7V/EDKLO641DkhasRjGN19tCzFshhdWc7eWWhPiyf6f9W
+ p9Rj7VZBR7WqJMCP9TpUkbr/0MDGrs0=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-49-hW1Naf5cOv6JFPJFYAyuvQ-1; Tue, 08 Jul 2025 05:55:57 -0400
+X-MC-Unique: hW1Naf5cOv6JFPJFYAyuvQ-1
+X-Mimecast-MFC-AGG-ID: hW1Naf5cOv6JFPJFYAyuvQ_1751968556
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-3a4e9252ba0so2215364f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 08 Jul 2025 02:55:57 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1751968556; x=1752573356;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=fK/SayyC85xjWsBK0N6nN7kRK8Md2b8sI+ruNwWFLVw=;
+ b=b28T7EfjSe+w19EYoUkbRmaZU//SMxAlEf+D/Zdj/rlHZRwINBXFvhtXcuBKfP/LCY
+ WaxfVXSvux6/Na5YgOZyY2J8NemXgSa4105Xkm2XEs0ThcC5J6V3ufCdQ/VzEokNpf7Y
+ 86M38WUl+1tXEJq8DPNnn5k3lGTHnBUwMWpJ2+rzltZccNxeP6SB87l2td5SgFw5WbCA
+ xqgumUeHFh8Av9EMbfQnoV71YF0awr0Ue9F9MIBU3+eV0u6tajR6c3HRpWYhsyP3yi5H
+ UUOujUsqqufIs645vsUHaWbHAW7ktnQ1KhUBYyhpcfcT1SFfJh+p7BoAyOyO6NCBW1mn
+ p6yQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVOSqB5+8976Y8xACtAtZGXAGn9B6lIfY7PFkllBAZtDA6A3zHXZtG0PMySooL63RSot+gOwaTMbQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yxt69F16HD568R09RxUVdUTkkocH+UA3BfTWTw2WDMOypZy82ZW
+ ZQDauRauaAeKSjhgjbuA0UCDJNxF3yP5f3ISjXmnSxLven2tkbXycQemNVp4BSqZEZyf/inaek1
+ EKbeUqrlkaLiskNx/VfSUAHzgQyENMyBTSf+f5RgcC6wSNb/n7FnXuA==
+X-Gm-Gg: ASbGncufr+r31czq/EB3BGLdxs6XfQlGycZY0wzDSQgLMivsg6etz1NUoClukyIJ44J
+ SlAgNNie/tI1Zuu3ZWOXWgMISnfoeBkpKkXa1BGUjTSrCtur5jXGm16KXqAUKxP+RdYVuNZNxaP
+ uEcAjbaHWRivziBnE/lKzwU/TQfRT/O/nPQzkjixL8phQojX9T6ngJNOiH13xdJMsH641XIW7Pn
+ vHz/v0oCNIdJ4xoNmivdviATd7Yott4eCSeGTKNWSi4zVZeXToCHPbfudiZYbZmCgiycxB7eVWX
+ 57avurLKtuOcKcH8dPwoieyaMpL/M/ARlE1Da7DelcUo3LCXhbcVo8YqBC4MR0gQL8kPDw==
+X-Received: by 2002:a5d:5f47:0:b0:3a4:fbaf:3f99 with SMTP id
+ ffacd0b85a97d-3b4964f9d83mr14014511f8f.13.1751968556344; 
+ Tue, 08 Jul 2025 02:55:56 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG+X4OS9emeXDPRcKnY+CjQhHTmOGkUqYxozqVvoaykOSruKBA9s+Z6PY3leCGE6s5aaaWC4A==
+X-Received: by 2002:a5d:5f47:0:b0:3a4:fbaf:3f99 with SMTP id
+ ffacd0b85a97d-3b4964f9d83mr14014477f8f.13.1751968555830; 
+ Tue, 08 Jul 2025 02:55:55 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3b47285c4f9sm12402125f8f.88.2025.07.08.02.55.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 08 Jul 2025 02:55:55 -0700 (PDT)
+Message-ID: <45c112f4-bcd3-44a1-a7b9-1ff0fa807f01@redhat.com>
+Date: Tue, 8 Jul 2025 11:55:53 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 08/12] hw/arm/virt: Allow user-creatable SMMUv3 dev
+ instantiation
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, "nicolinc@nvidia.com"
+ <nicolinc@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "imammedo@redhat.com" <imammedo@redhat.com>,
+ "nathanc@nvidia.com" <nathanc@nvidia.com>,
+ "mochs@nvidia.com" <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>,
+ "gustavo.romero@linaro.org" <gustavo.romero@linaro.org>,
+ "mst@redhat.com" <mst@redhat.com>,
+ "marcel.apfelbaum@gmail.com" <marcel.apfelbaum@gmail.com>,
+ Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+References: <20250703084643.85740-1-shameerali.kolothum.thodi@huawei.com>
+ <20250703084643.85740-9-shameerali.kolothum.thodi@huawei.com>
+ <b05cd1f5-db7a-45d3-a582-85c808adcd04@redhat.com>
+ <e4cd2ccede7b46df9bbcf63dcf492fcf@huawei.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <e4cd2ccede7b46df9bbcf63dcf492fcf@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 5WIL9f1ElegGvvozz9IQ755ChPbouvIwKCx2jA5cROA_1751968556
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -86,72 +134,150 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-pcihp acpi_set_pci_info() generic code currently uses
-acpi_get_i386_pci_host() to retrieve the pci host bridge.
+Hi Shameer,
 
-To make it work also on ARM we get rid of that call and
-directly use AcpiPciHpState::root.
+On 7/8/25 10:54 AM, Shameerali Kolothum Thodi wrote:
+> Hi Eric,
+>
+>> -----Original Message-----
+>> From: Eric Auger <eric.auger@redhat.com>
+>> Sent: Tuesday, July 8, 2025 8:41 AM
+>> To: Shameerali Kolothum Thodi
+>> <shameerali.kolothum.thodi@huawei.com>; qemu-arm@nongnu.org;
+>> qemu-devel@nongnu.org
+>> Cc: peter.maydell@linaro.org; jgg@nvidia.com; nicolinc@nvidia.com;
+>> ddutile@redhat.com; berrange@redhat.com; imammedo@redhat.com;
+>> nathanc@nvidia.com; mochs@nvidia.com; smostafa@google.com;
+>> gustavo.romero@linaro.org; mst@redhat.com;
+>> marcel.apfelbaum@gmail.com; Linuxarm <linuxarm@huawei.com>;
+>> Wangzhou (B) <wangzhou1@hisilicon.com>; jiangkunkun
+>> <jiangkunkun@huawei.com>; Jonathan Cameron
+>> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
+>> Subject: Re: [PATCH v6 08/12] hw/arm/virt: Allow user-creatable SMMUv3
+>> dev instantiation
+>>
+>> Hi Shameer,
+>>
+>> On 7/3/25 10:46 AM, Shameer Kolothum wrote:
+>>> Allow cold-plugging of an SMMUv3 device on the virt machine when no
+>>> global (legacy) SMMUv3 is present or when a virtio-iommu is specified.
+>>>
+>>> This user-created SMMUv3 device is tied to a specific PCI bus provided
+>>> by the user, so ensure the IOMMU ops are configured accordingly.
+>>>
+>>> Due to current limitations in QEMU’s device tree support, specifically
+>>> its inability to properly present pxb-pcie based root complexes and
+>>> their devices, the device tree support for the new SMMUv3 device is
+>>> limited to cases where it is attached to the default pcie.0 root complex.
+>>>
+>>> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+>>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>>> Tested-by: Nathan Chen <nathanc@nvidia.com>
+>>> Signed-off-by: Shameer Kolothum
+>> <shameerali.kolothum.thodi@huawei.com>
+>>> ---
+>>>  hw/arm/smmu-common.c         |  8 +++++-
+>>>  hw/arm/smmuv3.c              |  2 ++
+>>>  hw/arm/virt.c                | 50 ++++++++++++++++++++++++++++++++++++
+>>>  hw/core/sysbus-fdt.c         |  3 +++
+>>>  include/hw/arm/smmu-common.h |  1 +
+>>>  5 files changed, 63 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+>>> index b15e7fd0e4..2ee4691299 100644
+>>> --- a/hw/arm/smmu-common.c
+>>> +++ b/hw/arm/smmu-common.c
+>>> @@ -959,7 +959,12 @@ static void smmu_base_realize(DeviceState *dev,
+>> Error **errp)
+>>>                  goto out_err;
+>>>              }
+>>>          }
+>>> -        pci_setup_iommu(pci_bus, &smmu_ops, s);
+>>> +
+>>> +        if (s->smmu_per_bus) {
+>>> +            pci_setup_iommu_per_bus(pci_bus, &smmu_ops, s);
+>>> +        } else {
+>>> +            pci_setup_iommu(pci_bus, &smmu_ops, s);
+>>> +        }
+>>>          return;
+>>>      }
+>>>  out_err:
+>>> @@ -984,6 +989,7 @@ static void smmu_base_reset_exit(Object *obj,
+>> ResetType type)
+>>>  static const Property smmu_dev_properties[] = {
+>>>      DEFINE_PROP_UINT8("bus_num", SMMUState, bus_num, 0),
+>>> +    DEFINE_PROP_BOOL("smmu_per_bus", SMMUState, smmu_per_bus,
+>> false),
+>>>      DEFINE_PROP_LINK("primary-bus", SMMUState, primary_bus,
+>>>                       TYPE_PCI_BUS, PCIBus *),
+>>>  };
+>>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+>>> index ab67972353..bcf8af8dc7 100644
+>>> --- a/hw/arm/smmuv3.c
+>>> +++ b/hw/arm/smmuv3.c
+>>> @@ -1996,6 +1996,8 @@ static void smmuv3_class_init(ObjectClass
+>> *klass, const void *data)
+>>>      device_class_set_parent_realize(dc, smmu_realize,
+>>>                                      &c->parent_realize);
+>>>      device_class_set_props(dc, smmuv3_properties);
+>>> +    dc->hotpluggable = false;
+>>> +    dc->user_creatable = true;
+>>>  }
+>>>
+>>>  static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>> index 05a14881cf..8662173c43 100644
+>>> --- a/hw/arm/virt.c
+>>> +++ b/hw/arm/virt.c
+>>> @@ -56,6 +56,7 @@
+>>>  #include "qemu/cutils.h"
+>>>  #include "qemu/error-report.h"
+>>>  #include "qemu/module.h"
+>>> +#include "hw/pci/pci_bus.h"
+>>>  #include "hw/pci-host/gpex.h"
+>>>  #include "hw/virtio/virtio-pci.h"
+>>>  #include "hw/core/sysbus-fdt.h"
+>>> @@ -1440,6 +1441,28 @@ static void create_smmuv3_dt_bindings(const
+>> VirtMachineState *vms, hwaddr base,
+>>>      g_free(node);
+>>>  }
+>>>
+>>> +static void create_smmuv3_dev_dtb(VirtMachineState *vms,
+>>> +                                  DeviceState *dev, PCIBus *bus)
+>>> +{
+>>> +    PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms-
+>>> platform_bus_dev);
+>>> +    SysBusDevice *sbdev = SYS_BUS_DEVICE(dev);
+>>> +    int irq = platform_bus_get_irqn(pbus, sbdev, 0);
+>>> +    hwaddr base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
+>>> +    MachineState *ms = MACHINE(vms);
+>>> +
+>>> +    if (strcmp("pcie.0", bus->qbus.name)) {
+>>> +        warn_report("SMMUv3 device only supported with pcie.0 for DT");
+>> while testing the series I hit the warning with a rhel guest which boots
+>> with ACPI.
+>> I think we shall make the check smarter to avoid that.
+>> maybe also check firmware_loaded and virt_is_acpi_enabled()?
+> Thanks for giving it a spin. Yes, just confirmed that the warning appears.
+> The above check will work, but can we make use of vms->acpi_dev for
+> this check instead? It is essentially the same and I think that will work. 
+>
+>     if (!vms->acpi_dev && strcmp("pcie.0", bus->qbus.name))
+>
+> Please let me know.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Suggested-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+with that fixed, feel free to add my
 
----
+*Tested-by: Eric Auger <eric.auger@redhat.com> I have tested non
+regression on legacy SMMU, SMMU device protecting pcie.0 and pxb
+topologies. Looks good to me. Thanks Eric *
 
-v2 -> v3:
-- Use AcpiPciHpState::root
-
-v1 -> v2
-- described the fact we changed the implementation of
-  acpi_get_pci_host() in the commit msg.
----
- hw/acpi/pcihp.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
-
-diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-index 2c76edeb15..2db2f16940 100644
---- a/hw/acpi/pcihp.c
-+++ b/hw/acpi/pcihp.c
-@@ -99,10 +99,10 @@ static void *acpi_set_bsel(PCIBus *bus, void *opaque)
-     return info;
- }
- 
--static void acpi_set_pci_info(bool has_bridge_hotplug)
-+static void acpi_set_pci_info(AcpiPciHpState *s)
- {
-     static bool bsel_is_set;
--    Object *host = acpi_get_i386_pci_host();
-+    bool has_bridge_hotplug = s->use_acpi_hotplug_bridge;
-     PCIBus *bus;
-     BSELInfo info = { .bsel_alloc = ACPI_PCIHP_BSEL_DEFAULT,
-                       .has_bridge_hotplug = has_bridge_hotplug };
-@@ -112,11 +112,8 @@ static void acpi_set_pci_info(bool has_bridge_hotplug)
-     }
-     bsel_is_set = true;
- 
--    if (!host) {
--        return;
--    }
- 
--    bus = PCI_HOST_BRIDGE(host)->bus;
-+    bus = s->root;
-     if (bus) {
-         /* Scan all PCI buses. Set property to enable acpi based hotplug. */
-         pci_for_each_bus_depth_first(bus, acpi_set_bsel, NULL, &info);
-@@ -266,7 +263,7 @@ static void acpi_pcihp_update(AcpiPciHpState *s)
- 
- void acpi_pcihp_reset(AcpiPciHpState *s)
- {
--    acpi_set_pci_info(s->use_acpi_hotplug_bridge);
-+    acpi_set_pci_info(s);
-     acpi_pcihp_update(s);
- }
- 
--- 
-2.49.0
+>
+> Thanks,
+> Shameer
 
 

@@ -4,76 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21C7CC83F09
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 20:41:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A658AC8303C
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 20:43:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZF86-0005kp-EA; Tue, 08 Jul 2025 16:41:30 -0400
+	id 1uZF9r-0000jO-Fk; Tue, 08 Jul 2025 16:43:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZCPZ-0002Mf-U7
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 13:47:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
+ id 1uZDTi-0001nD-O4; Tue, 08 Jul 2025 14:56:05 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZCOc-0004aS-MI
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 13:47:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1751996766;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7z4t23L2CEjvRbW4POxEjlHbPc7Y86a0BBQtX1AsNc0=;
- b=SQHudvk78TgIUqllSYsPgzjyBQh9bqLAvOropzrWAAeUcWK04qeDK/xa9jXZRG7Mxw02ef
- 9ywmgw2HQLxpMvRU+cdUqyO5n0H5gqIEPJyzrpFIhjHQs10A9tLW8rOzkGfTJihG8IpMIM
- VxW4vOWMLP3TMdJbwotFQpiI5y0AbzY=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-504-0GWrLl4hNM2sABSYqBbU6Q-1; Tue,
- 08 Jul 2025 10:28:39 -0400
-X-MC-Unique: 0GWrLl4hNM2sABSYqBbU6Q-1
-X-Mimecast-MFC-AGG-ID: 0GWrLl4hNM2sABSYqBbU6Q_1751984917
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C1A6A191FFAA; Tue,  8 Jul 2025 14:28:26 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.44.32.187])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9617A30001B9; Tue,  8 Jul 2025 14:28:20 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
- Jonathan.Cameron@huawei.com, gustavo.romero@linaro.org,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com,
-	philmd@linaro.org,
-	alex.bennee@linaro.org
-Subject: [PATCH v6 34/36] tests/qtest/bios-tables-test: Add aarch64 ACPI PCI
- hotplug test
-Date: Tue,  8 Jul 2025 16:23:16 +0200
-Message-ID: <20250708142437.1344644-35-eric.auger@redhat.com>
-In-Reply-To: <20250708142437.1344644-1-eric.auger@redhat.com>
-References: <20250708142437.1344644-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
+ id 1uZDTZ-0000I9-AG; Tue, 08 Jul 2025 14:55:36 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 8 Jul
+ 2025 13:58:11 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Tue, 8 Jul 2025 13:58:11 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v4 3/5] hw/arm: Integrate ASPEED OTP memory support into
+ AST2600 SoCs
+Date: Tue, 8 Jul 2025 13:57:55 +0800
+Message-ID: <20250708055810.2868680-4-kane_chen@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250708055810.2868680-1-kane_chen@aspeedtech.com>
+References: <20250708055810.2868680-1-kane_chen@aspeedtech.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="y"
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=kane_chen@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,101 +63,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Kane Chen <kane_chen@aspeedtech.com>
+From:  Kane Chen via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Gustavo Romero <gustavo.romero@linaro.org>
+From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 
-Add 2 new tests:
-- test_acpi_aarch64_virt_acpi_pci_hotplug tests the acpi pci hotplug
-  using -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on
-- test_acpi_aarch64_virt_pcie_root_port_hpoff tests static-acpi index
-  on a root port with disabled hotplug
+The has_otpmem attribute is enabled in the SBC subclasses for AST2600
+to control the presence of OTP support per SoC type.
 
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-
+Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
-v3 -> v4:
-- add -device pci-testdev for the first test case
-- fix the chassis
-- add a test for static acpi-index
----
- tests/qtest/bios-tables-test.c | 52 ++++++++++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
+ hw/arm/aspeed_ast2600.c | 2 +-
+ hw/misc/aspeed_sbc.c    | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index 357bcefd37..1074b8d67a 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -1643,6 +1643,54 @@ static void test_acpi_aarch64_virt_tcg_memhp(void)
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index d12707f0ab..59ffd41a4a 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -261,7 +261,7 @@ static void aspeed_soc_ast2600_init(Object *obj)
  
+     object_initialize_child(obj, "i3c", &s->i3c, TYPE_ASPEED_I3C);
+ 
+-    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_SBC);
++    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_AST2600_SBC);
+ 
+     object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
+     object_initialize_child(obj, "video", &s->video, TYPE_UNIMPLEMENTED_DEVICE);
+diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
+index 46a038337c..b56a8b7678 100644
+--- a/hw/misc/aspeed_sbc.c
++++ b/hw/misc/aspeed_sbc.c
+@@ -273,8 +273,10 @@ static const TypeInfo aspeed_sbc_info = {
+ static void aspeed_ast2600_sbc_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedSBCClass *sc = ASPEED_SBC_CLASS(klass);
+ 
+     dc->desc = "AST2600 Secure Boot Controller";
++    sc->has_otp = true;
  }
  
-+static void test_acpi_aarch64_virt_acpi_pci_hotplug(void)
-+{
-+    test_data data = {
-+        .machine = "virt",
-+        .arch = "aarch64",
-+        .tcg_only = true,
-+        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-+        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-+        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
-+        .ram_start = 0x40000000ULL,
-+        .scan_len = 256ULL * MiB,
-+        .variant = ".acpipcihp",
-+    };
-+
-+   /* Use ACPI PCI Hotplug */
-+   test_acpi_one(" -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on"
-+                 " -cpu cortex-a57"
-+                 " -device pcie-root-port,id=pcie.1,bus=pcie.0,chassis=0,slot=1,addr=7.0"
-+                 " -device pci-testdev,bus=pcie.1",
-+                 &data);
-+
-+    free_test_data(&data);
-+}
-+
-+static void test_acpi_aarch64_virt_pcie_root_port_hpoff(void)
-+{
-+    test_data data = {
-+        .machine = "virt",
-+        .arch = "aarch64",
-+        .tcg_only = true,
-+        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-+        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-+        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
-+        .ram_start = 0x40000000ULL,
-+        .scan_len = 256ULL * MiB,
-+        .variant = ".hpoffacpiindex",
-+    };
-+
-+   /* turn hotplug off on the pcie-root-port and use static acpi-index*/
-+   test_acpi_one(" -device pcie-root-port,id=pcie.1,chassis=0,"
-+                                          "slot=1,hotplug=off,addr=7.0"
-+                 " -device pci-testdev,bus=pcie.1,acpi-index=12"
-+                 " -cpu cortex-a57",
-+                 &data);
-+
-+    free_test_data(&data);
-+}
-+
- static void test_acpi_microvm_prepare(test_data *data)
- {
-     data->machine = "microvm";
-@@ -2602,6 +2650,10 @@ int main(int argc, char *argv[])
-             qtest_add_func("acpi/virt/numamem",
-                            test_acpi_aarch64_virt_tcg_numamem);
-             qtest_add_func("acpi/virt/memhp", test_acpi_aarch64_virt_tcg_memhp);
-+            qtest_add_func("acpi/virt/acpipcihp",
-+                           test_acpi_aarch64_virt_acpi_pci_hotplug);
-+            qtest_add_func("acpi/virt/hpoffacpiindex",
-+                          test_acpi_aarch64_virt_pcie_root_port_hpoff);
-             qtest_add_func("acpi/virt/pxb", test_acpi_aarch64_virt_tcg_pxb);
-             qtest_add_func("acpi/virt/oem-fields",
-                            test_acpi_aarch64_virt_oem_fields);
+ static const TypeInfo aspeed_ast2600_sbc_info = {
 -- 
-2.49.0
+2.43.0
 
 

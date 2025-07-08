@@ -4,76 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B814C83F09
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 21:42:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 762C1C83F09
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 21:43:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZG4b-00009G-VY; Tue, 08 Jul 2025 17:41:58 -0400
+	id 1uZG55-0001KE-Hz; Tue, 08 Jul 2025 17:42:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uZEnW-0001lw-8m
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 16:20:14 -0400
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uZFI5-0004Tu-6l
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 16:51:49 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uZEnT-0006yh-Im
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 16:20:13 -0400
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-ae401ebcbc4so799079866b.1
- for <qemu-arm@nongnu.org>; Tue, 08 Jul 2025 13:20:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uZFI1-0003k8-Lc
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 16:51:48 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-451d6ade159so42903355e9.1
+ for <qemu-arm@nongnu.org>; Tue, 08 Jul 2025 13:51:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752006009; x=1752610809; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=+TqTY3yHXS8e/i0KnNKmn40UXfWJZswqZbcAaZ/doVk=;
- b=d4kCAPnL33eBLXUKWIinJvG6gWpA6ZzPZsYc4lBlC+Cedr71xR7i0D2frAMjvIBQT8
- VsJS9NZo2DDHPljEam5qyS4Be4LsTWAPlPnDY+JP1VcjC9juGoxmvLv/W3YX5+IcwWrV
- V452VSdPs9sOrLSsbjvVa4XsvNC8iOcZJdtHnve+DSrNbq8ZpBQtd1TX5JlfU3KR6Gnh
- cJMviFD9Of0NRNk4nIsy//VgDM3jpCLEWxUAyZja95F3vLbHt5K+0+AfKW/RIuY6p24G
- XXPq7DXErEh/mj6hnMPyRhFekh8tDc6lIjBAg6IBf0ErBUKvawNKBG3pPY4qYMNW+l+U
- kHVQ==
+ d=linaro.org; s=google; t=1752007904; x=1752612704; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=QQDHaXgLVXl0gHbIqDPzR2E3LfpbTz1sMTNEwou3C5A=;
+ b=QsVXXaQeKZocCWDChiX6QwwZbYMiQVD5nE8YD4Rj7M7c1HujxShfLAj/JiRjDuMXd+
+ Ixj1BEbGp4DX2tDRTsgjxasF7+TS5gNrIwU3fpUGDA/QiROa5IAX/MrNgAhtLA5OJmWf
+ JI/SsytJvjlKTD42axndvERhcewHYM3ffB4AkyRb89JUoEj6kLJVId0gPpClzMDEE5f1
+ eOpdzoC1vvNqGqAX6W2SMANeT+id+VN6FhnH89ecDeUpXcs839qFyfWDbhUdJmjCl1zC
+ WRJ1602v2BhIuGI05muZaEjFn0sGs7jTpL2Np58VUPccCySekLKhQLxTUvCnUxv46jVF
+ gMIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752006009; x=1752610809;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=+TqTY3yHXS8e/i0KnNKmn40UXfWJZswqZbcAaZ/doVk=;
- b=cmssLTtXB2KXuG2qJtoWZZmEO7z8Sci1yBjQDIxste8Kwgv/yQpj0Gtf4pmrtwcfAE
- tGPFgG8MMuTUFC4ndw4al9AMB/xrPuX0lB4au0LRXi8HAbeNkrlfroiT947VqUhYHii8
- mjpaQjGVJNltj5xzdw5Z9fCm2MBWjgIbWKQhUAOSCFtiJRW+9m6FN8PaARiC5w/itiHm
- TEu1i+QaZ4yQLoGsIznmDsxfFbYqIwBLJeLjtDItMy4rOOkUOBsmYvLhfhO9zLj7YIz2
- wA3eLM58agvOQ6m2d4b06vTTPt7t2BMHs8hdi7mWEG0AXoTIbaKKAnwzYFsvXDOTiIds
- EXmA==
-X-Gm-Message-State: AOJu0YyRyz2LV3bSqEx3oZ0nivs6gA0z9Ob7R+uM+2hS1dsinobQpbG4
- DKd4h5FCbDZh40Z5OQHo7uwEZm6MBIyPIa6je1QKecGPcZFeCCGsbvcwIbgncmAaspdTE6SlR1v
- iGmQ6
-X-Gm-Gg: ASbGncvbFCevxsAgaaF330JEe4J/NfP6ULxhvH/iLe8xuT7lh4lJlo2RkJHsKUmqbGo
- aObwqxvJ/E0pQyY66xn+22afxBQXuM/cRd4LtoKpS9hbfVM9EKuxE2wSr4Ef9jez/ilsDBLrIGW
- FLhGDkALUc7M151W4TD5Z8j1DAZUC/YEfIEIcaPe3QBIpGb7p/HmAtcvnLL6kx9Um93D4u4pfHH
- 5rBmy4/M/JirfV5gc6ObXoi8mwMPdLgrSZ6eJmyHBiAVZ7tWcgidNRrS3aa1y9cVYIBG7XGismd
- 761nC0jLrqKgX0XByGzq9gsbumPBqyLolYqePeFEurlQpZ8uh5uXmc6rV3WrN3b7AfcH
-X-Google-Smtp-Source: AGHT+IEeE4OHrunj85O3Z4W0/4U0TYcYJkE0DZDU+67WQU2UmN9o1V0yDvDLIGgq3N6+42cCxlr+rA==
-X-Received: by 2002:a05:6000:2588:b0:3a5:1cc5:4a17 with SMTP id
- ffacd0b85a97d-3b5ddedc49cmr2575326f8f.42.1751983851091; 
- Tue, 08 Jul 2025 07:10:51 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b47030c2e8sm12872264f8f.3.2025.07.08.07.10.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Jul 2025 07:10:50 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Correct encoding of Debug Communications Channel
- registers
-Date: Tue,  8 Jul 2025 15:10:48 +0100
-Message-ID: <20250708141049.778361-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ d=1e100.net; s=20230601; t=1752007904; x=1752612704;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=QQDHaXgLVXl0gHbIqDPzR2E3LfpbTz1sMTNEwou3C5A=;
+ b=djfQnc9tXDReDHw0GVr0rihRvN/CWuoKTS3ItEE9yBHaKdziwPu6UCmcgw6QJ2yxWt
+ e37yUdvCZKrfCKgDQ01u62pfjKXWtPsOli+7QActxqUxmHImYNjh7PUJabrRUdhfrklc
+ dFkzNBNSduoqE9jIxb/xDrQu2yspOrfo3B2/ZraYMWqH4jjF6AUGeTmTCsoeyIeK130K
+ bCbcEy3u/TnpKP2fdjKlUtyx9cwTvJPiqRRVnJTZUjloo9j89w8mzKegbfrT1YpSyOyd
+ lgNtohuqqQsZIWo3J/WYMteStJQFvA7BHCF5hdUuW4ZHLRq25Y0LNe2jdbr0Tzi9gVvc
+ xXpA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW9crIElWGVz+qslWLC+Cy6VRaSXxalhc808Wr7lMJmwzr3rZ1Z9CYRjbbaxbqKH8yrQ2MgN6VEzw==@nongnu.org
+X-Gm-Message-State: AOJu0YzyamBr57fua5LS4wtDepubJAm9jRHwqxUSnDHb6XPE7zkbS7la
+ Dtq7didwA2gi7kfBPfYdqjMJHkkYVxxud86LzJm92fa+0i6hvIHhZqOdu0zSo9+IbEk=
+X-Gm-Gg: ASbGncu4KrgLZX7C8si1TltJuZwXMGxJJ3ZA0UlYoXgk+Ojq0ORmL+ixJ+254X+uaWE
+ 48yfxNBDNB0S9MayEuD08rdCj4WAY6/P0SqhW+U84+KAwOXjfvnEIKiLCdWNsacaaLvDPMPVcWS
+ zJbwohvDb+mmH72qRfmK8K9W7bjBNK9V8KyCE1I6WEm1BPVy0lQOE2IfiI1bktMhv88QLY6LxM1
+ nHlsOL8NxKZX2Oh/M7jcRWvPdKifrVCRz8piKgIaRZwnGDSpQ0H/r8B+OoBhkguL5mD1PhoPo3Y
+ ELOy1auEmCWm5ccMGz8kJkIwqArKYsRJhFAZz0KDtW7Z8KggjQJA+XRg2VrUSVQjDx9xVFGXjtE
+ WUUjs5WATliYkeyCX6KLkibjnkpFakw==
+X-Google-Smtp-Source: AGHT+IHCm4U62yMcdDOy/uU5IArAmGMbrjBp83eeNWKl6JGlxumzEl4Y4FYQVTyJP5J3svEBxGXxvg==
+X-Received: by 2002:a05:600c:3b05:b0:43c:f8fc:f697 with SMTP id
+ 5b1f17b1804b1-454d01ca370mr43382405e9.9.1752007903775; 
+ Tue, 08 Jul 2025 13:51:43 -0700 (PDT)
+Received: from [192.168.69.242] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-454cd4a5dd0sm30764305e9.36.2025.07.08.13.51.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 08 Jul 2025 13:51:43 -0700 (PDT)
+Message-ID: <96c87227-2389-4d51-8f26-b2c4a446bd67@linaro.org>
+Date: Tue, 8 Jul 2025 22:51:16 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-10.1 v7 5/8] qemu: Convert target_words_bigendian() to
+ TargetInfo API
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-riscv@nongnu.org,
+ qemu-block@nongnu.org, qemu-ppc@nongnu.org,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Peter Xu <peterx@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>
+References: <20250708171949.62500-1-philmd@linaro.org>
+ <20250708171949.62500-6-philmd@linaro.org>
+ <d52695e3-0d52-48ff-8402-c9b9fd892cc7@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <d52695e3-0d52-48ff-8402-c9b9fd892cc7@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x630.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -96,76 +116,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We don't implement the Debug Communications Channel (DCC), but
-we do attempt to provide dummy versions of its system registers
-so that software that tries to access them doesn't fall over.
+On 8/7/25 19:39, Richard Henderson wrote:
+> On 7/8/25 11:19, Philippe Mathieu-Daudé wrote:
+>> -/**
+>> - * target_big_endian:
+>> - * Returns true if the (default) endianness of the target is big endian,
+>> - * false otherwise. Common code should normally never need to know 
+>> about the
+>> - * endianness of the target, so please do *not* use this function 
+>> unless you
+>> - * know very well what you are doing!
+>> - */
+> ...
+>> +/**
+>> + * target_big_endian:
+>> + *
+>> + * Returns: %true if the (default) endianness of the target is big 
+>> endian,
+>> + *          %false otherwise.
+>> + */
+>> +bool target_big_endian(void);
+> 
+> Perhaps retain the warning about not using this unless necessary.
 
-However, we got the tx/rx register definitions wrong. These
-should be:
+This is what I did in a previous version, but Thomas (or Pierrick?)
+said something about this method now being safe, so the comment
+obsolete.
 
-AArch32:
-  DBGDTRTX   p14 0 c0 c5 0  (on writes)
-  DBGDTRRX   p14 0 c0 c5 0  (on reads)
+I told Pierrick this method doesn't make sense to me in a
+heterogeneous context, he said to not make change with the
+current behavior, when run on a vCPU we'll eventually infer
+via TargetInfo on the vCPU TLS area, and otherwise (I/O
+thread) this method shouldn't be called so we should abort.
+Such change LGTM. I can start updating the documentation
+mentioning "the (default) endianness of the current vCPU."
+Currently on I/O thread this is the endianness of the binary.
 
-AArch64:
-  DBGDTRTX_EL0  2 3 0 5 0 (on writes)
-  DBGDTRRX_EL0  2 3 0 5 0 (on reads)
-  DBGDTR_EL0    2 3 0 4 0 (reads and writes)
-
-where DBGDTRTX and DBGDTRRX are effectively different names for the
-same 32-bit register, which has tx behaviour on writes and rx
-behaviour on reads.  The AArch64-only DBGDTR_EL0 is a 64-bit wide
-register whose top and bottom halves map to the DBGDTRRX and DBGDTRTX
-registers.
-
-Currently we have just one cpreg struct, which:
- * calls itself DBGDTR_EL0
- * uses the DBGDTRTX_EL0/DBGDTRRX_EL0 encoding
- * is marked as ARM_CP_STATE_BOTH but has the wrong opc1
-   value for AArch32
- * is implemented as RAZ/WI
-
-Correct the encoding so:
- * we name the DBGDTRTX/DBGDTRRX register correctly
- * we split it into AA64 and AA32 versions so we can get the
-   AA32 encoding right
- * we implement DBGDTR_EL0 at its correct encoding
-
-Cc: qemu-stable@nongnu.org
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2986
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/debug_helper.c | 13 +++++++++++--
- 1 file changed, 11 insertions(+), 2 deletions(-)
-
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index 69fb1d0d9ff..aee06d4d426 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -988,11 +988,20 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
-       .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 2,
-       .access = PL1_RW, .accessfn = access_tdcc,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
--    /* DBGDTRTX_EL0/DBGDTRRX_EL0 depend on direction */
--    { .name = "DBGDTR_EL0", .state = ARM_CP_STATE_BOTH, .cp = 14,
-+    /* Architecturally DBGDTRTX is named DBGDTRRX when used for reads */
-+    { .name = "DBGDTRTX_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 2, .opc1 = 3, .crn = 0, .crm = 5, .opc2 = 0,
-       .access = PL0_RW, .accessfn = access_tdcc,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "DBGDTRTX", .state = ARM_CP_STATE_AA32, .cp = 14,
-+      .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 0,
-+      .access = PL0_RW, .accessfn = access_tdcc,
-+      .type = ARM_CP_CONST, .resetvalue = 0 },
-+    /* This is AArch64-only and is a combination of DBGDTRTX and DBGDTRRX */
-+    { .name = "DBGDTR_EL0", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 2, .opc1 = 3, .crn = 0, .crm = 4, .opc2 = 0,
-+      .access = PL0_RW, .accessfn = access_tdcc,
-+      .type = ARM_CP_CONST, .resetvalue = 0 },
-     /*
-      * OSECCR_EL1 provides a mechanism for an operating system
-      * to access the contents of EDECCR. EDECCR is not implemented though,
--- 
-2.43.0
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> 
+> 
+> r~
 
 

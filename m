@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52CA2C83F09
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 20:57:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D893C83F09
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 20:57:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZFHw-0003ck-7T; Tue, 08 Jul 2025 16:51:40 -0400
+	id 1uZFJq-00016R-7P; Tue, 08 Jul 2025 16:53:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZEEk-0000HA-7v
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:44:21 -0400
+ id 1uZEDY-0002En-Ty
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:43:05 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZEEf-0006bZ-Qu
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:44:15 -0400
+ id 1uZEDW-0006Iw-BF
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:43:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752003849;
+ s=mimecast20190719; t=1752003781;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=y4+jiHAVpi2Yv+8/NzEXhFecLbin4056utsxK7OWZf8=;
- b=Hd3D80/Vp2uOeIY2DAaNDn07donBqNm69BFWKyHQvbc217G7KRLdQU+fH4366PBVxA5Lz4
- SzLwH5uER2ugSnXAndzrPjLxuEGe5CUUBkgMorkcXUzmYjmEm8ZGCO7oVV9nC4VERtJScC
- M8tVQlrg13A/b+aqn778vuL0TGYrO/w=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=kC3118cFHBzL7DZCyC3o8DSYd9HPDlAQAbRBqFSp9D0=;
+ b=Zt1m2/zj6CsWEdLBQiEKF2SiLDySILxJKtgivvim9k+CMuHx8DzO6+SAUjjNw1HS5SLM4f
+ vjQaIaMwQXBFBTQmkbpU7fWV5u+Gv76og34nPfJv2PBo6d4FiyxApEE+Lp8D5zNlUxvXzF
+ A/Pbwkzrq679DpnzViBL2Ae336RzdF8=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-161-7ZjtfZ4pMUuiPIGHb52LUw-1; Tue,
- 08 Jul 2025 10:28:22 -0400
-X-MC-Unique: 7ZjtfZ4pMUuiPIGHb52LUw-1
-X-Mimecast-MFC-AGG-ID: 7ZjtfZ4pMUuiPIGHb52LUw_1751984895
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-20-VigYc-NIPRawAUkBEhMqIQ-1; Tue,
+ 08 Jul 2025 10:26:54 -0400
+X-MC-Unique: VigYc-NIPRawAUkBEhMqIQ-1
+X-Mimecast-MFC-AGG-ID: VigYc-NIPRawAUkBEhMqIQ_1751984813
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D49C318D6513; Tue,  8 Jul 2025 14:28:13 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 04EF418089B6; Tue,  8 Jul 2025 14:26:53 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.187])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D604A30001B1; Tue,  8 Jul 2025 14:28:07 +0000 (UTC)
+ id 485B730001B1; Tue,  8 Jul 2025 14:26:48 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
@@ -55,10 +55,9 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: pbonzini@redhat.com,
 	philmd@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v6 32/36] hw/arm/virt: Let virt support pci hotplug/unplug GED
- event
-Date: Tue,  8 Jul 2025 16:23:14 +0200
-Message-ID: <20250708142437.1344644-33-eric.auger@redhat.com>
+Subject: [PATCH v6 19/36] qtest/bios-tables-test: Generate DSDT.viot
+Date: Tue,  8 Jul 2025 16:23:01 +0200
+Message-ID: <20250708142437.1344644-20-eric.auger@redhat.com>
 In-Reply-To: <20250708142437.1344644-1-eric.auger@redhat.com>
 References: <20250708142437.1344644-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -89,55 +88,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Set up the IO registers used to communicate between QEMU
-and ACPI.
+Use a specific DSDT.viot reference blob instead of relying on
+the default DSDT blob. The content is unchanged.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-
 ---
-v2 -> v3:
-- remove acpi_ged_state->pcihp_state.use_acpi_hotplug_bridge = true;
-- use sysbus_mmio_map_name for all regs (Igor)
-- create_pcie left at its original place
+ tests/qtest/bios-tables-test-allowed-diff.h |   1 -
+ tests/data/acpi/aarch64/virt/DSDT.viot      | Bin 0 -> 5158 bytes
+ 2 files changed, 1 deletion(-)
 
-v1 -> v2:
-- use ACPI_PCIHP_REGION_NAME
----
- hw/arm/virt.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index 7a74beab3d..dfb8523c8b 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1,2 +1 @@
+ /* List of comma-separated changed AML files to ignore */
+-"tests/data/acpi/aarch64/virt/DSDT.viot",
+diff --git a/tests/data/acpi/aarch64/virt/DSDT.viot b/tests/data/acpi/aarch64/virt/DSDT.viot
+index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..acab6e65febbc210158d4c39be0680bbb90250f5 100644
+GIT binary patch
+literal 5158
+zcmZvg%WoT16o=2)6MH;<Wc*0%I8N+Bsd!dnyJ^zWmfB+{aj_HQNgE_rawJql$)*w&
+zQmK&AELzBpMq(YL{vk-LkXW!|(KQ?X0d^SOc{t~%o>|y)ALqOG8=sMmZ^!NIT`CYo
+z{%G$y+itD>`OvA=YBi0B)V=z)p54~&Pu%uod|Y;H+cqZKy-vF2412b1uahyk+w0Ky
+z_`0(@2**Z)ZQHKbgE3>`jNEM5EIv<=0w%~J`Y}eDc7ceV(D-;`bKlwYxu10hcWv8l
+zkTG%hT4vIiI8ICR5m__iBO-}X5ZTi2jlwPUcSgImZLgg#JBvJD+@wgbxXlrDe|1Et
+zW#2$V7@{5^+G-aK31LPghRzrb&S;8^sKkgdMw2tHhzwm~7>sd+GuA}LoWw90V~sPe
+zij0`VNHNA$&R7>2afy*(jCIb~5E+KVuoz>5Gp>n@gv7`(#x=&M2QLSvm}yFk0%Kg~
+z3^7gdB?(h~kug5z3^`9z(mqOzaf37DJWWfCGGpB23^`9T5~IQxw>U%2(|L)p${3$;
+zhMcFC#HcaGZO)MMG%GRQVvH7N$a$KR7#A6%%^7l@<|W1@#&8&;A?Im9V!X>39nO&R
+zbU|Xg&lp|Kkn?m=VtmLLo17u%X;ETaW{fS)kn^-8F>J=z<_tMcmn24mF?yUK=V@7D
+zTw#nmoFV7wvc$N`7@u;6oTn9uvB4O9&XDtTMPgiMi~(ab<vd-L7&jPWhco0ntxAkr
+zjIkRqdU}6W5Dj;RwqtM3ijU#Q&1TG`SLeL#&G(BK>?_13?#R`~J}TG_pfm$e7X_5x
+zH$&Y~y9(YOK&fJcZ|fa_<@X^gc#Dt~Mb;&O<@cSlUJjjJ@T)0S%id7Wq}K^rO;z)C
+zx5${Z+dH%8=<bcORkJcAhkEpYYGhN5I`n|PrHAwdJs?sLuS^?`_VWF2%%faVPfn+#
+zejD=dwZ3iFDVI|HW<))nuo3Osc9U{xJvE(bq+;r`mWpanF5{1Ran19linN2d5ihba
+zYpKX^YQ&GUgUASZk>M&)FEZRg)Qb$KM*YZo5E=C&!&P)IGTedgMTS##KQi3B?nj2J
+z%z@_|c+R2coF5sk5(Cc|c*f8(hMsZojDu$!J>%$UfTsbT26`IknE=lOcqY&@fu1IK
+zn&4@or-`0P@Jxbd5<QdXnF7xgc&5-Zg`R2fOoL|{J=5r!0nZG0X3#T(p7Y>251#Yr
+zIgg$ecv|3Tp{IqOS@6t)XBIuP=$Ql09C+r?Gl!me@XUi}9zFBuSpd%hcoxvJfSwEB
+zxd5IE=(&KNi{QBko{Q+Yh@M68EP`hdJ&WjB0?!h7me8|=o=f1l1fEOixrCl&@GOI8
+z89mGBxeT7m;JJ*R%jj7F&kA@}(6fS`E8w{To-63Nf}X43xeA`E=(&oXRq(8WXB9oG
+zp=ZIGIPDg_%BWKx_5a4NShnNl;~&x#Ns+py>O*@`Buc5n9CcaK>3`~PnHs(PqDWdQ
+z>bHod-t_4$B8^TyU@_ix<jt7+lh~#DpHQJ6pX|DhesV}oXTN^7Gk5w`Hg8(v!RzL~
+z)ynOk_aC=@z4_OdCx@o)boLu3ho<3l_M4B?$HCJBvwCo5y*z!WeXqj3vHDs5<*7I9
+z_gQM>(ShpuCFOT1RQ=Uq;iE~%9q4Bl{5Ahv|NU=w?YqHG#eW7%zd3`m#Oc@cDjU@_
+z^+Ds~fj;WGthjN!BP@0B)imul%)O^OoldLjDYMH`_v%Ef9lw8Bow;pwI}`ux!9Q@T
+zt0L)cuan;DcA%h)YVY}>N8M3(i&8{J!qmsllB(%+-EO~DSebP1?Ij+m#=)6&`t-n5
+ZwaN40{-|vpjgObqjlY;*>N!CX_CM8!>@ENR
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 7b247ad30c..4f6fe16675 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -686,6 +686,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
-     SysBusDevice *sbdev;
-     int irq = vms->irqmap[VIRT_ACPI_GED];
-     uint32_t event = ACPI_GED_PWR_DOWN_EVT;
-+    bool acpi_pcihp;
- 
-     if (ms->ram_slots) {
-         event |= ACPI_GED_MEM_HOTPLUG_EVT;
-@@ -704,6 +705,18 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
-     sysbus_mmio_map_name(sbdev, TYPE_ACPI_GED, vms->memmap[VIRT_ACPI_GED].base);
-     sysbus_mmio_map_name(sbdev, ACPI_MEMHP_REGION_NAME,
-                          vms->memmap[VIRT_PCDIMM_ACPI].base);
-+
-+    acpi_pcihp = object_property_get_bool(OBJECT(dev),
-+                                          ACPI_PM_PROP_ACPI_PCIHP_BRIDGE, NULL);
-+
-+    if (acpi_pcihp) {
-+        int pcihp_region_index;
-+
-+        pcihp_region_index = sysbus_mmio_map_name(sbdev, ACPI_PCIHP_REGION_NAME,
-+                                                  vms->memmap[VIRT_ACPI_PCIHP].base);
-+        assert(pcihp_region_index >= 0);
-+    }
-+
-     sysbus_connect_irq(sbdev, 0, qdev_get_gpio_in(vms->gic, irq));
- 
-     return dev;
+literal 0
+HcmV?d00001
+
 -- 
 2.49.0
 

@@ -4,86 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E96EC83F09
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 20:52:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 197ADC8303C
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 20:53:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZFFB-0001yp-Lj; Tue, 08 Jul 2025 16:48:49 -0400
+	id 1uZFFd-0003sv-1u; Tue, 08 Jul 2025 16:49:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uZDrQ-00088B-Es
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:20:16 -0400
-Received: from mail-qt1-x82f.google.com ([2607:f8b0:4864:20::82f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uZDrM-00089y-ES
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:20:11 -0400
-Received: by mail-qt1-x82f.google.com with SMTP id
- d75a77b69052e-4a5903bceffso68311661cf.3
- for <qemu-arm@nongnu.org>; Tue, 08 Jul 2025 12:19:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752002361; x=1752607161; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=4llhfjCo4niQ3JvItczArHlabZV5Ziu1f63HFSylXpQ=;
- b=rVomrU7oxAKN/3/+V3yPsNL6FSG59MuHP8aPKc+Y1gkiDBz746FkT6UIVqLQULcMhY
- oLbItcS/D2jdDE8ESwBDk8WgMoOsth6muQbimhPVW7PFBvFC/cQpDHMYMAXOx3txDFOV
- Yk6RqSb9nMTOXVJXonhtvZvQGPRP3zyXlqUwQ7MLmy8TLMGqRpJVt9f0uheJGGuheusD
- lzKXdqNEZLJwM1yXWRRIi0W2bMrR8ux1YuBhG3oymdQVxPiC3mZmP7T6hx8AxR5pUwuD
- R7p2jALU1ojJ/nkb7oV/wCNkruutC8bjGMXE2SX9Dlls3tqSUgDuArDrazWWhEl7AikX
- BTrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752002361; x=1752607161;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=4llhfjCo4niQ3JvItczArHlabZV5Ziu1f63HFSylXpQ=;
- b=aIxpU2gRzSEvHCfkKGKiET7ukWgxZELx+HdyrNJNPr1y2YEFaIjC9KMfhvpUSzOsf2
- AsB9jL7FpLQctkqoh8Z320Fe6WCLOneoRx0GkmB3/6rdT/NovYKQNfuTuxEJh4Mz0RZA
- OGN0HCSKI6iPltJVzS0DBilXefNWBghOlLQH7m3NWDktdeXsyteCzGltysyDLI6kSo8b
- +TfVMbPvoH3YSmm2SJOlcV7thTo0PkZR/4PIpAARx7UozGyHVcympWb68DH2+8NTn4rQ
- YqLyEgbjeqis3ItPYU99kxfLvf8SOpr7sr96FUwYcemarhw3KbtMxiabuhUDioQbpk0z
- D0SA==
-X-Gm-Message-State: AOJu0YwIkIWVjolRCQvMlP9LHS1vREydHz/7fS/g2KdS/oMjfqrqe72H
- mDTfSe+pe8TPSshzuq5BE1bMv70WzXwr8CSjF2+sQ3+qcRWfmtkGOZtmBOHUTyRW0mlnMa5oTaG
- ysQacMUE=
-X-Gm-Gg: ASbGncvPwQHevRzspLl9d43uH9dzLu6Hl3qG8xTFb5g4VdWELImLxoaR5MI03me0s9m
- 362Hb3DCn8VWhuGGIkYj5LjKUQtW+SHY1+6wL9ggx+D5pZg9IhxI8YOhEET/aMFxRt8QgVXI6ps
- 5OC/DbooCg6//kUuHVVtCeK77OKaUIgFtg4W0yqjaPHSYljN8dlrd0HuGfcqWKCg9wHbMCVPy5g
- WvYyQLxSgZpN2b+1cn/P0Y3V5swNN1Vk9qihfQWJANmtHXHZZQaV5XnYzBafK+OtdaDEP4kyYmT
- LLS8ro27895qonmgV3XwzTQCcx1NdYiYHsgYWe7A+52IJJTP1MC5Let3nGrwzMET7l0=
-X-Google-Smtp-Source: AGHT+IG3M5ZvJmu9Yg60Qcstv00Jikbk6t3DEz/Y1ZZ0G2PkCv3ffJ45GOUn9h966Qfy25wL/tko2g==
-X-Received: by 2002:a05:6214:29cd:b0:6fd:5d38:b07d with SMTP id
- 6a1803df08f44-7047db196f3mr61258076d6.41.1752002361177; 
- Tue, 08 Jul 2025 12:19:21 -0700 (PDT)
-Received: from gromero0.. ([189.110.24.38]) by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-702d638846asm56289096d6.22.2025.07.08.12.19.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Jul 2025 12:19:20 -0700 (PDT)
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: qemu-arm@nongnu.org, richard.henderson@linaro.org, alex.bennee@linaro.org
-Cc: qemu-devel@nongnu.org,
-	gustavo.romero@linaro.org
-Subject: [RFC PATCH-for-10.1 v3 4/5] target/arm: Add FEAT_TCR2
-Date: Tue,  8 Jul 2025 19:17:03 +0000
-Message-Id: <20250708191704.1068604-5-gustavo.romero@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250708191704.1068604-1-gustavo.romero@linaro.org>
-References: <20250708191704.1068604-1-gustavo.romero@linaro.org>
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uZE81-0000r9-Ob; Tue, 08 Jul 2025 15:37:28 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uZE7y-000504-AK; Tue, 08 Jul 2025 15:37:19 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bc51D3ypYz6GDnS;
+ Tue,  8 Jul 2025 23:41:04 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id B0D001404C5;
+ Tue,  8 Jul 2025 23:42:08 +0800 (CST)
+Received: from A2303104131.china.huawei.com (10.203.177.241) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 8 Jul 2025 17:41:59 +0200
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
+ <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
+ <imammedo@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <smostafa@google.com>, <gustavo.romero@linaro.org>, <mst@redhat.com>,
+ <marcel.apfelbaum@gmail.com>, <linuxarm@huawei.com>,
+ <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
+Subject: [PATCH v7 05/12] hw/arm/virt: Factor out common SMMUV3 dt bindings
+ code
+Date: Tue, 8 Jul 2025 16:40:48 +0100
+Message-ID: <20250708154055.101012-6-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
+In-Reply-To: <20250708154055.101012-1-shameerali.kolothum.thodi@huawei.com>
+References: <20250708154055.101012-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82f;
- envelope-from=gustavo.romero@linaro.org; helo=mail-qt1-x82f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.203.177.241]
+X-ClientProxiedBy: kwepems500001.china.huawei.com (7.221.188.70) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,210 +72,106 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add FEAT_TCR2, which introduces the TCR2_EL1 and TCR2_EL2 registers.
-These registers are extensions of the TCR_ELx registers and provide
-top-level control of the EL10 and EL20 translation regimes.
+No functional changes intended. This will be useful when we
+add support for user-creatable smmuv3 device.
 
-Since the bits in these registers depend on other CPU features, and only
-FEAT_MEC is supported at the moment, the FEAT_TCR2 only implements the
-AMEC bits for now.
-
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Nathan Chen <nathanc@nvidia.com>
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+Tested-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- docs/system/arm/emulation.rst |  1 +
- target/arm/cpu-features.h     |  5 +++
- target/arm/cpu.h              |  2 ++
- target/arm/helper.c           | 60 +++++++++++++++++++++++++++++++++++
- target/arm/internals.h        | 19 +++++++++++
- target/arm/tcg/cpu64.c        |  1 +
- 6 files changed, 88 insertions(+)
+ hw/arm/virt.c | 54 +++++++++++++++++++++++++++------------------------
+ 1 file changed, 29 insertions(+), 25 deletions(-)
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 66043b0747..1c597d8673 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -149,6 +149,7 @@ the following architecture extensions:
- - FEAT_SPECRES (Speculation restriction instructions)
- - FEAT_SSBS (Speculative Store Bypass Safe)
- - FEAT_SSBS2 (MRS and MSR instructions for SSBS version 2)
-+- FEAT_TCR2 (Support for TCR2_ELx)
- - FEAT_TGran16K (Support for 16KB memory translation granule size at stage 1)
- - FEAT_TGran4K (Support for 4KB memory translation granule size at stage 1)
- - FEAT_TGran64K (Support for 64KB memory translation granule size at stage 1)
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 44d6b655a9..3878aed589 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -486,6 +486,11 @@ static inline bool isar_feature_aa64_xs(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64ISAR1, XS) != 0;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 61a9a4fdc8..ee272b5b34 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1409,19 +1409,43 @@ static void create_pcie_irq_map(const MachineState *ms,
+                            0x7           /* PCI irq */);
  }
  
-+static inline bool isar_feature_aa64_tcr2(const ARMISARegisters *id)
++static void create_smmuv3_dt_bindings(const VirtMachineState *vms, hwaddr base,
++                                      hwaddr size, int irq)
 +{
-+    return FIELD_EX64_IDREG(id, ID_AA64MMFR3, TCRX) != 0;
++    char *node;
++    const char compat[] = "arm,smmu-v3";
++    const char irq_names[] = "eventq\0priq\0cmdq-sync\0gerror";
++    MachineState *ms = MACHINE(vms);
++
++    node = g_strdup_printf("/smmuv3@%" PRIx64, base);
++    qemu_fdt_add_subnode(ms->fdt, node);
++    qemu_fdt_setprop(ms->fdt, node, "compatible", compat, sizeof(compat));
++    qemu_fdt_setprop_sized_cells(ms->fdt, node, "reg", 2, base, 2, size);
++
++    qemu_fdt_setprop_cells(ms->fdt, node, "interrupts",
++            GIC_FDT_IRQ_TYPE_SPI, irq    , GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
++            GIC_FDT_IRQ_TYPE_SPI, irq + 1, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
++            GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
++            GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
++
++    qemu_fdt_setprop(ms->fdt, node, "interrupt-names", irq_names,
++                     sizeof(irq_names));
++
++    qemu_fdt_setprop(ms->fdt, node, "dma-coherent", NULL, 0);
++    qemu_fdt_setprop_cell(ms->fdt, node, "#iommu-cells", 1);
++    qemu_fdt_setprop_cell(ms->fdt, node, "phandle", vms->iommu_phandle);
++    g_free(node);
 +}
 +
- /*
-  * These are the values from APA/API/APA3.
-  * In general these must be compared '>=', per the normal Arm ARM
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 32d30b7bb9..5c13f89b29 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -366,6 +366,7 @@ typedef struct CPUArchState {
-         uint64_t vsttbr_el2; /* Secure Virtualization Translation Table. */
-         /* MMU translation table base control. */
-         uint64_t tcr_el[4];
-+        uint64_t tcr2_el[3];
-         uint64_t vtcr_el2; /* Virtualization Translation Control.  */
-         uint64_t vstcr_el2; /* Secure Virtualization Translation Control. */
-         uint32_t c2_data; /* MPU data cacheable bits.  */
-@@ -1739,6 +1740,7 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
- #define SCR_HXEN              (1ULL << 38)
- #define SCR_TRNDR             (1ULL << 40)
- #define SCR_ENTP2             (1ULL << 41)
-+#define SCR_TCR2EN            (1ULL << 43)
- #define SCR_SCTLR2EN          (1ULL << 44)
- #define SCR_GPF               (1ULL << 48)
- #define SCR_MECEN             (1ULL << 49)
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 5707eea822..34e12bde90 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6154,6 +6154,8 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
-           "TTBR1_EL1", "TTBR1_EL2", "TTBR1_EL12" },
-         { K(3, 0,  2, 0, 2), K(3, 4,  2, 0, 2), K(3, 5, 2, 0, 2),
-           "TCR_EL1", "TCR_EL2", "TCR_EL12" },
-+        { K(3, 0,  2, 0, 3), K(3, 4,  2, 0, 3), K(3, 5, 2, 0, 3),
-+          "TCR2_EL1", "TCR2_EL2", "TCR2_EL12" },
-         { K(3, 0,  4, 0, 0), K(3, 4,  4, 0, 0), K(3, 5, 4, 0, 0),
-           "SPSR_EL1", "SPSR_EL2", "SPSR_EL12" },
-         { K(3, 0,  4, 0, 1), K(3, 4,  4, 0, 1), K(3, 5, 4, 0, 1),
-@@ -7890,6 +7892,60 @@ static const ARMCPRegInfo sctlr2_reginfo[] = {
-       .fieldoffset = offsetof(CPUARMState, cp15.sctlr2_el[3]) },
- };
- 
-+static CPAccessResult tcr2_el2_access(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                      bool isread)
-+{
-+    if (arm_current_el(env) < 3 && !(env->cp15.scr_el3 & SCR_TCR2EN)) {
-+        return CP_ACCESS_TRAP_EL3;
-+    }
-+    return CP_ACCESS_OK;
-+};
-+
-+static CPAccessResult tcr2_el1_access(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                      bool isread)
-+{
-+    CPAccessResult ret = access_tvm_trvm(env, ri, isread);
-+    if (ret != CP_ACCESS_OK) {
-+        return ret;
-+    }
-+    if (arm_current_el(env) < 2 && !(arm_hcrx_el2_eff(env) & HCRX_TCR2EN)) {
-+        return CP_ACCESS_TRAP_EL2;
-+    }
-+    return tcr2_el2_access(env, ri, isread);
-+}
-+
-+static void tcr2_el1_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                           uint64_t value)
-+{
-+    /* This register does not control any feature yet. */
-+}
-+
-+static void tcr2_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                           uint64_t value)
-+{
-+    uint64_t valid_mask = 0;
-+
-+    if (cpu_isar_feature(aa64_mec, env_archcpu(env))) {
-+        valid_mask |= TCR2_AMEC0 | TCR2_AMEC1;
-+    }
-+    value &= valid_mask;
-+    raw_write(env, ri, value);
-+}
-+
-+static const ARMCPRegInfo tcr2_reginfo[] = {
-+    { .name = "TCR2_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .opc2 = 3, .crn = 2, .crm = 0,
-+      .access = PL1_RW, .accessfn = tcr2_el1_access,
-+      .writefn = tcr2_el1_write, .fgt = FGT_TCR_EL1,
-+      .nv2_redirect_offset = 0x270 | NV2_REDIR_NV1,
-+      .fieldoffset = offsetof(CPUARMState, cp15.tcr2_el[1]) },
-+    { .name = "TCR2_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 3, .crn = 2, .crm = 0,
-+      .access = PL2_RW, .accessfn = tcr2_el2_access,
-+      .writefn = tcr2_el2_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.tcr2_el[2]) },
-+};
-+
- void register_cp_regs_for_features(ARMCPU *cpu)
+ static void create_smmu(const VirtMachineState *vms,
+                         PCIBus *bus)
  {
-     /* Register all the coprocessor registers based on feature bits */
-@@ -9162,6 +9218,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, sctlr2_reginfo);
+     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+-    char *node;
+-    const char compat[] = "arm,smmu-v3";
+     int irq =  vms->irqmap[VIRT_SMMU];
+     int i;
+     hwaddr base = vms->memmap[VIRT_SMMU].base;
+     hwaddr size = vms->memmap[VIRT_SMMU].size;
+-    const char irq_names[] = "eventq\0priq\0cmdq-sync\0gerror";
+     DeviceState *dev;
+-    MachineState *ms = MACHINE(vms);
+ 
+     if (vms->iommu != VIRT_IOMMU_SMMUV3 || !vms->iommu_phandle) {
+         return;
+@@ -1440,27 +1464,7 @@ static void create_smmu(const VirtMachineState *vms,
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+                            qdev_get_gpio_in(vms->gic, irq + i));
      }
+-
+-    node = g_strdup_printf("/smmuv3@%" PRIx64, base);
+-    qemu_fdt_add_subnode(ms->fdt, node);
+-    qemu_fdt_setprop(ms->fdt, node, "compatible", compat, sizeof(compat));
+-    qemu_fdt_setprop_sized_cells(ms->fdt, node, "reg", 2, base, 2, size);
+-
+-    qemu_fdt_setprop_cells(ms->fdt, node, "interrupts",
+-            GIC_FDT_IRQ_TYPE_SPI, irq    , GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
+-            GIC_FDT_IRQ_TYPE_SPI, irq + 1, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
+-            GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
+-            GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
+-
+-    qemu_fdt_setprop(ms->fdt, node, "interrupt-names", irq_names,
+-                     sizeof(irq_names));
+-
+-    qemu_fdt_setprop(ms->fdt, node, "dma-coherent", NULL, 0);
+-
+-    qemu_fdt_setprop_cell(ms->fdt, node, "#iommu-cells", 1);
+-
+-    qemu_fdt_setprop_cell(ms->fdt, node, "phandle", vms->iommu_phandle);
+-    g_free(node);
++    create_smmuv3_dt_bindings(vms, base, size, irq);
+ }
  
-+    if (cpu_isar_feature(aa64_tcr2, cpu)) {
-+        define_arm_cp_regs(cpu, tcr2_reginfo);
-+    }
-+
-     if (cpu_isar_feature(any_predinv, cpu)) {
-         define_arm_cp_regs(cpu, predinv_reginfo);
-     }
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 398e0b4a7d..4b3dde82c6 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -201,6 +201,24 @@ FIELD(CPTR_EL3, TCPAC, 31, 1)
- #define TTBCR_SH1    (1U << 28)
- #define TTBCR_EAE    (1U << 31)
- 
-+#define TCR2_PNCH    (1ULL << 0)
-+#define TCR2_PIE     (1ULL << 1)
-+#define TCR2_E0POE   (1ULL << 2)
-+#define TCR2_POE     (1ULL << 3)
-+#define TCR2_AIE     (1ULL << 4)
-+#define TCR2_D128    (1ULL << 5)
-+#define TCR2_PTTWI   (1ULL << 10)
-+#define TCR2_HAFT    (1ULL << 11)
-+#define TCR2_AMEC0   (1ULL << 12)
-+#define TCR2_AMEC1   (1ULL << 13)
-+#define TCR2_DISCH0  (1ULL << 14)
-+#define TCR2_DISCH1  (1ULL << 15)
-+#define TCR2_A2      (1ULL << 16)
-+#define TCR2_FNG0    (1ULL << 17)
-+#define TCR2_FNG1    (1ULL << 18)
-+#define TCR2_FNGNA0  (1ULL << 20)
-+#define TCR2_FNGNA1  (1ULL << 21)
-+
- FIELD(VTCR, T0SZ, 0, 6)
- FIELD(VTCR, SL0, 6, 2)
- FIELD(VTCR, IRGN0, 8, 2)
-@@ -232,6 +250,7 @@ FIELD(VTCR, SL2, 33, 1)
- #define HCRX_CMOW     (1ULL << 9)
- #define HCRX_MCE2     (1ULL << 10)
- #define HCRX_MSCEN    (1ULL << 11)
-+#define HCRX_TCR2EN   (1ULL << 14)
- #define HCRX_SCTLR2EN (1ULL << 15)
- 
- #define HPFAR_NS      (1ULL << 63)
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index bdd2fe7f5b..173528175a 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1247,6 +1247,7 @@ void aarch64_max_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64MMFR2, E0PD, 1);     /* FEAT_E0PD */
-     SET_IDREG(isar, ID_AA64MMFR2, t);
- 
-+    FIELD_DP64_IDREG(isar, ID_AA64MMFR3, TCRX, 1);       /* FEAT_TCR2 */
-     FIELD_DP64_IDREG(isar, ID_AA64MMFR3, SCTLRX, 1);     /* FEAT_SCTLR2 */
-     FIELD_DP64_IDREG(isar, ID_AA64MMFR3, SPEC_FPACC, 1); /* FEAT_FPACC_SPEC */
- 
+ static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
 -- 
-2.34.1
+2.47.0
 
 

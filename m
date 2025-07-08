@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88DC3C8303C
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 19:54:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCC9AC83F09
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 19:58:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZEOA-0000B1-6q; Tue, 08 Jul 2025 15:54:02 -0400
-Received: from eggs.gnu.org ([209.51.188.92])
+	id 1uZERp-0002ux-Br; Tue, 08 Jul 2025 15:58:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZBQ0-0000zR-SA
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 12:44:49 -0400
+ id 1uZCM7-0005uN-T4
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 13:43:52 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZBPi-0005cb-So
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 12:43:34 -0400
+ id 1uZBOf-0005FD-LF
+ for qemu-arm@nongnu.org; Tue, 08 Jul 2025 12:42:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1751992768;
+ s=mimecast20190719; t=1751992741;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=dPBzy9CsJVFt5NIIFLm3SKgobSoPadimXomCtIYommM=;
- b=Wu3WYalrqTiwnniG0meumRNnaYojpWqSI9Ps4FJNHy47fijtlmekAIwZuEG+9VdvZodI/y
- rqgbhFum6EesjPJnHERFCKy5bLpQLIBUCNS5QfEkxKEI/abbvvRy5Jsnu9RiSNY8sHjS3m
- PNb0tWeObanFSONICEelOXxmcHsJySg=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=1HSMLnRPbnF6OXBap7NtZPM/Y9so/IkI//K6rZ9XUXg=;
+ b=WYjTuIqTuO3/4IM/RtRaK49+Dexjv3c4fDvizQXPOfcdpTHVjLJgRtPcwZ/xFbSs6CAj/G
+ Na6Nx2el5df9lVMuPwgv5+bs3x5zm88sTUtX8HkzJeU0hvGMYKAxeor4f5yVMJ9N4W36CK
+ CWgk0T4Yb0ySSMnJ10GoHNG3OM59CV4=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-526-gf3iWF_rMqKcZ-VxU1p5YQ-1; Tue,
- 08 Jul 2025 10:26:02 -0400
-X-MC-Unique: gf3iWF_rMqKcZ-VxU1p5YQ-1
-X-Mimecast-MFC-AGG-ID: gf3iWF_rMqKcZ-VxU1p5YQ_1751984760
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-563-rNdVUkC0Nqmvbfzwd6xGYA-1; Tue,
+ 08 Jul 2025 10:25:13 -0400
+X-MC-Unique: rNdVUkC0Nqmvbfzwd6xGYA-1
+X-Mimecast-MFC-AGG-ID: rNdVUkC0Nqmvbfzwd6xGYA_1751984711
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C37CB180028A; Tue,  8 Jul 2025 14:26:00 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 40E811801BD8; Tue,  8 Jul 2025 14:25:11 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.187])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BBE0030001B1; Tue,  8 Jul 2025 14:25:55 +0000 (UTC)
+ id 2B4333000218; Tue,  8 Jul 2025 14:25:05 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
@@ -55,10 +55,10 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: pbonzini@redhat.com,
 	philmd@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v6 11/36] hw/i386/acpi-build: Introduce
- build_append_pcihp_resources() helper
-Date: Tue,  8 Jul 2025 16:22:53 +0200
-Message-ID: <20250708142437.1344644-12-eric.auger@redhat.com>
+Subject: [PATCH v6 03/36] hw/pci-host/gpex-acpi: Add native_pci_hotplug arg to
+ acpi_dsdt_add_pci_osc
+Date: Tue,  8 Jul 2025 16:22:45 +0200
+Message-ID: <20250708142437.1344644-4-eric.auger@redhat.com>
 In-Reply-To: <20250708142437.1344644-1-eric.auger@redhat.com>
 References: <20250708142437.1344644-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -89,9 +89,8 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Extract the code that reserves resources for ACPI PCI hotplug
-into a new helper named build_append_pcihp_resources() and
-move it to pcihp.c. We will reuse it on ARM.
+Add a new argument to acpi_dsdt_add_pci_osc to be able to disable
+native pci hotplug.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
@@ -100,82 +99,60 @@ Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 
 ---
 
-v2 -> v3:
-- fixed indent (Jonathan)
+rfc -> v1:
+- updated the "Allow OS control for all 5 features" comment
 ---
- include/hw/acpi/pcihp.h |  2 ++
- hw/acpi/pcihp.c         | 18 ++++++++++++++++++
- hw/i386/acpi-build.c    | 15 ++-------------
- 3 files changed, 22 insertions(+), 13 deletions(-)
+ hw/pci-host/gpex-acpi.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
 
-diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
-index 971451e8ea..8a46a414cc 100644
---- a/include/hw/acpi/pcihp.h
-+++ b/include/hw/acpi/pcihp.h
-@@ -75,6 +75,8 @@ void acpi_pcihp_device_unplug_request_cb(HotplugHandler *hotplug_dev,
- 
- void build_acpi_pci_hotplug(Aml *table, uint64_t pcihp_addr);
- void build_append_pci_dsm_func0_common(Aml *ctx, Aml *retvar);
-+void build_append_pcihp_resources(Aml *table,
-+                                  uint64_t io_addr, uint64_t io_len);
- 
- /* Called on reset */
- void acpi_pcihp_reset(AcpiPciHpState *s);
-diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-index cbe7e01385..5ca36c8619 100644
---- a/hw/acpi/pcihp.c
-+++ b/hw/acpi/pcihp.c
-@@ -685,6 +685,24 @@ void build_acpi_pci_hotplug(Aml *table, uint64_t pcihp_addr)
-     aml_append(table, scope);
+diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+index 0aba47c71c..f34b7cf25e 100644
+--- a/hw/pci-host/gpex-acpi.c
++++ b/hw/pci-host/gpex-acpi.c
+@@ -50,7 +50,7 @@ static void acpi_dsdt_add_pci_route_table(Aml *dev, uint32_t irq,
+     }
  }
  
-+/* Reserve PCIHP resources */
-+void build_append_pcihp_resources(Aml *scope /* \\_SB.PCI0 */,
-+                                  uint64_t io_addr, uint64_t io_len)
-+{
-+    Aml *dev, *crs;
-+
-+    dev = aml_device("PHPR");
-+    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0A06")));
-+    aml_append(dev,
-+               aml_name_decl("_UID", aml_string("PCI Hotplug resources")));
-+    /* device present, functioning, decoding, not shown in UI */
-+    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
-+    crs = aml_resource_template();
-+    aml_append(crs, aml_io(AML_DECODE16, io_addr, io_addr, 1, io_len));
-+    aml_append(dev, aml_name_decl("_CRS", crs));
-+    aml_append(scope, dev);
-+}
-+
- const VMStateDescription vmstate_acpi_pcihp_pci_status = {
-     .name = "acpi_pcihp_pci_status",
-     .version_id = 1,
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 91945f716c..52cef834ed 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -1432,19 +1432,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+-static void acpi_dsdt_add_pci_osc(Aml *dev)
++static void acpi_dsdt_add_pci_osc(Aml *dev, bool enable_native_pcie_hotplug)
+ {
+     Aml *method, *UUID, *ifctx, *ifctx1, *elsectx, *buf;
  
-     /* reserve PCIHP resources */
-     if (pm->pcihp_io_len && (pm->pcihp_bridge_en || pm->pcihp_root_en)) {
--        dev = aml_device("PHPR");
--        aml_append(dev, aml_name_decl("_HID", aml_string("PNP0A06")));
--        aml_append(dev,
--            aml_name_decl("_UID", aml_string("PCI Hotplug resources")));
--        /* device present, functioning, decoding, not shown in UI */
--        aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
--        crs = aml_resource_template();
--        aml_append(crs,
--            aml_io(AML_DECODE16, pm->pcihp_io_base, pm->pcihp_io_base, 1,
--                   pm->pcihp_io_len)
--        );
--        aml_append(dev, aml_name_decl("_CRS", crs));
--        aml_append(scope, dev);
-+        build_append_pcihp_resources(scope,
-+                                      pm->pcihp_io_base, pm->pcihp_io_len);
+@@ -77,11 +77,12 @@ static void acpi_dsdt_add_pci_osc(Aml *dev)
+     aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
+ 
+     /*
+-     * Allow OS control for all 5 features:
+-     * PCIeHotplug SHPCHotplug PME AER PCIeCapability.
++     * Allow OS control for SHPCHotplug, PME, AER, PCIeCapability,
++     * and PCIeHotplug depending on enable_native_pcie_hotplug
+      */
+-    aml_append(ifctx, aml_and(aml_name("CTRL"), aml_int(0x1F),
+-                              aml_name("CTRL")));
++    aml_append(ifctx, aml_and(aml_name("CTRL"),
++               aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)),
++               aml_name("CTRL")));
+ 
+     ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
+     aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
+@@ -192,7 +193,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+             if (is_cxl) {
+                 build_cxl_osc_method(dev);
+             } else {
+-                acpi_dsdt_add_pci_osc(dev);
++                acpi_dsdt_add_pci_osc(dev, true);
+             }
+ 
+             aml_append(scope, dev);
+@@ -267,7 +268,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
      }
-     aml_append(dsdt, scope);
+     aml_append(dev, aml_name_decl("_CRS", rbuf));
  
+-    acpi_dsdt_add_pci_osc(dev);
++    acpi_dsdt_add_pci_osc(dev, true);
+ 
+     Aml *dev_res0 = aml_device("%s", "RES0");
+     aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));
 -- 
 2.49.0
 

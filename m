@@ -4,75 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33B56C83F09
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 20:54:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ABC2C83F09
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 20:55:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZFJs-0001Iq-Hw; Tue, 08 Jul 2025 16:53:40 -0400
+	id 1uZFKc-0004At-Jx; Tue, 08 Jul 2025 16:54:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZEDy-0005dl-I9
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:43:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uZEDw-0006SV-L0
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:43:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752003807;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qykNbq9Z1KR/RSUyv3WPhqM899KG4p1hewVkFgNUlDM=;
- b=VZqhz84VRtHAwacDSNNvrIixQvWINz6ReKhaOSJ6jcNsBcnXSsmJFvg7Kh3r9JApqMZVy2
- C9HcFlKs2+rrhjBDb/+muGMKkcqPMQWsF/k0fN2v5uItcQGzAFonbzqJm8SLT8Elv2i1+D
- tpoYVt3askriZZaobEX1Wzfcokpn3bk=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-472-tQQP-uuHP0i5n10883s28w-1; Tue,
- 08 Jul 2025 10:27:44 -0400
-X-MC-Unique: tQQP-uuHP0i5n10883s28w-1
-X-Mimecast-MFC-AGG-ID: tQQP-uuHP0i5n10883s28w_1751984863
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 489D218011FB; Tue,  8 Jul 2025 14:27:43 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.44.32.187])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 467E530001B1; Tue,  8 Jul 2025 14:27:38 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
- Jonathan.Cameron@huawei.com, gustavo.romero@linaro.org,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com,
-	philmd@linaro.org,
-	alex.bennee@linaro.org
-Subject: [PATCH v6 27/36] hw/acpi/pcihp: Remove root arg in acpi_pcihp_init
-Date: Tue,  8 Jul 2025 16:23:09 +0200
-Message-ID: <20250708142437.1344644-28-eric.auger@redhat.com>
-In-Reply-To: <20250708142437.1344644-1-eric.auger@redhat.com>
-References: <20250708142437.1344644-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1uZEYR-0004it-4S; Tue, 08 Jul 2025 16:04:44 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1uZEYO-000457-HM; Tue, 08 Jul 2025 16:04:38 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-60c01b983b6so514741a12.0; 
+ Tue, 08 Jul 2025 13:04:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1752005074; x=1752609874; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=2oMAwzPritipCfquVZUv8mhtNUDsAFJZW3Evu4z8wbk=;
+ b=Qn/KtQwnROMonNQYFerIBEH88WdpJxQ2pNsCDpL1w3wBHySRU48Yd9qvM2v6tsTWTp
+ SvV+WMwhkqzjtFtRmMQg2mnHoj5VRIM2H3dt0UZGtg7Xj/PgWuR+XTFBg21bQu6qmrJm
+ 6Qai1Mhslbdk7LuL5sABcIImJLV/nfXIG4sLg+XRjVMaoJ5W+fAJmvgQM1MStqmMfRc5
+ 55VkbG0wJAdx5gJbxb5syJw58SF4SmdTQYWS1fsWweQCiqsEWYhRJezZZrL0Ww3qsqvD
+ 4owpvCExkqq1Yw9mTK27GDubrg6mmMALGuy5rjM96od7GijELC5tDakNBWBnv3zmLhoK
+ WBsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1752005074; x=1752609874;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=2oMAwzPritipCfquVZUv8mhtNUDsAFJZW3Evu4z8wbk=;
+ b=Nb8jl+F4N6mFFd9avo0cVH9lmrrCadJrSHTO0AthIRQdMrsrEJZcdNQcMbIZAzHKLY
+ 1myq0n5g86fREUacpsfYoX2BWkFr6B/mX00LlnrkGSDMZf5xyhDKRZvVLzES1ZJpJAjW
+ d4SkVD3/Ezl3+12TdS1Q5HSFnJu4r0/AYqEdt2BjR8nZG+alpA9JB345opgQaoq3dQca
+ sfNGXhxmgNX7YXzcFaWxTO9OCK1v8XXcYr/JbkBfVVfpsmpYEHJRdgdm5FRaznHhY1hp
+ pn/m1HnQZ0gUhPVhvS+hGIlVfigcMi1TmYa7Ob+AyQxsTuun2pHkZ/gefjsHqQDSmKUI
+ 6w5A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVbClzKy+PW4EhdVpAMLKm7Cvxg5kbb/4IA1mUrs26LYaC/q2/yaYEb9ouYNeZ1GQZWRAXyRtdoWw==@nongnu.org
+X-Gm-Message-State: AOJu0YxJEOTVCXHH/vLQQC7Vnx/U1aD3RrHOmv0MQ/U2bIy0bZO+op1F
+ aCvqr9A4XQZUEaMqtcq6VnIvPJBNNorSuoBKCLG7z/BmA5xSzl4yBg+VHxgzqg==
+X-Gm-Gg: ASbGncuke5rbIWBO4/4odGLrM4aeEBxdVqifU5tdfYXBtC2dcp0i2zwvj9eI4TvfIci
+ gxxMlsW0+TRu0UE5UQTUdVQHmcFpqGFxClFrBDFGWwhlGIeCkcaIagt39BqWlXpRazFDHK0Uw51
+ 8rD/EaR8er+gTOId1RDFsIHzKa7rs8zUJ7Y8NIXuBc5pNnWtR2uTMD/Su1noea1IxhFk2cByV2s
+ 6cxd6mB/+Lx889sjEKe2k5DKNWj6PCg+dyuCzzwQSDYhU4+d/B5T58esFnzxfY689K3kVdCyj6D
+ CFK6/A6X5autlQkzjlwlu7av/g2Ux0Gi1UnGmdNv6nWt7pFXji87F1jTCTzwXt0tTOiw9PP3vEe
+ F5QdmkSsG44PWFT/tqOVE8NCt9DWfKqjW
+X-Google-Smtp-Source: AGHT+IH3ncoZth9TazyDgOU8agP+ky1qsdX/m6cvNNb2WoSnvkyDLvv3qHtpXJOF0cToE+gxRpGaIQ==
+X-Received: by 2002:a17:906:30d5:b0:ae3:a753:615b with SMTP id
+ a640c23a62f3a-ae6b26f530bmr281665666b.19.1751992565518; 
+ Tue, 08 Jul 2025 09:36:05 -0700 (PDT)
+Received: from [127.0.0.1] (business-90-187-110-129.pool2.vodafone-ip.de.
+ [90.187.110.129]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-ae3f66d91cdsm907958166b.22.2025.07.08.09.36.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 08 Jul 2025 09:36:05 -0700 (PDT)
+Date: Tue, 08 Jul 2025 16:36:03 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH 2/2] hw/arm/imx8mp-evk: Add KVM support
+In-Reply-To: <CAFEAcA9b+1xx+Esnt80Ny1gWBOsh-QYYxuP6PwiPk-B20xv0Dw@mail.gmail.com>
+References: <20250629204851.1778-1-shentey@gmail.com>
+ <20250629204851.1778-3-shentey@gmail.com>
+ <CAFEAcA-HaQwySM1j7Cy_R1z0fM1D9ykiBiMKLYNVYF+Tm_mrPA@mail.gmail.com>
+ <78B2535C-38D8-4612-8958-49AC28482A8D@gmail.com>
+ <CAFEAcA9b+1xx+Esnt80Ny1gWBOsh-QYYxuP6PwiPk-B20xv0Dw@mail.gmail.com>
+Message-ID: <3DA254A8-76AC-4214-8C65-D3B3FFF55FF9@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,123 +105,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Let pass the root bus to ich9 and piix4 through a property link
-instead of through an argument passed to acpi_pcihp_init().
 
-Also make sure the root bus is set at the entry of acpi_pcihp_init().
 
-The rationale of that change is to be consistent with the forecoming ARM
-implementation where the machine passes the root bus (steming from GPEX)
-to the GED device through a link property.
+Am 30=2E Juni 2025 21:03:06 UTC schrieb Peter Maydell <peter=2Emaydell@lin=
+aro=2Eorg>:
+>On Mon, 30 Jun 2025 at 21:22, Bernhard Beschow <shentey@gmail=2Ecom> wrot=
+e:
+>>
+>>
+>>
+>> Am 30=2E Juni 2025 09:09:31 UTC schrieb Peter Maydell <peter=2Emaydell@=
+linaro=2Eorg>:
+>> >On Sun, 29 Jun 2025 at 21:49, Bernhard Beschow <shentey@gmail=2Ecom> w=
+rote:
+>> >>
+>> >> Allows the imx8mp-evk machine to be run with KVM acceleration as a g=
+uest=2E
+>> >>
+>> >> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>> >> ---
+>> >>  docs/system/arm/imx8mp-evk=2Erst |  7 +++++++
+>> >>  hw/arm/fsl-imx8mp=2Ec            | 33 ++++++++++++++++++++++++++++-=
+----
+>> >>  hw/arm/imx8mp-evk=2Ec            | 11 +++++++++++
+>> >>  hw/arm/Kconfig                 |  3 ++-
+>> >>  hw/arm/meson=2Ebuild             |  2 +-
+>> >>  5 files changed, 49 insertions(+), 7 deletions(-)
+>> >
+>> >This puts a lot of IMX device models onto our security boundary,
+>> >which makes me a bit nervous -- that's a lot of code which
+>> >wasn't really written or reviewed carefully to ensure it
+>> >can't be exploited by a malicious guest=2E
+>>
+>> Hi Peter,
+>>
+>> Does KVM increase the attack surface compared to TCG?
+>
+>Yes, because our security policy says that TCG is not considered
+>a security boundary, whereas KVM is:
+>
+>https://qemu-project=2Egitlab=2Eio/qemu/system/security=2Ehtml
+>
+>(It would move from "non-virtualization use case" to
+>"virtualization use case"=2E)
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Suggested-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
----
- include/hw/acpi/pcihp.h         | 2 +-
- hw/acpi/acpi-pci-hotplug-stub.c | 2 +-
- hw/acpi/ich9.c                  | 7 ++++++-
- hw/acpi/pcihp.c                 | 4 ++--
- hw/acpi/piix4.c                 | 5 ++++-
- 5 files changed, 14 insertions(+), 6 deletions(-)
+Thanks, that document nails my question=2E
 
-diff --git a/include/hw/acpi/pcihp.h b/include/hw/acpi/pcihp.h
-index 9ff548650b..ca6a258825 100644
---- a/include/hw/acpi/pcihp.h
-+++ b/include/hw/acpi/pcihp.h
-@@ -62,7 +62,7 @@ typedef struct AcpiPciHpState {
-     bool use_acpi_root_pci_hotplug;
- } AcpiPciHpState;
- 
--void acpi_pcihp_init(Object *owner, AcpiPciHpState *, PCIBus *root,
-+void acpi_pcihp_init(Object *owner, AcpiPciHpState *,
-                      MemoryRegion *io, uint16_t io_base);
- 
- bool acpi_pcihp_is_hotpluggable_bus(AcpiPciHpState *s, BusState *bus);
-diff --git a/hw/acpi/acpi-pci-hotplug-stub.c b/hw/acpi/acpi-pci-hotplug-stub.c
-index b7bc6e40a1..d58ea726a8 100644
---- a/hw/acpi/acpi-pci-hotplug-stub.c
-+++ b/hw/acpi/acpi-pci-hotplug-stub.c
-@@ -4,7 +4,7 @@
- 
- const VMStateDescription vmstate_acpi_pcihp_pci_status;
- 
--void acpi_pcihp_init(Object *owner, AcpiPciHpState *s, PCIBus *root_bus,
-+void acpi_pcihp_init(Object *owner, AcpiPciHpState *s,
-                      MemoryRegion *address_space_io, uint16_t io_base)
- {
- }
-diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
-index 967b67485e..2b3b493c01 100644
---- a/hw/acpi/ich9.c
-+++ b/hw/acpi/ich9.c
-@@ -322,9 +322,10 @@ void ich9_pm_init(PCIDevice *lpc_pci, ICH9LPCPMRegs *pm, qemu_irq sci_irq)
-     }
- 
-     if (pm->acpi_pci_hotplug.use_acpi_hotplug_bridge) {
-+        object_property_set_link(OBJECT(lpc_pci), "bus",
-+                                 OBJECT(pci_get_bus(lpc_pci)), &error_abort);
-         acpi_pcihp_init(OBJECT(lpc_pci),
-                         &pm->acpi_pci_hotplug,
--                        pci_get_bus(lpc_pci),
-                         pci_address_space_io(lpc_pci),
-                         ACPI_PCIHP_ADDR_ICH9);
- 
-@@ -428,6 +429,10 @@ void ich9_pm_add_properties(Object *obj, ICH9LPCPMRegs *pm)
- 
-     object_property_add_uint32_ptr(obj, ACPI_PM_PROP_PM_IO_BASE,
-                                    &pm->pm_io_base, OBJ_PROP_FLAG_READ);
-+    object_property_add_link(obj, "bus", TYPE_PCI_BUS,
-+                             (Object **)&pm->acpi_pci_hotplug.root,
-+                             object_property_allow_set_link,
-+                             OBJ_PROP_LINK_STRONG);
-     object_property_add(obj, ACPI_PM_PROP_GPE0_BLK, "uint32",
-                         ich9_pm_get_gpe0_blk,
-                         NULL, NULL, pm);
-diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-index f1594e664a..4922bbc778 100644
---- a/hw/acpi/pcihp.c
-+++ b/hw/acpi/pcihp.c
-@@ -493,13 +493,13 @@ static const MemoryRegionOps acpi_pcihp_io_ops = {
-     },
- };
- 
--void acpi_pcihp_init(Object *owner, AcpiPciHpState *s, PCIBus *root_bus,
-+void acpi_pcihp_init(Object *owner, AcpiPciHpState *s,
-                      MemoryRegion *io, uint16_t io_base)
- {
-     s->io_len = ACPI_PCIHP_SIZE;
-     s->io_base = io_base;
- 
--    s->root = root_bus;
-+    assert(s->root);
- 
-     memory_region_init_io(&s->io, owner, &acpi_pcihp_io_ops, s,
-                           "acpi-pci-hotplug", s->io_len);
-diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
-index d98b80df6d..7a18f18dda 100644
---- a/hw/acpi/piix4.c
-+++ b/hw/acpi/piix4.c
-@@ -567,7 +567,8 @@ static void piix4_acpi_system_hot_add_init(MemoryRegion *parent,
- 
-     if (s->acpi_pci_hotplug.use_acpi_hotplug_bridge ||
-         s->acpi_pci_hotplug.use_acpi_root_pci_hotplug) {
--        acpi_pcihp_init(OBJECT(s), &s->acpi_pci_hotplug, bus, parent,
-+        object_property_set_link(OBJECT(s), "bus", OBJECT(bus), &error_abort);
-+        acpi_pcihp_init(OBJECT(s), &s->acpi_pci_hotplug, parent,
-                         ACPI_PCIHP_ADDR_PIIX4);
-         qbus_set_hotplug_handler(BUS(pci_get_bus(PCI_DEVICE(s))), OBJECT(s));
-     }
-@@ -611,6 +612,8 @@ static const Property piix4_pm_properties[] = {
-                      acpi_pci_hotplug.use_acpi_hotplug_bridge, true),
-     DEFINE_PROP_BOOL(ACPI_PM_PROP_ACPI_PCI_ROOTHP, PIIX4PMState,
-                      acpi_pci_hotplug.use_acpi_root_pci_hotplug, true),
-+    DEFINE_PROP_LINK("bus", PIIX4PMState, acpi_pci_hotplug.root,
-+                     TYPE_PCI_BUS, PCIBus *),
-     DEFINE_PROP_BOOL("memory-hotplug-support", PIIX4PMState,
-                      acpi_memory_hotplug.is_enabled, true),
-     DEFINE_PROP_BOOL("smm-compat", PIIX4PMState, smm_compat, false),
--- 
-2.49.0
+If KVM requires the imx devices to be inside the security boundary, what n=
+eeds to be done to lift them there?
 
+Best regards,
+Bernhard
+
+>
+>thanks
+>-- PMM
 

@@ -4,86 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ED7EC83F0F
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 20:49:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D188FC83F09
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 20:49:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZFF8-0001dH-Cu; Tue, 08 Jul 2025 16:48:46 -0400
+	id 1uZFEd-0006kV-Ba; Tue, 08 Jul 2025 16:48:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uZDrH-0007qj-6y
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:20:03 -0400
-Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uZDr8-00087S-DU
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:20:02 -0400
-Received: by mail-qk1-x734.google.com with SMTP id
- af79cd13be357-7d38ddc198eso547705785a.1
- for <qemu-arm@nongnu.org>; Tue, 08 Jul 2025 12:19:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752002356; x=1752607156; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=AmhliCegNfZGHfr7J+p0jeoV/6BX3pT1C+80y0xkf40=;
- b=qJpaMapCABOibg96xQyPBepmRzEv9Wh1ApEcdV3xJdh6mi9lkWoQB0cmqY0lfogOQP
- 8OeaqJCu6FJPGn8wcS2t7tTXsnIJC5luF3ckur+k0oj/I4E+Kut4aHbbuGTuhjnbfqq9
- NnovCXRoUmydcuepST7U3KsmBt69mRVRFE0mT1Hu6hxIREHE9mD/XU78d0HROGm2XcgN
- rRU35K1fdlw01WSDmmadDBVhxagAN3m9FnTaUJ7rFOXYleFf9pt6gKWzqyQtYOURdoeE
- 1fgkn/evWOgx7XxPlAWpilUeAopd6qparHcrFpaN+YzlF9Bu2QYM6XQlgc1dfOauC+yG
- AbSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752002356; x=1752607156;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=AmhliCegNfZGHfr7J+p0jeoV/6BX3pT1C+80y0xkf40=;
- b=fd2NOeVJeg8okQuSxJXi7WRDOetzN4PGuU7/v4JryLY9ZHHpa99ctKExRUm/skC0TQ
- 8JUx9svkLGkJc5rptpcu7t+0bDaPmgbEUIc9dEbQgS+ZjY4ajJU/yxNcdHnsRQz2BegK
- 6o4c4txnYGl7nvxfmYWTNYgncGYSlP1hWmSp4jb/Jn2ed+UIIpj5QYpYiyp58Zvih+J9
- HtddXelw/xUEgoeNV8x6p2AbnlJ8ser+VtOc0IETzj+hwROQe2V/8xMglmwRNdUohCPg
- q67UthI5bq32yDZ8xsgQydGPc8suD2S1cWLdcVZHhjam1AvpPUrgXKbvsO6dAXrXCBSc
- WIKw==
-X-Gm-Message-State: AOJu0YyNoT/Gj8Ov2Jtd/za9Yldv30qgtj/+lY6WDzcRa7scChXX8ySr
- NYA/2vT5KToHqKEEVr5XUfIEWQpX8H8VFTO93TQpGNIgCjj8MDxM8fPtJR2zR/gA+la3NCaES7e
- jqvdeYx4=
-X-Gm-Gg: ASbGncuhMq31K+MzxWGYomVZgjOdLZFjAIc0hkfQ04rQN3n5s6ldOy3ypKu5UDd1cPM
- Jpm1GRBvdefUxo7DnTel0FmT8M7Z4bwU8rs28U6JwQ+pnPA1uksjFaXGIZbYIBKUqnYakrHMrL5
- vYFWRpozoYyYxtXqmxHNOssrIEXYCtsspnfsQiyMHaqL6yBGWjEqRm0SHBYEOf3jTNurjjbKayh
- KJtdXnaKeqIX/Eu0SyttBTnJbbKiQBzxYQELTKnpD7O/iovLTbzEvGGh9mRGMhCY3Qxvxo+NH7f
- f4GvEE99+09eoatUDYKpu/RpGUrH2+P+CJZ2ej9njqofbZGJB3XMbWLbN2RghH92jzk=
-X-Google-Smtp-Source: AGHT+IE+65XyCIHt0mMmNZ9x/WwtrgdOw2UmcMAB1mrk69YadyhIoyQ74Jz4sZDUtqmP6YZOIZNBbg==
-X-Received: by 2002:a05:6214:ca9:b0:6fd:d91:ba28 with SMTP id
- 6a1803df08f44-702c8cd99bdmr252089966d6.41.1752002356234; 
- Tue, 08 Jul 2025 12:19:16 -0700 (PDT)
-Received: from gromero0.. ([189.110.24.38]) by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-702d638846asm56289096d6.22.2025.07.08.12.19.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Jul 2025 12:19:15 -0700 (PDT)
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: qemu-arm@nongnu.org, richard.henderson@linaro.org, alex.bennee@linaro.org
-Cc: qemu-devel@nongnu.org,
-	gustavo.romero@linaro.org
-Subject: [RFC PATCH-for-10.1 v3 2/5] target/arm: Add FEAT_MEC registers
-Date: Tue,  8 Jul 2025 19:17:01 +0000
-Message-Id: <20250708191704.1068604-3-gustavo.romero@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250708191704.1068604-1-gustavo.romero@linaro.org>
-References: <20250708191704.1068604-1-gustavo.romero@linaro.org>
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uZDqt-0007AN-2g; Tue, 08 Jul 2025 15:19:42 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uZDqo-000882-LZ; Tue, 08 Jul 2025 15:19:38 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bc4zr0FgZz6D8k3;
+ Tue,  8 Jul 2025 23:39:52 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id E79081400D4;
+ Tue,  8 Jul 2025 23:43:01 +0800 (CST)
+Received: from A2303104131.china.huawei.com (10.203.177.241) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 8 Jul 2025 17:42:52 +0200
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
+ <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
+ <imammedo@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <smostafa@google.com>, <gustavo.romero@linaro.org>, <mst@redhat.com>,
+ <marcel.apfelbaum@gmail.com>, <linuxarm@huawei.com>,
+ <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
+Subject: [PATCH v7 10/12] bios-tables-test: Allow for smmuv3 test data.
+Date: Tue, 8 Jul 2025 16:40:53 +0100
+Message-ID: <20250708154055.101012-11-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
+In-Reply-To: <20250708154055.101012-1-shameerali.kolothum.thodi@huawei.com>
+References: <20250708154055.101012-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::734;
- envelope-from=gustavo.romero@linaro.org; helo=mail-qk1-x734.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.203.177.241]
+X-ClientProxiedBy: kwepems500001.china.huawei.com (7.221.188.70) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,160 +71,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add all FEAT_MEC registers.
+The tests to be added exercise both legacy(iommu=smmuv3) and new
+-device arm-smmuv3,.. cases.
 
-To work properly, FEAT_MEC also depends on FEAT_SCTLR2 and FEAT_TCR2,
-which are not implemented in this commit. The bits in SCTLR2 and TCR2
-control which translation regimes use MECIDs, and determine which MECID
-is selected.
-
-FEAT_MEC also requires two new cache management instructions, not
-included in this commit, that will be implemented in subsequent commits.
-
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- target/arm/cpu-features.h |  5 +++
- target/arm/cpu.h          | 11 ++++++
- target/arm/helper.c       | 70 +++++++++++++++++++++++++++++++++++++++
- 3 files changed, 86 insertions(+)
+ tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev    | 0
+ tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy | 0
+ tests/data/acpi/aarch64/virt/IORT.smmuv3-dev    | 0
+ tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy | 0
+ tests/qtest/bios-tables-test-allowed-diff.h     | 4 ++++
+ 5 files changed, 4 insertions(+)
+ create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev
+ create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy
+ create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-dev
+ create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 5876162428..552d8757b7 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -594,6 +594,11 @@ static inline bool isar_feature_aa64_hbc(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64ISAR2, BC) != 0;
- }
- 
-+static inline bool isar_feature_aa64_mec(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64_IDREG(id, ID_AA64MMFR3, MEC) != 0;
-+}
-+
- static inline bool isar_feature_aa64_mops(const ARMISARegisters *id)
- {
-     return FIELD_EX64_IDREG(id, ID_AA64ISAR2, MOPS);
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 0f64c7b163..a93eebe077 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -576,6 +576,15 @@ typedef struct CPUArchState {
- 
-         /* NV2 register */
-         uint64_t vncr_el2;
-+
-+        /* MEC registers */
-+        uint64_t mecid_p0_el2;
-+        uint64_t mecid_a0_el2;
-+        uint64_t mecid_p1_el2;
-+        uint64_t mecid_a1_el2;
-+        uint64_t mecid_rl_a_el3;
-+        uint64_t vmecid_p_el2;
-+        uint64_t vmecid_a_el2;
-     } cp15;
- 
-     struct {
-@@ -2424,6 +2433,8 @@ FIELD(MFAR, FPA, 12, 40)
- FIELD(MFAR, NSE, 62, 1)
- FIELD(MFAR, NS, 63, 1)
- 
-+#define MECID_WIDTH 16
-+
- QEMU_BUILD_BUG_ON(ARRAY_SIZE(((ARMCPU *)0)->ccsidr) <= R_V7M_CSSELR_INDEX_MASK);
- 
- /* If adding a feature bit which corresponds to a Linux ELF
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index b3f0d6f17a..984406c945 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6827,6 +6827,72 @@ static const ARMCPRegInfo nmi_reginfo[] = {
-       .resetfn = arm_cp_reset_ignore },
- };
- 
-+static CPAccessResult mecid_access(CPUARMState *env,
-+                                   const ARMCPRegInfo *ri, bool isread)
-+{
-+    int el = arm_current_el(env);
-+
-+    if (el == 2) {
-+        if (arm_security_space(env) != ARMSS_Realm) {
-+	    return CP_ACCESS_UNDEFINED;
-+	}
-+
-+        if (!(env->cp15.scr_el3 & SCR_MECEN)) {
-+            return CP_ACCESS_TRAP_EL3;
-+        }
-+    }
-+
-+    return CP_ACCESS_OK;
-+}
-+
-+static void mecid_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                        uint64_t value)
-+{
-+    value = extract64(value, 0, MECID_WIDTH);
-+    raw_write(env, ri, value);
-+}
-+
-+static const ARMCPRegInfo mec_reginfo[] = {
-+    { .name = "MECIDR_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 7, .crn = 10, .crm = 8,
-+      .access = PL2_R, .type = ARM_CP_CONST, .resetvalue = MECID_WIDTH - 1 },
-+    { .name = "MECID_P0_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p0_el2) },
-+    { .name = "MECID_A0_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a0_el2) },
-+    { .name = "MECID_P1_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 2, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p1_el2) },
-+    { .name = "MECID_A1_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 3, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a1_el2) },
-+    { .name = "MECID_RL_A_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .opc2 = 1, .crn = 10, .crm = 10,
-+      .access = PL3_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_rl_a_el3) },
-+    { .name = "VMECID_P_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 9,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_p_el2) },
-+    { .name = "VMECID_A_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 9,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_a_el2) },
-+};
-+
- static void define_pmu_regs(ARMCPU *cpu)
- {
-     /*
-@@ -9014,6 +9080,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, nmi_reginfo);
-     }
- 
-+    if (cpu_isar_feature(aa64_mec, cpu)) {
-+        define_arm_cp_regs(cpu, mec_reginfo);
-+    }
-+
-     if (cpu_isar_feature(any_predinv, cpu)) {
-         define_arm_cp_regs(cpu, predinv_reginfo);
-     }
+diff --git a/tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev b/tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy b/tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/tests/data/acpi/aarch64/virt/IORT.smmuv3-dev b/tests/data/acpi/aarch64/virt/IORT.smmuv3-dev
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy b/tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8b..2e3e3ccdce 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,5 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy",
++"tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev",
++"tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy",
++"tests/data/acpi/aarch64/virt/IORT.smmuv3-dev",
 -- 
-2.34.1
+2.47.0
 
 

@@ -4,87 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A653C83F0F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5952FC83F10
 	for <qemu-arm@archiver.kernel.org>; Tue,  8 Jul 2025 21:19:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZFGt-0001Sw-9V; Tue, 08 Jul 2025 16:50:35 -0400
+	id 1uZFF6-00019o-B0; Tue, 08 Jul 2025 16:48:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uZE0B-0000wi-6P
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:29:29 -0400
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uZE02-0002fl-As
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 15:29:08 -0400
-Received: by mail-lj1-x229.google.com with SMTP id
- 38308e7fff4ca-32f1aaf0d60so40115581fa.1
- for <qemu-arm@nongnu.org>; Tue, 08 Jul 2025 12:29:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752002942; x=1752607742; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=GHvIfEToA34AUrJx/MLc8GOT8YL8A2v7KBo+787ye5o=;
- b=FrY3fTZy0dUSoU6EqOovvsfWhR1J9c3ifL67THjc0OIuLW3N7XWp58F10WI8DsAc+a
- EG5QIpWRQaSgsm9Fgr+Qj0kwAQSu20y7X/tvryRnTO0lzK0nf9Wdu5UKeLdjJ9HQ3UYB
- vLV1qFtDEs2Q2Sa0LtZgnqPBKN9Ki2v360lzVnjHCrbFa+S3Oi/BaCJRGo/ZHdsHFHkr
- 3OuOSD04nY2b4m/4xrphCCrW5ddUxuO7cCKigXMQAn6kU2bu+ORcx5r9yT+zkr9JFNg/
- 3cN4MT97VBt3MF9duVeU92GQ7DsH5fm6pxqqeJtsxdbtBkD5bRQ63lzfe4OSQOBWITrG
- VUnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752002942; x=1752607742;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=GHvIfEToA34AUrJx/MLc8GOT8YL8A2v7KBo+787ye5o=;
- b=VjeOcfuROHp917NswUCZ8gkgeQnYfu5jixpXNYHJHsg0aDyKPYasF9dDa+Bgzn//3M
- yFhZ8X+B2Cq59mg7E33WIUrjrskwVXDYgkSIwlZkl5mQGyLDpbe8eBu5h+GH7Fgi5Br3
- PZXgrh7/KjvAs6A1Gq8czGbyNMoDW1M2E3P6BewDSIAnKW4HO7KtxHOUfSBi28DhvL4H
- jDV3Gxb9rO4m9Ysb8E8V1ST2qcse7mC6RcOT3kx4W1iHpJIxj6Wk8iRWJwn9NNoIpWGr
- OVISG1pMelN31TbVx8Eu0m6ypeWSLSl1egvJjD2a9aFTS/adNpQ6E0zYAE+WWU0Yq004
- v8JA==
-X-Gm-Message-State: AOJu0YwF8V15Op09VtbHq3YTqeo+QjLk/pkPIznk3jNpbDZfCn4Xtb69
- JTfGCoIPRq7pu4yiXPoWkmHWVVyZb+gGDCR6X3JLVoa60FnH0qqNxT0ECMl671Q4rSVfNjWnEyO
- XKS99
-X-Gm-Gg: ASbGncsQsNoMhcJE3m7dxM6OhqK/QDv1ijLlteEbo8OxAhLwD+x0QS+oBmANS5EJje5
- y+GONvAV2KEwZhXmcoXXtXKhDwJOB9c9GOYTyviUw/NnyMqTTmTcAXLTr9Wk4YqjU69jwi0GL8O
- Lv15AjBs10h/TTfaPSVvbHWQVrfJ1n2Xj/D5TIXLNpK/4K1srk9NSLTRCJAu5ZfESje//tSGv4w
- 8o07ihP4CcWiUOfL+0KOTU34vM3iioeLs1Zem0TXGTdCHz5LG4nUPPBlDkFesObzvwapfDabDpZ
- 5zr3M8DHRmNWLYoH/HAPTqiRwwOWpVnKJDxfrHM2n8Bpyh1bRheRvw4W5o6ExnEYm77U
-X-Google-Smtp-Source: AGHT+IG+A4X0nnNLJ5sc21KLUiKDswTMHI3fl5bj3zzRZZnPwB57X4e5Jvn63jQmNfRazRUKGQKb1Q==
-X-Received: by 2002:a05:6000:400b:b0:3a4:e8c4:7a78 with SMTP id
- ffacd0b85a97d-3b5ddf02cc6mr1893228f8f.52.1751975562263; 
- Tue, 08 Jul 2025 04:52:42 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-454cd4a68ebsm19731255e9.39.2025.07.08.04.52.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Jul 2025 04:52:41 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v2 1/3] hw/intc/arm_gicv3_dist: Implement GICD_TYPER2 as 0
-Date: Tue,  8 Jul 2025 12:52:36 +0100
-Message-ID: <20250708115238.667050-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250708115238.667050-1-peter.maydell@linaro.org>
-References: <20250708115238.667050-1-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uZDrA-0007ig-Lj; Tue, 08 Jul 2025 15:20:00 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1uZDr0-000883-E0; Tue, 08 Jul 2025 15:19:50 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bc4xn1Ngpz6D8h8;
+ Tue,  8 Jul 2025 23:38:05 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 1C9ED1404C5;
+ Tue,  8 Jul 2025 23:41:15 +0800 (CST)
+Received: from A2303104131.china.huawei.com (10.203.177.241) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 8 Jul 2025 17:41:05 +0200
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
+ <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
+ <imammedo@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <smostafa@google.com>, <gustavo.romero@linaro.org>, <mst@redhat.com>,
+ <marcel.apfelbaum@gmail.com>, <linuxarm@huawei.com>,
+ <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
+Subject: [PATCH v7 00/12] hw/arm/virt: Add support for user creatable SMMUv3
+ device
+Date: Tue, 8 Jul 2025 16:40:43 +0100
+Message-ID: <20250708154055.101012-1-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::229;
- envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x229.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Originating-IP: [10.203.177.241]
+X-ClientProxiedBy: kwepems500001.china.huawei.com (7.221.188.70) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) AC_FROM_MANY_DOTS=2.197, BAYES_00=-1.9,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,56 +71,209 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The GIC distributor registers GICD_TYPER2 is present when the
-GICv4.1 is implemented, and RES0 otherwise. QEMU's TCG implementation
-is only GICv4.0, so this register is RES0. However, since it's
-reasonable for GICv4.1-aware software to read the register, expecting
-the zero for GICv3 and GICv4.0, implement the case to avoid it being
-logged as an invalid guest read.
+Hi All,
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
----
- hw/intc/gicv3_internal.h | 1 +
- hw/intc/arm_gicv3_dist.c | 9 +++++++++
- 2 files changed, 10 insertions(+)
+Changes from v6:
+https://lore.kernel.org/qemu-devel/20250703084643.85740-1-shameerali.kolothum.thodi@huawei.com/
 
-diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index bc9f518fe86..fc586524f56 100644
---- a/hw/intc/gicv3_internal.h
-+++ b/hw/intc/gicv3_internal.h
-@@ -31,6 +31,7 @@
- #define GICD_CTLR            0x0000
- #define GICD_TYPER           0x0004
- #define GICD_IIDR            0x0008
-+#define GICD_TYPER2          0x000C
- #define GICD_STATUSR         0x0010
- #define GICD_SETSPI_NSR      0x0040
- #define GICD_CLRSPI_NSR      0x0048
-diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
-index d8207acb22c..a7d10ed9493 100644
---- a/hw/intc/arm_gicv3_dist.c
-+++ b/hw/intc/arm_gicv3_dist.c
-@@ -431,6 +431,15 @@ static bool gicd_readl(GICv3State *s, hwaddr offset,
-             (0xf << 19) | itlinesnumber;
-         return true;
-     }
-+    case GICD_TYPER2:
-+        /*
-+         * This register only exists for GICv4.1, which QEMU doesn't
-+         * currently emulate. On GICv3 and GICv4 it's defined to be RES0.
-+         * We implement as read-zero here to avoid tracing a bad-register-read
-+         * if GICv4.1-aware software reads this ID register.
-+         */
-+        *data = 0;
-+        return true;
-     case GICD_IIDR:
-         /* We claim to be an ARM r0p0 with a zero ProductID.
-          * This is the same as an r0p0 GIC-500.
+1. Fixed the warning case for DT support, reported by Eric(patch #8).
+2. Picked up R-by's and T-by's. Thanks!
+
+Please take a look and let me know. I think this is in a good shape now
+for 10.1.
+
+Thanks,
+Shameer
+
+Changes from v5:
+https://lore.kernel.org/qemu-devel/20250623094230.76084-1-shameerali.kolothum.thodi@huawei.com/
+
+1. Rebased to target-arm.next and resolved conflicts with the series 
+   [PATCH-for-10.1 v6 0/9] hw/arm: GIC 'its=off'.
+2. While at it, noticed an issue with RC id mappings creation
+   and patch #1 is a fix for that.
+3. Patches 3 and 4 have changes because of the conflict resolution with the
+   above series. I have retained the R-by tags, but encourage all to take
+   another look in case I missed anything.
+4. Collected R-by and T-by tags. Thanks!.
+
+Changes from v4:
+https://lore.kernel.org/qemu-devel/20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com/
+
+Major changes from v4:
+
+1. Added stricter validation for PCI buses associated with the SMMU.
+   Only the default PCIe Root Complex (pcie.0) and additional root
+   complexes created using pxb-pcie (see patch #1) are allowed.
+
+2. While testing this series with a setup involving multiple PCIe root
+   complexes using pxb-pcie, I encountered an issue related to IOMMU
+   ops resolution. Consider the below configuration, where an
+   arm-smmuv3 device is associated with the default root complex pcie.0,
+   and an additional pxb-pcie-based root complex (pcie.1) is added
+   without any associated SMMU:
+
+   -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.1 \
+   ...
+   -device pxb-pcie,id=pcie.1,bus_nr=8,bus=pcie.0 \
+   -device pcie-root-port,id=pcie.port1,chassis=2,bus=pcie.1 \
+   -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.2 \
+   ...
+   -device virtio-net-pci,bus=pcie.0,netdev=net0,id=virtionet.0 \
+   -device virtio-net-pci,bus=pcie.port1,netdev=net1,id=virtionet.1
+
+   The guest boots fine, and virtionet.0(behind the SMMUV3) bring up
+   is successful. However, attempting to bring up virtionet.1
+   (behind pcie.1, which lacks a connected SMMU) results in a failure:
+
+   root@ubuntu:/# dhclient enp9s0
+   arm-smmu-v3 arm-smmu-v3.0.auto: event 0x02 received:
+   arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000090000000002
+   arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000000000000000
+   arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000000000000000
+   arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000000000000000
+   arm-smmu-v3 arm-smmu-v3.0.auto: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x900 ssid: 0x0
+   virtio_net virtio1 enp9s0: NETDEV WATCHDOG: CPU: 2: transmit queue 0 timed out 5172 ms
+   virtio_net virtio1 enp9s0: TX timeout on queue: 0, sq: output.0, vq: 0x1, name: output.0, 5172000 usecs ago
+   ...
+
+   Debug shows that QEMU currently registers IOMMU ops for bus using
+   pci_setup_iommu(). However, when retrieving IOMMU ops for a device
+   via pci_device_get_iommu_bus_devfn(), the function walks up to the 
+   parent_dev and fetches the IOMMU ops from the parent, even if the
+   current root bus has none configured.
+
+   This works today because existing IOMMU models in QEMU are globally 
+   scoped, and pxb-pcie based extra root complexes can use the
+   bypass_iommu property to skip translation as needed.
+
+   However, with this series introducing support for associating
+   arm-smmuv3 devices with specific PCIe root complexes, this
+   becomes problematic. In QEMU, pxb-pcie is implemented as a synthetic
+   root complex whose parent_dev is pcie.0. As a result, even though
+   pcie.1 has no SMMU attached, pci_device_get_iommu_bus_devfn()
+   incorrectly returns the IOMMU ops associated with pcie.0 due to
+   the fallback mechanism via parent_dev. This causes devices on
+   pcie.1 to erroneously use the address space from pcie.0's SMMU,
+   leading to failures like the one above.
+
+   To address this, patch #6 in the series introduces a new helper 
+   function pci_setup_iommu_per_bus(), which explicitly sets the 
+   iommu_per_bus field in the PCIBus structure. This allows 
+   pci_device_get_iommu_bus_devfn() to retrieve IOMMU ops based 
+   on the specific bus.
+
+   Not sure this is the correct approach or not. If there is a better
+   way to handle this, please let me know .
+
+3. Picked up few R-by tags where the patch content has not changed much.
+
+4. Dropped T-by from Nathan for some patches as things have changed a bit.
+   @Nathan, apprecaite if you have time to rerun the tests.
+
+5. Added a bios table tests for both legacy SMMUv3 and new SMMMv3 devices.
+   See last few patches.
+
+Cover letter:
+
+This patch series introduces support for a user-creatable SMMUv3 device
+(-device arm-smmuv3) in QEMU.
+
+The implementation is based on feedback received from the RFCv2[0]:
+"hw/arm/virt: Add support for user-creatable accelerated SMMUv3"
+
+Currently, QEMU's SMMUv3 emulation (iommu=smmuv3) is tied to the machine
+and does not support instantiating multiple SMMUv3 devices—each associated
+with a separate PCIe root complex. In contrast, real-world ARM systems
+often include multiple SMMUv3 instances, each bound to a different PCIe
+root complex.
+
+This series allows to specify multiple SMMUv3 instances as below,
+
+ -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0
+  ...
+ -device arm-smmuv3,primary-bus=pcie.1,,id=smmuv3.1
+
+The multiple SMMUv3 instance support lays the groundwork for supporting
+accelerated SMMUv3, as proposed in the aforementioned RFCv2[0]. The
+proposed accelerated support will be an optional property like below,
+-device arm-smmuv3,primary-bus=pcie.1,accel=on,..
+
+Please note, the accelerated SMMUv3 support is not part of this series
+and will be sent out as a separate series later on top of this one.
+
+This series also,
+
+-Supports either the legacy iommu=smmuv3 option or the new
+  "-device arm-smmuv3" model.
+  -Adds device tree bindings for the new SMMUv3 device on the arm/virt
+   machine only, and only for the default pcie.0 root complex.
+   (Note: pxb-pcie root complexes are currently not supported with the
+    device tree due to known limitations[1].)
+
+Example usage:
+  -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0
+  -device virtio-net-pci,bus=pcie.0
+  -device pxb-pcie,id=pcie.1,bus_nr=2
+  -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.1
+  -device pcie-root-port,id=pcie.port1,bus=pcie.1
+  -device virtio-net-pci,bus=pcie.port1
+
+Please take a look and let me know your feedback.
+
+Thanks,
+Shameer
+[0]:https://lore.kernel.org/qemu-devel/20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com/
+[1]:https://lore.kernel.org/qemu-devel/20230421165037.2506-1-Jonathan.Cameron@huawei.com/
+
+
+Nicolin Chen (1):
+  hw/arm/virt: Add an SMMU_IO_LEN macro
+
+Shameer Kolothum (11):
+  hw/arm/virt-acpi-build: Don't create ITS id mappings by default
+  hw/arm/smmu-common: Check SMMU has PCIe Root Complex association
+  hw/arm/virt-acpi-build: Re-arrange SMMUv3 IORT build
+  hw/arm/virt-acpi-build: Update IORT for multiple smmuv3 devices
+  hw/arm/virt: Factor out common SMMUV3 dt bindings code
+  hw/pci: Introduce pci_setup_iommu_per_bus() for per-bus IOMMU ops
+    retrieval
+  hw/arm/virt: Allow user-creatable SMMUv3 dev instantiation
+  qemu-options.hx: Document the arm-smmuv3 device
+  bios-tables-test: Allow for smmuv3 test data.
+  qtest/bios-tables-test: Add tests for legacy smmuv3 and smmuv3 device
+  qtest/bios-tables-test: Update tables for smmuv3 tests
+
+ hw/arm/smmu-common.c                          |  35 ++-
+ hw/arm/smmuv3.c                               |   2 +
+ hw/arm/virt-acpi-build.c                      | 207 +++++++++++++-----
+ hw/arm/virt.c                                 | 111 +++++++---
+ hw/core/sysbus-fdt.c                          |   3 +
+ hw/pci-bridge/pci_expander_bridge.c           |   1 -
+ hw/pci/pci.c                                  |  31 +++
+ include/hw/arm/smmu-common.h                  |   1 +
+ include/hw/arm/virt.h                         |   1 +
+ include/hw/pci/pci.h                          |   2 +
+ include/hw/pci/pci_bridge.h                   |   1 +
+ include/hw/pci/pci_bus.h                      |   1 +
+ qemu-options.hx                               |   7 +
+ tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev  | Bin 0 -> 10162 bytes
+ .../data/acpi/aarch64/virt/DSDT.smmuv3-legacy | Bin 0 -> 10162 bytes
+ tests/data/acpi/aarch64/virt/IORT.smmuv3-dev  | Bin 0 -> 364 bytes
+ .../data/acpi/aarch64/virt/IORT.smmuv3-legacy | Bin 0 -> 276 bytes
+ tests/qtest/bios-tables-test.c                |  86 ++++++++
+ 18 files changed, 408 insertions(+), 81 deletions(-)
+ create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev
+ create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy
+ create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-dev
+ create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy
+
 -- 
-2.43.0
+2.47.0
 
 

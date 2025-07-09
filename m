@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B89F9C83F14
-	for <qemu-arm@archiver.kernel.org>; Wed,  9 Jul 2025 20:27:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76B03C83F0A
+	for <qemu-arm@archiver.kernel.org>; Wed,  9 Jul 2025 20:30:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZbNY-0005Km-A8; Wed, 09 Jul 2025 16:26:56 -0400
+	id 1uZbR1-0008Pg-GN; Wed, 09 Jul 2025 16:30:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uZbNR-0005Jh-1L
- for qemu-arm@nongnu.org; Wed, 09 Jul 2025 16:26:49 -0400
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
+ id 1uZbQs-0008Gh-GC
+ for qemu-arm@nongnu.org; Wed, 09 Jul 2025 16:30:22 -0400
+Received: from mail-oo1-xc34.google.com ([2607:f8b0:4864:20::c34])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uZbNO-0007pI-IA
- for qemu-arm@nongnu.org; Wed, 09 Jul 2025 16:26:48 -0400
-Received: by mail-oi1-x22c.google.com with SMTP id
- 5614622812f47-40b32b6af9eso194106b6e.1
- for <qemu-arm@nongnu.org>; Wed, 09 Jul 2025 13:26:45 -0700 (PDT)
+ id 1uZbQp-0008Ku-KG
+ for qemu-arm@nongnu.org; Wed, 09 Jul 2025 16:30:22 -0400
+Received: by mail-oo1-xc34.google.com with SMTP id
+ 006d021491bc7-611a7c617a7so105431eaf.1
+ for <qemu-arm@nongnu.org>; Wed, 09 Jul 2025 13:30:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752092804; x=1752697604; darn=nongnu.org;
+ d=linaro.org; s=google; t=1752093018; x=1752697818; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=bXT2dHDB7AvyhAC7jq6WSGFWH56BrQpqzseQhdvvmsw=;
- b=URro7wi4UPa3HCxJnCS2ScvYY+kp98O+ubAhJea4xSxe6NJr0GBHi0RsgBBHsmaN41
- HrfmZlksdjhX/RT7ZrtQgeUtVp/VI+fpu57R+GyRNlv4gOJL0ZRHZV8fB/6G2pQ7gNbk
- AbpQ3475chPhoHpWyDmjqgL2wVN2AHNxghNutVQ0a/b97fzQT35HrbDJ2ul5OEF1pUGA
- kYq6T2v2SdyNCSrndgQ/XUf4q2YKb8AzenkxJvfs6FnCz0zSUG/+yQcGjqaBuoFo8ZGz
- RjcDNd0GAACQLkHRgbUAzxj/SxD2v7MZQku/n2m5SBAw7SnZBh+CDM3lvYSygtWgeBWR
- WpUA==
+ bh=sFq1M2Yb8Dy9vxNT3yHIB7iF41fhCoqri1n1e59YlL0=;
+ b=NmXkhoj+Nd3YmXLlQD5mZTNVgtozMzcEAYHmYxJiiOBYyFB/NqBMUAYzsPQ0OcFbWI
+ 8UI73xeNc+kXhpLC6GYC3KfvrKVteftQOUCByiuDBBmLu7avGFZZmURO0mrxTAymazyi
+ /786emVc1QwlcHJTADU7nX11QhQARgdZIArbT4McDk4R6JInQJN0Yt5bxxWsyw5MYnD1
+ gPvNlYonBv2lRqKRnYESqFafORQJ74Wsl/MxuIBwPuj3hJT6ebffzNU96cxh0Zz2ggEq
+ g1IAZywAfgpMhs2VdqNcO82y0uYRm0DnZ0Tyaa+xJnZdzWHpwH3Lb2rnCiJT/mtyauuf
+ oG8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752092804; x=1752697604;
+ d=1e100.net; s=20230601; t=1752093018; x=1752697818;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=bXT2dHDB7AvyhAC7jq6WSGFWH56BrQpqzseQhdvvmsw=;
- b=wv4/HCZ9o3wttWKuhz2Ce0fkiP/U3WOUkLOuyzOzzLN5LN7xhou1WxdVMxiwy96NEw
- JQ6jVFQdsjWzbWv3jjvBHpp92SfTyS6AWWX1YSE0U5kezfxai3LqoKPyBWRbyGDI6gDB
- TE3OMuDQh1vEeQSZVbRcSugHsFkhwy77B1NO/GQuBdbpDUWM77VvbzX002SN1Be5mfoK
- Su3EyP03xuHXhKKUH6hfvL+ywZcqZcDuTGZ4S53hmVZrrVQz2l39TXgx26Ti/Ecuwo8Z
- n9GYy0NzHaZ2ojSY3IxZuTtPyL9tK0C1Kag1p1wF8nQgYte67qGNsXdHcPAHYTKa2Za7
- p4sg==
+ bh=sFq1M2Yb8Dy9vxNT3yHIB7iF41fhCoqri1n1e59YlL0=;
+ b=rneKAoAlVfYx7zpwJIyf3SULeQI7HEQ2WonhMcDdeKnsvOz89mOh0FUm0XDfjyMNZE
+ I1WSB09yp9IW5ZmMLexlv17ZTCGgYd1dlEI89Yy7uNhBC/LPvv1D6PvBMz4A0J5RSuUn
+ ERU5235jhVQIuC9yS1y0JdeEhqiVL8q1WB/MdmQtxXQNUprPpUIsxV24FthJLA3Ap+Mp
+ LbUV3+yx8OQo1pAYIkehdTRwTX/gHGsYgDeJSSLeOC2tApoCbjwwFz8WiSfUGIiy+l9I
+ Qk5wbwdM/EU6oVct/d7fDYBaYucB2OqP4S6S71W7Wsqc4GBHGg7xwRFAXedM+RnTMi4m
+ QXWg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW2eBTEIjLbtok5i8lVFkOlz2q/LuzZIY11/GpblGV/yxkuxPrUNWQJXfnb0QyFFN9hwkB9RdE0SA==@nongnu.org
-X-Gm-Message-State: AOJu0YxkUs+LlYyBr8k190GLgcCMzyKpxOMxGBNKzbyXHHCUPGoxSkqz
- M1KkCkQgGI9mNc9tL2qrYmoy6TOIhAmMBbiUFt8cHED4uDXvmZqKIdL5ppS4CSKT8+I=
-X-Gm-Gg: ASbGncu+dtHkCdOhb2UQYecAhU7EmBR/tmfs7cDJD8Bk5Ki/Cou5jTsCBFONDqu2/AR
- hZogTJQcKrHybll1B4y4v1EeRGvwY9MigaZoxZwhv4EOt5q8WHS44FKqAaFiMP5rBu4XvL9fHlr
- FqyugveKxiOZglc4Ay/YQV59sFQTExlQaian+XT/HdTXa6/wL6gECmVgndzc8CR+TLvFSuM8hgT
- xWNm9Hs4UUcQEaU6vB+P0lj8L3NV+XhBvMY7ciyPvPyTOqxltlSYhBysXuv2z3BIPAhTQQhhQmi
- JJZ9gZtPV5B/UctzAP3KfcYyDA+PoWhDmv6tRZQMmAqLw5fiGlw+Zlzh8AkGa9ATzxdmc8u+Vfs
- B6sI=
-X-Google-Smtp-Source: AGHT+IH/nEutk46BwO7z/kbglbjFlEcwPcp+Ut/53JFT0kFqV951LnJksf2C2VfmxIZoB/Rdkj6zxg==
-X-Received: by 2002:a05:6808:5144:b0:409:f8e:7284 with SMTP id
- 5614622812f47-412b9f54025mr2986140b6e.6.1752092804535; 
- Wed, 09 Jul 2025 13:26:44 -0700 (PDT)
+ AJvYcCXyrbvGjDhLR6yvXE/Y/OkeZuSwwapXKRQO4mhDvBrAzBBxD5cl/7n0y/NZHp473FklVu+3tBbnyw==@nongnu.org
+X-Gm-Message-State: AOJu0YwbnaecpRvhsv8WtLQ8s4kWmG0UVxqzZJC/4/D/j7rX6DJpH7ZL
+ 4fbIDeJVrgt0HpBsEM8aXdOmAvE/xyEG+y05TE1MsTiIoDcP3VpWlz+1TDNjdqjawEc=
+X-Gm-Gg: ASbGncvIlGf8TCaR7xfVqVYlgm2b4I31t5fAEiUxvddiDeK6AuS2SEUIv+aZBff9LHM
+ lZPeIHepmqJbXVIV+x8IOr08q1XZMh3tFufrvCyHXqv5jQrTUJkMWziktE1mXK7nw/vvk7VQR+v
+ zOIdLyT1XTRBO/Gpe6Ybu1GqAF+4lwZoRnSexyX1BgsSYCHzj6aLihzzbDrNouvc7gNBh0KrNJe
+ IdwNKKhSsKK8OUFs20igSf0Qdft9ZfizgidEAcj7vRbgqw9mYOpxHMGiZmRlPDMSE0KKGGSkaNf
+ 7BujC6G1v5pSKXMWNqY4QovIJYblbzlQzXmVEDV4wP/o1MXDdBQR2aXRqJWKwpx8lRfrnGiObnR
+ WwvE6wtubPNC38A==
+X-Google-Smtp-Source: AGHT+IE6Nk5oZlVPktKzUwkwxDPNnAMmvgBOt355lPF4pVWUXI1kypJ0Cv7bo3Qb24D3Fupl7HVaUg==
+X-Received: by 2002:a05:6820:6aea:b0:613:c7cd:3b2b with SMTP id
+ 006d021491bc7-613d6f4b94emr1027740eaf.2.1752093017701; 
+ Wed, 09 Jul 2025 13:30:17 -0700 (PDT)
 Received: from [172.20.0.130] ([187.217.227.247])
  by smtp.gmail.com with ESMTPSA id
- 5614622812f47-40d02a32a89sm2051509b6e.8.2025.07.09.13.26.43
+ 006d021491bc7-6138e5c1db3sm2065273eaf.35.2025.07.09.13.30.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 09 Jul 2025 13:26:44 -0700 (PDT)
-Message-ID: <82431249-aa2f-4d54-a50b-dce0f69161ae@linaro.org>
-Date: Wed, 9 Jul 2025 14:26:42 -0600
+ Wed, 09 Jul 2025 13:30:17 -0700 (PDT)
+Message-ID: <d05d66b3-5750-49e7-8d24-c72cb7e8aece@linaro.org>
+Date: Wed, 9 Jul 2025 14:30:14 -0600
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/6] target/arm: Add FEAT_MEC registers
+Subject: Re: [PATCH v4 3/6] target/arm: Add FEAT_SCTLR2
 To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
  alex.bennee@linaro.org
 Cc: qemu-devel@nongnu.org
 References: <20250709180326.1079826-1-gustavo.romero@linaro.org>
- <20250709180326.1079826-3-gustavo.romero@linaro.org>
+ <20250709180326.1079826-4-gustavo.romero@linaro.org>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250709180326.1079826-3-gustavo.romero@linaro.org>
+In-Reply-To: <20250709180326.1079826-4-gustavo.romero@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22c;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x22c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c34;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc34.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,66 +106,22 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 7/9/25 12:03, Gustavo Romero wrote:
-> Add all FEAT_MEC registers.
-> 
-> To work properly, FEAT_MEC also depends on FEAT_SCTLR2 and FEAT_TCR2,
-> which are not implemented in this commit. The bits in SCTLR2 and TCR2
-> control which translation regimes use MECIDs, and determine which MECID
-> is selected.
-> 
-> FEAT_MEC also requires two new cache management instructions, not
-> included in this commit, that will be implemented in subsequent commits.
-> 
-> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-> ---
->   target/arm/cpu-features.h |  5 +++
->   target/arm/cpu.h          | 11 ++++++
->   target/arm/helper.c       | 70 +++++++++++++++++++++++++++++++++++++++
->   3 files changed, 86 insertions(+)
-> 
-> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-> index 5876162428..552d8757b7 100644
-> --- a/target/arm/cpu-features.h
-> +++ b/target/arm/cpu-features.h
-> @@ -594,6 +594,11 @@ static inline bool isar_feature_aa64_hbc(const ARMISARegisters *id)
->       return FIELD_EX64_IDREG(id, ID_AA64ISAR2, BC) != 0;
->   }
+> @@ -7816,6 +7818,78 @@ static const ARMCPRegInfo actlr2_hactlr2_reginfo[] = {
+>         .resetvalue = 0 },
+>   };
 >   
-> +static inline bool isar_feature_aa64_mec(const ARMISARegisters *id)
+> +static CPAccessResult sctlr2_el2_access(CPUARMState *env,
+> +                                        const ARMCPRegInfo *ri,
+> +                                        bool isread)
 > +{
-> +    return FIELD_EX64_IDREG(id, ID_AA64MMFR3, MEC) != 0;
-> +}
-> +
->   static inline bool isar_feature_aa64_mops(const ARMISARegisters *id)
->   {
->       return FIELD_EX64_IDREG(id, ID_AA64ISAR2, MOPS);
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 0f64c7b163..a93eebe077 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -576,6 +576,15 @@ typedef struct CPUArchState {
->   
->           /* NV2 register */
->           uint64_t vncr_el2;
-> +
-> +        /* MEC registers */
-> +        uint64_t mecid_p0_el2;
-> +        uint64_t mecid_a0_el2;
-> +        uint64_t mecid_p1_el2;
-> +        uint64_t mecid_a1_el2;
-> +        uint64_t mecid_rl_a_el3;
-> +        uint64_t vmecid_p_el2;
-> +        uint64_t vmecid_a_el2;
->       } cp15;
->   
->       struct {
-> @@ -2424,6 +2433,8 @@ FIELD(MFAR, FPA, 12, 40)
->   FIELD(MFAR, NSE, 62, 1)
->   FIELD(MFAR, NS, 63, 1)
->   
-> +#define MECID_WIDTH 16
+> +    if (arm_current_el(env) < 3 && !(env->cp15.scr_el3 & SCR_SCTLR2EN)) {
+> +        return CP_ACCESS_TRAP_EL3;
+> +    }
+> +    return CP_ACCESS_OK;
+> +};
 
-This could go in internals.h.
+Stray ;
+And on every other function until sctlr2_reginfo.
 
 Otherwise,
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>

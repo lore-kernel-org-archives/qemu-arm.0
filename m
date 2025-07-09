@@ -4,110 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D677C8303C
-	for <qemu-arm@archiver.kernel.org>; Wed,  9 Jul 2025 02:19:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB571C83F03
+	for <qemu-arm@archiver.kernel.org>; Wed,  9 Jul 2025 06:36:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZKOh-0007ZV-9g; Tue, 08 Jul 2025 22:18:59 -0400
+	id 1uZOOj-0004Cf-2F; Wed, 09 Jul 2025 02:35:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uZKOM-0007Jk-6g
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 22:18:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1uZKOJ-0004ui-DU
- for qemu-arm@nongnu.org; Tue, 08 Jul 2025 22:18:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752027513;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=rFnG1aR5KJKsjJMN6oGXhtKh6+SHVAfC0zZCRmExiwM=;
- b=KMRgqUChziRCzIq8eCMUnh3u+9W1YaGfPQjcamDSouwN/gFHV8lgEbhcWNPOk2vf/iHmYH
- k6RKdstgBLjx5Ixq10RPQAtGEScD52ElHDnTKB8zIN3OeZbkPP1WEmH5d6V/0ZMVy93ztN
- veO7Gc3Gp32e9WhTgLjNTtqVX22bx4Q=
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-472-1H9nsYrWNu2e8zLyg-GM7A-1; Tue, 08 Jul 2025 22:18:30 -0400
-X-MC-Unique: 1H9nsYrWNu2e8zLyg-GM7A-1
-X-Mimecast-MFC-AGG-ID: 1H9nsYrWNu2e8zLyg-GM7A_1752027509
-Received: by mail-pl1-f198.google.com with SMTP id
- d9443c01a7336-23dc7d3e708so17308795ad.3
- for <qemu-arm@nongnu.org>; Tue, 08 Jul 2025 19:18:30 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1uZONe-0003uZ-59
+ for qemu-arm@nongnu.org; Wed, 09 Jul 2025 02:34:30 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1uZONb-0000DD-7A
+ for qemu-arm@nongnu.org; Wed, 09 Jul 2025 02:34:09 -0400
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-60c01b983b6so1203899a12.0
+ for <qemu-arm@nongnu.org>; Tue, 08 Jul 2025 23:34:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1752042844; x=1752647644; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=3RhvjbPOtBMHAj5bLY/qMrZX4SI68G+AtrqZhXIdYK0=;
+ b=uqXQVUii+ipEMexwieN1urzZya/mi1uI59zHYsEu3h5ZLOou4HeIUCjAN6KGP4/kcJ
+ Yq6IVBcc0UR9rlMHmSXgU02fe1Ffna2mrLkq/R0iJILskYBrYlUUXAsyVpZFYDjuh3mk
+ TuSEO5AYVICX0ol9DZvb2xqwwrzrjE3cTUDEFSGy+4C+7kW3h5NabJEMtL07tSK9N0fC
+ xMJpsnerUy22O8hG/EBn//fXajd1GJoLCdqFckyBwFasxAf/IPtCxEBSWMTgTG6ww5ZU
+ rVY8pGxuI3HYH2VEkD6i0490KkjJZk7Y5HBNFNDaYv6sg7RzDzbZFvG5bLL9BsaR1bLw
+ zE2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752027509; x=1752632309;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=rFnG1aR5KJKsjJMN6oGXhtKh6+SHVAfC0zZCRmExiwM=;
- b=LtTM/bh5MJHBpnPJP2Kw0lFjZRbM4dcClMPTpoCraIpaz5O5B52ljT1bMsndly2wtE
- kZaQqfod5F+I7MB0ytF5vVKYZbUJ/h+z925PPp/2hvQgL/UiOmfr5QqB7G1nrSHcOs0J
- /+hke4KJRgJuzDzsdCSMKwcA8V/X4rXNGPv1luLiAMSCh4n2kK3kdKYDo24VLsruYwIY
- VuggKysNw/ojlKU5oSTygrIqX4c+GJYvACT6kRkKt/QR0hGpuMLEyx527PJFLFJ/LHLS
- BLQIpco2W+nqu0H/p/UC4rIUv1iKYkvWvpyl7YmkYbLS0UMZTzZQj5bSDZzrQqo+KY80
- G55g==
-X-Gm-Message-State: AOJu0YzUO0MlUEadw4tx9WGU6aJH+s9V23/mURseizbEd+GqRkkmtC6+
- R2iwEdeD0Nkqe58KK4MZuoiwUNuORBPTWYZjLef185FovMJ3KJaRshOZhR1JMeTc1p/YlouHeC0
- TVlEu+aD8bADbARVJ6LGhNu2gBZYnHepyiFPGTCp9oFRt89WYj41mGik8CTm7Z4TgwGK5DB3tr+
- QOXex9w8LmHU9wvlsz/Q/4qNCi62CSsXDor/Gh/g==
-X-Gm-Gg: ASbGncv+IufTF8Gg0otHeDRfP7raHzFXezkIiwjJqNmp+EQQX3GvH3vHTle+lzaOfs5
- nVWMsgV+/Wbbf0eI81BQfLqKoQZZwTgupudmxazvFy5TQS1bGb9dNDnqUdg9oJIWTlDz0sA9Foh
- fSRs3BIa2EILDibkvz3lZNsdNg49X2cIvegaY6yTF6yDIn0flBZH103F54OjSD6A7BQ4eVT5inb
- ZE/88gcGysB1wM4kcwuD5bSL6WgVHDp8k1Yf3gUCZVKvDmqryPFrp/roeK/ybi0XwSCHwKb6V0s
- XSeEvEd1e5aB5sGoXSr6UnR8
-X-Received: by 2002:a17:902:dac8:b0:235:880:cf8a with SMTP id
- d9443c01a7336-23ddb1a48b3mr10863745ad.15.1752027508716; 
- Tue, 08 Jul 2025 19:18:28 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF758b2ibND/x6dXtOrEBiormeDqvjQmBzEsUyb5F/6CNFHpZJPSQps2QEHUWnUNpXtbfGZCw==
-X-Received: by 2002:a17:902:dac8:b0:235:880:cf8a with SMTP id
- d9443c01a7336-23ddb1a48b3mr10863235ad.15.1752027508249; 
- Tue, 08 Jul 2025 19:18:28 -0700 (PDT)
-Received: from [10.72.116.6] ([209.132.188.88])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-31c300f7160sm486260a91.43.2025.07.08.19.18.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Jul 2025 19:18:27 -0700 (PDT)
-Message-ID: <bae99e88-56da-4182-b409-de1304b9ab7b@redhat.com>
-Date: Wed, 9 Jul 2025 10:18:18 +0800
+ d=1e100.net; s=20230601; t=1752042844; x=1752647644;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=3RhvjbPOtBMHAj5bLY/qMrZX4SI68G+AtrqZhXIdYK0=;
+ b=oKWtkZpve7pCFVNYLaLwhIRJRFbqGZpCQwSUDi9h1eM91ftpwZc4gCBiG3QDVfJ+lR
+ yQKysrEg03OqSCor3wZYnbqMY7S0lvTAA3GA2XHfzalEFhvc3bg9FbTtKpCeS9Ro3ara
+ fz7y1P7QMoi1Ad7Q1CiDT/MjXeu1fgcXzP3G5qxgFeL3CFJM+w/bth8APOPyw4o5/ydl
+ JOGgh7tPL0MpJNrniaeOgV1KSYlq7CbHQuE3oibna8xqcPOfeTPGJkjBMaQhRaKC4lXs
+ b2naADUrOirykKZXWoeKPsWRmXNctG9Lg6tBwS3R39tZfWdZ79OptLwIidR6zByD/ILr
+ RgyQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVq4WJYUYulzYbdG2TjJl5vLFp2Z3BjPMgyEu9lNgKIHTJqBSGj1IS5eI6HSxSF84ENICZBy1CibA==@nongnu.org
+X-Gm-Message-State: AOJu0YzTUvxiEV0/7g4GzvbNG7neQigbphzIT/Jmj18dDZtLvnc+KC3j
+ hfyVvwMC+TpbfAVD95EGiW1tOqNWdB1HmlBc4ExBENTEmz9z0RMDxLvORHIkvgbjXXkgDrO7yYu
+ sELY0u52HPxxIzgs0qjpqpz4I5YuqUsaVb37xJDhaZA==
+X-Gm-Gg: ASbGnctMfYmEW3s6WX88tc/Hy38AjOrBqhbpaPcpo6bsGy5w/bH+H2YnzVA3inxikbM
+ b2euXJ7S2spMsPiVB98Svrkw/Rr3e5tIRZoZuiQikKp7/f80qyzEfU7Q4U2mCWUYbdFO/ItxXGI
+ ksVAgVRg7SYPDJzs7LgPngRypQhx2OJyeZUGf2ISFSQ90ss18Bk2n1KQ==
+X-Google-Smtp-Source: AGHT+IGhH/x0bceJ3DCO67kslJ4idZ8X7PsUUczd/8SS7IXk5KzIMhcvNfIjr3Wrdn3PPdN9I2+OWADLO/RfHibSgO8=
+X-Received: by 2002:a05:6402:2690:b0:60c:3b8e:7e24 with SMTP id
+ 4fb4d7f45d1cf-6104bf79420mr5189897a12.10.1752042844039; Tue, 08 Jul 2025
+ 23:34:04 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 0/2] ramfb: Add property to control if load the romfile
-To: qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Eric Auger <eauger@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Zhao Liu <zhao1.liu@intel.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Sergio Lopez <slp@redhat.com>, Yanan Wang <wangyanan55@huawei.com>
-References: <20250704030315.2181235-1-shahuang@redhat.com>
-From: Shaoqin Huang <shahuang@redhat.com>
-In-Reply-To: <20250704030315.2181235-1-shahuang@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: KWoNWHuZGokYhblu_W3Lv0mZVdSWwlQZeKAe6x3Vh6M_1752027509
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=shahuang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20250708215320.70426-1-philmd@linaro.org>
+ <20250708215320.70426-7-philmd@linaro.org>
+In-Reply-To: <20250708215320.70426-7-philmd@linaro.org>
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Date: Wed, 9 Jul 2025 09:33:37 +0300
+X-Gm-Features: Ac12FXzji9sHAT512oYNWvejDgccbfmjjApOmxATRbRWngG1hhMhQAyphQYzSv8
+Message-ID: <CAAjaMXacZkXmj4paAVCNiK+ZAkUJvXS=HUj_Wdz+M_PFyuq2Dw@mail.gmail.com>
+Subject: Re: [PATCH-for-10.1 RESEND v8 6/8] gdbstub/helpers: Replace
+ TARGET_BIG_ENDIAN -> target_big_endian()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-s390x@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ qemu-riscv@nongnu.org, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ed1-x530.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,84 +103,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi maintainers,
+On Wed, Jul 9, 2025 at 12:53=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
+<philmd@linaro.org> wrote:
+>
+> Check endianness at runtime to remove the target-specific
+> TARGET_BIG_ENDIAN definition. Use cpu_to_[be,le]XX() from
+> "qemu/bswap.h" instead of tswapXX() from "exec/tswap.h".
+>
+> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  include/gdbstub/helpers.h | 48 +++++++++++++++++++++++----------------
+>  1 file changed, 29 insertions(+), 19 deletions(-)
+>
+> diff --git a/include/gdbstub/helpers.h b/include/gdbstub/helpers.h
+> index 6f7cc48adcb..b685afac436 100644
+> --- a/include/gdbstub/helpers.h
+> +++ b/include/gdbstub/helpers.h
+> @@ -16,7 +16,8 @@
+>  #error "gdbstub helpers should only be included by target specific code"
+>  #endif
+>
+> -#include "exec/tswap.h"
+> +#include "qemu/bswap.h"
+> +#include "qemu/target-info.h"
+>  #include "cpu-param.h"
+>
+>  /*
+> @@ -33,40 +34,49 @@ static inline int gdb_get_reg8(GByteArray *buf, uint8=
+_t val)
+>
+>  static inline int gdb_get_reg16(GByteArray *buf, uint16_t val)
+>  {
+> -    uint16_t to_word =3D tswap16(val);
+> -    g_byte_array_append(buf, (uint8_t *) &to_word, 2);
+> +    if (target_big_endian()) {
+> +        cpu_to_be16s(&val);
 
-This is a kindly ping, could you help to review this patch series?
+Unrelated, but that 's' in 'cpu_to_be16s' is non-obvious, I always
+think it's about signedness which is unrelated to endianness. I guess
+it stands for "specified". It's more intuitive to call by-value
+functions 'into' and by-ref 'to' maybe? e.g. `uint16_t
+cpu_into_le16(uint16_t v);` and `void cpu_to_le16(uint16_t *v);`.
 
-Thanks,
-Shaoqin
+> +    } else {
+> +        cpu_to_le16s(&val);
+> +    }
+> +    g_byte_array_append(buf, (uint8_t *) &val, 2);
+>      return 2;
+>  }
+>
+>  static inline int gdb_get_reg32(GByteArray *buf, uint32_t val)
+>  {
+> -    uint32_t to_long =3D tswap32(val);
+> -    g_byte_array_append(buf, (uint8_t *) &to_long, 4);
+> +    if (target_big_endian()) {
+> +        cpu_to_be32s(&val);
+> +    } else {
+> +        cpu_to_le32s(&val);
+> +    }
+> +    g_byte_array_append(buf, (uint8_t *) &val, 4);
+>      return 4;
+>  }
+>
+>  static inline int gdb_get_reg64(GByteArray *buf, uint64_t val)
+>  {
+> -    uint64_t to_quad =3D tswap64(val);
+> -    g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
+> +    if (target_big_endian()) {
+> +        cpu_to_be64s(&val);
+> +    } else {
+> +        cpu_to_le64s(&val);
+> +    }
+> +    g_byte_array_append(buf, (uint8_t *) &val, 8);
+>      return 8;
+>  }
+>
+>  static inline int gdb_get_reg128(GByteArray *buf, uint64_t val_hi,
+>                                   uint64_t val_lo)
+>  {
+> -    uint64_t to_quad;
+> -#if TARGET_BIG_ENDIAN
+> -    to_quad =3D tswap64(val_hi);
+> -    g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
+> -    to_quad =3D tswap64(val_lo);
+> -    g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
+> -#else
+> -    to_quad =3D tswap64(val_lo);
+> -    g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
+> -    to_quad =3D tswap64(val_hi);
+> -    g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
+> -#endif
+> +    uint64_t tmp[2];
+> +    if (target_big_endian()) {
+> +        tmp[0] =3D cpu_to_be64(val_hi);
+> +        tmp[1] =3D cpu_to_be64(val_lo);
+> +    } else {
+> +        tmp[0] =3D cpu_to_le64(val_lo);
+> +        tmp[1] =3D cpu_to_le64(val_hi);
+> +    }
+> +    g_byte_array_append(buf, (uint8_t *)&tmp, 16);
+>      return 16;
+>  }
+>
+> --
+> 2.49.0
+>
 
-On 7/4/25 11:03 AM, Shaoqin Huang wrote:
-> Currently the ramfb device loads the vgabios-ramfb.bin unconditionally, but only
-> the x86 need the vgabios-ramfb.bin, this can cause that when use the
-> release package on arm64 it can't find the vgabios-ramfb.bin.
-> 
-> Because only seabios will use the vgabios-ramfb.bin, load the rom logic
-> is x86-specific. For other !x86 platforms, the edk2 ships an EFI driver
-> for ramfb, so they don't need to load the romfile.
-> 
-> So add a new property use-legacy-x86-rom in both ramfb and vfio_pci
-> device, because the vfio display also use the ramfb_setup() to load
-> the vgabios-ramfb.bin file.
-> 
-> After have this property, the machine type can set the compatibility to
-> not load the vgabios-ramfb.bin if the arch doesn't need it.
-> 
-> Then I set the use_legacy_x86_rom property to false by default, and only set it
-> to true on x86 since only x86 will need it.
-> 
-> At the same time, set the "use-legacy-x86-rom" property to true on those
-> historical versioned machine types in order to avoid the memory layout
-> being changed.
-> 
-> Changelog:
-> ---------
-> v8 -> v9:
->    - Improve the commit message.
-> v7 -> v8:
->    - Set the property in microvm machine type.
-> v6 -> v7:
->    - Set the property into hw_compat_10_0 instead of hw_compat_9_2.
-> v5 -> v6:
->    - Set the property to true on those historical versioned machine types.
-> v4 -> v5:
->    - Fix some typo error.
->    - Set the property in piix machine type.
-> v3 -> v4:
->    - Set the new property to false by default, only set it to true on x86.
-> v2 -> v3:
->    - Fix the underscore error.
->    - Add a new patch to set the property in arm compatibility.
-> v1 -> v2:
->    - Change the property name.
-> 
-> v7: https://lore.kernel.org/all/20250702085616.2172722-1-shahuang@redhat.com/
-> v6: https://lore.kernel.org/all/20250701030549.2153331-1-shahuang@redhat.com/
-> v5: https://lore.kernel.org/all/20250626034526.2136585-1-shahuang@redhat.com/
-> v4: https://lore.kernel.org/all/20250617030521.2109305-1-shahuang@redhat.com/
-> v3: https://lore.kernel.org/all/20250609073408.2083831-1-shahuang@redhat.com/
-> v2: https://lore.kernel.org/all/20250606070234.2063451-1-shahuang@redhat.com/
-> v1: https://lore.kernel.org/all/20250605030351.2056571-1-shahuang@redhat.com/
-> 
-> Shaoqin Huang (2):
->    ramfb: Add property to control if load the romfile
->    hw/i386: Add the ramfb romfile compatibility
-> 
->   hw/core/machine.c             |  2 ++
->   hw/display/ramfb-standalone.c |  4 +++-
->   hw/display/ramfb-stubs.c      |  2 +-
->   hw/display/ramfb.c            |  6 ++++--
->   hw/i386/microvm.c             |  3 +++
->   hw/i386/pc_piix.c             | 10 ++++++++++
->   hw/i386/pc_q35.c              |  3 +++
->   hw/vfio/display.c             |  4 ++--
->   hw/vfio/pci.c                 |  1 +
->   hw/vfio/pci.h                 |  1 +
->   include/hw/display/ramfb.h    |  2 +-
->   11 files changed, 31 insertions(+), 7 deletions(-)
-> 
-
--- 
-Shaoqin
-
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 

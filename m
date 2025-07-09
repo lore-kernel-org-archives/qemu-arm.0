@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB52EC83F0A
-	for <qemu-arm@archiver.kernel.org>; Wed,  9 Jul 2025 18:07:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C08FC83F0A
+	for <qemu-arm@archiver.kernel.org>; Wed,  9 Jul 2025 18:07:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZZBk-0001O8-7h; Wed, 09 Jul 2025 14:06:36 -0400
+	id 1uZZBq-0001TI-B0; Wed, 09 Jul 2025 14:06:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uZZBE-00018w-Tx
- for qemu-arm@nongnu.org; Wed, 09 Jul 2025 14:06:05 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+ id 1uZZBE-00018u-ND
+ for qemu-arm@nongnu.org; Wed, 09 Jul 2025 14:06:04 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uZZBB-0004Aq-T1
+ id 1uZZBB-0004AM-AY
  for qemu-arm@nongnu.org; Wed, 09 Jul 2025 14:06:04 -0400
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-2349f096605so2116365ad.3
- for <qemu-arm@nongnu.org>; Wed, 09 Jul 2025 11:06:01 -0700 (PDT)
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-2350b1b9129so2021305ad.0
+ for <qemu-arm@nongnu.org>; Wed, 09 Jul 2025 11:05:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752084360; x=1752689160; darn=nongnu.org;
+ d=linaro.org; s=google; t=1752084358; x=1752689158; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=WSgpCCNCeg+W2zo7Uq4pSJ5onka4R108XVyFa7HdUAM=;
- b=Cow+RNaFLp42VoSGz4PpHLlOC/ruChSmq1PgBLtWSS1Pb/vXqrXichWvikcdCzxezn
- NRFs17NIBWZOpKxR18nKdE4CUAWpM+2s8hRVKmS0Vb4xlKo8SBMrq6PAEiE/JaRRZpuE
- Rl68Zin0i1kZpfWwCiduoMk3jO5lX2D4iY+xO98e8/aW3ZP1Jy42iThizlNvVOaCqYzB
- rbj6BwoVKaMlfcCyYeI5enpUOkAE93r8RR1RGVBvK2OPpku1t9JixM8ew0SHNVvM6IPP
- 8nBv4oLkb5tyxUY7MuTgo9J1AsV/4tTr05lNf95N3VVnaKgiyvCXZMeIf19q29YSYkAm
- SBkg==
+ bh=hEjr7l7Vs6ji+drc/SRFgbkpYtZx+u1bmbu4VpSnODg=;
+ b=XMVYadiyAGursnXJyCIehcvIBZq4QbBEzY7KKpikeIFhmkxYLNI6ObVAyQ1qs2JKlr
+ bxFfA5jmW/QwA3e6/zPIlRx3HEing5AJGRmbcjWb0cwBmXVVIbXXCnInn5Q5cemhbk4x
+ BcI6MUlElpSAyb7KtFqdys3YNJKa49BjXe6Ur1o7q2uoNsW8PZfb73btGNuYaYgtfc4n
+ RbKosPXP9XWJ5XRiwsnPLhRgXVNY2vc325497fsGsAhZxCIShkkClTkO2WkWtScp/OWs
+ X4Kk9IBhAU/h/f34EGzYJG9k+Juj+lbx8xNGlxzaYC27DfDs/+o8rxaLH5uCgmj5RLgA
+ H69Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752084360; x=1752689160;
+ d=1e100.net; s=20230601; t=1752084358; x=1752689158;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=WSgpCCNCeg+W2zo7Uq4pSJ5onka4R108XVyFa7HdUAM=;
- b=XSOMYFdBXkOq7/X+vTOtDE6/BGaXOm3qtreX+9E0SM4jalNpNCiiDDafnW7JHBjTvR
- H9fiwGeNKC/cki3Ok71X1bWU36WZ3jK1zvA+X0ShURomd77zXVMmFIGH6fPhcQ6KUPPI
- V43wOUCZZwPmeOrlVCLhQQcDNIg5lu3026p17tkEnTZSvfvg5zHi1ijC9cEfJTZrSu4f
- X2QYTGz6+tDRWXg4+7r5Dp5zuJDRJXUWhKryOHqPiRkyCK5cQ15vOjSBWoWdZtZAlfUN
- TvQl9h9ibRr8+k8vwBsXgBjHz/eBw+GqtAJq2Eq2FYK9j6rtDNzhkgqvAcXcekOFOleS
- lRFw==
-X-Gm-Message-State: AOJu0Yx96BF02wMbOmlCgkUr9gngWrJlNOXgtTvi/iW+U8sfjrVU3d+V
- DUwWaQCM03WYPRr1plGfchKzZfYoW/XKFTuQ5nSkzlUoc2uAPzFlMWezuY+7jbjOFQBdKbAxE06
- A+fBaLo0=
-X-Gm-Gg: ASbGncssW6rlrQm5kVswYMXhZeM6/MZ3JGJEFRJ9jV6n92BsnrJm9zzXetnyd9jXXJg
- Ke1EHyVrbrrWlD9K1+5dezXg4KJQNr/7RoBrzxi2k3Vr4wJGqkTVsGBIN1uXRWYbCR05j8eF5sq
- VLK6CoiDkI3YZp2yAqtRsmIs9doApqf/Ck55oO0GWmJ+TlXmtg2y3fcrKiNvvIBpJfmSNImEKGR
- uuOxPI9XgFRV+TO+8Jvs3e6vLlXHb3KleEc/AQtuN6M84HmCZJ0us61EK0rHrZcB++/mTVgzgea
- hjwQf4aksrO9D+e+Sf8KKrYMoASuWMK3S0MdeyJ6R6CYYDjrrtNFm8udH96DnLE9kIU=
-X-Google-Smtp-Source: AGHT+IEAWiI3PsRLNGL8y55qUafpAsfqinwEcLFBlGMKoONIcrUmC+KHPLthkQ97+n/GULfhgpAkwA==
-X-Received: by 2002:a17:902:ef49:b0:23a:bc47:381f with SMTP id
- d9443c01a7336-23ddb36832dmr51466815ad.36.1752084360073; 
- Wed, 09 Jul 2025 11:06:00 -0700 (PDT)
+ bh=hEjr7l7Vs6ji+drc/SRFgbkpYtZx+u1bmbu4VpSnODg=;
+ b=OKAkhmvVx17agVbKdy40lpbN7XfZmnZCT/UQo0YjigpHBVLWZeI5NDB8rvCPLM7+Hv
+ BDSsApILN2HVWfvH5xQs8FPl+Kd0+u+dJ8N4XvpBjl0lIo77akVLatugvjZQv0lniWxt
+ OQYA9O9Xc0nIg8HxH9yZnwWe4VdFNEXy5JxtQNcP6Nhh/wtt990euYK4BDBBtjbTJxFg
+ vjUNV/ANK9Hu47mY2Gb5yPnTLZZZ2ZM/OMDcSYv/deSRytCUoaNLqmgBoAjuHY79XBCX
+ xH/aQlv/UBhSmNBb4v2Y0n77siESCzPhp3+xmnHoi8GVvzyVqPsFNSdAXdeSwucLc3UJ
+ +O+A==
+X-Gm-Message-State: AOJu0YylY9QmFuEUnrSW1sAv2Ie+2srQRoSMCxlCH/Y9PhNxPE02yxVA
+ GCxar2rcY3D7j/snCCwxVVdkfaSUrLosj4stKl3v0HetchSy2UESLehzU9cLo/5E5rGJXkjHBs3
+ DArE+Ijs=
+X-Gm-Gg: ASbGncsHi4leqHQ0bSX4/8zwReJ9Izlt5PjrwI/ZsDoG7zRzY06+d6+l9GmJQS3tUlA
+ iker6iONOSUAoxZHvelU7OvTwDXAts33f29kOqDy+z4CgLzBm+bv1cyEIkMyepFXJzZKrB91sgm
+ aPe4JLKhxSyA4FhnCUF5gYy50JLfWjaVXWcbYJ1jnqA4XMmNHHE3Y8jpP5kxeu35dzK4z0AqYOh
+ rQmQWz4ktJHX7UrZcSZ5Hx30rHMaZQfHoZ88JnLPXkCT/c1JsLv9EqKK/0v7K0R9EO7dLb7xI4G
+ ybUTPYsdn0m+K/O7SyY0OLrjgMwF+dCYy0sBj38COa+D3h9ao7oQFw7ZKoTxdvp+gBs9bngnItO
+ 2Mg==
+X-Google-Smtp-Source: AGHT+IG+RVMysxOUJfOgSpCWXAGxsJabgQPJ/CbTIhkqh9lc5crJYKgrDoBeJUjQjtass0GaTBdKbw==
+X-Received: by 2002:a17:902:ce07:b0:234:8f5d:e3a4 with SMTP id
+ d9443c01a7336-23de2436d01mr14864655ad.2.1752084358111; 
+ Wed, 09 Jul 2025 11:05:58 -0700 (PDT)
 Received: from gromero0.. ([189.110.24.38]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23c84599f07sm153380175ad.218.2025.07.09.11.05.58
+ d9443c01a7336-23c84599f07sm153380175ad.218.2025.07.09.11.05.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Jul 2025 11:05:59 -0700 (PDT)
+ Wed, 09 Jul 2025 11:05:57 -0700 (PDT)
 From: Gustavo Romero <gustavo.romero@linaro.org>
 To: qemu-arm@nongnu.org, richard.henderson@linaro.org, alex.bennee@linaro.org
 Cc: qemu-devel@nongnu.org,
 	gustavo.romero@linaro.org
-Subject: [PATCH v4 6/6] target/arm: Advertise FEAT_MEC in cpu max
-Date: Wed,  9 Jul 2025 18:03:26 +0000
-Message-Id: <20250709180326.1079826-7-gustavo.romero@linaro.org>
+Subject: [PATCH v4 5/6] target/arm: Implement FEAT_MEC cache instructions
+Date: Wed,  9 Jul 2025 18:03:25 +0000
+Message-Id: <20250709180326.1079826-6-gustavo.romero@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250709180326.1079826-1-gustavo.romero@linaro.org>
 References: <20250709180326.1079826-1-gustavo.romero@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x634.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,50 +100,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Advertise FEAT_MEC in AA64MMFR3 ID register for the Arm64 cpu max as a
-first step to fully support FEAT_MEC.
+This commit implements the two cache maintenance instructions introduced
+by FEAT_MEC, DC CIPAE and DC CIGDPAE.
 
-The FEAT_MEC is an extension to FEAT_RME that implements multiple
-Memory Encryption Contexts (MEC) so the memory in a realm can be
-encrypted and accessing it from the wrong encryption context is not
-possible. An encryption context allow the selection of a memory
-encryption engine.
-
-At this point, no real memory encryption is supported, but most software
-stacks that rely on FEAT_MEC to run should work properly.
+Because QEMU does not model the cache topology, all cache maintenance
+instructions are implemented as NOPs, hence these new instructions are
+implemented as NOPs too.
 
 Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 ---
- docs/system/arm/emulation.rst | 3 +++
- target/arm/tcg/cpu64.c        | 1 +
- 2 files changed, 4 insertions(+)
+ target/arm/helper.c | 34 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 1c597d8673..d207a9f266 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -89,6 +89,9 @@ the following architecture extensions:
- - FEAT_LSE (Large System Extensions)
- - FEAT_LSE2 (Large System Extensions v2)
- - FEAT_LVA (Large Virtual Address space)
-+- FEAT_MEC (Memory Encryption Contexts)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 34e12bde90..36cf2b6415 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -4996,6 +4996,34 @@ static void ic_ivau_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ }
+ #endif
+ 
++static CPAccessResult cipae_access(CPUARMState *env, const ARMCPRegInfo *ri,
++                                   bool isread)
++{
++    int el = arm_current_el(env);
 +
-+  * This is a register-only implementation without encryption.
- - FEAT_MixedEnd (Mixed-endian support)
- - FEAT_MixedEndEL0 (Mixed-endian support at EL0)
- - FEAT_MOPS (Standardization of memory operations)
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 173528175a..2c63940878 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1249,6 +1249,7 @@ void aarch64_max_tcg_initfn(Object *obj)
- 
-     FIELD_DP64_IDREG(isar, ID_AA64MMFR3, TCRX, 1);       /* FEAT_TCR2 */
-     FIELD_DP64_IDREG(isar, ID_AA64MMFR3, SCTLRX, 1);     /* FEAT_SCTLR2 */
-+    FIELD_DP64_IDREG(isar, ID_AA64MMFR3, MEC, 1);        /* FEAT_MEC */
-     FIELD_DP64_IDREG(isar, ID_AA64MMFR3, SPEC_FPACC, 1); /* FEAT_FPACC_SPEC */
- 
-     t = GET_IDREG(isar, ID_AA64ZFR0);
++    if (!cpu_isar_feature(aa64_mec, env_archcpu(env))) {
++        return CP_ACCESS_UNDEFINED;
++    }
++    if (el < 3 && arm_security_space(env) != ARMSS_Realm) {
++        return CP_ACCESS_UNDEFINED;
++    }
++    return CP_ACCESS_OK;
++}
++
++static CPAccessResult cigdpae_access(CPUARMState *env, const ARMCPRegInfo *ri,
++                                     bool isread)
++{
++    CPAccessResult ret = cipae_access(env, ri, isread);
++
++    if (ret != CP_ACCESS_OK) {
++        return ret;
++    }
++    if (!cpu_isar_feature(aa64_mte, env_archcpu(env))) {
++        return CP_ACCESS_UNDEFINED;
++    }
++    return CP_ACCESS_OK;
++}
++
+ static const ARMCPRegInfo v8_cp_reginfo[] = {
+     /*
+      * Minimal set of EL0-visible registers. This will need to be expanded
+@@ -5094,6 +5122,12 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 14, .opc2 = 2,
+       .fgt = FGT_DCCISW,
+       .access = PL1_W, .accessfn = access_tsw, .type = ARM_CP_NOP },
++    { .name = "DC_CIPAE", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 14, .opc2 = 0,
++      .access = PL2_W, .accessfn = cipae_access, .type = ARM_CP_NOP },
++    { .name = "DC_CIGDPAE", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 14, .opc2 = 7,
++      .access = PL2_W, .accessfn = cigdpae_access, .type = ARM_CP_NOP },
+ #ifndef CONFIG_USER_ONLY
+     /* 64 bit address translation operations */
+     { .name = "AT_S1E1R", .state = ARM_CP_STATE_AA64,
 -- 
 2.34.1
 

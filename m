@@ -4,86 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8D96C83F17
-	for <qemu-arm@archiver.kernel.org>; Thu, 10 Jul 2025 15:09:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93900C83F17
+	for <qemu-arm@archiver.kernel.org>; Thu, 10 Jul 2025 15:20:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZst2-0002mi-Bj; Thu, 10 Jul 2025 11:08:36 -0400
+	id 1uZt3X-0003JV-9l; Thu, 10 Jul 2025 11:19:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uZsqh-0000Rs-Tb
- for qemu-arm@nongnu.org; Thu, 10 Jul 2025 11:06:19 -0400
-Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uZt35-0003FN-PH
+ for qemu-arm@nongnu.org; Thu, 10 Jul 2025 11:19:02 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uZsqc-00064O-W3
- for qemu-arm@nongnu.org; Thu, 10 Jul 2025 11:06:10 -0400
-Received: by mail-oa1-x32.google.com with SMTP id
- 586e51a60fabf-2f78ef10832so647437fac.3
- for <qemu-arm@nongnu.org>; Thu, 10 Jul 2025 08:06:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uZt34-0000zb-17
+ for qemu-arm@nongnu.org; Thu, 10 Jul 2025 11:18:59 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4538bc1cffdso9528585e9.0
+ for <qemu-arm@nongnu.org>; Thu, 10 Jul 2025 08:18:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752159965; x=1752764765; darn=nongnu.org;
+ d=linaro.org; s=google; t=1752160734; x=1752765534; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=WXFneuohW2JTYeRWvN54I5URuuJY2O/m/l/1PRDfWMY=;
- b=Ybm2eWd8AHn3qfQK4wXEdt3T8ILSRBAmmo0ovg+LgxmLr5bxpG7jOHNVUjXlWFgL6O
- +41m+gRrAUTaRnGS1FqMybekWfETcYXogJVDZuyKJarcTeZXYwme6LT8zbagGxDW65oz
- kVtxjJnbeZXbwiN+n5tWwlGDU/xa+nwL5KdFFdABm2M2/O99illWcFWyN3HlLsIkoUrQ
- xSi1INx1tSV6LqtiInKangc3wldfyw9MvZpQLFGjgZQEOKJmEvmHJNVvzPcOcOnZngLt
- r16ZrmL4CuEb9Ww3HIGhxgBaOojcqzCthGAN8hR4LanPcQbHbggiptglSV8/+p18LXuq
- SLsg==
+ bh=MfZyp+BAuA2g9PjhPJtLMHhk3jnprAKK1n7JOk5VyB0=;
+ b=sWbAhtRjB11dTCnFTi/KfBy2gYiaZUrCGSp8f+dmJE9SN9uo4dNkanPRCG0HZpyvF5
+ xYdap6vKVyk6dKd9ZRxOTcBg4lVgvo59enNEar4iS+M7T2e6gPnvySgy0p9het/JixKt
+ 8XH4ZQzWa9T/ejB+l98fMfjZey9/2dcN0RCCZLSCwrlqADH75Ay49SUz3z3goy+oPzj1
+ 88552hvQgBfhomZlnhxBz41yfMn4wNSZgdndfqkpu2xl2rC426OdUVhrlnL+dA+QlJJD
+ +PD1YFZwcSrladY+O+OrQmMkMg0xRJwoCg7pjBeDP1pqABiRVmMx9NhwoK+uuwMFXeN7
+ SD4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752159965; x=1752764765;
+ d=1e100.net; s=20230601; t=1752160734; x=1752765534;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=WXFneuohW2JTYeRWvN54I5URuuJY2O/m/l/1PRDfWMY=;
- b=e1KfgfVo/GvEpvxeI9WrUXkCKzTyTV7Wos4JWHppsM69iJC6Xzyp++t9JrsPWcMBKl
- W6rC6IxcK4dhd5x/8Zi7kvmibQ+3S9sN7do+arju7dAzZ29Fejy+wNRoSaHM3gwQUuRp
- zhYsaZNFppNUYz/OjyDp8/VXYgNZkbCHR2brrweTK64miv3P/uECTslmWQjwepGD1V/n
- vF9UD1rKCt/T4+DebvHJJtuiT2zZb4JnvuDwO8kealQgBlBWUbCcr2U0r7c8P6tJ46Dk
- pTspYLj9MmYou5BKhchluv03vvfCL/ds1hnnnIujIIESrYlj+vcifGAzbwuRIyZs4dq6
- Lqng==
+ bh=MfZyp+BAuA2g9PjhPJtLMHhk3jnprAKK1n7JOk5VyB0=;
+ b=UJ2scvU4ojIJ7XergtQnAtDK5EISpvEMDtl4oOspfu5eghstODR28V/gou0t4CV7Nj
+ SLAhWr5hyj5dNqLNhgQJ0tSaH4ZVa50SqfCYCTnWv8sB93NW1bK5gtI5w8DGgT16t5hF
+ nxRPqz/MPcXWxYV1N89xl3eyhTfSREwkBMBkqVP8mX7o0rroASKX0buw1PWtjXROr1iL
+ 29rG3XJ3YIWr31yOmvDzuBdrrlSO0PILsM8WmBCaEDEW5nFkxdfJfX+C6Sptu4TmwNee
+ YxCkJ68O/aj2gdZg2oYHf57HDt4SbVzh6C6EOu7AVOuWLB+CaSBd4xmmfaQFXMVxfH3o
+ JUAw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV1NermcBEOa5L1MhfaN0/VjAb611KDUFFUwvyv4RxaWpt8gsxAxSBRsAM5r/3xbSYWUildX32XSg==@nongnu.org
-X-Gm-Message-State: AOJu0Yyfx36mTMbBlibgWMLSn6HNjcNFI6sglj8RQRAKvgkSMhYM7jeF
- vvioDqsvfzVROGcQYu++KIqIUNK5igBbHsXlXIqv5ziWlvf7nviM9LDqW02vzGr08gY=
-X-Gm-Gg: ASbGncu5iB1/B4cTjd4TcLo34sGehrjsuxDivqn7od+ZYHPHMdIJQgsHGnX9kz0KTtJ
- r6EIktH6eq7tnTSfWKhXTlwezd6cUviugRYc6s6yuEjWFNK8eKnvgWV5nAmvUxH8agp72234Ey4
- 4hFCvAb9gYd6PUzlU1I0dgeCo5KT+U17NC6QeeG7U41yg7bfj1yWqk3edD7ck7NEPTgmoD5uCzD
- KrWC1jXha4qypLIZ8PO6oEVsIKghI9sHwOq/tfXj2+5rD5Xpn3O1elMer2P8q8yxj4tINYqyExi
- YLDdWJuEX6zC84OfDBAL9i9zUwtkzS6n9lpjj5zfSb2hOumJeXRYAH/IfPL7FFO8J6e+axGpYas
- T+WU=
-X-Google-Smtp-Source: AGHT+IH9e2wygTlOGNzC+9frJ75ZSCcBoQB0GyGefhyiaSTnJe4OBMuW4+A4F65LV/jywD+KTMconw==
-X-Received: by 2002:a05:6870:e40c:b0:2bc:8c4a:aac2 with SMTP id
- 586e51a60fabf-2fef875d724mr5210103fac.27.1752159964976; 
- Thu, 10 Jul 2025 08:06:04 -0700 (PDT)
-Received: from [172.20.0.130] ([187.217.227.247])
- by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-2ff1172e579sm331299fac.45.2025.07.10.08.06.03
+ AJvYcCUa0eUKr83XiO5t/RsNQk9qIoAgslkw8f0WhiGaX9/+V6ZVCIbWcgdz3yxr5QffJzl0v770/xNr0A==@nongnu.org
+X-Gm-Message-State: AOJu0Yw3bV3Z4RrfyJVnfmu4EtImkCx1ZrLOLeCvzgUjk8d7vrhov8uz
+ h+U94NbdNHTZYBshxHsjbt0KGPj8l9i/jqVAz19+Hzf7YbkKj0VTWxFDWo4EzIUlIII=
+X-Gm-Gg: ASbGncv/FOnV3aNNv8xgWfCoieV/f9FtQ721y4w4lmCJZ8K12/eu+UfMV+y4bCFhn24
+ zGXLN/ehPnLf7CDFfQzQZYEOQ/qDehWGdJfk3xLNPoubHX8qajzQolvDMZx1byjJI+yp4EuE7Df
+ TxmAedI+BnnCeNAeXBzRV8mhScNjLrm2/2jUSqBiOoYQx0tksfke1UnFwFap6coxcQSdYxXYa1A
+ TXA6tNAji7qsycfW06f/axiOcON4RnpO2jijKfANCXIyzGx1A2Z7e0y5oQvn2DMID1ZCYMTCohK
+ 1663Nb4YPPux+5liUKZltN8Id4Kk3khnInabfJqN3UsbRhIDqppDS6imKrPTPgy97QAOrQWymuG
+ 6iE7brfqLEIdCaU3mvuSxZ6VWERJqSyNdHwQnhLdOXM8tgxpseyWVA+guoxM=
+X-Google-Smtp-Source: AGHT+IE1oZjhzQk0HmsfNxjc+2TH48TEZkrMxRycjdwmoHSN9WIEppocXlx0JxXlZZYHEo6Tvx1UdA==
+X-Received: by 2002:a05:600c:1da8:b0:43d:47b7:b32d with SMTP id
+ 5b1f17b1804b1-454dd2ef513mr28837375e9.25.1752160733973; 
+ Thu, 10 Jul 2025 08:18:53 -0700 (PDT)
+Received: from [192.168.1.117] (lfbn-mon-1-970-120.w86-227.abo.wanadoo.fr.
+ [86.227.5.120]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3b5e8dc201asm2114977f8f.22.2025.07.10.08.18.52
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 10 Jul 2025 08:06:04 -0700 (PDT)
-Message-ID: <c9b6afa4-d97f-44b7-9b69-3ae607834a2d@linaro.org>
-Date: Thu, 10 Jul 2025 09:06:01 -0600
+ Thu, 10 Jul 2025 08:18:53 -0700 (PDT)
+Message-ID: <dcaa2309-7c6d-4064-94ed-43d4c3ff2430@linaro.org>
+Date: Thu, 10 Jul 2025 17:18:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/20] target/arm: Convert get_phys_addr_lpae to
- access_perm
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20250707202111.293787-1-richard.henderson@linaro.org>
- <20250707202111.293787-4-richard.henderson@linaro.org>
- <CAFEAcA9UcPCQ5qqrM+Ao5hrOJ=xYgOJ6==WNDj0xPpr2qh-TfA@mail.gmail.com>
+Subject: Re: [PATCH v9 4/5] hw/arm/arm_gicv3_kvm: Add a migration blocker with
+ kvm nested virt
+To: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, miguel.luis@oracle.com, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, maz@kernel.org, gkulkarni@amperecomputing.com,
+ gankulkarni@os.amperecomputing.com
+Cc: hi@alyssa.is
+References: <20250707164129.1167837-1-eric.auger@redhat.com>
+ <20250707164129.1167837-5-eric.auger@redhat.com>
+ <48fca85b-096a-4d1c-97dd-380669cb6604@linaro.org>
+ <322a9301-a1ee-4cd9-b423-fbef2fc0593d@redhat.com>
 Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA9UcPCQ5qqrM+Ao5hrOJ=xYgOJ6==WNDj0xPpr2qh-TfA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <322a9301-a1ee-4cd9-b423-fbef2fc0593d@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2001:4860:4864:20::32;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x32.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,52 +108,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/10/25 05:59, Peter Maydell wrote:
-> On Mon, 7 Jul 2025 at 22:01, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>   target/arm/ptw.c | 12 ++++++------
->>   1 file changed, 6 insertions(+), 6 deletions(-)
->>
->> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
->> index 39ecc093a5..7503d1de6f 100644
->> --- a/target/arm/ptw.c
->> +++ b/target/arm/ptw.c
->> @@ -1643,14 +1643,14 @@ static bool nv_nv1_enabled(CPUARMState *env, S1Translate *ptw)
->>    * @env: CPUARMState
->>    * @ptw: Current and next stage parameters for the walk.
->>    * @address: virtual address to get physical address for
->> - * @access_type: MMU_DATA_LOAD, MMU_DATA_STORE or MMU_INST_FETCH
->> + * @access_perm: PAGE_{READ, WRITE, EXEC}, or 0
->>    * @memop: memory operation feeding this access, or 0 for none
->>    * @result: set on translation success,
->>    * @fi: set to fault info if the translation fails
->>    */
->>   static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
->>                                  uint64_t address,
->> -                               MMUAccessType access_type, MemOp memop,
->> +                               unsigned access_perm, MemOp memop,
->>                                  GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
->>   {
->>       ARMCPU *cpu = env_archcpu(env);
->> @@ -1678,7 +1678,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
->>           int ps;
->>
->>           param = aa64_va_parameters(env, address, mmu_idx,
->> -                                   access_type != MMU_INST_FETCH,
->> +                                   !(access_perm & PAGE_EXEC),
->>                                      !arm_el_is_aa64(env, 1));
->>           level = 0;
+On 10/7/25 16:10, Eric Auger wrote:
 > 
-> This will treat a "don't check access permissions" call as
-> a data-access (relevant for TBI), and means there's no way
-> to say "do an address lookup for INST_FETCH but don't do the
-> access-permission check". Is that what we want?
-> We should at least comment this.
-It does happen to be what we want for ats1a.
-I can add a comment.
+> 
+> On 7/10/25 4:04 PM, Philippe Mathieu-Daudé wrote:
+>> On 7/7/25 18:40, Eric Auger wrote:
+>>> We may be miss some NV related GIC register save/restore. Until
+>>> we complete the study, let's add a migration blocker when the
+>>> maintenance IRQ is set.
+>>>
+>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+>>> ---
+>>>    hw/intc/arm_gicv3_kvm.c | 8 ++++++++
+>>>    1 file changed, 8 insertions(+)
+>>>
+>>> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+>>> index b30aac7aee..fccb3886bf 100644
+>>> --- a/hw/intc/arm_gicv3_kvm.c
+>>> +++ b/hw/intc/arm_gicv3_kvm.c
+>>> @@ -827,8 +827,16 @@ static void kvm_arm_gicv3_realize(DeviceState
+>>> *dev, Error **errp)
+>>>        }
+>>>          if (s->maint_irq) {
+>>> +        Error *kvm_nv_migration_blocker = NULL;
+>>>            int ret;
+>>>    +        error_setg(&kvm_nv_migration_blocker,
+>>> +                       "Live migration disabled due to KVM nested
+>>> virt enabled");
+>>
+>> (mis-indentation)
+> Did not notice as checkpatch does not complain.
 
-r~
+No worry, it is a simple nudge to Peter for possible maintainer fixup.
+
 

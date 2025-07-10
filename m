@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C402FC83F1B
-	for <qemu-arm@archiver.kernel.org>; Thu, 10 Jul 2025 15:20:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6422EC83F1B
+	for <qemu-arm@archiver.kernel.org>; Thu, 10 Jul 2025 15:21:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZt3X-0003Jj-J4; Thu, 10 Jul 2025 11:19:27 -0400
+	id 1uZt5X-0005rm-KB; Thu, 10 Jul 2025 11:21:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uZt3J-0003Gt-NJ
- for qemu-arm@nongnu.org; Thu, 10 Jul 2025 11:19:22 -0400
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+ id 1uZt4Z-0004lg-0X
+ for qemu-arm@nongnu.org; Thu, 10 Jul 2025 11:20:31 -0400
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uZt3H-00012H-FI
- for qemu-arm@nongnu.org; Thu, 10 Jul 2025 11:19:13 -0400
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-70f94fe1e40so25045567b3.1
- for <qemu-arm@nongnu.org>; Thu, 10 Jul 2025 08:19:08 -0700 (PDT)
+ id 1uZt4W-0001xS-2x
+ for qemu-arm@nongnu.org; Thu, 10 Jul 2025 11:20:30 -0400
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-710fd2d0372so16850117b3.0
+ for <qemu-arm@nongnu.org>; Thu, 10 Jul 2025 08:20:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752160747; x=1752765547; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=+2JnUO3M0YY8rGoeSB+tv7JnTpSpken2SRrv3bQ5Jy4=;
- b=z8JCkq08oVQZ8FZZAdHNPGHS+wh0LgATwodqkI8RvzihrFo9uxaahGJxlukE5xVUtl
- Gbl6p9t1CkCUFlw4w5ky3ETFx9LcrLaQ6DAkdCdLu8E9n7WRHdwGq3X/nGhVxBTS64NK
- J6nd2MaWqTdlufPI6kfZdwbnBs4GGcKJ0Me0yfV4Vv0u1iiE1uMuhDAXPGKJF+5yCZl3
- VhuUsyauGNfw1sj7nDGXiq8bXUXWLnviXY86mXkdQ6KlkkjPMIJlouZ3ZGjscoUBJqws
- fJDFrK3+SRfh6ab2qBI4t4fGpVecjd/nuAugOI+PhT4hmJ4C+2idX8WszKmjnJwzhXzh
- U0LQ==
+ d=linaro.org; s=google; t=1752160827; x=1752765627; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=lStpNvlclqQGLHSJg5wy7W8AoeA01L1kwc4/Dsb2mGo=;
+ b=dGU4fekdmjM2yr1AHOY902NLIikIhx/j/PneiV0fvevm6iMswitTYgJnEWaPghnirV
+ gP3+M+/vByWxAidj9nO43p4pf+Ssx1dYKSr2mXA7bNDDf+BRQCpqS1R08Y7FjZW9AQ1B
+ jQtb5liCnuqGgBVgXJd+4HBG51bFd+S9hs3H37c5yECVkZgbEtfzi353sK0lM+/TNqW0
+ 47LF6hjchftJYwgcOpbdr86nqZzBsM+8mkTPP8y7Net65Df2SJ55k+4SOouQ0jKz9prQ
+ mg/WEGhCog6LkmzYFkWRMsI3E0IItklo2OUCq9iqMDmSQuIh0nk+CpwKRxNs76Aq6XM9
+ qT8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752160747; x=1752765547;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=+2JnUO3M0YY8rGoeSB+tv7JnTpSpken2SRrv3bQ5Jy4=;
- b=iIgy8wWSaXOOrmwPJ8JOWdOupvS+6dV9geMfa07KtOmerNP2SQ6SzemBH5P7MQML/P
- YbLQ23nOY5d1ToeSnGDeqCnF2EA/eCI5w9IEk0er2NEFK/GNRUCD2uaX9ejHN1E735+V
- 1LiaGjvDnYk4MgqmBSxbGdTzzsCdYy9oALGQ8VnU6uVe3a21Q6Z+5UtrxJzSEhwcXwzJ
- 73WBEI6BZhL8T0JtMxCU2S2Stvq2ChpXkthDZR9KqABGXmszZYUluJY5dRE2TIwdfdVO
- 3MvQamZ+Fsueu0xvblCS+l+XHFdF/8BoXCOAn7YX0gGScDhtYaRHyF3eBP3jwYZjUBuk
- C8Pg==
+ d=1e100.net; s=20230601; t=1752160827; x=1752765627;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=lStpNvlclqQGLHSJg5wy7W8AoeA01L1kwc4/Dsb2mGo=;
+ b=vo/PuxVdRdobBf9iMqvzDOSq0iebcufOa+e0ewjufSX69oiuOOXKQOl7YrhLVNHSYD
+ pNMwWJN+eeQ0FFr5UJ2oxuzPqRxSMySXOjvSnTw07i3t4TjPKWV0SOhgqzJoZYlQyAhv
+ NpGTIGSvWF2KvVAe00rXdPyVYngl9X1t1eLorOMKFcO2lwAtsEQjxetOrpCYfxovDZ0G
+ nHcX3ZN0ordsS1Uh8I9LS1Uixu6tYTlkQ5nVoU+pfjfVNuhwF0iOGzNJJJJ1wMR4OtEF
+ GfblEInRvmnc33qx6QO0NxHsUWNqdCK7vGDRLwheH8Una4csBYVFL7iRG0924ml0BcUr
+ Mmkw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWCSKXaFiPrED2Om5y0uGzguYhS2Vt9swWnEuu5BErr3R8fYNNoYVc1FcLdlqcBOhRyWsRLqIwqGQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyEl1xSWXISz8bPjVWA1/Ws9LVp6iqmlWJSJve5z3SUg6JPH0Xq
- FCZlbTW2pXpU3OecXCBnjG65VgFLP8Fk60R5NJ7EzslqhBRKeFzy2bemv82hRg6vPSGJIkx/jYr
- MGKJP4TCN01Syt7Q0K1Jmo5zt0JF1LZwpqSxCCoYR5w==
-X-Gm-Gg: ASbGncuOiuINE4DJNGWpn55XppUXyLcSAuB4kPDwbvM5sNUJHrMJUpxg3y+PKjoiWdj
- ksx0DwUdOIdctjGm9TqvMhdDvm5fStXK8QzbFMj6dr0J+7AuSxTFCg+YeRQWO/irzfn4Scjux4E
- nPd9p+5GGjSOdO6qVM0EXdsdPIINopfpUmmd9JzQjAUe46
-X-Google-Smtp-Source: AGHT+IH7VzE98NAaYDWBUCzd0xce5lBapm8hKhcHcVWABvn7jOJ81kUkdx68ja5YxLsU4TBy0Bf/jLPsbutF24vRTZk=
-X-Received: by 2002:a05:690c:6308:b0:713:fed3:70a5 with SMTP id
- 00721157ae682-717c151b1edmr66678767b3.9.1752160747501; Thu, 10 Jul 2025
- 08:19:07 -0700 (PDT)
+ AJvYcCVwLGXgKCn2FCEM20no1zJ7zIUhLRi7P17B060iQcGtc9JvgTwrEv6IHurR5qNbmKpurvrUtZqTGg==@nongnu.org
+X-Gm-Message-State: AOJu0Yyi+s1Qu/6p56Gs+3QzMaItAkWFV7UjhESE8drH8lYmDzTh5/s+
+ Qcnpz1QFlUeBO44WQpwHgLslzIEhyRMLofqfn4aSaseG1cSBSIftv90QxFJAR6YH+YWDAbQg63U
+ XXrFIlBcVmcWQFaoeA2m2iA8W5F9d3rvPoqtu0CDV0A==
+X-Gm-Gg: ASbGncu2hYKSDotfSd37BAY8AV944mWabkkx6QTNK/ZcKBfQqDS4JnKMbW5deQhadc9
+ SqQde5M7g8W3AXPjiJgXlp3oTnSSq4Q76d6VoqZ5EG/PoKkJ+KCI6BoLY/q6oui9T2EK7C8RtO4
+ UJWZNn+2yqaBuY3U4nMzIzpREuu+QOU5upAFNZU0am8jze
+X-Google-Smtp-Source: AGHT+IEGFB2jIbBsNQKCoBKAUJcFeenrGSdoTYoGbo+6mPQIitw21TZDUxjNfourt7paa/N95Z0zMh14wTbk0PTvM5c=
+X-Received: by 2002:a05:690c:6601:b0:712:c55c:4e5c with SMTP id
+ 00721157ae682-717c14d8b82mr57192967b3.5.1752160826429; Thu, 10 Jul 2025
+ 08:20:26 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250707164129.1167837-1-eric.auger@redhat.com>
- <20250707164129.1167837-5-eric.auger@redhat.com>
- <48fca85b-096a-4d1c-97dd-380669cb6604@linaro.org>
- <322a9301-a1ee-4cd9-b423-fbef2fc0593d@redhat.com>
-In-Reply-To: <322a9301-a1ee-4cd9-b423-fbef2fc0593d@redhat.com>
+References: <20250708154055.101012-1-shameerali.kolothum.thodi@huawei.com>
+ <20250708154055.101012-2-shameerali.kolothum.thodi@huawei.com>
+ <61464e90-9be3-4be5-a0af-ab15b92776e5@redhat.com>
+In-Reply-To: <61464e90-9be3-4be5-a0af-ab15b92776e5@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 Jul 2025 16:18:54 +0100
-X-Gm-Features: Ac12FXzxwGzQ-xJuggpfn0Q7XoT7jchqe7Sb1ozy-EXBRk1eeZ9ETYDG526lBRg
-Message-ID: <CAFEAcA-BYms8AtBPqaohvoGCwqLem-uXmmxiOczWb-RP5GRa4A@mail.gmail.com>
-Subject: Re: [PATCH v9 4/5] hw/arm/arm_gicv3_kvm: Add a migration blocker with
- kvm nested virt
+Date: Thu, 10 Jul 2025 16:20:14 +0100
+X-Gm-Features: Ac12FXwXrK49iN8S6SpNmQv1IC1bvkSc-LrO3vFcRIuFuupyeCT_lLTt9sxkxfI
+Message-ID: <CAFEAcA8YYrkwaU3ghdCDiA3rqLVj_to++yg3R69EVY+2dP0R2w@mail.gmail.com>
+Subject: Re: [PATCH v7 01/12] hw/arm/virt-acpi-build: Don't create ITS id
+ mappings by default
 To: eric.auger@redhat.com
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- miguel.luis@oracle.com, richard.henderson@linaro.org, maz@kernel.org, 
- gkulkarni@amperecomputing.com, gankulkarni@os.amperecomputing.com, 
- hi@alyssa.is
+Cc: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org, jgg@nvidia.com, nicolinc@nvidia.com, 
+ ddutile@redhat.com, berrange@redhat.com, imammedo@redhat.com, 
+ nathanc@nvidia.com, mochs@nvidia.com, smostafa@google.com, 
+ gustavo.romero@linaro.org, mst@redhat.com, marcel.apfelbaum@gmail.com, 
+ linuxarm@huawei.com, wangzhou1@hisilicon.com, jiangkunkun@huawei.com, 
+ jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,41 +103,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 10 Jul 2025 at 15:10, Eric Auger <eric.auger@redhat.com> wrote:
+On Thu, 10 Jul 2025 at 15:00, Eric Auger <eric.auger@redhat.com> wrote:
 >
+> Hi Peter,
 >
->
-> On 7/10/25 4:04 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > On 7/7/25 18:40, Eric Auger wrote:
-> >> We may be miss some NV related GIC register save/restore. Until
-> >> we complete the study, let's add a migration blocker when the
-> >> maintenance IRQ is set.
-> >>
-> >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> >> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> >> ---
-> >>   hw/intc/arm_gicv3_kvm.c | 8 ++++++++
-> >>   1 file changed, 8 insertions(+)
-> >>
-> >> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-> >> index b30aac7aee..fccb3886bf 100644
-> >> --- a/hw/intc/arm_gicv3_kvm.c
-> >> +++ b/hw/intc/arm_gicv3_kvm.c
-> >> @@ -827,8 +827,16 @@ static void kvm_arm_gicv3_realize(DeviceState
-> >> *dev, Error **errp)
-> >>       }
-> >>         if (s->maint_irq) {
-> >> +        Error *kvm_nv_migration_blocker =3D NULL;
-> >>           int ret;
-> >>   +        error_setg(&kvm_nv_migration_blocker,
-> >> +                       "Live migration disabled due to KVM nested
-> >> virt enabled");
+> On 7/8/25 5:40 PM, Shameer Kolothum wrote:
+> > Commit d6afe18b7242 ("hw/arm/virt-acpi-build: Fix ACPI IORT and MADT tables
+> > when its=off") moved ITS group node generation under the its=on condition.
+> > However, it still creates rc_its_idmaps unconditionally, which results in
+> > duplicate ID mappings in the IORT table.
 > >
-> > (mis-indentation)
-> Did not notice as checkpatch does not complain.
+> > Fixes:d6afe18b7242 ("hw/arm/virt-acpi-build: Fix ACPI IORT and MADT tables when its=off")
+>
+> At least please could you take this fix?
 
-I'll fix the indent in target-arm.next.
+Sure; I've taken this patch into target-arm.next.
 
-thanks
 -- PMM
 

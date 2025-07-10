@@ -4,87 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E9F7C83F1D
-	for <qemu-arm@archiver.kernel.org>; Thu, 10 Jul 2025 11:49:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FB65C83F1D
+	for <qemu-arm@archiver.kernel.org>; Thu, 10 Jul 2025 12:00:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZplw-0004f4-3i; Thu, 10 Jul 2025 07:49:04 -0400
+	id 1uZpwB-0006tA-2f; Thu, 10 Jul 2025 07:59:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uZplV-0002VZ-IY
- for qemu-arm@nongnu.org; Thu, 10 Jul 2025 07:48:39 -0400
+ id 1uZpw9-0006HJ-NC
+ for qemu-arm@nongnu.org; Thu, 10 Jul 2025 07:59:37 -0400
 Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uZplT-0001lH-Aj
- for qemu-arm@nongnu.org; Thu, 10 Jul 2025 07:48:37 -0400
+ id 1uZpw6-000555-FI
+ for qemu-arm@nongnu.org; Thu, 10 Jul 2025 07:59:37 -0400
 Received: by mail-yb1-xb36.google.com with SMTP id
- 3f1490d57ef6-e81749142b3so703277276.3
- for <qemu-arm@nongnu.org>; Thu, 10 Jul 2025 04:48:34 -0700 (PDT)
+ 3f1490d57ef6-e84207a8aa3so569217276.3
+ for <qemu-arm@nongnu.org>; Thu, 10 Jul 2025 04:59:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752148112; x=1752752912; darn=nongnu.org;
+ d=linaro.org; s=google; t=1752148770; x=1752753570; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=MvXBAL/xPT2d97B4UA4Tmx9TqzY8IXm1n33AvaqrAcc=;
- b=oTAhQkKdwYA8iPluIl6COWdKwEXPTdgZEks3O35DLlSuaXttwlizMVPbf+2O0eJukL
- NDcGaXeFXa5dXTnTaHjq6TyFP604DpvAPJIwIbnV37cIfSQ1V52xVYFkh3tUwIdSHWJY
- rKgaBDsteJ85E97KLlaCNz1mhfHpiLKiz8Dp1Q5qKrx9V5v4yjw6czz5WP0OURTGStMx
- jTdlO26MCneHm+gn33PD62wSY2gCUjoISwtjqxXgbY6H74VJec7hk+eRj4TJKtQAkeJ5
- DF9V5meAyP7HfMLJZ07eqBGlRVWALCtFzqBJ26yP28pdWmBUpCHQGwutYFnlv+PpJ9RS
- CJUA==
+ bh=YfMnil2xhEmv1j0PSh2ZYBtfhQluDz2tH/9qZnzD7Xs=;
+ b=Z75Rh65hjp9/VkrImgwsxO9wnVRR8P5Q/E5h+m2pricjsHdXjUER1RVghL+QMJKYFs
+ ktnBfBS8GWF0Nfj6Np9W3EZEcuNt9WTdGk2LWfoG+ciY0EHOCiow687W415cbS8NWOj/
+ wqdobIcdwjPu9fh8nt40f6T0IyMGbt+ajXC9jffwCnSbCgkHHv90LrrAhWZTVURloGvu
+ kAGFATOICi2P3KEWgAyTQ9Bbhd0iWI6tfv6no584LeejPpEY6SF64aGdps4TIPRzjVlQ
+ mBPDHSWbgBSgdK2uexNkcB2k4DKnUvi6D+412gDuWlyZYwNfWH2dELQDbJH3tEaw4cbo
+ lffA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752148112; x=1752752912;
+ d=1e100.net; s=20230601; t=1752148770; x=1752753570;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=MvXBAL/xPT2d97B4UA4Tmx9TqzY8IXm1n33AvaqrAcc=;
- b=oEk3VMJQo5KRadlp1GX3fJOPLStUlyZy7lN+r6HZQ7I2+qn4jXqXxZqu8/Y6gMOACU
- 4biPSkh42yzlJTZ2NYK7k3HCfwHH+a00R+BmxmQjmY23ryPkkjlatav2i0Jsb/lYGTM8
- FADMkhjrkJ3L+nILIQCZKUoHDa+Bs1eFJPD2s0M4DyTsltguS0GLIeHQlXB4T8+56YhR
- Hj9wSUuRhBDKgT3xW1tI9ud1UHbmlzE219Lw30jhHQa1oXxQzqGhp8Ag+Sik/uRZMcUB
- IAaXDnyrqAuKG5Rd2bXcI0LU5n+3gKEaKiv0a29sNOLAXFrn9LbX5Twg/86+abK3XVxx
- 8/Sw==
-X-Gm-Message-State: AOJu0Yx4BQgZH0Qrw2Q6q0yvWmKwXqoJIP9pVxkKblwFruAZa6vaBYil
- +xwdhH8hWnupYkp7gT/ZXwBrPvbrbdGZ83fGwjkal9z/NRcBAczRv1fUiHgdS2hQjZUpKxEWle5
- a81GsRet/DbMHsi3K+PHZ3jrMFN6BWEKACsMV2PbZtA==
-X-Gm-Gg: ASbGncsYBfOurtCdlu2KK1KEGMYCM07zby2oteNzVCdHhOaNbZuN8LzUxlAhIr/hf/G
- bXJFCp9VXvIDLdvkuwFauQrsDvOaqwP6WMqpRCTI3JOlqQ7VyFXtrVJY9UCmdePDQMbitgIX1KI
- XfGTeDKhHzzcxjPBXnUesbccJ+cgdulJYzWMJb6LuNI1f5
-X-Google-Smtp-Source: AGHT+IEHTiBycdOW92tqJTp1iKLOtWaXRGioxhB8k5/GS32d3UwtgZFn0mzDnaL02ig5YtrHzs3d9iDysVclb+6OvVA=
-X-Received: by 2002:a05:690c:7010:b0:70d:ed5d:b4da with SMTP id
- 00721157ae682-717b1677de8mr92157637b3.8.1752148112360; Thu, 10 Jul 2025
- 04:48:32 -0700 (PDT)
+ bh=YfMnil2xhEmv1j0PSh2ZYBtfhQluDz2tH/9qZnzD7Xs=;
+ b=ZUHOL7ax3KN5SqsKiC1LcNuYO+2M9HjW0K0Eq5+2wecL+b6eyOoz8TDdUoKKoFJ3aN
+ 3d4jgC4CJw1pk3vqjsWQW+CG+30dVmCbdYAKX6hP36coV+XKk9JcOw4y7FTUz6Wfn7Nq
+ iZz915BPbz8AqKorHprIIe3VnUy2ufmUe0FXO4RBV+k/zR244gF/RQeIXAIKwVomN49a
+ SAqB1kTdXVsAUEkvxDohzyl8UJ4BOi9p3GKDkq4NxeiuKRd69YUAMHU326y2kKiC9ZDR
+ w7lo+x1Qd4PguWI9eVWyt3WdyqhpDN3S2l8OieYmGq7gPnDiDlaNB/naUS4sp2oOADlM
+ KJUQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWP7O6a26tgEIaiFMXbNwOM+0fv7wisWyFyQsAGrUniiZAA2O6edU+Sgqwqt4bdmaqqE8mzBdemRg==@nongnu.org
+X-Gm-Message-State: AOJu0YxwBcvVrYpRtCsV0LU773xxWsgWoC2M16OdiY9JAOCEOFOg2p2j
+ XBpd8vkl3W4/uvFbHjGXM9hJjqA5cypW/J9QHaR0KHjOPfjGNDMHbcFdHOQvWVGM4hEFm4y24Vx
+ odLMLoEz86zw8EtSV+RxLoMvBpUdCF9evklzHZVpoMw==
+X-Gm-Gg: ASbGnctmTHpEl4UdRgyle9wO51ZWl13g3ZTol7PZg0YAim1F1SeyuqYOoC7OxUvl9rn
+ ljLIiVYenQfZMmFrN9qup1BtHPHou/EpeHbPmh3ipBeWVaw8qBRqi6XjS9caKpE1ci7D/A9ZNm0
+ 0S+c3UAnEPvytYgZ27njb5ZzN7eppZVEKbriPTLs9fsKMW
+X-Google-Smtp-Source: AGHT+IFc4by//U1sCac6vikwQwVdpi0yBp0LDOx9eqqeVIiwYDOidyFbIvy3rar7rOSZS+S2Y8GzX2+3Pm06zc0hiiU=
+X-Received: by 2002:a05:6902:4790:b0:e8b:60b6:bd2d with SMTP id
+ 3f1490d57ef6-e8b7a356f22mr2870470276.12.1752148770269; Thu, 10 Jul 2025
+ 04:59:30 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250708154055.101012-1-shameerali.kolothum.thodi@huawei.com>
- <1291e658f6284fc3b041b599ad375ea1@huawei.com>
-In-Reply-To: <1291e658f6284fc3b041b599ad375ea1@huawei.com>
+References: <20250707202111.293787-1-richard.henderson@linaro.org>
+ <20250707202111.293787-4-richard.henderson@linaro.org>
+In-Reply-To: <20250707202111.293787-4-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 Jul 2025 12:48:20 +0100
-X-Gm-Features: Ac12FXwgEr5SQvCMa0uyAwKt-kqjt2dcCxigi8BASgj8bgRUURuzcR2i1kSb4Wo
-Message-ID: <CAFEAcA_eX0uwYcVjSN=V97xh3uHs5SgHZOx_wYkLC6TNCX7+9g@mail.gmail.com>
-Subject: Re: [PATCH v7 00/12] hw/arm/virt: Add support for user creatable
- SMMUv3 device
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "jgg@nvidia.com" <jgg@nvidia.com>, 
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>, 
- "berrange@redhat.com" <berrange@redhat.com>,
- "imammedo@redhat.com" <imammedo@redhat.com>, 
- "nathanc@nvidia.com" <nathanc@nvidia.com>,
- "mochs@nvidia.com" <mochs@nvidia.com>, 
- "smostafa@google.com" <smostafa@google.com>, 
- "gustavo.romero@linaro.org" <gustavo.romero@linaro.org>,
- "mst@redhat.com" <mst@redhat.com>, 
- "marcel.apfelbaum@gmail.com" <marcel.apfelbaum@gmail.com>,
- "Wangzhou (B)" <wangzhou1@hisilicon.com>, 
- jiangkunkun <jiangkunkun@huawei.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>, 
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+Date: Thu, 10 Jul 2025 12:59:19 +0100
+X-Gm-Features: Ac12FXy89eqVMrVwxsb_zdNZRMjIzKD4n-AGVvN2kH3ZnO8ri--f-1pCKsPO8_8
+Message-ID: <CAFEAcA9UcPCQ5qqrM+Ao5hrOJ=xYgOJ6==WNDj0xPpr2qh-TfA@mail.gmail.com>
+Subject: Re: [PATCH 03/20] target/arm: Convert get_phys_addr_lpae to
+ access_perm
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=2607:f8b0:4864:20::b36;
  envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb36.google.com
@@ -110,45 +95,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 10 Jul 2025 at 11:10, Shameerali Kolothum Thodi
-<shameerali.kolothum.thodi@huawei.com> wrote:
+On Mon, 7 Jul 2025 at 22:01, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/ptw.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
 >
-> Hi Peter,
+> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+> index 39ecc093a5..7503d1de6f 100644
+> --- a/target/arm/ptw.c
+> +++ b/target/arm/ptw.c
+> @@ -1643,14 +1643,14 @@ static bool nv_nv1_enabled(CPUARMState *env, S1Translate *ptw)
+>   * @env: CPUARMState
+>   * @ptw: Current and next stage parameters for the walk.
+>   * @address: virtual address to get physical address for
+> - * @access_type: MMU_DATA_LOAD, MMU_DATA_STORE or MMU_INST_FETCH
+> + * @access_perm: PAGE_{READ, WRITE, EXEC}, or 0
+>   * @memop: memory operation feeding this access, or 0 for none
+>   * @result: set on translation success,
+>   * @fi: set to fault info if the translation fails
+>   */
+>  static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+>                                 uint64_t address,
+> -                               MMUAccessType access_type, MemOp memop,
+> +                               unsigned access_perm, MemOp memop,
+>                                 GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
+>  {
+>      ARMCPU *cpu = env_archcpu(env);
+> @@ -1678,7 +1678,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+>          int ps;
 >
-> > -----Original Message-----
-> > From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> > Sent: Tuesday, July 8, 2025 4:41 PM
-> > To: qemu-arm@nongnu.org; qemu-devel@nongnu.org
-> > Cc: eric.auger@redhat.com; peter.maydell@linaro.org; jgg@nvidia.com;
-> > nicolinc@nvidia.com; ddutile@redhat.com; berrange@redhat.com;
-> > imammedo@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
-> > smostafa@google.com; gustavo.romero@linaro.org; mst@redhat.com;
-> > marcel.apfelbaum@gmail.com; linuxarm@huawei.com;
-> > wangzhou1@hisilicon.com; jiangkunkun@huawei.com;
-> > jonathan.cameron@huawei.com; zhangfei.gao@linaro.org
-> > Subject: [PATCH v7 00/12] hw/arm/virt: Add support for user creatable
-> > SMMUv3 device
-> >
-> > Hi All,
-> >
-> > Changes from v6:
-> > https://lore.kernel.org/qemu-devel/20250703084643.85740-1-
-> > shameerali.kolothum.thodi@huawei.com/
-> >
-> > 1. Fixed the warning case for DT support, reported by Eric(patch #8).
-> > 2. Picked up R-by's and T-by's. Thanks!
-> >
-> > Please take a look and let me know. I think this is in a good shape now
-> > for 10.1.
->
-> I understand the soft-freeze for 10.1 is next week. Any chance this series
-> can be picked for 10.1? Please let me know.
+>          param = aa64_va_parameters(env, address, mmu_idx,
+> -                                   access_type != MMU_INST_FETCH,
+> +                                   !(access_perm & PAGE_EXEC),
+>                                     !arm_el_is_aa64(env, 1));
+>          level = 0;
 
-I'm afraid it's already pretty late, and you seem to still have
-at least one person with comments/questions about this v7
-series which has only just hit the list in the last few days.
-So I think we should leave this until 10.2.
+This will treat a "don't check access permissions" call as
+a data-access (relevant for TBI), and means there's no way
+to say "do an address lookup for INST_FETCH but don't do the
+access-permission check". Is that what we want?
+We should at least comment this.
 
+thanks
 -- PMM
 

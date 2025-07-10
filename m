@@ -4,83 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6422EC83F1B
-	for <qemu-arm@archiver.kernel.org>; Thu, 10 Jul 2025 15:21:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60BF1C83F17
+	for <qemu-arm@archiver.kernel.org>; Thu, 10 Jul 2025 16:04:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uZt5X-0005rm-KB; Thu, 10 Jul 2025 11:21:31 -0400
+	id 1uZtkU-0004hf-3q; Thu, 10 Jul 2025 12:03:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uZt4Z-0004lg-0X
- for qemu-arm@nongnu.org; Thu, 10 Jul 2025 11:20:31 -0400
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uZtZ4-0001K6-RI
+ for qemu-arm@nongnu.org; Thu, 10 Jul 2025 11:52:06 -0400
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uZt4W-0001xS-2x
- for qemu-arm@nongnu.org; Thu, 10 Jul 2025 11:20:30 -0400
-Received: by mail-yw1-x112b.google.com with SMTP id
- 00721157ae682-710fd2d0372so16850117b3.0
- for <qemu-arm@nongnu.org>; Thu, 10 Jul 2025 08:20:27 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uZtYy-0001cU-GB
+ for qemu-arm@nongnu.org; Thu, 10 Jul 2025 11:52:02 -0400
+Received: by mail-pg1-x534.google.com with SMTP id
+ 41be03b00d2f7-b3508961d43so1062034a12.3
+ for <qemu-arm@nongnu.org>; Thu, 10 Jul 2025 08:51:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752160827; x=1752765627; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=lStpNvlclqQGLHSJg5wy7W8AoeA01L1kwc4/Dsb2mGo=;
- b=dGU4fekdmjM2yr1AHOY902NLIikIhx/j/PneiV0fvevm6iMswitTYgJnEWaPghnirV
- gP3+M+/vByWxAidj9nO43p4pf+Ssx1dYKSr2mXA7bNDDf+BRQCpqS1R08Y7FjZW9AQ1B
- jQtb5liCnuqGgBVgXJd+4HBG51bFd+S9hs3H37c5yECVkZgbEtfzi353sK0lM+/TNqW0
- 47LF6hjchftJYwgcOpbdr86nqZzBsM+8mkTPP8y7Net65Df2SJ55k+4SOouQ0jKz9prQ
- mg/WEGhCog6LkmzYFkWRMsI3E0IItklo2OUCq9iqMDmSQuIh0nk+CpwKRxNs76Aq6XM9
- qT8g==
+ d=linaro.org; s=google; t=1752162715; x=1752767515; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Cx0adoOA8S0+udYRdUtLCKMOxl8ycJQfFtUzJnp8YfY=;
+ b=HEJczCakkFrDYZiBe+wSVkxBSYtFutApuXC9kyW/+I6nAPeIebldVgN0bdXmdO+aL1
+ /HsgCn5vK44jknggDUJ9cT7TGD9PVQRIKZAicaXENzrqRDztHAwXVGWKGpRtGHtJWEZj
+ s5/niuHLxE0kzbSokYZ/Kq4W74pg4hpjFWz52z1Z3HIGJEIqM7fB8FgpOarm+bbaCTVv
+ 00pqKyeaOPgl+atGl1fJVtJY8yvAaP4YXSgX+IlNaLQd/3utdOrnBbpgLjjGb593KMpE
+ +ftmtuYgkXoELZKCtLQDnzILL+T/D/KqBEa7vMrRjkaRLNHHVos0BJmGHuZNqXLxu1OE
+ Botg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752160827; x=1752765627;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=lStpNvlclqQGLHSJg5wy7W8AoeA01L1kwc4/Dsb2mGo=;
- b=vo/PuxVdRdobBf9iMqvzDOSq0iebcufOa+e0ewjufSX69oiuOOXKQOl7YrhLVNHSYD
- pNMwWJN+eeQ0FFr5UJ2oxuzPqRxSMySXOjvSnTw07i3t4TjPKWV0SOhgqzJoZYlQyAhv
- NpGTIGSvWF2KvVAe00rXdPyVYngl9X1t1eLorOMKFcO2lwAtsEQjxetOrpCYfxovDZ0G
- nHcX3ZN0ordsS1Uh8I9LS1Uixu6tYTlkQ5nVoU+pfjfVNuhwF0iOGzNJJJJ1wMR4OtEF
- GfblEInRvmnc33qx6QO0NxHsUWNqdCK7vGDRLwheH8Una4csBYVFL7iRG0924ml0BcUr
- Mmkw==
+ d=1e100.net; s=20230601; t=1752162715; x=1752767515;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Cx0adoOA8S0+udYRdUtLCKMOxl8ycJQfFtUzJnp8YfY=;
+ b=qXbkbrK0G/2VBFV5p0eR1sjSmbSiz17eiR+bB5kdK8xuWKX20AvZ9jheYuPwCq3m2H
+ nLYa7xACiz2gQdyT3IwIO+KEjklMnHqHd/+UE1fOYxN3FQAQxEjmRbGmD9WinTSGZaQN
+ 42xwuShexy8zXEDUqRNPw3JpEMJQ/Qm2CPLpb/LDI/iHl+72e1o2zJOZCiC38qVfyPxz
+ SzbZY78+kdbD94DX2xSk008rQ658R6D++v5ZAQZNFsha6Fbpo6k8IW+BcW6vdii6f0E/
+ FC9jmXC+W/3lQyia2pMxyChGDERpWmbLeIXOSaoeYo/onEjQnN8bZL7PP7wjYNBKjEwx
+ zBNQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVwLGXgKCn2FCEM20no1zJ7zIUhLRi7P17B060iQcGtc9JvgTwrEv6IHurR5qNbmKpurvrUtZqTGg==@nongnu.org
-X-Gm-Message-State: AOJu0Yyi+s1Qu/6p56Gs+3QzMaItAkWFV7UjhESE8drH8lYmDzTh5/s+
- Qcnpz1QFlUeBO44WQpwHgLslzIEhyRMLofqfn4aSaseG1cSBSIftv90QxFJAR6YH+YWDAbQg63U
- XXrFIlBcVmcWQFaoeA2m2iA8W5F9d3rvPoqtu0CDV0A==
-X-Gm-Gg: ASbGncu2hYKSDotfSd37BAY8AV944mWabkkx6QTNK/ZcKBfQqDS4JnKMbW5deQhadc9
- SqQde5M7g8W3AXPjiJgXlp3oTnSSq4Q76d6VoqZ5EG/PoKkJ+KCI6BoLY/q6oui9T2EK7C8RtO4
- UJWZNn+2yqaBuY3U4nMzIzpREuu+QOU5upAFNZU0am8jze
-X-Google-Smtp-Source: AGHT+IEGFB2jIbBsNQKCoBKAUJcFeenrGSdoTYoGbo+6mPQIitw21TZDUxjNfourt7paa/N95Z0zMh14wTbk0PTvM5c=
-X-Received: by 2002:a05:690c:6601:b0:712:c55c:4e5c with SMTP id
- 00721157ae682-717c14d8b82mr57192967b3.5.1752160826429; Thu, 10 Jul 2025
- 08:20:26 -0700 (PDT)
+ AJvYcCUVmDbATghbNc+K3Oz/SLtCGckwSImZcE1s0pForja/+o5jcx+OjBYaUZfAX1FbEgS8vEwBjOrjZw==@nongnu.org
+X-Gm-Message-State: AOJu0YwhmJTq5HMXOsxrNmaO3fSgrNlmgIsXdiWwp6HlMvomnJ5wYvSW
+ MEKmQVY17+FFaAikDm4V+JoaRMtmTKjcn5hjgriLQ9AEOPwLVnfhRdyg1r7ObXN9ecY=
+X-Gm-Gg: ASbGncuqQ3Rdju1Xz84B/ZBYHDj0NMzUeefurHnL1ZwfFDrrlRVFGWY1AwTttlUqwZT
+ o4S9wq7dlhg/Ufn2zaJ9g95xYXLHxjiFQL1zysdsqlJuEWTW6aST9O7Lk6OIOULOucK8Ek7or0z
+ s4YRIL++MqmKEsZkDSS4WgCUg7IvAZ3C3ZeSzwsduKtIodD9vCK+blrBttQr6LdCXNHLUrOEGNI
+ vbYm3mVhPH+IpvZlkDBORPZ0KuCn3RO8V/WKikY+cqcowazTtJ54lSJ6sLrx/OKdo69QwmIxSk0
+ 8DI5TaywHEEGfNM9EPpbyNUQIgwpk7J/O9YERBpcwGLjCgfaJrg1OMoLzVs44Yb8enFgCsjXcV8
+ =
+X-Google-Smtp-Source: AGHT+IE5lDrdF/uv9cFbJ6ck/iI2yiXEZOwOjA7BFlDqLJZS50Kv/p5UQz2NeetzJdZ8LYZqT9F9jg==
+X-Received: by 2002:a17:90b:57ef:b0:31c:15d9:8aa with SMTP id
+ 98e67ed59e1d1-31c3c30cf27mr5886169a91.34.1752162713076; 
+ Thu, 10 Jul 2025 08:51:53 -0700 (PDT)
+Received: from [192.168.1.87] ([38.41.223.211])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-23de435b76dsm23049375ad.221.2025.07.10.08.51.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 10 Jul 2025 08:51:52 -0700 (PDT)
+Message-ID: <643f1db1-4a7a-4bc0-a187-9ff1561f8a3d@linaro.org>
+Date: Thu, 10 Jul 2025 08:51:51 -0700
 MIME-Version: 1.0
-References: <20250708154055.101012-1-shameerali.kolothum.thodi@huawei.com>
- <20250708154055.101012-2-shameerali.kolothum.thodi@huawei.com>
- <61464e90-9be3-4be5-a0af-ab15b92776e5@redhat.com>
-In-Reply-To: <61464e90-9be3-4be5-a0af-ab15b92776e5@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 Jul 2025 16:20:14 +0100
-X-Gm-Features: Ac12FXwXrK49iN8S6SpNmQv1IC1bvkSc-LrO3vFcRIuFuupyeCT_lLTt9sxkxfI
-Message-ID: <CAFEAcA8YYrkwaU3ghdCDiA3rqLVj_to++yg3R69EVY+2dP0R2w@mail.gmail.com>
-Subject: Re: [PATCH v7 01/12] hw/arm/virt-acpi-build: Don't create ITS id
- mappings by default
-To: eric.auger@redhat.com
-Cc: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org, jgg@nvidia.com, nicolinc@nvidia.com, 
- ddutile@redhat.com, berrange@redhat.com, imammedo@redhat.com, 
- nathanc@nvidia.com, mochs@nvidia.com, smostafa@google.com, 
- gustavo.romero@linaro.org, mst@redhat.com, marcel.apfelbaum@gmail.com, 
- linuxarm@huawei.com, wangzhou1@hisilicon.com, jiangkunkun@huawei.com, 
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH] tests/functional: Move tests into architecture
+ specific folders
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
+ qemu-riscv@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+References: <20250710094251.139514-1-thuth@redhat.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20250710094251.139514-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,21 +107,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 10 Jul 2025 at 15:00, Eric Auger <eric.auger@redhat.com> wrote:
+On 7/10/25 2:42 AM, Thomas Huth wrote:
+> This patch tackles two issues. First, the tests/functional folder has
+> become quite crowded already, some restructuring would be helpful here.
+> Second, we currently encode the target architecture twice in the test
+> names since a lot of the test file names contain the target, too.
+> This contributes to the very long output lines when running "make
+> check-functional".
 >
-> Hi Peter,
->
-> On 7/8/25 5:40 PM, Shameer Kolothum wrote:
-> > Commit d6afe18b7242 ("hw/arm/virt-acpi-build: Fix ACPI IORT and MADT tables
-> > when its=off") moved ITS group node generation under the its=on condition.
-> > However, it still creates rc_its_idmaps unconditionally, which results in
-> > duplicate ID mappings in the IORT table.
-> >
-> > Fixes:d6afe18b7242 ("hw/arm/virt-acpi-build: Fix ACPI IORT and MADT tables when its=off")
->
-> At least please could you take this fix?
 
-Sure; I've taken this patch into target-arm.next.
+I agree with the "crowded" aspect of functional tests, and subfolders 
+are definitely welcome.
 
--- PMM
+Concerning the long line, it seems that setup ("thorough" in this 
+example) is repeated 3 times on it, which is a bigger issue than having 
+arch name being repeated.
+
+A simpler solution for the "long line" issue would be to change 
+mtest2make.py to generate shorter test target names. This would not 
+benefit for using meson test directly, but from what I understood, this 
+is not recommended nor supported anyway.
+
+> So let's move the individual test files to target specific folders now.
+> Then we can drop the target from the file name (and thus from the test
+> name).
+> 
+> Before the change, the output looked like this:
+> 
+>   ...
+>   195/236 qemu:func-thorough+func-microblazeel-thorough+thorough / func-microblazeel-microblazeel_s3adsp1800          OK                2.00s   2 subtests passed
+>   196/236 qemu:func-thorough+func-microblaze-thorough+thorough / func-microblaze-microblaze_replay                    OK                2.78s   1 subtests passed
+>   197/236 qemu:func-thorough+func-microblaze-thorough+thorough / func-microblaze-microblaze_s3adsp1800                OK                2.02s   2 subtests passed
+>   198/236 qemu:func-thorough+func-mips64el-thorough+thorough / func-mips64el-mips64el_fuloong2e                       OK                1.95s   1 subtests passed
+>   199/236 qemu:func-thorough+func-mips64el-thorough+thorough / func-mips64el-mips64el_loongson3v                      SKIP              0.07s   0 subtests passed
+>   200/236 qemu:func-thorough+func-mips64el-thorough+thorough / func-mips64el-mips64el_tuxrun                          OK                8.52s   1 subtests passed
+>   ...
+> 
+> After this change, it gets a little bit shorter:
+> 
+>   ...
+>   195/236 qemu:func-thorough+func-microblazeel-thorough+thorough / func-microblazeel-s3adsp1800          OK                2.12s   2 subtests passed
+>   196/236 qemu:func-thorough+func-microblaze-thorough+thorough / func-microblaze-replay                  OK                2.90s   1 subtests passed
+>   197/236 qemu:func-thorough+func-microblaze-thorough+thorough / func-microblaze-s3adsp1800              OK                2.07s   2 subtests passed
+>   198/236 qemu:func-thorough+func-mips64el-thorough+thorough / func-mips64el-fuloong2e                   OK                2.05s   1 subtests passed
+>   199/236 qemu:func-thorough+func-mips64el-thorough+thorough / func-mips64el-loongson3v                  SKIP              0.07s   0 subtests passed
+>   200/236 qemu:func-thorough+func-mips64el-thorough+thorough / func-mips64el-tuxrun                      OK                8.84s   1 subtests passed
+>   ...
+> 
+> Tests that can be used for multiple but not all targets (like the "migration"
+> test) are now handled via symlinks in the target folders.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   Note: Marked as RFC since I'm not that happy about the symlinks yet ...
+>         if someone has a better idea, please let me know!
+
+Same as Manos, correctly extracting common code looks better than 
+finding a workaround with symlinks to satisfy import rules.
+
+>         Also the update to the MAINTAINERS file is still missing - I'll add
+>         that once we agreed on whether this patch is a good idea or not.
+>
+
+Thanks,
+Pierrick
 

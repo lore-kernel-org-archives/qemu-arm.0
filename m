@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97C8AC83F1A
-	for <qemu-arm@archiver.kernel.org>; Fri, 11 Jul 2025 09:03:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC001C83F1A
+	for <qemu-arm@archiver.kernel.org>; Fri, 11 Jul 2025 09:03:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ua9a1-0004kO-L8; Fri, 11 Jul 2025 04:58:06 -0400
+	id 1ua9eQ-00014Z-IE; Fri, 11 Jul 2025 05:02:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ua9Sp-0001te-9A; Fri, 11 Jul 2025 04:50:39 -0400
+ id 1ua9RV-0000gs-Fm; Fri, 11 Jul 2025 04:49:18 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ua9Sm-0003tQ-IO; Fri, 11 Jul 2025 04:50:38 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bdlkq09C4z6M4jV;
- Fri, 11 Jul 2025 16:49:23 +0800 (CST)
+ id 1ua9RR-0002r2-O6; Fri, 11 Jul 2025 04:49:16 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bdljG4djTz6G9P0;
+ Fri, 11 Jul 2025 16:48:02 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 102BF140432;
- Fri, 11 Jul 2025 16:50:31 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id F2C721402CB;
+ Fri, 11 Jul 2025 16:48:56 +0800 (CST)
 Received: from A2303104131.china.huawei.com (10.203.177.241) by
  frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Fri, 11 Jul 2025 10:50:20 +0200
+ 15.1.2507.39; Fri, 11 Jul 2025 10:48:47 +0200
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
@@ -36,13 +36,11 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <marcel.apfelbaum@gmail.com>, <linuxarm@huawei.com>,
  <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
  <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
-Subject: [PATCH v8 08/12] hw/arm/virt: Allow user-creatable SMMUv3 dev
- instantiation
-Date: Fri, 11 Jul 2025 09:47:45 +0100
-Message-ID: <20250711084749.18300-9-shameerali.kolothum.thodi@huawei.com>
+Subject: [PATCH v8 00/12] hw/arm/virt: Add support for user creatable SMMUv3
+ device
+Date: Fri, 11 Jul 2025 09:47:37 +0100
+Message-ID: <20250711084749.18300-1-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
-In-Reply-To: <20250711084749.18300-1-shameerali.kolothum.thodi@huawei.com>
-References: <20250711084749.18300-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
@@ -53,14 +51,14 @@ X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
 Received-SPF: pass client-ip=185.176.79.56;
  envelope-from=shameerali.kolothum.thodi@huawei.com;
  helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) AC_FROM_MANY_DOTS=2.145, BAYES_00=-1.9,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,192 +76,218 @@ From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Allow cold-plugging of an SMMUv3 device on the virt machine when no
-global (legacy) SMMUv3 is present or when a virtio-iommu is specified.
+Changes from v7:
+https://lore.kernel.org/qemu-devel/20250708154055.101012-1-shameerali.kolothum.thodi@huawei.com/
 
-This user-created SMMUv3 device is tied to a specific PCI bus provided
-by the user, so ensure the IOMMU ops are configured accordingly.
+1. Rebased to latest target-arm.next(I have included patch#1
+   as I can't find that after a git pull of latest)
+2. Addressed comments from Nicolin and added R-by tags. Thanks!
 
-Due to current limitations in QEMU’s device tree support, specifically
-its inability to properly present pxb-pcie based root complexes and
-their devices, the device tree support for the new SMMUv3 device is
-limited to cases where it is attached to the default pcie.0 root complex.
+Hi Peter,
 
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Tested-by: Nathan Chen <nathanc@nvidia.com>
-Tested-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
----
- hw/arm/smmu-common.c         |  8 +++++-
- hw/arm/smmuv3.c              |  2 ++
- hw/arm/virt.c                | 51 ++++++++++++++++++++++++++++++++++++
- hw/core/sysbus-fdt.c         |  3 +++
- include/hw/arm/smmu-common.h |  1 +
- 5 files changed, 64 insertions(+), 1 deletion(-)
+I understand it is late for 10.1. But still, if there is a chance to
+take this, please consider. Just that, don't have to wait for another
+cycle and can focus on adding the accelataor support for SMMUv3 during
+10.2 window.
 
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index dd16e9fa1e..ab920717cf 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -961,7 +961,12 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
-                 goto out_err;
-             }
-         }
--        pci_setup_iommu(pci_bus, &smmu_ops, s);
-+
-+        if (s->smmu_per_bus) {
-+            pci_setup_iommu_per_bus(pci_bus, &smmu_ops, s);
-+        } else {
-+            pci_setup_iommu(pci_bus, &smmu_ops, s);
-+        }
-         return;
-     }
- out_err:
-@@ -986,6 +991,7 @@ static void smmu_base_reset_exit(Object *obj, ResetType type)
- 
- static const Property smmu_dev_properties[] = {
-     DEFINE_PROP_UINT8("bus_num", SMMUState, bus_num, 0),
-+    DEFINE_PROP_BOOL("smmu_per_bus", SMMUState, smmu_per_bus, false),
-     DEFINE_PROP_LINK("primary-bus", SMMUState, primary_bus,
-                      TYPE_PCI_BUS, PCIBus *),
- };
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index ab67972353..bcf8af8dc7 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1996,6 +1996,8 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
-     device_class_set_parent_realize(dc, smmu_realize,
-                                     &c->parent_realize);
-     device_class_set_props(dc, smmuv3_properties);
-+    dc->hotpluggable = false;
-+    dc->user_creatable = true;
- }
- 
- static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index d8d92ffad2..9ae504b479 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -56,6 +56,7 @@
- #include "qemu/cutils.h"
- #include "qemu/error-report.h"
- #include "qemu/module.h"
-+#include "hw/pci/pci_bus.h"
- #include "hw/pci-host/gpex.h"
- #include "hw/pci-bridge/pci_expander_bridge.h"
- #include "hw/virtio/virtio-pci.h"
-@@ -1455,6 +1456,29 @@ static void create_smmuv3_dt_bindings(const VirtMachineState *vms, hwaddr base,
-     g_free(node);
- }
- 
-+static void create_smmuv3_dev_dtb(VirtMachineState *vms,
-+                                  DeviceState *dev, PCIBus *bus)
-+{
-+    PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
-+    SysBusDevice *sbdev = SYS_BUS_DEVICE(dev);
-+    int irq = platform_bus_get_irqn(pbus, sbdev, 0);
-+    hwaddr base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
-+    MachineState *ms = MACHINE(vms);
-+
-+    if (!(vms->bootinfo.firmware_loaded && virt_is_acpi_enabled(vms)) &&
-+        strcmp("pcie.0", bus->qbus.name)) {
-+        warn_report("SMMUv3 device only supported with pcie.0 for DT");
-+        return;
-+    }
-+    base += vms->memmap[VIRT_PLATFORM_BUS].base;
-+    irq += vms->irqmap[VIRT_PLATFORM_BUS];
-+
-+    vms->iommu_phandle = qemu_fdt_alloc_phandle(ms->fdt);
-+    create_smmuv3_dt_bindings(vms, base, SMMU_IO_LEN, irq);
-+    qemu_fdt_setprop_cells(ms->fdt, vms->pciehb_nodename, "iommu-map",
-+                           0x0, vms->iommu_phandle, 0x0, 0x10000);
-+}
-+
- static void create_smmu(const VirtMachineState *vms,
-                         PCIBus *bus)
- {
-@@ -2984,6 +3008,16 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-         qlist_append_str(reserved_regions, resv_prop_str);
-         qdev_prop_set_array(dev, "reserved-regions", reserved_regions);
-         g_free(resv_prop_str);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3)) {
-+        if (vms->legacy_smmuv3_present || vms->iommu == VIRT_IOMMU_VIRTIO) {
-+            error_setg(errp, "virt machine already has %s set. "
-+                       "Doesn't support incompatible iommus",
-+                       (vms->legacy_smmuv3_present) ?
-+                       "iommu=smmuv3" : "virtio-iommu");
-+        } else if (vms->iommu == VIRT_IOMMU_NONE) {
-+            /* The new SMMUv3 device is specific to the PCI bus */
-+            object_property_set_bool(OBJECT(dev), "smmu_per_bus", true, NULL);
-+        }
-     }
- }
- 
-@@ -3007,6 +3041,22 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
-         virtio_md_pci_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev), errp);
-     }
- 
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3)) {
-+        if (!vms->legacy_smmuv3_present && vms->platform_bus_dev) {
-+            PCIBus *bus;
-+
-+            bus = PCI_BUS(object_property_get_link(OBJECT(dev), "primary-bus",
-+                                                   &error_abort));
-+            if (pci_bus_bypass_iommu(bus)) {
-+                error_setg(errp, "Bypass option cannot be set for SMMUv3 "
-+                           "associated PCIe RC");
-+                return;
-+            }
-+
-+            create_smmuv3_dev_dtb(vms, dev, bus);
-+        }
-+    }
-+
-     if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
-         PCIDevice *pdev = PCI_DEVICE(dev);
- 
-@@ -3209,6 +3259,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_UEFI_VARS_SYSBUS);
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ARM_SMMUV3);
- #ifdef CONFIG_TPM
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
- #endif
-diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
-index c339a27875..e80776080b 100644
---- a/hw/core/sysbus-fdt.c
-+++ b/hw/core/sysbus-fdt.c
-@@ -31,6 +31,7 @@
- #include "qemu/error-report.h"
- #include "system/device_tree.h"
- #include "system/tpm.h"
-+#include "hw/arm/smmuv3.h"
- #include "hw/platform-bus.h"
- #include "hw/vfio/vfio-platform.h"
- #include "hw/vfio/vfio-calxeda-xgmac.h"
-@@ -518,6 +519,8 @@ static const BindingEntry bindings[] = {
- #ifdef CONFIG_TPM
-     TYPE_BINDING(TYPE_TPM_TIS_SYSBUS, add_tpm_tis_fdt_node),
- #endif
-+    /* No generic DT support for smmuv3 dev. Support added for arm virt only */
-+    TYPE_BINDING(TYPE_ARM_SMMUV3, no_fdt_node),
-     TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
-     TYPE_BINDING(TYPE_UEFI_VARS_SYSBUS, add_uefi_vars_node),
-     TYPE_BINDING("", NULL), /* last element */
-diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index e5e2d09294..80d0fecfde 100644
---- a/include/hw/arm/smmu-common.h
-+++ b/include/hw/arm/smmu-common.h
-@@ -161,6 +161,7 @@ struct SMMUState {
-     QLIST_HEAD(, SMMUDevice) devices_with_notifiers;
-     uint8_t bus_num;
-     PCIBus *primary_bus;
-+    bool smmu_per_bus; /* SMMU is specific to the primary_bus */
- };
- 
- struct SMMUBaseClass {
+Thanks!
+Shameer
+
+Changes from v6:
+https://lore.kernel.org/qemu-devel/20250703084643.85740-1-shameerali.kolothum.thodi@huawei.com/
+
+1. Fixed the warning case for DT support, reported by Eric(patch #1).
+2. Picked up R-by's and T-by's. Thanks!
+
+Please take a look and let me know. I think this is in a good shape now
+for 10.1.
+
+Thanks,
+Shameer
+
+Changes from v5:
+https://lore.kernel.org/qemu-devel/20250623094230.76084-1-shameerali.kolothum.thodi@huawei.com/
+
+1. Rebased to target-arm.next and resolved conflicts with the series 
+   [PATCH-for-10.1 v6 0/9] hw/arm: GIC 'its=off'.
+2. While at it, noticed an issue with RC id mappings creation
+   and patch #1 is a fix for that.
+3. Patches 3 and 4 have changes because of the conflict resolution with the
+   above series. I have retained the R-by tags, but encourage all to take
+   another look in case I missed anything.
+4. Collected R-by and T-by tags. Thanks!.
+
+Changes from v4:
+https://lore.kernel.org/qemu-devel/20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com/
+
+Major changes from v4:
+
+1. Added stricter validation for PCI buses associated with the SMMU.
+   Only the default PCIe Root Complex (pcie.0) and additional root
+   complexes created using pxb-pcie (see patch #1) are allowed.
+
+2. While testing this series with a setup involving multiple PCIe root
+   complexes using pxb-pcie, I encountered an issue related to IOMMU
+   ops resolution. Consider the below configuration, where an
+   arm-smmuv3 device is associated with the default root complex pcie.0,
+   and an additional pxb-pcie-based root complex (pcie.1) is added
+   without any associated SMMU:
+
+   -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.1 \
+   ...
+   -device pxb-pcie,id=pcie.1,bus_nr=8,bus=pcie.0 \
+   -device pcie-root-port,id=pcie.port1,chassis=2,bus=pcie.1 \
+   -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.2 \
+   ...
+   -device virtio-net-pci,bus=pcie.0,netdev=net0,id=virtionet.0 \
+   -device virtio-net-pci,bus=pcie.port1,netdev=net1,id=virtionet.1
+
+   The guest boots fine, and virtionet.0(behind the SMMUV3) bring up
+   is successful. However, attempting to bring up virtionet.1
+   (behind pcie.1, which lacks a connected SMMU) results in a failure:
+
+   root@ubuntu:/# dhclient enp9s0
+   arm-smmu-v3 arm-smmu-v3.0.auto: event 0x02 received:
+   arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000090000000002
+   arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000000000000000
+   arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000000000000000
+   arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000000000000000
+   arm-smmu-v3 arm-smmu-v3.0.auto: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x900 ssid: 0x0
+   virtio_net virtio1 enp9s0: NETDEV WATCHDOG: CPU: 2: transmit queue 0 timed out 5172 ms
+   virtio_net virtio1 enp9s0: TX timeout on queue: 0, sq: output.0, vq: 0x1, name: output.0, 5172000 usecs ago
+   ...
+
+   Debug shows that QEMU currently registers IOMMU ops for bus using
+   pci_setup_iommu(). However, when retrieving IOMMU ops for a device
+   via pci_device_get_iommu_bus_devfn(), the function walks up to the 
+   parent_dev and fetches the IOMMU ops from the parent, even if the
+   current root bus has none configured.
+
+   This works today because existing IOMMU models in QEMU are globally 
+   scoped, and pxb-pcie based extra root complexes can use the
+   bypass_iommu property to skip translation as needed.
+
+   However, with this series introducing support for associating
+   arm-smmuv3 devices with specific PCIe root complexes, this
+   becomes problematic. In QEMU, pxb-pcie is implemented as a synthetic
+   root complex whose parent_dev is pcie.0. As a result, even though
+   pcie.1 has no SMMU attached, pci_device_get_iommu_bus_devfn()
+   incorrectly returns the IOMMU ops associated with pcie.0 due to
+   the fallback mechanism via parent_dev. This causes devices on
+   pcie.1 to erroneously use the address space from pcie.0's SMMU,
+   leading to failures like the one above.
+
+   To address this, patch #6 in the series introduces a new helper 
+   function pci_setup_iommu_per_bus(), which explicitly sets the 
+   iommu_per_bus field in the PCIBus structure. This allows 
+   pci_device_get_iommu_bus_devfn() to retrieve IOMMU ops based 
+   on the specific bus.
+
+   Not sure this is the correct approach or not. If there is a better
+   way to handle this, please let me know .
+
+3. Picked up few R-by tags where the patch content has not changed much.
+
+4. Dropped T-by from Nathan for some patches as things have changed a bit.
+   @Nathan, apprecaite if you have time to rerun the tests.
+
+5. Added a bios table tests for both legacy SMMUv3 and new SMMMv3 devices.
+   See last few patches.
+
+Cover letter:
+
+This patch series introduces support for a user-creatable SMMUv3 device
+(-device arm-smmuv3) in QEMU.
+
+The implementation is based on feedback received from the RFCv2[0]:
+"hw/arm/virt: Add support for user-creatable accelerated SMMUv3"
+
+Currently, QEMU's SMMUv3 emulation (iommu=smmuv3) is tied to the machine
+and does not support instantiating multiple SMMUv3 devices—each associated
+with a separate PCIe root complex. In contrast, real-world ARM systems
+often include multiple SMMUv3 instances, each bound to a different PCIe
+root complex.
+
+This series allows to specify multiple SMMUv3 instances as below,
+
+ -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0
+  ...
+ -device arm-smmuv3,primary-bus=pcie.1,,id=smmuv3.1
+
+The multiple SMMUv3 instance support lays the groundwork for supporting
+accelerated SMMUv3, as proposed in the aforementioned RFCv2[0]. The
+proposed accelerated support will be an optional property like below,
+-device arm-smmuv3,primary-bus=pcie.1,accel=on,..
+
+Please note, the accelerated SMMUv3 support is not part of this series
+and will be sent out as a separate series later on top of this one.
+
+This series also,
+
+-Supports either the legacy iommu=smmuv3 option or the new
+  "-device arm-smmuv3" model.
+  -Adds device tree bindings for the new SMMUv3 device on the arm/virt
+   machine only, and only for the default pcie.0 root complex.
+   (Note: pxb-pcie root complexes are currently not supported with the
+    device tree due to known limitations[1].)
+
+Example usage:
+  -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0
+  -device virtio-net-pci,bus=pcie.0
+  -device pxb-pcie,id=pcie.1,bus_nr=2
+  -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.1
+  -device pcie-root-port,id=pcie.port1,bus=pcie.1
+  -device virtio-net-pci,bus=pcie.port1
+
+Please take a look and let me know your feedback.
+
+Thanks,
+Shameer
+[0]:https://lore.kernel.org/qemu-devel/20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com/
+[1]:https://lore.kernel.org/qemu-devel/20230421165037.2506-1-Jonathan.Cameron@huawei.com/
+
+
+Nicolin Chen (1):
+  hw/arm/virt: Add an SMMU_IO_LEN macro
+
+Shameer Kolothum (11):
+  hw/arm/virt-acpi-build: Don't create ITS id mappings by default
+  hw/arm/smmu-common: Check SMMU has PCIe Root Complex association
+  hw/arm/virt-acpi-build: Re-arrange SMMUv3 IORT build
+  hw/arm/virt-acpi-build: Update IORT for multiple smmuv3 devices
+  hw/arm/virt: Factor out common SMMUV3 dt bindings code
+  hw/pci: Introduce pci_setup_iommu_per_bus() for per-bus IOMMU ops
+    retrieval
+  hw/arm/virt: Allow user-creatable SMMUv3 dev instantiation
+  qemu-options.hx: Document the arm-smmuv3 device
+  bios-tables-test: Allow for smmuv3 test data.
+  qtest/bios-tables-test: Add tests for legacy smmuv3 and smmuv3 device
+  qtest/bios-tables-test: Update tables for smmuv3 tests
+
+ hw/arm/smmu-common.c                          |  37 +++-
+ hw/arm/smmuv3.c                               |   2 +
+ hw/arm/virt-acpi-build.c                      | 207 +++++++++++++-----
+ hw/arm/virt.c                                 | 111 +++++++---
+ hw/core/sysbus-fdt.c                          |   3 +
+ hw/pci-bridge/pci_expander_bridge.c           |   1 -
+ hw/pci/pci.c                                  |  31 +++
+ include/hw/arm/smmu-common.h                  |   1 +
+ include/hw/arm/virt.h                         |   1 +
+ include/hw/pci/pci.h                          |   2 +
+ include/hw/pci/pci_bridge.h                   |   1 +
+ include/hw/pci/pci_bus.h                      |   1 +
+ qemu-options.hx                               |   7 +
+ tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev  | Bin 0 -> 10162 bytes
+ .../data/acpi/aarch64/virt/DSDT.smmuv3-legacy | Bin 0 -> 10162 bytes
+ tests/data/acpi/aarch64/virt/IORT.smmuv3-dev  | Bin 0 -> 364 bytes
+ .../data/acpi/aarch64/virt/IORT.smmuv3-legacy | Bin 0 -> 276 bytes
+ tests/qtest/bios-tables-test.c                |  86 ++++++++
+ 18 files changed, 410 insertions(+), 81 deletions(-)
+ create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev
+ create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy
+ create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-dev
+ create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy
+
 -- 
 2.47.0
 

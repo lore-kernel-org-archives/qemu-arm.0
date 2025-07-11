@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB525C83F1A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F20DBC83F1D
 	for <qemu-arm@archiver.kernel.org>; Fri, 11 Jul 2025 09:04:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ua9fz-0004mZ-RN; Fri, 11 Jul 2025 05:04:16 -0400
+	id 1ua9fq-00049e-Jf; Fri, 11 Jul 2025 05:04:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ua9TK-0002Ol-9u; Fri, 11 Jul 2025 04:51:10 -0400
+ id 1ua9So-0001tX-Ha; Fri, 11 Jul 2025 04:50:39 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ua9TI-00040f-1p; Fri, 11 Jul 2025 04:51:09 -0400
+ id 1ua9Sm-0003tO-Gt; Fri, 11 Jul 2025 04:50:38 -0400
 Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bdlhx6ZvKz6L4yW;
- Fri, 11 Jul 2025 16:47:45 +0800 (CST)
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bdll44gcDz6GBvm;
+ Fri, 11 Jul 2025 16:49:36 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 879C11402ED;
- Fri, 11 Jul 2025 16:51:03 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id F0CFC1402F3;
+ Fri, 11 Jul 2025 16:50:30 +0800 (CST)
 Received: from A2303104131.china.huawei.com (10.203.177.241) by
  frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Fri, 11 Jul 2025 10:50:54 +0200
+ 15.1.2507.39; Fri, 11 Jul 2025 10:50:09 +0200
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
@@ -36,10 +36,10 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <marcel.apfelbaum@gmail.com>, <linuxarm@huawei.com>,
  <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
  <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
-Subject: [PATCH v8 11/12] qtest/bios-tables-test: Add tests for legacy smmuv3
- and smmuv3 device
-Date: Fri, 11 Jul 2025 09:47:48 +0100
-Message-ID: <20250711084749.18300-12-shameerali.kolothum.thodi@huawei.com>
+Subject: [PATCH v8 07/12] hw/pci: Introduce pci_setup_iommu_per_bus() for
+ per-bus IOMMU ops retrieval
+Date: Fri, 11 Jul 2025 09:47:44 +0100
+Message-ID: <20250711084749.18300-8-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20250711084749.18300-1-shameerali.kolothum.thodi@huawei.com>
 References: <20250711084749.18300-1-shameerali.kolothum.thodi@huawei.com>
@@ -78,140 +78,131 @@ From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-For the legacy SMMUv3 test, the setup includes three PCIe Root Complexes,
-one of which has bypass_iommu enabled. The generated IORT table contains
-a single SMMUv3 node, a Root Complex(RC) node and 1 ITS node.
-RC node features 4 ID mappings, of which 2 points to SMMU node and the
-remaining ones points to ITS.
+Currently, pci_setup_iommu() registers IOMMU ops for a given PCIBus.
+However, when retrieving IOMMU ops for a device using
+pci_device_get_iommu_bus_devfn(), the function checks the parent_dev
+and fetches IOMMU ops from the parent device, even if the current
+bus does not have any associated IOMMU ops.
 
-       pcie.0 -> {SMMU0} -> {ITS}
-{RC}   pcie.1 -> {SMMU0} -> {ITS}
-       pcie.2            -> {ITS}
-       [all other ids]   -> {ITS}
+This behavior works for now because QEMU's IOMMU implementations are
+globally scoped, and host bridges rely on the bypass_iommu property
+to skip IOMMU translation when needed.
 
-For the -device arm-smmuv3,... test, the configuration also includes three
-Root Complexes, with two connected to separate SMMUv3 devices.
-The resulting IORT table contains 1 RC node, 2 SMMU nodes and 1 ITS node.
-RC node features 4 ID mappings. 2 of them target the 2 SMMU nodes while
-the others targets the ITS.
+However, this model will break with the soon to be introduced
+arm-smmuv3 device, which allows users to associate the IOMMU
+with a specific PCIe root complex (e.g., the default pcie.0
+or a pxb-pcie root complex).
 
-        pcie.0 -> {SMMU0} -> {ITS}
-{RC}    pcie.1 -> {SMMU1} -> {ITS}
-        pcie.2            -> {ITS}
-        [all other ids]   -> {ITS}
+For example, consider the following setup with multiple root
+complexes:
+
+-device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0 \
+...
+-device pxb-pcie,id=pcie.1,bus_nr=8,bus=pcie.0 \
+-device pcie-root-port,id=pcie.port1,bus=pcie.1 \
+-device virtio-net-pci,bus=pcie.port1
+
+In Qemu, pxb-pcie acts as a special root complex whose parent is
+effectively the default root complex(pcie.0). Hence, though pcie.1
+has no associated SMMUv3 as per above, pci_device_get_iommu_bus_devfn()
+will incorrectly return the IOMMU ops from pcie.0 due to the fallback
+via parent_dev.
+
+To fix this, introduce a new helper pci_setup_iommu_per_bus() that
+explicitly sets the new iommu_per_bus field in the PCIBus structure.
+This helper will be used in a subsequent patch that adds support for
+the new arm-smmuv3 device.
+
+Update pci_device_get_iommu_bus_devfn() to use iommu_per_bus when
+determining the correct IOMMU ops, ensuring accurate behavior for
+per-bus IOMMUs.
 
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Nathan Chen <nathanc@nvidia.com>
 Tested-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- tests/qtest/bios-tables-test.c | 86 ++++++++++++++++++++++++++++++++++
- 1 file changed, 86 insertions(+)
+ hw/pci/pci.c             | 31 +++++++++++++++++++++++++++++++
+ include/hw/pci/pci.h     |  2 ++
+ include/hw/pci/pci_bus.h |  1 +
+ 3 files changed, 34 insertions(+)
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index 4dbc07ec5e..79f8ca6559 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -2250,6 +2250,86 @@ static void test_acpi_aarch64_virt_viot(void)
-     free_test_data(&data);
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index c70b5ceeba..0012cc12e7 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -2909,6 +2909,19 @@ static void pci_device_get_iommu_bus_devfn(PCIDevice *dev,
+             }
+         }
+ 
++        /*
++         * When multiple PCI Express Root Buses are defined using pxb-pcie,
++         * the IOMMU configuration may be specific to each root bus. However,
++         * pxb-pcie acts as a special root complex whose parent is effectively
++         * the default root complex(pcie.0). Ensure that we retrieve the
++         * correct IOMMU ops(if any) in such cases.
++         */
++        if (pci_bus_is_express(iommu_bus) && pci_bus_is_root(iommu_bus)) {
++            if (parent_bus->iommu_per_bus) {
++                break;
++            }
++        }
++
+         iommu_bus = parent_bus;
+     }
+ 
+@@ -3169,6 +3182,24 @@ void pci_setup_iommu(PCIBus *bus, const PCIIOMMUOps *ops, void *opaque)
+     bus->iommu_opaque = opaque;
  }
  
-+static void test_acpi_aarch64_virt_smmuv3_legacy(void)
++/*
++ * Similar to pci_setup_iommu(), but sets iommu_per_bus to true,
++ * indicating that the IOMMU is specific to this bus. This is used by
++ * IOMMU implementations that are tied to a specific PCIe root complex.
++ *
++ * In QEMU, pxb-pcie behaves as a special root complex whose parent is
++ * effectively the default root complex (pcie.0). The iommu_per_bus
++ * is checked in pci_device_get_iommu_bus_devfn() to ensure the correct
++ * IOMMU ops are returned, avoiding the use of the parent’s IOMMU when
++ * it's not appropriate.
++ */
++void pci_setup_iommu_per_bus(PCIBus *bus, const PCIIOMMUOps *ops,
++                             void *opaque)
 +{
-+    test_data data = {
-+        .machine = "virt",
-+        .arch = "aarch64",
-+        .tcg_only = true,
-+        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-+        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-+        .ram_start = 0x40000000ULL,
-+        .scan_len = 128ULL * MiB,
-+    };
-+
-+    /*
-+     * cdrom is plugged into scsi controller to avoid conflict
-+     * with pxb-pcie. See comments in test_acpi_aarch64_virt_tcg_pxb() for
-+     * details.
-+     *
-+     * The setup includes three PCIe root complexes, one of which has
-+     * bypass_iommu enabled. The generated IORT table contains a single
-+     * SMMUv3 node and a Root Complex node with three ID mappings. Two
-+     * of the ID mappings have output references pointing to the SMMUv3
-+     * node and the remaining one points to ITS.
-+     */
-+    data.variant = ".smmuv3-legacy";
-+    test_acpi_one(" -device pcie-root-port,chassis=1,id=pci.1"
-+                  " -device virtio-scsi-pci,id=scsi0,bus=pci.1"
-+                  " -drive file="
-+                  "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2,"
-+                  "if=none,media=cdrom,id=drive-scsi0-0-0-1,readonly=on"
-+                  " -device scsi-cd,bus=scsi0.0,scsi-id=0,"
-+                  "drive=drive-scsi0-0-0-1,id=scsi0-0-0-1,bootindex=1"
-+                  " -cpu cortex-a57"
-+                  " -M iommu=smmuv3"
-+                  " -device pxb-pcie,id=pcie.1,bus=pcie.0,bus_nr=0x10"
-+                  " -device pxb-pcie,id=pcie.2,bus=pcie.0,bus_nr=0x20,bypass_iommu=on",
-+                  &data);
-+    free_test_data(&data);
++    pci_setup_iommu(bus, ops, opaque);
++    bus->iommu_per_bus = true;
 +}
 +
-+static void test_acpi_aarch64_virt_smmuv3_dev(void)
-+{
-+    test_data data = {
-+        .machine = "virt",
-+        .arch = "aarch64",
-+        .tcg_only = true,
-+        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-+        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-+        .ram_start = 0x40000000ULL,
-+        .scan_len = 128ULL * MiB,
-+    };
+ static void pci_dev_get_w64(PCIBus *b, PCIDevice *dev, void *opaque)
+ {
+     Range *range = opaque;
+diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+index df3cc7b875..a3e0870a15 100644
+--- a/include/hw/pci/pci.h
++++ b/include/hw/pci/pci.h
+@@ -764,6 +764,8 @@ int pci_iommu_unregister_iotlb_notifier(PCIDevice *dev, uint32_t pasid,
+  */
+ void pci_setup_iommu(PCIBus *bus, const PCIIOMMUOps *ops, void *opaque);
+ 
++void pci_setup_iommu_per_bus(PCIBus *bus, const PCIIOMMUOps *ops, void *opaque);
 +
-+    /*
-+     * cdrom is plugged into scsi controller to avoid conflict
-+     * with pxb-pcie. See comments in test_acpi_aarch64_virt_tcg_pxb()
-+     * for details.
-+     *
-+     * The setup includes three PCie root complexes, two of which are
-+     * connected to separate SMMUv3 devices. The resulting IORT table
-+     * contains two SMMUv3 nodes and a Root Complex node with ID mappings
-+     * of which two of the ID mappings have output references pointing
-+     * to two different SMMUv3 nodes and the remaining ones pointing to
-+     * ITS.
-+     */
-+    data.variant = ".smmuv3-dev";
-+    test_acpi_one(" -device pcie-root-port,chassis=1,id=pci.1"
-+                  " -device virtio-scsi-pci,id=scsi0,bus=pci.1"
-+                  " -drive file="
-+                  "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2,"
-+                  "if=none,media=cdrom,id=drive-scsi0-0-0-1,readonly=on"
-+                  " -device scsi-cd,bus=scsi0.0,scsi-id=0,"
-+                  "drive=drive-scsi0-0-0-1,id=scsi0-0-0-1,bootindex=1"
-+                  " -cpu cortex-a57"
-+                  " -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0"
-+                  " -device pxb-pcie,id=pcie.1,bus=pcie.0,bus_nr=0x10"
-+                  " -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.1"
-+                  " -device pxb-pcie,id=pcie.2,bus=pcie.0,bus_nr=0x20",
-+                  &data);
-+    free_test_data(&data);
-+}
-+
- #ifndef _WIN32
- # define DEV_NULL "/dev/null"
- #else
-@@ -2607,6 +2687,12 @@ int main(int argc, char *argv[])
-             if (qtest_has_device("virtio-iommu-pci")) {
-                 qtest_add_func("acpi/virt/viot", test_acpi_aarch64_virt_viot);
-             }
-+            qtest_add_func("acpi/virt/smmuv3-legacy",
-+                           test_acpi_aarch64_virt_smmuv3_legacy);
-+            if (qtest_has_device("arm-smmuv3")) {
-+                qtest_add_func("acpi/virt/smmuv3-dev",
-+                               test_acpi_aarch64_virt_smmuv3_dev);
-+            }
-         }
-     } else if (strcmp(arch, "riscv64") == 0) {
-         if (has_tcg && qtest_has_device("virtio-blk-pci")) {
+ pcibus_t pci_bar_address(PCIDevice *d,
+                          int reg, uint8_t type, pcibus_t size);
+ 
+diff --git a/include/hw/pci/pci_bus.h b/include/hw/pci/pci_bus.h
+index 2261312546..c738446788 100644
+--- a/include/hw/pci/pci_bus.h
++++ b/include/hw/pci/pci_bus.h
+@@ -35,6 +35,7 @@ struct PCIBus {
+     enum PCIBusFlags flags;
+     const PCIIOMMUOps *iommu_ops;
+     void *iommu_opaque;
++    bool iommu_per_bus;
+     uint8_t devfn_min;
+     uint32_t slot_reserved_mask;
+     pci_set_irq_fn set_irq;
 -- 
 2.47.0
 

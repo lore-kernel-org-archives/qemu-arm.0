@@ -4,89 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6C54C83F1A
-	for <qemu-arm@archiver.kernel.org>; Fri, 11 Jul 2025 14:12:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A9CFC83F1A
+	for <qemu-arm@archiver.kernel.org>; Fri, 11 Jul 2025 16:16:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uaERf-0007XS-5J; Fri, 11 Jul 2025 10:09:47 -0400
+	id 1uaGQJ-0007Un-J1; Fri, 11 Jul 2025 12:16:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uaEQt-00065q-NF
- for qemu-arm@nongnu.org; Fri, 11 Jul 2025 10:09:08 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uaGPL-0006fJ-KG
+ for qemu-arm@nongnu.org; Fri, 11 Jul 2025 12:15:33 -0400
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uaEQr-0005u5-Fh
- for qemu-arm@nongnu.org; Fri, 11 Jul 2025 10:08:59 -0400
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-73972a54919so1921644b3a.3
- for <qemu-arm@nongnu.org>; Fri, 11 Jul 2025 07:08:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uaGPJ-0006RR-QC
+ for qemu-arm@nongnu.org; Fri, 11 Jul 2025 12:15:31 -0400
+Received: by mail-pf1-x432.google.com with SMTP id
+ d2e1a72fcca58-7426c44e014so2286320b3a.3
+ for <qemu-arm@nongnu.org>; Fri, 11 Jul 2025 09:15:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752242935; x=1752847735; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=gXq6JDwmQdugL9yo6UYceXuTats6vvxMBcprOhccZiU=;
- b=EPt9Qn5Ya27Glm7ciAd50lgLhp5bkHVfdzITaR/ZKP2FyK7v6qD0DrDcQnQTjcxOnA
- hKKODUopXPKDPI0ZHQg7NSMtog7WnSkAu+5bRU8CkdP9aaqTpDB5KOU9v8IXFoSjAatz
- LJVT5+LO4m0pB2NxzaUm+Nd8uTdq04dd5++lx8l8LEvqtxmVSp3IXqazk9wuE9iKVeZf
- 5idPZYKGaTdGRLUHDe7NXFkNi0ozLB4LeEOHln1nOWNJUufloTiPRgWBvQW9SEzlyA0e
- 9MSCJL6QVMoJnDCGo5BwoKqMubVmm5zIdZVINPo1XApbBARQZq01UXIAweWJKmDmW5Jl
- t5DQ==
+ d=linaro.org; s=google; t=1752250526; x=1752855326; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Q6HBYgpqhq43kLP/CAjgQ8dfvFOzmWLdH7bSoaJLU9A=;
+ b=E9NOa5L8/ke44hE1Mx1HAYa9yvEOxJHjmnUAIEQT1o7+BDYl48PwdSbiiAeWPPq1oV
+ ZTVGWZyS/9LSmMrHAESgSgxWidqgwA+RGN7SFnA6PEPysU05LffvH9D5oF9wtmCO1FyQ
+ qnnvxvPH6QP369F43qRRuOI+9O/uz8/GFoymUXJeL3txvcDWXkRW9hPispI6ricV9TjE
+ itopIXJoMTRJoocsgdWL6ZSQVENl1sMLtF370Ie4fFKLfLsjJi5LZETJQthPUh4SYs6P
+ a6iXwPkwmBof4+/4//Ar8PmUr5XShFLecLHbs8YHYWUIHAAiBj5uVulefv9JrCKXD7YQ
+ wLgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752242935; x=1752847735;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=gXq6JDwmQdugL9yo6UYceXuTats6vvxMBcprOhccZiU=;
- b=lnk06/FAASHVM4Kma9WHqZ3/RByUpL36fvp291f2pnZ2PJwJbAU+EZwJzzLB0yrDkQ
- LE0jm7t/8Vg7o2dvv36acUKaP8H3CAsdgX9w9Mp/2UWH1e2EtRetih5133x1t45Og0xS
- KhkgcNy/Yn8yGjUhK8cDBLXbiJ20/DS0lJzL1DOHbjxSQsGB4b2sc3Fp6I65V6zkPHLw
- kiZoYI9U/XPflKFL7gxGE87hKlnw2BRzrrQ7ERzOPVuBMFyXtjzVkItlBQXYs1Jhu2yg
- w8IhTUo7dnDr9yaeTpp0jAVasxdkSjgqGa3Q1pmx5vPoipimiw+6w3NGT3y5oCsFVzl1
- nkCQ==
-X-Gm-Message-State: AOJu0YxjqunT0vb9JZRL9LBjngUbuX8Yh7ah7T94y/OJJPXNEIXW5xPD
- OaNh7p34t0GDmuHiMVmerYbsyASHxISclNk+ohzNMIk90w0adjHIsMWTJRUvpfhnHetwAMYqTQd
- ydSatsK0=
-X-Gm-Gg: ASbGncsIWokKa9bDgE17cvctCo8M5tp8jp3B8x+D0WwYkOlIQbfp88AY4Ll1PMzezUb
- XEYu4tVXkwIHJvrNOZ/chDd5GD5pClgDDEwXDujaVspIdOQDbQO+5EyevEMEPP6HAYGWnSktFzo
- lRNulSy8ZL3f4rUc1eTvqOZcikuO2IUpyHRhG4roAlHBiXYADoYC7bpcKFOGT67r3EKqA33VPHh
- anmGMSH/VXQ2qJ/rg8iCQSoghTQ38XjT3KUgeLmuKL9SImb9aGMp66vRqUGZavYamcPtexx8gUW
- VU8bghYIg0shp2XWZZd+n+ZMMsJ8t9cjv++sQAe4T7n3r+82WbaZREHZIvw6FxBLJUv6R5QXxOL
- 27LSf0aryUJGTzz290L1RziedBlFcUZUGo9XxpSG7LvG9MctweWHx+gCD9g==
-X-Google-Smtp-Source: AGHT+IHIVLUj3oceGyhUjkEvKv8Ms1iltDPlo4nz/dBJUKTEVJeZoMpKgu2HtnZBAIJDBewlnyXRNQ==
-X-Received: by 2002:a05:6a00:2352:b0:730:75b1:7219 with SMTP id
- d2e1a72fcca58-74ee2557a1fmr4174169b3a.12.1752242935399; 
- Fri, 11 Jul 2025 07:08:55 -0700 (PDT)
-Received: from gromero0.. (189-47-46-41.dsl.telesp.net.br. [189.47.46.41])
+ d=1e100.net; s=20230601; t=1752250526; x=1752855326;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Q6HBYgpqhq43kLP/CAjgQ8dfvFOzmWLdH7bSoaJLU9A=;
+ b=rph5QNXNvZPVf7+ydbILqwmCi11K0o59z/Nl9Y6TPJug6ENuHTJTD4FS9+LMgRN/W9
+ ++GhuNSkAtfCEuCI5yvri30MJorMHmneaFTuHCIKZ0M8A7T7aNkNNp5PTdnjG5jz2L4F
+ wvyeZ6o8u16mT46/Mffj4Kl2Hw0P0R27fSMJcBp2djN/hiM5XUcjNuPwICKwwjTUtJcf
+ iot4QIZEKVa0XxEtn95XFTOOsCtkrog34RQxMnyIWc4A6o/vNFPksNHcG/RWLFC3JrQL
+ 9BgZYK+qt1U/+ERWxOBO3sAr4dUQf8xFfBIZBgLwD+hFpqd5jIj2kZ2+Ey8yTSkF6GBC
+ IrPQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVhJKQ0dg5ozTdKWgTHaZUQ6H1eypwBtXIqFDmPyTwoGJxiOR60MxYxgzMef6/ZMSgk5tFpXgo2CQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzSln0cguSV2twKuXIA8ZElMyvhXFn3SeTrGSBZ7Cm5x7aqk/iY
+ x6yzkarg4Rk680kdcAgEOpHTI24yMVc7k75L1CnXs/Pv8Dc85SSvHEEUGDVGYnfX2iY=
+X-Gm-Gg: ASbGncs7l41y+XfNfvVdMbnQaVH0CbLqr62/dNM7aKve/AmDU8OYh49q6bcvHN0QPJ/
+ 43h/Upqk1kkMiCq4CNwpSFZANpj0iVDI9l/Vmk5sTG4mFn0HAhX6kju/0Lbw4gsrPSFvq9BDdc2
+ +eA342iYlpLwbXVxJWi8s/0AH9iSRP4BmwktJFzm0Zywc1Jq5E+Sw1amRbalWexwzRiwSmCdlik
+ /udB+xgSY7ddY1TgHqQq9ohQ2UIYVDsE9+1jzqMMLwG6eI9x52FgpN8H5bitKH0BBlDJaFsoI7m
+ YjGTZUGydyV8uddVx1Yyyg9vh5p3XHnlysUR2bzRQDVC6UA7q0MAq+fUf8B5VZeaBQhtH5pSx72
+ d5sAkPioZ7sTIlTqubsQmq9rLolc814+HkWM=
+X-Google-Smtp-Source: AGHT+IEH0TJ0IGqQC5mKu0bwf52NWNFjYMZCjL8FYQWrqLmizGzABahU5kJw6M6w2Yx38N79ed6zpQ==
+X-Received: by 2002:a05:6300:6c09:b0:231:c295:136d with SMTP id
+ adf61e73a8af0-231c29523bdmr2635525637.14.1752250525789; 
+ Fri, 11 Jul 2025 09:15:25 -0700 (PDT)
+Received: from [192.168.1.87] ([38.41.223.211])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-74eb9dd5d3esm5702280b3a.4.2025.07.11.07.08.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 11 Jul 2025 07:08:55 -0700 (PDT)
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: qemu-arm@nongnu.org, richard.henderson@linaro.org, alex.bennee@linaro.org,
- peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org,
-	gustavo.romero@linaro.org
-Subject: [PATCH v7 2/6] target/arm: Add FEAT_MEC registers
-Date: Fri, 11 Jul 2025 14:08:24 +0000
-Message-Id: <20250711140828.1714666-3-gustavo.romero@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250711140828.1714666-1-gustavo.romero@linaro.org>
-References: <20250711140828.1714666-1-gustavo.romero@linaro.org>
+ d2e1a72fcca58-74eb9e06bd7sm5798268b3a.70.2025.07.11.09.15.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 11 Jul 2025 09:15:25 -0700 (PDT)
+Message-ID: <6d3cef20-9655-462b-8418-55e68caafea7@linaro.org>
+Date: Fri, 11 Jul 2025 09:15:24 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pf1-x431.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH] tests/functional: Move tests into architecture
+ specific folders
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
+ qemu-riscv@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20250710094251.139514-1-thuth@redhat.com>
+ <643f1db1-4a7a-4bc0-a187-9ff1561f8a3d@linaro.org>
+ <8f90fbd7-1edd-45cc-9540-06fd9d0ee978@redhat.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Content-Language: en-US
+In-Reply-To: <8f90fbd7-1edd-45cc-9540-06fd9d0ee978@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,177 +110,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add all FEAT_MEC registers.
+On 7/11/25 4:55 AM, Thomas Huth wrote:
+> On 10/07/2025 17.51, Pierrick Bouvier wrote:
+>> On 7/10/25 2:42 AM, Thomas Huth wrote:
+>>> This patch tackles two issues. First, the tests/functional folder has
+>>> become quite crowded already, some restructuring would be helpful here.
+>>> Second, we currently encode the target architecture twice in the test
+>>> names since a lot of the test file names contain the target, too.
+>>> This contributes to the very long output lines when running "make
+>>> check-functional".
+>>>
+>>
+>> I agree with the "crowded" aspect of functional tests, and subfolders are
+>> definitely welcome.
+>>
+>> Concerning the long line, it seems that setup ("thorough" in this example)
+>> is repeated 3 times on it, which is a bigger issue than having arch name
+>> being repeated.
+>>
+>> A simpler solution for the "long line" issue would be to change
+>> mtest2make.py to generate shorter test target names. This would not benefit
+>> for using meson test directly, but from what I understood, this is not
+>> recommended nor supported anyway.
+> 
+> I agree that this is a bigger annoyance here, but as far as I understood
+> that that repeated "thorough" term is just a listing of all the test suites
+> that the test is part of. I think this would rather need to be fixed on the
+> meson test runner side - why does meson list all test suites here? The one
+> that applies to the current should be enough, shouldn't it?
+>
 
-To work properly, FEAT_MEC also depends on FEAT_SCTLR2 and FEAT_TCR2,
-which are not implemented in this commit. The bits in SCTLR2 and TCR2
-control which translation regimes use MECIDs, and determine which MECID
-is selected and will be implemented in subsequent commits.
+Meson is usually explicit (thus sometimes verbose) and unambiguous, 
+which are two very nice virtues, especially for build systems and tests, 
+at least for my personal taste. You don't want to spend time reverse 
+engineering the test infrastructure itself when you try to understand 
+why a fail happened or when writing a new test.
 
-FEAT_MEC also requires two new cache management instructions, not
-included in this commit, that will be implemented in a subsequent commit.
+Another additional benefit of listing setup + suite + test in an 
+exhaustive way is that your command line never change to run any 
+specific test, whatever your current setup is.
 
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu-features.h |  5 +++
- target/arm/cpu.c          |  3 ++
- target/arm/cpu.h          |  9 +++++
- target/arm/helper.c       | 70 +++++++++++++++++++++++++++++++++++++++
- target/arm/internals.h    |  3 ++
- 5 files changed, 90 insertions(+)
+If I had to choose between a wider terminal output and spending time 
+with grep and find to understand what is running, I would pick the 
+former any time.
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 5876162428..72b6fd9b27 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -904,6 +904,11 @@ static inline bool isar_feature_aa64_nv2(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64MMFR2, NV) >= 2;
- }
- 
-+static inline bool isar_feature_aa64_mec(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64_IDREG(id, ID_AA64MMFR3, MEC) != 0;
-+}
-+
- static inline bool isar_feature_aa64_pmuv3p1(const ARMISARegisters *id)
- {
-     return FIELD_EX64_IDREG(id, ID_AA64DFR0, PMUVER) >= 4 &&
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 08c43f674a..8da8d13e4c 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -645,6 +645,9 @@ void arm_emulate_firmware_reset(CPUState *cpustate, int target_el)
-             if (cpu_isar_feature(aa64_fgt, cpu)) {
-                 env->cp15.scr_el3 |= SCR_FGTEN;
-             }
-+            if (cpu_isar_feature(aa64_mec, cpu)) {
-+                env->cp15.scr_el3 |= SCR_MECEN;
-+            }
-         }
- 
-         if (target_el == 2) {
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index ffc91d6b49..e3975e687e 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -576,6 +576,15 @@ typedef struct CPUArchState {
- 
-         /* NV2 register */
-         uint64_t vncr_el2;
-+
-+        /* MEC registers */
-+        uint64_t mecid_p0_el2;
-+        uint64_t mecid_a0_el2;
-+        uint64_t mecid_p1_el2;
-+        uint64_t mecid_a1_el2;
-+        uint64_t mecid_rl_a_el3;
-+        uint64_t vmecid_p_el2;
-+        uint64_t vmecid_a_el2;
-     } cp15;
- 
-     struct {
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 0c1299ff84..bb974647ba 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5196,6 +5196,72 @@ static const ARMCPRegInfo nmi_reginfo[] = {
-       .resetfn = arm_cp_reset_ignore },
- };
- 
-+static CPAccessResult mecid_access(CPUARMState *env,
-+                                   const ARMCPRegInfo *ri, bool isread)
-+{
-+    int el = arm_current_el(env);
-+
-+    if (el == 2) {
-+        if (arm_security_space(env) != ARMSS_Realm) {
-+	    return CP_ACCESS_UNDEFINED;
-+	}
-+
-+        if (!(env->cp15.scr_el3 & SCR_MECEN)) {
-+            return CP_ACCESS_TRAP_EL3;
-+        }
-+    }
-+
-+    return CP_ACCESS_OK;
-+}
-+
-+static void mecid_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                        uint64_t value)
-+{
-+    value = extract64(value, 0, MECID_WIDTH);
-+    raw_write(env, ri, value);
-+}
-+
-+static const ARMCPRegInfo mec_reginfo[] = {
-+    { .name = "MECIDR_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 7, .crn = 10, .crm = 8,
-+      .access = PL2_R, .type = ARM_CP_CONST, .resetvalue = MECID_WIDTH - 1 },
-+    { .name = "MECID_P0_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p0_el2) },
-+    { .name = "MECID_A0_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a0_el2) },
-+    { .name = "MECID_P1_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 2, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p1_el2) },
-+    { .name = "MECID_A1_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 3, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a1_el2) },
-+    { .name = "MECID_RL_A_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .opc2 = 1, .crn = 10, .crm = 10,
-+      .access = PL3_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_rl_a_el3) },
-+    { .name = "VMECID_P_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 9,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_p_el2) },
-+    { .name = "VMECID_A_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 9,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_a_el2) },
-+};
-+
- #ifndef CONFIG_USER_ONLY
- /*
-  * We don't know until after realize whether there's a GICv3
-@@ -7223,6 +7289,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, nmi_reginfo);
-     }
- 
-+    if (cpu_isar_feature(aa64_mec, cpu)) {
-+        define_arm_cp_regs(cpu, mec_reginfo);
-+    }
-+
-     if (cpu_isar_feature(any_predinv, cpu)) {
-         define_arm_cp_regs(cpu, predinv_reginfo);
-     }
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index c4765e4489..43cddd95b4 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1987,4 +1987,7 @@ void vfp_clear_float_status_exc_flags(CPUARMState *env);
- void vfp_set_fpcr_to_host(CPUARMState *env, uint32_t val, uint32_t mask);
- bool arm_pan_enabled(CPUARMState *env);
- 
-+/* Used in FEAT_MEC to set the MECIDWidthm1 field in the MECIDR_EL2 register. */
-+#define MECID_WIDTH 16
-+
- #endif
--- 
-2.34.1
+Maybe the complexity comes from our usage of test setups here, to 
+differentiate categories that will download, vs the one that will not. 
+We already talked about that in another thread, and I still think that 
+having a single setup (thorough), which could be the default, would make 
+things easier, even if people should accept to connect to Internet from 
+time to time to update their tests assets. They do it to download new 
+versions of QEMU or interact with the mailing list anyway. That said, 
+I'm not trying to open the can of worms again, just pointing that it may 
+be related to this topic.
 
+>    Thomas
+> 
+
+Regards,
+Pierrick
 

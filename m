@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 328BFC83F1D
-	for <qemu-arm@archiver.kernel.org>; Fri, 11 Jul 2025 08:58:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE42DC8303C
+	for <qemu-arm@archiver.kernel.org>; Fri, 11 Jul 2025 08:59:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ua9Zp-0004GU-0v; Fri, 11 Jul 2025 04:57:53 -0400
+	id 1ua9Z6-0003WZ-LQ; Fri, 11 Jul 2025 04:57:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ua9T7-0002GB-Co; Fri, 11 Jul 2025 04:50:58 -0400
+ id 1ua9SD-0001TY-Kr; Fri, 11 Jul 2025 04:50:02 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ua9T5-0003xt-No; Fri, 11 Jul 2025 04:50:57 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bdlhk4QQxz6L51b;
- Fri, 11 Jul 2025 16:47:34 +0800 (CST)
+ id 1ua9SB-0003VV-Ha; Fri, 11 Jul 2025 04:50:01 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bdlgd4Q6bz6L57C;
+ Fri, 11 Jul 2025 16:46:37 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 3D1361402EF;
- Fri, 11 Jul 2025 16:50:52 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 3E04D1402CB;
+ Fri, 11 Jul 2025 16:49:55 +0800 (CST)
 Received: from A2303104131.china.huawei.com (10.203.177.241) by
  frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Fri, 11 Jul 2025 10:50:42 +0200
+ 15.1.2507.39; Fri, 11 Jul 2025 10:49:45 +0200
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
@@ -36,9 +36,10 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <marcel.apfelbaum@gmail.com>, <linuxarm@huawei.com>,
  <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
  <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
-Subject: [PATCH v8 10/12] bios-tables-test: Allow for smmuv3 test data.
-Date: Fri, 11 Jul 2025 09:47:47 +0100
-Message-ID: <20250711084749.18300-11-shameerali.kolothum.thodi@huawei.com>
+Subject: [PATCH v8 05/12] hw/arm/virt: Factor out common SMMUV3 dt bindings
+ code
+Date: Fri, 11 Jul 2025 09:47:42 +0100
+Message-ID: <20250711084749.18300-6-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20250711084749.18300-1-shameerali.kolothum.thodi@huawei.com>
 References: <20250711084749.18300-1-shameerali.kolothum.thodi@huawei.com>
@@ -76,47 +77,100 @@ From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The tests to be added exercise both legacy(iommu=smmuv3) and new
--device arm-smmuv3,.. cases.
+No functional changes intended. This will be useful when we
+add support for user-creatable smmuv3 device.
 
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Nathan Chen <nathanc@nvidia.com>
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 Tested-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev    | 0
- tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy | 0
- tests/data/acpi/aarch64/virt/IORT.smmuv3-dev    | 0
- tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy | 0
- tests/qtest/bios-tables-test-allowed-diff.h     | 4 ++++
- 5 files changed, 4 insertions(+)
- create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev
- create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy
- create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-dev
- create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy
+ hw/arm/virt.c | 54 +++++++++++++++++++++++++++------------------------
+ 1 file changed, 29 insertions(+), 25 deletions(-)
 
-diff --git a/tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev b/tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy b/tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/aarch64/virt/IORT.smmuv3-dev b/tests/data/acpi/aarch64/virt/IORT.smmuv3-dev
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy b/tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8b..2e3e3ccdce 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,5 @@
- /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy",
-+"tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev",
-+"tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy",
-+"tests/data/acpi/aarch64/virt/IORT.smmuv3-dev",
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 9a5bd69fe5..6ac53634d0 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1424,19 +1424,43 @@ static void create_pcie_irq_map(const MachineState *ms,
+                            0x7           /* PCI irq */);
+ }
+ 
++static void create_smmuv3_dt_bindings(const VirtMachineState *vms, hwaddr base,
++                                      hwaddr size, int irq)
++{
++    char *node;
++    const char compat[] = "arm,smmu-v3";
++    const char irq_names[] = "eventq\0priq\0cmdq-sync\0gerror";
++    MachineState *ms = MACHINE(vms);
++
++    node = g_strdup_printf("/smmuv3@%" PRIx64, base);
++    qemu_fdt_add_subnode(ms->fdt, node);
++    qemu_fdt_setprop(ms->fdt, node, "compatible", compat, sizeof(compat));
++    qemu_fdt_setprop_sized_cells(ms->fdt, node, "reg", 2, base, 2, size);
++
++    qemu_fdt_setprop_cells(ms->fdt, node, "interrupts",
++            GIC_FDT_IRQ_TYPE_SPI, irq    , GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
++            GIC_FDT_IRQ_TYPE_SPI, irq + 1, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
++            GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
++            GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
++
++    qemu_fdt_setprop(ms->fdt, node, "interrupt-names", irq_names,
++                     sizeof(irq_names));
++
++    qemu_fdt_setprop(ms->fdt, node, "dma-coherent", NULL, 0);
++    qemu_fdt_setprop_cell(ms->fdt, node, "#iommu-cells", 1);
++    qemu_fdt_setprop_cell(ms->fdt, node, "phandle", vms->iommu_phandle);
++    g_free(node);
++}
++
+ static void create_smmu(const VirtMachineState *vms,
+                         PCIBus *bus)
+ {
+     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+-    char *node;
+-    const char compat[] = "arm,smmu-v3";
+     int irq =  vms->irqmap[VIRT_SMMU];
+     int i;
+     hwaddr base = vms->memmap[VIRT_SMMU].base;
+     hwaddr size = vms->memmap[VIRT_SMMU].size;
+-    const char irq_names[] = "eventq\0priq\0cmdq-sync\0gerror";
+     DeviceState *dev;
+-    MachineState *ms = MACHINE(vms);
+ 
+     if (vms->iommu != VIRT_IOMMU_SMMUV3 || !vms->iommu_phandle) {
+         return;
+@@ -1455,27 +1479,7 @@ static void create_smmu(const VirtMachineState *vms,
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+                            qdev_get_gpio_in(vms->gic, irq + i));
+     }
+-
+-    node = g_strdup_printf("/smmuv3@%" PRIx64, base);
+-    qemu_fdt_add_subnode(ms->fdt, node);
+-    qemu_fdt_setprop(ms->fdt, node, "compatible", compat, sizeof(compat));
+-    qemu_fdt_setprop_sized_cells(ms->fdt, node, "reg", 2, base, 2, size);
+-
+-    qemu_fdt_setprop_cells(ms->fdt, node, "interrupts",
+-            GIC_FDT_IRQ_TYPE_SPI, irq    , GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
+-            GIC_FDT_IRQ_TYPE_SPI, irq + 1, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
+-            GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
+-            GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
+-
+-    qemu_fdt_setprop(ms->fdt, node, "interrupt-names", irq_names,
+-                     sizeof(irq_names));
+-
+-    qemu_fdt_setprop(ms->fdt, node, "dma-coherent", NULL, 0);
+-
+-    qemu_fdt_setprop_cell(ms->fdt, node, "#iommu-cells", 1);
+-
+-    qemu_fdt_setprop_cell(ms->fdt, node, "phandle", vms->iommu_phandle);
+-    g_free(node);
++    create_smmuv3_dt_bindings(vms, base, size, irq);
+ }
+ 
+ static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
 -- 
 2.47.0
 

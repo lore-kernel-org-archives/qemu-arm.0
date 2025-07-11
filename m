@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 159E4C83F1A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 328BFC83F1D
 	for <qemu-arm@archiver.kernel.org>; Fri, 11 Jul 2025 08:58:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ua9Zo-0004FF-So; Fri, 11 Jul 2025 04:57:53 -0400
+	id 1ua9Zp-0004GU-0v; Fri, 11 Jul 2025 04:57:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ua9SS-0001fT-Tr; Fri, 11 Jul 2025 04:50:18 -0400
+ id 1ua9T7-0002GB-Co; Fri, 11 Jul 2025 04:50:58 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ua9SP-0003ma-Qi; Fri, 11 Jul 2025 04:50:16 -0400
+ id 1ua9T5-0003xt-No; Fri, 11 Jul 2025 04:50:57 -0400
 Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bdlgr63WWz6L51b;
- Fri, 11 Jul 2025 16:46:48 +0800 (CST)
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bdlhk4QQxz6L51b;
+ Fri, 11 Jul 2025 16:47:34 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 74C861402ED;
- Fri, 11 Jul 2025 16:50:06 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 3D1361402EF;
+ Fri, 11 Jul 2025 16:50:52 +0800 (CST)
 Received: from A2303104131.china.huawei.com (10.203.177.241) by
  frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Fri, 11 Jul 2025 10:49:57 +0200
+ 15.1.2507.39; Fri, 11 Jul 2025 10:50:42 +0200
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
@@ -36,9 +36,9 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <marcel.apfelbaum@gmail.com>, <linuxarm@huawei.com>,
  <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
  <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
-Subject: [PATCH v8 06/12] hw/arm/virt: Add an SMMU_IO_LEN macro
-Date: Fri, 11 Jul 2025 09:47:43 +0100
-Message-ID: <20250711084749.18300-7-shameerali.kolothum.thodi@huawei.com>
+Subject: [PATCH v8 10/12] bios-tables-test: Allow for smmuv3 test data.
+Date: Fri, 11 Jul 2025 09:47:47 +0100
+Message-ID: <20250711084749.18300-11-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20250711084749.18300-1-shameerali.kolothum.thodi@huawei.com>
 References: <20250711084749.18300-1-shameerali.kolothum.thodi@huawei.com>
@@ -76,45 +76,47 @@ From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Nicolin Chen <nicolinc@nvidia.com>
+The tests to be added exercise both legacy(iommu=smmuv3) and new
+-device arm-smmuv3,.. cases.
 
-This is useful as the subsequent support for new SMMUv3 dev will also
-use the same.
-
-Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-Reviewed-by: Donald Dutile <ddutile@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Tested-by: Nathan Chen <nathanc@nvidia.com>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 Tested-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- hw/arm/virt.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev    | 0
+ tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy | 0
+ tests/data/acpi/aarch64/virt/IORT.smmuv3-dev    | 0
+ tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy | 0
+ tests/qtest/bios-tables-test-allowed-diff.h     | 4 ++++
+ 5 files changed, 4 insertions(+)
+ create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev
+ create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy
+ create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-dev
+ create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 6ac53634d0..d8d92ffad2 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -149,6 +149,9 @@ static void arm_virt_compat_set(MachineClass *mc)
- #define LEGACY_RAMLIMIT_GB 255
- #define LEGACY_RAMLIMIT_BYTES (LEGACY_RAMLIMIT_GB * GiB)
- 
-+/* MMIO region size for SMMUv3 */
-+#define SMMU_IO_LEN 0x20000
-+
- /* Addresses and sizes of our components.
-  * 0..128MB is space for a flash device so we can run bootrom code such as UEFI.
-  * 128MB..256MB is used for miscellaneous device I/O.
-@@ -180,7 +183,7 @@ static const MemMapEntry base_memmap[] = {
-     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
-     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
-     [VIRT_UART1] =              { 0x09040000, 0x00001000 },
--    [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
-+    [VIRT_SMMU] =               { 0x09050000, SMMU_IO_LEN },
-     [VIRT_PCDIMM_ACPI] =        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
-     [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
-     [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
+diff --git a/tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev b/tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy b/tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/tests/data/acpi/aarch64/virt/IORT.smmuv3-dev b/tests/data/acpi/aarch64/virt/IORT.smmuv3-dev
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy b/tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8b..2e3e3ccdce 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,5 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy",
++"tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev",
++"tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy",
++"tests/data/acpi/aarch64/virt/IORT.smmuv3-dev",
 -- 
 2.47.0
 

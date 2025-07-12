@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15719C83F1D
-	for <qemu-arm@archiver.kernel.org>; Sat, 12 Jul 2025 21:28:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 203DDC83F1D
+	for <qemu-arm@archiver.kernel.org>; Sat, 12 Jul 2025 21:29:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uahld-00087d-HD; Sat, 12 Jul 2025 17:28:21 -0400
+	id 1uahln-0008Fq-TM; Sat, 12 Jul 2025 17:28:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uahjC-0005xf-8x
- for qemu-arm@nongnu.org; Sat, 12 Jul 2025 17:25:50 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uahkA-0007AQ-Tq
+ for qemu-arm@nongnu.org; Sat, 12 Jul 2025 17:26:56 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uahjA-0000TQ-K4
- for qemu-arm@nongnu.org; Sat, 12 Jul 2025 17:25:50 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-3a50956e5d3so2532993f8f.1
- for <qemu-arm@nongnu.org>; Sat, 12 Jul 2025 14:25:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uahk9-0000Y9-Eu
+ for qemu-arm@nongnu.org; Sat, 12 Jul 2025 17:26:50 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-3a6d77b43c9so2973713f8f.3
+ for <qemu-arm@nongnu.org>; Sat, 12 Jul 2025 14:26:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752355537; x=1752960337; darn=nongnu.org;
+ d=linaro.org; s=google; t=1752355608; x=1752960408; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=WMsAt7wuVqEZQNUYGLq4SBebg+9fhQ1gcuqkdbkWNUo=;
- b=nUIfQfYxm3gHp4NOc5nBGJkIyRhIYMuIL5PNKfgSM8IZUpW68ETU6683Sx6lBjVWMM
- i6RUW7zelhw9zGiI+k2v+SxNOkkhkXkzsUXyFvbm96S8FSGY+vDSGPGcEThgKTmm6I0S
- bGJ/Od9UEwUB7RDgJuYWYnuNWRwgzjVXuQWkqnVRzlSRxbyyztz3jrKYz1focOOB3fKe
- qPUfYCmePKwQBZ15wbIL0ZHzJ9qC034+Z+cNmwF72YiQGnaVmFQBbQ+Zhm4YWB+f5wxi
- 1tknMu9T4cFuv5rae/g0gQrrgrZKXmpEu/u5HqERJL9sajoaJ/1ExGsnP0w+neqnfwOX
- vZNA==
+ bh=q6vGY1B+bXe0vZlUaZxSWoq9+p7SL4/nosGYSCILT3o=;
+ b=WrXzmOgPoGtqVMhNCbM+rWxtlTyZ2mNWznDRMBebUhHa6CcCPO2OL1POb19AYe333X
+ XgPbRa6ERQqWoDPDl63mB/BAZci9X2OKHN7igrokPBpxlhV9GgZ9kxNFnmMqUkxxtsET
+ nHmTX0CrefVFoJz0x6vfSzwvLKcigx6VgFX0moEj+2fa6aYWwMAX4Mk29GKho3dy2ZkP
+ voL7mHCFUNbcFOI0d8eF3xygwjN6fmulUeGi4WH+J0cbqbfTAo8XXCVsMHbwhgLmJsJe
+ n/VzdWj/AD2ZhCyBZlBp+hsgI+Fy8uC5pVsXHdSsGb+GptSOrl1CnGXilNxF+1N6yCxz
+ vLAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752355537; x=1752960337;
+ d=1e100.net; s=20230601; t=1752355608; x=1752960408;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=WMsAt7wuVqEZQNUYGLq4SBebg+9fhQ1gcuqkdbkWNUo=;
- b=HMY59R6z/wvb7T6i36lIebfe0Y1j9RVGVBxMeGvRJ7Lbj3ZVWu9lwSWAZ4KoAf8Z1G
- 3Vi60CwUBrJUxFBirKR6qFlBJwCWoFIP/QkxtahqkHfclaePcT86Ohw+r/jxulJKm46+
- 2kiEPqUzyHL5LYUmUXc1o8zqBkdyxd6FK9/C/dGJ103jPJmFSQnnLICUuiFI4VsLUyzM
- cb6Q08a8jlXPNDcUBYiWGn4IiqK4gbL0qQjna02JRPkQP6apV0+wDSLh9GXRWQmw9G0Y
- DISkvFQSK9alkjZ6voRyS7/pK7OkE6Ukyr1N0AO4BnexjtJ1bGva3Uqmm8r9R2Bmoand
- 9B1Q==
-X-Gm-Message-State: AOJu0Yx+7PS+Wz6K3mEryo61D+l44R6VPUoeQ3qWW0mIAy4UcpMdBbBY
- 4yBCjCJhfyN1gUuQbh1y7iwf80F9/sEsuM5C+L6+nwpe2z2Aokosnx4IcE6bi/HcPOM=
-X-Gm-Gg: ASbGncuhDTMXc+tm7pSuvnI3HO89JwNWiQTjuGsqWssWlU9NY5dRE+ihuQQ4vvGk2iT
- 9Vens4Y2G2ZwM5BTEJkkXUjclnvmzJLJQFmhCtFXvne0YTAm7k/7ubl3+j5gaBm5k4AEA7LRpJ4
- k8XwYxMxeFDG82SMjHQ7KGf9TDoRjLp3dgHtGQZm5oBRmlxzD1yhdaUzUrs+6iCHGRX4oYHuPm+
- fN9qkGm5WIyGUk4zChDdVPcCdZBIMSIw+bkyJF9GOiKrAPCAq9XKVmpKqRxoRlD9XUO+zl+JT+K
- ygMHXeSq/4IV/ZTxKpYpDIBx39Ucll+FOj/r4DwlZ0xPWmsWjnyGdr9fwH13yS7dTJuVyNTtCRU
- yOQzATbBPrINqSBBQS6amMn1BlLzLvTQ+CeuxFNcoOaXgaFMxHS8DdClS4xhuHKYqBJfnR24v2F
- gtEDc=
-X-Google-Smtp-Source: AGHT+IFI1CYF1RjqLrj9pyfCPTuENQFSCI2jbbkicrqoy+xn+dMCZCiztiECykRmwOOLlfNeak/TSw==
-X-Received: by 2002:a05:6000:4186:b0:3a5:527b:64c6 with SMTP id
- ffacd0b85a97d-3b5f18565fcmr7127851f8f.1.1752355537208; 
- Sat, 12 Jul 2025 14:25:37 -0700 (PDT)
+ bh=q6vGY1B+bXe0vZlUaZxSWoq9+p7SL4/nosGYSCILT3o=;
+ b=RJlH8Ltmw/Bw2w4qh74hxS/NoRL7Zxto5az5gLFBDa/qgy/jCMtcDTlPzPFDTVbNrg
+ NRMKKitfUl/+gYWbatcbNknUuBwOvv2ueV4g7ioQ6EkgwuoUS69Sk8s0StQP9XNS983X
+ HKtSraJVS2RbrnG2eVjLJoslD2SYN4MNpILBOCuf37MjeIz54+P6v5b6+khEjtYgeb+a
+ GSJNRJdhupQGqF6AelxQsdOH2uTObnHlpt8Mthep4xxuE7GBkfomU5yQovo8UPRLPsz4
+ NIsQoMzN/dC0wlCZGWRUXCh1QzCkpvmqVWJKf6FTQsy3zW2qDbPUXsDnrwboA3O0siur
+ Gqvg==
+X-Gm-Message-State: AOJu0YzuxyOZ9eMgJ/b72TvCaBP3N/HTNk2NdBodkfqTLMYtwcaXm7lF
+ KinM6BS4gscOy50mkkFkVb5A+RZryzHAvRuY7M854FZLyrVqPQLUj74BUkop+g/bFWI=
+X-Gm-Gg: ASbGncuNIFYnNk7ZMJ0upHyJIJGYmRZxru8pzEr6gymPJBtcpVzGwY6qzCShhTPBFj7
+ sIe1qWCSrcCYqXFmgz/THi4QSD8GptZK1IFHPTyLRi4ybJXhqd9nZK3KvnEiy3cepocO1VvLown
+ RYpsEJSn25xuErs7QGmt6QzYJWx8mCCrh97ZhOofUXcsWDtTnOQ+jfSZb+IMow5wLUhqY5BhiRW
+ qlQm6s9CyogiX0oPd5zqyt89Y1at1a5wsNUS9LxtIuThQFxjn4cccwoGmOMlgVtYzZlAGK4TuUQ
+ 3fD9gKRrgna5oAK++agLZNlH7SgBtlf9sSoz5JcD0nUgtHKii+M84R6WyyB81Xb2n8bqNnehfaf
+ nHzq6ruuuQ1Q0dn+U8WYlR6SeaLQArVkgKsLULgYOJRMdTXcTfVqYnU+EdLrwZF4A+bMC6944ak
+ vfp1I=
+X-Google-Smtp-Source: AGHT+IE7lSbIxuftJzkrufiPXV72luIfttwPDNCQDnN1HCdfn7dfwro/ADV4CtIj3Y3IVJWRiskWxg==
+X-Received: by 2002:a05:6000:2d85:b0:3a5:75a6:73b9 with SMTP id
+ ffacd0b85a97d-3b5f187d131mr4758271f8f.11.1752355607798; 
+ Sat, 12 Jul 2025 14:26:47 -0700 (PDT)
 Received: from [192.168.1.117] (lfbn-mon-1-970-120.w86-227.abo.wanadoo.fr.
  [86.227.5.120]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b5e8e0d719sm8243181f8f.54.2025.07.12.14.25.36
+ ffacd0b85a97d-3b5e8e26c97sm8296908f8f.90.2025.07.12.14.26.46
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 12 Jul 2025 14:25:36 -0700 (PDT)
-Message-ID: <9708e71f-9441-4d22-b9c5-0d550615fc30@linaro.org>
-Date: Sat, 12 Jul 2025 23:25:35 +0200
+ Sat, 12 Jul 2025 14:26:47 -0700 (PDT)
+Message-ID: <ca980064-885e-4a45-a068-d7924b7c0e25@linaro.org>
+Date: Sat, 12 Jul 2025 23:26:46 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/9] target/arm: Introduce get_phys_addr_for_at
+Subject: Re: [PATCH v2 6/9] target/arm: Convert do_ats_write to access_perm
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
 References: <20250711224915.62369-1-richard.henderson@linaro.org>
- <20250711224915.62369-5-richard.henderson@linaro.org>
+ <20250711224915.62369-7-richard.henderson@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250711224915.62369-5-richard.henderson@linaro.org>
+In-Reply-To: <20250711224915.62369-7-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,17 +102,10 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 12/7/25 00:49, Richard Henderson wrote:
-> Rename get_phys_addr_with_space_nogpc for its only
-> caller, do_ats_write.  Drop the MemOp memop argument
-> as it doesn't make sense in the new context.  Replace
-> the access_type parameter with prot_check.
-> 
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->   target/arm/internals.h     | 18 +++++++-----------
->   target/arm/ptw.c           | 21 ++++++++++++++-------
->   target/arm/tcg/cpregs-at.c | 11 ++---------
->   3 files changed, 23 insertions(+), 27 deletions(-)
+>   target/arm/tcg/cpregs-at.c | 16 ++++++++--------
+>   1 file changed, 8 insertions(+), 8 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

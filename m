@@ -4,116 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F12FEC83F17
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 22:28:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84270C83F17
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 22:30:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubReJ-0000jw-8m; Mon, 14 Jul 2025 18:27:51 -0400
+	id 1ubRgO-0004HO-SD; Mon, 14 Jul 2025 18:30:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
- id 1ubQ80-0002ux-5R
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 16:50:24 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
- id 1ubQ7x-0002KC-PY
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 16:50:23 -0400
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56EI2Q1i022925
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 20:50:19 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:date:from:message-id:mime-version
- :subject:to; s=qcppdkim1; bh=pxx2c/NW4zMEvhAJXdFJXHOVNFgTmC2vPnF
- rfmF7+8M=; b=OUzVN/i2aM3mp2QojUNYkwTXRWkFzrKIUpW10e176r/wzJMCBvC
- GNST/qL5ILwkSq2XRAlaRmeJMN/5GBJf6UbafGZho7ge6kbkfqtFrI+nOzh4g1eg
- u8SFPuqzKv0Z6+7Frq2wopUl+fp+cv+aEo3Y3poIZFelJUjyUA9kb5db4Ch3XO7/
- rb8E6GMdFE3fwOQrYU2j0SSmSCUUBjyjX6mPtiCkPjQXGp8Evj8xSX1+w6i7TSiq
- dW7rFhng/9iDXrO66C+pJh32TdV7VydaVQ0QDadXHLNb6rxoV+2Pbr1X4rCz+5+j
- IyYnFtKmsBJy9vUJC0O1Ll6LPabt7lhYl0w==
-Received: from mail-pf1-f198.google.com (mail-pf1-f198.google.com
- [209.85.210.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 47ufxawwpr-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 20:50:18 +0000 (GMT)
-Received: by mail-pf1-f198.google.com with SMTP id
- d2e1a72fcca58-748cf01de06so7045233b3a.3
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 13:50:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ubQqD-0004aj-0t
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 17:36:05 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ubQqA-0002E6-VN
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 17:36:04 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-3a503d9ef59so3526624f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 14:36:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1752528961; x=1753133761; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=IFteLS0V4c4i6gGYb4295S8Sf5+R90q2vU9r62EaS8g=;
+ b=wxldCuW8YQJLtdYIqsp7k+ufj+IsVMVkH8XkfLPhPSkyWCgFRRQaRsRgIA4OuQQwQV
+ W5mgwvXEIsrhnjt/FJOeA8iJcmNdcG3mCB6kpIl1ZzYWXvyiPTjurKD6t1Riy9rdis+s
+ 4tW/1Xi4/nvs2Vi8rhirfXw9pByPqM9p57+j4YiVMKtAkISUoZVkNoy7TY8xhuDhrA/F
+ E6fYq3D6Ve6mwo2xF4aQNY3+kXiMMmfK4/ATzxa6dwZ1P/K9mrYhNCQX5XIBFYwVONOd
+ FhK9mSzM18/mRuTh0OJvmwQ0ow/EwGr5nZGuB6Q2oy0rYNICGPU92d4d6PdqjwisY2TE
+ I6BA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752526213; x=1753131013;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=pxx2c/NW4zMEvhAJXdFJXHOVNFgTmC2vPnFrfmF7+8M=;
- b=EU2z3SSPK8qpg4A4PO8SSlHlwtYFvtKS+QQO+4E8LwNqtA52ctIyuFs8+DpYSoyOps
- ZtOQPmVn3WgeNy7l804TGXQ5qtM1DuS5+GCXNG4hZ9fweS7vZC1eMT1vYU1zktHC4e/H
- MpZceNGgIIDoE48zkEVlrbBDTTFcL5DCpadJ0FaPmGYbzKvs+7KpJcSGZzJjGU9RNSQx
- Y8/lLdhhrq6UYlt7ExcpFgQbl3EwmQUzNDjo5bdLVxRCY1x6crfZf6IFYinYswmFdw//
- KWahakW/2uS5AeMO+D1txdlp5woZ8aVEbffltZkqhuupU23oA3kEkTZ19ZAa6Z1IXdWt
- pavw==
-X-Gm-Message-State: AOJu0YwuURYZiRq9UVF3v+iMP3eO8m5CV3c4RS70/P1DRj+7yH3HiVFQ
- sS1ayG/uMoy6K7KaNIFKQo4H883j7o218k5x1Fx7iPLju2KtRbUl+QliC6GiNfEfzA9gJQmjaLb
- 83pNXRPd5C9z8THVZjEgSUU4SikBZVymPwR+tAwJhkUVKWLCuWTmlDEU=
-X-Gm-Gg: ASbGncuaX7bTT2sXcbN9/vyo9W2OWEc4uz2MJppSUmwsZhw1NyMCYenQW37nsYab/Q/
- 3CiZe8CVOyLATz670W8oiVFItXzcP6n4VEiBcBvFVIOtjUGtrKTotL4tc5T/Nm8HRdAWeCGW9r5
- WZYvnaiw7qTM1TpFqnpncBnTvpZb+MOPb+G9I2v9EDLIYnw/j5bQnhutaDJtuP1IIUHg3E45tBd
- +4Cn9em7k1BPPzN1+gLrqtYIvjed1OptxdMdzLkFmPpDyNu9J++QZw8AzgGyRyEY3Dn0m5u8wEP
- E2W8ECynPY8jvHvGQxT6alrfeqmCFTxpQwxh8mMPXhaRf+kPGmjT30aiMNTAhMq6MgtWhu/KouI
- LZ+muPRwaYPSLC1A=
-X-Received: by 2002:a05:6a00:14ca:b0:748:eedb:902a with SMTP id
- d2e1a72fcca58-74ee2d5d7e8mr15675142b3a.17.1752526212963; 
- Mon, 14 Jul 2025 13:50:12 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFrKZjYCIq85br5O3z4hRWG3ioyf+U7l5uZEMH/Y8jgIbXIrpYSSSvHfdckzVswEa7fM5GyDA==
-X-Received: by 2002:a05:6a00:14ca:b0:748:eedb:902a with SMTP id
- d2e1a72fcca58-74ee2d5d7e8mr15675119b3a.17.1752526212464; 
- Mon, 14 Jul 2025 13:50:12 -0700 (PDT)
-Received: from admin15.qualcomm.com (i-global254.qualcomm.com.
- [199.106.103.254]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-74eb9f90d66sm10824034b3a.173.2025.07.14.13.50.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jul 2025 13:50:12 -0700 (PDT)
-From: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-Subject: [PATCH v3] target/arm: Added support for SME register exposure to GDB
-Date: Mon, 14 Jul 2025 20:50:11 +0000
-Message-Id: <20250714205011.955688-1-vacha.bhavsar@oss.qualcomm.com>
-X-Mailer: git-send-email 2.34.1
+ d=1e100.net; s=20230601; t=1752528961; x=1753133761;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=IFteLS0V4c4i6gGYb4295S8Sf5+R90q2vU9r62EaS8g=;
+ b=nKfARA80+4pXIqQS181dcMaTRQgimPCIcutoFzS7STJYE5XvU6Ly5/HfLOUXQjL4fB
+ WZxRLZmnTooBdjAvTsG7GZVAggazqL5YYlUtyMx3vmy5Evzt+yeNAz9xyFXt+RyZEB9Q
+ gmMNaZweBE+x9j7E2u4139Q5hx0IDn5+MOtJlKaa9jKqFRPX3LWcVPRZbNgGfEwnZuPR
+ E3jtqsYlA8B+IRqxaN+Cao13KTU7ijgAvCCsJgQ3g/HA26RMCP1oLOQjGkJSGKC0r+ga
+ KAB5zpawhBOq+6OLNnJuLnXGLFusWuVq86DdVZWBpLLnsJAPsWpI7znLRlXktE5x7K6l
+ Lw4Q==
+X-Gm-Message-State: AOJu0Yx7eGhKPHTKeQkk1Oexnkeo4BWZ/+AK7NKj9KeH/mfdcZZRTUV3
+ Gzyo+j+TxU1iyafmNCJN/suynGE5801uiSdNn8wBST1ixOf/HHW+4hoAQfXyNwrp4lM=
+X-Gm-Gg: ASbGncsefeY0eg1IOT8sbwUrT6AbTUeuxPYpYo8fYrDLSO7UV4lZDCGbgoFqzvgKnh9
+ ZpxaCHPALXKaLMIADKO6bUbK7rlB5oO67fMdl6n9La7UvMEsKeNlE7J2FdypOJcRnJ9ji1LgUIn
+ +5A8kJc4+NOmoGlAt+fJXnVqJIUGk+BRBK1RymKT4AyiIxUtjmN85MmFhBbPZ+08afMiS35CQGh
+ aC+4VeykgIxUiorQVBcG5zrvtc64KdpC4HTTU2+vC9XGhxiQonikrD+IqnI/g77RiLrck6gHhPE
+ T5oaPFLJrHyi4fS87ZQ1RoRu1cfnKPSVkILtU77Rlz7VFXoY8GqcAAJc59MuRte1GcDcRqbuR4e
+ s622G5QrWnZFCC2sNWM6DcpEgi5+fSdHXneFiGgVz8yEgvXys0t6FePURZHa5xB4honHogNc=
+X-Google-Smtp-Source: AGHT+IEyA+ESg/pEAYMU+/ldk+7dylKHvBXVZntzUd/lgGEH+fjYAD/PwEEcVQfHHR60K4GVZrhw3g==
+X-Received: by 2002:a05:6000:1a8b:b0:3a5:25e4:264f with SMTP id
+ ffacd0b85a97d-3b5f2e1bb21mr11256222f8f.31.1752528961062; 
+ Mon, 14 Jul 2025 14:36:01 -0700 (PDT)
+Received: from [192.168.69.239] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3b5e8e0d77asm13688251f8f.58.2025.07.14.14.36.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Jul 2025 14:36:00 -0700 (PDT)
+Message-ID: <c9c3ac80-e88e-4779-902b-707fb5c9f959@linaro.org>
+Date: Mon, 14 Jul 2025 23:35:59 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/3] pc-bios/dtb: Remove device tree blobs
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+References: <20250708204806.1898-1-shentey@gmail.com>
+ <20250708204806.1898-4-shentey@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250708204806.1898-4-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: cPEk1zw_sOm3uxEdAeVVNMf7VNBFWsh7
-X-Proofpoint-ORIG-GUID: cPEk1zw_sOm3uxEdAeVVNMf7VNBFWsh7
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzE0MDE0MCBTYWx0ZWRfX5zYP5MCwTGSK
- CfHrypkQugNXEvw0oupTAN5HshfxwxfqFjltOFLGoj3+Z4LsNZlW6kZxF10sNzHWoI7CEOANJ8c
- i5PI8XetGrU1AwFz9PBZtGh68yNhH0NAW+NOFW5gbYysT/bBSZWqZr7zZ1TKHzr18OGUUQEKEWD
- aK0eEar3kRD3AAsRQpaYmQ0AX/bEzeMAmDrIeQsiJwHPhwgRnG6DgCDXAcHJvIjsbuOhaCh9HP2
- s9u4txjH9KXuUIE4RjfVRsUv2h2GLTlbq4ro8q9vUnMpcIJ9/6UVsvBvVeotwNe2d8A6YDlHPzK
- 5SB+MZ+iN7yS/dtZ5FVEArlok5gxV1FKw6zAsue0/WXt4xDEDWRHbt3I1HTwgMugt9O0PoehNp8
- +0gLo2DS0cdAgusqsYRp4b7R7G7Eauso/0mhSUUZtnzgxBCzr5HOdZqZXDRh87xaq/80lNKI
-X-Authority-Analysis: v=2.4 cv=Xc2JzJ55 c=1 sm=1 tr=0 ts=68756d8a cx=c_pps
- a=m5Vt/hrsBiPMCU0y4gIsQw==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
- a=Wb1JkmetP80A:10 a=EUspDBNiAAAA:8 a=cPBEBSeHtjnCkXsRAdUA:9
- a=IoOABgeZipijB_acs4fv:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.7,FMLib:17.12.80.40
- definitions=2025-07-14_02,2025-07-14_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 mlxscore=0 priorityscore=1501 adultscore=0 mlxlogscore=999
- phishscore=0 suspectscore=0 spamscore=0 lowpriorityscore=0 impostorscore=0
- clxscore=1015 malwarescore=0 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
- definitions=main-2507140140
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=vacha.bhavsar@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,217 +104,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The QEMU GDB stub does not expose the ZA storage SME register to GDB via
-the remote serial protocol, which can be a useful functionality to debug SME
-code. To provide this functionality in Aarch64 target, this patch registers the
-SME register set with the GDB stub. To do so, this patch implements the
-aarch64_gdb_get_sme_reg() and aarch64_gdb_set_sme_reg() functions to
-specify how to get and set the SME registers, and the
-arm_gen_dynamic_smereg_feature() function to generate the target
-description in XML format to indicate the target architecture supports SME.
-Finally, this patch includes a dyn_smereg_feature structure to hold this
-GDB XML description of the SME registers for each CPU.
+On 8/7/25 22:48, Bernhard Beschow wrote:
+> Now that the existance of a device tree compiler is enusred, it is possible to
 
-Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
----
-Changes since v2:
-- Used FIELD_EX64(env->svcr, SVCR, SM) to determine streaming mode to set
-value of vq in aarch64_gdb_get_sme_reg()
-- Changed occurrences of sve_max_vq in the new sme functions to sme_max_vq
-- Changed 'for (q = 0' to 'for (int q = 0' in the loop in case 2 in
-aarch64_gdb_get_sme_reg()
-- Returned 8, instead of 0, in case 0 (setting svg) in 
-aarch64_gdb_set_sme_reg()
-- Used ldq_le_p(buf) in the call to aarch64_set_svcr in case 1 (setting
-svcr) in aarch64_gdb_set_sme_reg()
-- Mirrored the q/vq loop from aarch64_gdb_get_sme_reg() in
-aarch64_gdb_set_sme_reg()
+"ensured"
 
- target/arm/cpu.h       |   1 +
- target/arm/gdbstub.c   |   6 +++
- target/arm/gdbstub64.c | 115 +++++++++++++++++++++++++++++++++++++++++
- target/arm/internals.h |   3 ++
- 4 files changed, 125 insertions(+)
+> always generate the DTBs from sources. This avoids checked in DTBs to become
+> inconsistent with their sources.
+> 
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>   MAINTAINERS                          |   2 +-
+>   pc-bios/dtb/bamboo.dtb               | Bin 3211 -> 0 bytes
+>   pc-bios/dtb/canyonlands.dtb          | Bin 9779 -> 0 bytes
+>   pc-bios/dtb/meson.build              |  16 +++++++---------
+>   pc-bios/dtb/petalogix-ml605.dtb      | Bin 9882 -> 0 bytes
+>   pc-bios/dtb/petalogix-s3adsp1800.dtb | Bin 8161 -> 0 bytes
+>   6 files changed, 8 insertions(+), 10 deletions(-)
+>   delete mode 100644 pc-bios/dtb/bamboo.dtb
+>   delete mode 100644 pc-bios/dtb/canyonlands.dtb
+>   delete mode 100644 pc-bios/dtb/petalogix-ml605.dtb
+>   delete mode 100644 pc-bios/dtb/petalogix-s3adsp1800.dtb
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index dc9b6dce4c..8bd66d7049 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -933,6 +933,7 @@ struct ArchCPU {
- 
-     DynamicGDBFeatureInfo dyn_sysreg_feature;
-     DynamicGDBFeatureInfo dyn_svereg_feature;
-+    DynamicGDBFeatureInfo dyn_smereg_feature;
-     DynamicGDBFeatureInfo dyn_m_systemreg_feature;
-     DynamicGDBFeatureInfo dyn_m_secextreg_feature;
- 
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index ce4497ad7c..9c942c77cc 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -531,6 +531,12 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
-             GDBFeature *feature = arm_gen_dynamic_svereg_feature(cs, cs->gdb_num_regs);
-             gdb_register_coprocessor(cs, aarch64_gdb_get_sve_reg,
-                                      aarch64_gdb_set_sve_reg, feature, 0);
-+            if (isar_feature_aa64_sme(&cpu->isar)) {
-+                GDBFeature *sme_feature = arm_gen_dynamic_smereg_feature(cs,
-+                                             cs->gdb_num_regs);
-+                gdb_register_coprocessor(cs, aarch64_gdb_get_sme_reg,
-+                    aarch64_gdb_set_sme_reg, sme_feature, 0);
-+            }
-         } else {
-             gdb_register_coprocessor(cs, aarch64_gdb_get_fpu_reg,
-                                      aarch64_gdb_set_fpu_reg,
-diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-index 64ee9b3b56..c0fdac7e93 100644
---- a/target/arm/gdbstub64.c
-+++ b/target/arm/gdbstub64.c
-@@ -228,6 +228,84 @@ int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg)
-     return 0;
- }
- 
-+int aarch64_gdb_get_sme_reg(CPUState *cs, GByteArray *buf, int reg)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    switch (reg) {
-+    /* Svg register */
-+    case 0:
-+    {
-+        int vq = 0;
-+        if (FIELD_EX64(env->svcr, SVCR, SM)) {
-+            vq = sve_vqm1_for_el_sm(env, arm_current_el(env),
-+                     FIELD_EX64(env->svcr, SVCR, SM)) + 1;
-+        }
-+        /* svg = vector granules (2 * vector quardwords) in streaming mode */
-+        return gdb_get_reg64(buf, vq * 2);
-+    }
-+    case 1:
-+        return gdb_get_reg64(buf, env->svcr);
-+    case 2:
-+    {
-+        int len = 0;
-+        int vq = cpu->sme_max_vq;
-+        int svl = vq * 16;
-+        for (int i = 0; i < svl; i++) {
-+            for (int q = 0; q < vq; q++) {
-+                len += gdb_get_reg128(buf,
-+                           env->za_state.za[i].d[q * 2 + 1],
-+                           env->za_state.za[i].d[q * 2]);
-+            }
-+        }
-+        return len;
-+    }
-+    default:
-+        /* gdbstub asked for something out of range */
-+        qemu_log_mask(LOG_UNIMP, "%s: out of range register %d", __func__, reg);
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+int aarch64_gdb_set_sme_reg(CPUState *cs, uint8_t *buf, int reg)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    switch (reg) {
-+    case 0:
-+    {
-+        /* cannot set svg via gdbstub */
-+        return 8;
-+    }
-+    case 1:
-+        aarch64_set_svcr(env, ldq_le_p(buf),
-+            R_SVCR_SM_MASK | R_SVCR_ZA_MASK);
-+        return 8;
-+    case 2:
-+        int len = 0;
-+        int vq = cpu->sme_max_vq;
-+        int svl = vq * 16;
-+        uint64_t *p = (uint64_t *) buf;
-+        for (int i = 0; i < svl; i++) {
-+            for (int q = 0; q < vq; q++) {
-+                env->za_state.za[i].d[q * 2 + 1] = *p++;
-+                env->za_state.za[i].d[q * 2] = *p++;
-+                len += 16;
-+            }
-+        }
-+        return len;
-+    default:
-+        /* gdbstub asked for something out of range */
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
- int aarch64_gdb_get_pauth_reg(CPUState *cs, GByteArray *buf, int reg)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-@@ -392,6 +470,43 @@ GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cs, int base_reg)
-     return &cpu->dyn_svereg_feature.desc;
- }
- 
-+GDBFeature *arm_gen_dynamic_smereg_feature(CPUState *cs, int base_reg)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    int vq = cpu->sme_max_vq;
-+    int svl = vq * 16;
-+    GDBFeatureBuilder builder;
-+    int reg = 0;
-+
-+    gdb_feature_builder_init(&builder, &cpu->dyn_smereg_feature.desc,
-+        "org.gnu.gdb.aarch64.sme", "sme-registers.xml", base_reg);
-+
-+
-+    /* Create the sme_bv vector type. */
-+    gdb_feature_builder_append_tag(&builder,
-+        "<vector id=\"sme_bv\" type=\"uint8\" count=\"%d\"/>",
-+        svl);
-+
-+    /* Create the sme_bvv vector type. */
-+    gdb_feature_builder_append_tag(
-+        &builder, "<vector id=\"sme_bvv\" type=\"sme_bv\" count=\"%d\"/>",
-+        svl);
-+
-+    /* Define the svg, svcr, and za registers. */
-+
-+    /* fpscr & status registers */
-+    gdb_feature_builder_append_reg(&builder, "svg", 64, reg++,
-+        "int", NULL);
-+    gdb_feature_builder_append_reg(&builder, "svcr", 64, reg++,
-+        "int", NULL);
-+    gdb_feature_builder_append_reg(&builder, "za", svl * svl * 8, reg++,
-+        "sme_bvv", NULL);
-+
-+    gdb_feature_builder_end(&builder);
-+
-+    return &cpu->dyn_smereg_feature.desc;
-+}
-+
- #ifdef CONFIG_USER_ONLY
- int aarch64_gdb_get_tag_ctl_reg(CPUState *cs, GByteArray *buf, int reg)
- {
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index c4765e4489..760e1c6490 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1808,8 +1808,11 @@ static inline uint64_t pmu_counter_mask(CPUARMState *env)
- }
- 
- GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cpu, int base_reg);
-+GDBFeature *arm_gen_dynamic_smereg_feature(CPUState *cpu, int base_reg);
- int aarch64_gdb_get_sve_reg(CPUState *cs, GByteArray *buf, int reg);
- int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg);
-+int aarch64_gdb_get_sme_reg(CPUState *cs, GByteArray *buf, int reg);
-+int aarch64_gdb_set_sme_reg(CPUState *cs, uint8_t *buf, int reg);
- int aarch64_gdb_get_fpu_reg(CPUState *cs, GByteArray *buf, int reg);
- int aarch64_gdb_set_fpu_reg(CPUState *cs, uint8_t *buf, int reg);
- int aarch64_gdb_get_pauth_reg(CPUState *cs, GByteArray *buf, int reg);
--- 
-2.34.1
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 

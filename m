@@ -4,49 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17247C83F1A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A58BC83F1B
 	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 08:17:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubEMD-00046h-Ra; Mon, 14 Jul 2025 04:16:18 -0400
+	id 1ubEM5-00042t-FJ; Mon, 14 Jul 2025 04:16:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ubEDw-0006AO-2J
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 04:07:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1ubEDI-0005xT-8r
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 04:07:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ubEDr-0003A3-0c
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 04:07:43 -0400
+ id 1ubEDE-00035Q-Qr
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 04:07:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752480458;
+ s=mimecast20190719; t=1752480414;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LaHhRWCkXgGNJ+cRyviv9tQN1UpLUsvaFiwWXTMdnDI=;
- b=d6HykLOUnXtTtnFFiQoFoF6K/3z52aVdnu/JTeYcilOYHNQOGwlC6gg3yjGDudlF5UMDXY
- CSGnQj38ULM5j3HI8ee5T1/7VCG98FgeR4rdvZkKPIXiKz3J8SBQ/BdDn+PM4U17oLcQ2M
- z4bIaW5MNMvSamu24JcROjCkw+0NDO8=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=hlx9+CpSB/6T1kuI2TFe5j1QXEpeIwzCx+e+vMDBV3I=;
+ b=U27HgBFi3mu2VWrcJADiS+qhUov5U2TzHzbVH20/VkkuoLb15RTlgtyrkBq7ySBiade0Sk
+ bum19SLy2rK7tri1ClTvlB/vz7i3GxjX4QOAV+cv1/XjVmKlrcQPG0FX2BKb5cj4qeoMkw
+ cH+6eolIxFgHy6l0U5ZKeoI3ilYmqlw=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-116-_sw8U0kCM_K8vSEANx884g-1; Mon,
- 14 Jul 2025 04:07:35 -0400
-X-MC-Unique: _sw8U0kCM_K8vSEANx884g-1
-X-Mimecast-MFC-AGG-ID: _sw8U0kCM_K8vSEANx884g_1752480453
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-513-zWrnSNCDMAmMGcBaoJ6X9w-1; Mon,
+ 14 Jul 2025 04:06:48 -0400
+X-MC-Unique: zWrnSNCDMAmMGcBaoJ6X9w-1
+X-Mimecast-MFC-AGG-ID: zWrnSNCDMAmMGcBaoJ6X9w_1752480407
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9505819560AE; Mon, 14 Jul 2025 08:07:33 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E2A7C1808985; Mon, 14 Jul 2025 08:06:46 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.221])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 463601977000; Mon, 14 Jul 2025 08:07:29 +0000 (UTC)
+ id D846F1977000; Mon, 14 Jul 2025 08:06:41 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
@@ -55,16 +54,14 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: pbonzini@redhat.com,
 	philmd@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v7 09/36] hw/pci-host/gpex-acpi: Use
- build_pci_host_bridge_osc_method
-Date: Mon, 14 Jul 2025 10:04:53 +0200
-Message-ID: <20250714080639.2525563-10-eric.auger@redhat.com>
-In-Reply-To: <20250714080639.2525563-1-eric.auger@redhat.com>
-References: <20250714080639.2525563-1-eric.auger@redhat.com>
+Subject: [PATCH v7 00/36] ACPI PCI Hotplug support on ARM
+Date: Mon, 14 Jul 2025 10:04:44 +0200
+Message-ID: <20250714080639.2525563-1-eric.auger@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -89,184 +86,178 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-gpex build_host_bridge_osc() and x86 originated
-build_pci_host_bridge_osc_method() are mostly identical.
+This series enables ACPI PCI hotplug/hotunplug on ARM.
+It is not enabled by default and ACPI PCI hotplug can
+be selected by setting: 
 
-In GPEX, SUPP is set to CDW2 but is not further used. CTRL
-is same as Local0.
+-global acpi-ged.acpi-pci-hotplug-with-bridge-support=on
 
-So let gpex code reuse build_pci_host_bridge_osc_method()
-and remove build_host_bridge_osc().
+Expected benefits should be similar to those listed in [1],
+ie. removal of some racy behaviors, improved latencies.
 
-Also add an imply ACPI_PCI clause along with
-PCI_EXPRESS_GENERIC_BRIDGE to compile hw/acpi/pci.c
-when its dependency is resolved (ie. CONFIG_ACPI_PCI).
-This is requested to link qemu-system-mips64el.
+The infrastructure used in x86 is heavily reused and a
+huge part of the series consists in moving code from
+hw/i386/acpi-build.c to a generic place and slightly
+adapting it to make it usable on ARM. The DSDT table is
+augmented to support ACPI PCI hotplug elements.
 
-The disassembled DSDT difference is given below:
+On ARM we use use a GED event to notify the OS about
+hotplug events.
 
-  * Original Table Header:
-  *     Signature        "DSDT"
-- *     Length           0x00001A4F (6735)
-+ *     Length           0x00001A35 (6709)
-  *     Revision         0x02
-- *     Checksum         0xBF
-+ *     Checksum         0xDD
-  *     OEM ID           "BOCHS "
-  *     OEM Table ID     "BXPC    "
-  *     OEM Revision     0x00000001 (1)
-@@ -1849,27 +1849,26 @@ DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
-                 {
-                     CreateDWordField (Arg3, 0x04, CDW2)
-                     CreateDWordField (Arg3, 0x08, CDW3)
--                    SUPP = CDW2 /* \_SB_.PCI0._OSC.CDW2 */
--                    CTRL = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
--                    CTRL &= 0x1F
-+                    Local0 = CDW3 /* \_SB_.PCI0._OSC.CDW3 */
-+                    Local0 &= 0x1F
-                     If ((Arg1 != One))
-                     {
-                         CDW1 |= 0x08
-                     }
+Best Regards 
 
--                    If ((CDW3 != CTRL))
-+                    If ((CDW3 != Local0))
-                     {
-                         CDW1 |= 0x10
-                     }
+Eric
 
--                    CDW3 = CTRL /* \_SB_.PCI0.CTRL */
--                    Return (Arg3)
-+                    CDW3 = Local0
-                 }
-                 Else
-                 {
-                     CDW1 |= 0x04
--                    Return (Arg3)
-                 }
-+
-+                Return (Arg3)
-             }
+This series can be found at:
+https://github.com/eauger/qemu/tree/arm-acpi-pcihp-v7
 
-             Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
+previous series:
+https://github.com/eauger/qemu/tree/arm-acpi-pcihp-v6
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+History:
+v6 -> v7:
+- rebased after minor contextual conflict introduced
+  by "hw/arm/virt: Basic CXL enablement on pci_expander_bridge
+  instances pxb-cxl" in hw/arm/virt-acpi-build.c
+  (hw/pci-host/gpex-acpi: Use GED acpi pcihp property)
+- collected last Igor's and Prasad's R-bs
 
----
+v5 -> v6:
+- collected Jonathan's R-bs
+- cropped last 2 patch commit messages (Jonathan)
+
+v4 -> v5:
+- Collected Jonathan's R-bs (many thanks!)
+- fixed the tests/qtest/bios-tables-test issue by
+  creating a variant for the viot test
+- use the 3 phase reset API
+- fixed qom-test failures that were due to unconditionnal
+  fetches of the GED property
 
 v3 -> v4:
-- Fix link issue:
-/usr/bin/ld: libsystem.a.p/hw_pci-host_gpex-acpi.c.o: in function `acpi_dsdt_add_host_bridge_methods':
-./hw/pci-host/gpex-acpi.c:83: undefined reference to `build_pci_host_bridge_osc_method'
+- toook into account all comments on v3
+- static acpi-index is now supported unconditionally
+  from acpi pcihp option. See indiviual patches.
+- I hit a problem with ref block generation at
+  [19/32] tests/qtest/bios-tables-test: Update ARM DSDT reference
+  blobs: despite I regenerate the blobs, I get some errors.
+
+v2 -> v3:
+- lot of changes taking into account various feedbacks
+  (many thanks to all reviewers). Please refer to
+  individual patches for details. Main changes:
+  - no more machine option, acpi pci hp is not set by
+    default.
+  - removal of 2 unused variables in the osc method
+  - introduction of GED property to set the bus
+  - rework of the init/reset sequence
+  - fix virtio-mem-pci hotplug regression
 
 v1 -> v2:
-- move in the dsdt.dsl diff in the commit message and remove useless
-  info (Gustavo, Michael)
----
- hw/pci-host/gpex-acpi.c | 62 ++++-------------------------------------
- hw/pci-host/Kconfig     |  1 +
- 2 files changed, 6 insertions(+), 57 deletions(-)
+- collected a bunch of R-bs from Gustavo (many thanks!)
+- Fixed the breakage of bios-tables-test in TCG mode by
+  incorporating Gustavo's patches (part of
+  [PATCH 0/5] ACPI tests for PCI Hotplug on ARM
+  https://lore.kernel.org/all/20250526053123.1434204-1-gustavo.romero@linaro.org/)
+- Tweeked the dsdt aml changes to avoid any dsdt blob difference when
+  acpi-pcihp is off.
 
-diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
-index 44737a8d81..952a0ace19 100644
---- a/hw/pci-host/gpex-acpi.c
-+++ b/hw/pci-host/gpex-acpi.c
-@@ -1,5 +1,6 @@
- #include "qemu/osdep.h"
- #include "hw/acpi/aml-build.h"
-+#include "hw/acpi/pci.h"
- #include "hw/pci-host/gpex.h"
- #include "hw/arm/virt.h"
- #include "hw/pci/pci_bus.h"
-@@ -50,61 +51,7 @@ static void acpi_dsdt_add_pci_route_table(Aml *dev, uint32_t irq,
-     }
- }
- 
--static Aml *build_host_bridge_osc(bool enable_native_pcie_hotplug)
--{
--    Aml *method, *UUID, *ifctx, *ifctx1, *elsectx;
--    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
--    aml_append(method, aml_name_decl("SUPP", aml_int(0)));
--    aml_append(method, aml_name_decl("CTRL", aml_int(0)));
--    aml_append(method,
--        aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
--
--    /* PCI Firmware Specification 3.0
--     * 4.5.1. _OSC Interface for PCI Host Bridge Devices
--     * The _OSC interface for a PCI/PCI-X/PCI Express hierarchy is
--     * identified by the Universal Unique IDentifier (UUID)
--     * 33DB4D5B-1FF7-401C-9657-7441C03DD766
--     */
--    UUID = aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766");
--    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
--    aml_append(ifctx,
--        aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
--    aml_append(ifctx,
--        aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
--    aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
--    aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
--
--    /*
--     * Allow OS control for SHPCHotplug, PME, AER, PCIeCapability,
--     * and PCIeHotplug depending on enable_native_pcie_hotplug
--     */
--    aml_append(ifctx, aml_and(aml_name("CTRL"),
--               aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)),
--               aml_name("CTRL")));
--
--    ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
--    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
--                              aml_name("CDW1")));
--    aml_append(ifctx, ifctx1);
--
--    ifctx1 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), aml_name("CTRL"))));
--    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x10),
--                              aml_name("CDW1")));
--    aml_append(ifctx, ifctx1);
--
--    aml_append(ifctx, aml_store(aml_name("CTRL"), aml_name("CDW3")));
--    aml_append(ifctx, aml_return(aml_arg(3)));
--    aml_append(method, ifctx);
--
--    elsectx = aml_else();
--    aml_append(elsectx, aml_or(aml_name("CDW1"), aml_int(4),
--                               aml_name("CDW1")));
--    aml_append(elsectx, aml_return(aml_arg(3)));
--    aml_append(method, elsectx);
--    return method;
--}
--
--static Aml *build_host_bridge_dsm(void)
-+static Aml *build_pci_host_bridge_dsm_method(void)
- {
-     Aml *method = aml_method("_DSM", 4, AML_NOTSERIALIZED);
-     Aml *UUID, *ifctx, *ifctx1, *buf;
-@@ -133,8 +80,9 @@ static void acpi_dsdt_add_host_bridge_methods(Aml *dev,
-                                               bool enable_native_pcie_hotplug)
- {
-     /* Declare an _OSC (OS Control Handoff) method */
--    aml_append(dev, build_host_bridge_osc(enable_native_pcie_hotplug));
--    aml_append(dev, build_host_bridge_dsm());
-+    aml_append(dev,
-+               build_pci_host_bridge_osc_method(enable_native_pcie_hotplug));
-+    aml_append(dev, build_pci_host_bridge_dsm_method());
- }
- 
- void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
-diff --git a/hw/pci-host/Kconfig b/hw/pci-host/Kconfig
-index 35c0415242..9824fa188d 100644
---- a/hw/pci-host/Kconfig
-+++ b/hw/pci-host/Kconfig
-@@ -54,6 +54,7 @@ config PCI_EXPRESS_Q35
- config PCI_EXPRESS_GENERIC_BRIDGE
-     bool
-     select PCI_EXPRESS
-+    imply ACPI_PCI
- 
- config PCI_EXPRESS_XILINX
-     bool
+RFC -> v1:
+- First 3 trivial patches were pulled separately
+- Fix of the register region size (0x18), ie. ACPI_PCIHP_SIZE
+- addition of aml_pci_edsm which was not called in RFC
+- acpi-index feature is now fixed. vms->bus was not set on
+  acpi_pcihp_init. The init sequence is still hacky though. Suggestions
+  are welcome.
+
+[1] [PATCH v6 0/6] Use ACPI PCI hot-plug for Q35
+https://lore.kernel.org/all/20210713004205.775386-1-jusual@redhat.com/
+
+Eric Auger (32):
+  hw/i386/acpi-build: Make aml_pci_device_dsm() static
+  hw/acpi: Rename and move build_x86_acpi_pci_hotplug to pcihp
+  hw/pci-host/gpex-acpi: Add native_pci_hotplug arg to
+    acpi_dsdt_add_pci_osc
+  hw/pci-host/gpex-acpi: Split host bridge OSC and DSM generation
+  hw/acpi/ged: Add a acpi-pci-hotplug-with-bridge-support property
+  hw/pci-host/gpex-acpi: Use GED acpi pcihp property
+  hw/i386/acpi-build: Turn build_q35_osc_method into a generic method
+  hw/pci-host/gpex-acpi: Use build_pci_host_bridge_osc_method
+  tests/qtest/bios-tables-test: Update DSDT blobs after GPEX _OSC change
+  hw/i386/acpi-build: Introduce build_append_pcihp_resources() helper
+  hw/acpi/pcihp: Add an AmlRegionSpace arg to build_acpi_pci_hotplug
+  hw/i386/acpi-build: Move build_append_notification_callback to pcihp
+  hw/i386/acpi-build: Move build_append_pci_bus_devices/pcihp_slots to
+    pcihp
+  hw/i386/acpi-build: Use AcpiPciHpState::root in acpi_set_pci_info
+  hw/i386/acpi-build: Move aml_pci_edsm to a generic place
+  qtest/bios-tables-test: Prepare for fixing the aarch64 viot test
+  qtest/bios-tables-test: Add a variant to the aarch64 viot test
+  qtest/bios-tables-test: Generate DSDT.viot
+  hw/arm/virt-acpi-build: Let non hotplug ports support static
+    acpi-index
+  tests/qtest/bios-tables-test: Update ARM DSDT reference blobs
+  hw/arm/virt-acpi-build: Modify the DSDT ACPI table to enable ACPI PCI
+    hotplug
+  hw/acpi/ged: Add a bus link property
+  hw/arm/virt: Pass the bus on the ged creation
+  hw/acpi/ged: Call pcihp plug callbacks in hotplug handler
+    implementation
+  hw/acpi/pcihp: Remove root arg in acpi_pcihp_init
+  hw/acpi/ged: Prepare the device to react to PCI hotplug events
+  hw/acpi/ged: Support migration of AcpiPciHpState
+  hw/core/sysbus: Introduce sysbus_mmio_map_name() helper
+  hw/arm/virt: Minor code reshuffling in create_acpi_ged
+  hw/arm/virt: Let virt support pci hotplug/unplug GED event
+  qtest/bios-tables-test: Generate reference blob for
+    DSDT.hpoffacpiindex
+  qtest/bios-tables-test: Generate reference blob for DSDT.acpipcihp
+
+Gustavo Romero (4):
+  tests/qtest/bios-tables-test: Prepare for changes in the DSDT table
+  tests/qtest/bios-tables-test: Prepare for changes in the arm virt DSDT
+    table
+  tests/qtest/bios-tables-test: Prepare for addition of acpi pci hp
+    tests
+  tests/qtest/bios-tables-test: Add aarch64 ACPI PCI hotplug test
+
+ hw/i386/acpi-build.h                          |   4 -
+ include/hw/acpi/generic_event_device.h        |  17 +-
+ include/hw/acpi/pci.h                         |   5 +-
+ include/hw/acpi/pcihp.h                       |  17 +-
+ include/hw/arm/virt.h                         |   1 +
+ include/hw/pci-host/gpex.h                    |   1 +
+ include/hw/sysbus.h                           |   1 +
+ hw/acpi/acpi-pci-hotplug-stub.c               |   2 +-
+ hw/acpi/generic_event_device.c                |  77 +++
+ hw/acpi/ich9.c                                |   7 +-
+ hw/acpi/pci-bridge.c                          |  54 ++
+ hw/acpi/pci.c                                 |  50 ++
+ hw/acpi/pcihp.c                               | 439 ++++++++++++++-
+ hw/acpi/piix4.c                               |   5 +-
+ hw/arm/virt-acpi-build.c                      |  38 ++
+ hw/arm/virt.c                                 |  27 +-
+ hw/core/sysbus.c                              |  11 +
+ hw/i386/acpi-build.c                          | 532 +-----------------
+ hw/pci-host/gpex-acpi.c                       |  74 +--
+ tests/qtest/bios-tables-test.c                |  53 ++
+ hw/arm/Kconfig                                |   2 +
+ hw/pci-host/Kconfig                           |   1 +
+ tests/data/acpi/aarch64/virt/DSDT             | Bin 5196 -> 5293 bytes
+ .../data/acpi/aarch64/virt/DSDT.acpihmatvirt  | Bin 5282 -> 5379 bytes
+ tests/data/acpi/aarch64/virt/DSDT.acpipcihp   | Bin 0 -> 6202 bytes
+ .../acpi/aarch64/virt/DSDT.hpoffacpiindex     | Bin 0 -> 5347 bytes
+ tests/data/acpi/aarch64/virt/DSDT.memhp       | Bin 6557 -> 6654 bytes
+ tests/data/acpi/aarch64/virt/DSDT.pxb         | Bin 7679 -> 7768 bytes
+ tests/data/acpi/aarch64/virt/DSDT.topology    | Bin 5398 -> 5495 bytes
+ tests/data/acpi/aarch64/virt/DSDT.viot        | Bin 0 -> 5310 bytes
+ tests/data/acpi/riscv64/virt/DSDT             | Bin 3576 -> 3538 bytes
+ tests/data/acpi/x86/microvm/DSDT.pcie         | Bin 3023 -> 2985 bytes
+ 32 files changed, 811 insertions(+), 607 deletions(-)
+ create mode 100644 tests/data/acpi/aarch64/virt/DSDT.acpipcihp
+ create mode 100644 tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex
+ create mode 100644 tests/data/acpi/aarch64/virt/DSDT.viot
+
 -- 
 2.49.0
 

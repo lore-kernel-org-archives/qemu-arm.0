@@ -4,87 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CB2CC83F1A
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 18:05:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FAE1C83F1A
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 18:14:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubNYd-0007n8-KX; Mon, 14 Jul 2025 14:05:44 -0400
+	id 1ubNgZ-0008CY-6I; Mon, 14 Jul 2025 14:13:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ubMSh-0004Y6-Fv
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 12:55:33 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1ubMgn-0005Ab-8R
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 13:10:05 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ubMSd-0001IP-KN
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 12:55:30 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-455b00283a5so18459365e9.0
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 09:55:27 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1ubMgi-0003Eg-Ah
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 13:10:04 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-2352400344aso42296405ad.2
+ for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 10:09:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752512126; x=1753116926; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=GnuPhOvOnPLOfdX6XlrP4ky9ziluFD2vjxw40gSmZ1g=;
- b=jCYgYxSjp2tFVtEG6L2j9YDsGihp0kgEiSvPimbpVhG2XM2fDLVY7qopgh8CBBZARn
- 01zAoCOJkrIkyxquZFgIhDJD7Gx3hVSe/SQ9jjo7+UVqkkyUXjQvGx+Vs4spLSFJzG5A
- DnDU1I5AynLdufdQKI+GQzDIVGliJrswaVFMKZ6ssLOeVMFnj2ESzu47H1InM2KizOkK
- z76qvmWTnyxPVTFpEnAs6qHTwvHPutE90lextnSrPiITwGYYvs29ft9E0clAG4RULvPa
- aLsT/08OuS0wdNsgAo9vw1rBs66uPK8FfFXW11VLjCP29z4DnldbdDgrN8OM5klSgUAR
- FjOQ==
+ d=linaro.org; s=google; t=1752512998; x=1753117798; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=pNN1lvm+Y2jpleCJEcqOLiMG8jaqVBdTzjyRJ3A18tc=;
+ b=vDGtgfYwpmA0BLbe8o2T4nr2ebzi9ljTFvXQVhyctl72tPu/S0NtvL8vwAckr6TUJr
+ oc+gAmxsyS4H0PPi+lxwfpuPnGiE6pdKYdTnb3F6yoDXvcIL+1VcPtLUr3/SFn1Bf22S
+ n7SWaGnv92K566iT6HTxFqqJfVLAiKSCutv0FprMcFeRuD8oAwmQzMdpgZabtAN1Ew9o
+ mGYZDN4FuMqOoAtpEe/7TgWSI1CoHZlgSm46CptQTzXTf0Rz+lJmL1EM1kjKld8wHDXu
+ d5WeO4dq3EE8mKNUvgE9iLVKHeXbgLy1pnfakpmQU4m34Au6PwWdmdJlNPqF+uCrNk0P
+ YMbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752512126; x=1753116926;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=GnuPhOvOnPLOfdX6XlrP4ky9ziluFD2vjxw40gSmZ1g=;
- b=NfdU9Ur1McHWGuMacHBJyZ8b2ewXEn0Xbz5sj1isT03tp8eVjjtB87EnJuuhVoin5Z
- k9WmHJIqRtRCYWHKfT4aTgPFmIJ0OipKSlzoiLKciNQacpn1r8UI1xSnOVswXwpiTnho
- oYkf65yHwkBVd5Qsd3rtQ5w8rRk/Aw86mbFh5YZlQmqJsd2ZH+INCHqy83b4EBVoS5Uq
- UJWPuBSD9GUNT7occRoCwj+7Ufu7xPxEZbiGorFOW2KywJSvditpqHk7eKRwolDnLj9I
- 8zXyOecO+QbBUSkUSxvRn5F/6dEK7zhXTath2+I6hvtB2ptzDbH+XetiX0Ax//9zDXqe
- qEBQ==
-X-Gm-Message-State: AOJu0YySsuTjV+udVrUuZIjtVJn0+MFzvTq2qDmRu96Dwdh/rr2MABdt
- RhkCwe86aveBKmW4kTh0tAaEP/DRVTBqLaB2EEOqdQYvZDw/QyBa5m2OLjNrgZWDmvgbUeY1FAB
- EOLbb
-X-Gm-Gg: ASbGncsPpQTib3FB3pPJLLvdsKmgibpmH7gLaYn/wKb6oT4CNDUm1j2nLZk0mJXru+C
- ejgYDZuQvtZgrVkIWcNgUFpngQknVtcg4040Ur9nqPk0BnWrrlFiUkY175PCIyVb7DNBH6oHsqt
- L5i+rjHlRVUsfrdAZpDKMI6ZuJTf6J78K6h5i9HxTeWoD78NFJRWwlJEQEg0+NLP5EdWFZaXmkJ
- E0ECjjjL+RxAHr2PyGsR4254UmfZ7zE3oelwuqPEE7PL5BFnUT88Xa1T0zuCtbmtzW1VHORKkUA
- 4PazdeOpJzbJArSPWFbfKooPq3Z9vLOY07v5xm2+VAiCVkO9VKKYjKKfeMJSeClEE0qKe7ih7TJ
- vRtvZli+VDtxyNp5vBgQMKFGaBhti
-X-Google-Smtp-Source: AGHT+IF8LcEWUTJee4OP99Z2DnuLr/s+aC/Ikzv5ruMl4L1QLo7yroHHrQyk4wQysm3/F9Wprf1wkg==
-X-Received: by 2002:a05:600c:8b84:b0:454:aedd:96fb with SMTP id
- 5b1f17b1804b1-454f4275fa0mr127666235e9.29.1752512125735; 
- Mon, 14 Jul 2025 09:55:25 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ d=1e100.net; s=20230601; t=1752512998; x=1753117798;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=pNN1lvm+Y2jpleCJEcqOLiMG8jaqVBdTzjyRJ3A18tc=;
+ b=DnuVEq/cBz1b0mMuKoCji9ap7YcmnD4Mug14jUHka1pds76KwL7dqJBgbuffNqzX4H
+ 36YgKdjtQ6bkoQZ0UeH0B8VW8nTkvTcpCVhWJk8mr10dBLIyTZ2WJD38appRgTTILPi/
+ lJJgfJ91l0jU44uzLvTO7byhV412P33aYIrItpX77UgsW/aTUwA8Hyt02wDfGuBEud+v
+ G23NGWnkIfuKBYFmsfdARK4Yp3VLA9sny7t5pZZRuGmhLm2mDnyieqmIqLiGZ55P4pUD
+ HqWg8QcAGo+zk0WQfAAXX511A+u1f4VBDgLCWCHKwKz/3eV5GjAxbUnsxAUwrjTfNI3D
+ 5x4Q==
+X-Gm-Message-State: AOJu0YyYTxxWWDV2ts9cFZ2DBkcWd3RH66zGQM70rAFwZMVQDWNkjBGV
+ 3j5wEiGMw3IsexByL1C+JwEPTHJO+O9Al+gtbBRgR6pCodrSbxYTeVaC6QgDrzJBuLs=
+X-Gm-Gg: ASbGncuqFETEqlPzMzAynvwgGrSYXXh8HVD/buNJnteaZ5QUzuihDFDaFgLQJDZVE1z
+ hKnYCcpOWqWGe0FMSAs9l2wWC492ExLT7gqbT2+5b4gCxbJAs1bPB3AC7oAzgW5v9om4MIEcB4y
+ yRdZQH8TeeneAqXS2SJ2Bm9WhIZj2yqMo88TIi6gMVZWK0XxSN3JKRLgkdHfBttvvB9eWzW6NSS
+ 48YwH+l+PntQj5/o6+O78jcwhv+ENk8l2C13kSt2z//8ka826V3pHpMU4mZ8huQs0YCGBhiswl1
+ SxCdChgzXuBkDoHRKmWAudRvinXSMh2pTpFhSL6qNhAm4XwDd28bllpM8wbYtOj31NzoYMHPJVT
+ e0xhZRygOmGCuGvtn+vyUA2scnc5aHj1NZwM=
+X-Google-Smtp-Source: AGHT+IG6sXBZYTHHFZUmPuGrI304YdOobQl274T8IcD6F7DDcC0FCASMIyNZsoChpVkR1jtEL9SqUQ==
+X-Received: by 2002:a17:902:d584:b0:233:d1e6:4d12 with SMTP id
+ d9443c01a7336-23df0807799mr139975665ad.13.1752512998382; 
+ Mon, 14 Jul 2025 10:09:58 -0700 (PDT)
+Received: from [192.168.1.87] ([38.41.223.211])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b5e8bd15bfsm13164665f8f.19.2025.07.14.09.55.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jul 2025 09:55:25 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
- Jason Wang <jasowang@redhat.com>
-Subject: [PATCH 0/4] hw/net/npcm_gmac: Various fixes to
- gmac_try_send_next_packet()
-Date: Mon, 14 Jul 2025 17:55:19 +0100
-Message-ID: <20250714165523.1956235-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ 98e67ed59e1d1-31c220f0be0sm7239405a91.0.2025.07.14.10.09.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Jul 2025 10:09:57 -0700 (PDT)
+Message-ID: <97292e35-b7f2-40ca-aed6-34ef39396433@linaro.org>
+Date: Mon, 14 Jul 2025 10:09:57 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 0/4] target/arm: Add FEAT_MEC to max cpu
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, gustavo.romero@linaro.org
+References: <20250714155836.1514748-1-richard.henderson@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20250714155836.1514748-1-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,50 +101,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-There is a Coverity issue in gmac_try_send_next_packet() relating
-to it setting a variable to a value that is always overwritten.
-While I was looking at that, I noticed a number of oddities in
-this function. This patchseries collects those up. Note that I
-have only tested this with 'make check' and 'make check-functional',
-and since I couldn't find a datasheet I have some questions about
-the hardware behaviour. Review and testing would be appreciated.
+On 7/14/25 8:58 AM, Richard Henderson wrote:
+> Changes for v8:
+>    - Re-order SCTLR2 and TCR2 so that they are independent of MEC.
+>    - Enable the SCTLR2 and TCR2 enable bits.
+>    - Squash 3 smaller MEC patches together.
+> 
+> This still fails the RME tests, because we still need TF-A rebuilt
+> with ENABLE_FEAT_SCTLR2 and ENABLE_FEAT_TCR2.  Pierrick, since you
+> have just done such a build, could you re-test with this series?
+>
 
-The first patch is about something I noticed last year, but never
-got a reply on:
-https://lore.kernel.org/qemu-devel/CAFEAcA8Jx=CrXCSzOtjtEky5ikvtatk8N2gz=nKccpwEwO13+w@mail.gmail.com/
-The code appears to mishandle the case where the function ends up
-sending more than one packet, such that the second packet gets
-sent with the contents of the first one.
+I tested that on my local Realm enabled setup and I can confirm this 
+solved the issue and current series works.
+Both flags are needed in TF-A. ENABLE_FEAT_TCR2 is needed to boot host, 
+and ENABLE_FEAT_SCTLR2 is needed to boot nested guest.
 
-When that bug has been fixed, the length and prev_buf_size
-variables become exact copies of each other, so patch 2 gets rid
-of the unnecessary 'length' variable. Here I have a question about
-the hardware behaviour: what does it do if the guest attempts to
-assemble a very large packet ? In this patch I retain the current
-behaviour ("wrap the length at 64K and send a short packet"), but
-this seems to me unlikely to be correct. Should we be detecting
-the huge packet and flagging an error somewhere?
+As I'm off today, I'll update that properly tomorrow when I have time, 
+and not rush things. I'll update RME images for sbsa and virt tests + 
+device passthrough test, and post associated patches.
 
-The third patch fixes a classic C thinko where we do sizeof(some pointer)
-when we meant to check against the size of the dynamically allocated
-buffer.
-
-The fourth patch fixes the Coverity error by dropping the
-not-very-useful 'buf' local variable entirely.
-
-thanks
--- PMM
-
-Peter Maydell (4):
-  hw/net/npcm_gmac.c: Send the right data for second packet in a row
-  hw/net/npcm_gmac.c: Unify length and prev_buf_size variables
-  hw/net/npcm_gmac.c: Correct test for when to reallocate packet buffer
-  hw/net/npcm_gmac.c: Drop 'buf' local variable
-
- hw/net/npcm_gmac.c | 26 ++++++++++++--------------
- 1 file changed, 12 insertions(+), 14 deletions(-)
-
--- 
-2.43.0
-
+Thanks,
+Pierrick
 

@@ -4,112 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59BC2C83F1B
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 09:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 346D7C83F1A
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 09:50:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubFLl-0003IJ-V1; Mon, 14 Jul 2025 05:19:54 -0400
+	id 1ubFor-0008F1-B4; Mon, 14 Jul 2025 05:49:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ubF4Q-0002fU-0q
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 05:02:01 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mhej@vps-ovh.mhejs.net>)
+ id 1ubFlk-0005Of-IY; Mon, 14 Jul 2025 05:46:53 -0400
+Received: from vps-ovh.mhejs.net ([145.239.82.108])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ubF4M-0006Nz-3w
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 05:01:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752483712;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=nFaq1jnbhSYzVZrfM5m9ezXDiNopu52/2FuXqVCFQlc=;
- b=SWFRRK4RkK00FCuO5WHWrvfpAGO6CZwzvOhioLKLWkT981tpswDqyPjvGiElkL/hfEuIoP
- L9uGHddgeR0vbe95V/FDVyZdiz3NgQi6nHo8mya6yVBKwgkHJpJrWfo/kGY0uLykTPQA/t
- IiR1QP08B9cJ5fV7I7hMo5fzEPqwfdA=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-417-76B1ZYJdNk-g5zL5vo4JOg-1; Mon, 14 Jul 2025 05:01:49 -0400
-X-MC-Unique: 76B1ZYJdNk-g5zL5vo4JOg-1
-X-Mimecast-MFC-AGG-ID: 76B1ZYJdNk-g5zL5vo4JOg_1752483708
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-3a5780e8137so2721700f8f.1
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 02:01:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752483708; x=1753088508;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=nFaq1jnbhSYzVZrfM5m9ezXDiNopu52/2FuXqVCFQlc=;
- b=P6uxeJ+cNMrJhF/p8HbU6HXX/JJtSMQthRiI43rgYZox2jdCEAGHh/n7chFgTWBKRA
- /LBVPB4/xEWwE11w4YWFN7wUkafVBtV67JuRxy5e6fzh88IZmeGMfv35UL3eGcuzPQAO
- vqMSvVH3h7sz8yFbpxfa+ULzwx4l+dd837v1aaT8TxYPVqfwuGQO8m/FRgsQGnpWeARE
- ofXonTNRqKFPiQUz80ky0Nw1iumd/oeiZWfG92kl3UMZ5Y4KFYkM20dBUiPBzqAO3FPj
- TuxUqwsUeXvTtzlsV9UVrBzjnVfKXVWQZkhvxvrhTnSA1ppdTTvMjVI/aMxmQgL1HkT2
- zCJg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXtFAZMVOp7cVe8E/xJtvKRW4JUDOo8ZmxM/KBRU3YB3duY/Qmvkm/Z/FG1q+pL/VCG2uFjY+9BXg==@nongnu.org
-X-Gm-Message-State: AOJu0Yyf4f8rtK8V5HQIdcvjKlUVTRyG6l0+FloJy+PedbVC2Ncs+7lL
- PRBrSRfpOHKphvGweLs2jh+jAt9xBNnxv+lD1WtVoIL7TUDo/AUHdwlMRNmbFdEEg02QlbxTo4I
- 0BRAIt+F2MJCKUOha3V2v9YdwH1x9LZrmxvSkf0C5fk+yAa2ranYmRw==
-X-Gm-Gg: ASbGncvHN5xoXpKHl6Vs2v6YJ3NFDHmv9FVUkcaYsnerUY+KL7lYt6hDk4mA/16Vytp
- yhYGTvsG+7DXebv2YJ6zTHf8ESEr1YKUP1rSyTze4rfMEP26uG854dbfJLcFbt4qvEKT+lkMObN
- xCuEa7+3v+bkujuZDWksMI+jHfG1t9VIDKFivS3l/Znkw08N/DHOhTOX9LkTOK1yhzSbgwz66AR
- hGx5EVOYmKa+CRllnTBhCO1GvqdA8wl0aHQEdj7UXX9Cuyv0waBKxQy86bBG+PL27tbrSZzehev
- kQ51xWwMhcvOShXof+y90RV/vD8tucfNzrEjU29cPYXAsHkyqHGloAUXGJOkBKg3yFxd0ogTj7L
- bg3crHglNz8E=
-X-Received: by 2002:a05:6000:3c3:b0:3a4:f70e:bc25 with SMTP id
- ffacd0b85a97d-3b5f1e96113mr8073634f8f.27.1752483707953; 
- Mon, 14 Jul 2025 02:01:47 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHjad1HidgGeo/GOxqn+CcbErkd7GdeTpjZRrUNAOU9TzBAEBee7SOfYOon8YuAmcPnzz1Mvw==
-X-Received: by 2002:a05:6000:3c3:b0:3a4:f70e:bc25 with SMTP id
- ffacd0b85a97d-3b5f1e96113mr8073602f8f.27.1752483707394; 
- Mon, 14 Jul 2025 02:01:47 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b5e8dc3a54sm12013884f8f.39.2025.07.14.02.01.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Jul 2025 02:01:46 -0700 (PDT)
-Message-ID: <f2cfbc5c-9e7b-4ed9-8b17-80d4ec139914@redhat.com>
-Date: Mon, 14 Jul 2025 11:01:45 +0200
+ (Exim 4.90_1) (envelope-from <mhej@vps-ovh.mhejs.net>)
+ id 1ubFli-0006GK-CR; Mon, 14 Jul 2025 05:46:44 -0400
+Received: from MUA
+ by vps-ovh.mhejs.net with esmtpsa  (TLS1.3) tls TLS_AES_128_GCM_SHA256
+ (Exim 4.98.2) (envelope-from <mhej@vps-ovh.mhejs.net>)
+ id 1ubFlW-00000000gfq-1UiZ; Mon, 14 Jul 2025 11:46:30 +0200
+Message-ID: <59a87a67-9283-4dd0-a29b-dae58fffe9ea@maciej.szmigiero.name>
+Date: Mon, 14 Jul 2025 11:46:25 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 34/36] tests/qtest/bios-tables-test: Add aarch64 ACPI
- PCI hotplug test
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, Jonathan.Cameron@huawei.com,
- gustavo.romero@linaro.org, anisinha@redhat.com, mst@redhat.com,
- shannon.zhaosl@gmail.com, pbonzini@redhat.com, philmd@linaro.org,
- alex.bennee@linaro.org
-References: <20250708142437.1344644-1-eric.auger@redhat.com>
- <20250708142437.1344644-35-eric.auger@redhat.com>
- <20250711154701.0f394671@fedora>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250711154701.0f394671@fedora>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: _va1CL7cDFbXxRk7U7jgbKh4UBS6JB0SeDwL0vB1uZE_1752483708
-X-Mimecast-Originator: redhat.com
+From: "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>
+Subject: Re: [PATCH 0/3] VFIO multifd device state transfer patches for QEMU
+ 10.1
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Avihai Horon <avihaih@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Alex Williamson <alex.williamson@redhat.com>,
+ Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>
+References: <cover.1750787338.git.maciej.szmigiero@oracle.com>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Autocrypt: addr=mail@maciej.szmigiero.name; keydata=
+ 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
+In-Reply-To: <cover.1750787338.git.maciej.szmigiero@oracle.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=145.239.82.108;
+ envelope-from=mhej@vps-ovh.mhejs.net; helo=vps-ovh.mhejs.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,116 +101,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Igor,
+On 24.06.2025 19:51, Maciej S. Szmigiero wrote:
+> From: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
+> 
+> When VFIO multifd device state transfer support was merged in QEMU 10.0
+> some of patches were separated for the future QEMU release after the
+> spring cleanup.
+> 
+> Since QEMU 10.1 code freeze is getting closer let's have them reviewed
+> now.
+> 
 
-On 7/11/25 3:47 PM, Igor Mammedov wrote:
-> On Tue,  8 Jul 2025 16:23:16 +0200
-> Eric Auger <eric.auger@redhat.com> wrote:
->
->> From: Gustavo Romero <gustavo.romero@linaro.org>
->>
->> Add 2 new tests:
->> - test_acpi_aarch64_virt_acpi_pci_hotplug tests the acpi pci hotplug
->>   using -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on
->> - test_acpi_aarch64_virt_pcie_root_port_hpoff tests static-acpi index
->>   on a root port with disabled hotplug
-> tests a bit simple, I wonder if we could reuse related x86 variants
-> for that (as those test a bit more corner cases with a more complicated
-> topology).
-> It's not a blocker and doing this of cause can be done on top.
+Hey Cédric,
 
-Sure I will work on that on top of this series.
+I see these patches in your "vfio-10.1" GitHub tree but I don't see them
+as a pull request on the qemu-devel mailing list.
 
-Thanks
+Are you going to post them? - the soft code freeze is tomorrow.
 
-Eric
->  
->> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
->>
->> ---
->> v3 -> v4:
->> - add -device pci-testdev for the first test case
->> - fix the chassis
->> - add a test for static acpi-index
->> ---
->>  tests/qtest/bios-tables-test.c | 52 ++++++++++++++++++++++++++++++++++
->>  1 file changed, 52 insertions(+)
->>
->> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
->> index 357bcefd37..1074b8d67a 100644
->> --- a/tests/qtest/bios-tables-test.c
->> +++ b/tests/qtest/bios-tables-test.c
->> @@ -1643,6 +1643,54 @@ static void test_acpi_aarch64_virt_tcg_memhp(void)
->>  
->>  }
->>  
->> +static void test_acpi_aarch64_virt_acpi_pci_hotplug(void)
->> +{
->> +    test_data data = {
->> +        .machine = "virt",
->> +        .arch = "aarch64",
->> +        .tcg_only = true,
->> +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
->> +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
->> +        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
->> +        .ram_start = 0x40000000ULL,
->> +        .scan_len = 256ULL * MiB,
->> +        .variant = ".acpipcihp",
->> +    };
->> +
->> +   /* Use ACPI PCI Hotplug */
->> +   test_acpi_one(" -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on"
->> +                 " -cpu cortex-a57"
->> +                 " -device pcie-root-port,id=pcie.1,bus=pcie.0,chassis=0,slot=1,addr=7.0"
->> +                 " -device pci-testdev,bus=pcie.1",
->> +                 &data);
->> +
->> +    free_test_data(&data);
->> +}
->> +
->> +static void test_acpi_aarch64_virt_pcie_root_port_hpoff(void)
->> +{
->> +    test_data data = {
->> +        .machine = "virt",
->> +        .arch = "aarch64",
->> +        .tcg_only = true,
->> +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
->> +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
->> +        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
->> +        .ram_start = 0x40000000ULL,
->> +        .scan_len = 256ULL * MiB,
->> +        .variant = ".hpoffacpiindex",
->> +    };
->> +
->> +   /* turn hotplug off on the pcie-root-port and use static acpi-index*/
->> +   test_acpi_one(" -device pcie-root-port,id=pcie.1,chassis=0,"
->> +                                          "slot=1,hotplug=off,addr=7.0"
->> +                 " -device pci-testdev,bus=pcie.1,acpi-index=12"
->> +                 " -cpu cortex-a57",
->> +                 &data);
->> +
->> +    free_test_data(&data);
->> +}
->> +
->>  static void test_acpi_microvm_prepare(test_data *data)
->>  {
->>      data->machine = "microvm";
->> @@ -2602,6 +2650,10 @@ int main(int argc, char *argv[])
->>              qtest_add_func("acpi/virt/numamem",
->>                             test_acpi_aarch64_virt_tcg_numamem);
->>              qtest_add_func("acpi/virt/memhp", test_acpi_aarch64_virt_tcg_memhp);
->> +            qtest_add_func("acpi/virt/acpipcihp",
->> +                           test_acpi_aarch64_virt_acpi_pci_hotplug);
->> +            qtest_add_func("acpi/virt/hpoffacpiindex",
->> +                          test_acpi_aarch64_virt_pcie_root_port_hpoff);
->>              qtest_add_func("acpi/virt/pxb", test_acpi_aarch64_virt_tcg_pxb);
->>              qtest_add_func("acpi/virt/oem-fields",
->>                             test_acpi_aarch64_virt_oem_fields);
-
+Thanks,
+Maciej
 

@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D963C83F17
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 08:24:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38450C83F17
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 08:24:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubESs-0004O6-O9; Mon, 14 Jul 2025 04:23:11 -0400
+	id 1ubETo-0006yp-Id; Mon, 14 Jul 2025 04:24:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ubEFI-00005d-PM
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 04:09:08 -0400
+ id 1ubEDU-00061D-PM
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 04:07:17 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ubEFG-0003ZK-WD
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 04:09:08 -0400
+ id 1ubEDT-00037s-Aj
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 04:07:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752480546;
+ s=mimecast20190719; t=1752480433;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=5SBU8rqjDCM9bszWrHYCJiNHA4uqefOcOO5gBO57x8s=;
- b=HOst7rsSGTX63L/FcSBGfNdvpi58G3J8W2MpsPWQALj1BVrZFDg2ULEfolDULRKn9wnLzv
- GiSzUW9kUfdtHF9nLD3M9uTUgIwoXSQFsfyCNLXvO2izZky17HQ6ie9YU18wrSs/a0hkCe
- b18hn6LDB6EMm+LAa+yI8lj8aiCxQ2E=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=0BaxeOnHXIUQwuoJrhSzXIiwHPjpUaxWi3HguO7u80E=;
+ b=DVSk64gLSFY02Brjkcbr7n6sbZjU2YI9dyc6Gcytkx4d/UXyEXh6XRqZBhFKkRtqLha5Iq
+ hpm/UZWmA4nOFmR/X7KS5SiEoOYXy0cVbz1DILjI5HLyixTxPc9AwtoNmVZGzdX9+7GA9p
+ eHZC23xLNxJ8GFeEt56pjSB6ZU52yZA=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-142--pDSQ8KPPvSQGx6tI27ADw-1; Mon,
- 14 Jul 2025 04:09:01 -0400
-X-MC-Unique: -pDSQ8KPPvSQGx6tI27ADw-1
-X-Mimecast-MFC-AGG-ID: -pDSQ8KPPvSQGx6tI27ADw_1752480539
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-38-TMfobe0bPliLe6geBFsdrw-1; Mon,
+ 14 Jul 2025 04:07:10 -0400
+X-MC-Unique: TMfobe0bPliLe6geBFsdrw-1
+X-Mimecast-MFC-AGG-ID: TMfobe0bPliLe6geBFsdrw_1752480429
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8BD6B180034E; Mon, 14 Jul 2025 08:08:59 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id CBE1D19560B5; Mon, 14 Jul 2025 08:07:08 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.221])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 065731977000; Mon, 14 Jul 2025 08:08:54 +0000 (UTC)
+ id 61A551977000; Mon, 14 Jul 2025 08:07:04 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
@@ -55,10 +55,10 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: pbonzini@redhat.com,
 	philmd@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v7 26/36] hw/acpi/ged: Call pcihp plug callbacks in hotplug
- handler implementation
-Date: Mon, 14 Jul 2025 10:05:10 +0200
-Message-ID: <20250714080639.2525563-27-eric.auger@redhat.com>
+Subject: [PATCH v7 04/36] tests/qtest/bios-tables-test: Prepare for changes in
+ the DSDT table
+Date: Mon, 14 Jul 2025 10:04:48 +0200
+Message-ID: <20250714080639.2525563-5-eric.auger@redhat.com>
 In-Reply-To: <20250714080639.2525563-1-eric.auger@redhat.com>
 References: <20250714080639.2525563-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -73,7 +73,7 @@ X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,92 +89,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add PCI device related code in the TYPE_HOTPLUG_HANDLER
-implementation.
+From: Gustavo Romero <gustavo.romero@linaro.org>
 
-For a PCI device hotplug/hotunplug event, the code routes to
-acpi_pcihp_device callbacks (pre_plug_cb, plug_cb, unplug_request_cb,
-unplug_cb).
+This commit adds DSDT blobs to the whilelist in the prospect to
+allow changes in the GPEX _OSC method.
 
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+Acked-by: Igor Mammedov <imammedo@redhat.com>
 
 ---
-
-v2 -> v4:
-moved before "hw/acpi/ged: Prepare the device to react to PCI hotplug
-events" (Igor)
+v3 -> v4:
+- add missed tests/data/acpi/riscv64/virt/DSDT
 
 v2 -> v3:
-- remove else block in acpi_ged_device_pre_plug_cb
+- fix for microvm
 ---
- hw/acpi/generic_event_device.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ tests/qtest/bios-tables-test-allowed-diff.h | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index ef1c1ec51f..92b931758f 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -17,6 +17,7 @@
- #include "hw/irq.h"
- #include "hw/mem/pc-dimm.h"
- #include "hw/mem/nvdimm.h"
-+#include "hw/pci/pci_device.h"
- #include "hw/qdev-properties.h"
- #include "migration/vmstate.h"
- #include "qemu/error-report.h"
-@@ -228,6 +229,14 @@ static const MemoryRegionOps ged_regs_ops = {
-     },
- };
- 
-+static void acpi_ged_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-+                                        DeviceState *dev, Error **errp)
-+{
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        acpi_pcihp_device_pre_plug_cb(hotplug_dev, dev, errp);
-+    }
-+}
-+
- static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
-                                     DeviceState *dev, Error **errp)
- {
-@@ -241,6 +250,8 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
-         }
-     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-         acpi_cpu_plug_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        acpi_pcihp_device_plug_cb(hotplug_dev, &s->pcihp_state, dev, errp);
-     } else {
-         error_setg(errp, "virt: device plug request for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -257,6 +268,9 @@ static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
-         acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
-     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-         acpi_cpu_unplug_request_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        acpi_pcihp_device_unplug_request_cb(hotplug_dev, &s->pcihp_state,
-+                                            dev, errp);
-     } else {
-         error_setg(errp, "acpi: device unplug request for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -272,6 +286,8 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
-         acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
-     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-         acpi_cpu_unplug_cb(&s->cpuhp_state, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
-+        acpi_pcihp_device_unplug_cb(hotplug_dev, &s->pcihp_state, dev, errp);
-     } else {
-         error_setg(errp, "acpi: device unplug for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -485,6 +501,7 @@ static void acpi_ged_class_init(ObjectClass *class, const void *data)
-     dc->vmsd = &vmstate_acpi_ged;
-     dc->realize = acpi_ged_realize;
- 
-+    hc->pre_plug = acpi_ged_device_pre_plug_cb;
-     hc->plug = acpi_ged_device_plug_cb;
-     hc->unplug_request = acpi_ged_unplug_request_cb;
-     hc->unplug = acpi_ged_unplug_cb;
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8b..333e5acf63 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,8 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/aarch64/virt/DSDT",
++"tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt",
++"tests/data/acpi/aarch64/virt/DSDT.memhp",
++"tests/data/acpi/aarch64/virt/DSDT.pxb",
++"tests/data/acpi/aarch64/virt/DSDT.topology",
++"tests/data/acpi/x86/microvm/DSDT.pcie",
++"tests/data/acpi/riscv64/virt/DSDT",
 -- 
 2.49.0
 

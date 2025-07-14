@@ -4,86 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59F8CC83F17
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 16:58:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 900AAC83F1A
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 16:59:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubMV1-0007F3-Vl; Mon, 14 Jul 2025 12:57:56 -0400
+	id 1ubMVN-0007cj-6w; Mon, 14 Jul 2025 12:58:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ubLZs-00033K-TX
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 11:58:58 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ubLZq-0007nN-Lc
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 11:58:52 -0400
-Received: by mail-pf1-x435.google.com with SMTP id
- d2e1a72fcca58-7490acf57b9so3176407b3a.2
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 08:58:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752508728; x=1753113528; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=aPqXxRNnNWAbziuZoBkDR4oxusC2l92qyE2WQUEMyYI=;
- b=fBwP9Y3HFRwdLSRvY4I0S+pLaWNxAijGv5t8yTV0HGQR9tSsyebxTJb/SFCEkrJsws
- rUf0Dbn4XX7GS0gr6SudzdvsJv/oyNH1U5oncurDP6OryxGrf7yuoh02CYTfdL1IOuuK
- Dr5BzrLfxQLx9ZPaJBWqb7g5azcTZxVyWWhq97tgxEYLsW9NtcSlaQ2NCvUM0GkLTirE
- /6a4corpgOQzjputO2YxCJWurkvyTnA0PPTPgJT6Z3D9tVo2D4/Q5BUppQQL7pXkFgqf
- pxpcAijg03/kChxPVi6OdK78V11psd5wzcdxmw3fuSVRIrb7j5zCRkdqpKEB2W/5qb0q
- M0mQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752508728; x=1753113528;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=aPqXxRNnNWAbziuZoBkDR4oxusC2l92qyE2WQUEMyYI=;
- b=Uf1JBjqyNh8HXPo0BQNY9piEkjfTQjh31KmTx0w+0una3vCYNOZTlmgIiH6uKdFJfa
- oRmZHXULlg6aGYsS362Tu2kTJ3OjfJ0sZq3IojeaZ/ekMhosg0a2BvCYQNsZYKHWF6Zo
- FGmImR1R4rC8WU95IDSFJtc02o8RWkk2+JxtEYhRbg4p8A8y10i+tIKQrcd+r4x7modu
- ZuTBRIHy8P/c4pMoDL/DTdXavoLFD7KXrwye/yKdn8tjFs04Ty/jinPYKSZdlQ8fbwmS
- DSYVbp4qw5hqcISnp0TJ/5uF+vzcBWarpsrwF0KoGOzMysADrOrmh9vLctpADiitN0Qs
- cQoQ==
-X-Gm-Message-State: AOJu0Yw0b7eBhYoRF6toDpE5nsdJWVQfEdu6s+wp4UWjVxEZKLVm3Q/E
- MR57YRKKCnqblzJP8jtLlKkkqNCpLZ0SPg4junCo+7XJ4+r4Dm9FzBDt9GrhXEwvPB0=
-X-Gm-Gg: ASbGnctyf669Xcmd9IQy6zzeUQc4Lht1Z6gUx1C1lNX4x1qE8oY8CYQwueJnoMA1e9X
- eB/1O9zrOv/PujhXvon0FokpVq++zBwYg2MTiPR5oAd+F8ifzfDTUfZYA706fSRXYSxGwLkMSNb
- YDRKUUi5Y1ITR2lV5WYALEE7ltQDQNeorpUwzh2bcU/voIFqUU+ha5o9TCcgKUAwh5gjSqE2wgh
- EeED1VufSzg7HJ5Ig3boGp3FpdhBG2ZB4hTAYwYwJ4HBNZxNwWG0ZtHBxXB0J/dd6wxXFAEdg07
- 8FmBaRAgxv6OqYigeNmpultGaJRJpEWYQ+JgE6i8qE255kZKHuHhMMBv6uPeBMZivbTy/ChGF2f
- 8GrUrJ69+ggjbmb1gc/dk1WOtSr9XdapvqxDK9xzGdrsIKND7ESJn
-X-Google-Smtp-Source: AGHT+IH35RFtL6/01kctCj62hqhId9u1Sp0NYbDXnVKIzr52Z/vm7gbCRVBDrvt9IHoDuuhqnV7/bA==
-X-Received: by 2002:a05:6a00:2395:b0:742:8d52:62f1 with SMTP id
- d2e1a72fcca58-74ee109a1admr21673010b3a.8.1752508727436; 
- Mon, 14 Jul 2025 08:58:47 -0700 (PDT)
-Received: from stoup.. ([172.56.179.167]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-74eb9f8f24dsm10265805b3a.156.2025.07.14.08.58.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jul 2025 08:58:47 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, gustavo.romero@linaro.org, pierrick.bouvier@linaro.org
-Subject: [PATCH v8 2/4] target/arm: Implement FEAT_TCR2 and enable with -cpu
- max
-Date: Mon, 14 Jul 2025 09:58:33 -0600
-Message-ID: <20250714155836.1514748-3-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250714155836.1514748-1-richard.henderson@linaro.org>
-References: <20250714155836.1514748-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1ubLcc-0005ST-5e; Mon, 14 Jul 2025 12:01:49 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1ubLcZ-0008NW-VX; Mon, 14 Jul 2025 12:01:41 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bgn8m0kHGz6M55b;
+ Tue, 15 Jul 2025 00:00:24 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id B656414033F;
+ Tue, 15 Jul 2025 00:01:36 +0800 (CST)
+Received: from A2303104131.china.huawei.com (10.203.177.241) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 14 Jul 2025 18:01:28 +0200
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
+ <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
+ <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
+ <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
+ <zhenzhong.duan@intel.com>, <shameerkolothum@gmail.com>
+Subject: [RFC PATCH v3 09/15] hw/arm/smmuv3-accel: Support nested STE
+ install/uninstall support
+Date: Mon, 14 Jul 2025 16:59:35 +0100
+Message-ID: <20250714155941.22176-10-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
+In-Reply-To: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
+References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.203.177.241]
+X-ClientProxiedBy: kwepems500002.china.huawei.com (7.221.188.17) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,249 +71,285 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Gustavo Romero <gustavo.romero@linaro.org>
+From: Nicolin Chen <nicolinc@nvidia.com>
 
-Add FEAT_TCR2, which introduces the TCR2_EL1 and TCR2_EL2 registers.
-These registers are extensions of the TCR_ELx registers and provide
-top-level control of the EL10 and EL20 translation regimes.
+Allocates a s1 HWPT for the Guest s1 stage and attaches that
+to the dev. This will be invoked when Guest issues
+SMMU_CMD_CFGI_STE/STE_RANGE.
 
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-Message-ID: <20250711140828.1714666-5-gustavo.romero@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-[rth: Remove FEAT_MEC code; handle SCR and HCRX enable bits.]
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+While at it, we are also exporting both smmu_find_ste() and
+smmuv3_flush_config() from smmuv3.c for use here.
+
+Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- target/arm/cpu-features.h     |  5 +++
- target/arm/cpu.h              |  2 ++
- target/arm/internals.h        | 19 ++++++++++
- target/arm/cpu.c              |  3 ++
- target/arm/helper.c           | 68 +++++++++++++++++++++++++++++++++++
- target/arm/tcg/cpu64.c        |  1 +
- docs/system/arm/emulation.rst |  1 +
- 7 files changed, 99 insertions(+)
+ hw/arm/smmuv3-accel.c    | 130 +++++++++++++++++++++++++++++++++++++++
+ hw/arm/smmuv3-accel.h    |  17 +++++
+ hw/arm/smmuv3-internal.h |   4 ++
+ hw/arm/smmuv3.c          |   8 ++-
+ hw/arm/trace-events      |   1 +
+ 5 files changed, 157 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index e372543bf3..8ec8c3feb3 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -904,6 +904,11 @@ static inline bool isar_feature_aa64_nv2(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64MMFR2, NV) >= 2;
+diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+index fe90d48675..74bf20cfaf 100644
+--- a/hw/arm/smmuv3-accel.c
++++ b/hw/arm/smmuv3-accel.c
+@@ -18,9 +18,139 @@
+ 
+ #include "smmuv3-accel.h"
+ 
++#include "smmuv3-internal.h"
++
+ #define SMMU_STE_VALID      (1ULL << 0)
+ #define SMMU_STE_CFG_BYPASS (1ULL << 3)
+ 
++static void
++smmuv3_accel_dev_uninstall_nested_ste(SMMUv3AccelDevice *accel_dev, bool abort)
++{
++    HostIOMMUDeviceIOMMUFD *idev = accel_dev->idev;
++    SMMUS1Hwpt *s1_hwpt = accel_dev->s1_hwpt;
++    uint32_t hwpt_id;
++
++    if (!s1_hwpt || !accel_dev->viommu) {
++        return;
++    }
++
++    if (abort) {
++        hwpt_id = accel_dev->viommu->abort_hwpt_id;
++    } else {
++        hwpt_id = accel_dev->viommu->bypass_hwpt_id;
++    }
++
++    host_iommu_device_iommufd_attach_hwpt(idev, hwpt_id, &error_abort);
++    iommufd_backend_free_id(s1_hwpt->iommufd, s1_hwpt->hwpt_id);
++    accel_dev->s1_hwpt = NULL;
++    g_free(s1_hwpt);
++}
++
++static int
++smmuv3_accel_dev_install_nested_ste(SMMUv3AccelDevice *accel_dev,
++                                    uint32_t data_type, uint32_t data_len,
++                                    void *data)
++{
++    SMMUViommu *viommu = accel_dev->viommu;
++    SMMUS1Hwpt *s1_hwpt = accel_dev->s1_hwpt;
++    HostIOMMUDeviceIOMMUFD *idev = accel_dev->idev;
++    uint32_t flags = 0;
++
++    if (!idev || !viommu) {
++        return -ENOENT;
++    }
++
++    if (s1_hwpt) {
++        smmuv3_accel_dev_uninstall_nested_ste(accel_dev, true);
++    }
++
++    s1_hwpt = g_new0(SMMUS1Hwpt, 1);
++    s1_hwpt->iommufd = idev->iommufd;
++    iommufd_backend_alloc_hwpt(idev->iommufd, idev->devid,
++                               viommu->core.viommu_id, flags, data_type,
++                               data_len, data, &s1_hwpt->hwpt_id, &error_abort);
++    host_iommu_device_iommufd_attach_hwpt(idev, s1_hwpt->hwpt_id, &error_abort);
++    accel_dev->s1_hwpt = s1_hwpt;
++    return 0;
++}
++
++void smmuv3_accel_install_nested_ste(SMMUState *bs, SMMUDevice *sdev, int sid)
++{
++    SMMUv3AccelDevice *accel_dev;
++    SMMUEventInfo event = {.type = SMMU_EVT_NONE, .sid = sid,
++                           .inval_ste_allowed = true};
++    struct iommu_hwpt_arm_smmuv3 nested_data = {};
++    uint32_t config;
++    STE ste;
++    int ret;
++
++    if (!bs->accel) {
++        return;
++    }
++
++    accel_dev = container_of(sdev, SMMUv3AccelDevice, sdev);
++    if (!accel_dev->viommu) {
++        return;
++    }
++
++    ret = smmu_find_ste(sdev->smmu, sid, &ste, &event);
++    if (ret) {
++        error_report("failed to find STE for sid 0x%x", sid);
++        return;
++    }
++
++    config = STE_CONFIG(&ste);
++    if (!STE_VALID(&ste) || !STE_CFG_S1_ENABLED(config)) {
++        smmuv3_accel_dev_uninstall_nested_ste(accel_dev, STE_CFG_ABORT(config));
++        smmuv3_flush_config(sdev);
++        return;
++    }
++
++    nested_data.ste[0] = (uint64_t)ste.word[0] | (uint64_t)ste.word[1] << 32;
++    nested_data.ste[1] = (uint64_t)ste.word[2] | (uint64_t)ste.word[3] << 32;
++    /* V | CONFIG | S1FMT | S1CTXPTR | S1CDMAX */
++    nested_data.ste[0] &= 0xf80fffffffffffffULL;
++    /* S1DSS | S1CIR | S1COR | S1CSH | S1STALLD | EATS */
++    nested_data.ste[1] &= 0x380000ffULL;
++    ret = smmuv3_accel_dev_install_nested_ste(accel_dev,
++                                              IOMMU_HWPT_DATA_ARM_SMMUV3,
++                                              sizeof(nested_data),
++                                              &nested_data);
++    if (ret) {
++        error_report("Unable to install nested STE=%16LX:%16LX, sid=0x%x,"
++                      "ret=%d", nested_data.ste[1], nested_data.ste[0],
++                      sid, ret);
++    }
++
++    trace_smmuv3_accel_install_nested_ste(sid, nested_data.ste[1],
++                                          nested_data.ste[0]);
++}
++
++static void
++smmuv3_accel_ste_range(gpointer key, gpointer value, gpointer user_data)
++{
++    SMMUDevice *sdev = (SMMUDevice *)key;
++    uint32_t sid = smmu_get_sid(sdev);
++    SMMUSIDRange *sid_range = (SMMUSIDRange *)user_data;
++
++    if (sid >= sid_range->start && sid <= sid_range->end) {
++        SMMUv3State *s = sdev->smmu;
++        SMMUState *bs = &s->smmu_state;
++
++        smmuv3_accel_install_nested_ste(bs, sdev, sid);
++    }
++}
++
++void
++smmuv3_accel_install_nested_ste_range(SMMUState *bs, SMMUSIDRange *range)
++{
++    if (!bs->accel) {
++        return;
++    }
++
++    g_hash_table_foreach(bs->configs, smmuv3_accel_ste_range, range);
++}
++
+ static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
+                                                 PCIBus *bus, int devfn)
+ {
+diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
+index 55a6a353fc..06e81b630d 100644
+--- a/hw/arm/smmuv3-accel.h
++++ b/hw/arm/smmuv3-accel.h
+@@ -29,10 +29,16 @@ typedef struct SMMUViommu {
+     QLIST_HEAD(, SMMUv3AccelDevice) device_list;
+ } SMMUViommu;
+ 
++typedef struct SMMUS1Hwpt {
++    IOMMUFDBackend *iommufd;
++    uint32_t hwpt_id;
++} SMMUS1Hwpt;
++
+ typedef struct SMMUv3AccelDevice {
+     SMMUDevice  sdev;
+     AddressSpace as_sysmem;
+     HostIOMMUDeviceIOMMUFD *idev;
++    SMMUS1Hwpt  *s1_hwpt;
+     SMMUViommu *viommu;
+     QLIST_ENTRY(SMMUv3AccelDevice) next;
+ } SMMUv3AccelDevice;
+@@ -45,10 +51,21 @@ typedef struct SMMUv3AccelState {
+ 
+ #if defined(CONFIG_ARM_SMMUV3) && defined(CONFIG_IOMMUFD)
+ void smmuv3_accel_init(SMMUv3State *s);
++void smmuv3_accel_install_nested_ste(SMMUState *bs, SMMUDevice *sdev, int sid);
++void smmuv3_accel_install_nested_ste_range(SMMUState *bs,
++                                           SMMUSIDRange *range);
+ #else
+ static inline void smmuv3_accel_init(SMMUv3State *d)
+ {
+ }
++static inline void
++smmuv3_accel_install_nested_ste(SMMUState *bs, SMMUDevice *sdev, int sid)
++{
++}
++static inline void
++smmuv3_accel_install_nested_ste_range(SMMUState *bs, SMMUSIDRange *range)
++{
++}
+ #endif
+ 
+ #endif /* HW_ARM_SMMUV3_ACCEL_H */
+diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+index b6b7399347..738061c6ad 100644
+--- a/hw/arm/smmuv3-internal.h
++++ b/hw/arm/smmuv3-internal.h
+@@ -547,6 +547,10 @@ typedef struct CD {
+     uint32_t word[16];
+ } CD;
+ 
++int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
++                  SMMUEventInfo *event);
++void smmuv3_flush_config(SMMUDevice *sdev);
++
+ /* STE fields */
+ 
+ #define STE_VALID(x)   extract32((x)->word[0], 0, 1)
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 2f5a8157dd..c94bfe6564 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -630,8 +630,8 @@ bad_ste:
+  * Supports linear and 2-level stream table
+  * Return 0 on success, -EINVAL otherwise
+  */
+-static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
+-                         SMMUEventInfo *event)
++int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
++                  SMMUEventInfo *event)
+ {
+     dma_addr_t addr, strtab_base;
+     uint32_t log2size;
+@@ -900,7 +900,7 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event)
+     return cfg;
  }
  
-+static inline bool isar_feature_aa64_tcr2(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64_IDREG(id, ID_AA64MMFR3, TCRX) != 0;
-+}
-+
- static inline bool isar_feature_aa64_sctlr2(const ARMISARegisters *id)
+-static void smmuv3_flush_config(SMMUDevice *sdev)
++void smmuv3_flush_config(SMMUDevice *sdev)
  {
-     return FIELD_EX64_IDREG(id, ID_AA64MMFR3, SCTLRX) != 0;
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index dda5f275fb..0e247f50c7 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -366,6 +366,7 @@ typedef struct CPUArchState {
-         uint64_t vsttbr_el2; /* Secure Virtualization Translation Table. */
-         /* MMU translation table base control. */
-         uint64_t tcr_el[4];
-+        uint64_t tcr2_el[3];
-         uint64_t vtcr_el2; /* Virtualization Translation Control.  */
-         uint64_t vstcr_el2; /* Secure Virtualization Translation Control. */
-         uint32_t c2_data; /* MPU data cacheable bits.  */
-@@ -1726,6 +1727,7 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
- #define SCR_HXEN              (1ULL << 38)
- #define SCR_TRNDR             (1ULL << 40)
- #define SCR_ENTP2             (1ULL << 41)
-+#define SCR_TCR2EN            (1ULL << 43)
- #define SCR_SCTLR2EN          (1ULL << 44)
- #define SCR_GPF               (1ULL << 48)
- #define SCR_NSE               (1ULL << 62)
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index fcaad39371..b4cd03df69 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -201,6 +201,24 @@ FIELD(CPTR_EL3, TCPAC, 31, 1)
- #define TTBCR_SH1    (1U << 28)
- #define TTBCR_EAE    (1U << 31)
+     SMMUv3State *s = sdev->smmu;
+     SMMUState *bc = &s->smmu_state;
+@@ -1342,6 +1342,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
  
-+#define TCR2_PNCH    (1ULL << 0)
-+#define TCR2_PIE     (1ULL << 1)
-+#define TCR2_E0POE   (1ULL << 2)
-+#define TCR2_POE     (1ULL << 3)
-+#define TCR2_AIE     (1ULL << 4)
-+#define TCR2_D128    (1ULL << 5)
-+#define TCR2_PTTWI   (1ULL << 10)
-+#define TCR2_HAFT    (1ULL << 11)
-+#define TCR2_AMEC0   (1ULL << 12)
-+#define TCR2_AMEC1   (1ULL << 13)
-+#define TCR2_DISCH0  (1ULL << 14)
-+#define TCR2_DISCH1  (1ULL << 15)
-+#define TCR2_A2      (1ULL << 16)
-+#define TCR2_FNG0    (1ULL << 17)
-+#define TCR2_FNG1    (1ULL << 18)
-+#define TCR2_FNGNA0  (1ULL << 20)
-+#define TCR2_FNGNA1  (1ULL << 21)
-+
- FIELD(VTCR, T0SZ, 0, 6)
- FIELD(VTCR, SL0, 6, 2)
- FIELD(VTCR, IRGN0, 8, 2)
-@@ -232,6 +250,7 @@ FIELD(VTCR, SL2, 33, 1)
- #define HCRX_CMOW     (1ULL << 9)
- #define HCRX_MCE2     (1ULL << 10)
- #define HCRX_MSCEN    (1ULL << 11)
-+#define HCRX_TCR2EN   (1ULL << 14)
- #define HCRX_SCTLR2EN (1ULL << 15)
+             trace_smmuv3_cmdq_cfgi_ste(sid);
+             smmuv3_flush_config(sdev);
++            smmuv3_accel_install_nested_ste(bs, sdev, sid);
  
- #define HPFAR_NS      (1ULL << 63)
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 2ee895fbc4..e709ca74da 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -645,6 +645,9 @@ void arm_emulate_firmware_reset(CPUState *cpustate, int target_el)
-             if (cpu_isar_feature(aa64_fgt, cpu)) {
-                 env->cp15.scr_el3 |= SCR_FGTEN;
-             }
-+            if (cpu_isar_feature(aa64_tcr2, cpu)) {
-+               env->cp15.scr_el3 |= SCR_TCR2EN;
-+            }
-             if (cpu_isar_feature(aa64_sctlr2, cpu)) {
-                 env->cp15.scr_el3 |= SCR_SCTLR2EN;
-             }
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index d0cfef1dd6..1e0e747146 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -741,6 +741,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-         if (cpu_isar_feature(aa64_ecv, cpu)) {
-             valid_mask |= SCR_ECVEN;
+             break;
          }
-+        if (cpu_isar_feature(aa64_tcr2, cpu)) {
-+            valid_mask |= SCR_TCR2EN;
-+        }
-         if (cpu_isar_feature(aa64_sctlr2, cpu)) {
-             valid_mask |= SCR_SCTLR2EN;
+@@ -1361,6 +1362,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+             sid_range.end = sid_range.start + mask;
+ 
+             trace_smmuv3_cmdq_cfgi_ste_range(sid_range.start, sid_range.end);
++            smmuv3_accel_install_nested_ste_range(bs, &sid_range);
+             smmu_configs_inv_sid_range(bs, sid_range);
+             break;
          }
-@@ -3922,6 +3925,9 @@ static void hcrx_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     if (cpu_isar_feature(aa64_xs, cpu)) {
-         valid_mask |= HCRX_FGTNXS | HCRX_FNXS;
-     }
-+    if (cpu_isar_feature(aa64_tcr2, cpu)) {
-+        valid_mask |= HCRX_TCR2EN;
-+    }
-     if (cpu_isar_feature(aa64_sctlr2, cpu)) {
-         valid_mask |= HCRX_SCTLR2EN;
-     }
-@@ -4524,6 +4530,8 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
-           "TTBR1_EL1", "TTBR1_EL2", "TTBR1_EL12" },
-         { K(3, 0,  2, 0, 2), K(3, 4,  2, 0, 2), K(3, 5, 2, 0, 2),
-           "TCR_EL1", "TCR_EL2", "TCR_EL12" },
-+        { K(3, 0,  2, 0, 3), K(3, 4,  2, 0, 3), K(3, 5, 2, 0, 3),
-+          "TCR2_EL1", "TCR2_EL2", "TCR2_EL12", isar_feature_aa64_tcr2 },
-         { K(3, 0,  4, 0, 0), K(3, 4,  4, 0, 0), K(3, 5, 4, 0, 0),
-           "SPSR_EL1", "SPSR_EL2", "SPSR_EL12" },
-         { K(3, 0,  4, 0, 1), K(3, 4,  4, 0, 1), K(3, 5, 4, 0, 1),
-@@ -6068,6 +6076,62 @@ static const ARMCPRegInfo sctlr2_reginfo[] = {
-       .fieldoffset = offsetof(CPUARMState, cp15.sctlr2_el[3]) },
- };
+diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+index c4537ca1d6..7d232ca17c 100644
+--- a/hw/arm/trace-events
++++ b/hw/arm/trace-events
+@@ -69,6 +69,7 @@ smmu_reset_exit(void) ""
+ #smmuv3-accel.c
+ smmuv3_accel_set_iommu_device(int devfn, uint32_t sid) "devfn=0x%x (sid=0x%x)"
+ smmuv3_accel_unset_iommu_device(int devfn, uint32_t sid) "devfn=0x%x (sid=0x%x"
++smmuv3_accel_install_nested_ste(uint32_t sid, uint64_t ste_1, uint64_t ste_0) "sid=%d ste=%"PRIx64":%"PRIx64
  
-+static CPAccessResult tcr2_el2_access(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                      bool isread)
-+{
-+    if (arm_current_el(env) < 3
-+        && arm_feature(env, ARM_FEATURE_EL3)
-+        && !(env->cp15.scr_el3 & SCR_TCR2EN)) {
-+        return CP_ACCESS_TRAP_EL3;
-+    }
-+    return CP_ACCESS_OK;
-+}
-+
-+static CPAccessResult tcr2_el1_access(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                      bool isread)
-+{
-+    CPAccessResult ret = access_tvm_trvm(env, ri, isread);
-+    if (ret != CP_ACCESS_OK) {
-+        return ret;
-+    }
-+    if (arm_current_el(env) < 2 && !(arm_hcrx_el2_eff(env) & HCRX_TCR2EN)) {
-+        return CP_ACCESS_TRAP_EL2;
-+    }
-+    return tcr2_el2_access(env, ri, isread);
-+}
-+
-+static void tcr2_el1_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                           uint64_t value)
-+{
-+    uint64_t valid_mask = 0;
-+
-+    value &= valid_mask;
-+    raw_write(env, ri, value);
-+}
-+
-+static void tcr2_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                           uint64_t value)
-+{
-+    uint64_t valid_mask = 0;
-+
-+    value &= valid_mask;
-+    raw_write(env, ri, value);
-+}
-+
-+static const ARMCPRegInfo tcr2_reginfo[] = {
-+    { .name = "TCR2_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .opc2 = 3, .crn = 2, .crm = 0,
-+      .access = PL1_RW, .accessfn = tcr2_el1_access,
-+      .writefn = tcr2_el1_write, .fgt = FGT_TCR_EL1,
-+      .nv2_redirect_offset = 0x270 | NV2_REDIR_NV1,
-+      .fieldoffset = offsetof(CPUARMState, cp15.tcr2_el[1]) },
-+    { .name = "TCR2_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 3, .crn = 2, .crm = 0,
-+      .access = PL2_RW, .accessfn = tcr2_el2_access,
-+      .writefn = tcr2_el2_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.tcr2_el[2]) },
-+};
-+
- void register_cp_regs_for_features(ARMCPU *cpu)
- {
-     /* Register all the coprocessor registers based on feature bits */
-@@ -7301,6 +7365,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, sctlr2_reginfo);
-     }
- 
-+    if (cpu_isar_feature(aa64_tcr2, cpu)) {
-+        define_arm_cp_regs(cpu, tcr2_reginfo);
-+    }
-+
-     if (cpu_isar_feature(any_predinv, cpu)) {
-         define_arm_cp_regs(cpu, predinv_reginfo);
-     }
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index f4efff03a5..4eb51420ef 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1248,6 +1248,7 @@ void aarch64_max_tcg_initfn(Object *obj)
-     SET_IDREG(isar, ID_AA64MMFR2, t);
- 
-     t = GET_IDREG(isar, ID_AA64MMFR3);
-+    t = FIELD_DP64(t, ID_AA64MMFR3, TCRX, 1);       /* FEAT_TCR2 */
-     t = FIELD_DP64(t, ID_AA64MMFR3, SCTLRX, 1);     /* FEAT_SCTLR2 */
-     t = FIELD_DP64(t, ID_AA64MMFR3, SPEC_FPACC, 1); /* FEAT_FPACC_SPEC */
-     SET_IDREG(isar, ID_AA64MMFR3, t);
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 66043b0747..1c597d8673 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -149,6 +149,7 @@ the following architecture extensions:
- - FEAT_SPECRES (Speculation restriction instructions)
- - FEAT_SSBS (Speculative Store Bypass Safe)
- - FEAT_SSBS2 (MRS and MSR instructions for SSBS version 2)
-+- FEAT_TCR2 (Support for TCR2_ELx)
- - FEAT_TGran16K (Support for 16KB memory translation granule size at stage 1)
- - FEAT_TGran4K (Support for 4KB memory translation granule size at stage 1)
- - FEAT_TGran64K (Support for 64KB memory translation granule size at stage 1)
+ # strongarm.c
+ strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
 -- 
-2.43.0
+2.34.1
 
 

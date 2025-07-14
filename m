@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 294C1C83F1A
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 17:00:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2107C83F17
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 17:00:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubMVS-0007tF-PA; Mon, 14 Jul 2025 12:58:22 -0400
+	id 1ubMXi-0002rq-0v; Mon, 14 Jul 2025 13:00:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ubLbW-0004vM-NM; Mon, 14 Jul 2025 12:00:36 -0400
+ id 1ubLdV-00062A-0i; Mon, 14 Jul 2025 12:02:39 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ubLbU-00082r-5c; Mon, 14 Jul 2025 12:00:33 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bgn7W1cgPz6L5NT;
- Mon, 14 Jul 2025 23:59:19 +0800 (CST)
+ id 1ubLdT-0008TW-C3; Mon, 14 Jul 2025 12:02:36 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bgn9p6Y0Sz6M55m;
+ Tue, 15 Jul 2025 00:01:18 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 246E8140142;
- Tue, 15 Jul 2025 00:00:24 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 8E8141402ED;
+ Tue, 15 Jul 2025 00:02:31 +0800 (CST)
 Received: from A2303104131.china.huawei.com (10.203.177.241) by
  frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 14 Jul 2025 18:00:15 +0200
+ 15.1.2507.39; Mon, 14 Jul 2025 18:02:22 +0200
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
@@ -35,10 +35,10 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
  <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
  <zhenzhong.duan@intel.com>, <shameerkolothum@gmail.com>
-Subject: [RFC PATCH v3 01/15] backends/iommufd: Introduce
- iommufd_backend_alloc_viommu
-Date: Mon, 14 Jul 2025 16:59:27 +0100
-Message-ID: <20250714155941.22176-2-shameerali.kolothum.thodi@huawei.com>
+Subject: [RFC PATCH v3 15/15] hw/arm/smmu-common: Add accel property for SMMU
+ dev
+Date: Mon, 14 Jul 2025 16:59:41 +0100
+Message-ID: <20250714155941.22176-16-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
 References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
@@ -76,79 +76,25 @@ From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Nicolin Chen <nicolinc@nvidia.com>
+Now user can set "accel=on". Have fun!
 
-Add a helper to allocate a viommu object.
-
-Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- backends/iommufd.c       | 25 +++++++++++++++++++++++++
- backends/trace-events    |  1 +
- include/system/iommufd.h |  4 ++++
- 3 files changed, 30 insertions(+)
+ hw/arm/smmu-common.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/backends/iommufd.c b/backends/iommufd.c
-index 2a33c7ab0b..f3b95ee321 100644
---- a/backends/iommufd.c
-+++ b/backends/iommufd.c
-@@ -446,6 +446,31 @@ bool iommufd_backend_invalidate_cache(IOMMUFDBackend *be, uint32_t id,
-     return !ret;
- }
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 6a58f574d3..3e8783670a 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -1022,6 +1022,7 @@ static const Property smmu_dev_properties[] = {
+     DEFINE_PROP_BOOL("smmu_per_bus", SMMUState, smmu_per_bus, false),
+     DEFINE_PROP_LINK("primary-bus", SMMUState, primary_bus,
+                      TYPE_PCI_BUS, PCIBus *),
++    DEFINE_PROP_BOOL("accel", SMMUState, accel, false),
+ };
  
-+bool iommufd_backend_alloc_viommu(IOMMUFDBackend *be, uint32_t dev_id,
-+                                  uint32_t viommu_type, uint32_t hwpt_id,
-+                                  uint32_t *out_viommu_id, Error **errp)
-+{
-+    int ret, fd = be->fd;
-+    struct iommu_viommu_alloc alloc_viommu = {
-+        .size = sizeof(alloc_viommu),
-+        .type = viommu_type,
-+        .dev_id = dev_id,
-+        .hwpt_id = hwpt_id,
-+    };
-+
-+    ret = ioctl(fd, IOMMU_VIOMMU_ALLOC, &alloc_viommu);
-+
-+    trace_iommufd_backend_alloc_viommu(fd, viommu_type, dev_id, hwpt_id,
-+                                       alloc_viommu.out_viommu_id, ret);
-+    if (ret) {
-+        error_setg_errno(errp, errno, "IOMMU_VIOMMU_ALLOC failed");
-+        return false;
-+    }
-+
-+    *out_viommu_id = alloc_viommu.out_viommu_id;
-+    return true;
-+}
-+
- bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
-                                            uint32_t hwpt_id, Error **errp)
- {
-diff --git a/backends/trace-events b/backends/trace-events
-index 56132d3fd2..2294af2cc8 100644
---- a/backends/trace-events
-+++ b/backends/trace-events
-@@ -21,3 +21,4 @@ iommufd_backend_free_id(int iommufd, uint32_t id, int ret) " iommufd=%d id=%d (%
- iommufd_backend_set_dirty(int iommufd, uint32_t hwpt_id, bool start, int ret) " iommufd=%d hwpt=%u enable=%d (%d)"
- iommufd_backend_get_dirty_bitmap(int iommufd, uint32_t hwpt_id, uint64_t iova, uint64_t size, uint64_t page_size, int ret) " iommufd=%d hwpt=%u iova=0x%"PRIx64" size=0x%"PRIx64" page_size=0x%"PRIx64" (%d)"
- iommufd_backend_invalidate_cache(int iommufd, uint32_t id, uint32_t data_type, uint32_t entry_len, uint32_t entry_num, uint32_t done_num, uint64_t data_ptr, int ret) " iommufd=%d id=%u data_type=%u entry_len=%u entry_num=%u done_num=%u data_ptr=0x%"PRIx64" (%d)"
-+iommufd_backend_alloc_viommu(int iommufd, uint32_t type, uint32_t dev_id, uint32_t hwpt_id, uint32_t viommu_id, int ret) " iommufd=%d type=%u dev_id=%u hwpt_id=%u viommu_id=%u (%d)"
-diff --git a/include/system/iommufd.h b/include/system/iommufd.h
-index c9c72ffc45..9acdb20032 100644
---- a/include/system/iommufd.h
-+++ b/include/system/iommufd.h
-@@ -59,6 +59,10 @@ bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
-                                 uint32_t data_type, uint32_t data_len,
-                                 void *data_ptr, uint32_t *out_hwpt,
-                                 Error **errp);
-+bool iommufd_backend_alloc_viommu(IOMMUFDBackend *be, uint32_t dev_id,
-+                                  uint32_t viommu_type, uint32_t hwpt_id,
-+                                  uint32_t *out_hwpt, Error **errp);
-+
- bool iommufd_backend_set_dirty_tracking(IOMMUFDBackend *be, uint32_t hwpt_id,
-                                         bool start, Error **errp);
- bool iommufd_backend_get_dirty_bitmap(IOMMUFDBackend *be, uint32_t hwpt_id,
+ static void smmu_base_class_init(ObjectClass *klass, const void *data)
 -- 
 2.34.1
 

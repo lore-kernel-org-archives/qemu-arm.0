@@ -4,83 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83C63C83F17
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 17:59:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DFD6C83F17
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 17:59:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubNSJ-00028v-A8; Mon, 14 Jul 2025 13:59:11 -0400
+	id 1ubNSO-0002EJ-CQ; Mon, 14 Jul 2025 13:59:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ubMSi-0004YL-KA
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 12:55:33 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ id 1ubMSk-0004a1-80
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 12:55:34 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ubMSf-0001Im-UA
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 12:55:32 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-4561a4a8bf2so12901095e9.1
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 09:55:29 -0700 (PDT)
+ id 1ubMSi-0001JQ-6d
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 12:55:33 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-4561a4a8bf2so12901495e9.1
+ for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 09:55:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752512128; x=1753116928; darn=nongnu.org;
+ d=linaro.org; s=google; t=1752512130; x=1753116930; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3cGXdCXCfPmsA5Ze9Qy3GSzkEFT+6aOU7O/5fB9CynM=;
- b=R9Jf0t7KZ3/UGK6NfDodcWaLoMtRvR8rvd3m5FGbyM7m9x0V9LufVAjW8/rBCQzzdi
- 6FwPWNSYqTZVM3K/WXQFKALWkmzZqj3XOBde14eDd7CeEtMhNboHGhBfsuQXMuz3jjjh
- NdJV/CaG+yCJqO8rZ2XaM35wLz2JyuIP/Dpcp+8s16f2b+ka+Q+ouAGZGruFSehuPFSF
- ihwDcvuLkF6dbMdtuSmtApfbuklhorzAKzGHlRvBgoH0+XRtw4B0fhfsln0C5MJrs/pL
- 80ySfwi+2FoU5a68yhsF/hoDH7TrA9JM11VoFH1hJN1pkfjkL0fuVquTCmox1xkkIOR4
- cAPw==
+ bh=XB8LV3wRsOBPp4JPpXFjqFOjZLlAFG+bPFbYCEIwFxs=;
+ b=Owg0guTatUlOe0bdf2ohgOheEFnIRITumbe3LrFvhDV3I+J/osTnc7UPuM+d0LygaA
+ +w0UtvQEcBHLKytPT6jBOaLTMWnNFvF5CrvSK3GBDvBMTDJr4ACRfnDDbbAg/D5XyUcd
+ G6B6k6IuWTho7S/lQO38gill8lNxmIT/W1rLe6rmMqRiBwPYFxo//FtPMSm0xFZkl2T3
+ Ajm9xIjXDqNsq6IdYHhK/UQsIOhthKBs2I5H12P+FWDxMaGbI0Tzr9a0Z5FacKDxM6QG
+ BSrv7MQf3m+1V0tDVXvlp5QsgKiYI/58Sl5d6xQSiav/XYmc1pbGYoQvEgND5A2AG0Gn
+ T3tA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752512128; x=1753116928;
+ d=1e100.net; s=20230601; t=1752512130; x=1753116930;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=3cGXdCXCfPmsA5Ze9Qy3GSzkEFT+6aOU7O/5fB9CynM=;
- b=ac7E4HAWnLNFWer2xEu5pjd7iC3388mcdbpoHjiJ/1eDo6BFy9c1XE43cXooMSqGNy
- z8+hpaLGNTQTCTNgJ8wq9AnR5LygCd7ZqzZM4p6nOD64gKPVSjf0g+3Hj/jp7FqQBs6T
- 1GxKPKYApcqwRwkcB8jDM6JattVGMiLPcSRve85Et9k1PuLAmOPSVl3aADGeVl5sPr+m
- pIJQC5KGAW/20HOtwvLVhahyejxguFWt5M8CT1T21KZouSY9iZslpGZ7JcBzQDYVv9D4
- ikiLLdByvhOL9x7SaibRQuVrG9S6tCEBGLpBW3/YIlrNmir7FEH36qCJQQvIjMNeGir/
- iSpA==
-X-Gm-Message-State: AOJu0YxFAkJxdt91Ec6nGAlGkJs9bJyONjZ4Da8yK7DaaiECBLEuq3y6
- zNvw6jbogfhJ8a7b0TNC6d+BcAk2kbWXs8kre0qtmjmWPFHCyg+EvGRigN9ETUG7d9u8affB+n6
- jKUUH
-X-Gm-Gg: ASbGnculxnAM1AlJtIGxNZDOvdsb5gSF5h868+NQQQNHwdOuFxiavzsWHLSmxOkX8sD
- TGpfwSxY3Z7K/+3MU7dYN+wap8wPKG8q8ps2w7a6k+LI6uk0JbzpB53/Q445LwTHiA6ySPJRkrj
- CRaE2UGJ4GBTrY1KjF0gEITTnOWEHmH4naB9+svQe+YTBRGVDuFar2YPeq/QgHUqKIgOaKGKSt8
- lH50Uwp55sFSj3Kkm9bPw6zBy8uuHnUfcV/5kiOYfyg6bs7cKa3GM2srCrvDmLyD7Xywe60rR88
- tL6dqttxOEn42ZqcFbZi+BinDVE4lXZu1EmPzdYqoBVlwvbNpsEnvV0PHu8LOH0MKeJLhsGKOtl
- wA2yEq58Ta1ec02p+23BASjV1PCqz
-X-Google-Smtp-Source: AGHT+IF45BDZTCY6TXI/tXzTPRatDV+7gekhtrlLBFWCpQeaAgFgTrleOn0L6ZttQqlknoYQixgCSw==
-X-Received: by 2002:a05:600c:8b2a:b0:453:7b2b:ed2e with SMTP id
- 5b1f17b1804b1-454ec2727dcmr118670355e9.24.1752512128390; 
- Mon, 14 Jul 2025 09:55:28 -0700 (PDT)
+ bh=XB8LV3wRsOBPp4JPpXFjqFOjZLlAFG+bPFbYCEIwFxs=;
+ b=rXvV+M86Mhf4vY8N0HqslSffhsGzeASAlTRrCH99Yfas5v0tFy43CKC0yXPB3UohHk
+ eVJQbBkYPVl0OfpIbsCDqnTLSsrn7dF9C9B4XIrjdvGJY3Ma4S4HaShb5ShoYv88YXn4
+ RaLXte9VSe9AJHz5xPHzBCzlY992uYRuacj1I0EXp1NMQ5KM7neX3AIXoGnUyvBEGBs9
+ J70q2DOIIEMB+cO8XOsf4/JF2kpKlkHoFRikHd+ZS5u8iDcV8MYavgFPdoRLS2lHOvmB
+ zUbGMFJw19l0H8JgqPZZqZg49szXZx2QNGLyV+ShE2e6SGym9r81FDpmdbRMBVCJLC10
+ igCQ==
+X-Gm-Message-State: AOJu0YzBMGaH7hozB2Cr020uMOf8DK4e5Thy+GTVodr6A81BcAbiXL03
+ gqVhNy6viblMF3KJFmcm/920UtK9tVITaJzDdKapwLKh6fMM1n7TY6FdKTuLDmheV4LP9ThD1db
+ cvQIq
+X-Gm-Gg: ASbGncueNWBs1IB7LsrVTs+OYdi7CW0sb0XOV+56Fwwk863oMyTwFCc/aCeF+kZ/YqW
+ YDE0uQjXjcXcdWqSxsnJZ113lDehUGDu/V2LaI32dxsL1KOAa1GxRNtUUGfr+3pEV14NikXH349
+ Y8CfKsuVmQNjsyZ4yg4YAm32XyEWQMxwH06eg3Q+jpMK96e+TpqxKuRARvlsrChOpMZ+8MnsIrV
+ A5P2guhsnqMbFkIt3XA+tyJSCdz+6NXhuSGj2aPmsycUApvpm2xpeYK0zTkNNUExDhpIz94IMGB
+ BQKx3+dIEpGhX9zHHoqP6+uVZrPmVDQ4RZalk5eTHFQNY6tprALcCWCRNGEMqUKuyj4IMDbyHn5
+ O6wq0yqbPe/c0L/Zf2t2TskOGBxU5
+X-Google-Smtp-Source: AGHT+IH+/REJ7B+DItU8aASH5jnaoFcfOBxm3LgKHunU9aheiEThUjx2kOxgBM45dgVhV+9NQZKjCg==
+X-Received: by 2002:a05:6000:1882:b0:3a3:6595:9209 with SMTP id
+ ffacd0b85a97d-3b5f2dfdfdfmr11245919f8f.36.1752512130542; 
+ Mon, 14 Jul 2025 09:55:30 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b5e8bd15bfsm13164665f8f.19.2025.07.14.09.55.27
+ ffacd0b85a97d-3b5e8bd15bfsm13164665f8f.19.2025.07.14.09.55.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jul 2025 09:55:27 -0700 (PDT)
+ Mon, 14 Jul 2025 09:55:29 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
  Jason Wang <jasowang@redhat.com>
-Subject: [PATCH 2/4] hw/net/npcm_gmac.c: Unify length and prev_buf_size
- variables
-Date: Mon, 14 Jul 2025 17:55:21 +0100
-Message-ID: <20250714165523.1956235-3-peter.maydell@linaro.org>
+Subject: [PATCH 4/4] hw/net/npcm_gmac.c: Drop 'buf' local variable
+Date: Mon, 14 Jul 2025 17:55:23 +0100
+Message-ID: <20250714165523.1956235-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250714165523.1956235-1-peter.maydell@linaro.org>
 References: <20250714165523.1956235-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,60 +102,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-After the bug fix in the previous commit, the length and prev_buf_size
-variables are identical, except that prev_buf_size is uint32_t and
-length is uint16_t. We can therefore unify them. The only place where
-the type makes a difference is that we will truncate the packet
-at 64K when sending it; this commit preserves that behaviour
-by using a local variable when doing the packet send.
+We use the local variable 'buf' only when we call dma_memory_read(),
+and it is always set to &tx_send_buffer[prev_buf_size] immediately
+before both of those calls.  So remove the variable and pass
+tx_send_buffer + prev_buf_size to dma_memory_read().
 
+This fixes in passing a place where we set buf = tx_send_buffer
+but never used that value because we always updated buf to
+something else later before using it.
+
+Coverity: CID 1534027
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-Should the behaviour really be to truncate the packet at 64K
-rather than flagging an error if the guest assembles descriptors
-that combine to give a too-large packet?
----
- hw/net/npcm_gmac.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ hw/net/npcm_gmac.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
 diff --git a/hw/net/npcm_gmac.c b/hw/net/npcm_gmac.c
-index 921327dd8ca..a0050a7725f 100644
+index 0c17ae9b2a9..5e32cd3edf3 100644
 --- a/hw/net/npcm_gmac.c
 +++ b/hw/net/npcm_gmac.c
 @@ -516,7 +516,6 @@ static void gmac_try_send_next_packet(NPCMGMACState *gmac)
      uint32_t desc_addr;
      struct NPCMGMACTxDesc tx_desc;
      uint32_t tx_buf_addr, tx_buf_len;
--    uint16_t length = 0;
-     uint8_t *buf = tx_send_buffer;
+-    uint8_t *buf = tx_send_buffer;
      uint32_t prev_buf_size = 0;
      int csum = 0;
-@@ -583,7 +582,6 @@ static void gmac_try_send_next_packet(NPCMGMACState *gmac)
-                         __func__, tx_buf_addr);
-             return;
-         }
--        length += tx_buf_len;
-         prev_buf_size += tx_buf_len;
  
-         /* If not chained we'll have a second buffer. */
-@@ -606,15 +604,18 @@ static void gmac_try_send_next_packet(NPCMGMACState *gmac)
-                               __func__, tx_buf_addr);
-                 return;
-             }
--            length += tx_buf_len;
-             prev_buf_size += tx_buf_len;
+@@ -567,16 +566,15 @@ static void gmac_try_send_next_packet(NPCMGMACState *gmac)
+         tx_buf_addr = tx_desc.tdes2;
+         gmac->regs[R_NPCM_DMA_CUR_TX_BUF_ADDR] = tx_buf_addr;
+         tx_buf_len = TX_DESC_TDES1_BFFR1_SZ_MASK(tx_desc.tdes1);
+-        buf = &tx_send_buffer[prev_buf_size];
+ 
+         if ((prev_buf_size + tx_buf_len) > tx_buffer_size) {
+             tx_buffer_size = prev_buf_size + tx_buf_len;
+             tx_send_buffer = g_realloc(tx_send_buffer, tx_buffer_size);
+-            buf = &tx_send_buffer[prev_buf_size];
          }
-         if (tx_desc.tdes1 & TX_DESC_TDES1_LAST_SEG_MASK) {
-+            /*
-+             * This will truncate the packet at 64K.
-+             * TODO: find out if this is the correct behaviour.
-+             */
-+            uint16_t length = prev_buf_size;
+ 
+         /* step 5 */
+-        if (dma_memory_read(&address_space_memory, tx_buf_addr, buf,
++        if (dma_memory_read(&address_space_memory, tx_buf_addr,
++                            tx_send_buffer + prev_buf_size,
+                             tx_buf_len, MEMTXATTRS_UNSPECIFIED)) {
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: Failed to read packet @ 0x%x\n",
+                         __func__, tx_buf_addr);
+@@ -589,15 +587,14 @@ static void gmac_try_send_next_packet(NPCMGMACState *gmac)
+             tx_buf_addr = tx_desc.tdes3;
+             gmac->regs[R_NPCM_DMA_CUR_TX_BUF_ADDR] = tx_buf_addr;
+             tx_buf_len = TX_DESC_TDES1_BFFR2_SZ_MASK(tx_desc.tdes1);
+-            buf = &tx_send_buffer[prev_buf_size];
+ 
+             if ((prev_buf_size + tx_buf_len) > tx_buffer_size) {
+                 tx_buffer_size = prev_buf_size + tx_buf_len;
+                 tx_send_buffer = g_realloc(tx_send_buffer, tx_buffer_size);
+-                buf = &tx_send_buffer[prev_buf_size];
+             }
+ 
+-            if (dma_memory_read(&address_space_memory, tx_buf_addr, buf,
++            if (dma_memory_read(&address_space_memory, tx_buf_addr,
++                                tx_send_buffer + prev_buf_size,
+                                 tx_buf_len, MEMTXATTRS_UNSPECIFIED)) {
+                 qemu_log_mask(LOG_GUEST_ERROR,
+                               "%s: Failed to read packet @ 0x%x\n",
+@@ -615,7 +612,6 @@ static void gmac_try_send_next_packet(NPCMGMACState *gmac)
              net_checksum_calculate(tx_send_buffer, length, csum);
              qemu_send_packet(qemu_get_queue(gmac->nic), tx_send_buffer, length);
              trace_npcm_gmac_packet_sent(DEVICE(gmac)->canonical_path, length);
-             buf = tx_send_buffer;
--            length = 0;
+-            buf = tx_send_buffer;
              prev_buf_size = 0;
          }
  

@@ -4,100 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89E6DC83F1B
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 23:09:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B3DC83F1A
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 23:16:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubSHf-0007Lv-OE; Mon, 14 Jul 2025 19:08:31 -0400
+	id 1ubSKP-0007tp-6K; Mon, 14 Jul 2025 19:11:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSGc-0003oG-KK
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:07:28 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSIY-000443-7o
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:09:26 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSGZ-0005Vl-Aw
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:07:25 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSIW-0005s1-Do
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:09:25 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752534442;
+ s=mimecast20190719; t=1752534563;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=fR2Rjmec6t5246rVdjtiSBzuumKeTZiDjKCEbittM+Y=;
- b=TEa9QKRrIp6CujgLZTNUtfqAcuGpF22e2BBLQ1drKS6D8+jmRqB9WqkcFhLvu6OKfKV0Ab
- 5sCllbcRxsS/wG5n9NBgfGNxZfmDEKDwPRpoWEfDiLrqP669YY6jxVTTwFXxLZ3TY2WlwY
- nzr0D/CVdd3IsZUeglGXZLLZgKxyBbE=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=nWTgx9OOmQrzNpl+Eee6xG0XRq2aOUUPbQTx1jMMcO4=;
+ b=hKRuRSxtK89jPs5bScsM5gUkeu5C8kHawNixwCN3c6c3RugOSyabgA1neCy9EK8aIYTW97
+ 1ncsDubOxqHtchoyH6Ym7dVfSSGT25gYcNMowfDiW0lf/bwENefXTkjvjGPogj8gr6lbsk
+ aO8Hvr9NUaQ+5GNxdUyPuXk0uyLyxUA=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-204-GXii9NtJMGCUlYXgFQ5xsw-1; Mon, 14 Jul 2025 19:07:21 -0400
-X-MC-Unique: GXii9NtJMGCUlYXgFQ5xsw-1
-X-Mimecast-MFC-AGG-ID: GXii9NtJMGCUlYXgFQ5xsw_1752534440
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-45597cc95d5so18205075e9.1
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 16:07:20 -0700 (PDT)
+ us-mta-646-xNhXxJCtMtCg4fQVyF117g-1; Mon, 14 Jul 2025 19:09:22 -0400
+X-MC-Unique: xNhXxJCtMtCg4fQVyF117g-1
+X-Mimecast-MFC-AGG-ID: xNhXxJCtMtCg4fQVyF117g_1752534561
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-4560f28b2b1so7124175e9.2
+ for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 16:09:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752534440; x=1753139240;
+ d=1e100.net; s=20230601; t=1752534561; x=1753139361;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=fR2Rjmec6t5246rVdjtiSBzuumKeTZiDjKCEbittM+Y=;
- b=QCyPzZE580XTYgS3UP/B/yZ7DtQFqBHzDf489aJluQhDcGQPS+J7RpKB4FOPwiDgRX
- DjxBXzVNzWPd69CJKe8FE3E5e1bzxmHQjI1hixz7RMLvOl3WuRTqqoJKVWST6DTDyZl1
- H4FNUO6/TOGPKAzFlXeBEkFkXyO+Pjk9mF7S9a8smy0zrE1oPYq9XUbTsHVfmN0XoSom
- FUoXux6EaauX2MT9Li5/B3GzPtUqD7Hi1M/detJrpvvm+1oZNucdgn4gULFXy6ONLu6L
- Jth8TV6Xsb05j7Yd6AGMaB76kN1anoZdORvIkaf7DrzZ8lhQOFDJ7EJLM7NtjBV7pDCp
- lveg==
+ bh=nWTgx9OOmQrzNpl+Eee6xG0XRq2aOUUPbQTx1jMMcO4=;
+ b=hdKJO8vqMKkPN747IEyUn/Y9pkXz/TID0rU5NTrVLrB9Zyxv6GWjByDiMryLUlMwrC
+ WM3q/z1yltFZYMC7mncYCDeiq4yeaiBunKblj+mZyJkhoC0VSUfBz1SArtQDJFQ6tZCe
+ AbVnc6nE93/F/K2fncNu6XeMDwVC8j6eUl54bfZXTfTS5HzxnnoXoUQgAlkE1ih7ct+L
+ Ibeic1ekupSghPfOEwBJmoGEm9Fusl2lsuwGBNjGJ30gaHno9eCixKgle9hED5EKrqHB
+ L1HvrtFo1oz1nn6uhLrI8Sj17EvQJSsa/593BYTXj5BgpbERXxF4AFseptZV5W5+r2Rt
+ sDEw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV5rZMKS8UWuC7hx2DH7tMfrOnyP5pz9Iu+uKAh0HS7CnDmIgkDmMcXjMer6xxJKupCE0yih3ocnA==@nongnu.org
-X-Gm-Message-State: AOJu0YwPrRnYV+bcnzma20vjf4EuKb+o5k7KEuBQcjRVdYk/dtvG5glO
- ZtQPb5qArnVFi17i2NDEdTayEhxK8/ZcLCjCcK2iI+7eqW7ev5czIM8/maEzyeF8vSx+FpI0Ia4
- JJmyXt/z/UwCiVVgbWrCtuN2KhAmojaubtgSW6tX720XaD3On9OcJ7g==
-X-Gm-Gg: ASbGnct/9nQgyC//xUTIgzBLQrjkUj39ojyXIqMusPijI+DgciL3xBOeoO2n39z8rtR
- X3LN7ycRmF57CBRgdZPn4NU5O+qLJCeEhjzZsNSQ3yh4bpWffDa+3TQqMXJnLWm9c+cYMIjTUQA
- 2tYQg4MGcGmgME6TUXOQt5NjT759JfazcqC46MZoyEBFAlhyOWaDjNgNjfc0J1N39AmWv1Rgdz9
- mlo7ioT0GkFiNA82/gKc4Kg5uID96upLcvsniImhn/NsqUuRPbREVZboe7BnD9zCUBHrntivDik
- fwyw7BQ5uEnMuZlGulhsvD/vQSySdg0e
-X-Received: by 2002:a05:600c:348e:b0:456:24db:2efb with SMTP id
- 5b1f17b1804b1-45624db321dmr17130655e9.15.1752534439771; 
- Mon, 14 Jul 2025 16:07:19 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHI4aREeHWW+WF/WHiBOoCLF6P2lSeCGErMgOCsa7UTPWDkVtHttogsmk4H6B3iEYd5CDWBiA==
-X-Received: by 2002:a05:600c:348e:b0:456:24db:2efb with SMTP id
- 5b1f17b1804b1-45624db321dmr17130415e9.15.1752534439322; 
- Mon, 14 Jul 2025 16:07:19 -0700 (PDT)
+ AJvYcCU15NxJ16bP4U5U1USGDGoNnnUNH0YlAGQbXN15aPZh+6MpgIb6fK02SyK6Hiwy+61ifisHG8jk+A==@nongnu.org
+X-Gm-Message-State: AOJu0YxcbfG4uuYp1FdkSQRhSRK9tD6M3/9yiSWznzVerHWEjnhOVfhO
+ ziqTBhT+TD4I1aGg4SL2A2h413hBjguZvglUVfviilM0J6nh984rOc+3WuTwixgqL8hDQd6arBt
+ SxRWgwlTJ9vq+LDEhGBC9Y5jNjxe3AGq19gBcgjg6nI6AlaOS4ykLSQ==
+X-Gm-Gg: ASbGncuELU0lJc90lhEaRnQW3tPmhKafE8OyJCMmrXqVI6NlKaNjPVadEMhiWE4eyOL
+ cQrMRhhdpuh43V4PG/GxX0w3xZkBGGB5FZ48sPCcfncHx4Iws3Wv4hnR9XCjgbqhPdizbycOy4o
+ 1hGC5z5Ib0c22waOWDuWBnxJOmsgsGNvva3ddgk0T34m62uSRYax+FDh9/pqEyWJv8DRj0GAy3p
+ lrVA54GN007sKzAK0r43VXTX2ikxYiqxfEyTRUhwh3mb17OCvUqu8rv7Z36WfLwnS1RIHHAP+Yb
+ NFDwVDLtbr+JmL7eyEUMvXlewGT/4gJO
+X-Received: by 2002:a05:600c:4ecf:b0:456:24aa:958e with SMTP id
+ 5b1f17b1804b1-45624aa9786mr19627115e9.0.1752534561305; 
+ Mon, 14 Jul 2025 16:09:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGa/OVUbHxTW5QCZ8VAm3s4vhGBi/pvLBF02n0N6fAUc1zCjvIlOrw1NmHrzTAiGoovUfsBBw==
+X-Received: by 2002:a05:600c:4ecf:b0:456:24aa:958e with SMTP id
+ 5b1f17b1804b1-45624aa9786mr19626955e9.0.1752534560887; 
+ Mon, 14 Jul 2025 16:09:20 -0700 (PDT)
 Received: from redhat.com ([2a0d:6fc0:150d:fc00:de3:4725:47c6:6809])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4562797b956sm2053405e9.17.2025.07.14.16.07.17
+ 5b1f17b1804b1-4560ceb1337sm81503405e9.13.2025.07.14.16.09.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jul 2025 16:07:18 -0700 (PDT)
-Date: Mon, 14 Jul 2025 19:07:16 -0400
+ Mon, 14 Jul 2025 16:09:20 -0700 (PDT)
+Date: Mon, 14 Jul 2025 19:09:19 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Li Chen <chenl311@chinatelecom.cn>, Bibo Mao <maobibo@loongson.cn>,
- Gavin Shan <gshan@redhat.com>, Sunil V L <sunilvl@ventanamicro.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- Song Gao <gaosong@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org
-Subject: [PULL 25/97] acpi: Add machine option to disable SPCR table
-Message-ID: <54401d5abd13c7f2ff5d1cb65e73a067743230e3.1752534227.git.mst@redhat.com>
+ Eric Auger <eric.auger@redhat.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org
+Subject: [PULL 71/97] hw/arm/virt: Pass the bus on the ged creation
+Message-ID: <c919cff502f6c149d7cf38576ccbf8a7e044ad44.1752534227.git.mst@redhat.com>
 References: <cover.1752534227.git.mst@redhat.com>
 MIME-Version: 1.0
 In-Reply-To: <cover.1752534227.git.mst@redhat.com>
 X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
 X-Mutt-Fcc: =sent
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: hj8FilLODKJU8vHxGcNOj3gINJ56ny8QJVp_RyiV6FY_1752534440
+X-Mimecast-MFC-PROC-ID: -AZfHFhE4y1rDFf2gAnuKYZYkIkQfJ3rNX-CjISeJ4s_1752534561
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -110,7 +98,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,167 +114,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Li Chen <chenl311@chinatelecom.cn>
+From: Eric Auger <eric.auger@redhat.com>
 
-The ACPI SPCR (Serial Port Console Redirection) table allows firmware
-to specify a preferred serial console device to the operating system.
-On ARM64 systems, Linux by default respects this table: even if the
-kernel command line does not include a hardware serial console (e.g.,
-"console=ttyAMA0"), the kernel still register the serial device
-referenced by SPCR as a printk console.
+The bus will be needed on ged realize for acpi pci hp setup.
 
-While this behavior is standard-compliant, it can lead to situations
-where guest console behavior is influenced by platform firmware rather
-than user-specified configuration. To make guest console behavior more
-predictable and under user control, this patch introduces a machine
-option to explicitly disable SPCR table exposure:
-
-    -machine spcr=off
-
-By default, the option is enabled (spcr=on), preserving existing
-behavior. When disabled, QEMU will omit the SPCR table from the guest's
-ACPI namespace, ensuring that only consoles explicitly declared in the
-kernel command line are registered.
-
-Signed-off-by: Li Chen <chenl311@chinatelecom.cn>
-Reviewed-by: Bibo Mao <maobibo@loongson.cn>
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
-Reviewed-by: Sunil V L <sunilvl@ventanamicro.com>
-Message-Id: <20250528105404.457729-2-me@linux.beauty>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Message-Id: <20250714080639.2525563-26-eric.auger@redhat.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- include/hw/boards.h            |  1 +
- hw/arm/virt-acpi-build.c       |  5 ++++-
- hw/core/machine.c              | 22 ++++++++++++++++++++++
- hw/loongarch/virt-acpi-build.c |  4 +++-
- hw/riscv/virt-acpi-build.c     |  5 ++++-
- qemu-options.hx                |  5 +++++
- 6 files changed, 39 insertions(+), 3 deletions(-)
+ hw/arm/virt.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index f424b2b505..f94713e6e2 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -443,6 +443,7 @@ struct MachineState {
-     SmpCache smp_cache;
-     struct NVDIMMState *nvdimms_state;
-     struct NumaState *numa_state;
-+    bool acpi_spcr_enabled;
- };
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 817adedb31..41b5086b55 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -701,6 +701,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
  
- /*
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 0dfb8ec2c3..782b17b966 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -1023,7 +1023,10 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-     }
+     dev = qdev_new(TYPE_ACPI_GED);
+     qdev_prop_set_uint32(dev, "ged-event", event);
++    object_property_set_link(OBJECT(dev), "bus", OBJECT(vms->bus), &error_abort);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
  
-     acpi_add_table(table_offsets, tables_blob);
--    spcr_setup(tables_blob, tables->linker, vms);
-+
-+    if (ms->acpi_spcr_enabled) {
-+        spcr_setup(tables_blob, tables->linker, vms);
-+    }
- 
-     acpi_add_table(table_offsets, tables_blob);
-     build_dbg2(tables_blob, tables->linker, vms);
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index e869821b22..ceee058cad 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -577,6 +577,20 @@ static void machine_set_nvdimm(Object *obj, bool value, Error **errp)
-     ms->nvdimms_state->is_enabled = value;
- }
- 
-+static bool machine_get_spcr(Object *obj, Error **errp)
-+{
-+    MachineState *ms = MACHINE(obj);
-+
-+    return ms->acpi_spcr_enabled;
-+}
-+
-+static void machine_set_spcr(Object *obj, bool value, Error **errp)
-+{
-+    MachineState *ms = MACHINE(obj);
-+
-+    ms->acpi_spcr_enabled = value;
-+}
-+
- static bool machine_get_hmat(Object *obj, Error **errp)
- {
-     MachineState *ms = MACHINE(obj);
-@@ -1281,6 +1295,14 @@ static void machine_initfn(Object *obj)
-                                         "Table (HMAT)");
-     }
- 
-+    /* SPCR */
-+    ms->acpi_spcr_enabled = true;
-+    object_property_add_bool(obj, "spcr", machine_get_spcr, machine_set_spcr);
-+    object_property_set_description(obj, "spcr",
-+                                   "Set on/off to enable/disable "
-+                                   "ACPI Serial Port Console Redirection "
-+                                   "Table (spcr)");
-+
-     /* default to mc->default_cpus */
-     ms->smp.cpus = mc->default_cpus;
-     ms->smp.max_cpus = mc->default_cpus;
-diff --git a/hw/loongarch/virt-acpi-build.c b/hw/loongarch/virt-acpi-build.c
-index 2cd2d9d842..8c2228a772 100644
---- a/hw/loongarch/virt-acpi-build.c
-+++ b/hw/loongarch/virt-acpi-build.c
-@@ -557,7 +557,9 @@ static void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-     acpi_add_table(table_offsets, tables_blob);
-     build_srat(tables_blob, tables->linker, machine);
-     acpi_add_table(table_offsets, tables_blob);
--    spcr_setup(tables_blob, tables->linker, machine);
-+
-+    if (machine->acpi_spcr_enabled)
-+        spcr_setup(tables_blob, tables->linker, machine);
- 
-     if (machine->numa_state->num_nodes) {
-         if (machine->numa_state->have_numa_distance) {
-diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-index 8b5683dbde..ee1416d264 100644
---- a/hw/riscv/virt-acpi-build.c
-+++ b/hw/riscv/virt-acpi-build.c
-@@ -894,7 +894,10 @@ static void virt_acpi_build(RISCVVirtState *s, AcpiBuildTables *tables)
-     }
- 
-     acpi_add_table(table_offsets, tables_blob);
--    spcr_setup(tables_blob, tables->linker, s);
-+
-+    if (ms->acpi_spcr_enabled) {
-+        spcr_setup(tables_blob, tables->linker, s);
-+    }
- 
-     acpi_add_table(table_offsets, tables_blob);
-     {
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 1f862b19a6..9b2d5f4b7a 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -38,6 +38,7 @@ DEF("machine", HAS_ARG, QEMU_OPTION_machine, \
-     "                nvdimm=on|off controls NVDIMM support (default=off)\n"
-     "                memory-encryption=@var{} memory encryption object to use (default=none)\n"
-     "                hmat=on|off controls ACPI HMAT support (default=off)\n"
-+    "                spcr=on|off controls ACPI SPCR support (default=on)\n"
- #ifdef CONFIG_POSIX
-     "                aux-ram-share=on|off allocate auxiliary guest RAM as shared (default: off)\n"
- #endif
-@@ -105,6 +106,10 @@ SRST
-         Enables or disables ACPI Heterogeneous Memory Attribute Table
-         (HMAT) support. The default is off.
- 
-+    ``spcr=on|off``
-+        Enables or disables ACPI Serial Port Console Redirection Table
-+        (SPCR) support. The default is on.
-+
-     ``aux-ram-share=on|off``
-         Allocate auxiliary guest RAM as an anonymous file that is
-         shareable with an external process.  This option applies to
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_ACPI_GED].base);
 -- 
 MST
 

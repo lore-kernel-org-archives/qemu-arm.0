@@ -4,60 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E7BBC83F1A
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 17:04:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE6ECC83F1A
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 17:05:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubMYl-0004DX-N4; Mon, 14 Jul 2025 13:01:54 -0400
+	id 1ubMXt-0003Tv-Hc; Mon, 14 Jul 2025 13:00:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ubLdD-0005di-UF; Mon, 14 Jul 2025 12:02:20 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
+ id 1ubLcz-0005aA-4y
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 12:02:13 -0400
+Received: from out-171.mta0.migadu.com ([2001:41d0:1004:224b::ab])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ubLdC-0008RE-1E; Mon, 14 Jul 2025 12:02:19 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bgn6s60dbz6L5Mj;
- Mon, 14 Jul 2025 23:58:45 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 301ED14044F;
- Tue, 15 Jul 2025 00:02:13 +0800 (CST)
-Received: from A2303104131.china.huawei.com (10.203.177.241) by
- frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 14 Jul 2025 18:02:04 +0200
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
- <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
- <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
- <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
- <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
- <zhenzhong.duan@intel.com>, <shameerkolothum@gmail.com>
-Subject: [RFC PATCH v3 13/15] hw/arm/smmuv3: Forward invalidation commands to
- hw
-Date: Mon, 14 Jul 2025 16:59:39 +0100
-Message-ID: <20250714155941.22176-14-shameerali.kolothum.thodi@huawei.com>
-X-Mailer: git-send-email 2.12.0.windows.1
-In-Reply-To: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
-References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
+ (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
+ id 1ubLcx-0008Pr-0q
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 12:02:04 -0400
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+ t=1752508921;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Yzqv4D1JaiwZdiQ5ubH+STSsZry9b6p+Rg5sjIeFz3c=;
+ b=NaY+nQktSuFT8oZnsNgMU+ScMd/Wqw+MP++/csE3JVEVsedMolGziwTBbchNIhW0Y8S+u7
+ KcgR5XACHCkH3ec/poRbAGbAHd2n8qaZDve5BHq9YepgLpjIdcA7i8EfPHID2hUUu0uPId
+ n4SsvWzVIc43En7XalW7p4ncpd0jqhs=
+From: Zenghui Yu <zenghui.yu@linux.dev>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: agraf@csgraf.de, mads@ynddal.dk, peter.maydell@linaro.org,
+ Zenghui Yu <zenghui.yu@linux.dev>
+Subject: [PATCH v2 2/2] hvf: arm: Emulate ICC_RPR_EL1 accesses properly
+Date: Tue, 15 Jul 2025 00:01:39 +0800
+Message-Id: <20250714160139.10404-3-zenghui.yu@linux.dev>
+In-Reply-To: <20250714160139.10404-1-zenghui.yu@linux.dev>
+References: <20250714160139.10404-1-zenghui.yu@linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.203.177.241]
-X-ClientProxiedBy: kwepems500002.china.huawei.com (7.221.188.17) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
+Received-SPF: pass client-ip=2001:41d0:1004:224b::ab;
+ envelope-from=zenghui.yu@linux.dev; helo=out-171.mta0.migadu.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -71,129 +65,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Nicolin Chen <nicolinc@nvidia.com>
+Commit a2260983c655 ("hvf: arm: Add support for GICv3") added GICv3 support
+by implementing emulation for a few system registers. ICC_RPR_EL1 was
+defined but not plugged in the sysreg handlers (for no good reason).
 
-Use the provided smmuv3-accel helper functions to issue the
-invalidation commands to host SMMUv3.
+Fix it.
 
-Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Fixes: a2260983c655 ("hvf: arm: Add support for GICv3")
+Signed-off-by: Zenghui Yu <zenghui.yu@linux.dev>
 ---
- hw/arm/smmuv3-internal.h | 11 +++++++++++
- hw/arm/smmuv3.c          | 28 ++++++++++++++++++++++++++++
- 2 files changed, 39 insertions(+)
+ target/arm/hvf/hvf.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index 8cb6a9238a..f3aeaf6375 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -233,6 +233,17 @@ static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s)
- #define Q_CONS_WRAP(q) (((q)->cons & WRAP_MASK(q)) >> (q)->log2size)
- #define Q_PROD_WRAP(q) (((q)->prod & WRAP_MASK(q)) >> (q)->log2size)
- 
-+static inline int smmuv3_q_ncmds(SMMUQueue *q)
-+{
-+    uint32_t prod = Q_PROD(q);
-+    uint32_t cons = Q_CONS(q);
-+
-+    if (Q_PROD_WRAP(q) == Q_CONS_WRAP(q))
-+        return prod - cons;
-+    else
-+        return WRAP_MASK(q) - cons + prod;
-+}
-+
- static inline bool smmuv3_q_full(SMMUQueue *q)
- {
-     return ((q->cons ^ q->prod) & WRAP_INDEX_MASK(q)) == WRAP_MASK(q);
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index c94bfe6564..97ecca0764 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1285,10 +1285,17 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-     SMMUCmdError cmd_error = SMMU_CERROR_NONE;
-     SMMUQueue *q = &s->cmdq;
-     SMMUCommandType type = 0;
-+    SMMUCommandBatch batch = {};
-+    uint32_t ncmds;
- 
-     if (!smmuv3_cmdq_enabled(s)) {
-         return 0;
-     }
-+
-+    ncmds = smmuv3_q_ncmds(q);
-+    batch.cmds = g_new0(Cmd, ncmds);
-+    batch.cons = g_new0(uint32_t, ncmds);
-+
-     /*
-      * some commands depend on register values, typically CR0. In case those
-      * register values change while handling the command, spec says it
-@@ -1383,6 +1390,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
- 
-             trace_smmuv3_cmdq_cfgi_cd(sid);
-             smmuv3_flush_config(sdev);
-+            smmuv3_accel_batch_cmd(sdev->smmu, sdev, &batch, &cmd, &q->cons);
-             break;
-         }
-         case SMMU_CMD_TLBI_NH_ASID:
-@@ -1406,6 +1414,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-             trace_smmuv3_cmdq_tlbi_nh_asid(asid);
-             smmu_inv_notifiers_all(&s->smmu_state);
-             smmu_iotlb_inv_asid_vmid(bs, asid, vmid);
-+            smmuv3_accel_batch_cmd(bs, NULL, &batch, &cmd, &q->cons);
-             break;
-         }
-         case SMMU_CMD_TLBI_NH_ALL:
-@@ -1433,6 +1442,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-             trace_smmuv3_cmdq_tlbi_nsnh();
-             smmu_inv_notifiers_all(&s->smmu_state);
-             smmu_iotlb_inv_all(bs);
-+            smmuv3_accel_batch_cmd(bs, NULL, &batch, &cmd, &q->cons);
-             break;
-         case SMMU_CMD_TLBI_NH_VAA:
-         case SMMU_CMD_TLBI_NH_VA:
-@@ -1441,6 +1451,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-                 break;
-             }
-             smmuv3_range_inval(bs, &cmd, SMMU_STAGE_1);
-+            smmuv3_accel_batch_cmd(bs, NULL, &batch, &cmd, &q->cons);
-             break;
-         case SMMU_CMD_TLBI_S12_VMALL:
-         {
-@@ -1499,12 +1510,29 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-         queue_cons_incr(q);
-     }
- 
-+    qemu_mutex_lock(&s->mutex);
-+    if (!cmd_error && batch.ncmds) {
-+        if (!smmuv3_accel_issue_cmd_batch(bs, &batch)) {
-+            if (batch.ncmds) {
-+                q->cons = batch.cons[batch.ncmds - 1];
-+            } else {
-+                q->cons = batch.cons[0]; /* FIXME: Check */
-+            }
-+            qemu_log_mask(LOG_GUEST_ERROR, "Illegal command type: %d\n",
-+                          CMD_TYPE(&batch.cmds[batch.ncmds]));
-+            cmd_error = SMMU_CERROR_ILL;
-+        }
-+    }
-+    qemu_mutex_unlock(&s->mutex);
-+
-     if (cmd_error) {
-         trace_smmuv3_cmdq_consume_error(smmu_cmd_string(type), cmd_error);
-         smmu_write_cmdq_err(s, cmd_error);
-         smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_CMDQ_ERR_MASK);
-     }
- 
-+    g_free(batch.cmds);
-+    g_free(batch.cons);
-     trace_smmuv3_cmdq_consume_out(Q_PROD(q), Q_CONS(q),
-                                   Q_PROD_WRAP(q), Q_CONS_WRAP(q));
- 
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 1db0b77fb6..df556626ce 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1368,6 +1368,7 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
+     case SYSREG_ICC_IGRPEN0_EL1:
+     case SYSREG_ICC_IGRPEN1_EL1:
+     case SYSREG_ICC_PMR_EL1:
++    case SYSREG_ICC_RPR_EL1:
+     case SYSREG_ICC_SGI0R_EL1:
+     case SYSREG_ICC_SGI1R_EL1:
+     case SYSREG_ICC_SRE_EL1:
+@@ -1685,6 +1686,7 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+     case SYSREG_ICC_IGRPEN0_EL1:
+     case SYSREG_ICC_IGRPEN1_EL1:
+     case SYSREG_ICC_PMR_EL1:
++    case SYSREG_ICC_RPR_EL1:
+     case SYSREG_ICC_SGI0R_EL1:
+     case SYSREG_ICC_SGI1R_EL1:
+     case SYSREG_ICC_SRE_EL1:
 -- 
 2.34.1
 

@@ -4,60 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2107C83F17
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 17:00:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3205FC83F1A
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 17:02:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubMXi-0002rq-0v; Mon, 14 Jul 2025 13:00:42 -0400
+	id 1ubMWh-00016q-Bt; Mon, 14 Jul 2025 12:59:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ubLdV-00062A-0i; Mon, 14 Jul 2025 12:02:39 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
+ id 1ubLcw-0005ZZ-Fu
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 12:02:09 -0400
+Received: from out-183.mta0.migadu.com ([91.218.175.183])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ubLdT-0008TW-C3; Mon, 14 Jul 2025 12:02:36 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bgn9p6Y0Sz6M55m;
- Tue, 15 Jul 2025 00:01:18 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 8E8141402ED;
- Tue, 15 Jul 2025 00:02:31 +0800 (CST)
-Received: from A2303104131.china.huawei.com (10.203.177.241) by
- frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 14 Jul 2025 18:02:22 +0200
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
- <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
- <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
- <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
- <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
- <zhenzhong.duan@intel.com>, <shameerkolothum@gmail.com>
-Subject: [RFC PATCH v3 15/15] hw/arm/smmu-common: Add accel property for SMMU
- dev
-Date: Mon, 14 Jul 2025 16:59:41 +0100
-Message-ID: <20250714155941.22176-16-shameerali.kolothum.thodi@huawei.com>
-X-Mailer: git-send-email 2.12.0.windows.1
-In-Reply-To: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
-References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
+ (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
+ id 1ubLct-0008PT-Ts
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 12:02:02 -0400
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+ t=1752508917;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=tJ1ERHb+C6dy+EReHjSkSbsrkf3SXklGrJ5X9wyIe+s=;
+ b=uQrlo3bE8U3DUBsvmVxpCTM+Lrv7GgGOmvXMNqf+oDWGIiBJygGHrUCeUs6zVSnzoa97lJ
+ JW+omqcb9nIaEK1PPcgzZmVirc8KvuaUIZrSHxjO7JYsTCdzMQXxwK4bBADhVQybcMFREz
+ vitSmjPv9gno/nHpedNb4//W3+Fw/8Y=
+From: Zenghui Yu <zenghui.yu@linux.dev>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: agraf@csgraf.de, mads@ynddal.dk, peter.maydell@linaro.org,
+ Zenghui Yu <zenghui.yu@linux.dev>
+Subject: [PATCH v2 1/2] hvf: arm: Add permission check in GIC sysreg handlers
+Date: Tue, 15 Jul 2025 00:01:38 +0800
+Message-Id: <20250714160139.10404-2-zenghui.yu@linux.dev>
+In-Reply-To: <20250714160139.10404-1-zenghui.yu@linux.dev>
+References: <20250714160139.10404-1-zenghui.yu@linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.203.177.241]
-X-ClientProxiedBy: kwepems500002.china.huawei.com (7.221.188.17) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
+Received-SPF: pass client-ip=91.218.175.183; envelope-from=zenghui.yu@linux.dev;
+ helo=out-183.mta0.migadu.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -71,30 +67,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now user can set "accel=on". Have fun!
+Quoting Peter Maydell:
 
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+" hvf_sysreg_read_cp() and hvf_sysreg_write_cp() do not check the .access
+  field of the ARMCPRegInfo to ensure that they forbid writes to registers
+  that are marked with a .access field that says they're read-only (and
+  ditto reads to write-only registers). "
+
+Before we add more registers in GIC sysreg handlers, let's get it correct
+by adding the .access checks to hvf_sysreg_read_cp() and
+hvf_sysreg_write_cp(). With that, a sysreg access with invalid permission
+will result in an UNDEFINED exception.
+
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Zenghui Yu <zenghui.yu@linux.dev>
 ---
- hw/arm/smmu-common.c | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 6a58f574d3..3e8783670a 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -1022,6 +1022,7 @@ static const Property smmu_dev_properties[] = {
-     DEFINE_PROP_BOOL("smmu_per_bus", SMMUState, smmu_per_bus, false),
-     DEFINE_PROP_LINK("primary-bus", SMMUState, primary_bus,
-                      TYPE_PCI_BUS, PCIBus *),
-+    DEFINE_PROP_BOOL("accel", SMMUState, accel, false),
- };
+I hard-code the @current_el parameter of cp_access_ok() to 1 because
+
+* we only support EL0 and EL1 in HVF, and
+* a GIC sysreg access from EL0 would result in an UNDEF exception which is
+  taken to EL1 (without going back to QEMU for emulation).
+
+ target/arm/hvf/hvf.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 0c7396ad6f..1db0b77fb6 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1270,6 +1270,9 @@ static bool hvf_sysreg_read_cp(CPUState *cpu, uint32_t reg, uint64_t *val)
  
- static void smmu_base_class_init(ObjectClass *klass, const void *data)
+     ri = get_arm_cp_reginfo(arm_cpu->cp_regs, hvf_reg2cp_reg(reg));
+     if (ri) {
++        if (!cp_access_ok(1, ri, true)) {
++            return false;
++        }
+         if (ri->accessfn) {
+             if (ri->accessfn(env, ri, true) != CP_ACCESS_OK) {
+                 return false;
+@@ -1550,6 +1553,9 @@ static bool hvf_sysreg_write_cp(CPUState *cpu, uint32_t reg, uint64_t val)
+     ri = get_arm_cp_reginfo(arm_cpu->cp_regs, hvf_reg2cp_reg(reg));
+ 
+     if (ri) {
++        if (!cp_access_ok(1, ri, false)) {
++            return false;
++        }
+         if (ri->accessfn) {
+             if (ri->accessfn(env, ri, false) != CP_ACCESS_OK) {
+                 return false;
 -- 
 2.34.1
 

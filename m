@@ -4,116 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E355BC83F17
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 19:03:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E889C83F17
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 19:42:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubOS6-0004gf-SN; Mon, 14 Jul 2025 15:03:02 -0400
+	id 1ubP4a-0004CU-9P; Mon, 14 Jul 2025 15:42:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
- id 1ubNE3-00084b-IX
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 13:44:35 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1ubNm4-0003HJ-S7; Mon, 14 Jul 2025 14:19:43 -0400
+Received: from mail-co1nam11on20623.outbound.protection.outlook.com
+ ([2a01:111:f403:2416::623]
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
- id 1ubNE1-0007SL-9e
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 13:44:27 -0400
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56EGRJSE028585
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 17:44:23 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-type:date:from:in-reply-to:message-id:mime-version
- :references:subject:to; s=qcppdkim1; bh=v0mNUT3t4pJ7WP0OTN3Syjjs
- JCa2JH/LSyxrwHR7jY0=; b=KQ53ejZk9jbfHAOVMnkPzXPElY7mss36/qY5DVY/
- odBMJmrBPBzK3DNfluXrJqk2QCTOmNS0CTfHivwwrn1jpVxFyyP8DwPWXfnVPJB6
- RXfUKWhhiqk2NkeyWgimQOn96cIytLtJqSd6ze9PZ1mbCecPcOqMTAv1xsULIwMV
- eDhhEhrLnlWxHWGl1+YQFwcNN9zICBKt3W4oBDyMu71N3H0L78j8kXb3usUM4PlJ
- qz626/vJzqYz8Xlje9+msdqoPxC1Nx/4n/+H9aB3wglKk/LriSEWeUW6FMv6eQvy
- 8LZ8BEBtYe0l8+SibuYtEg+yDqs+euDMAGB8zamauRFa7Q==
-Received: from mail-yw1-f197.google.com (mail-yw1-f197.google.com
- [209.85.128.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 47w5dq0727-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 17:44:23 +0000 (GMT)
-Received: by mail-yw1-f197.google.com with SMTP id
- 00721157ae682-7111c6e53a6so74208217b3.3
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 10:44:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752515062; x=1753119862;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=v0mNUT3t4pJ7WP0OTN3SyjjsJCa2JH/LSyxrwHR7jY0=;
- b=pgyUsk1WwDad508f9v+hnLryS4LrJQtkkGaCU60BDozyJGOLmPN9t31AHiclAGSlyc
- ENVynpvaKnDabwJChfehspl5sndBNvzGjoLPxWSyEKkFW7WBZ4VOR62ZP4OVPZkr//Pt
- s8TDfqpt09bMmv5EFVzM2Avr0bJCu8T7up5oCc4J8bQifkRBNlNOUfZHhmFB7BzgXzaR
- yGa0Gc2GwSGlfBaccikWFa/2Dhb3AhoPgIKg75Bqg8+4S13qL17ifRvRMBZY1OCIGc0A
- FxSttc/eofUMKiZNgG3mpmJMd8nbdXIZKbpIUqB5sbZd0tCeTdW8IvjlYa+cGq+GqIiB
- IlHg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWR0YSxSzeH2DEptib1CKjLfyDJ16cRBa2VG+kC+WroUop3xX862lg40/BASsXNLLVVTwH0czvmFA==@nongnu.org
-X-Gm-Message-State: AOJu0YyD4EpE8sSgoAhXTJLfWCO/n8/G0mwu78uXH44YqVdAFw0LNb0b
- L5PSujwhlE/zi19HFdDQ2Yle4NTGFgl2Rn7tdeSvWwe7sC8NYQalcHWU8PWYadJAeFlQtopwrYu
- cqAK/f0pOhy7h0z5hRPtmfxvkukdAg8xygL2aVIpNRtyivpqXAEI6PYCiLx0r1kI4rTHxaIlkbd
- QEXqvfgcn6POdli6RFNPQ8PmQxFfS5cQ==
-X-Gm-Gg: ASbGncvq5kr1oOgp9iSjvAr7bJSxEv6gu5MigGGtGiMrUBCb/BAFxW+ZBUCpgZrnL7J
- 4ub54B6vS34ccVUE1YUtJQmEMFtzpKxMoTpvkEVtcB87vpARED2mz9k2cWJip94EBEROEsHrHRf
- 58T6KskR/SKToHveDRt48yUA==
-X-Received: by 2002:a05:690c:3383:b0:70e:2a0c:bc5 with SMTP id
- 00721157ae682-717d5e53c60mr207643447b3.38.1752515062192; 
- Mon, 14 Jul 2025 10:44:22 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHOOJD3eWIQvQNC+s80C7nnM8Vpqu4UMDcml6Rcr4y0x6/LzKPJzvyTqdb2l/fgM1bf2E4DlgiSwvcFgXZfRXc=
-X-Received: by 2002:a05:690c:3383:b0:70e:2a0c:bc5 with SMTP id
- 00721157ae682-717d5e53c60mr207643097b3.38.1752515061756; Mon, 14 Jul 2025
- 10:44:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1ubNm2-00039m-2R; Mon, 14 Jul 2025 14:19:36 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=I0U7GW5S49fNF2qtoK03rtCxQkx57XYjJRgEAyCycsB8SVwVnk1l2gWKeI4ldQe72dlRsGckDi4zK1BHlYfUAqYnZbUHkv+5iXyMklQI6T8TbvxfcKf19UXLA1dKxz239QJtS9y9yp2Qgtk4B5On3cIiKi8MRJeiv+xGAkZjWh8M97Eq6L7kPRsjAQtNi0IV4lkxRycdhE93pOM/JvRDThZ7BDu/SsCRMMU/jLX7XhlnZPjJv+Ful5eiNWBcztb+F49+hoWLYz1OYtMtOmUZz03qSjD03SgUKrgu24YRsmPrALbU4kDuJQHT1RVereelzUELj4/dtf5iGZ4K/WjSzQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=VUtZHClWZBqsJYuFhrMqemmWz8opNuhqknzHjzfeMyc=;
+ b=V01Uk95ffzBRp83S9IvNInB/fKooffI4jcx0Nkyy16PZtmAaPAd3B5rahxG0Oqh2l3l4XlxBk5tyoPJWj2/GnoYxDO49WwFhJFtBtlAhUgv6ignXr8dZsuLHAr/MZlDtfYzh1vzjlASJ3SZJ7IZ9VE1KJeF87S3TuBzKsleftiohht544uib9nxU70U5h2pCkmO/b1pq49LYRWsMs/4SBoQDuZagbWUnp9TPVQE4y1U8+fF18cbd1Lu0/ae06wRqC9555aQFesNPIw5tPK8BOYQclovbSm34VbsZPCpvouc/Y+a0zUyKAniF6GIge3QfRi8T0oYlN6NUbiaLM/0BBA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=VUtZHClWZBqsJYuFhrMqemmWz8opNuhqknzHjzfeMyc=;
+ b=FsHldOWQ5xyPEuy3VoO8vfLXS8lSZ7YN9udgB57LZazXIEoXN4pTLfrTI9RlhoUV6NZH41ALpyQLgcIAhCE0mMF5rCHvcWt3G3r3vQhYR1rHzYoSkTBtRhxYoD3nVzz3XDcyJ1LZEUpbAYpX01re3xColn3pqd+h4+pR2oCbxTr24pGhGMuM3PipGZlEnGpLYL14TiRENGuA+ejEkhIU8Cd33h2qwxGdSgmSEpWRW8LlWdQDaqUSGJSKWSQWrHWNpJ0UXOImeOgW3FwYXN1Op/n/LZcHi+WZ4+bWcmeqCUui11JK6Et0k644nlO8wSIJGbkl1BqmmhfG/8cpwqKKDQ==
+Received: from BY5PR03CA0010.namprd03.prod.outlook.com (2603:10b6:a03:1e0::20)
+ by PH7PR12MB6787.namprd12.prod.outlook.com (2603:10b6:510:1ad::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8880.34; Mon, 14 Jul
+ 2025 18:19:19 +0000
+Received: from SN1PEPF000397AE.namprd05.prod.outlook.com
+ (2603:10b6:a03:1e0:cafe::8b) by BY5PR03CA0010.outlook.office365.com
+ (2603:10b6:a03:1e0::20) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8922.32 via Frontend Transport; Mon,
+ 14 Jul 2025 18:19:19 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ SN1PEPF000397AE.mail.protection.outlook.com (10.167.248.52) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8922.22 via Frontend Transport; Mon, 14 Jul 2025 18:19:18 +0000
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Mon, 14 Jul
+ 2025 11:19:01 -0700
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail203.nvidia.com
+ (10.129.68.9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Mon, 14 Jul
+ 2025 11:19:00 -0700
+Received: from Asurada-Nvidia (10.127.8.10) by mail.nvidia.com (10.129.68.9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
+ Transport; Mon, 14 Jul 2025 11:18:59 -0700
+Date: Mon, 14 Jul 2025 11:18:58 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>, <jgg@nvidia.com>, <ddutile@redhat.com>,
+ <berrange@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <smostafa@google.com>, <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>,
+ <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
+ <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>,
+ <shameerkolothum@gmail.com>
+Subject: Re: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict accelerated
+ SMMUv3 to vfio-pci endpoints with iommufd
+Message-ID: <aHVKEhvaWK7E55Gw@Asurada-Nvidia>
+References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
+ <20250714155941.22176-7-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-References: <20250708221438.347643-1-vacha.bhavsar@oss.qualcomm.com>
- <CAFEAcA926Tur8wSvSyMQYJ6XXdiU9mNJZ=weW5x67sJJhjvBtA@mail.gmail.com>
-In-Reply-To: <CAFEAcA926Tur8wSvSyMQYJ6XXdiU9mNJZ=weW5x67sJJhjvBtA@mail.gmail.com>
-From: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-Date: Mon, 14 Jul 2025 13:44:10 -0400
-X-Gm-Features: Ac12FXyCVBv7QuDmKEU73OMW2k1G1h4l8sDmPUQEKITGLAHlYgFf7K8n5h9GaMk
-Message-ID: <CAEWVDmvQ-f-S0m_4cJLHkL=_YFRd_XAsoT9ENqPkirS7S8FMfw@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Added support for SME register exposure to GDB
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000b848130639e7357a"
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzE0MDExMSBTYWx0ZWRfX0ssvSAjkmRLD
- uOpZBu8SBWKvRlFrvemy1ViKxQYT0gS9CiQH01fl+DSUIoYBstrY/ZeSkmNUWrs59TQfy+2GX0T
- au5gu36J8A2XpC2Amw9aVc9Q/jOXloT+j0yy9qQ31J+F92GuzqyO1mT5p8dpiEOlK2DZ880uqqw
- nB5LNlNv9z381WOxEyHw86PtChSLvbiFarlesA31/Ojej6CZi/Yw130d2UmPW3dr2i9wqVlrj/A
- 21ut5dTT1iG+SzLQ3sBaXf+MS8NUojFLx0k8UD2EE+guEMaLpQhfXOXZfkecYHUXGqN1T6ZCwoz
- YRDRILAz0jjFZKJqlKER0RP0qZxmaQSWIEWKywpIiwYV7L39ObAuodu2qEJPXCrSbJ7MGumOX9Q
- eiJ42UaGeXVEB2zq7cv43Gk97T6jBaRCcuvdc+fGP9SVlzPHP38IXODjYkYV31cTr7FTXhxV
-X-Proofpoint-ORIG-GUID: 29-QVcziIFkOVJYoisAd3c4e8WgIIWA6
-X-Proofpoint-GUID: 29-QVcziIFkOVJYoisAd3c4e8WgIIWA6
-X-Authority-Analysis: v=2.4 cv=MpZS63ae c=1 sm=1 tr=0 ts=687541f7 cx=c_pps
- a=0mLRTIufkjop4KoA/9S1MA==:117 a=Wb1JkmetP80A:10 a=CCpqsmhAAAAA:8
- a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=-xDvZEp21uBOt8-AmmQA:9 a=QEXdDO2ut3YA:10
- a=HjjZBBvkAAAA:8 a=Tx_GloIAqaujV6Ljk-MA:9 a=__uGHG7-Az12UziK:21
- a=lqcHg5cX4UMA:10 a=WgItmB6HBUc_1uVUp3mg:22 a=ul9cdbp4aOFLsgKbc677:22
- a=cvBusfyB2V15izCimMoJ:22 a=yryXaR-spxf4diMYRkVC:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.7,FMLib:17.12.80.40
- definitions=2025-07-14_02,2025-07-14_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 phishscore=0 priorityscore=1501 malwarescore=0 spamscore=0
- impostorscore=0 mlxscore=0 clxscore=1015 adultscore=0 bulkscore=0
- lowpriorityscore=0 mlxlogscore=999 classifier=spam authscore=0 authtc=n/a
- authcc= route=outbound adjust=0 reason=mlx scancount=1
- engine=8.19.0-2505280000 definitions=main-2507140111
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=vacha.bhavsar@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20250714155941.22176-7-shameerali.kolothum.thodi@huawei.com>
+X-NV-OnPremToCloud: AnonymousSubmission
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN1PEPF000397AE:EE_|PH7PR12MB6787:EE_
+X-MS-Office365-Filtering-Correlation-Id: 96ecb917-dc48-49d9-7d20-08ddc302f300
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|36860700013|376014|82310400026|7416014; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?NirUbhn29Owg6A3Ci7Kt/FCxskpqyyPlU6pxnh+u5ItGGeR9d6I/Hn2p6Yp7?=
+ =?us-ascii?Q?2TMsbd3Bg3dUOWJEIR4tbqOCeROOyGEcL4kpaNMeIr6jYRf/uiqNMh03BerG?=
+ =?us-ascii?Q?BMLIMdSzcTbkQrS/VOZOQoigM7MF6Bcq7a6Xu2wYu1wSiuPIozcTDLrBW0B1?=
+ =?us-ascii?Q?YQNYNECM4Ch5PWW/44tyCytPeKZMuXyiaKxxEP2e5qdtT2HCFDZYNc9rgcHe?=
+ =?us-ascii?Q?mnc4RNUT1AInxXx3lmO2TJ+FMKVM7fdVjtD7tQWDUvef6ArHCxxey3L8KRgI?=
+ =?us-ascii?Q?UctNOAAI8T+8sesdFLiWgmOHc5sV5Wp3uV2x+Q2lxzcG9812/ZKindDVkLLU?=
+ =?us-ascii?Q?JGMh104tGDQ6V7+aMfV8JzGjD8lwjTHolyaccYWXWv5GZeWmhvlkFiM+8lqj?=
+ =?us-ascii?Q?QzvKufmWcYsOg0MNkj/aZ7VNtMoOZuufvzlEePr0W6/BXdRP0pwgHeHqQHXQ?=
+ =?us-ascii?Q?8BIuJI5Xn1hcmRlWOkDaMiZqEUZbQp8kgKnCKiIg3x5Vxbo3ed4hL90DN5oh?=
+ =?us-ascii?Q?vSI+5tV5VYKMnwLiE32mBynjrfjrCzijpgfCzrNksaHUg4CAmp5hORUqglHE?=
+ =?us-ascii?Q?qFkofDZ7GdKTKTIUGA6oo4Q4+KfiisEEi60nkRf5pv4TNf6knfj9Gshlc9hR?=
+ =?us-ascii?Q?q+A1fYRteHPNJnf02EG+qib7LTDbyGKIAI/w6VyEaNO7VmeOdlTu9SEsqLyU?=
+ =?us-ascii?Q?46IUSN/dQ6LDOeHyeoM18T5NkRMY4qj7BakHKB1ipP2aq3Gh0FPCj/w3x68C?=
+ =?us-ascii?Q?j587crvcvBOhU/t+QbJAeDGubxIpEKQ6+1k10KAMCIx+a1kQfbhutp4Njtrq?=
+ =?us-ascii?Q?CKnq7M1JYPQpQEWuaM6yBhycf64G+X/THsUH2GGIi2zev4V7ks0uZ5ohEPNB?=
+ =?us-ascii?Q?l2HT8E9x0Y5oPlUOzNlzKGAi4ummAdAswMCe8BezeLG6zkZbv/aIsg7OpLFe?=
+ =?us-ascii?Q?pcpG1IyvlL4iwoePZVGZo2w6SW8XUOxrWKz66LxTFFTTL3sHsd+w2bPCT5or?=
+ =?us-ascii?Q?gIx3pNwgfnWR66gcX/XLN1g3LpFNqgHlQZt9n8EXK1CO74huIo7eP4iYWiqQ?=
+ =?us-ascii?Q?39K9xZ5UXTsvZzErx733wSGUCQ9U61qhFthbpOZnQvGjFKHfkrl/MkRHNlEL?=
+ =?us-ascii?Q?zkLEdMIGCEFRFcsf/kwYJ1IyQH2ceZSd4J890dzJB3L14LXuK/HZn1Lw6MCl?=
+ =?us-ascii?Q?y3s3RF0Q4K4CHDz9PwVZGMVUWPUocC+hPlA05X8jjNbfcgcUhOx22//ax2Sc?=
+ =?us-ascii?Q?jterfww0Km9tP7N2rG6JTfLAhESZRppBtMddxmgiM0nZeKNs1/gQOyZzLHy2?=
+ =?us-ascii?Q?lK6MKaynOs77q29+XZXa0DFzyoRRQrHyN6T2+QvmsYOcJUHtNOOG0EEdLwIK?=
+ =?us-ascii?Q?esoSZH3GzgmyY1CxeKngd9P6CbYd8Dt8juOSCuVZb6V+quLvjpFpZgloH19V?=
+ =?us-ascii?Q?Ikd2HZkQJdADA7ZAMLDmuKi4Y0MfwOYu8UK9Vv4NEcLccxiFngy/w9pfuZxJ?=
+ =?us-ascii?Q?Y+nBxxV/7aKNTPD4xrVyhkg3F5oktKfFh3cH?=
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(1800799024)(36860700013)(376014)(82310400026)(7416014); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jul 2025 18:19:18.9236 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 96ecb917-dc48-49d9-7d20-08ddc302f300
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: SN1PEPF000397AE.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB6787
+Received-SPF: permerror client-ip=2a01:111:f403:2416::623;
+ envelope-from=nicolinc@nvidia.com;
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,258 +161,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000b848130639e7357a
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Mon, Jul 14, 2025 at 04:59:32PM +0100, Shameer Kolothum wrote:
+> Accelerated SMMUv3 is only useful when the device can take advantage of
+> the host's SMMUv3 in nested mode. To keep things simple and correct, we
+> only allow this feature for vfio-pci endpoint devices that use the iommufd
+> backend. We also allow non-endpoint emulated devices like PCI bridges and
+> root ports, so that users can plug in these vfio-pci devices.
+> 
+> Another reason for this limit is to avoid problems with IOTLB
+> invalidations. Some commands (e.g., CMD_TLBI_NH_ASID) lack an associated
+> SID, making it difficult to trace the originating device. If we allowed
+> emulated endpoint devices, QEMU would have to invalidate both its own
+> software IOTLB and the host's hardware IOTLB, which could slow things
+> down.
 
-Hi Peter,
+Change looks good to me,
 
-Thank you for the feedback! I have sent over a revised version of this
-patch with appropriate changes. I have removed the unnecessary comments
-regarding the zregs, and also corrected the typo, "out our" to "out of" in
-the comments. Additionally, I have used aarch64_set_svcr to correctly set
-the 64 bit value of SVCR.
+Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
 
-Regarding your question on whether the code handling the reading of the ZA
-storage would work on a big-endian host, I believe it would. I think this
-also applies to the pre-existing SVE code as well, based off of what I have
-read from this GDB documentation (
-https://sourceware.org/gdb/download/onlinedocs/gdb#Packets) which states
-the following:
+Some nits:
 
-=E2=80=98P n=E2=80=A6=3Dr=E2=80=A6=E2=80=99
-Write register n=E2=80=A6 with value r=E2=80=A6. The register number n is i=
-n hexadecimal,
-and r=E2=80=A6 contains two hex digits for each byte in the register (targe=
-t byte
-order).
+> Since vfio-pci devices in nested mode rely on the host SMMUv3's nested
+> translation (S1+S2), their get_address_space() callback must return the
+> system address space to enable correct S2 mappings of guest RAM.
+>
+> So in short:
+>  - vfio-pci devices return the system address space
+>  - bridges and root ports return the IOMMU address space
 
-From this, I believe the QEMU GDB stub is already expecting the register
-content in target byte order, leaving this responsibility to the client.
-Based on this, I believe the pre-existing SVE code and my SME code should
-correctly work on big-endian hosts.
+I think we can spare a few more words here and in the code too:
+(a) A vfio-pci device in an accelerated mode doesn't need any of
+    the features from the iommu address space, since translation
+    and IOTLB maintenance will be handled by the real hardware.
+(b) In the HW accelerated mode, the VFIO core will allocate the
+    S2 nesting parent HWPT on top of a core-managed IOAS for S2
+    mappings. So, returning the system address space allows to
+    take advantage of that.
+(c) The reason why bridges and root ports can't use the system
+    address space.
 
-Looking forward to your feedback!
+Feel free to organize these in your preferred words.
 
-Thanks,
-Vacha
+> Note: On ARM, MSI doorbell addresses are also translated via SMMUv3.
+> Hence, if a vfio-pci device is behind the SMMuv3 with translation enabled,
 
-On Mon, Jul 14, 2025 at 6:30=E2=80=AFAM Peter Maydell <peter.maydell@linaro=
-.org>
-wrote:
+s/SMMuv3/SMMUv3
+  
+> +static bool smmuv3_accel_pdev_allowed(PCIDevice *pdev, bool *vfio_pci)
+> +{
+> +
+> +    if (object_dynamic_cast(OBJECT(pdev), TYPE_PCI_BRIDGE) ||
+> +        object_dynamic_cast(OBJECT(pdev), "pxb-pcie") ||
 
-> On Tue, 8 Jul 2025 at 23:14, Vacha Bhavsar
-> <vacha.bhavsar@oss.qualcomm.com> wrote:
-> >
-> > The QEMU GDB stub does not expose the ZA storage SME register to GDB vi=
-a
-> > the remote serial protocol, which can be a useful functionality to debu=
-g
-> SME
-> > code. To provide this functionality in Aarch64 target, this patch
-> registers the
-> > SME register set with the GDB stub. To do so, this patch implements the
-> > aarch64_gdb_get_sme_reg() and aarch64_gdb_set_sme_reg() functions to
-> > specify how to get and set the SME registers, and the
-> > arm_gen_dynamic_smereg_feature() function to generate the target
-> > description in XML format to indicate the target architecture supports
-> SME.
-> > Finally, this patch includes a dyn_smereg_feature structure to hold thi=
-s
-> > GDB XML description of the SME registers for each CPU.
-> >
-> > Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
->
->
->
-> > +int aarch64_gdb_set_sme_reg(CPUState *cs, uint8_t *buf, int reg)
-> > +{
-> > +    ARMCPU *cpu =3D ARM_CPU(cs);
-> > +    CPUARMState *env =3D &cpu->env;
-> > +
-> > +    /* The first 32 registers are the zregs */
-> > +    switch (reg) {
-> > +    /* The first 32 registers are the zregs */
->
-> You don't need the same comment twice, and it also doesn't
-> look like it makes sense here, because the zregs are
-> SVE regs, not SME regs.
->
-> > +    case 0:
-> > +    {
-> > +        /* cannot set svg via gdbstub */
-> > +        return 0;
-> > +    }
-> > +    case 1:
-> > +        env->svcr =3D *buf & 0x03;
->
-> This will update env->svcr but won't have the correct effects
-> on the CPU (e.g. zeroing the ZA storage); I think you need to
-> call aarch64_set_svcr() here. Also you've declared
-> SVCR in the XML as a 64-bit register, so you should read it out
-> of the buffer as a 64-bit value, not short-cut by reading just
-> one byte.
->
-> > +        return 8;
-> > +    case 2:
-> > +        int vq, len =3D 0;
-> > +        int svl =3D cpu->sve_max_vq * 16;
-> > +        uint64_t *p =3D (uint64_t *) buf;
->
-> I know this is what the existing SVE code does, but does
-> this really do the right thing on a big-endian host ?
->
-> > +        for (int i =3D 0; i < svl; i++) {
-> > +            for (vq =3D 0; vq < cpu->sve_max_vq; vq++) {
-> > +                env->za_state.za[i].d[vq * 2 + 1] =3D *p++;
-> > +                env->za_state.za[i].d[vq * 2] =3D *p++;
-> > +                len +=3D 16;
-> > +            }
-> > +        }
-> > +        return len;
-> > +    default:
-> > +        /* gdbstub asked for something out our range */
->
-> "out of"
->
-> > +        break;
-> > +    }
-> > +
-> > +    return 0;
-> > +}
->
-> (PS: I would consider this close enough to being a bugfix to be
-> OK with putting it into 10.1 in the first rc cycle or so even
-> if it misses softfreeze.)
->
-> thanks
-> -- PMM
->
-
---000000000000b848130639e7357a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi Peter,<br><br>Thank you for the feedback! I have sent o=
-ver a revised version of this patch with appropriate changes. I have remove=
-d the unnecessary comments regarding the zregs, and also corrected the typo=
-, &quot;out our&quot; to &quot;out of&quot; in the comments. Additionally, =
-I have used aarch64_set_svcr to correctly set the 64 bit value of SVCR.<br>=
-<br>Regarding your question on whether the code handling the reading of the=
- ZA storage would work on a big-endian host, I believe it would. I think th=
-is also applies to the pre-existing SVE code as well, based off of what I h=
-ave read from this GDB documentation (<a href=3D"https://sourceware.org/gdb=
-/download/onlinedocs/gdb#Packets" target=3D"_blank">https://sourceware.org/=
-gdb/download/onlinedocs/gdb#Packets</a>) which states the following:<br><br=
->=E2=80=98P n=E2=80=A6=3Dr=E2=80=A6=E2=80=99<br>Write register n=E2=80=A6 w=
-ith value r=E2=80=A6. The register number n is in hexadecimal, and r=E2=80=
-=A6 contains two hex digits for each byte in the register (target byte orde=
-r).<br><br>From this, I believe the QEMU GDB stub is already expecting the =
-register content in target byte order, leaving this responsibility to the c=
-lient. Based on this, I believe the pre-existing SVE code and my SME code s=
-hould correctly work on big-endian hosts.<br><br>Looking forward to your fe=
-edback!<br><br>Thanks,<br>Vacha</div><br><div class=3D"gmail_quote"><div di=
-r=3D"ltr" class=3D"gmail_attr">On Mon, Jul 14, 2025 at 6:30=E2=80=AFAM Pete=
-r Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_blank"=
->peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmai=
-l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
-4,204);padding-left:1ex">On Tue, 8 Jul 2025 at 23:14, Vacha Bhavsar<br>
-&lt;<a href=3D"mailto:vacha.bhavsar@oss.qualcomm.com" target=3D"_blank">vac=
-ha.bhavsar@oss.qualcomm.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; The QEMU GDB stub does not expose the ZA storage SME register to GDB v=
-ia<br>
-&gt; the remote serial protocol, which can be a useful functionality to deb=
-ug SME<br>
-&gt; code. To provide this functionality in Aarch64 target, this patch regi=
-sters the<br>
-&gt; SME register set with the GDB stub. To do so, this patch implements th=
-e<br>
-&gt; aarch64_gdb_get_sme_reg() and aarch64_gdb_set_sme_reg() functions to<b=
-r>
-&gt; specify how to get and set the SME registers, and the<br>
-&gt; arm_gen_dynamic_smereg_feature() function to generate the target<br>
-&gt; description in XML format to indicate the target architecture supports=
- SME.<br>
-&gt; Finally, this patch includes a dyn_smereg_feature structure to hold th=
-is<br>
-&gt; GDB XML description of the SME registers for each CPU.<br>
-&gt;<br>
-&gt; Signed-off-by: Vacha Bhavsar &lt;<a href=3D"mailto:vacha.bhavsar@oss.q=
-ualcomm.com" target=3D"_blank">vacha.bhavsar@oss.qualcomm.com</a>&gt;<br>
-<br>
-<br>
-<br>
-&gt; +int aarch64_gdb_set_sme_reg(CPUState *cs, uint8_t *buf, int reg)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 ARMCPU *cpu =3D ARM_CPU(cs);<br>
-&gt; +=C2=A0 =C2=A0 CPUARMState *env =3D &amp;cpu-&gt;env;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* The first 32 registers are the zregs */<br>
-&gt; +=C2=A0 =C2=A0 switch (reg) {<br>
-&gt; +=C2=A0 =C2=A0 /* The first 32 registers are the zregs */<br>
-<br>
-You don&#39;t need the same comment twice, and it also doesn&#39;t<br>
-look like it makes sense here, because the zregs are<br>
-SVE regs, not SME regs.<br>
-<br>
-&gt; +=C2=A0 =C2=A0 case 0:<br>
-&gt; +=C2=A0 =C2=A0 {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* cannot set svg via gdbstub */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 case 1:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 env-&gt;svcr =3D *buf &amp; 0x03;<br>
-<br>
-This will update env-&gt;svcr but won&#39;t have the correct effects<br>
-on the CPU (e.g. zeroing the ZA storage); I think you need to<br>
-call aarch64_set_svcr() here. Also you&#39;ve declared<br>
-SVCR in the XML as a 64-bit register, so you should read it out<br>
-of the buffer as a 64-bit value, not short-cut by reading just<br>
-one byte.<br>
-<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 8;<br>
-&gt; +=C2=A0 =C2=A0 case 2:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 int vq, len =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 int svl =3D cpu-&gt;sve_max_vq * 16;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 uint64_t *p =3D (uint64_t *) buf;<br>
-<br>
-I know this is what the existing SVE code does, but does<br>
-this really do the right thing on a big-endian host ?<br>
-<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 for (int i =3D 0; i &lt; svl; i++) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 for (vq =3D 0; vq &lt; cpu-=
-&gt;sve_max_vq; vq++) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 env-&gt;<a hr=
-ef=3D"http://za_state.za" rel=3D"noreferrer" target=3D"_blank">za_state.za<=
-/a>[i].d[vq * 2 + 1] =3D *p++;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 env-&gt;<a hr=
-ef=3D"http://za_state.za" rel=3D"noreferrer" target=3D"_blank">za_state.za<=
-/a>[i].d[vq * 2] =3D *p++;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 len +=3D 16;<=
-br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return len;<br>
-&gt; +=C2=A0 =C2=A0 default:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* gdbstub asked for something out our ra=
-nge */<br>
-<br>
-&quot;out of&quot;<br>
-<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 return 0;<br>
-&gt; +}<br>
-<br>
-(PS: I would consider this close enough to being a bugfix to be<br>
-OK with putting it into 10.1 in the first rc cycle or so even<br>
-if it misses softfreeze.)<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div>
-
---000000000000b848130639e7357a--
+"TYPE_PXB_PCIE_DEV" since we moved it to the header in this patch.
 

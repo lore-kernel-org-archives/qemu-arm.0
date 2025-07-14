@@ -4,92 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA26FC83F1D
-	for <qemu-arm@archiver.kernel.org>; Sun, 13 Jul 2025 22:00:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B613C83F17
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 01:07:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ub4kc-0007PS-Jg; Sun, 13 Jul 2025 18:00:50 -0400
+	id 1ub7eY-0001dc-0N; Sun, 13 Jul 2025 21:06:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ub4jL-0005sP-C5
- for qemu-arm@nongnu.org; Sun, 13 Jul 2025 17:59:34 -0400
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ub4jJ-0002HV-Rw
- for qemu-arm@nongnu.org; Sun, 13 Jul 2025 17:59:31 -0400
-Received: by mail-ot1-x32c.google.com with SMTP id
- 46e09a7af769-73d0152369fso984560a34.2
- for <qemu-arm@nongnu.org>; Sun, 13 Jul 2025 14:59:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752443968; x=1753048768; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=F781/ZweNMEa/HSDrQo9cJhkIzkPsp9k1uQLm+4+NUQ=;
- b=LCsYzqfmmmiVEhlOgQWjo9mrTEGjWYGrOE0+6QgaM2/6jxiLqH1i0pYC0/z/Rmu1aS
- S0ywO+FaEnzMvmpc/IZbeXGpFlZ1v18AkIFTw2oa6jSgEb+BdSS8+R5Oxs4Yr+j57++K
- GCIVD+r8mP5C1TSge2mr6/nYTPb6LqcDHJsiOTDu2HitwSqM+qMZH56O07cgFl5T6MlC
- gNQ7RYCzlKST+w6/tz4SxCxJkbhoSAXUiBbE2GFcq0fwmFzo3zHfLF9mAZCq11WB/3XY
- c+4WezG6Jrt/OzxWEDhDt7DTG5aTKrfsyDOd/e1U9MkW5fVHvhUpVdPvlIBukX6Il67Y
- 72HQ==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ub7WA-0004aS-7y
+ for qemu-arm@nongnu.org; Sun, 13 Jul 2025 20:58:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ub7W7-0006Cs-Vj
+ for qemu-arm@nongnu.org; Sun, 13 Jul 2025 20:58:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1752454682;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qUmVGWmiQ9qj6UDI8yyGeFapyi86on9NnjOakrMOqpk=;
+ b=dRXJpggdnodJlRz4Gi43UWYC+u1IxD/tYIPF1Mzd5W1x0Ro8wxCrn/0LQkT4s7sWta/i5a
+ W4PUReM5m/M3qMWxOGfa2qskh5QEulo2ZGjQIfjUHXzpZsojpoeMN5UEDqj91+/f2k+grx
+ tFQJqToBqx/CL/CIxIYXwpfzuWvIDiw=
+Received: from mail-pg1-f199.google.com (mail-pg1-f199.google.com
+ [209.85.215.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-573-hR_G6A1nNWa10aLQAJE2mw-1; Sun, 13 Jul 2025 20:56:41 -0400
+X-MC-Unique: hR_G6A1nNWa10aLQAJE2mw-1
+X-Mimecast-MFC-AGG-ID: hR_G6A1nNWa10aLQAJE2mw_1752454600
+Received: by mail-pg1-f199.google.com with SMTP id
+ 41be03b00d2f7-b362d101243so3110047a12.0
+ for <qemu-arm@nongnu.org>; Sun, 13 Jul 2025 17:56:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752443968; x=1753048768;
+ d=1e100.net; s=20230601; t=1752454600; x=1753059400;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=F781/ZweNMEa/HSDrQo9cJhkIzkPsp9k1uQLm+4+NUQ=;
- b=awB8Tq7SIKwXlgj5MF1UK1KABBItZXXTzeTdLL/MLtOC+L9MPutMCUWsiGIxCijyzB
- zLnTXESeZ4z3aVi+lV/SIcuXV+ASDM3lHpBpJp/SihJT/5hgcnlTx5H/Z9uyP8lo3fME
- x5BGW1Guq5eyo9ElltqgUaPHlYaSiIkQ3/A7Wqqq8wCblGM6Uaczuhttlv3LG2QPl+Gt
- 2IRuoIVaJqfPSIfYhvewGbygMuXFVFgNk7gFLZou5F2dCP2jUvuw4fAAjLkzCj2FBkAQ
- 6IsgjOfKcpDt5EZ4ahQsxdiZDoVfc9bq+0E6DmIINvoDD+FJBvawNV0epBWTnISWdmiP
- P8rg==
+ bh=qUmVGWmiQ9qj6UDI8yyGeFapyi86on9NnjOakrMOqpk=;
+ b=N3MEIIGxkJ02RW12NW9gqwx3RUWluoe0jxyYv0/VDd2dYquuAe2lBZWl3Qt0Qr/rTt
+ ht1RVZXqxyD3m7UuMdR1ZjgTbuirW05gdqQT1KAzbU7YmDHwMd5UHengQ9QM1LzTUoQi
+ UL14BJ+4DGzhfQbs8iw5d3WedDs5ihxNqZEekZxfQxHtHBk5bqhRxj15LL4rvKNZbYZh
+ etOE5x/Wm05V8JgZ5qGJKegax1qEcb36NeBLwwZDWhaMR+K5fkhB8TYtNdSyoziXgd8U
+ 9sT6Y4piwEdf20sXJVkMKDIrGs1E3ISaWqnqQqU1CjZbdIf4V/OexeGOAD4BR2IHjZWN
+ eU3w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVX+E6U/SASW7aoylqSDSopwPnseLcZAhdsGMiuwuwcsooNzPQEYYEkjghITtcbRhTyislfGc7oLg==@nongnu.org
-X-Gm-Message-State: AOJu0Yzi3p58gKJxZgL58uR+1LcocEjqd1chyg9+9Df7ZL8PJByy28OG
- RxMgXibY4WhCUjyHLyE3lHotk1+oVRXPfs56BZjo7YrfkavEBA3RT3tk8V3RhjwMP0U=
-X-Gm-Gg: ASbGncsWJi3uGy6OBtJq7zqO8lPIAFL7pwLVJTzkPulWNQ3O8aPHu5w9U9c0vtry93H
- Qv7eaDBe1kKVzGYXNznXBkrSas7TC6WdHYJMZ6/FOjwodQAlajUYoy6VxC9WfgoX5YVGPBU48Vf
- HHrvv9ulBObBAFGtlaj2SA6IphKxD6tjDIcQpwYowCtF3HhxivU7L9eQSsJ5t4Q7tO8HpazB+A/
- LwdVwwQGPon70jR3zEIuPXbF8b1g6lciUwtwyUw8qntBcjm3xDnCEgplGxTT2o2AAVgTSOeaXIE
- 0sWD49YJQc/JRwrsT9HDuORDtW6Wg0IbLq39+bN3em15cGhKv+kZMa2U/5JLZabrI2BwbfmMIZp
- 7Cp/FEJgXfzAEMU542jNaT4MBYqjb8v17g6wGpFw=
-X-Google-Smtp-Source: AGHT+IHn5yu02dAQgwR7An95BbiRtPADOwZiX2BwJeFLdxmE1bIl/Acng/XutQ7lHbdGXjS08SgnSw==
-X-Received: by 2002:a05:6808:171a:b0:40a:56aa:c806 with SMTP id
- 5614622812f47-415397b924bmr7292461b6e.22.1752443968212; 
- Sun, 13 Jul 2025 14:59:28 -0700 (PDT)
-Received: from [172.20.0.130] ([187.217.227.247])
- by smtp.gmail.com with ESMTPSA id
- 5614622812f47-4141bbde341sm1335946b6e.27.2025.07.13.14.59.26
+ AJvYcCVJC+RcMicKw2G4a+NHToRaJFL1XWyGkglQsjsPIWdQKeQC37TRWeeIYwARN+7WXY3xb/HtSPHtvg==@nongnu.org
+X-Gm-Message-State: AOJu0Yx/eHV0b5zPAXHJn8QgGe60Slqu/vX9Ui3PS5APWJoBQRie5R3c
+ +sf721tcbvEN8B2IHcsInaqIeVhKijXO79bX1a4U5y2GiqXKmeGK/Dgic6nTXYKL5KVYiBNc1AR
+ LWk1ma4wNEsWO2K8bl1P+dITl5ux66rDRslm5LT1TKT8j3zI6ORyt9w==
+X-Gm-Gg: ASbGncvV/ODZApy6r8BvA837zl709jR9mdibb/G9ZENTksZZ+zyQmJ3FmU2BYoWPoc3
+ ySeVg0gcIyB45n60HtVWWgT3FxTNX3jZDOmcVgg2UHxHjxoOK63dGBigC0/2cfDXY4YzSs/v3d2
+ yt1R5ay3XZp9ToYMf1Qehj0dobGddRYjf+kKo+gCvlWxQU5sO6F0pjZbALvSepHXMNCWc3lEObc
+ dtkn9HlFh0yN/zaChZghUZ6M/prEAeQWREt8Tqz2FUBU6BVVXSEUhHflxR3/TQin0U4O+bRZk91
+ AYgB9ruFuvguVBlB5hdq1bEH/KaqkbW99xlWNZHpza+eZsioJUBKhGeyeJyWkbeiUB+Ix4eIVjM
+ BMt4=
+X-Received: by 2002:a05:6a20:a108:b0:1f5:95a7:8159 with SMTP id
+ adf61e73a8af0-2313504eae8mr16344000637.10.1752454599972; 
+ Sun, 13 Jul 2025 17:56:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEuM+Zi92A0hbUgn10WrjgmwNif+FKdGvokkBLHmwp/rW6/7cd0fjnuie824/YWyiFVdE8dUA==
+X-Received: by 2002:a05:6a20:a108:b0:1f5:95a7:8159 with SMTP id
+ adf61e73a8af0-2313504eae8mr16343960637.10.1752454599481; 
+ Sun, 13 Jul 2025 17:56:39 -0700 (PDT)
+Received: from [192.168.68.51] (n175-34-62-5.mrk21.qld.optusnet.com.au.
+ [175.34.62.5]) by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-b3bbe727e33sm9168382a12.68.2025.07.13.17.56.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 13 Jul 2025 14:59:27 -0700 (PDT)
-Message-ID: <21bfbfaa-f0df-413d-bad6-b69688ac381a@linaro.org>
-Date: Sun, 13 Jul 2025 15:59:24 -0600
+ Sun, 13 Jul 2025 17:56:38 -0700 (PDT)
+Message-ID: <05605650-2dd2-4abf-b0a5-f727753db7f5@redhat.com>
+Date: Mon, 14 Jul 2025 10:56:28 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 4/6] target/arm: Add FEAT_TCR2
-To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: qemu-devel@nongnu.org
-References: <20250711140828.1714666-1-gustavo.romero@linaro.org>
- <20250711140828.1714666-5-gustavo.romero@linaro.org>
+Subject: Re: [PATCH v10 (RESEND) 00/20] Change ghes to use HEST-based offsets
+ and add support for error inject
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Ani Sinha <anisinha@redhat.com>,
+ Dongjiu Geng <gengdongjiu1@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Yanan Wang
+ <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ kvm@vger.kernel.org, Cleber Rosa <crosa@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Eric Blake <eblake@redhat.com>,
+ John Snow <jsnow@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ linux-kernel@vger.kernel.org
+References: <cover.1749741085.git.mchehab+huawei@kernel.org>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <cover.1749741085.git.mchehab+huawei@kernel.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: qUdeY-hANIAUBb8fnvb9XFf5NCsdf6r9tvHZNs-I0Tg_1752454600
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250711140828.1714666-5-gustavo.romero@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32c;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,24 +127,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/11/25 08:08, Gustavo Romero wrote:
-> Add FEAT_TCR2, which introduces the TCR2_EL1 and TCR2_EL2 registers.
-> These registers are extensions of the TCR_ELx registers and provide
-> top-level control of the EL10 and EL20 translation regimes.
+Hi Mauro,
+
+On 6/13/25 1:17 AM, Mauro Carvalho Chehab wrote:
+> Hi Michael,
 > 
-> Since the bits in these registers depend on other CPU features, and only
-> FEAT_MEC is supported at the moment, the FEAT_TCR2 only implements the
-> AMEC bits for now.
+> This is v10 of the patch series, rebased to apply after release
+> 10.0. The only difference against v9 is a minor confict resolution.
 > 
-> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-This causes a regression in tests/functional/test_aarch64_device_passthrough.py, by 
-continually trapping on an access to TCR2_EL1 while the HCRX_EL2 enable bit is not set.
+> I sent already the patch with conflicts, but, as you didn't pick,
+> I'm assuming you're opting to see the entire series again, as it
+> could make easier for you to use b4 or some other script you may
+> use to pick patches. So, let me resend the entire series.
+> 
+> It is nearly identical to v9 which addressed 3 issues:
+> 
+> - backward compatibility logic moved to version 10.0;
+> - fixed a compilation issue with target/arm/kvm.c (probably
+>    caused by some rebase - funny enough, incremental
+>    compilation was fine here);
+> - added two missing SPDX comments.
+> 
+> As ghes_record_cper_errors() was written since the beginning
+> to be public and used by ghes-cper.c. It ended being meged
+> earlier because the error-injection series become too big,
+> so it was decided last year to split in two to make easier for
+> reviewers and maintainers to discuss.
+> 
+> This series change the way HEST table offsets are calculated,
+> making them identical to what an OSPM would do and allowing
+> multiple HEST entries without causing migration issues. It open
+> space to add HEST support for non-arm architectures, as now
+> the number and type of HEST notification entries are not
+> hardcoded at ghes.c. Instead, they're passed as a parameter
+> from the arch-dependent init code.
+> 
+> With such issue addressed, it adds a new notification type and
+> add support to inject errors via a Python script. The script
+> itself is at the final patch.
+> 
+> ---
+> 
+> v10:
+> - rebased on the top of current upstream:
+>    d9ce74873a6a ("Merge tag 'pull-vfio-20250611' of https://github.com/legoater/qemu into staging")
+> - solved a minor conflict
+> 
 
-Unlike the similar SCTRL2 failure, it's not 100% clear to me how the guest and nested 
-guest kernels are related.  But it is clear that the outer kernel does not does not 
-support TCR2_EL1 (and also doesn't manipulate ID_AA64MMFR3_EL1 to hide FEAT_TCR2), but the 
-nested guest kernel does support TCR2_EL1.
+[...]
+
+Just head up to check if this series has been merged? I don't see those patches
+show up in the latest upstream QEMU yet. The reason why I'm asking is the subsequent
+fix [1], which depends on this series.
+
+[1] https://lists.nongnu.org/archive/html/qemu-devel/2025-05/msg06433.html
+
+Thanks,
+Gavin
 
 
-r~
 

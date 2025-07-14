@@ -4,85 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0BCAC83F1A
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 17:10:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39448C83F1A
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 17:11:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubMfW-0003Ny-1i; Mon, 14 Jul 2025 13:08:46 -0400
+	id 1ubMhb-0006SH-SZ; Mon, 14 Jul 2025 13:10:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ubLZw-00036L-Oy
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 11:58:59 -0400
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ubLZs-0007nu-N6
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 11:58:55 -0400
-Received: by mail-pf1-x429.google.com with SMTP id
- d2e1a72fcca58-7426c44e014so4269117b3a.3
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 08:58:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752508730; x=1753113530; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=IkWKrmPvGxfDEFpWqVjHc4jDew6BiM/rgpCdg4haG3g=;
- b=hQmNG5+h6hcMxfB7nPhkK6WlT/4pHPVHWh+IK4uNLIqvcAnEPUQJieS349fbN0EjlY
- p87UaEnA3IOq/BS1eYWn5IjbtEOdPO6pgoHsf7bidD7OVRQlCIuzDLvhboVjfA4WauD9
- 6qmgmDFyYDDIwuz9nYxrREvc3lZnsDGZoCOPL3otZh6tzB7R8Dgc9lCN+7C7mSWZbdPd
- iyhBWQOpXNc2RVCA9FPkLzAt7LZ89AFpPrjQzEfcV5OcKR/PdpWC37bDaNBqcRomYZXh
- 4OIK+N6ZfWVPa3eFMPDfjnVhVEga0z3f1ihYUV0YOzuJ2hMAOq3Sv7hu3sORLsgH+Cbe
- wF0A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752508730; x=1753113530;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=IkWKrmPvGxfDEFpWqVjHc4jDew6BiM/rgpCdg4haG3g=;
- b=CblNTYSe/uSbcwu7xEuXrWuWaWxME+3h/JmOgaA95yOkdIsHm6GdWmZ+36ZM9MsZp1
- F4uAHtLmMhGbw3t78LL8DBLheeWiJrZ3pdQsfmCXIdlllm2HRjvqKkrqSG9ZfHW1ZDn0
- fpoJA4X8U6ipczHO0b7gz/E9vacovpRBjsB/CUKDokYUVsiLtcUTd0VDQaM9I2jYYkJx
- F7w1eaCcyvKfb5cKJnBJgm4nxPh7WxF+5C5U4QQ3TkLKHeyRaH5Jdxgo1w07nVRiOtU6
- 0z/vExCrAKATem6YOU1EFNuUse9/nkDckGVG/2C4Ni/ycrxclCyam7HyjWy7lwI8/swp
- YSQg==
-X-Gm-Message-State: AOJu0YzEoyKVKkWM+ZmleJ7efDG0jy8FAcViXQ7nk7CTxgu4oZdFODFq
- /1AhpgQtzfRp8pMCyBg75H6qShpaLBnY4h84HV6nD4GfIai3sUOQ9sYhpQFwf1C7bOE=
-X-Gm-Gg: ASbGnctlBIfPPBBq00ytIuPF6P9nQ98MCiGvIyxsnfyWJTbhGyela2VaiiaNmgtihZM
- 1eGYfQr7WYGpjaaPOTA0KmbiH/jJfLsMhfbc81OUD792phvAerWccLV1Q53z7RqYpg0FMywgpQ+
- Ot9ZSkxApHjUTJjECnN/XLou6ZJAT2SiB1YHgdtzwUVCnf6s9Ru/ShzKz0Y0Tlbxo0UxbVE+Rif
- IFV8AZCyUDkLjMkmq5Ve/p6IOHbziS/MfW4YFShBwRvZYS90pFhpRUq4SG+A9L/j8mC95CAXpMO
- qzqlbq0vobBpOAZl19AApctjoeDKykLQcisX9MRtPOjE5TUrBvjbkPjziSWeQXi/sRGo4qctu4t
- a7jmVh3TtTSu2nmSLorQQT2sJ2ytY4yoPdkzSuCu4lR7/pZ8riZLk
-X-Google-Smtp-Source: AGHT+IHfmBQlKD4ALYecIjfAcPpmaBP9JhC0yN54QvKl6q3SkuX8unuLX17/AxwPnc/WGamMjplJJg==
-X-Received: by 2002:a05:6a00:b42:b0:73d:fefb:325 with SMTP id
- d2e1a72fcca58-74f1beebda4mr15825909b3a.5.1752508730066; 
- Mon, 14 Jul 2025 08:58:50 -0700 (PDT)
-Received: from stoup.. ([172.56.179.167]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-74eb9f8f24dsm10265805b3a.156.2025.07.14.08.58.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jul 2025 08:58:49 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, gustavo.romero@linaro.org, pierrick.bouvier@linaro.org
-Subject: [PATCH v8 3/4] target/arm: Implement FEAT_MEC registers
-Date: Mon, 14 Jul 2025 09:58:34 -0600
-Message-ID: <20250714155836.1514748-4-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250714155836.1514748-1-richard.henderson@linaro.org>
-References: <20250714155836.1514748-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1ubLc2-0005Cl-H5; Mon, 14 Jul 2025 12:01:09 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1ubLc0-0008I7-46; Mon, 14 Jul 2025 12:01:05 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bgn5T0yhpz6L5M0;
+ Mon, 14 Jul 2025 23:57:33 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 74C2B14033F;
+ Tue, 15 Jul 2025 00:01:00 +0800 (CST)
+Received: from A2303104131.china.huawei.com (10.203.177.241) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 14 Jul 2025 18:00:51 +0200
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
+ <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
+ <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
+ <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
+ <zhenzhong.duan@intel.com>, <shameerkolothum@gmail.com>
+Subject: [RFC PATCH v3 05/15] hw/arm/smmuv3-accel: Introduce smmuv3 accel
+ device
+Date: Mon, 14 Jul 2025 16:59:31 +0100
+Message-ID: <20250714155941.22176-6-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
+In-Reply-To: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
+References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.203.177.241]
+X-ClientProxiedBy: kwepems500002.china.huawei.com (7.221.188.17) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,241 +71,180 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Gustavo Romero <gustavo.romero@linaro.org>
+Also setup specific PCIIOMMUOps for accel SMMUv3 as accel
+SMMUv3 will have different handling for those ops callbacks
+in subsequent patches.
 
-Add all FEAT_MEC registers.  Enable access to the registers via the
-SCTLR2 and TCR2 control bits.  Add the two new cache management
-instructions, which are nops in QEMU because we do not model caches.
+The "accel" property is not yet added, so users cannot set it at this
+point. It will be introduced in a subsequent patch once the necessary
+support is in place.
 
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-Message-ID: <20250711140828.1714666-3-gustavo.romero@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-[rth: Squash 3 patches to add all registers at once.]
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- target/arm/cpu-features.h |   5 ++
- target/arm/cpu.h          |  10 ++++
- target/arm/internals.h    |   3 ++
- target/arm/cpu.c          |   3 ++
- target/arm/helper.c       | 103 ++++++++++++++++++++++++++++++++++++++
- 5 files changed, 124 insertions(+)
+ hw/arm/meson.build           |  3 +-
+ hw/arm/smmu-common.c         |  6 +++-
+ hw/arm/smmuv3-accel.c        | 66 ++++++++++++++++++++++++++++++++++++
+ hw/arm/smmuv3-accel.h        | 19 +++++++++++
+ include/hw/arm/smmu-common.h |  3 ++
+ 5 files changed, 95 insertions(+), 2 deletions(-)
+ create mode 100644 hw/arm/smmuv3-accel.c
+ create mode 100644 hw/arm/smmuv3-accel.h
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 8ec8c3feb3..9579d93cec 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -914,6 +914,11 @@ static inline bool isar_feature_aa64_sctlr2(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64MMFR3, SCTLRX) != 0;
- }
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index dc68391305..6126eb1b64 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -61,7 +61,8 @@ arm_common_ss.add(when: 'CONFIG_ARMSSE', if_true: files('armsse.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c', 'mcimx7d-sabre.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-imx8mp.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
+-arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
++arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
++arm_ss.add(when: ['CONFIG_ARM_SMMUV3', 'CONFIG_IOMMUFD'], if_true: files('smmuv3-accel.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
+ arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+ arm_ss.add(when: 'CONFIG_XEN', if_true: files(
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 3a1080773a..6a58f574d3 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -938,7 +938,11 @@ static const PCIIOMMUOps *smmu_iommu_ops_by_type(SMMUState *s)
+ {
+     SMMUBaseClass *sbc;
  
-+static inline bool isar_feature_aa64_mec(const ARMISARegisters *id)
+-    sbc = ARM_SMMU_CLASS(object_class_by_name(TYPE_ARM_SMMU));
++    if (s->accel) {
++        sbc = ARM_SMMU_CLASS(object_class_by_name(TYPE_ARM_SMMUV3_ACCEL));
++    } else {
++        sbc = ARM_SMMU_CLASS(object_class_by_name(TYPE_ARM_SMMU));
++    }
+     assert(sbc->iommu_ops);
+ 
+     return sbc->iommu_ops;
+diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+new file mode 100644
+index 0000000000..2eac9c6ff4
+--- /dev/null
++++ b/hw/arm/smmuv3-accel.c
+@@ -0,0 +1,66 @@
++/*
++ * Copyright (c) 2025 Huawei Technologies R & D (UK) Ltd
++ * Copyright (C) 2025 NVIDIA
++ * Written by Nicolin Chen, Shameer Kolothum
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++
++#include "hw/arm/smmuv3.h"
++#include "smmuv3-accel.h"
++
++static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
++                                                PCIBus *bus, int devfn)
 +{
-+    return FIELD_EX64_IDREG(id, ID_AA64MMFR3, MEC) != 0;
++    SMMUDevice *sdev = sbus->pbdev[devfn];
++    SMMUv3AccelDevice *accel_dev;
++
++    if (sdev) {
++        accel_dev = container_of(sdev, SMMUv3AccelDevice, sdev);
++    } else {
++        accel_dev = g_new0(SMMUv3AccelDevice, 1);
++        sdev = &accel_dev->sdev;
++
++        sbus->pbdev[devfn] = sdev;
++        smmu_init_sdev(bs, sdev, bus, devfn);
++    }
++
++    return accel_dev;
 +}
 +
- static inline bool isar_feature_aa64_pmuv3p1(const ARMISARegisters *id)
- {
-     return FIELD_EX64_IDREG(id, ID_AA64DFR0, PMUVER) >= 4 &&
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 0e247f50c7..5156120b50 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -578,6 +578,15 @@ typedef struct CPUArchState {
- 
-         /* NV2 register */
-         uint64_t vncr_el2;
++static AddressSpace *smmuv3_accel_find_add_as(PCIBus *bus, void *opaque,
++                                              int devfn)
++{
++    SMMUState *bs = opaque;
++    SMMUPciBus *sbus;
++    SMMUv3AccelDevice *accel_dev;
++    SMMUDevice *sdev;
 +
-+        /* MEC registers */
-+        uint64_t mecid_p0_el2;
-+        uint64_t mecid_a0_el2;
-+        uint64_t mecid_p1_el2;
-+        uint64_t mecid_a1_el2;
-+        uint64_t mecid_rl_a_el3;
-+        uint64_t vmecid_p_el2;
-+        uint64_t vmecid_a_el2;
-     } cp15;
- 
-     struct {
-@@ -1730,6 +1739,7 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
- #define SCR_TCR2EN            (1ULL << 43)
- #define SCR_SCTLR2EN          (1ULL << 44)
- #define SCR_GPF               (1ULL << 48)
-+#define SCR_MECEN             (1ULL << 49)
- #define SCR_NSE               (1ULL << 62)
- 
- /* Return the current FPSCR value.  */
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index b4cd03df69..6c1112e641 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -2007,4 +2007,7 @@ void vfp_clear_float_status_exc_flags(CPUARMState *env);
- void vfp_set_fpcr_to_host(CPUARMState *env, uint32_t val, uint32_t mask);
- bool arm_pan_enabled(CPUARMState *env);
- 
-+/* Used in FEAT_MEC to set the MECIDWidthm1 field in the MECIDR_EL2 register. */
-+#define MECID_WIDTH 16
++    sbus = smmu_get_sbus(bs, bus);
++    accel_dev = smmuv3_accel_get_dev(bs, sbus, bus, devfn);
++    sdev = &accel_dev->sdev;
 +
- #endif
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index e709ca74da..34638ea100 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -651,6 +651,9 @@ void arm_emulate_firmware_reset(CPUState *cpustate, int target_el)
-             if (cpu_isar_feature(aa64_sctlr2, cpu)) {
-                 env->cp15.scr_el3 |= SCR_SCTLR2EN;
-             }
-+            if (cpu_isar_feature(aa64_mec, cpu)) {
-+                env->cp15.scr_el3 |= SCR_MECEN;
-+            }
-         }
- 
-         if (target_el == 2) {
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 1e0e747146..dd7beba079 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5207,6 +5207,93 @@ static const ARMCPRegInfo nmi_reginfo[] = {
-       .resetfn = arm_cp_reset_ignore },
++    return &sdev->as;
++}
++
++static const PCIIOMMUOps smmuv3_accel_ops = {
++    .get_address_space = smmuv3_accel_find_add_as,
++};
++
++static void smmuv3_accel_class_init(ObjectClass *oc, const void *data)
++{
++    SMMUBaseClass *sbc = ARM_SMMU_CLASS(oc);
++
++    sbc->iommu_ops = &smmuv3_accel_ops;
++}
++
++static const TypeInfo types[] = {
++    {
++        .name = TYPE_ARM_SMMUV3_ACCEL,
++        .parent = TYPE_ARM_SMMUV3,
++        .class_init = smmuv3_accel_class_init,
++    }
++};
++DEFINE_TYPES(types)
+diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
+new file mode 100644
+index 0000000000..4cf30b1291
+--- /dev/null
++++ b/hw/arm/smmuv3-accel.h
+@@ -0,0 +1,19 @@
++/*
++ * Copyright (c) 2025 Huawei Technologies R & D (UK) Ltd
++ * Copyright (C) 2025 NVIDIA
++ * Written by Nicolin Chen, Shameer Kolothum
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef HW_ARM_SMMUV3_ACCEL_H
++#define HW_ARM_SMMUV3_ACCEL_H
++
++#include "hw/arm/smmu-common.h"
++#include CONFIG_DEVICES
++
++typedef struct SMMUv3AccelDevice {
++    SMMUDevice  sdev;
++} SMMUv3AccelDevice;
++
++#endif /* HW_ARM_SMMUV3_ACCEL_H */
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+index eb94623555..c459d24427 100644
+--- a/include/hw/arm/smmu-common.h
++++ b/include/hw/arm/smmu-common.h
+@@ -162,6 +162,7 @@ struct SMMUState {
+     uint8_t bus_num;
+     PCIBus *primary_bus;
+     bool smmu_per_bus; /* SMMU is specific to the primary_bus */
++    bool accel; /* SMMU has accelerator support */
  };
  
-+static CPAccessResult mecid_access(CPUARMState *env,
-+                                   const ARMCPRegInfo *ri, bool isread)
-+{
-+    int el = arm_current_el(env);
-+
-+    if (el == 2) {
-+        if (arm_security_space(env) != ARMSS_Realm) {
-+	    return CP_ACCESS_UNDEFINED;
-+	}
-+
-+        if (!(env->cp15.scr_el3 & SCR_MECEN)) {
-+            return CP_ACCESS_TRAP_EL3;
-+        }
-+    }
-+
-+    return CP_ACCESS_OK;
-+}
-+
-+static void mecid_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                        uint64_t value)
-+{
-+    value = extract64(value, 0, MECID_WIDTH);
-+    raw_write(env, ri, value);
-+}
-+
-+static CPAccessResult cipae_access(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                   bool isread)
-+{
-+    switch (arm_security_space(env)) {
-+    case ARMSS_Root:  /* EL3 */
-+    case ARMSS_Realm: /* Realm EL2 */
-+        return CP_ACCESS_OK;
-+    default:
-+        return CP_ACCESS_UNDEFINED;
-+    }
-+}
-+
-+static const ARMCPRegInfo mec_reginfo[] = {
-+    { .name = "MECIDR_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 7, .crn = 10, .crm = 8,
-+      .access = PL2_R, .type = ARM_CP_CONST, .resetvalue = MECID_WIDTH - 1 },
-+    { .name = "MECID_P0_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p0_el2) },
-+    { .name = "MECID_A0_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a0_el2) },
-+    { .name = "MECID_P1_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 2, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p1_el2) },
-+    { .name = "MECID_A1_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 3, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a1_el2) },
-+    { .name = "MECID_RL_A_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .opc2 = 1, .crn = 10, .crm = 10,
-+      .access = PL3_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_rl_a_el3) },
-+    { .name = "VMECID_P_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 9,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_p_el2) },
-+    { .name = "VMECID_A_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 9,
-+      .access = PL2_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_a_el2) },
-+    { .name = "DC_CIPAE", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 14, .opc2 = 0,
-+      .access = PL2_W, .accessfn = cipae_access, .type = ARM_CP_NOP },
-+};
-+
-+static const ARMCPRegInfo mec_mte_reginfo[] = {
-+    { .name = "DC_CIGDPAE", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 14, .opc2 = 7,
-+      .access = PL2_W, .accessfn = cipae_access, .type = ARM_CP_NOP },
-+};
-+
- #ifndef CONFIG_USER_ONLY
- /*
-  * We don't know until after realize whether there's a GICv3
-@@ -6045,6 +6132,9 @@ static void sctlr2_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
- {
-     uint64_t valid_mask = 0;
+ struct SMMUBaseClass {
+@@ -178,6 +179,8 @@ struct SMMUBaseClass {
+ #define TYPE_ARM_SMMU "arm-smmu"
+ OBJECT_DECLARE_TYPE(SMMUState, SMMUBaseClass, ARM_SMMU)
  
-+    if (cpu_isar_feature(aa64_mec, env_archcpu(env))) {
-+        valid_mask |= SCTLR2_EMEC;
-+    }
-     value &= valid_mask;
-     raw_write(env, ri, value);
- }
-@@ -6054,6 +6144,9 @@ static void sctlr2_el3_write(CPUARMState *env, const ARMCPRegInfo *ri,
- {
-     uint64_t valid_mask = 0;
- 
-+    if (cpu_isar_feature(aa64_mec, env_archcpu(env))) {
-+        valid_mask |= SCTLR2_EMEC;
-+    }
-     value &= valid_mask;
-     raw_write(env, ri, value);
- }
-@@ -6114,6 +6207,9 @@ static void tcr2_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
- {
-     uint64_t valid_mask = 0;
- 
-+    if (cpu_isar_feature(aa64_mec, env_archcpu(env))) {
-+        valid_mask |= TCR2_AMEC0 | TCR2_AMEC1;
-+    }
-     value &= valid_mask;
-     raw_write(env, ri, value);
- }
-@@ -7369,6 +7465,13 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, tcr2_reginfo);
-     }
- 
-+    if (cpu_isar_feature(aa64_mec, cpu)) {
-+        define_arm_cp_regs(cpu, mec_reginfo);
-+        if (cpu_isar_feature(aa64_mte, cpu)) {
-+            define_arm_cp_regs(cpu, mec_mte_reginfo);
-+        }
-+    }
++#define TYPE_ARM_SMMUV3_ACCEL "arm-smmuv3-accel"
 +
-     if (cpu_isar_feature(any_predinv, cpu)) {
-         define_arm_cp_regs(cpu, predinv_reginfo);
-     }
+ /* Return the SMMUPciBus handle associated to a PCI bus number */
+ SMMUPciBus *smmu_find_smmu_pcibus(SMMUState *s, uint8_t bus_num);
+ 
 -- 
-2.43.0
+2.34.1
 
 

@@ -4,60 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26B6FC83F17
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 16:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59F8CC83F17
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 16:58:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubMUX-0006du-SC; Mon, 14 Jul 2025 12:57:26 -0400
+	id 1ubMV1-0007F3-Vl; Mon, 14 Jul 2025 12:57:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ubLbV-0004ud-Oe; Mon, 14 Jul 2025 12:00:35 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ubLbR-00081u-MV; Mon, 14 Jul 2025 12:00:33 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bgn7B3Nfgz6M4Hl;
- Mon, 14 Jul 2025 23:59:02 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 20D3A14038F;
- Tue, 15 Jul 2025 00:00:15 +0800 (CST)
-Received: from A2303104131.china.huawei.com (10.203.177.241) by
- frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 14 Jul 2025 18:00:06 +0200
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
- <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
- <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
- <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
- <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
- <zhenzhong.duan@intel.com>, <shameerkolothum@gmail.com>
-Subject: [RFC PATCH v3 00/15] hw/arm/virt: Add support for user-creatable
- accelerated SMMUv3 
-Date: Mon, 14 Jul 2025 16:59:26 +0100
-Message-ID: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
-X-Mailer: git-send-email 2.12.0.windows.1
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ubLZs-00033K-TX
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 11:58:58 -0400
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ubLZq-0007nN-Lc
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 11:58:52 -0400
+Received: by mail-pf1-x435.google.com with SMTP id
+ d2e1a72fcca58-7490acf57b9so3176407b3a.2
+ for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 08:58:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1752508728; x=1753113528; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=aPqXxRNnNWAbziuZoBkDR4oxusC2l92qyE2WQUEMyYI=;
+ b=fBwP9Y3HFRwdLSRvY4I0S+pLaWNxAijGv5t8yTV0HGQR9tSsyebxTJb/SFCEkrJsws
+ rUf0Dbn4XX7GS0gr6SudzdvsJv/oyNH1U5oncurDP6OryxGrf7yuoh02CYTfdL1IOuuK
+ Dr5BzrLfxQLx9ZPaJBWqb7g5azcTZxVyWWhq97tgxEYLsW9NtcSlaQ2NCvUM0GkLTirE
+ /6a4corpgOQzjputO2YxCJWurkvyTnA0PPTPgJT6Z3D9tVo2D4/Q5BUppQQL7pXkFgqf
+ pxpcAijg03/kChxPVi6OdK78V11psd5wzcdxmw3fuSVRIrb7j5zCRkdqpKEB2W/5qb0q
+ M0mQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1752508728; x=1753113528;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=aPqXxRNnNWAbziuZoBkDR4oxusC2l92qyE2WQUEMyYI=;
+ b=Uf1JBjqyNh8HXPo0BQNY9piEkjfTQjh31KmTx0w+0una3vCYNOZTlmgIiH6uKdFJfa
+ oRmZHXULlg6aGYsS362Tu2kTJ3OjfJ0sZq3IojeaZ/ekMhosg0a2BvCYQNsZYKHWF6Zo
+ FGmImR1R4rC8WU95IDSFJtc02o8RWkk2+JxtEYhRbg4p8A8y10i+tIKQrcd+r4x7modu
+ ZuTBRIHy8P/c4pMoDL/DTdXavoLFD7KXrwye/yKdn8tjFs04Ty/jinPYKSZdlQ8fbwmS
+ DSYVbp4qw5hqcISnp0TJ/5uF+vzcBWarpsrwF0KoGOzMysADrOrmh9vLctpADiitN0Qs
+ cQoQ==
+X-Gm-Message-State: AOJu0Yw0b7eBhYoRF6toDpE5nsdJWVQfEdu6s+wp4UWjVxEZKLVm3Q/E
+ MR57YRKKCnqblzJP8jtLlKkkqNCpLZ0SPg4junCo+7XJ4+r4Dm9FzBDt9GrhXEwvPB0=
+X-Gm-Gg: ASbGnctyf669Xcmd9IQy6zzeUQc4Lht1Z6gUx1C1lNX4x1qE8oY8CYQwueJnoMA1e9X
+ eB/1O9zrOv/PujhXvon0FokpVq++zBwYg2MTiPR5oAd+F8ifzfDTUfZYA706fSRXYSxGwLkMSNb
+ YDRKUUi5Y1ITR2lV5WYALEE7ltQDQNeorpUwzh2bcU/voIFqUU+ha5o9TCcgKUAwh5gjSqE2wgh
+ EeED1VufSzg7HJ5Ig3boGp3FpdhBG2ZB4hTAYwYwJ4HBNZxNwWG0ZtHBxXB0J/dd6wxXFAEdg07
+ 8FmBaRAgxv6OqYigeNmpultGaJRJpEWYQ+JgE6i8qE255kZKHuHhMMBv6uPeBMZivbTy/ChGF2f
+ 8GrUrJ69+ggjbmb1gc/dk1WOtSr9XdapvqxDK9xzGdrsIKND7ESJn
+X-Google-Smtp-Source: AGHT+IH35RFtL6/01kctCj62hqhId9u1Sp0NYbDXnVKIzr52Z/vm7gbCRVBDrvt9IHoDuuhqnV7/bA==
+X-Received: by 2002:a05:6a00:2395:b0:742:8d52:62f1 with SMTP id
+ d2e1a72fcca58-74ee109a1admr21673010b3a.8.1752508727436; 
+ Mon, 14 Jul 2025 08:58:47 -0700 (PDT)
+Received: from stoup.. ([172.56.179.167]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-74eb9f8f24dsm10265805b3a.156.2025.07.14.08.58.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Jul 2025 08:58:47 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, gustavo.romero@linaro.org, pierrick.bouvier@linaro.org
+Subject: [PATCH v8 2/4] target/arm: Implement FEAT_TCR2 and enable with -cpu
+ max
+Date: Mon, 14 Jul 2025 09:58:33 -0600
+Message-ID: <20250714155836.1514748-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250714155836.1514748-1-richard.henderson@linaro.org>
+References: <20250714155836.1514748-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.203.177.241]
-X-ClientProxiedBy: kwepems500002.china.huawei.com (7.221.188.17) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) AC_FROM_MANY_DOTS=0.664, BAYES_00=-1.9,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,196 +96,249 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi All,
+From: Gustavo Romero <gustavo.romero@linaro.org>
 
-This patch series introduces initial support for a user-creatable,
-accelerated SMMUv3 device (-device arm-smmuv3,accel=on) in QEMU.
+Add FEAT_TCR2, which introduces the TCR2_EL1 and TCR2_EL2 registers.
+These registers are extensions of the TCR_ELx registers and provide
+top-level control of the EL10 and EL20 translation regimes.
 
-This is based on the user-creatable SMMUv3 device series [0].
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+Message-ID: <20250711140828.1714666-5-gustavo.romero@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+[rth: Remove FEAT_MEC code; handle SCR and HCRX enable bits.]
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu-features.h     |  5 +++
+ target/arm/cpu.h              |  2 ++
+ target/arm/internals.h        | 19 ++++++++++
+ target/arm/cpu.c              |  3 ++
+ target/arm/helper.c           | 68 +++++++++++++++++++++++++++++++++++
+ target/arm/tcg/cpu64.c        |  1 +
+ docs/system/arm/emulation.rst |  1 +
+ 7 files changed, 99 insertions(+)
 
-Why this is needed:
-
-On ARM, to enable vfio-pci pass-through devices in a VM, the host SMMUv3
-must be set up in nested translation mode (Stage 1 + Stage 2), with
-Stage 1 (S1) controlled by the guest and Stage 2 (S2) managed by the host.
-
-This series introduces an optional accel property for the SMMUv3 device,
-indicating that the guest will try to leverage host SMMUv3 features for
-acceleration. By default, enabling accel configures the host SMMUv3 in
-nested mode to support vfio-pci pass-through.
-
-This new accelerated, user-creatable SMMUv3 device lets you:
-
- -Set up a VM with multiple SMMUv3s, each tied to a different physical SMMUv3
-  on the host. Typically, you’d have multiple PCIe PXB root complexes in the
-  VM (one per virtual NUMA node), and each of them can have its own SMMUv3.
-  This setup mirrors the host's layout, where each NUMA node has its own
-  SMMUv3, and helps build VMs that are more aligned with the host's NUMA
-  topology.
-
- -The host–guest SMMUv3 association results in reduced invalidation broadcasts
-  and lookups for devices behind different physical SMMUv3s.
-
- -Simplifies handling of host SMMUv3s with differing feature sets.
-
- -Lays the groundwork for additional capabilities like vCMDQ support.
-
-Changes from RFCv2[1] and key points in RFCv3:
-
- -Unlike RFCv2, there is no arm-smmuv3-accel device now. The accelerated
-  mode is enabled using -device arm-smmuv3,accel=on.
-
- -When accel=on is specified, the SMMUv3 will allow only vfio-pci endpoint
-  devices and any non-endpoint devices like PCI bridges and root ports used
-  to plug in the vfio-pci. See patch#6 
-
- -I have tried to keep this RFC simple and basic so we can focus on the
-  structure of this new accelerated support. That means there is no support
-  for ATS, PASID, or PRI. Only vfio-pci devices that don’t require these
-  features will work.
-
- -Some clarity is still needed on the final approach to handle MSI translation.
-  Hence, RMR support (which is required for this) is not included yet, but
-  available in the git branch provided below for testing.
- 
- -At least one vfio-pci device must currently be cold-plugged to a PCIe root
-  complex associated with arm-smmuv3,accel=on. This is required to:
-  1. associate a guest SMMUv3 with a host SMMUv3
-  2. retrieve the host SMMUv3 feature registers for guest export
-  This still needs discussion, as there were concerns previously about this
-  approach and it also breaks hotplug/unplug scenarios. See patch#14
-
- -This version does not yet support host SMMUv3 fault handling or other event
-  notifications. These will be addressed in a future patch series.
-
-Branch for testing:
-
-This is based on v8 of the SMMUv3 device series and has dependency on the Intel
-series here [3].
-
-https://github.com/hisilicon/qemu/tree/smmuv3-dev-v8-accel-rfcv3
-
-
-Tested on a HiSilicon platform with multiple SMMUv3s.
-
-./qemu-system-aarch64 \
-  -machine virt,accel=kvm,gic-version=3 \
-  -object iommufd,id=iommufd0 \
-  -bios QEMU_EFI \
-  -cpu host -smp cpus=4 -m size=16G,slots=4,maxmem=256G -nographic \
-  -device virtio-blk-device,drive=fs \
-  -drive if=none,file=ubuntu.img,id=fs \
-  -kernel Image \
-  -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0,accel=on \
-  -device vfio-pci,host=0000:75:00.1,bus=pcie.0,iommufd=iommufd0 \
-  -device pxb-pcie,id=pcie.1,bus_nr=2,bus=pcie.0 \
-  -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.1,accel=on \
-  -device pcie-root-port,id=pcie1.port1,chassis=2,bus=pcie.1,pref64-reserve=2M,io-reserve=1K \
-  -device vfio-pci,host=0000:7d:02.1,bus=pcie1.port1,iommufd=iommufd0,id=net1 \
-  -append "rdinit=init console=ttyAMA0 root=/dev/vda rw earlycon=pl011,0x9000000" \
-  -device pxb-pcie,id=pcie.2,bus_nr=32,bus=pcie.0 \
-  -device arm-smmuv3,primary-bus=pcie.2,id=smmuv3.2 \
-  -device pcie-root-port,id=pcie2.port1,chassis=8,bus=pcie.2 \
-  -device virtio-9p-pci,fsdev=p9fs,mount_tag=p9,bus=pcie2.port1 \
-  -fsdev local,id=p9fs,path=p9root,security_model=mapped \
-  -net none \
-  -nographic
-  
-
-Guest output:
-  
-root@ubuntu:/# dmesg |grep smmu
- arm-smmu-v3 arm-smmu-v3.0.auto: option mask 0x0
- arm-smmu-v3 arm-smmu-v3.0.auto: ias 44-bit, oas 44-bit (features 0x00008305)
- arm-smmu-v3 arm-smmu-v3.0.auto: allocated 65536 entries for cmdq
- arm-smmu-v3 arm-smmu-v3.0.auto: allocated 32768 entries for evtq
- arm-smmu-v3 arm-smmu-v3.1.auto: option mask 0x0
- arm-smmu-v3 arm-smmu-v3.1.auto: ias 44-bit, oas 44-bit (features 0x00008305)
- arm-smmu-v3 arm-smmu-v3.1.auto: allocated 65536 entries for cmdq
- arm-smmu-v3 arm-smmu-v3.1.auto: allocated 32768 entries for evtq
- arm-smmu-v3 arm-smmu-v3.2.auto: option mask 0x0
- arm-smmu-v3 arm-smmu-v3.2.auto: ias 44-bit, oas 44-bit (features 0x00008305)
- arm-smmu-v3 arm-smmu-v3.2.auto: allocated 65536 entries for cmdq
- arm-smmu-v3 arm-smmu-v3.2.auto: allocated 32768 entries for evtq
-root@ubuntu:/# 
-
-root@ubuntu:/# lspci -tv
--+-[0000:20]---00.0-[21]----00.0  Red Hat, Inc Virtio filesystem
- +-[0000:02]---00.0-[03]----00.0  Huawei Technologies Co., Ltd. Device a22e
- \-[0000:00]-+-00.0  Red Hat, Inc. QEMU PCIe Host bridge
-             +-01.0  Huawei Technologies Co., Ltd. Device a251
-             +-02.0  Red Hat, Inc. QEMU PCIe Expander bridge
-             \-03.0  Red Hat, Inc. QEMU PCIe Expander bridge
-root@ubuntu:/# 
-
-root@ubuntu:/# 
-root@ubuntu:/# dmesg |grep Adding
- hns3 0000:03:00.0: Adding to iommu group 0
- hisi_zip 0000:00:01.0: Adding to iommu group 1
- pcieport 0000:20:00.0: Adding to iommu group 2
- pcieport 0000:02:00.0: Adding to iommu group 3
- virtio-pci 0000:21:00.0: Adding to iommu group 4
-
-Further tests are always welcome.
-
-Please take a look and let me know your feedback.
-
-Thanks,
-Shameer
-
-[0] https://lore.kernel.org/qemu-devel/20250711084749.18300-1-shameerali.kolothum.thodi@huawei.com/
-[1] https://lore.kernel.org/qemu-devel/20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com/
-[2] https://lore.kernel.org/qemu-devel/20250708110601.633308-1-zhenzhong.duan@intel.com/
-
-Nicolin Chen (8):
-  backends/iommufd: Introduce iommufd_backend_alloc_viommu
-  backends/iommufd: Introduce iommufd_vdev_alloc
-  hw/arm/smmuv3-accel: Add set/unset_iommu_device callback
-  hw/arm/smmuv3-accel: Support nested STE install/uninstall support
-  hw/arm/smmuv3-accel: Allocate a vDEVICE object for device
-  hw/arm/smmuv3-accel: Introduce helpers to batch and issue cache
-    invalidations
-  hw/arm/smmuv3: Forward invalidation commands to hw
-  Read and validate host SMMUv3 feature bits
-
-Shameer Kolothum (7):
-  hw/arm/smmu-common: Factor out common helper functions and export
-  hw/arm/smmu-common: Introduce smmu_iommu_ops_by_type() helper
-  hw/arm/smmuv3-accel: Introduce smmuv3 accel device
-  hw/arm/smmuv3-accel: Restrict accelerated SMMUv3 to vfio-pci endpoints
-    with iommufd
-  hw/arm/smmuv3: Implement get_viommu_cap() callback
-  hw/pci/pci: Introduce optional get_msi_address_space() callback.
-  hw/arm/smmu-common: Add accel property for SMMU dev
-
- backends/iommufd.c                  |  51 +++
- backends/trace-events               |   2 +
- hw/arm/meson.build                  |   3 +-
- hw/arm/smmu-common.c                |  70 ++-
- hw/arm/smmuv3-accel.c               | 631 ++++++++++++++++++++++++++++
- hw/arm/smmuv3-accel.h               |  93 ++++
- hw/arm/smmuv3-internal.h            |  27 ++
- hw/arm/smmuv3.c                     |  44 +-
- hw/arm/trace-events                 |   5 +
- hw/arm/virt.c                       |  12 +
- hw/pci-bridge/pci_expander_bridge.c |   1 -
- hw/pci/pci.c                        |  19 +
- include/hw/arm/smmu-common.h        |  10 +
- include/hw/arm/smmuv3.h             |   1 +
- include/hw/pci/pci.h                |  16 +
- include/hw/pci/pci_bridge.h         |   1 +
- include/system/iommufd.h            |  19 +
- target/arm/kvm.c                    |   2 +-
- 18 files changed, 981 insertions(+), 26 deletions(-)
- create mode 100644 hw/arm/smmuv3-accel.c
- create mode 100644 hw/arm/smmuv3-accel.h
-
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index e372543bf3..8ec8c3feb3 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -904,6 +904,11 @@ static inline bool isar_feature_aa64_nv2(const ARMISARegisters *id)
+     return FIELD_EX64_IDREG(id, ID_AA64MMFR2, NV) >= 2;
+ }
+ 
++static inline bool isar_feature_aa64_tcr2(const ARMISARegisters *id)
++{
++    return FIELD_EX64_IDREG(id, ID_AA64MMFR3, TCRX) != 0;
++}
++
+ static inline bool isar_feature_aa64_sctlr2(const ARMISARegisters *id)
+ {
+     return FIELD_EX64_IDREG(id, ID_AA64MMFR3, SCTLRX) != 0;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index dda5f275fb..0e247f50c7 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -366,6 +366,7 @@ typedef struct CPUArchState {
+         uint64_t vsttbr_el2; /* Secure Virtualization Translation Table. */
+         /* MMU translation table base control. */
+         uint64_t tcr_el[4];
++        uint64_t tcr2_el[3];
+         uint64_t vtcr_el2; /* Virtualization Translation Control.  */
+         uint64_t vstcr_el2; /* Secure Virtualization Translation Control. */
+         uint32_t c2_data; /* MPU data cacheable bits.  */
+@@ -1726,6 +1727,7 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
+ #define SCR_HXEN              (1ULL << 38)
+ #define SCR_TRNDR             (1ULL << 40)
+ #define SCR_ENTP2             (1ULL << 41)
++#define SCR_TCR2EN            (1ULL << 43)
+ #define SCR_SCTLR2EN          (1ULL << 44)
+ #define SCR_GPF               (1ULL << 48)
+ #define SCR_NSE               (1ULL << 62)
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index fcaad39371..b4cd03df69 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -201,6 +201,24 @@ FIELD(CPTR_EL3, TCPAC, 31, 1)
+ #define TTBCR_SH1    (1U << 28)
+ #define TTBCR_EAE    (1U << 31)
+ 
++#define TCR2_PNCH    (1ULL << 0)
++#define TCR2_PIE     (1ULL << 1)
++#define TCR2_E0POE   (1ULL << 2)
++#define TCR2_POE     (1ULL << 3)
++#define TCR2_AIE     (1ULL << 4)
++#define TCR2_D128    (1ULL << 5)
++#define TCR2_PTTWI   (1ULL << 10)
++#define TCR2_HAFT    (1ULL << 11)
++#define TCR2_AMEC0   (1ULL << 12)
++#define TCR2_AMEC1   (1ULL << 13)
++#define TCR2_DISCH0  (1ULL << 14)
++#define TCR2_DISCH1  (1ULL << 15)
++#define TCR2_A2      (1ULL << 16)
++#define TCR2_FNG0    (1ULL << 17)
++#define TCR2_FNG1    (1ULL << 18)
++#define TCR2_FNGNA0  (1ULL << 20)
++#define TCR2_FNGNA1  (1ULL << 21)
++
+ FIELD(VTCR, T0SZ, 0, 6)
+ FIELD(VTCR, SL0, 6, 2)
+ FIELD(VTCR, IRGN0, 8, 2)
+@@ -232,6 +250,7 @@ FIELD(VTCR, SL2, 33, 1)
+ #define HCRX_CMOW     (1ULL << 9)
+ #define HCRX_MCE2     (1ULL << 10)
+ #define HCRX_MSCEN    (1ULL << 11)
++#define HCRX_TCR2EN   (1ULL << 14)
+ #define HCRX_SCTLR2EN (1ULL << 15)
+ 
+ #define HPFAR_NS      (1ULL << 63)
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 2ee895fbc4..e709ca74da 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -645,6 +645,9 @@ void arm_emulate_firmware_reset(CPUState *cpustate, int target_el)
+             if (cpu_isar_feature(aa64_fgt, cpu)) {
+                 env->cp15.scr_el3 |= SCR_FGTEN;
+             }
++            if (cpu_isar_feature(aa64_tcr2, cpu)) {
++               env->cp15.scr_el3 |= SCR_TCR2EN;
++            }
+             if (cpu_isar_feature(aa64_sctlr2, cpu)) {
+                 env->cp15.scr_el3 |= SCR_SCTLR2EN;
+             }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index d0cfef1dd6..1e0e747146 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -741,6 +741,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+         if (cpu_isar_feature(aa64_ecv, cpu)) {
+             valid_mask |= SCR_ECVEN;
+         }
++        if (cpu_isar_feature(aa64_tcr2, cpu)) {
++            valid_mask |= SCR_TCR2EN;
++        }
+         if (cpu_isar_feature(aa64_sctlr2, cpu)) {
+             valid_mask |= SCR_SCTLR2EN;
+         }
+@@ -3922,6 +3925,9 @@ static void hcrx_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     if (cpu_isar_feature(aa64_xs, cpu)) {
+         valid_mask |= HCRX_FGTNXS | HCRX_FNXS;
+     }
++    if (cpu_isar_feature(aa64_tcr2, cpu)) {
++        valid_mask |= HCRX_TCR2EN;
++    }
+     if (cpu_isar_feature(aa64_sctlr2, cpu)) {
+         valid_mask |= HCRX_SCTLR2EN;
+     }
+@@ -4524,6 +4530,8 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
+           "TTBR1_EL1", "TTBR1_EL2", "TTBR1_EL12" },
+         { K(3, 0,  2, 0, 2), K(3, 4,  2, 0, 2), K(3, 5, 2, 0, 2),
+           "TCR_EL1", "TCR_EL2", "TCR_EL12" },
++        { K(3, 0,  2, 0, 3), K(3, 4,  2, 0, 3), K(3, 5, 2, 0, 3),
++          "TCR2_EL1", "TCR2_EL2", "TCR2_EL12", isar_feature_aa64_tcr2 },
+         { K(3, 0,  4, 0, 0), K(3, 4,  4, 0, 0), K(3, 5, 4, 0, 0),
+           "SPSR_EL1", "SPSR_EL2", "SPSR_EL12" },
+         { K(3, 0,  4, 0, 1), K(3, 4,  4, 0, 1), K(3, 5, 4, 0, 1),
+@@ -6068,6 +6076,62 @@ static const ARMCPRegInfo sctlr2_reginfo[] = {
+       .fieldoffset = offsetof(CPUARMState, cp15.sctlr2_el[3]) },
+ };
+ 
++static CPAccessResult tcr2_el2_access(CPUARMState *env, const ARMCPRegInfo *ri,
++                                      bool isread)
++{
++    if (arm_current_el(env) < 3
++        && arm_feature(env, ARM_FEATURE_EL3)
++        && !(env->cp15.scr_el3 & SCR_TCR2EN)) {
++        return CP_ACCESS_TRAP_EL3;
++    }
++    return CP_ACCESS_OK;
++}
++
++static CPAccessResult tcr2_el1_access(CPUARMState *env, const ARMCPRegInfo *ri,
++                                      bool isread)
++{
++    CPAccessResult ret = access_tvm_trvm(env, ri, isread);
++    if (ret != CP_ACCESS_OK) {
++        return ret;
++    }
++    if (arm_current_el(env) < 2 && !(arm_hcrx_el2_eff(env) & HCRX_TCR2EN)) {
++        return CP_ACCESS_TRAP_EL2;
++    }
++    return tcr2_el2_access(env, ri, isread);
++}
++
++static void tcr2_el1_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                           uint64_t value)
++{
++    uint64_t valid_mask = 0;
++
++    value &= valid_mask;
++    raw_write(env, ri, value);
++}
++
++static void tcr2_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                           uint64_t value)
++{
++    uint64_t valid_mask = 0;
++
++    value &= valid_mask;
++    raw_write(env, ri, value);
++}
++
++static const ARMCPRegInfo tcr2_reginfo[] = {
++    { .name = "TCR2_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .opc2 = 3, .crn = 2, .crm = 0,
++      .access = PL1_RW, .accessfn = tcr2_el1_access,
++      .writefn = tcr2_el1_write, .fgt = FGT_TCR_EL1,
++      .nv2_redirect_offset = 0x270 | NV2_REDIR_NV1,
++      .fieldoffset = offsetof(CPUARMState, cp15.tcr2_el[1]) },
++    { .name = "TCR2_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 3, .crn = 2, .crm = 0,
++      .access = PL2_RW, .accessfn = tcr2_el2_access,
++      .writefn = tcr2_el2_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.tcr2_el[2]) },
++};
++
+ void register_cp_regs_for_features(ARMCPU *cpu)
+ {
+     /* Register all the coprocessor registers based on feature bits */
+@@ -7301,6 +7365,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         define_arm_cp_regs(cpu, sctlr2_reginfo);
+     }
+ 
++    if (cpu_isar_feature(aa64_tcr2, cpu)) {
++        define_arm_cp_regs(cpu, tcr2_reginfo);
++    }
++
+     if (cpu_isar_feature(any_predinv, cpu)) {
+         define_arm_cp_regs(cpu, predinv_reginfo);
+     }
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index f4efff03a5..4eb51420ef 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -1248,6 +1248,7 @@ void aarch64_max_tcg_initfn(Object *obj)
+     SET_IDREG(isar, ID_AA64MMFR2, t);
+ 
+     t = GET_IDREG(isar, ID_AA64MMFR3);
++    t = FIELD_DP64(t, ID_AA64MMFR3, TCRX, 1);       /* FEAT_TCR2 */
+     t = FIELD_DP64(t, ID_AA64MMFR3, SCTLRX, 1);     /* FEAT_SCTLR2 */
+     t = FIELD_DP64(t, ID_AA64MMFR3, SPEC_FPACC, 1); /* FEAT_FPACC_SPEC */
+     SET_IDREG(isar, ID_AA64MMFR3, t);
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index 66043b0747..1c597d8673 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -149,6 +149,7 @@ the following architecture extensions:
+ - FEAT_SPECRES (Speculation restriction instructions)
+ - FEAT_SSBS (Speculative Store Bypass Safe)
+ - FEAT_SSBS2 (MRS and MSR instructions for SSBS version 2)
++- FEAT_TCR2 (Support for TCR2_ELx)
+ - FEAT_TGran16K (Support for 16KB memory translation granule size at stage 1)
+ - FEAT_TGran4K (Support for 4KB memory translation granule size at stage 1)
+ - FEAT_TGran64K (Support for 64KB memory translation granule size at stage 1)
 -- 
-2.34.1
+2.43.0
 
 

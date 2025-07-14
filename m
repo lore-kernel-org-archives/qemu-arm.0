@@ -4,74 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A44DC83F1B
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 10:31:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F593C83F1A
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 12:55:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubGSx-0007Hn-Dp; Mon, 14 Jul 2025 06:31:24 -0400
+	id 1ubIgs-000193-24; Mon, 14 Jul 2025 08:53:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ubGS8-000708-QK
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 06:30:35 -0400
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ubI0m-0005Hd-E6
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 08:10:30 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ubGS4-00050G-Cq
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 06:30:31 -0400
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-711a3dda147so42613387b3.2
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 03:30:27 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ubI0j-00053L-GS
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 08:10:24 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-3a4e742dc97so3106165f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 05:10:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752489025; x=1753093825; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=RHFJzzPUS+Gs190sJ8Y1X0wq++eR9FYpLgnW758cBt4=;
- b=BEoFo1lI1zOCML1z26gkJVWoJXu3AQ4vm6zKp2Ak1BmVbQGyjQqF6D/AQmqZ67/C9+
- kkiziSlX7UsXvha1Xxn3LPQdwcuUr01WCX8JYtWNkBKJFyDwVhoFu1fY2CHigfvRCHOA
- EXmEwxwjZXP9hCfVpV4jfTwJcveNIE+qX1+iHOuSoc1qTC0Z66BwEB+oNqYMGEMt934z
- YA2gU8wc5gOi0zovOX8cXAeZ9Wu4vDzpdafKHxKHfY9X4SUYU8Y0s6zNfqWprxTkhOfl
- ka7qfKENiFECncIFyPI7IHVuZPoZxhZgsEnash070nfIMmMF6MTHQvYmOxrAoNq2qzX4
- nVnQ==
+ d=linaro.org; s=google; t=1752495018; x=1753099818; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=oE2uMXUiiFM8FhKSo+jh6RjiKCSwwiGNwTTlcD7T1I0=;
+ b=DucnWweWIqfGvHOlub7fHivITgeHxTIL+sm16OAtV2epb8m2IBfcgWLXy8zfYAwP8U
+ hFzxbrfX9BRAxpKnHz8uxtZqNRbLbsXdV8+IzlDySaq7lwI+z1pqLcClxPb2w+P6m3gy
+ 4roYUH56A3b86obRqQ+wVTdNmspaNPoiuW/PhSAoobuse7q2OCn1W1g4lg1XNYCFi+fh
+ 57esyGCCNw7bQqWAZlozhYGJsRU0h1J/7+LMo0hQaOvY5xm//W5YAhRNjmNb+zdL/kM2
+ NrjcKjfSwkqXhxRUtn8rgm3dGo7bxNiBAvMeVL/skgGSDal34IMTBvXf3G8SeizUeyvh
+ aTGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752489025; x=1753093825;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=RHFJzzPUS+Gs190sJ8Y1X0wq++eR9FYpLgnW758cBt4=;
- b=lGH/60uZ9M9kPuWW9OevcTqXoLRaJtCkmhdAxKktze7WNMSoKqHCqzHcwzvPolHuBn
- 9BdTC0IwrAN5gwWjEQgUJm5d526V5bO+nhC12nYghRNP8m4mfWUbSB/7Cv3LZ9h7kzka
- h8zgiqJC8hwS212H5cOp1BXGsdsaMmp1Bgj+wWkP0Y7KHVpHYUN+nf4Z7RIC3rM+mcAc
- OSwgLHTDjIqjFyvhLw3AW09tpJZ2gl1TeW/bflSXyFrlkwRynClsa+3fFCudSY2ROsiV
- hI25AklhuzaV4XzvNUHOCPvKrGFeeINmZ/bBUhpRzt0bSCBLSn7icr/GKuWUwdcKLmYF
- FZBg==
+ d=1e100.net; s=20230601; t=1752495018; x=1753099818;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=oE2uMXUiiFM8FhKSo+jh6RjiKCSwwiGNwTTlcD7T1I0=;
+ b=e1aPENP419q7gEU+96kNUeSHF6sQcApEP9gLLiE3pHoq12YaDWq1K9lWWpKzgMVSDq
+ fek+U/dN9yeM984hmdd+RX1S1Dy/J2Kmxyc3llK0qEi6cMcMIWiUJVPAZ3by+xkx/8LU
+ kjLndzsBT8z6ATXNlzY7WHimcrt7QMWOfnI5SUB5PNitBTA5ZToYvNF3UxqzW7Znydj0
+ I4XpgTlFqB3H85uh07BH4yoymMHhpK1PzVHCcxSdB7vE0PpPIsmEFpYxtuWowxIUP8b8
+ T1K8mkXdLxKTTpcYz2kByBblGT903Cb3i+5LggAOhySacheFaJ+lTwF2ziigT80KfWcd
+ 33vA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXAl+EOLdpw20SW6k/uaBXvZVyYri9ux8LSUDdwsabBqTy+3et+5Nhe8PqULObL9uW/P+SDNm9bTg==@nongnu.org
-X-Gm-Message-State: AOJu0YyCzqfTBEmeq0EASK45YPXikaqLwn3rren8DsJY2aoPr64iuTEK
- zO5OZ+aGSWpVp1B92JEctSJ7PuSgv5e0r2k10asBNEJvz020dOrHJgyVPB6U5uM7N2uBgWIMlYm
- gqwKdwjj/9WzZZNPmG+aCt3W1x8XjiSDbpuCPqlod9Q==
-X-Gm-Gg: ASbGnctfe7T+qIbwgCJTqWIi1gVCLLczM0p4HfWGHHtsvwSIRtMmVYDzhceUNvhh9mt
- 7RKw0wpdGboUMJDrny1YSTxrWAnYCwa5W/bUjqltzXxBPVjX59MGjGV+ba2Ah0rwRJDOIRoVLgf
- oYUPNXG6we+T07gx64gbSn98mn2YN89H+Iy4h+2fD72RLcigc/UZNWFr8KwPCkzZlLyVfjhFPQw
- lRLMolQ
-X-Google-Smtp-Source: AGHT+IF/1PZQfyNKUKY9/JKK21GzNep90DtLeukMklB5HyBuYzxgU5Bpg9CdMcpMgby1Q3hKTblp+RVHUoLP9yWzpmk=
-X-Received: by 2002:a05:690c:6e8c:b0:70e:326:6aeb with SMTP id
- 00721157ae682-717d5d79352mr202330897b3.10.1752489025356; Mon, 14 Jul 2025
- 03:30:25 -0700 (PDT)
+ AJvYcCXMreZJhHiLKDdU1T7a+vdGiERnhxqjK+iDAH5O4E/BawCJKeo7t6yEWavmyRQLQ/pY8CQuTPYDLQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxgpMLcy/4J8EJoKO3XO8+Op1Zi3Am0zgglP4xD4BW+jGG5b9dk
+ LegH91JiXxlW3VBOup8Q3P6PSCYcROHWxM/UUWvv53tPb/mFL1QZhutixDjASUej6Ww=
+X-Gm-Gg: ASbGnctGgAFUkp0rHEmijWS0NUUwhsKaIzznverIfa6tSlAwL5FV458CpsfJv3oVF6F
+ nLysyhah++2UfUF6UP9mgjRKHpAYpuMdmvg2bJrUxYbPWTD11f1Q9toD3AR7wJh12kUOySYut4S
+ cZ45+KH3u5CkITZ92hjhlGikJbFj/TdXPHdPTYtAPS5dP4kfLDcQ6MdQVGSKHTSVGUctCDEXi+B
+ wGp8rKIamr008InoJkYZPOCVFBCrTZkQcLn7wHZsJma+7R8J5jGnwXiCIA7flVtQx4c1cZ1IBZm
+ 04MvNJo6YSgpxIwpBRi0fcTKavGmS2Rk9FqdBnpAEb7RMjzZb9ItAJm3EOysqPyzFgeLe9vLIFA
+ yVLIgg2f8JuyG9yD7Ob3vpebV9wY0AohLYs/eHk1lpLAZ5evrOTqPW6Z6//NIyYwlbflSNR5h3k
+ nX0o9FMw==
+X-Google-Smtp-Source: AGHT+IFIYsP07DdzOj7Ie3YTuqvV07XMsAxlqbss5qIjLr1jveCIYmIGNTtPfYQPATfF0/zV9QtjsA==
+X-Received: by 2002:a5d:6f1d:0:b0:3a3:64b9:773 with SMTP id
+ ffacd0b85a97d-3b5f1c726admr10208205f8f.10.1752495017940; 
+ Mon, 14 Jul 2025 05:10:17 -0700 (PDT)
+Received: from [192.168.69.239] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3b5e8dc91d8sm12047584f8f.42.2025.07.14.05.10.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Jul 2025 05:10:17 -0700 (PDT)
+Message-ID: <d338428e-ae84-47f4-8f60-b72b3cbe8dcd@linaro.org>
+Date: Mon, 14 Jul 2025 14:10:16 +0200
 MIME-Version: 1.0
-References: <20250708221438.347643-1-vacha.bhavsar@oss.qualcomm.com>
-In-Reply-To: <20250708221438.347643-1-vacha.bhavsar@oss.qualcomm.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Jul 2025 11:30:14 +0100
-X-Gm-Features: Ac12FXxuip6fbIRFmyr9PkajDrZf9InpSwHdpc2BYKgN-cpb0_7NfOsEFvTD02I
-Message-ID: <CAFEAcA926Tur8wSvSyMQYJ6XXdiU9mNJZ=weW5x67sJJhjvBtA@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Added support for SME register exposure to GDB
-To: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hvf: arm: Remove $pc from trace_hvf_data_abort()
+To: Zenghui Yu <zenghui.yu@linux.dev>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: agraf@csgraf.de, mads@ynddal.dk, peter.maydell@linaro.org
+References: <20250713154719.4248-1-zenghui.yu@linux.dev>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250713154719.4248-1-zenghui.yu@linux.dev>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -94,84 +103,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 8 Jul 2025 at 23:14, Vacha Bhavsar
-<vacha.bhavsar@oss.qualcomm.com> wrote:
->
-> The QEMU GDB stub does not expose the ZA storage SME register to GDB via
-> the remote serial protocol, which can be a useful functionality to debug SME
-> code. To provide this functionality in Aarch64 target, this patch registers the
-> SME register set with the GDB stub. To do so, this patch implements the
-> aarch64_gdb_get_sme_reg() and aarch64_gdb_set_sme_reg() functions to
-> specify how to get and set the SME registers, and the
-> arm_gen_dynamic_smereg_feature() function to generate the target
-> description in XML format to indicate the target architecture supports SME.
-> Finally, this patch includes a dyn_smereg_feature structure to hold this
-> GDB XML description of the SME registers for each CPU.
->
-> Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+On 13/7/25 17:47, Zenghui Yu wrote:
+> We don't synchronize vcpu registers from the hardware accelerator (e.g., by
+> cpu_synchronize_state()) in the Dabort handler, so env->pc points to the
+> instruction which has nothing to do with the Dabort at all.
+> 
+> And it doesn't seem to make much sense to log PC in every Dabort handler,
+> let's just remove it from this trace event.
+> 
+> Signed-off-by: Zenghui Yu <zenghui.yu@linux.dev>
+> ---
+>   target/arm/hvf/hvf.c        | 2 +-
+>   target/arm/hvf/trace-events | 2 +-
+>   2 files changed, 2 insertions(+), 2 deletions(-)
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-
-> +int aarch64_gdb_set_sme_reg(CPUState *cs, uint8_t *buf, int reg)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(cs);
-> +    CPUARMState *env = &cpu->env;
-> +
-> +    /* The first 32 registers are the zregs */
-> +    switch (reg) {
-> +    /* The first 32 registers are the zregs */
-
-You don't need the same comment twice, and it also doesn't
-look like it makes sense here, because the zregs are
-SVE regs, not SME regs.
-
-> +    case 0:
-> +    {
-> +        /* cannot set svg via gdbstub */
-> +        return 0;
-> +    }
-> +    case 1:
-> +        env->svcr = *buf & 0x03;
-
-This will update env->svcr but won't have the correct effects
-on the CPU (e.g. zeroing the ZA storage); I think you need to
-call aarch64_set_svcr() here. Also you've declared
-SVCR in the XML as a 64-bit register, so you should read it out
-of the buffer as a 64-bit value, not short-cut by reading just
-one byte.
-
-> +        return 8;
-> +    case 2:
-> +        int vq, len = 0;
-> +        int svl = cpu->sve_max_vq * 16;
-> +        uint64_t *p = (uint64_t *) buf;
-
-I know this is what the existing SVE code does, but does
-this really do the right thing on a big-endian host ?
-
-> +        for (int i = 0; i < svl; i++) {
-> +            for (vq = 0; vq < cpu->sve_max_vq; vq++) {
-> +                env->za_state.za[i].d[vq * 2 + 1] = *p++;
-> +                env->za_state.za[i].d[vq * 2] = *p++;
-> +                len += 16;
-> +            }
-> +        }
-> +        return len;
-> +    default:
-> +        /* gdbstub asked for something out our range */
-
-"out of"
-
-> +        break;
-> +    }
-> +
-> +    return 0;
-> +}
-
-(PS: I would consider this close enough to being a bugfix to be
-OK with putting it into 10.1 in the first rc cycle or so even
-if it misses softfreeze.)
-
-thanks
--- PMM
 

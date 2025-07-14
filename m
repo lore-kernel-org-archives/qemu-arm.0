@@ -4,132 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B7BC83F1B
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 23:16:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8AC4C83F17
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 23:16:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubSI1-0001gH-Th; Mon, 14 Jul 2025 19:08:54 -0400
+	id 1ubSIk-0004b0-An; Mon, 14 Jul 2025 19:09:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSHW-0006OD-QO
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:08:22 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSHm-0008EX-8S
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:08:38 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSHR-0005fk-5i
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:08:22 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSHj-0005jR-Vy
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:08:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752534496;
+ s=mimecast20190719; t=1752534515;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=znDa8XirYCFJbWIhb2Af4aUAACoax7sDJMNQccypmgY=;
- b=bmB/g1rNlF0uKwag5pk7E+sX8syP9fYI0wQAqQrSEzkM6eiBKiwHnrsLAUNjFVJAiTPBIQ
- RqLpsxhV6VHq2g2uVUxLa2WaanRzdG8fB3BmKB/zCD3oTgVV10KTDAI4NIXehceNeFYPi/
- BPZY2ivxpfFE4QRHKd9USUKv3AG3T5s=
+ bh=plxvBEcPHMctPzf6xD9j7d/D3J7YMP4bRSmar6SnUeM=;
+ b=TdkiGaB6xoMsQkihPdWnmDETp4YIHCC2iFwSj4vYmeyFvE24zF2uplw8oGromcbIAsFLkb
+ Jm4F+R2eRQi0jyhya3oJdco4/57p26QJsUAtLODGnurLb0T8BXNQbad9QjhpROW8soh7W8
+ RNAhUPVHB5UHvHLu8Dd+e8PrKccHMcU=
 Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
  [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-641-_xxGr69GNQaC7wq6NVyFXw-1; Mon, 14 Jul 2025 19:08:15 -0400
-X-MC-Unique: _xxGr69GNQaC7wq6NVyFXw-1
-X-Mimecast-MFC-AGG-ID: _xxGr69GNQaC7wq6NVyFXw_1752534494
+ us-mta-459-G2F6akumPfyPXLlo_TQ7yA-1; Mon, 14 Jul 2025 19:08:33 -0400
+X-MC-Unique: G2F6akumPfyPXLlo_TQ7yA-1
+X-Mimecast-MFC-AGG-ID: G2F6akumPfyPXLlo_TQ7yA_1752534512
 Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-453817323afso30141525e9.1
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 16:08:14 -0700 (PDT)
+ 5b1f17b1804b1-455ea9cb0beso26557415e9.0
+ for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 16:08:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752534494; x=1753139294;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=znDa8XirYCFJbWIhb2Af4aUAACoax7sDJMNQccypmgY=;
- b=qUn2Zjk075gfD//JMBE2jlZUBrNkueQyoIw1SLjK4VA/NLgeOaAwWD4cXgiVjRs7HV
- 88vS9DnGCWT6XW2CSIoCRGn2pxjyBZstO7xy+eomPfFzQO0Xdl85iDXHqAxhgmEgrGtD
- J+FBd6arPSQpw4rK/TgV73bWa64T/IJ0UwX4iXAhrmJIrjt2iHKY6Lxz5R48a6NX/tJA
- Ow2HcxsQ24lSao7XM+JiFyib2PZfM/8+uUDB00tIiPrTtvrI2KX0kCibkq6+ByASl57F
- 8ua5XSKJ1sCsD6gyj6Wd2ONfoT7HPcjHs5B3Jqc8BA/kzDhuBbV8hN7ts0yXarPXvTs9
- BzDg==
+ d=1e100.net; s=20230601; t=1752534512; x=1753139312;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=plxvBEcPHMctPzf6xD9j7d/D3J7YMP4bRSmar6SnUeM=;
+ b=EBJyf1LqquEYFEokx3DldcP/ZkMpmiHCh1uR3ImxJOfaxP84VFm0YoIngVqyfhuDuj
+ P7FPtD4gaKnRiKm7tZc/Jf449PdFKNcCnWSnKOr8nSa7K8vsZ659sj+hBAmA/9g0fwSo
+ BEzKoMla0QKEPjq+DW89YB/TaWIAhZWrb+dsUhykx1ZQxtL7uFyTX7vIjrsxSJiumpy4
+ fzEWpByklMkZicVvc8SSA7PPsEbg2hQFQX+qPK9bIvUxGkMHGZzPp6UYYoilgsKQ+5QI
+ eN0p/h9VZo5zaCz6Uy3XLOO6V86955i/924D6xtTC84SribWyIPt5RTKVSKohL7ocMYT
+ 4IEg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVgsFumFdYJM8sKBJiP2APlsZPhCaxdgP0ZBbUAHYcaaXl6x0V+d2OSnVLQI/K7qo3pON6lxMmMJA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz+Sq1KSB2JJjSTXzdy897nxwctjHIQMeRdTpU59Sn/zZ+JPXwI
- JemAA+M07qZ2jHTude5yXzjK/jBeiNAhQV3RY1wgUoni4r8JfgC0EBKqS83V6tvJetkMWV3NJDN
- ULfBD4hANYTj/naPCiY2DDwuZEE0+rDrs7t29w/LYXNctzJq4Qo7b+Q==
-X-Gm-Gg: ASbGncurprT9Obcet5GUoi0NgBbQkSXmwVmrR6jrz/Yv1qmTZkEx+GXkJO2JlqBeAFz
- bG8xyPTh2v6yX21XLVVOAkYSzXzR5pzH3/OdFlWtM9W4rlDOm8I7SaCf195J40DrGv139YeBBo/
- 5+wZxy5kW3iTWMqCHS2UM4PyiJaOnMsCIfVATKgyQCB+ltaOadT09tbPEmqsuKLcIUiZhuJhdqk
- gLkuNTyOplTCcNgcHFImURBAnPH2ZZO6Rrm/5retKrHHHiviM+H+7LCRF/vRdg1lt8cKuc7vD7g
- KZ8RTkDtxKJXEmjrrhXCnd0jLcmqZmAs
-X-Received: by 2002:a05:600c:828a:b0:43d:9d5:474d with SMTP id
- 5b1f17b1804b1-455c6197d55mr141927925e9.0.1752534493483; 
- Mon, 14 Jul 2025 16:08:13 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHFOBZwLVasnDGXxo7PcIhkhMSsBXmPalH67I/3pXuAZnmMcCgfXiEqomQSofGdSHOiwHMvsw==
-X-Received: by 2002:a05:600c:828a:b0:43d:9d5:474d with SMTP id
- 5b1f17b1804b1-455c6197d55mr141927245e9.0.1752534492838; 
- Mon, 14 Jul 2025 16:08:12 -0700 (PDT)
+ AJvYcCWjvZOhWddK6DnxEMwJ1rCmDM02VfUIEQCvrgGV5nrvfwyCZOUst4KCiftsUze/mPQ2z+D72uwJqw==@nongnu.org
+X-Gm-Message-State: AOJu0YxBhxqU9GCkPQhU42ORS7+uKagzDn8AINplKLZKcaavdF6gSqeS
+ KjKYt+yt6ZEqIzsD81ocD4KR1bS65tMpARW5JyKhkWkxiuL0eudSSdc7BULfiD4EE5BqYTtbS0X
+ 95LKvbyihn8hpZfnc3liAoTk1rQSOCEu+a+hO9GVFmmY65rN6ZQPKeQ==
+X-Gm-Gg: ASbGncv8ugFE6ILYLGSNsBQE/ftVZ2lig9gBGDYkNGAQi9ettZwPSILiPUyfB9zQLXm
+ CpaTHJvFOLCsxKiQCYdZDQWwCk4fvkFgsj59FeLyFC/vWkGfdaCdkzrfB+fcYc9i5sGetCUWMqa
+ pIvXYjiAX+ZFxFUfgDjpOYDGuou4idBBpy2sNWfLYhkJWUbvIjvdGIajvRAILXhPQsue8HF7iBk
+ d47I5I8WlUiD7nrirVggRg8V9dEBOA44Drbe4hoSru1x0ozWf0RLoVJIL5H9Se1pAhbkRq/DS4L
+ L2VjGk1ew3vfWWKHu1TP7IgGmGJ5wYFa
+X-Received: by 2002:a05:600c:3b17:b0:455:fc16:9eb3 with SMTP id
+ 5b1f17b1804b1-455fc16a2ccmr88895015e9.33.1752534512264; 
+ Mon, 14 Jul 2025 16:08:32 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHBoIXJHcEcQ8Muau466UevAvgsGG48A6dX83SmCqWaG5XQXmJXTlJKhdgBYsCCLywhd1Ss2Q==
+X-Received: by 2002:a05:600c:3b17:b0:455:fc16:9eb3 with SMTP id
+ 5b1f17b1804b1-455fc16a2ccmr88894845e9.33.1752534511786; 
+ Mon, 14 Jul 2025 16:08:31 -0700 (PDT)
 Received: from redhat.com ([2a0d:6fc0:150d:fc00:de3:4725:47c6:6809])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b5e8e1e1a5sm13319208f8f.74.2025.07.14.16.08.08
+ ffacd0b85a97d-3b5e8e262c6sm13329144f8f.85.2025.07.14.16.08.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jul 2025 16:08:12 -0700 (PDT)
-Date: Mon, 14 Jul 2025 19:08:07 -0400
+ Mon, 14 Jul 2025 16:08:31 -0700 (PDT)
+Date: Mon, 14 Jul 2025 19:08:29 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
- John Snow <jsnow@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>,
  Jonathan Cameron <jonathan.cameron@huawei.com>,
- Fan Ni <fan.ni@samsung.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Helge Deller <deller@gmx.de>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Vikram Garhwal <vikram.garhwal@bytedance.com>,
- Jason Wang <jasowang@redhat.com>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Nicholas Piggin <npiggin@gmail.com>,
- =?utf-8?B?RnLDqWTDqXJpYw==?= Barrat <fbarrat@linux.ibm.com>,
- Bernhard Beschow <shentey@gmail.com>,
- Yoshinori Sato <yoshinori.sato@nifty.com>,
- Magnus Damm <magnus.damm@gmail.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>,
- Alexander Graf <agraf@csgraf.de>, Phil Dennis-Jordan <phil@philjordan.eu>,
- Peter Xu <peterx@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
- Eduardo Habkost <eduardo@habkost.net>, Zhao Liu <zhao1.liu@intel.com>,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Alexandre Iooss <erdnaxe@crans.org>,
- Mahmoud Mandour <ma.mandourr@gmail.com>, qemu-arm@nongnu.org,
- qemu-block@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org
-Subject: [PULL 45/97] qemu: Declare all load/store helper in 'qemu/bswap.h'
-Message-ID: <ff8ae8ed2c8c1018a632d8c528d01a89214bd10c.1752534227.git.mst@redhat.com>
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, qemu-arm@nongnu.org
+Subject: [PULL 53/97] hw/pci-host/gpex-acpi: Use GED acpi pcihp property
+Message-ID: <48d3d65d86eb120f8441e49a1552a5094345f599.1752534227.git.mst@redhat.com>
 References: <cover.1752534227.git.mst@redhat.com>
 MIME-Version: 1.0
 In-Reply-To: <cover.1752534227.git.mst@redhat.com>
 X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
 X-Mutt-Fcc: =sent
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: x8nTGUYvl3Xc1HdYlAzZlwKcZRxSGaUPfov7xFB-leY_1752534494
+X-Mimecast-MFC-PROC-ID: wE0n1QrHe7J245JV1k9NYwqPDDwEsK85IMaylQHLkQw_1752534512
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -139,7 +100,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -155,618 +116,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Eric Auger <eric.auger@redhat.com>
 
-Restrict "exec/tswap.h" to the tswap*() methods,
-move the load/store helpers with the other ones
-declared in "qemu/bswap.h".
+Retrieve the acpi pcihp property value from the ged. In case this latter
+is not set, PCI native hotplug is used on pci0. For expander bridges we
+keep pci native hotplug, as done on x86 q35.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20250708215320.70426-8-philmd@linaro.org>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+Message-Id: <20250714080639.2525563-8-eric.auger@redhat.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- include/exec/tswap.h                 | 70 --------------------------
- include/qemu/bswap.h                 | 73 ++++++++++++++++++++++++++++
- include/system/memory.h              |  1 -
- include/user/abitypes.h              |  1 -
- target/ppc/mmu-hash64.h              |  2 -
- hw/acpi/bios-linker-loader.c         |  2 -
- hw/arm/allwinner-r40.c               |  1 -
- hw/arm/boot.c                        |  2 +
- hw/arm/npcm7xx.c                     |  2 +-
- hw/block/hd-geometry.c               |  1 -
- hw/char/riscv_htif.c                 |  1 -
- hw/cxl/cxl-events.c                  |  2 -
- hw/display/artist.c                  |  1 +
- hw/display/ati.c                     |  1 +
- hw/net/can/ctucan_core.c             |  1 -
- hw/net/lan9118.c                     |  1 +
- hw/net/rtl8139.c                     |  1 +
- hw/net/vmxnet3.c                     |  1 -
- hw/pci-host/gt64120.c                |  1 +
- hw/pci-host/pnv_phb3.c               |  1 +
- hw/pci-host/pnv_phb4.c               |  1 +
- hw/pci-host/ppce500.c                |  1 -
- hw/pci-host/sh_pci.c                 |  1 -
- hw/s390x/s390-pci-inst.c             |  1 +
- hw/sensor/lsm303dlhc_mag.c           |  1 -
- hw/smbios/smbios.c                   |  1 +
- hw/vfio/migration-multifd.c          |  1 -
- hw/virtio/virtio-pci.c               |  1 +
- hw/vmapple/virtio-blk.c              |  1 -
- target/arm/cpu.c                     |  1 -
- target/i386/tcg/system/excp_helper.c |  1 -
- target/i386/xsave_helper.c           |  1 -
- target/riscv/vector_helper.c         |  1 -
- tests/tcg/plugins/mem.c              |  1 +
- 34 files changed, 87 insertions(+), 93 deletions(-)
+ include/hw/pci-host/gpex.h | 1 +
+ hw/arm/virt-acpi-build.c   | 9 +++++++++
+ hw/pci-host/gpex-acpi.c    | 3 ++-
+ 3 files changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/include/exec/tswap.h b/include/exec/tswap.h
-index 55ffa63359..72219e2c43 100644
---- a/include/exec/tswap.h
-+++ b/include/exec/tswap.h
-@@ -69,74 +69,4 @@ static inline void tswap64s(uint64_t *s)
+diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
+index 84471533af..feaf827474 100644
+--- a/include/hw/pci-host/gpex.h
++++ b/include/hw/pci-host/gpex.h
+@@ -45,6 +45,7 @@ struct GPEXConfig {
+     MemMapEntry pio;
+     int         irq;
+     PCIBus      *bus;
++    bool        pci_native_hotplug;
+ };
+ 
+ typedef struct GPEXIrq GPEXIrq;
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 782b17b966..f3bad69aa7 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -144,12 +144,21 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+     int ecam_id = VIRT_ECAM_ID(vms->highmem_ecam);
+     bool cxl_present = false;
+     PCIBus *bus = vms->bus;
++    bool acpi_pcihp = false;
++
++    if (vms->acpi_dev) {
++        acpi_pcihp = object_property_get_bool(OBJECT(vms->acpi_dev),
++                                              ACPI_PM_PROP_ACPI_PCIHP_BRIDGE,
++                                              NULL);
++    }
++
+     struct GPEXConfig cfg = {
+         .mmio32 = memmap[VIRT_PCIE_MMIO],
+         .pio    = memmap[VIRT_PCIE_PIO],
+         .ecam   = memmap[ecam_id],
+         .irq    = irq,
+         .bus    = vms->bus,
++        .pci_native_hotplug = !acpi_pcihp,
+     };
+ 
+     if (vms->highmem_mmio) {
+diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+index 80fc2bf032..44737a8d81 100644
+--- a/hw/pci-host/gpex-acpi.c
++++ b/hw/pci-host/gpex-acpi.c
+@@ -203,6 +203,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+             if (is_cxl) {
+                 build_cxl_osc_method(dev);
+             } else {
++                /* pxb bridges do not have ACPI PCI Hot-plug enabled */
+                 acpi_dsdt_add_host_bridge_methods(dev, true);
+             }
+ 
+@@ -278,7 +279,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
      }
- }
+     aml_append(dev, aml_name_decl("_CRS", rbuf));
  
--/* Return ld{word}_{le,be}_p following target endianness. */
--#define LOAD_IMPL(word, args...)                    \
--do {                                                \
--    if (target_big_endian()) {                      \
--        return glue(glue(ld, word), _be_p)(args);   \
--    } else {                                        \
--        return glue(glue(ld, word), _le_p)(args);   \
--    }                                               \
--} while (0)
--
--static inline int lduw_p(const void *ptr)
--{
--    LOAD_IMPL(uw, ptr);
--}
--
--static inline int ldsw_p(const void *ptr)
--{
--    LOAD_IMPL(sw, ptr);
--}
--
--static inline int ldl_p(const void *ptr)
--{
--    LOAD_IMPL(l, ptr);
--}
--
--static inline uint64_t ldq_p(const void *ptr)
--{
--    LOAD_IMPL(q, ptr);
--}
--
--static inline uint64_t ldn_p(const void *ptr, int sz)
--{
--    LOAD_IMPL(n, ptr, sz);
--}
--
--#undef LOAD_IMPL
--
--/* Call st{word}_{le,be}_p following target endianness. */
--#define STORE_IMPL(word, args...)           \
--do {                                        \
--    if (target_big_endian()) {              \
--        glue(glue(st, word), _be_p)(args);  \
--    } else {                                \
--        glue(glue(st, word), _le_p)(args);  \
--    }                                       \
--} while (0)
--
--
--static inline void stw_p(void *ptr, uint16_t v)
--{
--    STORE_IMPL(w, ptr, v);
--}
--
--static inline void stl_p(void *ptr, uint32_t v)
--{
--    STORE_IMPL(l, ptr, v);
--}
--
--static inline void stq_p(void *ptr, uint64_t v)
--{
--    STORE_IMPL(q, ptr, v);
--}
--
--static inline void stn_p(void *ptr, int sz, uint64_t v)
--{
--    STORE_IMPL(n, ptr, sz, v);
--}
--
--#undef STORE_IMPL
--
- #endif  /* TSWAP_H */
-diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
-index 9a11764536..39ba64046a 100644
---- a/include/qemu/bswap.h
-+++ b/include/qemu/bswap.h
-@@ -1,6 +1,8 @@
- #ifndef BSWAP_H
- #define BSWAP_H
+-    acpi_dsdt_add_host_bridge_methods(dev, true);
++    acpi_dsdt_add_host_bridge_methods(dev, cfg->pci_native_hotplug);
  
-+#include "qemu/target-info.h"
-+
- #undef  bswap16
- #define bswap16(_x) __builtin_bswap16(_x)
- #undef  bswap32
-@@ -432,4 +434,75 @@ DO_STN_LDN_P(be)
- #undef le_bswaps
- #undef be_bswaps
- 
-+
-+/* Return ld{word}_{le,be}_p following target endianness. */
-+#define LOAD_IMPL(word, args...)                    \
-+do {                                                \
-+    if (target_big_endian()) {                      \
-+        return glue(glue(ld, word), _be_p)(args);   \
-+    } else {                                        \
-+        return glue(glue(ld, word), _le_p)(args);   \
-+    }                                               \
-+} while (0)
-+
-+static inline int lduw_p(const void *ptr)
-+{
-+    LOAD_IMPL(uw, ptr);
-+}
-+
-+static inline int ldsw_p(const void *ptr)
-+{
-+    LOAD_IMPL(sw, ptr);
-+}
-+
-+static inline int ldl_p(const void *ptr)
-+{
-+    LOAD_IMPL(l, ptr);
-+}
-+
-+static inline uint64_t ldq_p(const void *ptr)
-+{
-+    LOAD_IMPL(q, ptr);
-+}
-+
-+static inline uint64_t ldn_p(const void *ptr, int sz)
-+{
-+    LOAD_IMPL(n, ptr, sz);
-+}
-+
-+#undef LOAD_IMPL
-+
-+/* Call st{word}_{le,be}_p following target endianness. */
-+#define STORE_IMPL(word, args...)           \
-+do {                                        \
-+    if (target_big_endian()) {              \
-+        glue(glue(st, word), _be_p)(args);  \
-+    } else {                                \
-+        glue(glue(st, word), _le_p)(args);  \
-+    }                                       \
-+} while (0)
-+
-+
-+static inline void stw_p(void *ptr, uint16_t v)
-+{
-+    STORE_IMPL(w, ptr, v);
-+}
-+
-+static inline void stl_p(void *ptr, uint32_t v)
-+{
-+    STORE_IMPL(l, ptr, v);
-+}
-+
-+static inline void stq_p(void *ptr, uint64_t v)
-+{
-+    STORE_IMPL(q, ptr, v);
-+}
-+
-+static inline void stn_p(void *ptr, int sz, uint64_t v)
-+{
-+    STORE_IMPL(n, ptr, sz, v);
-+}
-+
-+#undef STORE_IMPL
-+
- #endif /* BSWAP_H */
-diff --git a/include/system/memory.h b/include/system/memory.h
-index d6d069fd50..e2cd6ed126 100644
---- a/include/system/memory.h
-+++ b/include/system/memory.h
-@@ -19,7 +19,6 @@
- #include "exec/memattrs.h"
- #include "exec/memop.h"
- #include "exec/ramlist.h"
--#include "exec/tswap.h"
- #include "qemu/bswap.h"
- #include "qemu/queue.h"
- #include "qemu/int128.h"
-diff --git a/include/user/abitypes.h b/include/user/abitypes.h
-index 7528124b62..be7a876523 100644
---- a/include/user/abitypes.h
-+++ b/include/user/abitypes.h
-@@ -6,7 +6,6 @@
- #endif
- 
- #include "exec/cpu-defs.h"
--#include "exec/tswap.h"
- #include "user/tswap-target.h"
- 
- #ifdef TARGET_ABI32
-diff --git a/target/ppc/mmu-hash64.h b/target/ppc/mmu-hash64.h
-index b8fb12a970..ae8d4b37ae 100644
---- a/target/ppc/mmu-hash64.h
-+++ b/target/ppc/mmu-hash64.h
-@@ -1,8 +1,6 @@
- #ifndef MMU_HASH64_H
- #define MMU_HASH64_H
- 
--#include "exec/tswap.h"
--
- #ifndef CONFIG_USER_ONLY
- 
- #ifdef TARGET_PPC64
-diff --git a/hw/acpi/bios-linker-loader.c b/hw/acpi/bios-linker-loader.c
-index 108061828b..c9ffe449aa 100644
---- a/hw/acpi/bios-linker-loader.c
-+++ b/hw/acpi/bios-linker-loader.c
-@@ -22,8 +22,6 @@
- #include "hw/acpi/bios-linker-loader.h"
- #include "hw/nvram/fw_cfg.h"
- 
--#include "qemu/bswap.h"
--
- /*
-  * Linker/loader is a paravirtualized interface that passes commands to guest.
-  * The commands can be used to request guest to
-diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
-index 0bf700865c..c8eda39957 100644
---- a/hw/arm/allwinner-r40.c
-+++ b/hw/arm/allwinner-r40.c
-@@ -20,7 +20,6 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "qemu/error-report.h"
--#include "qemu/bswap.h"
- #include "qemu/module.h"
- #include "qemu/units.h"
- #include "hw/boards.h"
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index becd827af1..d391cd01bb 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -15,6 +15,7 @@
- #include "hw/arm/boot.h"
- #include "hw/arm/linux-boot-if.h"
- #include "cpu.h"
-+#include "exec/tswap.h"
- #include "exec/target_page.h"
- #include "system/kvm.h"
- #include "system/tcg.h"
-@@ -29,6 +30,7 @@
- #include "qemu/config-file.h"
- #include "qemu/option.h"
- #include "qemu/units.h"
-+#include "qemu/bswap.h"
- 
- /* Kernel boot protocol is specified in the kernel docs
-  * Documentation/arm/Booting and Documentation/arm64/booting.txt
-diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-index 2f30c49df5..ecfae328a9 100644
---- a/hw/arm/npcm7xx.c
-+++ b/hw/arm/npcm7xx.c
-@@ -24,7 +24,7 @@
- #include "hw/qdev-clock.h"
- #include "hw/qdev-properties.h"
- #include "qapi/error.h"
--#include "qemu/bswap.h"
-+#include "exec/tswap.h"
- #include "qemu/units.h"
- #include "system/system.h"
- #include "target/arm/cpu-qom.h"
-diff --git a/hw/block/hd-geometry.c b/hw/block/hd-geometry.c
-index f3939e73f4..db221901cf 100644
---- a/hw/block/hd-geometry.c
-+++ b/hw/block/hd-geometry.c
-@@ -33,7 +33,6 @@
- #include "qemu/osdep.h"
- #include "system/block-backend.h"
- #include "qapi/qapi-types-block.h"
--#include "qemu/bswap.h"
- #include "hw/block/block.h"
- #include "trace.h"
- 
-diff --git a/hw/char/riscv_htif.c b/hw/char/riscv_htif.c
-index c884be5d75..a78ea9b01c 100644
---- a/hw/char/riscv_htif.c
-+++ b/hw/char/riscv_htif.c
-@@ -29,7 +29,6 @@
- #include "qemu/timer.h"
- #include "qemu/error-report.h"
- #include "system/address-spaces.h"
--#include "exec/tswap.h"
- #include "system/dma.h"
- #include "system/runstate.h"
- #include "trace.h"
-diff --git a/hw/cxl/cxl-events.c b/hw/cxl/cxl-events.c
-index 12dee2e467..f90470930d 100644
---- a/hw/cxl/cxl-events.c
-+++ b/hw/cxl/cxl-events.c
-@@ -8,8 +8,6 @@
-  */
- 
- #include "qemu/osdep.h"
--
--#include "qemu/bswap.h"
- #include "qemu/error-report.h"
- #include "hw/pci/msi.h"
- #include "hw/pci/msix.h"
-diff --git a/hw/display/artist.c b/hw/display/artist.c
-index 3fafc8a222..3c884c9243 100644
---- a/hw/display/artist.c
-+++ b/hw/display/artist.c
-@@ -12,6 +12,7 @@
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "qemu/units.h"
-+#include "qemu/bswap.h"
- #include "qapi/error.h"
- #include "hw/sysbus.h"
- #include "hw/loader.h"
-diff --git a/hw/display/ati.c b/hw/display/ati.c
-index 7de27732cd..f7c0006a87 100644
---- a/hw/display/ati.c
-+++ b/hw/display/ati.c
-@@ -22,6 +22,7 @@
- #include "vga-access.h"
- #include "hw/qdev-properties.h"
- #include "vga_regs.h"
-+#include "qemu/bswap.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "qemu/error-report.h"
-diff --git a/hw/net/can/ctucan_core.c b/hw/net/can/ctucan_core.c
-index 17131a4e18..6bd99c477b 100644
---- a/hw/net/can/ctucan_core.c
-+++ b/hw/net/can/ctucan_core.c
-@@ -28,7 +28,6 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/log.h"
--#include "qemu/bswap.h"
- #include "qemu/bitops.h"
- #include "hw/irq.h"
- #include "migration/vmstate.h"
-diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
-index 6dda1e5c94..3017e12971 100644
---- a/hw/net/lan9118.c
-+++ b/hw/net/lan9118.c
-@@ -21,6 +21,7 @@
- #include "hw/ptimer.h"
- #include "hw/qdev-properties.h"
- #include "qapi/error.h"
-+#include "qemu/bswap.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include <zlib.h> /* for crc32 */
-diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
-index 654a087d80..324fb932aa 100644
---- a/hw/net/rtl8139.c
-+++ b/hw/net/rtl8139.c
-@@ -57,6 +57,7 @@
- #include "system/dma.h"
- #include "qemu/module.h"
- #include "qemu/timer.h"
-+#include "qemu/bswap.h"
- #include "net/net.h"
- #include "net/eth.h"
- #include "system/system.h"
-diff --git a/hw/net/vmxnet3.c b/hw/net/vmxnet3.c
-index 7c0ca56b7c..af73aa8ef2 100644
---- a/hw/net/vmxnet3.c
-+++ b/hw/net/vmxnet3.c
-@@ -22,7 +22,6 @@
- #include "net/tap.h"
- #include "net/checksum.h"
- #include "system/system.h"
--#include "qemu/bswap.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "hw/pci/msix.h"
-diff --git a/hw/pci-host/gt64120.c b/hw/pci-host/gt64120.c
-index b12a25696c..b1d96f62fe 100644
---- a/hw/pci-host/gt64120.c
-+++ b/hw/pci-host/gt64120.c
-@@ -28,6 +28,7 @@
- #include "qapi/error.h"
- #include "qemu/units.h"
- #include "qemu/log.h"
-+#include "qemu/bswap.h"
- #include "hw/qdev-properties.h"
- #include "hw/registerfields.h"
- #include "hw/pci/pci_device.h"
-diff --git a/hw/pci-host/pnv_phb3.c b/hw/pci-host/pnv_phb3.c
-index a4335f44f2..5d8383fac3 100644
---- a/hw/pci-host/pnv_phb3.c
-+++ b/hw/pci-host/pnv_phb3.c
-@@ -8,6 +8,7 @@
-  */
- #include "qemu/osdep.h"
- #include "qemu/log.h"
-+#include "qemu/bswap.h"
- #include "qapi/visitor.h"
- #include "qapi/error.h"
- #include "hw/pci-host/pnv_phb3_regs.h"
-diff --git a/hw/pci-host/pnv_phb4.c b/hw/pci-host/pnv_phb4.c
-index 77ea35299d..18992054e8 100644
---- a/hw/pci-host/pnv_phb4.c
-+++ b/hw/pci-host/pnv_phb4.c
-@@ -8,6 +8,7 @@
-  */
- #include "qemu/osdep.h"
- #include "qemu/log.h"
-+#include "qemu/bswap.h"
- #include "qapi/visitor.h"
- #include "qapi/error.h"
- #include "target/ppc/cpu.h"
-diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
-index 52269b05bb..975d191ccb 100644
---- a/hw/pci-host/ppce500.c
-+++ b/hw/pci-host/ppce500.c
-@@ -20,7 +20,6 @@
- #include "migration/vmstate.h"
- #include "hw/pci/pci_device.h"
- #include "hw/pci/pci_host.h"
--#include "qemu/bswap.h"
- #include "hw/pci-host/ppce500.h"
- #include "qom/object.h"
- 
-diff --git a/hw/pci-host/sh_pci.c b/hw/pci-host/sh_pci.c
-index de8f6a84aa..62fb945075 100644
---- a/hw/pci-host/sh_pci.c
-+++ b/hw/pci-host/sh_pci.c
-@@ -28,7 +28,6 @@
- #include "hw/irq.h"
- #include "hw/pci/pci_device.h"
- #include "hw/pci/pci_host.h"
--#include "qemu/bswap.h"
- #include "qemu/module.h"
- #include "qom/object.h"
- 
-diff --git a/hw/s390x/s390-pci-inst.c b/hw/s390x/s390-pci-inst.c
-index b5dddb22b8..a3bb5aa221 100644
---- a/hw/s390x/s390-pci-inst.c
-+++ b/hw/s390x/s390-pci-inst.c
-@@ -16,6 +16,7 @@
- #include "exec/target_page.h"
- #include "system/memory.h"
- #include "qemu/error-report.h"
-+#include "qemu/bswap.h"
- #include "system/hw_accel.h"
- #include "hw/boards.h"
- #include "hw/pci/pci_device.h"
-diff --git a/hw/sensor/lsm303dlhc_mag.c b/hw/sensor/lsm303dlhc_mag.c
-index f9e501da84..cd5773ae64 100644
---- a/hw/sensor/lsm303dlhc_mag.c
-+++ b/hw/sensor/lsm303dlhc_mag.c
-@@ -28,7 +28,6 @@
- #include "qapi/visitor.h"
- #include "qemu/module.h"
- #include "qemu/log.h"
--#include "qemu/bswap.h"
- 
- enum LSM303DLHCMagReg {
-     LSM303DLHC_MAG_REG_CRA          = 0x00,
-diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-index ad4cd6721e..1ac063cfb4 100644
---- a/hw/smbios/smbios.c
-+++ b/hw/smbios/smbios.c
-@@ -17,6 +17,7 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/units.h"
-+#include "qemu/bswap.h"
- #include "qapi/error.h"
- #include "qemu/config-file.h"
- #include "qemu/module.h"
-diff --git a/hw/vfio/migration-multifd.c b/hw/vfio/migration-multifd.c
-index 55635486c8..9dc70fdf16 100644
---- a/hw/vfio/migration-multifd.c
-+++ b/hw/vfio/migration-multifd.c
-@@ -13,7 +13,6 @@
- #include "hw/vfio/vfio-device.h"
- #include "migration/misc.h"
- #include "qapi/error.h"
--#include "qemu/bswap.h"
- #include "qemu/error-report.h"
- #include "qemu/lockable.h"
- #include "qemu/main-loop.h"
-diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-index fba2372c93..767216d795 100644
---- a/hw/virtio/virtio-pci.c
-+++ b/hw/virtio/virtio-pci.c
-@@ -30,6 +30,7 @@
- #include "qemu/error-report.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-+#include "qemu/bswap.h"
- #include "hw/pci/msi.h"
- #include "hw/pci/msix.h"
- #include "hw/loader.h"
-diff --git a/hw/vmapple/virtio-blk.c b/hw/vmapple/virtio-blk.c
-index 532b5649ab..9de9aaae0b 100644
---- a/hw/vmapple/virtio-blk.c
-+++ b/hw/vmapple/virtio-blk.c
-@@ -19,7 +19,6 @@
- #include "hw/vmapple/vmapple.h"
- #include "hw/virtio/virtio-blk.h"
- #include "hw/virtio/virtio-pci.h"
--#include "qemu/bswap.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "qapi/error.h"
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 08c43f674a..e2b2337399 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -23,7 +23,6 @@
- #include "qemu/timer.h"
- #include "qemu/log.h"
- #include "exec/page-vary.h"
--#include "exec/tswap.h"
- #include "target/arm/idau.h"
- #include "qemu/module.h"
- #include "qapi/error.h"
-diff --git a/target/i386/tcg/system/excp_helper.c b/target/i386/tcg/system/excp_helper.c
-index c162621587..50040f6fca 100644
---- a/target/i386/tcg/system/excp_helper.c
-+++ b/target/i386/tcg/system/excp_helper.c
-@@ -25,7 +25,6 @@
- #include "exec/page-protection.h"
- #include "exec/target_page.h"
- #include "exec/tlb-flags.h"
--#include "exec/tswap.h"
- #include "tcg/helper-tcg.h"
- 
- typedef struct TranslateParams {
-diff --git a/target/i386/xsave_helper.c b/target/i386/xsave_helper.c
-index 24ab7be8e9..996e9f3bfe 100644
---- a/target/i386/xsave_helper.c
-+++ b/target/i386/xsave_helper.c
-@@ -5,7 +5,6 @@
- #include "qemu/osdep.h"
- 
- #include "cpu.h"
--#include "exec/tswap.h"
- 
- void x86_cpu_xsave_all_areas(X86CPU *cpu, void *buf, uint32_t buflen)
- {
-diff --git a/target/riscv/vector_helper.c b/target/riscv/vector_helper.c
-index b41c29da0b..7c67d67a13 100644
---- a/target/riscv/vector_helper.c
-+++ b/target/riscv/vector_helper.c
-@@ -27,7 +27,6 @@
- #include "exec/helper-proto.h"
- #include "exec/tlb-flags.h"
- #include "exec/target_page.h"
--#include "exec/tswap.h"
- #include "fpu/softfloat.h"
- #include "tcg/tcg-gvec-desc.h"
- #include "internals.h"
-diff --git a/tests/tcg/plugins/mem.c b/tests/tcg/plugins/mem.c
-index ca4e8883dd..9649bce99c 100644
---- a/tests/tcg/plugins/mem.c
-+++ b/tests/tcg/plugins/mem.c
-@@ -20,6 +20,7 @@
-  * few things provided by compiler.h.
-  */
- #include <compiler.h>
-+#include <stdbool.h>
- #include <bswap.h>
- #include <qemu-plugin.h>
- 
+     Aml *dev_res0 = aml_device("%s", "RES0");
+     aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));
 -- 
 MST
 

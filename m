@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73C67C83F1A
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 17:02:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD921C83F17
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 17:03:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubMXl-000337-1y; Mon, 14 Jul 2025 13:00:45 -0400
+	id 1ubMWm-0001VN-Nd; Mon, 14 Jul 2025 12:59:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ubLcv-0005Yt-5X; Mon, 14 Jul 2025 12:02:05 -0400
+ id 1ubLcU-0005R4-PJ; Mon, 14 Jul 2025 12:01:49 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ubLct-0008PQ-0Q; Mon, 14 Jul 2025 12:02:00 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bgn9G1MDrz6L5d4;
- Tue, 15 Jul 2025 00:00:50 +0800 (CST)
+ id 1ubLcQ-0008Lr-QT; Mon, 14 Jul 2025 12:01:33 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bgn602Kfxz6L5Md;
+ Mon, 14 Jul 2025 23:58:00 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 1C1BB1402FB;
- Tue, 15 Jul 2025 00:01:55 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id A75D814038F;
+ Tue, 15 Jul 2025 00:01:27 +0800 (CST)
 Received: from A2303104131.china.huawei.com (10.203.177.241) by
  frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 14 Jul 2025 18:01:46 +0200
+ 15.1.2507.39; Mon, 14 Jul 2025 18:01:18 +0200
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
@@ -35,10 +35,10 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
  <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
  <zhenzhong.duan@intel.com>, <shameerkolothum@gmail.com>
-Subject: [RFC PATCH v3 11/15] hw/pci/pci: Introduce optional
- get_msi_address_space() callback.
-Date: Mon, 14 Jul 2025 16:59:37 +0100
-Message-ID: <20250714155941.22176-12-shameerali.kolothum.thodi@huawei.com>
+Subject: [RFC PATCH v3 08/15] hw/arm/smmuv3-accel: Add set/unset_iommu_device
+ callback
+Date: Mon, 14 Jul 2025 16:59:34 +0100
+Message-ID: <20250714155941.22176-9-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
 References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
@@ -76,158 +76,286 @@ From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On ARM, when a device is behind an IOMMU, its MSI doorbell address is
-subject to translation by the IOMMU. This behavior affects vfio-pci
-passthrough devices assigned to guests using an accelerated SMMUv3.
+From: Nicolin Chen <nicolinc@nvidia.com>
 
-In this setup, we configure the host SMMUv3 in nested mode, where
-VFIO sets up the Stage-2 (S2) mappings for guest RAM, while the guest
-controls Stage-1 (S1). To allow VFIO to correctly configure S2 mappings,
-we currently return the system address space via the get_address_space()
-callback for vfio-pci devices.
+Implement a set_iommu_device callback:
+ -If found an existing viommu reuse that.
+   (Devices behind the same physical SMMU should share an S2 HWPT)
+ -Else,
+    Allocate a viommu with the nested parent S2 hwpt allocated by VFIO.
+    Allocate bypass and abort hwpt.
+ -And add the dev to viommu device list
 
-However, QEMU/KVM also uses this same callback path when resolving the
-address space for MSI doorbells:
+Also add an unset_iommu_device to unwind/cleanup above.
 
-kvm_irqchip_add_msi_route()
-  kvm_arch_fixup_msi_route()
-    pci_device_iommu_address_space()
-
-This leads to problems when MSI doorbells need to be translated.
-
-To fix this, introduce an optional get_msi_address_space() callback.
-In the SMMUv3 accelerated case, this callback returns the IOMMU address
-space if the guest has set up S1 translations for the vfio-pci device.
-Otherwise, it returns the system address space.
-
-Suggested-by: Nicolin Chen <nicolinc@nvidia.com>
+Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- hw/arm/smmuv3-accel.c | 25 +++++++++++++++++++++++++
- hw/pci/pci.c          | 19 +++++++++++++++++++
- include/hw/pci/pci.h  | 16 ++++++++++++++++
- target/arm/kvm.c      |  2 +-
- 4 files changed, 61 insertions(+), 1 deletion(-)
+ hw/arm/smmuv3-accel.c    | 154 +++++++++++++++++++++++++++++++++++++++
+ hw/arm/smmuv3-accel.h    |  20 +++++
+ hw/arm/trace-events      |   4 +
+ include/system/iommufd.h |   6 ++
+ 4 files changed, 184 insertions(+)
 
 diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-index f1584dd775..04c665ccf5 100644
+index 66cd4f5ece..fe90d48675 100644
 --- a/hw/arm/smmuv3-accel.c
 +++ b/hw/arm/smmuv3-accel.c
-@@ -346,6 +346,30 @@ static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
-     }
+@@ -7,6 +7,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "trace.h"
+ #include "qemu/error-report.h"
+ 
+ #include "hw/arm/smmuv3.h"
+@@ -17,6 +18,9 @@
+ 
+ #include "smmuv3-accel.h"
+ 
++#define SMMU_STE_VALID      (1ULL << 0)
++#define SMMU_STE_CFG_BYPASS (1ULL << 3)
++
+ static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
+                                                 PCIBus *bus, int devfn)
+ {
+@@ -39,6 +43,154 @@ static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
+     return accel_dev;
  }
  
-+static AddressSpace *smmuv3_accel_find_msi_as(PCIBus *bus, void *opaque,
-+                                                  int devfn)
++static bool
++smmuv3_accel_dev_alloc_viommu(SMMUv3AccelDevice *accel_dev,
++                               HostIOMMUDeviceIOMMUFD *idev, Error **errp)
++{
++    struct iommu_hwpt_arm_smmuv3 bypass_data = {
++        .ste = { SMMU_STE_CFG_BYPASS | SMMU_STE_VALID, 0x0ULL },
++    };
++    struct iommu_hwpt_arm_smmuv3 abort_data = {
++        .ste = { SMMU_STE_VALID, 0x0ULL },
++    };
++    SMMUDevice *sdev = &accel_dev->sdev;
++    SMMUState *bs = sdev->smmu;
++    SMMUv3State *s = ARM_SMMUV3(bs);
++    SMMUv3AccelState *s_accel = s->s_accel;
++    uint32_t s2_hwpt_id = idev->hwpt_id;
++    SMMUS2Hwpt *s2_hwpt;
++    SMMUViommu *viommu;
++    uint32_t viommu_id;
++
++    if (s_accel->viommu) {
++        accel_dev->viommu = s_accel->viommu;
++        return true;
++    }
++
++    if (!iommufd_backend_alloc_viommu(idev->iommufd, idev->devid,
++                                      IOMMU_VIOMMU_TYPE_ARM_SMMUV3,
++                                      s2_hwpt_id, &viommu_id, errp)) {
++        return false;
++    }
++
++    viommu = g_new0(SMMUViommu, 1);
++    viommu->core.viommu_id = viommu_id;
++    viommu->core.s2_hwpt_id = s2_hwpt_id;
++    viommu->core.iommufd = idev->iommufd;
++
++    if (!iommufd_backend_alloc_hwpt(idev->iommufd, idev->devid,
++                                    viommu->core.viommu_id, 0,
++                                    IOMMU_HWPT_DATA_ARM_SMMUV3,
++                                    sizeof(abort_data), &abort_data,
++                                    &viommu->abort_hwpt_id, errp)) {
++        goto free_viommu;
++    }
++
++    if (!iommufd_backend_alloc_hwpt(idev->iommufd, idev->devid,
++                                    viommu->core.viommu_id, 0,
++                                    IOMMU_HWPT_DATA_ARM_SMMUV3,
++                                    sizeof(bypass_data), &bypass_data,
++                                    &viommu->bypass_hwpt_id, errp)) {
++        goto free_abort_hwpt;
++    }
++
++    s2_hwpt = g_new(SMMUS2Hwpt, 1);
++    s2_hwpt->iommufd = idev->iommufd;
++    s2_hwpt->hwpt_id = s2_hwpt_id;
++
++    viommu->iommufd = idev->iommufd;
++    viommu->s2_hwpt = s2_hwpt;
++
++    s_accel->viommu = viommu;
++    accel_dev->viommu = viommu;
++    return true;
++
++free_abort_hwpt:
++    iommufd_backend_free_id(idev->iommufd, viommu->abort_hwpt_id);
++free_viommu:
++    iommufd_backend_free_id(idev->iommufd, viommu->core.viommu_id);
++    g_free(viommu);
++    return false;
++}
++
++static bool smmuv3_accel_set_iommu_device(PCIBus *bus, void *opaque, int devfn,
++                                          HostIOMMUDevice *hiod, Error **errp)
++{
++    HostIOMMUDeviceIOMMUFD *idev = HOST_IOMMU_DEVICE_IOMMUFD(hiod);
++    SMMUState *bs = opaque;
++    SMMUv3State *s = ARM_SMMUV3(bs);
++    SMMUv3AccelState *s_accel = s->s_accel;
++    SMMUPciBus *sbus = smmu_get_sbus(bs, bus);
++    SMMUv3AccelDevice *accel_dev = smmuv3_accel_get_dev(bs, sbus, bus, devfn);
++    SMMUDevice *sdev = &accel_dev->sdev;
++
++    if (!idev) {
++        return true;
++    }
++
++    if (accel_dev->idev) {
++        if (accel_dev->idev != idev) {
++            error_report("Device 0x%x already has an associated idev",
++                         smmu_get_sid(sdev));
++            return false;
++        } else {
++            return true;
++        }
++    }
++
++    if (!smmuv3_accel_dev_alloc_viommu(accel_dev, idev, errp)) {
++        error_report("Device 0x%x: Unable to alloc viommu", smmu_get_sid(sdev));
++        return false;
++    }
++
++    accel_dev->idev = idev;
++    QLIST_INSERT_HEAD(&s_accel->viommu->device_list, accel_dev, next);
++    trace_smmuv3_accel_set_iommu_device(devfn, smmu_get_sid(sdev));
++    return true;
++}
++
++static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
++                                            int devfn)
 +{
 +    SMMUState *bs = opaque;
-+    SMMUPciBus *sbus;
++    SMMUv3State *s = ARM_SMMUV3(bs);
++    SMMUPciBus *sbus = g_hash_table_lookup(bs->smmu_pcibus_by_busptr, bus);
 +    SMMUv3AccelDevice *accel_dev;
++    SMMUViommu *viommu;
 +    SMMUDevice *sdev;
 +
-+    sbus = smmu_get_sbus(bs, bus);
-+    accel_dev = smmuv3_accel_get_dev(bs, sbus, bus, devfn);
-+    sdev = &accel_dev->sdev;
++    if (!sbus) {
++        return;
++    }
 +
-+    /*
-+     * If the assigned vfio-pci dev has S1 translation enabled by
-+     * Guest, return IOMMU address space for MSI translation.
-+     * Otherwise, return system address space.
-+     */
-+    if (accel_dev->s1_hwpt) {
-+        return &sdev->as;
-+    } else {
-+        return &accel_dev->as_sysmem;
++    sdev = sbus->pbdev[devfn];
++    if (!sdev) {
++        return;
++    }
++
++    accel_dev = container_of(sdev, SMMUv3AccelDevice, sdev);
++    if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->idev,
++                                               accel_dev->idev->hwpt_id,
++                                               NULL)) {
++        error_report("Unable to attach dev to the default HW pagetable");
++    }
++
++    accel_dev->idev = NULL;
++    QLIST_REMOVE(accel_dev, next);
++    trace_smmuv3_accel_unset_iommu_device(devfn, smmu_get_sid(sdev));
++
++    viommu = s->s_accel->viommu;
++    if (QLIST_EMPTY(&viommu->device_list)) {
++        iommufd_backend_free_id(viommu->iommufd, viommu->bypass_hwpt_id);
++        iommufd_backend_free_id(viommu->iommufd, viommu->abort_hwpt_id);
++        iommufd_backend_free_id(viommu->iommufd, viommu->core.viommu_id);
++        iommufd_backend_free_id(viommu->iommufd, viommu->s2_hwpt->hwpt_id);
++        g_free(viommu->s2_hwpt);
++        g_free(viommu);
++        s->s_accel->viommu = NULL;
 +    }
 +}
 +
  static bool smmuv3_accel_pdev_allowed(PCIDevice *pdev, bool *vfio_pci)
  {
  
-@@ -407,6 +431,7 @@ static const PCIIOMMUOps smmuv3_accel_ops = {
+@@ -98,6 +250,8 @@ static uint64_t smmuv3_accel_get_viommu_cap(void *opaque)
+ static const PCIIOMMUOps smmuv3_accel_ops = {
+     .get_address_space = smmuv3_accel_find_add_as,
      .get_viommu_cap = smmuv3_accel_get_viommu_cap,
-     .set_iommu_device = smmuv3_accel_set_iommu_device,
-     .unset_iommu_device = smmuv3_accel_unset_iommu_device,
-+    .get_msi_address_space = smmuv3_accel_find_msi_as,
++    .set_iommu_device = smmuv3_accel_set_iommu_device,
++    .unset_iommu_device = smmuv3_accel_unset_iommu_device,
  };
  
  void smmuv3_accel_init(SMMUv3State *s)
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index 13de0e2809..404aeb643d 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -2957,6 +2957,25 @@ AddressSpace *pci_device_iommu_address_space(PCIDevice *dev)
-     return &address_space_memory;
- }
+diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
+index 2cd343103f..55a6a353fc 100644
+--- a/hw/arm/smmuv3-accel.h
++++ b/hw/arm/smmuv3-accel.h
+@@ -11,16 +11,36 @@
  
-+AddressSpace *pci_device_iommu_msi_address_space(PCIDevice *dev)
-+{
-+    PCIBus *bus;
-+    PCIBus *iommu_bus;
-+    int devfn;
+ #include "hw/arm/smmuv3.h"
+ #include "hw/arm/smmu-common.h"
++#include "system/iommufd.h"
++#include <linux/iommufd.h>
+ #include CONFIG_DEVICES
+ 
++typedef struct SMMUS2Hwpt {
++    IOMMUFDBackend *iommufd;
++    uint32_t hwpt_id;
++} SMMUS2Hwpt;
 +
-+    pci_device_get_iommu_bus_devfn(dev, &iommu_bus, &bus, &devfn);
-+    if (iommu_bus) {
-+        if (iommu_bus->iommu_ops->get_msi_address_space) {
-+            return iommu_bus->iommu_ops->get_msi_address_space(bus,
-+                                 iommu_bus->iommu_opaque, devfn);
-+        } else {
-+            return iommu_bus->iommu_ops->get_address_space(bus,
-+                                 iommu_bus->iommu_opaque, devfn);
-+        }
-+    }
-+    return &address_space_memory;
-+}
++typedef struct SMMUViommu {
++    IOMMUFDBackend *iommufd;
++    IOMMUFDViommu core;
++    SMMUS2Hwpt *s2_hwpt;
++    uint32_t bypass_hwpt_id;
++    uint32_t abort_hwpt_id;
++    QLIST_HEAD(, SMMUv3AccelDevice) device_list;
++} SMMUViommu;
 +
- int pci_iommu_init_iotlb_notifier(PCIDevice *dev, IOMMUNotifier *n,
-                                   IOMMUNotify fn, void *opaque)
- {
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index d1d43e9fb9..55138c406e 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -639,12 +639,28 @@ typedef struct PCIIOMMUOps {
-                             uint32_t pasid, bool priv_req, bool exec_req,
-                             hwaddr addr, bool lpig, uint16_t prgi, bool is_read,
-                             bool is_write);
-+    /**
-+     * @get_msi_address_space: get the address space for MSI doorbell address
-+     * for devices
-+     *
-+     * Optional callback which returns a pointer to an #AddressSpace. This
-+     * is required if MSI doorbell also gets translated through IOMMU(eg: ARM)
-+     *
-+     * @bus: the #PCIBus being accessed.
-+     *
-+     * @opaque: the data passed to pci_setup_iommu().
-+     *
-+     * @devfn: device and function number
-+     */
-+    AddressSpace * (*get_msi_address_space)(PCIBus *bus, void *opaque,
-+                                            int devfn);
- } PCIIOMMUOps;
+ typedef struct SMMUv3AccelDevice {
+     SMMUDevice  sdev;
+     AddressSpace as_sysmem;
++    HostIOMMUDeviceIOMMUFD *idev;
++    SMMUViommu *viommu;
++    QLIST_ENTRY(SMMUv3AccelDevice) next;
+ } SMMUv3AccelDevice;
  
- AddressSpace *pci_device_iommu_address_space(PCIDevice *dev);
- bool pci_device_set_iommu_device(PCIDevice *dev, HostIOMMUDevice *hiod,
-                                  Error **errp);
- void pci_device_unset_iommu_device(PCIDevice *dev);
-+AddressSpace *pci_device_iommu_msi_address_space(PCIDevice *dev);
+ typedef struct SMMUv3AccelState {
+     MemoryRegion root;
+     MemoryRegion sysmem;
++    SMMUViommu *viommu;
+ } SMMUv3AccelState;
  
- /**
-  * pci_device_get_viommu_cap: get vIOMMU capabilities.
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 6672344855..c78d0d59bb 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -1535,7 +1535,7 @@ int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level)
- int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
-                              uint64_t address, uint32_t data, PCIDevice *dev)
- {
--    AddressSpace *as = pci_device_iommu_address_space(dev);
-+    AddressSpace *as = pci_device_iommu_msi_address_space(dev);
-     hwaddr xlat, len, doorbell_gpa;
-     MemoryRegionSection mrs;
-     MemoryRegion *mr;
+ #if defined(CONFIG_ARM_SMMUV3) && defined(CONFIG_IOMMUFD)
+diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+index f3386bd7ae..c4537ca1d6 100644
+--- a/hw/arm/trace-events
++++ b/hw/arm/trace-events
+@@ -66,6 +66,10 @@ smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s
+ smmuv3_inv_notifiers_iova(const char *name, int asid, int vmid, uint64_t iova, uint8_t tg, uint64_t num_pages, int stage) "iommu mr=%s asid=%d vmid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" stage=%d"
+ smmu_reset_exit(void) ""
+ 
++#smmuv3-accel.c
++smmuv3_accel_set_iommu_device(int devfn, uint32_t sid) "devfn=0x%x (sid=0x%x)"
++smmuv3_accel_unset_iommu_device(int devfn, uint32_t sid) "devfn=0x%x (sid=0x%x"
++
+ # strongarm.c
+ strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
+ strongarm_ssp_read_underrun(void) "SSP rx underrun"
+diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+index 6ab3ba3cb6..b7ad2cf10c 100644
+--- a/include/system/iommufd.h
++++ b/include/system/iommufd.h
+@@ -38,6 +38,12 @@ struct IOMMUFDBackend {
+     /*< public >*/
+ };
+ 
++typedef struct IOMMUFDViommu {
++    IOMMUFDBackend *iommufd;
++    uint32_t s2_hwpt_id;
++    uint32_t viommu_id;
++} IOMMUFDViommu;
++
+ bool iommufd_backend_connect(IOMMUFDBackend *be, Error **errp);
+ void iommufd_backend_disconnect(IOMMUFDBackend *be);
+ 
 -- 
 2.34.1
 

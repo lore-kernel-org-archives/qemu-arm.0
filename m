@@ -4,87 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84FECC83F1A
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 15:21:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B91E1C83F17
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 15:45:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubKt0-00024a-EM; Mon, 14 Jul 2025 11:14:35 -0400
+	id 1ubLMC-0008VY-Aj; Mon, 14 Jul 2025 11:44:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ubJbE-0003Op-DI
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 09:52:08 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ubJb4-0004dR-Vj
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 09:52:08 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-4561a4a8bf2so10870545e9.1
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 06:51:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752501114; x=1753105914; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=b65ck84coYQ3QVG+RekMC+HihY4/9ws56nByYyrZvco=;
- b=a6PxOUe4MBsAojRB4NzDWOysBc7zPi9KrVvsD84Qr+AbvF3SjgmuVxDOZIiKJ+qvnm
- 36HmoDwnOCWFEs6vZCF479873ZadAFv9N8MO3h74evFdjQQsnellYapyKnPKoKEpYhoO
- +DGK95UHrRmI3nPnF3UBzxHCjFOcE/+66kBdXxobgAeyqaiO7UxL/wSaDPPR5yqJDPCM
- Aa52OFiJQ2MZLS9s5WkxCDyH71ulj+KuMfqwipNyBUMmMwhwL+5s62kuzfCkd067Mxa4
- UkTjjK1UhyG0QethXqIlgW8Eo5ti3wFNxmnwCsYXEcs8AbGUkSCBGfqpwhkAebADEdR0
- Ol4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752501114; x=1753105914;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=b65ck84coYQ3QVG+RekMC+HihY4/9ws56nByYyrZvco=;
- b=VvaFitHi2wpEjVSBeCsIwjc+v6zTFJdupWIWfa4AHEGwIC11JC5d+R00OwVPRSWxjO
- fRcUcWnEZg3B+um5huPhHqp5PKJSKPgBRHJWVXhtqDhzRwRTY9FvXXLhlNOySNX/xExP
- 5wPyGulRH6EOBSd6KnE52ZNHpf0l5Fd+f6oLN27OSyS8Ov/ArjTvxY9hST4KMbMVrNiV
- xUK504tm24XfpxvVousV7WZKHpUpxUJrTOCEPZ1/hKu3BT5tWTNpmnCUT1HldYV5RnHW
- aE+oy5B5R6b3czOeeJlnGXkjkbrFmArlr+GjhwC0gmy6RY+KckEyvc8JKfHhA0JPfTkt
- mqnw==
-X-Gm-Message-State: AOJu0YwFw+RbQaQCmVo4G8eoLEspv++UHdnjQABzNq/HSKEruOnt9ARn
- Q098m4jnFJxBpzNIlST3cPR0p9G4B5HN4PUjQHh09yZH2rwaX1sOeB3bC/S0Zm1eS0lSXxXMQGX
- Jq1Pb
-X-Gm-Gg: ASbGncvf1K7jbr8k/4ur7aaX/0f3BMOMKrN+qJOhrxDNK2JyL89W01fwaf1LjK1M31e
- GfKs5+Wi85DIYDN2OrsxAYdKhUJ4zZQyY/vv3s6Wh+FFRyZIHB40WBSRB2K1LxO8d7w6kO57wji
- rQKn25Uby8Tk+6UlKDIAlNj9SgYTxRXz4O2Foz8LcAT031VuuWMttwfYt25gsbNHfUOXsd50C9i
- nEiuMlIFdrUlBW801u2DYUv4a8zKP0tgDmzY0Um7iQhOWSrXP+UOPW8ZBy/+Ui7P60neaR95q+a
- ax7IoVMvqIEtX14vUIM7IsNrb9mG8JWYkjVKQeOZI9HjfwhiUs2eDttYKtQv+SNn9vtcCBp3eHj
- rE5zWWW7+5kW1WYk+2QwLAkur6s3x
-X-Google-Smtp-Source: AGHT+IG7iG1QXdEZwJdk/HjuWlgUWeDp+HeaB1P3r29bzysD4RutNf6hE2ET8sMqk42vCQi1oMdhhg==
-X-Received: by 2002:a05:600c:8209:b0:456:1dd2:4e3a with SMTP id
- 5b1f17b1804b1-4561dd252femr24989915e9.3.1752501114276; 
- Mon, 14 Jul 2025 06:51:54 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b5e8e1e1d5sm12547760f8f.78.2025.07.14.06.51.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jul 2025 06:51:53 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH] target/arm: Provide always-false kvm_arm_*_supported() stubs
- for usermode
-Date: Mon, 14 Jul 2025 14:51:52 +0100
-Message-ID: <20250714135152.1896214-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ (Exim 4.90_1) (envelope-from <steven.sistare@oracle.com>)
+ id 1ubKBA-00082y-Fi; Mon, 14 Jul 2025 10:29:16 -0400
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <steven.sistare@oracle.com>)
+ id 1ubKB6-0002fX-PQ; Mon, 14 Jul 2025 10:29:16 -0400
+Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56E9Z6Mj001418;
+ Mon, 14 Jul 2025 14:27:23 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+ :date:from:message-id:subject:to; s=corp-2025-04-25; bh=/BQ6Qh9d
+ d3FZ1GJKNmJzfulWSbyqVBUZbdrWC/LzFdA=; b=dnkO0OZXJE1jCEcCpwWQFSBC
+ MVWcd8LA54gxBXGnyZlinwAlQV4N4L0srGj7xIP8mHTxUMDZYt/bJRWzNzOL6IUd
+ O4+1M0Du7Xgk6Paucy/ymXMCmZgdhQNwJTC2vLT9VTjqgasnS6C0ZwWc+4G8w77f
+ ZZrC6ooXq+9w4zTU28H/+zUPPe5+enKq6qyqukGWgzuBzPcc+OGqVktquT4Lddor
+ jg4NhYCXmaWzuuApLoPfOlWGXZyM7GXtx5fBIEwVAuFcqr422bpwVxz30aRxi/zn
+ iI8yVY9g8TCb2S2Bn2aCh2qMvoZf+65E44KvhMMgenVMyifMVwiIVGmDjabXVQ==
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 47uk8fv844-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 14 Jul 2025 14:27:22 +0000 (GMT)
+Received: from pps.filterd
+ (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
+ with ESMTP id 56EC2sw6010929; Mon, 14 Jul 2025 14:27:21 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
+ 47ue58kgps-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 14 Jul 2025 14:27:21 +0000
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 56EERLK2040396;
+ Mon, 14 Jul 2025 14:27:21 GMT
+Received: from ca-dev63.us.oracle.com (ca-dev63.us.oracle.com [10.211.8.221])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with
+ ESMTP id 47ue58kgnu-1; Mon, 14 Jul 2025 14:27:20 +0000
+From: Steve Sistare <steven.sistare@oracle.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Cedric Le Goater <clg@redhat.com>,
+ Zhenzhong Duan <zhenzhong.duan@intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Steve Sistare <steven.sistare@oracle.com>
+Subject: [PATCH V1 0/2] preserve pending interrupts during cpr on arm
+Date: Mon, 14 Jul 2025 07:27:17 -0700
+Message-Id: <1752503239-222714-1-git-send-email-steven.sistare@oracle.com>
+X-Mailer: git-send-email 1.8.3.1
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.7,FMLib:17.12.80.40
+ definitions=2025-07-14_01,2025-07-14_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ malwarescore=0 mlxscore=0
+ mlxlogscore=975 adultscore=0 phishscore=0 bulkscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2505160000
+ definitions=main-2507140085
+X-Proofpoint-ORIG-GUID: a-aymWXdw_L0pz5puZeeN0l9H1LivGML
+X-Authority-Analysis: v=2.4 cv=Of+YDgTY c=1 sm=1 tr=0 ts=687513cb b=1 cx=c_pps
+ a=qoll8+KPOyaMroiJ2sR5sw==:117 a=qoll8+KPOyaMroiJ2sR5sw==:17
+ a=Wb1JkmetP80A:10 a=7eQ_Oyjg6oxsgWg1zkYA:9 a=ZXulRonScM0A:10 cc=ntf
+ awl=host:12062
+X-Proofpoint-GUID: a-aymWXdw_L0pz5puZeeN0l9H1LivGML
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzE0MDA4NSBTYWx0ZWRfXwvIDxWYC1GOc
+ XEixOVcLFSl1X00o8sGY3p0ema23mlXGw9xwzZa0w828B9yE0H+wimpp3hWkH/rvmrOE22Z87MK
+ ROVlQuxiQbbO7tssHKaJXSytg2F8cKIJrsT6S59Afr/WFi8Sif6vjwz89a79nyI1IXZzHr1UMjh
+ N4Jb+ErnFHney6dVhDw++anZMA08BY36RyepEDlIdWAfTpbjVIPFq3H/pETT/rwfw9kLJA0o85K
+ fYPoH0Aa0R6rH3WOGgpEyX8byZmJKRBJuMQzRh9jUXTS8K0LdCTISovNlVF+C92/uGtJOXIgXS6
+ EZ4+Tqdq4S+bVBtrJTs2pUzK7sK4PUBbW+xlwP/TaO7QKvp5fwZ73xAXe8LZXxKKFYacaHv5ksh
+ 4ozpqDSa0aQ0YqXHnFAiBtVahLca8nP2gQDjnSbA3AHeIetD1S4KmlNQRDWi/sgbPXVjziaG
+Received-SPF: pass client-ip=205.220.165.32;
+ envelope-from=steven.sistare@oracle.com; helo=mx0a-00069f02.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, T_SPF_HELO_TEMPERROR=0.01,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,89 +107,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-If you try to build aarch64-linux-user with clang and --enable-debug then it
-fails to compile:
+Close a race condition that causes cpr-transfer to lose VFIO
+interrupts on ARM.  See commit messages for details.
 
- ld: libqemu-aarch64-linux-user.a.p/target_arm_cpu64.c.o: in function `cpu_arm_set_sve':
- ../../target/arm/cpu64.c:321:(.text+0x1254): undefined reference to `kvm_arm_sve_supported'
+Steve Sistare (2):
+  hw/intc/arm_gicv3_kvm: subroutine for save pending
+  hw/intc/arm_gicv3_kvm: preserve pending interrupts during cpr
 
-This is a regression introduced in commit f86d4220, which switched
-the kvm-stub.c file away from being built for all arm targets to only
-being built for system emulation binaries.  It doesn't affect gcc,
-presumably because even at -O0 gcc folds away the always-false
-kvm_enabled() condition but clang does not.
+ hw/intc/arm_gicv3_kvm.c            | 40 ++++++++++++++++++++++--------
+ include/hw/intc/arm_gicv3_common.h |  3 +++
+ 2 files changed, 33 insertions(+), 10 deletions(-)
 
-We would prefer not to build kvm-stub.c once for usermode and once
-for system-emulation binaries, and we can't build it just once for
-both because it includes cpu.h.  So instead provide always-false
-versions of the five functions that are valid to call without KVM
-support in kvm_arm.h.
-
-Fixes: f86d42205c2eba ("target/arm/meson: accelerator files are not needed in user mode")
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3033
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-I'm never sure when we prefer to use stub-functions in separate C files
-vs when we prefer to have ifdeffed stubs in headers. There are several
-ways we could fix this compile error, so I just picked one...
----
- target/arm/kvm_arm.h | 35 +++++++++++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
-
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index b4cad051551..6a9b6374a6d 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -161,6 +161,14 @@ void kvm_arm_add_vcpu_properties(ARMCPU *cpu);
-  */
- void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp);
- 
-+/*
-+ * These "is some KVM subfeature enabled?" functions may be called
-+ * when KVM support is not present, including in the user-mode
-+ * emulators. The kvm-stub.c file is only built into the system
-+ * emulators, so for user-mode emulation we provide "always false"
-+ * stubs here.
-+ */
-+#ifndef CONFIG_USER_ONLY
- /**
-  * kvm_arm_aarch32_supported:
-  *
-@@ -197,6 +205,33 @@ bool kvm_arm_mte_supported(void);
-  * Returns true if KVM can enable EL2 and false otherwise.
-  */
- bool kvm_arm_el2_supported(void);
-+#else
-+
-+static inline bool kvm_arm_aarch32_supported(void)
-+{
-+    return false;
-+}
-+
-+static inline bool kvm_arm_pmu_supported(void)
-+{
-+    return false;
-+}
-+
-+static inline bool kvm_arm_sve_supported(void)
-+{
-+    return false;
-+}
-+
-+static inline bool kvm_arm_mte_supported(void)
-+{
-+    return false;
-+}
-+
-+static inline bool kvm_arm_el2_supported(void)
-+{
-+    return false;
-+}
-+#endif
- 
- /**
-  * kvm_arm_get_max_vm_ipa_size:
 -- 
-2.43.0
+2.39.3
 
 

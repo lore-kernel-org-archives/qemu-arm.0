@@ -4,88 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B3DC83F1A
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 23:16:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17D3BC83F17
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 23:16:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubSKP-0007tp-6K; Mon, 14 Jul 2025 19:11:21 -0400
+	id 1ubSLR-0008OM-CW; Mon, 14 Jul 2025 19:12:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSIY-000443-7o
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:09:26 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSIt-0004nV-AO
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:09:51 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSIW-0005s1-Do
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:09:25 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSIq-0005vF-0h
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:09:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752534563;
+ s=mimecast20190719; t=1752534581;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=nWTgx9OOmQrzNpl+Eee6xG0XRq2aOUUPbQTx1jMMcO4=;
- b=hKRuRSxtK89jPs5bScsM5gUkeu5C8kHawNixwCN3c6c3RugOSyabgA1neCy9EK8aIYTW97
- 1ncsDubOxqHtchoyH6Ym7dVfSSGT25gYcNMowfDiW0lf/bwENefXTkjvjGPogj8gr6lbsk
- aO8Hvr9NUaQ+5GNxdUyPuXk0uyLyxUA=
+ bh=7vjM29loqh3qj497TGPCCyUnVFVvjEr4KsZrS7AgqPw=;
+ b=DvK1+kd0dqguCVSC6CPWxezRLFBVp8ZhLcwPfpFdcwbypN6fy4uce2OqeoyC4y5JAy0OBF
+ cse9qZ3dJUEz5Rm1Hx4uaUS+AMqwNwhtSzxLnhoEvyzvQ4psWel8h320IzB1btH+Ji3Y3P
+ 3yF3jiMHYGJj1wgwNHyvOoXCwKaKGV8=
 Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
  [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-646-xNhXxJCtMtCg4fQVyF117g-1; Mon, 14 Jul 2025 19:09:22 -0400
-X-MC-Unique: xNhXxJCtMtCg4fQVyF117g-1
-X-Mimecast-MFC-AGG-ID: xNhXxJCtMtCg4fQVyF117g_1752534561
+ us-mta-384-mkpfI-AWPy2Icmmgm_1yZg-1; Mon, 14 Jul 2025 19:09:40 -0400
+X-MC-Unique: mkpfI-AWPy2Icmmgm_1yZg-1
+X-Mimecast-MFC-AGG-ID: mkpfI-AWPy2Icmmgm_1yZg_1752534579
 Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-4560f28b2b1so7124175e9.2
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 16:09:22 -0700 (PDT)
+ 5b1f17b1804b1-451d3f03b74so27426105e9.3
+ for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 16:09:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752534561; x=1753139361;
+ d=1e100.net; s=20230601; t=1752534579; x=1753139379;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=nWTgx9OOmQrzNpl+Eee6xG0XRq2aOUUPbQTx1jMMcO4=;
- b=hdKJO8vqMKkPN747IEyUn/Y9pkXz/TID0rU5NTrVLrB9Zyxv6GWjByDiMryLUlMwrC
- WM3q/z1yltFZYMC7mncYCDeiq4yeaiBunKblj+mZyJkhoC0VSUfBz1SArtQDJFQ6tZCe
- AbVnc6nE93/F/K2fncNu6XeMDwVC8j6eUl54bfZXTfTS5HzxnnoXoUQgAlkE1ih7ct+L
- Ibeic1ekupSghPfOEwBJmoGEm9Fusl2lsuwGBNjGJ30gaHno9eCixKgle9hED5EKrqHB
- L1HvrtFo1oz1nn6uhLrI8Sj17EvQJSsa/593BYTXj5BgpbERXxF4AFseptZV5W5+r2Rt
- sDEw==
+ bh=7vjM29loqh3qj497TGPCCyUnVFVvjEr4KsZrS7AgqPw=;
+ b=RiBrUbkUyap6Y0niHuzIs0VtZd4w/cOlyHMJv2lgZDF88xr0D4K3avdlkokYbFJwma
+ JIzh32bht+YMzDeiyIHJmRuOgb6VM+m7abe5BQUkd2FIV/3qASpKu8JBw88RB4OzOwdR
+ FCy+SuzLUpYcpYrMR32JVkTWPHcjbReX0G9N0snQuLJFlWEqAIwlNEhkyNjQaN1pyJhs
+ qQCstkBLwYrrhMXqg7smjM1lna+iZ09bpBIdRD4iiVxyxFnw1fXX5lItTOX6933ArRKl
+ C/LXSCdH0l4SDwDuEfZqZMMFoeeI5+djJJMfExbqd8RYAuStRKyiDN8pOFHGcHrxBeW/
+ AtJw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU15NxJ16bP4U5U1USGDGoNnnUNH0YlAGQbXN15aPZh+6MpgIb6fK02SyK6Hiwy+61ifisHG8jk+A==@nongnu.org
-X-Gm-Message-State: AOJu0YxcbfG4uuYp1FdkSQRhSRK9tD6M3/9yiSWznzVerHWEjnhOVfhO
- ziqTBhT+TD4I1aGg4SL2A2h413hBjguZvglUVfviilM0J6nh984rOc+3WuTwixgqL8hDQd6arBt
- SxRWgwlTJ9vq+LDEhGBC9Y5jNjxe3AGq19gBcgjg6nI6AlaOS4ykLSQ==
-X-Gm-Gg: ASbGncuELU0lJc90lhEaRnQW3tPmhKafE8OyJCMmrXqVI6NlKaNjPVadEMhiWE4eyOL
- cQrMRhhdpuh43V4PG/GxX0w3xZkBGGB5FZ48sPCcfncHx4Iws3Wv4hnR9XCjgbqhPdizbycOy4o
- 1hGC5z5Ib0c22waOWDuWBnxJOmsgsGNvva3ddgk0T34m62uSRYax+FDh9/pqEyWJv8DRj0GAy3p
- lrVA54GN007sKzAK0r43VXTX2ikxYiqxfEyTRUhwh3mb17OCvUqu8rv7Z36WfLwnS1RIHHAP+Yb
- NFDwVDLtbr+JmL7eyEUMvXlewGT/4gJO
-X-Received: by 2002:a05:600c:4ecf:b0:456:24aa:958e with SMTP id
- 5b1f17b1804b1-45624aa9786mr19627115e9.0.1752534561305; 
- Mon, 14 Jul 2025 16:09:21 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGa/OVUbHxTW5QCZ8VAm3s4vhGBi/pvLBF02n0N6fAUc1zCjvIlOrw1NmHrzTAiGoovUfsBBw==
-X-Received: by 2002:a05:600c:4ecf:b0:456:24aa:958e with SMTP id
- 5b1f17b1804b1-45624aa9786mr19626955e9.0.1752534560887; 
- Mon, 14 Jul 2025 16:09:20 -0700 (PDT)
+ AJvYcCXquwOsfRtQxw8aOB+iNvyONNVDmnRx6udeYKAMITWFYsiU4t8eSojysp8pmOmjIrxtovWVuF/8qQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwUlq4ooeD7ej9fhPDeS4Rf/WqjuXmFpVn5kaHsKitJ4xQ8LxRx
+ Fnzy+R8Exi/S3EKHKtKQ095SswX7cuRRrgZdqYLLAvBzvsYSsBFs4BA7fWvAg+GIzk4z6bJDZGq
+ PYbr+6ZW1qUyo6jK8iurwZLXQRbK0LOwPlhsQGwJDraqBciXN1vq5Xg==
+X-Gm-Gg: ASbGncv9yzY0nJiJ+V5JJkhjZv6PEnFAR9apQxMlt0iIKdRzvZnjlTch5kqS9OqekEw
+ Ql1rYJ1fDDTyePHLOVaLBqRqU2aq/Yea1bwAWFErRjvEX4i2Amkon1N6pccO1axbPNOj3z5jJ/V
+ b92aVgiPZBm7bvlcJGLVNkow8HZLZtQ/De4OSKHhDQ2ZjIGeqr0iOhB+rHa/RsW39+6g/fEBy0g
+ 7YB4rnygAgR1Ymohy9sYHr8KYUXuSs3bQUEa/kq7wLT5GdYQFXpb2Ind23phF2F7BRv6p0zSMY9
+ QHQbef8yjnkrgZINTThIyq2yhhroU1TR
+X-Received: by 2002:a05:600c:4e12:b0:456:21d2:c6f7 with SMTP id
+ 5b1f17b1804b1-45621d2ca13mr31083615e9.23.1752534578795; 
+ Mon, 14 Jul 2025 16:09:38 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHc6PyhwOgHRGXBSHK7aRyngXPVE3CMkGLbC8HVHMAt/Zojj/QvxJ3/qGbeeIPuTSdbA3/m2Q==
+X-Received: by 2002:a05:600c:4e12:b0:456:21d2:c6f7 with SMTP id
+ 5b1f17b1804b1-45621d2ca13mr31083475e9.23.1752534578424; 
+ Mon, 14 Jul 2025 16:09:38 -0700 (PDT)
 Received: from redhat.com ([2a0d:6fc0:150d:fc00:de3:4725:47c6:6809])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4560ceb1337sm81503405e9.13.2025.07.14.16.09.19
+ 5b1f17b1804b1-45611a518c2sm63682025e9.31.2025.07.14.16.09.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jul 2025 16:09:20 -0700 (PDT)
-Date: Mon, 14 Jul 2025 19:09:19 -0400
+ Mon, 14 Jul 2025 16:09:37 -0700 (PDT)
+Date: Mon, 14 Jul 2025 19:09:35 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eric Auger <eric.auger@redhat.com>,
  Jonathan Cameron <jonathan.cameron@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org
-Subject: [PULL 71/97] hw/arm/virt: Pass the bus on the ged creation
-Message-ID: <c919cff502f6c149d7cf38576ccbf8a7e044ad44.1752534227.git.mst@redhat.com>
+ Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, qemu-arm@nongnu.org
+Subject: [PULL 77/97] hw/arm/virt: Minor code reshuffling in create_acpi_ged
+Message-ID: <1fb3e6a87bb1ff9d6a637297e6106e86eff038c4.1752534227.git.mst@redhat.com>
 References: <cover.1752534227.git.mst@redhat.com>
 MIME-Version: 1.0
 In-Reply-To: <cover.1752534227.git.mst@redhat.com>
 X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
 X-Mutt-Fcc: =sent
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: -AZfHFhE4y1rDFf2gAnuKYZYkIkQfJ3rNX-CjISeJ4s_1752534561
+X-Mimecast-MFC-PROC-ID: cH2xplE1322oPbYK1rxE7Rdg0W9wiZzwocz8TUbmaRo_1752534579
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -116,30 +117,65 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Eric Auger <eric.auger@redhat.com>
 
-The bus will be needed on ged realize for acpi pci hp setup.
+Use a local SysBusDevice handle. Also use the newly introduced
+sysbus_mmio_map_name which brings better readability about the region
+being mapped. GED device has regions which exist depending on some
+external properties and it becomes difficult to guess the index of
+a region. Better refer to a region by its name.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Message-Id: <20250714080639.2525563-26-eric.auger@redhat.com>
+Message-Id: <20250714080639.2525563-32-eric.auger@redhat.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- hw/arm/virt.c | 1 +
- 1 file changed, 1 insertion(+)
+ include/hw/acpi/generic_event_device.h |  1 +
+ hw/arm/virt.c                          | 11 +++++++----
+ 2 files changed, 8 insertions(+), 4 deletions(-)
 
+diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+index d56adaa626..2c5b055327 100644
+--- a/include/hw/acpi/generic_event_device.h
++++ b/include/hw/acpi/generic_event_device.h
+@@ -111,6 +111,7 @@ typedef struct GEDState {
+ } GEDState;
+ 
+ #define ACPI_PCIHP_REGION_NAME "pcihp container"
++#define ACPI_MEMHP_REGION_NAME "memhp container"
+ 
+ struct AcpiGedState {
+     SysBusDevice parent_obj;
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 817adedb31..41b5086b55 100644
+index 41b5086b55..f127a668ef 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -701,6 +701,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+@@ -688,6 +688,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+ {
+     DeviceState *dev;
+     MachineState *ms = MACHINE(vms);
++    SysBusDevice *sbdev;
+     int irq = vms->irqmap[VIRT_ACPI_GED];
+     uint32_t event = ACPI_GED_PWR_DOWN_EVT;
  
+@@ -702,11 +703,13 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
      dev = qdev_new(TYPE_ACPI_GED);
      qdev_prop_set_uint32(dev, "ged-event", event);
-+    object_property_set_link(OBJECT(dev), "bus", OBJECT(vms->bus), &error_abort);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+     object_property_set_link(OBJECT(dev), "bus", OBJECT(vms->bus), &error_abort);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sbdev = SYS_BUS_DEVICE(dev);
++    sysbus_realize_and_unref(sbdev, &error_fatal);
  
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_ACPI_GED].base);
+-    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_ACPI_GED].base);
+-    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 1, vms->memmap[VIRT_PCDIMM_ACPI].base);
+-    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(vms->gic, irq));
++    sysbus_mmio_map_name(sbdev, TYPE_ACPI_GED, vms->memmap[VIRT_ACPI_GED].base);
++    sysbus_mmio_map_name(sbdev, ACPI_MEMHP_REGION_NAME,
++                         vms->memmap[VIRT_PCDIMM_ACPI].base);
++    sysbus_connect_irq(sbdev, 0, qdev_get_gpio_in(vms->gic, irq));
+ 
+     return dev;
+ }
 -- 
 MST
 

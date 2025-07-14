@@ -4,110 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2913FC83F17
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 21:37:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E7CFC83F1A
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 21:37:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubQr3-0005QL-5o; Mon, 14 Jul 2025 17:36:57 -0400
+	id 1ubQr2-0005Oi-6C; Mon, 14 Jul 2025 17:36:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ubPDN-0002ND-5U
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 15:51:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1ubPCm-0001yn-BN; Mon, 14 Jul 2025 15:51:16 -0400
+Received: from mail-bn7nam10on20618.outbound.protection.outlook.com
+ ([2a01:111:f403:2009::618]
+ helo=NAM10-BN7-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ubPDH-0003m9-0E
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 15:51:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752522705;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LnI6GfEDERFlDAoNNrUDBOgnGNngQA53P8Ck7wEgcQE=;
- b=D8xcE2mrDf9CpZt3xgTnO7O+/RKxFdNjpQeUupybo5UXAS05r+5E1NlsH+YJJg5UJZ181e
- DZmI/OnkWIgn/7wN4dm51Ydm6twgP5sI7swutfWOOEzT2oYFJNzLbp8Nw4XtxHE6XuYlmb
- 7gTzyEJCDwNAs4I+zi7i57iWA8RDWyU=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-15-FLzI_y62MIyb6CMJwczekQ-1; Mon, 14 Jul 2025 15:51:43 -0400
-X-MC-Unique: FLzI_y62MIyb6CMJwczekQ-1
-X-Mimecast-MFC-AGG-ID: FLzI_y62MIyb6CMJwczekQ_1752522703
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-3a50049f8eeso2076425f8f.3
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 12:51:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752522702; x=1753127502;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=LnI6GfEDERFlDAoNNrUDBOgnGNngQA53P8Ck7wEgcQE=;
- b=uR5pJCV5Q0HautMZnzxTIYjXkH1A6C7p7vl9iVqPI3I/meBYXVIVlfesUM6KBMrRoi
- qaVQ4D2JYohV7z/BBQSVamczm3uidztmMCx+WsmHV7jtN5LZQXKNppHxX6XvnAwim2Nu
- boq3ADux3biVRVj9xAY0jkbBR9bmrOHIpTDxpN27dUJ5LzEHJKsKAk6GX4T7QAYC6EeG
- wysdZE0QZQMn69XcAaBy+ZzwogfRApXn58j/8LHnzoKP0hYEZAs26InbXMBBvnb28OJ2
- osA4dPmLMR9Wb2JjX4+Cx/jHsDlQsoPEyYLbSecQ0uSoqBmSdoD5aQ7OQqXb95xEAAH5
- 7yDA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUSWOiUK425tTo5cUjwWMrYiL585drlKlyKMOuEi2289WcZrfU3gIeeIkJPz3mUgtr/DfmDzVfsQQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwVv4ura2PDjdqSc8LfBl+wSlTUqgQbeMnferzHZndjDDrrebt0
- CB39RB0895QlAxOFQEKMbGuTuVwRfKmg0HViubX7QLBh9GaSFjj8ZzXdnwZMiy6jpll0f12EvmF
- SPCDBgMxssYP+INMkmk8hlwKFC2VlI2LdIIA5uth7/5wBxTyxl4Hzhw==
-X-Gm-Gg: ASbGncuxfb9srNBOHog+g/UrM0xtUpioGgyvokHLjiechNE6Un8jl6QaSl4tfC9aedR
- DNfY3tLz71l4EXov+E3G7K9NX1ux9oQCBnPNFvSzu+o6ELm49fsl73ndKn8M3delR3MZnf+SE7u
- CqLcqAl9eqBFks4oSr/SEbvVSB8NbOWBF8aeEjL4jle4wBTalf5KZK3ins8jvuuignjAyX4m7kV
- QXW0DWIJyrO8fWDPsWuNY4Lt2tmcsU8tbvPAsOFlRRF4kvMtG5YYZXCzEFrlrTKY8y7ap3vunZ+
- gfkC+lnFIjIs0quXe+p7bHZCCjADYrC4sWKZgLsPMX14aQp6J3T3ttEQAnu851m6uGuzpeVAG3s
- SaP48Ta4DQQU=
-X-Received: by 2002:adf:edd0:0:b0:3a5:2cb5:6429 with SMTP id
- ffacd0b85a97d-3b5f18d96camr10752377f8f.43.1752522702480; 
- Mon, 14 Jul 2025 12:51:42 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGZrxiNc7cik/pZTMvFv1jLbtXmS/BOwyrO3HsHHyUI3xWSsKzMkJ1uvEw/jSuW8uGb7hI0RA==
-X-Received: by 2002:adf:edd0:0:b0:3a5:2cb5:6429 with SMTP id
- ffacd0b85a97d-3b5f18d96camr10752366f8f.43.1752522702004; 
- Mon, 14 Jul 2025 12:51:42 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b5e8bd1924sm13441914f8f.16.2025.07.14.12.51.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Jul 2025 12:51:41 -0700 (PDT)
-Message-ID: <bfaa2fd3-5cc6-494d-a2f6-6583f72f3b59@redhat.com>
-Date: Mon, 14 Jul 2025 21:51:40 +0200
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1ubPCj-0003kb-MU; Mon, 14 Jul 2025 15:51:15 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=A4lXAolVQRQvsFsqY+oEbEpiaZawG+X80znPYOiPFGJSumR9KeXMqfb6hTX1K+7MTA42jChSA0asmV1bjxqasLNMORcsljHJe23GlMRPQB5yiZqoYu38J4EX9CfRBYuaTAUhqrpMplU4Vx1wTslOGVvq3xV3QCtTllCQLicZScyRpYxCgs1X80tyV8DXPFHg6io87wMGtMD1FdxbvBgkZvjm/RC73XUoPxjMd325mi1FvBe0ovqF0G0QHdYMVM7x+t/JMlcVXyAyygV1ERkvwmEjXpR7ac5pqwQdKG6+KaITO+ZBDa1sCNMncUcnrLwqwwN69J0JhwrRJlC0cmeBvw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=rlZPqiwvjukYIPRsTgVgluy9sTqg3jh63PGw6mwyHtg=;
+ b=dN5jKUgfteGvuFmEVak7wZHKVV5FW/R6geo+3ehksafIHBmCoIydSVbVcImjvc7MdmyEmjIDJ5zsvnDyVpW5e9pQyuR3m/Pwuiif+IM3yT9wowQCHO9Pg3GKuYEI6uS1C9Jmtg/I/skIVIM4qqdb2o66xW1OEBEPQ79UdCe1r0AdJ5igzGenJxVxa67S0uVAD0Jq+gmHHoH7+kQ1UPJ2uZoW0uDuVjpDLi8iAIu5BBifsk/RkMki4ahfidolpP2n22g4koI+Odh2I2UCwsmXPaiuw1CVhHl2CMYB9y42Lw9NRLpPar7TXro3Cq+UQ7Ryp+2E/GWPepEmD7OAyenx/A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.232) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rlZPqiwvjukYIPRsTgVgluy9sTqg3jh63PGw6mwyHtg=;
+ b=hnmfKfKbcHMR1/zeT6cPo/Ir9bvS2M5QVEg8EsOeuAEJYUKYZa6hoJskrrUCjM0RoWZ1sYrjJt5zOrSoBNMr1kpsLiM/N8jaMv+Gm82mw8UzWkKY+IEbU+fnEMIo44vfz0WWnNzf5WCFW5GQsojL7oXuB+59QCEof6EBF5KzS5C/9l23PjU//SDRVX6mY2S8SpcCxOTD115LHXWVP8hZz6iWL5UExRQd4XSaE/2Jm/nH9toNSuaIyWLCl/RFWdfqBlF2rHEdv9q/6UIZjQLfPlSNqL33mN/6l2Ri2wygut5cG3L75OlHYNg9JF7QTpsiv8+7NoSmCHcPNXuSRbXviA==
+Received: from MN0PR04CA0027.namprd04.prod.outlook.com (2603:10b6:208:52d::16)
+ by MN0PR12MB5811.namprd12.prod.outlook.com (2603:10b6:208:377::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8922.25; Mon, 14 Jul
+ 2025 19:51:06 +0000
+Received: from BL6PEPF00020E5F.namprd04.prod.outlook.com
+ (2603:10b6:208:52d:cafe::3e) by MN0PR04CA0027.outlook.office365.com
+ (2603:10b6:208:52d::16) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8922.32 via Frontend Transport; Mon,
+ 14 Jul 2025 19:51:06 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.232) by
+ BL6PEPF00020E5F.mail.protection.outlook.com (10.167.249.20) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8922.22 via Frontend Transport; Mon, 14 Jul 2025 19:51:04 +0000
+Received: from drhqmail202.nvidia.com (10.126.190.181) by mail.nvidia.com
+ (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Mon, 14 Jul
+ 2025 12:50:47 -0700
+Received: from drhqmail203.nvidia.com (10.126.190.182) by
+ drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14; Mon, 14 Jul 2025 12:50:47 -0700
+Received: from Asurada-Nvidia (10.127.8.10) by mail.nvidia.com
+ (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
+ Transport; Mon, 14 Jul 2025 12:50:46 -0700
+Date: Mon, 14 Jul 2025 12:50:45 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>, <jgg@nvidia.com>, <ddutile@redhat.com>,
+ <berrange@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <smostafa@google.com>, <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>,
+ <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
+ <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>,
+ <shameerkolothum@gmail.com>
+Subject: Re: [RFC PATCH v3 11/15] hw/pci/pci: Introduce optional
+ get_msi_address_space() callback.
+Message-ID: <aHVflRCJM+pcsP2S@Asurada-Nvidia>
+References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
+ <20250714155941.22176-12-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 00/36] ACPI PCI Hotplug support on ARM
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, imammedo@redhat.com, gustavo.romero@linaro.org,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com,
- pbonzini@redhat.com, philmd@linaro.org, alex.bennee@linaro.org,
- alireza.sanaee@huawei.com
-References: <20250714080639.2525563-1-eric.auger@redhat.com>
- <20250714204008.00003fba@huawei.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250714204008.00003fba@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: GnMn-9UvHrz7Z1RvPEkO5D5Ed3L4dp2yjRwGC6a_JmA_1752522703
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20250714155941.22176-12-shameerali.kolothum.thodi@huawei.com>
+X-NV-OnPremToCloud: AnonymousSubmission
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL6PEPF00020E5F:EE_|MN0PR12MB5811:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7374e5cc-c5dd-4670-1496-08ddc30fc4b4
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|82310400026|36860700013|376014|7416014|1800799024|7053199007; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?n9NpKj9FtYsdh7+ZuRU2KWxXzAQUJonKmBmAmP3PmZnJTh1L900HVyXPt1DL?=
+ =?us-ascii?Q?CQ+aqmVPT7e8j4aDZ2WYmTlAH8iEOU3DS3WB4R3vrsVKxCPHDh0adpqWQAbe?=
+ =?us-ascii?Q?6EOZGkcuQRlYpaA7QFnHviWAOtRERM0roSz1fHjE87f+7TqhKq8O179SunVW?=
+ =?us-ascii?Q?wCzysdhhDRoCTSLe2IduIYWJ6OIjDzN4wJDk77voj1tEUkPMIzQwTkq2Osf8?=
+ =?us-ascii?Q?AtpLszZuCCZoSRf1Ko0Ax2UotZh2Jx6vo04jx8m53jidKDs7pGpZZYTcTF2A?=
+ =?us-ascii?Q?XofsHzLes8B+HJ5MB1nI8vLdbLaOgbaQY5hArKLBHkLKmxOPP5Ryp1yQ0+ld?=
+ =?us-ascii?Q?S3Ux/x3cNsxf2ichd8QLBF0nPEvW9IVupNLzFr5Tz0gBIyBTuWMjVlCsiYQR?=
+ =?us-ascii?Q?iThu5Oe16gMJJbegkV42e6/q7KaJkhBCnP3U5xbxg69veMrp8StaCMuxPZpj?=
+ =?us-ascii?Q?fWLaeV5QI8ngv4vw3lvc2YCz5WzqCIzUeDZ8Du4rp/+9fz8BqjrfmTNj8jn/?=
+ =?us-ascii?Q?smCmR7raInkywaC7/ObDXwCwvm4B9To8L/VKUOT/3IaL95dc6ix6iNEj4eE8?=
+ =?us-ascii?Q?U4Y+t1lymlErZlqhjEqlRcOcFJkXQ6evBIsVaEhzgLLY+j8NejPUcRbPSpsZ?=
+ =?us-ascii?Q?f5auvqpIEMajQJDUYHGKQgqmWtyz9PNNs4HVDjRVaLpZzM4tVBdUljMDlZVq?=
+ =?us-ascii?Q?3wp8RTvXmEpWVhC8TrIdJiaEfz/1ZKcV4f5GOHOqBMPkmkDfmFurWL9qeMlG?=
+ =?us-ascii?Q?fwVwo5EpVEfT9jgB8mDBYIwyKlqN7kXzhbQBUSTfMO60kdf8pYi2BSSmFtvA?=
+ =?us-ascii?Q?xF/xTrQx+KHB795jiuc87tjgV47g33LHFnCBaeBB5hubc0v1+Y8uyTFtfaXF?=
+ =?us-ascii?Q?/Vp/iih8TAxHavp4H/L195BshcYFaK149wmuONchAg+qjMip7XqARB+KCgvz?=
+ =?us-ascii?Q?5oVf4C40/U3nuCbomnR5dHlGqPNg/vFN4zVkpgRNJts7ygONCg8mkOo0EqUq?=
+ =?us-ascii?Q?vW8jFWB+I90KOdmIdGMZWiwCaTlbx6BVhjnlLsYGjy6ELQ4XhdRdFbHMXjmW?=
+ =?us-ascii?Q?B3jYKxvgp2kjapBamqp5U5J1zQ54K/O5b8D0qvEH1HeTJ7dChCbbA56K5z+w?=
+ =?us-ascii?Q?cA7wCL4M36+R7Y42jN+LEHa/8OAVWI0gzGoeNUb3F9rXxfUq7GN9swWPb+rr?=
+ =?us-ascii?Q?Hhv1IJRoD9klwlzHpS+8aAuPTqu6XEN9Olr5jL4xJwKfULGKeFHZ2eYxBdAW?=
+ =?us-ascii?Q?P5WdJo2mp7wQmGD/j38iE/Grz3XvWtpyl+XgIDggXfKNQnwgpitCmeIDN01r?=
+ =?us-ascii?Q?puCY2xwQHNOjtt4NjdAhuChyxDdnIZZZkR6iHUiL0qhk+HPrzk+/9ez9oguO?=
+ =?us-ascii?Q?D0xmobkP/thStfewjE+NMes4Yr7yEI2LfbKnLAduE1f3KG/uA4JDVPF5vMaD?=
+ =?us-ascii?Q?3mlE8OWgXhjInaZzD++ANCTn2bBT+S96QXplHzQUXMyByNKkO6ysk7VFcnN4?=
+ =?us-ascii?Q?LK7wtSi920Me8nUOjE0L6MWvY6bZof1ICoBl?=
+X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(82310400026)(36860700013)(376014)(7416014)(1800799024)(7053199007);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jul 2025 19:51:04.6767 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7374e5cc-c5dd-4670-1496-08ddc30fc4b4
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BL6PEPF00020E5F.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR12MB5811
+Received-SPF: permerror client-ip=2a01:111:f403:2009::618;
+ envelope-from=nicolinc@nvidia.com;
+ helo=NAM10-BN7-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,215 +158,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Jonathan,
+On Mon, Jul 14, 2025 at 04:59:37PM +0100, Shameer Kolothum wrote:
+> On ARM, when a device is behind an IOMMU, its MSI doorbell address is
+> subject to translation by the IOMMU. This behavior affects vfio-pci
+> passthrough devices assigned to guests using an accelerated SMMUv3.
+> 
+> In this setup, we configure the host SMMUv3 in nested mode, where
+> VFIO sets up the Stage-2 (S2) mappings for guest RAM, while the guest
+> controls Stage-1 (S1). To allow VFIO to correctly configure S2 mappings,
+> we currently return the system address space via the get_address_space()
+> callback for vfio-pci devices.
+> 
+> However, QEMU/KVM also uses this same callback path when resolving the
+> address space for MSI doorbells:
+> 
+> kvm_irqchip_add_msi_route()
+>   kvm_arch_fixup_msi_route()
+>     pci_device_iommu_address_space()
+> 
+> This leads to problems when MSI doorbells need to be translated.
+> 
+> To fix this, introduce an optional get_msi_address_space() callback.
+> In the SMMUv3 accelerated case, this callback returns the IOMMU address
+> space if the guest has set up S1 translations for the vfio-pci device.
+> Otherwise, it returns the system address space.
+> 
+> Suggested-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+>  hw/arm/smmuv3-accel.c | 25 +++++++++++++++++++++++++
+>  hw/pci/pci.c          | 19 +++++++++++++++++++
+>  include/hw/pci/pci.h  | 16 ++++++++++++++++
+>  target/arm/kvm.c      |  2 +-
 
-On 7/14/25 9:40 PM, Jonathan Cameron wrote:
-> On Mon, 14 Jul 2025 10:04:44 +0200
-> Eric Auger <eric.auger@redhat.com> wrote:
->
->> This series enables ACPI PCI hotplug/hotunplug on ARM.
->> It is not enabled by default and ACPI PCI hotplug can
->> be selected by setting: 
->>
->> -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on
->>
->> Expected benefits should be similar to those listed in [1],
->> ie. removal of some racy behaviors, improved latencies.
->>
->> The infrastructure used in x86 is heavily reused and a
->> huge part of the series consists in moving code from
->> hw/i386/acpi-build.c to a generic place and slightly
->> adapting it to make it usable on ARM. The DSDT table is
->> augmented to support ACPI PCI hotplug elements.
->>
->> On ARM we use use a GED event to notify the OS about
->> hotplug events.
->>
->> Best Regards 
->>
->> Eric
-> Hi Eric,
->
-> I guess you probably already know this but there is some
-> impact on loongarch64 when their ACPI tables tests are added.
->
-> Rather oddly I'm getting intermittent failures on Michael's
-> gitlab tree but looks like the unification of _OSC affects
-> them as well. (should be every time, but they aren't!)
->
-> Should just be updating their 4 DSDT variants.
->
-> If I had a stable test setup I'd send them.  Will try again
-> tomorrow if not resolved.
-just to make sure are we talking about
-
-[PATCH v3 0/5] Add bios-tables-test for LoongArch system <https://lore.kernel.org/all/20250612090321.3416594-1-maobibo@loongson.cn/> 
-https://lore.kernel.org/all/20250612090321.3416594-2-maobibo@loongson.cn/
+I think we need to separate core changes and smmu changes, like how
+pci_device_set/unset_iommu_device were introduced.
 
 Thanks
-
-Eric
-
-
-
->
-> Jonathan
->
->
->
->> This series can be found at:
->> https://github.com/eauger/qemu/tree/arm-acpi-pcihp-v7
->>
->> previous series:
->> https://github.com/eauger/qemu/tree/arm-acpi-pcihp-v6
->>
->> History:
->> v6 -> v7:
->> - rebased after minor contextual conflict introduced
->>   by "hw/arm/virt: Basic CXL enablement on pci_expander_bridge
->>   instances pxb-cxl" in hw/arm/virt-acpi-build.c
->>   (hw/pci-host/gpex-acpi: Use GED acpi pcihp property)
->> - collected last Igor's and Prasad's R-bs
->>
->> v5 -> v6:
->> - collected Jonathan's R-bs
->> - cropped last 2 patch commit messages (Jonathan)
->>
->> v4 -> v5:
->> - Collected Jonathan's R-bs (many thanks!)
->> - fixed the tests/qtest/bios-tables-test issue by
->>   creating a variant for the viot test
->> - use the 3 phase reset API
->> - fixed qom-test failures that were due to unconditionnal
->>   fetches of the GED property
->>
->> v3 -> v4:
->> - toook into account all comments on v3
->> - static acpi-index is now supported unconditionally
->>   from acpi pcihp option. See indiviual patches.
->> - I hit a problem with ref block generation at
->>   [19/32] tests/qtest/bios-tables-test: Update ARM DSDT reference
->>   blobs: despite I regenerate the blobs, I get some errors.
->>
->> v2 -> v3:
->> - lot of changes taking into account various feedbacks
->>   (many thanks to all reviewers). Please refer to
->>   individual patches for details. Main changes:
->>   - no more machine option, acpi pci hp is not set by
->>     default.
->>   - removal of 2 unused variables in the osc method
->>   - introduction of GED property to set the bus
->>   - rework of the init/reset sequence
->>   - fix virtio-mem-pci hotplug regression
->>
->> v1 -> v2:
->> - collected a bunch of R-bs from Gustavo (many thanks!)
->> - Fixed the breakage of bios-tables-test in TCG mode by
->>   incorporating Gustavo's patches (part of
->>   [PATCH 0/5] ACPI tests for PCI Hotplug on ARM
->>   https://lore.kernel.org/all/20250526053123.1434204-1-gustavo.romero@linaro.org/)
->> - Tweeked the dsdt aml changes to avoid any dsdt blob difference when
->>   acpi-pcihp is off.
->>
->> RFC -> v1:
->> - First 3 trivial patches were pulled separately
->> - Fix of the register region size (0x18), ie. ACPI_PCIHP_SIZE
->> - addition of aml_pci_edsm which was not called in RFC
->> - acpi-index feature is now fixed. vms->bus was not set on
->>   acpi_pcihp_init. The init sequence is still hacky though. Suggestions
->>   are welcome.
->>
->> [1] [PATCH v6 0/6] Use ACPI PCI hot-plug for Q35
->> https://lore.kernel.org/all/20210713004205.775386-1-jusual@redhat.com/
->>
->> Eric Auger (32):
->>   hw/i386/acpi-build: Make aml_pci_device_dsm() static
->>   hw/acpi: Rename and move build_x86_acpi_pci_hotplug to pcihp
->>   hw/pci-host/gpex-acpi: Add native_pci_hotplug arg to
->>     acpi_dsdt_add_pci_osc
->>   hw/pci-host/gpex-acpi: Split host bridge OSC and DSM generation
->>   hw/acpi/ged: Add a acpi-pci-hotplug-with-bridge-support property
->>   hw/pci-host/gpex-acpi: Use GED acpi pcihp property
->>   hw/i386/acpi-build: Turn build_q35_osc_method into a generic method
->>   hw/pci-host/gpex-acpi: Use build_pci_host_bridge_osc_method
->>   tests/qtest/bios-tables-test: Update DSDT blobs after GPEX _OSC change
->>   hw/i386/acpi-build: Introduce build_append_pcihp_resources() helper
->>   hw/acpi/pcihp: Add an AmlRegionSpace arg to build_acpi_pci_hotplug
->>   hw/i386/acpi-build: Move build_append_notification_callback to pcihp
->>   hw/i386/acpi-build: Move build_append_pci_bus_devices/pcihp_slots to
->>     pcihp
->>   hw/i386/acpi-build: Use AcpiPciHpState::root in acpi_set_pci_info
->>   hw/i386/acpi-build: Move aml_pci_edsm to a generic place
->>   qtest/bios-tables-test: Prepare for fixing the aarch64 viot test
->>   qtest/bios-tables-test: Add a variant to the aarch64 viot test
->>   qtest/bios-tables-test: Generate DSDT.viot
->>   hw/arm/virt-acpi-build: Let non hotplug ports support static
->>     acpi-index
->>   tests/qtest/bios-tables-test: Update ARM DSDT reference blobs
->>   hw/arm/virt-acpi-build: Modify the DSDT ACPI table to enable ACPI PCI
->>     hotplug
->>   hw/acpi/ged: Add a bus link property
->>   hw/arm/virt: Pass the bus on the ged creation
->>   hw/acpi/ged: Call pcihp plug callbacks in hotplug handler
->>     implementation
->>   hw/acpi/pcihp: Remove root arg in acpi_pcihp_init
->>   hw/acpi/ged: Prepare the device to react to PCI hotplug events
->>   hw/acpi/ged: Support migration of AcpiPciHpState
->>   hw/core/sysbus: Introduce sysbus_mmio_map_name() helper
->>   hw/arm/virt: Minor code reshuffling in create_acpi_ged
->>   hw/arm/virt: Let virt support pci hotplug/unplug GED event
->>   qtest/bios-tables-test: Generate reference blob for
->>     DSDT.hpoffacpiindex
->>   qtest/bios-tables-test: Generate reference blob for DSDT.acpipcihp
->>
->> Gustavo Romero (4):
->>   tests/qtest/bios-tables-test: Prepare for changes in the DSDT table
->>   tests/qtest/bios-tables-test: Prepare for changes in the arm virt DSDT
->>     table
->>   tests/qtest/bios-tables-test: Prepare for addition of acpi pci hp
->>     tests
->>   tests/qtest/bios-tables-test: Add aarch64 ACPI PCI hotplug test
->>
->>  hw/i386/acpi-build.h                          |   4 -
->>  include/hw/acpi/generic_event_device.h        |  17 +-
->>  include/hw/acpi/pci.h                         |   5 +-
->>  include/hw/acpi/pcihp.h                       |  17 +-
->>  include/hw/arm/virt.h                         |   1 +
->>  include/hw/pci-host/gpex.h                    |   1 +
->>  include/hw/sysbus.h                           |   1 +
->>  hw/acpi/acpi-pci-hotplug-stub.c               |   2 +-
->>  hw/acpi/generic_event_device.c                |  77 +++
->>  hw/acpi/ich9.c                                |   7 +-
->>  hw/acpi/pci-bridge.c                          |  54 ++
->>  hw/acpi/pci.c                                 |  50 ++
->>  hw/acpi/pcihp.c                               | 439 ++++++++++++++-
->>  hw/acpi/piix4.c                               |   5 +-
->>  hw/arm/virt-acpi-build.c                      |  38 ++
->>  hw/arm/virt.c                                 |  27 +-
->>  hw/core/sysbus.c                              |  11 +
->>  hw/i386/acpi-build.c                          | 532 +-----------------
->>  hw/pci-host/gpex-acpi.c                       |  74 +--
->>  tests/qtest/bios-tables-test.c                |  53 ++
->>  hw/arm/Kconfig                                |   2 +
->>  hw/pci-host/Kconfig                           |   1 +
->>  tests/data/acpi/aarch64/virt/DSDT             | Bin 5196 -> 5293 bytes
->>  .../data/acpi/aarch64/virt/DSDT.acpihmatvirt  | Bin 5282 -> 5379 bytes
->>  tests/data/acpi/aarch64/virt/DSDT.acpipcihp   | Bin 0 -> 6202 bytes
->>  .../acpi/aarch64/virt/DSDT.hpoffacpiindex     | Bin 0 -> 5347 bytes
->>  tests/data/acpi/aarch64/virt/DSDT.memhp       | Bin 6557 -> 6654 bytes
->>  tests/data/acpi/aarch64/virt/DSDT.pxb         | Bin 7679 -> 7768 bytes
->>  tests/data/acpi/aarch64/virt/DSDT.topology    | Bin 5398 -> 5495 bytes
->>  tests/data/acpi/aarch64/virt/DSDT.viot        | Bin 0 -> 5310 bytes
->>  tests/data/acpi/riscv64/virt/DSDT             | Bin 3576 -> 3538 bytes
->>  tests/data/acpi/x86/microvm/DSDT.pcie         | Bin 3023 -> 2985 bytes
->>  32 files changed, 811 insertions(+), 607 deletions(-)
->>  create mode 100644 tests/data/acpi/aarch64/virt/DSDT.acpipcihp
->>  create mode 100644 tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex
->>  create mode 100644 tests/data/acpi/aarch64/virt/DSDT.viot
->>
-
+Nicolin
 

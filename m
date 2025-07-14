@@ -4,96 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7782BC83F17
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 16:47:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00AC6C83F1A
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 16:52:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubMKo-0007lk-TN; Mon, 14 Jul 2025 12:47:22 -0400
+	id 1ubMQ1-0003Kw-UY; Mon, 14 Jul 2025 12:52:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ubLO4-0001lT-Lq
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 11:46:40 -0400
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ubLVV-0003Ih-HJ
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 11:54:22 -0400
 Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ubLO2-00068o-2x
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 11:46:39 -0400
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ubLVT-000772-Mi
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 11:54:21 -0400
 Received: by mail-pf1-x42c.google.com with SMTP id
- d2e1a72fcca58-742c3d06de3so4870235b3a.0
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 08:46:37 -0700 (PDT)
+ d2e1a72fcca58-7490702fc7cso2723984b3a.1
+ for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 08:54:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752507996; x=1753112796; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=+IDvBEmV+Lzihs6gqqtoeHh/iFwCnyYUNSldXE8MxgI=;
- b=bw/8tKaUFlBPW9jRhBLMlZPsqmXkFdonfKdHfg6QFSosFVRxqu3KZ5C6jlpk6TyYor
- tn6bZc9q0wVU9NRahJwxzb5GBDj53gYwxJ0vvI4jv4wXGuEN8aw3yqgaWOsBKkBCU9jD
- ZoVY8Y06IN9V2gpzArIvy7+EcjFLEd4IdoIQlvdSamtj4ttYGiihQ6/jSvUEo7YGsX2w
- GEX+yqAQec+UBOTs7rQh1WC4oENRImgnAMpUqqsaEyRmsTQ6mYe8kd4frzAknLks4S/i
- fr58rqgIiV7AkCS9HbVzD6drrTAjGXy3uBNIDoqf+SngG9MdJ+bfV2w8WXSuGt91Pir6
- Mslg==
+ d=linaro.org; s=google; t=1752508458; x=1753113258; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=OkC3rNYoVJo0EaWuNbUfG9cVGCYaTYcoWc1Wldc65SQ=;
+ b=xg0f/nmIFvaTaj6M40eEdOVa6lc1G0c5OTRKcSEAR7rL7bmSTcL2ovSzr2m60+lhNW
+ 6Mhl6DbI7CRdsjxqxkzblMNzEZ+4aFip5gJtUpZtzzOCnEBS8WqDZ3e4hkZiMm/LS+3C
+ iXN8LY3U4k5ccXPM1ZR1KPplQL7YpkUWeX9av1JxcyUlpsIeFTSaWrrkW5ayi8IBSPDR
+ nBHufALnp3QCIxGhFYh2Q2pGIgLy+CXJtN6HRLXGgNe8MEVJNiywa+jDMlJUZ636O4uY
+ e11C6Ytiw3KXo5NHE0kv3KAMZYvZYp7ING+BWjyBI1KLYaYNY+mCJq28WSa9+MTuhla7
+ h6hw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752507996; x=1753112796;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1752508458; x=1753113258;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=+IDvBEmV+Lzihs6gqqtoeHh/iFwCnyYUNSldXE8MxgI=;
- b=E/DYMWbHXMprDXd/N6Daay91NExzO1FSZi2xbTPD7r6+K9vhAXLXXADDz1pTKSYFwZ
- VOBIAHjtSXgMj6OUCKY0d9hSEH44utUWW0uVVuJRKBQz3y/wkjRmJEIOFLPA/UXY4ofq
- QaEgJ/OWHtY8pr9xNNdWoofWQu38ySDWGKL1x5rC8j7vhsreQaSqiDTuOI/OdbrbbMb0
- jUs4j0OHB1j4aZSjk5RFBjWL3LEgSPqmKZKQk4LY0LLowkIlXra2DC1cYlgn1fFHBvgW
- FOerNtbxGgvaOHQeL3wC1rEUA+FeeOKX5zY0J12L40iGVcHrnobXxtz7okdNe/xESlFL
- WbyQ==
+ bh=OkC3rNYoVJo0EaWuNbUfG9cVGCYaTYcoWc1Wldc65SQ=;
+ b=XNZfsvnddwQXl62DhKl3WMPEh0wG756TisJ8UHAK8s4vT+1SGh6ap11kYgIP3A2Ohc
+ dhDdV0GYGs6kYTpcGns11Tvrg4Qkf+D3xSVF45HEVqoG9aBFUPVb+KKwSve7Kgc1mw45
+ lWYRIqDWYHDNE+GRyTRpGkRe4dEVNCv2Ja8wslqLgcaZ6PGYqgZ9Pqo9vF66x/eIAf1D
+ dZdKuPpktFBN/s1O1COmv2DssbXGES1BdJDmIJZWjPbNb9AyZf1u6l56j6BeFArjU0jb
+ s/UY/1TVOZJYkc/k3WaLAXrtrsVKJo+mOt3sYFAXWIiqr6I3sW5/eqZHw35iEGqO5Rc9
+ NtjQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVkbacLQqB/L07fbwsp3VWYSCrB1zo1flRlYjrW2W0CBfh5hLvGBRol1x0c/jmrCMgffFpeddSkBg==@nongnu.org
-X-Gm-Message-State: AOJu0YzbXWIN18h7MhpqC0CR34+XEh/K1CVX62qv4UjJGYNWQcBj0s5t
- MO5x698URPlNM0gWlrtVoFledMP2/8VkxPAqz1rSN5t+/60YIfw37sIo5sS0Zs/B3vTI+XSANzg
- VQeg9
-X-Gm-Gg: ASbGncvAkoh32p0luQpBiGCRcQnTRe9HV2UxbKxOAvAaIE+WOA1ynGtvpYUYm+StFGU
- s1GENPIgfL7turLtFhNw+x++Yqw4g/DcT0JRbqD5WD9H/MDUEehq/njd8r6aexaRND8xQ0iWAGn
- BX96VOxft2Aaqo9DYyYTOdyPSTZF62J1ZWfUK5DWLZ+qKKXZfb0gWGoJVCR3BFE21KGXBVTn8l6
- stYLV6fbxvutJBFpoYET8ORgx7dXV0ZZ1NUj3chH9BYB/DYNgv3D70jJqlhEfLwScovBGFGMUBI
- pLjwakSNQJRv9IAJOc+95ZQzaa7FDjMWq+b4CuF1q4e8d7nD/5CbkgBE5ZqIrzSpKCPR2d2uDgJ
- Iqi49VzYHm+9Lmoj67ihEh6fsnL8M9sYL+RttYU1GiKcsXw==
-X-Google-Smtp-Source: AGHT+IGg8P/it84LX/wj/a8NB7leTLCQbehdmwijsf3a1Vwrhji4eSM4vSncTNX7gSMgk22Cy3IPCg==
-X-Received: by 2002:a05:6a00:2352:b0:740:9e87:9625 with SMTP id
- d2e1a72fcca58-74ee04ade9cmr21578864b3a.4.1752507995641; 
- Mon, 14 Jul 2025 08:46:35 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
+ AJvYcCWl5piSm7hPfbrn7HASL0ZnzSKLrbaT4BRlju9hYgCFYgmbgLWEQap9c8vgMr2iUUjHO8+jKyO0XA==@nongnu.org
+X-Gm-Message-State: AOJu0YzmHhsn4qBq3Z/Xfxp3xFihMOL759BrlEjBCrVHbwP4hcZIRmX0
+ sf6XxFx6+BzRh8unOJS7GXGsjSkkF4nYiLBRvUyUmJqQmKXmSPMis8pVmrnR7LoMtIU=
+X-Gm-Gg: ASbGncu+n6who0INORgEHPaYsLLi3hPxZZSJCsshpLqZ+JrzmFmv53zQFyO0RH3h93R
+ YI1Vqtk/WP56lXtFthZ2UoNsDHCXZduq559lzurSKaLvqJ3g4Pm2TjOlFnK0bMzNMgZAB9LD3xW
+ hyeTbJe/BeKvgNMj1KiRDYGeKTBPaOhJ6+Bn7mqDBGskae+k5ctvD+gaJhPwxdAKutbS7lSvpNv
+ un24pYlOgABfz87WFI8W6K8RhV1xhFDt4ub75HkqrgwY/GGoD6hHQe1ZxwGya/3dQk1cHCCc74N
+ DHoWhSfl+1dpFdxxIUZe9AbdxLvZ+jX1MNLJpRv0dDIklSzHLxuKcG21Gszx+DZNbc6RcbGd9/X
+ rQ5Uv5T+JPFaTRuiTs3zojYbHpuP4fHuz7idok2r+3q2Oy4ZqWdUSwJ8Pbs74+f4=
+X-Google-Smtp-Source: AGHT+IEn+gLq96LdhuIAnZC/mbTFqusBtzvRU7mZzMo5N/Rb+ZVJC+IsBdYO9E6P6B3ENSby2aDB5Q==
+X-Received: by 2002:a05:6a20:1596:b0:222:c922:e33 with SMTP id
+ adf61e73a8af0-2317dbd4e60mr21008862637.6.1752508457991; 
+ Mon, 14 Jul 2025 08:54:17 -0700 (PDT)
+Received: from [10.113.99.227] ([172.56.179.167])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-74eb9f4cb57sm10995934b3a.136.2025.07.14.08.46.34
+ 41be03b00d2f7-b3bbe72912asm10374528a12.71.2025.07.14.08.54.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Jul 2025 08:46:35 -0700 (PDT)
-Message-ID: <eabfd320-5efd-4a0a-807e-10aca82ca27b@linaro.org>
-Date: Mon, 14 Jul 2025 08:46:34 -0700
+ Mon, 14 Jul 2025 08:54:17 -0700 (PDT)
+Message-ID: <6f0cd2fd-2152-4c28-8dd1-ca7271e686f4@linaro.org>
+Date: Mon, 14 Jul 2025 09:52:28 -0600
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 4/6] target/arm: Add FEAT_TCR2
+Subject: Re: [PATCH] target/arm: Provide always-false kvm_arm_*_supported()
+ stubs for usermode
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20250714135152.1896214-1-peter.maydell@linaro.org>
+ <0b438773-01b9-42e1-8edf-2330e50387f8@linaro.org>
+ <95b00393-bdd2-4db3-ac39-02a09f83b4d7@linaro.org>
 Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>,
- Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org
-References: <20250711140828.1714666-1-gustavo.romero@linaro.org>
- <20250711140828.1714666-5-gustavo.romero@linaro.org>
- <21bfbfaa-f0df-413d-bad6-b69688ac381a@linaro.org>
- <65e20340-e164-4424-bc60-52d78b9a17b8@linaro.org>
- <f18a652e-b64c-4a33-bd60-63dfa93ffdbd@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <f18a652e-b64c-4a33-bd60-63dfa93ffdbd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <95b00393-bdd2-4db3-ac39-02a09f83b4d7@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,45 +107,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/14/25 5:58 AM, Richard Henderson wrote:
-> On 7/14/25 00:21, Pierrick Bouvier wrote:
->> On 7/13/25 2:59 PM, Richard Henderson wrote:
->>> On 7/11/25 08:08, Gustavo Romero wrote:
->>>> Add FEAT_TCR2, which introduces the TCR2_EL1 and TCR2_EL2 registers.
->>>> These registers are extensions of the TCR_ELx registers and provide
->>>> top-level control of the EL10 and EL20 translation regimes.
->>>>
->>>> Since the bits in these registers depend on other CPU features, and only
->>>> FEAT_MEC is supported at the moment, the FEAT_TCR2 only implements the
->>>> AMEC bits for now.
->>>>
->>>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
->>> This causes a regression in tests/functional/test_aarch64_device_passthrough.py, by
->>> continually trapping on an access to TCR2_EL1 while the HCRX_EL2 enable bit is not set.
->>>
->>> Unlike the similar SCTRL2 failure, it's not 100% clear to me how the guest and nested
->>> guest kernels are related.  But it is clear that the outer kernel does not does not
->>> support TCR2_EL1 (and also doesn't manipulate ID_AA64MMFR3_EL1 to hide FEAT_TCR2), but the
->>> nested guest kernel does support TCR2_EL1.
->>>
->>
->> The same kernel is used for host and guest.
->> Maybe it's related to kvm support?
+On 7/14/25 09:41, Pierrick Bouvier wrote:
+> Indeed, clang does not fold the condition "value && kvm_enabled() && ! 
+> kvm_arm_sve_supported()". Looks like a missing case.
+> This code compiles with gcc -O0, but not clang -O0.
 > 
-> Oops, no, the patch fails to enable HCRX_TCR2EN in hcrx_write or SCR_TCR2EN in scr_write.
-> The same is true for the previous patch with HCRX_SCTLR2EN and SCR_SCTLR2EN.
+> extern int f(void);
+> int main(int argc) {
+>      if (argc && 0)
+>          f();
+> }
 > 
+> As folding is not guaranteed by C standard, I'm not sure it's really possible to file a 
+> bug. However, since we rely on this behaviour in other parts, maybe it would be better to 
+> rewrite the condition on our side.
 
-Thanks for the investigation. Indeed, building TF-A with 
-ENABLE_FEAT_TCR2 and ENABLE_FEAT_SCTRL2 didn't change anything.
+It's probably worth filing a missed-optimization type bug, if that's available in clang's 
+reporting system.
 
-It's possible that it's still needed to update test images though, so 
-I'll try when Gustavo will post v8.
+With my compiler hat on, I suspect that GCC generates IR like
 
-Thanks,
-Pierrick
+   if (argc) {
+     if (0) {
+       f();
+     }
+   }
 
-> 
-> r~
+in order to get the short-circuting part of && correct, which Just So Happens to fold away 
+exactly as we wish.
 
+I'm not sure how clang expands the expression such that (x && 0) doesn't fold away, but (0 
+&& x) does, as evidenced by
+
+> +        if (kvm_enabled() && !kvm_arm_sve_supported()) { 
+
+
+r~
 

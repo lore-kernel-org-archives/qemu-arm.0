@@ -4,92 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E354C83F17
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 23:27:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1D62C83F1A
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 23:27:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubSMU-0003CO-Rw; Mon, 14 Jul 2025 19:13:31 -0400
+	id 1ubSHt-0000Vf-GZ; Mon, 14 Jul 2025 19:08:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSIx-0004oq-Ld
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:09:53 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSHB-00068U-4X
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:08:05 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSIr-0005vi-3N
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:09:47 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1ubSH8-0005cp-TU
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 19:08:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752534583;
+ s=mimecast20190719; t=1752534478;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Ch85qCxvAmCXoJ+NOOx+afwY7JfNKRiohRHU3Ox1I3g=;
- b=N1nu3cCpl90dPHKE5TpGUvfj3PMt70JsyML4ozR9f3qGjEO27Tr89YH1sJJ2dm6mCFPVPs
- EGFczcbhdzdlxZNEbImtaMwy86vklj41pMo842L0o7xT4CWy9XBmSxA1l5pgjF+g7fU0di
- VVz9EXGnUO5xfTGUBcd4xhsMExxlnhk=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=/DCXoXH19gfUig4lVOGC7ZRvMR0X5CUGZ6lLZHnPrrw=;
+ b=Kez5/JRhgMTXpKhpGsgFpMvcdX87by7IuEgQArkwg/9JKFYo+R2l6OpfO95nB0TMbxJQuv
+ 5AFuoGa4fnmE4Wm+J39+mq+Q0AioSYW1FWvreiOCsU43Rj8IM3ukS2U4eWJ3r5xY8Aw007
+ Kf7JB15CN75uHdvqVgn19TzIOXMlEJc=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-664-znFhTFiFNbSyXlKeH7BnIg-1; Mon, 14 Jul 2025 19:09:41 -0400
-X-MC-Unique: znFhTFiFNbSyXlKeH7BnIg-1
-X-Mimecast-MFC-AGG-ID: znFhTFiFNbSyXlKeH7BnIg_1752534581
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-3a4e9252ba0so2841206f8f.0
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 16:09:41 -0700 (PDT)
+ us-mta-12-hpYd_8lVOE-HOPP6_gp_Ow-1; Mon, 14 Jul 2025 19:07:57 -0400
+X-MC-Unique: hpYd_8lVOE-HOPP6_gp_Ow-1
+X-Mimecast-MFC-AGG-ID: hpYd_8lVOE-HOPP6_gp_Ow_1752534476
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-451ac1b43c4so26266545e9.0
+ for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 16:07:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752534580; x=1753139380;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Ch85qCxvAmCXoJ+NOOx+afwY7JfNKRiohRHU3Ox1I3g=;
- b=guoYFmT4D/ucUPus2LAyq2gKTSXiQstDpFpO889ZeT+wFiPcXg7V4aiVkHcsl2uOVB
- 65ngp9MZpgzU/wiyP0phPErhqR0eueJGlDU0S/6RvSdMECNJdoXuqzgs94vE4T4Wscju
- VlF7jxAFG2nTIgTxJplaW7aczUoj3vLuuQYx72pOwuQ2JVWWcv08bM3F6ka06D+S8POO
- QlzqqWGqQz6myHG0kkAJ0VTRw7qq5GAHc8EPEJLby9Yll9Gxo/ue611i1vLg2Ane8tom
- wG7yyoLFwLNU1bd3tivn80grsUSJWoHfBg8m0dhYc8bNWShnJ+eBWEQ8e1rcr8mG885Z
- 6pNw==
+ d=1e100.net; s=20230601; t=1752534476; x=1753139276;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=/DCXoXH19gfUig4lVOGC7ZRvMR0X5CUGZ6lLZHnPrrw=;
+ b=Ok0dZPPb0aD0m1gXoBI4248VxXRhsiHOgphgRtzG+wxG6bXF8OV+MgLEJ7VBk4aXF3
+ fn556dx/MTSnO9AieNJdca117DlNZ29tS3Tp4y0DBA685Npu1PEqUbcnx58HqsO02LEc
+ g0I7V1h/kxc0hbYHwBxDwLXX3GcofVkLqJgPFXNMEAObg9wiXBcg2M6FPqQSQbBjstPq
+ svsU3vOHhfrpLAik+xY2nbpf7OF5C/WP0j8QxgYRmFKwGAueyr4ljBUSJUjrCIJikJC3
+ 9NF8l2I3IjIHfmwHQehQw8kPxD24HL45nDLou521Rf6m3Nx9I2tCaOUhDtQ+IYVp62Iq
+ 5AuA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXTpVLr9JKzJqlcBrHBa9var0H3L+Q4z1beN0fuhBR+WVn7/8XpmdKCXhZrNc4pWUWOXxrbTVxtiA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz5VPLvTZal7xlilQbEcQ7n1EzsXB1mUIpcvOPk50yb5eEBRujI
- SZZvKjd6nFB7ZN7HyqaqgvYUNCjdvytK333fbeHQdnFIu79/hXCJSIdfetjsKAL1/2mSDtEoeo7
- wr3sejjHA//bybOTNOGHqmMS2zuQ2zYI6jrMFxQtfNlawzwOt1GxfZg==
-X-Gm-Gg: ASbGncs+1zaNP8gFmB53k8q5UfmNYHAs1DE59/7VYZHm81++Dun9fKaKo+bnY3Xa677
- riZVRgi+SkSmRsw7ZTmoU4ovT/RSt3TTjlQt9ZkVTDDSQE5ozF0shT0jeA21ClY3GQPeyyuLdbx
- V0SsGJ49NS3jYe9KlXVTm1zKgU2oZe2luFL5BS2VyAGPe8qq4r5iOwiYTZQgFoTbvoAytCw+yot
- wcN4+zz8BUUtmwoIa4AbZaT1aE3hl2CDAWns8l5QCbaVuC9ONMco0Aecoq+SyVvS7wn0VLZhe1u
- 8VWNy2DoYHrvNZVkqlB/jutFMD3tTuEB
-X-Received: by 2002:a05:6000:2a8a:b0:3a3:71cb:f0bd with SMTP id
- ffacd0b85a97d-3b5f188e702mr9336544f8f.23.1752534580654; 
- Mon, 14 Jul 2025 16:09:40 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFIoRwndar8o46lZkgjDi+/pA/NlseW3O9MbPUamqQ5li/NgikHoiq6lzt4urFfskPmtoG4bw==
-X-Received: by 2002:a05:6000:2a8a:b0:3a3:71cb:f0bd with SMTP id
- ffacd0b85a97d-3b5f188e702mr9336530f8f.23.1752534580294; 
- Mon, 14 Jul 2025 16:09:40 -0700 (PDT)
+ AJvYcCXDf1DlZA2htBzNsxcGdRrMJHFSl3Q5lKRYfMqVeYrf1RIG1ew2ZmzW+AIP1EzabfZsy58XVzgqfQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxVe90keuGdZLD7eO/OQvdOb9YDjPXFTpM6/S4ozgEXcp8zFH5Y
+ fWZEMC9qFboaYePTNSIs2Bnl7jxGUzNutvgCQj68DL9+662NKa885B+gXiADp+noHLvWVJtovvw
+ CHE5oxHH8AG/FVAFyON4Y241QVZTC/uGXU0r9pPLTJHTZWC/tD5ZYww==
+X-Gm-Gg: ASbGncvIb9HWoz1AgW3H8VqrgJGA1uwO+B/kqvWax1+S+oLFk9UmRIWEG3s4bB9dkJ9
+ 6uBOG0okOkZrT3LR9ssdu3zq1r7T2RCFwcznBfe/VrI+bZnJN8VIt8BYcvuKO7DGehasdzKkfpe
+ pxINOzerSbD7wOpa7I4Ilm5PouYmSNEFzSGEcz3OAgJX2Ik3YzavnzmcwRAeR8+7bI8KcLzsA3A
+ xWP0jJGKEDBDaCVsTMrN1cMURcEqnthbnkInoNOhmr3Ieksgr46hJhJVs4Tmvs+sANPfNLOlgKv
+ 4lgx9JTaboZtYe/ovz8pgQaBac0mN4vg
+X-Received: by 2002:a05:600c:3513:b0:456:f85:469b with SMTP id
+ 5b1f17b1804b1-4560f854858mr69338775e9.25.1752534475906; 
+ Mon, 14 Jul 2025 16:07:55 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH/hvhp3+Lc4SCDYGY1djJZvTqk84QAxmDoG0bJVlXqiTSEhPm93Mwt5v091pG+91JnXtqwIQ==
+X-Received: by 2002:a05:600c:3513:b0:456:f85:469b with SMTP id
+ 5b1f17b1804b1-4560f854858mr69338605e9.25.1752534475541; 
+ Mon, 14 Jul 2025 16:07:55 -0700 (PDT)
 Received: from redhat.com ([2a0d:6fc0:150d:fc00:de3:4725:47c6:6809])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b5e8bd180fsm13369695f8f.2.2025.07.14.16.09.39
+ ffacd0b85a97d-3b5e8e0d719sm13688185f8f.54.2025.07.14.16.07.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jul 2025 16:09:40 -0700 (PDT)
-Date: Mon, 14 Jul 2025 19:09:38 -0400
+ Mon, 14 Jul 2025 16:07:55 -0700 (PDT)
+Date: Mon, 14 Jul 2025 19:07:53 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eric Auger <eric.auger@redhat.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org
-Subject: [PULL 78/97] hw/arm/virt: Let virt support pci hotplug/unplug GED
- event
-Message-ID: <28ac8a5662a55c40b377e9c94c2b49191db346c8.1752534227.git.mst@redhat.com>
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Song Gao <gaosong@loongson.cn>, Huacai Chen <chenhuacai@kernel.org>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>, qemu-arm@nongnu.org
+Subject: [PULL 39/97] target/qmp: Use target_cpu_type()
+Message-ID: <877f7c5a419ed48b0bff3833156e23921764280d.1752534227.git.mst@redhat.com>
 References: <cover.1752534227.git.mst@redhat.com>
 MIME-Version: 1.0
 In-Reply-To: <cover.1752534227.git.mst@redhat.com>
 X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
 X-Mutt-Fcc: =sent
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 5ieXB5t_WPy4FuAQ-D9YNMOxTqa5Fa-2_4aHVhiI5kE_1752534581
+X-Mimecast-MFC-PROC-ID: SYA3Xg04mzplw-COn-ROPRNlDLVFniAsKbZrH_C_AIc_1752534476
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -115,52 +120,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Eric Auger <eric.auger@redhat.com>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Set up the IO registers used to communicate between QEMU
-and ACPI.
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Message-Id: <20250714080639.2525563-33-eric.auger@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20250708215320.70426-2-philmd@linaro.org>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- hw/arm/virt.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ target/arm/arm-qmp-cmds.c             | 3 ++-
+ target/loongarch/loongarch-qmp-cmds.c | 3 ++-
+ target/mips/system/mips-qmp-cmds.c    | 3 ++-
+ 3 files changed, 6 insertions(+), 3 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index f127a668ef..ef6be3660f 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -691,6 +691,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
-     SysBusDevice *sbdev;
-     int irq = vms->irqmap[VIRT_ACPI_GED];
-     uint32_t event = ACPI_GED_PWR_DOWN_EVT;
-+    bool acpi_pcihp;
+diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+index cefd235263..d292c974c4 100644
+--- a/target/arm/arm-qmp-cmds.c
++++ b/target/arm/arm-qmp-cmds.c
+@@ -21,6 +21,7 @@
+  */
  
-     if (ms->ram_slots) {
-         event |= ACPI_GED_MEM_HOTPLUG_EVT;
-@@ -709,6 +710,18 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
-     sysbus_mmio_map_name(sbdev, TYPE_ACPI_GED, vms->memmap[VIRT_ACPI_GED].base);
-     sysbus_mmio_map_name(sbdev, ACPI_MEMHP_REGION_NAME,
-                          vms->memmap[VIRT_PCDIMM_ACPI].base);
-+
-+    acpi_pcihp = object_property_get_bool(OBJECT(dev),
-+                                          ACPI_PM_PROP_ACPI_PCIHP_BRIDGE, NULL);
-+
-+    if (acpi_pcihp) {
-+        int pcihp_region_index;
-+
-+        pcihp_region_index = sysbus_mmio_map_name(sbdev, ACPI_PCIHP_REGION_NAME,
-+                                                  vms->memmap[VIRT_ACPI_PCIHP].base);
-+        assert(pcihp_region_index >= 0);
-+    }
-+
-     sysbus_connect_irq(sbdev, 0, qdev_get_gpio_in(vms->gic, irq));
+ #include "qemu/osdep.h"
++#include "qemu/target-info.h"
+ #include "hw/boards.h"
+ #include "kvm_arm.h"
+ #include "qapi/error.h"
+@@ -241,7 +242,7 @@ CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
+     CpuDefinitionInfoList *cpu_list = NULL;
+     GSList *list;
  
-     return dev;
+-    list = object_class_get_list(TYPE_ARM_CPU, false);
++    list = object_class_get_list(target_cpu_type(), false);
+     g_slist_foreach(list, arm_cpu_add_definition, &cpu_list);
+     g_slist_free(list);
+ 
+diff --git a/target/loongarch/loongarch-qmp-cmds.c b/target/loongarch/loongarch-qmp-cmds.c
+index f5f1cd0009..1d8cd32f5f 100644
+--- a/target/loongarch/loongarch-qmp-cmds.c
++++ b/target/loongarch/loongarch-qmp-cmds.c
+@@ -7,6 +7,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/target-info.h"
+ #include "qapi/error.h"
+ #include "qapi/qapi-commands-machine.h"
+ #include "cpu.h"
+@@ -32,7 +33,7 @@ CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
+     CpuDefinitionInfoList *cpu_list = NULL;
+     GSList *list;
+ 
+-    list = object_class_get_list(TYPE_LOONGARCH_CPU, false);
++    list = object_class_get_list(target_cpu_type(), false);
+     g_slist_foreach(list, loongarch_cpu_add_definition, &cpu_list);
+     g_slist_free(list);
+ 
+diff --git a/target/mips/system/mips-qmp-cmds.c b/target/mips/system/mips-qmp-cmds.c
+index d98d6623f2..b6a2874f2d 100644
+--- a/target/mips/system/mips-qmp-cmds.c
++++ b/target/mips/system/mips-qmp-cmds.c
+@@ -7,6 +7,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/target-info.h"
+ #include "qapi/error.h"
+ #include "qapi/qapi-commands-machine.h"
+ #include "cpu.h"
+@@ -40,7 +41,7 @@ CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
+     CpuDefinitionInfoList *cpu_list = NULL;
+     GSList *list;
+ 
+-    list = object_class_get_list(TYPE_MIPS_CPU, false);
++    list = object_class_get_list(target_cpu_type(), false);
+     g_slist_foreach(list, mips_cpu_add_definition, &cpu_list);
+     g_slist_free(list);
+ 
 -- 
 MST
 

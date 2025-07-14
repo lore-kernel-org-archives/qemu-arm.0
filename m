@@ -4,83 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69342C83F1A
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 18:00:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CB2CC83F1A
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Jul 2025 18:05:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubNTM-0003sN-3S; Mon, 14 Jul 2025 14:00:16 -0400
+	id 1ubNYd-0007n8-KX; Mon, 14 Jul 2025 14:05:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ubMSj-0004ZT-Er
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 12:55:34 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ id 1ubMSh-0004Y6-Fv
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 12:55:33 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ubMSh-0001J7-7f
- for qemu-arm@nongnu.org; Mon, 14 Jul 2025 12:55:32 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-3a4f72cba73so3627691f8f.1
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 09:55:30 -0700 (PDT)
+ id 1ubMSd-0001IP-KN
+ for qemu-arm@nongnu.org; Mon, 14 Jul 2025 12:55:30 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-455b00283a5so18459365e9.0
+ for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 09:55:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752512129; x=1753116929; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/WAd9m8e33PKa1oGnuqT0APNMRjVofzTCm9BK9/hgKY=;
- b=E6txaNRu0ZwWrXEoWZqXLHlpl0eSGWws+13zZ5jv7MDEG6zz5zYMdcooBkLl3qQOkT
- 7gDEofiYeO1q8b3H2M/nnrDqFSmMjoChygV1aEVQT7IS/Vi1IyJu7d30rbcAQgOkeaQB
- f6kbbFXQaoAFi1ZUtgjXm48C8Kaoo2K/6KfoUJmUnmdRIoDFBQFU+WZjTG44wyulkhAh
- YOhvfMDQ2tyzBzfL2tkM8uoh9jF9p8yI70d1K+p5YNsKkvuJofSTC9VkyHT7afaGu0nq
- GTS7dytln8s4HoveUl/h2SLae9PVA13CJQSHom3TTWeniN/7HuSfPNBhurQQhzCNEgqE
- ECqQ==
+ d=linaro.org; s=google; t=1752512126; x=1753116926; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=GnuPhOvOnPLOfdX6XlrP4ky9ziluFD2vjxw40gSmZ1g=;
+ b=jCYgYxSjp2tFVtEG6L2j9YDsGihp0kgEiSvPimbpVhG2XM2fDLVY7qopgh8CBBZARn
+ 01zAoCOJkrIkyxquZFgIhDJD7Gx3hVSe/SQ9jjo7+UVqkkyUXjQvGx+Vs4spLSFJzG5A
+ DnDU1I5AynLdufdQKI+GQzDIVGliJrswaVFMKZ6ssLOeVMFnj2ESzu47H1InM2KizOkK
+ z76qvmWTnyxPVTFpEnAs6qHTwvHPutE90lextnSrPiITwGYYvs29ft9E0clAG4RULvPa
+ aLsT/08OuS0wdNsgAo9vw1rBs66uPK8FfFXW11VLjCP29z4DnldbdDgrN8OM5klSgUAR
+ FjOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752512129; x=1753116929;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=/WAd9m8e33PKa1oGnuqT0APNMRjVofzTCm9BK9/hgKY=;
- b=M4kQ330ZAiPtwaC64tB2yuKISqcYgVHVAlsBGZZzUn7YTD+mv3O0bh5yHfEY94V5xK
- L8Fv4rcToTyNZCmYzPpuOGk9HwXfipX5m8HQvA6LeY8TeD9Ybc3YjWjC8F5agvjTSyk3
- as5j9hy0W5EdsMlJs+FBfvPxscHD/DJ3uHbLkuut1baiOfgP9ci8xq0JaqzSDgeZ/g2U
- q55TpRbnbfIZ1jV2gygLsxUm63JtLksv99h9+HmIcZl7IrSFSMMVjkouFPeLMEhuIh2u
- HaAS3F6ax7PGefTSgNhL7yIaxvYnLcm4E/8AFzikkEu1vsmKduEDIXJtAF/OaGHn8hk5
- LEtw==
-X-Gm-Message-State: AOJu0Yw2ar5U8IQPdqymUmag5IdzzNlzN4s4Nm1aNk9Xy55XMs4OSTPB
- AyUw25SdbYwu0bICC5TxwcnRCEmPcM5IW2DUnHiroeRBFexd+mgBF7xCdKkEfrVe8LgvH5lQVj/
- aygHN
-X-Gm-Gg: ASbGncsyEIioGtfQh8skdGAxozBsvM5FtZxZu7UpxO+uv0Q7ZrrDgtjt8Lcanv2blJ3
- sXq5i8lIk/Sk3JJ98MA+W1bYWGp6/sN8qkss6zVpmZYGrOtmoUrU75D6RlKF1yGMBv4sMuclpjl
- VGIoEZkrT0z4zXiYZnaMxZOJ5THm6OxmE8aTyIgHKGa5owk6faJZ1oHbWwqLvCp8OHxnUsH30ba
- cYpBfZGQ/2wH5NZbWg1g/7ndV4U2irlvyWggH8Xdus5yutNtc4q8hHOAxcykEkkacl8GSthCHRC
- 3mZSQtjmJTQ2maCFxa4/BtcqL3zr+9OIylb9kHH4LNZpv1RPn3+xHdW/VEYMxdA+NdQ3s+MjkeP
- 9LYv+KAkSNhYew12ISZNasK/3CPTY
-X-Google-Smtp-Source: AGHT+IF+w0jSj/V7Z7QVWt/OlBIfPTwpI8k28WpIjSbSUuDO/4L33AITtFyF7HxsIxbe/DQsoeDQew==
-X-Received: by 2002:a05:6000:4813:b0:3a5:6860:f47f with SMTP id
- ffacd0b85a97d-3b609522266mr325287f8f.6.1752512129388; 
- Mon, 14 Jul 2025 09:55:29 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1752512126; x=1753116926;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=GnuPhOvOnPLOfdX6XlrP4ky9ziluFD2vjxw40gSmZ1g=;
+ b=NfdU9Ur1McHWGuMacHBJyZ8b2ewXEn0Xbz5sj1isT03tp8eVjjtB87EnJuuhVoin5Z
+ k9WmHJIqRtRCYWHKfT4aTgPFmIJ0OipKSlzoiLKciNQacpn1r8UI1xSnOVswXwpiTnho
+ oYkf65yHwkBVd5Qsd3rtQ5w8rRk/Aw86mbFh5YZlQmqJsd2ZH+INCHqy83b4EBVoS5Uq
+ UJWPuBSD9GUNT7occRoCwj+7Ufu7xPxEZbiGorFOW2KywJSvditpqHk7eKRwolDnLj9I
+ 8zXyOecO+QbBUSkUSxvRn5F/6dEK7zhXTath2+I6hvtB2ptzDbH+XetiX0Ax//9zDXqe
+ qEBQ==
+X-Gm-Message-State: AOJu0YySsuTjV+udVrUuZIjtVJn0+MFzvTq2qDmRu96Dwdh/rr2MABdt
+ RhkCwe86aveBKmW4kTh0tAaEP/DRVTBqLaB2EEOqdQYvZDw/QyBa5m2OLjNrgZWDmvgbUeY1FAB
+ EOLbb
+X-Gm-Gg: ASbGncsPpQTib3FB3pPJLLvdsKmgibpmH7gLaYn/wKb6oT4CNDUm1j2nLZk0mJXru+C
+ ejgYDZuQvtZgrVkIWcNgUFpngQknVtcg4040Ur9nqPk0BnWrrlFiUkY175PCIyVb7DNBH6oHsqt
+ L5i+rjHlRVUsfrdAZpDKMI6ZuJTf6J78K6h5i9HxTeWoD78NFJRWwlJEQEg0+NLP5EdWFZaXmkJ
+ E0ECjjjL+RxAHr2PyGsR4254UmfZ7zE3oelwuqPEE7PL5BFnUT88Xa1T0zuCtbmtzW1VHORKkUA
+ 4PazdeOpJzbJArSPWFbfKooPq3Z9vLOY07v5xm2+VAiCVkO9VKKYjKKfeMJSeClEE0qKe7ih7TJ
+ vRtvZli+VDtxyNp5vBgQMKFGaBhti
+X-Google-Smtp-Source: AGHT+IF8LcEWUTJee4OP99Z2DnuLr/s+aC/Ikzv5ruMl4L1QLo7yroHHrQyk4wQysm3/F9Wprf1wkg==
+X-Received: by 2002:a05:600c:8b84:b0:454:aedd:96fb with SMTP id
+ 5b1f17b1804b1-454f4275fa0mr127666235e9.29.1752512125735; 
+ Mon, 14 Jul 2025 09:55:25 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b5e8bd15bfsm13164665f8f.19.2025.07.14.09.55.28
+ ffacd0b85a97d-3b5e8bd15bfsm13164665f8f.19.2025.07.14.09.55.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jul 2025 09:55:28 -0700 (PDT)
+ Mon, 14 Jul 2025 09:55:25 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
  Jason Wang <jasowang@redhat.com>
-Subject: [PATCH 3/4] hw/net/npcm_gmac.c: Correct test for when to reallocate
- packet buffer
-Date: Mon, 14 Jul 2025 17:55:22 +0100
-Message-ID: <20250714165523.1956235-4-peter.maydell@linaro.org>
+Subject: [PATCH 0/4] hw/net/npcm_gmac: Various fixes to
+ gmac_try_send_next_packet()
+Date: Mon, 14 Jul 2025 17:55:19 +0100
+Message-ID: <20250714165523.1956235-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250714165523.1956235-1-peter.maydell@linaro.org>
-References: <20250714165523.1956235-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,46 +100,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In gmac_try_send_next_packet() we have code that does "if this block
-of data won't fit in the buffer, reallocate it".  However, the
-condition it uses is
-  if ((prev_buf_size + tx_buf_len) > sizeof(buf))
-where buf is a uint8_t *.
+There is a Coverity issue in gmac_try_send_next_packet() relating
+to it setting a variable to a value that is always overwritten.
+While I was looking at that, I noticed a number of oddities in
+this function. This patchseries collects those up. Note that I
+have only tested this with 'make check' and 'make check-functional',
+and since I couldn't find a datasheet I have some questions about
+the hardware behaviour. Review and testing would be appreciated.
 
-This means that sizeof(buf) is always 8 bytes, and the condition will
-almost always be true, so we will reallocate the buffer more often
-than we need to.
+The first patch is about something I noticed last year, but never
+got a reply on:
+https://lore.kernel.org/qemu-devel/CAFEAcA8Jx=CrXCSzOtjtEky5ikvtatk8N2gz=nKccpwEwO13+w@mail.gmail.com/
+The code appears to mishandle the case where the function ends up
+sending more than one packet, such that the second packet gets
+sent with the contents of the first one.
 
-Correct the condition to test against tx_buffer_size, which is
-where we track how big the allocated buffer is.
+When that bug has been fixed, the length and prev_buf_size
+variables become exact copies of each other, so patch 2 gets rid
+of the unnecessary 'length' variable. Here I have a question about
+the hardware behaviour: what does it do if the guest attempts to
+assemble a very large packet ? In this patch I retain the current
+behaviour ("wrap the length at 64K and send a short packet"), but
+this seems to me unlikely to be correct. Should we be detecting
+the huge packet and flagging an error somewhere?
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/net/npcm_gmac.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+The third patch fixes a classic C thinko where we do sizeof(some pointer)
+when we meant to check against the size of the dynamically allocated
+buffer.
 
-diff --git a/hw/net/npcm_gmac.c b/hw/net/npcm_gmac.c
-index a0050a7725f..0c17ae9b2a9 100644
---- a/hw/net/npcm_gmac.c
-+++ b/hw/net/npcm_gmac.c
-@@ -569,7 +569,7 @@ static void gmac_try_send_next_packet(NPCMGMACState *gmac)
-         tx_buf_len = TX_DESC_TDES1_BFFR1_SZ_MASK(tx_desc.tdes1);
-         buf = &tx_send_buffer[prev_buf_size];
- 
--        if ((prev_buf_size + tx_buf_len) > sizeof(buf)) {
-+        if ((prev_buf_size + tx_buf_len) > tx_buffer_size) {
-             tx_buffer_size = prev_buf_size + tx_buf_len;
-             tx_send_buffer = g_realloc(tx_send_buffer, tx_buffer_size);
-             buf = &tx_send_buffer[prev_buf_size];
-@@ -591,7 +591,7 @@ static void gmac_try_send_next_packet(NPCMGMACState *gmac)
-             tx_buf_len = TX_DESC_TDES1_BFFR2_SZ_MASK(tx_desc.tdes1);
-             buf = &tx_send_buffer[prev_buf_size];
- 
--            if ((prev_buf_size + tx_buf_len) > sizeof(buf)) {
-+            if ((prev_buf_size + tx_buf_len) > tx_buffer_size) {
-                 tx_buffer_size = prev_buf_size + tx_buf_len;
-                 tx_send_buffer = g_realloc(tx_send_buffer, tx_buffer_size);
-                 buf = &tx_send_buffer[prev_buf_size];
+The fourth patch fixes the Coverity error by dropping the
+not-very-useful 'buf' local variable entirely.
+
+thanks
+-- PMM
+
+Peter Maydell (4):
+  hw/net/npcm_gmac.c: Send the right data for second packet in a row
+  hw/net/npcm_gmac.c: Unify length and prev_buf_size variables
+  hw/net/npcm_gmac.c: Correct test for when to reallocate packet buffer
+  hw/net/npcm_gmac.c: Drop 'buf' local variable
+
+ hw/net/npcm_gmac.c | 26 ++++++++++++--------------
+ 1 file changed, 12 insertions(+), 14 deletions(-)
+
 -- 
 2.43.0
 

@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32B0FC83F17
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Jul 2025 10:41:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBDC7C83F17
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Jul 2025 10:46:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubd5E-0004Jw-Cp; Tue, 15 Jul 2025 06:40:24 -0400
+	id 1ubdB4-0004vk-EM; Tue, 15 Jul 2025 06:46:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1ubd4w-0003w2-Fm; Tue, 15 Jul 2025 06:40:06 -0400
+ id 1ubdB2-0004uJ-2I; Tue, 15 Jul 2025 06:46:24 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1ubd4s-0005X0-U4; Tue, 15 Jul 2025 06:40:06 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bhFwW38Nzz6L586;
- Tue, 15 Jul 2025 18:36:27 +0800 (CST)
+ id 1ubdAy-0006Xe-AQ; Tue, 15 Jul 2025 06:46:23 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bhG6L1gbBz6L78K;
+ Tue, 15 Jul 2025 18:44:58 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id E581E140144;
- Tue, 15 Jul 2025 18:39:56 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 0EFE21402EB;
+ Tue, 15 Jul 2025 18:46:12 +0800 (CST)
 Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
  (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 15 Jul
- 2025 12:39:55 +0200
-Date: Tue, 15 Jul 2025 11:39:54 +0100
+ 2025 12:46:11 +0200
+Date: Tue, 15 Jul 2025 11:46:09 +0100
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
  <linuxarm@huawei.com>
 CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
@@ -38,12 +38,12 @@ CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
  <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
  <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>,
  <shameerkolothum@gmail.com>
-Subject: Re: [RFC PATCH v3 12/15] hw/arm/smmuv3-accel: Introduce helpers to
- batch and issue cache invalidations
-Message-ID: <20250715113954.0000449e@huawei.com>
-In-Reply-To: <20250714155941.22176-13-shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [RFC PATCH v3 13/15] hw/arm/smmuv3: Forward invalidation
+ commands to hw
+Message-ID: <20250715114609.00004e4d@huawei.com>
+In-Reply-To: <20250714155941.22176-14-shameerali.kolothum.thodi@huawei.com>
 References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-13-shameerali.kolothum.thodi@huawei.com>
+ <20250714155941.22176-14-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
@@ -79,103 +79,100 @@ From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 14 Jul 2025 16:59:38 +0100
+On Mon, 14 Jul 2025 16:59:39 +0100
 Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
 > From: Nicolin Chen <nicolinc@nvidia.com>
 > 
-> Helpers will batch the commands and issue at once to host SMMUv3.
+> Use the provided smmuv3-accel helper functions to issue the
+> invalidation commands to host SMMUv3.
 > 
 > Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > ---
->  hw/arm/smmuv3-accel.c    | 65 ++++++++++++++++++++++++++++++++++++++++
->  hw/arm/smmuv3-accel.h    | 16 ++++++++++
->  hw/arm/smmuv3-internal.h | 12 ++++++++
->  3 files changed, 93 insertions(+)
+>  hw/arm/smmuv3-internal.h | 11 +++++++++++
+>  hw/arm/smmuv3.c          | 28 ++++++++++++++++++++++++++++
+>  2 files changed, 39 insertions(+)
 > 
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index 04c665ccf5..1298b4f6d0 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -168,6 +168,71 @@ smmuv3_accel_install_nested_ste_range(SMMUState *bs, SMMUSIDRange *range)
->      g_hash_table_foreach(bs->configs, smmuv3_accel_ste_range, range);
->  }
+> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> index 8cb6a9238a..f3aeaf6375 100644
+> --- a/hw/arm/smmuv3-internal.h
+> +++ b/hw/arm/smmuv3-internal.h
+> @@ -233,6 +233,17 @@ static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s)
+>  #define Q_CONS_WRAP(q) (((q)->cons & WRAP_MASK(q)) >> (q)->log2size)
+>  #define Q_PROD_WRAP(q) (((q)->prod & WRAP_MASK(q)) >> (q)->log2size)
 >  
-> +/* Update batch->ncmds to the number of execute cmds */
-
-Not obvious what the return value here means. Maybe a comment?
-
-> +bool smmuv3_accel_issue_cmd_batch(SMMUState *bs, SMMUCommandBatch *batch)
+> +static inline int smmuv3_q_ncmds(SMMUQueue *q)
 > +{
-> +    SMMUv3State *s = ARM_SMMUV3(bs);
-> +    SMMUv3AccelState *s_accel = s->s_accel;
-> +    uint32_t total = batch->ncmds;
-> +    IOMMUFDViommu *viommu_core;
-> +    int ret;
+> +    uint32_t prod = Q_PROD(q);
+> +    uint32_t cons = Q_CONS(q);
 > +
-> +    if (!bs->accel) {
-> +        return true;
-> +    }
-> +
-> +    if (!s_accel->viommu) {
-> +        return true;
-> +    }
-> +
-> +    viommu_core = &s_accel->viommu->core;
-> +    ret = iommufd_backend_invalidate_cache(viommu_core->iommufd,
-> +                                           viommu_core->viommu_id,
-> +                                           IOMMU_VIOMMU_INVALIDATE_DATA_ARM_SMMUV3,
-> +                                           sizeof(Cmd), &batch->ncmds,
-> +                                           batch->cmds, NULL);
-> +    if (!ret || total != batch->ncmds) {
-> +        error_report("%s failed: ret=%d, total=%d, done=%d",
-> +                      __func__, ret, total, batch->ncmds);
-> +        return ret;
+> +    if (Q_PROD_WRAP(q) == Q_CONS_WRAP(q))
+> +        return prod - cons;
+> +    else
 
-This is reporting an error either way but returning success for the second
-condition which looks odd.  Add a comment if intended.
+Else doesn't add anything, also, it's qemu so {}
 
-> +    }
-> +
-> +    batch->ncmds = 0;
-> +    return ret;
-
-return true; given I think we know it's true if we get here?
-
+> +        return WRAP_MASK(q) - cons + prod;
 > +}
 > +
-> +/*
-> + * Note: sdev can be NULL for certain invalidation commands
-> + * e.g., SMMU_CMD_TLBI_NH_ASID, SMMU_CMD_TLBI_NH_VA etc.
-> + */
-> +void smmuv3_accel_batch_cmd(SMMUState *bs, SMMUDevice *sdev,
-> +                           SMMUCommandBatch *batch, Cmd *cmd,
-> +                           uint32_t *cons)
-> +{
-> +    if (!bs->accel) {
-> +        return;
-> +    }
+>  static inline bool smmuv3_q_full(SMMUQueue *q)
+>  {
+>      return ((q->cons ^ q->prod) & WRAP_INDEX_MASK(q)) == WRAP_MASK(q);
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index c94bfe6564..97ecca0764 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -1285,10 +1285,17 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+>      SMMUCmdError cmd_error = SMMU_CERROR_NONE;
+>      SMMUQueue *q = &s->cmdq;
+>      SMMUCommandType type = 0;
+> +    SMMUCommandBatch batch = {};
+> +    uint32_t ncmds;
+>  
+>      if (!smmuv3_cmdq_enabled(s)) {
+>          return 0;
+>      }
 > +
-> +   /*
-> +    * We may end up here for any emulated PCI bridge or root port type
-> +    * devices. The batching of commands only matters for vfio-pci endpoint
-> +    * devices with Guest S1 translation enabled. Hence check that, if
-> +    * sdev is available.
-> +    */
-> +    if (sdev) {
-> +        SMMUv3AccelDevice *accel_dev;
-> +        accel_dev = container_of(sdev, SMMUv3AccelDevice, sdev);
+> +    ncmds = smmuv3_q_ncmds(q);
+> +    batch.cmds = g_new0(Cmd, ncmds);
+> +    batch.cons = g_new0(uint32_t, ncmds);
+
+Where is batch.ncmds set?  It is cleared but I'm missing it being set to anything.
+
 > +
-> +        if (!accel_dev->s1_hwpt) {
-> +            return;
+
+> +    qemu_mutex_lock(&s->mutex);
+> +    if (!cmd_error && batch.ncmds) {
+> +        if (!smmuv3_accel_issue_cmd_batch(bs, &batch)) {
+> +            if (batch.ncmds) {
+> +                q->cons = batch.cons[batch.ncmds - 1];
+> +            } else {
+> +                q->cons = batch.cons[0]; /* FIXME: Check */
+> +            }
+
+Totally non obvious that a return of false from the issue call means
+illegal command type.  Maybe that will be obvious form comments
+requested in previous patch review.
+
+
+> +            qemu_log_mask(LOG_GUEST_ERROR, "Illegal command type: %d\n",
+> +                          CMD_TYPE(&batch.cmds[batch.ncmds]));
+> +            cmd_error = SMMU_CERROR_ILL;
 > +        }
 > +    }
+> +    qemu_mutex_unlock(&s->mutex);
 > +
-> +    batch->cmds[batch->ncmds] = *cmd;
-> +    batch->cons[batch->ncmds++] = *cons;
-> +    return;
-Drop this trailing return.
+>      if (cmd_error) {
+>          trace_smmuv3_cmdq_consume_error(smmu_cmd_string(type), cmd_error);
+>          smmu_write_cmdq_err(s, cmd_error);
+>          smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_CMDQ_ERR_MASK);
+>      }
+>  
+> +    g_free(batch.cmds);
+> +    g_free(batch.cons);
+>      trace_smmuv3_cmdq_consume_out(Q_PROD(q), Q_CONS(q),
+>                                    Q_PROD_WRAP(q), Q_CONS_WRAP(q));
+>  
 
-> +}
 

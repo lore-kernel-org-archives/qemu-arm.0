@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 947AAC83F34
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Jul 2025 21:24:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E94FC83F27
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Jul 2025 21:24:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubn87-00028V-Hk; Tue, 15 Jul 2025 17:24:04 -0400
+	id 1ubn8Q-0002E3-Di; Tue, 15 Jul 2025 17:24:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ubn7u-00025i-QP
- for qemu-arm@nongnu.org; Tue, 15 Jul 2025 17:23:51 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ id 1ubn7s-000252-TZ
+ for qemu-arm@nongnu.org; Tue, 15 Jul 2025 17:23:50 -0400
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ubn7r-0001os-9Z
- for qemu-arm@nongnu.org; Tue, 15 Jul 2025 17:23:50 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-739b3fe7ce8so5322979b3a.0
- for <qemu-arm@nongnu.org>; Tue, 15 Jul 2025 14:23:46 -0700 (PDT)
+ id 1ubn7p-0001oZ-WF
+ for qemu-arm@nongnu.org; Tue, 15 Jul 2025 17:23:48 -0400
+Received: by mail-pf1-x435.google.com with SMTP id
+ d2e1a72fcca58-742c3d06de3so6624672b3a.0
+ for <qemu-arm@nongnu.org>; Tue, 15 Jul 2025 14:23:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752614625; x=1753219425; darn=nongnu.org;
+ d=linaro.org; s=google; t=1752614624; x=1753219424; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=xfF2qpw8sQPpJGgpe/MPDF+JcTMR6+n/UOivbIi70EY=;
- b=J5M00cwh7p1CZL5NpqJgizSGrvKwJon56OdAF2yqtTYB0aAg6D6TOH8LuJaV1wVGfw
- Vvqwzqo7GkyE3RaJzpJ4JbrGU95o+a6DpnytPW5ONS/u9nl2NM0JN7umCnQXYX1sUYhF
- 9vsfyQfo6G6bSGwKQIEGctrtIntAgiv4KsyZnSmWINQAil4/aS5MlEAyXxPg+llG0lAQ
- qn/txcWOvwVDf1HRPQbpnDFg8mmHzjIOSNwTFKN8LngtIm0SkaZt9YSYmNwMbHX9rtnR
- wwu2pd/l0YRgjUapzP0j+Ju9lyrZYc9uQIFvJTdRvHstAbRn3hUQWzx4XJmD3WMGlUL+
- fExQ==
+ bh=pT9XuDubvwqaBHfbGdu9WYR5yikQAJybTCHMnJE+bvE=;
+ b=AAN1AirPTGA1FohkOsTevV4ShyA7IZBULNb8pwVbf/82VWplS6kD+/1teR9Xtd9N74
+ fhbvuT1HxWvdf9AGHqhkuAZOlvT7oUhZun20Me1ECklq2mNfsQ2wnDh5husSJpduByMA
+ dynL8mOxqoKnR2aO+NmxEdh/Pb9/QQt2j+MyfGDxi7OS80KyuaF7083fOcAJa11BC8a8
+ 57hD5uzfN5i29H7xmODEz+eh8haBa4dM78r9tQF7BnxHgVBmZrFRLNpezHQG38R5xnsl
+ zAWFJRu6DPX5R1i5F6c2D+V3pAB7awjkxy+JAdJp0q0m0iUgCg+mvC2HnOfl3FDCwbNQ
+ 7XIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752614625; x=1753219425;
+ d=1e100.net; s=20230601; t=1752614624; x=1753219424;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=xfF2qpw8sQPpJGgpe/MPDF+JcTMR6+n/UOivbIi70EY=;
- b=DHQXSbiN7uB2mHa5/AgjkhquwpGRIYhKwnrO6FcUfmJ9ocZ5K3DpISwZjNabXnOXv5
- WLNhdpW1hwt8mixd1Lp815BA7cnS2q//L66Lff4QOY/3qmbMMq8fcUkANjWGX4jgTqWt
- aOSk7U7BhQ3zujUNr7aU6Efx8Km04vleEecurVIziFNyrPCd5T1ICoYOMp/s+BHb0/SB
- mkxVeBTkSuts70mu1OM1esT1bTQhXBiJyqWMD4iu8VPvtLPxO7tq4uTkujI4goiOcIc1
- 8OlxXYhQSJWkk22fufawuwtY49Yr69Vq81C5QqrE5LuxFHhI2a4V3hmoFMagbHEdKefe
- ayNQ==
-X-Gm-Message-State: AOJu0YyA44tUq/ijNkbQSUM+sjUFQn3qM3e7T+fj3jP422n4r1ItVFxZ
- j8z9U1hMbR5qN60UqhAZv5hVGunHaOEJgPDJtda0UaqAXS+Tx8E+e2eGXKPklmDBSGo=
-X-Gm-Gg: ASbGncuHtZmbWZ9jwp6WH7DedNgux/LMSHHeymtJ8Bzz17w0LIbrtHYzYW2JLJ0Br8W
- PE0hmx+y1dp2bI7K2T5QNXUImd6Ck/3PykO3gPxOsj7KyqFgO7beRw11P0veXK352QHUruJ2cgx
- QzHbpYlZj+AKMg7HDWpYUO+UNDLgEmyDt2vjtWJ+rDl7AGnwlF81JtI1HOH2ug65Rux79o9Vpyk
- 6yakEQsw/8BUoQuGm0YGTiv5fruEPDiNMjDGLQIf2DrEL3foM4fNTwuT5CKDpUDIx3V3QILMsy7
- BMw4DCMbzpP3+MUoTxx2EDGwvpEl0TthVl27//sC1l8V/gRHL1brmJqC2Erkp7MTiqXXSfPUKjz
- n3BVltoGeRGDMNGDHe8JaODM5ffpoJ2hb
-X-Google-Smtp-Source: AGHT+IFDd3admL/lcughk7K9B6qVTSJLdGC7Yt+F+y+lgbcy+SNYgBDvNJHcR8MpNygXdy2TzuC77w==
-X-Received: by 2002:a05:6a20:7d8b:b0:220:5c12:efa3 with SMTP id
- adf61e73a8af0-237d89607dcmr1224414637.38.1752614624746; 
- Tue, 15 Jul 2025 14:23:44 -0700 (PDT)
+ bh=pT9XuDubvwqaBHfbGdu9WYR5yikQAJybTCHMnJE+bvE=;
+ b=j6wu59Q+e+2tlsKLHSq5Uso5H42cwjnktvtNoJFo6QtAWQJVSuXkQuEDuXJuYeaH3e
+ qMEgJ7Cv0OGC3h5kHuqhMuekz4BHzll/+M3ai4gnN+LG1+ccyBTUDkg0XMJGJmzKbXcN
+ rw8gxINQx/jbwhhFshq0QtBoUoivy/yRTiMsKa6XW3EXJOIh4HGGadMYjDQfx6dbQWvH
+ 5OeD7qmTt+jxOOkQMc9jYDCZvu7zenqkxPovzYv1iZyoqlOTcer1COIJ6+bEIKRKEzv+
+ hkjlDpBSzFKW+nLId+85LJohEoeCEr58RBDPIs6DAGedzqRJVN0JgZAJVg5tE8iCOELn
+ rW/g==
+X-Gm-Message-State: AOJu0YzTru/7AmtFs+aveJWeExa0vDKeSxAqyTNSRlqtUdYTBv9kVhgy
+ Gq8fdzLF5Serdscz/ELNsMtaf6dw8opa8/878Rtx1VvCPJ5kYa+RSoGffm6EWbSTyUk=
+X-Gm-Gg: ASbGncuia/Jl8RjjjfPWa97J0Z+8TRDm3Chsr55qhc0HYRqWxcn/fpUx0lxkP/qnBJ7
+ 1kgQQm1Dy57C4rG8NHmTEDTWLrNBMzUBjn5rBKxYsGc0TISmVsz6EaM4UT7FYvHS6llxNfpKrjN
+ vSSb8iA/r0hf5nxsZswrLyvuFGHPJkm0YE1F6190zawW3rwdqrZRu4YeHjYng1fgFWe4jD9ZpbY
+ aq5Q5vtFvGEp2u97bymx9leyE9ArCz7k0gyVe6Tdg9J7tAzF1gjIgwn6HV76hla7So+YszXMegl
+ e0dRRSYHpGNnG5vctgRZohKOUjGgZZz/Cffuwq7Uheg9NBarAEeiKyHxjiniox+m+K01gUrJpuZ
+ 60BoO7mzK2CGOpCk/JuNI5Q==
+X-Google-Smtp-Source: AGHT+IFsEwZzomrROCR6F4kpRI26XSpLRHorzonK1IOuteKZRLpIVWUDRC6Ce+rAioFqdy7D+FKfLw==
+X-Received: by 2002:a05:6a00:23d6:b0:748:33f3:8da8 with SMTP id
+ d2e1a72fcca58-7572267d51dmr131337b3a.5.1752614623808; 
+ Tue, 15 Jul 2025 14:23:43 -0700 (PDT)
 Received: from pc.. ([38.41.223.211]) by smtp.gmail.com with ESMTPSA id
  d2e1a72fcca58-74eb9f4b16fsm12281708b3a.120.2025.07.15.14.23.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Jul 2025 14:23:44 -0700 (PDT)
+ Tue, 15 Jul 2025 14:23:43 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, jean-philippe@linaro.org,
  Mathieu Poirier <mathieu.poirier@linaro.org>, gustavo.romero@linaro.org,
  Peter Maydell <peter.maydell@linaro.org>, richard.henderson@linaro.org,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 2/2] tests/functional/test_aarch64_rme: update image
-Date: Tue, 15 Jul 2025 14:23:35 -0700
-Message-ID: <20250715212335.2215509-3-pierrick.bouvier@linaro.org>
+Subject: [PATCH 1/2] tests/functional/test_aarch64_device_passthrough: update
+ image
+Date: Tue, 15 Jul 2025 14:23:34 -0700
+Message-ID: <20250715212335.2215509-2-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250715212335.2215509-1-pierrick.bouvier@linaro.org>
 References: <20250715212335.2215509-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,66 +107,34 @@ FEAT_SCTLR2. This new image contains updated firmware.
 
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- tests/functional/test_aarch64_rme_sbsaref.py | 9 +++++----
- tests/functional/test_aarch64_rme_virt.py    | 9 +++++----
- 2 files changed, 10 insertions(+), 8 deletions(-)
+ tests/functional/test_aarch64_device_passthrough.py | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/tests/functional/test_aarch64_rme_sbsaref.py b/tests/functional/test_aarch64_rme_sbsaref.py
-index 746770e776d..70737d3d599 100755
---- a/tests/functional/test_aarch64_rme_sbsaref.py
-+++ b/tests/functional/test_aarch64_rme_sbsaref.py
-@@ -21,10 +21,11 @@ class Aarch64RMESbsaRefMachine(QemuSystemTest):
-     # Stack is built with OP-TEE build environment from those instructions:
-     # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-     # https://github.com/pbo-linaro/qemu-rme-stack
-+    # ./container.sh ./build_sbsa.sh && ./archive_artifacts.sh sbsa sbsa.tar.xz
-     ASSET_RME_STACK_SBSA = Asset(
--        ('https://fileserver.linaro.org/s/KJyeBxL82mz2r7F/'
--         'download/rme-stack-op-tee-4.2.0-cca-v4-sbsa.tar.gz'),
--         'dd9ab28ec869bdf3b5376116cb3689103b43433fd5c4bca0f4a8d8b3c104999e')
-+        ('https://fileserver.linaro.org/s/gW3mmtC4ZQaxNJ2/'
-+         'download/sbsa_cca_v10.tar.xz'),
-+         'b6ec3435a459eb298f221beb5073e485f290d38055d0aafbcff7d8e7c334aa73')
+diff --git a/tests/functional/test_aarch64_device_passthrough.py b/tests/functional/test_aarch64_device_passthrough.py
+index 1f3f158a9ff..73bb0df8aba 100755
+--- a/tests/functional/test_aarch64_device_passthrough.py
++++ b/tests/functional/test_aarch64_device_passthrough.py
+@@ -77,15 +77,16 @@
  
-     # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-     # and launching a nested VM using it.
-@@ -38,7 +39,7 @@ def test_aarch64_rme_sbsaref(self):
-         stack_path_tar_gz = self.ASSET_RME_STACK_SBSA.fetch()
-         self.archive_extract(stack_path_tar_gz, format="tar")
+ class Aarch64DevicePassthrough(QemuSystemTest):
  
--        rme_stack = self.scratch_file('rme-stack-op-tee-4.2.0-cca-v4-sbsa')
-+        rme_stack = self.scratch_file('.')
-         pflash0 = os.path.join(rme_stack, 'images', 'SBSA_FLASH0.fd')
-         pflash1 = os.path.join(rme_stack, 'images', 'SBSA_FLASH1.fd')
-         virtual = os.path.join(rme_stack, 'images', 'disks', 'virtual')
-diff --git a/tests/functional/test_aarch64_rme_virt.py b/tests/functional/test_aarch64_rme_virt.py
-index 8452d27928f..fcc321b6006 100755
---- a/tests/functional/test_aarch64_rme_virt.py
-+++ b/tests/functional/test_aarch64_rme_virt.py
-@@ -49,10 +49,11 @@ class Aarch64RMEVirtMachine(QemuSystemTest):
-     # Stack is built with OP-TEE build environment from those instructions:
-     # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-     # https://github.com/pbo-linaro/qemu-rme-stack
-+    # ./container.sh ./build_virt.sh && ./archive_artifacts.sh virt virt.tar.xz
-     ASSET_RME_STACK_VIRT = Asset(
--        ('https://fileserver.linaro.org/s/iaRsNDJp2CXHMSJ/'
--         'download/rme-stack-op-tee-4.2.0-cca-v4-qemu_v8.tar.gz'),
--         '1851adc232b094384d8b879b9a2cfff07ef3d6205032b85e9b3a4a9ae6b0b7ad')
-+        ('https://fileserver.linaro.org/s/YpLmzLNL6BAxYL8/'
-+         'download/virt_cca_v10.tar.xz'),
-+         'bc432c92d62f3cd3542a943cd5a6329b2464c986f8f5dc48f727a0e5386a0e95')
+-    # https://github.com/pbo-linaro/qemu-linux-stack
++    # https://github.com/pbo-linaro/qemu-linux-stack/tree/device_passthrough
++    # $ ./build.sh && ./archive_artifacts.sh out.tar.xz
+     #
+     # Linux kernel is compiled with defconfig +
+     # IOMMUFD + VFIO_DEVICE_CDEV + ARM_SMMU_V3_IOMMUFD
+     # https://docs.kernel.org/driver-api/vfio.html#vfio-device-cde
+     ASSET_DEVICE_PASSTHROUGH_STACK = Asset(
+-        ('https://fileserver.linaro.org/s/fx5DXxBYme8dw2G/'
+-         'download/device_passthrough.tar.xz'),
+-         '812750b664d61c2986f2b149939ae28cafbd60d53e9c7e4b16e97143845e196d')
++        ('https://fileserver.linaro.org/s/bz9cjSGPgWJ2iQT/'
++         'download/device_passthrough_v2.tar.xz'),
++         '5e892ee9ea4d1348e673524485ecfb960f748dfdd76dbc396347b1781a4f4252')
  
-     # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-     # and launching a nested VM using it.
-@@ -66,7 +67,7 @@ def test_aarch64_rme_virt(self):
-         stack_path_tar_gz = self.ASSET_RME_STACK_VIRT.fetch()
-         self.archive_extract(stack_path_tar_gz, format="tar")
- 
--        rme_stack = self.scratch_file('rme-stack-op-tee-4.2.0-cca-v4-qemu_v8')
-+        rme_stack = self.scratch_file('.')
-         kernel = os.path.join(rme_stack, 'out', 'bin', 'Image')
-         bios = os.path.join(rme_stack, 'out', 'bin', 'flash.bin')
-         drive = os.path.join(rme_stack, 'out-br', 'images', 'rootfs.ext4')
+     # This tests the device passthrough implementation, by booting a VM
+     # supporting it with two nvme disks attached, and launching a nested VM
 -- 
 2.47.2
 

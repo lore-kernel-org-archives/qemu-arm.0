@@ -4,87 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50F30C83F27
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Jul 2025 22:24:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FB19C83F27
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Jul 2025 23:19:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubo4Y-0001uQ-Gx; Tue, 15 Jul 2025 18:24:27 -0400
+	id 1ubovD-0006o1-Pj; Tue, 15 Jul 2025 19:18:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1ubo4L-0001qS-P0
- for qemu-arm@nongnu.org; Tue, 15 Jul 2025 18:24:15 -0400
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1ubo4I-0007mm-Uj
- for qemu-arm@nongnu.org; Tue, 15 Jul 2025 18:24:13 -0400
-Received: by mail-lf1-x12b.google.com with SMTP id
- 2adb3069b0e04-554f9a46164so1114e87.1
- for <qemu-arm@nongnu.org>; Tue, 15 Jul 2025 15:24:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1752618246; x=1753223046; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=CPCk36xB/KKy226d6CuRdX7mewTT269FIj3//HjbjKE=;
- b=eEKEl6M52lezxpS22R1r+iHHMgEF/id7jsKw8jSoCgPYY5qSnD18H2CMFZzfYmqbh5
- 1AIWEe0l3NAAqKqpPXeS0AOBt9xGuHe+vkjv343r8IxRfTUdtKbIhsH4jzF0N16FdXn6
- OZJZHPgmhzDTkA7GN+nVd200Ih3oQTlfG12lS592Wjrt9H4dm6Xd4rjfBJ8T/MregdFz
- 8lxSgeceaxu21g0f5JSalloTsaCbnTW6I8g3DMVdc7BedUqWW7ntgLDOIplLHkqiPAvA
- d6z2v965mJzzTY/EKC6Frm0ypYWSIpyfxB2mXHz1f6ErXI62ezGOH4mGh30imMT5E6gE
- F+qA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752618246; x=1753223046;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=CPCk36xB/KKy226d6CuRdX7mewTT269FIj3//HjbjKE=;
- b=UA8b5v8GKbK0GWvP83PS3QHUcK5yiU1SHlUzgD7IjBKwrNg74nsDWz0yt0KK7hANUB
- WkJSF8TfSBp2p+rDArgFV/+2yh+ahc1urxZts6a+uJMXGI8F9AghWoOXXJgBr0baaE60
- /6gm/ZIv343//75FHrOb5zD8B0BS6+lRYp/m5ZaSrT7JOwB9+0MlquUZHlq+svf7yH5N
- +j1HyaTwUCF91c5o2crQ21p8nst+YuD/X4F9LwwQmoPqOKGQXHYf+vsgqS1TCykcU25B
- XTI/22lk1QMIEOLUv1EOezsXCNqB4rtetHGdjyanHFixjWU3e2BA+XeL8y1yQpLZj5DR
- d3Pg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVrfwhCGe2punOCk6gGk+T4qVdfBQopIjUFpntqfaFiFPVyzxjE6kR+m7gx503eUO/AO6VAW6ReWw==@nongnu.org
-X-Gm-Message-State: AOJu0YyhdS5na/vOV2Qh2c1hIUDEPXoKN4KYtpeheUriwDUmmMigsipK
- CIW1A+Z20b0qR7rcfsMLmXGmoW3OmEKh0EXBEJFZCDdF2mXT/2oE2LUW5yxxvsWJ3odf0UhPk36
- wuP8/isNeRR0fsmtCwzWY+Q9CIXyRE/ZTYlFkhL/q
-X-Gm-Gg: ASbGncvwX4qf/aLmDqazHoYh3ibWSSpYu6UhUIdbvzTkxi9UoRHuihuLukiAadeyKtj
- mOmz633wUTRRxMn6pOYEs83wihI7gnF+QMODRT2NaptFHewqdNMOMV+QrBEEq1b7WFAADUqZrS4
- RdW58dq5sDLs81fMNc8QzGuoQtR733eelzYryg7pmJREsgzzucNyXU3/+9tfGBTiWPij2p4dTaa
- yym5yDeGktJK0bkIP6vSerEIIIxROC4FDfcWw==
-X-Google-Smtp-Source: AGHT+IGIOsA+vNOOAPjA+Qic1Rgu0+d1eKpjpN2vGp23cCpeYz/QXcYzlmn0e/diQIe3GH8vhsLoWOy7GZwbiGVMg7g=
-X-Received: by 2002:a05:6512:60e:20b0:553:bfb8:3b10 with SMTP id
- 2adb3069b0e04-55a24593184mr13657e87.2.1752618245860; Tue, 15 Jul 2025
- 15:24:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1ubov9-0006l4-Ti; Tue, 15 Jul 2025 19:18:47 -0400
+Received: from mail-bn1nam02on2054.outbound.protection.outlook.com
+ ([40.107.212.54] helo=NAM02-BN1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1ubov4-0003xl-Gw; Tue, 15 Jul 2025 19:18:47 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=QHZqnzOwJZHptLvOAb5h9I4MSNz3fw+14tJWE24fZIwsk5xSUADlBWinlMBoMAHD6GdcXDlcfz+6tZtK4113txZwQAze/cqdcvLa+hPK93ucggXENEovSCBiz41uf3lRChfynl1fXu35D2hJGda+LhdqswP3su9bdhaQ7q/pzypZEmeuX0dHQMOfn45opOB2BPRBNXRgYMbOsVDALnSUlq3MdJQLck+jj2mU8+VnlQBlkj+D7lEu9I2HwJJVExUVmbq/Ja3j5lEon6hgYTOp1RkRB32kn0lDRsrD84PuxFWIxVatv86+CAsNuv7ctHAXCOuSoD4oP7otsKYJSGwxmw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=0ZeKyrPckwZq7I6z7s2VUiK33kASBwDNWOhMGmWeebs=;
+ b=T/uxiz76dHfxLevVYyQWEPLfhw6MTUu0wOAHR23sD91N7iMV8HnHJiMJEQ4SU5tMuIo1lkJfddRjiQed7k/ozHICJnMaOZNIQ/MPOIIGVjNf7WZD+Stwti/EsC3z6oKIpH1NAqlGqHOIPCBu3YU5T/PskZd8YX8zpJGH5PIKRSyTBM7kFrnpyc/RPESe4GqdKnXSYbbr8/XG6VufxVpiwoehdHLCSh65gktaGz5ksGVv0QE5UzZwEkm68yN3QzCof4VcJ7YGmFtd6l2oO/xAHfk286N68Zwmyo5wCopif3Py78CWSFuiG46lFHPnk8iMRwgMd2ZYt6vLPrx56SFaqw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.232) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0ZeKyrPckwZq7I6z7s2VUiK33kASBwDNWOhMGmWeebs=;
+ b=syAqNbAK8p89NM8nG7L7rXNG5dzYx41VooaMYzA+rAAPpJQFM8uTBbPh0ZtuuFtIP0tF8MlfuXTqu8HVU8VwyVqsRHfJFXmXV1uihZ2/oS3W2m1DJOypu291+DfkcdF0jTbbN+jYQXyxoE+78hl/SeQIV6nEke7KuxFVvJLHO6cFn3L0YJnW+RO4wuKX4Y4QlOpWEb4gtri6YplAqvUoH3I4d0JM2kbPYZRKdJukRY+4j+g+4SmXwaEjEQA+K8yD5o+AL2+EIukMwCn8aoym+11Hwqcc6th1bcKCMLrUzwcuKhMJNuhDcQDPnh9lLj04VgGV0DjKIUctn1IKMMPB/g==
+Received: from BN9PR03CA0549.namprd03.prod.outlook.com (2603:10b6:408:138::14)
+ by DS7PR12MB9504.namprd12.prod.outlook.com (2603:10b6:8:252::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8901.35; Tue, 15 Jul
+ 2025 23:13:32 +0000
+Received: from BN1PEPF00004680.namprd03.prod.outlook.com
+ (2603:10b6:408:138:cafe::a6) by BN9PR03CA0549.outlook.office365.com
+ (2603:10b6:408:138::14) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8922.27 via Frontend Transport; Tue,
+ 15 Jul 2025 23:13:32 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.232) by
+ BN1PEPF00004680.mail.protection.outlook.com (10.167.243.85) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8922.22 via Frontend Transport; Tue, 15 Jul 2025 23:13:32 +0000
+Received: from drhqmail201.nvidia.com (10.126.190.180) by mail.nvidia.com
+ (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Tue, 15 Jul
+ 2025 16:12:53 -0700
+Received: from drhqmail203.nvidia.com (10.126.190.182) by
+ drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14; Tue, 15 Jul 2025 16:12:53 -0700
+Received: from Asurada-Nvidia (10.127.8.10) by mail.nvidia.com
+ (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
+ Transport; Tue, 15 Jul 2025 16:12:52 -0700
+Date: Tue, 15 Jul 2025 16:12:51 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>, <jgg@nvidia.com>, <ddutile@redhat.com>,
+ <berrange@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <smostafa@google.com>, <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>,
+ <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
+ <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>,
+ <shameerkolothum@gmail.com>
+Subject: Re: [RFC PATCH v3 09/15] hw/arm/smmuv3-accel: Support nested STE
+ install/uninstall support
+Message-ID: <aHbgc8LXuuuJ/cz0@Asurada-Nvidia>
+References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
+ <20250714155941.22176-10-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-References: <20250714165523.1956235-1-peter.maydell@linaro.org>
- <20250714165523.1956235-4-peter.maydell@linaro.org>
- <3138a372-7649-404a-8e8e-53b097c33094@linaro.org>
-In-Reply-To: <3138a372-7649-404a-8e8e-53b097c33094@linaro.org>
-From: Hao Wu <wuhaotsh@google.com>
-Date: Tue, 15 Jul 2025 15:23:51 -0700
-X-Gm-Features: Ac12FXz4Jlt8-8ri6ktptCAIFk04SmlGcvP8Y9_8vX49epF3ZtSgHjnagwQzLqo
-Message-ID: <CAGcCb1184552Ut7r4K7aGxnHXf53Hbqjn6fDKze7+RwFT-qd_w@mail.gmail.com>
-Subject: Re: [PATCH 3/4] hw/net/npcm_gmac.c: Correct test for when to
- reallocate packet buffer
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, 
- Tyrone Ting <kfting@nuvoton.com>, Jason Wang <jasowang@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000f907170639ff3bd4"
-Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
- envelope-from=wuhaotsh@google.com; helo=mail-lf1-x12b.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20250714155941.22176-10-shameerali.kolothum.thodi@huawei.com>
+X-NV-OnPremToCloud: AnonymousSubmission
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN1PEPF00004680:EE_|DS7PR12MB9504:EE_
+X-MS-Office365-Filtering-Correlation-Id: a0b5837b-3d8f-4b47-ed9f-08ddc3f537a5
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|376014|36860700013|7416014|82310400026|1800799024; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?G2TcJxJLDt077pmij68294450sKPy4i7aESEdhJ4JKoglRNlOxomlmT7+YuW?=
+ =?us-ascii?Q?4wEH3l8Y5GvxvUE+iNdtHbwZ3OMkWpwT4Hj590r3TwTF8uw9A6w5fDUD72GH?=
+ =?us-ascii?Q?H6E7TbikG5WSDvRr5JGb3Q91Ii9xlakPXnKpOhqJhS0n14WYiY0/Ka7fkzT1?=
+ =?us-ascii?Q?+lE2NdTFQlYTAZZGnpE5hLEazssBviBdDNxdaNEY+tuE0B3AOXJrflQ1EHwR?=
+ =?us-ascii?Q?cClnN1aee6X+Ww3ZzLPDZlAl+0azJMPCHTMnNUId8Hk6/Ty9IlW++zT6jh+8?=
+ =?us-ascii?Q?xKao084wssuYasiUOhgGFtokmbjAY2tBg1wbKgfqnLRYYGlYdMC+aZp83N9P?=
+ =?us-ascii?Q?YJjl2rMTeqRec/gIP9IIjXAqxadovqDg4Oeej1XhRKVusOIrCdG3QhwiY7Ge?=
+ =?us-ascii?Q?HdZlB7YJQxkJy78wo/PeNVWf9MsqJ3pPsJK3njA7DoZd+wqtWl8ZjRFhkNHO?=
+ =?us-ascii?Q?9sC7t6Yab9G8PHAnYyfPW+iVVd5nzHh6YRAvKozjYgfqCbmyG7w0h3L1Zyrb?=
+ =?us-ascii?Q?rCSHMFhcFOHUTCyq9M4xaSUljakW8CoUJJMhCFg4sJVOKfJg/UCrkTsLj5Jg?=
+ =?us-ascii?Q?Z1/DFzWh1Hqo6pyE0AwDjvpdnQT8uOTxiYCSrqIRpUudyzKxDd+53fIpzutU?=
+ =?us-ascii?Q?Vacw1T1Pl82ZMdrfcCOL7P2QWS87Y84BibD54N3d0Z3npQezex6sSq1qiGK7?=
+ =?us-ascii?Q?ZmKxsxKiN2ihydJnTBmkOV/dtnod+LN3WCaSgeTJVDUuUREuJ9E8MOz9uwKZ?=
+ =?us-ascii?Q?0XG0ez9f8Nssx7bAU0neNXQg3Y2xTkv0MPhK6fvUS6Caq3h7zXFQNN2E6uUk?=
+ =?us-ascii?Q?GIb6eRuXrc5L6mkMn/J0uWFAOpp8bmwd5gRq9nLMZEstP3ptFmFk5reUMxUT?=
+ =?us-ascii?Q?KuFuSuTmDDQhd3YwrKC6E3Q032acNeSoaOOTNedirWWCA6lkBNTO2wJQmE+u?=
+ =?us-ascii?Q?jMLEV/MwOvqjodUYJqAEBiZZMyMAFvhpdG5kMzUSNg2LlS6NPDP7omd196kP?=
+ =?us-ascii?Q?SE0kcn0c46yq85aYuT8EVewzbjLggGZSN9XpMwkaIs0Na1I/P/z0SaxBrTtD?=
+ =?us-ascii?Q?sXoV6VAczZkUHikUTx2ICmo681YWlYw27mZAcEaFcUb51ZrPM7FcfD2qOwpe?=
+ =?us-ascii?Q?v3iNgfOq8VFE48OeHz46YiOeygvy7tGKN3XxOtjnWIqBdfUImDP8s8NU67zW?=
+ =?us-ascii?Q?IcifRe5uRnnM7Uo7LRm/Xc+msDG07rfV0We+rR4GcjT/JkislHvfGiUdeMTZ?=
+ =?us-ascii?Q?J40m+nhgOzTmZMvm5jheQSA8zp0AdBZWRfTcj55JMVRtmsBSJw//BYFCmhON?=
+ =?us-ascii?Q?TLYMWMStIvOm2Ty3Sep+PM2JZjHCLlP3vI0cUjeaX/Z6X3Q1ffRd8Iz+zRyb?=
+ =?us-ascii?Q?O/nJh/2zkFPADJBpJW3jOHo1EiIsB2N70MBnhg/FhGYIvd/ie82kWluaJqOR?=
+ =?us-ascii?Q?+liI3gHUIdOOZN88gI8yw690YNsXEVDuMDat17DeD7x1BRiFliBdHNfwzCR3?=
+ =?us-ascii?Q?4UyP18d1NmrU+spxB7scoJj8e00k01H06pC+?=
+X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(376014)(36860700013)(7416014)(82310400026)(1800799024); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jul 2025 23:13:32.2740 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: a0b5837b-3d8f-4b47-ed9f-08ddc3f537a5
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BN1PEPF00004680.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB9504
+Received-SPF: permerror client-ip=40.107.212.54;
+ envelope-from=nicolinc@nvidia.com;
+ helo=NAM02-BN1-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,76 +162,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000f907170639ff3bd4
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Mon, Jul 14, 2025 at 04:59:35PM +0100, Shameer Kolothum wrote:
+> +static void
+> +smmuv3_accel_ste_range(gpointer key, gpointer value, gpointer user_data)
+> +{
+> +    SMMUDevice *sdev = (SMMUDevice *)key;
+> +    uint32_t sid = smmu_get_sid(sdev);
+> +    SMMUSIDRange *sid_range = (SMMUSIDRange *)user_data;
+> +
+> +    if (sid >= sid_range->start && sid <= sid_range->end) {
+> +        SMMUv3State *s = sdev->smmu;
+> +        SMMUState *bs = &s->smmu_state;
+> +
+> +        smmuv3_accel_install_nested_ste(bs, sdev, sid);
+> +    }
+> +}
+> +
+> +void
+> +smmuv3_accel_install_nested_ste_range(SMMUState *bs, SMMUSIDRange *range)
+> +{
+> +    if (!bs->accel) {
+> +        return;
+> +    }
+> +
+> +    g_hash_table_foreach(bs->configs, smmuv3_accel_ste_range, range);
 
-Thank you for catching that!
+This will not work correctly?
 
-On Mon, Jul 14, 2025 at 1:08=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 <philmd=
-@linaro.org>
-wrote:
+The bs->configs is a cache that gets an entry inserted to when a
+config is fetched via smmuv3_get_config(), which gets invoked by
+smmuv3_notify_iova() and smmuv3_translate() only.
 
-> On 14/7/25 18:55, Peter Maydell wrote:
-> > In gmac_try_send_next_packet() we have code that does "if this block
-> > of data won't fit in the buffer, reallocate it".  However, the
-> > condition it uses is
-> >    if ((prev_buf_size + tx_buf_len) > sizeof(buf))
-> > where buf is a uint8_t *.
-> >
-> > This means that sizeof(buf) is always 8 bytes, and the condition will
-> > almost always be true, so we will reallocate the buffer more often
-> > than we need to.
-> >
-> > Correct the condition to test against tx_buffer_size, which is
-> > where we track how big the allocated buffer is.
-> >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >   hw/net/npcm_gmac.c | 4 ++--
-> >   1 file changed, 2 insertions(+), 2 deletions(-)
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->
-> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+But CMDQ_OP_CFGI_ALL can actually happen very early, e.g. Linux
+driver does that in the probe() right after SMMU CMDQ is enabled,
+at which point neither smmuv3_notify_iova nor smmuv3_translate
+could ever get invoked, meaning that the g_hash_table is empty.
 
---000000000000f907170639ff3bd4
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Without the acceleration, this foreach works because vSMMU does
+not need to do anything since the cache is indeed empty.
 
-<div dir=3D"ltr"><div>Thank you for catching that!</div><br><div class=3D"g=
-mail_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On =
-Mon, Jul 14, 2025 at 1:08=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 &lt;<a hre=
-f=3D"mailto:philmd@linaro.org">philmd@linaro.org</a>&gt; wrote:<br></div><b=
-lockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-le=
-ft:1px solid rgb(204,204,204);padding-left:1ex">On 14/7/25 18:55, Peter May=
-dell wrote:<br>
-&gt; In gmac_try_send_next_packet() we have code that does &quot;if this bl=
-ock<br>
-&gt; of data won&#39;t fit in the buffer, reallocate it&quot;.=C2=A0 Howeve=
-r, the<br>
-&gt; condition it uses is<br>
-&gt;=C2=A0 =C2=A0 if ((prev_buf_size + tx_buf_len) &gt; sizeof(buf))<br>
-&gt; where buf is a uint8_t *.<br>
-&gt; <br>
-&gt; This means that sizeof(buf) is always 8 bytes, and the condition will<=
-br>
-&gt; almost always be true, so we will reallocate the buffer more often<br>
-&gt; than we need to.<br>
-&gt; <br>
-&gt; Correct the condition to test against tx_buffer_size, which is<br>
-&gt; where we track how big the allocated buffer is.<br>
-&gt; <br>
-&gt; Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linar=
-o.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0hw/net/npcm_gmac.c | 4 ++--<br>
-&gt;=C2=A0 =C2=A01 file changed, 2 insertions(+), 2 deletions(-)<br>
-<br>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linar=
-o.org" target=3D"_blank">philmd@linaro.org</a>&gt;<br>
-<br></blockquote><div>Reviewed-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@go=
-ogle.com">wuhaotsh@google.com</a>&gt;=C2=A0</div></div></div>
+But, with accel, it must call smmuv3_accel_install_nested_ste().
 
---000000000000f907170639ff3bd4--
+So, I think this should foreach the viommu->device_list instead.
+
+Thanks
+Nicolin
 

@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B202BC83F17
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Jul 2025 17:56:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF1D0C83F22
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Jul 2025 18:06:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubjsz-0003es-Tf; Tue, 15 Jul 2025 13:56:15 -0400
+	id 1ubk2R-0004aH-Pv; Tue, 15 Jul 2025 14:06:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1ubjNI-00029R-CV; Tue, 15 Jul 2025 13:23:29 -0400
-Received: from mail-bn8nam12on2061a.outbound.protection.outlook.com
- ([2a01:111:f403:2418::61a]
- helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+ id 1ubjTE-0008Am-Rk; Tue, 15 Jul 2025 13:29:36 -0400
+Received: from mail-dm6nam12on2060c.outbound.protection.outlook.com
+ ([2a01:111:f403:2417::60c]
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1ubjNF-0007K2-Tv; Tue, 15 Jul 2025 13:23:28 -0400
+ id 1ubjTB-00023U-DY; Tue, 15 Jul 2025 13:29:36 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=C/EjgiPPG6eGeVkBdwGogemstQHcd98FAuknBB70PrVEKJDoSrBbDrIRq0sjIxzD1FCewAm1axxgdeBAzkeyDMM+EmHJgoz2upNGYNhrbvKdDdHvn48Ixqt4bOStrD1wcMuHZ0AFOjgqKx02XAr7TFAvXPpMim3crsWoPO6p5cvN8MTrov7N5W86JEBnFh3yNZGlMJG8SkX7eSZsT2mcDSpcoZ7PlTbkukFs1ytcTt9q3Pto9KHA8Mh8uMA02V01EyWvRV9hcdQvN5U4F/M/uU4gmGdN5wMBg2vQn3sutvnvPHR/Z5zPfleh/dMu41cjZnG68d1ysGaCHDUvoXkXOQ==
+ b=dskVgyAi4LcvHt6LDkgFOB5wbGKBbmmv0sfr+A9z79WUQGBhGiciA0+0x306jE+PArL0MqBGdnmFlm1bGPVoI+1PSORv1sHSi3+VQbHkQDAqhHWpzDSGtl9prrJJBg3NWHz6ttqa81fKy74xSg7tieYvn21h47cZ1T0OqbC5HOoqzhDrshgsgHmFsh+Q8n19d0b1sInTb4mVHtrpg7nXQ/voZ+1wyNWSay2OpgQ463nXeZ7sGgmEZu9eEEWwGWAO024vn9+RxEuGzFQRReX/QxgJuPWaXZrUlaEVxl4P3kXx04/Fi6xnHnAQgFG9S+RK6aIlEWXQizsYjosQ9M8/kQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Gz/5p71SpYB+m3UT7BXVUZMZzdSTe+2CzL+PFgMcQrY=;
- b=hqYaa13d2ccGp5CpQyNE5DpZ1kWU7v6uqe/0YXKV1RS460MfBNqf92whcLVeDYtLLXyI4hyzCNfSUUG8Y2ixNQTUnmSBnJQcVnMdy3ROU0h4G5DHpU23bg9Q2OOQ2ypkNiTS//1u3UWeVQkvNjtO/Ru5/0dAGUNl9T31Kxf26GDAXMu83uNanl61CadaxqT/zCXFAvdJDIRA/WyQxLb7RcuKOXfugnakxHRQ767DBT+Ag1q8zhBKuOkCUGOOJzt+rvwcZSC4ZPVMnr1sZFjaeSPv9/D2TUus7OcvmIDFR5gbjW2Vtm/JAjqGsq+0x3nIjNW4O/HdYmCaDmnNjrq7IQ==
+ bh=GOa4oOPzi4HncXe++APvtmjbVRwSRukwk+2y46DTsYM=;
+ b=VlMTjxnjiRqi7oBFoFDrXtyR3uosmA+c4LBaSPDUiCpRnQV5KKyIkJ40rzis6FLmg4UJs3Sc+1xR+c/m+Z3CxJdBTip+qoxJA3qNTsF2EDom4P8SXLflpCVsalUcCKaht3d6qybgBHwW0ZJwd39vBwhz/9xj7qHUVhfI7582jBnQk40FJjIunTZ/e9n+xb1bGcWlR46qE9hPiBMzDpRBt2rZPZu53OMA879xTC1KoPQwoOJ3SqXrXmTAgGzjONp8H1bctjoHM4feXz0xxUDwoMaYn1N660zzeDW14A3SngDcTn5ezafP7MD7UmaNSlH7J+PjvylKd2q0y6SA2NCi3A==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
+ 216.228.117.160) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
  dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Gz/5p71SpYB+m3UT7BXVUZMZzdSTe+2CzL+PFgMcQrY=;
- b=MsYLfN3L1iEgmYLKxqWBlCHlG4fs59NKLywQC8FJHN4irX4QqN6bYdkZFU+MzeHAikwQyYgB9eVitbAsa5WE2OokIaHhVizKxWgSsCrFfSuOtjZstAJQHZDJ+uSql7sj3f3C3ZSQeshnpChCbSZzbt4RkC5alxwic3u+4o/0mHeiSehPeo2aJJkByoYZ8zf/PfSWjoY7jQ3ZtFtK7rFZbLHBcmdZJ+Nh45rxyUJrSSjy/65DWpJb2sItzw4yqxJvEKd4MLgoNjVujA2rbHRrFBRJyQjIe4gytmxG78qrzV1bV3NvvNSnuBzwiqeqWl5wMnjmF5sMmc0PVxffu+vtEQ==
-Received: from SJ0PR13CA0017.namprd13.prod.outlook.com (2603:10b6:a03:2c0::22)
- by DS7PR12MB5863.namprd12.prod.outlook.com (2603:10b6:8:7a::18) with
+ bh=GOa4oOPzi4HncXe++APvtmjbVRwSRukwk+2y46DTsYM=;
+ b=cnpEO6aXADUx1tXyQFlvR7YAOm5TKXJe54k/TPrWt7Jwko5KT+XQMLvWWqQRKv3LSRsv0vMVGN3vpJrqp1oBU6Z2YMtA7kXtrDN3C9/h+KtF7aqeMoWpvrNmlr1OxhuwAt8lfSPLuu707mwnP/WVr64KNkLKaSftdcQWsD8TtEDweFce/khxEhguq61t/e2V89CZ6xY7abLujs3JGHuYjhGlx086pw/pEZcFm1427P4OGE9BvOKo8YYAqORaC6HO/rukhuD/mHwmdiba9X1H8YrGeN49wlPBipRe2LN6hBcZrN+orVJADfY1qjxaVp0ZQarSi3d2nSSYRvrVLv3h2A==
+Received: from CH0PR04CA0092.namprd04.prod.outlook.com (2603:10b6:610:75::7)
+ by MW4PR12MB6897.namprd12.prod.outlook.com (2603:10b6:303:20a::16) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8901.27; Tue, 15 Jul
- 2025 17:23:17 +0000
-Received: from MWH0EPF000989E6.namprd02.prod.outlook.com
- (2603:10b6:a03:2c0:cafe::c1) by SJ0PR13CA0017.outlook.office365.com
- (2603:10b6:a03:2c0::22) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.8943.16 via Frontend Transport; Tue,
- 15 Jul 2025 17:23:17 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8922.25; Tue, 15 Jul
+ 2025 17:29:24 +0000
+Received: from CH1PEPF0000AD76.namprd04.prod.outlook.com
+ (2603:10b6:610:75:cafe::1e) by CH0PR04CA0092.outlook.office365.com
+ (2603:10b6:610:75::7) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8943.17 via Frontend Transport; Tue,
+ 15 Jul 2025 17:29:24 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
@@ -54,93 +54,99 @@ Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
  216.228.117.160 as permitted sender) receiver=protection.outlook.com;
  client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
 Received: from mail.nvidia.com (216.228.117.160) by
- MWH0EPF000989E6.mail.protection.outlook.com (10.167.241.133) with Microsoft
+ CH1PEPF0000AD76.mail.protection.outlook.com (10.167.244.53) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8922.22 via Frontend Transport; Tue, 15 Jul 2025 17:23:16 +0000
-Received: from rnnvmail202.nvidia.com (10.129.68.7) by mail.nvidia.com
+ 15.20.8922.22 via Frontend Transport; Tue, 15 Jul 2025 17:29:23 +0000
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by mail.nvidia.com
  (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Tue, 15 Jul
- 2025 10:23:00 -0700
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail202.nvidia.com
- (10.129.68.7) with Microsoft SMTP Server (version=TLS1_2,
+ 2025 10:29:04 -0700
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail204.nvidia.com
+ (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Tue, 15 Jul
- 2025 10:23:00 -0700
+ 2025 10:29:03 -0700
 Received: from Asurada-Nvidia (10.127.8.10) by mail.nvidia.com (10.129.68.10)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
- Transport; Tue, 15 Jul 2025 10:22:58 -0700
-Date: Tue, 15 Jul 2025 10:22:57 -0700
+ Transport; Tue, 15 Jul 2025 10:29:02 -0700
+Date: Tue, 15 Jul 2025 10:29:01 -0700
 From: Nicolin Chen <nicolinc@nvidia.com>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+To: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>
 CC: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- <linuxarm@huawei.com>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
- <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
- <ddutile@redhat.com>, <berrange@redhat.com>, <nathanc@nvidia.com>,
- <mochs@nvidia.com>, <smostafa@google.com>, <wangzhou1@hisilicon.com>,
- <jiangkunkun@huawei.com>, <zhangfei.gao@linaro.org>,
- <zhenzhong.duan@intel.com>, <shameerkolothum@gmail.com>
-Subject: Re: [RFC PATCH v3 13/15] hw/arm/smmuv3: Forward invalidation
- commands to hw
-Message-ID: <aHaOcd5FKOjsWR/p@Asurada-Nvidia>
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
+ <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, "nathanc@nvidia.com"
+ <nathanc@nvidia.com>, "mochs@nvidia.com" <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, "linuxarm@huawei.com"
+ <linuxarm@huawei.com>, "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
+ "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
+Subject: Re: [RFC PATCH v3 05/15] hw/arm/smmuv3-accel: Introduce smmuv3 accel
+ device
+Message-ID: <aHaP3ULG90gGqWHJ@Asurada-Nvidia>
 References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-14-shameerali.kolothum.thodi@huawei.com>
- <20250715114609.00004e4d@huawei.com>
+ <20250714155941.22176-6-shameerali.kolothum.thodi@huawei.com>
+ <IA3PR11MB9136ACFB4721D47304A9885C9257A@IA3PR11MB9136.namprd11.prod.outlook.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <20250715114609.00004e4d@huawei.com>
+In-Reply-To: <IA3PR11MB9136ACFB4721D47304A9885C9257A@IA3PR11MB9136.namprd11.prod.outlook.com>
 X-NV-OnPremToCloud: AnonymousSubmission
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MWH0EPF000989E6:EE_|DS7PR12MB5863:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2d7bfa0d-6674-4cbf-cf04-08ddc3c4492d
+X-MS-TrafficTypeDiagnostic: CH1PEPF0000AD76:EE_|MW4PR12MB6897:EE_
+X-MS-Office365-Filtering-Correlation-Id: d420197f-8ee5-4c17-c99e-08ddc3c5244c
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|36860700013|1800799024|7416014|82310400026|376014; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?xEYHEyvhmR1Ie8xLHHSoufX+dre7RVvaeC2IdHXtfRugtS1JzletQL+Duy8y?=
- =?us-ascii?Q?6xaqWGxvK1qdRml8Le+d2Yh49WT1Y4Vv5TbBLNo8F2nrJZb3O3ksLK9p0U6K?=
- =?us-ascii?Q?8wPfvEirmFJnAeNWPP10JbYszYVhRG99ZcwQKwmdVBO1zHA6hMc8vqZ+QW9m?=
- =?us-ascii?Q?sQKLf2elLb1clac3RF+hwGJGzp8VrO9lxI2rH7ki0hhdXTARYXGQc6CXKyQr?=
- =?us-ascii?Q?hIJocuSPjUDVyB7tmwG2R29VfwQkm69WVP7EA94svcB4ZQjV2YcLBvpbzoFn?=
- =?us-ascii?Q?BJctNlfXe7qdGlcTeFL+fP7m5Hf4JNBvknyiF34Hs+0u8askiUxElnPlmSql?=
- =?us-ascii?Q?HKSDjNZKdNXaXv+t0VlMIpTBs/19NoPGA/9v5afrdIEVvRJKqSBC/KVRt1Fe?=
- =?us-ascii?Q?Z2s4iJ566bvkt4heZM3/Q0YJG29wp1s2BuGfLB6rwSESdD9CoEXheCxNixdG?=
- =?us-ascii?Q?DbmDv0AGBl4gu6IR/rmJANpoA/UhIP6hqikC25zGC6DTa6PT8xh4mlpZJrAb?=
- =?us-ascii?Q?/oFYMRvQN5IvFvsXW0yrhpXHlQfSabH1m1RQVs6asqATFUJLpmJffl1A+R/W?=
- =?us-ascii?Q?HCJhaRHy6Ajlk40ecUVOKWzNVP6IY1/FiPgXb8OmtIa0lFMlgGX8c3ZOn27W?=
- =?us-ascii?Q?6x4qkEiTCZv8DpHinL7U64Dx3lh5jpIPNOoXmAvqRk9XnAXAbzCWluJI8zcO?=
- =?us-ascii?Q?5JctuSQAqd2fE+rIx8j1bwptyFVFIrqFczOESJJOxYVSbPweA0MnBMXs5t7V?=
- =?us-ascii?Q?/8/1mnrnzIC+WpVUN8suyGH8tirJIYQLOi4h+jkWrUExGAgj49dLIklsTvJD?=
- =?us-ascii?Q?PfCyl8YxDuji1kb0SZdGyURMYevCh3osWxm6YljJ3xaSPuPuc2oxyuVKjeaF?=
- =?us-ascii?Q?qlLKcGvpNETT655s2AyFg/LeH1iOJ5HD6l9KNilizxRDLhbFz7DwzXcB+2X1?=
- =?us-ascii?Q?XP+s9N1cQtHOvEcpXF0Mygj0HjeEfrA+TCjFvz792WU+Oy9AnH+ApWafECEK?=
- =?us-ascii?Q?Fi2dvfXRBuRw9HJ+NYXJNqkG7JKDedAmXdxwrOysnfV8QA3/EEAqUNN6VO7i?=
- =?us-ascii?Q?5m7ToR5H8I5qthQ68koaECRCZh9A83tI9h+Qi3QlyC/uuD84HF7cnNdBYhmj?=
- =?us-ascii?Q?GMuit4AN8Ay9t1hS9FRXp6JJSmsahVEsdU7K2IR+pVLfvXUd382rZddkEtPZ?=
- =?us-ascii?Q?+uu/KDBztlQGQJGaGx2JJ/h0GgZxcOu1SoNIVT9q5Gha7jFWRj9ciMwEX/wq?=
- =?us-ascii?Q?Djt7GwM0Gua8CpxnkN4Q/BzVnHoRNytDG90YSz8tJs8VuaiREc7YSSPloxio?=
- =?us-ascii?Q?Awo7x+3pGublA76bRS1C5psazbJoVdEtB1nadZ79FOEBUVz/o/JAxFinhQWn?=
- =?us-ascii?Q?UQITTMWOO/mb3Tgs3q+Jlyg/yVBrsatkd+1GL2zgzFRt7wC6p5L22T9x5/4w?=
- =?us-ascii?Q?96XRo4rVFS40qyhHrLrHaTvdPF5QUJ0yDchn29/JZsIdeULI63h//C9pV6tt?=
- =?us-ascii?Q?y4xwNX2kUbJGk4iQUqYloSAfUg+My4esm2OF?=
+ ARA:13230040|36860700013|82310400026|7416014|376014|1800799024; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?J0+bETXl5nl2gTQNJ/TuVhvuUxNXTzTJJV4GDI14iISaWihdRIYQeyL0k7GE?=
+ =?us-ascii?Q?HQKrpHWqA/QgMod9iTMMTBTVINj2AFfa14GsT6iqQW+rw5DYiHHANbzdmnQ2?=
+ =?us-ascii?Q?+0s3EPvbiWt6BVpqyoiH/w18O/X2p7ybXeJN6NRJAhmmS4ZsmDOY1pUU3coW?=
+ =?us-ascii?Q?Xs9F33+Rl0ppO4Hj/VLZzebzRdUPixgdpB2jl7rAyfRbN5UPoVwzivByq9ME?=
+ =?us-ascii?Q?/SvZ3nOTjjkxlVHDtZUGhKUQuFzAfuk6uA+ljNH3KU2DAX1Uh3yS0vSUTetO?=
+ =?us-ascii?Q?6O78q6g49u9CypVHo9KfrV6ei265qD20NPTFCJvS34P5Quo7LI9BNAlYvT0o?=
+ =?us-ascii?Q?K4uV3lZXIAYZnTckehsZEdmRr1CnD5/EjXA5h4jr+itavHhFx8aEtTiVQLKF?=
+ =?us-ascii?Q?ki6WSKwk7ixBTL1XvDL1WhbcQncNqV8xh4hZ+zrA5/AHvudy2m8PIVMXRGi7?=
+ =?us-ascii?Q?pW/maND86DpMm+ckssHUF14Ik2iY0FZgLNHSky12HZiUjEBFpUCGkhYAXWO/?=
+ =?us-ascii?Q?hwz1H3SZwegu+MFE/kXLfPon76t/Sswz3ccp9csQRwZFSsnMpIbU9flGH99/?=
+ =?us-ascii?Q?ZbaFAIkTpXa/x9l/NWKI7AqMfe6SGq5PFMKfvpFTpnDAInALJBAULcY19E+a?=
+ =?us-ascii?Q?D79CphZN1I7ZBnbnoPcXIV+FBLXORLL6qUpojZdc8kGaze8Yx5vFmqKW7Xfm?=
+ =?us-ascii?Q?L5LUQ0oWFZFN7vcXSitDo3ZyE9P2xzvVOW1f+clPxOdkp39Xr1P8ShRWKAQz?=
+ =?us-ascii?Q?Bw2tV7xaRBTSIsU8kGY4SREimPEtl+LcKDUhaR0EafM8P34wafNsZ9RbxQl8?=
+ =?us-ascii?Q?1NYeGHJhSY0pzk9oYbNT8OFLQUvEN+db6QpsoGp4OloPXkQwn7yybPQjMMwS?=
+ =?us-ascii?Q?uJ3+GG1z5iCBjP/a6QcAKnsd+cbVqGSJfRHdUqZ2N6kLm5vmXf8KIQUoks8y?=
+ =?us-ascii?Q?jLgfx+oOt9yuM8cHWzfIIpBPk/nlH18RBYzu/2nKhIovsqHquPdME94vjghw?=
+ =?us-ascii?Q?yqU/GSeOmMnLMP1lh7KVv3BEprmetHRY7OwnscFgNnjmUFx9tq4rdgk1X0rb?=
+ =?us-ascii?Q?+LAaYc/wmC8TeQN1KhdyX86gRboqmnJibEqvOAT7OGHrOJTmz3pvErzTrn3M?=
+ =?us-ascii?Q?+4fKmppqWwPdxsly/rMTjFUfImacge0YRg2QGuo5UBbGbYksfPA0hTP5z+DE?=
+ =?us-ascii?Q?yeGRureS6lbIo8OG/bV8l8ngi3yO+jaVWjoOy/Gf0+Sgwa58VQ0p6AVzFyJf?=
+ =?us-ascii?Q?qfVPr6R1aJcjTQEBSstnTAISKl5kO3jmFQ/dJ4IzCLa86TdpMkqdZfM+/5k2?=
+ =?us-ascii?Q?v1YN5/P/uPPmQf1xsgonUpphvK9jUCJO7BtZsHle36qxHq7IWCbv/vE6/zb/?=
+ =?us-ascii?Q?ZSRMpaS42GXpq0mSA5Jjny3sZf157iCJ+Aj5LucZW6lV5MVtKcA3LEKU3BRY?=
+ =?us-ascii?Q?q4EkmtB+30Wu5lGl1N3Q0ZwHsw89e1mwLKeqVcY5ImhDkd+rRN+zhSAm5I+s?=
+ =?us-ascii?Q?FbdgiFWEZL0GqTmIQ0FtPwOhgttB+sE/7HaE?=
 X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(36860700013)(1800799024)(7416014)(82310400026)(376014); DIR:OUT;
+ SFS:(13230040)(36860700013)(82310400026)(7416014)(376014)(1800799024); DIR:OUT;
  SFP:1101; 
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jul 2025 17:23:16.3249 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2d7bfa0d-6674-4cbf-cf04-08ddc3c4492d
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jul 2025 17:29:23.9762 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: d420197f-8ee5-4c17-c99e-08ddc3c5244c
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: MWH0EPF000989E6.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: CH1PEPF0000AD76.namprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB5863
-Received-SPF: permerror client-ip=2a01:111:f403:2418::61a;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR12MB6897
+Received-SPF: permerror client-ip=2a01:111:f403:2417::60c;
  envelope-from=nicolinc@nvidia.com;
- helo=NAM12-BN8-obe.outbound.protection.outlook.com
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -162,52 +168,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jul 15, 2025 at 11:46:09AM +0100, Jonathan Cameron wrote:
-> >      SMMUCmdError cmd_error = SMMU_CERROR_NONE;
-> >      SMMUQueue *q = &s->cmdq;
-> >      SMMUCommandType type = 0;
-> > +    SMMUCommandBatch batch = {};
-> > +    uint32_t ncmds;
-> >  
-> >      if (!smmuv3_cmdq_enabled(s)) {
-> >          return 0;
-> >      }
-> > +
-> > +    ncmds = smmuv3_q_ncmds(q);
-> > +    batch.cmds = g_new0(Cmd, ncmds);
-> > +    batch.cons = g_new0(uint32_t, ncmds);
+On Tue, Jul 15, 2025 at 10:48:31AM +0000, Duan, Zhenzhong wrote:
+> >+static const TypeInfo types[] = {
+> >+    {
+> >+        .name = TYPE_ARM_SMMUV3_ACCEL,
+> >+        .parent = TYPE_ARM_SMMUV3,
+> >+        .class_init = smmuv3_accel_class_init,
+> >+    }
 > 
-> Where is batch.ncmds set?  It is cleared but I'm missing it being set to anything.
+> In cover-letter, I see "-device arm-smmuv3", so where is above accel device
+> created so we could use smmuv3_accel_ops?
 
-smmuv3_accel_batch_cmd() internally sets that, every time it's
-invoked to add a new command in the batch.
+The smmu-common.c is the shared file between accel and non-accel
+instances. It has a module property:
+    DEFINE_PROP_BOOL("accel", SMMUState, accel, false),
 
-Shameer, let's add some comments explaining the batch function.
+where it directs to different iommu_ops:
+937 static const PCIIOMMUOps *smmu_iommu_ops_by_type(SMMUState *s)                                                                                                                                                                                                                                                                                          
+938 {                                                                                                                                                                                                                                                                                                                                                       
+939     SMMUBaseClass *sbc;                                                                                                                                                                                                                                                                                                                                 
+940                                                                                                                                                                                                                                                                                                                                                         
+941     if (s->accel) {                                                                                                                                                                                                                                                                                                                                     
+942         sbc = ARM_SMMU_CLASS(object_class_by_name(TYPE_ARM_SMMUV3_ACCEL));                                                                                                                                                                                                                                                                              
+943     } else {                                                                                                                                                                                                                                                                                                                                            
+944         sbc = ARM_SMMU_CLASS(object_class_by_name(TYPE_ARM_SMMU));                                                                                                                                                                                                                                                                                      
+945     }                                                                                                                                                                                                                                                                                                                                                   
+946     assert(sbc->iommu_ops);                                                                                                                                                                                                                                                                                                                             
+947                                                                                                                                                                                                                                                                                                                                                         
+948     return sbc->iommu_ops;                                                                                                                                                                                                                                                                                                                              
+949 }   
 
-> > +
-> 
-> > +    qemu_mutex_lock(&s->mutex);
-> > +    if (!cmd_error && batch.ncmds) {
-> > +        if (!smmuv3_accel_issue_cmd_batch(bs, &batch)) {
-> > +            if (batch.ncmds) {
-> > +                q->cons = batch.cons[batch.ncmds - 1];
-> > +            } else {
-> > +                q->cons = batch.cons[0]; /* FIXME: Check */
-> > +            }
-> 
-> Totally non obvious that a return of false from the issue call means
-> illegal command type.  Maybe that will be obvious form comments
-> requested in previous patch review.
-
-That's a good point. Shameer, I think we need some fine-grinding
-here, validating the return value from the ioctl, for which the
-kernel will only return -EIO or -ETIMEOUT on failure, indicating
-either an SMMU_CERROR_ILL or an SMMU_CERROR_ATC_INV_SYNC.
- 
-> > +            qemu_log_mask(LOG_GUEST_ERROR, "Illegal command type: %d\n",
-> > +                          CMD_TYPE(&batch.cmds[batch.ncmds]));
-> > +            cmd_error = SMMU_CERROR_ILL;
-
-Thanks
 Nicolin
 

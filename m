@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2C90C83F17
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Jul 2025 09:28:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8236C83F17
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Jul 2025 09:30:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubbx5-0005mG-NQ; Tue, 15 Jul 2025 05:27:56 -0400
+	id 1ubbzZ-0007SP-55; Tue, 15 Jul 2025 05:30:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1ubbwz-0005k7-TG; Tue, 15 Jul 2025 05:27:49 -0400
+ id 1ubbzX-0007QY-1G; Tue, 15 Jul 2025 05:30:27 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1ubbwv-00057e-MH; Tue, 15 Jul 2025 05:27:49 -0400
+ id 1ubbzU-0005bk-DO; Tue, 15 Jul 2025 05:30:26 -0400
 Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bhDK63pJ4z6L5BN;
- Tue, 15 Jul 2025 17:24:10 +0800 (CST)
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bhDQl1jMBz6DKs7;
+ Tue, 15 Jul 2025 17:29:03 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id EA0561402ED;
- Tue, 15 Jul 2025 17:27:39 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 7BEEF1402EB;
+ Tue, 15 Jul 2025 17:30:10 +0800 (CST)
 Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
  (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 15 Jul
- 2025 11:27:39 +0200
-Date: Tue, 15 Jul 2025 10:27:37 +0100
+ 2025 11:30:09 +0200
+Date: Tue, 15 Jul 2025 10:30:07 +0100
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
  <linuxarm@huawei.com>
 CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
@@ -38,16 +38,16 @@ CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
  <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
  <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>,
  <shameerkolothum@gmail.com>
-Subject: Re: [RFC PATCH v3 03/15] hw/arm/smmu-common: Factor out common
- helper functions and export
-Message-ID: <20250715102737.0000576a@huawei.com>
-In-Reply-To: <20250714155941.22176-4-shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [RFC PATCH v3 04/15] hw/arm/smmu-common: Introduce
+ smmu_iommu_ops_by_type() helper
+Message-ID: <20250715103007.00003489@huawei.com>
+In-Reply-To: <20250714155941.22176-5-shameerali.kolothum.thodi@huawei.com>
 References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-4-shameerali.kolothum.thodi@huawei.com>
+ <20250714155941.22176-5-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
 X-Originating-IP: [10.203.177.66]
 X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
  frapeml500008.china.huawei.com (7.182.85.71)
@@ -79,132 +79,95 @@ From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 14 Jul 2025 16:59:29 +0100
+On Mon, 14 Jul 2025 16:59:30 +0100
 Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-> Subsequent patches for smmuv3 accel support will make use of this.
-> 
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Allows to retrieve the=A0PCIIOMMUOps based on the SMMU type. This will be
+> useful when we add support for accelerated SMMUV3 in=A0subsequent patches
+> as that requires a different set of callbacks for=A0iommu ops.
+>=20
+> No special handling is required for now and returns the default ops
+> in base SMMU Class.
+>=20
+> No functional changes intended.
+>=20
 > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Various trivial things inline.  In general looks fine.
-
-J
+Trivial inline.
 
 > ---
->  hw/arm/smmu-common.c         | 48 ++++++++++++++++++++++--------------
->  include/hw/arm/smmu-common.h |  6 +++++
->  2 files changed, 36 insertions(+), 18 deletions(-)
-> 
+>  hw/arm/smmu-common.c         | 17 +++++++++++++++--
+>  include/hw/arm/smmu-common.h |  1 +
+>  2 files changed, 16 insertions(+), 2 deletions(-)
+>=20
 > diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index ab920717cf..0f1a06cec2 100644
+> index 0f1a06cec2..3a1080773a 100644
 > --- a/hw/arm/smmu-common.c
 > +++ b/hw/arm/smmu-common.c
-> @@ -847,12 +847,28 @@ SMMUPciBus *smmu_find_smmu_pcibus(SMMUState *s, uint8_t bus_num)
->      return NULL;
+> @@ -934,6 +934,16 @@ void smmu_inv_notifiers_all(SMMUState *s)
+>      }
 >  }
->  
-> -static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
-> +void smmu_init_sdev(SMMUState *s, SMMUDevice *sdev,
-> +                    PCIBus *bus, int devfn)
-
-It's trivial Tuesday.  Fits on one line.  Maybe fine to keep it like this if you
-are going to modify this in later patches and this reduces the churn.
-
-
+> =20
+> +static const PCIIOMMUOps *smmu_iommu_ops_by_type(SMMUState *s)
+> +{
+> +    SMMUBaseClass *sbc;
+> +
+> +    sbc =3D ARM_SMMU_CLASS(object_class_by_name(TYPE_ARM_SMMU));
+> +    assert(sbc->iommu_ops);
+> +
+> +    return sbc->iommu_ops;
+> +}
+> +
+>  static void smmu_base_realize(DeviceState *dev, Error **errp)
 >  {
-> -    SMMUState *s = opaque;
-> -    SMMUPciBus *sbus = g_hash_table_lookup(s->smmu_pcibus_by_busptr, bus);
-> -    SMMUDevice *sdev;
->      static unsigned int index;
-> +    char *name = g_strdup_printf("%s-%d-%d", s->mrtypename, devfn, index++);
-> +
-> +    sdev->smmu = s;
-> +    sdev->bus = bus;
-> +    sdev->devfn = devfn;
-> +
-> +    memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
-> +                             s->mrtypename,
-> +                             OBJECT(s), name, UINT64_MAX);
-Wrap was odd on original code, might as well tidy it up though as have a
-little more width now.
+>      SMMUState *s =3D ARM_SMMU(dev);
+> @@ -962,6 +972,7 @@ static void smmu_base_realize(DeviceState *dev, Error=
+ **errp)
+>       */
+>      if (pci_bus_is_express(pci_bus) && pci_bus_is_root(pci_bus) &&
+>          object_dynamic_cast(OBJECT(pci_bus)->parent, TYPE_PCI_HOST_BRIDG=
+E)) {
+> +        const PCIIOMMUOps  *iommu_ops;
+Bonus space.
 
-    memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
-                             s->mrtypename, OBJECT(s), name, UINT64_MAX);
-
-> +    address_space_init(&sdev->as,
-> +                       MEMORY_REGION(&sdev->iommu), name);
-And this one.
-
-    address_space_init(&sdev->as, MEMORY_REGION(&sdev->iommu), name);
-
-> +    trace_smmu_add_mr(name);
-> +    g_free(name);
-
-Use g_autofree perhaps.
-
-> +}
-> +
-> +SMMUPciBus *smmu_get_sbus(SMMUState *s, PCIBus *bus)
-> +{
-> +    SMMUPciBus *sbus = g_hash_table_lookup(s->smmu_pcibus_by_busptr, bus);
->  
->      if (!sbus) {
->          sbus = g_malloc0(sizeof(SMMUPciBus) +
-> @@ -861,23 +877,19 @@ static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
->          g_hash_table_insert(s->smmu_pcibus_by_busptr, bus, sbus);
+>          /*
+>           * This condition matches either the default pcie.0, pxb-pcie, or
+>           * pxb-cxl. For both pxb-pcie and pxb-cxl, parent_dev will be se=
+t.
+> @@ -974,10 +985,11 @@ static void smmu_base_realize(DeviceState *dev, Err=
+or **errp)
+>              }
+>          }
+> =20
+> +        iommu_ops =3D smmu_iommu_ops_by_type(s);
+>          if (s->smmu_per_bus) {
+> -            pci_setup_iommu_per_bus(pci_bus, &smmu_ops, s);
+> +            pci_setup_iommu_per_bus(pci_bus, iommu_ops, s);
+>          } else {
+> -            pci_setup_iommu(pci_bus, &smmu_ops, s);
+> +            pci_setup_iommu(pci_bus, iommu_ops, s);
+>          }
+>          return;
 >      }
->  
-> +    return sbus;
-> +}
-> +
-> +static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
-> +{
-> +    SMMUDevice *sdev;
-
-Why have this first?  Original order had it last.  I don't really care but
-some sort of system is nicer than none.
-
-> +    SMMUState *s = opaque;
-> +    SMMUPciBus *sbus = smmu_get_sbus(s, bus);
-> +
->      sdev = sbus->pbdev[devfn];
->      if (!sdev) {
-> -        char *name = g_strdup_printf("%s-%d-%d", s->mrtypename, devfn, index++);
-> -
->          sdev = sbus->pbdev[devfn] = g_new0(SMMUDevice, 1);
-> -
-> -        sdev->smmu = s;
-> -        sdev->bus = bus;
-> -        sdev->devfn = devfn;
-> -
-> -        memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
-> -                                 s->mrtypename,
-> -                                 OBJECT(s), name, UINT64_MAX);
-> -        address_space_init(&sdev->as,
-> -                           MEMORY_REGION(&sdev->iommu), name);
-> -        trace_smmu_add_mr(name);
-> -        g_free(name);
-> +        smmu_init_sdev(s, sdev, bus, devfn);
->      }
->  
->      return &sdev->as;
+> @@ -1018,6 +1030,7 @@ static void smmu_base_class_init(ObjectClass *klass=
+, const void *data)
+>      device_class_set_parent_realize(dc, smmu_base_realize,
+>                                      &sbc->parent_realize);
+>      rc->phases.exit =3D smmu_base_reset_exit;
+> +    sbc->iommu_ops =3D &smmu_ops;
+>  }
+> =20
+>  static const TypeInfo smmu_base_info =3D {
 > diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index 80d0fecfde..c6f899e403 100644
+> index c6f899e403..eb94623555 100644
 > --- a/include/hw/arm/smmu-common.h
 > +++ b/include/hw/arm/smmu-common.h
-> @@ -180,6 +180,12 @@ OBJECT_DECLARE_TYPE(SMMUState, SMMUBaseClass, ARM_SMMU)
->  /* Return the SMMUPciBus handle associated to a PCI bus number */
->  SMMUPciBus *smmu_find_smmu_pcibus(SMMUState *s, uint8_t bus_num);
->  
-> +/* Return the SMMUPciBus handle associated to a PCI bus */
-> +SMMUPciBus *smmu_get_sbus(SMMUState *s, PCIBus *bus);
-> +
-> +/* Initialize SMMUDevice handle associated to a SMMUPCIBus */
-> +void smmu_init_sdev(SMMUState *s, SMMUDevice *sdev, PCIBus *bus, int devfn);
-> +
->  /* Return the stream ID of an SMMU device */
->  static inline uint16_t smmu_get_sid(SMMUDevice *sdev)
->  {
+> @@ -171,6 +171,7 @@ struct SMMUBaseClass {
+>      /*< public >*/
+> =20
+>      DeviceRealize parent_realize;
+> +    const PCIIOMMUOps *iommu_ops;
+> =20
+>  };
+> =20
 
 

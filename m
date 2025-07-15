@@ -4,86 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91AA1C83F27
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 947AAC83F34
 	for <qemu-arm@archiver.kernel.org>; Tue, 15 Jul 2025 21:24:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubn8S-0002F3-FP; Tue, 15 Jul 2025 17:24:24 -0400
+	id 1ubn87-00028V-Hk; Tue, 15 Jul 2025 17:24:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ubn7w-00026X-Et
- for qemu-arm@nongnu.org; Tue, 15 Jul 2025 17:23:54 -0400
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+ id 1ubn7u-00025i-QP
+ for qemu-arm@nongnu.org; Tue, 15 Jul 2025 17:23:51 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ubn7q-0001oT-5S
- for qemu-arm@nongnu.org; Tue, 15 Jul 2025 17:23:52 -0400
-Received: by mail-pf1-x430.google.com with SMTP id
- d2e1a72fcca58-73c17c770a7so7232020b3a.2
- for <qemu-arm@nongnu.org>; Tue, 15 Jul 2025 14:23:45 -0700 (PDT)
+ id 1ubn7r-0001os-9Z
+ for qemu-arm@nongnu.org; Tue, 15 Jul 2025 17:23:50 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-739b3fe7ce8so5322979b3a.0
+ for <qemu-arm@nongnu.org>; Tue, 15 Jul 2025 14:23:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752614623; x=1753219423; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=uJuDKaPyuOQ11qMEvzCeZiq7F9iOl5xDj1QLIO3/YMo=;
- b=W9tPWiR027wIphs/I9l1hbyHwtEBrwOCGkZ/+xtUmzrFURUmqxvN3U+DfUl0DuN3Pt
- 6YBiDkBaJXUZrsJZMSOsXpFCXRaYL3c0DUS6Qnlcl0OeaSQn+2l/R2y2bwPh8xfzccHI
- HfJ5fOerKoB4aJqTgWDq9cAgcc09wBCNyT8bwyzPJO4gPIXB1lOeP6UzZpPnJRUcPsxC
- sYIy/BE45puVE2bbJ+pgd6Kl/5Dg9i8VKaYTZdmZEdbh4D1TksskRcqUFkFfWr3NbHXW
- FZ7e7pqY8FthocIQetQAdhx4j8T0xomKrRCF0eIsPggLY7L3APcmYNcxQ0L6dKP1s9/C
- unzw==
+ d=linaro.org; s=google; t=1752614625; x=1753219425; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=xfF2qpw8sQPpJGgpe/MPDF+JcTMR6+n/UOivbIi70EY=;
+ b=J5M00cwh7p1CZL5NpqJgizSGrvKwJon56OdAF2yqtTYB0aAg6D6TOH8LuJaV1wVGfw
+ Vvqwzqo7GkyE3RaJzpJ4JbrGU95o+a6DpnytPW5ONS/u9nl2NM0JN7umCnQXYX1sUYhF
+ 9vsfyQfo6G6bSGwKQIEGctrtIntAgiv4KsyZnSmWINQAil4/aS5MlEAyXxPg+llG0lAQ
+ qn/txcWOvwVDf1HRPQbpnDFg8mmHzjIOSNwTFKN8LngtIm0SkaZt9YSYmNwMbHX9rtnR
+ wwu2pd/l0YRgjUapzP0j+Ju9lyrZYc9uQIFvJTdRvHstAbRn3hUQWzx4XJmD3WMGlUL+
+ fExQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752614623; x=1753219423;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=uJuDKaPyuOQ11qMEvzCeZiq7F9iOl5xDj1QLIO3/YMo=;
- b=wRsjd+Ba+ooOfoY+Hs6ZqAIaSa2JePCiZ4Hj8FKKfcn4KIJUBHeYuafbI59aq1z/wj
- HrFCHZOQdSdTBKv68owvBlwQsdwQBGYAviwu+ScimsW8JL83wdiFdBA2F6VuDA9F1oSh
- Bt7iwnxbYsqb2+1I/vYWXB9xnxnYX+9i4URtat1mJRV15yJ82yJRyhixATMiEWPfcdVy
- KzCr5TIeGNMI5Xj3PrH6gHQyCA05i2U3+virjPvhDf7QOym5TKkgTuGIokK82KwbwiYn
- sTClikWMqN2XMUId7HLPgCJtAbtQqhA1p3sooLXXgO5g0vypfNVZSf6mpw9uVEzwJYuf
- t5kw==
-X-Gm-Message-State: AOJu0Yzdt1dBPllU5Q6YEeRvfwZV4NVbhLEknIhW3XIiR+0AMFiOuqfP
- xvL/7GRiJGNo7DX94DI7HaJLbQpqYP5OhGYU1/XnsOF4tec33ic5LQ3EII9m4Uq1qJU=
-X-Gm-Gg: ASbGncscaGdUGAPxW7SSMnvpv3V3Zq7fU//V0LeIhxU1ew3nggeymXk4jiknb/Rj4V2
- u/sr6DsQ6gpFgcj6xNcruuURjtmyfsVCiuC7Q4Fp7su+rjRDVYXufsSM8kCMWBK+dgsqtacRjG/
- 2rIg5x1GAljvHHL/fVlab0j3Cpoc0pFgthHrARLQKub02gFXgafnWzPUMDUdKS5Qg6oTZvHPpFX
- HBhZnynhpOhtpyE4cfnbYgWOtSp7LU09bjVXqvpoPhaMq9WpfPYU8G5Ca3OHgkqfqG4pk0HDbwF
- NUf3oeOsZd4rtcG8qAx01eNFgBMGC8xxTNNQbS1AePvolsVAlZW7DgZBCYuVJxLX7NIW5gCLv1T
- zBR6I1C7A6rdyRXg8+WVk5g==
-X-Google-Smtp-Source: AGHT+IGoF9ww+51xV8mMCpAaeU1d1gluPlrjn0GCgvTKObpoku2zj2OKShR2kfoC2mirp2Cf9sg/eQ==
-X-Received: by 2002:a05:6a00:cd5:b0:748:f365:bedd with SMTP id
- d2e1a72fcca58-7572568099fmr104059b3a.17.1752614622982; 
- Tue, 15 Jul 2025 14:23:42 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1752614625; x=1753219425;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=xfF2qpw8sQPpJGgpe/MPDF+JcTMR6+n/UOivbIi70EY=;
+ b=DHQXSbiN7uB2mHa5/AgjkhquwpGRIYhKwnrO6FcUfmJ9ocZ5K3DpISwZjNabXnOXv5
+ WLNhdpW1hwt8mixd1Lp815BA7cnS2q//L66Lff4QOY/3qmbMMq8fcUkANjWGX4jgTqWt
+ aOSk7U7BhQ3zujUNr7aU6Efx8Km04vleEecurVIziFNyrPCd5T1ICoYOMp/s+BHb0/SB
+ mkxVeBTkSuts70mu1OM1esT1bTQhXBiJyqWMD4iu8VPvtLPxO7tq4uTkujI4goiOcIc1
+ 8OlxXYhQSJWkk22fufawuwtY49Yr69Vq81C5QqrE5LuxFHhI2a4V3hmoFMagbHEdKefe
+ ayNQ==
+X-Gm-Message-State: AOJu0YyA44tUq/ijNkbQSUM+sjUFQn3qM3e7T+fj3jP422n4r1ItVFxZ
+ j8z9U1hMbR5qN60UqhAZv5hVGunHaOEJgPDJtda0UaqAXS+Tx8E+e2eGXKPklmDBSGo=
+X-Gm-Gg: ASbGncuHtZmbWZ9jwp6WH7DedNgux/LMSHHeymtJ8Bzz17w0LIbrtHYzYW2JLJ0Br8W
+ PE0hmx+y1dp2bI7K2T5QNXUImd6Ck/3PykO3gPxOsj7KyqFgO7beRw11P0veXK352QHUruJ2cgx
+ QzHbpYlZj+AKMg7HDWpYUO+UNDLgEmyDt2vjtWJ+rDl7AGnwlF81JtI1HOH2ug65Rux79o9Vpyk
+ 6yakEQsw/8BUoQuGm0YGTiv5fruEPDiNMjDGLQIf2DrEL3foM4fNTwuT5CKDpUDIx3V3QILMsy7
+ BMw4DCMbzpP3+MUoTxx2EDGwvpEl0TthVl27//sC1l8V/gRHL1brmJqC2Erkp7MTiqXXSfPUKjz
+ n3BVltoGeRGDMNGDHe8JaODM5ffpoJ2hb
+X-Google-Smtp-Source: AGHT+IFDd3admL/lcughk7K9B6qVTSJLdGC7Yt+F+y+lgbcy+SNYgBDvNJHcR8MpNygXdy2TzuC77w==
+X-Received: by 2002:a05:6a20:7d8b:b0:220:5c12:efa3 with SMTP id
+ adf61e73a8af0-237d89607dcmr1224414637.38.1752614624746; 
+ Tue, 15 Jul 2025 14:23:44 -0700 (PDT)
 Received: from pc.. ([38.41.223.211]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-74eb9f4b16fsm12281708b3a.120.2025.07.15.14.23.42
+ d2e1a72fcca58-74eb9f4b16fsm12281708b3a.120.2025.07.15.14.23.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Jul 2025 14:23:42 -0700 (PDT)
+ Tue, 15 Jul 2025 14:23:44 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, jean-philippe@linaro.org,
  Mathieu Poirier <mathieu.poirier@linaro.org>, gustavo.romero@linaro.org,
  Peter Maydell <peter.maydell@linaro.org>, richard.henderson@linaro.org,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 0/2] aarch64: update test images with new trusted firmware
-Date: Tue, 15 Jul 2025 14:23:33 -0700
-Message-ID: <20250715212335.2215509-1-pierrick.bouvier@linaro.org>
+Subject: [PATCH 2/2] tests/functional/test_aarch64_rme: update image
+Date: Tue, 15 Jul 2025 14:23:35 -0700
+Message-ID: <20250715212335.2215509-3-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.2
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20250715212335.2215509-1-pierrick.bouvier@linaro.org>
+References: <20250715212335.2215509-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x430.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,27 +101,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The FEAT_MEC series [1] introduces FEAT_TCR2 and FEAT_SCTLR2.
-TF-A needs to be aware of that change to allow accesses to those registers, and
-thus must be patched [2] to enable this for QEMU platforms.
+TF-A needs to be patched to enable support for FEAT_TCR2 and
+FEAT_SCTLR2. This new image contains updated firmware.
 
-Concerned test images need to be updated to allow them to boot.
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ tests/functional/test_aarch64_rme_sbsaref.py | 9 +++++----
+ tests/functional/test_aarch64_rme_virt.py    | 9 +++++----
+ 2 files changed, 10 insertions(+), 8 deletions(-)
 
-[1] https://lore.kernel.org/qemu-devel/20250714155836.1514748-1-richard.henderson@linaro.org/
-[2] https://git.codelinaro.org/linaro/dcap/tf-a/trusted-firmware-a/-/commit/c8836cec14213bf92dae79d353bc345254a0a31e
-
-Note: [2] will be upstreamed in TF-A once associated series on QEMU side is
-merged.
-
-Pierrick Bouvier (2):
-  tests/functional/test_aarch64_device_passthrough: update image
-  tests/functional/test_aarch64_rme: update image
-
- tests/functional/test_aarch64_device_passthrough.py | 9 +++++----
- tests/functional/test_aarch64_rme_sbsaref.py        | 9 +++++----
- tests/functional/test_aarch64_rme_virt.py           | 9 +++++----
- 3 files changed, 15 insertions(+), 12 deletions(-)
-
+diff --git a/tests/functional/test_aarch64_rme_sbsaref.py b/tests/functional/test_aarch64_rme_sbsaref.py
+index 746770e776d..70737d3d599 100755
+--- a/tests/functional/test_aarch64_rme_sbsaref.py
++++ b/tests/functional/test_aarch64_rme_sbsaref.py
+@@ -21,10 +21,11 @@ class Aarch64RMESbsaRefMachine(QemuSystemTest):
+     # Stack is built with OP-TEE build environment from those instructions:
+     # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
+     # https://github.com/pbo-linaro/qemu-rme-stack
++    # ./container.sh ./build_sbsa.sh && ./archive_artifacts.sh sbsa sbsa.tar.xz
+     ASSET_RME_STACK_SBSA = Asset(
+-        ('https://fileserver.linaro.org/s/KJyeBxL82mz2r7F/'
+-         'download/rme-stack-op-tee-4.2.0-cca-v4-sbsa.tar.gz'),
+-         'dd9ab28ec869bdf3b5376116cb3689103b43433fd5c4bca0f4a8d8b3c104999e')
++        ('https://fileserver.linaro.org/s/gW3mmtC4ZQaxNJ2/'
++         'download/sbsa_cca_v10.tar.xz'),
++         'b6ec3435a459eb298f221beb5073e485f290d38055d0aafbcff7d8e7c334aa73')
+ 
+     # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
+     # and launching a nested VM using it.
+@@ -38,7 +39,7 @@ def test_aarch64_rme_sbsaref(self):
+         stack_path_tar_gz = self.ASSET_RME_STACK_SBSA.fetch()
+         self.archive_extract(stack_path_tar_gz, format="tar")
+ 
+-        rme_stack = self.scratch_file('rme-stack-op-tee-4.2.0-cca-v4-sbsa')
++        rme_stack = self.scratch_file('.')
+         pflash0 = os.path.join(rme_stack, 'images', 'SBSA_FLASH0.fd')
+         pflash1 = os.path.join(rme_stack, 'images', 'SBSA_FLASH1.fd')
+         virtual = os.path.join(rme_stack, 'images', 'disks', 'virtual')
+diff --git a/tests/functional/test_aarch64_rme_virt.py b/tests/functional/test_aarch64_rme_virt.py
+index 8452d27928f..fcc321b6006 100755
+--- a/tests/functional/test_aarch64_rme_virt.py
++++ b/tests/functional/test_aarch64_rme_virt.py
+@@ -49,10 +49,11 @@ class Aarch64RMEVirtMachine(QemuSystemTest):
+     # Stack is built with OP-TEE build environment from those instructions:
+     # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
+     # https://github.com/pbo-linaro/qemu-rme-stack
++    # ./container.sh ./build_virt.sh && ./archive_artifacts.sh virt virt.tar.xz
+     ASSET_RME_STACK_VIRT = Asset(
+-        ('https://fileserver.linaro.org/s/iaRsNDJp2CXHMSJ/'
+-         'download/rme-stack-op-tee-4.2.0-cca-v4-qemu_v8.tar.gz'),
+-         '1851adc232b094384d8b879b9a2cfff07ef3d6205032b85e9b3a4a9ae6b0b7ad')
++        ('https://fileserver.linaro.org/s/YpLmzLNL6BAxYL8/'
++         'download/virt_cca_v10.tar.xz'),
++         'bc432c92d62f3cd3542a943cd5a6329b2464c986f8f5dc48f727a0e5386a0e95')
+ 
+     # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
+     # and launching a nested VM using it.
+@@ -66,7 +67,7 @@ def test_aarch64_rme_virt(self):
+         stack_path_tar_gz = self.ASSET_RME_STACK_VIRT.fetch()
+         self.archive_extract(stack_path_tar_gz, format="tar")
+ 
+-        rme_stack = self.scratch_file('rme-stack-op-tee-4.2.0-cca-v4-qemu_v8')
++        rme_stack = self.scratch_file('.')
+         kernel = os.path.join(rme_stack, 'out', 'bin', 'Image')
+         bios = os.path.join(rme_stack, 'out', 'bin', 'flash.bin')
+         drive = os.path.join(rme_stack, 'out-br', 'images', 'rootfs.ext4')
 -- 
 2.47.2
 

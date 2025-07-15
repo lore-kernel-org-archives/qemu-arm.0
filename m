@@ -4,90 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46B28C83F1D
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Jul 2025 06:07:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA345C83F1D
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Jul 2025 06:14:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubYox-0001So-0D; Tue, 15 Jul 2025 02:07:19 -0400
+	id 1ubYvk-00065t-L8; Tue, 15 Jul 2025 02:14:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ubYoN-0001LI-G2
- for qemu-arm@nongnu.org; Tue, 15 Jul 2025 02:06:45 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ubYoK-0002XL-8a
- for qemu-arm@nongnu.org; Tue, 15 Jul 2025 02:06:41 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-3a51481a598so2552902f8f.3
- for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 23:06:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752559598; x=1753164398; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Ki+ILgBCKd+2YR+JASuxhQ6wwDjeOJkBc8IOClgqX5Q=;
- b=bnpeHvX1aWypys4WgxDvtNpFnU2LPud16WF7FEhi758EXTIKLJADbdAjyhM1Ftu9vm
- cAgTQ/8RmVvCz8KQ38vXB2nAx/NqI/MdWBvoLoxHxmPZARpUuJGSqWM/8oaClm1h69//
- hNqaPkEwygOOmSwCf1i1TXhA8fKn0b02ILQaKXJo4CGLqCYrURCqVKulC9eiZEayghcl
- CVMhsmfb6fLPRZ9O2lI6wiHGOKfSiEOteBt4ayYs+9GnYNkjXnakbtPuURUO7WGBYR+M
- HkPpTZnBbItHbIXfsMkew5DcRIPhfv1sCuVF7lS++GKWueLN555q1L099ADqxZwlN0yA
- zaNg==
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1ubYuo-0005MZ-5b
+ for qemu-arm@nongnu.org; Tue, 15 Jul 2025 02:13:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1ubYuk-0004Ig-PZ
+ for qemu-arm@nongnu.org; Tue, 15 Jul 2025 02:13:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1752559996;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=5x8+wM7O2OpUKd4Qng94w7OvTiM42FK/AkT0bBDJwyo=;
+ b=Iwi4LT42Bt51r6ehSvgfD78AhgSV8JtjcIo7PJcNn2E23EEmHdMX2W6Qj23R76INkUJ4Dy
+ 6pdDNWBQKcy85DdF1KEfqxW7bntNMwIcS6C/t8+H1ns52YjvSwxDlSlz005QBVe2v2iNca
+ 1zBMi3mdOoOi+XycLVvchpAiYIyQwXo=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-526-WOh9pWVaNkupViPF_MVtLg-1; Tue, 15 Jul 2025 02:13:14 -0400
+X-MC-Unique: WOh9pWVaNkupViPF_MVtLg-1
+X-Mimecast-MFC-AGG-ID: WOh9pWVaNkupViPF_MVtLg_1752559993
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-3a4f858bc5eso3826877f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 14 Jul 2025 23:13:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752559598; x=1753164398;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Ki+ILgBCKd+2YR+JASuxhQ6wwDjeOJkBc8IOClgqX5Q=;
- b=EiXTrIx7kGAC0sM67TiuOTKUK7fPC2Fbub5CuWIOhngS0NAuK5bn/OGsa1rM8vsrHj
- tykdJSQRBrIRY9+8lapzcf7x7eZTdi7e0jQElNVILaUnuAIA5nmldR1kBGGjN/5pXaXf
- k3pDJmb94BVECz3pECgy0DnpDw95rPd1yQqwrsUC0e9jt0J0uWMBEEET1H7POQVGynIa
- 2MqT/iAqkqtrGWd7SRvE+rYLGpDwiE+nJ1LcWpo66m0XW/NBjqYaeXMkxNt+eRQ2E6QW
- xKC+IXS7m1dWiDjGyG/5teQ3uSZWgr6sa3rb3fYLBZjPpkLqtNYOnBRlv4uyvuTxqYYp
- 7+nw==
-X-Gm-Message-State: AOJu0Yy/FG5WSkkiNIh1tzIj79yJmocY+6RjqzAtsszX6/hDNdTkw7jL
- DMKhOgnUhEB3Dy2wW89vdWsZhOeA5LurpAPFHwi9F82jPf/WZjGY3RMTWrlG5tAKL9Q=
-X-Gm-Gg: ASbGncuyV0cAxmhGQdf0V9l7WV5nu23bc7dBfC8QUeAwP5GCZsU7P16CUNA6PxGiCib
- n8bTrhixnLhex7ziUWMNRFu+3WSCYRHn+XIYDjlxVwD585M4ofqO8nPK3LUTWwZLj+HcNTgOxRi
- GQaBhEVT15cFIsSIhovWlQjEsCwGO3hKhFTCUIzg97HX5wxDZAEFvUf36/GI8moDW6OtH/sZ4M5
- dGiw1pfp9mM20bXpoh9Ldt9ZrlyEJV3clCRPkyNXwougzVqoVS8VaAYl8VVGf3Mtm6r0FrWJqLn
- Z57sgm/1e5Q+5j/fx4bHa8NaUbpSp3d16U57f5iiWXf0gOgmigZS6vyceG6X/hnEfcySN8qvWss
- qDlMMiSox1LdW/rf/uOKhWlzMCi+xaRMvbNiiBGcGi3f2ceMYfJT/aiM6ZHY3Z6aZzA==
-X-Google-Smtp-Source: AGHT+IEzAHGUqjGdbCoz/R3viNymPJUkU3ZIM26I+Wnd0ZPPaIq5pGBU7bc33iFiIkse9GnRp40FQQ==
-X-Received: by 2002:a05:6000:2f81:b0:3a4:f975:30f7 with SMTP id
- ffacd0b85a97d-3b5f2e3b17bmr11426328f8f.56.1752559598238; 
- Mon, 14 Jul 2025 23:06:38 -0700 (PDT)
-Received: from [192.168.69.239] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-454d5032fcbsm192367395e9.6.2025.07.14.23.06.37
+ d=1e100.net; s=20230601; t=1752559993; x=1753164793;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=5x8+wM7O2OpUKd4Qng94w7OvTiM42FK/AkT0bBDJwyo=;
+ b=pi0FdV/n94HMMjoob9lGH4jwwLoShcg/atqBdheNkVpWD1Qt6YtP8r+1pWakDxnKXq
+ eNnyEVFu7iG6DTwFe9HLLQ/jjQkoB0v0oRWdVBxfbxfpnt3PUAmB70DbB/DbAZYMgT/W
+ kAstzWzbEybOs5vtgUYgIQsVfZeX+ZXWdbjfq4lq1mW6jv1z+BQLtbqH12l10AJgEKIO
+ Gx6oZcdy/SdgJLDwlyul239mYe58h7jX+TeS3g7IazPlzlmD7xuZwiJpR3XqFie0rqOv
+ 35CUD/RAZdWm16G57AJThKJkdAMGiGxGxtomyAISIH4DEH+hBSRIyf4PvUQCKD0lYirc
+ L6PA==
+X-Gm-Message-State: AOJu0Yy4WqvwJFxQFmgH/nKjeK9BKZ2DQpPRmyucEBGvu8NAP82dcPIr
+ 5tnRF2/Ny6KSnLVdj/RZC1oq5JdFxmBkdIkooFHMa86E9eE/9Z8q9Ff5WL/nKMRHb5Ej/WdKGDf
+ G6zhTTVEmYG+U9YLxaFw7Z+pOzK/K1JDZXNPtRMieFxPH9lpjywDi5g==
+X-Gm-Gg: ASbGncv8czjfBkOnijmGRHp+8/x8kAnmGj6kv/6PsuZSMMnO/Oka5K3RaoM1q68oEP7
+ midMzMdvjPP0F5VBOFKGdFoFdoKU7xmch2Uv6tW7ZlUxHbPiIszSU/QQO2yLJabe8pFpr8IJhCk
+ hlWKD5x/8FGbKZFDD3Iusiu6k2WqaBbhxg0cyuOd/oaWGaHyh8bSLUdQwyXcxBx3K87FbLYMgCw
+ 4bkfF1TWGAGqyBU5G7+bA3hGq63miwu1Q3zg9IWOXK8ffSsHagAt9UWPik4NiTF+Rg3zDUJLhOX
+ mZjdTtAHwbcmyFtJvE2FVwu9uwnrJTgPdlm4SDRRsuLicJJ6OnJQA7AsOyDxtQcdtsBLPEpU5tk
+ =
+X-Received: by 2002:a5d:64e4:0:b0:3ab:27f9:e4f with SMTP id
+ ffacd0b85a97d-3b5f2e1b872mr12138078f8f.35.1752559992729; 
+ Mon, 14 Jul 2025 23:13:12 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGnJq2sw5ZPSoWTxT6RagPbrxhwXVqPvUOc4VTC95qGVGqr3iNifDbXnsdvE30zVJ++kdK8Yg==
+X-Received: by 2002:a5d:64e4:0:b0:3ab:27f9:e4f with SMTP id
+ ffacd0b85a97d-3b5f2e1b872mr12138057f8f.35.1752559992333; 
+ Mon, 14 Jul 2025 23:13:12 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:165:d60:266c:b13b:afd7:40fd?
+ ([2a01:e0a:165:d60:266c:b13b:afd7:40fd])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3b5e8dc1ecbsm14058060f8f.25.2025.07.14.23.13.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Jul 2025 23:06:37 -0700 (PDT)
-Message-ID: <87c791c8-accb-40de-9ed8-d86bd179dd47@linaro.org>
-Date: Tue, 15 Jul 2025 08:06:36 +0200
+ Mon, 14 Jul 2025 23:13:11 -0700 (PDT)
+Message-ID: <7f8f262f-3490-4588-82b5-20b6af340f45@redhat.com>
+Date: Tue, 15 Jul 2025 08:13:11 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/3] DTB build housekeeping
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
- <marcandre.lureau@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-References: <20250708204806.1898-1-shentey@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250708204806.1898-1-shentey@gmail.com>
+Subject: Re: [PULL 09/11] docs: add support for gb200-bmc
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Ed Tanous <etanous@nvidia.com>
+References: <20250704083723.1410455-1-clg@redhat.com>
+ <20250704083723.1410455-10-clg@redhat.com>
+ <CAFEAcA9-wpDS2_4paQgswqB=NfgxadvGB8WULWGqQXV7d47-Mg@mail.gmail.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <CAFEAcA9-wpDS2_4paQgswqB=NfgxadvGB8WULWGqQXV7d47-Mg@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 3NrlJz-bCuLHIuqPItIYSqs7bu8olW2pZDokGrdqHwA_1752559993
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,37 +158,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/7/25 22:48, Bernhard Beschow wrote:
-> This series removes the bundled device tree blobs from the repository which are
-> redundant to the bundled device tree sources. To make this work, the device tree
-> compiler 'dtc' is now required whenever libfdt is used. Furthermore, dtc can now
-> be built from the bundled libfdt if needed.
+On 7/11/25 14:01, Peter Maydell wrote:
+> On Fri, 4 Jul 2025 at 09:39, Cédric Le Goater <clg@redhat.com> wrote:
+>>
+>> From: Ed Tanous <etanous@nvidia.com>
+>>
+>> This patch updates the docs for support of gb200-bmc.
+>>
+>> Signed-off-by: Ed Tanous <etanous@nvidia.com>
+>> Reviewed-by: Cédric Le Goater <clg@redhat.com>
+>> Link: https://lore.kernel.org/qemu-devel/20250703144249.3348879-3-etanous@nvidia.com
+>> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+>> ---
+>>   docs/system/arm/aspeed.rst | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+>> index 43d27d83cb54..bec0a1dfa8b8 100644
+>> --- a/docs/system/arm/aspeed.rst
+>> +++ b/docs/system/arm/aspeed.rst
+>> @@ -1,5 +1,4 @@
+>> -Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
+>> -=================================================================================================================================================================================================================================================================================================================================================================================================================================
+>> +Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
 > 
-> v2:
-> * Allow building dtc from bundled libfdt (Paolo)
-> * Find dtc iff libfdt is used (Paolo)
-> * Remove dtc configure option (now obsolete)
-> 
-> Bernhard Beschow (3):
->    hw/microblaze: Add missing FDT dependency
->    configure: Ensure existance of dtc when libfdt is used
->    pc-bios/dtb: Remove device tree blobs
-> 
->   MAINTAINERS                                   |   2 +-
->   meson.build                                   |  16 +++--
->   hw/microblaze/Kconfig                         |   4 +-
->   pc-bios/dtb/bamboo.dtb                        | Bin 3211 -> 0 bytes
->   pc-bios/dtb/canyonlands.dtb                   | Bin 9779 -> 0 bytes
->   pc-bios/dtb/meson.build                       |  17 ++---
->   pc-bios/dtb/petalogix-ml605.dtb               | Bin 9882 -> 0 bytes
->   pc-bios/dtb/petalogix-s3adsp1800.dtb          | Bin 8161 -> 0 bytes
->   subprojects/dtc.wrap                          |   1 +
->   .../packagefiles/dtc-meson-override.patch     |  62 ++++++++++++++++++
+> Hi. This change removed the "======" underlining from the title, which
+> has broken the rendering not just of this page but also of the list of
+> arm boards in the parent doc:
 
-Being not familiar enough with this meson fu, I'm only queuing the
-first patch, being a good fix in its own.
+Oh. I missed that. Sorry.
+
+May be we should reduce the line by removing the machine names ?
+
+   Aspeed family boards
+   ====================
+
+or is there a specific reason to keep them ?
 
 Thanks,
 
-Phil.
+C.
+
+
+>   https://www.qemu.org/docs/master/system/target-arm.html
+> as it now has all of aspeed.rst's second-level headers in it.
+> 
+> Could you send a patch to reinstate the underlines, please?
+> 
+> thanks
+> -- PMM
+> 
+
 

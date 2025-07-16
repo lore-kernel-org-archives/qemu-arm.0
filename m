@@ -4,83 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56585C83F27
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Jul 2025 08:25:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A01FC83F27
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Jul 2025 08:37:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubxRP-0003ru-3p; Wed, 16 Jul 2025 04:24:39 -0400
+	id 1ubxdJ-0002b9-4Z; Wed, 16 Jul 2025 04:36:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1ubxP5-0000xh-LA
- for qemu-arm@nongnu.org; Wed, 16 Jul 2025 04:22:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1ubxdH-0002Zl-6u; Wed, 16 Jul 2025 04:36:55 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1ubxP2-0002SM-QQ
- for qemu-arm@nongnu.org; Wed, 16 Jul 2025 04:22:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752654132;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=mwSNZ/vRTi1MYc9f58cyUyN5gGu1jJprC42Xqng7yl0=;
- b=aE17waQgC6LnHH52U7UWv+LAC7jj/TWw5cgE92Kx2S8uF+BVNfFA8JNrR5Vt82P29p80XU
- 0qYCnFXhXRWaa5wP6qteEDXO35hMf0V2MXba8UW94ikWfd7sV+kcrxp8qAX5oaehIUghEU
- kh/NZAM0sUWsksM3VPE5HxPEA8EYFuE=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-594-KYLAxi2tP7K3NjYbSbvh5g-1; Wed,
- 16 Jul 2025 04:22:07 -0400
-X-MC-Unique: KYLAxi2tP7K3NjYbSbvh5g-1
-X-Mimecast-MFC-AGG-ID: KYLAxi2tP7K3NjYbSbvh5g_1752654125
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 67BF71800295; Wed, 16 Jul 2025 08:22:05 +0000 (UTC)
-Received: from virt-mtcollins-01.lab.eng.rdu2.redhat.com
- (virt-mtcollins-01.lab.eng.rdu2.redhat.com [10.8.1.196])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 46373195E772; Wed, 16 Jul 2025 08:22:02 +0000 (UTC)
-From: Shaoqin Huang <shahuang@redhat.com>
-To: qemu-arm@nongnu.org,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Eric Auger <eauger@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Cc: Zhao Liu <zhao1.liu@intel.com>, Shaoqin Huang <shahuang@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, Eric Auger <eric.auger@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Sergio Lopez <slp@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v10 2/2] hw/i386: Add the ramfb romfile compatibility
-Date: Wed, 16 Jul 2025 04:21:52 -0400
-Message-Id: <20250716082153.2219809-3-shahuang@redhat.com>
-In-Reply-To: <20250716082153.2219809-1-shahuang@redhat.com>
-References: <20250716082153.2219809-1-shahuang@redhat.com>
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1ubxdA-00069S-NX; Wed, 16 Jul 2025 04:36:54 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bhqBS5JDVz6DJdC;
+ Wed, 16 Jul 2025 16:35:28 +0800 (CST)
+Received: from frapeml100006.china.huawei.com (unknown [7.182.85.201])
+ by mail.maildlp.com (Postfix) with ESMTPS id 119B71400D7;
+ Wed, 16 Jul 2025 16:36:39 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml100006.china.huawei.com (7.182.85.201) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Wed, 16 Jul 2025 10:36:38 +0200
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Wed, 16 Jul 2025 10:36:38 +0200
+To: Nicolin Chen <nicolinc@nvidia.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
+ <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, "nathanc@nvidia.com"
+ <nathanc@nvidia.com>, "mochs@nvidia.com" <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
+ <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
+Subject: RE: [RFC PATCH v3 09/15] hw/arm/smmuv3-accel: Support nested STE
+ install/uninstall support
+Thread-Topic: [RFC PATCH v3 09/15] hw/arm/smmuv3-accel: Support nested STE
+ install/uninstall support
+Thread-Index: AQHb9SEIjYQyBzgBgkK3ICXEi4CvUbQzsC+AgAC6xIA=
+Date: Wed, 16 Jul 2025 08:36:38 +0000
+Message-ID: <6110ab250e844af9982dddb230fb8707@huawei.com>
+References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
+ <20250714155941.22176-10-shameerali.kolothum.thodi@huawei.com>
+ <aHbgc8LXuuuJ/cz0@Asurada-Nvidia>
+In-Reply-To: <aHbgc8LXuuuJ/cz0@Asurada-Nvidia>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.203.177.241]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=shahuang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,172 +87,81 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-ramfb is a sysbus device so it can only used for machine types where it
-is explicitly enabled:
 
-  # git grep machine_class_allow_dynamic_sysbus_dev.*TYPE_RAMFB_DEVICE
-  hw/arm/virt.c:    machine_class_allow_dynamic_sysbus_dev(mc,
-		  TYPE_RAMFB_DEVICE);
-  hw/i386/microvm.c:    machine_class_allow_dynamic_sysbus_dev(mc,
-		  TYPE_RAMFB_DEVICE);
-  hw/i386/pc_piix.c:    machine_class_allow_dynamic_sysbus_dev(m,
-		  TYPE_RAMFB_DEVICE);
-  hw/i386/pc_q35.c:    machine_class_allow_dynamic_sysbus_dev(m,
-		  TYPE_RAMFB_DEVICE);
-  hw/loongarch/virt.c:    machine_class_allow_dynamic_sysbus_dev(mc,
-		  TYPE_RAMFB_DEVICE);
-  hw/riscv/virt.c:    machine_class_allow_dynamic_sysbus_dev(mc,
-		  TYPE_RAMFB_DEVICE);
 
-So these six are the only machine types we have to worry about.
+> -----Original Message-----
+> From: Nicolin Chen <nicolinc@nvidia.com>
+> Sent: Wednesday, July 16, 2025 12:13 AM
+> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> eric.auger@redhat.com; peter.maydell@linaro.org; jgg@nvidia.com;
+> ddutile@redhat.com; berrange@redhat.com; nathanc@nvidia.com;
+> mochs@nvidia.com; smostafa@google.com; Linuxarm
+> <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
+> jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
+> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org;
+> zhenzhong.duan@intel.com; shameerkolothum@gmail.com
+> Subject: Re: [RFC PATCH v3 09/15] hw/arm/smmuv3-accel: Support nested
+> STE install/uninstall support
+>=20
+> On Mon, Jul 14, 2025 at 04:59:35PM +0100, Shameer Kolothum wrote:
+> > +static void
+> > +smmuv3_accel_ste_range(gpointer key, gpointer value, gpointer
+> user_data)
+> > +{
+> > +    SMMUDevice *sdev =3D (SMMUDevice *)key;
+> > +    uint32_t sid =3D smmu_get_sid(sdev);
+> > +    SMMUSIDRange *sid_range =3D (SMMUSIDRange *)user_data;
+> > +
+> > +    if (sid >=3D sid_range->start && sid <=3D sid_range->end) {
+> > +        SMMUv3State *s =3D sdev->smmu;
+> > +        SMMUState *bs =3D &s->smmu_state;
+> > +
+> > +        smmuv3_accel_install_nested_ste(bs, sdev, sid);
+> > +    }
+> > +}
+> > +
+> > +void
+> > +smmuv3_accel_install_nested_ste_range(SMMUState *bs,
+> SMMUSIDRange *range)
+> > +{
+> > +    if (!bs->accel) {
+> > +        return;
+> > +    }
+> > +
+> > +    g_hash_table_foreach(bs->configs, smmuv3_accel_ste_range, range);
+>=20
+> This will not work correctly?
+>=20
+> The bs->configs is a cache that gets an entry inserted to when a
+> config is fetched via smmuv3_get_config(), which gets invoked by
+> smmuv3_notify_iova() and smmuv3_translate() only.
+>=20
+> But CMDQ_OP_CFGI_ALL can actually happen very early, e.g. Linux
+> driver does that in the probe() right after SMMU CMDQ is enabled,
+> at which point neither smmuv3_notify_iova nor smmuv3_translate
+> could ever get invoked, meaning that the g_hash_table is empty.
+>=20
+> Without the acceleration, this foreach works because vSMMU does
+> not need to do anything since the cache is indeed empty.
+>=20
+> But, with accel, it must call smmuv3_accel_install_nested_ste().
 
-The three x86 machine types (pc, q35, microvm) will actually use the rom
-(when booting with seabios).
+Ok. The only place I can see CMDQ_OP_CFGI_ALL get invoked by Linux
+kernel is during arm_smmu_device_reset() and that is to clear all.
+But I am not sure we will have any valid STEs at that time. Just curious,
+are you seeing any issues with this at the moment?
+=20
+> So, I think this should foreach the viommu->device_list instead.
 
-For arm/riscv/loongarch virt we want to disable the rom.
+But agree. Using device_list is more appropriate unless we cache the=20
+configs during each install_netsed_ste() path.
 
-This patch sets ramfb romfile option to false by default, except for x86
-machines types (pc, q35, microvm) which need the rom file when booting
-with seabios and machine types <= 10.0 (handling the case of arm virt,
-for compat reasons).
-
-At the same time, set the "use-legacy-x86-rom" property to true on those
-historical versioned machine types in order to avoid the memory layout
-being changed.
-
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
----
- hw/core/machine.c             |  2 ++
- hw/display/ramfb-standalone.c |  2 +-
- hw/i386/microvm.c             |  3 +++
- hw/i386/pc_piix.c             | 10 ++++++++++
- hw/i386/pc_q35.c              |  3 +++
- hw/vfio/pci.c                 |  2 +-
- 6 files changed, 20 insertions(+), 2 deletions(-)
-
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index e869821b22..a7043e2a34 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -39,6 +39,8 @@
- 
- GlobalProperty hw_compat_10_0[] = {
-     { "scsi-hd", "dpofua", "off" },
-+    { "ramfb", "use-legacy-x86-rom", "true"},
-+    { "vfio-pci", "use-legacy-x86-rom", "true" },
- };
- const size_t hw_compat_10_0_len = G_N_ELEMENTS(hw_compat_10_0);
- 
-diff --git a/hw/display/ramfb-standalone.c b/hw/display/ramfb-standalone.c
-index 82d8c69f89..72b2071aed 100644
---- a/hw/display/ramfb-standalone.c
-+++ b/hw/display/ramfb-standalone.c
-@@ -64,7 +64,7 @@ static const VMStateDescription ramfb_dev_vmstate = {
- static const Property ramfb_properties[] = {
-     DEFINE_PROP_BOOL("x-migrate", RAMFBStandaloneState, migrate,  true),
-     DEFINE_PROP_BOOL("use-legacy-x86-rom", RAMFBStandaloneState,
--                     use_legacy_x86_rom, true),
-+                     use_legacy_x86_rom, false),
- };
- 
- static void ramfb_class_initfn(ObjectClass *klass, const void *data)
-diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-index e0daf0d4fc..6666db9e4f 100644
---- a/hw/i386/microvm.c
-+++ b/hw/i386/microvm.c
-@@ -49,6 +49,7 @@
- #include "hw/acpi/generic_event_device.h"
- #include "hw/pci-host/gpex.h"
- #include "hw/usb/xhci.h"
-+#include "hw/vfio/pci.h"
- 
- #include "elf.h"
- #include "kvm/kvm_i386.h"
-@@ -633,6 +634,8 @@ GlobalProperty microvm_properties[] = {
-      * so reserving io space is not going to work.  Turn it off.
-      */
-     { "pcie-root-port", "io-reserve", "0" },
-+    { TYPE_RAMFB_DEVICE, "use-legacy-x86-rom", "true" },
-+    { TYPE_VFIO_PCI, "use-legacy-x86-rom", "true" },
- };
- 
- static void microvm_class_init(ObjectClass *oc, const void *data)
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index ea7572e783..8ec8d8ae6d 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -49,6 +49,7 @@
- #include "hw/i2c/smbus_eeprom.h"
- #include "system/memory.h"
- #include "hw/acpi/acpi.h"
-+#include "hw/vfio/pci.h"
- #include "qapi/error.h"
- #include "qemu/error-report.h"
- #include "system/xen.h"
-@@ -77,6 +78,13 @@ static const int ide_iobase2[MAX_IDE_BUS] = { 0x3f6, 0x376 };
- static const int ide_irq[MAX_IDE_BUS] = { 14, 15 };
- #endif
- 
-+static GlobalProperty pc_piix_compat_defaults[] = {
-+    { TYPE_RAMFB_DEVICE, "use-legacy-x86-rom", "true" },
-+    { TYPE_VFIO_PCI, "use-legacy-x86-rom", "true" },
-+};
-+static const size_t pc_piix_compat_defaults_len =
-+    G_N_ELEMENTS(pc_piix_compat_defaults);
-+
- /*
-  * Return the global irq number corresponding to a given device irq
-  * pin. We could also use the bus number to have a more precise mapping.
-@@ -482,6 +490,8 @@ static void pc_i440fx_machine_options(MachineClass *m)
-                                    pc_set_south_bridge);
-     object_class_property_set_description(oc, "x-south-bridge",
-                                      "Use a different south bridge than PIIX3");
-+    compat_props_add(m->compat_props,
-+                     pc_piix_compat_defaults, pc_piix_compat_defaults_len);
- }
- 
- static void pc_i440fx_machine_10_1_options(MachineClass *m)
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 33211b1876..0096eef6f4 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -45,6 +45,7 @@
- #include "hw/i386/pc.h"
- #include "hw/i386/amd_iommu.h"
- #include "hw/i386/intel_iommu.h"
-+#include "hw/vfio/pci.h"
- #include "hw/virtio/virtio-iommu.h"
- #include "hw/display/ramfb.h"
- #include "hw/ide/pci.h"
-@@ -67,6 +68,8 @@
- 
- static GlobalProperty pc_q35_compat_defaults[] = {
-     { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "39" },
-+    { TYPE_RAMFB_DEVICE, "use-legacy-x86-rom", "true" },
-+    { TYPE_VFIO_PCI, "use-legacy-x86-rom", "true" },
- };
- static const size_t pc_q35_compat_defaults_len =
-     G_N_ELEMENTS(pc_q35_compat_defaults);
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index 6547a95ccd..b4923e4710 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -3711,7 +3711,7 @@ static const TypeInfo vfio_pci_dev_info = {
- static const Property vfio_pci_dev_nohotplug_properties[] = {
-     DEFINE_PROP_BOOL("ramfb", VFIOPCIDevice, enable_ramfb, false),
-     DEFINE_PROP_BOOL("use-legacy-x86-rom", VFIOPCIDevice,
--                     use_legacy_x86_rom, true),
-+                     use_legacy_x86_rom, false),
-     DEFINE_PROP_ON_OFF_AUTO("x-ramfb-migrate", VFIOPCIDevice, ramfb_migrate,
-                             ON_OFF_AUTO_AUTO),
- };
--- 
-2.40.1
-
+Thanks,
+Shameer=20
 

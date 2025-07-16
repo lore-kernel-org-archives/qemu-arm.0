@@ -4,76 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFFA5C83F34
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Jul 2025 11:30:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 018A5C83F1B
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Jul 2025 11:44:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uc0KR-0001vf-CN; Wed, 16 Jul 2025 07:29:39 -0400
+	id 1uc0YD-0004xU-RZ; Wed, 16 Jul 2025 07:43:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@linux.beauty>)
- id 1uc0Cy-00034A-BV; Wed, 16 Jul 2025 07:21:56 -0400
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1uc0XM-0004EZ-Sz
+ for qemu-arm@nongnu.org; Wed, 16 Jul 2025 07:43:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@linux.beauty>)
- id 1uc0Cw-0001An-BD; Wed, 16 Jul 2025 07:21:56 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1752664821; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=gyoebC35v+ys6LSvZo11XETOECJweIaILQ4LVYcLReqxOyYx0PHBPHxyqFGplMdOpEIcqwruk0Xo8rl1jt1/2BFt9q3KCV/984xNAL2NBkDR9vEQ5HjZf5bP6NkMbboA822ZXnecmOHnpaSOKDU31wtr1srnW9C2YZoC59kReXI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1752664821;
- h=Content-Transfer-Encoding:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To:Cc;
- bh=hpzfBSOA39ym1MCPK/wVMzJwkjoefykvPuXbZzLpGMc=; 
- b=jH81O11gzUcI4CMdXuwOGqdar0jQUQWpWB0o+zPNj18HPJSEQPhQVsAIv6VIHc/YEeO72YxE4efjwV/AG9dvRtOxlGiFhsy5+q5gEEL+TSkqTEDP7hSsX79it6kBeG3xtZFNIj/eD3K52bdysMOQ0lI/+RMTIRGf83XzpS+9fic=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=linux.beauty;
- spf=pass  smtp.mailfrom=me@linux.beauty;
- dmarc=pass header.from=<me@linux.beauty>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1752664821; 
- s=zmail; d=linux.beauty; i=me@linux.beauty;
- h=From:From:To:To:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
- bh=hpzfBSOA39ym1MCPK/wVMzJwkjoefykvPuXbZzLpGMc=;
- b=JZTJSaY2zRbDXMaHZmOkaGL9nZdaNWeb/iSB7XKHJg8FaB8Mk4gwmQJeqkMMWFjx
- 2mmLVJpaA9nsCkk/QKdE/Fbr9kxsxcbekMxbkofUBPcXUNRUWFUOzH2Wo3dCGuFMjQ8
- Jmd5UWBdzaHKOSwCk58z6b1ywDvic/RLBTM+AhBk=
-Received: by mx.zohomail.com with SMTPS id 1752664819828742.8670461414554;
- Wed, 16 Jul 2025 04:20:19 -0700 (PDT)
-From: Li Chen <me@linux.beauty>
-To: "Peter Maydell" <peter.maydell@linaro.org>,
- "Shannon Zhao" <shannon.zhaosl@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- "Igor Mammedov" <imammedo@redhat.com>, "Ani Sinha" <anisinha@redhat.com>,
- "Eduardo Habkost" <eduardo@habkost.net>,
- "Marcel Apfelbaum" <marcel.apfelbaum@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Yanan Wang" <wangyanan55@huawei.com>, "Zhao Liu" <zhao1.liu@intel.com>,
- "Song Gao" <gaosong@loongson.cn>, "Jiaxun Yang" <jiaxun.yang@flygoat.com>,
- "Sunil V L" <sunilvl@ventanamicro.com>,
- "Palmer Dabbelt" <palmer@dabbelt.com>,
- "Alistair Francis" <alistair.francis@wdc.com>,
- "Weiwei Li" <liwei1518@gmail.com>, "qemu-arm" <qemu-arm@nongnu.org>,
- "qemu-devel" <qemu-devel@nongnu.org>, "qemu-riscv" <qemu-riscv@nongnu.org>
-Subject: [PATCH v5 3/4] tests/qtest/bios-tables-test: Add test for disabling
- SPCR on RISC-V
-Date: Wed, 16 Jul 2025 19:19:55 +0800
-Message-ID: <20250716111959.404917-4-me@linux.beauty>
-X-Mailer: git-send-email 2.50.0
-In-Reply-To: <20250716111959.404917-1-me@linux.beauty>
-References: <20250716111959.404917-1-me@linux.beauty>
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1uc0XF-0005Mp-U9
+ for qemu-arm@nongnu.org; Wed, 16 Jul 2025 07:42:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1752666169;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=ubdDaC1/Grewr48cxcXxbH5EM6azpje+a9podswr42E=;
+ b=CjegbCcaFXt1vxkdXnpRzGBDeuHm2bG8t+jGNVwbIedbv9yezdTftlviO+K7DV0a8RBOP6
+ PHD9flsKaswfLSnYWH6DwVcVSinvVstkqhvHGwBUNutvkyeaZry2g03W+nu3Sv/Qmfwpju
+ TVkSr0/KE6EQVuvfOU/GEFFYFP036C8=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-26-XDTY7FPeM3OPSZSWVyFjeA-1; Wed, 16 Jul 2025 07:42:48 -0400
+X-MC-Unique: XDTY7FPeM3OPSZSWVyFjeA-1
+X-Mimecast-MFC-AGG-ID: XDTY7FPeM3OPSZSWVyFjeA_1752666167
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-45600d19a2aso35753905e9.1
+ for <qemu-arm@nongnu.org>; Wed, 16 Jul 2025 04:42:47 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1752666167; x=1753270967;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ubdDaC1/Grewr48cxcXxbH5EM6azpje+a9podswr42E=;
+ b=PgmkXW+linDNVIS+DNp33MX7wUJBMS085FJiBff7+ohrX4rox4x1bp5EW+seoZBprG
+ f/oo65NkEtkNPiGtaQLQ/XePQ41Y9l2jQgHEuL4CK6XXQet2w6B8K3Gi9GlKyXGdYNgQ
+ huZXWB3LD+ho+aCBsxw1zqomJTE0LQdNGuVWz/ptHLmxgz0z3KJSIGi2gOCmsvcU96Hi
+ 9JNRIaXErUPaDsT45gedVF1nddMc6PyPiON2IXhGFVn+DcGbI6Goyk46OzpgzB8b8iPJ
+ O2gmbGa6qzPMDHSgXDL/6sWq1nrmW8GlkztfqeUW86EGAx6vnrZXWkibJ9Da94+OmA8V
+ K1CA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUA5HWGarbNBgM5aQ76Rtp2jixgKt6YWfcC2BC5lyKR87F9dbo8TtyM2tommtelv8BNyBrUj7MJdA==@nongnu.org
+X-Gm-Message-State: AOJu0YxvoA4ASgTXXwU/o00lLkN3KhdCFvzgwSNf1Xqat77ksB/GwO4e
+ LspuFlXwUaRR63wCpZMuDhBEI+s7OiT0oKBFGkhtzmB6WJfnXDcKhRCGLDgZd76HNTJikdOV04P
+ xBijeimc2c14G0ttXHH7sS4KMV6+4OeKdB2DjEMBIcgffvEpPbCAM3g==
+X-Gm-Gg: ASbGnct84tLRReb9LvCF8RSKAIfjqTXd0QSkLjEzgP3gyGGWuQdEuXaUTknWaUC13ES
+ FoshSuJzCnWunvVOh9PlECm/nOX9eX0zQRjYQJ07c+8JbsZUVxxP0k5qipcFBgSQB63Wq5f3bc8
+ rKeZij/TkviKOKQxhlZSDfbIy+kKc5VLJ+NJg2zR6zMNrGdo5Ausj/X/PLpakj2gBkN5mapUrui
+ LDnex2IsgNOagtz5TZNfrOikYJji4NfQ1rrRmeDrNNLt3X1GtqRwdtaQ7f0ASyS42iVmlDu5lt9
+ 1BrVYtGCrXNS0Sil72RKz7VAD8rRw9do
+X-Received: by 2002:a05:600d:9:b0:456:10a8:ff7 with SMTP id
+ 5b1f17b1804b1-456306da0e0mr10335485e9.28.1752666166768; 
+ Wed, 16 Jul 2025 04:42:46 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG9MNvU/c2VNfJQLL+7WdLBSm/91m4ZifxUd7U4biH2fopHatpEebi+6DWmwp7gPIBeEHUwbQ==
+X-Received: by 2002:a05:600d:9:b0:456:10a8:ff7 with SMTP id
+ 5b1f17b1804b1-456306da0e0mr10335295e9.28.1752666166394; 
+ Wed, 16 Jul 2025 04:42:46 -0700 (PDT)
+Received: from redhat.com ([2a0d:6fc0:150d:fc00:de3:4725:47c6:6809])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3b5e8bd18ffsm17367453f8f.9.2025.07.16.04.42.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Jul 2025 04:42:45 -0700 (PDT)
+Date: Wed, 16 Jul 2025 07:42:42 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Li Chen <me@linux.beauty>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?iso-8859-1?Q?=22Philippe_Mathieu-Daud=E9=22?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Song Gao <gaosong@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Sunil V L <sunilvl@ventanamicro.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Weiwei Li <liwei1518@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-devel <qemu-devel@nongnu.org>, qemu-riscv <qemu-riscv@nongnu.org>,
+ Li Chen <chenl311@chinatelecom.cn>
+Subject: Re: [PATCH REPOST v4 4/4] acpi/virt: suppress UART device & SPCR
+ when guest has no serial hardware
+Message-ID: <20250716074207-mutt-send-email-mst@kernel.org>
+References: <20250528105404.457729-1-me@linux.beauty>
+ <20250528105404.457729-5-me@linux.beauty>
+ <20250714144303-mutt-send-email-mst@kernel.org>
+ <1981309e2fa.31709fd32611761.5900055972026140740@linux.beauty>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.112; envelope-from=me@linux.beauty;
- helo=sender4-pp-f112.zoho.com
+In-Reply-To: <1981309e2fa.31709fd32611761.5900055972026140740@linux.beauty>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Pfn7aCQCV3BZ8VcKbtC-VJArtISB2zMBtvxeJ1QGKmA_1752666167
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,61 +125,13 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Li Chen <chenl311@chinatelecom.cn>
+On Wed, Jul 16, 2025 at 07:41:11PM +0800, Li Chen wrote:
+> Hi Michael,
+> 
+> Thanks for your kind review! All issues below have been fixed in v5:
+> https://lore.kernel.org/qemu-devel/20250716111959.404917-5-me@linux.beauty/T/#m696cee9a95646add1b74b866c3d6761aa4c5c762
 
-Add ACPI SPCR table test case for RISC-V when SPCR was off.
-
-Signed-off-by: Li Chen <chenl311@chinatelecom.cn>
-Reviewed-by: Sunil V L <sunilvl@ventanamicro.com>
----
-
-Notes:
-    Changes since v3: Add Reviewed-by from Sunil V L <sunilvl@ventanamicro.com>
-
- tests/qtest/bios-tables-test.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
-
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index ede846f905..04a9d8a4da 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -1807,6 +1807,26 @@ static void test_acpi_aarch64_virt_tcg_acpi_spcr(void)
-                   " -machine spcr=off", &data);
-     free_test_data(&data);
- }
-+
-+static void test_acpi_riscv_virt_tcg_acpi_spcr(void)
-+{
-+    test_data data = {
-+        .machine = "virt",
-+        .arch = "riscv64",
-+        .tcg_only = true,
-+        .uefi_fl1 = "pc-bios/edk2-riscv-code.fd",
-+        .uefi_fl2 = "pc-bios/edk2-riscv-vars.fd",
-+        .cd = "tests/data/uefi-boot-images/bios-tables-test.riscv64.iso.qcow2",
-+        .ram_start = 0x80000000ULL,
-+        .scan_len = 128ULL * 1024 * 1024,
-+        .variant = ".acpispcr",
-+    };
-+
-+    test_acpi_one("-cpu rva22s64 "
-+                  "-machine spcr=off", &data);
-+    free_test_data(&data);
-+}
-+
- static void test_acpi_tcg_acpi_hmat(const char *machine, const char *arch)
- {
-     test_data data = {};
-@@ -2633,6 +2653,8 @@ int main(int argc, char *argv[])
-             qtest_add_func("acpi/virt", test_acpi_riscv64_virt_tcg);
-             qtest_add_func("acpi/virt/numamem",
-                            test_acpi_riscv64_virt_tcg_numamem);
-+            qtest_add_func("acpi/virt/acpispcr",
-+                           test_acpi_riscv_virt_tcg_acpi_spcr);
-         }
-     }
-     ret = g_test_run();
--- 
-2.50.0
+Past soft freeze now: I tagged this but pls remind me after the release
+to help make sure it's not lost.
 
 

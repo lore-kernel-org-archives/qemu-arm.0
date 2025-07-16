@@ -4,34 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A01FC83F27
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Jul 2025 08:37:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12F6EC83F22
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Jul 2025 09:28:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubxdJ-0002b9-4Z; Wed, 16 Jul 2025 04:36:57 -0400
+	id 1ubyQP-0006ub-SB; Wed, 16 Jul 2025 05:27:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ubxdH-0002Zl-6u; Wed, 16 Jul 2025 04:36:55 -0400
+ id 1ubyQM-0006rk-Su; Wed, 16 Jul 2025 05:27:38 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ubxdA-00069S-NX; Wed, 16 Jul 2025 04:36:54 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bhqBS5JDVz6DJdC;
- Wed, 16 Jul 2025 16:35:28 +0800 (CST)
+ id 1ubyQH-0008Kw-Tn; Wed, 16 Jul 2025 05:27:38 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bhrGK1w8Bz6L53d;
+ Wed, 16 Jul 2025 17:23:53 +0800 (CST)
 Received: from frapeml100006.china.huawei.com (unknown [7.182.85.201])
- by mail.maildlp.com (Postfix) with ESMTPS id 119B71400D7;
- Wed, 16 Jul 2025 16:36:39 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 826591404A6;
+ Wed, 16 Jul 2025 17:27:25 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (7.182.85.71) by
  frapeml100006.china.huawei.com (7.182.85.201) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 16 Jul 2025 10:36:38 +0200
+ 15.1.2507.39; Wed, 16 Jul 2025 11:27:25 +0200
 Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
  frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Wed, 16 Jul 2025 10:36:38 +0200
-To: Nicolin Chen <nicolinc@nvidia.com>
+ Wed, 16 Jul 2025 11:27:25 +0200
+To: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>, Nicolin Chen
+ <nicolinc@nvidia.com>
 CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
  <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
  "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
@@ -42,19 +43,20 @@ CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
  "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
  <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
  "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
  "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
-Subject: RE: [RFC PATCH v3 09/15] hw/arm/smmuv3-accel: Support nested STE
- install/uninstall support
-Thread-Topic: [RFC PATCH v3 09/15] hw/arm/smmuv3-accel: Support nested STE
- install/uninstall support
-Thread-Index: AQHb9SEIjYQyBzgBgkK3ICXEi4CvUbQzsC+AgAC6xIA=
-Date: Wed, 16 Jul 2025 08:36:38 +0000
-Message-ID: <6110ab250e844af9982dddb230fb8707@huawei.com>
+Subject: RE: [RFC PATCH v3 05/15] hw/arm/smmuv3-accel: Introduce smmuv3 accel
+ device
+Thread-Topic: [RFC PATCH v3 05/15] hw/arm/smmuv3-accel: Introduce smmuv3 accel
+ device
+Thread-Index: AQHb9NhIGqv2DKEgZE6UQbgEjow1nbQy4MqAgABv5oCAAKpOAIAAglBA
+Date: Wed, 16 Jul 2025 09:27:25 +0000
+Message-ID: <6ee7908c8ea44270b9f4aa64abacaace@huawei.com>
 References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-10-shameerali.kolothum.thodi@huawei.com>
- <aHbgc8LXuuuJ/cz0@Asurada-Nvidia>
-In-Reply-To: <aHbgc8LXuuuJ/cz0@Asurada-Nvidia>
+ <20250714155941.22176-6-shameerali.kolothum.thodi@huawei.com>
+ <IA3PR11MB9136ACFB4721D47304A9885C9257A@IA3PR11MB9136.namprd11.prod.outlook.com>
+ <aHaP3ULG90gGqWHJ@Asurada-Nvidia>
+ <IA3PR11MB9136C94472D7D50CDC627CB49256A@IA3PR11MB9136.namprd11.prod.outlook.com>
+In-Reply-To: <IA3PR11MB9136C94472D7D50CDC627CB49256A@IA3PR11MB9136.namprd11.prod.outlook.com>
 Accept-Language: en-GB, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -95,73 +97,79 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 > -----Original Message-----
-> From: Nicolin Chen <nicolinc@nvidia.com>
-> Sent: Wednesday, July 16, 2025 12:13 AM
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
-> eric.auger@redhat.com; peter.maydell@linaro.org; jgg@nvidia.com;
-> ddutile@redhat.com; berrange@redhat.com; nathanc@nvidia.com;
-> mochs@nvidia.com; smostafa@google.com; Linuxarm
-> <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
-> jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
-> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org;
-> zhenzhong.duan@intel.com; shameerkolothum@gmail.com
-> Subject: Re: [RFC PATCH v3 09/15] hw/arm/smmuv3-accel: Support nested
-> STE install/uninstall support
+> From: Duan, Zhenzhong <zhenzhong.duan@intel.com>
+> Sent: Wednesday, July 16, 2025 4:39 AM
+> To: Nicolin Chen <nicolinc@nvidia.com>
+> Cc: Shameerali Kolothum Thodi
+> <shameerali.kolothum.thodi@huawei.com>; qemu-arm@nongnu.org;
+> qemu-devel@nongnu.org; eric.auger@redhat.com;
+> peter.maydell@linaro.org; jgg@nvidia.com; ddutile@redhat.com;
+> berrange@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
+> smostafa@google.com; Linuxarm <linuxarm@huawei.com>; Wangzhou (B)
+> <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
+> Jonathan Cameron <jonathan.cameron@huawei.com>;
+> zhangfei.gao@linaro.org; shameerkolothum@gmail.com
+> Subject: RE: [RFC PATCH v3 05/15] hw/arm/smmuv3-accel: Introduce
+> smmuv3 accel device
 >=20
-> On Mon, Jul 14, 2025 at 04:59:35PM +0100, Shameer Kolothum wrote:
-> > +static void
-> > +smmuv3_accel_ste_range(gpointer key, gpointer value, gpointer
-> user_data)
-> > +{
-> > +    SMMUDevice *sdev =3D (SMMUDevice *)key;
-> > +    uint32_t sid =3D smmu_get_sid(sdev);
-> > +    SMMUSIDRange *sid_range =3D (SMMUSIDRange *)user_data;
-> > +
-> > +    if (sid >=3D sid_range->start && sid <=3D sid_range->end) {
-> > +        SMMUv3State *s =3D sdev->smmu;
-> > +        SMMUState *bs =3D &s->smmu_state;
-> > +
-> > +        smmuv3_accel_install_nested_ste(bs, sdev, sid);
-> > +    }
-> > +}
-> > +
-> > +void
-> > +smmuv3_accel_install_nested_ste_range(SMMUState *bs,
-> SMMUSIDRange *range)
-> > +{
-> > +    if (!bs->accel) {
-> > +        return;
-> > +    }
-> > +
-> > +    g_hash_table_foreach(bs->configs, smmuv3_accel_ste_range, range);
 >=20
-> This will not work correctly?
 >=20
-> The bs->configs is a cache that gets an entry inserted to when a
-> config is fetched via smmuv3_get_config(), which gets invoked by
-> smmuv3_notify_iova() and smmuv3_translate() only.
+> >-----Original Message-----
+> >From: Nicolin Chen <nicolinc@nvidia.com>
+> >Subject: Re: [RFC PATCH v3 05/15] hw/arm/smmuv3-accel: Introduce
+> >smmuv3 accel device
+> >
+> >On Tue, Jul 15, 2025 at 10:48:31AM +0000, Duan, Zhenzhong wrote:
+> >> >+static const TypeInfo types[] =3D {
+> >> >+    {
+> >> >+        .name =3D TYPE_ARM_SMMUV3_ACCEL,
+> >> >+        .parent =3D TYPE_ARM_SMMUV3,
+> >> >+        .class_init =3D smmuv3_accel_class_init,
+> >> >+    }
+> >>
+> >> In cover-letter, I see "-device arm-smmuv3", so where is above accel
+> >> device created so we could use smmuv3_accel_ops?
+> >
+> >The smmu-common.c is the shared file between accel and non-accel
+> >instances. It has a module property:
+> >    DEFINE_PROP_BOOL("accel", SMMUState, accel, false),
 >=20
-> But CMDQ_OP_CFGI_ALL can actually happen very early, e.g. Linux
-> driver does that in the probe() right after SMMU CMDQ is enabled,
-> at which point neither smmuv3_notify_iova nor smmuv3_translate
-> could ever get invoked, meaning that the g_hash_table is empty.
->=20
-> Without the acceleration, this foreach works because vSMMU does
-> not need to do anything since the cache is indeed empty.
->=20
-> But, with accel, it must call smmuv3_accel_install_nested_ste().
+> It looks we expose a new TYPE_ARM_SMMUV3_ACCEL type device just for
+> exporting accel iommu_ops?
+> What about returning accel iommu_ops directly in
+> smmu_iommu_ops_by_type() and drop the new type?
 
-Ok. The only place I can see CMDQ_OP_CFGI_ALL get invoked by Linux
-kernel is during arm_smmu_device_reset() and that is to clear all.
-But I am not sure we will have any valid STEs at that time. Just curious,
-are you seeing any issues with this at the moment?
-=20
-> So, I think this should foreach the viommu->device_list instead.
+We are not creating any new device here. Its just a Class object of differe=
+nt type.
+I had a different approach previously and Eric suggested to try this as the=
+re
+are examples in VFIO/IOMMUFD for something like this.
 
-But agree. Using device_list is more appropriate unless we cache the=20
-configs during each install_netsed_ste() path.
+https://lore.kernel.org/qemu-devel/1105d100-dd1e-4aca-b518-50f903967416@red=
+hat.com/
 
 Thanks,
-Shameer=20
+Shameer
+
+> >
+> >where it directs to different iommu_ops:
+> >937 static const PCIIOMMUOps *smmu_iommu_ops_by_type(SMMUState
+> *s)
+> >938 {
+> >939     SMMUBaseClass *sbc;
+> >940
+> >941     if (s->accel) {
+> >942         sbc =3D
+> >ARM_SMMU_CLASS(object_class_by_name(TYPE_ARM_SMMUV3_ACCEL));
+> >943     } else {
+> >944         sbc =3D
+> >ARM_SMMU_CLASS(object_class_by_name(TYPE_ARM_SMMU));
+> >945     }
+> >946     assert(sbc->iommu_ops);
+> >947
+> >948     return sbc->iommu_ops;
+> >949 }
+> >
+> >Nicolin
+
 

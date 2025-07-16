@@ -4,199 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 218EEC83F1B
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Jul 2025 10:43:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59A69C83F1B
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Jul 2025 11:27:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubzag-0004PS-Fp; Wed, 16 Jul 2025 06:42:22 -0400
+	id 1uc0IC-00071o-P9; Wed, 16 Jul 2025 07:27:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1ubzRk-0002JB-Hc; Wed, 16 Jul 2025 06:33:08 -0400
-Received: from mgamail.intel.com ([192.198.163.11])
+ (Exim 4.90_1) (envelope-from <me@linux.beauty>)
+ id 1uc0CD-0001l0-LS; Wed, 16 Jul 2025 07:21:09 -0400
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1ubzRi-00067G-H8; Wed, 16 Jul 2025 06:33:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1752661986; x=1784197986;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=rkusqY8E1nnh0XgWTuIIs1eghLfZXh3c8TYPUjX6FeU=;
- b=O35Qqm6aImRpZ1LYx3PcPFuFjYsehvsvmVvrM7Ni+BGz/BbZKV4JbdT1
- 6hBH5J7vcp/Jg/DLFqnPnCZKsRjiHOZdsYZWC4d1Uos32NNok2FCOAkx7
- bBv9ayOH1uEZro09ncKWHJt4eJq9OsLX9aqEpIjdSXf2Fb4UfbNwLjUaE
- MZSSdcBQy8uk3npJHkjiILTXkfSKxpPXTvppUtJDCE3CD2iZXyS7AS0Kw
- d7DxjnzCR2SH7ZPkzkiiXBeepppkdRAemhiHeXWfVMpwSavt1Kb+JrN3v
- kD3kLSHd5PSuRk5bee4UfIYkkvdfV46nXlgJti9c7QmLMpOxpl2BJdmzh w==;
-X-CSE-ConnectionGUID: X5w8y4ksSmOcFqKRs8OYOQ==
-X-CSE-MsgGUID: vkgclA6DQqqUUykY+r+HtQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11493"; a="65472387"
-X-IronPort-AV: E=Sophos;i="6.16,315,1744095600"; d="scan'208";a="65472387"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Jul 2025 03:33:03 -0700
-X-CSE-ConnectionGUID: 0ZPx+JYiSUWWeb2UBzDKvg==
-X-CSE-MsgGUID: FKErkWpqRm+Jdc7F7Czfew==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,315,1744095600"; d="scan'208";a="158021023"
-Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
- by fmviesa008.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Jul 2025 03:33:03 -0700
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Wed, 16 Jul 2025 03:33:02 -0700
-Received: from ORSEDG901.ED.cps.intel.com (10.7.248.11) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26 via Frontend Transport; Wed, 16 Jul 2025 03:33:02 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (40.107.92.51) by
- edgegateway.intel.com (134.134.137.111) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Wed, 16 Jul 2025 03:33:02 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=CT6n57PDpTO0EB35AchsAlBhZj3h17bO3m0QMn47bomG9kL4LtZ283j/1P9roBG1wsRDCy+5LcbtdurQefvso8ssR2I90i8zpbVe+UWHxzwGZMd68yQNTz0b1MG04gasYFdUTIZ73PfwaB9fuipJKusECvgeG+KxvQrYAuGRh2QMQJG1BRWkxEJIfXDRXsnAHVc1ObZVM8ZimUMSy58wB8DS5Hh4Di1zkC4nNgbac8Qxrgc4Fg3edyrf5R28STzEgTrMZzd4bf3e1xlEo+ohcPGXA5nSRyPCYUpVZcmDy2MUd/KX7yiLwJvArHfU5UJRnc4Pcwva7eKt2eM05s8FxQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=iU8Tu1fnWuh8ljLjowCvWJ9WhFu0UWugbN5PQ42lmsU=;
- b=xcopyxcluPktXp+3rzUeElsftgpLA2d5IZt8CUcXpdbTMI+pt4RYzjjexjToCgb4pXBQuZ7EF/qJB7czIC/qqoDkEf76MnFN1u3Nkji5DwCV9uR10a9+s5agz02syazUo/8T+5BzB8Z4gMq3rgXsSe+VESzMZ1YQwVJjSDdySaqcegzpjASM3oHwj9yFBUU93ifR8lHh3r6PduaZQAyXXyIFm+5K59N6xxYOSgkTbP+tyV6KOxAoe67F8tJBtZKSN0jQB/SDh56EHPe51ql8e931BdEg1pyy/xYqIPvx6zjS3BzccClP65HRkswELg6470A+cuJNap8FZF0cJcnqXg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from IA3PR11MB9136.namprd11.prod.outlook.com (2603:10b6:208:574::12)
- by PH0PR11MB4966.namprd11.prod.outlook.com (2603:10b6:510:42::21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8922.32; Wed, 16 Jul
- 2025 10:32:22 +0000
-Received: from IA3PR11MB9136.namprd11.prod.outlook.com
- ([fe80::604b:77a4:b1be:3f13]) by IA3PR11MB9136.namprd11.prod.outlook.com
- ([fe80::604b:77a4:b1be:3f13%4]) with mapi id 15.20.8835.023; Wed, 16 Jul 2025
- 10:32:22 +0000
-From: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>, "Nicolin
- Chen" <nicolinc@nvidia.com>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
- <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>, "nathanc@nvidia.com"
- <nathanc@nvidia.com>, "mochs@nvidia.com" <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>,
- "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
- <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
-Subject: RE: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict accelerated
- SMMUv3 to vfio-pci endpoints with iommufd
-Thread-Topic: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict accelerated
- SMMUv3 to vfio-pci endpoints with iommufd
-Thread-Index: AQHb9Nia/FYvy/Va1kO7Qt3Wn+Al1LQy3OPggACdxwCAAMPz8IAAQTsAgAAFemA=
-Date: Wed, 16 Jul 2025 10:32:22 +0000
-Message-ID: <IA3PR11MB91362923E44404F370F3EF559256A@IA3PR11MB9136.namprd11.prod.outlook.com>
-References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-7-shameerali.kolothum.thodi@huawei.com>
- <IA3PR11MB9136A660E9FAE540037986FB9257A@IA3PR11MB9136.namprd11.prod.outlook.com>
- <aHaW9IpjbaVcRUpA@Asurada-Nvidia>
- <IA3PR11MB9136E0D793F99E3837D208229256A@IA3PR11MB9136.namprd11.prod.outlook.com>
- <798f739303f74fbca49a09a623a0a118@huawei.com>
-In-Reply-To: <798f739303f74fbca49a09a623a0a118@huawei.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA3PR11MB9136:EE_|PH0PR11MB4966:EE_
-x-ms-office365-filtering-correlation-id: 9b0397c0-2199-4d65-8361-08ddc4540cd6
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|376014|7416014|38070700018; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?nu2PNcHSIMHTgLa9DgDZHJTwOXt2SalzlP/FiuHEzXoB4/YjGg1588iyZkCm?=
- =?us-ascii?Q?SSkQnr8oF23sEXy6OUO1aGHl6mT57UdbfCc0V2eq3EC86FfywsWOhLEZlGXw?=
- =?us-ascii?Q?e4BdBNM8epxqFtCKodanslWBbIiCcRY1R09S6SNI8QHSPFrFEVywkzllZhkp?=
- =?us-ascii?Q?o1lbbZ+UQ9Om7LEL3zo7w+YOe06/hQPg6D9oHrxK2JXnZylBrq5CGWyeoQKi?=
- =?us-ascii?Q?WndAJSCbBIa+Vqq+xsx6DL5Oy10BnSiJGEsFhIeqEL9hnYRM8FbFEw6BgD/a?=
- =?us-ascii?Q?DdjmlePTZzH8YX/MSFuD27HdOPjB7f6k6VRhT6aMEcfRdL86xPN56VqScXBN?=
- =?us-ascii?Q?jZUNc36Cu/lS+QwRwlf5Rp9AhxQH0WvqV9Qedq19iNReojsyH304wirGUTtu?=
- =?us-ascii?Q?rKOHeOEvyiNz+YZUQfxW8f5mhkkfIWNd8hdbDf9ug8umEeC6Owf9KRQeYjoy?=
- =?us-ascii?Q?/aAmGLDBzgCDT2JP+Ut+DnKslaefEoAxfucQ3LDgoNIB9Lh5VHlpmhK39BaG?=
- =?us-ascii?Q?lNXuvc13+uiTNCOnqPKdTvL0IwvO0GhijAZSF1kRhTH/SfZiDSy0VGbyVykj?=
- =?us-ascii?Q?2ASMbh3FE4l7rQLNCsZBUSXIW+7oDBP7oQUmE26XqdahuUpdQL0O/c8vXWkj?=
- =?us-ascii?Q?ROv6Bb7rq5OMvVWnpe8lzXG/sFEcIynVhCMVTVQb+oQYnARs6wcmymmEttQY?=
- =?us-ascii?Q?flyWvbLtoHtsuGRzo7OHK8K6GXnWNdt3YUU5206kkqoaxZK6ZJm/rFX6mE9m?=
- =?us-ascii?Q?5YyisCIFXeu5X/RbFzr0QgAhr3xyOYpybnI5i/fEHBJyvJ2toZsUVxqCdH+F?=
- =?us-ascii?Q?rGYMwCS+4a/+ZsVGt/vhGZS0O8/yaIpSZ3uCPzQh3MoQROPYyBp2k8/mNT09?=
- =?us-ascii?Q?8JC+H5UWIlYMg8xB8PTQBhJdvZNanObDSrKW6nS+vvfqy+mb9S8zQT6g0wL/?=
- =?us-ascii?Q?m9W6Eav5/30xQsTSN4qM69s1IlrzDPiB6vEhStJvGPKyh8CUkak7wp+wNSXR?=
- =?us-ascii?Q?OszWvISlT0IclwUf8qD1qiyeq1C+E0uMgty81d2ID7OL4+a6mG3ch86yE0rz?=
- =?us-ascii?Q?NEKL75Po6KcCDaGyOvCiRZc9olKADHiARiNC6+mzjsF+7MFbca8dQUbGeED/?=
- =?us-ascii?Q?v+uVJ+ECtRDk6UNJvYB+misb08svNfc1insimseBClmHBwZtgKNX6S+c49X3?=
- =?us-ascii?Q?XI5iHnbMEYDu3dng988tLE8cwKECLo2aFi5nIAfVIHshqoH9rtWS+MuqDoDI?=
- =?us-ascii?Q?CC7qeomO1+4mfqH8SaL4oA2fK13k7Tmlf3jVo+e1bhrtV4J/Gda++Xipr41b?=
- =?us-ascii?Q?4BF4ey92tCz/QhZJ8E4iTjepW5/7TGdG8kqqUfAacdmmWOx1ZCfxRxEumbg3?=
- =?us-ascii?Q?EEAbq+0RctFmuP5M0lZZHwkpA1d+qVfkrKCtbwFfXeHO9fSwLklg+bKKNiyE?=
- =?us-ascii?Q?7TIcyw+AS4F7ghpuy8rBzDlzamJyxVQySEHvNSLrVcRUGFhFyKswH0o8YA02?=
- =?us-ascii?Q?zGS2g8V296cr7T8=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA3PR11MB9136.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(376014)(7416014)(38070700018); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?xWK5c2K5m0cQncycgRwa49jpoyDdB+rt0HgDaXo7k9NG8l1wVUVIvhqiZzxH?=
- =?us-ascii?Q?TgD0m9gqlORm8Ek1hzc7kderzZOqy8plk/g0cLzX0a/ix/89g0l7ot9iDcp6?=
- =?us-ascii?Q?YMJAwSrcc/mi2mxztMKw1wL2VrBM+HZZwNKMHpfOkwKeeiJnOBizNoCY5dYg?=
- =?us-ascii?Q?LnlXMZlzcYNwlvczbF9oZhUetQ8x1lFD/yTvXmLNRViTN8O4TkuxP7pTLa9S?=
- =?us-ascii?Q?J9Lys6FDCDE5ajN6InANJTHE9IEv2lTOK3F+SZCgIP8FXQn4CWTl/VcwZj6a?=
- =?us-ascii?Q?eiEwDdgpzyUdkzNL7dSMaOMweCtFQy43jdBMU0vUmV17mejGFXXaxQdH70kG?=
- =?us-ascii?Q?r8qA3JjYhlT1m41rVnu93r4EF+pTZwCgYlSEwUOeUpQdFyvSsaurRO+kTRkS?=
- =?us-ascii?Q?IqwV84JQdJw5yLdey3QlcpXy9XzqVVqtmrq58GAO6iOnH/S0vjuVrb67ZePC?=
- =?us-ascii?Q?QgyzStkKjSwMnti1VTmvP9HBTAyZjoCQBShXW0a3Ty2tHkDuMdY6ZBqCb4u/?=
- =?us-ascii?Q?OzLIh0Fo17NtjZD/u76T6oZxmLXosCR+drBHsbe0xMR0nI+p8zfYL68HSm3D?=
- =?us-ascii?Q?0VaX2BP6MmZ4LQjMCDPCfKvcphYNH7d5o1VHXe3muIE1GV6vibn3cVhI/DKq?=
- =?us-ascii?Q?N8+VYcqLztGzNVV1T9FGZY4a1nU0W+kAb+EqHAj7/5RZkKWG7iWdfRFkhoWS?=
- =?us-ascii?Q?8L94uYKyHEOuOyMjO34CwOWHlipuTGtokVcdruzI3j5k9KieHrI7RRxZ2eLG?=
- =?us-ascii?Q?7WMepuGh2rTYnr2+c2J4wjt6ds9ZtpBHVVDkF1/5zQ3yBSOOJC8iaC8O/HPx?=
- =?us-ascii?Q?BVMVfUVpiVYWik/HQe6BinYtdkbIw5VKGUBkGYfsCmeElI0UwMSA+TGhLKGk?=
- =?us-ascii?Q?heUPdTjSU3BTPxbxBtvkPN0IutvoFQw7ZF3UarOdSrBDeBzGz52vaUoyvNA7?=
- =?us-ascii?Q?Npw15mlMbKJYkTbq23ym/onH6+IcZOoD1JE80zDLFmUoAxvUVsq/8lvNC1eY?=
- =?us-ascii?Q?f0/u7w5+ojvatM806m9xN4vN9CzV7uBzJRex3plXWQYmvAIpGSxLNEOFsaLG?=
- =?us-ascii?Q?mkuU0t2yWRfzZKczHiEkNyL5Joj3c+Ul1GmHZCwCxjLnHtrfxWmbiM88SwMu?=
- =?us-ascii?Q?Co47aaU9cgivfu+RCFyP/uhogphO56l7mmLUkGVRrhqON+kdeVviih1QMpJg?=
- =?us-ascii?Q?28EGOJjreeDSwMAGvd/BLbbbjgQaYpH5HzOA29pm4gWtRTVnVmggq+zlCs5f?=
- =?us-ascii?Q?maCPE6pFdL+JgmnCcmmr0tM6hYJaHh/jQlrDbvepTG5BtImjuNLRu/bl1auI?=
- =?us-ascii?Q?DmWT4ycf2+Zr/kQ3Q9SVj03zOfrOQ08eG21J77RShO/Kj/qzDVfWxNF+2hgf?=
- =?us-ascii?Q?mVsSubj9ERIbZvov3zF8oUNMDnxcSZRFImCbXXfR0af4XhwLCRVfI5nE14YN?=
- =?us-ascii?Q?6SYpHzE3thjVACwHxk9bXk3dW2jjwLtj/kOfEZ2CfZWQbYHkNWRSXQH68MmL?=
- =?us-ascii?Q?vUf96L31GQcxz7OiPQ7X3f8G15WEHCyICANBH6n62JLKQhpqBoav0zTqxbBb?=
- =?us-ascii?Q?IG6dr9ViU65VRGz0449C7rnkqZ4COVKJVpf2585H?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <me@linux.beauty>)
+ id 1uc0CB-00013U-7B; Wed, 16 Jul 2025 07:21:09 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1752664813; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=h56aqE1lIb4fXncE8zwikK5HSfeEQ27frip9S/5rz1s4+TAojxpIKXq2D+uFerkOUOZZ6IRu4DM9AT28YnM6qN5mjDLUfT3N2o5BI/tNlw73Tx3SKLR9Z9aY0VyVFmJHx7Xx2eMjH9cc1YGQTtKjeUtLZaOxgLPoFOxfvQCraBY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1752664813;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To;
+ bh=PbWXELrNFK36KaZSrte+NesZIbPeFodr3uFNaBSeM1c=; 
+ b=IOAJ9X+mQYjZu6xNpcG+OcfoOvaXVXIiIR/QaNTLc9uDh2RT36YXFPhVWOfHTI+G+TaZko+r/NpL3XpGZ3j2jabVr+31bU6Cot9M94/QUd/eDafNVon4UUmjewKtRjk8otOikmV4c0wGW4vK9le7k5qqMeQpqORuoNnCmiYlovo=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=linux.beauty;
+ spf=pass  smtp.mailfrom=me@linux.beauty;
+ dmarc=pass header.from=<me@linux.beauty>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1752664813; 
+ s=zmail; d=linux.beauty; i=me@linux.beauty;
+ h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+ bh=PbWXELrNFK36KaZSrte+NesZIbPeFodr3uFNaBSeM1c=;
+ b=h47/argpBUdI3AXPYWmWqiB7+uk/6tPQPmfGRQg14THTlDNVE2viT4CunIBivE7B
+ im4yz6hqBBzo/pg5eZJGHwGgUWSEhGKwgdzNZr4izDeyqkxzJNHpZ1RlDuv/R7cf2Em
+ kEYcMO2orOrfNZSgRPPfceN0+Wxs8j0NZpzz40a4=
+Received: by mx.zohomail.com with SMTPS id 175266481068276.30808314738442;
+ Wed, 16 Jul 2025 04:20:10 -0700 (PDT)
+From: Li Chen <me@linux.beauty>
+To: "Peter Maydell" <peter.maydell@linaro.org>,
+ "Shannon Zhao" <shannon.zhaosl@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ "Igor Mammedov" <imammedo@redhat.com>, "Ani Sinha" <anisinha@redhat.com>,
+ "Eduardo Habkost" <eduardo@habkost.net>,
+ "Marcel Apfelbaum" <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ "Yanan Wang" <wangyanan55@huawei.com>, "Zhao Liu" <zhao1.liu@intel.com>,
+ "Song Gao" <gaosong@loongson.cn>, "Jiaxun Yang" <jiaxun.yang@flygoat.com>,
+ "Sunil V L" <sunilvl@ventanamicro.com>,
+ "Palmer Dabbelt" <palmer@dabbelt.com>,
+ "Alistair Francis" <alistair.francis@wdc.com>,
+ "Weiwei Li" <liwei1518@gmail.com>, "qemu-arm" <qemu-arm@nongnu.org>,
+ "qemu-devel" <qemu-devel@nongnu.org>, "qemu-riscv" <qemu-riscv@nongnu.org>
+Cc: Bibo Mao <maobibo@loongson.cn>,
+	Gavin Shan <gshan@redhat.com>
+Subject: [PATCH v5 1/4] acpi: Add machine option to disable SPCR table
+Date: Wed, 16 Jul 2025 19:19:53 +0800
+Message-ID: <20250716111959.404917-2-me@linux.beauty>
+X-Mailer: git-send-email 2.50.0
+In-Reply-To: <20250716111959.404917-1-me@linux.beauty>
+References: <20250716111959.404917-1-me@linux.beauty>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB9136.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9b0397c0-2199-4d65-8361-08ddc4540cd6
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Jul 2025 10:32:22.8063 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: C6Xh78hgTICbgM3t+8zBDyGtbdYqu2z3LBnrgVz95t7wt9JSbXaikafZofY5/DFrXeC8QWM0MnzMuDT9b7wWSDOkqgxSeQCjAUKn8/52BhM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB4966
-X-OriginatorOrg: intel.com
-Received-SPF: pass client-ip=192.198.163.11;
- envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.112; envelope-from=me@linux.beauty;
+ helo=sender4-pp-f112.zoho.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -212,60 +91,174 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+From: Li Chen <chenl311@chinatelecom.cn>
 
+The ACPI SPCR (Serial Port Console Redirection) table allows firmware
+to specify a preferred serial console device to the operating system.
+On ARM64 systems, Linux by default respects this table: even if the
+kernel command line does not include a hardware serial console (e.g.,
+"console=ttyAMA0"), the kernel still register the serial device
+referenced by SPCR as a printk console.
 
->-----Original Message-----
->From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
->Subject: RE: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict
->accelerated SMMUv3 to vfio-pci endpoints with iommufd
->
->
->
->> -----Original Message-----
->> From: Duan, Zhenzhong <zhenzhong.duan@intel.com>
->> Sent: Wednesday, July 16, 2025 7:26 AM
->> To: Nicolin Chen <nicolinc@nvidia.com>
->> Cc: Shameerali Kolothum Thodi
->> <shameerali.kolothum.thodi@huawei.com>; qemu-arm@nongnu.org;
->> qemu-devel@nongnu.org; eric.auger@redhat.com;
->> peter.maydell@linaro.org; jgg@nvidia.com; ddutile@redhat.com;
->> berrange@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
->> smostafa@google.com; Linuxarm <linuxarm@huawei.com>; Wangzhou (B)
->> <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
->> Jonathan Cameron <jonathan.cameron@huawei.com>;
->> zhangfei.gao@linaro.org; shameerkolothum@gmail.com
->> Subject: RE: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict
->> accelerated SMMUv3 to vfio-pci endpoints with iommufd
->>
->
->...
->
->> >> >+static bool smmuv3_accel_pdev_allowed(PCIDevice *pdev, bool
->> >*vfio_pci)
->> >> >+{
->> >> >+
->> >> >+    if (object_dynamic_cast(OBJECT(pdev), TYPE_PCI_BRIDGE) ||
->> >> >+        object_dynamic_cast(OBJECT(pdev), "pxb-pcie") ||
->> >> >+        object_dynamic_cast(OBJECT(pdev), "gpex-root")) {
->> >> >+        return true;
->> >> >+    } else if ((object_dynamic_cast(OBJECT(pdev), TYPE_VFIO_PCI)
->&&
->> >> >+        object_property_find(OBJECT(pdev), "iommufd"))) {
->> >>
->> >> Will this always return true?
->> >
->> >It won't if a vfio-pci device doesn't have the "iommufd" property?
->>
->> IIUC, iommufd property is always there, just value not filled for legacy
->> container case.
->> What about checking VFIOPCIDevice.vbasedev.iommufd?
->
->That's right. The property is always there. But instead of accessing
->VFIOPCIDevice
->in SMMUv3 code, I think we can use object_property_get_link(obj, "iommufd"=
-,
->&error_abort)
->instead?
+While this behavior is standard-compliant, it can lead to situations
+where guest console behavior is influenced by platform firmware rather
+than user-specified configuration. To make guest console behavior more
+predictable and under user control, this patch introduces a machine
+option to explicitly disable SPCR table exposure:
 
-Yes, looks better.
+    -machine spcr=off
+
+By default, the option is enabled (spcr=on), preserving existing
+behavior. When disabled, QEMU will omit the SPCR table from the guest's
+ACPI namespace, ensuring that only consoles explicitly declared in the
+kernel command line are registered.
+
+Signed-off-by: Li Chen <chenl311@chinatelecom.cn>
+Reviewed-by: Bibo Mao <maobibo@loongson.cn>
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: Gavin Shan <gshan@redhat.com>
+Reviewed-by: Sunil V L <sunilvl@ventanamicro.com>
+---
+
+Notes:
+Changes since v3: 1. Add Reviewed-by from Sunil V L <sunilvl@ventanamicro.com>
+2. rename enable_spcr to acpi_spcr_enabled as
+suggested by Philippe Mathieu-Daudé
+Changes since V2: Add Reviewed-by from Gavin Shan <gshan@redhat.com>
+for the first patch and fix style issue.
+Changes since V1: add Reviewed-by and Acked-by
+
+ hw/arm/virt-acpi-build.c       |  5 ++++-
+ hw/core/machine.c              | 22 ++++++++++++++++++++++
+ hw/loongarch/virt-acpi-build.c |  4 +++-
+ hw/riscv/virt-acpi-build.c     |  5 ++++-
+ include/hw/boards.h            |  1 +
+ qemu-options.hx                |  5 +++++
+ 6 files changed, 39 insertions(+), 3 deletions(-)
+
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 0dfb8ec2c3..782b17b966 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -1023,7 +1023,10 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     }
+ 
+     acpi_add_table(table_offsets, tables_blob);
+-    spcr_setup(tables_blob, tables->linker, vms);
++
++    if (ms->acpi_spcr_enabled) {
++        spcr_setup(tables_blob, tables->linker, vms);
++    }
+ 
+     acpi_add_table(table_offsets, tables_blob);
+     build_dbg2(tables_blob, tables->linker, vms);
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index e869821b22..ceee058cad 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -577,6 +577,20 @@ static void machine_set_nvdimm(Object *obj, bool value, Error **errp)
+     ms->nvdimms_state->is_enabled = value;
+ }
+ 
++static bool machine_get_spcr(Object *obj, Error **errp)
++{
++    MachineState *ms = MACHINE(obj);
++
++    return ms->acpi_spcr_enabled;
++}
++
++static void machine_set_spcr(Object *obj, bool value, Error **errp)
++{
++    MachineState *ms = MACHINE(obj);
++
++    ms->acpi_spcr_enabled = value;
++}
++
+ static bool machine_get_hmat(Object *obj, Error **errp)
+ {
+     MachineState *ms = MACHINE(obj);
+@@ -1281,6 +1295,14 @@ static void machine_initfn(Object *obj)
+                                         "Table (HMAT)");
+     }
+ 
++    /* SPCR */
++    ms->acpi_spcr_enabled = true;
++    object_property_add_bool(obj, "spcr", machine_get_spcr, machine_set_spcr);
++    object_property_set_description(obj, "spcr",
++                                   "Set on/off to enable/disable "
++                                   "ACPI Serial Port Console Redirection "
++                                   "Table (spcr)");
++
+     /* default to mc->default_cpus */
+     ms->smp.cpus = mc->default_cpus;
+     ms->smp.max_cpus = mc->default_cpus;
+diff --git a/hw/loongarch/virt-acpi-build.c b/hw/loongarch/virt-acpi-build.c
+index 2cd2d9d842..8c2228a772 100644
+--- a/hw/loongarch/virt-acpi-build.c
++++ b/hw/loongarch/virt-acpi-build.c
+@@ -557,7 +557,9 @@ static void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+     acpi_add_table(table_offsets, tables_blob);
+     build_srat(tables_blob, tables->linker, machine);
+     acpi_add_table(table_offsets, tables_blob);
+-    spcr_setup(tables_blob, tables->linker, machine);
++
++    if (machine->acpi_spcr_enabled)
++        spcr_setup(tables_blob, tables->linker, machine);
+ 
+     if (machine->numa_state->num_nodes) {
+         if (machine->numa_state->have_numa_distance) {
+diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
+index 8b5683dbde..ee1416d264 100644
+--- a/hw/riscv/virt-acpi-build.c
++++ b/hw/riscv/virt-acpi-build.c
+@@ -894,7 +894,10 @@ static void virt_acpi_build(RISCVVirtState *s, AcpiBuildTables *tables)
+     }
+ 
+     acpi_add_table(table_offsets, tables_blob);
+-    spcr_setup(tables_blob, tables->linker, s);
++
++    if (ms->acpi_spcr_enabled) {
++        spcr_setup(tables_blob, tables->linker, s);
++    }
+ 
+     acpi_add_table(table_offsets, tables_blob);
+     {
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index f424b2b505..f94713e6e2 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -443,6 +443,7 @@ struct MachineState {
+     SmpCache smp_cache;
+     struct NVDIMMState *nvdimms_state;
+     struct NumaState *numa_state;
++    bool acpi_spcr_enabled;
+ };
+ 
+ /*
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 1f862b19a6..9b2d5f4b7a 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -38,6 +38,7 @@ DEF("machine", HAS_ARG, QEMU_OPTION_machine, \
+     "                nvdimm=on|off controls NVDIMM support (default=off)\n"
+     "                memory-encryption=@var{} memory encryption object to use (default=none)\n"
+     "                hmat=on|off controls ACPI HMAT support (default=off)\n"
++    "                spcr=on|off controls ACPI SPCR support (default=on)\n"
+ #ifdef CONFIG_POSIX
+     "                aux-ram-share=on|off allocate auxiliary guest RAM as shared (default: off)\n"
+ #endif
+@@ -105,6 +106,10 @@ SRST
+         Enables or disables ACPI Heterogeneous Memory Attribute Table
+         (HMAT) support. The default is off.
+ 
++    ``spcr=on|off``
++        Enables or disables ACPI Serial Port Console Redirection Table
++        (SPCR) support. The default is on.
++
+     ``aux-ram-share=on|off``
+         Allocate auxiliary guest RAM as an anonymous file that is
+         shareable with an external process.  This option applies to
+-- 
+2.50.0
+
 

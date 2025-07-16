@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7121C83F1B
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Jul 2025 07:33:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3C38C83F1B
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Jul 2025 08:19:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ubwdF-0003MB-GH; Wed, 16 Jul 2025 03:32:49 -0400
+	id 1ubxLn-00058K-LG; Wed, 16 Jul 2025 04:18:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ubwd2-0003Et-Bi; Wed, 16 Jul 2025 03:32:42 -0400
+ id 1ubxA2-0003Ri-LQ; Wed, 16 Jul 2025 04:06:43 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ubwcz-0000W6-TB; Wed, 16 Jul 2025 03:32:36 -0400
+ id 1ubx9y-000824-Td; Wed, 16 Jul 2025 04:06:42 -0400
 Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bhnmG5wNrz6M4hg;
- Wed, 16 Jul 2025 15:31:10 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id E3707140427;
- Wed, 16 Jul 2025 15:32:25 +0800 (CST)
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bhpWb1tGhz6M4hS;
+ Wed, 16 Jul 2025 16:05:15 +0800 (CST)
+Received: from frapeml100005.china.huawei.com (unknown [7.182.85.132])
+ by mail.maildlp.com (Postfix) with ESMTPS id 6635B14027A;
+ Wed, 16 Jul 2025 16:06:30 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ frapeml100005.china.huawei.com (7.182.85.132) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 16 Jul 2025 09:32:25 +0200
+ 15.1.2507.39; Wed, 16 Jul 2025 10:06:30 +0200
 Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
  frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Wed, 16 Jul 2025 09:32:25 +0200
-To: Nicolin Chen <nicolinc@nvidia.com>, Jonathan Cameron
- <jonathan.cameron@huawei.com>
-CC: Linuxarm <linuxarm@huawei.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "jgg@nvidia.com" <jgg@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>, "berrange@redhat.com"
- <berrange@redhat.com>, "nathanc@nvidia.com" <nathanc@nvidia.com>,
- "mochs@nvidia.com" <mochs@nvidia.com>, "smostafa@google.com"
- <smostafa@google.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
- <jiangkunkun@huawei.com>, "zhangfei.gao@linaro.org"
- <zhangfei.gao@linaro.org>, "zhenzhong.duan@intel.com"
- <zhenzhong.duan@intel.com>, "shameerkolothum@gmail.com"
- <shameerkolothum@gmail.com>
-Subject: RE: [RFC PATCH v3 13/15] hw/arm/smmuv3: Forward invalidation commands
- to hw
-Thread-Topic: [RFC PATCH v3 13/15] hw/arm/smmuv3: Forward invalidation
- commands to hw
-Thread-Index: AQHb9OitTnudABMypEmVkuFeSKtFtbQy4ACAgABu3YCAAQ4dUA==
-Date: Wed, 16 Jul 2025 07:32:25 +0000
-Message-ID: <37d405ca24664462ab87935403d2fe04@huawei.com>
+ Wed, 16 Jul 2025 10:06:29 +0200
+To: Nicolin Chen <nicolinc@nvidia.com>, "Duan, Zhenzhong"
+ <zhenzhong.duan@intel.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
+ <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, "nathanc@nvidia.com"
+ <nathanc@nvidia.com>, "mochs@nvidia.com" <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
+ <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
+Subject: RE: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict accelerated
+ SMMUv3 to vfio-pci endpoints with iommufd
+Thread-Topic: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict accelerated
+ SMMUv3 to vfio-pci endpoints with iommufd
+Thread-Index: AQHb9NhJqDDdVP51l0m0Xe+3c+VdWbQy4kYAgAB23gCAAQTY8A==
+Date: Wed, 16 Jul 2025 08:06:29 +0000
+Message-ID: <756cf804fbd14d66ba8f23358524fe96@huawei.com>
 References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-14-shameerali.kolothum.thodi@huawei.com>
- <20250715114609.00004e4d@huawei.com> <aHaOcd5FKOjsWR/p@Asurada-Nvidia>
-In-Reply-To: <aHaOcd5FKOjsWR/p@Asurada-Nvidia>
+ <20250714155941.22176-7-shameerali.kolothum.thodi@huawei.com>
+ <IA3PR11MB9136A660E9FAE540037986FB9257A@IA3PR11MB9136.namprd11.prod.outlook.com>
+ <aHaW9IpjbaVcRUpA@Asurada-Nvidia>
+In-Reply-To: <aHaW9IpjbaVcRUpA@Asurada-Nvidia>
 Accept-Language: en-GB, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -97,80 +97,98 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 > -----Original Message-----
 > From: Nicolin Chen <nicolinc@nvidia.com>
-> Sent: Tuesday, July 15, 2025 6:23 PM
-> To: Jonathan Cameron <jonathan.cameron@huawei.com>
+> Sent: Tuesday, July 15, 2025 6:59 PM
+> To: Duan, Zhenzhong <zhenzhong.duan@intel.com>
 > Cc: Shameerali Kolothum Thodi
-> <shameerali.kolothum.thodi@huawei.com>; Linuxarm
-> <linuxarm@huawei.com>; qemu-arm@nongnu.org; qemu-
-> devel@nongnu.org; eric.auger@redhat.com; peter.maydell@linaro.org;
-> jgg@nvidia.com; ddutile@redhat.com; berrange@redhat.com;
-> nathanc@nvidia.com; mochs@nvidia.com; smostafa@google.com;
-> Wangzhou (B) <wangzhou1@hisilicon.com>; jiangkunkun
-> <jiangkunkun@huawei.com>; zhangfei.gao@linaro.org;
-> zhenzhong.duan@intel.com; shameerkolothum@gmail.com
-> Subject: Re: [RFC PATCH v3 13/15] hw/arm/smmuv3: Forward invalidation
-> commands to hw
->=20
-> On Tue, Jul 15, 2025 at 11:46:09AM +0100, Jonathan Cameron wrote:
-> > >      SMMUCmdError cmd_error =3D SMMU_CERROR_NONE;
-> > >      SMMUQueue *q =3D &s->cmdq;
-> > >      SMMUCommandType type =3D 0;
-> > > +    SMMUCommandBatch batch =3D {};
-> > > +    uint32_t ncmds;
-> > >
-> > >      if (!smmuv3_cmdq_enabled(s)) {
-> > >          return 0;
-> > >      }
-> > > +
-> > > +    ncmds =3D smmuv3_q_ncmds(q);
-> > > +    batch.cmds =3D g_new0(Cmd, ncmds);
-> > > +    batch.cons =3D g_new0(uint32_t, ncmds);
-> >
-> > Where is batch.ncmds set?  It is cleared but I'm missing it being set t=
-o
-> anything.
->=20
-> smmuv3_accel_batch_cmd() internally sets that, every time it's
-> invoked to add a new command in the batch.
->=20
-> Shameer, let's add some comments explaining the batch function.
+> <shameerali.kolothum.thodi@huawei.com>; qemu-arm@nongnu.org;
+> qemu-devel@nongnu.org; eric.auger@redhat.com;
+> peter.maydell@linaro.org; jgg@nvidia.com; ddutile@redhat.com;
+> berrange@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
+> smostafa@google.com; Linuxarm <linuxarm@huawei.com>; Wangzhou (B)
+> <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
+> Jonathan Cameron <jonathan.cameron@huawei.com>;
+> zhangfei.gao@linaro.org; shameerkolothum@gmail.com
+> Subject: Re: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict
+> accelerated SMMUv3 to vfio-pci endpoints with iommufd
 
-Yes. Will add.
+...
 
->=20
-> > > +
+> > >+    if (pdev && !smmuv3_accel_pdev_allowed(pdev, &vfio_pci)) {
+> > >+        error_report("Device(%s) not allowed. Only PCIe root complex
+> > >devices "
+> > >+                     "or PCI bridge devices or vfio-pci endpoint devi=
+ces
+> > >with "
+> > >+                     "iommufd as backend is allowed with
+> > >arm-smmuv3,accel=3Don",
+> > >+                     pdev->name);
+> > >+        exit(1);
 > >
-> > > +    qemu_mutex_lock(&s->mutex);
-> > > +    if (!cmd_error && batch.ncmds) {
-> > > +        if (!smmuv3_accel_issue_cmd_batch(bs, &batch)) {
-> > > +            if (batch.ncmds) {
-> > > +                q->cons =3D batch.cons[batch.ncmds - 1];
-> > > +            } else {
-> > > +                q->cons =3D batch.cons[0]; /* FIXME: Check */
-> > > +            }
-> >
-> > Totally non obvious that a return of false from the issue call means
-> > illegal command type.  Maybe that will be obvious form comments
-> > requested in previous patch review.
->=20
-> That's a good point. Shameer, I think we need some fine-grinding
-> here, validating the return value from the ioctl, for which the
-> kernel will only return -EIO or -ETIMEOUT on failure, indicating
-> either an SMMU_CERROR_ILL or an SMMU_CERROR_ATC_INV_SYNC.
+> > Seems aggressive for a hotplug, could we fail hotplug instead of kill
+> QEMU?
 
-Yeah. I was not sure on this. Also on setting current cons pointer in case =
-IOCTL=20
-return for some reason other than attempting the CMD. I will double check
-this.
+That's right. I will try to see whether it is possible to do a dev->hotplug=
+ged
+check here.
 =20
+> Hotplug will unlikely be supported well, as it would introduce
+> too much complication.
+>=20
+> With iommufd, a vIOMMU object is allocated per device (vfio). If
+> the device fd (cdev) is not yet given to the QEMU. It isn't able
+> to allocate a vIOMMU object when creating a VM.
+>=20
+> While a vIOMMU object can be allocated at a later stage once the
+> device is hotplugged. But things like IORT mappings aren't able
+> to get refreshed since the OS is likely already booted.
+
+Why do we need IORT mappings to be refreshed during hotplug?
+AFAICS, the mappings are created per host bridge Ids. And how is this
+different from a host machine doing hotplug?
+
+ Even an
+> IOMMU capability sync via the hw_info ioctl will be difficult to
+> do at the runtime post the guest iommu driver's initialization.
+
+We had some discussion on this "at least one vfio-pci" restriction
+for accelerated mode previously here.
+https://lore.kernel.org/qemu-devel/Z6TtCLQ35UI12T77@redhat.com/#t
+
+I am not sure we reached any consensus on that. The 3 different approaches
+discussed were,
+
+1. The current one used here. At least one cold plugged vfio-pci device
+   so that  we can retrieve the host SMMUV3 HW_INFO as per current
+  IOMMUFD APIs.
+
+2. A new IOMMUFD API to retrieve HW_INFO without a device.=20
+
+3. A fully specified vSMMUv3 through Qemu command line so that we
+   don't need HW_INFO from kernel.
+
+We're going with option one for now, but completely blocking hotplug
+because of it  feels a bit too restrictive to me.
+
+The real issue (for now), as I see it, is that we need some way to remember
+the Guest SMMUv3 <-> Host SMMUv3 mapping after the guest has booted.
+That way, even if all devices tied to a Guest SMMUv3 get hot-unplugged,
+QEMU can still block attaching a device that belongs to a different Host
+SMMUv3.
+
 Thanks,
 Shameer
 
-> > > +            qemu_log_mask(LOG_GUEST_ERROR, "Illegal command type:
-> %d\n",
-> > > +                          CMD_TYPE(&batch.cmds[batch.ncmds]));
-> > > +            cmd_error =3D SMMU_CERROR_ILL;
+> I am not 100% sure. But I think Intel model could have a similar
+> problem if the guest boots with zero cold-plugged device and then
+> hot-plugs a PASID-capable device at the runtime, when the guest-
+> level IOMMU driver is already inited?
 >=20
-> Thanks
+> FWIW, Shameer's cover-letter has the following line:
+>  "At least one vfio-pci device must currently be cold-plugged to
+>   a PCIe root complex associated with arm-smmuv3,accel=3Don."
+>=20
+> Perhaps there should be a similar highlight in this smmuv3-accel
+> file as well (@Shameer).
+>=20
 > Nicolin
 

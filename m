@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 968E1C83F1B
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 03:44:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 367F8C83F1A
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 03:44:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ucFXT-00067v-HD; Wed, 16 Jul 2025 23:44:11 -0400
+	id 1ucFXh-0006Or-5f; Wed, 16 Jul 2025 23:44:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ucFUv-0003aI-6F; Wed, 16 Jul 2025 23:41:31 -0400
+ id 1ucFVV-0003lq-0X; Wed, 16 Jul 2025 23:42:11 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ucFUt-0000ZH-D5; Wed, 16 Jul 2025 23:41:28 -0400
+ id 1ucFVO-0000g2-Nm; Wed, 16 Jul 2025 23:41:59 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 17 Jul
@@ -31,10 +31,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 12/21] hw/arm/ast27x0: Add DRAM alias for TSP SDRAM remap
- and update realization order
-Date: Thu, 17 Jul 2025 11:40:40 +0800
-Message-ID: <20250717034054.1903991-13-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 14/21] hw/arm/ast27x0: Start TSP in powered-off state to
+ match hardware behavior
+Date: Thu, 17 Jul 2025 11:40:42 +0800
+Message-ID: <20250717034054.1903991-15-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250717034054.1903991-1-jamin_lin@aspeedtech.com>
 References: <20250717034054.1903991-1-jamin_lin@aspeedtech.com>
@@ -66,79 +66,40 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit adds a MemoryRegion alias to support PSP access to
-TSP SDRAM through shared memory remapping, as defined by the default SCU
-configuration.
+In the previous design, both the PSP and TSP were started together during
+SoC initialization. However, on real hardware, the TSP begins in a powered-off
+state. The typical boot sequence involves the PSP powering up first, loading
+the TSP firmware binary into shared memory via DRAM remap, and then releasing
+the TSP reset and enabling it through SCU control registers.
 
-The TSP coprocessor exposes one DRAM alias:
-  - remap maps PSP DRAM at 0x42e000000 (32MB) to TSP SDRAM offset 0x0
-
-This region corresponds to the default SCU register value, which controls
-the mapping between PSP and coprocessor memory windows.
-
-To ensure correctness, the alias is initialized early in
-aspeed_soc_ast2700_realize(), before SCU and coprocessor realization.
-This allows TSP to reference the alias region during its SDRAM setup.
+To more accurately model this behavior in QEMU, this commit sets the
+"start-powered-off" property for the TSP's ARMv7M core. This change ensures
+the TSP remains off until explicitly enabled via the SCU, simulating the
+real-world flow where the PSP controls TSP boot through SCU interaction.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- include/hw/arm/aspeed_soc.h | 1 +
- hw/arm/aspeed_ast27x0-tsp.c | 2 ++
- hw/arm/aspeed_ast27x0.c     | 9 +++++++++
- 3 files changed, 12 insertions(+)
+ hw/arm/aspeed_ast27x0-tsp.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index d628a189c1..83e07582d2 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -153,6 +153,7 @@ struct Aspeed27x0TSPSoCState {
-     MemoryRegion memory;
-     MemoryRegion sram_mr_alias;
-     MemoryRegion scu_mr_alias;
-+    MemoryRegion sdram_remap_alias;
- 
-     ARMv7MState armv7m;
- };
 diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c
-index 6b035e2612..4c3b18695e 100644
+index 4c3b18695e..49a49604de 100644
 --- a/hw/arm/aspeed_ast27x0-tsp.c
 +++ b/hw/arm/aspeed_ast27x0-tsp.c
-@@ -187,6 +187,8 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
-                                 AST2700_TSP_SDRAM_SIZE, errp)) {
-         return;
-     }
-+    /* SDRAM remap alias used by PSP to access TSP SDRAM */
-+    memory_region_add_subregion(&s->dram_container, 0, &a->sdram_remap_alias);
-     memory_region_add_subregion(s->memory,
-                                 sc->memmap[ASPEED_DEV_SDRAM],
-                                 &s->dram_container);
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index be130db5e2..0f988eaa4d 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -812,6 +812,12 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-      *   - remap2 maps PSP DRAM at 0x42c000000 (size: 32MB) to SSP SDRAM
-      *     offset 0x0
-      *
-+     * The TSP coprocessor uses one memory alias (remap) to access a shared
-+     * region in the PSP DRAM:
-+     *
-+     *   - remap maps PSP DRAM at 0x42e000000 (size: 32MB) to TSP SDRAM
-+     *     offset 0x0
-+     *
-      * These mappings correspond to the default values of the SCU registers:
-      *
-      * This configuration enables shared memory communication between the PSP
-@@ -824,6 +830,9 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-         memory_region_init_alias(&a->ssp.sdram_remap2_alias, OBJECT(a),
-                                  "ssp.sdram.remap2", s->memory,
-                                  0x42c000000ULL, 32 * MiB);
-+        memory_region_init_alias(&a->tsp.sdram_remap_alias, OBJECT(a),
-+                                 "tsp.sdram.remap", s->memory,
-+                                 0x42e000000, 32 * MiB);
-     }
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
-         return;
+@@ -177,6 +177,13 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
+     qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
+     object_property_set_link(OBJECT(&a->armv7m), "memory",
+                              OBJECT(s->memory), &error_abort);
++    /*
++     * The TSP starts in a powered-down state and can be powered up
++     * by setting the TSP Control Register through the SCU
++     * (System Control Unit)
++     */
++    object_property_set_bool(OBJECT(&a->armv7m), "start-powered-off", true,
++                             &error_abort);
+     sysbus_realize(SYS_BUS_DEVICE(&a->armv7m), &error_abort);
+ 
+     /* SDRAM */
 -- 
 2.43.0
 

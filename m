@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96017C83F1A
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 12:38:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A639C83F34
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 14:59:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ucNsN-000878-5P; Thu, 17 Jul 2025 08:38:15 -0400
+	id 1ucQ5D-0002kH-14; Thu, 17 Jul 2025 10:59:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ucNWv-000404-KK
- for qemu-arm@nongnu.org; Thu, 17 Jul 2025 08:16:10 -0400
-Received: from p-west2-cluster1-host12-snip4-9.eps.apple.com ([57.103.68.42]
- helo=outbound.mr.icloud.com)
+ (Exim 4.90_1) (envelope-from <xiaoyao.li@intel.com>)
+ id 1ucOME-0007SX-79; Thu, 17 Jul 2025 09:09:06 -0400
+Received: from mgamail.intel.com ([198.175.65.16])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ucNWq-0004Fy-S8
- for qemu-arm@nongnu.org; Thu, 17 Jul 2025 08:16:05 -0400
-Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-11 (Postfix) with ESMTPS id
- 8A65A1800232; Thu, 17 Jul 2025 12:15:55 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
- bh=GoCqrUJ20t8UW/NDZR25ROY5aeBc3bfpe10YHonk8dk=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=L14vz6+zApjNG/D1a00umBWJc0NdlZ7IyyAzblVQlHyR58zZBY/0h7HNLtIQOhT6L5PduncmMmaJ3sLs1GgXvXyvdqgHqvpvkYjkI+7Ne8NQP5flqc4EA/p5LU6hASrRU0Mz6Kx9KC1T4qMYAMBdCkpvAom4R9PB4eYNWDjV/27Qrrrha6Et8ea8r/DHrsyw8xa/0jdVNwUSVo07nBfExaNp0tBdJA9JCKibsq8tGyYg9AjuGlCEnpQidfeaP8uTs/SqIe0vKazOn3DGCtg+KaP1CFCseb19CR+nROUO/bbGwMQw6X2jhKlf1v3eV5+W8HapCwkQe+IErEbFDEfkBA==
-X-Client-IP: 194.62.217.67
-Received: from smtpclient.apple (mr-asmtp-me-k8s.p00.prod.me.com
- [17.57.152.38])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-11 (Postfix) with ESMTPSA id
- 69B0E1800B30; Thu, 17 Jul 2025 12:15:50 +0000 (UTC)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.600.51.1.1\))
-Subject: Re: [PATCH-for-10.1 3/3] hw/arm/virt: Warn when HVF doesn't report
- IPA bit length
-From: Mads Ynddal <mads@ynddal.dk>
-In-Reply-To: <e941efaa-e856-40b9-8ed7-0b4053f25498@linaro.org>
-Date: Thu, 17 Jul 2025 14:15:38 +0200
-Cc: qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>,
+ (Exim 4.90_1) (envelope-from <xiaoyao.li@intel.com>)
+ id 1ucOMA-0001sg-Cc; Thu, 17 Jul 2025 09:09:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1752757743; x=1784293743;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=T/IVqI+1Ccw5qrGvHqbqRKzY61XINI9554vFTWPatks=;
+ b=PI7OEDYvKhyZ1dQAZcS007qrHJhtfqdS0UdOKHknMIOhF1ZmCKMFCCaR
+ 78OMOFl75rErvjyJGWNeW4kU7LvrW9h09BayFqv6FJP31G5Ji/fReDNnF
+ GfpPdOI/VDBCWlrNew9mp2a0zU1FHemn+FcWL2D+bRZDEAIffZKQnoOJe
+ 9Ob3Uv1qTq3YDd4kcFJbyVcCBwSiLHHpYZ1KZ+yEc8TUsy7vWNKaTqeMt
+ XQPJpX9hFxHSber/AS99YKO5D0AIzXpljNpyTVjk/D36T/CGOkCn3bF8l
+ X43hK5O4nP94lSVcZob6a6utUr9Ct+cuPdKdBB4DsUZXwSuD4HKBdOuNl g==;
+X-CSE-ConnectionGUID: 1TIziBsJT129OlvYnqxTLQ==
+X-CSE-MsgGUID: pMsCIXoPTb6Jb+jrR9lJmg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11495"; a="55180524"
+X-IronPort-AV: E=Sophos;i="6.16,318,1744095600"; d="scan'208";a="55180524"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jul 2025 06:08:58 -0700
+X-CSE-ConnectionGUID: IIMwW4kYSt2I146w0cPbFQ==
+X-CSE-MsgGUID: BAAFq7s1TFODC8MaVXBS8g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,318,1744095600"; d="scan'208";a="158141936"
+Received: from xiaoyaol-hp-g830.ccr.corp.intel.com (HELO [10.124.247.1])
+ ([10.124.247.1])
+ by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jul 2025 06:08:54 -0700
+Message-ID: <1edeecdd-76cf-4baa-97d8-c07df20b4824@intel.com>
+Date: Thu, 17 Jul 2025 21:08:49 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-10.1 1/3] accel/hvf: Display executable bit as 'X'
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Cameron Esfahani <dirty@apple.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Roman Bolshakov <rbolshakov@ddn.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>
-Content-Transfer-Encoding: 7bit
-Message-Id: <7B5A2CF2-2EF8-4D0C-A15A-635581697BAC@ynddal.dk>
+ Roman Bolshakov <rbolshakov@ddn.com>, Mads Ynddal <mads@ynddal.dk>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 References: <20250716172813.73405-1-philmd@linaro.org>
- <20250716172813.73405-4-philmd@linaro.org>
- <84250F37-CCCF-49A2-8CB1-5B5CD1839004@ynddal.dk>
- <e941efaa-e856-40b9-8ed7-0b4053f25498@linaro.org>
-To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-X-Mailer: Apple Mail (2.3826.600.51.1.1)
-X-Proofpoint-ORIG-GUID: oTWYLINkctg7JI-FCBYroh7uCMYWE0Rm
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzE3MDEwOCBTYWx0ZWRfX3/Gpl8ma183v
- MjsJomz2+QgQP5y5HymMpV7WEomeAyDeneHSOvFJUc/64eggaXixXon3nKzu/o+GZvGzu038mpa
- eYX3G15urQkT0AIeAgkYF4V+ATI7/T0q7oZYHd/kV6N3wc84q5OyD+S5wys38P8+3g+aA2j2nk4
- DXbAsrM/cb3aavnlrqkpWJVpWdu7u6B9KhdGjLLZiakp4S9jN/lOdU3ECmPwdAAl/X1HipPoh77
- 0jy0Ahxjo+Jsh8ckqiOlGqIdBcRWKhQfTmIDlnajV9SNxBsnoancScORJxh6HcUV7/6NBjROU=
-X-Proofpoint-GUID: oTWYLINkctg7JI-FCBYroh7uCMYWE0Rm
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-07-17_01,2025-07-17_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- adultscore=0 spamscore=0 mlxscore=0 phishscore=0
- bulkscore=0 clxscore=1030
- mlxlogscore=867 suspectscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2507170108
-Received-SPF: pass client-ip=57.103.68.42; envelope-from=mads@ynddal.dk;
- helo=outbound.mr.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ <20250716172813.73405-2-philmd@linaro.org>
+Content-Language: en-US
+From: Xiaoyao Li <xiaoyao.li@intel.com>
+In-Reply-To: <20250716172813.73405-2-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=198.175.65.16; envelope-from=xiaoyao.li@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.998, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -90,15 +89,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 7/17/2025 1:28 AM, Philippe Mathieu-Daudé wrote:
+> Developers are custom to read RWX, not RWE.
+> Replace E -> X.
+> 
+> Reported-by: Alex Bennée <alex.bennee@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-> This happens with nested macOS guest.
+Reviewed-by: Xiaoyao Li <xiaoyao.li@intel.com>
 
-I took another look at the stack trace in the issue. Everything should
-be fine then.
+> ---
+>   accel/hvf/hvf-all.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+> index e67a8105a66..0a4b498e836 100644
+> --- a/accel/hvf/hvf-all.c
+> +++ b/accel/hvf/hvf-all.c
+> @@ -84,7 +84,7 @@ static int do_hvf_set_memory(hvf_slot *slot, hv_memory_flags_t flags)
+>       trace_hvf_vm_map(slot->start, slot->size, slot->mem, flags,
+>                        flags & HV_MEMORY_READ ?  'R' : '-',
+>                        flags & HV_MEMORY_WRITE ? 'W' : '-',
+> -                     flags & HV_MEMORY_EXEC ?  'E' : '-');
+> +                     flags & HV_MEMORY_EXEC ?  'X' : '-');
+>       ret = hv_vm_map(slot->mem, slot->start, slot->size, flags);
+>       assert_hvf_ok(ret);
+>       return 0;
 
-> Maybe we are missing an earlier check whether HVF is usable or not, but
-> we shouldn't brutally abort().
-
-I agree. I think with this patchset you're doing it practically as early
-as possible with accel_init_machine.
 

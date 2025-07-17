@@ -4,77 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A639C83F34
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 14:59:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F17EC83F34
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 15:00:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ucQ5D-0002kH-14; Thu, 17 Jul 2025 10:59:39 -0400
+	id 1ucQ5U-0002u7-K5; Thu, 17 Jul 2025 10:59:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xiaoyao.li@intel.com>)
- id 1ucOME-0007SX-79; Thu, 17 Jul 2025 09:09:06 -0400
-Received: from mgamail.intel.com ([198.175.65.16])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xiaoyao.li@intel.com>)
- id 1ucOMA-0001sg-Cc; Thu, 17 Jul 2025 09:09:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1752757743; x=1784293743;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=T/IVqI+1Ccw5qrGvHqbqRKzY61XINI9554vFTWPatks=;
- b=PI7OEDYvKhyZ1dQAZcS007qrHJhtfqdS0UdOKHknMIOhF1ZmCKMFCCaR
- 78OMOFl75rErvjyJGWNeW4kU7LvrW9h09BayFqv6FJP31G5Ji/fReDNnF
- GfpPdOI/VDBCWlrNew9mp2a0zU1FHemn+FcWL2D+bRZDEAIffZKQnoOJe
- 9Ob3Uv1qTq3YDd4kcFJbyVcCBwSiLHHpYZ1KZ+yEc8TUsy7vWNKaTqeMt
- XQPJpX9hFxHSber/AS99YKO5D0AIzXpljNpyTVjk/D36T/CGOkCn3bF8l
- X43hK5O4nP94lSVcZob6a6utUr9Ct+cuPdKdBB4DsUZXwSuD4HKBdOuNl g==;
-X-CSE-ConnectionGUID: 1TIziBsJT129OlvYnqxTLQ==
-X-CSE-MsgGUID: pMsCIXoPTb6Jb+jrR9lJmg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11495"; a="55180524"
-X-IronPort-AV: E=Sophos;i="6.16,318,1744095600"; d="scan'208";a="55180524"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jul 2025 06:08:58 -0700
-X-CSE-ConnectionGUID: IIMwW4kYSt2I146w0cPbFQ==
-X-CSE-MsgGUID: BAAFq7s1TFODC8MaVXBS8g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,318,1744095600"; d="scan'208";a="158141936"
-Received: from xiaoyaol-hp-g830.ccr.corp.intel.com (HELO [10.124.247.1])
- ([10.124.247.1])
- by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jul 2025 06:08:54 -0700
-Message-ID: <1edeecdd-76cf-4baa-97d8-c07df20b4824@intel.com>
-Date: Thu, 17 Jul 2025 21:08:49 +0800
+ (Exim 4.90_1) (envelope-from <oenhan@gmail.com>)
+ id 1ucIR3-0005SZ-P5; Thu, 17 Jul 2025 02:49:42 -0400
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <oenhan@gmail.com>)
+ id 1ucIR0-0002fp-Ck; Thu, 17 Jul 2025 02:49:41 -0400
+Received: by mail-pj1-x1029.google.com with SMTP id
+ 98e67ed59e1d1-3122368d7c4so612931a91.1; 
+ Wed, 16 Jul 2025 23:49:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1752734975; x=1753339775; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ixrurWayV8+XR7IlXDsNMVgZieg0itryHEbYoWpM6Q0=;
+ b=CqjizoIrLh/UdJazEtmqbqLgMmYfrPVtHt+Qj+CYPLhsx/yaumdIjytLwpTrHvsyfk
+ 8Bbg9KrY3BQ3kIkba0DMBV6bpFydceuLznfhDq0YkwiO7VzkkFcshNHaTk17MvWxikxo
+ l/c8RlT6oLY8IusiiqSivQA1/E+hovZyYc7xkEFQCW0U9xa/HyAgVn7WF64yp3VIYwEa
+ 7zyp0Fk1DkElTM2k/0yrGie79V8sxyAjUT+frK45iRCU8j52USnI8q1uZ0SkBGOXRf2K
+ Cs8lqf/99UHsVlrPXHC2cTrX56TPpk/VqdaeRyLSQR8X6yKTh/BUjKbuGXHwe0g2PzKJ
+ Pxtw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1752734975; x=1753339775;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ixrurWayV8+XR7IlXDsNMVgZieg0itryHEbYoWpM6Q0=;
+ b=KKjQ0EjA6IWtE1z+oYKsR+OTJ0d1p4oNxM8w/5q0a25iT3ltPRTbUrFIdq2LngVBzh
+ YwWIm/y9NUiNOS/DT45kz/fjkcmTSdcdAt8SIIRhmXb6rdb8SlsTpGIjHbvQBIre6p2I
+ pupoj0qzoCIZI3QFNtwbCAkw0cs33wB5/EBt5eoxKIJ9FLDUYnfgMWKtNlv1HiikA3ZA
+ Fwuof1bFW6oRXzzWbwMoBJy6V4x4ll+scFcC/ZuacBmLAJYl7RH9HZKuhBzIc/7JG5Xm
+ ey/pVhXgGe+MUhNkBPKaXzmEC1U7hz2ym+xl9ZYBk3dagncV1Xw4inGN4fXC6bCm9XeQ
+ CDBA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVIFWNvUnJj+RL2bdf+QRs41xIBOWZUs81Nt4IgIM4oryYhpl6pREc108iFkDuvp/cTIx1+EDXNkg==@nongnu.org,
+ AJvYcCWNrrWCJ4xjw9EdwXnjTVRjPvxR7OPeDmxsCSAQlweGpa6iymZS6tExPj4LPvzaNvbi5Tq3a2SSeDLAPQ==@nongnu.org,
+ AJvYcCXrpxwH8z9/v9he1xQiq9H3jQkgTYTJLU0XeXHx4fAWnZQkxp93rzd2yHkKSHtVD+jhTwUDOs0woQilH/c=@nongnu.org
+X-Gm-Message-State: AOJu0YwXrKGJ0c6/P6e1MQu3B3+SdIG9vgs53tC/wWFrBosYnd5HnARK
+ QCMet1v+sZfBQh9p1n+13gb3pWgCyNNBDfDscEgvN/ARs3+CCd5vxiVzJ/aWS+YQzolEOVqluNP
+ 7qTlpkxWTfZpysL2IH7KXm92UoUar/eU=
+X-Gm-Gg: ASbGncuo3LOHceF+dFO78KDghLaEG3cCxWKYLSrCta9v8KRTkByZ3SjpwP9UB3reESy
+ dQUXZ1a6a+Lh/kb1opX/6Oz9qgnxV0juuX676gYQ3x4BYXLW9M8AgPf+I1xfQJRMVIkCp494Rtq
+ v5rrjBE1sjL22VOVvzHZpGN6zHDBsOmXn7anaXHAKiM06QsFeLJg39/B+jP1dujaQ7iotIlrRn8
+ iaRSR0=
+X-Google-Smtp-Source: AGHT+IGiD0m+EJOTpp1XVyKnLczb6rMXChjjC81NzorMzAwWRsFPEsxbd7jzvwt/iiuO8Q85+yxU7IW+vwopPs2LP3E=
+X-Received: by 2002:a17:90b:2747:b0:2ff:58c7:a71f with SMTP id
+ 98e67ed59e1d1-31c9e799ca0mr6785302a91.32.1752734974500; Wed, 16 Jul 2025
+ 23:49:34 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-10.1 1/3] accel/hvf: Display executable bit as 'X'
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Cameron Esfahani <dirty@apple.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Roman Bolshakov <rbolshakov@ddn.com>, Mads Ynddal <mads@ynddal.dk>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-References: <20250716172813.73405-1-philmd@linaro.org>
- <20250716172813.73405-2-philmd@linaro.org>
-Content-Language: en-US
-From: Xiaoyao Li <xiaoyao.li@intel.com>
-In-Reply-To: <20250716172813.73405-2-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=198.175.65.16; envelope-from=xiaoyao.li@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.998, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20250605083338.1845911-1-chenhgs@chinatelecom.cn>
+ <238cce11-3050-4ec8-acbd-b1605f9dc4a1@tls.msk.ru>
+ <CAAuJbe+dNpdA62CjfQfGq0Ph72w+Nooyax=WdRuYCRTPRngvxg@mail.gmail.com>
+ <ef3f739d-5cda-4078-a5eb-ca6632d5e92e@redhat.com>
+In-Reply-To: <ef3f739d-5cda-4078-a5eb-ca6632d5e92e@redhat.com>
+From: Huaitong Han <oenhan@gmail.com>
+Date: Thu, 17 Jul 2025 14:49:22 +0800
+X-Gm-Features: Ac12FXyy6gnHOQxDUuTJmknhDDnaOybEv6qb10Q6fd9nOEQeOAbLUClgDD2r4IY
+Message-ID: <CAAuJbeKgX7iQqswXBK2jFKmFKRKMUM1vigK_o9iL-UU6-y6YDQ@mail.gmail.com>
+Subject: Re: [PATCH] vfio, migration: save device parent pci config
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Cc: mst@redhat.com, mjt@tls.msk.ru, qemu-devel@nongnu.org, 
+ qemu-stable@nongnu.org, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, John Levon <john.levon@nutanix.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
+ envelope-from=oenhan@gmail.com; helo=mail-pj1-x1029.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 17 Jul 2025 09:21:42 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,31 +103,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/17/2025 1:28 AM, Philippe Mathieu-Daudé wrote:
-> Developers are custom to read RWX, not RWE.
-> Replace E -> X.
-> 
-> Reported-by: Alex Bennée <alex.bennee@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+C=C3=A9dric Le Goater <clg@redhat.com> =E4=BA=8E2025=E5=B9=B47=E6=9C=8815=
+=E6=97=A5=E5=91=A8=E4=BA=8C 14:25=E5=86=99=E9=81=93=EF=BC=9A
+>
+> On 7/14/25 04:37, Huaitong Han wrote:
+> > Hi, mst, clg
+> >
+> > Any comments?
+>
+>
+> Since this seems to be a GIC issue on the aarch64 virt platform, you
+> should cc: the virt-arm people for more insights.
+>
+> Also, the vfio-user devices have been merged very recently, ~1w ago,
+> and, AFAICT, migration is not supported. Are you testing against the
+> master QEMU branch ? Adding John in cc: nevertheless.
 
-Reviewed-by: Xiaoyao Li <xiaoyao.li@intel.com>
+Yes, this is a problem with vfio and vgic working together on the
+arm64 platform.
+The test did not use qemu master, it uses our own backport branch.
+However, this issue is essentially unrelated to vfio-user,  It is essential=
+ly
+an arm64 vfio device live migration issue. vfio-user only provides a test
+case that support vfio device live migration. other devices that support
+vfio live migration will also trigger the issue on the arm4 platform.
 
-> ---
->   accel/hvf/hvf-all.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
-> index e67a8105a66..0a4b498e836 100644
-> --- a/accel/hvf/hvf-all.c
-> +++ b/accel/hvf/hvf-all.c
-> @@ -84,7 +84,7 @@ static int do_hvf_set_memory(hvf_slot *slot, hv_memory_flags_t flags)
->       trace_hvf_vm_map(slot->start, slot->size, slot->mem, flags,
->                        flags & HV_MEMORY_READ ?  'R' : '-',
->                        flags & HV_MEMORY_WRITE ? 'W' : '-',
-> -                     flags & HV_MEMORY_EXEC ?  'E' : '-');
-> +                     flags & HV_MEMORY_EXEC ?  'X' : '-');
->       ret = hv_vm_map(slot->mem, slot->start, slot->size, flags);
->       assert_hvf_ok(ret);
->       return 0;
-
+>
+> Thanks,
+>
+> C.
+>
+>
+>
+> > Thanks.
+> > Huaitong Han
+> >
+> > Michael Tokarev <mjt@tls.msk.ru> =E4=BA=8E2025=E5=B9=B47=E6=9C=8813=E6=
+=97=A5=E5=91=A8=E6=97=A5 17:12=E5=86=99=E9=81=93=EF=BC=9A
+> >
+> >>
+> >> Ping?  Has this been forgotten?
+> >>
+> >> Thanks,
+> >>
+> >> /mjt
+> >>
+> >> On 05.06.2025 11:33, oenhan@gmail.com wrote:
+> >>> From: Huguanshen Chen <chenhgs@chinatelecom.cn>
+> >>>
+> >>> On arm64 virtualization platform, vfio-user devices lose their interr=
+upts after
+> >>> migration to the destination. This issue occurs because qemu fails to=
+ deliver
+> >>> the msi device id to the vGIC. The error device id is calculated base=
+d on the
+> >>> device's parent bus, so it is essential to save the parent pci config=
+ to
+> >>> prevent this issue.
+> >>>
+> >>> Backtrace:
+> >>> QEMU:
+> >>>    #0 qdev_get_parent_bus
+> >>>    #1 pci_dev_bus_num
+> >>>    #2 pci_req_id_cache_extract
+> >>>    #3 pci_requester_id
+> >>>    #4 kvm_irqchip_update_msi_route delivers 0(error id) to vGIC
+> >>>
+> >>> KVM:
+> >>>    #0 find_its_device returns error
+> >>>    #1 find_ite
+> >>>    #2 vgic_its_resolve_lpi
+> >>>    #3 vgic_its_trigger_msi
+> >>>    #4 vgic_its_inject_msi
+> >>>    #5 kvm_set_msi
+> >>>    #6 kvm_send_userspace_msi
+> >>>
+> >>> Reported-by: Heng Zhang <zhangh121@chinatelecom.cn>
+> >>> Signed-off-by: Huguanshen Chen <chenhgs@chinatelecom.cn>
+> >>> Signed-off-by: Huaitong Han <hanht2@chinatelecom.cn>
+> >>> ---
+> >>>    hw/vfio/pci.c | 11 +++++++++++
+> >>>    1 file changed, 11 insertions(+)
+> >>>
+> >>> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> >>> index a1bfdfe375..442113d0b7 100644
+> >> ...
+> >
+>
 

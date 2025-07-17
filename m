@@ -4,80 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF655C83F1A
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 10:11:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4AE0C83F1B
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 10:25:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ucLZc-0004AI-BH; Thu, 17 Jul 2025 06:10:45 -0400
+	id 1ucLnF-0001vJ-9z; Thu, 17 Jul 2025 06:24:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1ucLZ4-0003ah-R0
- for qemu-arm@nongnu.org; Thu, 17 Jul 2025 06:10:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1ucLZ0-0006Fc-2g
- for qemu-arm@nongnu.org; Thu, 17 Jul 2025 06:10:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752747000;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=gwrIjKZXPzjGjDfnEc6fu0I6MYM54EUGopYwGukpD9Q=;
- b=Ug4cWGK2IouCjrp32qoue1H99JSmzCtUODqKOOedkXK6rTf5i3N4mwsLtMsd1mLEXtNCL9
- Iv2O0lExNwW/eThU3IcXOUlpUR5vDwBefTyQmR3GpFUm58uki+PgX0xek2wnXob2RjbhB6
- ooSiRw0JDNgJF3KRVy48uLqrLaky5hA=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-150-lSrjYRKUMhSVuEZzFhaKrg-1; Thu,
- 17 Jul 2025 06:09:57 -0400
-X-MC-Unique: lSrjYRKUMhSVuEZzFhaKrg-1
-X-Mimecast-MFC-AGG-ID: lSrjYRKUMhSVuEZzFhaKrg_1752746995
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1857F19560A2; Thu, 17 Jul 2025 10:09:55 +0000 (UTC)
-Received: from virt-mtcollins-01.lab.eng.rdu2.redhat.com
- (virt-mtcollins-01.lab.eng.rdu2.redhat.com [10.8.1.196])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6645B180035E; Thu, 17 Jul 2025 10:09:47 +0000 (UTC)
-From: Shaoqin Huang <shahuang@redhat.com>
-To: qemu-arm@nongnu.org,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Eric Auger <eauger@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Cc: Zhao Liu <zhao1.liu@intel.com>, Shaoqin Huang <shahuang@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Sergio Lopez <slp@redhat.com>, Yanan Wang <wangyanan55@huawei.com>
-Subject: [PATCH v11 0/3] ramfb: Add property to control if load the romfile
-Date: Thu, 17 Jul 2025 06:09:38 -0400
-Message-Id: <20250717100941.2230408-1-shahuang@redhat.com>
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1ucLnB-0001sm-J9; Thu, 17 Jul 2025 06:24:45 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1ucLn9-00081E-Eq; Thu, 17 Jul 2025 06:24:45 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-451d7b50815so5429935e9.2; 
+ Thu, 17 Jul 2025 03:24:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1752747881; x=1753352681; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:to:from:date:from:to:cc:subject:date:message-id
+ :reply-to; bh=iDkLruCjaACSk3OsJ4aa2qN5ilaONt7yxXecg7QGufI=;
+ b=QqiY/mSQni3IkI6NWFLtkzfM50klWKq+VYsxsLf7uEkOSMd/IVrIxp2iwMLptI8XyA
+ ph7GfRHFE2/+oTHUljcS4CACFjQ0QSOxp+D8iSiVWISnmJ89ZmJLP3+TDEZJUiJkAG+D
+ JDKIBJZDrtL0o4dcvQC8SpsOns8EDLJTg5mCjBZ0Pq4aZPaGbLyES+kjs+1tHxg9NjqV
+ PUp9SUTSbY/6/kgl+AokgDNyF2miX6VdkjAZzGObpXSxyzsQlVu0yzL5mm2LGMpnIbHi
+ gAjWOV1HlktlDmWNheAY5ixedkzPlYjJJMCEWoKzFPPQSdRhH+MMD+r/JAB9cky8mmbe
+ fW7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1752747881; x=1753352681;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=iDkLruCjaACSk3OsJ4aa2qN5ilaONt7yxXecg7QGufI=;
+ b=KCRcTPc8mV5ygW3XiSI4gC3+77DuN5bXjRkS1OeR6aNlYFrA6GL9l/qEZSZsMGcwyZ
+ o6zr05q5iI6qStbG4aKyh0kI6L4DBOrvtN8Xxfkp3Nro5FBpi8gu3YNFDoLgDnzjhVyl
+ k0lrO6GhmTyHkXhKgpAjgV1kvu9mwYRWqWIbxr7FwFtswansUs9Vw+A4lpNiA1QYmfew
+ nDF3by798UEJJIWLB2j3sa86//KSc+LkWc2Qa52Abf6PbDkuUGqGJ2Whi+Zlbxa3lYWT
+ 5V12p4OK6P1ZR9TR2cxwcTc+EpXwnKu3vS/KSCYsksXHdVDIPyy/ztFyluHKK2UqIB8y
+ 9PLA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVOw50HRAb3RX7eOsKZRxXsBYpZihXdA9ngHE86NmCfeu9Z2RPnjTTupmOJiOFJ6h0WXSulRxUjkp2OYQ==@nongnu.org,
+ AJvYcCVcUq+5chNMc1P7DqFkLtwwGGORCddZ7JZM9VD3V5mdoZVQz+WXAoJyQ1IRPACUHr7LOtsAIyRbXA==@nongnu.org
+X-Gm-Message-State: AOJu0YybWXyeKG6HdTUA+w4F9WPpPlts8R7mdIXWs88Q0snCh/UoMJgl
+ z2FfTByGlk9mAcWRCj1kQeBK+lKpUmdCK5ZQQG1Muu2bMQRWESOYD1nZ
+X-Gm-Gg: ASbGncu/GDxXgsn9NIhYmCAwIMNJSNlrzQj3vPY2c0cMooYKXThycElgv1yfVAI4Kjr
+ sTYsQhmK+AG22jM0PxqJazqwsAGZfcO1QNBtsvmFudbynZaQe9ojNhFj4Zh0P2ShPef90ICMpLR
+ DSgV8pnJp2NdB6/3+ms4X8jOQ9UAfOT+CqHlxoxdfjfccM1t7qpzXsVpDCPl394vWRL6Qv9ToGc
+ LlkPU8leXIwoXrQgptKrDPs5fF0aR+QB2LnoNR2/zQVe1OsNrIum32mfiNP/A6+fcxX7h+N4m63
+ dTMiiCZeBSpXb7Gje1PeZozLPX/0uuDlDfL3C8pthPISWk/muGwOVKCdZ/sitf3s1AHkvDweXoR
+ VzzQ4G709BYL6PhWSI4ZfgouNxOM=
+X-Google-Smtp-Source: AGHT+IFentCCnT9+NK/vAg8pgh5FnIb7qaKt7FTOqSARnyOpfXR90kGFG/RzyanFg2/O5hMdpB4vLQ==
+X-Received: by 2002:a05:600c:8b28:b0:456:1e5a:8879 with SMTP id
+ 5b1f17b1804b1-4562e341199mr64746805e9.9.1752747880450; 
+ Thu, 17 Jul 2025 03:24:40 -0700 (PDT)
+Received: from [127.0.0.1] ([62.214.191.67]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-45634f6bc51sm18164045e9.17.2025.07.17.03.24.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 17 Jul 2025 03:24:40 -0700 (PDT)
+Date: Thu, 17 Jul 2025 10:24:32 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: zhangzhijie <zhangzhijie@bosc.ac.cn>, qemu-devel@nongnu.org,
+ wangran@bosc.ac.cn, zhangjian@bosc.ac.cn, peter.maydell@linaro.org,
+ andrew.smirnov@gmail.com, qemu-arm@nongnu.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v1=5D_PCIE-Host_Support_64?=
+ =?US-ASCII?Q?Bit_resource_for_DesignwarePCIEHost?=
+In-Reply-To: <0029ad6d-c25e-46d3-be2f-5d23087df287@bosc.ac.cn>
+References: <20250715064400.2289152-1-zhangzhijie@bosc.ac.cn>
+ <631BA6B2-268F-4DDC-9DA6-77697373A5DF@gmail.com>
+ <0029ad6d-c25e-46d3-be2f-5d23087df287@bosc.ac.cn>
+Message-ID: <03BC71CC-647D-418E-88A3-7D66D858D2B5@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=shahuang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,84 +103,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently the ramfb device loads the vgabios-ramfb.bin unconditionally, but only
-the x86 need the vgabios-ramfb.bin, this can cause that when use the
-release package on arm64 it can't find the vgabios-ramfb.bin.
 
-Because only seabios will use the vgabios-ramfb.bin, load the rom logic
-is x86-specific. For other !x86 platforms, the edk2 ships an EFI driver
-for ramfb, so they don't need to load the romfile.
 
-So add a new property use-legacy-x86-rom in both ramfb and vfio_pci
-device, because the vfio display also use the ramfb_setup() to load
-the vgabios-ramfb.bin file.
+Am 17=2E Juli 2025 00:51:28 UTC schrieb zhangzhijie <zhangzhijie@bosc=2Eac=
+=2Ecn>:
+>
+>
+>=E5=9C=A8 2025/7/17 1:53, Bernhard Beschow =E5=86=99=E9=81=93:
+>>=20
+>>=20
+>> Am 15=2E Juli 2025 06:44:00 UTC schrieb zhangzhijie <zhangzhijie@bosc=
+=2Eac=2Ecn>:
+>>> 0=2E DW pcie support 64bit resource
+>>> 1=2E DW version type using Linux kernel
+>>=20
+>> Which machines in QEMU require this change?
+>>=20
+>after support 64bit resource, will support on riscv
 
-After have this property, the machine type can set the compatibility to
-not load the vgabios-ramfb.bin if the arch doesn't need it.
+Nice=2E Is there a datasheet (standalone or for the riscv SoC using this I=
+P block) which you could provide? The QEMU emulation has some bugs which I'=
+d like to fix=2E
 
-Then I set the use_legacy_x86_rom property to false by default, and only set it
-to true on x86 since only x86 will need it.
-
-At the same time, set the "use-legacy-x86-rom" property to true on those
-historical versioned machine types in order to avoid the memory layout
-being changed.
-
-Changelog:
----------
-v10 -> v11:
-  - Move TYPE* from hw/vfio/pci.h to hw/vfio/types.h
-v9 -> v10:
-  - Fix the long line.
-  - Add the reviewed-by and ack.
-v8 -> v9:
-  - Improve the commit message.
-v7 -> v8:
-  - Set the property in microvm machine type.
-v6 -> v7:
-  - Set the property into hw_compat_10_0 instead of hw_compat_9_2.
-v5 -> v6:
-  - Set the property to true on those historical versioned machine types.
-v4 -> v5:
-  - Fix some typo error.
-  - Set the property in piix machine type.
-v3 -> v4:
-  - Set the new property to false by default, only set it to true on x86.
-v2 -> v3:
-  - Fix the underscore error.
-  - Add a new patch to set the property in arm compatibility.
-v1 -> v2:
-  - Change the property name.
-
-v9: https://lore.kernel.org/all/20250704030315.2181235-1-shahuang@redhat.com/
-v7: https://lore.kernel.org/all/20250702085616.2172722-1-shahuang@redhat.com/
-v6: https://lore.kernel.org/all/20250701030549.2153331-1-shahuang@redhat.com/
-v5: https://lore.kernel.org/all/20250626034526.2136585-1-shahuang@redhat.com/
-v4: https://lore.kernel.org/all/20250617030521.2109305-1-shahuang@redhat.com/
-v3: https://lore.kernel.org/all/20250609073408.2083831-1-shahuang@redhat.com/
-v2: https://lore.kernel.org/all/20250606070234.2063451-1-shahuang@redhat.com/
-v1: https://lore.kernel.org/all/20250605030351.2056571-1-shahuang@redhat.com/
-
-Shaoqin Huang (3):
-  ramfb: Add property to control if load the romfile
-  vfio: Move the TYPE_* to hw/vfio/types.h
-  hw/i386: Add the ramfb romfile compatibility
-
- hw/core/machine.c             |  2 ++
- hw/display/ramfb-standalone.c |  5 ++++-
- hw/display/ramfb-stubs.c      |  2 +-
- hw/display/ramfb.c            |  6 ++++--
- hw/i386/microvm.c             |  3 +++
- hw/i386/pc_piix.c             | 10 ++++++++++
- hw/i386/pc_q35.c              |  3 +++
- hw/vfio/display.c             |  4 ++--
- hw/vfio/pci.c                 |  2 ++
- hw/vfio/pci.h                 | 11 ++---------
- hw/vfio/types.h               | 21 +++++++++++++++++++++
- include/hw/display/ramfb.h    |  2 +-
- 12 files changed, 55 insertions(+), 16 deletions(-)
- create mode 100644 hw/vfio/types.h
-
--- 
-2.40.1
-
+>>>=20
+>>> Signed-off-by: zhangzhijie <zhangzhijie@bosc=2Eac=2Ecn>
+>>> ---
+>>> hw/pci-host/designware=2Ec         | 12 +++++++++---
+>>> include/hw/pci-host/designware=2Eh |  2 +-
+>>> 2 files changed, 10 insertions(+), 4 deletions(-)
+>>>=20
+>>> diff --git a/hw/pci-host/designware=2Ec b/hw/pci-host/designware=2Ec
+>>> index f6e49ce9b8=2E=2E99d791c0a7 100644
+>>> --- a/hw/pci-host/designware=2Ec
+>>> +++ b/hw/pci-host/designware=2Ec
+>>> @@ -41,6 +41,8 @@
+>>> #define DESIGNWARE_PCIE_MSI_INTR0_ENABLE           0x828
+>>> #define DESIGNWARE_PCIE_MSI_INTR0_MASK             0x82C
+>>> #define DESIGNWARE_PCIE_MSI_INTR0_STATUS           0x830
+>>> +#define PCIE_VERSION_NUMBER                        0x8F8
+>>> +#define PCIE_VERSION_TYPE                          0x8FC
+>>> #define DESIGNWARE_PCIE_ATU_VIEWPORT               0x900
+>>> #define DESIGNWARE_PCIE_ATU_REGION_INBOUND         BIT(31)
+>>> #define DESIGNWARE_PCIE_ATU_CR1                    0x904
+>>> @@ -144,6 +146,10 @@ designware_pcie_root_config_read(PCIDevice *d, ui=
+nt32_t address, int len)
+>>>      uint32_t val;
+>>>=20
+>>>      switch (address) {
+>>> +    case PCIE_VERSION_NUMBER:
+>>> +    case PCIE_VERSION_TYPE:
+>>> +        val =3D 0x3534302a;
+>>> +        break;
+>>>      case DESIGNWARE_PCIE_PORT_LINK_CONTROL:
+>>>          /*
+>>>           * Linux guest uses this register only to configure number of
+>>> @@ -427,7 +433,7 @@ static void designware_pcie_root_realize(PCIDevice=
+ *dev, Error **errp)
+>>>          viewport->inbound =3D true;
+>>>          viewport->base    =3D 0x0000000000000000ULL;
+>>>          viewport->target  =3D 0x0000000000000000ULL;
+>>> -        viewport->limit   =3D UINT32_MAX;
+>>> +        viewport->limit   =3D UINT64_MAX;
+>>>          viewport->cr[0]   =3D DESIGNWARE_PCIE_ATU_TYPE_MEM;
+>>>=20
+>>>          source      =3D &host->pci=2Eaddress_space_root;
+>>> @@ -451,7 +457,7 @@ static void designware_pcie_root_realize(PCIDevice=
+ *dev, Error **errp)
+>>>          viewport->inbound =3D false;
+>>>          viewport->base    =3D 0x0000000000000000ULL;
+>>>          viewport->target  =3D 0x0000000000000000ULL;
+>>> -        viewport->limit   =3D UINT32_MAX;
+>>> +        viewport->limit   =3D UINT64_MAX;
+>>>          viewport->cr[0]   =3D DESIGNWARE_PCIE_ATU_TYPE_MEM;
+>>>=20
+>>>          destination =3D &host->pci=2Ememory;
+>>> @@ -558,7 +564,7 @@ static const VMStateDescription vmstate_designware=
+_pcie_viewport =3D {
+>>>      =2Efields =3D (const VMStateField[]) {
+>>>          VMSTATE_UINT64(base, DesignwarePCIEViewport),
+>>>          VMSTATE_UINT64(target, DesignwarePCIEViewport),
+>>> -        VMSTATE_UINT32(limit, DesignwarePCIEViewport),
+>>> +        VMSTATE_UINT64(limit, DesignwarePCIEViewport),
+>>>          VMSTATE_UINT32_ARRAY(cr, DesignwarePCIEViewport, 2),
+>>>          VMSTATE_END_OF_LIST()
+>>>      }
+>>> diff --git a/include/hw/pci-host/designware=2Eh b/include/hw/pci-host/=
+designware=2Eh
+>>> index a35a3bd06c=2E=2E6e06f54801 100644
+>>> --- a/include/hw/pci-host/designware=2Eh
+>>> +++ b/include/hw/pci-host/designware=2Eh
+>>> @@ -46,7 +46,7 @@ typedef struct DesignwarePCIEViewport {
+>>>=20
+>>>      uint64_t base;
+>>>      uint64_t target;
+>>> -    uint32_t limit;
+>>> +    uint64_t limit;
+>>>      uint32_t cr[2];
+>>>=20
+>>>      bool inbound;
+>
 

@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C362CC83F34
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 03:42:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32602C83F1A
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 03:42:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ucFVo-00045R-01; Wed, 16 Jul 2025 23:42:27 -0400
+	id 1ucFWG-0004VY-EQ; Wed, 16 Jul 2025 23:42:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ucFUg-0003ST-MQ; Wed, 16 Jul 2025 23:41:14 -0400
+ id 1ucFVF-0003gw-DC; Wed, 16 Jul 2025 23:42:04 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ucFUe-0000YT-OO; Wed, 16 Jul 2025 23:41:14 -0400
+ id 1ucFVD-0000YT-0l; Wed, 16 Jul 2025 23:41:48 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 17 Jul
- 2025 11:40:56 +0800
+ 2025 11:40:58 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 17 Jul 2025 11:40:56 +0800
+ Transport; Thu, 17 Jul 2025 11:40:58 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
  Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 03/21] hw/arm/ast27x0: Move TSP coprocessor initialization
- from machine to SoC leve
-Date: Thu, 17 Jul 2025 11:40:31 +0800
-Message-ID: <20250717034054.1903991-4-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 11/21] hw/arm/ast27x0: Add DRAM alias for SSP SDRAM remap
+ and update realization order
+Date: Thu, 17 Jul 2025 11:40:39 +0800
+Message-ID: <20250717034054.1903991-12-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250717034054.1903991-1-jamin_lin@aspeedtech.com>
 References: <20250717034054.1903991-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -66,203 +66,133 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In the previous design, the TSP coprocessor (aspeed27x0tsp-soc) was initialized
-and realized at the machine level (e.g., AST2700FC). To allow proper
-integration between coprocessors—such as shared use of SRAM, SCU, and memory
-remap configuration—this commit moves TSP initialization into the AST2700 SoC.
+This commit adds two MemoryRegion aliases to support PSP access to
+SSP SDRAM through shared memory remapping, as defined by the default SCU
+configuration.
 
-By handling TSP initialization and realization at the SoC level, it becomes
-easier to manage device ordering and ensure correct dependencies between
-coprocessors and controllers. It also reflects the hardware design more
-accurately, as these processors belong to the SoC, not the board.
+The SSP coprocessor exposes two DRAM aliases:
+  - remap1 maps PSP DRAM at 0x400000000 (32MB) to SSP SDRAM offset 0x2000000
+  - remap2 maps PSP DRAM at 0x42c000000 (32MB) to SSP SDRAM offset 0x0
 
-Benefits of this change:
-- TSP can share SCU, SRAM, and memory regions with other SoC devices.
-- Centralizes coprocessor setup logic under SoC for better maintenance.
-- Simplifies machine-level code in "aspeed_ast27x0-fc.c".
+These regions correspond to the default SCU register values, which control
+the mapping between PSP and coprocessor memory windows.
 
-This is part of ongoing work to support shared SCU, SRAM, and memory remap
-handling across PSP, SSP, and TSP. Future commits will add memory remap
-mechanisms and tightly integrated SoC controller coordination.
+To ensure correctness, the aliases are initialized early in
+aspeed_soc_ast2700_realize(), before SCU and coprocessor realization.
+This allows SSP to reference the alias regions during its SDRAM setup.
+
+Additionally, the realization order comment has been updated to reflect
+the new DRAM dependency: coprocessors must now be realized after DRAM,
+SRAM, and SCU are all initialized.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- include/hw/arm/aspeed_soc.h | 26 ++++++++++++++------------
- hw/arm/aspeed_ast27x0-fc.c  | 32 ++------------------------------
- hw/arm/aspeed_ast27x0.c     | 28 ++++++++++++++++++++++++++++
- 3 files changed, 44 insertions(+), 42 deletions(-)
+ include/hw/arm/aspeed_soc.h |  2 ++
+ hw/arm/aspeed_ast27x0-ssp.c |  5 ++++
+ hw/arm/aspeed_ast27x0.c     | 49 ++++++++++++++++++++++++++++---------
+ 3 files changed, 45 insertions(+), 11 deletions(-)
 
 diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 2831da91ab..3dd317cfee 100644
+index 4152fbf495..d628a189c1 100644
 --- a/include/hw/arm/aspeed_soc.h
 +++ b/include/hw/arm/aspeed_soc.h
-@@ -141,6 +141,19 @@ struct Aspeed27x0SSPSoCState {
- #define TYPE_ASPEED27X0SSP_SOC "aspeed27x0ssp-soc"
- OBJECT_DECLARE_SIMPLE_TYPE(Aspeed27x0SSPSoCState, ASPEED27X0SSP_SOC)
+@@ -136,6 +136,8 @@ struct Aspeed27x0SSPSoCState {
+     MemoryRegion memory;
+     MemoryRegion sram_mr_alias;
+     MemoryRegion scu_mr_alias;
++    MemoryRegion sdram_remap1_alias;
++    MemoryRegion sdram_remap2_alias;
  
-+struct Aspeed27x0TSPSoCState {
-+    AspeedSoCState parent;
-+    AspeedINTCState intc[2];
-+    UnimplementedDeviceState ipc[2];
-+    UnimplementedDeviceState scuio;
-+    MemoryRegion memory;
-+
-+    ARMv7MState armv7m;
-+};
-+
-+#define TYPE_ASPEED27X0TSP_SOC "aspeed27x0tsp-soc"
-+OBJECT_DECLARE_SIMPLE_TYPE(Aspeed27x0TSPSoCState, ASPEED27X0TSP_SOC)
-+
- struct Aspeed27x0SoCState {
-     AspeedSoCState parent;
- 
-@@ -150,6 +163,7 @@ struct Aspeed27x0SoCState {
-     MemoryRegion dram_empty;
- 
-     Aspeed27x0SSPSoCState ssp;
-+    Aspeed27x0TSPSoCState tsp;
- };
- 
- #define TYPE_ASPEED27X0_SOC "aspeed27x0-soc"
-@@ -161,18 +175,6 @@ struct Aspeed10x0SoCState {
      ARMv7MState armv7m;
  };
- 
--struct Aspeed27x0TSPSoCState {
--    AspeedSoCState parent;
--    AspeedINTCState intc[2];
--    UnimplementedDeviceState ipc[2];
--    UnimplementedDeviceState scuio;
--
--    ARMv7MState armv7m;
--};
--
--#define TYPE_ASPEED27X0TSP_SOC "aspeed27x0tsp-soc"
--OBJECT_DECLARE_SIMPLE_TYPE(Aspeed27x0TSPSoCState, ASPEED27X0TSP_SOC)
--
- #define TYPE_ASPEED10X0_SOC "aspeed10x0-soc"
- OBJECT_DECLARE_SIMPLE_TYPE(Aspeed10x0SoCState, ASPEED10X0_SOC)
- 
-diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
-index c9b338fe78..eb25a2635b 100644
---- a/hw/arm/aspeed_ast27x0-fc.c
-+++ b/hw/arm/aspeed_ast27x0-fc.c
-@@ -37,18 +37,13 @@ struct Ast2700FCState {
-     MemoryRegion ca35_memory;
-     MemoryRegion ca35_dram;
-     MemoryRegion ca35_boot_rom;
--    MemoryRegion tsp_memory;
--
--    Clock *tsp_sysclk;
- 
-     Aspeed27x0SoCState ca35;
--    Aspeed27x0TSPSoCState tsp;
- 
-     bool mmio_exec;
- };
- 
- #define AST2700FC_BMC_RAM_SIZE (1 * GiB)
--#define AST2700FC_CM4_DRAM_SIZE (32 * MiB)
- 
- #define AST2700FC_HW_STRAP1 0x000000C0
- #define AST2700FC_HW_STRAP2 0x00000003
-@@ -157,6 +152,8 @@ static void ast2700fc_ca35_init(MachineState *machine)
-     aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART12, serial_hd(0));
-     aspeed_soc_uart_set_chr(ASPEED_SOC(&s->ca35.ssp), ASPEED_DEV_UART4,
-                             serial_hd(1));
-+    aspeed_soc_uart_set_chr(ASPEED_SOC(&s->ca35.tsp), ASPEED_DEV_UART7,
-+                            serial_hd(2));
-     if (!qdev_realize(DEVICE(&s->ca35), NULL, &error_abort)) {
+diff --git a/hw/arm/aspeed_ast27x0-ssp.c b/hw/arm/aspeed_ast27x0-ssp.c
+index 0a58b8ea4b..fff95eac6a 100644
+--- a/hw/arm/aspeed_ast27x0-ssp.c
++++ b/hw/arm/aspeed_ast27x0-ssp.c
+@@ -187,6 +187,11 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
+                                 AST2700_SSP_SDRAM_SIZE, errp)) {
          return;
      }
-@@ -195,34 +192,9 @@ static void ast2700fc_ca35_init(MachineState *machine)
-     arm_load_kernel(ARM_CPU(first_cpu), machine, &ast2700fc_board_info);
- }
- 
--static void ast2700fc_tsp_init(MachineState *machine)
--{
--    AspeedSoCState *soc;
--    Ast2700FCState *s = AST2700A1FC(machine);
--    s->tsp_sysclk = clock_new(OBJECT(s), "TSP_SYSCLK");
--    clock_set_hz(s->tsp_sysclk, 200000000ULL);
--
--    object_initialize_child(OBJECT(s), "tsp", &s->tsp, TYPE_ASPEED27X0TSP_SOC);
--    memory_region_init(&s->tsp_memory, OBJECT(&s->tsp), "tsp-memory",
--                       UINT64_MAX);
--
--    qdev_connect_clock_in(DEVICE(&s->tsp), "sysclk", s->tsp_sysclk);
--    if (!object_property_set_link(OBJECT(&s->tsp), "memory",
--                                  OBJECT(&s->tsp_memory), &error_abort)) {
--        return;
--    }
--
--    soc = ASPEED_SOC(&s->tsp);
--    aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART7, serial_hd(2));
--    if (!qdev_realize(DEVICE(&s->tsp), NULL, &error_abort)) {
--        return;
--    }
--}
--
- static void ast2700fc_init(MachineState *machine)
- {
-     ast2700fc_ca35_init(machine);
--    ast2700fc_tsp_init(machine);
- }
- 
- static void ast2700fc_class_init(ObjectClass *oc, const void *data)
++    /* SDRAM remap alias used by PSP to access SSP SDRAM */
++    memory_region_add_subregion(&s->dram_container, 0, &a->sdram_remap2_alias);
++    memory_region_add_subregion(&s->dram_container,
++                                memory_region_size(&a->sdram_remap2_alias),
++                                &a->sdram_remap1_alias);
+     memory_region_add_subregion(s->memory,
+                                 sc->memmap[ASPEED_DEV_SDRAM],
+                                 &s->dram_container);
 diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index ffbc32fef2..665627f788 100644
+index 9d67c5f631..be130db5e2 100644
 --- a/hw/arm/aspeed_ast27x0.c
 +++ b/hw/arm/aspeed_ast27x0.c
-@@ -433,6 +433,7 @@ static void aspeed_soc_ast2700_init(Object *obj)
-     /* Coprocessors */
+@@ -803,6 +803,28 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+                                 sc->memmap[ASPEED_DEV_VBOOTROM], &s->vbootrom);
+ 
+     /* SCU */
++    /*
++     * The SSP coprocessor uses two memory aliases (remap1 and remap2)
++     * to access shared memory regions in the PSP DRAM:
++     *
++     *   - remap1 maps PSP DRAM at 0x400000000 (size: 32MB) to SSP SDRAM
++     *     offset 0x2000000
++     *   - remap2 maps PSP DRAM at 0x42c000000 (size: 32MB) to SSP SDRAM
++     *     offset 0x0
++     *
++     * These mappings correspond to the default values of the SCU registers:
++     *
++     * This configuration enables shared memory communication between the PSP
++     * and coprocessors, with address translation controlled by the SCU.
++     */
++    if (mc->default_cpus > sc->num_cpus) {
++        memory_region_init_alias(&a->ssp.sdram_remap1_alias, OBJECT(a),
++                                 "ssp.sdram.remap1", s->memory,
++                                 0x400000000ULL, 32 * MiB);
++        memory_region_init_alias(&a->ssp.sdram_remap2_alias, OBJECT(a),
++                                 "ssp.sdram.remap2", s->memory,
++                                 0x42c000000ULL, 32 * MiB);
++    }
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
+         return;
+     }
+@@ -816,22 +838,27 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+                     sc->memmap[ASPEED_DEV_SCUIO]);
+ 
+     /*
+-     * Coprocessors must be realized after the SRAM and SCU regions.
++     * Coprocessors must be realized after the DRAM, SRAM, and SCU regions.
+      *
+-     * The SRAM is used as shared memory between the main CPU (PSP) and the
+-     * coprocessors. Coprocessors access this shared SRAM region through a
+-     * MemoryRegion alias mapped to a different physical address.
++     * - DRAM: Coprocessors access shared memory through MemoryRegion aliases
++     *   that point into PSP's DRAM space. These aliases are mapped into the
++     *   coprocessors' SDRAM windows at specific offsets (e.g., 0x0 and
++     *   0x2000000), and configured according to SCU register defaults.
++     *   Therefore, DRAM must be fully initialized before coprocessors can
++     *   attach aliases to it.
+      *
+-     * Similarly, the SCU is a single hardware block shared across all
+-     * processors. Coprocessors access it via a MemoryRegion alias that maps
+-     * to a different address than the one used by the main CPU.
++     * - SRAM: Used as shared memory between the PSP and coprocessors.
++     *   Coprocessors access this memory via alias regions mapped to
++     *   different physical addresses.
+      *
+-     * Therefore, both the SRAM and SCU must be fully initialized before the
+-     * coprocessors can create aliases pointing to them.
++     * - SCU: A single hardware block shared across all processors.
++     *   Coprocessors access SCU registers through alias mappings.
++     *   SCU must be initialized first to allow for consistent register
++     *   state and memory remap configuration.
+      *
+      * To ensure correctness, the device realization order is explicitly
+-     * managed:
+-     * coprocessors are initialized only after SRAM and SCU are ready.
++     * managed: coprocessors are initialized only after DRAM, SRAM, and SCU
++     * are ready.
+      */
      if (mc->default_cpus > sc->num_cpus) {
-         object_initialize_child(obj, "ssp", &a->ssp, TYPE_ASPEED27X0SSP_SOC);
-+        object_initialize_child(obj, "tsp", &a->tsp, TYPE_ASPEED27X0TSP_SOC);
-     }
- 
-     object_initialize_child(obj, "gic", &a->gic, gicv3_class_name());
-@@ -643,6 +644,30 @@ static bool aspeed_soc_ast2700_ssp_realize(DeviceState *dev, Error **errp)
-     return true;
- }
- 
-+static bool aspeed_soc_ast2700_tsp_realize(DeviceState *dev, Error **errp)
-+{
-+    Aspeed27x0SoCState *a = ASPEED27X0_SOC(dev);
-+    AspeedSoCState *s = ASPEED_SOC(dev);
-+    Clock *sysclk;
-+
-+    sysclk = clock_new(OBJECT(s), "TSP_SYSCLK");
-+    clock_set_hz(sysclk, 200000000ULL);
-+    qdev_connect_clock_in(DEVICE(&a->tsp), "sysclk", sysclk);
-+
-+    memory_region_init(&a->tsp.memory, OBJECT(&a->tsp), "tsp-memory",
-+                       UINT64_MAX);
-+    if (!object_property_set_link(OBJECT(&a->tsp), "memory",
-+                                  OBJECT(&a->tsp.memory), &error_abort)) {
-+        return false;
-+    }
-+
-+    if (!qdev_realize(DEVICE(&a->tsp), NULL, &error_abort)) {
-+        return false;
-+    }
-+
-+    return true;
-+}
-+
- static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
- {
-     int i;
-@@ -759,6 +784,9 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
          if (!aspeed_soc_ast2700_ssp_realize(dev, errp)) {
-             return;
-         }
-+        if (!aspeed_soc_ast2700_tsp_realize(dev, errp)) {
-+            return;
-+        }
-     }
- 
-     /* UART */
 -- 
 2.43.0
 

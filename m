@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2488EC83F1A
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 10:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 144F7C83F1A
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 10:07:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ucLSL-0007ZB-Gc; Thu, 17 Jul 2025 06:03:13 -0400
+	id 1ucLVi-00080V-O5; Thu, 17 Jul 2025 06:06:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ucLRm-00077z-Ra
- for qemu-arm@nongnu.org; Thu, 17 Jul 2025 06:02:42 -0400
-Received: from p-west2-cluster3-host6-snip4-10.eps.apple.com ([57.103.69.103]
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ucLVZ-0007tv-B8
+ for qemu-arm@nongnu.org; Thu, 17 Jul 2025 06:06:33 -0400
+Received: from p-west2-cluster1-host1-snip4-5.eps.apple.com ([57.103.68.8]
  helo=outbound.mr.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ucLRb-0005U5-UH
- for qemu-arm@nongnu.org; Thu, 17 Jul 2025 06:02:37 -0400
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ucLVW-00063G-JU
+ for qemu-arm@nongnu.org; Thu, 17 Jul 2025 06:06:33 -0400
 Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-2a-60-percent-2 (Postfix) with ESMTPS id
- 103DA1801647; Thu, 17 Jul 2025 10:02:21 +0000 (UTC)
+ by p00-icloudmta-asmtp-us-west-2a-100-percent-1 (Postfix) with ESMTPS id
+ D1CC41800AD4; Thu, 17 Jul 2025 10:06:25 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
- bh=mCswh9ebOHY2y2CUP6QFDoqKtC8t4isLF13aUJ/uoF0=;
+ bh=NvkVRYw+9JQ5Dip45pP1SH6/XWJC7Z+fEn9XKPPG7+4=;
  h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=C6NLBQpDEIxHz4dagUiO+03MWwNJfQSZbBLBKHBxPkhjo6vUVCSfBGuKSsEhPa378CrN9er+zUB3K+XmuhEK81se9nDB9GxB9uMAi8olumuSeVg4AXRZlk91KhsSrk0uycoqkCetTs9DQtvxO8JzcSXwKhfARQrwhlXhufkG3yPfeM1o43Xl3pVcvPBpXU4caTmF3o8UGQchbGt83VfAGwRXEmMumB9dLaTWPA8hLRImkVXg6eYocnOOTcTobgxgWkyqTMqylUkgL0g37lUreOoVAau5Cx52ZTQBSt4Rso3bFY27Jnu5WbH9iDiVcCLAr/C/Ll5cWMo91zt4zRBHSw==
+ b=On167NBvUuMmDZkpNPqKAeuAowhJY664WvzMM7AMEh1bJQu2VLTkgSOR9zWp+muXSQqY/nW1eRuJAc9kFqbaCAbZPcNov3tMVMeVevr8C0g18F15f6dZVXkLDsLW4+nqHcvC4tvZTMzjzpbmW47S91kuQLf9eowY7pRTZ9UhDnRjHjcp9Vk1g5Ph1DdpeYwFB52RUra4wjNx4Pedl3/od2UFBbn8fWq9kKVMihiv/Me0/EXBwIRJgA32me4Y9eko41P7IrDkPrC3qy1aCKVv6oFzhbwwhc5cMEuE7G3rZDQXgWjCds2k8FynPzbYK1qU4VxnpJTRCylGzZ9V8icQyg==
 X-Client-IP: 194.62.217.67
 Received: from smtpclient.apple (mr-asmtp-me-k8s.p00.prod.me.com
  [17.57.152.38])
- by p00-icloudmta-asmtp-us-west-2a-60-percent-2 (Postfix) with ESMTPSA id
- 1838C18000A4; Thu, 17 Jul 2025 10:02:19 +0000 (UTC)
+ by p00-icloudmta-asmtp-us-west-2a-100-percent-1 (Postfix) with ESMTPSA id
+ C57651800ADF; Thu, 17 Jul 2025 10:06:23 +0000 (UTC)
 Content-Type: text/plain;
 	charset=utf-8
 Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.600.51.1.1\))
-Subject: Re: [PATCH-for-10.1 2/3] accel/hvf: Do not abort in
- hvf_arm_get_*_ipa_bit_size()
+Subject: Re: [PATCH-for-10.1 3/3] hw/arm/virt: Warn when HVF doesn't report
+ IPA bit length
 From: Mads Ynddal <mads@ynddal.dk>
-In-Reply-To: <20250716172813.73405-3-philmd@linaro.org>
-Date: Thu, 17 Jul 2025 12:02:07 +0200
+In-Reply-To: <20250716172813.73405-4-philmd@linaro.org>
+Date: Thu, 17 Jul 2025 12:06:11 +0200
 Cc: qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Roman Bolshakov <rbolshakov@ddn.com>,
  Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <1C83D054-528E-466E-9E00-1AE1179E8DB7@ynddal.dk>
+Message-Id: <84250F37-CCCF-49A2-8CB1-5B5CD1839004@ynddal.dk>
 References: <20250716172813.73405-1-philmd@linaro.org>
- <20250716172813.73405-3-philmd@linaro.org>
+ <20250716172813.73405-4-philmd@linaro.org>
 To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 X-Mailer: Apple Mail (2.3826.600.51.1.1)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzE3MDA4OCBTYWx0ZWRfX9trxClqUkROV
- 21nkoWHusKcEHsH7jjR8H8NwmAkA89DslSXEDVoITLuHhD2iBQ93eR+oPoXnpiWsL/vcS/kzkdl
- 2zEsUbdHZ1QEJWgdtulZO+BaJvfBSCxzdrRpudmdTmzu0han5oooI6wTjNVOgpk87JqNrTmiHcm
- m6P8SxMigHfoQT0/c6kc37mXRiAq0w9ZbyM9XRUqc6u0SNdGdFYoA/4yGDz8w8jhPKI+fd+n+TZ
- XHC8jSPM/3jMjf3m+cJiRpTK0jj6g6pwKe6rZw+ziYYyK71jSHawR8q/W9KkJ3cpD3CvIhV+w=
-X-Proofpoint-GUID: bEwb1a2ux0Cu4ZuEGdkNF3uTKNad2I87
-X-Proofpoint-ORIG-GUID: bEwb1a2ux0Cu4ZuEGdkNF3uTKNad2I87
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzE3MDA4OCBTYWx0ZWRfX7pauudNrRfIo
+ +LYNHtiZn8LN7xLmxmndohRg816N6EIai1VeiEFcHetZEGGnSUj9blaLikrzwttXNBVduymET3M
+ 9JGiANrfNg5I87EOKriTJodB8+QKNTCQCr/vTLC7Dr1s2Z77B5jurOyRHhuJftyqAInVu+4scuJ
+ K12aP07OofkYlS4HhekPbAu+boD5ZVCFuu1oUfS6yinm7q4JqzDnAJqy+aRzYOyxcTPEG3CCjyF
+ WcmGXH3wnWjQqnhQv9eJhgXBqqTFFuOLizVnP7/FZRvp4wD/wWBzzYY2VPSy9VP/tsYaFP5xs=
+X-Proofpoint-ORIG-GUID: CVrqlXMvFzqYLTsNyRg7n5WNniQGwaRI
+X-Proofpoint-GUID: CVrqlXMvFzqYLTsNyRg7n5WNniQGwaRI
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-07-17_01,2025-07-16_02,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- clxscore=1030 adultscore=0 phishscore=0
- suspectscore=0 mlxscore=0 bulkscore=0
- spamscore=0 mlxlogscore=849 classifier=spam adjust=0 reason=mlx scancount=1
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ mlxscore=0 bulkscore=0 spamscore=0 phishscore=0
+ adultscore=0 malwarescore=0
+ mlxlogscore=999 clxscore=1030 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.22.0-2506270000 definitions=main-2507170088
-Received-SPF: pass client-ip=57.103.69.103; envelope-from=mads@ynddal.dk;
+Received-SPF: pass client-ip=57.103.68.8; envelope-from=mads@ynddal.dk;
  helo=outbound.mr.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,21 +92,20 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 > On 16 Jul 2025, at 19.28, Philippe Mathieu-Daud=C3=A9 =
 <philmd@linaro.org> wrote:
 >=20
-> Do not abort in hvf_arm_get_default_ipa_bit_size()
-> and hvf_arm_get_max_ipa_bit_size() when the IPA can
-> not be fetched. Return 0 (and document it).
+> Emit a warning when HVF doesn't return the IPA bit length
+> and return -1 as "this accelerator is not usable", allowing
+> QEMU to try with the next one (when using '-accel hvf:tcg').
 >=20
+> Reported-by: Ivan Krasilnikov
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2981
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
-> target/arm/hvf_arm.h | 11 +++++++++++
-> target/arm/hvf/hvf.c |  8 ++------
-> 2 files changed, 13 insertions(+), 6 deletions(-)
+> hw/arm/virt.c | 8 ++++++--
+> 1 file changed, 6 insertions(+), 2 deletions(-)
 
-I looked up the different uses of hvf_arm_get_max_ipa_bit_size. There's
-an unchecked use in clamp_id_aa64mmfr0_parange_to_ipa_size, but I guess
-it'll never reach that far, with your changes to
-virt_hvf_get_physical_address_range.
+I haven't been able to verify that hv_vm_config_get_max_ipa_size and
+hv_vm_config_get_default_ipa_size fail if HVF is not available, but
+assuming so, it looks fine to me.
 
-clamp_id_aa64mmfr0_parange_to_ipa_size is already surrounded by other
-hv-calls and assert_hvf_ok, so either leave it, or assert ipa_size!=3D0?=
+Reviewed-by: Mads Ynddal <mads@ynddal.dk>=
 

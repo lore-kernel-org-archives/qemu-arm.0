@@ -4,37 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F227DC83F1A
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 03:48:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54210C83F1B
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 03:49:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ucFZG-0001nc-O9; Wed, 16 Jul 2025 23:45:59 -0400
+	id 1ucFaH-0004Pu-1B; Wed, 16 Jul 2025 23:47:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ucFVV-0003lr-1O; Wed, 16 Jul 2025 23:42:11 -0400
+ id 1ucFWE-0004Ug-Ai; Wed, 16 Jul 2025 23:42:50 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ucFVS-0000g2-0W; Wed, 16 Jul 2025 23:42:03 -0400
+ id 1ucFWC-0000g2-FR; Wed, 16 Jul 2025 23:42:50 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 17 Jul
- 2025 11:41:00 +0800
+ 2025 11:41:02 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 17 Jul 2025 11:41:00 +0800
+ Transport; Thu, 17 Jul 2025 11:41:02 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
  Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 15/21] hw/misc/aspeed_scu: Add SCU support for SSP SDRAM
- remap
-Date: Thu, 17 Jul 2025 11:40:43 +0800
-Message-ID: <20250717034054.1903991-16-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 21/21] docs: Add support vbootrom for ast2700fc
+Date: Thu, 17 Jul 2025 11:40:49 +0800
+Message-ID: <20250717034054.1903991-22-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250717034054.1903991-1-jamin_lin@aspeedtech.com>
 References: <20250717034054.1903991-1-jamin_lin@aspeedtech.com>
@@ -66,173 +65,97 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit adds SCU register support for SSP SDRAM remap control and runtime
-activation. It introduces logic for the PSP to dynamically configure the mapping
-of its own DRAM windows into SSP-visible SDRAM space, enabling shared memory
-communication via memory region aliases.
-
-Two MemoryRegion aliases are attached to the SCU via QOM property links:
-  - ssp-sdram-remap1: maps PSP DRAM at 0x400000000 (size: 32MB) to SSP SDRAM
-    offset 0x2000000
-  - ssp-sdram-remap2: maps PSP DRAM at 0x42c000000 (size: 32MB) to SSP SDRAM
-    offset 0x0
-
-The SCU registers AST2700_SCU_SSP_CTRL_1/2 and
-AST2700_SCU_SSP_REMAP_ADDR_{1,2} / REMAP_SIZE_{1,2} allow runtime reconfiguration
-of alias offset, base, and size.
-
-Bumps the SCU VMState version to 3.
-
-|------------------------------------------|         |----------------------------|
-|               PSP DRAM                   |         |        SSP SDRAM           |
-|------------------------------------------|         |----------------------------|
-| 0x4_0000_0000 (SCU_124 << 4)             |     --> | 0x0000_0000                |
-|   remap1 base                            |---| |   |  - SCU_150: target addr    |
-|   size: 32MB    (SCU_14C)                |   | |   |    remap2                  |
-|------------------------------------------|   | |   |----------------------------|
-|                                          |   | |   |                            |
-| 0x4_2C00_0000 (SCU_128 << 4)             |-----|   | 0x0200_0000                |
-|   remap2 base                            |   |     |  - SCU_148: target addr    |
-|   size: 32MB    (SCU_154)                |   |---> |    remap1                  |
-|------------------------------------------|         |----------------------------|
-
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- include/hw/misc/aspeed_scu.h |  3 ++
- hw/arm/aspeed_ast27x0.c      |  6 ++++
- hw/misc/aspeed_scu.c         | 53 ++++++++++++++++++++++++++++++++++--
- 3 files changed, 60 insertions(+), 2 deletions(-)
+ docs/system/arm/aspeed.rst | 41 ++++++++++++++++++++++++++++++++------
+ 1 file changed, 35 insertions(+), 6 deletions(-)
 
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-index 684b48b722..408f821379 100644
---- a/include/hw/misc/aspeed_scu.h
-+++ b/include/hw/misc/aspeed_scu.h
-@@ -39,6 +39,9 @@ struct AspeedSCUState {
-     uint32_t hw_strap1;
-     uint32_t hw_strap2;
-     uint32_t hw_prot_key;
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index bf18c56347..bc836e486f 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -1,4 +1,4 @@
+-Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
++Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
+ ====================================================================================================================================================================================================================================================================================================================================================================================================================================
+ 
+ The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
+@@ -243,7 +243,7 @@ under Linux), use :
+ 
+   -M ast2500-evb,bmc-console=uart3
+ 
+-Aspeed 2700 family boards (``ast2700-evb``)
++Aspeed 2700 family boards (``ast2700-evb``, ``ast2700fc``)
+ ==================================================================
+ 
+ The QEMU Aspeed machines model BMCs of Aspeed evaluation boards.
+@@ -360,6 +360,14 @@ Booting the ast2700fc machine
+ AST2700 features four Cortex-A35 primary processors and two Cortex-M4 coprocessors.
+ **ast2700-evb** machine focuses on emulating the four Cortex-A35 primary processors,
+ **ast2700fc** machine extends **ast2700-evb** by adding support for the two Cortex-M4 coprocessors.
++There are two methods to boot the ast2700fc machine.
 +
-+    MemoryRegion *ssp_sdram_remap1;
-+    MemoryRegion *ssp_sdram_remap2;
- };
- 
- #define AST2400_A0_SILICON_REV   0x02000303U
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 0f988eaa4d..587c042c30 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -833,6 +833,12 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-         memory_region_init_alias(&a->tsp.sdram_remap_alias, OBJECT(a),
-                                  "tsp.sdram.remap", s->memory,
-                                  0x42e000000, 32 * MiB);
-+        object_property_set_link(OBJECT(&s->scu), "ssp-sdram-remap1",
-+                                 OBJECT(&a->ssp.sdram_remap1_alias),
-+                                 &error_abort);
-+        object_property_set_link(OBJECT(&s->scu), "ssp-sdram-remap2",
-+                                 OBJECT(&a->ssp.sdram_remap2_alias),
-+                                 &error_abort);
-     }
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
-         return;
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index a0ab5eed8f..df379cafbe 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -143,6 +143,14 @@
- #define AST2700_HW_STRAP1_SEC2    TO_REG(0x28)
- #define AST2700_HW_STRAP1_SEC3    TO_REG(0x2C)
- 
-+/* SSP */
-+#define AST2700_SCU_SSP_CTRL_1          TO_REG(0x124)
-+#define AST2700_SCU_SSP_CTRL_2          TO_REG(0x128)
-+#define AST2700_SCU_SSP_REMAP_ADDR_1    TO_REG(0x148)
-+#define AST2700_SCU_SSP_REMAP_SIZE_1    TO_REG(0x14c)
-+#define AST2700_SCU_SSP_REMAP_ADDR_2    TO_REG(0x150)
-+#define AST2700_SCU_SSP_REMAP_SIZE_2    TO_REG(0x154)
++Manual boot using ``-device loader``:
 +
- #define AST2700_SCU_CLK_SEL_1       TO_REG(0x280)
- #define AST2700_SCU_HPLL_PARAM      TO_REG(0x300)
- #define AST2700_SCU_HPLL_EXT_PARAM  TO_REG(0x304)
-@@ -605,8 +613,8 @@ static void aspeed_scu_realize(DeviceState *dev, Error **errp)
++In this approach, users manually load firmware and assign entry points via QEMU loader devices.
++By default, the PSP begins execution at address ``0x430000000``, the load address of the bl31
++firmware. The SSP and TSP start in the powered-off state and must be explicitly enabled by the
++PSP through writes to SCU registers.
  
- static const VMStateDescription vmstate_aspeed_scu = {
-     .name = "aspeed.scu",
--    .version_id = 2,
--    .minimum_version_id = 2,
-+    .version_id = 3,
-+    .minimum_version_id = 3,
-     .fields = (const VMStateField[]) {
-         VMSTATE_UINT32_ARRAY(regs, AspeedSCUState, ASPEED_AST2600_SCU_NR_REGS),
-         VMSTATE_END_OF_LIST()
-@@ -618,6 +626,10 @@ static const Property aspeed_scu_properties[] = {
-     DEFINE_PROP_UINT32("hw-strap1", AspeedSCUState, hw_strap1, 0),
-     DEFINE_PROP_UINT32("hw-strap2", AspeedSCUState, hw_strap2, 0),
-     DEFINE_PROP_UINT32("hw-prot-key", AspeedSCUState, hw_prot_key, 0),
-+    DEFINE_PROP_LINK("ssp-sdram-remap1", AspeedSCUState, ssp_sdram_remap1,
-+                     TYPE_MEMORY_REGION, MemoryRegion *),
-+    DEFINE_PROP_LINK("ssp-sdram-remap2", AspeedSCUState, ssp_sdram_remap2,
-+                     TYPE_MEMORY_REGION, MemoryRegion *),
- };
+ Steps to boot the AST2700fc machine:
  
- static void aspeed_scu_class_init(ObjectClass *klass, const void *data)
-@@ -902,6 +914,7 @@ static void aspeed_ast2700_scu_write(void *opaque, hwaddr offset,
-     int reg = TO_REG(offset);
-     /* Truncate here so bitwise operations below behave as expected */
-     uint32_t data = data64;
-+    MemoryRegion *mr;
+@@ -370,8 +378,8 @@ Steps to boot the AST2700fc machine:
+  * bl31.bin
+  * optee/tee-raw.bin
+  * image-bmc
+- * zephyr-aspeed-ssp.elf (for SSP firmware, CPU 5)
+- * zephyr-aspeed-tsp.elf (for TSP firmware, CPU 6)
++ * zephyr-aspeed-ssp.bin (for SSP firmware, CPU 5)
++ * zephyr-aspeed-tsp.bin (for TSP firmware, CPU 6)
  
-     if (reg >= ASPEED_AST2700_SCU_NR_REGS) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-@@ -913,6 +926,36 @@ static void aspeed_ast2700_scu_write(void *opaque, hwaddr offset,
-     trace_aspeed_ast2700_scu_write(offset, size, data);
+ 2. Execute the following command to start ``ast2700fc`` machine:
  
-     switch (reg) {
-+    case AST2700_SCU_SSP_CTRL_1:
-+    case AST2700_SCU_SSP_CTRL_2:
-+        mr = (reg == AST2700_SCU_SSP_CTRL_1) ?
-+            s->ssp_sdram_remap1 : s->ssp_sdram_remap2;
-+        if (mr == NULL) {
-+            return;
-+        }
-+        data &= 0x7fffffff;
-+        memory_region_set_alias_offset(mr, (uint64_t) data << 4);
-+        break;
-+    case AST2700_SCU_SSP_REMAP_ADDR_1:
-+    case AST2700_SCU_SSP_REMAP_ADDR_2:
-+        mr = (reg == AST2700_SCU_SSP_REMAP_ADDR_1) ?
-+            s->ssp_sdram_remap1 : s->ssp_sdram_remap2;
-+        if (mr == NULL) {
-+            return;
-+        }
-+        data &= 0x3fffffff;
-+        memory_region_set_address(mr, data);
-+        break;
-+    case AST2700_SCU_SSP_REMAP_SIZE_1:
-+    case AST2700_SCU_SSP_REMAP_SIZE_2:
-+        mr = (reg == AST2700_SCU_SSP_REMAP_SIZE_1) ?
-+            s->ssp_sdram_remap1 : s->ssp_sdram_remap2;
-+        if (mr == NULL) {
-+            return;
-+        }
-+        data &= 0x3fffffff;
-+        memory_region_set_size(mr, data);
-+        break;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: Unhandled write at offset 0x%" HWADDR_PRIx "\n",
-@@ -940,6 +983,12 @@ static const uint32_t ast2700_a0_resets[ASPEED_AST2700_SCU_NR_REGS] = {
-     [AST2700_HW_STRAP1_SEC1]        = 0x000000FF,
-     [AST2700_HW_STRAP1_SEC2]        = 0x00000000,
-     [AST2700_HW_STRAP1_SEC3]        = 0x1000408F,
-+    [AST2700_SCU_SSP_CTRL_1]        = 0x40000000,
-+    [AST2700_SCU_SSP_CTRL_2]        = 0x42C00000,
-+    [AST2700_SCU_SSP_REMAP_ADDR_1]  = 0x02000000,
-+    [AST2700_SCU_SSP_REMAP_SIZE_1]  = 0x02000000,
-+    [AST2700_SCU_SSP_REMAP_ADDR_2]  = 0x00000000,
-+    [AST2700_SCU_SSP_REMAP_SIZE_2]  = 0x02000000,
-     [AST2700_SCU_HPLL_PARAM]        = 0x0000009f,
-     [AST2700_SCU_HPLL_EXT_PARAM]    = 0x8000004f,
-     [AST2700_SCU_DPLL_PARAM]        = 0x0080009f,
+@@ -385,17 +393,38 @@ Steps to boot the AST2700fc machine:
+        -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
+        -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
+        -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin \
++       -device loader,addr=0x42C000000,file=${IMGDIR}/zephyr-aspeed-ssp.bin,force-raw=on \
++       -device loader,addr=0x42E000000,file=${IMGDIR}/zephyr-aspeed-tsp.bin,force-raw=on \
+        -device loader,cpu-num=0,addr=0x430000000 \
+        -device loader,cpu-num=1,addr=0x430000000 \
+        -device loader,cpu-num=2,addr=0x430000000 \
+        -device loader,cpu-num=3,addr=0x430000000 \
+        -drive file=${IMGDIR}/image-bmc,if=mtd,format=raw \
+-       -device loader,file=${IMGDIR}/zephyr-aspeed-ssp.elf,cpu-num=4 \
+-       -device loader,file=${IMGDIR}/zephyr-aspeed-tsp.elf,cpu-num=5 \
+        -serial pty -serial pty -serial pty \
+        -snapshot \
+        -S -nographic
+ 
++Boot using a virtual boot ROM (-bios):
++
++In this method, the virtual boot ROM (vbootrom) handles the full initialization sequence.
++It starts the PSP, which then enables the SSP and TSP by programming the appropriate SCU
++registers, following the hardware behavior.
++
++Execute the following command to start ``ast2700fc`` machine:
++
++.. code-block:: bash
++
++  IMGDIR=ast2700-default
++
++  $ qemu-system-aarch64 -M ast2700fc \
++      -bios ast27x0_bootrom.bin \
++      -drive file=${IMGDIR}/image-bmc,if=mtd,format=raw \
++      -serial pty -serial pty -serial pty \
++      -snapshot \
++      -S -nographic
++
++Serial Console Redirection:
++
+ After launching QEMU, serial devices will be automatically redirected.
+ Example output:
+ 
 -- 
 2.43.0
 

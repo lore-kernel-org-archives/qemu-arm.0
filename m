@@ -4,76 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EF07C83F34
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 19:35:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AC87C83F34
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 19:43:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ucUNm-0004fL-RP; Thu, 17 Jul 2025 15:35:06 -0400
+	id 1ucUUs-0002C2-CX; Thu, 17 Jul 2025 15:42:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ucRuy-0001qy-0o
- for qemu-arm@nongnu.org; Thu, 17 Jul 2025 12:57:17 -0400
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+ id 1ucRzc-0003ym-KG
+ for qemu-arm@nongnu.org; Thu, 17 Jul 2025 13:02:09 -0400
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ucRuw-0000TY-2J
- for qemu-arm@nongnu.org; Thu, 17 Jul 2025 12:57:11 -0400
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-70a57a8ffc3so11264157b3.0
- for <qemu-arm@nongnu.org>; Thu, 17 Jul 2025 09:57:09 -0700 (PDT)
+ id 1ucRzY-0001Fh-M4
+ for qemu-arm@nongnu.org; Thu, 17 Jul 2025 13:01:58 -0400
+Received: by mail-yw1-x112c.google.com with SMTP id
+ 00721157ae682-70e77831d68so11718617b3.2
+ for <qemu-arm@nongnu.org>; Thu, 17 Jul 2025 10:01:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752771429; x=1753376229; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=8ARB4JdYsa8Oh5u9xlWRsX05TYSJaYdv5MyXQ9Vhff4=;
- b=YyXY3BTmyatlzQkYL0sD3wi+SGg3aSt+ALSR/iHiTypiptXM+NpxGcBYqrLnajCYUU
- IQtVSgsMH5MVnGEF06pOGFFvrDg+3kqvbnywQROJc8QlRpoREyA0YsSNETbor7mjBNdz
- jAkxM+uh0J1qliLaMyiiJYXXpZWeks5qpmu7gjjNtTxq4h6bU034k2E08WHkIe7iEluF
- gBXpBvPYLWIzu/F3WNOEAprWOr3lP7gnupz2jmUu4M3d2Vj+u9WB8vEEC2t2ZEQiXWL7
- PvI20sXXo4uCHw6dYhfuvkwLfAHI3rkledIgO3NrZpNNE/30+PCqC4IU2vgoS2R/aBga
- 50QQ==
+ d=linaro.org; s=google; t=1752771714; x=1753376514; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Ub39l2dQ71LYNt6PgO4S8d/6RMMH3mqe1xUAkmld2Dc=;
+ b=e17XayxVQy/gWsVKi6K4XabSToAHUS2AkTgh9I6eu6E5LWLacTFzeArBgX6TYir4uW
+ VDK5UR7TTn3rH3e58dtGJNSp2aQ6LMIkKse57fM8hbcCwEnK3TPC7XugcViotsnK2kqZ
+ fjgPdRwPuOwOs3dOn7NHEJPJyv1sSm3I6KapG95at1QAAR31C1pwVJedAzbWUsncsQMj
+ 9HNEU5sqX1Ar9qzQzMPO6azdw1RluANGOyV2Gn6We2YXY9tHm5o3SZn1VZc4OWbFJQG/
+ wUwljTaN8fHNjPqYDC7IoKEfPRr2WOuQA2NrkFEfhLJIkV3lZBM2nPZV+1rhzSnHdDwv
+ 9Qog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752771429; x=1753376229;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=8ARB4JdYsa8Oh5u9xlWRsX05TYSJaYdv5MyXQ9Vhff4=;
- b=r+5VQ39/k5FQaakUIXCGBT2q6mKtnXBWhmGP4c2d/F6MXwvOiLdR3Z5tdg49NIb1iX
- I9th6zmTWJnqXUr2QFlkOifzJfdnxAMgw7RvVWv5I/AfW2BwtVHwTSmeFvXVoTXsAaK6
- ueyXb6hAuC1zkE2tg0MN9JRe4CzOaNtJ13QdilZ4TIm4hgxybN6biLgipd1/NzRhEUtz
- kHVuCT5WAJiFPtiy1/vVx6BYPJ5Wjt90JNwmhTREUxA7FuevH1vb/kmxlNlrXFJZ+Pmu
- fcv4t/BjaRXdZmTE+uY0W6USQCgUmA992ocqU9jhfhldjury7h+jJXmk/ksoNjL/61pL
- GXQg==
-X-Gm-Message-State: AOJu0YyxtAZMs2+jaC6cJZtAr3yRnkvkhADqcLlxE1e7hYH8yB4W5/zP
- w9RVQ1CruIaVZ64sBVVdLSuodaBVGOvESDLQGqVWMbzyK0X4WfVjUzF0O08xiMqr4lCeNNRnp5g
- pDAex9taOPV9wtynPbPO5Bw+HLcm5QkG6aVbgOUJE/A==
-X-Gm-Gg: ASbGncs5SEonZBZ2o46iwa27RZfSBYCt80Of48+glpgUBJh6rlLavj7+b1YZjnMpOif
- 8IeBUfDSf5WZ+wWuaRrO2YA8FgkbIVtsOd2F5XbpUFNlLz2/Am6piMRfkgBui/zO3GjqilTNQ0U
- QnZwuXjm9Cj+D/regSACUqgUnn5IsmgDgpwh1t8wHylepmzFzdbxtO/3YX/2Jnh9dLiZDv937c1
- BPOfPK8V3RFpBXFkpA=
-X-Google-Smtp-Source: AGHT+IFXXkLZjSEwMjKBiCq0eLSrKJdwNolOoeosHJnfC5AgCQWlp7U3rV8RK8/ZahUn6cYvCarM3K2aa4g/WBZ+Syk=
-X-Received: by 2002:a05:690c:4913:b0:70e:2c7f:2ee7 with SMTP id
- 00721157ae682-71834fa7319mr108023257b3.12.1752771428749; Thu, 17 Jul 2025
- 09:57:08 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1752771714; x=1753376514;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Ub39l2dQ71LYNt6PgO4S8d/6RMMH3mqe1xUAkmld2Dc=;
+ b=GLgvaDAfE55NKfM8i8s1JYMuPtRn1xQLmqCom56hW0qoJRYkv9JBDAZlNZelJK0E8Y
+ QRqVFXAWe1PqUKtt+A4fH8Y2jxfnXwGeKMwxYXdE1n9V/pl9ePzmoo/hNg+vcCSMUQd+
+ d4HNPO47PEpZMEg+kF1v+hwyP+5E8c0l9/Jk1kNPytIWOrElfCzW2TCEqDqQZ2P7mcuq
+ q/oFshgP6EYyGRPblLLWZycb2hMJ3gwzyud3L8QBCYc3B26MQy/4MiSyEZ9cIBwlpmwv
+ cEsmeH8kEzFIh7bBtyAVn/Vd25fFRoWVHFlAogt3Uj+esqglnSr2bxuSTitEb74BvpT+
+ Zeog==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUswQ5RT1n9uMyyGaMj4qeuZi0s5O01Ip+I8785NsOZC1U8s8+0HRWbZnfFGKbrJlisTmXUGWlz3w==@nongnu.org
+X-Gm-Message-State: AOJu0YyGYRgkeUoUeVa6K+MKT3M8mGqjsWdczaWHCqJ1iBmV0SbPS3aH
+ AfZ7UD0mPb5ujcpNVSIvX7t9xSeOQzSNM2PwHBiKxFZlhD3XMGMMuPwoeq+gbbrRDZDykcRiGx7
+ auUnb3OYXT0ejp5hFuEXk2E2fbgHcyM4iz9bhWtpAc3viCw8a9g+b
+X-Gm-Gg: ASbGncuHeXoB99u60PQnww+5q8Yusee095cP6L8cyUCDpP7Fhch6Og2KbBjZal+DuQT
+ DNtRhTvAvXGl2/SsCr3OO77b81EQqshXSFaqHsjJinuyHGFbqba5cX7ihmQjbu9qWMHo6tOpncV
+ IWSqALeFOaTLS2/ZgejD7sXLaNpgaeSr/gODkwqpJe3+XAWY5hbo2Ulsy8DCocYKaaHtDvD6qCw
+ 7LqUB6F
+X-Google-Smtp-Source: AGHT+IGmIG3CZuJ/cVKUhqKgqlqwq0GtJvMoiKZh2KeZklKX/E0I+VDF/2c+eXsaNFo5P3h0JSVIMg74ZioKVgZcPh8=
+X-Received: by 2002:a05:690c:744a:b0:70e:15e7:59e2 with SMTP id
+ 00721157ae682-7183710a656mr110379947b3.24.1752771714450; Thu, 17 Jul 2025
+ 10:01:54 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250714135152.1896214-1-peter.maydell@linaro.org>
- <0b438773-01b9-42e1-8edf-2330e50387f8@linaro.org>
- <95b00393-bdd2-4db3-ac39-02a09f83b4d7@linaro.org>
-In-Reply-To: <95b00393-bdd2-4db3-ac39-02a09f83b4d7@linaro.org>
+References: <20250715061904.97540-1-clg@redhat.com>
+In-Reply-To: <20250715061904.97540-1-clg@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 17 Jul 2025 17:56:57 +0100
-X-Gm-Features: Ac12FXzjET16YqXZs-qsF_MikTfwwMTcngVAjP_a6kVAWH90nMd3IWzhu4zw1XI
-Message-ID: <CAFEAcA_Hbpg0wkQ9frt+MUj7x7uR+p7+8o4SLLx=GwhWvfCzaQ@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Provide always-false kvm_arm_*_supported()
- stubs for usermode
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Richard Henderson <richard.henderson@linaro.org>
+Date: Thu, 17 Jul 2025 18:01:41 +0100
+X-Gm-Features: Ac12FXzCCW1o0dT0QiRnSHLHcNAkqfwfNi2EH-Y6isnNU6PCmI8vi9svSefAgoU
+Message-ID: <CAFEAcA8B4gh68qYH+NK_G3V+FViTRtCmKLbyayJCbgBqtV1_Qw@mail.gmail.com>
+Subject: Re: [PATCH] docs: Fix Aspeed title
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Joel Stanley <joel@jms.id.au>, Ed Tanous <etanous@nvidia.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -96,48 +100,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 14 Jul 2025 at 16:41, Pierrick Bouvier
-<pierrick.bouvier@linaro.org> wrote:
-> As folding is not guaranteed by C standard, I'm not sure it's really
-> possible to file a bug. However, since we rely on this behaviour in
-> other parts, maybe it would be better to rewrite the condition on our side.
+On Tue, 15 Jul 2025 at 07:19, C=C3=A9dric Le Goater <clg@redhat.com> wrote:
 >
-> By changing the code to this, the folding happens as expected.
+> commit ad8e0e8a0088 removed the "=3D=3D=3D=3D=3D=3D" underlining the file=
+ title
+> which broke documentation rendering. Add it back.
 >
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 26cf7e6dfa2..af5788dafab 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -318,9 +318,11 @@ static void cpu_arm_set_sve(Object *obj, bool
-> value, Error **errp)
->   {
->       ARMCPU *cpu = ARM_CPU(obj);
->
-> -    if (value && kvm_enabled() && !kvm_arm_sve_supported()) {
-> -        error_setg(errp, "'sve' feature not supported by KVM on this
-> host");
-> -        return;
-> +    if (value) {
-> +        if (kvm_enabled() && !kvm_arm_sve_supported()) {
-> +            error_setg(errp, "'sve' feature not supported by KVM on
-> this host");
-> +            return;
-> +        }
->       }
->
->       FIELD_DP64_IDREG(&cpu->isar, ID_AA64PFR0, SVE, value);
->
-> If you prefer keeping your patch, I'm ok, but fixing the condition looks
-> better to me (as we already rely on constant folding in other places).
+> Fixes: ad8e0e8a0088 ("docs: add support for gb200-bmc")
+> Cc: Ed Tanous <etanous@nvidia.com>
+> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@redhat.com>
+> ---
 
-I'm not really a fan of relying on the compiler to fold stuff
-away -- it's fragile and there's no guarantee the compiler
-will actually do it. In this example it would be really easy
-for somebody coming along to tidy this up later to put the
-nested if()s back into a single if() condition and reintroduce
-the problem, for instance.
-
-I've applied this patch to target-arm.next; thanks for the review.
+Thanks for the patch; I'll pick it up via target-arm.next since
+I'm doing a pullreq for rc0 anyway.
 
 -- PMM
 

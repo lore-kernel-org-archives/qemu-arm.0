@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 738D3C83F1B
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 03:46:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BF12C83F1B
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 03:47:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ucFYh-000172-Kj; Wed, 16 Jul 2025 23:45:23 -0400
+	id 1ucFWx-0005Wf-5e; Wed, 16 Jul 2025 23:43:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ucFUr-0003Yq-Gy; Wed, 16 Jul 2025 23:41:31 -0400
+ id 1ucFUj-0003WO-JQ; Wed, 16 Jul 2025 23:41:18 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ucFUp-0000ZH-FB; Wed, 16 Jul 2025 23:41:24 -0400
+ id 1ucFUh-0000YT-Uu; Wed, 16 Jul 2025 23:41:17 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 17 Jul
- 2025 11:40:58 +0800
+ 2025 11:40:56 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 17 Jul 2025 11:40:58 +0800
+ Transport; Thu, 17 Jul 2025 11:40:56 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
  Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 10/21] hw/arm/ast27x0: Move DRAM and SDMC initialization
- earlier to support memory aliasing
-Date: Thu, 17 Jul 2025 11:40:38 +0800
-Message-ID: <20250717034054.1903991-11-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 05/21] hw/arm/aspeed_ast27x0-tsp: Switch TSP memory to
+ SDRAM and use dram_container for remap support
+Date: Thu, 17 Jul 2025 11:40:33 +0800
+Message-ID: <20250717034054.1903991-6-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250717034054.1903991-1-jamin_lin@aspeedtech.com>
 References: <20250717034054.1903991-1-jamin_lin@aspeedtech.com>
@@ -66,88 +66,87 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-To support DRAM aliasing for coprocessors (SSP/TSP), this commit moves the
-initialization of the SDMC (SDRAM controller) and DRAM models earlier in
-the device realization order.
+According to the AST2700 design, the TSP coprocessor uses its own SDRAM
+instead of SRAM. Additionally, all three coprocessors—SSP, TSP, and PSP—share
+a common SRAM block. In the previous implementation, the TSP memory region
+was labeled and sized as "SRAM", but in practice it was being used as TSP's
+local SDRAM.
 
-In the upcoming changes, the PSP will expose a portion of its DRAM as shared
-memory by creating a memory region alias at a specific offset. This alias is
-mapped into the coprocessor's SDRAM address space, allowing both PSP and the
-coprocessor (SSP/TSP) to access the same physical memory through their respective
-views — PSP via its DRAM, and the coprocessor via its SDRAM.
+This commit updates the TSP memory mapping to reflect the correct hardware
+design:
 
-The remapping is configured through SCU registers and enables shared memory
-communication between PSP and the coprocessors.
+- Replace the SRAM region with a 512MB SDRAM region starting at 0x0.
+- Rename the internal variable from `sram` to `dram_container` for clarity.
+- Use "AST2700_TSP_SDRAM_SIZE" (512MB) instead of the previous 32MB SRAM size.
+- Map the new region using "ASPEED_DEV_SDRAM" instead of "ASPEED_DEV_SRAM".
 
-Therefore, the DRAM and SDMC devices must be realized before:
-  - the SCU, which configures the alias offset and size
-  - the coprocessors, which access the alias through their SDRAM window
-
-No functional change.
+This change also prepares for future enhancements where PSP DRAM will be
+remapped into this TSP SDRAM container using subregions at specific offsets.
+Using "dram_container" makes it easier to manage aliases and remap logic.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/arm/aspeed_ast27x0.c | 40 ++++++++++++++++++++--------------------
- 1 file changed, 20 insertions(+), 20 deletions(-)
+ hw/arm/aspeed_ast27x0-tsp.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 2d27eb1deb..9d67c5f631 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -765,6 +765,26 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-                            qdev_get_gpio_in(DEVICE(&a->intc[0].orgates[0]), i));
-     }
+diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c
+index 4e0efaef07..a70e30fc16 100644
+--- a/hw/arm/aspeed_ast27x0-tsp.c
++++ b/hw/arm/aspeed_ast27x0-tsp.c
+@@ -15,10 +15,10 @@
+ #include "hw/misc/unimp.h"
+ #include "hw/arm/aspeed_soc.h"
  
-+    /*
-+     * SDMC - SDRAM Memory Controller
-+     * The SDMC controller is unlocked at SPL stage.
-+     * At present, only supports to emulate booting
-+     * start from u-boot stage. Set SDMC controller
-+     * unlocked by default. It is a temporarily solution.
-+     */
-+    object_property_set_bool(OBJECT(&s->sdmc), "unlocked", true,
-+                                 &error_abort);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sdmc), errp)) {
-+        return;
-+    }
-+    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sdmc), 0,
-+                    sc->memmap[ASPEED_DEV_SDMC]);
-+
-+    /* RAM */
-+    if (!aspeed_soc_ast2700_dram_init(dev, errp)) {
-+        return;
-+    }
-+
-     /* SRAM */
-     name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
-     if (!memory_region_init_ram(&s->sram, OBJECT(s), name, sc->sram_size,
-@@ -872,26 +892,6 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-                            aspeed_soc_get_irq(s, ASPEED_DEV_EHCI1 + i));
-     }
+-#define AST2700_TSP_RAM_SIZE (32 * MiB)
++#define AST2700_TSP_SDRAM_SIZE (512 * MiB)
  
--    /*
--     * SDMC - SDRAM Memory Controller
--     * The SDMC controller is unlocked at SPL stage.
--     * At present, only supports to emulate booting
--     * start from u-boot stage. Set SDMC controller
--     * unlocked by default. It is a temporarily solution.
--     */
--    object_property_set_bool(OBJECT(&s->sdmc), "unlocked", true,
--                                 &error_abort);
--    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sdmc), errp)) {
--        return;
--    }
--    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sdmc), 0,
--                    sc->memmap[ASPEED_DEV_SDMC]);
--
--    /* RAM */
--    if (!aspeed_soc_ast2700_dram_init(dev, errp)) {
--        return;
--    }
--
-     /* Net */
-     for (i = 0; i < sc->macs_num; i++) {
-         object_property_set_bool(OBJECT(&s->ftgmac100[i]), "aspeed", true,
+ static const hwaddr aspeed_soc_ast27x0tsp_memmap[] = {
+-    [ASPEED_DEV_SRAM]      =  0x00000000,
++    [ASPEED_DEV_SDRAM]     =  0x00000000,
+     [ASPEED_DEV_INTC]      =  0x72100000,
+     [ASPEED_DEV_SCU]       =  0x72C02000,
+     [ASPEED_DEV_SCUIO]     =  0x74C02000,
+@@ -163,7 +163,7 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
+     AspeedSoCState *s = ASPEED_SOC(dev_soc);
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     DeviceState *armv7m;
+-    g_autofree char *sram_name = NULL;
++    g_autofree char *name = NULL;
+     int i;
+ 
+     if (!clock_has_source(s->sysclk)) {
+@@ -180,16 +180,17 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
+                              OBJECT(s->memory), &error_abort);
+     sysbus_realize(SYS_BUS_DEVICE(&a->armv7m), &error_abort);
+ 
+-    sram_name = g_strdup_printf("aspeed.dram.%d",
+-                                CPU(a->armv7m.cpu)->cpu_index);
++    /* SDRAM */
++    name = g_strdup_printf("aspeed.sdram-container.%d",
++                           CPU(a->armv7m.cpu)->cpu_index);
+ 
+-    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size,
+-                                errp)) {
++    if (!memory_region_init_ram(&s->dram_container, OBJECT(s), name,
++                                AST2700_TSP_SDRAM_SIZE, errp)) {
+         return;
+     }
+     memory_region_add_subregion(s->memory,
+-                                sc->memmap[ASPEED_DEV_SRAM],
+-                                &s->sram);
++                                sc->memmap[ASPEED_DEV_SDRAM],
++                                &s->dram_container);
+ 
+     /* SCU */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
+@@ -268,7 +269,6 @@ static void aspeed_soc_ast27x0tsp_class_init(ObjectClass *klass, const void *dat
+ 
+     sc->valid_cpu_types = valid_cpu_types;
+     sc->silicon_rev = AST2700_A1_SILICON_REV;
+-    sc->sram_size = AST2700_TSP_RAM_SIZE;
+     sc->spis_num = 0;
+     sc->ehcis_num = 0;
+     sc->wdts_num = 0;
 -- 
 2.43.0
 

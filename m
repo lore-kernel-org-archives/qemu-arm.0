@@ -4,75 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A41B4C83F1B
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 10:10:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABED4C83F1A
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Jul 2025 10:10:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ucLYe-0003Js-Ps; Thu, 17 Jul 2025 06:09:44 -0400
+	id 1ucLZH-0003iX-Cm; Thu, 17 Jul 2025 06:10:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ucLYd-0003Ho-3m
- for qemu-arm@nongnu.org; Thu, 17 Jul 2025 06:09:43 -0400
-Received: from p-west2-cluster2-host9-snip4-4.eps.apple.com ([57.103.68.167]
- helo=outbound.mr.icloud.com)
+ (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
+ id 1ucLZ4-0003ag-QE
+ for qemu-arm@nongnu.org; Thu, 17 Jul 2025 06:10:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ucLYa-0006EL-Er
- for qemu-arm@nongnu.org; Thu, 17 Jul 2025 06:09:41 -0400
-Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-2a-60-percent-6 (Postfix) with ESMTPS id
- 84A5D1801F20; Thu, 17 Jul 2025 10:09:37 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
- bh=S3CGaxO0rpahQnGxJrjwVy5/K3jSNBZdKR/d735hBwc=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=EKe2cUHEe0hmak5FpHocZz051MuOkaVg36h41vBmzyT0uMN7hhxiF6zWyhuHfPrODLFphHFkyXATVt4MFcKfGkieYpSLW05kj7Av9o/GW1y9VBsgoq9xRKQR9R6U4KmUnrJVTu1kyQnEluT/nga0VvG6FSoUgXPhMtI1YU/KdhuBkK1M9t00i/ZbNnfVajv9Zm71JpBJi+pyUKHxuDkmBRab+5yuhZ7Z7CJlIe62JPt5YJxMsmfQyiAgxFAdGRKwsBYmaLSxeW/tFVuKZ2DI5s9JnBpKVlKuFC+Ev5Hcf39UFpH/fKbApMTea9+s67cybWZjnjmXiDrHwJWaJWy6Fg==
-X-Client-IP: 194.62.217.67
-Received: from smtpclient.apple (mr-asmtp-me-k8s.p00.prod.me.com
- [17.57.152.38])
- by p00-icloudmta-asmtp-us-west-2a-60-percent-6 (Postfix) with ESMTPSA id
- A634A18001F7; Thu, 17 Jul 2025 10:09:35 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.600.51.1.1\))
-Subject: Re: [PATCH-for-10.1 1/3] accel/hvf: Display executable bit as 'X'
-From: Mads Ynddal <mads@ynddal.dk>
-In-Reply-To: <20250716172813.73405-2-philmd@linaro.org>
-Date: Thu, 17 Jul 2025 12:09:23 +0200
-Cc: qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Roman Bolshakov <rbolshakov@ddn.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>,
- =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <95A43574-DB5F-4611-930B-4B598B2FE098@ynddal.dk>
-References: <20250716172813.73405-1-philmd@linaro.org>
- <20250716172813.73405-2-philmd@linaro.org>
-To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-X-Mailer: Apple Mail (2.3826.600.51.1.1)
-X-Proofpoint-GUID: uIw84HxnNttHqCbJtbHrenGbiP5Pv9j4
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzE3MDA4OSBTYWx0ZWRfX463gdIRFmrn/
- wREdAa3iFMd5WwCSBJOPsMuX1w5rzgG4R6pfjdKUp6mcyVGoEj0+pYkXPsaXtg3kop6cytJXH5z
- ZxsjqI9C9xB/L/+wvsiBgMGD6A5Ay/TDpUuL1Sq7CgpcVanvzkUH/3pec3qE3vYIInehxHsbz2v
- WkzF7emcfa0QP+78Nl9siBNoEdlIP5GI4bmGvetj5lHvqWqSjcMCP6TZ+WwEvNZgkDO9h+33n1H
- MgkAB/AL9Fzri9Sxs3znUOU5K5Lg2axLoYYAoPCXSxA5FmhXOF/v2Y6BAtdukH7tRy4hdnXVw=
-X-Proofpoint-ORIG-GUID: uIw84HxnNttHqCbJtbHrenGbiP5Pv9j4
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-07-17_01,2025-07-16_02,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- adultscore=0 bulkscore=0 suspectscore=0 mlxscore=0
- mlxlogscore=983
- clxscore=1030 spamscore=0 phishscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2507170089
-Received-SPF: pass client-ip=57.103.68.167; envelope-from=mads@ynddal.dk;
- helo=outbound.mr.icloud.com
+ (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
+ id 1ucLZ0-0006Ri-KA
+ for qemu-arm@nongnu.org; Thu, 17 Jul 2025 06:10:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1752747004;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VGZ5rV9uZPoWCkA95uz1l+D5Wg0g3YqdHzUdpQk3EZw=;
+ b=e2d1fwJrPFAMPKZqZcCKt/SvXttsk3kSk7Pdo774OU3rom9PZlJ2+4UpbY9xwjSP8BsH0P
+ zb+p0TFvvSqAjB6PrY5nWJe/2UVWtHjDKOo7QETxNn19XFvkC9SKIbQ1zVJ1p8L8t3G6u7
+ oa4ny1VFhzOw48KL3/xUx4NzoVK+Mzs=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-347-Tod0rL9kP0WcgdYA1ygACg-1; Thu,
+ 17 Jul 2025 06:10:01 -0400
+X-MC-Unique: Tod0rL9kP0WcgdYA1ygACg-1
+X-Mimecast-MFC-AGG-ID: Tod0rL9kP0WcgdYA1ygACg_1752747000
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0DDC3195608E; Thu, 17 Jul 2025 10:10:00 +0000 (UTC)
+Received: from virt-mtcollins-01.lab.eng.rdu2.redhat.com
+ (virt-mtcollins-01.lab.eng.rdu2.redhat.com [10.8.1.196])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id CE0A01801AEC; Thu, 17 Jul 2025 10:09:57 +0000 (UTC)
+From: Shaoqin Huang <shahuang@redhat.com>
+To: qemu-arm@nongnu.org,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Eric Auger <eauger@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+Cc: Zhao Liu <zhao1.liu@intel.com>, Shaoqin Huang <shahuang@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v11 2/3] vfio: Move the TYPE_* to hw/vfio/types.h
+Date: Thu, 17 Jul 2025 06:09:40 -0400
+Message-Id: <20250717100941.2230408-3-shahuang@redhat.com>
+In-Reply-To: <20250717100941.2230408-1-shahuang@redhat.com>
+References: <20250717100941.2230408-1-shahuang@redhat.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=shahuang@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,18 +90,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Move the TYPE_* to a new file hw/vfio/types.h because the
+TYPE_VFIO_PCI will be used in later patch, but directly include the
+hw/vfio/pci.h can cause some compilation error when cross build the
+windows version.
 
-> On 16 Jul 2025, at 19.28, Philippe Mathieu-Daud=C3=A9 =
-<philmd@linaro.org> wrote:
->=20
-> Developers are custom to read RWX, not RWE.
-> Replace E -> X.
->=20
-> Reported-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
-> accel/hvf/hvf-all.c | 2 +-
-> 1 file changed, 1 insertion(+), 1 deletion(-)
+The hw/vfio/types.h can be included to mitigate that problem.
 
-Reviewed-by: Mads Ynddal <mads@ynddal.dk>=
+Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
+---
+ hw/vfio/pci.h   | 10 +---------
+ hw/vfio/types.h | 21 +++++++++++++++++++++
+ 2 files changed, 22 insertions(+), 9 deletions(-)
+ create mode 100644 hw/vfio/types.h
+
+diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
+index 97319670b2..c193ba6659 100644
+--- a/hw/vfio/pci.h
++++ b/hw/vfio/pci.h
+@@ -14,6 +14,7 @@
+ 
+ #include "system/memory.h"
+ #include "hw/pci/pci_device.h"
++#include "hw/vfio/types.h"
+ #include "hw/vfio/vfio-device.h"
+ #include "hw/vfio/vfio-region.h"
+ #include "qemu/event_notifier.h"
+@@ -119,17 +120,8 @@ typedef struct VFIOMSIXInfo {
+     MemoryRegion *pba_region;
+ } VFIOMSIXInfo;
+ 
+-/*
+- * TYPE_VFIO_PCI_BASE is an abstract type used to share code
+- * between VFIO implementations that use a kernel driver
+- * with those that use user sockets.
+- */
+-#define TYPE_VFIO_PCI_BASE "vfio-pci-base"
+ OBJECT_DECLARE_SIMPLE_TYPE(VFIOPCIDevice, VFIO_PCI_BASE)
+ 
+-#define TYPE_VFIO_PCI "vfio-pci"
+-/* TYPE_VFIO_PCI shares struct VFIOPCIDevice. */
+-
+ struct VFIOPCIDevice {
+     PCIDevice pdev;
+     VFIODevice vbasedev;
+diff --git a/hw/vfio/types.h b/hw/vfio/types.h
+new file mode 100644
+index 0000000000..fa20c29b9f
+--- /dev/null
++++ b/hw/vfio/types.h
+@@ -0,0 +1,21 @@
++/*
++ * VFIO types definition
++ *
++ * Copyright Red Hat, Inc. 2025
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#ifndef HW_VFIO_VFIO_TYPES_H
++#define HW_VFIO_VFIO_TYPES_H
++
++/*
++ * TYPE_VFIO_PCI_BASE is an abstract type used to share code
++ * between VFIO implementations that use a kernel driver
++ * with those that use user sockets.
++ */
++#define TYPE_VFIO_PCI_BASE "vfio-pci-base"
++
++#define TYPE_VFIO_PCI "vfio-pci"
++/* TYPE_VFIO_PCI shares struct VFIOPCIDevice. */
++
++#endif /* HW_VFIO_VFIO_TYPES_H */
+-- 
+2.40.1
+
 

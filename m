@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB9A0C83F34
-	for <qemu-arm@archiver.kernel.org>; Fri, 18 Jul 2025 22:03:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68478C83F34
+	for <qemu-arm@archiver.kernel.org>; Fri, 18 Jul 2025 22:12:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uctBC-0008KY-01; Fri, 18 Jul 2025 18:03:46 -0400
+	id 1uctJj-0003j8-Qn; Fri, 18 Jul 2025 18:12:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ucsgh-00056r-J6
- for qemu-arm@nongnu.org; Fri, 18 Jul 2025 17:32:16 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+ id 1ucsn0-0006DS-Bs
+ for qemu-arm@nongnu.org; Fri, 18 Jul 2025 17:38:46 -0400
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ucsgf-0004mQ-3G
- for qemu-arm@nongnu.org; Fri, 18 Jul 2025 17:32:15 -0400
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-235a3dd4f0dso16186815ad.0
- for <qemu-arm@nongnu.org>; Fri, 18 Jul 2025 14:32:12 -0700 (PDT)
+ id 1ucsmy-00062X-RV
+ for qemu-arm@nongnu.org; Fri, 18 Jul 2025 17:38:46 -0400
+Received: by mail-pf1-x436.google.com with SMTP id
+ d2e1a72fcca58-74af4af04fdso2559473b3a.1
+ for <qemu-arm@nongnu.org>; Fri, 18 Jul 2025 14:38:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752874331; x=1753479131; darn=nongnu.org;
+ d=linaro.org; s=google; t=1752874723; x=1753479523; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:to:subject:user-agent:mime-version:date:message-id:from
  :to:cc:subject:date:message-id:reply-to;
- bh=xwrhbGi7cQ7T1Gwntpmg9MlPdNpGkcCo4WpRIQqMUOI=;
- b=S517Y+6csp9zZHnW7wXU2RAmdeB6aC/mSeHUJEqoZixNpYdOB9BiLIFYVVupWENwAa
- BCaukO+zYiCdefQlBz2B5jFrI02iX02zyptavLfiR2UyXX6esMjZv4gRMreMcDyKMpMI
- dOX7jB6Ae41nz7XHBwQe7Y6vEa26PP+TB2mFuHWO7r7eOPubg29ye7dEvgEF6NJmwxTh
- oOB2FCNGZ95xIfP7doL5yYFxo4Zq1FTMZpNob0hk5x932ORMK21Iyl7l4clVmNS5wxoh
- ibioJx1XBKWzRYMH6wxPuuLTF5hTy/uKfFyh0WtS+ZbHbpWD5NWn40mURlFFHN2U6HVD
- vdRQ==
+ bh=NRfWVhKnyB1HSmXC6npdGvPwbFR81eqtzCrl0rkYyHg=;
+ b=zXmiixc6JoD494ZpyBb2JMsEWMuMIiZjuZlc+AWnML6nmHqVQy7YXUxivsUTL/Cpis
+ xOavvaNY9bNA48IG9v3jP05t07epOhERm3K4B4qAwURYVAnY0LBMuUkRiaA3BzBUPh18
+ LLtky+yCls/Nm2bh8h6xAekbfcRMTZIR6IY+YAmn0MbfuIU6DfZ/UHkgLuMq3ciLnSLs
+ FUaFR2p3iI8I9/TZwcuHy5rfcwQElkXMtn2jG+VZfrqzAwqNNEO/D8bQlTJYNFR/iJvk
+ wxGwB2lJE2tZSEPFf8PiVrcmKnBnYzDU3jR2ivQH5qh0ftXyZNxIuJz9VsX9AF6d0rF8
+ pFIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752874331; x=1753479131;
+ d=1e100.net; s=20230601; t=1752874723; x=1753479523;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=xwrhbGi7cQ7T1Gwntpmg9MlPdNpGkcCo4WpRIQqMUOI=;
- b=hoLTmQP+K4IboRYuTPRBSIbUJmZ2cqfUVEMrr+QlEzXRekf8HM+u/djmO9PoF4iqjX
- aCGx8CBWOeqfeIN5O59g0YrDbvEaqpL/jQ4xyk1z37bveIDKH2o0WUcKSTqpapgwqPfh
- 4Ca2ZjNtKV+5TwZLOeNw1hGIFlpbciC1V3midOO2cNqsOek0kEG7GA9Rfg1U6fQNJfD2
- Tb2we8e9Hb0FLWOOh2TDcSvUFrxyCtR1tT38/omzmqTWtg7FD8Mr+3WHauZPjHb40x+H
- uxalXeJda0wc2KrWO6U2al3RrTT0bAoA4s3Dsb5KdqNJbCcJrfodMBFLLzUaquizby2t
- v0dg==
+ bh=NRfWVhKnyB1HSmXC6npdGvPwbFR81eqtzCrl0rkYyHg=;
+ b=Epvw09t9zlWm6UjJH3ySILb4YCryyoESt/hcmZzU7ToDnDHJxd0wS2/3cX7dP3vTzD
+ O+6a0Yoir2xYL/0S7ma9fojWAzcBZbFnIk0os4hlUStrH7WxTHb7/Ifd7i7q3mL8erbT
+ SvUtZEFBV5rXdMjuajk1DtwMjZD/GJVeQHSsz1BFQI2ZA2JOW0ou66OSkdt7sliU1drP
+ uBr0DJycfctDE62+7KImf/ZwRYQWKXO91Qy6o9R1m+wF4WtxCuOEZdphEkmQZYHU97w5
+ iVZhVEAe3wLZkw+bTw4w/bVzOVSBbV8L54TduCQ3piYbdyWrvASYQQmTqXqhd4mIGAl8
+ AhuQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX+vW9XwRRrg9QvHKPgGWWLm8+fF/2ChyzSYvp+jjbMm/JzBF8IvMJW6ofTHLAPEjcEUKUq/1WyEA==@nongnu.org
-X-Gm-Message-State: AOJu0Ywf868wpPRlYZfHCIfFTIyKcKDm5lFqEUNxLR5ee6cela2zOwGS
- fkTSIk8M1T8ixycnWdTLuMkOsRSHdLX27CORkDkhtjaGg3t4AOehD3wMYe/bn6EUM+8=
-X-Gm-Gg: ASbGncuQlzDfR8yEg9zlHdGWpVKhMrNO+s52L+ed+G1ss3vFkJpBxMcmolVhLK2/Bh4
- ZOviTs4lfO5prwqMTwkCBtUb4+GlPVZ6W8tc0UjkI2PfcqBglgzUPcpmLSgaGCAFeWhyU4QUh4q
- 3krpha/R9y1et5jnoJ/Fbr14N4SeyExVdA2kXhXsou5a/1IE+W7qPfMa8BBzEZ0CNFqBSJ4RDoT
- qUFfYD37JVn4SCoRWu6oo0cjOKe6c+qRyNIEkjeMNk8APalQ3ZKcBW4Gc5kmAbe7Uo1lapuLNoh
- Uoxa05VH/WU1ALQq5rlTYuhaeL8WskuWWurh77oAfFfF7w6aDtowPV9ArwaOHCr+JPNfO2DqC4a
- P09Yjwxyzu6d7Uu8GT5yfu0gg3pRJI80++PKTqGhtug==
-X-Google-Smtp-Source: AGHT+IE0dWUPA5hKJ+DuIsLHGI25jwN0nVtgVecmevSUYzgZ8ZfyvmZcPe1LtOwg5C8Uee+tIZAvPQ==
-X-Received: by 2002:a17:902:e807:b0:235:6aa:1675 with SMTP id
- d9443c01a7336-23e24f94b60mr183163975ad.52.1752874330930; 
- Fri, 18 Jul 2025 14:32:10 -0700 (PDT)
+ AJvYcCVE6ErrEIf5s+4FfVIXB+wCmZq06FljuOAzKLzMq7MjGydjwCsxCj8WspCoQfUBCHU6JNvuFzGluQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyYHjmdv5m8MRBIcnsku7vrcg7KHUtIEi8+dYzt+xxiu7c8vQk9
+ EVyB+4OkN/n4QJmO640XrX8sbns81BfyShtg/+9QuEmWUcDL0NMFEOSZrrqtztu9TSA=
+X-Gm-Gg: ASbGnctTpHjBkRMHEJEMwRISufghuKLQuAm2ymRGiX/zbc1dTFBkOXuLIUDos8S/SXr
+ DZBsPS+cNfyVVq26Ni5E7ZbzPpDup3lEGHi+FFt3Zk55vpT/dVEx9VX2XntWI865vvWL7ICXTfD
+ WadADRC702sVB8RZWZdYPKqwEhX2qBX5vKTE+MMzN6k51fK9uVP7UQ2eJse80JjOtJ1Ia/rH3cU
+ ubbJ01OCNsQpKl43cKM7AyWAMuhSYZ3Gg/oGxQ5A+nBN/EJdozDPNU9sqJ01t+dM3G0Rs2Btaf7
+ VK4xJdkBrHZoGaKx610edeSqweQp5XgitQ20WFtt6sp3RxE5A6y6WVSU8hPu8K69Xe0YH17DITk
+ bqbMadtoohKtBLJ25LA8+cWyvcIvqvYfQdB67QpJcbA==
+X-Google-Smtp-Source: AGHT+IEueRLFbC+ERyhOPVI+MGq4YykPSHcuJTvZd4m6X1Nz3fK0d/wkK5Wca7Qdt9Yn6fD6u3xSAQ==
+X-Received: by 2002:a05:6a20:9186:b0:1f3:20be:c18a with SMTP id
+ adf61e73a8af0-2390c79a037mr13437569637.10.1752874723079; 
+ Fri, 18 Jul 2025 14:38:43 -0700 (PDT)
 Received: from [192.168.101.134] ([75.147.178.105])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23e3b6d199fsm18031745ad.134.2025.07.18.14.32.10
+ d2e1a72fcca58-759c84e2175sm1738216b3a.1.2025.07.18.14.38.42
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 18 Jul 2025 14:32:10 -0700 (PDT)
-Message-ID: <1325fc26-ecd2-413c-adee-7dcff7d0b102@linaro.org>
-Date: Fri, 18 Jul 2025 14:32:08 -0700
+ Fri, 18 Jul 2025 14:38:42 -0700 (PDT)
+Message-ID: <c7398952-a030-49c9-9455-5602cbdd2e21@linaro.org>
+Date: Fri, 18 Jul 2025 14:38:40 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-10.1 02/10] target/arm: Add BFADD, BFSUB, BFMUL,
- BFMAXNM, BFMINNM (predicated)
+Subject: Re: [PATCH for-10.1 04/10] target/arm: Add BFMUL (indexed)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20250718173032.2498900-1-peter.maydell@linaro.org>
- <20250718173032.2498900-3-peter.maydell@linaro.org>
+ <20250718173032.2498900-5-peter.maydell@linaro.org>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250718173032.2498900-3-peter.maydell@linaro.org>
+In-Reply-To: <20250718173032.2498900-5-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x634.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,21 +105,19 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 7/18/25 10:30, Peter Maydell wrote:
-> FEAT_SVE_B16B16 adds bfloat16 versions of the SVE floating point
-> (predicated) instructions, which are encoded via sz=0b00.
-> Add BFADD, BFSUB, BFMUL, BFMAXNM, BFMINNM; these are all the insns
-> in this group which do not change behaviour for AH=1.
-> 
-> We will deal with BFMAX/BFMIN (which do have different AH=1
-> behaviour) in a following commit.
+> FEAT_SVE_B16B16 adds a bfloat16 version of the FMUL insn in the
+> floating-point multiply (indexed) instruction group. The encoding
+> is slightly bespoke; in our implementation we use MO_8 to indicate
+> bfloat16, as with the other B16B16 insns.
 > 
 > Fixes: 7b1613a1020d2942 ("target/arm: Enable FEAT_SME2p1 on -cpu max")
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   target/arm/tcg/helper-sve.h    | 10 ++++++++++
->   target/arm/tcg/sve_helper.c    |  5 +++++
->   target/arm/tcg/translate-sve.c | 22 +++++++++++++++++-----
->   3 files changed, 32 insertions(+), 5 deletions(-)
+>   target/arm/tcg/helper.h        | 2 ++
+>   target/arm/tcg/sve.decode      | 1 +
+>   target/arm/tcg/translate-sve.c | 2 +-
+>   target/arm/tcg/vec_helper.c    | 1 +
+>   4 files changed, 5 insertions(+), 1 deletion(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

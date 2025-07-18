@@ -4,81 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E90DC83F1A
-	for <qemu-arm@archiver.kernel.org>; Fri, 18 Jul 2025 17:29:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45259C83F17
+	for <qemu-arm@archiver.kernel.org>; Fri, 18 Jul 2025 17:29:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ucotO-0003VJ-D5; Fri, 18 Jul 2025 13:29:06 -0400
+	id 1ucotN-0003UG-IK; Fri, 18 Jul 2025 13:29:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <chichikalyuk@gmail.com>)
- id 1ucnt5-0007hU-Uv; Fri, 18 Jul 2025 12:24:43 -0400
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+ id 1ucnsx-0007W4-Iv; Fri, 18 Jul 2025 12:24:35 -0400
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <chichikalyuk@gmail.com>)
- id 1ucnt4-00077N-0g; Fri, 18 Jul 2025 12:24:43 -0400
-Received: by mail-lf1-x12b.google.com with SMTP id
- 2adb3069b0e04-55502821bd2so2861485e87.2; 
- Fri, 18 Jul 2025 09:24:41 -0700 (PDT)
+ id 1ucnsw-000702-0A; Fri, 18 Jul 2025 12:24:35 -0400
+Received: by mail-lf1-x12a.google.com with SMTP id
+ 2adb3069b0e04-553be4d2fbfso2369854e87.0; 
+ Fri, 18 Jul 2025 09:24:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1752855879; x=1753460679; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=TRHDBLUxey+b9W0XCfwAkBDbX0DcQai5/OanTm9BFeY=;
- b=Uy7cGeBYAvG36Yjll6+ZE6NJDChRIIGKvuz6jcWPi80DrM+zj+KZLb2hGxUoOnIDQ0
- mPgQ77nXjRzw6j1ei3cVacqFXJlbU4Qog3LH4gkzN5DhnP+NEUTyZ+5EbpNY3fJ0ZvRu
- RFDF6M3WHs/FJhimNw82mhXtktFWzrAaUPMpTzRVpodlEsTiKPTORdQd3J7UuGR6yL2j
- Z9foMDvSZu9nwehjat9I9MFkkPd9uaBOOtoFhv1v9OaLLIx2sulMmRz3yJ6enwiloNHd
- 5ZaLXoRQFMBNzqxoVtOStoWzIWdNHbdQb5JdE9MNM+dFp94Pg5RhkcvrX1/t4h9Y5i5r
- FwkQ==
+ d=gmail.com; s=20230601; t=1752855871; x=1753460671; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=0tSNdwHvz7/qWn2NTQ1xPS7vHeWeR1Yks6l86cO/Dqw=;
+ b=fzlWV3hXWR6XIqOdPiGfpxVZTUBjcCmBby554ie01n2PSuhEI+H6xM0vH4uh10WA3c
+ 1itJkTSTE1+Qrh1WRoxGphV5YlvwoKpVPXR5+sCZAOEYh1yWNzDU0LyMXiHPknCkiehl
+ bEI3neyZ8KaDv7mfKzO8vP4IdytlJaZp2LsEiZJjtWP9VpCsEO7SwOPTu79dUNTXnmoR
+ tBz7zIHwobSz3R7P1BzieuMIma7vFRhLBPd4Mesr+L07QvXtx3jCYpKedIoqXxH4HdaD
+ naeKKzNJ/FHC/5L4Sx5XctGdpT0sCgufwUrLwfvJy/9vqCvngKHeypN5VdjeC/asinLh
+ ZUEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752855879; x=1753460679;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=TRHDBLUxey+b9W0XCfwAkBDbX0DcQai5/OanTm9BFeY=;
- b=TIkdyyo23A6MItPdhqNd6LnYpj9cZ49p/eh7oJwZtUGbbX/mW08P6Pf71hHQ/kewOF
- +fZkT2PQZAMChz9K7GPTpp2dW/jIyLTVYVB3b3EDJf4qxbY2ZTDkFQ3Z7555Gn3ttu+p
- Z8ONw9OGmq0GFePmKuGeOcGY/NXZohmrIpjFxYiLtoIatP8TgATn+w901nXhHmw0osfz
- SF6oYNLO5yNUwdQbyWI6vLuDyOQQz/WClrmPMr7xPGlAFZUHTTwAMuALKiyWwc6UP4/C
- biUXCXPVdLjbjbeS3VL+cWe+2O9rddzr4+DUZvJ+HqYrjgpa3LCpLt7vjvQNVHSYTmiC
- 9/bg==
-X-Gm-Message-State: AOJu0Yxuh/43hv1f7DMkAbdAcHSzZGOivYKg/UaL429LXlTvR+WltXqT
- 5h4OI8kDlF3Lv2H7mwFErNlVsz3nFWCCCixfHUIQE2LY03XnvKzPtofz0pOsMmahjD7zjA==
-X-Gm-Gg: ASbGncu7MWQ8LZ8S6n7lHov4qQYueJK96ho62rYhorBlw8bz+l9E+wfPsiIQTokPAbG
- SuPAT1j/PXdg43w0jZ8diU3NgBl5Zy0Zja7mNJQ4ymV6CUGFZXIRd+TRv+e4VnyNHMsJw75Sz5w
- UaVOL+CCljlFwR3JP5lQRpbB8F92IQDsZYSckSaIOzqFweNE94LPT35mPxaEFPk/WLmbHPsXSuE
- sbKbJTIoxRD+p4IMjjh73EXbOqAdrMXINUvR/Ly5Lg4bc2/my6bcJMJmKMZSYLGbBZYONn4nd+I
- SuGDnN/bYqlJXfQiOk7ez6IkwLj9Yi09w1IwE2+nGu5OYl38cQ3FmFTkoXw35bLHH7o6fzeG7Ca
- +oQxBcCmtHw56/Yp2ZEYT6l+pkgbe1LzyxTtzRPnqi9komIW44Yt49dBeoTMreMejnCj3Qx0lRI
- y1KnE=
-X-Google-Smtp-Source: AGHT+IEMj3QUFecwPdX0c/Ir5JNMOLt0+AlPfxRlTQdo9Bb7Igjad8o7Eus2XpVBkkf+d409iwhJhg==
-X-Received: by 2002:a05:6512:b17:b0:553:2bb2:789c with SMTP id
- 2adb3069b0e04-55a23f3f09dmr2616009e87.37.1752855879284; 
- Fri, 18 Jul 2025 09:24:39 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1752855871; x=1753460671;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=0tSNdwHvz7/qWn2NTQ1xPS7vHeWeR1Yks6l86cO/Dqw=;
+ b=NK2LzxO1V4UDD/GlwABBUfbz8M37OQ/u/DJJ2WlbrAo1izlJwa5buVt0mdk3bL07yY
+ 0+825MTW8Lp4+hLnURrd2/Nl16mTti/R49MRPF5HR714RBwMmnUFirz16kl1G+AeP+En
+ YoZePO0mOJXcqHvGRqfNvnip26I1qOTSQGKNlyPeaprw2EVIEDaQvIABqDFUebqvwW/A
+ Sj4kPpmqAZWfrhCpsYEewKwpTyAoVTufRaAaNTlEF11YolbA9OyWZ77QBethZYmIUTa2
+ unHdLjkaR9PaDswBDOcY1B1rIK7XqunUDYwjdgW0Vh8PgjILLw1HR7kBpFF/o44GO1kV
+ rdlQ==
+X-Gm-Message-State: AOJu0YxkOia+W57VKV0Jr2mJcm4n8NRdLi0QU/o+vV7Mx56m8s3I3pK6
+ pVsy8JK6LMZRveGKgbTJs96AbXcmMY/Q65f6sqi6amUgYwMiFoHGymkVDlHFWCY4oZBWUQ==
+X-Gm-Gg: ASbGncvj/X/BF7m9NDeogUh3PYytWMcXUKOgkLuG5UUavJQuP0faN05HZIb2LpSzfmp
+ maOauz5wrof5nFZ2MrKnqRn02JCDeHs6c16XXbPbtZs5pVRY2N7vRqj8KdlumqknsjmaKFyj6rJ
+ 0lT5M4PKSg8q2gFcZdO/DVhNu2ioLBpoJgvOwePxz4+nTvXJIus7rTsFZdXqiXhvi3XF8W001R2
+ 4MAla1DNikHvR1G11iElzhOM+avaNYuJX5FwtQGDeQED3DlYE/R+WCC2t/ktY3XWUx3Ms2aeuvb
+ lzyIbePOV3hILV2Fte5Wq4Ek27oHHtFz0maX83iJGbskjrwRS7Mkn44UrP/gWwLeubVEJXhkyGQ
+ dMgfzl2+XkqjwsM+rVggKcb3C6lrTTdFGjLTDou4UWTo2SvGLl7uEar+CKsFy73A5r6RWZdor8O
+ 9k8cg=
+X-Google-Smtp-Source: AGHT+IE5ccMkBF49Qwr3sjez00wAXnqMzLqXkW4m4VtK/6AYMLWVQF4ez2Nk3OmgRdsavEYiPOVQvw==
+X-Received: by 2002:a05:6512:4058:10b0:553:adda:db40 with SMTP id
+ 2adb3069b0e04-55a23f7f73emr2723212e87.44.1752855870623; 
+ Fri, 18 Jul 2025 09:24:30 -0700 (PDT)
 Received: from localhost.localdomain (m91-129-102-83.cust.tele2.ee.
  [91.129.102.83]) by smtp.googlemail.com with ESMTPSA id
- 2adb3069b0e04-55a31dacd84sm310615e87.206.2025.07.18.09.24.37
+ 2adb3069b0e04-55a31dacd84sm310615e87.206.2025.07.18.09.24.29
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 18 Jul 2025 09:24:38 -0700 (PDT)
+ Fri, 18 Jul 2025 09:24:30 -0700 (PDT)
 From: Vadim Chichikalyuk <chichikalyuk@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Vadim Chichikalyuk <chichikalyuk@gmail.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
  Ani Sinha <anisinha@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 3/4] hw: arm: acpi: add UART clock frequency to SPCR table
-Date: Fri, 18 Jul 2025 19:20:44 +0300
-Message-Id: <20250718162045.49012-4-chichikalyuk@gmail.com>
+Subject: [PATCH 0/4] hw: acpi: support SPCR rev. 3 & UART clock freq in ARM
+ SPCR
+Date: Fri, 18 Jul 2025 19:20:41 +0300
+Message-Id: <20250718162045.49012-1-chichikalyuk@gmail.com>
 X-Mailer: git-send-email 2.39.5 (Apple Git-154)
-In-Reply-To: <20250718162045.49012-1-chichikalyuk@gmail.com>
-References: <20250718162045.49012-1-chichikalyuk@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
- envelope-from=chichikalyuk@gmail.com; helo=mail-lf1-x12b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
+ envelope-from=chichikalyuk@gmail.com; helo=mail-lf1-x12a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -87,7 +85,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 18 Jul 2025 13:13:58 -0400
+X-Mailman-Approved-At: Fri, 18 Jul 2025 13:13:35 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,38 +100,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On the ARM virt machine, there is currently no way to programmatically
-discover the frequency of the UART reference clock solely through the use of
-UEFI/ACPI (without the DTB). The SPCR table can include this information
-as of revision 3.
+This series fixes erroneous building of ACPI SPCR tables in hw/acpi/aml-build.c, 
+where the UART clock frequency field is omitted in revision 3 tables despite
+being present since revision 3 of the specification.
 
-Bump the revision to 3 and add the clock frequency of 24 MHz to the table.
+The last three patches update the SPCR table for the AArch64 virt machine to
+revision 3, exposing the UART clock frequency, which was not previously available
+via ACPI, to the guest.
+
+Thanks,
+Vadim
 
 Signed-off-by: Vadim Chichikalyuk <chichikalyuk@gmail.com>
----
- hw/arm/virt-acpi-build.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index b01fc4f8ef..029cbb37f7 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -559,12 +559,13 @@ spcr_setup(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         .pci_function = 0,
-         .pci_flags = 0,
-         .pci_segment = 0,
-+        .uart_clk_freq = 24000000, /* 24MHz */
-     };
-     /*
--     * Passing NULL as the SPCR Table for Revision 2 doesn't support
-+     * Passing NULL as the SPCR Table for Revision 3 doesn't support
-      * NameSpaceString.
-      */
--    build_spcr(table_data, linker, &serial, 2, vms->oem_id, vms->oem_table_id,
-+    build_spcr(table_data, linker, &serial, 3, vms->oem_id, vms->oem_table_id,
-                NULL);
- }
- 
+Vadim Chichikalyuk (4):
+  hw: acpi: add support for SPCR revision 3
+  tests: acpi: whitelist expected blobs
+  hw: arm: acpi: add UART clock frequency to SPCR table
+  tests: acpi: update expected blobs
+
+ hw/acpi/aml-build.c               |  20 +++++++++++---------
+ hw/arm/virt-acpi-build.c          |   5 +++--
+ tests/data/acpi/aarch64/virt/SPCR | Bin 80 -> 80 bytes
+ 3 files changed, 14 insertions(+), 11 deletions(-)
+
 -- 
 2.39.5 (Apple Git-154)
 

@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72C2DC83F34
-	for <qemu-arm@archiver.kernel.org>; Fri, 18 Jul 2025 22:22:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F978C83F34
+	for <qemu-arm@archiver.kernel.org>; Fri, 18 Jul 2025 22:25:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uctSm-0007Tv-4B; Fri, 18 Jul 2025 18:21:56 -0400
+	id 1uctUn-000391-5g; Fri, 18 Jul 2025 18:24:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ucsrb-00040c-Un
- for qemu-arm@nongnu.org; Fri, 18 Jul 2025 17:43:32 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ id 1ucstw-0007aK-RJ
+ for qemu-arm@nongnu.org; Fri, 18 Jul 2025 17:46:10 -0400
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ucsra-0006sc-Ah
- for qemu-arm@nongnu.org; Fri, 18 Jul 2025 17:43:31 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-23dea2e01e4so29490225ad.1
- for <qemu-arm@nongnu.org>; Fri, 18 Jul 2025 14:43:29 -0700 (PDT)
+ id 1ucstu-0007QA-N1
+ for qemu-arm@nongnu.org; Fri, 18 Jul 2025 17:45:56 -0400
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-234fcadde3eso30130125ad.0
+ for <qemu-arm@nongnu.org>; Fri, 18 Jul 2025 14:45:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752875008; x=1753479808; darn=nongnu.org;
+ d=linaro.org; s=google; t=1752875152; x=1753479952; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:to:subject:user-agent:mime-version:date:message-id:from
  :to:cc:subject:date:message-id:reply-to;
- bh=pNswNgnNbDvVcuoMnGRX1cNiu+F3tc7IPFoBAePUEnE=;
- b=d2eHSXo3zTqqIHmV5LxSd3SMUGHF+Ni+9qS/vrDtpqE2w2Z5BnYl9aHuxVuPODI35o
- 3lqkQ9GpvcItOQEjAELA6/V47Azb5f9O0uMOO/Ywu270KjAzckn5Boykxh3pfRW0qkSu
- ebfk0XAjv912/K0ibpDRg+A11Kl5gcrlWfnp6hgDiO1nHmfL1wvH44UfxGY5AdFrgxdl
- a2vYPmCM1jaGdvX90WEL6lNPXxRONU+FSDPwijoK04TRcIsXrMtxvMuhzz+6TelIoCyv
- keKOfepcjqV5+Nsgtwvvlc2ZnFhi137kUZoP4vQqQxgtEPHLrlrFGtqXwJWHioSMyHGo
- ZM7Q==
+ bh=qFCgTEnGfbkQyGEyygjMD6Tgh0lIzYBSqfo2EolfHrE=;
+ b=y+ylFT2IQPpeyMAzRsvVTaNJtvp1E0dSkyNENUH2Vmkph9vgyJCuiF9fKLX0MlewyP
+ JLYOLJyRY3/a2UyN4CEuLQaQKRm/pHwD8y8m2x/GYNqnHtfy957TO3CYcSdBClIU+2oi
+ i0vvT25XGltJgixr+mF/milo+RM25srJK/bFKj4RsBiMEEiLcZKzqKal4qL6flVFKHFt
+ XriHw0fmXPIIou73yg7OllONjumvQ2UKXw2M230k2RtRojIcIJQ+kiayzNlYl06YYNiG
+ TG3RXlh6SHVBdrKhF+u7yKA9A+FHfuvXyfjYtA/KyFq+SqZL5vKpmWSaYj4aR4H2dVnK
+ ZI8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752875008; x=1753479808;
+ d=1e100.net; s=20230601; t=1752875152; x=1753479952;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=pNswNgnNbDvVcuoMnGRX1cNiu+F3tc7IPFoBAePUEnE=;
- b=l+2k+xEhpYgDShyQ271psQhU9P11bqBijoH68Q/dcC0cMYXDTM3VPWZRPiM/PaJGgv
- OXp3ua36DWjp9y6GAKagBGnAFgdDMkI25D13kvRgS7NcHRn+gHk6RXHL/MZ5lN3KeETA
- RpSlpemLnc54YuRWoGDhOOXTopxpLcdackWebiQ7FFbJp7/EM1nk0VYzGLghYINxBoRe
- UYuwUdYWk5aV/LUdlwQ5rFeAejiRqTHyVMeMGhioGxd5BS3dRDv/M+fCiRVbAmI7Quei
- JsisajTRw6vS6tYLVFYUYpDFAK4PxgGmtYT2kUiw5c19kgeIT8cH/sgk4hTG2yqWg+CF
- tr8A==
+ bh=qFCgTEnGfbkQyGEyygjMD6Tgh0lIzYBSqfo2EolfHrE=;
+ b=Ael1k0MZ1bsQsiliXpLNea4EZ0nJlydTL+7u87ejkdvIPE2c/MLq7l2mjitd7KMFh3
+ oURB+3e4nHUR9/fLCEOdmZ5ZtEuDYdj+QfX8Uz4+5sc8N0mDHxBJ8gfCk8zeq8Uy4dIK
+ PgjJB/W9sDo93KlhTbf639AQGobzmFm7AF0kZ4JcsN3lyuW0xnrQTyTA3TuwtjNQgu9g
+ 6VbTxvmHi3ErvWnzczxaolcQmN19FbUfZo5qQERbnk3d++EdOGK2KmOyWWr6a0jXnDCx
+ 7In+RF1nj23V3rg/h2rdGwk569Xf/OVpxQOUvW+XZ8ygIgDdexly4WjgrxDchBDjFzIU
+ eBAw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV0FIVmHhS1P5MeQjNuEQViFKaX1+W6UHmMKcWJeZszlbkTipl11MhhI3BAXDZIpiVjGAY2kfpV8w==@nongnu.org
-X-Gm-Message-State: AOJu0YyyFDMGHCxoMPWRho3XoFItVXNyhjWqULjcQQxnb9YaqpVRlUlV
- ke1igS2qiwG+GpZuj/d5b8OPLVdyZvQv6PX0QTYd8+hhGCxx4LtunGvmhuRLS4MSMNg=
-X-Gm-Gg: ASbGnctK3WJAYmESLtvMGkHe2A7xQj9uh77YKRjhgVF6AhxoFQ859D9q5vpxpfpbYM2
- SNfUF4iX/+cQANWP384TPlWmzRCCn7rD/jP9By3B7XGBSMhhQnzvQgGL3zqCMGYDXbU2Jt+z3pC
- MpOepZz/kr9ClKJ6cb+035PreQ03Q6S7BiE6L5Ujao6xjehgjVR1ZVCyWT4xxVepCO/OMQSu14j
- a+g/gxz7P3A5lqKCbN66x9g+vePKbT5exaX6yelp/IL5uKuFMYhDLUgQzaiSPyK5LmEhetP8kpx
- XeUU/1kryzaXI1PKZJIDJ+oUIECYQXAFP97PZt+zQ3T3nAdc+Bczrkhd9t708gBNGgyub/pST8G
- NJpaJeDJg93rdHY/SNzZ220J6mpXca6bTfw60yBB9dA==
-X-Google-Smtp-Source: AGHT+IFBdQbVUATtOlpIyNZCK3RTA14viuWQoD406fNbjSqUwYu6UsKekLdTeXC92R+MKl/+gZ740A==
-X-Received: by 2002:a17:903:1112:b0:235:ec11:f0ee with SMTP id
- d9443c01a7336-23e2569bbe0mr163386585ad.14.1752875008528; 
- Fri, 18 Jul 2025 14:43:28 -0700 (PDT)
+ AJvYcCXA0OESzFrp659QScildPjJ2TQY3T0YD8xMVMzvAI0Qde9T66syUAwZS8cvevmVQ0Ka/p3REsoJxw==@nongnu.org
+X-Gm-Message-State: AOJu0YznNMTaiKQ3H/aSpJuqXjdWaU+yCwsJF9ebDPhldf6lKYcmsCuR
+ sL5V10sVz002QmCMiox4Oibc4ThurGlU6E4TNUYJ9vMeQHfJ3kO0bLiNyg6ilR50g8826dyIpWp
+ ixVPK
+X-Gm-Gg: ASbGncu86XQAsaqU4aBX2DJxkZkns6eHR0tVON7SYqMVlGrb4BWT68/ru/iZOCLIiIx
+ RaDWZiohVfpI+zIYXLL7UyBD8nwhj8d9TBZsFqio4KXZZhUJdvKnEmC/iQdjgm9LPDGyrCPyq4Y
+ 9vbF6z2JpFtVaZpnxF4Y8xvW5YVDZyu3prDSyv/J9PvdLNm9YNKavo9hhB0Hdb0dhmsNXZCz5gD
+ 4KdZb7ZqPPajldbcz2CQnPGmX4S/mNehWgUa+YWd39dFjIgGr8txySqUOw0Pko6DfIrEbo7y8Sa
+ n9ev5WoTXiPJLjaLO2y9rpPHxwYSzhZjisvBj3g6u0kkOG5jZV2JNR62U/hBzdC+2V9gnpYhtKa
+ QSNrnIE1HxrM9ASp/qcLzrh2NnRLpwUj3mcY7izBRBA==
+X-Google-Smtp-Source: AGHT+IEcfN9XF5zFoUPVIMTKoXQvKGvYLii74QjF2piLXT4zWBbXAd4vgMHmSrTJWWGEdpoZYGUVng==
+X-Received: by 2002:a17:903:2342:b0:235:ea29:28e9 with SMTP id
+ d9443c01a7336-23e25764c41mr213318765ad.38.1752875152430; 
+ Fri, 18 Jul 2025 14:45:52 -0700 (PDT)
 Received: from [192.168.101.134] ([75.147.178.105])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23e3b612373sm18183165ad.72.2025.07.18.14.43.27
+ d9443c01a7336-23e3b6b48f2sm17959695ad.90.2025.07.18.14.45.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 18 Jul 2025 14:43:28 -0700 (PDT)
-Message-ID: <d64ffc96-4991-46f2-8cbc-77d59c33f3b8@linaro.org>
-Date: Fri, 18 Jul 2025 14:43:26 -0700
+ Fri, 18 Jul 2025 14:45:51 -0700 (PDT)
+Message-ID: <b19bc469-484c-4dba-bafe-62f8ddccdb15@linaro.org>
+Date: Fri, 18 Jul 2025 14:45:50 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-10.1 07/10] target/arm: Correct sense of FPCR.AH test
- for FMAXQV and FMINQV
+Subject: Re: [PATCH for-10.1 09/10] target/arm: Honour FPCR.AH=1 default NaN
+ value in FMAXNMQV, FMINNMQV
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20250718173032.2498900-1-peter.maydell@linaro.org>
- <20250718173032.2498900-8-peter.maydell@linaro.org>
+ <20250718173032.2498900-10-peter.maydell@linaro.org>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250718173032.2498900-8-peter.maydell@linaro.org>
+In-Reply-To: <20250718173032.2498900-10-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,41 +107,17 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 7/18/25 10:30, Peter Maydell wrote:
-> When we implemented the FMAXQV and FMINQV insns we accidentally
-> inverted the sense of the FPCR.AH test, so we gave the AH=1 behaviour
-> when FPCR.AH was zero, and vice-versa.  (The difference is limited to
-> hadling of negative zero and NaN inputs.)
+> The FMAXNMQV and FMINNMQV insns use the default NaN as their identity
+> value for inactive source vector elements. We open-coded this in
+> sve_helper.c, hoping to avoid a function call. However, this fails
+> to account for FPCR.AH=1 changing the default NaN value to set the
+> sign bit. Use a call to floatN_default_nan() to obtain this value.
 > 
 > Fixes: 1de7ecfc12d05 ("target/arm: Implement FADDQV, F{MIN, MAX}{NM}QV for SVE2p1")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   target/arm/tcg/translate-sve.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-> index fc76624b5a1..2ed440aff15 100644
-> --- a/target/arm/tcg/translate-sve.c
-> +++ b/target/arm/tcg/translate-sve.c
-> @@ -4020,7 +4020,7 @@ static gen_helper_gvec_3_ptr * const fmaxqv_ah_fns[4] = {
->       gen_helper_sve2p1_ah_fmaxqv_s, gen_helper_sve2p1_ah_fmaxqv_d,
->   };
->   TRANS_FEAT(FMAXQV, aa64_sme2p1_or_sve2p1, gen_gvec_fpst_arg_zpz,
-> -           (s->fpcr_ah ? fmaxqv_fns : fmaxqv_ah_fns)[a->esz], a, 0,
-> +           (s->fpcr_ah ? fmaxqv_ah_fns : fmaxqv_fns)[a->esz], a, 0,
->              a->esz == MO_16 ? FPST_A64_F16 : FPST_A64)
->   
->   static gen_helper_gvec_3_ptr * const fminqv_fns[4] = {
-> @@ -4032,7 +4032,7 @@ static gen_helper_gvec_3_ptr * const fminqv_ah_fns[4] = {
->       gen_helper_sve2p1_ah_fminqv_s, gen_helper_sve2p1_ah_fminqv_d,
->   };
->   TRANS_FEAT(FMINQV, aa64_sme2p1_or_sve2p1, gen_gvec_fpst_arg_zpz,
-> -           (s->fpcr_ah ? fminqv_fns : fminqv_ah_fns)[a->esz], a, 0,
-> +           (s->fpcr_ah ? fminqv_ah_fns : fminqv_fns)[a->esz], a, 0,
->              a->esz == MO_16 ? FPST_A64_F16 : FPST_A64)
->   
->   /*
-
-Whoopsie.
+>   target/arm/tcg/sve_helper.c | 29 +++++++++++++++++------------
+>   1 file changed, 17 insertions(+), 12 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60EF5C83F34
-	for <qemu-arm@archiver.kernel.org>; Fri, 18 Jul 2025 22:28:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F925C83F34
+	for <qemu-arm@archiver.kernel.org>; Fri, 18 Jul 2025 22:30:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uctYk-0001Dx-Li; Fri, 18 Jul 2025 18:28:06 -0400
+	id 1uctam-0004ua-9V; Fri, 18 Jul 2025 18:30:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ucssL-0004hL-2Q
- for qemu-arm@nongnu.org; Fri, 18 Jul 2025 17:44:21 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ id 1ucsun-0008PA-KN
+ for qemu-arm@nongnu.org; Fri, 18 Jul 2025 17:46:53 -0400
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ucssJ-0006xu-Dd
- for qemu-arm@nongnu.org; Fri, 18 Jul 2025 17:44:16 -0400
-Received: by mail-pf1-x435.google.com with SMTP id
- d2e1a72fcca58-7490acf57b9so1998631b3a.2
- for <qemu-arm@nongnu.org>; Fri, 18 Jul 2025 14:44:14 -0700 (PDT)
+ id 1ucsul-0007Vl-N5
+ for qemu-arm@nongnu.org; Fri, 18 Jul 2025 17:46:49 -0400
+Received: by mail-pf1-x436.google.com with SMTP id
+ d2e1a72fcca58-748e63d4b05so1664925b3a.2
+ for <qemu-arm@nongnu.org>; Fri, 18 Jul 2025 14:46:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752875054; x=1753479854; darn=nongnu.org;
+ d=linaro.org; s=google; t=1752875206; x=1753480006; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:to:subject:user-agent:mime-version:date:message-id:from
  :to:cc:subject:date:message-id:reply-to;
- bh=7d5mfb1vZoSWOVoszpZk3FSkl4iasZVRfEKys6zyL10=;
- b=UN5jmiCrWz79O1luzAGK1oS1SjUr4NYuETVcQ/l8aPWlLelvGpH2Bh9KJphBWL0Ira
- 8r+c01PT4pEc0CNSDABacxDhaJw7b+KfytEvRz+HHnH98G+g4+47vfgjKkVQuFa0ipGo
- 67kz1ryLhua/JRJLDauGuRrj/kq6qYfjz1nRURX8qgX/cVUAYfPAPCuhsdifiY1ue2qe
- CQyPS7I5bH0JT7cRgA4kLhpdPCXrn36dm/WpJ8iHurKI0xqe1Mp3N19+MaYXxwy2aqgL
- 3w4bmXQPaOeuvZWca9PEodPmWV7BCtrzc+XaRXK/j8YtFhppactTs93iIk8+C5gG7fHf
- moHw==
+ bh=0vtVhfnoYsbi7FVIw5IIyiOnvzB6WsKqtOcF4xWo1Z8=;
+ b=XEi/VEJHWNvphnTdY8WjI27ReJ7QsNL2R3Oskda8NEEubf4OZaR0wJvwMq7a3eYTir
+ uDzBO3GafILsrnp1browvipq8Bjwf8wMIo1v+dcaDXzmaZyxAHUjvdRhSZ1lsEo6IFST
+ q8cuEML0YrKpPRDNYTeTM17sOKL9h3cYJdi61NncLYarB2l7CO70gpdAqoCLJI0uP7gi
+ xZA+tiYfAEbcgntUyNNdXyt4WcxcoMbVE46IjrHcSr7f85l2DAyf7LOINgi1WzHJC//C
+ cApKdRl2YiBemXVlDMN7fcimyoR3nbaW/RW8cZEWMSO0A3/GgSRlu1BpKCrWRLWQaaTv
+ Fv6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752875054; x=1753479854;
+ d=1e100.net; s=20230601; t=1752875206; x=1753480006;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=7d5mfb1vZoSWOVoszpZk3FSkl4iasZVRfEKys6zyL10=;
- b=qBcmY5rg9hm3vr1f/NF+pO4KbZb3W5AklNggLLr0AcDqZsePsHoWRyhO4zDqlRoAdR
- qh1KTXBpZ2EH1ynP+3DgCUkb3q7CoyBiyr/mSCEWXORKRDXkCiMX1hsTZphubiD+0gUE
- j3wpy4nAHUb9jUSj0rR/CD/ry0JFdpxKV/5JqAvPXXqpMsNiHBMLpkKUMShoGiUdzy9X
- uu2xuXjaA+3f2Bk/ysh/fW+ED/WLLQ9a7oozr+MSgqgmlPdKWww5SSlfkcB6TS+zgNhe
- +t82t5xqqYMC/AJyDx+dDYIiKhx2qWxOFcCW8D1awN95accZVX5veyW4aYZiLFoseSgT
- U8Lg==
+ bh=0vtVhfnoYsbi7FVIw5IIyiOnvzB6WsKqtOcF4xWo1Z8=;
+ b=untlCA8tCPKqDtnfEs5DtqQpznVOtAd0w5q1h/gje+BV45V4P8eqJwK1HstXFrRS71
+ u8ubJPYvnXD5U1UTjlZshLQDUAwB5+BF1XQgTotLy6303zd1RUSv7VD69ZyWS1NnXfMQ
+ seLe4d6aOjo4I/CB2M0Ebc+ffAZuUbaPD9deR2vfkMmafdG3oY/j+QqW8qNLYsrWKTWx
+ qsidoSC3fJzGM3zB/DwNw35/O99znrYTy8OqIVZXhEpA02dx5hD3denhXGJtxApRuT61
+ hVqdLg+Txxt/68Gq4vpmNPoIghjfuSp6l8voGfrwzj7W1ldZ22D92moOCG1BattmPbM5
+ fwyg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXK2Q3B3jtJerk8oupoxr+8yEBu5iZEM8dsroKANKNhgrTZKGheiQIaAwFXgwgA9n6GqHKGRZtg+w==@nongnu.org
-X-Gm-Message-State: AOJu0YzLoY+qR8gaRgg+K1J2qH5scjkr8D7ZuPDw4jdCZOKB9mtyShjh
- w/V2HZAuUxMne5jtzJ7cILCa/q4I+Q9GbPp/zMjSWRtnKjeZWxTVA+HC+iCakLhEBFw=
-X-Gm-Gg: ASbGncuRor3yRKtHZHJqlrJUk9HQaeza93ddb9u+AdvikX0vPlPPPD37aL21PY71S4y
- 84NqCnWU2XIQZUUyD5+r5h9P4hq/axIwVF5+ntLk9RCpeRbngRbTtbQGkTai0gdzgDFBJYt/jRD
- 8UGOOfBO2JZZNDrpAE091RJdP+6JprZkTxwYNIWrGf1oipCRBG/q0RLy1a+hJW7Vf+nKmb7TuFW
- nXbvaibqS+SFaAl8+7zrIy8VlcQPpb1gYQ3QDb7sUMXeNgK8I44M5QjSenhXd8sO+ZFAddWrQTC
- RxwCKt1/SD5fDsrGDlaTdJqUHy1x7MgQ7hnZAE4c/xzq0SMgNZCILk1QfP/K3G8bl5WYMlZLmC3
- 7Aoh0mDsiZM1TlR8b9R1edq08AIrVxH9W0mgPRB+7Aw==
-X-Google-Smtp-Source: AGHT+IGogHsfp/akgyKg2MNZhmW+/LTuH7wnw5htWyVx1tklQuOd7+Tym7kLZkuiCbaGnKuO3gZzfg==
-X-Received: by 2002:a05:6a21:a616:b0:238:351a:643e with SMTP id
- adf61e73a8af0-238351aa167mr12958978637.46.1752875053768; 
- Fri, 18 Jul 2025 14:44:13 -0700 (PDT)
+ AJvYcCU159EClF0wvztC2s2vxSnhYi0AS6BMrsygYnXIXPKSS4x0OdKl3KcrH7ITU9UAlyCXgPqPXlpWcg==@nongnu.org
+X-Gm-Message-State: AOJu0YwPBVU3136M9PWGF70dOwugZFpV6emStb6UbCXL0a3lNb1tvQHW
+ VZ8mJLymfdBptNdmOIOM/d23QveQqwbR5Cr/kgU+qLqGKxWSg7NdDo89d64riValIwg=
+X-Gm-Gg: ASbGncui8L6y0zS83GeYYQN1/lHolvHCnjq8O9NucQTHvutF4/dxFQGoGM2HBP2dgsx
+ hKOs3m7U13oIArenkPzF2xfQ/S7uY2+tN8dslqceZ0nzAYPt0QGN+R2yfIgIHIVXjCq9dijVxTW
+ A3NznP0qvDGN8/jixUP0f8wvlnK3/NaxDU+TIrTmNW2FMJOZ+ErfyD5f/MG4YMQgBjcXvh8+K9s
+ oKKuN5P1DDNLHBTiAwVAtqvEqw3JuZHM1NMLj6JkF7iyYzHGnj9smC6iHxOmdGrkcqW9H7wwt4l
+ aQUVoD7LVkDc5TNYsBYXhEKsyKQ2sK/x4sDVwyWiWW6yMoqRdmjYNBjVUlSHNK1ztf3NN6uL2Hc
+ iTwgOiWG2wi3ZBxPsepP/1sYGOTSR74lxcAMEuV+IRw==
+X-Google-Smtp-Source: AGHT+IHZ46G6vsECdMKPxR0JDgbjFwYX2bZhlIIdfgHofxWcoQ3U/6QteK4soAT/Iz8rv5cGwIDFdw==
+X-Received: by 2002:a05:6a20:3d8a:b0:204:4573:d855 with SMTP id
+ adf61e73a8af0-23811d5b33amr20819751637.9.1752875206270; 
+ Fri, 18 Jul 2025 14:46:46 -0700 (PDT)
 Received: from [192.168.101.134] ([75.147.178.105])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b3f2ff87da9sm1636401a12.50.2025.07.18.14.44.12
+ 41be03b00d2f7-b3f2ff62972sm1431258a12.40.2025.07.18.14.46.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 18 Jul 2025 14:44:13 -0700 (PDT)
-Message-ID: <39d4bf8d-d5d5-4500-b819-628e70ff3470@linaro.org>
-Date: Fri, 18 Jul 2025 14:44:10 -0700
+ Fri, 18 Jul 2025 14:46:45 -0700 (PDT)
+Message-ID: <8b1f32b8-73fb-4cb2-8b86-2f6677cb0286@linaro.org>
+Date: Fri, 18 Jul 2025 14:46:44 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-10.1 08/10] target/arm: Don't nest H() macro calls in
- SVE DO_REDUCE
+Subject: Re: [PATCH for-10.1 10/10] target/arm: Make LD1Q decode and trans fn
+ agree about a->u
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20250718173032.2498900-1-peter.maydell@linaro.org>
- <20250718173032.2498900-9-peter.maydell@linaro.org>
+ <20250718173032.2498900-11-peter.maydell@linaro.org>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250718173032.2498900-9-peter.maydell@linaro.org>
+In-Reply-To: <20250718173032.2498900-11-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,35 +106,37 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 7/18/25 10:30, Peter Maydell wrote:
-> In the part of the SVE DO_REDUCE macro used by the SVE2p1 FMAXQV,
-> FMINQV, etc insns, we incorrectly applied the H() macro twice when
-> calculating an offset to add to the vn pointer.  This has no effect
-> on little-endian hosts but on big-endian hosts the two invocations
-> will cancel each other out and we will access the wrong part of the
-> array.
+> For the LD1Q instruction (gather load of quadwords) we use the
+> LD1_zprz pattern with MO_128 elements.  At this element size there is
+> no signed vs unsigned distinction, and we only set the 'u' bit in the
+> arg_LD1_zprz struct because we share the code and decode struct with
+> smaller element sizes.
 > 
-> The "s * 16" part of the expression is already aligned, so we only
-> need to use the H macro on the "e". Correct the macro usage.
+> However, we set u=0 in the decode pattern line but then accidentally
+> asserted that it was 1 in the trans function.  Since our usual convention
+> is that the "default" is unsigned and we only mark operations as signed
+> when they really do need to extend, change the decode pattern line to
+> set u=1 to match the assert.
 > 
-> Fixes: 1de7ecfc12d05 ("target/arm: Implement FADDQV, F{MIN, MAX}{NM}QV for SVE2p1")
+> Fixes: d2aa9a804ee6 ("target/arm: Implement LD1Q, ST1Q for SVE2p1")
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   target/arm/tcg/sve_helper.c | 2 +-
+>   target/arm/tcg/sve.decode | 2 +-
 >   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
-> index 105cc5dd122..bf894f0bf13 100644
-> --- a/target/arm/tcg/sve_helper.c
-> +++ b/target/arm/tcg/sve_helper.c
-> @@ -4509,7 +4509,7 @@ void helper_sve2p1_##NAME##qv_##SUF(void *vd, void *vn, void *vg,     \
->           TYPE data[ARM_MAX_VQ];                                        \
->           for (unsigned s = 0; s < segments; s++) {                     \
->               uint16_t pg = *(uint16_t *)(vg + H1_2(s * 2));            \
-> -            TYPE nn = *(TYPE *)(vn + H(s * 16 + H(e)));               \
-> +            TYPE nn = *(TYPE *)(vn + (s * 16 + H(e)));                \
->               data[s] = (pg >> e) & 1 ? nn : IDENT;                     \
->           }                                                             \
->           *(TYPE *)(vd + H(e)) = FUNC##_reduce(data, status, segments); \
+> diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
+> index a77b725c876..aea7f519730 100644
+> --- a/target/arm/tcg/sve.decode
+> +++ b/target/arm/tcg/sve.decode
+> @@ -1345,7 +1345,7 @@ LD1_zprz        1100010 11 1. ..... 11. ... ..... ..... \
+>   
+>   # LD1Q
+>   LD1_zprz        1100 0100 000 rm:5 101 pg:3 rn:5 rd:5 \
+> -                &rprr_gather_load u=0 ff=0 xs=2 esz=4 msz=4 scale=0
+> +                &rprr_gather_load u=1 ff=0 xs=2 esz=4 msz=4 scale=0
+>   
+>   # SVE 64-bit gather load (vector plus immediate)
+>   LD1_zpiz        1100010 .. 01 ..... 1.. ... ..... ..... \
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

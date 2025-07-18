@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA8E0C83F17
-	for <qemu-arm@archiver.kernel.org>; Fri, 18 Jul 2025 17:43:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40EAFC83F1A
+	for <qemu-arm@archiver.kernel.org>; Fri, 18 Jul 2025 17:44:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ucp6S-00073L-G1; Fri, 18 Jul 2025 13:42:36 -0400
+	id 1ucp8X-0008VZ-SB; Fri, 18 Jul 2025 13:44:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ucov2-00054k-B6
- for qemu-arm@nongnu.org; Fri, 18 Jul 2025 13:30:49 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ id 1ucov3-00055x-Te
+ for qemu-arm@nongnu.org; Fri, 18 Jul 2025 13:30:52 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ucouz-0000sA-DV
- for qemu-arm@nongnu.org; Fri, 18 Jul 2025 13:30:47 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-3a4fd1ba177so1483282f8f.0
- for <qemu-arm@nongnu.org>; Fri, 18 Jul 2025 10:30:44 -0700 (PDT)
+ id 1ucov0-0000sY-I5
+ for qemu-arm@nongnu.org; Fri, 18 Jul 2025 13:30:49 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-3a54700a46eso1380018f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 18 Jul 2025 10:30:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752859844; x=1753464644; darn=nongnu.org;
+ d=linaro.org; s=google; t=1752859845; x=1753464645; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XvEZoZH3mUSnAV2VTJKTR+Ia4eaH8LTVsbCwMx9JGI4=;
- b=dOFS40arjTd82yGeo/6/JZeJh8EtxaQ3O+PQu8GCP9We7ZQLMSe65/svq0PzjwdRgA
- cgDTpmj7xEF3YwT3SLemPul9AtqCoQ+pR0vedc8l4qr2GxhtnQvkl3gXmMuFzq3+e/PM
- BgMwh/vwnhwIFFdJbWY2FLz8ELccxJjA50DlWjtKQGm8aGkYHBS+b6NDT8nWnm1ujslp
- QcfAM6y0bcVawBQDDynGbPBjeRM4/Tv1SVWWDLZRt5UF+fipOg+Y1Ij2qvNV+i0r7DaL
- rlOLhkOPR4Wj6yFtut1Jt3WtfjROhfPt5LD6TiDGRt3jkIMN6R7AXFSeaEsH4scG9ZFL
- FXew==
+ bh=VTq6sdILRqpJUa4aACdnr1dXTMtMDz2K4P9Jj5bpG7E=;
+ b=Cr1rBjbQOPdd0iMcCKRN8oEZlarmlzn7k232BHijLQBlBsBpTUdjMZjNkQy7F3TPbN
+ Qs2vVNmaBcjJNO1Go+tUZwwy5m7c725j3rHb0Bof3oO+d119QECTCBh6ecfvDg2/unBe
+ GA9kLqqktK7h2EEmwxpwWEht1sKk6K528Q7oAm1L/78KvqUBpNLwBQZHXm48Xp+IlTEN
+ EmhrSKZU/v+bVI5qGvVopxXpsPdcLOBk47ahikYh9Q3W6QiRmrjNDVofdryD5sFDQv+l
+ IC3NDq1Jxz5dvjDmNpUd4lt0earNkwfvcRZxyCHbFs2zYCFFZj9plB1hMN+ASZJ9TpuD
+ o8HA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752859844; x=1753464644;
+ d=1e100.net; s=20230601; t=1752859845; x=1753464645;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=XvEZoZH3mUSnAV2VTJKTR+Ia4eaH8LTVsbCwMx9JGI4=;
- b=MXpG9EkwtAXc+CAp2OTpgsFkGC0bYsMfAtCfSaGrwZDNUnJyytW29vdJSR/uAvUaoZ
- HnOdVwnQw7QB4WP6/f+qNEGSe7ju7cITUgZjaTrMRqpwB7ftCED6O5Z7Q+fTSptiMgDX
- N6WoHyUUXS7ERNZoYh+O3RELs/rmMW+S3odSTUdUt/5jLohqgfSAQVb7pJfK2Uo0go5N
- FiLCgzx93tg40DVJAWXjnJpSruPTltdS7caL4VhDCfx/nDgsvzBXQISRT9P0Y4YXf1yY
- iiLfYIZKpEUQAi8kGc8bHHvGBBDWFosw/UHUq+/A61VRATxcZlCsGbb9SE7WylQ4kIJ1
- ejCw==
-X-Gm-Message-State: AOJu0YxLhJAvDT9XORmBtDyl3wr/y0Ora63tEicJk7aV8AMlUPGsPMcs
- g3bqYnbVogXhEd9Y7vX7uTf2UktfHxV/Qp5fivNJMC54msj+7mOzsYsKQ4PQCKy2JXXeU/3KG0s
- Uah02
-X-Gm-Gg: ASbGncsnbuwAYAiOo1RuGg+MV/o43+/W6rRJ3D8yWMLCadKENmFTAHaNcgcegvmjWv+
- RRKQKL+TylcqIb7HQ645QmfWS9/vPPcDcMQkFh57amnCxTS7saVqvcsZWZFmTaln768yJTv8ggO
- h1CaN0r3D6G8egC89WEm5kEZnzMZan65npJOsjYVXa7tl7HzqwxkIUYaQiBQis6mXCFbGy++HWM
- AINHM98zHsSzdVRcOom0hbnUA689R4TJGvcqiTM5zb23nMTpLlfdYBUlLpdHG0JL6YWNhdKrHmT
- gcaS+X9tMi936QYdOPV91gPuHnIGSG7EjvnxzkKVzdYtBg0wh9oKrGXqvrZ3oI95tTOr1SZhCE2
- 4vm77imhrgykEpBhgWmwErEFVsRcuFYcZV/1ItE4=
-X-Google-Smtp-Source: AGHT+IFrnkwHPbSooHVEXVPASDSTgFr48II+Atg7XpMzelaM+pU51pxQrmZcUuFUHaUMFnjvgtSzvQ==
-X-Received: by 2002:a5d:5f47:0:b0:3a5:7895:7f6b with SMTP id
- ffacd0b85a97d-3b613ab26f5mr7415234f8f.7.1752859843644; 
- Fri, 18 Jul 2025 10:30:43 -0700 (PDT)
+ bh=VTq6sdILRqpJUa4aACdnr1dXTMtMDz2K4P9Jj5bpG7E=;
+ b=fk++bLKL8ZMzijOaQt51ztrTp2O3LpQFSriC0M0LIirs39MIJf89LuPOmcWfl+MCeb
+ y1N5p2/Kl3fqZFbLxGcnnRIbsALNhesXKGjh8Lfd4dF5DW6jdlpNMx9yUFDI+fdoLpLB
+ 84tWzhl65OAXsTQjU9MFVzfp4oWp4gRO77t+iFXiJMRwhIKDLozrfFwNNFNcD9sMYm1I
+ /M0Dewaw4K63JD/o2OBBNDcJFgXKrVLiJGFfd5u0eXdXn/Gq3wU53m6WNjtiUw/sSJl1
+ 3zfAXMjA+Ui/soErcMGVWlVTIxdKL692410ufnBEakPcpdwkU9cDCnl38/qqNGjJzO0r
+ OKBw==
+X-Gm-Message-State: AOJu0YwH7rAdaRxoQ9+h+DJ3x2PZq01E+gxevI3UqvnNrEhE2X3i4eQP
+ pSzns8SRgUIMPBwo5YA0HflFHJO+v1Vl8rImczcEGQUWbD9LM6+8kxcnJ3Hxgqir7aALlZvAvgK
+ Ntwgl
+X-Gm-Gg: ASbGncsu/edWCOXAF9uH6EeTmgm3Dy7ZP2BscmQFHBbQfj+6sNPU6kD1UtDiW1kJ+fN
+ ccn1P69vBd99jq22+O9heENGHc2FixWs/5bp5Q+n8Y2APgLsIH9LUWMIvpF1W9+DB9+dpBzKZwL
+ sEAQxlzPx1DnnE8vpA0rQadD1cCTF/5+rvnWEaGhTRnUqVccDvkE74MJDa5Ft/Ws8yhKv0iAPoD
+ LfCONj2DqBObqz6QIYSGeBKQUWly1HaVlFiyFhKAqepr6SeTqiarTR0+QEHbHMAWKWK5K81zBMu
+ XCTkIh/cDnxLR4uu8nK88sS9Nbcto0f3PwR4KA8eCkYo/xBYmoRxmfrbEJN1//5QoG6kQ0fGZ8T
+ tbvFL/6KW1bm8AC3saiuB61ZqrFot0L4KYROKbEQ=
+X-Google-Smtp-Source: AGHT+IFgt7aZDHGjiKQDQO1pSNy326DvR33iyVj7kf8kRYd06fhb2TFbEm0B9AIQoF6bRuk1daRsSA==
+X-Received: by 2002:a05:6000:230b:b0:3b6:333:256f with SMTP id
+ ffacd0b85a97d-3b613eb49f0mr6272738f8f.58.1752859844744; 
+ Fri, 18 Jul 2025 10:30:44 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b61ca25443sm2454655f8f.9.2025.07.18.10.30.42
+ ffacd0b85a97d-3b61ca25443sm2454655f8f.9.2025.07.18.10.30.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 18 Jul 2025 10:30:42 -0700 (PDT)
+ Fri, 18 Jul 2025 10:30:43 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH for-10.1 07/10] target/arm: Correct sense of FPCR.AH test for
- FMAXQV and FMINQV
-Date: Fri, 18 Jul 2025 18:30:29 +0100
-Message-ID: <20250718173032.2498900-8-peter.maydell@linaro.org>
+Subject: [PATCH for-10.1 08/10] target/arm: Don't nest H() macro calls in SVE
+ DO_REDUCE
+Date: Fri, 18 Jul 2025 18:30:30 +0100
+Message-ID: <20250718173032.2498900-9-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250718173032.2498900-1-peter.maydell@linaro.org>
 References: <20250718173032.2498900-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,39 +102,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-When we implemented the FMAXQV and FMINQV insns we accidentally
-inverted the sense of the FPCR.AH test, so we gave the AH=1 behaviour
-when FPCR.AH was zero, and vice-versa.  (The difference is limited to
-hadling of negative zero and NaN inputs.)
+In the part of the SVE DO_REDUCE macro used by the SVE2p1 FMAXQV,
+FMINQV, etc insns, we incorrectly applied the H() macro twice when
+calculating an offset to add to the vn pointer.  This has no effect
+on little-endian hosts but on big-endian hosts the two invocations
+will cancel each other out and we will access the wrong part of the
+array.
+
+The "s * 16" part of the expression is already aligned, so we only
+need to use the H macro on the "e". Correct the macro usage.
 
 Fixes: 1de7ecfc12d05 ("target/arm: Implement FADDQV, F{MIN, MAX}{NM}QV for SVE2p1")
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/translate-sve.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/arm/tcg/sve_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index fc76624b5a1..2ed440aff15 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -4020,7 +4020,7 @@ static gen_helper_gvec_3_ptr * const fmaxqv_ah_fns[4] = {
-     gen_helper_sve2p1_ah_fmaxqv_s, gen_helper_sve2p1_ah_fmaxqv_d,
- };
- TRANS_FEAT(FMAXQV, aa64_sme2p1_or_sve2p1, gen_gvec_fpst_arg_zpz,
--           (s->fpcr_ah ? fmaxqv_fns : fmaxqv_ah_fns)[a->esz], a, 0,
-+           (s->fpcr_ah ? fmaxqv_ah_fns : fmaxqv_fns)[a->esz], a, 0,
-            a->esz == MO_16 ? FPST_A64_F16 : FPST_A64)
- 
- static gen_helper_gvec_3_ptr * const fminqv_fns[4] = {
-@@ -4032,7 +4032,7 @@ static gen_helper_gvec_3_ptr * const fminqv_ah_fns[4] = {
-     gen_helper_sve2p1_ah_fminqv_s, gen_helper_sve2p1_ah_fminqv_d,
- };
- TRANS_FEAT(FMINQV, aa64_sme2p1_or_sve2p1, gen_gvec_fpst_arg_zpz,
--           (s->fpcr_ah ? fminqv_fns : fminqv_ah_fns)[a->esz], a, 0,
-+           (s->fpcr_ah ? fminqv_ah_fns : fminqv_fns)[a->esz], a, 0,
-            a->esz == MO_16 ? FPST_A64_F16 : FPST_A64)
- 
- /*
+diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
+index 105cc5dd122..bf894f0bf13 100644
+--- a/target/arm/tcg/sve_helper.c
++++ b/target/arm/tcg/sve_helper.c
+@@ -4509,7 +4509,7 @@ void helper_sve2p1_##NAME##qv_##SUF(void *vd, void *vn, void *vg,     \
+         TYPE data[ARM_MAX_VQ];                                        \
+         for (unsigned s = 0; s < segments; s++) {                     \
+             uint16_t pg = *(uint16_t *)(vg + H1_2(s * 2));            \
+-            TYPE nn = *(TYPE *)(vn + H(s * 16 + H(e)));               \
++            TYPE nn = *(TYPE *)(vn + (s * 16 + H(e)));                \
+             data[s] = (pg >> e) & 1 ? nn : IDENT;                     \
+         }                                                             \
+         *(TYPE *)(vd + H(e)) = FUNC##_reduce(data, status, segments); \
 -- 
 2.43.0
 

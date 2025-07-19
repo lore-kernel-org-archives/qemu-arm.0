@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F925C83F34
-	for <qemu-arm@archiver.kernel.org>; Fri, 18 Jul 2025 22:30:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F41A0C83F34
+	for <qemu-arm@archiver.kernel.org>; Sat, 19 Jul 2025 04:00:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uctam-0004ua-9V; Fri, 18 Jul 2025 18:30:12 -0400
+	id 1ucyj0-00044p-EU; Fri, 18 Jul 2025 23:59:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ucsun-0008PA-KN
- for qemu-arm@nongnu.org; Fri, 18 Jul 2025 17:46:53 -0400
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1ucyit-0003zq-J2
+ for qemu-arm@nongnu.org; Fri, 18 Jul 2025 23:58:57 -0400
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ucsul-0007Vl-N5
- for qemu-arm@nongnu.org; Fri, 18 Jul 2025 17:46:49 -0400
-Received: by mail-pf1-x436.google.com with SMTP id
- d2e1a72fcca58-748e63d4b05so1664925b3a.2
- for <qemu-arm@nongnu.org>; Fri, 18 Jul 2025 14:46:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1ucyip-00071e-SL
+ for qemu-arm@nongnu.org; Fri, 18 Jul 2025 23:58:54 -0400
+Received: by mail-pg1-x533.google.com with SMTP id
+ 41be03b00d2f7-b34a78bb6e7so2077140a12.3
+ for <qemu-arm@nongnu.org>; Fri, 18 Jul 2025 20:58:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752875206; x=1753480006; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=0vtVhfnoYsbi7FVIw5IIyiOnvzB6WsKqtOcF4xWo1Z8=;
- b=XEi/VEJHWNvphnTdY8WjI27ReJ7QsNL2R3Oskda8NEEubf4OZaR0wJvwMq7a3eYTir
- uDzBO3GafILsrnp1browvipq8Bjwf8wMIo1v+dcaDXzmaZyxAHUjvdRhSZ1lsEo6IFST
- q8cuEML0YrKpPRDNYTeTM17sOKL9h3cYJdi61NncLYarB2l7CO70gpdAqoCLJI0uP7gi
- xZA+tiYfAEbcgntUyNNdXyt4WcxcoMbVE46IjrHcSr7f85l2DAyf7LOINgi1WzHJC//C
- cApKdRl2YiBemXVlDMN7fcimyoR3nbaW/RW8cZEWMSO0A3/GgSRlu1BpKCrWRLWQaaTv
- Fv6g==
+ d=linaro.org; s=google; t=1752897529; x=1753502329; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=i9sy/GkKxEpvogxAbQ/BlWtpttvEFz3MkYKybtI+dz8=;
+ b=hKWCakLnPjS58o4dUckOMieEzDE2kEtfRmm4J/bRxn9hIG11/QYObeEQgP6ZSfVXzE
+ dB+4DuSoo6JqIEJg5p8vFWBqyrB0shi6D3+RR+wmebvIShi6HQSkaTR46aPpLpTVJlcW
+ U8P75Z76mppRZg2fwvb4MjBbRYcm9tGGvUn65yUz3rJCYz2B2GvT1C0kVcF14P7WznIM
+ UZLvuxndn4M1UkqKu7P02LMQ8m9zuPdT+JX2nFfc0Z4n/z7dbFCCZtMJjaACztEqwTub
+ V+lepnuvIwQphveI/H2T6wSI/5H+H/rxm3pMwNCfa9NGmvrVjtLz7LgVX66dpjLZq7u+
+ 4J4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752875206; x=1753480006;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=0vtVhfnoYsbi7FVIw5IIyiOnvzB6WsKqtOcF4xWo1Z8=;
- b=untlCA8tCPKqDtnfEs5DtqQpznVOtAd0w5q1h/gje+BV45V4P8eqJwK1HstXFrRS71
- u8ubJPYvnXD5U1UTjlZshLQDUAwB5+BF1XQgTotLy6303zd1RUSv7VD69ZyWS1NnXfMQ
- seLe4d6aOjo4I/CB2M0Ebc+ffAZuUbaPD9deR2vfkMmafdG3oY/j+QqW8qNLYsrWKTWx
- qsidoSC3fJzGM3zB/DwNw35/O99znrYTy8OqIVZXhEpA02dx5hD3denhXGJtxApRuT61
- hVqdLg+Txxt/68Gq4vpmNPoIghjfuSp6l8voGfrwzj7W1ldZ22D92moOCG1BattmPbM5
- fwyg==
+ d=1e100.net; s=20230601; t=1752897529; x=1753502329;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=i9sy/GkKxEpvogxAbQ/BlWtpttvEFz3MkYKybtI+dz8=;
+ b=Bzv3UGeyNABN0eTZ2hCRgRNUtbThJ4XOmshotmHtmJpoX6x7F2bKvwNNkKrPMigYCA
+ k0GxafMht1qzcToAAc5dRvRkIY1rA3dzfh8YW6Z0gqcg9QBFCSlpqOJLsH0cDogkcyXz
+ Lyln75Wbncg+DG6R8iToAY+elgUbPt/d4AI7MBdz0zmbPEOUYKJErSGLQBqw9HvxwjFj
+ NBrXA8TwgJJY0uD90jfbBPxYWSVK9Fn8irQCytP0IO81g88cnApxAsT91FOt4Km7D54n
+ Hj1dIJ4C13wdYWu/8hMayI3nhyMV2N1zvm5CujXxZXy41LbFT3CwSbsGX1PeU7jpmeCG
+ XHxQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU159EClF0wvztC2s2vxSnhYi0AS6BMrsygYnXIXPKSS4x0OdKl3KcrH7ITU9UAlyCXgPqPXlpWcg==@nongnu.org
-X-Gm-Message-State: AOJu0YwPBVU3136M9PWGF70dOwugZFpV6emStb6UbCXL0a3lNb1tvQHW
- VZ8mJLymfdBptNdmOIOM/d23QveQqwbR5Cr/kgU+qLqGKxWSg7NdDo89d64riValIwg=
-X-Gm-Gg: ASbGncui8L6y0zS83GeYYQN1/lHolvHCnjq8O9NucQTHvutF4/dxFQGoGM2HBP2dgsx
- hKOs3m7U13oIArenkPzF2xfQ/S7uY2+tN8dslqceZ0nzAYPt0QGN+R2yfIgIHIVXjCq9dijVxTW
- A3NznP0qvDGN8/jixUP0f8wvlnK3/NaxDU+TIrTmNW2FMJOZ+ErfyD5f/MG4YMQgBjcXvh8+K9s
- oKKuN5P1DDNLHBTiAwVAtqvEqw3JuZHM1NMLj6JkF7iyYzHGnj9smC6iHxOmdGrkcqW9H7wwt4l
- aQUVoD7LVkDc5TNYsBYXhEKsyKQ2sK/x4sDVwyWiWW6yMoqRdmjYNBjVUlSHNK1ztf3NN6uL2Hc
- iTwgOiWG2wi3ZBxPsepP/1sYGOTSR74lxcAMEuV+IRw==
-X-Google-Smtp-Source: AGHT+IHZ46G6vsECdMKPxR0JDgbjFwYX2bZhlIIdfgHofxWcoQ3U/6QteK4soAT/Iz8rv5cGwIDFdw==
-X-Received: by 2002:a05:6a20:3d8a:b0:204:4573:d855 with SMTP id
- adf61e73a8af0-23811d5b33amr20819751637.9.1752875206270; 
- Fri, 18 Jul 2025 14:46:46 -0700 (PDT)
-Received: from [192.168.101.134] ([75.147.178.105])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b3f2ff62972sm1431258a12.40.2025.07.18.14.46.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 18 Jul 2025 14:46:45 -0700 (PDT)
-Message-ID: <8b1f32b8-73fb-4cb2-8b86-2f6677cb0286@linaro.org>
-Date: Fri, 18 Jul 2025 14:46:44 -0700
+ AJvYcCVVKbxzZU0OtUricpvE2N00NjMPuYGmIzxPHfETeCvseXZI2DY0GLXaenBEegWr3+AX9l/MVz4aCA==@nongnu.org
+X-Gm-Message-State: AOJu0YwpA9pWOcS5g+MfJorO6hHQvslUFTi1WmlJS+U2RcWIy2F5ACGZ
+ k7AavfGc1HM7Z8pAhOuAuSYijzQ2E8A7BPCEci5FalSQ6Fw940wEdJ3JDiJwE8BYDj4=
+X-Gm-Gg: ASbGncs7Lrzo8UEm8m33sTLsSBr3FCcHgGzC5fvG7ut7T7ozDLlTdEZFB2e/ehDQ2xh
+ zxWcVgs+dTVVpV0LPp/2X7pnts8XI1I7ZTI8huYPt3dN3OJi00Kf7jBmW7CP23Ch2SEHnzr/H5i
+ rNbnZJ81INWqzFc8WpRbNIqRxewd/3EbE+KBAH34pLk3krYOgbmLohMOWyOqGRnVYdikZedgJe6
+ XjzSLjLDCO4BEbLdRtmkGmvvcGSv0xvb1HsW/DoB/iFulBDzrvTAznenu3tPxZJE8ZDp9bMM/eB
+ 0NEW5d9PAjChlrC3+N+HJJtHk6NSvlmmVgtHC0F3cggSs0OL4XEtLTM7ym+wLbu+uwrNsCM1BWe
+ 1vC1qhDA+LeuTEKmahn7Xh5SPV+oTjBXu
+X-Google-Smtp-Source: AGHT+IGiXq8suzeZY2Gbl4zSLPsU4W8ayUC9ZDlyL7V+8Em5vBVJq2C2jL8BMVdcm5qXkHeq6XVxOw==
+X-Received: by 2002:a17:90b:514d:b0:311:b413:f5e1 with SMTP id
+ 98e67ed59e1d1-31c9f45b1admr16462512a91.32.1752897528951; 
+ Fri, 18 Jul 2025 20:58:48 -0700 (PDT)
+Received: from pc.. ([38.41.223.211]) by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-b3f2ff88cf8sm1961819a12.49.2025.07.18.20.58.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 18 Jul 2025 20:58:48 -0700 (PDT)
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: jean-philippe@linaro.org, richard.henderson@linaro.org,
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>, gustavo.romero@linaro.org,
+ qemu-arm@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v2 1/2] tests/functional/test_aarch64_device_passthrough:
+ update image
+Date: Fri, 18 Jul 2025 20:58:37 -0700
+Message-ID: <20250719035838.2284029-2-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250719035838.2284029-1-pierrick.bouvier@linaro.org>
+References: <20250719035838.2284029-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-10.1 10/10] target/arm: Make LD1Q decode and trans fn
- agree about a->u
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20250718173032.2498900-1-peter.maydell@linaro.org>
- <20250718173032.2498900-11-peter.maydell@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250718173032.2498900-11-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,40 +106,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/18/25 10:30, Peter Maydell wrote:
-> For the LD1Q instruction (gather load of quadwords) we use the
-> LD1_zprz pattern with MO_128 elements.  At this element size there is
-> no signed vs unsigned distinction, and we only set the 'u' bit in the
-> arg_LD1_zprz struct because we share the code and decode struct with
-> smaller element sizes.
-> 
-> However, we set u=0 in the decode pattern line but then accidentally
-> asserted that it was 1 in the trans function.  Since our usual convention
-> is that the "default" is unsigned and we only mark operations as signed
-> when they really do need to extend, change the decode pattern line to
-> set u=1 to match the assert.
-> 
-> Fixes: d2aa9a804ee6 ("target/arm: Implement LD1Q, ST1Q for SVE2p1")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   target/arm/tcg/sve.decode | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
-> index a77b725c876..aea7f519730 100644
-> --- a/target/arm/tcg/sve.decode
-> +++ b/target/arm/tcg/sve.decode
-> @@ -1345,7 +1345,7 @@ LD1_zprz        1100010 11 1. ..... 11. ... ..... ..... \
->   
->   # LD1Q
->   LD1_zprz        1100 0100 000 rm:5 101 pg:3 rn:5 rd:5 \
-> -                &rprr_gather_load u=0 ff=0 xs=2 esz=4 msz=4 scale=0
-> +                &rprr_gather_load u=1 ff=0 xs=2 esz=4 msz=4 scale=0
->   
->   # SVE 64-bit gather load (vector plus immediate)
->   LD1_zpiz        1100010 .. 01 ..... 1.. ... ..... ..... \
+TF-A needs to be patched to enable support for FEAT_TCR2 and
+FEAT_SCTLR2. This new image contains updated firmware.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ .../test_aarch64_device_passthrough.py        | 27 ++++++++++---------
+ 1 file changed, 14 insertions(+), 13 deletions(-)
 
-r~
+diff --git a/tests/functional/test_aarch64_device_passthrough.py b/tests/functional/test_aarch64_device_passthrough.py
+index 1f3f158a9ff..17437784bbe 100755
+--- a/tests/functional/test_aarch64_device_passthrough.py
++++ b/tests/functional/test_aarch64_device_passthrough.py
+@@ -9,7 +9,7 @@
+ #
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-import os
++from os.path import join
+ 
+ from qemu_test import QemuSystemTest, Asset
+ from qemu_test import exec_command, wait_for_console_pattern
+@@ -77,15 +77,16 @@
+ 
+ class Aarch64DevicePassthrough(QemuSystemTest):
+ 
+-    # https://github.com/pbo-linaro/qemu-linux-stack
++    # https://github.com/pbo-linaro/qemu-linux-stack/tree/device_passthrough
++    # $ ./build.sh && ./archive_artifacts.sh out.tar.xz
+     #
+     # Linux kernel is compiled with defconfig +
+     # IOMMUFD + VFIO_DEVICE_CDEV + ARM_SMMU_V3_IOMMUFD
+     # https://docs.kernel.org/driver-api/vfio.html#vfio-device-cde
+     ASSET_DEVICE_PASSTHROUGH_STACK = Asset(
+-        ('https://fileserver.linaro.org/s/fx5DXxBYme8dw2G/'
+-         'download/device_passthrough.tar.xz'),
+-         '812750b664d61c2986f2b149939ae28cafbd60d53e9c7e4b16e97143845e196d')
++        ('https://github.com/pbo-linaro/qemu-linux-stack/'
++         'releases/download/build/device_passthrough-c3fb84a.tar.xz'),
++         '15ac2b02bed0c0ea8e3e007de0bcfdaf6fd51c1ba98213f841dc7d01d6f72f04')
+ 
+     # This tests the device passthrough implementation, by booting a VM
+     # supporting it with two nvme disks attached, and launching a nested VM
+@@ -96,16 +97,16 @@ def test_aarch64_device_passthrough(self):
+ 
+         self.vm.set_console()
+ 
+-        stack_path_tar_gz = self.ASSET_DEVICE_PASSTHROUGH_STACK.fetch()
+-        self.archive_extract(stack_path_tar_gz, format="tar")
++        stack_path_tar = self.ASSET_DEVICE_PASSTHROUGH_STACK.fetch()
++        self.archive_extract(stack_path_tar, format="tar")
+ 
+         stack = self.scratch_file('out')
+-        kernel = os.path.join(stack, 'Image.gz')
+-        rootfs_host = os.path.join(stack, 'host.ext4')
+-        disk_vfio = os.path.join(stack, 'disk_vfio')
+-        disk_iommufd = os.path.join(stack, 'disk_iommufd')
+-        guest_cmd = os.path.join(stack, 'guest.sh')
+-        nested_guest_cmd = os.path.join(stack, 'nested_guest.sh')
++        kernel = join(stack, 'Image.gz')
++        rootfs_host = join(stack, 'host.ext4')
++        disk_vfio = join(stack, 'disk_vfio')
++        disk_iommufd = join(stack, 'disk_iommufd')
++        guest_cmd = join(stack, 'guest.sh')
++        nested_guest_cmd = join(stack, 'nested_guest.sh')
+         # we generate two random disks
+         with open(disk_vfio, "wb") as d: d.write(randbytes(512))
+         with open(disk_iommufd, "wb") as d: d.write(randbytes(1024))
+-- 
+2.47.2
+
 

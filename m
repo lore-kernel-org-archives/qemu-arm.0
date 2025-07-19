@@ -4,88 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DADB2C83F34
-	for <qemu-arm@archiver.kernel.org>; Sat, 19 Jul 2025 04:01:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECB4DC83F34
+	for <qemu-arm@archiver.kernel.org>; Sat, 19 Jul 2025 04:05:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ucylB-0007ZS-E6; Sat, 19 Jul 2025 00:01:36 -0400
+	id 1ucypG-0003zF-Iz; Sat, 19 Jul 2025 00:05:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ucykL-0006VJ-NX
- for qemu-arm@nongnu.org; Sat, 19 Jul 2025 00:00:26 -0400
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+ id 1ucylj-00086s-U8
+ for qemu-arm@nongnu.org; Sat, 19 Jul 2025 00:01:53 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ucykI-0007QQ-JW
- for qemu-arm@nongnu.org; Sat, 19 Jul 2025 00:00:25 -0400
-Received: by mail-pf1-x42b.google.com with SMTP id
- d2e1a72fcca58-748fe69a7baso2570481b3a.3
- for <qemu-arm@nongnu.org>; Fri, 18 Jul 2025 21:00:22 -0700 (PDT)
+ id 1ucyli-0007gY-C1
+ for qemu-arm@nongnu.org; Sat, 19 Jul 2025 00:01:51 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-236377f00a1so23541065ad.3
+ for <qemu-arm@nongnu.org>; Fri, 18 Jul 2025 21:01:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1752897621; x=1753502421; darn=nongnu.org;
+ d=linaro.org; s=google; t=1752897709; x=1753502509; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=gFoKoFCaEUJpXwD+AbqFjVyMpQj2okGZnQuqNtvCsus=;
- b=fNfMx+1ZR8YDXGexeBJ3jNX3wP2OXUDanQ8hAOloLgXp2U8nRf9txh8IFADdtfLcO/
- seyByiXKXqgTPfXkmaeZtI0iAw4SZdCK4MPCktRcCrxJkjkWDeUpp5KP6WSyz2iXbaU0
- wbSsmdxryYvtXJXHkTvvtMlGwwixxLP5rOHaMEqN6O5oT7ltRstZkfjrPFwKWVTwQ2JP
- nHi0bIlvPuTBh9+4EBlPDAJy7NNSQ+tn8arrgoPA++N6NOKJHhxRyvtf6YyObTPLXQxn
- NmhPzGh35o+nXYCabXm2EqAAHKASEE2qKiFdEN8rj4YwCziKtM/OAN+FVAMlBy9DHwMU
- pR/g==
+ bh=tnNfbDJoI2DUXMlBlzWoW0B7THEIBo+0lwWKlcYSUq8=;
+ b=fb/XMvX3G1XSTaMTY5ON7zVx4GmFH4imeybJ6dLoNJwzPVwAB8Arx7z05qXaIfrqE4
+ 1dXZ2y+UOgzL10cgFILHlLQf7faCqmlAM4FEYSSKnVrCo35tQniLD4xnGuYD4NT+1/+5
+ wlCLECVoyeSSQBNSbIwE1EhHpw/rYXAwXSuQk7kzRp7ORA+4QgRnyL1t4X5bjzemHANu
+ sFTapjWNIj9PdLtYrZA+ckEVN27Jk2dtnni/jiScX17ABgNc8PlYTwISvfiaxsOR5EWi
+ Ps9AkiMcbGWSM/vFDDWxOBANhmq/jfOIruZUHMmDp1F+m4a/Kv/YfKUp1Oafs2oCdcQ0
+ 9nDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752897621; x=1753502421;
+ d=1e100.net; s=20230601; t=1752897709; x=1753502509;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=gFoKoFCaEUJpXwD+AbqFjVyMpQj2okGZnQuqNtvCsus=;
- b=hpms1GG9zVS32/mrvkux8hJtGfmxqolQwgWkbTtUWZhdQZjsR7pe5DwliB92PNEmdj
- sCRvVifpC3lMa2bmOHSUjj4o0jxvJLW1Kg8gPIBSnu5vCAPTFmfdDXkD/d3nRNajtVW5
- X+HkZ99DdYmRIubBZgpqbP/yfw+9WW5bmzr0KEE8o9+iutPqBsxMzkHlgUDm5DHdbLLD
- 8DpBk8Zbh/SO5V6gwmYuqbaTHqPZyLyI8OvLeiHLDFEtHNYNLeF9M0oB3GYh6TsP8E7v
- tqTsCeWNPw0dv2ux/eCpY9tUX+PIXsC/+NKJ4MRZDELljX6+MLDDLRcuWGHuRSNzczjy
- QfZQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV6IBiq/AJd7+nP9H3F+Lz3fzmMbBZJWiS8zOy42NPIAgwNjWpp4Xs5dYUMOv++rWb8ukKC7f6YtQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyK/WAvxYEYvsOExSI7nZac72+Iiy6mmM/iZ/kXo0q20s2ceiqg
- MEkwdcQMbXBkZmHlacFlPKynp0FMBwlVxNa2uKZHpkYGt5SL4Lr1eeq97/AiFZwtXx8=
-X-Gm-Gg: ASbGnctzNudkTSO/GlcFGVM0HFrnYBABAcMli7Nt/AMJVZOS+M2K/8RHrEpq3b0JnRe
- +Wi6ipiLAYaVha7NWQmsWtoCi5JRcUx6Hn52tJgIunszICP8hVpityan/dSUOoaXOBlPUVFoJRL
- cu//h/vtJGhbITqZdPZQGKW+N37vHivsHaZSwauX9npRrz5oBZfc6vrRvfRFWXqlhmPL+w/3NMA
- zkyquAMHdc44k/a/9P9cXodHESKOtvJ1ezKg48tjL7H1pzEhi7GDM0axbLoQyTMYG3/NWxJ7TXL
- zuJS03GZFhAoh025Syw9yJeepNJvf4zvF/BHLhdyVrEdrYdtsF3Pn+EuU7VHm0nsOgPZpYe4QDz
- g+m+5NykGDLBrkAS1ScrtriVdKD7Q288PPUM=
-X-Google-Smtp-Source: AGHT+IHSY1cJbw1opC0onO5qIya+3qxeP1Y9avmlAl7UWXfk5veBYMHnuVhpYNN9kRktusFXwc32YQ==
-X-Received: by 2002:a05:6a00:1a8b:b0:74e:ac5b:17ff with SMTP id
- d2e1a72fcca58-7584aa4d084mr12580758b3a.13.1752897620813; 
- Fri, 18 Jul 2025 21:00:20 -0700 (PDT)
+ bh=tnNfbDJoI2DUXMlBlzWoW0B7THEIBo+0lwWKlcYSUq8=;
+ b=YTo9Glas4tSNEHbroJCVUZexuSk1iapTmF5iQ+MlXwdUmz2xxLG6TJsRPYFJYxjvYs
+ 6Qm5G2KxeYhIdbLHsP0KmeLhu035g2N6TwZt70SMv4tSfCDeQva2OoPK3d4SO7JUWume
+ xteWSjKe9H+Meb7l0buYWwK9zBqIY2ceyrqlvVAobKAPrY0VK5D6UWylk5jCrS7CA7Ko
+ njK19Hfovg0MOztX2XpWMYN3nyf8WdTYczlsZxo4RyrYqktI/CYpeKSJ/4Q1vXBq629V
+ rk+t1evI8p3SAmJoJjnOEdsuEnxC+Gx52THFYZiuz6QkIOkfOv+5pY08Q8AEbzgzCbxn
+ wKSw==
+X-Gm-Message-State: AOJu0YzJx8t36IjDHfgoCahq65NF8oUleJq2lO+xkboeZz3hV0i1boEE
+ K62DtfnnpBIwWKvcf/usYhrkXLbw0f9p1g4zIGeX5u3tHy+CeNl2+WoKPdZgDL+JLcM=
+X-Gm-Gg: ASbGnctWWHJSTSn+mr1/Nv0BvScx3EjFLs0n1g8FEvEAwSdCvl9UVoE0C3Ted4zM97t
+ zgEjkKS4PS/XwkgGtJIN25Xm3vQOTrt5SCiZDM6+Tgo5J5GbwJRlp0/r2cTTY8A6EbVZMi/k8Zu
+ Qp/ws1AUfxAujdZqTo2mgMOH4h0/2VqLu91n9eSj/NhLB4Qoj2JQskRxuV3/s9FTOkyBcO9R3c1
+ v4Sq5aizHEFrW8ma1b0M0g3XsYA7XIjQPPqTDrI0E6YY4VfHM8PTE/uCC6fHEUubvLNmZDochmI
+ OrLAkqbVueT8zjdJ5y7Q5qkaHGj9JNq6MLc+Y3CrHtdU3GRzymxa7gyPlvLapsgzuyHESFzt9a+
+ CSQLkWlwFnPekXnzjZJP6MFBVGzV0BkKiODCClen92Bqovg==
+X-Google-Smtp-Source: AGHT+IGpx2yP8heDo3rmIux2Glbsb7g+AxqENEMefDd+fWjLMWwpNK9NKQU0j6eoXwqtnmdGzVjQYg==
+X-Received: by 2002:a17:903:2b0f:b0:236:8df7:b30a with SMTP id
+ d9443c01a7336-23e24ec70c4mr199924975ad.1.1752897708752; 
+ Fri, 18 Jul 2025 21:01:48 -0700 (PDT)
 Received: from [192.168.1.87] ([38.41.223.211])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-759cb157b49sm2053697b3a.96.2025.07.18.21.00.19
+ d9443c01a7336-23e3b6cfdbdsm21155675ad.150.2025.07.18.21.01.47
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 18 Jul 2025 21:00:20 -0700 (PDT)
-Message-ID: <f9e316d7-18c1-4be7-b172-3fe2682e572a@linaro.org>
-Date: Fri, 18 Jul 2025 21:00:18 -0700
+ Fri, 18 Jul 2025 21:01:48 -0700 (PDT)
+Message-ID: <8b49b4a0-feba-4e75-a78b-dcc3aa33091a@linaro.org>
+Date: Fri, 18 Jul 2025 21:01:46 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/2] aarch64: update test images with new trusted
- firmware
+Subject: Re: [PATCH 0/2] aarch64: update test images with new trusted firmware
 Content-Language: en-US
 To: qemu-devel@nongnu.org
-Cc: jean-philippe@linaro.org, richard.henderson@linaro.org,
- Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
+Cc: qemu-arm@nongnu.org, jean-philippe@linaro.org,
  Mathieu Poirier <mathieu.poirier@linaro.org>, gustavo.romero@linaro.org,
- qemu-arm@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>
-References: <20250719035838.2284029-1-pierrick.bouvier@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>, richard.henderson@linaro.org
+References: <20250715212335.2215509-1-pierrick.bouvier@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20250719035838.2284029-1-pierrick.bouvier@linaro.org>
+In-Reply-To: <20250715212335.2215509-1-pierrick.bouvier@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,9 +103,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Richard,
-
-On 7/18/25 8:58 PM, Pierrick Bouvier wrote:
+On 7/15/25 2:23 PM, Pierrick Bouvier wrote:
 > The FEAT_MEC series [1] introduces FEAT_TCR2 and FEAT_SCTLR2.
 > TF-A needs to be aware of that change to allow accesses to those registers, and
 > thus must be patched [2] to enable this for QEMU platforms.
@@ -123,27 +116,18 @@ On 7/18/25 8:58 PM, Pierrick Bouvier wrote:
 > Note: [2] will be upstreamed in TF-A once associated series on QEMU side is
 > merged.
 > 
-> v2
-> --
-> 
-> - Updated test images with lighter images (only firmwares + kernel + lkvm)
->    performing only a Realm boot, and skipping the attestation reporting.
->    This does not change what is tested on QEMU side.
-> - Build those images automatically on GitHub, and fetch them from there
->    directly.
-> 
 > Pierrick Bouvier (2):
 >    tests/functional/test_aarch64_device_passthrough: update image
 >    tests/functional/test_aarch64_rme: update image
 > 
->   .../test_aarch64_device_passthrough.py        | 27 +++---
->   tests/functional/test_aarch64_rme_sbsaref.py  | 64 ++++++++------
->   tests/functional/test_aarch64_rme_virt.py     | 85 +++++++------------
->   3 files changed, 80 insertions(+), 96 deletions(-)
+>   tests/functional/test_aarch64_device_passthrough.py | 9 +++++----
+>   tests/functional/test_aarch64_rme_sbsaref.py        | 9 +++++----
+>   tests/functional/test_aarch64_rme_virt.py           | 9 +++++----
+>   3 files changed, 15 insertions(+), 12 deletions(-)
 > 
 
-please fetch this new version instead of v1, as it contains images that 
-will be easier for us to maintain in the long term.
+Superseded this with v2:
+https://lore.kernel.org/qemu-devel/20250719035838.2284029-1-pierrick.bouvier@linaro.org/T/#t
 
 Regards,
 Pierrick

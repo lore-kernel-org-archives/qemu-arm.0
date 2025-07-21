@@ -4,82 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 185CEC83F25
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 14:04:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 118DAC83F25
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 14:39:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1udr6z-0001jN-BA; Mon, 21 Jul 2025 10:03:25 -0400
+	id 1udrfm-0006Q2-5V; Mon, 21 Jul 2025 10:39:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1udr6t-0000qe-HS
- for qemu-arm@nongnu.org; Mon, 21 Jul 2025 10:03:21 -0400
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1udr6q-0004Q6-PS
- for qemu-arm@nongnu.org; Mon, 21 Jul 2025 10:03:18 -0400
-Received: by mail-yw1-x1130.google.com with SMTP id
- 00721157ae682-70e5e6ab7b8so36050647b3.1
- for <qemu-arm@nongnu.org>; Mon, 21 Jul 2025 07:03:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753106595; x=1753711395; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=CYVQe0Mks7K6hEfZs7ov2VhXUKLZCR1ICDo08+Q05aY=;
- b=FoQRAXOfV4R1ih97sLggWiU1CPFtwdqYzrtEyC2pumOTRPd/gRGFICpkkIrV7eym/e
- QiO/2qeG8zVg6C5GbjOvznyRNye6OIWcWJqi6iyZPYYpbGAnBMgSRRReCTDwG4aIUWtP
- 5phbS7C26DwyIsJh2qW+kNeUENJyXSmH/2WyG/wxuOLYPqHD4AiLaFIVyXSO+NQ73iOf
- W1Z1iW10zyfhV/WCv40Ph/KHc2LPRXn0duxRLrprskakZHJtbwVEouDoJux5uTwRU56g
- bF+YtYQUmtWu/KVsfGnyOo0EjXqfYSJMy0lgRHrNhwpPj+NUX2q5nKbfeVMnDe950ajO
- EZig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753106595; x=1753711395;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=CYVQe0Mks7K6hEfZs7ov2VhXUKLZCR1ICDo08+Q05aY=;
- b=nAmE3yGFIwU6INQNL++l2Db3t8YhX6RGbo92epICbgYcdG6jBzX8ADN7c+lpy9o4/C
- W0JA2RYEoMIvN9AcxxPpfXyaPL16r5xw8Ho4Njy/fWYH0bSXGJjuilJz/R474Inj2jy8
- c8gkp/Htb32/yCDqR/WKIIH7k7rLo/uK064aMi25kGJKv8uNItNGSxzctYdkBalNyUiH
- z1LBFFIXyDkr5WpwzXH3Qsm99tbmjxemfqDpdQu2HhdnEEAV5GIhHYeEgZq5zo6GWYOc
- 4AWoKD5uFp0Ok9macJP1GrLvrWFdwAZ30e0zw3VKJlFpYVm5cmcvzsTNlObneVKZ//mQ
- C5PQ==
-X-Gm-Message-State: AOJu0YwhgNYpuVDSnHVaKFSDOIjvJR9R/kxU7eM4C3rGAd5xnOU8UVcp
- w3y/QyUgC9pweUbdNK561KdLd/qdN8quUGAzApOC3wigCrWUeYbfvkGFPIt2cyn5KaJ1nYfetY7
- nkkEMJ+UDS4/ZrUJzJK8ptqlVPA5jt46CyF1jS66GRS9NlFUQziJ9
-X-Gm-Gg: ASbGnctdsJgyFtW7xENPRmoFr7o0n03YRvwMmjFdsbbqRG4I5NF4MQpot2sNM8mSFxg
- TP4wWcLOPnQMhIpmL2PprGzfzJaVMmrAYE81sjgio5sp5A9PnLZPlnJU6K6WcxY5EsGDo9zLrOg
- GHvGuYVUSQz1uHfFkloaqgTlYStZOMzcShwkd4SIfKWE3qhuGDsz9yalkH3UFYsOAdlfNslAnBR
- Eds6iB9
-X-Google-Smtp-Source: AGHT+IHsG9Fmrl2imd+MQNO4Jhzw1CzGekKQ2Z/zJ+9wt9/QH9rKlHxu/bfzKU9FZMWix8CpXJ4g8LjI9mlRoUjt5nY=
-X-Received: by 2002:a05:690c:4905:b0:70c:b882:305 with SMTP id
- 00721157ae682-718351ae978mr280071237b3.36.1753106594747; Mon, 21 Jul 2025
- 07:03:14 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1udrfL-0005yQ-B8
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 10:38:55 -0400
+Received: from p-east3-cluster3-host7-snip4-2.eps.apple.com ([57.103.86.65]
+ helo=outbound.qs.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1udrfI-0005d4-DY
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 10:38:54 -0400
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-20-percent-0 (Postfix) with ESMTPS id
+ A000E18005C6; Mon, 21 Jul 2025 14:38:48 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; bh=W9rm4Z3YURnt25CcHTVKvCrh0kzNmY51JHp2Ot0ah4E=;
+ h=From:To:Subject:Date:Message-Id:Content-Type:MIME-Version:x-icloud-hme;
+ b=ahG2aF6REmixQWfdhr2vIzgTPFfZ5JSEZshWTYel/fawj3hQ16YXjoqqUYDPRzJbWVHIVRprSO4jbhJgheDuKM4iDMsGPXHbRnroQDnFxTMBG64b2C+/4/+UNwnbFSiOao81pbqPFLLsh1ew8aRgYBjkzstUVOLSC1rpwgLzcsGMFxkLK3NSvH8moXaQFOKPDBpzlr+ZTFGhQ1E4NgV5j//SR5hnDLhhx+up13ulDLBGrjrcMP+DTT1VCUD1K+feeSh7RVYq38A7vsu9Xp3usPpRznJhTJ2ZS50DWGVrjq2qAuMEHNVxO1xUQDmB/LdkW2a6VdtQ30PQw7uUh2oBcQ==
+X-Client-IP: 46.189.47.18
+Received: from localhost.localdomain (qs-asmtp-me-k8s.p00.prod.me.com
+ [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-20-percent-0 (Postfix) with ESMTPSA id
+ D73D318005CC; Mon, 21 Jul 2025 14:38:46 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org,
+	mohamed@unpredictable.fr
+Cc: Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH 0/1] hw/arm: virt: add GICv2m for the case when ITS is not
+ available
+Date: Mon, 21 Jul 2025 16:38:18 +0200
+Message-Id: <20250721143819.32334-1-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.39.5 (Apple Git-154)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20250714165523.1956235-1-peter.maydell@linaro.org>
- <20250714165523.1956235-3-peter.maydell@linaro.org>
-In-Reply-To: <20250714165523.1956235-3-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 21 Jul 2025 15:03:03 +0100
-X-Gm-Features: Ac12FXzQCJ_IkNMo4Ne1_A9_EHvTmQFabt3QlXuTagGeVCSyrmNR5nGgIe7mEyY
-Message-ID: <CAFEAcA8pSTpOne-u6BaEABhxcCXn=BvX4U2VF=pw00WFAc8yTQ@mail.gmail.com>
-Subject: Re: [PATCH 2/4] hw/net/npcm_gmac.c: Unify length and prev_buf_size
- variables
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>, 
- Jason Wang <jasowang@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-GUID: _xXQjrpM0UXEA5joLzL7S9QbluIP_1xu
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzIxMDEyNyBTYWx0ZWRfX3D7yJW+yNgKN
+ txS6NWc2cHVSM+hRH2rDqYHvhHfAsyF8V9aoCA2YJ6bc7GyKtwrvWtNqN3xheLgbmlEgr/lGD7W
+ ispW5f1pkkEUfaBqQXUoutuNEy6LfHSOgaAYpOB/qoY47pRxw6MEfm4PqZetlwS4uG9EJWWF89a
+ g8YR2Ho+T2psDIjYVyFX9tlnHK27iDBZfgjp6o01lmOfwT50kDk5GFpowEEoYAL7QauyEokovCc
+ kb8FLL7FqjDUrWp8Ro/qJV4JDlj3YedlxjBocjLZu9lB9I+zW7m9hhZIJqV6CvHyKp26Y4pCA=
+X-Proofpoint-ORIG-GUID: _xXQjrpM0UXEA5joLzL7S9QbluIP_1xu
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-07-21_04,2025-07-21_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ mlxlogscore=793 bulkscore=0 clxscore=1030 spamscore=0 suspectscore=0
+ adultscore=0 malwarescore=0 phishscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.22.0-2506270000 definitions=main-2507210127
+Received-SPF: pass client-ip=57.103.86.65;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,27 +86,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 14 Jul 2025 at 17:55, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> After the bug fix in the previous commit, the length and prev_buf_size
-> variables are identical, except that prev_buf_size is uint32_t and
-> length is uint16_t. We can therefore unify them. The only place where
-> the type makes a difference is that we will truncate the packet
-> at 64K when sending it; this commit preserves that behaviour
-> by using a local variable when doing the packet send.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> Should the behaviour really be to truncate the packet at 64K
-> rather than flagging an error if the guest assembles descriptors
-> that combine to give a too-large packet?
+Client virtualization environments shipping with a GICv3 + GICv2m configuration
+without support for emulating an ITS makes this more and more necessary...
 
-I see Jason has picked this up in a pullreq, which is OK given
-this isn't a behaviour change -- but it would still be good
-if somebody with access to the datasheet for this device could
-confirm what the actual correct behaviour for attempts to tx
-very large packets should be.
+Done in a backwards-compatible way without altering the existing device model
+for older guests, but wonder if having a separate gicv2m flag is worthwhile.
 
-thanks
--- PMM
+Mohamed Mediouni (1):
+  hw/arm: virt: add GICv2m for the case when ITS is not available
+
+ hw/arm/virt-acpi-build.c | 4 +++-
+ hw/arm/virt.c            | 8 +++++++-
+ include/hw/arm/virt.h    | 2 ++
+ 3 files changed, 12 insertions(+), 2 deletions(-)
+
+-- 
+2.39.5 (Apple Git-154)
+
 

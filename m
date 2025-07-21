@@ -4,75 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A5BCC83F25
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 14:40:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E09AC83F25
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 15:29:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1udrg7-0006zw-Db; Mon, 21 Jul 2025 10:39:43 -0400
+	id 1udsS6-0000SB-Fp; Mon, 21 Jul 2025 11:29:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1udrfU-00066y-CC
- for qemu-arm@nongnu.org; Mon, 21 Jul 2025 10:39:07 -0400
-Received: from p-east3-cluster6-host9-snip4-10.eps.apple.com ([57.103.85.221]
+ id 1udsS1-0000Kq-DD
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 11:29:14 -0400
+Received: from p-east3-cluster7-host11-snip4-1.eps.apple.com ([57.103.84.232]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1udrfI-0005dO-Q8
- for qemu-arm@nongnu.org; Mon, 21 Jul 2025 10:38:57 -0400
+ id 1udsRz-0008Da-DI
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 11:29:13 -0400
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-20-percent-0 (Postfix) with ESMTPS id
- 8215618005E2; Mon, 21 Jul 2025 14:38:49 +0000 (UTC)
+ by p00-icloudmta-asmtp-us-east-2d-100-percent-7 (Postfix) with ESMTPS id
+ 83FA618000A2; Mon, 21 Jul 2025 15:29:08 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=CrTMpDwF13P+y1O9FBI/EPomn6LMUzyv1EcbqvBQ+Ik=;
+ s=sig1; bh=zuqF8TehqinG6O+4wRmDxo4/6hiz3J1Qgh7XOTESXgw=;
  h=From:To:Subject:Date:Message-Id:MIME-Version:x-icloud-hme;
- b=ctywDCM/1fMfOZJzJCY4zF6seEq/ImxmUR9EWzcAJtA+qXv+Axec6f4I7FpgKOxavj60f+x/v8r+YycZ1tYQsevTzFUQry9jVmtEfG04HN77eE4McJYJkAGdsfkVMHMmpSXYSv5V0mxKuD8TQGVD6AarTY26JVQKEbrVkJ8fvPOzDNP6Qdlk8BU2SjrCC3glIOmKOQTlqgdhrcdOCCCXBUTcPUG8vgkaInqNa2vR80wR4vOFd+/t8qB+KdHzNlMl5stZ3OpDTSPyJXaZdyGck7a7yCZX0TiGKtlZtpESVMk0vwOSWnytL6+4oLhWcnFVHggx1XJEduq7lKsD9DiA0Q==
+ b=bwGm+JAE2e8UgXxkBRqZKncdBujsRkeybHB+Qv5oLLopa/xwVa0/yPOaH03DpyFboIM8too1QtnsUJUTmxTx57bt2DKNewUrhbRMhoIb2XeJ2RRr814P4mGAMWUmxqWBsDs/gDKHFoYInZsMmWq8efqR0vDMiuGpOjWjyKESlfzG5Re5ekryQoZtTjyQiC/vTKqEWfX5a6UksxZIb7r1GZabn69m3hIKvcBeYrSywyVHEjbLDJ2pKAZLE+Doah8S4yCO4GWuyPNYj1tMatUPOKW6LV4UOpqgikCyzaTd00Ds9pXiKPQMd1/4HiLnh5+M2irk/o96yYH9jmsn5fGAEQ==
 X-Client-IP: 46.189.47.18
 Received: from localhost.localdomain (qs-asmtp-me-k8s.p00.prod.me.com
  [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-20-percent-0 (Postfix) with ESMTPSA id
- 1CE7C1800094; Mon, 21 Jul 2025 14:38:48 +0000 (UTC)
+ by p00-icloudmta-asmtp-us-east-2d-100-percent-7 (Postfix) with ESMTPSA id
+ C772818002BA; Mon, 21 Jul 2025 15:29:06 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org,
-	mohamed@unpredictable.fr
-Cc: Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 1/1] hw/arm: virt: add GICv2m for the case when ITS is not
- available
-Date: Mon, 21 Jul 2025 16:38:19 +0200
-Message-Id: <20250721143819.32334-2-mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: Alexander Graf <agraf@csgraf.de>, Mads Ynddal <mads@ynddal.dk>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+Subject: [PATCH 2/2] target/arm: hvf: stubbing reads to LORC_EL1
+Date: Mon, 21 Jul 2025 17:29:02 +0200
+Message-Id: <20250721152902.38671-3-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.39.5 (Apple Git-154)
-In-Reply-To: <20250721143819.32334-1-mohamed@unpredictable.fr>
-References: <20250721143819.32334-1-mohamed@unpredictable.fr>
+In-Reply-To: <20250721152902.38671-1-mohamed@unpredictable.fr>
+References: <20250721152902.38671-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzIxMDEzMCBTYWx0ZWRfX1jQvHdaPTIPr
- 8Fk05yn72nWj5qPO9n4czK41nEe6Ovl20rzz5BYwoY+DQTONamvsHsXyFHpjXuotkrbBEJw5lyP
- OmITyep33ZNOfUW+VBitbdw5DRZi5GZY4dij66qldyk8qpfCwDZIibbmJ8cOHb9RpvqVm7g7aBA
- ahCwdIRKH8HXH9MQjCFtgqwWj6NSouVzYK0ePWhCWwV0JeZFfaiS1LxUuv3ezsguOhesEM2eLHg
- OHe4revr6XeHHYHNPI9AqYuQurK6s0lsUblyx4QZQtrhylPrZuxIQTFq3WhAP1DX6pLMMjckM=
-X-Proofpoint-GUID: L-y9xroDxkQEU8FqlbYREI7r58AAdf-l
-X-Proofpoint-ORIG-GUID: L-y9xroDxkQEU8FqlbYREI7r58AAdf-l
+X-Proofpoint-GUID: mXGf_pPXWhYANCrCxL5B-Ak8B2KBLgaS
+X-Proofpoint-ORIG-GUID: mXGf_pPXWhYANCrCxL5B-Ak8B2KBLgaS
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzIxMDEzOCBTYWx0ZWRfXwa1ct7BLEZsI
+ 3IxLFchcTeSUbLi+DOmnYJMh1C+wfv8RK8CmPAUfbbb7RRcVFwGPY+SY1HZzVNQwc23N6nvQM2B
+ u5bcyVQ7/sEj2hZRPI7tEagH+0U40FYfHnDM1if6nbRy3CS413nJe4lFKGEj6EGPqqf2TBhzWhM
+ uXzxkrDLU/o8bKbVNJW/ACPoQGpir+1/GkgkRBK0l27+Ylf2Lf/BbfMgR8WQf/xE8YqAd3+0a13
+ CC2Ut1p9qtynYNpfxK48gf5lHrmOs7IG5z2/t8N39DrgyISWXPR6SuDoHK3MiqeGwBpdNTfaM=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-07-21_04,2025-07-21_02,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- suspectscore=0 spamscore=0 mlxlogscore=999 mlxscore=0 clxscore=1030
- adultscore=0 malwarescore=0 phishscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2507210130
-Received-SPF: pass client-ip=57.103.85.221;
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ clxscore=1030 suspectscore=0 mlxscore=0 adultscore=0 spamscore=0
+ malwarescore=0 bulkscore=0 mlxlogscore=710 classifier=spam adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2506270000 definitions=main-2507210138
+Received-SPF: pass client-ip=57.103.84.232;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,94 +84,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Hypervisor.framework for macOS and WHPX for Windows, the provided environment is a GICv3 without ITS.
+Linux zeroes LORC_EL1 on boot at EL2, without further interaction with FEAT_LOR afterwards.
 
-As such, support a GICv3 w/ GICv2m for that scenario.
+Stub out LORC_EL1 accesses as FEAT_LOR is a mandatory extension on Armv8.1+.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- hw/arm/virt-acpi-build.c | 4 +++-
- hw/arm/virt.c            | 8 +++++++-
- include/hw/arm/virt.h    | 2 ++
- 3 files changed, 12 insertions(+), 2 deletions(-)
+ target/arm/hvf/hvf.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index b01fc4f8ef..7fc8f8e6b8 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -848,7 +848,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-             build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
-             build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
-         }
--    } else {
-+    }
-+
-+    if (!vms->its && !vms->no_gicv2m_when_no_its_available) {
-         const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE;
- 
-         /* 5.2.12.16 GIC MSI Frame Structure */
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ef6be3660f..8af0ce95ba 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -854,7 +854,7 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
-                             redist_region_count);
- 
-         if (!kvm_irqchip_in_kernel()) {
--            if (vms->tcg_its) {
-+            if (vms->its && vms->tcg_its) {
-                 object_property_set_link(OBJECT(vms->gic), "sysmem",
-                                          OBJECT(mem), &error_fatal);
-                 qdev_prop_set_bit(vms->gic, "has-lpi", true);
-@@ -2402,6 +2402,8 @@ static void machvirt_init(MachineState *machine)
-     vms->ns_el2_virt_timer_irq = ns_el2_virt_timer_present() &&
-         !vmc->no_ns_el2_virt_timer_irq;
- 
-+    vms->no_gicv2m_when_no_its_available = vmc->no_gicv2m_when_no_its_available;
-+
-     fdt_add_timer_nodes(vms);
-     fdt_add_cpu_nodes(vms);
- 
-@@ -3410,6 +3412,7 @@ static void virt_instance_init(Object *obj)
-     vms->its = true;
-     /* Allow ITS emulation if the machine version supports it */
-     vms->tcg_its = !vmc->no_tcg_its;
-+    vms->no_gicv2m_when_no_its_available = false;
- 
-     /* Default disallows iommu instantiation */
-     vms->iommu = VIRT_IOMMU_NONE;
-@@ -3462,8 +3465,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(10, 1)
- 
- static void virt_machine_10_0_options(MachineClass *mc)
- {
-+    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-+
-     virt_machine_10_1_options(mc);
-     compat_props_add(mc->compat_props, hw_compat_10_0, hw_compat_10_0_len);
-+    vmc->no_gicv2m_when_no_its_available = true;
- }
- DEFINE_VIRT_MACHINE(10, 0)
- 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 365a28b082..15b8357394 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -131,6 +131,7 @@ struct VirtMachineClass {
-     bool no_cpu_topology;
-     bool no_tcg_lpa2;
-     bool no_ns_el2_virt_timer_irq;
-+    bool no_gicv2m_when_no_its_available;
-     bool no_nested_smmu;
- };
- 
-@@ -178,6 +179,7 @@ struct VirtMachineState {
-     char *oem_id;
-     char *oem_table_id;
-     bool ns_el2_virt_timer_irq;
-+    bool no_gicv2m_when_no_its_available;
-     CXLState cxl_devices_state;
- };
- 
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 4331a3386a..2730c9793d 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -186,6 +186,7 @@ void hvf_arm_init_debug(void)
+ #define SYSREG_OSLAR_EL1      SYSREG(2, 0, 1, 0, 4)
+ #define SYSREG_OSLSR_EL1      SYSREG(2, 0, 1, 1, 4)
+ #define SYSREG_OSDLR_EL1      SYSREG(2, 0, 1, 3, 4)
++#define SYSREG_LORC_EL1       SYSREG(3, 0, 10, 4, 3)
+ #define SYSREG_CNTPCT_EL0     SYSREG(3, 3, 14, 0, 1)
+ #define SYSREG_CNTP_CTL_EL0   SYSREG(3, 3, 14, 2, 1)
+ #define SYSREG_PMCR_EL0       SYSREG(3, 3, 9, 12, 0)
+@@ -1657,6 +1658,9 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+     case SYSREG_OSDLR_EL1:
+         /* Dummy register */
+         return 0;
++    case SYSREG_LORC_EL1:
++        /* Dummy register */
++        return 0;
+     case SYSREG_ICC_AP0R0_EL1:
+     case SYSREG_ICC_AP0R1_EL1:
+     case SYSREG_ICC_AP0R2_EL1:
 -- 
 2.39.5 (Apple Git-154)
 

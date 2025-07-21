@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6F3FC83F25
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 10:42:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED7FDC83F1A
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 12:41:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1udnyK-0001AO-1p; Mon, 21 Jul 2025 06:42:16 -0400
+	id 1udpow-0004a9-6a; Mon, 21 Jul 2025 08:40:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1udnxh-0000vf-JV
- for qemu-arm@nongnu.org; Mon, 21 Jul 2025 06:41:42 -0400
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ id 1udpoW-0003cZ-Qo
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 08:40:16 -0400
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1udnxf-00019y-56
- for qemu-arm@nongnu.org; Mon, 21 Jul 2025 06:41:36 -0400
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-7183fd8c4c7so44464977b3.3
- for <qemu-arm@nongnu.org>; Mon, 21 Jul 2025 03:41:34 -0700 (PDT)
+ id 1udpoU-0004g7-2r
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 08:40:16 -0400
+Received: by mail-yw1-x1136.google.com with SMTP id
+ 00721157ae682-70f94fe1e40so56450517b3.1
+ for <qemu-arm@nongnu.org>; Mon, 21 Jul 2025 05:40:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753094493; x=1753699293; darn=nongnu.org;
+ d=linaro.org; s=google; t=1753101612; x=1753706412; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Y+2r6LNE6tW9DE8SC5ADxypcwAmnesM6Ge6Ey+pgMtM=;
- b=WAh4Veen+jXStteaf4x+Ik5RNShWAruARhkdVpO4qerHoxlJjZIJwoyuc0AVnZ2eWN
- uh7d3k3d/qlFJ0yHGvTy92I3nc+eYUhXwZeEMIPUnXQ6cIMz9gAwUfZ1icYl1RLFmUOR
- FBP6UoIAruC7csAPM/W5YWo868BiwJzR0Iy1/npLC19A0l2N2ODSzKcI9sdhk/nxwyGq
- TIJ3Z5AVCc2J+sOtfgCF54xDr11dwU/jApg6iQXaW2hg0U06D1Hwftql4ELc8RfbxoXU
- XA107mxvIA28yN6i91g+chiZULrZOK/Ew18nlGoxa/R3V2DJ5jtUYOmyogcftP8Jucnk
- gXdg==
+ bh=Fx+D3l+UaSeLFO1hwQVc7g7MnZhlXcFCOV7Ah1Fo6Rc=;
+ b=RtmAmGUK4c//gLkPv0iQBKPYg/g+1+Tls3ZOmyc12IlvCbx+oJWDcbQE53sO80bVS8
+ diq0yIMR4knQGky1jtMIkmMwqG+aw+aJm+dAtnQ9rKPzaIaEkEmrftZrt69I2Np7RbnC
+ Kt82QNQTeKkPs8FgUWaxwYyCZJci1mbUjXX5hcwriO3uQtES/B5t1oqlfWlD3+ZNs0vE
+ T5BWoylo0YcywxTy9Sm+gNrN0rud/H9Ecu9p60xkl0nG6BReUV8gaHq+vXuYfaaDolRs
+ Mn/uT7xHsdmB+EYbBYvEG78C4oIzNteFHBxRQmnKjmLT0zkrdXvpiHyBTqRGw+Zbh2a7
+ bp0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753094493; x=1753699293;
+ d=1e100.net; s=20230601; t=1753101612; x=1753706412;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Y+2r6LNE6tW9DE8SC5ADxypcwAmnesM6Ge6Ey+pgMtM=;
- b=T/5kpt87L0euYQ6buvf4O9nBZJUNCk2BdDsl2TZQWdEurX7stkVpJBmqVveI+0Zvbe
- 07RthJx7FyDkHG7Lg3BKkcgCzZM6pXZL0MsbJm4zQIOG6MjlCUCC8h8+B815MPnZv0xY
- Xpz2pCyF9fIGLhIeAdaqCNnZAjX4ektpaMinNXiv3ySaUJf1dfVC221Hn3swQxbmYdPy
- M/P2PEa9QPG0q9/7pLG7sORg2ICJvTDn/6F6STyCrV7e3YdiAqTdpZKBksMtY7CPuE/O
- CVFwo7nCja/NEKcSVWqDQPfslqJwEaXTVP57UITOlMDSmc3JdDVmWR7VhlrUuNexW1vh
- FUIA==
+ bh=Fx+D3l+UaSeLFO1hwQVc7g7MnZhlXcFCOV7Ah1Fo6Rc=;
+ b=qjZTjXt+OrfNz/U8RNmHl8E3tTaYdHWj/hido1kGBxfUraQexNi4CcYKuEa7Gm82xB
+ RdshCify3SNpGPG4JR/Xvd7koyudOry5jkZ66IlL+0unmgXg8fLs8uEn8oDUrmkXH52N
+ gl4wU7J6UqzZD8o45R3cdUan5Fb38aLl7PgCnKhkfDGC4y7gV9nwlo7cYnVKOw9FOVZq
+ v36y8/Gs6gAD5Hd4ZabSqZLp2Cx/51a9is1A0Ia/EvocL11NYAv4UnhZWnzkIYp+hncE
+ X9RmbYoEUVvDIzlkXys/R2Y0GMGC0WJTJghnlTasCx6iiMj1ZClxeIUWy0W/k6ytXURN
+ QCmg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUh13QBrB/XgZ2mox5uYc3duYM7vB3n/YQUM/WcfC+FS6xTq9OIuc0a1OV9o2KE/SVAyvrRtW0Oew==@nongnu.org
-X-Gm-Message-State: AOJu0YyXODvywjz3cCvlfR0uqd3EFSpq+wMbY8MxSnOZRrzJm/E97bEj
- hoNsqTqbwmr0wjR9RtSXfuGypEqKRiEYxZnnJ35+xbgz1mkpCzEzvIECpJzNI0g/Jv3Z0i9tbSo
- niGWI0N2b2WOZnkiCkio+HcphUDVuga2wnQGDESVkS7FPLNM+Sce6
-X-Gm-Gg: ASbGncv0TkniZjVQkUizP9nWDNn9ydCYnUlxJFbQdR4wErg7BLRW2UX6uDU7lw4STeY
- cbhogmMHsXDcjHB9Ul/BY67uXC5VgwliflcNl+oF3kD7IB5pISiAjxOb9AKsz5L+Udv2+SaXz/p
- 82djBSNl9lCkLmLxdgMkT1g51caa6paDkBtwMcK3xB/JbIEaiM/hwrGyA8tGAjge6merCqOIIMv
- wUCn8gA
-X-Google-Smtp-Source: AGHT+IEs29TQvnEXT3kLb43asDqjzcesmuN9cgn533x9eRtZG9KEWYAroIzpkgV3HupkTPIxlM+CLUiHOGzhpijiZtM=
-X-Received: by 2002:a05:690c:23c2:b0:719:53fd:79aa with SMTP id
- 00721157ae682-71953fd7bc9mr142713137b3.22.1753094493183; Mon, 21 Jul 2025
- 03:41:33 -0700 (PDT)
+ AJvYcCVwGjnchcia8wF8gMh1aT0gfAcLGkcb4ptjYUDfRBr0KYZUig0WWRjEXlPXrVWzDIuATYpFfSVNgg==@nongnu.org
+X-Gm-Message-State: AOJu0YysxVEZSHj1CodRdwgu9OSUGDjpznpp2Mi1hwX/otUIypqkOmsm
+ vCpyIdnkLWPpJtbMtNgEUK97XioUnhbIQKEH8wilaacoS30YJnulHzQvWlvD0tjAJIAksznGqzr
+ X0cQsIbDIQG/0jTAEfD4FoxK1RTEJYPPimE3QlaWorA==
+X-Gm-Gg: ASbGnctb1YcFroekBxxE8Jywunib9F2LXVvT1V3sfAAF9rfqEmGMinPmqiFswDrS6Ye
+ 0FyyuOSF8whtoivQPobYO5AVXkclbmg/BOGmorU1eeIvxVDUcs9WX+hKebzx8PsjmgX1IwTv9H6
+ 5ZJcySb9hGodLeBIpqsrMJg1O2mHhHUp8eC2h07MGby0tPZeyR6FztsdqwMny4ZxEFU2mH/BBHS
+ G1wddiz
+X-Google-Smtp-Source: AGHT+IHJevQET7XJXhBkSvLqPk7DyBCQHZYlWaZzer6uYyUr850VWGHJH0TmMWmJliwbfdYc1Yos+OBgOV3nOYY8gN0=
+X-Received: by 2002:a05:690c:4442:b0:70d:fd6f:b151 with SMTP id
+ 00721157ae682-7184f7a071cmr190726317b3.11.1753101611878; Mon, 21 Jul 2025
+ 05:40:11 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250716172813.73405-1-philmd@linaro.org>
- <20250716172813.73405-4-philmd@linaro.org>
-In-Reply-To: <20250716172813.73405-4-philmd@linaro.org>
+In-Reply-To: <20250716172813.73405-1-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 21 Jul 2025 11:41:21 +0100
-X-Gm-Features: Ac12FXziqMPNmvRoaGEVCHceZysNoEU-vSgyXD0zuOxSduT7BdPUj4xtngA09vw
-Message-ID: <CAFEAcA88O1KpH4V1EPKZSJ1qzLgoP98EP=QrWn=v_M5r3Xyy+w@mail.gmail.com>
-Subject: Re: [PATCH-for-10.1 3/3] hw/arm/virt: Warn when HVF doesn't report
- IPA bit length
+Date: Mon, 21 Jul 2025 13:40:00 +0100
+X-Gm-Features: Ac12FXy0n4FBY3_CuQrcvs6E0l8ly649O1sjKkf_Q5yN2Byv5ZR4iVtMUBt9I-Q
+Message-ID: <CAFEAcA-nt-qeP5u=WyKS9pTWrpkDMTBPF241xKVsr+Q-noWtAw@mail.gmail.com>
+Subject: Re: [PATCH-for-10.1 0/3] accel/hvf: Do not abort in
+ hvf_arm_get_*_ipa_bit_size()
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>,
  qemu-arm@nongnu.org, 
@@ -77,15 +76,15 @@ Cc: qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>,
  Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,49 +103,19 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On Wed, 16 Jul 2025 at 18:28, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
 g> wrote:
 >
-> Emit a warning when HVF doesn't return the IPA bit length
-> and return -1 as "this accelerator is not usable", allowing
-> QEMU to try with the next one (when using '-accel hvf:tcg').
+> Have get_physical_address_range() return when HVF is not
+> usable, allowing to try another accelerator if requested
+> with '-accel hvf:tcg', reported here:
+> https://gitlab.com/qemu-project/qemu/-/issues/2981
 >
-> Reported-by: Ivan Krasilnikov
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2981
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  hw/arm/virt.c | 8 ++++++--
->  1 file changed, 6 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index ef6be3660f5..062812bf252 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -3149,8 +3149,12 @@ static int virt_hvf_get_physical_address_range(Mac=
-hineState *ms)
->  {
->      VirtMachineState *vms =3D VIRT_MACHINE(ms);
->
-> -    int default_ipa_size =3D hvf_arm_get_default_ipa_bit_size();
-> -    int max_ipa_size =3D hvf_arm_get_max_ipa_bit_size();
-> +    uint32_t default_ipa_size =3D hvf_arm_get_default_ipa_bit_size();
-> +    uint32_t max_ipa_size =3D hvf_arm_get_max_ipa_bit_size();
-> +    if (!default_ipa_size || !max_ipa_size) {
-> +        warn_report("HVF didn't report IPA bit length");
-> +        return -1;
-> +    }
+> Philippe Mathieu-Daud=C3=A9 (3):
+>   accel/hvf: Display executable bit as 'X'
+>   accel/hvf: Do not abort in hvf_arm_get_*_ipa_bit_size()
+>   hw/arm/virt: Warn when HVF doesn't report IPA bit length
 
-Even if we avoid blowing up in this function, won't
-hvf_accel_init() immediately fail in hvf_arch_vm_create()
-and either exit(1) or assert() depending on what error
-code it got back ?
 
-It's unfortunate that there's no convenient way we can
-check "hvf is basically going to work" in hvf_accel_init()
-before we get into the machine-specific hook. "HVF didn't
-report IPA bit length" isn't really a very good message
-to report for "HVF isn't going to work at all here".
-
-(More generally, I think the hvf code rather overuses
-assert_hvf_ok(). I don't think the KVM code uses asserts
-for error checking like this.)
+I've applied patch 1 to target-arm.next, since it's not
+really related to the patch 2 and 3 bugfix.
 
 thanks
 -- PMM

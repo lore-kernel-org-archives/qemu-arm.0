@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 632A0C83F1A
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 15:30:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F1F6C83F25
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 16:22:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1udsS6-0000RZ-DM; Mon, 21 Jul 2025 11:29:18 -0400
+	id 1udtGz-0000iN-Or; Mon, 21 Jul 2025 12:21:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1udsS1-0000Jv-AS
- for qemu-arm@nongnu.org; Mon, 21 Jul 2025 11:29:14 -0400
-Received: from p-east3-cluster7-host3-snip4-10.eps.apple.com ([57.103.84.161]
- helo=outbound.qs.icloud.com)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1udtF5-0005xv-Kn
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 12:20:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1udsRy-0008DQ-Em
- for qemu-arm@nongnu.org; Mon, 21 Jul 2025 11:29:13 -0400
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-7 (Postfix) with ESMTPS id
- 8B6B91800615; Mon, 21 Jul 2025 15:29:07 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=jUuG2nWJYMdDKWpXlx5PRoGJVPTWdBjLgl1UQZhKdl0=;
- h=From:To:Subject:Date:Message-Id:MIME-Version:x-icloud-hme;
- b=elo4QUoUzwHTIK3J9o6jjQHaXjZtO6Vp1fadREoWwCNdL/UPDbOwXn1+ExZJG4KYP5I6Z4KDRJKly2kaEwlNcAU4jWGMO+XPnmySLb9z2TzOx8/P8m/VFh33NUDVJ21Xf/Fty3a+vXp5iEzrTtCX+p3Y3BgN3XRU2gGvc7IQ5ODPKJAYcBvqbJwKROAfQPboDzcrHAMMWxM1ddoPyQZVs9IivMY7JQuiZOX3kFzFfRPQ6SYaPCCJKnSQxgKd6ugzgc6Jviex6C4P6D/iGG9n7aaX3PNbdYtySFsKn0vS+dw3n41RJlb1J6wjQ3Sd5Rr8lwmx5fc9E0W72dAHZEq1MA==
-X-Client-IP: 46.189.47.18
-Received: from localhost.localdomain (qs-asmtp-me-k8s.p00.prod.me.com
- [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-7 (Postfix) with ESMTPSA id
- C238218000B7; Mon, 21 Jul 2025 15:29:05 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-Cc: Alexander Graf <agraf@csgraf.de>, Mads Ynddal <mads@ynddal.dk>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH 1/2] target/arm: hvf: add timer frequency note
-Date: Mon, 21 Jul 2025 17:29:01 +0200
-Message-Id: <20250721152902.38671-2-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.39.5 (Apple Git-154)
-In-Reply-To: <20250721152902.38671-1-mohamed@unpredictable.fr>
-References: <20250721152902.38671-1-mohamed@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1udtF0-0000e0-JX
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 12:19:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1753114787;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=SvOFlCZsGOepa3TDlS91hN3f1Vv0H5iFYz4c6XJmP5I=;
+ b=XqV0XGHb7x48WVRXJurSIVWn6uyNyz0wgt2rvZYsq3WbBV50GqWXWbyYD2efuijCQoL6Dc
+ 7+9CkGdK8HFCw9REl299MB+s038F8N+TwHQ/Rotv77Ga9nKRNgye4RE+TxbRl3AVduFZZQ
+ p/h448WPwyu06eya4raw0/4unFiBauY=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-527-QX-10pagNbO5Mww3nAJPUw-1; Mon,
+ 21 Jul 2025 12:19:45 -0400
+X-MC-Unique: QX-10pagNbO5Mww3nAJPUw-1
+X-Mimecast-MFC-AGG-ID: QX-10pagNbO5Mww3nAJPUw_1753114785
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 953E11800291; Mon, 21 Jul 2025 16:19:44 +0000 (UTC)
+Received: from gondolin.str.redhat.com (pixel-6a.str.redhat.com
+ [10.33.192.205])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 933DC30001A4; Mon, 21 Jul 2025 16:19:42 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Cornelia Huck <cohuck@redhat.com>, Eric Auger <eric.auger@redhat.com>
+Subject: [PATCH RFC] arm/kvm: report registers we failed to set
+Date: Mon, 21 Jul 2025 18:19:32 +0200
+Message-ID: <20250721161932.548668-1-cohuck@redhat.com>
 MIME-Version: 1.0
+Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: _xWChcKvkEqUFlZpnK8SVXzVKUW_EsGE
-X-Proofpoint-GUID: _xWChcKvkEqUFlZpnK8SVXzVKUW_EsGE
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzIxMDEzOCBTYWx0ZWRfX2bKfgI5R8NHw
- 4pbLhq9FrKC1jegtJ/OuyUKw7+fFIERFNdmyoAtsMUFzHA5gLZEd+2/ZIqTAzjEVx8wmRfc1VeU
- E1UiptYExtcYg6l2rPRkvG7nwhBkEkzh6zSZEBA3GyZ4Fflkjzx1gzKCk4oG0pOkIcyi+8NJ+mU
- vUi0MfI13H2W22uWgLXdE1HTMNI6Bm5TEflFKMI9TWk+/Wr0pmwZYI7pdKnFEkKmdOOzNtLSYk4
- 68E0TzW+A03j4rPMYCjf78VyiyP4gQ+6awCetFLezqw9uU68EAzJL/+YKGgWvs+S3iTC+9Lko=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-07-21_04,2025-07-21_02,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- bulkscore=0 clxscore=1030 suspectscore=0 mlxscore=0
- mlxlogscore=816
- spamscore=0 phishscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2507210138
-Received-SPF: pass client-ip=57.103.84.161;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.926,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,34 +82,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Apple M3 and later, the timer frequency within apps and VM guests are different from each other.
+If we fail migration because of a mismatch of some registers between
+source and destination, the error message is not very informative:
 
-Note that app binaries compiled with older SDKs continue to retain a non-1 GHz timer frequency on Apple M3/M4.
+qemu-system-aarch64: error while loading state for instance 0x0 ofdevice 'cpu'
+qemu-system-aarch64: Failed to put registers after init: Invalid argument
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+At least try to give the user a hint which registers had a problem,
+even if they cannot really do anything about it right now.
+
+Sample output:
+
+Could not set register op0:3 op1:0 crn:0 crm:0 op2:0 to c00fac31 (is 413fd0c1)
+
+We could be even more helpful once we support writable ID registers,
+at which point the user might actually be able to configure something
+that is migratable.
+
+Suggested-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 ---
- target/arm/hvf/hvf.c | 7 +++++++
- 1 file changed, 7 insertions(+)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index c9cfcdc08b..4331a3386a 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1018,6 +1018,13 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-     int i;
+Notes:
+- This currently prints the list of failing registers for every call to
+  write_list_to_kvmstate(), in particular for every cpu -- we might want
+  to reduce that.
+- If the macros aren't too ugly (or we manage to improve them), there
+  might be other places where they could be useful.
+
+---
+ target/arm/kvm.c | 53 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 53 insertions(+)
+
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 667234485547..ac6502e0c78f 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -900,6 +900,24 @@ bool write_kvmstate_to_list(ARMCPU *cpu)
+     return ok;
+ }
  
-     env->aarch64 = true;
-+    /*
-+     * TODO: This does not correspond to the exposed generic
-+     * timer frequency to the guest on Apple M3/M4.
-+     * This is due to a scaled 1GHz counter being exposed
-+     * to applications built with newer SDKs when running
-+     * on that silicon, while VMs get an unscaled counter.
-+     */
-     asm volatile("mrs %0, cntfrq_el0" : "=r"(arm_cpu->gt_cntfrq_hz));
- 
-     /* Allocate enough space for our sysreg sync */
++/* pretty-print a KVM register */
++#define CP_REG_ARM64_SYSREG_OP(_reg, _op)                       \
++    ((uint8_t)((_reg & CP_REG_ARM64_SYSREG_ ## _op ## _MASK) >> \
++               CP_REG_ARM64_SYSREG_ ## _op ## _SHIFT))
++
++#define PRI_CP_REG_ARM64_SYSREG(_reg)                    \
++    ({                                                   \
++        char _out[32];                                   \
++        snprintf(_out, sizeof(_out),                     \
++                 "op0:%d op1:%d crn:%d crm:%d op2:%d",   \
++                 CP_REG_ARM64_SYSREG_OP(_reg, OP0),      \
++                 CP_REG_ARM64_SYSREG_OP(_reg, OP1),      \
++                 CP_REG_ARM64_SYSREG_OP(_reg, CRN),      \
++                 CP_REG_ARM64_SYSREG_OP(_reg, CRM),      \
++                 CP_REG_ARM64_SYSREG_OP(_reg, OP2));     \
++        _out;                                            \
++    })
++
+ bool write_list_to_kvmstate(ARMCPU *cpu, int level)
+ {
+     CPUState *cs = CPU(cpu);
+@@ -932,6 +950,41 @@ bool write_list_to_kvmstate(ARMCPU *cpu, int level)
+              * a different value from what it actually contains".
+              */
+             ok = false;
++            switch (ret) {
++            case -ENOENT:
++                error_report("Could not set register %s: unknown to KVM",
++                             PRI_CP_REG_ARM64_SYSREG(regidx));
++                break;
++            case -EINVAL:
++                if ((regidx & KVM_REG_SIZE_MASK) == KVM_REG_SIZE_U32) {
++                    if (!kvm_get_one_reg(cs, regidx, &v32)) {
++                        error_report("Could not set register %s to %x (is %x)",
++                                     PRI_CP_REG_ARM64_SYSREG(regidx),
++                                     (uint32_t)cpu->cpreg_values[i], v32);
++                    } else {
++                        error_report("Could not set register %s to %x",
++                                     PRI_CP_REG_ARM64_SYSREG(regidx),
++                                     (uint32_t)cpu->cpreg_values[i]);
++                    }
++                } else /* U64 */ {
++                    uint64_t v64;
++
++                    if (!kvm_get_one_reg(cs, regidx, &v64)) {
++                        error_report("Could not set register %s to %lx (is %lx)",
++                                     PRI_CP_REG_ARM64_SYSREG(regidx),
++                                     cpu->cpreg_values[i], v64);
++                    } else {
++                        error_report("Could not set register %s to %lx",
++                                     PRI_CP_REG_ARM64_SYSREG(regidx),
++                                     cpu->cpreg_values[i]);
++                    }
++                }
++                break;
++            default:
++                error_report("Could not set register %s: %s",
++                             PRI_CP_REG_ARM64_SYSREG(regidx),
++                             strerror(-ret));
++            }
+         }
+     }
+     return ok;
 -- 
-2.39.5 (Apple Git-154)
+2.50.0
 
 

@@ -4,86 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED7FDC83F1A
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 12:41:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD2E6C83F25
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 12:55:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1udpow-0004a9-6a; Mon, 21 Jul 2025 08:40:42 -0400
+	id 1udq3O-00030D-T1; Mon, 21 Jul 2025 08:55:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1udpoW-0003cZ-Qo
- for qemu-arm@nongnu.org; Mon, 21 Jul 2025 08:40:16 -0400
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1udq2m-0007QD-Bv
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 08:55:01 -0400
+Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1udpoU-0004g7-2r
- for qemu-arm@nongnu.org; Mon, 21 Jul 2025 08:40:16 -0400
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-70f94fe1e40so56450517b3.1
- for <qemu-arm@nongnu.org>; Mon, 21 Jul 2025 05:40:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753101612; x=1753706412; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Fx+D3l+UaSeLFO1hwQVc7g7MnZhlXcFCOV7Ah1Fo6Rc=;
- b=RtmAmGUK4c//gLkPv0iQBKPYg/g+1+Tls3ZOmyc12IlvCbx+oJWDcbQE53sO80bVS8
- diq0yIMR4knQGky1jtMIkmMwqG+aw+aJm+dAtnQ9rKPzaIaEkEmrftZrt69I2Np7RbnC
- Kt82QNQTeKkPs8FgUWaxwYyCZJci1mbUjXX5hcwriO3uQtES/B5t1oqlfWlD3+ZNs0vE
- T5BWoylo0YcywxTy9Sm+gNrN0rud/H9Ecu9p60xkl0nG6BReUV8gaHq+vXuYfaaDolRs
- Mn/uT7xHsdmB+EYbBYvEG78C4oIzNteFHBxRQmnKjmLT0zkrdXvpiHyBTqRGw+Zbh2a7
- bp0w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753101612; x=1753706412;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Fx+D3l+UaSeLFO1hwQVc7g7MnZhlXcFCOV7Ah1Fo6Rc=;
- b=qjZTjXt+OrfNz/U8RNmHl8E3tTaYdHWj/hido1kGBxfUraQexNi4CcYKuEa7Gm82xB
- RdshCify3SNpGPG4JR/Xvd7koyudOry5jkZ66IlL+0unmgXg8fLs8uEn8oDUrmkXH52N
- gl4wU7J6UqzZD8o45R3cdUan5Fb38aLl7PgCnKhkfDGC4y7gV9nwlo7cYnVKOw9FOVZq
- v36y8/Gs6gAD5Hd4ZabSqZLp2Cx/51a9is1A0Ia/EvocL11NYAv4UnhZWnzkIYp+hncE
- X9RmbYoEUVvDIzlkXys/R2Y0GMGC0WJTJghnlTasCx6iiMj1ZClxeIUWy0W/k6ytXURN
- QCmg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVwGjnchcia8wF8gMh1aT0gfAcLGkcb4ptjYUDfRBr0KYZUig0WWRjEXlPXrVWzDIuATYpFfSVNgg==@nongnu.org
-X-Gm-Message-State: AOJu0YysxVEZSHj1CodRdwgu9OSUGDjpznpp2Mi1hwX/otUIypqkOmsm
- vCpyIdnkLWPpJtbMtNgEUK97XioUnhbIQKEH8wilaacoS30YJnulHzQvWlvD0tjAJIAksznGqzr
- X0cQsIbDIQG/0jTAEfD4FoxK1RTEJYPPimE3QlaWorA==
-X-Gm-Gg: ASbGnctb1YcFroekBxxE8Jywunib9F2LXVvT1V3sfAAF9rfqEmGMinPmqiFswDrS6Ye
- 0FyyuOSF8whtoivQPobYO5AVXkclbmg/BOGmorU1eeIvxVDUcs9WX+hKebzx8PsjmgX1IwTv9H6
- 5ZJcySb9hGodLeBIpqsrMJg1O2mHhHUp8eC2h07MGby0tPZeyR6FztsdqwMny4ZxEFU2mH/BBHS
- G1wddiz
-X-Google-Smtp-Source: AGHT+IHJevQET7XJXhBkSvLqPk7DyBCQHZYlWaZzer6uYyUr850VWGHJH0TmMWmJliwbfdYc1Yos+OBgOV3nOYY8gN0=
-X-Received: by 2002:a05:690c:4442:b0:70d:fd6f:b151 with SMTP id
- 00721157ae682-7184f7a071cmr190726317b3.11.1753101611878; Mon, 21 Jul 2025
- 05:40:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1udq2k-0006rv-8N
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 08:55:00 -0400
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
+ [IPv6:2a07:de40:b281:104:10:150:64:97])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id 0974521CC5;
+ Mon, 21 Jul 2025 12:54:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1753102493; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Li2wc439Qz7SN0gZ5/PNmCJABCRSBorqD78A2ZMk3QM=;
+ b=WK/BhUvQj3C5aTzElzVUv36uN6ofC/1tDadEloNnX0v1EisGagBtbsg3+oHlMQ6CQiQfje
+ 5nrd3emyQjp/Hcx+b+uy2eDG2Lm2WO6LlGPAPu2AE+A957vpZGZDe/IkHmX3SB/7SA7YeR
+ A+VcooJ1iTVxftLC8wDqMM7HuzTKeM0=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1753102493;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Li2wc439Qz7SN0gZ5/PNmCJABCRSBorqD78A2ZMk3QM=;
+ b=YWdkhSLvEwOQeWH0Bvv5bM4Q2X9s8lQJITfKZqncqKR4vPH0aTfkI6ll6OWWhlPBGyAAVq
+ kqmh5ofIFnXq99BA==
+Authentication-Results: smtp-out1.suse.de;
+ dkim=pass header.d=suse.de header.s=susede2_rsa header.b="WK/BhUvQ";
+ dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=YWdkhSLv
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1753102493; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Li2wc439Qz7SN0gZ5/PNmCJABCRSBorqD78A2ZMk3QM=;
+ b=WK/BhUvQj3C5aTzElzVUv36uN6ofC/1tDadEloNnX0v1EisGagBtbsg3+oHlMQ6CQiQfje
+ 5nrd3emyQjp/Hcx+b+uy2eDG2Lm2WO6LlGPAPu2AE+A957vpZGZDe/IkHmX3SB/7SA7YeR
+ A+VcooJ1iTVxftLC8wDqMM7HuzTKeM0=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1753102493;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Li2wc439Qz7SN0gZ5/PNmCJABCRSBorqD78A2ZMk3QM=;
+ b=YWdkhSLvEwOQeWH0Bvv5bM4Q2X9s8lQJITfKZqncqKR4vPH0aTfkI6ll6OWWhlPBGyAAVq
+ kqmh5ofIFnXq99BA==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 77F4A136A8;
+ Mon, 21 Jul 2025 12:54:52 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+ by imap1.dmz-prg2.suse.org with ESMTPSA id kh29DZw4fmiqSAAAD6G6ig
+ (envelope-from <farosas@suse.de>); Mon, 21 Jul 2025 12:54:52 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, Peter Xu
+ <peterx@redhat.com>
+Subject: Re: migration-compat-aarch64 CI job is failing
+In-Reply-To: <ce91740a-b22b-4aa1-b7c6-674dfcd3e2da@redhat.com>
+References: <ce91740a-b22b-4aa1-b7c6-674dfcd3e2da@redhat.com>
+Date: Mon, 21 Jul 2025 09:54:49 -0300
+Message-ID: <87o6tdln52.fsf@suse.de>
 MIME-Version: 1.0
-References: <20250716172813.73405-1-philmd@linaro.org>
-In-Reply-To: <20250716172813.73405-1-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 21 Jul 2025 13:40:00 +0100
-X-Gm-Features: Ac12FXy0n4FBY3_CuQrcvs6E0l8ly649O1sjKkf_Q5yN2Byv5ZR4iVtMUBt9I-Q
-Message-ID: <CAFEAcA-nt-qeP5u=WyKS9pTWrpkDMTBPF241xKVsr+Q-noWtAw@mail.gmail.com>
-Subject: Re: [PATCH-for-10.1 0/3] accel/hvf: Do not abort in
- hvf_arm_get_*_ipa_bit_size()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>,
- qemu-arm@nongnu.org, 
- Roman Bolshakov <rbolshakov@ddn.com>, Mads Ynddal <mads@ynddal.dk>, 
- Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
+Content-Type: text/plain
+X-Spamd-Result: default: False [-4.51 / 50.00]; BAYES_HAM(-3.00)[99.99%];
+ NEURAL_HAM_LONG(-1.00)[-1.000];
+ R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
+ MX_GOOD(-0.01)[]; RCVD_VIA_SMTP_AUTH(0.00)[];
+ MIME_TRACE(0.00)[0:+]; MID_RHS_MATCH_FROM(0.00)[];
+ MISSING_XM_UA(0.00)[]; FUZZY_RATELIMITED(0.00)[rspamd.com];
+ ARC_NA(0.00)[]; RCVD_TLS_ALL(0.00)[];
+ DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ RCVD_COUNT_TWO(0.00)[2]; FROM_EQ_ENVFROM(0.00)[];
+ FROM_HAS_DN(0.00)[]; RCPT_COUNT_THREE(0.00)[3];
+ DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns,suse.de:mid,suse.de:dkim];
+ TO_DN_ALL(0.00)[]; TO_MATCH_ENVRCPT_ALL(0.00)[];
+ URIBL_BLOCKED(0.00)[gitlab.com:url,imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns,suse.de:mid,suse.de:dkim];
+ DKIM_TRACE(0.00)[suse.de:+]
+X-Rspamd-Queue-Id: 0974521CC5
+X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
+X-Rspamd-Action: no action
+Received-SPF: pass client-ip=2a07:de40:b251:101:10:150:64:1;
+ envelope-from=farosas@suse.de; helo=smtp-out1.suse.de
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -100,23 +120,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 16 Jul 2025 at 18:28, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
+Thomas Huth <thuth@redhat.com> writes:
+
+>   Hi,
 >
-> Have get_physical_address_range() return when HVF is not
-> usable, allowing to try another accelerator if requested
-> with '-accel hvf:tcg', reported here:
-> https://gitlab.com/qemu-project/qemu/-/issues/2981
+> I just ran the migration-compat-aarch64 CI job manually, but it is 
+> apparently (still?) failing:
 >
-> Philippe Mathieu-Daud=C3=A9 (3):
->   accel/hvf: Display executable bit as 'X'
->   accel/hvf: Do not abort in hvf_arm_get_*_ipa_bit_size()
->   hw/arm/virt: Warn when HVF doesn't report IPA bit length
+>   https://gitlab.com/thuth/qemu/-/jobs/10751473092
+>
 
+Hm.. I shouldn't fail _like that_. I'll take a look.
 
-I've applied patch 1 to target-arm.next, since it's not
-really related to the patch 2 and 3 bugfix.
+> I'm not sure whether this job ever worked, is someone still looking into 
+> this? If this is not supposed to work and nobody is working on it, could we 
+> please remove it from the CI to avoid confusion?
+>
 
-thanks
--- PMM
+The issue was running the test across various setups, TCG, KVM, x86
+host, aarch64 host. There was some combination that would break and we
+decided to wait for development in target/arm that would provide a
+stable cpu definition across TCG and KVM. Or so I remember... I couldn't
+find the thread just now.
+
+I'll figure it out.
+
+Thank you for asking, we shouldn't leave it like that indefinitely.
+
+>   Thanks,
+>    Thomas
 

@@ -4,73 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77506C83F25
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 10:21:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64963C83F1A
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 10:24:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1udndg-00071q-H4; Mon, 21 Jul 2025 06:20:56 -0400
+	id 1udnhE-0002oi-5J; Mon, 21 Jul 2025 06:24:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1udndd-0006yk-G3
- for qemu-arm@nongnu.org; Mon, 21 Jul 2025 06:20:53 -0400
-Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
+ id 1udnh0-0002d4-58
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 06:24:26 -0400
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1udndb-0006w8-AX
- for qemu-arm@nongnu.org; Mon, 21 Jul 2025 06:20:53 -0400
-Received: by mail-yw1-x112a.google.com with SMTP id
- 00721157ae682-718409593b9so41707877b3.3
- for <qemu-arm@nongnu.org>; Mon, 21 Jul 2025 03:20:50 -0700 (PDT)
+ id 1udngu-0007D1-Pm
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 06:24:20 -0400
+Received: by mail-yw1-x112d.google.com with SMTP id
+ 00721157ae682-708d90aa8f9so37101957b3.3
+ for <qemu-arm@nongnu.org>; Mon, 21 Jul 2025 03:24:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753093249; x=1753698049; darn=nongnu.org;
+ d=linaro.org; s=google; t=1753093454; x=1753698254; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=2P+qLiv05cnvssuW4eCw8tGUsEcJd5QTQNA1qCHuACo=;
- b=bBb2Ssf3aphGVc18bH/BiNKL1pYdbssvlY5MnMfWr1MtkoWb9V2NiDwph+eQ19Pt7l
- nKZCda/IuoEGVHTp5qBhU6LVVBRiLUChtpdaYokg8Gd6HNaqtcO5pgDCOD1MSFczzZ85
- IqrAG1yCQ5g5nX/qDfTfIEAKUX8vJGBfMPWPLJv74DCZAE9qxaA0GHYEx0oqvoVAQ5Ab
- ghLsEjrksuXdA2yHSQPOwkYRtOS96TCmeBySVYFNvqbIJi23jrMF04tHrp6lJD9KdaBm
- XnL6N3TOZNEfeyHZDGk7P4QwAGaeWJprca2zyImWhwg95sdVXokYA9rBAveKnLD7RfPi
- NNng==
+ bh=GJ6uqOViAPbOJLlHUrS3N+RdrRHODubV68Db/kn3ld0=;
+ b=sveU0Pe9gUrRU16dSwQzqDYaxAZdJb5rKIB9mCXl/mgl0guc92qfk10mscZlu1r+UH
+ fOFyBH6PYpNebBnzaYRtK4Exzqavu0f2UgsGNkyLVuGJVguurlq2pM6e0lg5IknE793u
+ 3ffdKP2OvqIrmI+xpZp6xr4FlpzvC0dzWPY7rNG/fmz25vDNwWQJ6YvzsftkaybNxbHi
+ 5fZrn27ppxk2LfP2KI87qYYoY67SAURAzBMFY7rFMO9+AOj8cLTLIOv4bDN5larJHNtY
+ 102NlRR+kK0xEWTpVsyoF7IxUQsYuMd4zIf908vZ8klUBTjemCtl8sMXp0GTjlqzYqdd
+ Wh9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753093249; x=1753698049;
+ d=1e100.net; s=20230601; t=1753093454; x=1753698254;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=2P+qLiv05cnvssuW4eCw8tGUsEcJd5QTQNA1qCHuACo=;
- b=v9K53eFx6lOCaP6XQfnPDTf+KkVccrHa/JW7qWxCh7Lg2bxTNBZbk8/v63xBFpk0Eb
- fm/sKU9IwyCEp/DLn0JXlPPwdNwD1JHeUr0hWKLyFqh2nA2P6MiVW/L9s+oWt6mm7AbC
- dSs9WZ5R0rWEzhjlHRMTer+zzh3BD+RJeqJMbbgfRIyEAAFRzIhhBBKDPdixHQU6JIfN
- phsufrH6tH1xbBMz6tejREmGJ2mosXtdpzf2OFWUGPIMbQIZmWN+FzRN8KK3MBsuAemY
- lpxsOurdE5D2e2d8NfG7oeWcitOc8CU9seozKA0FDtpXeQZLjjlutcCEHIu2hP/YsYen
- QPQQ==
-X-Gm-Message-State: AOJu0YwRj0oz5NQP32l88nz58L860o7E+wZDGdbvciSCAQvw2AU0hlu4
- ctu9BivP01gW708rPD2EfhMOqLj2rtDA8IfId+KAjHPDbIj+YrZjuTskFQ8SHF/q4z25bkVt51a
- BQbBQyVSTRwZuXm52DsIPQANZCCR5UtzS2oHYZlZJpA==
-X-Gm-Gg: ASbGncuEQdgtHVNSQLQzLYBD1Kj+2Oh1483cDME/LBRTW2aoWsm6OQCLRRprIMk2HJe
- Ub5j4ISjSIF75LEyyE6QLGWyEYSpEYitphCsRinESkpqKELhfbx9Je5PRaXElaqxoJa79xSRRJY
- U5x2+iiMP83MSvlT2LZfgwge1yyKQ135r/UMwFRldPpT8TWk5moDb1Ompk0yvEp5EHvjTK+/F/y
- hhE7ued
-X-Google-Smtp-Source: AGHT+IFjHqkbWecQJ449Vlj0JfptaVmkGwDhLyEaWVI9yAZ18vLUd8z6Jsq7YpTFZ/iTAPH1IOCJ51gxePwb3xMIZiY=
-X-Received: by 2002:a05:690c:3703:b0:70c:a854:8384 with SMTP id
- 00721157ae682-719521a381cmr113637457b3.11.1753093249508; Mon, 21 Jul 2025
- 03:20:49 -0700 (PDT)
+ bh=GJ6uqOViAPbOJLlHUrS3N+RdrRHODubV68Db/kn3ld0=;
+ b=SIIgqrU3a4Fu9XflM8c0GcsJ5+bcugayYj2HVWW5m1bhTqUXF6uO/Mw5oTfOnetELV
+ ORls0tVwFdZEdfN7BTD0cW8g4e8yWpAnbXGnp4yqn2t1L93vegqrfgLCkurk04fxciRe
+ eKSzo19iLc660ra0IWy03fqKEmAASo1PyWJqYYvwPfeV/Ksq/c1rhfm9xIAvGaUp4KTn
+ 34ceWLmkKuilZ/2IE4DGdereNUtfC9B+U44HH9J9dWYmmqVeMEA9FSpr2z0YKH9eTxHY
+ b/B+gYrwgxYcZPfgPo5jETXOnAny8Fzh361IxPaba6ZeYWPczsTtb01xQPvkfJVxUlb8
+ +RFQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVPIBf28Ywn6Pf1+0DATYpbHxsZcnNsHcrtrDIT9Lx+8oUOY6WbcbECSS82qOqtqPmTE0jf7We4hQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yw5+IhkHCPbYOE0emPnvYeZG/i6P+l5WPDFDap9ROseBqbSrzLQ
+ O8Kj6JPpbh+TiZpbLmddAekIfyMp4+5Q/mXZXqAmHc1CfnF4RgDVmBYSgOtECzBDDiIVGlWwXdB
+ ra9U/pK+44ZSUI1p+AupuLannlq7d4YxNHDru2pGMOw==
+X-Gm-Gg: ASbGncuAS3NA66pbxVCYuXD+h++bHYAO7TowZJ/eodIWY8FMPS9Kbr7Ji7XYOS7HaMq
+ ByeY0Xwc4vM6+DbW+O/h4RmRndqnUGaSL1J/Z53dUpKikZMv0grDyHMjmRiCRNTFfBch3QMsWKf
+ gVO5vjAkYO8+K1natz2eEOOzcrbbUqgXpoy9B52tKT+QCpbExd/BVlOoSlQ4EwsR5x3aQmaSzcG
+ 7d+xtLwnEjYniiWNlQ=
+X-Google-Smtp-Source: AGHT+IEgwaVzG4dA2EqTWbfV2LWgTRz4F7pmlf7dT7+yvuBFv5XSMGWd/iwIQv7MDlUcQs0GjFDnQTGMdJ5kXsWNNnI=
+X-Received: by 2002:a05:690c:708a:b0:6f9:7920:e813 with SMTP id
+ 00721157ae682-71834f35972mr257448697b3.4.1753093454129; Mon, 21 Jul 2025
+ 03:24:14 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250714160139.10404-1-zenghui.yu@linux.dev>
-In-Reply-To: <20250714160139.10404-1-zenghui.yu@linux.dev>
+References: <1752689274-233526-1-git-send-email-steven.sistare@oracle.com>
+In-Reply-To: <1752689274-233526-1-git-send-email-steven.sistare@oracle.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 21 Jul 2025 11:20:38 +0100
-X-Gm-Features: Ac12FXxUnKM8-lSzqXHCTPcZvdgIZ6_qDIiv1MjX5fd2v2FOC3tFqcnk4jBIp_U
-Message-ID: <CAFEAcA_iFDX7dmodE5WfVOov77YXVOk4tcJuE67zKVwQQCaBdQ@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] hvf: arm: two small GIC sysreg emulation fixes
-To: Zenghui Yu <zenghui.yu@linux.dev>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, agraf@csgraf.de, 
- mads@ynddal.dk
+Date: Mon, 21 Jul 2025 11:24:02 +0100
+X-Gm-Features: Ac12FXyJSZl5bbScTOPgx7crSn9ufYk-18PhO6bLLQGobQw11xFUK9qOhuNGDVc
+Message-ID: <CAFEAcA8P4H7n=uXe3qredxVMwB4QtDfZtVyuuTWBLwa6enGR3g@mail.gmail.com>
+Subject: Re: [PATCH V2 1/1] hw/intc/arm_gicv3_kvm: preserve pending interrupts
+ during cpr
+To: Steve Sistare <steven.sistare@oracle.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Cedric Le Goater <clg@redhat.com>, Zhenzhong Duan <zhenzhong.duan@intel.com>, 
+ Alex Williamson <alex.williamson@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -93,18 +97,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 14 Jul 2025 at 17:01, Zenghui Yu <zenghui.yu@linux.dev> wrote:
+On Wed, 16 Jul 2025 at 19:07, Steve Sistare <steven.sistare@oracle.com> wrote:
 >
-> * From v1 [1]:
->   - add patch #1, as suggested by Peter
+> Close a race condition that causes cpr-transfer to lose VFIO
+> interrupts on ARM.
 >
-> [1] https://lore.kernel.org/r/20250315132030.95209-1-zenghui.yu@linux.dev
+> CPR stops VCPUs but does not disable VFIO interrupts, which may continue
+> to arrive throughout the transition to new QEMU.
 >
-> Zenghui Yu (2):
->   hvf: arm: Add permission check in GIC sysreg handlers
->   hvf: arm: Emulate ICC_RPR_EL1 accesses properly
+> CPR calls kvm_irqchip_remove_irqfd_notifier_gsi in old QEMU to force
+> future interrupts to the producer eventfd, where they are preserved.
+> Old QEMU then destroys the old KVM instance.  However, interrupts may
+> already be pending in KVM state.  To preserve them, call ioctl
+> KVM_DEV_ARM_VGIC_SAVE_PENDING_TABLES to flush them to guest RAM, where
+> they will be picked up when the new KVM+VCPU instance is created.
+>
+> Signed-off-by: Steve Sistare <steven.sistare@oracle.com>
 
-Applied to target-arm.next for 10.1, thanks.
+> +static int kvm_arm_gicv3_notifier(NotifierWithReturn *notifier,
+> +                                  MigrationEvent *e, Error **errp)
+> +{
+> +    if (e->type == MIG_EVENT_PRECOPY_DONE) {
+> +        GICv3State *s = container_of(notifier, GICv3State, cpr_notifier);
+> +        return kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CTRL,
+> +                                 KVM_DEV_ARM_VGIC_SAVE_PENDING_TABLES,
+> +                                 NULL, true, errp);
+> +    }
+> +    return 0;
+> +}
+>
+>  static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+>  {
+> @@ -883,13 +895,17 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+>                                 GICD_CTLR)) {
+>          error_setg(&s->migration_blocker, "This operating system kernel does "
+>                                            "not support vGICv3 migration");
+> -        if (migrate_add_blocker(&s->migration_blocker, errp) < 0) {
+> +        if (migrate_add_blocker_modes(&s->migration_blocker, MIG_MODE_NORMAL,
+> +                                      MIG_MODE_CPR_TRANSFER, errp) < 0) {
 
+Why did you change this? It's the general "if no support, can't
+migrate at all" check, which seems unrelated to cpr-transfer.
+
+>              return;
+>          }
+>      }
+>      if (kvm_device_check_attr(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CTRL,
+>                                KVM_DEV_ARM_VGIC_SAVE_PENDING_TABLES)) {
+>          qemu_add_vm_change_state_handler(vm_change_state_handler, s);
+> +        migration_add_notifier_mode(&s->cpr_notifier,
+> +                                    kvm_arm_gicv3_notifier,
+> +                                    MIG_MODE_CPR_TRANSFER);
+>      }
+>  }
+
+Otherwise the patch looks OK in general shape, but I know
+nothing about cpr-transfer so a review from somebody on the
+migration side would be helpful.
+
+thanks
 -- PMM
 

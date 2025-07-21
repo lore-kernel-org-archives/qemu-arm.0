@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E949C83F1A
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 09:41:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB49BC87FC5
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 09:44:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1udn1e-0004AJ-OQ; Mon, 21 Jul 2025 05:41:39 -0400
+	id 1udn40-0007Mp-AS; Mon, 21 Jul 2025 05:44:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1udn1W-00044U-Fb; Mon, 21 Jul 2025 05:41:31 -0400
+ id 1udn3t-0007I6-Gs; Mon, 21 Jul 2025 05:43:58 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1udn1U-0008P6-91; Mon, 21 Jul 2025 05:41:30 -0400
+ id 1udn3r-00087Y-65; Mon, 21 Jul 2025 05:43:57 -0400
 Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4blwKp0qpLz6L4tM;
- Mon, 21 Jul 2025 17:37:34 +0800 (CST)
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4blwLX4yqrz6L5GR;
+ Mon, 21 Jul 2025 17:38:12 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 13BDE140279;
- Mon, 21 Jul 2025 17:41:21 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 09341140279;
+ Mon, 21 Jul 2025 17:39:39 +0800 (CST)
 Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
  (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 21 Jul
- 2025 11:41:20 +0200
-Date: Mon, 21 Jul 2025 10:41:19 +0100
+ 2025 11:39:38 +0200
+Date: Mon, 21 Jul 2025 10:39:37 +0100
 To: Vadim Chichikalyuk <chichikalyuk@gmail.com>
 CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, "Michael S. Tsirkin"
  <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Ani Sinha
  <anisinha@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>, "Peter
  Maydell" <peter.maydell@linaro.org>
-Subject: Re: [PATCH 3/4] hw: arm: acpi: add UART clock frequency to SPCR table
-Message-ID: <20250721104119.00001882@huawei.com>
-In-Reply-To: <20250718162045.49012-4-chichikalyuk@gmail.com>
+Subject: Re: [PATCH 1/4] hw: acpi: add support for SPCR revision 3
+Message-ID: <20250721103937.00007933@huawei.com>
+In-Reply-To: <20250718162045.49012-2-chichikalyuk@gmail.com>
 References: <20250718162045.49012-1-chichikalyuk@gmail.com>
- <20250718162045.49012-4-chichikalyuk@gmail.com>
+ <20250718162045.49012-2-chichikalyuk@gmail.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
@@ -74,47 +74,74 @@ From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 18 Jul 2025 19:20:44 +0300
+On Fri, 18 Jul 2025 19:20:42 +0300
 Vadim Chichikalyuk <chichikalyuk@gmail.com> wrote:
 
-> On the ARM virt machine, there is currently no way to programmatically
-> discover the frequency of the UART reference clock solely through the use of
-> UEFI/ACPI (without the DTB). The SPCR table can include this information
-> as of revision 3.
-> 
-> Bump the revision to 3 and add the clock frequency of 24 MHz to the table.
+> The UART clock frequency field of the SPCR table was added in revision 3.
+> Currently, build_spcr() treats revision 3 tables the same as revision 2 and
+> only includes this field in revision 4 tables.
 
-Maybe add something on why you aren't just skipping forwards to 4 and filling
-in the rest of the stuff?
+Given this isn't in the ACPI spec, I'd make sure you have a reference to the MS
+documentation for this. I think it is this one:
+https://learn.microsoft.com/en-us/windows-hardware/drivers/bringup/serial-port-console-redirection-table
+
+> 
+> Fix build_spcr() to include the clock frequency field in revision 3 tables.
+> Per the specification, this is the only change between revisions 2 and 3.
+
+Maybe say why this has never mattered - I think because no code actually uses
+revision 3.  Prior to this series, arm-virt and loongarch were 2 and
+riscv-virt was 4.
 
 > 
 > Signed-off-by: Vadim Chichikalyuk <chichikalyuk@gmail.com>
+Code looks fine so with those additions to the description
 
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 
 > ---
->  hw/arm/virt-acpi-build.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+>  hw/acpi/aml-build.c | 20 +++++++++++---------
+>  1 file changed, 11 insertions(+), 9 deletions(-)
 > 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index b01fc4f8ef..029cbb37f7 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -559,12 +559,13 @@ spcr_setup(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          .pci_function = 0,
->          .pci_flags = 0,
->          .pci_segment = 0,
-> +        .uart_clk_freq = 24000000, /* 24MHz */
->      };
->      /*
-> -     * Passing NULL as the SPCR Table for Revision 2 doesn't support
-> +     * Passing NULL as the SPCR Table for Revision 3 doesn't support
->       * NameSpaceString.
->       */
-> -    build_spcr(table_data, linker, &serial, 2, vms->oem_id, vms->oem_table_id,
-> +    build_spcr(table_data, linker, &serial, 3, vms->oem_id, vms->oem_table_id,
->                 NULL);
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index 1e685f982f..9855d5f053 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -2123,20 +2123,22 @@ void build_spcr(GArray *table_data, BIOSLinker *linker,
+>      build_append_int_noprefix(table_data, f->pci_flags, 4);
+>      /* PCI Segment */
+>      build_append_int_noprefix(table_data, f->pci_segment, 1);
+> -    if (rev < 4) {
+> +    if (rev < 3) {
+>          /* Reserved */
+>          build_append_int_noprefix(table_data, 0, 4);
+>      } else {
+>          /* UartClkFreq */
+>          build_append_int_noprefix(table_data, f->uart_clk_freq, 4);
+> -        /* PreciseBaudrate */
+> -        build_append_int_noprefix(table_data, f->precise_baudrate, 4);
+> -        /* NameSpaceStringLength */
+> -        build_append_int_noprefix(table_data, f->namespace_string_length, 2);
+> -        /* NameSpaceStringOffset */
+> -        build_append_int_noprefix(table_data, f->namespace_string_offset, 2);
+> -        /* NamespaceString[] */
+> -        g_array_append_vals(table_data, name, f->namespace_string_length);
+> +        if (rev >= 4) {
+> +            /* PreciseBaudrate */
+
+Obviously historical, but this does seem like a lot of unnecessary comments
+given the clear naming of the input parameters!
+
+> +            build_append_int_noprefix(table_data, f->precise_baudrate, 4);
+> +            /* NameSpaceStringLength */
+> +            build_append_int_noprefix(table_data, f->namespace_string_length, 2);
+> +            /* NameSpaceStringOffset */
+> +            build_append_int_noprefix(table_data, f->namespace_string_offset, 2);
+> +            /* NamespaceString[] */
+> +            g_array_append_vals(table_data, name, f->namespace_string_length);
+> +        }
+>      }
+>      acpi_table_end(linker, &table);
 >  }
->  
 
 

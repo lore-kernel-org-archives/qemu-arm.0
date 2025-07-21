@@ -4,86 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 038D9C83F1A
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 13:16:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 185CEC83F25
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 14:04:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1udqMm-0008ER-Bj; Mon, 21 Jul 2025 09:15:46 -0400
+	id 1udr6z-0001jN-BA; Mon, 21 Jul 2025 10:03:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1udqM8-0006bV-4c
- for qemu-arm@nongnu.org; Mon, 21 Jul 2025 09:15:01 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1udr6t-0000qe-HS
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 10:03:21 -0400
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1udqM5-0002zl-1U
- for qemu-arm@nongnu.org; Mon, 21 Jul 2025 09:14:59 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-4561ca74829so47771315e9.0
- for <qemu-arm@nongnu.org>; Mon, 21 Jul 2025 06:14:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1udr6q-0004Q6-PS
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 10:03:18 -0400
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-70e5e6ab7b8so36050647b3.1
+ for <qemu-arm@nongnu.org>; Mon, 21 Jul 2025 07:03:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753103690; x=1753708490; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=kf+XdG7iIe8+bpTLSlmaVFkSVHrn4uHtx0yDTSte+YA=;
- b=DZl0GtwwOH0Wsqr3hNVesbPHtS5u9icLE7h0MjipXiRTaiJDvJmj/p7kg21g8dj9gr
- JoEQFPlFgV0wL0lhUHFPVRqz3sALV2qx9d+E3c283ZZQ4djEWy64hkWa9ueNL1RxfsxI
- 5UmHiN64M0XgZ8YLHDm2Pvq0JhR5hlH7TN2/xY1aGDue/qGhjmqYUmDQ94mUtf3+4FQ5
- 7T2aXCS/Qu0FHpPFy+P9gpxhqU9Y8UIex/jDaybfpziojtWqHwnAm5uSF8EzW4F70JRm
- HUPxPPyla/akLh6I/yrrBnF5BwhOvOh1vJRT/p/Sv1fxuJi/sHNJ74yWJuDMqJ/ixM7v
- L3TA==
+ d=linaro.org; s=google; t=1753106595; x=1753711395; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=CYVQe0Mks7K6hEfZs7ov2VhXUKLZCR1ICDo08+Q05aY=;
+ b=FoQRAXOfV4R1ih97sLggWiU1CPFtwdqYzrtEyC2pumOTRPd/gRGFICpkkIrV7eym/e
+ QiO/2qeG8zVg6C5GbjOvznyRNye6OIWcWJqi6iyZPYYpbGAnBMgSRRReCTDwG4aIUWtP
+ 5phbS7C26DwyIsJh2qW+kNeUENJyXSmH/2WyG/wxuOLYPqHD4AiLaFIVyXSO+NQ73iOf
+ W1Z1iW10zyfhV/WCv40Ph/KHc2LPRXn0duxRLrprskakZHJtbwVEouDoJux5uTwRU56g
+ bF+YtYQUmtWu/KVsfGnyOo0EjXqfYSJMy0lgRHrNhwpPj+NUX2q5nKbfeVMnDe950ajO
+ EZig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753103690; x=1753708490;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=kf+XdG7iIe8+bpTLSlmaVFkSVHrn4uHtx0yDTSte+YA=;
- b=EFEwxbqCtrey7VwjWQVJ/o+URfPzJo1+6GptFiF/kpW6ppi6gddpBrRHo1scitYmNJ
- 70CfT1ZJfX2xsy9w70manhKv4t3lhkf8CZLV+otplEmuojfWsKuVoko6yvBzivBhqah3
- iAOXV0RwycqkyeEz9B+PuY4k1HY5NCr00GVva+Bhld+kEdQGd3w476Wu567YTohBm720
- 8JqMf5vrWCrQ/8UfRCZ2/dQI+oILMrNYh0jJ7RLbHfBzi2XzgKbgqHCNL2CXH8pgXz69
- zZYhiWHVCjgJx/fs/3coY6QfNfevhOvFl1clr+kHfhZOc5cF9JSKIXK/ws6Lg8yGZmGY
- spUw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXYvzmsYHm4bMq1hTkKM1b647tNsjzpKJqP+viYJmfxKCtTbhznRzAAqMVskrMHyH4RxntOVFgvrA==@nongnu.org
-X-Gm-Message-State: AOJu0YyY/ZjZjNDFrtnCt7JFKlvnuuKzozfshRSfoCLn/IaomIg+Sj82
- DUE7EuoHTEtXgucLjjtE8/aAZsQwhxcchnQ0jTWi9JyYUanLa+rN8hK1qgPXNELvv68=
-X-Gm-Gg: ASbGnctAc1Kt4LTv6y2jW7IQ2XGD5Acrqn1ZWUnc73iSFrCVxokiMLWzF1BgUPzCJeT
- 0gpUYKLKj2jt8H3uWbohND99bky4uoMv7Wh8Pg4vAhka6SKH3lCxicEsrgwjG2cET1TcVDHVDB3
- GMzDX2sA2KFeBMOa/1BN5g5G+FkM8h0UA1eVBnaHtX4MbWp+Gn0tJvukxw6cQJH2VI105Xag97C
- d8jJG0/sE3JpPFI5goqxEW1qTUTX/5093ibyaS/4Tifnn1mK+TMDpDF0ejr9dxlMJv0WngIqgtZ
- KbnGAgey8Ry0q+RoRq3VZgDtPCL74UKbWREG+G0fGE7oEwYcEEx5VzHFmL0kGjyKiCvpxECoCNp
- Tg0mUqBkdOLoniJXVvRJIYWlcM66mdcAApmfnfBlZqkHVRLd+HOEb1Y/pyx53qSiHKA==
-X-Google-Smtp-Source: AGHT+IGp8cF4Ch+abhZf42ykFePGlBR37Nq0DJxMFf22JspVrjvJ/sNsO47ZExiOTRsZE9f2W8l33g==
-X-Received: by 2002:a05:600c:450f:b0:453:1e14:6387 with SMTP id
- 5b1f17b1804b1-4562e3cad06mr174260075e9.32.1753103689815; 
- Mon, 21 Jul 2025 06:14:49 -0700 (PDT)
-Received: from [192.168.69.239] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45626c7b1a9sm113104455e9.0.2025.07.21.06.14.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Jul 2025 06:14:49 -0700 (PDT)
-Message-ID: <77d32915-e2f4-4dac-be93-626c3748379a@linaro.org>
-Date: Mon, 21 Jul 2025 15:14:48 +0200
+ d=1e100.net; s=20230601; t=1753106595; x=1753711395;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=CYVQe0Mks7K6hEfZs7ov2VhXUKLZCR1ICDo08+Q05aY=;
+ b=nAmE3yGFIwU6INQNL++l2Db3t8YhX6RGbo92epICbgYcdG6jBzX8ADN7c+lpy9o4/C
+ W0JA2RYEoMIvN9AcxxPpfXyaPL16r5xw8Ho4Njy/fWYH0bSXGJjuilJz/R474Inj2jy8
+ c8gkp/Htb32/yCDqR/WKIIH7k7rLo/uK064aMi25kGJKv8uNItNGSxzctYdkBalNyUiH
+ z1LBFFIXyDkr5WpwzXH3Qsm99tbmjxemfqDpdQu2HhdnEEAV5GIhHYeEgZq5zo6GWYOc
+ 4AWoKD5uFp0Ok9macJP1GrLvrWFdwAZ30e0zw3VKJlFpYVm5cmcvzsTNlObneVKZ//mQ
+ C5PQ==
+X-Gm-Message-State: AOJu0YwhgNYpuVDSnHVaKFSDOIjvJR9R/kxU7eM4C3rGAd5xnOU8UVcp
+ w3y/QyUgC9pweUbdNK561KdLd/qdN8quUGAzApOC3wigCrWUeYbfvkGFPIt2cyn5KaJ1nYfetY7
+ nkkEMJ+UDS4/ZrUJzJK8ptqlVPA5jt46CyF1jS66GRS9NlFUQziJ9
+X-Gm-Gg: ASbGnctdsJgyFtW7xENPRmoFr7o0n03YRvwMmjFdsbbqRG4I5NF4MQpot2sNM8mSFxg
+ TP4wWcLOPnQMhIpmL2PprGzfzJaVMmrAYE81sjgio5sp5A9PnLZPlnJU6K6WcxY5EsGDo9zLrOg
+ GHvGuYVUSQz1uHfFkloaqgTlYStZOMzcShwkd4SIfKWE3qhuGDsz9yalkH3UFYsOAdlfNslAnBR
+ Eds6iB9
+X-Google-Smtp-Source: AGHT+IHsG9Fmrl2imd+MQNO4Jhzw1CzGekKQ2Z/zJ+9wt9/QH9rKlHxu/bfzKU9FZMWix8CpXJ4g8LjI9mlRoUjt5nY=
+X-Received: by 2002:a05:690c:4905:b0:70c:b882:305 with SMTP id
+ 00721157ae682-718351ae978mr280071237b3.36.1753106594747; Mon, 21 Jul 2025
+ 07:03:14 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-10.1 0/3] accel/hvf: Do not abort in
- hvf_arm_get_*_ipa_bit_size()
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>,
- qemu-arm@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>,
- Mads Ynddal <mads@ynddal.dk>, Phil Dennis-Jordan <phil@philjordan.eu>,
- Alexander Graf <agraf@csgraf.de>
-References: <20250716172813.73405-1-philmd@linaro.org>
- <CAFEAcA-nt-qeP5u=WyKS9pTWrpkDMTBPF241xKVsr+Q-noWtAw@mail.gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA-nt-qeP5u=WyKS9pTWrpkDMTBPF241xKVsr+Q-noWtAw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+References: <20250714165523.1956235-1-peter.maydell@linaro.org>
+ <20250714165523.1956235-3-peter.maydell@linaro.org>
+In-Reply-To: <20250714165523.1956235-3-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 21 Jul 2025 15:03:03 +0100
+X-Gm-Features: Ac12FXzQCJ_IkNMo4Ne1_A9_EHvTmQFabt3QlXuTagGeVCSyrmNR5nGgIe7mEyY
+Message-ID: <CAFEAcA8pSTpOne-u6BaEABhxcCXn=BvX4U2VF=pw00WFAc8yTQ@mail.gmail.com>
+Subject: Re: [PATCH 2/4] hw/net/npcm_gmac.c: Unify length and prev_buf_size
+ variables
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>, 
+ Jason Wang <jasowang@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,22 +95,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 21/7/25 14:40, Peter Maydell wrote:
-> On Wed, 16 Jul 2025 at 18:28, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> Have get_physical_address_range() return when HVF is not
->> usable, allowing to try another accelerator if requested
->> with '-accel hvf:tcg', reported here:
->> https://gitlab.com/qemu-project/qemu/-/issues/2981
->>
->> Philippe Mathieu-Daudé (3):
->>    accel/hvf: Display executable bit as 'X'
->>    accel/hvf: Do not abort in hvf_arm_get_*_ipa_bit_size()
->>    hw/arm/virt: Warn when HVF doesn't report IPA bit length
-> 
-> 
-> I've applied patch 1 to target-arm.next, since it's not
-> really related to the patch 2 and 3 bugfix.
+On Mon, 14 Jul 2025 at 17:55, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> After the bug fix in the previous commit, the length and prev_buf_size
+> variables are identical, except that prev_buf_size is uint32_t and
+> length is uint16_t. We can therefore unify them. The only place where
+> the type makes a difference is that we will truncate the packet
+> at 64K when sending it; this commit preserves that behaviour
+> by using a local variable when doing the packet send.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Should the behaviour really be to truncate the packet at 64K
+> rather than flagging an error if the guest assembles descriptors
+> that combine to give a too-large packet?
 
-Thank you.
+I see Jason has picked this up in a pullreq, which is OK given
+this isn't a behaviour change -- but it would still be good
+if somebody with access to the datasheet for this device could
+confirm what the actual correct behaviour for attempts to tx
+very large packets should be.
+
+thanks
+-- PMM
 

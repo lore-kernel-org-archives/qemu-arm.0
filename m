@@ -4,95 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D010C83F1A
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 20:12:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C05EFC83F25
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Jul 2025 21:21:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1udwsF-0006uk-Ti; Mon, 21 Jul 2025 16:12:36 -0400
+	id 1udxwD-0002CY-Bv; Mon, 21 Jul 2025 17:20:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chichikalyuk@gmail.com>)
- id 1udwsC-0006tS-5g; Mon, 21 Jul 2025 16:12:32 -0400
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <chichikalyuk@gmail.com>)
- id 1udwsA-0007N6-5y; Mon, 21 Jul 2025 16:12:31 -0400
-Received: by mail-lj1-x22f.google.com with SMTP id
- 38308e7fff4ca-32b43cce9efso40603631fa.3; 
- Mon, 21 Jul 2025 13:12:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1753128747; x=1753733547; darn=nongnu.org;
- h=to:references:message-id:content-transfer-encoding:cc:date
- :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=B6X57D9h3fZQwbp9rJ9R1YByGkHp+bI3VYHvZ1CCm5Q=;
- b=evSDvH7fxsimX7BQCX17YpoKK97CGvIzO/gJ9Q6AGOmwdajydhezyCEwYlAttsh8ab
- ixNPumD4hTUtoYCs8TKbrMAkgGOXUvbAI15i8O4F2gXeFEfzfDmN6qrhGSWojBh/NSPP
- XTXgZaqbE2U362f9yeKbGDYm/tDM8SctrF680wAcAABXB/qe7LT1S4u70RGlUh8JJb1W
- WBwds7PUyktGYv8UmAkl3LBSgIEHiGAl7v0RGjXcZhqbuuRtabka1UmInEi+GJbjnYSL
- VRWvIcFS0cPv6T6jMc50nbfHNQ5WmLHJlT4vACReaM3A9L6gMO32frb3/AwLK3H7iyFu
- wnoA==
+ (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
+ id 1udxvY-0001cC-BS
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 17:20:14 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
+ id 1udxvT-0002m6-SZ
+ for qemu-arm@nongnu.org; Mon, 21 Jul 2025 17:20:03 -0400
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56LH0KCc015997
+ for <qemu-arm@nongnu.org>; Mon, 21 Jul 2025 21:19:58 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:date:from:in-reply-to:message-id
+ :mime-version:references:subject:to; s=qcppdkim1; bh=+fQw6GvlrZy
+ 4nyXBmMwVnrWr+x1hCVBNBgVHmbNeyzc=; b=ES3xH7RCX588vil8hmJknmeIgNo
+ uuGxW0qMbveO5si0TsCL30bK3Qg11bxAuKf+Brq6B4iR3c5gnymqkTn7Nl56dDy8
+ s4/055VfwfGwMRy178rF4LUsDbWYfTbGt+M0Fx5Dor5W6Yfq5LIZe1d5tLGL1DMF
+ flbiPa6H5kXKouIzD+IToH57NOAXsWIT08Q3AvN6Q5c5ooULNBd0dOfneYSgyqsa
+ +nub5mTlZ9MgLILOh6Ye1Zj4WV0xAP3mMrWF1PetTGd322PNWe812Ez1kErYYxPy
+ 2iORJzqM43txNPUlujJ/DJ98moKnZAMeDoBq64eaWjsAZO8AMvA9aM1s3Gw==
+Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
+ [209.85.215.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 480451f2uy-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Mon, 21 Jul 2025 21:19:58 +0000 (GMT)
+Received: by mail-pg1-f197.google.com with SMTP id
+ 41be03b00d2f7-b3ba7659210so3422802a12.2
+ for <qemu-arm@nongnu.org>; Mon, 21 Jul 2025 14:19:58 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753128747; x=1753733547;
- h=to:references:message-id:content-transfer-encoding:cc:date
- :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1753132797; x=1753737597;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=B6X57D9h3fZQwbp9rJ9R1YByGkHp+bI3VYHvZ1CCm5Q=;
- b=Jiui4sRtupOlAsHK7NlhxX5IbvT3vuC4QUcWtcjx9kPDOP8E1S1LnwKXpgHFmufQFR
- ALo2hR9Jo1c/KZ78DrJ0xbNxgVv7yLpu8rws6TlQl+hLkqrJkVdZzdgff4z8y1RspfkE
- vYJxhgwba05+BsZtwTDf7WzdMe1kJLPSO3j9Y64kaJ2fKVedGkcP7v+2iQgBvYXGEDEL
- j8+6sAkNhQTbu+UwJs+HHe6Y/v19IAT2VBuKydcXwzIbiibwqZ/TSaS2xEBF7pUpPAqR
- UwoIb9oWj4WBLIUBoUZ1ZVA5mRlAotGHpyrY74/WBasJ5hx0SVoQQrtJltc2YYoC22+2
- 0BPA==
+ bh=+fQw6GvlrZy4nyXBmMwVnrWr+x1hCVBNBgVHmbNeyzc=;
+ b=RnPFR52U2iT8NhOu31S0l7VEFRnfH1LjQkub+EetsvSriFDjif7jU/Na5tU+PWb49W
+ 2Jj2U6N16XXq3zlkIx/Xpi+EFqa7yNtXP+aq/U8WPnjOCurq1TJtL6yV7O4Q69rZ2k7Q
+ ug/EHwfZBtDhWZuf9dTGex0f4Ux90Aawz6Hskb72My3rR8DqeQJlv+tPX0pd1CGPxWwU
+ d7iRitOBX3L1+mFkOhk9a9roCNq0YPrUIx8tOsWxGCzUK1doX3ysZolcgCz332MMSTCi
+ uMX2ThvO8gfvncp/AIxduD5obcCQQ1wmoTh/YLEffUmQqrGLROIZdSrreUjgxy2wx5rj
+ Roug==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUOiJ7RvSdptOfHXXD2zlcdkpHSlCjfLCoS7SBE8oex3djskHV1y1fHWwKLNM/etkRcoHkoFARypQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yyh/xmKdKGJ7ktsGvZh5fgX8TSQezHv+VsfCLl7uIfC3hLlWwql
- Qgm5xyKcmIdh0b06cXIez2UHLvGk4UJHUotZW5xg2ExTy5IL9neEZSp9
-X-Gm-Gg: ASbGncsd/OGIkZO4lR4jAU0rl+t4SUJ7LJlFxBCEirXc9eVVlGfWmjEBd9dtg1kKStO
- 2gRfapPxLHAq4FTnBNNMbjLHVvA85l7XlLrDfpPoYWZnkE8InR9RYXwkHt78JOyDttBpHn5JVax
- RcB1BLEWTFJnGpPysr9lCu14xOSKEDIrN8VJ+tOJPqjplX6FOe9KMUwcFQaXBXq5jNztfe40GFk
- O4akyZcKosop5byIFL9/Vv8OkuFx/Rev1M3FDXY/2gJqu35kNu8SL8ihm4PCaRZQntNlOuY6a58
- hgoqUbMiufwl4tt4piSk68gjorxkMA0Gmsd+qYXWIXJNTV1Esp1Mo7tZ6v1RJDGWUtLoLb4b1+O
- u1BNCAZdWKKPWLtmTBQTpQstNXq3SAd6F3nw+FlnvHmKXG7aaL5EnxDk6Rt8Uuqt4qNXM9X1Vrc
- w=
-X-Google-Smtp-Source: AGHT+IFNCcs75/5DbyllzyHq2/mNK8dps+hQVHFYeGgUzMgxfnxJEo4Z4eLig/5FpjPZ99SB+75E9g==
-X-Received: by 2002:a05:651c:2115:b0:32c:bc69:e926 with SMTP id
- 38308e7fff4ca-3308f4c10b9mr60465631fa.7.1753128747169; 
- Mon, 21 Jul 2025 13:12:27 -0700 (PDT)
-Received: from smtpclient.apple (m91-129-105-190.cust.tele2.ee.
- [91.129.105.190]) by smtp.gmail.com with ESMTPSA id
- 38308e7fff4ca-330a91da0dbsm14333931fa.89.2025.07.21.13.12.24
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 21 Jul 2025 13:12:25 -0700 (PDT)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.700.71\))
-Subject: Re: [PATCH 1/4] hw: acpi: add support for SPCR revision 3
-From: Vadim Chichikalyuk <chichikalyuk@gmail.com>
-In-Reply-To: <20250721103937.00007933@huawei.com>
-Date: Mon, 21 Jul 2025 23:12:02 +0300
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Vadim Chichikalyuk <chichikalyuk@gmail.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <98B4B864-6AF6-4B34-B52B-4C15667B4913@gmail.com>
-References: <20250718162045.49012-1-chichikalyuk@gmail.com>
- <20250718162045.49012-2-chichikalyuk@gmail.com>
- <20250721103937.00007933@huawei.com>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-X-Mailer: Apple Mail (2.3826.700.71)
-Received-SPF: pass client-ip=2a00:1450:4864:20::22f;
- envelope-from=chichikalyuk@gmail.com; helo=mail-lj1-x22f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ AJvYcCUv0OC7s/jQfxszgpi4wKwkaHeKScjiAl/3jn6FXx8lDP3fpsHe429jqBCM7yeu4/o1BE03SQv6oA==@nongnu.org
+X-Gm-Message-State: AOJu0YwubFL7arjoKX5/USQztrMUAUgy0GSpn2GbMrAV8e7a4Khb9Xcb
+ TcH14HChfLYwDX/gNeb8xbi6kJfmmOTAGuFAXJhehLvsfV0VdkOJ5lABgreuDOX7fahztxIiAHt
+ Pln8p0z/v/2rwWFQTTnPiNaR/NOWMnxljmCrBekmsStMee5TZXk5ara4=
+X-Gm-Gg: ASbGncvLDC4RuCuhYMuk22sAOjoqfxLsllhPZaKonli/bdVEsl2qY3UUHhTMg7MxQQP
+ Q+UrtQDSSVG3V7OoT31S92kAutOSBAXdjR442G9p0/Kd9YpafiDcuQhQtmNqLwavVBUWPp2sH/x
+ SEpCJMJxtbdQ1M3Q0vBgDkD1SQ+ccLD1ekyC28iIlqtrQdyRTfjRTZEMbnHEC9JKMpofLb/nluV
+ mQaytS4filj7qxR6TpNA40AFa8SGkd2bqTQhGXq/HSzGnebiuivlYiHqlD55FzW7ROQZLaMDFjl
+ bUCGudedV4j/qta+g0YykTiuEXLzI0AblSRjCAleo5+vWzISTD1a2pN+k3NC2XjMhHEfZHztwYQ
+ 4OnU7scQWIN0ZJMU=
+X-Received: by 2002:a05:6a21:e92:b0:232:813b:8331 with SMTP id
+ adf61e73a8af0-23811d5b784mr34505164637.2.1753132796943; 
+ Mon, 21 Jul 2025 14:19:56 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFzy+rG4z+MCFgRHdWfF1gmyGS6BGNFnENxteF83+4NQHOg38jvkmlKAngkw9fAVCN2IEbEyw==
+X-Received: by 2002:a05:6a21:e92:b0:232:813b:8331 with SMTP id
+ adf61e73a8af0-23811d5b784mr34505132637.2.1753132796541; 
+ Mon, 21 Jul 2025 14:19:56 -0700 (PDT)
+Received: from admin15.qualcomm.com (i-global254.qualcomm.com.
+ [199.106.103.254]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-759cbc680absm6338808b3a.144.2025.07.21.14.19.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 21 Jul 2025 14:19:56 -0700 (PDT)
+From: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+To: vacha.bhavsar@oss.qualcomm.com, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH 2/2] target/arm: Fix big-endian handling of SVE gdb remote
+ debugging
+Date: Mon, 21 Jul 2025 21:19:52 +0000
+Message-Id: <20250721211952.2239714-3-vacha.bhavsar@oss.qualcomm.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250721211952.2239714-1-vacha.bhavsar@oss.qualcomm.com>
+References: <20250721211952.2239714-1-vacha.bhavsar@oss.qualcomm.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Authority-Analysis: v=2.4 cv=EIMG00ZC c=1 sm=1 tr=0 ts=687eaefe cx=c_pps
+ a=rz3CxIlbcmazkYymdCej/Q==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
+ a=Wb1JkmetP80A:10 a=EUspDBNiAAAA:8 a=u4diUC1y2Yxsy3ku_HcA:9
+ a=bFCP_H2QrGi7Okbo017w:22
+X-Proofpoint-ORIG-GUID: iPuPyZ6oxph1g5SHpw94LdCsgrXe3H53
+X-Proofpoint-GUID: iPuPyZ6oxph1g5SHpw94LdCsgrXe3H53
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzIxMDE5MCBTYWx0ZWRfX7VzrS91+NhXp
+ dutxcL8/acm4yGSYVz1vyAfK4Hw5P+D1Wxfp9V0ilK1iVbF0sRhMW8hTi7HJV+A7i+3vYSuiIBe
+ gQQ6Y5XWpGo/cBzd1Ie0TUnSe2J6hILO4CeW3/KQ9CYdVZQCHgooCsdFez2yH+x/Qy5/fzzfd4X
+ peEdjRkzMnyB7LDCjHg5VIMJbjGc7qwwKR7sG1AL3IpJ4w4pYtOkBYGsRZmVFBxO6OnflhB8TbK
+ SD5Ky24dcBWUo7xy6gfKPnWqJZaKFzweo+4zTyfBCK01frlB8QaR6KJbXsCiM48i+zfmEFlc6ch
+ +lcNKroMRlYXMFxKLUvPiC0DZsdWMESdhcKQvwHL+4oqaWJyNrwF14ESCyW/lNuMel3sR9f/pij
+ KSIFS7vBmG9M7UG3qAJccbZhrHAYWm7YzvScoX3OrDAc1eeOwbB3FpUOI7IxxKQiKsQcFz6A
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-07-21_05,2025-07-21_02,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 impostorscore=0 lowpriorityscore=0 bulkscore=0 adultscore=0
+ priorityscore=1501 mlxlogscore=496 phishscore=0 mlxscore=0 clxscore=1015
+ suspectscore=0 malwarescore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
+ definitions=main-2507210190
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=vacha.bhavsar@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,73 +133,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+This patch adds big endian support for SVE GDB remote
+debugging. It replaces the use of pointer dereferencing with the use of
+ldq_p() as explained in the first part of this patch series. Additionally,
+the order in which the buffer content is loaded into the CPU struct is
+switched depending on target endianness to ensure the most significant bits
+are always in second element.
 
-> On 21 Jul 2025, at 12:39, Jonathan Cameron via <qemu-devel@nongnu.org> =
-wrote:
->=20
-> On Fri, 18 Jul 2025 19:20:42 +0300
-> Vadim Chichikalyuk <chichikalyuk@gmail.com> wrote:
->=20
->> The UART clock frequency field of the SPCR table was added in =
-revision 3.
->> Currently, build_spcr() treats revision 3 tables the same as revision =
-2 and
->> only includes this field in revision 4 tables.
->=20
-> Given this isn't in the ACPI spec, I'd make sure you have a reference =
-to the MS
-> documentation for this. I think it is this one:
-> =
-https://learn.microsoft.com/en-us/windows-hardware/drivers/bringup/serial-=
-port-console-redirection-table
+Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+---
+ target/arm/gdbstub64.c | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
 
-I=E2=80=99m going off of the following line in the revision history =
-table on that MS page,=20
-suggesting there was a revision 3 with just the clock frequency added:
-"Changed Table Revision to 3 and created field for UART Clock Frequency. =
-Edited formatting."
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index 8b7f15b920..cd61d946bb 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -200,10 +200,18 @@ int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg)
+     case 0 ... 31:
+     {
+         int vq, len = 0;
+-        uint64_t *p = (uint64_t *) buf;
+         for (vq = 0; vq < cpu->sve_max_vq; vq++) {
+-            env->vfp.zregs[reg].d[vq * 2 + 1] = *p++;
+-            env->vfp.zregs[reg].d[vq * 2] = *p++;
++            if (target_big_endian()){
++                env->vfp.zregs[reg].d[vq * 2 + 1] = ldq_p(buf);
++                buf += 8;
++                env->vfp.zregs[reg].d[vq * 2] = ldq_p(buf);
++            }
++            else{
++                env->vfp.zregs[reg].d[vq * 2] = ldq_p(buf);
++                buf += 8;
++                env->vfp.zregs[reg].d[vq * 2 + 1] = ldq_p(buf);
++            }
++            buf += 8;
+             len += 16;
+         }
+         return len;
+@@ -218,9 +226,9 @@ int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg)
+     {
+         int preg = reg - 34;
+         int vq, len = 0;
+-        uint64_t *p = (uint64_t *) buf;
+         for (vq = 0; vq < cpu->sve_max_vq; vq = vq + 4) {
+-            env->vfp.pregs[preg].p[vq / 4] = *p++;
++            env->vfp.pregs[preg].p[vq/4] = ldq_p(buf);
++            buf += 8;
+             len += 8;
+         }
+         return len;
+-- 
+2.34.1
 
->=20
->> ---
->> hw/acpi/aml-build.c | 20 +++++++++++---------
->> 1 file changed, 11 insertions(+), 9 deletions(-)
->>=20
->> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->> index 1e685f982f..9855d5f053 100644
->> --- a/hw/acpi/aml-build.c
->> +++ b/hw/acpi/aml-build.c
->> @@ -2123,20 +2123,22 @@ void build_spcr(GArray *table_data, =
-BIOSLinker *linker,
->>     build_append_int_noprefix(table_data, f->pci_flags, 4);
->>     /* PCI Segment */
->>     build_append_int_noprefix(table_data, f->pci_segment, 1);
->> -    if (rev < 4) {
->> +    if (rev < 3) {
->>         /* Reserved */
->>         build_append_int_noprefix(table_data, 0, 4);
->>     } else {
->>         /* UartClkFreq */
->>         build_append_int_noprefix(table_data, f->uart_clk_freq, 4);
->> -        /* PreciseBaudrate */
->> -        build_append_int_noprefix(table_data, f->precise_baudrate, =
-4);
->> -        /* NameSpaceStringLength */
->> -        build_append_int_noprefix(table_data, =
-f->namespace_string_length, 2);
->> -        /* NameSpaceStringOffset */
->> -        build_append_int_noprefix(table_data, =
-f->namespace_string_offset, 2);
->> -        /* NamespaceString[] */
->> -        g_array_append_vals(table_data, name, =
-f->namespace_string_length);
->> +        if (rev >=3D 4) {
->> +            /* PreciseBaudrate */
->=20
-> Obviously historical, but this does seem like a lot of unnecessary =
-comments
-> given the clear naming of the input parameters!
->=20
-
-Absolutely, I=E2=80=99ll remove those that don=E2=80=99t add any useful =
-information in v2.=
 
